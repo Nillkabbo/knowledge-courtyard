@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>জ্ঞানের প্রাঙ্গণ — The Learning Courtyard</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-deep:#07060d;--bg-mid:#111027;--gold:#e8c547;--gold-bright:#ffd966;--gold-glow:rgba(232,197,71,.3);
+  --teal:#2dd4bf;--teal-glow:rgba(45,212,191,.25);--cyan:#36d6e7;--fire:#ff6b35;--leaf:#52c41a;--moon:#5b9eff;--purple:#b37feb;--rose:#f06292;
+  --ink:#ede8f5;--ink-dim:#9a93b8;--ink-mute:#6b6588;
+  --panel:rgba(17,16,39,.75);--panel-border:rgba(232,197,71,.12);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali','Segoe UI',sans-serif;min-height:100vh;overflow-x:hidden}
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.container{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:2rem 1.2rem 4rem}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:2rem 0 1.5rem}
+.header-arabic{font-family:'Amiri',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--gold);opacity:.6;margin-bottom:.6rem;letter-spacing:.04em}
+.header-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,5vw,3rem);font-weight:900;background:linear-gradient(135deg,var(--gold-bright),var(--teal),var(--gold));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.03em;line-height:1.2;margin-bottom:.5rem;animation:shimmer 5s linear infinite}
+@keyframes shimmer{to{background-position:200% center}}
+.header-sub{font-size:clamp(.9rem,1.8vw,1.15rem);color:var(--ink-dim);font-weight:600;margin-bottom:.8rem}
+.header-quote{max-width:540px;margin:0 auto;font-size:.85rem;color:var(--ink-mute);line-height:1.8;font-style:italic;border-top:1px solid var(--panel-border);border-bottom:1px solid var(--panel-border);padding:.8rem 1.2rem}
+.header-quote .en{font-size:.78rem;opacity:.7;margin-top:.3rem;display:block}
+
+/* ── STAT BAR ── */
+.stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin:1.5rem 0;padding:1rem;background:var(--panel);border:1px solid var(--panel-border);border-radius:16px;backdrop-filter:blur(8px)}
+.stat{text-align:center}
+.stat-num{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:900;color:var(--gold-bright)}
+.stat-label{font-size:.7rem;color:var(--ink-mute);letter-spacing:.05em;text-transform:uppercase}
+
+/* ── GAME CARDS ── */
+.section-label{text-align:center;font-family:'Cinzel',serif;font-size:.8rem;color:var(--ink-mute);letter-spacing:.2em;text-transform:uppercase;margin:2.5rem 0 .1rem}
+.games-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:1.2rem}
+.game-card{position:relative;background:var(--panel);border:1px solid var(--panel-border);border-radius:20px;padding:2rem;overflow:hidden;transition:all .5s cubic-bezier(.4,0,.2,1);text-decoration:none;color:inherit;cursor:pointer;display:block}
+.game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:20px 20px 0 0;transition:height .4s ease}
+.game-card:nth-child(1)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--teal))}
+.game-card:nth-child(2)::before{background:linear-gradient(90deg,var(--cyan),var(--gold-bright))}
+.game-card:nth-child(3)::before{background:linear-gradient(90deg,var(--teal),var(--gold-bright),var(--fire))}
+.game-card:nth-child(4)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--teal))}
+.game-card:nth-child(5)::before{background:linear-gradient(90deg,var(--leaf),var(--gold-bright),var(--leaf))}
+.game-card:nth-child(6)::before{background:linear-gradient(90deg,var(--moon),var(--gold-bright),var(--fire))}
+.game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
+.game-card:hover::before{height:6px}
+.game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+.game-head{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1rem}
+.game-icon{font-size:3rem;line-height:1;flex-shrink:0}
+.game-head-text{flex:1}
+.game-tag{display:inline-block;font-family:'Cinzel',serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:8px;margin-bottom:.4rem}
+.game-card:nth-child(1) .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
+.game-card:nth-child(2) .game-tag{background:rgba(54,214,231,.12);color:var(--cyan)}
+.game-card:nth-child(3) .game-tag{background:rgba(45,212,191,.12);color:var(--teal)}
+.game-card:nth-child(4) .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
+.game-card:nth-child(5) .game-tag{background:rgba(82,196,26,.12);color:var(--leaf)}
+.game-card:nth-child(6) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
+.game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
+.game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
+
+.game-desc{font-size:.9rem;color:var(--ink-dim);line-height:1.8;margin-bottom:1rem}
+.game-desc .en{font-size:.82rem;color:var(--ink-mute);font-style:italic;margin-top:.3rem;display:block}
+
+.game-topics{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem}
+.topic-chip{font-size:.7rem;padding:.2rem .6rem;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid var(--panel-border);color:var(--ink-dim)}
+
+.game-footer{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--panel-border)}
+.game-meta{font-size:.72rem;color:var(--ink-mute)}
+.game-meta span{margin-right:.8rem}
+.game-link{font-family:'Cinzel',serif;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;transition:gap .3s}
+.game-card:nth-child(1) .game-link{color:var(--gold-bright)}
+.game-card:nth-child(2) .game-link{color:var(--cyan)}
+.game-card:nth-child(3) .game-link{color:var(--teal)}
+.game-card:nth-child(4) .game-link{color:var(--gold-bright)}
+.game-card:nth-child(5) .game-link{color:var(--leaf)}
+.game-card:nth-child(6) .game-link{color:var(--moon)}
+.game-card:hover .game-link{gap:.6rem}
+
+/* ── FOOTER ── */
+.footer{text-align:center;padding:2.5rem 0 1rem;border-top:1px solid var(--panel-border);margin-top:2rem}
+.footer-verse{font-family:'Amiri',serif;font-size:1.1rem;color:var(--gold-bright);margin-bottom:.3rem}
+.footer-verse-trans{font-size:.82rem;color:var(--ink-mute);margin-bottom:1rem}
+.footer-note{font-size:.72rem;color:var(--ink-mute);line-height:1.7;max-width:440px;margin:0 auto}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .container{padding:1.5rem 1rem 3rem}
+  .game-card{padding:1.5rem}
+  .game-head{flex-direction:column;gap:.6rem}
+  .stats{gap:1.2rem;padding:.8rem}
+  .stat-num{font-size:1.4rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div class="container">
+
+  <!-- ══ HEADER ══ -->
+  <div class="header">
+    <div class="header-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+    <h1 class="header-title">জ্ঞানের প্রাঙ্গণ</h1>
+    <div class="header-sub">The Learning Courtyard</div>
+    <div class="header-quote">
+      "জ্ঞান অর্জন প্রতিটা মুসলিমের উপর ফরজ।"
+      <span class="en">"The seeking of knowledge is obligatory upon every Muslim." — Prophet Muhammad (pbuh)</span>
+    </div>
+  </div>
+
+  <!-- ══ STATS ══ -->
+  <div class="stats">
+    <div class="stat"><div class="stat-num">৬</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">৬৯</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">৬৯০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
+  </div>
+
+  <div class="section-label">📚 ছয়টি যাত্রা — Six Journeys</div>
+
+  <!-- ══ GAME CARDS ══ -->
+  <div class="games-grid">
+
+    <!-- ══ GAME 1: AI ENGINEERING ══ -->
+    <a class="game-card" href="./ai-engineering-game/index.html">
+      <div class="game-head">
+        <div class="game-icon">🤖</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 1 · AI Engineering</div>
+          <div class="game-title">Twenty-Seven Doors of AI Engineering</div>
+          <div class="game-title-bn">কৃত্রিম বুদ্ধিমত্তার সাতাশটি দরজা</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        সাতাশটি দরজা — সাতটি ভিত্তির, পাঁচটি দক্ষতার, পাঁচটি স্রোতের, চারটি নির্মাতার, তিনটি কারিগরি, তিনটি অগ্রিম। প্রতিটা দরজায় একজন শিক্ষক: গল্পবলিয়ে, ক্যালিগ্রাফার, বিচারপতি, চিকিৎসক, মানচিত্রকার, প্রহরী, আয়না নির্মাতা, রত্ন কাটক, কোষাধ্যক্ষ, স্থপতি, বন্দরনায়ক, হাপর কারিগর, মোড়ল, সাক্কা, তাঁতি, সেতু নির্মাতা, বাজপালক, জাহাজ নির্মাতা, স্বর্ণকার, পরিষদের নায়ক, সংযোগের স্থপতি, শুল্ক পরিদর্শক। প্রতেকজন AI ইঞ্জিনিয়ারিং-এর এক একটা রহস্য শেখাবেন। প্রতিটা দরজায় বাস্তব কোড উদাহরণ সহ।
+        <span class="en">Twenty-seven doors across six phases: Foundation (7), Mastery (5), Deep Currents (5), Builder's Quay (4), Master Craftsmanship (3), and Frontier (3). Each door teaches one AI engineering concept through story AND real copy-pasteable Python code — LLMs, prompting, RAG, tools, evals, embeddings, fine-tuning, agents, security, multimodal, tokenization, cost optimization, structured outputs, LLMOps, inference optimization, data chunking, streaming, memory, error handling, advanced RAG, deployment, testing, multi-agent orchestration, MCP, and guardrails.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🤖 LLMs</span>
+        <span class="topic-chip">✍️ Prompting</span>
+        <span class="topic-chip">⚖️ RAG</span>
+        <span class="topic-chip">🔧 Tools</span>
+        <span class="topic-chip">👃 Evals</span>
+        <span class="topic-chip">🧲 Embeddings</span>
+        <span class="topic-chip">🏋️ Fine-tuning</span>
+        <span class="topic-chip">🧭 Agents</span>
+        <span class="topic-chip">🛡️ Security</span>
+        <span class="topic-chip">🎨 Multimodal</span>
+        <span class="topic-chip">🔤 Tokenization</span>
+        <span class="topic-chip">💰 Cost Economics</span>
+        <span class="topic-chip">📐 Structured Output</span>
+        <span class="topic-chip">⚓ LLMOps</span>
+        <span class="topic-chip">🌬️ Inference Opt</span>
+        <span class="topic-chip">🌾 Data Chunking</span>
+        <span class="topic-chip">💧 Streaming</span>
+        <span class="topic-chip">🧵 Memory</span>
+        <span class="topic-chip">🌉 Resilience</span>
+        <span class="topic-chip">🦅 Advanced RAG</span>
+        <span class="topic-chip">🚢 Deployment</span>
+        <span class="topic-chip">⚖️ Testing</span>
+        <span class="topic-chip">🏛️ Multi-Agent</span>
+        <span class="topic-chip">🔌 MCP</span>
+        <span class="topic-chip">🛡️ Guardrails</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 2700 XP</span>
+          <span>🚪 27 Doors</span>
+          <span>👑 28 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 2: DSA BAZAAR ══ -->
+    <a class="game-card" href="./dsa-bazaar/index.html">
+      <div class="game-head">
+        <div class="game-icon">🧮</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 2 · DSA + Code Quality</div>
+          <div class="game-title">The Bazaar of Algorithms</div>
+          <div class="game-title-bn">অ্যালগরিদমের বাজার</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        আটটা দোকান। প্রতিটা দোকানে একজন কারিগর — টালি নির্মাতা, তালা নির্মাতা, মসলা ব্যবসায়ী, তাঁতি, বংশবিদ, গ্রন্থাগারিক, মালি, ক্যালিগ্রাফার। গল্প শোনো, কোড লেখো, ব্রাউজারে চালাও — সব এক সাথে।
+        <span class="en">Eight shops with master craftsmen. Learn data structures through story metaphors AND hands-on Python exercises you run in the browser via Pyodide. Built for AI engineers who need senior-level DSA.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🧱 Arrays</span>
+        <span class="topic-chip">🔑 Hash Maps</span>
+        <span class="topic-chip">🌶️ Heaps</span>
+        <span class="topic-chip">🧵 Graphs</span>
+        <span class="topic-chip">📜 Trees</span>
+        <span class="topic-chip">📚 Binary Search</span>
+        <span class="topic-chip">🌱 Dynamic Prog</span>
+        <span class="topic-chip">📏 Sliding Window</span>
+        <span class="topic-chip">🐍 Live Python</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 800 XP</span>
+          <span>🏪 8 Shops</span>
+          <span>🐍 Python Playground</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 3: ENGINEER JOURNEY ══ -->
+    <a class="game-card" href="./engineer-journey/index.html">
+      <div class="game-head">
+        <div class="game-icon">🏛️</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 3 · Engineer Mindset</div>
+          <div class="game-title">The Court of the Grand Muhandis</div>
+          <div class="game-title-bn">মহাকারিগরের দরবার</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        Hello World থেকে সিনিয়র ইঞ্জিনিয়ার — দশটা কক্ষের যাত্রা। প্রতিটা কক্ষে একজন মাস্টার, প্রতিটা কক্ষে Junior vs Senior তুলনা। First principles, decomposition, trade-offs, debugging, pragmatism — যে নীতিগুলো কোডারকে ইঞ্জিনিয়ারে রূপান্তর করে।
+        <span class="en">From Hello World to Senior Engineer — ten chambers. Each teaches a mindset principle with side-by-side Junior vs Senior comparisons. The skills that separate coders from engineers.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🪨 First Principles</span>
+        <span class="topic-chip">🔨 Decomposition</span>
+        <span class="topic-chip">🎭 Abstraction</span>
+        <span class="topic-chip">⚖️ Trade-offs</span>
+        <span class="topic-chip">🛡️ Resilience</span>
+        <span class="topic-chip">🔍 Debugging</span>
+        <span class="topic-chip">📖 Code Review</span>
+        <span class="topic-chip">🗣️ Communication</span>
+        <span class="topic-chip">🎯 Business Impact</span>
+        <span class="topic-chip">🏛️ Pragmatism</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🏛️ 10 Chambers</span>
+          <span>📈 10 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 4: SYSTEM DESIGN ══ -->
+    <a class="game-card" href="./system-design-game/index.html">
+      <div class="game-head">
+        <div class="game-icon">🏙️</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 4 · System Design</div>
+          <div class="game-title">The City Builder's Codex</div>
+          <div class="game-title-bn">নগরী নির্মাণের দস্তাবেজ</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        একটা সার্ভার থেকে একটা নগরী — System Design-এর আটটা স্থান। প্রতিটা স্থানে একজন নগর কারিগর। ফটক রক্ষক, গোলাঘর সংরক্ষক, সংরক্ষণাগারিক, সংকেত প্রহরী — প্রতেকজন System Design-এর এক একটা রহস্য শেখাবেন।
+        <span class="en">From one server to a city — eight places, eight masters. Learn load balancing, caching, databases, message queues, CAP theorem, API gateways, circuit breakers, and observability through city-building metaphors.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🌐 Load Balancing</span>
+        <span class="topic-chip">💾 Caching</span>
+        <span class="topic-chip">📦 Databases</span>
+        <span class="topic-chip">📡 Message Queues</span>
+        <span class="topic-chip">🛤️ CAP Theorem</span>
+        <span class="topic-chip">🚧 API Gateway</span>
+        <span class="topic-chip">🔄 Circuit Breaker</span>
+        <span class="topic-chip">📊 Observability</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 800 XP</span>
+          <span>🏙️ 8 Places</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 5: LEARN TO LEARN ══ -->
+    <a class="game-card" href="./learn-to-learn/index.html">
+      <div class="game-head">
+        <div class="game-icon">🌱</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 5 · Meta-Learning</div>
+          <div class="game-title">The Seed of Learning</div>
+          <div class="game-title-bn">শিক্ষার বীজ</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        শেখার শিল্প — আটটা বাগানের যাত্রা। প্রতিটা বাগানে একজন মালি। বীজ সংরক্ষক, স্মৃতি তাঁতি, গল্পকার, কারিগর, আয়না নির্মাতা — প্রতেকজন শেখার এক একটা রহস্য জানেন। সবচেয়ে গুরুত্বপূর্ণ দক্ষতা — কীভাবে শিখতে হয়।
+        <span class="en">The art of learning — eight gardens, eight master gardeners. Each teaches one secret of how the brain actually learns. Growth mindset, spaced repetition, Feynman technique, deliberate practice, active recall, interleaving, focus/diffuse, mental models. The most essential skill of all.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🌱 Growth Mindset</span>
+        <span class="topic-chip">🧠 Spaced Repetition</span>
+        <span class="topic-chip">🗣️ Feynman Technique</span>
+        <span class="topic-chip">⚡ Deliberate Practice</span>
+        <span class="topic-chip">🪞 Active Recall</span>
+        <span class="topic-chip">🔀 Interleaving</span>
+        <span class="topic-chip">🎯 Focus/Diffuse</span>
+        <span class="topic-chip">🌳 Mental Models</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 800 XP</span>
+          <span>🌱 8 Gardens</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 6: INTERVIEW PREP ══ -->
+    <a class="game-card" href="./interview-prep-game/index.html">
+      <div class="game-head">
+        <div class="game-icon">⚔️</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 6 · Interview Preparation</div>
+          <div class="game-title">The Arena of Trials</div>
+          <div class="game-title-bn">পরীক্ষার ময়দান</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        ইন্টারভিউ শুরু থেকে শেষ পর্যন্ত — আটটা পরীক্ষার যাত্রা। রিজিউমি, নিজে সম্পর্কে বলা, STAR method, কোডিং প্যাটার্ন, সিস্টেম ডিজাইন, মুখে চিন্তা করা, স্যালারি নেগোশিয়েশন, এবং শেষ প্রশ্ন। কোড জ্ঞান থেকে চাকরি পাওয়া পর্যন্ত।
+        <span class="en">From first impression to final offer — eight trials of the interview. Resume, self-introduction, STAR method, coding patterns, system design, thinking out loud, salary negotiation, and closing questions. From knowing code to getting hired.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">📜 Resume</span>
+        <span class="topic-chip">🗣️ Tell Me About Yourself</span>
+        <span class="topic-chip">⭐ STAR Method</span>
+        <span class="topic-chip">🧩 Coding Patterns</span>
+        <span class="topic-chip">🏗️ System Design</span>
+        <span class="topic-chip">🧠 Thinking Out Loud</span>
+        <span class="topic-chip">💎 Salary Negotiation</span>
+        <span class="topic-chip">🤝 Closing Questions</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 800 XP</span>
+          <span>⚔️ 8 Trials</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <div class="footer">
+    <div class="footer-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+    <div class="footer-verse-trans">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+    <div class="footer-note">
+      তিনটি বই, ত্রিশটি অধ্যায়, এক যাত্রা — শিক্ষানবিশ থেকে কারিগর।<br>
+      <em>Three books, thirty chapters, one journey — from apprentice to craftsman.</em><br><br>
+      প্রতিটা বই সম্পূর্ণ স্বাধীন — যেকোনো ক্রমে পড়তে পারো। তবে সুপারিশ: ৩ → ২ → ১ (mindset → skills → domain)।
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ PARTICLE BACKGROUND ══ -->
+<script>
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+let W,H,particles=[];
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+resize();window.addEventListener('resize',resize);
+const prm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+class P{constructor(){this.reset();this.y=Math.random()*H}
+reset(){this.x=Math.random()*W;this.y=H+10;this.s=Math.random()*2+.5;this.sy=Math.random()*.35+.12;this.sx=(Math.random()-.5)*.15;this.o=Math.random()*.45+.12;this.h=40+Math.random()*140;this.t=Math.random()*6.28}
+update(){this.y-=this.sy;this.x+=this.sx;this.t+=.025;if(this.y<-10)this.reset()}
+draw(){const f=Math.sin(this.t)*.3+.7;ctx.beginPath();ctx.arc(this.x,this.y,this.s,0,6.28);ctx.fillStyle=`hsla(${this.h},65%,60%,${this.o*f})`;ctx.shadowBlur=5;ctx.shadowColor=`hsla(${this.h},65%,60%,${this.o*.4})`;ctx.fill()}}
+for(let i=0;i<55;i++)particles.push(new P());
+(function loop(){ctx.clearRect(0,0,W,H);if(!prm)particles.forEach(p=>{p.update();p.draw()});else particles.forEach(p=>p.draw());requestAnimationFrame(loop)})();
+</script>
+
+</body>
+</html>

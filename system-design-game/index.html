@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>নগরী নির্মাণের দস্তাবেজ — The City Builder's Codex</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<!-- ══ TITLE ══ -->
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">নগরী নির্মাণের দস্তাবেজ</h1>
+  <div class="title-sub">The City Builder's Codex</div>
+  <div class="title-desc">
+    একটা সার্ভার থেকে একটা নগরী — System Design-এর আটটা স্থান।<br>
+    প্রতিটা স্থানে একজন নগর কারিগর। প্রতেকজন System Design-এর এক একটা রহস্য শেখাবেন।<br><br>
+    <em>From one server to a city — eight places, eight masters of System Design.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🚀 নির্মাণ শুরু করো</button>
+</div>
+
+<!-- ══ PROLOGUE ══ -->
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">নগর নির্মাতার যাত্রা — The Builder's Journey</div>
+    <p>তুমি একটা অ্যাপ বানাতে পারো। একটা সার্ভার, একটা ডেটাবেস, কিছু API। কাজ হয়। কিন্তু যখন ইউজার বাড়ে — ১০ থেকে ১০,০০০, ১০,০০০ থেকে ১০ লাখ — সব ভেঙে পড়ে। সার্ভার থামে, ডেটাবেস হাঁপায়, ইউজার অপেক্ষা করে, তারপর চলে যায়।</p>
+    <p class="en">You can build an app. One server, one database, some APIs. It works. But when users grow — 10 to 10,000, 10,000 to a million — everything breaks. Server stops, database gasps, users wait, then leave.</p>
+    <hr class="p-divider">
+    <p>একটা শহরও এভাবে শুরু হয় — একটা বাড়ি, একটা কুয়ো, একটা পথ। কিন্তু যখন মানুষ আসে — হাজার, লাখ, কোটি — তখন দরকার: ফটক যেখানে ভিড় সামলাবে, গোলাঘর যেখানে শস্য সংরক্ষিত থাকবে, সংরক্ষণাগার যেখানে নথি সাজানো, দূত যারা একে অপরের সাথে কথা বলবে না বৈঠক ছাড়া। এটাই System Design — একটা গ্রামকে নগরীতে রূপান্তর করা।</p>
+    <p class="en">A city starts the same way — one house, one well, one road. But when people come — thousands, millions — you need: gates to manage crowds, granaries to store provisions, archives for organized records, couriers who communicate without all meeting. This IS system design — transforming a village into a city.</p>
+    <hr class="p-divider">
+    <p>একদিন তুমি শুনলে — প্রাচীন নগর নির্মাতাদের একটা দস্তাবেজ আছে। আটটা স্থান। প্রতিটা স্থানে একজন মাস্টার: ফটক রক্ষক, গোলাঘর সংরক্ষক, সংরক্ষণাগারিক, সংকেত প্রহরী, চৌরাস্তার মানচিত্রকার, শুল্ক আদায়ক, ঝড় প্রহরী, এবং মানচিত্রকার। প্রতেকজন এক একটা System Design-এর রহস্য জানেন।</p>
+    <p class="en">One day you heard — the ancient city builders left a codex. Eight places. Each with a master: gate keeper, granary keeper, archivist, signal watcher, crossroads cartographer, customs collector, storm watcher, and the mapmaker. Each knows one secret of system design.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 দস্তাবেজ খোলো</button></div>
+  </div>
+</div>
+
+<!-- ══ MAP ══ -->
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🛖</span><span id="hud-rank-name">গ্রাম কারিগর</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 800 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>স্থান বেছে নাও</h2><p>প্রতিটা স্থান ক্রমানুসারে খোলে। গল্প পড়ো, কোড দেখো, শেখো।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<!-- ══ STORY ══ -->
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← মানচিত্রে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<!-- ══ COMPLETION ══ -->
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">👑</div>
+  <h1 class="complete-title">তুমি এখন নগরী নির্মাতা</h1>
+  <p class="complete-text">আটটা স্থান পেরিয়েছ। আটটা System Design-এর রহস্য আয়ত্ত করেছ।<br><br>Load Balancing, Caching, Databases, Message Queues, CAP Theorem, API Gateway, Resilience, Observability।<br><br>এখন তুমি জানো — একটা গ্রামকে কীভাবে নগরীতে রূপান্তর করতে হয়।<br><strong>এটাই System Design।</strong></p>
+  <div class="complete-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা করো</button>
+  <div class="cheat-section-end"><h3>📋 System Design চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<!-- ══ XP POPUP ══ -->
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">স্থান সম্পন্ন!</span></div>
+
+<!-- ══ CHEAT MODAL ══ -->
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 System Design চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<!-- ══ SCRIPTS ══ -->
+<script src="doors-1-4.js"></script>
+<script src="doors-5-8.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>

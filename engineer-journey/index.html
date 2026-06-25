@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>মহাকারিগরের দরবার — The Court of the Grand Muhandis</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<!-- ══ TITLE ══ -->
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">মহাকারিগরের দরবার</h1>
+  <div class="title-sub">The Court of the Grand Muhandis</div>
+  <div class="title-desc">
+    Hello World থেকে সিনিয়র ইঞ্জিনিয়ার — দশটা কক্ষের যাত্রা।<br>
+    প্রতিটা কক্ষে একজন মাস্টার কারিগর। প্রতেকজন এক একটা নীতি শেখাবেন —<br>
+    যে নীতি শিক্ষানবিশকে সিনিয়রে রূপান্তর করে।<br><br>
+    <em>From Hello World to Senior Engineer — a journey through ten chambers.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🚀 যাত্রা শুরু করো</button>
+</div>
+
+<!-- ══ PROLOGUE ══ -->
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">কারিগরের যাত্রা — The Apprentice's Journey</div>
+
+    <p>তুমি কোড লিখতে পারো। "Hello World" অনেক আগেই পার হয়েছ। তুমি জানো Python, JavaScript, হয়তো SQL। কিন্তু একটা প্রশ্ন তোমাকে কুরে কুরে খাচ্ছে — "আমি কি সত্যিই ইঞ্জিনিয়ার? নাকি শুধু কোডার?"</p>
+    <p class="en">You can write code. "Hello World" was long ago. You know Python, JavaScript, maybe SQL. But a question gnaws at you — "Am I really an engineer? Or just a coder?"</p>
+
+    <hr class="p-divider">
+
+    <p>পার্থক্য কী? একটা কোডার টিকেট পায়, কোড লেখে, শেষ। একটা ইঞ্জিনিয়ার সমস্যা বোঝে, বিকল্প চিন্তা করে, trade-off বোঝে, ভাঙা ধরেই ডিজাইন করে, অন্যকে শেখায়। কোডার "কীভাবে" জিজ্ঞেস করে। ইঞ্জিনিয়ার "কেন" জিজ্ঞেস করে।</p>
+    <p class="en">What's the difference? A coder gets a ticket, writes code, done. An engineer understands the problem, considers alternatives, understands trade-offs, designs for failure, teaches others. A coder asks "how." An engineer asks "why."</p>
+
+    <hr class="p-divider">
+
+    <p>একদিন তুমি শুনলে — শহরের প্রাচীনতম অংশে একটা দরবার আছে। মহাকারিগরের দরবার। দশটা কক্ষ। প্রতিটা কক্ষে একজন মাস্টার। প্রথম পাঁচটা — ভিত্তির কক্ষ: First Principles, Decomposition, Abstraction, Trade-offs, Resilience। পরের পাঁচটা — দক্ষতার কক্ষ: Debugging, Reading Code, Communication, Business Impact, Pragmatism। দশম কক্ষে আছে সবচেয়ে বড় সত্য।</p>
+    <p class="en">One day you heard — in the oldest quarter of the city, there's a court. The Court of the Grand Muhandis. Ten chambers. Each with a master. First five — Foundation Chambers: First Principles, Decomposition, Abstraction, Trade-offs, Resilience. Next five — Mastery Chambers: Debugging, Reading Code, Communication, Business Impact, Pragmatism. The tenth chamber holds the greatest truth.</p>
+
+    <div style="text-align:center;margin-top:2rem">
+      <button class="start-btn" onclick="startMap()">🚪 দরবারে প্রবেশ করো</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAP ══ -->
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🌱</span><span id="hud-rank-name">শিক্ষানবিশ</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap">
+      <div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div>
+      <div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div>
+    </div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header">
+    <h2>কক্ষ বেছে নাও</h2>
+    <p>প্রতিটা কক্ষ ক্রমানুসারে খোলে। প্রথম পাঁচটি ভিত্তি — পরের পাঁচটি দক্ষতা।</p>
+  </div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<!-- ══ STORY ══ -->
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← দরবারে ফিরে যাও</button> <a href="../index.html" style="font-size:.75rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<!-- ══ COMPLETION ══ -->
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">👑</div>
+  <h1 class="complete-title">তুমি এখন মহাকারিগর</h1>
+  <p class="complete-text">
+    দশটা কক্ষ পেরিয়েছ। দশটা নীতি আয়ত্ত করেছ।<br><br>
+    First Principles, Decomposition, Abstraction, Trade-offs, Resilience।<br>
+    Debugging, Reading, Communication, Business Impact, Pragmatism।<br><br>
+    এখন তুমি জানো — সিনিয়র ইঞ্জিনিয়ার মানে কোড জানা নয়।<br>
+    সিনিয়র মানে — সঠিক প্রশ্ন করা, সঠিক আপস করা, সঠিক সময়ে সঠিক কাজ।<br><br>
+    <strong>কিন্তু সবচেয়ে গুরুত্বপূর্ণ — তুমি এখন শেখাতে পারো। কারণ শেখানোই শেখার সর্বোচ্চ রূপ।</strong>
+  </p>
+  <div class="complete-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.95rem;color:var(--ink-dim);margin-bottom:1.5rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা করো</button>
+  <div class="cheat-section-end">
+    <h3>📋 সিনিয়র ইঞ্জিনিয়ার চিটশিট</h3>
+    <div class="cheat-grid" id="cheat-grid-end"></div>
+  </div>
+</div>
+
+<!-- ══ XP POPUP ══ -->
+<div class="xp-popup" id="xp-popup">
+  <span class="xp-amount" id="xp-amount">+100 XP</span>
+  <span class="xp-label">কক্ষ সম্পন্ন!</span>
+</div>
+
+<!-- ══ CHEAT MODAL ══ -->
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner">
+    <div class="cheat-modal-head">
+      <h3>📋 সিনিয়র নীতিসমূহ</h3>
+      <button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button>
+    </div>
+    <div class="cheat-grid" id="cheat-modal-grid"></div>
+    <p style="text-align:center;color:var(--ink-mute);font-size:.9rem;padding:1rem 0" id="cheat-modal-empty"></p>
+  </div>
+</div>
+
+<!-- ══ SCRIPTS ══ -->
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>কৃত্রিম বুদ্ধিমত্তার সাতাশটি দরজা — Twenty-Seven Doors of AI Engineering</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<!-- ══ TITLE ══ -->
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">কৃত্রিম বুদ্ধিমত্তার<br>সাতাশটি দরজা</h1>
+  <div class="title-sub">Twenty-Seven Doors of AI Engineering</div>
+  <div class="title-quote">
+    "একটা মেশিন শত শত বিলিয়ন শব্দ পড়েছে। কিন্তু সে একটাও বুঝতে পারে না — যদি না তুমি তাকে সঠিকভাবে জিজ্ঞেস করো। প্রকৌশল হলো সেই প্রশ্ন করার শিল্প।"<br><br>
+    — বারো দরজার প্রবক্তা
+  </div>
+  <button class="start-btn" onclick="startGame()">🚀 যাত্রা শুরু করো</button>
+</div>
+
+<!-- ══ PROLOGUE ══ -->
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">প্রকৌশলীর যাত্রা — The Engineer's Journey</div>
+
+    <p>তুমি শুনেছ সবাই বলছে — "AI দিয়ে সব করা যায়।" তুমি ChatGPT খুলেছ, প্রশ্ন করেছ। কখনো দারুণ উত্তর পেয়েছ। কখনো সম্পূর্ণ ভুল। তুমি ভেবেছ — হয়তো AI ত্রুটিপূর্ণ, নাহয় তুমি ভুল প্রশ্ন করেছ। কিন্তু সত্যিটা হলো — তুমি যন্ত্রটা বোঝো না।</p>
+    <p class="en">You've heard everyone say — "AI can do everything." You opened ChatGPT, asked questions. Sometimes brilliant answers. Sometimes completely wrong. You thought — either AI is flawed, or you asked wrong. But the truth is — you don't understand the machine.</p>
+
+    <hr class="p-divider">
+
+    <p>তুমি জানো না AI কীভাবে কাজ করে। সে কি ডাটাবেস? সে কি সত্য বলে? সে কেন মাঝে মাঝে আত্মবিশ্বাসের সাথে ভুল বলে? কেন কখনো পুরনো তথ্য দেয়? কেন গণিতে দুর্বল?</p>
+    <p class="en">You don't know how AI works. Is it a database? Does it tell the truth? Why does it sometimes say wrong things with confidence? Why does it give outdated information? Why is it weak at math?</p>
+
+    <hr class="p-divider">
+
+    <p>একদিন তুমি শুনলে — শহরের বাইরে একটা পাহাড়ে দরজা আছে। পাহাড়ে সাতটা দরজা — ভিত্তির দরজা। কিন্তু সেই সাতটার পরে, পাহাড়ের ওপারে, আরও পাঁচটা দরজা — দক্ষতার দরজা। আর দক্ষতার পরে — সমুদ্রের গভীরে, স্রোতের তলায় — আরও পাঁচটা দরজা। স্রোতের দরজা। আর স্রোতের পরে — তীরে ফিরে — একটা ঘাটে — আরও চারটা দরজা। নির্মাতার দরজা। আর নির্মাতার পরে — নগরে প্রবেশ করলে — আরও তিনটা দরজা। কারিগরি দরজা। আর কারিগরির পরে — সীমানার বাইরে — আরও তিনটা দরজা। অগ্রিম দরজা। কারণ বোঝা এক জিনিস, বানানো আরেক জিনিস, নিখুঁত করা আরও কঠিন, আর ভবিষ্যতের দিকে তাকানো সবচেয়ে গভীর। প্রতিটা দরজায় একজন শিক্ষক। সাতাশতম দরজায় আছে সবচেয়ে বড় সত্য।</p>
+    <p class="en">One day you heard — beyond the city, on a mountain, are doors. Seven Foundation Doors. Beyond those, five Mastery Doors. Beyond mastery — five Deep Currents Doors. After the currents — four Builder's Doors. After building — three Master Craftsmanship Doors. And after mastery of craft — three Frontier Doors, beyond the edge of what exists today. Because understanding is one thing, building another, perfecting harder still, and looking toward the future is the deepest of all. Behind each, a teacher. The twenty-seventh door holds the greatest truth.</p>
+
+    <p>তুমি উঠে দাঁড়ালে। হাঁটতে শুরু করলে। কারণ তুমি বুঝতে পেরেছ — AI শুধু একটা যন্ত্র নয়। এটা নতুন এক যুগের ভাষা। এই ভাষা না শিখলে তুমি পিছিয়ে থাকবে।</p>
+    <p class="en">You stood up. Began to walk. Because you understand — AI is not just a tool. It's the language of a new era. Without learning it, you'll be left behind.</p>
+
+    <div style="text-align:center;margin-top:2rem">
+      <button class="start-btn" onclick="startMap()">⛰ পাহাড়ে উঠতে শুরু করো</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAP ══ -->
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🔰</span><span id="hud-rank-name">প্রশিক্ষণার্থী</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap">
+      <div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div>
+      <div class="hud-xp-text" id="hud-xp-text">0 / 2700 XP</div>
+    </div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn danger" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header">
+    <h2>নির্বাচন করো তোমার পথ</h2>
+    <p>দরজা ক্রমানুসারে খোলে। সাতটি ভিত্তি, পাঁচটি দক্ষতা, পাঁচটি স্রোত, চারটি নির্মাণ, তিনটি কারিগরি, তিনটি অগ্রিম।</p>
+  </div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<!-- ══ STORY ══ -->
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← ফিরে যাও</button> <a href="../index.html" style="font-size:.75rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<!-- ══ COMPLETION ══ -->
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">👑</div>
+  <h1 class="complete-title">তুমি এখন প্রকৌশলী</h1>
+  <p class="complete-text">
+    তুমি সাতাশটি দরজা অতিক্রম করেছ। সাতাশটি রহস্য আয়ত্ত করেছ।<br><br>
+    ভিত্তির সাত দরজা — গল্পবলিয়ে, ক্যালিগ্রাফার, রাষ্ট্রদূত, বিচারপতি, চিকিৎসক, সুগন্ধি, প্রকৌশলী।<br>
+    দক্ষতার পাঁচ দরজা — মানচিত্রকার, কারিগর, কাফেলা প্রধান, প্রহরী, আয়না নির্মাতা।<br>
+    স্রোতের পাঁচ দরজা — রত্ন কাটক, কোষাধ্যক্ষ, স্থপতি, বন্দরনায়ক, হাপর কারিগর।<br>
+    নির্মাতার চার দরজা — মোড়ল, সাক্কা, তাঁতি, সেতু নির্মাতা।<br>
+    কারিগরি তিন দরজা — বাজপালক, জাহাজ নির্মাতা, স্বর্ণকার।<br>
+    অগ্রিম তিন দরজা — পরিষদের নায়ক, সংযোগের স্থপতি, শুল্ক পরিদর্শক।<br><br>
+    এখন তুমি জানো — AI জেনারেটর, ডাটাবেস নয়। কীভাবে প্রশ্ন করতে হয়, প্রসঙ্গ দিতে হয়, সাক্ষ্য আনতে হয়।<br>
+    কখন টুল দিতে হয়, কীভাবে যাচাই করতে হয়, ব্যবস্থা গড়তে হয়।<br>
+    অর্থ কীভাবে মাপার স্থানে বসাতে হয়, কখন মডেল নিজেকে বদলাতে হয়।<br>
+    কাফেলা কীভাবে চালাতে হয়, শত্রু থেকে কীভাবে রক্ষা করতে হয়, চোখ-কান কীভাবে দিতে হয়।<br>
+    মেশিনের ভেতরের কারিগরি, খরচের হিসাব, কাঠামোর নকশা, দক্ষতার শিল্প।<br>
+    উপাদান কীভাবে প্রস্তুত করতে হয়, উত্তর কীভাবে পৌঁছে দিতে হয়, স্মৃতি কীভাবে টিকিয়ে রাখতে হয়।<br>
+    সঠিক তথ্য কীভাবে আরও সঠিক করে বের করতে হয়, মডেল সার্ভারে কীভাবে বসাতে হয়,<br>
+    সব মিলিয়ে কীভাবে যাচাই করতে হয় যে সব ঠিক আছে।<br>
+    এবং এখন — একাধিক এজেন্ট কীভাবে সমন্বয় করতে হয়, সব টুল এক স্ট্যান্ডার্ডে কীভাবে যুক্ত করতে হয়,<br>
+    আর প্রতিটা শব্দ কীভাবে রক্ষা করতে হয় — ভেতরে ও বাইরে।<br><br>
+    <strong>কিন্তু সবচেয়ে বড় কথা — তুমি জানো কেন।</strong>
+  </p>
+  <div class="complete-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+  <div class="complete-verse-trans">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()" style="margin-top:1rem">↻ আবার খেলো</button>
+  <div style="margin-top:2rem;width:100%;max-width:800px">
+    <div class="cheat-section-end">
+      <h3>📋 স্মরণের চিটশিট — AI Engineering Cheat Sheet</h3>
+      <div class="cheat-grid" id="cheat-grid-end"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ XP POPUP ══ -->
+<div class="xp-popup" id="xp-popup">
+  <span class="xp-amount" id="xp-amount">+100 XP</span>
+  <span class="xp-label">দরজা সম্পন্ন!</span>
+</div>
+
+<!-- ══ CHEAT MODAL ══ -->
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner">
+    <div class="cheat-modal-head">
+      <h3>📋 স্মরণের চিটশিট</h3>
+      <button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button>
+    </div>
+    <div class="cheat-grid" id="cheat-modal-grid"></div>
+    <p class="cheat-empty" id="cheat-modal-empty"></p>
+  </div>
+</div>
+
+<!-- ══ SCRIPTS (order matters) ══ -->
+<script src="doors-part1.js"></script>
+<script src="doors-part2.js"></script>
+<script src="doors-part3.js"></script>
+<script src="doors-part4.js"></script>
+<script src="doors-part5.js"></script>
+<script src="doors-part6.js"></script>
+<script src="doors-part7.js"></script>
+<script src="doors-part8.js"></script>
+<script src="doors-part9.js"></script>
+<script src="doors-part10.js"></script>
+<script src="doors-part11.js"></script>
+<script src="doors-part12.js"></script>
+<script src="doors-part13.js"></script>
+<script src="doors-part14.js"></script>
+<script src="doors-part15.js"></script>
+<script src="examples-part1.js"></script>
+<script src="examples-part2.js"></script>
+<script src="examples-part3.js"></script>
+<script src="bridges-part1.js"></script>
+<script src="bridges-part2.js"></script>
+<script src="bridges-part3.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>

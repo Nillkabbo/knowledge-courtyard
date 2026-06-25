@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>পরীক্ষার ময়দান — The Arena of Trials</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">পরীক্ষার ময়দান</h1>
+  <div class="title-sub">The Arena of Trials</div>
+  <div class="title-desc">
+    ইন্টারভিউ শুরু থেকে শেষ পর্যন্ত — আটটা পরীক্ষার যাত্রা।<br>
+    প্রতিটা পরীক্ষায় একজন মাস্টার। প্রতেকজন ইন্টারভিউয়ের এক একটা রহস্য শেখাবেন।<br><br>
+    <em>From first impression to final offer — eight trials, eight masters of the interview.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">⚔️ ময়দানে প্রবেশ করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">প্রতিযোগীর যাত্রা — The Challenger's Journey</div>
+    <p>তুমি কোড লিখতে পারো। সিস্টেম ডিজাইন করতে পারো। কিন্তু একটা ইন্টারভিউতে বসলে — সব ভুলে যাও। হাত কাঁপে। মুখ শুকিয়ে যায়। মাথায় ফাঁকা। কেন?</p>
+    <p class="en">You can write code. You can design systems. But sitting in an interview — everything vanishes. Hands shake. Mouth goes dry. Mind goes blank. Why?</p>
+    <hr class="p-divider">
+    <p>কারণ ইন্টারভিউ শুধু জ্ঞান পরীক্ষা নয় — এটা পারফরম্যান্স। একটা কোডার আর একটা চাকরি পাওয়া কোডারের পার্থক্য শুধু দক্ষতায় নয় — প্রস্তুতিতে। কীভাবে নিজেকে উপস্থাপন করতে হয়, কীভাবে চিন্তা প্রকাশ্যে করতে হয়, কীভাবে চাপে শান্ত থাকতে হয়।</p>
+    <p class="en">Because an interview isn't just a knowledge test — it's a performance. The difference between a coder and a hired coder isn't just skill — it's preparation. How to present yourself, how to think out loud, how to stay calm under pressure.</p>
+    <hr class="p-divider">
+    <p>একদিন তুমি শুনলে — প্রাচীন নগরে একটা ময়দান আছে। আটটা পরীক্ষা। প্রতিটা পরীক্ষায় একজন মাস্টার: নথিপত্রকার, ঘোষক, বিচারক, ধাঁধা নিপুণ, স্থপতি, পণ্ডিত, বণিক, দরোয়ান। প্রতেকজন ইন্টারভিউয়ের এক একটা রহস্য জানেন।</p>
+    <p class="en">One day you heard — in the ancient city, there's an arena. Eight trials. Each with a master: scribe, herald, judge, puzzle master, architect, scholar, merchant, gatekeeper. Each knows one secret of the interview.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 ময়দানে ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">⚔️</span><span id="hud-rank-name">প্রতিযোগী</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 800 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>পরীক্ষা বেছে নাও</h2><p>প্রতিটা পরীক্ষা ক্রমানুসারে খোলে। প্রস্তুতি শুরু করো।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← ময়দানে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🏆</div>
+  <h1 class="complete-title">তুমি এখন প্রস্তুত</h1>
+  <p class="complete-text">আটটা পরীক্ষা পেরিয়েছ। আটটা ইন্টারভিউ রহস্য আয়ত্ত করেছ।<br><br>Resume, Tell Me About Yourself, STAR Method, Coding Patterns, System Design, Thinking Out Loud, Salary Negotiation, Closing Questions।<br><br>এখন তুমি জানো — শুধু কোড নয়, পারফরম্যান্সও জরুরি।<br><strong>যাও, ময়দানে নামো। তুমি প্রস্তুত।</strong></p>
+  <div class="complete-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার প্রস্তুতি নাও</button>
+  <div class="cheat-section-end"><h3>📋 ইন্টারভিউ চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">পরীক্ষা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 ইন্টারভিউ চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-4.js"></script>
+<script src="doors-5-8.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
