@@ -44,6 +44,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(4)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--teal))}
 .game-card:nth-child(5)::before{background:linear-gradient(90deg,var(--leaf),var(--gold-bright),var(--leaf))}
 .game-card:nth-child(6)::before{background:linear-gradient(90deg,var(--moon),var(--gold-bright),var(--fire))}
+.game-card:nth-child(7)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -58,6 +59,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(4) .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
 .game-card:nth-child(5) .game-tag{background:rgba(82,196,26,.12);color:var(--leaf)}
 .game-card:nth-child(6) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
+.game-card:nth-child(7) .game-tag{background:rgba(179,127,235,.12);color:var(--purple)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -77,6 +79,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(4) .game-link{color:var(--gold-bright)}
 .game-card:nth-child(5) .game-link{color:var(--leaf)}
 .game-card:nth-child(6) .game-link{color:var(--moon)}
+.game-card:nth-child(7) .game-link{color:var(--purple)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -116,13 +119,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">৬</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">৬৯</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">৬৯০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">৭</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">৬২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">৬২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 ছয়টি যাত্রা — Six Journeys</div>
+  <div class="section-label">📚 সাতটি যাত্রা — Seven Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -345,6 +348,40 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 800 XP</span>
           <span>⚔️ 8 Trials</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 7: DEEP LEARNING ══ -->
+    <a class="game-card" href="./deep-learning/index.html">
+      <div class="game-head">
+        <div class="game-icon">🔮</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 7 · Deep Learning Science</div>
+          <div class="game-title">The Council of Deep Knowledge</div>
+          <div class="game-title-bn">গভীর জ্ঞানের সভা</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        দ্রুত শেখার বাইরে — গভীর শেখার আটটি স্তর। মনোযোগ অর্থনীতি, ২০ ঘণ্টা বনাম ১০,০০০ ঘণ্টা, Dunning-Kruger effect, ফিডব্যাক লুপ, জ্ঞান × কর্ম = শক্তি, আনলেয়ার্ন-লার্ন-রিলেয়ার্ন, স্পেসড রিপিটিশন + অ্যাক্টিভ রিকল, এবং মেটাকগনিশন।
+        <span class="en">Beyond fast learning — eight layers of deep knowledge. A critical analysis of "how to learn fast" videos: what they get right, what they oversimplify, and what they miss entirely. Attention economics, three milestones of mastery, illusion of competence, feedback loops, knowledge × action = power, unlearn-learn-relearn, spaced repetition + active recall, and metacognition.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🧭 Attention Economy</span>
+        <span class="topic-chip">⚖️ 20h vs 10000h</span>
+        <span class="topic-chip">🪞 Dunning-Kruger</span>
+        <span class="topic-chip">🔁 Feedback Loop</span>
+        <span class="topic-chip">⚡ Knowledge × Action</span>
+        <span class="topic-chip">🔄 Unlearn &amp; Relearn</span>
+        <span class="topic-chip">🌊 Spaced Repetition</span>
+        <span class="topic-chip">🧠 Metacognition</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 800 XP</span>
+          <span>🔮 8 Seats</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>গভীর জ্ঞানের সভা — The Council of Deep Knowledge</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">গভীর জ্ঞানের সভা</h1>
+  <div class="title-sub">The Council of Deep Knowledge</div>
+  <div class="title-desc">
+    দ্রুত শেখার বাইরে — গভীর শেখার আটটি স্তর।<br>
+    প্রতিটা আসনে একজন প্রবীণ। প্রতেকজন জ্ঞানের এক একটা গভীর রহস্য জানেন।<br><br>
+    <em>Beyond fast learning — the eight layers of deep knowledge. Each elder knows one secret that separates surface knowing from permanent understanding.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🔮 সভায় প্রবেশ করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">শিক্ষার্থীর সংশয় — The Learner's Doubt</div>
+    <p>তুমি শুনেছ "২০ ঘণ্টায় যেকোনো কিছু শেখা যায়।" তুমি চেষ্টা করেছ। কিছু শিখেছ। কিন্তু কয়েক সপ্তাহ পর — ভুলে গেছ। বা শিখেছ বলে মনে হয়েছে, কিন্তু প্রয়োগ করতে গেলে — ফাঁকা। কেন?</p>
+    <p class="en">You heard "20 hours to learn anything." You tried. Learned something. But weeks later — forgotten. Or you thought you learned, but applying it — blank. Why?</p>
+    <hr class="p-divider">
+    <p>কারণ "দ্রুত শেখা" একটা শক্তিশালী শুরু — কিন্তু সেটাই গন্তব্য নয়। ২০ ঘণ্টা পরে তুমি যা শিখেছ তার অর্ধেকও বোঝো না — Dunning-Kruger effect। তথ্যের যুগে সবচেয়ে দুর্লভ সম্পদ জ্ঞান নয় — মনোযোগ। আর জ্ঞান শক্তি নয় — জ্ঞান গুণফল কর্মের সাথে। এই সভায় আটজন প্রবীণ তোমাকে গভীরে নিয়ে যাবেন।</p>
+    <p class="en">Because "fast learning" is a powerful start — but it's not the destination. After 20 hours you don't even understand half of what you learned — the Dunning-Kruger effect. In the information age, the rarest resource isn't knowledge — it's attention. And knowledge isn't power — knowledge multiplied by action is. In this council, eight elders take you deeper.</p>
+    <hr class="p-divider">
+    <p>একদিন তুমি শুনলে — পাহাড়ের চূড়ায় একটা প্রাচীন সভা বসে। আটজন প্রবীণ — বাতিকর, মাইলফলক রক্ষক, ডুবুরি, আয়না নির্মাতা, সেতু নির্মাতা, কুমার, জোয়ার পর্যবেক্ষক, মনের প্রহরী। প্রতেকজন গভীর জ্ঞানের এক একটা স্তর জানেন।</p>
+    <p class="en">One day you heard — atop the mountain sits an ancient council. Eight elders — the lighthouse keeper, the milestone guardian, the deep diver, the mirror maker, the bridge builder, the potter, the tide watcher, the mind watcher. Each knows one layer of deep knowledge.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 সভায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🔮</span><span id="hud-rank-name">শিষ্য</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 800 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>আসন বেছে নাও</h2><p>প্রতিটা আসন ক্রমানুসারে খোলে। গভীরে যাও।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← সভায় ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🌌</div>
+  <h1 class="complete-title">তুমি এখন গভীর জ্ঞানের অধিকারী</h1>
+  <p class="complete-text">আটটা আসন পেরিয়েছ। আটটা গভীর জ্ঞানের রহস্য আয়ত্ত করেছ।<br><br>মনোযোগ, তিন স্তরের দক্ষতা, বিভ্রম ভাঙা, ফিডব্যাক লুপ, জ্ঞান × কর্ম, আনলেয়ার্ন, স্পেসড রিপিটিশন + অ্যাক্টিভ রিকল, মেটাকগনিশন।<br><br>এখন তুমি জানো — দ্রুত শেখা শুরু, গভীর শেখা গন্তব্য।<br><strong>জ্ঞান × কর্ম = প্রকৃত ক্ষমতা।</strong></p>
+  <div class="complete-verse">رَبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার সভায় বসো</button>
+  <div class="cheat-section-end"><h3>📋 গভীর জ্ঞান চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">আসন সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 গভীর জ্ঞান চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-4.js"></script>
+<script src="doors-5-8.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
