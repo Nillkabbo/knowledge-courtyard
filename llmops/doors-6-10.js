@@ -1,0 +1,798 @@
+// ════════════════════════════════════════
+// নিয়ন্ত্রণ কেন্দ্র — DOORS 6-10
+// LLMOps: Latency → Architecture
+// ════════════════════════════════════════
+
+// ══ DOOR 6: LATENCY OPTIMIZATION ══
+doors.push({
+  num:6, icon:"⚡", color:"#22d3ee", name:"বেগ কক্ষ",
+  subtitle:"The Speed Chamber", tech:"Latency Optimization",
+  spirit:"সরি'আহ — দ্রুততা, তাৎক্ষণিকতা",
+  secret:"User ৩ সেকেন্ডের বেশি অপেক্ষা করে না। TTFT, TPOT, streaming, speculative decoding, prefix caching — প্রতিটা কৌশল latency কমায়। Streaming = perceived latency কমায় (user দ্রুত দেখে)। যে দ্রুত, সে জেতে।",
+  recall:{
+    q:"বেগ কক্ষে কেন সবাই দ্রুত কাজ করতে চায়?",
+    qen:"Why does everyone want to work fast in the speed chamber?",
+    a:"কারণ ধীর = ইউজার চলে যায়। ৩ সেকেন্ডের বেশি = হারানো। Streaming, prefix caching, speculative decoding — latency কমায়। যে দ্রুত, সে জেতে। সরি'আহ — দ্রুততা।",
+    aen:"Because slow = users leave. More than 3 seconds = lost. Streaming, prefix caching, speculative decoding — reduce latency. One who is fast, wins. Sariah — speed."
+  },
+  story:`
+<p class="scene-setting">ষষ্ঠ কেন্দ্র। বেগ কক্ষ। সবাই দ্রুত কাজ করছে — কেউ ছুটছে, কেউ লাফ দিচ্ছে, কেউ শর্টকাট নিচ্ছে। "ধীর = মৃত্যু," প্রকৌশলী ফারহান বললেন। "ইউজার ৩ সেকেন্ডের বেশি অপেক্ষা করে না। ChatGPT কেন জনপ্রিয়? দ্রুত। আমাদেরও দ্রুত হতে হবে। Streaming, caching, optimization — প্রতিটা কৌশল।"</p>
+<p class="scene-setting en">The sixth center. Speed chamber. Everyone working fast — running, jumping, taking shortcuts. "Slow = death," Engineer Farhan said. "Users won't wait more than 3 seconds. Why is ChatGPT popular? Fast. We must be fast too. Streaming, caching, optimization — each technique."</p>
+
+<div class="dialogue">বাজেট কক্ষ বলেছিলেন — খরচ কমাও। কিন্তু আমি বলি — খরচ কমানো শুধু একটা দিক। আরেকটা দিক — latency। ইউজার ধৈর্য ধরে না। ৩ সেকেন্ড পরে চলে যায়। Latency কমানো = ইউজার ধরে রাখা। এটাই প্রোডাকশনে টিকে থাকার চাবি।</div>
+<div class="dialogue en">"The budget chamber said — reduce cost. But I say — reducing cost is one side. The other — latency. Users aren't patient. They leave after 3 seconds. Reducing latency = retaining users. This is the key to surviving in production."</div>
+
+<div class="code-block">Latency Optimization — Every Millisecond Counts:
+
+LLM LATENCY ANATOMY:
+
+  Total latency = TTFT + (output_tokens × TPOT)
+  
+  TTFT (Time To First Token):
+    → prompt processing + first token generation
+    → typical: ২০০-১০০০ms
+    → this is what user "feels" as "thinking time"
+  
+  TPOT (Time Per Output Token):
+    → time to generate each subsequent token
+    → typical: ২০-১০০ms/token
+    → ৫০০ tokens × ৪০ms = ২০s (long!)
+  
+  Perceived latency (with streaming):
+    → user sees TTFT as "response starting"
+    → rest streams in → feels faster
+
+OPTIMIZATION STRATEGIES:
+
+১. STREAMING (biggest perceived win!)
+  → প্রতিটা token তৈরি হওয়ামাত্র পাঠাও
+  → user দ্রুত দেখে শুরু
+  → perceived latency = TTFT (not total)
+  
+  Without streaming: user waits ২s → sees all
+  With streaming: user sees first token at ২০০ms
+  
+  SSE (Server-Sent Events):
+    response = client.stream_chat(messages)
+    for chunk in response:
+      print(chunk, end="", flush=True)
+  
+  → ChatGPT, Claude — সব streaming ব্যবহার করে
+
+২. PREFIX CACHING (prefill skip)
+  System prompt same for all?
+  → cache KV once → reuse
+  
+  Without: ২K system prompt processed each time
+  With: ২K processed ONCE → cached
+  
+  vLLM: --enable-prefix-caching
+  SGLang: RadixAttention (automatic)
+  
+  → TTFT drops ৫০-৮০%!
+
+৩. SPECULATIVE DECODING (২-৩x faster!)
+  বড় মডেল ধীর। ছোট মডেল দ্রুত।
+  
+  Idea:
+    → small "draft" model generates N tokens fast
+    → big model verifies all N in one pass
+    → if correct: accept all (২-৩x speedup!)
+    → if wrong: reject and use big model's token
+  
+  → speedup depends on draft quality
+  → Medusa, EAGLE: speculative decoding frameworks
+  → vLLM has built-in speculative decoding support
+
+৪. SHORTER PROMPTS
+  Less input = faster prefill = lower TTFT
+  
+  → system prompt: শুধু প্রয়োজনীয়
+  → few-shot: ২-৩ examples, not ১০
+  → context: compressed, not raw
+  → remove boilerplate, repetition
+
+৫. QUANTIZATION (for self-hosted)
+  fp16 → int4: ২-৩x faster inference
+  → less memory → larger batch → higher throughput
+  → per-token latency drops
+  
+  AWQ, GPTQ: minimal quality loss
+  GGUF: optimized for CPU/Mac
+
+৬. BATCHING
+  Multiple requests → one batch → parallel processing
+  
+  → continuous batching (vLLM): new requests 
+    join running batch dynamically
+  → GPU utilization maxed
+  → throughput ৩-৫x vs sequential
+
+৭. GEOGRAPHIC PROXIMITY
+  → সার্ভার ইউজারের কাছে
+  → US users → US datacenter
+  → Asia users → Asia datacenter
+  → network RTT: ২০০ms (far) vs ২০ms (near)
+  
+  → multi-region deployment
+  → CDN for static assets
+
+LATENCY BUDGET (per request):
+
+  ┌──────────────────────┬───────────┐
+  │ Step                 │ Budget    │
+  ├──────────────────────┼───────────┤
+  │ Network (user→server)│ < ১০০ms   │
+  │ Input guardrail      │ < ৫০ms    │
+  │ Query processing     │ < ১০০ms   │
+  │ RAG retrieval        │ < ১০০ms   │
+  │ Reranking            │ < ১০০ms   │
+  │ LLM TTFT             │ < ৫০০ms   │
+  │ LLM streaming        │ ~continuous│
+  │ Output guardrail     │ < ৫০ms    │
+  │ Total perceived      │ < ১s      │
+  └──────────────────────┴───────────┘
+  
+  → User feels response starts in < ১s
+  → rest streams smoothly
+
+BENCHMARKING:
+  Always measure before AND after optimization
+  
+  Tools:
+    vLLM benchmark_serving.py
+    locust: load testing
+    custom: latency histograms
+  
+  Track: p50 (median), p95, p99
+  → p99 = worst-case user experience
+  → optimize p99, not just average</div>
+
+<div class="dialogue">সরি'আহ — speed, promptness, quickness। কুরআনে আল্লাহ বলেন — "তাড়াতাড়ি করো ক্ষমার দিকে।" (৩:১৩৩)। সরি'আহ হলো দ্রুত ভালো কাজে। Latency optimization-ও তেমনি — দ্রুত সেবা। ইউজারের সময় মূল্যবান। যে দ্রুত, সে সম্মান করে। যে ধীর, সে অবহেলা করে।</div>
+<div class="dialogue en">"Sariah — speed, promptness, quickness. Allah says — 'Race to forgiveness.' (3:133). Sariah is speed in good deeds. Latency optimization too — fast service. User time is valuable. One who is fast, respects. One who is slow, neglects."</div>`,
+  senior:{
+    title:"Latency Quick Wins — Do Today",
+    body:`<p><strong>১. Enable streaming:</strong> Biggest perceived improvement — user sees tokens immediately।</p><p><strong>২. Enable prefix caching:</strong> vLLM flag — system prompt cached, TTFT drops ৫০%+।</p><p><strong>৩. Shorten system prompt:</strong> Remove unnecessary text — every token saved = faster TTFT।</p><p><strong>৪. Model routing:</strong> Easy queries → small fast model (GPT-4o-mini, Claude Haiku) — ৩-৫x faster।</p><p><strong>৫. Measure p99:</strong> Use vLLM benchmark_serving.py — know your worst-case latency।</p>`
+  }
+});
+
+// ══ DOOR 7: VERSIONING ══
+doors.push({
+  num:7, icon:"🔢", color:"#5b9eff", name:"সংস্করণ কক্ষ",
+  subtitle:"The Versioning Chamber", tech:"Model & Data Versioning",
+  spirit:"হিফযাতুল ইলম — জ্ঞান সংরক্ষণ",
+  secret:"Code version control আছে (Git)। কিন্তু model? Data? Prompt? প্রতিটার version দরকার। Model registry, dataset versioning, prompt management। পুরোনো version ফিরে যাওয়া যায়। যে সংরক্ষণ করে, সে নিরাপদ।",
+  recall:{
+    q:"সংস্করণ কক্ষে কেন প্রতিটা পরিবর্তন লেখা হয়?",
+    qen:"Why is every change recorded in the versioning chamber?",
+    a:"কারণ পরিবর্তন ফিরে যেতে হতে পারে। Code = Git। Model = registry। Data = DVC। Prompt = prompt manager। প্রতিটার version। যে সংরক্ষণ করে, সে নিরাপদ। হিফযাতুল ইলম — জ্ঞান সংরক্ষণ।",
+    aen:"Because changes may need reverting. Code = Git. Model = registry. Data = DVC. Prompt = manager. Each versioned. One who preserves, is safe. Hifzatul Ilm — knowledge preservation."
+  },
+  story:`
+<p class="scene-setting">সপ্তম কেন্দ্র। সংস্করণ কক্ষ। গ্রন্থাগারিক জাকেরিয়া প্রতিটা পাণ্ডুলিপির প্রতিটা সংস্করণ সংরক্ষণ করেন — v১, v২, v৩। "পরিবর্তন মাঝে মাঝে ভুল," তিনি বললেন। "পুরোনোতে ফিরে যেতে হয়। Code, model, data, prompt — প্রতিটার সংস্করণ। যে সংরক্ষণ করে, সে নিরাপদ।"</p>
+<p class="scene-setting en">The seventh center. Versioning chamber. Librarian Zakariya preserves every version of every manuscript — v1, v2, v3. "Changes are sometimes wrong," he said. "Must revert. Code, model, data, prompt — each versioned. One who preserves, is safe."</p>
+
+<div class="dialogue">বেগ কক্ষ বলেছিলেন — দ্রুত হও। কিন্তু আমি বলি — দ্রুত পরিবর্তনের সাথে versioning দরকার। প্রতিটা change — code, model, data, prompt — সংস্করণ ছাড়া নিয়ন্ত্রণ অসম্ভব। কোন version প্রোডাকশনে? কোন dataset ট্রেইনড? কোন prompt বেস্ট? সব version দরকার।</div>
+<div class="dialogue en">"The speed chamber said — be fast. But I say — with fast changes, versioning is needed. Every change — code, model, data, prompt — without versions, control is impossible. Which version is in production? Which dataset trained? Which prompt is best? All need versions."</div>
+
+<div class="code-block">Versioning — Everything Tracked:
+
+FOUR THINGS TO VERSION:
+
+১. CODE (Git)
+  → সব commit, branch, tag
+  → প্রতিটা change tracked
+  
+  Tag releases:
+    git tag v1.2.3
+    git push --tags
+  
+  → পুরোনো version ফিরে যাও:
+    git checkout v1.0.0
+
+২. MODEL (Model Registry)
+  কোন model প্রোডাকশনে? কোন সাথে ট্রেইনড?
+  
+  Tools:
+    HuggingFace Hub → model versioning
+    MLflow → experiment + model registry
+    W&B Models → tracking + registry
+    DVC → data + model versioning
+  
+  Best practice:
+    Model tag: {base_model}-{lora_r}-{dataset}-{version}
+    Example: llama3.1-8b-r16-medical-v1.2
+  
+  Registry entry:
+    {
+      name: "medical-assistant",
+      version: "1.2.0",
+      base_model: "meta-llama/Llama-3.1-8B",
+      training_data: "medical_qa_v3",
+      metrics: {accuracy: 0.87, ...},
+      created: "2024-12-15",
+      status: "production"
+    }
+
+৩. DATA (Dataset Versioning)
+  কোন dataset দিয়ে ট্রেইনড? RAG এ কোন docs?
+  
+  Tools:
+    DVC → Git for data
+    HuggingFace Datasets → versioned
+    LakeFS → data lake versioning
+  
+  Best practice:
+    Dataset tag: {name}-{description}-{version}
+    Example: medical_qa-5k-curated-v3
+  
+  → dataset changed → new version
+  → old version preserved (reproducibility)
+
+৪. PROMPT (Prompt Management)
+  প্রতিটা prompt version tracked!
+  
+  Tools:
+    Langfuse → prompt management
+    Promptflow (Microsoft) → prompt versioning
+    LangSmith → prompt registry
+    Custom: Git + prompt files
+  
+  Best practice:
+    prompt_id: "medical-qa-system-prompt"
+    version: 4
+    template: "You are a medical..."
+    eval_score: 0.89
+    status: "production"
+    
+    → prompt change → new version → eval → compare
+
+REPRODUCIBILITY:
+  কোন model + কোন data + কোন prompt + কোন code
+  = একটা specific result
+  
+  সব versioned → reproduce possible:
+    "Run model v1.2 on dataset v3 with prompt v4 
+     and code commit abc123"
+  → exact same result
+
+MODEL LIFECYCLE:
+
+  ┌────────┐     ┌────────┐     ┌──────────┐
+  │ Dev    │────→│ Staging│────→│Production│
+  │ v0.x   │     │ v1.0-rc│     │ v1.0     │
+  └────────┘     └────────┘     └──────────┘
+       ↑                             │
+       │        ┌────────┐           │
+       └───────→│Archive │←──────────┘
+                │ v0.9   │ (rollback target)
+                └────────┘
+  
+  → new model goes through stages
+  → each stage versioned
+  → rollback target always preserved
+
+MODEL REGISTRY FLOW (MLflow):
+
+  # Log model after training
+  mlflow.log_model(model, "model")
+  
+  # Register
+  result = mlflow.register_model(
+    "runs:/abc123/model",
+    "MedicalAssistant"
+  )
+  
+  # Transition stage
+  client.transition_model_version_stage(
+    name="MedicalAssistant",
+    version=3,
+    stage="Production"
+  )
+  
+  # Old version → Archived (rollback target)
+
+A/B TESTING WITH VERSIONS:
+  v1 (current production) vs v2 (new)
+  → ৫০/৫০ traffic split
+  → compare: accuracy, latency, cost, satisfaction
+  → winner → production
+  → loser → archived</div>
+
+<div class="dialogue">হিফযাতুল ইলম — preservation of knowledge। ইসলামী ঐতিহ্যে জ্ঞান সংরক্ষণ অত্যন্ত গুরুত্বপূর্ণ — হাদিস লেখা, মুখস্থ করা, সংকলন করা। LLMOps versioning-ও তেমনি — জ্ঞান (model, data, prompt, code) সংরক্ষণ। প্রতিটা version সংরক্ষিত = প্রতিটা পদক্ষেপ traceable। যে সংরক্ষণ করে, সে নিরাপদ।</div>
+<div class="dialogue en">"Hifzatul Ilm — preservation of knowledge. In Islamic tradition, knowledge preservation is paramount — writing hadith, memorizing, compiling. LLMOps versioning too — preserving knowledge (model, data, prompt, code). Each version preserved = each step traceable. One who preserves, is safe."</div>`,
+  senior:{
+    title:"Versioning Start — Minimum Setup",
+    body:`<p><strong>Code:</strong> Git — already have this। Tag releases: git tag v1.0।</p><p><strong>Model:</strong> MLflow (free) বা HuggingFace Hub। Log every model with training metadata।</p><p><strong>Data:</strong> DVC (free) — Git for data। dvc add + dvc push।</p><p><strong>Prompt:</strong> Langfuse prompt management বা simple JSON files in Git। Version each prompt change।</p><p><strong>Production rule:</strong> Never deploy unversioned model/prompt। Always know exactly what is running and how to rollback।</p>`
+  }
+});
+
+// ══ DOOR 8: A/B TESTING ══
+doors.push({
+  num:8, icon:"🧪", color:"#b37feb", name:"পরীক্ষা কক্ষ",
+  subtitle:"The Experiment Chamber", tech:"A/B Testing for LLMs",
+  spirit:"ইখতিবার — পরীক্ষা ও তুলনা",
+  secret:"নতুন model বা prompt ভালো? অনুমান নয় — পরীক্ষা। A/B test: দুটি version → ভাগ করে traffic → তুলনা → বিজয়ী। LLM-এ traditional A/B + quality eval + cost/latency। যে পরীক্ষা করে, সে জানে। যে অনুমান করে, সে ভুল করে।",
+  recall:{
+    q:"পরীক্ষা কক্ষে কেন দুটি পণ্য একসাথে পরীক্ষা করা হয়?",
+    qen:"Why are two products tested together?",
+    a:"কারণ তুলনা ছাড়া সেরা জানা যায় না। A/B test ঠিক তেমনি — দুটি version, ভাগ করে traffic, তুলনা করো। যে পরীক্ষা করে, সে জানে। যে অনুমান করে, সে ভুল করে। ইখতিবার।",
+    aen:"Because without comparison, the best can't be known. A/B tests exactly that — two versions, split traffic, compare. One who tests, knows. One who guesses, errs. Ikhtibar."
+  },
+  story:`
+<p class="scene-setting">অষ্টম কেন্দ্র। পরীক্ষা কক্ষ। দুটি একই রকম পণ্য — পাশাপাশি। কিন্তু কোনটা ভালো? গ্রাহকদের দুই ভাগ — অর্ধেক প্রথমটা, অর্ধেক দ্বিতীয়টা। প্রতিক্রিয়া তুলনা করো। "অনুমান নয়," পরীক্ষক রাইসা বললেন। "পরীক্ষা। নতুন model বা prompt ভালো? পরীক্ষা করে জানো।"</p>
+<p class="scene-setting en">The eighth center. Experiment chamber. Two identical-looking products — side by side. But which is better? Split customers — half get the first, half the second. Compare reactions. "Don't guess," Tester Raisha said. "Test. New model or prompt better? Know by testing."</p>
+
+<div class="dialogue">সংস্করণ কক্ষ বলেছিলেন — version সংরক্ষণ করো। কিন্তু আমি বলি — version সংরক্ষণ শুরু। কোন version ভালো? কীভাবে জানবে? A/B testing। দুটি version পাশাপাশি। Traffic ভাগ করো। তুলনা করো। বিজয়ী নির্বাচন করো। অনুমান নয় — প্রমাণ।</div>
+<div class="dialogue en">"The versioning chamber said — preserve versions. But I say — version preservation is the start. Which version is better? How to know? A/B testing. Two versions side by side. Split traffic. Compare. Select winner. Not guessing — proof."</div>
+
+<div class="code-block">A/B Testing for LLMs — Data-Driven Decisions:
+
+WHAT TO A/B TEST:
+  → model versions (v1 vs v2)
+  → prompt versions (system prompt A vs B)
+  → RAG configs (chunk size, retrieval method)
+  → parameters (temperature, top_p)
+  → guardrail settings (strict vs lenient)
+
+TRADITIONAL A/B + LLM SPECIFIC:
+
+  Traditional metrics:
+    → click-through rate
+    → conversion rate
+    → bounce rate
+    → time on page
+  
+  LLM-specific metrics:
+    → response quality (eval score)
+    → user satisfaction (thumbs up/down)
+    → latency (p50, p95, p99)
+    → cost per query
+    → guardrail block rate
+    → hallucination rate
+
+A/B TEST SETUP:
+
+  ┌──────────────────────────────────────┐
+  │ Traffic Split                        │
+  │                                      │
+  │   Users ──→ Hash(user_id) % 100      │
+  │                                      │
+  │   ০-৪৯%  → Version A (control)       │
+  │   ৫০-৯৯% → Version B (treatment)    │
+  └──────────────────────────────────────┘
+  
+  → consistent: same user always gets same version
+  → random: no selection bias
+  → enough traffic: statistical significance
+
+LLM A/B METRICS:
+
+  Version A (current):
+    eval_score: ০.৮৫
+    satisfaction: ৪.২/৫
+    latency_p95: ২.১s
+    cost/query: $০.০৩
+  
+  Version B (new):
+    eval_score: ০.৮৯
+    satisfaction: ৪.৫/৫
+    latency_p95: ১.৮s
+    cost/query: $০.০২
+  
+  → B wins on ALL metrics → promote!
+
+STATISTICAL SIGNIFICANCE:
+  → কত কোয়েরি দরকার?
+  → depends on effect size + variance
+  
+  Rule of thumb:
+    → ১% improvement: ১০K+ queries per variant
+    → ৫% improvement: ১K+ queries
+    → ১০% improvement: ৫০০+ queries
+  
+  Tools:
+    → scipy.stats (t-test, Mann-Whitney)
+    → Bayesian: pymc, bandit algorithms
+
+MULTIVARIATE (A/B/C/D...):
+  → শুধু ২ নয় — একাধিক version
+  
+  Prompt A vs B vs C vs D
+  → each gets ২৫% traffic
+  → winner emerges
+  
+  Caution: more variants = more traffic needed
+
+SHADOW DEPLOYMENT (safest):
+  → new model runs in "shadow"
+  → production traffic goes to both
+  → user sees only production response
+  → shadow response logged + compared
+  
+  → zero user risk
+  → full production traffic test
+  → no user-visible errors
+
+CANARY DEPLOYMENT:
+  → new version: ৫% traffic (real users)
+  → monitor: errors, latency, satisfaction
+  → good → ২৫% → ৫০% → ১০০%
+  → bad → ০% (rollback)
+
+BANDIT ALGORITHMS (multi-armed bandit):
+  → traffic dynamically allocated
+  → winning variant gets more traffic over time
+  → loser gets less
+  → converges faster than fixed A/B
+  
+  → Thompson Sampling, UCB
+  → tools: Eppo, Statsig
+
+WHEN TO STOP:
+  → statistical significance reached
+  → OR: predefined time (২ weeks)
+  → OR: clear winner/loser
+  → OR: budget exhausted
+
+COMMON MISTAKES:
+  ❌ Too short: ১ day is noise
+  ❌ Too many metrics: pick ২-৩ primary
+  ❌ No hypothesis: "let's see what happens"
+  ❌ Peeking: checking too early → false positive
+  ❌ Not enough traffic: underpowered test
+
+LLM-SPECIFIC A/B TOOLING:
+  → LangSmith: A/B testing built-in
+  → Langfuse: experiment tracking
+  → Portkey: model routing + A/B
+  → Custom: feature flags + eval pipeline</div>
+
+<div class="dialogue">ইখতিবার — test, trial, experiment। কুরআনে আল্লাহ বলেন — "আমি তোমাদের পরীক্ষা করি।" (২১:৩৫)। পরীক্ষা শাস্তি নয় — উন্নতির পথ। A/B testing-ও তেমনি — পরীক্ষা করে সেরা খুঁজো। যে পরীক্ষা করে, সে জানে। যে অনুমান করে, সে ভুল করে। ইখতিবার — পরীক্ষার মাধ্যমে সত্য।</div>
+<div class="dialogue en">"Ikhtibar — test, trial, experiment. Allah says — 'We test you.' (21:35). Testing isn't punishment — it's the path to improvement. A/B testing too — find the best through experimentation. One who tests, knows. One who guesses, errs. Ikhtibar — truth through testing."</div>`,
+  senior:{
+    title:"A/B Test Plan — First Experiment",
+    body:`<p><strong>Pick one variable:</strong> system prompt (concise vs detailed)।</p><p><strong>Primary metric:</strong> user satisfaction (thumbs up rate)।</p><p><strong>Secondary:</strong> latency, cost, eval score।</p><p><strong>Traffic:</strong> ৫০/৫০ split by user_id hash।</p><p><strong>Duration:</strong> ৭ days minimum (or ১K queries per variant)।</p><p><strong>Decision rule:</strong> +৫% satisfaction AND latency not worse → promote new।</p><p><strong>Tool:</strong> LangSmith বা simple feature flag (Redis) + eval pipeline।</p>`
+  }
+});
+
+// ══ DOOR 9: INCIDENT RESPONSE ══
+doors.push({
+  num:9, icon:"🚨", color:"#ef4444", name:"জরুরি কক্ষ",
+  subtitle:"The Emergency Chamber", tech:"Incident Response",
+  spirit:"ইনযিম — সংকট ব্যবস্থাপনা",
+  secret:"প্রোডাকশনে সবসময় কিছু ভাঙে। প্রশ্ন নয় কখন — কী করবে। Detect → contain → investigate → fix → learn। Kill switch, rollback, communication, post-mortem। যে প্রস্তুত, সে টিকে। যে অপ্রস্তুত, সে পড়ে।",
+  recall:{
+    q:"জরুরি কক্ষে কেন সবসময় প্রস্তুত থাকতে হয়?",
+    qen:"Why must you always be ready in the emergency chamber?",
+    a:"কারণ সবসময় কিছু ভাঙে। প্রশ্ন কখন নয় — কী করবে। Detect, contain, fix, learn। Kill switch, rollback। যে প্রস্তুত, সে টিকে। ইনযিম — সংকট ব্যবস্থাপনা।",
+    aen:"Because something always breaks. Not when — but what to do. Detect, contain, fix, learn. Kill switch, rollback. One who is prepared, survives. Nazim — crisis management."
+  },
+  story:`
+<p class="scene-setting">নবম কেন্দ্র। জরুরি কক্ষ। একটা সাইরেন বেজে উঠল। "সার্ভার ক্র্যাশ!" জরুরি প্রতিক্রিয়া দল ছুটল। প্রধান উমর শান্ত কণ্ঠে বললেন — "ভয় নয়, প্রস্তুতি। Kill switch আছে, rollback আছে, playbook আছে। প্রতিটা সমস্যার একটা সমাধান। যে প্রস্তুত, সে শান্ত। যে অপ্রস্তুত, সে আতঙ্কিত।"</p>
+<p class="scene-setting en">The ninth center. Emergency chamber. A siren blared. "Server crash!" The incident response team rushed. Chief Umar said calmly — "Not fear, preparation. Kill switch exists, rollback exists, playbook exists. Every problem has a solution. One who is prepared, is calm. One who is unprepared, panics."</p>
+
+<div class="dialogue">A/B পরীক্ষা কক্ষ বলেছিলেন — পরীক্ষা করো। কিন্তু আমি বলি — পরীক্ষা করলেও ভাঙে। প্রোডাকশনে কিছু ভাঙবেই। সার্ভার ক্র্যাশ, model regression, cost spike, security breach। প্রশ্ন কখন নয় — কী করবে। Incident response — প্রস্তুতি ও প্রতিক্রিয়া।</div>
+<div class="dialogue en">"The A/B chamber said — test. But I say — even with testing, things break. In production, something will break. Server crash, model regression, cost spike, security breach. Not when — but what to do. Incident response — preparation and reaction."</div>
+
+<div class="code-block">Incident Response — When Things Break:
+
+LLM-SPECIFIC INCIDENTS:
+
+  Type ১: DEGRADATION
+    → quality suddenly drops
+    → eval scores fall, user complaints rise
+    → cause: bad model update, data drift, 
+      prompt regression
+    
+  Type ২: OUTAGE
+    → system unavailable
+    → API timeout, GPU OOM, dependency failure
+    → cause: traffic spike, infra failure
+    
+  Type ৩: COST EXPLOSION
+    → daily cost ১০x normal
+    → cause: bug (infinite loop), abuse, 
+      viral traffic
+    
+  Type ৪: SECURITY
+    → prompt injection breach, data leak
+    → cause: new attack vector, guardrail bypass
+    
+  Type ৫: LATENCY
+    → response time ৩x normal
+    → cause: cold start, congestion, 
+      batch saturation
+
+INCIDENT RESPONSE PLAYBOOK:
+
+  ┌────────────────────────────────────────┐
+  │ PHASE ১: DETECT (alert fires)         │
+  │ → classify severity                    │
+  │ → acknowledge alert                    │
+  │ → assess initial scope                 │
+  │ Time: < ৫ min                          │
+  ├────────────────────────────────────────┤
+  │ PHASE ২: CONTAIN (stop the bleeding)  │
+  │ → ROLLBACK to last known good          │
+  │ → KILL SWITCH if critical              │
+  │ → throttle traffic                     │
+  │ → disable problematic feature/tool     │
+  │ Time: < ১৫ min                         │
+  ├────────────────────────────────────────┤
+  │ PHASE ৩: INVESTIGATE (understand)     │
+  │ → check logs, traces                   │
+  │ → identify root cause                  │
+  │ → assess impact (how many users?)      │
+  │ → data exposure assessment             │
+  │ Time: < ২ hr                           │
+  ├────────────────────────────────────────┤
+  │ PHASE ৪: REMEDIATE (fix)              │
+  │ → patch the root cause                 │
+  │ → test fix in staging                  │
+  │ → deploy fix                           │
+  │ → verify resolution                    │
+  │ Time: < ৪ hr                           │
+  ├────────────────────────────────────────┤
+  │ PHASE ৫: COMMUNICATE                  │
+  │ → notify affected users                │
+  │ → status page update                   │
+  │ → stakeholders informed                │
+  │ Time: throughout                        │
+  ├────────────────────────────────────────┤
+  │ PHASE ৬: POST-MORTEM (learn)          │
+  │ → document timeline                    │
+  │ → what went well, what didn't          │
+  │ → root cause (5 whys)                  │
+  │ → action items (prevent recurrence)    │
+  │ → add to red team / eval suite         │
+  │ Time: within ৪৮ hr                     │
+  └────────────────────────────────────────┘
+
+KILL SWITCH:
+  সবকিছু থামাও — জরুরি পরিস্থিতিতে।
+  
+  Implementation:
+    # Feature flag / kill switch
+    if kill_switch_enabled():
+      return "Service temporarily unavailable. 
+              We are working on it."
+    
+    # In Kubernetes: scale to 0
+    kubectl scale deployment llm --replicas=0
+    
+    # In load balancer: redirect to static page
+  
+  → কখন ব্যবহার করবে?
+    → cost explosion (> budget ৩x)
+    → security breach (data leak)
+    → total quality collapse
+    → cascade failure
+
+ROLLBACK:
+  নতুন version খারাপ → পুরোনোতে ফিরে যাও
+  
+  Kubernetes:
+    kubectl rollout undo deployment/llm
+  
+  Model registry:
+    client.transition_model_version_stage(
+      name="model", version=prev, 
+      stage="Production")
+  
+  Feature flag:
+    flag.set("model_version", "v1.2")
+  
+  → সবসময় পুরোনো version archived রাখো
+
+COMMUNICATION TEMPLATES:
+
+  Internal (Slack):
+    🚨 INCIDENT [severity]
+    Status: investigating/contained/resolved
+    Impact: [users affected]
+    Action: [what we're doing]
+    Next update: [time]
+
+  User-facing (status page):
+    "We're experiencing issues with [feature].
+     Our team is investigating. 
+     Follow: status.example.com"
+
+  Post-resolution:
+    "The issue has been resolved. 
+     [Brief explanation]. 
+     We're implementing measures to prevent 
+     recurrence. Thank you for your patience."
+
+POST-MORTEM TEMPLATE:
+  
+  Incident: [title]
+  Date: [date]
+  Severity: [S1/S2/S3]
+  
+  Summary: [১-২ sentences]
+  
+  Timeline:
+    ১০:০০ - Alert fired
+    ১০:০৫ - Acknowledged
+    ১০:১৫ - Rolled back
+    ১১:৩০ - Root cause identified
+    ১৩:০০ - Fix deployed
+  
+  Root Cause (৫ Whys):
+    ১. Why did it fail? → model regression
+    ২. Why regression? → eval gate was bypassed
+    ৩. Why bypassed? → eval threshold too low
+    ৪. Why low? → set in early dev, never updated
+    ৫. Why never updated? → no ownership
+  
+  Action Items:
+    → [owner] Update eval threshold (by X)
+    → [owner] Add regression test (by Y)
+    → [owner] Assign eval ownership (by Z)
+
+ON-CALL ROTATION:
+  → ২৪/৭ coverage
+  → primary + secondary on-call
+  → escalation: primary → secondary → manager
+  → PagerDuty / Opsgenie
+  → follow-the-sun: regional teams</div>
+
+<div class="dialogue">নাযিম — crisis management, organization during emergency। কুরআনে আল্লাহ বলেন — "তোমরা বিপদে দৃঢ় থাকো।" (৩:১৪৬)। বিপদে দৃঢ়তা = নাযিম। Incident response-ও তেমনি — সংকটে শান্ত, প্রস্তুত, দৃঢ়। যে দৃঢ়, সে সমাধান করে। যে আতঙ্কিত, সে আরও বিপদ বানায়।</div>
+<div class="dialogue en">"Nazim — crisis management, organization during emergency. Allah says — 'Be firm in adversity.' (3:146). Firmness in adversity = nazim. Incident response too — calm, prepared, firm in crisis. One who is firm, solves. One who panics, makes things worse."</div>`,
+  senior:{
+    title:"Incident Prep Checklist — Before It Happens",
+    body:`<p>☐ Kill switch: tested, documented, one-click</p><p>☐ Rollback: tested, < ১ min execution</p><p>☐ Alerting: PagerDuty/Slack for critical alerts</p><p>☐ On-call rotation: ২৪/৭, primary + secondary</p><p>☐ Playbook: detect → contain → fix → communicate → post-mortem</p><p>☐ Status page: ready template</p><p>☐ Post-mortem template: standard format</p><p>☐ Last known good: always archived, ready to deploy</p>`
+  }
+});
+
+// ══ DOOR 10: SYNTHESIS ══
+doors.push({
+  num:10, icon:"🏙️", color:"#67e8f9", name:"সমন্বয়ের শহর",
+  subtitle:"The Synthesis City", tech:"Complete LLMOps Architecture",
+  spirit:"মাদানিয়াহ — সুসংগঠিত নগরী",
+  secret:"নয়টি কেন্দ্র পেরিয়েছ। Serving, deployment, CI/CD, monitoring, cost, latency, versioning, A/B testing, incident response। সব একসাথে = production-grade LLMOps। প্রোটোটাইপ থেকে প্রোডাকশন। এটাই নিয়ন্ত্রণ কেন্দ্রের শিল্প।",
+  recall:{
+    q:"শহর কেন সব কেন্দ্র একসাথে ধারণ করে?",
+    qen:"Why does the city hold all centers together?",
+    a:"কারণ শহর = সমন্বয়। নয়টি কেন্দ্র — serving থেকে incident response — একসাথে একটা সম্পূর্ণ নগরী। একটাও বাদ দিলে শহর অসম্পূর্ণ। মাদানিয়াহ — সুসংগঠিত নগরী।",
+    aen:"Because city = integration. Nine centers — serving to incident response — together form one complete city. Missing one, the city is incomplete. Madaniyah — organized city."
+  },
+  story:`
+<p class="scene-setting">দশম কেন্দ্র। শেষ কেন্দ্র। স্থপতি ইদ্রিস পাহাড়ের উপর দাঁড়িয়ে আছেন — নিচে একটা সম্পূর্ণ শহর। উৎক্ষেপণ প্যাড, প্যাকেজিং কারখানা, স্বয়ংক্রিয় কনভেয়র, পর্যবেক্ষণ টাওয়ার, বাজেট অফিস, বেগ স্টেশন, সংস্করণ গ্রন্থাগার, পরীক্ষা ল্যাব, জরুরি কেন্দ্র। "তুমি নয় কেন্দ্র পেরিয়েছ," তিনি বললেন। "এখন দেখো — সব একসাথে। একটা সম্পূর্ণ শহর। একটাও বাদ দিলে শহর অসম্পূর্ণ।"</p>
+<p class="scene-setting en">The tenth center. The last. Architect Idris stands on a hill — below, a complete city. Launch pad, packaging factory, automation conveyor, observation tower, budget office, speed station, versioning library, experiment lab, emergency center. "You've passed nine centers," he said. "Now see — all together. One complete city. Missing one, the city is incomplete."</p>
+
+<div class="dialogue">নয়টি কেন্দ্র পেরিয়েছ। উৎক্ষেপণ বলেছিলেন, serving engine। প্যাকেজিং বলেছিলেন, Docker + Kubernetes। স্বয়ংক্রিয় বলেছিলেন, CI/CD pipeline। পর্যবেক্ষণ বলেছিলেন, monitoring। বাজেট বলেছিলেন, cost optimization। বেগ বলেছিলেন, latency tuning। সংস্করণ বলেছিলেন, versioning। পরীক্ষা বলেছিলেন, A/B testing। জরুরি বলেছিলেন, incident response। এখন — সব একসাথে।</div>
+<div class="dialogue en">"You've passed nine centers. Launch said, serving engine. Packaging said, Docker + Kubernetes. Automation said, CI/CD pipeline. Observation said, monitoring. Budget said, cost optimization. Speed said, latency tuning. Versioning said, versioning. Experiment said, A/B testing. Emergency said, incident response. Now — all together."</div>
+
+<div class="code-block">Complete Production LLMOps Architecture:
+
+┌──────────────────────────────────────────────────┐
+│ COMPLETE LLMOps STACK                             │
+├──────────────────────────────────────────────────┤
+│                                                   │
+│  SERVING (Door 1)                                │
+│  ├── vLLM / TGI / SGLang                         │
+│  ├── PagedAttention, continuous batching         │
+│  ├── Prefix caching, tensor parallelism          │
+│  └── OpenAI-compatible API                        │
+│                                                   │
+│  DEPLOYMENT (Door 2)                              │
+│  ├── Docker containers                            │
+│  ├── Kubernetes (EKS/GKE)                        │
+│  ├── Auto-scaling (HPA)                           │
+│  ├── Load balancer + GPU scheduling               │
+│  └── Canary / blue-green / rolling               │
+│                                                   │
+│  CI/CD (Door 3)                                   │
+│  ├── GitHub Actions / GitLab CI                  │
+│  ├── Eval gate (Promptfoo / RAGAS)               │
+│  ├── Security tests (Garak)                       │
+│  ├── Docker build + registry push                 │
+│  └── Canary deploy + auto-rollback               │
+│                                                   │
+│  MONITORING (Door 4)                              │
+│  ├── Langfuse / LangSmith (LLM tracing)          │
+│  ├── Prometheus + Grafana (infra)                │
+│  ├── Quality eval (daily production samples)      │
+│  ├── User feedback tracking                       │
+│  └── Drift detection                               │
+│                                                   │
+│  COST (Door 5)                                    │
+│  ├── Semantic caching (GPTCache / Redis)         │
+│  ├── Model routing (easy → mini, hard → pro)     │
+│  ├── Prompt compression (LLMLingua)              │
+│  ├── Batch API (৫০% discount)                     │
+│  └── Cost monitoring + anomaly alerts             │
+│                                                   │
+│  LATENCY (Door 6)                                 │
+│  ├── Streaming (SSE)                              │
+│  ├── Prefix caching (TTFT reduction)             │
+│  ├── Speculative decoding (২-৩x)                  │
+│  ├── Shorter prompts                               │
+│  └── Geographic proximity (multi-region)         │
+│                                                   │
+│  VERSIONING (Door 7)                              │
+│  ├── Git (code)                                   │
+│  ├── MLflow / HF Hub (models)                     │
+│  ├── DVC (datasets)                               │
+│  ├── Langfuse (prompts)                           │
+│  └── Full reproducibility                         │
+│                                                   │
+│  A/B TESTING (Door 8)                             │
+│  ├── Traffic split (hash-based)                   │
+│  ├── Shadow deployment (zero risk)                │
+│  ├── Multi-variant experiments                    │
+│  ├── Statistical significance tracking             │
+│  └── Bandit algorithms (dynamic allocation)      │
+│                                                   │
+│  INCIDENT (Door 9)                                │
+│  ├── Kill switch (one-click stop)                 │
+│  ├── Rollback (< ১ min)                            │
+│  ├── On-call rotation (২৪/৭)                      │
+│  ├── Post-mortem process                           │
+│  └── Status page + user comms                     │
+│                                                   │
+└──────────────────────────────────────────────────┘
+
+OPERATIONAL MATURITY MODEL:
+
+  Level ১: Prototype
+    → single model, manual deploy, no monitoring
+  
+  Level ২: Basic Ops
+    → Docker deploy, basic logs, manual scaling
+  
+  Level ৩: CI/CD
+    → automated tests + eval gate, canary deploy
+  
+  Level ৪: Full LLMOps
+    → monitoring, cost optimization, A/B testing,
+    auto-scaling, versioning
+  
+  Level ৫: Elite
+    → self-healing, predictive scaling, 
+    continuous eval, auto-rollback,
+    multi-region, chaos engineering
+
+TECH STACK RECOMMENDATION:
+
+  ┌─────────────┬──────────────────────────────┐
+  │ Component   │ Tool                         │
+  ├─────────────┼──────────────────────────────┤
+  │ Serving     │ vLLM                         │
+  │ Container   │ Docker                       │
+  │ Orchestrate │ Kubernetes (EKS/GKE)         │
+  │ CI/CD       │ GitHub Actions               │
+  │ Monitoring  │ Langfuse + Grafana           │
+  │ Eval        │ RAGAS + Promptfoo            │
+  │ Registry    │ MLflow / HF Hub              │
+  │ Cost        │ GPTCache + model routing     │
+  │ A/B         │ LangSmith / feature flags    │
+  │ Incident    │ PagerDuty + runbooks         │
+  └─────────────┴──────────────────────────────┘
+
+BUDGET (reference):
+  Small (১K queries/day): ~$৫০০/month
+  Medium (১০K/day): ~$২-৫K/month
+  Large (১০০K/day): ~$১০-৩০K/month
+  
+  → with optimization: ৫০-৮০% less
+
+FROM PROTOTYPE TO PRODUCTION:
+  
+  Week ১: vLLM serve + basic API
+  Week ২: Docker + cloud deploy + health checks
+  Week ৩: CI/CD + eval gate + canary
+  Week ৪: Monitoring (Langfuse) + cost tracking
+  Week ৫: Caching + model routing + streaming
+  Week ৬: Versioning + A/B testing
+  Week ৭: Incident playbook + on-call
+  
+  → ৭ weeks: prototype → production-grade</div>
+
+<div class="verse">"যিনি সৃষ্টি করেছেন এবং নিয়মে বেঁধেছেন। যিনি পরিমাপ করেছেন এবং পথ দেখিয়েছেন।"<br>— কুরআন ৮৭:২-৩<br><br>LLMOps হলো সেই নিয়মে বাঁধা — LLM-কে production-এ নিয়মে বাঁধা। পরিমাপ (monitoring), পথ দেখানো (CI/CD), সঠিক পরিমাণ (cost optimization)। প্রোটোটাইপ থেকে প্রোডাকশন — এটাই নিয়ন্ত্রণ কেন্দ্রের শিল্প।</div>
+
+<div class="secret-box"><div class="label">দশম কেন্দ্র — সমন্বয়</div><div class="text">🏙️ LLMOps = Serving + Deployment + CI/CD + Monitoring + Cost + Latency + Versioning + A/B + Incidents।<br><small>প্রোটোটাইপ থেকে প্রোডাকশন। একটাও বাদ দিলে শহর অসম্পূর্ণ।</small></div></div>`
+});

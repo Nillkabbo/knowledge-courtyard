@@ -53,6 +53,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(13)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--fire))}
 .game-card:nth-child(14)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--fire))}
 .game-card:nth-child(15)::before{background:linear-gradient(90deg,var(--fire),#dc2626,var(--fire))}
+.game-card:nth-child(16)::before{background:linear-gradient(90deg,var(--cyan),var(--moon),var(--cyan))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -76,6 +77,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(13) .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
 .game-card:nth-child(14) .game-tag{background:rgba(251,191,36,.12);color:var(--gold)}
 .game-card:nth-child(15) .game-tag{background:rgba(239,68,68,.12);color:var(--fire)}
+.game-card:nth-child(16) .game-tag{background:rgba(34,211,238,.12);color:var(--cyan)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -104,6 +106,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(13) .game-link{color:var(--fire)}
 .game-card:nth-child(14) .game-link{color:var(--gold)}
 .game-card:nth-child(15) .game-link{color:var(--fire)}
+.game-card:nth-child(16) .game-link{color:var(--cyan)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -143,13 +146,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">১৫</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">১৪২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">১৪২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">১৬</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">১৫২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">১৫২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 পনেরোটি যাত্রা — Fifteen Journeys</div>
+  <div class="section-label">📚 ষোলটি যাত্রা — Sixteen Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -694,6 +697,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>🛡️ 10 Gates</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 16: LLMOPS ══ -->
+    <a class="game-card" href="./llmops/index.html">
+      <div class="game-head">
+        <div class="game-icon">🚀</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 16 · LLMOps Deep Dive</div>
+          <div class="game-title">The Control Tower</div>
+          <div class="game-title-bn">নিয়ন্ত্রণ কেন্দ্র</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        LLM-কে প্রোডাকশনে চালানোর সম্পূর্ণ শিল্প। Model serving (vLLM, TGI, SGLang — PagedAttention, continuous batching, prefix caching), deployment (Docker, Kubernetes, auto-scaling, canary/blue-green), CI/CD (eval gates, security tests, automated rollback), monitoring (Langfuse/LangSmith, metrics/logs/traces, quality tracking), cost optimization (semantic cache, model routing, prompt compression, batch API), latency tuning (streaming, speculative decoding, prefix cache), versioning (code/model/data/prompt), A/B testing (shadow/canary/bandit), incident response (kill switch, rollback, post-mortem), এবং complete production architecture synthesis।
+        <span class="en">The complete art of running LLMs in production. Covers serving engines with key innovations (PagedAttention, continuous batching), containerization and orchestration (Docker + K8s + HPA), LLM-specific CI/CD with eval gates and security probes, three-pillar observability (metrics/logs/traces), 7 cost optimization strategies (30-83% savings), latency optimization (TTFT/TPOT, streaming, speculative decoding), four-type versioning (code/model/data/prompt), A/B testing methodologies, incident response playbook, operational maturity model, and complete tech stack recommendation with budget estimates.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🚀 Serving</span>
+        <span class="topic-chip">📦 Deployment</span>
+        <span class="topic-chip">⚙️ CI/CD</span>
+        <span class="topic-chip">📊 Monitoring</span>
+        <span class="topic-chip">💰 Cost</span>
+        <span class="topic-chip">⚡ Latency</span>
+        <span class="topic-chip">🔢 Versioning</span>
+        <span class="topic-chip">🧪 A/B Testing</span>
+        <span class="topic-chip">🚨 Incidents</span>
+        <span class="topic-chip">🏙️ Architecture</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🚀 10 Centers</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
