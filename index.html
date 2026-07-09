@@ -52,6 +52,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(12)::before{background:linear-gradient(90deg,var(--moon),var(--cyan),var(--moon))}
 .game-card:nth-child(13)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--fire))}
 .game-card:nth-child(14)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--fire))}
+.game-card:nth-child(15)::before{background:linear-gradient(90deg,var(--fire),#dc2626,var(--fire))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -74,6 +75,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(12) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
 .game-card:nth-child(13) .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
 .game-card:nth-child(14) .game-tag{background:rgba(251,191,36,.12);color:var(--gold)}
+.game-card:nth-child(15) .game-tag{background:rgba(239,68,68,.12);color:var(--fire)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -101,6 +103,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(12) .game-link{color:var(--moon)}
 .game-card:nth-child(13) .game-link{color:var(--fire)}
 .game-card:nth-child(14) .game-link{color:var(--gold)}
+.game-card:nth-child(15) .game-link{color:var(--fire)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -140,13 +143,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">১৪</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">১৩২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">১৩২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">১৫</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">১৪২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">১৪২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 চৌদ্দটি যাত্রা — Fourteen Journeys</div>
+  <div class="section-label">📚 পনেরোটি যাত্রা — Fifteen Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -655,6 +658,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>🤖 10 Centers</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 15: LLM SECURITY ══ -->
+    <a class="game-card" href="./llm-security/index.html">
+      <div class="game-head">
+        <div class="game-icon">🛡️</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 15 · LLM Security Deep Dive</div>
+          <div class="game-title">The Fortress Guard</div>
+          <div class="game-title-bn">দুর্গের প্রহরী</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        LLM নিরাপত্তার সম্পূর্ণ শিল্প — আক্রমণ ও প্রতিরক্ষা। OWASP Top 10 for LLMs, prompt injection (direct + indirect), jailbreak techniques (DAN, encoding, many-shot, translation), training data poisoning (backdoor/availability/bias), model extraction ও privacy attacks, 7-layer defense in depth, guardrail frameworks (NeMo Guardrails, Guardrails AI, Llama Guard), red teaming (Garak, PyRIT), production security operations (monitoring, incident response, kill switch), এবং complete security architecture synthesis।
+        <span class="en">The complete art of LLM attack and defense. Covers OWASP Top 10, prompt injection vectors (direct/indirect/multimodal), 7 jailbreak categories with defenses, 3 poisoning types, model extraction and membership inference attacks, 7-layer defense in depth architecture, guardrail framework comparison, automated red teaming tools (Garak, PyRIT), production security operations (monitoring, alerting, incident response, kill switch, compliance), and complete production security architecture with maturity model.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🗺️ Threats</span>
+        <span class="topic-chip">⚔️ Injection</span>
+        <span class="topic-chip">🔓 Jailbreaks</span>
+        <span class="topic-chip">🧪 Poisoning</span>
+        <span class="topic-chip">🔍 Extraction</span>
+        <span class="topic-chip">🔐 Defense Layers</span>
+        <span class="topic-chip">🛤️ Guardrails</span>
+        <span class="topic-chip">🧪 Red Team</span>
+        <span class="topic-chip">🚨 Production</span>
+        <span class="topic-chip">🏔️ Architecture</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🛡️ 10 Gates</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
