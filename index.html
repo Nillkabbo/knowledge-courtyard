@@ -51,6 +51,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(11)::before{background:linear-gradient(90deg,var(--teal),var(--leaf),var(--teal))}
 .game-card:nth-child(12)::before{background:linear-gradient(90deg,var(--moon),var(--cyan),var(--moon))}
 .game-card:nth-child(13)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--fire))}
+.game-card:nth-child(14)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--fire))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -72,6 +73,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(11) .game-tag{background:rgba(45,212,191,.12);color:var(--teal)}
 .game-card:nth-child(12) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
 .game-card:nth-child(13) .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
+.game-card:nth-child(14) .game-tag{background:rgba(251,191,36,.12);color:var(--gold)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -98,6 +100,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(11) .game-link{color:var(--teal)}
 .game-card:nth-child(12) .game-link{color:var(--moon)}
 .game-card:nth-child(13) .game-link{color:var(--fire)}
+.game-card:nth-child(14) .game-link{color:var(--gold)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -137,13 +140,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">১৩</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">১২২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">১২২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">১৪</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">১৩২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">১৩২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 তেরোটি যাত্রা — Thirteen Journeys</div>
+  <div class="section-label">📚 চৌদ্দটি যাত্রা — Fourteen Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -616,6 +619,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>⚒️ 10 Chambers</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 14: AI AGENTS ══ -->
+    <a class="game-card" href="./ai-agents/index.html">
+      <div class="game-head">
+        <div class="game-icon">🤖</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 14 · AI Agents Deep Dive</div>
+          <div class="game-title">The Autonomous Mind</div>
+          <div class="game-title-bn">স্বাধীন বুদ্ধি</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        LLM থেকে স্বাধীন কর্মী পর্যন্ত। Agent anatomy (brain + tools + memory + loop), tool use ও function calling internals, ReAct framework (Thought-Action-Observation চক্র), planning strategies (ReAct/Plan-Execute/Re-planning/Decomposition), agent memory systems (short-term/working/long-term/episodic), multi-agent orchestration (sequential/parallel/hierarchical/debate), human-in-the-loop approval patterns, framework comparison (LangGraph/CrewAI/AutoGen/OpenAI SDK), agent failure modes ও 5-layer safety, এবং complete production agent architecture।
+        <span class="en">From LLM to autonomous worker. Covers agent anatomy (4 components), function calling mechanism with provider implementations, ReAct loop with code examples, 4 planning strategies, 4 memory types with implementation, multi-agent architectures (4 patterns) with framework comparison (CrewAI/AutoGen/LangGraph), human-in-the-loop levels (5 tiers), 7 failure modes with fixes, 5-layer safety model, and complete production architecture with tech stack and latency/cost budgets.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🤖 Agent Basics</span>
+        <span class="topic-chip">🔧 Tool Use</span>
+        <span class="topic-chip">🧭 ReAct Loop</span>
+        <span class="topic-chip">📋 Planning</span>
+        <span class="topic-chip">🧵 Memory</span>
+        <span class="topic-chip">👥 Multi-Agent</span>
+        <span class="topic-chip">🤝 Human-in-Loop</span>
+        <span class="topic-chip">⚡ Frameworks</span>
+        <span class="topic-chip">🛡️ Safety</span>
+        <span class="topic-chip">🌌 Architecture</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🤖 10 Centers</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
