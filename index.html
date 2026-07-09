@@ -50,6 +50,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(10)::before{background:linear-gradient(90deg,var(--moon),var(--teal),var(--moon))}
 .game-card:nth-child(11)::before{background:linear-gradient(90deg,var(--teal),var(--leaf),var(--teal))}
 .game-card:nth-child(12)::before{background:linear-gradient(90deg,var(--moon),var(--cyan),var(--moon))}
+.game-card:nth-child(13)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--fire))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -70,6 +71,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(10) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
 .game-card:nth-child(11) .game-tag{background:rgba(45,212,191,.12);color:var(--teal)}
 .game-card:nth-child(12) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
+.game-card:nth-child(13) .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -95,6 +97,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(10) .game-link{color:var(--moon)}
 .game-card:nth-child(11) .game-link{color:var(--teal)}
 .game-card:nth-child(12) .game-link{color:var(--moon)}
+.game-card:nth-child(13) .game-link{color:var(--fire)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -134,13 +137,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">১২</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">১১২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">১১২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">১৩</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">১২২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">১২২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 বারোটি যাত্রা — Twelve Journeys</div>
+  <div class="section-label">📚 তেরোটি যাত্রা — Thirteen Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -577,6 +580,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>🪣 10 Layers</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 13: FINE-TUNING ══ -->
+    <a class="game-card" href="./fine-tuning/index.html">
+      <div class="game-head">
+        <div class="game-icon">⚒️</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 13 · Fine-tuning Deep Dive</div>
+          <div class="game-title">The Forge of Refinement</div>
+          <div class="game-title-bn">কায়িক সাধনা</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        সাধারণ মডেলকে তোমার কাজের জন্য নিখুঁত করার শিল্প। When to fine-tune (vs RAG vs prompting), dataset curation (Quality > Quantity), LoRA (Low-Rank Adaptation — 1% params), QLoRA (4-bit quantized — democratized), SFT vs DPO vs PPO training methods, evaluation (4 types), catastrophic forgetting prevention, deployment (vLLM/Ollama), cost-benefit ROI analysis, এবং complete pipeline synthesis।
+        <span class="en">The art of perfecting a general LLM for your specific task. Covers the decision framework (when NOT to fine-tune), dataset curation strategies (5 sources, quality checklist), LoRA math (A×B decomposition, 99.6% reduction), QLoRA (nf4 quantization, 7B on 6GB), three training methods (SFT/DPO/PPO comparison), four evaluation types, catastrophic forgetting prevention (5 strategies), deployment pipeline (merge → quantize → serve → monitor), cost-benefit ROI calculator, and complete fine-tuning pipeline synthesis.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">⚖️ When to FT</span>
+        <span class="topic-chip">📊 Dataset</span>
+        <span class="topic-chip">🔧 LoRA</span>
+        <span class="topic-chip">⚗️ QLoRA</span>
+        <span class="topic-chip">🧠 SFT/DPO/PPO</span>
+        <span class="topic-chip">📈 Evaluation</span>
+        <span class="topic-chip">💔 Forgetting</span>
+        <span class="topic-chip">🚀 Deployment</span>
+        <span class="topic-chip">💰 Cost-Benefit</span>
+        <span class="topic-chip">🔥 Synthesis</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>⚒️ 10 Chambers</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>

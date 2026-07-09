@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>কায়িক সাধনা — The Forge of Refinement</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">কায়িক সাধনা</h1>
+  <div class="title-sub">The Forge of Refinement</div>
+  <div class="title-desc">
+    Fine-tuning — LLM-কে নিজের কাজে নিখুঁত করার শিল্প।<br>
+    দশটি ক্ষেত্র — প্রতিটি ক্ষেত্রে একজন কারিগর। প্রতেকজন fine-tuning-এর এক একটি স্তরের রহস্য জানেন।<br><br>
+    <em>Fine-tuning — the art of perfecting an LLM for your specific task. Ten chambers of the forge, each teaching one layer of adaptation: when to fine-tune vs RAG vs prompt, dataset curation, LoRA/QLoRA, full fine-tuning, evaluation, catastrophic forgetting, and production deployment.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">⚒️ কারখানায় প্রবেশ করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">কারিগরের যাত্রা — The Craftsman's Journey</div>
+    <p>তুমি একটা বানানো তলোয়ার কিনেছ। তীক্ষ্ণ, শক্ত, কাজের। কিন্তু তোমার কাজের জন্য নিখুঁত নয়। তলোয়ারটা পুনরায় গরম করে, পিটিয়ে, ধার দিয়ে তোমার হাতের জন্য মানানসই করতে হয়। এটাই fine-tuning — সাধারণ মডেলকে তোমার নির্দিষ্ট কাজের জন্য নিখুঁত করা।</p>
+    <p class="en">You bought a forged sword. Sharp, strong, functional. But not perfect for your work. The sword must be reheated, hammered, sharpened to fit your hand. This is fine-tuning — perfecting a general model for your specific task.</p>
+    <hr class="p-divider">
+    <p>কিন্তু fine-tuning সবসময় দরকার হয় না। কখনো prompting যথেষ্ট। কখনো RAG। কখনো fine-tuning। এই বই তোমাকে শেখাবে — কখন কোনটা দরকার। আর দরকার হলে — কীভাবে। Dataset কীভাবে বানাবে, LoRA কী, QLoRA কীভাবে কাজ করে, full fine-tuning কখন, evaluation কীভাবে, catastrophic forgetting কীভাবে এড়াবে, production-এ কীভাবে deploy করবে।</p>
+    <p class="en">But fine-tuning isn't always needed. Sometimes prompting suffices. Sometimes RAG. Sometimes fine-tuning. This book teaches — when to use which. And when needed — how. How to build dataset, what LoRA is, how QLoRA works, when full fine-tuning, how to evaluate, how to avoid catastrophic forgetting, and how to deploy to production.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 কারখানায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">⚒️</span><span id="hud-rank-name">শিক্ষানবিশ</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>ক্ষেত্র বেছে নাও</h2><p>দশটি ক্ষেত্র, ক্রমানুসারে। প্রতিটি ক্ষেত্রে নিখুঁতির এক একটা স্তর।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← কারখানায় ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🔥</div>
+  <h1 class="complete-title">তুমি এখন নিখুঁতির কারিগর</h1>
+  <p class="complete-text">দশটি ক্ষেত্র পেরিয়েছ। Fine-tuning-এর প্রতিটি স্তর আয়ত্ত করেছ।<br><br>When to fine-tune, dataset curation, LoRA, QLoRA, full fine-tuning, SFT vs DPO, evaluation, catastrophic forgetting, deployment, এবং cost-benefit analysis।<br><br>এখন তুমি জানো — সাধারণ মডেলকে কীভাবে তোমার কাজের জন্য নিখুঁত করতে হয়।<br><strong>নিখুঁতি = সাধনার ফল।</strong></p>
+  <div class="complete-verse">رَبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার কারখানায় বসো</button>
+  <div class="cheat-section-end"><h3>📋 Fine-tuning চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">ক্ষেত্র সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 Fine-tuning চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
