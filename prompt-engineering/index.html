@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" width="device-width" initial-scale=1.0">
+<title>বাক্যের জাদুকর — The Word Weaver's Forge</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">বাক্যের জাদুকর</h1>
+  <div class="title-sub">The Word Weaver's Forge</div>
+  <div class="title-desc">
+    LLM-কে চালানোর গভীর শিল্প — টোকেন থেকে এজেন্ট পর্যন্ত।<br>
+    দশটা কারিগরি — প্রতিটা কারিগর প্রম্পট ইঞ্জিনিয়ারিংয়ের এক একটা গভীর স্তর।<br><br>
+    <em>The art of steering LLMs — from tokens to agents. Ten stations of the forge, each teaching one layer of prompt and context engineering that separates amateurs from frontier-level practitioners.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🔥 কারখানায় প্রবেশ করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">শিক্ষার্থীর সন্ধান — The Student's Quest</div>
+    <p>তুমি ChatGPT ব্যবহার করো। Claude ব্যবহার করো। কিন্তু কখনো ভেবেছ কি — কেন একই মডেল একবার জাদুর মতো উত্তর দেয়, আরেকবার আবর্জনা? পার্থক্য কোথায়? মডেল একই। পার্থক্য তোমার প্রম্পটে।</p>
+    <p class="en">You use ChatGPT. You use Claude. But have you wondered — why the same model sometimes gives magical answers and other times garbage? The difference isn't the model. It's your prompt.</p>
+    <hr class="p-divider">
+    <p>প্রম্পট ইঞ্জিনিয়ারিং শুধু "ভালো লেখা" নয়। এটা একটা বিলিয়ন-প্যারামিটার স্নায়ুর নেটওয়ার্ককে শব্দ দিয়ে চালানোর শিল্প। যে ভালো চালায়, সে জাদু দেখে। যে খারাপ চালায়, সে আবর্জনা দেখে। এই বই তোমাকে শেখাবে — টোকেন কী, টেম্পারেচার কীভাবে কাজ করে, সিস্টেম প্রম্পট কেন গুরুত্বপূর্ণ, চেইন-অফ-থট কীভাবে যুক্তি বাড়ায়, কন্টেক্সট উইন্ডো কীভাবে পরিচালনা করতে হয়, এবং ফ্রন্টিয়ার মডেল প্রোভাইডাররা কী গোপন রাখেন।</p>
+    <p class="en">Prompt engineering isn't just "writing well." It's the art of steering a billion-parameter neural network with words. One who steers well sees magic. One who steers poorly sees garbage. This book teaches you — what tokens are, how temperature works, why system prompts matter, how chain-of-thought enhances reasoning, how to manage context windows, and what frontier model providers don't publicly share.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 কারখানায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🔨</span><span id="hud-rank-name">কর্মী</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>কারিগরি বেছে নাও</h2><p>দশটা কারিগরি, ক্রমানুসারে। প্রতিটা স্তর আগের চেয়ে গভীর।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← কারখানায় ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🔮</div>
+  <h1 class="complete-title">তুমি এখন বাক্যের জাদুকর</h1>
+  <p class="complete-text">দশটা কারিগরি পেরিয়েছ। প্রম্পট ইঞ্জিনিয়ারিংয়ের প্রতিটা গভীর স্তর আয়ত্ত করেছ।<br><br>Tokens, Sampling, System Prompts, Chain-of-Thought, Few-Shot, Structured Output, Context Window, Injection Defense, Agent Loops, এবং Frontier Secrets।<br><br>এখন তুমি জানো — LLM-কে কীভাবে চালাতে হয়। শব্দ দিয়ে। কাঠামো দিয়ে। সীমানা দিয়ে।<br><strong>এটাই আধুনিক জাদু।</strong></p>
+  <div class="complete-verse">رَبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার কারখানায় বসো</button>
+  <div class="cheat-section-end"><h3>📋 প্রম্পট ইঞ্জিনিয়ারিং চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">কারিগরি সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 প্রম্পট ইঞ্জিনিয়ারিং চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
