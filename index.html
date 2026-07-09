@@ -47,6 +47,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(7)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
 .game-card:nth-child(8)::before{background:linear-gradient(90deg,var(--teal),var(--moon),var(--teal))}
 .game-card:nth-child(9)::before{background:linear-gradient(90deg,var(--fire),var(--gold-bright),var(--fire))}
+.game-card:nth-child(10)::before{background:linear-gradient(90deg,var(--moon),var(--teal),var(--moon))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -64,6 +65,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(7) .game-tag{background:rgba(179,127,235,.12);color:var(--purple)}
 .game-card:nth-child(8) .game-tag{background:rgba(45,212,191,.12);color:var(--teal)}
 .game-card:nth-child(9) .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
+.game-card:nth-child(10) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -86,6 +88,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(7) .game-link{color:var(--purple)}
 .game-card:nth-child(8) .game-link{color:var(--teal)}
 .game-card:nth-child(9) .game-link{color:var(--fire)}
+.game-card:nth-child(10) .game-link{color:var(--moon)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -125,13 +128,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">৯</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">৮২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">৮২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">১০</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">৯২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">৯২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 নয়টি যাত্রা — Nine Journeys</div>
+  <div class="section-label">📚 দশটি যাত্রা — Ten Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -460,6 +463,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>🔥 10 Stations</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 10: LLM ANATOMY ══ -->
+    <a class="game-card" href="./llm-anatomy/index.html">
+      <div class="game-head">
+        <div class="game-icon">🔬</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 10 · LLM Architecture Deep Dive</div>
+          <div class="game-title">The LLM Anatomy</div>
+          <div class="game-title-bn">LLM দর্শন</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        LLM-এর গভীর শারীরিক বিশ্লেষণ — টোকেন থেকে সৃষ্টি পর্যন্ত। Tokenization (BPE), Embeddings & vector space, Self-attention mechanism, Transformer architecture (7 layers), Training pipeline (Pre-training → SFT → RLHF), Autoregressive generation, Hallucination causes & prevention, Scaling laws (Chinchilla), Mixture of Experts & Multimodality, এবং সম্পূর্ণ pipeline synthesis।
+        <span class="en">Deep anatomical analysis of how LLMs actually work — from bytes to answers. Covers BPE tokenization, embedding geometry, multi-head attention (Q/K/V math), the full transformer stack, three-stage training pipeline, autoregressive decoding, hallucination mechanisms (7-layer defense), Kaplan vs Chinchilla scaling laws, MoE architecture, and multimodal fusion. For engineers who want to understand WHY, not just HOW.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🔤 Tokenization</span>
+        <span class="topic-chip">🧲 Embeddings</span>
+        <span class="topic-chip">👁️ Attention</span>
+        <span class="topic-chip">🏗️ Transformer</span>
+        <span class="topic-chip">🏋️ Training</span>
+        <span class="topic-chip">🎲 Generation</span>
+        <span class="topic-chip">🌫️ Hallucination</span>
+        <span class="topic-chip">📈 Scaling Laws</span>
+        <span class="topic-chip">🔀 MoE & Multimodal</span>
+        <span class="topic-chip">🔮 Synthesis</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🔬 10 Chambers</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
