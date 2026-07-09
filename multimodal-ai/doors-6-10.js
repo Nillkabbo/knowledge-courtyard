@@ -1,0 +1,643 @@
+// ════════════════════════════════════════
+// পঞ্চইন্দ্রিয় — DOORS 6-10
+// Multimodal AI: Alignment → Architecture
+// ════════════════════════════════════════
+
+// ══ DOOR 6: CROSS-MODAL ALIGNMENT ══
+doors.push({
+  num:6, icon:"🔗", color:"#a78bfa", name:"সংযোগ কক্ষ",
+  subtitle:"The Alignment Chamber", tech:"Cross-Modal Alignment",
+  spirit:"আল্লামাহ — সংযোগ করা, শেখানো",
+  secret:"ছবি ও টেক্সট আলাদা জগতে। কিন্তু CLIP তাদের এক জায়গায় আনে। একই vector space। একটা ছবি ও তার বর্ণনা = একই বিন্দু। এটাই cross-modal alignment — ভিন্ন ইন্দ্রিয় এক জগতে। যে সংযোগ করে, সে সব বোঝে।",
+  recall:{
+    q:"সংযোগ কক্ষে কেন ভিন্ন ভিন্ন জিনিস এক জায়গায় আনা হয়?",
+    qen:"Why are different things brought together?",
+    a:"কারণ একা একা প্রতিটা অসম্পূর্ণ। ছবি ও টেক্সট এক জগতে = cross-modal alignment। CLIP, BLIP — একই vector space। যে সংযোগ করে, সে সব বোঝে। আল্লামাহ — সংযোগ।",
+    aen:"Because each alone is incomplete. Image and text in one world = cross-modal alignment. CLIP, BLIP — same vector space. One who connects, understands all. Allamah — connection."
+  },
+  story:`
+<p class="scene-setting">ষষ্ঠ ইন্দ্রিয়। সংযোগ কক্ষ। একটা বড় টেবিল — একদিকে ছবি, অন্যদিকে শব্দ। কক্ষরক্ষক সালমা প্রতিটা ছবির সাথে মিল শব্দ যুক্ত করেন। "ছবি ও শব্দ আলাদা," তিনি বললেন, "কিন্তু আমি তাদের সংযুক্ত করি। একই জগতে। এক ছবি = এক বর্ণনা। CLIP ঠিক এটাই করে।"</p>
+<p class="scene-setting en">The sixth sense. Alignment chamber. A large table — images on one side, words on the other. Keeper Salma matches each image with its words. "Images and words are separate," she said, "but I connect them. In one world. One image = one description. CLIP does exactly this."</p>
+
+<div class="dialogue">ভিডিও কক্ষ বলেছিলেন — ভিডিও বোঝো। কিন্তু আমি বলি — ভিন্ন মোডালিটি একসাথে কীভাবে? ছবি ও টেক্সট কীভাবে এক জগতে? Cross-modal alignment। এটাই multimodal AI-এর গভীরতম রহস্য — কীভাবে ভিন্ন ইন্দ্রিয় সংযুক্ত হয়।</div>
+<div class="dialogue en">"The video chamber said — understand video. But I say — how do different modalities work together? How do image and text live in one world? Cross-modal alignment. This is multimodal AI's deepest mystery — how different senses connect."</div>
+
+<div class="code-block">Cross-Modal Alignment — One World, Many Senses:
+
+THE PROBLEM:
+  Image embedding space: ৭৬৮ dim
+  Text embedding space: ৭৬৮ dim
+  → BUT they are DIFFERENT spaces!
+  → "cat" text embedding ≠ cat image embedding
+  
+  Need: align the spaces
+  → "a cat" text ≈ cat image (close in shared space)
+
+ALIGNMENT METHODS:
+
+১. CONTRASTIVE LEARNING (CLIP)
+  → matching pairs → pull together
+  → non-matching pairs → push apart
+  
+  একই vector space-এ:
+    "a dog playing" ≈ [dog image]
+    "a cat sleeping" ≈ [cat image]
+    "a dog" vs [cat image] → far apart
+
+২. GENERATIVE ALIGNMENT (BLIP, Flamingo)
+  → cross-attention between modalities
+  → text attends to image regions
+  → image attends to text tokens
+  → deep, joint understanding
+
+৩. PROJECTION LAYER (LLaVA)
+  → train a simple MLP to project
+    image embeddings → text embedding space
+  → lightweight, works with any LLM
+
+SHARED EMBEDDING SPACE:
+  After alignment:
+  
+  ┌──────────────────────────────────┐
+  │ Shared Vector Space (৭৬৮ dim)    │
+  │                                  │
+  │  🐕 ← "a dog" (text)            │
+  │  🐱 ← "a cat" (text)            │
+  │  🖼️ ← [dog image]               │
+  │  🖼️ ← [cat image]               │
+  │                                  │
+  │  dog text ↔ dog image: close     │
+  │  cat text ↔ cat image: close     │
+  │  dog ↔ cat: far                  │
+  │  dog ↔ car: very far             │
+  └──────────────────────────────────┘
+  
+  → cosine similarity = semantic match
+  → "find images like this text" = vector search
+
+MULTIMODAL RETRIEVAL:
+  Text → Image: "sunset over mountains"
+    → search image DB → find matching photos
+  
+  Image → Text: [photo of a birthday cake]
+    → search text DB → find relevant recipes
+  
+  Image → Image: [reference photo]
+    → search image DB → find similar photos
+  
+  Audio → Text: [bird song]
+    → search → "yellow warbler"
+
+ALIGNMENT QUALITY:
+  CLIP zero-shot accuracy: ~৭৬% (ImageNet)
+  SigLIP: ~৭৭% (improved)
+  Fine-tuned domain CLIP: ৮৫-৯০%
+  
+  → ভালো কিন্তু perfect নয়
+  → domain-specific alignment দরকার হতে পারে
+
+TRAINING DATA FOR ALIGNMENT:
+  → (image, caption) pairs: millions
+  → LAION-৫B: ৫ billion image-text pairs
+  → COCO: ৩৩০K images with captions
+  → quality > quantity: clean pairs matter</div>
+
+<div class="dialogue">আল্লামাহ — connector, unifier, teacher। কুরআনে আল্লাহ বলেন — "তিনি মানুষকে শিখিয়েছেন।" (৯৬:৫)। শেখানো = সংযোগ করা — ভিন্ন জিনিস একসাথে। Cross-modal alignment-ও তেমনি — ছবি ও শব্দ, এক জগতে। যে সংযোগ করে, সে গভীর বোঝে। আল্লামাহ — সংযোগের গুণ।</div>
+<div class="dialogue en">"Allamah — connector, unifier, teacher. Allah says — 'He taught man.' (96:5). Teaching = connecting — different things together. Cross-modal alignment too — image and word, one world. One who connects, understands deeply. Allamah — the attribute of connection."</div>`,
+  senior:{
+    title:"Alignment in Practice",
+    body:`<p><strong>Image-text search:</strong> OpenCLIP embeddings → vector DB (Qdrant) → text query retrieves images।</p><p><strong>VLM training:</strong> Projection layer (MLP) aligns ViT embeddings to LLM space। LLaVA approach।</p><p><strong>Domain-specific:</strong> Fine-tune CLIP on your domain (medical, fashion, product) → better alignment।</p><p><strong>Multimodal RAG:</strong> Store image+text embeddings together → retrieve by either modality।</p>`
+  }
+});
+
+// ══ DOOR 7: MULTIMODAL EMBEDDINGS ══
+doors.push({
+  num:7, icon:"🔮", color:"#f0abfc", name:"বহুমুখী স্মৃতির কক্ষ",
+  subtitle:"The Multimodal Memory Chamber", tech:"Multimodal Embeddings & RAG",
+  spirit:"হাফিয — সব মোডালিটির স্মৃতি",
+  secret:"RAG শুধু টেক্সট নয়। ছবি RAG, অডিও RAG, ভিডিও RAG। সব মোডালিটির embedding এক DB-তে। টেক্সট দিয়ে ছবি খোঁজো, ছবি দিয়ে অডিও খোঁজো। এটাই multimodal RAG — সব ইন্দ্রিয় দিয়ে তল্লাশ।",
+  recall:{
+    q:"বহুমুখী স্মৃতির কক্ষে কেন ছবি, শব্দ, শব্দ একসাথে রাখা হয়?",
+    qen:"Why are images, sounds, and words kept together?",
+    a:"কারণ জ্ঞান শুধু টেক্সট নয়। ছবি, অডিও — সব। Multimodal RAG-এ সব মোডালিটির embedding এক DB-তে। টেক্সট দিয়ে ছবি খোঁজো, ছবি দিয়ে টেক্সট। হাফিয — সব মোডালিটির স্মৃতি।",
+    aen:"Because knowledge isn't just text. Images, audio — everything. In multimodal RAG, all modality embeddings in one DB. Search images by text, text by image. Hafi — memory of all modalities."
+  },
+  story:`
+<p class="scene-setting">সপ্তম ইন্দ্রিয়। বহুমুখী স্মৃতির কক্ষ। একটা বিশাল গ্রন্থাগার — কিন্তু শুধু বই নয়। ছবি, রেকর্ডিং, ভিডিও — সব একসাথে। গ্রন্থাগারিক জয়নাল বললেন — "তুমি যেকোনো কিছু দিয়ে খুঁজতে পারো। ছবি দাও — মিল বই পাবে। গানের কয়েক সেকেন্ড দাও — মিল তথ্য পাবে। সব একসাথে। এটাই multimodal RAG।"</p>
+<p class="scene-setting en">The seventh sense. Multimodal memory chamber. A vast library — but not just books. Images, recordings, videos — all together. Librarian Zaynal said — "You can search with anything. Give an image — get matching books. Give a few seconds of song — get matching info. All together. This is multimodal RAG."</p>
+
+<div class="dialogue">সংযোগ কক্ষ বলেছিলেন — alignment দাও। কিন্তু আমি বলি — alignment দিলেই শেষ নয়। সেই aligned embeddings দিয়ে RAG বানাও। ছবি, অডিও, ভিডিও — সব retrieve করো। টেক্সট দিয়ে ছবি, ছবি দিয়ে টেক্সট। এটাই multimodal RAG — সব ইন্দ্রিয় দিয়ে তল্লাশ।</div>
+<div class="dialogue en">"The alignment chamber said — give alignment. But I say — alignment isn't the end. Use those aligned embeddings to build RAG. Images, audio, video — retrieve everything. Text for images, images for text. This is multimodal RAG — searching with all senses."</div>
+
+<div class="code-block">Multimodal Embeddings & RAG — All Senses Search:
+
+MULTIMODAL VECTOR DB:
+
+  ┌──────────────────────────────────────┐
+  │ One Vector DB — Many Modalities      │
+  │                                      │
+  │  [text embedding] ← CLIP text enc   │
+  │  [image embedding] ← CLIP image enc │
+  │  [audio embedding] ← CLAP audio enc │
+  │                                      │
+  │  All in SAME space!                  │
+  │  → "a dog" finds dog images         │
+  │  → dog image finds "a dog" text     │
+  │  → dog bark finds dog content       │
+  └──────────────────────────────────────┘
+
+MULTIMODAL EMBEDDING MODELS:
+
+  Text + Image:
+    CLIP / SigLIP / OpenCLIP
+    → text and image in same space
+  
+  Text + Audio:
+    CLAP (Contrastive Language-Audio Pretraining)
+    → text and audio in same space
+    → "a dog barking" → dog bark audio
+  
+  Text + Image + Audio:
+    ImageBind (Meta)
+    → ৬ modalities in one space!
+    → text, image, audio, depth, thermal, IMU
+  
+  Universal:
+    Cohere Embed v৩ → multilingual text
+    Voyage AI → multimodal embeddings
+
+MULTIMODAL RAG PIPELINE:
+
+  ┌────────────────────────────────────┐
+  │ INGEST                             │
+  │ Documents → text chunks → embed   │
+  │ Images → embed (CLIP)             │
+  │ Audio → transcribe (Whisper) +    │
+  │   embed audio (CLAP)              │
+  │ Video → keyframes + audio + text  │
+  │ All embeddings → one vector DB    │
+  ├────────────────────────────────────┤
+  │ QUERY (any modality)              │
+  │ "find slides about transformer"   │
+  │ → text query → text embed         │
+  │ → search all (text + image +      │
+  │   audio embeddings)              │
+  │ → retrieve matching content       │
+  │   from any modality              │
+  ├────────────────────────────────────┤
+  │ GENERATE                          │
+  │ retrieved text + images + audio   │
+  │ descriptions → VLM → answer      │
+  │ → "Based on slide ৩ and the       │
+  │   lecture audio..."               │
+  └────────────────────────────────────┘
+
+USE CASES:
+
+  E-commerce:
+    → "find similar products" (image search)
+    → "red dress under $৫০" (text → image)
+    → "this outfit but blue" (image + text)
+  
+  Education:
+    → find relevant slides by text query
+    → find lecture segment by concept
+    → diagram + explanation together
+  
+  Healthcare:
+    → find similar X-rays
+    → "cases with similar symptoms"
+    → image + lab report + notes
+  
+  Media/Content:
+    → "find the scene where [X]"
+    → "photos of [concept]" 
+    → "interviews about [topic]"
+
+CHALLENGES:
+  → Different modalities = different granularity
+    (text = words, image = pixels, audio = frames)
+  → embedding alignment imperfect
+  → storage: images/audio = more space than text
+  → cost: embedding images/audio more expensive
+  → retrieval: which modality is most relevant?
+
+IMPLEMENTATION:
+  Vector DB: Qdrant/Weaviate (multimodal support)
+  Embedding: CLIP (text+image) + CLAP (audio)
+  Framework: LlamaIndex MultiModalVectorStoreIndex
+  
+  from llama_index import (
+    MultiModalVectorStoreIndex)
+  
+  index = MultiModalVectorStoreIndex.from_documents(
+    documents_with_images_and_text)
+  
+  retriever = index.as_retriever()
+  results = retriever.retrieve("a diagram of attention")</div>
+
+<div class="dialogue">হাফিয — preserver of all, memorizer। কুরআনে আল্লাহ বলেন — "নিশ্চয় আমরা কুরআন নাজিল করেছি এবং নিশ্চয় আমরাই এর সংরক্ষক।" (১৫:৯)। সংরক্ষণ শুধু টেক্সট নয় — সব মোডালিটি। Multimodal RAG-ও তেমনি — সব মোডালিটি সংরক্ষণ ও retrieval। হাফিয — সব ইন্দ্রিয়ের স্মৃতি রক্ষক।</div>
+<div class="dialogue en">"Hafi — preserver of all, memorizer. Allah says — 'We sent down the Quran and We are its preserver.' (15:9). Preservation isn't just text — all modalities. Multimodal RAG too — all modality storage and retrieval. Hafi — memory keeper of all senses."</div>`,
+  senior:{
+    title:"Multimodal RAG Setup",
+    body:`<p><strong>DB:</strong> Qdrant বা Weaviate — multimodal vector search support।</p><p><strong>Embeddings:</strong> CLIP (text+image), CLAP (audio), Whisper transcription for audio text।</p><p><strong>Framework:</strong> LlamaIndex MultiModalVectorStoreIndex — built-in multimodal RAG।</p><p><strong>Ingest:</strong> Each document → text chunks + images → embed each → store with metadata (modality type)।</p><p><strong>Query:</strong> Text query → embed → search across all modalities → return mixed results → VLM synthesizes।</p>`
+  }
+});
+
+// ══ DOOR 8: MULTIMODAL APPLICATIONS ══
+doors.push({
+  num:8, icon:"🏗️", color:"#e9d5ff", name:"নির্মাণের কক্ষ",
+  subtitle:"The Building Chamber", tech:"Multimodal Applications",
+  spirit:"খলিফাতুল আরদ — পৃথিবীর কর্মী",
+  secret:"Multimodal AI = সব ইন্দ্রিয় একসাথে। চিকিৎসা, শিক্ষা, কোড, ডিজাইন — প্রতিটা ক্ষেত্রে প্রয়োগ। UI থেকে কোড, ছবি থেকে রোগ নিরণয়, ভিডিও থেকে সারাংশ। যে বানায়, সে পৃথিবী বদলায়।",
+  recall:{
+    q:"নির্মাণের কক্ষে কেন একাধিক কাজ একসাথে হয়?",
+    qen:"Why are multiple tasks done together?",
+    a:"কারণ multimodal AI একাধিক কাজে সক্ষম। UI থেকে কোড, ছবি থেকে রোগ, ভিডিও থেকে সারাংশ। খলিফাতুল আরদ — পৃথিবীর কর্মী। যে বানায়, সে বদলায়।",
+    aen:"Because multimodal AI is capable of multiple tasks. UI to code, image to diagnosis, video to summary. Khalifatul Ard — steward of earth. One who builds, changes."
+  },
+  story:`
+<p class="scene-setting">অষ্টম ইন্দ্রিয়। নির্মাণের কক্ষ। কারিগর আদনান একসাথে অনেক কাজ করছেন — ছবি থেকে মানচিত্র, স্কেচ থেকে ভবন, অডিও থেকে নোট। "এক জিনিস দিয়ে আরেক জিনিস," তিনি বললেন। "ছবি থেকে কোড, কোড থেকে ছবি, কথা থেকে ভিডিও। Multimodal AI পৃথিবী বদলাচ্ছে।"</p>
+<p class="scene-setting en">The eighth sense. Building chamber. Craftsman Adnan works on many tasks at once — image to map, sketch to building, audio to notes. "One thing to another," he said. "Image to code, code to image, speech to video. Multimodal AI is changing the world."</p>
+
+<div class="dialogue">বহুমুখী স্মৃতি বলেছিলেন — multimodal RAG। কিন্তু আমি বলি — RAG শুধু শুরু। প্রকৃত প্রয়োগ — multimodal applications। যেখানে সব ইন্দ্রিয় একসাথে কাজ করে সমস্যা সমাধানে। চিকিৎসক ছবি দেখে রোগ চিনে, ইঞ্জিনিয়ার স্কেচ দেখে কোড লেখে, শিক্ষার্থী ভিডিও দেখে প্রশ্ন করে।</div>
+<div class="dialogue en">"The multimodal memory said — multimodal RAG. But I say — RAG is just the start. Real applications — multimodal apps. Where all senses work together to solve problems. Doctors diagnose from images, engineers code from sketches, students ask questions about videos."</div>`,
+  story:`
+<p class="scene-setting">The eighth sense. Building chamber. Multiple workstations — each showing a different multimodal application. Medical imaging, code generation, education, design, content creation. Craftsman Adnan moved between them. "Each application combines senses," he said. "Vision + language for medical. Sketch + code for design. Audio + text for education. One sense alone is limited. All senses together = powerful."</p>
+<p class="scene-setting en">The eighth sense. Building chamber. Multiple workstations — each showing a different multimodal application. Medical imaging, code generation, education, design, content creation. Craftsman Adnan moved between them. "Each application combines senses," he said. "Vision + language for medical. Sketch + code for design. Audio + text for education. One sense alone is limited. All senses together = powerful."</p>
+
+<div class="code-block">Multimodal Applications — Real-World Impact:
+
+APPLICATION CATEGORIES:
+
+┌──────────────────────────────────────────────┐
+│ ১. VISUAL UNDERSTANDING                      │
+│ → Medical imaging: X-ray/MRI analysis        │
+│ → Document AI: scanned PDFs, receipts        │
+│ → Quality control: defect detection          │
+│ → Autonomous driving: scene understanding    │
+│ → Security: facial recognition (ethical!)    │
+├──────────────────────────────────────────────┤
+│ ২. CREATIVE GENERATION                       │
+│ → Design: text to logo/poster/UI             │
+│ → Art: text to painting/illustration         │
+│ → Video: text to video (Sora/Runway)         │
+│ → Music: text to song (Suno)                 │
+│ → Voice: text to speech (TTS)                │
+├──────────────────────────────────────────────┤
+│ ৩. CODE & DEVELOPMENT                        │
+│ → Screenshot to code: UI → HTML/CSS          │
+│ → Whiteboard to code: sketch → Python        │
+│ → Design to code: Figma → React              │
+│ → Debug from screenshot: error → fix         │
+├──────────────────────────────────────────────┤
+│ ৪. EDUCATION & ACCESSIBILITY                 │
+│ → Visual tutoring: "explain this diagram"    │
+│ → Photo math: snap equation → solve          │
+│ → Audio descriptions for blind users         │
+│ → Real-time sign language translation        │
+│ → Language learning: pronunciation feedback  │
+├──────────────────────────────────────────────┤
+│ ৫. CONTENT & MEDIA                           │
+│ → Video summarization: ১hr → ৫min            │
+│ → Auto-captioning: Whisper + video           │
+│ → Content moderation: image/video safety     │
+│ → Multimodal search: "find this scene"       │
+│ → Creative writing with image prompts        │
+├──────────────────────────────────────────────┤
+│ ৬. ROBOTICS & EMBODIED AI                    │
+│ → Robot vision: navigate + manipulate        │
+│ → Voice + vision assistant                   │
+│ → AR/VR: real-time scene understanding       │
+│ → IoT: sensor fusion (vision + audio)        │
+└──────────────────────────────────────────────┘
+
+KILLER APPS (2024-2025):
+
+  Screenshot → Code:
+    Input: [UI screenshot]
+    Prompt: "Build this as React component"
+    → GPT-4o/Vercel v0 → working code
+    
+  Medical VLM:
+    Input: [chest X-ray]
+    Prompt: "What abnormalities do you see?"
+    → "Possible pleural effusion on the right.
+       Recommend clinical correlation."
+    → NOT replacement — ASSISTANT to doctor
+
+  Meeting Intelligence:
+    Input: [video + audio of meeting]
+    → Whisper transcribes
+    → VLM reads whiteboard/slides
+    → LLM summarizes
+    → "Meeting summary + action items + 
+       decisions made"
+
+  Multimodal RAG:
+    Input: "Show me diagrams explaining 
+           attention mechanism"
+    → retrieves text + diagrams + video clips
+    → VLM synthesizes: "Here's a visual 
+       explanation based on slides ৩-৫..."
+
+  Real-time Translation:
+    Input: [Bengali speech]
+    → Whisper transcribes (Bengali)
+    → LLM translates (English)
+    → TTS speaks (English)
+    → ~১s latency, conversational
+
+ETHICS & SAFETY:
+  → Medical: NOT autonomous diagnosis — 
+    assist only, human accountable
+  → Deepfake: watermark, detect, regulate
+  → Privacy: faces in images, voice data
+  → Bias: VLMs may have cultural bias
+    (perform differently across demographics)
+  → Consent: voice cloning, face generation
+
+BUILDING MULTIMODAL APPS:
+
+  Tech Stack:
+    Frontend: React + file upload (image/audio/video)
+    Backend: FastAPI + multimodal API calls
+    Vision: GPT-4o vision / Claude 3.5
+    Audio: Whisper (STT) + OpenAI TTS
+    Images: DALL-E 3 / Stable Diffusion
+    Storage: S3 for media files
+    
+  Key considerations:
+    → file size limits (compress images)
+    → latency (audio/video processing slow)
+    → cost (image tokens expensive)
+    → safety (content filter for inputs/outputs)
+    → fallback (if VLM fails, text-only)</div>
+
+<div class="dialogue">খলিফাতুল আরদ — steward of the earth। কুরআনে আল্লাহ বলেন — "আমি পৃথিবীতে খলিফা স্থাপন করব।" (২:৩০)। খলিফা = পৃথিবীর কর্মী, নির্মাতা। Multimodal AI application = সেই নির্মাণের টুল। যে বানায়, সে খলিফা। যে শুধু দেখে, সে দর্শক। খলিফাতুল আরদ — পৃথিবীর কর্মী হও।</div>
+<div class="dialogue en">"Khalifatul Ard — steward of the earth. Allah says — 'I will place a khalifa on earth.' (2:30). Khalifa = earth's worker, builder. Multimodal AI applications = tools of that building. One who builds, is a khalifa. One who only watches, is a spectator. Khalifatul Ard — be a steward of earth."</div>`,
+  senior:{
+    title:"Build Your First Multimodal App",
+    body:`<p><strong>Easiest:</strong> GPT-4o vision API + Streamlit — image upload + Q&A। ৩০ lines of Python।</p><p><strong>Meeting summarizer:</strong> Whisper (audio) + GPT-4o (reasoning) + text summary। FastAPI backend।</p><p><strong>Screenshot to code:</strong> GPT-4o vision → "Build this as HTML/CSS" → working code।</p><p><strong>Multimodal RAG:</strong> LlamaIndex MultiModalVectorStoreIndex + CLIP + Qdrant।</p><p><strong>Production:</strong> Start with API (GPT-4o/Claude 3.5)। Switch to open (LLaVA/Whisper) when cost matters।</p>`
+  }
+});
+
+// ══ DOOR 9: MULTIMODAL CHALLENGES ══
+doors.push({
+  num:9, icon:"⚠️", color:"#c084fc", name:"সীমাবদ্ধতার কক্ষ",
+  subtitle:"The Limits Chamber", tech:"Multimodal Challenges & Limits",
+  spirit:"তাওয়াদু — বিনয়, সীমা জানা",
+  secret:"Multimodal AI শক্তিশালী কিন্তু অসম্পূর্ণ। Hallucination, bias, cost, latency, evaluation কঠিন। প্রতিটা মোডালিটি নিজস্ব চ্যালেঞ্জ। সীমা জানা = বিনয়। যে সীমা জানে, সে সতর্ক। যে অজ্ঞ, সে বিপদে।",
+  recall:{
+    q:"সীমাবদ্ধতার কক্ষে কেন সব সীমা লেখা আছে?",
+    qen:"Why are all limitations written in the limits chamber?",
+    a:"কারণ সীমা জানা = বিনয়। Multimodal AI hallucinate করে, bias আছে, ব্যয়বহুল। যে সীমা জানে, সে সতর্ক। তাওয়াদু — বিনয়, সীমা জানা।",
+    aen:"Because knowing limits = humility. Multimodal AI hallucinates, has bias, is expensive. One who knows limits, is cautious. Tawadu — humility, knowing limits."
+  },
+  story:`
+<p class="scene-setting">নবম ইন্দ্রিয়। সীমাবদ্ধতার কক্ষ। দেয়ালে লেখা — সব সীমা, সব দুর্বলতা। "শক্তির সাথে সীমা," পর্যবেক্ষক আমিনা বললেন। "VLM hallucinate করে, ব্যয়বহুল, bias আছে। যে শুধু শক্তি দেখে সীমা নয়, সে অহংকারী। যে সীমা জানে, সে প্রকৌশলী।"</p>
+<p class="scene-setting en">The ninth sense. Limits chamber. Written on walls — all limits, all weaknesses. "With power come limits," Observer Amina said. "VLMs hallucinate, are expensive, have bias. One who sees only power, not limits, is arrogant. One who knows limits, is an engineer."</p>
+
+<div class="dialogue">নির্মাণের কক্ষ বলেছিলেন — application বানাও। কিন্তু আমি বলি — বানানোর আগে সীমা জানো। VLM hallucinate করে — না থাকা জিনিস বলে। ভিডিও ব্যয়বহুল। Bias আছে। Evaluation কঠিন। যে সীমা জানে, সে ভালো বানায়। যে অজ্ঞ, সে খারাপ বানায়।</div>
+<div class="dialogue en">"The building chamber said — build applications. But I say — before building, know the limits. VLMs hallucinate — say things that aren't there. Video is expensive. Bias exists. Evaluation is hard. One who knows limits, builds well. One who is ignorant, builds poorly."</div>
+
+<div class="code-block">Multimodal Challenges — Know Your Limits:
+
+TOP ৭ CHALLENGES:
+
+১. HALLUCINATION (specifically visual)
+  → VLM বলে "I see a dog" — কিন্তু কুকুর নেই!
+  → বিশেষত: small objects, fine details, text
+  → worse than text hallucination — ছবি = বিশ্বাসযোগ্য
+  
+  Mitigation:
+    → "Only describe what you clearly see"
+    → "If unsure, say you can't tell"
+    → grounding with OCR (for text in images)
+
+২. COST EXPLOSION
+  → Image: ~৭৬৫-১৫০০ tokens per image
+  → Video: ~৭০০K tokens per hour
+  → Audio: ~১৫K tokens per minute
+  
+  ১০ images = ~১০K tokens = ~$০.০৪
+  ১hr video = ~৭০০K tokens = ~$২.১০
+  → expensive at scale!
+  
+  Mitigation:
+    → compress images before sending
+    → frame sampling for video (১০-৩০)
+    → audio → Whisper text (cheaper than native)
+    → cache common image queries
+
+৩. LATENCY
+  → image processing: ২০০-৫০০ms
+  → video processing: ১-১০s
+  → audio processing: ১০০-৫০০ms
+  
+  → multimodal = slower than text-only
+  → streaming helps perceived latency
+  
+  Mitigation:
+    → resize images (১০২৪px max usually enough)
+    → frame sampling (fewer frames)
+    → async processing for long videos
+
+৪. BIAS
+  → VLMs trained mostly on Western data
+  → different performance across:
+    → skin tone (face detection accuracy)
+    → cultural objects (different accuracy)
+    → languages (non-English worse)
+    → writing systems (Arabic, Bengali OCR)
+  
+  Mitigation:
+    → test across demographics
+    → diverse evaluation set
+    → fine-tune on local data
+    → acknowledge limitations
+
+৫. EVALUATION DIFFICULTY
+  → text eval: BLEU, ROUGE, BERTScore
+  → image eval: FID, CLIPScore, human eval
+  → multimodal eval: ???
+  
+  Challenges:
+    → no standard benchmark for VLM quality
+    → "is this description accurate?" subjective
+    → reference-free evaluation hard
+    → video eval: even harder
+  
+  Emerging tools:
+    → MMMU: multimodal understanding benchmark
+    → MMBench: VLM evaluation suite
+    → VisIT-Bench: instruction following
+
+৬. SAFETY & DEEPFAKE
+  → voice cloning: ৩ sec → clone voice
+  → image generation: realistic fake photos
+  → video generation: deepfake videos
+  → multimodal: fake image + fake voice
+  
+  Mitigation:
+    → watermark (DALL-E: C2PA metadata)
+    → detection models
+    → policy + consent
+    → provenance tracking
+
+৭. GROUNDING
+  → VLM says "left" but means "right"
+  → spatial reasoning errors
+  → counting errors (more than ৫ objects)
+  → relation errors (A is on B vs B on A)
+  
+  Mitigation:
+    → structured output (JSON with coordinates)
+    → OCR for text in images
+    → object detection models for counting
+    → ensemble: VLM + specialized model
+
+WHEN MULTIMODAL FAILS:
+  → fine text reading (use OCR instead)
+  → precise counting (use detection model)
+  → medical diagnosis (regulatory, liability)
+  → legal document analysis (precision critical)
+  → real-time safety (latency)
+  
+  → use specialized models for these tasks
+  → VLM = general understanding, not precision</div>
+
+<div class="dialogue">তাওয়াদু — humility, modesty, knowing one's place। নবীজি (সা) বলেছেন — "যার অন্তরে সরিষা পরিমাণ অহংকার আছে, সে জান্নাতে যাবে না।" প্রযুক্তির সাথেও তাওয়াদু — সীমা জানা। VLM সব পারে না। যে সীমা জানে, সে ভালো ইঞ্জিনিয়ার। যে অহংকার করে, সে ভুল করে। তাওয়াদু — বিনয়ের গুণ।</div>
+<div class="dialogue en">"Tawadu — humility, modesty, knowing one's place. The Prophet (pbuh) said — 'No one with even a mustard seed of arrogance enters Paradise.' With technology too, tawadu — knowing limits. VLMs can't do everything. One who knows limits, is a good engineer. One who is arrogant, errs. Tawadu — the virtue of humility."</div>`,
+  senior:{
+    title:"Multimodal Checklist — Before Deploy",
+    body:`<p>☐ Hallucination: tested with adversarial images ("what do you NOT see?")</p><p>☐ Cost: image tokens budgeted, compression enabled</p><p>☐ Latency: image resize, frame sampling for video</p><p>☐ Bias: tested across demographics (skin tone, language)</p><p>☐ Safety: content filter on images (NSFW, violence)</p><p>☐ Fallback: VLM fails → text-only fallback</p><p>☐ Grounding: spatial/counting tasks verified</p><p>☐ Eval: at least ৫০ multimodal test cases</p>`
+  }
+});
+
+// ══ DOOR 10: SYNTHESIS ══
+doors.push({
+  num:10, icon:"🌈", color:"#c084fc", name:"রামধনুর কক্ষ",
+  subtitle:"The Rainbow Synthesis", tech:"Complete Multimodal Architecture",
+  spirit:"রাহমাতুল লিল আলামিন — সব জগতের জন্য",
+  secret:"নয়টি ইন্দ্রিয় পেরিয়েছ। Vision, VLMs, generation, audio, video, alignment, embeddings, applications, challenges। সব একসাথে = complete multimodal AI। এক ইন্দ্রিয় থেকে পাঁচ। টেক্সট থেকে ছবি, অডিও, ভিডিও। এটাই পঞ্চইন্দ্রিয় — AI যা দেখে, শোনে, বোঝে।",
+  recall:{
+    q:"রামধনুর কক্ষে কেন সব রঙ একসাথে?",
+    qen:"Why are all colors together in the rainbow chamber?",
+    a:"কারণ রামধনু = সব রঙ একসাথে। Multimodal AI-ও তেমনি — সব ইন্দ্রিয় একসাথে। Vision, audio, video, text — সব এক জগতে। নয়টি কেন্দ্র একসাথে = সম্পূর্ণ বোঝা। রাহমাতুল লিল আলামিন।",
+    aen:"Because rainbow = all colors together. Multimodal AI too — all senses together. Vision, audio, video, text — one world. Nine centers together = complete understanding. Rahmatul Lil Alamin."
+  },
+  story:`
+<p class="scene-setting">দশম ইন্দ্রিয়। শেষ। স্থপতি ইদ্রিস একটা বিশাল রামধনুর সামনে দাঁড়িয়ে আছেন — সাত রঙ, একসাথে। "নয়টি ইন্দ্রিয় পেরিয়েছ," তিনি বললেন। "দৃষ্টি, শ্রবণ, সৃষ্টি, গতি, সংযোগ, স্মৃতি, নির্মাণ, সীমা। এখন সব একসাথে — একটা রামধনু। এক ইন্দ্রিয় থেকে পাঁচ। এটাই পঞ্চইন্দ্রিয়।"</p>
+<p class="scene-setting en">The tenth sense. The last. Architect Idris stands before a vast rainbow — seven colors, together. "You've passed nine senses," he said. "Vision, hearing, creation, motion, connection, memory, building, limits. Now all together — one rainbow. From one sense to five. This is the five senses."</p>
+
+<div class="dialogue">নয়টি ইন্দ্রিয় পেরিয়েছ। দৃষ্টি বলেছিলেন, ViT ও CLIP। চিত্রকর বলেছিলেন, VLM। সৃষ্টি বলেছিলেন, diffusion। শ্রুতি বলেছিলেন, Whisper ও TTS। গতি বলেছিলেন, ভিডিও। সংযোগ বলেছিলেন, alignment। স্মৃতি বলেছিলেন, multimodal RAG। নির্মাণ বলেছিলেন, applications। সীমা বলেছিলেন, challenges। এখন — সব একসাথে।</div>
+<div class="dialogue en">"You've passed nine senses. Vision said, ViT and CLIP. Painter said, VLM. Creation said, diffusion. Hearing said, Whisper and TTS. Motion said, video. Connection said, alignment. Memory said, multimodal RAG. Building said, applications. Limits said, challenges. Now — all together."</div>
+
+<div class="code-block">Complete Multimodal AI Architecture:
+
+┌──────────────────────────────────────────────────┐
+│ COMPLETE MULTIMODAL STACK                         │
+├──────────────────────────────────────────────────┤
+│                                                   │
+│  PERCEPTION (input understanding)                │
+│  ├── Vision: ViT/DINOv2 → image embeddings       │
+│  ├── Audio: Whisper → text transcription         │
+│  ├── Video: frame sampling / Gemini native       │
+│  └── Text: tokenizer → text embeddings           │
+│                                                   │
+│  ALIGNMENT (cross-modal)                         │
+│  ├── CLIP/SigLIP: text + image shared space      │
+│  ├── CLAP: text + audio shared space             │
+│  ├── ImageBind: ৬ modalities aligned             │
+│  └── Projection: image emb → LLM space           │
+│                                                   │
+│  REASONING (multimodal brain)                    │
+│  ├── GPT-4o: native multimodal LLM               │
+│  ├── Claude 3.5: vision + text                   │
+│  ├── Gemini 1.5: text+image+audio+video          │
+│  └── LLaVA: open-source VLM                      │
+│                                                   │
+│  GENERATION (output creation)                    │
+│  ├── Text: LLM (any model)                       │
+│  ├── Image: DALL-E 3 / Stable Diffusion          │
+│  ├── Audio: OpenAI TTS / ElevenLabs              │
+│  └── Video: Sora / Runway Gen-৩                  │
+│                                                   │
+│  STORAGE (multimodal memory)                     │
+│  ├── Vector DB: Qdrant (text+image+audio)        │
+│  ├── Object storage: S3 (media files)            │
+│  └── Metadata: source, modality, timestamp       │
+│                                                   │
+│  SAFETY                                           │
+│  ├── Content filter (NSFW, violence)             │
+│  ├── Hallucination check                         │
+│  ├── Bias testing                                 │
+│  ├── Deepfake detection                           │
+│  └── Watermarking (generated content)            │
+│                                                   │
+│  EVALUATION                                       │
+│  ├── MMMU, MMBench (VLM benchmarks)              │
+│  ├── CLIPScore (image-text alignment)            │
+│  ├── FID (image quality)                          │
+│  └── Human eval (ultimate ground truth)          │
+│                                                   │
+└──────────────────────────────────────────────────┘
+
+MULTIMODAL MATURITY MODEL:
+
+  Level ১: Text-only
+    → traditional LLM, no other modalities
+  
+  Level ২: Vision-augmented
+    → VLM for image Q&A
+    → no generation, no audio/video
+  
+  Level ৩: Multi-input
+    → text + image + audio input
+    → understanding across modalities
+  
+  Level ৪: Multi-output
+    → generate text + images + audio
+    → bidirectional (input and output)
+  
+  Level ৫: Full multimodal
+    → all modalities, input + output
+    → cross-modal reasoning
+    → real-time conversation (GPT-4o)
+    → native video understanding
+
+TECH STACK RECOMMENDATION:
+
+  ┌─────────────┬──────────────────────────────┐
+  │ Component   │ Tool                         │
+  ├─────────────┼──────────────────────────────┤
+  │ VLM         │ GPT-4o / Claude 3.5          │
+  │ STT         │ Whisper large-v৩             │
+  │ TTS         │ OpenAI TTS / ElevenLabs      │
+  │ Image Gen   │ DALL-E 3 / Stable Diffusion  │
+  │ Video       │ Gemini 1.5 Pro (understand)  │
+  │ Embeddings  │ CLIP + CLAP                  │
+  │ Vector DB   │ Qdrant (multimodal)          │
+  │ Framework   │ LlamaIndex multimodal        │
+  └─────────────┴──────────────────────────────┘
+
+THE FUTURE OF MULTIMODAL AI:
+
+  → Real-time: < ৩০০ms conversation
+  → Native: no separate STT/TTL pipeline
+  → Embodied: robots that see+hear+act
+  → AR/VR: real-time world understanding
+  → Creative: AI as creative partner
+  → Medical: multimodal diagnosis (image+text+audio)
+  → Education: personalized multimodal tutoring
+  → Accessibility: full sensory translation
+
+  → Multimodal AI = the next platform shift
+  → From text to everything
+  → From talking to seeing, hearing, creating</div>
+
+<div class="verse">"তিনি শিখিয়েছেন কলমের মাধ্যমে। শিখিয়েছেন মানুষকে যা সে জানত না।"<br>— কুরআন ৯৬:৪-৫<br><br>Multimodal AI হলো কলমের বাইরে — চোখ, কান, হাত। শুধু লেখা নয়, দেখা, শোনা, সৃষ্টি করা। যে এক ইন্দ্রিয়ে থাকে, সে অসম্পূর্ণ। যে পাঁচ ইন্দ্রিয়ে পৌঁছায়, সে সম্পূর্ণ। এটাই পঞ্চইন্দ্রিয়।</div>
+
+<div class="secret-box"><div class="label">দশম ইন্দ্রিয় — সমন্বয়</div><div class="text">🌈 Multimodal AI = Vision + VLM + Generation + Audio + Video + Alignment + Embeddings + Applications + Challenges।<br><small>এক ইন্দ্রিয় থেকে পাঁচ। টেক্সট থেকে সব। এটাই পঞ্চইন্দ্রিয়।</small></div></div>`
+});

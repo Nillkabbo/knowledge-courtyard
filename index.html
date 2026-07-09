@@ -54,6 +54,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(14)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--fire))}
 .game-card:nth-child(15)::before{background:linear-gradient(90deg,var(--fire),#dc2626,var(--fire))}
 .game-card:nth-child(16)::before{background:linear-gradient(90deg,var(--cyan),var(--moon),var(--cyan))}
+.game-card:nth-child(17)::before{background:linear-gradient(90deg,var(--purple),var(--gold-bright),var(--purple))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -78,6 +79,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(14) .game-tag{background:rgba(251,191,36,.12);color:var(--gold)}
 .game-card:nth-child(15) .game-tag{background:rgba(239,68,68,.12);color:var(--fire)}
 .game-card:nth-child(16) .game-tag{background:rgba(34,211,238,.12);color:var(--cyan)}
+.game-card:nth-child(17) .game-tag{background:rgba(192,132,252,.12);color:var(--purple)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -107,6 +109,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(14) .game-link{color:var(--gold)}
 .game-card:nth-child(15) .game-link{color:var(--fire)}
 .game-card:nth-child(16) .game-link{color:var(--cyan)}
+.game-card:nth-child(17) .game-link{color:var(--purple)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -146,13 +149,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">১৬</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">১৫২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">১৫২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">১৭</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">১৬২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">১৬২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 ষোলটি যাত্রা — Sixteen Journeys</div>
+  <div class="section-label">📚 সতেরোটি যাত্রা — Seventeen Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -733,6 +736,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>🚀 10 Centers</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 17: MULTIMODAL AI ══ -->
+    <a class="game-card" href="./multimodal-ai/index.html">
+      <div class="game-head">
+        <div class="game-icon">👁️</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 17 · Multimodal AI Deep Dive</div>
+          <div class="game-title">The Five Senses</div>
+          <div class="game-title-bn">পঞ্চইন্দ্রিয়</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        AI যা দেখে, শোনে, সৃষ্টি করে। Vision encoders (ViT, CLIP, DINOv2), Vision-Language Models (GPT-4o, Claude 3.5, Gemini, LLaVA), image generation (DALL-E 3, Stable Diffusion, FLUX, Midjourney), audio processing (Whisper STT, TTS, GPT-4o native audio), video understanding (frame sampling, native video, Sora/Runway generation), cross-modal alignment (CLIP, BLIP, ImageBind), multimodal embeddings ও RAG (text+image+audio retrieval), real-world applications (medical, education, code from screenshot), challenges ও limits (hallucination, bias, cost, evaluation), এবং complete multimodal architecture synthesis।
+        <span class="en">AI that sees, hears, and creates. Covers vision encoder architectures (ViT patching, CLIP contrastive learning), three VLM architectures (fusion/bridging/native), diffusion model internals (latent space, denoising), audio pipeline (Whisper, TTS, native audio), video understanding (frame sampling vs native), cross-modal alignment theory, multimodal RAG (CLIP+CLAP+ImageBind), 6 application categories with killer apps, 7 challenges with mitigations, multimodal maturity model, and complete tech stack.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">👁️ Vision</span>
+        <span class="topic-chip">🖼️ VLMs</span>
+        <span class="topic-chip">🎨 Generation</span>
+        <span class="topic-chip">🎧 Audio</span>
+        <span class="topic-chip">🎬 Video</span>
+        <span class="topic-chip">🔗 Alignment</span>
+        <span class="topic-chip">🔮 Multi-RAG</span>
+        <span class="topic-chip">🏗️ Applications</span>
+        <span class="topic-chip">⚠️ Challenges</span>
+        <span class="topic-chip">🌈 Synthesis</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>👁️ 10 Senses</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
