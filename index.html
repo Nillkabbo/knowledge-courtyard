@@ -49,6 +49,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(9)::before{background:linear-gradient(90deg,var(--fire),var(--gold-bright),var(--fire))}
 .game-card:nth-child(10)::before{background:linear-gradient(90deg,var(--moon),var(--teal),var(--moon))}
 .game-card:nth-child(11)::before{background:linear-gradient(90deg,var(--teal),var(--leaf),var(--teal))}
+.game-card:nth-child(12)::before{background:linear-gradient(90deg,var(--moon),var(--cyan),var(--moon))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -68,6 +69,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(9) .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
 .game-card:nth-child(10) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
 .game-card:nth-child(11) .game-tag{background:rgba(45,212,191,.12);color:var(--teal)}
+.game-card:nth-child(12) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -92,6 +94,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(9) .game-link{color:var(--fire)}
 .game-card:nth-child(10) .game-link{color:var(--moon)}
 .game-card:nth-child(11) .game-link{color:var(--teal)}
+.game-card:nth-child(12) .game-link{color:var(--moon)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -131,13 +134,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">১১</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">১০২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">১০২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">১২</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">১১২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">১১২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 এগারোটি যাত্রা — Eleven Journeys</div>
+  <div class="section-label">📚 বারোটি যাত্রা — Twelve Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -538,6 +541,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>👁️ 10 Sights</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 12: RAG MASTERY ══ -->
+    <a class="game-card" href="./rag-mastery/index.html">
+      <div class="game-head">
+        <div class="game-icon">🪣</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 12 · RAG Mastery Deep Dive</div>
+          <div class="game-title">The Well of Knowledge</div>
+          <div class="game-title-bn">জ্ঞানের কুয়ো</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        ডকুমেন্ট থেকে প্রশ্ন পর্যন্ত সম্পূর্ণ RAG পাইপলাইন। Document ingestion (PDF/HTML/OCR), vector indexing (HNSW/IVF), naive RAG limits, advanced retrieval (parent-child, HyDE, ensemble), query transformation (rewrite/expand/decompose/step-back), RAGAS evaluation (4 metrics), GraphRAG (knowledge graphs), production patterns (caching/incremental/multi-tenancy/observability), failure modes, এবং complete production architecture।
+        <span class="en">Complete RAG pipeline from document to answer. Covers format-specific ingestion challenges, ANN indexing algorithms (HNSW vs IVF vs PQ), naive RAG accuracy benchmarks by task type, 5 advanced retrieval patterns, 5 query transformations with impact data, RAGAS evaluation framework (precision/recall/faithfulness/relevance), Microsoft GraphRAG pipeline, 7 production patterns (semantic cache, incremental indexing, multi-tenancy, observability, fallback, A/B, guardrails), 7 failure modes with fixes, and complete production architecture with tech stack and budget.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">📚 Ingestion</span>
+        <span class="topic-chip">🗂️ Indexing</span>
+        <span class="topic-chip">🧪 Naive RAG</span>
+        <span class="topic-chip">🔗 Advanced Retrieval</span>
+        <span class="topic-chip">🔄 Query Transform</span>
+        <span class="topic-chip">📊 RAGAS Eval</span>
+        <span class="topic-chip">🕸️ GraphRAG</span>
+        <span class="topic-chip">🏭 Production</span>
+        <span class="topic-chip">⚠️ Failure Modes</span>
+        <span class="topic-chip">🌊 Architecture</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🪣 10 Layers</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>

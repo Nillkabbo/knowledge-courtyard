@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>জ্ঞানের কুয়ো — The Well of Knowledge</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">জ্ঞানের কুয়ো</h1>
+  <div class="title-sub">The Well of Knowledge</div>
+  <div class="title-desc">
+    RAG Mastery — ডকুমেন্ট থেকে প্রশ্ন পর্যন্ত সম্পূর্ণ জ্ঞান পাইপলাইন।<br>
+    দশটি স্তর — প্রতিটি স্তরে একজন কূপ কারিগর। প্রতেকজন RAG-এর এক একটি রহস্য জানেন।<br><br>
+    <em>RAG Mastery — the complete knowledge pipeline from document to answer. Ten layers of the well, each with a master who knows one secret of Retrieval-Augmented Generation.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🪣 কুয়োতে নামো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">কুয়ো খনকের গল্প — The Well Digger's Tale</div>
+    <p>তুমি একটা গ্রামে আছ। গ্রামে পানি নেই। মানুষ তৃষ্ণার্ত। কিন্তু তোমার কাছে একটা সরঞ্জাম আছে — খোঁচা, কোদাল, শ্রম। তুমি কুয়ো খোঁড়ো। গভীরে যাও। পানির স্তর খোঁজো। তারপর পানি তোলো — পরিশুদ্ধ করো — মানুষের কাছে পৌঁছে দাও।</p>
+    <p class="en">You're in a village. No water. People thirst. But you have tools — pickaxe, spade, labor. You dig a well. Go deep. Find the water table. Then draw water — purify it — deliver to people.</p>
+    <hr class="p-divider">
+    <p>RAG ঠিক তেমনি। পানি = তথ্য। কুয়ো = knowledge base। পাইপলাইন = retrieval system। মানুষের তৃষ্ণা = ইউজারের প্রশ্ন। কিন্তু শুধু কুয়ো খোঁড়া যথেষ্ট নয় — পানি পরিশুদ্ধ করতে হয়, সঠিক পরিমাণে তুলতে হয়, সঠিক সময়ে পৌঁছাতে হয়। Context Engineering বইয়ে তুমি শিখেছ context কীভাবে পরিচালনা করতে হয়। এখন শিখবে — সেই context-এ কী পাঠাবে, কীভাবে সংগ্রহ করবে, কীভাবে পরিশুদ্ধ করবে।</p>
+    <p class="en">RAG is exactly that. Water = information. Well = knowledge base. Pipeline = retrieval system. People's thirst = user's question. But just digging the well isn't enough — water must be purified, drawn in the right amount, delivered at the right time. In the Context Engineering book you learned how to manage context. Now you'll learn — what to send in that context, how to collect it, how to purify it.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 কুয়োতে নেমে যাও</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🪣</span><span id="hud-rank-name">পানি সংগ্রাহক</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>স্তর বেছে নাও</h2><p>দশটি স্তর, ক্রমানুসারে। প্রতিটি স্তরে গভীরে নামো।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← কুয়োর মুখে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🌊</div>
+  <h1 class="complete-title">তুমি এখন জ্ঞানের কুয়ো স্থপতি</h1>
+  <p class="complete-text">দশটি স্তর পেরিয়েছ। RAG mastery-এর প্রতিটি স্তর আয়ত্ত করেছ।<br><br>Ingestion, indexing, naive RAG, advanced retrieval, query transformation, evaluation, GraphRAG, production patterns, failure modes, এবং complete architecture।<br><br>এখন তুমি জানো — ডকুমেন্ট থেকে প্রশ্ন পর্যন্ত সম্পূর্ণ পাইপলাইন।<br><strong>জ্ঞানের কুয়ো থেকে অফুরন্ত পানি।</strong></p>
+  <div class="complete-verse">رَبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার কুয়োতে নামো</button>
+  <div class="cheat-section-end"><h3>📋 RAG Mastery চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">স্তর সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 RAG Mastery চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
