@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>দৃষ্টির ক্যানভাস — The Canvas of Sight</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">দৃষ্টির ক্যানভাস</h1>
+  <div class="title-sub">The Canvas of Sight</div>
+  <div class="title-desc">
+    Context Engineering — LLM-কে যা দেখাও তাই সে বোঝে। কী দেখাবে, কতটুকু দেখাবে, কীভাবে সাজাবে।<br>
+    দশটি দৃষ্টি — প্রতিটি দৃষ্টিতে একজন কারিগর। প্রতেকজন context প্রকৌশলের এক একটা স্তর শেখাবেন।<br><br>
+    <em>Context Engineering — what you show the LLM is what it understands. What to show, how much, how to arrange it. Ten layers of the craft that turns raw information into precision LLM understanding.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">👁️ ক্যানভাসে প্রবেশ করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">দৃষ্টির শিল্পী — The Artist of Sight</div>
+    <p>তুমি একটা চিত্রশিল্পী। ক্যানভাসে রং বসাও। কিন্তু ক্যানভাস সীমিত — তুমি সব আঁকতে পারো না। কী আঁকবে, কত আঁকবে, কোথায় আঁকবে — এই সিদ্ধান্তই ছবির সৌন্দর্য নির্ধারণ করে। LLM-এর context window ও সেই ক্যানভাস। সীমিত স্থান। কী দেখাবে — সেটাই context engineering।</p>
+    <p class="en">You're a painter. You place colors on canvas. But the canvas is limited — you can't paint everything. What to paint, how much, where — these decisions determine the painting's beauty. The LLM's context window is that canvas. Limited space. What you show — that's context engineering.</p>
+    <hr class="p-divider">
+    <p>LLM Anatomy বইয়ে তুমি শিখেছ মডেল কীভাবে কাজ করে। এখন শিখবে — মডেলকে কীভাবে তথ্য দেবে। Context window একটা ক্যানভাস — ১২৮K, ২০০K, বা ১M টোকেন। কিন্তু শুধু বড় হলে হয় না। "Lost in the middle," attention dilution, retrieval precision, chunking strategy — এগুলো বুঝলে তুমি LLM-কে সঠিক তথ্য সঠিক সময়ে সঠিক ক্রমে দিতে পারবে।</p>
+    <p class="en">In the LLM Anatomy book you learned how the model works. Now you'll learn how to feed it information. The context window is a canvas — 128K, 200K, or 1M tokens. But size alone isn't enough. Lost in the middle, attention dilution, retrieval precision, chunking strategy — understanding these lets you give the LLM the right information at the right time in the right order.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 ক্যানভাসে ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">👁️</span><span id="hud-rank-name">পর্যবেক্ষক</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দৃষ্টি বেছে নাও</h2><p>দশটি দৃষ্টি, ক্রমানুসারে। প্রতিটি স্তর আগের চেয়ে গভীর।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← ক্যানভাসে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🎯</div>
+  <h1 class="complete-title">তুমি এখন দৃষ্টির স্থপতি</h1>
+  <p class="complete-text">দশটি দৃষ্টি পেরিয়েছ। Context engineering-এর প্রতিটি স্তর আয়ত্ত করেছ।<br><br>Context window economics, lost-in-the-middle, chunking, retrieval, reranking, compression, long context vs RAG, conversation memory, multi-hop, এবং production architecture।<br><br>এখন তুমি জানো — LLM-কে কী দেখাবে, কতটুকু দেখাবে, কীভাবে সাজাবে।<br><strong>দৃষ্টিই বোঝার ভিত্তি।</strong></p>
+  <div class="complete-verse">رَبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার ক্যানভাসে বসো</button>
+  <div class="cheat-section-end"><h3>📋 Context Engineering চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দৃষ্টি সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 Context Engineering চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
