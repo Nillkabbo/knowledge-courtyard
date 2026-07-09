@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>মাপকাঠি — The Measure</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">মাপকাঠি</h1>
+  <div class="title-sub">The Measure</div>
+  <div class="title-desc">
+    LLM Evaluation — মডেলের গুণমান কীভাবে মাপবে?<br>
+    দশটি মাপ — প্রতিটিতে একজন পরিমাপক। প্রতেকজন মূল্যায়নের এক একটি রহস্য জানেন।<br><br>
+    <em>LLM Evaluation — how to measure model quality. Ten measures, each with an evaluator who knows one secret of benchmarking, scoring, and building a culture of measurement for AI systems.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">📏 মাপ শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">অন্ধ স্থপতির গল্প — The Blind Architect</div>
+    <p>একজন স্থপতি ভবন বানান — দ্রুত, সুন্দর, বিশাল। কিন্তু কখনো মাপেন না। কত উঁচু? কত শক্ত? কত নিরাপদ? একদিন ভবন ধসে পড়ে। "আমি ভেবেছিলাম ভালো," তিনি বললেন। "ভাবলে হবে না," বিচারক বললেন। "মাপতে হবে।" যে মাপে না, সে অন্ধ। যে মাপে, সে দেখে।</p>
+    <p class="en">An architect builds — fast, beautiful, massive. But never measures. How tall? How strong? How safe? One day the building collapses. "I thought it was good," he said. "Thinking isn't enough," the judge said. "Must measure." One who doesn't measure, is blind. One who measures, sees.</p>
+    <hr class="p-divider">
+    <p>এই বই তোমাকে শেখাবে — LLM কীভাবে মাপতে হয়। কোন metric কখন? Accuracy, faithfulness, relevance, coherence। Human eval, LLM-as-judge, automated testing। Benchmark design, eval pipeline, regression detection। যে মাপে, সে উন্নত করে। যে মাপে না, সে অন্ধের মতো চলে।</p>
+    <p class="en">This book teaches — how to measure LLMs. Which metric when? Accuracy, faithfulness, relevance, coherence. Human eval, LLM-as-judge, automated testing. Benchmark design, eval pipeline, regression detection. One who measures, improves. One who doesn't, walks blindly.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 মাপে ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">📏</span><span id="hud-rank-name">পরিমাপক</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>মাপ বেছে নাও</h2><p>দশটি মাপ, ক্রমানুসারে। প্রতিটি মূল্যায়নের এক একটি স্তর।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← মাপে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🏆</div>
+  <h1 class="complete-title">তুমি এখন মাপন গুরু</h1>
+  <p class="complete-text">দশটি মাপ পেরিয়েছ। LLM evaluation-এর প্রতিটি স্তর আয়ত্ত করেছ।<br><br>Metrics, task-specific eval, LLM-as-judge, human eval, benchmark design, eval pipeline, regression, production eval, RAG eval, এবং complete eval architecture।<br><br>এখন তুমি জানো — মডেল কীভাবে মাপতে হয়।<br><strong>যে মাপে, সে উন্নত করে।</strong></p>
+  <div class="complete-verse">رَبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার মাপ শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 LLM Evals চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">মাপ সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 LLM Evals চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
