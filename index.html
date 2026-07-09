@@ -45,6 +45,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(5)::before{background:linear-gradient(90deg,var(--leaf),var(--gold-bright),var(--leaf))}
 .game-card:nth-child(6)::before{background:linear-gradient(90deg,var(--moon),var(--gold-bright),var(--fire))}
 .game-card:nth-child(7)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
+.game-card:nth-child(8)::before{background:linear-gradient(90deg,var(--teal),var(--moon),var(--teal))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -60,6 +61,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(5) .game-tag{background:rgba(82,196,26,.12);color:var(--leaf)}
 .game-card:nth-child(6) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
 .game-card:nth-child(7) .game-tag{background:rgba(179,127,235,.12);color:var(--purple)}
+.game-card:nth-child(8) .game-tag{background:rgba(45,212,191,.12);color:var(--teal)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -80,6 +82,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(5) .game-link{color:var(--leaf)}
 .game-card:nth-child(6) .game-link{color:var(--moon)}
 .game-card:nth-child(7) .game-link{color:var(--purple)}
+.game-card:nth-child(8) .game-link{color:var(--teal)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -119,13 +122,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">৭</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">৬২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">৬২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">৮</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">৭২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">৭২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 সাতটি যাত্রা — Seven Journeys</div>
+  <div class="section-label">📚 আটটি যাত্রা — Eight Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -382,6 +385,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 800 XP</span>
           <span>🔮 8 Seats</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 8: PHD JOURNEY ══ -->
+    <a class="game-card" href="./phd-journey/index.html">
+      <div class="game-head">
+        <div class="game-icon">🎓</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 8 · PhD &amp; Research</div>
+          <div class="game-title">The Research Pilgrimage</div>
+          <div class="game-title-bn">গবেষণার তীর্থযাত্রা</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        PhD — শূন্য থেকে অ্যাডমিশন পর্যন্ত একটি সম্পূর্ণ যাত্রা। দশটি স্থান — প্রথম সন্দেহ থেকে স্কলার হওয়া পর্যন্ত। Is PhD right for you? Funding (RA/TA/Fellowship), choosing a research area, SOP, cold emailing professors, low/mid/high profile strategies, getting research experience, PhD interviews, and life as a scholar.
+        <span class="en">PhD — a complete journey from zero to admission. Ten stations from first doubt to becoming a scholar. Covers decision-making, funding (RA/TA/Fellowship), research areas, SOP, cold emailing, profile strategies for low/mid/high applicants, first paper, interviews, and PhD life. Designed for international students with US Master's degrees in CS and tech.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🏔️ Decision</span>
+        <span class="topic-chip">🗺️ Structure</span>
+        <span class="topic-chip">💰 Funding</span>
+        <span class="topic-chip">🎯 Research Area</span>
+        <span class="topic-chip">📝 SOP</span>
+        <span class="topic-chip">🤝 Cold Email</span>
+        <span class="topic-chip">⚖️ Profile Strategy</span>
+        <span class="topic-chip">📚 First Paper</span>
+        <span class="topic-chip">🧭 Interview</span>
+        <span class="topic-chip">🎓 PhD Life</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🎓 10 Stations</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
