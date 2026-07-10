@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>জ্ঞানের কারিগর — The Craftsman of Knowledge</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</div>
+  <h1 class="title-main">জ্ঞানের কারিগর</h1>
+  <div class="title-sub">The Craftsman of Knowledge</div>
+  <div class="title-desc">
+    পড়ো, ভাবো, লেখো — গভীরে যাওয়ার শিল্প।<br>
+    দশটি দরজা — Adler-এর ৪ স্তর, Luhmann-এর Zettelkasten, Feynman টেকনিক, Keshav-এর ৩-পাস পদ্ধতি, এবং কীভাবে Musk, Gates, Munger, Naval পড়েন।<br><br>
+    <em>Read, think, write — the craft of going deep. Ten doors: Adler's 4 levels of reading, Luhmann's Zettelkasten (90,000 notes → 70 books), Feynman technique, Keshav's 3-pass paper reading, how the greatest minds read (Musk, Gates, Munger, Naval, Holiday), critical analysis, syntopical reading, building a second brain. All backed by named researchers and biographical sources.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">📖 যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">পানির ঝুলি — The Leaking Bucket</div>
+    <p>একজন মানুষ বালতি ভর্তি পানি বহন করছে। কিন্তু বালতিতে ছিদ্র। পথ শেষে পানি নেই — শুধু ভেজা দাগ। সে বলে — আমি তো পানি আনলাম! কিন্তু পানি কোথায়? সে পানি আনেনি — শুধু বহন করেছে। এটাই অধিকাংশ পাঠক। চোখ দিয়ে দেখে, মস্তিষ্ক দিয়ে ধরে না। Ebbinghaus (১৮৮৫) প্রমাণ করেছিলেন — ২ সপ্তাহে ৯০% ভুলে যাই। বই পড়ে শেষ করা = পানি বহন করে ছিদ্র বালতিতে।</p>
+    <p class="en">A man carries a bucket full of water. But the bucket has holes. At journey's end, no water — only wet marks. He says — I brought water! But where is it? He didn't bring water — he merely carried it. This is most readers. Eyes see, brain doesn't hold. Ebbinghaus (1885) proved — 90% forgotten in 2 weeks. Finishing a book = carrying water in a leaking bucket.</p>
+    <hr class="p-divider">
+    <p>এই বই তোমাকে শেখাবে — কীভাবে ছিদ্র বন্ধ করো। Adler-এর ৪ স্তর (১৯৪০), Luhmann-এর Zettelkasten (৯০,০০০ নোট → ৭০+ বই), Feynman টেকনিক, Keshav-এর ৩-পাস পদ্ধতি (২০০৭), এবং কীভাবে Musk, Gates, Munger, Naval, Holiday পড়েন। প্রতিটা দরজায় একটা নাম, একটা সত্য, একটা পদ্ধতি — যা প্রমাণিত, যা কাজ করে।</p>
+    <p class="en">This book teaches you — how to plug the holes. Adler's 4 levels (1940), Luhmann's Zettelkasten (90,000 notes → 70+ books), Feynman technique, Keshav's 3-pass method (2007), and how Musk, Gates, Munger, Naval, Holiday read. Each door: a name, a truth, a method — proven, working.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">📖</span><span id="hud-rank-name">নতুন পাঠক</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা, ক্রমানুসারে। প্রতিটি জ্ঞানের এক একটি স্তর।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← গ্রন্থাগারে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🏛️</div>
+  <h1 class="complete-title">তুমি এখন হিকমাহ অধিকারী</h1>
+  <p class="complete-text">দশটি দরজা পেরিয়েছ। পড়া, ভাবা, লেখার প্রতিটি স্তর আয়ত্ত করেছ।<br><br>Adler-এর ৪ স্তর, Luhmann-এর Zettelkasten, Feynman টেকনিক, Keshav-এর ৩-পাস পদ্ধতি, কীভাবে Musk/Gates/Munger/Naval পড়েন, critical analysis, syntopical reading, এবং second brain synthesis।<br><br>এখন তুমি জানো — পড়া শেষ নয়, শুরু। পড়ার পরেই আসল কাজ — ভাবা, লেখা, সংযুক্ত করা।<br><strong>কলমের মাধ্যমে স্থায়ী জ্ঞান।</strong></p>
+  <div class="complete-verse">اقْرَأْ وَرَبُّكَ الْأَكْرَمُ ۝ الَّذِي عَلَّمَ بِالْقَلَمِ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"পড়ো, এবং তোমার রব সর্বাধিক দাতা — যিনি কলমের মাধ্যমে শিখিয়েছেন।" — কুরআন ৯৬:৩-৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 জ্ঞান কারিগর চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 জ্ঞান কারিগর চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>

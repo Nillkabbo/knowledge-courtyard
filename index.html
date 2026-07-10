@@ -61,6 +61,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(21)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--fire))}
 .game-card:nth-child(22)::before{background:linear-gradient(90deg,var(--leaf),var(--gold-bright),var(--leaf))}
 .game-card:nth-child(23)::before{background:linear-gradient(90deg,var(--fire),var(--moon),var(--fire))}
+.game-card:nth-child(24)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--gold))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -92,6 +93,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(21) .game-tag{background:rgba(234,88,12,.12);color:var(--fire)}
 .game-card:nth-child(22) .game-tag{background:rgba(34,197,94,.12);color:var(--leaf)}
 .game-card:nth-child(23) .game-tag{background:rgba(220,38,38,.12);color:var(--fire)}
+.game-card:nth-child(24) .game-tag{background:rgba(245,158,11,.12);color:var(--gold)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -128,6 +130,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(21) .game-link{color:var(--fire)}
 .game-card:nth-child(22) .game-link{color:var(--leaf)}
 .game-card:nth-child(23) .game-link{color:var(--fire)}
+.game-card:nth-child(24) .game-link{color:var(--gold)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -167,13 +170,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">২৩</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">২২২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">২২২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">২৪</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">২৩২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">২৩২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 তেইশটি যাত্রা — Twenty-Three Journeys</div>
+  <div class="section-label">📚 চব্বিশটি যাত্রা — Twenty-Four Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -1042,6 +1045,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>🧠 10 Doors</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 24: KNOWLEDGE CRAFTSMAN ══ -->
+    <a class="game-card" href="./knowledge-craftsman/index.html">
+      <div class="game-head">
+        <div class="game-icon">📖</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 24 · Reading/Thinking/Writing Deep Dive</div>
+          <div class="game-title">The Craftsman of Knowledge</div>
+          <div class="game-title-bn">জ্ঞানের কারিগর</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        পড়ো, ভাবো, লেখো — গভীরে যাওয়ার শিল্প। Ebbinghaus (১৮৮৫) ভুলে যাওয়ার বক্ররেখা, Adler (১৯৪০) ৪ স্তরের পড়া, Luhmann Zettelkasten (৯০,০০০ নোট → ৭০+ বই), Feynman টেকনিক, Keshav (২০০৭) ৩-পাস পেপার পড়ার পদ্ধতি, replication crisis, কীভাবে Musk/Gates/Munger/Naval/Holiday পড়েন, syntopical reading, Tiago Forte (২০২২) second brain CODE method।
+        <span class="en">Read, think, write — the craft of going deep. Covers Ebbinghaus forgetting curve (1885), Adler's 4 levels of reading (1940), Luhmann's Zettelkasten (90,000 notes → 70+ books), Feynman technique, Keshav's 3-pass paper reading (2007), replication crisis + critical analysis, how the greatest minds read (Musk first principles, Gates Think Week, Munger mental models, Naval re-reading, Holiday notecards), writing as thinking (Paul Graham), syntopical reading (Adler Level 4), and Tiago Forte's second brain CODE method (2022).</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">📖 Forgetting</span>
+        <span class="topic-chip">🔍 4 Levels</span>
+        <span class="topic-chip">📝 Zettelkasten</span>
+        <span class="topic-chip">🧠 Feynman</span>
+        <span class="topic-chip">⚡ Great Minds</span>
+        <span class="topic-chip">📄 Papers</span>
+        <span class="topic-chip">🔬 Critical</span>
+        <span class="topic-chip">✍️ Writing</span>
+        <span class="topic-chip">🔗 Syntopical</span>
+        <span class="topic-chip">🏛️ 2nd Brain</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>📖 10 Doors</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
