@@ -56,6 +56,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(16)::before{background:linear-gradient(90deg,var(--cyan),var(--moon),var(--cyan))}
 .game-card:nth-child(17)::before{background:linear-gradient(90deg,var(--purple),var(--gold-bright),var(--purple))}
 .game-card:nth-child(18)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--gold))}
+.game-card:nth-child(19)::before{background:linear-gradient(90deg,var(--ink-dim),var(--moon),var(--ink-dim))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -82,6 +83,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(16) .game-tag{background:rgba(34,211,238,.12);color:var(--cyan)}
 .game-card:nth-child(17) .game-tag{background:rgba(192,132,252,.12);color:var(--purple)}
 .game-card:nth-child(18) .game-tag{background:rgba(245,158,11,.12);color:var(--gold)}
+.game-card:nth-child(19) .game-tag{background:rgba(148,163,184,.12);color:var(--ink-dim)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -113,6 +115,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(16) .game-link{color:var(--cyan)}
 .game-card:nth-child(17) .game-link{color:var(--purple)}
 .game-card:nth-child(18) .game-link{color:var(--gold)}
+.game-card:nth-child(19) .game-link{color:var(--ink-dim)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -152,13 +155,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">১৮</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">১৭২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">১৭২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">১৯</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">১৮২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">১৮২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 আঠারোটি যাত্রা — Eighteen Journeys</div>
+  <div class="section-label">📚 ঊনিশটি যাত্রা — Nineteen Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -811,6 +814,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>📏 10 Measures</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 19: INFERENCE OPTIMIZATION ══ -->
+    <a class="game-card" href="./inference-optimization/index.html">
+      <div class="game-head">
+        <div class="game-icon">⚙️</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 19 · Inference Optimization Deep Dive</div>
+          <div class="game-title">The Forged Edge</div>
+          <div class="game-title-bn">ধাতব কর্মক্ষমতা</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        প্রতিটি টোকেন থেকে সর্বোচ্চ গতি ও সর্বনিম্ন খরচ। KV cache internals (PagedAttention, prefix caching, GQA, KV quantization), model quantization (GPTQ, AWQ, GGUF, EXL2, nf4), request batching (static, dynamic, continuous, chunked prefill), attention optimization (FlashAttention 1/2/3, sparse, sliding window, ring attention), speculative decoding (draft model, Medusa, EAGLE, 2-3x speedup with zero quality loss), memory optimization (offloading, tensor parallelism, weight sharing), pruning ও knowledge distillation, custom kernels (CUDA, Triton, TensorRT-LLM, torch.compile), GPU selection guide (H100/A100/T4/consumer), এবং complete optimization stack synthesis।
+        <span class="en">Maximum speed and minimum cost from every token. Covers KV cache deep dive (PagedAttention memory management, prefix caching, GQA/MQA architecture, KV cache compression/quantization), 5 quantization methods compared (RTN/GPTQ/AWQ/GGUF/EXL2) with quality benchmarks, 3 batching strategies (static/dynamic/continuous) with continuous batching detail, attention optimization (FlashAttention 1-3 internals, sparse/sliding window, ring attention), speculative decoding with mathematical quality guarantee, 7 memory optimization techniques, pruning & distillation strategies, kernel-level optimization (CUDA/Triton/TensorRT-LLM/torch.compile with 150% speedup), GPU hardware comparison with cost/performance analysis, and complete 9-layer optimization stack achieving 10x faster + 6x cheaper.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">⚙️ KV Cache</span>
+        <span class="topic-chip">🗜️ Quantization</span>
+        <span class="topic-chip">🧮 Batching</span>
+        <span class="topic-chip">⚡ Attention</span>
+        <span class="topic-chip">🔮 Speculative</span>
+        <span class="topic-chip">🧠 Memory</span>
+        <span class="topic-chip">🔪 Pruning</span>
+        <span class="topic-chip">🔧 Kernels</span>
+        <span class="topic-chip">🖥️ Hardware</span>
+        <span class="topic-chip">💎 Synthesis</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>⚙️ 10 Steps</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
