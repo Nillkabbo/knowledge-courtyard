@@ -60,6 +60,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(20)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
 .game-card:nth-child(21)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--fire))}
 .game-card:nth-child(22)::before{background:linear-gradient(90deg,var(--leaf),var(--gold-bright),var(--leaf))}
+.game-card:nth-child(23)::before{background:linear-gradient(90deg,var(--fire),var(--moon),var(--fire))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -90,6 +91,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(20) .game-tag{background:rgba(99,102,241,.12);color:var(--purple)}
 .game-card:nth-child(21) .game-tag{background:rgba(234,88,12,.12);color:var(--fire)}
 .game-card:nth-child(22) .game-tag{background:rgba(34,197,94,.12);color:var(--leaf)}
+.game-card:nth-child(23) .game-tag{background:rgba(220,38,38,.12);color:var(--fire)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -125,6 +127,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(20) .game-link{color:var(--purple)}
 .game-card:nth-child(21) .game-link{color:var(--fire)}
 .game-card:nth-child(22) .game-link{color:var(--leaf)}
+.game-card:nth-child(23) .game-link{color:var(--fire)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -164,13 +167,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">২২</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">২১২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">২১২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">২৩</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">২২২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">২২২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 বাইশটি যাত্রা — Twenty-Two Journeys</div>
+  <div class="section-label">📚 তেইশটি যাত্রা — Twenty-Three Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -1003,6 +1006,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>🌳 10 Doors</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 23: HUMAN PSYCHOLOGY ══ -->
+    <a class="game-card" href="./human-psychology/index.html">
+      <div class="game-head">
+        <div class="game-icon">🧠</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 23 · Human Psychology Deep Dive</div>
+          <div class="game-title">The Throne of the Mind</div>
+          <div class="game-title-bn">মনের সিংহাসন</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        কেন কেউ নিয়ন্ত্রণ করে, কেউ নিয়ন্ত্রিত হয়? Seligman (১৯৬৭) learned helplessness, Cialdini (১৯৮৪) ৭ principles of persuasion, Keltner (২০০৭) power paradox, Sapolsky stress hierarchy, Rotter (১৯৬৬) locus of control, Mullainathan (২০১৩) scarcity mindset, Dweck (২০০৬) growth mindset, Mischel (১৯৭২) marshmallow test, Doidge (২০০৭) ও Huberman (২০২১) neuroplasticity, Frankl (১৯৪৬) last human freedom, Beck CBT, Linehan radical acceptance। গবেষণালব্ধ — নয়টি গবেষক, নয়টি সত্য, এক মুক্তির পথ।
+        <span class="en">Why do some control others while some are controlled? Research-backed deep dive: Seligman learned helplessness (1967), Cialdini 7 persuasion principles (1984), Keltner power paradox (2007), Sapolsky stress hierarchy, Rotter locus of control (1966), Mullainathan scarcity mindset (2013), Dweck growth mindset (2006), Mischel marshmallow test (1972), Doidge neuroplasticity (2007), Huberman rewiring protocols (2021), Frankl last human freedom (1946), Beck CBT, Linehan radical acceptance. Nine researchers, nine truths, one path to mental sovereignty.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🧠 Helplessness</span>
+        <span class="topic-chip">🎭 Manipulation</span>
+        <span class="topic-chip">⚡ Power</span>
+        <span class="topic-chip">🪤 Gaslighting</span>
+        <span class="topic-chip">💎 Locus</span>
+        <span class="topic-chip">🔥 Growth</span>
+        <span class="topic-chip">⏳ Gratification</span>
+        <span class="topic-chip">🌱 Rewiring</span>
+        <span class="topic-chip">🔓 Freedom</span>
+        <span class="topic-chip">👑 Sovereignty</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🧠 10 Doors</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>

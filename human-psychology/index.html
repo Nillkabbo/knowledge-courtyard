@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>মনের সিংহাসন — The Throne of the Mind</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">মনের সিংহাসন</h1>
+  <div class="title-sub">The Throne of the Mind</div>
+  <div class="title-desc">
+    কেন কেউ নিয়ন্ত্রণ করে, কেউ নিয়ন্ত্রিত হয়? কেন কেউ বিলিয়নিয়ার, কেউ বেঁচে থাকতে হিমশিম খায়?<br>
+    দশটি দরজা — প্রতিটিতে একজন মাস্টার। প্রতেকজন মানুষের মনের এক একটি রহস্য জানেন।<br>
+    গবেষণালব্ধ জ্ঞান — Seligman, Cialdini, Keltner, Sapolsky, Dweck, Frankl, Doidge, Huberman।<br><br>
+    <em>Why do some people control others, while some are controlled? Why do some become billionaires while others struggle to survive? Ten doors, each with a master who knows one secret of human psychology — power, manipulation, learned helplessness, scarcity, neuroplasticity, and the path to mental sovereignty. Based on decades of research by Seligman, Cialdini, Keltner, Sapolsky, Rotter, Dweck, Mischel, Frankl, Doidge, Huberman, and Lazar.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🧠 যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">দুই মানুষ — Two People, Same World</div>
+    <p>দুই মানুষ একই শহরে জন্মাল। একই স্কুল। একই সুযোগ। কিন্তু একজন নিয়ন্ত্রণ করে, একজন নিয়ন্ত্রিত হয়। একজন সম্পদ গড়ে, একজন বেঁচে থাকতে হিমশিম খায়। কেন? ভাগ্য নয় — গবেষণা বলে অন্য কথা। ষাট বছরের মনোবিজ্ঞান ও স্নায়ুবিজ্ঞান একটা সত্য প্রকাশ করে — পার্থক্য মস্তিষ্কে নয়, মনস্তত্ত্বে। এবং মনস্তত্ত্ব পরিবর্তনযোগ্য।</p>
+    <p class="en">Two people born in the same city. Same school. Same opportunities. But one controls, one is controlled. One builds wealth, one struggles to survive. Why? Not luck — research says otherwise. Sixty years of psychology and neuroscience reveal one truth — the difference is not in the brain, it's in the psychology. And psychology is changeable.</p>
+    <hr class="p-divider">
+    <p>এই বই তোমাকে শেখাবে — কীভাবে কেউ তোমাকে নিয়ন্ত্রণ করে, কেন তুমি নিয়ন্ত্রিত হও, এবং সবচেয়ে গুরুত্বপূর্ণ — কীভাবে মুক্ত হও। Seligman-এর learned helplessness, Cialdini-র persuasion, Keltner-র power paradox, Dweck-এর growth mindset, Frankl-এর শেষ স্বাধীনতা, Doidge-এর neuroplasticity। প্রতিটা দরজা একটা গবেষণা — একটা সত্য — একটা মুক্তির পথ।</p>
+    <p class="en">This book teaches you — how others control you, why you allow it, and most importantly — how to break free. Seligman's learned helplessness, Cialdini's persuasion, Keltner's power paradox, Dweck's growth mindset, Frankl's last freedom, Doidge's neuroplasticity. Each door is research — a truth — a path to liberation.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🧠</span><span id="hud-rank-name">নতুন মন</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা, ক্রমানুসারে। প্রতিটি মনের এক একটি স্তর।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← মনে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">👑</div>
+  <h1 class="complete-title">তুমি এখন মুক্ত আত্মা</h1>
+  <p class="complete-text">দশটি দরজা পেরিয়েছ। মনের প্রতিটি স্তর আয়ত্ত করেছ।<br><br>Learned helplessness, manipulation mechanics, power paradox, gaslighting, locus of control, growth mindset, delayed gratification, neuroplasticity, the last freedom, এবং mental sovereignty synthesis।<br><br>এখন তুমি জানো — কেউ তোমাকে নিয়ন্ত্রণ করতে পারে না, যদি না তুমি অনুমতি দাও।<br><strong>শেষ স্বাধীনতা — নিজের মনন বেছে নেওয়া।</strong></p>
+  <div class="complete-verse">رَبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 মনের মুক্তি চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 মনের মুক্তি চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
