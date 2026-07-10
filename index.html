@@ -59,6 +59,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(19)::before{background:linear-gradient(90deg,var(--ink-dim),var(--moon),var(--ink-dim))}
 .game-card:nth-child(20)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
 .game-card:nth-child(21)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--fire))}
+.game-card:nth-child(22)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -88,6 +89,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(19) .game-tag{background:rgba(148,163,184,.12);color:var(--ink-dim)}
 .game-card:nth-child(20) .game-tag{background:rgba(99,102,241,.12);color:var(--purple)}
 .game-card:nth-child(21) .game-tag{background:rgba(234,88,12,.12);color:var(--fire)}
+.game-card:nth-child(22) .game-tag{background:rgba(179,127,235,.12);color:var(--purple)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -122,6 +124,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(19) .game-link{color:var(--ink-dim)}
 .game-card:nth-child(20) .game-link{color:var(--purple)}
 .game-card:nth-child(21) .game-link{color:var(--fire)}
+.game-card:nth-child(22) .game-link{color:var(--purple)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -161,13 +164,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">২১</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">২০২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">২০২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">২২</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">২১২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">২১২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 একুশটি যাত্রা — Twenty-One Journeys</div>
+  <div class="section-label">📚 বাইশটি যাত্রা — Twenty-Two Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -934,9 +937,43 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-  </div>
+    <!-- ══ GAME 22: RESEARCHER'S MIND ══ -->
+    <a class="game-card" href="./researcher-mind/index.html">
+      <div class="game-head">
+        <div class="game-icon">🧠</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 22 · Researcher Mindset</div>
+          <div class="game-title">The Researcher's Mind</div>
+          <div class="game-title-bn">গবেষকের মন</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        ডেভেলপার থেকে গবেষক — মনের দশটা রূপান্তর। শিশুর কৌতূহল থেকে শুরু করে গবেষকের পরিচয় পর্যন্ত। Research Pilgrimage-এর ভাইবোন — সেই বই শেখায় PhD কীভাবে পাবে, এই বই শেখায় PhD পাওয়ার আগে তুমি কে হবে। কৌতূহল, প্রশ্ন তৈরি, পেপার পড়া, সন্দেহবাদ, ক্রস-ডিসিপ্লিনারি সংযোগ, ব্যর্থতা গ্রহণ, লেখার মাধ্যমে চিন্তা, বুদ্ধিবৃত্তিক বিনয়, দীর্ঘমেয়াদী অধ্যবসায়, এবং গবেষকের পরিচয় সংশ্লেষণ।
+        <span class="en">From developer to researcher — ten transformations of the mind. From a child's curiosity to a researcher's identity. The companion to Research Pilgrimage — that book teaches how to get a PhD, this one teaches who you become before it. Curiosity, question formulation, paper reading, skepticism, cross-disciplinary connections, embracing failure, writing as thinking, intellectual humility, long-game persistence, and identity synthesis.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🌱 Curiosity</span>
+        <span class="topic-chip">🎯 Questions</span>
+        <span class="topic-chip">📖 Paper Reading</span>
+        <span class="topic-chip">🔍 Skepticism</span>
+        <span class="topic-chip">🕸️ Connections</span>
+        <span class="topic-chip">🔥 Failure</span>
+        <span class="topic-chip">✍️ Writing</span>
+        <span class="topic-chip">🤲 Humility</span>
+        <span class="topic-chip">🪨 Grit</span>
+        <span class="topic-chip">🎓 Identity</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🧠 10 Doors</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
 
-  <!-- ══ FOOTER ══ -->
+  </div>
   <div class="footer">
     <div class="footer-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
     <div class="footer-verse-trans">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>

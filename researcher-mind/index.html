@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>গবেষকের মন — The Researcher's Mind</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">গবেষকের মন</h1>
+  <div class="title-sub">The Researcher's Mind</div>
+  <div class="title-desc">
+    ডেভেলপার থেকে গবেষক — মনের দশটা রূপান্তর।<br>
+    শিশুর কৌতূহল থেকে শুরু করে গবেষকের পরিচয় পর্যন্ত।<br>
+    যে বই তোমার চিন্তাভাবনাকে বদলাবে, শুধু তথ্য দেবে না।<br><br>
+    <em>From developer to researcher — ten transformations of the mind. From a child's curiosity to a researcher's identity. This book changes how you think, not just what you know.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🧠 যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">শিক্ষানবিশের দ্বিধা — The Apprentice's Doubt</div>
+    <p>তুমি একজন ভালো ডেভেলপার। কোড লেখো, প্রোডাক্ট বানাও, সমস্যা সমাধান করো। কিন্তু মাঝে মাঝে একটা অনুভূতি আসে — যেন কিছু একটা দেখছ, কিন্তু সম্পূর্ণ দেখছ না। তুমি জিনিস বানাও, কিন্তু মাঝে মাঝে ভাবো — এগুলো কেন কাজ করে? এগুলো কীভাবে কাজ করে? আর কী সম্ভব যা এখনো কেউ বানায়নি?</p>
+    <p class="en">You are a good developer. You write code, build products, solve problems. But sometimes a feeling comes — as if you're seeing something, but not completely. You build things, but sometimes you wonder — why do these work? How do they work? And what is possible that no one has built yet?</p>
+    <hr class="p-divider">
+    <p>এই বই Research Pilgrimage-এর ভাইবোন। সেই বই শেখায় PhD কীভাবে পাবে — ফান্ডিং, SOP, ইমেইল। কিন্তু এই বই শেখায় সেই আরও গভীর প্রশ্ন: <strong>গবেষক কীভাবে চিন্তা করে?</strong> কীভাবে প্রশ্ন করে? কীভাবে পড়ে? কীভাবে ব্যর্থতা গ্রহণ করে? কীভাবে অজানাকে ভালোবাসে?</p>
+    <p class="en">This book is the companion to Research Pilgrimage. That book teaches how to get a PhD — funding, SOP, email. This book teaches the deeper question: <strong>How does a researcher think?</strong> How do they question? How do they read? How do they embrace failure? How do they love the unknown?</p>
+    <hr class="p-divider">
+    <p>দশটা দরজা। প্রতিটা দরজায় একজন কারিগর — যিনি তোমার মনের একটা অংশ গড়ে তুলবেন। শিশুর কৌতূহল থেকে শুরু, গবেষকের পরিচয়ে শেষ। এই যাত্রা শেষে তুমি PhD কীভাবে পাবে তা জানবে না — তুমি এমন মন পাবে যে মন নিয়ে PhD করা স্বাভাবিক মনে হবে।</p>
+    <p class="en">Ten doors. Each door a craftsman — forging one part of your mind. Starting from a child's curiosity, ending with a researcher's identity. After this journey you won't just know how to get a PhD — you'll have the mind that makes PhD a natural act.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 যাত্রা শুরু করো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🧠</span><span id="hud-rank-name">শিক্ষানবিশ</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটা দরজা, ক্রমানুসারে। প্রতিটা দরজা মনের এক একটা রূপান্তর।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← মনের মানচিত্রে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🎓</div>
+  <h1 class="complete-title">তুমি এখন গবেষক</h1>
+  <p class="complete-text">দশটা দরজা পেরিয়েছ। মনের প্রতিটা অংশ গড়ে উঠেছে।<br><br>কৌতূহল, প্রশ্ন, পাঠ, সন্দেহ, সংযোগ, ব্যর্থতা, লেখনী, বিনয়, অধ্যবসায়, এবং পরিচয়।<br><br>এখন তোমার মন এমন — যে মন নিয়ে PhD স্বাভাবিক।<br><strong>তুমি শুধু ডেভেলপার নও। তুমি গবেষক।</strong></p>
+  <div class="complete-verse">رَبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা করো</button>
+  <div class="cheat-section-end"><h3>📋 গবেষকের চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 গবেষকের চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
