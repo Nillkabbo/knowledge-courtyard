@@ -57,6 +57,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(17)::before{background:linear-gradient(90deg,var(--purple),var(--gold-bright),var(--purple))}
 .game-card:nth-child(18)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--gold))}
 .game-card:nth-child(19)::before{background:linear-gradient(90deg,var(--ink-dim),var(--moon),var(--ink-dim))}
+.game-card:nth-child(20)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -84,6 +85,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(17) .game-tag{background:rgba(192,132,252,.12);color:var(--purple)}
 .game-card:nth-child(18) .game-tag{background:rgba(245,158,11,.12);color:var(--gold)}
 .game-card:nth-child(19) .game-tag{background:rgba(148,163,184,.12);color:var(--ink-dim)}
+.game-card:nth-child(20) .game-tag{background:rgba(99,102,241,.12);color:var(--purple)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -116,6 +118,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(17) .game-link{color:var(--purple)}
 .game-card:nth-child(18) .game-link{color:var(--gold)}
 .game-card:nth-child(19) .game-link{color:var(--ink-dim)}
+.game-card:nth-child(20) .game-link{color:var(--purple)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -155,13 +158,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">১৯</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">১৮২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">১৮২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">২০</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">১৯২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">১৯২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 ঊনিশটি যাত্রা — Nineteen Journeys</div>
+  <div class="section-label">📚 বিশটি যাত্রা — Twenty Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -850,6 +853,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>⚙️ 10 Steps</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 20: EMBEDDINGS ══ -->
+    <a class="game-card" href="./embeddings/index.html">
+      <div class="game-head">
+        <div class="game-icon">📐</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 20 · Embeddings Deep Dive</div>
+          <div class="game-title">The Geometry of Meaning</div>
+          <div class="game-title-bn">অর্থের জ্যামিতি</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        শব্দকে সংখ্যায়, সংখ্যাকে অর্থে রূপান্তর। Embedding foundations (distributional hypothesis, vector spaces, cosine similarity), model landscape (word2vec → BGE → OpenAI embed-3 → Cohere, MTEB benchmarks), semantic search (hybrid dense+BM25, reranking, asymmetric encoding), vector arithmetic (king-man+woman=queen, clustering, zero-shot classification), embedding fine-tuning (contrastive learning, hard negative mining, domain adaptation), dimensionality (Matryoshka, PQ compression, dimension-quality tradeoff), evaluation (MTEB, STS, domain eval sets), applications (search/classification/clustering/dedup/recommendation/anomaly detection), challenges (bias, domain gap, multilingual, anisotropy, temporal drift), এবং complete architecture।
+        <span class="en">Transforming words into numbers, numbers into meaning. Covers embedding fundamentals (distributional hypothesis, the king-man+woman=queen miracle), full model landscape with MTEB benchmarks, semantic search pipeline with hybrid retrieval and reranking, vector arithmetic applications (analogies, clustering, zero-shot classification), fine-tuning with contrastive learning and hard negative mining, dimensionality optimization (Matryoshka representations, PQ compression), evaluation methodology (MTEB, STS, domain-specific eval), 10 embedding applications beyond RAG, 7 challenges with mitigations, and complete 9-layer embedding architecture stack.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">📐 Foundations</span>
+        <span class="topic-chip">🧭 Models</span>
+        <span class="topic-chip">📊 Search</span>
+        <span class="topic-chip">🔢 Vector Math</span>
+        <span class="topic-chip">🎯 Fine-tune</span>
+        <span class="topic-chip">🔬 Dimensions</span>
+        <span class="topic-chip">📊 Evaluation</span>
+        <span class="topic-chip">🎯 Applications</span>
+        <span class="topic-chip">⚠️ Challenges</span>
+        <span class="topic-chip">🌌 Synthesis</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>📐 10 Points</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
