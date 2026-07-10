@@ -29,7 +29,7 @@ SIMON PEYTON JONES' ADVICE (Microsoft Research):
    you know, but until you write it, you don't."
   
   His method:
-    ট. Write the OUTLINE first (not the content)
+    ১. Write the OUTLINE first (not the content)
     ২. Each section: ৩-৫ bullet points
     ৩. Fill in SLOWLY, section by section
     ৪. Iterate: write → review → rewrite
@@ -119,7 +119,7 @@ RESULTS — The Evidence:
   Text supports the visuals, not vice versa.
   
   Each result:
-    ট. What did you measure? (metric)
+    ১. What did you measure? (metric)
     ২. What was the result? (number)
     ৩. What does it mean? (interpretation)
     ৪. Why? (analysis)
@@ -258,7 +258,7 @@ FIGURES — The Most Important Part:
   Reviewers look at figures FIRST.
   
   Figure types you need:
-    ট. Architecture diagram (Figure ১)
+    ১. Architecture diagram (Figure ১)
        → overview of your method
        → clear boxes, arrows, labels
        → should make sense ALONE (without text)
@@ -287,7 +287,7 @@ FIGURES — The Most Important Part:
 CITATIONS — The Knowledge Chain:
 
   Zotero workflow:
-    ট. Save papers to Zotero (browser extension)
+    ১. Save papers to Zotero (browser extension)
     ২. In Overleaf/LaTeX, use \\cite{key}
     ৩. Zotero generates .bib file automatically
     ৪. LaTeX formats bibliography automatically
@@ -389,7 +389,7 @@ RESPONDING TO REVIEWERS:
   The Response Letter is AS IMPORTANT as the paper.
   
   Structure:
-    ট. Thank the reviewer (always)
+    ১. Thank the reviewer (always)
     ২. Quote the comment
     ৩. Your response
     ৪. What you changed (with page/line numbers)
@@ -448,7 +448,7 @@ CHOOSING WHERE TO SUBMIT:
   └──────────────────┴──────────────────────────────┘
 
   Strategy for first paper:
-    ট. arXiv preprint (establish priority, get feedback)
+    ১. arXiv preprint (establish priority, get feedback)
     ২. Workshop (lower bar, good experience)
     ৩. Mid conference/journal (realistic)
     ৪. THEN aim for top venues
@@ -571,7 +571,7 @@ doors.push({
     → "This suggests [insight]..."
   
   The ML reproduction workflow:
-    ট. Clone their repo
+    ১. Clone their repo
     ২. Run on their data (exactly as described)
     ৩. Compare numbers with their reported results
     ৪. If match: method is reproducible ✓
@@ -601,7 +601,7 @@ PRACTICAL: TURNING READING INTO BUILDING
 
   When you read a paper with engineering intent:
   
-    ট. Read Methods → understand the approach
+    ১. Read Methods → understand the approach
     ২. Find code → clone, run
     ৩. Test on YOUR data → does it work?
     ৪. Identify limitation → what doesn't work?

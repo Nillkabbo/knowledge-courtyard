@@ -15,7 +15,7 @@ doors.push({
     a:"প্রথম পাস: ৫ মিনিট (title/abstract/conclusion)। দ্বিতীয়: ১ ঘণ্টা (পুরো পড়ো)। তৃতীয়: ৪-৫ ঘণ্টা (re-implement)। Keshav (২০০৭)। ৩টা পাস = গবেষকের মস্তিষ্ক। তালাশ — সন্ধান।",
     aen:"Pass 1: 5 min (title/abstract/conclusion). Pass 2: 1 hour (full read). Pass 3: 4-5 hours (re-implement). Keshav (2007). 3 passes = researcher brain."
   },
-  story:`<p class="scene-setting">২০০৭ সাল। ওয়াটারলু বিশ্যবিদ্যালয়। কম্পিউটার বিজ্ঞানী S. Keshav একটা সাধারণ সমস্যা দেখলেন — ছাত্ররা research paper পড়তে পারে না। তারা শুরু থেকে শেষ পর্যন্ত পড়ে, হাল ছাড়ে, কিছু বোঝে না। Keshav একটা পদ্ধতি লিখলেন — How to Read a Paper। ৩টা পাস। প্রতিটা পাসে একটা নির্দিষ্ট উদ্দেশ্য। পেপার পড়ার সবচেয়ে উদ্ধৃত গাইড। আজও।</p>
+  story:`<p class="scene-setting">২০০৭ সাল। ওয়াটারলু বিশ্ববিদ্যালয়। কম্পিউটার বিজ্ঞানী S. Keshav একটা সাধারণ সমস্যা দেখলেন — ছাত্ররা research paper পড়তে পারে না। তারা শুরু থেকে শেষ পর্যন্ত পড়ে, হাল ছাড়ে, কিছু বোঝে না। Keshav একটা পদ্ধতি লিখলেন — How to Read a Paper। ৩টা পাস। প্রতিটা পাসে একটা নির্দিষ্ট উদ্দেশ্য। পেপার পড়ার সবচেয়ে উদ্ধৃত গাইড। আজও।</p>
 <p class="scene-setting en">2007. University of Waterloo. Computer scientist S. Keshav noticed a common problem — students can't read research papers. They read start to finish, give up, understand nothing. Keshav wrote a method — How to Read a Paper. 3 passes. Each pass has a specific purpose. The most cited guide to paper reading. Still today.</p>
 
 <div class="dialogue">মহামানুষদের পড়া বলেছিলেন — Gates, Munger কীভাবে পড়েন। কিন্তু আমি বলি — সবচেয়ে কঠিন পড়া কোনটা? Research paper। কেন? কারণ paper সাধারণ মানুষের জন্য লেখা নয় — গবেষকদের জন্য। জার্গন, রেফারেন্স, গাণিতিক প্রমাণ। কিন্তু Keshav দেখালেন — ৩টা পাসে যেকোনো paper বোঝা যায়। শুরু থেকে শেষ নয় — স্তরে স্তরে।</div>
@@ -127,7 +127,7 @@ WHERE TO FIND PAPERS:
 
 CITATION TRACING (building a reading list):
 
-  ট. Start with ONE good paper (survey/review)
+  ১. Start with ONE good paper (survey/review)
   ২. Read its references → find older foundational work
   ৩. Use Google Scholar "Cited by" → find newer work
   ৪. Build a tree: foundational → current
@@ -239,7 +239,7 @@ THE ৭ QUESTIONS OF CRITICAL READING:
        AND have better resources → confound!
      → Always ask: what ELSE could cause this result?
 
-REDC FLAGS (suspicious papers):
+RED FLAGS (suspicious papers):
 
   ❌ " groundbreaking" / "revolutionary" in abstract
   ❌ No mention of limitations
@@ -344,10 +344,10 @@ THREE TYPES OF WRITING (for knowledge workers):
 THE WRITING-FIRST APPROACH (Paul Graham):
 
   Graham's method:
-    ট. Start writing BEFORE you know what you think
+    ১. Start writing BEFORE you know what you think
     ২. The ACT of writing reveals what you think
     ৩. Write badly first → then fix it
-    ৪. "A essay is not an essay you write. It's 
+    ৪. "An essay is not an essay you write. It's 
        an essay you REWRITE."
   
   → most people wait until they "know enough"
@@ -629,7 +629,7 @@ TOOLS:
   │             │ Pocket (save articles)       │
   ├────────────┼──────────────────────────────┤
   │ Papers      │ Zotero (free reference mgr)  │
-  │             │ Mendeley ( Elsevier)         │
+  │             │ Mendeley (Elsevier)         │
   ├────────────┼──────────────────────────────┤
   │ Spaced Rep  │ Anki (free, open-source)     │
   │             │ RemNote (notes + SR)         │

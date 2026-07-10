@@ -210,7 +210,7 @@ LEVEL ৩: ANALYTICAL (Deep Reading)
       → "I don't understand" (not ready to disagree)
       
       Adler's ৪ ways to disagree:
-        ট. "You are UNINFORMED" (missing evidence)
+        ১. "You are UNINFORMED" (missing evidence)
         ২. "You are MISINFORMED" (wrong evidence)
         ৩. "You are ILLOGICAL" (reasoning is flawed)
         ৪. "Your analysis is INCOMPLETE" 

@@ -213,7 +213,7 @@ PAPERS WITH CODE (paperswithcode.com):
     → "State of the Art" (SOTA) for each metric
   
   Engineer's workflow:
-    ট. Go to Papers With Code → search your problem
+    ১. Go to Papers With Code → search your problem
     ২. Sort by benchmark performance
     ৩. Check: code available? license? recent?
     ৪. Read paper to understand method
@@ -477,7 +477,7 @@ ANDREW NG'S ADVICE (Stanford, CS229):
    thorough understanding."
   
   His reading strategy for ML papers:
-    ট. Title + Abstract + Figures (৬০ sec)
+    ১. Title + Abstract + Figures (৬০ sec)
     ২. Intro + Conclusion (৫ min)  
     ৩. Methods (skip proofs initially)
     ৪. References (which papers to read next?)
@@ -578,7 +578,7 @@ THE LITERATURE REVIEW STRUCTURE:
        to [YOUR CONTRIBUTION]."
   
   Structure:
-    ট. Organize by APPROACH (not by paper)
+    ১. Organize by APPROACH (not by paper)
     ২. Show EVOLUTION (how field progressed)
     ৩. Identify CONSENSUS (what everyone agrees)
     ৪. Identify DEBATE (where they disagree)
@@ -604,7 +604,7 @@ WHERE TO FIND PAPERS:
 THE ৫-২০ PAPER READING SPREE:
 
   When entering a new subfield:
-    ট. Find the most-cited survey (Google Scholar)
+    ১. Find the most-cited survey (Google Scholar)
     ২. Read survey → identify ৫ key papers
     ৩. Read those ৫ (Keshav Pass ১+২)
     ৪. From their references → find ৫ more

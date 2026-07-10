@@ -619,7 +619,7 @@ THE JOURNEY: Junior → Irreplaceable
 
 WHAT MAKES SOMEONE TRULY IRREPLACEABLE:
 
-  ট. UNIQUE COMBINATION
+  ১. UNIQUE COMBINATION
     → Not best at ONE thing
     → Best at the INTERSECTION of many things
     → "Nobody else has exactly my combination"
@@ -671,7 +671,7 @@ THE TIMELESS TRUTH:
   From leaf to root.
   This is the irreplaceable craftsman.</div>
 
-<div class="verse">"তুমি কি দেখনি আল্লাহ কীভাবে উদাহরণ দিয়েছেন? একটি ভালো কালিমা পবিত্র বৃক্ষের মতো — তার শিকড় গভীর, শাখা আসমানে।"<br>— কুরআন ১৪:২৪<br><br>"Have you not seen how Allah presents an example? A good word is like a good tree — its root is firm, its branches in the sky." অবিচ্ছেয্য কারিগর সেই বৃক্ষ — শিকড় গভীর, ডাল উঁচু। ঝড় আসে, বৃক্ষ থাকে। সময় যায়, মূল্য বাড়ে। ফানা থেকে বাকা — অস্থায়ী থেকে চিরস্থায়ী। এটাই অবিচ্ছেয়্তার সারমর্ম।</div>
+<div class="verse">"তুমি কি দেখনি আল্লাহ কীভাবে উদাহরণ দিয়েছেন? একটি ভালো কালিমা পবিত্র বৃক্ষের মতো — তার শিকড় গভীর, শাখা আসমানে।"<br>— কুরআন ১৪:২৪<br><br>"Have you not seen how Allah presents an example? A good word is like a good tree — its root is firm, its branches in the sky." অবিচ্ছেয্য কারিগর সেই বৃক্ষ — শিকড় গভীর, ডাল উঁচু। ঝড় আসে, বৃক্ষ থাকে। সময় যায়, মূল্য বাড়ে। ফানা থেকে বাকা — অস্থায়ী থেকে চিরস্থায়ী। এটাই অবিচ্ছেয্যতার সারমর্ম।</div>
 
-<div class="secret-box"><div class="label">দশম দরজা — সমন্বয়</div><div class="text">🌳 অবিচ্ছেয়্তা = Permanent Knowledge + First Principles + Systems Thinking + Business Brain + Problem Finding + Communication + Product Sense + Innovation + Entrepreneurship।<br><small>ফানা থেকে বাকা — পচনশীল থেকে চিরস্থায়ী। গভীরে শিকড় দাও। তুমি সেই বৃক্ষ।</small></div></div>`
+<div class="secret-box"><div class="label">দশম দরজা — সমন্বয়</div><div class="text">🌳 অবিচ্ছেয্যতা = Permanent Knowledge + First Principles + Systems Thinking + Business Brain + Problem Finding + Communication + Product Sense + Innovation + Entrepreneurship।<br><small>ফানা থেকে বাকা — পচনশীল থেকে চিরস্থায়ী। গভীরে শিকড় দাও। তুমি সেই বৃক্ষ।</small></div></div>`
 });

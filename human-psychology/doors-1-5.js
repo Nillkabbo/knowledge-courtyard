@@ -112,14 +112,14 @@ doors.push({
   num:2, icon:"🎭", color:"#60a5fa", name:"মুখোশের কক্ষ",
   subtitle:"The Mask Maker", tech:"Influence & Persuasion (Cialdini, 1984/2021)",
   spirit:"গাসল — ঢেকে রাখা, বিভ্রম",
-  secret:"১৯৮৪ সালে Cialdini প্রমাণ করলেন — নিয়ন্ত্রণ জাদু নয়, বিজ্ঞান। ৭টি নীতি: reciprocity, commitment, social proof, authority, liking, scarcity, unity। প্রতিটা মানুষের মস্তিষ্কের shortcut — নিয়ন্ত্রকরা এই shortcut ব্যবহার করে। জানলে প্রতিরোধ করতে পারবে।",
+  secret:"১৯৮৪ সালে Cialdini প্রমাণ করলেন — নিয়ন্ত্রণ জাদু নয়, বিজ্ঞান। ৬টি নীতি (১৯৮৪), পরে ৭ম (Unity, ২০২১) যোগ: reciprocity, commitment, social proof, authority, liking, scarcity, unity। প্রতিটা মানুষের মস্তিষ্কের shortcut — নিয়ন্ত্রকরা এই shortcut ব্যবহার করে। জানলে প্রতিরোধ করতে পারবে।",
   recall:{
     q:"Cialdini-র সাতটি নীতি কীভাবে কাজ করে?",
     qen:"How do Cialdini's seven principles work?",
     a:"মস্তিষ্কের shortcut — reciprocity, commitment, social proof, authority, liking, scarcity, unity। নিয়ন্ত্রকরা এই shortcut ব্যবহার করে। সচেতন হলে প্রতিরোধ করতে পারবে। গাসল — বিভ্রম থেকে সত্যে।",
     aen:"Brain shortcuts — reciprocity, commitment, social proof, authority, liking, scarcity, unity. Controllers exploit these. Awareness enables resistance."
   },
-  story:`<p class="scene-setting">১৯৮৪ সাল। আরিজোনা স্টেট ইউনিভার্সিটি। মনোবিজ্ঞানী রবার্ট সিয়ালডিনি (Robert Cialdini) একটা অদ্ভুত কাজ করলেন। তিনি ক্লাসরুমে নয় — রাস্তায় নামলেন। বিক্রেতা, তহবিল সংগ্রহকারী, কাল্ট নেতা, দরকষাকষিকারী — তাদের সাথে কাজ করলেন। ৩ বছর। তিনি জানতে চাইলেন — এরা কীভাবে মানুষকে নিয়ন্ত্রণ করে? জাদু নয় — বিজ্ঞান। ৭টি নীতি।</p>
+  story:`<p class="scene-setting">১৯৮৪ সাল। আরিজোনা স্টেট ইউনিভার্সিটি। মনোবিজ্ঞানী রবার্ট সিয়ালডিনি (Robert Cialdini) একটা অদ্ভুত কাজ করলেন। তিনি ক্লাসরুমে নয় — রাস্তায় নামলেন। বিক্রেতা, তহবিল সংগ্রহকারী, কাল্ট নেতা, দরকষাকষিকারী — তাদের সাথে কাজ করলেন। ৩ বছর। তিনি জানতে চাইলেন — এরা কীভাবে মানুষকে নিয়ন্ত্রণ করে? জাদু নয় — বিজ্ঞান। প্রথমে ৬টি নীতি (১৯৮৪), পরে ৭ম (Unity, ২০২১) যোগ হয়।</p>
 <p class="scene-setting en">1984. Arizona State University. Psychologist Robert Cialdini did something unusual. Not in the classroom — on the streets. With salespeople, fundraisers, cult recruiters, negotiators — worked alongside them for 3 years. He wanted to know — how do they control people? Not magic — science. 7 principles.</p>
 
 <div class="dialogue">Cialdini আবিষ্কার করলেন — মানুষের মস্তিষ্কে সিদ্ধান্ত নেওয়ার shortcut আছে। প্রতিদিন হাজার হাজার সিদ্ধান্ত — প্রতিটা বিশ্লেষণ করলে মস্তিষ্ক ক্লান্ত। তাই shortcut। কিন্তু এই shortcut-ই নিয়ন্ত্রকদের দুর্বলতা। যে জানে কোন shortcut কীভাবে কাজ করে, সে প্রতিরোধ করতে পারে। যে জানে না, সে নিয়ন্ত্রিত হয়।</div>
@@ -259,7 +259,7 @@ doors.push({
     a:"ক্ষমতা পেতে empathy লাগে, কিন্তু ক্ষমতা পেলে empathy মরে। prefrontal cortex বন্ধ, impulsivity বাড়ে। Keltner (২০০৭)। সচেতন হলে প্রতিরোধ সম্ভব।",
     aen:"Power requires empathy to gain, but power kills empathy. Prefrontal cortex shuts down, impulsivity rises. Keltner (2007). Awareness enables prevention."
   },
-  story:`<p class="scene-setting">২০০৭ সাল। ইউসিএ বার্কলে। মনোবিজ্ঞানী ড্যাচার কেল্টনার (Dacher Keltner) ২০ বছরের গবেষণা নিয়ে একটা বই প্রকাশ করলেন — The Power Paradox। তিনি দেখালেন এমন কিছু যা সবাই জানে কিন্তু কেউ স্বীকার করে না। ক্ষমতা মানুষকে পরিবর্তন করে। ভালো মানুষ ক্ষমতা পেলে — খারাপ হয়ে যায়। কেন?</p>
+  story:`<p class="scene-setting">২০০৭ সাল। ইউসিএ বার্কলে। মনোবিজ্ঞানী ড্যাচার কেল্টনার (Dacher Keltner) ২০ বছরের গবেষণা প্রকাশ করলেন — The Power Paradox (২০০৭ সালে গবেষণাপত্র, ২০১৬ সালে বই)। তিনি দেখালেন এমন কিছু যা সবাই জানে কিন্তু কেউ স্বীকার করে না। ক্ষমতা মানুষকে পরিবর্তন করে। ভালো মানুষ ক্ষমতা পেলে — খারাপ হয়ে যায়। কেন?</p>
 <p class="scene-setting en">2007. UC Berkeley. Psychologist Dacher Keltner published a book with 20 years of research — The Power Paradox. He showed something everyone knows but nobody admits. Power changes people. Good people get power — become worse. Why?</p>
 
 <div class="dialogue">Cialdini বলেছিলেন — কীভাবে নিয়ন্ত্রণ করা হয়। কিন্তু আমি বলি — ক্ষমতা পেলে মস্তিষ্কে কী হয়? Keltner দেখালেন — prefrontal cortex বন্ধ হয়ে যায়। empathy কমে। মানুষ বস্তু হয়ে যায় — মানুষ না। Sapolsky দেখালেন — পদমর্যাদায় নিচে থাকলে ক্রনিক স্ট্রেস, উপরে থাকলে empathy loss। দুই পক্ষই ক্ষতিগ্রস্ত।</div>

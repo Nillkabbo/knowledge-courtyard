@@ -108,7 +108,7 @@ HOW FIXED MINDSET DEVELOPS (and how to break it):
     → "I could never do that"
     → "Some people are born with it"
   
-  GROWTH MINDSET REFRAmes:
+  GROWTH MINDSET REFRAMES:
     → "I haven't learned X YET"
     → "Math is a skill I can develop"
     → "I couldn't do that BEFORE"
