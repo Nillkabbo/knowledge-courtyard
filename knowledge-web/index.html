@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>জ্ঞানের জাল — The Knowledge Web</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَتِلْكَ الْأَمْثَالُ نَضْرِبُهَا لِلنَّاسِ</div>
+  <h1 class="title-main">জ্ঞানের জাল</h1>
+  <div class="title-sub">The Knowledge Web</div>
+  <div class="title-desc">
+    একটি জ্ঞান আরেকটির সাথে সংযুক্ত করো — বিচ্ছিন্ন দ্বীপ থেকে জীবন্ত জাল।<br>
+    দশটি দরজা — Gentner-এর structure-mapping, Munger-এর mental models latticework, Medici Effect, Hofstadter-এর analogy as cognition, Kounios-এর insight neuroscience, Polya-এর heuristics, concept mapping, knowledge gap methodology, এবং সব বইয়ের সংযোগ।<br><br>
+    <em>Connect one knowledge to another — from isolated islands to a living web. Ten doors: Gentner's structure-mapping theory (1983), Munger's mental models latticework, Medici Effect (Johansson 2004), Hofstadter's analogy-as-cognition, Kounios & Beeman's aha-moment neuroscience (default mode network), Polya's cross-domain heuristics, Novak's concept mapping, knowledge gap identification methodology, dialectical thinking (thesis-antithesis-synthesis), and the complete architecture connecting all 25+ books into one unified knowledge web.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🧩 যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">বিচ্ছিন্ন দ্বীপ — The Disconnected Islands</div>
+    <p>একটা দ্বীপে একজন মানুষ পাথর জমা করে। আরেকটা দ্বীপে আরেকজন কাঠ। তৃতীয় দ্বীপে একজন লোহা। প্রত্যেকে ধনী — নিজের উপাদানে। কিন্তু দ্বীপগুলো আলাদা। কোনো সেতু নেই। পাথরের মানুষ কাঠ চায় — কিন্তু যেতে পারে না। কাঠের মানুষ লোহা চায় — কিন্তু পৌঁছাতে পারে না। সবার কাছে সম্পদ আছে — কিন্তু কেউ কিছু বানাতে পারে না। কারণ সম্পদ বিচ্ছিন্ন। সংযুক্ত নয়। এটাই তোমার জ্ঞান — ২৫টা বই, ২৫টা দ্বীপ। প্রতিটায় জ্ঞান আছে। কিন্তু সংযুক্ত না হলে — কিছু তৈরি করা যায় না।</p>
+    <p class="en">An island where one person collects stone. Another island, one collects wood. A third, iron. Each is wealthy — in their own material. But the islands are separate. No bridge. The stone person needs wood — can't reach it. The wood person needs iron — can't get there. Everyone has resources — but nothing can be built. Because resources are disconnected. Not linked. This is your knowledge — 25 books, 25 islands. Each has knowledge. But unconnected — nothing can be created.</p>
+    <hr class="p-divider">
+    <p>এই বই তোমাকে শেখাবে — সেতু বানাতে। পাথরের দ্বীপ থেকে কাঠের দ্বীপে সেতু। কাঠ থেকে লোহায়। লোহা থেকে পাথরে। যখন সব দ্বীপ সংযুক্ত — তখন তুমি পাথর + কাঠ + লোহা দিয়ে একটা দুর্গ বানাতে পারো। এটাই জ্ঞানের জাল। Gentner-এর structure-mapping theory, Munger-এর latticework, Medici Effect, Hofstadter-এর analogy as cognition — প্রতিটা দরজায় একটা সেতু নির্মাণের বিজ্ঞান।</p>
+    <p class="en">This book teaches you — to build bridges. From the stone island to the wood island. Wood to iron. Iron to stone. When all islands connect — you can build a fortress with stone + wood + iron. This is the knowledge web. Gentner's structure-mapping theory, Munger's latticework, Medici Effect, Hofstadter's analogy-as-cognition — each door a science of bridge building.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🧩</span><span id="hud-rank-name">নতুন চিন্তাবিদ</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা, ক্রমানুসারে। প্রতিটি জ্ঞান সংযোগের এক একটি স্তর।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← জালে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🌌</div>
+  <h1 class="complete-title">তুমি এখন জ্ঞানের সুলতান</h1>
+  <p class="complete-text">দশটি দরজা পেরিয়েছ। বিচ্ছিন্ন দ্বীপ থেকে জীবন্ত জাল।<br><br>Gentner-এর structure-mapping, Munger-এর latticework, Medici Effect, Hofstadter-এর analogy, Kounios-এর insight neuroscience, Polya-এর heuristics, concept mapping, knowledge gap, dialectical thinking, এবং সব বইয়ের সংযোগ।<br><br>এখন তুমি জানো — জ্ঞান বিচ্ছিন্ন নয়, সংযুক্ত। প্রতিটা ধারণা একটা নোড, প্রতিটা সংযোগ একটা সেতু। জাল বড় হয়, জ্ঞান গভীর হয়।<br><strong>সংযুক্ত জ্ঞান = সৃষ্টির ক্ষমতা।</strong></p>
+  <div class="complete-verse">وَكُلَّ شَيْءٍ فَصَّلْنَاهُ تَفْصِيلًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"আমি প্রতিটি জিনিস বিস্তারিতভাবে ব্যাখ্যা করেছি।" — কুরআন ১৭:১২</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 জ্ঞানের জাল চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 জ্ঞানের জাল চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>

@@ -63,6 +63,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(23)::before{background:linear-gradient(90deg,var(--fire),var(--moon),var(--fire))}
 .game-card:nth-child(24)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--gold))}
 .game-card:nth-child(25)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
+.game-card:nth-child(26)::before{background:linear-gradient(90deg,#06b6d4,#67e8f9,#06b6d4)}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -96,6 +97,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(23) .game-tag{background:rgba(220,38,38,.12);color:var(--fire)}
 .game-card:nth-child(24) .game-tag{background:rgba(245,158,11,.12);color:var(--gold)}
 .game-card:nth-child(25) .game-tag{background:rgba(129,140,248,.12);color:var(--purple)}
+.game-card:nth-child(26) .game-tag{background:rgba(6,182,212,.12);color:#06b6d4}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -134,6 +136,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(23) .game-link{color:var(--fire)}
 .game-card:nth-child(24) .game-link{color:var(--gold)}
 .game-card:nth-child(25) .game-link{color:var(--purple)}
+.game-card:nth-child(26) .game-link{color:#06b6d4}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -173,13 +176,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">২৫</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">২৪২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">২৪২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">২৬</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">২৫২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">২৫২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 পঁচিশটি যাত্রা — Twenty-Five Journeys</div>
+  <div class="section-label">📚 ছাব্বিশটি যাত্রা — Twenty-Six Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -1120,6 +1123,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>📄 10 Doors</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 26: KNOWLEDGE WEB ══ -->
+    <a class="game-card" href="./knowledge-web/index.html">
+      <div class="game-head">
+        <div class="game-icon">🧩</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 26 · Knowledge Connection Capstone</div>
+          <div class="game-title">The Knowledge Web</div>
+          <div class="game-title-bn">জ্ঞানের জাল</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        একটি জ্ঞান আরেকটির সাথে সংযুক্ত করো — বিচ্ছিন্ন দ্বীপ থেকে জীবন্ত জাল। Gentner-এর structure-mapping theory (১৯৮৩), Munger-এর mental models latticework (~১০০ মডেল), knowledge gap identification methodology, Kounios ও Beeman-এর insight neuroscience (default mode network, gamma waves), Hofstadter-এর analogy-as-cognition, Polya-এর cross-domain heuristics, Novak-এর concept mapping, Medici Effect (Johansson ২০০৪), Hegel-এর dialectical thinking, এবং সব ২৫টা বইয়ের সংযোগ।
+        <span class="en">Connect one knowledge to another — from isolated islands to a living web. The CAPSTONE book that connects all 25 previous books. Covers: Gentner's structure-mapping theory (1983), Munger's mental models latticework, knowledge gap identification, insight neuroscience (Kounios & Beeman, default mode network, gamma waves), Hofstadter's analogy-as-cognition, Polya's heuristics, Novak's concept mapping, Medici Effect (Johansson 2004), Hegel's dialectical thinking (thesis-antithesis-synthesis), and the complete 26-book knowledge architecture.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🧩 Silos</span>
+        <span class="topic-chip">🌉 Analogy</span>
+        <span class="topic-chip">🕸️ Latticework</span>
+        <span class="topic-chip">🎯 Gap Finding</span>
+        <span class="topic-chip">💡 Insight</span>
+        <span class="topic-chip">🔄 Patterns</span>
+        <span class="topic-chip">🧠 Concept Map</span>
+        <span class="topic-chip">⚡ Medici</span>
+        <span class="topic-chip">🔮 Synthesis</span>
+        <span class="topic-chip">🌌 Hikmah</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🧩 10 Doors</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
