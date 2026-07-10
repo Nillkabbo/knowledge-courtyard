@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>গবেষণার কারিগর — The Research Paper Craftsman</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</div>
+  <h1 class="title-main">গবেষণার কারিগর</h1>
+  <div class="title-sub">The Research Paper Craftsman</div>
+  <div class="title-desc">
+    গবেষণাপত্র পড়ো, বিশ্লেষণ করো, লেখো, প্রকাশ করো — শূন্য থেকে গবেষক।<br>
+    দশটি দরজা — Keshav-এর ৩-পাস, Andrew Ng-এর PhD পদ্ধতি, IMRaD গভীর বিশ্লেষণ, peer review, নিজের পত্র লেখা, এবং অন্যের কাজের উপর নির্মাণ।<br><br>
+    <em>Read, analyze, write, publish research papers — from beginner to researcher. Ten doors: Keshav's 3-pass method deep dive, Andrew Ng's PhD reading strategy, IMRaD anatomy, reading like an engineer/scientist/PhD student, finding your research question, writing your own paper, peer review survival, citation chains, reproducing results, and building on others' work. All backed by named researchers and real academic practice.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">📄 যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">একটা পত্রের যাত্রা — The Journey of a Paper</div>
+    <p>তুমি একটা research paper হাতে পেলে। ২৫ পাতা। জার্গন, সূত্র, রেফারেন্স। তুমি পড়তে শুরু করলে — প্রথম পাতায় আটকে। কিন্তু একজন PhD ছাত্র সেই পত্র ৩০ মিনিটে বুঝে যায়। একজন বৈজ্ঞানিক দেখেন কোথায় গবেষণাটা ভুল। একজন ইঞ্জিনিয়ার দেখেন কোন কোড বা পদ্ধতি ব্যবহার করতে পারে। একই পত্র — চার ধরনের পাঠক, চার ধরনের বোঝা। এই বই তোমাকে শেখাবে কীভাবে তুমি এই চার ধরনের পাঠকই হবে — এবং একদিন নিজের পত্র লেখবে।</p>
+    <p class="en">You get a research paper. 25 pages. Jargon, formulas, references. You start reading — stuck on page one. But a PhD student understands it in 30 minutes. A scientist spots where the research is wrong. An engineer sees which code or method to use. Same paper — four types of readers, four levels of comprehension. This book teaches you to become all four — and eventually write your own.</p>
+    <hr class="p-divider">
+    <p>জ্ঞানের কারিগর (Book ২৪) তোমাকে দিয়েছে Adler, Luhmann, Feynman। এই বই যাবে আরও গভীরে — research paper-এর ভেতরে। IMRaD প্রতিটা সেকশন কী করে, engineer কীভাবে পড়ে, scientist কীভাবে যাচাই করে, PhD ছাত্র কীভাবে gap খোঁজে। তারপর — তুমি নিজে লেখো। নিজের গবেষণাপত্র। নিজের contribution। Keshav (২০০৭), Andrew Ng, Simon Peyton Jones — named sources থেকে।</p>
+    <p class="en">The Knowledge Craftsman (Book 24) gave you Adler, Luhmann, Feynman. This book goes deeper — inside research papers. What each IMRaD section does, how engineers read, how scientists verify, how PhD students find gaps. Then — you write your own. Your own paper. Your own contribution. From Keshav (2007), Andrew Ng, Simon Peyton Jones — named sources.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">📄</span><span id="hud-rank-name">নতুন গবেষক</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা, ক্রমানুসারে। প্রতিটি গবেষণার এক একটি স্তর।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← গবেষণাগারে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🚀</div>
+  <h1 class="complete-title">তুমি এখন হিকমাহ অধিকারী</h1>
+  <p class="complete-text">দশটি দরজা পেরিয়েছ। গবেষণাপত্রের প্রতিটি স্তর আয়ত্ত করেছ।<br><br>IMRaD শারীরস্থান, engineer/scientist/PhD পাঠ, গবেষণার প্রশ্ন খোঁজা, নিজের পত্র লেখা, peer review, অন্যের কাজের উপর নির্মাণ।<br><br>এখন তুমি জানো — পত্র পড়া শেষ নয়, শুরু। পড়ার পরেই আসল কাজ — বিশ্লেষণ, সংযুক্তি, সৃষ্টি।<br><strong>গবেষণা = জ্ঞানের সম্প্রসারণ।</strong></p>
+  <div class="complete-verse">رَبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 গবেষণা কারিগর চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 গবেষণা কারিগর চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>

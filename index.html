@@ -62,6 +62,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(22)::before{background:linear-gradient(90deg,var(--leaf),var(--gold-bright),var(--leaf))}
 .game-card:nth-child(23)::before{background:linear-gradient(90deg,var(--fire),var(--moon),var(--fire))}
 .game-card:nth-child(24)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--gold))}
+.game-card:nth-child(25)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -94,6 +95,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(22) .game-tag{background:rgba(34,197,94,.12);color:var(--leaf)}
 .game-card:nth-child(23) .game-tag{background:rgba(220,38,38,.12);color:var(--fire)}
 .game-card:nth-child(24) .game-tag{background:rgba(245,158,11,.12);color:var(--gold)}
+.game-card:nth-child(25) .game-tag{background:rgba(129,140,248,.12);color:var(--purple)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -131,6 +133,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(22) .game-link{color:var(--leaf)}
 .game-card:nth-child(23) .game-link{color:var(--fire)}
 .game-card:nth-child(24) .game-link{color:var(--gold)}
+.game-card:nth-child(25) .game-link{color:var(--purple)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -170,13 +173,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">২৪</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">২৩২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">২৩২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">২৫</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">২৪২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">২৪২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 চব্বিশটি যাত্রা — Twenty-Four Journeys</div>
+  <div class="section-label">📚 পঁচিশটি যাত্রা — Twenty-Five Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -1081,6 +1084,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>📖 10 Doors</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 25: RESEARCH PAPER CRAFTSMAN ══ -->
+    <a class="game-card" href="./research-paper-craftsman/index.html">
+      <div class="game-head">
+        <div class="game-icon">📄</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 25 · Research Paper Read/Write Deep Dive</div>
+          <div class="game-title">The Research Paper Craftsman</div>
+          <div class="game-title-bn">গবেষণার কারিগর</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        গবেষণাপত্র পড়ো, বিশ্লেষণ করো, লেখো, প্রকাশ করো। Keshav (২০০৭) ৩-পাস গভীর বিশ্লেষণ, Andrew Ng PhD পাঠ পদ্ধতি, IMRaD লেখার স্থাপত্য, engineer কীভাবে পড়ে (code/method নিষ্কাশন), scientist কীভাবে যাচাই করে (replication crisis), PhD কীভাবে gap খোঁজে, নিজের পত্র লেখা, peer review বেঁচে থাকা, Simon Peyton Jones-এর writing-as-research, এবং অন্যের কাজের উপর নির্মাণ।
+        <span class="en">Read, analyze, write, publish research papers — from beginner to researcher. Ten doors: Keshav 3-pass deep dive (2007), Andrew Ng PhD reading strategy, IMRaD anatomy for writing, how engineers read (extract methods/code), how scientists verify (replication crisis, statistics), how PhD students find gaps, finding your research question, writing your own paper (Simon Peyton Jones writing-as-research), surviving peer review (response letters, rejection handling), building on others' work (cite, extend, reproduce), and the complete research workflow with a 90-day plan to your first paper.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">📄 Anatomy</span>
+        <span class="topic-chip">🔧 Engineer</span>
+        <span class="topic-chip">🧪 Scientist</span>
+        <span class="topic-chip">🎓 PhD Reader</span>
+        <span class="topic-chip">💡 Question</span>
+        <span class="topic-chip">🏗️ Outline</span>
+        <span class="topic-chip">✍️ Draft</span>
+        <span class="topic-chip">🔬 Review</span>
+        <span class="topic-chip">🔗 Build</span>
+        <span class="topic-chip">🚀 Synthesis</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>📄 10 Doors</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
