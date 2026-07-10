@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>সরঞ্জাম নির্মাণ — The Tool Forge</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">সরঞ্জাম নির্মাণ</h1>
+  <div class="title-sub">The Tool Forge</div>
+  <div class="title-desc">
+    Tools, Function Calling & MCP — LLM-কে হাত দেওয়ার শিল্প।<br>
+    দশটি কর্মশালা — প্রতিটিতে একজন কারিগর। প্রতেকজন টুল নির্মাণের এক একটি রহস্য জানেন।<br><br>
+    <em>Tools, Function Calling & MCP — the art of giving LLMs hands. Ten workshops, each with a craftsman who knows one secret of building, connecting, and orchestrating tools that make AI systems act in the real world.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🔧 কারখানায় প্রবেশ করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">হাতহীন জ্ঞানীর গল্প — The Armchair Scholar</div>
+    <p>একজন পণ্ডিত — বিশাল জ্ঞান, অসংখ্য তত্ত্ব। কিন্তু হাত নেই। সে বলতে পারে কীভাবে বাড়ি বানাতে হয়, কিন্তু নিজে ইট তুলতে পারে না। সে বলতে পারে কীভাবে কোড লিখতে হয়, কিন্তু নিজে কীবোর্ড ছুঁতে পারে না। শুধু কথা — কাজ নেই। এটাই LLM টুল ছাড়া।</p>
+    <p class="en">A scholar — vast knowledge, countless theories. But no hands. He can say how to build a house, but can't lift a brick. He can say how to code, but can't touch a keyboard. Only words — no action. This is an LLM without tools.</p>
+    <hr class="p-divider">
+    <p>Embeddings বইয়ে তুমি শিখেছ অর্থের জ্যামিতি। এখন শিখবে — সেই জ্ঞানীকে হাত দেওয়া। Function calling, tool design, MCP (Model Context Protocol), tool orchestration, safety। LLM শুধু কথা বলবে না — কাজ করবে। API কল করবে, কোড রান করবে, ডেটাবেস কুয়েরি করবে। এটাই AI কে প্রকৃত কর্মী বানানোর শেষ ধাপ।</p>
+    <p class="en">In the Embeddings book you learned the geometry of meaning. Now learn — giving that scholar hands. Function calling, tool design, MCP (Model Context Protocol), tool orchestration, safety. The LLM won't just talk — it will act. Call APIs, run code, query databases. This is the final step to making AI a true worker.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 কারখানায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🔧</span><span id="hud-rank-name">শিক্ষানবিশ</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>কর্মশালা বেছে নাও</h2><p>দশটি কর্মশালা, ক্রমানুসারে। প্রতিটি টুল নির্মাণের এক একটি স্তর।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← কারখানায় ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🏭</div>
+  <h1 class="complete-title">তুমি এখন অসীম নির্মাতা</h1>
+  <p class="complete-text">দশটি কর্মশালা পেরিয়েছ। Tools & MCP-এর প্রতিটি স্তর আয়ত্ত করেছ।<br><br>Function calling, tool design, MCP protocol, tool patterns, parallel calling, error handling, safety, orchestration, ecosystem, এবং complete architecture।<br><br>এখন তুমি জানো — LLM-কে কীভাবে হাত দেওয়া যায়।<br><strong>জ্ঞান + হাত = কর্মী।</strong></p>
+  <div class="complete-verse">رَبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার কারখানায় বসো</button>
+  <div class="cheat-section-end"><h3>📋 Tools & MCP চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">কর্মশালা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 Tools & MCP চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>

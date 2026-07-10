@@ -58,6 +58,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(18)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--gold))}
 .game-card:nth-child(19)::before{background:linear-gradient(90deg,var(--ink-dim),var(--moon),var(--ink-dim))}
 .game-card:nth-child(20)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
+.game-card:nth-child(21)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--fire))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -86,6 +87,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(18) .game-tag{background:rgba(245,158,11,.12);color:var(--gold)}
 .game-card:nth-child(19) .game-tag{background:rgba(148,163,184,.12);color:var(--ink-dim)}
 .game-card:nth-child(20) .game-tag{background:rgba(99,102,241,.12);color:var(--purple)}
+.game-card:nth-child(21) .game-tag{background:rgba(234,88,12,.12);color:var(--fire)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -119,6 +121,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(18) .game-link{color:var(--gold)}
 .game-card:nth-child(19) .game-link{color:var(--ink-dim)}
 .game-card:nth-child(20) .game-link{color:var(--purple)}
+.game-card:nth-child(21) .game-link{color:var(--fire)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -158,13 +161,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">২০</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">১৯২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">১৯২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">২১</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">২০২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">২০২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 বিশটি যাত্রা — Twenty Journeys</div>
+  <div class="section-label">📚 একুশটি যাত্রা — Twenty-One Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -889,6 +892,42 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>📐 10 Points</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 21: TOOLS & MCP ══ -->
+    <a class="game-card" href="./tools-mcp/index.html">
+      <div class="game-head">
+        <div class="game-icon">🔧</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 21 · Tools & MCP Deep Dive</div>
+          <div class="game-title">The Tool Forge</div>
+          <div class="game-title-bn">সরঞ্জাম নির্মাণ</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        LLM-কে হাত দেওয়ার শিল্প। Function calling internals (step-by-step mechanism, provider implementations, parallel calling, strict mode), tool design principles (naming, descriptions, parameters, anti-patterns), MCP protocol (architecture, building servers, ecosystem, Claude/Cursor integration), tool orchestration patterns (sequential/parallel/conditional/iterative), error handling ও 5-layer safety, tool ecosystem (LangChain/Composio/MCP servers, build-vs-buy strategy), tool testing (6 categories, LLM selection tests), computer use (Claude Computer Use, browser automation, sandboxing), tool failure modes (7 types, debugging), এবং complete tool architecture synthesis।
+        <span class="en">The art of giving LLMs hands. Covers function calling internals with provider-specific implementations, tool design golden rules, MCP protocol deep dive (build once, use everywhere), 5 orchestration patterns, 5-layer safety model, ecosystem platforms (Composio 10K+ actions), 6-category testing methodology, Claude Computer Use with mandatory sandboxing, 7 failure modes with fixes, and complete 8-layer tool architecture stack.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🔧 Function Calling</span>
+        <span class="topic-chip">🔌 Tool Design</span>
+        <span class="topic-chip">📐 MCP Protocol</span>
+        <span class="topic-chip">⚙️ Patterns</span>
+        <span class="topic-chip">🛡️ Safety</span>
+        <span class="topic-chip">🔗 Ecosystem</span>
+        <span class="topic-chip">🧪 Testing</span>
+        <span class="topic-chip">🖥️ Computer Use</span>
+        <span class="topic-chip">⚠️ Failure Modes</span>
+        <span class="topic-chip">🏭 Synthesis</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🔧 10 Workshops</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>

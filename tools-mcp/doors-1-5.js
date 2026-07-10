@@ -1,0 +1,711 @@
+// ════════════════════════════════════════
+// সরঞ্জাম নির্মাণ — DOORS 1-5
+// Tools & MCP: Function Calling → Patterns
+// ════════════════════════════════════════
+const doors = [];
+
+// ══ DOOR 1: FUNCTION CALLING DEEP DIVE ══
+doors.push({
+  num:1, icon:"🔧", color:"#ea580c", name:"ফাংশনের কক্ষ",
+  subtitle:"The Function Chamber", tech:"Function Calling Internals",
+  spirit:"আলা — উপকরণ, সরঞ্জাম",
+  secret:"Function calling = LLM এর জন্য একটা হাত। কিন্তু ভেতরে কী হয়? LLM JSON schema দেখে, সিদ্ধান্ত নেয় কোন function, কোন arguments। তারপর তুমি execute করো, ফলাফল ফেরত দাও। এটাই function calling — LLM থেকে বাস্তব কাজে।",
+  recall:{
+    q:"ফাংশনের কক্ষে কেন প্রতিটা হাতুড়ির নিয়ম লেখা?",
+    qen:"Why is each hammer labeled with rules?",
+    a:"কারণ LLM প্রতিটা function-এর description দেখে সিদ্ধান্ত নেয়। নিয়ম স্পষ্ট না হলে ভুল হাতুড়ি বাছে। Function calling = নিয়ম দেখে সঠিক টুল বাছা। আলা — উপকরণ।",
+    aen:"Because the LLM sees each function description and decides. Unclear rules = wrong tool chosen. Function calling = choosing the right tool by rules. Ala — tools."
+  },
+  story:`<p class="scene-setting">প্রথম কর্মশালা। ফাংশনের কক্ষ। দেয়ালে অনেক হাতুড়ি — প্রতিটার নিচে লেবেল: নাম, কাজ, কীভাবে ব্যবহার। কারিগর দাউদ বললেন — "আমি প্রতিটা হাতুড়ির নিয়ম জানি। কাজ এলে আমি দেয়াল দেখি, সঠিক হাতুড়ি বাছি। LLM-ও তেমনি — function list দেখে, সঠিক function বাছে।"</p>
+<p class="scene-setting en">The first workshop. Function chamber. Many hammers on walls — each labeled: name, purpose, how to use. Craftsman Dawud said — "I know each hammer's rules. When work comes, I look at the wall, pick the right hammer. The LLM too — sees the function list, picks the right function."</p>
+
+<div class="dialogue">Embeddings বইয়ে তুমি শিখেছ অর্থের জ্যামিতি। এখন আমি বলি — অর্থ শুধু কথায় নয়, কাজেও দরকার। Function calling হলো LLM কে হাত দেওয়ার প্রথম ধাপ। কিন্তু ভেতরে কী হয়? LLM কীভাবে জানে কোন function কখন ব্যবহার করতে হবে? এটাই এই কর্মশালার রহস্য।</div>
+<div class="dialogue en">"In the Embeddings book you learned the geometry of meaning. Now I say — meaning isn't just for words, it's for action. Function calling is the first step in giving the LLM hands. But what happens inside? How does the LLM know which function to use when? This is this workshop's secret."</div>
+
+<div class="code-block">Function Calling — Inside the Machine:
+
+HOW FUNCTION CALLING WORKS (step by step):
+
+  ┌────────────────────────────────────────┐
+  │ Step ১: YOU DEFINE TOOLS               │
+  │ tools = [{                             │
+  │   name: "get_weather",                 │
+  │   description: "Get current weather",  │
+  │   parameters: {                        │
+  │     city: {type: "string"},            │
+  │     unit: {type: "string",             │
+  │            enum: ["C","F"]}            │
+  │   }                                    │
+  │ }]                                     │
+  ├────────────────────────────────────────┤
+  │ Step ২: LLM RECEIVES                   │
+  │ → system prompt + tools + user message │
+  │ → ALL in the context window            │
+  │ → LLM sees: "available tools: ..."     │
+  ├────────────────────────────────────────┤
+  │ Step ৩: LLM DECIDES                    │
+  │ → analyzes user intent                 │
+  │ → matches to tool description          │
+  │ → outputs: {                           │
+  │     "tool": "get_weather",             │
+  │     "arguments": {"city":"Dhaka"}      │
+  │   }                                    │
+  │ → NOT regular text — structured call!  │
+  ├────────────────────────────────────────┤
+  │ Step ৪: YOU EXECUTE                    │
+  │ → your code runs get_weather("Dhaka")  │
+  │ → returns: "32C, humid, rain"          │
+  ├────────────────────────────────────────┤
+  │ Step ৫: LLM FORMULATES RESPONSE        │
+  │ → receives tool result                │
+  │ → generates natural language:          │
+  │   "It is 32C in Dhaka with rain."      │
+  └────────────────────────────────────────┘
+
+PROVIDER IMPLEMENTATIONS:
+
+  OpenAI:
+    → "tools" parameter in API call
+    → parallel function calling (multiple at once)
+    → strict mode: forces valid JSON
+    → most mature implementation
+  
+  Anthropic (Claude):
+    → "tool_use" content block
+    → very reliable for complex tool chains
+    → excellent at multi-step tool use
+    → less likely to hallucinate function calls
+  
+  Google (Gemini):
+    → "function_calling" parameter
+    → good multimodal tool integration
+  
+  Open models (Llama, Mistral):
+    → prompt-based (less structured)
+    → requires careful prompting
+    → Mistral: native function calling support
+    → Llama ৩.১: built-in tool use
+
+FUNCTION CALLING vs TOOL USE:
+
+  Function Calling (original):
+    → single function, single call
+    → you manage the loop
+  
+  Tool Use (modern):
+    → agentic loop: LLM calls tools iteratively
+    → LLM decides: call tool → see result → 
+      call another → synthesize
+    → Claude tool_use, OpenAI tool choice auto
+
+PARALLEL FUNCTION CALLING (OpenAI):
+  
+  User: "What is the weather in NYC and LA?"
+  
+  LLM outputs TWO function calls:
+    ১. get_weather("New York")
+    ২. get_weather("Los Angeles")
+  
+  → both execute in parallel!
+  → faster than sequential
+  → results combined in final answer
+
+STRICT MODE (OpenAI, ২০২৪):
+  → guarantees valid JSON arguments
+  → no hallucinated parameters
+  → no extra fields
+  → schema enforcement at generation time
+  
+  tools = [{
+    name: "search",
+    parameters: {
+      type: "object",
+      properties: {...},
+      required: ["query"],
+      additionalProperties: false  // strict!
+    },
+    strict: true  // ← enforces schema
+  }]
+
+TOKEN COST:
+  → tool definitions consume context tokens
+  → each tool: ~১০০-৩০০ tokens
+  → ১০ tools = ~২K tokens per request
+  → keep descriptions concise!
+  → remove unused tools</div>
+
+<div class="dialogue">আলা — tools, equipment, instruments। কুরআনে আল্লাহ বলেন — "আমি মানুষকে দিয়েছি যাবতীয় সরঞ্জাম।" (৯০:৮-১০)। মানুষের হাত হলো আলা — কাজের সরঞ্জাম। LLM-এর function calling-ও আলা — কাজের সরঞ্জাম। আলা ছাড়া মানুষ অসহায়, টুল ছাড়া LLM অসহায়। আলা — সরঞ্জামের নিয়ামত।</div>
+<div class="dialogue en">"Ala — tools, equipment, instruments. Allah says — 'We gave man all tools.' (90:8-10). Human hands are ala — tools for work. LLM function calling too — tools for work. Without ala humans are helpless, without tools LLMs are helpless. Ala — the gift of tools."</div>`,
+  senior:{
+    title:"Function Calling — Quick Start",
+    body:`<p><strong>OpenAI:</strong> tools parameter in chat.completions.create। response.choices[০].message.tool_calls → execute → send result back।</p><p><strong>Claude:</strong> tools parameter in messages.create। response.content এ tool_use block → execute → tool_result দাও।</p><p><strong>Rule ১:</strong> Description is everything। "Search the web" নয়, "Search the internet for current information when the user asks about recent events, real-time data, or facts you are unsure about"।</p><p><strong>Rule ২:</strong> strict mode (OpenAI) → guaranteed valid JSON।</p><p><strong>Rule ৩:</strong> Keep tool count < ১০। More = more tokens, more confusion।</p>`
+  }
+});
+
+// ══ DOOR 2: TOOL DESIGN ══
+doors.push({
+  num:2, icon:"🔌", color:"#fb923c", name:"নকশার কক্ষ",
+  subtitle:"The Design Chamber", tech:"Tool Design Principles",
+  spirit:"তাহকিক — সত্যিকারের নির্মাণ",
+  secret:"ভালো tool = ভালো description। খারাপ tool = ভুল ব্যবহার। প্রতিটা tool-এর নাম স্পষ্ট, description বিস্তারিত, parameters typed। কখন ব্যবহার করবে, কখন করবে না — সব লেখা। Tool design = সঠিক নির্মাণ।",
+  recall:{
+    q:"নকশার কক্ষে কেন প্রতিটা টুলের বিস্তারিত নকশা?",
+    qen:"Why detailed design for each tool?",
+    a:"কারণ ভালো description = সঠিক ব্যবহার। খারাপ description = ভুল। নাম স্পষ্ট, parameters typed, কখন ব্যবহার লেখা। Tool design = সঠিক নির্মাণ। তাহকিক।",
+    aen:"Because good description = correct use. Bad description = error. Clear names, typed parameters, when-to-use written. Tool design = correct construction. Tahqiq."
+  },
+  story:`<p class="scene-setting">দ্বিতীয় কর্মশালা। নকশার কক্ষ। কারিগর সাকিনা প্রতিটা টুলের নকশা আঁকছেন — নাম, কাজ, মাপ, কখন ব্যবহার। "একটা টুল শুধু বানালে হবে না," তিনি বললেন। "নকশা দরকার। LLM কীভাবে বুঝবে কোন টুল কখন? description দিয়ে। ভালো description = সঠিক ব্যবহার। খারাপ = ভুল।"</p>
+<p class="scene-setting en">The second workshop. Design chamber. Craftswoman Sakina draws each tool's design — name, purpose, dimensions, when to use. "Just making a tool isn't enough," she said. "Design is needed. How will the LLM know which tool when? Through description. Good description = correct use. Bad = wrong."</p>
+
+<div class="dialogue">Function calling বলেছিলেন — LLM টুল ব্যবহার করে। কিন্তু আমি বলি — কীভাবে? টুল ভালো হতে হবে। Description স্পষ্ট হতে হবে। নাম স্পষ্ট হতে হবে। Parameters সঠিক হতে হবে। টুল design করা একটা শিল্প — যে ভালো design করে, সে ভালো ফল পায়।</div>
+<div class="dialogue en">"Function calling said — the LLM uses tools. But I say — how? Tools must be good. Descriptions must be clear. Names must be precise. Parameters must be correct. Tool design is an art — one who designs well, gets good results."</div>
+
+<div class="code-block">Tool Design — Building Tools LLMs Love:
+
+GOLDEN RULES OF TOOL DESIGN:
+
+১. NAME: clear, verb-based
+  ❌ "data" (what data? what action?)
+  ❌ "proc_১" (meaningless)
+  ✅ "search_web" (clear action)
+  ✅ "send_email" (obvious purpose)
+  ✅ "get_stock_price" (specific)
+
+২. DESCRIPTION: when to use + when NOT to
+  ❌ "Searches the web" (too vague)
+  ✅ "Search the web for current information. 
+      Use when the user asks about recent 
+      events, real-time data, or facts you 
+      are unsure about. Do NOT use for 
+      opinions, math, or coding."
+  
+  → description = the LLM guidebook
+  → more detail = better selection
+  → include NEGATIVE examples ("do NOT use for...")
+
+৩. PARAMETERS: typed, described, constrained
+  ❌ {query: "string"} (what kind of query?)
+  ✅ {
+       query: {
+         type: "string",
+         description: "Search query in English. 
+           Be specific: 'Python async best 
+           practices' not 'python'.",
+         minLength: ৩,
+         maxLength: ২০০
+       },
+       num_results: {
+         type: "integer",
+         default: ৫,
+         minimum: ১,
+         maximum: ২০
+       }
+     }
+
+৪. OUTPUT FORMAT: clear return type
+  → what does the tool return?
+  → string? object? array?
+  → document the shape
+  
+  ✅ "Returns JSON: {title, url, snippet}[]"
+
+TOOL DESIGN ANTI-PATTERNS:
+
+  ❌ GOD TOOL (does everything)
+    {name: "do_anything", 
+     description: "Does anything you ask"}
+    → LLM calls it for EVERYTHING
+    → no precision
+  
+  ✅ ATOMIC TOOLS (one thing each)
+    {name: "search", ...}
+    {name: "calculate", ...}
+    {name: "send_email", ...}
+    → each tool = one clear action
+    → LLM can choose precisely
+
+  ❌ VAGUE DESCRIPTIONS
+    → "gets data" (what data?)
+    → LLM guesses → wrong calls
+  
+  ✅ SPECIFIC DESCRIPTIONS  
+    → "gets the current stock price for 
+       a given ticker symbol from Yahoo 
+       Finance. Returns price in USD."
+    → LLM knows exactly what to expect
+
+  ❌ NO ERROR HANDLING
+    → tool fails → LLM confused
+  
+  ✅ CLEAR ERROR MESSAGES
+    → return: "Error: city not found. 
+       Please provide a valid city name."
+    → LLM can retry with correction!
+
+TOOL CATEGORIES (production):
+
+  INFORMATION TOOLS:
+    search_web, get_weather, get_stock_price,
+    get_time, get_news, get_calendar
+    
+  COMPUTATION TOOLS:
+    calculate, run_python, run_sql_query,
+    convert_currency, translate_text
+    
+  COMMUNICATION TOOLS:
+    send_email, send_sms, post_tweet,
+    create_calendar_event, send_slack
+    
+  FILE TOOLS:
+    read_file, write_file, list_directory,
+    search_files, upload_file
+    
+  CODE TOOLS:
+    run_code, git_commit, create_pr,
+    run_tests, deploy
+    
+  BROWSER TOOLS:
+    navigate_url, click_element, type_text,
+    take_screenshot, extract_text
+
+TOOL SECURITY:
+  → whitelist: only defined tools allowed
+  → input validation: sanitize arguments
+  → rate limiting: max calls per minute
+  → sandboxing: isolated execution
+  → audit logging: every tool call logged
+  → human approval: for destructive tools</div>
+
+<div class="dialogue">তাহকিক — true construction, authentic building। কুরআনে আল্লাহ বলেন — "যিনি সৃষ্টি করেছেন এবং নিয়মে বেঁধেছেন।" (৮৭:২)। নিয়মে বাঁধা = তাহকিক। টুল design-ও তাহকিক — নিয়ম অনুযায়ী নির্মাণ। নাম, description, parameters — সব নিয়মে। যে তাহকিক করে, সে নিখুঁত বানায়।</div>
+<div class="dialogue en">"Tahqiq — true construction, authentic building. Allah says — 'Who created and proportioned.' (87:2). Proportioning = tahqiq. Tool design too — building by rules. Name, description, parameters — all by rules. One who builds with tahqiq, makes perfect tools."</div>`,
+  senior:{
+    title:"Tool Design Checklist",
+    body:`<p>☐ Name: verb + object (search_web, not data)</p><p>☐ Description: WHEN to use + when NOT to</p><p>☐ Parameters: typed, described, constrained</p><p>☐ Output: documented return format</p><p>☐ Error handling: clear error messages</p><p>☐ Atomic: one tool = one action</p><p>☐ Security: validated, rate-limited, logged</p><p>☐ Count: < ১০ tools (more = confusion + tokens)</p>`
+  }
+});
+
+// ══ DOOR 3: MCP (MODEL CONTEXT PROTOCOL) ══
+doors.push({
+  num:3, icon:"📐", color:"#ea580c", name:"সংযোগের কক্ষ",
+  subtitle:"The Connection Chamber", tech:"Model Context Protocol (MCP)",
+  spirit:"সিলসিলা — শৃঙ্খল, সংযোগ",
+  secret:"প্রতিটা টুল আলাদা বানানো কঠিন। MCP = একটা standard protocol। একবার MCP server বানাও — যেকোনো LLM ব্যবহার করতে পারে। Claude, Cursor, Windsurf — সব MCP সাপোর্ট করে। এক টুল, সব LLM। সিলসিলা — সংযোগের শৃঙ্খল।",
+  recall:{
+    q:"সংযোগের কক্ষে কেন এক adapter দিয়ে সব tool চালানো যায়?",
+    qen:"Why can one adapter run all tools?",
+    a:"কারণ MCP = standard protocol। এক MCP server বানাও — যেকোনো LLM ব্যবহার করে। Claude, Cursor সব। এক টুল, সব LLM। সিলসিলা — সংযোগের শৃঙ্খল।",
+    aen:"Because MCP = standard protocol. Build one MCP server — any LLM uses it. Claude, Cursor all. One tool, all LLMs. Silsila — connection chain."
+  },
+  story:`<p class="scene-setting">তৃতীয় কর্মশালা। সংযোগের কক্ষ। একটা বিশাল বোর্ড — উপরে অনেক plug, নিচে একটা universal adapter। যেকোনো tool, যেকোনো LLM — সব এই adapter দিয়ে সংযুক্ত। কারিগর আদনান বললেন — "এর আগে প্রতিটা LLM-এর জন্য আলাদা tool বানাতে হতো। এখন? MCP। এক বার বানাও, সব জায়গায় চলে। সিলসিলা।"</p>
+<p class="scene-setting en">The third workshop. Connection chamber. A large board — many plugs above, one universal adapter below. Any tool, any LLM — all connected through this adapter. Craftsman Adnan said — "Before, you had to build separate tools for each LLM. Now? MCP. Build once, runs everywhere. Silsila."</p>
+
+<div class="dialogue">Tool design বলেছিলেন — টুল ভালো করে বানাও। কিন্তু আমি বলি — ভালো টুল বানালেও প্রতিটা LLM-এর জন্য আলাদা? সময় নষ্ট। MCP — Model Context Protocol। Anthropic বানিয়েছে। এক MCP server, সব LLM-এ কাজ করে। এটাই টুল ইকোসিস্টেমের ভবিষ্যৎ।</div>
+<div class="dialogue en">"Tool design said — build tools well. But I say — even well-built tools, separate for each LLM? Waste of time. MCP — Model Context Protocol. Built by Anthropic. One MCP server, works on all LLMs. This is the future of the tool ecosystem."</div>,
+
+<div class="code-block">MCP — Model Context Protocol:
+
+THE PROBLEM MCP SOLVES:
+
+  Before MCP:
+    → Tool for OpenAI: custom API, custom format
+    → Tool for Claude: different API, different format
+    → Tool for Gemini: yet another format
+    → N tools × M LLMs = N×M integrations!
+    → nobody wants to build that
+  
+  With MCP:
+    → Build ONE MCP server
+    → ANY MCP-compatible client can use it
+    → Claude Desktop, Cursor, Windsurf, Zed...
+    → N tools + M clients = N+M connections
+    → build once, use everywhere
+
+WHAT IS MCP?
+
+  Anthropic open-sourced MCP (নভেম্বর ২০২৪)
+  → standardized protocol for LLM ↔ tools
+  → like USB-C for AI tools
+  → JSON-RPC ২.০ based
+  → client-server architecture
+
+  ┌────────────────┐     MCP      ┌────────────────┐
+  │  MCP CLIENT    │ ←─────────→  │  MCP SERVER    │
+  │  (Claude,      │  JSON-RPC    │  (your tools)  │
+  │   Cursor, etc) │              │                │
+  └────────────────┘              └────────────────┘
+
+MCP ARCHITECTURE:
+
+  Client side (LLM apps):
+    → Claude Desktop
+    → Cursor (code editor)
+    → Windsurf
+    → Zed
+    → any app that implements MCP client
+  
+  Server side (tool providers):
+    → File system server (read/write files)
+    → GitHub server (PRs, issues, code)
+    → Database server (SQL queries)
+    → Slack server (messages)
+    → Browser server (navigate, scrape)
+    → Custom server (YOUR tools!)
+
+  Transport:
+    → stdio (local, same machine)
+    → SSE (remote, over HTTP)
+    → both use JSON-RPC ২.০
+
+MCP CAPABILITIES (৩ types):
+
+১. TOOLS (functions LLM can call)
+  → same as function calling
+  → but standardized format
+  → any MCP client understands
+
+২. RESOURCES (data LLM can read)
+  → files, database contents, API responses
+  → like RAG but standardized
+  → "here is the data you can access"
+
+৩. PROMPTS (templates)
+  → pre-made prompt templates
+  → standardized sharing
+  → "use this prompt structure for X"
+
+BUILDING AN MCP SERVER:
+
+  Python (fastmcp):
+    from fastmcp import FastMCP
+    
+    mcp = FastMCP("my-tools")
+    
+    @mcp.tool()
+    def get_weather(city: str) -> str:
+      """Get weather for a city"""
+      return fetch_weather(city)
+    
+    @mcp.tool()
+    def search(query: str) -> list:
+      """Search the web"""
+      return web_search(query)
+    
+    mcp.run()  # starts MCP server!
+  
+  → that is it! 
+  → any MCP client can now use these tools
+  → no per-LLM integration needed
+
+  TypeScript (official SDK):
+    import { Server } from "@modelcontextprotocol/sdk"
+    // similar pattern, Node.js
+
+MCP ECOSYSTEM (২০২৪-২০২৫):
+
+  Official servers:
+    → filesystem (read/write files)
+    → github (repos, PRs, issues)
+    → gitlab (same for GitLab)
+    → postgres (database queries)
+    → slack (messages, channels)
+    → google-drive (docs, sheets)
+    → puppeteer (browser automation)
+    → memory (persistent knowledge)
+    → brave-search (web search)
+    → fetch (HTTP requests)
+  
+  Community servers:
+    → hundreds growing rapidly
+    → Notion, Linear, Jira, Discord
+    → AWS, Azure, GCP
+    → databases, APIs, everything
+
+MCP vs DIRECT FUNCTION CALLING:
+
+  Direct:
+    → custom per LLM
+    → your code, your format
+    → tight coupling
+  
+  MCP:
+    → standard protocol
+    → any client
+    → loose coupling
+    → shareable, reusable
+  
+  When to use MCP:
+    ✅ tools used across multiple LLM apps
+    ✅ sharing tools with community
+    ✅ standard tool ecosystem
+  
+  When to use direct:
+    ✅ single LLM, single app
+    ✅ custom format needed
+    ✅ performance-critical (MCP adds overhead)
+
+MCP CONFIGURATION (Claude Desktop):
+
+  claude_desktop_config.json:
+  {
+    "mcpServers": {
+      "filesystem": {
+        "command": "npx",
+        "args": ["@modelcontextprotocol/server-filesystem", 
+                 "/path/to/allowed/dir"]
+      },
+      "github": {
+        "command": "npx",
+        "args": ["@modelcontextprotocol/server-github"],
+        "env": {"GITHUB_TOKEN": "..."}
+      }
+    }
+  }
+  
+  → restart Claude Desktop
+  → tools now available!
+  → Claude can read files, query GitHub</div>
+
+<div class="dialogue">সিলসিলা — chain, connection, linkage। কুরআনে আল্লাহ বলেন — "তোমরা আল্লাহর রশি দৃঢ়ভাবে ধরো, সবাই একসাথে।" (৩:১০৩)। একসাথে = সিলসিলা। MCP-ও সিলসিলা — LLM ও tool একসাথে সংযুক্ত। standard protocol = সবাই এক শৃঙ্খলে। সিলসিলা — সংযোগের শৃঙ্খল। যে সংযুক্ত, সে শক্তিশালী।</div>
+<div class="dialogue en">"Silsila — chain, connection, linkage. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Together = silsila. MCP too — LLM and tool connected together. Standard protocol = everyone in one chain. Silsila — the chain of connection. One who is connected, is strong."</div>`,
+  senior:{
+    title:"MCP Start — Build Your First Server",
+    body:`<p><strong>Quickest:</strong> pip install fastmcp → write @mcp.tool() functions → mcp.run()। ৫ minutes।</p><p><strong>Claude Desktop:</strong> Add server config to claude_desktop_config.json → restart → tools available।</p><p><strong>Existing servers:</strong> npx @modelcontextprotocol/server-filesystem /path — immediate file access।</p><p><strong>Cursor:</strong> Settings → MCP → add server → tools available in AI chat।</p><p><strong>Share:</strong> Publish MCP server to npm/PyPI → anyone can use your tools with any MCP-compatible LLM!</p>`
+  }
+});
+
+// ══ DOOR 4: TOOL PATTERNS ══
+doors.push({
+  num:4, icon:"⚙️", color:"#fb923c", name:"প্যাটার্নের কক্ষ",
+  subtitle:"The Pattern Chamber", tech:"Tool Orchestration Patterns",
+  spirit:"তাদবির — পরিকল্পনা, ব্যবস্থা",
+  secret:"একটা টুল কল করা সহজ। কিন্তু ৫টা টুল সঠিক ক্রমে? Sequential, parallel, conditional, recursive — প্রতিটা pattern আলাদা। সঠিক pattern = সঠিক কাজ। ভুল pattern = বিভ্রান্তি। তাদবির — টুল পরিকল্পনা।",
+  recall:{
+    q:"প্যাটার্নের কক্ষে কেন একাধিক কাজের ক্রম?",
+    qen:"Why multiple task orders?",
+    a:"কারণ এক টুল সহজ, কিন্তু অনেক টুল সঠিক ক্রমে কঠিন। Sequential, parallel, conditional — প্রতিটা আলাদা। সঠিক pattern = সঠিক কাজ। তাদবির।",
+    aen:"Because one tool is easy, but many tools in right order is hard. Sequential, parallel, conditional — each different. Right pattern = right work. Tadbir."
+  },
+  story:`<p class="scene-setting">চতুর্থ কর্মশালা। প্যাটার্নের কক্ষ। দেয়ালে নকশা — একটা ধাপ, দুটো সমান্তরাল, শর্তযুক্ত শাখা, পুনরাবৃত্তি। কারিগর মারিয়াম বললেন — "এক টুল সহজ। কিন্তু অনেক টুল? কোনটা আগে? কোনটা পরে? কোনটা সমান্তরাল? এটাই pattern — সঠিক ক্রম।"</p>
+<p class="scene-setting en">The fourth workshop. Pattern chamber. Designs on walls — sequential, parallel, conditional branch, recursion. Craftswoman Mariam said — "One tool is easy. But many? Which first? Which after? Which parallel? This is pattern — the right order."</p>
+
+<div class="dialogue">MCP বলেছিলেন — standard protocol দাও। কিন্তু আমি বলি — protocol দিলেও কীভাবে ব্যবহার করবে? এক টুল? সহজ। কিন্তু ৫ টুল? কোনটা আগে, কোনটা পরে? সঠিক pattern ছাড়া টুল = বিশৃঙ্খলা। তাদবির — টুল পরিকল্পনা।</div>
+<div class="dialogue en">"MCP said — give standard protocol. But I say — even with protocol, how to use? One tool? Easy. But 5 tools? Which first, which after? Without right pattern, tools = chaos. Tadbir — tool planning."</div>,
+
+  story:`<p class="scene-setting">The fourth workshop. Pattern chamber. Flowcharts on the wall showing linear sequences, parallel forks, conditional branches, and loops. Craftsman Mariam pointed to each. One tool is a single step, but real work needs multiple tools in the right order. Search then read then analyze then write. Or search A and search B in parallel then merge. The pattern determines efficiency.</p>
+
+<p class="scene-setting en">The fourth workshop. Pattern chamber. Flowcharts on the wall showing linear sequences, parallel forks, conditional branches, and loops. Craftsman Mariam pointed to each. One tool is a single step, but real work needs multiple tools in the right order. The pattern determines efficiency.</p>onal branches, and loops. Craftsman Mariam pointed to each. One tool is a single step, but real work needs multiple tools in the right order. The pattern determines efficiency.</p>
+
+PATTERN ১: SEQUENTIAL (pipeline)
+  Tool A → Tool B → Tool C
+  
+  search("RAG papers") → read(top paper) → summarize
+  
+  ✅ simple, predictable
+  ❌ slow (each waits for previous)
+
+PATTERN ২: PARALLEL (fan-out/fan-in)
+  Tool A ─┐
+  Tool B ─┤→ merge
+  Tool C ─┘
+  
+  search("topic A") + search("topic B") + search("topic C")
+  → all at once → merge results
+  
+  ✅ fast (concurrent)
+  ❌ coordination needed
+  → OpenAI: parallel function calling built-in!
+
+PATTERN ৩: CONDITIONAL (branching)
+  if condition → Tool A
+  else → Tool B
+  
+  LLM decides based on previous result:
+  → search result relevant? → summarize
+  → search result irrelevant? → search again
+  
+  ✅ adaptive
+  ❌ harder to debug
+
+PATTERN ৪: ITERATIVE (loop)
+  while not done:
+    → Tool call → check → repeat
+  
+  ReAct loop: Thought → Action → Observe → repeat
+  
+  ✅ powerful (agent-like)
+  ❌ risk of infinite loops (max iterations!)
+
+PATTERN ৫: HIERARCHICAL (delegation)
+  Manager tool → delegates to sub-tools
+  
+  build_website:
+    → create_database
+    → create_api
+    → create_frontend
+  
+  ✅ organized, scalable
+  ❌ manager complexity
+
+WHEN LLM CHOOSES TOOLS:
+
+  LLM as orchestrator:
+    → LLM sees available tools
+    → decides: which tool, what order
+    → this IS what makes agents work!
+  
+  Example conversation:
+    User: "Research AI papers and email summary"
+    LLM: [plans: search → read → summarize → email]
+    LLM: search("AI papers ২০২৪")
+    Tool: [results...]
+    LLM: read(paper_১), read(paper_২)  // parallel
+    Tool: [content...]
+    LLM: summarize → draft email
+    LLM: send_email(team@company.com, summary)
+    LLM: "Done! Emailed summary of ২ papers."
+
+TOOL CHAIN ERRORS:
+
+  Error propagation:
+    Tool A fails → Tool B can't run → cascade
+  
+  Fix:
+    → each tool returns clear error
+    → LLM adapts: "search failed, try different query"
+    → fallback tools
+    → human intervention for critical failures</div>
+
+<div class="dialogue">তাদবির — planning, arrangement, strategy। কুরআনে আল্লাহ বলেন — "তোমরা প্রস্তুতি নাও।" (৮:৬০)। প্রস্তুতি = তাদবির। টুল pattern-ও তাদবির — কোন টুল কখন। সঠিক তাদবির = সফল কাজ। যে তাদবির করে, সে সফল।</div>
+<div class="dialogue en">"Tadbir — planning, arrangement, strategy. Allah says — 'Be prepared.' (8:60). Preparation = tadbir. Tool patterns too — which tool when. Right tadbir = successful work. One who plans, succeeds."</div>`,
+  senior:{
+    title:"Pattern Selection — Which When",
+    body:`<p><strong>Single tool:</strong> Direct call, no pattern needed।</p><p><strong>Multiple independent tools:</strong> Parallel (OpenAI parallel function calling)।</p><p><strong>Dependent tools (A → B):</strong> Sequential pipeline।</p><p><strong>Uncertain which tool:</strong> Let LLM decide (agent loop)।</p><p><strong>Complex multi-step:</strong> Hierarchical with sub-tasks।</p><p><strong>Always:</strong> Set max iterations for loops। Clear error messages for adaptation।</p>`
+  }
+});
+
+// ══ DOOR 5: ERROR HANDLING & SAFETY ══
+doors.push({
+  num:5, icon:"🛡️", color:"#ea580c", name:"সুরক্ষার কক্ষ",
+  subtitle:"The Safety Chamber", tech:"Tool Error Handling & Safety",
+  spirit:"হিফয — সুরক্ষা, সংরক্ষণ",
+  secret:"টুল ভাঙে। API fail করে, টাইমআউট হয়, ভুল argument আসে। Error handling = টুল ভাঙলে কী করবে। LLM-কে বাস্তবসম্মত error দাও, সে নিজে fix করে। Safety = destructive টুল থেকে সুরক্ষা। হিফয — সুরক্ষার গুণ।",
+  recall:{
+    q:"সুরক্ষার কক্ষে কেন প্রতিটা টুলের নিরাপত্তা?",
+    qen:"Why security for every tool?",
+    a:"কারণ টুল ভাঙে। API fail, টাইমআউট, ভুল argument। Error handling = ভাঙলে কী করবে। Safety = destructive টুল থেকে সুরক্ষা। হিফয — সুরক্ষা।",
+    aen:"Because tools break. API fails, timeout, wrong arguments. Error handling = what to do when broken. Safety = protection from destructive tools. Hifz — protection."
+  },
+  story:`<p class="scene-setting">পঞ্চম কর্মশালা। সুরক্ষার কক্ষ। প্রতিটা টুলের চারপাশে প্রতিরক্ষা — validation, rate limit, sandbox, audit log। কারিগর সালমা বললেন — "টুল ভাঙে। প্রশ্ন নয় কখন — কী করবে। ভালো error message দাও, LLM নিজে fix করে। Destructive টুল? Human approval। হিফয — সুরক্ষা।"</p>
+<p class="scene-setting en">The fifth workshop. Safety chamber. Each tool surrounded by defenses — validation, rate limit, sandbox, audit log. Craftswoman Salma said — "Tools break. Not when — but what to do. Give good error messages, the LLM fixes itself. Destructive tools? Human approval. Hifz — protection."</p>
+
+<div class="dialogue">Pattern কক্ষ বলেছিলেন — সঠিক ক্রমে টুল ব্যবহার করো। কিন্তু আমি বলি — সঠিক ক্রমেও টুল ভাঙে। API down, টাইমআউট, ভুল data। Error handling ছাড়া সব থেমে যায়। আর destructive টুল — delete, send, deploy — এগুলো সুরক্ষা চায়। হিফয — প্রতিটা টুলের সুরক্ষা।</div>
+<div class="dialogue en">"The pattern chamber said — use tools in right order. But I say — even in right order, tools break. API down, timeout, wrong data. Without error handling, everything stops. And destructive tools — delete, send, deploy — these need protection. Hifz — protection for every tool."</div>,
+
+  story:`<p class="scene-setting">The fifth workshop. Safety chamber. Each tool sat behind a protective shield — input validation, rate limiting, sandboxing, audit logging. Tools fail, Craftswoman Salma said. APIs go down, timeouts happen, wrong arguments arrive. The question is not IF — it is WHAT you do. Return clear errors. Let the LLM adapt. For destructive actions — require human approval.</p>
+
+<p class="scene-setting en">The fifth workshop. Safety chamber. Each tool sat behind a protective shield — input validation, rate limiting, sandboxing, audit logging. "Tools fail," Craftswoman Salma said. "APIs go down, timeouts happen, wrong arguments arrive. The question isn't IF — it's WHAT you do. Return clear errors. Let the LLM adapt. For destructive actions — require human approval."</p>
+
+<div class="code-block">Tool Error Handling & Safety:
+
+ERROR HANDLING (tools break, plan for it):
+
+১. TIMEOUT
+  → tool takes too long → kill after N seconds
+  → return: "Error: request timed out after ৩০s"
+  → LLM can retry with simpler request
+  
+  Implementation:
+    async def call_with_timeout(tool, args, timeout=৩০):
+      try:
+        return await asyncio.wait_for(
+          tool(**args), timeout=timeout)
+      except TimeoutError:
+        return "Error: timed out. Try a simpler query."
+
+২. API FAILURE
+  → external API down (৫০৩, ৫০০)
+  → retry with exponential backoff
+  → fallback to cached results
+  
+  return: "Error: weather service unavailable. 
+           Please try again later."
+
+৩. INVALID ARGUMENTS
+  → LLM provides wrong type, missing field
+  → validate before executing!
+  → return: "Error: 'city' is required but 
+             was not provided. Please provide 
+             a city name."
+
+৪. PERMISSION DENIED
+  → tool requires auth, user lacks permission
+  → return: "Error: permission denied. 
+             You need admin access for this."
+
+LLM ERROR ADAPTATION (the magic!):
+  
+  LLM receives error → adapts:
+  
+  LLM: search("", num_results=৫)
+  Tool: "Error: query cannot be empty"
+  LLM: search("machine learning", num_results=৫)
+  Tool: [results...]
+  LLM: "Here are the results..."
+  
+  → LLM learns from error, self-corrects!
+  → this is why clear error messages matter
+
+TOOL SAFETY LAYERS:
+
+  ┌──────────────────────────────────────┐
+  │ Layer ১: INPUT VALIDATION            │
+  │ → type check, range check            │
+  │ → sanitize (no SQL injection!)       │
+  │ → parameter constraints              │
+  ├──────────────────────────────────────┤
+  │ Layer ২: AUTHORIZATION               │
+  │ → does user have permission?         │
+  │ → rate limiting (max N/min)          │
+  │ → tool whitelist (only approved)     │
+  ├──────────────────────────────────────┤
+  │ Layer ৩: SANDBOXING                   │
+  │ → code execution: isolated container  │
+  │ → file access: restricted paths       │
+  │ → network: filtered                   │
+  ├──────────────────────────────────────┤
+  │ Layer ৪: HUMAN APPROVAL              │
+  │ → destructive actions: pause         │
+  │ → send_email, delete_file, deploy    │
+  │ → human must approve before execute  │
+  ├──────────────────────────────────────┤
+  │ Layer ৫: AUDIT LOGGING               │
+  │ → every tool call logged             │
+  │ → who, what, when, result            │
+  │ → for debugging + compliance         │
+  └──────────────────────────────────────┘
+
+DESTRUCTIVE TOOL CLASSIFICATION:
+
+  Read-only (safe, auto):
+    → search, get_weather, read_file
+    → no side effects
+  
+  Write (caution, log):
+    → write_file, create_record
+    → creates data, reversible
+  
+  Destructive (HUMAN APPROVAL):
+    → delete_file, send_email, deploy
+    → irreversible or high-impact
+  
+  System-level (BLOCKED without admin):
+    → exec, system_command, format_drive
+    → never allow without explicit permission</div>
+
+<div class="dialogue">হিফয — protection, preservation, safeguarding। কুরআনে আল্লাহ বলেন — "নিশ্চয় আমরা কুরআন নাজিল করেছি এবং নিশ্চয় আমরাই এর সংরক্ষক।" (১৫:৯)। সংরক্ষণ = হিফয। টুল safety-ও হিফয — প্রতিটা টুলের সুরক্ষা। validation, authorization, sandboxing — সব হিফয। যে হিফয করে, সে নিরাপদ। যে অবহেলা করে, সে বিপদে।</div>
+<div class="dialogue en">"Hifz — protection, preservation, safeguarding. Allah says — 'We sent down the Quran and We are its preserver.' (15:9). Preservation = hifz. Tool safety too — protecting every tool. Validation, authorization, sandboxing — all hifz. One who protects, is safe. One who neglects, is in danger."</div>`,
+  senior:{
+    title:"Tool Safety Checklist",
+    body:`<p>☐ Input validation: types, ranges, sanitization</p><p>☐ Authorization: user permissions checked</p><p>☐ Rate limiting: max N calls/minute</p><p>☐ Tool whitelist: only approved tools</p><p>☐ Sandboxing: isolated execution for code tools</p><p>☐ Human approval: destructive tools pause for approval</p><p>☐ Audit logging: every call logged with timestamp</p><p>☐ Clear errors: LLM can self-correct from message</p><p>☐ Timeout: kill long-running tools</p><p>☐ Fallback: if tool fails, alternative available</p>`
+  }
+});
