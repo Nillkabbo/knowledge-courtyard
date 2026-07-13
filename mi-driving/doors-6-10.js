@@ -19,10 +19,10 @@ doors.push({
 <p class="scene-setting en">The sixth chapter. You sit in a car. Beside you: instructor — stopwatch in hand, eyes on road. Ahead: a car driving. "Look," the instructor said, "that car reached that pole. Now count — one-thousand-one, one-thousand-two, one-thousand-three. If you reach it earlier, you're too close."</p>
 
 <div class="code-block">SAFE DRIVING TECHNIQUES — COMPLETE
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 📏 FOLLOWING DISTANCE (3-SECOND RULE)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   Dry, clear, daylight: ৩ সেকেন্ড
   Rain/wet road: ৪ সেকেন্ড
@@ -38,9 +38,9 @@ doors.push({
   ৩. তুমি সেই point পার হওয়ার আগে গোনা শেষ হলে 
      = নিরাপদ দূরত্ব
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 👁️ BLIND SPOTS (অন্ধ এলাকা)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   Mirror-এ যা দেখা যায় না = blind spot
   → সব গাড়ির পাশে blind spot আছে
@@ -55,9 +55,9 @@ doors.push({
   → Side mirror বাইরের দিকে ঘুরাও
   → Blind spot কমে
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🛣️ PASSING (অতিক্রম করা)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   পাস করার আগে:
   ১. সামনের রাস্তা পরিষ্কার — অন্য গাড়ি নেই
@@ -75,9 +75,9 @@ doors.push({
   ✗ Intersection কাছে
   ✗ Railroad crossing কাছে
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🔀 MERGING (হাইওয়েতে যুক্ত হওয়া)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ১. On-ramp-এ accelerate করো (highway speed-এ)
   ২. Mirror + shoulder check
@@ -88,9 +88,9 @@ doors.push({
 
   ⚠️ হাইওয়েতে ধীরে ঢুকো না — বিপজ্জনক!
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🌙 NIGHT DRIVING
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Headlight on (sunset থেকে sunrise)
   ✦ High beam (dark road, no oncoming)
@@ -99,9 +99,9 @@ doors.push({
   ✦ Speed কমাও — night visibility কম
   ✦ ৪+ second following distance
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 💧 STEERING & BRAKING TECHNIQUES
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✦ 9-and-3 hand position (steering wheel)
   ✦ Push-pull steering (smooth)
@@ -217,10 +217,10 @@ doors.push({
 <p class="scene-setting en">The seventh chapter. You're on a busy road. Passing: pedestrian, bicycle, motorcycle, truck, bus. Each different. The instructor said — "Each has different rules. Same road, everyone different. You must respect all." Vehicle sounds, air, distant siren.</p>
 
 <div class="code-block">SHARING THE ROAD — COMPLETE GUIDE
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 🚶 PEDESTRIANS (পথচারী)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✦ পেডেস্ট্রিয়ান সবসময় অগ্রাধিকার
   ✦ ক্রসওয়াকে কেউ থাকলে থামো
@@ -229,20 +229,20 @@ doors.push({
   ✦ টার্ন নেওয়ার সময় পেডেস্ট্রিয়ান দেখো
   ✦ Jaywalker-ও থামলে থামো
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🚴 BICYCLISTS (সাইকেল চালক)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Cyclist একই road user — একই অধিকার
   ✦ কমপক্ষে ৩ ফুট (3 feet) দূরত্ব রাখো
+  ✦ বাম দিয়ে পাস করো (left lane-এ সরে যাও)
   ✦ Cyclist blind spot চেক করো
-  ✦ ডান দিয়ে পাস করো, বাম নয়
   ✦ Cyclist lane পরিবর্তন করতে পারে
   ✦ Door zone: parked car door খুলতে পারে
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🏍️ MOTORCYCLISTS
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Motorcycle ছোট কিন্তু একই অধিকার
   ✦ Motorcycle blind spot-এ সহজে লুকায়
@@ -251,9 +251,9 @@ doors.push({
   ✦ বৃষ্টিতে/বরফে motorcycle আরও বেশি vulnerable
   ✦ Headlight on motorcycle-এ সবসময়
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🚛 LARGE TRUCKS / BUSES
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ⚠️ NO ZONE (Truck Blind Spot):
   ╔═══════════════════════════════════════╗
@@ -271,22 +271,55 @@ doors.push({
   ✦ Truck ব্রেক distance বেশি — cut করো না
   ✦ Truck right turn-এ ডানে সরে যেতে পারে
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🚑 EMERGENCY VEHICLES
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Siren/light দেখলে — ডানে সরে যাও
   ✦ সম্পূর্ণ থামো
   ✦ Intersection পার হও, তারপর ডানে সরে যাও
   ✦ জরুরি গাড়ি পার হলে আবার চলতে পারো
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🚜 SLOW-MOVING VEHICLES (Tractor etc.)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Orange triangle emblem = slow vehicle
   ✦ Patience রাখো
   ✦ নিরাপদে পাস করো</div>
+
+<div class="sign-gallery">
+<div class="sign-item"><svg viewBox="0 0 100 100" width="60" height="60"><circle cx="50" cy="50" r="46" fill="#fdd835" stroke="#000" stroke-width="3"/><line x1="14" y1="14" x2="86" y2="86" stroke="#000" stroke-width="3"/><line x1="86" y1="14" x2="14" y2="86" stroke="#000" stroke-width="3"/><text x="50" y="44" text-anchor="middle" font-size="10" font-weight="900" fill="#000">RR</text><text x="50" y="60" text-anchor="middle" font-size="10" font-weight="900" fill="#000">RR</text></svg><div class="sign-label">🟡 <strong>RAILROAD</strong><br>রেল ক্রসিং আগে</div></div>
+</div>
+
+<div class="code-block">🚂 RAILROAD CROSSINGS (রেল ক্রসিং)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  Round yellow sign (X shape with RR) = রেল ক্রসিং আসছে
+
+  নিয়ম:
+  ✦ Approach-এ গতি কমাও
+  ✦ বাম-ডান দেখো (track পরিষ্কার?)
+  ✦ Gate নামলে / লাল আলো জ্বললে — থামো
+  ✦ Bell শুনলে — থামো
+  ✦ Track-এ গাড়ি থামিও না (intersection-এ নয়!)
+  ✦ ট্রেন দেখা গেলে — অপেক্ষা করো
+  ✦ Multiple track থাকলে — একটা ট্রেন যাওয়ার 
+    পরেও দেখো আরেকটা আসছে কিনা
+
+  ⚠️ গেট নেই এমন ক্রসিং — বিশেষ সতর্ক
+
+— — — — — — — — — — — — — — — — — — — — — —
+🚨 MOVE OVER LAW (Michigan)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ✦ Stopped emergency vehicle (police/fire/ambulance) 
+    দেখলে:
+    1. বাম/ডান lane change করো (খালি লেনে যাও)
+    2. Lane change সম্ভব না হলে — ধীরে চালাও 
+       (safe speed-এর নিচে)
+  ✦ Tow truck এবং utility vehicle-ও অন্তর্ভুক্ত
+  ✦ অমান্য করলে: fine + points</div>
 
 <div class="sign-visual"><div class="sign-title">🚛 TRUCK "NO ZONE" — Blind Spot Map</div>
 
@@ -364,17 +397,17 @@ doors.push({
   recall:{
     q:"Skid হলে কেন brake চাপা ঠিক নয়?",
     qen:"Why is braking wrong when skidding?",
-    a:"কারণ brake চাপলে চাকা আরও বেশি lock হয়, skid আরও খারাপ হয়। সঠিক কাজ — steering ঘুরাও সেই দিকে যেখানে গাড়ি যেতে চায়। ধীরে, smoothly। ABS থাকলে steady pressure, pump না।",
-    aen:"Because braking locks wheels more, making skid worse. Correct action — steer in the direction you want to go. Slowly, smoothly. With ABS, steady pressure, don't pump."
+    a:"কারণ পুরনো গাড়িতে (ABS নেই) brake চাপলে চাকা lock হয়ে যায়, skid আরও খারাপ হয়। কিন্তু আধুনিক গাড়িতে (ABS আছে) — brake firmly চেপে ধরে রাখো এবং steering ঘুরাও যেদিকে যেতে চাও। ABS নিজেই wheel pump করে। সব গাড়িতে steering ঘুরানোই মূল কাজ।",
+    aen:"In older cars (no ABS), braking locks wheels making skid worse. But in modern cars (with ABS) — press brake firmly and hold while steering in the direction you want to go. ABS pumps the wheels automatically. In all cars, steering toward where you want to go is the key action."
   },
   story:`
 <p class="scene-setting">অষ্টম অধ্যায়। তুমি একটা বরফে ঢাকা রাস্তায়। গাড়ি একটু পিছলে যাচ্ছে। Instructor বললেন — "ভয় পেও না। brake চাপো না। Steering ঘুরাও যেদিকে যেতে চাও।" বরফের কড়া ঠান্ডা, গাড়ির চাকার শব্দ, হালকা wind।</p>
 
 <div class="code-block">HAZARDS & EMERGENCIES — COMPLETE
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 ❄️ WINTER DRIVING (Michigan-এ সবচেয়ে গুরুত্বপূর্ণ)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Speed limit এর অনেক কম চালাও
   ✦ 6+ second following distance
@@ -385,14 +418,23 @@ doors.push({
   ✦ Snow tire / chain ব্যবহার করো
 
 🚗 SKIDDING (পিছলে যাওয়া)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
-  ১. শান্ত থাকো
-  ২. ❌ Brake চাপো না
-  ৩. ❌ Gas চাপো না  
-  ৪. ✅ Steering ঘুরাও যেদিকে যেতে চাও
-  ৫. ✅ ধীরে, smoothly
-  ৬. ABS: steady pressure — pump না</div>
+  ❓ তোমার গাড়িতে ABS আছে?
+
+  ✅ ABS আছে (২০০৪ পরবর্তী সব গাড়ি):
+     ১. Brake firmly চাপো এবং ধরে রাখো (pump নয়!)
+     ২. Steering ঘুরাও যেদিকে যেতে চাও
+     ৩. ABS vibration/pulsing অনুভব করবে — স্বাভাবিক
+
+  ⚠️ ABS নেই (পুরনো গাড়ি):
+     ১. শান্ত থাকো
+     ২. Brake চাপো না (চাকা lock হবে)
+     ৩. Gas চাপো না
+     ৪. Steering ঘুরাও যেদিকে যেতে চাও
+
+  → সব আধুনিক গাড়িতে ABS আছে — brake চেপে 
+    ধরে রাখো + steer</div>
 
 <div class="diagram-box"><div class="dia-title">🚗 SKID RECOVERY — Steering Into the Slide</div>
 
@@ -427,7 +469,7 @@ doors.push({
 </div>
 
 💧 HYDROPLANING (জলে ভাসা)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ১. Gas ছেড়ে দাও (slowly)
   ২. ❌ Brake না
@@ -436,14 +478,14 @@ doors.push({
   ৫. Prevent: good tire, slow speed, 4+ sec
 
 🚗 BRAKE FAILURE
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ১. Parking brake ধীরে টানো
   ২. গিয়ার নিচে নামাও (downshift)
   ৩. নিরাপদ জায়গায় থামানোর চেষ্টা
 
 🔥 TIRE BLOWOUT
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ১. Gas ধরে রাখো (মুহূর্তে)
   ২. ধীরে ধীরে গ্যাস ছাড়ো
@@ -451,7 +493,7 @@ doors.push({
   ৪. নিরাপদে থামাও
 
 🦌 DEER ON ROAD
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ১. Brake করো (সম্ভব হলে)
   ২. ❌ Deer এড়াতে swerve করো না
@@ -459,7 +501,7 @@ doors.push({
   ৩. সোজা থাকো, ব্রেক করো
 
 💥 ACCIDENT — কী করবে
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ১. থামো — জায়গা ছেড়ে না
   ২. নিরাপদ হলে গাড়ি সরাও (roadside)
@@ -520,10 +562,10 @@ doors.push({
 <p class="scene-setting">নবম অধ্যায়। তুমি একটা police checkpoint-এ। Police officer — গম্ভীর, badge ঝকমক। তিনি বললেন — "নেশা করে গাড়ি চালানো শুধু অপরাধ নয় — খুন। তোমার এবং অন্যের জীবনের সাথে খেলা। Michigan-এ এর শাস্তি কঠোর।"</p>
 
 <div class="code-block">MICHIGAN OWI LAWS — COMPLETE
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 🍺 OPERATING WHILE INTOXICATED (OWI)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   BAC Limits:
   ┌────────────────────────────────────────┐
@@ -552,9 +594,9 @@ doors.push({
   ✦ $500-$5000 fine
   ✦ License revocation (minimum 5 years)
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🚫 IMPLIED CONSENT LAW
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   Michigan-এ গাড়ি চালালে তুমি implied consent দিচ্ছ
   → Police breathalyzer চাইলে দিতে বাধ্য
@@ -562,25 +604,26 @@ doors.push({
     (first refusal)
   → Blood test ও দিতে হয়
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 📱 DISTRACTED DRIVING — TEXTING LAW
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   Michigan-এ:
-  ✦ Texting while driving = PRIMARY offense
-    (police শুধু texting দেখে থামাতে পারে)
+  ✦ 2023 HANDS-FREE LAW: যেকোনো handheld phone 
+    use নিষেধ — calling, texting, scrolling, video
+  ✦ Hands-free device ছাড়া phone ধরা = অপরাধ
   ✦ $100 fine (first offense)
   ✦ $200 fine (subsequent)
-  ✦ Hands-free device ছাড়া phone use নিষেধ
+  ✦ GPS ও মাউন্টেড phone ব্যবহার যায় (1 tap)
 
   Distracted driving types:
   👀 Visual: eyes off road (texting, GPS)
   🤚 Manual: hands off wheel (phone, food)
   🧠 Cognitive: mind off driving (conversation)
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 💊 DRUGS (prescription সহ)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Marijuana (legal recreationally) — কিন্তু 
     গাড়ি চালানোর সময় নেশা নিষেধ
@@ -636,10 +679,10 @@ doors.push({
 <p class="scene-setting">দশম অধ্যায়। তুমি গাড়িতে বসে আছো। পাশে road test examiner — ক্লিপবোর্ড, pen, গম্ভীর মুখ। "প্রস্তুত?" তিনি জিজ্ঞেস করলেন। গাড়ির ইঞ্জিন idle, হালকা বাতাস, সামনে পরীক্ষার রাস্তা। এই মুহূর্তটা — তোমার সব প্রস্তুতির পরীক্ষা।</p>
 
 <div class="code-block">ROAD TEST — EXAMINER CHECKLIST
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 📋 PART 1: VEHICLE SAFETY CHECK (পরীক্ষা শুরুর আগে)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   Examiner জিজ্ঞেস করবে:
   ✦ Headlight কোথায়?
@@ -654,9 +697,9 @@ doors.push({
 
   → না জানলে test শুরুই হবে না!
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🚗 PART 2: BASIC DRIVING SKILLS
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   📌 STARTING:
   ✦ Seatbelt on
@@ -684,9 +727,9 @@ doors.push({
   ✦ Drifting নয়
   ✦ Lane change: signal + mirror + shoulder
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🅿️ PART 3: PARKING MANEUVERS
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   📌 PARALLEL PARKING:
   ✦ Signal
@@ -716,9 +759,9 @@ doors.push({
   ✦ Reverse, turn wheel right
   ✦ Forward, turn left, proceed
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🛣️ PART 4: ON-ROAD DRIVING
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Stop signs — complete stop
   ✦ Traffic signals — proper response
@@ -780,7 +823,7 @@ doors.push({
 </div>
 
 <div class="code-block">❌ TOP 10 AUTOMATIC FAIL REASONS:
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ১. ❌ Rolling stop (STOP sign-এ সম্পূর্ণ থামো না)
   ২. ❌ No blind spot check (shoulder check না)
@@ -793,9 +836,9 @@ doors.push({
   ৯. ❌ Failure to yield (right-of-way না)
   ১০. ❌ Distracted driving (phone, etc.)
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 ✅ TOP 10 PASS TIPS:
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ১. ✅ Exaggerate everything — head turns, 
      shoulder checks visible করো
@@ -809,16 +852,16 @@ doors.push({
   ৯. ✅ Parking practice — parallel, 3-point
   ১০. ✅ শান্ত থাকো — nervous = mistake
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 📝 WHAT TO BRING:
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Valid learner license
   ✦ Vehicle (registration + insurance)
   ✦ Working lights, signals, horn
   ✦ Clean windshield
   ✦ Seatbelts working
-  ✦ $\ (test fee)</div>
+  ✦ Test fee ($)</div>
 
 <div class="code-block">EXAM PATTERN QUESTIONS — Road Test:
 

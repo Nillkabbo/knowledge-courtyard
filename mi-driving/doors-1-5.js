@@ -776,7 +776,18 @@ doors.push({
 
 <div class="code-block">PARKING RULES — কোথায় পার্ক করবে, কোথায় নয়
 — — — — — — — — — — — — — — — — — — — — — —
+💺 SEATBELT LAW (সিটবেল্ট আইন)
+— — — — — — — — — — — — — — — — — — — — — —
 
+  ✦ ALL passengers সিটবেল্ট পরতে বাধ্য (front + back)
+  ✦ PRIMARY enforcement — police শুধু সিটবেল্ট 
+    না পরা দেখে থামাতে পারে
+  ✦ Driver দায়ী — passenger না পরলে driver-এর fine
+  ✦ Child (under 8 / under 4'9") = car seat বা booster
+  ✦ Child (under 4) = rear-facing বা forward-facing 
+    car seat (age/weight অনুযায়ী)
+
+— — — — — — — — — — — — — — — — — — — — — —
 🚫 NO PARKING (পার্ক করা নিষেদ্ধ):
 — — — — — — — — — — — — — — — — — — — — — —
 
