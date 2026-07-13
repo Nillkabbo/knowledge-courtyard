@@ -65,6 +65,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(25)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
 .game-card:nth-child(26)::before{background:linear-gradient(90deg,#06b6d4,#67e8f9,#06b6d4)}
 .game-card:nth-child(27)::before{background:linear-gradient(90deg,var(--moon),var(--cyan),var(--moon))}
+.game-card:nth-child(28)::before{background:linear-gradient(90deg,var(--gold),var(--fire),var(--gold))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -100,6 +101,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(25) .game-tag{background:rgba(129,140,248,.12);color:var(--purple)}
 .game-card:nth-child(26) .game-tag{background:rgba(6,182,212,.12);color:#06b6d4}
 .game-card:nth-child(27) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
+.game-card:nth-child(28) .game-tag{background:rgba(251,191,36,.12);color:var(--gold)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -140,6 +142,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(25) .game-link{color:var(--purple)}
 .game-card:nth-child(26) .game-link{color:#06b6d4}
 .game-card:nth-child(27) .game-link{color:var(--moon)}
+.game-card:nth-child(28) .game-link{color:var(--gold)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -179,13 +182,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">২৭</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">২৬২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">২৬২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">২৮</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">২৭২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">২৭২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 সাতাশটি যাত্রা — Twenty-Seven Journeys</div>
+  <div class="section-label">📚 আটাশটি যাত্রা — Twenty-Eight Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -1198,6 +1201,41 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>🌊 10 Domains</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 28: MI DRIVING GUIDE ══ -->
+    <a class="game-card" href="./mi-driving/index.html">
+      <div class="game-head">
+        <div class="game-icon">🚗</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 28 · Michigan Driving Guide</div>
+          <div class="game-title">The Michigan Driving Guide</div>
+          <div class="game-title-bn">মিশিগান ড্রাইভিং গাইড</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        লার্নার পারমিট থেকে রোড টেস্ট পর্যন্ত — সম্পূর্ণ প্রস্তুতি। Michigan SOS What Every Driver Must Know হ্যান্ডবুকের উপর ভিত্তি করে। GDL সিস্টেম, ট্রাফিক সাইন, সিগন্যাল, right-of-way, speed limits, parking, safe driving, road sharing, hazards, OWI/DUI, road test checklist। প্রতিটি অধ্যায়ে কমন exam questions।
+        <span class="en">From learner permit to road test — complete preparation based on Michigan SOS handbook. 10 chapters covering every driving rule with common exam questions.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">📄 License</span>
+        <span class="topic-chip">🚦 Signs</span>
+        <span class="topic-chip">🚥 Signals</span>
+        <span class="topic-chip">🛑 Right-of-Way</span>
+        <span class="topic-chip">🅿️ Speed/Parking</span>
+        <span class="topic-chip">📏 Safe Driving</span>
+        <span class="topic-chip">⚠️ Hazards</span>
+        <span class="topic-chip">🍺 OWI Laws</span>
+        <span class="topic-chip">🏁 Road Test</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🚗 10 Chapters</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>

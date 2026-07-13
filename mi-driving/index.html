@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>মিশিগান ড্রাইভিং গাইড — Michigan Driving Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">মিশিগান ড্রাইভিং গাইড</h1>
+  <div class="title-sub">Michigan Driving Guide</div>
+  <div class="title-desc">
+    লার্নার পারমিট থেকে রোড টেস্ট পর্যন্ত — সম্পূর্ণ প্রস্তুতি।<br>
+    দশটা অধ্যায়ে মিশিগান ড্রাইভিংয়ের প্রতিটি নিয়ম।<br>
+    ট্রাফিক সাইন, সিগন্যাল, রাইট-অফ-ওয়ে, স্পিড লিমিট, সেফ ড্রাইভিং।<br><br>
+    <em>From learner permit to road test — complete preparation. Every Michigan driving rule across ten chapters. Based on the official Michigan SOS "What Every Driver Must Know" handbook.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🚗 যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">ড্রাইভারের শপথ — The Driver's Pledge</div>
+    <p>গাড়ি চালানো একটা অধিকার নয় — এটা একটা সুযোগ। এই সুযোগের সাথে আসে দায়িত্ব। তোমার হাতে শুধু স্টিয়ারিং নয় — তোমার এবং অন্যের জীবন। একটা ভুল সিদ্ধান্ত, একটা মিসড সাইন, একটা সেকেন্ডের অমনোযোগ — পরিণতি হতে পারে মারাত্মক।</p>
+    <p class="en">Driving is not a right — it is a privilege. With this privilege comes responsibility. In your hands is not just a steering wheel — but lives, yours and others'. One wrong decision, one missed sign, one second of distraction — consequences can be severe.</p>
+    <hr class="p-divider">
+    <p>এই বই মিশিগান SOS-এর "What Every Driver Must Know" হ্যান্ডবুকের উপর ভিত্তি করে তৈরি। প্রতিটি নিয়ম, প্রতিটি সাইন, প্রতিটি স্পিড লিমিট — সরকারি তথ্য থেকে। লার্নার পারমিট লিখিত পরীক্ষা এবং রোড টেস্ট — উভয়ের জন্য সম্পূর্ণ প্রস্তুতি। প্রতিটি অধ্যায়ে কমন পরীক্ষার প্রশ্ন, মনে রাখার কৌশল, এবং বাস্তব ড্রাইভিং টিপস।</p>
+    <p class="en">This book is based on the Michigan SOS "What Every Driver Must Know" handbook. Every rule, sign, and speed limit comes from official sources. Complete preparation for both the learner permit written test and the road test. Each chapter includes common exam questions, memory tricks, and real driving tips.</p>
+    <hr class="p-divider">
+    <p><strong>⚠️ সতর্কতা:</strong> এই বই শিক্ষার জন্য। সর্বদা অফিসিয়াল হ্যান্ডবুক পড়ো। আইন পরিবর্তিত হতে পারে। নিরাপদ থাকো।</p>
+    <p class="en"><strong>⚠️ Disclaimer:</strong> This book is for education. Always read the official handbook. Laws may change. Stay safe.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚗 যাত্রা শুরু করো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🚗</span><span id="hud-rank-name">লার্নার পারমিট আবেদক</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>অধ্যায় বেছে নাও</h2><p>দশটা অধ্যায়, ক্রমানুসারে। প্রতিটি অধ্যায় ড্রাইভিংয়ের এক একটা দিক।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← মেনুতে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🚗</div>
+  <h1 class="complete-title">তুমি এখন প্রস্তুত</h1>
+  <p class="complete-text">দশটা অধ্যায় পেরিয়েছ।<br><br>লাইসেন্স, সাইন, সিগন্যাল, রাইট-অফ-ওয়ে, স্পিড, সেফ ড্রাইভিং, শেয়ারিং, হজার্ড, OWI, রোড টেস্ট।<br><br>এখন তুমি জানো — মিশিগানে গাড়ি চালানোর প্রতিটি নিয়ম।<br><strong>পরীক্ষায় যাও। নিরাপদ থাকো। সফল হও।</strong></p>
+  <div class="complete-verse">رَبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার পড়ো</button>
+  <div class="cheat-section-end"><h3>📋 ড্রাইভিং চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">অধ্যায় সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 ড্রাইভিং চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
