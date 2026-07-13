@@ -64,6 +64,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(24)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--gold))}
 .game-card:nth-child(25)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
 .game-card:nth-child(26)::before{background:linear-gradient(90deg,#06b6d4,#67e8f9,#06b6d4)}
+.game-card:nth-child(27)::before{background:linear-gradient(90deg,var(--moon),var(--cyan),var(--moon))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -98,6 +99,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(24) .game-tag{background:rgba(245,158,11,.12);color:var(--gold)}
 .game-card:nth-child(25) .game-tag{background:rgba(129,140,248,.12);color:var(--purple)}
 .game-card:nth-child(26) .game-tag{background:rgba(6,182,212,.12);color:#06b6d4}
+.game-card:nth-child(27) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -137,6 +139,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card:nth-child(24) .game-link{color:var(--gold)}
 .game-card:nth-child(25) .game-link{color:var(--purple)}
 .game-card:nth-child(26) .game-link{color:#06b6d4}
+.game-card:nth-child(27) .game-link{color:var(--moon)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -176,13 +179,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">২৬</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">২৫২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">২৫২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">২৭</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">২৬২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">২৬২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 ছাব্বিশটি যাত্রা — Twenty-Six Journeys</div>
+  <div class="section-label">📚 সাতাশটি যাত্রা — Twenty-Seven Journeys</div>
 
   <!-- ══ GAME CARDS ══ -->
   <div class="games-grid">
@@ -1165,8 +1168,43 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
+    <!-- ══ GAME 27: CS OCEAN ══ -->
+    <a class="game-card" href="./cs-ocean/index.html">
+      <div class="game-head">
+        <div class="game-icon">🌊</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 27 · CS Domain Deep Dive</div>
+          <div class="game-title">The Ocean of Computer Science</div>
+          <div class="game-title-bn">কম্পিউটার সায়েন্সের মহাসমুদ্র</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        কোন ডোমেইনে PhD করবে? দশটা ডোমেইনের গভীর ডুব — AI/ML, Systems, Security, Data, HCI, SE/PL, Theory, Quantum, Robotics, Emerging। প্রতিটি ডোমেইনে: sub-areas, conferences, funding, competition, career, future outlook। শেষ দরজায় একটা decision framework — interest + strength + market + purpose। গবেষকের মন (Book 22) শেখায় কীভাবে চিন্তা করতে হয় — এই বই শেখায় কোথায় সেই চিন্তা প্রয়োগ করবে। Knowledge Courtyard-এর সবচেয়ে গুরুত্বপূর্ণ বই — কারণ এটি তোমার PhD-এর দিক নির্ধারণ করবে।
+        <span class="en">Which domain for your PhD? A deep dive into ten CS domains — AI/ML, Systems, Security, Data, HCI, SE/PL, Theory, Quantum, Robotics, and Emerging. Each domain covers: sub-areas, conferences, funding levels, competition rates, career outlook, and future trends. Final door includes a PhD domain selection framework — interest + strength + market + purpose. The most important book in the Courtyard — because it determines your PhD direction and your next 5-7 years.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🧠 AI/ML</span>
+        <span class="topic-chip">🏗️ Systems</span>
+        <span class="topic-chip">🛡️ Security</span>
+        <span class="topic-chip">🗄️ Data</span>
+        <span class="topic-chip">👋 HCI</span>
+        <span class="topic-chip">⚙️ SE/PL</span>
+        <span class="topic-chip">📐 Theory</span>
+        <span class="topic-chip">⚛️ Quantum</span>
+        <span class="topic-chip">🤖 Robotics</span>
+        <span class="topic-chip">🧭 Decision</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🌊 10 Domains</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
   </div>
-  <div class="footer">
     <div class="footer-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
     <div class="footer-verse-trans">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
     <div class="footer-note">

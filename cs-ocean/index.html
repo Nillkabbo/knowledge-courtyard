@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>কম্পিউটার সায়েন্সের মহাসমুদ্র — The Ocean of Computer Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">কম্পিউটার সায়েন্সের মহাসমুদ্র</h1>
+  <div class="title-sub">The Ocean of Computer Science</div>
+  <div class="title-desc">
+    কোন ডোমেইনে PhD করবে? দশটা ডোমেইনের গভীর ডুব।<br>
+    AI, Systems, Security, Data, HCI, SE, Theory, Quantum, Robotics, Emerging।<br>
+    প্রতিটি ডোমেইনে ফান্ডিং, প্রতিযোগিতা, ক্যারিয়ার, ভবিষ্যৎ — সব এক জায়গায়।<br><br>
+    <em>Which domain for your PhD? A deep dive into ten CS domains. Funding, competition, career outlook, and future — all in one place.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🌊 সমুদ্রযাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">নাবিকের সন্ধান — The Navigator's Quest</div>
+    <p>তুমি একজন ডেভেলপার। কোড লেখো, সিস্টেম বানাও, প্রোডাক্ট ডেলিভার করো। এখন PhD করতে চাও — কিন্তু কোন ডোমেইনে? AI? Systems? Security? Quantum? কোনটা তোমার জন্য সেরা? কোনটায় ফান্ডিং বেশি? কোনটায় প্রতিযোগিতা? কোনটায় ক্যারিয়ার?</p>
+    <p class="en">You're a developer. You write code, build systems, ship products. Now you want a PhD — but in which domain? AI? Systems? Security? Quantum? Which is best for you? Where's the funding? Competition? Career?</p>
+    <hr class="p-divider">
+    <p>এই বই কম্পিউটার সায়েন্সের দশটা প্রধান গবেষণা ডোমেইনে তোমাকে ডুবিয়ে দেবে। প্রতিটি ডোমেইনে তুমি জানবে — এই ডোমেইনে গবেষণা কী, কোন কনফারেন্স বড়, কত ফান্ডিং আছে, কত প্রতিযোগিতা, কেমন ক্যারিয়ার, এবং ভবিষ্যৎ কী। শেষ দরজায় তুমি নিজের ডোমেইন বেছে নিতে পারবে — তথ্যের ভিত্তিতে, অনুভূতির ভিত্তিতে নয়।</p>
+    <p class="en">This book takes you deep into ten major CS research domains. For each, you'll learn — what the research is, which conferences matter, how much funding, how much competition, what career looks like, and the future outlook. In the final door, you can choose your domain — based on data, not feelings.</p>
+    <hr class="p-divider">
+    <p>গবেষকের মন (Book 22) তোমাকে শিখিয়েছে কীভাবে চিন্তা করতে হয়। এই বই তোমাকে দেবে — কোথায় সেই চিন্তা প্রয়োগ করবে। এটি Knowledge Courtyard-এর সবচেয়ে গুরুত্বপূর্ণ বই — কারণ এটি তোমার PhD-এর দিক নির্ধারণ করবে, এবং তোমার পরবর্তী ৫-৭ বছরের জীবন।</p>
+    <p class="en">The Researcher's Mind (Book 22) taught you how to think. This book gives you — where to apply that thinking. This is the most important book in the Knowledge Courtyard — because it determines your PhD direction, and your next 5-7 years.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🌊 সমুদ্রযাত্রা শুরু করো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🌊</span><span id="hud-rank-name">নাবিক শিক্ষানবিশ</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>ডোমেইন বেছে নাও</h2><p>দশটা ডোমেইন, ক্রমানুসারে। প্রতিটি ডোমেইন CS-এর এক একটা মহাসমুদ্র।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← সমুদ্রের মানচিত্রে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🧭</div>
+  <h1 class="complete-title">তুমি এখন নেভিগেটর</h1>
+  <p class="complete-text">দশটা ডোমেইনের মহাসমুদ্র পেরিয়েছ।<br><br>AI, Systems, Security, Data, HCI, SE, Theory, Quantum, Robotics, Emerging।<br><br>এখন তুমি জানো — কোন ডোমেইনে কী আছে, কোথায় ফান্ডিং, কোথায় প্রতিযোগিতা।<br><strong>এবার তোমার সিদ্ধান্ত। তুমি প্রস্তুত।</strong></p>
+  <div class="complete-verse">رَبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা করো</button>
+  <div class="cheat-section-end"><h3>📋 ডোমেইন চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">ডোমেইন সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 ডোমেইন চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
