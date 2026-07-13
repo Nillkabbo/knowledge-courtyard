@@ -92,10 +92,12 @@ Segment 2 Course:
 LEVEL 2 RESTRICTIONS:
   ⚠️ একা চালাতে পারবে কিন্তু restrictions সহ
   ⚠️ রাত ১০টা — ভোর ৫টা পর্যন্ত চালানো নিষেধ
-     (যদি না work/school/religious activity)
-  ⚠️ গাড়িতে ২২ বছরের কম বয়সী ১ জনের বেশি 
+     (যদি না work/school/religious activity বা 
+      parent/guardian সাথে থাকে)
+  ⚠️ গাড়িতে ২১ বছরের কম বয়সী ১ জনের বেশি 
      passenger নিষেধ
-     (যদি না family member বা supervisor)
+     (exception: immediate family member বা 
+      parent/guardian/licensed adult ২১+ সাথে থাকলে)
 
 ═══════════════════════════════════════════════
 ধাপ ৫: LEVEL 3 FULL LICENSE (বয়স ১৭+)
@@ -166,6 +168,26 @@ doors.push({
 <div class="dialogue">"সাইন পড়তে শেখো না — সাইন চিনতে শেখো," instructor বললেন। "গাড়ি চালানোর সময় তোমার কাছে সাইন পড়ার সময় নেই। আকার দেখে, রঙ দেখে সিদ্ধান্ত নাও। এটাই নিরাপদ।" তিনি প্রতিটা সাইন দেখিয়ে বললেন।</div>
 <div class="dialogue en">"Don't learn to read signs — learn to recognize signs," the instructor said. "While driving, you don't have time to read. Decide from shape, from color. That's safe." He showed each sign.</div>
 
+<div class="sign-visual"><div class="sign-title">🔍 SIGN SHAPES — Quick Visual Reference</div>
+
+        ⬣                    ◆                    ▽
+      ⬣   ⬣               ◆   ◆               ╱  ╲
+    ⬣   ⬣   ⬣             ◆   ◆             ╱    ╲
+      ⬣   ⬣               ◆   ◆             ╲    ╱
+        ⬣                    ◆               ╲  ╱
+     OCTAGON              DIAMOND           TRIANGLE
+       🔴 RED              🟡 YELLOW        🔴 RED/WHITE
+       = STOP              = WARNING        = YIELD
+
+      ━━━━━━              ┌─────┐            ╱╲
+     │     │              │     │           ╱  ╲
+     │  ━━ │              │     │          │    │
+     │     │              │     │           ╲  ╱
+      ━━━━━━              └─────┘            ╲╱
+     RECTANGLE           SQUARE             PENTAGON
+       ⬜ WHITE           🔴 RED             🟡 YELLOW
+     = SPEED LIMIT       = DO NOT ENTER     = SCHOOL ZONE</div>
+
 <div class="code-block">TRAFFIC SIGNS — SHAPE × COLOR = MEANING
 ═══════════════════════════════════════════════
 
@@ -189,9 +211,14 @@ doors.push({
     → এর বেশি হলে speeding ticket
     → school zone: 25 mph (সাইন থাকলে)
 
-  ⚪ বৃত্ত (CIRCLE) + লাল কাটা = DO NOT ENTER
-    → এই রাস্তায় ঢুকো না।
-    → সাধারণত wrong way রোধে।
+  ⬜ বর্গ (SQUARE) + লাল ও সাদা = DO NOT ENTER
+    → লাল বর্গে সাদা অনুভূমিক দণ্ড
+    → এই রাস্তায় ঢুকো না — wrong way রোধে
+
+  ⭕ বৃত্ত (CIRCLE) + লাল কাটা দণ্ড = নিষেধ
+    → লাল বৃত্তে কাটা — নির্দিষ্ট ক্রিয়া নিষেধ
+    → "NO LEFT TURN" — বামে মোড় নিষেধ
+    → "NO U-TURN" — U-turn নিষেধ
 
   ▢ বর্গ (SQUARE) + লাল = DO NOT / NO 
     → "NO LEFT TURN" — বামে মোড় নিষেধ
@@ -294,6 +321,31 @@ doors.push({
 ❓ "SPEED LIMIT 55" সাদা সাইন — কী মানে?
 ✅ সর্বোচ্চ ৫৫ mph — এর বেশি অবৈধ</div>
 
+<div class="sign-visual"><div class="sign-title">🛑 STOP SIGN — Close-Up</div>
+
+         ╭───────────╮
+        ╱             ╲
+       ╱   S   T   O   ╲
+      │     P           │
+      │                 │
+       ╲   (RED)       ╱
+        ╲             ╱
+         ╰───────────╯
+
+  ৮ পাশ = OCTAGON (অষ্টভুজ)
+  লাল রঙ = সম্পূর্ণ থামো
+  সাদা লেখা = STOP
+
+  দূর থেকে শুধু আকার দেখেই চেনা যায়
+  বরফে ঢাকা থাকলেও আকার থেকে চেনা যায়</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 COMPLEX SCENARIO — Snowy Night</div>
+<div class="scn-question">❓ তুমি রাতে চালাচ্ছো। বরফের ঝড়। একটা সাইন দেখা যাচ্ছে কিন্তু বরফে ঢাকা — শুধু আকার দেখা যাচ্ছে অষ্টভুজ। তুমি কী করবে?</div>
+<div class="scn-answer">✅ সম্পূর্ণ থামো। আকার থেকে চিনেছ — STOP sign।</div>
+<div class="scn-explain">এটাই আকারের শক্তি — বরফে লেখা না পড়লেও আকার থেকে বোঝা যায়। অষ্টভুজ শুধু STOP sign-এই ব্যবহার হয়। কোনো অন্য সাইনে নয়।</div>
+</div>
+
 <div class="secret-box">🚦 আকার + রঙ = সাইনের পরিচয়। অষ্টভুজ লাল = STOP, উল্টানো ত্রিভুজ = YIELD, হীরা হলুদ = warning, হীরা কমলা = construction, আয়ত সবুছে = guide। লেখা পড়ার দরকার নেই — আকার দেখেই বুঝে ফেলো।</div>`
 });
 
@@ -314,6 +366,22 @@ doors.push({
 
 <div class="dialogue">"সিগন্যাল শুধু লাল-সবুজ নয়," examiner বললেন। "প্রতিটা আলোর নির্দিষ্ট অর্থ আছে। আর রাস্তার দাগ — সেগুলো নীরব সাইন। প্রতিটা লাইন কিছু বলে। চলো শিখি।"</div>
 <div class="dialogue en">"Signals aren't just red-green," the examiner said. "Each light has a specific meaning. And road markings — they're silent signs. Each line says something. Let's learn."</div>
+
+<div class="sign-visual"><div class="sign-title">🚥 TRAFFIC LIGHT — What Each Color Means</div>
+
+     ┌─────────┐
+     │  🔴 RED │  → সম্পূর্ণ থামো (STOP)
+     ├─────────┤
+     │ 🟡 YEL  │  → থামার প্রস্তুতি (CAUTION)
+     ├─────────┤
+     │ 🟢 GRN  │  → যাও (GO) — যদি নিরাপদ হয়
+     └─────────┘
+
+  🔴 Red  = STOP. জংশনে ঢুকো না।
+  🟡 Yellow = লাল আসছে। নিরাপদে থামো।
+              (একটু ভুল করে গ্যাস চাপলেই accident!)
+  🟢 Green = যাও। কিন্তু আগে বাম-ডান দেখো।
+              বাম মোড়? Oncoming কে yield।</div>
 
 <div class="code-block">TRAFFIC SIGNALS — COMPLETE GUIDE
 ═══════════════════════════════════════════════
@@ -431,6 +499,37 @@ SPECIAL MARKINGS
   ↻ HOV LANE (Diamond symbol)
     → High-Occupancy Vehicle lane
     → ২+ জন থাকলে চালাতে পারবে</div>
+
+<div class="sign-visual"><div class="sign-title">📏 PAVEMENT MARKINGS — Visual Guide</div>
+
+  ═══════════  ডাবল সলিড হলুদ = পার হওয়া নিষেধ (দুই দিক)
+  ─ ─ ─ ─ ─ ─  ড্যাশড হলুদ = পার হওয়া যায় (নিরাপদ হলে)
+  ───────────  সলিড সাদা = লেন পরিবর্তন নিরুৎসাহিত
+  - - - - - -  ড্যাশড সাদা = লেন পরিবর্তন করতে পারো
+
+  ╔═══════════════════════════════════╗
+  ║        ←    |    →                ║
+  ║   ─────────═       ┌─────────     ║
+  ║   (সলিড)   ║ ═════ ║  (সলিড)      ║
+  ║   ←— পার না  ║ ডাবল ║ পার না —→   ║
+  ║            ║ হলুদ  ║              ║
+  ║   সবুজ ✅   ║ লাইন  ║   সবুজ ✅    ║
+  ╚═══════════════════════════════════╝
+   ←— বিপরীত দিক                বিপরীত দিক —→</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 COMPLEX SCENARIO — Yellow Light Dilemma</div>
+<div class="scn-question">❓ তুমি ৪৫ mph-এ চালাচ্ছো। সামনে হলুদ আলো। তুমি জংশন থেকে ~৫০ ফুট দূরে। পেছনে একটা গাড়ি খুব কাছে। কী করবে?</div>
+<div class="scn-answer">✅ ধীরে, smoothly ব্রেক করো। থামো STOP line-এ।</div>
+<div class="scn-explain">৫০ ফুট মানে তোমার থামার সময় আছে। পেছনের গাড়ি কাছে — তাই suddenly ব্রেক নয়, smoothly। হলুদ দেখে গ্যাস চাপাটা ঠিক নয় — লাল আসছে।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 COMPLEX SCENARIO — Flashing Lights</div>
+<div class="scn-question">❓ রাত ২টায় তুমি একটা intersection-এ। কোনো গাড়ি নেই। তোমার সিগন্যাল ফ্ল্যাশিং লাল। অন্য দিকের সিগন্যাল ফ্ল্যাশিং হলুদ। কী করবে?</div>
+<div class="scn-answer">✅ তুমি সম্পূর্ণ থামো (STOP sign-এর মতো)। অন্য দিক ধীরে যাবে (caution)। তুমি yield দাও।</div>
+<div class="scn-explain">ফ্ল্যাশিং লাল = STOP sign। ফ্ল্যাশিং হলুদ = caution, যাও কিন্তু সতর্ক। তোমার লাল — তুমি থামো।</div>
+</div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল</div>হলুদ আলো দেখে গ্যাস চাপো — যত দ্রুত সম্ভব পার হওয়ার চেষ্টা। এটা বিপজ্জনক। পেছনের গাড়ি ধাক্কা দিতে পারে, পেডেস্ট্রিয়ান থাকতে পারে।</div>
@@ -591,6 +690,55 @@ doors.push({
     → Yield to funeral processions
     → Headlight জ্বলা গাড়িগুলো</div>
 
+<div class="diagram-box"><div class="dia-title">🛑 4-WAY STOP — Who Goes First?</div>
+
+         N (North)
+         ↑
+    ┌────┴────┐
+    │         │
+W ←─┤  4-way  ├─→ E (East)
+    │  STOP   │
+    │         │
+    └────┬────┘
+         ↓
+         S (South)
+
+  ⓐ সবাই একসাথে থামলে → ডান দিকের গাড়ি প্রথম
+  ⓑ যে আগে থামে → সে আগে যায়
+  ⓒ সোজা যাওয়া > বাম মোড় (বিপরীত দিক থেকে)
+  ⓓ সন্দেহ? → অন্যকে দাও</div>
+
+<div class="diagram-box"><div class="dia-title">🔄 ROUNDABOUT — Traffic Flow</div>
+
+           ╭──────────╮
+          ╱            ╲
+    →→→  ╱   ╭───╮     ╲  →→→
+   (YIELD)  ╱         ╲   (EXIT)
+         │   ◯ ◯ ◯   │
+         │  ভেতরে    │
+          ╲   গাড়ি   ╱
+    ←←←   ╲  ╰───╯  ╱   ←←←
+   (ENTER)  ╲       ╱  (ALREADY IN
+            ╰──────╯   = priority)
+
+  নিয়ম: ভেতরে already থাকা গাড়ি = priority
+  তুমি yield করে ঢুকো। counterclockwise ঘুরো।
+  Exit করার সময় right signal দাও।</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 COMPLEX SCENARIO — School Bus on Divided Highway</div>
+<div class="scn-question">❓ তুমি একটা divided highway-তে চালাচ্ছো (মাঝে concrete barrier)। বিপরীত দিকে একটা স্কুল বাস থামল — লাল আলো + STOP arm। তোমাকে থামতে হবে কি?</div>
+<div class="scn-answer">✅ না। Divided highway-তে physical barrier থাকলে বিপরীত দিকের ট্রাফিক থামতে হয় না। শুধু সেই দিক থামে যে দিকে বাস।</div>
+<div class="scn-explain">⚠️ কিন্তু সাবধান — শুধুমাত্র physical divider (concrete, grass strip, raised island) থাকলেই exception। Painted lines = NOT divided। Painted line-এ দুই দিক থামো।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 COMPLEX SCENARIO — Ambulance Behind You</div>
+<div class="scn-question">❓ তুমি একটা intersection-এ দাঁড়িয়ে — লাল আলো। পেছন থেকে ambulance সাইরেন নিয়ে আসছে। তুমি লাল আলো। কী করবে?</div>
+<div class="scn-answer">✅ লাল আলো হলেও — ambulance কে জায়গা দাও। ধীরে ডানে সরে যাও।</div>
+<div class="scn-explain">Emergency vehicle সবসময় priority। লাল আলোতে থামা থাকলেও — ধীরে সরে যাও। তবে সাবধানে — oncoming traffic দেখো।</div>
+</div>
+
 <div class="code-block">EXAM PATTERN QUESTIONS — Right-of-Way:
 
 ❓ 4-way stop-এ একই সময়ে ২টা গাড়ি থামলে 
@@ -723,6 +871,48 @@ doors.push({
   ✗ $৫০০ পর্যন্ত জরিমানা
   ✗ Disabled placard বা plate লাগবে
   ✗ Family member এরও নিজের placard লাগে</div>
+
+<div class="sign-visual"><div class="sign-title">🅿️ HILL PARKING — Which Way to Turn Wheels?</div>
+
+  ┌─────────────────────────────────────────┐
+  │          UPHILL (with curb)             │
+  │                                         │
+  │     ╱╲    ← চাকা বামে (কার্ব থেকে দূরে)  │
+  │    ╱  ║═════════ ← curb                 │
+  │   ╱   │                                 │
+  │  গাড়ি  ↑ পাহাড় উপরে                     │
+  │                                         │
+  │  যদি brake fail করে → চাকা কার্বে ঠেকবে │
+  └─────────────────────────────────────────┘
+
+  ┌─────────────────────────────────────────┐
+  │         DOWNHILL (with curb)            │
+  │                                         │
+  │     ╲╱   ← চাকা ডানে (কার্বের দিকে)      │
+  │      ║═════════ ← curb                  │
+  │     ╱│                                  │
+  │   গাড়ি ↓ পাহাড় নিচে                      │
+  │                                         │
+  │  যদি brake fail করে → চাকা কার্বে ঠেকবে │
+  └─────────────────────────────────────────┘
+
+  ┌─────────────────────────────────────────┐
+  │     NO CURB (uphill OR downhill)        │
+  │                                         │
+  │     চাকা ডানে ঘুরাও (shoulder দিকে)      │
+  │     → গাড়ি রাস্তা ছেড়ে চলে যাবে         │
+  └─────────────────────────────────────────┘
+
+  💡 TRICK to remember:
+     UPhill = UP (উপরে দেখো) → চাকা কার্ব থেকে দূরে (বাম)
+     DOWNhill = DOWN (নিচে দেখো) → চাকা কার্বের দিকে (ডান)</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 COMPLEX SCENARIO — Snow + Speed Limit</div>
+<div class="scn-question">❓ Speed limit সাইনে লেখা ৫৫ mph। কিন্তু ভারী বরফ পড়ছে, visibility কম। তুমি ৫৫ mph-এ চালাচ্ছ। এটা কি আইনি?</div>
+<div class="scn-answer">✅ না। Basic Speed Law বলে — condition অনুযায়ী নিরাপদ গতিতে চালাও। ৫৫ mph বরফে অনিরাপদ। Ticket পেতে পারো।</div>
+<div class="scn-explain">Speed limit সর্বোচ্চ — কিন্তু condition-এর জন্য আইনি নয়। বরফে ২৫-৩০ mph বা তার কম নিরাপদ হতে পারে। Police "too fast for conditions" টিকিট দিতে পারে।</div>
+</div>
 
 <div class="code-block">EXAM PATTERN QUESTIONS — Speed & Parking:
 

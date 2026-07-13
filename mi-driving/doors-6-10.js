@@ -109,6 +109,59 @@ doors.push({
   ✦ Threshold braking (firm, smooth — ABS-এ)
   ✦ ABS: চাপ ধরে রাখো, পাম্প করো না</div>
 
+<div class="diagram-box"><div class="dia-title">📏 3-SECOND RULE — Visual Guide</div>
+
+  সামনের গাড়ি এখানে ছিল (pole/sign পাশে):
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ║ Pole ║     [🚗 সামনের গাড়ি ──→→→]
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                                       ⏱️ Start counting:
+                                       "one-thousand-one..."
+
+  এখন সামনের গাড়ি অনেক দূরে:
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ║ Pole ║          [🚗 →→→→→→→→→→→→]
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        [তোমার 🚗 ←──]
+         ⏱️ "one-thousand-two..."
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ║ Pole ║          [🚗 →→→→→→→→→→→→]
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+               [🚗 তুমি]
+                ⏱️ "one-thousand-three!" ← NOW at pole
+
+  ✅ ৩ সেকেন্ড পার হয়ে গেলে পোল-এ পৌঁছেছ = নিরাপদ!
+  ❌ ৩ সেকেন্ডের আগে পৌঁছালে = খুব কাছে! ধীরে করো।</div>
+
+<div class="sign-visual"><div class="sign-title">👁️ BLIND SPOT — What Mirrors CANNOT See</div>
+
+           ┌─────────────────────┐
+           │      🚗 তোমার গাড়ি    │
+    ╲      │   ◢  blind    ◣  │      ╱
+     ╲     │   ◢  spot!   ◣  │     ╱
+      ╲    │                  │    ╱
+       ╲   │  ◣  blind    ◢   │   ╱
+        ╲  │  ◣  spot!   ◢   │  ╱
+         ╲ └─────────────────────┘ ╱
+          ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╱
+
+  ❌ Mirror-এ এই জায়গাগুলো দেখা যায় না
+  ✅ Shoulder check = কাঁধ ঘুরিয়ে দেখো
+
+  Lane change করার সঠিক ক্রম:
+  1️⃣ Signal দাও
+  2️⃣ Mirror দেখো (rear-view + side)
+  3️⃣ Shoulder check (কাঁধ ঘুরিয়ে)
+  4️⃣ নিরাপদ হলে → move</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 COMPLEX SCENARIO — Highway Merge</div>
+<div class="scn-question">❓ তুমি expressway-এ ঢুকছ। On-ramp-এ তুমি ৩৫ mph-এ চালাচ্ছ। Highway traffic ৭০ mph। কী ভুল করছ?</div>
+<div class="scn-answer">✅ তুমি ধীরে চালাচ্ছ — বিপজ্জনক! On-ramp-এ তোমার highway speed (৬৫ mph) এ অ্যাক্সেলারেট করা উচিত।</div>
+<div class="scn-explain">Merge করার সময় ধীরে চালালে — highway traffic-কে suddenly brake করতে হয়। সঠিক: on-ramp-এ accelerate করে highway speed-এ match করো, তারপর smoothly merge।</div>
+</div>
+
 <div class="code-block">EXAM PATTERN QUESTIONS — Safe Driving:
 
 ❓ Dry weather-এ minimum following distance?
@@ -235,6 +288,43 @@ doors.push({
   ✦ Patience রাখো
   ✦ নিরাপদে পাস করো</div>
 
+<div class="sign-visual"><div class="sign-title">🚛 TRUCK "NO ZONE" — Blind Spot Map</div>
+
+                    ❌ NO ZONE
+               ┌──────────────────┐
+               │   (সামনে খুব কাছে)  │
+               └────────┬─────────┘
+                        │
+     ❌ NO ZONE    ┌─────┴─────┐    ❌ NO ZONE
+     (বাম পাশ)    │           │    (ডান পাশ — সবচেয়ে বড়!)
+  ══════════════  │  🚛 ট্রাক  │  ════════════════════
+                  │           │
+                  └─────┬─────┘
+                        │
+               ┌────────┴─────────┐
+               │   ❌ NO ZONE     │
+               │  (পেছনে — সবচেয়ে   │
+               │   বিপজ্জনক!)     │
+               └──────────────────┘
+
+  ✅ সোনার নিয়ম: যদি তুমি ট্রাকের side mirror-এ
+     driver-এর চোখ/মুখ দেখতে পাও → সে তোমাকে দেখতে পারে।
+     না দেখতে পেলে → তুমি NO ZONE-এ! দ্রুত পার হও বা পিছিয়ে যাও।</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 COMPLEX SCENARIO — Truck Right Turn</div>
+<div class="scn-question">❓ তুমি একটা ট্রাকের ডান পাশে আছ। ট্রাক ডানে মোড় নেওয়ার জন্য বামে সরে গেল (wide turn)। তুমি কী করবে?</div>
+<div class="scn-answer">✅ ধীরে করো বা থামো। ট্রাকের ডান দিক দিয়ে যেও না — squeeze হতে পারে।</div>
+<div class="scn-explain">ট্রাক wide turn করার সময় বামে সরে যায়, তারপর ডানে ঘোরে। এই সময় ডান দিকে ট্রাক পাস করলে গাড়ি squeeze হতে পারে। ধৈর্য ধরো।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 COMPLEX SCENARIO — Pedestrian at Unmarked Crosswalk</div>
+<div class="scn-question">❓ তুমি একটা intersection-এ ডানে মোড় নিচ্ছ। কোনো painted crosswalk নেই। কিন্তু একজন মানুষ রাস্তা পার হতে শুরু করেছে। তুমি কী করবে?</div>
+<div class="scn-answer">✅ থামো। পেডেস্ট্রিয়ান সবসময় অগ্রাধিকার — marked বা unmarked crosswalk-এ।</div>
+<div class="scn-explain">Michigan law: intersection-এ painted crosswalk না থাকলেও legal crosswalk বলে গণ্য হয়। পেডেস্ট্রিয়ান প্রথম — সবসময়।</div>
+</div>
+
 <div class="code-block">EXAM PATTERN QUESTIONS — Sharing the Road:
 
 ❓ পেডেস্ট্রিয়ান ক্রসওয়াকে দাঁড়িয়ে থাকলে?
@@ -302,7 +392,39 @@ doors.push({
   ৩. ❌ Gas চাপো না  
   ৪. ✅ Steering ঘুরাও যেদিকে যেতে চাও
   ৫. ✅ ধীরে, smoothly
-  ৬. ABS: steady pressure — pump না
+  ৬. ABS: steady pressure — pump না</div>
+
+<div class="diagram-box"><div class="dia-title">🚗 SKID RECOVERY — Steering Into the Slide</div>
+
+  ┌─────────────────────────────────────────────┐
+  │  🚗 ──→  (গাড়ি পিছলে গেল ডান দিকে)         │
+  │                                             │
+  │  ❌ ভুল: brake চাপা → চাকা lock → আরও খারাপ │
+  │  ❌ ভুল: বামে steering → spin!               │
+  │                                             │
+  │  ✅ সঠিক: steering ডানে ঘুরাও                │
+  │     (সেই দিকে যেখানে যেতে চাও)               │
+  │                                             │
+  │  🚗 ──→ ╲╲ steering ডানে                    │
+  │         ↓ গাড়ি ধীরে ধীরে straight হবে        │
+  │                                             │
+  │  ABS থাকলে: steady brake pressure ধরে রাখো  │
+  │  পাম্প করো না! ABS নিজেই পাম্প করে।          │
+  └─────────────────────────────────────────────┘</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 COMPLEX SCENARIO — Black Ice on Bridge</div>
+<div class="scn-question">❓ তুমি ৫৫ mph-এ চালাচ্ছ। একটা bridge পার হচ্ছ। রাস্তা শুকনো মনে হচ্ছে। কিন্তু bridge-এ গিয়ে গাড়ি পিছলে গেল। কী হল?</div>
+<div class="scn-answer">✅ Black ice। Bridge আগে বরফ জমে — ground-এর তাপ নেই। Steering smooth, brake নয়।</div>
+<div class="scn-explain">Bridge আগেই freeze করে কারণ নিচে ground নেই। দেখে রাস্তা শুকনো মনে হলেও bridge-এ invisible ice থাকতে পারে। Bridge-এ আগেই ধীরে করো।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 COMPLEX SCENARIO — Accident, No Injury</div>
+<div class="scn-question">❓ তুমি একটা ছোট accident করলে — কোনো injury নেই, কিন্তু damage হয়েছে। কী করবে?</div>
+<div class="scn-answer">✅ থামো (scene ছেড়ে না — অপরাধ!)। গাড়ি নিরাপদ জায়গায় সরাও। Info বিনিময় করো। Damage $১,০০০+ হলে police report দরকার।</div>
+<div class="scn-explain">Michigan-এ scene ছেড়ে গেলে hit-and-run অপরাধ। থামো, hazard light জ্বালাও, নিরাপদে গাড়ি সরাও। Name, address, license, insurance, plate বিনিময় করো। Damage $১,০০০+ হলে police রিপোর্ট দরকার।</div>
+</div>
 
 💧 HYDROPLANING (জলে ভাসা)
 ═══════════════════════════════════════════════
@@ -607,6 +729,55 @@ doors.push({
   ✦ Curve handling — slow before, smooth
   ✦ Railroad crossing — slow, check
   ✦ Expressway entry/exit (if applicable)</div>
+
+<div class="diagram-box"><div class="dia-title">🅿️ PARALLEL PARKING — Step-by-Step Visual</div>
+
+  STEP 1: Pull beside front car (2-3 ft gap)
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ║ curb ║  [🚗 front car]  [🚗 তুমি]
+
+  STEP 2: Reverse, turn wheel RIGHT (toward curb)
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ║ curb ║  [🚗 front car]
+  ║                ╲╲
+  ║                 ╲ [🚗 ← reversing at 45°]
+
+  STEP 3: Straighten wheel, then turn LEFT
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ║ curb ║  [🚗 front car] [🚗 তুমি ← straight]
+  ║                                 1ft gap
+
+  ✅ Target: কার্ব থেকে 1 ft দূরে, দুই গাড়ির মাঝে
+  ❌ Curb hit = automatic point loss!</div>
+
+<div class="diagram-box"><div class="dia-title">🔄 THREE-POINT TURN — Visual Guide</div>
+
+  START: Right side of road, signal right, stop
+
+  STEP 1:                  ←─ check traffic ─
+     ┌───┐                   check both ways
+     │ 🚗│ ──→ turn LEFT,   move forward
+     └───┘     (left side of road)
+
+  STEP 2: Reverse, turn wheel RIGHT
+                    ←── check traffic ──
+     ┌───┐
+     │🚗 │ ←── reverse,  back to right
+     └───┘
+
+  STEP 3: Forward, turn LEFT, proceed
+     ┌───┐
+     │ 🚗│ ──→ forward,    left, go!
+     └───┘
+
+  ⚠️ শুধু তিন ধাপ! চার বা পাঁচ ধাপ = points lost</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 EXAMINER'S PERSPECTIVE — What They Watch For</div>
+<div class="scn-question">❓ Examiner silently watching। সে কী দেখছেন যা তুমি ভাবো না?</div>
+<div class="scn-answer">✅ Examiner দেখছে: head movement (mirror + shoulder), hand position (9-3), smooth steering, speed consistency, signaling timing।</div>
+<div class="scn-explain">অনেক candidate নীরব examiner দেখে ভাবে কিছু দেখছে না। ভুল! Examiner প্রতিটা movement নোট করছে। সব কাজ EXAGGERATE করো — head turn বড় করো, shoulder check স্পষ্ট করো।</div>
+</div>
 
 <div class="code-block">❌ TOP 10 AUTOMATIC FAIL REASONS:
 ═══════════════════════════════════════════════
