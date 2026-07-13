@@ -169,16 +169,25 @@ doors.push({
 <div class="dialogue en">"Don't learn to read signs — learn to recognize signs," the instructor said. "While driving, you don't have time to read. Decide from shape, from color. That's safe." He showed each sign.</div>
 
 <div class="sign-gallery">
-<div class="sign-item"><div class="sign-stop">STOP</div><div class="sign-label">🔴 Octagon + Red<br><strong>STOP</strong><br>সম্পূর্ণ থামো</div></div>
-<div class="sign-item"><div class="sign-yield"></div><div class="sign-label">🔻 Triangle + Red<br><strong>YIELD</strong><br>অন্যকে অগ্রাধিকার</div></div>
-<div class="sign-item"><div class="sign-speed"><div class="sp-top">SPEED<br>LIMIT</div><div class="sp-num">55</div></div><div class="sign-label">⬜ Rectangle + White<br><strong>SPEED LIMIT</strong><br>সর্বোচ্চ গতি</div></div>
-<div class="sign-item"><div class="sign-warn"><div class="sign-warn-inner">⚠️</div></div><div class="sign-label">🟡 Diamond + Yellow<br><strong>WARNING</strong><br>সতর্ক হও</div></div>
-<div class="sign-item"><div class="sign-school"></div><div class="sign-label">🟡 Pentagon<br><strong>SCHOOL ZONE</strong><br>২৫ mph</div></div>
-<div class="sign-item"><div class="sign-dne"></div><div class="sign-label">🟥 Square + Red<br><strong>DO NOT ENTER</strong><br>এই রাস্তায় নয়</div></div>
-<div class="sign-item"><div class="sign-no"></div><div class="sign-label">🚫 Circle + Red<br><strong>NO LEFT TURN</strong><br>নিষেধাজ্ঞা</div></div>
-<div class="sign-item"><div class="sign-construction"><div class="sign-construction-inner">🚧</div></div><div class="sign-label">🟠 Diamond + Orange<br><strong>CONSTRUCTION</strong><br>দ্বিগুণ জরিমানা</div></div>
-<div class="sign-item"><div class="sign-guide">EXIT 12</div><div class="sign-label">🟢 Rectangle + Green<br><strong>GUIDE</strong><br>দিক নির্দেশনা</div></div>
-<div class="sign-item"><div class="sign-service">🏥 H</div><div class="sign-label">🔵 Rectangle + Blue<br><strong>SERVICES</strong><br>হাসপাতাল, গ্যাস</div></div>
+<div class="sign-item"><svg viewBox="0 0 120 120" width="80" height="80"><polygon points="36,4 84,4 116,36 116,84 84,116 36,116 4,84 4,36" fill="#c62828" stroke="#fff" stroke-width="5"/><polygon points="36,4 84,4 116,36 116,84 84,116 36,116 4,84 4,36" fill="none" stroke="#b71c1c" stroke-width="1"/><text x="60" y="52" text-anchor="middle" fill="#fff" font-family="Arial Black,sans-serif" font-weight="900" font-size="22" letter-spacing="1">STOP</text></svg><div class="sign-label">🔴 <strong>STOP</strong><br>সম্পূর্ণ থামো</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 100 90" width="76" height="68"><polygon points="50,5 95,82 5,82" fill="#c62828" stroke="#fff" stroke-width="4"/><polygon points="50,22 80,75 20,75" fill="#fff"/><text x="50" y="68" text-anchor="middle" fill="#c62828" font-family="Arial Black,sans-serif" font-weight="900" font-size="9">YIELD</text></svg><div class="sign-label">🔻 <strong>YIELD</strong><br>অন্যকে অগ্রাধিকার</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 80 96" width="60" height="72"><rect x="2" y="2" width="76" height="92" rx="3" fill="#fff" stroke="#222" stroke-width="2"/><text x="40" y="22" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="700" font-size="8">SPEED</text><text x="40" y="34" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="700" font-size="8">LIMIT</text><text x="40" y="68" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="900" font-size="32">55</text></svg><div class="sign-label">⬜ <strong>SPEED LIMIT</strong><br>সর্বোচ্চ ৫৫ mph</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 100 100" width="68" height="68"><polygon points="50,4 96,50 50,96 4,50" fill="#fdd835" stroke="#222" stroke-width="3"/><text x="50" y="60" text-anchor="middle" font-size="28">⚠️</text></svg><div class="sign-label">🟡 <strong>WARNING</strong><br>সতর্ক হও</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 80 72" width="64" height="58"><path d="M16,0 L64,0 L80,16 L80,72 L0,72 L0,16 Z" fill="#fdd835" stroke="#222" stroke-width="2"/><text x="40" y="26" text-anchor="middle" font-size="10">🚸</text><text x="40" y="48" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="700" font-size="6">SCHOOL</text></svg><div class="sign-label">🟡 <strong>SCHOOL ZONE</strong><br>২৫ mph</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 80 80" width="60" height="60"><rect x="2" y="2" width="76" height="76" rx="3" fill="#c62828" stroke="#fff" stroke-width="3"/><rect x="18" y="36" width="44" height="8" fill="#fff"/></svg><div class="sign-label">🟥 <strong>DO NOT ENTER</strong><br>এই রাস্তায় নয়</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 80 80" width="58" height="58"><circle cx="40" cy="40" r="36" fill="#c62828" stroke="#fff" stroke-width="3"/><text x="40" y="50" text-anchor="middle" font-size="24">↰</text><line x1="14" y1="66" x2="66" y2="14" stroke="#fff" stroke-width="5"/></svg><div class="sign-label">🚫 <strong>NO LEFT TURN</strong><br>নিষেধাজ্ঞা</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 100 100" width="68" height="68"><polygon points="50,4 96,50 50,96 4,50" fill="#e67e22" stroke="#222" stroke-width="3"/><text x="50" y="60" text-anchor="middle" font-size="24">🚧</text></svg><div class="sign-label">🟠 <strong>CONSTRUCTION</strong><br>দ্বিগুণ জরিমানা</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 80 50" width="60" height="38"><rect x="1" y="1" width="78" height="48" rx="2" fill="#27ae60"/><text x="40" y="22" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="8">EXIT</text><text x="40" y="40" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-weight="900" font-size="16">12</text></svg><div class="sign-label">🟢 <strong>GUIDE</strong><br>দিক নির্দেশনা</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 80 50" width="60" height="38"><rect x="1" y="1" width="78" height="48" rx="2" fill="#2980b9"/><text x="40" y="36" text-anchor="middle" fill="#fff" font-size="22">🏥</text></svg><div class="sign-label">🔵 <strong>SERVICES</strong><br>হাসপাতাল, গ্যাস</div></div>
 </div>
 
 <div class="code-block">TRAFFIC SIGNS — SHAPE × COLOR = MEANING
@@ -315,7 +324,7 @@ doors.push({
 ✅ সর্বোচ্চ ৫৫ mph — এর বেশি অবৈধ</div>
 
 <div class="sign-gallery">
-<div class="sign-item"><div class="sign-stop" style="width:90px;height:90px;font-size:.85rem">STOP</div><div class="sign-label">🛑 <strong>STOP SIGN</strong><br>৮ পাশ (Octagon) + লাল<br>সম্পূর্ণ থামো, ৩ সেকেন্ড</div></div>
+<div class="sign-item"><svg viewBox="0 0 120 120" width="100" height="100"><polygon points="36,4 84,4 116,36 116,84 84,116 36,116 4,84 4,36" fill="#c62828" stroke="#fff" stroke-width="5"/><text x="60" y="68" text-anchor="middle" fill="#fff" font-family="Arial Black,sans-serif" font-weight="900" font-size="28">STOP</text></svg><div class="sign-label">🛑 <strong>STOP SIGN</strong> — Octagon + Red<br>সম্পূর্ণ থামো, ৩ সেকেন্ড গোনো</div></div>
 </div>
 
 <div class="scenario-box">
@@ -346,21 +355,13 @@ doors.push({
 <div class="dialogue">"সিগন্যাল শুধু লাল-সবুজ নয়," examiner বললেন। "প্রতিটা আলোর নির্দিষ্ট অর্থ আছে। আর রাস্তার দাগ — সেগুলো নীরব সাইন। প্রতিটা লাইন কিছু বলে। চলো শিখি।"</div>
 <div class="dialogue en">"Signals aren't just red-green," the examiner said. "Each light has a specific meaning. And road markings — they're silent signs. Each line says something. Let's learn."</div>
 
-<div class="sign-visual"><div class="sign-title">🚥 TRAFFIC LIGHT — What Each Color Means</div>
+<div class="sign-gallery">
+<div class="sign-item"><svg viewBox="0 0 70 170" width="52" height="126"><rect x="8" y="4" width="54" height="162" rx="12" fill="#1a1a1a" stroke="#444" stroke-width="2"/><circle cx="35" cy="35" r="22" fill="#e74c3c"/><circle cx="35" cy="35" r="22" fill="url(#redglow)"/><defs><radialGradient id="redglow" cx="40%" cy="35%"><stop offset="0%" stop-color="#ff6b6b"/><stop offset="100%" stop-color="#c0392b"/></radialGradient></defs><circle cx="35" cy="85" r="22" fill="#333"/><circle cx="35" cy="135" r="22" fill="#333"/><text x="35" y="42" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">STOP</text></svg><div class="sign-label">🔴 <strong>RED</strong><br>সম্পূর্ণ থামো</div></div>
 
-     ┌─────────┐
-     │  🔴 RED │  → সম্পূর্ণ থামো (STOP)
-     ├─────────┤
-     │ 🟡 YEL  │  → থামার প্রস্তুতি (CAUTION)
-     ├─────────┤
-     │ 🟢 GRN  │  → যাও (GO) — যদি নিরাপদ হয়
-     └─────────┘
+<div class="sign-item"><svg viewBox="0 0 70 170" width="52" height="126"><rect x="8" y="4" width="54" height="162" rx="12" fill="#1a1a1a" stroke="#444" stroke-width="2"/><circle cx="35" cy="35" r="22" fill="#333"/><circle cx="35" cy="85" r="22" fill="url(#yelglow)"/><defs><radialGradient id="yelglow" cx="40%" cy="35%"><stop offset="0%" stop-color="#feca57"/><stop offset="100%" stop-color="#f1c40f"/></radialGradient></defs><circle cx="35" cy="135" r="22" fill="#333"/><text x="35" y="92" text-anchor="middle" fill="#8a7100" font-size="8" font-weight="900">CAUTION</text></svg><div class="sign-label">🟡 <strong>YELLOW</strong><br>থামার প্রস্তুতি</div></div>
 
-  🔴 Red  = STOP. জংশনে ঢুকো না।
-  🟡 Yellow = লাল আসছে। নিরাপদে থামো।
-              (একটু ভুল করে গ্যাস চাপলেই accident!)
-  🟢 Green = যাও। কিন্তু আগে বাম-ডান দেখো।
-              বাম মোড়? Oncoming কে yield।</div>
+<div class="sign-item"><svg viewBox="0 0 70 170" width="52" height="126"><rect x="8" y="4" width="54" height="162" rx="12" fill="#1a1a1a" stroke="#444" stroke-width="2"/><circle cx="35" cy="35" r="22" fill="#333"/><circle cx="35" cy="85" r="22" fill="#333"/><circle cx="35" cy="135" r="22" fill="url(#grnglow)"/><defs><radialGradient id="grnglow" cx="40%" cy="35%"><stop offset="0%" stop-color="#55efc4"/><stop offset="100%" stop-color="#27ae60"/></radialGradient></defs><text x="35" y="142" text-anchor="middle" fill="#004d00" font-size="10" font-weight="900">GO</text></svg><div class="sign-label">🟢 <strong>GREEN</strong><br>যাও — নিরাপদ হলে</div></div>
+</div>
 
 <div class="code-block">TRAFFIC SIGNALS — COMPLETE GUIDE
 ═══════════════════════════════════════════════
@@ -479,22 +480,30 @@ SPECIAL MARKINGS
     → High-Occupancy Vehicle lane
     → ২+ জন থাকলে চালাতে পারবে</div>
 
-<div class="sign-visual"><div class="sign-title">📏 PAVEMENT MARKINGS — Visual Guide</div>
+<div class="sign-visual" style="white-space:normal;text-align:left">
+<div class="sign-title" style="margin-bottom:.8rem">📏 PAVEMENT MARKINGS — Visual Reference</div>
 
-  ═══════════  ডাবল সলিড হলুদ = পার হওয়া নিষেধ (দুই দিক)
-  ─ ─ ─ ─ ─ ─  ড্যাশড হলুদ = পার হওয়া যায় (নিরাপদ হলে)
-  ───────────  সলিড সাদা = লেন পরিবর্তন নিরুৎসাহিত
-  - - - - - -  ড্যাশড সাদা = লেন পরিবর্তন করতে পারো
-
-  ╔═══════════════════════════════════╗
-  ║        ←    |    →                ║
-  ║   ─────────═       ┌─────────     ║
-  ║   (সলিড)   ║ ═════ ║  (সলিড)      ║
-  ║   ←— পার না  ║ ডাবল ║ পার না —→   ║
-  ║            ║ হলুদ  ║              ║
-  ║   সবুজ ✅   ║ লাইন  ║   সবুজ ✅    ║
-  ╚═══════════════════════════════════╝
-   ←— বিপরীত দিক                বিপরীত দিক —→</div>
+<div style="margin:.6rem 0">
+<div class="pm-double-yellow"></div>
+<span style="font-size:.72rem;color:var(--ink-dim)">═══ ডাবল সলিড হলুদ — পার হওয়া নিষেধ (দুই দিক)</span>
+</div>
+<div style="margin:.6rem 0">
+<div class="pm-solid-yellow"></div>
+<span style="font-size:.72rem;color:var(--ink-dim)">─── সলিড হলুদ — এক দিক পার নিষেধ</span>
+</div>
+<div style="margin:.6rem 0">
+<div class="pm-dashed-yellow"></div>
+<span style="font-size:.72rem;color:var(--ink-dim)">- - - ড্যাশড হলুদ — পার হওয়া যায় (নিরাপদ হলে)</span>
+</div>
+<div style="margin:.6rem 0">
+<div class="pm-solid-white"></div>
+<span style="font-size:.72rem;color:var(--ink-dim)">─── সলিড সাদা — লেন পরিবর্তন নিরুৎসাহিত</span>
+</div>
+<div style="margin:.6rem 0">
+<div class="pm-dashed-white"></div>
+<span style="font-size:.72rem;color:var(--ink-dim)">- - - ড্যাশড সাদা — লেন পরিবর্তন করতে পারো</span>
+</div>
+</div>
 
 <div class="scenario-box">
 <div class="scn-label">🎭 COMPLEX SCENARIO — Yellow Light Dilemma</div>
@@ -851,40 +860,26 @@ doors.push({
   ✗ Disabled placard বা plate লাগবে
   ✗ Family member এরও নিজের placard লাগে</div>
 
-<div class="sign-visual"><div class="sign-title">🅿️ HILL PARKING — Which Way to Turn Wheels?</div>
-
-  ┌─────────────────────────────────────────┐
-  │          UPHILL (with curb)             │
-  │                                         │
-  │     ╱╲    ← চাকা বামে (কার্ব থেকে দূরে)  │
-  │    ╱  ║═════════ ← curb                 │
-  │   ╱   │                                 │
-  │  গাড়ি  ↑ পাহাড় উপরে                     │
-  │                                         │
-  │  যদি brake fail করে → চাকা কার্বে ঠেকবে │
-  └─────────────────────────────────────────┘
-
-  ┌─────────────────────────────────────────┐
-  │         DOWNHILL (with curb)            │
-  │                                         │
-  │     ╲╱   ← চাকা ডানে (কার্বের দিকে)      │
-  │      ║═════════ ← curb                  │
-  │     ╱│                                  │
-  │   গাড়ি ↓ পাহাড় নিচে                      │
-  │                                         │
-  │  যদি brake fail করে → চাকা কার্বে ঠেকবে │
-  └─────────────────────────────────────────┘
-
-  ┌─────────────────────────────────────────┐
-  │     NO CURB (uphill OR downhill)        │
-  │                                         │
-  │     চাকা ডানে ঘুরাও (shoulder দিকে)      │
-  │     → গাড়ি রাস্তা ছেড়ে চলে যাবে         │
-  └─────────────────────────────────────────┘
-
-  💡 TRICK to remember:
-     UPhill = UP (উপরে দেখো) → চাকা কার্ব থেকে দূরে (বাম)
-     DOWNhill = DOWN (নিচে দেখো) → চাকা কার্বের দিকে (ডান)</div>
+<div class="hill-park">
+<div class="hill-card">
+<div class="hc-label">UPHILL (with curb)</div>
+<div class="hc-icon">⛰️⬆️🚗</div>
+<div class="hc-rule">চাকা ← <strong>বামে</strong><br>(কার্ব থেকে দূরে)</div>
+<div class="hc-trick">UP = উপর দেখো<br>চাকা কার্ব থেকে দূরে</div>
+</div>
+<div class="hill-card">
+<div class="hc-label">DOWNHILL (with curb)</div>
+<div class="hc-icon">🚗⬇️⛰️</div>
+<div class="hc-rule">চাকা → <strong>ডানে</strong><br>(কার্বের দিকে)</div>
+<div class="hc-trick">DOWN = নিচ দেখো<br>চাকা কার্বের দিকে</div>
+</div>
+<div class="hill-card">
+<div class="hc-label">NO CURB (either)</div>
+<div class="hc-icon">🚗➡️🚧</div>
+<div class="hc-rule">চাকা → <strong>ডানে</strong><br>(shoulder দিকে)</div>
+<div class="hc-trick">কার্ব নেই → ডানে<br>রাস্তা ছেড়ে যাবে</div>
+</div>
+</div>
 
 <div class="scenario-box">
 <div class="scn-label">🎭 COMPLEX SCENARIO — Snow + Speed Limit</div>
