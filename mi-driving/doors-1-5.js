@@ -24,9 +24,9 @@ doors.push({
 
 <div class="code-block">MICHIGAN GRADUATED DRIVER LICENSING (GDL) — ৩ ধাপ:
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 ধাপ ১: SEGMENT 1 DRIVER EDUCATION (বয়স ১৪ বছর ৮ মাস+)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 পূর্বশর্ত:
   ✦ বয়স কমপক্ষে ১৪ বছর ৮ মাস
@@ -41,9 +41,9 @@ Segment 1 Course (মাস্টার করতে হবে):
   → শেষে একটা written test পাশ করতে হবে
   → শেষে Segment 1 Certificate পাবে
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 ধাপ ২: LEARNER LICENSE (বয়স ১৫+)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 Segment 1 শেষে SOS office-এ গিয়ে:
   ✦ Segment 1 Certificate জমা দাও
@@ -62,9 +62,9 @@ LEARNER LICENSE RESTRICTIONS:
      parent এর সাথে করতে হবে
   ⚠️ crash-free + violation-free থাকতে হবে
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 ধাপ ৩: SEGMENT 2 DRIVER EDUCATION
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 পূর্বশর্ত:
   ✦ Learner License ছিল কমপক্ষে ৩ মাস
@@ -75,9 +75,9 @@ Segment 2 Course:
   📚 ৬ ঘণ্টা classroom instruction only
   (no behind-the-wheel)
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 ধাপ ৪: LEVEL 2 PROVISIONAL LICENSE (বয়স ১৬+)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 পূর্বশর্ত:
   ✦ Segment 2 সম্পন্ন
@@ -99,9 +99,9 @@ LEVEL 2 RESTRICTIONS:
      (exception: immediate family member বা 
       parent/guardian/licensed adult ২১+ সাথে থাকলে)
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 ধাপ ৫: LEVEL 3 FULL LICENSE (বয়স ১৭+)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 পূর্বশর্ত:
   ✦ Level 2 ছিল কমপক্ষে ৬ মাস
@@ -112,9 +112,9 @@ LEVEL 2 RESTRICTIONS:
   → সব restrictions তুলে নেওয়া হয়
   → তুমি এখন full licensed driver!
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 বয়স্কদের জন্য (১৮+ বছর):
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✦ GDL প্রযোজ্য নয়
   ✦ সরাসরি knowledge test + road test
@@ -190,101 +190,30 @@ doors.push({
 <div class="sign-item"><svg viewBox="0 0 80 50" width="60" height="38"><rect x="1" y="1" width="78" height="48" rx="2" fill="#2980b9"/><text x="40" y="36" text-anchor="middle" fill="#fff" font-size="22">🏥</text></svg><div class="sign-label">🔵 <strong>SERVICES</strong><br>হাসপাতাল, গ্যাস</div></div>
 </div>
 
-<div class="code-block">TRAFFIC SIGNS — SHAPE × COLOR = MEANING
-═══════════════════════════════════════════════
+<div class="code-block">উপরের SVG সাইনগুলো মুখস্থ করো — আকার আর রঙ।
 
-🔴 REGULATORY SIGNS (আইনি — অমান্য করলে জরিমানা)
-═══════════════════════════════════════════════
+🔴 REGULATORY (আইনি):
+  STOP (অষ্টভুজ লাল) → সম্পূর্ণ থামো, ৩ সেকেন্ড
+  YIELD (ত্রিভুজ লাল) → অন্যকে অগ্রাধিকার দাও
+  SPEED LIMIT (আয়ত সাদা) → সর্বোচ্চ গতি
+  DO NOT ENTER (বর্গ লাল + সাদা দণ্ড) → ঢুকো না
+  NO LEFT TURN (বৃত্ত লাল কাটা) → মোড় নিষেধ
 
-  ⬣ অষ্টভুজ (OCTAGON) + লাল = STOP
-    → সম্পূর্ণ থামো। গিয়ারে ঢুকাও। 
-    → পেডেস্ট্রিয়ান আর traffic দেখো।
-    → তারপর যাও।
-    → কমপক্ষে ৩ সেকেন্ড থামো।
+🟡 WARNING (সতর্কতা):
+  হীরা হলুদ → বাঁক, হরিণ, স্লিপারি, মার্জ, ঢাল
+  পেডেস্ট্রিয়ান ক্রসিং → মানুষ রাস্তা পার হতে পারে
 
-  △ ত্রিভুজ উল্টানো (TRIANGLE) + লাল/সাদা = YIELD
-    → ধীরে করো। 
-    → অন্য গাড়িকে অগ্রাধিকার দাও।
-    → শুধু থামো যদি traffic থাকে।
-    → পেডেস্ট্রিয়ানকে অগ্রাধিকার দাও।
+🟢 GUIDE (নির্দেশনা):
+  আয়ত সবুজ → গন্তব্য, এক্সিট নম্বর
+  আয়ত নীল → গ্যাস, হাসপাতাল, খাবার
+  আয়ত বাদামি → পার্ক, রিক্রিয়েশন
 
-  ▢ আয়ত (RECTANGLE) + সাদা/কালো = SPEED LIMIT
-    → "SPEED LIMIT 55" = সর্বোচ্চ ৫৫ mph
-    → এর বেশি হলে speeding ticket
-    → school zone: 25 mph (সাইন থাকলে)
+🟠 CONSTRUCTION:
+  হীরা কমলা → কাজ চলছে, দ্বিগুণ জরিমানা!
+  কমলা ব্যারিকেড → রাস্তা বন্ধ
 
-  ⬜ বর্গ (SQUARE) + লাল ও সাদা = DO NOT ENTER
-    → লাল বর্গে সাদা অনুভূমিক দণ্ড
-    → এই রাস্তায় ঢুকো না — wrong way রোধে
-
-  ⭕ বৃত্ত (CIRCLE) + লাল কাটা দণ্ড = নিষেধ
-    → লাল বৃত্তে কাটা — নির্দিষ্ট ক্রিয়া নিষেধ
-    → "NO LEFT TURN" — বামে মোড় নিষেধ
-    → "NO U-TURN" — U-turn নিষেধ
-
-  ▢ বর্গ (SQUARE) + লাল = DO NOT / NO 
-    → "NO LEFT TURN" — বামে মোড় নিষেধ
-    → "NO U-TURN" — U-turn নিষেধ
-    → "NO PARKING" — পার্ক নিষেধ
-
-═══════════════════════════════════════════════
-🟡 WARNING SIGNS (সতর্কতা — আগে থেকে প্রস্তুত হও)
-═══════════════════════════════════════════════
-
-  ◆ হীরা (DIAMOND) + হলুদ = WARNING
-    → সামনে কোনো বিপদের সতর্কতা
-    → হীরা দেখেই বুঝবে — সতর্ক হও
-
-  Common warning signs:
-    ⚠️ "CURVE AHEAD" — বাঁক আসছে, ধীরে করো
-    ⚠️ "SCHOOL ZONE" — স্কুল এলাকা, সতর্ক
-    ⚠️ "DEER CROSSING" — হরিণ চলাচল করতে পারে
-    ⚠️ "SLIPPERY WHEN WET" — ভেজা হলে পিচ্ছিল
-    ⚠️ "MERGE" — অন্য লেন যুক্ত হচ্ছে
-    ⚠️ "HILL" — ঢাল আসছে
-    ⚠️ "CONSTRUCTION" (কমলা হীরা) — কাজ চলছে
-
-  ⚠️ পেডেস্ট্রিয়ান CROSSING = হলুদ/কমলা
-    → মানুষ রাস্তা পার হতে পারে। ধীরে করো।
-    → স্কুল crossing-এ থামো যদি কেউ থাকে।
-
-═══════════════════════════════════════════════
-🟢 GUIDE/INFORMATION SIGNS (গন্তব্য নির্দেশনা)
-═══════════════════════════════════════════════
-
-  ▢ আয়ত + সবুজ = DIRECTION/DISTANCE
-    → "GRAND RAPIDS 45" = ৪৫ মাইল দূরে
-    → হাইওয়ে exit নম্বর
-    → গন্তব্যের দিক নির্দেশ
-
-  ▢ আয়ত + নীল = SERVICES
-    → গ্যাস, খাবার, থাকা, হাসপাতাল
-    → "HOSPITAL H" নীল চিহ্ন
-
-  ▢ আয়ত + বাদামি = RECREATION
-    → পার্ক, ক্যাম্পিং, historical site
-
-═══════════════════════════════════════════════
-🟠 CONSTRUCTION SIGNS (কাজ চলছে)
-═══════════════════════════════════════════════
-
-  ◆ হীরা + কমলা = CONSTRUCTION
-    → কাজ চলছে। ধীরে করো।
-    → শ্রমিক থাকতে পারে। 
-    → Michigan-এ construction zone-এ 
-      দ্বিগুণ জরিমানা!
-
-  🔶 কমলা কালবার/বারিকেড = ROAD CLOSED
-    → এই রাস্তা বন্ধ। অন্য রাস্তা নাও।
-
-═══════════════════════════════════════════════
-🚸 SCHOOL SIGNS (স্কুল জোন)
-═══════════════════════════════════════════════
-
-  ☕ পেন্টাগন + হলুদ-সবুছে = SCHOOL ZONE
-    → স্কুল এলাকা। ধীরে চালাও (২৫ mph)।
-    → সকাল/দুপুর শিশু থাকতে পারে।
-    → সবসময় সতর্ক থাকো।</div>
+🚸 SCHOOL:
+  পেন্টাগন হলুদ → ২৫ mph, শিশু সতর্ক</div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল যা করবে না</div>STOP sign-এ ধীরে নামি (rolling stop) — এটা বেআইনি এবং বিপজ্জনক। সম্পূর্ণ থামতে হবে। চাকা যেন সম্পূর্ণ থামে। এটাকে California stop / Michigan stop বলে কথায় — কিন্তু আইন নয়। টেস্টে fail করবে।</div>
@@ -364,7 +293,7 @@ doors.push({
 </div>
 
 <div class="code-block">TRAFFIC SIGNALS — COMPLETE GUIDE
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 🟢 GREEN LIGHT (সবুজ আলো)
   ✅ যাও — যদি রাস্তা পরিষ্কার থাকে
@@ -392,9 +321,9 @@ doors.push({
 🔴🟡 লাল+হলুদ একসাথে (কিছু সিগন্যালে)
   → সবুজ আসছে — প্রস্তুত হও, কিন্তু যাও না
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 FLASHING SIGNALS
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 🟡 FLASHING YELLOW (জ্বলছে-নিভছে হলুদ)
   → ধীরে করো, সতর্ক হও, যাও
@@ -406,9 +335,9 @@ FLASHING SIGNALS
 🟢 FLASHING GREEN/ARROW (কিছু এলাকায়)
   → পেডেস্ট্রিয়ান crossing — সতর্ক হও
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 ARROW SIGNALS (তীর চিহ্ন)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 🟢➡️ GREEN ARROW = সেই দিকে যাও — protected turn
   → Oncoming traffic থাকে না (লাল তাদের)
@@ -421,19 +350,19 @@ ARROW SIGNALS (তীর চিহ্ন)
 🔴➡️ RED ARROW = সেই দিকে মোড় নেওয়া নিষেধ
   ❌ যদি না সাইন অনুমতি দেয়
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 LANE SIGNALS (হাইওয়ে লেন নিয়ন্ত্রণ)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 🟢 GREEN ✓ = এই লেন খোলা — ব্যবহার করো
 🟡 YELLOW ✕ = এই লেন বন্ধ হচ্ছে — বেরিয়ে যাও
 🔴 RED ✕ = এই লেন বন্ধ — ঢুকো না</div>
 
 <div class="code-block">PAVEMENT MARKINGS — সড়ক দাগ
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 🟡 YELLOW LINES = ট্রাফিক ভাগ করে (opposite direction)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ━━━━━━━━ সলিড হলুদ ডাবল লাইন
     → দুই দিকের ট্রাফিক আলাদা
@@ -448,7 +377,7 @@ LANE SIGNALS (হাইওয়ে লেন নিয়ন্ত্রণ)
     → পার হওয়া যায় — নিরাপদ হলে পাস করো
 
 ⚪ WHITE LINES = একই দিকের লেন আলাদা করে
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ━━━━━━━━ সলিড সাদা লাইন
     → লেন পরিবর্তন নিরুৎসাহিত
@@ -461,9 +390,9 @@ LANE SIGNALS (হাইওয়ে লেন নিয়ন্ত্রণ)
     → রাস্তার কিনারা — shoulder line
     → এই লাইনের ডানে চালাবে না (বাইরে)
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 SPECIAL MARKINGS
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ▓▓▓▓▓ PAINTED ISLAND (ত্রিভুজ এলাকা)
     → এখানে চালাবে না বা দাঁড়াবে না
@@ -485,7 +414,7 @@ SPECIAL MARKINGS
 
 <div style="margin:.6rem 0">
 <div class="pm-double-yellow"></div>
-<span style="font-size:.72rem;color:var(--ink-dim)">═══ ডাবল সলিড হলুদ — পার হওয়া নিষেধ (দুই দিক)</span>
+<span style="font-size:.72rem;color:var(--ink-dim)">▔▔▔ ডাবল সলিড হলুদ — পার হওয়া নিষেধ (দুই দিক)</span>
 </div>
 <div style="margin:.6rem 0">
 <div class="pm-solid-yellow"></div>
@@ -577,10 +506,10 @@ doors.push({
 <p class="scene-setting en">The fourth chapter. You're at a 4-way intersection. STOP signs on all sides. Four cars — one from each direction. All stopped. Who goes first? Beside you is the driving instructor — calm voice, clear directions. Engine idle, light breeze, distant radio.</p>
 
 <div class="code-block">RIGHT-OF-WAY — COMPLETE RULES
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 🛑 4-WAY STOP (চার-মুখী STOP)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম ১: যে প্রথম থামে, সে প্রথম যায়
     → First to stop = first to go
@@ -596,16 +525,16 @@ doors.push({
   নিয়ম ৪: সন্দেহ হলে — অন্যকে দাও
     → When in doubt, yield
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🚦 UNCONTROLLED INTERSECTION (কোনো সাইন/সিগন্যাল নেই)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: ডান দিক থেকে আসা গাড়িকে অগ্রাধিকার দাও
     → Yield to traffic on the right
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🔄 ROUNDABOUT (গোলচক্কর)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম ১: প্রবেশ করার আগে YIELD
     → Yield to traffic already IN the roundabout
@@ -619,9 +548,9 @@ doors.push({
   নিয়ম ৪: বের হওয়ার আগে signal দাও
     → Use right turn signal to exit
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 ↩️ LEFT TURN (বাম মোড়)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: বাম মোড় নিলে oncoming (বিপরীত দিকের) 
     traffic কে অগ্রাধিকার দাও
@@ -633,9 +562,9 @@ doors.push({
   সবুজ তীর (green arrow):
     → Protected — oncoming লাল। নিরাপদে যাও।
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🚶 PEDESTRIANS (পথচারী)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: পেডেস্ট্রিয়ান সবসময় অগ্রাধিকার পায়
     → Pedestrians ALWAYS have right-of-way
@@ -645,9 +574,9 @@ doors.push({
   • school zone-এ বিশেষ সতর্ক
   • blind/person with cane বা guide dog — সবসময়
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🚑 EMERGENCY VEHICLES (জরুরি গাড়ি)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: জরুরি গাড়ি (police, fire, ambulance) 
     সাইরেন/লাইট নিয়ে আসলে — ডানে সরে যাও থামো
@@ -657,9 +586,9 @@ doors.push({
   • জংশনে থাকলে জংশন পার হও, তারপর ডানে
   • বিপরীত দিকে থাকলেও সতর্ক হও
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🚌 SCHOOL BUS
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: স্কুল বাসে লাল আলো জ্বললে + STOP 
     arm বের হলে — উভয় দিক থেকে থামো
@@ -670,48 +599,68 @@ doors.push({
   • বাস আবার চললে তবে তুমি যাও
   • ভুল করলে: $৫০০+ জরিমানা + license points
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🚜 FUNERAL PROCESSION
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: Funeral procession কে অগ্রাধিকার দাও
     → Yield to funeral processions
     → Headlight জ্বলা গাড়িগুলো</div>
 
-<div class="diagram-box"><div class="dia-title">🛑 4-WAY STOP — Who Goes First?</div>
+<div class="sign-gallery">
+<div class="sign-item"><svg viewBox="0 0 200 200" width="180" height="180">
+<!-- Road background -->
+<rect x="80" y="0" width="40" height="200" fill="#2a2a2a"/>
+<rect x="0" y="80" width="200" height="40" fill="#2a2a2a"/>
+<!-- Lane lines -->
+<line x1="100" y1="0" x2="100" y2="70" stroke="#f1c40f" stroke-width="2" stroke-dasharray="8,6"/>
+<line x1="100" y1="130" x2="100" y2="200" stroke="#f1c40f" stroke-width="2" stroke-dasharray="8,6"/>
+<line x1="0" y1="100" x2="70" y2="100" stroke="#f1c40f" stroke-width="2" stroke-dasharray="8,6"/>
+<line x1="130" y1="100" x2="200" y2="100" stroke="#f1c40f" stroke-width="2" stroke-dasharray="8,6"/>
+<!-- Center intersection -->
+<rect x="80" y="80" width="40" height="40" fill="#333"/>
+<!-- STOP signs at each corner -->
+<text x="72" y="76" font-size="10" fill="#c62828" font-weight="900">STOP</text>
+<text x="130" y="76" font-size="10" fill="#c62828" font-weight="900">STOP</text>
+<text x="72" y="138" font-size="10" fill="#c62828" font-weight="900">STOP</text>
+<text x="130" y="138" font-size="10" fill="#c62828" font-weight="900">STOP</text>
+<!-- Cars -->
+<circle cx="100" cy="50" r="8" fill="#3498db"/><text x="93" y="54" font-size="7" fill="#fff">A</text>
+<circle cx="150" cy="100" r="8" fill="#e74c3c"/><text x="143" y="104" font-size="7" fill="#fff">B</text>
+<circle cx="100" cy="150" r="8" fill="#2ecc71"/><text x="93" y="154" font-size="7" fill="#fff">C</text>
+<circle cx="50" cy="100" r="8" fill="#f39c12"/><text x="43" y="104" font-size="7" fill="#fff">D</text>
+<!-- Labels -->
+<text x="92" y="14" fill="#999" font-size="8">N</text>
+<text x="92" y="194" fill="#999" font-size="8">S</text>
+<text x="186" y="104" fill="#999" font-size="8">E</text>
+<text x="4" y="104" fill="#999" font-size="8">W</text>
+</svg><div class="sign-label">🛑 <strong>4-WAY STOP</strong><br>A আগে থামলে → A আগে যায়<br>টাই হলে → ডান দিকের গাড়ি প্রথম</div></div>
+</div>
 
-         N (North)
-         ↑
-    ┌────┴────┐
-    │         │
-W ←─┤  4-way  ├─→ E (East)
-    │  STOP   │
-    │         │
-    └────┬────┘
-         ↓
-         S (South)
-
-  ⓐ সবাই একসাথে থামলে → ডান দিকের গাড়ি প্রথম
-  ⓑ যে আগে থামে → সে আগে যায়
-  ⓒ সোজা যাওয়া > বাম মোড় (বিপরীত দিক থেকে)
-  ⓓ সন্দেহ? → অন্যকে দাও</div>
-
-<div class="diagram-box"><div class="dia-title">🔄 ROUNDABOUT — Traffic Flow</div>
-
-           ╭──────────╮
-          ╱            ╲
-    →→→  ╱   ╭───╮     ╲  →→→
-   (YIELD)  ╱         ╲   (EXIT)
-         │   ◯ ◯ ◯   │
-         │  ভেতরে    │
-          ╲   গাড়ি   ╱
-    ←←←   ╲  ╰───╯  ╱   ←←←
-   (ENTER)  ╲       ╱  (ALREADY IN
-            ╰──────╯   = priority)
-
-  নিয়ম: ভেতরে already থাকা গাড়ি = priority
-  তুমি yield করে ঢুকো। counterclockwise ঘুরো।
-  Exit করার সময় right signal দাও।</div>
+<div class="sign-gallery">
+<div class="sign-item"><svg viewBox="0 0 200 200" width="170" height="170">
+<!-- Roads -->
+<rect x="85" y="0" width="30" height="200" fill="#2a2a2a"/>
+<rect x="0" y="85" width="200" height="30" fill="#2a2a2a"/>
+<!-- Roundabout circle -->
+<circle cx="100" cy="100" r="40" fill="#333" stroke="#666" stroke-width="3"/>
+<circle cx="100" cy="100" r="15" fill="#444"/>
+<!-- Arrows showing counterclockwise flow -->
+<path d="M 130 80 A 35 35 0 0 0 100 65" fill="none" stroke="#3498db" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M 70 120 A 35 35 0 0 0 100 135" fill="none" stroke="#3498db" stroke-width="2" marker-end="url(#arr)"/>
+<defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#3498db"/></marker></defs>
+<!-- Cars already inside -->
+<circle cx="135" cy="100" r="6" fill="#2ecc71"/>
+<circle cx="100" cy="135" r="6" fill="#2ecc71"/>
+<!-- Car waiting to enter -->
+<circle cx="100" cy="65" r="6" fill="#e74c3c"/>
+<!-- YIELD text -->
+<text x="75" y="60" font-size="7" fill="#e74c3c" font-weight="900">YIELD</text>
+<!-- Labels -->
+<text x="93" y="12" fill="#999" font-size="7">ENTER</text>
+<text x="93" y="196" fill="#999" font-size="7">EXIT</text>
+</svg><div class="sign-label">🔄 <strong>ROUNDABOUT</strong><br>ভেতরের গাড়ি = priority<br>তুমি yield করে ঢুকো<br>counterclockwise ঘুরো</div></div>
+</div>
 
 <div class="scenario-box">
 <div class="scn-label">🎭 COMPLEX SCENARIO — School Bus on Divided Highway</div>
@@ -780,7 +729,7 @@ doors.push({
 <p class="scene-setting en">The fifth chapter. You stand near a school zone. Sign reads: "SPEED LIMIT 25 — SCHOOL DAYS." Beside you is the instructor — clipboard, calm voice. Children's laughter, car engines, winter cold air.</p>
 
 <div class="code-block">MICHIGAN SPEED LIMITS — সম্পূর্ণ তালিকা
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 🚗 MICHIGAN SPEED LIMITS (default যদি সাইন না থাকে):
 
@@ -794,9 +743,9 @@ doors.push({
   ⚠️ সবসময় posted সাইন অনুসরণ করো
   ⚠️ সাইনের গতি সর্বোচ্চ — কখনো minimum নয়
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 ⚠️ BASIC SPEED LAW (সবচেয়ে গুরুত্বপূর্ণ)
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   "Drive at a careful and prudent speed 
    for conditions"
@@ -813,9 +762,9 @@ doors.push({
   → Speed limit 55 হলেও snow-এ 30 mph 
     আইনি হতে পারে
 
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 🚨 TOO FAST / TOO SLOW — উভয়ই বেআইনি
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ❌ খুব দ্রুত: accident risk, ticket, points
   ❌ খুব ধীরে: traffic block, rear-end risk
@@ -826,10 +775,10 @@ doors.push({
      কিন্তু speed limit পার করো না</div>
 
 <div class="code-block">PARKING RULES — কোথায় পার্ক করবে, কোথায় নয়
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
 🚫 NO PARKING (পার্ক করা নিষেদ্ধ):
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✗ Fire hydrant থেকে ১৫ ফুটের মধ্যে
   ✗ Crosswalk এর উপর বা ২০ ফুটের মধ্যে
@@ -843,7 +792,7 @@ doors.push({
   ✗ Intersection-এ
 
 🅿️ PARKING RULES (পার্ক করার নিয়ম):
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✓ কার্বের ১ ফুটের মধ্যে (parallel parking)
   ✓ Downhill: চাকা কার্বের দিকে ঘুরাও (→right)
@@ -853,7 +802,7 @@ doors.push({
   ✓ গিয়ার Park (automatic) / Reverse (manual)
 
 ♿ DISABLED PARKING:
-═══════════════════════════════════════════════
+— — — — — — — — — — — — — — — — — — — — — —
 
   ✗ Disabled spot-এ permit ছাড়া পার্ক নিষেধ
   ✗ $৫০০ পর্যন্ত জরিমানা
