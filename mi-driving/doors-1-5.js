@@ -168,25 +168,18 @@ doors.push({
 <div class="dialogue">"সাইন পড়তে শেখো না — সাইন চিনতে শেখো," instructor বললেন। "গাড়ি চালানোর সময় তোমার কাছে সাইন পড়ার সময় নেই। আকার দেখে, রঙ দেখে সিদ্ধান্ত নাও। এটাই নিরাপদ।" তিনি প্রতিটা সাইন দেখিয়ে বললেন।</div>
 <div class="dialogue en">"Don't learn to read signs — learn to recognize signs," the instructor said. "While driving, you don't have time to read. Decide from shape, from color. That's safe." He showed each sign.</div>
 
-<div class="sign-visual"><div class="sign-title">🔍 SIGN SHAPES — Quick Visual Reference</div>
-
-        ⬣                    ◆                    ▽
-      ⬣   ⬣               ◆   ◆               ╱  ╲
-    ⬣   ⬣   ⬣             ◆   ◆             ╱    ╲
-      ⬣   ⬣               ◆   ◆             ╲    ╱
-        ⬣                    ◆               ╲  ╱
-     OCTAGON              DIAMOND           TRIANGLE
-       🔴 RED              🟡 YELLOW        🔴 RED/WHITE
-       = STOP              = WARNING        = YIELD
-
-      ━━━━━━              ┌─────┐            ╱╲
-     │     │              │     │           ╱  ╲
-     │  ━━ │              │     │          │    │
-     │     │              │     │           ╲  ╱
-      ━━━━━━              └─────┘            ╲╱
-     RECTANGLE           SQUARE             PENTAGON
-       ⬜ WHITE           🔴 RED             🟡 YELLOW
-     = SPEED LIMIT       = DO NOT ENTER     = SCHOOL ZONE</div>
+<div class="sign-gallery">
+<div class="sign-item"><div class="sign-stop">STOP</div><div class="sign-label">🔴 Octagon + Red<br><strong>STOP</strong><br>সম্পূর্ণ থামো</div></div>
+<div class="sign-item"><div class="sign-yield"></div><div class="sign-label">🔻 Triangle + Red<br><strong>YIELD</strong><br>অন্যকে অগ্রাধিকার</div></div>
+<div class="sign-item"><div class="sign-speed"><div class="sp-top">SPEED<br>LIMIT</div><div class="sp-num">55</div></div><div class="sign-label">⬜ Rectangle + White<br><strong>SPEED LIMIT</strong><br>সর্বোচ্চ গতি</div></div>
+<div class="sign-item"><div class="sign-warn"><div class="sign-warn-inner">⚠️</div></div><div class="sign-label">🟡 Diamond + Yellow<br><strong>WARNING</strong><br>সতর্ক হও</div></div>
+<div class="sign-item"><div class="sign-school"></div><div class="sign-label">🟡 Pentagon<br><strong>SCHOOL ZONE</strong><br>২৫ mph</div></div>
+<div class="sign-item"><div class="sign-dne"></div><div class="sign-label">🟥 Square + Red<br><strong>DO NOT ENTER</strong><br>এই রাস্তায় নয়</div></div>
+<div class="sign-item"><div class="sign-no"></div><div class="sign-label">🚫 Circle + Red<br><strong>NO LEFT TURN</strong><br>নিষেধাজ্ঞা</div></div>
+<div class="sign-item"><div class="sign-construction"><div class="sign-construction-inner">🚧</div></div><div class="sign-label">🟠 Diamond + Orange<br><strong>CONSTRUCTION</strong><br>দ্বিগুণ জরিমানা</div></div>
+<div class="sign-item"><div class="sign-guide">EXIT 12</div><div class="sign-label">🟢 Rectangle + Green<br><strong>GUIDE</strong><br>দিক নির্দেশনা</div></div>
+<div class="sign-item"><div class="sign-service">🏥 H</div><div class="sign-label">🔵 Rectangle + Blue<br><strong>SERVICES</strong><br>হাসপাতাল, গ্যাস</div></div>
+</div>
 
 <div class="code-block">TRAFFIC SIGNS — SHAPE × COLOR = MEANING
 ═══════════════════════════════════════════════
@@ -321,23 +314,9 @@ doors.push({
 ❓ "SPEED LIMIT 55" সাদা সাইন — কী মানে?
 ✅ সর্বোচ্চ ৫৫ mph — এর বেশি অবৈধ</div>
 
-<div class="sign-visual"><div class="sign-title">🛑 STOP SIGN — Close-Up</div>
-
-         ╭───────────╮
-        ╱             ╲
-       ╱   S   T   O   ╲
-      │     P           │
-      │                 │
-       ╲   (RED)       ╱
-        ╲             ╱
-         ╰───────────╯
-
-  ৮ পাশ = OCTAGON (অষ্টভুজ)
-  লাল রঙ = সম্পূর্ণ থামো
-  সাদা লেখা = STOP
-
-  দূর থেকে শুধু আকার দেখেই চেনা যায়
-  বরফে ঢাকা থাকলেও আকার থেকে চেনা যায়</div>
+<div class="sign-gallery">
+<div class="sign-item"><div class="sign-stop" style="width:90px;height:90px;font-size:.85rem">STOP</div><div class="sign-label">🛑 <strong>STOP SIGN</strong><br>৮ পাশ (Octagon) + লাল<br>সম্পূর্ণ থামো, ৩ সেকেন্ড</div></div>
+</div>
 
 <div class="scenario-box">
 <div class="scn-label">🎭 COMPLEX SCENARIO — Snowy Night</div>
