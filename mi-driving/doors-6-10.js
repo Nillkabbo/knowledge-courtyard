@@ -21,6 +21,22 @@ doors.push({
 <div class="code-block">SAFE DRIVING TECHNIQUES — COMPLETE
 — — — — — — — — — — — — — — — — — — — — — —
 
+🧠 DEFENSIVE DRIVING — SEE SYSTEM
+— — — — — — — — — — — — — — — — — — — — — —
+
+  প্রতি মুহূর্তে তিনটা কাজ:
+  1️⃣ SEARCH — চোখ ঘোরাও: সামনে ২০-৩০ সেকেন্ড
+     দূর পর্যন্ত, mirror প্রতি ৫-৮ সেকেন্ডে,
+     intersection-এ বাম-ডান-বাম
+  2️⃣ EVALUATE — কী ঘটতে পারে ভাবো: ওই গাড়ি
+     কি লেন বদলাবে? বাচ্চাটা কি রাস্তায় নামবে?
+  3️⃣ EXECUTE — আগে থেকে ব্যবস্থা নাও: গতি
+     কমাও, জায়গা রাখো, escape route ভাবো
+
+  💡 Defensive driver = যে ধরে নেয় অন্যরা ভুল
+     করবে, এবং তার জন্য প্রস্তুত থাকে
+
+— — — — — — — — — — — — — — — — — — — — — —
 📏 FOLLOWING DISTANCE (3-SECOND RULE)
 — — — — — — — — — — — — — — — — — — — — — —
 
@@ -443,7 +459,7 @@ doors.push({
     aen:"In older cars (no ABS), braking locks wheels making skid worse. But in modern cars (with ABS) — press brake firmly and hold while steering in the direction you want to go. ABS pumps the wheels automatically. In all cars, steering toward where you want to go is the key action."
   },
   story:`
-<p class="scene-setting">অষ্টম অধ্যায়। তুমি একটা বরফে ঢাকা রাস্তায়। গাড়ি একটু পিছলে যাচ্ছে। Instructor বললেন — "ভয় পেও না। brake চাপো না। Steering ঘুরাও যেদিকে যেতে চাও।" বরফের কড়া ঠান্ডা, গাড়ির চাকার শব্দ, হালকা wind।</p>
+<p class="scene-setting">অষ্টম অধ্যায়। জানুয়ারির এক সকাল — Lake Michigan থেকে আসা lake-effect snow-এ রাস্তা সাদা। তুমি একটা বরফে ঢাকা রাস্তায়। গাড়ি একটু পিছলে যাচ্ছে। Instructor বললেন — "ভয় পেও না। brake চাপো না। Steering ঘুরাও যেদিকে যেতে চাও। Michigan-এ শীত পাঁচ মাস — এটা শিখতেই হবে।" বরফের কড়া ঠান্ডা, গাড়ির চাকার শব্দ, হালকা wind।</p>
 
 <div class="code-block">HAZARDS & EMERGENCIES — COMPLETE
 — — — — — — — — — — — — — — — — — — — — — —
@@ -524,7 +540,7 @@ doors.push({
 <div class="scn-explain">Michigan-এ scene ছেড়ে গেলে hit-and-run অপরাধ। থামো, hazard light জ্বালাও, নিরাপদে গাড়ি সরাও। Name, address, license, insurance, plate বিনিময় করো। Damage $১,০০০+ হলে police রিপোর্ট দরকার।</div>
 </div>
 
-💧 HYDROPLANING (জলে ভাসা)
+<div class="code-block">💧 HYDROPLANING (জলে ভাসা)
 — — — — — — — — — — — — — — — — — — — — — —
 
   ১. Gas ছেড়ে দাও (slowly)
@@ -548,13 +564,23 @@ doors.push({
   ৩. Steering straight ধরো
   ৪. নিরাপদে থামাও
 
-🦌 DEER ON ROAD
+🦌 DEER ON ROAD (Michigan-এ বাস্তব ঝুঁকি!)
 — — — — — — — — — — — — — — — — — — — — — —
 
-  ১. Brake করো (সম্ভব হলে)
+  📊 বাস্তবতা: Michigan-এ প্রতি বছর ৫০,০০০+
+     deer-vehicle crash হয় — দেশের সর্বোচ্চগুলোর
+     একটা
+  🕐 Peak: অক্টোবর-নভেম্বর (mating season),
+     ভোর ও সন্ধ্যা (dawn/dusk)
+  🦌 একটা হরিণ দেখা মানে আরও আছে — হরিণ দলে চলে
+
+  কী করবে:
+  ১. Brake firmly করো (সম্ভব হলে)
   ২. ❌ Deer এড়াতে swerve করো না
-     (গাড়ি পাল্টে যেতে পারে)
+     (গাছ/oncoming-এ ধাক্কা হরিণের চেয়ে খারাপ)
   ৩. সোজা থাকো, ব্রেক করো
+  ৪. Deer crossing সাইন এলাকায় গতি কমাও,
+     রাতে high beam (oncoming না থাকলে)
 
 💥 ACCIDENT — কী করবে
 — — — — — — — — — — — — — — — — — — — — — —
@@ -630,10 +656,21 @@ doors.push({
   BAC Limits:
   ┌────────────────────────────────────────┐
   │  21+ বছর: 0.08+ = OWI                 │
+  │  0.17+ = "SUPER DRUNK" (High BAC)     │
   │  Under 21: 0.02+ = Zero Tolerance     │
   │  Commercial (CDL): 0.04+              │
   │  Any drug: যেকোনো পরিমাণ = OWI        │
   └────────────────────────────────────────┘
+
+  ⚡ "SUPER DRUNK" LAW (BAC 0.17+) — enhanced
+     first offense:
+  ✦ Up to 180 days jail (93-এর বদলে)
+  ✦ $200-$700 fine
+  ✦ 45 দিন সম্পূর্ণ suspension (কোনো driving নয়)
+    + এরপর ৩২০ দিন শুধু ignition interlock
+    device লাগানো গাড়িতে restricted driving
+  ✦ Up to 360 hours community service
+  ✦ Mandatory alcohol treatment (1 year)
 
   শাস্তি — FIRST OFFENSE:
   ✦ Up to 93 days in jail
@@ -775,6 +812,11 @@ doors.push({
 ❓ Commercial driver (CDL) এর জন্য?
 ✅ 0.04।
 
+❓ "Super Drunk" law কী?
+✅ BAC 0.17+ = enhanced penalty: 180 দিন পর্যন্ত
+   jail, 45 দিন hard suspension + ignition
+   interlock।
+
 ❓ OWI first offense শাস্তি কী?
 ✅ 93 days jail, $100-500 fine, license 
    suspension, 6 points।
@@ -837,9 +879,32 @@ doors.push({
     aen:"Because many don't fully stop at STOP signs — they keep rolling slowly. The examiner watches for wheels stopping completely. This is the most common automatic fail. To pass — full stop, count 3 seconds, then go."
   },
   story:`
-<p class="scene-setting">দশম অধ্যায়। তুমি গাড়িতে বসে আছো। পাশে road test examiner — ক্লিপবোর্ড, pen, গম্ভীর মুখ। "প্রস্তুত?" তিনি জিজ্ঞেস করলেন। গাড়ির ইঞ্জিন idle, হালকা বাতাস, সামনে পরীক্ষার রাস্তা। এই মুহূর্তটা — তোমার সব প্রস্তুতির পরীক্ষা।</p>
+<p class="scene-setting">দশম অধ্যায়। একটা third-party driver testing business-এর parking lot — কমলা cone সাজানো closed course। তুমি গাড়িতে বসে আছো, dashboard-এ insurance-এর কাগজ। পাশে road test examiner — ক্লিপবোর্ড, pen, গম্ভীর মুখ। "প্রথমে closed course, তারপর রাস্তায়। প্রস্তুত?" তিনি জিজ্ঞেস করলেন। গাড়ির ইঞ্জিন idle, হালকা বাতাস। এই মুহূর্তটা — তোমার সব প্রস্তুতির পরীক্ষা।</p>
 
-<div class="code-block">ROAD TEST — EXAMINER CHECKLIST
+<div class="code-block">🏢 ROAD TEST REALITY — কোথায়, কীভাবে, কত টাকা
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ⚠️ গুরুত্বপূর্ণ: Michigan-এ road test SOS office-এ
+  হয় না! SOS-approved THIRD-PARTY driver testing
+  business-এ হয়।
+
+  ✦ SOS website-এ approved tester-দের তালিকা আছে
+  ✦ ফি unregulated — জায়গাভেদে ~$50-100
+    (weekend/জরুরি booking-এ বেশি হতে পারে)
+  ✦ টেস্ট দুই ভাগে:
+    PART A: CLOSED-COURSE (off-street) —
+      basic control: parking lot-এ forward stop,
+      backing, parallel parking, Y-turn
+    PART B: ON-ROAD — বাস্তব রাস্তায় ~২০-৩০ মিনিট:
+      residential, business, এবং সম্ভব হলে
+      expressway driving
+  ✦ Part A fail করলে Part B হবে না
+  ✦ পাশ করলে examiner দেবে Driving Skills Test
+    Certificate → সেটা + TIP/learner license নিয়ে
+    SOS office-এ যাও → license issue হবে ($25)
+
+— — — — — — — — — — — — — — — — — — — — — —
+ROAD TEST — EXAMINER CHECKLIST
 — — — — — — — — — — — — — — — — — — — — — —
 
 📋 PART 1: VEHICLE SAFETY CHECK (পরীক্ষা শুরুর আগে)
@@ -1042,12 +1107,16 @@ doors.push({
 📝 WHAT TO BRING:
 — — — — — — — — — — — — — — — — — — — — — —
 
-  ✦ Valid learner license
-  ✦ Vehicle (registration + insurance)
+  ✦ Valid learner license / TIP
+  ✦ Vehicle (registration + Michigan no-fault
+    insurance-এর proof — কাগজ সাথে রাখো!)
   ✦ Working lights, signals, horn
-  ✦ Clean windshield
+  ✦ Clean windshield, কোনো dashboard warning
+    light জ্বলে থাকলে টেস্ট বাতিল হতে পারে
   ✦ Seatbelts working
-  ✦ Test fee ($)</div>
+  ✦ Test fee (~$50-100 — tester-কে জিজ্ঞেস করো)
+  ✦ পাশ করার পরে: certificate → SOS office →
+    license ($25)</div>
 
 <div class="code-block">EXAM PATTERN QUESTIONS — Road Test:
 
@@ -1074,7 +1143,19 @@ doors.push({
 ✅ 9-and-3।
 
 ❓ Mirror check কতবার?
-✅ প্রতি ৫-৮ সেকেন্ডে।</div>
+✅ প্রতি ৫-৮ সেকেন্ডে।
 
-<div class="secret-box">🏁 Road test: STOP = 3 sec complete, signal = 100 ft, blind spot = shoulder check, speed = limit-5, parking = practice। Top fail = rolling stop। Top pass tip = exaggerate head turns, stay calm। তুমি প্রস্তুত — শান্ত থাকো, সফল হও!</div>`
+❓ Michigan road test কোথায় হয়?
+✅ SOS office-এ নয় — approved third-party
+   testing business-এ। ফি ~$50-100।
+
+❓ Road test-এর দুই ভাগ কী কী?
+✅ Part A: closed-course (parking lot maneuvers),
+   Part B: on-road। Part A fail = Part B নেই।
+
+❓ পাশ করার পর কী করবে?
+✅ Driving Skills Test Certificate নিয়ে SOS
+   office-এ যাও — সেখানে license issue হয়।</div>
+
+<div class="secret-box">🏁 Road test: third-party tester-এ (~$50-100), দুই ভাগ — closed course + on-road। STOP = 3 sec complete, signal = 100 ft, blind spot = shoulder check, speed = limit-5, parking = practice। Top fail = rolling stop। পাশ = certificate → SOS → license। তুমি প্রস্তুত — শান্ত থাকো, সফল হও!</div>`
 });

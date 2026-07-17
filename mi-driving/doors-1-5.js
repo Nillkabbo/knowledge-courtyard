@@ -116,10 +116,26 @@ LEVEL 2 RESTRICTIONS:
 বয়স্কদের জন্য (১৮+ বছর):
 — — — — — — — — — — — — — — — — — — — — — —
 
-  ✦ GDL প্রযোজ্য নয়
-  ✦ সরাসরি knowledge test + road test
-  ✦ Temporary instruction permit নাও
-  ✦ পাশ করলে সরাসরি full license</div>
+  ✦ GDL প্রযোজ্য নয় — driver's ed বাধ্যতামূলক নয়
+  ✦ SOS office-এ vision test + knowledge test দাও
+  ✦ পাশ করলে Temporary Instruction Permit (TIP)
+    পাবে — ফি $25, ১৮০ দিন valid
+  ✦ TIP নিয়ে কমপক্ষে ৩০ দিন supervised practice
+    করতে হবে (licensed adult সাথে)
+  ✦ তারপর road test — SOS নয়, approved third-party
+    testing business-এ (ফি আলাদা, ~$50-100)
+  ✦ পাশ করলে certificate নিয়ে SOS office-এ যাও
+    → license ফি $25 → full license!
+
+— — — — — — — — — — — — — — — — — — — — — —
+💵 REALISTIC COSTS (মোটামুটি হিসাব):
+— — — — — — — — — — — — — — — — — — — — — —
+
+  Driver's Ed Segment 1 (teen): ~$300-500 (private)
+  TIP / Learner permit fee: $25
+  Road test (third-party): ~$50-100 (unregulated,
+    জায়গাভেদে ভিন্ন — weekend-এ বেশি হতে পারে)
+  Original license fee: $25</div>
 
 <div class="dialogue">"একটা জিনিস মনে রাখো," কর্মকর্তা বললেন। "Knowledge test — সেটাই তোমার লেখিত পরীক্ষা। ৫০টা প্রশ্ন, দুই ভাগে: ২৫টা ট্রাফিক সাইন নিয়ে, ২৫টা ট্রাফিক নিয়ম নিয়ে। প্রতিটা ভাগে আলাদাভাবে কমপক্ষে ২০টা (৮০%) সঠিক করতে হবে — শুধু মোট ৪০/৫০ হলেই চলবে না, দুই ভাগেই আলাদা পাশ করতে হবে। এই বই তোমাকে প্রস্তুত করবে।"</div>
 <div class="dialogue en">"One thing to remember," the officer said. "The knowledge test — that's your written exam. 50 questions, split into two sections: 25 on traffic signs, 25 on traffic rules. You need at least 20 correct (80%) in EACH section separately — 40/50 overall isn't enough if one section falls short. This book will prepare you."</div>
@@ -146,10 +162,19 @@ LEVEL 2 RESTRICTIONS:
 ❓ প্রশ্ন: Supervised driving কত ঘণ্টা দরকার?
 ✅ উত্তর: কমপক্ষে ৫০ ঘণ্টা (১০ ঘণ্টা রাতে)
 
-❓ প্রশ্ন: Level 2 Provisional License-এ রাতে 
+❓ প্রশ্ন: Level 2 Provisional License-এ রাতে
    চালানোর নিয়ম কী?
 ✅ উত্তর: রাত ১০টা — ভোর ৫টা পর্যন্ত নিষেধ
-   (work/school/religious exception ছাড়া)</div>
+   (work/school/religious exception ছাড়া)
+
+❓ প্রশ্ন: ১৮+ বয়স্ক হলে TIP নিয়ে কতদিন
+   practice করতে হবে road test-এর আগে?
+✅ উত্তর: কমপক্ষে ৩০ দিন supervised practice।
+
+❓ প্রশ্ন: Michigan-এ road test কে নেয়?
+✅ উত্তর: SOS নয় — SOS-approved third-party
+   driver testing business। পাশ করলে certificate
+   নিয়ে SOS-এ গিয়ে license নিতে হয়।</div>
 
 <div class="secret-box">📄 Michigan GDL: ৩ ধাপ — Segment 1 (১৪y ৮m) → Learner License (১৪y ৯m+) → Segment 2 → Level 2 Provisional (১৬+) → Level 3 Full (১৭+)। Knowledge test: ৫০ প্রশ্ন (২৫ সাইন + ২৫ নিয়ম), প্রতি ভাগে ২০+ পাশ (৮০%) — আলাদাভাবে।</div>`
 });
@@ -192,6 +217,14 @@ doors.push({
 <div class="sign-item"><svg viewBox="0 0 80 50" width="60" height="38"><rect x="1" y="1" width="78" height="48" rx="2" fill="#27ae60"/><text x="40" y="22" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="8">EXIT</text><text x="40" y="40" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-weight="900" font-size="16">12</text></svg><div class="sign-label">🟢 <strong>GUIDE</strong><br>দিক নির্দেশনা</div></div>
 
 <div class="sign-item"><svg viewBox="0 0 80 50" width="60" height="38"><rect x="1" y="1" width="78" height="48" rx="2" fill="#2980b9"/><text x="40" y="36" text-anchor="middle" fill="#fff" font-size="22">🏥</text></svg><div class="sign-label">🔵 <strong>SERVICES</strong><br>হাসপাতাল, গ্যাস</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 100 70" width="76" height="54"><polygon points="4,35 96,4 96,66" fill="#fdd835" stroke="#222" stroke-width="2"/><text x="62" y="30" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="900" font-size="9">NO</text><text x="62" y="42" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="900" font-size="8">PASSING</text><text x="62" y="54" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="900" font-size="8">ZONE</text></svg><div class="sign-label">🔶 <strong>PENNANT</strong><br>রাস্তার বাম পাশে!</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 100 100" width="70" height="70"><g transform="rotate(45 50 50)"><rect x="42" y="2" width="16" height="96" rx="2" fill="#fff" stroke="#222" stroke-width="1.5"/></g><g transform="rotate(-45 50 50)"><rect x="42" y="2" width="16" height="96" rx="2" fill="#fff" stroke="#222" stroke-width="1.5"/></g><text x="26" y="38" text-anchor="middle" fill="#222" font-size="8" font-weight="900" transform="rotate(-45 26 34)">RAILROAD</text><text x="74" y="38" text-anchor="middle" fill="#222" font-size="8" font-weight="900" transform="rotate(45 74 34)">CROSSING</text></svg><div class="sign-label">✕ <strong>CROSSBUCK</strong><br>YIELD-এর মতো আচরণ</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 100 60" width="76" height="46"><rect x="2" y="2" width="96" height="56" rx="3" fill="#c62828" stroke="#fff" stroke-width="3"/><text x="50" y="26" text-anchor="middle" fill="#fff" font-family="Arial Black,sans-serif" font-weight="900" font-size="14">WRONG</text><text x="50" y="46" text-anchor="middle" fill="#fff" font-family="Arial Black,sans-serif" font-weight="900" font-size="14">WAY</text></svg><div class="sign-label">🟥 <strong>WRONG WAY</strong><br>উল্টো দিকে ঢুকেছ!</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 110 45" width="84" height="34"><rect x="2" y="2" width="106" height="41" rx="3" fill="#1a1a1a" stroke="#fff" stroke-width="2"/><polygon points="10,22 34,8 34,17 100,17 100,27 34,27 34,36" fill="#fff"/></svg><div class="sign-label">⬛ <strong>ONE WAY</strong><br>শুধু তীরের দিকে</div></div>
 </div>
 
 <div class="code-block">উপরের SVG সাইনগুলো মুখস্থ করো — আকার আর রঙ।
@@ -217,7 +250,16 @@ doors.push({
   কমলা ব্যারিকেড → রাস্তা বন্ধ
 
 🚸 SCHOOL:
-  পেন্টাগন হলুদ → ২৫ mph, শিশু সতর্ক</div>
+  পেন্টাগন হলুদ → ২৫ mph, শিশু সতর্ক
+
+⭐ SPECIAL SHAPES (পরীক্ষায় খুব আসে!):
+  PENNANT (ত্রিভুজ, পাশে শোয়ানো) → NO PASSING ZONE
+    → একমাত্র সাইন যেটা রাস্তার বাম পাশে থাকে!
+  CROSSBUCK (X আকৃতি) → RAILROAD CROSSING
+    → YIELD sign-এর মতো আচরণ করো
+  WRONG WAY (লাল আয়ত) → তুমি উল্টো দিকে!
+    → সামনে যেও না — নিরাপদে ঘুরে বের হও
+  ONE WAY (কালো/সাদা তীর) → শুধু তীরের দিকে চালাও</div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল যা করবে না</div>STOP sign-এ ধীরে নামি (rolling stop) — এটা বেআইনি এবং বিপজ্জনক। সম্পূর্ণ থামতে হবে। চাকা যেন সম্পূর্ণ থামে। এটাকে California stop / Michigan stop বলে কথায় — কিন্তু আইন নয়। টেস্টে fail করবে।</div>
@@ -254,7 +296,19 @@ doors.push({
 ✅ Do Not / No — নিষেধাজ্ঞা
 
 ❓ "SPEED LIMIT 55" সাদা সাইন — কী মানে?
-✅ সর্বোচ্চ ৫৫ mph — এর বেশি অবৈধ</div>
+✅ সর্বোচ্চ ৫৫ mph — এর বেশি অবৈধ
+
+❓ Pennant (শোয়ানো ত্রিভুজ) সাইন কী?
+✅ NO PASSING ZONE — একমাত্র সাইন যা রাস্তার
+   বাম পাশে বসানো হয়।
+
+❓ Crossbuck (X) সাইনে কী করবে?
+✅ Railroad crossing — YIELD-এর মতো আচরণ করো,
+   ট্রেন থাকলে থামো।
+
+❓ WRONG WAY সাইন দেখলে?
+✅ তুমি উল্টো দিকে ঢুকেছ — সামনে যেও না,
+   নিরাপদে থামো ও ঘুরে বের হও।</div>
 
 <div class="sign-gallery">
 <div class="sign-item"><svg viewBox="0 0 120 120" width="100" height="100"><polygon points="36,4 84,4 116,36 116,84 84,116 36,116 4,84 4,36" fill="#c62828" stroke="#fff" stroke-width="5"/><text x="60" y="68" text-anchor="middle" fill="#fff" font-family="Arial Black,sans-serif" font-weight="900" font-size="28">STOP</text></svg><div class="sign-label">🛑 <strong>STOP SIGN</strong> — Octagon + Red<br>সম্পূর্ণ থামো, ৩ সেকেন্ড গোনো</div></div>
@@ -336,9 +390,6 @@ FLASHING SIGNALS
   → STOP sign-এর মতো আচরণ করো
   → সম্পূর্ণ থামো, তারপর নিরাপদে যাও
 
-🟢 FLASHING GREEN/ARROW (কিছু এলাকায়)
-  → পেডেস্ট্রিয়ান crossing — সতর্ক হও
-
 — — — — — — — — — — — — — — — — — — — — — —
 ARROW SIGNALS (তীর চিহ্ন)
 — — — — — — — — — — — — — — — — — — — — — —
@@ -347,9 +398,18 @@ ARROW SIGNALS (তীর চিহ্ন)
   → Oncoming traffic থাকে না (লাল তাদের)
   → নিরাপদে মোড় নাও
 
-🟡➡️ YELLOW ARROW = সেই দিকের protected turn 
-  শেষ হচ্ছে
+🟡➡️ STEADY YELLOW ARROW = protected turn শেষ হচ্ছে
   → থামার প্রস্তুতি
+
+🟡⚡ FLASHING YELLOW ARROW (Michigan-এ খুব কমন!)
+  → বাম মোড় নিতে পারো — কিন্তু PROTECTED নয়
+  → Oncoming traffic + পেডেস্ট্রিয়ানকে YIELD
+    করে তারপর মোড় নাও
+  → MDOT পুরনো flashing red left-turn signal
+    বদলে এগুলো বসাচ্ছে — accident কমে
+  💡 মনে রাখো: flashing yellow arrow ≠ green
+    arrow। Green = protected, flashing yellow
+    = yield করে যাও।
 
 🔴➡️ RED ARROW = সেই দিকে মোড় নেওয়া নিষেধ
   ❌ যদি না সাইন অনুমতি দেয়
@@ -489,7 +549,18 @@ SPECIAL MARKINGS
 ✅ সেই লেন বন্ধ — ঢুকো না।
 
 ❓ সবুজ তীর (green arrow) কী মানে?
-✅ Protected turn — সেই দিকে নিরাপদে যাও।</div>
+✅ Protected turn — সেই দিকে নিরাপদে যাও।
+
+❓ Flashing yellow arrow দেখলে কী করবে?
+✅ বাম মোড় নিতে পারো — কিন্তু oncoming traffic
+   ও পেডেস্ট্রিয়ানকে yield করে। Protected নয়!</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 COMPLEX SCENARIO — Flashing Yellow Arrow</div>
+<div class="scn-question">❓ তুমি বাম মোড়ের লেনে। সিগন্যালে flashing yellow arrow জ্বলছে। বিপরীত দিক থেকে গাড়ি আসছে। তুমি কি মোড় নেবে?</div>
+<div class="scn-answer">✅ অপেক্ষা করো। Flashing yellow arrow মানে মোড় অনুমোদিত কিন্তু protected নয় — oncoming traffic পরিষ্কার হলে তবে যাও।</div>
+<div class="scn-explain">অনেকে flashing yellow arrow-কে green arrow ভেবে ভুল করে — এটা Michigan-এ left-turn crash-এর বড় কারণ। Green arrow = oncoming থেমে আছে। Flashing yellow = oncoming চলছে, তুমি yield করো।</div>
+</div>
 
 <div class="secret-box">🚥 হলুদ = থামার প্রস্তুতি, ফ্ল্যাশিং লাল = STOP sign-এর মতো। সলিড লাইন = পার হওয়া নিষেধ, ড্যাশড = পার হওয়া যায়। হলুদ = opposite direction, সাদা = same direction।</div>`
 });
@@ -730,6 +801,13 @@ doors.push({
 <div class="scn-explain">Emergency vehicle সবসময় priority। লাল আলোতে থামা থাকলেও — ধীরে সরে যাও। তবে সাবধানে — oncoming traffic দেখো।</div>
 </div>
 
+<div class="scenario-box">
+<div class="scn-label">🎭 COMPLEX SCENARIO — Michigan Left (Telegraph Road)</div>
+<div class="scn-question">❓ তুমি Telegraph Road-এর মতো একটা divided highway-তে। GPS বলছে বামে মোড় নাও, কিন্তু intersection-এ "NO LEFT TURN — USE U-TURN" সাইন। কী করবে?</div>
+<div class="scn-answer">✅ Michigan Left! সোজা intersection পার হও (বা ডানে মোড় নাও), সামনে median crossover-এ গিয়ে U-turn নাও, তারপর ফিরে এসে ডানে মোড় নাও।</div>
+<div class="scn-explain">Metro Detroit-এর বড় রাস্তায় (Telegraph, Woodward, 8 Mile) এটা প্রতিদিনের ঘটনা। Crossover-এ ঢোকার আগে বাম signal দাও, ভেতরে অপেক্ষারত গাড়ির পেছনে দাঁড়াও, oncoming পরিষ্কার হলে U-turn সম্পন্ন করো। রোড টেস্টে না আসলেও বাস্তব Michigan ড্রাইভিংয়ে অপরিহার্য।</div>
+</div>
+
 <div class="code-block">EXAM PATTERN QUESTIONS — Right-of-Way:
 
 ❓ 4-way stop-এ একই সময়ে ২টা গাড়ি থামলে 
@@ -799,11 +877,14 @@ doors.push({
 🚗 MICHIGAN SPEED LIMITS (default যদি সাইন না থাকে):
 
   🏘️ Residential / Business District: 25 mph
-  🚸 School Zone: 25 mph (সাইন থাকলে)
+  🚸 School Zone: সাইনে লেখা গতি — সাধারণত
+     school hours-এ বা "WHEN CHILDREN ARE
+     PRESENT" / flashing light জ্বললে কার্যকর
   🛣️ County/Local Road: 55 mph
-  🛤️ Highway/Expressway: 70 mph (rural)
-                          65 mph (urban)
-  🚚 Trucks: 60 mph (expressway)
+  🛤️ Freeway/Expressway: 70 mph (সাধারণ)
+     কিছু rural freeway-তে 75 mph (সাইন দেখো)
+     urban এলাকায় 55-65 mph হতে পারে
+  🚚 Trucks: 65 mph (freeway-তে)
 
   ⚠️ সবসময় posted সাইন অনুসরণ করো
   ⚠️ সাইনের গতি সর্বোচ্চ — কখনো minimum নয়
@@ -921,8 +1002,9 @@ doors.push({
 ❓ School zone-এ speed limit কত?
 ✅ ২৫ mph (সাইন থাকলে)।
 
-❓ Highway/expressway-এ default speed limit?
-✅ ৭০ mph (rural), ৬৫ mph (urban)।
+❓ Freeway/expressway-এ default speed limit?
+✅ ৭০ mph (কিছু rural freeway-তে ৭৫,
+   urban-এ ৫৫-৬৫ — সবসময় posted সাইন দেখো)।
 
 ❓ Basic speed law কী বলে?
 ✅ Weather ও condition অনুযায়ী নিরাপদ 
