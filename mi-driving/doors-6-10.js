@@ -698,10 +698,10 @@ doors.push({
   → না জানলে test শুরুই হবে না!
 
 <div class="rt-image-grid">
-<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Headlight_of_Toyota_Corolla_E210.jpg/320px-Headlight_of_Toyota_Corolla_E210.jpg" alt="Headlight" loading="lazy"><div class="rt-caption">Headlight — সামনের আলো</div></div>
-<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Red_brake_light.jpg/320px-Red_brake_light.jpg" alt="Brake light" loading="lazy"><div class="rt-caption">Brake Light — ব্রেক আলো</div></div>
-<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Turn_signal_indicator.jpg/320px-Turn_signal_indicator.jpg" alt="Turn signal" loading="lazy"><div class="rt-caption">Turn Signal — ইশারা</div></div>
-<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Defroster_symbol.svg/200px-Defroster_symbol.svg.png" alt="Defroster" loading="lazy"><div class="rt-caption">Defroster — কুয়াশা মোছা</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 100 60" width="100"><rect x="5" y="10" width="90" height="35" rx="8" fill="#1a1a1a" stroke="#444" stroke-width="1"/><ellipse cx="50" cy="27" rx="28" ry="14" fill="#fff59d" opacity=".9"/><ellipse cx="50" cy="27" rx="18" ry="8" fill="#fff" opacity=".5"/><rect x="38" y="45" width="24" height="8" rx="2" fill="#555"/></svg><div class="rt-caption"><strong>Headlight</strong><br>সামনের আলো — on/off জানো</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 100 60" width="100"><rect x="5" y="10" width="90" height="40" rx="6" fill="#1a1a1a"/><rect x="30" y="18" width="40" height="24" rx="4" fill="#e74c3c"/><rect x="34" y="22" width="32" height="16" rx="2" fill="#ff6b6b" opacity=".5"/><text x="50" y="58" text-anchor="middle" fill="#999" font-size="7">BRAKE LIGHT</text></svg><div class="rt-caption"><strong>Brake Light</strong><br>লাল আলো — পেছনে</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 100 60" width="100"><rect x="5" y="10" width="90" height="40" rx="6" fill="#1a1a1a"/><polygon points="30,30 50,15 50,45" fill="#27ae60"/><polygon points="70,30 50,15 50,45" fill="#27ae60" opacity=".3"/><text x="50" y="58" text-anchor="middle" fill="#999" font-size="7">LEFT SIGNAL</text></svg><div class="rt-caption"><strong>Turn Signal</strong><br>বাম/ডান arrow</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 100 60" width="100"><rect x="5" y="10" width="90" height="40" rx="6" fill="#1a1a1a"/><rect x="25" y="18" width="50" height="24" rx="4" fill="#222"/><path d="M 35 22 Q 30 30 35 38 M 45 22 Q 40 30 45 38 M 55 22 Q 50 30 55 38 M 65 22 Q 60 30 65 38" stroke="#5dade2" stroke-width="2" fill="none"/><text x="50" y="58" text-anchor="middle" fill="#999" font-size="7">DEFROSTER</text></svg><div class="rt-caption"><strong>Defroster</strong><br>কুয়াশা মোছা</div></div>
 </div>
 
 — — — — — — — — — — — — — — — — — — — — — —
@@ -735,9 +735,9 @@ doors.push({
   ✦ Lane change: signal + mirror + shoulder
 
 <div class="rt-image-grid">
-<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/9-o-clock_position_of_hands_on_steering_wheel_-_geograph.org.uk_-_1248608.jpg/320px-9-o-clock_position_of_hands_on_steering_wheel_-_geograph.org.uk_-_1248608.jpg" alt="9-3 steering" loading="lazy"><div class="rt-caption">✅ 9-and-3 Hand Position<br>examiner এটাই দেখে</div></div>
-<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Auto_blinker_left.jpg/320px-Auto_blinker_left.jpg" alt="Turn signal lever" loading="lazy"><div class="rt-caption">Turn Signal Lever<br>বাম = ↰, ডান = ↱</div></div>
-<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Rear_view_mirror_of_a_Toyota_Corolla_E210.jpg/320px-Rear_view_mirror_of_a_Toyota_Corolla_E210.jpg" alt="Mirror check" loading="lazy"><div class="rt-caption">Rear-view Mirror<br>প্রতি ৫-৮ সেকেন্ডে</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 100 100" width="90"><circle cx="50" cy="50" r="42" fill="#2c2c2c" stroke="#555" stroke-width="2"/><circle cx="50" cy="50" r="15" fill="#3a3a3a"/><circle cx="50" cy="50" r="8" fill="#222"/><line x1="50" y1="8" x2="50" y2="35" stroke="#e74c3c" stroke-width="3"/><line x1="50" y1="92" x2="50" y2="65" stroke="#e74c3c" stroke-width="3"/><line x1="8" y1="50" x2="35" y2="50" stroke="#27ae60" stroke-width="3"/><line x1="92" y1="50" x2="65" y2="50" stroke="#27ae60" stroke-width="3"/><circle cx="14" cy="14" r="5" fill="#888"/><circle cx="86" cy="14" r="5" fill="#888"/><circle cx="14" cy="86" r="5" fill="#888"/><circle cx="86" cy="86" r="5" fill="#888"/><text x="14" y="44" fill="#27ae60" font-size="8" font-weight="900">9</text><text x="80" y="44" fill="#27ae60" font-size="8" font-weight="900">3</text></svg><div class="rt-caption">✅ <strong>9-and-3 Position</strong><br>examiner এটাই দেখে</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 100 80" width="90"><rect x="15" y="30" width="70" height="12" rx="4" fill="#333" stroke="#555" stroke-width="1"/><rect x="70" y="25" width="18" height="22" rx="3" fill="#444"/><polygon points="22,30 12,20 12,40" fill="#27ae60"/><text x="50" y="58" text-anchor="middle" fill="#999" font-size="7">SIGNAL LEVER</text><text x="22" y="16" font-size="7" fill="#27ae60" font-weight="700">UP=LEFT</text></svg><div class="rt-caption"><strong>Turn Signal Lever</strong><br>বাম = ↰, ডান = ↱</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 100 70" width="90"><rect x="15" y="15" width="70" height="30" rx="4" fill="#1a1a1a" stroke="#555" stroke-width="2"/><rect x="20" y="20" width="60" height="20" rx="2" fill="#16213e"/><rect x="42" y="22" width="16" height="16" fill="#0f3460" opacity=".5"/><path d="M 30 40 L 25 30 L 35 30 Z" fill="#555"/><text x="50" y="58" text-anchor="middle" fill="#999" font-size="7">REAR-VIEW MIRROR</text></svg><div class="rt-caption"><strong>Rear-view Mirror</strong><br>প্রতি ৫-৮ সেকেন্ডে</div></div>
 </div>
 
 — — — — — — — — — — — — — — — — — — — — — —
@@ -787,8 +787,12 @@ doors.push({
   ✦ Expressway entry/exit (if applicable)</div>
 
 <div class="rt-image">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Parallel_parking.svg/440px-Parallel_parking.svg.png" alt="Parallel Parking Steps" loading="lazy">
-<div class="rt-caption">Parallel Parking — 3 steps: pull beside, reverse turning right, straighten turning left</div>
+<svg viewBox="0 0 400 120" width="100%" style="max-width:440px"><rect x="0" y="80" width="400" height="6" fill="#666"/><rect x="0" y="0" width="400" height="80" fill="#0a0a0a"/><text x="5" y="95" fill="#555" font-size="7">CURB</text>
+<rect x="60" y="35" width="50" height="25" rx="4" fill="#3498db"/><circle cx="72" cy="62" r="4" fill="#222"/><circle cx="100" cy="62" r="4" fill="#222"/><text x="75" y="50" fill="#fff" font-size="7">CAR1</text>
+<rect x="135" y="35" width="50" height="25" rx="4" fill="#e74c3c" transform="rotate(-20 160 47)"/><text x="145" y="50" fill="#fff" font-size="6" transform="rotate(-20 160 47)">STEP 2</text>
+<rect x="200" y="35" width="50" height="25" rx="4" fill="#2ecc71"/><circle cx="212" cy="62" r="4" fill="#222"/><circle cx="240" cy="62" r="4" fill="#222"/><text x="205" y="50" fill="#fff" font-size="7">DONE!</text>
+<line x1="130" y1="50" x2="170" y2="30" stroke="#f1c40f" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#ar1)"/><defs><marker id="ar1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><polygon points="0,0 5,2.5 0,5" fill="#f1c40f"/></marker></defs></svg>
+<div class="rt-caption">Parallel Parking — 3 steps: pull beside, reverse at 45°, straighten at curb</div>
 </div>
 
 <div class="code-block">🅿️ PARALLEL PARKING — KEY POINTS
@@ -802,7 +806,10 @@ doors.push({
   ❌ Curb hit = automatic point loss!</div>
 
 <div class="rt-image">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Three_point_turn_diagram.svg/440px-Three_point_turn_diagram.svg.png" alt="Three-Point Turn" loading="lazy">
+<svg viewBox="0 0 400 140" width="100%" style="max-width:440px"><rect x="0" y="60" width="400" height="4" fill="#444"/><rect x="0" y="64" width="400" height="4" fill="#f1c40f" stroke-dasharray="20,15" opacity=".3"/><text x="5" y="55" fill="#555" font-size="7">ROAD</text>
+<rect x="150" y="30" width="35" height="18" rx="3" fill="#e74c3c"/><circle cx="160" cy="50" r="3" fill="#222"/><circle cx="178" cy="50" r="3" fill="#222"/>
+<path d="M 170 45 Q 120 20 80 50 Q 120 80 170 120" fill="none" stroke="#f1c40f" stroke-width="2" stroke-dasharray="5,3"/><polygon points="165,115 175,115 170,125" fill="#f1c40f"/>
+<text x="60" y="20" fill="#e74c3c" font-size="8" font-weight="700">1: FORWARD-LEFT</text><text x="120" y="55" fill="#3498db" font-size="8" font-weight="700">2: REVERSE</text><text x="155" y="135" fill="#2ecc71" font-size="8" font-weight="700">3: FORWARD-GO</text></svg>
 <div class="rt-caption">Three-Point Turn (K-turn): forward-left, reverse-right, forward-left proceed</div>
 </div>
 
@@ -824,15 +831,20 @@ doors.push({
 </div>
 
 <div class="rt-image">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/STOP_sign_at_intersection.jpg/440px-STOP_sign_at_intersection.jpg" alt="STOP sign at intersection" loading="lazy">
-<div class="rt-caption">STOP sign at intersection — complete stop, 3 seconds, then check both ways before proceeding</div>
+<svg viewBox="0 0 300 200" width="100%" style="max-width:440px"><rect x="0" y="0" width="300" height="200" fill="#1a1a1a"/>
+<rect x="80" y="60" width="140" height="140" fill="#333"/><rect x="85" y="65" width="135" height="135" fill="#3a3a3a"/>
+<rect x="95" y="100" width="120" height="100" fill="#2a2a2a"/><line x1="155" y1="100" x2="155" y2="200" stroke="#f1c40f" stroke-width="1" stroke-dasharray="6,4"/>
+<rect x="115" y="80" width="20" height="20" fill="#2c2c2c"/><circle cx="125" cy="105" r="4" fill="#e74c3c"/>
+<polygon points="200,150 225,150 238,167 225,185 200,185 187,167" fill="#c62828" stroke="#fff" stroke-width="1.5"/><text x="212" y="171" text-anchor="middle" fill="#fff" font-size="6" font-weight="900">STOP</text>
+<text x="150" y="195" text-anchor="middle" fill="#666" font-size="6">INTERSECTION — COMPLETE STOP</text></svg>
+<div class="rt-caption">STOP sign at intersection — complete stop, 3 seconds, check both ways</div>
 </div>
 
 <div class="rt-image-grid">
-<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Stop_sign_USA.jpg/240px-Stop_sign_USA.jpg" alt="STOP sign" loading="lazy"><div class="rt-caption">STOP — সম্পূর্ণ থামো<br>3 sec minimum</div></div>
-<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Speed_limit_25mph_sign.jpg/240px-Speed_limit_25mph_sign.jpg" alt="Speed limit sign" loading="lazy"><div class="rt-caption">Speed Limit — limit-এর<br>5 mph নিচে রাখো</div></div>
-<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/ParallelParking.jpg/320px-ParallelParking.jpg" alt="Parallel parking real" loading="lazy"><div class="rt-caption">Real parallel parking<br>1 ft from curb</div></div>
-<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Seat_belt_sign.svg/200px-Seat_belt_sign.svg.png" alt="Seatbelt" loading="lazy"><div class="rt-caption">Seatbelt on FIRST<br>before anything</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 80 80" width="60"><polygon points="24,4 56,4 76,24 76,56 56,76 24,76 4,56 4,24" fill="#c62828" stroke="#fff" stroke-width="3"/><text x="40" y="46" text-anchor="middle" fill="#fff" font-size="11" font-weight="900">STOP</text></svg><div class="rt-caption">STOP — সম্পূর্ণ থামো<br>3 sec minimum</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 60 75" width="50"><rect x="2" y="2" width="56" height="71" rx="3" fill="#fff" stroke="#222" stroke-width="1.5"/><text x="30" y="16" text-anchor="middle" fill="#222" font-weight="700" font-size="5">SPEED</text><text x="30" y="24" text-anchor="middle" fill="#222" font-weight="700" font-size="5">LIMIT</text><text x="30" y="52" text-anchor="middle" fill="#222" font-weight="900" font-size="22">25</text></svg><div class="rt-caption">Speed Limit — limit-এর<br>5 mph নিচে রাখো</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 120 60" width="100"><rect x="0" y="50" width="120" height="4" fill="#666"/><rect x="0" y="0" width="120" height="50" fill="#0a0a0a"/><rect x="25" y="15" width="40" height="20" rx="3" fill="#27ae60"/><circle cx="35" cy="38" r="3" fill="#222"/><circle cx="55" cy="38" r="3" fill="#222"/><rect x="75" y="15" width="40" height="20" rx="3" fill="#3498db"/><circle cx="85" cy="38" r="3" fill="#222"/><circle cx="105" cy="38" r="3" fill="#222"/><text x="5" y="58" fill="#555" font-size="5">PARALLEL PARKED</text></svg><div class="rt-caption">Parallel parking<br>1 ft from curb</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 60 70" width="50"><rect x="5" y="10" width="50" height="50" rx="4" fill="#1a1a1a"/><path d="M 15 15 Q 30 5 45 15 L 45 30 Q 30 25 15 30 Z" fill="#27ae60"/><path d="M 15 35 Q 30 30 45 35 L 45 55 Q 30 50 15 55 Z" fill="#27ae60" opacity=".4"/><line x1="30" y1="15" x2="30" y2="55" stroke="#1a1a1a" stroke-width="2"/><text x="30" y="68" text-anchor="middle" fill="#999" font-size="6">SEATBELT</text></svg><div class="rt-caption">Seatbelt FIRST<br>before anything</div></div>
 </div>
 
 <div class="code-block">❌ TOP 10 AUTOMATIC FAIL REASONS:
