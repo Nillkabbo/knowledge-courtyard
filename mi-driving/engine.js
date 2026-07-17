@@ -49,8 +49,36 @@ function updateHUD(){const pct=Math.min(100,(state.xp/MAX_XP)*100);document.getE
 function openCheatModal(){const completed=doors.filter((_,i)=>state.completedDoors.includes(i));const grid=document.getElementById('cheat-modal-grid');const empty=document.getElementById('cheat-modal-empty');if(completed.length===0){grid.innerHTML='';empty.textContent='এখনো কোনো স্থানীয় গন্তব্য সম্পন্ন হয়নি।'}else{empty.textContent='';grid.innerHTML=completed.map(d=>`<div class="cheat-card"><div class="icon">${d.icon}</div><div class="name">${d.name}</div><div class="tech">${d.tech}</div><div class="secret">${d.secret}</div></div>`).join('')}document.getElementById('cheat-modal').style.display='block'}
 // Door/Story
 function openDoor(idx){if(idx===0||state.completedDoors.includes(idx-1)||state.completedDoors.includes(idx)){sndDoor();state.currentDoor=idx;renderStory(idx);showScreen('story-screen')}}
-function renderStory(idx){const door=doors[idx];const isLast=idx===doors.length-1;const done=state.completedDoors.includes(idx);const rc=door.recall;const recallHTML=`<div class="recall-box"><div class="recall-title">🧠 স্মরণ চ্যালেঞ্জ — Recall Challenge</div><div class="recall-q">${rc.q}</div><div class="recall-q en">${rc.qen}</div><button class="recall-toggle" onclick="revealRecall(this)">উত্তর দেখো → Reveal</button><div class="recall-a">${rc.a}<br><em style="font-size:.78rem;opacity:.7">${rc.aen}</em></div></div>`;const insightHTML=door.senior?`<div class="senior-insight"><div class="label">🎓 সিনিয়র ইনসাইট — Senior Insight</div><div class="title">${door.senior.title}</div>${door.senior.body}</div>`:'';document.getElementById('story-container').innerHTML=`<div class="story-progress">স্থানীয় গন্তব্য ${door.num} / ${doors.length}${done?' — ✅ সম্পন্ন':''}</div><div class="story-door-banner"><div class="story-door-icon">${door.icon}</div><h2 class="story-door-name" style="color:${door.color}">${door.name}</h2><div style="font-size:.78rem;font-weight:600;padding:.18rem .7rem;border-radius:12px;display:inline-block;background:${door.color}22;color:${door.color}">${door.tech}</div></div><div class="story-text">${door.story}</div>${insightHTML}${!done?recallHTML:''}<div class="continue-area">${!done?`<button class="continue-btn" onclick="completeDoor(${idx})">${isLast?'👑 যাত্রা সম্পন্ন করো':'✦ পরবর্তী স্থানীয় গন্তব্যে যাও'}</button>`:`<button class="continue-btn" onclick="goToMap()">← নগরীর মানচিত্রে ফিরে যাও</button>`}</div>`}
+function renderStory(idx){const door=doors[idx];const isLast=idx===doors.length-1;const done=state.completedDoors.includes(idx);const rc=door.recall;const recallHTML=`<div class="recall-box"><div class="recall-title">🧠 স্মরণ চ্যালেঞ্জ — Recall Challenge${done?' <span style="font-size:.68rem;opacity:.6">(রিভিশন)</span>':''}</div><div class="recall-q">${rc.q}</div><div class="recall-q en">${rc.qen}</div><button class="recall-toggle" onclick="revealRecall(this)">উত্তর দেখো → Reveal</button><div class="recall-a">${rc.a}<br><em style="font-size:.78rem;opacity:.7">${rc.aen}</em></div></div>`;const insightHTML=door.senior?`<div class="senior-insight"><div class="label">🎓 সিনিয়র ইনসাইট — Senior Insight</div><div class="title">${door.senior.title}</div>${door.senior.body}</div>`:'';document.getElementById('story-container').innerHTML=`<div class="story-progress">স্থানীয় গন্তব্য ${door.num} / ${doors.length}${done?' — ✅ সম্পন্ন':''}</div><div class="story-door-banner"><div class="story-door-icon">${door.icon}</div><h2 class="story-door-name" style="color:${door.color}">${door.name}</h2><div style="font-size:.78rem;font-weight:600;padding:.18rem .7rem;border-radius:12px;display:inline-block;background:${door.color}22;color:${door.color}">${door.tech}</div></div><div class="story-text">${door.story}</div>${insightHTML}${recallHTML}<div class="continue-area">${!done?`<button class="continue-btn" onclick="completeDoor(${idx})">${isLast?'👑 যাত্রা সম্পন্ন করো':'✦ পরবর্তী স্থানীয় গন্তব্যে যাও'}</button>`:`<button class="continue-btn" onclick="goToMap()">← নগরীর মানচিত্রে ফিরে যাও</button>`}</div>`;enhanceStory(document.getElementById('story-container'))}
 function revealRecall(btn){btn.nextElementSibling.style.display='block';btn.style.display='none'}
+// ── UX: scenario tap-to-reveal + EN summary jump ──
+function enhanceStory(root){
+  root.querySelectorAll('.scenario-box').forEach(box=>{
+    const ans=box.querySelector('.scn-answer'),exp=box.querySelector('.scn-explain');
+    if(!ans||box.querySelector('.scn-reveal-btn'))return;
+    ans.classList.add('scn-hidden');if(exp)exp.classList.add('scn-hidden');
+    const btn=document.createElement('button');btn.className='scn-reveal-btn';
+    btn.textContent='💭 আগে নিজে ভাবো → উত্তর দেখো / Think first → Reveal';
+    btn.onclick=()=>{ans.classList.remove('scn-hidden');if(exp)exp.classList.remove('scn-hidden');btn.remove();playTone(523,.08,'triangle',.05)};
+    ans.parentNode.insertBefore(btn,ans);
+  });
+  const en=[...root.querySelectorAll('.code-block')].find(b=>b.textContent.trim().startsWith('🇬🇧'));
+  if(en){en.id='en-summary';const banner=root.querySelector('.story-door-banner');
+    if(banner&&!banner.querySelector('.en-jump')){
+      const a=document.createElement('button');a.className='en-jump';a.textContent='🇬🇧 English Summary ↓';
+      a.onclick=()=>en.scrollIntoView({behavior:'smooth',block:'start'});
+      banner.appendChild(a);}}
+}
+// ── UX: reading progress bar ──
+(function(){
+  const bar=document.createElement('div');bar.id='read-progress';document.body.appendChild(bar);
+  window.addEventListener('scroll',()=>{
+    const s=document.getElementById('story-screen');
+    if(!s||!s.classList.contains('active')){bar.style.width='0';return}
+    const h=document.documentElement,max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop/max)*100:0)+'%';
+  },{passive:true});
+})();
 function completeDoor(idx){if(!state.completedDoors.includes(idx)){state.completedDoors.push(idx);state.xp+=XP_PER_DOOR;saveState();sndXP();showXPPopup();setTimeout(()=>{if(state.completedDoors.length===doors.length){renderCheatSheet();sndComplete();showScreen('complete-screen')}else{renderMap();showScreen('map-screen')}updateHUD()},2000)}}
 function showXPPopup(){const p=document.getElementById('xp-popup');document.getElementById('xp-amount').textContent=`+${XP_PER_DOOR} XP`;p.classList.add('show');setTimeout(()=>p.classList.remove('show'),1800)}
 function goToMap(){renderMap();showScreen('map-screen')}

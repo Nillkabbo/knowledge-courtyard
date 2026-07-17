@@ -2,7 +2,7 @@
 :root{
   --bg-deep:#0c0a08;--bg-mid:#1a1410;--amber:#fbbf24;--amber-bright:#fde047;
   --amber-glow:rgba(251,191,36,.3);--teal:#3dd6c4;--teal-glow:rgba(253,224,71,.2);
-  --ink:#e8e6f0;--ink-dim:#9290a8;--ink-mute:#5e5c74;
+  --ink:#e8e6f0;--ink-dim:#9290a8;--ink-mute:#7d7b94;
   --panel:rgba(19,26,43,.85);--panel-border:rgba(251,191,36,.12);
   --fire:#ff6b35;--leaf:#52c41a;--moon:#5b9eff;--purple:#b37feb;--rose:#f06292;
   --code-bg:#070a0f;--code-border:rgba(253,224,71,.2);
@@ -54,7 +54,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .door-title{font-family:'Cinzel',serif;font-weight:700;font-size:.95rem;color:var(--ink);margin-bottom:.15rem}
 .door-subtitle{font-size:.7rem;color:var(--ink-dim);margin-bottom:.35rem}
 .door-tech{font-size:.68rem;color:var(--teal);font-weight:600;background:rgba(253,224,71,.08);padding:.18rem .55rem;border-radius:8px}
-.door-lock-hint{font-size:.63rem;color:var(--ink-mute);margin-top:.25rem;font-style:italic}
+.door-lock-hint{font-size:.7rem;color:var(--ink-mute);margin-top:.25rem;font-style:italic}
 #story-screen{padding:0;min-height:100vh}
 .story-back{position:sticky;top:0;z-index:50;padding:.5rem 1rem;background:rgba(10,13,18,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--panel-border);display:flex;align-items:center;gap:1rem}
 .back-btn{font-family:'Noto Sans Bengali',sans-serif;font-size:.82rem;color:var(--ink-dim);background:none;border:none;cursor:pointer;padding:.25rem .5rem;border-radius:8px;transition:color .3s}
@@ -136,7 +136,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 /* STOP — Octagon */
 .sign-stop{width:72px;height:72px;background:#c0392b;border:3px solid #fff;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-weight:900;font-size:.7rem;color:#fff;letter-spacing:.02em}
 /* YIELD — Triangle */
-.sign-yield{width:0;height:0;border-left:38px solid transparent;border-right:38px solid transparent;border-bottom:66px solid:#c0392b;position:relative;filter:drop-shadow(0 0 1px #fff)}
+.sign-yield{width:0;height:0;border-left:38px solid transparent;border-right:38px solid transparent;border-bottom:66px solid #c0392b;position:relative;filter:drop-shadow(0 0 1px #fff)}
 .sign-yield::after{content:'';position:absolute;top:18px;left:-26px;width:0;height:0;border-left:26px solid transparent;border-right:26px solid transparent;border-bottom:44px solid #fff}
 /* Speed Limit — Rectangle */
 .sign-speed{width:60px;height:72px;background:#fff;border:2px solid #222;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Arial',sans-serif;color:#222;border-radius:4px}
@@ -216,6 +216,14 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .scenario-box .scn-answer{font-size:.8rem;color:var(--leaf);font-weight:600}
 .story-text .scenario-box .scn-explain{font-size:.76rem;color:var(--ink-dim);margin-top:.3rem}
 
+/* ── UX: scenario reveal, EN jump, reading progress ── */
+.scn-hidden{display:none!important}
+.scn-reveal-btn{font-family:'Noto Sans Bengali',sans-serif;font-size:.78rem;color:var(--amber-bright);background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3);border-radius:8px;padding:.45rem .9rem;cursor:pointer;transition:all .3s;margin:.35rem 0;display:block;min-height:38px}
+.scn-reveal-btn:hover{background:rgba(251,191,36,.16);transform:translateY(-1px)}
+.en-jump{font-family:'Segoe UI',sans-serif;font-size:.72rem;color:var(--moon);background:rgba(91,158,255,.08);border:1px solid rgba(91,158,255,.3);border-radius:20px;padding:.35rem .9rem;cursor:pointer;transition:all .3s;margin-top:.6rem;display:inline-block;min-height:32px}
+.en-jump:hover{background:rgba(91,158,255,.18)}
+#read-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--fire),var(--amber-bright),var(--teal));z-index:200;pointer-events:none;transition:width .15s linear;box-shadow:0 0 6px var(--amber-glow)}
+
 /* ── DIAGRAM BOX (top-down road/intersection diagrams) ── */
 .story-text .diagram-box{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:1rem;margin:1rem 0;font-family:'Courier New',monospace;font-size:.74rem;color:var(--ink-dim);line-height:1.35;overflow-x:auto;white-space:pre;text-align:center}
 .story-text .diagram-box .dia-title{font-family:'Cinzel',serif;font-size:.68rem;color:var(--amber-bright);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;font-weight:700}
@@ -225,7 +233,11 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   .story-container{padding:1.4rem 1rem 3rem}
   .hud-xp-wrap{flex:1 1 100%;order:3}
   #hud{gap:.35rem;padding:.45rem .55rem}
+  .hud-btn{padding:.45rem .7rem;font-size:.75rem;min-height:38px}
   .story-text .compare{grid-template-columns:1fr}
   .story-text .sign-visual,.story-text .diagram-box{font-size:.68rem;padding:.8rem .5rem}
+  .story-text .code-block{white-space:pre-wrap;word-break:break-word;font-size:.82rem;padding:.85rem .7rem}
+  .recall-toggle,.scn-reveal-btn{min-height:44px;font-size:.85rem}
+  .back-btn{padding:.5rem .7rem;min-height:40px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
