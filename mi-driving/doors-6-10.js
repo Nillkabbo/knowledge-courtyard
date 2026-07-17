@@ -147,6 +147,51 @@ doors.push({
   ✦ ABS: চাপ ধরে রাখো, পাম্প করো না</div>
 
 <div class="rt-image">
+<svg viewBox="0 0 460 240" width="100%" style="max-width:490px">
+<rect x="0" y="0" width="460" height="240" fill="#111" rx="8"/>
+<text x="230" y="20" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🛣️ PASSING — Two-lane রাস্তায় নিরাপদ ওভারটেক</text>
+<!-- two-lane road -->
+<rect x="0" y="60" width="460" height="120" fill="#2a2a2a"/>
+<!-- dashed yellow center (passing allowed) -->
+<line x1="0" y1="120" x2="460" y2="120" stroke="#f1c40f" stroke-width="3" stroke-dasharray="16,13" opacity=".8"/>
+<text x="60" y="114" fill="#f1c40f" font-size="7" font-weight="700">ড্যাশড হলুদ = পাস বৈধ</text>
+<!-- oncoming lane label -->
+<text x="404" y="80" text-anchor="middle" fill="#666" font-size="7">← oncoming lane (ফাঁকা? নিশ্চিত হও!)</text>
+<!-- slow vehicle ahead -->
+<g transform="translate(300,138)">
+<rect x="0" y="0" width="56" height="28" rx="6" fill="#8e6e3a"/>
+<rect x="42" y="-8" width="14" height="12" rx="2" fill="#6b5329"/>
+<circle cx="12" cy="30" r="7" fill="#000"/><circle cx="44" cy="30" r="7" fill="#000"/>
+<polygon points="28,-16 36,-2 20,-2" fill="#e67e22" stroke="#c0392b" stroke-width="1.5"/>
+</g>
+<text x="328" y="188" text-anchor="middle" fill="#e8a838" font-size="7.5" font-weight="700">ধীর tractor — orange triangle</text>
+<!-- your car path: passing arc -->
+<path d="M 40 152 L 120 152 Q 160 152 180 120 Q 200 90 240 90 Q 280 90 305 112 Q 325 130 360 138" fill="none" stroke="#2ecc71" stroke-width="3" stroke-dasharray="7,5" marker-end="url(#psA)"/>
+<defs><marker id="psA" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#2ecc71"/></marker></defs>
+<!-- your car at start -->
+<g transform="translate(20,140)">
+<rect x="0" y="0" width="48" height="24" rx="7" fill="#2ecc71"/>
+<rect x="8" y="4" width="32" height="10" rx="3" fill="#0e4429"/>
+<circle cx="11" cy="26" r="6" fill="#000"/><circle cx="37" cy="26" r="6" fill="#000"/>
+</g>
+<!-- ghost car mid-pass -->
+<g transform="translate(216,78)" opacity=".55">
+<rect x="0" y="0" width="48" height="24" rx="7" fill="#2ecc71"/>
+</g>
+<!-- step labels -->
+<text x="70" y="212" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">১-৩: রাস্তা clear?</text>
+<text x="70" y="223" text-anchor="middle" fill="#7bed9f" font-size="7.5">mirror + shoulder + signal ⬅</text>
+<text x="200" y="212" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">৪-৫: বাম লেনে —</text>
+<text x="200" y="223" text-anchor="middle" fill="#7bed9f" font-size="7.5">দ্রুত কিন্তু limit-এর মধ্যে</text>
+<text x="330" y="212" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">৬-৮: mirror-এ tractor দেখা গেলে</text>
+<text x="330" y="223" text-anchor="middle" fill="#7bed9f" font-size="7.5">signal ➡ ফিরে যাও — cut নয়!</text>
+<!-- danger note -->
+<text x="230" y="48" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="700">⚠️ Hilltop/curve/সলিড হলুদে কখনো নয় — oncoming না দেখা = পাস নিষেধ</text>
+</svg>
+<div class="rt-caption">পুরো maneuver এক ছবিতে: check → signal → পাস → mirror-এ পুরো গাড়ি দেখা গেলে ফিরে আসা। তাড়াহুড়োয় ফিরলে (cut) tractor-কে brake করতে হয় — সেটাই fail</div>
+</div>
+
+<div class="rt-image">
 <svg viewBox="0 0 460 230" width="100%" style="max-width:480px">
 <!-- sky/bg -->
 <rect x="0" y="0" width="460" height="230" fill="#111" rx="8"/>
@@ -422,6 +467,59 @@ doors.push({
   ✦ অমান্য করলে: fine + points</div>
 
 <div class="rt-image">
+<svg viewBox="0 0 460 250" width="100%" style="max-width:490px">
+<rect x="0" y="0" width="460" height="250" fill="#111" rx="8"/>
+<text x="230" y="20" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🚨 MOVE OVER LAW — I-75-এ থেমে থাকা police (top view)</text>
+<!-- 2-lane freeway + shoulder -->
+<rect x="0" y="40" width="460" height="56" fill="#2a2a2a"/>
+<rect x="0" y="96" width="460" height="56" fill="#2a2a2a"/>
+<rect x="0" y="152" width="460" height="8" fill="#fff" opacity=".7"/>
+<rect x="0" y="160" width="460" height="52" fill="#222"/>
+<line x1="0" y1="96" x2="460" y2="96" stroke="#eee" stroke-width="2" stroke-dasharray="14,11" opacity=".45"/>
+<text x="40" y="56" fill="#666" font-size="7">বাম লেন</text>
+<text x="40" y="112" fill="#666" font-size="7">ডান লেন</text>
+<text x="40" y="176" fill="#888" font-size="7">SHOULDER</text>
+<!-- stopped police car on shoulder with flashing lights -->
+<g transform="translate(310,168)">
+<rect x="0" y="0" width="62" height="28" rx="7" fill="#1a2c4e"/>
+<rect x="10" y="4" width="42" height="12" rx="3" fill="#0d1830"/>
+<rect x="18" y="-7" width="12" height="7" rx="2" fill="#e74c3c"><animate attributeName="opacity" values="1;.2;1" dur=".8s" repeatCount="indefinite"/></rect>
+<rect x="32" y="-7" width="12" height="7" rx="2" fill="#3498db"><animate attributeName="opacity" values=".2;1;.2" dur=".8s" repeatCount="indefinite"/></rect>
+<circle cx="14" cy="30" r="6" fill="#000"/><circle cx="48" cy="30" r="6" fill="#000"/>
+<text x="31" y="14" text-anchor="middle" fill="#fff" font-size="7" font-weight="900">POLICE</text>
+</g>
+<!-- pulled-over car ahead of police -->
+<g transform="translate(396,170)">
+<rect x="0" y="0" width="48" height="24" rx="7" fill="#7f8c8d"/>
+<circle cx="11" cy="26" r="6" fill="#000"/><circle cx="37" cy="26" r="6" fill="#000"/>
+</g>
+<!-- officer figure near cars -->
+<text x="388" y="188" font-size="12">👮</text>
+<!-- YOUR CAR path: moving from right lane to left lane -->
+<path d="M 30 124 L 120 124 Q 160 124 185 96 Q 210 68 250 68 L 440 68" fill="none" stroke="#2ecc71" stroke-width="3" stroke-dasharray="7,5" marker-end="url(#moA)"/>
+<defs><marker id="moA" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#2ecc71"/></marker></defs>
+<g transform="translate(14,112)">
+<rect x="0" y="0" width="48" height="24" rx="7" fill="#2ecc71"/>
+<rect x="8" y="4" width="32" height="10" rx="3" fill="#0e4429"/>
+<circle cx="11" cy="26" r="6" fill="#000"/><circle cx="37" cy="26" r="6" fill="#000"/>
+</g>
+<text x="150" y="90" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">Option ১: আগেভাগে signal দিয়ে</text>
+<text x="150" y="101" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">এক লেন সরে যাও ✅</text>
+<!-- Option 2: can't change lane, slow down -->
+<g transform="translate(180,112)" opacity=".7">
+<rect x="0" y="0" width="48" height="24" rx="7" fill="#f39c12"/>
+</g>
+<text x="204" y="230" text-anchor="middle" fill="#f8c471" font-size="8" font-weight="700">Option ২: বাম লেন ব্যস্ত? — গতি অনেক কমাও,</text>
+<text x="204" y="241" text-anchor="middle" fill="#f8c471" font-size="8" font-weight="700">সতর্কভাবে পার হও ✅</text>
+<!-- danger zone marker -->
+<rect x="296" y="154" width="164" height="58" fill="#e74c3c" opacity=".12"/>
+<text x="342" y="228" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">এই zone-এ full speed-এ পার হওয়া =</text>
+<text x="342" y="239" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">fine + points, আহত করলে felony</text>
+</svg>
+<div class="rt-caption">Police, ambulance, fire, tow truck, utility — shoulder-এ থেমে থাকা যে-কেউ। প্রথম চেষ্টা: লেন বদলাও; না পারলে: উল্লেখযোগ্যভাবে ধীরে। দুটোর একটা করতেই হবে</div>
+</div>
+
+<div class="rt-image">
 <svg viewBox="0 0 420 300" width="100%" style="max-width:460px">
 <rect x="0" y="0" width="420" height="300" fill="#111" rx="8"/>
 <text x="210" y="22" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🚛 TRUCK "NO ZONE" — Blind Spot Map (top view)</text>
@@ -533,6 +631,7 @@ doors.push({
   },
   story:`
 <p class="scene-setting">অষ্টম অধ্যায়। জানুয়ারির এক সকাল — Lake Michigan থেকে আসা lake-effect snow-এ রাস্তা সাদা। তুমি একটা বরফে ঢাকা রাস্তায়। গাড়ি একটু পিছলে যাচ্ছে। Instructor বললেন — "ভয় পেও না। brake চাপো না। Steering ঘুরাও যেদিকে যেতে চাও। Michigan-এ শীত পাঁচ মাস — এটা শিখতেই হবে।" বরফের কড়া ঠান্ডা, গাড়ির চাকার শব্দ, হালকা wind।</p>
+<p class="scene-setting en">The eighth chapter. A January morning — roads white with lake-effect snow off Lake Michigan. You're on an icy road. The car slips slightly. The instructor said — "Don't panic. Don't hit the brake. Steer where you want to go. Winter lasts five months in Michigan — you must learn this." Bitter cold, tire sounds, light wind.</p>
 
 <div class="code-block">HAZARDS & EMERGENCIES — COMPLETE
 — — — — — — — — — — — — — — — — — — — — — —
@@ -581,36 +680,43 @@ doors.push({
   → সব আধুনিক গাড়িতে ABS আছে — brake চেপে 
     ধরে রাখো + steer</div>
 
-<div class="diagram-box"><div class="dia-title">🚗 SKID RECOVERY — Steering Into the Slide</div>
-
-  ┌─────────────────────────────────────────────┐
-  │  🚗 ──→  (গাড়ি পিছলে গেল ডান দিকে)         │
-  │                                             │
-  │  ❌ ভুল: brake চাপা → চাকা lock → আরও খারাপ │
-  │  ❌ ভুল: বামে steering → spin!               │
-  │                                             │
-  │  ✅ সঠিক: steering ডানে ঘুরাও                │
-  │     (সেই দিকে যেখানে যেতে চাও)               │
-  │                                             │
-  │  🚗 ──→ ╲╲ steering ডানে                    │
-  │         ↓ গাড়ি ধীরে ধীরে straight হবে        │
-  │                                             │
-  │  ABS থাকলে: steady brake pressure ধরে রাখো  │
-  │  পাম্প করো না! ABS নিজেই পাম্প করে।          │
-  └─────────────────────────────────────────────┘</div>
-
-<div class="scenario-box">
-<div class="scn-label">🎭 COMPLEX SCENARIO — Black Ice on Bridge</div>
-<div class="scn-question">❓ তুমি ৫৫ mph-এ চালাচ্ছ। একটা bridge পার হচ্ছ। রাস্তা শুকনো মনে হচ্ছে। কিন্তু bridge-এ গিয়ে গাড়ি পিছলে গেল। কী হল?</div>
-<div class="scn-answer">✅ Black ice। Bridge আগে বরফ জমে — ground-এর তাপ নেই। Steering smooth, brake নয়।</div>
-<div class="scn-explain">Bridge আগেই freeze করে কারণ নিচে ground নেই। দেখে রাস্তা শুকনো মনে হলেও bridge-এ invisible ice থাকতে পারে। Bridge-এ আগেই ধীরে করো।</div>
-</div>
-
-<div class="scenario-box">
-<div class="scn-label">🎭 COMPLEX SCENARIO — Accident, No Injury</div>
-<div class="scn-question">❓ তুমি একটা ছোট accident করলে — কোনো injury নেই, কিন্তু damage হয়েছে। কী করবে?</div>
-<div class="scn-answer">✅ থামো (scene ছেড়ে না — অপরাধ!)। গাড়ি নিরাপদ জায়গায় সরাও। Info বিনিময় করো। Damage $১,০০০+ হলে police report দরকার।</div>
-<div class="scn-explain">Michigan-এ scene ছেড়ে গেলে hit-and-run অপরাধ। থামো, hazard light জ্বালাও, নিরাপদে গাড়ি সরাও। Name, address, license, insurance, plate বিনিময় করো। Damage $১,০০০+ হলে police রিপোর্ট দরকার।</div>
+<div class="rt-image">
+<svg viewBox="0 0 440 250" width="100%" style="max-width:470px">
+<rect x="0" y="0" width="440" height="250" fill="#111" rx="8"/>
+<text x="220" y="22" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🚗 SKID RECOVERY — Steer Into the Slide</text>
+<!-- LEFT panel: wrong -->
+<rect x="14" y="34" width="200" height="182" fill="#2a2a2a" rx="6"/>
+<text x="114" y="52" text-anchor="middle" fill="#e74c3c" font-size="11" font-weight="900">❌ ভুল</text>
+<line x1="64" y1="60" x2="64" y2="210" stroke="#eee" stroke-width="2" stroke-dasharray="10,8" opacity=".3"/>
+<line x1="164" y1="60" x2="164" y2="210" stroke="#eee" stroke-width="2" stroke-dasharray="10,8" opacity=".3"/>
+<!-- skidding car, rear sliding right -->
+<g transform="rotate(-18 114 150)"><rect x="96" y="118" width="36" height="64" rx="8" fill="#e74c3c"/><rect x="102" y="128" width="24" height="13" rx="3" fill="#8e2020"/></g>
+<!-- wrong steer arrow: away from slide -->
+<path d="M 90 100 Q 70 84 52 92" fill="none" stroke="#e74c3c" stroke-width="3" marker-end="url(#raX)"/>
+<defs><marker id="raX" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#e74c3c"/></marker></defs>
+<text x="114" y="200" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="700">উল্টো দিকে steer / হার্ড brake</text>
+<text x="114" y="211" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="900">→ গাড়ি SPIN করবে!</text>
+<!-- RIGHT panel: correct -->
+<rect x="226" y="34" width="200" height="182" fill="#2a2a2a" rx="6"/>
+<text x="326" y="52" text-anchor="middle" fill="#2ecc71" font-size="11" font-weight="900">✅ সঠিক</text>
+<line x1="276" y1="60" x2="276" y2="210" stroke="#eee" stroke-width="2" stroke-dasharray="10,8" opacity=".3"/>
+<line x1="376" y1="60" x2="376" y2="210" stroke="#eee" stroke-width="2" stroke-dasharray="10,8" opacity=".3"/>
+<!-- skidding car -->
+<g transform="rotate(-18 326 150)"><rect x="308" y="118" width="36" height="64" rx="8" fill="#2ecc71"/><rect x="314" y="128" width="24" height="13" rx="3" fill="#0a6b3d"/></g>
+<!-- slide direction (rear going right) -->
+<path d="M 352 178 L 386 190" fill="none" stroke="#f1c40f" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#raY)"/>
+<defs><marker id="raY" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#f1c40f"/></marker></defs>
+<text x="398" y="182" fill="#f1c40f" font-size="7" font-weight="700" text-anchor="middle">পেছন</text>
+<text x="398" y="192" fill="#f1c40f" font-size="7" font-weight="700" text-anchor="middle">পিছলাচ্ছে</text>
+<!-- correct steer arrow: toward slide -->
+<path d="M 344 96 Q 366 82 386 92" fill="none" stroke="#2ecc71" stroke-width="3" marker-end="url(#raZ)"/>
+<defs><marker id="raZ" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#2ecc71"/></marker></defs>
+<text x="326" y="200" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">পিছলানোর দিকেই steer করো</text>
+<text x="326" y="211" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="900">→ গাড়ি straight হবে</text>
+<!-- footer -->
+<text x="220" y="236" text-anchor="middle" fill="#aaa" font-size="9">ABS থাকলে: steady brake pressure ধরে রাখো — পাম্প করো না, ABS নিজেই পাম্প করে</text>
+</svg>
+<div class="rt-caption">সূত্র: "যেদিকে যেতে চাও, সেদিকে steer" = পেছন যেদিকে পিছলাচ্ছে সেদিকেই wheel ঘোরাও — শান্তভাবে, ঝাঁকি ছাড়া</div>
 </div>
 
 <div class="code-block">💧 HYDROPLANING (জলে ভাসা)
@@ -669,6 +775,89 @@ doors.push({
   ৬. Police report (নির্দিষ্ট injury/damage হলে)
   ৭. যদি কেউ আহত — থামো সাহায্য করো</div>
 
+<div class="rt-image">
+<svg viewBox="0 0 460 230" width="100%" style="max-width:490px">
+<rect x="0" y="0" width="460" height="230" fill="#0d1420" rx="8"/>
+<text x="230" y="20" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">❄️ BLACK ICE — Bridge কেন আগে জমে (side view)</text>
+<!-- cold air arrows above -->
+<text x="90" y="44" text-anchor="middle" fill="#74b9ff" font-size="8">❄ ঠান্ডা বাতাস ❄</text>
+<text x="340" y="44" text-anchor="middle" fill="#74b9ff" font-size="8">❄ ঠান্ডা বাতাস ❄</text>
+<!-- road approach (left, on ground) -->
+<rect x="0" y="110" width="150" height="12" fill="#3a3a3a"/>
+<!-- ground under road -->
+<rect x="0" y="122" width="150" height="108" fill="#4a3826"/>
+<text x="75" y="170" text-anchor="middle" fill="#c9a86a" font-size="8" font-weight="700">মাটি — তাপ ধরে রাখে 🌡️</text>
+<text x="75" y="183" text-anchor="middle" fill="#c9a86a" font-size="7">রাস্তা গরম থাকে, শুকনো</text>
+<!-- heat arrows up from ground -->
+<path d="M 40 150 L 40 128" stroke="#e67e22" stroke-width="2" marker-end="url(#biH)"/>
+<path d="M 75 150 L 75 128" stroke="#e67e22" stroke-width="2" marker-end="url(#biH)"/>
+<path d="M 110 150 L 110 128" stroke="#e67e22" stroke-width="2" marker-end="url(#biH)"/>
+<defs><marker id="biH" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#e67e22"/></marker></defs>
+<!-- bridge deck (middle, over water) with ICE -->
+<rect x="150" y="110" width="180" height="12" fill="#3a3a3a"/>
+<rect x="150" y="108" width="180" height="5" fill="#a8d8ff" opacity=".85"/>
+<text x="240" y="102" text-anchor="middle" fill="#a8d8ff" font-size="8.5" font-weight="900">⚠️ অদৃশ্য বরফের ফিল্ম — দেখতে ভেজা রাস্তার মতো</text>
+<!-- bridge supports -->
+<rect x="165" y="122" width="10" height="60" fill="#555"/>
+<rect x="305" y="122" width="10" height="60" fill="#555"/>
+<!-- water below bridge -->
+<path d="M 150 185 Q 175 178 200 185 Q 225 192 250 185 Q 275 178 300 185 Q 315 190 330 185 L 330 230 L 150 230 Z" fill="#16324a"/>
+<text x="240" y="212" text-anchor="middle" fill="#5dade2" font-size="8" font-weight="700">নিচে পানি/বাতাস — কোনো তাপ নেই</text>
+<!-- cold arrows hitting bridge from below too -->
+<path d="M 200 160 L 200 128" stroke="#74b9ff" stroke-width="2" marker-end="url(#biC)"/>
+<path d="M 280 160 L 280 128" stroke="#74b9ff" stroke-width="2" marker-end="url(#biC)"/>
+<defs><marker id="biC" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#74b9ff"/></marker></defs>
+<text x="240" y="146" text-anchor="middle" fill="#74b9ff" font-size="7.5" font-weight="700">দুই দিক থেকেই ঠান্ডা = আগে জমে</text>
+<!-- road continues right -->
+<rect x="330" y="110" width="130" height="12" fill="#3a3a3a"/>
+<rect x="330" y="122" width="130" height="108" fill="#4a3826"/>
+<!-- car approaching from left -->
+<g transform="translate(30,88)">
+<rect x="0" y="0" width="52" height="22" rx="7" fill="#2ecc71"/>
+<rect x="9" y="3" width="34" height="10" rx="3" fill="#0e4429"/>
+<circle cx="12" cy="24" r="6" fill="#000"/><circle cx="40" cy="24" r="6" fill="#000"/>
+</g>
+<text x="56" y="76" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">Bridge-এ ওঠার আগেই</text>
+<text x="56" y="86" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">গতি কমাও — উপরে brake নয়!</text>
+<!-- BRIDGE ICES sign -->
+<rect x="128" y="52" width="4" height="58" fill="#8a6d3b"/>
+<g transform="rotate(45 130 44)"><rect x="116" y="30" width="28" height="28" rx="2" fill="#fdd835" stroke="#222" stroke-width="1.5"/></g>
+<text x="130" y="40" text-anchor="middle" fill="#222" font-size="5" font-weight="900">BRIDGE</text>
+<text x="130" y="47" text-anchor="middle" fill="#222" font-size="5" font-weight="900">ICES</text>
+<text x="130" y="54" text-anchor="middle" fill="#222" font-size="5" font-weight="900">BEFORE</text>
+<text x="130" y="61" text-anchor="middle" fill="#222" font-size="5" font-weight="900">ROAD</text>
+</svg>
+<div class="rt-caption">মাটি insulator — রাস্তাকে গরম রাখে। Bridge-এর নিচে শুধু ঠান্ডা বাতাস/পানি — তাই ৩২°F-এর আশেপাশে রাস্তা শুকনো থাকলেও bridge-এ বরফ। Shadow আর overpass-এও একই ঘটনা</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — Black Ice on Bridge</div>
+<div class="scn-question">❓ ডিসেম্বরের রাত, তুমি ৫৫ mph-এ। রাস্তা শুকনো মনে হচ্ছে। কিন্তু একটা bridge-এ উঠতেই গাড়ি পিছলে গেল। কী হলো?</div>
+<div class="scn-answer">✅ Black ice। Bridge-এ আগে বরফ জমে — নিচে ground-এর তাপ নেই। Gas ছাড়ো, brake চেপো না, smooth steering।</div>
+<div class="scn-explain">Bridge ও overpass দুই দিক থেকে ঠান্ডা হয়, তাই রাস্তার আগেই freeze করে — সেজন্যই "BRIDGE ICES BEFORE ROAD" সাইন। দেখে শুকনো মনে হলেও ৩২°F-এর আশেপাশে bridge মানেই সন্দেহ। Bridge-এ ওঠার আগেই গতি কমাও — উপরে উঠে brake নয়।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — নভেম্বরের সন্ধ্যা, হরিণ</div>
+<div class="scn-question">❓ নভেম্বর, সন্ধ্যা ৬টা, M-24-এ ৫৫ mph। হঠাৎ headlight-এ একটা হরিণ — রাস্তা পার হয়ে চলে গেল। যাক, বেঁচে গেছ। গতি বাড়াবে?</div>
+<div class="scn-answer">✅ না — উল্টো আরও ধীরে! হরিণ দলে চলে। একটা পার হওয়া মানে পেছনে আরও ২-৩টা আসছে। Brake cover করে ধীরে এগোও।</div>
+<div class="scn-explain">Michigan-এ বছরে ৫০,০০০+ deer crash — বেশিরভাগ অক্টোবর-নভেম্বরে, ভোর ও সন্ধ্যায়। "প্রথম হরিণটা তোমাকে সাবধান করে, দ্বিতীয়টা ধাক্কা খায়" — পুরনো Michigan প্রবাদ। আর মনে রাখো: swerve নয়, brake।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — গ্রীষ্মের ঝুম বৃষ্টি</div>
+<div class="scn-question">❓ জুলাই মাস, US-23-এ হঠাৎ ঝুম বৃষ্টি। রাস্তায় পানির স্রোত। হঠাৎ steering হালকা লাগছে — গাড়ি যেন ভাসছে, steering ঘুরালেও সাড়া নেই। কী হচ্ছে, কী করবে?</div>
+<div class="scn-answer">✅ Hydroplaning। Gas ধীরে ছাড়ো, brake চেপো না, steering সোজা রাখো। Tire রাস্তা ফিরে পেলে নিয়ন্ত্রণ ফিরবে।</div>
+<div class="scn-explain">বৃষ্টির প্রথম ১০-১৫ মিনিট সবচেয়ে পিচ্ছিল — রাস্তার তেল-ময়লা পানির সাথে মিশে ফিল্ম বানায়। Cruise control বৃষ্টিতে বন্ধ রাখো — hydroplane-এর সময় cruise চালু থাকলে চাকা হঠাৎ spin করতে পারে। পুরনো/ক্ষয়ে যাওয়া tire-এ ঝুঁকি বহুগুণ।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — ছোট Accident, Injury নেই</div>
+<div class="scn-question">❓ Parking lot থেকে বেরোনোর সময় আরেকটা গাড়ির সাথে হালকা ধাক্কা — কেউ আহত নয়, কিন্তু দুই গাড়িতেই দাগ। অন্য driver বলছে "কিছু হয়নি, যাও।" চলে যাবে?</div>
+<div class="scn-answer">✅ না — থামো, তথ্য বিনিময় করো: name, address, license, insurance, plate। ছবি তোলো। Damage $১,০০০+ মনে হলে police report করো।</div>
+<div class="scn-explain">Scene ছেড়ে যাওয়া = hit-and-run, "সে-ই তো বলল যাও" কোনো defense নয় — পরে সে-ই দাবি করতে পারে তুমি পালিয়েছ। ফোনে সব ছবি তোলো: দুই গাড়ি, plate, জায়গা। Michigan no-fault মনে রাখো: নিজের insurance-কে জানাও, দেরি করো না।</div>
+</div>
+
 <div class="code-block">EXAM PATTERN QUESTIONS — Hazards:
 
 ❓ Skid হলে কী করবে?
@@ -701,21 +890,11 @@ doors.push({
 
 ❓ Drowsy driving কেন বিপজ্জনক?
 ✅ Reaction time কমে যায় — অনেকটা drunk driving-এর
-   মতো। আসল সমাধান: থামো, বিশ্রাম নাও।</div>
+   মতো। আসল সমাধান: থামো, বিশ্রাম নাও।
 
-<div class="scenario-box">
-<div class="scn-label">🎭 REAL ROAD SCENARIO — নভেম্বরের সন্ধ্যা, হরিণ</div>
-<div class="scn-question">❓ নভেম্বর, সন্ধ্যা ৬টা, M-24-এ ৫৫ mph। হঠাৎ headlight-এ একটা হরিণ — রাস্তা পার হয়ে চলে গেল। যাক, বেঁচে গেছ। গতি বাড়াবে?</div>
-<div class="scn-answer">✅ না — উল্টো আরও ধীরে! হরিণ দলে চলে। একটা পার হওয়া মানে পেছনে আরও ২-৩টা আসছে। Brake cover করে ধীরে এগোও।</div>
-<div class="scn-explain">Michigan-এ বছরে ৫০,০০০+ deer crash — বেশিরভাগ অক্টোবর-নভেম্বরে, ভোর ও সন্ধ্যায়। "প্রথম হরিণটা তোমাকে সাবধান করে, দ্বিতীয়টা ধাক্কা খায়" — পুরনো Michigan প্রবাদ। আর মনে রাখো: swerve নয়, brake।</div>
-</div>
-
-<div class="scenario-box">
-<div class="scn-label">🎭 REAL ROAD SCENARIO — গ্রীষ্মের ঝুম বৃষ্টি</div>
-<div class="scn-question">❓ জুলাই মাস, US-23-এ হঠাৎ ঝুম বৃষ্টি। রাস্তায় পানির স্রোত। হঠাৎ steering হালকা লাগছে — গাড়ি যেন ভাসছে, steering ঘুরালেও সাড়া নেই। কী হচ্ছে, কী করবে?</div>
-<div class="scn-answer">✅ Hydroplaning। Gas ধীরে ছাড়ো, brake চেপো না, steering সোজা রাখো। Tire রাস্তা ফিরে পেলে নিয়ন্ত্রণ ফিরবে।</div>
-<div class="scn-explain">বৃষ্টির প্রথম ১০-১৫ মিনিট সবচেয়ে পিচ্ছিল — রাস্তার তেল-ময়লা পানির সাথে মিশে ফিল্ম বানায়। Cruise control বৃষ্টিতে বন্ধ রাখো — hydroplane-এর সময় cruise চালু থাকলে চাকা হঠাৎ spin করতে পারে। পুরনো/ক্ষয়ে যাওয়া tire-এ ঝুঁকি বহুগুণ।</div>
-</div>
+❓ Accident-এর পর scene ছেড়ে গেলে কী হয়?
+✅ Hit-and-run — অপরাধ। থামো, info বিনিময়
+   করো, প্রয়োজনে police report।</div>
 
 <div class="secret-box">⚠️ Skid = brake নয়, steering ঘুরাও। Winter = ৬+ সেকেন্ড, black ice bridge-এ। Deer = brake, swerve নয়। Accident = থামো, hazard, 911, info বিনিময়।</div>`
 });
@@ -843,6 +1022,51 @@ doors.push({
     (drowsy, dizzy) চালানো নিষেধ
   ✦ Over-the-counter: warning label পড়ো
   ✦ Any impairing substance = OWI</div>
+
+<div class="rt-image">
+<svg viewBox="0 0 460 220" width="100%" style="max-width:490px">
+<rect x="0" y="0" width="460" height="220" fill="#111" rx="8"/>
+<text x="230" y="20" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">📱 ৫ সেকেন্ডের text = চোখ বন্ধ করে এক football field</text>
+<!-- freeway -->
+<rect x="0" y="80" width="460" height="60" fill="#2a2a2a"/>
+<line x1="0" y1="110" x2="460" y2="110" stroke="#eee" stroke-width="2" stroke-dasharray="14,11" opacity=".35"/>
+<!-- football field overlay under road -->
+<rect x="60" y="150" width="360" height="44" fill="#1e4620" rx="4"/>
+<line x1="96" y1="150" x2="96" y2="194" stroke="#fff" stroke-width="1" opacity=".4"/>
+<line x1="132" y1="150" x2="132" y2="194" stroke="#fff" stroke-width="1" opacity=".4"/>
+<line x1="168" y1="150" x2="168" y2="194" stroke="#fff" stroke-width="1" opacity=".4"/>
+<line x1="204" y1="150" x2="204" y2="194" stroke="#fff" stroke-width="1" opacity=".4"/>
+<line x1="240" y1="150" x2="240" y2="194" stroke="#fff" stroke-width="1" opacity=".4"/>
+<line x1="276" y1="150" x2="276" y2="194" stroke="#fff" stroke-width="1" opacity=".4"/>
+<line x1="312" y1="150" x2="312" y2="194" stroke="#fff" stroke-width="1" opacity=".4"/>
+<line x1="348" y1="150" x2="348" y2="194" stroke="#fff" stroke-width="1" opacity=".4"/>
+<line x1="384" y1="150" x2="384" y2="194" stroke="#fff" stroke-width="1" opacity=".4"/>
+<text x="240" y="177" text-anchor="middle" fill="#7bed9f" font-size="9" font-weight="900">🏈 ১০০ গজ = ৩০০ ফুট</text>
+<!-- car at left with phone -->
+<g transform="translate(20,92)">
+<rect x="0" y="0" width="52" height="24" rx="7" fill="#e74c3c"/>
+<rect x="9" y="4" width="34" height="10" rx="3" fill="#8e2020"/>
+<circle cx="12" cy="26" r="6" fill="#000"/><circle cx="40" cy="26" r="6" fill="#000"/>
+</g>
+<text x="46" y="86" text-anchor="middle" font-size="12">📱</text>
+<text x="46" y="70" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="700">চোখ নামালো…</text>
+<!-- blind travel zone -->
+<rect x="72" y="82" width="340" height="56" fill="#e74c3c" opacity=".14"/>
+<path d="M 80 110 L 400 110" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="8,6" marker-end="url(#txA)"/>
+<defs><marker id="txA" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#e74c3c"/></marker></defs>
+<!-- ghost car at end -->
+<g transform="translate(400,92)" opacity=".5">
+<rect x="0" y="0" width="52" height="24" rx="7" fill="#e74c3c"/>
+</g>
+<text x="240" y="102" text-anchor="middle" fill="#ff8a80" font-size="9" font-weight="900">70 mph × ৫ সেকেন্ড = ৫১৩ ফুট — সম্পূর্ণ অন্ধ</text>
+<!-- hazards that could appear -->
+<text x="250" y="132" text-anchor="middle" font-size="11">🦌</text>
+<text x="330" y="132" text-anchor="middle" font-size="11">🚶</text>
+<text x="180" y="132" text-anchor="middle" font-size="11">🛑</text>
+<text x="230" y="208 " text-anchor="middle" fill="#888" font-size="8">এই দূরত্বে যা-কিছু আসতে পারে — থেমে থাকা ট্রাফিক, হরিণ, মানুষ — তুমি দেখবেই না</text>
+</svg>
+<div class="rt-caption">গড় text পড়া/লেখা = চোখ ৫ সেকেন্ড রাস্তার বাইরে। 70 mph-এ সেটা এক football field-এর চেয়েও বেশি পথ — চোখ বেঁধে চালানোর সমান। এজন্যই hands-free law</div>
+</div>
 
 <div class="code-block">🚗 MICHIGAN NO-FAULT INSURANCE (কমন পরীক্ষার প্রশ্ন)
 — — — — — — — — — — — — — — — — — — — — — —
@@ -1023,6 +1247,61 @@ ROAD TEST — EXAMINER CHECKLIST
   ✦ Mirror adjust কীভাবে?
 
   → না জানলে test শুরুই হবে না!
+
+<div class="rt-image">
+<svg viewBox="0 0 460 260" width="100%" style="max-width:490px">
+<rect x="0" y="0" width="460" height="260" fill="#111" rx="8"/>
+<text x="230" y="20" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🏢 PART A: CLOSED COURSE — বাস্তবে যেমন দেখতে (top view)</text>
+<!-- parking lot -->
+<rect x="14" y="32" width="432" height="212" fill="#252525" rx="6"/>
+<!-- START box -->
+<rect x="28" y="196" width="70" height="36" fill="#1e3a1e" rx="4" stroke="#2ecc71" stroke-width="1.5"/>
+<text x="63" y="212" text-anchor="middle" fill="#2ecc71" font-size="8" font-weight="900">START</text>
+<text x="63" y="224" text-anchor="middle" fill="#7bed9f" font-size="6.5">seatbelt + control চেক</text>
+<!-- your car at start -->
+<g transform="translate(40,200)">
+<rect x="0" y="0" width="20" height="30" rx="6" fill="#2ecc71"/>
+</g>
+<!-- 1. forward stop lane with stop line -->
+<path d="M 63 196 L 63 90" stroke="#2ecc71" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#ccA)"/>
+<rect x="44" y="80" width="40" height="6" fill="#fff"/>
+<text x="63" y="70 " text-anchor="middle" fill="#fff" font-size="7" font-weight="700">১. FORWARD STOP</text>
+<text x="63" y="60" text-anchor="middle" fill="#ccc" font-size="6.5">লাইনের আগে, ঝাঁকি ছাড়া</text>
+<!-- 2. backing corridor with cones -->
+<path d="M 84 100 L 180 100" stroke="#74b9ff" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#ccB)"/>
+<circle cx="110" cy="84" r="4" fill="#e67e22"/><circle cx="150" cy="84" r="4" fill="#e67e22"/>
+<circle cx="110" cy="116" r="4" fill="#e67e22"/><circle cx="150" cy="116" r="4" fill="#e67e22"/>
+<text x="132" y="48" text-anchor="middle" fill="#74b9ff" font-size="7" font-weight="700">২. BACKING (সোজা পেছনে)</text>
+<text x="132" y="58" text-anchor="middle" fill="#ccc" font-size="6.5">শরীর ঘুরিয়ে পেছনে তাকাও —</text>
+<text x="132" y="67" text-anchor="middle" fill="#ccc" font-size="6.5">শুধু mirror নয়!</text>
+<!-- 3. parallel parking box with cones -->
+<rect x="220" y="76" width="110" height="48" fill="none" stroke="#f1c40f" stroke-width="2" stroke-dasharray="5,4"/>
+<circle cx="220" cy="76" r="4" fill="#e67e22"/><circle cx="330" cy="76" r="4" fill="#e67e22"/>
+<circle cx="220" cy="124" r="4" fill="#e67e22"/><circle cx="330" cy="124" r="4" fill="#e67e22"/>
+<path d="M 200 100 Q 240 60 275 88 Q 300 108 300 100" fill="none" stroke="#f1c40f" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#ccC)"/>
+<text x="275" y="48" text-anchor="middle" fill="#f1c40f" font-size="7" font-weight="700">৩. PARALLEL PARKING</text>
+<text x="275" y="58" text-anchor="middle" fill="#ccc" font-size="6.5">cone ছোঁয়া = points কাটা,</text>
+<text x="275" y="67" text-anchor="middle" fill="#ccc" font-size="6.5">curb জোরে ধাক্কা = fail হতে পারে</text>
+<!-- 4. Y-turn area -->
+<rect x="360" y="70" width="70" height="120" fill="#1c1c2e" rx="4"/>
+<path d="M 395 180 L 395 140 Q 395 120 380 118 M 380 118 L 408 132 M 408 132 L 395 100" fill="none" stroke="#e056fd" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#ccD)"/>
+<text x="395" y="212" text-anchor="middle" fill="#e056fd" font-size="7" font-weight="700">৪. Y-TURN</text>
+<text x="395" y="222" text-anchor="middle" fill="#ccc" font-size="6.5">(3-point turn)</text>
+<text x="395" y="232" text-anchor="middle" fill="#ccc" font-size="6.5">ঠিক ৩ ধাপে</text>
+<defs>
+<marker id="ccA" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#2ecc71"/></marker>
+<marker id="ccB" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#74b9ff"/></marker>
+<marker id="ccC" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#f1c40f"/></marker>
+<marker id="ccD" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#e056fd"/></marker>
+</defs>
+<!-- examiner -->
+<text x="180" y="180" font-size="12">🧑‍💼</text>
+<text x="180" y="196" text-anchor="middle" fill="#888" font-size="6.5">examiner বাইরে থেকে</text>
+<text x="180" y="205" text-anchor="middle" fill="#888" font-size="6.5">দেখে (Part A-তে)</text>
+<text x="230" y="252" text-anchor="middle" fill="#888" font-size="7.5">Part A পাশ করলে তবেই Part B (on-road) — তাই এই চারটা maneuver বাড়ির কাছে খালি lot-এ প্র্যাকটিস করো</text>
+</svg>
+<div class="rt-caption">চারটা station: forward stop → straight backing → parallel parking (cone box) → Y-turn। কমলা বিন্দু = cone। বেশিরভাগ tester-এর course এরকমই</div>
+</div>
 
 <div class="rt-image-grid">
 <div class="rt-img-card"><svg viewBox="0 0 100 60" width="100"><rect x="5" y="10" width="90" height="35" rx="8" fill="#1a1a1a" stroke="#444" stroke-width="1"/><ellipse cx="50" cy="27" rx="28" ry="14" fill="#fff59d" opacity=".9"/><ellipse cx="50" cy="27" rx="18" ry="8" fill="#fff" opacity=".5"/><rect x="38" y="45" width="24" height="8" rx="2" fill="#555"/></svg><div class="rt-caption"><strong>Headlight</strong><br>সামনের আলো — on/off জানো</div></div>
