@@ -100,6 +100,19 @@ doors.push({
   ✦ ৪+ second following distance
 
 — — — — — — — — — — — — — — — — — — — — — —
+💡 HEADLIGHT + WIPER LAW (Michigan)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ✦ Michigan LAW: wipers ON = headlights ON
+    → বৃষ্টি, তুষার, কুয়াশা — wipers চালু থাকলে 
+      headlights ও চালু রাখো
+    → শুধু parking lights যথেষ্ট নয়
+    → Daytime running lights (DRL) যথেষ্ট নয় — 
+      full headlights ON করো
+  ✦ Visibility 500 ft এর কম হলে headlights ON
+  ✦ Sunset to sunrise: headlights mandatory
+
+— — — — — — — — — — — — — — — — — — — — — —
 💧 STEERING & BRAKING TECHNIQUES
 — — — — — — — — — — — — — — — — — — — — — —
 
@@ -239,6 +252,23 @@ doors.push({
   ✦ Cyclist blind spot চেক করো
   ✦ Cyclist lane পরিবর্তন করতে পারে
   ✦ Door zone: parked car door খুলতে পারে
+
+<div class="sign-gallery">
+<div class="sign-item"><svg viewBox="0 0 80 60" width="64"><rect x="10" y="15" width="60" height="3" fill="#f1c40f"/><circle cx="55" cy="16" r="5" fill="#e8a838"/><text x="20" y="12" font-size="8">🖐️</text><line x1="25" y1="16" x2="55" y2="16" stroke="#e8a838" stroke-width="3"/><text x="40" y="40" text-anchor="middle" fill="#999" font-size="6">LEFT TURN</text></svg><div class="sign-label">⬅️ <strong>LEFT</strong><br>বাম হাত সোজা</div></div>
+<div class="sign-item"><svg viewBox="0 0 80 60" width="64"><rect x="10" y="15" width="60" height="3" fill="#f1c40f"/><circle cx="55" cy="16" r="5" fill="#e8a838"/><rect x="48" y="3" width="14" height="3" fill="#e8a838"/><text x="55" y="2" text-anchor="middle" font-size="7">⬆️</text><line x1="55" y1="16" x2="55" y2="2" stroke="#e8a838" stroke-width="3"/><text x="40" y="40" text-anchor="middle" fill="#999" font-size="6">RIGHT TURN</text></svg><div class="sign-label">⬆️ <strong>RIGHT</strong><br>বাম হাত উপরে</div></div>
+<div class="sign-item"><svg viewBox="0 0 80 60" width="64"><rect x="10" y="15" width="60" height="3" fill="#f1c40f"/><circle cx="55" cy="16" r="5" fill="#e8a838"/><rect x="48" y="28" width="14" height="3" fill="#e8a838"/><line x1="55" y1="16" x2="55" y2="30" stroke="#e8a838" stroke-width="3"/><text x="40" y="50" text-anchor="middle" fill="#999" font-size="6">STOP/SLOW</text></svg><div class="sign-label">⬇️ <strong>STOP</strong><br>বাম হাত নিচে</div></div>
+</div>
+
+<div class="code-block">🚴 BICYCLE HAND SIGNALS (cyclist ও examiner দেখে)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ✦ LEFT TURN: বাম হাত সোজা বাম দিকে
+  ✦ RIGHT TURN: বাম হাত উপরে (L আকার)
+     → অথবা ডান হাত সোজা ডান দিকে
+  ✦ STOP/SLOW: বাম হাত নিচে (উল্টো L)
+
+  💡 তুমি cyclist হলে — এই signal দাও
+  💡 তুমি driver হলে — cyclist এর signal চিনো</div>
 
 — — — — — — — — — — — — — — — — — — — — — —
 🏍️ MOTORCYCLISTS
@@ -632,6 +662,44 @@ doors.push({
   ✦ Over-the-counter: warning label পড়ো
   ✦ Any impairing substance = OWI</div>
 
+<div class="code-block">🚗 MICHIGAN NO-FAULT INSURANCE (কমন পরীক্ষার প্রশ্ন)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  Michigan = No-Fault Insurance state
+
+  ✦ No-Fault মানে: কে দোষী তা নির্বিশেষে, 
+    প্রত্যেকের নিজের insurance নিজের 
+    injury/medical খরচ বহন করে
+  ✦ Required coverages:
+    → PIP (Personal Injury Protection) — medical bills
+    → Property Protection — অন্যের property damage 
+      (up to $1 million)
+    → Residual Liability — serious injury/death-এ 
+      (নির্দিষ্ট threshold ছাড়ালে)
+  ✦ UNLIMITED PIP — Michigan-এ medical coverage 
+    সীমাহীন ছিল (2020 reform-এ option এসেছে)
+  ✦ বিনা insurance-এ গাড়ি চালানো = অপরাধ
+    → Fine, license suspension, plate confiscation
+
+— — — — — — — — — — — — — — — — — — — — — —
+📊 DRIVER LICENSE POINT SYSTEM
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ✦ প্রতিটা violation = points (2-6)
+  ✦ Points driving record-এ ২ বছর থাকে
+  ✦ Points বাড়লে:
+    → Insurance premium বাড়ে
+    → License suspension হতে পারে
+
+  Common point values:
+    → 6 points: OWI, reckless driving, fleeing police
+    → 4 points: drag racing, speeding 16+ over limit
+    → 3 points: speeding 11-15 over, careless driving
+    → 2 points: speeding 10 or less over, open alcohol
+
+  💡 4 points in 2 years = warning letter
+  💡 12 points = possible license review/hearing</div>
+
 <div class="code-block">EXAM PATTERN QUESTIONS — OWI/DUI:
 
 ❓ Michigan-ে 21+ বছরের জন্য BAC limit?
@@ -659,7 +727,23 @@ doors.push({
 ✅ নেশা করে চালানো নিষেধ — OWI।
 
 ❓ Distracted driving কত ধরনের?
-✅ ৩ ধরন — Visual, Manual, Cognitive।</div>
+✅ ৩ ধরন — Visual, Manual, Cognitive।
+
+❓ Michigan no-fault insurance কী?
+✅ কে দোষী নির্বিশেষে প্রত্যেকের নিজের 
+   insurance নিজের injury খরচ বহণ করে।
+
+❓ License points কত বছর record-এ থাকে?
+✅ ২ বছর।
+
+❓ OWI-তে কত points?
+✅ ৬ points।
+
+❓ Wipers on হলে কী করতে হবে?
+✅ Headlights ও on করতে হবে — Michigan law।
+
+❓ Cyclist বাম হাত উপরে তুললে কী বোঝায়?
+✅ Right turn।</div>
 
 <div class="secret-box">🍺 OWI: BAC 0.08+ (21+), 0.02+ (under 21)। Refuse breathalyzer = 1-year suspension। Texting = primary offense। Marijuana legal কিন্তু driving impaired = OWI। নেশা করে চালানো = খুন।</div>`
 });
