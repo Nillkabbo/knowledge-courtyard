@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="জ্ঞানের প্রাঙ্গণ — The Learning Courtyard: 29 free bilingual (Bengali/English) interactive books covering AI engineering, DSA, system design, PhD research, and career growth, taught through story-driven chapters.">
 <title>জ্ঞানের প্রাঙ্গণ — The Learning Courtyard</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -38,34 +39,35 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .games-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:1.2rem}
 .game-card{position:relative;background:var(--panel);border:1px solid var(--panel-border);border-radius:20px;padding:2rem;overflow:hidden;transition:all .5s cubic-bezier(.4,0,.2,1);text-decoration:none;color:inherit;cursor:pointer;display:block}
 .game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:20px 20px 0 0;transition:height .4s ease}
-.game-card:nth-child(1)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--teal))}
-.game-card:nth-child(2)::before{background:linear-gradient(90deg,var(--cyan),var(--gold-bright))}
-.game-card:nth-child(3)::before{background:linear-gradient(90deg,var(--teal),var(--gold-bright),var(--fire))}
-.game-card:nth-child(4)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--teal))}
-.game-card:nth-child(5)::before{background:linear-gradient(90deg,var(--leaf),var(--gold-bright),var(--leaf))}
-.game-card:nth-child(6)::before{background:linear-gradient(90deg,var(--moon),var(--gold-bright),var(--fire))}
-.game-card:nth-child(7)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
-.game-card:nth-child(8)::before{background:linear-gradient(90deg,var(--teal),var(--moon),var(--teal))}
-.game-card:nth-child(9)::before{background:linear-gradient(90deg,var(--fire),var(--gold-bright),var(--fire))}
-.game-card:nth-child(10)::before{background:linear-gradient(90deg,var(--moon),var(--teal),var(--moon))}
-.game-card:nth-child(11)::before{background:linear-gradient(90deg,var(--teal),var(--leaf),var(--teal))}
-.game-card:nth-child(12)::before{background:linear-gradient(90deg,var(--moon),var(--cyan),var(--moon))}
-.game-card:nth-child(13)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--fire))}
-.game-card:nth-child(14)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--fire))}
-.game-card:nth-child(15)::before{background:linear-gradient(90deg,var(--fire),#dc2626,var(--fire))}
-.game-card:nth-child(16)::before{background:linear-gradient(90deg,var(--cyan),var(--moon),var(--cyan))}
-.game-card:nth-child(17)::before{background:linear-gradient(90deg,var(--purple),var(--gold-bright),var(--purple))}
-.game-card:nth-child(18)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--gold))}
-.game-card:nth-child(19)::before{background:linear-gradient(90deg,var(--ink-dim),var(--moon),var(--ink-dim))}
-.game-card:nth-child(20)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
-.game-card:nth-child(21)::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--fire))}
-.game-card:nth-child(22)::before{background:linear-gradient(90deg,var(--leaf),var(--gold-bright),var(--leaf))}
-.game-card:nth-child(23)::before{background:linear-gradient(90deg,var(--fire),var(--moon),var(--fire))}
-.game-card:nth-child(24)::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--gold))}
-.game-card:nth-child(25)::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
-.game-card:nth-child(26)::before{background:linear-gradient(90deg,#06b6d4,#67e8f9,#06b6d4)}
-.game-card:nth-child(27)::before{background:linear-gradient(90deg,var(--moon),var(--cyan),var(--moon))}
-.game-card:nth-child(28)::before{background:linear-gradient(90deg,var(--gold),var(--fire),var(--gold))}
+.game-card.game-1::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--teal))}
+.game-card.game-2::before{background:linear-gradient(90deg,var(--cyan),var(--gold-bright))}
+.game-card.game-3::before{background:linear-gradient(90deg,var(--teal),var(--gold-bright),var(--fire))}
+.game-card.game-4::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--teal))}
+.game-card.game-5::before{background:linear-gradient(90deg,var(--leaf),var(--gold-bright),var(--leaf))}
+.game-card.game-6::before{background:linear-gradient(90deg,var(--moon),var(--gold-bright),var(--fire))}
+.game-card.game-7::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
+.game-card.game-8::before{background:linear-gradient(90deg,var(--teal),var(--moon),var(--teal))}
+.game-card.game-9::before{background:linear-gradient(90deg,var(--fire),var(--gold-bright),var(--fire))}
+.game-card.game-10::before{background:linear-gradient(90deg,var(--moon),var(--teal),var(--moon))}
+.game-card.game-11::before{background:linear-gradient(90deg,var(--teal),var(--leaf),var(--teal))}
+.game-card.game-12::before{background:linear-gradient(90deg,var(--moon),var(--cyan),var(--moon))}
+.game-card.game-13::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--fire))}
+.game-card.game-14::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--fire))}
+.game-card.game-15::before{background:linear-gradient(90deg,var(--fire),#dc2626,var(--fire))}
+.game-card.game-16::before{background:linear-gradient(90deg,var(--cyan),var(--moon),var(--cyan))}
+.game-card.game-17::before{background:linear-gradient(90deg,var(--purple),var(--gold-bright),var(--purple))}
+.game-card.game-18::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--gold))}
+.game-card.game-19::before{background:linear-gradient(90deg,var(--ink-dim),var(--moon),var(--ink-dim))}
+.game-card.game-20::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
+.game-card.game-21::before{background:linear-gradient(90deg,var(--fire),var(--gold),var(--fire))}
+.game-card.game-22::before{background:linear-gradient(90deg,var(--leaf),var(--gold-bright),var(--leaf))}
+.game-card.game-23::before{background:linear-gradient(90deg,var(--fire),var(--moon),var(--fire))}
+.game-card.game-24::before{background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--gold))}
+.game-card.game-25::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
+.game-card.game-26::before{background:linear-gradient(90deg,#06b6d4,#67e8f9,#06b6d4)}
+.game-card.game-27::before{background:linear-gradient(90deg,var(--moon),var(--cyan),var(--moon))}
+.game-card.game-28::before{background:linear-gradient(90deg,var(--gold),var(--fire),var(--gold))}
+.game-card.game-29::before{background:linear-gradient(90deg,var(--rose),var(--gold-bright),var(--rose))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -74,34 +76,35 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-icon{font-size:3rem;line-height:1;flex-shrink:0}
 .game-head-text{flex:1}
 .game-tag{display:inline-block;font-family:'Cinzel',serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:8px;margin-bottom:.4rem}
-.game-card:nth-child(1) .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
-.game-card:nth-child(2) .game-tag{background:rgba(54,214,231,.12);color:var(--cyan)}
-.game-card:nth-child(3) .game-tag{background:rgba(45,212,191,.12);color:var(--teal)}
-.game-card:nth-child(4) .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
-.game-card:nth-child(5) .game-tag{background:rgba(82,196,26,.12);color:var(--leaf)}
-.game-card:nth-child(6) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
-.game-card:nth-child(7) .game-tag{background:rgba(179,127,235,.12);color:var(--purple)}
-.game-card:nth-child(8) .game-tag{background:rgba(45,212,191,.12);color:var(--teal)}
-.game-card:nth-child(9) .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
-.game-card:nth-child(10) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
-.game-card:nth-child(11) .game-tag{background:rgba(45,212,191,.12);color:var(--teal)}
-.game-card:nth-child(12) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
-.game-card:nth-child(13) .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
-.game-card:nth-child(14) .game-tag{background:rgba(251,191,36,.12);color:var(--gold)}
-.game-card:nth-child(15) .game-tag{background:rgba(239,68,68,.12);color:var(--fire)}
-.game-card:nth-child(16) .game-tag{background:rgba(34,211,238,.12);color:var(--cyan)}
-.game-card:nth-child(17) .game-tag{background:rgba(192,132,252,.12);color:var(--purple)}
-.game-card:nth-child(18) .game-tag{background:rgba(245,158,11,.12);color:var(--gold)}
-.game-card:nth-child(19) .game-tag{background:rgba(148,163,184,.12);color:var(--ink-dim)}
-.game-card:nth-child(20) .game-tag{background:rgba(99,102,241,.12);color:var(--purple)}
-.game-card:nth-child(21) .game-tag{background:rgba(234,88,12,.12);color:var(--fire)}
-.game-card:nth-child(22) .game-tag{background:rgba(34,197,94,.12);color:var(--leaf)}
-.game-card:nth-child(23) .game-tag{background:rgba(220,38,38,.12);color:var(--fire)}
-.game-card:nth-child(24) .game-tag{background:rgba(245,158,11,.12);color:var(--gold)}
-.game-card:nth-child(25) .game-tag{background:rgba(129,140,248,.12);color:var(--purple)}
-.game-card:nth-child(26) .game-tag{background:rgba(6,182,212,.12);color:#06b6d4}
-.game-card:nth-child(27) .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
-.game-card:nth-child(28) .game-tag{background:rgba(251,191,36,.12);color:var(--gold)}
+.game-card.game-1 .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
+.game-card.game-2 .game-tag{background:rgba(54,214,231,.12);color:var(--cyan)}
+.game-card.game-3 .game-tag{background:rgba(45,212,191,.12);color:var(--teal)}
+.game-card.game-4 .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
+.game-card.game-5 .game-tag{background:rgba(82,196,26,.12);color:var(--leaf)}
+.game-card.game-6 .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
+.game-card.game-7 .game-tag{background:rgba(179,127,235,.12);color:var(--purple)}
+.game-card.game-8 .game-tag{background:rgba(45,212,191,.12);color:var(--teal)}
+.game-card.game-9 .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
+.game-card.game-10 .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
+.game-card.game-11 .game-tag{background:rgba(45,212,191,.12);color:var(--teal)}
+.game-card.game-12 .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
+.game-card.game-13 .game-tag{background:rgba(255,107,53,.12);color:var(--fire)}
+.game-card.game-14 .game-tag{background:rgba(251,191,36,.12);color:var(--gold)}
+.game-card.game-15 .game-tag{background:rgba(239,68,68,.12);color:var(--fire)}
+.game-card.game-16 .game-tag{background:rgba(34,211,238,.12);color:var(--cyan)}
+.game-card.game-17 .game-tag{background:rgba(192,132,252,.12);color:var(--purple)}
+.game-card.game-18 .game-tag{background:rgba(245,158,11,.12);color:var(--gold)}
+.game-card.game-19 .game-tag{background:rgba(148,163,184,.12);color:var(--ink-dim)}
+.game-card.game-20 .game-tag{background:rgba(99,102,241,.12);color:var(--purple)}
+.game-card.game-21 .game-tag{background:rgba(234,88,12,.12);color:var(--fire)}
+.game-card.game-22 .game-tag{background:rgba(34,197,94,.12);color:var(--leaf)}
+.game-card.game-23 .game-tag{background:rgba(220,38,38,.12);color:var(--fire)}
+.game-card.game-24 .game-tag{background:rgba(245,158,11,.12);color:var(--gold)}
+.game-card.game-25 .game-tag{background:rgba(129,140,248,.12);color:var(--purple)}
+.game-card.game-26 .game-tag{background:rgba(6,182,212,.12);color:#06b6d4}
+.game-card.game-27 .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
+.game-card.game-28 .game-tag{background:rgba(251,191,36,.12);color:var(--gold)}
+.game-card.game-29 .game-tag{background:rgba(240,98,146,.12);color:var(--rose)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -115,34 +118,35 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-meta{font-size:.72rem;color:var(--ink-mute)}
 .game-meta span{margin-right:.8rem}
 .game-link{font-family:'Cinzel',serif;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;transition:gap .3s}
-.game-card:nth-child(1) .game-link{color:var(--gold-bright)}
-.game-card:nth-child(2) .game-link{color:var(--cyan)}
-.game-card:nth-child(3) .game-link{color:var(--teal)}
-.game-card:nth-child(4) .game-link{color:var(--gold-bright)}
-.game-card:nth-child(5) .game-link{color:var(--leaf)}
-.game-card:nth-child(6) .game-link{color:var(--moon)}
-.game-card:nth-child(7) .game-link{color:var(--purple)}
-.game-card:nth-child(8) .game-link{color:var(--teal)}
-.game-card:nth-child(9) .game-link{color:var(--fire)}
-.game-card:nth-child(10) .game-link{color:var(--moon)}
-.game-card:nth-child(11) .game-link{color:var(--teal)}
-.game-card:nth-child(12) .game-link{color:var(--moon)}
-.game-card:nth-child(13) .game-link{color:var(--fire)}
-.game-card:nth-child(14) .game-link{color:var(--gold)}
-.game-card:nth-child(15) .game-link{color:var(--fire)}
-.game-card:nth-child(16) .game-link{color:var(--cyan)}
-.game-card:nth-child(17) .game-link{color:var(--purple)}
-.game-card:nth-child(18) .game-link{color:var(--gold)}
-.game-card:nth-child(19) .game-link{color:var(--ink-dim)}
-.game-card:nth-child(20) .game-link{color:var(--purple)}
-.game-card:nth-child(21) .game-link{color:var(--fire)}
-.game-card:nth-child(22) .game-link{color:var(--leaf)}
-.game-card:nth-child(23) .game-link{color:var(--fire)}
-.game-card:nth-child(24) .game-link{color:var(--gold)}
-.game-card:nth-child(25) .game-link{color:var(--purple)}
-.game-card:nth-child(26) .game-link{color:#06b6d4}
-.game-card:nth-child(27) .game-link{color:var(--moon)}
-.game-card:nth-child(28) .game-link{color:var(--gold)}
+.game-card.game-1 .game-link{color:var(--gold-bright)}
+.game-card.game-2 .game-link{color:var(--cyan)}
+.game-card.game-3 .game-link{color:var(--teal)}
+.game-card.game-4 .game-link{color:var(--gold-bright)}
+.game-card.game-5 .game-link{color:var(--leaf)}
+.game-card.game-6 .game-link{color:var(--moon)}
+.game-card.game-7 .game-link{color:var(--purple)}
+.game-card.game-8 .game-link{color:var(--teal)}
+.game-card.game-9 .game-link{color:var(--fire)}
+.game-card.game-10 .game-link{color:var(--moon)}
+.game-card.game-11 .game-link{color:var(--teal)}
+.game-card.game-12 .game-link{color:var(--moon)}
+.game-card.game-13 .game-link{color:var(--fire)}
+.game-card.game-14 .game-link{color:var(--gold)}
+.game-card.game-15 .game-link{color:var(--fire)}
+.game-card.game-16 .game-link{color:var(--cyan)}
+.game-card.game-17 .game-link{color:var(--purple)}
+.game-card.game-18 .game-link{color:var(--gold)}
+.game-card.game-19 .game-link{color:var(--ink-dim)}
+.game-card.game-20 .game-link{color:var(--purple)}
+.game-card.game-21 .game-link{color:var(--fire)}
+.game-card.game-22 .game-link{color:var(--leaf)}
+.game-card.game-23 .game-link{color:var(--fire)}
+.game-card.game-24 .game-link{color:var(--gold)}
+.game-card.game-25 .game-link{color:var(--purple)}
+.game-card.game-26 .game-link{color:#06b6d4}
+.game-card.game-27 .game-link{color:var(--moon)}
+.game-card.game-28 .game-link{color:var(--gold)}
+.game-card.game-29 .game-link{color:var(--rose)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── FOOTER ── */
@@ -182,19 +186,20 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">২৮</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">২৭২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">২৭২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">২৯</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">২৯৭</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">২৯৭০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 আটাশটি যাত্রা — Twenty-Eight Journeys</div>
+  <div class="section-label">📚 ঊনত্রিশটি যাত্রা — Twenty-Nine Journeys</div>
 
-  <!-- ══ GAME CARDS ══ -->
+  <!-- ══ GROUP 1: THE CORE SIX ══ -->
+  <div class="section-label">🏛️ মূল ছয়টি বই — The Core Six</div>
   <div class="games-grid">
 
     <!-- ══ GAME 1: AI ENGINEERING ══ -->
-    <a class="game-card" href="./ai-engineering-game/index.html">
+    <a class="game-card game-1" href="./ai-engineering-game/index.html">
       <div class="game-head">
         <div class="game-icon">🤖</div>
         <div class="game-head-text">
@@ -245,7 +250,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 2: DSA BAZAAR ══ -->
-    <a class="game-card" href="./dsa-bazaar/index.html">
+    <a class="game-card game-2" href="./dsa-bazaar/index.html">
       <div class="game-head">
         <div class="game-icon">🧮</div>
         <div class="game-head-text">
@@ -280,7 +285,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 3: ENGINEER JOURNEY ══ -->
-    <a class="game-card" href="./engineer-journey/index.html">
+    <a class="game-card game-3" href="./engineer-journey/index.html">
       <div class="game-head">
         <div class="game-icon">🏛️</div>
         <div class="game-head-text">
@@ -316,7 +321,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 4: SYSTEM DESIGN ══ -->
-    <a class="game-card" href="./system-design-game/index.html">
+    <a class="game-card game-4" href="./system-design-game/index.html">
       <div class="game-head">
         <div class="game-icon">🏙️</div>
         <div class="game-head-text">
@@ -350,7 +355,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 5: LEARN TO LEARN ══ -->
-    <a class="game-card" href="./learn-to-learn/index.html">
+    <a class="game-card game-5" href="./learn-to-learn/index.html">
       <div class="game-head">
         <div class="game-icon">🌱</div>
         <div class="game-head-text">
@@ -384,7 +389,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 6: INTERVIEW PREP ══ -->
-    <a class="game-card" href="./interview-prep-game/index.html">
+    <a class="game-card game-6" href="./interview-prep-game/index.html">
       <div class="game-head">
         <div class="game-icon">⚔️</div>
         <div class="game-head-text">
@@ -417,82 +422,18 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 7: DEEP LEARNING ══ -->
-    <a class="game-card" href="./deep-learning/index.html">
-      <div class="game-head">
-        <div class="game-icon">🔮</div>
-        <div class="game-head-text">
-          <div class="game-tag">Book 7 · Deep Learning Science</div>
-          <div class="game-title">The Council of Deep Knowledge</div>
-          <div class="game-title-bn">গভীর জ্ঞানের সভা</div>
-        </div>
-      </div>
-      <div class="game-desc">
-        দ্রুত শেখার বাইরে — গভীর শেখার আটটি স্তর। মনোযোগ অর্থনীতি, ২০ ঘণ্টা বনাম ১০,০০০ ঘণ্টা, Dunning-Kruger effect, ফিডব্যাক লুপ, জ্ঞান × কর্ম = শক্তি, আনলেয়ার্ন-লার্ন-রিলেয়ার্ন, স্পেসড রিপিটিশন + অ্যাক্টিভ রিকল, এবং মেটাকগনিশন।
-        <span class="en">Beyond fast learning — eight layers of deep knowledge. A critical analysis of "how to learn fast" videos: what they get right, what they oversimplify, and what they miss entirely. Attention economics, three milestones of mastery, illusion of competence, feedback loops, knowledge × action = power, unlearn-learn-relearn, spaced repetition + active recall, and metacognition.</span>
-      </div>
-      <div class="game-topics">
-        <span class="topic-chip">🧭 Attention Economy</span>
-        <span class="topic-chip">⚖️ 20h vs 10000h</span>
-        <span class="topic-chip">🪞 Dunning-Kruger</span>
-        <span class="topic-chip">🔁 Feedback Loop</span>
-        <span class="topic-chip">⚡ Knowledge × Action</span>
-        <span class="topic-chip">🔄 Unlearn &amp; Relearn</span>
-        <span class="topic-chip">🌊 Spaced Repetition</span>
-        <span class="topic-chip">🧠 Metacognition</span>
-      </div>
-      <div class="game-footer">
-        <div class="game-meta">
-          <span>📊 800 XP</span>
-          <span>🔮 8 Seats</span>
-          <span>📈 8 Ranks</span>
-        </div>
-        <div class="game-link">প্রবেশ করো →</div>
-      </div>
-    </a>
+  </div>
 
-    <!-- ══ GAME 8: PHD JOURNEY ══ -->
-    <a class="game-card" href="./phd-journey/index.html">
-      <div class="game-head">
-        <div class="game-icon">🎓</div>
-        <div class="game-head-text">
-          <div class="game-tag">Book 8 · PhD &amp; Research</div>
-          <div class="game-title">The Research Pilgrimage</div>
-          <div class="game-title-bn">গবেষণার তীর্থযাত্রা</div>
-        </div>
-      </div>
-      <div class="game-desc">
-        PhD — শূন্য থেকে অ্যাডমিশন পর্যন্ত একটি সম্পূর্ণ যাত্রা। দশটি স্থান — প্রথম সন্দেহ থেকে স্কলার হওয়া পর্যন্ত। Is PhD right for you? Funding (RA/TA/Fellowship), choosing a research area, SOP, cold emailing professors, low/mid/high profile strategies, getting research experience, PhD interviews, and life as a scholar.
-        <span class="en">PhD — a complete journey from zero to admission. Ten stations from first doubt to becoming a scholar. Covers decision-making, funding (RA/TA/Fellowship), research areas, SOP, cold emailing, profile strategies for low/mid/high applicants, first paper, interviews, and PhD life. Designed for international students with US Master's degrees in CS and tech.</span>
-      </div>
-      <div class="game-topics">
-        <span class="topic-chip">🏔️ Decision</span>
-        <span class="topic-chip">🗺️ Structure</span>
-        <span class="topic-chip">💰 Funding</span>
-        <span class="topic-chip">🎯 Research Area</span>
-        <span class="topic-chip">📝 SOP</span>
-        <span class="topic-chip">🤝 Cold Email</span>
-        <span class="topic-chip">⚖️ Profile Strategy</span>
-        <span class="topic-chip">📚 First Paper</span>
-        <span class="topic-chip">🧭 Interview</span>
-        <span class="topic-chip">🎓 PhD Life</span>
-      </div>
-      <div class="game-footer">
-        <div class="game-meta">
-          <span>📊 1000 XP</span>
-          <span>🎓 10 Stations</span>
-          <span>📈 8 Ranks</span>
-        </div>
-        <div class="game-link">প্রবেশ করো →</div>
-      </div>
-    </a>
+  <!-- ══ GROUP 2: THE AI DEEP DIVES ══ -->
+  <div class="section-label">🧬 এআই গভীর অনুসন্ধান — The AI Deep Dives</div>
+  <div class="games-grid">
 
-    <!-- ══ GAME 9: PROMPT ENGINEERING ══ -->
-    <a class="game-card" href="./prompt-engineering/index.html">
+    <!-- ══ GAME 7: PROMPT ENGINEERING ══ -->
+    <a class="game-card game-7" href="./prompt-engineering/index.html">
       <div class="game-head">
         <div class="game-icon">🔥</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 9 · Prompt &amp; Context Engineering</div>
+          <div class="game-tag">Book 7 · Prompt &amp; Context Engineering</div>
           <div class="game-title">The Word Weaver's Forge</div>
           <div class="game-title-bn">বাক্যের জাদুকর</div>
         </div>
@@ -523,12 +464,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 10: LLM ANATOMY ══ -->
-    <a class="game-card" href="./llm-anatomy/index.html">
+    <!-- ══ GAME 8: LLM ANATOMY ══ -->
+    <a class="game-card game-8" href="./llm-anatomy/index.html">
       <div class="game-head">
         <div class="game-icon">🔬</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 10 · LLM Architecture Deep Dive</div>
+          <div class="game-tag">Book 8 · LLM Architecture Deep Dive</div>
           <div class="game-title">The LLM Anatomy</div>
           <div class="game-title-bn">LLM দর্শন</div>
         </div>
@@ -559,12 +500,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 11: CONTEXT ENGINEERING ══ -->
-    <a class="game-card" href="./context-engineering/index.html">
+    <!-- ══ GAME 9: CONTEXT ENGINEERING ══ -->
+    <a class="game-card game-9" href="./context-engineering/index.html">
       <div class="game-head">
         <div class="game-icon">👁️</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 11 · Context Engineering Deep Dive</div>
+          <div class="game-tag">Book 9 · Context Engineering Deep Dive</div>
           <div class="game-title">The Canvas of Sight</div>
           <div class="game-title-bn">দৃষ্টির ক্যানভাস</div>
         </div>
@@ -595,12 +536,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 12: RAG MASTERY ══ -->
-    <a class="game-card" href="./rag-mastery/index.html">
+    <!-- ══ GAME 10: RAG MASTERY ══ -->
+    <a class="game-card game-10" href="./rag-mastery/index.html">
       <div class="game-head">
         <div class="game-icon">🪣</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 12 · RAG Mastery Deep Dive</div>
+          <div class="game-tag">Book 10 · RAG Mastery Deep Dive</div>
           <div class="game-title">The Well of Knowledge</div>
           <div class="game-title-bn">জ্ঞানের কুয়ো</div>
         </div>
@@ -631,12 +572,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 13: FINE-TUNING ══ -->
-    <a class="game-card" href="./fine-tuning/index.html">
+    <!-- ══ GAME 11: FINE-TUNING ══ -->
+    <a class="game-card game-11" href="./fine-tuning/index.html">
       <div class="game-head">
         <div class="game-icon">⚒️</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 13 · Fine-tuning Deep Dive</div>
+          <div class="game-tag">Book 11 · Fine-tuning Deep Dive</div>
           <div class="game-title">The Forge of Refinement</div>
           <div class="game-title-bn">কায়িক সাধনা</div>
         </div>
@@ -667,12 +608,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 14: AI AGENTS ══ -->
-    <a class="game-card" href="./ai-agents/index.html">
+    <!-- ══ GAME 12: AI AGENTS ══ -->
+    <a class="game-card game-12" href="./ai-agents/index.html">
       <div class="game-head">
         <div class="game-icon">🤖</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 14 · AI Agents Deep Dive</div>
+          <div class="game-tag">Book 12 · AI Agents Deep Dive</div>
           <div class="game-title">The Autonomous Mind</div>
           <div class="game-title-bn">স্বাধীন বুদ্ধি</div>
         </div>
@@ -703,12 +644,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 15: LLM SECURITY ══ -->
-    <a class="game-card" href="./llm-security/index.html">
+    <!-- ══ GAME 13: LLM SECURITY ══ -->
+    <a class="game-card game-13" href="./llm-security/index.html">
       <div class="game-head">
         <div class="game-icon">🛡️</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 15 · LLM Security Deep Dive</div>
+          <div class="game-tag">Book 13 · LLM Security Deep Dive</div>
           <div class="game-title">The Fortress Guard</div>
           <div class="game-title-bn">দুর্গের প্রহরী</div>
         </div>
@@ -739,12 +680,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 16: LLMOPS ══ -->
-    <a class="game-card" href="./llmops/index.html">
+    <!-- ══ GAME 14: LLMOPS ══ -->
+    <a class="game-card game-14" href="./llmops/index.html">
       <div class="game-head">
         <div class="game-icon">🚀</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 16 · LLMOps Deep Dive</div>
+          <div class="game-tag">Book 14 · LLMOps Deep Dive</div>
           <div class="game-title">The Control Tower</div>
           <div class="game-title-bn">নিয়ন্ত্রণ কেন্দ্র</div>
         </div>
@@ -775,12 +716,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 17: MULTIMODAL AI ══ -->
-    <a class="game-card" href="./multimodal-ai/index.html">
+    <!-- ══ GAME 15: MULTIMODAL AI ══ -->
+    <a class="game-card game-15" href="./multimodal-ai/index.html">
       <div class="game-head">
         <div class="game-icon">👁️</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 17 · Multimodal AI Deep Dive</div>
+          <div class="game-tag">Book 15 · Multimodal AI Deep Dive</div>
           <div class="game-title">The Five Senses</div>
           <div class="game-title-bn">পঞ্চইন্দ্রিয়</div>
         </div>
@@ -811,12 +752,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 18: LLM EVALS ══ -->
-    <a class="game-card" href="./llm-evals/index.html">
+    <!-- ══ GAME 16: LLM EVALS ══ -->
+    <a class="game-card game-16" href="./llm-evals/index.html">
       <div class="game-head">
         <div class="game-icon">📏</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 18 · LLM Evals Deep Dive</div>
+          <div class="game-tag">Book 16 · LLM Evals Deep Dive</div>
           <div class="game-title">The Measure</div>
           <div class="game-title-bn">মাপকাঠি</div>
         </div>
@@ -847,12 +788,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 19: INFERENCE OPTIMIZATION ══ -->
-    <a class="game-card" href="./inference-optimization/index.html">
+    <!-- ══ GAME 17: INFERENCE OPTIMIZATION ══ -->
+    <a class="game-card game-17" href="./inference-optimization/index.html">
       <div class="game-head">
         <div class="game-icon">⚙️</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 19 · Inference Optimization Deep Dive</div>
+          <div class="game-tag">Book 17 · Inference Optimization Deep Dive</div>
           <div class="game-title">The Forged Edge</div>
           <div class="game-title-bn">ধাতব কর্মক্ষমতা</div>
         </div>
@@ -883,12 +824,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 20: EMBEDDINGS ══ -->
-    <a class="game-card" href="./embeddings/index.html">
+    <!-- ══ GAME 18: EMBEDDINGS ══ -->
+    <a class="game-card game-18" href="./embeddings/index.html">
       <div class="game-head">
         <div class="game-icon">📐</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 20 · Embeddings Deep Dive</div>
+          <div class="game-tag">Book 18 · Embeddings Deep Dive</div>
           <div class="game-title">The Geometry of Meaning</div>
           <div class="game-title-bn">অর্থের জ্যামিতি</div>
         </div>
@@ -919,12 +860,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 21: TOOLS & MCP ══ -->
-    <a class="game-card" href="./tools-mcp/index.html">
+    <!-- ══ GAME 19: TOOLS & MCP ══ -->
+    <a class="game-card game-19" href="./tools-mcp/index.html">
       <div class="game-head">
         <div class="game-icon">🔧</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 21 · Tools & MCP Deep Dive</div>
+          <div class="game-tag">Book 19 · Tools & MCP Deep Dive</div>
           <div class="game-title">The Tool Forge</div>
           <div class="game-title-bn">সরঞ্জাম নির্মাণ</div>
         </div>
@@ -955,12 +896,54 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 22: RESEARCHER'S MIND ══ -->
-    <a class="game-card" href="./researcher-mind/index.html">
+  </div>
+
+  <!-- ══ GROUP 3: GROWTH & RESEARCH CRAFT ══ -->
+  <div class="section-label">🌳 বৃদ্ধি ও গবেষণা কারুশিল্প — Growth &amp; Research Craft</div>
+  <div class="games-grid">
+
+    <!-- ══ GAME 20: PHD JOURNEY ══ -->
+    <a class="game-card game-20" href="./phd-journey/index.html">
+      <div class="game-head">
+        <div class="game-icon">🎓</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 20 · PhD &amp; Research</div>
+          <div class="game-title">The Research Pilgrimage</div>
+          <div class="game-title-bn">গবেষণার তীর্থযাত্রা</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        PhD — শূন্য থেকে অ্যাডমিশন পর্যন্ত একটি সম্পূর্ণ যাত্রা। দশটি স্থান — প্রথম সন্দেহ থেকে স্কলার হওয়া পর্যন্ত। Is PhD right for you? Funding (RA/TA/Fellowship), choosing a research area, SOP, cold emailing professors, low/mid/high profile strategies, getting research experience, PhD interviews, and life as a scholar.
+        <span class="en">PhD — a complete journey from zero to admission. Ten stations from first doubt to becoming a scholar. Covers decision-making, funding (RA/TA/Fellowship), research areas, SOP, cold emailing, profile strategies for low/mid/high applicants, first paper, interviews, and PhD life. Designed for international students with US Master's degrees in CS and tech.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🏔️ Decision</span>
+        <span class="topic-chip">🗺️ Structure</span>
+        <span class="topic-chip">💰 Funding</span>
+        <span class="topic-chip">🎯 Research Area</span>
+        <span class="topic-chip">📝 SOP</span>
+        <span class="topic-chip">🤝 Cold Email</span>
+        <span class="topic-chip">⚖️ Profile Strategy</span>
+        <span class="topic-chip">📚 First Paper</span>
+        <span class="topic-chip">🧭 Interview</span>
+        <span class="topic-chip">🎓 PhD Life</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🎓 10 Stations</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 21: RESEARCHER'S MIND ══ -->
+    <a class="game-card game-21" href="./researcher-mind/index.html">
       <div class="game-head">
         <div class="game-icon">🧠</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 22 · Researcher Mindset</div>
+          <div class="game-tag">Book 21 · Researcher Mindset</div>
           <div class="game-title">The Researcher's Mind</div>
           <div class="game-title-bn">গবেষকের মন</div>
         </div>
@@ -991,12 +974,48 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 22: IRREPLACEABLE CRAFTSMAN ══ -->
-    <a class="game-card" href="./irreplaceable-craftsman/index.html">
+    <!-- ══ GAME 22: CS OCEAN ══ -->
+    <a class="game-card game-22" href="./cs-ocean/index.html">
+      <div class="game-head">
+        <div class="game-icon">🌊</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 22 · CS Domain Deep Dive</div>
+          <div class="game-title">The Ocean of Computer Science</div>
+          <div class="game-title-bn">কম্পিউটার সায়েন্সের মহাসমুদ্র</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        কোন ডোমেইনে PhD করবে? দশটা ডোমেইনের গভীর ডুব — AI/ML, Systems, Security, Data, HCI, SE/PL, Theory, Quantum, Robotics, Emerging। প্রতিটি ডোমেইনে: sub-areas, conferences, funding, competition, career, future outlook। শেষ দরজায় একটা decision framework — interest + strength + market + purpose। গবেষকের মন (Book 21) শেখায় কীভাবে চিন্তা করতে হয় — এই বই শেখায় কোথায় সেই চিন্তা প্রয়োগ করবে। Knowledge Courtyard-এর সবচেয়ে গুরুত্বপূর্ণ বই — কারণ এটি তোমার PhD-এর দিক নির্ধারণ করবে।
+        <span class="en">Which domain for your PhD? A deep dive into ten CS domains — AI/ML, Systems, Security, Data, HCI, SE/PL, Theory, Quantum, Robotics, and Emerging. Each domain covers: sub-areas, conferences, funding levels, competition rates, career outlook, and future trends. Final door includes a PhD domain selection framework — interest + strength + market + purpose. The most important book in the Courtyard — because it determines your PhD direction and your next 5-7 years.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🧠 AI/ML</span>
+        <span class="topic-chip">🏗️ Systems</span>
+        <span class="topic-chip">🛡️ Security</span>
+        <span class="topic-chip">🗄️ Data</span>
+        <span class="topic-chip">👋 HCI</span>
+        <span class="topic-chip">⚙️ SE/PL</span>
+        <span class="topic-chip">📐 Theory</span>
+        <span class="topic-chip">⚛️ Quantum</span>
+        <span class="topic-chip">🤖 Robotics</span>
+        <span class="topic-chip">🧭 Decision</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🌊 10 Domains</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 23: IRREPLACEABLE CRAFTSMAN ══ -->
+    <a class="game-card game-23" href="./irreplaceable-craftsman/index.html">
       <div class="game-head">
         <div class="game-icon">🌳</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 22 · Career & Mindset Deep Dive</div>
+          <div class="game-tag">Book 23 · Career & Mindset Deep Dive</div>
           <div class="game-title">The Irreplaceable Craftsman</div>
           <div class="game-title-bn">অবিচ্ছেয্য কারিগর</div>
         </div>
@@ -1027,12 +1046,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 23: HUMAN PSYCHOLOGY ══ -->
-    <a class="game-card" href="./human-psychology/index.html">
+    <!-- ══ GAME 24: HUMAN PSYCHOLOGY ══ -->
+    <a class="game-card game-24" href="./human-psychology/index.html">
       <div class="game-head">
         <div class="game-icon">🧠</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 23 · Human Psychology Deep Dive</div>
+          <div class="game-tag">Book 24 · Human Psychology Deep Dive</div>
           <div class="game-title">The Throne of the Mind</div>
           <div class="game-title-bn">মনের সিংহাসন</div>
         </div>
@@ -1063,12 +1082,46 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 24: KNOWLEDGE CRAFTSMAN ══ -->
-    <a class="game-card" href="./knowledge-craftsman/index.html">
+    <!-- ══ GAME 25: DEEP LEARNING ══ -->
+    <a class="game-card game-25" href="./deep-learning/index.html">
+      <div class="game-head">
+        <div class="game-icon">🔮</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 25 · Deep Learning Science</div>
+          <div class="game-title">The Council of Deep Knowledge</div>
+          <div class="game-title-bn">গভীর জ্ঞানের সভা</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        দ্রুত শেখার বাইরে — গভীর শেখার আটটি স্তর। মনোযোগ অর্থনীতি, ২০ ঘণ্টা বনাম ১০,০০০ ঘণ্টা, Dunning-Kruger effect, ফিডব্যাক লুপ, জ্ঞান × কর্ম = শক্তি, আনলেয়ার্ন-লার্ন-রিলেয়ার্ন, স্পেসড রিপিটিশন + অ্যাক্টিভ রিকল, এবং মেটাকগনিশন।
+        <span class="en">Beyond fast learning — eight layers of deep knowledge. A critical analysis of "how to learn fast" videos: what they get right, what they oversimplify, and what they miss entirely. Attention economics, three milestones of mastery, illusion of competence, feedback loops, knowledge × action = power, unlearn-learn-relearn, spaced repetition + active recall, and metacognition.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🧭 Attention Economy</span>
+        <span class="topic-chip">⚖️ 20h vs 10000h</span>
+        <span class="topic-chip">🪞 Dunning-Kruger</span>
+        <span class="topic-chip">🔁 Feedback Loop</span>
+        <span class="topic-chip">⚡ Knowledge × Action</span>
+        <span class="topic-chip">🔄 Unlearn &amp; Relearn</span>
+        <span class="topic-chip">🌊 Spaced Repetition</span>
+        <span class="topic-chip">🧠 Metacognition</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 800 XP</span>
+          <span>🔮 8 Seats</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 26: KNOWLEDGE CRAFTSMAN ══ -->
+    <a class="game-card game-26" href="./knowledge-craftsman/index.html">
       <div class="game-head">
         <div class="game-icon">📖</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 24 · Reading/Thinking/Writing Deep Dive</div>
+          <div class="game-tag">Book 26 · Reading/Thinking/Writing Deep Dive</div>
           <div class="game-title">The Craftsman of Knowledge</div>
           <div class="game-title-bn">জ্ঞানের কারিগর</div>
         </div>
@@ -1099,12 +1152,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 25: RESEARCH PAPER CRAFTSMAN ══ -->
-    <a class="game-card" href="./research-paper-craftsman/index.html">
+    <!-- ══ GAME 27: RESEARCH PAPER CRAFTSMAN ══ -->
+    <a class="game-card game-27" href="./research-paper-craftsman/index.html">
       <div class="game-head">
         <div class="game-icon">📄</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 25 · Research Paper Read/Write Deep Dive</div>
+          <div class="game-tag">Book 27 · Research Paper Read/Write Deep Dive</div>
           <div class="game-title">The Research Paper Craftsman</div>
           <div class="game-title-bn">গবেষণার কারিগর</div>
         </div>
@@ -1135,19 +1188,19 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 26: KNOWLEDGE WEB ══ -->
-    <a class="game-card" href="./knowledge-web/index.html">
+    <!-- ══ GAME 28: KNOWLEDGE WEB ══ -->
+    <a class="game-card game-28" href="./knowledge-web/index.html">
       <div class="game-head">
         <div class="game-icon">🧩</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 26 · Knowledge Connection Capstone</div>
+          <div class="game-tag">Book 28 · Knowledge Connection Capstone</div>
           <div class="game-title">The Knowledge Web</div>
           <div class="game-title-bn">জ্ঞানের জাল</div>
         </div>
       </div>
       <div class="game-desc">
-        একটি জ্ঞান আরেকটির সাথে সংযুক্ত করো — বিচ্ছিন্ন দ্বীপ থেকে জীবন্ত জাল। Gentner-এর structure-mapping theory (১৯৮৩), Munger-এর mental models latticework (~১০০ মডেল), knowledge gap identification methodology, Kounios ও Beeman-এর insight neuroscience (default mode network, gamma waves), Hofstadter-এর analogy-as-cognition, Polya-এর cross-domain heuristics, Novak-এর concept mapping, Medici Effect (Johansson ২০০৪), Hegel-এর dialectical thinking, এবং সব ২৫টা বইয়ের সংযোগ।
-        <span class="en">Connect one knowledge to another — from isolated islands to a living web. The CAPSTONE book that connects all 25 previous books. Covers: Gentner's structure-mapping theory (1983), Munger's mental models latticework, knowledge gap identification, insight neuroscience (Kounios & Beeman, default mode network, gamma waves), Hofstadter's analogy-as-cognition, Polya's heuristics, Novak's concept mapping, Medici Effect (Johansson 2004), Hegel's dialectical thinking (thesis-antithesis-synthesis), and the complete 26-book knowledge architecture.</span>
+        একটি জ্ঞান আরেকটির সাথে সংযুক্ত করো — বিচ্ছিন্ন দ্বীপ থেকে জীবন্ত জাল। Gentner-এর structure-mapping theory (১৯৮৩), Munger-এর mental models latticework (~১০০ মডেল), knowledge gap identification methodology, Kounios ও Beeman-এর insight neuroscience (default mode network, gamma waves), Hofstadter-এর analogy-as-cognition, Polya-এর cross-domain heuristics, Novak-এর concept mapping, Medici Effect (Johansson ২০০৪), Hegel-এর dialectical thinking, এবং সব ২৭টা বইয়ের সংযোগ।
+        <span class="en">Connect one knowledge to another — from isolated islands to a living web. The CAPSTONE book that connects all 27 previous books. Covers: Gentner's structure-mapping theory (1983), Munger's mental models latticework, knowledge gap identification, insight neuroscience (Kounios & Beeman, default mode network, gamma waves), Hofstadter's analogy-as-cognition, Polya's heuristics, Novak's concept mapping, Medici Effect (Johansson 2004), Hegel's dialectical thinking (thesis-antithesis-synthesis), and the complete 28-book knowledge architecture.</span>
       </div>
       <div class="game-topics">
         <span class="topic-chip">🧩 Silos</span>
@@ -1171,48 +1224,18 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 27: CS OCEAN ══ -->
-    <a class="game-card" href="./cs-ocean/index.html">
-      <div class="game-head">
-        <div class="game-icon">🌊</div>
-        <div class="game-head-text">
-          <div class="game-tag">Book 27 · CS Domain Deep Dive</div>
-          <div class="game-title">The Ocean of Computer Science</div>
-          <div class="game-title-bn">কম্পিউটার সায়েন্সের মহাসমুদ্র</div>
-        </div>
-      </div>
-      <div class="game-desc">
-        কোন ডোমেইনে PhD করবে? দশটা ডোমেইনের গভীর ডুব — AI/ML, Systems, Security, Data, HCI, SE/PL, Theory, Quantum, Robotics, Emerging। প্রতিটি ডোমেইনে: sub-areas, conferences, funding, competition, career, future outlook। শেষ দরজায় একটা decision framework — interest + strength + market + purpose। গবেষকের মন (Book 22) শেখায় কীভাবে চিন্তা করতে হয় — এই বই শেখায় কোথায় সেই চিন্তা প্রয়োগ করবে। Knowledge Courtyard-এর সবচেয়ে গুরুত্বপূর্ণ বই — কারণ এটি তোমার PhD-এর দিক নির্ধারণ করবে।
-        <span class="en">Which domain for your PhD? A deep dive into ten CS domains — AI/ML, Systems, Security, Data, HCI, SE/PL, Theory, Quantum, Robotics, and Emerging. Each domain covers: sub-areas, conferences, funding levels, competition rates, career outlook, and future trends. Final door includes a PhD domain selection framework — interest + strength + market + purpose. The most important book in the Courtyard — because it determines your PhD direction and your next 5-7 years.</span>
-      </div>
-      <div class="game-topics">
-        <span class="topic-chip">🧠 AI/ML</span>
-        <span class="topic-chip">🏗️ Systems</span>
-        <span class="topic-chip">🛡️ Security</span>
-        <span class="topic-chip">🗄️ Data</span>
-        <span class="topic-chip">👋 HCI</span>
-        <span class="topic-chip">⚙️ SE/PL</span>
-        <span class="topic-chip">📐 Theory</span>
-        <span class="topic-chip">⚛️ Quantum</span>
-        <span class="topic-chip">🤖 Robotics</span>
-        <span class="topic-chip">🧭 Decision</span>
-      </div>
-      <div class="game-footer">
-        <div class="game-meta">
-          <span>📊 1000 XP</span>
-          <span>🌊 10 Domains</span>
-          <span>📈 8 Ranks</span>
-        </div>
-        <div class="game-link">প্রবেশ করো →</div>
-      </div>
-    </a>
+  </div>
 
-    <!-- ══ GAME 28: MI DRIVING GUIDE ══ -->
-    <a class="game-card" href="./mi-driving/index.html">
+  <!-- ══ GROUP 4: EXTRAS ══ -->
+  <div class="section-label">🚗 বাড়তি — Extras</div>
+  <div class="games-grid">
+
+    <!-- ══ GAME 29: MI DRIVING GUIDE ══ -->
+    <a class="game-card game-29" href="./mi-driving/index.html">
       <div class="game-head">
         <div class="game-icon">🚗</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 28 · Michigan Driving Guide</div>
+          <div class="game-tag">Book 29 · Michigan Driving Guide</div>
           <div class="game-title">The Michigan Driving Guide</div>
           <div class="game-title-bn">মিশিগান ড্রাইভিং গাইড</div>
         </div>
@@ -1243,12 +1266,14 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
   </div>
+
+  <div class="footer">
     <div class="footer-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
     <div class="footer-verse-trans">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
     <div class="footer-note">
-      তিনটি বই, ত্রিশটি অধ্যায়, এক যাত্রা — শিক্ষানবিশ থেকে কারিগর।<br>
-      <em>Three books, thirty chapters, one journey — from apprentice to craftsman.</em><br><br>
-      প্রতিটা বই সম্পূর্ণ স্বাধীন — যেকোনো ক্রমে পড়তে পারো। তবে সুপারিশ: ৩ → ২ → ১ (mindset → skills → domain)।
+      ঊনত্রিশটি বই, ২৯৭টি অধ্যায়, এক যাত্রা — শিক্ষানবিশ থেকে কারিগর।<br>
+      <em>Twenty-nine books, 297 chapters, one journey — from apprentice to craftsman.</em><br><br>
+      প্রতিটা বই সম্পূর্ণ স্বাধীন — যেকোনো ক্রমে পড়তে পারো। তবে সুপারিশ: মূল ছয়টি বই দিয়ে শুরু করো (mindset → skills → domain), তারপর গভীর বিষয়ে ডুব দাও।
     </div>
   </div>
 
