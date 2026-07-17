@@ -176,6 +176,20 @@ LEVEL 2 RESTRICTIONS:
    driver testing business। পাশ করলে certificate
    নিয়ে SOS-এ গিয়ে license নিতে হয়।</div>
 
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — রাত ১০:৩০, কাজ শেষে</div>
+<div class="scn-question">❓ তোমার Level 2 Provisional License। তুমি Meijer-এ part-time কাজ করো, শিফট শেষ রাত ১০:১৫-তে। বাসা ২০ মিনিট দূরে। রাত ১০টার পর তো চালানো নিষেধ — তুমি কি আইন ভাঙছ?</div>
+<div class="scn-answer">✅ না। কাজ থেকে সরাসরি বাসায় ফেরা night restriction-এর exception — work, school, religious activity-র জন্য যাতায়াত বৈধ।</div>
+<div class="scn-explain">কিন্তু সাবধান: কাজ শেষে বন্ধুর বাসায় আড্ডা দিয়ে ১১টায় ফিরলে সেটা আর exception নয়। Route-ও হতে হবে যুক্তিসঙ্গত — কাজ থেকে বাসা, ঘোরাঘুরি নয়। Pay stub বা work schedule সাথে রাখা ভালো।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — বন্ধুরা লিফট চায়</div>
+<div class="scn-question">❓ তুমি ১৬, Level 2 license, স্কুল ছুটির পর। তিন বন্ধু (সবাই ১৭) বলছে — "চল, mall-এ নামিয়ে দে!" তুমি কি নিতে পারবে?</div>
+<div class="scn-answer">✅ না। Level 2-তে ২১ বছরের কম বয়সী মাত্র ১ জন passenger নেওয়া যায় (immediate family ছাড়া)। তিনজন = violation।</div>
+<div class="scn-explain">এটা শুধু নিয়ম নয় — গবেষণায় দেখা গেছে teen driver-এর গাড়িতে প্রতিটা teen passenger যোগ হলে crash ঝুঁকি লাফিয়ে বাড়ে। একজনকে নাও, বাকিদের না বলো — "আমার license-এ নিষেধ" বলাটাই যথেষ্ট।</div>
+</div>
+
 <div class="secret-box">📄 Michigan GDL: ৩ ধাপ — Segment 1 (১৪y ৮m) → Learner License (১৪y ৯m+) → Segment 2 → Level 2 Provisional (১৬+) → Level 3 Full (১৭+)। Knowledge test: ৫০ প্রশ্ন (২৫ সাইন + ২৫ নিয়ম), প্রতি ভাগে ২০+ পাশ (৮০%) — আলাদাভাবে।</div>`
 });
 
@@ -319,6 +333,20 @@ doors.push({
 <div class="scn-question">❓ তুমি রাতে চালাচ্ছো। বরফের ঝড়। একটা সাইন দেখা যাচ্ছে কিন্তু বরফে ঢাকা — শুধু আকার দেখা যাচ্ছে অষ্টভুজ। তুমি কী করবে?</div>
 <div class="scn-answer">✅ সম্পূর্ণ থামো। আকার থেকে চিনেছ — STOP sign।</div>
 <div class="scn-explain">এটাই আকারের শক্তি — বরফে লেখা না পড়লেও আকার থেকে বোঝা যায়। অষ্টভুজ শুধু STOP sign-এই ব্যবহার হয়। কোনো অন্য সাইনে নয়।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — I-696 Construction Zone</div>
+<div class="scn-question">❓ গ্রীষ্মের বিকেল, I-696-এ। সামনে কমলা হীরা সাইন: "ROAD WORK AHEAD", তারপর "LEFT LANE CLOSED 1/2 MILE"। ট্রাফিক ঘন। তুমি বাম লেনে। কী করবে?</div>
+<div class="scn-answer">✅ Signal দিয়ে আগেভাগে ডান লেনে merge করো (অথবা zipper merge — বন্ধ হওয়ার পয়েন্টে একটার-পর-একটা)। গতি কমাও। Worker থাকলে বিশেষ সতর্ক।</div>
+<div class="scn-explain">Michigan-এ "construction season" একটা বাস্তবতা — গ্রীষ্মে সব হাইওয়েতে কমলা সাইন। মনে রাখো: work zone-এ জরিমানা দ্বিগুণ, আর worker আহত করলে $7,500 পর্যন্ত fine + ১৫ বছর পর্যন্ত জেল। কমলা মানেই — ধীরে, ধৈর্য।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — Two-Lane Road, ধীর ট্রাক</div>
+<div class="scn-question">❓ তুমি M-52-এর মতো two-lane রাস্তায়। সামনে ধীর ট্রাক্টর। বাম পাশে রাস্তার ধারে হলুদ pennant সাইন দেখলে। পাস করবে?</div>
+<div class="scn-answer">✅ না। Pennant = NO PASSING ZONE শুরু। সামনে hill বা curve আছে — oncoming দেখা যায় না। Zone শেষ না হওয়া পর্যন্ত ধৈর্য ধরো।</div>
+<div class="scn-explain">Pennant-ই একমাত্র সাইন যা রাস্তার বাম পাশে থাকে — কারণ passing-এর সময় তোমার চোখ বাম দিকেই থাকে। সাথে রাস্তায় সলিড হলুদ লাইনও শুরু হবে। দুটোই একই কথা বলছে: এখানে ওভারটেক = মৃত্যুঝুঁকি।</div>
 </div>
 
 <div class="secret-box">🚦 আকার + রঙ = সাইনের পরিচয়। অষ্টভুজ লাল = STOP, উল্টানো ত্রিভুজ = YIELD, হীরা হলুদ = warning, হীরা কমলা = construction, আয়ত সবুছে = guide। লেখা পড়ার দরকার নেই — আকার দেখেই বুঝে ফেলো।</div>`
@@ -560,6 +588,13 @@ SPECIAL MARKINGS
 <div class="scn-question">❓ তুমি বাম মোড়ের লেনে। সিগন্যালে flashing yellow arrow জ্বলছে। বিপরীত দিক থেকে গাড়ি আসছে। তুমি কি মোড় নেবে?</div>
 <div class="scn-answer">✅ অপেক্ষা করো। Flashing yellow arrow মানে মোড় অনুমোদিত কিন্তু protected নয় — oncoming traffic পরিষ্কার হলে তবে যাও।</div>
 <div class="scn-explain">অনেকে flashing yellow arrow-কে green arrow ভেবে ভুল করে — এটা Michigan-এ left-turn crash-এর বড় কারণ। Green arrow = oncoming থেমে আছে। Flashing yellow = oncoming চলছে, তুমি yield করো।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — ঝড়ে Signal মৃত</div>
+<div class="scn-question">❓ আগস্টের ঝড়ে বিদ্যুৎ গেছে। Gratiot Avenue-র একটা ব্যস্ত intersection-এ ট্রাফিক লাইট সম্পূর্ণ অন্ধকার — কোনো আলোই জ্বলছে না। কী করবে?</div>
+<div class="scn-answer">✅ Dark signal = 4-way STOP হিসেবে আচরণ করো। সম্পূর্ণ থামো, যে আগে থেমেছে সে আগে যায়, টাই হলে ডান দিক প্রথম।</div>
+<div class="scn-explain">Michigan-এ ঝড়ে signal outage খুবই কমন। অনেক driver না থেমে বেরিয়ে যায় — এ থেকেই crash। মনে রাখো: no light = all-way stop। আর কেউ না থামলেও তুমি থামো — নিয়ম জানা তোমার দায়িত্ব, অন্যেরটা নয়।</div>
 </div>
 
 <div class="secret-box">🚥 হলুদ = থামার প্রস্তুতি, ফ্ল্যাশিং লাল = STOP sign-এর মতো। সলিড লাইন = পার হওয়া নিষেধ, ড্যাশড = পার হওয়া যায়। হলুদ = opposite direction, সাদা = same direction।</div>`
@@ -808,6 +843,13 @@ doors.push({
 <div class="scn-explain">Metro Detroit-এর বড় রাস্তায় (Telegraph, Woodward, 8 Mile) এটা প্রতিদিনের ঘটনা। Crossover-এ ঢোকার আগে বাম signal দাও, ভেতরে অপেক্ষারত গাড়ির পেছনে দাঁড়াও, oncoming পরিষ্কার হলে U-turn সম্পন্ন করো। রোড টেস্টে না আসলেও বাস্তব Michigan ড্রাইভিংয়ে অপরিহার্য।</div>
 </div>
 
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — "যাও যাও" বলে হাত নাড়ছে</div>
+<div class="scn-question">❓ Residential এলাকায় 4-way stop। তুমি আর আরেকটা গাড়ি প্রায় একসাথে থেমেছ — সে তোমার বামে, মানে নিয়মমতো তুমি আগে। কিন্তু সে হাত নেড়ে তোমাকে "যাও" বলছে, আবার গাড়িটাও একটু একটু এগোচ্ছে। কী করবে?</div>
+<div class="scn-answer">✅ Eye contact করো, সে সত্যিই থেমে থাকলে ধীরে, সতর্কভাবে যাও। কিন্তু সে এগোতে থাকলে — থামো, তাকে যেতে দাও। নিয়ম বলে তুমি আগে, বাস্তবতা বলে নিরাপত্তা আগে।</div>
+<div class="scn-explain">বাস্তব রাস্তায় সবাই নিয়ম মানে না — কেউ ভুলে যায়, কেউ তাড়াহুড়ো করে। Right-of-way "নেওয়ার" জিনিস নয়, "দেওয়ার" জিনিস। Crash হলে "কিন্তু আমার অগ্রাধিকার ছিল" বলে লাভ নেই। Defensive driving-এর মূলমন্ত্র: predictable হও, সন্দেহ হলে yield করো।</div>
+</div>
+
 <div class="code-block">EXAM PATTERN QUESTIONS — Right-of-Way:
 
 ❓ 4-way stop-এ একই সময়ে ২টা গাড়ি থামলে 
@@ -1036,6 +1078,20 @@ doors.push({
 
 ❓ Snow-এ speed limit 55 থাকলে কতে চালাবে?
 ✅ Condition অনুযায়ী — ধীরে, যতটা নিরাপদ।</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — বিকেল ৩টা, স্কুলের সামনে</div>
+<div class="scn-question">❓ তুমি একটা elementary school-এর পাশ দিয়ে যাচ্ছ। সাইনে: "SPEED LIMIT 25 WHEN FLASHING" — এবং হলুদ আলো জ্বলছে-নিভছে। রাস্তা ফাঁকা, কোনো বাচ্চা দেখা যাচ্ছে না। স্বাভাবিক limit ৪৫। কত গতিতে যাবে?</div>
+<div class="scn-answer">✅ ২৫ mph। Beacon জ্বলছে = school zone limit কার্যকর — বাচ্চা দেখা যাক বা না যাক।</div>
+<div class="scn-explain">"বাচ্চা তো নেই" — এই যুক্তি আদালতে চলে না, আর বাস্তবেও না: বাচ্চারা parked গাড়ির ফাঁক থেকে হঠাৎ বেরোয়। School zone-এ violation-এ জরিমানাও বাড়ানো। Flashing beacon দেখলেই পা গ্যাস থেকে সরাও — এটা reflex বানিয়ে ফেলো।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — সবাই ৮০-তে চলছে</div>
+<div class="scn-question">❓ I-75-এ speed limit ৭০। কিন্তু আশেপাশের সব গাড়ি ৭৮-৮২ mph-এ চলছে। তুমি ৭০-এ চললে সবাই তোমাকে ওভারটেক করছে, পেছনে গাড়ি জমছে। কী করবে?</div>
+<div class="scn-answer">✅ ডান লেনে সরে যাও এবং limit-এ (বা কাছাকাছি) চালাও। "সবাই করছে" speeding-এর আইনি অজুহাত নয় — ধরা পড়লে ticket তোমার।</div>
+<div class="scn-explain">বাস্তবতা: traffic flow-এর সাথে বড় গতি-পার্থক্যও বিপজ্জনক। সমাধান হলো লেন নির্বাচন — ধীর ট্রাফিক ডান লেনে, বাম লেন passing-এর জন্য। বাম লেনে ৭০-এ বসে থাকা = রাস্তার সবচেয়ে বিরক্তিকর (এবং ঝুঁকিপূর্ণ) গাড়ি হওয়া।</div>
+</div>
 
 <div class="secret-box">🅿️ Speed: residential 25, highway 70, school 25 mph। Basic speed law: condition অনুযায়ী চালাও। Parking: fire hydrant 15ft, crosswalk 20ft, stop sign 30ft, railroad 50ft দূরে। Downhill = চাকা ডানে, uphill = চাকা বামে। Construction = double fine!</div>`
 });

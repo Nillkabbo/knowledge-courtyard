@@ -146,51 +146,83 @@ doors.push({
   ✦ Threshold braking (firm, smooth — ABS-এ)
   ✦ ABS: চাপ ধরে রাখো, পাম্প করো না</div>
 
-<div class="diagram-box"><div class="dia-title">📏 3-SECOND RULE — Visual Guide</div>
+<div class="rt-image">
+<svg viewBox="0 0 460 230" width="100%" style="max-width:480px">
+<!-- sky/bg -->
+<rect x="0" y="0" width="460" height="230" fill="#111" rx="8"/>
+<text x="230" y="22" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">📏 3-SECOND RULE</text>
+<!-- FRAME 1 -->
+<text x="14" y="46" fill="#888" font-size="9" font-weight="700">মুহূর্ত ১ — সামনের গাড়ি পোল পার হলো → গোনা শুরু</text>
+<rect x="14" y="52" width="432" height="44" fill="#2a2a2a" rx="4"/>
+<line x1="14" y1="74" x2="446" y2="74" stroke="#f1c40f" stroke-width="2" stroke-dasharray="14,10" opacity=".6"/>
+<rect x="208" y="46" width="5" height="56" fill="#8a6d3b"/><circle cx="210" cy="44" r="6" fill="#c62828"/>
+<text x="210" y="112" text-anchor="middle" fill="#8a6d3b" font-size="8">POLE</text>
+<!-- lead car just past pole -->
+<rect x="224" y="58" width="44" height="18" rx="5" fill="#3498db"/><circle cx="234" cy="78" r="4" fill="#000"/><circle cx="258" cy="78" r="4" fill="#000"/>
+<text x="246" y="71" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">সামনের</text>
+<!-- your car far behind -->
+<rect x="44" y="58" width="44" height="18" rx="5" fill="#2ecc71"/><circle cx="54" cy="78" r="4" fill="#000"/><circle cx="78" cy="78" r="4" fill="#000"/>
+<text x="66" y="71" text-anchor="middle" fill="#063" font-size="8" font-weight="900">তুমি</text>
+<text x="330" y="68" fill="#f1c40f" font-size="9" font-weight="700">⏱ "one-thousand-one…"</text>
+<!-- FRAME 2 -->
+<text x="14" y="132" fill="#888" font-size="9" font-weight="700">মুহূর্ত ২ — ঠিক ৩ সেকেন্ড পরে তুমি পোলে পৌঁছালে = নিরাপদ দূরত্ব</text>
+<rect x="14" y="138" width="432" height="44" fill="#2a2a2a" rx="4"/>
+<line x1="14" y1="160" x2="446" y2="160" stroke="#f1c40f" stroke-width="2" stroke-dasharray="14,10" opacity=".6"/>
+<rect x="208" y="132" width="5" height="56" fill="#8a6d3b"/><circle cx="210" cy="130" r="6" fill="#c62828"/>
+<!-- lead car far right -->
+<rect x="380" y="144" width="44" height="18" rx="5" fill="#3498db"/><circle cx="390" cy="164" r="4" fill="#000"/><circle cx="414" cy="164" r="4" fill="#000"/>
+<!-- your car at pole -->
+<rect x="160" y="144" width="44" height="18" rx="5" fill="#2ecc71"/><circle cx="170" cy="164" r="4" fill="#000"/><circle cx="194" cy="164" r="4" fill="#000"/>
+<text x="182" y="157" text-anchor="middle" fill="#063" font-size="8" font-weight="900">তুমি</text>
+<text x="240" y="200" fill="#2ecc71" font-size="9" font-weight="700">✅ "…one-thousand-three" — এখন পোলে = ৩ সেকেন্ড দূরত্ব</text>
+<text x="14" y="218" fill="#e74c3c" font-size="9" font-weight="700">❌ ৩ সেকেন্ডের আগে পোলে পৌঁছালে = খুব কাছে! ধীরে করো।</text>
+</svg>
+<div class="rt-caption">সামনের গাড়ি একটা fixed point পার হলে গোনো — তুমি সেই point-এ ৩ সেকেন্ডের আগে পৌঁছালে দূরত্ব বাড়াও</div>
+</div>
 
-  সামনের গাড়ি এখানে ছিল (pole/sign পাশে):
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  ║ Pole ║     [🚗 সামনের গাড়ি ──→→→]
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                                       ⏱️ Start counting:
-                                       "one-thousand-one..."
+<div class="diagram-box"><div class="dia-title">📏 CONDITION অনুযায়ী দূরত্ব</div>
+  ☀️ Dry/clear: ৩ সেকেন্ড | 🌧️ Rain/night: ৪ | ❄️ Snow/ice: ৬+</div>
 
-  এখন সামনের গাড়ি অনেক দূরে:
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  ║ Pole ║          [🚗 →→→→→→→→→→→→]
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        [তোমার 🚗 ←──]
-         ⏱️ "one-thousand-two..."
+<div class="rt-image">
+<svg viewBox="0 0 340 280" width="100%" style="max-width:380px">
+<rect x="0" y="0" width="340" height="280" fill="#111" rx="8"/>
+<text x="170" y="22" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">👁️ BLIND SPOT — Mirror যা দেখে না</text>
+<!-- 3-lane road -->
+<rect x="30" y="34" width="280" height="236" fill="#2a2a2a" rx="4"/>
+<line x1="123" y1="34" x2="123" y2="270" stroke="#eee" stroke-width="2" stroke-dasharray="12,10" opacity=".5"/>
+<line x1="217" y1="34" x2="217" y2="270" stroke="#eee" stroke-width="2" stroke-dasharray="12,10" opacity=".5"/>
+<!-- mirror vision: rear cone (green) -->
+<polygon points="170,150 120,268 220,268" fill="#2ecc71" opacity=".14"/>
+<text x="170" y="255" text-anchor="middle" fill="#2ecc71" font-size="8" font-weight="700">rear-view mirror দেখে</text>
+<!-- side mirror cones -->
+<polygon points="148,140 34,180 34,236" fill="#2ecc71" opacity=".14"/>
+<polygon points="192,140 306,180 306,236" fill="#2ecc71" opacity=".14"/>
+<!-- blind spots (red) -->
+<polygon points="146,150 34,140 34,178 148,168" fill="#e74c3c" opacity=".3"/>
+<polygon points="194,150 306,140 306,178 192,168" fill="#e74c3c" opacity=".3"/>
+<text x="70" y="158" fill="#ff8a80" font-size="9" font-weight="900" transform="rotate(-4 70 158)">BLIND SPOT</text>
+<text x="222" y="158" fill="#ff8a80" font-size="9" font-weight="900" transform="rotate(4 222 158)">BLIND SPOT</text>
+<!-- your car center lane -->
+<rect x="150" y="110" width="40" height="72" rx="9" fill="#2ecc71"/>
+<rect x="156" y="122" width="28" height="14" rx="3" fill="#0a3"/>
+<rect x="156" y="158" width="28" height="12" rx="3" fill="#0a3"/>
+<circle cx="147" cy="132" r="3" fill="#ccc"/><circle cx="193" cy="132" r="3" fill="#ccc"/>
+<text x="170" y="100" text-anchor="middle" fill="#2ecc71" font-size="9" font-weight="900">তোমার গাড়ি</text>
+<!-- hidden cars in blind spots -->
+<rect x="58" y="138" width="34" height="58" rx="8" fill="#e74c3c" opacity=".85"/>
+<text x="75" y="212" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="700">লুকানো গাড়ি!</text>
+<rect x="248" y="138" width="34" height="58" rx="8" fill="#e74c3c" opacity=".85"/>
+<text x="265" y="212" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="700">লুকানো গাড়ি!</text>
+</svg>
+<div class="rt-caption">🟢 সবুজ = mirror-এ দেখা যায় | 🔴 লাল = blind spot — শুধু কাঁধ ঘুরিয়ে (shoulder check) দেখা যায়</div>
+</div>
 
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  ║ Pole ║          [🚗 →→→→→→→→→→→→]
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-               [🚗 তুমি]
-                ⏱️ "one-thousand-three!" ← NOW at pole
-
-  ✅ ৩ সেকেন্ড পার হয়ে গেলে পোল-এ পৌঁছেছ = নিরাপদ!
-  ❌ ৩ সেকেন্ডের আগে পৌঁছালে = খুব কাছে! ধীরে করো।</div>
-
-<div class="sign-visual"><div class="sign-title">👁️ BLIND SPOT — What Mirrors CANNOT See</div>
-
-           ┌─────────────────────┐
-           │      🚗 তোমার গাড়ি    │
-    ╲      │   ◢  blind    ◣  │      ╱
-     ╲     │   ◢  spot!   ◣  │     ╱
-      ╲    │                  │    ╱
-       ╲   │  ◣  blind    ◢   │   ╱
-        ╲  │  ◣  spot!   ◢   │  ╱
-         ╲ └─────────────────────┘ ╱
-          ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╱
-
-  ❌ Mirror-এ এই জায়গাগুলো দেখা যায় না
-  ✅ Shoulder check = কাঁধ ঘুরিয়ে দেখো
-
-  Lane change করার সঠিক ক্রম:
+<div class="code-block">Lane change করার সঠিক ক্রম:
   1️⃣ Signal দাও
   2️⃣ Mirror দেখো (rear-view + side)
   3️⃣ Shoulder check (কাঁধ ঘুরিয়ে)
-  4️⃣ নিরাপদ হলে → move</div>
+  4️⃣ নিরাপদ হলে → move
+  ❌ Mirror alone কখনোই যথেষ্ট নয়</div>
 
 <div class="scenario-box">
 <div class="scn-label">🎭 COMPLEX SCENARIO — Highway Merge</div>
@@ -238,6 +270,20 @@ doors.push({
 
 ❓ Steering wheel hand position?
 ✅ 9-and-3।</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — পেছনে Tailgater</div>
+<div class="scn-question">❓ M-59-এ তুমি limit-এ চালাচ্ছ। পেছনের pickup truck তোমার bumper-এর প্রায় গায়ে লেগে আছে। বিরক্ত লাগছে। Brake চেপে "শিক্ষা" দেবে?</div>
+<div class="scn-answer">✅ কখনো না! Brake-check করা বিপজ্জনক ও বেআইনি। বরং সামনের গাড়ির সাথে দূরত্ব বাড়াও (৪+ সেকেন্ড) এবং সুযোগমতো ডান লেনে সরে তাকে যেতে দাও।</div>
+<div class="scn-explain">Tailgater তোমার সমস্যা নয় — যতক্ষণ না সে তোমাকে ধাক্কা দেয়। সামনে বেশি জায়গা রাখলে তোমাকে কখনো হঠাৎ brake করতে হবে না, ফলে সে-ও ধাক্কা দেবে না। Ego রাস্তায় আনবে না — সরে যাও, ভুলে যাও।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — রাতের গ্রামের রাস্তা</div>
+<div class="scn-question">❓ রাত ১১টা, উত্তর Michigan-এর একটা অন্ধকার two-lane রাস্তা। তুমি high beam-এ চালাচ্ছ। সামনে oncoming গাড়ির headlight দেখা গেল, প্রায় ৮০০ ফুট দূরে। কখন low beam করবে?</div>
+<div class="scn-answer">✅ এখনই — oncoming গাড়ি ৫০০ ফুটের মধ্যে আসার আগে low beam। আর সামনের কোনো গাড়ির পেছনে থাকলে ২০০-৩০০ ফুট আগে।</div>
+<div class="scn-explain">High beam-এ oncoming driver ৩-৪ সেকেন্ডের জন্য প্রায় অন্ধ হয়ে যায় — two-lane রাস্তায় সেটাই head-on crash-এর রেসিপি। আর নিজে glare খেলে? রাস্তার ডান কিনারার সাদা লাইনে চোখ রাখো, আলোর দিকে তাকিও না।</div>
+</div>
 
 <div class="secret-box">📏 3-second rule (dry), 4 (rain), 6+ (snow)। Blind spot: mirror + shoulder check MUST। Passing: solid line = নিষেধ। Merge: highway speed-এ ঢুকো। Night: high → low beam oncoming দেখলে। ABS: চাপ ধরে রাখো।</div>`
 });
@@ -314,16 +360,12 @@ doors.push({
 — — — — — — — — — — — — — — — — — — — — — —
 
   ⚠️ NO ZONE (Truck Blind Spot):
-  ╔═══════════════════════════════════════╗
-  ║                                       ║
-  ║   ❌ ট্রাকের ঠিক পেছনে (বড় blind spot)║
-  ║   ❌ ট্রাকের ডান পাশে (সবচেয়ে বড়)  ║
-  ║   ❌ ট্রাকের বাম পাশে                 ║
-  ║   ❌ ট্রাকের সামনে খুব কাছে          ║
-  ║                                       ║
-  ║   ✅ যদি mirror দেখতে পাও → দেখা যায় ║
-  ║   ❌ Mirror না দেখা → অদৃশ্য!        ║
-  ╚═══════════════════════════════════════╝
+  ❌ ট্রাকের ঠিক পেছনে (বড় blind spot)
+  ❌ ট্রাকের ডান পাশে (সবচেয়ে বড়!)
+  ❌ ট্রাকের বাম পাশে
+  ❌ ট্রাকের সামনে খুব কাছে
+  ✅ যদি mirror-এ driver দেখতে পাও → সে তোমাকে দেখে
+  ❌ Mirror না দেখা → তুমি অদৃশ্য!
 
   ✦ Truck wide turn করে — জায়গা দাও
   ✦ Truck ব্রেক distance বেশি — cut করো না
@@ -379,28 +421,45 @@ doors.push({
   ✦ Tow truck এবং utility vehicle-ও অন্তর্ভুক্ত
   ✦ অমান্য করলে: fine + points</div>
 
-<div class="sign-visual"><div class="sign-title">🚛 TRUCK "NO ZONE" — Blind Spot Map</div>
-
-                    ❌ NO ZONE
-               ┌──────────────────┐
-               │   (সামনে খুব কাছে)  │
-               └────────┬─────────┘
-                        │
-     ❌ NO ZONE    ┌─────┴─────┐    ❌ NO ZONE
-     (বাম পাশ)    │           │    (ডান পাশ — সবচেয়ে বড়!)
-  ══════════════  │  🚛 ট্রাক  │  ════════════════════
-                  │           │
-                  └─────┬─────┘
-                        │
-               ┌────────┴─────────┐
-               │   ❌ NO ZONE     │
-               │  (পেছনে — সবচেয়ে   │
-               │   বিপজ্জনক!)     │
-               └──────────────────┘
-
-  ✅ সোনার নিয়ম: যদি তুমি ট্রাকের side mirror-এ
-     driver-এর চোখ/মুখ দেখতে পাও → সে তোমাকে দেখতে পারে।
-     না দেখতে পেলে → তুমি NO ZONE-এ! দ্রুত পার হও বা পিছিয়ে যাও।</div>
+<div class="rt-image">
+<svg viewBox="0 0 420 300" width="100%" style="max-width:460px">
+<rect x="0" y="0" width="420" height="300" fill="#111" rx="8"/>
+<text x="210" y="22" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🚛 TRUCK "NO ZONE" — Blind Spot Map (top view)</text>
+<!-- road: 3 lanes horizontal -->
+<rect x="10" y="40" width="400" height="248" fill="#2a2a2a" rx="4"/>
+<line x1="10" y1="122" x2="410" y2="122" stroke="#eee" stroke-width="2" stroke-dasharray="14,10" opacity=".4"/>
+<line x1="10" y1="204" x2="410" y2="204" stroke="#eee" stroke-width="2" stroke-dasharray="14,10" opacity=".4"/>
+<!-- NO ZONES (red) -->
+<!-- front zone (right of truck, truck faces right) -->
+<rect x="300" y="132" width="72" height="62" fill="#e74c3c" opacity=".3" rx="4"/>
+<text x="336" y="160" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="900">সামনে</text>
+<text x="336" y="172" text-anchor="middle" fill="#ff8a80" font-size="7">~20 ft</text>
+<!-- rear zone (left, biggest) -->
+<rect x="14" y="132" width="116" height="62" fill="#e74c3c" opacity=".38" rx="4"/>
+<text x="72" y="158" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="900">পেছনে — সবচেয়ে বিপজ্জনক</text>
+<text x="72" y="172" text-anchor="middle" fill="#ff8a80" font-size="7">~200 ft, driver তোমাকে দেখেই না</text>
+<!-- left-side zone (top lane) -->
+<rect x="150" y="48" width="120" height="66" fill="#e74c3c" opacity=".26" rx="4"/>
+<text x="210" y="78" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="900">বাম পাশ</text>
+<text x="210" y="92" text-anchor="middle" fill="#ff8a80" font-size="7">১ লেন</text>
+<!-- right-side zone (bottom lane, biggest side) -->
+<rect x="140" y="212" width="180" height="70" fill="#e74c3c" opacity=".38" rx="4"/>
+<text x="230" y="242" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="900">ডান পাশ — সবচেয়ে বড়!</text>
+<text x="230" y="256" text-anchor="middle" fill="#ff8a80" font-size="7">২ লেন পর্যন্ত — এখান দিয়ে পাস করো না</text>
+<!-- truck (center lane, facing right) -->
+<rect x="140" y="134" width="110" height="58" rx="4" fill="#546e7a"/>
+<rect x="250" y="138" width="44" height="50" rx="6" fill="#37474f"/>
+<rect x="284" y="146" width="8" height="34" rx="2" fill="#90caf9" opacity=".8"/>
+<circle cx="160" cy="196" r="6" fill="#000"/><circle cx="200" cy="196" r="6" fill="#000"/><circle cx="236" cy="196" r="6" fill="#000"/><circle cx="272" cy="196" r="6" fill="#000"/>
+<text x="195" y="168" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">🚛 TRUCK</text>
+<!-- mirror sight lines (green) -->
+<line x1="252" y1="138" x2="150" y2="60" stroke="#2ecc71" stroke-width="1.5" stroke-dasharray="4,3" opacity=".7"/>
+<line x1="252" y1="188" x2="130" y2="270" stroke="#2ecc71" stroke-width="1.5" stroke-dasharray="4,3" opacity=".7"/>
+<circle cx="252" cy="138" r="3" fill="#2ecc71"/><circle cx="252" cy="188" r="3" fill="#2ecc71"/>
+<text x="120" y="54" fill="#2ecc71" font-size="7" font-weight="700">mirror sight line</text>
+</svg>
+<div class="rt-caption">🔴 লাল = NO ZONE (driver তোমাকে দেখে না) | 🟢 সোনার নিয়ম: mirror-এ driver-এর চোখ দেখতে পেলে সে-ও তোমাকে দেখে — না পেলে দ্রুত পার হও বা পিছিয়ে যাও</div>
+</div>
 
 <div class="scenario-box">
 <div class="scn-label">🎭 COMPLEX SCENARIO — Truck Right Turn</div>
@@ -443,6 +502,20 @@ doors.push({
 
 ❓ Slow-moving vehicle emblem কী?
 ✅ Orange triangle — slow vehicle (tractor)।</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — সরু রাস্তায় Cyclist</div>
+<div class="scn-question">❓ সরু two-lane রাস্তায় সামনে একজন cyclist। ৩ ফুট দূরত্ব রেখে পাস করতে হলে তোমাকে center line-এর ওপারে যেতে হবে, কিন্তু oncoming গাড়ি আসছে। পেছনে গাড়ি হর্ন দিচ্ছে। কী করবে?</div>
+<div class="scn-answer">✅ Cyclist-এর পেছনে ধীরে অপেক্ষা করো। Oncoming পরিষ্কার হলে তবে ৩+ ফুট রেখে পাস করো। হর্নের চাপে ঝুঁকি নিও না।</div>
+<div class="scn-explain">কয়েক সেকেন্ডের ধৈর্য বনাম একজন মানুষের জীবন — হিসাবটা সহজ। Cyclist-এর গা ঘেঁষে পাস ("close pass") Michigan-এ ticket-যোগ্য এবং cyclist-এর সবচেয়ে বড় মৃত্যুর কারণগুলোর একটা। পেছনের হর্ন তোমার সিদ্ধান্ত নেবে না — তুমি নেবে।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — I-75-এ থেমে থাকা Police</div>
+<div class="scn-question">❓ I-75-এ ৭০ mph-এ চলছ। সামনে ডান shoulder-এ police cruiser লাইট জ্বালিয়ে দাঁড়িয়ে — একটা গাড়ি থামিয়েছে। তোমার বাম লেন ব্যস্ত, সহজে সরা যাচ্ছে না। কী করবে?</div>
+<div class="scn-answer">✅ Move Over Law: সম্ভব হলে এক লেন সরে যাও। সরা সম্ভব না হলে — উল্লেখযোগ্যভাবে গতি কমাও (limit-এর নিচে) এবং সতর্কভাবে পার হও।</div>
+<div class="scn-explain">প্রতি বছর আমেরিকায় roadside-এ দাঁড়ানো officer/tow driver গাড়ির ধাক্কায় মারা যায়। Michigan-এ Move Over অমান্য = fine + points, কাউকে আহত করলে felony। এটা police, fire, ambulance, tow truck, utility — সবার জন্য প্রযোজ্য।</div>
+</div>
 
 <div class="secret-box">🚴 Pedestrian সবসময় প্রথম। Cyclist: ৩ ফুট দূরত্ব। Truck: mirror দেখা = visible, না দেখা = blind spot। Motorcycle: blind spot সতর্ক। Emergency: ডানে সরে যাও, থামো।</div>`
 });
@@ -629,6 +702,20 @@ doors.push({
 ❓ Drowsy driving কেন বিপজ্জনক?
 ✅ Reaction time কমে যায় — অনেকটা drunk driving-এর
    মতো। আসল সমাধান: থামো, বিশ্রাম নাও।</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — নভেম্বরের সন্ধ্যা, হরিণ</div>
+<div class="scn-question">❓ নভেম্বর, সন্ধ্যা ৬টা, M-24-এ ৫৫ mph। হঠাৎ headlight-এ একটা হরিণ — রাস্তা পার হয়ে চলে গেল। যাক, বেঁচে গেছ। গতি বাড়াবে?</div>
+<div class="scn-answer">✅ না — উল্টো আরও ধীরে! হরিণ দলে চলে। একটা পার হওয়া মানে পেছনে আরও ২-৩টা আসছে। Brake cover করে ধীরে এগোও।</div>
+<div class="scn-explain">Michigan-এ বছরে ৫০,০০০+ deer crash — বেশিরভাগ অক্টোবর-নভেম্বরে, ভোর ও সন্ধ্যায়। "প্রথম হরিণটা তোমাকে সাবধান করে, দ্বিতীয়টা ধাক্কা খায়" — পুরনো Michigan প্রবাদ। আর মনে রাখো: swerve নয়, brake।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — গ্রীষ্মের ঝুম বৃষ্টি</div>
+<div class="scn-question">❓ জুলাই মাস, US-23-এ হঠাৎ ঝুম বৃষ্টি। রাস্তায় পানির স্রোত। হঠাৎ steering হালকা লাগছে — গাড়ি যেন ভাসছে, steering ঘুরালেও সাড়া নেই। কী হচ্ছে, কী করবে?</div>
+<div class="scn-answer">✅ Hydroplaning। Gas ধীরে ছাড়ো, brake চেপো না, steering সোজা রাখো। Tire রাস্তা ফিরে পেলে নিয়ন্ত্রণ ফিরবে।</div>
+<div class="scn-explain">বৃষ্টির প্রথম ১০-১৫ মিনিট সবচেয়ে পিচ্ছিল — রাস্তার তেল-ময়লা পানির সাথে মিশে ফিল্ম বানায়। Cruise control বৃষ্টিতে বন্ধ রাখো — hydroplane-এর সময় cruise চালু থাকলে চাকা হঠাৎ spin করতে পারে। পুরনো/ক্ষয়ে যাওয়া tire-এ ঝুঁকি বহুগুণ।</div>
+</div>
 
 <div class="secret-box">⚠️ Skid = brake নয়, steering ঘুরাও। Winter = ৬+ সেকেন্ড, black ice bridge-এ। Deer = brake, swerve নয়। Accident = থামো, hazard, 911, info বিনিময়।</div>`
 });
@@ -863,6 +950,20 @@ doors.push({
 ❓ Police থামালে প্রথম কী করবে?
 ✅ Signal দিয়ে ধীরে নিরাপদ জায়গায় সরে যাও, হাত
    দৃশ্যমান রাখো।</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — "এক বিয়ারে কিছু হয় না"</div>
+<div class="scn-question">❓ তুমি ১৯। বন্ধুর বাসায় party — কেউ তোমার হাতে বিয়ার ধরিয়ে দিল। "এক ক্যানে কিছুই হয় না, তুই তো ঠিকই চালাতে পারবি।" ৩০ মিনিট পর বাসায় ফিরতে হবে। খাবে?</div>
+<div class="scn-answer">✅ না। Under 21 = Zero Tolerance (BAC 0.02)। এক ক্যান বিয়ারেই তুমি 0.02-0.04 এ পৌঁছাতে পারো — মানে license suspension, fine, record।</div>
+<div class="scn-explain">"আমি ঠিক আছি" — প্রতিটা OWI arrest-এর আগের বাক্য। বাস্তব সমাধান: চালানোর থাকলে একদম খেও না, খেলে চালিও না। Uber/বন্ধু/parent-কে ফোন — যেটাই হোক, সেটা DUI-এর $10,000+ (fine, insurance, attorney) খরচ আর record-এর চেয়ে সস্তা। Parent-রা প্রায় সবসময় রাগের চেয়ে বেশি খুশি হয় যে তুমি ফোন করেছ।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — লাল আলোতে Text</div>
+<div class="scn-question">❓ লম্বা লাল আলোতে থেমে আছ। ফোনে message এলো। "গাড়ি তো থেমে আছে" — এক ঝলক reply করবে?</div>
+<div class="scn-answer">✅ না। Michigan-এর hands-free law "operating" অবস্থায় প্রযোজ্য — লাল আলোতে থামা অবস্থাও operating। হাতে ফোন = ticket ($100 প্রথমবার)।</div>
+<div class="scn-explain">আইনত গাড়ি park করে থামালে তবেই ফোন ধরা বৈধ। বাস্তব কৌশল: চালানোর আগে GPS set করো, ফোন Do Not Disturb While Driving mode-এ দাও, mount-এ রাখো (এক tap-এ কাজ বৈধ)। Text-টা ৫ মিনিট অপেক্ষা করতে পারে — সবসময়।</div>
+</div>
 
 <div class="secret-box">🍺 OWI: BAC 0.08+ (21+), 0.02+ (under 21)। Refuse breathalyzer = 1-year suspension। Texting = primary offense। Marijuana legal কিন্তু driving impaired = OWI। Open container passenger compartment-এ নিষেধ। Police থামালে হাত visible রাখো, শান্ত থাকো। নেশা করে চালানো = খুন।</div>`
 });
@@ -1156,6 +1257,20 @@ ROAD TEST — EXAMINER CHECKLIST
 ❓ পাশ করার পর কী করবে?
 ✅ Driving Skills Test Certificate নিয়ে SOS
    office-এ যাও — সেখানে license issue হয়।</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — টেস্টের মাঝে ভুল!</div>
+<div class="scn-question">❓ রোড টেস্ট চলছে। একটা turn-এ তুমি signal দিতে একটু দেরি করেছ — নিজেই বুঝেছ। মাথায় ঘুরছে "শেষ, fail!" হাত ঘামছে, মনোযোগ ভাঙছে। কী করবে?</div>
+<div class="scn-answer">✅ ভুলটা ছেড়ে দাও — সামনের দিকে মনোযোগ দাও। এক-দুইটা ছোট ভুলে কেউ fail করে না; points কাটা যায় মাত্র। Fail হয় বড় ভুলে (rolling stop, no shoulder check) — অথবা এক ভুলের চাপে পরের পাঁচটা ভুল করলে।</div>
+<div class="scn-explain">Examiner-রা perfection খোঁজে না — খোঁজে safe, aware driver। ভুলের পর composure ফিরে পাওয়াটাও একটা skill যেটা তারা লক্ষ করে। শ্বাস নাও, mirror check করো, এগিয়ে যাও। টেস্ট শেষ না হওয়া পর্যন্ত কিছুই শেষ না।</div>
+</div>
+
+<div class="scenario-box">
+<div class="scn-label">🎭 REAL ROAD SCENARIO — Examiner চুপ, নির্দেশ নেই</div>
+<div class="scn-question">❓ টেস্টের মাঝে একটা intersection-এ এসেছ। Examiner কিছু বলছে না — কোনো নির্দেশ নেই। সামনে সবুজ আলো। তুমি কি থেমে জিজ্ঞেস করবে "কোন দিকে যাব?"</div>
+<div class="scn-answer">✅ না — নির্দেশ না থাকলে সোজা যাও (নিয়ম মেনে)। সবুজ আলোতে অকারণে থামা = fail-যোগ্য ভুল! নির্দেশ দরকার হলে examiner আগেই বলবে।</div>
+<div class="scn-explain">Default rule: no instruction = straight ahead, নিয়ম মেনে। চলন্ত অবস্থায় examiner-এর সাথে দীর্ঘ কথাও এড়াও — সেটা cognitive distraction। প্রশ্ন থাকলে থামার নিরাপদ সুযোগে ছোট করে জিজ্ঞেস করো। Examiner-রা confident, decisive driving পছন্দ করে।</div>
+</div>
 
 <div class="secret-box">🏁 Road test: third-party tester-এ (~$50-100), দুই ভাগ — closed course + on-road। STOP = 3 sec complete, signal = 100 ft, blind spot = shoulder check, speed = limit-5, parking = practice। Top fail = rolling stop। পাশ = certificate → SOS → license। তুমি প্রস্তুত — শান্ত থাকো, সফল হও!</div>`
 });
