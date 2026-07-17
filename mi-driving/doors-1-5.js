@@ -42,7 +42,7 @@ Segment 1 Course (মাস্টার করতে হবে):
   → শেষে Segment 1 Certificate পাবে
 
 — — — — — — — — — — — — — — — — — — — — — —
-ধাপ ২: LEARNER LICENSE (বয়স ১৫+)
+ধাপ ২: LEARNER LICENSE (বয়স ১৪ বছর ৯ মাস+)
 — — — — — — — — — — — — — — — — — — — — — —
 
 Segment 1 শেষে SOS office-এ গিয়ে:
@@ -121,8 +121,8 @@ LEVEL 2 RESTRICTIONS:
   ✦ Temporary instruction permit নাও
   ✦ পাশ করলে সরাসরি full license</div>
 
-<div class="dialogue">"একটা জিনিস মনে রাখো," কর্মকর্তা বললেন। "Knowledge test — সেটাই তোমার লেখিত পরীক্ষা। ৫০টা প্রশ্ন। ৪০টা পাশ করতে হবে (৮০%)। ট্রাফিক সাইন, সিগন্যাল, নিয়ম — সব থেকে। এই বই তোমাকে প্রস্তুত করবে।"</div>
-<div class="dialogue en">"One thing to remember," the officer said. "The knowledge test — that's your written exam. 50 questions. Need 40 to pass (80%). Traffic signs, signals, rules — from everything. This book will prepare you."</div>
+<div class="dialogue">"একটা জিনিস মনে রাখো," কর্মকর্তা বললেন। "Knowledge test — সেটাই তোমার লেখিত পরীক্ষা। ৫০টা প্রশ্ন, দুই ভাগে: ২৫টা ট্রাফিক সাইন নিয়ে, ২৫টা ট্রাফিক নিয়ম নিয়ে। প্রতিটা ভাগে আলাদাভাবে কমপক্ষে ২০টা (৮০%) সঠিক করতে হবে — শুধু মোট ৪০/৫০ হলেই চলবে না, দুই ভাগেই আলাদা পাশ করতে হবে। এই বই তোমাকে প্রস্তুত করবে।"</div>
+<div class="dialogue en">"One thing to remember," the officer said. "The knowledge test — that's your written exam. 50 questions, split into two sections: 25 on traffic signs, 25 on traffic rules. You need at least 20 correct (80%) in EACH section separately — 40/50 overall isn't enough if one section falls short. This book will prepare you."</div>
 
 <div class="code-block">KNOWLEDGE TEST কমন প্রশ্ন — প্রস্তুতি:
 
@@ -130,9 +130,13 @@ LEVEL 2 RESTRICTIONS:
    ন্যূনতম বয়স কত?
 ✅ উত্তর: ১৪ বছর ৮ মাস (Segment 1 শুরুর জন্য)
 
-❓ প্রশ্ন: Knowledge test-এ কতটা প্রশ্ন, 
+❓ প্রশ্ন: Knowledge test-এ কতটা প্রশ্ন,
    কতটা পাশ করতে হবে?
-✅ উত্তর: ৫০টা প্রশ্ন, ৪০টা পাশ (৮০%)
+✅ উত্তর: ৫০টা প্রশ্ন — ২৫টা সাইন + ২৫টা নিয়ম,
+   দুইটা ভাগ আলাদাভাবে স্কোর হয়। প্রতি ভাগে
+   কমপক্ষে ২০টা (৮০%) সঠিক করতে হবে — একটা
+   ভাগে কম হলে পুরো টেস্ট fail, শুধু সেই ভাগ
+   আবার দিতে হয়।
 
 ❓ প্রশ্ন: Level 1 Learner License-এ চালানোর 
    শর্ত কী?
@@ -147,7 +151,7 @@ LEVEL 2 RESTRICTIONS:
 ✅ উত্তর: রাত ১০টা — ভোর ৫টা পর্যন্ত নিষেধ
    (work/school/religious exception ছাড়া)</div>
 
-<div class="secret-box">📄 Michigan GDL: ৩ ধাপ — Segment 1 (১৪y ৮m) → Learner License (১৫+) → Segment 2 → Level 2 Provisional (১৬+) → Level 3 Full (১৭+)। Knowledge test: ৫০ প্রশ্ন, ৪০ পাশ (৮০%)।</div>`
+<div class="secret-box">📄 Michigan GDL: ৩ ধাপ — Segment 1 (১৪y ৮m) → Learner License (১৪y ৯m+) → Segment 2 → Level 2 Provisional (১৬+) → Level 3 Full (১৭+)। Knowledge test: ৫০ প্রশ্ন (২৫ সাইন + ২৫ নিয়ম), প্রতি ভাগে ২০+ পাশ (৮০%) — আলাদাভাবে।</div>`
 });
 
 // ══ DOOR 2: TRAFFIC SIGNS — SHAPES, COLORS, MEANINGS ══
@@ -605,7 +609,57 @@ doors.push({
 
   নিয়ম: Funeral procession কে অগ্রাধিকার দাও
     → Yield to funeral processions
-    → Headlight জ্বলা গাড়িগুলো</div>
+    → Headlight জ্বলা গাড়িগুলো
+
+— — — — — — — — — — — — — — — — — — — — — —
+↩️ U-TURN RULES (ইউ-টার্ন)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  নিয়ম: Business district-এ U-turn সম্পূর্ণ নিষেধ
+    → Prohibited in business districts
+  অন্য জায়গায়: নিরাপদে করা যায় — যদি অন্য
+    ট্রাফিকের ক্ষতি না করে এবং clear visibility থাকে
+    → Elsewhere: only if safe and doesn't interfere
+      with traffic
+  ❌ Curve, hilltop, intersection কাছে, "NO U-TURN"
+    সাইন থাকলে — নিষেধ
+
+— — — — — — — — — — — — — — — — — — — — — —
+🔀 MICHIGAN LEFT (মিশিগান লেফট / Indirect Left)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  Michigan-এর নিজস্ব বৈশিষ্ট্য! বড় divided highway
+  intersection-এ প্রায়ই directly বাম মোড় নেওয়া যায় না।
+
+  পদ্ধতি:
+  ১. সোজা যাও, intersection পার হও
+  ২. কিছুদূর পর median crossover / U-turn lane
+     পাবে
+  ৩. সেখানে U-turn নাও — বিপরীত দিকের ট্রাফিককে
+     yield করে
+  ৪. এখন উল্টো দিকে ফিরে এসে ডানে মোড় নাও
+     (right turn on red সহ, যদি সাইন অনুমতি দেয়)
+
+  💡 উদ্দেশ্য: বড় intersection-এ left-turn accident
+     কমানো এবং ট্রাফিক flow বাড়ানো
+  ⚠️ "U-TURN" বা "LEFT TURN PROHIBITED — USE
+     U-TURN" সাইন দেখলে বুঝবে এখানে Michigan Left
+     ব্যবহার করতে হবে
+
+— — — — — — — — — — — — — — — — — — — — — —
+🛣️ CENTER TWO-WAY LEFT-TURN LANE (মাঝের বাম-মোড় লেন)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  চেনার উপায়: রাস্তার মাঝে হলুদ ড্যাশড লাইনে ঘেরা
+  একটা লেন, উভয় দিক থেকে ব্যবহার হয়
+
+  নিয়ম:
+  ✦ শুধু বাম মোড় নেওয়ার প্রস্তুতির জন্য ব্যবহার করো
+  ✦ মোড় নেওয়ার ঠিক আগে "reasonable" দূরত্ব পর্যন্ত
+    এই লেনে চলতে পারো
+  ❌ Right turn-এর জন্য ব্যবহার নিষেধ
+  ❌ Roadway-তে merge করার লেন হিসেবে ব্যবহার নিষেধ
+  ❌ এই লেন দিয়ে সাধারণ driving বা passing নিষেধ</div>
 
 <div class="sign-gallery">
 <div class="sign-item"><svg viewBox="0 0 200 200" width="180" height="180">
@@ -708,9 +762,20 @@ doors.push({
 ✅ Oncoming traffic কে yield করো।
 
 ❓ Funeral procession দেখলে কী করবে?
-✅ Yield করো — অগ্রাধিকার দাও।</div>
+✅ Yield করো — অগ্রাধিকার দাও।
 
-<div class="secret-box">🛑 অগ্রাধিকার: 4-way stop-এ যে আগে থামে সে আগে যায়। টাই হলে ডান দিক প্রথম। বাম মোড়ে oncoming কে yield। Roundabout-এ ভেতরের গাড়ি প্রথম। স্কুল বাস লাল = উভয় দিক থামো। পেডেস্ট্রিয়ান সবসময় প্রথম।</div>`
+❓ U-turn কোথায় সম্পূর্ণ নিষেধ?
+✅ Business district-এ। অন্যত্র নিরাপদ হলে করা যায়।
+
+❓ "Michigan Left" কী?
+✅ Divided highway-তে directly বাম মোড়ের বদলে সোজা
+   গিয়ে median-এ U-turn নিয়ে তারপর ডানে মোড় নেওয়া।
+
+❓ Center two-way left-turn লেন কীসের জন্য?
+✅ শুধু বাম মোড়ের প্রস্তুতির জন্য — merge বা right
+   turn-এর জন্য নয়।</div>
+
+<div class="secret-box">🛑 অগ্রাধিকার: 4-way stop-এ যে আগে থামে সে আগে যায়। টাই হলে ডান দিক প্রথম। বাম মোড়ে oncoming কে yield। Roundabout-এ ভেতরের গাড়ি প্রথম। স্কুল বাস লাল = উভয় দিক থামো। পেডেস্ট্রিয়ান সবসময় প্রথম। Michigan Left: direct left নিষেধ হলে median U-turn ব্যবহার করো। Center turn লেন শুধু left-turn prep-এর জন্য।</div>`
 });
 
 // ══ DOOR 5: SPEED LIMITS & PARKING ══

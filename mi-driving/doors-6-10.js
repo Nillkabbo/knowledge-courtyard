@@ -75,6 +75,14 @@ doors.push({
   ✗ Intersection কাছে
   ✗ Railroad crossing কাছে
 
+  🔵 PASSING ON THE RIGHT (ডান দিক দিয়ে পাস):
+  সাধারণত নিষেধ, তবে এই ক্ষেত্রে আইনি:
+  ✦ সামনের গাড়ি left turn-এর জন্য signal দিয়ে
+    অপেক্ষা করছে
+  ✦ Multi-lane one-way রাস্তায়
+  ✦ একাধিক লেনের রাস্তায় যেখানে ডান লেনে চলা বৈধ
+  ❌ Shoulder-এ নেমে পাস করা সবসময় নিষেধ
+
 — — — — — — — — — — — — — — — — — — — — — —
 🔀 MERGING (হাইওয়েতে যুক্ত হওয়া)
 — — — — — — — — — — — — — — — — — — — — — —
@@ -195,8 +203,12 @@ doors.push({
    signal দাও, পাস করো, নিরাপদে ফিরে যাও।
 
 ❓ কোথায় passing নিষেধ?
-✅ Solid line এলাকায়, hilltop, curve, 
+✅ Solid line এলাকায়, hilltop, curve,
    intersection কাছে।
+
+❓ ডান দিক দিয়ে পাস কখন আইনি?
+✅ সামনের গাড়ি left turn-এর জন্য signal/অপেক্ষা
+   করলে, বা multi-lane/one-way রাস্তায়।
 
 ❓ হাইওয়েতে merge করার সঠিক গতি?
 ✅ Highway speed — ধীরে ঢুকো না।
@@ -447,6 +459,20 @@ doors.push({
   ✦ Bridge আগে সতর্ক — আগেই বরফ
   ✦ Snow tire / chain ব্যবহার করো
 
+😴 FATIGUE / DROWSY DRIVING (ক্লান্তি নিয়ে চালানো)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  লক্ষণ: ঘন ঘন হাই তোলা, চোখ ভারী লাগা, লেন থেকে
+  drift করা, শেষ কয়েক মাইল মনে না থাকা
+
+  ✦ Drowsy driving reaction time কমায় — অনেকটা
+    drunk driving-এর মতোই বিপজ্জনক
+  ✦ Long/night drive-এ প্রতি ২ ঘণ্টায় বিরতি নাও
+  ❌ Coffee/radio/জানালা খোলা — সাময়িক, আসল সমাধান
+    নয়
+  ✅ আসল সমাধান: থামো এবং ঘুমাও, বা কাউকে driving
+    দাও
+
 🚗 SKIDDING (পিছলে যাওয়া)
 — — — — — — — — — — — — — — — — — — — — — —
 
@@ -572,7 +598,11 @@ doors.push({
    911 (injury হলে), info বিনিময়।
 
 ❓ Michigan winter-এ following distance?
-✅ ৬+ সেকেন্ড।</div>
+✅ ৬+ সেকেন্ড।
+
+❓ Drowsy driving কেন বিপজ্জনক?
+✅ Reaction time কমে যায় — অনেকটা drunk driving-এর
+   মতো। আসল সমাধান: থামো, বিশ্রাম নাও।</div>
 
 <div class="secret-box">⚠️ Skid = brake নয়, steering ঘুরাও। Winter = ৬+ সেকেন্ড, black ice bridge-এ। Deer = brake, swerve নয়। Accident = থামো, hazard, 911, info বিনিময়।</div>`
 });
@@ -635,6 +665,19 @@ doors.push({
   → Blood test ও দিতে হয়
 
 — — — — — — — — — — — — — — — — — — — — — —
+🍾 OPEN CONTAINER LAW
+— — — — — — — — — — — — — — — — — — — — — —
+
+  Michigan-এ গাড়ির passenger compartment-এ খোলা
+  (open/uncapped/seal ভাঙা) অ্যালকোহল কনটেইনার
+  রাখা নিষেধ — driver বা passenger যেই হোক
+
+  ✦ Trunk-এ বা সিল বন্ধ অবস্থায় রাখা ঠিক আছে
+  ✦ ব্যতিক্রম: গাড়িতে আলাদা trunk না থাকলে, বা
+    limo/chartered bus হলে
+  ✦ Violation = civil infraction + points
+
+— — — — — — — — — — — — — — — — — — — — — —
 📱 DISTRACTED DRIVING — TEXTING LAW
 — — — — — — — — — — — — — — — — — — — — — —
 
@@ -650,6 +693,21 @@ doors.push({
   👀 Visual: eyes off road (texting, GPS)
   🤚 Manual: hands off wheel (phone, food)
   🧠 Cognitive: mind off driving (conversation)
+
+— — — — — — — — — — — — — — — — — — — — — —
+🚔 POLICE থামালে কী করবে (Traffic Stop)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ১. দেখামাত্র signal দাও, ধীরে ডানে/নিরাপদ জায়গায়
+     সরে যাও
+  ২. সম্পূর্ণ থামাও, হাত steering wheel-এ দৃশ্যমান
+     রাখো
+  ৩. রাতে হলে interior light জ্বালাও
+  ৪. অফিসার না বলা পর্যন্ত গাড়ি থেকে নামো না
+  ৫. চাইলে license, registration, insurance দাও
+  ৬. শান্ত ও ভদ্র থাকো — হঠাৎ নড়াচড়া নয়
+  ৭. আপত্তি থাকলে রাস্তায় তর্ক নয় — কোর্টে challenge
+     করো
 
 — — — — — — — — — — — — — — — — — — — — — —
 💊 DRUGS (prescription সহ)
@@ -676,8 +734,14 @@ doors.push({
       (up to $1 million)
     → Residual Liability — serious injury/death-এ 
       (নির্দিষ্ট threshold ছাড়ালে)
-  ✦ UNLIMITED PIP — Michigan-এ medical coverage 
-    সীমাহীন ছিল (2020 reform-এ option এসেছে)
+  ✦ PIP coverage-এ ৬টা tier বেছে নেওয়া যায় (2020
+    reform থেকে): Unlimited, $500,000, $250,000,
+    $250,000 (exclusion সহ), $50,000, বা opt-out
+    (নির্দিষ্ট শর্তে — যেমন Medicare থাকলে)
+  ✦ Minimum Bodily Injury Liability: $250,000/
+    person, $500,000/accident (default) — waiver
+    দিয়ে $50,000/$100,000-এ নামানো যায়
+  ✦ Minimum Property Damage Liability: $10,000
   ✦ বিনা insurance-এ গাড়ি চালানো = অপরাধ
     → Fine, license suspension, plate confiscation
 
@@ -743,9 +807,22 @@ doors.push({
 ✅ Headlights ও on করতে হবে — Michigan law।
 
 ❓ Cyclist বাম হাত উপরে তুললে কী বোঝায়?
-✅ Right turn।</div>
+✅ Right turn।
 
-<div class="secret-box">🍺 OWI: BAC 0.08+ (21+), 0.02+ (under 21)। Refuse breathalyzer = 1-year suspension। Texting = primary offense। Marijuana legal কিন্তু driving impaired = OWI। নেশা করে চালানো = খুন।</div>`
+❓ Open container law কী বলে?
+✅ Passenger compartment-এ খোলা অ্যালকোহল রাখা
+   নিষেধ — trunk-এ বা সিল বন্ধ থাকলে ঠিক আছে।
+
+❓ Michigan-এ minimum bodily injury liability
+   কত?
+✅ Default $250,000/$500,000 (waiver দিয়ে
+   $50,000/$100,000)।
+
+❓ Police থামালে প্রথম কী করবে?
+✅ Signal দিয়ে ধীরে নিরাপদ জায়গায় সরে যাও, হাত
+   দৃশ্যমান রাখো।</div>
+
+<div class="secret-box">🍺 OWI: BAC 0.08+ (21+), 0.02+ (under 21)। Refuse breathalyzer = 1-year suspension। Texting = primary offense। Marijuana legal কিন্তু driving impaired = OWI। Open container passenger compartment-এ নিষেধ। Police থামালে হাত visible রাখো, শান্ত থাকো। নেশা করে চালানো = খুন।</div>`
 });
 
 // ══ DOOR 10: THE ROAD TEST — EXAMINER CHECKLIST ══
