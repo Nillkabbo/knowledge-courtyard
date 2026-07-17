@@ -697,6 +697,13 @@ doors.push({
 
   → না জানলে test শুরুই হবে না!
 
+<div class="rt-image-grid">
+<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Headlight_of_Toyota_Corolla_E210.jpg/320px-Headlight_of_Toyota_Corolla_E210.jpg" alt="Headlight" loading="lazy"><div class="rt-caption">Headlight — সামনের আলো</div></div>
+<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Red_brake_light.jpg/320px-Red_brake_light.jpg" alt="Brake light" loading="lazy"><div class="rt-caption">Brake Light — ব্রেক আলো</div></div>
+<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Turn_signal_indicator.jpg/320px-Turn_signal_indicator.jpg" alt="Turn signal" loading="lazy"><div class="rt-caption">Turn Signal — ইশারা</div></div>
+<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Defroster_symbol.svg/200px-Defroster_symbol.svg.png" alt="Defroster" loading="lazy"><div class="rt-caption">Defroster — কুয়াশা মোছা</div></div>
+</div>
+
 — — — — — — — — — — — — — — — — — — — — — —
 🚗 PART 2: BASIC DRIVING SKILLS
 — — — — — — — — — — — — — — — — — — — — — —
@@ -726,6 +733,12 @@ doors.push({
   ✦ Lane center-এ থাকো
   ✦ Drifting নয়
   ✦ Lane change: signal + mirror + shoulder
+
+<div class="rt-image-grid">
+<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/9-o-clock_position_of_hands_on_steering_wheel_-_geograph.org.uk_-_1248608.jpg/320px-9-o-clock_position_of_hands_on_steering_wheel_-_geograph.org.uk_-_1248608.jpg" alt="9-3 steering" loading="lazy"><div class="rt-caption">✅ 9-and-3 Hand Position<br>examiner এটাই দেখে</div></div>
+<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Auto_blinker_left.jpg/320px-Auto_blinker_left.jpg" alt="Turn signal lever" loading="lazy"><div class="rt-caption">Turn Signal Lever<br>বাম = ↰, ডান = ↱</div></div>
+<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Rear_view_mirror_of_a_Toyota_Corolla_E210.jpg/320px-Rear_view_mirror_of_a_Toyota_Corolla_E210.jpg" alt="Mirror check" loading="lazy"><div class="rt-caption">Rear-view Mirror<br>প্রতি ৫-৮ সেকেন্ডে</div></div>
+</div>
 
 — — — — — — — — — — — — — — — — — — — — — —
 🅿️ PART 3: PARKING MANEUVERS
@@ -773,45 +786,33 @@ doors.push({
   ✦ Railroad crossing — slow, check
   ✦ Expressway entry/exit (if applicable)</div>
 
-<div class="diagram-box"><div class="dia-title">🅿️ PARALLEL PARKING — Step-by-Step Visual</div>
+<div class="rt-image">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Parallel_parking.svg/440px-Parallel_parking.svg.png" alt="Parallel Parking Steps" loading="lazy">
+<div class="rt-caption">Parallel Parking — 3 steps: pull beside, reverse turning right, straighten turning left</div>
+</div>
+
+<div class="code-block">🅿️ PARALLEL PARKING — KEY POINTS
+— — — — — — — — — — — — — — — — — — — — — —
 
   STEP 1: Pull beside front car (2-3 ft gap)
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  ║ curb ║  [🚗 front car]  [🚗 তুমি]
-
   STEP 2: Reverse, turn wheel RIGHT (toward curb)
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  ║ curb ║  [🚗 front car]
-  ║                ╲╲
-  ║                 ╲ [🚗 ← reversing at 45°]
-
-  STEP 3: Straighten wheel, then turn LEFT
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  ║ curb ║  [🚗 front car] [🚗 তুমি ← straight]
-  ║                                 1ft gap
-
-  ✅ Target: কার্ব থেকে 1 ft দূরে, দুই গাড়ির মাঝে
+  STEP 3: 45-degree angle-এ পৌঁছালে straighten
+  STEP 4: Turn wheel LEFT, straighten behind front car
+  TARGET: কার্ব থেকে ১ ft দূরে
   ❌ Curb hit = automatic point loss!</div>
 
-<div class="diagram-box"><div class="dia-title">🔄 THREE-POINT TURN — Visual Guide</div>
+<div class="rt-image">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Three_point_turn_diagram.svg/440px-Three_point_turn_diagram.svg.png" alt="Three-Point Turn" loading="lazy">
+<div class="rt-caption">Three-Point Turn (K-turn): forward-left, reverse-right, forward-left proceed</div>
+</div>
 
-  START: Right side of road, signal right, stop
+<div class="code-block">🔄 THREE-POINT TURN — KEY POINTS
+— — — — — — — — — — — — — — — — — — — — — —
 
-  STEP 1:                  ←─ check traffic ─
-     ┌───┐                   check both ways
-     │ 🚗│ ──→ turn LEFT,   move forward
-     └───┘     (left side of road)
-
-  STEP 2: Reverse, turn wheel RIGHT
-                    ←── check traffic ──
-     ┌───┐
-     │🚗 │ ←── reverse,  back to right
-     └───┘
-
-  STEP 3: Forward, turn LEFT, proceed
-     ┌───┐
-     │ 🚗│ ──→ forward,    left, go!
-     └───┘
+  STEP 1: Signal right, pull to right side, check traffic
+  STEP 2: Turn LEFT sharply, move forward (left side)
+  STEP 3: Reverse, turn wheel RIGHT (back to right)
+  STEP 4: Forward, turn LEFT, proceed
 
   ⚠️ শুধু তিন ধাপ! চার বা পাঁচ ধাপ = points lost</div>
 
@@ -820,6 +821,18 @@ doors.push({
 <div class="scn-question">❓ Examiner silently watching। সে কী দেখছেন যা তুমি ভাবো না?</div>
 <div class="scn-answer">✅ Examiner দেখছে: head movement (mirror + shoulder), hand position (9-3), smooth steering, speed consistency, signaling timing।</div>
 <div class="scn-explain">অনেক candidate নীরব examiner দেখে ভাবে কিছু দেখছে না। ভুল! Examiner প্রতিটা movement নোট করছে। সব কাজ EXAGGERATE করো — head turn বড় করো, shoulder check স্পষ্ট করো।</div>
+</div>
+
+<div class="rt-image">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/STOP_sign_at_intersection.jpg/440px-STOP_sign_at_intersection.jpg" alt="STOP sign at intersection" loading="lazy">
+<div class="rt-caption">STOP sign at intersection — complete stop, 3 seconds, then check both ways before proceeding</div>
+</div>
+
+<div class="rt-image-grid">
+<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Stop_sign_USA.jpg/240px-Stop_sign_USA.jpg" alt="STOP sign" loading="lazy"><div class="rt-caption">STOP — সম্পূর্ণ থামো<br>3 sec minimum</div></div>
+<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Speed_limit_25mph_sign.jpg/240px-Speed_limit_25mph_sign.jpg" alt="Speed limit sign" loading="lazy"><div class="rt-caption">Speed Limit — limit-এর<br>5 mph নিচে রাখো</div></div>
+<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/ParallelParking.jpg/320px-ParallelParking.jpg" alt="Parallel parking real" loading="lazy"><div class="rt-caption">Real parallel parking<br>1 ft from curb</div></div>
+<div class="rt-img-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Seat_belt_sign.svg/200px-Seat_belt_sign.svg.png" alt="Seatbelt" loading="lazy"><div class="rt-caption">Seatbelt on FIRST<br>before anything</div></div>
 </div>
 
 <div class="code-block">❌ TOP 10 AUTOMATIC FAIL REASONS:
