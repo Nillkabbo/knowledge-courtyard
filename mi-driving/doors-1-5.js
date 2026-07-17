@@ -194,6 +194,35 @@ LEVEL 2 RESTRICTIONS:
 <div class="dialogue">"একটা জিনিস মনে রাখো," কর্মকর্তা বললেন। "Knowledge test — সেটাই তোমার লেখিত পরীক্ষা। ৫০টা প্রশ্ন, দুই ভাগে: ২৫টা ট্রাফিক সাইন নিয়ে, ২৫টা ট্রাফিক নিয়ম নিয়ে। প্রতিটা ভাগে আলাদাভাবে কমপক্ষে ২০টা (৮০%) সঠিক করতে হবে — শুধু মোট ৪০/৫০ হলেই চলবে না, দুই ভাগেই আলাদা পাশ করতে হবে। এই বই তোমাকে প্রস্তুত করবে।"</div>
 <div class="dialogue en">"One thing to remember," the officer said. "The knowledge test — that's your written exam. 50 questions, split into two sections: 25 on traffic signs, 25 on traffic rules. You need at least 20 correct (80%) in EACH section separately — 40/50 overall isn't enough if one section falls short. This book will prepare you."</div>
 
+<div class="code-block">🏢 SOS OFFICE-এ যাওয়ার দিন — ব্যবহারিক প্রস্তুতি
+— — — — — — — — — — — — — — — — — — — — — —
+
+  📄 সাথে যা নেবে:
+  ✦ Identity: birth certificate বা valid passport
+  ✦ Social Security proof (SSN card/W-2)
+  ✦ Michigan residency-র ২টা প্রমাণ
+    (utility bill, lease, bank statement...)
+  ✦ Under 18 হলে: parent/guardian সাথে + সই
+  💡 আগে online appointment নিলে লাইন বাঁচে
+
+  👁️ VISION TEST — যা মাপা হয়:
+  ✦ কমপক্ষে 20/40 acuity (এক বা দুই চোখে)
+  ✦ Peripheral vision কমপক্ষে 110°
+  ✦ চশমা/লেন্স দিয়ে পাশ করলে → license-এ
+    "corrective lenses" restriction লেখা হবে —
+    মানে চশমা ছাড়া চালানো বেআইনি
+
+  💻 ONLINE KNOWLEDGE TEST (নতুন সুবিধা):
+  ✦ ১৮+ আবেদনকারীরা এখন SOS-এর মাধ্যমে
+    online-এও knowledge test দিতে পারে —
+    ঘরে বসে! (SOS website-এ বিস্তারিত)
+
+  😰 FAIL করলে কী হয়? — কিছুই ভয়ংকর না:
+  ✦ আবার দেওয়া যায় — অপেক্ষা সামান্য
+  ✦ যে section fail, শুধু সেটাই আবার
+  ✦ বেশিরভাগ মানুষ ২য় বারে পাশ করে
+  ✦ Fail = তথ্য: কোন টপিক দুর্বল, সেটা পড়ো</div>
+
 <div class="code-block">KNOWLEDGE TEST কমন প্রশ্ন — প্রস্তুতি:
 
 ❓ প্রশ্ন: Michigan-এ learner license-এর জন্য 
@@ -243,6 +272,31 @@ LEVEL 2 RESTRICTIONS:
 <div class="scn-answer">✅ না। Level 2-তে ২১ বছরের কম বয়সী মাত্র ১ জন passenger নেওয়া যায় (immediate family ছাড়া)। তিনজন = violation।</div>
 <div class="scn-explain">এটা শুধু নিয়ম নয় — গবেষণায় দেখা গেছে teen driver-এর গাড়িতে প্রতিটা teen passenger যোগ হলে crash ঝুঁকি লাফিয়ে বাড়ে। একজনকে নাও, বাকিদের না বলো — "আমার license-এ নিষেধ" বলাটাই যথেষ্ট।</div>
 </div>
+
+<div class="code-block">🇬🇧 ENGLISH SUMMARY — Chapter 1: Licensing
+
+  GDL (under 18): Segment 1 driver's ed (age 14y8m)
+  → Level 1 Learner License (14y9m): drive ONLY
+  with licensed adult 21+; 50 hrs supervised
+  practice (10 at night) → Segment 2 → Level 2
+  Provisional (16): solo, but no driving 10pm-5am
+  (except work/school/religious or with parent)
+  and max 1 passenger under 21 (non-family) →
+  Level 3 Full (17, after 6 clean months).
+
+  Adults 18+: no driver's ed required. Vision +
+  knowledge test at SOS → Temporary Instruction
+  Permit ($25, valid 180 days) → 30+ days
+  supervised practice → road test at a third-party
+  tester (~$50-100) → certificate to SOS →
+  license ($25).
+
+  Knowledge test: 50 questions in 2 sections —
+  25 signs + 25 rules. Need 20/25 (80%) in EACH
+  section separately. Fail one = retake only that
+  section. Vision standard: 20/40, 110° peripheral.
+  Bring: identity proof, SSN, 2× Michigan residency
+  proofs; parent if under 18.</div>
 
 <div class="secret-box">📄 Michigan GDL: ৩ ধাপ — Segment 1 (১৪y ৮m) → Learner License (১৪y ৯m+) → Segment 2 → Level 2 Provisional (১৬+) → Level 3 Full (১৭+)। Knowledge test: ৫০ প্রশ্ন (২৫ সাইন + ২৫ নিয়ম), প্রতি ভাগে ২০+ পাশ (৮০%) — আলাদাভাবে।</div>`
 });
@@ -373,6 +427,28 @@ doors.push({
 <div class="rt-caption">মূল concept: 🟡 warning সাইন বিপদের আগে বসে (প্রস্তুতির সময় দেয়), ⬜ regulatory সাইন যেখানে বসে সেখান থেকেই আইন। হলুদ "35" = advisory (পরামর্শ), সাদা "55" = আইন</div>
 </div>
 
+<div class="sign-gallery">
+<div class="sign-item"><svg viewBox="0 0 90 96" width="64" height="68"><path d="M 45 4 Q 70 4 86 12 Q 86 50 72 72 Q 60 88 45 92 Q 30 88 18 72 Q 4 50 4 12 Q 20 4 45 4 Z" fill="#1d4e9e" stroke="#fff" stroke-width="3"/><path d="M 45 4 Q 70 4 86 12 L 86 26 L 4 26 L 4 12 Q 20 4 45 4 Z" fill="#c62828"/><text x="45" y="21" text-anchor="middle" fill="#fff" font-size="9" font-weight="900">INTERSTATE</text><text x="45" y="66" text-anchor="middle" fill="#fff" font-size="26" font-weight="900">75</text></svg><div class="sign-label">🛡️ <strong>INTERSTATE</strong><br>I-75 — জাতীয় freeway</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 90 90" width="62" height="62"><path d="M 12 8 L 78 8 Q 84 30 78 52 Q 70 74 45 84 Q 20 74 12 52 Q 6 30 12 8 Z" fill="#fff" stroke="#222" stroke-width="3"/><text x="45" y="58" text-anchor="middle" fill="#222" font-size="26" font-weight="900">23</text></svg><div class="sign-label">⬜ <strong>US ROUTE</strong><br>US-23 — জাতীয় রুট</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 90 90" width="62" height="62"><rect x="10" y="10" width="70" height="70" rx="6" fill="#fff" stroke="#222" stroke-width="3" transform="rotate(45 45 45)"/><text x="45" y="40" text-anchor="middle" fill="#222" font-size="14" font-weight="900">M</text><text x="45" y="62" text-anchor="middle" fill="#222" font-size="18" font-weight="900">52</text></svg><div class="sign-label">◇ <strong>MICHIGAN ROUTE</strong><br>M-52 — রাজ্য রুট</div></div>
+
+<div class="sign-item"><svg viewBox="0 0 90 90" width="62" height="62"><polygon points="45,6 84,45 45,84 6,45" fill="#ccff00" stroke="#222" stroke-width="3"/><text x="45" y="56" text-anchor="middle" font-size="22">🚸</text></svg><div class="sign-label">💚 <strong>FLUORESCENT</strong><br>নতুন school/pedestrian রং</div></div>
+</div>
+
+<div class="code-block">🗺️ ROUTE MARKERS — GPS বলার আগেই চিনে ফেলো:
+
+  🛡️ নীল-লাল shield = INTERSTATE (I-75, I-94, I-696)
+     → জাতীয় freeway। জোড় সংখ্যা = পূর্ব-পশ্চিম,
+       বিজোড় = উত্তর-দক্ষিণ। ৩ digit (I-696) = লুপ/bypass
+  ⬜ সাদা shield = US ROUTE (US-23, US-131)
+  ◇ সাদা হীরা "M" = MICHIGAN STATE ROUTE (M-52, M-59)
+     → শুধু Michigan-এর নিজস্ব — অন্য রাজ্যে নেই!
+  💚 FLUORESCENT হলুদ-সবুজ = নতুন standard —
+     school zone ও pedestrian সাইনে হলুদের বদলে
+     ধীরে ধীরে এটাই আসছে। অর্থ একই: মানুষ, সতর্ক।</div>
+
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল যা করবে না</div>STOP sign-এ ধীরে নামি (rolling stop) — এটা বেআইনি এবং বিপজ্জনক। সম্পূর্ণ থামতে হবে। চাকা যেন সম্পূর্ণ থামে। এটাকে California stop / Michigan stop বলে কথায় — কিন্তু আইন নয়। টেস্টে fail করবে।</div>
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক যা করবে</div>STOP sign-এ সম্পূর্ণ থামো। চাকা স্থির। ৩ সেকেন্ড গণনা করো (one-thousand-one, one-thousand-two, one-thousand-three)। তারপর বাম-ডান-বাম দেখো। তারপর যাও। নিরাপদ।</div>
@@ -392,7 +468,7 @@ doors.push({
 ❓ কমলা হীরা (diamond) সাইন কী বোঝায়?
 ✅ Construction zone — ধীরে চালাও, দ্বিগুণ জরিমানা
 
-❓ সবুছে আয়ত সাইন কী শ্রেণী?
+❓ সবুজ আয়ত সাইন কী শ্রেণী?
 ✅ Guide/information — দিক নির্দেশনা
 
 ❓ নীল আয়ত সাইন কী নির্দেশ করে?
@@ -447,7 +523,34 @@ doors.push({
 <div class="scn-explain">Pennant-ই একমাত্র সাইন যা রাস্তার বাম পাশে থাকে — কারণ passing-এর সময় তোমার চোখ বাম দিকেই থাকে। সাথে রাস্তায় সলিড হলুদ লাইনও শুরু হবে। দুটোই একই কথা বলছে: এখানে ওভারটেক = মৃত্যুঝুঁকি।</div>
 </div>
 
-<div class="secret-box">🚦 আকার + রঙ = সাইনের পরিচয়। অষ্টভুজ লাল = STOP, উল্টানো ত্রিভুজ = YIELD, হীরা হলুদ = warning, হীরা কমলা = construction, আয়ত সবুছে = guide। লেখা পড়ার দরকার নেই — আকার দেখেই বুঝে ফেলো।</div>`
+<div class="code-block">🇬🇧 ENGLISH SUMMARY — Chapter 2: Traffic Signs
+
+  Shape + color = meaning, no reading needed:
+  Red octagon = STOP (only sign with 8 sides).
+  Inverted red triangle = YIELD. Yellow diamond =
+  warning (posted BEFORE the hazard). Orange
+  diamond = construction (fines double). White
+  rectangle = regulatory (the law from that point).
+  Green rectangle = guide/destination. Blue =
+  services (gas, hospital). Brown = recreation.
+  Yellow pentagon = school zone.
+
+  Special shapes: sideways pennant = NO PASSING
+  ZONE (the only sign on the LEFT side of the
+  road). X crossbuck = railroad (treat as YIELD).
+  Red WRONG WAY = you're against traffic — stop,
+  turn around safely. Black/white arrow = ONE WAY.
+
+  Route markers: blue-red shield = Interstate
+  (even# = E-W, odd# = N-S, 3 digits = loop).
+  White shield = US route. White diamond M =
+  Michigan state route. Fluorescent yellow-green =
+  new school/pedestrian color, same meaning.
+
+  Yellow speed number = advisory (recommended);
+  white SPEED LIMIT = law.</div>
+
+<div class="secret-box">🚦 আকার + রঙ = সাইনের পরিচয়। অষ্টভুজ লাল = STOP, উল্টানো ত্রিভুজ = YIELD, হীরা হলুদ = warning, হীরা কমলা = construction, আয়ত সবুজ = guide। লেখা পড়ার দরকার নেই — আকার দেখেই বুঝে ফেলো।</div>`
 });
 
 // ══ DOOR 3: TRAFFIC SIGNALS & PAVEMENT MARKINGS ══
@@ -546,7 +649,32 @@ LANE SIGNALS (হাইওয়ে লেন নিয়ন্ত্রণ)
 
 🟢 GREEN ✓ = এই লেন খোলা — ব্যবহার করো
 🟡 YELLOW ✕ = এই লেন বন্ধ হচ্ছে — বেরিয়ে যাও
-🔴 RED ✕ = এই লেন বন্ধ — ঢুকো না</div>
+🔴 RED ✕ = এই লেন বন্ধ — ঢুকো না
+
+— — — — — — — — — — — — — — — — — — — — — —
+🚶 PEDESTRIAN SIGNALS (পথচারী সিগন্যাল)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  🚶 WALK / সাদা হাঁটা-মানুষ
+    → পার হওয়া শুরু করতে পারো
+  ✋ FLASHING হাত (কমলা)
+    → শুরু কোরো না! শুরু করে থাকলে —
+      দ্রুত শেষ করো
+  ✋ STEADY হাত (কমলা)
+    → পার হওয়া নিষেধ
+  ⏱️ COUNTDOWN (15...14...13)
+    → বাকি সময় — হিসাব করে সিদ্ধান্ত
+
+  💡 Driver হিসেবে: WALK জ্বলা মানে পথচারী
+     আসছে — মোড়ের আগে তাদের দিক দেখো
+
+— — — — — — — — — — — — — — — — — — — — — —
+⚫ DARK SIGNAL (সিগন্যাল সম্পূর্ণ বন্ধ/অন্ধকার)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  → বিদ্যুৎ নেই = 4-WAY STOP হিসেবে আচরণ করো
+  → সম্পূর্ণ থামো, ক্রম মেনে যাও
+  → Michigan ঝড়ে খুব কমন — মুখস্থ রাখো!</div>
 
 <div class="code-block">PAVEMENT MARKINGS — সড়ক দাগ
 — — — — — — — — — — — — — — — — — — — — — —
@@ -769,6 +897,34 @@ SPECIAL MARKINGS
 <div class="scn-explain">Michigan-এ ঝড়ে signal outage খুবই কমন। অনেক driver না থেমে বেরিয়ে যায় — এ থেকেই crash। মনে রাখো: no light = all-way stop। আর কেউ না থামলেও তুমি থামো — নিয়ম জানা তোমার দায়িত্ব, অন্যেরটা নয়।</div>
 </div>
 
+<div class="code-block">🇬🇧 ENGLISH SUMMARY — Chapter 3: Signals & Markings
+
+  Green = go when clear (yield to pedestrians and,
+  on left turns, oncoming traffic). Yellow = prepare
+  to stop — stop if safe, never accelerate to beat
+  it. Red = complete stop at the stop line. Right
+  turn on red: legal in Michigan after a full stop,
+  unless posted NO TURN ON RED.
+
+  Flashing red = treat as STOP sign. Flashing
+  yellow = slow, proceed with caution. FLASHING
+  YELLOW ARROW = left turn allowed but NOT
+  protected — yield to oncoming and pedestrians
+  (green arrow = protected). Red arrow = no turn.
+  Dark/dead signal (power outage) = all-way stop.
+
+  Pedestrian signals: WALK = start crossing;
+  flashing hand = don't start (finish if started);
+  steady hand = don't cross; countdown = seconds left.
+
+  Markings: yellow lines separate OPPOSITE
+  directions, white lines separate SAME direction.
+  Solid = don't cross; dashed = may cross when
+  safe. Double solid yellow = no passing either
+  way. Wide solid white = stop line — stop there,
+  not in the crosswalk. Crosswalk: pedestrians
+  always have right-of-way.</div>
+
 <div class="secret-box">🚥 হলুদ = থামার প্রস্তুতি, ফ্ল্যাশিং লাল = STOP sign-এর মতো। সলিড লাইন = পার হওয়া নিষেধ, ড্যাশড = পার হওয়া যায়। হলুদ = opposite direction, সাদা = same direction।</div>`
 });
 
@@ -813,6 +969,25 @@ doors.push({
 
   নিয়ম: ডান দিক থেকে আসা গাড়িকে অগ্রাধিকার দাও
     → Yield to traffic on the right
+
+— — — — — — — — — — — — — — — — — — — — — —
+🔀 T-INTERSECTION (টি-মোড়)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  নিয়ম: শেষ হয়ে যাওয়া রাস্তার গাড়ি (T-এর পা)
+    through রাস্তার সব ট্রাফিককে yield করবে
+    → Through road always has right-of-way
+
+— — — — — — — — — — — — — — — — — — — — — —
+🏠 DRIVEWAY / PRIVATE ROAD / PARKING LOT
+— — — — — — — — — — — — — — — — — — — — — —
+
+  নিয়ম: driveway, গলি, parking lot বা private
+    road থেকে public রাস্তায় ঢুকলে — সবাইকে
+    yield: sidewalk-এর পথচারী, cyclist, রাস্তার
+    সব গাড়ি
+    → Entering from private property = yield to ALL
+  💡 Sidewalk পার হওয়ার আগে আলাদা করে থামো
 
 — — — — — — — — — — — — — — — — — — — — — —
 🔄 ROUNDABOUT (গোলচক্কর)
@@ -1124,6 +1299,39 @@ doors.push({
 ✅ শুধু বাম মোড়ের প্রস্তুতির জন্য — merge বা right
    turn-এর জন্য নয়।</div>
 
+<div class="code-block">🇬🇧 ENGLISH SUMMARY — Chapter 4: Right-of-Way
+
+  4-way stop: first to stop goes first; tie =
+  car on the RIGHT goes; opposite + same time =
+  straight before turning; in doubt = yield.
+  Uncontrolled intersection: yield to the right.
+  T-intersection: through road has right-of-way.
+  From driveway/private property: yield to ALL —
+  sidewalk pedestrians, cyclists, all traffic.
+
+  Left turns: yield to oncoming (solid green);
+  green arrow = protected. Roundabout: yield to
+  traffic already inside, go counterclockwise,
+  15-20 mph, signal right to exit.
+
+  Pedestrians ALWAYS have right-of-way — marked
+  or unmarked crosswalk. Emergency vehicles
+  (siren/lights): pull right and stop; clear the
+  intersection first if you're in it. School bus
+  with red lights + stop arm: BOTH directions
+  stop — unless a physical median divides the
+  road (then only the bus's side stops). Painted
+  lines are NOT a divider. Yield to funeral
+  processions (headlights + purple flags).
+
+  U-turns: illegal in business districts;
+  elsewhere only when safe. MICHIGAN LEFT: where
+  direct left is banned on divided roads — go
+  straight/right, U-turn at the median crossover,
+  then right. Center two-way left-turn lane: for
+  left-turn prep only — never for through driving,
+  merging, or right turns.</div>
+
 <div class="secret-box">🛑 অগ্রাধিকার: 4-way stop-এ যে আগে থামে সে আগে যায়। টাই হলে ডান দিক প্রথম। বাম মোড়ে oncoming কে yield। Roundabout-এ ভেতরের গাড়ি প্রথম। স্কুল বাস লাল = উভয় দিক থামো। পেডেস্ট্রিয়ান সবসময় প্রথম। Michigan Left: direct left নিষেধ হলে median U-turn ব্যবহার করো। Center turn লেন শুধু left-turn prep-এর জন্য।</div>`
 });
 
@@ -1228,6 +1436,19 @@ doors.push({
   ✓ No curb + downhill: চাকা ডানে ঘুরাও
   ✓ Parking brake টানো
   ✓ গিয়ার Park (automatic) / Reverse (manual)
+  ✓ ট্রাফিকের দিকে মুখ করে পার্ক করো —
+    রাস্তার উল্টো পাশে গিয়ে বিপরীতমুখী
+    পার্ক করা বেআইনি (facing traffic = ticket)
+
+❄️ WINTER PARKING (শীতের নিয়ম):
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ✗ অনেক শহরে snow emergency ঘোষণা হলে
+    নির্দিষ্ট রাস্তায় পার্ক নিষেধ — plow-এর জন্য
+  ✗ কিছু শহরে রাত ২টা-৬টা রাস্তায় পার্ক নিষেধ
+    (শীতকালে সবসময়)
+  💡 নতুন এলাকায় সাইন পড়ো — tow + জরিমানা
+    দুটোই হয়। শহরের website-এ নিয়ম থাকে
 
 ♿ DISABLED PARKING:
 — — — — — — — — — — — — — — — — — — — — — —
@@ -1377,6 +1598,37 @@ doors.push({
 <div class="scn-answer">✅ ডান লেনে সরে যাও এবং limit-এ (বা কাছাকাছি) চালাও। "সবাই করছে" speeding-এর আইনি অজুহাত নয় — ধরা পড়লে ticket তোমার।</div>
 <div class="scn-explain">বাস্তবতা: traffic flow-এর সাথে বড় গতি-পার্থক্যও বিপজ্জনক। সমাধান হলো লেন নির্বাচন — ধীর ট্রাফিক ডান লেনে, বাম লেন passing-এর জন্য। বাম লেনে ৭০-এ বসে থাকা = রাস্তার সবচেয়ে বিরক্তিকর (এবং ঝুঁকিপূর্ণ) গাড়ি হওয়া।</div>
 </div>
+
+<div class="code-block">🇬🇧 ENGLISH SUMMARY — Chapter 5: Speed & Parking
+
+  Default limits: residential/business 25 mph;
+  school zone as posted (when children present /
+  beacon flashing); county roads 55; freeways 70
+  (75 on some rural stretches, 55-65 urban);
+  trucks 65. BASIC SPEED LAW: drive at a careful,
+  prudent speed for conditions — 55 in a snowstorm
+  can be a ticket even if the limit is 55. Too
+  slow is also illegal (minimum speeds on
+  freeways). Construction zones: fines double.
+
+  No parking within: 15 ft of a fire hydrant,
+  20 ft of a crosswalk, 30 ft of a STOP sign/
+  signal, 50 ft of a railroad crossing, 20 ft of
+  a fire station entrance. Never on sidewalks,
+  in bike lanes, or in disabled spots without a
+  permit (up to $500). Park within 12 inches of
+  the curb, facing the direction of traffic —
+  parking against traffic is illegal.
+
+  Hill parking: downhill = wheels toward the
+  curb (right); uphill = wheels away from curb
+  (left); no curb = wheels toward the shoulder
+  (right). Always set the parking brake. Watch
+  for winter/snow-emergency parking bans.
+
+  Seatbelts: everyone, front and back — primary
+  enforcement. Under 8 or under 4'9" = car seat
+  or booster.</div>
 
 <div class="secret-box">🅿️ Speed: residential 25, highway 70, school 25 mph। Basic speed law: condition অনুযায়ী চালাও। Parking: fire hydrant 15ft, crosswalk 20ft, stop sign 30ft, railroad 50ft দূরে। Downhill = চাকা ডানে, uphill = চাকা বামে। Construction = double fine!</div>`
 });

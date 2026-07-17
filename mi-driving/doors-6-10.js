@@ -37,6 +37,25 @@ doors.push({
      করবে, এবং তার জন্য প্রস্তুত থাকে
 
 — — — — — — — — — — — — — — — — — — — — — —
+🛡️ SPACE CUSHION — গাড়ির চারপাশে ৬টা zone
+— — — — — — — — — — — — — — — — — — — — — —
+
+  তোমার গাড়ির চারদিকে ৬টা জায়গা:
+  সামনে | পেছনে | বাম-সামনে | ডান-সামনে |
+  বাম-পেছনে | ডান-পেছনে
+
+  লক্ষ্য: যত বেশি zone খালি রাখা যায়:
+  ✦ সামনে: following distance (৩+ সেকেন্ড)
+  ✦ পাশে: অন্য গাড়ির ঠিক পাশে "ভেসে" থেকো না —
+    একটু আগে বা পিছে থাকো (blind spot-এও পড়বে না)
+  ✦ পেছনে: tailgater থাকলে সামনের gap বাড়াও
+  ✦ সবসময় একটা ESCAPE ROUTE ভাবো —
+    "এখনই সামনের গাড়ি থামলে আমি কোথায় যাব?"
+
+  💡 জায়গা = সময়। সময় = সিদ্ধান্তের সুযোগ।
+     Space cushion-ই defensive driving-এর মুদ্রা।
+
+— — — — — — — — — — — — — — — — — — — — — —
 📏 FOLLOWING DISTANCE (3-SECOND RULE)
 — — — — — — — — — — — — — — — — — — — — — —
 
@@ -330,6 +349,38 @@ doors.push({
 <div class="scn-explain">High beam-এ oncoming driver ৩-৪ সেকেন্ডের জন্য প্রায় অন্ধ হয়ে যায় — two-lane রাস্তায় সেটাই head-on crash-এর রেসিপি। আর নিজে glare খেলে? রাস্তার ডান কিনারার সাদা লাইনে চোখ রাখো, আলোর দিকে তাকিও না।</div>
 </div>
 
+<div class="code-block">🇬🇧 ENGLISH SUMMARY — Chapter 6: Safe Driving
+
+  SEE system: Search (eyes 20-30 sec ahead,
+  mirrors every 5-8 sec) → Evaluate (what could
+  happen?) → Execute (act early). Space cushion:
+  keep all six zones around your car open, never
+  linger beside another vehicle, always know your
+  escape route.
+
+  Following distance: 3 seconds dry, 4 in rain
+  or at night, 6+ on snow/ice. Count from when
+  the lead car passes a fixed point.
+
+  Blind spots: mirrors are never enough — always
+  shoulder check before lane changes. Lane change
+  order: Signal → Mirrors → Shoulder check → Move.
+
+  Passing: only where dashed lines allow, never
+  on hills/curves/near intersections or railroad
+  crossings. Passing on the right is legal only
+  when the car ahead is turning left or on
+  multi-lane/one-way roads. Return only when you
+  see the passed vehicle in your mirror.
+
+  Merging: accelerate on the ramp to match
+  highway speed — never crawl in. Night: high
+  beams down within 500 ft of oncoming traffic,
+  200-300 ft behind another car. MICHIGAN LAW:
+  wipers on = headlights on (DRLs don't count).
+  Hands at 9-and-3; with ABS, brake firmly and
+  hold — never pump.</div>
+
 <div class="secret-box">📏 3-second rule (dry), 4 (rain), 6+ (snow)। Blind spot: mirror + shoulder check MUST। Passing: solid line = নিষেধ। Merge: highway speed-এ ঢুকো। Night: high → low beam oncoming দেখলে। ABS: চাপ ধরে রাখো।</div>`
 });
 
@@ -431,7 +482,38 @@ doors.push({
 
   ✦ Orange triangle emblem = slow vehicle
   ✦ Patience রাখো
-  ✦ নিরাপদে পাস করো</div>
+  ✦ নিরাপদে পাস করো
+
+— — — — — — — — — — — — — — — — — — — — — —
+🐴 HORSE-DRAWN BUGGY (Amish অঞ্চলে)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  Michigan-এর গ্রামীণ এলাকায় (বিশেষত central/
+  west) Amish buggy রাস্তায় স্বাভাবিক দৃশ্য:
+  ✦ Orange triangle পেছনে — slow vehicle
+  ✦ ঘোড়া ভয় পায়! — হর্ন দিও না, ধীরে,
+    অনেক জায়গা রেখে পাস করো
+  ✦ রাতে বিশেষ সতর্ক — আলো কম থাকে
+  ✦ Buggy-র পেছনে পাহাড়/বাঁকে আটকে গেলে
+    ধৈর্য — এক মিনিটের দেরি মাত্র
+
+— — — — — — — — — — — — — — — — — — — — — —
+🛵 MOPED / SCOOTER
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ✦ ধীর কিন্তু রাস্তার বৈধ ব্যবহারকারী
+  ✦ ডান কিনারা ধরে চলে — পাস করার সময়
+    পুরো লেন বদলাও, গা ঘেঁষে নয়
+  ✦ হঠাৎ দুলতে পারে (গর্ত/বাতাস) — জায়গা দাও
+
+— — — — — — — — — — — — — — — — — — — — — —
+🚸 SCHOOL CROSSING GUARD
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ✦ হাতে STOP paddle — এটাই আইন
+  ✦ Guard রাস্তায় থাকা পর্যন্ত থেমে থাকো —
+    বাচ্চারা পার হয়ে গেলেও
+  ✦ Flagger-এর মতোই: মানুষ &gt; সাইন/সিগন্যাল</div>
 
 <div class="sign-gallery">
 <div class="sign-item"><svg viewBox="0 0 100 100" width="60" height="60"><circle cx="50" cy="50" r="46" fill="#fdd835" stroke="#000" stroke-width="3"/><line x1="14" y1="14" x2="86" y2="86" stroke="#000" stroke-width="3"/><line x1="86" y1="14" x2="14" y2="86" stroke="#000" stroke-width="3"/><text x="50" y="44" text-anchor="middle" font-size="10" font-weight="900" fill="#000">RR</text><text x="50" y="60" text-anchor="middle" font-size="10" font-weight="900" fill="#000">RR</text></svg><div class="sign-label">🟡 <strong>RAILROAD</strong><br>রেল ক্রসিং আগে</div></div>
@@ -615,6 +697,37 @@ doors.push({
 <div class="scn-explain">প্রতি বছর আমেরিকায় roadside-এ দাঁড়ানো officer/tow driver গাড়ির ধাক্কায় মারা যায়। Michigan-এ Move Over অমান্য = fine + points, কাউকে আহত করলে felony। এটা police, fire, ambulance, tow truck, utility — সবার জন্য প্রযোজ্য।</div>
 </div>
 
+<div class="code-block">🇬🇧 ENGLISH SUMMARY — Chapter 7: Sharing the Road
+
+  Pedestrians: always first — marked or unmarked
+  crosswalks; extra care for blind pedestrians
+  (cane/guide dog) and school zones.
+
+  Bicyclists: same rights as cars. Pass with at
+  least 3 FEET of clearance — wait behind them if
+  oncoming traffic prevents it. Know cyclist hand
+  signals: left arm straight = left turn; left arm
+  up = right turn; left arm down = stop.
+
+  Trucks: the NO-ZONE — huge blind spots behind
+  (biggest), on the right side (widest, 2 lanes),
+  left side, and close in front. Golden rule: if
+  you can't see the driver's mirror, they can't
+  see you. Trucks make wide right turns — never
+  squeeze down their right side. Motorcycles: same
+  rights, hide easily in blind spots, especially
+  vulnerable at intersections and in rain.
+
+  Railroad crossings: slow, look both ways; stop
+  at gates/lights/bells; after one train passes,
+  check for a second on multiple tracks; NEVER
+  stop on the tracks. MOVE OVER LAW: for stopped
+  emergency vehicles, tow trucks, and utility
+  vehicles — change lanes away, or slow well down
+  if you can't. Horse-drawn buggies (Amish areas):
+  no horn, pass slow and wide. Crossing guards
+  and flaggers outrank signs and signals.</div>
+
 <div class="secret-box">🚴 Pedestrian সবসময় প্রথম। Cyclist: ৩ ফুট দূরত্ব। Truck: mirror দেখা = visible, না দেখা = blind spot। Motorcycle: blind spot সতর্ক। Emergency: ডানে সরে যাও, থামো।</div>`
 });
 
@@ -742,6 +855,48 @@ doors.push({
   ২. ধীরে ধীরে গ্যাস ছাড়ো
   ৩. Steering straight ধরো
   ৪. নিরাপদে থামাও
+
+🛞 PAVEMENT DROP-OFF (চাকা রাস্তার বাইরে!)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ডান চাকা shoulder-এ নেমে গেছে (মাটি/gravel):
+  ১. ভয় পেয়ে wheel ঝাঁকিও না! ← এটাই মারে
+  ২. Gas ছাড়ো, ধীরে হও — brake হালকা
+  ৩. Wheel শক্ত ধরে সোজা চলো shoulder-এই
+  ৪. গতি কমলে (২৫-৩০) — mirror দেখে ধীরে,
+     ছোট angle-এ রাস্তায় ফিরে এসো
+  ⚠️ দ্রুত গতিতে হঠাৎ ফেরার চেষ্টা =
+     rollover বা oncoming-এ ছিটকে যাওয়া
+
+🚗 STUCK ACCELERATOR (গ্যাস পেডাল আটকে গেছে)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ১. দুই পায়ের আঙুলে পেডাল তোলার চেষ্টা — না হলে:
+  ২. গিয়ার NEUTRAL-এ দাও ← মূল সমাধান
+  ৩. Engine গর্জাবে — সমস্যা নেই, চাকায় শক্তি যাচ্ছে না
+  ৪. Brake করে রাস্তার বাইরে থামো, engine বন্ধ
+  ❌ চলন্ত অবস্থায় ignition বন্ধ কোরো না —
+     steering lock হয়ে যেতে পারে
+
+🌊 FLOODED ROAD (পানিতে ডোবা রাস্তা)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  "Turn Around, Don't Drown"
+  ✦ ৬ ইঞ্চি চলন্ত পানি = গাড়ির নিয়ন্ত্রণ হারায়
+  ✦ ১২ ইঞ্চি = বেশিরভাগ গাড়ি ভেসে যায়
+  ✦ গভীরতা দেখে বোঝা যায় না — ঢুকোই না
+  ✦ ঘুরে অন্য পথ নাও — সবসময়
+
+☠️ CARBON MONOXIDE (শীতের নীরব ঘাতক)
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ✦ তুষারে আটকে গেলে গাড়িতে বসে heater চালাবে?
+    আগে exhaust pipe (পেছনের ধোঁয়ার নল)
+    তুষারমুক্ত করো! — নল বন্ধ = CO গাড়ির ভেতরে
+  ✦ জানালা সামান্য খোলা রাখো
+  ✦ CO-র গন্ধ নেই — মাথাব্যথা/ঘুমঘুম লাগলেই
+    engine বন্ধ, বাতাস
+  ✦ বন্ধ garage-এ কখনো engine চালু রেখো না
 
 🦌 DEER ON ROAD (Michigan-এ বাস্তব ঝুঁকি!)
 — — — — — — — — — — — — — — — — — — — — — —
@@ -896,6 +1051,41 @@ doors.push({
 ✅ Hit-and-run — অপরাধ। থামো, info বিনিময়
    করো, প্রয়োজনে police report।</div>
 
+<div class="code-block">🇬🇧 ENGLISH SUMMARY — Chapter 8: Hazards & Emergencies
+
+  Winter: drive well below the limit, 6+ second
+  gap, smooth inputs. Black ice forms FIRST on
+  bridges, overpasses, and shady spots — slow
+  before the bridge, never brake on it. Clear ALL
+  snow off the car (windows, roof, lights, plate).
+
+  Skids: steer where you want to go. With ABS —
+  brake firmly and HOLD (the pulsing is normal);
+  without ABS — no brake, no gas, just steer.
+  Hydroplaning: ease off gas, no brake, steer
+  straight; first 10-15 min of rain is slickest;
+  turn cruise control OFF in rain.
+
+  Wheels off the pavement edge: DON'T yank the
+  wheel — ease off gas, slow on the shoulder,
+  return at low speed with a shallow angle. Stuck
+  accelerator: shift to NEUTRAL, brake, pull off
+  (never turn ignition off while moving). Brake
+  failure: parking brake gently + downshift. Tire
+  blowout: grip wheel, ease off gas, steer
+  straight. Flooded road: turn around — 6 inches
+  of moving water takes control, 12 floats a car.
+  Snowbound: clear the exhaust pipe before running
+  the heater (carbon monoxide).
+
+  Deer: 50,000+ Michigan crashes/year, peak
+  Oct-Nov at dawn/dusk; they travel in groups —
+  BRAKE, never swerve. Crash procedure: stop
+  (leaving = hit-and-run), hazards on, move to
+  safety, 911 if injured, exchange name/address/
+  license/insurance/plate, police report if
+  damage exceeds $1,000.</div>
+
 <div class="secret-box">⚠️ Skid = brake নয়, steering ঘুরাও। Winter = ৬+ সেকেন্ড, black ice bridge-এ। Deer = brake, swerve নয়। Accident = থামো, hazard, 911, info বিনিময়।</div>`
 });
 
@@ -912,6 +1102,7 @@ doors.push({
   },
   story:`
 <p class="scene-setting">নবম অধ্যায়। তুমি একটা police checkpoint-এ। Police officer — গম্ভীর, badge ঝকমক। তিনি বললেন — "নেশা করে গাড়ি চালানো শুধু অপরাধ নয় — খুন। তোমার এবং অন্যের জীবনের সাথে খেলা। Michigan-এ এর শাস্তি কঠোর।"</p>
+<p class="scene-setting en">The ninth chapter. You're at a police checkpoint. A police officer — stern, badge gleaming. He said — "Driving intoxicated isn't just a crime — it's killing. Gambling with your life and others'. Michigan's penalties are severe."</p>
 
 <div class="code-block">MICHIGAN OWI LAWS — COMPLETE
 — — — — — — — — — — — — — — — — — — — — — —
@@ -956,6 +1147,26 @@ doors.push({
   ✦ 1-5 years prison
   ✦ $500-$5000 fine
   ✦ License revocation (minimum 5 years)
+
+— — — — — — — — — — — — — — — — — — — — — —
+🧪 ALCOHOL-এর সত্য — পরীক্ষায় আসে, জীবনেও
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ⏱️ একমাত্র TIME শরীর থেকে alcohol সরায়
+  — প্রায় ১ standard drink প্রতি ঘণ্টায়
+
+  ভুল ধারণা (সবগুলোই মিথ্যা):
+  ❌ কফি খেলে নেশা কাটে → না, জেগে থাকা মাতাল হও
+  ❌ ঠান্ডা পানি/গোসল → না
+  ❌ খাবার খেলে কাটে → শোষণ ধীর হয়, কাটে না
+  ❌ "বিয়ার হালকা, হুইস্কি ভারী" →
+     ১ বিয়ার = ১ গ্লাস ওয়াইন = ১ শট — সমান!
+
+  Alcohol প্রথমেই যা কাড়ে (BAC 0.02-0.05):
+  → Judgment (বিচারবুদ্ধি) — সবার আগে
+  → তারপর reaction, coordination, vision
+  💡 মানে: "আমি ঠিক আছি" ভাবার ক্ষমতাটাই
+     প্রথমে নষ্ট হয় — সিদ্ধান্ত আগে নাও, খাওয়ার আগে
 
 — — — — — — — — — — — — — — — — — — — — — —
 🚫 IMPLIED CONSENT LAW
@@ -1189,6 +1400,39 @@ doors.push({
 <div class="scn-explain">আইনত গাড়ি park করে থামালে তবেই ফোন ধরা বৈধ। বাস্তব কৌশল: চালানোর আগে GPS set করো, ফোন Do Not Disturb While Driving mode-এ দাও, mount-এ রাখো (এক tap-এ কাজ বৈধ)। Text-টা ৫ মিনিট অপেক্ষা করতে পারে — সবসময়।</div>
 </div>
 
+<div class="code-block">🇬🇧 ENGLISH SUMMARY — Chapter 9: OWI & Distraction
+
+  BAC limits: 0.08+ = OWI (21+); 0.17+ = "Super
+  Drunk" (enhanced penalties: up to 180 days jail,
+  45-day hard suspension + ignition interlock);
+  under 21 = 0.02 Zero Tolerance; CDL = 0.04; any
+  impairing drug = OWI (marijuana is legal but
+  driving impaired is not). First OWI: up to 93
+  days jail, $100-500, up to 360-day suspension,
+  6 points. Implied consent: refusing the
+  breathalyzer = automatic 1-year suspension.
+
+  Only TIME removes alcohol (~1 drink/hour).
+  Coffee, showers, food — myths. One beer = one
+  wine = one shot. Judgment goes FIRST — decide
+  before drinking, not after.
+
+  Hands-free law (2023): holding a phone while
+  operating = illegal, including at red lights —
+  $100 first offense. One tap on a mounted phone
+  is OK. Distraction types: visual, manual,
+  cognitive. Open container: no open alcohol in
+  the passenger compartment — trunk only.
+
+  Pulled over: signal, stop right, hands visible
+  on the wheel, interior light at night, stay in
+  the car, argue in court not on the roadside.
+
+  Insurance: Michigan is no-fault — your PIP pays
+  your medical bills regardless of fault; driving
+  uninsured is a crime. Points stay 2 years:
+  OWI/reckless = 6, 16+ over = 4, 11-15 over = 3.</div>
+
 <div class="secret-box">🍺 OWI: BAC 0.08+ (21+), 0.02+ (under 21)। Refuse breathalyzer = 1-year suspension। Texting = primary offense। Marijuana legal কিন্তু driving impaired = OWI। Open container passenger compartment-এ নিষেধ। Police থামালে হাত visible রাখো, শান্ত থাকো। নেশা করে চালানো = খুন।</div>`
 });
 
@@ -1205,6 +1449,7 @@ doors.push({
   },
   story:`
 <p class="scene-setting">দশম অধ্যায়। একটা third-party driver testing business-এর parking lot — কমলা cone সাজানো closed course। তুমি গাড়িতে বসে আছো, dashboard-এ insurance-এর কাগজ। পাশে road test examiner — ক্লিপবোর্ড, pen, গম্ভীর মুখ। "প্রথমে closed course, তারপর রাস্তায়। প্রস্তুত?" তিনি জিজ্ঞেস করলেন। গাড়ির ইঞ্জিন idle, হালকা বাতাস। এই মুহূর্তটা — তোমার সব প্রস্তুতির পরীক্ষা।</p>
+<p class="scene-setting en">The tenth chapter. A third-party driver testing business's parking lot — a closed course lined with orange cones. You sit in the car, insurance papers on the dashboard. Beside you: the road test examiner — clipboard, pen, serious face. "Closed course first, then the road. Ready?" he asks. Engine idling, light breeze. This moment — the test of all your preparation.</p>
 
 <div class="code-block">🏢 ROAD TEST REALITY — কোথায়, কীভাবে, কত টাকা
 — — — — — — — — — — — — — — — — — — — — — —
@@ -1496,7 +1741,44 @@ ROAD TEST — EXAMINER CHECKLIST
   ✦ Seatbelts working
   ✦ Test fee (~$50-100 — tester-কে জিজ্ঞেস করো)
   ✦ পাশ করার পরে: certificate → SOS office →
-    license ($25)</div>
+    license ($25)
+
+— — — — — — — — — — — — — — — — — — — — — —
+📊 SCORING কীভাবে হয় + FAIL করলে কী
+— — — — — — — — — — — — — — — — — — — — — —
+
+  ✦ Examiner প্রতি ভুলে points কাটে —
+    ছোট ভুল (দেরিতে signal) = কম, বড় ভুল = বেশি
+  ✦ AUTOMATIC FAIL (points যা-ই হোক):
+    → Examiner-কে brake/wheel ধরতে হলে
+    → কোনো traffic law ভাঙলে (rolling stop,
+      speeding, failure to yield)
+    → বিপজ্জনক পরিস্থিতি তৈরি করলে
+  ✦ ছোট ভুলে কেউ fail করে না — জমলে করে
+
+  FAIL করলে:
+  ✦ Examiner বলবে কোথায় ভুল — শুনে নোট নাও
+  ✦ আবার schedule করো (আবার fee লাগবে)
+  ✦ দুর্বল জায়গা practice করে ফেরো —
+    অনেকেই ২য় বারে পাশ করে
+
+— — — — — — — — — — — — — — — — — — — — — —
+🌙 আগের রাত + সকালের চেকলিস্ট
+— — — — — — — — — — — — — — — — — — — — — —
+
+  আগের রাতে:
+  ✦ ৮ ঘণ্টা ঘুম — ক্লান্ত মস্তিষ্ক ভুল করে
+  ✦ Documents একসাথে রাখো (TIP, certificate,
+    insurance, registration)
+  ✦ গাড়ির light/signal/horn টেস্ট করো
+  ✦ টেস্টের রুট এলাকায় একবার practice চালাও
+
+  সকালে:
+  ✦ ভালো নাস্তা, পানি
+  ✦ ৩০ মিনিট আগে পৌঁছাও
+  ✦ ফোন silent — গাড়িতে দূরে রাখো
+  ✦ মনে রাখো: examiner চায় তুমি পাশ করো —
+    সে শত্রু নয়, নিরাপত্তার দারোয়ান মাত্র</div>
 
 <div class="code-block">EXAM PATTERN QUESTIONS — Road Test:
 
@@ -1550,6 +1832,40 @@ ROAD TEST — EXAMINER CHECKLIST
 <div class="scn-answer">✅ না — নির্দেশ না থাকলে সোজা যাও (নিয়ম মেনে)। সবুজ আলোতে অকারণে থামা = fail-যোগ্য ভুল! নির্দেশ দরকার হলে examiner আগেই বলবে।</div>
 <div class="scn-explain">Default rule: no instruction = straight ahead, নিয়ম মেনে। চলন্ত অবস্থায় examiner-এর সাথে দীর্ঘ কথাও এড়াও — সেটা cognitive distraction। প্রশ্ন থাকলে থামার নিরাপদ সুযোগে ছোট করে জিজ্ঞেস করো। Examiner-রা confident, decisive driving পছন্দ করে।</div>
 </div>
+
+<div class="code-block">🇬🇧 ENGLISH SUMMARY — Chapter 10: The Road Test
+
+  Where: NOT at the SOS — at an approved
+  third-party testing business (fees vary,
+  ~$50-100). Two parts: Part A closed course
+  (forward stop, straight backing, parallel
+  parking in a cone box, Y-turn) — fail A and
+  there's no Part B; Part B on-road (~20-30 min:
+  residential, business, expressway if available).
+  Pass → Driving Skills Test Certificate → take
+  it to SOS with your permit → license ($25).
+
+  Bring: valid permit/TIP, registered + insured
+  vehicle in working order (lights, signals, horn,
+  no dash warning lights), proof of insurance.
+
+  Examiner checks: full stops (3 sec, wheels
+  still), signals 100 ft before turns, shoulder
+  checks on every lane change, mirror checks
+  every 5-8 sec, hands at 9-and-3, speed within
+  limit (about 5 under is safe), smooth braking,
+  lane centering, parallel parking within 1 ft
+  of curb, 3-point turn in exactly 3 moves.
+
+  Automatic fails: examiner must grab wheel/brake,
+  breaking any law (rolling stop, speeding,
+  failure to yield), creating danger. Small errors
+  only cost points — recover and move on. Top
+  fail: the rolling stop. Top tip: exaggerate
+  your head movements so checks are visible.
+  If no instruction at an intersection: go
+  straight, lawfully. Sleep 8 hours; arrive 30
+  min early; the examiner wants you to pass.</div>
 
 <div class="secret-box">🏁 Road test: third-party tester-এ (~$50-100), দুই ভাগ — closed course + on-road। STOP = 3 sec complete, signal = 100 ft, blind spot = shoulder check, speed = limit-5, parking = practice। Top fail = rolling stop। পাশ = certificate → SOS → license। তুমি প্রস্তুত — শান্ত থাকো, সফল হও!</div>`
 });
@@ -2491,6 +2807,40 @@ doors.push({
   দৃশ্য ২৪ অন্য প্রাণী        → অধ্যায় ৮ (আকার = সিদ্ধান্ত)
 
   প্রতিটা যাত্রায় এগারোটা অধ্যায়ের সব জ্ঞান একসাথে কাজ করে।</div>
+
+<div class="code-block">🇬🇧 ENGLISH SUMMARY — Chapter 11: The Complete Drive
+
+  One journey (scenes 1-9): walk around the car
+  (tires, lights, leaks, children behind) → cockpit
+  order: Seat, Mirrors, Belt, hands 9-3 → start in
+  P with brake pressed, dash lights must go out →
+  one foot for both pedals, PRNDL → back out slow,
+  body turned, yield to sidewalk + street →
+  residential 25 with SEE (a ball means a child) →
+  freeway: match speed, gap, signal, shoulder
+  check, exit ramp before braking → weather reflex:
+  wipers=lights, bigger gap → park, secure (P,
+  parking brake, all off), Dutch reach exit.
+
+  Situation library (scenes 10-24): gas station
+  (gauge arrow shows tank side; engine off);
+  left-turn wait with WHEELS STRAIGHT; school bus
+  (both directions stop unless physical median);
+  railroad gates (watch the second track; if
+  stalled — out, run at an angle toward the
+  train); winter (clear all snow, don't crowd the
+  plow); freeway breakdown (far right, exit
+  passenger side, behind the barrier); aggressive
+  drivers (don't engage; if followed — police
+  station, never home); emergency corridor in
+  jams (left lane left, right lane right);
+  flaggers outrank signals; parking lots (≤10 mph,
+  watch reverse lights); fog = LOW beams;
+  potholes (slow, straight, don't swerve);
+  funeral processions (yield, never cut in);
+  Canada border (passport or Michigan EDL, honest
+  answers); animals (small = hold course, large =
+  brake, never swerve into oncoming).</div>
 
 <div class="secret-box">🔑 সম্পূর্ণ যাত্রা: চারপাশ চেক → Seat-Mirror-Belt → P+brake+start → light চেক → পেছন দেখে বের হও → ২৫-এ SEE → merge গতি মিলিয়ে → wipers=lights → P+brake+lock+Dutch reach। প্রতিটা দৃশ্য অভ্যাস বানাও — অভ্যাসই পরীক্ষায় পাশ করায়, আর জীবন বাঁচায়।</div>`
 });
