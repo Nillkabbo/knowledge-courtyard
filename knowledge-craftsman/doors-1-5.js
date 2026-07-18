@@ -391,7 +391,54 @@ doors.push({
 <tr><td class="hl">Naval Ravikant</td><td>যা ভালোবাসো পড়ো; ভালো বই ৫-১০ বার পুনরায়; জোর করে শেষ কোরো না; foundational বই</td><td>Almanack of Naval (2020)</td></tr>
 <tr><td class="hl">Ryan Holiday</td><td>ভৌত index-card system (Robert Greene থেকে) — key passage + নিজের ভাবনা, topic-অনুযায়ী box; কার্ডই বইয়ের outline</td><td>Holiday-র blog</td></tr></table>
 <div class="callout info"><span class="co-icon">⚡</span><div><strong>সবার এক মিল:</strong> পড়া তাদের জীবনের অবিচ্ছেদ্য অংশ — বিনোদন নয়। তারা <em>আকল দিয়ে</em> পড়ে (তথ্য সংগ্রহ নয়, mental model গড়া) — Munger: "সব বড় শাস্ত্রের বড় idea জানো ও নিয়মিত ব্যবহার করো; বেশিরভাগ মানুষ এক model দিয়ে সব করতে চায়।"</div></div>
-<div class="callout tip"><span class="co-icon">🎒</span><div><strong>Starter kit:</strong> Naval দিয়ে শুরু করো (যা ভালোবাসো পড়ো) → Munger-এর শৃঙ্খলা যোগ করো (দৈনিক পড়া) → Holiday-র নোট-টেকিং যোগ করো (topic-ভিত্তিক কার্ড)।</div></div>
+<div class="callout tip"><span class="co-icon">🎒</span><div><strong>Starter kit:</strong> Naval দিয়ে শুরু করো (যা ভালোবাসো পড়ো) → Munger-ের শৃঙ্খলা যোগ করো (দৈনিক পড়া) → Holiday-র নোট-টেকিং যোগ করো (topic-ভিত্তিক কার্ড)।</div></div>
+
+<div class="diagram">
+  <div class="diag-title">৫ মহামানুষ — ৫ পদ্ধতি, এক মিল</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    ${[ ['Musk','first principles','fundamentals, textbook','#ff6b35',80], ['Gates','Think Week','বছরে ২× কুটিরে একা','#5b9eff',200], ['Munger','৫+ ঘণ্টা/দিন','বহু-শাস্ত্র mental model','#52c41a',320], ['Naval','যা ভালোবাসো','৫-১০ বার পুনরায়','#b37feb',440] ].map(s=>`<rect class="cell" x="${s[4]-55}" y="50" width="110" height="70" rx="8" style="stroke:${s[3]}"/><text class="lbl-sm" x="${s[4]}" y="73" fill="${s[3]}" style="font-weight:700">${s[0]}</text><text class="lbl-sm" x="${s[4]}" y="92" fill="#e8e6f0" style="font-size:9px">${s[1]}</text><text class="lbl-sm" x="${s[4]}" y="107" fill="#9290a8" style="font-size:8px">${s[2]}</text>`).join('')}
+    <!-- convergence: all → আকল -->
+    ${[80,200,320,440].map(x=>`<line class="edge" x1="${x}" y1="125" x2="260" y2="170" style="stroke:#fcd34d"/>`).join('')}
+    <rect class="cell-good" x="200" y="160" width="160" height="34" rx="8"/>
+    <text class="lbl" x="280" y="182" fill="#52c41a">আকল দিয়ে পড়া</text>
+    <text class="lbl-sm" x="280" y="218" fill="#5e5c74">মিল — পড়া জীবনের অবিচ্ছেদ্য অংশ, বিনোদন নয়। আকল দিয়ে, mental model গড়তে।</text>
+  </svg>
+  <div class="diag-cap">পাঁচটি ভিন্ন মানুষ, পাঁচটি ভিন্ন পদ্ধতি — কিন্তু এক মিল: পড়া জীবনের অংশ, বিনোদন নয়। আকল দিয়ে পড়া — তথ্য সংগ্রহ নয়, mental model গড়া। Munger: "বেশিরভাগ মানুষ এক model দিয়ে সব করতে চায়।"</div>
+</div>
+
+<div class="code-block">Great Minds Reading — স্টার্টার কিট:
+
+  Naval (শুরু করো এখান থেকে):
+    যা ভালোবাসো পড়ো। জোর করে শেষ কোরো না।
+    ভালো বই ৫-১০ বার পুনরায় পড়ো।
+
+  + Munger (শৃঙ্খলা যোগ করো):
+    দৈনিক ৫+ ঘণ্টা, বহু-শাস্ত্র।
+    ~১০০ mental model-এর latticework।
+
+  + Holiday (নোট-টেকিং যোগ করো):
+    প্রতিটা বই থেকে index-card।
+    topic-ভিত্তিক box। কার্ডই outline।
+
+  + Gates (গভীরতা যোগ করো):
+    বছরে ২ বার "Think Week" — কুটিরে একা।
+    ১৫-২০ বই + নোট। margin note।
+
+  + Musk (প্রয়োগ যোগ করো):
+    fundamentals/textbook, মতামত নয়।
+    first-principles → নতুন domain-এ model।</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">~৫০</div><div class="sc-label">বই/বছর — Gates</div></div>
+<div class="stat-card"><div class="sc-num">৫+ ঘণ্টা</div><div class="sc-label">দৈনিক পড়া — Munger</div></div>
+<div class="stat-card"><div class="sc-num">৫-১০×</div><div class="sc-label">ভালো বই পুনরায় — Naval</div></div>
+<div class="stat-card"><div class="sc-num">Think Week</div><div class="sc-label">বছরে ২× কুটিরে একা — Gates</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভোক্তা পাঠক</div>পড়া = বিনোদন, সময় কাটানো। যা ইজি পড়ো, মতামত/summary। একবার পড়ে পরের বই। "এ বছর ৫০ বই" — কিন্তু প্রতিটি থেকে কিছু গভীর নয়। mental model গড়ে না। পড়া জীবনকে বদলায় না।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ আকল পাঠক (মহামানুষ)</div>পড়া = জীবনের অবিচ্ছেদ্য অংশ। fundamentals, বহু-শাস্ত্র, নোট, পুনরায়। আকল দিয়ে — mental model গড়া। কম বই, গভীর। Munger: "সব বড় শাস্ত্রের বড় idea জানো ও নিয়মিত ব্যবহার করো।" পড়া জীবন গড়ে।</div>
+</div>
 
 <div class="dialogue">আকল — intellect, reason, the faculty of understanding fundamentals। কুরআনে আল্লাহ বলেন — "তারা কি চিন্তা করে না?" আকল হলো মৌলিক সত্য বোঝার ক্ষমতা। মহামানুষরা আকল দিয়ে পড়েন — শুধু তথ্য সংগ্রহ নয়। Musk: মৌলিক বিজ্ঞান থেকে শিখেন। Gates: Think Week-এ গভীরে যান। Munger: mental models গড়েন প্রতিটা ক্ষেত্র থেকে। Naval: যা ভালোবাসেন তা-ই পড়েন, বারবার। Holiday: প্রতিটা বই থেকে নোট কার্ড। সবার মিল — আকল দিয়ে পড়া, শুধু চোখ দিয়ে নয়।</div>
 <div class="dialogue en">"Aql — intellect, reason, the faculty of understanding fundamentals. Allah says — 'Do they not reflect?' Aql is the ability to grasp fundamental truths. Great minds read with aql — not just gathering information. Musk: learns from fundamental science. Gates: goes deep in Think Week. Munger: builds mental models from every field. Naval: reads what he loves, repeatedly. Holiday: note cards from every book. All share — reading with intellect, not just with eyes."</div>`,
