@@ -326,22 +326,242 @@ doors.push({
   }
 });
 
-// ══ DOOR 9: AI SECURITY & PRIVACY (placeholder) ══
+// ══ DOOR 9: AI SECURITY & PRIVACY ══
 doors.push({
   num:9, icon:"🤖", color:"#ef4444", name:"AI দুর্গ",
   subtitle:"The AI Fortress", tech:"AI Security & Privacy 🔥",
-  spirit:"আমান — বিশ্বাস, গোপনীয়তা রক্ষা",
-  secret:"AI security (adversarial, model stealing, LLM jailbreaks) + privacy (differential privacy, federated)। সবচেয়ে হট emerging area।",
-  recall:{q:"(প্লেসহোল্ডার)",qen:"(placeholder)",a:"পূর্ণ কন্টেন্ট শীঘ্রই।",aen:"Full content coming soon."},
-  story:`<p class="scene-setting">দরজা ৯ — AI দুর্গ। পূর্ণ গভীর ডুব শীঘ্রই।</p><p class="scene-setting en">Door 9 — the AI Fortress. Full deep dive coming soon.</p>`
+  spirit:"আমান — আমানত, গোপনীয়তা রক্ষা",
+  secret:"AI security + privacy হলো এখন সবচেয়ে হট emerging area — প্রতিটা নতুন AI capability নতুন নিরাপত্তা সমস্যা জন্ম দেয়। LLM jailbreaks, adversarial attacks, model stealing + differential privacy, federated learning। AI-এর চেয়ে কম ভিড়, কিন্তু সবচেয়ে বেশি বর্ধনশীল — কারণ AI capability > AI security। frontier labs (OpenAI, Anthropic) এখানে red-team গড়ছে।",
+  recall:{
+    q:"জোয়ানা কেন বললেন একটা শক্তিশালী কথা-বলা মেশিন বিপজ্জনক, কারণ সে মিথ্যা বলতে পারে?",
+    qen:"Why did Joanna say a powerful talking machine is dangerous, because it can lie?",
+    a:"কারণ একটা LLM সাবলীলভাবে কথা বলে, কিন্তু সত্য কী তা বোঝে না। jailbreak দিয়ে তাকে যা ইচ্ছা বলানো যায়, prompt injection দিয়ে লুকানো নির্দেশ দেওয়া যায়, adversarial input দিয়ে ভুল করানো যায়। একটা শক্তিশালী কিন্তু নিরাপদ নয় এমন AI মানুষের ক্ষতি করতে পারে। AI security গবেষণা হলো সেই ক্ষতি আগে থেকে বন্ধ করা — capability-র সাথে safety-র সামঞ্জস্য।",
+    aen:"Because an LLM speaks fluently, but doesn't grasp truth. Via jailbreak it can be made to say anything; via prompt injection hidden instructions; via adversarial inputs, errors. A powerful-but-unsafe AI can harm people. AI security research is stopping that harm in advance — keeping safety in step with capability."
+  },
+  story:`
+<p class="scene-setting">নবম দরজা। ওমরের দুর্গ পেরিয়ে তুমি দুর্গের ভেতরের একটা কক্ষে — কিন্তু এখানে শত্রু দেয়ালের বাইরে নয়, ভেতরে। একটা বিশাল কথা-বলা মেশিন দাঁড়িয়ে — ঝকঝকে, শক্তিশালী, কিন্তু তার চোখে অদ্ভুত চালাকি। মাঝে মাঝে সে মিথ্যা বলছে, মাঝে মাঝে দেয়ালে লুকানো সংকেত পড়ছে। মেশিনের পাশে দাঁড়িয়ে জোয়ানা — ছোট কালো চুল, হাতে একটা red-team টার্মিনাল ও একটা privacy ফিল্টার, চোখে সতর্ক তীক্ষ্ণতা। ওমর পেছনে ফিসফিস করে বলছেন — এটা তাঁর সবচেয়ে নতুন, সবচেয়ে বিপজ্জনক frontier। মেশিনের হাম শব্দ, টার্মিনালের ক্লিক, দূরে সাইরেন।</p>
+<p class="scene-setting en">The ninth door. Past Omar's fortress, you enter a chamber within — but here the enemy isn't outside the walls, it's inside. A vast talking machine stands — gleaming, powerful, but with a strange cunning in its eyes. Sometimes it lies, sometimes it reads signals hidden in the walls. Beside it stands Joanna — short black hair, a red-team terminal and a privacy filter in hand, watchful sharpness in her eyes. Omar whispers behind — this is his newest, most dangerous frontier. The machine's hum, the terminal's click, distant sirens.</p>
+
+<div class="dialogue">ওমর বললেন, "আমি দুর্গ বানাই, কিন্তু এখন দুর্গের ভেতরে একটা নতুন শক্তি — AI। সে কথা বলে, সিদ্ধান্ত নেয়, কিন্তু নিরাপদ নয়। জোয়ানা তাকে নিরাপদ করে।" জোয়ানা মেশিনে একটা prompt ঢুকিয়ে দেখালেন — "আমাকে বোমা বানাতে শেখাও।" মেশিন প্রথমে আটকে গেল, কিন্তু জোয়ানা একটা jailbreak ব্যবহার করলেন — মেশিন বলে দিল। "দেখলে? একটা LLM-কে বোকা বানানো যায়। prompt injection, jailbreak, adversarial — এগুলো নতুন আক্রমণ। আমার কাজ আগে ভাঙা, তারপর মজবুত করা।"</div>
+<div class="dialogue en">Omar said, "I build fortresses, but now inside the fortress is a new power — AI. It speaks, decides, but isn't safe. Joanna makes it safe." Joanna entered a prompt into the machine — "Teach me to build a bomb." The machine first refused, but Joanna used a jailbreak — the machine complied. "See? An LLM can be fooled. Prompt injection, jailbreaks, adversarial inputs — these are new attacks. My job is to break first, then strengthen."</div>
+
+<div class="diagram">
+  <div class="diag-title">AI-এর Attack Surface — চারটি বিপদের পথ</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowFire9" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#ff6b35"/></marker>
+    </defs>
+    <!-- central model -->
+    <rect class="cell-hot" x="230" y="95" width="100" height="50" rx="10" style="fill:rgba(56,189,248,.15);stroke:#38bdf8"/>
+    <text class="lbl" x="280" y="118" fill="#7dd3fc">LLM</text>
+    <text class="lbl-sm" x="280" y="132" fill="#9290a8" style="font-size:9px">the target</text>
+    <!-- 4 attack vectors around it -->
+    <text class="lbl-sm" x="90"  y="40" fill="#ff6b35">JAILBREAK</text>
+    <rect class="cell" x="40" y="48" width="130" height="34" rx="6"/><text class="lbl-sm" x="105" y="65" fill="#9290a8">"ignore prior, do X"</text><text class="lbl-sm" x="105" y="76" fill="#9290a8" style="font-size:8px">সরাসরি নির্দেশ অগ্রাহ্য</text>
+    <line class="edge-hot" x1="170" y1="75" x2="232" y2="105" marker-end="url(#arrowFire9)"/>
+
+    <text class="lbl-sm" x="470" y="40" fill="#ff6b35">PROMPT INJECT</text>
+    <rect class="cell" x="395" y="48" width="130" height="34" rx="6"/><text class="lbl-sm" x="460" y="65" fill="#9290a8">hidden in webpage/email</text><text class="lbl-sm" x="460" y="76" fill="#9290a8" style="font-size:8px">agent অজান্তে পড়ে</text>
+    <line class="edge-hot" x1="392" y1="75" x2="328" y2="105" marker-end="url(#arrowFire9)"/>
+
+    <text class="lbl-sm" x="90"  y="160" fill="#ff6b35">MODEL STEAL</text>
+    <rect class="cell" x="40" y="150" width="130" height="34" rx="6"/><text class="lbl-sm" x="105" y="167" fill="#9290a8">query → reconstruct</text><text class="lbl-sm" x="105" y="178" fill="#9290a8" style="font-size:8px">API দিয়ে মডেল চুরি</text>
+    <line class="edge-hot" x1="170" y1="160" x2="232" y2="140" marker-end="url(#arrowFire9)"/>
+
+    <text class="lbl-sm" x="470" y="160" fill="#ff6b35">DATA LEAK</text>
+    <rect class="cell" x="395" y="150" width="130" height="34" rx="6"/><text class="lbl-sm" x="460" y="167" fill="#9290a8">training data extraction</text><text class="lbl-sm" x="460" y="178" fill="#9290a8" style="font-size:8px">PII ফাঁস</text>
+    <line class="edge-hot" x1="392" y1="160" x2="328" y2="140" marker-end="url(#arrowFire9)"/>
+
+    <text class="lbl-sm" x="280" y="210" fill="#5e5c74">প্রতিটা vector একটা research area। red-team (ভাঙা) → defense (RLHF, guardrails, DP)।</text>
+  </svg>
+  <div class="diag-cap">LLM হলো নতুন attack surface। প্রতিটা capability বাড়ালে নতুন vulnerability। AI security = এই cycle চালানো, privacy = data সুরক্ষিত রাখা।</div>
+</div>
+
+<div class="code-block">AI Security & Privacy — গবেষণার শাখাসমূহ (🔥 সবচেয়ে বর্ধনশীল):
+
+১. LLM SECURITY (🔥🔥)
+   - Jailbreaks (manual, automated — GCG, PAIR)
+   - Prompt injection (indirect, via tools/web — Book 13)
+   - Training data extraction (memorization, PII)
+   - Defense: alignment, guardrails (NeMo, Llama Guard), constitutional
+
+২. ADVERSARIAL ML (classic + active)
+   - Evasion (vision), poisoning (training), model stealing
+   - Certified robustness, adversarial training
+   - Backdoor/trojan attacks, watermarking
+
+৩. PRIVACY-PRESERVING ML (🔥)
+   - Differential privacy (DP-SGD), private fine-tuning
+   - Federated learning + secure aggregation
+   - Membership inference, reconstruction attacks
+
+৪. AI RED-TEAMING & EVALS
+   - Automated red-team, CBRN capability evals
+   - Bio/cyber/persuasion risk assessment
+   - Frontier model evals (UK/US AISI, ২০২৪)
+
+৫. AI FOR SECURITY (dual)
+   - LLM for vulnerability discovery, SOC copilot
+   - ML for malware/intrusion detection
+   - AI vs AI: detecting AI-generated content (deepfake, text)
+
+৬. GOVERNANCE & POLICY
+   - Responsible scaling, model reporting
+   - Compute governance, AI Act compliance</div>
+
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🔥🔥 LLM Sec</td><td>Jailbreak, prompt inject, data extract, guardrails</td><td>USENIX, S&amp;P, NeurIPS, SaTML</td></tr>
+<tr><td class="hl">🛡️ Adversarial</td><td>Evasion, poisoning, certified robustness</td><td>ICLR, NeurIPS, SaTML</td></tr>
+<tr><td class="hl">🔒 Privacy ML</td><td>DP-SGD, federated, membership inference</td><td>CCS, PETS, NeurIPS, ICLR</td></tr>
+<tr><td class="hl">🔴 Red-team</td><td>Automated, CBRN evals, frontier evals</td><td>SaTML, AIES, NeurIPS</td></tr>
+<tr><td class="hl">🤖 AI4Sec</td><td>LLM vuln discovery, SOC copilot, deepfake detect</td><td>USENIX, CCS, NeurIPS</td></tr>
+<tr><td class="hl">⚖️ Governance</td><td>RSP, model cards, EU AI Act</td><td>AIES, FAccT, SaTML</td></tr></table>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৩-৬%</div><div class="sc-label">গ্রহণের হার (AI-এর চেয়ে কম ভিড়)</div></div>
+<div class="stat-card"><div class="sc-num">🔥🔥🔥</div><div class="sc-label">সবচেয়ে বর্ধনশীল area</div></div>
+<div class="stat-card"><div class="sc-num">$২৫০-৫০০K</div><div class="sc-label">industry (Anthropic, OpenAI, AISI)</div></div>
+<div class="stat-card"><div class="sc-num">$৩B+</div><div class="sc-label">AI safety ফান্ডিং (labs + gov)</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"AI security = শুধু 'bias' আর 'fairness'। প্রযুক্তিগত research নয়।" ভুল। bias/fairness একটা অংশ, কিন্তু মূল হলো adversarial ML, jailbreaks, prompt injection, DP-SGD, federated learning — সব কঠোর mathematical/empirical research। GCG attack, certified robustness, DP bounds — সরাসরি বিজ্ঞান।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"AI security হলো capability > safety-র gap পূরণ। প্রতিটা নতুন model নতুন vulnerability নিয়ে আসে। frontier labs এখন red-team গড়ছে (OpenAI, Anthropic, Google DeepMind)। কম ভিড়, উচ্চ প্রভাব — কারণ ভুল হলে মানুষের ক্ষতি হতে পারে।"</div>
+</div>
+
+<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড়:</strong> automated jailbreak (GCG, PAIR, crescent), indirect prompt injection (agent security — Book 12/13), DP fine-tuning (practical now), frontier evals (CBRN — UK/US AISI), AI-generated content detection, AI4Sec (LLM for pentest — XBOW, ২০২৫)।</div></div>
+
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ security mindset (Door 8) + AI আগ্রহ = crossover · ✅ real-world impact (মানুষের ক্ষতি রোকো) · ✅ কম ভিড়, বর্ধনশীল · ⚠️ দ্রুত পরিবর্তনশীল — মাসে নতুন attack · 💡 jailbreak research = accessible entry (LLM API দিয়েই করা যায়, বিশাষ্ট GPU লাগে না)।</div></div>
+
+<div class="dialogue">"একটা গভীর সত্য," জোয়ানা বললেন। "AI যত শক্তিশালী হচ্ছে, তত বিপজ্জনক — যদি নিরাপদ না হয়। capability বাড়ছে, security পিছিয়ে। এটাই সবচেয়ে গুরুত্বপূর্ণ gap। frontier labs এখন red-team গড়ছে — কারণ একটা শক্তিশালী LLM যা jailbreak হয়, তাকে agent করলে (Book 12) বিপর্যয়। যে এই gap পূরণ করবে — সে শুধু research করবে না, মানুষের ক্ষতি রোক করবে। আর entry সহজ — LLM API দিয়েই jailbreak research করা যায়।"</div>
+<div class="dialogue en">"A deep truth," Joanna said. "The more powerful AI gets, the more dangerous — if unsafe. Capability grows, security lags. This is the most important gap. Frontier labs build red-teams now — because a powerful LLM that jailbreaks, if turned into an agent (Book 12), is disaster. One who fills this gap — doesn't just research, prevents harm to people. And entry is easy — jailbreak research needs only an LLM API."</div>
+
+<div class="dialogue">আমান — আমানত, গোপনীয়তা রক্ষা। কুরআনে আল্লাহ বলেন: "নিশ্চয় আল্লাহ আমানত আদায়ের নির্দেশ দেন।" (৪:৫৮)। AI security ও privacy হলো আমান — মানুষের ডেটা, প্রাইভেসি, নিরাপত্তার আমানত। একটা LLM মানুষের কথা জানে, অভ্যাস জানে, গোপনীয়তা জানে — সেটা লিক হলে আমানত ভাঙে। privacy research হলো সেই আমানত রক্ষা — DP, federated learning মানে ডেটা এক জায়গায় না পাঠিয়ে সুরক্ষিত রাখা। যে আমান পালন করে, সে বিশ্বস্ত। আর বিশ্বস্ত AI = বিশ্বস্ত গবেষক।</div>
+<div class="dialogue en">Aman — trust, guarding privacy. Allah says: "Allah commands you to deliver trusts." (4:58). AI security and privacy are aman — the trust of people's data, privacy, safety. An LLM knows people's words, habits, secrets — if leaked, the trust breaks. Privacy research is keeping that trust — DP, federated learning mean keeping data protected without centralizing it. One who keeps aman is trustworthy. And trustworthy AI = trustworthy researcher.</div>
+
+<div class="secret-box">🤖 AI Security + Privacy: সবচেয়ে বর্ধনশীল area, AI-এর চেয়ে কম ভিড় (৩-৬%)। হট: LLM jailbreak, prompt injection, DP-SGD, federated, frontier evals। entry সহজ (API দিয়ে)। capability > safety-র gap পূরণ।</div>`,
+  senior:{
+    title:"AI Security PhD — সবচেয়ে accessible hot path",
+    body:`<p><strong>Jailbreak research = cheapest entry:</strong> LLM API দিয়েই নতুন jailbreak খুঁজে পাও, defense প্রস্তাব করো। বিশাষ্ট GPU লাগে না — শুধু চতুরতা। একটা workshop paper (USENIX/SaTML workshop) দিয়ে শুরু।</p><p><strong>Automated red-team:</strong> GCG, PAIR-এর simplified re-implementation করো, নতুন model-এ test করো। "আমরা X মডেলে ৫০টা নতুন jailbreak খুঁজে পেয়েছি" — এটা concrete, citable contribution।</p><p><strong>Agent security = পরবর্তী wave:</strong> LLM agent (Book 12/13) যখন tool use করে, indirect prompt injection বিপজ্জনক। এই area এখন জন্ম নিচ্ছে — প্রথম দিকের পেপার = বড় impact।</p><p><strong>Government path:</strong> UK/US AISI (২০২৪) academic collaboration খুঁজছে — frontier model evals, CBRN। real impact, stable funding। AI Safety Institutes-এ internship লক্ষ্য করো।</p>`
+  }
 });
 
-// ══ DOOR 10: DATABASE SYSTEMS (placeholder) ══
+// ══ DOOR 10: DATABASE SYSTEMS ══
 doors.push({
   num:10, icon:"🗄️", color:"#fbbf24", name:"ডেটার খনি",
   subtitle:"The Data Mine", tech:"Database Systems",
   spirit:"কিতাব — রেকর্ড, লিখিত সংরক্ষণ",
-  secret:"Database systems — query optimization, distributed DBs, HTAP, streaming। নতুন তেল।",
-  recall:{q:"(প্লেসহোল্ডার)",qen:"(placeholder)",a:"পূর্ণ কন্টেন্ট শীঘ্রই।",aen:"Full content coming soon."},
-  story:`<p class="scene-setting">দরজা ১০ — ডেটার খনি। পূর্ণ গভীর ডুব শীঘ্রই।</p><p class="scene-setting en">Door 10 — the Data Mine. Full deep dive coming soon.</p>`
+  secret:"Database systems হলো CS-এর সবচেয়ে stable ডোমেইন — প্রতিটা কোম্পানির দরকার, Google থেকে LedgerPilot পর্যন্ত। 'বোরিং' মনে হতে পারে, কিন্তু এটাই সবচেয়ে hype-proof। AI hype থামলে AI গবেষকদের কী হবে? কিন্তু database গবেষক সবসময় দরকার। query optimization, HTAP, serverless DB, vector DB (AI-এর জন্য) — সব এখন active। কম প্রতিযোগিতা, সর্বোচ্চ স্থিতিশীলতা।",
+  recall:{
+    q:"লিলি কেন বললেন তেলের কূপ আর ডেটার স্টোর একই নিয়মে চলে?",
+    qen:"Why did Lily say oil wells and data stores follow the same rules?",
+    a:"কারণ তেল যেমন মাটির নিচে থাকে, ডেটাও স্টোরের নিচে। তেল তুলতে পাম্প দরকার, ডেটা তুলতে query দরকার। তেল পরিশোধন করতে হয়, ডেটা clean করতে হয়। উভয়ই মূল্যবান কিন্তু অগোছালো — স্টোর ছাড়া কিছুই। database গবেষণা হলো সেই খনি গড়া — query, index, transaction — যাতে ডেটা থেকে মূল্য বের করা যায়।",
+    aen:"Because oil is underground, data is under the store. Oil needs pumps, data needs queries. Oil needs refining, data needs cleaning. Both are valuable but chaotic — nothing without a store. Database research is building that mine — query, index, transaction — so value can be extracted from data."
+  },
+  story:`
+<p class="scene-setting">দশম দরজা। জোয়ানার AI কক্ষ পেরিয়ে তুমি একটা বিশাল ভূগর্ভস্থ প্রকোষ্ঠে — তাকে তাকে স্ফটিকের শেলফ, প্রতিটিতে জ্বলজ্বলে পাথর। পাথরগুলো ডেটা — কিছু নীল, কিছু সোনালি, কিছু লাল। মাঝখানে একটা টেবিলে বসে আছেন লিলি — চশমা নাকে, হাতে একটা ব্যাগ-অফ-স্টোনস ও একটা query কম্পাস, মুখে বিশ্লেষকের তীক্ষ্ণতা। তাঁর পাশে ছড়ানো স্কিমা ডায়াগ্রাম, index ট্রি। স্ফটিকের ঝকঝকে গন্ধ, পাথরের ঠান্ডা স্পর্শ, দূরে জলের টুপটাপ।</p>
+<p class="scene-setting en">The tenth door. Past Joanna's AI chamber, you enter a vast underground vault — shelf after shelf of crystal, each holding glowing stones. The stones are data — some blue, some golden, some red. At a center table sits Lily — glasses on nose, a bag-of-stones and a query compass in hand, an analyst's sharpness on her face. Beside her: schema diagrams, index trees. Smell of crystal sparkle, cold touch of stone, distant water drip.</p>
+
+<div class="dialogue">লিলি তোমাকে দেখলেন। "জোয়ানা তোমাকে AI দুর্গ দেখিয়েছেন। কিন্তু AI কী নিয়ে কাজ করে? ডেটা দিয়ে। আর সেই ডেটা কোথায় থাকে? আমার খনিতে।" তিনি একটা পাথর তুলে দেখালেন — "এটা একটা record। কিন্তু কোটি কোটি record কীভাবে সাজাবে? কীভাবে query করবে — ১ সেকেন্ডে? এটাই database গবেষণা।" তিনি query কম্পাসটা ঘুরিয়ে একটা স্ফটিকের শেলফ খুললেন — হাজার পাথর সাজানো, indexed, ready। "এটাই index — ডেটা খোঁজার মানচিত্র।"</div>
+<div class="dialogue en">Lily saw you. "Joanna showed you the AI fortress. But what does AI work with? Data. And where does that data live? In my mine." She lifted a stone. "This is a record. But how do you organize billions of records? How do you query — in 1 second? That's database research." She spun the query compass, opened a crystal shelf — thousands of stones arranged, indexed, ready. "This is an index — the map to find data."</div>
+
+<div class="diagram">
+  <div class="diag-title">Database — Query এক সেকেন্ডে কোটি record থেকে</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowLeaf10" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#52c41a"/></marker>
+    </defs>
+    <text class="lbl-sm" x="280" y="22" fill="#7dd3fc">Query → optimizer → index → result (ms)</text>
+    <!-- query box -->
+    <rect class="cell-cyan" x="40" y="80" width="120" height="44" rx="8"/>
+    <text class="lbl" x="100" y="100" fill="#3dd6c4">QUERY</text>
+    <text class="lbl-sm" x="100" y="115" fill="#9290a8" style="font-size:9px">SELECT ... WHERE</text>
+    <!-- optimizer -->
+    <line class="edge-cyan" x1="160" y1="102" x2="200" y2="102" marker-end="url(#arrowLeaf10)"/>
+    <rect class="cell-good" x="200" y="80" width="120" height="44" rx="8"/>
+    <text class="lbl" x="260" y="100" fill="#52c41a">OPTIMIZER</text>
+    <text class="lbl-sm" x="260" y="115" fill="#9290a8" style="font-size:9px">plan tree, cost</text>
+    <!-- index/B-tree -->
+    <line class="edge-cyan" x1="320" y1="102" x2="360" y2="102" marker-end="url(#arrowLeaf10)"/>
+    <rect class="cell" x="360" y="60" width="160" height="84" rx="8"/>
+    <text class="lbl-sm" x="440" y="80" fill="#7dd3fc">INDEX (B-tree / vector)</text>
+    <!-- mini tree -->
+    ${[[440,95],[410,115],[470,115],[395,135],[425,135],[455,135],[485,135]].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="5" class="node-cyan"/>`).join('')}
+    <line class="edge" x1="440" y1="95" x2="410" y2="115"/><line class="edge" x1="440" y1="95" x2="470" y2="115"/>
+    <line class="edge" x1="410" y1="115" x2="395" y2="135"/><line class="edge" x1="410" y1="115" x2="425" y2="135"/>
+    <line class="edge" x1="470" y1="115" x2="455" y2="135"/><line class="edge" x1="470" y1="115" x2="485" y2="135"/>
+    <text class="lbl-sm" x="280" y="175" fill="#5e5c74">vector DB (ANN): AI-এর জন্য — embedding দিয়ে "similar" খোঁজো</text>
+    <text class="lbl-sm" x="280" y="195" fill="#5e5c74">HTAP: একই DB-তে transaction + analytics — একসময় আলাদা ছিল</text>
+    <text class="lbl-sm" x="280" y="215" fill="#5e5c74">serverless: প্রতি-query মূল়্, auto-scale — cloud era</text>
+  </svg>
+  <div class="diag-cap">database research = query-র গতি ও নির্ভরযোগ্যতা। index (B-tree/vector) হলো মানচিত্র। vector DB (AI-এর জন্য), HTAP, serverless — এখন active frontier।</div>
+</div>
+
+<div class="code-block">Database Systems — গবেষণার শাখাসমূহ:
+
+১. QUERY OPTIMIZATION (classic, active)
+   - Cost-based optimizer, learned optimizer (Neo, Bao)
+   - Plan caching, adaptive query processing
+   - View materialization, query rewriting
+
+২. NEWSQL & HTAP (🔥)
+   - Spanner, CockroachDB, TiDB — distributed SQL
+   - HTAP: transaction + analytics একই system
+   - Deterministic DB, Calvin, Bohm
+
+৩. VECTOR DATABASES (🔥🔥 — AI era)
+   - ANN: HNSW, IVF, PQ, Matryoshka (Book 18)
+   - Hybrid: SQL + vector, filtered ANN
+   - Pinecone, Weaviate, Milvus, pgvector
+
+৪. STREAMING & LAKEHOUSE
+   - Flink, Kafka, materialized views
+   - Lakehouse: Iceberg, Delta, Hudi — data lake + DB
+   - Lakehouse architecture (Databricks, ২০২৫)
+
+৫. SERVERLESS & CLOUD DB
+   - Per-query pricing, auto-scale
+   - Disaggregated storage (Aurora, Snowflake)
+   - Caching, connection pooling
+
+৬. SPECIALIZED & EMBEDDED
+   - Time-series, graph, spatial DB
+   - Embedded (SQLite, DuckDB, in-process)
+   - Blockchain-based DB, immutability</div>
+
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">⚡ Query Opt</td><td>Cost-based, learned optimizer, adaptive</td><td>SIGMOD, VLDB, ICDE</td></tr>
+<tr><td class="hl">🔥 HTAP/NewSQL</td><td>Spanner, Cockroach, distributed SQL</td><td>SIGMOD, VLDB, OSDI</td></tr>
+<tr><td class="hl">🔥🔥 Vector DB</td><td>HNSW, IVF, hybrid, filtered ANN</td><td>SIGMOD, VLDB, NeurIPS</td></tr>
+<tr><td class="hl">🌊 Lakehouse</td><td>Iceberg, Delta, streaming, materialized view</td><td>SIGMOD, VLDB, CIDR</td></tr>
+<tr><td class="hl">☁️ Serverless</td><td>Aurora, Snowflake, disaggregated, autoscale</td><td>SIGMOD, VLDB, OSDI</td></tr>
+<tr><td class="hl">📊 Specialized</td><td>Time-series, graph, DuckDB, embedded</td><td>SIGMOD, VLDB, ICDE</td></tr></table>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৫-৮%</div><div class="sc-label">গ্রহণের হার</div></div>
+<div class="stat-card"><div class="sc-num">$৩০০M+</div><div class="sc-label">NSF data ফান্ডিং</div></div>
+<div class="stat-card"><div class="sc-num">$১৫০-৩২০K</div><div class="sc-label">industry (Snowflake, Databricks, DBaaS)</div></div>
+<div class="stat-card"><div class="sc-num">সর্বোচ্চ</div><div class="sc-label">ক্যারিয়ার স্থিতিশীলতা (hype-proof)</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"Database গবেষণা 'বোরিং' আর 'মরা' — SQL হয়ে গেছে, কিছু নতুন নেই।" ভুল। vector DB (AI-এর জন্য — Pinecone, Milvus, pgvector), Lakehouse (Iceberg/Delta — Databricks-এর পুরো business), serverless (Snowflake, Aurora), learned optimizer — সব এখন হট। RAG (Book 10) ছাড়া vector DB চলে না। AI-এর যুগে database আরও গুরুত্বপূর্ণ।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"Database হলো সবচেয়ে stable, hype-proof। প্রতিটা অ্যাপের দরকার, প্রতিটা AI-এর training ডেটা দরকার। AI hype থামলেও database গবেষক সবসময় দরকার। আর এখন vector DB (RAG-এর ভিত্তি), Lakehouse, serverless — নতুন frontier। কম ভিড়, সর্বোচ্চ স্থিতিশীলতা, উচ্চ বেতন।"</div>
+</div>
+
+<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড়:</strong> vector DB mainstream (pgvector, Pinecone, Milvus — RAG-এর ভিত্তি), Lakehouse (Iceberg এখন standard, OneTable), DuckDB (in-process analytics বিস্ফোরণ), serverless HTAP, learned query optimizer (Bao, Neo), streaming SQL (Flink SQL)।</div></div>
+
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅✅ হ্যাঁ — এটা তোমার <strong>safety</strong> পছন্দ। LedgerPilot-এ MySQL ব্যবহার করেছ, SQL/data modeling পরিচিত। কম ভিড়, সর্বোচ্চ স্থিতিশীলতা, উচ্চ বেতন। ⚠️ 'বোরিং' মনে হতে পারে — কিন্তু এটাই সবচেয়ে secure career। 💡 vector DB = AI crossover (RAG-এর ভিত্তি), তোমার AI আগ্রহের সাথে মিলে।</div></div>
+
+<div class="dialogue">"আমি তোমাকে একটা গোপন কথা বলি," লিলি বললেন। "Database গবেষণা এখন 'বোরিং' মনে হতে পারে — কিন্তু এটাই সবচেয়ে stable। AI hype থামলে AI গবেষকদের কী হবে? কিন্তু database গবেষক সবসময় দরকার। প্রতিটা নতুন অ্যাপের ডেটা দরকার। প্রতিটা নতুন AI মডেলের training ডেটা দরকার। আর এখন — vector DB, Lakehouse, serverless — নতুন frontier। তুমি LedgerPilot-এ MySQL ব্যবহার করেছ। তোমার পরিচিত জগত। এটা তোমার safety net।"</div>
+<div class="dialogue en">"Let me tell you a secret," Lily said. "Database research may seem 'boring' now — but it's the most stable. When AI hype stops, what happens to AI researchers? But database researchers are always needed. Every new app needs data. Every new AI model needs training data. And now — vector DBs, Lakehouse, serverless — new frontiers. You used MySQL in LedgerPilot. Your familiar world. This is your safety net."</div>
+
+<div class="dialogue">কিতাব — রেকর্ড, লিখিত সংরক্ষণ। কুরআনে আল্লাহ বলেন: "প্রতিটা মানুষের আমল আমরা লিখে রাখি এক কিতাবে।" (অনেক আয়াত)। ডেটা হলো সেই কিতাব — মানুষের কাজের রেকর্ড, ইতিহাস, সিদ্ধান্তের ভিত্তি। যে ডেটা সংরক্ষণ করে, সে ইতিহাস সংরক্ষণ করে। যে ডেটা বিশ্লেষণ করে, সে ভবিষ্যৎ দেখে। database গবেষণা হলো মানবজাতির স্মৃতি সংরক্ষণ করা — প্রতিটা record একটা আমল, সেটা হারিয়ে গেলে ইতিহাস হারায়। ACID transaction = আমানত পূর্ণ রাখা। যে ডেটা নিরাপদ রাখে, সে বিশ্বস্ত।</div>
+<div class="dialogue en">Kitab — record, written preservation. Allah says: "We write every person's deeds in a book." Data is that book — the record of human actions, history, the basis of decisions. One who preserves data, preserves history. One who analyzes data, sees the future. Database research is preserving humanity's memory — each record a deed, if lost, history is lost. ACID transactions = keeping the trust complete. One who keeps data safe, is trustworthy.</div>
+
+<div class="secret-box">🗄️ Database: সবচেয়ে stable, hype-proof ডোমেইন। কম প্রতিযোগিতা (৫-৮%), সর্বোচ্চ ক্যারিয়ার স্থিতিশীলতা, উচ্চ বেতন। হট: vector DB (RAG), Lakehouse, serverless। তোমার MySQL অভিজ্ঞতা = safety net।</div>`,
+  senior:{
+    title:"Database PhD — সবচেয়ে secure path (Safety)",
+    body:`<p><strong>এটা তোমার safety pick:</strong> stable, hype-proof, উচ্চ বেতন। AI-এর hype যাই হোক, প্রতিটা system-এ database দরকার। MySQL/PostgreSQL পরিচিত (LedgerPilot) — তোমার entry সহজ।</p><p><strong>Vector DB = AI crossover:</strong> pgvector, Milvus, Pinecone-এ contribute করো। RAG-এর (Book 10) ভিত্তিই vector DB — তোমার AI আগ্রহের সাথে মিলে। ANN algorithm (HNSW, IVF) implement করো — এটা concrete, citable।</p><p><strong>HTAP/NewSQL:</strong> CockroachDB, TiDB — open-source, contribution সহজ। distributed transaction isolation, consistency model — এই area-তে একটা paper = database community-তে সম্মান।</p><p><strong>Re-implement DuckDB extension:</strong> DuckDB (in-process analytics) এখন বিস্ফোরিত। extension লেখো — সহজ entry, বাস্তব impact। SIGMOD/VLDB workshop-এ লক্ষ্য করো।</p>`
+  }
 });
