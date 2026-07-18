@@ -43,7 +43,7 @@ An interactive bilingual (Bengali/English) learning library built with the Seven
 | 🛡️ 23 | **The Irreplaceable Craftsman** | Career & AI obsolescence (permanent vs perishable skills) |
 | 🧠 24 | **The Mirror of the Mind** | Human Psychology (Cialdini, learned helplessness, biases) |
 | 🔮 25 | **The Council of Deep Knowledge** | The Art of Deep Learning — 8 doors with SVG diagrams (meta-learning, 20h/10000h, Dunning-Kruger, feedback, metacognition) |
-| 📖 26 | **The Knowledge Craftsman** | Reading/Thinking/Writing (Zettelkasten, Feynman, Adler) |
+| 📖 26 | **The Knowledge Craftsman** | Reading/Thinking/Writing — 10 doors with SVG diagrams (Zettelkasten, Feynman, Adler, Ebbinghaus, second-brain CODE) |
 | ✍️ 27 | **The Paper Architect** | Research Paper Read/Write (IMRaD, Keshav, peer review) |
 | 🕸️ 28 | **The Knowledge Web** | Knowledge Connection Capstone (connects all books) |
 
