@@ -3,17 +3,22 @@
 // ════════════════════════════════════════
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
-const SAVE_KEY = 'csOcean_v1';
-const MAX_XP = 1000;
+const SAVE_KEY = 'csOcean_v2';
+const MAX_XP = 2000;
 const RANKS = [
-  {min:0,   name:'নাবিক শিক্ষানবিশ',     icon:'🧳'},
-  {min:100, name:'ডোমেইন অন্বেষক',   icon:'🧭'},
-  {min:200, name:'গভীর ডুবুরি',     icon:'🤿'},
-  {min:300, name:'ডোমেইন বিশেষজ্ঞ',     icon:'📚'},
-  {min:400, name:'মহাসমুদ্র জ্ঞানী',           icon:'🎓'},
-  {min:500, name:'সমুদ্র নেভিগেটর',     icon:'🧪'},
-  {min:600, name:'মহাসমুদ্র অধিনায়ক',    icon:'👑'},
-  {min:700, name:'মহাসমুদ্র মাস্টার',    icon:'🌌'}
+  {min:0,    name:'নাবিক শিক্ষানবিশ',     icon:'🧳'},
+  {min:100,  name:'তীরের পথিক',          icon:'🦶'},
+  {min:200,  name:'গভীর ডুবুরি',         icon:'🤿'},
+  {min:300,  name:'ডোমেইন অন্বেষক',     icon:'🧭'},
+  {min:400,  name:'তটরক্ষক',             icon:'🏮'},
+  {min:500,  name:'মুক্তা সংগ্রাহক',     icon:'🦪'},
+  {min:700,  name:'ডোমেইন বিশেষজ্ঞ',     icon:'📚'},
+  {min:900,  name:'মহাসমুদ্র জ্ঞানী',     icon:'🎓'},
+  {min:1100, name:'নৌপথ মানচিত্রকার',   icon:'🗺️'},
+  {min:1300, name:'সমুদ্র নেভিগেটর',     icon:'🧪'},
+  {min:1500, name:'মহাসমুদ্র অধিনায়ক',   icon:'👑'},
+  {min:1700, name:'মহাসমুদ্র মাস্টার',    icon:'🌌'},
+  {min:1900, name:'চিরস্থায়ী নেভিগেটর',  icon:'✨'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}
 function loadState(){try{const r=localStorage.getItem(SAVE_KEY);if(!r)return;const s=JSON.parse(r);state.xp=s.xp||0;state.completedDoors=s.completedDoors||[];state.prologueSeen=s.prologueSeen||false}catch(e){}}
@@ -43,7 +48,7 @@ function startGame(){sndStart();loadState();if(!state.prologueSeen){showScreen('
 function startMap(){state.prologueSeen=true;saveState();renderMap();showScreen('map-screen')}
 // Map
 function renderMap(){const grid=document.getElementById('doors-grid');grid.innerHTML='';let nextIdx=-1;doors.forEach((door,idx)=>{const prevDone=state.completedDoors.includes(idx-1);const selfDone=state.completedDoors.includes(idx);const unlocked=idx===0||prevDone||selfDone;if(unlocked&&!selfDone&&nextIdx===-1)nextIdx=idx;const card=document.createElement('div');card.className=`door-card ${selfDone?'completed':''} ${!unlocked?'locked':''}`;if(unlocked){card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label',`${door.name} — ${door.subtitle}`);card.onclick=()=>openDoor(idx);card.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openDoor(idx)}}}else{card.setAttribute('aria-label',`${door.name} — locked`)}card.innerHTML=`<div class="door-num">স্থানীয় গন্তব্য ${door.num}</div><div class="door-icon">${door.icon}</div><div class="door-title">${door.name}</div><div class="door-subtitle">${door.subtitle}</div><div class="door-tech">${door.tech}</div>${!unlocked?'<div class="door-lock-hint">🔒 আগের স্থানীয় গন্তব্য সম্পন্ন করো</div>':''}`;grid.appendChild(card)});if(nextIdx>=0){const cards=grid.querySelectorAll('.door-card');if(cards[nextIdx])cards[nextIdx].classList.add('next-door')}updateHUD()}
-function updateHUD(){const pct=Math.min(100,(state.xp/MAX_XP)*100);document.getElementById('hud-xp-fill').style.width=pct+'%';document.getElementById('hud-xp-text').textContent=`${state.xp} / ${MAX_XP} XP`;let rank=RANKS[0];for(let i=RANKS.length-1;i>=0;i--){if(state.xp>=RANKS[i].min){rank=RANKS[i];break}}document.getElementById('hud-rank-icon').textContent=rank.icon;document.getElementById('hud-rank-name').textContent=rank.name;document.getElementById('hud-level').textContent=`স্তর ${Math.min(8,Math.floor(state.xp/100)+1)}`}
+function updateHUD(){const pct=Math.min(100,(state.xp/MAX_XP)*100);document.getElementById('hud-xp-fill').style.width=pct+'%';document.getElementById('hud-xp-text').textContent=`${state.xp} / ${MAX_XP} XP`;let rank=RANKS[0];for(let i=RANKS.length-1;i>=0;i--){if(state.xp>=RANKS[i].min){rank=RANKS[i];break}}document.getElementById('hud-rank-icon').textContent=rank.icon;document.getElementById('hud-rank-name').textContent=rank.name;document.getElementById('hud-level').textContent=`স্তর ${Math.min(20,Math.floor(state.xp/100)+1)}`}
 // Cheat Modal
 function openCheatModal(){const completed=doors.filter((_,i)=>state.completedDoors.includes(i));const grid=document.getElementById('cheat-modal-grid');const empty=document.getElementById('cheat-modal-empty');if(completed.length===0){grid.innerHTML='';empty.textContent='এখনো কোনো স্থানীয় গন্তব্য সম্পন্ন হয়নি।'}else{empty.textContent='';grid.innerHTML=completed.map(d=>`<div class="cheat-card"><div class="icon">${d.icon}</div><div class="name">${d.name}</div><div class="tech">${d.tech}</div><div class="secret">${d.secret}</div></div>`).join('')}document.getElementById('cheat-modal').style.display='block'}
 // Door/Story
