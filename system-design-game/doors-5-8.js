@@ -1,68 +1,206 @@
 // ════════════════════════════════════════
 // CITY BUILDER'S CODEX — DOORS 5-8
-// System Design: CAP → Observability
+// 5. Communication Protocols  6. Message Queues
+// 7. API Gateway  8. CDN
 // ════════════════════════════════════════
 
-// ══ DOOR 5: CAP THEOREM ══
+// ══ DOOR 5: COMMUNICATION PROTOCOLS ══
 doors.push({
-  num:5, icon:"🛤️", color:"#ffc857", name:"চৌরাস্তার মানচিত্রকার",
-  subtitle:"The Crossroads Cartographer", tech:"CAP Theorem & Consistency",
-  spirit:"কিবলা — এক দিক বেছে নেওয়া",
-  secret:"তিনটা গুণ — Consistency, Availability, Partition tolerance। তিনটে একসাথে অসম্ভব। দুটো পাবে, একটা বিসর্জন। পছন্দ তোমার।",
+  num:5, icon:"🐪", color:"#3dd6c4", name:"সরাইখানা প্রধানের চত্বর",
+  subtitle:"The Caravanserai Master's Square", tech:"Communication Protocols (REST / gRPC / GraphQL / WebSocket)",
+  spirit:"ওয়াসলা — সংযোগ, জোড়া লাগানো",
+  secret:"মহল্লাগুলো (microservices) কথা বলবে কীভাবে? কখনো চিঠি (REST), কখনো দ্রুত কুরিয়ার (gRPC), কখনো ইচ্ছামাফিক অনুসন্ধান (GraphQL), কখনো অবিরত স্রোত (WebSocket)। সঠিক প্রোটোকল = সঠিক সংযোগ।",
   recall:{
-    q:"চৌরাস্তায় দাঁড়িয়ে তিন দিকে একসাথে যাওয়া যায় কি?",
-    qen:"Standing at a crossroads, can you go three directions simultaneously?",
-    a:"না। এক দিক বেছে নিতে হয়। CAP Theorem-ও তেমনি — Consistency, Availability, Partition tolerance — তিনটার মধ্যে দুটো পাবে, একটা বিসর্জন। কোন দুটো — সেই সিদ্ধান্তই তোমার সিস্টেমের চরিত্র।",
-    aen:"No. You must choose one direction. CAP Theorem too — Consistency, Availability, Partition tolerance — you get two, sacrifice one. Which two — that defines your system's character."
+    q:"সরাইখানা প্রধান কেন সব বার্তা একই পদ্ধতিতে পাঠান না?",
+    qen:"Why doesn't the caravanserai master send all messages the same way?",
+    a:"কারণ বিভিন্ন বার্তার বিভিন্ন প্রয়োজন। কিছু ধীর কিন্তু সহজ (REST), কিছু দ্রুত কঠোর (gRPC), কিছু সুনির্দিষ্ট (GraphQL), কিছু অবিরত (WebSocket)। প্রোটোকল বাছাই = সঠিক টুল সঠিক কাজে।",
+    aen:"Because different messages have different needs. Some slow but easy (REST), some fast strict (gRPC), some precise (GraphQL), some continuous (WebSocket). Choosing the protocol = right tool for the job."
   },
   story:`
-<p class="scene-setting">পঞ্চম স্থান। একটা বিশাল চৌরাস্তা — চার দিকে চার রাস্তা। মাঝখানে একটা পাথরের স্তম্ভ, তাতে চার দিকের নাম। মানচিত্রকার ইসহাক দাঁড়িয়ে আছেন — হাতে কম্পাস, পাশে মানচিত্রের বই। একজন ভ্রমণকারী এসে জিজ্ঞেস করলেন — "আমি উত্তর আর পূর্ব দুটোই একসাথে যেতে চাই।" ইসহাক হাসলেন। "অসম্ভব। এক দিক বেছে নাও।"</p>
-<p class="scene-setting en">The fifth place. A vast crossroads — four roads, four directions. In the center: a stone pillar with directional names. Cartographer Ishaq stands — compass in hand, map book at his side. A traveler asks — "I want to go north and east simultaneously." Ishaq smiled. "Impossible. Choose one."</p>
+<p class="scene-setting">পঞ্চম স্থান। সরাইখানা প্রধানের চত্বর — নগরীর মোড়ে, চার মহল্লার মাঝখানে। হাজি ইউসুফ দাঁড়িয়ে আছেন — সামনে চার ধরনের কুরিয়ার: একজন ধীরগতির চিঠিওয়ালা, একজন দ্রুত অশ্বারোহী, একজন প্রশ্নকারী গোয়েন্দা, একজন সিগন্যাল-ম্যান। এক বণিক এলেন — "এই বার্তাটা পাঠাও।" ইউসুফ জিজ্ঞেস করলেন — "জরুরি? দূরবর্তী? উত্তর চাই? অবিরত?" প্রতিটা প্রশ্ন আলাদা কুরিয়ার বেছে নেয়।</p>
+<p class="scene-setting en">The fifth place. The Caravanserai Master's square — at the city's crossroads, between four quarters. Haji Yusuf stands — four couriers before him: a slow letter-carrier, a fast horseman, an inquiring scout, a signalman. A merchant came — "Send this message." Yusuf asked — "Urgent? Distant? Need a reply? Continuous?" Each question chose a different courier.</p>
 
-<div class="dialogue">সংকেত প্রহরী বলেছিলেন — এক event একাধিক সার্ভিসে পাঠাও। কিন্তু যখন একাধিক সার্ভিস একই ডেটা দেখে — সবসময় কি একই দেখে? যদি একটা সার্ভিস নতুন ডেটা পায়, আরেকটা পুরনো পায় — অমিল। এখানেই CAP Theorem — সবচেয়ে গুরুত্বপূর্ণ সিদ্ধান্ত।</div>
-<div class="dialogue en">"The signal watcher said — one event to multiple services. But when multiple services see the same data — do they always see the same? If one gets new data, another gets old — mismatch. Here's the CAP Theorem — the most important decision."</div>
+<div class="dialogue">মহল্লা স্থপতি শিখিয়েছিলেন — মহল্লায় ভাগ করো (microservices)। কিন্তু ভাগ করলে এক মহল্লা অন্যের সাথে কথা বলবে কীভাবে? এটাই আমার কাজ — সংযোগ। চার ধরনের সংযোগ, চার ধরনের প্রয়োজনে।</div>
+<div class="dialogue en">"The quarter architect taught — divide into quarters (microservices). But once divided, how does one quarter speak to another? That's my job — connection. Four kinds of connection, for four kinds of needs."</div>
 
-<div class="code-block">CAP Theorem — তিন অসম্ভব গুণ:
-
-C — Consistency (একমত)
-  সব নোড একই ডেটা দেখে। একটা লিখলে 
-  সবাই সাথে সাথে দেখে। কেউ পিছিয়ে নয়।
-
-A — Availability (উপস্থিতি)
-  প্রতিটা অনুরোধে উত্তর মিলে। 
-  সিস্টেম থামে না। সবসময় দেয়।
-
-P — Partition Tolerance (বিভাজন সহনশীলতা)
-  নেটওয়ার্ক ভাঙলেও (পার্টিশন) সিস্টেম 
-  চলে। নোডগুলো যোগাযোগ হারালেও।
-
-   ┌─────────────┐
-   │ CAP Triangle│
-   └─────────────┘
-         C
-        / \\
-       /   \\
-      A-----P
-   
-  বাস্তবে: P বাদ দেওয়া যায় না।
-  তাই সিদ্ধান্ত: CP না AP?</div>
-
-<div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">🔴 CP — Consistency বেছে নাও</div>নেটওয়ার্ক ভাঙলে পুরনো ডেটা দেওয়ার চেয়ে উত্তর না দেওয়া ভালো। ব্যাংকিং, পেমেন্ট — ভুল উত্তর মানে টাকা হারালো।<br>PostgreSQL, MongoDB (strong), HBase</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">🟢 AP — Availability বেছে নাও</div>নেটওয়ার্ক ভাঙলেও উত্তর দাও — পুরনো হলেও। সোশ্যাল মিডিয়া ফিড — ১ সেকেন্ড পুরনো হলে কিছু যায় না। থামলে যায়।<br>Cassandra, DynamoDB, CouchDB</div>
+<div class="diagram">
+  <div class="diag-title">চার প্রোটোকল — কখন কোনটা</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrT5" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L5,3.5 L0,7" fill="#3dd6c4"/></marker>
+    </defs>
+    <!-- REST -->
+    <rect class="cell-moon" x="25" y="40" width="125" height="80" rx="8"/>
+    <text class="lbl-amber" x="87" y="60">REST</text>
+    <text class="lbl-sm" x="87" y="78">HTTP / JSON</text>
+    <text class="lbl-sm" x="87" y="95" style="font-size:9px">সহজ, পোর্টেবল</text>
+    <text class="lbl-sm" x="87" y="108" style="font-size:9px">বাইরের API, web</text>
+    <text class="lbl-sm" x="87" y="120" style="font-size:9px">টেক্সট = বড়</text>
+    <!-- gRPC -->
+    <rect class="cell-cyan" x="160" y="40" width="125" height="80" rx="8"/>
+    <text class="lbl-cyan" x="222" y="60">gRPC</text>
+    <text class="lbl-sm" x="222" y="78">HTTP/2 / protobuf</text>
+    <text class="lbl-sm" x="222" y="95" style="font-size:9px">দ্রুত, বাইনারি</text>
+    <text class="lbl-sm" x="222" y="108" style="font-size:9px">service-service</text>
+    <text class="lbl-sm" x="222" y="120" style="font-size:9px">strict schema</text>
+    <!-- GraphQL -->
+    <rect class="cell-purple" x="295" y="40" width="125" height="80" rx="8"/>
+    <text class="lbl-sm" x="357" y="60" fill="#b37feb" style="font-size:11px;font-weight:700">GraphQL</text>
+    <text class="lbl-sm" x="357" y="78">এক endpoint</text>
+    <text class="lbl-sm" x="357" y="95" style="font-size:9px">ইচ্ছামাফিক query</text>
+    <text class="lbl-sm" x="357" y="108" style="font-size:9px">over/under-fetch নয়</text>
+    <text class="lbl-sm" x="357" y="120" style="font-size:9px">mobile, জটিল UI</text>
+    <!-- WebSocket -->
+    <rect class="cell-hot" x="430" y="40" width="125" height="80" rx="8"/>
+    <text class="lbl-hot" x="492" y="60">WebSocket</text>
+    <text class="lbl-sm" x="492" y="78">TCP, দ্বিমুখী</text>
+    <text class="lbl-sm" x="492" y="95" style="font-size:9px">অবিরত সংযোগ</text>
+    <text class="lbl-sm" x="492" y="108" style="font-size:9px">চ্যাট, live, push</text>
+    <text class="lbl-sm" x="492" y="120" style="font-size:9px">স্টেটফুল সার্ভার</text>
+    <!-- decision flow -->
+    <text class="lbl-sm" x="280" y="170" text-anchor="middle">বাইরে API → REST · ভেতরে service-service → gRPC</text>
+    <text class="lbl-sm" x="280" y="190" text-anchor="middle">জটিল ক্লায়েন্ট → GraphQL · রিয়েলটাইম → WebSocket</text>
+    <text class="lbl-sm" x="280" y="215" text-anchor="middle" fill="#9290a8">সব মিলিয়েও চলে — hybrid architecture সাধারণ</text>
+  </svg>
 </div>
 
-<div class="dialogue">কিবলা — দিক। নামাজে এক কিবলা — কাবার দিক। কেউ উত্তর আর পূর্ব দুটো একসাথে মুখ করতে পারে না। এক দিক বেছে নিতে হয়। CAP Theorem-ও তেমনি — তুমি Consistency আর Availability দুটোই চাও। কিন্তু partition (নেটওয়ার্ক বিভাজন) হলে — একটা বিসর্জন দিতে হয়। কোনটা — সেটা তোমার কিবলা। তোমার সিস্টেমের চরিত্র সেই সিদ্ধান্তে।</div>
-<div class="dialogue en">"Qibla — direction. In prayer, one qibla — toward the Kaaba. No one faces north and east simultaneously. You choose one direction. CAP Theorem is the same — you want both Consistency and Availability. But when partition (network split) happens — one must be sacrificed. Which — that's your qibla. Your system's character lies in that decision."</div>`,
+<div class="code-block">Communication Protocols — The Four Couriers:
+
+১. REST (Representational State Transfer)
+   HTTP methods + JSON, stateless, resource-based
+     GET    /users/123       → fetch (idempotent, cacheable)
+     POST   /users           → create (non-idempotent)
+     PUT    /users/123       → replace (idempotent)
+     PATCH  /users/123       → partial update
+     DELETE /users/123       → remove (idempotent)
+   ✅ সহজ, ইউবিকুইটাস, ব্রাউজার-বান্ধব, stateless
+   ❌ টেক্সট (JSON) = বড়, over-fetching (সব ডেটা)
+   → বাইরের API, public endpoints, CRUD apps
+
+২. gRPC (Google RPC)
+   HTTP/2 + Protocol Buffers (binary)
+     service UserService { rpc GetUser(Id) returns (User); }
+   ✅ দ্রুত (binary, HTTP/2 multiplexing), strict schema, bidirectional streaming
+   ❌ ব্রাউজারে কঠিন, schema compile করতে হয়, debugging কঠিন
+   → service-service (ভেতরের), low-latency, polyglot microservices
+
+৩. GraphQL
+   এক POST /graphql endpoint, ক্লায়েন্ট query লেখে
+     query { user(id:1) { name orders { total } } }
+   ✅ ক্লায়েন্ট ঠিক যা চায় পায়, এক রাউন্ড-ট্রিপে অনেক ডেটা
+   ❌ জটিল server, N+1 query সমস্যা, rate limiting কঠিন
+   → mobile, জটিল UI, অনেক ক্লায়েন্ট ভ্যারিয়েন্ট
+
+৪. WebSocket (ও SSE)
+   এক TCP সংযোগ, দ্বিমুখী (full-duplex), অবিরত
+     ws://server → সার্ভার যখন খুশি push করে
+   ✅ রিয়েলটাইম, কম overhead, push notifications
+   ❌ stateful সার্ভার (স্কেল কঠিন), ফায়ারওয়াল সমস্যা
+   → চ্যাট, গেম, live update, collaborative editing
+
+   SSE (Server-Sent Events) — সার্ভার → ক্লায়েন্ট একমুখী, HTTP উপর, সহজ
+   → নিউজ ফিড, স্টক প্রাইস, LLM token streaming (ChatGPT এটা ব্যবহার করে!)
+
+SYNCHRONOUS vs ASYNCHRONOUS (গুরুত্বপূর্ণ):
+  SYNC (REST, gRPC): জিজ্ঞেস করো → উত্তরের জন্য অপেক্ষা করো
+    → সহজ কিন্তু ব্লক করে। সার্ভিস ধীর হলে সব অপেক্ষা।
+  ASYNC (Message Queue, Door 6): জিজ্ঞেস করো → উত্তর পরে নাও
+    → ব্লক করে না। কিন্তু জটিল, eventual consistency।
+  → আজকের সিস্টেম hybrid: কিছু sync, কিছু async।
+
+IDEMPOTENCY (গুরুত্বপূর্ণ — Door 15 দেখো):
+  GET, PUT, DELETE = idempotent (একই কল বারবার = একই ফল)
+  POST = non-idempotent (দুইবার কল = দুটো অর্ডার!)
+  → নেটওয়ার্ক retry হলে POST বিপদে — idempotency key দাও।</div>
+
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। LLM API সব এই প্রোটোকলে চলে। OpenAI API = REST (সহজ)। LLM token streaming = SSE (ChatGPT যেমন টেক্সট ধীরে ধীরে দেখায়)। Inference service-এর ভেতরে = gRPC (দ্রুত, strict)। RAG agent orchestrator = sync + async মিশ্রণ। Vector DB client = gRPC। প্রতিটা সংযোগে সঠিক প্রোটোকল — এটাই আজকের AI infrastructure।</div>
+<div class="dialogue en">"You're an AI engineer. LLM APIs all run on these protocols. OpenAI API = REST (simple). LLM token streaming = SSE (how ChatGPT shows text gradually). Inside inference service = gRPC (fast, strict). RAG agent orchestrator = mix of sync + async. Vector DB client = gRPC. The right protocol for each connection — this is today's AI infrastructure."</div>
+
+<div class="dialogue">ওয়াসলা — সংযোগ, জোড়া লাগানো। কুরআনে আল্লাহ বলেন — "তোমরা আল্লাহর রশি দৃঢ়ভাবে ধরো, সবাই একসাথে।" (৩:১০৩)। রশি = সংযোগ। মহল্লা আলাদা, কিন্তু রশি ছাড়া এক নগরী নয়। Communication protocol সেই রশি — আলাদা service গুলোকে যুক্ত করে এক সিস্টেম বানায়। সংযোগ ছাড়া microservices ছড়ানো দ্বীপ — কেউ কারও কাছে পৌঁছাতে পারে না।</div>
+<div class="dialogue en">"Wasla — connection, joining. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Rope = connection. Quarters separate, but without the rope, not one city. The communication protocol is that rope — connecting separate services into one system. Without connection, microservices are scattered islands — no one reaches another."</div>`,
   senior:{
-    title:"Eventual Consistency — বাস্তবতা",
-    body:`<p>বেশিরভাগ সিস্টেম AP বেছে নেয় — Availability + Partition tolerance। তাই eventual consistency — শেষ পর্যন্ত সবাই একমত হবে, কিন্তু একই মুহূর্তে নয়।</p><p><strong>উদাহরণ:</strong> Facebook like দিলে — তোমার বন্ধু দেখতে পাবে ২ সেকেন্ড পরে। সমস্যা নেই।</p><p><strong>কিন্তু ব্যাংকিং?</strong> একই টাকা দুই জায়গা থেকে তুলে দেখলে — consistency চাই। strong consistency।</p><p><strong>Senior সিদ্ধান্ত:</strong> প্রতিটা সার্ভিসের জন্য আলাদাভাবে ভাবো। সব এক করো না।</p>`
+    title:"Protocol Choice — Production Reality",
+    body:`<p><strong>শুরু REST দিয়ে:</strong> ৯০% ক্ষেত্রে যথেষ্ট। ডকুমেন্টেশন (OpenAPI/Swagger), টেস্ট, debugging সব সহজ।</p><p><strong>gRPC যখন:</strong> (১) অনেক service-service কল একই ডেটাসেন্টারে, (২) protobuf schema টিম-জুড়ে contract হিসেবে কাজে লাগে, (৩) streaming দরকার।</p><p><strong>GraphQL সাবধানে:</strong> শক্তিশালী কিন্তু সার্ভার জটিল। DataLoader দিয়ে N+1 সমাধান করো, query cost analysis করো (খারাপ query সব ভাঙে)।</p><p><strong>Versioning:</strong> /v1/, /v2/ URL prefix — স্পষ্ট, কিন্তু URL দীর্ঘ হয়। Header-based versioning পরিষ্কার কিন্তু অস্পষ্ট। ব্রেকিং পরিবর্তন এড়াও — additive change করো।</p>`
   }
 });
 
-// ══ DOOR 6: API GATEWAY & RATE LIMITING ══
+// ══ DOOR 6: MESSAGE QUEUES & ASYNC ══
 doors.push({
-  num:6, icon:"🚧", color:"#3dd6c4", name:"শুল্ক আদায়কের চৌকি",
+  num:6, icon:"📡", color:"#b37feb", name:"সংকেত প্রহরীর বুরুজ",
+  subtitle:"The Signal Tower", tech:"Message Queues & Async Processing",
+  spirit:"আযান — এক থেকে অনেকে, একই সংকেত",
+  secret:"একসাথে করতে গেলে সব থেমে যায়। Queue-এ রাখো, আলাদাভাবে করো। Async = চাও → দাঁড়াও না → পরে ফল নাও। Decoupling = স্বাধীনতা।",
+  recall:{
+    q:"সংকেত প্রহরী কেন সবাইকে ডাকেন না, একটা আযান দেন?",
+    qen:"Why does the signal watcher give one call (azan) instead of calling everyone individually?",
+    a:"কারণ একে একে ডাকলে সময় লাগে, কেউ মিস হয়। আযান একবারে সবাই শোনে। Message Queue-ও তেমনি — একটা event একাধিক service পায়, একে অপরের সাথে কথা না বলেই। Decoupling।",
+    aen:"Because calling individually takes time, someone gets missed. Azan — everyone hears at once. Message Queue too — one event reaches multiple services without them talking to each other. Decoupling."
+  },
+  story:`
+<p class="scene-setting">ষষ্ঠ স্থান। নগরীর সর্বোচ্চ বুরুজ। উপরে মুয়াজ্জিন বিলাল দাঁড়িয়ে আছেন — হাতে কোনো যন্ত্র নেয়, শুধু তাঁর কণ্ঠ। নিচে নগরী — হাজার ঘর, হাজার মানুষ। সবাইকে জানাতে হবে — "সময় হয়েছে।" একে একে ডাকলে দিন শেষ। কিন্তু তিনি একবার উঁচু কণ্ঠে আযান দিলেন — পুরো নগরী শুনল।</p>
+<p class="scene-setting en">The sixth place. The city's tallest tower. Atop, Muazzin Bilal stands — no instrument, just his voice. Below — the city: thousands of homes, thousands of people. All must know — "The time has come." Calling individually — the day would end. But he raised his voice once in azan — the entire city heard.</p>
+
+<div class="dialogue">সরাইখানা প্রধান শিখিয়েছিলেন — sync কীভাবে (REST, gRPC)। কিন্তু আমি বলি — কখনো sync যথেষ্ট নয়। কখনো এক সার্ভিস অনেক কাজ পাঠায়, আরেক সার্ভিস তার গতিতে করে। একে অপরের জন্য অপেক্ষা করে না। এটাই async — মাঝখানে একটা বার্তাবাহক।</div>
+<div class="dialogue en">"The caravanserai master taught — how to sync (REST, gRPC). But I say — sometimes sync isn't enough. Sometimes one service sends much work, another does it at its own pace. They don't wait for each other. This is async — a messenger in between."</div>
+
+<p>তুমি একটা ছবি আপলোড করলে। কী হওয়া দরকার? ছবি resize, thumbnail বানানো, AI ট্যাগ করা, notification পাঠানো। সব একসাথে? ইউজার ৩০ সেকেন্ড অপেক্ষা করবে? না। sync ভাঙলে সব পড়ে — একটা ধীর হলে সব ধীর।</p>
+<p class="en">You upload a photo. What should happen? Resize, thumbnail, AI tagging, notification. All at once? User waits 30 seconds? No. If sync breaks — all fall; one slow, all slow.</p>
+
+<div class="code-block">Async Processing — Message Queue:
+
+User: "ছবি আপলোড করলাম"
+  ↓
+API: "ঠিক আছে, নিলাম" → queue-তে রাখো
+  ↓ (ইউজার দাঁড়ায় না — ২০০ms)
+
+Queue (Kafka/RabbitMQ/SQS):
+  "photo.uploaded" event
+     ↓                    ↓              ↓
+Resize Service      AI Tagging      Notification
+(নিজের গতিতে)     (নিজের গতিতে)  (নিজের গতিতে)
+
+→ প্রতিটা service স্বাধীন
+→ একটা ক্র্যাশ করলে বাকিরা কাজ করে
+→ স্কেল করা সহজ — শুধু worker যোগ করো
+
+DELIVERY SEMANTICS (গুরুত্বপূর্ণ — Door 15 দেখো):
+  At-most-once: হয়তো পৌঁছাবে, হয়তো না (হারালে OK)
+  At-least-once: অন্তত একবার, হয়তো দুইবার (idempotent লাগে)
+  Exactly-once: ঠিক একবার (কঠিন! — সত্যিতে at-least + idempotent)
+
+QUEUE PATTERNS:
+ ১. Work Queue (task distribution):
+    এক কাজ, অনেক worker-এর একজন নেয়
+    → image processing, email send
+
+ ২. Pub/Sub (broadcast):
+    এক event, সব subscriber পায়
+    → "user.created" → email, analytics, crm সব
+
+ ৩. Event Sourcing:
+    সব state change event হিসেবে লগ
+    → audit, replay, time-travel debugging
+
+ ৪. Dead Letter Queue (DLQ):
+    বারবার ব্যর্থ বার্তা — আলাদা queue-এ
+    → পরে তদন্ত, মূল queue পরিষ্কার
+
+AT-LEAST-ONCE পৃথিবীতে (বাস্তবতা):
+  নেটওয়ার্ক retry হয় → একই বার্তা দুইবার আসতে পারে
+  → consumer idempotent হতে হবে (একই কাজ দুইবার = একবার)
+  → idempotency key, dedup table (Door 15)</div>
+
+<div class="dialogue">আযান — একজন মুয়াজ্জিন, একবার কণ্ঠ, কিন্তু হাজার কান। মসজিদে যাওয়ার নির্দেশ একে একে দরকার নেই — একবার আযান, সবাই শোনে, প্রতেকে নিজ নিজ গতিতে আসে। Message queue-ও তেমনি — একটা event publish করো, একাধিক service subscribe করে। publisher জানে না কে listen করছে — সে শুধু বলে দেয়। এটাই pub/sub। আযান = প্রকাশ্য ঘোষণা। pub/sub = প্রকাশ্য event।</div>
+<div class="dialogue en">"Azan — one muazzin, one voice, but thousands of ears. The call to prayer doesn't need individual summons — one azan, everyone hears, each comes at their own pace. Message queue too — publish one event, multiple services subscribe. The publisher doesn't know who's listening — just announces. This is pub/sub — publish/subscribe. Azan = public announcement. Pub/sub = public event."</div>`,
+  senior:{
+    title:"Kafka vs RabbitMQ vs SQS — কখন কোনটা?",
+    body:`<p><strong>Kafka:</strong> স্ট্রিম, উচ্চ throughput, event sourcing। লগ হিসেবে কাজ করে — replay করা যায়। জটিল কিন্তু শক্তিশালী। Netflix, LinkedIn ব্যবহার করে।</p><p><strong>RabbitMQ:</strong> traditional message broker। routing সহজ, নির্ভরযোগ্য। task queue, work queue। মাঝারি জটিলতা।</p><p><strong>SQS (AWS):</strong> managed, serverless। সহজ, কোনো পরিচালনা নেয়। কিন্তু vendor lock-in।</p><p><strong>নিয়ম:</strong> event streaming → Kafka। task distribution → RabbitMQ/SQS। সহজ শুরু → SQS।</p>`
+  }
+});
+
+// ══ DOOR 7: API GATEWAY & RATE LIMITING ══
+doors.push({
+  num:7, icon:"🚧", color:"#3dd6c4", name:"শুল্ক আদায়কের চৌকি",
   subtitle:"The Customs House", tech:"API Gateway & Rate Limiting",
   spirit:"মীকাত — হজ্জের সীমানা, নিয়ন্ত্রণের দরজা",
   secret:"প্রতিটা অনুরোধ সরাসরি সার্ভারে নয়। একটা চৌকি দিয়ে যাবে — authentication, rate limit, routing। API Gateway = নগরীর শুল্ক চৌকি।",
@@ -73,11 +211,11 @@ doors.push({
     aen:"Because you need to verify who enters (auth), control how many (rate limit), direct where they go (routing). API Gateway does all this — the city's customs checkpoint."
   },
   story:`
-<p class="scene-setting">ষষ্ঠ স্থান। নগরীর প্রবেশপথে একটা শুল্ক চৌকি। প্রতিটা প্রবেশকারী এখানে থামে। শুল্ক আদায়ক আব্দুল্লাহ বসে আছেন — সামনে একটা বই, হাতে সিলের মোহর। প্রতিটা বণিক আসেন — "কে তুমি?" (authentication), "কত মাল?" (quota), "কোথায় যাবে?" (routing)। কেউ অতিরিক্ত মাল নিয়ে এলে আব্দুল্লাহ বলেন — "এত নয়। ফিরে যাও।" Rate limit।</p>
-<p class="scene-setting en">The sixth place. At the city's entrance, a customs checkpoint. Every entrant stops here. Customs collector Abdullah sits — a book before him, a seal stamp in hand. Each merchant comes — "Who are you?" (authentication), "How much goods?" (quota), "Where to?" (routing). If someone brings excess, Abdullah says — "Not this much. Go back." Rate limit.</p>
+<p class="scene-setting">সপ্তম স্থান। নগরীর প্রবেশপথে একটা শুল্ক চৌকি। প্রতিটা প্রবেশকারী এখানে থামে। শুল্ক আদায়ক আব্দুল্লাহ বসে আছেন — সামনে একটা বই, হাতে সিলের মোহর। প্রতিটা বণিক আসেন — "কে তুমি?" (authentication), "কত মাল?" (quota), "কোথায় যাবে?" (routing)। কেউ অতিরিক্ত মাল নিয়ে এলে আব্দুল্লাহ বলেন — "এত নয়। ফিরে যাও।" Rate limit।</p>
+<p class="scene-setting en">The seventh place. At the city's entrance, a customs checkpoint. Every entrant stops here. Customs collector Abdullah sits — a book before him, a seal stamp in hand. Each merchant comes — "Who are you?" (authentication), "How much goods?" (quota), "Where to?" (routing). If someone brings excess, Abdullah says — "Not this much. Go back." Rate limit.</p>
 
-<div class="dialogue">চৌরাস্তার মানচিত্রকার বলেছিলেন — প্রতিটা সিদ্ধান্তে আপস। কিন্তু আমি বলি — আপসের আগে নিয়ন্ত্রণ। কে ঢুকছে, কত ঢুকছে, কোথায় যাচ্ছে — এই তিন প্রশ্ন প্রতিটা অনুরোধে। এটাই API Gateway-এর কাজ।</div>
-<div class="dialogue en">"The crossroads cartographer said — trade-offs in every decision. But I say — before trade-offs, control. Who enters, how much, where — these three questions for every request. This is the API Gateway's job."</div>
+<div class="dialogue">সংকেত প্রহরী বলেছিলেন — async-এ সার্ভিস আলাদা। কিন্তু আমি বলি — আলাদা সার্ভিসেও এক চৌকি দরকার। কে ঢুকছে, কত ঢুকছে, কোথায় যাচ্ছে — এই তিন প্রশ্ন প্রতিটা অনুরোধে। এটাই API Gateway-এর কাজ।</div>
+<div class="dialogue en">"The signal watcher said — async keeps services separate. But I say — even separate services need one checkpoint. Who enters, how much, where — these three questions for every request. This is the API Gateway's job."</div>
 
 <div class="code-block">API Gateway — এক চৌকি, অনেক কাজ:
 
@@ -90,15 +228,19 @@ doors.push({
 
 ৩. Routing — "কোথায়?"
    /api/users → User Service
-   /api/orders → Order Service  
+   /api/orders → Order Service
    /api/search → Search Service
 
 ৪. Transform — "কীভাবে?"
-   Request/Response modification
+   Request/Response modifications
    Version routing (v1, v2)
 
 ৫. Aggregation — "একসাথে"
-   ১ কল → একাধিক service → ১ response</div>
+   ১ কল → একাধিক service → ১ response
+
+৬. AuthZ (Authorization) — "কী করতে পারো?"
+   Role-based access (admin? user?)
+   Scope check (read? write?)</div>
 
 <div class="dialogue">মীকাত — হজ্জের সীমানা। মক্কায় প্রবেশের আগে নির্দিষ্ট স্থানে থামতে হয় — ইহরাম পরতে হয়, নিয়ম মানতে হয়। সরাসরি কাবায় যাওয়া যায় না। API Gateway হলো সেই মীকাত — প্রতিটা অনুরোধ আগে এখানে থামে, নিয়ম মেনে নেয়, তারপর ভেতরে যায়। মীকাত ছাড়া হজ্জ হয় না। Gateway ছাড়া production API হয় না।</div>
 <div class="dialogue en">"Miqat — the Hajj boundary. Before entering Mecca, you stop at designated points — wear ihram, follow rules. You can't go directly to the Kaaba. API Gateway is that miqat — every request stops here first, follows rules, then enters. Without miqat, no Hajj. Without gateway, no production API."</div>`,
@@ -108,110 +250,60 @@ doors.push({
   }
 });
 
-// ══ DOOR 7: CIRCUIT BREAKER & RESILIENCE ══
+// ══ DOOR 8: CDN (CONTENT DELIVERY NETWORK) ══
 doors.push({
-  num:7, icon:"🔄", color:"#ff6b35", name:"ঝড় প্রহরীর বুরুজ",
-  subtitle:"The Storm Watcher's Tower", tech:"Circuit Breaker & Resilience Patterns",
-  spirit:"সবর — বিপদে অটল, ধৈর্য ধরে চলা",
-  secret:"একটা সার্ভিস ক্র্যাশ করলে চেইন রিঅ্যাকশনে সব ক্র্যাশ করে। Circuit Breaker থামায় — বিকল সার্ভিসে বারবার নয়, fallback দাও, সুস্থ হলে আবার চালু।",
+  num:8, icon:"🌍", color:"#36d6e7", name:"বাজার বিতরণকারীর কেন্দ্র",
+  subtitle:"The Market Distributor's Hub", tech:"CDN — Content Delivery Network & Edge Caching",
+  spirit:"তাসরীফ — কাছে এগিয়ে যাওয়া",
+  secret:"একটাই সেন্ট্রাল সার্ভার? প্রত্যেক ইউজার দূর থেকে আসে — ধীরে। CDN গোলাঘরের কপি বানায় বিশ্বের বহু জায়গায় — ইউজারের কাছে। কেন গোলাঘর রক্ষক যথেষ্ট নন? কারণ দূরত্ব = latency।",
   recall:{
-    q:"ঝড় প্রহরী কেন বিকল পথে বারবার যান না, বিকল্প খোঁজেন?",
-    qen:"Why does the storm watcher seek alternatives instead of repeatedly taking the failed path?",
-    a:"কারণ বিকল পথে বারবার গেলে সময় নষ্ট, আরও ক্ষতি। Circuit Breaker সেই পথ বন্ধ করে — fallback দেয়, কিছুক্ষণ অপেক্ষা করে, তারপর আবার চেষ্টা করে। সবর — থামা, অপেক্ষা, পুনরুদ্ধার।",
-    aen:"Because repeatedly taking the failed path wastes time, causes more harm. Circuit Breaker closes that path — gives fallback, waits, then retries. Sabr — stop, wait, recover."
+    q:"বিতরণকারী কেন এক গোলাঘর রাখেন না, বরং বহু ছোট কেন্দ্র বানান?",
+    qen:"Why does the distributor build many small hubs instead of one granary?",
+    a:"কারণ এক গোলাঘর থেকে দূরের মানুষ অনেক সময়ে পৌঁছায়। ছোট কেন্দ্র ইউজারের কাছে — পণ্য দ্রুত। CDN-ও তেমনি — কন্টেন্ট বিশ্বের বহু edge-এ, ইউজারের কাছে। দূরত্ব = latency।",
+    aen:"Because distant people take long to reach from one granary. Small hubs near users — goods arrive fast. A CDN too — content at many edges worldwide, near the user. Distance = latency."
   },
   story:`
-<p class="scene-setting">সপ্তম স্থান। নগরীর প্রাচীরে একটা ঝড় প্রহরী বুরুজ। উপরে প্রহরী নূর দাঁড়িয়ে আছেন — চোখে দূরবীন, হাতে একটা শিঙা। নিচে নগরী — সব শান্ত। কিন্তু দূরে ঝড় আসছে। তিনি একটা নির্দিষ্ট পথ দিয়ে বাণিজ্য কাফেলা যাওয়ার কথা ভাবছিলেন। কিন্তু সেই পথে ধস নেমেছে। তিনি বারবার সেই পথে কাফেলা পাঠাবেন? না। তিনি বিকল্প পথ খুঁজছেন।</p>
-<p class="scene-setting en">The seventh place. On the city wall, a storm watcher's tower. Watchman Noor stands atop — telescope at eye, horn in hand. Below — the city, all calm. But a storm approaches in the distance. He was planning to send a trade caravan via a specific route. But a landslide has blocked it. Will he send caravans there repeatedly? No. He's finding alternative routes.</p>
+<p class="scene-setting">অষ্টম স্থান। বিতরণকারীর কেন্দ্র। বিশাল দেয়ালে বিশ্বের মানচিত্র — তাতে ছোট ছোট চিহ্ন, প্রতিটা এক একটা বাজার। মাঝখানে মূল গোলাঘর, আর চারপাশে অসংখ্য ছোট কেন্দ্র। বিতরণকারী তামিম বললেন — "গোলাঘর রক্ষক বলেছিলেন, পণ্য কাছে রাখো। কিন্তু আমি বলি — কাছে রাখলে দূরের মানুষ কী করবে? পণ্য ইউজারের কাছে হতে হবে।"</p>
+<p class="scene-setting en">The eighth place. The distributor's hub. A vast world map on the wall — small marks on it, each a market. At the center, the main granary; all around, countless small hubs. Distributor Tamim said — "The granary keeper said, keep goods close. But I say — what use are close goods for distant people? Goods must be near the user."</p>
 
-<div class="dialogue">শুল্ক আদায়ক বলেছিলেন — চৌকি দিয়ে নিয়ন্ত্রণ। কিন্তু আমি বলি — নিয়ন্ত্রণের পরে আসে স্থিতিস্থাপকতা। কারণ কোনো সিস্টেমই নিখুঁত নয়। সব কিছু একদিন বিকল হয়। প্রশ্ন হলো — বিকল হলে কী হবে?</p>
-<div class="dialogue en">"The customs collector said — control through a checkpoint. But I say — after control comes resilience. Because no system is perfect. Everything fails eventually. The question is — what happens when it fails?"</div>
+<div class="dialogue">গোলাঘর রক্ষক বলেছিলেন — cache বানাও, দ্রুত দাও। কিন্তু আমি বলি — cache শুধু সেন্ট্রাল সার্ভারে হলে, দূরের ইউজারের কাছে পৌঁছাতে সময় লাগে। latency। ব্রাজিলের ইউজার আমেরিকার সার্ভার থেকে ডেটা চাইলে — ২০০ms। প্রতিটা request এই দূরত্ব পাড়ি। এটাই CDN সমাধান করে।</div>
+<div class="dialogue en">"The granary keeper said — build a cache, serve fast. But I say — if the cache sits only at the central server, reaching distant users takes time. Latency. A Brazilian user requesting data from a US server — 200ms. Every request pays this distance. The CDN solves this."</div>
 
-<div class="code-block">Circuit Breaker — ৩টা State:
+<div class="code-block">CDN — Content Delivery Network:
 
-CLOSED (স্বাভাবিক)
-  সব ঠিক। request যাচ্ছে।
-  ↓ কিছু বিকল হলে (threshold ছাড়ালে)
+THE LATENCY PROBLEM:
+  light-এর গতিও সীমিত। আমেরিকা থেকে বাংলাদেশ:
+    → physical distance ≈ ১৩,০০০ km
+    → round-trip (fiber) ≈ ১৩০ms শুধু ভ্রমণে
+    → + server processing, TLS handshake
+    → total: ২০০-৪০০ms per request
 
-OPEN (বন্ধ)
-  সার্ভিস বিকল। request যায় না।
-  সরাসরি fallback response।
-  সময় নষ্ট নয়।
-  ↓ কিছুক্ষণ পরে (timeout)
+CDN SOLUTION — EDGE LOCATIONS (POPs):
+  Origin server → কন্টেন্ট copy করে পাঠায়
+  → Edge POPs বিশ্বের শত শত জায়গায়
+  → প্রতিটা ইউজারের কাছে একটা
+  Cloudflare: ৩৩০+ cities, AWS CloudFront: ৬০০+ POPs
 
-HALF-OPEN (অর্ধ-খোলা)
-  কয়েকটা request পাঠাও — পরীক্ষা।
-  সফল? → CLOSED (সুস্থ!)
-  ব্যর্থ? → OPEN (এখনও বিকল)
+WHAT GOES ON A CDN:
+  ✅ Static assets — images, CSS, JS, fonts
+  ✅ Videos / large file downloads (Netflix = CDN)
+  ✅ API responses that don't change per-user
+  ❌ Per-user personalized content
+  ❌ Authenticated API calls (সাবধানে)
 
-Resilience Patterns:
-  Retry (with backoff) — ব্যর্থ হলে অপেক্ষা করে আবার
-  Fallback — বিকল্প উত্তর (cache, default, degraded)
-  Bulkhead — এক সার্ভিস ভাঙলে অন্যেরা সুরক্ষিত
-  Timeout — চিরকাল অপেক্ষা নয়</div>
+EDGE COMPUTE (2024-26):
+  Cloudflare Workers, Vercel Edge Functions
+  → শুধু cache নয় — edge-এ কোড চালাও
+  → sub-50ms globally, কোনো origin call না
 
-<div class="dialogue">সবর — ধৈর্য, অটলতা, বিপদে দৃঢ়তা। কুরআনে আল্লাহ বলেন — "নিশ্চয় আল্লাহ ধৈর্যশীলদের সাথে।" সবর মানে শুধু সহ্য করা নয় — বিপদে সঠিক সিদ্ধান্ত নেওয়া। ক্র্যাশ করা সার্ভিসে বারবার অনুরোধ পাঠানো = অধৈর্যতা। থামা, fallback দেওয়া, সুস্থ হওয়ার অপেক্ষা = সবর। Circuit Breaker হলো সবর-এর কোডে রূপ — থামো, অপেক্ষা করো, তারপর সতর্কতার সাথে আবার।</div>
-<div class="dialogue en">"Sabr — patience, steadfastness, firmness in adversity. Allah says — 'Indeed, Allah is with the patient.' Sabr isn't just enduring — it's making the right decision in crisis. Sending repeated requests to a crashed service = impatience. Stopping, giving fallback, waiting for recovery = sabr. Circuit Breaker is sabr in code — stop, wait, then carefully resume."</div>`,
+CDN = SECURITY LAYER too:
+  → DDoS absorption (বিশাল bandwidth)
+  → WAF, TLS termination, bot filtering</div>
+
+<div class="dialogue">তাসরীফ — কাছে এগিয়ে যাওয়া। কুরআনে আল্লাহ বলেন — "তোমাদের কাছে এসেছে আমার রসূল, স্পষ্ট প্রমাণ সহ।" (২:১০১)। জ্ঞান দূরে রাখলে কাজে লাগে না — কাছে আনতে হয়। CDN-ও তেমনি — কন্টেন্ট অরিজিনে নয়, ইউজারের কাছে। যে সেবা কাছে পৌঁছায়, সে সেবা সফল।</div>
+<div class="dialogue en">"Tasreef — bringing close. Allah says — 'My messengers came to you with clear proofs.' (2:101). Knowledge kept distant serves no one — it must be brought near. The CDN too — content not at the origin, but near the user. Service that reaches close, succeeds."</div>`,
   senior:{
-    title:"Cascading Failure — সবচেয়ে ভয়ংকর সমস্যা",
-    body:`<p>একটা সার্ভিস ধীর হলে — সবাই অপেক্ষা করে। থ্রেড শেষ। পরের সার্ভিস থামে। চেইন রিঅ্যাকশনে সব পড়ে।</p><p><strong>সমাধান:</strong></p><p>১. <strong>Timeout</strong> — চিরকাল অপেক্ষা নয়। ৩ সেকেন্ড পরে থামো।</p><p>২. <strong>Circuit Breaker</strong> — বিকল সার্ভিসে বন্ধ।</p><p>৩. <strong>Bulkhead</strong> — প্রতিটা সার্ভিসের নিজস্ব রিসোর্স pool। একটা ভাঙলে অন্যেরা সুরক্ষিত।</p><p>৪. <strong>Graceful degradation</strong> — কিছু কাজ করো, সব নয়।</p>`
+    title:"CDN in Production — Setup Checklist",
+    body:`<p><strong>Static assets first:</strong> images/CSS/JS সব CDN-এ। এটাই সবচেয়ে সহজ জয়।</p><p><strong>Cache headers ঠিক করো:</strong> <code>Cache-Control: public, max-age=31536000, immutable</code> — fingerprinted assets-এ।</p><p><strong>Purge strategy:</strong> ডিপ্লয় করার সময় পুরোনো version URL বাদ দাও (fingerprint)।</p><p><strong>Providers:</strong> Cloudflare (সস্তা), CloudFront (AWS), Fastly (instant purge), Vercel (DX + edge)।</p>`
   }
-});
-
-// ══ DOOR 8: OBSERVABILITY ══
-doors.push({
-  num:8, icon:"📊", color:"#f06292", name:"নগর মানচিত্রকারের টেবিল",
-  subtitle:"The Mapmaker's Table", tech:"Observability & Monitoring",
-  spirit:"মীযান — সব কিছু মাপা, গণনা রাখা",
-  secret:"কাজ করছে কি না — অনুমান নয়, প্রমাণ। তিন স্তম্ভ: Logs (কী হলো), Metrics (কেমন আছে), Traces (কোথায় গেল)। অন্ধ হয়ে চালানো = বিপদ।",
-  recall:{
-    q:"মানচিত্রকার কেন অন্ধ হয়ে শহর চালান না, সব সময় মাপেন?",
-    qen:"Why does the mapmaker always measure rather than running the city blind?",
-    a:"কারণ অন্ধ হয়ে চালালে বিপদ টের পাওয়া যায় না। Logs = কী হয়েছে। Metrics = কেমন আছে। Traces = কোথায় গেল। এই তিন দিয়ে সিস্টেম দৃশ্যমান হয়। Observability = দৃষ্টি।",
-    aen:"Because running blind means you don't notice danger. Logs = what happened. Metrics = how it's doing. Traces = where it went. These three make the system visible. Observability = sight."
-  },
-  story:`
-<p class="scene-setting">অষ্টম স্থান। শেষ স্থান। নগরীর সর্বোচ্চ কক্ষ — মানচিত্রকারের টেবিল। প্রাচীরে বিশাল মানচিত্র — নগরীর প্রতিটা রাস্তা, প্রতিটা ফটক, প্রতিটা গোলাঘর দেখানো। কিন্তু এই মানচিত্র স্থির নয় — প্রতিটা অংশে সংখ্যা বদলাচ্ছে। এখানে লাল = ভিড়, সবুজ = খালি, হলুদ = সতর্কতা। মাস্টার সাবিত্রী বসে আছেন — চোখ চারদিকে, কান প্রতিটা খবরে।</p>
-<p class="scene-setting en">The eighth place. The last place. The city's highest chamber — the mapmaker's table. On the wall: a vast map — every street, every gate, every granary shown. But this map isn't static — numbers change in each section. Red = crowded, green = clear, yellow = caution. Master Savitri sits — eyes everywhere, ears on every report.</p>
-
-<div class="dialogue">ঝড় প্রহরী বলেছিলেন — বিকল হলে সবর করো। কিন্তু আমি বলি — বিকল হওয়ার আগে টের পাওয়া। আর বিকল হলে — কোথায়, কেন, কীভাবে — দেখতে পাওয়া। এটাই observability। অন্ধ হয়ে একটা নগরী চালানো যায় না।</div>
-<div class="dialogue en">"The storm watcher said — be patient when things fail. But I say — detect failure BEFORE it happens. And when it fails — see where, why, how. This is observability. You can't run a city blind."</div>
-
-<div class="code-block">Three Pillars of Observability:
-
-১. LOGS — "কী হলো?"
-   প্রতিটা event-এর লিখিত নথি।
-   "User 123 logged in at 10:32"
-   "Payment failed: card declined"
-   ELK Stack, Grafana Loki, Datadog
-
-২. METRICS — "কেমন আছে?"
-   সংখ্যায় স্বাস্থ্যের ছবি।
-   CPU: 45% | Memory: 2.1GB
-   Request rate: 500/sec
-   Error rate: 0.2%
-   Latency p99: 120ms
-   Prometheus, Grafana, CloudWatch
-
-৩. TRACES — "কোথায় গেল?"
-   একটা request-এর সম্পূর্ণ যাত্রা।
-   User → API Gateway → Auth Service 
-       → User Service → Database → Response
-   প্রতিটা ধাপে কত সময়?
-   Jaeger, OpenTelemetry, Zipkin</div>
-
-<div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ অন্ধ সিস্টেম</div>"কাজ করছে মনে হয়।" বাগ এলে — console.log খুঁজি। প্রোডাকশনে কী হচ্ছে কেউ জানে না। রাত ২টায় ফোন — "সাইট কাজ করছে না।" অন্ধ।</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ Observable সিস্টেম</div>Dashboard-এ সব দেখা যায়। anomaly আগে ধরা যায়। বাগ এলে — trace দেখি, exact জায়গা বুঝি। alert স্বয়ংক্রিয়। দৃষ্টিসম্পন্ন।</div>
-</div>
-
-<div class="dialogue">মীযান — দাঁড়িপাল্লা, পরিমাপ। কুরআনে আল্লাহ বলেন — "আমি কায়িম করেছি মীযান।" প্রতিটা কিছুর একটা মাপ আছে। নগরী চালাতে হলে মাপতে হয় — কত মানুষ, কত খাদ্য, কত নিরাপত্তা। Observability হলো সেই মীযান — প্রতিটা request, প্রতিটা service, প্রতিটা error — সব মাপা, গণনা রাখা। অন্ধ হয়ে নয় — দৃষ্টি দিয়ে।</div>
-<div class="dialogue en">"Mizan — the scale, measurement. Allah says — 'We established the scale.' Everything has a measure. To run a city you measure — how many people, how much food, how much security. Observability is that mizan — every request, every service, every error — all measured, recorded. Not blind — with sight."</div>
-
-<div class="dialogue">আটটা স্থান পেরিয়েছ। ফটক রক্ষক বলেছিলেন — ভাগ করো। গোলাঘর রক্ষক বলেছিলেন — কাছে রাখো। সংরক্ষণাগারিক বলেছিলেন — সঠিক ঘর বাছো। সংকেত প্রহরী বলেছিলেন — বার্তাবাহক দাও। চৌরাস্তার মানচিত্রকার বলেছিলেন — আপস বেছে নাও। শুল্ক আদায়ক বলেছিলেন — নিয়ন্ত্রণ রাখো। ঝড় প্রহরী বলেছিলেন — বিকল হলে সবর করো। আর আমি বলি — সবকিছু মাপো। কিন্তু দুই স্থান এখনো বাকি — কাছে পৌঁছানোর ক্ষমতা (বিতরণকারী), আর দ্রুত খোঁজার জ্ঞান (কাতেবের সূচি)। এগুলো ছাড়া নগরী অসম্পূর্ণ।</div>
-<div class="dialogue en">"You've passed eight places. The gate keeper said — distribute. The granary keeper said — keep close. The archivist said — choose the right home. The signal watcher said — use messengers. The crossroads cartographer said — choose trade-offs. The customs collector said — maintain control. The storm watcher said — be patient when things fail. And I say — measure everything. But two places remain — the power to reach near (the distributor), and the knowledge to find fast (the scribe's index). Without them, the city is incomplete."</div>
-
-<div class="verse">"জেনে রাখো, আল্লাহর স্মরণেই হৃদয় প্রশান্তি পায়।"<br>— কুরআন ১৩:২৮<br><br>যন্ত্র প্রশান্তি দেয় না। নকশা প্রশান্তি দেয় না। কিন্তু একটা সুনকশিত সিস্টেম — যা সঠিকভাবে মাপা হয়, যথাযথভাবে নিয়ন্ত্রিত — সেটা ইউজারকে প্রশান্তি দেয়। আর সেই প্রশান্তি — সেবার প্রশান্তি।</div>
-
-<div class="secret-box"><div class="label">অষ্টম স্থান — রহস্য</div><div class="text">📊 অন্ধ হয়ে চালানো = বিপদ। Logs, Metrics, Traces = দৃষ্টি।<br><small>Observability হলো মীযান — সব কিছু মাপা, গণনা রাখা। দেখা আগে, সংশোধন পরে।</small></div></div>`
 });

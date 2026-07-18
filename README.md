@@ -1,6 +1,6 @@
 # জ্ঞানের প্রাঙ্গণ — The Learning Courtyard
 
-An interactive bilingual (Bengali/English) learning library built with the Seven Doors Method. **29 books, 312 chapters, 31,200 XP** — covering AI engineering, data structures, system design, LLM deep dives, research craft, career mindset, and more.
+An interactive bilingual (Bengali/English) learning library built with the Seven Doors Method. **29 books, 322 chapters, 32,200 XP** — covering AI engineering, data structures, system design, LLM deep dives, research craft, career mindset, and more.
 
 ## 📚 The 29 Books
 
@@ -11,7 +11,7 @@ An interactive bilingual (Bengali/English) learning library built with the Seven
 | 🤖 1 | **Twenty-Seven Doors of AI Engineering** | LLMs, prompting, RAG, embeddings, fine-tuning, agents, MCP, multimodal | 27 |
 | 🧮 2 | **The Bazaar of Algorithms** | Data structures & algorithms with live Python (Pyodide) | 18 |
 | 🏛️ 3 | **Court of the Grand Muhandis** | Engineer mindset: Hello World → Senior (incl. estimation) | 11 |
-| 🏙️ 4 | **The City Builder's Codex** | System design: load balancing, caching, databases, CDN, indexing, CAP, resilience | 10 |
+| 🏙️ 4 | **The City Builder's Codex** | System design: scaling, microservices, protocols, databases, replication, CAP, transactions, consensus, idempotency, consistent hashing, resilience, observability + 2 capstones | 20 |
 | 🌱 5 | **The Seed of Learning** | Meta-learning: how to learn (growth mindset, spaced repetition, Feynman, sleep) | 9 |
 | ⚔️ 6 | **The Arena of Trials** | Interview preparation: resume, STAR, coding patterns, negotiation | 8 |
 

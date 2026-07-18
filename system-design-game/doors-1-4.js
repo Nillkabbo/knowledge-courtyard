@@ -1,12 +1,122 @@
 // ════════════════════════════════════════
 // CITY BUILDER'S CODEX — DOORS 1-4
-// System Design: Load Balancing → Databases
+// 1. Scaling  2. Load Balancing  3. Caching  4. Microservices
 // ════════════════════════════════════════
 const doors = [];
 
-// ══ DOOR 1: LOAD BALANCING ══
+// ══ DOOR 1: SCALING FUNDAMENTALS ══
 doors.push({
-  num:1, icon:"🌐", color:"#ff6b35", name:"ফটক রক্ষকের প্রহরী",
+  num:1, icon:"🧱", color:"#ffc857", name:"ভিত্তি রক্ষকের কারখানা",
+  subtitle:"The Foundation Mason's Yard", tech:"Scaling Fundamentals (Vertical vs Horizontal, State)",
+  spirit:"তাওসিয়া — প্রশস্ত করা, প্রসারিত করা",
+  secret:"একটা বাড়ি বড় করার দুটো উপায় — উপরে তলা যোগ (vertical), পাশে নতুন বাড়ি (horizontal)। সার্ভারেও তাই — শক্তিশালী মেশিন বা অনেক মেশিন। stateless সহজে পাশে যায়, stateful কঠিন।",
+  recall:{
+    q:"ভিত্তি রক্ষক কেন সবসময় এক বাড়ি উঁচু করেন না, মাঝে মাঝে নতুন বাড়ি বানান?",
+    qen:"Why doesn't the foundation mason always build one house taller, sometimes building new houses beside it?",
+    a:"কারণ এক বাড়ি উঁচু করার সীমা আছে — ভিত্তি ধসে যায়। অনেক বাড়ি সস্তা, নমনীয়, একটা ধসলে বাকিরা থাকে। Vertical scaling-এ সীমা, horizontal scaling-এ প্রসার। stateless horizontal-এর জন্য তৈরি।",
+    aen:"Because one house can only rise so far — the foundation gives way. Many houses are cheaper, flexible, one falling doesn't doom the rest. Vertical scaling has limits; horizontal has reach. Stateless is built for horizontal."
+  },
+  story:`
+<p class="scene-setting">প্রথম স্থান। ভিত্তি রক্ষকের কারখানা। মাটির স্তূপ, ইটের সারি, দড়ির দাগ। উস্তাদ বাসির দাঁড়িয়ে আছেন — হাতে পরিমাপের কাঠি, চোখে স্থপতির দৃষ্টি। একজন শিষ্য এলেন: "গ্রামে মানুষ বাড়ছে। এক বাড়িতে সব কুলাচ্ছে না। উপরে আর তলা যোগ করি?" বাসির হাসলেন। "এক তলায় সীমা আছে। ভিত্তি ধসে যাবে। ভাবো — উপরে না, পাশে।"</p>
+<p class="scene-setting en">The first place. The Foundation Mason's yard. Piles of earth, rows of brick, chalk lines. Ustad Baseer stands — measuring rod in hand, the architect's gaze. A student came: "The village is growing. One house can't hold everyone. Shall I add another floor?" Baseer smiled. "One floor has a limit. The foundation will crack. Think — not up, but beside."</p>
+
+<div class="dialogue">তুমি একটা অ্যাপ বানিয়েছ। একটা সার্ভারে চলছে। ইউজার বাড়ছে — সার্ভার হাঁপাচ্ছে। এখন প্রশ্ন: কীভাবে বড় করবে? দুটো রাস্তা — একটা সহজ মনে হয়, একটা সত্যিকারের সমাধান।</div>
+<div class="dialogue en">"You built an app. It runs on one server. Users grow — the server pants. Now the question: how to grow? Two roads — one seems easy, one is the real answer."</div>
+
+<div class="diagram">
+  <div class="diag-title">দুই ধরনের Scaling — উপরে নাকি পাশে?</div>
+  <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#ffc857"/></marker>
+      <marker id="arrowTeal" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#3dd6c4"/></marker>
+    </defs>
+    <!-- VERTICAL -->
+    <text class="lbl-sm" x="140" y="22" fill="#ff6b35" style="font-size:13px">VERTICAL — উপরে (Scale Up)</text>
+    ${[0,1,2,3].map(i=>`<rect class="${i===3?'cell-hot':'cell'}" x="${110}" y="${180-i*36}" width="60" height="32" rx="3" style="${i===3?'fill:rgba(255,107,53,.3)':''}"/><text class="lbl-sm" x="140" y="${198-i*36}">${i===3?'⚠ সীমা':('তলা '+ (i+1))}</text>`).join('')}
+    <text class="lbl-sm" x="140" y="208" fill="#ff6b35">এক মেশিন, বড় করো — দ্রুত কিন্তু সীমিত</text>
+
+    <!-- HORIZONTAL -->
+    <text class="lbl-sm" x="420" y="22" fill="#3dd6c4" style="font-size:13px">HORIZONTAL — পাশে (Scale Out)</text>
+    ${[0,1,2,3,4].map(i=>`<rect class="cell-good" x="${280+i*32}" y="${150}" width="26" height="34" rx="3" style="fill:rgba(82,196,26,.22)"/><text class="lbl-sm" x="${293+i*32}" y="${170}" style="font-size:9px">S${i+1}</text>`).join('')}
+    <text class="lbl-sm" x="420" y="205" fill="#52c41a">অনেক মেশিন — সস্তা, নমনীয়, অসীম প্রসার</text>
+    <line class="edge-cyan" x1="140" y1="100" x2="280" y2="130"/>
+    <text class="lbl-sm" x="210" y="115" text-anchor="middle" fill="#9290a8">উভয়েই কাজে লাগে</text>
+  </svg>
+  <div class="diag-cap">শুরুতে vertical সহজ। কিন্তু যখন সত্যিকারের scale দরকার — horizontal।</div>
+</div>
+
+<div class="code-block">Scaling — The Two Roads:
+
+১. VERTICAL SCALING (Scale Up)
+   এক সার্ভারকে শক্তিশালী করো:
+     4 CPU → 16 CPU → 64 CPU
+     16GB RAM → 128GB → 1TB
+   → সহজ: কোড বদলানো লাগে না
+   → দ্রুত: একই মেশিন
+   ❌ সীমা: সবচেয়ে বড় মেশিনও একদিন ছোট হয়
+   ❌ SPOF: একটাই মেশিন, ভাঙলে সব থামে
+   ❌ দাম: top-tier মেশিন অসামান্য ব্যয়বহুল
+
+২. HORIZONTAL SCALING (Scale Out)
+   অনেক সার্ভার যোগ করো:
+     1 server → 10 → 100 → 1000
+   → নমনীয়: যত খুশি তত যোগ
+   → সস্তা: commodity hardware
+   → fault-tolerant: একটা ভাঙলে বাকিরা থাকে
+   ❌ কঠিন: stateless করতে হয়, load balancer লাগে
+   ❌ সাজাতে হয়: ডেটা কোথায়, সেশন কোথায়
+
+STATEFUL vs STATELESS — এটাই আসল প্রশ্ন:
+
+  STATEFUL (অবস্থাসম্পন্ন):
+    সার্ভার মনে রাখে — কে লগইন, কী কিনল, কোন পেজে
+    → যেকোনো সার্ভারে পাঠালে কাজ হবে না
+    → horizontal scaling কঠিন
+    উদাহরণ: shopping cart মেমোরিতে, user session লোকাল
+
+  STATELESS (অবস্থাহীন):
+    সার্ভার কিছু মনে রাখে না — সব তথ্য request-এ বা ডেটাবেসে
+    → যেকোনো সার্ভারে পাঠালে কাজ হবে
+    → horizontal scaling সহজ!
+    উদাহরণ: REST API, JWT auth token
+
+  RULE: stateless বানাও → horizontal scale করো
+        state বাহিরে রাখো — ডেটাবেস, cache, ক্লায়েন্টে
+
+WHEN TO SCALE (সংকেত):
+  ✅ CPU গড়ে >৭০%
+  ✅ Memory >৮০%
+  ✅ Disk I/O সীমায়
+  ✅ latency বাড়ছে
+  ✅ queue জমছে
+  → তাড়াতাড়ি স্কেল করো — ব্যবহারকারী অপেক্ষা করে না
+
+CAPACITY PLANNING — মাপজোক:
+  "100 RPS (request per second) পারি।"
+  → 10,000 RPS দরকার? 100x।
+  → 100 টা সার্ভার? নাকি সার্ভার প্রতি 1000 RPS?
+  → কোনটা সস্তা? কোনটা সহজ?
+  → আগে মাপো, তারপর স্কেল করো (Door 18 — Observability দেখো)
+
+THE SCALING CUBE (3 axes):
+  X-axis: কপি যোগ (horizontal cloning) — N টা ইদেন্টিক্যাল সার্ভার
+  Y-axis: ফাংশন ভাগ (microservices) — সার্ভিস আলাদা (Door 4)
+  Z-axis: ডেটা ভাগ (sharding) — ডেটা ভাগ (Door 9, 11)</div>
+
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। LLM inference মূল্যবান — এক জিপিইউতে সব request নয়। horizontal: অনেক GPU, প্রতিটা মডেলের এক কপি ধরে (replica)। Batch serving — অনেক request একসাথে। Stateless inference — যেকোনো replica পারে। কিন্তু training? stateful — gradient মনে রাখতে হয়, checkpoint করতে হয়। আজকের scaling বুঝতে হলে stateless-এর গভীরতা বুঝতে হবে।</div>
+<div class="dialogue en">"You're an AI engineer. LLM inference is expensive — not all requests on one GPU. Horizontal: many GPUs, each holding a replica of the model. Batch serving — many requests together. Stateless inference — any replica can serve. But training? stateful — gradients must be remembered, checkpoints saved. To understand today's scaling, understand the depth of stateless."</div>
+
+<div class="dialogue">তাওসিয়া — প্রশস্ত করা। কুরআনে আল্লাহ বলেন — "আর আকাশ — আমরা তা নির্মাণ করেছি শক্তিতে, আর নিশ্চয়ই আমরা প্রশস্তকারী।" (৫১:৪৭)। আকাশ প্রসারিত হচ্ছে — সীমাহীন। কিন্তু প্রতিটা গ্যালাক্সি আলাদা — এক গ্যালাক্সি ভাঙলে ব্রহ্মাণ্ড থামে না। horizontal scaling — আল্লাহর সৃষ্টিতে এটাই প্যাটার্ন। এক না, অনেক। প্রতিটা স্বাধীন, কিন্তু এক ব্যবস্থায়।</div>
+<div class="dialogue en">"Tawsiʿa — widening. Allah says — 'And the heaven We constructed with might, and indeed We are expanding it.' (51:47). The sky expands — without limit. But each galaxy is separate — one galaxy collapsing doesn't stop the universe. Horizontal scaling — this is the pattern in Allah's creation. Not one, but many. Each independent, yet in one order."</div>`,
+  senior:{
+    title:"Vertical আগে, Horizontal যখন দরকার — Senior Path",
+    body:`<p><strong>শুরুতে vertical:</strong> ছোট প্রোজেক্টে এক বড় মেশিন যথেষ্ট। কোড বদলানো লাগে না, devops সহজ।</p><p><strong>Stateless বানাও আগে:</strong> horizontal scale করার আগে state বাহিরে নাও — ডেটাবেস, Redis, JWT। নাহলে স্কেল করলেই ভাঙে।</p><p><strong>Cache আগে, সার্ভার পরে:</strong> সার্ভার যোগ করার চেয়ে cache (Door 3) দ্রুততর সমাধান। ৮০% ট্রাফিক cache-এ গেলে সার্ভার ১০ গুণ কম লাগে।</p><p><strong>Autoscaling:</strong> CPU দেখে স্বয়ংক্রিয় সার্ভার যোগ/বাদ। কিন্তু cold-start latency — হঠাৎ traffic spike হলে সময় লাগে। warm pool রাখো।</p>`
+  }
+});
+
+// ══ DOOR 2: LOAD BALANCING ══
+doors.push({
+  num:2, icon:"🌐", color:"#ff6b35", name:"ফটক রক্ষকের প্রহরী",
   subtitle:"The Gate Keeper's Post", tech:"Load Balancing",
   spirit:"তওয়াফ — ঘুরে ঘুরে সবাই সমান",
   secret:"একটা সার্ভার ভাঙলে সব থেমে যায়। একাধিক সার্ভারে ভাগ করো, একটা ফটক দিয়ে পরিচালনা করো। Load Balancer = ট্রাফিকের প্রহরী।",
@@ -17,11 +127,11 @@ doors.push({
     aen:"Because one door means crowding, pushing, injury. Multiple doors distribute the flow. A Load Balancer does this — distributes traffic across multiple servers."
   },
   story:`
-<p class="scene-setting">প্রথম স্থান। একটা বিশাল নগরীর প্রধান ফটক। সকাল — হাজার মানুষ প্রবেশ করছে। একসাথে। ফটকে ধাক্কা, চিৎকার, কেউ পড়ে যাচ্ছে। দরোয়ান তামিম দাঁড়িয়ে আছেন — বিশাল দেহ, লাঠি হাতে, কিন্তু একাই পারছেন না। একটা দরজা, হাজার মানুষ।</p>
-<p class="scene-setting en">The first place. A vast city's main gate. Morning — a thousand people entering. At once. Crowding, shouting, people falling. Gatekeeper Tamim stands — massive frame, staff in hand, but he can't manage alone. One door, a thousand people.</p>
+<p class="scene-setting">দ্বিতীয় স্থান। একটা বিশাল নগরীর প্রধান ফটক। সকাল — হাজার মানুষ প্রবেশ করছে। একসাথে। ফটকে ধাক্কা, চিৎকার, কেউ পড়ে যাচ্ছে। দরোয়ান তামিম দাঁড়িয়ে আছেন — বিশাল দেহ, লাঠি হাতে, কিন্তু একাই পারছেন না। একটা দরজা, হাজার মানুষ।</p>
+<p class="scene-setting en">The second place. A vast city's main gate. Morning — a thousand people entering. At once. Crowding, shouting, people falling. Gatekeeper Tamim stands — massive frame, staff in hand, but he can't manage alone. One door, a thousand people.</p>
 
-<div class="dialogue">একটা দরজা — হাজার মানুষ। কেউ দ্রুত ঢুকতে পারছে না। একটা দরজা ভাঙলে — সব থেমে যাবে।</div>
-<div class="dialogue en">"One door — a thousand people. No one enters quickly. If the door breaks — everything stops."</div>
+<div class="dialogue">ভিত্তি রক্ষক শিখিয়েছিলেন — পাশে পাশে বাড়ি বানাও (horizontal scaling)। কিন্তু বাড়ি তো হলো — এখন মানুষ কোন বাড়িতে যাবে? সবাই একটাতে ছুটলে সেই একটা ভেঙে যাবে, বাকিগুলো খালি থাকবে। দরকার এক প্রহরী — যে ভাগ করে দেবে।</div>
+<div class="dialogue en">"The foundation mason taught — build houses side by side (horizontal scaling). But houses are made — now which house do people go to? If everyone rushes to one, that one breaks, others stay empty. You need a guardian — who distributes."</div>
 
 <p>তামিম একটা সিদ্ধান্ত নিলেন। তিনি ফটকের পাশে আরও চারটা দরজা খুললেন। তারপর মানুষকে ভাগ করে দিলেন — প্রথম দল দরজা ১-এ, দ্বিতীয় দল দরজা ২-এ। হঠাৎ — প্রবাহ সহজ হলো। কেউ ধাক্কা খাচ্ছে না। সবাই দ্রুত ঢুকছে।</p>
 <p class="en">Tamim made a decision. He opened four more doors beside the main gate. Then divided the people — first group to door 1, second group to door 2. Suddenly — the flow eased. No pushing. Everyone entered quickly.</p>
@@ -35,7 +145,7 @@ doors.push({
 
 Round Robin (তওয়াফ):
   Request 1 → Server A
-  Request 2 → Server B  
+  Request 2 → Server B
   Request 3 → Server C
   Request 4 → Server A (আবার শুরু)
   → সবাই সমান কাজ পায়
@@ -47,7 +157,11 @@ Least Connections:
 
 IP Hash:
   একই ইউজার সবসময় একই সার্ভারে
-  → session consistency
+  → session consistency (stateful হলে দরকার)
+
+Least Response Time:
+  কোন সার্ভার দ্রুত উত্তর দিচ্ছে?
+  → সেখানে পাঠাও
 
 Health Checks:
   প্রতি ৫ সেকেন্ডে: "তুমি কি সুস্থ?"
@@ -62,9 +176,9 @@ Health Checks:
   }
 });
 
-// ══ DOOR 2: CACHING ══
+// ══ DOOR 3: CACHING ══
 doors.push({
-  num:2, icon:"💾", color:"#52c41a", name:"গোলাঘর সংরক্ষকের ভাণ্ডার",
+  num:3, icon:"💾", color:"#52c41a", name:"গোলাঘর সংরক্ষকের ভাণ্ডার",
   subtitle:"The Granary Keeper's Vault", tech:"Caching",
   spirit:"হাফসা — সংরক্ষণ, পরে ব্যবহারের জন্য",
   secret:"ডেটাবেস থেকে পড়া = ধীর। গোলাঘর থেকে পড়া = দ্রুত। Cache = প্রায়শই দরকারি জিনিস কাছে রাখা। কিন্তু পুরনো হতে পারে — eviction লাগে।",
@@ -75,8 +189,8 @@ doors.push({
     aen:"Because going to the field is far, slow, painful. In the granary it's close, fast. But grain gets old — so rotate regularly. Cache is the same — like a granary."
   },
   story:`
-<p class="scene-setting">দ্বিতীয় স্থান। নগরীর কেন্দ্রে একটা বিশাল গোলাঘর। পাথরের দেয়াল, শীতল ভেতর, সারিবদ্ধ মটরজাতীয় বস্তা। গোলাঘর রক্ষক রাবিয়া কাজ করছেন — প্রতিদিন সকালে খেত থেকে শস্য আনেন, গোলাঘরে সাজান, তারপর প্রতিটা পরিবারকে গোলাঘর থেকে দেন। খেতে যান না — গোলাঘরে থাকেন।</p>
-<p class="scene-setting en">The second place. At the city's center, a vast granary. Stone walls, cool interior, sacks of grain in rows. Granary keeper Rabia works — each morning bringing grain from the field, storing it, then distributing to each family from the granary. She doesn't go to the field — stays at the granary.</p>
+<p class="scene-setting">তৃতীয় স্থান। নগরীর কেন্দ্রে একটা বিশাল গোলাঘর। পাথরের দেয়াল, শীতল ভেতর, সারিবদ্ধ মটরজাতীয় বস্তা। গোলাঘর রক্ষক রাবিয়া কাজ করছেন — প্রতিদিন সকালে খেত থেকে শস্য আনেন, গোলাঘরে সাজান, তারপর প্রতিটা পরিবারকে গোলাঘর থেকে দেন। খেতে যান না — গোলাঘরে থাকেন।</p>
+<p class="scene-setting en">The third place. At the city's center, a vast granary. Stone walls, cool interior, sacks of grain in rows. Granary keeper Rabia works — each morning bringing grain from the field, storing it, then distributing to each family from the granary. She doesn't go to the field — stays at the granary.</p>
 
 <div class="dialogue">ফটক রক্ষক বলেছিলেন — ট্রাফিক ভাগ করো। কিন্তু আমি বলি — ভাগ করলেও, যদি প্রতিটা অনুরোধ ডেটাবেস থেকে পড়তে হয় — ধীর। আমার কাজ হলো — যা প্রায়শই দরকার, তা কাছে রাখা। গোলাঘরের মতো।</div>
 <div class="dialogue en">"The gate keeper said — distribute traffic. But I say — even distributed, if every request reads from the database — it's slow. My job is — keep what's frequently needed, close. Like a granary."</div>
@@ -95,14 +209,22 @@ doors.push({
    - লেখো → cache + DB একসাথে
    - সবসময় fresh, কিন্তু লেখা ধীর
 
-৩. Write-Behind:
+৩. Write-Behind (Write-Back):
    - লেখো → cache → পরে DB (async)
-   - দ্রুত লেখা, কিন্তু ঝুঁকি
+   - দ্রুত লেখা, কিন্তু ঝুঁকি (crash-এ ডেটা হারায়)
 
 ৪. Eviction (পুরনো বাদ):
    - LRU: সবচেয়ে বেশি দিন ব্যবহৃত হয়নি → বাদ
    - LFU: সবচেয়ে কম বার ব্যবহৃত → বাদ
-   - TTL: নির্দিষ্ট সময় পরে স্বয়ংক্রিয় মুছে ফেলা</div>
+   - TTL: নির্দিষ্ট সময় পরে স্বয়ংক্রিয় মুছে ফেলা
+
+CACHE LEVELS (multi-tier):
+  Browser cache → CDN edge → app server local → Redis/Memcached → DB
+  প্রতিটা স্তরে ক্যাশে — দ্রুততা যোগ হয়।
+
+CACHE STAMPede (thundering herd):
+  cache expire হলে — হাজার request একসাথে DB-তে ছুটে
+  → সমাধান: lock + single flight, early refresh, jittered TTL</div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ Cache ছাড়া</div>প্রতিটা read = DB trip। DB হাঁপায়। latency বাড়ে। ইউজার অপেক্ষা করে। স্কেল করতে গেলে প্রথমেই ভাঙে।</div>
@@ -117,103 +239,109 @@ doors.push({
   }
 });
 
-// ══ DOOR 3: DATABASES ══
+// ══ DOOR 4: MICROSERVICES ══
 doors.push({
-  num:3, icon:"📦", color:"#5b9eff", name:"সংরক্ষণাগারিকের গ্রন্থাগার",
-  subtitle:"The Archivist's Library", tech:"Databases: SQL vs NoSQL, Sharding, Replication",
-  spirit:"কুরআনের সংকলন — কাঠামো, যাচাই, বিতরণ",
-  secret:"এক ধরনের সংরক্ষণাগার সবার জন্য যথেষ্ট নয়। SQL = কাঠামোবদ্ধ, NoSQL = নমনীয়। Sharding = ভাগ করা। Replication = অনুলিপি।",
+  num:4, icon:"🏘️", color:"#b37feb", name:"মহল্লা স্থপতির ড্রয়িং রুম",
+  subtitle:"The Quarter Architect's Drawing Room", tech:"Microservices & Service Decomposition",
+  spirit:"তাজযি় — সুসংগঠিত ভাগে বিভাজন",
+  secret:"এক বিশাল ভবন (monolith) — সব একসাথে। ভাঙলে সব ভাঙে, বদলাতে গেলে সব বদলাতে হয়। মহল্লায় ভাগ করো — প্রতিটা স্বাধীন, আলাদাভাবে বদলানো যায়, ভাঙলে একটা ভাঙে।",
   recall:{
-    q:"সংরক্ষণাগারিক কেন সব নথি এক কাঠামোতে রাখেন না?",
-    qen:"Why doesn't the archivist store all documents in one format?",
-    a:"কারণ বিভিন্ন ধরনের নথি বিভিন্ন কাঠামোতে ভালো থাকে। কিছু স্থির কাঠামোর (SQL), কিছু নমনীয় (NoSQL)। আবার বিশাল হলে ভাগ করতে হয় (sharding), অনুলিপি রাখতে হয় (replication)।",
-    aen:"Because different documents need different structures. Some rigid (SQL), some flexible (NoSQL). When huge — split (sharding), copy (replication)."
+    q:"মহল্লা স্থপতি কেন এক বিশাল ভবন বানান না, মহল্লায় ভাগ করেন?",
+    qen:"Why doesn't the quarter architect build one vast building, but divides into quarters?",
+    a:"কারণ এক ভবনে সব একসাথে — একটা কল ভাঙলে সব থামে, ছাদ মেরামত করতে গেলে সব বাসিন্দা বের হতে হয়। মহল্লায় প্রতিটা স্বাধীন — আলাদায় মেরামত, আলাদায় স্কেল। Microservices তেমনি — প্রতিটা service স্বয়ংসম্পূর্ণ।",
+    aen:"Because one building means everything together — one pipe breaking stops all, fixing the roof means all tenants leave. In quarters, each is independent — separate repair, separate scale. Microservices — each service self-contained."
   },
   story:`
-<p class="scene-setting">তৃতীয় স্থান। একটা সুবিশাল সংরক্ষণাগার। দেয়ালে তাকে তাকে স্ক্রল, খাতা, পুথি। কিন্তু এই গ্রন্থাগারটি অন্যরকম — প্রতিটা কক্ষে ভিন্ন ধরনের সংরক্ষণ। এক কক্ষে সুসজ্জিত টেবিল — প্রতিটি সারিতে নির্দিষ্ট তথ্য, নির্দিষ্ট ক্রমে। অন্য কক্ষে ঢিলেঢালা বস্তা — প্রতিটিতে ভিন্ন জিনিস, কোনো নির্দিষ্ট ক্রম নেই। সংরক্ষণাগারিক জাইদ বলেন — "প্রতিটা ধরনের তথ্যের নিজস্ব ঘর দরকার।"</p>
-<p class="scene-setting en">The third place. A vast archive. Shelves of scrolls, ledgers, manuscripts. But this library is different — each room stores differently. One room: organized tables — each row with specific data, specific order. Another room: loose sacks — each with different items, no fixed order. Archivist Zaid says — "Each type of data needs its own room."</p>
+<p class="scene-setting">চতুর্থ স্থান। মহল্লা স্থপতির ড্রয়িং রুম। দেয়ালে দুটো নীলনকশা — একটা বিশাল একক ভবন (কেন্দ্রীভূত), একটা মহল্লা-শহর (বিকেন্দ্রীভূত)। স্থপতি জয়নব তার চশমা ঠিক করে বললেন — "এই বিশাল ভবনটা দেখো। এক ছাদ, এক ভিত্তি, এক জলের লাইন। কিছু ভাঙলে সব ভাঙে। কিন্তু এই মহল্লা — প্রতিটা বাড়ি আলাদা। একটা মেরামত করো, বাকিরা চলে।"</p>
+<p class="scene-setting en">The fourth place. The Quarter Architect's drawing room. Two blueprints on the wall — one vast monolithic building (centralized), one quarter-city (decentralized). Architect Zainab adjusted her spectacles and said — "Look at this vast building. One roof, one foundation, one water line. If something breaks, all breaks. But this quarter — each house separate. Repair one, others continue."</p>
 
-<div class="dialogue">গোলাঘর রক্ষক বলেছিলেন — প্রায়শই দরকারি জিনিস কাছে রাখো। কিন্তু সব তথ্য cache-এ রাখা যায় না। সব তথ্য একটা স্থায়ী ঘর দরকার। সেই ঘরই ডেটাবেস। কিন্তু কোন ঘর?</div>
-<div class="dialogue en">"The granary keeper said — keep frequently needed things close. But not all data can live in cache. All data needs a permanent home. That home is the database. But which home?"</div>
+<div class="dialogue">গোলাঘর রক্ষক বলেছিলেন — কাছে রাখো, দ্রুত দাও। কিন্তু আমি বলি — যখন নগরী বড় হয়, এক বিশাল ভবনে সব কাজ রাখলে সব একসাথে ধীর হয়, বদলাতে ভয়ংকর। এক টিম ইউজার কোড বদলায়, আরেক টিম পেমেন্ট কোড বদলায় — কিন্তু একই ভবন। একে অপরের পায়ে দলে।</div>
+<div class="dialogue en">"The granary keeper said — keep close, serve fast. But I say — when the city grows, putting all work in one vast building makes everything slow together, change terrifying. One team changes user code, another payment code — but the same building. Stepping on each other's feet."</div>
 
-<div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">📊 SQL (Relational)</div>টেবিল, সারি, কলাম। কঠোর কাঠামো। ACID guarantee। JOIN, foreign key, transaction। ভালো: ইউজার, অর্ডার, পেমেন্ট — যেখানে সম্পর্ক গুরুত্বপূর্ণ।<br>PostgreSQL, MySQL</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">📄 NoSQL (Non-relational)</div>নমনীয় কাঠামো। JSON-এর মতো। Schema-less। horizontal scaling সহজ। ভালো: কন্টেন্ট, লগ, IoT — যেখানে কাঠামো বদলায়।<br>MongoDB, Cassandra, DynamoDB</div>
+<div class="diagram">
+  <div class="diag-title">Monolith → Microservices — এক ভবন থেকে মহল্লা</div>
+  <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+    <!-- MONOLITH -->
+    <text class="lbl-sm" x="100" y="22" fill="#ff6b35" style="font-size:13px">MONOLITH — এক ভবন</text>
+    <rect class="cell-hot" x="30" y="40" width="140" height="170" rx="8" style="fill:rgba(255,107,53,.1);stroke:#ff6b35"/>
+    <text class="lbl-sm" x="100" y="60">UI</text>
+    <line class="grid-line" x1="40" y1="72" x2="160" y2="72"/>
+    <text class="lbl-sm" x="100" y="92">Business Logic</text>
+    <text class="lbl-sm" x="100" y="110" style="font-size:9px">(users + orders +</text>
+    <text class="lbl-sm" x="100" y="122" style="font-size:9px">payment + search</text>
+    <text class="lbl-sm" x="100" y="134" style="font-size:9px">+ notif... সব একসাথে)</text>
+    <line class="grid-line" x1="40" y1="150" x2="160" y2="150"/>
+    <text class="lbl-sm" x="100" y="170">Data Access</text>
+    <text class="lbl-sm" x="100" y="190">এক DB</text>
+    <text class="lbl-sm" x="100" y="228" fill="#ff6b35">সহজ শুরু · বড় হলে ভয়ংকর</text>
+
+    <!-- MICROSERVICES -->
+    <text class="lbl-sm" x="390" y="22" fill="#3dd6c4" style="font-size:13px">MICROSERVICES — মহল্লা</text>
+    ${[ ['User',300,50],['Order',370,50],['Pay',440,50],['Search',510,50],
+         ['Notif',300,130],['Rec',370,130],['Cart',440,130],['Ship',510,130] ].map(s=>`
+      <rect class="cell-good" x="${s[1]-28}" y="${s[2]-15}" width="56" height="30" rx="5" style="fill:rgba(82,196,26,.18)"/>
+      <text class="lbl-sm" x="${s[1]}" y="${s[2]}">${s[0]}</text>
+    `).join('')}
+    <text class="lbl-sm" x="300" y="178">প্রতিটা service — নিজ DB, নিজ টিম, নিজ deploy</text>
+    <text class="lbl-sm" x="390" y="200" fill="#52c41a">API দিয়ে কথা বলে (Door 5)</text>
+    <text class="lbl-sm" x="390" y="228" fill="#52c41a">বড় হলেও চালানো যায়</text>
+    <line class="edge-cyan" x1="180" y1="120" x2="270" y2="90"/>
+  </svg>
+  <div class="diag-cap">শুরুতে monolith সহজ। বড় হলে microservices — কিন্তু complexity আসে।</div>
 </div>
 
-<div class="dialogue">কিন্তু একটা সমস্যা। যখন তথ্য বাড়ে — কোটি কোটি রেকর্ড — একটা সংরক্ষণাগারে রাখা যায় না। দুটো সমাধান: Sharding — ভাগ করা। Replication — অনুলিপি রাখা।</div>
-<div class="dialogue en">"But one problem. When data grows — billions of records — one archive can't hold it. Two solutions: Sharding — splitting. Replication — copying."</div>
+<div class="code-block">Microservices — কখন, কীভাবে ভাগ:
 
-<div class="code-block">Scaling Databases:
+একটা সার্ভিস = একটা ব্যবসায়িক ক্ষমতা (bounded context)
+  User Service → ইউজার, প্রোফাইল, auth
+  Order Service → অর্ডার, ইনভেন্টরি
+  Payment Service → চার্জ, রিফান্ড
+  Notification Service → ইমেইল, SMS, push
+  Search Service → সার্চ, র‍্যাঙ্কিং
 
-Sharding (ভাগ করা):
-  User A-M → Database 1
-  User N-Z → Database 2
-  → প্রতিটা DB ছোট, দ্রুত
-  → কিন্তু cross-shard query কঠিন
+প্রতিটা service:
+  ✓ নিজস্ব ডেটাবেস (বা নিজস্ব স্কিমা) — শেয়ার্ড DB নয়!
+  ✓ নিজস্ব ডেপ্লয় — একটা বদলালে অন্য থামে না
+  ✓ নিজস্ব টিম — এক টিম এক সার্ভিসের মালিক
+  ✓ API দিয়ে যোগাযোগ — সরাসরি DB অ্যাক্সেস নয়
 
-Replication (অনুলিপি):
-  Primary DB → লেখা এখানে
-  Replica 1 → পড়া এখাম থেকে  
-  Replica 2 → পড়া এখান থেকে
-  → read throughput বাড়ে
-  → একটা ক্র্যাশ করলে বাকিরা আছে
+ভাগ করার নীতি (DDD — bounded context):
+  ১. ব্যবসায়িক ক্ষমতা অনুযায়ী ভাগ (technical নয়)
+  ২. এক টিম = ২-৮ জন = "two-pizza team"
+  ৩. সার্ভিস এত ছোট যে এক স্প্রিন্টে রিরাইট করা যায়
+  ৪. সার্ভিস এত বড় যে সে নিজের সমস্যা সমাধান করতে পারে
 
-Primary-Replica: ১টা লেখে (Primary), বাকিরা পড়ে (Replica)
-Multi-Primary: সবাই লেখে + পড়ে (ঝুঁকিশালী কিন্তু দ্রুত)
-(পুরোনো নাম: Master-Slave — এখন Primary-Replica ব্যবহার করা হয়)</div>
+প্রতিটা service স্বাধীন স্কেল:
+  Search বেশি ব্যস্ত → 50 replica
+  Payment কম ব্যস্ত → 5 replica
+  Notification বিস্ফোরক (ছুটির দিনে) → autoscale
+  → এক monolith-এ সব একসাথে স্কেল করতে হতো
 
-<div class="dialogue">কুরআনের সংকলনও এভাবে হয়েছে। প্রথমে বিক্ষিপ্ত — হাড়ে, পাতায়, মুখস্থে। তারপে কাঠামো — সূরা ক্রম, আয়াত ক্রম। তারপে যাচাই — প্রতিটা আয়াত দুইজন সাক্ষীর মুখস্থের সাথে মিলিয়ে। তারপে বিতরণ — একাধিক অনুলিপি বিভিন্ন অঞ্চলে। SQL = কাঠামো (সূরা ক্রম)। ACID = যাচাই (সাক্ষী)। Replication = বিতরণ (অনুলিপি)। ডেটাবেস নকশা নতুন কিছু নয় — এটা জ্ঞান সংরক্ষণের প্রাচীন প্রজ্ঞা।</div>
-<div class="dialogue en">"The compilation of the Quran happened this way. First scattered — on bone, leaf, memory. Then structured — surah order, ayah order. Then verified — each ayah cross-checked against two witnesses' memorization. Then distributed — multiple copies to different regions. SQL = structure (surah order). ACID = verification (witnesses). Replication = distribution (copies). Database design isn't new — it's the ancient wisdom of preserving knowledge."</div>`,
+THE PRICE (সব দাম আছে):
+  ❌ Network call — DB call-এর চেয়ে ধীর (latency)
+  ❌ Distributed transactions — কঠিন (Door 13)
+  ❌ Operational complexity — monitoring, deploy, versioning
+  ❌ Data consistency — eventual consistency মানতে হয়
+  ❌ Service mesh — Istio, Linkerd শিখতে হয়
+
+WHEN NOT TO SPLIT (গুরুত্বপূর্ণ):
+  ✗ ছোট প্রোজেক্ট (১ টিম, ১ MVP) — monolith শুরু করো
+  ✗ পরিষ্কার bounded context না থাকলে — ভাঙলে স্প্যাগেটি
+  ✗ DevOps পরিণতি না থাকলে — operational nightmare
+  ✗ Strong consistency চাইলে — cross-service কঠিন
+
+"MONOLITH FIRST" pattern:
+  শুরুতে monolith — শিখো domain
+  → বড় হলে, বোঝলে — ভাঙো
+  → শুরু থেকে microservices = premature optimization</div>
+
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। আজকের AI platform সব microservices-এ চলে। Inference service — মডেল চালায়, বহু GPU, স্বাধীন স্কেল। Embedding service — ছোট, দ্রুত। Training service — ব্যাচ, সারিতে। RAG service — retrieval + generation আলাদা। Agent orchestrator — টুল service গুলো ডাকে। প্রতিটা আলাদা ডেপ্লয়, আলাদা স্কেল। Monolith হলে এক GPU-এর সমস্যায় সব থামত।</div>
+<div class="dialogue en">"You're an AI engineer. Today's AI platforms all run as microservices. Inference service — runs models, many GPUs, independent scale. Embedding service — small, fast. Training service — batch, queued. RAG service — retrieval + generation separate. Agent orchestrator — calls tool services. Each separate deploy, separate scale. As a monolith, one GPU's problem would stop everything."</div>
+
+<div class="dialogue">তাজযি় — সুসংগঠিত ভাগে বিভাজন। কুরআনে আল্লাহ বলেন — "যে ব্যক্তি আল্লাহ ও শেষ দিনে বিশ্বাস করে, সে তার পরিবারের দায়িত্ব পালন করুক।" দায়িত্ব ভাগ — প্রতিটা মানুষের নিজস্ব ক্ষেত্র। ইসলামী ঐত্রহ্যে প্রশাসন সবসময় বিকেন্দ্রীভূত — প্রতিটা মহল্লার নিজস্ব মসজিদ, নিজস্ব ইমাম, নিজস্ব দায়িত্ব। এক কেন্দ্রীভূত কাঠামো ভাঙলে সব থামে। Microservices সেই তাজযি়-এর ছায়া — দায়িত্ব ভাগ, প্রতিটা স্বাধীন, সব মিলে এক নগরী।</div>
+<div class="dialogue en">"Tajzīʾ — division into organized parts. Allah says — 'Whoever believes in Allah and the Last Day, let him fulfill his family's responsibility.' Divided responsibility — each person their own domain. In Islamic tradition, administration is always decentralized — each quarter its own mosque, its own imam, its own responsibility. One centralized structure breaks, all stops. Microservices is the shadow of tajzīʾ — divided responsibility, each independent, together one city."</div>`,
   senior:{
-    title:"CAP Theorem পূর্বরূপ — ডেটাবেস বাছাই",
-    body:`<p>ডেটাবেস বাছাই করার আগে বুঝো: <strong>CAP Theorem</strong> — Consistency, Availability, Partition tolerance। তিনটার মধ্যে দুটো পাবে, একটা বিসর্জন।</p><p><strong>SQL (PostgreSQL):</strong> Consistency + Partition tolerance (CP)। সঠিক ডেটা সবসময়। কিন্তু নেটওয়ার্ক ভাঙলে কিছু অনুরোধ ব্যর্থ।</p><p><strong>NoSQL (Cassandra):</strong> Availability + Partition tolerance (AP)। সবসময় উত্তর দেয়। কিন্তু কিছুক্ষণ পুরনো ডেটা (eventual consistency)।</p><p>আগে প্রয়োজন বুঝো, তারপর ডেটাবেস বাছো।</p>`
-  }
-});
-
-// ══ DOOR 4: MESSAGE QUEUES ══
-doors.push({
-  num:4, icon:"📡", color:"#b37feb", name:"সংকেত প্রহরীর বুরুজ",
-  subtitle:"The Signal Tower", tech:"Message Queues & Async Processing",
-  spirit:"আযান — এক থেকে অনেকে, একই সংকেত",
-  secret:"একসাথে করতে গেলে সব থেমে যায়। Queue-এ রাখো, আলাদাভাবে করো। Async = চাও → দাঁড়াও না → পরে ফল নাও। Decoupling = স্বাধীনতা।",
-  recall:{
-    q:"সংকেত প্রহরী কেন সবাইকে ডাকেন না, একটা আযান দেন?",
-    qen:"Why does the signal watcher give one call (azan) instead of calling everyone individually?",
-    a:"কারণ একে একে ডাকলে সময় লাগে, কেউ মিস হয়। আযান একবারে সবাই শোনে। Message Queue-ও তেমনি — একটা event একাধিক service পায়, একে অপরের সাথে কথা না বলেই। Decoupling।",
-    aen:"Because calling individually takes time, someone gets missed. Azan — everyone hears at once. Message Queue too — one event reaches multiple services without them talking to each other. Decoupling."
-  },
-  story:`
-<p class="scene-setting">চতুর্থ স্থান। নগরীর সর্বোচ্চ বুরুজ। উপরে মুয়াজ্জিন বিলাল দাঁড়িয়ে আছেন — হাতে কোনো যন্ত্র নেই, শুধু তাঁর কণ্ঠ। নিচে নগরী — হাজার ঘর, হাজার মানুষ। সবাইকে জানাতে হবে — "সময় হয়েছে।" একে একে ডাকলে দিন শেষ। কিন্তু তিনি একবার উঁচু কণ্ঠে আযান দিলেন — পুরো নগরী শুনল।</p>
-<p class="scene-setting en">The fourth place. The city's tallest tower. Atop, Muazzin Bilal stands — no instrument, just his voice. Below — the city: thousands of homes, thousands of people. All must know — "The time has come." Calling individually — the day would end. But he raised his voice once in azan — the entire city heard.</p>
-
-<div class="dialogue">সংরক্ষণাগারিক বলেছিলেন — তথ্যের নিজস্ব ঘর দরকার। কিন্তু আমি বলি — ঘর থাকলেও, এক ঘর থেকে আরেক ঘরে যোগাযোগ দরকার। আর সেই যোগাযোগ সরাসরি হবে না — মাঝখানে একটা বার্তাবাহক দরকার। যে নেবে, রাখবে, পৌঁছে দেবে। এটাই message queue।</div>
-<div class="dialogue en">"The archivist said — data needs its own home. But I say — even with homes, rooms need to communicate. And that communication isn't direct — you need a messenger in between. Who takes, holds, delivers. This is the message queue."</div>
-
-<p>তুমি একটা ছবি আপলোড করলে। কী হওয়া দরকার? ছবি resize, thumbnail বানানো, AI ট্যাগ করা, notification পাঠানো। সব একসাথে? ইউজার ৩০ সেকেন্ড অপেক্ষা করবে? না।</p>
-<p class="en">You upload a photo. What should happen? Resize, thumbnail, AI tagging, notification. All at once? User waits 30 seconds? No.</p>
-
-<div class="code-block">Async Processing — Message Queue:
-
-User: "ছবি আপলোড করলাম"
-  ↓
-API: "ঠিক আছে, নিলাম" → queue-তে রাখো
-  ↓ (ইউজার দাঁড়ায় না — ২০০ms)
-  
-Queue (Kafka/RabbitMQ/SQS):
-  "photo.uploaded" event
-     ↓                    ↓              ↓
-Resize Service      AI Tagging      Notification
-(নিজের গতিতে)     (নিজের গতিতে)  (নিজের গতিতে)
-
-→ প্রতিটা service স্বাধীন
-→ একটা ক্র্যাশ করলে বাকিরা কাজ করে
-→ স্কেল করা সহজ — শুধু worker যোগ করো</div>
-
-<div class="dialogue">আযান — একজন মুয়াজ্জিন, একবার কণ্ঠ, কিন্তু হাজার কান। মসজিদে যাওয়ার নির্দেশ একে একে দরকার নেই — একবার আযান, সবাই শোনে, প্রতেকে নিজ নিজ গতিতে আসে। Message queue-ও তেমনি — একটা event publish করো, একাধিক service subscribe করে। publisher জানে না কে listen করছে — সে শুধু বলে দেয়। এটাই pub/sub — publish/subscribe। আযান = প্রকাশ্য ঘোষণা। pub/sub = প্রকাশ্য event।</div>
-<div class="dialogue en">"Azan — one muazzin, one voice, but thousands of ears. The call to prayer doesn't need individual summons — one azan, everyone hears, each comes at their own pace. Message queue too — publish one event, multiple services subscribe. The publisher doesn't know who's listening — just announces. This is pub/sub — publish/subscribe. Azan = public announcement. Pub/sub = public event."</div>`,
-  senior:{
-    title:"Kafka vs RabbitMQ vs SQS — কখন কোনটা?",
-    body:`<p><strong>Kafka:</strong> স্ট্রিম, উচ্চ throughput, event sourcing। লগ হিসেবে কাজ করে — replay করা যায়। জটিল কিন্তু শক্তিশালী। Netflix, LinkedIn ব্যবহার করে।</p><p><strong>RabbitMQ:</strong> traditional message broker। routing সহজ, নির্ভরযোগ্য। task queue, work queue। মাঝারি জটিলতা।</p><p><strong>SQS (AWS):</strong> managed, serverless। সহজ, কোনো পরিচালনা নেই। কিন্তু vendor lock-in।</p><p><strong>নিয়ম:</strong> event streaming → Kafka। task distribution → RabbitMQ/SQS। সহজ শুরু → SQS।</p>`
+    title:"Monolith vs Microservices — Senior Reality",
+    body:`<p><strong>শুরু করো monolith দিয়ে</strong> — এটা canonical advice (Martin Fowler, "monolith first")। Domain না বুঝে ভাঙলে ভুল ভাগ হয়, "distributed monolith" হয় — সব খারাপ দুনিয়া।</p><p><strong>যখন ভাঙবে:</strong> (১) টিম >৮ জন হলে, (২) এক অংশ অন্যের চেয়ে ১০x ব্যস্ত, (৩) এক অংশ অন্যের চেয়ে ভিন্ন release tempo চায়।</p><p><strong>ভাঙার নিয়ম:</strong> এক সাথে এক service বের করো, পরীক্ষা করো, তারপর পরের। "Strangler Fig" pattern — পুরোনো monolith ক্রমশ গলিয়ে বের করো।</p><p><strong>Service mesh:</strong> Istio/Linkerd — sidecar proxy প্রতিটা service-এ। mTLS, retries, circuit breaking কোড ছাড়াই। কিন্তু complexity যোগ। শুরুতে দরকার নাও হতে পারে।</p>`
   }
 });
