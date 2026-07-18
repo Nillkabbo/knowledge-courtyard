@@ -207,6 +207,68 @@ doors.push({
 <div class="callout tip"><span class="co-icon">🌅</span><div><strong>Writing-first (Graham):</strong> কী ভাবছ জানার <em>আগেই</em> লেখা শুরু করো — লেখার কাজটাই প্রকাশ করে তুমি কী ভাবো। খারাপ করে লেখো, তারপর ঠিক করো ("essay হলো যা তুমি <em>rewrite</em> করো")। দৈনিক চর্চা: Morning Pages (Cameron, 1992 — ৩ পাতা longhand, edit নয়) · দৈনিক ১-৩ permanent note · সাপ্তাহিক synthesis।</div></div>
 <div class="callout info"><span class="co-icon">🧠</span><div><strong>লেখা = retention:</strong> নিজের ভাষায় লেখা গভীর processing-এ বাধ্য করে (Craik &amp; Lockhart, 1972 — levels of processing: copying = shallow, rephrasing = deep, নতুন neural pathway গড়ে)। ভালো লেখক ভালো পাঠক হয় ও উল্টোটা — লেখা তোমাকে দেখায় ভালো structure ও দুর্বল যুক্তি কেমন।</div></div>
 
+<div class="diagram">
+  <div class="diag-title">লেখা = চিন্তার পরীক্ষা — ধোঁয়াশা স্পষ্ট হয় বা ধ্বংস</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowAmberD8" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#fcd34d"/></marker>
+    </defs>
+    <!-- foggy brain -->
+    <ellipse cx="110" cy="115" rx="55" ry="45" class="cell" style="fill:rgba(245,158,11,.08);stroke:#9290a8;stroke-dasharray:4,3"/>
+    <text class="lbl-sm" x="110" y="100" fill="#9290a8">এলোমেলো চিন্তা</text>
+    <text class="lbl-sm" x="110" y="118" fill="#9290a8" style="font-size:9px">branch, loop, contradict</text>
+    <text class="lbl-sm" x="110" y="133" fill="#9290a8" style="font-size:9px">"জানি কিন্তু বলতে পারি না"</text>
+    <!-- arrow to pen -->
+    <line class="edge-amber" x1="170" y1="115" x2="240" y2="115" marker-end="url(#arrowAmberD8)"/>
+    <rect class="cell-good" x="240" y="85" width="100" height="60" rx="8"/>
+    <text class="lbl-sm" x="290" y="110" fill="#52c41a" style="font-weight:700">কলম</text>
+    <text class="lbl-sm" x="290" y="128" fill="#9290a8" style="font-size:9px">linear structure-এ</text>
+    <text class="lbl-sm" x="290" y="140" fill="#9290a8" style="font-size:9px">বাধ্য করে</text>
+    <line class="edge-amber" x1="340" y1="115" x2="410" y2="115" marker-end="url(#arrowAmberD8)"/>
+    <!-- result: two branches -->
+    <rect class="cell-cyan" x="410" y="60" width="120" height="40" rx="8"/>
+    <text class="lbl-sm" x="470" y="78" fill="#3dd6c4" style="font-weight:700">স্পষ্ট চিন্তা</text>
+    <text class="lbl-sm" x="470" y="93" fill="#9290a8" style="font-size:9px">বুঝেছ (Feynman ✓)</text>
+    <rect class="cell-hot" x="410" y="130" width="120" height="40" rx="8"/>
+    <text class="lbl-sm" x="470" y="148" fill="#ff6b35" style="font-weight:700">ধ্বংস</text>
+    <text class="lbl-sm" x="470" y="163" fill="#9290a8" style="font-size:9px">ধারণা ভাঙে — ফিরে যাও</text>
+    <text class="lbl-sm" x="280" y="210" fill="#5e5c74">অস্পষ্ট লেখা = অস্পষ্ট চিন্তা। স্পষ্ট লেখা = স্পষ্ট চিন্তা। কলম = চিন্তার পরীক্ষা।</text>
+  </svg>
+  <div class="diag-cap">লেখা চিন্তাকে linear structure-এ বাধ্য করে — কী আগে, কী পরে, কীভাবে যুক্ত। ধোঁয়াশা স্পষ্ট হয় (বুঝেছ) বা ধ্বংস হয় (ফিরে যাও)। দুটোই জয় — কারণ এখন তুমি জানো কী বুঝেছ আর কী না।</div>
+</div>
+
+<div class="code-block">লেখার ৩ ধরন — কোনটা কখন:
+
+  WRITING TO THINK (private)
+    journal, draft, Zettelkasten permanent note।
+    idea explore করা। কাউকে দেখাবে না।
+
+  WRITING TO UNDERSTAND (semi-public)
+    summary, Feynman note, blog, tutorial।
+    শেখার জন্য ব্যাখ্যা — Feynman technique-এর সাথে মিল।
+
+  WRITING TO COMMUNICATE (public)
+    polished essay, paper, বই। audience-এর জন্য।
+
+  দৈনিক চর্চা:
+    Morning Pages (Cameron 1992) — ৩ পাতা longhand, edit নয়।
+    দৈনিক ১-৩ permanent note (Zettelkasten)।
+    সাপ্তাহিক synthesis — ১টা unexpected connection।
+
+  Graham: "কী ভাবছ জানার আগেই লেখা শুরু করো।
+         লেখার কাজটাই প্রকাশ করে তুমি কী ভাবো।"</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">২০০৭</div><div class="sc-label">Paul Graham "Writing, Briefly"</div></div>
+<div class="stat-card"><div class="sc-num">৩ পাতা</div><div class="sc-label">Morning Pages (Cameron 1992)</div></div>
+<div class="stat-card"><div class="sc-num">৯৬:৪-৫</div><div class="sc-label">কুরআন — "কলমের মাধ্যমে শিখিয়েছেন"</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ মুখে ভাবা</div>"পড়েছি, বুঝেছি" — কিন্তু লিখতে বসলে কিছু আসে না। মস্তিষ্কে ধোঁয়াশা থাকে, কিন্তু linear structure নেই। "জানি কিন্তু বলতে পারি না" = আসলে জানো না (Feynman)। অস্পষ্ট চিন্তা অস্পষ্ট থেকে যায়।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ লিখে ভাবা</div>লেখা চিন্তাকে linear structure-এ বাধ্য করে। ধোঁয়াশা স্পষ্ট হয় বা ধ্বংস হয় — দুটোই জয়। কলম = চিন্তার হাতিয়ার (কুরআন ৯৬:৪-৫)। Graham: লেখা = চিন্তা, recording নয়। যে লেখে, সে ভাবে। যে ভাবে, সে জানে।</div>
+</div>
+
 <div class="dialogue">কলম — pen, the instrument of knowledge। কুরআনে আল্লাহ বলেন — "যিনি কলমের মাধ্যমে শিখিয়েছেন। মানুষকে শিখিয়েছেন যা সে জানত না।" (৯৬:৪-৫)। কলম = জ্ঞানের সর্বপ্রথম হাতিয়ার। আল্লাহ কলম দিয়ে শিখিয়েছেন — কথা দিয়ে নয়, কলম দিয়ে। কারণ কলম = চিন্তা। যে লেখে, সে ভাবে। যে ভাবে, সে শেখে। যে শেখে, সে জানে। কলম শুধু recording এর হাতিয়ার নয় — কলম চিন্তার হাতিয়ার। আল্লাহ কলমকে এত গুরুত্ব দিয়েছেন কারণ কলম দিয়ে চিন্তা স্থায়ী হয়। কথা উড়ে যায়, লেখা থাকে।</div>
 <div class="dialogue en">"Qalam — pen, the instrument of knowledge. Allah says — 'Who taught by the pen. Taught man what he knew not.' (96:4-5). The pen = the first tool of knowledge. Allah taught with the pen — not with speech, with the pen. Because the pen = thinking. One who writes, thinks. One who thinks, learns. One who learns, knows. The pen is not just a recording tool — it is a thinking tool. Allah gave the pen such importance because through it, thought becomes permanent. Speech flies away, writing remains."</div>`,
   senior:{
@@ -242,6 +304,61 @@ doors.push({
 </div>
 <div class="callout info"><span class="co-icon">🔗</span><div><strong>Syntopical + Zettelkasten:</strong> ৫ বই syntopically পড়ো → প্রতিটা থেকে নোট → ভিন্ন বইয়ের নোটের মধ্যে link → link-ই synthesis প্রকাশ করে। Luhmann ঠিক এটাই করতেন — "power" নিয়ে লিখতে গিয়ে বিভিন্ন উৎসের সব "power" নোট টেনে আনতেন, synthesis আগে থেকেই link-এ ছিল।</div></div>
 <div class="callout tip"><span class="co-icon">🎓</span><div><strong>পাঠক → স্রষ্টা:</strong> Elementary consumes → Inspectional selects → Analytical understands → <strong>Syntopical CREATES</strong> নতুন জ্ঞান যা আগে ছিল না। প্রতিটা বই/পেপার/প্রবন্ধ আসলে কারো syntopical synthesis।</div></div>
+
+<div class="diagram">
+  <div class="diag-title">Syntopical — ৫ বই সংযুক্ত করে নতুন সৃষ্টি</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <!-- 5 books at top -->
+    ${[ ['A',80],['B',180],['C',280],['D',380],['E',480] ].map(b=>`<rect class="cell-cyan" x="${b[1]-30}" y="40" width="60" height="40" rx="5"/><text class="lbl-sm" x="${b[1]}" y="65" fill="#3dd6c4" style="font-weight:700">বই ${b[0]}</text>`).join('')}
+    <!-- converging lines to synthesis -->
+    ${[80,180,280,380,480].map(x=>`<line class="edge" x1="${x}" y1="85" x2="280" y2="140" style="stroke:#fcd34d"/>`).join('')}
+    <!-- synthesis node -->
+    <rect class="cell-good" x="200" y="140" width="160" height="44" rx="8"/>
+    <text class="lbl" x="280" y="162" fill="#52c41a">তোমার সংশ্লেষণ</text>
+    <text class="lbl-sm" x="120" y="105" fill="#52c41a" style="font-size:9px">একমত</text>
+    <text class="lbl-sm" x="440" y="105" fill="#ff6b35" style="font-size:9px">অসম্মত</text>
+    <text class="lbl-sm" x="280" y="210" fill="#5e5c74">৫টা দৃষ্টিভঙ্গি সংযুক্ত → নতুন জ্ঞান যা আগে ছিল না। সিলসিলা — সংযুক্ত জ্ঞান।</text>
+  </svg>
+  <div class="diag-cap">একটা বই = এক দৃষ্টিভঙ্গি (সুতো)। ৫টা বই সংযুক্ত = জাল (সিলসিলা)। কোথায় একমত, কোথায় অসম্মত — সেই ম্যাপ থেকে তোমার নিজের সংশ্লেষণ জন্মায়। পাঠক → স্রষ্টা।</div>
+</div>
+
+<div class="code-block">Syntopical Reading — ৫ ধাপ (Adler Level ৪):
+
+  ১. BIBLIOGRAPHY
+    একটা প্রশ্ন বাছো (শব্দ নয়)। সেরা ৫-১০ বই খোঁজো।
+    সব inspectional-read করো (Door ২)।
+
+  ২. KEY QUESTIONS
+    বইগুলো কোন প্রশ্নের উত্তর খুঁজছে? উপ-প্রশ্নে ভাগ।
+
+  ৩. ISSUES (মতভেদ)
+    লেখকরা কোথায় দ্বিমত?
+    (intelligence: Gardner multiple, Spearman g, Sternberg triarchic)
+    এই মতভেদই issue।
+
+  ৪. DISCUSSION
+    সব মত-অমত ম্যাপ করো।
+    পক্ষ নেওয়ার আগে সব position বোঝো।
+
+  ৫. YOUR SYNTHESIS
+    সব বোঝার পর নিজের মত —
+    "সব উৎসের ভিত্তিতে আমি মনে করি X, কারণ...,
+     তবে counterargument Y-এরও যুক্তি আছে কারণ..."
+    এটাই মৌলিক চিন্তা।
+
+  + Zettelkasten: ভিন্ন বইয়ের নোটের মধ্যে link →
+    link-ই synthesis প্রকাশ করে (Luhmann)।</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৫-১০</div><div class="sc-label">বই — এক বিষয়ে syntopical</div></div>
+<div class="stat-card"><div class="sc-num">Level ৪</div><div class="sc-label">Adler-এর সর্বোচ্চ স্তর</div></div>
+<div class="stat-card"><div class="sc-num">স্রষ্টা</div><div class="sc-label">পাঠক থেকে — নতুন জ্ঞান সৃষ্টি</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ এক বইয়ের দৃষ্টিভঙ্গি</div>একটা বই পড়ে সেটাই সত্য ভাবা — এক সুতো ধরে চলা। অন্য দৃষ্টিভঙ্গি অজানা, মতভেদ অদৃশ্য। যে এক বইয়ে আটকে, সে সেই লেখকের চিন্তা ধার করে বাঁচে — নিজের চিন্তা গড়ে না।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সংশ্লেষণ (সিলসিলা)</div>৫-১০ বই এক বিষয়ে পড়ো, মতভেদ ম্যাপ করো, নিজের সংশ্লেষণ গড়ো। সিলসিলা — সংযুক্ত জ্ঞান (কুরআন ৩:১০৩)। পাঠক → স্রষ্টা। PhD গবেষক, বড় লেখকরা যা করেন। নতুন জ্ঞান সৃষ্টি যা আগে ছিল না।</div>
+</div>
 
 <div class="dialogue">সিলসিলা — chain, connection, linkage। কুরআনে আল্লাহ বলেন — "তোমরা সবাই আল্লাহর রশি দৃঢ়ভাবে ধরো, একসাথে।" (৩:১০৩)। একসাথে = সিলসিলা। syntopical reading-ও সিলসিলা — একাধিক উৎস একসাথে সংযুক্ত। যে একটা বই পড়ে, সে একটা সুতো ধরে। যে পাঁচটা সংযুক্ত করে, সে একটা জাল বানায়। জাল শক্তিশালী, সুতো দুর্বল। সিলসিলা — সংযুক্ত জ্ঞান। যে সংযুক্ত করে, সে সৃষ্টি করে।</div>
 <div class="dialogue en">"Silsila — chain, connection, linkage. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Together = silsila. Syntopical reading too — multiple sources connected together. One who reads one book holds one thread. One who connects five builds a web. The web is strong, the thread is weak. Silsila — connected knowledge. One who connects, creates."</div>`,
