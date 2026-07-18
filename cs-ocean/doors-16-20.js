@@ -116,24 +116,228 @@ doors.push({
   }
 });
 
-// ══ DOOR 17: QUANTUM COMPUTING (placeholder) ══
+// ══ DOOR 17: QUANTUM COMPUTING ══
 doors.push({
   num:17, icon:"⚛️", color:"#818cf8", name:"কোয়ান্টামের কণা",
   subtitle:"The Quantum Particle", tech:"Quantum Computing",
   spirit:"লাতাইফ — সূক্ষ্ম, অদৃশ্য কিন্তু সত্য",
-  secret:"Quantum computing — Shor, Grover, VQE, error correction। ভবিষ্যতের ডোমেইন, এখন শুরু।",
-  recall:{q:"(প্লেসহোল্ডার)",qen:"(placeholder)",a:"পূর্ণ কন্টেন্ট শীঘ্রই।",aen:"Full content coming soon."},
-  story:`<p class="scene-setting">দরজা ১৭ — কোয়ান্টামের কণা। পূর্ণ গভীর ডুব শীঘ্রই।</p><p class="scene-setting en">Door 17 — the Quantum Particle. Full deep dive coming soon.</p>`
+  secret:"Quantum computing হলো ভবিষ্যতের ডোমেইন — এখনও শুরু, ১৯৬০-এর classical-এর মতো। কম ছাত্র, কম প্রতিযোগিতা (৫-৮%), কিন্তু প্রতিটা বিশ্ববিদ্যালয় quantum lab খুলছে। পদার্থবিজ্ঞান + CS + গণিত — ত্রিমুখী। NISQ যুগে আছি (noisy) — error-corrected logical qubit এখনো অল্প। classical ৫-১০ বছরে কোথাও যাচ্ছে না — quantum শুধু নির্দিষ্ট সমস্যায় ভালো (factoring, simulation, optimization)।",
+  recall:{
+    q:"সারা কেন বললেন একটা কণা একই সাথে দুই জায়গায় থাকতে পারে?",
+    qen:"Why did Sara say a particle can be in two places at once?",
+    a:"কারণ কোয়ান্টাম পদার্থবিজ্ঞানে এটাই সত্য — superposition। একটা qubit একই সাথে ০ আর ১ হতে পারে। সাধারণ মস্তিষ্কে বোঝা কঠিন — কিন্তু এটাই কোয়ান্টামের শক্তি। কোয়ান্টাম কম্পিউটার একই সাথে লাখোপ্রকার হিসাব করতে পারে — কারণ প্রতিটা qubit একাধিক অবস্থায় থাকে। সূক্ষ্ম (লাতাইফ), কিন্তু শক্তিশালী। এটাই প্রকৃতির গভীরতম নিয়ম।",
+    aen:"Because in quantum physics this is true — superposition. A qubit can be 0 and 1 simultaneously. Hard for ordinary minds to grasp — but this is quantum's power. A quantum computer can compute millions of possibilities at once — because each qubit exists in multiple states. Subtle (lataif), but powerful. This is nature's deepest law."
+  },
+  story:`
+<p class="scene-setting">সপ্তদশ দরজা। ডেভিডের তত্ত্বের সিঁড়ি পেরিয়ে তুমি একটা ঘরে — কিন্তু সবকিছু একটু অস্পষ্ট, যেন স্বপ্ন। দেয়ালে ভাসমান সমীকরণ, ঘরের মাঝখানে একটা জ্বলজ্বলে ব্ল্যাক-বক্স — ভেতরে একটা কোয়ান্টাম প্রসেসর, চারপাশে সূক্ষ্ম তার ও ঠান্ডা গ্যাসের পাইপ। বক্সের পাশে দাঁড়িয়ে সারা — কার্লি চুল, গাঢ় নীল চোখ, হাতে একটা লেজার পয়েন্টার ও একটা Bloch sphere model, চোখে বিস্ময় ও ভবিষ্যতের দৃষ্টি। ডেভিড পেছনে ফিসফিস করে বলছেন — এটা তাঁর তত্ত্বের সবচেয়ে রহস্যময় সীমানা। স্নায়বিক শীতল বাতাস, হালকা বাজ শব্দ, ধাতব ঠান্ডা স্পর্শ।</p>
+<p class="scene-setting en">The seventeenth door. Past David's theory staircase, you enter a room — but everything slightly blurry, dreamlike. Floating equations on walls, a glowing black-box in the center — inside, a quantum processor, ringed by fine wires and cold-gas pipes. Beside the box stands Sara — curly hair, deep blue eyes, a laser pointer and a Bloch sphere model in hand, wonder and future-vision in her eyes. David whispers behind — this is his theory's most mysterious frontier. Nerve-cooling air, faint hum, metallic cold touch.</p>
+
+<div class="dialogue">ডেভিড বললেন, "আমি তত্ত্বের চূড়া দেখিয়েছি — classical computation। কিন্তু সারা সেই তত্ত্বের সীমা ভাঙে।" সারা ব্ল্যাক-বক্সটা খুললেন — ভেতরে একটা চিপ, চীপের উপর সূক্ষ্ম তার। "এটা qubit। একটা classical bit হয় ০ না ১। কিন্তু একটা qubit — একই সাথে ০ আর ১। একই সাথে। এটাই superposition। এটাই কোয়ান্টাম।" তিনি Bloch sphere ঘুরিয়ে দেখালেন — একটা বিন্দু গোলকের উপর দিয়ে যেকোনো অবস্থায় থাকতে পারে। "শুধু ০ বা ১ নয় — অসীম অবস্থার linear combination। এটাই শক্তি।"</div>
+<div class="dialogue en">David said, "I showed you the peak of theory — classical computation. But Sara breaks that theory's limits." Sara opened the black-box — inside, a chip with fine wires. "This is a qubit. A classical bit is 0 or 1. But a qubit — both 0 and 1. Simultaneously. This is superposition. This is quantum." She spun the Bloch sphere — a point on the globe can be in any state. "Not just 0 or 1 — a linear combination of infinite states. This is the power."</div>
+
+<div class="diagram">
+  <div class="diag-title">Classical Bit vs Qubit — এক বনাম অসীম</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowPurple17" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#818cf8"/></marker>
+    </defs>
+    <!-- Classical bit: two states -->
+    <text class="lbl-sm" x="120" y="30" fill="#9290a8">CLASSICAL BIT</text>
+    <rect class="cell" x="60" y="55" width="50" height="50" rx="6"/><text class="lbl" x="85" y="85">0</text>
+    <rect class="cell" x="130" y="55" width="50" height="50" rx="6"/><text class="lbl" x="155" y="85">1</text>
+    <text class="lbl-sm" x="120" y="130" fill="#9290a8">দুটি অবস্থা — হয় ০ না ১</text>
+    <text class="lbl-sm" x="120" y="148" fill="#9290a8" style="font-size:9px">N bits = 2^N টা অবস্থা, একসময় একটা</text>
+    <!-- Arrow -->
+    <line class="edge-amber" x1="200" y1="105" x2="280" y2="105" marker-end="url(#arrowPurple17)"/>
+    <text class="lbl-sm" x="240" y="98" fill="#b37feb">কোয়ান্টাম</text>
+    <!-- Qubit: Bloch sphere -->
+    <text class="lbl-sm" x="420" y="30" fill="#818cf8">QUBIT (Bloch sphere)</text>
+    <ellipse cx="420" cy="95" rx="60" ry="60" class="ring" style="stroke:#818cf8"/>
+    <ellipse cx="420" cy="95" rx="60" ry="20" class="ring" style="stroke:#818cf8;opacity:.4"/>
+    <line class="axis" x1="360" y1="95" x2="480" y2="95" style="stroke:#9290a8"/>
+    <line class="axis" x1="420" y1="35" x2="420" y2="155" style="stroke:#9290a8"/>
+    <circle cx="460" cy="65" r="6" class="node-purple" style="fill:#b37feb"/>
+    <text class="lbl-sm" x="475" y="65" fill="#b37feb">ψ (যেকোনো দিকে)</text>
+    <text class="lbl-sm" x="420" y="180" fill="#818cf8">অসীম অবস্থা — একই সাথে ০ ও ১</text>
+    <text class="lbl-sm" x="420" y="198" fill="#818cf8" style="font-size:9px">N qubits = 2^N অবস্থা একসাথে (superposition)</text>
+    <text class="lbl-sm" x="280" y="222" fill="#5e5c74">entanglement: দুটা qubit একসাথে — একটা বদলালে অন্যটা সাথে সাথে</text>
+  </svg>
+  <div class="diag-cap">classical bit = ২ অবস্থা, qubit = অসীম অবস্থার combination। N qubit = ২^N অবস্থা একসাথে। এটাই কোয়ান্টামের computational power — factoring, simulation-এ exponential speedup।</div>
+</div>
+
+<div class="code-block">Quantum Computing — গবেষণার শাখাসমূহ:
+
+১. QUANTUM ALGORITHMS (theory)
+   - Shor (factoring — crypto-র হুমকি, Door 18)
+   - Grover (search, quadratic speedup)
+   - Variational: VQE, QAOA (optimization)
+   - HHL (linear systems)
+
+২. QUANTUM HARDWARE (পদার্থবিজ্ঞান-নির্ভর)
+   - Superconducting (IBM Condor ১১২১ qubit, Google Willow)
+   - Trapped ions (Quantinuum, IonQ)
+   - Photonic (PsiQuantum, Xanadu)
+   - Topological (Microsoft — মাইলস্টোন ২০২৫)
+
+৩. QUANTUM ERROR CORRECTION (🔥 সবচেয়ে গুরুত্বপূর্ণ)
+   - Surface codes, color codes
+   - Fault-tolerant quantum computing
+   - Logical qubits (Google Willow ২০২৪ — first below threshold)
+
+৪. QUANTUM ML (crossover)
+   - Quantum neural networks, quantum kernels
+   - Variational quantum circuits
+   - Quantum advantage claims (controversial)
+
+৫. QUANTUM NETWORKING
+   - QKD (quantum key distribution)
+   - Quantum repeaters, entanglement distribution
+   - Quantum internet (vision)
+
+৬. QUANTUM SIMULATION (প্রথম real application)
+   - Molecules, materials, drug discovery
+   - Condensed matter, high-energy physics</div>
+
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">⚛️ Algorithms</td><td>Shor, Grover, VQE, QAOA, HHL</td><td>QIP, TQC, STOC, FOCS</td></tr>
+<tr><td class="hl">🔬 Hardware</td><td>Supercond., ion, photonic, topological</td><td>Nature, Science, APS</td></tr>
+<tr><td class="hl">🔥 Error Correction</td><td>Surface code, fault-tolerance, logical</td><td>QIP, Nature, Nature Phys.</td></tr>
+<tr><td class="hl">🧠 Quantum ML</td><td>QNN, kernels, variational, advantage</td><td>NeurIPS, QIP, ICML</td></tr>
+<tr><td class="hl">🌐 Networking</td><td>QKD, repeaters, quantum internet</td><td>QCRYPT, Nat. Photonics</td></tr>
+<tr><td class="hl">🧪 Simulation</td><td>Molecule, material, drug, physics</td><td>Nature, Science, APS</td></tr></table>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৫-৮%</div><div class="sc-label">গ্রহণের হার</div></div>
+<div class="stat-card"><div class="sc-num">$১.২B</div><div class="sc-label">US National Quantum Initiative</div></div>
+<div class="stat-card"><div class="sc-num">$১৫০-৩০০K</div><div class="sc-label">industry (IBM, Google, PsiQuantum)</div></div>
+<div class="stat-card"><div class="sc-num">CS+Phys+গণিত</div><div class="sc-label">ত্রিমুখী দক্ষতা</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"Quantum computing এখন প্রস্তুত — classical কম্পিউটার বাতিল। সবকিছুতে quantum ভালো।" ভুল। Quantum এখন NISQ যুগে — noisy (IBM Condor ১১২১ qubits, কিন্তু error-prone)। Error-corrected logical qubit এখনো অল্প (Google Willow ২০২৪ — প্রথম below threshold)। Classical ৫-১০ বছরে কোথাও যাচ্ছে না। Quantum শুধু নির্দিষ্ট সমস্যায় ভালো — factoring, simulation, optimization। সবকিছুতে নয়।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"Quantum এখন যেখানে classical ছিল ১৯৬০-এ। NISQ era — Noisy Intermediate-Scale Quantum। এখনই যারা quantum শিখছে, তারা প্রথম প্রজন্মের quantum গবেষক হবে। যেমন ১৯৬০-এ যারা classical শুরু করেছিল, তারা আজ প্রতিষ্ঠাতা। error correction হলো সবচেয়ে গুরুত্বপূর্ণ open problem — সেটা সমাধান হলে যুগ বদলাবে।"</div>
+</div>
+
+<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড়:</strong> Google Willow (২০২৪ — first logical qubit below error threshold, একটা milestone), IBM Condor/Flamingo, Microsoft topological qubit (২০২৫ — majorana), Quantinuum (trapped ion, high fidelity), quantum-classical hybrid (variational)।</div></div>
+
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ⚠️ শক্তিশালী পদার্থবিজ্ঞান ও গণিত (linear algebra) দরকার · ✅ Quantum ML (AI+Quantum), Quantum algorithms (theory ভালোবাসলে), বা Post-quantum crypto (Door 18, security চাইলে) · ❌ classical coding বেশি পছন্দ হলে ভেবে দেখো। 💡 শুরু করতে <strong>IBM Quantum Experience</strong> ফ্রি — browser থেকেই quantum circuit চালানো যায়।</div></div>
+
+<div class="dialogue">"তোমার একটা কঠিন সত্য বলি," সারা বললেন। "কোয়ান্টাম সহজ নয়। পদার্থবিজ্ঞান দরকার, গণিত দরকার — linear algebra, complex number, probability। classical coding-এর মতো নয় — intuition ভাঙে। কিন্তু যারা এখন শেখে, তারা pioneer। ১৯৬০-এ যারা classical শুরু করেছিল, তারা আজ কোথায়? প্রতিষ্ঠাতা। কোয়ান্টাম এখন সেই মুহূর্তে। তবে — সত্যিকার ভাবো। গণিত ও পদার্থবিজ্ঞান শক্ত না হলে, এড়াও। এটা তোমার জন্য নাও হতে পারে। আর সেটা ঠিক আছে।"</div>
+<div class="dialogue en">"Let me tell you a hard truth," Sara said. "Quantum isn't easy. It needs physics, math — linear algebra, complex numbers, probability. Not like classical coding — intuition breaks. But those who learn now, are pioneers. In 1960 those who started classical, where are they now? Founders. Quantum is at that moment now. But — think honestly. If math and physics aren't strong, avoid it. It may not be for you. And that's okay."</div>
+
+<div class="dialogue">লাতাইফ — সূক্ষ্ম, অদৃশ্য কিন্তু সত্য। কুরআনে আল্লাহ বলেন: "আল্লাহ লাতাইফ, সূক্ষ্ম-জ্ঞানী।" (৬:১০৩)। লাতাইফ মানে — সেই সত্য যা চোখে দেখা যায় না কিন্তু আছে। কোয়ান্টাম হলো লাতাইফ — সূক্ষ্ম, অদৃশ্য, কিন্তু পরিমাপযোগ্য। একটা electron কোথায় আছে — দেখা যায় না। কিন্তু wave function বলে সম্ভাবনা। আল্লাহও লাতাইফ — চোখে দেখা যায় না, কিন্তু তাঁর নিদর্শন সব জায়গায়। যে এই সূক্ষ্ম সত্য খোঁজে, সে প্রকৃতির গভীরতম নিয়ম খুঁজে পায় — আর সেখানে সে আল্লাহর নিদর্শন দেখে। প্রতিটা qubit একটা আয়াত — অদৃশ্য কিন্তু সত্য।</div>
+<div class="dialogue en">Lataif — subtle, invisible but true. Allah says: "Allah is lataif, subtlely-aware." (6:103). Lataif means — truth that can't be seen but exists. Quantum is lataif — subtle, invisible, but measurable. Where is an electron? Can't be seen. But the wave function tells probability. Allah too is lataif — unseen, but His signs are everywhere. One who seeks this subtle truth, discovers nature's deepest laws — and there sees Allah's signs. Each qubit is an ayah — invisible but true.</div>
+
+<div class="secret-box">⚛️ Quantum: ভবিষ্যতের ডোমেইন, এখন ১৯৬০-এর classical-এর মতো। NISQ যুগ (noisy)। পদার্থবিজ্ঞান+CS+গণিত দরকার। কম ভিড় (৫-৮%), দ্রুত বর্ধনশীল ফান্ডিং ($১.২B)। error correction = মূল open problem। গণিত/পদার্থবিজ্ঞান শক্ত হলে pioneer হও।</div>`,
+  senior:{
+    title:"Quantum PhD — Frontier Pioneer Path",
+    body:`<p><strong>গণিত ও পদার্থবিজ্ঞান শক্ত হলেই:</strong> linear algebra, complex analysis, quantum mechanics — এগুলো শক্ত দরকার। classical coding-এর intuition এখানে কাজে দেয় না। সত্যিকার ভাবো — শক্ত না হলে এড়াও।</p><p><strong>IBM Quantum Experience দিয়ে শুরু:</strong> ফ্রি, browser থেকেই real quantum hardware-এ circuit চালানো যায়। Qiskit (Python) শিখো — একটা simple Shor/Grover implementation = entry credential। একা GPU/ক্লাস্টার লাগে না।</p><p><strong>Quantum ML = crossover:</strong> quantum + AI intersection। তোমার AI আগ্রহের সাথে মিলে — quantum kernels, variational circuits। NeurIPS/QIP-তে লক্ষ্য। তবে quantum advantage এখনো controversial — careful research।</p><p><strong>Post-quantum crypto (Door 18):</strong> যদি security বেশি পছন্দ, PQC দেখো — quantum threat-এর বিরুদ্ধে classical crypto। গণিত (lattice) দরকার কিন্তু পদার্থবিজ্ঞান নয়। NIST standard-ভিত্তিক, সরাসরি industry impact।</p>`
+  }
 });
 
-// ══ DOOR 18: POST-QUANTUM CRYPTO (placeholder) ══
+// ══ DOOR 18: POST-QUANTUM CRYPTOGRAPHY ══
 doors.push({
   num:18, icon:"🔏", color:"#818cf8", name:"ভবিষ্যতের তালা",
   subtitle:"The Future Lock", tech:"Post-Quantum Cryptography",
   spirit:"আহসান — সুরক্ষিত রাখা, শক্তিশালী আমানত",
-  secret:"Post-quantum crypto — lattice, code, hash-based signatures। কোয়ান্টাম আক্রমণের বিরুদ্ধে সুরক্ষা।",
-  recall:{q:"(প্লেসহোল্ডার)",qen:"(placeholder)",a:"পূর্ণ কন্টেন্ট শীঘ্রই।",aen:"Full content coming soon."},
-  story:`<p class="scene-setting">দরজা ১৮ — ভবিষ্যতের তালা। পূর্ণ গভীর ডুব শীঘ্রই।</p><p class="scene-setting en">Door 18 — the Future Lock. Full deep dive coming soon.</p>`
+  secret:"Post-quantum crypto হলো ভবিষ্যতের নিরাপত্তা — কোয়ান্টাম কম্পিউটার বর্তমান RSA/ECC ভাঙবে (Shor)। NIST ২০২৪-এ PQ standards চূড়ান্ত করেছে (ML-KEM, ML-DSA)। এখন থেকেই migration শুরু। niche, গণিত-নির্ভর (lattice), কিন্তু প্রতিটা কোম্পানির দরকার হবে। Google, Cloudflare, Apple (iMessage PQ) এখনই deploy করছে। যদি security + গণিত ভালোবাসো — এটা সবচেয়ে concrete, সরাসরি industry-প্রাসঙ্গিক quantum path।",
+  recall:{
+    q:"সারা কেন বললেন আগামী দিনের চোরের জন্য আজকের তালা বদলাতে হবে?",
+    qen:"Why did Sara say today's locks must change for tomorrow's thief?",
+    a:"কারণ কোয়ান্টাম কম্পিউটার (Shor algorithm) বর্তমান RSA/ECC ভাঙবে — সেই দিন আসবে। আর সমস্যা — 'harvest now, decrypt later'। চোর আজই তোমার encrypted ডেটা ধরে রাখছে, কোয়ান্টাম এলে ভাঙবে। তাই আজকের তালা (RSA) বদলে ভবিষ্যতের তালা (PQ) লাগাতে হবে — এখনই। NIST ২০২৪-এ standards চূড়ান্ত করেছে। দেরি করলে ডেটা ফাঁস।",
+    aen:"Because quantum computers (Shor's algorithm) will break current RSA/ECC — that day will come. And the problem — 'harvest now, decrypt later'. Thieves already hold your encrypted data today, will break it when quantum arrives. So today's lock (RSA) must be replaced with the future's lock (PQ) — now. NIST finalized standards in 2024. Delay means leaked data."
+  },
+  story:`
+<p class="scene-setting">অষ্টাদশ দরজা। সারার কোয়ান্টাম প্রসেসরের ঘর পেরিয়ে তুমি একটা বিশাল তিজোরিখানায় — দেয়ালে সারি সারি পুরনো তালা, কিন্তু প্রতিটার পাশে নতুন তালা। একটা পুরনো তালায় ফাটল — 'RSA' লেখা, কিন্তু ফাটল দিয়ে একটা কোয়ান্টাম বিন্দু ঢুকছে। মাঝখানে দাঁড়িয়ে তালিব — গোঁফধারী, হাতে একটা নতুন তালা (lattice-ভিত্তিক) ও একটা NIST standard স্ক্রল, চোখে প্রতিরক্ষকের দৃঢ়তা। সারা পেছনে বলছেন — তাঁর কোয়ান্টাম যে হুমকি, তালিব সেই হুমকির বিরুদ্ধে প্রতিরক্ষা। ধাতব তালার গন্ধ, চাবির ঝনঝন, দূরে কোয়ান্টাম বাজ।</p>
+<p class="scene-setting en">The eighteenth door. Past Sara's quantum-processor room, you enter a vast vault — walls lined with old locks, each beside a new one. One old lock is cracked — inscribed 'RSA', a quantum point entering through the crack. In the center stands Talib — mustachioed, a new lock (lattice-based) and a NIST standard scroll in hand, a defender's firmness in his eyes. Sara speaks behind — her quantum is the threat, Talib is the defense against it. Smell of metal locks, the clink of keys, distant quantum hum.</p>
+
+<div class="dialogue">সারা বললেন, "আমি কোয়ান্টাম বানাই — সেটা পুরনো তালা ভাঙবে। তালিব নতুন তালা বানায় যেটা কোয়ান্টাম ভাঙতে পারবে না।" তালিব পুরনো RSA তালাটা দেখালেন — ফাটলে কোয়ান্টাম বিন্দু। "এটা RSA — বর্তমান ইন্টারনেটের ভিত্তি। TLS, HTTPS, সব। কিন্তু Shor algorithm এটা ভাঙবে — কোয়ান্টাম এলে।" তিনি নতুন তালাটা তুললেন। "এটা lattice-ভিত্তিক। কোয়ান্টাম এটা ভাঙতে পারে না — কারণ lattice problem classical ও quantum উভয়ের জন্যই কঠিন। NIST ২০২৪-এ এটাই standard করেছে। এখন থেকে সব তালা বদলাচ্ছে।"</div>
+<div class="dialogue en">Sara said, "I build quantum — it will break the old lock. Talib builds new locks that quantum can't break." Talib showed the old RSA lock — a quantum point in the crack. "This is RSA — the foundation of today's internet. TLS, HTTPS, everything. But Shor's algorithm will break it — when quantum arrives." He lifted the new lock. "This is lattice-based. Quantum can't break it — because the lattice problem is hard for both classical and quantum. NIST standardized it in 2024. All locks are changing now."</div>
+
+<div class="diagram">
+  <div class="diag-title">Quantum Threat Timeline — কবে ভাঙবে, কবে বদলাবে</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowFire18" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#ff6b35"/></marker>
+      <marker id="arrowLeaf18" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#52c41a"/></marker>
+    </defs>
+    <line class="axis" x1="40" y1="120" x2="520" y2="120"/>
+    ${[ ['আজ','RSA/ECC শক্ত',80,'#52c41a'], ['2024','NIST PQ std',200,'#7dd3fc'], ['2030-৩৫?','Quantum আসে',360,'#ff6b35'], ['2040+','RSA মৃত',480,'#ef4444'] ].map(s=>`<circle cx="${s[2]}" cy="120" r="8" style="fill:${s[3]}22;stroke:${s[3]};stroke-width:2"/><text class="lbl-sm" x="${s[2]}" y="95" fill="${s[3]}" style="font-weight:700">${s[0]}</text><text class="lbl-sm" x="${s[2]}" y="145" fill="#9290a8" style="font-size:9px">${s[1]}</text>`).join('')}
+    <text class="lbl-sm" x="280" y="180" fill="#ff6b35">⚠️ 'harvest now, decrypt later': চোর আজই ডেটা ধরে, কোয়ান্টাম এলে ভাঙবে</text>
+    <text class="lbl-sm" x="280" y="200" fill="#52c41a">✅ সমাধান: এখনই PQ (lattice) বসাও — NIST ML-KEM/ML-DSA (২০২৪)</text>
+    <text class="lbl-sm" x="280" y="220" fill="#5e5c74">Google/Cloudflare/Apple (iMessage PQ, ২০২৪) এখনই deploy করছে</text>
+  </svg>
+  <div class="diag-cap">সবচেয়ে গুরুত্বপূর্ণ — 'harvest now, decrypt later'। চোর আজই encrypted ডেটা ধরে রাখছে। কোয়ান্টাম আসলে ভাঙবে। তাই আজই PQ বসাতে হবে — স্টেট সিক্রেট ৫০ বছর গোপন রাখতে হবে।</div>
+</div>
+
+<div class="code-block">Post-Quantum Cryptography — গবেষণার শাখাসমূহ:
+
+১. LATTICE-BASED (NIST বিজয়ী, সবচেয়ে গুরুত্বপূর্ণ)
+   - ML-KEM (Kyber) — key encapsulation, NIST ২০২৪ standard
+   - ML-DSA (Dilithium) — signatures, NIST ২০২৪
+   - Falcon, NTRU, LWE variants
+   - Fully homomorphic encryption (FHE) — lattice-ভিত্তিক
+
+২. CODE-BASED
+   - Classic McEliece (NIST alt)
+   - HQC, BIKE
+   - দীর্ঘ-স্থায়ী, decades-tested
+
+৩. HASH-BASED
+   - SPHINCS+ (NIST, stateless)
+   - প্রমাণিত secure, শুধু hash function
+   - বড় signature, কিন্তু conservative
+
+৪. MULTIVARIATE & OTHER
+   - Rainbow (broken ২০২২ — সাবধান)
+   - Isogeny (SIKE broken ২০২২)
+   - কঠিন, কিছু broken
+
+৫. PQC IMPLEMENTATION & MIGRATION (🔥 industry)
+   - Hybrid (classical + PQ) transition
+   - Performance, side-channel resistance
+   - Protocol migration (TLS, Signal, VPN)
+
+৬. PQC ATTACKS & ANALYSIS
+   - New attacks on lattice problems
+   - Side-channel, implementation bugs
+   - Parameter selection, long-term security</div>
+
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🔥 Lattice</td><td>ML-KEM/ML-DSA, FHE, LWE</td><td>CRYPTO, EUROCRYPT, PQCrypto</td></tr>
+<tr><td class="hl">🔣 Code-based</td><td>McEliece, HQC, BIKE</td><td>PQCrypto, CRYPTO, IEEE-IT</td></tr>
+<tr><td class="hl">#️⃣ Hash-based</td><td>SPHINCS+, stateless sig</td><td>PQCrypto, CRYPTO</td></tr>
+<tr><td class="hl">⚡ Implementation</td><td>Hybrid, migration, side-channel</td><td>CCS, USENIX, CHES, TCHES</td></tr>
+<tr><td class="hl">🔐 FHE</td><td>Lattice-based, practical (Zama)</td><td>CRYPTO, EUROCRYPT, CCS</td></tr>
+<tr><td class="hl">🔍 Cryptanalysis</td><td>Attacks, parameters, security</td><td>CRYPTO, ASIACRYPT, PQCrypto</td></tr></table>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৫-৮%</div><div class="sc-label">গ্রহণের হার (niche, গণিত-নির্ভর)</div></div>
+<div class="stat-card"><div class="sc-num">NIST ২০২৪</div><div class="sc-label">ML-KEM/ML-DSA standard চূড়ান্ত</div></div>
+<div class="stat-card"><div class="sc-num">$১৮০-৪০০K</div><div class="sc-label">industry (Google, Cloudflare, Zama, PQ-Shield)</div></div>
+<div class="stat-card"><div class="sc-num">🔥 migration</div><div class="sc-label">প্রতিটা কোম্পানির দরকার — decade-long</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"Quantum এখনো আসেনি, তাই PQC দরকার নেই। পরে ভাবা যাবে।" বিপজ্জনক ভুল। 'harvest now, decrypt later' — প্রতিপক্ষ আজই তোমার encrypted ডেটা ধরে রাখছে, কোয়ান্টাম এলে (৫-১৫ বছর) ভাঙবে। স্টেট সিক্রেট ৫০+ বছর গোপন রাখতে হয়। এখনই PQ না বসালে, আজকের গোপন ডেটা ভবিষ্যতে ফাঁসে।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"PQC হলো ভবিষ্যতের নিরাপত্তা, আজই শুরু। NIST ২০২৪-এ standards চূড়ান্ত (ML-KEM/ML-DSA)। Google, Cloudflare, Apple (iMessage PQ) এখনই deploy করছে। lattice-ভিত্তিক — গণিত (linear algebra, number theory) দরকার, পদার্থবিজ্ঞান নয়। niche, কিন্তু decade-long migration = প্রতিটা কোম্পানির দরকার।"</div>
+</div>
+
+<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড়:</strong> NIST FIPS ২০৩/২০৪/২০৫ (ML-KEM, ML-DSA, SLH-DSA — চূড়ান্ত, আগস্ট ২০২৪), Apple iMessage PQ (PQ3, ২০২৪), Signal PQXDH, Google Chrome hybrid PQ-TLS, Zama FHE (practical, ২০২৫), Cloudflare PQ deployment telemetry।</div></div>
+
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ security (Door 8) + গণিত (linear algebra, number theory) ভালোবাসো · ✅ concrete, industry-প্রাসঙ্গিক (পদার্থবিজ্ঞান নয়) · ✅ decade-long migration = stable demand · ⚠️ niche, কিন্তু গাণিতিক · 💡 PQC implementation/migration = সবচেয়ে industry-friendly entry, তুমি developer — protocol migration কোড করতে পারো।</div></div>
+
+<div class="dialogue">"তোমার জন্য একটা আকর্ষণীয় পথ," তালিব বললেন। "PQC গাণিতিক — lattice, কিন্তু পদার্থবিজ্ঞান নয়। আর implementation/migration — সেটা engineering। তুমি developer — TLS, protocol, network পরিচিত (Door 5, 6)। hybrid PQ-TLS বানানো, side-channel-resistant implementation — এগুলো তোমার skill। pure lattice theory কঠিন, কিন্তু implementation research তোমার জন্য উপযুক্ত। Google, Cloudflare এখন এই গবেষণা করছে — এবং প্রতিটা কোম্পানিকে দশকজুড়ে migration করতে হবে। স্থিতিশীল, গুরুত্বপূর্ণ, বাস্তব।"</div>
+<div class="dialogue en">"An attractive path for you," Talib said. "PQC is mathematical — lattice, but not physics. And implementation/migration — that's engineering. You're a developer — TLS, protocols, networks (Door 5, 6) are familiar. Building hybrid PQ-TLS, side-channel-resistant implementation — these fit your skills. Pure lattice theory is hard, but implementation research suits you. Google, Cloudflare do this research now — and every company must migrate over a decade. Stable, important, real."</div>
+
+<div class="dialogue">আহসান — সুরক্ষিত রাখা, শক্তিশালী আমানত। কুরআনে আল্লাহ বলেন: "যদি তোমরা (আমানত) রক্ষা করো, তবে তিনিও তোমাদের রক্ষা করবেন।" PQC গবেষণা হলো আহসান — মানুষের ডেটা সুরক্ষিত রাখা, শক্তিশালী তালা বানানো। বর্তমান তালা (RSA) ভবিষ্যতে ভাঙবে — দায়িত্ব হলো আগে থেকে নতুন তালা বসানো। এটাই আহসান — কেবল আজকের নয়, আগামীকালের নিরাপত্তা। যে আহসান করে, সে শুধু রক্ষা করে না — সুন্দরভাবে রক্ষা করে। ভবিষ্যতের প্রতি দায়িত্বশীলতা — এটাই গবেষকের আহসান।</div>
+<div class="dialogue en">Ahsan — keeping secure, strong trust. Allah says: "If you guard (trusts), He will guard you." PQC research is ahsan — keeping people's data secure, building strong locks. Today's lock (RSA) will break tomorrow — the responsibility is to install new locks in advance. This is ahsan — not just today's security, but tomorrow's. One who does ahsan, doesn't just protect — protects beautifully. Responsibility toward the future — this is the researcher's ahsan.</div>
+
+<div class="secret-box">🔏 Post-Quantum Crypto: ভবিষ্যতের নিরাপত্তা, আজই শুরু। NIST ২০২৪-এ standards চূড়ান্ত (ML-KEM/ML-DSA, lattice)। 'harvest now, decrypt later' হুমকি। গণিত (পদার্থবিজ্ঞান নয়)। implementation/migration = তোমার developer skill-এ উপযুক্ত, decade-long demand।</div>`,
+  senior:{
+    title:"PQC PhD — Concrete Quantum Path",
+    body:`<p><strong>তোমার জন্য উপযুক্ত quantum path:</strong> pure quantum (Door 17) পদার্থবিজ্ঞান চায়, PQC শুধু গণিত (lattice, linear algebra)। আর implementation/migration — engineering, তোমার developer skill সরাসরি প্রযোজ্য। সবচেয়ে concrete quantum-সম্পর্কিত path।</p><p><strong>NIST standard implement করো:</strong> ML-KEM (Kyber), ML-DSA (Dilithium)-এর open-source implementation (liboqs, OpenSSL PQ) contribute করো। একটা side-channel-resistant implementation = CCS/CHES paper, high demand।</p><p><strong>Hybrid migration:</strong> classical + PQ hybrid TLS বানানো — Google, Cloudflare এখন এটাই করছে। protocol engineering + crypto = তোমার sweet spot। RFC draft, IETF contribution = real impact।</p><p><strong>FHE = adjacent hot field:</strong> fully homomorphic encryption (lattice-ভিত্তিক) — Zama (২০২৫) practical করছে। এনক্রিপ্টেড ডেটায় সরাসরি কাজ। গণিত-নির্ভর, কিন্তু industry বিলিয়ন ঢালছে। CCS/EUROCRYPT।</p>`
+  }
 });
 
 // ══ DOOR 19: ROBOTICS & AUTONOMOUS SYSTEMS (placeholder) ══
