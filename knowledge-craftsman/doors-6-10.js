@@ -22,6 +22,68 @@ doors.push({
 <div class="dialogue en">"Great minds said — how Gates, Munger read. But I say — what's the hardest reading? Research papers. Why? Because papers aren't written for general audiences — they're for researchers. Jargon, references, mathematical proofs. But Keshav showed — any paper can be understood in 3 passes. Not start to finish — in layers."</div>
 
 <div class="callout info"><span class="co-icon">🧭</span><div><strong>IMRaD structure:</strong> Introduction (কেন গুরুত্বপূর্ণ) · Methods (কীভাবে করল) · Results (কী পেল) · Discussion (মানে কী) + Abstract (উপরে সারাংশ) + Conclusion (নিচে) + References।</div></div>
+
+<div class="diagram">
+  <div class="diag-title">Keshav ৩-পাস — ক্রমশ গভীর, ক্রমশ বেশি সময়</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <line class="axis" x1="50" y1="190" x2="520" y2="190"/>
+    <text class="lbl-sm" x="285" y="215" fill="#9290a8">সময় ও গভীরতা →</text>
+    <!-- funnel: 3 widening layers -->
+    <polygon points="60,70 180,70 170,120 70,120" class="cell-cyan" style="stroke:#3dd6c4"/>
+    <text class="lbl-sm" x="120" y="90" fill="#3dd6c4" style="font-weight:700">Pass ১</text>
+    <text class="lbl-sm" x="120" y="105" fill="#9290a8" style="font-size:9px">৫-১০ মিনিট</text>
+    <text class="lbl-sm" x="120" y="135" fill="#5e5c74" style="font-size:9px">title/abstract/conclusion</text>
+
+    <polygon points="70,120 170,120 230,160 110,160" class="cell-good" style="stroke:#52c41a"/>
+    <text class="lbl-sm" x="170" y="138" fill="#52c41a" style="font-weight:700">Pass ২</text>
+    <text class="lbl-sm" x="170" y="153" fill="#9290a8" style="font-size:9px">~১ ঘণ্টা</text>
+
+    <polygon points="110,160 230,160 360,180 150,180" class="cell-hot" style="stroke:#ff6b35"/>
+    <text class="lbl-sm" x="250" y="172" fill="#ff6b35" style="font-weight:700">Pass ৩ · ৪-৫ ঘণ্টা · re-implement</text>
+
+    <!-- decision branch after pass 1 -->
+    <text class="lbl-sm" x="440" y="80" fill="#fcd34d">সিদ্ধান্ত</text>
+    <text class="lbl-sm" x="440" y="98" fill="#9290a8" style="font-size:9px">পুরো পড়ার যোগ্য?</text>
+    <text class="lbl-sm" x="440" y="115" fill="#52c41a" style="font-size:9px">হ্যাঁ → Pass ২</text>
+    <text class="lbl-sm" x="440" y="130" fill="#ff6b35" style="font-size:9px">না → পরের পেপার</text>
+    <text class="lbl-sm" x="280" y="225" fill="#5e5c74" style="font-size:9px">Andrew Ng: ৫-২০ পেপার = ভালো বোঝা, ৫০-১০০ = খুব গভীর</text>
+  </svg>
+  <div class="diag-cap">৩টা পাস — প্রতিটা আগেরটার চেয়ে গভীর, বেশি সময়। প্রথম পাসে সিদ্ধান্ত নাও — পুরো পড়ার যোগ্য কিনা। না হলে পরের পেপার — সময় বাঁচাও। যোগ্য হলে গভীরে যাও।</div>
+</div>
+
+<div class="code-block">Keshav ৩-পাস — paper পড়ার কৌশল:
+
+  Pass ১ · ৫-১০ মিনিট (Bird's-eye)
+    title, abstract, intro, heading, conclusion, references।
+    Keshav-র ৫ Cs: Category, Context, Correctness,
+    Contributions, Clarity।
+    সিদ্ধান্ত: পুরো পড়ার যোগ্য?
+
+  Pass ২ · ১ ঘণ্টা (Grasp)
+    পুরো পড়ো কিন্তু proof/derivation বাদ।
+    figure ও table-এ মন দাও (প্রায়ই পুরো গল্প)।
+    সহকর্মীকে সারাংশ দিতে পারা উচিত।
+    strong claim ও weak point চেনো।
+
+  Pass ৩ · ৪-৫ ঘণ্টা (Deep dive)
+    কার্যত re-implement — assumption ধরে
+    কাজটা নিজে পুনর্গঠন করো।
+    লুকানো assumption ও missing citation খোঁজো।
+    স্মৃতি থেকে পুরো structure পুনর্গঠন করতে পারা উচিত।
+
+  টুল: Zotero (ফ্রি) — প্রতিটা পেপার save, tag, note।</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">২০০৭</div><div class="sc-label">Keshav-র "How to Read a Paper"</div></div>
+<div class="stat-card"><div class="sc-num">৩ পাস</div><div class="sc-label">৫ মিনিট → ১ ঘণ্টা → ৪-৫ ঘণ্টা</div></div>
+<div class="stat-card"><div class="sc-num">৫-২০</div><div class="sc-label">পেপার = ভালো বোঝা (Andrew Ng)</div></div>
+<div class="stat-card"><div class="sc-num">৫০-১০০</div><div class="sc-label">পেপার = খুব গভীর</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ শুরু থেকে শেষ</div>পেপার একটা উপন্যাসের মতো শুরু থেকে শেষ পর্যন্ত পড়ো। জার্গনে আটকাও, গাণিতিক প্রমাণে হাল ছাড়ো, কিছুই বোঝো না। অধিকাংষ মানুষ এখানেই হারায় — "paper পড়া অসম্ভব।" ভুল — পদ্ধতি নেই বলে অসম্ভব।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ ৩-পাস কৌশল</div>স্তরে স্তরে পড়ো। Pass ১-এ সিদ্ধান্ত নাও — যোগ্য কিনা। না হলে পরের পেপার (সময় বাঁচাও)। যোগ্য হলে Pass ২, তারপর প্রয়োজনে Pass ৩। ৩-পাস = গবেষকের মস্তিষ্ক। তালাশ — কৌশল দিয়ে সত্যের সন্ধান।</div>
+</div>
 <div class="timeline">
 <div class="tl-step"><div class="tl-when">Pass ১ · ৫-১০ মিনিট</div><div class="tl-title">🦅 Bird\'s-eye</div><div class="tl-body">শুধু title, abstract, intro, heading, conclusion, references-এ চোখ। Keshav-র ৫ Cs — Category, Context, Correctness, Contributions, Clarity। সিদ্ধান্ত: পুরো পড়ার যোগ্য?</div></div>
 <div class="tl-step"><div class="tl-when">Pass ২ · ১ ঘণ্টা</div><div class="tl-title">📊 Grasp</div><div class="tl-body">পুরো পড়ো কিন্তু proof/derivation বাদ; figure ও table-এ মন দাও (প্রায়ই পুরো গল্প বলে)। এরপর সহকর্মীকে সারাংশ দিতে পারা উচিত; strong claim ও weak point চেনো।</div></div>
@@ -75,6 +137,41 @@ doors.push({
 <tr><td>শুধু p-value, effect size নেই</td><td>সততার সাথে limitation আলোচনা</td></tr>
 <tr><td>industry-funded, pro-industry ফল</td><td>স্বাধীন funding, অন্যরা replicate করেছে; data/code public</td></tr></table>
 <div class="callout tip"><span class="co-icon">🏛️</span><div><strong>Hierarchy of evidence (শক্তিশালী → দুর্বল):</strong> Meta-analysis → Systematic review → RCT → Cohort → Case-control → Cross-sectional survey → Case study/expert opinion → animal/in vitro।</div></div>
+
+<div class="diagram">
+  <div class="diag-title">Replication Crisis — কত গবেষণা আবার পাওয়া যায়?</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <text class="lbl-sm" x="280" y="25" fill="#f59e0b">replication rate (যত বেশি = তত বিশ্বাসযোগ্য)</text>
+    <!-- bars: field vs replication % -->
+    ${[ ['সামাজিক Psych',36,100,'#ff6b35'], ['Cognitive Psych',77,80,'#52c41a'], ['Preclinical Med',18,140,'#ff6b35'], ['Experimental Econ',61,60,'#fcd34d'] ].map(s=>{
+      const w = s[1]*3.2;
+      return `<text class="lbl-sm" x="${150}" y="${s[3]+15}" fill="#e8e6f0" style="font-size:10px;text-anchor:end">${s[0]}</text><rect x="160" y="${s[3]+5}" width="320" height="18" class="cell" rx="3"/><rect x="160" y="${s[3]+5}" width="${w}" height="18" rx="3" style="fill:${s[2]}"/><text class="lbl-sm" x="${170+w}" y="${s[3]+18}" fill="${s[2]}" style="font-weight:700;text-anchor:start"> ${s[1]}%</text>`;
+    }).join('')}
+    <text class="lbl-sm" x="280" y="210" fill="#5e5c74">published মানে true নয় — তাহকিক (verify) করো প্রতিটা claim। ৬০%+ সম্ভবত ভুল।</text>
+  </svg>
+  <div class="diag-cap">replication rate ক্ষেত্রভেদে ভিন্ন। সামাজিক psychology ও preclinical medicine-এ সংকট গুরুতর (~৩৬%, ~১৮%)। published ≠ true — প্রতিটা claim যাচাই করো।</div>
+</div>
+
+<div class="code-block">সমালোচনামূলক পড়ার ৭ প্রশ্ন — প্রতিটা পেপারে:
+
+  ① Sample size — n&lt;৩০/group সন্দেহজনক
+  ② Methodology — RCT gold standard; correlation ≠ causation
+  ③ Effect size — "significant" ≠ অর্থপূর্ণ
+  ④ P-hacking — pre-registration = ভালো লক্ষণ
+  ⑤ Conflict of interest — industry-funded ৩-৪× বেশি
+     sponsor-পক্ষে (Lundh 2012)
+  ⑥ Replication — কেউ পুনরুৎপাদন করেছে?
+  ⑦ Alternative explanation — আর কী এই ফল ঘটাতে পারে?
+
+  Red flags: "groundbreaking" abstract, ছোট sample + বিশাল দাবি,
+            শুধু p-value, effect size নেই, industry-funded।
+  Green flags: pre-registered, বড় sample, effect size + CI,
+              limitation আলোচনা, data/code public, replicated।</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ অন্ধ বিশ্বাস</div>"Science/Nature-এ প্রকাশিত, তাই সত্য।" কিন্তু replication crisis বলে — ৬০%+ সম্ভবত ভুল বা অতিরঞ্জিত। p-hacking, publication bias, ছোট sample, industry funding — এসব প্রতিটা claim দুর্বল করে। যে পড়েই বিশ্বাস করে, সে প্রতারিত হয়।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ তাহকিক — যাচাই</div>"published = সম্ভাব্য সত্য, নিশ্চিত সত্য নয়।" প্রতিটা claim যাচাই করো — sample, method, funding, replication। কুরআন: "যাচাই না করে খবর বিশ্বাস করো না" (৪৯:৬)। যে তাহকিক করে, সে সত্য পায় — published-এর ভিড়ে সত্য আলাদা করে।</div>
+</div>
 
 <div class="dialogue">তাহকিক — verified truth, certainty through investigation। কুরআনে আল্লাহ বলেন — "তোমরা যাচাই না করে প্রতিটা খবর বিশ্বাস করো না।" (৪৯:৬)। তাহকিক = যাচাই করে তারপর গ্রহণ। পেপার পড়াও তাহকিক — প্রতিটা claim যাচাই করো। sample? method? funding? replication? যে তাহকিক করে, সে সত্য পায়। যে শুধু বিশ্বাস করে, সে প্রতারিত হয়। replication crisis আমাদের শেখায় — published মানে true নয়। তাহকিক করো।</div>
 <div class="dialogue en">"Tahqiq — verified truth, certainty through investigation. Allah says — 'Do not accept any news without verification.' (49:6). Tahqiq = verify then accept. Paper reading too — verify each claim. Sample? Method? Funding? Replication? One who does tahqiq, finds truth. One who merely believes, is deceived. The replication crisis teaches — published does not mean true. Verify."</div>`,
