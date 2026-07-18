@@ -197,7 +197,7 @@ doors.push({
   </div>
   <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science:</strong> <strong>Matthew Walker</strong> (UC Berkeley, *Why We Sleep*, ২০১৭) স্লিপ সায়েন্সের সবচেয়ে পরিচিত প্রবক্তা। <strong>Yoo, Hu, Gujar, Jolesz & Walker</strong> (২০০৭, <em>Nature Neuroscience</em>) দেখিয়েছেন — এক রাত ঘুম না হলে <strong>হিপোক্যাম্পাস</strong> (নতুন স্মৃতি তৈরির কেন্দ্র) উল্লেখযোগ্যভাবে কম সক্রিয় হয় — মানে তুমি নতুন কিছু শিখতেই পারো না। <strong>Marshall, Helgadóttir, Mölle & Born</strong> (২০০৬, <em>Nature</em>) একটা যুগান্তকারী পরীক্ষা করেছেন — গভীর ঘুমের সময় ০.৭৫ Hz ধীর তরঙ্গ কৃত্রিমভাবে উদ্দীপিত করলে <strong>স্মৃতি সংরক্ষণ উল্লেখযোগ্যভাবে বেড়ে যায়</strong>। এটা প্রমাণ করে — গভীর ঘুম কোনো নিষ্ক্রিয় সময় নয়, এটা সক্রিয় শেখার সময়। ⚠️ <em>বিতর্ক:</em> Walker-এর কিছু সংখ্যা (মৃত্যুহার সম্পর্কিত গ্রাফ) সমালোচিত হয়েছে — তিনি স্বীকার করেছেন। তবে মূল ফলাফল — ঘুম মেমরি সংরক্ষণে অপরিহার্য — সুপ্রতিষ্ঠিত।</div></div>
   <div class="stat-grid">
-    <div class="stat-card"><div class="sc-num">~৪০%</div><div class="sc-label">শেখার পরে না ঘুমালে হারানো তথ্য<br>Yoo & Walker (2007)</div></div>
+    <div class="stat-card"><div class="sc-num">~৪০%</div><div class="sc-label">শেখার পরে না ঘুমালে হারানো তথ্য<br>Walker (Why We Sleep, 2017)</div></div>
     <div class="stat-card"><div class="sc-num">৭-৯ ঘণ্টা</div><div class="sc-label">প্রাপ্তবয়স্কদের জন্য আদর্শ ঘুম<br>National Sleep Foundation</div></div>
   </div>
   <div class="compare">

@@ -36,13 +36,13 @@ doors.push({
     <p><strong>ধাপ ১ — থামো এবং নাম দাও (Stop & Name):</strong> আকাঙ্ক্ষা এলে থামো। বলো — 'এটা আকাঙ্ক্ষা।' নাম দিলে মস্তিষ্কের prefrontal cortex চালু হয়, amygdala (ভয়ের কেন্দ্র) শান্ত হয়।</p>
     <p><strong>ধাপ ২ — শরীরে খুঁজে দেখো (Scan the Body):</strong> এই আকাঙ্ক্ষা শরীরে কোথায়? মুখে? পেটে? বুকে? সেই অনুভূতিটা দেখো — কেমন? গরম? ঠান্ডা? কম্পন? বিচার করো না — শুধু দেখো।</p>
     <p><strong>ধাপ ৩ — শ্বাসে গণনা করো (Breathe & Count):</strong> শ্বাস নাও — ১। ছাড়ো — ২। আকাঙ্ক্ষাটা কমলো কি না দেখো। সম্ভবত বাড়লো — ঢেউ উঠছে। চিন্তা করো না। শ্বাস চালিয়ে যাও — ৩, ৪, ৫...</p>
-    <p>৯০ সেকেন্ড থেকে ২০ মিনিট — ঢেউ চরমে উঠবে, তারপর নামবে। তুমি শুধু দেখো।</p>
+    <p>কয়েক মিনিট থেকে আধা ঘণ্টা — ঢেউ চরমে উঠবে, তারপর নামবে। তুমি শুধু দেখো।</p>
     <p><strong>ধাপ ৪ — শূন্যতা পূরণ করো (Fill the Void):</strong> খারাপ অভ্যাস গেলে একটা শূন্যতা থাকে। সেটা পূরণ না করলে খারাপ অভ্যাস ফিরে আসে। নতুন কাজ বসাও — হাঁটা, পানি খাওয়া, কাউকে কল করা।</p>
   </div>
   <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science:</strong> <strong>Judson Brewer</strong> (Brown University, পূর্বে Yale) ও সহযোগীরা ২০১১ সালে <em>Drug and Alcohol Dependence</em>-এ প্রকাশ করেছেন — mindfulness training (urge surfing) ধূমপান ছাড়ার ক্ষেত্রে <strong>৪ গুণ বেশি কার্যকর</strong> ছিল American Lung Association-এর প্রোগ্রামের চেয়ে (<strong>~৩১% vs ~৬%</strong> abstinent at 4-month follow-up)। <strong>Alan Marlatt</strong> (University of Washington) এবং J.R. Gordon ১৯৮৫ সালে <em>Relapse Prevention</em> বইয়ে <strong>'urge surfing'</strong> শব্দটি তৈরি করেছেন। <strong>Azrin & Nunn</strong> (১৯৭৩, <em>Behaviour Research and Therapy</em>) হ্যাবিট রিভার্সাল ট্রেনিং তৈরি করেছেন — সচেতনতা প্রশিক্ষণ + competing response। এই পদ্ধতিতে এক সেশনেই নখ কামড়, আঙুল চোষার মতো অভ্যাস ~৯৫% কমে যেতে পারে। Brewer (২০২১, <em>Unwinding Anxiety</em>) এই পদ্ধতিকে উদ্বেগের ক্ষেত্রেও প্রয়োগ করেছেন।</div></div>
   <div class="stat-grid">
     <div class="stat-card"><div class="sc-num">৩১% vs ৬%</div><div class="sc-label">Urge surfing vs standard ধূমপান ছাড়া<br>Brewer et al. (2011)</div></div>
-    <div class="stat-card"><div class="sc-num">~৯০ সেকেন্ড</div><div class="sc-label">আকাঙ্ক্ষার স্বাভাবিক স্থায়িত্ব — যদি খাওয়া না<br>Urge duration</div></div>
+    <div class="stat-card"><div class="sc-num">কয়েক মিনিট</div><div class="sc-label">আকাঙ্ক্ষার স্বাভাবিক স্থায়িত্ব — যদি খাওয়া না<br>(সময়কাল ব্যক্তিভেদে ভিন্ন)</div></div>
   </div>
   <div class="compare">
     <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল উপায়</div>'খাবো না! খাবো না! খাবো না!' — ইচ্ছাশক্তি দিয়ে লড়াই। মস্তিষ্ক আরও বেশি চায়। দশ মিনিট পর পুরো প্যাকেট খাও।</div>
@@ -55,7 +55,7 @@ doors.push({
     <li>পরবর্তী আকাঙ্ক্ষা এলে থামো — লড়াই করো না</li>
     <li>নাম দাও — 'এটা আকাঙ্ক্ষা' (prefrontal cortex চালু হয়)</li>
     <li>শরীরে খুঁজে দেখো — কোথায় অনুভূতি?</li>
-    <li>শ্বাসে গণনা করো — ৯০ সেকেন্ড থেকে ২০ মিনিট</li>
+    <li>শ্বাসে গণনা করো — কয়েক মিনিট থেকে আধা ঘণ্টা</li>
     <li>ঢেউ নামলে শূন্যতা পূরণ করো — হাঁটা, পানি, কল</li>
     <li>ঘুমানোর আগে আজকের তাওবা করো — ক্ষমা চাও</li>
   </div>
@@ -66,7 +66,7 @@ doors.push({
   </div>`,
   senior: {
     title: "পরবর্তী আকাঙ্ক্ষায় করো — Next Craving",
-    body: "<p>পরবর্তীবার যখন খারাপ অভ্যাসের তাগিদ আসবে (ফোন, জাঙ্ক ফুড, স্ক্রল) — এই ৪ ধাপ:<br><strong>১.</strong> থামো। বলো — 'এটা আকাঙ্ক্ষা।'<br><strong>২.</strong> শরীরে খুঁজে দেখো — কোথায় অনুভূতি? (পেটে? বুকে?)<br><strong>৩.</strong> শ্বাসে গণনা করো — ১, ২, ৩... ৯০ সেকেন্ড থেকে ২০ মিনিট।<br><strong>৪.</strong> ঢেউ নামলে নতুন কাজ করো — হাঁটো, পানি খাও, কাউকে কল করো।<br><br>প্রতিবার সার্ফ করলে সার্ফিং সহজ হয়। একদিন তুমি আবিষ্কার করবে — ঢেউ আর আগের মতো বড় নয়।</p>"
+    body: "<p>পরবর্তীবার যখন খারাপ অভ্যাসের তাগিদ আসবে (ফোন, জাঙ্ক ফুড, স্ক্রল) — এই ৪ ধাপ:<br><strong>১.</strong> থামো। বলো — 'এটা আকাঙ্ক্ষা।'<br><strong>২.</strong> শরীরে খুঁজে দেখো — কোথায় অনুভূতি? (পেটে? বুকে?)<br><strong>৩.</strong> শ্বাসে গণনা করো — ১, ২, ৩... কয়েক মিনিট থেকে আধা ঘণ্টা।<br><strong>৪.</strong> ঢেউ নামলে নতুন কাজ করো — হাঁটো, পানি খাও, কাউকে কল করো।<br><br>প্রতিবার সার্ফ করলে সার্ফিং সহজ হয়। একদিন তুমি আবিষ্কার করবে — ঢেউ আর আগের মতো বড় নয়।</p>"
   }
 });
 
@@ -114,7 +114,7 @@ doors.push({
     <p><strong>নিয়ম ৩ — ফলাফল নয়, প্রক্রিয়া ট্র্যাক করো (Track Process, Not Outcome):</strong></p>
     <p>ভুল: 'কত পৃষ্ঠা পড়লাম?' সঠিক: 'পড়েছি কি না?' ভুল: 'কত কেজি কমলো?' সঠিক: 'ব্যায়াম করেছি কি না?' প্রক্রিয়া নিয়ন্ত্রণযোগ্য, ফলাফল নয়।</p>
   </div>
-  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science:</strong> <strong>Dave Brailsford</strong> — ব্রিটিশ সাইক্লিং দলের পারফরম্যান্স ডিরেক্টর (২০০৩)। তিনি <strong>'aggregation of marginal gains'</strong> নীতি চালু করেছেন — সাইকেলের ডিজাইন, আসনের আরাম, হাতলের গ্রিপ, রাইডারের ঘুমের ম্যাট্রেস, পোশাকের কাপড়, এমনকি হাত ধোওয়ার সাবান — সবকিছুতে ১% উন্নতি। ফল? ব্রিটিশ সাইক্লিং দল ২০০৮ অলিম্পিকে ৬০% মেডেল জিতেছিল। <strong>James Clear</strong> (২০১৮, <em>Atomic Habits</em>) এর গাণিতিক রূপ দিয়েছেন: <strong>১.০১^৩৬৫ ≈ ৩৭.৭৮</strong> (প্রতিদিন ১% উন্নতি = এক বছরে ৩৭ গুণ)। <strong>০.৯৯^৩৬৫ ≈ ০.০৩</strong> (প্রতিদিন ১% অবনতি = এক বছরে প্রায় শূন্য)। ⚠️ <em>সততা টিকা:</em> এই সূত্রটি একটি শক্তিশালী রূপক — কিন্তু এটি একটি প্রকৃত গবেষণা নয়। বাস্তব জীবনে উন্নতি কখনো পুরোপুরি যৌগিক হয় না (plateau, আঘাত, রিগ্রেশন আসে)। তবে নীতিটা শক্ত: ছোট ধারাবাহিক প্রচেষ্টা বড় বিচ্ছিন্ন প্রচেষ্টাকে হারায়। <strong>Kivetz, Urminsky & Zheng</strong> (২০০৬, <em>Journal of Marketing Research</em>) দেখিয়েছেন — লক্ষ্যের কাছাকাছি পৌঁছালে মানুষের প্রেরণা বাড়ে (goal-gradient effect)।</div></div>
+  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science:</strong> <strong>Dave Brailsford</strong> — ব্রিটিশ সাইক্লিং দলের পারফরম্যান্স ডিরেক্টর (২০০৩)। তিনি <strong>'aggregation of marginal gains'</strong> নীতি চালু করেছেন — সাইকেলের ডিজাইন, আসনের আরাম, হাতলের গ্রিপ, রাইডারের ঘুমের ম্যাট্রেস, পোশাকের কাপড়, এমনকি হাত ধোওয়ার সাবান — সবকিছুতে ১% উন্নতি। ফল? ব্রিটিশ সাইক্লিং দল ২০০৮ বেইজিং অলিম্পিকে ট্র্যাক সাইক্লিং-এর ১০টি গোল্ডের ৮টি জিতেছিল। <strong>James Clear</strong> (২০১৮, <em>Atomic Habits</em>) এর গাণিতিক রূপ দিয়েছেন: <strong>১.০১^৩৬৫ ≈ ৩৭.৭৮</strong> (প্রতিদিন ১% উন্নতি = এক বছরে ৩৭ গুণ)। <strong>০.৯৯^৩৬৫ ≈ ০.০৩</strong> (প্রতিদিন ১% অবনতি = এক বছরে প্রায় শূন্য)। ⚠️ <em>সততা টিকা:</em> এই সূত্রটি একটি শক্তিশালী রূপক — কিন্তু এটি একটি প্রকৃত গবেষণা নয়। বাস্তব জীবনে উন্নতি কখনো পুরোপুরি যৌগিক হয় না (plateau, আঘাত, রিগ্রেশন আসে)। তবে নীতিটা শক্ত: ছোট ধারাবাহিক প্রচেষ্টা বড় বিচ্ছিন্ন প্রচেষ্টাকে হারায়। <strong>Kivetz, Urminsky & Zheng</strong> (২০০৬, <em>Journal of Marketing Research</em>) দেখিয়েছেন — লক্ষ্যের কাছাকাছি পৌঁছালে মানুষের প্রেরণা বাড়ে (goal-gradient effect)।</div></div>
   <div class="stat-grid">
     <div class="stat-card"><div class="sc-num">৩৭.৭৮×</div><div class="sc-label">১% প্রতিদিন = ৩৭ গুণ এক বছরে<br>1.01^365 (Clear, 2018)</div></div>
     <div class="stat-card"><div class="sc-num">০.০৩×</div><div class="sc-label">−১% প্রতিদিন = প্রায় শূন্য এক বছরে<br>0.99^365</div></div>
