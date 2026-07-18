@@ -41,6 +41,55 @@ doors.push({
 
 <div class="callout info"><span class="co-icon">🎯</span><div><strong>Retention = Comprehension × Engagement × Repetition</strong> — যেকোনো factor শূন্য হলে retention শূন্য। বেশিরভাগ পাঠকের comprehension ✓ কিন্তু engagement ✗ ও repetition ✗ → retention ০। লক্ষ্য "এ বছর ৫০ বই" নয়, "এ বছর ৫ বই থেকে গভীর শেখা।" (Naval: "কম বই পড়ো, বেশি যত্নে; ভালোগুলো ৫-১০ বার পুনরায় পড়ো।")</div></div>
 
+<div class="diagram">
+  <div class="diag-title">ছিদ্র বালতি — Passive Reading যা ধরে রাখে না</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <!-- bucket -->
+    <path d="M 180 70 L 200 200 L 360 200 L 380 70 Z" class="cell" style="fill:rgba(245,158,11,.08);stroke:#f59e0b;stroke-width:2"/>
+    <!-- water level dropping -->
+    <path d="M 196 100 L 364 100 L 358 195 L 202 195 Z" fill="rgba(91,158,255,.18)" stroke="#5b9eff" stroke-width="1"/>
+    <!-- holes leaking -->
+    ${[220,280,340].map((x,i)=>`<circle cx="${x}" cy="${140+i*15}" r="4" fill="#ff6b35"/><path d="M ${x} ${144+i*15} q 8 8 4 18" fill="none" stroke="#5b9eff" stroke-width="1.5" opacity=".6"/>`).join('')}
+    <!-- labels -->
+    <text class="lbl-sm" x="280" y="60" fill="#f59e0b" style="font-weight:700">পড়া হয়েছে (১০০%)</text>
+    <text class="lbl-sm" x="280" y="115" fill="#5b9eff">ধরে রাখা (~১০%)</text>
+    <text class="lbl-hot" x="395" y="155">ছিদ্র = passive</text>
+    <text class="lbl-sm" x="395" y="170" fill="#9290a8" style="font-size:9px">no notes, no recall</text>
+    <text class="lbl-sm" x="280" y="220" fill="#5e5c74">৯০% পড়ার ২ সপ্তাহ পর ফোটা ফোটা গলে যায় — যাওয়া পানি</text>
+  </svg>
+  <div class="diag-cap">চোখ দিয়ে পড়া = ছিদ্র বালতিতে পানি ঢালা। ৯০% গলে যায়। সমাধান বালতি বদলানো নয় — ছিদ্র বন্ধ করা: active engagement, note-taking, spaced repetition, testing effect।</div>
+</div>
+
+<div class="code-block">Plug the Leaks — ৩ উপায় (প্রমাণ-ভিত্তিক):
+
+  ① ACTIVE ENGAGEMENT (Maryanne Wolf, 2018)
+     deep reading আলাদা brain network জাগায়।
+     প্রশ্ন করো, সংযোগ করো, মূল্যায়ন করো।
+
+  ② SPACED REPETITION
+     Day 1 → 2 → 7 → 30 → 90 review।
+     প্রতিবার forgetting curve সমতল হয়।
+
+  ③ TESTING EFFECT (Roediger & Karpicke, 2006)
+     re-read ৩ বার = ৪২% retention
+     একবার পড়ে test  = ৫৬% retention
+     নিজেকে test করা re-read-কে হারায়।
+
+  Naval: "কম বই পড়ো, বেশি যত্নে।
+         ভালোগুলো ৫-১০ বার পুনরায় পড়ো।"</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৯০%</div><div class="sc-label">২ সপ্তাহে ভুলে যাওয়া (Ebbinghaus)</div></div>
+<div class="stat-card"><div class="sc-num">১৮৮৫</div><div class="sc-label">Ebbinghaus-এর মূল পরীক্ষা</div></div>
+<div class="stat-card"><div class="sc-num">৪২% → ৫৬%</div><div class="sc-label">re-read বনাম test (Roediger 2006)</div></div>
+<div class="stat-card"><div class="sc-num">~৭০-৯০%</div><div class="sc-label">active reading-এ retention</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Passive reading (ছিদ্র বালতি)</div>চোখ শব্দ scan করে, নোট নেই, ফিরে দেখে না, যা জানে তার সাথে সংযোগ নেই। retention ~১০%। "এ বছর ৫০ বই পড়েছি" — কিন্তু ২ সপ্তাহ পর প্রায় কিছুই মনে নেই। বই পড়া হলো, জ্ঞান ধরে রাখা হলো না।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ Active reading (ছিদ্র বন্ধ)</div>প্রতি section-এ নোট, প্রশ্ন করো, যা জানে তার সাথে যুক্ত করো, spaced re-read, নিজেকে test করো। retention ~৭০-৯০%। "এ বছর ৫ বই গভীর পড়েছি" — প্রতিটি থেকে স্থায়ী জ্ঞান। কম পড়ো, বেশি ধরো।</div>
+</div>
+
 <div class="dialogue">যাওয়া পানি — pouring water, like water that flows through and leaves nothing। কুরআনে আল্লাহ বলেন — "তাদের উপমা এমন যেন তারা বৃষ্টিতে আচ্ছাদিত — কিন্তু কিছু নেই।" পড়াও তেমনি — চোখ দিয়ে পড়ে, মস্তিষ্কে কিছু থাকে না। যাওয়া পানি। কিন্তু কুরআন আরও বলে — "যারা জ্ঞান দেওয়া হয়েছে, তাদের অন্তর সত্যের জন্য পিপাসার্ত।" পিপাসা = গভীর পড়া। যে গভীর পড়ে, সে ধরে রাখে। যে শুধু চোখ চালায়, সে যাওয়া পানি। প্রথম দরজার সত্য — পড়া শেষ নয়, ধরে রাখাই শুরু।</div>
 <div class="dialogue en">"Jaoa pani — pouring water, like water that flows through leaving nothing. Allah says — 'Their example is as if they were covered by rain — but have nothing.' Reading too — eyes read, brain holds nothing. Jaoa pani. But the Quran also says — 'Those given knowledge, their hearts thirst for truth.' Thirst = deep reading. One who reads deeply, retains. One who merely moves eyes, is jaoa pani. The first door's truth — reading is not the end, retention is the beginning."</div>`,
   senior:{
@@ -74,6 +123,63 @@ doors.push({
 <div class="tl-step"><div class="tl-when">Level ৪ · দশক</div><div class="tl-title">🕸️ Syntopical</div><div class="tl-body">"একাধিক বই কীভাবে সম্পর্কিত?" — সর্বোচ্চ স্তর। একই বিষয়ে বহু বই পড়ে সংশ্লেষণ (bibliography → skim সব → key প্রশ্ন → মতভেদ ম্যাপ → নিজের মত)। PhD/গবেষক/বড় লেখকরা যা করেন।</div></div>
 </div>
 <div class="callout tip"><span class="co-icon">📖</span><div><strong>আজই শুরু করতে পারো Level ২ থেকে</strong> — পড়ার আগে skim করো; বেশিরভাগ বই Level ৩-এর যোগ্য নয়, তাই গভীর পড়া রাখো সেই বইগুলোর জন্য যেগুলো সত্যিই গুরুত্বপূর্ণ। <strong>Adler-এর সোনালি নিয়ম:</strong> "'একমত/দ্বিমত' বোলো না যতক্ষণ না বলতে পারো 'আমি বুঝেছি।'"</div></div>
+
+<div class="diagram">
+  <div class="diag-title">Adler-এর ৪ স্তর — পিরামিড, যত উপরে তত গভীর</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <!-- pyramid layers (bottom widest = most common) -->
+    <polygon points="120,200 440,200 400,160 160,160" class="cell-hot" style="stroke:#ff6b35"/>
+    <text class="lbl-sm" x="280" y="185" fill="#ff6b35" style="font-weight:700">১ · Elementary (শব্দ চেনা)</text>
+    <text class="lbl-sm" x="280" y="225" fill="#5e5c74" style="font-size:9px">অধিকাংশ মানুষ এখানেই আটকে — decoding, reading নয়</text>
+
+    <polygon points="160,160 400,160 360,120 200,120" class="cell-cyan" style="stroke:#3dd6c4"/>
+    <text class="lbl-sm" x="280" y="145" fill="#3dd6c4" style="font-weight:700">২ · Inspectional (skim, ৫-১৫ মিনিট)</text>
+
+    <polygon points="200,120 360,120 320,80 240,80" class="cell-good" style="stroke:#52c41a"/>
+    <text class="lbl-sm" x="280" y="105" fill="#52c41a" style="font-weight:700">৩ · Analytical (গভীর)</text>
+
+    <polygon points="240,80 320,80 280,45" class="node-purple" style="fill:rgba(179,127,235,.25);stroke:#b37feb"/>
+    <text class="lbl-sm" x="280" y="68" fill="#b37feb" style="font-weight:700">৪ · Syntopical</text>
+    <text class="lbl-sm" x="280" y="35" fill="#b37feb" style="font-size:9px">বহু বইয়ের সংশ্লেষণ</text>
+  </svg>
+  <div class="diag-cap">নিচের স্তর সবচেয়ে বেশি মানুষ, উপরের স্তর সবচেয়ে কম। যে চতুর্থ স্তরে পৌঁছায় — PhD/গবেষক/বড় লেখক — সে বইয়ের সাথে কথা বলে, প্রশ্ন করে, সংযুক্ত করে। তারাবি — ধাপে ধাপে গভীরে।</div>
+</div>
+
+<div class="code-block">Adler-এর ৪ স্তর — কখন কোনটা:
+
+  Level ১ · Elementary — শব্দ চেনা (decoding)
+    বেশিরভাগ মানুষ এখানেই আটকে। এটা reading নয়।
+
+  Level ২ · Inspectional — skim (৫-১৫ মিনিট/বই)
+    title/subtitle, preface, TOC, index, key অধ্যায়ের
+    প্রথম-শেষ প্যারা, শেষ ২-৩ পাতা।
+    উদ্দেশ্য: পুরো পড়ার যোগ্য কিনা ঠিক করা।
+    → ১০টা skim করে ১টা গভীর পড়ার মতো খোঁজো।
+
+  Level ৩ · Analytical — গভীর বিশ্লেষণ
+    Structure (মূল থিম ১ বাক্যে) → Interpretation (key term/proposition)
+    → Criticism → Synthesis।
+    Adler-এর দ্বিমতের ৪ উপায়: uninformed / misinformed /
+    illogical / incomplete — অনুভূতি নয়, নির্দিষ্ট প্রমাণ লাগে।
+
+  Level ৪ · Syntopical — বহু বইয়ের সংশ্লেষণ
+    bibliography → skim সব → key প্রশ্ন → মতভেদ ম্যাপ →
+    নিজের মত। PhD/গবেষকরা যা করেন।
+
+  সোনালি নিয়ম: "একমত/দ্বিমত" বোলো না যতক্ষণ না
+  বলতে পারো "আমি বুঝেছি।"</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">১৯৪০</div><div class="sc-label">"How to Read a Book" প্রথম প্রকাশ</div></div>
+<div class="stat-card"><div class="sc-num">১৯৭২</div><div class="sc-label">Van Doren-এর সাথে updated edition</div></div>
+<div class="stat-card"><div class="sc-num">৪ স্তর</div><div class="sc-label">Elementary → Inspectional → Analytical → Syntopical</div></div>
+<div class="stat-card"><div class="sc-num">Level ৪</div><div class="sc-label">PhD/গবেষক/বড় লেখকদের স্তর</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Level ১-এ আটকে</div>"আমি বই পড়েছি" — কিন্তু শুধু শব্দ দেখেছ। decoding, reading নয়। বইয়ের সাথে কথা বলো না, প্রশ্ন করো না, সংযুক্ত করো না। ফল: ২ সপ্তাহ পর ৯০% ভুল (Door 1)। "পড়েছি" মনে হয়, জানো না।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ Level ৩-৪-এ পৌঁছাও</div>skim করে যোগ্য বই বেছে নাও (Level ২), গভীর পড়ো (Level ৩), একাধিক বই সংশ্লেষণ করো (Level ৪)। বইয়ের সাথে কথা বলো — প্রশ্ন, দ্বিমত, সংযোগ। তারাবি — ধাপে ধাপে গভীরে। যে এখানে পৌঁছায়, সে জ্ঞান গড়ে।</div>
+</div>
 
 <div class="dialogue">তারাবি — gradual progression, like the tarawih prayer built in layers। রমজানে তারাবি ধীরে ধীরে গড়ে — প্রতিদিন একটু বেশি। পড়াও তেমনি — প্রতিটা স্তর ধীরে আসে। প্রথম স্তর = শিশু। দ্বিতীয় = কিশোর। তৃতীয় = প্রাপ্তবয়স্ক। চতুর্থ = প্রবীণ। কেউ রাতারাতি চতুর্থ স্তরে পৌঁছায় না। কিন্তু প্রতিটা ধাপে গভীরতা বাড়ে। Adler দেখালেন — পড়া একটা শিল্প, শিল্পে সময় লাগে। তারাবি — ধাপে ধাপে গভীরে।</div>
 <div class="dialogue en">"Tarawi — gradual progression, like the tarawih prayer built in layers. In Ramadan, tarawih grows slowly — a bit more each day. Reading too — each level comes slowly. Level 1 = child. Level 2 = adolescent. Level 3 = adult. Level 4 = elder. Nobody reaches level 4 overnight. But depth grows at each step. Adler showed — reading is an art, art takes time. Tarawi — step by step deeper."</div>`,
