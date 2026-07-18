@@ -429,12 +429,112 @@ doors.push({
   }
 });
 
-// ══ DOOR 5: DISTRIBUTED SYSTEMS (placeholder) ══
+// ══ DOOR 5: DISTRIBUTED SYSTEMS ══
 doors.push({
   num:5, icon:"🏗️", color:"#52c41a", name:"বিতরণের ভিত্তি",
   subtitle:"The Distributed Foundation", tech:"Distributed Systems",
   spirit:"আরশ — ভিত্তি, সবকিছু যার উপর দাঁড়িয়ে",
-  secret:"Distributed systems — consensus, replication, fault tolerance, cloud। Google, Amazon সব এর উপর।",
-  recall:{q:"(প্লেসহোল্ডার)",qen:"(placeholder)",a:"পূর্ণ কন্টেন্ট শীঘ্রই।",aen:"Full content coming soon."},
-  story:`<p class="scene-setting">দরজা ৫ — বিতরণের ভিত্তি। পূর্ণ গভীর ডুব শীঘ্রই।</p><p class="scene-setting en">Door 5 — the Distributed Foundation. Full deep dive coming soon.</p>`
+  secret:"Distributed systems হলো আজকের সব প্রযুক্তির ভিত্তি — Google, Amazon, ChatGPT-র পেছনের GPU cluster, সব। consensus (Paxos/Raft), replication, fault tolerance। AI hype আসবে যাবে — কিন্তু এই ভিত্তি চিরকাল। মাঝারি প্রতিযোগিতা (৫-৮%), স্থিতিশীল ফান্ডিং, অমর ক্যারিয়ার। যদি বানাতে ভালোবাসো — এটা তোমার ডোমেইন।",
+  recall:{
+    q:"মারিয়া কেন বললেন সমুদ্রের তলদেশ থাকে, কিন্তু ঢেউ আসে যায়?",
+    qen:"Why did Maria say the ocean floor remains, but the waves come and go?",
+    a:"কারণ ঢেউ (AI hype, নতুন framework) উপরে দেখা যায়, কিন্তু সব কিছু তলদেশের (systems) উপর চলে। ঢেউ থামলে তলদেশ থাকে। ChatGPT চলে কীভাবে? বিশাল distributed GPU cluster-এ। সেই cluster হলো তলদেশ — consensus, replication, fault tolerance। ভিত্তি ছাড়া কিছুই দাঁড়ায় না।",
+    aen:"Because waves (AI hype, new frameworks) are visible on top, but everything runs on the floor (systems). When waves stop, the floor remains. How does ChatGPT run? On vast distributed GPU clusters. That cluster is the floor — consensus, replication, fault tolerance. Without foundation, nothing stands."
+  },
+  story:`
+<p class="scene-setting">পঞ্চম দরজা। AI-এর চারটা সমুদ্র পেরিয়ে তুমি এখন সিস্টেমসের জগতে — সমুদ্রের তলদেশে। গভীর, শান্ত, নিস্তব্ধ। উপরে ঢেউ দেখা যাচ্ছে কিন্তু এখানে নীরবতা। বিশাল পাথরের স্তম্ভ দাঁড়িয়ে — প্রতিটা শত শত বছরের পুরনো, একে অপরের সাথে সেতু দিয়ে যুক্ত। স্তম্ভের তলায় বসে আছেন মারিয়া — রক্ষকের পোশাক, হাতে পাথরের হাতুড়ি, মুখে শান্ত দৃঢ়তা। তাঁর চারপাশে ছড়ানো ব্লুপ্রিন্ট, টুলস। ভেজা পাথরের ঠান্ডা গন্ধ, দূরে ভূমিকম্পের গর্জন, জলের স্পর্শ।</p>
+<p class="scene-setting en">The fifth door. Past AI's four seas, you're now in the world of systems — the ocean floor. Deep, calm, silent. Above, waves are visible but here, stillness. Vast stone pillars stand — each centuries old, bridged to each other. Beneath a pillar sits Maria — guardian's garb, stone hammer in hand, calm firmness on her face. Around her: blueprints, tools. Smell of damp stone, distant seismic groan, the touch of water.</p>
+
+<div class="dialogue">মারিয়া তোমাকে দেখলেন। "তুমি AI-এর চারটা সমুদ্র দেখলে — ভাষা, দৃষ্টি, সিদ্ধান্ত, নিরাপত্তা। ভালো। কিন্তু সেই সব চলে কীভাবে? আমার ভিত্তির উপর।" তিনি একটা স্তম্ভে হাতুড়ি মারলেন। "এই স্তম্ভ — এটাই একটা distributed system। একটা মেশিন নয়, অনেক মেশিন একসাথে। একটা ভাঙলে বাকিরা চলে। Google, Amazon, ChatGPT-র GPU cluster — সব এই ভিত্তির উপর।"</div>
+<div class="dialogue en">Maria saw you. "You saw AI's four seas — language, vision, decisions, safety. Good. But how does all that run? On my foundation." She struck a pillar with her hammer. "This pillar — this is a distributed system. Not one machine, many machines together. One breaks, the rest continue. Google, Amazon, ChatGPT's GPU cluster — all on this foundation."</div>
+
+<div class="diagram">
+  <div class="diag-title">Distributed System — এক মেশিন ভাঙলেও সিস্টেম চলে</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowLeaf5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#52c41a"/></marker>
+    </defs>
+    <text class="lbl-sm" x="280" y="22" fill="#7dd3fc">৫টি নোড — একটা replicas ধরে, একটা down, বাকিরা চলে</text>
+    <!-- 5 nodes in a ring -->
+    ${[ ['N1',140,90,true], ['N2',260,70,false], ['N3',380,90,false], ['N4',330,160,false], ['N5',190,160,false] ].map(n=>{
+      const cls=n[3]?'cell-hot':'cell-good';
+      const lbl=n[3]?'N1 💀':'n[0]';
+      return `<rect class="${cls}" x="${n[1]-30}" y="${n[2]-22}" width="60" height="44" rx="8"/><text class="lbl" x="${n[1]}" y="${n[2]}" fill="${n[3]?'#ff6b35':'#52c41a'}">${n[3]?'N1 ✗':'N'+n[0].slice(1)}</text>`;
+    }).join('')}
+    <!-- replication edges among healthy nodes -->
+    <line class="edge-cyan" x1="260" y1="70" x2="380" y2="90" marker-end="url(#arrowLeaf5)"/>
+    <line class="edge-cyan" x1="380" y1="90" x2="330" y2="160" marker-end="url(#arrowLeaf5)"/>
+    <line class="edge-cyan" x1="330" y1="160" x2="190" y2="160" marker-end="url(#arrowLeaf5)"/>
+    <line class="edge-cyan" x1="190" y1="160" x2="260" y2="70" marker-end="url(#arrowLeaf5)"/>
+    <!-- dead node X -->
+    <text class="lbl-sm" x="140" y="135" fill="#ff6b35">crashed</text>
+    <text class="lbl-sm" x="280" y="200" fill="#5e5c74">consensus (Raft/Paxos): বাকি নোড একমত হয় নতুন leader ঠিক করে, ডেটা চলতে থাকে</text>
+  </svg>
+  <div class="diag-cap">fault tolerance-এর মূল: এক অংশ ভাঙলেও পুরো সিস্টেম থামে না। এটাই Google/Amazon-কে ২৪/৭ চালায়।</div>
+</div>
+
+<div class="code-block">Distributed Systems — গবেষণার শাখাসমূহ:
+
+১. CONSENSUS & REPLICATION (হৃদয়)
+   - Raft (understandable Paxos), Paxos variants, EPaxos
+   - CRDTs (conflict-free replicated data types)
+   - State machine replication, chain replication
+
+২. FAULT TOLERANCE & RELIABILITY
+   - Failure models (crash, Byzantine, split-brain)
+   - Quorum systems, erasure coding, checkpointing
+   - Chaos engineering, recovery, exactly-once semantics
+
+৩. CLOUD & DATA CENTER (🔥 scale)
+   - Resource scheduling (Borg/Kubernetes), serverless
+   - Microservices, service mesh, CDN/edge
+   - Cloud-native: disaggregated storage, composable infra
+
+৪. DATA INFRASTRUCTURE (Door 10/11 সাথে)
+   - Distributed queues (Kafka), stream processing (Flink)
+   - Distributed transactions, HTAP, NewSQL (Spanner, CockroachDB)
+
+৫. CONSENSUS-FREE & EVENTUAL
+   - Dynamo-style (eventual consistency), gossip protocols
+   - CAP/PACELC trade-offs, consistency models
+
+৬. TIME, ORDER & PROOF
+   - Logical/vector clocks, TrueTime (Spanner)
+   - Byzantine fault tolerance (Door 8 সাথে — blockchain)</div>
+
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🏗️ Consensus</td><td>Raft, Paxos, BFT, CRDTs</td><td>SOSP, OSDI, PODC, OPODIS</td></tr>
+<tr><td class="hl">☁️ Cloud</td><td>Scheduling, serverless, microservices, edge</td><td>SOSP, OSDI, NSDI, EuroSys</td></tr>
+<tr><td class="hl">💾 Storage</td><td>Distributed FS, key-value, disaggregated</td><td>SOSP, OSDI, ATC, SIGMOD</td></tr>
+<tr><td class="hl">🌊 Streaming</td><td>Kafka, Flink, exactly-once, stream processing</td><td>SIGMOD, VLDB, DEEM</td></tr>
+<tr><td class="hl">🔗 Blockchain</td><td>BFT consensus, smart contracts, L2</td><td>CCS, USENIX, FC</td></tr>
+<tr><td class="hl">📐 Theory</td><td>CAP, consistency models, lower bounds</td><td>PODC, DISC, OPODIS</td></tr></table>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৫-৮%</div><div class="sc-label">গ্রহণের হার</div></div>
+<div class="stat-card"><div class="sc-num">#২</div><div class="sc-label">AI-এর পরে সর্বাধিক funded</div></div>
+<div class="stat-card"><div class="sc-num">$১৫০-৩০০K</div><div class="sc-label">industry বেতন</div></div>
+<div class="stat-card"><div class="sc-num">চিরকালীন</div><div class="sc-label">ক্যারিয়ার স্থিতিশীলতা</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"Systems পুরোনো — এখন AI যুগ। distributed systems-এ কেউ কাজ করে না।" ভুল। ChatGPT চলে কীভাবে? বিশাল distributed GPU training (thousands of GPUs, fault-tolerant)। যে এটা বোঝে না সে LLM স্কেল করতে পারে না। MLSys (Door 7) এখন সবচেয়ে হট — আর সেটা distributed systems-এর উপর দাঁড়িয়ে।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"Distributed systems হলো ভিত্তি — AI, cloud, blockchain সব এর উপর। AI-এর পরে সবচেয়ে funded, কিন্তু সবচেয়ে stable। hype-proof ক্যারিয়ার। MLSys (AI + systems) এখন সবচেয়ে হট — এটা distributed systems-এর child।"</div>
+</div>
+
+<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড়:</strong> AI training infrastructure (Megatron, DeepSeek-এর ২০৪৮ GPU training, fault tolerance), disaggregated databases (serverless HTAP), RDMA/Roxy-based transport, eBPF-ভিত্তিক observability, serverless/edge orchestration।</div></div>
+
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ বানাতে ভালোবাসো — backend, API, database, infra · ✅ C/C++/Rust/Go পরিচিত · ✅ AI-এর চেয়ে stable, hype-proof career চাও · ✅ LedgerPilot বানিয়েছ — end-to-end system বোঝো। <strong>MLSys = AI + Systems</strong> (Door 7) এখন সবচেয়ে হট crossover।</div></div>
+
+<div class="dialogue">"তোমার একটা বিশেষ সুবিধা আছে," মারিয়া বললেন। "তুমি LedgerPilot বানিয়েছ — একটা সম্পূর্ণ সিস্টেম। Backend, database, API, frontend। তুমি জানো কীভাবে জিনিস end-to-end বানায়। এই অভিজ্ঞতা AI গবেষকদের কাছে নেই — তারা শুধু model নিয়ে কাজ করেন। তুমি জানো একটা request কীভাবে browser থেকে database পর্যন্ত যায়। এটা distributed systems research-এ বিশাল সুবিধা।"</div>
+<div class="dialogue en">"You have a special advantage," Maria said. "You built LedgerPilot — a complete system. Backend, database, API, frontend. You know how things are built end-to-end. AI researchers often don't have this — they work only with models. You know how a request travels from browser to database. This is a huge advantage in distributed systems research."</div>
+
+<div class="dialogue">আরশ — ভিত্তি, সবকিছু যার উপর দাঁড়িয়ে। কুরআনে আল্লাহ বলেন: "আল্লাহ তোমাদের মেরুদণ্ডকে সোজা করেছেন।" (৮০:১৯-২২ প্রসঙ্গ)। সবকিছুর একটা ভিত্তি আছে — আরশ ছাড়া কিছু দাঁড়ায় না। একটা বাড়ি ভিত্তির উপর, একটা গাছ শিকড়ের উপর, একটা সমাজ ন্যায্যতার উপর। Distributed systems research হলো ভিত্তি গড়া — এমন ভিত্তি যার উপর লাখ লাখ মানুষের কাজ চলে। Google, Amazon — সব ভিত্তির উপর। যে ভিত্তি গড়ে, সে স্রষ্টা। যে ভিত্তি ব্যবহার করে, সে ভোক্তা। গবেষক হলো স্রষ্টা।</div>
+<div class="dialogue en">Arsh — foundation, on which everything stands. Allah speaks of the firm foundation. Everything has a foundation — without it, nothing stands. A house on its foundation, a tree on its roots, a society on justice. Distributed systems research is building foundations — foundations on which millions of people's work runs. Google, Amazon — all on foundations. One who builds foundations, is a creator. One who uses foundations, is a consumer. A researcher is a creator.</div>
+
+<div class="secret-box">🏗️ Distributed Systems: আজকের সব প্রযুক্তির ভিত্তি। মাঝারি প্রতিযোগিতা (৫-৮%), AI-পরবর্তী funded, hype-proof ক্যারিয়ার। consensus, fault tolerance, cloud। MLSys (Door 7) এর পিতা। বানাতে ভালোবাসলে — এটা তোমার ডোমেইন।</div>`,
+  senior:{
+    title:"Systems PhD প্রবেশ — Senior Path",
+    body:`<p><strong>একটা system বানাও আগে:</strong> top systems PhD-তে ভর্তির সবচেয়ে শক্ত সংকেত হলো একটা working system — GitHub-এ, বাস্তব, মানুষ ব্যবহার করে। LedgerPilot ইত্যাদি দারুণ শুরু। একটা open-source contribution (Kubernetes, etcd, কোনো database) golden।</p><p><strong>Benchmark + measurement paper:</strong> systems research-এ একটা careful measurement (যেমন "আমরা ১০টা ML serving system পরীক্ষা করে দেখলাম...") workshop-level paper হিসেবে শুরু — ভর্তিতে প্রভাবশালী। MLSys/SOSP/OSDI workshop-এ লক্ষ্য করো।</p><p><strong>Rust/C++/Go:</strong> systems research-এ Rust এখন dominant (memory safety)। একটা Rust project থাকলে প্রফেসররা খুশি হন। Linux kernel patch = legendary credential।</p><p><strong>MLSys দেখো:</strong> AI + systems intersection (Door 7) এখন সবচেয়ে হট — training infra, serving, GPU scheduling। তোমার developer background এখানে সোনা।</p>`
+  }
 });
