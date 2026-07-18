@@ -29,6 +29,49 @@ doors.push({
 <tr><td>৫০</td><td>৫০</td><td>২৫০০</td></tr></table>
 <div class="callout tip"><span class="co-icon">🧠</span><div><strong>প্রয়োগেই জ্ঞান গভীর হয়:</strong> Declarative memory (পড়ে শেখা) দ্রুত মুছে যায়; procedural memory (করে শেখা) স্থায়ী। পড়ো, তারপর করো — করা ছাড়া শেখা অসম্পূর্ণ।</div></div>
 
+<div class="diagram">
+  <div class="diag-title">Knowledge × Action = Power (গুণফল, যোগফল নয়)</div>
+  <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+    <!-- two axes: knowledge (x), action (y), area = power -->
+    <line class="axis" x1="60" y1="180" x2="500" y2="180"/>
+    <line class="axis" x1="60" y1="30" x2="60" y2="180"/>
+    <text class="lbl-sm" x="280" y="208" fill="#9290a8">Knowledge →</text>
+    <text class="lbl-sm" x="30" y="105" fill="#9290a8" transform="rotate(-90 30,105)">Action →</text>
+    <!-- Case A: high knowledge, zero action = thin line (zero power) -->
+    <rect class="cell-hot" x="60" y="178" width="380" height="4"/>
+    <text class="lbl-sm" x="250" y="60" fill="#ff6b35">Knowledge=100, Action=0</text>
+    <text class="lbl-hot" x="250" y="76">Power = 0</text>
+    <!-- Case B: medium both = decent rectangle -->
+    <rect class="cell-cyan" x="60" y="110" width="190" height="70" style="opacity:.7"/>
+    <text class="lbl-sm" x="155" y="100" fill="#3dd6c4">K=50 × A=50 = 2500</text>
+    <!-- Case C: both high = big area -->
+    <rect class="cell-good" x="60" y="55" width="380" height="125" style="opacity:.35"/>
+    <text class="lbl-sm" x="400" y="48" fill="#52c41a">K=100 × A=100</text>
+    <text class="lbl-leaf" x="430" y="100">Power সর্বোচ্চ</text>
+    <text class="lbl-sm" x="280" y="225" fill="#5e5c74">যেকোনোটি শূন্য হলে ফলাফল শূন্য — গুণফল, যোগফল নয়</text>
+  </svg>
+  <div class="diag-cap">জ্ঞান × কর্ম = শক্তি। এটি ক্ষেত্রফল (area) — গুণফল। যেকোনো একটি শূন্য হলে পুরোটাই শূন্য। ১০০ জ্ঞান + ০ কর্ম = ০। ৫০×৫০ = ২৫০০। ১০০×১০০ = সর্বোচ্চ।</div>
+</div>
+
+<div class="code-block">Knowledge × Action — প্রয়োগের নিয়ম:
+
+  ২৪-ঘণ্টা নিয়ম:
+    যা শিখছ, ২৪ ঘণ্টার মধ্যে প্রয়োগ না করলে
+    declarative → procedural রূপান্তর হয় না। পড়া মুছে যায়।
+
+  কোড শিখছ?   → সাথে সাথে একটা ফাংশন লেখো
+  কনসেপ্ট?     → নিজের প্রজেক্টে কোথায় লাগবে ভাবো
+  ডিজাইন প্যাটার্ন? → আজকের কোডে প্রয়োগ করো
+
+  ⚠️ ফাঁদ: "আরও পড়ি, তারপর করব" — এটা কখনো করবে না।
+     ১ টিউটোরিয়াল → সাথে সাথে প্রজেক্ট। এটাই নিয়ম।</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">১৫৯৭</div><div class="sc-label">"Knowledge is power" — Francis Bacon</div></div>
+<div class="stat-card"><div class="sc-num">২৪ ঘণ্টা</div><div class="sc-label">প্রয়োগের সময়সীমা (procedural রূপান্তরের জন্য)</div></div>
+<div class="stat-card"><div class="sc-num">procedural</div><div class="sc-label">করে শেখা memory — স্থায়ী</div></div>
+</div>
+
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ জ্ঞান সংগ্রহ</div>১০০টা টিউটোরিয়াল দেখো। ৫০টা বই পড়ো। ২০টা কোর্স করো। মনে হয় "অনেক জানি।" কিন্তু — কিছু বানাওনি। কোনো সমস্যা সমাধান করোনি। Knowledge=100, Action=0 → Power=0।</div>
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ জ্ঞান প্রয়োগ</div>১টা টিউটোরিয়াল দেখো → সাথে সাথে প্রজেক্ট বানাও। ভুল করো → ঠিক করো → শেখো। ছোট হলেও প্রতিদিন কিছু বানাও। Knowledge × Action = Power। প্রতিটা প্রজেক্ট = procedural memory।</div>
@@ -66,7 +109,43 @@ doors.push({
 <tr><td class="hl">Learn</td><td>নতুন জ্ঞান গ্রহণ</td><td>✅ বলেছে</td></tr>
 <tr><td class="hl">Unlearn</td><td>পুরোনো জ্ঞান বর্জন — "fire together, wire together"; পুরোনো path ভাঙা শারীরিক ও আবেগগতভাবে কঠিন (পরিচয়ের অংশ)</td><td>⚠️ মিস করেছে</td></tr>
 <tr><td class="hl">Relearn</td><td>নতুন করে শেখা</td><td>✅ বলেছে</td></tr></table>
-<div class="callout tip"><span class="co-icon">⚙️</span><div><strong>Elon Musk-এর উদাহরণ:</strong> শক্তি "দ্রুত শেখা" নয় — <em>first-principles thinking</em>: সবচেয়ে মৌলিক সত্যে ভেঙে নতুন করে গড়া। এটা মূলত একটা unlearning কৌশলই।</div></div>
+<div class="callout tip"><span class="co-icon">⚙️</span><div><strong>Elon Musk-ের উদাহরণ:</strong> শক্তি "দ্রুত শেখা" নয় — <em>first-principles thinking</em>: সবচেয়ে মৌলিক সত্যে ভেঙে নতুন করে গড়া। এটা মূলত একটা unlearning কৌশলই।</div></div>
+
+<div class="diagram">
+  <div class="diag-title">Learn → Unlearn → Relearn — কুমারের চক্র</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowFireD6" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#ff6b35"/></marker>
+      <marker id="arrowLeafD6" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#52c41a"/></marker>
+    </defs>
+    <!-- 3 nodes in a triangle -->
+    ${[ ['LEARN\nনতুন গ্রহণ',140,60,'#3dd6c4'], ['UNLEARN\nপুরোনো ভাঙো',400,60,'#ff6b35'], ['RELEARN\nনতুন করে গড়ো',270,170,'#52c41a'] ].map(s=>`<rect x="${s[1]-70}" y="${s[2]-22}" width="140" height="44" rx="8" style="fill:${s[3]}22;stroke:${s[3]}"/><text class="lbl-sm" x="${s[1]}" y="${s[2]-3}" fill="${s[3]}" style="font-weight:700">${s[0].split('\\n')[0]}</text><text class="lbl-sm" x="${s[1]}" y="${s[2]+13}" fill="#9290a8" style="font-size:9px">${s[0].split('\\n')[1]}</text>`).join('')}
+    <!-- cycle arrows: learn -> unlearn -> relearn -> learn -->
+    <line class="edge-hot" x1="210" y1="60" x2="330" y2="60" marker-end="url(#arrowFireD6)"/>
+    <text class="lbl-sm" x="270" y="50" fill="#ff6b35" style="font-size:9px">সবচেয়ে কঠিন</text>
+    <line class="edge-hot" x1="370" y1="90" x2="310" y2="148" marker-end="url(#arrowFireD6)"/>
+    <line class="edge-cyan" x1="225" y1="155" x2="175" y2="92" marker-end="url(#arrowLeafD6)"/>
+    <text class="lbl-sm" x="280" y="210" fill="#5e5c74">tofu. আলভিন টফলার: ২১শ শতকের নিরক্ষর = যে learn, unlearn, relearn করতে পারে না</text>
+  </svg>
+  <div class="diag-cap">Unlearn সবচেয়ে কঠিন — মস্তিষ্ক পুরোনো path ভাঙতে চায় না, পরিচয়ের অংশ হয়ে যায়। কিন্তু নতুন বানাতে হলে পুরোনো ভাঙতেই হবে — কুমারের মতো হাঁড়ি গুঁড়িয়ে আবার শুরু।</div>
+</div>
+
+<div class="code-block">Unlearn, Learn, Relearn — নতুন ধারণায় ৪ প্রশ্ন:
+
+  যখন নতুন কিছু শিখবে যা পুরোনো ধারণার বিপরীত:
+    ১. "আমার পুরোনো ধারণা কী?"
+    ২. "নতুন তথ্য কী বলছে?"
+    ৩. "আমি কি প্রমাণের ভিত্তিতে পুরোনো ছাড়তে প্রস্তুত?"
+    ৪. First-principles — সবচেয়ে মৌলিক সত্যে ভাঙো, নতুন করে গড়ো
+
+  ⚠️ সবচেয়ে বড় বাধা: অহংকার।
+     "আমি জানি" বললে শেখা বন্ধ।
+     "আমি ভুল হতে পারি" বললে শেখা খোলা।</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ আটকে থাকা</div>"আমি জানি" — পুরোনো ধারণায় আঁকড়ে থাকা। নতুন প্রমাণ এলেও প্রত্যাখ্যান। এটাই unlearning-এর সবচেয়ে বড় বাধা — পরিচয়ের অংশ হয়ে যাওয়া ধারণা ছাড়া কঠিন। যে আটকে থাকে, সে বাড়ে না।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ ভেঙে গড়া</div>"আমি ভুল হতে পারি" — প্রমাণের ভিত্তিতে পুরোনো ছাড়া। First-principles: সবচেয়ে মৌলিক সত্যে ভাঙো, নতুন করে গড়ো। কুমারের মতো বাঁকা হাঁড়ি গুঁড়িয়ে আবার শুরু। এটাই বৃদ্ধি।</div>
+</div>
 
 <div class="dialogue">তওবা — ফিরে যাওয়া। শুরুতে ফিরে যাওয়া। পুরোনো ভুল ছেড়ে নতুন সত্য গ্রহণ। কুরআনে আল্লাহ বলেন — "তওবা করো আল্লাহর কাছে।" তওবা মানে শুধু অনুশোচনা নয় — পুরোনো পথ ছেড়ে নতুন পথে যাওয়া। Unlearn। যে unlearn করতে পারে না, সে আটকে থাকে। যে unlearn করতে পারে, সে বাড়ে।</div>
 <div class="dialogue en">"Tawbah — returning. Going back to the beginning. Leaving old errors and embracing new truth. Allah says — 'Turn to Allah in repentance.' Tawbah isn't just regret — it's leaving the old path for a new one. Unlearn. One who can't unlearn stays stuck. One who can, grows."</div>`,
