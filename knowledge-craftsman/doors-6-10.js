@@ -405,7 +405,63 @@ doors.push({
 <tr><td class="hl">Forte (2022)</td><td>SYSTEM — CODE + PARA (second brain)</td></tr></table>
 <div class="callout tip"><span class="co-icon">🏛️</span><div><strong>মূল নীতি:</strong> তোমার জৈবিক মস্তিষ্ক <em>idea তৈরি, সংযোগ, বিচার, সিদ্ধান্তের</em> জন্য — <em>তথ্য সংরক্ষণের</em> জন্য নয় (সেটা নোটের কাজ)। David Allen (GTD): "Your mind is for having ideas, not holding them।" Tiago Forte: "second brain বানাও যাতে first brain যা সবচেয়ে ভালো পারে — think — তাই করতে পারে।" Capture → Organize → Distill → Express। এটাই জ্ঞানের কারিগর।</div></div>
 
+<div class="diagram">
+  <div class="diag-title">Second Brain — CODE Pipeline (Tiago Forte, 2022)</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowAmberD10" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#fcd34d"/></marker>
+    </defs>
+    <text class="lbl-sm" x="90" y="35" fill="#9290a8" style="font-size:9px">first brain</text>
+    <text class="lbl-sm" x="470" y="35" fill="#9290a8" style="font-size:9px">second brain</text>
+    <!-- 4 stages -->
+    ${[ ['CAPTURE','highlight, quote, idea',70,'#5b9eff'], ['ORGANIZE','PARA — Projects/Areas/Resources',210,'#3dd6c4'], ['DISTILL','progressive summarization',350,'#fcd34d'], ['EXPRESS','blog/essay/paper — output',490,'#52c41a'] ].map(s=>`<rect x="${s[2]-60}" y="80" width="120" height="50" rx="8" style="fill:${s[3]}22;stroke:${s[3]}"/><text class="lbl-sm" x="${s[2]}" y="100" fill="${s[3]}" style="font-weight:700">${s[0]}</text><text class="lbl-sm" x="${s[2]}" y="118" fill="#9290a8" style="font-size:8px">${s[1]}</text>`).join('')}
+    <line class="edge-amber" x1="130" y1="105" x2="150" y2="105" marker-end="url(#arrowAmberD10)"/>
+    <line class="edge-amber" x1="270" y1="105" x2="290" y2="105" marker-end="url(#arrowAmberD10)"/>
+    <line class="edge-amber" x1="410" y1="105" x2="430" y2="105" marker-end="url(#arrowAmberD10)"/>
+    <!-- feedback loop back to capture -->
+    <path class="edge" d="M 490 130 Q 490 180 280 180 Q 70 180 70 130" fill="none" style="stroke:#f59e0b;stroke-dasharray:4,3"/>
+    <text class="lbl-sm" x="280" y="195" fill="#f59e0b" style="font-size:9px">Express → নতুন idea → আবার Capture (feedback loop)</text>
+    <text class="lbl-sm" x="280" y="218" fill="#5e5c74">first brain = think (সৃষ্টি), second brain = store (সংরক্ষণ)। একসাথে = জ্ঞানের কারিগর।</text>
+  </svg>
+  <div class="diag-cap">মস্তিষ্ক সৃষ্টির জন্য, সংরক্ষণের জন্য নয়। Second brain (Capture→Organize→Distill→Express) সংরক্ষণ করে, যাতে first brain যা সবচেয়ে ভালো পারে — think — তাই করতে পারে। Express থেকে নতুন idea → আবার Capture।</div>
+</div>
+
+<div class="code-block">Second Brain — ৯ মাস্টার, এক system:
+
+  WHY     — Ebbinghaus (১৮৮৫): ৯০% ভুলে যাও
+  HOW     — Adler (১৯৪০): ৪ স্তরে পড়া
+  STORE   — Luhmann: Zettelkasten (atomic linked notes)
+  TEST    — Feynman: সহজ করে ব্যাখ্যা
+  PAPERS  — Keshav (২০০৭): ৩-pass method
+  HABIT   — Musk/Gates/Munger/Naval: দৈনিক পড়া
+  RETAIN  — Roediger &amp; Karpicke (২০০৬): testing effect
+  WORKFLOW— Ahrens (২০১৭): smart → permanent notes
+  SYSTEM  — Forte (২০২২): CODE + PARA (second brain)
+
+  মূল নীতি (David Allen):
+    "Your mind is for having ideas, not holding them."
+    → first brain = think, second brain = store।
+
+  টুলস্ট্যাক: Obsidian (notes) + Readwise (highlights)
+              + Zotero (papers) + Anki (spaced rep)।</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">CODE</div><div class="sc-label">Capture · Organize · Distill · Express (Forte 2022)</div></div>
+<div class="stat-card"><div class="sc-num">PARA</div><div class="sc-label">Projects · Areas · Resources · Archives</div></div>
+<div class="stat-card"><div class="sc-num">৯ মাস্টার</div><div class="sc-label">Ebbinghaus → Forte, এক system-এ</div></div>
+<div class="stat-card"><div class="sc-num">হিকমাহ</div><div class="sc-label">প্রয়োগকৃত জ্ঞান — পড়া থেকে সৃষ্টি</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ মস্তিষ্কে গচ্ছিত</div>সব মনে রাখার চেষ্টা — কিন্তু Ebbinghaus বলেন ৯০% ভুলে যাবে। মস্তিষ্ক সংরক্ষণের জন্য নয় — তথ্যে ভরে গেলে think করতে পারে না। "মনে আছে" ভাবলেও প্রয়োগের সময় ফাঁকা। প্রথম দরজার ছিদ্র বালতি বারবার ফিরে আসে।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ Second Brain</div>সংরক্ষণ second brain-এ (CODE + PARA), first brain সৃষ্টির জন্য মুক্ত। প্রতিটা দরজার পদ্ধতি — পড়া, নোট, পরীক্ষা, সংযোগ, সৃষ্টি — একসাথে গলে একটা system-এ। হিকমাহ — প্রয়োগকৃত জ্ঞান। যে সৃষ্টি করে, সে অবিচ্ছেয্য।</div>
+</div>
+
 <div class="verse">"তিনি মানুষকে শিখিয়েছেন কলমের মাধ্যমে। মানুষকে শিখিয়েছেন যা সে জানত না।"<br>— কুরআন ৯৬:৪-৫<br><br>পড়ো, ভাবো, লেখো — এটাই জ্ঞানের ত্রিমূর্তি। পড়া ছাড়া জ্ঞান আসে না। ভাবা ছাড়া জ্ঞান গভীর হয় না। লেখা ছাড়া জ্ঞান স্থায়ী হয় না। এই তিনের সংযোগ = হিকমাহ — প্রজ্ঞা, প্রয়োগকৃত জ্ঞান। যে পড়ে, সে জানে। যে ভাবে, সে বোঝে। যে লেখে, সে সৃষ্টি করে। যে সৃষ্টি করে, সে অবিচ্ছেয্য। এটাই জ্ঞানের কারিগর — পড়া থেকে সৃষ্টি।</div>
 
-<div class="secret-box"><div class="label">দশম দরজা — সমন্বয়</div><div class="text">🏛️ জ্ঞান কারিগর = Capture + Organize + Distill + Express + Synthesize।<br><small>পড়ো (Adler), নোট নাও (Luhmann), পরীক্ষা করো (Feynman), সংযুক্ত করো (Syntopical), সৃষ্টি করো (Express)। মস্তিষ্ক সৃষ্টির জন্য, সংরক্ষণের জন্য নয়।</small></div></div>`
+<div class="secret-box"><div class="label">দশম দরজা — সমন্বয়</div><div class="text">🏛️ জ্ঞান কারিগর = Capture + Organize + Distill + Express + Synthesize।<br><small>পড়ো (Adler), নোট নাও (Luhmann), পরীক্ষা করো (Feynman), সংযুক্ত করো (Syntopical), সৃষ্টি করো (Express)। মস্তিষ্ক সৃষ্টির জন্য, সংরক্ষণের জন্য নয়।</small></div></div>`,
+  senior:{
+    title:"Build Your Second Brain — ৪ সপ্তাহ পরিকল্পনা",
+    body:`<p><strong>সপ্তাহ ১ — Capture:</strong> একটা টুল বাছো (Obsidian, ফ্রি)। এই সপ্তাহে পড়া/শোনার সব highlight, quote, idea সেখানে রাখো। organize করার চিন্তা কোরো না — শুধু capture।</p><p><strong>সপ্তাহ ২ — Organize:</strong> PARA প্রয়োগ করো — Projects (চলমান কাজ), Areas (দায়িত্ব), Resources (তথ্য), Archives (পুরোনো)। topic নয় — "কীভাবে ব্যবহার করব" অনুযায়ী সাজাও।</p><p><strong>সপ্তাহ ৩ — Distill:</strong> progressive summarization। প্রতিটা captured note-এ bold → highlight → ৩-বাক্য সারাংশ। Zettelkasten permanent note বানাও — এক idea, নিজের ভাষায়, linked।</p><p><strong>সপ্তাহ ৪ — Express:</strong> একটা ছোট output লেখো — blog post, thread, Feynman explanation। second brain থেকে টেনে লেখো, শূন্য থেকে নয়। এই output-ই পরীক্ষা — কী বুঝেছ তা প্রমাণ করে।</p><p><strong>মূল নীতি:</strong> মস্তিষ্ক সৃষ্টির জন্য, সংরক্ষণের জন্য নয়। Second brain বানাও — যাতে তুমি যা সবচেয়ে ভালো পারো (think, create), তাই করতে পারো। এটাই হিকমাহ — প্রয়োগকৃত জ্ঞান।</p>`
+  }
 });
