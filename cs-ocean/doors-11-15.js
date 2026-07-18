@@ -440,12 +440,115 @@ doors.push({
   }
 });
 
-// ══ DOOR 15: PROGRAMMING LANGUAGES & AI4SE (placeholder) ══
+// ══ DOOR 15: PROGRAMMING LANGUAGES & AI4SE ══
 doors.push({
   num:15, icon:"🔤", color:"#64748b", name:"ভাষার স্রষ্টা",
   subtitle:"The Language Maker", tech:"Programming Languages & AI4SE 🔥",
-  spirit:"বায়ান — স্পষ্ট ভাষা, নির্ভুল প্রকাশ",
-  secret:"PL (type systems, compilers, Rust safety) + AI4SE (code gen, bug detection, LLM for code)। হট area।",
-  recall:{q:"(প্লেসহোল্ডার)",qen:"(placeholder)",a:"পূর্ণ কন্টেন্ট শীঘ্রই।",aen:"Full content coming soon."},
-  story:`<p class="scene-setting">দরজা ১৫ — ভাষার স্রষ্টা। পূর্ণ গভীর ডুব শীঘ্রই।</p><p class="scene-setting en">Door 15 — the Language Maker. Full deep dive coming soon.</p>`
+  spirit:"বায়ান — স্পষ্ট প্রকাশ, নির্ভুল ভাষা",
+  secret:"PL + AI4SE হলো SE-এর সবচেয়ে গভীর ও হট সীমানা। PL — type system, compiler, Rust safety (memory bug গাণিতিকভাবে অসম্ভব)। AI4SE — LLM দিয়ে code gen, repair, review (Copilot, Cursor, Devin)। PL কঠিন (formal, গাণিতিক), AI4SE হট (industry dominance)। niche, কিন্তু প্রতিটা developer-র জীবন বদলায়। তোমার SE (Door 14) + AI আগ্রহ = secondary পছন্দের জন্য উপযুক্ত।",
+  recall:{
+    q:"ক্লারা কেন বললেন একটা ভালো ভাষা ভুল করাই কঠিন করে দেয়?",
+    qen:"Why did Clara say a good language makes mistakes hard to even make?",
+    a:"কারণ সাধারণ ভাষায় তুমি ভুল করতে পারো — runtime-এ ভাঙে। কিন্তু একটা ভালো type system ভুল করাই নিষিদ্ধ করে — compile-ই হয় না। Rust-এ null pointer dereference গাণিতিকভাবে অসম্বব — compiler বাধা দেয়। এটাই PL গবেষণা — ভাষা ডিজাইন করা যেন ভুল করাই কঠিন। বায়ান — স্পষ্ট প্রকাশ, নির্ভুল ভাষা। ভালো ভাষা মানুষকে ভুল থেকে বাঁচায়।",
+    aen:"Because in an ordinary language you can err — it breaks at runtime. But a good type system forbids errors — it won't even compile. In Rust, null pointer dereference is mathematically impossible — the compiler blocks it. This is PL research — designing languages where mistakes are hard to make. Bayan — clear expression, precise language. A good language saves people from error."
+  },
+  story:`
+<p class="scene-setting">পঞ্চদশ দরজা। রবার্টের কারখানা পেরিয়ে তুমি একটা ভাষার কারখানায় — দেয়ালে সারি সারি অক্ষর, চিহ্ন, গ্রামার নিয়ম খোদাই করা পাথরে। মাঝখানে একটা বিশাল তন্ত্র — compiler — যেখানে মানুষের লেখা ভাষা মেশিনের ভাষায় রূপান্তরিত হচ্ছে। তন্ত্রের পাশে দাঁড়িয়ে ক্লারা — ছোট কালো চুল, হাতে একটা type rule স্ক্রল ও একটা Rust playground টার্মিনাল, চোখে গণিতজ্ঞের নিখুঁততা। রবার্ট পেছনে বলছেন — এটা তাঁর SE-র সবচেয়ে গভীর সীমানা। কালি ও পাথরের গন্ধ, তন্ত্রের ক্লিক, দূরে একটা AI এজেন্ট কোড লেখার শব্দ।</p>
+<p class="scene-setting en">The fifteenth door. Past Robert's factory, you enter a language workshop — walls lined with letters, symbols, grammar rules carved in stone. In the center, a vast apparatus — a compiler — where human-written language transforms into machine language. Beside it stands Clara — short black hair, a type-rule scroll and a Rust playground terminal in hand, a mathematician's precision in her eyes. Robert speaks behind — this is SE's deepest frontier. Smell of ink and stone, the apparatus clicking, distant sound of an AI agent writing code.</p>
+
+<div class="dialogue">রবার্ট বললেন, "আমি কোড যাচাই করি। কিন্তু ক্লারা ভাষাই বানায় — যে ভাষায় কোড লেখা হয়।" ক্লারা একটা পাথর দেখালেন যেখানে লেখা — 'x: i32'। "এটা একটা type। x সর্বদা integer — কখনো string নয়, null নয়। compiler এটা নিশ্চিত করে। তুমি যদি ভুল করো — 'x + "hello"' — compiler বলবে 'না'। কোড চলবেই না।" তিনি হাসলেন। "এটাই PL — ভাষা ডিজাইন করা যেন ভুল করাই কঠিন। আর এখন?" তিনি AI এজেন্টটার দিকে ইশারা করলেন — "এখন LLM নিজে কোড লেখে। AI4SE। দুইয়ের মিলন।"</div>
+<div class="dialogue en">Robert said, "I verify code. But Clara makes the language itself — in which code is written." Clara showed a stone inscribed 'x: i32'. "This is a type. x is always an integer — never a string, never null. The compiler guarantees it. If you err — 'x + "hello"' — the compiler says 'no'. The code won't even run." She smiled. "This is PL — designing languages where mistakes are hard to make. And now?" She gestured to the AI agent — "now an LLM writes code itself. AI4SE. The union of both."</div>
+
+<div class="diagram">
+  <div class="diag-title">PL + AI4SE — ভাষা ও AI-এর মিলন</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowGray15" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#7dd3fc"/></marker>
+      <marker id="arrowFire15" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#ff6b35"/></marker>
+    </defs>
+    <text class="lbl-sm" x="140" y="30" fill="#7dd3fc">PROGRAMMING LANGUAGES</text>
+    <text class="lbl-sm" x="420" y="30" fill="#ff6b35">AI4SE (LLM দিয়ে)</text>
+    <!-- PL stack -->
+    ${[ ['Type system','safety গাণিতিকভাবে',55,'#7dd3fc'], ['Compiler','parser, IR, optimize',55,'#7dd3fc'], ['Semantics','formal, নির্ভুল',55,'#7dd3fc'] ].map((s,i)=>`<rect class="cell-cyan" x="30" y="${50+i*32}" width="150" height="26" rx="5"/><text class="lbl-sm" x="${105}" y="${67+i*32}" fill="#7dd3fc">${s[0]}</text>`).join('')}
+    <!-- AI4SE stack -->
+    ${[ ['Code gen','Copilot, Cursor',380,'#ff6b35'], ['Bug repair','LLM fix',380,'#ff6b35'], ['Agent','Devin, autonomous',380,'#ff6b35'] ].map((s,i)=>`<rect class="cell-hot" x="295" y="${50+i*32}" width="150" height="26" rx="5"/><text class="lbl-sm" x="${370}" y="${67+i*32}" fill="#ff6b35">${s[0]}</text>`).join('')}
+    <!-- union -->
+    <line class="edge-amber" x1="180" y1="110" x2="280" y2="140" style="stroke:#b37feb" marker-end="url(#arrowFire15)"/>
+    <line class="edge-amber" x1="295" y1="110" x2="280" y2="140" style="stroke:#b37feb" marker-end="url(#arrowFire15)"/>
+    <rect class="cell-purple" x="210" y="140" width="140" height="34" rx="8"/>
+    <text class="lbl" x="280" y="162" fill="#b37feb">SAFE + AUTONOMOUS</text>
+    <text class="lbl-sm" x="280" y="200" fill="#5e5c74">🔥 LLM যা লেখে, type system যাচাই করে = reliable AI codegen</text>
+    <text class="lbl-sm" x="280" y="220" fill="#5e5c74">এটাই frontier — AI agent যে কোড নিরাপদ, গাণিতিকভাবে প্রমাণিত</text>
+  </svg>
+  <div class="diag-cap">PL = ভাষা নিরাপদ করে (compile-ই হয় না ভুল), AI4SE = LLM কোড লেখে। দুইয়ের মিলন = AI agent যা নিরাপদ কোড লেখে। এটাই পরবর্তী frontier — verified autonomous coding।</div>
+</div>
+
+<div class="code-block">Programming Languages & AI4SE — গবেষণার শাখাসমূহ:
+
+১. TYPE SYSTEMS & SAFETY (PL core)
+   - Static types, dependent types, refinement types
+   - Ownership/borrowing (Rust), linear types
+   - Effect systems, session types
+
+২. COMPILERS & RUNTIME
+   - IR, SSA, intermediate representations (MLIR, Cranelift)
+   - Optimization, JIT, specialization
+   - WASM, LLVM, GPU compilers
+
+৩. FORMAL METHODS (গভীরতম PL)
+   - Theorem proving (Coq, Lean, Isabelle)
+   - Model checking, program verification (Dafny, Frama-C)
+   - Program synthesis, refinement
+
+৪. LANGUAGE DESIGN
+   - New languages (Rust, Zig, Mojo, Roc)
+   - DSLs, metaprogramming, macros
+   - Concurrent/parallel languages
+
+৫. AI4SE — LLM FOR CODE (🔥🔥🔥)
+   - Code generation (Copilot, Cursor, Claude Code)
+   - Bug detection/repair (SWE-bench, ২০২৪-২৫)
+   - Automated code review, refactoring
+   - Code agents (Devin, autonomous SWE)
+
+৬. AI + PL (🔥 crossover)
+   - LLM-guided synthesis, neurosymbolic
+   - Verified AI codegen (Lean + LLM — AlphaProof)
+   - Type-aware LLM, formal-proof generation</div>
+
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">📐 Type/Safety</td><td>Static, dependent, ownership, effect</td><td>POPL, OOPSLA, ICFP</td></tr>
+<tr><td class="hl">⚙️ Compiler</td><td>IR, opt, JIT, WASM, LLVM</td><td>PLDI, CGO, CC</td></tr>
+<tr><td class="hl">🧪 Formal</td><td>Theorem proving, verification, synthesis</td><td>POPL, CAV, TACAS, ITP</td></tr>
+<tr><td class="hl">🔤 Lang Design</td><td>Rust/Zig/Mojo, DSL, meta</td><td>PLDI, OOPSLA, SPLASH</td></tr>
+<tr><td class="hl">🔥🔥🔥 AI4SE</td><td>Copilot, SWE-bench, code agent</td><td>ICSE, FSE, NeurIPS, ICLR</td></tr>
+<tr><td class="hl">🔥 AI+PL</td><td>LLM synthesis, AlphaProof, verified codegen</td><td>POPL, NeurIPS, ICLR</td></tr></table>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৬-১০%</div><div class="sc-label">গ্রহণের হার</div></div>
+<div class="stat-card"><div class="sc-num">🔥🔥🔥</div><div class="sc-label">AI4SE = সবচেয়ে হট (industry billions)</div></div>
+<div class="stat-card"><div class="sc-num">$১৮০-৪৫০K</div><div class="sc-label">industry (GitHub, Anthropic, Cursor, Modular)</div></div>
+<div class="stat-card"><div class="sc-num">AlphaProof</div><div class="sc-label">২০২৪ — LLM + Lean = IMO silver</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"PL গবেষণা 'মরা' — Java/Python হয়ে গেছে, নতুন ভাষা দরকার নেই।" ভুল। Rust (memory safety, এখন Android/Linux kernel-এ), Zig, Mojo (AI compute), WASM — সব এখন frontier। আর AI4SE? Copilot/Cursor/Devin = বিলিয়ন ডলার industry। AlphaProof (২০২৪) LLM + Lean দিয়ে IMO math silver — নতুন paradigm। PL কখনো মরেনি, AI-এর যুগে পুনর্জন্ম পাচ্ছে।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"PL + AI4SE = এখন সবচেয়ে হট। PL ভাষা নিরাপদ করে (Rust, formal verification), AI4SE কোড লেখায় (Copilot, agent)। দুইয়ের মিলন = verified autonomous coding — AlphaProof-এর মতো। niche, কিন্তু industry বিলিয়ন ঢালছে। গাণিতিক (PL) বা empirical (AI4SE) — দুটোই গভীর path।"</div>
+</div>
+
+<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড়:</strong> AI code agents (Devin, OpenHands, Cursor Composer — autonomous SWE), SWE-bench (real GitHub issue solve), AlphaProof/AlphaGeometry ২ (LLM + Lean — IMO-level math, ২০২৪-২৫), Rust in kernel (Linux, Microsoft), Mojo (AI-নেটিভ lang), WASM beyond browser।</div></div>
+
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ AI4SE = তোমার <strong>secondary</strong> পছন্দ — তুমি developer, AI আগ্রহী, প্রতিদিন SE করো। Copilot/Cursor-এর মতো tool নিয়ে গবেষণা = perfect fit। ⚠️ pure PL (formal, type theory) কঠিন — গাণিতিক শক্ত দরকার। 💡 AI + PL crossover (verified codegen, AlphaProof-style) = সবচেয়ে গভীর, সবচেয়ে হট।</div></div>
+
+<div class="dialogue">"দুই পথ আছে," ক্লারা বললেন। "PL — গাণিতিক, গভীর, formal। type theory, semantics, proof — এটা শিখলে তুমি ভাষার স্রষ্টা হও। AI4SE — empirical, হট, industry-billion। LLM দিয়ে কোড লেখানো, agent বানানো। তোমার জন্য?" তিনি ভাবলেন। "তুমি developer, AI পছন্দ করো। AI4SE তোমার সেরা পথ — কারণ তুমি জানো real code কেমন, real bug কীভাবে হয়। এটাই LLM-কে শেখাতে হবে। Copilot-এর মতো tool এখন প্রতিটা developer-র জীবন — তুমি সেটা বানাতে পারো।"</div>
+<div class="dialogue en">"Two paths," Clara said. "PL — mathematical, deep, formal. Type theory, semantics, proof — learning this, you become a language creator. AI4SE — empirical, hot, industry-billion. Making LLMs write code, building agents. For you?" She thought. "You're a developer, you like AI. AI4SE is your best path — because you know what real code is like, how real bugs happen. That's what LLMs must learn. Tools like Copilot are now in every developer's life — you can build them."</div>
+
+<div class="dialogue">বায়ান — স্পষ্ট প্রকাশ, নির্ভুল ভাষা। কুরআনে আল্লাহ বলেন: "তিনি মানুষকে শিখিয়েছেন বায়ান — স্পষ্ট ভাষা।" (৫৫:৪)। বায়ান হলো স্পষ্ট, নির্ভুল, অম্বিগুইটি-মুক্ত প্রকাশ। PL গবেষণা হলো বায়ান — এমন ভাষা ডিজাইন করা যেখানে অম্বিগুইটি নেই, ভুল সম্ভব নয়। একটা ভালো type system হলো বায়ান — প্রতিটা শব্দের অর্থ নির্দিষ্ট। AI4SE হলো বায়ান-এর প্রসার — AI স্পষ্ট কোড লেখে, মানুষের ভাষাকে মেশিনের ভাষায় রূপান্তর করে। যে বায়ান তৈরি করে, সে যোগাযোগের স্রষ্টা।</div>
+<div class="dialogue en">Bayan — clear expression, precise language. Allah says: "He taught man bayan — clear speech." (55:4). Bayan is clear, precise, unambiguous expression. PL research is bayan — designing languages where there's no ambiguity, where error is impossible. A good type system is bayan — each word's meaning is fixed. AI4SE is the extension of bayan — AI writes clear code, transforming human language into machine language. One who creates bayan, is a creator of communication.</div>
+
+<div class="secret-box">🔤 PL + AI4SE: SE-র সবচেয়ে গভীর সীমানা। PL = ভাষা নিরাপদ (Rust, formal), AI4SE = LLM কোড (Copilot, agent, 🔥🔥🔥)। মিলন = verified autonomous coding (AlphaProof)। AI4SE = তোমার secondary পছন্দ।</div>`,
+  senior:{
+    title:"PL/AI4SE PhD — Secondary Pick",
+    body:`<p><strong>AI4SE = তোমার secondary pick:</strong> তুমি developer, AI আগ্রহী — Copilot/Cursor নিয়ে গবেষণা = perfect fit। তুমি real codebase, real workflow জানো — এটা AI4SE-তে বিরল ও মূল্যবান। GitHub, Anthropic, Cursor, Replit — সবাই hire করে।</p><p><strong>SWE-bench দিয়ে শুরু:</strong> SWE-bench (real GitHub issue solve) একটা baseline রান করো, নতুন approach বা tool যোগ করো। একটা SWE-bench পেপার = ICSE/FSE workshop entry। এখন সবচেয়ে হট benchmark।</p><p><strong>Code agent বানাও:</strong> একটা simple autonomous SWE agent (Devin-এর মতো) GitHub-এ — tool use, planning। এটা concrete, demonstrable, high-impact। তোমার AI agent জ্ঞান (Book 12) কাজে দেবে।</p><p><strong>pure PL = গাণিতিক:</strong> formal verification, Lean/Coq — গণিত শক্ত হলে যাও। AlphaProof (LLM + Lean) crossover = সবচেয়ে গভীর frontier। 'Software Foundations' (Pierce, ফ্রি) দিয়ে type theory শুরু করো।</p>`
+  }
 });
