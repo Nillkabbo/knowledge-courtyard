@@ -102,6 +102,47 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .senior-insight .title{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.5rem}
 .senior-insight p{font-size:.85rem;color:var(--ink-dim);line-height:1.7;margin-bottom:.4rem}
 
+.expert-insight{background:linear-gradient(135deg,rgba(240,199,94,.07),rgba(232,112,74,.05));border:1px solid rgba(240,199,94,.3);border-radius:16px;padding:1.1rem 1.3rem;margin:1.2rem 0}
+.expert-insight .label{font-size:.7rem;color:var(--gold-bright);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:.5rem}
+.expert-insight .title{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.5rem}
+.expert-insight p{font-size:.85rem;color:var(--ink-dim);line-height:1.7;margin-bottom:.4rem}
+.expert-insight strong{color:var(--gold-bright)}
+
+/* ── DIAGRAMS ── */
+.story-text .diagram{background:linear-gradient(135deg,rgba(16,36,32,.7),rgba(6,14,12,.85));border:1px solid var(--panel-border);border-radius:14px;padding:1rem;margin:1.3rem 0;overflow:hidden}
+.story-text .diagram svg{display:block;width:100%;height:auto;max-width:580px;margin:0 auto;font-family:'Courier New',monospace}
+.story-text .diagram .diag-cap{font-size:.72rem;color:var(--ink-mute);text-align:center;margin-top:.6rem;font-style:italic}
+.story-text .diagram .diag-title{font-family:'Cinzel',serif;font-size:.76rem;color:var(--gold-bright);text-align:center;margin-bottom:.5rem;letter-spacing:.08em;text-transform:uppercase}
+.story-text .diagram svg .grid-line{stroke:rgba(212,167,71,.1);stroke-width:1}
+.story-text .diagram svg .axis{stroke:var(--ink-mute);stroke-width:1.5}
+.story-text .diagram svg .node{fill:rgba(16,36,32,.95);stroke:var(--teal-bright);stroke-width:2}
+.story-text .diagram svg .node-fire{fill:rgba(232,112,74,.2);stroke:var(--fire);stroke-width:2.5}
+.story-text .diagram svg .node-teal{fill:rgba(45,212,191,.16);stroke:var(--teal-bright);stroke-width:2}
+.story-text .diagram svg .node-leaf{fill:rgba(82,196,26,.18);stroke:var(--leaf);stroke-width:2}
+.story-text .diagram svg .node-moon{fill:rgba(91,158,255,.18);stroke:var(--moon);stroke-width:2}
+.story-text .diagram svg .node-purple{fill:rgba(179,127,235,.18);stroke:var(--purple);stroke-width:2}
+.story-text .diagram svg .node-gold{fill:rgba(212,167,71,.18);stroke:var(--gold-bright);stroke-width:2}
+.story-text .diagram svg .node-rose{fill:rgba(240,98,146,.18);stroke:var(--rose);stroke-width:2}
+.story-text .diagram svg .edge{stroke:var(--ink-dim);stroke-width:1.5;fill:none}
+.story-text .diagram svg .edge-fire{stroke:var(--fire);stroke-width:2.2;fill:none}
+.story-text .diagram svg .edge-teal{stroke:var(--teal-bright);stroke-width:2;fill:none}
+.story-text .diagram svg .edge-gold{stroke:var(--gold-bright);stroke-width:2;fill:none}
+.story-text .diagram svg .edge-leaf{stroke:var(--leaf);stroke-width:2;fill:none}
+.story-text .diagram svg .arrowhead-fire{fill:var(--fire)}
+.story-text .diagram svg .arrowhead-teal{fill:var(--teal-bright)}
+.story-text .diagram svg .arrowhead-gold{fill:var(--gold-bright)}
+.story-text .diagram svg .arrowhead-leaf{fill:var(--leaf)}
+.story-text .diagram svg .arrowhead-moon{fill:var(--moon)}
+.story-text .diagram svg .arrowhead-purple{fill:var(--purple)}
+.story-text .diagram svg .lbl{fill:var(--ink);font-size:12px;font-weight:700;text-anchor:middle;dominant-baseline:central}
+.story-text .diagram svg .lbl-sm{fill:var(--ink-dim);font-size:10px;text-anchor:middle}
+.story-text .diagram svg .lbl-fire{fill:var(--fire);font-size:11px;font-weight:700;text-anchor:middle}
+.story-text .diagram svg .lbl-teal{fill:var(--teal-bright);font-size:11px;font-weight:700;text-anchor:middle}
+.story-text .diagram svg .lbl-leaf{fill:var(--leaf);font-size:11px;font-weight:700;text-anchor:middle}
+.story-text .diagram svg .lbl-gold{fill:var(--gold-bright);font-size:11px;font-weight:700;text-anchor:middle}
+.story-text .diagram svg .lbl-moon{fill:var(--moon);font-size:11px;font-weight:700;text-anchor:middle}
+.story-text .diagram svg .lbl-purple{fill:var(--purple);font-size:11px;font-weight:700;text-anchor:middle}
+
 .recall-box{background:rgba(91,158,255,.05);border:1px solid rgba(91,158,255,.2);border-radius:16px;padding:1.1rem 1.3rem;margin:1.2rem 0}
 .recall-title{font-weight:700;color:var(--moon);margin-bottom:.5rem;font-size:.85rem}
 .recall-q{font-size:.95rem;color:var(--ink);margin-bottom:.7rem;line-height:1.7}

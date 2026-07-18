@@ -189,6 +189,13 @@ function renderStory(idx){
       ${door.senior.body}
     </div>` : '';
 
+  const expertHTML = door.expert ? `
+    <div class="expert-insight">
+      <div class="label">🏆 এক্সপার্ট স্তর — Expert Level</div>
+      <div class="title">${door.expert.title}</div>
+      ${door.expert.body}
+    </div>` : '';
+
   document.getElementById('story-container').innerHTML=`
     <div class="story-progress">কক্ষ ${door.num} / ${doors.length}${done?' — ✅ সম্পন্ন':''}</div>
     <div class="story-door-banner">
@@ -198,6 +205,7 @@ function renderStory(idx){
     </div>
     <div class="story-text">${door.story}</div>
     ${insightHTML}
+    ${expertHTML}
     ${!done?recallHTML:''}
     <div class="continue-area">
       ${!done
