@@ -26,11 +26,62 @@ doors.push({
 <div class="dialogue">ক্লেইভ থম্পসন একে বলেছেন "complete spectrum overload।" যখন সবকিছু পাওয়া যায়, তখন সবচেয়ে দুর্লভ সম্পদ হয়ে দাঁড়ায় দৃষ্টি (attention) এবং গুণগত বিচার (discernment)। শেখার সুপারপাওয়ার আসলে "কত দ্রুত শিখছেন" তা নয়, বরং "কী শিখবেন এবং কী উপেক্ষা করবেন" — সেই নির্বাচনই আসল দক্ষতা।</div>
 <div class="dialogue en">"Clive Thompson called this 'complete spectrum overload.' When everything is available, attention and discernment become the rarest resources. The learning superpower isn't 'how fast you learn' — it's 'what to learn and what to ignore' — that selection is the real skill."</div>
 
-<div class="callout info"><span class="co-icon">🌊</span><div><strong>যা "২০-ঘণ্টা" ভিডিওটি মিস করেছে:</strong> ১৯৯০-এ একটা পেপার খুঁজতে লাইব্রেরিতে যেতে হতো; আজ কয়েক সেকেন্ড। কিন্তু <em>তথ্যের আধিক্যই</em> এখন নতুন বাধা (Clive Thompson-এর "complete spectrum overload")। সুপারপাওয়ার "কত দ্রুত শিখছ" নয় — "কী শিখবে ও কী উপেক্ষা করবে"।</div></div>
+<div class="callout info"><span class="co-icon">🌊</span><div><strong>যা "২০-ঘণ্টা" ভিডিওটি মিস করেছে:</strong> ১৯৯০-ে একটা পেপার খুঁজতে লাইব্রেরিতে যেতে হতো; আজ কয়েক সেকেন্ড। কিন্তু <em>তথ্যের আধিক্যই</em> এখন নতুন বাধা (Clive Thompson-এর "complete spectrum overload")। সুপারপাওয়ার "কত দ্রুত শিখছ" নয় — "কী শিখবে ও কী উপেক্ষা করবে"।</div></div>
+
+<div class="diagram">
+  <div class="diag-title">Attention Lighthouse — আলো সব দিকে নয়, নির্বাচিত দিকে</div>
+  <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowAmberD1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#c4b5fd"/></marker>
+    </defs>
+    <!-- lighthouse beam cone (focused) -->
+    <path d="M 280 110 L 420 60 L 420 160 Z" fill="rgba(196,181,253,.15)" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <!-- the dark/ignored directions (faint signals) -->
+    ${[200,160,240,400,440,360].map((x,i)=>`<circle cx="${x}" cy="${i%2?70:150}" r="4" fill="#5e5c74" opacity=".5"/>`).join('')}
+    <!-- lighthouse body -->
+    <rect class="cell" x="245" y="85" width="40" height="50" rx="3" style="stroke:#a78bfa"/>
+    <rect class="cell-hot" x="255" y="70" width="20" height="15" rx="3"/>
+    <text class="lbl-sm" x="265" y="150" fill="#c4b5fd">বাতিকর (নির্বাচক)</text>
+    <!-- focused target -->
+    <rect class="cell-good" x="425" y="95" width="80" height="32" rx="5"/>
+    <text class="lbl-sm" x="465" y="115" fill="#52c41a">গুরুত্বপূর্ণ</text>
+    <text class="lbl-sm" x="465" y="145" fill="#5e5c74" style="font-size:9px">আলো = attention</text>
+    <!-- ignored label -->
+    <text class="lbl-sm" x="120" y="50" fill="#5e5c74">noise (উপেক্ষা)</text>
+    <text class="lbl-sm" x="280" y="200" fill="#5e5c74">সব তথ্যে আলো দিলে মস্তিষ্ক ডোবে — নির্বাচনই আসল দক্ষতা</text>
+  </svg>
+  <div class="diag-cap">বাতিকর সব জাহাজের ডাকে সাড়া দেন না — ঘোরে আলো, থাকে নির্বাচন। তোমার attention-ও তেমন: নির্বাচন করো কোথায় আলো দেবে, বাকি অন্ধকারে থাকুক।</div>
+</div>
+
+<div class="code-block">Attention as Currency — তিন ফিল্টার:
+
+  শেখার আগে ৩ প্রশ্ন:
+    ১. SOURCE  — কে বলছে? কেন? প্রমাণ কী?
+    ২. RELEVANCE — আমার লক্ষ্যের সাথে সম্পর্কিত?
+    ৩. DEPTH   — পৃষ্ঠতল, নাকি গভীর?
+
+  নিয়ম: "এটা কি আমার সময়ের যোগ্য?"
+    হ্যাঁ → যাও।  না → উপেক্ষা করো।  নীরবতাও দক্ষতা।
+
+  ⚠️ ফাঁদ: অ্যালগরিদম বেছে দিলে তুমি নির্বাচক নও —
+     consumer. নিজে বেছে নাও — তবেই বাতিকর।</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">~৭৪,০০০</div><div class="sc-label">Google query/সেকেন্ড — তথ্যের আধিক্য</div></div>
+<div class="stat-card"><div class="sc-num">~২৩ মিনিট</div><div class="sc-label">ফোন ডিস্ট্রাকশনের পর ফোকাসে ফেরার সময় (Mark)</div></div>
+<div class="stat-card"><div class="sc-num">নির্বাচন</div><div class="sc-label">সবচেয়ে দুর্লভ দক্ষতা — কী গ্রহণ, কী উপেক্ষা</div></div>
+</div>
+
 <table class="kv-table"><tr><th>ফিল্টার</th><th>প্রশ্ন</th></tr>
 <tr><td class="hl">Source verification</td><td>কে বলছে? কেন? প্রমাণ কী?</td></tr>
 <tr><td class="hl">Relevance filter</td><td>এটা কি আমার লক্ষ্যের সাথে সম্পর্কিত?</td></tr>
 <tr><td class="hl">Depth vs surface</td><td>এটা কি পৃষ্ঠতল, নাকি গভীর?</td></tr></table>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ তথ্যের ভোক্তা</div>সব পড়ো, সব দেখো, সব কোর্স করো — FOMO দিয়ে চলো। অ্যালগরিদম যা দেখায় তা দেখো। ফলাফল: বিশাল তথ্য, শূন্য গভীরতা। "জানি" মনে হয়, প্রয়োগ করতে গেলে ফাঁকা।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ মনোযোগের নির্বাচক</div>পড়ার আগে জিজ্ঞেস করো — "এটা কি সময়ের যোগ্য?" হ্যাঁ হলে গভীরে যাও, না হলে উপেক্ষা করো। কম পড়ো কিন্তু গভীর পড়ো। নীরবতাও একটা দক্ষতা।</div>
+</div>
+
 <div class="callout tip"><span class="co-icon">🧭</span><div><strong>নিয়ম:</strong> শেখার আগে জিজ্ঞেস করো — "এটা কি আমার সময়ের যোগ্য?" হ্যাঁ হলে যাও, না হলে উপেক্ষা করো। নীরবতাও একটা দক্ষতা।</div></div>
 
 <div class="dialogue">নূর — আলো। কুরআনে আল্লাহ বলেন — "আল্লাহ আসমান ও জমিনের নূর।" (২৪:৩৫)। আলো সব জায়গায় নয় — নির্দিষ্ট দিকে। বাতিঘরও তেমনি — সব দিকে নয়, নির্দিষ্ট পথে। তোমার মনোযোগও নূর। সব তথ্যে নয় — যা গুরুত্বপূর্ণ, ঠিক সেখানে। অন্য সব অন্ধকারে থাকুক। এটাই বাতিকরের শিল্প — নির্বাচনের শিল্প।</div>
@@ -66,6 +117,54 @@ doors.push({
 <tr><td class="hl">১০,০০০ ঘণ্টা</td><td>World-class (Ericsson)</td><td>বিশ্বসেরা; deliberate practice লাগে</td></tr></table>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> Macnamara et al. (2014) meta-analysis দেখায় deliberate practice শুধু ~১-২৬% variance ব্যাখ্যা করে (game-এ বেশি, profession-এ কম)। ১০,০০০ ঘণ্টা necessary কিন্তু sufficient নয় — talent, coaching, starting age, resources-ও গুরুত্বপূর্ণ। "ঘণ্টা গোনা" নয়, "কেমন অনুশীলন" সেটাই আসল।</div></div>
 <div class="callout info"><span class="co-icon">🎯</span><div>এই তিনটি একে অপরের প্রতিদ্বন্দ্বী নয় — ভিন্ন লক্ষ্যের কথা বলে। "২০ ঘণ্টাই যথেষ্ট" ভাবলে তুমি মাঝামাঝি পর্যায়ে আটকে যাবে।</div></div>
+
+<div class="diagram">
+  <div class="diag-title">তিন স্তম্ভ — তিন লক্ষ্য, তিন সময়</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <line class="axis" x1="40" y1="190" x2="520" y2="190"/>
+    <!-- three pillars of increasing height -->
+    <rect class="cell-good" x="80" y="150" width="80" height="40" rx="4"/>
+    <text class="lbl-sm" x="120" y="143" fill="#52c41a" style="font-weight:700">২০ ঘণ্টা</text>
+    <text class="lbl-sm" x="120" y="172" fill="#e8e6f0">Decent</text>
+    <text class="lbl-sm" x="120" y="208" fill="#5e5c74" style="font-size:9px">কাজ চালানো</text>
+
+    <rect class="cell-cyan" x="240" y="100" width="80" height="90" rx="4"/>
+    <text class="lbl-sm" x="280" y="93" fill="#3dd6c4" style="font-weight:700">~১,০০০ ঘণ্টা</text>
+    <text class="lbl-sm" x="280" y="140" fill="#e8e6f0">Professional</text>
+    <text class="lbl-sm" x="280" y="208" fill="#5e5c74" style="font-size:9px">পেশাদার মান</text>
+
+    <rect class="cell-hot" x="400" y="45" width="80" height="145" rx="4"/>
+    <text class="lbl-sm" x="440" y="38" fill="#ff6b35" style="font-weight:700">১০,০০০ ঘণ্টা</text>
+    <text class="lbl-sm" x="440" y="115" fill="#e8e6f0">World-class</text>
+    <text class="lbl-sm" x="440" y="208" fill="#5e5c74" style="font-size:9px">বিশ্বসেরা</text>
+
+    <text class="lbl-sm" x="280" y="225" fill="#5e5c74">একে অপরের প্রতিদ্বন্দ্বী নয় — ভিন্ন লক্ষ্য। কোনটা চাও ঠিক করো।</text>
+  </svg>
+  <div class="diag-cap">প্রতিটি স্তম্ভ আলাদা লক্ষ্যের জন্য। ২০ ঘণ্টা = শূন্য থেকে functional। ১,০০০ = পেশাদার। ১০,০০০ = deliberate practice দিয়ে বিশ্বসেরা। একটাকে অন্যটার জায়গায় বসিও না।</div>
+</div>
+
+<div class="code-block">Three Milestones — লক্ষ্য অনুযায়ী সময় ও পদ্ধতি:
+
+  ২০ ঘণ্টা (Josh Kaufman):
+    ৪৫ মিনিট/দিন × ৩০ দিন। শূন্য → "কাজ চলবে"।
+    ⚠️ Dunning-Kruger ঝুঁকি — মনে হবে "পারি", আসলে অজ্ঞ।
+
+  ~১,০০০ ঘণ্টা:
+    ৬ মাস–১ বছর focused। পেশাদার — টাকা কামানো যায়।
+    জটিল সমস্যা সমাধানযোগ্য। feedback loop অপরিহার্য।
+
+  ১০,০০০ ঘণ্টা (Ericsson → Gladwell):
+    ৫–১০ বছর deliberate practice + coach + resources।
+    ⚠️ Macnamara (২০১৪): deliberate practice শুধু ~১–২৬% variance
+       ব্যাখ্যা করে। necessary, sufficient নয়। "ঘণ্টা গোনা" নয় —
+       "কেমন অনুশীলন" সেটাই আসল।</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">২০h</div><div class="sc-label">শূন্য → functional (Kaufman)</div></div>
+<div class="stat-card"><div class="sc-num">~১,০০০h</div><div class="sc-label">পেশাদার মান</div></div>
+<div class="stat-card"><div class="sc-num">১০,০০০h</div><div class="sc-label">বিশ্বসেরা (Ericsson)</div></div>
+<div class="stat-card"><div class="sc-num">১–২৬%</div><div class="sc-label">deliberate practice-র variance (Macnamara ২০১৪)</div></div>
+</div>
 
 <div class="dialogue">জশ কফম্যান — "The First 20 Hours" বইয়ের লেখক। তিনি বলেছেন যেকোনো দক্ষতার প্রথম ২০ ঘণ্টা সবচেয়ে গুরুত্বপূর্ণ — যেখানে তুমি শূন্য থেকে কিছু করতে পারো। কিন্তু ১০,০০০ ঘণ্টার ধারণাটি অ্যান্ডার্স এরিকসনের গবেষণা থেকে — যা ম্যালকম গ্ল্যাডওয়েল "Outliers"-এ জনপ্রিয় করেছিলেন। তবে এটি কেবল world-class mastery বা বিশ্বসেরা পর্যায়ের জন্য। এই দুটি নিয়ম একে অপরের প্রতিদ্বন্দ্বী নয় — তারা ভিন্ন ভিন্ন লক্ষ্যের কথা বলে।</div>
 <div class="dialogue en">"Josh Kaufman — author of 'The First 20 Hours.' He said the first 20 hours of any skill are most important — where you go from zero to functional. But the 10,000-hour concept comes from Anders Ericsson's research — popularized by Malcolm Gladwell in 'Outliers.' But that's for world-class mastery only. These two rules aren't rivals — they speak to different goals."</div>
