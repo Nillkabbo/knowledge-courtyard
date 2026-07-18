@@ -159,4 +159,11 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .kv-table th{color:var(--teal);font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em}
 .story-text .kv-table td.hl{color:var(--amber-bright);font-weight:600}
 .story-text .kv-table tr:last-child td{border-bottom:none}
+/* ══ PREMIUM RESEARCH VISUALS ══ */
+.story-text .svg-diagram{background:rgba(255,255,255,.02);border:1px solid var(--panel-border);border-radius:14px;padding:.9rem .6rem .7rem;margin:1.1rem 0;text-align:center}
+.story-text .svg-diagram svg{width:100%;height:auto;max-width:560px;display:block;margin:0 auto}
+.story-text .svg-caption{font-size:.68rem;color:var(--ink-mute);margin-top:.55rem;line-height:1.5;font-style:italic}
+.story-text .source-box{background:rgba(240,199,94,.05);border:1px dashed rgba(240,199,94,.32);border-radius:12px;padding:.7rem .9rem;margin:.9rem 0;font-size:.76rem;color:var(--ink-dim);line-height:1.65}
+.story-text .source-box .src-label{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:.3rem;display:block}
+.story-text .source-box strong{color:var(--ink)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}

@@ -31,16 +31,31 @@ doors.push({
 <table class="kv-table"><tr><th>পদ্ধতি (Dunlosky et al., 2013)</th><th>কার্যকারিতা</th></tr>
 <tr><td class="hl">❌ Rereading</td><td>LOW — পড়ে পড়ে মনে রাখার চেষ্টা</td></tr>
 <tr><td class="hl">❌ Highlighting</td><td>LOW — আন্ডারলাইন করা</td></tr>
-<tr><td class="hl">❌ Summarizing</td><td>LOW — সারসংক্ষেপ লেখা</td></tr>
+<tr><td class="hl">❌ Summarizing</td><td>LOW — সারসংক্ষেপ লেখা (দক্ষতা-নির্ভর, বেশিরভাগ শিক্ষার্থী ভালো করে না)</td></tr>
+<tr><td>➖ Elaborative interrogation / Self-explanation</td><td>MODERATE — "কেন এটা সত্য?" নিজেকে প্রশ্ন করা</td></tr>
 <tr><td class="hl">✅ Practice testing</td><td>HIGH — নিজেকে পরীক্ষা (active recall)</td></tr>
 <tr><td class="hl">✅ Distributed practice</td><td>HIGH — বিরতিতে অনুশীলন (spaced repetition)</td></tr></table>
 <div class="callout tip"><span class="co-icon">🪞</span><div>Active recall শুধু rereading-এর চেয়ে অনেক বেশি কার্যকর — কারণ মস্তিষ্ক তথ্য <em>বের করতে</em> গেলে শক্ত হয়, শুধু ভেতরে রাখলে নয়। বই বন্ধ করে যা মনে আছে লেখো; যা মনে নেই সেটাই তোমার গ্যাপ।</div></div>
+
+<div class="svg-diagram"><svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+<line x1="30" y1="190" x2="530" y2="190" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+<text x="130" y="16" text-anchor="middle" fill="#e8e6f0" font-size="10" font-weight="700">৫ মিনিট পর</text>
+<rect x="60" y="60" width="46" height="130" fill="#95de64" opacity=".85"/><text x="83" y="52" text-anchor="middle" fill="#95de64" font-size="10">83%</text><text x="83" y="205" text-anchor="middle" fill="#9290a8" font-size="8">Reread ৪x</text>
+<rect x="150" y="86" width="46" height="104" fill="#f06292" opacity=".85"/><text x="173" y="78" text-anchor="middle" fill="#f06292" font-size="10">71%</text><text x="173" y="205" text-anchor="middle" fill="#9290a8" font-size="8">Read+Test 3x</text>
+<line x1="230" y1="20" x2="230" y2="190" stroke="rgba(255,255,255,.12)" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="360" y="16" text-anchor="middle" fill="#e8e6f0" font-size="10" font-weight="700">১ সপ্তাহ পর</text>
+<rect x="280" y="114" width="46" height="76" fill="#95de64" opacity=".55"/><text x="303" y="106" text-anchor="middle" fill="#95de64" font-size="10">40%</text><text x="303" y="205" text-anchor="middle" fill="#9290a8" font-size="8">Reread ৪x</text>
+<rect x="370" y="74" width="46" height="116" fill="#f06292" opacity=".95"/><text x="393" y="66" text-anchor="middle" fill="#f06292" font-size="10">61%</text><text x="393" y="205" text-anchor="middle" fill="#9290a8" font-size="8">Read+Test 3x</text>
+<text x="470" y="140" fill="#ff6b35" font-size="9">রেখা উল্টে যায়!</text>
+</svg><div class="svg-caption">Roediger & Karpicke (2006): ৫ মিনিট পর rereading এগিয়ে (৮৩% বনাম ৭১%) — কিন্তু ১ সপ্তাহ পর সম্পূর্ণ উল্টে যায় (৪০% বনাম ৬১%)। ছোট মেয়াদে যা "কাজ করছে মনে হয়" তা দীর্ঘমেয়াদে ব্যর্থ হতে পারে। / Illusion of competence in numbers: rereading wins short-term, retrieval practice wins where it matters.</div></div>
+
+<div class="source-box"><span class="src-label">📚 যাচাইকৃত উৎস — Verified Source</span><strong>Roediger & Karpicke (2006)</strong>, <em>Psychological Science</em> — উপরের সংখ্যাগুলো তাদের Experiment 2 থেকে। মেটা-বিশ্লেষণ: <strong>Dunlosky, Rawson, Marsh, Nathan & Willingham (2013)</strong>, <em>Psychological Science in the Public Interest</em>, 14(1), 4-58 — ১০টি পদ্ধতি তুলনা করে "practice testing" ও "distributed practice"-কে সর্বোচ্চ রেট দেয়।</div>
 
 <div class="dialogue">মুহাসাবা — নিজেকে যাচাই করা। উমর (রা) বলেছেন — "নিজেকে বিচার করো আগে, তোমাকে বিচার করা হবে।" পরীক্ষার আগে নিজেকে পরীক্ষা করো। বই বন্ধ করে লেখো — কী মনে আছে। যা মনে নেই — সেটাই তোমার গ্যাপ। সেটাই তোমার পরের ফোকাস। আয়না কাজ করে যখন তুমি সত্য দেখতে চাও — ভ্রম নয়।</div>
 <div class="dialogue en">"Muhasabah — self-examination. Umar (RA) said — 'Judge yourselves before you are judged.' Test yourself before the exam. Close the book, write — what do you remember. What's missing — that's your gap. That's your next focus. The mirror works when you want to see truth — not illusion."</div>`,
   senior:{
     title:"Active Recall in Practice — বই বন্ধ করো",
-    body:`<p><strong>পড়ার পর:</strong> বই বন্ধ করো। খালি পাতায় যা মনে আছে লেখো। মনে নেই? — সেটাই তোমার পরের লক্ষ্য।</p><p><strong>প্র্যাকটিস টেস্ট:</strong> পুরনো প্রশ্ন, কুইজ, ফ্ল্যাশকার্ড। নিজেকে পরীক্ষা করো — বারবার।</p><p><strong>Blank page technique:</strong> একটা কনসেপ্ট নাও, খালি পাতায় মানচিত্র আঁকো — সব শাখা, সব সংযোগ। যা মিস করো — সেখানে ফিরে যাও।</p>`
+    body:`<p><strong>পড়ার পর:</strong> বই বন্ধ করো। খালি পাতায় যা মনে আছে লেখো। মনে নেই? — সেটাই তোমার পরের লক্ষ্য।</p><p><strong>প্র্যাকটিস টেস্ট:</strong> পুরনো প্রশ্ন, কুইজ, ফ্ল্যাশকার্ড। নিজেকে পরীক্ষা করো — বারবার।</p><p><strong>Blank page technique:</strong> একটা কনসেপ্ট নাও, খালি পাতায় মানচিত্র আঁকো — সব শাখা, সব সংযোগ। যা মিস করো — সেখানে ফিরে যাও।</p><p><strong>মনে রাখো:</strong> রিডিং সেশনের ঠিক পরে নিজেকে পরীক্ষা করলে সবচেয়ে খারাপ লাগবে — কম মনে থাকবে rereading-এর চেয়ে। এটাই স্বাভাবিক (desirable difficulty)। কষ্ট = গভীর শেখার লক্ষণ, ব্যর্থতার নয়।</p>`
   }
 });
 
@@ -69,11 +84,20 @@ doors.push({
 <tr><td>পরীক্ষায় কোন পদ্ধতি কোনটা — গুলিয়ে যায়</td><td>পরীক্ষায় প্রতিটা আলাদা চেনা যায়</td></tr></table>
 <div class="callout tip"><span class="co-icon">🔀</span><div>গবেষণায় interleaving-এ retention উল্লেখযোগ্য বেশি — কারণ মস্তিষ্ক শুধু নিয়ম নয়, <em>পার্থক্য</em> শেখে। কঠিন লাগা মানেই গভীর শেখার সংকেত; সহজ = অগভীর।</div></div>
 
+<div class="svg-diagram"><svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+<line x1="30" y1="170" x2="530" y2="170" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+<rect x="140" y="136" width="70" height="34" fill="#f06292" opacity=".85"/><text x="175" y="128" text-anchor="middle" fill="#f06292" font-size="13" font-weight="700">20%</text><text x="175" y="188" text-anchor="middle" fill="#9290a8" font-size="9">Blocked (AAAA·BBBB)</text>
+<rect x="330" y="45" width="70" height="125" fill="#b37feb" opacity=".9"/><text x="365" y="37" text-anchor="middle" fill="#b37feb" font-size="13" font-weight="700">63%</text><text x="365" y="188" text-anchor="middle" fill="#9290a8" font-size="9">Interleaved (ABAB)</text>
+<text x="280" y="16" text-anchor="middle" fill="#e8e6f0" font-size="10" font-weight="700">পরদিন টেস্ট স্কোর — গণিত সমস্যা</text>
+</svg><div class="svg-caption">Taylor & Rohrer (2010): একই মোট অনুশীলন সময়ে, interleaved গ্রুপ blocked গ্রুপের প্রায় তিনগুণ স্কোর করেছে (Cohen's d = 1.34)। ২০২০-এর বড় classroom study (৭৮৭ শিক্ষার্থী)-তেও উল্লেখযোগ্য প্রভাব (d = 0.83) মিলেছে।</div></div>
+
+<div class="source-box"><span class="src-label">📚 যাচাইকৃত উৎস — Verified Source</span><strong>Taylor & Rohrer (2010)</strong>, <em>Applied Cognitive Psychology</em> — গণিত সমস্যায় interleaving ৩x স্কোর বাড়ায়। বাস্তব ক্লাসরুমে নিশ্চিতকরণ: <strong>Rohrer, Dedrick, Hartwig & Cheung (2020)</strong>, <em>Journal of Educational Psychology</em> — ৫টি স্কুলের ৫৪টি ক্লাসে randomized controlled trial।</div>
+
 <div class="dialogue">কুরআনে আল্লাহ বলেন — "আল্লাহর বাণী পড়া হয় তোমাদের প্রতি, কিন্তু তোমরা তা থেকে মুখ ফিরিয়ে নাও?" তাদাব্বুর — বৈচিত্র্যে চিন্তা। কুরআনে গল্প, নিয়ম, দৃষ্টান্ত, বিজ্ঞান — মিশ্র। কোনো সূরা শুধু এক বিষয়ে নয়। ইন্টারলিভিং। প্রতিটা প্রসঙ্গ অন্যকে সমৃদ্ধ করে। শেখাও তেমনি — গণিত, পদার্থ, রসায়ন আলাদা নয়। সংযোগে বোঝা যায়।</div>
 <div class="dialogue en">"Allah says — 'Are the verses of Allah recited to you, yet you turn away?' Tadabbur — varied reflection. The Quran has stories, laws, parables, science — mixed. No surah is one topic only. Interleaving. Each context enriches the others. Learning too — math, physics, chemistry aren't separate. They're understood in connection."</div>`,
   senior:{
     title:"How to Interleave — মিশ্র স্টাডি সেশন",
-    body:`<p><strong>এক টপিক ঘণ্টার পর ঘণ্টা নয়:</strong> প্রতিটা সেশনে ২-৩ টপিক মিশ্র। ৩০ মিনিট গণিত → ৩০ মিনিট পদার্থ → ৩০ মিনিট রসায়ন।</p><p><strong>সমস্যা মিশ্র:</strong> এক ধরনের নয় — বিভিন্ন ধরনের সমস্যা মিশ্র। সহজ আর কঠিন।</p><p><strong>কঠিন মনে হলে ভালো:</strong> interleaving কঠিন মনে হয় — কিন্তু সেটাই গভীর শেখার সংকেত। সহজ = অগভীর।</p>`
+    body:`<p><strong>এক টপিক ঘণ্টার পর ঘণ্টা নয়:</strong> প্রতিটা সেশনে ২-৩ টপিক মিশ্র। ৩০ মিনিট গণিত → ৩০ মিনিট পদার্থ → ৩০ মিনিট রসায়ন।</p><p><strong>সমস্যা মিশ্র:</strong> এক ধরনের নয় — বিভিন্ন ধরনের সমস্যা মিশ্র। সহজ আর কঠিন।</p><p><strong>কঠিন মনে হলে ভালো:</strong> interleaving কঠিন মনে হয় — কিন্তু সেটাই গভীর শেখার সংকেত। সহজ = অগভীর।</p><p><strong>শুরু দেরি লাগবে:</strong> Rohrer-এর ক্লাসরুম স্টাডিতে শিক্ষকরা বলেছেন interleaved assignment বেশি সময় নেয় — স্বাভাবিক। ছোট শুরু করো: সপ্তাহে ২টা সেশনে মিশ্র সমস্যা যোগ করো।</p>`
   }
 });
 
@@ -98,8 +122,27 @@ doors.push({
 
 <table class="kv-table"><tr><th>Focus mode (লেজার)</th><th>Diffuse mode (বন্যার আলো)</th></tr>
 <tr><td>কেন্দ্রিত, যৌক্তিক, ক্রমিক</td><td>শিথিল, সৃজনশীল, সংযোগমূলক</td></tr>
-<tr><td>Prefrontal cortex সক্রিয়</td><td>Default mode network সক্রিয়</td></tr>
+<tr><td>Prefrontal cortex / task-positive network সক্রিয়</td><td>Default mode network (DMN) সক্রিয়</td></tr>
 <tr><td>সমস্যা সমাধান, অনুশীলন, গভীর পড়া</td><td>সৃজনশীল ধারণা, সংযোগ, "আহা!" মুহূর্ত</td></tr></table>
+<div class="svg-diagram"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg">
+<text x="130" y="20" text-anchor="middle" fill="#36d6e7" font-size="12" font-weight="700">🎯 FOCUS</text>
+<text x="430" y="20" text-anchor="middle" fill="#95de64" font-size="12" font-weight="700">☁️ DIFFUSE</text>
+<line x1="280" y1="10" x2="280" y2="195" stroke="rgba(255,255,255,.08)"/>
+<g fill="#36d6e7" opacity=".8">
+<circle cx="80" cy="55" r="4"/><circle cx="120" cy="55" r="4"/><circle cx="160" cy="55" r="4"/><circle cx="180" cy="95" r="4"/><circle cx="80" cy="95" r="4"/><circle cx="120" cy="95" r="4"/><circle cx="160" cy="95" r="4"/>
+<circle cx="80" cy="135" r="4"/><circle cx="120" cy="135" r="4"/><circle cx="160" cy="135" r="4"/><circle cx="100" cy="115" r="4"/><circle cx="140" cy="115" r="4"/><circle cx="100" cy="75" r="4"/><circle cx="140" cy="75" r="4"/>
+</g>
+<path d="M100,45 L118,73 L98,98 L136,112 L108,133" fill="none" stroke="#e8e6f0" stroke-width="1.6" opacity=".6"/>
+<text x="130" y="178" text-anchor="middle" fill="#9290a8" font-size="9">ঘন বাম্পার — বল ছোট, পরিচিত পথে ঘোরে</text>
+<g fill="#95de64" opacity=".75">
+<circle cx="330" cy="45" r="4"/><circle cx="500" cy="60" r="4"/><circle cx="360" cy="120" r="4"/><circle cx="450" cy="150" r="4"/><circle cx="410" cy="65" r="4"/><circle cx="480" cy="130" r="4"/><circle cx="340" cy="160" r="4"/>
+</g>
+<path d="M330,45 L410,65 L450,150 L360,120 L500,60" fill="none" stroke="#e8e6f0" stroke-width="1.6" opacity=".6"/>
+<text x="430" y="178" text-anchor="middle" fill="#9290a8" font-size="9">বিরল বাম্পার — বল দূরের, নতুন সংযোগে যায়</text>
+</svg><div class="svg-caption">Oakley-র পিনবল রূপক: focus mode-এ বাম্পার ঘন — পরিচিত সমাধান দ্রুত পাও। diffuse mode-এ বাম্পার বিরল — বল দূরে যায়, অপ্রত্যাশিত সংযোগ খুঁজে পায় ("আহা!")। / Oakley's pinball metaphor: tight bumpers = familiar solutions fast; sparse bumpers = the ball travels far, finding unexpected connections.</div></div>
+
+<div class="source-box"><span class="src-label">📚 যাচাইকৃত উৎস — Verified Source</span><strong>Barbara Oakley</strong>, <em>"A Mind for Numbers"</em> (TarcherPerigee, 2014) ও Coursera কোর্স <em>"Learning How to Learn"</em> (Oakley & Terrence Sejnowski, 2015) — ইতিহাসের সবচেয়ে বেশি নথিভুক্ত MOOC-গুলোর একটি। স্নায়ুবৈজ্ঞানিক ভিত্তি: task-positive network বনাম default mode network (DMN) — একই সময়ে দুটো পূর্ণভাবে সক্রিয় থাকে না, তাই দুই মোডের মধ্যে সচেতন স্যুইচিং জরুরি।</div>
+
 <div class="callout tip"><span class="co-icon">🎯</span><div><strong>The cycle (Pomodoro):</strong> Focus ২৫-৫০ মিনিট → break ৫-১৫ মিনিট → আবার focus। Focus-এ তথ্য ঢোকাও, diffuse-এ সংযোগ করো। "আহা!" আসে বিশ্রামে — গোসল, হাঁটা, ঘুমের আগে (Barbara Oakley, "Learning How to Learn")। <strong>ঘুম = চূড়ান্ত diffuse mode।</strong></div></div>
 
 <div class="dialogue">বারবারা ওকলি — "Learning How to Learn" কোর্সের লেখক। তিনি বলেন — মস্তিষ্কের দুই মোড। Focus mode-এ তুমি তথ্য ঢোকাও। Diffuse mode-এ তুমি সংযোগ করো। "আহা!" মুহূর্তগুলো ফোকাসে নয় — বিশ্রামে আসে। গোসলে, হাঁটতে, ঘুমানোর আগে। কারণ তখন diffuse mode কাজ করে — চারদিকে সংযোগ খুঁজছে।</div>
@@ -109,7 +152,7 @@ doors.push({
 <div class="dialogue en">"Itikaf — in the last ten days of Ramadan, seclusion in the masjid. The Prophet (pbuh) practiced it — alone, with the Quran, focused. But itikaf isn't permanent — ten days. Then he returned to the world — to people, to work. Focus and diffuse — both needed. Only focus means burnout. Only diffuse means laziness. Balance is needed."</div>`,
   senior:{
     title:"The Learning Cycle — ফোকাস-বিশ্রাম-ফোকাস",
-    body:`<p><strong>Pomodoro:</strong> ২৫ মিনিট focus + ৫ মিনিট break। বাজে বাজে — চক্র।</p><p><strong>Focus-এ ফোন নয়:</strong> এক বার নোটিফিকেশন দেখলে ২৩ মিনিট লাগে ফিরে আসতে।</p><p><strong>Break-এ হাঁটো:</strong> হাঁটা, পানি, জানালা থেকে দূর দেখা। ফোন নয়।</p><p><strong>ঘুম = শেখা:</strong> ঘুমের সময় মস্তিষ্ক দিনের তথ্য সাজায়। ঘুম ছাড়া শেখা অসম্পূর্ণ।</p>`
+    body:`<p><strong>Pomodoro:</strong> ২৫ মিনিট focus + ৫ মিনিট break। বাজে বাজে — চক্র।</p><p><strong>Focus-এ ফোন নয়:</strong> এক বার নোটিফিকেশন দেখলে গড়ে ~২৩ মিনিট লাগে ফিরে আসতে (Mark, Gudith & Klocke, 2008, "The Cost of Interrupted Work")।</p><p><strong>Break-এ হাঁটো:</strong> হাঁটা, পানি, জানালা থেকে দূর দেখা। ফোন নয় — ফোন স্ক্রল করলে diffuse mode শুরুই হয় না, মনোযোগ শুধু স্থানান্তরিত হয়।</p><p><strong>ঘুম = চূড়ান্ত diffuse mode:</strong> ঘুমের সময় মস্তিষ্ক দিনের তথ্য সাজায়। ঘুম ছাড়া শেখা অসম্পূর্ণ (বিস্তারিত: নবম বাগান)।</p>`
   }
 });
 
@@ -145,6 +188,25 @@ doors.push({
 </ul>
 <div class="callout tip"><span class="co-icon">🕸️</span><div><strong>Charlie Munger-এর জাল:</strong> পদার্থ (জড়তা) + জীববিজ্ঞান (বিবর্তন) + মনোবিজ্ঞান (পক্ষপাত) + গণিত (চক্রবৃদ্ধি) → বহু-শাস্ত্রীয় চিন্তা। বিচ্ছিন্ন তথ্য ভুলে যায়, সংযুক্ত তথ্য চিরকাল থাকে।</div></div>
 
+<div class="svg-diagram"><svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+<g stroke="rgba(149,222,100,.4)" stroke-width="1.3">
+<line x1="280" y1="110" x2="280" y2="30"/><line x1="280" y1="110" x2="365" y2="55"/><line x1="280" y1="110" x2="420" y2="130"/><line x1="280" y1="110" x2="370" y2="185"/><line x1="280" y1="110" x2="195" y2="185"/><line x1="280" y1="110" x2="140" y2="130"/><line x1="280" y1="110" x2="195" y2="55"/>
+<line x1="280" y1="30" x2="365" y2="55"/><line x1="365" y1="55" x2="420" y2="130"/><line x1="420" y1="130" x2="370" y2="185"/><line x1="370" y1="185" x2="195" y2="185"/><line x1="195" y1="185" x2="140" y2="130"/><line x1="140" y1="130" x2="195" y2="55"/><line x1="195" y1="55" x2="280" y2="30"/>
+</g>
+<circle cx="280" cy="110" r="24" fill="rgba(149,222,100,.18)" stroke="#95de64" stroke-width="1.8"/><text x="280" y="114" text-anchor="middle" fill="#e8e6f0" font-size="9" font-weight="700">সমস্যা</text>
+<g font-size="9" fill="#e8e6f0" text-anchor="middle" font-weight="600">
+<circle cx="280" cy="30" r="20" fill="rgba(240,199,94,.12)" stroke="#f0c75e" stroke-width="1.3"/><text x="280" y="33">পদার্থ</text>
+<circle cx="365" cy="55" r="20" fill="rgba(240,199,94,.12)" stroke="#f0c75e" stroke-width="1.3"/><text x="365" y="58">গণিত</text>
+<circle cx="420" cy="130" r="20" fill="rgba(240,199,94,.12)" stroke="#f0c75e" stroke-width="1.3"/><text x="420" y="133">অর্থনীতি</text>
+<circle cx="370" cy="185" r="20" fill="rgba(240,199,94,.12)" stroke="#f0c75e" stroke-width="1.3"/><text x="370" y="188">মনোবিজ্ঞান</text>
+<circle cx="195" cy="185" r="20" fill="rgba(240,199,94,.12)" stroke="#f0c75e" stroke-width="1.3"/><text x="195" y="188">জীববিজ্ঞান</text>
+<circle cx="140" cy="130" r="20" fill="rgba(240,199,94,.12)" stroke="#f0c75e" stroke-width="1.3"/><text x="140" y="133">ইতিহাস</text>
+<circle cx="195" cy="55" r="20" fill="rgba(240,199,94,.12)" stroke="#f0c75e" stroke-width="1.3"/><text x="195" y="58">পরিসংখ্যান</text>
+</g>
+</svg><div class="svg-caption">latticework — প্রতিটা শাস্ত্র কেন্দ্রের সমস্যাকে ভিন্ন কোণ থেকে আলো দেখায়, আর একে অপরের সাথেও যুক্ত। একটামাত্র মডেল দিয়ে বাস্তবতা বিচার করলে বিকৃতি হয়। / A latticework — each discipline lights the central problem from a different angle, and connects to the others too. Judging reality through only one model distorts it.</div></div>
+
+<div class="source-box"><span class="src-label">📚 যাচাইকৃত উৎস — Verified Source</span><strong>Charlie Munger</strong>, USC Business School speech, <em>"A Lesson on Elementary, Worldly Wisdom As It Relates To Investment Management & Business"</em> (1994) — "যদি তথ্যগুলো একটা তত্ত্বের জালে না ঝোলে, তোমার কাছে সেগুলো ব্যবহারযোগ্য রূপে নেই।" মুঙ্গার অনুমান করতেন প্রায় ৮০-৯০টা মডেল বিশ্ব-জ্ঞানের ৯০% বহন করে — কিন্তু সেগুলো একাধিক শাস্ত্র থেকে আসতে হবে, শুধু একটা থেকে নয়।</div>
+
 <div class="verse">"আমি শীঘ্রই তাদের দেখাব আমার নিদর্শন দিগন্তে আর তাদের নিজেদের ভেতরে।"<br>— কুরআন ৪১:৫৩<br><br>প্রতিটা জ্ঞান একটা নিদর্শন — আয়াত। আয়াতগুলো বিচ্ছিন্ন নয় — সংযুক্ত। যখন সব সংযুক্ত হয়, তখন বোঝা আসে। বটগাছ = জ্ঞানের গাছ। শেকড় = ঐশী প্রজ্ঞা।</div>
 
 <div class="dialogue">আটটা বাগান পেরিয়েছ। কিন্তু একটা বাগান বাকি — সবচেয়ে নীরব, সবচেয়ে গুরুত্বপূর্ণ। তুমি এখন জানো কীভাবে শিখতে হয় — mindset, repetition, Feynman, practice, recall, interleaving, focus, আর mental model। কিন্তু একটা অদৃশ্য শিক্ষক আছে যে এগুলো সব স্থায়ী করে — ঘুম। আয়েশার বাগানে যাও — রাতের বাগানে।</div>
@@ -178,6 +240,17 @@ doors.push({
 <div class="callout info"><span class="co-icon">🔬</span><div><strong>মূল গবেষণা:</strong> Stickgold Tetris study (2000) — যারা ঘুমিয়েছিল তাদের দক্ষতা বেশি বেড়েছে (মস্তিষ্ক রাতে "rehearse" করেছে)। "Sleep on it" — কঠিন সমস্যায় ঘুমের পর দল উল্লেখযোগ্য বেশি insight পেয়েছে। All-nighter — দীর্ঘ জেগে থাকায় বড় memory-retention ক্ষতি; hippocampus কার্যত "বন্ধ", নতুন তথ্য নিতে পারে না।</div></div>
 <div class="callout tip"><span class="co-icon">🌙</span><div><strong>প্রয়োগ:</strong> ✅ কঠিন বিষয় ঘুমের ঠিক আগে শেখো (প্রথম NREM চক্রে consolidate হয়)। ✅ ৭-৯ ঘণ্টা ঘুম — টেস্টের আগের রাতে ঘুম প্রায়ই পড়ার চেয়ে বেশি কার্যকর। ❌ all-nighter এড়াও। ✅ power nap (১০-২০ মিনিট) alertness বাড়ায়; পূর্ণ cycle nap (~৯০ মিনিট) skill consolidate করে।</div></div>
 <div class="callout info"><span class="co-icon">🗓️</span><div><strong>শেখার timeline:</strong> সকাল — কঠিন fact (brain fresh) · দুপুর — practice/সমস্যা সমাধান · সন্ধ্যা — review ও সংযোগ · রাত — ঘুম (মস্তিষ্ক সাজায়, দৃঢ় করে) · পরদিন সকাল — active recall দিয়ে যাচাই।</div></div>
+
+<div class="svg-diagram"><svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+<line x1="30" y1="175" x2="530" y2="175" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+<text x="30" y="20" fill="#9290a8" font-size="9">Awake</text><text x="30" y="55" fill="#9290a8" font-size="9">REM</text><text x="30" y="90" fill="#9290a8" font-size="9">N1/N2</text><text x="30" y="150" fill="#9290a8" font-size="9">N3 deep</text>
+<polyline points="60,20 60,90 100,90 100,150 160,150 160,90 190,90 190,50 230,50 230,95 280,95 280,150 320,150 320,55 360,55 360,90 400,90 400,60 440,60 440,95 470,95 470,30 510,30" fill="none" stroke="#5b9eff" stroke-width="2.2"/>
+<rect x="60" y="150" width="100" height="6" fill="#5b9eff" opacity=".35"/><rect x="280" y="150" width="40" height="6" fill="#5b9eff" opacity=".35"/>
+<rect x="190" y="50" width="40" height="6" fill="#95de64" opacity=".55"/><rect x="320" y="55" width="40" height="6" fill="#95de64" opacity=".55"/><rect x="440" y="30" width="70" height="6" fill="#95de64" opacity=".75"/>
+<text x="105" y="190" fill="#9290a8" font-size="8.5">রাত শুরু — বেশি N3 (deep)</text><text x="470" y="190" fill="#9290a8" font-size="8.5" text-anchor="end">ভোর — বেশি REM</text>
+</svg><div class="svg-caption">রাতের হিপনোগ্রাম: প্রথমার্ধে গভীর N3 (নীল) বেশি — hippocampus→neocortex transfer; শেষ প্রহরে REM (সবুজ) বেশি — সংযোগ ও আবেগ প্রক্রিয়াকরণ। ঘুম কাটছাঁট করলে REM সবচেয়ে বেশি ক্ষতিগ্রস্ত হয় — কারণ এটা রাতের শেষে জমে থাকে। / A night's hypnogram: deep N3 dominates early (hippocampus→cortex transfer); REM dominates late (connection, emotion). Cutting sleep short costs REM most, since it's back-loaded.</div></div>
+
+<div class="source-box"><span class="src-label">📚 যাচাইকৃত উৎস — Verified Source</span>ক্লাসিক ভিত্তি: <strong>Jenkins & Dallenbach (1924)</strong> — প্রথম দেখান ঘুম স্মৃতিকে হস্তক্ষেপ (interference) থেকে রক্ষা করে। <strong>Stickgold et al. (2000)</strong>, <em>Journal of Cognitive Neuroscience</em> — Tetris hypnagogic imagery; আকর্ষণীয়ভাবে amnesia-আক্রান্ত রোগীরাও (যারা Tetris খেলার কথা মনেই করতে পারতেন না) ঘুমের প্রথম ঘণ্টায় পড়ন্ত ব্লক "দেখতেন" — প্রমাণ করে এটা declarative নয়, implicit memory system কাজ করে। <strong>Wagner et al. (2004)</strong>, <em>Nature</em> — ঘুমের পর অংশগ্রহণকারীরা লুকানো নিয়ম প্রায় তিনগুণ বেশি খুঁজে পান। <strong>Yoo, Hu, Gujar, Jolesz & Walker (2007)</strong>, <em>Nature Neuroscience</em> — এক রাত জাগলে নতুন স্মৃতি গঠনের ক্ষমতা ~৪০% কমে যায় (fMRI-তে hippocampus কার্যকলাপ হ্রাস)। সহজপাঠ্য সারাংশ: <strong>Matthew Walker, "Why We Sleep"</strong> (Scribner, 2017) ও <strong>Walker & Stickgold (2006)</strong>, <em>Annual Review of Psychology</em>।</div>
 
 <div class="dialogue">রাহাত — বিশ্রাম, প্রশান্তি। কুরআনে আল্লাহ বলেন — "আমি তোমাদের ঘুম করিয়েছি বিশ্রামের জন্য, এবং রাত্রিকে করেছি আবরণ।" (৭৮:৯-১০)। নবীজি (সা) বলেছেন — "তোমাদের শরীরের উপর তোমাদের অধিকার আছে।" ঘুম অলসতা নয় — ইবাদতের অংশ, যদি নিয়ত থাকে শেখার। যে ঘুমায় যাতে শিখতে পারে — সে ঘুমেও ইবাদত করে।</div>
 <div class="dialogue en">"Rahat — rest, tranquility. Allah says — 'We made your sleep for rest, and made the night a covering.' (78:9-10). The Prophet (pbuh) said — 'Your body has a right over you.' Sleep isn't laziness — it's part of worship, if the intention is learning. One who sleeps so they can learn — worships even in sleep."</div>
