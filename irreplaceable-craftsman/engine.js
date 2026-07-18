@@ -7,12 +7,12 @@ const SAVE_KEY = 'irreplaceableCraftsman_v1';
 const MAX_XP = 1000;
 const RANKS = [
   {min:0,   name:'নতুন শিক্ষানবিশ',     icon:'🛖'},
-  {min:100, name:'দক্ষ কারিগর',   icon:'🛤️'},
+  {min:100, name:'দক্ষ কারিগর',   icon:'🔨'},
   {min:200, name:'অভিজ্ঞ কারিগর',     icon:'🏰'},
   {min:300, name:'গভীর চিন্তাবিদ',     icon:'📐'},
   {min:400, name:'পণ্য স্থপতি',           icon:'🏛️'},
-  {min:500, name:'উদ্ভাবক',     icon:'🌆'},
-  {min:600, name:'পণ্য স্থপতি',    icon:'🌇'},
+  {min:500, name:'উদ্ভাবক',     icon:'💡'},
+  {min:600, name:'দূরদর্শী নেতা',    icon:'🌇'},
   {min:700, name:'অবিচ্ছেয্য কারিগর',    icon:'👑'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}

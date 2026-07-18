@@ -23,113 +23,18 @@ doors.push({
 <div class="dialogue">জ্ঞানের কারিগর (Book ২৬) তোমাকে Adler-এর ৪ স্তর শিখিয়েছে। কিন্তু এখন আমি বলি — research paper একটা আলাদা জন্তু। বই নয়। প্রতিটা অংশ আলাদা কাজ করে। তুমি যদি প্রথম থেকে শেষ পর্যন্ত পড়ো — তুমি সব অংশ একভাবে দেখছ, কিন্তু প্রতিটা অংশ আলাদা নিয়মে কাজ করে। এটাই paper-এর শারীরস্থান — IMRaD।</div>
 <div class="dialogue en">"The Knowledge Craftsman (Book 26) taught you Adler's 4 levels. But now I say — a research paper is a different beast. Not a book. Each part works differently. If you read start to finish — you're treating all parts the same, but each part follows its own rules. This is the paper's anatomy — IMRaD."</div>
 
-<div class="code-block">PAPER ANATOMY — The IMRaD Structure:
-
-THE PARTS OF A RESEARCH PAPER (in order of reading):
-
-  ┌──────────────────┬──────────────────────────────────┐
-  │ Section           │ What It Does / How to Read It    │
-  ├──────────────────┼──────────────────────────────────┤
-  │ ১. TITLE          │ Identity card. ১০-২০ words.      │
-  │                   │ Should tell: what + how + domain│
-  │                   │ Read FIRST. Decide if relevant. │
-  │                   │ Keyword scan: is this my field? │
-  ├──────────────────┼──────────────────────────────────┤
-  │ ২. AUTHORS        │ Who did this? Track record?      │
-  │                   │ Google Scholar their other work.│
-  │                   │ Important: same author = same    │
-  │                   │ research thread                  │
-  ├──────────────────┼──────────────────────────────────┤
-  │ ৩. ABSTRACT       │ The ENTIRE paper in ১৫০-২৫০     │
-  │                   │ words. READ THIS CAREFULLY.      │
-  │                   │ Should contain: problem, method,│
-  │                   │ result, conclusion.              │
-  │                   │ Decision: is the full paper      │
-  │                   │ worth your time?                 │
-  ├──────────────────┼──────────────────────────────────┤
-  │ ৪. INTRODUCTION   │ WHY this research exists.        │
-  │                   │ What gap in knowledge?           │
-  │                   │ What prior work exists?          │
-  │                   │ What's NEW about this paper?     │
-  │                   │ Read: last paragraph = main      │
-  │                   │ contribution (usually)           │
-  ├──────────────────┼──────────────────────────────────┤
-  │ ৫. RELATED WORK   │ WHO did what before.             │
-  │                   │ Map of the field.                │
-  │                   │ Skim → identify key papers       │
-  │                   │ for your reading list            │
-  ├──────────────────┼──────────────────────────────────┤
-  │ ৬. METHODS        │ HOW they did it.                 │
-  │                   │ Dataset, model, experiment       │
-  │                   │ design, parameters.              │
-  │                   │ This is where you judge validity│
-  │                   │ Read SLOWLY. The most important  │
-  │                   │ section for reproduction.        │
-  ├──────────────────┼──────────────────────────────────┤
-  │ ৭. RESULTS        │ WHAT they found.                 │
-  │                   │ Tables, figures, graphs.         │
-  │                   │ LOOK at figures FIRST (they tell│
-  │                   │ the story).                      │
-  │                   │ Then read the text for context.  │
-  ├──────────────────┼──────────────────────────────────┤
-  │ ৮. DISCUSSION     │ WHAT IT MEANS.                   │
-  │                   │ Interpretation, implications,    │
-  │                   │ limitations, future work.        │
-  │                   │ Often the most opinionated part. │
-  │                   │ Authors explain WHY results      │
-  │                   │ matter.                          │
-  ├──────────────────┼──────────────────────────────────┤
-  │ ৯. CONCLUSION     │ Summary of contribution.         │
-  │                   │ Read alongside abstract.         │
-  │                   │ If they match → paper is honest. │
-  │                   │ If they differ → red flag.       │
-  ├──────────────────┼──────────────────────────────────┤
-  │ ১০. REFERENCES    │ The knowledge chain.             │
-  │                   │ Skim: do they cite papers you   │
-  │                   │ know? Papers you should read?   │
-  │                   │ Citation count = influence.      │
-  └──────────────────┴──────────────────────────────────┘
-
-THE READING ORDER (NOT start-to-finish!):
-
-  Beginner reading order (Keshav Pass ১, ৫ min):
-    Title → Abstract → Introduction (skim) → 
-    Conclusion → References (scan)
-  
-  Engineer reading order (extract methods):
-    Abstract → Methods → Results (figures) → 
-    Conclusion → check for GitHub/code link
-  
-  Scientist reading order (judge validity):
-    Abstract → Methods (deep) → Results → 
-    Discussion → check stats → check limitations
-  
-  PhD reading order (find gap):
-    Abstract → Related Work → Introduction → 
-    Discussion (future work) → Methods → Results
-  
-  Reviewer reading order (judge paper):
-    Abstract → Conclusion → Methods → Results →
-    Introduction (last — is the motivation valid?)
-
-THE FIGURES-FIRST STRATEGY:
-  
-  In most papers, FIGURES tell the story:
-    → Figure ১: overview/architecture
-    → Table ১: dataset statistics
-    → Figure ২: main results (the "money figure")
-    → Table ২: comparison with prior work
-    → Figure ৩: ablation study (what each component does)
-  
-  Strategy:
-    ১. Look at ALL figures/tables FIRST
-    ২. Read their captions CAREFULLY
-    ৩. Ask: "What story do these tell?"
-    ৪. THEN read the text for details
-  
-  → This is what experienced researchers do
-  → A good paper's figures should stand alone
-  → If figures make no sense without text → poor paper</div>
+<table class="kv-table"><tr><th>সেকশন</th><th>কাজ / কীভাবে পড়বে</th></tr>
+<tr><td class="hl">Title</td><td>পরিচয়পত্র; আগে পড়ো — প্রাসঙ্গিক কিনা ঠিক করো</td></tr>
+<tr><td class="hl">Abstract</td><td>পুরো পেপার ১৫০-২৫০ শব্দে; মন দিয়ে পড়ো — পুরো পেপার পড়ার যোগ্য?</td></tr>
+<tr><td class="hl">Introduction</td><td>কেন এই গবেষণা; শেষ প্যারা = মূল contribution</td></tr>
+<tr><td class="hl">Related Work</td><td>আগে কে কী করেছে; skim করে reading list বানাও</td></tr>
+<tr><td class="hl">Methods</td><td>কীভাবে করল; ধীরে পড়ো — validity ও reproduction-এর জায়গা</td></tr>
+<tr><td class="hl">Results</td><td>কী পেল; আগে figure দেখো (গল্প বলে), তারপর text</td></tr>
+<tr><td class="hl">Discussion</td><td>মানে কী; interpretation, limitation, future work</td></tr>
+<tr><td class="hl">Conclusion</td><td>abstract-এর সাথে মেলাও — না মিললে red flag</td></tr>
+<tr><td class="hl">References</td><td>জ্ঞানের শৃঙ্খল; চেনা পেপার আছে? citation count = প্রভাব</td></tr></table>
+<div class="callout info"><span class="co-icon">🔀</span><div><strong>পড়ার ক্রম উদ্দেশ্যভেদে (শুরু-থেকে-শেষ নয়):</strong> Beginner — Title→Abstract→Intro(skim)→Conclusion→Refs (৫ মিনিট)। Engineer — Abstract→Methods→Results(figures)→code link। Scientist — Abstract→Methods(deep)→Results→Discussion→stats। PhD — Abstract→Related Work→Intro→future work→Methods। Reviewer — Abstract→Conclusion→Methods→Results→Intro(শেষে)।</div></div>
+<div class="callout tip"><span class="co-icon">📊</span><div><strong>Figures-first:</strong> বেশিরভাগ পেপারে figure-ই গল্প বলে (Fig 1 overview, Fig 2 "money figure", Fig 3 ablation)। আগে সব figure + caption পড়ো → "এরা কী গল্প বলছে?" → তারপর text। ভালো পেপারের figure text ছাড়াই দাঁড়াতে পারে; না পারলে দুর্বল পেপার।</div></div>
 
 <div class="dialogue">ফিহরিস্ত — index, catalog, map। কুরআনে আল্লাহ বলেন — "আমি প্রতিটা জিনিস বিস্তারিতভাবে ব্যাখ্যা করেছি।" (১৭:১২)। ব্যাখ্যা = ফিহরিস্ত — প্রতিটা জিনিসের নির্দিষ্ট স্থান। পত্রের শারীরস্থানও ফিহরিস্ত — প্রতিটা অংশের নির্দিষ্ট কাজ। যে ফিহরিস্ত জানে, সে দ্রুত খোঁজে। যে জানে না, সে অন্ধভাবে ঘুরে। ফিহরিস্ত — পত্রের মানচিত্র। মানচিত্র ছাড়া যাত্রা = পথহারা।</div>
 <div class="dialogue en">"Fihrist — index, catalog, map. Allah says — 'We have explained everything in detail.' (17:12). Explanation = fihrist — each thing in its specific place. Paper anatomy too is fihrist — each part with its specific job. One who knows the fihrist, searches quickly. One who doesn't, wanders blindly. Fihrist — the paper's map. Journey without a map = lost."</div>`,
@@ -157,119 +62,13 @@ doors.push({
 <div class="dialogue">Paper anatomy বলেছিলেন — প্রতিটা অংশের কাজ। কিন্তু আমি বলি — ইঞ্জিনিয়ার হিসেবে তোমার উদ্দেশ্য আলাদা। তুমি শুধু জানতে চাও না — তুমি ব্যবহার করতে চাও। কোন method আমার সমস্যায় কাজে লাগবে? কোথায় কোড? কোথায় dataset? কীভাবে আমার প্রজেক্টে প্রয়োগ করব? এটাই ইঞ্জিনিয়ারের পাঠ — প্রয়োগের চোখ।</div>
 <div class="dialogue en">"Paper anatomy said — each part's job. But I say — as an engineer, your purpose is different. You don't just want to know — you want to USE. Which method applies to my problem? Where's the code? Where's the dataset? How do I apply it to my project? This is the engineer's read — the application eye."</div>
 
-<div class="code-block">THE ENGINEER'S READ — Reading for Application:
-
-THE ENGINEER'S QUESTIONS (different from scientist):
-
-  ┌────────────────────┬──────────────────────────────┐
-  │ Engineer Asks       │ Scientist Asks                │
-  ├────────────────────┼──────────────────────────────┤
-  │ Can I USE this?     │ Is this VALID?                │
-  │ How FAST is it?     │ How was it measured?          │
-  │ What CODE exists?   │ What DATA was used?           │
-  │ What LICENSE?       │ What are limitations?         │
-  │ Can I DEPLOY this?  │ Can this be replicated?       │
-  │ Production-ready?   │ Statistically significant?    │
-  └────────────────────┴──────────────────────────────┘
-
-THE ENGINEER'S READING PROTOCOL:
-
-  Step ১: SCAN FOR CODE/DATA (first ২ min)
-    → check paper for GitHub link
-    → check Papers With Code (paperswithcode.com)
-    → check Hugging Face for models
-    → if NO code → lower priority (hard to reproduce)
-  
-  Step ২: READ METHODS LIKE A SPEC (১০ min)
-    → Treat Methods section like technical documentation
-    → Architecture: what layers? what components?
-    → Hyperparameters: learning rate, batch size, epochs
-    → Infrastructure: what GPU? how long to train?
-    → Datasets: what data? can I get it?
-  
-  Step ৩: CHECK BENCHMARKS (৫ min)
-    → Table comparing with other methods
-    → Is the improvement significant or marginal?
-    → Is the baseline fair? (comparing with old methods?)
-    → Speed/accuracy tradeoff: how fast at inference?
-  
-  Step ৪: REPRODUCE IF APPLICABLE (১-৪ hours)
-    → clone the repo
-    → run on YOUR data (not just their data)
-    → does it work outside the paper's setup?
-    → document: what broke? what needed adjusting?
-  
-  Step ৫: EXTRACT THE PATTERN (ongoing)
-    → what's the core idea I can adapt?
-    → can I use PART of their method?
-    → can I combine with something else?
-    → what would work BETTER for my case?
-
-PAPERS WITH CODE (paperswithcode.com):
-
-  This is an engineer's best friend:
-    → every paper + its implementation
-    → benchmarks (leaderboards) for every task
-    → "State of the Art" (SOTA) for each metric
-  
-  Engineer's workflow:
-    ১. Go to Papers With Code → search your problem
-    ২. Sort by benchmark performance
-    ৩. Check: code available? license? recent?
-    ৪. Read paper to understand method
-    ৫. Clone code → run → adapt
-  
-  Example: "Document OCR correction"
-    → Search → find ১৫ papers with code
-    → Sort by accuracy on benchmark
-    → Top ৩: read papers + check repos
-    → Clone best one → run on LedgerPilot data
-    → Adapt architecture for your use case
-
-ENGINEER'S PAPER NOTE TEMPLATE:
-
-  ┌──────────────────────────────────────┐
-  │ PAPER: [title]                       │
-  │ AUTHORS: [names]                     │
-  │ DATE: [year]                         │
-  ├──────────────────────────────────────┤
-  │ PROBLEM: [what problem solves?]      │
-  │ METHOD: [core approach, ২ sentences] │
-  │ CODE: [GitHub link? License?]        │
-  │ DATA: [dataset? available?]          │
-  │ RESULTS: [key numbers]               │
-  │ SPEED: [inference time?]             │
-  ├──────────────────────────────────────┤
-  │ CAN I USE THIS? [yes/no/maybe]       │
-  │ HOW: [specific application plan]     │
-  │ BLOCKERS: [what's missing?]          │
-  │ NEXT STEP: [clone? adapt? combine?]  │
-  └──────────────────────────────────────┘
-
-THE ENGINEER'S PAPER PIPELINE (to project):
-
-  Research Paper → Methods section → 
-  Code repository → Run on test data →
-  Evaluate on YOUR data → Adapt architecture →
-  Integrate into project → Monitor in production
-  
-  This is how INDUSTRY uses academic research:
-    → Google: reads BERT paper → builds BERT → deploys
-    → Meta: reads papers → builds PyTorch → deploys
-    → You: read OCR paper → adapt → LedgerPilot
-
-WHEN PAPERS DON'T HAVE CODE:
-  
-  → Many papers DON'T release code
-  → this is a red flag (reproducibility issue)
-  → but sometimes you still want the method
-  
-  Options:
-    ১. Search Papers With Code for a reproduction
-    ২. Search GitHub for community implementations
-    ৩. Implement from paper (hard but valuable)
-    ৪. Contact authors (many will share code privately)
-    ৫. Check if later papers improved and released code</div>
+<table class="kv-table"><tr><th>Engineer জিজ্ঞেস করে</th><th>Scientist জিজ্ঞেস করে</th></tr>
+<tr><td>এটা কি USE করতে পারি?</td><td>এটা কি VALID?</td></tr>
+<tr><td>কত দ্রুত? কোড আছে? license?</td><td>কীভাবে মাপা হলো? কী data?</td></tr>
+<tr><td>Deploy করতে পারি? production-ready?</td><td>replicate করা যায়? significant?</td></tr></table>
+<div class="callout info"><span class="co-icon">🔧</span><div><strong>Engineer-এর protocol:</strong> ① আগে code/data খোঁজো (GitHub, Papers With Code, Hugging Face; কোড না থাকলে low priority)। ② Methods পড়ো spec-এর মতো (architecture, hyperparameter, GPU, dataset)। ③ Benchmark check — উন্নতি real না marginal? baseline fair? inference speed? ④ প্রযোজ্য হলে <em>তোমার</em> data-তে চালিয়ে reproduce করো। ⑤ core pattern বের করো — কোন অংশ adapt/combine করতে পারি?</div></div>
+<div class="callout tip"><span class="co-icon">🐙</span><div><strong>Papers With Code (paperswithcode.com)</strong> = engineer-এর best friend: প্রতিটা পেপার + implementation, task-ভিত্তিক leaderboard, SOTA। Workflow: সমস্যা search → benchmark-এ sort → code/license/recency check → পেপার পড়ে method বোঝা → clone→run→adapt। শিল্প এভাবেই academic research ব্যবহার করে (Google BERT পড়ে→বানায়→deploy করে)।</div></div>
+<div class="callout warn"><span class="co-icon">🚫</span><div><strong>কোড না থাকলে:</strong> Papers With Code-এ reproduction খোঁজো · GitHub-এ community implementation · পেপার থেকে নিজে implement (কঠিন কিন্তু মূল্যবান) · লেখককে email (অনেকে privately share করে) · পরের পেপার উন্নত করে কোড ছেড়েছে কিনা দেখো।</div></div>
 
 <div class="dialogue">তালাশ — search, seeking। কুরআনে আল্লাহ বলেন — "যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।" ইঞ্জিনিয়ারের পাঠও তালাশ — সমাধানের সন্ধান। কোন method, কোন code, কোন approach আমার সমস্যা সমাধান করবে? যে তালাশ করে, সে খোঁজে। যে অপেক্ষা করে, সে পায় না। ইঞ্জিনিয়ার = সমাধানের তালাশকারী।</div>
 <div class="dialogue en">"Talash — search, seeking. Allah says — 'Those who seek Me, I guide them.' The engineer's read too is talash — seeking a solution. Which method, which code, which approach solves my problem? One who seeks, finds. One who waits, gets nothing. Engineer = solution seeker."</div>`,
@@ -297,149 +96,19 @@ doors.push({
 <div class="dialogue">ইঞ্জিনিয়ারের পাঠ বলেছিলেন — প্রয়োগের চোখ। কিন্তু আমি বলি — প্রয়োগের আগে যাচাই। জ্ঞানের কারিগর (Book ২৬, Door ৭) তোমাকে replication crisis শিখিয়েছে। এখন আমি শেখাবো — কীভাবে প্রতিটা paper-ের প্রতিটা claim যাচাই করবে। বৈজ্ঞানিকের চোখ = যাচাইয়ের চোখ। তাহকিক — যাচাই করে তারপর গ্রহণ।</div>
 <div class="dialogue en">"The engineer's read said — the application eye. But I say — before application, verification. The Knowledge Craftsman (Book 26, Door 7) taught you the replication crisis. Now I'll teach — how to verify each claim in each paper. The scientist's eye = the verification eye. Tahqiq — verify then accept."</div>
 
-<div class="code-block">THE SCIENTIST'S EYE — Deep Verification:
-
-THE ৭-POINT VERIFICATION CHECKLIST:
-
-১. SAMPLE SIZE (n=?)
-  
-  ┌──────────────────┬────────────────────────────┐
-  │ Sample Size       │ Interpretation              │
-  ├──────────────────┼────────────────────────────┤
-  │ n < ১০            │ anecdote, NOT science        │
-  │ n ১০-৩০           │ pilot/preliminary            │
-  │ n ৩০-১০০          │ small study                  │
-  │ n ১০০-১০০০        │ reasonable                   │
-  │ n > ১০০০          │ strong                       │
-  │ n > ১০,০০০        │ very strong                  │
-  │ n > ১০০,০০০       │ population-level             │
-  └──────────────────┴────────────────────────────┘
-  
-  ML-specific: dataset size matters
-    → "We tested on ৫০ images" → WEAK
-    → "We tested on ImageNet (১.৪M images)" → STRONG
-    → "We tested on ৩ benchmarks" → GOOD (cross-dataset)
-
-২. METHODOLOGY (design)
-  
-  Gold standard: RCT (Randomized Controlled Trial)
-    → randomly assign to groups
-    → control group for comparison
-    → blinded (single/double)
-  
-  ML papers: experiment design
-    → train/test split (was it proper?)
-    → cross-validation (k-fold?)
-    → test set leakage (did they accidentally
-       include test data in training?)
-    → hyperparameter tuning on test set = CHEATING
-  
-  Common flaws:
-    → "We achieved ৯৯% accuracy"
-      → ON WHAT DATA? ON WHOSE BENCHMARK?
-    → "Outperforms baselines"
-      → WHICH BASELINES? OLD ONES? FAIR COMPARISON?
-    → "Validated by experts"
-      → HOW MANY EXPERTS? BLINDED? INTER-RATER RELIABILITY?
-
-৩. STATISTICS (is it real or noise?)
-  
-  Key questions:
-    → p-value: < ০.০৫ but what's the EFFECT SIZE?
-    → confidence interval: wide CI = uncertain result
-    → multiple comparisons correction (Bonferroni)?
-    → is the improvement within MARGIN OF ERROR?
-  
-  ML-specific:
-    → "X% improvement" → over what baseline? significant?
-    → variance: did they run ৩ times? ৫? ১০?
-    → error bars: are they shown? tight or wide?
-    → statistical significance test (t-test, Wilcoxon)?
-  
-  RED FLAG: "p < ০.০৫" with NO effect size reported
-    → statistically significant ≠ practically useful
-    → ০.১% improvement can be "significant" with large n
-
-৪. BASELINES (fair comparison?)
-  
-  Ask:
-    → Did they compare with STATE-OF-THE-ART?
-    → Or with OLD/weaker methods to look better?
-    → Did they use the SAME data/preprocessing?
-    → Did they tune baselines as carefully as their method?
-  
-  Common trick: "Our method beats [X from ২০১৮]"
-    → but [Y from ২০২৩] is actually better
-    → they cherry-picked weak baselines
-
-৫. REPRODUCIBILITY (can I check?)
-  
-  Green flags:
-    ✅ Code published (GitHub)
-    ✅ Data publicly available
-    ✅ Hyperparameters listed
-    ✅ Random seeds mentioned
-    ✅ Pre-registration (hypotheses declared beforehand)
-  
-  Red flags:
-    ❌ "Code coming soon" (usually never comes)
-    ❌ "Data available upon request" (barrier)
-    ❌ Missing key hyperparameters
-    ❌ No mention of random seeds
-    ❌ No error bars / variance reported
-
-৬. LIMITATIONS (honest self-assessment)
-  
-  → Does the paper ADMIT weaknesses?
-  → "Our method works only on [specific case]"
-  → "Performance degrades on [other case]"
-  → No limitations section = suspicious
-  → Good papers: detailed limitations
-  → Bad papers: hide limitations
-
-৭. FUNDING / CONFLICTS
-  
-  → Check Acknowledgments section
-  → Check Conflicts of Interest
-  → Industry-funded? Pro-industry results?
-  → Not automatically wrong, but a factor
-
-THE STATISTICS QUICK CHECK (for ML papers):
-
-  ┌────────────────────┬──────────────────────────┐
-  │ Claim              │ What to Check              │
-  ├────────────────────┼──────────────────────────┤
-  │ "X% accuracy"      │ On what data? Splits?     │
-  │ "Significant       │ Effect size? Variance?    │
-  │  improvement"      │ Number of runs?            │
-  │ "State of the art" │ Compared with what? When? │
-  │ "Scalable"         │ Tested at what scale?     │
-  │ "Real-time"        │ On what hardware?         │
-  │ "Robust"           │ To what perturbations?    │
-  └────────────────────┴──────────────────────────┘
-
-THE SCIENTIST'S PAPER NOTE TEMPLATE:
-
-  ┌──────────────────────────────────────┐
-  │ PAPER: [title]                       │
-  ├──────────────────────────────────────┤
-  │ SAMPLE SIZE: n=? adequate?           │
-  │ METHODOLOGY: RCT? correlational?     │
-  │ BASELINES: fair? current?            │
-  │ STATISTICS: p-value? effect size?    │
-  │ REPRODUCIBLE: code? data? seeds?     │
-  │ LIMITATIONS: honest? hidden?         │
-  │ FUNDING: independent? industry?      │
-  ├──────────────────────────────────────┤
-  │ TRUST LEVEL: [1-5]                   │
-  │ ৫ = fully trust, would cite          │
-  │ ৪ = mostly trust, minor concerns     │
-  │ ৩ = mixed, use with caution          │
-  │ ২ = significant concerns             │
-  │ ১ = do not trust                     │
-  ├──────────────────────────────────────┤
-  │ WHY: [specific reasons]              │
-  └──────────────────────────────────────┘</div>
+<table class="kv-table"><tr><th>Sample size</th><th>ব্যাখ্যা</th></tr>
+<tr><td class="hl">n &lt; ১০</td><td>anecdote, science নয়</td></tr>
+<tr><td class="hl">n ৩০-১০০</td><td>ছোট study</td></tr>
+<tr><td class="hl">n ১০০-১০০০</td><td>যুক্তিসঙ্গত</td></tr>
+<tr><td class="hl">n &gt; ১০,০০০</td><td>খুব শক্তিশালী</td></tr></table>
+<div class="callout info"><span class="co-icon">🔬</span><div><strong>৭-পয়েন্ট verification:</strong> ① Sample size (ML: dataset কত বড়, কয়টা benchmark)। ② Methodology (RCT gold; ML: proper train/test split, test-set leakage নেই, test-set-এ tuning = cheating)। ③ Statistics (p&lt;০.০৫ কিন্তু effect size? variance? কয় বার run?)। ④ Baselines (SOTA-র সাথে তুলনা নাকি দুর্বল পুরোনো method?)। ⑤ Reproducibility (code/data/seed?)। ⑥ Limitations (সততার সাথে স্বীকার?)। ⑦ Funding/conflict।</div></div>
+<div class="callout warn"><span class="co-icon">🚩</span><div><strong>RED FLAG:</strong> "p&lt;০.০৫" কিন্তু effect size নেই — বড় n-এ ০.১% উন্নতিও "significant" হতে পারে, কিন্তু অর্থহীন। "৯৯% accuracy" → কোন data-তে? "outperforms baselines" → কোন baseline, fair তুলনা? "Code coming soon" = সাধারণত আসে না।</div></div>
+<table class="kv-table"><tr><th>দাবি</th><th>কী check করবে</th></tr>
+<tr><td class="hl">"X% accuracy"</td><td>কোন data? কোন split?</td></tr>
+<tr><td class="hl">"significant improvement"</td><td>effect size? variance? কয় run?</td></tr>
+<tr><td class="hl">"state of the art"</td><td>কীসের সাথে তুলনা? কবে?</td></tr>
+<tr><td class="hl">"real-time"</td><td>কোন hardware-এ?</td></tr></table>
+<div class="callout tip"><span class="co-icon">⭐</span><div><strong>Trust level (১-৫):</strong> ৫ = সম্পূর্ণ বিশ্বাস, cite করব · ৪ = মোটামুটি, ছোট উদ্বেগ · ৩ = mixed, সতর্কতায় ব্যবহার · ২ = গুরুতর উদ্বেগ · ১ = বিশ্বাস কোরো না। শুধু ৪+ পেপারের method <em>ব্যবহার</em> করো — তোমার প্রজেক্ট যে গবেষণার উপর দাঁড়ায় তার মানের উপর নির্ভরশীল।</div></div>
 
 <div class="dialogue">তাহকিক — verified truth through investigation। কুরআনে আল্লাহ বলেন — "তোমরা যাচাই না করে প্রতিটা খবর বিশ্বাস করো না।" (৪৯:৬)। তাহকিক = যাচাই করে গ্রহণ। বৈজ্ঞানিকের চোখও তাহকিক — প্রতিটা claim যাচাই। sample? method? statistics? replication? যে তাহকিক করে, সে সত্য পায়। যে বিশ্বাস করে, সে প্রতারিত হয়। replication crisis আমাদের শেখায় — published মানে true নয়। তাহকিক করো।</div>
 <div class="dialogue en">"Tahqiq — verified truth through investigation. Allah says — 'Do not accept any news without verification.' (49:6). Tahqiq = verify then accept. The scientist's eye too is tahqiq — verify each claim. Sample? Method? Statistics? Replication? One who does tahqiq, finds truth. One who believes blindly, is deceived. The replication crisis teaches — published does not mean true. Verify."</div>`,
@@ -467,181 +136,21 @@ doors.push({
 <div class="dialogue">বৈজ্ঞানিকের চোখ বলেছিলেন — যাচাই করো। কিন্তু আমি বলি — যাচাই করা শুরু। এর পরে আসে gap। প্রতিটা paper একটা পথের অংশ — কিন্তু পথ শেষ নয়। প্রতিটা paper-এর পরে নতুন প্রশ্ন জন্ম যায়। PhD ছাত্র সেই প্রশ্ন খোঁজে। Andrew Ng বলেন — ৫-২০ paper পড়লে একটা subfield-এ current হওয়া যায়। তুমি দেখো — পুরো landscape, কোথায় গ্যাপ, কোথায় তোমার contribution।</div>
 <div class="dialogue en">"The scientist's eye said — verify. But I say — verification is the beginning. After that comes the gap. Each paper is part of a path — but the path isn't finished. Each paper births new questions. A PhD student seeks those questions. Andrew Ng says — read 5-20 papers to become current in a subfield. You see — the whole landscape, where the gaps are, where YOUR contribution fits."</div>
 
-<div class="code-block">THE PhD READER — Finding Gaps and Position:
-
-ANDREW NG'S ADVICE (Stanford, CS229):
-
-  "If you read ৫-২০ papers in a specific area, 
-   you'll have a good understanding. 
-   If you read ৫০-১০০, you'll have a very 
-   thorough understanding."
-  
-  His reading strategy for ML papers:
-    ১. Title + Abstract + Figures (৬০ sec)
-    ২. Intro + Conclusion (৫ min)  
-    ৩. Methods (skip proofs initially)
-    ৪. References (which papers to read next?)
-  
-  Decision tree:
-    → relevant? → read more
-    → not relevant? → skip
-    → foundational? → read deeply (Pass ৩)
-    → incremental? → skim only
-
-THE LITERATURE MAP (how PhD students think):
-
-  ┌──────────────────────────────────────────┐
-  │           THE FIELD LANDSCAPE              │
-  │                                            │
-  │  Paper A (২০১৮) ──── Paper B (২০১৯)       │
-  │       │                    │               │
-  │       │                    │               │
-  │  Paper C (২০২০)      Paper D (২০২১)       │
-  │       │                    │               │
-  │       └──── Paper E (২০২২) ─┘              │
-  │                    │                       │
-  │               Paper F (২০২৩)               │
-  │                    │                       │
-  │               ??? GAP ???                   │
-  │            (YOUR PAPER HERE)                │
-  │                                            │
-  └──────────────────────────────────────────┘
-  
-  Every paper builds on previous work.
-  Your job: find WHERE the tree branches stop.
-  That's your gap. That's your contribution.
-
-HOW TO BUILD A LITERATURE MAP:
-
-  Step ১: START WITH A SURVEY
-    → search: "[topic] survey" or "[topic] review"
-    → surveys map the ENTIRE field
-    → read first → you have the landscape
-  
-  Step ২: CITATION TRACING
-    → Backward: read the survey's references
-       (foundational papers)
-    → Forward: Google Scholar "Cited by" 
-       (recent papers building on it)
-  
-  Step ৩: IDENTIFY CLUSTERS
-    → papers group into approaches:
-      "transformer-based" cluster
-      "CNN-based" cluster  
-      "hybrid" cluster
-    → each cluster = one approach to the problem
-  
-  Step ৪: FIND THE EDGES
-    → what has each cluster NOT solved?
-    → what are common LIMITATIONS across clusters?
-    → what do recent papers list as "future work"?
-    → THESE ARE YOUR GAPS
-
-THE GAP-FINDING QUESTIONS:
-
-  After reading ১০+ papers in a subfield, ask:
-  
-  ১. What does NOBODY address?
-    → "Nobody tests this on [language/domain]"
-    → "Nobody measures [metric]"
-    → "Nobody combines [approach A] with [approach B]"
-  
-  ২. What does everyone ASSUME but nobody tests?
-    → "Everyone assumes [X] but nobody verified"
-    → "Everyone uses [dataset] but it has [bias]"
-  
-  ৩. What's the TRADEOFF nobody has explored?
-    → "Method A is fast but inaccurate. 
-       Method B is accurate but slow.
-       Nobody tried a middle ground."
-  
-  ৪. What's the "FUTURE WORK" everyone mentions?
-    → read "Future Work" sections of ৫ papers
-    → if ৩+ mention the same thing → it's a real gap
-  
-  ৫. What would make this work in YOUR DOMAIN?
-    → "This works on English. Does it work on Bengali?"
-    → "This works on images. Does it work on documents?"
-    → Domain transfer = legitimate research contribution
-
-THE LITERATURE REVIEW STRUCTURE:
-
-  A literature review is NOT a list:
-    ❌ "Paper A did X. Paper B did Y. Paper C did Z."
-  
-  A literature review IS a narrative:
-    ✅ "Early approaches focused on [A], but were 
-       limited by [problem]. B addressed this by [method],
-       achieving [result]. However, [limitation] remained.
-       C proposed [approach], which improved [metric] but
-       introduced [new problem]. This suggests an opportunity
-       to [YOUR CONTRIBUTION]."
-  
-  Structure:
-    ১. Organize by APPROACH (not by paper)
-    ২. Show EVOLUTION (how field progressed)
-    ৩. Identify CONSENSUS (what everyone agrees)
-    ৪. Identify DEBATE (where they disagree)
-    ৫. End with THE GAP (your contribution)
-
-WHERE TO FIND PAPERS:
-
-  ┌────────────────────┬────────────────────────────┐
-  │ Source              │ Best For                    │
-  ├────────────────────┼────────────────────────────┤
-  │ Google Scholar      │ everything (start here)     │
-  │ arXiv.org           │ CS, physics, math, AI       │
-  │ Semantic Scholar    │ AI-powered search           │
-  │ Connected Papers    │ visualizing citation graph  │
-  │ ResearchRabbit      │ discovering related papers  │
-  │ Papers With Code    │ papers + implementations    │
-  │ DBLP                │ CS bibliography             │
-  │ IEEE Xplore         │ electrical, computing       │
-  │ ACM Digital Library │ computer science            │
-  │ PubMed              │ medical, life sciences      │
-  └────────────────────┴────────────────────────────┘
-
-AI-ASSISTED PAPER TOOLS (২০২৪-২০২৬):
-
-  ┌──────────────────┬────────────────────────────────┐
-  │ Tool              │ What it does                    │
-  ├──────────────────┼────────────────────────────────┤
-  │ Elicit            │ LLM literature review,          │
-  │                   │ Q&A across papers, extraction   │
-  │ Consensus         │ LLM search over 200M+ papers,   │
-  │                   │ claims for/against a question   │
-  │ NotebookLM        │ multi-PDF synthesis,            │
-  │                   │ source-grounded Q&A (Google)    │
-  │ scite.ai          │ citation context:               │
-  │                   │ supporting/contradicting/mention│
-  │ SciSpace / ChatPDF│ PDF Q&A, section extraction     │
-  │ Inciteful         │ citation-graph building         │
-  └──────────────────┴────────────────────────────────┘
-
-  HOW TO USE THEM (hybrid workflow):
-  
-    AI does: first-pass summary, claim extraction,
-             finding related/contradicting work
-    তুমি করো: verification, deep reading (Keshav Pass ২-৩),
-             judging credibility, spotting hallucination
-    
-    → AI Keshav Pass ১ করে ৫ সেকেন্ডে (summary)
-    → কিন্তু Pass ২-৩ এখনো তোমার — verify, critique
-    → সবসময় source PDF যাচাই করো — AI মাঝে মাঝে 
-      ভুল বা অস্তিত্বহীন citation বানায়
-    → এটাই Door 3-এর scientist's eye-এর আধুনিক রূপ
-
-THE ৫-২০ PAPER READING SPREE:
-
-  When entering a new subfield:
-    ১. Find the most-cited survey (Google Scholar)
-    ২. Read survey → identify ৫ key papers
-    ৩. Read those ৫ (Keshav Pass ১+২)
-    ৪. From their references → find ৫ more
-    ৫. From "Cited by" → find ৫ recent
-    ৬. Now you've read ~১৫ papers
-    ৭. You're CURRENT in this subfield
-    ৮. Write a ১-page summary of the landscape</div>
+<div class="callout info"><span class="co-icon">🎓</span><div><strong>Andrew Ng (Stanford):</strong> "একটা নির্দিষ্ট area-তে ৫-২০ পেপার পড়লে ভালো বোঝা, ৫০-১০০ পড়লে খুব গভীর বোঝা।" তার ক্রম: Title+Abstract+Figures (৬০ সেকেন্ড) → Intro+Conclusion (৫ মিনিট) → Methods (প্রথমে proof বাদ) → References (পরে কী পড়ব)।</div></div>
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">Step ১</div><div class="tl-title">📖 Survey দিয়ে শুরু</div><div class="tl-body">"[topic] survey/review" — পুরো field-এর ম্যাপ; আগে পড়লে landscape হাতে আসে।</div></div>
+<div class="tl-step"><div class="tl-when">Step ২</div><div class="tl-title">🔗 Citation tracing</div><div class="tl-body">Backward (survey-এর references = foundational) + Forward (Scholar "Cited by" = সাম্প্রতিক)।</div></div>
+<div class="tl-step"><div class="tl-when">Step ৩</div><div class="tl-title">🧩 Cluster চেনো</div><div class="tl-body">পেপার approach-অনুযায়ী দল বাঁধে (transformer-based / CNN-based / hybrid) — প্রতিটা cluster = এক approach।</div></div>
+<div class="tl-step"><div class="tl-when">Step ৪</div><div class="tl-title">🎯 Edge খোঁজো</div><div class="tl-body">প্রতিটা cluster কী সমাধান করেনি? সাধারণ limitation কী? ৩+ পেপার "future work"-এ একই জিনিস বললে = আসল gap।</div></div>
+</div>
+<div class="callout tip"><span class="co-icon">💡</span><div><strong>Gap-finding প্রশ্ন:</strong> কেউ কী address করে না? সবাই কী <em>ধরে নেয় কিন্তু যাচাই করে না</em>? কোন trade-off কেউ explore করেনি? সবাই যে "future work" বলে? তোমার domain-এ কী কাজ করবে? (English→Bengali, image→document = বৈধ contribution)।</div></div>
+<div class="callout info"><span class="co-icon">📝</span><div><strong>Literature review = তালিকা নয়, narrative:</strong> "প্রথম দিকের approach [A]-তে focus করত, কিন্তু [সমস্যা]-য় সীমিত। B [method] দিয়ে সমাধান করল, [ফল] পেল, তবু [limitation] থাকল। এটা [তোমার contribution]-এর সুযোগ দেখায়।" Approach-অনুযায়ী সাজাও, evolution দেখাও, consensus ও debate চিহ্নিত করো, gap দিয়ে শেষ করো।</div></div>
+<table class="kv-table"><tr><th>AI paper tool (2024-26)</th><th>কাজ</th></tr>
+<tr><td class="hl">Elicit</td><td>LLM literature review, পেপার জুড়ে Q&amp;A, extraction</td></tr>
+<tr><td class="hl">Consensus</td><td>200M+ পেপারে search, প্রশ্নের পক্ষে/বিপক্ষে claim</td></tr>
+<tr><td class="hl">NotebookLM</td><td>multi-PDF synthesis, source-grounded Q&amp;A</td></tr>
+<tr><td class="hl">scite.ai</td><td>citation context — supporting/contradicting/mentioning</td></tr></table>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Hybrid workflow:</strong> AI করে first-pass summary, claim extraction, related/contradicting work খোঁজা (Keshav Pass ১ ৫ সেকেন্ডে)। <em>তুমি করো</em> verification, deep reading (Pass ২-৩), credibility বিচার, hallucination ধরা। সবসময় source PDF যাচাই করো — AI ভুল বা অস্তিত্বহীন citation বানাতে পারে। এটাই Door 3-এর scientist's eye-এর আধুনিক রূপ।</div></div>
 
 <div class="dialogue">সাফর — journey, travel, passage। কুরআনে আল্লাহ বলেন — "তোমরা পৃথিবীতে ভ্রমণ করো এবং দেখো।" (৩০:৪২)। সাফর = জ্ঞানের যাত্রা। PhD ছাত্রের পাঠও সাফর — একটা paper থেকে আরেকটায়, একটা ধারণা থেকে আরেকটায়। যাত্রার শেষে সে দেখে — পুরো landscape। কোথায় পথ গেছে, কোথায় থেমেছে, কোথায় নতুন পথ তৈরি করা যায়। সাফর — জ্ঞানের যাত্রায় নিজের স্থান খোঁজা।</div>
 <div class="dialogue en">"Safar — journey, travel, passage. Allah says — 'Travel through the earth and observe.' (30:42). Safar = journey of knowledge. The PhD reader's read too is safar — from one paper to another, one idea to another. At journey's end they see — the whole landscape. Where the path went, where it stopped, where a new path can be made. Safar — finding your place in the journey of knowledge."</div>`,

@@ -23,81 +23,21 @@ doors.push({
 <div class="dialogue">পরের দিন সব কুকুরকে একটা নতুন বাক্সে রাখা হলো। বাক্সে একটা নিচু প্রাচীর — লাফ দিলেই পালানো যায়। শক শুরু হলো। প্রথম ও দ্বিতীয় দলের কুকুর লাফ দিল — পালাল। কিন্তু তৃতীয় দল? তারা শুয়ে রইল। লাফ দিল না। চেষ্টাই করল না। তারা শিখেছিল — কিছুতেই কিছু হয় না। এমনকি যখন পালানোর রাস্তা খোলা — তারা পালাল না। Seligman এর নাম দিলেন — Learned Helplessness।</div>
 <div class="dialogue en">Next day, all dogs placed in a new box. Low partition — jump over to escape. Shock starts. First and second group dogs jump — escape. But the third group? They lay down. Didn't jump. Didn't even try. They had learned — nothing makes a difference. Even when escape was open — they didn't run. Seligman named it — Learned Helplessness.</div>
 
-<div class="code-block">LEARNED HELPLESSNESS — The Science of Giving Up:
+<table class="kv-table"><tr><th>দল (Seligman & Maier, 1967)</th><th>অবস্থা</th><th>পরে নতুন বাক্সে</th></tr>
+<tr><td class="hl">Group ১</td><td>কোনো shock নেই</td><td>সহজে পালাল</td></tr>
+<tr><td class="hl">Group ২</td><td>shock + control (lever)</td><td>পালাল</td></tr>
+<tr><td class="hl">Group ৩</td><td>shock + কোনো control নেই</td><td>চেষ্টাই করল না — শিখেছিল response-এ কিছু হয় না</td></tr></table>
 
-THE ORIGINAL STUDY (Seligman & Maier, 1967):
+<div class="callout info"><span class="co-icon">🧬</span><div><strong>মস্তিষ্কের পরিবর্তন (Maier, 2016 reframing):</strong> dorsal raphe nucleus (DRN) hyperactive হয়, serotonin flood করে — এই surge-ই passive behavior ঘটায়। এটা অলসতা নয়, neurochemical। কিন্তু Group ৩-এর কুকুরদের যখন হাতে ধরে barrier পার করানো হলো, DRN শান্ত হলো → তারা সেরে উঠল। <strong>Helplessness reversible</strong> — এটাই মূল আবিষ্কার।</div></div>
 
-  তিনটি দল:
-    Group ১: No shock → later: ESCAPED easily
-    Group ২: Shock + control (lever) → later: ESCAPED  
-    Group ৩: Shock + no control → later: DID NOT TRY
-  
-  Key finding: Group ৩ dogs lay down and 
-    took the shock WITHOUT trying to escape.
-    They had LEARNED that responses don't matter.
-  
-  Brain change (discovered later, Maier 2016):
-    → dorsal raphe nucleus (DRN) becomes hyperactive
-    → serotonin floods the system
-    → this SEROTONIN SURGE causes passive behavior
-    → it's NOT laziness — it's NEUROCHEMICAL
-    
-    BUT: when researchers taught Group ৩ dogs
-    to escape (physically moved them over barrier),
-    the DRN calmed down → dogs recovered.
-    
-    → helplessness is REVERSIBLE (key finding!)
+<table class="kv-table"><tr><th>প্রেক্ষাপট</th><th>যা ঘটে</th></tr>
+<tr><td class="hl">শৈশব</td><td>বারবার "তুমি পারবে না" → মস্তিষ্ক শেখে effort = হতাশা → চেষ্টা বন্ধ</td></tr>
+<tr><td class="hl">প্রাপ্তবয়স্ক</td><td>বারবার ব্যর্থতা → "কিছুতেই কিছু হয় না" → বিষণ্নতা, passivity</td></tr>
+<tr><td class="hl">দারিদ্র্য</td><td>systemic বাধা → "সিস্টেম rigged" → হাল ছেড়ে দেওয়া, প্রজন্মান্তরে</td></tr></table>
 
-HOW THIS APPLIES TO HUMANS:
+<div class="callout warn"><span class="co-icon">🌀</span><div><strong>Helplessness-এর ৩ উপাদান (Seligman):</strong> Internal ("এটা আমার দোষ") + Permanent ("সবসময় এমনই থাকবে") + Pervasive ("সব কিছুতে প্রভাব ফেলে")। তিনটা একসাথে = clinical depression। পরে Seligman একে "explanatory style" গবেষণায় পরিণত করেন।</div></div>
 
-  ┌─────────────────────────────────────────┐
-  │ CHILDHOOD: repeatedly told "you can't"  │
-  │ → brain learns: effort = disappointment │
-  │ → stops trying (like Group ৩ dog)       │
-  ├─────────────────────────────────────────┤
-  │ ADULTHOOD: repeated failures (job,      │
-  │ relationships, business)                │
-  │ → brain: "nothing I do matters"          │
-  │ → depression, passivity, victimhood      │
-  ├─────────────────────────────────────────┤
-  │ POVERTY: systemic barriers repeatedly    │
-  │ block progress                           │
-  │ → "the system is rigged" → give up      │
-  │ → intergenerational helplessness          │
-  └─────────────────────────────────────────┘
-
-THE THREE COMPONENTS OF HELPLESSNESS (Seligman):
-
-  ১. INTERNAL: "It's MY fault" (not circumstances)
-  ২. PERMANENT: "It will ALWAYS be this way"
-  ৩. PERVASIVE: "It affects EVERYTHING"
-  
-  All three together = clinical depression
-  (Seligman later refined this into 
-   "explanatory style" research)
-
-THE GOOD NEWS — SELIGMAN'S LATER WORK:
-
-  Seligman moved from helplessness to 
-  LEARNED OPTIMISM (1991):
-  
-  → Optimism can be LEARNED (like helplessness)
-  → Key: change your EXPLANATORY STYLE
-  → Instead of "I'm stupid" → "I didn't prepare well"
-  → Instead of "It always fails" → "This specific attempt failed"
-  → Instead of "Everything is wrong" → "This one thing is wrong"
-  
-  → Optimism is NOT delusion
-  → It's ACCURATE assessment that setbacks 
-    are specific, temporary, and external
-
-  PET THE DOG (Seligman's proof):
-    → helpless dogs CAN be helped
-    → physically drag them over the barrier
-    → they learn: "Oh, I CAN escape!"
-    → DRN calms → recovery begins
-    → Translation: you need someone to SHOW YOU
-      that escape is possible → then you believe</div>
+<div class="callout tip"><span class="co-icon">🌤️</span><div><strong>সুসংবাদ — Learned Optimism (1991):</strong> helplessness-এর মতো optimism-ও শেখা যায়। উপায় — explanatory style বদলানো: "আমি বোকা" → "ভালো প্রস্তুতি নিইনি"; "সবসময় fail করে" → "এই নির্দিষ্ট চেষ্টাটা fail করেছে"; "সব ভুল" → "এই একটা জিনিস ভুল"। Optimism বিভ্রম নয় — এটা সঠিক মূল্যায়ন যে setback নির্দিষ্ট, সাময়িক ও বাহ্যিক। ("Pet the dog" — কেউ তোমাকে দেখিয়ে দিলে যে পালানো সম্ভব, তখন তুমি বিশ্বাস করো।)</div></div>
 
 <div class="dialogue">নফস আম্মারা — আত্মসমর্পণকারী মন। কুরআনে আল্লাহ বলেন — "নিশ্চয় মানুষের মন খুব কঠোরভাবে খারাপ আদেশ দেয়।" (১২:৫৩)। নফস আম্মারা হলো সেই অবস্থা যেখানে মন বলে — চেষ্টা কোরো না, কিছু হবে না, তুমি পারবে না। Seligman-এর কুকুরের মতো — শুয়ে থাকো। কিন্তু কুরআন আরও বলে — "যারা জিহাদ করে (চেষ্টা করে), আমি তাদের আমার পথ দেখাই।" (২৯:৬৯)। চেষ্টা = শেখানোর শর্ত। নফস আম্মারা থেকে নফস মুতমাইন্না (প্রশান্ত মন) — এটাই যাত্রা। সম্ভব। প্রমাণিত।</div>
 <div class="dialogue en">"Nafs Ammara — the self that commands to surrender. The Quran says — 'The human soul certainly commands evil.' (12:53). Nafs Ammara is the state where the mind says — don't try, nothing will happen, you can't. Like Seligman's dog — lie down. But the Quran also says — 'Those who strive, We show them Our paths.' (29:69). Effort = the condition for learning. From Nafs Ammara to Nafs Mutma'innah (the tranquil self) — this is the journey. Possible. Proven."</div>`,
@@ -125,125 +65,18 @@ doors.push({
 <div class="dialogue">Cialdini আবিষ্কার করলেন — মানুষের মস্তিষ্কে সিদ্ধান্ত নেওয়ার shortcut আছে। প্রতিদিন হাজার হাজার সিদ্ধান্ত — প্রতিটা বিশ্লেষণ করলে মস্তিষ্ক ক্লান্ত। তাই shortcut। কিন্তু এই shortcut-ই নিয়ন্ত্রকদের দুর্বলতা। যে জানে কোন shortcut কীভাবে কাজ করে, সে প্রতিরোধ করতে পারে। যে জানে না, সে নিয়ন্ত্রিত হয়।</div>
 <div class="dialogue en">Cialdini discovered — the human brain has decision-making shortcuts. Thousands of daily decisions — analyzing each exhausts the brain. So shortcuts. But these shortcuts are what controllers exploit. One who knows which shortcut, how it works, can resist. One who doesn't, is controlled.</div>
 
-<div class="code-block">CIALDINI'S ৭ PRINCIPLES OF PERSUASION (1984/2021):
+<table class="kv-table"><tr><th>নীতি</th><th>গবেষণা</th><th>প্রতিরক্ষা</th></tr>
+<tr><td class="hl">১. Reciprocity</td><td>bill-এর সাথে mint → tip +১৪%, দুটো mint → +২৩%</td><td>"free জিনিসের জন্য আমি ঋণী নই"</td></tr>
+<tr><td class="hl">২. Commitment</td><td>foot-in-door; ছোট request → yes → বড় request → yes (Festinger dissonance, 1957)</td><td>"আমি মত বদলাতে পারি; অতীতের আমি ≠ এখনকার আমি"</td></tr>
+<tr><td class="hl">৩. Social Proof</td><td>Asch conformity (1951) — ~৭৫% অন্তত একবার ভুল উত্তরে সায় দেয় (Berns fMRI, 2005: ভিন্নমতে ব্যথা-সংকেত)</td><td>"জনপ্রিয়তা ≠ সত্য (একসময় সবাই ভাবত পৃথিবী সমতল)"</td></tr>
+<tr><td class="hl">৪. Authority</td><td>Milgram (1961) — ৬৫% "lethal" shock দিল কারণ authority বলল "continue"</td><td>"authority-র প্রমাণ লাগে, শুধু title নয়"</td></tr>
+<tr><td class="hl">৫. Liking</td><td>বন্ধুর কাছ থেকে ৩x বেশি কেনে; attractiveness +১০% compliance (halo effect, Thorndike 1920)</td><td>"ব্যক্তি ও প্রস্তাব আলাদা করো"</td></tr>
+<tr><td class="hl">৬. Scarcity</td><td>"limited time" → +৩৭% কেনা; Worchel cookie jar (1975); loss aversion ২x (Kahneman & Tversky, 1979)</td><td>"urgency বানানো; আসল মূল্য ২৪ ঘণ্টায় শেষ হয় না"</td></tr>
+<tr><td class="hl">৭. Unity (২০২১)</td><td>shared identity ("we") — family, tribe, nation → compliance বাড়ে</td><td>"shared identity ≠ shared truth"</td></tr></table>
 
-PRINCIPLE ১: RECIPROCITY (পারস্পরিকতা)
-  "আমি তোমাকে দিয়েছি — তুমিও দাও"
-  
-  Research: Waiter gives mint with bill → tip +১৪%
-           Two mints → +২৩%
-  Cult: "Free" dinner → obligation to listen
-  
-  Brain mechanism: deeply wired — returning favors
-    kept tribes alive. Violating reciprocity = 
-    social punishment (amygdala activates).
-  
-  Defense: "I owe nothing for free things"
+<div class="callout warn"><span class="co-icon">🎭</span><div><strong>Combination attack:</strong> নিয়ন্ত্রকরা নীতিগুলো একসাথে stack করে। Cult recruitment: Unity ("আমরা family") → Reciprocity ("free meal") → Social proof ("সবাই খুশি") → Authority ("নেতা সত্য জানেন") → Commitment ("কেন যোগ দিলে লেখো") → Scarcity ("পৃথিবী শেষ, শুধু আমরা বাঁচাতে পারি") → Liking ("আমরা তোমাকে ভালোবাসি")। প্রতিটা principle চিনতে না পারলে বের হওয়া প্রায় অসম্ভব।</div></div>
 
-PRINCIPLE ২: COMMITMENT & CONSISTENCY (অঙ্গীকার)
-  "তুমি বলেছ — এখন করো"
-  
-  Research: Foot-in-door technique
-    → Small request → yes
-    → Larger request → yes (consistency pressure)
-    → Chinese POW "essay writing" → compliance
-  
-  Brain: Cognitive dissonance (Festinger, 1957)
-    → saying X but doing Y = discomfort
-    → brain resolves by changing belief to match action
-  
-  Defense: "I can change my mind. Past me ≠ present me"
-
-PRINCIPLE ৩: SOCIAL PROOF (সামাজিক প্রমাণ)
-  "সবাই করছে — তুমিও করো"
-  
-  Research: Asch conformity (1951)
-    → ৭৫% people agreed that obviously wrong 
-      lines were the same length (because others did)
-  
-  Brain: amygdala signals danger when disagreeing
-    with group → fMRI shows actual pain response
-    when going against the crowd (Berns, 2005)
-  
-  Defense: "Popularity ≠ truth. Most people were wrong 
-    about the earth being flat"
-
-PRINCIPLE ৪: AUTHORITY (কর্তৃপক্ষ)
-  "বিশেষজ্ঞ বলছে — মানো"
-  
-  Research: Milgram obedience (1961)
-    → ৬৫% people delivered "lethal" shocks
-       when authority figure said "continue"
-    → average person obeys authority even
-       against conscience
-  
-  NOTE: archival research (Russell, Perry) দেখায়
-    Milgram-এর experimenter অনেক probing করতেন
-    (যা original paper-এ পুরোপুরি স্পষ্ট নয়)। 
-    "৬৫%" ও "agentic state" theory নিয়ে বিতর্ক আছে।
-    কিন্তু মূল পর্যবেক্ষণ — authority চাপ দেয় — টিকে আছে।
-  
-  Brain: prefrontal cortex (moral reasoning)
-    SHUTS DOWN when authority figure present
-    → obedience = amygdala + basal ganglia takeover
-    → you literally STOP THINKING
-  
-  Defense: "Authority requires evidence, not just title"
-
-PRINCIPLE ৫: LIKING (পছন্দ)
-  "আমাকে পছন্দ করো — তারপর মেনে নাও"
-  
-  Research: Tupperware parties (friend invites)
-    → people buy ৩x more from friends than strangers
-    → physical attractiveness = +১০% compliance
-  
-  Brain: oxytocin release with liked people
-    → reduces critical thinking
-    → "halo effect" (Thorndike, 1920):
-      one positive trait = assume ALL positive
-  
-  Defense: "Separate the person from the proposition"
-
-PRINCIPLE ৬: SCARCITY (দুর্লভতা)
-  "শেষ সুযোগ — এখনই করো"
-  
-  Research: "Limited time offer" → +৩৭% purchase
-    → Worchel cookie jar (1975): ২ cookies rated 
-      tastier than ১০ identical cookies
-  
-  Brain: loss aversion (Kahneman & Tversky, 1979)
-    → fear of loss = ২x stronger than joy of gain
-    → amygdala activates → rush decision → regret
-  
-  Defense: "Urgency is manufactured. Real value 
-    doesn't expire in ২৪ hours"
-
-PRINCIPLE ৭: UNITY (একতা) [Added in 2021 edition]
-  "আমরা এক — একসাথে"
-  
-  Research: shared identity ("we" not "you+me")
-    → family, tribe, nation, religion
-    → compliance jumps when identity is shared
-  
-  Brain: oxytocin release for "in-group"
-    → "out-group" → amygdala distrust
-    → "in-group" → prefrontal cortex turns off
-  
-  Defense: "Shared identity ≠ shared truth"
-
-THE COMBINATION ATTACK (how manipulators stack):
-
-  Cult recruitment sequence:
-    ১. Unity: "We're a family" (belonging)
-    ২. Reciprocity: "Free meal, free love" (obligation)
-    ৩. Social proof: "Everyone here is happy" (conformity)
-    ৪. Authority: "Our leader knows the truth" (submission)
-    ৫. Commitment: "Write why you joined" (lock-in)
-    ৬. Scarcity: "The world is ending — only we can save you" (urgency)
-    ৭. Liking: "We love you so much" (emotional bond)
-  
-  → ছাড়া বের হওয়া প্রায় অসম্ভব — যতক্ষণ না 
-    তুমি প্রতিটা principle চিনতে পারো</div>
+<div class="callout info"><span class="co-icon">🧠</span><div><strong>মস্তিষ্ক কেন এতে ধরা দেয়:</strong> এগুলো decision shortcut — প্রতিদিন হাজার সিদ্ধান্ত বিশ্লেষণ করলে মস্তিষ্ক ক্লান্ত হয়, তাই shortcut। authority-র সামনে prefrontal cortex (নৈতিক যুক্তি) কার্যত বন্ধ হয়ে যায়; in-group-এ oxytocin critical thinking কমায়। <strong>নিয়ম: যেকোনো বড় সিদ্ধান্তে ২৪ ঘণ্টা delay — manipulation দিনের আলোয় মরে যায়।</strong></div></div>
 
 <div class="dialogue">গাসল — covering, concealing, deception। কুরআনে আল্লাহ বলেন — "শয়তান তাদের কাজ সুশোভন করে তোলে।" (১৬:৬৩)। গাসল হলো সত্যকে ঢেকে রেখে মিথ্যা সুন্দর করে দেখানো। Cialdini-র নীতিগুলো গাসলের বিজ্ঞান — প্রতিটা shortcut মানুষের মস্তিষ্কের দুর্বলতা যা নিয়ন্ত্রক ব্যবহার করে। কিন্তু যে জানে, সে দেখে। যে দেখে, সে প্রতিরোধ করে। গাসল থেকে কাশফ (প্রকাশ) — এটাই সচেতনতার পথ।</div>
 <div class="dialogue en">"Ghasl — covering, concealing, deception. Allah says — 'Satan makes their deeds appear fair to them.' (16:63). Ghasl is hiding truth while making falsehood appear beautiful. Cialdini's principles are the science of ghasl — each shortcut is a brain vulnerability that controllers exploit. But one who knows, sees. One who sees, resists. From ghasl to kashf (uncovering) — this is the path of awareness."</div>`,
@@ -271,141 +104,23 @@ doors.push({
 <div class="dialogue">Cialdini বলেছিলেন — কীভাবে নিয়ন্ত্রণ করা হয়। কিন্তু আমি বলি — ক্ষমতা পেলে মস্তিষ্কে কী হয়? Keltner দেখালেন — prefrontal cortex বন্ধ হয়ে যায়। empathy কমে। মানুষ বস্তু হয়ে যায় — মানুষ না। Sapolsky দেখালেন — পদমর্যাদায় নিচে থাকলে ক্রনিক স্ট্রেস, উপরে থাকলে empathy loss। দুই পক্ষই ক্ষতিগ্রস্ত।</div>
 <div class="dialogue en">"Cialdini said — how people are controlled. But I say — what happens to the brain when you GET power? Keltner showed — the prefrontal cortex shuts down. Empathy drops. People become objects — not humans. Sapolsky showed — low rank = chronic stress, high rank = empathy loss. Both sides suffer."</div>
 
-<div class="code-block">POWER & THE BRAIN — Neuroscience of Hierarchy:
+<div class="callout warn"><span class="co-icon">⚡</span><div><strong>The Power Paradox (Keltner):</strong> মানুষ ক্ষমতা <em>পায়</em> empathy, generosity ও collaboration দিয়ে — অন্যরা স্বেচ্ছায় অনুসরণ করে। কিন্তু ক্ষমতা তাদের <em>যা করে</em>: empathy কমায়, impulsivity বাড়ায় — তারা এমন মানুষ হয়ে ওঠে যাকে কেউ অনুসরণ করত না। "Cookie experiment" (2003): এলোমেলোভাবে নিযুক্ত "leader" বেশি খেল, শেষ cookie না-বলে নিল — random ক্ষমতাও অসচেতন-স্বার্থপর বানায়।</div></div>
 
-THE POWER PARADOX (Keltner, 2007):
+<table class="kv-table"><tr><th>মস্তিষ্ক অঞ্চল</th><th>ক্ষমতার প্রভাব</th></tr>
+<tr><td class="hl">Prefrontal cortex</td><td>নিষ্ক্রিয় — mirror neuron কম, অন্যের আবেগ পড়তে পারে না</td></tr>
+<tr><td class="hl">Amygdala</td><td>অন্যের distress-সংকেতে কম সাড়া</td></tr>
+<tr><td class="hl">Reward circuit</td><td>নিজের reward-এ hypersensitive, অন্যের ব্যথায় অন্ধ</td></tr></table>
 
-  How people GET power:
-    → empathy, generosity, collaboration
-    → others voluntarily follow them
-  
-  What power DOES to them:
-    → empathy DECREASES
-    → impulsivity INCREASES
-    → they become the kind of person
-      nobody would follow
-  
-  → The paradox: the qualities that gain power
-    are destroyed BY power
-  
-  Keltner's "cookie experiment" (2003):
-    → groups of ৩ → one assigned "leader"
-    → given a task → then ৫ cookies
-    → "leaders" ate with mouth open
-      (displaying dominant body language)
-    → ate MORE than their share
-    → took the LAST cookie without asking
-    
-    → power made them rude, unaware, selfish
-    → even when power was RANDOMLY assigned!
+<div class="callout info"><span class="co-icon">🔬</span><div>fMRI (Hogeveen, 2014): high-power অংশগ্রহণকারীদের mirror-neuron activity কমে যায় — তারা আক্ষরিক অর্থে অন্যের অনুভূতি simulate করতে পারে না। ক্ষমতা তোমাকে অন্য মানুষের প্রতি অন্ধ করে।</div></div>
 
-BRAIN CHANGES UNDER POWER:
+<table class="kv-table"><tr><th>Sapolsky ও Whitehall</th><th>ফলাফল</th></tr>
+<tr><td class="hl">নিচু র‍্যাঙ্কের baboon</td><td>উচ্চ cortisol, ছোট আয়ু, hippocampus সংকুচিত</td></tr>
+<tr><td class="hl">উঁচু র‍্যাঙ্ক (স্থিতিশীল)</td><td>কম cortisol — কিন্তু অস্থিতিশীল hierarchy-তে সবাই stressed</td></tr>
+<tr><td class="hl">Whitehall (Marmot, 1967+)</td><td>একই healthcare-এও নিচু র‍্যাঙ্কে ৩x হৃদরোগ-মৃত্যু; র‍্যাঙ্ক ধূমপানের চেয়েও বেশি স্বাস্থ্য-ভবিষ্যদ্বাণী করে</td></tr></table>
 
-  ┌──────────────────┬──────────────────────────────┐
-  │ Brain Region      │ Effect of Power              │
-  ├──────────────────┼──────────────────────────────┤
-  │ Prefrontal cortex │ DEACTIVATED (mirror neurons  │
-  │ (empathy, control)│ less active)                 │
-  │                  │ → can't read others' emotions │
-  ├──────────────────┼──────────────────────────────┤
-  │ Amygdala          │ less reactive to others'     │
-  │ (threat/fear)     │ distress signals             │
-  ├──────────────────┼──────────────────────────────┤
-  │ Reward circuit    │ hypersensitive to own        │
-  │ (nucleus accumbens│ rewards, blind to others'    │
-  │  + dopamine)      │ pain                          │
-  └──────────────────┴──────────────────────────────┘
+<div class="callout warn"><span class="co-icon">🎯</span><div><strong>মূল আবিষ্কার:</strong> "control-এর অভাবের অনুভূতি" = #১ stressor, প্রকৃত কষ্টের চেয়েও বেশি। control-হীন middle manager বিশাল কাজের CEO-র চেয়ে বেশি stressed। <strong>Workload নয়, control-ই আসল।</strong> (তুলনীয়: Zimbardo Stanford Prison 1971 — random ক্ষমতা ২ দিনে guard-দের sadistic করে; Milgram 1961 — ৬৫% authority-র আদেশে ক্ষতিকর কাজ করে।)</div></div>
 
-  → Power literally BLINDS you to other people
-  → fMRI study (Hogeveen, 2014): high-power
-    participants showed REDUCED mirror neuron
-    activity → literally could not simulate
-    others' feelings
-
-ROBERT SAPOLSKY — STRESS & HIERARCHY:
-
-  Sapolsky studied baboons for ৩০ years:
-  
-  → Low-ranking baboons: HIGH cortisol
-    (chronic stress), shorter lifespan,
-    worse immune system, brain damage
-    (hippocampus shrinks from cortisol)
-  
-  → High-ranking baboons: LOW cortisol
-    BUT only if position is STABLE
-    → unstable hierarchy → everyone stressed
-  
-  → Human equivalent (Whitehall Studies, 
-    Marmot, 1967+):
-    → British civil servants, same health care
-    → bottom rank: ৩x heart disease mortality
-    → TOP rank: best health
-    → the LOWER you are, the worse EVERYTHING
-    → rank predicts health MORE than smoking
-  
-  KEY FINDING: perceived lack of control = 
-    the #১ stressor, worse than actual hardship
-  
-  → Middle manager with no control: 
-    MORE stressed than CEO with massive workload
-  → "Control" matters more than "workload"
-
-THE STANFORD PRISON EXPERIMENT (Zimbardo, 1971):
-
-  ছাত্রদের এলোমেলোভাবে "guard" বা "prisoner" করা হলো
-  → guards became SADISTIC within ২ days
-  → prisoners became PASSIVE within ২ days
-  → experiment shut down after ৬ days (planned ১৪)
-  
-  → power was RANDOMLY assigned
-  → the SITUATION created the behavior
-  → normal people → cruel when given unchecked power
-  
-  (Note: later critiques about methodology, but
-   the core finding — power corrupts quickly —
-   is supported by many other studies)
-
-THE MILGRAM OBEDIENCE EXPERIMENT (1961):
-
-  Participants told to deliver electric shocks
-  to "learner" (actor, no real shocks)
-  
-  → ৬৫% delivered potentially "lethal" ৪৫০-volt shock
-  → simply because authority figure said "continue"
-  → participants showed distress BUT OBEYED
-  
-  → ordinary people will do harmful things
-    when authority tells them to
-  → conscience is OVERRIDDEN by authority
-  → this explains: Nazi Germany, corporate fraud,
-    abuse of power in organizations
-
-WHY SOME SEEK POWER AND OTHERS DON'T:
-
-  Testosterone + cortisol ratio (Mehta & Josephs, 2010):
-    → high testosterone, LOW cortisol = dominant
-    → high testosterone, HIGH cortisol = withdrawal
-    → power-seeking is partly hormonal
-  
-  Early life experience:
-    → secure attachment → power for others
-    → insecure attachment → power for self
-    → childhood trauma → power as defense
-
-THE ANTIDOTE — SERVANT LEADERSHIP:
-
-  Keltner's research on ENDURING power:
-    → power lasts ONLY when empathy is maintained
-    → "power dynamic mode" → maintain awareness
-    → actively practice perspective-taking
-    → stay connected to ground truth (users, front line)
-    → invite dissent (not yes-men)
-  
-  → The leaders who LAST are those who resist
-    the brain changes of power
-    → they CHOOSE to stay humble
-    → they CHOOSE to listen
-    → they CHOOSE empathy over efficiency</div>
+<div class="callout tip"><span class="co-icon">🕊️</span><div><strong>প্রতিষেধক — servant leadership:</strong> Keltner-এর গবেষণা বলে ক্ষমতা <em>টেকে</em> শুধু তখনই যখন empathy ধরে রাখা হয় — সচেতনভাবে perspective-taking চর্চা করো, ground truth-এর (user, front line) সাথে যুক্ত থাকো, dissent আমন্ত্রণ করো (yes-men নয়)। যারা টেকে, তারা ক্ষমতার মস্তিষ্ক-পরিবর্তনকে সচেতনভাবে প্রতিরোধ করে — নম্রতা ও শোনাকে বেছে নেয়।</div></div>
 
 <div class="dialogue">সুলতান আন-নাফস — sovereignty over the self। সুফি ঐতিহ্যে সর্বোচ্চ স্তর — নিজের মনের উপর সম্পূর্ণ সার্বভৌমত্ব। কুরআনে আল্লাহ বলেন — "নিশ্চয় আল্লাহ তাদের ভালোবাসেন যারা তাদের মনকে নিয়ন্ত্রণ করে।" Keltner দেখালেন — বাইরের ক্ষমতা যদি চিত্তবিনোদনমূলক হয়, ভেতরের ক্ষমতা ধ্বংস হয়। কিন্তু যে নিজের মনের সুলতান, সে বাইরের ক্ষমতায় অহংকারী হয় না। সুলতান আন-নাফস — আত্মসার্বভৌমত্ব, বাইরের ক্ষমতা নয়।</div>
 <div class="dialogue en">"Sultan an-Nafs — sovereignty over the self. In Sufi tradition, the highest level — complete sovereignty over one's own mind. Allah says — 'Allah loves those who control themselves.' Keltner showed — external power, if intoxicating, destroys internal power. But one who is sultan of their own mind, doesn't become arrogant with external power. Sultan an-Nafs — self-sovereignty, not external power."</div>`,
@@ -433,121 +148,24 @@ doors.push({
 <div class="dialogue">Power paradox বলেছিলেন — ক্ষমতা মস্তিষ্ক পরিবর্তন করে। কিন্তু আমি বলি — সবচেয়ে ভয়ংকর নিয়ন্ত্রণ ক্ষমতা দিয়ে নয়, বাস্তবতা চুরি করে। Gaslighting। তুমি জানো কী দেখেছ, কিন্তু কেউ বারবার বলে — তুমি ভুল দেখেছ। ধীরে ধীরে তুমি নিজেকে অবিশ্বাস করো। নিজের মন থেকে বেরিয়ে যাও। এটাই অদৃশ্য খাঁচা।</div>
 <div class="dialogue en">"The power paradox said — power changes the brain. But I say — the most terrifying control isn't through power, but through stealing reality. Gaslighting. You know what you saw, but someone repeatedly says — you saw wrong. Gradually you distrust yourself. Leave your own mind. This is the invisible cage."</div>
 
-<div class="code-block">GASLIGHTING — The Science of Reality Theft:
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">Stage ১</div><div class="tl-title">🚫 Disproof</div><div class="tl-body">"সেটা কখনো ঘটেনি", "তুমি বড় বেশি sensitive", "আমি তো বলিনি" — victim-এর নিশ্চয়তা অস্বীকারের মুখোমুখি।</div></div>
+<div class="tl-step"><div class="tl-when">Stage ২</div><div class="tl-title">❓ Confusion</div><div class="tl-body">"আমি কি সত্যিই ভুল শুনেছি/দেখেছি?" — second-guessing শুরু, তবু আংশিক নিজের উপর বিশ্বাস।</div></div>
+<div class="tl-step"><div class="tl-when">Stage ৩</div><div class="tl-title">🔗 Dependence</div><div class="tl-body">"হয়তো তারাই ঠিক, আমারই মনে নেই" — gaslighter-এর version মানতে শুরু, self-trust ক্ষয়।</div></div>
+<div class="tl-step"><div class="tl-when">Stage ৪</div><div class="tl-title">🌑 Depression</div><div class="tl-body">"নিজের মনকেই বিশ্বাস করতে পারি না" — উদ্বেগ, বিষণ্নতা, "reality"-র জন্য সম্পূর্ণ gaslighter-নির্ভর। (Robin Stern, 2007)</div></div>
+</div>
 
-THE GASLIGHTING CYCLE (Robin Stern, 2007):
+<div class="callout info"><span class="co-icon">🧠</span><div><strong>কেন কাজ করে:</strong> মস্তিষ্ক contradiction ঘৃণা করে — বিশ্বস্ত কেউ তোমার বাস্তবতা অস্বীকার করলে মস্তিষ্ক সম্পর্ক রক্ষার্থে নিজেকেই সন্দেহ করতে চায়। তার উপর, মানব-স্মৃতি সত্যিই অনির্ভরযোগ্য (Loftus, 1970s+) — "হয়তো ভুল মনে করেছি" plausible শোনায়। Isolation এই দুর্বলতা বাড়ায় — কোনো external reality-check থাকে না।</div></div>
 
-  Stage ১: DISPROOF
-    → "That never happened"
-    → "You're too sensitive"
-    → "I never said that"
-    → victim's certainty meets denial
-  
-  Stage ২: CONFUSION  
-    → "Did I really say/hear/see that wrong?"
-    → second-guessing begins
-    → BUT still trusts own perception (partially)
-  
-  Stage ৩: DEPENDENCE
-    → "Maybe they're right, I DO remember wrong"
-    → begins deferring to gaslighter's version
-    → self-trust eroding
-  
-  Stage ৪: DEPRESSION
-    → full self-doubt: "I can't trust my own mind"
-    → anxiety, confusion, depression
-    → completely dependent on gaslighter for "reality"
+<table class="kv-table"><tr><th>প্রেক্ষাপট</th><th>gaslighting-এর রূপ</th></tr>
+<tr><td class="hl">সম্পর্ক (partner)</td><td>"তুমি পাগল, সেটা ঘটেনি, তুমি বড্ড sensitive"</td></tr>
+<tr><td class="hl">কর্মক্ষেত্র (boss)</td><td>"আমি promotion-এর কথা দিইনি, তুমি ভুল বুঝেছ"</td></tr>
+<tr><td class="hl">পরিবার (parent)</td><td>"তোমার শৈশব দারুণ ছিল, তুমি বানিয়ে বলছ"</td></tr>
+<tr><td class="hl">সমাজ (systemic)</td><td>"তোমার racism/sexism-এর অভিজ্ঞতা সত্যি নয়, তুমি victim সাজছ"</td></tr></table>
 
-WHY GASLIGHTING WORKS (neuroscience):
+<div class="callout warn"><span class="co-icon">🚩</span><div><strong>লক্ষণ — তোমাকে gaslight করা হচ্ছে:</strong> সবসময় নিজেকে second-guess করো · ভাবো তুমি "বড় বেশি sensitive" · সারাক্ষণ ক্ষমা চাও · বুঝতে পারো না কেন অসুখী · gaslighter-এর জন্য অজুহাত বানাও · সবসময় confused · আগে আত্মবিশ্বাসী ছিলে, এখন সব সন্দেহ করো। (এটা larger "coercive control"-এর অংশ — Evan Stark 2007; UK-তে ২০১৫ থেকে অপরাধ।)</div></div>
 
-  ধারাবাহিকতার চাহিদা (cognitive consistency):
-    → brain HATES contradiction
-    → when trusted person contradicts your reality
-    → brain prefers to doubt SELF over the 
-      relationship (to preserve the bond)
-  
-  Memory doubt is natural:
-    → human memory is NOT reliable (Loftus, 1970s+)
-    → Elizabeth Loftus proved: memories change,
-       blend, get created from suggestion
-    → gaslighter exploits this REAL vulnerability
-    → "maybe I DID misremember..." (plausible!)
-  
-  Isolation effect:
-    → gaslighter separates victim from others
-    → no external reality check
-    → only the gaslighter's version available
-
-GASLIGHTING IN DIFFERENT CONTEXTS:
-
-  ┌──────────────┬──────────────────────────────────┐
-  │ Relationship │ "You're crazy, that never        │
-  │ (partner)    │ happened. You're too sensitive." │
-  ├──────────────┼──────────────────────────────────┤
-  │ Workplace    │ "I never promised you that        │
-  │ (boss)       │ promotion. You must have         │
-  │              │ misunderstood."                   │
-  ├──────────────┼──────────────────────────────────┤
-  │ Family       │ "You had a great childhood,       │
-  │ (parent)     │ you're making things up."         │
-  ├──────────────┼──────────────────────────────────┤
-  │ Society      │ "Your experience of racism/       │
-  │ (systemic)   │ sexism isn't real. You're         │
-  │              │ playing the victim."              │
-  └──────────────┴──────────────────────────────────┘
-
-SIGNS YOU'RE BEING GASLIGHTED:
-
-  ১. You constantly second-guess yourself
-  ২. You wonder if you're "too sensitive"
-  ৩. You're always apologizing
-  ৪. You can't understand why you're unhappy
-  ৫. You make excuses for the gaslighter
-  ৬. You feel confused ALL THE TIME
-  ৭. You used to be confident, now you doubt everything
-  ৮. You feel like everything is YOUR fault
-
-COERCIVE CONTROL (Evan Stark, 2007):
-
-  Gaslighting is part of larger "coercive control":
-  
-    → ISOLATION: cutting off from friends/family
-    → MONITORING: tracking, surveillance
-    → DEGRADATION: destroying self-esteem
-    → MICROMANAGEMENT: controlling money, food, movement
-    → THREATS: subtle or overt
-  
-  → In UK, coercive control is a CRIMINAL OFFENSE 
-    (Serious Crime Act 2015)
-  → NOT just "emotional abuse" — it's a 
-    systematic strategy of domination
-
-THE PATH OUT (rebuilding reality):
-
-  ১. WRITE IT DOWN
-    → journal: what happened, when, what was said
-    → creates EXTERNAL record immune to gaslighting
-    → "I can check — I don't need to trust memory"
-  
-  ২. RECONNECT WITH OTHERS
-    → isolation is gaslighter's weapon
-    → reality check: tell someone else your experience
-    → "Does this sound normal to you?"
-  
-  ৩. TRUST YOUR BODY
-    → body doesn't lie: tension, anxiety, dread
-    → if you feel awful around someone consistently
-    → your BODY knows, even if your mind is confused
-  
-  ৪. PROFESSIONAL HELP
-    → therapist provides objective reality check
-    → CBT (Door ৮) helps rebuild self-trust
-    → support groups: others who've been there
-  
-  ৫. DOCUMENT EVERYTHING
-    → text messages, emails, recordings (if legal)
-    → build evidence for your own clarity
-    → and for legal protection if needed</div>
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>বেরোনোর পথ:</strong> ① <strong>লিখে রাখো</strong> — কী ঘটল, কখন, কী বলা হলো; এই record gaslighting-প্রতিরোধী। ② <strong>অন্যদের সাথে reconnect</strong> — "এটা কি স্বাভাবিক শোনায়?" ③ <strong>শরীরকে বিশ্বাস করো</strong> — tension, dread মিথ্যা বলে না। ④ <strong>Professional help</strong> — therapist objective reality-check; CBT self-trust পুনর্গঠন করে। ⑤ <strong>সব document করো।</strong> মনে রেখো — confusion-ই gaslighting-এর <em>উপসর্গ</em>, তোমার অক্ষমতার প্রমাণ নয়।</div></div>
 
 <div class="dialogue">তাদলিস — deception, fraud, misleading। ইসলামী ফিকহে তাদলিস একটা গুরুতর অপরাধ — কাউকে মিথ্যা বিশ্বাস গ্রহণ করানো। কুরআনে আল্লাহ বলেন — "শয়তান তাদের কাজ সুশোভন করে তোলে।" (১৬:৬৩)। Gaslighting হলো তাদলিসের সবচেয়ে গভীর রূপ — কাউকে তার নিজের বাস্তবতা থেকে বিচ্ছিন্ন করা। কিন্তু কুরআন আরও বলে — "সত্য এসেছে, মিথ্যা বিলুপ্ত।" (১৭:৮১)। সচেতনতা = সত্যের আলো। যে আলো জালে, সে তাদলিস দেখে। যে অন্ধকারে, সে বিভ্রান্ত হয়।</div>
 <div class="dialogue en">"Tadlis — deception, fraud, misleading. In Islamic jurisprudence, tadlis is a serious offense — making someone accept a false belief. Allah says — 'Satan makes their deeds appear fair.' (16:63). Gaslighting is the deepest form of tadlis — disconnecting someone from their own reality. But the Quran also says — 'Truth has come, falsehood has vanished.' (17:81). Awareness = the light of truth. One who has light, sees tadlis. One in darkness, is deceived."</div>`,
@@ -575,154 +193,22 @@ doors.push({
 <div class="dialogue">Gaslighting বলেছিলেন — কীভাবে বাস্তবতা চুরি হয়। কিন্তু আমি বলি — কেউ বাস্তবতা না চুরি করলেও কেউ নিয়ন্ত্রিত হয় কেন? কারণ তারা বিশ্বাস করে — আমি নিয়ন্ত্রণ করি না। ভাগ্য নিয়ন্ত্রণ করে। Rotter দেখালেন — এই বিশ্বাসই সবকিছু। Internal locus = আমি নিয়ন্ত্রণ করি। External locus = ভাগ্য নিয়ন্ত্রণ করে। ৫০ বছরের গবেষণা — internal মানুষের জীবন ভালো হয়, সব ক্ষেত্রে।</div>
 <div class="dialogue en">"Gaslighting said — how reality is stolen. But I say — even without gaslighting, why are some controlled? Because they believe — I don't control. Fate controls. Rotter showed — this belief is everything. Internal locus = I control. External locus = fate controls. 50 years of research — internal people do better in life, in everything."</div>
 
-<div class="code-block">LOCUS OF CONTROL — The Direction of Your Life:
+<table class="kv-table"><tr><th>Internal locus</th><th>External locus</th></tr>
+<tr><td>"পরিশ্রম করেছি বলে সফল হয়েছি"</td><td>"ভাগ্য ভালো ছিল বলে সফল"</td></tr>
+<tr><td>"প্রস্তুতি নিইনি বলে fail করেছি"</td><td>"পরীক্ষা অন্যায্য ছিল"</td></tr>
+<tr><td>"আমার সিদ্ধান্তই আমার জীবন গড়ে"</td><td>"ভাগ্য/অন্যরা আমার জীবন নিয়ন্ত্রণ করে"</td></tr></table>
 
-ROTTER'S ORIGINAL SCALE (1966):
+<div class="callout info"><span class="co-icon">📊</span><div><strong>৫০ বছরের গবেষণা (Rotter, 1966+):</strong> Internal locus-এর মানুষ — বেশি academic achievement, ভালো শারীরিক স্বাস্থ্য, কম বিষণ্নতা, বেশি job satisfaction, business শুরুর সম্ভাবনা বেশি, দীর্ঘ আয়ু। External locus — বেশি learned helplessness, উদ্বেগ, passive coping, খারাপ পরিস্থিতিতে আটকে থাকা।</div></div>
 
-  Internal locus:
-    → "I succeeded because I worked hard"
-    → "I failed because I didn't prepare"
-    → "My choices shape my life"
-  
-  External locus:
-    → "I succeeded because I was lucky"
-    → "I failed because the test was unfair"
-    → "Fate/destiny/others control my life"
+<div class="callout warn"><span class="co-icon">🧠</span><div><strong>Scarcity mindset (Mullainathan & Shafir, 2013):</strong> ভারতীয় আখ-চাষিদের harvest-এর আগে (গরিব, stressed) ও পরে (টাকা পেয়ে) পরীক্ষা করা হলো — একই মানুষ, harvest-এর আগে IQ ~১৩ পয়েন্ট কমে গেল (এক রাত না-ঘুমানোর সমান)। <strong>দারিদ্র্য নিজেই cognitive capacity কমায়</strong> — চরিত্রদোষ নয়, stress-এ prefrontal cortex দুর্বল হওয়ার neurological ফল। scarcity "tunnel vision" আনে → short-term সিদ্ধান্ত → খারাপ long-term ফল → loop।</div></div>
 
-  ┌──────────────────────────────────────────┐
-  │ ৫০ YEARS OF RESEARCH (1966-2016):        │
-  │                                           │
-  │ Internal locus people:                    │
-  │   → higher academic achievement           │
-  │   → better physical health                │
-  │   → lower depression                      │
-  │   → greater job satisfaction              │
-  │   → more likely to quit smoking           │
-  │   → more likely to start businesses       │
-  │   → better stress management              │
-  │   → longer lifespan                       │
-  │                                           │
-  │ External locus people:                    │
-  │   → higher learned helplessness           │
-  │   → more anxiety and depression           │
-  │   → passive coping (giving up)            │
-  │   → lower life satisfaction               │
-  │   → more likely to stay in bad situations │
-  │   → intergenerational transmission        │
-  └──────────────────────────────────────────┘
+<table class="kv-table"><tr><th>Victim (External)</th><th>Creator (Internal)</th></tr>
+<tr><td>"তারা আমার সাথে এটা করল"</td><td>"আমি বেছে নিলাম..."</td></tr>
+<tr><td>"কিছুই করার নেই"</td><td>"আমি কী করতে পারি?"</td></tr>
+<tr><td>যা নিয়ন্ত্রণে নেই তাতে focus</td><td>যা নিয়ন্ত্রণ করা যায় তাতে focus</td></tr>
+<tr><td>অভিযোগ করে, উদ্ধারের অপেক্ষা</td><td>কাজ করে, পরিবর্তন তৈরি করে</td></tr></table>
 
-THE BILLIONAIRE CONNECTION:
-
-  Decades of research following Rotter (1966):
-  
-  → internal locus of control correlates with
-    achievement, health, and well-being
-    (Rotter, 1966; subsequent meta-analyses)
-  → They believe: "I can change things"
-  → They take ACTION when others wait
-  → They take RESPONSIBILITY when others blame
-  
-  External locus + poverty:
-    → "The system is rigged" → passivity
-    → "Nothing I do matters" → helplessness
-    → "Rich people are lucky" → resentment (no action)
-  
-  → It's NOT that external locus people are wrong
-    (systems ARE rigged)
-  → It's that the BELIEF prevents the action
-    that COULD change things
-
-SCARCITY MINDSET (Mullainathan & Shafir, 2013):
-
-  THE SUGARCANE FARMER STUDY:
-    → Indian sugarcane farmers tested before 
-      harvest (poor, stressed) and after harvest 
-      (money received, relaxed)
-    → SAME people, SAME intelligence
-    → Before harvest: IQ dropped ~১৩ points 
-       (equivalent to losing a night's sleep)
-    → After harvest: IQ returned to normal
-    
-    → POVERTY ITSELF REDUCES COGNITIVE CAPACITY
-    → it's not that poor people are less smart
-    → poverty TUNNELS their vision
-    → they can only see immediate problems
-    → long-term planning becomes neurologically
-       difficult (prefrontal cortex impaired by stress)
-
-  SCARCITY TUNNELING:
-    → when resources are scarce (money, time, food)
-    → brain focuses ONLY on the scarcity
-    → "tunnel vision" — can't see outside
-    → decisions get SHORT-TERM (payday loans,
-       bad deals, unhealthy food)
-    → short-term decisions → worse long-term outcomes
-    → reinforces scarcity → LOOP
-  
-  → This is NOT a character flaw
-  → It's a NEUROLOGICAL response to scarcity
-  → The brain is doing its best with limited bandwidth
-
-THE VICTIM-CREATOR SPECTRUM:
-
-  ┌─────────────┬──────────────────────────────┐
-  │ Victim      │ Creator                      │
-  │ (External)  │ (Internal)                   │
-  ├─────────────┼──────────────────────────────┤
-  │ "They did   │ "I chose to..."              │
-  │ this TO me" │                              │
-  ├─────────────┼──────────────────────────────┤
-  │ "Nothing I  │ "What CAN I do?"             │
-  │ can do"     │                              │
-  ├─────────────┼──────────────────────────────┤
-  │ Focuses on  │ Focuses on what they         │
-  │ what they   │ CAN control                  │
-  │ can't       │                              │
-  ├─────────────┼──────────────────────────────┤
-  │ Complains   │ Acts                         │
-  ├─────────────┼──────────────────────────────┤
-  │ Blames      │ Takes responsibility         │
-  ├─────────────┼──────────────────────────────┤
-  │ Waits for   │ Creates change               │
-  │ rescue      │                              │
-  └─────────────┴──────────────────────────────┘
-
-  → This is NOT about blaming victims
-  → Systems ARE unfair, trauma IS real
-  → But the only path OUT is through 
-    internal locus: "What CAN I do?"
-  → Even in an unfair system, those who
-    act have BETTER outcomes than those who wait
-
-HOW TO SHIFT LOCUS (evidence-based):
-
-  ১. SMALL WINS (Bandura, 1977)
-    → experience success → "I CAN do things"
-    → start VERY small (make bed, ৫ min walk)
-    → each win builds self-efficacy
-  
-  ২. CIRCLE OF CONTROL (Covey, adapted from Stoics)
-    → draw ২ circles:
-      inner = things I control (my effort, attitude)
-      outer = things I don't (weather, others, past)
-    → focus ONLY on inner circle
-    → ignore outer circle (energy waste)
-  
-  ৩. REFRAME SETBACKS
-    → External: "This always happens to me"
-    → Internal: "What did I learn? What can 
-      I do differently?"
-    → NOT self-blame: accurate responsibility
-  
-  ৪. TAKE ONE ACTION DAILY
-    → one thing YOU chose to do
-    → builds internal locus through action
-    → action → evidence → belief → more action
-  
-  ৫. LIMIT COMPLAINT TIME
-    → venting is OK, but set a timer (৫ min)
-    → then: what ACTION will I take?
-    → transition from victim to creator</div>
+<div class="callout tip"><span class="co-icon">🔄</span><div><strong>Locus বদলানোর উপায় (evidence-based):</strong> ① <strong>Small wins</strong> (Bandura, 1977) — খুব ছোট থেকে শুরু (বিছানা গোছানো), প্রতিটা জয় self-efficacy গড়ে। ② <strong>Circle of control</strong> (Covey/Stoics) — যা নিয়ন্ত্রণ করা যায় তাতেই শক্তি দাও। ③ <strong>Setback reframe</strong> — "সবসময় আমার সাথেই হয়" নয়, "কী শিখলাম, ভিন্নভাবে কী করব?" ④ প্রতিদিন <strong>একটা action</strong> — তুমি বেছে নিয়েছ এমন। ⑤ <strong>Complaint time সীমিত করো</strong> (৫ মিনিট), তারপর — "কোন action নেব?" এটা victim থেকে creator-এ রূপান্তর। (এটাই তাওয়াক্কুল + আকল — যা পারো তাতে চেষ্টা, বাকিটা ভরসা।)</div></div>
 
 <div class="dialogue">তাওয়াক্কুল + আকল — trust + reason। কুরআনে আল্লাহ বলেন — "তোমরা চেষ্টা করো, তারপর আল্লাহর উপর তাওয়াক্কুল করো।" (৩:১৫৯)। তাওয়াক্কুল অলসতা নয় — চেষ্টার পর ফলাফলে ভরসা। আকল হলো যুক্তি — কী নিয়ন্ত্রণ করা যায়, কী নয়। Internal locus of control = তাওয়াক্কুল + আকল। যা নিয়ন্ত্রণ করা যায়, তা নিয়ে চেষ্টা (আকল)। যা নিয়ন্ত্রণে নেই, তা আল্লাহর উপর ছাড়া (তাওয়াক্কুল)। এটাই সঠিক অবস্থান। External locus = শুধু ভাগ্যের অপেক্ষা — আকল ছাড়া তাওয়াক্কুল, যা অলসতা। Internal locus = আকল সহ তাওয়াক্কুল — যা সঠিক কর্ম।</div>
 <div class="dialogue en">"Tawakkul + Aql — trust + reason. Allah says — 'Strive, then trust in Allah.' (3:159). Tawakkul is not laziness — it's trusting the outcome AFTER effort. Aql is reason — what can be controlled, what can't. Internal locus of control = tawakkul + aql. Control what you can (aql). Trust Allah with what you can't (tawakkul). This is the correct position. External locus = waiting for fate — tawakkul without aql, which is laziness. Internal locus = tawakkul with aql — which is right action."</div>`,

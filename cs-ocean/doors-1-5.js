@@ -23,76 +23,24 @@ doors.push({
 <div class="dialogue">আলেকজান্ডার তোমাকে দেখলেন। "এটা AI-এর সমুদ্র। সবচেয়ে বড়, সবচেয়ে গভীর, সবচেয়ে ধনী। কিন্তু সবচেয়ে বিপজ্জনক।" তিনি মুক্তাটা তোমার হাতে দিলেন। "এই মুক্তা — এটা একটা NeurIPS পেপার। একটা মুক্তা পেতে কয় ডুব লাগে? শত শত। কিন্তু যে পায়, সে রাতারাতি বিখ্যাত।"</div>
 <div class="dialogue en">Alexander saw you. "This is the sea of AI. The largest, deepest, richest. But the most dangerous." He placed the pearl in your hand. "This pearl — it's a NeurIPS paper. How many dives for one pearl? Hundreds. But whoever gets one, becomes famous overnight."</div>
 
-<div class="code-block">AI / ML / NLP — সমুদ্রের মানচিত্র:
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🔥 NLP</td><td>LLMs, transformers, translation, code gen</td><td>ACL, EMNLP, NAACL</td></tr>
+<tr><td class="hl">🔥 Vision</td><td>Image/video, generation, medical, driving</td><td>CVPR, ICCV, ECCV</td></tr>
+<tr><td class="hl">🔥 RL</td><td>Robotics, game agents, decision making</td><td>NeurIPS, ICML, ICLR</td></tr>
+<tr><td class="hl">🟢 ML Theory</td><td>Generalization, optimization, fairness</td><td>COLT, NeurIPS, ICML</td></tr>
+<tr><td class="hl">🟢 Multimodal</td><td>Vision+Language, audio+text</td><td>NeurIPS, CVPR, ACL</td></tr>
+<tr><td class="hl">🔵 AI Safety</td><td>Robustness, interpretability, alignment</td><td>NeurIPS, ICML, ICLR</td></tr></table>
 
-  ┌─────────────────────────────────────────────┐
-  │  AI / ML / NLP — Sub-Areas                   │
-  │                                              │
-  │  🔥 Natural Language Processing (NLP)        │
-  │     LLMs, transformers, translation,        │
-  │     dialogue, code generation               │
-  │     Conferences: ACL, EMNLP, NAACL          │
-  │                                              │
-  │  🔥 Computer Vision (CV)                     │
-  │     Image/video understanding, generation,  │
-  │     medical imaging, autonomous driving     │
-  │     Conferences: CVPR, ICCV, ECCV            │
-  │                                              │
-  │  🔥 Reinforcement Learning (RL)              │
-  │     Robotics, game agents, decision making  │
-  │     Conferences: NeurIPS, ICML, ICLR         │
-  │                                              │
-  │  🟢 Machine Learning Theory                  │
-  │     Generalization, optimization, fairness  │
-  │     Conferences: COLT, NeurIPS, ICML         │
-  │                                              │
-  │  🟢 Multimodal AI                             │
-  │     Vision+Language, audio+text              │
-  │     Conferences: NeurIPS, CVPR, ACL          │
-  │                                              │
-  │  🔵 AI Safety & Alignment                    │
-  │     Robustness, interpretability,            │
-  │     value alignment                          │
-  │     Conferences: NeurIPS, ICML, ICLR         │
-  │                                              │
-  │     উপ-ক্ষেত্র (২০২৪-২৬-তে বড় হয়েছে):       │
-  │     • Mechanistic Interpretability           │
-  │       (circuit analysis, sparse autoencoders │
-  │       — Anthropic, OpenAI, DeepMind)         │
-  │     • AI Governance & Policy                 │
-  │       (compute governance, frontier evals,   │
-  │       EU AI Act, US EO)                      │
-  │       Conferences: AIES, SaTML               │
-  │     • Red-teaming & adversarial robustness   │
-  │     • Scaling laws & emergence               │
-  └─────────────────────────────────────────────┘
+<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড় হয়েছে:</strong> Mechanistic Interpretability (circuit analysis, sparse autoencoders — Anthropic/OpenAI/DeepMind), AI Governance &amp; Policy (compute governance, frontier evals, EU AI Act, US EO — AIES, SaTML), red-teaming ও adversarial robustness, scaling laws ও emergence।</div></div>
 
-  ফান্ডিং পরিসংখ্যান:
-  • NSF AI funding: $২B+ annually (US)
-  • DARPA AI programs: $২B+
-  • Industry labs: Google AI, Meta FAIR, 
-    Microsoft Research, OpenAI, Anthropic
-  • সবচেয়ে বেশি ফান্ডেড CS area
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">১-৩%</div><div class="sc-label">গ্রহণের হার (top programs)</div></div>
+<div class="stat-card"><div class="sc-num">৩০০-৫০০</div><div class="sc-label">প্রতি আসনে আবেদন</div></div>
+<div class="stat-card"><div class="sc-num">$2B+</div><div class="sc-label">বার্ষিক NSF AI ফান্ডিং</div></div>
+<div class="stat-card"><div class="sc-num">$200-400K+</div><div class="sc-label">industry research বেতন</div></div>
+</div>
 
-  প্রতিযোগিতা:
-  • গ্রহণের হার: ১-৩% (top programs)
-  • প্রতি আসনে ৩০০-৫০০ আবেদন
-  • আন্তর্জাতিক ছাত্রদের জন্য আরও কঠিন
-  • পেপার প্রকাশ না থাকলে সুযোগ কম
-
-  ক্যারিয়ার:
-  • একাডেমিয়া: Assistant Prof $১২০K-১৮০K
-  • Industry Research: $২০০K-৪০০K+ 
-    (Google, Meta, OpenAI, Anthropic)
-  • Startup: AI startup equity = অসীম সম্ভাবনা
-  • সবচেয়ে বেশি চাহিদার ডোমেইন
-
-  তোমার জন্য কি ঠিক?
-  ✅ যদি তোমার আগ্রহ থাকে LLM, NLP, vision
-  ✅ যদি গণিত ভালোবাসো (linear algebra, prob.)
-  ✅ যদি প্রতিযোগিতা ভালোবাসো
-  ⚠️ যদি নতুন পেপার না থাকে — কঠিন
-  ❌ যদি গণিত দুর্বল — ভাবো</div>
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ LLM/NLP/vision-এ আগ্রহ · ✅ গণিত (linear algebra, probability) ভালোবাসো · ✅ তীব্র প্রতিযোগিতা সয় · ⚠️ প্রকাশনা না থাকলে কঠিন · ❌ গণিত দুর্বল হলে আরেকবার ভাবো।</div></div>
 
 <div class="dialogue">"কিন্তু সাবধান," আলেকজান্ডার বললেন। "এই সমুদ্রে সবাই ডুব দিচ্ছে। AI এখন hype। সবাই LLM নিয়ে কাজ করছে। কিন্তু hype একদিন থামবে। যারা গভীরে যায় — foundation, theory, reasoning — তারাই টিকবে। যারা surface-এ ভাসে — prompt engineering, chatbot — তারা ভেসে যাবে। তোমার সিদ্ধান্ত: গভীরে যাবে নাকি surface-এ থাকবে?"</div>
 <div class="dialogue en">"But beware," Alexander said. "Everyone dives here. AI is hype now. Everyone works on LLMs. But hype will end. Those who go deep — foundation, theory, reasoning — they survive. Those who float on surface — prompt engineering, chatbots — they drift away. Your decision: go deep or stay on surface?"</div>
@@ -122,74 +70,22 @@ doors.push({
 <div class="dialogue">মারিয়া তোমাকে দেখলেন। "আলেকজান্ডার তোমাকে AI-এর সমুদ্র দেখিয়েছেন। ভালো। কিন্তু AI চলে কীভাবে? সিস্টেমসের উপর। উপরের ঢেউ দেখে মুগ্ধ হইো না — তলদেশ দেখো।" তিনি একটা স্তম্ভে হাতুড়ি মারলেন। "এই স্তম্ভ — এটা একটা distributed system। এটা ছাড়া Google, Amazon, Facebook — কেউ চলতে পারে না।"</div>
 <div class="dialogue en">Maria saw you. "Alexander showed you the sea of AI. Good. But how does AI run? On systems. Don't be awed by surface waves — look at the floor." She struck a pillar with her hammer. "This pillar — it's a distributed system. Without it, Google, Amazon, Facebook — none can function."</div>
 
-<div class="code-block">Systems & Distributed Computing — পূর্ণ মানচিত্র:
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🏗️ OS</td><td>Scheduling, memory, file systems, kernel, containers</td><td>SOSP, OSDI, ASPLOS</td></tr>
+<tr><td class="hl">🏗️ Distributed</td><td>Consensus, replication, fault tolerance, cloud</td><td>SOSP, OSDI, NSDI, PODC</td></tr>
+<tr><td class="hl">🏗️ Networks</td><td>Protocols, SDN, edge, 5G/6G, low-latency</td><td>SIGCOMM, NSDI, INFOCOM</td></tr>
+<tr><td class="hl">🏗️ HPC</td><td>GPU computing, parallel programming, supercomputing</td><td>SC, ISC, PPoPP</td></tr>
+<tr><td class="hl">🏗️ Databases</td><td>Query optimization, OLAP/OLTP, columnar stores</td><td>SIGMOD, VLDB, ICDE</td></tr>
+<tr><td class="hl">🔵 MLSys</td><td>Training infra, serving, model compression, GPU scheduling</td><td>MLSys, OSDI, ASPLOS</td></tr></table>
 
-  ┌─────────────────────────────────────────────┐
-  │  Systems Sub-Areas                           │
-  │                                              │
-  │  🏗️ Operating Systems (OS)                   │
-  │     Scheduling, memory, file systems,       │
-  │     kernel design, containers               │
-  │     Conferences: SOSP, OSDI, ASPLOS          │
-  │                                              │
-  │  🏗️ Distributed Systems                      │
-  │     Consensus, replication, fault tolerance,│
-  │     cloud infrastructure, blockchain        │
-  │     Conferences: SOSP, OSDI, NSDI, PODC      │
-  │                                              │
-  │  🏗️ Computer Networks                        │
-  │     Protocols, SDN, edge computing,         │
-  │     5G/6G, low-latency networking           │
-  │     Conferences: SIGCOMM, NSDI, INFOCOM      │
-  │                                              │
-  │  🏗️ High-Performance Computing (HPC)         │
-  │     GPU computing, parallel programming,    │
-  │     supercomputing, scientific computing    │
-  │     Conferences: SC, ISC, PPoPP              │
-  │                                              │
-  │  🏗️ Databases & Storage                      │
-  │     Query optimization, OLAP/OLTP,          │
-  │     columnar stores, data warehouses        │
-  │     Conferences: SIGMOD, VLDB, ICDE          │
-  │                                              │
-  │  🟢 Embedded & IoT Systems                   │
-  │     Real-time, sensor networks, edge AI     │
-  │     Conferences: SenSys, IPSN, RTSS          │
-  │                                              │
-  │  🔵 Systems for ML (MLSys)                   │
-  │     Training infrastructure, serving,       │
-  │     model compression, GPU scheduling       │
-  │     Conferences: MLSys, OSDI, SOSP, ASPLOS   │
-  └─────────────────────────────────────────────┘
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৫-৮%</div><div class="sc-label">গ্রহণের হার</div></div>
+<div class="stat-card"><div class="sc-num">১০০-২০০</div><div class="sc-label">প্রতি আসনে আবেদন</div></div>
+<div class="stat-card"><div class="sc-num">#২</div><div class="sc-label">AI-এর পরে সর্বাধিক funded</div></div>
+<div class="stat-card"><div class="sc-num">$150-300K</div><div class="sc-label">industry বেতন</div></div>
+</div>
 
-  ফান্ডিং:
-  • NSF: $৫০০M+ systems-related
-  • বিগ টেক: Google, Amazon, Microsoft 
-    সবচেয়ে বেশি systems গবেষক নেয়
-  • NSF CISE divisions: OAC, CCF, CNS
-  • AI-এর পরে দ্বিতীয় সর্বাধিক funded area
-
-  প্রতিযোগিতা:
-  • গ্রহণের হার: ৫-৮% (top programs)
-  • প্রতি আসনে ১০০-২০০ আবেদন
-  • AI-এর চেয়ে কম প্রতিযোগিতা
-  • কিন্তু কমও নয় — ভালো প্রোফাইল দরকার
-
-  ক্যারিয়ার:
-  • একাডেমিয়া: $১০০K-১৬০K
-  • Industry: $১৫০K-৩০০K
-    (cloud infra, database teams)
-  • স্থিতিশীল, long-lasting career
-  • বিগ টেকে সবসময় চাহিদা
-
-  তোমার জন্য কি ঠিক?
-  ✅ যদি বানাতে ভালোবাসো — 
-     distributed system, kernel, network
-  ✅ যদি C/C++/Rust ভালো লাগে
-  ✅ যদি low-level নিয়ে কাজ করতে চাও
-  ✅ যদি AI-এর চেয়ে stable career চাও
-  ✅ তোমার LedgerPilot অভিজ্ঞতা — 
-     database, backend systems — এখানে কাজে দেবে</div>
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ বানাতে ভালোবাসো (distributed system, kernel, network) · ✅ C/C++/Rust ও low-level ভালো লাগে · ✅ AI-এর চেয়ে stable career চাও · ✅ backend/database অভিজ্ঞতা থাকলে বাড়তি সুবিধা। <strong>MLSys = AI + Systems</strong> এখন সবচেয়ে হট।</div></div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"Systems পুরনো — এখন AI যুগ। Systems-এ কেউ কাজ করে না।" ভুল। AI চলে কীভাবে? GPU clusters, distributed training, model serving — সব systems। ChatGPT চলে কীভাবে? পেছনে বিশাল systems infrastructure। Systems কখনো পুরনো হয় না।</div>
@@ -222,79 +118,26 @@ doors.push({
 <p class="scene-setting en">The third door. Atop a mountain peak, a vast fortress — but cracked walls, bricks falling. Inside sits Omar — black garb, a hidden dagger and wall blueprint in hand. Caution on his face, strategy in his eyes. Smell of old stone, metallic clang of weapons, distant pickaxe sounds.</p>
 
 <div class="dialogue">ওমর তোমাকে দেখলেন। "মারিয়া তোমাকে ভিত্তি দেখিয়েছেন। কিন্তু ভিত্তি নিরাপদ না হলে কিছুই কাজে লাগবে না।" তিনি দেয়ালের ফাটল দেখালেন। "দেখো — এই ফাটল। একজন attacker এই ফাটল দিয়ে ঢুকবে। আমি জানি কারণ আমি নিজে ছিলাম attacker।" তিনি ছুরি ঘুরিয়ে একটা দেয়ালে ঢুকিয়ে দেখালেন — কীভাবে ভাঙে।</div>
-<div class="dialogue en">Omar saw you. "Maria showed you the foundation. But if the foundation isn't secure, nothing works." He showed the crack in the wall. "Look — this crack. An attacker enters through it. I know because I was an attacker myself." He twirled the dagger, showed how to break through a wall.</p>
+<div class="dialogue en">Omar saw you. "Maria showed you the foundation. But if the foundation isn't secure, nothing works." He showed the crack in the wall. "Look — this crack. An attacker enters through it. I know because I was an attacker myself." He twirled the dagger, showed how to break through a wall.</div>
 
-<div class="code-block">Security & Privacy — সম্পূর্ণ মানচিত্র:
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🛡️ Systems Sec.</td><td>Intrusion detection, malware, DDoS, zero-days</td><td>S&amp;P, CCS, USENIX</td></tr>
+<tr><td class="hl">🔐 Cryptography</td><td>Post-quantum, zero-knowledge, homomorphic, MPC</td><td>CRYPTO, EUROCRYPT</td></tr>
+<tr><td class="hl">🤖 AI Security</td><td>Adversarial attacks, model stealing, LLM jailbreaks</td><td>USENIX, S&amp;P, NeurIPS</td></tr>
+<tr><td class="hl">🔒 Privacy Tech</td><td>Differential privacy, federated learning</td><td>PETS, CCS, NDSS</td></tr>
+<tr><td class="hl">🌐 Web/App Sec.</td><td>XSS, injection, API, smart-contract security</td><td>USENIX, CCS, NDSS</td></tr>
+<tr><td class="hl">🟢 Usable Sec.</td><td>Human factors, phishing, authentication</td><td>SOUPS, USENIX, CCS</td></tr></table>
 
-  ┌─────────────────────────────────────────────┐
-  │  Security Sub-Areas                          │
-  │                                              │
-  │  🛡️ Network & Systems Security               │
-  │     Intrusion detection, malware, DDoS,     │
-  │     zero-day vulnerabilities                │
-  │     Conferences: S&P (Oakland), CCS, USENIX  │
-  │                                              │
-  │  🔐 Cryptography                              │
-  │     Post-quantum crypto, zero-knowledge,    │
-  │     homomorphic encryption, secure MPC      │
-  │     Conferences: CRYPTO, EUROCRYPT, CCS      │
-  │                                              │
-  │  🤖 AI Security & Privacy                     │
-  │     Adversarial attacks, model stealing,   │
-  │     data poisoning, LLM jailbreaks          │
-  │     Conferences: USENIX, S&P, NeurIPS, ICLR  │
-  │                                              │
-  │  🔒 Privacy-Enhancing Technologies            │
-  │     Differential privacy, federated learn., │
-  │     anonymous communication                 │
-  │     Conferences: PETS, CCS, NDSS             │
-  │                                              │
-  │  🌐 Web & Application Security                │
-  │     XSS, SQL injection, API security,       │
-  │     smart contracts, blockchain security    │
-  │     Conferences: USENIX, CCS, NDSS           │
-  │                                              │
-  │  🔵 IoT & Embedded Security                   │
-  │     Medical devices, vehicles, smart home,  │
-  │     industrial control systems              │
-  │     Conferences: CCS, USENIX, NDSS           │
-  │                                              │
-  │  🟢 Usable Security                           │
-  │     Human factors, phishing, authentication │
-  │     Conferences: SOUPS, USENIX, CCS          │
-  └─────────────────────────────────────────────┘
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৫-১০%</div><div class="sc-label">গ্রহণের হার</div></div>
+<div class="stat-card"><div class="sc-num">$800M+</div><div class="sc-label">NSA/DARPA/NSF ফান্ডিং</div></div>
+<div class="stat-card"><div class="sc-num">$150-350K</div><div class="sc-label">industry বেতন</div></div>
+<div class="stat-card"><div class="sc-num">$200-500K</div><div class="sc-label">consulting</div></div>
+</div>
 
-  ফান্ডিং:
-  • NSA, DARPA, NSF — $৮০০M+ security
-  • DHS, DoD — classified research funding
-  • Industry: Google Project Zero, Microsoft 
-    Security Response, Meta Security
-  • সরকারি ফান্ডিং সবচেয়ে বেশি security-এ
+<div class="callout warn"><span class="co-icon">⚖️</span><div><strong>Responsible disclosure:</strong> vulnerability পেলে সরাসরি প্রকাশ কোরো না — আগে কোম্পানিকে জানাও, সময় দাও, তারপর পেপার। এই নীতিবোধ ছাড়া security গবেষক বিপজ্জনক।</div></div>
 
-  প্রতিযোগিতা:
-  • গ্রহণের হার: ৫-১০% (top programs)
-  • AI-এর চেয়ে কম প্রতিযোগিতা
-  • কিন্তু cryptography-তে গণিত দরকার
-  • Security engineering বেশি প্র্যাকটিক্যাল
-
-  ক্যারিয়ার:
-  • সরকারি: NSA, CIA, NIST, national labs 
-    ($১২০K-২০০K, security clearance)
-  • Industry: $১৫০K-৩৫০K
-    (security teams at big tech)
-  • Consulting: $২০০K-৫০০K 
-    (independent security consultant)
-  • Cybersecurity startup: অসীম সম্ভাবনা
-
-  তোমার জন্য কি ঠিক?
-  ✅ যদি সমস্যা সমাধান ভালোবাসো — ভাঙা আর 
-     বানানো একসাথে
-  ✅ যদি cryptography গণিত ভালো লাগে
-  ✅ যদি government/clearance career চাও
-  ✅ যদি real-world impact চাও — security 
-     vulnerability প্রতিদিন মানুষের জীবন বাঁচায়
-  ✅ AI Security — সবচেয়ে হট emerging area
-     (LLM jailbreaks, adversarial attacks)</div>
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ ভাঙা আর বানানো একসাথে ভালোবাসো · ✅ crypto গণিত ভালো লাগে · ✅ government/clearance career চাও · ✅ real-world impact চাও। <strong>AI Security</strong> (LLM jailbreaks, adversarial attacks) সবচেয়ে হট emerging area।</div></div>
 
 <div class="dialogue">"একটা কথা," ওমর বললেন। "Security গবেষণায় একটা unique challenge আছে — তুমি যা জানো, তা প্রকাশ করতে হয় সাবধানে। Responsible disclosure। তুমি একটা vulnerability খুঁজে পেলে — সরাসরি প্রকাশ করো না। প্রথমে কোম্পানিকে জানাও, সময় দাও, তারপর পেপার। এই নীতিবোধ ছাড়া security গবেষক বিপজ্জনক।"</div>
 <div class="dialogue en">"One thing," Omar said. "Security research has a unique challenge — you must publish what you know carefully. Responsible disclosure. If you find a vulnerability — don't publish directly. First notify the company, give time, then paper. Without this ethics, a security researcher is dangerous."</div>
@@ -324,71 +167,22 @@ doors.push({
 <div class="dialogue">লিলি তোমাকে দেখলেন। "ওমর তোমাকে দুর্গ দেখিয়েছেন। কিন্তু দুর্গ কী রক্ষা করে? ডেটা। মানুষের তথ্য, কোম্পানির রেকর্ড, দেশের পরিসংখ্যান। এই সব ডেটা — নতুন তেল। কিন্তু তেল মাটির নিচে থাকলে কিছুই কাজে লাগে না। তুলতে হয়। পরিশোধন করতে হয়। ব্যবহার করতে হয়। সেটাই ডেটা সায়েন্স।"</div>
 <div class="dialogue en">Lily saw you. "Omar showed you the fortress. But what does the fortress protect? Data. People's information, company records, national statistics. All this data — the new oil. But oil underground is useless. Must be extracted. Refined. Used. That's data science."</div>
 
-<div class="code-block">Data Science & Databases — সম্পূর্ণ মানচিত্র:
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🗄️ Database Systems</td><td>Query optimization, distributed DBs, HTAP, streaming</td><td>SIGMOD, VLDB, ICDE</td></tr>
+<tr><td class="hl">📊 Data Mining</td><td>Pattern mining, anomaly detection, graph mining, recsys</td><td>KDD, ICDM, WSDM</td></tr>
+<tr><td class="hl">📈 Big Data Systems</td><td>Spark, Flink, data lakes, ETL, real-time analytics</td><td>SIGMOD, VLDB</td></tr>
+<tr><td class="hl">🔮 Statistical Learning</td><td>Bayesian, causal inference, time series, spatial</td><td>KDD, AISTATS, UAI</td></tr>
+<tr><td class="hl">🌐 Web-Scale Data</td><td>Search indexing, web crawling, knowledge graphs</td><td>WWW, SIGMOD, WSDM</td></tr>
+<tr><td class="hl">🟢 Data Viz</td><td>Interactive viz, dashboards, visual analytics</td><td>VIS, CHI, EuroVIS</td></tr></table>
 
-  ┌─────────────────────────────────────────────┐
-  │  Data Sub-Areas                              │
-  │                                              │
-  │  🗄️ Database Systems                          │
-  │     Query optimization, distributed DBs,    │
-  │     HTAP, columnar stores, stream processing│
-  │     Conferences: SIGMOD, VLDB, ICDE          │
-  │                                              │
-  │  📊 Data Mining & Knowledge Discovery         │
-  │     Pattern mining, anomaly detection,      │
-  │     graph mining, recommendation             │
-  │     Conferences: KDD, ICDM, WSDM             │
-  │                                              │
-  │  📈 Big Data Systems                          │
-  │     Spark, Flink, data lakes, ETL at scale, │
-  │     real-time analytics                      │
-  │     Conferences: SIGMOD, VLDB, VLDB          │
-  │                                              │
-  │  🔮 Statistical Learning                      │
-  │     Bayesian methods, causal inference,     │
-  │     time series, spatial data               │
-  │     Conferences: KDD, AISTATS, UAI           │
-  │                                              │
-  │  🌐 Web-Scale Data Management                 │
-  │     Search indexing, web crawling,          │
-  │     knowledge graphs                         │
-  │     Conferences: WWW, SIGMOD, WSDM           │
-  │                                              │
-  │  🟢 Data Visualization & Analytics            │
-  │     Interactive visualization, dashboards,  │
-  │     visual analytics, explainable AI        │
-  │     Conferences: VIS, CHI, EuroVIS           │
-  └─────────────────────────────────────────────┘
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৫-৮%</div><div class="sc-label">গ্রহণের হার</div></div>
+<div class="stat-card"><div class="sc-num">$300M+</div><div class="sc-label">NSF data ফান্ডিং</div></div>
+<div class="stat-card"><div class="sc-num">$120-250K</div><div class="sc-label">industry বেতন</div></div>
+<div class="stat-card"><div class="sc-num">সর্বোচ্চ</div><div class="sc-label">ক্যারিয়ার স্থিতিশীলতা</div></div>
+</div>
 
-  ফান্ডিং:
-  • NSF: $৩০০M+ data-related
-  • Industry: প্রতিটা বিগ টেক কোম্পানির 
-    database/data team আছে
-  • NIH, Census Bureau — data-intensive
-  • স্থিতিশীল, বহু-উৎসের ফান্ডিং
-
-  প্রতিযোগিতা:
-  • গ্রহণের হার: ৫-৮% (top programs)
-  • AI-এর চেয়ে উল্লেখযোগ্য কম
-  • কিন্তু ML-এর সাথে overlap বেশি
-  • কোডিং দক্ষতা প্রয়োজন
-
-  ক্যারিয়ার:
-  • একাডেমিয়া: $১০০K-১৫০K
-  • Industry: $১২০K-২৫০K
-    (data engineer, data scientist, DBA)
-  • সবচেয়ে স্থিতিশীল — প্রতিটা কোম্পানির 
-    ডেটা দরকার, প্রতিটা কোম্পানির DB দরকার
-  • Data Scientist = সবচেয়ে জনপ্রিয় টাইটেল
-
-  তোমার জন্য কি ঠিক?
-  ✅ তুমি LedgerPilot-এ MySQL, Django ORM 
-     ব্যবহার করো — database পরিচিত
-  ✅ তুমি ডেটা মডেল করতে পারো — 
-     LedgerPilot-এর সম্পূর্ণ schema
-  ✅ যদি backend engineering ভালোবাসো
-  ✅ যদি ডেটা থেকে insight বের করতে ভালোবাসো
-  ✅ যদি AI-এর চেয়ে স্থিতিশীল career চাও</div>
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ SQL/ORM ও data modeling পরিচিত · ✅ backend engineering ভালোবাসো · ✅ ডেটা থেকে insight বের করতে ভালো লাগে · ✅ AI-এর চেয়ে স্থিতিশীল career চাও। প্রতিটা অ্যাপ ও প্রতিটা AI মডেল ডেটার উপর চলে — তাই চাহিদা কখনো ফুরায় না।</div></div>
 
 <div class="dialogue">"আমি তোমাকে একটা গোপন কথা বলি," লিলি বললেন। "Database গবেষণা এখন 'বোরিং' মনে হতে পারে — কিন্তু এটাই সবচেয়ে stable। AI hype থামলে AI গবেষকদের কী হবে? কিন্তু database গবেষক সবসময় দরকার। প্রতিটা নতুন অ্যাপের ডেটা দরকার। প্রতিটা নতুন AI মডেলের training ডেটা দরকার। Database ছাড়া কিছুই চলে না।"</div>
 <div class="dialogue en">"Let me tell you a secret," Lily said. "Database research may seem 'boring' now — but it's the most stable. When AI hype stops, what happens to AI researchers? But database researchers are always needed. Every new app needs data. Every new AI model needs training data. Without databases, nothing runs."</div>
@@ -418,77 +212,24 @@ doors.push({
 <div class="dialogue">আয়েশা তোমাকে দেখলেন। "লিলি তোমাকে ডেটার খনি দেখিয়েছেন। কিন্তু খনি কার জন্য? মানুষের জন্য। আর মানুষ সেই খনির ডেটা কীভাবে পায়? ইন্টারফেসের মাধ্যমে।" তিনি সেতুর দিকে তাকালেন। "এই সেতু — এটাই HCI। কম্পিউটার এক দুনিয়া, মানুষ আরেক দুনিয়া। এই দুই দুনিয়ার মাঝে সেতু — সেটাই HCI গবেষণা।"</div>
 <div class="dialogue en">Ayesha saw you. "Lily showed you the data mine. But for whom? For people. And how do people access that data? Through interfaces." She looked at the bridge. "This bridge — that's HCI. Computer is one world, human is another. The bridge between these two worlds — that's HCI research."</div>
 
-<div class="code-block">HCI & Accessibility — সম্পূর্ণ মানচিত্র:
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">👋 Interaction</td><td>Touch, gesture, voice, gaze, AR/VR interaction</td><td>CHI, UIST, TEI</td></tr>
+<tr><td class="hl">👥 CSCW</td><td>Collaboration tools, social media, remote work</td><td>CSCW, CHI, GROUP</td></tr>
+<tr><td class="hl">🎨 Ubiquitous/Mobile</td><td>IoT interaction, wearables, mobile UX, context-aware</td><td>UbiComp, MobiCom, CHI</td></tr>
+<tr><td class="hl">♿ Accessibility</td><td>Screen readers, motor/cognitive access, aging</td><td>ASSETS, CHI, W4A</td></tr>
+<tr><td class="hl">🧠 BCI</td><td>EEG interaction, neural prosthetics, motor imagery</td><td>CHI, UIST, NeurIPS</td></tr>
+<tr><td class="hl">🔵 AR/VR</td><td>Virtual environments, mixed reality, spatial</td><td>CHI, UIST, ISMAR</td></tr></table>
 
-  ┌─────────────────────────────────────────────┐
-  │  HCI Sub-Areas                               │
-  │                                              │
-  │  👋 Interaction Techniques                    │
-  │     Touch, gesture, voice, gaze, brain-     │
-  │     computer interfaces, AR/VR interaction  │
-  │     Conferences: CHI, UIST, TEI              │
-  │                                              │
-  │  👥 CSCW (Social Computing)                  │
-  │     Collaboration tools, social media,      │
-  │     online communities, remote work         │
-  │     Conferences: CSCW, CHI, GROUP            │
-  │                                              │
-  │  🎨 Ubiquitous & Mobile Computing            │
-  │     IoT interaction, wearables, mobile UX,  │
-  │     context-aware systems                   │
-  │     Conferences: UbiComp, MobiCom, CHI       │
-  │                                              │
-  │  ♿ Accessibility & Assistive Tech            │
-  │     Screen readers, motor impairments,      │
-  │     cognitive accessibility, aging          │
-  │     Conferences: ASSETS, CHI, W4A            │
-  │                                              │
-  │  🧠 Brain-Computer Interfaces                │
-  │     EEG-based interaction, neural prosthe-  │
-  │     tics, motor imagery                     │
-  │     Conferences: CHI, UIST, NeurIPS          │
-  │                                              │
-  │  🟢 Visualization & Visual Analytics         │
-  │     Interactive viz, dashboards, data       │
-  │     storytelling, scientific visualization  │
-  │     Conferences: VIS, CHI, EuroVIS           │
-  │                                              │
-  │  🔵 AR/VR & Spatial Computing                │
-  │     Virtual environments, mixed reality,    │
-  │     spatial interaction                     │
-  │     Conferences: CHI, UIST, ISMAR            │
-  └─────────────────────────────────────────────┘
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৮-১২%</div><div class="sc-label">গ্রহণের হার (সবচেয়ে কম প্রতিযোগিতা)</div></div>
+<div class="stat-card"><div class="sc-num">$200M+</div><div class="sc-label">NSF HCI ফান্ডিং</div></div>
+<div class="stat-card"><div class="sc-num">$120-250K</div><div class="sc-label">UX researcher বেতন</div></div>
+<div class="stat-card"><div class="sc-num">সর্বোচ্চ</div><div class="sc-label">মানব-প্রভাব</div></div>
+</div>
 
-  ফান্ডিং:
-  • NSF: $২০০M+ HCI-related
-  • Industry: Apple, Google, Microsoft — 
-    সবার UX research team
-  • NIH — accessibility & health tech
-  • NIDILRR — disability research
+<div class="callout info"><span class="co-icon">🔬</span><div>HCI-তে শুধু কোড নয় — <strong>মানুষ নিয়ে</strong> কাজ। User study, interview, observation, thematic analysis — qualitative + quantitative দুটোই দরকার। এই কারণেই এটি সবচেয়ে প্রভাবশালী: তুমি সরাসরি মানুষের জীবন স্পর্শ করো।</div></div>
 
-  প্রতিযোগিতা:
-  • গ্রহণের হার: ৮-১২% (top programs)
-  • সবচেয়ে কম প্রতিযোগিতা!
-  • কিন্তু কোডিং থেকে গুরুত্ব কম, 
-     design/research skills বেশি
-  • qualitative + quantitative উভয় দরকার
-
-  ক্যারিয়ার:
-  • একাডেমিয়া: $৯০K-১৪০K
-  • Industry: $১২০K-২৫০K
-    (UX researcher, interaction designer)
-  • Apple, Google — UX research team
-  • সর্বাধিক প্রভাব — তোমার কাজ লাখ লাখ 
-    মানুষের দৈনন্দিন অভিজ্ঞতা বদলায়
-
-  তোমার জন্য কি ঠিক?
-  ✅ তুমি Ipractus — React Native app 
-     বানিয়েছ, ইউজার ইন্টারফেস পরিচিত
-  ✅ যদি মানুষকে বুঝতে ভালোবাসো
-  ✅ যদি design আর psychology আগ্রহী করে
-  ✅ যদি real human impact চাও — 
-     accessibility = প্রত্যক্ষ মানুষের জীবন
-  ✅ যদি কম প্রতিযোগিতা চাও (৮-১২%)</div>
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ ইউজার ইন্টারফেস বানানোর অভিজ্ঞতা আছে · ✅ মানুষকে বুঝতে ভালোবাসো · ✅ design ও psychology আগ্রহী করে · ✅ কম প্রতিযোগিতা + সরাসরি মানব-প্রভাব চাও।</div></div>
 
 <div class="dialogue">"HCI-এর একটা বিশেষত্ব আছে," আয়েশা বললেন। "অন্যান্য ডোমেইনে তুমি শুধু কোড দিয়ে কাজ করো। HCI-তে তুমি মানুষকে নিয়ে কাজ করো। User study করো — মানুষকে দেখো, কথা বলো, বোঝো। এর জন্য qualitative research skills দরকার — interview, observation, thematic analysis। শুধু কোডিং নয়। কিন্তু এই কারণেই HCI গবেষণা সবচেয়ে প্রভাবশালী — তুমি সরাসরি মানুষের জীবন স্পর্শ করো।"</div>
 <div class="dialogue en">"HCI has a uniqueness," Ayesha said. "In other domains, you work only with code. In HCI, you work with people. You do user studies — watch people, talk to them, understand them. This requires qualitative research skills — interview, observation, thematic analysis. Not just coding. But this is exactly why HCI research is most impactful — you directly touch people's lives."</div>

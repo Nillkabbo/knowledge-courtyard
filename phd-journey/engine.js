@@ -7,13 +7,13 @@ const SAVE_KEY = 'phdJourney_v1';
 const MAX_XP = 1000;
 const RANKS = [
   {min:0,   name:'তীর্থযাত্রী',     icon:'🧳'},
-  {min:100, name:'অনুসন্ধানী',   icon:'🏔️'},
-  {min:200, name:'অধ্যেতা',     icon:'🗺️'},
-  {min:300, name:'গবেষক',     icon:'📚'},
-  {min:400, name:'পণ্ডিত',           icon:'🎓'},
-  {min:500, name:'স্কলার',     icon:'🔬'},
-  {min:600, name:'পণ্ডিত',    icon:'👑'},
-  {min:700, name:'জ্ঞানের সাগর',    icon:'👑'}
+  {min:100, name:'অনুসন্ধানী',   icon:'🧭'},
+  {min:200, name:'অধ্যেতা',     icon:'📖'},
+  {min:300, name:'গবেষক',     icon:'🔬'},
+  {min:400, name:'প্রার্থী',     icon:'🎓'},
+  {min:500, name:'পণ্ডিত',     icon:'📚'},
+  {min:600, name:'অধ্যাপক',    icon:'👑'},
+  {min:700, name:'জ্ঞানের সাগর',    icon:'🌊'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}
 function loadState(){try{const r=localStorage.getItem(SAVE_KEY);if(!r)return;const s=JSON.parse(r);state.xp=s.xp||0;state.completedDoors=s.completedDoors||[];state.prologueSeen=s.prologueSeen||false}catch(e){}}

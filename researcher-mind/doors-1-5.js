@@ -29,38 +29,19 @@ doors.push({
 <div class="dialogue">তুমি চুপ করে গেলে। এগুলো তুমি কখনো ভাবোনি। নুসরাত বললেন: "এটাই প্রথম পাঠ। তুমি একজন ডেভেলপার। তুমি কোড লেখো, বিল্ড করো, ডিপ্লয় করো। কিন্তু কখন শেষবার কোনো কোড লেখার সময় ভেবেছ — এটা কেন কাজ করে? শুধু কীভাবে নয় — কেন? সেই কেন-এর জায়গা থেকেই গবেষণা শুরু হয়।"</div>
 <div class="dialogue en">You went quiet. You'd never thought about these. Nusrat said: "This is the first lesson. You're a developer. You write code, build, deploy. But when did you last write code and wonder — why does this work? Not how — why? Research begins from that 'why'."</div>
 
-<div class="code-block">শিশুর কৌতূহল — বয়সভেদে কমে যায় (আনুমানিক, সঠিক সংখ্যা নিয়ে মতভেদ):
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">বয়স ৪</div><div class="sc-label">দিনে অনেক প্রশ্ন (~২০০-৪০০ বলা হয়)</div></div>
+<div class="stat-card"><div class="sc-num">বয়স ৬</div><div class="sc-label">প্রায় অর্ধেকে নেমেছে</div></div>
+<div class="stat-card"><div class="sc-num">বয়স ১১</div><div class="sc-label">আরও কম</div></div>
+<div class="stat-card"><div class="sc-num">২৫+</div><div class="sc-label">দিনে খুব কম প্রশ্ন</div></div>
+</div>
 
-    বয়স ৪:    দিনে অনেক প্রশ্ন (সাধারণত ~২০০-৪০০ বলা হয়)
-    বয়স ৬:    অর্ধেকে নেমেছে
-    বয়স ১১:   আরও কম
-    বয়স ২৫+:  দিনে খুব কম (?)
+<div class="callout info"><span class="co-icon">📉</span><div>সঠিক সংখ্যা নিয়ে মতভেদ আছে, কিন্তু মূল পয়েন্ট বদলায় না: <strong>বয়সের সাথে কৌতূহল কমে</strong>। বিদ্যালয় কৌতূহলকে বদলে দেয় প্রশ্ন দিয়ে নয় — উত্তর দিয়ে। পরীক্ষা উত্তর চায়, জিজ্ঞাসা চায় না। গবেষক হলো সে, যার কৌতূহল কমেনি।</div></div>
 
-    (সঠিক সংখ্যা গবেষণায় বহুল প্রচলিত কিন্তু অনিশ্চিত —
-    মূল পয়েন্ট পরিবর্তন হয় না: বয়সের সাথে কৌতূহল কমে।
-    গবেষক হলো সে যার কৌতূহল কমেনি।)
-
-    বিদ্যালয় কৌতূহলকে প্রশ্ন দিয়ে বদলে দেয় —
-    উত্তর দিয়ে নয়। পরীক্ষা উত্তর চায়।
-    জিজ্ঞাসা চায় না।
-
-    গবেষক হলো সেই মানুষ যে প্রশ্ন করা থামায়নি।
-    সমাজ বলে — "এটা তো জানা কথা।"
-    গবেষক বলে — "কে বলেছে জানা? কেন?
-    কীভাবে? আর কী সম্ভব?"
-
-    ┌──────────────────────────────────────┐
-    │  ডেভেলপার মাইন্ডসেট:                  │
-    │  "এটা কীভাবে কাজ করে?"               │
-    │  "এটা কীভাবে বানাবো?"                │
-    │                                       │
-    │  গবেষক মাইন্ডসেট:                     │
-    │  "এটা কেন কাজ করে?"                   │
-    │  "এটা কি সবচেয়ে ভালো উপায়?"         │
-    │  "যদি ভিন্নভাবে করি তাহলে কী হয়?"    │
-    │  "এটা কি সত্যিই সত্য নাকি সবাই        │
-    │   এটাই বিশ্বাস করে?"                  │
-    └──────────────────────────────────────┘</div>
+<table class="kv-table"><tr><th>ডেভেলপার মাইন্ডসেট</th><th>গবেষক মাইন্ডসেট</th></tr>
+<tr><td>"এটা কীভাবে কাজ করে?"</td><td>"এটা <em>কেন</em> কাজ করে?"</td></tr>
+<tr><td>"এটা কীভাবে বানাবো?"</td><td>"এটা কি সবচেয়ে ভালো উপায়?"</td></tr>
+<tr><td>"কাজ হলেই হলো।"</td><td>"ভিন্নভাবে করলে কী হয়? এটা কি সত্যিই সত্য, নাকি সবাই এটাই বিশ্বাস করে?"</td></tr></table>
 
 <div class="dialogue">তুমি বললে — "কিন্তু আমি তো কৌতূহলী। আমি তো নতুন প্রযুক্তি শিখি।" নুসরাত আবার মাথা নাড়লেন। "নতুন জিনিস শেখা কৌতূহল নয় — সেটা FOMO। ভয় যে পিছিয়ে যাবে। কৌতূহল হলো যখন তুমি ভাবো — এই জিনিসটার পেছনের নীতিটা কী? এটা আমাকে কীভাবে ভাবায়? কোথায় এটা ভেঙে যায়? কীভাবে ভাঙবো না জেনেও কৌতূহল নিয়ে দেখি?"</div>
 <div class="dialogue en">You said — "But I am curious. I learn new tech." Nusrat shook her head again. "Learning new things isn't curiosity — it's FOMO. Fear of being left behind. Curiosity is when you think — what's the principle behind this? How does it make me think? Where does it break? How do I look at it with curiosity even without knowing how to break it?"</div>
@@ -93,48 +74,19 @@ doors.push({
 <div class="dialogue">"শুনো," ইমরান বললেন। "আমি যখন তরুণ ছিলাম, আমি ভাবতাম — ভালো প্রশ্ন মানে কঠিন প্রশ্ন। যে প্রশ্নের উত্তর কেউ জানে না, সেটাই ভালো। আমি ভুল ভাবতাম।" তিনি একটা হাতুড়ি তুলে পাথরে মারলেন — ভেঙে গেল। "এই পাথরটা আমি ভাঙলাম কারণ আমি জিজ্ঞেস করেছিলাম — এর ভেতরে কী আছে? কিন্তু সঠিক প্রশ্ন ছিল — এই পাথর দিয়ে কী বানানো যায়? ভুল প্রশ্ন মানে নষ্ট পাথর। সঠিক প্রশ্ন মানে ভাস্কর্য।"</div>
 <div class="dialogue en">"Listen," Imran said. "When I was young, I thought — a good question means a hard question. One nobody knows the answer to. I was wrong." He picked up a hammer, struck a stone — it shattered. "I broke this stone because I asked — what's inside? But the right question was — what can be made from this stone? Wrong question means wasted stone. Right question means sculpture."</div>
 
-<div class="code-block">প্রশ্নের চার স্তর — ব্লুমের ট্যাক্সোনমি থেকে:
+<table class="kv-table"><tr><th>ব্লুম স্তর</th><th>উদাহরণ প্রশ্ন</th><th>গবেষণা?</th></tr>
+<tr><td class="hl">১. মনে রাখা</td><td>"transformer কী?"</td><td>❌ লুকআপ</td></tr>
+<tr><td class="hl">২. বোঝা</td><td>"attention কীভাবে কাজ করে?"</td><td>❌ কম্প্রিহেনশন</td></tr>
+<tr><td class="hl">৩. প্রয়োগ</td><td>"attention কি আমার সিস্টেমে ব্যবহার করতে পারি?"</td><td>⚠️ engineering</td></tr>
+<tr><td class="hl">৪. বিশ্লেষণ+মূল্যায়ন</td><td>"attention কেন position 128-এর পরে ভাঙে? এই সীমাবদ্ধতা মৌলিক নাকি accidental?"</td><td>✅ গবেষণা</td></tr>
+<tr><td class="hl">৫. সৃষ্টি</td><td>"এই সীমাবদ্ধতা কাটিয়ে ওঠে এমন নতুন mechanism বানাতে পারি?"</td><td>✅ সর্বোচ্চ স্তর</td></tr></table>
 
-স্তর ১: মনে রাখা (Remember)
-  ❌ "transformer কী?" — উইকিপিডিয়া পড়লেই হবে
-  → এটা গবেষণা নয়, লুকআপ
-
-স্তর ২: বোঝা (Understand)  
-  ❌ "attention কীভাবে কাজ করে?" — পেপার পড়লেই হবে
-  → এটা গবেষণা নয়, কম্প্রিহেনশন
-
-স্তর ৩: প্রয়োগ (Apply)
-  ⚠️ "আমি কি attention আমার সিস্টেমে ব্যবহার করতে পারি?"
-  → এটা engineering, research-এর শুরু
-
-স্তর ৪: বিশ্লেষণ ও মূল্যায়ন (Analyze + Evaluate)
-  ✅ "attention কেন position 128-এর পরে ভাঙে?"
-  ✅ "আর কোনো mechanism একই কাজ করতে পারে?"
-  ✅ "এই সীমাবদ্ধতা কি মৌলিক নাকি accidental?"
-  → এটা গবেষণা। উত্তর জানা নেই।
-
-স্তর ৫: সৃষ্টি (Create)
-  ✅ "আমি কি নতুন একটা mechanism বানাতে পারি যা 
-      এই সীমাবদ্ধতা কাটিয়ে ওঠে?"
-  → এটা সর্বোচ্চ স্তরের গবেষণা
-
-
-    প্রশ্নের মান যাচাই — ৩টা পরীক্ষা:
-
-    ১. মূল পরীক্ষা (Novelty):
-       এই প্রশ্নের উত্তর কি আগে কেউ দিয়েছে?
-       → গুগল স্কলারে সার্চ করো। যদি উত্তর থাকে,
-         তবে তোমার প্রশ্ন নতুন নয়।
-
-    ২. গুরুত্ব পরীক্ষা (Significance):  
-       এই উত্তর জানলে কে উপকৃত হবে?
-       → যদি উত্তর হয় "শুধু আমি" — দুর্বল।
-       যদি উত্তর হয় "পুরো ফিল্ড" — শক্তিশালী।
-
-    ৩. সাধ্যতা পরীক্ষা (Feasibility):
-       আমার কি এই প্রশ্নের উত্তর দেওয়ার 
-       উপায় আছে? ডেটা? কম্পিউট? সময়?
-       → যদি উত্তর না থাকে — স্বপ্ন, গবেষণা নয়</div>
+<div class="callout tip"><span class="co-icon">🧪</span><div><strong>ভালো প্রশ্নের ৩টা পরীক্ষা — তিনটাই পাস করতে হবে:</strong></div></div>
+<ul class="checklist">
+<li><strong>Novelty (নতুনত্ব):</strong> উত্তর কি আগে কেউ দিয়েছে? Google Scholar-এ সার্চ করো — উত্তর থাকলে প্রশ্ন নতুন নয়।</li>
+<li><strong>Significance (গুরুত্ব):</strong> উত্তর জানলে কে উপকৃত হবে? "শুধু আমি" = দুর্বল; "পুরো ফিল্ড" = শক্তিশালী।</li>
+<li><strong>Feasibility (সাধ্যতা):</strong> উত্তর দেওয়ার উপায় আছে — ডেটা, কম্পিউট, সময়? না থাকলে সেটা স্বপ্ন, গবেষণা নয়।</li>
+</ul>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ দুর্বল প্রশ্ন</div>"LLM কীভাবে কাজ করে?" — খুব বড়। উত্তর আছে (অনেক পেপার)। নতুন নয়। গবেষণা নয়, টিউটোরিয়াল।<br><br>"আমি কি LLM দিয়ে চ্যাটবট বানাতে পারি?" — হ্যাঁ পারো। সবাই পারে। নতুন কিছু নেই।<br><br>"কোন LLM সবচেয়ে ভালো?" — এটা benchmark, গবেষণা নয়। মাসে বদলায়।</div>
@@ -169,48 +121,22 @@ doors.push({
 <div class="dialogue">"আমি তোমাকে আমার ভুলের কথা বলি," সালমা বললেন। "প্রথমবার যখন আমি একটা পেপার পড়তে গেলাম, আমি প্রথম লাইন থেকে শুরু করলাম। তিন ঘণ্টা পরে আমি পৃষ্ঠা ৩-এ। কিছু বুঝতে পারছি না। মাথা ব্যথা। আমি ভেঙে পড়লাম। ভাবলাম — আমি বোকা।" তিনি থামলেন। "কিন্তু আমি বোকা ছিলাম না। আমি ভুল পদ্ধতিতে পড়ছিলাম। পেপার পড়ার নিজস্ব ভাষা আছে, নিজস্ব কাঠামো আছে। সেটা শিখতে হয়।"</div>
 <div class="dialogue en">"Let me tell you my mistake," Salma said. "The first time I tried to read a paper, I started from the first line. Three hours later, I was on page 3. Understood nothing. Headache. I broke. I thought — I'm stupid." She paused. "But I wasn't stupid. I was reading wrong. Papers have their own language, their own structure. You have to learn it."</div>
 
-<div class="code-block">থ্রি-পাস পড়ার পদ্ধতি (Three-Pass Method, Keshav ২০০৭/২০১৬):
-  (Keshav-এর "How to Read a Paper" — CS-এর সবচেয়ে canonical
-  পেপার-পড়ার পদ্ধতি। বিস্তারিত: cr.yp.to/~keshav/papers/07-pager.pdf)
+<div class="callout info"><span class="co-icon">📚</span><div><strong>থ্রি-পাস পদ্ধতি</strong> — S. Keshav, <em>"How to Read a Paper"</em> (ACM SIGCOMM CCR, 2007)। CS-এর সবচেয়ে canonical পেপার-পড়ার পদ্ধতি।</div></div>
 
-পাস ১: স্কিম (৫-১০ মিনিট)
-  ┌─────────────────────────────────────────┐
-  │ পড়ো: Title, Abstract, Introduction     │
-  │ দেখো: Figures, Tables                   │
-  │ পড়ো: Conclusion-এর শেষ প্যারা           │
-  │ সিদ্ধান্ত: এই পেপারটা কি আমার জন্য?     │
-  │ → যদি না হয় — ফেলে দাও। সময় নষ্ট কোরো না │
-  └─────────────────────────────────────────┘
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">পাস ১ · ৫-১০ মিনিট</div><div class="tl-title">👀 স্কিম</div><div class="tl-body">পড়ো Title, Abstract, Introduction; দেখো Figures/Tables; পড়ো Conclusion-এর শেষ প্যারা। <strong>সিদ্ধান্ত: এটা কি আমার জন্য?</strong> না হলে ফেলে দাও — সময় নষ্ট কোরো না।</div></div>
+<div class="tl-step"><div class="tl-when">পাস ২ · ৩০-৬০ মিনিট</div><div class="tl-title">🗂️ স্ট্রাকচার</div><div class="tl-body">পুরো পেপার পড়ো, কিন্তু গভীরে নয়। বোঝো সমস্যা/সমাধান/ফলাফল; কঠিন সেকশন চিহ্নিত করো। <strong>মূল দাবি কী?</strong> না বুঝলে reference-এর base পেপার পড়ো।</div></div>
+<div class="tl-step"><div class="tl-when">পাস ৩ · ২-৪ ঘণ্টা (কয়েক দিনে)</div><div class="tl-title">🔬 গভীর</div><div class="tl-body">শুধু কঠিন সেকশন; প্রতিটা সমীকরণ ও পরীক্ষা বোঝো। প্রশ্ন করো — ফলাফল কি সঠিক? আমি কি ভিন্নভাবে করতাম? <strong>আমার গবেষণায় কীভাবে ব্যবহার করবো?</strong></div></div>
+</div>
 
-পাস ২: স্ট্রাকচার (৩০-৬০ মিনিট)  
-  ┌─────────────────────────────────────────┐
-  │ পড়ো: পুরো পেপার কিন্তু গভীরে নয়        │
-  │ বোঝো: সমস্যা কী, সমাধান কী, ফলাফল কী    │
-  │ চিহ্নিত করো: কোন সেকশন কঠিন লাগলো       │
-  │ সিদ্ধান্ত: এই পেপারের মূল দাবি কী?       │
-  │ → যদি বুঝতে না পারো — বেস পেপার পড়ো    │
-  │   (reference-এ দেওয়া older পেপার)        │
-  └─────────────────────────────────────────┘
-
-পাস ৩: গভীর (২-৪ ঘণ্টা, কয়েক দিনে)
-  ┌─────────────────────────────────────────┐
-  │ পড়ো: শুধু কঠিন সেকশনগুলো                │
-  │ বোঝো: প্রতিটা সমীকরণ, প্রতিটা পরীক্ষা   │
-  │ প্রশ্ন করো: এই ফলাফল কি সঠিক? কীভাবে?    │
-  │ চিন্তা করো: আমি কি ভিন্নভাবে করতাম?      │
-  │ সিদ্ধান্ত: এই পেপার আমার গবেষণায় কীভাবে │
-  │   ব্যবহার করবো?                          │
-  └─────────────────────────────────────────┘
-
-পেপারের স্তর বুঝো — প্রতিটা সেকশনের কাজ:
-
-Title     → "এটা কী নিয়ে?"
-Abstract  → "৩০ সেকেন্ডে পুরো পেপারের সারাংশ"  
-Intro     → "কেন এই কাজ দরকার? আগে কী হয়েছে?"
-Method    → "আমরা কীভাবে করেছি — পুনরায় করার জন্য"
-Results   → "আমরা কী পেয়েছি — সংখ্যা, গ্রাফ"
-Discussion→ "এর মানে কী? সীমাবদ্ধতা কী?"
-Conclusion→ "এক লাইনে — আমরা কী শিখলাম"</div>
+<table class="kv-table"><tr><th>সেকশন</th><th>কাজ</th></tr>
+<tr><td class="hl">Title</td><td>এটা কী নিয়ে?</td></tr>
+<tr><td class="hl">Abstract</td><td>৩০ সেকেন্ডে পুরো পেপারের সারাংশ</td></tr>
+<tr><td class="hl">Intro</td><td>কেন এই কাজ দরকার? আগে কী হয়েছে?</td></tr>
+<tr><td class="hl">Method</td><td>কীভাবে করেছি — পুনরায় করার জন্য</td></tr>
+<tr><td class="hl">Results</td><td>কী পেয়েছি — সংখ্যা, গ্রাফ</td></tr>
+<tr><td class="hl">Discussion</td><td>এর মানে কী? সীমাবদ্ধতা কী?</td></tr>
+<tr><td class="hl">Conclusion</td><td>এক লাইনে — কী শিখলাম</td></tr></table>
 
 <div class="dialogue">"আরেকটা কথা," সালমা বললেন। "তুমি যখন পেপার পড়ো, তুমি শুধু জ্ঞান নও নিচ্ছ — তুমি একটা কথোপকথনে যোগ দিচ্ছ। প্রতিটা পেপার আগের পেপারের জবাব। প্রতিটা পেপার ভবিষ্যতের পেপারের আমন্ত্রণ। তুমি যখন পড়ো, ভাবো — এই লেখক যদি আমার সামনে বসতেন, আমি কী জিজ্ঞেস করতাম?"</div>
 <div class="dialogue en">"One more thing," Salma said. "When you read a paper, you're not just taking knowledge — you're joining a conversation. Each paper is a reply to a previous paper. Each paper is an invitation to future papers. When you read, think — if this author sat before me, what would I ask?"</div>
@@ -243,37 +169,15 @@ doors.push({
 <div class="dialogue">"আমি যখন তরুণ ছিলাম," দাউদ বললেন, "আমি পেপার পড়ে বিশ্বাস করতাম। big lab, big name, big journal — তাহলে ঠিক আছে। একবার আমি একটা পেপারের ফলাফল আমার কাজে ব্যবহার করলাম। তিন মাস নষ্ট। ফলাফলটা ভুল ছিল। তারা dataset বদলেছিল, কিন্তু পেপারে বলেনি। তখন থেকে আমি শিখলাম — বিশ্বাস করো না, যাচাই করো।"</div>
 <div class="dialogue en">"When I was young," Dawud said, "I believed papers. Big lab, big name, big journal — must be right. Once I used a paper's result in my work. Three months wasted. The result was wrong. They'd changed the dataset but not mentioned it. Since then I learned — don't believe, verify."</div>
 
-<div class="code-block">সন্দেহের ৬টা প্রশ্ন — প্রতিটা পেপারে জিজ্ঞেস করো:
-
-১. ডেটা কোথা থেকে? (Data Source)
-   → তারা কী ডেটা ব্যবহার করেছে?
-   → ডেটা কত বড়? কোথা থেকে? কীভাবে সংগ্রহ?
-   → যদি ডেটা ছোট হয় — ফলাফল সাধারণীকরণযোগ্য নয়
-
-২. তুলনা কী? (Baseline)
-   → তারা কীভাবে তুলনা করছে?
-   → আগের method এর সাথে? নাকি random এর সাথে?
-   → যদি baseline দুর্বল হয় — উন্নতি দেখায় না
-
-৩. সংখ্যা কী বলে? (Metrics)
-   → accuracy ৯৫% — কিন্তু dataset কি balanced?
-   → যদি ৯৫% class A হয়, সব A বললে ৯৫% accuracy
-   → precision, recall, F1 — শুধু accuracy দেখো না
-
-৪. পরীক্ষাভ্যান্তরে? (Reproducibility)  
-   → কোড দিয়েছে? ডেটা দিয়েছে?
-   → অন্য কেউ কি পুনরায় করতে পারবে?
-   → যদি না পারে — ফলাফল বিশ্বাসযোগ্য নয়
-
-৫. সীমাবদ্ধতা কী? (Limitations)
-   → পেপার কি নিজের দুর্বলতা বলে?
-   → "এই method শুধু X condition-এ কাজ করে"?
-   → যে পেপার বলে "no limitations" — সবচেয়ে বিপজ্জনক
-
-৬. কে টাকা দিয়েছে? (Funding/Conflict)
-   → sponsor কে? company? government?
-   → যদি company তাদের প্রোডাক্ট বিক্রি করে — 
-     ফলাফল পক্ষপাতদুষ্ট হতে পারে</div>
+<div class="callout warn"><span class="co-icon">🔍</span><div><strong>সন্দেহের ৬টা প্রশ্ন — প্রতিটা পেপারে জিজ্ঞেস করো:</strong></div></div>
+<ul class="checklist">
+<li><strong>ডেটা কোথা থেকে?</strong> কত বড়, কীভাবে সংগ্রহ? ছোট ডেটা = ফলাফল সাধারণীকরণযোগ্য নয়।</li>
+<li><strong>Baseline কী?</strong> আগের সেরা method-এর সাথে তুলনা, নাকি দুর্বল/random-এর সাথে? দুর্বল baseline নকল উন্নতি দেখায়।</li>
+<li><strong>সংখ্যা কী বলে?</strong> ৯৫% accuracy — dataset কি balanced? ৯৫% class A হলে "সব A" বললেও ৯৫%। precision/recall/F1 দেখো, শুধু accuracy নয়।</li>
+<li><strong>Reproducible?</strong> কোড ও ডেটা দিয়েছে? অন্য কেউ পুনরায় করতে পারবে? না পারলে বিশ্বাসযোগ্য নয়।</li>
+<li><strong>সীমাবদ্ধতা স্বীকার করেছে?</strong> "no limitations" বলা পেপারই সবচেয়ে বিপজ্জনক।</li>
+<li><strong>কে টাকা দিয়েছে?</strong> Sponsor যদি নিজের প্রোডাক্ট বিক্রি করে — ফলাফল পক্ষপাতদুষ্ট হতে পারে।</li>
+</ul>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ অন্ধ বিশ্বাস</div>"Stanford-এর পেপার, NeurIPS-এ published — তাহলে ঠিক আছে। তারা বলেছে ৯৭% accuracy — তাহলে সত্যি।"<br><br>ভুল। Big name ≠ সঠিক। বড় কনফারেন্সেও ভুল পেপার যায়। সংখ্যা বিশ্বাস করো না — প্রমাণ দেখো।</div>
@@ -311,53 +215,13 @@ doors.push({
 <div class="dialogue">"মৌমাছির ঝাঁক কীভাবে সিদ্ধান্ত নেয় কোথায় মধু আছে?" জাইনব জিজ্ঞেস করলেন। "একটা মৌমাছি ফুল খুঁজে পায়, নাচ দিয়ে বাকিদের জানায়। বাকিরা যায়। কিন্তু কোন মৌমাছির নাচ সবচেয়ে কার্যকর? যে সবচেয়ে ভালো মধু খুঁজেছে — তার নাচ দীর্ঘ, জোরালো। ঝাঁক শুধু একটার কথা শোনে না — সবার কথা শোনে, কিন্তু যার সংকেত শক্তিশালী তাকে বেশি গুরুত্ব দেয়।" তিনি নিউরনের ছবি দেখালেন। "এটা কি মৌমাছির মতো নয়?"</div>
 <div class="dialogue en">"How does a bee swarm decide where honey is?" Zainab asked. "One bee finds flowers, dances to tell others. Others go. But whose dance is most effective? The one who found the best honey — her dance is longer, stronger. The swarm doesn't listen to one — listens to all, but weights the strongest signal more." She showed the neuron. "Is this not like the bee?"</div>
 
-<div class="code-block">ক্রস-ডিসিপ্লিনারি সংযোগ — গবেষণার সোনার খনি:
+<table class="kv-table"><tr><th>উৎস ফিল্ড</th><th>ধারণা</th><th>→ কম্পিউটার সায়েন্স</th></tr>
+<tr><td class="hl">জীববিজ্ঞান</td><td>মৌমাছির ঝাঁক / মস্তিষ্ক / বিবর্তন / প্রতিরক্ষা</td><td>Neural Nets, Deep Learning, Genetic Algorithms, Anomaly Detection</td></tr>
+<tr><td class="hl">পদার্থবিজ্ঞান</td><td>কোয়ান্টাম / তাপগতি / পরিসংখ্যান</td><td>Quantum Computing, Information Theory, ML</td></tr>
+<tr><td class="hl">ভাষাবিজ্ঞান</td><td>ব্যাকরণ / অর্থ / প্রসঙ্গ</td><td>Parser Trees, Semantic Embeddings, Context Windows</td></tr>
+<tr><td class="hl">মনোবিজ্ঞান</td><td>স্মৃতি / মনোযোগ / শিখন</td><td>Memory Networks, Attention, Reinforcement Learning</td></tr></table>
 
-    ┌─────────────────────────────────────────────┐
-    │  জীববিজ্ঞান    →  কম্পিউটার সায়েন্স        │
-    │  মৌমাছির ঝাঁক  →  Neural Networks           │
-    │  মস্তিষ্ক       →  Deep Learning              │
-    │  বিবর্তন       →  Genetic Algorithms         │
-    │  প্রতিরক্ষা    →  Immune System Security     │
-    ├─────────────────────────────────────────────┤
-    │  পদার্থবিজ্ঞান  →  কম্পিউটার সায়েন্স        │
-    │  কোয়ান্টাম     →  Quantum Computing          │
-    │  তাপগতি        →  Information Theory          │
-    │  স্ট্যাটিস্টিক্স →  Machine Learning           │
-    ├─────────────────────────────────────────────┤
-    │  ভাষাবিজ্ঞান    →  কম্পিউটার সায়েন্স        │
-    │  ব্যাকরণ       →  Parser Trees               │
-    │  অর্থ          →  Semantic Embeddings         │
-    │  প্রসঙ্গ        →  Context Windows            │
-    ├─────────────────────────────────────────────┤
-    │  মনোবিজ্ঞান    →  কম্পিউটার সায়েন্স        │
-    │  স্মৃতি        →  Memory Networks             │
-    │  মনোযোগ       →  Attention Mechanisms        │
-    │  শিখন         →  Reinforcement Learning      │
-    └─────────────────────────────────────────────┘
-
-    নতুন গবেষণা কোথায় জন্ম নেয়?
-    
-    Field A-এর একটা সমস্যা
-          +
-    Field B-এর একটা সমাধান  
-          =
-    নতুন গবেষণা
-
-    উদাহরণ:
-    • NLP-এর সমস্যা + পদার্থবিজ্ঞানের তাপগতি 
-      = attention mechanism (transformer!)
-    • জীববিজ্ঞানের প্রতিরক্ষা + কম্পিউটার নিরাপত্তা
-      = anomaly detection
-    • অর্থনীতির game theory + ML
-      = GANs (Generative Adversarial Networks)
-
-    তোমার সুবিধা:
-    • তুমি developer — system জানো
-    • তুমি LedgerPilot বানিয়েছ — business জানো
-    • তুমি LLM ব্যবহার করো — AI জানো
-    
-    এই তিনের মিলন কোথায়? সেটাই তোমার গবেষণা</div>
+<div class="callout tip"><span class="co-icon">⚗️</span><div><strong>নতুন গবেষণা জন্মায়:</strong> Field A-এর একটা সমস্যা + Field B-এর একটা সমাধান = নতুন গবেষণা। যেমন — game theory (অর্থনীতি) + ML = GANs; জীববিজ্ঞানের প্রতিরক্ষা + নিরাপত্তা = anomaly detection। তোমার নিজের ক্রসিং কোথায়? যে দুটো জগৎ তুমি একসাথে জানো — সেখানেই তোমার সুবিধা।</div></div>
 
 <div class="dialogue">"কিন্তু সাবধান," জাইনব বললেন। "সংযোগ বানানো আর জোর করে জোড়া লাগানো এক নয়। দুটো জিনিস আছে বলেই সেগুলো যুক্ত হবে না। সংযোগটা গভীর হতে হবে — শুধু surface নয়। মৌমাছি আর নিউরনের সংযোগ গভীর কারণ দুটোরই নিয়ম এক: স্থানীয় সিদ্ধান্ত, গ্লোবাল ফলাফল। কিন্তু যদি বলো মৌমাছি আর গাড়ি — সেটা সংযোগ নয়, অদ্ভুত।"</div>
 <div class="dialogue en">"But beware," Zainab said. "Making connections is not the same as forced joining. Two things existing doesn't mean they connect. The connection must be deep — not surface. The bee-neuron connection is deep because both share a rule: local decisions, global outcomes. But if you say bee and car — that's not connection, that's absurdity."</div>

@@ -31,28 +31,11 @@ doors.push({
 <div class="cmp-card cmp-good"><div class="cmp-label">🌱 Growth Mindset</div>"আমি এখনও শিখিনি।" → মস্তিষ্ক খোলা। চ্যালেঞ্জ = সুযোগ। ভুল = শেখার পথ। অন্যের সাফল্য = অনুপ্রেরণা। "আমি গণিত শিখছি" — প্রক্রিয়া।</div>
 </div>
 
-<div class="code-block">The Brain is Not Fixed — Science:
-
-১. Neuroplasticity
-   প্রতিটা নতুন শেখা মস্তিষ্কে 
-   নতুন সংযোগ (synapse) তৈরি করে।
-   বয়স কোনো বাধা নয় — মস্তিষ্ক 
-   সারাজীবন বদলায়।
-
-২. Myelin (মায়েলিন)
-   অনুশীলন করলে স্নায়ুর উপর 
-   myelin জমে — সংকেত দ্রুত যায়।
-   পেশির মতো — ব্যবহার করলে শক্ত।
-
-৩. BDNF
-   Brain-Derived Neurotrophic Factor — 
-   মস্তিষ্কের সার। ব্যায়াম আর শেখা 
-   বাড়ায়। চ্যালেঞ্জ = সার।
-
-Carol Dweck (Stanford):
-  Growth mindset শিক্ষার্থীরা 
-  কঠিন কাজে বেশি সফল — কারণ 
-  তারা ভুলকে শেখার অংশ মনে করে।</div>
+<table class="kv-table"><tr><th>বিজ্ঞান</th><th>কী বলে</th></tr>
+<tr><td class="hl">Neuroplasticity</td><td>প্রতিটা নতুন শেখা মস্তিষ্কে নতুন synapse তৈরি করে; বয়স বাধা নয়, মস্তিষ্ক সারাজীবন বদলায়</td></tr>
+<tr><td class="hl">Myelin</td><td>অনুশীলনে স্নায়ুর উপর myelin জমে → সংকেত দ্রুত যায় (পেশির মতো — ব্যবহারে শক্ত)</td></tr>
+<tr><td class="hl">BDNF</td><td>মস্তিষ্কের "সার" — ব্যায়াম ও শেখা বাড়ায়; চ্যালেঞ্জ = সার</td></tr></table>
+<div class="callout tip"><span class="co-icon">🌱</span><div><strong>Carol Dweck (Stanford):</strong> growth-mindset শিক্ষার্থীরা কঠিন কাজে বেশি সফল — কারণ তারা ভুলকে শেখার অংশ মনে করে। "আমি পারি না" নয়, "আমি এখনো শিখিনি।"</div></div>
 
 <div class="dialogue">কুরআনে আল্লাহ বলেন — "আল্লাহ এক জাতির অবস্থা বদলান না, যতক্ষণ না তারা নিজেদের অবস্থা বদলায়।" (১৩:১১)। বীজকে বাড়তে হবে — কেউ জোর করে বাড়াতে পারে না। নিয়ত লাগে — বাড়ার ইচ্ছা। "আমি পারি না" একটা নিয়ত — বন্ধ হওয়ার নিয়ত। "আমি শিখব" আরেকটা নিয়ত — বাড়ার নিয়ত। মস্তিষ্ক তোমার নিয়ত অনুসরণ করে।</div>
 <div class="dialogue en">"Allah says — 'Allah does not change a people until they change themselves.' (13:11). The seed must grow — no one can force it. Intention is needed — the will to grow. 'I can't' is an intention — to stay closed. 'I will learn' is another — to grow. The brain follows your intention."</div>`,
@@ -84,25 +67,15 @@ doors.push({
 <div class="dialogue">হার্মান এবিংহাউস — একজন জার্মান মনোবিজ্ঞানী। তিনি নিজের উপর পরীক্ষা করলেন — অর্থহীন শব্দ মুখস্থ করলেন, তারপর দেখলেন কখন ভুলে যান। ফলাফল ভয়ংকর — ২৪ ঘণ্টায় ৭০% ভুলে গেলেন! এটাই ভুলে যাওয়ার রেখা — forgetting curve।</div>
 <div class="dialogue en">"Hermann Ebbinghaus — a German psychologist. He experimented on himself — memorized nonsense syllables, then tracked when he forgot. The result was terrifying — 70% forgotten within 24 hours! This is the forgetting curve."</div>
 
-<div class="code-block">The Forgetting Curve & Spaced Repetition:
-
-ভুলে যাওয়ার রেখা:
-  শেখার পর →  ১ ঘণ্টা: ৫০% ভুলে গেছে
-               ১ দিন:  ৭০% ভুলে গেছে  
-               ১ সপ্তাহ: ৮০% ভুলে গেছে
-
-কিন্তু — পুনরাবৃত্তি করলে রেখা সমতল হয়:
-
-  Day 1: প্রথম শেখো → ভুলে যাওয়া শুরু
-  Day 3: প্রথম review → রেখা উপরে ওঠে
-  Day 7: দ্বিতীয় review → আরও উপরে
-  Day 16: তৃতীয় review → প্রায় সমতল
-  Day 35: চতুর্থ review → স্থায়ী!
-
-প্রতিটা review তোমার ভুলে যাওয়ার ঠিক আগে হতে হবে।
-ব্যর্থ হওয়া = মেমরি শক্তিশালী হওয়া।
-
-Tools: Anki (free), SuperMemo, Quizlet</div>
+<div class="callout warn"><span class="co-icon">📉</span><div><strong>Ebbinghaus forgetting curve:</strong> শেখার পর ১ ঘণ্টায় ~৫০%, ১ দিনে ~৭০%, ১ সপ্তাহে ~৮০% ভুলে যাই।</div></div>
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">Day 1</div><div class="tl-title">প্রথম শেখা</div><div class="tl-body">ভুলে যাওয়া শুরু।</div></div>
+<div class="tl-step"><div class="tl-when">Day 3</div><div class="tl-title">১ম review</div><div class="tl-body">রেখা উপরে ওঠে।</div></div>
+<div class="tl-step"><div class="tl-when">Day 7</div><div class="tl-title">২য় review</div><div class="tl-body">আরও উপরে।</div></div>
+<div class="tl-step"><div class="tl-when">Day 16</div><div class="tl-title">৩য় review</div><div class="tl-body">প্রায় সমতল।</div></div>
+<div class="tl-step"><div class="tl-when">Day 35</div><div class="tl-title">৪র্থ review</div><div class="tl-body">স্থায়ী!</div></div>
+</div>
+<div class="callout tip"><span class="co-icon">🧵</span><div>প্রতিটা review তোমার ভুলে যাওয়ার <em>ঠিক আগে</em> হতে হবে — ব্যর্থ-হওয়ার-দ্বারপ্রান্তে মনে করাই memory-কে শক্তিশালী করে। টুল: Anki (free), SuperMemo, Quizlet।</div></div>
 
 <div class="dialogue">হাফসা (রা) — নবীজির (সা) স্ত্রী। তিনি কুরআনের প্রথম সম্পূর্ণ সংকলন সংরক্ষণ করেছিলেন। সংরক্ষণ মানে একবার রাখা নয় — যত্ন নেওয়া, সময় সময় পড়া, নিশ্চিত করা যে এটা আছে। Spaced repetition-ও তেমনি — একবার শেখা নয়, সময় সময় ফিরে আসা। হাফসা (রা) যেমন কুরআন সংরক্ষণ করেছিলেন যত্ন নিয়ে, তুমিও তেমনি জ্ঞান সংরক্ষণ করো — সময় নিয়ে, বিরতি দিয়ে।</div>
 <div class="dialogue en">"Hafsa (RA) — the Prophet's wife. She preserved the first complete compilation of the Quran. Preservation isn't storing once — it's caring, reading periodically, ensuring it remains. Spaced repetition too — not learning once, returning periodically. As Hafsa preserved the Quran with care, you preserve knowledge — with time, with intervals."</div>`,
@@ -140,19 +113,14 @@ doors.push({
 <div class="dialogue">রিচার্ড ফাইনম্যান — নোবেলজয়ী পদার্থবিজ্ঞানী। তাঁর নামে একটা শেখার পদ্ধতি — Feynman Technique। সহজ: একটা কনসেপ্ট নাও, একটা ১২ বছরের শিশুকে বোঝানোর মতো করে লেখো। যেখানে আটকাবে — সেখানে তোমার গ্যাপ। ফিরে যাও, শেখো, আবার সহজ করে বোঝাও। যতক্ষণ না সহজ হয়।</div>
 <div class="dialogue en">"Richard Feynman — Nobel-winning physicist. A learning method named after him — the Feynman Technique. Simple: take a concept, write it as if explaining to a 12-year-old. Where you stumble — that's your gap. Go back, learn, simplify again. Until it's simple."</div>
 
-<div class="code-block">Feynman Technique — ৫ ধাপ:
-
-১. কনসেপ্ট বেছে নাও → নাম লেখো
-২. শিশুর মতো ব্যাখ্যা করো → লিখো
-   (সহজ শব্দ, কোনো জার্গন নয়)
-৩. গ্যাপ খোঁজো → কোথায় আটকালে?
-   → সেখানে ফিরে যাও, আবার শেখো
-৪. সরল করো → উপমা দাও
-   ("এটা ঠিক যেমন...")
-৫. পুনরাবৃত্তি → যতক্ষণ না সাবলীল
-
-পরীক্ষা: কনসেপ্টের নাম ছাড়া 
-ব্যাখ্যা করতে পারলে — তুমি বুঝেছ।</div>
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">ধাপ ১</div><div class="tl-title">কনসেপ্ট বাছো</div><div class="tl-body">নাম লেখো।</div></div>
+<div class="tl-step"><div class="tl-when">ধাপ ২</div><div class="tl-title">শিশুর মতো ব্যাখ্যা</div><div class="tl-body">সহজ শব্দ, কোনো jargon নয়।</div></div>
+<div class="tl-step"><div class="tl-when">ধাপ ৩</div><div class="tl-title">গ্যাপ খোঁজো</div><div class="tl-body">কোথায় আটকালে? সেখানে ফিরে গিয়ে আবার শেখো।</div></div>
+<div class="tl-step"><div class="tl-when">ধাপ ৪</div><div class="tl-title">সরল করো</div><div class="tl-body">উপমা দাও ("এটা ঠিক যেমন...")।</div></div>
+<div class="tl-step"><div class="tl-when">ধাপ ৫</div><div class="tl-title">পুনরাবৃত্তি</div><div class="tl-body">যতক্ষণ না সাবলীল।</div></div>
+</div>
+<div class="callout tip"><span class="co-icon">🗣️</span><div><strong>পরীক্ষা:</strong> কনসেপ্টের নাম ছাড়া সহজভাবে ব্যাখ্যা করতে পারলে — তুমি বুঝেছ।</div></div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">📖 নিষ্ক্রিয় পড়া</div>পড়ো, আন্ডারলাইন করো, মনে হয় "বুঝেছি।" কিন্তু অন্যকে বোঝাতে গেলে — ফাঁকা। ভ্রম। পড়া = চেনা, বোঝা নয়।</div>
@@ -194,28 +162,14 @@ doors.push({
 <div class="cmp-card cmp-good"><div class="cmp-label">⚡ সচেতন অনুশীলন</div>যা পারো না তা করো — বারবার। মন দাও। ফিডব্যাক নাও। কঠিন হোক। ভুল থেকে শেখো। ১ ঘণ্টা deliberate = ৮ ঘণ্টা passive। উন্নতি দৃশ্যমান।</div>
 </div>
 
-<div class="code-block">Deliberate Practice Checklist:
-
-প্রতিটা সেশনে নিজেকে প্রশ্ন করো:
-
-১. নির্দিষ্ট কী শিখব?
-   "Python decorators" — ঠিক।
-   "Python" — অস্পষ্ট।
-
-২. কঠিন কি?
-   সহজ = সময় নষ্ট। কঠিন = বৃদ্ধি।
-   কঠিন অংশে থামো।
-
-৩. ফিডব্যাক কোথায়?
-   টেস্ট, কোচ, পর্যালোচনা।
-   ফিডব্যাক ছাড়া = অন্ধ অনুশীলন।
-
-৪. কী ভুল হলো?
-   ভুল = শেখার সংকেত।
-   একই ভুল দুইবার নয়।
-
-৫. পরের সেশন?
-   এবারের দুর্বলতা → পরের ফোকাস।</div>
+<div class="callout info"><span class="co-icon">⚡</span><div><strong>প্রতিটা সেশনে নিজেকে প্রশ্ন করো:</strong></div></div>
+<ul class="checklist">
+<li><strong>নির্দিষ্ট কী শিখব?</strong> "Python decorators" — ঠিক; "Python" — অস্পষ্ট।</li>
+<li><strong>কঠিন কি?</strong> সহজ = সময় নষ্ট; কঠিন = বৃদ্ধি। কঠিন অংশে থামো।</li>
+<li><strong>ফিডব্যাক কোথায়?</strong> test, coach, review — ফিডব্যাক ছাড়া = অন্ধ অনুশীলন।</li>
+<li><strong>কী ভুল হলো?</strong> ভুল = শেখার সংকেত; একই ভুল দুইবার নয়।</li>
+<li><strong>পরের সেশন?</strong> এবারের দুর্বলতা → পরের ফোকাস।</li>
+</ul>
 
 <div class="dialogue">তাযকিয়া — আত্মশুদ্ধি, পরিশীলন। নফস আরাম চায়। কিন্তু আরামে নফস উন্নতি করে না। কঠোর অনুশীলনে উন্নতি করে। কুরআনে আল্লাহ শপথ করেছেন নফসের — "যে শুদ্ধ করে সে সফল, যে নষ্ট করে সে ব্যর্থ।" (৯১:৯-১০)। শুদ্ধি আরামে নয় — সচেতন সংগ্রামে। প্রতিটা দুর্বলতায় হাতুড়ি — বারবার, যতক্ষণ না শক্ত হয়।</div>
 <div class="dialogue en">"Tazkiyah — purification, refinement. The nafs wants comfort. But comfort doesn't improve the nafs. Rigorous practice does. Allah swears by the nafs — 'Whoever purifies it succeeds, whoever corrupts it fails.' (91:9-10). Purification isn't comfort — it's conscious struggle. Hammer every weakness — repeatedly, until it's strong."</div>`,

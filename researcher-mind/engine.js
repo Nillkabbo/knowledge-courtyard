@@ -7,13 +7,13 @@ const SAVE_KEY = 'researcherMind_v1';
 const MAX_XP = 1000;
 const RANKS = [
   {min:0,   name:'শিক্ষানবিশ',     icon:'🧳'},
-  {min:100, name:'কৌতূহলী',   icon:'🏔️'},
-  {min:200, name:'প্রশ্নকারী',     icon:'🗺️'},
-  {min:300, name:'সংযোগকারী',     icon:'📚'},
-  {min:400, name:'সন্দেহকারী',           icon:'🎓'},
-  {min:500, name:'অধ্যবসায়ী',     icon:'🔬'},
-  {min:600, name:'সন্দেহকারী',    icon:'👑'},
-  {min:700, name:'চিরকৌতূহলী',    icon:'👑'}
+  {min:100, name:'কৌতূহলী',   icon:'🌱'},
+  {min:200, name:'প্রশ্নকারী',     icon:'🎯'},
+  {min:300, name:'পাঠক',     icon:'📖'},
+  {min:400, name:'সন্দেহকারী',           icon:'🔍'},
+  {min:500, name:'সংযোগকারী',     icon:'🕸️'},
+  {min:600, name:'লেখক',    icon:'✍️'},
+  {min:700, name:'চিরকৌতূহলী',    icon:'🎓'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}
 function loadState(){try{const r=localStorage.getItem(SAVE_KEY);if(!r)return;const s=JSON.parse(r);state.xp=s.xp||0;state.completedDoors=s.completedDoors||[];state.prologueSeen=s.prologueSeen||false}catch(e){}}

@@ -54,17 +54,16 @@ Subject: Prospective PhD Student — [তোমার এরিয়া]
    I'd love to discuss whether my background fits 
    your group."
 
-Signature: CV সংযুক্ত (PDF, ২ পৃষ্ঠা)
+Signature: CV সংযুক্ত (PDF, ২ পৃষ্ঠা)</div>
 
-পরিসংখ্যান:
-  • ৯০% ইমেইলের কোনো উত্তর নেই
-  • ১০% → সংক্ষিপ্ত উত্তর ("not accepting")
-  • ৩-৫% → আগ্রহ, ফলো-আপ কথোপকথন
-  • ১% → "Yes, apply to my lab"
-  
-  → ৩০-৫০ প্রফেসরকে ইমেইল করো
-  → ৩-৫ জন উত্তর দেবেন
-  → ১-২ জন আগ্রহী হবেন</div>
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৩০-৫০</div><div class="sc-label">প্রফেসরকে ইমেইল করো</div></div>
+<div class="stat-card"><div class="sc-num">~৯০%</div><div class="sc-label">কোনো উত্তরই আসবে না</div></div>
+<div class="stat-card"><div class="sc-num">৩-৫</div><div class="sc-label">আগ্রহী, ফলো-আপ কথোপকথন</div></div>
+<div class="stat-card"><div class="sc-num">১-২</div><div class="sc-label">"Yes, apply to my lab"</div></div>
+</div>
+
+<div class="callout tip"><span class="co-icon">📨</span><div><strong>Funnel বাস্তবতা:</strong> নীরবতা ব্যর্থতা নয় — সংখ্যার খেলা। ১-২ জন সত্যিকারের আগ্রহী প্রফেসরই একটা অ্যাডমিশন এনে দিতে যথেষ্ট। তাই কম মানের ৫টা নয়, বেশি মানের ৩০-৫০টা নির্দিষ্ট ইমেইল পাঠাও।</div></div>
 
 <div class="dialogue">সুহবত — সঙ্গ, সাথী খোঁজা। ইসলামে সঙ্গের গুরুত্ব অনেক — নবীজি (সা) বলেছেন, "মানুষ তার বন্ধুর দ্বীনে থাকে।" PhD-তেও সঙ্গ গুরুত্বপূর্ণ — কোন প্রফেসরের সাথে, কোন ল্যাবে। কোল্ড ইমেইল হলো সেই সঙ্গ খোঁজা — আগে থেকে, নিয়ত সহকারে। যে সঙ্গ খোঁজে, সে পায়। যে অপেক্ষা করে, সে হারায়।</div>
 <div class="dialogue en">"Suhbat — companionship, seeking associates. In Islam, companionship is vital — the Prophet (pbuh) said, 'A person follows the religion of their friend.' In PhD too, companionship matters — which professor, which lab. Cold email is seeking that companionship — early, with intention. One who seeks, finds. One who waits, loses."</div>`,
@@ -93,65 +92,21 @@ doors.push({
 <div class="dialogue">দরোয়ান বলেছিলেন — প্রফেসরকে ইমেইল করো। কিন্তু আমি বলি — কোন প্রফেসরকে? কোন বিশ্ববিদ্যালয়ে? এটা নির্ভর করে তোমার প্রোফাইলের উপর। নিজের মাপ না জানলে ভুল জায়গায় আবেদন = সব জায়গায় রিজেক্ট। মিযান — নিজেকে সততার সাথে মাপা।</div>
 <div class="dialogue en">"The gatekeeper said — email professors. But I say — which professors? Which universities? This depends on your profile. Not knowing your measure = applying to wrong places = all rejections. Mizan — measuring yourself honestly."</div>
 
-<div class="code-block">Three Profiles — কোথায় আবেদন করবে:
+<table class="kv-table"><tr><th>প্রোফাইল</th><th>সংকেত</th><th>কোথায় আবেদন</th><th>সম্ভাবনা</th></tr>
+<tr><td class="hl">🥇 High</td><td>GPA ৩.৮+, ১-২+ পাবলিকেশন, thesis/RA, একাডেমিক LOR</td><td>Top-20 reach + Top-50 match, ১০-১৫টি</td><td>২০-৪০% (অন্তত একটি top-20)</td></tr>
+<tr><td class="hl">🥈 Mid</td><td>GPA ৩.৩-৩.৭, ০-১ পাবলিকেশন, শক্ত প্রজেক্ট, প্রফেশনাল LOR</td><td>Top-50→100 reach + 100→150 match, ১৫-২০টি</td><td>১৫-৩০% (bridge সহ ~৪০%)</td></tr>
+<tr><td class="hl">🥉 Low</td><td>GPA &lt;৩.৩, রিসার্চ নেই, সাধারণ LOR</td><td>Bridge year বা MS আগে; 150→250 match, ২০+টি</td><td>৫-১৫% (bridge ছাড়া)</td></tr></table>
 
-╔══════════════════════════════════════════╗
-║ HIGH PROFILE (স্বর্ণ)                     ║
-╠══════════════════════════════════════════╣
-║ GPA: ৩.৮+ | Publications: ১-২+          ║
-║ Research: thesis, RA experience          ║
-║ LORs: একাডেমিক গবেষক                     ║
-║ Degree: MS CS (research)                 ║
-╠══════════════════════════════════════════╣
-║ কৌশল:                                   ║
-║ • Top-20 R1 reach (MIT, Stanford, CMU)   ║
-║ • Top-20 থেকে 50 match                    ║
-║ • 10-15 অ্যাপ্লিকেশন                      ║
-║ • শক্তিশালী SOP + কোল্ড ইমেইল             ║
-║ সম্ভাবনা: 20-40% অন্তত একটি top-20 থেকে  ║
-╚══════════════════════════════════════════╝
+<div class="callout info"><span class="co-icon">🥈</span><div><strong>Mid-profile = সবচেয়ে সাধারণ জায়গা।</strong> এখানে কোল্ড ইমেইল আর একটা bridge (নিচে) তোমার সম্ভাবনা প্রায় দ্বিগুণ করতে পারে — কারণ কমিটি "potential researcher" খোঁজে, নিখুঁত অতীত নয়।</div></div>
 
-╔══════════════════════════════════════════╗
-║ MID PROFILE (রৌপ্য) — তোমার জায়গা        ║
-╠══════════════════════════════════════════╣
-║ GPA: ৩.৩-৩.৭ | Publications: ০-১         ║
-║ Research: কিছু নয়, প্রজেক্ট আছে           ║
-║ LORs: ইন্ডাস্ট্রি/প্রফেশনাল               ║
-║ Degree: MSIS/প্রফেশনাল MS                ║
-╠══════════════════════════════════════════╣
-║ কৌশল:                                   ║
-║ • Top-50 থেকে 100 reach (কিছু R1)         ║
-║ • Top-100 থেকে 150 match (R1+R2)          ║
-║ • 15-20 অ্যাপ্লিকেশন                      ║
-║ • Bridge: রিসার্চ এক্সপেরিয়েন্স বানাও      ║
-║ • কোল্ড ইমেইল = সবচেয়ে গুরুত্বপূর্ণ         ║
-║ সম্ভাবনা: 15-30% (bridge সহ 40%)          ║
-╚══════════════════════════════════════════╝
-
-╔══════════════════════════════════════════╗
-║ LOW PROFILE (ব্রোঞ্জ)                     ║
-╠══════════════════════════════════════════╣
-║ GPA: <৩.৩ | Publications: ০             ║
-║ Research: নেই                            ║
-║ LORs: দুর্বল বা সাধারণ                   ║
-║ Degree: শুধু আন্ডারগ্র্যাড বা কাজের অভিজ্ঞতা ║
-╠══════════════════════════════════════════╣
-║ কৌশল:                                   ║
-║ • Bridge year: রিসার্চ অ্যাসিস্ট্যান্ট     ║
-║ • Top-150 থেকে 250 match                  ║
-║ • Master's (MS CS) আগে — তারপর PhD       ║
-║ • 20+ অ্যাপ্লিকেশন                        ║
-║ • কোল্ড ইমেইল + ফলো-আপ                   ║
-║ সম্ভাবনা: 5-15% (bridge ছাড়া)            ║
-╚══════════════════════════════════════════╝
-
-Mid-Profile Bridge Strategy (তোমার জন্য):
-  ১. আন্ডারগ্র্যাড প্রফেসরকে ইমেইল করো — 
-     volunteer RA
-  ২. ওপেন-সোর্স রিসার্চ প্রজেক্ট করো
-  ৩. একটি workshop paper লেখো
-  ৪. কনফারেন্সে poster প্রেজেন্ট করো
-  ৫. ৬-১২ মাস bridge — তারপর আবেদন</div>
+<div class="callout tip"><span class="co-icon">🌉</span><div><strong>Mid-profile bridge (৬-১২ মাস):</strong></div></div>
+<ul class="checklist">
+<li>আন্ডারগ্র্যাড/মাস্টার্সের কোনো প্রফেসরকে ইমেইল করো — volunteer RA হিসেবে।</li>
+<li>একটা ওপেন-সোর্স রিসার্চ প্রজেক্টে কন্ট্রিবিউট করো (PapersWithCode)।</li>
+<li>একটা workshop paper লেখো — যেকোনো পাবলিকেশন কমিটির চোখে ওজন যোগায়।</li>
+<li>কনফারেন্সে poster প্রেজেন্ট করো — প্রমাণ তুমি রিসার্চ কমিউনিটিতে আছো।</li>
+<li>৬-১২ মাস পরে আবেদন করো — এখন তোমার প্রোফাইল "mid+"।</li>
+</ul>
 
 <div class="dialogue">মিযান — দাঁড়িপাল্লা, ভারসাম্য, ন্যায্যতা। কুরআনে আল্লাহ বলেন — "আমরা সত্যের সাথে মিযান স্থাপন করেছি।" (২১:৪৭)। নিজের মাপ জানা — অহংকার নয়, বিনয়। "আমি সব পারি" নয়, "আমি এটুকু পারি" — এই সততাই মিযান। PhD-তে আবেদন করার আগে নিজের স্কেলে দাঁড় করাও — সততার সাথে। তারপর কৌশল বানাও।</div>
 <div class="dialogue en">"Mizan — scale, balance, fairness. Allah says — 'We established the scale with justice.' (21:47). Knowing your measure isn't arrogance — it's humility. Not 'I can do everything' but 'I can do this much' — this honesty is mizan. Before applying to PhD, stand on your scale — honestly. Then build your strategy."</div>`,
@@ -180,51 +135,16 @@ doors.push({
 <div class="dialogue">মিযান রক্ষক বলেছিলেন — নিজের মাপ জানো। কিন্তু আমি বলি — মাপ জানার পর সেই মাপ বাড়াও। কীভাবে? রিসার্চ করে। একটা পেপার লিখে। এটাই সবচেয়ে শক্তিশালী প্রমাণ — তুমি গবেষক হতে পারবে। কোনো প্রফেসর তোমার কাজ দেখলে, তিনি বুঝবেন তুমি প্রস্তুত।</div>
 <div class="dialogue en">"The scale keeper said — know your measure. But I say — after knowing, increase it. How? By doing research. Writing a paper. This is the strongest proof — you can be a researcher. When a professor sees your work, they'll know you're ready."</div>
 
-<div class="code-block">How to Get Research Experience — ৫টি পথ:
+<table class="kv-table"><tr><th>পথ</th><th>কীভাবে</th><th>প্রভাব</th></tr>
+<tr><td class="hl">Volunteer RA</td><td>প্রফেসরকে ইমেইল, ১০-১৫ ঘ/সপ্তাহ বিনা বেতনে, লক্ষ্য co-author</td><td>সর্বোচ্চ (কিন্তু কঠিন)</td></tr>
+<tr><td class="hl">Industry research</td><td>কাজে রিসার্চ কম্পোনেন্ট → technical report / patent</td><td>মাঝারি</td></tr>
+<tr><td class="hl">Open-source</td><td>PapersWithCode/HuggingFace রিপো, arXiv preprint</td><td>মাঝারি (প্রফেসর জড়িত নন)</td></tr>
+<tr><td class="hl">Workshop paper</td><td>ছোট, নির্দিষ্ট টপিক; review হয় ও প্রকাশ পায়</td><td>উচ্চ — প্রথম পাবলিকেশনের সেরা জায়গা</td></tr>
+<tr><td class="hl">Poster / abstract</td><td>কনফারেন্সে ছোট abstract + poster</td><td>নিম্ন-মাঝারি (তুমি রিসার্চে আছো তার প্রমাণ)</td></tr></table>
 
-১. VOLUNTEER RESEARCH ASSISTANT
-   • কোনো বিশ্ববিদ্যালয়ের প্রফেসরকে ইমেইল করো
-   • "আমি volunteer হিসেবে কাজ করতে চাই"
-   • সাপ্তাহিক ১০-১৫ ঘণ্টা, বিনা পারিশ্রমিকে
-   • লক্ষ্য: পেপারে co-author
-   → সবচেয়ে কার্যকরী কিন্তু সবচেয়ে কঠিন
+<div class="callout info"><span class="co-icon">🔬</span><div><strong>The paper pipeline (৬-১৮ মাস):</strong> Idea → Literature Review → Hypothesis → Experiment → Analysis → Writing → Submission → Review → Revision → Publication। প্রতিটা ধাপ ছোট মনে হলেও শেখার — প্রথমবার সবচেয়ে ধীর, পরেরবার দ্বিগুণ দ্রুত।</div></div>
 
-২. INDUSTRY RESEARCH
-   • তোমার কাজে রিসার্চ কম্পোনেন্ট যোগ করো
-   • LedgerPilot-এ AI/ML প্রজেক্ট → technical report
-   • কোম্পানির internal paper বা patent
-   → সহজলভ্য কিন্তু কম প্রভাবশালী
-
-৩. OPEN-SOURCE RESEARCH
-   • PapersWithCode-এ রিপোজিটরি
-   • HuggingFace-এ model বানিয়ে প্রকাশ
-   • arXiv-এ preprint পোস্ট
-   → দ্রুত কিন্তু কোনো প্রফেসর জড়িত নন
-
-৪. WORKSHOP PAPER
-   • Main conference (NeurIPS) = অনেক কঠিন
-   • Workshop = সহজ, ছোট, নির্দিষ্ট টপিক
-   • Deadline: সালে কয়েকবার
-   • Review হয়, প্রকাশিত হয়
-   → প্রথম পাবলিকেশনের সেরা জায়গা
-
-৫. POSTER / ABSTRACT
-   • কনফারেন্সে poster প্রেজেন্ট করো
-   • ছোট abstract জমা দাও
-   • বড় পেপার নয়, কিন্তু প্রমাণ তুমি রিসার্চে আছো
-
-The Paper Pipeline:
-  Idea → Literature Review → Hypothesis → 
-  Experiment → Analysis → Writing → 
-  Submission → Review → Revision → 
-  Publication (৬-১৮ মাস)
-
-তোমার প্রথম পেপারের idea:
-  • LedgerPilot-এ কাজ করার সময় কোনো সমস্যা?
-  • কোনো AI টুল ব্যবহার করে ভালো ফল?
-  • একটি case study + একটি technique
-  → Workshop paper: "LLM-based NACHA generation
-     with structured output constraints"</div>
+<div class="callout tip"><span class="co-icon">💡</span><div><strong>প্রথম পেপারের idea কোথায়:</strong> তোমার কাজের সময় যে সমস্যায় আটকেছ, বা যে AI টুল ভালো ফল দিয়েছে — সেটাই। একটা case study + একটা technique = একটা workshop paper (যেমন: "LLM-based structured output with retrieval constraints")।</div></div>
 
 <div class="dialogue">বিদায় — ত্যাগ। হজ্জে পশু কুরবানি — সম্পদের ত্যাগ। PhD-এর প্রস্তুতিতেও ত্যাগ — সময়ের, শ্রমের। Volunteer RA = বিনা পারিশ্রমিকে কাজ। সন্ধ্যায় পেপার লেখা = বিশ্রামের ত্যাগ। কিন্তু এই ত্যাগই তোমার পথ তৈরি করে। প্রথম পেপার = প্রথম কুরবানি — তোমার গবেষক হওয়ার প্রমাণ।</div>
 <div class="dialogue en">"Biday — sacrifice. In Hajj, animal sacrifice — giving wealth. In PhD preparation, sacrifice too — of time, labor. Volunteer RA = unpaid work. Evening paper writing = sacrificing rest. But this sacrifice builds your path. First paper = first sacrifice — proof you can be a researcher."</div>`,
@@ -253,36 +173,19 @@ doors.push({
 <div class="dialogue">কারিগর বলেছিলেন — পেপার লেখো। কিন্তু আমি বলি — পেপার লেখার পর আসে শেষ পরীক্ষা। PhD ইন্টারভিউ। কিন্তু এটা কোডিং ইন্টারভিউ নয় — রিসার্চ কথোপকথন। প্রফেসর দেখতে চান — তুমি কি তাঁর সাথে ৫ বছর কাজ করতে পারবে?</div>
 <div class="dialogue en">"The craftsman said — write a paper. But I say — after the paper comes the final test. PhD interview. But this isn't a coding interview — it's a research conversation. The professor wants to see — can you work with them for 5 years?"</div>
 
-<div class="code-block">PhD Interview — কী হয়:
+<table class="kv-table"><tr><th>ধরন</th><th>কী হয়</th><th>তারা যা দেখে</th></tr>
+<tr><td class="hl">Zoom/Video<br><small>সবচেয়ে সাধারণ</small></td><td>৩০-৬০ মিনিট, ১-৩ জন প্রফেসর; SOP/পেপার/প্রজেক্ট নিয়ে আলোচনা</td><td>আগ্রহ ও ফিট</td></tr>
+<tr><td class="hl">Campus visit<br><small>recruitment weekend</small></td><td>১-২ দিন; ১:১ মিটিং, বর্তমান শিক্ষার্থীদের সাথে কথা, ল্যাব ট্যুর</td><td>সংস্কৃতি ও পারস্পরিক ফিট</td></tr>
+<tr><td class="hl">Technical<br><small>discussion</small></td><td>একটা পেপার নিয়ে: "এই method-এ সমস্যা কী? কীভাবে উন্নত করবে?"</td><td>চিন্তার প্রক্রিয়া</td></tr></table>
 
-৩ ধরনের ইন্টারভিউ:
-
-১. ZOOM/VIDEO INTERVIEW (সবচেয়ে সাধারণ)
-   • ৩০-৬০ মিনিট, ১-৩ জন প্রফেসরের সাথে
-   • তোমার SOP, পেপার, প্রজেক্ট নিয়ে আলোচনা
-   • প্রফেসরের কাজ সম্পর্কে প্রশ্ন
-   • "কোন প্রশ্ন নিয়ে কাজ করতে চাও?"
-   • "আমার recent paper পড়েছ?"
-
-২. CAMPUS VISIT / RECRUITMENT WEEKEND
-   • ১-২ দিন, সব শর্টলিস্টেড প্রার্থী
-   • প্রফেসরদের সাথে ১:1 মিটিং
-   • বর্তমান PhD শিক্ষার্থীদের সাথে কথা
-   • ল্যাব ট্যুর, শহর ভ্রমণ
-   → প্রফেসর দেখতে চান — fit কি?
-
-৩. TECHNICAL DISCUSSION
-   • তোমার এরিয়ার একটি পেপার দিয়ে আলোচনা
-   • "এই method-এ সমস্যা কী?"
-   • "কীভাবে উন্নত করবে?"
-   → চিন্তা প্রক্রিয়া দেখা
-
-প্রশ্ন যা সবসময় আসে:
-  • "কেন PhD? কেন এখন?"
-  • "কোন সমস্যা নিয়ে কাজ করতে চাও?"
-  • "কেন আমার ল্যাব?"
-  • "৫ বছর পর কোথায় দেখতে চাও?"
-  • "কোনো প্রশ্ন?" ← সবসময় প্রস্তুত রাখো!</div>
+<div class="callout info"><span class="co-icon">❓</span><div><strong>যে প্রশ্ন প্রায় সবসময় আসে:</strong></div></div>
+<ul class="checklist">
+<li>"কেন PhD? কেন এখন?"</li>
+<li>"কোন সমস্যা নিয়ে কাজ করতে চাও?"</li>
+<li>"কেন আমার ল্যাব?" — নির্দিষ্ট পেপার উল্লেখ করো।</li>
+<li>"৫ বছর পর কোথায় দেখতে চাও?"</li>
+<li>"তোমার কোনো প্রশ্ন?" — সবসময় প্রস্তুত রাখো (নিচের সিনিয়র ইনসাইট দেখো)।</li>
+</ul>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ খারাপ উত্তর</div>"আমি সব পারি।" "আমি ভালো ছাত্র।" "আপনার ল্যাব বিখ্যাত।" — জেনেরিক, নির্দিষ্ট নয়। প্রফেসর বিরক্ত।</div>
@@ -316,50 +219,16 @@ doors.push({
 <div class="dialogue">নয়টি স্থান পেরিয়েছ। তীর্থযাত্রী বলেছিলেন — কেন। মানচিত্রকার বলেছিলেন — কী। বণিক বলেছিলেন — ফান্ডিং। দিকনির্দেশক বলেছিলেন — কোথায়। পণ্ডিত বলেছিলেন — SOP। দরোয়ান বলেছিলেন — ইমেইল করো। মিযান রক্ষক বলেছিলেন — নিজের মাপ জানো। কারিগর বলেছিলেন — পেপার লেখো। কমিটির কক্ষ বলেছিলেন — কথোপকথন। আর আমি বলি — এই সবের পরে আসল জীবন। PhD জীবন।</div>
 <div class="dialogue en">"You've passed nine stations. The pilgrim said — why. The cartographer said — what. The merchant said — funding. The guide said — where. The scholar said — SOP. The gatekeeper said — email. The scale keeper said — know your measure. The craftsman said — write a paper. The committee said — conversation. And I say — after all this comes real life. PhD life."</div>
 
-<div class="code-block">PhD Life — Reality:
+<div class="callout info"><span class="co-icon">🕊️</span><div><strong>স্বাধীনতা:</strong> কেউ বলবে না কী করতে — তুমিই তোমার সময়, প্রশ্ন আর সময়সূচীর মালিক। দারুণ, কিন্তু স্বাধীনতা = দায়িত্ব।</div></div>
+<div class="callout info"><span class="co-icon">🌑</span><div><strong>একাকীত্ব:</strong> তোমার সমস্যা শুধু তোমার; বন্ধুরা ইন্ডাস্ট্রিতে চলে গেছে। কিন্তু ল্যাবের সহকর্মীরাই হয়ে ওঠে নতুন পরিবার।</div></div>
+<div class="callout warn"><span class="co-icon">💥</span><div><strong>ব্যর্থতা:</strong> রিসার্চ = ব্যর্থতার আরেক নাম। এক্সপেরিমেন্ট ভাঙবে, পেপার বারবার রিজেক্ট হবে — কিন্তু "negative result"-ও ফলাফল, প্রতিটা ব্যর্থতা শেখা।</div></div>
+<div class="callout warn"><span class="co-icon">🧠</span><div><strong>মানসিক স্বাস্থ্য:</strong> PhD-তে depression/anxiety-র হার উচ্চ; imposter syndrome ("আমি যথেষ্ট ভালো না") প্রায় সবার হয়। এটা দুর্বলতা নয় — সিস্টেমের চাপ। থেরাপি, কমিউনিটি, ঘুম ও ব্যায়ামকে "luxury" নয়, রিসার্চের অংশ ভাবো। প্রয়োজনে সাহায্য চাওয়াই শক্তি।</div></div>
 
-স্বাধীনতা (Freedom):
-  • কেউ তোমাকে বলবে না কী করতে
-  • তুমিই তোমার সময়ের মালিক
-  • তুমিই তোমার রিসার্চ প্রশ্ন বেছে নাও
-  • তুমিই তোমার সময়সূচী বানাও
-  → দারুণ? হ্যাঁ — কিন্তু স্বাধীনতা = দায়িত্ব
-
-একাকীত্ব (Solitude):
-  • তোমার সমস্যা শুধু তোমার — কেউ বোঝে না
-  • আন্ডারগ্র্যাডের মতো ক্লাস নেই
-  • বন্ধুরা ইন্ডাস্ট্রিতে চলে গেছে
-  • কিন্তু — ল্যাবের সহকর্মী = নতুন পরিবার
-
-ব্যর্থতা (Failure):
-  • রিসার্চ = ব্যর্থতার আরেক নাম
-  • প্রতিটা এক্সপেরিমেন্ট কাজ নাও করতে পারে
-  • পেপার রিজেক্ট হবে — বারবার
-  • কিন্তু প্রতিটা ব্যর্থতা = শেখা
-  → রিসার্চে "negative result" ও ফলাফল
-
-মানসিক স্বাস্থ্য (Mental Health):
-  • PhD শিক্ষার্থীদের ডিপ্রেশন রেট উচ্চ
-  • একাকীত্ব, চাপ, অনিশ্চয়তা
-  • Imposter syndrome: "আমি যথেষ্ট ভালো না"
-  → সমাধান: থেরাপি, কমিউনিটি, স্বাস্থ্য
-
-সফলতা (Success):
-  • প্রথম পেপার অ্যাক্সেপ্ট হলে → দুনিয়া
-  • কনফারেন্সে প্রেজেন্ট করলে → পরিচিতি
-  • ডিগ্রী → বিশ্বের অন্যতম বিশেষজ্ঞ
-  • ক্যারিয়ার: একাডেমিয়া, ইন্ডাস্ট্রি রিসার্চ, 
-    স্টার্টআপ, সরকারি উপদেষ্টা
-
-PhD-এর পরে ক্যারিয়ার:
-  ╔══════════════════════════════════╗
-  একাডেমিয়া: প্রফেসর → নিজের ল্যাব, 
-    নিজের রিসার্চ, শিক্ষার্থী
-  ইন্ডাস্ট্রি রিসার্চ: Google AI, MS Research, 
-    Meta FAIR — $২০০K-৪০০K
-  স্টার্টআপ: নিজের রিসার্চ → প্রোডাক্ট
-  সরকারি: NSF, DARPA, নাসা
-  ╚══════════════════════════════════╝</div>
+<table class="kv-table"><tr><th>PhD-এর পরে</th><th>কী</th><th>আয় (আনুমানিক)</th></tr>
+<tr><td class="hl">একাডেমিয়া</td><td>প্রফেসর → নিজের ল্যাব, রিসার্চ, শিক্ষার্থী</td><td>$৮০-১৫০K+ (tenure-track)</td></tr>
+<tr><td class="hl">ইন্ডাস্ট্রি রিসার্চ</td><td>Google DeepMind, MS Research, Meta FAIR, Anthropic</td><td>$২০০-৪০০K+</td></tr>
+<tr><td class="hl">স্টার্টআপ</td><td>নিজের রিসার্চ → প্রোডাক্ট → কোম্পানি</td><td>পরিবর্তনশীল (equity)</td></tr>
+<tr><td class="hl">সরকারি/জাতীয় ল্যাব</td><td>NSF, DARPA, NASA, national labs</td><td>$১০০-১৮০K</td></tr></table>
 
 <div class="dialogue">ইলম — জ্ঞান। নবীজি (সা) বলেছেন — "জ্ঞান অর্জন প্রতিটি মুসলিমের উপর ফরজ।" PhD হলো জ্ঞানের সবচেয়ে গভীর পথ — শুধু জ্ঞান গ্রহণ নয়, জ্ঞান সৃষ্টি। এটা শুধু পেশাগত নয় — আধ্যাত্মিক। প্রতিটি নতুন আবিষ্কার আল্লাহর সৃষ্টির একটি নতুন দিক উন্মোচন। PhD-র মাধ্যমে তুমি আল্লাহর কালামের আরেকটি আয়াত পড়ো — "সবকিছু আমরা গণনা করেছি একটি সুরক্ষিত গ্রন্থে।" (৭৮:২৯)</div>
 <div class="dialogue en">"Ilm — knowledge. The Prophet (pbuh) said — 'Seeking knowledge is obligatory upon every Muslim.' PhD is the deepest path of knowledge — not just receiving knowledge, but creating it. This isn't just professional — it's spiritual. Each new discovery reveals a new aspect of Allah's creation. Through PhD you read another ayah of Allah's word — 'We have enumerated all things in a secure register.' (78:29)"</div>

@@ -21,107 +21,22 @@ doors.push({
 <div class="dialogue">Problem finding বলেছিলেন — সমস্যা খুঁজো। কিন্তু আমি বলি — সমস্যা খুঁজলেও দলকে বোঝাতে না পারলে কিছু হবে না। যোগাযোগ ছাড়া তুমি একা। একা প্রতিভা সীমিত। দল প্রতিভা অসীম। স্পষ্ট বাক্য = ১০x multiplier। যে স্পষ্ট বলে, সে দল নির্দেশ দেয়। যে অস্পষ্ট বলে, সে বিভ্রান্তি ছড়ায়।</div>
 <div class="dialogue en">"Problem finding said — find problems. But I say — even if you find problems, without communicating them to the team, nothing happens. Without communication, you're alone. Solo talent is limited. Team talent is infinite. Clear speech = 10x multiplier. One who speaks clearly, directs the team. One who speaks unclearly, spreads confusion."</div>
 
-<div class="code-block">COMMUNICATION — The 10x Multiplier:
+<div class="callout info"><span class="co-icon">✖️</span><div><strong>যোগাযোগ = #১ senior skill:</strong> senior-এর কাজ বেশি কোড লেখা নয় — টিমের output গুণ করা। IC = নিজের কোড = ১x। ভালো যোগাযোগকারী senior = টিম output = ৫-১০x। খারাপ যোগাযোগকারী = নিজের কোড + টিম confusion = <strong>০.৫x (negative multiplier!)</strong> — misalignment, rework, conflict।</div></div>
 
-WHY COMMUNICATION IS THE #1 SENIOR SKILL:
+<table class="kv-table"><tr><th>স্তর</th><th>কাকে</th><th>কীভাবে</th></tr>
+<tr><td class="hl">১. Peers</td><td>অন্য engineer</td><td>code review, design doc — shared technical understanding</td></tr>
+<tr><td class="hl">২. Stakeholders</td><td>PM, business</td><td>tech → business impact ("সপ্তাহে ৫ ঘণ্টা বাঁচায়", GraphQL migration নয়)</td></tr>
+<tr><td class="hl">৩. Non-technical</td><td>user, exec</td><td>tech → human value ("৫s নয়, ১s-এ load হবে")</td></tr></table>
 
-  Senior's job is NOT writing more code.
-  Senior's job is MULTIPLYING the team's output.
-  
-  ┌──────────────────────────────────────┐
-  │ Individual contributor (IC):          │
-  │   output = own code = ১x              │
-  │                                       │
-  │ Senior who communicates well:         │
-  │   output = team output = ৫-১০x       │
-  │                                       │
-  │ Senior who communicates poorly:       │
-  │   output = own code + team confusion │
-  │   = ০.৫x (NEGATIVE multiplier!)      │
-  └──────────────────────────────────────┘
+<table class="kv-table"><tr><th>ডকুমেন্ট</th><th>উদ্দেশ্য</th></tr>
+<tr><td class="hl">Design doc (RFC/ADR)</td><td>বানানোর আগে align — সপ্তাহের rework রোধ</td></tr>
+<tr><td class="hl">README</td><td>নতুন dev-দের ঘণ্টায় onboard, সপ্তাহে নয়</td></tr>
+<tr><td class="hl">Postmortem</td><td>ব্যর্থতা থেকে শেখা — পুনরাবৃত্তি রোধ</td></tr>
+<tr><td class="hl">Decision log</td><td>X কেন ঠিক হলো — বারবার তর্ক রোধ</td></tr></table>
 
-  → Poor communication doesn't just fail to help
-  → It ACTIVELY DESTROYS team output
-  → Misalignment, rework, conflict, frustration
+<div class="callout tip"><span class="co-icon">🗣️</span><div><strong>Great communication-এর ৫ প্যাটার্ন:</strong> ① <strong>Conclusion আগে</strong> — প্রথম বাক্যই উত্তর, journey নয়। ② <strong>Analogy</strong> non-technical-দের জন্য ("index হলো library catalog")। ③ <strong>সংখ্যায় বলো</strong> — "pretty fast" নয়, "৪.২s → ০.৮s, ৫x"। ④ <strong>Write once, read many</strong> — ২ ঘণ্টার doc ১৫ জন পড়ে; meeting-এর চেয়ে ৫x efficient। ⑤ <strong>Disagree gracefully</strong> — "That's wrong" নয়, "আমি ভিন্নভাবে দেখি, আমার উদ্বেগ..."।</div></div>
 
-THE ৩ LEVELS OF TECHNICAL COMMUNICATION:
-
-  Level ১: EXPLAIN TO PEERS (other engineers)
-    → code reviews, design docs, pair programming
-    → goal: shared technical understanding
-    
-  Level ২: EXPLAIN TO STAKEHOLDERS (PM, business)
-    → translate tech → business impact
-    → "This refactor saves ৫ engineering hours/week"
-    → NOT "We need to migrate from REST to GraphQL"
-    
-  Level ৩: EXPLAIN TO NON-TECHNICAL (users, execs)
-    → translate tech → human value
-    → "Your app will load in ১ second instead of ৫"
-    → NOT "We optimized the CDN cache headers"
-
-WRITING (the most leveraged communication):
-
-  ┌────────────────┬────────────────────────────┐
-  │ Document Type  │ Purpose                     │
-  ├────────────────┼────────────────────────────┤
-  │ Design doc     │ Align BEFORE building       │
-  │ (RFC/ADR)      │ → prevents weeks of rework  │
-  ├────────────────┼────────────────────────────┤
-  │ README         │ Onboard new devs in hours   │
-  │                │ → not weeks                 │
-  ├────────────────┼────────────────────────────┤
-  │ Postmortem     │ Learn from failures         │
-  │                │ → prevent repeats           │
-  ├────────────────┼────────────────────────────┤
-  │ Decision log   │ WHY was X decided?          │
-  │                │ → prevents re-litigating    │
-  └────────────────┴────────────────────────────┘
-
-  → A good design doc saves ১০x its writing time
-  → A missing design doc costs ১০x in rework
-
-THE FEYNMAN TEST (can you explain it simply?):
-  
-  If you can't explain it to a non-technical person,
-  you don't truly understand it.
-  
-  Test: Explain your last project to your grandmother.
-  If she understands → you understand.
-  If she's confused → you're hiding behind jargon.
-
-PATTERNS OF GREAT ENGINEERING COMMUNICATION:
-
-  ১. LEAD WITH THE CONCLUSION
-    ❌ "So I was looking at the database and..."
-    ✅ "The API is slow because of missing indexes.
-        Here's the fix: ২ lines. Takes ৫ min."
-    
-    → Senior's first sentence = the answer
-    → Junior's first sentence = the journey
-
-  ২. USE ANALOGIES FOR NON-TECHNICAL
-    → "It's like a library catalog — without it,
-       you have to check every shelf every time"
-    → Business people understand analogies
-    → They DON'T understand cache invalidation
-
-  ৩. QUANTIFY EVERYTHING
-    ❌ "It's pretty fast now"
-    ✅ "Response time: ৪.২s → ০.৮s. ৫x improvement."
-    ❌ "Lots of users will benefit"
-    ✅ "৩৪% of active users (২,৪০০ people)"
-
-  ৪. WRITE ONCE, READ MANY
-    → A design doc: ২ hours to write, read by ১৫ people
-    → A meeting: ১ hour × ১০ people = ১০ hours
-    → Writing is ৫x more efficient than meetings
-
-  ৫. DISAGREE WITHOUT BEING DISAGREEABLE
-    ❌ "That's wrong"
-    ✅ "I see it differently. Here's my concern..."
-    → The senior who can't disagree gracefully
-      becomes toxic, not irreplaceable</div>
+<div class="callout info"><span class="co-icon">🧠</span><div><strong>Feynman test:</strong> non-technical কাউকে সরলভাবে বোঝাতে না পারলে তুমি নিজেই পুরোপুরি বোঝোনি। শেষ প্রজেক্টটা দাদিকে বোঝাও — বুঝলে তুমি বুঝেছ; confused হলে তুমি jargon-এর পেছনে লুকিয়ে আছ।</div></div>
 
 <div class="dialogue">বায়ান — clear speech, expression, manifestation। কুরআনে আল্লাহ বলেন — "তিনি মানুষকে শিখিয়েছেন বায়ান — স্পষ্ট বাক্য।" (৫৫:৩-৪)। বায়ান হলো আল্লাহর নিয়ামত — স্পষ্টভাবে প্রকাশ করার ক্ষমতা। যোগাযোগ-ও বায়ান — জটিল ধারণা স্পষ্টভাবে প্রকাশ। যে বায়ান করে, সে আলো — অন্ধকার দূর করে। যে বায়ান করতে পারে না, সে জ্ঞান ধরে রাখে অন্ধকারে। জ্ঞান + বায়ান = নূর। জ্ঞান - বায়ান = বন্দি জ্ঞান।</div>
 <div class="dialogue en">"Bayan — clear speech, expression, manifestation. Allah says — 'He taught man bayan — clear speech.' (55:3-4). Bayan is Allah's gift — the ability to express clearly. Communication too is bayan — expressing complex ideas clearly. One who has bayan, is light — removes darkness. One who can't express, holds knowledge in darkness. Knowledge + bayan = light. Knowledge - bayan = imprisoned knowledge."</div>`,
@@ -149,121 +64,29 @@ doors.push({
 <div class="dialogue">যোগাযোগ বলেছিলেন — স্পষ্ট বলো। কিন্তু আমি বলি — স্পষ্ট বললেও ভুল জিনিস বানালে কিছু হবে না। নৌকা সুন্দর, কিন্তু নদী ছাড়া মূল্যহীন। পণ্য = সমস্যা + সমাধান + মানুষ। যে সমাধান বানায় কিন্তু সমস্যা বোঝে না, সে স্থলভাগে নৌকা বানায়। যে তিনটাই বোঝে, সে সমুদ্রে যাত্রা করে।</div>
 <div class="dialogue en">"Communication said — speak clearly. But I say — even speaking clearly, if you build the wrong thing, nothing happens. The boat is beautiful, but without a river, worthless. Product = problem + solution + people. One who builds solutions without understanding problems, builds boats on land. One who understands all three, sails the ocean."</div>
 
-<div class="code-block">BUILDING PRODUCTS — Product Sense for Engineers:
+<div class="callout info"><span class="co-icon">🧮</span><div><strong>Product equation:</strong> Great Product = Real Problem × Good Solution × Right People। যেকোনো factor শূন্য হলে product শূন্য।</div></div>
 
-THE PRODUCT EQUATION:
+<table class="kv-table"><tr><th>Fail mode</th><th>কী</th><th>ব্যর্থতার %</th></tr>
+<tr><td class="hl">১. কোনো real problem নেই</td><td>"Cool tech, but who needs it?"</td><td>~৭০%</td></tr>
+<tr><td class="hl">২. Bad solution</td><td>"ভালো idea, বাজে execution"</td><td>~২০%</td></tr>
+<tr><td class="hl">৩. Wrong people</td><td>"নিজেদের জন্য বানানো, user-এর জন্য নয়"</td><td>~১০%</td></tr></table>
 
-  Great Product = Real Problem × Good Solution × Right People
-  
-  If ANY factor is zero → product is zero.
-  
-  ┌──────────────────────────────────────┐
-  │ FAIL MODE ১: No real problem         │
-  │ → "Cool tech, but who needs it?"     │
-  │ → ৭০% of failed startups              │
-  ├──────────────────────────────────────┤
-  │ FAIL MODE ২: Bad solution             │
-  │ → "Good idea, terrible execution"    │
-  │ → ২০% of failures                     │
-  ├──────────────────────────────────────┤
-  │ FAIL MODE ৩: Wrong people             │
-  │ → "Built for ourselves, not users"   │
-  │ → ১০% of failures                     │
-  └──────────────────────────────────────┘
+<table class="kv-table"><tr><th>✅ PMF আছে</th><th>❌ PMF নেই</th></tr>
+<tr><td>না বললেও user ব্যবহার করে</td><td>তুমি feature push করো, user pull করে না</td></tr>
+<tr><td>user অন্যদের refer করে (organic)</td><td>retention কম (একবার try, আর ফেরে না)</td></tr>
+<tr><td>down হলে user রেগে যায়</td><td>support ticket &gt; feature request</td></tr>
+<tr><td>growth-এ marketing খরচ লাগে না</td><td>প্রতিটা sale-এ ভারী convincing লাগে</td></tr></table>
 
-PRODUCT-MARKET FIT (the holy grail):
-  
-  "The product satisfies a real need so well that 
-   users tell other users about it."
-  
-  Signs of PMF:
-    → Users use it WITHOUT being asked
-    → Users refer other users (organic growth)
-    → Users are UPSET when it's down
-    → Growth doesn't need marketing spend
-  
-  Signs of NO PMF:
-    → You push features, users don't pull
-    → Retention is low (try once, never return)
-    → Support tickets > feature requests
-    → Every sale requires heavy convincing
+<div class="callout tip"><span class="co-icon">🔁</span><div><strong>Build-Measure-Learn (Lean Startup):</strong> সবচেয়ে ছোট জিনিস BUILD → MEASURE (কাজ করে?) → LEARN → আবার BUILD। Junior: ৩ মাস বানিয়ে launch করে prayer করে; senior: ১ সপ্তাহে বানিয়ে test → learn → iterate। <strong>MVP</strong> = অর্ধেক-বানানো নয়, একটা hypothesis টেস্ট করার সবচেয়ে ছোট জিনিস।</div></div>
 
-THE BUILD-MEASURE-LEARN LOOP (Lean Startup):
-  
-  ┌─────────────────────────────┐
-  │  BUILD (smallest possible)   │
-  │      ↓                       │
-  │  MEASURE (does it work?)     │
-  │      ↓                       │
-  │  LEARN (what did we learn?)  │
-  │      ↓                       │
-  │  BUILD (slightly better)     │
-  │  ...repeat                   │
-  └─────────────────────────────┘
-  
-  Junior: build for ৩ months → launch → pray
-  Senior: build for ১ week → test → learn → iterate
+<div class="callout info"><span class="co-icon">❓</span><div><strong>বানানোর আগে ৫ প্রশ্ন:</strong> কী সমস্যা, কার জন্য? · আজ user কীভাবে সমাধান করে? · সবচেয়ে সরল version? · সাফল্য কীভাবে মাপবো? · যদি আমরা ভুল হই? উত্তর না থাকলে — এখনো বানিও না।</div></div>
 
-MVP — Minimum VIABLE Product (not minimum CRAPPY product):
-  
-  MVP is NOT a half-baked product.
-  MVP is the SMALLEST thing that tests a hypothesis.
-  
-  Example hypotheses:
-    → "Do users want AI-powered expense tracking?"
-    → MVP: manual spreadsheet + ১০ users → track manually
-    → If they love manual → build automation
-    → If they don't care → saved ৩ months of dev
+<table class="kv-table"><tr><th>Kano feature type</th><th>User reaction</th></tr>
+<tr><td class="hl">Must-have (login, basic)</td><td>"অবশ্যই থাকবে" → না থাকলে ক্ষোভ</td></tr>
+<tr><td class="hl">Performance (speed, quality)</td><td>"দ্রুত/ভালো = ভালো" → linear satisfaction</td></tr>
+<tr><td class="hl">Delightful (surprise, AI)</td><td>"WOW, আশা করিনি!" → অসামঞ্জস্য আনন্দ, loyalty ও referral</td></tr></table>
 
-ENGINEER'S ROLE IN PRODUCT DISCOVERY:
-  
-  The irreplaceable engineer doesn't just build specs.
-  They PARTICIPATE in discovering what to build.
-  
-  Questions to ask BEFORE building:
-    ১. What problem does this solve? (for WHOM?)
-    ২. How do users solve it TODAY? (competition)
-    ৩. What's the simplest version? (MVP)
-    ৪. How will we measure success? (metrics)
-    ৫. What if we're WRONG? (fallback)
-  
-  → If you can't answer these → DON'T BUILD YET
-
-PRODUCT ANTI-PATTERNS (things that kill products):
-
-  ❌ BUILDING BLIND: "PM said build X, so I build X"
-  ✅ UNDERSTANDING: "WHY X? What user problem?"
-
-  ❌ FEATURE FACTORY: "Ship ১০ features per sprint"
-  ✅ OUTCOME FOCUSED: "Ship features users actually use"
-
-  ❌ REINVENTING: "Nobody has built THIS before!"
-  ✅ RESEARCHING: "What exists? Why? What gap remains?"
-
-  ❌ PERFECTIONISM: "It's not ready yet, ৬ more months"
-  ✅ SHIPPING: "Ship v১, learn, ship v২"
-
-  ❌ VANITY METRICS: "We have ১০,০০০ signups!"
-  ✅ REAL METRICS: "২,০০০ use it daily, ৫০০ pay"
-
-THE KANO MODEL (what features users love):
-
-  ┌─────────────────┬──────────────────────────┐
-  │ Feature Type     │ User Reaction             │
-  ├─────────────────┼──────────────────────────┤
-  │ Must-have        │ "Obviously it should"     │
-  │ (login, basic)   │ → absence = fury          │
-  ├─────────────────┼──────────────────────────┤
-  │ Performance      │ "Faster/better is better" │
-  │ (speed, quality) │ → linear satisfaction     │
-  ├─────────────────┼──────────────────────────┤
-  │ Delightful       │ "WOW, I didn't expect!"   │
-  │ (surprise, AI)   │ → disproportionate joy    │
-  └─────────────────┴──────────────────────────┘
-
-  → Invest in all ৩ types
-  → Most engineers only build must-have + performance
-  → Delightful features create LOYALTY and REFERRALS</div>
+<div class="callout warn"><span class="co-icon">🚫</span><div><strong>Anti-patterns:</strong> building blind ("PM বলল, বানালাম") · feature factory (sprint-এ ১০ feature, ব্যবহার হয় না) · reinventing · perfectionism ("আরও ৬ মাস") · vanity metrics ("১০,০০০ signup!" নয় — "২,০০০ দৈনিক ব্যবহার করে, ৫০০ pay করে")।</div></div>
 
 <div class="dialogue">খলক — creation, making, bringing into existence। কুরআনে আল্লাহ বলেন — "তিনি আসমান ও জমিন সৃষ্টি করেছেন উদ্দেশ্য সহ।" (২১:১৬)। উদ্দেশ্য সহ সৃষ্টি = খলক। পণ্য নির্মাণ-ও খলক — উদ্দেশ্য সহ নির্মাণ। যে উদ্দেশ্য ছাড়া বানায়, সে শিল্পী — সুন্দর, কিন্তু অকেজো। যে উদ্দেশ্য সহ বানায়, সে নির্মাতা — সুন্দর ও কার্যকর। খলক — উদ্দেশ্য সহ সৃষ্টির গুণ।</div>
 <div class="dialogue en">"Khalq — creation, making, bringing into existence. Allah says — 'We created the heavens and earth with purpose.' (21:16). Creation with purpose = khalq. Product building too — building with purpose. One who builds without purpose, is an artist — beautiful, but useless. One who builds with purpose, is a creator — beautiful and effective. Khalq — the virtue of purposeful creation."</div>`,
@@ -291,107 +114,21 @@ doors.push({
 <div class="dialogue">পণ্য নির্মাণ বলেছিলেন — উদ্দেশ্য সহ বানাও। কিন্তু আমি বলি — উদ্দেশ্য সহ বানালেও নতুন কিছু না থাকলে তুমি অনুকরণকারী। নতুন কীভাবে আসে? শূন্য থেকে নয়। পুরোনোর নতুন সংযোগ থেকে। এক ডোমেইনের সমাধান অন্য ডোমেইনের সমস্যায় প্রয়োগ। এটাই ইনোভেশন — ক্রস-পলিনেশন।</div>
 <div class="dialogue en">"Product building said — build with purpose. But I say — even with purpose, without something new, you're an imitator. How does new come? Not from nothing. From new connections of old things. A solution from one domain applied to a problem in another. This is innovation — cross-pollination."</div>
 
-<div class="code-block">INNOVATION MINDSET — Connecting Ideas:
+<div class="callout info"><span class="co-icon">💡</span><div><strong>Steve Jobs (১৯৯৬):</strong> "Creativity is just connecting things... তারা কিছু DO করেনি, তারা কেবল কিছু SAW।" Innovation = অন্যরা যে সংযোগ মিস করে সেটা দেখা — এর জন্য জ্ঞানের <strong>breadth</strong> লাগে, শুধু depth নয়।</div></div>
 
-WHERE INNOVATION COMES FROM:
+<div class="callout tip"><span class="co-icon">🇹</span><div><strong>T-shaped engineer:</strong> উপরের বার = broad interest (design, business, psychology, biology, art, history); নিচের stem = deep expertise (তোমার tech stack)। Junior = শুধু stem (specialist)। Senior = পুরু বার + গভীর stem (T-shaped)। Irreplaceable = broad top + একাধিক stem (π-shaped)।</div></div>
 
-  Steve Jobs (১৯৯৬):
-    "Creativity is just connecting things. When you ask 
-     creative people how they did something, they feel 
-     a little guilty because they didn't really DO it, 
-     they just SAW something."
-  
-  → Innovation = seeing connections others miss
-  → It requires BREADTH of knowledge, not just depth
+<table class="kv-table"><tr><th>সংযোগ</th><th>Innovation</th></tr>
+<tr><td class="hl">জীববিজ্ঞান + CS (neurons)</td><td>Neural networks</td></tr>
+<tr><td class="hl">ভাষাবিজ্ঞান + CS (Chomsky)</td><td>Context-free grammars</td></tr>
+<tr><td class="hl">স্থাপত্য + SW (Alexander)</td><td>Design patterns</td></tr>
+<tr><td class="hl">বিবর্তন + SW</td><td>Genetic algorithms</td></tr>
+<tr><td class="hl">Toyota manufacturing + SW</td><td>Lean / Agile</td></tr>
+<tr><td class="hl">রেস্টুরেন্ট kitchen tickets + SW</td><td>Kanban</td></tr></table>
 
-THE T-SHAPED ENGINEER:
+<div class="callout tip"><span class="co-icon">🐝</span><div><strong>Innovation mindset গড়ার উপায়:</strong> ① রোজ ৩০ মিনিট tech-এর বাইরে পড়ো। ② <strong>Analogy hunt</strong> — "এটা অন্য ডোমেইনে কীসের মতো?" (টিম coordination ~ traffic system?)। ③ Side project ভিন্ন ভাষা/ডোমেইনে। ④ Diverse network — designer, scientist, artist। ⑤ Default প্রশ্ন করো — "উল্টোটা সত্যি হলে?"</div></div>
 
-  ┌─────────────────────────────────┐
-  │     BREADTH (broad knowledge)    │
-  │  ┌──┬──┬──┬──┬──┬──┬──┬──┐    │
-  │  │  │  │  │  │  │  │  │  │    │ ← top bar
-  │  └──┴──┴──┴──┴──┴──┴──┴──┘    │
-  │           │                     │
-  │           │ ← DEPTH (expertise) │
-  │           │                     │
-  │           │                     │
-  └─────────────────────────────────┘
-
-  Top bar = broad interests (design, business, psychology, 
-    biology, music, art, history)
-  Stem = deep expertise (your tech stack, domain)
-  
-  → Junior: deep stem, no top bar (specialist only)
-  → Senior: thick top bar + deep stem (T-shaped)
-  → Irreplaceable: broad top + multiple stems (π-shaped)
-
-CROSS-POLLINATION EXAMPLES (history):
-
-  ┌────────────────────┬──────────────────────┐
-  │ Connection         │ Innovation            │
-  ├────────────────────┼──────────────────────┤
-  │ Biology + CS       │ Neural networks       │
-  │ (neurons)          │                       │
-  ├────────────────────┼──────────────────────┤
-  │ Linguistics + CS   │ Context-free grammars │
-  │ (Chomsky)          │                       │
-  ├────────────────────┼──────────────────────┤
-  │ Architecture + SW  │ Design patterns       │
-  │ (Alexander)        │                       │
-  ├────────────────────┼──────────────────────┤
-  │ Biology + SW       │ Genetic algorithms    │
-  │ (evolution)        │                       │
-  ├────────────────────┼──────────────────────┤
-  │ Manufacturing + SW │ Lean/Agile            │
-  │ (Toyota)           │                       │
-  ├────────────────────┼──────────────────────┤
-  │ Restaurant + SW    │ Kanban                │
-  │ (kitchen tickets)  │                       │
-  └────────────────────┴──────────────────────┘
-
-  → Every major innovation came from CONNECTING domains
-  → Pure specialists innovate WITHIN a domain
-  → Cross-pollinators innovate BETWEEN domains
-
-HOW TO DEVELOP INNOVATION MINDSET:
-
-  ১. READ WIDELY (not just tech)
-    → Psychology, biology, economics, history, design
-    → Each field has patterns you can transfer
-    → ৩০ min/day non-tech reading
-  
-  ২. ANALOGY HUNTING
-    → Ask: "What is this LIKE in another domain?"
-    → Team coordination is like... traffic systems?
-    → Bug prevention is like... quality control in manufacturing?
-    → Each analogy is a potential innovation
-  
-  ৩. SIDE PROJECTS
-    → Build things OUTSIDE your job
-    → Different languages, different domains
-    → Side projects cross-pollinate your main work
-  
-  ৪. DIVERSE NETWORK
-    → Talk to people in OTHER fields
-    → Not just engineers — designers, scientists, artists
-    → Serendipity happens at intersections
-  
-  ৫. QUESTION DEFAULTS
-    → "Why is it done this way?" → every default
-    → "What if the opposite were true?"
-    → Constraints breed creativity
-
-THE INNOVATOR'S DILEMMA:
-
-  "Good companies fail because they do everything RIGHT."
-  
-  → They listen to current customers (who want incremental)
-  → They improve existing products (ignoring new markets)
-  → They ignore disruptive innovation (too small at first)
-  
-  → The irreplaceable engineer questions: 
-    "Are we serving tomorrow's customers or yesterday's?"
-    "What's the NEXT curve, not just the current one?"</div>
+<div class="callout warn"><span class="co-icon">📉</span><div><strong>Innovator's Dilemma:</strong> ভালো কোম্পানি ব্যর্থ হয় কারণ তারা সবকিছু "ঠিক" করে — বর্তমান customer-দের শোনে (যারা incremental চায়), disruptive innovation উপেক্ষা করে (প্রথমে ছোট মনে হয়)। প্রশ্ন করো: "আমরা আগামীকালের customer-দের সেবা করছি, নাকি গতকালের? পরের curve কোনটা?"</div></div>
 
 <div class="dialogue">তাজদিদ — renewal, revival, restoration। ইসলামী ঐতিহ্যে তাজদিদ হলো পুরোনোকে নতুন রূপে পুনরুজ্জীবিত করা — সারমর্ম ধরে রেখে ফর্ম বদলানো। ইনোভেশন-ও তাজদিদ — পুরোনো ধারণাকে নতুন সংযোগে পুনরুজ্জীবিত করা। যে তাজদিদ করে, সে অতীত থেকে ভবিষ্যৎ বানায়। যে তাজদিদ করে না, সে অতীতে আটকে থাকে বা অতীত ছেড়ে শূন্যে পড়ে।</div>
 <div class="dialogue en">"Tajdid — renewal, revival, restoration. In Islamic tradition, tajdid is reviving the old in new form — keeping essence, changing form. Innovation too — reviving old ideas through new connections. One who does tajdid, builds future from past. One who doesn't, gets stuck in the past or falls into the void."</div>`,
@@ -419,111 +156,27 @@ doors.push({
 <div class="dialogue">ইনোভেশন বলেছিলেন — নতুন সংযোগ খোঁজো। কিন্তু আমি বলি — নতুন সংযোগ খুঁজলেও বাস্তবায়ন না করলে কিছু হবে না। বাস্তবায়ন = ঝুঁকি। ঝুঁকি ছাড়া কিছু নতুন হয় না। কিন্তু অন্ধ ঝুঁকি = বিপদ। গণনাকৃত ঝুঁকি = প্রবৃদ্ধি। উদ্যোক্তার লাফ — প্রস্তুতি সহ ঝুঁকি।</div>
 <div class="dialogue en">"Innovation said — find new connections. But I say — even finding connections, without execution, nothing happens. Execution = risk. Without risk, nothing new happens. But blind risk = danger. Calculated risk = growth. The entrepreneur's leap — risk with preparation."</div>
 
-<div class="code-block">THE ENTREPRENEUR'S LEAP — Engineer to Builder:
+<table class="kv-table"><tr><th>Engineer</th><th>Entrepreneur</th></tr>
+<tr><td>জানা জিনিস optimize করে</td><td>অজানা explore করে</td></tr>
+<tr><td>ঝুঁকি কমায়</td><td>গণনাকৃত ঝুঁকি নেয়</td></tr>
+<tr><td>নিখুঁত solution</td><td>good enough ship করে</td></tr>
+<tr><td>ব্যর্থতা এড়ায়</td><td>ব্যর্থতা থেকে শেখে</td></tr>
+<tr><td>কোড = product</td><td>business = product</td></tr>
+<tr><td>মাসে বেতন পায়</td><td>value তৈরি, তারপর value capture</td></tr></table>
 
-ENGINEER vs ENTREPRENEUR MINDSET:
+<div class="callout info"><span class="co-icon">🎲</span><div><strong>Calculated risk (জুয়া নয়):</strong> জুয়া = অন্ধ লাফ, ভাগ্যের আশা। Calculated risk = downside (worst case) বোঝো, upside (best case) বোঝো, প্রতিটার probability — যদি downside টিকে থাকার মতো আর upside বড় হয় → LEAP।</div></div>
 
-  ┌──────────────────┬──────────────────────┐
-  │ Engineer         │ Entrepreneur          │
-  ├──────────────────┼──────────────────────┤
-  │ Optimize known   │ Explore unknown       │
-  │ Reduce risk       │ Take calculated risk  │
-  │ Perfect solution  │ Ship good enough      │
-  │ Avoid failure     │ Learn from failure    │
-  │ Deep in one area  │ Broad across all      │
-  │ Code is product   │ Business is product   │
-  │ Get paid monthly  │ Create value, then    │
-  │                  │ capture value         │
-  └──────────────────┴──────────────────────┘
+<div class="callout tip"><span class="co-icon">🪢</span><div><strong>লাফের আগে ৪টা দড়ি বাঁধো:</strong></div></div>
+<ul class="checklist">
+<li><strong>Financial:</strong> ৬-১২ মাসের runway জমানো — "শূন্য আয়ে ১২ মাস টিকতে পারি।" (মরিয়া হলে খারাপ সিদ্ধান্ত।)</li>
+<li><strong>Skill:</strong> বানাতে পারো (depth) + market বোঝো (breadth) + বিক্রি করতে পারো — "ব্যর্থ হলে আমি আরও employable, কম নয়।"</li>
+<li><strong>Validation:</strong> user pay করবে বলেছে (শুধু "cool idea" নয়) — waitlist, beta, LOI। "মানুষ চায়, শুধু আমি নই।"</li>
+<li><strong>Network:</strong> যারা করেছে এমন mentor + একই পথের peer — "আমি একা নই।"</li>
+</ul>
 
-CALCULATED RISK (not gambling):
+<div class="callout info"><span class="co-icon">🏗️</span><div><strong>Engineer → Founder:</strong> ① Employee (skill/network/savings) → ② Side-project builder (রাত/উইকএন্ডে MVP, validate) → ③ Leap (দড়ি বাঁধা → পূর্ণকালীন, ৬-১২ মাসে PMF; না হলে pivot বা নতুন skill নিয়ে ফেরত) → ④ Builder (PMF পেলে scale)। Engineer-রা ভালো founder হয় (নিজে বানাতে পারে, systems thinking) কিন্তু ব্যর্থ হয় over-build, sales উপেক্ষা, আর user এড়ানোর কারণে।</div></div>
 
-  Gambling: blind leap, hope for luck
-  Calculated risk:
-    → understand downside (worst case)
-    → understand upside (best case)  
-    → probability of each
-    → if downside is survivable and upside is large → LEAP
-
-  The Rope Analogy:
-    → Rope = savings (৬-১২ months runway)
-    → Rope = skills (you can always get a job)
-    → Rope = network (people who'll help)
-    → Rope = validation (customers want it)
-    → Tie ALL ropes → THEN jump
-
-THE ৪ ROPES (before leaping):
-
-  ১. FINANCIAL ROPE — Runway
-    → ৬-১২ months of expenses saved
-    → WITHOUT this, desperation = bad decisions
-    → "I can survive ১২ months with zero income"
-  
-  ২. SKILL ROPE — T-Shaped Expertise
-    → Can you build the product? (depth)
-    → Can you understand the market? (breadth)
-    → Can you sell? (communication)
-    → "If this fails, I'm MORE employable, not less"
-  
-  ৩. VALIDATION ROPE — Real Signal
-    → Users said they'd pay? (not just "cool idea")
-    → Waitlist? Beta users? LOIs?
-    → "People WANT this, not just me"
-  
-  ৪. NETWORK ROPE — Support System
-    → Mentors who've done it
-    → Peers on the same journey
-    → "I'm not alone"
-
-FROM ENGINEER TO FOUNDER (the transition):
-
-  Phase ১: EMPLOYEE (trade time for money)
-    → stable, safe, limited upside
-    → learn skills, build network, save money
-  
-  Phase ২: SIDE PROJECT BUILDER ( nights/weekends)
-    → test ideas with low risk
-    → build MVP, get first users
-    → validate before committing
-  
-  Phase ৩: LEAP (full-time founder)
-    → ropes are tied → jump
-    → ৬-১২ months to find product-market fit
-    → if no PMF → pivot or return (with new skills)
-  
-  Phase ৪: BUILDER (if PMF found)
-    → scale, hire, grow
-    → engineer mindset helps: systems, measurement
-    → but NOW you own the outcome
-
-WHY ENGINEERS MAKE GREAT FOUNDERS:
-
-  → Can build the product (no tech co-founder needed)
-  → Analytical mindset (measure, iterate)
-  → Systems thinking (understand complexity)
-  → Problem-solving orientation
-  
-  Why engineers FAIL as founders:
-    → Over-build (perfect instead of ship)
-    → Ignore sales/marketing ("if I build it, they'll come")
-    → Avoid users ("I know what they want")
-    → Can't handle ambiguity ("just tell me the spec")
-
-THE GREAT IDEA MYTH:
-
-  ❌ "I need a unique idea nobody's thought of"
-  ✅ Most successful companies did EXISTING things BETTER:
-    → Google wasn't the first search engine
-    → Facebook wasn't the first social network
-    → Slack wasn't the first chat app
-  
-  → Ideas are cheap. EXECUTION is everything.
-  → Great idea + poor execution = nothing
-  → OK idea + great execution = success
-  
-  → Don't wait for the perfect idea.
-  → Find a real problem. Build a solution. Ship.
-  → The "great idea" emerges FROM building, not before.</div>
+<div class="callout warn"><span class="co-icon">💭</span><div><strong>The great idea myth:</strong> unique idea লাগে না — Google প্রথম search engine নয়, Facebook প্রথম social network নয়, Slack প্রথম chat নয়; সবাই <em>বিদ্যমান জিনিস আরও ভালো</em> করেছে। Idea সস্তা, execution-ই সব। পারফেক্ট idea-র অপেক্ষা কোরো না — real problem খোঁজো, solution বানাও, ship করো। "great idea" বানানোর <em>মধ্য দিয়ে</em> আসে, আগে নয়।</div></div>
 
 <div class="dialogue">তাওয়াক্কুল — trust, reliance, surrender after effort। কুরআনে আল্লাহ বলেন — "যারা আল্লাহর উপর তাওয়াক্কুল করে, তিনি তাদের যথেষ্ট।" (৬৫:৩)। তাওয়াক্কুল অলসতা নয় — প্রস্তুতির পর ফলাফলে ভরসা। দড়ি বাঁধো (চেষ্টা), তারপর লাফ দাও (ঝুঁকি), তারপর ফলাফলে ভরসা (তাওয়াক্কুল)। যে তাওয়াক্কুল করে, সে জানে — চেষ্টা তার, ফল আল্লাহর। এই জ্ঞানে ভয় চলে যায়, সাহস আসে।</div>
 <div class="dialogue en">"Tawakkul — trust, reliance, surrender after effort. Allah says — 'Whoever trusts in Allah, He is sufficient for them.' (65:3). Tawakkul is not laziness — it's trust in the outcome AFTER preparation. Tie the rope (effort), then jump (risk), then trust the result (tawakkul). One who has tawakkul knows — effort is theirs, result is Allah's. In this knowledge, fear departs, courage arrives."</div>`,
@@ -551,125 +204,23 @@ doors.push({
 <div class="dialogue">নয়টি দরজা পেরিয়েছ। পচনশীল উপাদান বলেছিলেন — ফানা। মূল নীতি বলেছিলেন — আকল। সিস্টেম চিন্তা বলেছিলেন — কদর। ব্যবসায়িক মস্তিষ্ক বলেছিলেন — রিযিক। সমস্যা সন্ধান বলেছিলেন — তালাশ। যোগাযোগ বলেছিলেন — বায়ান। পণ্য নির্মাণ বলেছিলেন — খলক। ইনোভেশন বলেছিলেন — তাজদিদ। উদ্যোক্তা বলেছিলেন — তাওয়াক্কুল। এখন — সব একসাথে। ফানা থেকে বাকা।</div>
 <div class="dialogue en">"You've passed nine doors. Perishable material said — fana. First principles said — aql. Systems thinking said — qadar. Business brain said — rizq. Problem finding said — talash. Communication said — bayan. Product building said — khalq. Innovation said — tajdid. Entrepreneur said — tawakkul. Now — all together. From fana to baqa."</div>
 
-<div class="code-block">THE IRREPLACEABLE ENGINEER — Complete Architecture:
+<table class="kv-table"><tr><th>বৃক্ষের স্তর</th><th>কী</th></tr>
+<tr><td class="hl">🌿 Canopy (দৃশ্যমান)</td><td>Title, salary, shipped features, recognition — যা অন্যরা দেখে</td></tr>
+<tr><td class="hl">🪵 Trunk (skill)</td><td>Technical depth (দ্বার ২), systems thinking (৩), communication (৬), business brain (৪)</td></tr>
+<tr><td class="hl">🌱 Roots (invisible)</td><td>Problem finding (৫), product sense (৭), innovation (৮), entrepreneur mindset (৯), timeless principles (১)</td></tr>
+<tr><td class="hl">🟤 Soil (foundation)</td><td>Curiosity, humility, integrity, purpose — যা সবকিছুকে খাওয়ায়</td></tr></table>
 
-┌──────────────────────────────────────────────────┐
-│ THE DEEP-ROOTED TREE                               │
-├──────────────────────────────────────────────────┤
-│                                                    │
-│  CANOPY (visible — what others see):               │
-│  ├── Title: Senior / Staff / Principal             │
-│  ├── Salary: high                                  │
-│  ├── Output: features shipped                      │
-│  └── Recognition: awards, promotions               │
-│                                                    │
-│  TRUNK (skills — what others hire for):            │
-│  ├── Technical depth (Door ২: first principles)    │
-│  ├── Systems thinking (Door ৩: cause-effect)       │
-│  ├── Communication (Door ৬: multiplier)            │
-│  └── Business brain (Door ৪: value creation)       │
-│                                                    │
-│  ROOTS (invisible — what makes irreplaceable):     │
-│  ├── Problem finding (Door ৫: seeing before)       │
-│  ├── Product sense (Door ৭: building right things) │
-│  ├── Innovation (Door ৮: cross-pollination)        │
-│  ├── Entrepreneur mindset (Door ৯: calculated risk)│
-│  └── Timeless principles (Door ১: permanent vs      │
-│      perishable)                                    │
-│                                                    │
-│  SOIL (foundation — what feeds everything):        │
-│  ├── Curiosity (never stops learning)              │
-│  ├── Humility (always a beginner)                  │
-│  ├── Integrity (does right when nobody watches)    │
-│  └── Purpose (building for meaning, not ego)       │
-│                                                    │
-└──────────────────────────────────────────────────┘
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">বছর ১-২ · Leaf</div><div class="tl-title">🍃 Junior</div><div class="tl-body">tools শেখো, প্রথম প্রজেক্ট, learn-to-learn। Focus: code quality।</div></div>
+<div class="tl-step"><div class="tl-when">বছর ৩-৫ · Branch</div><div class="tl-title">🌿 Mid-level</div><div class="tl-body">first principles গভীর, systems দেখা শুরু। Focus: independence।</div></div>
+<div class="tl-step"><div class="tl-when">বছর ৫-৮ · Trunk</div><div class="tl-title">🪵 Senior</div><div class="tl-body">systems thinking default, business brain, communication টিমকে গুণ করে। Focus: multiplying others।</div></div>
+<div class="tl-step"><div class="tl-when">বছর ৮-১২ · Roots</div><div class="tl-title">🌱 Staff/Principal</div><div class="tl-body">problem finder, cross-domain innovation, product+business intuition। Focus: direction setting।</div></div>
+<div class="tl-step"><div class="tl-when">বছর ১২+ · Deep-Rooted Tree</div><div class="tl-title">🌳 Irreplaceable</div><div class="tl-body">শিকড় এত গভীর যে সরালে org ক্ষতিগ্রস্ত; tech+business+innovation-এর unique মিশ্রণ; আরও নেতা তৈরি করে। Focus: legacy।</div></div>
+</div>
 
-THE JOURNEY: Junior → Irreplaceable
+<div class="callout info"><span class="co-icon">🗝️</span><div><strong>যা কাউকে সত্যিই irreplaceable করে:</strong> ① <strong>Unique combination</strong> — এক জিনিসে সেরা নয়, বহু জিনিসের intersection-এ সেরা। ② <strong>Trust capital</strong> — বছরের পর বছর কথা রাখা, ভুল মানা। ③ <strong>Institutional knowledge</strong> — কেন সিস্টেম এভাবে তা জানা। ④ <strong>Force multiplier</strong> — চারপাশের সবাইকে ভালো করা। ⑤ <strong>Judgment</strong> — skill নয়, wisdom; কখন ship, কী skip — automate করা যায় না।</div></div>
 
-  Year ১-২: JUNIOR (Leaf)
-    → Learn tools (perishable, but necessary)
-    → Build first projects
-    → Learn to learn (meta-skill)
-    → Focus: CODE QUALITY
-  
-  Year ৩-৫: MID-LEVEL (Branch)
-    → Deepen expertise (first principles)
-    → Start seeing systems
-    → Lead small features
-    → Focus: INDEPENDENCE
-  
-  Year ৫-৮: SENIOR (Trunk)
-    → Systems thinking is default
-    → Business brain develops
-    → Communication multiplies team
-    → Focus: MULTIPLYING OTHERS
-  
-  Year ৮-১২: STAFF/PRINCIPAL (Roots)
-    → Problem finder, not just solver
-    → Innovation across domains
-    → Product + business intuition
-    → Focus: DIRECTION SETTING
-  
-  Year ১২+: IRREPLACEABLE (Deep-Rooted Tree)
-    → Roots so deep, removal would damage the org
-    → Unique combination: tech + business + innovation
-    → Creates more leaders
-    → Focus: LEGACY
-
-WHAT MAKES SOMEONE TRULY IRREPLACEABLE:
-
-  ১. UNIQUE COMBINATION
-    → Not best at ONE thing
-    → Best at the INTERSECTION of many things
-    → "Nobody else has exactly my combination"
-    → Your unique path = your unique value
-  
-  ২. TRUST CAPITAL
-    → Years of: doing what you say, owning mistakes,
-       helping others succeed
-    → Trust takes years to build, seconds to destroy
-    → People don't replace people they TRUST
-  
-  ৩. INSTITUTIONAL KNOWLEDGE
-    → Understanding WHY systems work the way they do
-    → Not just code — history, decisions, trade-offs
-    → "Only [you] know why this was built this way"
-  
-  ৪. FORCE MULTIPLIER
-    → You make everyone around you better
-    → Mentor, document, simplify, connect
-    → Removing you degrades the TEAM, not just the work
-  
-  ৫. JUDGMENT
-    → Not just skill — WISDOM
-    → Knowing when to ship vs. when to wait
-    → Knowing what to build vs. what to skip
-    → Can't be automated, can't be taught quickly
-
-THE TIMELESS TRUTH:
-
-  Tools change. Frameworks die. Languages evolve.
-  
-  But these NEVER change:
-    → Problem-solving ability
-    → Systems thinking
-    → Communication
-    → Curiosity
-    → Integrity
-    → Business understanding
-    → Innovation through connection
-  
-  → Invest in what NEVER changes
-  → You become more valuable EVERY year
-  → Not because you know more tools
-  → Because you understand more TRUTHS
-  
-  ফানা থেকে বাকা।
-  From perishable to permanent.
-  From framework to principle.
-  From leaf to root.
-  This is the irreplaceable craftsman.</div>
+<div class="callout tip"><span class="co-icon">🌳</span><div><strong>The timeless truth:</strong> Tools বদলায়, framework মরে, language বিবর্তিত হয় — কিন্তু problem-solving, systems thinking, communication, curiosity, integrity, business understanding কখনো বদলায় না। <strong>যা কখনো বদলায় না, তাতে বিনিয়োগ করো</strong> — প্রতি বছর আরও মূল্যবান হবে, বেশি tool জানার জন্য নয়, বেশি সত্য বোঝার জন্য। ফানা থেকে বাকা — পাতা থেকে শিকড়।</div></div>
 
 <div class="verse">"তুমি কি দেখনি আল্লাহ কীভাবে উদাহরণ দিয়েছেন? একটি ভালো কালিমা পবিত্র বৃক্ষের মতো — তার শিকড় গভীর, শাখা আসমানে।"<br>— কুরআন ১৪:২৪<br><br>"Have you not seen how Allah presents an example? A good word is like a good tree — its root is firm, its branches in the sky." অবিচ্ছেয্য কারিগর সেই বৃক্ষ — শিকড় গভীর, ডাল উঁচু। ঝড় আসে, বৃক্ষ থাকে। সময় যায়, মূল্য বাড়ে। ফানা থেকে বাকা — অস্থায়ী থেকে চিরস্থায়ী। এটাই অবিচ্ছেয্যতার সারমর্ম।</div>
 

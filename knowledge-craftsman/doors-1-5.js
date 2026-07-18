@@ -23,117 +23,23 @@ doors.push({
 <div class="dialogue">তুমি ভাবো — আমি তো বই পড়েছি! কিন্তু ২ সপ্তাহ পর কতটা মনে আছে? Ebbinghaus বলেন — ১০%। ৯০% গেছে। তুমি বই পড়েছ কিন্তু জ্ঞান ধরে রাখোনি। পানি বহন করেছ — ছিদ্র বালতিতে। এটাই প্যাসিভ রিডিং — চোখ চলে, মস্তিষ্ক ধরে না। কিন্তু সমাধান আছে। ছিদ্র বন্ধ করা যায়।</div>
 <div class="dialogue en">"You think — I read the book! But how much remains after 2 weeks? Ebbinghaus says — 10%. 90% is gone. You read but didn't retain knowledge. You carried water — in a leaking bucket. This is passive reading — eyes move, brain doesn't hold. But there's a fix. The holes can be plugged."</div>
 
-<div class="code-block">THE FORGETTING CURVE — ভুলে যাওয়ার বিজ্ঞান:
+<table class="kv-table"><tr><th>সময় (Ebbinghaus, 1885)</th><th>মনে থাকে</th><th>ভুলে যাই</th></tr>
+<tr><td class="hl">এখন</td><td>১০০%</td><td>০%</td></tr>
+<tr><td class="hl">১ ঘণ্টা</td><td>~৪৪%</td><td>~৫৬%</td></tr>
+<tr><td class="hl">১ দিন</td><td>~৩৩%</td><td>~৬৭%</td></tr>
+<tr><td class="hl">৬ দিন</td><td>~২৫%</td><td>~৭৫%</td></tr>
+<tr><td class="hl">৩১ দিন</td><td>~২১%</td><td>~৭৯%</td></tr></table>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> এই সঠিক শতাংশ প্রচলিত কিন্তু পুরোপুরি নির্ভরযোগ্য নয় — Ebbinghaus-এর গবেষণা ছিল N=১ (নিজের উপর), nonsense syllables দিয়ে। বাস্তব তথ্যে curve-এর আকৃতি ভিন্ন। তবে মূল নীতি — "ব্যবধানে না-পুনরাবৃত্তি করলে দ্রুত ভুলে যাই" — সুপ্রতিষ্ঠিত। "গত বছর একটা বই পড়েছি" = কার্যত নতুন করে পড়া, যদি না retention-কৌশল ব্যবহার করো।</div></div>
 
-EBBINGHAUS FORGETTING CURVE (1885):
+<table class="kv-table"><tr><th>Passive reading (ভুলে যাওয়া)</th><th>Active reading (ধরে রাখা)</th></tr>
+<tr><td>চোখ শব্দ scan করে</td><td>মন শব্দ প্রশ্ন করে</td></tr>
+<tr><td>নোট নেই, আর ফিরে দেখে না</td><td>প্রতি section-এ নোট, spaced re-read</td></tr>
+<tr><td>যা জানে তার সাথে সংযোগ নেই</td><td>যা জানে তার সাথে যুক্ত করে</td></tr>
+<tr><td>retention: ~১০%</td><td>retention: ~৭০-৯০%</td></tr></table>
 
-  ┌──────────┬────────────┬────────────┐
-  │ Time     │ Retained   │ Forgotten  │
-  ├──────────┼────────────┼────────────┤
-  │ এখন      │ ১০০%       │ ০%         │
-  │ ২০ মিনিট │ ৫৮%        │ ৪২%        │
-  │ ১ ঘণ্টা  │ ৪৪%        │ ৫৬%        │
-  │ ৯ ঘণ্টা  │ ৩৬%        │ ৬৪%        │
-  │ ১ দিন    │ ৩৩%        │ ৬৭%        │
-  │ ২ দিন    │ ২৮%        │ ৭২%        │
-  │ ৬ দিন    │ ২৫%        │ ৭৫%        │
-  │ ৩১ দিন   │ ২১%        │ ৭৯%        │
-  └──────────┴────────────┴────────────┘
+<div class="callout tip"><span class="co-icon">🔌</span><div><strong>ছিদ্র বন্ধের ৩ উপায়:</strong> ① <strong>Active engagement</strong> (Maryanne Wolf, 2018 — deep reading আলাদা brain network জাগায়): প্রশ্ন করো, সংযোগ করো, মূল্যায়ন করো। ② <strong>Spaced repetition</strong>: Day 1 → 2 → 7 → 30 → 90 review, প্রতিবার forgetting curve সমতল হয়। ③ <strong>Testing effect</strong> (Roediger & Karpicke, 2006): re-read ৩ বার = ৪২% retention; একবার পড়ে test = ৫৬%। নিজেকে test করা re-read-কে হারায়।</div></div>
 
-  ⚠️ সতর্ক পাঠ: এই সঠিক শতাংশগুলো অনেক প্রচলিত কিন্তু
-    পুরোপুরি নির্ভরযোগ্য নয়। Ebbinghaus-এর গবেষণা ছিল
-    N=১ (নিজে নিজে), nonsense syllables দিয়ে। বাস্তব
-    তথ্যের ক্ষেত্রে curve-এর আকৃতি ভিন্ন হয়।
-    তবে মূল নীতি — "ব্যবধানে না পুনরাবৃত্তি করলে দ্রুত
-    ভুলে যাই" — সুপ্রতিষ্ঠিত।
-
-  → "I read a book last year" = effectively NEW again
-  → unless you used retention techniques
-
-PASSIVE vs ACTIVE READING:
-
-  ┌────────────────────┬────────────────────────┐
-  │ PASSIVE READING     │ ACTIVE READING          │
-  │ (forgetting)        │ (retention)             │
-  ├────────────────────┼────────────────────────┤
-  │ eyes scan words     │ mind questions words    │
-  │ "I read it"         │ "what did I learn?"     │
-  │ no notes            │ notes after each section│
-  │ never re-reads      │ spaced re-reads         │
-  │ no connection to    │ connects to what they   │
-  │ what they know      │ already know            │
-  │ retention: ১০%      │ retention: ৭০-৯০%       │
-  └────────────────────┴────────────────────────┘
-
-THE FIX — Three Plugs for the Leaking Bucket:
-
-১. ACTIVE ENGAGEMENT (Maryanne Wolf, 2018):
-  
-  Wolf's research on "deep reading circuits":
-  → passive reading activates ONLY visual cortex
-  → deep reading activates: visual + language +
-    executive function + empathy + analysis
-  → different brain networks entirely
-  
-  Deep reading requires:
-    → QUESTIONING: "Is this true? Why?"
-    → CONNECTING: "How does this relate to X?"
-    → PREDICTING: "What comes next?"
-    → EVALUATING: "Is the argument strong?"
-  
-  → passive reader = consumer
-  → active reader = interrogator
-
-২. SPACED REPETITION (Ebbinghaus's own solution):
-  
-  Ebbinghaus also discovered the fix:
-    → review after ২০ min → retention jumps
-    → review again after ১ day → retention jumps
-    → review again after ১ week → near permanent
-    
-    Each review FLATTENS the forgetting curve
-    → eventually: flat line (permanent memory)
-  
-  Applied to reading:
-    → Day ১: read + take notes
-    → Day ২: review notes (৫ min)
-    → Day ৭: review + summarize (১০ min)
-    → Day ৩০: review + teach someone (১৫ min)
-    → Day ৯০: final review → permanent
-
-৩. THE TESTING EFFECT (Roediger & Karpicke, 2006):
-  
-  Study: students read a text
-    Group A: re-read ৩ times
-    Group B: read once + took a test
-  
-  Result (১ week later):
-    Group A (re-readers): ৪২% retention
-    Group B (test-takers): ৫৬% retention
-  
-  → TESTING yourself beats RE-READING
-  → force recall → brain strengthens memory
-  → this is why notes + teaching > re-reading
-
-THE READING RETENTION EQUATION:
-
-  Retention = Comprehension × Engagement × Repetition
-  
-  Comprehension: understand WHAT you read (Door ২)
-  Engagement: actively QUESTION while reading (Door ৪)
-  Repetition: spaced REVIEW over time (Door ৩)
-  
-  If ANY factor = ০ → retention = ০
-  
-  Most readers: comprehension ✓, engagement ✗, repetition ✗
-  → retention = comprehension × ০ × ০ = ০
-
-THE GOAL:
-  Not "I read ৫০ books this year"
-  But "I deeply learned from ৫ books this year"
-  
-  Naval Ravikant: "Read fewer books, more carefully.
-   Re-read the great ones ৫-১০ times."</div>
+<div class="callout info"><span class="co-icon">🎯</span><div><strong>Retention = Comprehension × Engagement × Repetition</strong> — যেকোনো factor শূন্য হলে retention শূন্য। বেশিরভাগ পাঠকের comprehension ✓ কিন্তু engagement ✗ ও repetition ✗ → retention ০। লক্ষ্য "এ বছর ৫০ বই" নয়, "এ বছর ৫ বই থেকে গভীর শেখা।" (Naval: "কম বই পড়ো, বেশি যত্নে; ভালোগুলো ৫-১০ বার পুনরায় পড়ো।")</div></div>
 
 <div class="dialogue">যাওয়া পানি — pouring water, like water that flows through and leaves nothing। কুরআনে আল্লাহ বলেন — "তাদের উপমা এমন যেন তারা বৃষ্টিতে আচ্ছাদিত — কিন্তু কিছু নেই।" পড়াও তেমনি — চোখ দিয়ে পড়ে, মস্তিষ্কে কিছু থাকে না। যাওয়া পানি। কিন্তু কুরআন আরও বলে — "যারা জ্ঞান দেওয়া হয়েছে, তাদের অন্তর সত্যের জন্য পিপাসার্ত।" পিপাসা = গভীর পড়া। যে গভীর পড়ে, সে ধরে রাখে। যে শুধু চোখ চালায়, সে যাওয়া পানি। প্রথম দরজার সত্য — পড়া শেষ নয়, ধরে রাখাই শুরু।</div>
 <div class="dialogue en">"Jaoa pani — pouring water, like water that flows through leaving nothing. Allah says — 'Their example is as if they were covered by rain — but have nothing.' Reading too — eyes read, brain holds nothing. Jaoa pani. But the Quran also says — 'Those given knowledge, their hearts thirst for truth.' Thirst = deep reading. One who reads deeply, retains. One who merely moves eyes, is jaoa pani. The first door's truth — reading is not the end, retention is the beginning."</div>`,
@@ -161,113 +67,13 @@ doors.push({
 <div class="dialogue">Ebbinghaus বলেছিলেন — কেন ভুলে যাই। Adler বলেন — কারণ তুমি আসলে পড়ছই না। তুমি শব্দ দেখছ। পড়ার ৪টা স্তর আছে — প্রতিটা আগেরটার চেয়ে গভীর। যে প্রথম স্তরে আটকে, সে বলে — আমি বই পড়েছি। কিন্তু সে শুধু শব্দ দেখেছে। যে চতুর্থ স্তরে পৌঁছায়, সে বইয়ের সাথে কথা বলে, প্রশ্ন করে, সংযুক্ত করে।</div>
 <div class="dialogue en">"Ebbinghaus said — why we forget. Adler says — because you're not actually reading. You're seeing words. Reading has 4 levels — each deeper than the last. One stuck at level 1 says — I read the book. But they just saw words. One who reaches level 4 talks WITH the book, questions it, connects it."</div>
 
-<div class="code-block">ADLER'S FOUR LEVELS OF READING:
-
-LEVEL ১: ELEMENTARY (Basic Reading)
-  → what you learn in school
-  → "can you read the words?"
-  → recognize letters, words, sentences
-  → understand literal meaning
-  
-  Example: "The cat sat on the mat"
-  → elementary reader: I understand the sentence
-  → this is NOT reading — this is decoding
-  
-  Most people NEVER go beyond this level.
-  They "read" books but are still at level ১.
-
-LEVEL ২: INSPECTIONAL (Skimming / Systematic Skimming)
-  → "what is this book ABOUT?"
-  → ৫-১৫ minutes per book
-  
-  Adler's inspectional method:
-    ১. Read TITLE + SUBTITLE → what's the scope?
-    ২. Read PREFACE → author's purpose
-    ৩. Study TABLE OF CONTENTS → structure
-    ৪. Read PUBLISHER'S BLURB → positioning
-    ৫. Check INDEX → key terms
-    ৬. Read FIRST & LAST paragraphs of key chapters
-    ৭. Read the LAST ২-৩ pages → author's conclusion
-  
-  Purpose: decide IF to read the full book
-  → most books don't deserve full reading
-  → inspectional reading saves MONTHS of life
-  
-  Rule: skim ১০ books to find ১ worth reading deeply
-
-LEVEL ৩: ANALYTICAL (Deep Reading)
-  → "what does this book MEAN?"
-  → thorough, complete, active
-  
-  Adler's analytical method (৪ stages):
-  
-    Stage ১: STRUCTURE (what is it about?)
-      → identify the main theme in ১ sentence
-      → outline the book's structure
-      → define the problem the author solves
-    
-    Stage ২: INTERPRETATION (what does it say?)
-      → identify key TERMS (author's vocabulary)
-      → grasp the main PROPOSITIONS (key sentences)
-      → understand the ARGUMENT (how propositions connect)
-    
-    Stage ৩: CRITICISM (is it true?)
-      → ONLY after you fully understand
-      → "I understand but disagree" (valid)
-      → "I don't understand" (not ready to disagree)
-      
-      Adler's ৪ ways to disagree:
-        ১. "You are UNINFORMED" (missing evidence)
-        ২. "You are MISINFORMED" (wrong evidence)
-        ৩. "You are ILLOGICAL" (reasoning is flawed)
-        ৪. "Your analysis is INCOMPLETE" 
-           (missed something important)
-      
-      → NOT allowed: "I disagree because I feel X"
-      → must provide SPECIFIC evidence
-    
-    Stage ৪: SYNTHESIS (how does it connect?)
-      → how does this book relate to others?
-      → what new questions does it raise?
-      → this leads to Level ৪
-
-LEVEL ৪: SYNTOPICAL (Multi-Book Synthesis)
-  → "how do MULTIPLE books relate?"
-  → the HIGHEST level of reading
-  → reading SEVERAL books on ONE topic
-    and SYNTHESIZING them
-  
-  Adler's syntopical method:
-    ১. Create a BIBLIOGRAPHY (find the best books)
-    ২. Inspectional-read ALL of them
-    ৩. Identify the KEY QUESTIONS they answer
-    ৪. Define the ISSUES (where authors disagree)
-    ৫. Analyze the DISCUSSION (map agreements
-       and disagreements)
-    ৬. SYNTHESIZE (your own view from all sources)
-  
-  Example syntopical topic: "What is intelligence?"
-    → read Gardner (multiple intelligences)
-    → read Spearman (g-factor)
-    → read Sternberg (triarchic)
-    → read Gladwell (practical)
-    → synthesize: what do they agree on? 
-       disagree on? what's MY view?
-  
-  → this is what PhD students DO
-  → this is what researchers DO
-  → this is what great writers DO
-
-THE PROGRESSION:
-  
-  Level ১ → ২: months of practice
-  Level ২ → ৩: years of practice  
-  Level ৩ → ৪: decade of practice
-  
-  BUT: you can START at Level ২ today
-  → skim before you read
-  → most books aren't worth Level ৩
-  → save Level ৩ for the books that matter</div>
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">Level ১ · মাস</div><div class="tl-title">📗 Elementary</div><div class="tl-body">"শব্দ পড়তে পারো?" — অক্ষর/শব্দ চেনা, আক্ষরিক অর্থ। এটা decoding, reading নয়। বেশিরভাগ মানুষ এখানেই আটকে থাকে।</div></div>
+<div class="tl-step"><div class="tl-when">Level ২ · ৫-১৫ মিনিট/বই</div><div class="tl-title">🔍 Inspectional (skim)</div><div class="tl-body">"বইটা কী নিয়ে?" — title/subtitle, preface, TOC, index, key অধ্যায়ের প্রথম-শেষ প্যারা, শেষ ২-৩ পাতা। উদ্দেশ্য: পুরো পড়ার যোগ্য কিনা ঠিক করা। <em>১০টা skim করে ১টা গভীর পড়ার মতো খোঁজো।</em></div></div>
+<div class="tl-step"><div class="tl-when">Level ৩ · বছর</div><div class="tl-title">🧠 Analytical (গভীর)</div><div class="tl-body">"বইটার মানে কী?" — Structure (মূল থিম ১ বাক্যে) → Interpretation (key term ও proposition) → Criticism (বোঝার পরই দ্বিমত) → Synthesis। Adler-এর দ্বিমতের ৪ উপায়: uninformed / misinformed / illogical / incomplete — অনুভূতি নয়, নির্দিষ্ট প্রমাণ লাগে।</div></div>
+<div class="tl-step"><div class="tl-when">Level ৪ · দশক</div><div class="tl-title">🕸️ Syntopical</div><div class="tl-body">"একাধিক বই কীভাবে সম্পর্কিত?" — সর্বোচ্চ স্তর। একই বিষয়ে বহু বই পড়ে সংশ্লেষণ (bibliography → skim সব → key প্রশ্ন → মতভেদ ম্যাপ → নিজের মত)। PhD/গবেষক/বড় লেখকরা যা করেন।</div></div>
+</div>
+<div class="callout tip"><span class="co-icon">📖</span><div><strong>আজই শুরু করতে পারো Level ২ থেকে</strong> — পড়ার আগে skim করো; বেশিরভাগ বই Level ৩-এর যোগ্য নয়, তাই গভীর পড়া রাখো সেই বইগুলোর জন্য যেগুলো সত্যিই গুরুত্বপূর্ণ। <strong>Adler-এর সোনালি নিয়ম:</strong> "'একমত/দ্বিমত' বোলো না যতক্ষণ না বলতে পারো 'আমি বুঝেছি।'"</div></div>
 
 <div class="dialogue">তারাবি — gradual progression, like the tarawih prayer built in layers। রমজানে তারাবি ধীরে ধীরে গড়ে — প্রতিদিন একটু বেশি। পড়াও তেমনি — প্রতিটা স্তর ধীরে আসে। প্রথম স্তর = শিশু। দ্বিতীয় = কিশোর। তৃতীয় = প্রাপ্তবয়স্ক। চতুর্থ = প্রবীণ। কেউ রাতারাতি চতুর্থ স্তরে পৌঁছায় না। কিন্তু প্রতিটা ধাপে গভীরতা বাড়ে। Adler দেখালেন — পড়া একটা শিল্প, শিল্পে সময় লাগে। তারাবি — ধাপে ধাপে গভীরে।</div>
 <div class="dialogue en">"Tarawi — gradual progression, like the tarawih prayer built in layers. In Ramadan, tarawih grows slowly — a bit more each day. Reading too — each level comes slowly. Level 1 = child. Level 2 = adolescent. Level 3 = adult. Level 4 = elder. Nobody reaches level 4 overnight. But depth grows at each step. Adler showed — reading is an art, art takes time. Tarawi — step by step deeper."</div>`,
@@ -295,144 +101,28 @@ doors.push({
 <div class="dialogue">Adler বলেছিলেন — ৪ স্তরে পড়ো। কিন্তু আমি বলি — পড়ে যা শিখলে, তা কোথায় রাখবে? মস্তিষ্কে? Ebbinghaus বলেন — ৯০% ভুলে যাবে। খাতায়? খাতা হারিয়ে যায়। Luhmann দেখালেন একটা সিস্টেম — Zettelkasten। নোট শুধু লেখা নয় — চিন্তার জাল। প্রতিটা নোট একটা নোড, প্রতিটা সংযোগ একটা সেতু। জাল বড় হয়, জ্ঞান গভীর হয়।</div>
 <div class="dialogue en">"Adler said — read at 4 levels. But I say — once you learn, where do you store it? Brain? Ebbinghaus says — 90% forgotten. Notebook? Notebooks get lost. Luhmann showed a system — Zettelkasten. Notes aren't just writing — they're a web of thought. Each note a node, each connection a bridge. The web grows, knowledge deepens."</div>
 
-<div class="code-block">ZETTELKASTEN — The Slip-Box System:
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৪৬ বছর</div><div class="sc-label">Luhmann-এর slip-box (1952-98)</div></div>
+<div class="stat-card"><div class="sc-num">~৯০,০০০</div><div class="sc-label">নোট কার্ড</div></div>
+<div class="stat-card"><div class="sc-num">৭০+</div><div class="sc-label">বই</div></div>
+<div class="stat-card"><div class="sc-num">৪০০+</div><div class="sc-label">প্রবন্ধ</div></div>
+</div>
+<div class="callout info"><span class="co-icon">🗃️</span><div>Luhmann: "আমি নিজেকে creative মনে করি না — আমি শুধু machine-এর সামনে দাঁড়িয়ে হাতল ঘোরাই।" সৃজনশীলতা এসেছে <strong>সিস্টেম</strong> থেকে, ব্যক্তি থেকে নয়। দিনে ~৫-৬ card।</div></div>
 
-LUHMANN'S NUMBERS (validated by biographers):
-  
-  Duration: 1952-1998 (৪৬ years)
-  Total cards: ~৯০,০০০
-  Output: ৭০+ books, ৪০০+ scholarly articles
-  Rate: roughly ৫-৬ cards per day
-  
-  His claim: "I don't think of myself 
-    as creative. I just stand at the 
-    machine and turn the crank."
-  → the SYSTEM produced the creativity
-  → not the person — the SLIP-BOX
+<table class="kv-table"><tr><th>নোটের ৩ ধরন (Ahrens, 2017)</th><th>কী</th></tr>
+<tr><td class="hl">Fleeting</td><td>পড়া/জীবনের সময় দ্রুত idea; ১-২ দিনে permanent-এ রূপান্তর বা বাদ</td></tr>
+<tr><td class="hl">Literature</td><td>উৎস পড়ার সময় সংক্ষিপ্ত সারাংশ — <em>নিজের ভাষায়</em>, source-সহ</td></tr>
+<tr><td class="hl">Permanent</td><td>এক নোটে এক idea (atomic), প্রকাশযোগ্য ভাষায়, বিদ্যমান নোটের সাথে link, dated</td></tr></table>
 
-THE ৩ TYPES OF NOTES (Sönke Ahrens, 2017):
+<table class="kv-table"><tr><th>সাধারণ নোট</th><th>Zettelkasten</th></tr>
+<tr><td>খাতায় লেখা, আর দেখা হয় না</td><td>প্রতিটা নোট atomic (এক idea)</td></tr>
+<tr><td>নোটের মধ্যে সংযোগ নেই</td><td>নোট পরস্পর linked, cross-referenced</td></tr>
+<tr><td>topic-ভিত্তিক, linear (তথ্যের তালিকা)</td><td>idea-ভিত্তিক, network (সংযোগের জাল)</td></tr>
+<tr><td>output: কিছুই না</td><td>output: বই, পেপার, insight</td></tr></table>
 
-১. FLEETING NOTES (temporary)
-  → quick ideas while reading/living
-  → throwaway quality
-  → "interesting point about X"
-  → review within ১-২ days → convert to 
-    permanent or discard
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>মূল পার্থক্য = CONNECTIONS।</strong> একটা নোট = একটা fact; নোটের network = emergent idea। Luhmann-এর অন্তর্দৃষ্টি: সৃজনশীলতা আসে নোটের মধ্যে <em>অপ্রত্যাশিত</em> সংযোগ থেকে (biology-র নোট economics-এর নোটের সাথে জোড়া → নতুন insight)।</div></div>
 
-২. LITERATURE NOTES (source-specific)
-  → while reading a book/paper
-  → brief summary of key points
-  → written in YOUR OWN words (not copy!)
-  → include source reference
-  → "Luhmann (1984), p.১২: social systems 
-    are communication networks, not persons"
-
-৩. PERMANENT NOTES (the magic)
-  → ONE idea per note (atomic)
-  → written as if for publication
-  → connected to existing notes (links)
-  → in YOUR OWN words (full understanding)
-  → dated and numbered
-  
-  Example permanent note:
-    "2024-০৩-১৫ #learning #spaced-repetition
-    Spaced repetition exploits the 
-    forgetting curve. Each review 
-    strengthens the memory trace.
-    Links: [[Ebbinghaus 1885]], 
-    [[testing effect 2006]]"
-
-WHY ZETTELKASTEN WORKS:
-
-  ┌──────────────────────────────────────┐
-  │ TRADITIONAL NOTES                     │
-  │ → written in notebooks                │
-  │ → never looked at again               │
-  │ → no connections between notes        │
-  │ → by topic → topic-bound              │
-  │ → LINEAR (list of facts)              │
-  │ → output: nothing                     │
-  ├──────────────────────────────────────┤
-  │ ZETTELKASTEN                          │
-  │ → each note is atomic (one idea)      │
-  │ → notes LINKED to each other          │
-  │ → cross-referenced                    │
-  │ → by IDEA → topic-fluid               │
-  │ → NETWORK (web of connections)        │
-  │ → output: books, papers, insights     │
-  └──────────────────────────────────────┘
-
-  The KEY difference: CONNECTIONS
-  
-  A single note = one fact
-  A network of notes = emergent ideas
-  
-  Luhmann's insight: creativity comes from
-    UNEXPECTED CONNECTIONS between notes
-    → note about "biology" connects to
-      note about "economics" → new insight
-    → he would follow links and discover
-      connections he never planned
-
-THE MODERN ZETTELKASTEN:
-
-  Digital tools:
-    → Obsidian (free, local, markdown) — সবচেয়ে জনপ্রিয়
-    → Logseq (open-source, outliner)
-    → Notion (database + linking)
-    → Heptabase (object-based, visual cards)
-    → Capacities / Tana (newer, typed objects)
-    → Roam Research (cloud, daily notes — কিন্তু ২০২৪+
-      এ জনপ্রিয়তা কমেছে)
-    → Analog: physical index cards
-      (Luhmann's original method)
-
-  AI-assisted PKM (২০২৪-২০২৬):
-    → Obsidian Smart Connections / Copilot —
-      তোমার নোটের সাথে chat, auto-linked suggestions
-    → Notion AI — summarize, draft, auto-fill
-    → NotebookLM (Google) — multi-doc synthesis,
-      source-grounded Q&A
-    → Mem / Reflect — AI auto-organizes notes
-    → ⚠️ সতর্কতা: AI মাঝে মাঝে ভুল সংযোগ বা
-      অস্তিত্বহীন citation বানায়। verify করো।
-
-  Best for beginners:
-    → Obsidian (free, powerful, local)
-    → start with ৩ types of notes
-    → link EVERY new note to ১+ existing
-    → review weekly: read random notes,
-       find new connections
-
-THE "HOW TO TAKE SMART NOTES" METHOD (Ahrens, 2017):
-
-  Step ১: READ with pen in hand
-    → write fleeting notes as you go
-    → don't stop reading for long
-  
-  Step ২: REVIEW fleeting notes (same day)
-    → convert to literature notes
-    → write in your OWN words
-    → include source
-  
-  Step ³: CREATE permanent notes (daily)
-    → turn literature notes into 
-      atomic permanent notes
-    → one idea per note
-    → link to ১+ existing notes
-    → ask: "how does this connect?"
-  
-  Step ৪: DEVELOP ideas (weekly)
-    → follow links between notes
-    → build clusters of related ideas
-    → these clusters become articles,
-       chapters, books
-  
-  Step ৫: WRITE (the notes do the work)
-    → assemble related notes
-    → the ARGUMENT emerges from connections
-    → you're not "writing from scratch"
-    → you're assembling pre-thought ideas</div>
+<div class="callout info"><span class="co-icon">🛠️</span><div><strong>আধুনিক টুল:</strong> Obsidian (free, local, সবচেয়ে জনপ্রিয়), Logseq, Notion, Heptabase, Capacities/Tana। AI-PKM (2024-26): Obsidian Smart Connections/Copilot, Notion AI, NotebookLM (multi-doc synthesis)। ⚠️ AI ভুল সংযোগ বা অস্তিত্বহীন citation বানাতে পারে — verify করো। <strong>শুরু:</strong> প্রতিটা নতুন নোট অন্তত ১টা বিদ্যমান নোটের সাথে link করো — এখানেই insight।</div></div>
 
 <div class="dialogue">হিফজ — preservation, memorization, the act of keeping। কুরআনে আল্লাহ বলেন — "নিশ্চয় আমরা কুরআন নাজিল করেছি এবং নিশ্চয় আমরাই এর সংরক্ষক।" (১৫:৯)। সংরক্ষণ = হিফজ। Zettelkasten-ও হিফজ — জ্ঞান সংরক্ষণ করা। কিন্তু শুধু সংরক্ষণ নয় — সংযুক্ত করা। যে হিফজ করে, সে ধরে রাখে। যে সংযুক্ত করে, সে গড়ে। Luhmann শুধু পড়েননি — তিনি হিফজ করেছেন, সংযুক্ত করেছেন, গড়েছেন। ৯০,০০০ নোট = একটা সংরক্ষিত জ্ঞানের মস্তিষ্ক। হিফজ — শুধু মুখস্থ নয়, সংযুক্ত সংরক্ষণ।</div>
 <div class="dialogue en">"Hifz — preservation, memorization, the act of keeping. Allah says — 'We sent down the Quran and We are its preserver.' (15:9). Preservation = hifz. Zettelkasten too — preserving knowledge. But not just preserving — connecting. One who does hifz, retains. One who connects, builds. Luhmann didn't just read — he preserved, connected, built. 90,000 notes = a preserved knowledge brain. Hifz — not just memorization, connected preservation."</div>`,
@@ -460,108 +150,14 @@ doors.push({
 <div class="dialogue">Zettelkasten বলেছিলেন — নোট নাও, সংযুক্ত করো। কিন্তু আমি বলি — নোট নিলেও বুঝতে না পারলে কিছু হবে না। কীভাবে জানবে বুঝেছ কি না? ফাইনম্যান দেখালেন একটা পরীক্ষা — সহজ ভাষায় ব্যাখ্যা করো। যেখানে আটকাও, সেখানে তুমি বুঝতে পারোনি। এটাই ফাইনম্যান টেকনিক — বোঝার আসল পরীক্ষা।</div>
 <div class="dialogue en">"Zettelkasten said — take notes, connect them. But I say — even with notes, if you don't understand, nothing happens. How do you know if you understand? Feynman showed a test — explain it simply. Where you get stuck, you don't understand. This is the Feynman technique — the real test of comprehension."</div>
 
-<div class="code-block">THE FEYNMAN TECHNIQUE — The Test of Understanding:
-
-THE ৪ STEPS:
-
-  Step ১: CHOOSE A CONCEPT
-    → pick something you "know"
-    → write the concept name on a blank page
-  
-  Step ২: EXPLAIN IT SIMPLY
-    → write an explanation as if for a ১২-year-old
-    → no jargon, no technical terms
-    → use analogies, everyday examples
-    → if you MUST use a term, define it simply
-  
-    Example: "Quantum entanglement"
-    → ❌ "two particles in a superposition state 
-      where measurement collapses the wavefunction"
-    → ✅ "imagine two magic coins. You flip one in 
-      New York, it's heads. The other one in Tokyo 
-      INSTANTLY becomes tails. They're connected 
-      invisibly. Nobody knows why."
-  
-  Step ৩: IDENTIFY THE GAPS
-    → where COULDN'T you explain simply?
-    → where did you use jargon to hide?
-    → where did you get stuck?
-    
-    → THESE are your knowledge gaps
-    → "I know it" but "I can't explain it" = DON'T know it
-  
-  Step ৪: GO BACK AND LEARN
-    → return to the source material
-    → learn the gap specifically
-    → come back and explain AGAIN
-    → repeat until the whole concept flows simply
-
-WHY THIS WORKS (cognitive science):
-
-  The Illusion of Competence (Koriat & Bjork, 2005):
-    → reading something and understanding it = 
-      "I know this!" (false)
-    → re-reading fluent text creates an ILLUSION
-    → fluency of reading ≠ depth of understanding
-  
-  The Testing Effect (Roediger & Karpicke, 2006):
-    → forcing yourself to GENERATE an explanation
-      from scratch = ৩৩% better retention than 
-      re-reading
-    → the STRUGGLE to explain is the learning
-  
-  Metacognition (Flavell, 1979):
-    → thinking about your own thinking
-    → "do I actually know this?"
-    → most people NEVER test themselves
-    → Feynman technique = forced metacognition
-
-FEYNMAN'S BIOGRAPHICAL EVIDENCE:
-
-  James Gleick's biography "Genius" (1992):
-    → Feynman's notebook method:
-       "He would spend hours re-deriving results
-        from scratch, in his own way."
-    → NOT reading other people's derivations
-    → BUILDING his own understanding
-    
-    → Feynman's Princeton notebook (PhD era):
-       he re-derived ALL of physics from scratch
-       → "I don't know what's the matter with 
-          people — they don't learn by understanding.
-          They learn by some other way — by rote 
-          or something. Their knowledge is so fragile!"
-  
-  Bill Gates on Feynman:
-    → Gates watched Feynman's ১৯৬৪ Cornell lectures
-    → later bought the rights to distribute them
-    → "He is the best teacher I never had"
-    → Gates named his project "Project Tuva" after it
-
-APPLICATION TO READING:
-
-  After reading a chapter/book:
-    ১. Close the book
-    ২. Write a simple explanation of what you learned
-    ৩. Where you get stuck → that's what you didn't learn
-    ৪. Go back to those specific parts
-    ৫. Repeat until you can explain it simply
-  
-  → This COMBINES with Zettelkasten (Door ৩):
-    the permanent note IS a Feynman explanation
-  
-  → This COMBINES with Adler (Door ২):
-    analytical reading requires you to explain
-    the author's argument — in YOUR words
-
-THE ULTIMATE TEST:
-
-  "If you can't explain it simply,
-   you don't understand it well enough."
-  — commonly attributed to Einstein (apocryphal;
-    no solid evidence he said it).
-    The principle itself is sound — and it's
-    exactly what Feynman practiced (Door ৪).</div>
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">ধাপ ১</div><div class="tl-title">✏️ Concept বাছো</div><div class="tl-body">যা "জানো" তা খালি পাতায় লেখো।</div></div>
+<div class="tl-step"><div class="tl-when">ধাপ ২</div><div class="tl-title">🧒 সহজ করে ব্যাখ্যা</div><div class="tl-body">১২ বছরের শিশুকে বোঝাচ্ছ যেন — jargon নয়, analogy। যেমন quantum entanglement: "দুটো জাদুর কয়েন — একটা New York-এ heads হলে Tokyo-রটা তৎক্ষণাৎ tails।"</div></div>
+<div class="tl-step"><div class="tl-when">ধাপ ৩</div><div class="tl-title">🕳️ গ্যাপ চিহ্নিত করো</div><div class="tl-body">যেখানে সহজে বলতে পারলে না, jargon দিয়ে লুকালে, আটকে গেলে — সেটাই তোমার ঘাটতি। "জানি কিন্তু বলতে পারি না" = জানো না।</div></div>
+<div class="tl-step"><div class="tl-when">ধাপ ৪</div><div class="tl-title">🔁 ফিরে গিয়ে শেখো</div><div class="tl-body">উৎসে ফিরে সেই গ্যাপ শেখো, আবার ব্যাখ্যা করো — যতক্ষণ না পুরোটা সহজে বয়ে যায়।</div></div>
+</div>
+<div class="callout info"><span class="co-icon">🔬</span><div><strong>কেন কাজ করে:</strong> Illusion of competence (Koriat & Bjork, 2005) — সাবলীল পড়া বোঝার বিভ্রম দেয়। Testing effect (Roediger & Karpicke, 2006) — শূন্য থেকে ব্যাখ্যা তৈরি re-reading-এর চেয়ে ~৩৩% ভালো retention। Metacognition (Flavell, 1979) — নিজের জানা যাচাই; Feynman technique = বাধ্যতামূলক metacognition।</div></div>
+<div class="callout tip"><span class="co-icon">💬</span><div><strong>জীবনী-প্রমাণ:</strong> Gleick-এর "Genius" (1992) — Feynman ঘণ্টার পর ঘণ্টা ফলাফল নিজে নতুন করে derive করতেন ("তাদের জ্ঞান এত ভঙ্গুর!")। Bill Gates: Feynman-এর 1964 Cornell lecture-এর distribution-স্বত্ব কিনে "Project Tuva" নাম দেন — "the best teacher I never had।" <em>("সহজে ব্যাখ্যা করতে না পারলে যথেষ্ট বোঝোনি" — প্রায়ই Einstein-কে দায়ী করা হয়, কিন্তু তার প্রমাণ নেই; নীতিটি তবু সঠিক, আর এটাই Feynman করতেন।)</em></div></div>
 
 <div class="dialogue">বায়ান — clear speech, expression। কুরআনে আল্লাহ বলেন — "তিনি মানুষকে শিখিয়েছেন বায়ান — স্পষ্ট বাক্য।" (৫৫:৩-৪)। বায়ান হলো স্পষ্ট করে প্রকাশ করার ক্ষমতা — জটিলকে সহজ করা। ফাইনম্যান টেকনিক-ও বায়ান — যা বুঝেছ, তা স্পষ্ট করে প্রকাশ করো। যেখানে আটকাও, সেখানে ঘাটতি। যে বায়ান করতে পারে, সে বোঝে। যে পারে না, সে ভান করে। বায়ান — বোঝার আসল পরীক্ষা। কুরআনে বায়ান আল্লাহর নিয়ামত — কথা স্পষ্ট করার ক্ষমতা। ফাইনম্যান দেখালেন — যে স্পষ্ট করতে পারে, সে-ই জানে।</div>
 <div class="dialogue en">"Bayan — clear speech, expression. Allah says — 'He taught man bayan — clear speech.' (55:3-4). Bayan is the ability to express clearly — making complex simple. The Feynman technique too is bayan — express clearly what you understand. Where you get stuck, there's the gap. One who can do bayan, understands. One who can't, pretends. Bayan — the real test of understanding. In the Quran, bayan is Allah's gift — the power to speak clearly. Feynman showed — one who can speak clearly, truly knows."</div>`,
@@ -589,169 +185,14 @@ doors.push({
 <div class="dialogue">ফাইনম্যান বলেছিলেন — সহজ করে ব্যাখ্যা করো। কিন্তু আমি বলি — সহজ করার জন্য প্রথমে গভীরে যেতে হবে। গভীরে যাওয়ার উপায়? পড়া। কিন্তু কীভাবে? মহামানুষরা কীভাবে পড়েন? তাদের পদ্ধতি আমাদের শেখায় — পড়া শুধু সময় কাটানো নয়। পড়া জীবন গড়ার হাতিয়ার।</div>
 <div class="dialogue en">"Feynman said — explain simply. But I say — to simplify, you must first go deep. How to go deep? Reading. But how? How do great minds read? Their methods teach us — reading isn't passing time. Reading is a tool for building a life."</div>
 
-<div class="code-block">HOW GREAT MINDS READ — Biographical Evidence:
-
-═══════════════════════════════════════
-ELON MUSK — First Principles Reader
-═══════════════════════════════════════
-
-  Source: Ashlee Vance biography "Elon Musk" (2015),
-           Walter Isaacson biography (2023)
-
-  Reading habits:
-    → age ৯: read entire Encyclopedia Britannica
-    → childhood: read ১০+ hours/day (science fiction
-      + non-fiction)
-    → when starting SpaceX: read EVERY textbook on 
-      rocket propulsion
-    → when starting Tesla: read battery technology
-      papers extensively
-  
-  METHOD: First Principles Reading
-    → don't read opinions → read FUNDAMENTALS
-    → textbooks > articles
-    → primary sources > secondary
-    → "I don't read what other people think.
-       I read the FUNDAMENTAL science."
-    
-  Quote: "I think it's possible for ordinary people 
-    to choose to be extraordinary. One way is to 
-    read a lot."
-  
-  Insight: Musk reads to BUILD MENTAL MODELS of how
-    things work fundamentally → then applies to 
-    NEW domains
-
-═══════════════════════════════════════
-BILL GATES — Think Week Reader
-═══════════════════════════════════════
-
-  Source: gatesnotes.com, multiple interviews,
-           Walter Isaacson (various articles)
-
-  Reading habits:
-    → reads ~৫০ books/year (~১/week)
-    → annual "Think Weeks": ২ times/year, isolates
-      in a cabin in Pacific Northwest
-    → during Think Week: reads ১৫-২০ books/papers,
-      takes extensive notes
-    → no distractions — no family, no meetings
-    → "I get to sit and read and take notes and 
-       just THINK"
-  
-  METHOD: Deep Immersion + Note-Taking
-    → reads with pen in hand
-    → writes margin notes
-    → synthesizes across multiple books
-    → publishes reviews on gatesnotes.com
-  
-  Quote: "I really had a lot of dreams when I was 
-    a kid, and I think a great deal of that grew 
-    out of the fact that I had a chance to read a 
-    lot."
-  
-  What he reads: biographies, science, public health,
-    economics, climate change. Not much fiction.
-
-═══════════════════════════════════════
-CHARLIE MUNGER — Mental Models Builder
-═══════════════════════════════════════
-
-  Source: "Poor Charlie's Almanack" (2005),
-           Berkshire Hathaway annual meetings
-
-  Reading habits:
-    → reads ৫+ hours/day (self-reported)
-    → "In my whole life, I have known no wise 
-       people who didn't read all the time — none, 
-       zero."
-    → partners called him "a book with two legs"
-  
-  METHOD: Mental Models Latticework
-    → read ACROSS disciplines: physics, biology,
-       psychology, economics, history, math
-    → extract the BIG IDEAS from each discipline
-    → build a LATTICEWORK of ~১০০ mental models
-    → use these models to make decisions
-  
-  Mental models Munger used:
-    → from physics: critical mass, tipping point
-    → from biology: evolution, adaptation
-    → from psychology: bias, social proof (Cialdini!)
-    → from economics: opportunity cost, compound interest
-  
-  Quote: "You must know the big ideas in the big 
-    disciplines and use them routinely — all of 
-    them, not just a few. Most people are trained 
-    in one model and try to use it for everything."
-  
-  Insight: the GOAL of reading is not information
-    but MODELS you can apply to ANY problem.
-
-═══════════════════════════════════════
-NAVAL RAVIKANT — The Leverage Reader
-═══════════════════════════════════════
-
-  Source: "The Almanack of Naval Ravikant" 
-           by Eric Jorgenson (2020), Naval's 
-           tweets and podcast appearances
-
-  Reading habits:
-    → reads what he LOVES until he loves to read
-    → re-reads great books ৫-১০ times
-    → "I don't read to finish books. I read 
-       to learn what I need."
-    → prefers audiobooks + physical
-  
-  METHOD: Follow Curiosity, Re-read the Greats
-    → don't force books — drop if not interesting
-    → re-read books that changed your thinking
-    → focus on FOUNDATIONAL books (philosophy,
-       science, math)
-    → avoid "business books" — read the SOURCE
-  
-  Quote: "Read what you love until you love to 
-    read. The most important trick to be happy 
-    is to realize that happiness is a skill you 
-    develop."
-  
-  Key books Naval re-reads: 
-    -> "Sapiens" (Harari)
-    -> "The Beginning of Infinity" (Deutsch)
-    -> "The Bed of Procrustes" (Taleb)
-    -> "Meditations" (Marcus Aurelius)
-
-═══════════════════════════════════════
-RYAN HOLIDAY — The Notecard System
-═══════════════════════════════════════
-
-  Source: Ryan Holiday's blog, "Perennial 
-           Seller" (2018), interviews
-
-  Reading habits:
-    → reads ~৫০-৬০ books/year
-    → EVERY book: takes notes on physical 
-       index cards (not digital!)
-    → cards organized in wooden boxes by topic
-    → system learned from Robert Greene 
-       ("48 Laws of Power" author)
-  
-  METHOD: The Notecard System (from Robert Greene)
-    → read with pen + index cards
-    → write key passage + YOUR thoughts
-    → one concept per card
-    → file by TOPIC (not by book)
-    → when writing: pull cards from multiple topics
-    → this is LITERALLY a physical Zettelkasten!
-  
-  Holiday's output:
-    → from this system: ১০+ bestselling books
-    → "The cards ARE the book. I just arrange them."
-  
-  Quote: "Robert Greene reads ৩-৪ hundred books 
-    per project. Takes notes on every one. The 
-    note cards become the outline, the arguments, 
-    the evidence. The book writes itself."</div>
+<table class="kv-table"><tr><th>মহামানুষ</th><th>পদ্ধতি</th><th>সূত্র</th></tr>
+<tr><td class="hl">Elon Musk</td><td>First-principles reading — মৌলিক বিজ্ঞান/textbook; মতামত নয়, fundamentals; নতুন domain-এ mental model প্রয়োগ</td><td>Vance (2015), Isaacson (2023)</td></tr>
+<tr><td class="hl">Bill Gates</td><td>~৫০ বই/বছর; বছরে ২ বার "Think Week" — কুটিরে একা, ১৫-২০ বই + নোট; margin note, gatesnotes-এ review</td><td>gatesnotes.com</td></tr>
+<tr><td class="hl">Charlie Munger</td><td>দিনে ৫+ ঘণ্টা, বহু-শাস্ত্র; ~১০০ mental model-এর latticework (physics, biology, psychology, economics)</td><td>Poor Charlie's Almanack (2005)</td></tr>
+<tr><td class="hl">Naval Ravikant</td><td>যা ভালোবাসো পড়ো; ভালো বই ৫-১০ বার পুনরায়; জোর করে শেষ কোরো না; foundational বই</td><td>Almanack of Naval (2020)</td></tr>
+<tr><td class="hl">Ryan Holiday</td><td>ভৌত index-card system (Robert Greene থেকে) — key passage + নিজের ভাবনা, topic-অনুযায়ী box; কার্ডই বইয়ের outline</td><td>Holiday-র blog</td></tr></table>
+<div class="callout info"><span class="co-icon">⚡</span><div><strong>সবার এক মিল:</strong> পড়া তাদের জীবনের অবিচ্ছেদ্য অংশ — বিনোদন নয়। তারা <em>আকল দিয়ে</em> পড়ে (তথ্য সংগ্রহ নয়, mental model গড়া) — Munger: "সব বড় শাস্ত্রের বড় idea জানো ও নিয়মিত ব্যবহার করো; বেশিরভাগ মানুষ এক model দিয়ে সব করতে চায়।"</div></div>
+<div class="callout tip"><span class="co-icon">🎒</span><div><strong>Starter kit:</strong> Naval দিয়ে শুরু করো (যা ভালোবাসো পড়ো) → Munger-এর শৃঙ্খলা যোগ করো (দৈনিক পড়া) → Holiday-র নোট-টেকিং যোগ করো (topic-ভিত্তিক কার্ড)।</div></div>
 
 <div class="dialogue">আকল — intellect, reason, the faculty of understanding fundamentals। কুরআনে আল্লাহ বলেন — "তারা কি চিন্তা করে না?" আকল হলো মৌলিক সত্য বোঝার ক্ষমতা। মহামানুষরা আকল দিয়ে পড়েন — শুধু তথ্য সংগ্রহ নয়। Musk: মৌলিক বিজ্ঞান থেকে শিখেন। Gates: Think Week-এ গভীরে যান। Munger: mental models গড়েন প্রতিটা ক্ষেত্র থেকে। Naval: যা ভালোবাসেন তা-ই পড়েন, বারবার। Holiday: প্রতিটা বই থেকে নোট কার্ড। সবার মিল — আকল দিয়ে পড়া, শুধু চোখ দিয়ে নয়।</div>
 <div class="dialogue en">"Aql — intellect, reason, the faculty of understanding fundamentals. Allah says — 'Do they not reflect?' Aql is the ability to grasp fundamental truths. Great minds read with aql — not just gathering information. Musk: learns from fundamental science. Gates: goes deep in Think Week. Munger: builds mental models from every field. Naval: reads what he loves, repeatedly. Holiday: note cards from every book. All share — reading with intellect, not just with eyes."</div>`,

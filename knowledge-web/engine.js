@@ -7,12 +7,12 @@ const SAVE_KEY = 'knowledgeWeb_v1';
 const MAX_XP = 1000;
 const RANKS = [
   {min:0,   name:'নতুন চিন্তাবিদ',     icon:'🛖'},
-  {min:100, name:'সংযুক্তকারী',   icon:'🛤️'},
+  {min:100, name:'সংযুক্তকারী',   icon:'🌉'},
   {min:200, name:'প্যাটার্ন দ্রষ্টা',     icon:'🏰'},
   {min:300, name:'সংশ্লেষক',     icon:'📐'},
   {min:400, name:'জ্ঞান স্থপতি',           icon:'🏛️'},
   {min:500, name:'জাল নির্মাতা',     icon:'🌆'},
-  {min:600, name:'জ্ঞান স্থপতি',    icon:'🌇'},
+  {min:600, name:'অন্তর্দৃষ্টির কারিগর',    icon:'🌇'},
   {min:700, name:'জ্ঞানের সুলতান',    icon:'👑'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}

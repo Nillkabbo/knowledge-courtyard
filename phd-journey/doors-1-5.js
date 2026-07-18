@@ -28,31 +28,24 @@ doors.push({
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ ভালো কারণ</div>• "একটা নির্দিষ্ট সমস্যা গভীরভাবে সমাধান করতে চাই"<br>• "রিসার্চ করতে ভালোবাসি" — অজানা খোঁজার আনন্দ<br>• "একাডেমিয়ায় ক্যারিয়ার চাই" — প্রফেসর হতে চাই<br>• "ইন্ডাস্ট্রি রিসার্চ ল্যাবে যেতে চাই" (Google AI, Microsoft Research)<br>• "নতুন জ্ঞান তৈরি করতে চাই" — শুধু ব্যবহার নয়, সৃষ্টি</div>
 </div>
 
-<div class="code-block">PhD vs Industry — সতঙ্গ তুলনা:
+<table class="kv-table"><tr><th>মাপকাঠি</th><th>PhD</th><th>Industry</th></tr>
+<tr><td class="hl">সময় / Time</td><td>৫-৭ বছর</td><td>যেকোনো সময় শুরু</td></tr>
+<tr><td class="hl">আয় / Pay</td><td>$29-54K stipend</td><td>$120-200K+ salary</td></tr>
+<tr><td class="hl">স্বাধীনতা / Autonomy</td><td>উচ্চ (নিজের প্রশ্ন)</td><td>কম (কোম্পানির লক্ষ্য)</td></tr>
+<tr><td class="hl">আউটপুট / Output</td><td>পেপার, থিসিস, নতুন জ্ঞান</td><td>প্রোডাক্ট, রেভিনিউ</td></tr>
+<tr><td class="hl">ব্যর্থতা / Failure</td><td>প্রতিদিন (রিসার্চ = ব্যর্থতা)</td><td>কম (প্রোডাক্ট শিপ হয়)</td></tr>
+<tr><td class="hl">শেখার গভীরতা / Depth</td><td>সর্বোচ্চ</td><td>মাঝারি</td></tr></table>
 
-                    PhD              Industry
-সময়                ৫-৭ বছর          প্রতি বছর
-আয়                 $25-40K stipend  $100-200K salary
-স্বাধীনতা           অনেক (নিজের রিসার্চ)  কম (কোম্পানির লক্ষ্য)
-আউটপুট             পেপার, ডিসার্টেশন  প্রোডাক্ট, রেভিনিউ
-একাকীত্ব            অনেক (নিজের সমস্যা)  কম (টিম)
-ব্যর্থতা            সাধারণ (রিসার্চ = ব্যর্থতা)  কম (প্রোডাক্ট শিপ হয়)
-শেখার গভীরতা        সর্বোচ্চ          মাঝারি
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৫.৮ বছর</div><div class="sc-label">CS PhD-এর গড় সময় (CGS)</div></div>
+<div class="stat-card"><div class="sc-num">~৬০-৭০%</div><div class="sc-label">CS-এ completion rate (অন্য ফিল্ডে ~৫০%)</div></div>
+<div class="stat-card"><div class="sc-num">৫৮,১৩১</div><div class="sc-label">২০২৪-এ US ডক্টরেট (NSF SED)</div></div>
+<div class="stat-card"><div class="sc-num">~৯০%</div><div class="sc-label">যারা শেষ করে, বলে "সঠিক ছিল"</div></div>
+</div>
 
-PhD Reality Check:
-  • সব ফিল্ড মিলিয়ে ~৫০% PhD শিক্ষার্থী ডিগ্রি শেষ করতে পারে না
-    (longitudinal attrition studies) — তবে CS-এ হার বেশি ভালো (~৬০-৭০%)
-  • বড় কারণ: advisor mismatch, ফান্ডিং শেষ, mental health
-    (শুধু অকাডেমিক অসুবিধা নয়)
-  • ২০২৪-এ US-এ ৫৮,১৩১ ডক্টরেট প্রদান হয়েছে (NSF SED ২০২৪,
-    NSF ২৬-৩১৫) — তবে এটি যারা *শেষ করেছে* তাদের গণনা
-  • গড়ে ৫.৮ বছর লাগে CS PhD-তে (CGS data)
-  • ডিপ্রেশন রেট PhD শিক্ষার্থীদের মধ্যে সাধারণ
-  • কিন্তু — যারা শেষ করে, তাদের ৯০% বলে "এটা ছিল সঠিক"
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Reality check:</strong> ঝরে পড়ার বড় কারণ একাডেমিক দুর্বলতা নয় — advisor mismatch, ফান্ডিং শেষ হওয়া, আর mental health। PhD শিক্ষার্থীদের মধ্যে depression ও anxiety-র হার সাধারণ জনসংখ্যার চেয়ে অনেক বেশি (Evans et al., <em>Nature Biotechnology</em> 2018 — ~৩৯% মাঝারি থেকে গুরুতর উদ্বেগ/বিষণ্নতা)। ভালো advisor আর ভালো fit — এই দুটোই টিকে থাকার আসল ভিত্তি।</div></div>
 
-প্রশ্ন: তুমি কি ৫-৭ বছর একটা সমস্যা নিয়ে 
-কাজ করতে প্রস্তুত? যে সমস্যার উত্তর 
-হয়তো নেই?</div>
+<div class="callout info"><span class="co-icon">🧭</span><div><strong>এক লাইনের প্রশ্ন:</strong> তুমি কি ৫-৭ বছর এমন একটা সমস্যা নিয়ে কাজ করতে প্রস্তুত — যার উত্তর হয়তো <em>নেই</em>, আর যা খোঁজার পথ কেউ তোমাকে দেখিয়ে দেবে না?</div></div>
 
 <div class="dialogue">হিজরত — পরিচিত জায়গা ছেড়ে অজানায় যাওয়া। ইব্রাহিম (আ) যখন স্বীয় সম্প্রদায় ছেড়ে অজানা যাত্রা করলেন, তিনি জানতেন না গন্তব্য — কিন্তু জানতেন উদ্দেশ্য। PhD-ও তেমনি — তুমি ছাড়বে ইন্ডাস্ট্রির নিশ্চিত বেতন, কিন্তু পাবে জ্ঞানের গভীরতা। হিজরত করতে হবে — কিন্তু উদ্দেশ্য স্পষ্ট থাকতে হবে। "কেন?" — এই প্রশ্নের উত্তর ছাড়া হিজরত নয়, পলায়ন।</div>
 <div class="dialogue en">"Hijrat — leaving the known for the unknown. When Ibrahim (AS) left his community for an unknown journey, he didn't know the destination — but he knew the purpose. PhD too — you'll leave industry's certain salary, but gain knowledge's depth. Hijrat is needed — but the purpose must be clear. Without an answer to 'why?' it's not hijrat, it's flight."</div>`,
@@ -81,44 +74,15 @@ doors.push({
 <div class="dialogue">সন্ধিক্ষণে তীর্থযাত্রী বলেছিলেন — কেন। এখন আমি বলি — কী এবং কতদিন। PhD একটা সরল পথ নয়। এটা পাঁচটি স্তরের একটা দীর্ঘ যাত্রা। প্রতিটা স্তর একটা পরীক্ষা — শারীরিক নয়, মানসিক।</div>
 <div class="dialogue en">"At the crossroads the pilgrim said — why. Now I say — what and how long. PhD isn't a straight path. It's a long journey of five stages. Each stage is a test — not physical, mental."</div>
 
-<div class="code-block">PhD Structure — ৫টি স্তর (CS-এ গড়ে ৫-৭ বছর):
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">বছর ১-২ · Coursework</div><div class="tl-title">📘 কোর্সওয়ার্ক</div><div class="tl-body">গভীর ক্লাস (ML, Systems, Theory), প্রজেক্ট ও পরীক্ষা — সাথে সাথে একটা রিসার্চ গ্রুপে ঢুকে যাও। <em>লক্ষ্য: জ্ঞানের ভিত্তি + একজন সম্ভাব্য advisor।</em></div></div>
+<div class="tl-step"><div class="tl-when">বছর ২-৩ · Qualifying Exam</div><div class="tl-title">🎯 কোয়ালিফাইং পরীক্ষা</div><div class="tl-body">লিখিত + মৌখিক; এরিয়ার ৩০-৫০টা পেপার পড়ে আসতে হয়। পাশ = আনুষ্ঠানিক <strong>"PhD Candidate"</strong>। ফেল = মাস্টার্স নিয়ে বেরিয়ে যাওয়া। <em>লক্ষ্য: তুমি কি রিসার্চার হতে পারবে?</em></div></div>
+<div class="tl-step"><div class="tl-when">বছর ৩-৪ · Proposal</div><div class="tl-title">🗺️ রিসার্চ প্রপোজাল</div><div class="tl-body">নিজের গবেষণার প্রশ্ন খোঁজা — সবচেয়ে কঠিন ধাপ। কমিটির সামনে পরিকল্পনা রক্ষা; প্রথম পেপার (NeurIPS, CVPR, SIGCOMM)। <em>লক্ষ্য: নতুন জ্ঞান তৈরি শুরু।</em></div></div>
+<div class="tl-step"><div class="tl-when">বছর ৪-৫ · Deep Research</div><div class="tl-title">🔬 গভীর গবেষণা</div><div class="tl-body">এক্সপেরিমেন্ট → থিওরি → রাইটিং, বারবার। ব্যর্থতা স্বাভাবিক; negative result-ও ফলাফল। পেপারই তোমার "মুদ্রা"। <em>লক্ষ্য: একটা নতুন জ্ঞান প্রতিষ্ঠা।</em></div></div>
+<div class="tl-step"><div class="tl-when">বছর ৫-৭ · Dissertation</div><div class="tl-title">👑 ডিসার্টেশন ও ডিফেন্স</div><div class="tl-body">১০০-২০০ পৃষ্ঠার থিসিস; কমিটি + বাইরের এক্সামিনারের সামনে ডিফেন্স। <em>লক্ষ্য: এই সমস্যায় তুমি এখন বিশ্বের অন্যতম বিশেষজ্ঞ।</em></div></div>
+</div>
 
-বছর ১-২: COURSEWORK (কোর্সওয়ার্ক)
-  • গভীর ক্লাস — ML, Systems, Theory, ইত্যাদি
-  • প্রতিটা ক্লাসে প্রজেক্ট, পেপার, পরীক্ষা
-  • সাথে সাথে রিসার্চ গ্রুপে যোগ দাও
-  → লক্ষ্য: জ্ঞানের ভিত্তি তৈরি
-
-বছর ২-৩: QUALIFYING EXAM (কোয়ালিফাইং পরীক্ষা)
-  • কয়েকদিনের লিখিত + মৌখিক পরীক্ষা
-  • তোমার এরিয়ায় ৩০-৫০টা পেপার পড়ে আসতে হবে
-  • কমিটি প্রশ্ন করে — তুমি কি যথেষ্ট জানো?
-  • পাশ করলে → "PhD Candidate" (আনুষ্ঠানিকভাবে)
-  • ফেল করলে → মাস্টার্স নিয়ে বের (সবচেয়ে ভয়ংকর)
-  → লক্ষ্য: তুমি কি রিসার্চার হতে পারবে?
-
-বছর ৩-৪: RESEARCH & PROPOSAL (প্রপোজাল)
-  • নিজের গবেষণার প্রশ্ন খোঁজো — এটাই সবচেয়ে কঠিন
-  • অ্যাডভাইজারের সাথে কাজ — কিন্তু দিক তোমার
-  • প্রপোজাল ডিফেন্স: কমিটির সামনে তোমার গবেষণার 
-    পরিকল্পনা রক্ষা করো
-  • পেপার প্রকাশ — কনফারেন্সে (NeurIPS, CVPR, SIGCOMM)
-  → লক্ষ্য: নতুন জ্ঞান তৈরি শুরু
-
-বছর ৪-৫: DEEP RESEARCH (গভীর গবেষণা)
-  • তোমার গবেষণার প্রশ্নের উত্তর খোঁজো
-  • এক্সপেরিমেন্ট, থিওরি, রাইটিং — বারবার
-  • ব্যর্থতা সাধারণ — রিসার্চ = ব্যর্থতা থেকে শেখা
-  • পেপার প্রকাশ — এটাই তোমার "মুদ্রা"
-  → লক্ষ্য: একটা নতুন জ্ঞান প্রতিষ্ঠিত করা
-
-বছর ৫-৭: DISSERTATION & DEFENSE (ডিসার্টেশন)
-  • ১০০-২০০ পৃষ্ঠার থিসিস — তোমার সম্পূর্ণ গবেষণা
-  • ডিফেন্স: কমিটি + বাইরের এক্সামিনার
-  • সবার সামনে তোমার কাজ উপস্থাপন
-  • প্রশ্নের উত্তর দাও — গভীর, কঠিন
-  → লক্ষ্য: তুমি এখন বিশ্বের অন্যতম 
-    বিশেষজ্ঞ এই সমস্যায়</div>
+<div class="callout tip"><span class="co-icon">💡</span><div>এই ধাপগুলো লিনিয়ার মনে হলেও বাস্তবে overlap করে — coursework চলাকালীনই রিসার্চ শুরু হয়, আর proposal-এর পরও নতুন দিক আসতে পারে। মানচিত্র আছে বলেই পথ সোজা নয় — কিন্তু হারিয়ে যাওয়া কম।</div></div>
 
 <div class="dialogue">সফর — যাত্রা। কুরআনে আল্লাহ বলেন — "পৃথিবীতে ভ্রমণ করো এবং দেখো।" PhD একটা জ্ঞানের সফর। কিন্তু এই সফরের মানচিত্র জানা দরকার — কোথায় কী চ্যালেঞ্জ, কতদিন লাগবে। মানচিত্র ছাড়া সফর = হারিয়ে যাওয়া। মানচিত্র সহ = প্রস্তুত। প্রতিটা স্তর একটা মাইলফলক — স্তম্ভের মতো, পথের পাশে।</div>
 <div class="dialogue en">"Safar — journey. Allah says — 'Travel through the earth and observe.' PhD is a journey of knowledge. But you need the map of this journey — what challenge where, how long. Without a map, travel = getting lost. With a map = prepared. Each stage is a milestone — like pillars, beside the path."</div>`,
@@ -147,68 +111,23 @@ doors.push({
 <div class="dialogue">মানচিত্রকার বলেছিলেন — পাঁচটি স্তর। কিন্তু আমি বলি — স্তরগুলো পার হতে চাইলে একটা জিনিস লাগবে: অর্থ। PhD ফান্ডিং ছাড়া শুরু করা = আত্মহত্যা। $50K+ টিউশন প্রতি বছর? অসম্ভব। কিন্তু ফান্ডেড PhD? তুমি টিউশন দাও না। উল্টো পাও টাকা।</div>
 <div class="dialogue en">"The cartographer said — five stages. But I say — crossing them requires one thing: money. Starting PhD without funding = financial suicide. $50K+ tuition per year? Impossible. But funded PhD? You don't pay tuition. You get paid."</div>
 
-<div class="code-block">PhD Funding — তিন ধরন:
+<table class="kv-table"><tr><th>ধরন</th><th>কী করো</th><th>স্টাইপেন্ড/মাস</th><th>টিউশন</th></tr>
+<tr><td class="hl">RA<br><small>Research Asst.</small></td><td>প্রফেসরের গ্রান্টে রিসার্চ (~২০ ঘ/সপ্তাহ)</td><td>$২,০০০-৪,০০০</td><td>১০০% মাফ</td></tr>
+<tr><td class="hl">TA<br><small>Teaching Asst.</small></td><td>আন্ডারগ্র্যাড পড়াও (~২০ ঘ/সপ্তাহ)</td><td>$১,৫০০-৩,০০০</td><td>১০০% মাফ</td></tr>
+<tr><td class="hl">Fellowship<br><small>বৃত্তি</small></td><td>কোনো কাজ নেই — ১০০% রিসার্চ (NSF GRFP, NDSEG)</td><td>$২,৫০০-৫,০০০</td><td>১০০% মাফ</td></tr></table>
 
-┌────────────────────────────────────────┐
-│ RA (Research Assistantship)           │
-│                                        │
-│ প্রফেসরের গবেষণায় কাজ করো            │
-│ প্রফেসরের গ্রান্ট থেকে তোমার বেতন    │
-│                                        │
-│ টিউশন: ১০০% মাফ                       │
-│ স্টাইপেন্ড: $২,০০০-৪,০০০/মাস         │
-│ সময়: ২০ ঘণ্টা/সপ্তাহ রিসার্চে       │
-│                                        │
-│ → সবচেয়ে কাঙ্ক্ষিত — সাথে রিসার্চ   │
-│ → অ্যাডভাইজারের গ্রান্ট লাগে          │
-├────────────────────────────────────────┤
-│ TA (Teaching Assistantship)            │
-│                                        │
-│ আন্ডারগ্র্যাড পড়াও                    │
-│ বিভাগের টাকা থেকে তোমার বেতন         │
-│                                        │
-│ টিউশন: ১০০% মাফ                       │
-│ স্টাইপেন্ড: $১,৫০০-৩,০০০/মাস         │
-│ সময়: ২০ ঘণ্টা/সপ্তাহ টিচিং           │
-│                                        │
-│ → সাধারণ — কিছু বিভাগে শুধু TA       │
-│ → টিচিং দক্ষতা বাড়ে                  │
-├────────────────────────────────────────┤
-│ FELLOWSHIP (বৃত্তি)                    │
-│                                        │
-│ কোনো কাজের বাধ্যবাধকতা নেই           │
-│ বিশ্ববিদ্যালয় বা বাইরের সংস্থা দেয় │
-│                                        │
-│ টিউশন: ১০০% মাফ                       │
-│ স্টাইপেন্ড: $২,৫০০-৫,০০০/মাস         │
-│ সময়: ১০০% রিসার্চে                   │
-│                                        │
-│ → সবচেয়ে ভালো কিন্তু প্রতিযোগিতামূলক│
-│ → NSF GRFP, NDSEG, ইউনিভ ফেলোশিপ     │
-└────────────────────────────────────────┘
+<div class="callout tip"><span class="co-icon">🏆</span><div><strong>ক্রম:</strong> Fellowship &gt; RA &gt; TA। RA সবচেয়ে কাঙ্ক্ষিত কারণ কাজটাই তোমার রিসার্চ (advisor-এর গ্রান্ট লাগে)। TA-তে টিচিং দক্ষতা বাড়ে কিন্তু রিসার্চের সময় কমে। Fellowship সবচেয়ে স্বাধীন কিন্তু সবচেয়ে প্রতিযোগিতামূলক।</div></div>
 
-বাস্তব সংখ্যা (CS PhD, R1, ২০২৫-২৬ অনুযায়ী):
-  • গড় স্টাইপেন্ড: $২,৪০০-৪,৫০০/মাস
-    → নিচের দিক: ছোট R1/R2, কম COL এলাকা
-    → উপরের দিক: top CS/AI প্রোগ্রাম (Bay Area, NYC, Toronto/Vector)
-    → COL (cost of living) বিবেচ্য — Bay Area $৪K ≈ Midwest $২.৫K জীবনযাত্রায়
-  • বার্ষিক: $২৯,০০০-৫৪,০০০ (টিউশন ছাড়া)
-  • টিউশন মাফ মূল্য: $৫০,০০০-৬০,০০০/বছর
-  • মোট প্যাকেজ: $৭৯,০০০-১১৪,০০০+/বছর
-  • তুলনা করো: csstipendrankings.org (stipend-ভিত্তিক CS র‍্যাঙ্কিং)
-    + phdstipends.com (real self-reported data)
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">$29-54K</div><div class="sc-label">বার্ষিক স্টাইপেন্ড (টিউশন ছাড়া)</div></div>
+<div class="stat-card"><div class="sc-num">$50-60K</div><div class="sc-label">টিউশন মাফের মূল্য/বছর</div></div>
+<div class="stat-card"><div class="sc-num">$79-114K+</div><div class="sc-label">মোট প্যাকেজের মূল্য/বছর</div></div>
+<div class="stat-card"><div class="sc-num">12+24 মাস</div><div class="sc-label">OPT + STEM OPT (CS)</div></div>
+</div>
 
-আন্তর্জাতিক ছাত্রদের জন্য:
-  • F-1 ভিসা — ফান্ডেড PhD-তে সাধারণত সমস্যা নেই
-  • ⚠️ ২০২৫-২৬: DHS "Duration of Status" বাতিলের প্রস্তাব করেছে —
-    PhD-র মতো দীর্ঘ প্রোগ্রামে আগ্রহীদের এটি নজর রাখা উচিত।
-    এখনো D/S চালু, কিন্তু পরিস্থিতি পরিবর্তনশীল — DSO এর সাথে কথা বলো।
-  • PhD-র পর: ১২ মাস OPT + ২৪ মাস STEM OPT extension (CS-এ)
-    → ২০২৬-এ compliance/নথিপত্রের নিয়ম কঠোরতর
-  • স্টাইপেন্ড থেকে ট্যাক্স কাটা হয় (F-1 তে কিছু
-    ছাড় আছে প্রথম কয়েক বছর)
-  • স্পাউস (F-2) কাজ করতে পারে না — পরিবারের
-    ক্ষেত্রে কঠিন</div>
+<div class="callout info"><span class="co-icon">📊</span><div><strong>যাচাই করো নিজে:</strong> <em>csstipendrankings.org</em> (stipend-ভিত্তিক CS র‍্যাঙ্কিং) আর <em>phdstipends.com</em> (আসল, self-reported সংখ্যা)। মনে রাখো COL — Bay Area-র $৪K ≈ Midwest-এর $২.৫K জীবনযাত্রায়।</div></div>
+
+<div class="callout warn"><span class="co-icon">🛂</span><div><strong>আন্তর্জাতিক ছাত্রদের জন্য (২০২৫-২৬):</strong> ফান্ডেড F-1 PhD-তে সাধারণত সমস্যা নেই। কিন্তু DHS "Duration of Status" (D/S) বাতিলের প্রস্তাব করেছে — দীর্ঘ প্রোগ্রামে এটি নজরে রাখো, নিয়মিত DSO-র সাথে কথা বলো। স্পাউস (F-2) কাজ করতে পারে না। স্টাইপেন্ডে ট্যাক্স প্রযোজ্য (প্রথম কয়েক বছরে কিছু ট্রিটি-ছাড় থাকতে পারে)।</div></div>
 
 <div class="dialogue">রিযিক — জীবিকা। কুরআনে আল্লাহ বলেন — "পৃথিবীতে কোনো প্রাণী নেই যার রিযিক আল্লাহর দায়িত্বে নয়।" (১১:৬)। কিন্তু রিযিক চাইলে চেষ্টা করতে হয়। PhD ফান্ডিংও তেমনি — আল্লাহ দেবেন, কিন্তু তোমাকে প্রফেসরকে ইমেইল করতে হবে, গ্রান্ট খুঁজতে হবে, ফেলোশিপের জন্য আবেদন করতে হবে। চেষ্টা ছাড়া রিযিক আসে না।</div>
 <div class="dialogue en">"Rizq — provision. Allah says — 'There is no creature on earth whose provision is not Allah's responsibility.' (11:6). But provision requires effort. PhD funding too — Allah provides, but you must email professors, seek grants, apply for fellowships. Without effort, provision doesn't come."</div>`,
@@ -237,44 +156,17 @@ doors.push({
 <div class="dialogue">বণিক বলেছিলেন — ফান্ডিং। কিন্তু আমি বলি — ফান্ডিং কোন এরিয়ায়? তোমার রিসার্চ এরিয়া শুধু তোমার ক্যারিয়ার নির্ধারণ করে না — তোমার জীবনের দিক নির্ধারণ করে। ভুল এরিয়া = ৫ বছর কষ্ট। সঠিক এরিয়া = ৫ বছর আনন্দ।</div>
 <div class="dialogue en">"The merchant said — funding. But I say — funding for which area? Your research area doesn't just determine your career — it determines your life's direction. Wrong area = 5 years of suffering. Right area = 5 years of joy."</div>
 
-<div class="code-block">CS Research Areas — ২০২৫ Landscape:
+<table class="kv-table"><tr><th>এরিয়া</th><th>উদাহরণ</th><th>প্রতিযোগিতা</th><th>ফান্ডিং</th></tr>
+<tr><td class="hl">🔥 Hot</td><td>AI/ML, NLP, Vision, Robotics</td><td>সর্বোচ্চ (১-৩% গ্রহণ)</td><td>সর্বোচ্চ</td></tr>
+<tr><td class="hl">🟢 Stable</td><td>Systems, Security, Networks, DB</td><td>মাঝারি</td><td>ভালো, স্থিতিশীল</td></tr>
+<tr><td class="hl">🔵 Emerging</td><td>HCI, Quantum, CompBio, EdTech</td><td>কম</td><td>মাঝারি–বাড়ন্ত</td></tr>
+<tr><td class="hl">🟣 Niche</td><td>Theory, PL/Compilers, SE</td><td>ছোট ল্যাব, নির্দিষ্ট</td><td>পরিবর্তনশীল</td></tr></table>
 
-🔥 HOT (high demand, high competition):
-  • AI/ML — LLMs, transformers, RL
-    ল্যাব: Stanford AI, MIT CSAIL, CMU ML
-    প্রতিযোগিতা: সর্বোচ্চ (১-৩% গ্রহণ)
-    ফান্ডিং: সর্বোচ্চ
-  • NLP — language models, translation
-  • Computer Vision — image/video understanding
-  • Robotics — autonomous systems
+<div class="callout info"><span class="co-icon">🏛️</span><div><strong>শীর্ষ ল্যাব:</strong> AI/ML → Stanford AI, MIT CSAIL, CMU ML · Systems → Berkeley Sky/RISE, UW, CMU · HCI → CMU HCII, Georgia Tech, MIT Media Lab। কিন্তু নাম নয় — <em>প্রফেসরের সাম্প্রতিক পেপার</em> পড়ে ঠিক করো কোথায় ফিট।</div></div>
 
-🟢 STABLE (consistent demand, moderate competition):
-  • Systems — OS, distributed systems, cloud
-    ল্যাব: Berkeley RISELab, CMU, UW
-    প্রতিযোগিতা: মাঝারি
-    ফান্ডিং: ভালো, স্থিতিশীল
-  • Security — cryptography, privacy
-  • Networks — protocols, edge computing
-  • Databases — data systems
+<div class="callout tip"><span class="co-icon">🎯</span><div><strong>প্রোফাইল-ভিত্তিক কৌশল:</strong> High-profile → AI/ML at R1 (reach)। Mid-profile → Systems/Security at R1 বা AI/ML at R2। Low-profile → Emerging/HCI at R2 বা niche এরিয়া, যেখানে ভিড় কম কিন্তু ভালো কাজের সুযোগ বেশি।</div></div>
 
-🔵 EMERGING (growing demand, lower competition):
-  • HCI — human-computer interaction
-    ল্যাব: CMU HCII, MIT, Georgia Tech
-    প্রতিযোগিতা: কম
-    ফান্ডিং: মাঝারি
-  • Quantum Computing — quantum algorithms
-  • Computational Biology — bioinformatics
-  • EdTech — AI in education
-
-🟣 NICHE (specialized, small labs):
-  • Theory — algorithms, complexity
-  • Programming Languages — compilers, verification
-  • SE — software engineering research
-
-কৌশল:
-  • High-profile → AI/ML at R1 (reach)
-  • Mid-profile → Systems/Security at R1 বা AI/ML at R2
-  • Low-profile → HCI/Emerging at R2 বা niche areas</div>
+<div class="callout warn"><span class="co-icon">⚖️</span><div><strong>Hot ≠ সহজ:</strong> AI/ML-এ ফান্ডিং বেশি কিন্তু গ্রহণ-হার সবচেয়ে কম আর প্রতিযোগীরা প্রকাশনা নিয়ে আসে। কম-ভিড় এরিয়ায় একই পরিশ্রমে তুমি দ্রুত "top student" হতে পারো — এটাই অনেক সময় স্মার্ট বাজি।</div></div>
 
 <div class="dialogue">কিবলা — দিক। নামাজে এক কিবলা — কাবার দিক। PhD-তেও এক দিক — তোমার রিসার্চ এরিয়া। দিক ভুল হলে নামাজ হয় না। এরিয়া ভুল হলে PhD হয় না। কিন্তু কিবলা বেছে নেওয়া যায় না — নির্দিষ্ট। PhD এরিয়া বেছে নেওয়া যায় — কিন্তু সাবধানে। তোমার আগ্রহ, তোমার দক্ষতা, এবং মার্কেটের সুযোগ — তিনটির মিল খোঁজো।</div>
 <div class="dialogue en">"Qibla — direction. In prayer, one qibla — toward the Kaaba. In PhD too, one direction — your research area. Wrong direction means no valid prayer. Wrong area means no PhD. But qibla is fixed — you can't choose it. PhD area you can choose — but carefully. Match your interest, your skill, and market opportunity."</div>`,
@@ -303,47 +195,17 @@ doors.push({
 <div class="dialogue">দিকনির্দেশক বলেছিলেন — এরিয়া বেছে নাও। কিন্তু আমি বলি — এরিয়া বেছে নেওয়ার পর সেটা কাগজে প্রকাশ করতে হয়। SOP — Statement of Purpose। এটা তোমার জীবনী নয়। এটা তোমার গবেষণার নিয়ত। কেন তুমি PhD করতে চাও, কী নিয়ে কাজ করতে চাও, কেন এই বিশ্ববিদ্যালয়।</div>
 <div class="dialogue en">"The guide said — choose your area. But I say — after choosing, you must express it on paper. SOP — Statement of Purpose. This isn't your biography. It's your research intention. Why you want PhD, what you want to work on, why this university."</div>
 
-<div class="code-block">PhD Application Materials — সম্পূর্ণ তালিকা:
+<ul class="checklist">
+<li><strong>SOP (১-২ পৃষ্ঠা)</strong> — কেন PhD, কোন রিসার্চ প্রশ্ন, কেন এই ইউনিভ/প্রফেসর, তোমার প্রস্তুতি। <em>সবচেয়ে গুরুত্বপূর্ণ; প্রতিটা ইউনিভের জন্য আলাদা।</em></li>
+<li><strong>LOR — ৩টি</strong> — "ভালো ছাত্র" নয়, "গবেষক হবে" এমন চিঠি। অন্তত একটি যিনি তোমার গবেষণা/কাজ ঘনিষ্ঠভাবে জানেন।</li>
+<li><strong>Transcripts</strong> — সব ডিগ্রি; GPA ৩.৫+ ভালো। কিছু ইউনিভে WES মূল্যায়ন লাগে।</li>
+<li><strong>CV (একাডেমিক ফরম্যাট)</strong> — শিক্ষা, প্রজেক্ট, প্রকাশনা/প্রেজেন্টেশন, দক্ষতা।</li>
+<li><strong>Writing sample / portfolio</strong> — কিছু প্রোগ্রামে; রিসার্চ পেপার বা টেকনিক্যাল রিপোর্ট।</li>
+<li><strong>English proficiency (TOEFL/IELTS)</strong> — US ডিগ্রি থাকলে সাধারণত ওয়েভ হয়।</li>
+<li><strong>Application fee</strong> — $৭৫-১২৫/ইউনিভ; অনেক জায়গায় fee waiver পাওয়া যায়।</li>
+</ul>
 
-১. SOP (Statement of Purpose) — ১-২ পৃষ্ঠা
-   • কেন PhD?
-   • কোন রিসার্চ প্রশ্ন?
-   • কেন এই বিশ্ববিদ্যালয়? কেন এই প্রফেসর?
-   • তোমার পূর্বের প্রস্তুতি
-   → সবচেয়ে গুরুত্বপূর্ণ! প্রতিটা ইউনিভের জন্য আলাদা।
-
-২. LOR (Letters of Recommendation) — ৩টি
-   • একাডেমিক — যিনি তোমার কাজ জানেন
-   • প্রফেশনাল — সুপারভাইজার, সিনিয়র
-   • রিসার্চ (যদি থাকে) — গবেষণা অ্যাডভাইজার
-   → "ভালো ছাত্র" নয় — "গবেষক হবে" এমন LOR দরকার
-
-৩. Transcripts — সমস্ত ডিগ্রি
-   • MSIS GPA — ৩.৫+ ভালো
-   • Undergrad GPA
-   → WES মূল্যায়ন কিছু ইউনিভে দরকার
-
-৪. CV/Resume — একাডেমিক ফরম্যাট
-   • শিক্ষা, কাজের অভিজ্ঞতা, প্রজেক্ট
-   • প্রকাশনা (যদি থাকে), প্রেজেন্টেশন
-   • দক্ষতা, টুলস, ভাষা
-
-৫. Writing Sample / Portfolio
-   • কিছু প্রোগ্রামে দরকার
-   • রিসার্চ পেপার, টেকনিক্যাল রিপোর্ট
-
-৬. English Proficiency (TOEFL/IELTS)
-   • US ডিগ্রি থাকলে ওয়েভ হয় (তোমার ক্ষেত্রে লাগবে না)
-
-৭. Application Fee — $৭৫-১২৫ প্রতি ইউনিভ
-   • Fee waiver আছে অনেক ইউনিভে
-
-⚠️ GRE: ২০২৫-২৬-তে CS PhD-তে GRE এখন 
-   প্রায় সর্বত্র optional বা waived
-   (post-COVID trend স্থায়ী হয়েছে)
-   → top-15 প্রোগ্রাম কেউ কেউ এখনো চায় — verify করো
-   → "optional" = "considered নয়" না — ভালো score দাও যদি থাকে
-   → waiver-tracking: ymgrad.com (প্রতি বছর update করে)</div>
+<div class="callout warn"><span class="co-icon">📋</span><div><strong>GRE (২০২৫-২৬):</strong> CS PhD-তে GRE এখন প্রায় সর্বত্র optional বা waived (post-COVID trend স্থায়ী)। কিছু top-15 প্রোগ্রাম এখনো চাইতে পারে — যাচাই করো। "Optional" মানে "গণনা হয় না" নয় — ভালো স্কোর থাকলে দাও। waiver-tracking: <em>ymgrad.com</em>।</div></div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ খারাপ SOP</div>"আমি ছোটবেলা থেকে কম্পিউটার ভালোবাসি। আমি ভালো ছাত্র ছিলাম। আমি কঠোর পরিশ্রমী। আমি আপনাদের বিশ্ববিদ্যালয়ে পড়তে চাই কারণ এটা ভালো।" — জেনেরিক। কোনো রিসার্চ প্রশ্ন নেই। কোনো প্রফেসরের নাম নেই। বাতিল।</div>

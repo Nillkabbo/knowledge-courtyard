@@ -7,12 +7,12 @@ const SAVE_KEY = 'humanPsychology_v1';
 const MAX_XP = 1000;
 const RANKS = [
   {min:0,   name:'নতুন মন',     icon:'🛖'},
-  {min:100, name:'জাগ্রত মন',   icon:'🛤️'},
+  {min:100, name:'জাগ্রত মন',   icon:'🌅'},
   {min:200, name:'সচেতন মন',     icon:'🏰'},
   {min:300, name:'বিশ্লেষী মন',     icon:'📐'},
   {min:400, name:'মনের স্থপতি',           icon:'🏛️'},
-  {min:500, name:'স্বাধীন মন',     icon:'🌆'},
-  {min:600, name:'মনের স্থপতি',    icon:'🌇'},
+  {min:500, name:'স্বাধীন মন',     icon:'🕊️'},
+  {min:600, name:'আত্মসার্বভৌম',    icon:'🌇'},
   {min:700, name:'মুক্ত আত্মা',    icon:'👑'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}

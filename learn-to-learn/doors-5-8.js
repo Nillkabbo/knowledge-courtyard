@@ -28,26 +28,13 @@ doors.push({
 <div class="dialogue">এটাই illusion of competence — জ্ঞানের ভ্রম। পড়ার সময় সব পরিচিত মনে হয়। "হ্যাঁ হ্যাঁ, জানি।" কিন্তু বই বন্ধ করো — কিছুই মনে নেই। কেন? কারণ পড়া = চেনা, বোঝা নয়। হাইলাইট করা = কাজ করার অনুভূতি, কিন্তু প্রভাব প্রায় শূন্য।</div>
 <div class="dialogue en">"This is the illusion of competence — the mirage of knowledge. While reading, everything feels familiar. 'Yes yes, I know.' But close the book — nothing. Why? Because reading = familiarity, not understanding. Highlighting = feeling productive, but effect is near zero."</div>
 
-<div class="code-block">Research Evidence — Dunlosky et al. (2013):
-
-কম কার্যকর পদ্ধতি:
-  ❌ Rereading — LOW utility
-     (পড়ে পড়ে মনে রাখার চেষ্টা)
-  ❌ Highlighting — LOW utility  
-     (আন্ডারলাইন করা)
-  ❌ Summarizing — LOW utility
-     (সারসংক্ষেপ লেখা)
-
-বেশি কার্যকর পদ্ধতি:
-  ✅ Practice Testing — HIGH utility
-     (নিজেকে পরীক্ষা করা = active recall)
-  ✅ Distributed Practice — HIGH utility
-     (বিরতিতে অনুশীলন = spaced repetition)
-
-Active recall শুধু rereading-এর চেয়ে 
-৫০% বেশি কার্যকর। কারণ মস্তিষ্ক 
-তথ্য বের করতে গেলে শক্ত হয় — 
-শুধু ভেতরে রাখলে নয়।</div>
+<table class="kv-table"><tr><th>পদ্ধতি (Dunlosky et al., 2013)</th><th>কার্যকারিতা</th></tr>
+<tr><td class="hl">❌ Rereading</td><td>LOW — পড়ে পড়ে মনে রাখার চেষ্টা</td></tr>
+<tr><td class="hl">❌ Highlighting</td><td>LOW — আন্ডারলাইন করা</td></tr>
+<tr><td class="hl">❌ Summarizing</td><td>LOW — সারসংক্ষেপ লেখা</td></tr>
+<tr><td class="hl">✅ Practice testing</td><td>HIGH — নিজেকে পরীক্ষা (active recall)</td></tr>
+<tr><td class="hl">✅ Distributed practice</td><td>HIGH — বিরতিতে অনুশীলন (spaced repetition)</td></tr></table>
+<div class="callout tip"><span class="co-icon">🪞</span><div>Active recall শুধু rereading-এর চেয়ে অনেক বেশি কার্যকর — কারণ মস্তিষ্ক তথ্য <em>বের করতে</em> গেলে শক্ত হয়, শুধু ভেতরে রাখলে নয়। বই বন্ধ করে যা মনে আছে লেখো; যা মনে নেই সেটাই তোমার গ্যাপ।</div></div>
 
 <div class="dialogue">মুহাসাবা — নিজেকে যাচাই করা। উমর (রা) বলেছেন — "নিজেকে বিচার করো আগে, তোমাকে বিচার করা হবে।" পরীক্ষার আগে নিজেকে পরীক্ষা করো। বই বন্ধ করে লেখো — কী মনে আছে। যা মনে নেই — সেটাই তোমার গ্যাপ। সেটাই তোমার পরের ফোকাস। আয়না কাজ করে যখন তুমি সত্য দেখতে চাও — ভ্রম নয়।</div>
 <div class="dialogue en">"Muhasabah — self-examination. Umar (RA) said — 'Judge yourselves before you are judged.' Test yourself before the exam. Close the book, write — what do you remember. What's missing — that's your gap. That's your next focus. The mirror works when you want to see truth — not illusion."</div>`,
@@ -76,25 +63,11 @@ doors.push({
 <div class="dialogue">সত্যের আয়না বলেছিলেন — নিজেকে যাচাই করো। কিন্তু আমি বলি — যাচাই এক জিনিসে নয়, বৈচিত্র্যে হয়। এক জিনিস বারবার করলে মস্তিষ্ক ঘুমিয়ে পড়ে। মিশিয়ে করলে মস্তিষ্ক জেগে থাকে — পার্থক্য বোঝে, প্যাটার্ন চেনে।</div>
 <div class="dialogue en">"The mirror of truth said — test yourself. But I say — testing happens not in one thing, but in variety. Repeating one thing puts the brain to sleep. Mixing things keeps the brain awake — discerning differences, recognizing patterns."</div>
 
-<div class="code-block">Blocked vs Interleaved Practice:
-
-BLOCKED (ঐতিহ্যিক):
-  সোম: গণিত সমস্যা A, A, A, A, A
-  মঙ্গল: গণিত সমস্যা B, B, B, B, B  
-  শুক্র: গণিত সমস্যা C, C, C, C, C
-  → সহজ মনে হয়। কিন্তু shallow।
-  → পরীক্ষায় কোন পদ্ধতি কোনটা — ভুল।
-
-INTERLEAVED (মিশ্র):
-  সোম: A, B, C, A, B
-  মঙ্গল: C, A, B, C, A  
-  শুক্র: B, C, A, B, C
-  → কঠিন মনে হয়। কিন্তু deep।
-  → পরীক্ষায় প্রতিটা আলাদা চেনা যায়।
-
-Research: interleaving retention 
-৪০% বেশি। কারণ মস্তিষ্ক শেখে 
-নিয়ম নয় — পার্থক্য।</div>
+<table class="kv-table"><tr><th>Blocked (ঐতিহ্যিক)</th><th>Interleaved (মিশ্র)</th></tr>
+<tr><td>সোম: A,A,A,A · মঙ্গল: B,B,B,B</td><td>সোম: A,B,C,A,B · মঙ্গল: C,A,B,C,A</td></tr>
+<tr><td>সহজ মনে হয়, কিন্তু shallow</td><td>কঠিন মনে হয়, কিন্তু deep</td></tr>
+<tr><td>পরীক্ষায় কোন পদ্ধতি কোনটা — গুলিয়ে যায়</td><td>পরীক্ষায় প্রতিটা আলাদা চেনা যায়</td></tr></table>
+<div class="callout tip"><span class="co-icon">🔀</span><div>গবেষণায় interleaving-এ retention উল্লেখযোগ্য বেশি — কারণ মস্তিষ্ক শুধু নিয়ম নয়, <em>পার্থক্য</em> শেখে। কঠিন লাগা মানেই গভীর শেখার সংকেত; সহজ = অগভীর।</div></div>
 
 <div class="dialogue">কুরআনে আল্লাহ বলেন — "আল্লাহর বাণী পড়া হয় তোমাদের প্রতি, কিন্তু তোমরা তা থেকে মুখ ফিরিয়ে নাও?" তাদাব্বুর — বৈচিত্র্যে চিন্তা। কুরআনে গল্প, নিয়ম, দৃষ্টান্ত, বিজ্ঞান — মিশ্র। কোনো সূরা শুধু এক বিষয়ে নয়। ইন্টারলিভিং। প্রতিটা প্রসঙ্গ অন্যকে সমৃদ্ধ করে। শেখাও তেমনি — গণিত, পদার্থ, রসায়ন আলাদা নয়। সংযোগে বোঝা যায়।</div>
 <div class="dialogue en">"Allah says — 'Are the verses of Allah recited to you, yet you turn away?' Tadabbur — varied reflection. The Quran has stories, laws, parables, science — mixed. No surah is one topic only. Interleaving. Each context enriches the others. Learning too — math, physics, chemistry aren't separate. They're understood in connection."</div>`,
@@ -123,31 +96,11 @@ doors.push({
 <div class="dialogue">ক্রস-পলিনেটর বলেছিলেন — মিশিয়ে শেখো। কিন্তু আমি বলি — শেখার সময় মস্তিষ্ককে এক করতে হয়। আর সে এক থাকা চিরস্থায়ী নয়। বিশ্রামও দরকার। কারণ বিশ্রামেই সংযোগ হয়। সেখানেই আহা! আসে।</div>
 <div class="dialogue en">"The cross-pollinator said — mix to learn. But I say — learning requires unifying the mind. And that unity isn't permanent. Rest is needed too. Because rest is where connections happen. Where 'aha!' comes."</div>
 
-<div class="code-block">Two Modes of Thinking:
-
-FOCUS MODE (লেজার):
-  কেন্দ্রিত, যৌক্তিক, ক্রমিক।
-  Prefrontal cortex সক্রিয়।
-  লেজারের মতো — এক বিন্দুতে।
-  
-  ব্যবহার: সমস্যা সমাধান, অনুশীলন, 
-  গভীর পড়া।
-
-DIFFUSE MODE (বন্যার আলো):
-  শিথিল, সৃজনশীল, সংযোগমূলক।
-  Default mode network সক্রিয়।
-  বন্যার আলোর মতো — চারদিকে।
-  
-  ব্যবহার: সৃজনশীল ধারণা, সংযোগ, 
-  "আহা!" মুহূর্ত।
-
-The Cycle:
-  Focus ২৫-৫০ মিনিট → 
-  Break ৫-১৫ মিনিট →
-  Focus আবার
-
-"Pomodoro" পদ্ধতি।
-Sleep = চূড়ান্ত diffuse mode।</div>
+<table class="kv-table"><tr><th>Focus mode (লেজার)</th><th>Diffuse mode (বন্যার আলো)</th></tr>
+<tr><td>কেন্দ্রিত, যৌক্তিক, ক্রমিক</td><td>শিথিল, সৃজনশীল, সংযোগমূলক</td></tr>
+<tr><td>Prefrontal cortex সক্রিয়</td><td>Default mode network সক্রিয়</td></tr>
+<tr><td>সমস্যা সমাধান, অনুশীলন, গভীর পড়া</td><td>সৃজনশীল ধারণা, সংযোগ, "আহা!" মুহূর্ত</td></tr></table>
+<div class="callout tip"><span class="co-icon">🎯</span><div><strong>The cycle (Pomodoro):</strong> Focus ২৫-৫০ মিনিট → break ৫-১৫ মিনিট → আবার focus। Focus-এ তথ্য ঢোকাও, diffuse-এ সংযোগ করো। "আহা!" আসে বিশ্রামে — গোসল, হাঁটা, ঘুমের আগে (Barbara Oakley, "Learning How to Learn")। <strong>ঘুম = চূড়ান্ত diffuse mode।</strong></div></div>
 
 <div class="dialogue">বারবারা ওকলি — "Learning How to Learn" কোর্সের লেখক। তিনি বলেন — মস্তিষ্কের দুই মোড। Focus mode-এ তুমি তথ্য ঢোকাও। Diffuse mode-এ তুমি সংযোগ করো। "আহা!" মুহূর্তগুলো ফোকাসে নয় — বিশ্রামে আসে। গোসলে, হাঁটতে, ঘুমানোর আগে। কারণ তখন diffuse mode কাজ করে — চারদিকে সংযোগ খুঁজছে।</div>
 <div class="dialogue en">"Barbara Oakley — author of 'Learning How to Learn.' She says — the brain has two modes. In focus mode, you input information. In diffuse mode, you connect it. 'Aha!' moments don't come in focus — they come in rest. In the shower, walking, before sleep. Because diffuse mode is working — finding connections everywhere."</div>
@@ -182,23 +135,15 @@ doors.push({
 <div class="dialogue">সাতটা বাগান পেরিয়েছ। ভাবো — আমিনা বলেছিলেন, মস্তিষ্ক বাড়তে পারে। রহিমা বলেছিলেন, সঠিক সময়ে পুনরাবৃত্তি। সালেহা বলেছিলেন, শেখাও যাতে শিখতে পারো। বদর বলেছিলেন, সচেতন অনুশীলন। জাকেরিয়া বলেছিলেন, নিজেকে যাচাই করো। ফারহান বলেছিলেন, মিশিয়ে শেখো। কামরুল বলেছিলেন, ফোকাস আর বিশ্রাম। কিন্তু এই সাতটা — বিচ্ছিন্ন কৌশল নয়। এরা এক গাছের শেকড়।</div>
 <div class="dialogue en">"You've passed seven gardens. Think — Amina said, the brain can grow. Rahima said, review at the right time. Saleha said, teach to learn. Badr said, deliberate practice. Zakariya said, test yourself. Farhan said, mix to learn. Kamrul said, focus and rest. But these seven aren't isolated techniques. They are the roots of one tree."</div>
 
-<div class="code-block">Building Mental Models:
-
-১. একটা কনসেপ্ট শেখো
-২. যা জানো তার সাথে সংযুক্ত করো
-   "এটা কি আগের কোনো কনসেপ্টের মতো?"
-৩. বিভিন্ন ক্ষেত্রে প্যাটার্ন খোঁজো
-   পদার্থের নিয়ম → অর্থনীতিতে প্রযোজ্য?
-৪. একটা মডেলে সরল করো
-   "এটা আসলে ঠিক যেমন..."
-৫. নতুন সমস্যায় মডেল পরীক্ষা করো
-
-Charlie Munger-এর জাল:
-  পদার্থ (জড়তা)
-  জীববিজ্ঞান (বিবর্তন)
-  মনোবিজ্ঞান (পক্ষপাত)
-  গণিত (চক্রবৃদ্ধি)
-  → বহু-শাস্ত্রীয় চিন্তা</div>
+<div class="callout info"><span class="co-icon">🌳</span><div><strong>Mental model গড়ার ৫ ধাপ:</strong></div></div>
+<ul class="checklist">
+<li>একটা কনসেপ্ট শেখো।</li>
+<li>যা জানো তার সাথে যুক্ত করো — "এটা কি আগের কোনো কনসেপ্টের মতো?"</li>
+<li>বিভিন্ন ক্ষেত্রে প্যাটার্ন খোঁজো — পদার্থের নিয়ম কি অর্থনীতিতে প্রযোজ্য?</li>
+<li>একটা মডেলে সরল করো — "এটা আসলে ঠিক যেমন..."।</li>
+<li>নতুন সমস্যায় মডেল পরীক্ষা করো।</li>
+</ul>
+<div class="callout tip"><span class="co-icon">🕸️</span><div><strong>Charlie Munger-এর জাল:</strong> পদার্থ (জড়তা) + জীববিজ্ঞান (বিবর্তন) + মনোবিজ্ঞান (পক্ষপাত) + গণিত (চক্রবৃদ্ধি) → বহু-শাস্ত্রীয় চিন্তা। বিচ্ছিন্ন তথ্য ভুলে যায়, সংযুক্ত তথ্য চিরকাল থাকে।</div></div>
 
 <div class="verse">"আমি শীঘ্রই তাদের দেখাব আমার নিদর্শন দিগন্তে আর তাদের নিজেদের ভেতরে।"<br>— কুরআন ৪১:৫৩<br><br>প্রতিটা জ্ঞান একটা নিদর্শন — আয়াত। আয়াতগুলো বিচ্ছিন্ন নয় — সংযুক্ত। যখন সব সংযুক্ত হয়, তখন বোঝা আসে। বটগাছ = জ্ঞানের গাছ। শেকড় = ঐশী প্রজ্ঞা।</div>
 
@@ -227,78 +172,12 @@ doors.push({
 <div class="dialogue">বটগাছের মালি বলেছিলেন — তথ্য সংযুক্ত করো। কিন্তু আমি বলি — সংযুক্ত করার পরও কাজ বাকি। তুমি দিনে যা শিখেছ, তা এখনো নড়নডে — ভাসমান। রাতে ঘুমের সময় মস্তিষ্ক তা ধরে, দৃঢ় করে, স্থায়ী করে। ঘুম ছাড়া শেখা = খালি হাতে ছুঁইছুঁই জল ধরা।</div>
 <div class="dialogue en">"The banyan gardener said — connect knowledge. But I say — even after connecting, work remains. What you learned today is still loose — floating. During sleep, the brain catches it, firms it, makes it permanent. Learning without sleep = catching water with open hands."</div>
 
-<div class="code-block">Sleep & Memory Consolidation — The Science:
-
-WHAT HAPPENS DURING SLEEP (Matthew Walker, "Why We Sleep", ২০১৭):
-
-  NREM (Non-REM) — deep sleep:
-    → hippocampus (দিনের তথ্যের অস্থায়ী স্টোর) 
-      → neocortex (দীর্ঘমেয়াদী স্টোর)-এ তথ্য স্থানান্তর
-    → ফ্যাক্ট, সূত্র, ভাষা — দৃঢ় হয়
-    → "memory transfer" — short-term → long-term
-
-  REM (Rapid Eye Movement) — dream sleep:
-    → আবেগ, সৃজনশীলতা, pattern recognition
-    → বিচ্ছিন্ন তথ্য সংযুক্ত করে — "aha!" moments
-    → দক্ষতা (piano, খেলা) motor consolidation
-
-  THE CYCLE (৯০ মিনিটের চক্র):
-    NREM → REM → NREM → REM ...
-    → রাতে ৪-৬ টা চক্র
-    → প্রথম অর্ধেক: বেশি NREM (factual consolidation)
-    → দ্বিতীয় অর্ধেক: বেশি REM (creative linking)
-
-KEY STUDIES:
-
-  ১. Stickgold Tetris study (২০০০, Harvard):
-     → novice players দিনে Tetris খেলল
-     → রাতে REM-এ তারা Tetris-এর স্বপ্ন দেখল
-     → পরদিন দক্ষতা বেশি বেড়েছে যারা ঘুমেছে
-     → মস্তিষ্ক রাতে গেম "rehearse" করেছে
-
-  ২. Walker "sleep on it" (২০০২):
-     → একটা কঠিন সমস্যা — দুই গ্রুপ
-     → গ্রুপ A: সকালে সমস্যা দেখল, ১২ ঘণ্টা পর (দিন) solve
-     → গ্রুপ B: সন্ধ্যায় দেখল, sleep, পরদিন সকালে solve
-     → গ্রুপ B ৩x বেশি সফল — insight পেল
-     → ঘুম সৃজনশীল সমাধান খুঁজে দেয়
-
-  ৩. All-nighter cost (Walker, ২০০০):
-     → ৩৫ ঘণ্টা জেগে থাকা = ৪০% memory retention loss
-     → hippocampus "বন্ধ" — নতুন তথ্য গ্রহণ করতে পারে না
-     → "যেন একটা ভর্তি হার্ডড্রাইভে লেখা যাচ্ছে না"
-
-PRACTICAL IMPLICATIONS:
-
-  ✅ কঠিন বিষয় শেখার পর ঘুমাও
-     → ঘুমের আগের ১-২ ঘণ্টা শেখা সবচেয়ে দৃঢ় হয়
-     → কারণ প্রথম NREM চক্রে তা consolidation পায়
-
-  ✅ ৭-৯ ঘণ্টা ঘুম (প্রাপ্তবয়স্কদের জন্য)
-     → Walker: "ঘুম হলো সবচেয়ে কার্যকর 
-       cognitive enhancer"
-     → টেস্টের আগের রাতে ঘুম = পড়ার চেয়ে বেশি কার্যকর
-
-  ❌ All-nighter এড়াও
-     → র‍্যাম ভর্তি মস্তিষ্ক = কিছু ধরে রাখতে পারে না
-     → পড়েই যায় — যেমন চালু কলের জলে দাগ কষা
-
-  ✅ Power nap (১০-২০ মিনিট)
-     → alertness বাড়ে, fatigue কমে
-     → কিন্তু deep consolidation হয় না (সেটা রাতের ঘুমে)
-
-  ✅ সম্পূর্ণ cycle nap (৯০ মিনিট)
-     → একটা পূর্ণ NREM+REM cycle
-     → skill consolidation ঘটে
-     → "perfect nap" length
-
-THE LEARNING TIMELINE:
-
-  সকাল: কঠিন ফ্যাক্ট শেখো (ব্রেন fresh)
-  দুপুর: practice, সমস্যা সমাধান
-  সন্ধ্যা: review, সংযুক্ত করো
-  রাত: ঘুম — মস্তিষ্ক সাজায়, দৃঢ় করে
-  পরদিন সকাল: active recall — যাচাই করো কী থেকেছে</div>
+<table class="kv-table"><tr><th>ঘুমের স্তর (Matthew Walker, 2017)</th><th>কী ঘটে</th></tr>
+<tr><td class="hl">NREM (deep sleep)</td><td>hippocampus (অস্থায়ী) → neocortex (দীর্ঘমেয়াদী) তথ্য স্থানান্তর; fact/সূত্র/ভাষা দৃঢ় হয়</td></tr>
+<tr><td class="hl">REM (dream sleep)</td><td>আবেগ, সৃজনশীলতা, pattern recognition; বিচ্ছিন্ন তথ্য যুক্ত হয় ("aha!"); দক্ষতার motor consolidation</td></tr></table>
+<div class="callout info"><span class="co-icon">🔬</span><div><strong>মূল গবেষণা:</strong> Stickgold Tetris study (2000) — যারা ঘুমিয়েছিল তাদের দক্ষতা বেশি বেড়েছে (মস্তিষ্ক রাতে "rehearse" করেছে)। "Sleep on it" — কঠিন সমস্যায় ঘুমের পর দল উল্লেখযোগ্য বেশি insight পেয়েছে। All-nighter — দীর্ঘ জেগে থাকায় বড় memory-retention ক্ষতি; hippocampus কার্যত "বন্ধ", নতুন তথ্য নিতে পারে না।</div></div>
+<div class="callout tip"><span class="co-icon">🌙</span><div><strong>প্রয়োগ:</strong> ✅ কঠিন বিষয় ঘুমের ঠিক আগে শেখো (প্রথম NREM চক্রে consolidate হয়)। ✅ ৭-৯ ঘণ্টা ঘুম — টেস্টের আগের রাতে ঘুম প্রায়ই পড়ার চেয়ে বেশি কার্যকর। ❌ all-nighter এড়াও। ✅ power nap (১০-২০ মিনিট) alertness বাড়ায়; পূর্ণ cycle nap (~৯০ মিনিট) skill consolidate করে।</div></div>
+<div class="callout info"><span class="co-icon">🗓️</span><div><strong>শেখার timeline:</strong> সকাল — কঠিন fact (brain fresh) · দুপুর — practice/সমস্যা সমাধান · সন্ধ্যা — review ও সংযোগ · রাত — ঘুম (মস্তিষ্ক সাজায়, দৃঢ় করে) · পরদিন সকাল — active recall দিয়ে যাচাই।</div></div>
 
 <div class="dialogue">রাহাত — বিশ্রাম, প্রশান্তি। কুরআনে আল্লাহ বলেন — "আমি তোমাদের ঘুম করিয়েছি বিশ্রামের জন্য, এবং রাত্রিকে করেছি আবরণ।" (৭৮:৯-১০)। নবীজি (সা) বলেছেন — "তোমাদের শরীরের উপর তোমাদের অধিকার আছে।" ঘুম অলসতা নয় — ইবাদতের অংশ, যদি নিয়ত থাকে শেখার। যে ঘুমায় যাতে শিখতে পারে — সে ঘুমেও ইবাদত করে।</div>
 <div class="dialogue en">"Rahat — rest, tranquility. Allah says — 'We made your sleep for rest, and made the night a covering.' (78:9-10). The Prophet (pbuh) said — 'Your body has a right over you.' Sleep isn't laziness — it's part of worship, if the intention is learning. One who sleeps so they can learn — worships even in sleep."</div>

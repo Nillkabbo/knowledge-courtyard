@@ -7,12 +7,12 @@ const SAVE_KEY = 'researchPaperCraftsman_v1';
 const MAX_XP = 1000;
 const RANKS = [
   {min:0,   name:'নতুন গবেষক',     icon:'🛖'},
-  {min:100, name:'পাঠক গবেষক',   icon:'🛤️'},
+  {min:100, name:'পাঠক গবেষক',   icon:'📖'},
   {min:200, name:'বিশ্লেষক',     icon:'🏰'},
   {min:300, name:'সমালোচক',     icon:'📐'},
   {min:400, name:'লেখক স্থপতি',           icon:'🏛️'},
   {min:500, name:'প্রকাশক',     icon:'🌆'},
-  {min:600, name:'লেখক স্থপতি',    icon:'🌇'},
+  {min:600, name:'পিয়ার রিভিউয়ার',    icon:'🌇'},
   {min:700, name:'হিকমাহ অধিকারী',    icon:'👑'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}

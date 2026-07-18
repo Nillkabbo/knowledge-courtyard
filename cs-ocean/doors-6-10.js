@@ -22,69 +22,22 @@ doors.push({
 <div class="dialogue">রবার্ট তোমাকে দেখলেন। "আয়েশা তোমাকে সেতু দেখিয়েছেন। কিন্তু সেতু কী দিয়ে বানানো? কোড দিয়ে। আর কোড যদি খারাপ হয় — সেতু ভেঙে পড়ে।" তিনি একটা জট পাকানো কোড ব্লক দেখালেন। "এটা legacy code। কেউ জানে না কীভাবে কাজ করে। কিন্তু চলছে। যদি ভাঙে — লাখ লাখ মানুষ প্রভাবিত। SE গবেষণা হলো — এই জট খোলা, কোড বোঝা, ভালো করা।"</div>
 <div class="dialogue en">Robert saw you. "Ayesha showed you the bridge. But what's the bridge made of? Code. And if the code is bad — the bridge collapses." He showed a tangled code block. "This is legacy code. Nobody knows how it works. But it runs. If it breaks — millions affected. SE research is — untangling this, understanding code, making it better."</div>
 
-<div class="code-block">SE & Programming Languages — সম্পূর্ণ মানচিত্র:
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">⚙️ Software Eng.</td><td>Testing, verification, program analysis, DevOps</td><td>ICSE, FSE, ASE</td></tr>
+<tr><td class="hl">🔤 Prog. Languages</td><td>Type systems, compilers, language design, Rust safety</td><td>PLDI, POPL, OOPSLA</td></tr>
+<tr><td class="hl">🧪 Formal Methods</td><td>Theorem proving, model checking, program synthesis</td><td>CAV, TACAS, POPL</td></tr>
+<tr><td class="hl">📱 Mobile/Web Eng.</td><td>App analysis, cross-platform, framework design</td><td>ICSE, FSE, ISSTA</td></tr>
+<tr><td class="hl">🤖 AI4SE</td><td>Code generation, bug detection, program repair, LLM for code</td><td>ICSE, FSE, ASE, ISSTA</td></tr>
+<tr><td class="hl">☁️ Cloud/DevOps</td><td>Microservices, orchestration, serverless, IaC</td><td>ICSE, FSE, ESEC</td></tr></table>
 
-  ┌─────────────────────────────────────────────┐
-  │  SE / PL Sub-Areas                           │
-  │                                              │
-  │  ⚙️ Software Engineering                     │
-  │     Testing, verification, program analysis,│
-  │     DevOps, continuous integration          │
-  │     Conferences: ICSE, FSE, ASE              │
-  │                                              │
-  │  🔤 Programming Languages                    │
-  │     Type systems, compilers, interpreters,  │
-  │     language design, Rust safety            │
-  │     Conferences: PLDI, POPL, OOPSLA          │
-  │                                              │
-  │  🧪 Formal Methods & Verification            │
-  │     Theorem proving, model checking,        │
-  │     program synthesis, contract checking    │
-  │     Conferences: CAV, TACAS, POPL            │
-  │                                              │
-  │  📱 Mobile & Web Engineering                 │
-  │     App analysis, web security, cross-      │
-  │     platform development, framework design  │
-  │     Conferences: ICSE, FSE, ISSTA            │
-  │                                              │
-  │  🤖 AI for SE (AI4SE)                        │
-  │     Code generation, bug detection,         │
-  │     program repair, LLM for code            │
-  │     Conferences: ICSE, FSE, ASE, ISSTA       │
-  │                                              │
-  │  ☁️ Cloud-Native & DevOps                    │
-  │     Microservices, container orchestration, │
-  │     serverless, infrastructure as code      │
-  │     Conferences: ICSE, FSE, ESEC             │
-  └─────────────────────────────────────────────┘
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৬-১০%</div><div class="sc-label">গ্রহণের হার</div></div>
+<div class="stat-card"><div class="sc-num">$150M+</div><div class="sc-label">NSF SE/PL ফান্ডিং</div></div>
+<div class="stat-card"><div class="sc-num">$130-280K</div><div class="sc-label">industry বেতন</div></div>
+<div class="stat-card"><div class="sc-num">🔥 AI4SE</div><div class="sc-label">LLM দিয়ে কোড — হট</div></div>
+</div>
 
-  ফান্ডিং:
-  • NSF: $১৫০M+ SE/PL-related
-  • Industry: Microsoft, Google, Meta — 
-    সবার SE/PL team
-  • বিগ টেক ভালো কোড চায় — তাই SE গবেষক চায়
-  • AI4SE এখন হট — LLM দিয়ে কোড জেনারেট
-
-  প্রতিযোগিতা:
-  • গ্রহণের হার: ৬-১০% (top programs)
-  • মাঝারি প্রতিযোগিতা
-  • PL এর জন্য theory দরকার (type theory)
-  • SE বেশি প্র্যাকটিক্যাল
-
-  ক্যারিয়ার:
-  • একাডেমিয়া: $৯৫K-১৪৫K
-  • Industry: $১৩০K-২৮০K
-    (developer tools, compiler engineer)
-  • DevOps/Platform engineer: high demand
-  • AI4SE — GitHub Copilot জিনিসের মতো
-
-  তোমার জন্য কি ঠিক?
-  ✅ তুমি প্রতিদিন SE করো — git, testing, 
-     CI/CD, Django, Vue
-  ✅ তুমি কোড রিভিউ করো, বাগ খোঁজো
-  ✅ যদি developer tools বানাতে ভালোবাসো
-  ✅ যদি কোড কোয়ালিটি নিয়ে ভাবো
-  ✅ AI4SE — LLM দিয়ে কোড — খুব হট</div>
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ প্রতিদিন git/testing/CI/CD করো · ✅ কোড রিভিউ ও বাগ খোঁজা ভালো লাগে · ✅ developer tools বানাতে ভালোবাসো · ✅ কোড কোয়ালিটি নিয়ে ভাবো। <strong>AI4SE</strong> (GitHub Copilot-এর মতো) সবচেয়ে হট।</div></div>
 
 <div class="dialogue">ইহসান — সুন্দরভাবে কাজ করা। হাদিসে আছে: আল্লাহ তোমাদের জন্য ইহসান পছন্দ করেন। ইহসান মানে — এমনভাবে কাজ করা যেন আল্লাহকে দেখছো। কোডে ইহসান মানে — পরিষ্কার কোড, টেস্টেড কোড, ডকুমেন্টেড কোড। যে কোড অন্যকে সাহায্য করে, শুধু নিজেকে নয়। SE গবেষণা হলো — কোডে ইহসান আনা। কোড শুধু কাজ করবে না — সুন্দরভাবে কাজ করবে। এটা শিল্প, এটা ইবাদত।</div>
 <div class="dialogue en">Ihsan — doing work beautifully. Hadith: Allah loves ihsan from you. Ihsan means — working as if you see Allah. In code, ihsan means — clean code, tested code, documented code. Code that helps others, not just yourself. SE research is — bringing ihsan to code. Code shouldn't just work — it should work beautifully. This is art, this is worship.</div>
@@ -111,74 +64,22 @@ doors.push({
 <div class="dialogue">ডেভিড তোমাকে দেখলেন। "রবার্ট তোমাকে কোডের কারখানা দেখিয়েছেন। কিন্তু কোড কেন কাজ করে? কারণ তার পেছনে তত্ত্ব আছে।" তিনি সিঁড়ির একটা ধাপে হাত বুলিয়ে দিলেন। "এই ধাপ — এটা একটা theorem। যত ওপরে যাবে, তত কঠিন theorem। কিন্তু প্রতিটা ধাপ আগের ধাপের উপর দাঁড়িয়ে। কোনো ধাপ বাদ দিলে পড়ে যাবে।"</div>
 <div class="dialogue en">David saw you. "Robert showed you the code factory. But why does code work? Because behind it is theory." He stroked a step. "This step — it's a theorem. The higher you go, the harder the theorem. But each step stands on the previous. Skip a step and you fall."</div>
 
-<div class="code-block">Theoretical CS & Algorithms — সম্পূর্ণ মানচিত্র:
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">📐 Algorithms</td><td>Graph algorithms, approximation, online, game theory</td><td>STOC, FOCS, SODA</td></tr>
+<tr><td class="hl">🧮 Complexity</td><td>P vs NP, circuit/communication complexity, PCP</td><td>STOC, FOCS, CCC</td></tr>
+<tr><td class="hl">🔢 Crypto Theory</td><td>Provable security, zero-knowledge, MPC</td><td>CRYPTO, TCC, EUROCRYPT</td></tr>
+<tr><td class="hl">🌐 Graph/Combinatorics</td><td>Random graphs, spectral methods, extremal</td><td>STOC, FOCS, SODA</td></tr>
+<tr><td class="hl">🤖 Learning Theory</td><td>PAC/online learning, sample complexity</td><td>COLT, NeurIPS, ICML</td></tr>
+<tr><td class="hl">🟢 Logic/Semantics</td><td>Type theory, category theory, Curry-Howard</td><td>POPL, LICS, CSL</td></tr></table>
 
-  ┌─────────────────────────────────────────────┐
-  │  Theory Sub-Areas                            │
-  │                                              │
-  │  📐 Algorithms & Data Structures             │
-  │     Graph algorithms, approximation, online │
-  │     algorithms, algorithmic game theory     │
-  │     Conferences: STOC, FOCS, SODA            │
-  │                                              │
-  │  🧮 Computational Complexity                 │
-  │     P vs NP, circuit complexity,            │
-  │     communication complexity, PCP theorem   │
-  │     Conferences: STOC, FOCS, CCC             │
-  │                                              │
-  │  🔢 Cryptography Theory                      │
-  │     Provable security, zero-knowledge,      │
-  │     secure multiparty computation           │
-  │     Conferences: CRYPTO, TCC, EUROCRYPT      │
-  │                                              │
-  │  🌐 Graph Theory & Combinatorics             │
-  │     Random graphs, spectral methods,        │
-  │     extremal combinatorics                   │
-  │     Conferences: STOC, FOCS, SODA            │
-  │                                              │
-  │  🤖 Learning Theory                          │
-  │     PAC learning, online learning,          │
-  │     sample complexity, generalization       │
-  │     Conferences: COLT, NeurIPS, ICML         │
-  │                                              │
-  │  🔵 Quantum Complexity Theory                │
-  │     BQP, quantum supremacy, quantum        │
-  │     information theory                      │
-  │     Conferences: STOC, FOCS, QIP             │
-  │                                              │
-  │  🟢 Logic & Semantics                        │
-  │     Type theory, category theory,           │
-  │     program correctness, Curry-Howard       │
-  │     Conferences: POPL, LICS, CSL             │
-  └─────────────────────────────────────────────┘
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৬-১০%</div><div class="sc-label">গ্রহণের হার (কম ছাত্র, কম আসন)</div></div>
+<div class="stat-card"><div class="sc-num">$200M+</div><div class="sc-label">NSF theory ফান্ডিং</div></div>
+<div class="stat-card"><div class="sc-num">$200-500K+</div><div class="sc-label">quant finance (Jane St., RenTech)</div></div>
+<div class="stat-card"><div class="sc-num">সর্বোচ্চ</div><div class="sc-label">academic সম্মান</div></div>
+</div>
 
-  ফান্ডিং:
-  • NSF: $২০০M+ theory (CCF, AFM)
-  • সরকারি: DARPA, NSA, Simons Foundation
-  • Simons Institute — theory research hub
-  • Clay Mathematics Institute — Millennium Prizes
-
-  প্রতিযোগিতা:
-  • গ্রহণের হার: ৬-১০% (top programs)
-  • কিন্তু গণিত প্রয়োজন — শক্তিশালী গণিত
-  • কোডিং গৌণ, প্রমাণ প্রাথমিক
-  • কম ছাত্র, কিন্তু কম আসনও
-
-  ক্যারিয়ার:
-  • একাডেমিয়া: $৯০K-১৬০K (সবচেয়ে academic)
-  • Industry: Quant finance ($২০০K-৫০০K+)
-    (Jane Street, Renaissance Technologies)
-  • Cryptography: security firms, NSA
-  • সবচেয়ে সম্মানিত — theory = CS-এর মস্তিষ্ক
-
-  তোমার জন্য কি ঠিক?
-  ✅ যদি গণিত ভালোবাসো — proof, logic
-  ✅ যদি abstract thinking ভালো লাগে
-  ✅ যদি সবচেয়ে গভীর প্রশ্ন নিয়ে 
-     ভাবতে চাও — P vs NP
-  ⚠️ যদি গণিত দুর্বল — ভাবো
-  ⚠️ যদি কোডিং বেশি ভালোবাসো — 
-     theory-তে কোড কম</div>
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ গণিত (proof, logic) ভালোবাসো · ✅ abstract thinking ভালো লাগে · ✅ সবচেয়ে গভীর প্রশ্ন (P vs NP) নিয়ে ভাবতে চাও · ⚠️ গণিত দুর্বল বা কোডিং বেশি পছন্দ হলে theory-তে কোড কম — ভেবে দেখো।</div></div>
 
 <div class="dialogue">"তোমার একটা সুবিধা আছে," ডেভিড বললেন। "তুমি DSA Bazaar (Book 2) করেছ — algorithms তোমার পরিচিত। কিন্তু theory হলো algorithms-এর গভীরে যাওয়া। তুমি জানো quicksort কীভাবে কাজ করে — কিন্তু theory জিজ্ঞেস করে: সবচেয়ে দ্রুত sorting কি সম্ভব? কেন? এই কেন-এর উত্তরই theory।"</div>
 <div class="dialogue en">"You have an advantage," David said. "You've done DSA Bazaar (Book 2) — algorithms are familiar. But theory is going deeper into algorithms. You know how quicksort works — but theory asks: what's the fastest possible sorting? Why? The answer to that why is theory."</div>
@@ -208,77 +109,22 @@ doors.push({
 <div class="dialogue">সারা তোমাকে দেখলেন। "ডেভিড তোমাকে তত্ত্বের চূড়া দেখিয়েছেন। কিন্তু সেই তত্ত্বের সীমা আছে — classical computation। কোয়ান্টাম সেই সীমা ভাঙে।" তিনি ব্ল্যাক-বক্সটা খুললেন — ভেতরে একটা চিপ, চীপের উপর সূক্ষ্ম তার। "এটা qubit। একটা classical bit হয় 0 না 1। কিন্তু একটা qubit — একই সাথে 0 আর 1। একই সাথে। এটাই superposition। এটাই কোয়ান্টাম।"</div>
 <div class="dialogue en">Sara saw you. "David showed you the peak of theory. But that theory has limits — classical computation. Quantum breaks those limits." She opened the black-box — inside, a chip with fine wires. "This is a qubit. A classical bit is 0 or 1. But a qubit — both 0 and 1. Simultaneously. This is superposition. This is quantum."</div>
 
-<div class="code-block">Quantum Computing — সম্পূর্ণ মানচিত্র:
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">⚛️ Quantum Algorithms</td><td>Shor (factoring), Grover (search), VQE</td><td>QIP, TQC, STOC</td></tr>
+<tr><td class="hl">🔬 Quantum Hardware</td><td>Superconducting, trapped ions, photonic, topological</td><td>APS, Nature, Science</td></tr>
+<tr><td class="hl">🔐 Post-Quantum Crypto</td><td>Lattice/code/hash-based signatures</td><td>CRYPTO, PQCrypto</td></tr>
+<tr><td class="hl">🧠 Quantum ML</td><td>Quantum neural nets, kernels, quantum advantage</td><td>NeurIPS, QIP, ICML</td></tr>
+<tr><td class="hl">🌐 Quantum Networking</td><td>QKD, quantum repeaters, quantum internet</td><td>QCRYPT, Nat. Photonics</td></tr>
+<tr><td class="hl">🔵 Error Correction</td><td>Surface codes, fault-tolerance, decoherence</td><td>QIP, Nature, Science</td></tr></table>
 
-  ┌─────────────────────────────────────────────┐
-  │  Quantum Sub-Areas                           │
-  │                                              │
-  │  ⚛️ Quantum Algorithms                       │
-  │     Shor (factoring), Grover (search),     │
-  │     variational quantum eigensolver (VQE)  │
-  │     Conferences: QIP, TQC, STOC             │
-  │                                              │
-  │  🔬 Quantum Hardware                         │
-  │     Superconducting qubits, trapped ions,  │
-  │     photonic quantum, topological qubits   │
-  │     Conferences: APS, Nature, Science       │
-  │                                              │
-  │  🔐 Post-Quantum Cryptography                │
-  │     Lattice-based crypto, code-based,      │
-  │     hash-based signatures                   │
-  │     Conferences: CRYPTO, PQCrypto            │
-  │                                              │
-  │  🧠 Quantum Machine Learning                 │
-  │     Quantum neural networks, quantum       │
-  │     kernels, quantum advantage in ML       │
-  │     Conferences: NeurIPS, QIP, ICML          │
-  │                                              │
-  │  🌐 Quantum Networking                       │
-  │     Quantum key distribution, quantum      │
-  │     repeaters, quantum internet            │
-  │     Conferences: QCRYPT, Nature Photonics    │
-  │                                              │
-  │  🔵 Quantum Error Correction                 │
-  │     Surface codes, fault-tolerant quantum, │
-  │     decoherence mitigation                   │
-  │     Conferences: QIP, Nature, Science        │
-  │                                              │
-  │  🟢 Quantum Simulation                       │
-  │     Simulating molecules, materials,       │
-  │     high-energy physics                     │
-  │     Conferences: QIP, Nature, Science        │
-  └─────────────────────────────────────────────┘
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৫-৮%</div><div class="sc-label">গ্রহণের হার</div></div>
+<div class="stat-card"><div class="sc-num">$1.2B</div><div class="sc-label">US National Quantum Initiative</div></div>
+<div class="stat-card"><div class="sc-num">$150-300K</div><div class="sc-label">industry (IBM, Google, PsiQuantum)</div></div>
+<div class="stat-card"><div class="sc-num">CS+Phys+গণিত</div><div class="sc-label">ত্রিমুখী দক্ষতা লাগে</div></div>
+</div>
 
-  ফান্ডিং:
-  • US National Quantum Initiative: $১.২B
-  • NSF, DOE, DARPA — quantum programs
-  • Industry: IBM, Google, Microsoft, 
-    IonQ, Rigetti, PsiQuantum
-  • সবচেয়ে দ্রুত বর্ধনশীল ফান্ডিং
-
-  প্রতিযোগিতা:
-  • গ্রহণের হার: ৫-৮% (top programs)
-  • কিন্তু পদার্থবিজ্ঞান দরকার!
-  • গণিত + পদার্থবিজ্ঞান + CS — ত্রিমুখী
-  • বিশেষায়িত lab দরকার — কম বিশ্ববিদ্যালয়ে
-
-  ক্যারিয়ার:
-  • একাডেমিয়া: $১০০K-১৭০K
-  • Industry: $১৫০K-৩০০K
-    (IBM Quantum, Google, PsiQuantum)
-  • Government labs: $১২০K-২০০K
-  • ভবিষ্যতের সবচেয়ে বড় opportunity — 
-    quantum industry এখন শুরু
-
-  তোমার জন্য কি ঠিক?
-  ⚠️ পদার্থবিজ্ঞান দরকার — তোমার 
-     background CS
-  ⚠️ গণিত শক্তিশালী দরকার — linear algebra
-  ✅ Quantum ML — যদি AI + Quantum চাও
-  ✅ Quantum algorithms — যদি theory ভালোবাসো
-  ✅ Post-quantum crypto — যদি security চাও
-  💡 Quantum computing শেখার জন্য 
-     IBM Quantum Experience ফ্রি</div>
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ⚠️ শক্তিশালী পদার্থবিজ্ঞান ও গণিত (linear algebra) দরকার · ✅ Quantum ML (AI+Quantum), Quantum algorithms (theory ভালোবাসলে), বা Post-quantum crypto (security চাইলে)। 💡 শুরু করতে <strong>IBM Quantum Experience</strong> ফ্রি।</div></div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"Quantum computing এখন প্রস্তুত — classical কম্পিউটার বাতিল।" ভুল। Quantum এখনও NISQ যুগে — noisy (IBM Condor ১,১২১ qubits, ২০২৩)। Error-corrected logical qubits এখনও অল্প। Classical কম্পিউটার ৫-১০ বছরে কোথাও যাচ্ছে না। Quantum শুধু নির্দিষ্ট সমস্যায় ভালো — factoring, simulation, optimization। সবকিছুতে নয়।</div>
@@ -310,82 +156,22 @@ doors.push({
 <div class="dialogue">কেভিন তোমাকে দেখলেন। "সারা তোমাকে কোয়ান্টামের সূক্ষ্ম জগত দেখিয়েছেন। কিন্তু আমি তোমাকে দেখাবো সেই জগত যেখানে CS শরীর পায়।" তিনি humanoid robot-টার মাথায় হাত রাখলেন। "এই রোবট — এটা শুধু কোড নয়। এর মধ্যে perception আছে, planning আছে, control আছে। এটা বাস্তব জগতে চলে। এটা ধাক্কা খায়, পড়ে, আবার ওঠে। Robotics হলো CS যেখানে শরীর পায়।"</div>
 <div class="dialogue en">Kevin saw you. "Sara showed you the subtle quantum world. But I'll show you the world where CS gets a body." He placed his hand on the humanoid robot's head. "This robot — not just code. It has perception, planning, control. It moves in the real world. It bumps, falls, gets up. Robotics is CS getting a body."</div>
 
-<div class="code-block">Robotics & Autonomous Systems — সম্পূর্ণ মানচিত্র:
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🤖 Perception</td><td>Vision, SLAM, depth sensing, sensor fusion</td><td>ICRA, IROS, RSS</td></tr>
+<tr><td class="hl">🗺️ Planning/Control</td><td>Path planning, trajectory opt., MPC, RL control</td><td>ICRA, IROS, CoRL</td></tr>
+<tr><td class="hl">🚗 Autonomous Vehicles</td><td>Self-driving, drone swarms, delivery robots</td><td>ICRA, IROS, IV</td></tr>
+<tr><td class="hl">🦾 Manipulation</td><td>Robotic arms, dexterous/soft robotics, tactile</td><td>RSS, ICRA, IROS</td></tr>
+<tr><td class="hl">🏥 Medical Robotics</td><td>Surgical robots, rehab, prosthetics, micro-robotics</td><td>ICRA, Hamlyn, MICCAI</td></tr>
+<tr><td class="hl">🟢 HRI / Multi-Robot</td><td>Social/collaborative robots, swarm coordination</td><td>HRI, ICRA, AAMAS</td></tr></table>
 
-  ┌─────────────────────────────────────────────┐
-  │  Robotics Sub-Areas                          │
-  │                                              │
-  │  🤖 Robot Perception                         │
-  │     Computer vision, SLAM, depth sensing,   │
-  │     sensor fusion, object tracking          │
-  │     Conferences: ICRA, IROS, RSS             │
-  │                                              │
-  │  🗺️ Motion Planning & Control                │
-  │     Path planning, trajectory optimization,│
-  │     MPC, reinforcement learning for control │
-  │     Conferences: ICRA, IROS, CoRL            │
-  │                                              │
-  │  🚗 Autonomous Vehicles                      │
-  │     Self-driving, drone swarms, autonomous │
-  │     ships, delivery robots                  │
-  │     Conferences: ICRA, IROS, IV              │
-  │                                              │
-  │  🦾 Manipulation & Grasping                  │
-  │     Robotic arms, dexterous manipulation,  │
-  │     soft robotics, tactile sensing          │
-  │     Conferences: RSS, ICRA, IROS             │
-  │                                              │
-  │  🏥 Medical Robotics                         │
-  │     Surgical robots, rehabilitation,        │
-  │     prosthetics, micro-robotics             │
-  │     Conferences: ICRA, Hamlyn, MICCAI        │
-  │                                              │
-  │  🌾 Agricultural & Field Robotics            │
-  │     Precision farming, autonomous tractors, │
-  │     environmental monitoring                │
-  │     Conferences: ICRA, IROS, FSR             │
-  │                                              │
-  │  🟢 Human-Robot Interaction                  │
-  │     Social robots, assistive robotics,     │
-  │     collaborative robots (cobots)           │
-  │     Conferences: HRI, ICRA, IROS             │
-  │                                              │
-  │  🔵 Multi-Robot Systems                      │
-  │     Swarm robotics, cooperative manipulation│
-  │     distributed coordination                │
-  │     Conferences: ICRA, IROS, AAMAS           │
-  └─────────────────────────────────────────────┘
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৫-৮%</div><div class="sc-label">গ্রহণের হার</div></div>
+<div class="stat-card"><div class="sc-num">$1B+</div><div class="sc-label">DARPA robotics ফান্ডিং</div></div>
+<div class="stat-card"><div class="sc-num">$140-300K</div><div class="sc-label">industry (Tesla, Boston Dynamics)</div></div>
+<div class="stat-card"><div class="sc-num">CS+ME+EE</div><div class="sc-label">interdisciplinary</div></div>
+</div>
 
-  ফান্ডিং:
-  • DARPA: $১B+ robotics programs
-  • NSF: $২০০M+ robotics (NRI program)
-  • NASA: space robotics, Mars rovers
-  • Industry: Boston Dynamics, Tesla, 
-    Waymo, Amazon Robotics, Figure
-  • Defense: military robotics funding
-
-  প্রতিযোগিতা:
-  • গ্রহণের হার: ৫-৮% (top programs)
-  • কিন্তু hardware lab দরকার
-  • CS + ME + EE — interdisciplinary
-  • কোডিং + hardware উভয় দরকার
-
-  ক্যারিয়ার:
-  • একাডেমিয়া: $১০০K-১৬০K
-  • Industry: $১৪০K-৩০০K
-    (Tesla Autopilot, Boston Dynamics, Amazon)
-  • Defense/Aerospace: $১২০K-২০০K
-  • Surgical robotics: high demand
-  • ভবিষ্যৎ — humanoid robots (Figure, Tesla Optimus)
-
-  তোমার জন্য কি ঠিক?
-  ✅ যদি বাস্তব জগতে impact চাও — 
-     রোবট মানুষের জীবনে সরাসরি
-  ✅ যদি AI + hardware মিলিয়ে কাজ চাও
-  ✅ Ipractus LiveKit — real-time 
-     communication, perception
-  ⚠️ Hardware নিয়ে কাজ করতে হবে
-  ⚠️ কোড থেকে বেশি — simulation, testing</div>
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ বাস্তব জগতে সরাসরি impact চাও · ✅ AI + hardware মিলিয়ে কাজ করতে চাও · ⚠️ hardware lab-এ কাজ করতে হবে, কোডের চেয়ে বেশি simulation/testing। ভবিষ্যৎ — humanoid robots (Figure, Tesla Optimus)।</div></div>
 
 <div class="dialogue">আমানত — আস্থা, দায়িত্ব। কুরআনে আল্লাহ বলেন: নিশ্চয় আল্লাহ তোমাদের আমানত আদায় করতে বলেন। রোবট গবেষণা হলো আমানত — মানুষের জীবনের আমানত। একটা self-driving গাড়ি বানালে — সেটা নিরাপদ হতে হবে। একটা surgical robot বানালে — সেটা নির্ভুল হতে হবে। রোবট গবেষক হলো সে যে আমানত বহন করে — মানুষের নিরাপত্তার আমানত। এই আমানত পালন না করলে রোবট বিপজ্জনক। আমানত পালন করলে রোবট মানুষের সেবক।</div>
 <div class="dialogue en">Amanah — trust, responsibility. Allah says: Allah commands you to deliver trusts to whom they are due. Robot research is amanah — the trust of human life. If you build a self-driving car — it must be safe. If you build a surgical robot — it must be precise. A robot researcher carries amanah — the trust of people's safety. Without this amanah, robots are dangerous. With it, robots serve humanity.</div>
@@ -412,135 +198,33 @@ doors.push({
 <div class="dialogue">নাভিদ তোমাকে দেখলেন। "তুমি নয়টা ডোমেইন দেখলে। কিন্তু এখনো কিছু নতুন ডোমেইন বাকি — যেগুলো এখন জন্ম নিচ্ছে।" তিনি মানচিত্রের এক কোণা দেখালেন। "এই জায়গাগুলো — এখানে এখনো কেউ যায়নি। কিন্তু ভবিষ্যত এখানে। তুমি যদি অগ্রিকে হতে চাও — এখানে যাও।"</div>
 <div class="dialogue en">Navid saw you. "You've seen nine domains. But there are still new domains — being born now." He showed a corner of the map. "These places — no one has gone yet. But the future is here. If you want to be a pioneer — go here."</div>
 
-<div class="code-block">Emerging & Interdisciplinary Domains — ভবিষ্যতের ক্ষেত্র:
+<table class="kv-table"><tr><th>Emerging ক্ষেত্র</th><th>বিষয় (CS + X)</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🔬 Comp. Biology</td><td>Genomics, protein folding, drug discovery (CS+Biology, $30B+ pharma)</td><td>RECOMB, ISMB</td></tr>
+<tr><td class="hl">🧪 AI4Science</td><td>AlphaFold, GNoME (materials), AlphaProof (math), GraphCast (weather)</td><td>NeurIPS, ICML</td></tr>
+<tr><td class="hl">🌍 Climate/Green</td><td>Carbon-aware computing, climate modeling, sustainable AI</td><td>ICML, ASPLOS</td></tr>
+<tr><td class="hl">⚖️ AI Ethics/Gov.</td><td>Fairness, bias, AI policy (CS+Philosophy+Law)</td><td>FAccT, AIES, CHI</td></tr>
+<tr><td class="hl">📡 Edge AI/TinyML</td><td>On-device AI, compression, federated learning</td><td>MLSys, TinyML</td></tr>
+<tr><td class="hl">🧠 NeuroAI</td><td>Spiking NNs, neuromorphic hardware (CS+Neuroscience)</td><td>NeurIPS, Cosyne</td></tr>
+<tr><td class="hl">🔗 Web3</td><td>Blockchain, DAOs, ZK proofs (CS+Economics+Crypto)</td><td>CCS, USENIX, FC</td></tr>
+<tr><td class="hl">🏥 Comp. Healthcare</td><td>AI diagnosis, clinical NLP, digital twins (CS+Medicine)</td><td>CHIL, ML4H</td></tr></table>
 
-  ┌─────────────────────────────────────────────┐
-  │  🔬 Computational Biology & Bioinformatics  │
-  │     Genomics, protein folding (AlphaFold), │
-  │     drug discovery, precision medicine     │
-  │     CS + Biology — $৩০B+ pharma funding    │
-  │     Conferences: RECOMB, ISMB, Nature       │
-  │                                              │
-  │  🧪 AI for Science (AI4Science)              │
-  │     AlphaFold3 (২০২৪ Nobel Chemistry),     │
-  │     GNoME (materials), AlphaProof (math),  │
-  │     GraphCast (weather)                    │
-  │     CS + Physics/Chem/Math/Biology         │
-  │     Conferences: NeurIPS AI4Science wks,   │
-  │     ICML, DeepMind/Google research         │
-  │                                              │
-  │  🌍 Climate Tech & Green Computing          │
-  │     Carbon-aware computing, climate model.,│
-  │     sustainable AI, energy-efficient syst. │
-  │     CS + Environmental Science              │
-  │     Conferences: ICML, ASPLOS, Nature Clim. │
-  │                                              │
-  │  ⚖️ AI Ethics, Fairness & Governance        │
-  │     Algorithmic fairness, AI bias,         │
-  │     AI policy, responsible AI              │
-  │     CS + Philosophy + Law + Sociology      │
-  │     Conferences: FAccT, AIES, CHI           │
-  │                                              │
-  │  📡 Edge AI & TinyML                         │
-  │     On-device AI, model compression,       │
-  │     federated learning at edge             │
-  │     CS + Embedded Systems                   │
-  │     Conferences: MLSys, TinyML, NeurIPS     │
-  │                                              │
-  │  🧠 NeuroAI & Brain-Inspired Computing      │
-  │     Spiking neural networks, neuromorphic  │
-  │     hardware, cognitive architectures      │
-  │     CS + Neuroscience                       │
-  │     Conferences: NeurIPS, Cosyne, Nature    │
-  │                                              │
-  │  🔗 Web3 & Decentralized Systems             │
-  │     Blockchain, DAOs, decentralized       │
-  │     identity, zero-knowledge proofs       │
-  │     CS + Economics + Cryptography          │
-  │     Conferences: CCS, USENIX, FC            │
-  │                                              │
-  │  🛰️ Space Computing                          │
-  │     Satellite networks, space edge comput.,│
-  │     interplanetary internet                │
-  │     CS + Aerospace                          │
-  │     Conferences: IEEE Aero, SpaceCom        │
-  │                                              │
-  │  🏥 Computational Healthcare                │
-  │     AI diagnosis, clinical NLP, digital    │
-  │     twins, remote monitoring               │
-  │     CS + Medicine                           │
-  │     Conferences: CHIL, ML4H, Nature Med.    │
-  └─────────────────────────────────────────────┘</div>
+<div class="callout info"><span class="co-icon">🏅</span><div><strong>মাইলফলক:</strong> ২০২৪-এর রসায়নে নোবেল গেল David Baker, Demis Hassabis ও John Jumper-এর হাতে — প্রোটিন ডিজাইন ও <strong>AlphaFold</strong> (AlphaFold2)-এর জন্য। AlphaFold3 (২০২৪ রিলিজ) এটাকে আরও এগিয়ে নিয়েছে। AI4Science এখন CS-এর দ্রুততম বর্ধনশীল ক্রসিং।</div></div>
 
 <div class="dialogue">"কিন্তু এখন মূল প্রশ্ন," নাভিদ বললেন। "কোন ডোমেইন তোমার?" তিনি কম্পাস তুলে তোমার হাতে দিলেন। "এই কম্পাস তোমাকে দিক দেবে — কিন্তু হাঁটতে হবে তোমাকে। নিজেকে তিনটা প্রশ্ন করো। সৎভাবে। নিজের কাছে সৎ হও।"</div>
 <div class="dialogue en">"But now the main question," Navid said. "Which domain is yours?" He lifted the compass, placed it in your hand. "This compass will show you direction — but you must walk. Ask yourself three questions. Honestly. Be honest with yourself."</div>
 
-<div class="code-block">    ডোমেইন নির্বাচন ফ্রেমওয়ার্ক — ৩+১ প্রশ্ন:
+<div class="callout info"><span class="co-icon">①</span><div><strong>কী ভালোবাসো? (Interest)</strong> — কোন বিষয় পড়লে উত্তেজনা হয়? কোন পেপার পড়ে বুক ধুকধুক করে? ৫-৭ বছর ধৈর্য ধরে কাজ করতে হবে — ভালোবাসা ছাড়া সম্ভব নয়।</div></div>
+<div class="callout info"><span class="co-icon">②</span><div><strong>কী পারো? (Strength)</strong> — গণিত ভালো → Theory/AI/Quantum · কোডিং ভালো → Systems/SE/Data · মানুষ বোঝো → HCI/AI Ethics · হার্ডওয়্যার → Robotics। দুর্বল জায়গায় যেও না, শক্তিশালী জায়গায় যাও।</div></div>
+<div class="callout info"><span class="co-icon">③</span><div><strong>কোথায় সুযোগ? (Market)</strong> — ফান্ডিং কোথায় বেশি, প্রতিযোগিতা কোথায় কম, ক্যারিয়ার ও ভবিষ্যৎ কোথায়? তোমার target বিশ্ববিদ্যালয়ে কোন ডোমেইন শক্তিশালী, কোন প্রফেসর?</div></div>
+<div class="callout tip"><span class="co-icon">✦</span><div><strong>বোনাস — কোথায় purpose?</strong> কোন ডোমেইনে তোমার গবেষণা মানুষের কষ্ট কমাবে, ইনসাফ আনবে? জ্ঞান একটা আমানত — কোথায় সেটা সবচেয়ে ভালো ব্যবহার হবে? সবচেয়ে গুরুত্বপূর্ণ প্রশ্ন।</div></div>
 
-    ┌──────────────────────────────────────────┐
-    │  প্রশ্ন ১: কী ভালোবাসো? (Interest)        │
-    │                                          │
-    │  কোন বিষয়ে পড়লে উত্তেজনা হয়?          │
-    │  কোন সমস্যা নিয়ে ঘণ্টা ভাবতে পারো?      │
-    │  কোন পেপার পড়ে বুক ধুকধুক করে?          │
-    │                                          │
-    │  → একটা ডোমেইন বেছে নাও যেখানে          │
-    │    তোমার উত্তেজনা সবচেয়ে বেশি            │
-    │    ৫-৭ বছর ধৈর্য ধরে কাজ করতে হবে         │
-    │    ভালোবাসা ছাড়া সম্ভব নয়               │
-    ├──────────────────────────────────────────┤
-    │  প্রশ্ন ২: কী পারো? (Strength)           │
-    │                                          │
-    │  গণিত ভালো? → Theory, AI, Quantum       │
-    │  কোডিং ভালো? → Systems, SE, Data        │
-    │  মানুষ বোঝো? → HCI, AI Ethics           │
-    │  হার্ডওয়্যার? → Robotics, Quantum HW    │
-    │                                          │
-    │  → তোমার শক্তি ম্যাপ করো                │
-    │    দুর্বল জায়গায় যেও না                 │
-    │    শক্তিশালী জায়গাযে যাও               │
-    ├──────────────────────────────────────────┤
-    │  প্রশ্ন ৩: কোথায় সুযোগ? (Market)        │
-    │                                          │
-    │  ফান্ডিং কোথায় বেশি?                    │
-    │  প্রতিযোগিতা কোথায় কম?                 │
-    │  ক্যারিয়ার কোথাযে ভালো?                 │
-    │  ভবিষ্যৎ কোথায়?                         │
-    │                                          │
-    │  → তোমার target বিশ্ববিদ্যালয়ে কোন     │
-    │    ডোমেইন শক্তিশালী? কোন প্রফেসর?       │
-    ├──────────────────────────────────────────┤
-    │  বোনাস: কোথায় দ্বীন? (Purpose)         │
-    │                                          │
-    │  কোন ডোমেইনে তুমি মানুষের কাজে আসবে?   │
-    │  কোথায় তোমার গবেষণা কষ্ট কমাবে?        │
-    │  কোথায় তুমি ইনসাফ আনবে?                │
-    │                                          │
-    │  → সবচেয়ে গুরুত্বপূর্ণ প্রশ্ন           │
-    │    জ্ঞান আল্লাহর আমানত — কোথায়          │
-    │    সেই আমানত সবচেয়ে ভালো ব্যবহার হবে?  │
-    └──────────────────────────────────────────┘
+<table class="kv-table"><tr><th>সুপারিশ</th><th>ডোমেইন</th><th>কেন</th></tr>
+<tr><td class="hl">🥇 Primary</td><td>MLSys (AI + Systems)</td><td>developer + AI দুটোই জানো — MLSys মিলন; হট, ফান্ডেড, AI-এর চেয়ে কম প্রতিযোগিতা</td></tr>
+<tr><td class="hl">🥈 Secondary</td><td>AI4SE (SE + AI)</td><td>প্রতিদিন SE করো; LLM দিয়ে কোড খুব হট (Copilot-এর মতো)</td></tr>
+<tr><td class="hl">🥉 Safety</td><td>Data/Databases</td><td>সবচেয়ে stable, কম প্রতিযোগিতা, database অভিজ্ঞতা কাজে দেবে</td></tr>
+<tr><td class="hl">❌ এড়াও</td><td>Theory, Quantum</td><td>যদি না গণিত/পদার্থবিজ্ঞান শক্তিশালী করো</td></tr></table>
 
-    তোমার জন্য আমার সুপারিশ (তোমার প্রোফাইল থেকে):
-
-    🥇 PRIMARY: AI/ML + Systems (MLSys)
-       কেন: তুমি developer (LedgerPilot) + 
-       AI জানো (Knowledge Courtyard)। 
-       MLSys = দুটোর মিলন। হট, ফান্ডেড, 
-       প্রতিযোগিতা AI-এর চেয়ে কম।
-
-    🥈 SECONDARY: SE + AI (AI4SE)
-       কেন: তুমি প্রতিদিন SE করো। LLM দিয়ে 
-       কোড — খুব হট। GitHub Copilot-এর মতো।
-
-    🥉 SAFETY: Data/Databases
-       কেন: সবচেয়ে stable, কম প্রতিযোগিতা। 
-       LedgerPilot-এ database অভিজ্ঞতা আছে।
-
-    ❌ এড়িয়ে চলো: Theory (গণিত দরকার), 
-       Quantum (পদার্থবিজ্ঞান দরকার)
-       — যদি না তুমি গণিত/পদার্থবিজ্ঞান 
-       শক্তিশালী করো।</div>
+<div class="callout tip"><span class="co-icon">🧭</span><div>এই সুপারিশ একটা starting point মাত্র — কম্পাস দিক দেখায়, হাঁটতে হবে তোমাকে। interest × strength × market × purpose মিলিয়ে নিজের সিদ্ধান্ত নাও।</div></div>
 
 <div class="dialogue">নাভিদ কম্পাস বন্ধ করলেন। "শেষ কথা। তুমি যেই ডোমেইন বেছে নাও — মনে রাখবে: গবেষক হওয়া মানে ডোমেইন বেছে নেওয়া নয়। গবেষক হওয়া মানে — সেই ডোমেইনে গভীরে যাওয়া, বছরের পর বছর, ধৈর্য ধরে। ডোমেইন শুধু শুরু। বাকিটা তোমার যাত্রা।" তিনি সব শিক্ষকের দিকে তাকালেন — সবাই হাসলেন। "তোমার কাছে এখন মানচিত্র আছে, কম্পাস আছে, নয়জন শিক্ষকের আশীর্বাদ আছে। এখন তুমি প্রস্তুত।"</div>
 <div class="dialogue en">Navid closed the compass. "Last word. Whatever domain you choose — remember: becoming a researcher doesn't mean choosing a domain. It means going deep in that domain, year after year, with patience. The domain is just the start. The rest is your journey." He looked at all the teachers — all smiled. "You now have the map, the compass, the blessing of nine teachers. Now you're ready."</div>

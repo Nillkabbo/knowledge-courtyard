@@ -22,76 +22,19 @@ doors.push({
 <div class="dialogue">তুমি একটা প্রশ্ন করো — কেন এমন হলো? জহির চোখ তুলে তাকালেন। তুমি ভাবলে তিনি তার চাকরি হারিয়েছেন কারণ তিনি খারাপ ছিলেন। কিন্তু তিনি ছিলেন সেরা। jQuery-তে কেউ তাকে ছাড়তে পারত না। সমস্যা দক্ষতায় নয় — উপাদানে। তিনি এমন কিছুতে দশ বছর মূল্য দিয়েছেন যা পচনশীল। যা অবশ্যই শেষ হবে। এটাই অবচয় ফাঁদ — obsolescence trap।</div>
 <div class="dialogue en">You ask — why did this happen? Zahir looked up. You think he lost his job because he was bad. But he was the best. Nobody could beat him in jQuery. The problem wasn't skill — it was material. He invested ten years in something perishable. Something that was bound to end. This is the obsolescence trap.</div>
 
-<div class="code-block">THE OBSOLESCENCE TRAP — অবচয় ফাঁদ:
+<table class="kv-table"><tr><th>🍂 Perishable (মূল্য কমে)</th><th>🌳 Permanent (মূল্য বাড়ে)</th></tr>
+<tr><td>নির্দিষ্ট framework (jQuery, Angular, Flash)</td><td>First principles (কম্পিউটার কীভাবে চলে)</td></tr>
+<tr><td>নির্দিষ্ট tool/API (versioned, deprecated)</td><td>Systems thinking (cause-effect chains)</td></tr>
+<tr><td>Syntax মুখস্থ, boilerplate, CRUD scaffolding</td><td>Problem decomposition + communication</td></tr>
+<tr><td>Platform-specific tricks</td><td>Business understanding + pattern recognition</td></tr>
+<tr><td>"মুখস্থ করা যায়" — যা AI পারে</td><td>Judgment ও accountability — কী বানানো উচিত, দায়ী কে</td></tr>
+<tr><td class="hl">Curve: HIGH → ০ (৩-৫ বছরে)</td><td class="hl">Curve: LOW → দশকের পর দশক compounds</td></tr></table>
 
-  PERISHABLE KNOWLEDGE (decreases in value — এখন আরও দ্রুত):
-    → Specific frameworks (jQuery, Angular, Flash)
-    → Specific tools (IDE configs, build tools)
-    → Specific APIs (versioned, deprecated)
-    → Syntax memorization — ২০২৬-তে AI এই সব লেখে
-    → Platform-specific tricks
-    → Boilerplate generation, CRUD scaffolding
-    → "মুখস্থ করা" যায় এমন যেকোনো কাজ
-  
-  ⚠️ ২০২৬ acceleration: AI কোড লেখে → perishable skill-এর 
-    value আরও দ্রুত কমে। যে কাজ AI পারে — সেটা perishable।
-    
-    Value curve: HIGH at start → ZERO in ৩-৫ years
-    জহিরের গল্প: ১০ বছর mastery → ০ value
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>২০২৬ acceleration:</strong> AI agents (Claude Code, Cursor, Devin) নিজেরাই decide করতে পারে কী কোড লিখবে, কোন abstraction ব্যবহার করবে। যে কাজ AI পারে, সেটা perishable — আর তার value আরও দ্রুত কমছে। জহিরের গল্প: ১০ বছরের jQuery mastery → ০ value।</div></div>
 
-  PERMANENT KNOWLEDGE (increases in value — এখন আরও মূল্যবান):
-    → First principles (how computers work)
-    → Systems thinking (cause-effect chains)
-    → Problem decomposition (breaking complexity)
-    → Communication (explaining clearly)
-    → Pattern recognition (transferable insights)
-    → Business understanding (why code matters)
-    → Curiosity + learning ability (meta-skill)
-    → Judgment: কী বানানো উচিত, কেন, কখন "না" বলতে হবে
-    → Accountability: ভুল হলে দায়ী কে — AI না তুমি?
+<div class="callout info"><span class="co-icon">🧭</span><div><strong>নতুন প্রশ্ন:</strong> "যখন AI execute করতে পারে, তুমি কী করো যা AI পারে না?" AI পারে না — কোন সমস্যা আদৌ সমাধান দরকার, কোন trade-off গ্রহণযোগ্য, ভুল হলে কে দায়ী, আর কখন "না" বলতে হবে। <strong>Job = executing code → AI তোমাকে replace করে। Job = judging what to build → AI তোমাকে amplify করে।</strong></div></div>
 
-    Value curve: LOW at start → COMPOUNDS over decades
-    The senior who learns new tools in days = permanent foundation
-    ২০২৬-তে: AI execute করে, তুমি judge করো — সেটাই permanent
-
-  THE CURVE:
-  
-    Value
-      ↑
-      │         ╱ ╲ ← Permanent knowledge (compounds)
-      │       ╱   ╲
-      │     ╱       ╲
-      │   ╱           ╲
-      │ ╱               ╲
-      │─────────────────────→ (old age, wisdom)
-      │ ╲                   ← Perishable knowledge (decays)
-      │   ╲
-      │     ╲
-      │       ╲
-      │         ╲ ← Zero value (obsolete)
-      └─────────────────────→ Time
-
-  THE TEST (ask yourself):
-    → Will this skill matter in ১০ years?
-    → If the tool disappeared, what remains?
-    → Am I learning the TOOL or the PRINCIPLE?
-    → Could an AI do this in ২ years?
-
-  AI ACCELERATES OBSOLESCENCE:
-    → Coders who only write boilerplate → replaceable
-    → Coders who understand WHY → irreplaceable
-    → ২০২৬ reality: AI agents (Claude Code, Cursor, Devin)
-      এখন নিজেরাই decide করতে পারে কী কোড লিখবে, কোথায়,
-      কোন abstraction ব্যবহার করবে। "typing vs deciding"
-      dichotomy আর কাজ করে না।
-    → নতুন প্রশ্ন: "যখন AI execute করতে পারে, তখন তুমি 
-      কী করো যেটা AI পারে না?"
-    → AI পারে না: কোন সমস্যা আদৌ সমাধান দরকার, কোন 
-      trade-off কোম্পানির জন্য গ্রহণযোগ্য, কে দায়ী হবে 
-      যদি ভুল হয়, এবং কখন "না" বলতে হবে।
-    → If your job is executing code → AI replaces you
-    → If your job is judging what should be built, why,
-      and at what cost → AI amplifies you</div>
+<div class="callout tip"><span class="co-icon">🧪</span><div><strong>The test — নিজেকে জিজ্ঞেস করো:</strong> এই দক্ষতা কি ১০ বছর পরে মূল্যবান থাকবে? Tool হারিয়ে গেলে কী থাকে? আমি TOOL শিখছি নাকি PRINCIPLE? AI কি এটা ২ বছরে পারবে?</div></div>
 
 <div class="dialogue">ফানা — impermanence, annihilation, that which passes away। সুফি ঐতিহ্যে ফানা হলো সেই অবস্থা যেখানে অহংকার, দক্ষতা, পরিচয় — সব ক্ষয় হয়। জহিরের jQuery দক্ষতা ফানার শিকার হয়েছে। কিন্তু ফানার বিপরীত হলো বাকা — permanence, eternity, that which remains। যে কারিগর নিজের দক্ষতাকে ফানা থেকে বাকায় স্থানান্তর করে, সে অবিচ্ছেয্য হয়। ফানা থেকে বাকা — এটাই এই বইয়ের যাত্রা।</div>
 <div class="dialogue en">"Fana — impermanence, annihilation, that which passes away. In Sufi tradition, fana is the state where ego, skill, identity — all dissolve. Zahir's jQuery mastery fell victim to fana. But the opposite of fana is baqa — permanence, eternity, that which remains. The craftsman who transfers their investment from fana to baqa becomes irreplaceable. From fana to baqa — this is this book's journey."</div>`,
@@ -119,89 +62,23 @@ doors.push({
 <div class="dialogue">তুমি জিজ্ঞেস করো — ভাঙা যন্ত্র ঠিক করছেন না কেন? ইব্রাহিম চোখ খুললেন। যন্ত্র ভাঙা, কিন্তু সমস্যা যন্ত্রে নয়। সমস্যা চিন্তায়। যিনি যন্ত্র বানিয়েছেন তিনি প্রতিটা অংশ একটা উদ্দেশ্য থেকে বানিয়েছেন। সেই উদ্দেশ্য না বুঝলে ঠিক করা অসম্ভব। প্রতিটা সমস্যাকে ভেঙে যাওয়া পর্যন্ত প্রশ্ন করো — এটাই first principles।</div>
 <div class="dialogue en">"You ask — why aren't you fixing the broken machine? Ibrahim opened his eyes. The machine is broken, but the problem isn't the machine. It's the thinking. The builder made each part for a purpose. Without understanding that purpose, fixing is impossible. Break every problem down to its roots — this is first principles."</div>
 
-<div class="code-block">FIRST PRINCIPLES THINKING — মূল নীতি চিন্তা:
+<table class="kv-table"><tr><th>Analogy thinking (Junior)</th><th>First principles (Senior)</th></tr>
+<tr><td>"আগে কীভাবে হয়েছে?"</td><td>"কেন এটা এভাবে হতে হবে?"</td></tr>
+<tr><td>Copy + modify</td><td>মৌলিক পর্যন্ত ভাঙা, নতুন করে গড়া</td></tr>
+<tr><td>Incremental (৫% better)</td><td>Revolutionary (১০x better)</td></tr>
+<tr><td>Safe, expected</td><td>Risky, unexpected</td></tr></table>
 
-THE TWO MODES OF THINKING:
+<div class="callout tip"><span class="co-icon">🚀</span><div><strong>Musk-এর battery উদাহরণ:</strong> "Batteries cost $৬০০/kWh।" Analogy → মেনে নাও, ৫% discount খোঁজো। First principles → ব্যাটারি কী দিয়ে তৈরি? (cobalt, nickel, aluminum, carbon) এর বাজারমূল্য? (~$৮০/kWh) তাহলে কেন $৬০০? ভিন্নভাবে বানানো যায়? Tesla বানায় ~$১০০/kWh — <strong>৬x কম</strong>, শুধু মৌলিক থেকে ভেবে।</div></div>
 
-  ┌──────────────────┬────────────────────────────┐
-  │ ANALOGY THINKING │ FIRST PRINCIPLES THINKING │
-  ├──────────────────┼────────────────────────────┤
-  │ আগে কীভাবে হয়েছে │ কেন এটা হতে হবে?          │
-  │ How was it done  │ Why must it be this way?   │
-  │ before?          │                            │
-  ├──────────────────┼────────────────────────────┤
-  │ Copy + modify    │ Break to fundamentals,     │
-  │                  │ rebuild from scratch        │
-  ├──────────────────┼────────────────────────────┤
-  │ Incremental      │ Revolutionary              │
-  │ (৫% better)      │ (১০x better)               │
-  ├──────────────────┼────────────────────────────┤
-  │ Safe, expected   │ Risky, unexpected           │
-  ├──────────────────┼────────────────────────────┤
-  │ Junior default   │ Senior default              │
-  └──────────────────┴────────────────────────────┘
+<div class="callout info"><span class="co-icon">🔧</span><div><strong>Engineering-এ:</strong> Junior — "React ব্যবহার করবো কারণ সবাই করে।" Senior — "কী সমস্যা সমাধান করছি? সবচেয়ে সরল সমাধান কী? React কি ঠিক tool, নির্দিষ্ট কারণসহ?" · "Microservices কারণ Netflix করে" → "আমাদের কি সেই scale-সমস্যা আছে? না (৩ জনের টিম) → monolith ভালো।"</div></div>
 
-THE METHOD (Elon Musk's rocket example):
-  
-  Problem: "Batteries cost $৬০০/kWh"
-  
-  Analogy thinking:
-    → "Everybody says so" → accept → try to negotiate ৫% discount
-  
-  First principles thinking:
-    → What are batteries made of? Cobalt, nickel, aluminum, carbon
-    → What's the market value of these materials? ~$৮০/kWh
-    → Why $৬০০? Manufacturing, supply chain, profit margins
-    → Can we build differently? YES → Tesla builds at $১০০/kWh
-  
-  → ৬x cost reduction by thinking from fundamentals
+<div class="callout tip"><span class="co-icon">5️⃣</span><div><strong>৫ Whys (Sakichi Toyoda):</strong> "Website slow" → DB ৩s/query → কোনো index নেই → কেউ query pattern দেখেনি → কোনো monitoring নেই → টিমে performance culture নেই। <strong>Root cause: culture, not database।</strong> Fix — monitoring + reviews, শুধু index নয়।</div></div>
 
-ENGINEERING EXAMPLES:
-
-  Junior (analogy): "I'll use React because everybody uses React"
-  Senior (first principles):
-    → What problem am I solving? User interaction.
-    → What's the minimum needed? DOM manipulation, state.
-    → Is React the right tool? Yes, BECAUSE [specific reason]
-    → Could a simpler tool work? Maybe. Let me check.
-  
-  Junior: "Microservices because Netflix uses them"
-  Senior:
-    → What problem? Scale, team independence
-    → Do we have that problem? No (৩-person team)
-    → Then monolith is better for us
-  
-  Junior: "Add Redis for caching because it's best practice"
-  Senior:
-    → What's slow? Database queries
-    → Why? Missing indexes → add indexes first
-    → Still slow? NOW consider caching
-
-THE ৫ WHYs TECHNIQUE (Sakichi Toyoda):
-  
-  Problem: "The website is slow"
-  ১. Why? → Database takes ৩s per query
-  ২. Why? → No indexes on frequently queried columns
-  ৩. Why? → Nobody analyzed query patterns
-  ৪. Why? → No monitoring to identify slow queries
-  ৫. Why? → No performance culture in the team
-  
-  → Root cause: culture, not database
-  → Fix: monitoring + performance reviews, not just indexes
-
-SIGNS YOU'RE USING FIRST PRINCIPLES:
-  ✅ You can explain WHY, not just HOW
-  ✅ You question assumptions others accept
-  ✅ You see patterns across different domains
-  ✅ You can build something new without a tutorial
-  ✅ You simplify complex systems
-
-SIGNS YOU'RE STUCK IN ANALOGY:
-  ❌ You say "best practice" without explaining why
-  ❌ You copy Stack Overflow without understanding
-  ❌ You panic when the pattern doesn't match
-  ❌ You can't work without a framework
-  ❌ You defend tools emotionally, not logically</div>
+<table class="kv-table"><tr><th>✅ First principles-এর লক্ষণ</th><th>❌ Analogy-তে আটকে থাকার লক্ষণ</th></tr>
+<tr><td>WHY ব্যাখ্যা করতে পারো, শুধু HOW নয়</td><td>ব্যাখ্যা ছাড়া "best practice" বলো</td></tr>
+<tr><td>অন্যদের মানা assumption প্রশ্ন করো</td><td>না বুঝে Stack Overflow কপি করো</td></tr>
+<tr><td>tutorial ছাড়া নতুন কিছু বানাতে পারো</td><td>pattern না মিললে ঘাবড়ে যাও</td></tr>
+<tr><td>জটিল সিস্টেম সরল করো</td><td>framework ছাড়া কাজ করতে পারো না</td></tr></table>
 
 <div class="dialogue">আকল — intellect, reason, the faculty of understanding fundamental truths। কুরআনে আল্লাহ বলেন — "তারা কি চিন্তা করে না? তাদের মধ্যে আকল নেই?" আকল হলো অন্ধ অনুকরণের বিপরীত। যে আকল ব্যবহার করে, সে প্রশ্ন করে। যে অনুকরণ করে, সে অন্ধ। First principles thinking-ও আকল — প্রতিটা সমস্যাকে মৌলিক সত্য পর্যন্ত ভাঙা। যে আকল দিয়ে চিন্তা করে, সে মূল থেকে উপরে ওঠে। যে অন্ধভাবে অনুকরণ করে, সে কখনো মূল দেখে না।</div>
 <div class="dialogue en">"Aql — intellect, reason, the faculty of understanding fundamental truths. Allah says — 'Do they not reflect? Have they no intellect?' Aql is the opposite of blind imitation. One who uses aql, questions. One who imitates, is blind. First principles thinking too is aql — breaking every problem to its fundamental truth. One who thinks with aql, builds up from the root. One who blindly imitates, never sees the root."</div>`,
@@ -229,132 +106,24 @@ doors.push({
 <div class="dialogue">First principles বলেছিলেন — মূল খুঁজো। কিন্তু আমি বলি — মূল খুঁজলেও সংযোগ না দেখলে অর্ধেক। প্রতিটা সিদ্ধান্ত একটা পাথর। সিস্টেমে ঢেউ তৈরি করে। এই ঢেউ কোথায় যাবে? কাকে নাড়িয়ে দেবে? কোথায় ফিরে আসবে? সিস্টেম চিন্তা — প্রতিটা সিদ্ধান্তের ঢেউ দেখা।</div>
 <div class="dialogue en">"First principles said — find the root. But I say — even finding the root is half without seeing connections. Every decision is a stone. It creates ripples in the system. Where will these ripples go? Who will they disturb? Where will they return? Systems thinking — seeing the ripples of every decision."</div>
 
-<div class="code-block">SYSTEMS THINKING — সিস্টেম চিন্তা:
+<table class="kv-table"><tr><th>Linear thinking (Junior)</th><th>Systems thinking (Senior)</th></tr>
+<tr><td>A → B (cause → effect)</td><td>A → B → C → D → back to A (feedback loop)</td></tr>
+<tr><td>Fix the symptom</td><td>Fix the system</td></tr>
+<tr><td>Optimize locally</td><td>Optimize globally</td></tr>
+<tr><td>Short-term win</td><td>Long-term health</td></tr></table>
 
-THE CORE DIFFERENCE:
+<div class="callout warn"><span class="co-icon">🌊</span><div><strong>Linear চিন্তার ট্র্যাজেডি:</strong> "API slow → Redis যোগ করো।" Linear: API fast, done! Systems: Redis → users বেশি করে → DB load বাড়ে → DB cache যোগ → দুই cache → consistency issue → race condition → data corruption → টিম ৪০% সময় cache bug-এ → velocity কমে → প্রতিযোগী দ্রুত ships → market হারায়। "Quick fix" হয়ে গেল existential threat।</div></div>
 
-  ┌──────────────────────┬────────────────────────────┐
-  │ LINEAR THINKING      │ SYSTEMS THINKING           │
-  │ (Junior)             │ (Senior)                   │
-  ├──────────────────────┼────────────────────────────┤
-  │ A → B                │ A → B → C → D → back to A  │
-  │ Cause → Effect       │ Cause → Effect → Side       │
-  │                      │ Effect → Feedback Loop       │
-  ├──────────────────────┼────────────────────────────┤
-  │ Fix the symptom      │ Fix the system              │
-  ├──────────────────────┼────────────────────────────┤
-  │ Optimize locally     │ Optimize globally           │
-  ├──────────────────────┼────────────────────────────┤
-  │ Short-term win       │ Long-term health            │
-  └──────────────────────┴────────────────────────────┘
+<div class="callout info"><span class="co-icon">🔁</span><div><strong>Feedback loops:</strong> ভালো কোড → maintain সহজ → দ্রুত feature → খুশি user → বেশি revenue → বেশি engineer → আরও ভালো কোড (reinforcing loop, compounds)। উল্টোটা = death spiral। Code quality একটা reinforcing loop — ছোট বিনিয়োগ বছরের পর বছর জমে।</div></div>
 
-THE TRAGEDY OF LINEAR THINKING:
+<table class="kv-table"><tr><th>সিদ্ধান্ত</th><th>১st effect</th><th>২nd/৩rd effects</th></tr>
+<tr><td class="hl">Microservices</td><td>দ্রুত deploy</td><td>network জটিলতা → debugging hell → ধীর feature</td></tr>
+<tr><td class="hl">Skip tests</td><td>দ্রুত ship</td><td>prod bug → রাত ২টার fix → burnout</td></tr>
+<tr><td class="hl">Abstraction layer</td><td>পরিষ্কার কোড</td><td>indirection tax → trace কঠিন → ধীর onboarding</td></tr></table>
 
-  Scenario: "API is slow → add caching"
-  
-  Linear: Add Redis → API fast! ✓ Done!
-  
-  Systems:
-    Add Redis → API fast → 
-    Users do more → database load increases →
-    DB slows → add DB cache → 
-    Now two caches → consistency issues →
-    Race conditions → data corruption →
-    Team spends ৪০% time on cache bugs →
-    Velocity drops → competitors ship faster →
-    Company loses market share
-  
-  → "Quick fix" became existential threat
+<div class="callout tip"><span class="co-icon">🎯</span><div><strong>Bottleneck focus (Theory of Constraints):</strong> প্রতিটা সিস্টেমে একটাই bottleneck; সেটা ছাড়া অন্য কিছু optimize করা = অপচয়। design(২d)→code(৩d)→test(৫d)→deploy(১d)-এ bottleneck হলো test। Coding দ্রুত করলে ১০% উন্নতি; testing দ্রুত করলে ২০%। <strong>আগে bottleneck খোঁজো।</strong> মনে রাখো Brooks' Law — "দেরি হওয়া প্রজেক্টে লোক যোগ করলে আরও দেরি হয়।"</div></div>
 
-FEEDBACK LOOPS (the senior's secret weapon):
-
-  REINFORCING LOOPS (growth or decline):
-    
-    Positive:
-      Good code → easy to maintain →
-      faster features → happier users →
-      more revenue → more engineers →
-      better code → (loop continues)
-    
-    Negative:
-      Bad code → hard to maintain →
-      slow features → frustrated users →
-      less revenue → fewer engineers →
-      worse code → (death spiral)
-    
-    → code quality is a REINFORCING LOOP
-    → small quality investments compound over years
-
-  BALANCING LOOPS (stability):
-    
-    More users → more load → 
-    system slows → users leave →
-    load decreases → system stabilizes
-    
-    → nature self-regulates (but you don't want users leaving!)
-
-SECOND-ORDER EFFECTS (thinking ahead):
-  
-  ┌──────────────────┬─────────────┬────────────────────┐
-  │ Decision         │ ১st effect  │ ২nd/৩rd effects    │
-  ├──────────────────┼─────────────┼────────────────────┤
-  │ Add microservices│ Faster      │ Network complexity │
-  │                  │ deploys     │ → debugging hell    │
-  │                  │             │ → slower features   │
-  ├──────────────────┼─────────────┼────────────────────┤
-  │ Skip tests       │ Ship faster │ Bugs in prod        │
-  │                  │             │ → ২ AM fixes         │
-  │                  │             │ → team burnout       │
-  ├──────────────────┼─────────────┼────────────────────┤
-  │ Add abstraction  │ Cleaner     │ Indirection tax     │
-  │ layer            │ code        │ → harder to trace   │
-  │                  │             │ → slower onboarding │
-  └──────────────────┴─────────────┴────────────────────┘
-
-  The senior always asks: "And THEN what?"
-  The junior only sees the first column.
-
-THE SYSTEMS MAP (how seniors think):
-  
-  Code → Users → Revenue → Team → Code (loop)
-  Each arrow has: delay, amplification, threshold
-  
-  Example: hiring too fast
-    More people → communication overhead (O(n²)) →
-    slower decisions → frustration → attrition →
-    fewer people but same overhead → worse
-  
-  Brooks' Law: "Adding people to a late project 
-  makes it later" — a SYSTEMIC truth
-
-EMERGENCE (the whole is greater than parts):
-  
-  A single ant is stupid. An ant colony is brilliant.
-  A single neuron can't think. A brain can.
-  A single microservice is simple. A microservice 
-  mesh is complex beyond any single service.
-  
-  → Systems have emergent properties that 
-    individual parts don't have
-  → You can't understand the system by studying parts
-  → You must study INTERACTIONS
-
-BOTTLENECK FOCUS (Theory of Constraints):
-  
-  Every system has ONE bottleneck.
-  Optimizing anything EXCEPT the bottleneck = waste.
-  
-  Example:
-    Development: design(২d) → code(৩d) → test(৫d) → deploy(১d)
-    Bottleneck: testing (৫d)
-    
-    Junior: "Let's make coding faster!" (৩d → ২d)
-    Result: total ৯d instead of ১০d → ১০% improvement
-    
-    Senior: "Let's make testing faster!" (৫d → ৩d)
-    Result: total ৮d instead of ১০d → ২০% improvement
-  
-  → Always find and fix the BOTTLENECK first</div>
+<div class="callout info"><span class="co-icon">🐜</span><div><strong>Emergence:</strong> একটা পিঁপড়া বোকা, কিন্তু পিঁপড়ার কলোনি বুদ্ধিমান; একটা neuron ভাবতে পারে না, মস্তিষ্ক পারে। সিস্টেমের এমন বৈশিষ্ট্য থাকে যা আলাদা অংশে নেই — তাই অংশ নয়, <strong>interaction</strong> পড়ো। Senior সবসময় জিজ্ঞেস করে: "And THEN what?"</div></div>
 
 <div class="dialogue">কদর — measure, proportion, destiny। কুরআনে আল্লাহ বলেন — "সবকিছু আমরা একটা নির্ধারিত পরিমাপে সৃষ্টি করেছি।" (৫৪:৪৯)। কদর = প্রতিটা জিনিসের সংযোগ, পরিমাপ, প্রভাব। সিস্টেম চিন্তা-ও কদর — প্রতিটা সিদ্ধান্তের সংযোগ দেখা। যে কদর বোঝে, সে দেখে — একটা সিদ্ধান্ত কীভাবে পুরো সিস্টেমকে নাড়ায়। যে কদর বোঝে না, সে শুধু নিজের অংশ দেখে, বাকি সব অন্ধকার।</div>
 <div class="dialogue en">"Qadar — measure, proportion, destiny. Allah says — 'We created all things in determined measure.' (54:49). Qadar = the connections, proportions, effects of everything. Systems thinking too is qadar — seeing the connections of every decision. One who understands qadar sees — how one decision shakes the whole system. One who doesn't, sees only their part, and the rest is darkness."</div>`,
@@ -382,104 +151,23 @@ doors.push({
 <div class="dialogue">সিস্টেম চিন্তা বলেছিলেন — সংযোগ দেখো। কিন্তু আমি বলি — সবচেয়ে গুরুত্বপূর্ণ সংযোগ কোড ও গ্রাহকের মধ্যে। গ্রাহক কেন টাকা দেয়? কোন সমস্যা সমাধান হয়? এটা না বুঝলে তুমি শুধু কোড লেখো — মূল্য তৈরি করো না। ব্যবসায়িক মস্তিষ্ক — কোড কেন গুরুত্বপূর্ণ, তা বোঝা।</div>
 <div class="dialogue en">"Systems thinking said — see connections. But I say — the most important connection is between code and customer. Why does the customer pay? What problem is solved? Without understanding this, you just write code — you don't create value. Business brain — understanding why code matters."</div>
 
-<div class="code-block">THE BUSINESS BRAIN — কেন কোড লেখা হয়:
+<div class="callout info"><span class="co-icon">🔗</span><div><strong>Value chain:</strong> Code → Feature → User-problem solved → User happy → User pays → Company revenue → Engineer paid → আরও কোড। যেকোনো link ভাঙলে chain ভেঙে পড়ে। Junior দেখে শুধু Code→Feature; senior দেখে পুরো chain; irreplaceable engineer chain-টা optimize করে।</div></div>
 
-THE VALUE CHAIN (code → customer → revenue):
+<table class="kv-table"><tr><th>৩টা সংখ্যা</th><th>মানে</th></tr>
+<tr><td class="hl">CAC</td><td>একজন customer পেতে খরচ। CAC &gt; per-user revenue হলে business ব্যর্থ।</td></tr>
+<tr><td class="hl">LTV</td><td>একজন customer থেকে জীবদ্দশায় আয়। LTV &gt; ৩× CAC = সুস্থ business।</td></tr>
+<tr><td class="hl">MRR/ARR</td><td>মাসিক/বার্ষিক recurring revenue — কোম্পানির হৃদস্পন্দন।</td></tr></table>
 
-  Code → Feature → User Problem Solved → 
-  User Happy → User Pays → Company Revenue →
-  Company Pays Engineer → Engineer Writes More Code
-  
-  → If ANY link breaks, the chain collapses
-  → Junior sees only: Code → Feature
-  → Senior sees the ENTIRE chain
-  → Irreplaceable engineer OPTIMIZES the chain
+<table class="kv-table"><tr><th>টেকনিক্যাল সিদ্ধান্ত</th><th>ব্যবসায়িক প্রভাব</th></tr>
+<tr><td class="hl">দ্রুত page load</td><td>+৭% conversion → +$৫০K/mo (Amazon: ১০০ms = ১%)</td></tr>
+<tr><td class="hl">৯৯.৯→৯৯.৯৯% uptime</td><td>outage রোধ = $১০০K/hr বাঁচানো</td></tr>
+<tr><td class="hl">ভালো onboarding</td><td>-৩০% churn → +$২০K/mo</td></tr>
+<tr><td class="hl">Test coverage ৪০→৮০%</td><td>-৫০% bug → +২ দিন velocity</td></tr>
+<tr><td class="hl">Microservices</td><td>??? (হয়তো negative!)</td></tr></table>
 
-WHAT ENGINEERS GET WRONG ABOUT BUSINESS:
+<div class="callout warn"><span class="co-icon">⏳</span><div><strong>Opportunity cost:</strong> "২ সপ্তাহ refactor করবো?" Junior — "হ্যাঁ, কোড messy।" Senior — "২ সপ্তাহ refactor = ২ সপ্তাহ feature না-shipping। সেই feature-এর revenue/user-happiness কি refactor-এর চেয়ে বেশি? হলে refactor করো, না হলে কোরো না।" প্রতি ঘণ্টার opportunity cost আছে — "এটাই কি আমার সময়ের সর্বোচ্চ-মূল্যের ব্যবহার?"</div></div>
 
-  ❌ "My code is elegant, therefore it's valuable"
-  ✅ Code is valuable ONLY if it solves a real problem
-  
-  ❌ "Business people don't understand tech"
-  ✅ Tech people who don't understand business are typists
-  
-  ❌ "I just build what they tell me"
-  ✅ The irreplaceable engineer ASKS WHY before building
-  
-  ❌ "Refactoring this will take ২ weeks but it's worth it"
-  ✅ Worth it to WHOM? For WHAT? Is there a faster alternative?
-
-THE ৩ NUMBERS EVERY ENGINEER SHOULD KNOW:
-
-  ১. CAC (Customer Acquisition Cost)
-    → How much to acquire ONE customer?
-    → If CAC > revenue per user → business fails
-  
-  ২. LTV (Lifetime Value)
-    → How much revenue from ONE customer over time?
-    → LTV > ৩× CAC = healthy business
-  
-  ৩. MRR/ARR (Monthly/Annual Recurring Revenue)
-    → The company's heartbeat
-  
-  Why engineers should know:
-    → "Should we build feature X?" → 
-      depends on: does X increase LTV? decrease CAC?
-    → "Should we refactor?" →
-      depends on: does it increase feature velocity?
-      velocity → more features → more LTV
-
-ENGINEERING DECISIONS THROUGH BUSINESS LENS:
-
-  ┌──────────────────────┬──────────────────────────────┐
-  │ Technical Decision   │ Business Impact               │
-  ├──────────────────────┼──────────────────────────────┤
-  │ Faster page load     │ +৭% conversion → +$৫০K/mo     │
-  │ (Amazon: ১০০ms = ১%)│                               │
-  ├──────────────────────┼──────────────────────────────┤
-  │ ৯৯.৯% → ৯৯.৯৯% uptime│ Prevented outage = $১০০K/hr  │
-  ├──────────────────────┼──────────────────────────────┤
-  │ Better onboarding    │ -৩০% churn → +$২০K/mo         │
-  ├──────────────────────┼──────────────────────────────┤
-  │ Test coverage ৪০→৮০% │ -৫০% bugs → +২ day velocity  │
-  ├──────────────────────┼──────────────────────────────┤
-  │ Microservices        │ ??? (maybe negative!)          │
-  └──────────────────────┴──────────────────────────────┘
-
-  → Every technical decision has a BUSINESS impact
-  → The irreplaceable engineer speaks BOTH languages
-
-OPPORTUNITY COST (the senior's lens):
-  
-  "Should I spend ২ weeks refactoring?"
-  
-  Junior: "Yes, the code is messy"
-  Senior: "২ weeks of refactoring = ২ weeks NOT shipping features.
-    What features? What revenue? What user happiness?
-    Is the refactor worth MORE than those features?
-    If yes → refactor. If no → don't."
-  
-  → Every engineering hour has opportunity cost
-  → Time spent on X = time NOT spent on Y
-  → The senior always asks: "Is this the HIGHEST-value use of my time?"
-
-UNDERSTANDING USERS (the empathy multiplier):
-  
-  Most engineers build for themselves.
-  Irreplaceable engineers build for USERS.
-  
-  The difference:
-    → Engineer-built feature: "cool tech, nobody uses"
-    → User-informed feature: "simple, solves real pain"
-  
-  Practice: Talk to ১ user per week.
-    Not support tickets — actual conversations.
-    You'll learn more in ৩০ min than ৩ months of coding.
-
-  Example: You think users want "advanced search filters"
-    → Talk to users → they want "just find my stuff faster"
-    → You over-engineered. A simple sort would've worked.
-    → Business brain saves engineering time AND serves users.</div>
+<div class="callout tip"><span class="co-icon">👥</span><div><strong>Users বোঝা (empathy multiplier):</strong> সপ্তাহে ১ জন user-এর সাথে কথা বলো — support ticket নয়, আসল ৩০ মিনিটের কথোপকথন; ৩ মাসের কোডিং-এর চেয়ে বেশি শিখবে। উদাহরণ: তুমি ভাবো user "advanced search filter" চায় → কথা বললে দেখা যায় তারা চায় "just find my stuff faster" — একটা সরল sort-ই যথেষ্ট ছিল।</div></div>
 
 <div class="dialogue">রিযিক — provision, sustenance, livelihood। কুরআনে আল্লাহ বলেন — "আল্লাহ প্রতিটা জীবকে তার রিযিক দেন।" (১১:৬)। রিযিক = জীবিকা যা স্বয়ংক্রিয়ভাবে আসে — কিন্তু শর্ত হলো চেষ্টা। ব্যবসায়িক মস্তিষ্ক-ও রিযিকের বোধ — উপার্জন কোথা থেকে আসে, কেন আসে, কীভাবে বাড়ে। যে রিযিক বোঝে, সে শুধু কোড লেখে না — মূল্য তৈরি করে। যে না বোঝে, সে ধারক — উপার্জন তার হাত দিয়ে যায়, কিন্তু সে জানে না কেন।</div>
 <div class="dialogue en">"Rizq — provision, sustenance, livelihood. Allah says — 'Allah provides for every living creature.' (11:6). Rizq = livelihood that comes — but the condition is effort. Business brain too is awareness of rizq — where revenue comes from, why, how it grows. One who understands rizq doesn't just write code — creates value. One who doesn't, is a container — revenue passes through their hands, but they don't know why."</div>`,
@@ -507,116 +195,22 @@ doors.push({
 <div class="dialogue">ব্যবসায়িক মস্তিষ্ক বলেছিলেন — কোড কেন গুরুত্বপূর্ণ তা বোঝো। কিন্তু আমি বলি — সবচেয়ে গুরুত্বপূর্ণ প্রশ্ন: কোন সমস্যা সমাধান করবে? সবাই সমাধান নিয়ে ব্যস্ত। কিন্তু সঠিক সমস্যা খুঁজছে কে? ভুল সমস্যা সমাধান = সময়, টাকা, শক্তি নষ্ট। অবিচ্ছেয্য ইঞ্জিনিয়ার সমস্যা খুঁজে, তারপর সমাধান।</div>
 <div class="dialogue en">"The business brain said — understand why code matters. But I say — the most important question: WHICH problem to solve? Everyone is busy with solutions. But who is finding the right problem? Wrong problem solved = wasted time, money, energy. The irreplaceable engineer finds problems first, then solves them."</div>
 
-<div class="code-block">PROBLEM FINDING — সঠিক সমস্যা সন্ধান:
+<table class="kv-table"><tr><th>স্তর</th><th>ভূমিকা</th><th>মূল্য</th></tr>
+<tr><td class="hl">১. Code Writer</td><td>"বলো কী বানাতে, কোড করে দিই"</td><td>কম — AI-replaceable</td></tr>
+<tr><td class="hl">২. Problem Solver</td><td>"সমস্যা দাও, সমাধান করি"</td><td>মাঝারি — useful</td></tr>
+<tr><td class="hl">৩. Problem Finder</td><td>"যে সমস্যা তুমি জানতেই না, সেটা খুঁজে সমাধান করি"</td><td>সর্বোচ্চ — unique, irreplaceable</td></tr></table>
 
-THE HIERARCHY OF ENGINEERING VALUE:
+<div class="callout info"><span class="co-icon">🔍</span><div><strong>Problem finding দেখতে কেমন:</strong> "App slow" — Solver: profile → slow query → index → done (symptom fix)। Finder: কেন slow? → user একসাথে ৫০০ item load করে → কেন ৫০০? → pagination নেই → <strong>আসল সমস্যা pagination, slow query নয়</strong> → ১০x দ্রুত + কম server cost + সম্পর্কিত সমস্যাও ধরা পড়ে।</div></div>
 
-  ┌──────────────────────────────────────┐
-  │ Level ১: CODE WRITER (replaceable)   │
-  │ → "Tell me what to build, I'll code" │
-  │ → Value: low, AI-replaceable          │
-  ├──────────────────────────────────────┤
-  │ Level ২: PROBLEM SOLVER (mid-level)  │
-  │ → "Give me a problem, I'll solve it" │
-  │ → Value: medium, useful               │
-  ├──────────────────────────────────────┤
-  │ Level ৩: PROBLEM FINDER (irreplaceable│
-  │ → "I'll FIND problems you didn't know │
-  │   existed, then solve them"           │
-  │ → Value: extremely high, unique       │
-  └──────────────────────────────────────┘
+<div class="callout tip"><span class="co-icon">🔮</span><div><strong>Anticipatory thinking:</strong> "মাসে ১০ user বাড়ছে → ৬ মাসে +৬০। DB ২০০ concurrent সামলায়, ২৫০-তে slow হবে → ৪ মাসে DB scaling লাগবে, এখনই প্রস্তুত করি।" Junior সমস্যায় react করে (firefighter), senior anticipate করে (architect), irreplaceable engineer prevent করে (oracle)।</div></div>
 
-  Most engineers are stuck at Level ১-২.
-  The irreplaceable engineer lives at Level ৩.
+<table class="kv-table"><tr><th>সমস্যা</th><th>Impact</th><th>Urgency</th><th>করণীয়</th></tr>
+<tr><td class="hl">User pay করতে পারছে না</td><td>HIGH ($)</td><td>HIGH</td><td>এখনই fix</td></tr>
+<tr><td class="hl">Scalability wall</td><td>HIGH</td><td>MEDIUM</td><td>শীঘ্রই fix</td></tr>
+<tr><td class="hl">Developer experience</td><td>MEDIUM</td><td>MEDIUM</td><td>সময় পেলে</td></tr>
+<tr><td class="hl">কোড দেখতে খারাপ</td><td>LOW</td><td>LOW</td><td>পরে fix</td></tr></table>
 
-WHAT PROBLEM FINDING LOOKS LIKE:
-
-  Scenario: "Users complain the app is slow"
-  
-  Problem Solver (Level ২):
-    → Profile → find slow query → add index → done
-    → solved the TECHNICAL problem
-  
-  Problem Finder (Level ৩):
-    → WHY is it slow? → users load ৫০০ items at once
-    → WHY ৫০০? → no pagination → devs forgot
-    → Real problem: missing pagination, not slow query
-    → Add pagination → ১০x faster, less server cost
-    → solved the ROOT problem AND found related issues
-
-  → Problem solver fixes symptoms
-  → Problem finder fixes root causes + prevents future issues
-
-THE ART OF ASKING WHY (root cause analysis):
-  
-  Symptom: "The deploy failed"
-  
-  ❌ Junior: "I'll just retry" (fixes symptom)
-  ✅ Senior: 
-    Why did it fail? → OOM error
-    Why OOM? → memory leak in new feature  
-    Why memory leak? → unbounded cache
-    Why unbounded? → no eviction policy
-    Why no policy? → nobody set cache limits
-    → ROOT CAUSE: no cache size standards
-    → FIX: cache standards (prevents ALL future leaks)
-  
-  → One "why" chain prevents ১০০ future bugs
-
-ANTICIPATORY THINKING (seeing around corners):
-
-  The irreplaceable engineer predicts problems:
-  
-  "We're adding ১০ users/month. In ৬ months = ৬০ more.
-   Our DB handles ২০০ concurrent. At ২৫০, it'll slow.
-   In ৪ months, we need DB scaling. 
-   Let me prepare NOW, not when it breaks."
-  
-  → Junior reacts to problems (firefighter)
-  → Senior anticipates problems (architect)
-  → The irreplaceable engineer PREVENTS problems (oracle)
-
-PROBLEM SELECTION (not all problems are equal):
-
-  ┌──────────────────┬──────────┬──────────┐
-  │ Problem Type     │ Impact   │ Urgency  │
-  ├──────────────────┼──────────┼──────────┤
-  │ User can't pay   │ HIGH ($) │ HIGH     │ ← Fix NOW
-  ├──────────────────┼──────────┼──────────┤
-  │ Code is ugly     │ LOW      │ LOW      │ ← Fix LATER
-  ├──────────────────┼──────────┼──────────┤
-  │ Scalability wall │ HIGH     │ MEDIUM   │ ← Fix SOON
-  ├──────────────────┼──────────┼──────────┤
-  │ Developer XP     │ MEDIUM   │ MEDIUM   │ ← Fix WHEN FREE
-  └──────────────────┴──────────┴──────────┘
-
-  Eisenhower Matrix for engineering:
-    → Urgent + Important: do NOW (prod is down)
-    → Important, not urgent: SCHEDULE (refactor, scale)
-    → Urgent, not important: DELEGATE (CI fix)
-    → Neither: ELIMINATE (meeting that could be email)
-
-THE PROBLEM JOURNAL (practice technique):
-  
-  Keep a journal of problems you notice:
-    → "Users click back button ৩x → confusion"
-    → "API response includes unused fields → bandwidth waste"
-    → "Onboarding step ৪ has ৬০% drop-off"
-  
-  Review weekly. Prioritize. 
-  Present top ৩ to team.
-  → You become the person who SEES problems
-  → This is irreplaceable
-
-WHY PROBLEM FINDERS ARE RARE:
-  → It requires saying "this is wrong" (uncomfortable)
-  → It requires stopping to think (slows down)
-  → It requires understanding users (empathy)
-  → It requires systems thinking (connections)
-  → It requires courage to question assumptions
-  
-  → Most engineers would rather CODE than THINK
-  → That's exactly why problem finders are irreplaceable</div>
+<div class="callout tip"><span class="co-icon">📓</span><div><strong>Problem Journal:</strong> রোজ একটা সমস্যা লেখো যা লক্ষ্য করেছ (সমাধান নয়) — "user ৩ বার back চাপে → confusion", "onboarding step ৪-এ ৬০% drop-off"। সাপ্তাহিক review, top ৩ টিমকে দেখাও। তুমি হয়ে ওঠো সেই লোক যে সমস্যা <em>দেখে</em> — এটাই irreplaceable, কারণ বেশিরভাগ engineer THINK-এর চেয়ে CODE করতে বেশি পছন্দ করে।</div></div>
 
 <div class="dialogue">তালাশ — search, seek, quest। কুরআনে আল্লাহ বলেন — "যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।" তালাশ শুধু সমাধানের নয় — সমস্যারও। প্রকৃত তালাশ হলো সঠিক সমস্যা খুঁজে বের করা, সমাধানের আগে। যে তালাশ করে, সে আগে দেখে — সমস্যা বড় হওয়ার আগেই। যে তালাশ করে না, সে অপেক্ষা করে — সমস্যা ফেটে পড়ার জন্য।</div>
 <div class="dialogue en">"Talash — search, seek, quest. Allah says — 'Those who seek Me, I guide them.' Talash isn't just for solutions — it's for problems too. True talash is finding the right problem before the solution. One who seeks, sees early — before the problem grows. One who doesn't seek, waits — for the problem to explode."</div>`,

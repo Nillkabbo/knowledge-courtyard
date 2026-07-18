@@ -22,30 +22,12 @@ doors.push({
 <div class="dialogue">আয়না-কারিগর বলেছিলেন — ফিডব্যাক লুপ। কিন্তু আমি বলি — ফিডব্যাক কীসের উপর? কাজের উপর। কাজ না করলে ফিডব্যাক কীসে? ভিডিও বলেছে "জ্ঞান শক্তি।" আংশিক সত্য। জ্ঞান শক্তি নয় — জ্ঞান × কর্ম শক্তি। গুণফল। যোগফল নয়।</div>
 <div class="dialogue en">"The mirror-maker said — feedback loop. But I say — feedback on what? On action. No action = no feedback. The video said 'knowledge is power.' Partial truth. Knowledge isn't power — knowledge × action is power. Product. Not sum."</div>
 
-<div class="code-block">Knowledge × Action = Power:
-
-"Knowledge is Power" (Francis Bacon, ১৫৯৭)
-  → ১৭শ শতকে সত্য: জ্ঞানই ছিল দুর্লভ
-
-২১শ শতকে অন্তত আংশিক ভুল:
-  • জ্ঞান এখন সস্তা (ইউটিউব, উইকিপেডিয়া, LLM)
-  • কর্ম (execution) এখনও দুর্লভ — 
-    তার জন্য লাগে সাহস, অধ্যবসায়, ব্যর্থতা সহ্য
-
-আসল সূত্র: Knowledge × Action = Power
-  যেকোনোটি শূন্য হলে ফলাফল শূন্য।
-
-  Knowledge=100, Action=0 → Power=0
-  Knowledge=10,  Action=10 → Power=100
-  Knowledge=50,  Action=50 → Power=2500
-
-আরও গুরুত্বপূর্ণ:
-  জ্ঞান প্রয়োগের মাধ্যমেই গভীর হয়।
-  
-  Declarative Memory: পড়ে শেখা (দ্রুত মুছে যায়)
-  Procedural Memory: করে শেখা (স্থায়ী)
-  
-  → পড়ো, তারপর করো। করা ছাড়া শেখা অসম্পূর্ণ।</div>
+<div class="callout info"><span class="co-icon">⚡</span><div><strong>"Knowledge is power" (Francis Bacon, 1597)</strong> — ১৭শ শতকে সত্য, তখন জ্ঞানই দুর্লভ ছিল। ২১শ শতকে অন্তত আংশিক ভুল: জ্ঞান এখন সস্তা (YouTube, Wikipedia, LLM), কিন্তু <em>execution</em> এখনো দুর্লভ — তার জন্য লাগে সাহস, অধ্যবসায়, ব্যর্থতা সহ্য।</div></div>
+<table class="kv-table"><tr><th>Knowledge</th><th>Action</th><th>Power (গুণফল)</th></tr>
+<tr><td>১০০</td><td>০</td><td>০</td></tr>
+<tr><td>১০</td><td>১০</td><td>১০০</td></tr>
+<tr><td>৫০</td><td>৫০</td><td>২৫০০</td></tr></table>
+<div class="callout tip"><span class="co-icon">🧠</span><div><strong>প্রয়োগেই জ্ঞান গভীর হয়:</strong> Declarative memory (পড়ে শেখা) দ্রুত মুছে যায়; procedural memory (করে শেখা) স্থায়ী। পড়ো, তারপর করো — করা ছাড়া শেখা অসম্পূর্ণ।</div></div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ জ্ঞান সংগ্রহ</div>১০০টা টিউটোরিয়াল দেখো। ৫০টা বই পড়ো। ২০টা কোর্স করো। মনে হয় "অনেক জানি।" কিন্তু — কিছু বানাওনি। কোনো সমস্যা সমাধান করোনি। Knowledge=100, Action=0 → Power=0।</div>
@@ -79,37 +61,12 @@ doors.push({
 <div class="dialogue">সেতু নির্মাতা বলেছিলেন — জ্ঞান × কর্ম। কিন্তু আমি বলি — কর্মের আগে আসে ভাঙা। পুরোনো ভুল ধারণা না ভাঙলে নতুন সঠিক ধারণা বসে না। আলভিন টফলার — ভবিষ্যৎ প্রভাবক। তিনি বলেছেন একটা গভীর কথা, যা ভিডিওর সবচেয়ে গুরুত্বপূর্ণ অংশ।</div>
 <div class="dialogue en">"The bridge builder said — knowledge × action. But I say — before action comes breaking. Without breaking old wrong ideas, new correct ones don't take root. Alvin Toffler — futurist. He said something deep, the video's most important part."</div>
 
-<div class="code-block">Alvin Toffler — Three Actions:
-
-"The illiterate of the 21st century will not be 
-those who cannot read and write, but those who 
-cannot LEARN, UNLEARN, and RELEARN."
-
-         UNLEARN
-            ↑
-      ╱─────┴─────╲
-     ╱             ╲
-  LEARN ──────── RELEARN
-
-১. LEARN (শেখা) — নতুন জ্ঞান গ্রহণ
-   ভিডিও এটা বলেছে ✅
-
-২. UNLEARN (বিস্মরণ) — পুরোনো জ্ঞান বর্জন
-   ভিডিও এটা মিস করেছে! ⚠️
-   • "Neurons that fire together wire together"
-   • একবার শিখলে neural path মজবুত হয়
-   • পুরোনো জ্ঞান বর্জন = path ভেঙে নতুন গড়া
-   • শারীরিকভাবে মস্তিষ্কের জন্য কষ্টকর
-   • আবেগগতভাবে কঠিন — পরিচয়ের অংশ হয়ে যায়
-
-৩. RELEARN (পুনঃশেখা) — নতুন করে শেখা
-   ভিডিও এটা বলেছে ✅
-
-Elon Musk-এর উদাহরণ:
-  শক্তি শুধু "দ্রুত শেখা" নয় —
-  "first-principles thinking": 
-  সবচেয়ে মৌলিক সত্যে ভেঙে তারপর নতুন গড়া।
-  এটি মূলত একটি unlearning কৌশলই।</div>
+<div class="callout info"><span class="co-icon">🔄</span><div><strong>Alvin Toffler:</strong> "২১শ শতকের নিরক্ষর তারা নয় যারা পড়তে-লিখতে পারে না — বরং যারা <strong>LEARN, UNLEARN, ও RELEARN</strong> করতে পারে না।"</div></div>
+<table class="kv-table"><tr><th>ধাপ</th><th>কী</th><th>ভিডিও?</th></tr>
+<tr><td class="hl">Learn</td><td>নতুন জ্ঞান গ্রহণ</td><td>✅ বলেছে</td></tr>
+<tr><td class="hl">Unlearn</td><td>পুরোনো জ্ঞান বর্জন — "fire together, wire together"; পুরোনো path ভাঙা শারীরিক ও আবেগগতভাবে কঠিন (পরিচয়ের অংশ)</td><td>⚠️ মিস করেছে</td></tr>
+<tr><td class="hl">Relearn</td><td>নতুন করে শেখা</td><td>✅ বলেছে</td></tr></table>
+<div class="callout tip"><span class="co-icon">⚙️</span><div><strong>Elon Musk-এর উদাহরণ:</strong> শক্তি "দ্রুত শেখা" নয় — <em>first-principles thinking</em>: সবচেয়ে মৌলিক সত্যে ভেঙে নতুন করে গড়া। এটা মূলত একটা unlearning কৌশলই।</div></div>
 
 <div class="dialogue">তওবা — ফিরে যাওয়া। শুরুতে ফিরে যাওয়া। পুরোনো ভুল ছেড়ে নতুন সত্য গ্রহণ। কুরআনে আল্লাহ বলেন — "তওবা করো আল্লাহর কাছে।" তওবা মানে শুধু অনুশোচনা নয় — পুরোনো পথ ছেড়ে নতুন পথে যাওয়া। Unlearn। যে unlearn করতে পারে না, সে আটকে থাকে। যে unlearn করতে পারে, সে বাড়ে।</div>
 <div class="dialogue en">"Tawbah — returning. Going back to the beginning. Leaving old errors and embracing new truth. Allah says — 'Turn to Allah in repentance.' Tawbah isn't just regret — it's leaving the old path for a new one. Unlearn. One who can't unlearn stays stuck. One who can, grows."</div>`,
@@ -138,34 +95,9 @@ doors.push({
 <div class="dialogue">কুমার বলেছিলেন — unlearn, learn, relearn। কিন্তু আমি বলি — relearn করতে হবে সঠিক সময়ে। একবারে নয়। বিরতিতে। ভিডিও এখানে দুটো সবচেয়ে গুরুত্বপূর্ণ জিনিস সম্পূর্ণ মিস করেছে — spaced repetition আর active recall। এগুলো ছাড়া ২০ ঘণ্টা প্র্যাকটিস = বাল্কে পানি ঢালা।</div>
 <div class="dialogue en">"The potter said — unlearn, learn, relearn. But I say — relearn must happen at the right time. Not all at once. At intervals. The video completely missed two of the most important things — spaced repetition and active recall. Without these, 20 hours of practice = pouring water into a sieve."</div>
 
-<div class="code-block">Two Missing Pillars — ভিডিও যা মিস করেছে:
-
-১. SPACED REPETITION (স্পেসড রিপিটিশন)
-   Ebbinghaus-এর Forgetting Curve:
-   
-   শেখার পর →  ১ ঘণ্টা: ৫০% ভুলে গেছে
-                ১ দিন:  ৭০% ভুলে গেছে
-                ১ সপ্তাহ: ৭৫% ভুলে গেছে
-   
-   ২০ ঘণ্টা শিখলে এক সপ্তাহে ৭৫% ভুলে যাবেন!
-   
-   সমাধান: বিরতিতে পুনরাবৃত্তি
-     Day 1 → Day 3 → Day 7 → Day 16 → Day 35
-     প্রতিটা review তোমার ভুলে যাওয়ার ঠিক আগে।
-
-২. ACTIVE RECALL (অ্যাক্টিভ রিকল)
-   পড়া = declarative knowledge (দ্রুত মুছে যায়)
-   মনে করার চেষ্টা = procedural knowledge (স্থায়ী)
-   
-   পড়ে মনে হয় "জানি" — কিন্তু বই বন্ধ করো, 
-   খালি পাতায় লেখো — কিছুই মনে নেই।
-   
-   সমাধান: বই বন্ধ করে মনে করো
-     • পরীক্ষা দাও
-     • কাউকে শেখাও (Feynman)
-     • খালি কাগজে মানচিত্র আঁকো
-
-এই দুটো ছাড়া — শেখা অসম্পূর্ণ।</div>
+<div class="callout warn"><span class="co-icon">📉</span><div><strong>Spaced repetition — Ebbinghaus forgetting curve:</strong> শেখার পর ১ ঘণ্টায় ~৫০%, ১ দিনে ~৭০%, ১ সপ্তাহে ~৭৫% ভুলে যাবে। ২০ ঘণ্টা শিখলে এক সপ্তাহে ৭৫% উধাও! সমাধান — বিরতিতে review: Day 1 → 3 → 7 → 16 → 35, প্রতিটা review তোমার ভুলে যাওয়ার ঠিক আগে।</div></div>
+<div class="callout info"><span class="co-icon">🧩</span><div><strong>Active recall:</strong> পড়া = declarative (দ্রুত মুছে যায়); মনে করার চেষ্টা = procedural (স্থায়ী)। পড়ে মনে হয় "জানি" — কিন্তু বই বন্ধ করে খালি পাতায় লিখলে কিছুই আসে না। সমাধান — বই বন্ধ করে মনে করো: নিজেকে পরীক্ষা দাও · কাউকে শেখাও (Feynman) · খালি কাগজে মানচিত্র আঁকো।</div></div>
+<div class="callout tip"><span class="co-icon">🛠️</span><div><strong>আজই শুরু:</strong> Anki (ফ্রি) — প্রতিটা কনসেপ্ট একটা card, অ্যালগরিদম তোমার forgetting curve মাপে। প্রতিটা পড়ার পর — বই বন্ধ, খালি পাতায় যা মনে আছে লেখো; যা মিস করো সেটাই তোমার গ্যাপ। এই দুটো ছাড়া দ্রুত শেখা = দ্রুত ভুলে যাওয়া।</div></div>
 
 <div class="dialogue">কুরআনে আল্লাহ বলেন — "তোমরা কি এই উপদেশে বিস্ময় প্রকাশ করছ যে তোমাদেরকে স্মরণ করানো হচ্ছে? এবং তোমরা একে অস্বীকার করছ?" স্মরণ — বিরতিতে, বারবার, সক্রিয়ভাবে। কুরআনে একই কাহিনী বিভিন্ন সূরায় বিভিন্ন কোণ থেকে বলা হয়েছে — spaced repetition। আর শুধু শোনা নয় — নিজে চিন্তা করতে বলা হয়েছে — active recall। দুটোই আল্লাহ কুরআনে প্রয়োগ করেছেন।</div>
 <div class="dialogue en">"Allah says — 'Do you wonder that a reminder has come to you? And you deny it?' Remembrance — at intervals, repeatedly, actively. The Quran tells the same story from different angles in different surahs — spaced repetition. And not just hearing — you're told to reflect yourself — active recall. Allah uses both in the Quran."</div>`,
@@ -197,33 +129,13 @@ doors.push({
 <div class="dialogue">সাতজন প্রবীণ পেরিয়েছ। বাতিকর বলেছিলেন — মনোযোগ হলো মুদ্রা। মাইলফলক রক্ষক বলেছিলেন — তিন স্তরের যাত্রা। বরফ-ডুবুরি বলেছিলেন — বিভ্রম ভাঙো। আয়না-কারিগর বলেছিলেন — ফিডব্যাক নাও। সেতু নির্মাতা বলেছিলেন — জ্ঞান × কর্ম। কুমার বলেছিলেন — আনলেয়ার্ন, লার্ন, রিলেয়ার্ন। জোয়ার পর্যবেক্ষক বলেছিলেন — বিরতিতে ফিরে এসো, সক্রিয়ভাবে মনে করো। কিন্তু এই সবগুলোর উপরে — একটা দক্ষতা যা সবকিছু নিয়ন্ত্রণ করে — মেটাকগনিশন। নিজের চিন্তা সম্পর্কে সচেতন থাকা। "আমি কি সত্যিই শিখছি, নাকি শিখেছি বলে মনে করছি?"</div>
 <div class="dialogue en">"You've passed seven elders. The lighthouse keeper said — attention is currency. The milestone guardian said — three levels of journey. The ice diver said — break the illusion. The mirror-maker said — get feedback. The bridge builder said — knowledge × action. The potter said — unlearn, learn, relearn. The tide watcher said — return at intervals, recall actively. But above all these — one skill that controls everything — metacognition. Awareness of your own thinking. 'Am I truly learning, or just believing I am?'"</div>
 
-<div class="code-block">Metacognition — The Master Skill:
-
-মেটাকগনিশন = "চিন্তা সম্পর্কে চিন্তা করা"
-             = "শেখা সম্পর্কে চিন্তা করা"
-             = "নিজের জ্ঞান সম্পর্কে সচেতন থাকা"
-
-তিনটি প্রশ্ন — প্রতিটা শেখার সময়:
-
-১. PLANNING: "আমি কী শিখতে যাচ্ছি? কেন?"
-   → শেখার আগে লক্ষ্য স্পষ্ট করো
-
-২. MONITORING: "আমি কি বুঝছি? কোথায় আটকাচ্ছি?"
-   → শেখার সময় নিজেকে ট্র্যাক করো
-
-৩. EVALUATION: "আমি কি সত্যিই শিখেছি? কী মিস করেছি?"
-   → শেখার পর নিজেকে যাচাই করো
-
-The Cycle:
-  Plan → Learn → Monitor → Adjust → 
-  Evaluate → Re-plan → Deeper Learning
-
-"দ্রুত"-এর অন্ধকার দিক:
-  কিছু বিষয় আছে যা ধীরগতিতে শিখতেই হয় —
-  গভীর গাণিতিক অন্তর্দৃষ্টি, দার্শনিক চিন্তন, 
-  সৃজনশীল দক্ষতা।
-  সব কিছু দ্রুত শেখা যায় না। 
-  চেষ্টা করলে পৃষ্ঠপোষিত জ্ঞান হয়।</div>
+<div class="callout info"><span class="co-icon">🧠</span><div><strong>Metacognition</strong> = "চিন্তা সম্পর্কে চিন্তা" = "নিজের জ্ঞান সম্পর্কে সচেতন থাকা" — সব দক্ষতার উপরের master skill।</div></div>
+<table class="kv-table"><tr><th>পর্যায়</th><th>প্রশ্ন</th></tr>
+<tr><td class="hl">Planning</td><td>"আমি কী শিখতে যাচ্ছি? কেন?" — শেখার আগে লক্ষ্য স্পষ্ট</td></tr>
+<tr><td class="hl">Monitoring</td><td>"আমি কি বুঝছি? কোথায় আটকাচ্ছি?" — শেখার সময় নিজেকে track</td></tr>
+<tr><td class="hl">Evaluation</td><td>"আমি কি সত্যিই শিখেছি? কী মিস করেছি?" — শেখার পর যাচাই</td></tr></table>
+<div class="callout tip"><span class="co-icon">🔁</span><div><strong>The cycle:</strong> Plan → Learn → Monitor → Adjust → Evaluate → Re-plan → deeper learning।</div></div>
+<div class="callout warn"><span class="co-icon">🐢</span><div><strong>"দ্রুত"-এর অন্ধকার দিক:</strong> কিছু জিনিস ধীরেই শিখতে হয় — গভীর গাণিতিক অন্তর্দৃষ্টি, দার্শনিক চিন্তন, সৃজনশীল দক্ষতা। সব দ্রুত শেখা যায় না; জোর করলে পৃষ্ঠতলীয় জ্ঞান হয়।</div></div>
 
 <div class="verse">"নিশ্চয় আসমান ও জমিনের সৃষ্টিতে, রাত ও দিনের পরিবর্তনে, জ্ঞানীদের জন্য নিদর্শন রয়েছে।"<br>— কুরআন ৩:১৯০<br><br>মেটাকগনিশন হলো সেই দৃষ্টি — যা নিজের চিন্তাকে দেখে, নিজের শেখাকে যাচাই করে, নিজের জ্ঞানের সীমা চেনে। যে এটা পেয়েছে, সে শিক্ষার স্রষ্টা — শিক্ষার্থী নয়।</div>
 

@@ -7,12 +7,12 @@ const SAVE_KEY = 'knowledgeCraftsman_v1';
 const MAX_XP = 1000;
 const RANKS = [
   {min:0,   name:'নতুন পাঠক',     icon:'🛖'},
-  {min:100, name:'সচেতন পাঠক',   icon:'🛤️'},
+  {min:100, name:'সচেতন পাঠক',   icon:'📖'},
   {min:200, name:'গভীর পাঠক',     icon:'🏰'},
   {min:300, name:'বিশ্লেষক',     icon:'📐'},
   {min:400, name:'জ্ঞান স্থপতি',           icon:'🏛️'},
   {min:500, name:'সংশ্লেষক',     icon:'🌆'},
-  {min:600, name:'জ্ঞান স্থপতি',    icon:'🌇'},
+  {min:600, name:'চিন্তা-কারিগর',    icon:'🌇'},
   {min:700, name:'হিকমাহ অধিকারী',    icon:'👑'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}

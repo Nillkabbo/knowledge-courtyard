@@ -23,97 +23,14 @@ doors.push({
 <div class="dialogue">তুমি ২৭টা বই পড়েছ। ২৭টা বাড়ি। কিন্তু কোনো রাস্তা নেই। RAG শিখেছ (Book ১০), কিন্তু human psychology-এর (Book ২৪) সাথে সংযুক্ত করোনি। Prompt engineering (Book ৭) শিখেছ, কিন্তু research paper reading-এর (Book ২৭) সাথে যুক্ত করোনি। System design (Book ৪) জানো, কিন্তু fine-tuning-এর (Book ১১) সাথে সংযুক্ত করোনি। প্রতিটা বই একটা দ্বীপ। সম্পদ আছে — কিন্তু সেতু নেই।</div>
 <div class="dialogue en">"You've read 27 books. 27 houses. But no roads. You learned RAG (Book 10), but didn't connect it to human psychology (Book 24). You learned prompt engineering (Book 7), but didn't link it to research paper reading (Book 27). You know system design (Book 4), but haven't connected it to fine-tuning (Book 11). Each book is an island. Resources exist — but no bridges."</div>
 
-<div class="code-block">THE SILO PROBLEM — Why Disconnected Knowledge Fails:
-
-THE TOO-POOR-UNDERSTANDING PROBLEM:
-
-  ┌──────────────────────────────────────────────┐
-  │  ISOLATED KNOWLEDGE (what most people have)   │
-  │                                                │
-  │  [RAG]  [Psychology]  [System Design]         │
-  │    ●        ●           ●                     │
-  │  Each is a dot. No lines between them.        │
-  │  When a problem needs RAG + Psychology,       │
-  │  the person can't combine them.               │
-  │  They only see the dots, not the connections. │
-  ├──────────────────────────────────────────────┤
-  │  CONNECTED KNOWLEDGE (what this book builds)  │
-  │                                                │
-  │  [RAG]──────[Psychology]────[System Design]   │
-  │    ╲          ╱ ╲           ╱                  │
-  │     [Fine-tuning]──[Prompt Engineering]        │
-  │  Lines between dots = UNDERSTANDING           │
-  │  More lines = DEEPER understanding            │
-  │  When a problem needs RAG + Psychology,       │
-  │  the connected mind SEES the path instantly.  │
-  └──────────────────────────────────────────────┘
-
-CHARLIE MUNGER'S "MAN WITH A HAMMER":
-
-  "To a man with only a hammer, every problem 
-   looks like a nail." — Charlie Munger
-
-  This is the SILO problem:
-    → Know only deep learning? Every problem = neural net
-    → Know only system design? Every problem = architecture
-    → Know only psychology? Every problem = mindset
-    
-  The fix: build a LATTICEWORK (Door ৩)
-    → know models from MULTIPLE fields
-    → CONNECT them
-    → see which model applies to which problem
-    → COMBINE models for complex problems
-
-WHY YOUR 27 BOOKS AREN'T ENOUGH (yet):
-
-  You have 27 books = 27 knowledge domains
-  But if they're disconnected:
-    → reading them gave you INFORMATION
-    → NOT understanding
-    → NOT the ability to CREATE
-
-  Connected, the same 27 books become:
-    → a KNOWLEDGE WEB
-    → you can COMBINE any domains
-    → you can CREATE new solutions
-    → you can see PATTERNS across fields
-  
-  25 disconnected books ≈ 1 connected book (in value)
-  25 connected books = exponential value
-
-THE NEUROSCIENCE OF CONNECTION:
-
-  Jeffrey Hawkins (2004, "On Intelligence"):
-    → the brain's primary function is PREDICTION
-    → prediction requires CONNECTING patterns
-    → intelligence = density of connections
-    
-  Norman Doidge (2007, neuroplasticity):
-    → every new CONNECTION between neurons = learning
-    → memorizing facts = individual neurons
-    → CONNECTING concepts = neural networks
-    → the stronger the network, the deeper the understanding
-
-HOW CONNECTION WORKS (preview):
-
-  Door ২: ANALOGICAL REASONING (Gentner)
-    → "X is LIKE Y" — structure mapping
-    → Example: "The brain is like a computer" 
-       (what structures map? what don't?)
-  
-  Door ৩: MENTAL MODELS (Munger)
-    → extract the BIG IDEA from each field
-    → build a latticework
-    → apply the right model to the right problem
-  
-  Door ৪: GAP FINDING
-    → "What do I NOT know that I need?"
-    → "What connection is MISSING?"
-  
-  Door ৫: INSIGHT (Kounios & Beeman)
-    → the "aha" moment = brain connecting distant ideas
-    → default mode network
-    → how to create conditions for insight</div>
+<div class="callout warn"><span class="co-icon">🧩</span><div><strong>Silo সমস্যা:</strong> বিচ্ছিন্ন জ্ঞান = আলাদা বিন্দু, মাঝে কোনো রেখা নেই। যখন সমস্যায় RAG + Psychology একসাথে লাগে, silo-মন শুধু বিন্দু দেখে, পথ দেখে না। সংযুক্ত জ্ঞানে বিন্দুর মাঝে রেখা = <em>understanding</em>; যত বেশি রেখা, তত গভীর বোঝা।</div></div>
+<div class="callout info"><span class="co-icon">🔨</span><div><strong>Munger-এর "man with a hammer":</strong> "যার কাছে শুধু হাতুড়ি, তার কাছে সব সমস্যা পেরেক।" শুধু deep learning জানলে সব সমস্যা = neural net; শুধু system design জানলে সব = architecture। সমাধান — বহু ক্ষেত্রের মডেল নিয়ে <strong>latticework</strong> (দ্বার ৩)।</div></div>
+<div class="callout tip"><span class="co-icon">🕸️</span><div><strong>তোমার ২৭টা বই এখনো যথেষ্ট নয় (yet):</strong> বিচ্ছিন্ন থাকলে সেগুলো শুধু <em>information</em> দিয়েছে, understanding বা সৃষ্টির ক্ষমতা নয়। সংযুক্ত করলে একই ২৭টা বই হয়ে ওঠে <strong>knowledge web</strong> — যেকোনো ডোমেইন combine করে নতুন সমাধান তৈরি করা যায়। (Hawkins 2004: বুদ্ধিমত্তা = সংযোগের ঘনত্ব; Doidge 2007: প্রতিটা নতুন neuron-সংযোগই শেখা।)</div></div>
+<table class="kv-table"><tr><th>পরের দরজাগুলো</th><th>সংযোগের হাতিয়ার</th></tr>
+<tr><td class="hl">দ্বার ২</td><td>Analogical reasoning (Gentner) — "X যেমন Y"</td></tr>
+<tr><td class="hl">দ্বার ৩</td><td>Mental models latticework (Munger)</td></tr>
+<tr><td class="hl">দ্বার ৪</td><td>Gap finding — "কোন সংযোগ missing?"</td></tr>
+<tr><td class="hl">দ্বার ৫</td><td>Insight (Kounios & Beeman) — দূরবর্তী ধারণা জোড়া লাগা</td></tr></table>
 
 <div class="dialogue">আয়ত — sign, symbol, evidence। কুরআনে আল্লাহ বলেন — "আমি প্রতিটি জিনিসে নিদর্শন রেখেছি যারা চিন্তা করে।" নিদর্শন আলাদা নয় — সংযুক্ত। একটা পাতা একটা নিদর্শন। কিন্তু পাতা + ফুল + ফল + শিকড় = একটা গাছ। গাছ + মাটি + পানি + সূর্য = একটা বাস্তুতন্ত্র। প্রতিটা স্তর আগের স্তরের সাথে সংযুক্ত। আলাদা নিদর্শন দেখা = সংযোগ না দেখা। সংযুক্ত নিদর্শন দেখা = আয়ত বোঝা। এটাই জ্ঞানের জাল।</div>
 <div class="dialogue en">"Ayat — sign, symbol, evidence. Allah says — 'In everything We have placed signs for those who reflect.' Signs aren't separate — they're connected. A leaf is a sign. But leaf + flower + fruit + root = a tree. Tree + soil + water + sun = an ecosystem. Each layer connects to the previous. Seeing signs separately = not seeing connections. Seeing connected signs = understanding ayat. This is the knowledge web."</div>`,
@@ -141,131 +58,19 @@ doors.push({
 <div class="dialogue">সিলো বলেছিলেন — বিচ্ছিন্ন জ্ঞান ভঙ্গুর। কিন্তু আমি বলি — সংযুক্ত করার প্রথম সরঞ্জাম হলো analogy। তুমি যা জানো, তার সাথে নতুনকে মিলিয়ে। Gentner (১৯৮৩) এর নাম — structure-mapping theory। মস্তিষ্ক বলে — 'এটা ওটার মতো।' কিন্তু ভালো analogy শুধু মিল নয় — মিল এবং অমিল দেখায়। Zettelkasten এবং neural network অনেকটা এক — কিন্তু Zettelkasten-এ backpropagation নেই। সেখানেই অমিল।</div>
 <div class="dialogue en">"Silos said — isolated knowledge is fragile. But I say — the first tool of connection is analogy. You map the new to the known. Gentner (1983) calls it structure-mapping theory. The brain says — 'this is like that.' But a good analogy doesn't just show similarity — it shows where the similarity ENDS. Zettelkasten and neural networks are alike — but Zettelkasten has no backpropagation. That's where they differ."</div>
 
-<div class="code-block">ANALOGICAL REASONING — The Science of Connection:
-
-GENTNER'S STRUCTURE-MAPPING THEORY (1983):
-
-  Dedre Gentner (Northwestern University):
-    → how do humans understand NEW concepts?
-    → by mapping STRUCTURE from a known domain (source)
-       to a new domain (target)
-    
-    → Source: what you KNOW (e.g., solar system)
-    → Target: what you're LEARNING (e.g., atom)
-    → Mapping: sun↔nucleus, planets↔electrons, 
-       gravity↔electromagnetism
-    
-    → The brain extracts RELATIONAL STRUCTURE
-       (not surface features)
-    → "The atom is like the solar system"
-       means the RELATIONSHIPS map, not the appearance
-
-  What makes a GOOD analogy:
-    ১. RELATIONAL match (same structure)
-    ২. SURFACE difference (different appearance)
-    ৩. PREDICTIVE power (can guess new things)
-    ৪. KNOWN limits (where the analogy breaks)
-
-  What makes a BAD analogy:
-    ১. SURFACE match only (looks similar, isn't)
-    ২. OVER-extended (pushed beyond where it works)
-    ৩. MISLEADING (hides important differences)
-
-HOFSTADTER: ANALOGY IS COGNITION:
-
-  Douglas Hofstadter (Indiana University, Pulitzer Prize):
-    → "Analogy is the core of cognition"
-    → EVERY thought is an analogy
-    → "This situation is like that one"
-    → "This problem reminds me of that problem"
-    → The brain is an analogy machine
-    
-  His book "Surfaces and Essences" (2013, with Sander):
-    → categorization IS analogy
-    → "Is this a chair?" = "Is this like chairs I've seen?"
-    → learning = building richer analogies over time
-    
-  Example: a child learns "dog"
-    → sees first dog → "dog"
-    → sees different dog → "also dog" (analogy!)
-    → sees cat → "dog?" → corrected → "cat"
-    → the child is BUILDING categories through analogy
-
-HOLYOAK'S PRAGMATIC REASONING:
-
-  Keith Holyoak (UCLA):
-    → analogies are used to SOLVE PROBLEMS
-    → "Have I seen a SIMILAR problem before?"
-    → transfer the SOLUTION from the known to the new
-    
-  The radiation problem (Duncker, 1945):
-    → "Destroy a tumor with rays. But rays that are 
-       strong enough to kill the tumor will also kill 
-       healthy tissue. How?"
-    → Solution: use MANY weak rays from different 
-       angles, converging on the tumor
-    → People who heard a similar story (general attacking
-       fortress with divided army) were ৩x more likely 
-       to solve it — IF they saw the analogy (Gick & 
-       Holyoak, ১৯৮০)
-
-CROSS-DOMAIN ANALOGIES (connecting your 27 books):
-
-  ┌──────────────────────┬──────────────────────────────┐
-  │ Known (Source)        │ New (Target)                  │
-  ├──────────────────────┼──────────────────────────────┤
-  │ Immune system (bio)   │ Computer security (Book ১৩)  │
-  │ → antibodies adapt    │ → adaptive firewalls          │
-  │ → memory cells        │ → threat databases            │
-  ├──────────────────────┼──────────────────────────────┤
-  │ Evolution (biology)   │ Code refactoring (eng)        │
-  │ → mutation + selection│ → random changes + testing    │
-  │ → fitness landscape   │ → code quality metrics        │
-  ├──────────────────────┼──────────────────────────────┤
-  │ Garden (Book ৫)       │ ML model training (Book ১১)  │
-  │ → soil preparation    │ → data preprocessing          │
-  │ → seed selection      │ → model architecture          │
-  │ → regular watering    │ → training schedule           │
-  │ → pruning             │ → hyperparameter tuning       │
-  ├──────────────────────┼──────────────────────────────┤
-  │ Learned helplessness  │ Imposter syndrome (career)    │
-  │ (Book ২৪)             │ → brain learned "I can't"     │
-  │ → dog stops trying    │ → professional stops trying   │
-  │ → cure: small wins    │ → cure: small wins             │
-  ├──────────────────────┼──────────────────────────────┤
-  │ RAG retrieval (B১২)  │ Human memory recall           │
-  │ → embedding search    │ → associative memory          │
-  │ → context window      │ → working memory capacity      │
-  │ → hallucination       │ → false memories              │
-  └──────────────────────┴──────────────────────────────┘
-
-THE ANALOGY EXERCISE (do this daily):
-
-  When learning something NEW:
-    ১. ASK: "What is this LIKE?"
-    ২. IDENTIFY: what maps? (structure)
-    ৩. IDENTIFY: what DOESN'T map? (limits)
-    ৪. PREDICT: based on the analogy, what else might be true?
-    ৫. TEST: is the prediction correct?
-  
-  This is how Einstein developed relativity:
-    → "What if light is like a train?"
-    → "What if gravity is like a trampoline?"
-    → Each analogy → new predictions → tested → confirmed/refuted
-
-POLYA'S HEURISTICS (1945):
-
-  George Polya ("How to Solve It"):
-    → when stuck on a problem, ask:
-      "Have I seen a SIMILAR problem?"
-      "Can I use a SIMILAR method?"
-      "Can I restate the problem as an analogy?"
-    
-    → Example: stuck on a coding problem
-      → "Is this like a sorting problem?" 
-      → "Is this like a search problem?"
-      → "Is this like a graph traversal?"
-      → FIND the analogous known problem → apply its solution</div>
+<div class="callout info"><span class="co-icon">🌉</span><div><strong>Gentner-এর structure-mapping (1983):</strong> মানুষ নতুন ধারণা বোঝে পরিচিত ডোমেইন (source) থেকে গঠন (target)-এ ম্যাপ করে। "পরমাণু সৌরজগতের মতো" — sun↔nucleus, planet↔electron; চেহারা নয়, <em>সম্পর্ক</em> ম্যাপ হয়।</div></div>
+<table class="kv-table"><tr><th>✅ ভালো analogy</th><th>❌ খারাপ analogy</th></tr>
+<tr><td>Relational match (একই গঠন)</td><td>শুধু surface match (দেখতে এক, আসলে নয়)</td></tr>
+<tr><td>Predictive power (নতুন কিছু অনুমান করা যায়)</td><td>over-extended (যেখানে কাজ করে না সেখানেও টানা)</td></tr>
+<tr><td>Known limits (কোথায় ভাঙে জানা)</td><td>misleading (গুরুত্বপূর্ণ পার্থক্য লুকায়)</td></tr></table>
+<div class="callout tip"><span class="co-icon">🧠</span><div><strong>Hofstadter:</strong> "Analogy IS the core of cognition" — প্রতিটা চিন্তাই একটা analogy ("এই পরিস্থিতি ওটার মতো")। categorization = analogy ("এটা কি chair?" = "আগে দেখা chair-এর মতো?")। <strong>Holyoak (Gick & Holyoak, 1980):</strong> Duncker-এর radiation problem — যারা "বিভক্ত সেনা দিয়ে দুর্গ আক্রমণ"-এর analogy দেখেছিল, তারা ৩x বেশি সমাধান করত।</div></div>
+<table class="kv-table"><tr><th>Source (জানা)</th><th>Target (নতুন)</th></tr>
+<tr><td class="hl">Immune system (bio)</td><td>Computer security — adaptive firewall, threat DB</td></tr>
+<tr><td class="hl">Evolution (bio)</td><td>Code refactoring — mutation+selection, fitness</td></tr>
+<tr><td class="hl">Garden (Book 5)</td><td>ML training — data prep, architecture, tuning, pruning</td></tr>
+<tr><td class="hl">Learned helplessness (Book 24)</td><td>Imposter syndrome — "I can't"; cure: small wins</td></tr>
+<tr><td class="hl">RAG retrieval (Book 12)</td><td>Human memory — associative recall, working memory, false memory</td></tr></table>
+<div class="callout tip"><span class="co-icon">🔁</span><div><strong>দৈনিক analogy exercise:</strong> নতুন কিছু শিখলে — ① "এটা কীসের মতো?" ② কী ম্যাপ হয় (গঠন)? ③ কী ম্যাপ হয় না (সীমা)? ④ analogy থেকে আর কী সত্য হতে পারে? ⑤ test করো। (Einstein: "আলো train-এর মতো হলে? gravity trampoline-এর মতো হলে?" Polya 1945: "এই সমস্যা কি sorting/search/graph-এর মতো?")</div></div>
 
 <div class="dialogue">সিলসিলা — chain, connection, linkage। কুরআনে আল্লাহ বলেন — "তোমরা সবাই আল্লাহর রশি দৃঢ়ভাবে ধরো, একসাথে।" (৩:১০৩)। একসাথে = সিলসিলা। analogy-ও সিলসিলা — এক জ্ঞানের সাথে আরেকটার সংযোগ। সংযোগের মাধ্যমে নতুন ধারণা বোঝা যায়। Gentner দেখালেন — মানুষের মস্তিষ্ক এভাবেই কাজ করে। পুরোনোর সাথে নতুনকে মিলিয়ে। যে সিলসিলা বানায়, সে বোঝে। যে বিচ্ছিন্ন রাখে, সে ভুলে যায়।</div>
 <div class="dialogue en">"Silsila — chain, connection. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Together = silsila. Analogy too — connecting one knowledge to another. Through connection, new concepts become understandable. Gentner showed — this is how the brain works. Mapping the new to the known. One who builds silsila, understands. One who isolates, forgets."</div>`,
@@ -293,136 +98,16 @@ doors.push({
 <div class="dialogue">analogy বলেছিলেন — এক জ্ঞানের সাথে আরেকটার সংযোগ। কিন্তু আমি বলি — সংযোগ শুধু জোড়ায় নয়। শত শত মডেল একসাথে বুনো। Munger-এর latticework। Munger বলেন — 'প্রতিটা ক্ষেত্রের বড় ধারণা শেখো। একসাথে বুনো। সমস্যা এলে একাধিক মডেল প্রয়োগ করো।' Munger (২০০৭, "Poor Charlie's Almanack")-এ বলেছেন — ~১০০টা মডেল যথেষ্ট। physics, math, biology, psychology, economics — প্রতিটার বড় ধারণা।</div>
 <div class="dialogue en">"Analogy said — connecting one knowledge to another. But I say — connections aren't just pairs. Weave hundreds of models together. Munger's latticework. He says — 'learn the big ideas from each field. Weave them. When a problem comes, apply multiple models.' Munger (2007, Poor Charlie's Almanack) says ~100 models suffice. Physics, math, biology, psychology, economics — the big ideas from each."</div>
 
-<div class="code-block">MENTAL MODELS LATTICEWORK — Munger's Method:
-
-THE LATTICEWORK CONCEPT:
-
-  Charlie Munger (Berkshire Hathaway, 1924-2023):
-    "You've got to have models in your head. And you've 
-     got to array your experience — both vicarious and 
-     direct — on this latticework of models."
-    
-    Key principle: you need models from MULTIPLE disciplines
-    → ১ model = one hammer (nail problem)
-    → ৫ models = decent thinker
-    → ২০ models = good thinker
-    → ১০০ models = wise thinker (Munger's level)
-    
-    "You must know the big ideas in the big disciplines, 
-     and use them routinely — all of them, not just a few."
-
-THE ~১০০ MODELS (organized by discipline):
-
-  ┌──────────────┬──────────────────────────────────────┐
-  │ Discipline    │ Key Mental Models                    │
-  ├──────────────┼──────────────────────────────────────┤
-  │ PHYSICS       │ critical mass, inertia, entropy,     │
-  │               │ feedback loops, tipping points,      │
-  │               │ resonance, velocity                  │
-  ├──────────────┼──────────────────────────────────────┤
-  │ BIOLOGY       │ evolution, adaptation, symbiosis,    │
-  │               │ natural selection, ecosystems,       │
-  │               │ homeostasis, mutation                │
-  ├──────────────┼──────────────────────────────────────┤
-  │ PSYCHOLOGY    │ cognitive bias (Book ২৪),            │
-  │               │ social proof, anchoring,             │
-  │               │ loss aversion, Dunning-Kruger,       │
-  │               │ learned helplessness, growth mindset │
-  ├──────────────┼──────────────────────────────────────┤
-  │ ECONOMICS     │ opportunity cost, compound interest, │
-  │               │ supply/demand, marginal utility,     │
-  │               │ comparative advantage, sunk cost,    │
-  │               │ positive/negative externalities      │
-  ├──────────────┼──────────────────────────────────────┤
-  │ MATH          │ compound growth, probability,        │
-  │               │ regression to mean, power laws,      │
-  │               │ bell curves, sampling, correlation   │
-  ├──────────────┼──────────────────────────────────────┤
-  │ ENGINEERING   │ feedback loops, redundancy,          │
-  │               │ bottlenecks (Book ৪), quality control│
-  │               │ (Book ১৪), system design (Book ৪)   │
-  ├──────────────┼──────────────────────────────────────┤
-  │ COMPUTER SCI  │ abstraction, algorithms, complexity, │
-  │               │ recursion, caching, indexing         │
-  └──────────────┴──────────────────────────────────────┘
-
-MULTIPLE MODEL APPLICATION:
-
-  When facing a problem, DON'T apply ONE model.
-  Apply ৩-৫ models SIMULTANEOUSLY:
-  
-  Example: "Should I start a PhD?"
-    Model ১: OPPORTUNITY COST (economics)
-      → what am I giving up for ৫ years?
-    Model ২: COMPOUND INTEREST (math)
-      → knowledge compounds over decades
-    Model ৩: SUNK COST (economics)
-      → don't do it because I already invested in MSIS
-    Model ৪: GROWTH MINDSET (psychology, Book ২৪)
-      → I can develop research skills
-    Model ৫: REGRESSION TO MEAN (statistics)
-      → most outcomes are average; what makes mine different?
-    Model ৬: SOCIAL PROOF (psychology, Book ২৪)
-      → are smart people doing PhDs? why?
-    Model ৭: ENTROPY (physics)
-      → skills decay without use; PhD maintains learning momentum
-  
-  → NO SINGLE MODEL gives the answer
-  → MULTIPLE models REVEAL different aspects
-  → The DECISION emerges from the intersection
-
-YOUR 27 BOOKS AS A STARTER LATTICEWORK:
-
-  Each of your 27 books provides models:
-
-  Book ৪ (System Design): bottlenecks, load balancing,
-    caching, redundancy → apply to any system
-  Book ৫ (Meta-learning): spaced repetition, chunking →
-    apply to learning anything
-  Book ৭ (Prompt Eng): clear communication,
-    instruction design → apply to human management
-  Book ১০ (RAG): retrieval, relevance, context →
-    apply to how YOU retrieve knowledge
-  Book ১১ (Fine-tuning): adaptation, feedback loops →
-    apply to personal development
-  Book ১৩ (Security): adversarial thinking, defense in
-    depth → apply to career protection
-  Book ১৪ (LLMOps): monitoring, observability →
-    apply to self-monitoring
-  Book ২৩ (Irreplaceable): first principles, value →
-    apply to career decisions
-  Book ২৪ (Psychology): bias, locus of control →
-    apply to self-understanding
-  Book ২৬ (Knowledge): Zettelkasten, Feynman →
-    apply to learning method
-  
-  → Your 27 books = 27 model clusters
-  → Together = a POWERFUL latticework
-  → But ONLY if you CONNECT them
-
-HOW TO BUILD YOUR LATTICEWORK:
-
-  Step ১: EXTRACT models (ongoing)
-    → from each book, extract ৩-৫ core models
-    → write each as: "Principle: [X]. Source: [Book Y]. 
-       Application: [how to use]."
-  
-  Step ২: CONNECT models (weekly)
-    → find links between models from different books
-    → "Book ২৪'s growth mindset + Book ১১'s fine-tuning
-       = both update based on feedback"
-    → write these connections in your Zettelkasten
-  
-  Step ৩: APPLY models (daily)
-    → when facing a decision, ask:
-      "Which ৩+ models apply here?"
-    → write down which models you used
-    → review: did the models help? what did you miss?
-  
-  Step ৪: PRUNE and REFINE (monthly)
-    → which models are most useful? least?
-    → which connections are strong? weak?
-    → update your latticework</div>
+<div class="callout info"><span class="co-icon">🕸️</span><div><strong>Munger-এর latticework:</strong> "মাথায় মডেল থাকতে হবে, আর নিজের অভিজ্ঞতা সেই মডেলের জালে সাজাতে হবে।" ১ মডেল = এক হাতুড়ি; ৫ = মোটামুটি; ২০ = ভালো চিন্তক; ~১০০ = জ্ঞানী। "বড় শাস্ত্রের বড় idea জানো ও নিয়মিত ব্যবহার করো — সবগুলো, কয়েকটা নয়।"</div></div>
+<table class="kv-table"><tr><th>শাস্ত্র</th><th>মূল mental model</th></tr>
+<tr><td class="hl">Physics</td><td>critical mass, inertia, entropy, feedback loop, tipping point</td></tr>
+<tr><td class="hl">Biology</td><td>evolution, adaptation, symbiosis, homeostasis</td></tr>
+<tr><td class="hl">Psychology</td><td>cognitive bias, social proof, anchoring, loss aversion (Book 24)</td></tr>
+<tr><td class="hl">Economics</td><td>opportunity cost, compound interest, sunk cost, externality</td></tr>
+<tr><td class="hl">Math</td><td>probability, regression to mean, power laws, sampling</td></tr>
+<tr><td class="hl">Engineering/CS</td><td>bottleneck (Book 4), redundancy, abstraction, caching, recursion</td></tr></table>
+<div class="callout tip"><span class="co-icon">🎯</span><div><strong>একাধিক মডেল একসাথে:</strong> সমস্যায় এক মডেল নয়, ৩-৫টা একসাথে প্রয়োগ করো। "PhD করব?" → opportunity cost + compound interest + sunk cost (MSIS-এ বিনিয়োগ করেছি বলে নয়!) + growth mindset + regression to mean + social proof + entropy। কোনো একটা মডেল উত্তর দেয় না — সিদ্ধান্ত তাদের ছেদবিন্দু থেকে আসে।</div></div>
+<div class="callout info"><span class="co-icon">🔨</span><div><strong>Latticework গড়ার উপায়:</strong> ① প্রতিটা বই থেকে ৩-৫ core model বের করো ("নীতি → উৎস → প্রয়োগ")। ② সাপ্তাহিক — ভিন্ন বইয়ের মডেলের মধ্যে link খোঁজো (growth mindset + fine-tuning = দুটোই feedback-এ weight update)। ③ দৈনিক — সিদ্ধান্তে "কোন ৩+ মডেল খাটে?" ④ মাসিক — কোন মডেল/সংযোগ সবচেয়ে কাজের, prune করো।</div></div>
 
 <div class="dialogue">হিকমাহ — wisdom, applied knowledge। কুরআনে আল্লাহ বলেন — "যাকে হিকমাহ দেওয়া হয়েছে, তাকে প্রচুর কল্যাণ দেওয়া হয়েছে।" (২:২৬৯)। হিকমাহ শুধু জ্ঞান নয় — প্রয়োগকৃত জ্ঞান। Munger-এর latticework-ও হিকমাহ — জ্ঞান সংগ্রহ নয়, সংযুক্ত জ্ঞান প্রয়োগ। যে একটা মডেল জানে, সে জানে। যে শতটা সংযুক্ত মডেল প্রয়োগ করে, সে হিকমাহ অর্জন করে। হিকমাহ = সংযুক্ত জ্ঞানের প্রয়োগ।</div>
 <div class="dialogue en">"Hikmah — wisdom, applied knowledge. Allah says — 'Whoever is given hikmah has been given much good.' (2:269). Hikmah is not just knowledge — it's APPLIED knowledge. Munger's latticework too is hikmah — not collecting knowledge, but applying connected knowledge. One who knows one model, knows. One who applies 100 connected models, attains hikmah. Hikmah = the application of connected knowledge."</div>`,
@@ -450,138 +135,18 @@ doors.push({
 <div class="dialogue">latticework বলেছিলেন — মডেল সংযুক্ত করো। কিন্তু আমি বলি — সংযোগের আগে খুঁজে বের করো কোথায় ফাঁকা। gap। জ্ঞানের কারিগর (Book ২৬, Door ৪) Feynman technique শিখিয়েছে — সহজ করে ব্যাখ্যা করো, যেখানে আটকাও সেই gap। PhD পাঠক (Book ২৭, Door ৪) gap finding শিখিয়েছে — research-এ কী missing। এখন আমি শেখাবো — একটা বইয়ের জ্ঞান আরেকটার সাথে কীভাবে সংযুক্ত করবে, এবং কোথায় gap।</div>
 <div class="dialogue en">"The latticework said — connect models. But I say — before connecting, find where it's blank. The gap. The Knowledge Craftsman (Book 26, Door 4) taught the Feynman technique — explain simply, where stuck is the gap. The PhD reader (Book 27, Door 4) taught gap finding in research — what's missing. Now I'll teach — how to connect one book's knowledge to another, and where the gaps are."</div>
 
-<div class="code-block">KNOWLEDGE GAP IDENTIFICATION — Finding What You Don't Know:
-
-THE FOUR TYPES OF GAPS:
-
-  ┌──────────────────┬──────────────────────────────────┐
-  │ Gap Type          │ Description                       │
-  ├──────────────────┼──────────────────────────────────┤
-  │ ১. WITHIN-book    │ "I read the book but don't        │
-  │ (understanding)   │ understand Door ৬"                │
-  │                   │ Fix: re-read, Feynman, Zettelkasten│
-  ├──────────────────┼──────────────────────────────────┤
-  │ ২. BETWEEN-books  │ "I know Book A and Book B, but    │
-  │ (connection)      │ can't see how they connect"       │
-  │                   │ Fix: this book (Door ২-৩)         │
-  ├──────────────────┼──────────────────────────────────┤
-  │ ৩. MISSING-book   │ "My 27 books don't cover          │
-  │ (domain)          │ [topic X]"                        │
-  │                   │ Fix: read new books               │
-  ├──────────────────┼──────────────────────────────────┤
-  │ ৪. UNKNOWN-unknown│ "I don't even know what I         │
-  │ (blind spot)      │ don't know"                       │
-  │                   │ Fix: exposure, discomfort, test    │
-  └──────────────────┴──────────────────────────────────┘
-
-THE FEYNMAN GAP TEST (from Book ২৬):
-
-  For any concept from any book:
-    ১. Close the book
-    ২. Explain it simply (as if to a ১২-year-old)
-    ৩. Where you GET STUCK = that's your gap
-    ৪. Go back, fill the gap
-    ৫. Repeat until you can explain it fully
-  
-  Apply this across ALL 27 books:
-    → Can you explain learned helplessness simply?
-    → Can you explain PagedAttention simply?
-    → Can you explain Zettelkasten simply?
-    → Where you can't = gap
-
-THE CONNECTION GAP TEST (new in this book):
-
-  For each PAIR of books, ask:
-    "How does Book X connect to Book Y?"
-    → if you can answer: connection exists ✅
-    → if you CAN'T: gap exists ❌
-  
-  Example:
-    Book ৫ (spaced repetition) + Book ১০ (RAG) = ?
-    → Connection: "RAG retrieval is like human recall — 
-       both work better with spaced exposure to data.
-       Re-indexing documents periodically is like spaced 
-       repetition for the retrieval system."
-    
-    If you COULDN'T make this connection → that's a gap.
-
-THE APPLICATION GAP TEST:
-
-  Try to APPLY knowledge from a book to a real problem.
-  Where it DOESN'T work = reveals assumptions or gaps.
-  
-  Example:
-    → Apply Book ৪ (system design) to your life
-    → "What's MY bottleneck?" (you as a system)
-    → Can't answer? Gap in self-knowledge
-    → "What's MY caching strategy?" (reusing skills)
-    → Can't answer? Gap in career strategy
-
-THE LATTICEWORK GAP TEST:
-
-  Draw your mental models as a network:
-    → nodes = models from your 27 books
-    → edges = connections you can make
-  
-  Gaps are visible as:
-    ১. ISOLATED nodes (no connections to other models)
-    ২. MISSING nodes (entire books with no extracted models)
-    ৩. THIN edges (weak or vague connections)
-    ৪. CLUSTERS (some books connected to each other but
-       not to the rest of your knowledge)
-
-THE DIKW PYRAMID (where are your gaps?):
-
-  ┌──────────────────┐
-  │  WISDOM           │  "I use connected knowledge
-  │  (judgment)       │   to make decisions"
-  ├──────────────────┤
-  │  KNOWLEDGE        │  "I connect information into
-  │  (connected info) │   understanding"
-  ├──────────────────┤
-  │  INFORMATION      │  "I have data in context"
-  │  (data + context) │
-  ├──────────────────┤
-  │  DATA             │  "I have raw facts"
-  │  (raw facts)      │
-  └──────────────────┘
-  
-  Most people: DATA → INFORMATION (read books)
-  Gap ১: INFORMATION → KNOWLEDGE (connecting)
-  Gap ২: KNOWLEDGE → WISDOM (applying)
-  
-  This book targets Gap ১ (connecting)
-  Book ২৩ targets Gap ২ (applying)
-
-PRACTICAL GAP-FINDING EXERCISE:
-
-  ১. THE BOOK PAIR MATRIX
-    → take ৫ books from your library
-    → for each of the ১০ possible pairs (৫×৪/২)
-    → write ONE sentence connecting them
-    → pairs where you can't = your biggest gaps
-  
-  ২. THE REAL-WORLD APPLICATION TEST
-    → pick a current problem (LedgerPilot, Ipractus, 
-       PhD application, career decision)
-    → which books are relevant?
-    → which models from each?
-    → how do they COMBINE?
-    → if you can't combine = gap
-  
-  ৩. THE "EXPLAIN TO A FRIEND" TEST
-    → try explaining a concept from one book
-       using a concept from another book
-    → "Fine-tuning (Book ১১) is like learning
-       helplessness recovery (Book ২৪) — both
-       involve updating weights based on feedback"
-    → if you can't = gap
-  
-  ৪. THE "WHAT'S MISSING" SCAN
-    → look at your ২৫ books
-    → what TOPIC is NOT covered?
-    → (statistics? finance? design? negotiation?)
-    → those are missing-book gaps</div>
+<table class="kv-table"><tr><th>Gap-এর ধরন</th><th>বর্ণনা ও সমাধান</th></tr>
+<tr><td class="hl">১. Within-book</td><td>"বই পড়েছি, দ্বার ৬ বুঝিনি" → re-read, Feynman, Zettelkasten</td></tr>
+<tr><td class="hl">২. Between-books</td><td>"A ও B জানি, সংযোগ দেখি না" → এই বই (দ্বার ২-৩)</td></tr>
+<tr><td class="hl">৩. Missing-book</td><td>"আমার বইগুলো [topic X] cover করে না" → নতুন বই পড়ো</td></tr>
+<tr><td class="hl">৪. Unknown-unknown</td><td>"জানি না যে জানি না" → exposure, discomfort, test</td></tr></table>
+<div class="callout info"><span class="co-icon">🧪</span><div><strong>Gap খোঁজার টেস্ট:</strong> <strong>Feynman gap</strong> — সহজ করে ব্যাখ্যা করো, যেখানে আটকাও সেই gap। <strong>Connection gap</strong> — প্রতি বই-জোড়ায় "X কীভাবে Y-এর সাথে যুক্ত?"; না পারলে gap। <strong>Application gap</strong> — বইয়ের জ্ঞান বাস্তব সমস্যায় প্রয়োগ করো, যেখানে ভাঙে সেই assumption/gap ("আমি একটা system হিসেবে — আমার bottleneck কী?")।</div></div>
+<table class="kv-table"><tr><th>DIKW স্তর</th><th>কী</th></tr>
+<tr><td class="hl">Wisdom</td><td>সংযুক্ত জ্ঞান দিয়ে সিদ্ধান্ত (Book 23 এখানে লক্ষ্য)</td></tr>
+<tr><td class="hl">Knowledge</td><td>information সংযুক্ত করে understanding (এই বই এখানে লক্ষ্য)</td></tr>
+<tr><td class="hl">Information</td><td>data + context</td></tr>
+<tr><td class="hl">Data</td><td>raw facts</td></tr></table>
+<div class="callout tip"><span class="co-icon">🎯</span><div><strong>Practical gap-finding:</strong> ① <strong>Book pair matrix</strong> — ৫ বই নাও, ১০ জোড়ার প্রতিটায় এক বাক্যে সংযোগ; যেখানে পারো না = সবচেয়ে বড় gap। ② <strong>Real-world test</strong> — একটা current সমস্যায় কোন বই ও মডেল খাটে, কীভাবে combine হয়? ③ <strong>"What's missing" scan</strong> — কোন topic (statistics? finance? negotiation?) cover হয়নি? বেশিরভাগ মানুষ Data→Information-এ থামে; আসল gap Information→Knowledge (সংযোগ)।</div></div>
 
 <div class="dialogue">তালাশ — search, seeking। কুরআনে আল্লাহ বলেন — "যারা সৎপথে পরিচালিত হয়, আমি তাদের আরও বৃদ্ধি দেই।" তালাশ শুধু নতুন জ্ঞান খোঁজা নয় — নিজের জ্ঞানের ফাঁক খোঁজা। যে তালাশ করে, সে gap খুঁজে পায়। যে gap খুঁজে পায়, সে পূরণ করে। যে পূরণ করে, সে বাড়ে। সবচেয়ে বিপজ্জনক অবস্থা — ভাবা 'আমি সব জানি'। কারণ তখন তালাশ বন্ধ হয়। gap অদৃশ্য হয়। জ্ঞান স্থবির হয়।</div>
 <div class="dialogue en">"Talash — search, seeking. Allah says — 'Those who are guided, We increase them in guidance.' Talash isn't just seeking new knowledge — it's seeking gaps in your existing knowledge. One who seeks, finds gaps. One who finds gaps, fills them. One who fills, grows. The most dangerous state — thinking 'I know everything.' Because then seeking stops. Gaps become invisible. Knowledge stagnates."</div>`,
@@ -609,139 +174,14 @@ doors.push({
 <div class="dialogue">gap finder বলেছিলেন — ফাঁক খোঁজো। কিন্তু আমি বলি — ফাঁক পূরণের সবচেয়ে শক্তিশালী উপায় insight। তুমি চেতনভাবে সংযুক্ত করতে পারো না — কিন্তু তোমার মস্তিষ্ক পারে। ঘুমানো, হাঁটা, গোসল — এই সময়ে মস্তিষ্ক সংযুক্ত করে। Kounios ও Beeman দেখালেন — insight এলোমেলো নয়। এটা মস্তিষ্কের একটা নির্দিষ্ট প্রক্রিয়া। default mode network। gamma waves। ইলহাম — হঠাৎ জ্ঞান।</div>
 <div class="dialogue en">"The gap finder said — find the gaps. But I say — the most powerful way to fill gaps is insight. You can't consciously connect — but your brain can. Sleeping, walking, showering — during these times the brain connects. Kounios & Beeman showed — insight isn't random. It's a specific brain process. Default mode network. Gamma waves. Ilham — sudden knowledge."</div>
 
-<div class="code-block">THE NEUROSCIENCE OF INSIGHT — The Aha Moment:
-
-KOUNIOS & BEEMAN (2009):
-
-  John Kounios (Drexel University) and 
-  Mark Beeman (Northwestern University):
-  
-  Used EEG + fMRI to monitor brains during insight:
-    → participants solved word puzzles
-    → some solved by ANALYSIS (step by step)
-    → some solved by INSIGHT (sudden "aha!")
-  
-  WHAT HAPPENS IN THE BRAIN (insight vs analysis):
-
-  ┌────────────────────┬──────────────────────────┐
-  │ ANALYSIS (logical)  │ INSIGHT (aha!)            │
-  │                     │                            │
-  │ left hemisphere     │ right hemisphere           │
-  │ step-by-step        │ sudden, holistic           │
-  │ conscious effort    │ unconscious processing     │
-  │ alpha waves         │ GAMMA wave burst           │
-  │ (focused attention) │ (in right temporal lobe)   │
-  │                     │                            │
-  │ feels like work     │ feels like revelation      │
-  │ solution expected   │ solution SURPRISING        │
-  └────────────────────┴──────────────────────────┘
-
-  THE GAMMA BURST:
-    → right anterior superior temporal gyrus
-    → sudden burst of high-frequency gamma waves (৪০ Hz)
-    → lasts ~৩০০ milliseconds
-    → this is the "CLICK" — the moment of insight
-    → preceded by "brain blink" (alpha wave in visual
-       cortex — brain briefly turns INWARD)
-
-  THE DEFAULT MODE NETWORK (DMN):
-  
-  Marcus Raichle (২০০১, Washington University):
-    → the brain's "resting state" network
-    → active when you're NOT focused on a task
-    → active during: daydreaming, showering, walking,
-       falling asleep, waking up
-    → this is when the brain CONNECTS distant ideas
-    
-    → Default mode network does:
-      ১. connects distant memories
-      ২. explores unusual associations
-      ৩. simulates scenarios
-      ৪. processes background information
-    
-    → When you STOP focused thinking
-       → DMN takes over
-       → makes connections you couldn't make consciously
-       → delivers as INSIGHT
-
-HOW TO CREATE CONDITIONS FOR INSIGHT:
-
-  ১. FOCUSED WORK (preparation)
-    → study the problem deeply
-    → load all relevant information into working memory
-    → your conscious brain processes what's relevant
-    → WITHOUT this step, no insight (you need raw material)
-  
-  ২. INCUBATION (letting go)
-    → STOP thinking about the problem
-    → do something UNRELATED
-    → walk, shower, sleep, exercise
-    → DMN activates → distant connections form
-  
-  ৩. INSIGHT (the aha moment)
-    → arrives UNEXPECTEDLY
-    → feels sudden, complete, surprising
-    → usually comes with certainty ("YES! That's it!")
-    → gamma burst in right temporal lobe
-  
-  ৪. VERIFICATION
-    → check: is the insight actually correct?
-    → insights FEEL right but can be wrong
-    → test against reality
-
-  THE WALLAS MODEL (1926):
-    → Graham Wallas described this ১০০ years ago:
-      Preparation → Incubation → Illumination → Verification
-    → Kounios & Beeman confirmed it with brain imaging
-
-WHY SHOWER THOUGHTS WORK:
-
-  → shower = low cognitive load
-  → warm water = relaxation
-  → no distractions
-  → DMN active
-  → distant ideas connect
-  → insight arrives
-  
-  Same with:
-    → walking (Darwin, Nietzsche walked to think)
-    → driving on autopilot
-    → falling asleep (hypnagogic state)
-    → waking up (hypnopompic state)
-    → mundane tasks (washing dishes)
-
-EINSTEIN'S INSIGHT METHOD:
-
-  Einstein used THOUGHT EXPERIMENTS:
-    → "What if I rode a beam of light?"
-    → imagined the scenario (focused)
-    → then let it go (incubation)
-    → insights arrived during violin breaks
-    → "Creativity is the residue of time wasted."
-  
-  Mozart:
-    → ideas came during walks
-    → "When I am, as it were, completely myself, 
-       entirely alone, and of good cheer — it is on 
-       such occasions that my ideas flow best."
-
-CONNECTING INSIGHT TO YOUR 27 BOOKS:
-
-  Insight connects DISTANT ideas:
-    → your 27 books are "distant" knowledge domains
-    → when your DMN processes them during rest
-    → it finds connections your conscious mind misses
-  
-  Example insight:
-    "RAG hallucination (Book ১০) is like human false memory
-     (Book ২৪) — both happen when the retrieval system fills
-     gaps with plausible but wrong information. So RAG
-     evaluation (Book ১৬) should test for false memories
-     the same way psychologists do."
-
-  → This connection was UNAVAILABLE through linear thinking
-  → It required the DMN to connect Book ১০ + ২৪ + ১৬
-  → This is what the Knowledge Web DOES</div>
+<div class="callout info"><span class="co-icon">💡</span><div><strong>Kounios & Beeman (2009):</strong> EEG+fMRI-তে দেখা গেল "aha!" মস্তিষ্কের সত্যিকারের ঘটনা — right anterior superior temporal gyrus-এ ~৪০Hz gamma-wave burst (~৩০০ ms), তার আগে একটা "brain blink" (মস্তিষ্ক ক্ষণিকের জন্য ভেতরে ফেরে)। এটা ঘটে যখন দুটো দূরবর্তী ধারণা জোড়া লাগে।</div></div>
+<table class="kv-table"><tr><th>Analysis (যুক্তি)</th><th>Insight (aha!)</th></tr>
+<tr><td>left hemisphere, ধাপে ধাপে</td><td>right hemisphere, হঠাৎ, holistic</td></tr>
+<tr><td>সচেতন প্রচেষ্টা, alpha wave</td><td>অবচেতন, gamma-wave burst</td></tr>
+<tr><td>কাজের মতো লাগে</td><td>প্রকাশ/revelation-এর মতো লাগে</td></tr></table>
+<div class="callout tip"><span class="co-icon">🧘</span><div><strong>Default Mode Network (Raichle, 2001):</strong> মস্তিষ্কের "resting state" — daydream, গোসল, হাঁটা, ঘুমানোর সময় সক্রিয়; এই সময়েই দূরবর্তী স্মৃতি ও অস্বাভাবিক association জোড়া লাগে। focused thinking বন্ধ করলেই DMN দায়িত্ব নেয় ও সচেতনভাবে যা পারোনি তা <em>insight</em> হিসেবে দেয়। এজন্যই shower/walk-এ idea আসে।</div></div>
+<div class="callout info"><span class="co-icon">🔁</span><div><strong>Insight-এর ৪ ধাপ (Wallas, 1926 — brain imaging-এ নিশ্চিত):</strong> Preparation (গভীরভাবে চিন্তা, raw material লোড) → Incubation (ছেড়ে দাও, অসম্পর্কিত কিছু করো) → Illumination (হঠাৎ aha, সাথে সাথে লিখে রাখো) → Verification (insight নিশ্চিত মনে হয় কিন্তু ভুল হতে পারে — বাস্তবে test করো)।</div></div>
+<div class="callout tip"><span class="co-icon">🕸️</span><div><strong>Insight ও তোমার ২৭ বই:</strong> insight দূরবর্তী ধারণা জোড়ে — তোমার ২৭টা বই-ই সেই "দূরবর্তী" ডোমেইন। বিশ্রামে DMN এদের প্রক্রিয়া করে সচেতন-মন-এর মিস-করা সংযোগ খুঁজে দেয়। যেমন: "RAG hallucination (Book 10) ~ human false memory (Book 24) — দুটোই retrieval-gap plausible-কিন্তু-ভুল তথ্যে ভরাট করে; তাই RAG eval (Book 16)-এ false memory-র মতো test করা উচিত।" এই সংযোগ linear thinking-এ পাওয়া যেত না — এটাই Knowledge Web।</div></div>
 
 <div class="dialogue">ইলহাম — divine inspiration, sudden knowledge। ইসলামী ঐতিহ্যে ইলহাম হলো এমন জ্ঞান যা হঠাৎ আসে — চেষ্টা ছাড়া। নবীগণ ইলহাম পেতেন। কিন্তু সাধারণ মানুষও insight পায় — যখন তারা গভীরভাবে চিন্তা করে, তারপর ছেড়ে দেয়। মস্তিষ্ক বিশ্রামে সংযুক্ত করে। ইলহাম। Kounios ও Beeman দেখালেন — এটা মস্তিষ্কের প্রক্রিয়া। default mode network। gamma waves। ইলহাম এলোমেলো নয় — এটা প্রস্তুতির ফল। যে গভীরভাবে চিন্তা করে, তারপর ছাড়ে — তার মস্তিষ্ক সংযুক্ত করে। ইলহাম।</div>
 <div class="dialogue en">"Ilham — divine inspiration, sudden knowledge. In Islamic tradition, ilham is knowledge that arrives suddenly — without effort. Prophets received ilham. But ordinary people too get insight — when they think deeply, then let go. The brain connects during rest. Ilham. Kounios & Beeman showed — it's a brain process. Default mode network. Gamma waves. Ilham isn't random — it's the fruit of preparation. One who thinks deeply, then releases — their brain connects. Ilham."</div>`,

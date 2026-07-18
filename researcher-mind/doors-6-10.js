@@ -25,44 +25,26 @@ doors.push({
 <div class="dialogue">"জাইনব তোমাকে সংযোগ দেখাতে শিখিয়েছেন। ভালো। কিন্তু সংযোগ বানালে তুমি পরীক্ষা করবে। আর পরীক্ষা মানে — ব্যর্থতা।" ইব্রাহিম দেয়াল থেকে একটা ফ্রেম নামিয়ে আনলেন — একটা ভাঙা সার্কিট। "এটা ২০১৭। আমি ভেবেছিলাম এই ডিজাইনে কম্পিউটেশনাল কম লাগবে। তিন মাস কাজ। ফলাফল? সার্কিট পুড়ে গেল। ব্যর্থতা। কিন্তু এই ব্যর্থতা আমাকে শিখিয়েছিল — তাপ ডিসিপেশন এই ডিজাইনে অবহেলা করা যায় না। পরের ডিজাইনে আমি সেটা ঠিক করেছি।"</div>
 <div class="dialogue en">"Zainab taught you to see connections. Good. But connections lead to experiments. And experiments mean — failure." Ibrahim took down a frame from the wall — a broken circuit. "This is 2017. I thought this design would need less computation. Three months of work. Result? Circuit burned. Failure. But this failure taught me — heat dissipation can't be ignored in this design. In the next design, I fixed it."</div>
 
-<div class="code-block">গবেষণায় ব্যর্থতা — সংখ্যা দেখো:
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">~৬০-৮০%</div><div class="sc-label">গড় PhD ছাত্রের ব্যর্থ পরীক্ষা</div></div>
+<div class="stat-card"><div class="sc-num">~৬০-৭০%</div><div class="sc-label">প্রথম পেপার রিজেক্ট হার</div></div>
+<div class="stat-card"><div class="sc-num">~৭০-৮৫%</div><div class="sc-label">গ্রান্ট প্রপোজাল রিজেক্ট হার</div></div>
+</div>
 
-    গড় PhD ছাত্রের ব্যর্থ পরীক্ষা: ~৬০-৮০%
-    প্রথম পেপার রিজেক্ট হার: ~৬০-৭০%  
-    গ্রান্ট প্রপোজাল রিজেক্ট হার: ~৭০-৮৫%
-    
-    Thomas Edison: ১০,০০০ ব্যর্থতা → ১ বাল্ব
-    পেনিসিলিন: ১০ বছর ব্যর্থ তদন্ত → accidental discovery
-    Post-it Note: ব্যর্থ আঠা → billion-dollar product
+<div class="callout info"><span class="co-icon">💡</span><div>ব্যর্থতা থেকেই সাফল্য: Edison-এর হাজারো ব্যর্থ ফিলামেন্ট → বাল্ব; Fleming-এর "নষ্ট" পেট্রি ডিশ → পেনিসিলিন; 3M-এর "ব্যর্থ" দুর্বল আঠা → Post-it Note (billion-dollar product)।</div></div>
 
-    ডেভেলপার মাইন্ডসেট:
-    ❌ "ব্যর্থ হলাম। আমি খারাপ।"
-    ❌ "কাজ করল না। শেষ।"
-    ❌ "এটা সম্ভব নয়।"
-    
-    গবেষক মাইন্ডসেট:
-    ✅ "ব্যর্থ হলো। কেন? কী শিখলাম?"
-    ✅ "কাজ করল না। তার মানে এই পথ 
-        ভুল। অন্য পথ খুঁজি।"
-    ✅ "এটা সম্ভব নয় — এই উপায়ে। 
-        অন্য উপায় আছে।"
+<table class="kv-table"><tr><th>ডেভেলপার মাইন্ডসেট</th><th>গবেষক মাইন্ডসেট</th></tr>
+<tr><td>"ব্যর্থ হলাম। আমি খারাপ।"</td><td>"ব্যর্থ হলো। কেন? কী শিখলাম?"</td></tr>
+<tr><td>"কাজ করল না। শেষ।"</td><td>"এই পথ ভুল — অন্য পথ খুঁজি।"</td></tr>
+<tr><td>"এটা সম্ভব নয়।"</td><td>"এই উপায়ে সম্ভব নয় — অন্য উপায় আছে।"</td></tr></table>
 
-    ┌──────────────────────────────────────────┐
-    │  ব্যর্থতা প্রক্রিয়াকরণ — ৪ ধাপ:          │
-    │                                          │
-    │  ১. স্বীকার করো — "ব্যর্থ হয়েছে"        │
-    │     → অস্বীকার নয়, লুকানো নয়            │
-    │                                          │
-    │  ২. বিশ্লেষণ করো — "কেন ব্যর্থ হলো?"    │
-    │     → কোন ধাপে ভুল? কোন assumption?     │
-    │                                          │
-    │  ৩. নথিভুক্ত করো — negative results    │
-    │     → ভবিষ্যতের জন্য লিখে রাখো           │
-    │     → অন্যরাও জানুক যে এই পথে নয়        │
-    │                                          │
-    │  ৪. নতুন প্রশ্ন — "তাহলে এখন কী?"      │
-    │     → ব্যর্থতা নতুন প্রশ্ন জন্ম দেয়     │
-    └──────────────────────────────────────────┘</div>
+<div class="callout tip"><span class="co-icon">🔄</span><div><strong>ব্যর্থতা প্রক্রিয়াকরণ — ৪ ধাপ:</strong></div></div>
+<ul class="checklist">
+<li><strong>স্বীকার করো</strong> — "ব্যর্থ হয়েছে।" অস্বীকার নয়, লুকানো নয়।</li>
+<li><strong>বিশ্লেষণ করো</strong> — কোন ধাপে ভুল? কোন assumption ভেঙেছে?</li>
+<li><strong>নথিভুক্ত করো</strong> — negative result লিখে রাখো, যাতে অন্যরাও জানে এই পথে নয়।</li>
+<li><strong>নতুন প্রশ্ন</strong> — "তাহলে এখন কী?" ব্যর্থতা নতুন প্রশ্ন জন্ম দেয়।</li>
+</ul>
 
 <div class="dialogue">"আমি তোমাকে একটা গোপন কথা বলি," ইব্রাহিম বললেন, গলা নামিয়ে। "নেতিবাচক ফলাফল — negative results — প্রকাশ করা সবচেয়ে কঠিন। কারণ journal গুলো সাফল্য চায়, ব্যর্থতা নয়। কিন্তু ব্যর্থতা প্রকাশ করা গুরুত্বপূর্ণ — যাতে অন্যরা একই ভুল না করে।" তিনি থামলেন। "আমার সবচেয়ে গর্বের পেপার? একটা negative results পেপার। সেটা ২০০ বার সাইট হয়েছে — কারণ মানুষ জানতে চায় — কোন পথে নয়।"</div>
 <div class="dialogue en">"Let me tell you a secret," Ibrahim said, lowering his voice. "Negative results — publishing them is hardest. Because journals want success, not failure. But publishing failure is important — so others don't repeat the same mistake." He paused. "My proudest paper? A negative results paper. It's been cited 200 times — because people want to know — which path NOT to take."</div>
@@ -141,20 +123,11 @@ doors.push({
    - এই পেপারের সবচেয়ে শক্তিশালী দিক কী?
    - সবচেয়ে দুর্বল দিক কী?
    - কোন প্রশ্নের উত্তর দেয়নি?
-   → এটা তোমার সন্দেহ ধারালো করে
+   → এটা তোমার সন্দেহ ধারালো করে</div>
 
+<div class="callout tip"><span class="co-icon">✊</span><div><strong>লেখার সোনার নিয়ম:</strong> লেখা = চিন্তা করা, ব্যাখ্যা করা নয়। লেখা কঠিন লাগলে → চিন্তা অস্পষ্ট। লেখা সহজ হলে → চিন্তা স্পষ্ট।</div></div>
 
-    লেখার সোনার নিয়ম:
-
-    ✊ লেখা = চিন্তা করা। ব্যাখ্যা করা নয়।
-
-    যদি লেখা কঠিন হয় → চিন্তা অস্পষ্ট
-    যদি লেখা সহজ হয় → চিন্তা স্পষ্ট
-
-    ফাইনম্যান টেকনিক:
-    একটা কনসেপ্ট যেমন চাইলে বাচ্চাকে 
-    ব্যাখ্যা করো — কাগজে। কোথায় আটকে যাওয়া, 
-    সেটাই তোমার সত্যিকারের ফাঁক।</div>
+<div class="callout info"><span class="co-icon">🧠</span><div><strong>ফাইনম্যান টেকনিক:</strong> একটা কনসেপ্ট যেন একটা বাচ্চাকে বোঝাচ্ছ — কাগজে লেখো। যেখানে আটকে যাও, সেটাই তোমার সত্যিকারের ফাঁক।</div></div>
 
 <div class="dialogue">"আরেকটা কথা," মরিয়ম বললেন। "রাইটিং ব্লক — লেখা শুরু করতে না পারা — সেটা আসলে থিংকিং ব্লক। তুমি লেখা শুরু করতে পারছ না কারণ তোমার মাথায় কিছু পরিষ্কার নেই। সমাধান? শুরু করো — যা মনে আসে লেখো। খারাপ লেখা ভালো লেখার চেয়ে ভালো, কারণ খারাপ লেখা বদলানো যায়। কিছু না লেখা বদলানো যায় না।"</div>
 <div class="dialogue en">"One more thing," Maryam said. "Writer's block — inability to start writing — is actually thinking block. You can't start because your head isn't clear. Solution? Start — write whatever comes. Bad writing is better than no writing, because bad writing can be fixed. Nothing can't be fixed."</div>
@@ -187,59 +160,15 @@ doors.push({
 <div class="dialogue">"তুমি একজন ডেভেলপার," ইউসুফ বললেন। "তুমি জানো — কীভাবে কোড লেখা যায়, কীভাবে সিস্টেম বানানো যায়। এটা ভালো। কিন্তু এই জ্ঞান যদি তোমাকে অহংকারী বানায় — তাহলে তুমি গবেষক হতে পারবে না। কারণ গবেষক হওয়া মানে — নতুন জিনিস শেখা। আর নতুন জিনিস শেখার শর্ত হলো — আমি জানি না, বলতে পারা।"</div>
 <div class="dialogue en">"You're a developer," Yusuf said. "You know — how to code, how to build systems. That's good. But if this knowledge makes you arrogant — you can't be a researcher. Because being a researcher means — learning new things. And the condition for learning is — being able to say, I don't know."</div>
 
-<div class="code-block">বুদ্ধিবৃত্তিক বিনয়ের স্তর — ৪টা ধাপ:
+<table class="kv-table"><tr><th>স্তর</th><th>মনোভাব</th><th>ফল</th></tr>
+<tr><td class="hl">১. অস্বীকার</td><td>"আমি সব জানি। এটা সহজ।"</td><td>❌ মস্তিষ্ক বন্ধ, কেউ শেখে না</td></tr>
+<tr><td class="hl">২. সচেতনতা</td><td>"হয়তো সব জানি না, কিন্তু যথেষ্ট জানি।"</td><td>⚠️ কিছু খোলা, অহংকার বাকি</td></tr>
+<tr><td class="hl">৩. স্বীকার</td><td>"আমি এটা জানি না। শিখতে চাই।"</td><td>✅ গবেষকের অবস্থা — খোলা, নম্র</td></tr>
+<tr><td class="hl">৪. শক্তি</td><td>"জানি না — সেটাই আমার শক্তি, কারণ তাই খুঁজছি।"</td><td>✊ সর্বোচ্চ (Socrates: "জানি যে কিছুই জানি না")</td></tr></table>
 
-স্তর ১: অজ্ঞতা অস্বীকার (Denial)
-  ❌ "আমি সব জানি। এটা সহজ।"
-  → এখানে কেউ শেখে না। মস্তিষ্ক বন্ধ।
-  
-স্তর ২: অজ্ঞতা সচেতনতা (Awareness)  
-  ⚠️ "হয়তো আমি সব জানি না। কিন্তু যথেষ্ট জানি।"
-  → কিছু খোলা, কিন্তু অহংকার এখনো আছে।
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>অহংকারের ৩টা রূপ:</strong> "ভালো কোডার তাই ভালো গবেষক" (কোডিং টুল, গবেষণা চিন্তা) · "এই টেক জানি তাই সব জানি" (গবেষণা তো সেই টুলের সীমা খোঁজা) · "অভিজ্ঞ তাই শেখার নেই" (সবচেয়ে বিপজ্জনক — শেখা থামলে বাড়া থামে)।</div></div>
 
-স্তর ৩: অজ্ঞতা স্বীকার (Acceptance)
-  ✅ "আমি এইটা জানি না। শিখতে চাই।"
-  → গবেষকের অবস্থা। খোলা, কৌতূহলী, নম্র।
-
-স্তর ৪: অজ্ঞতা থেকে শক্তি (Power)
-  ✊ "আমি জানি না — এবং সেটাই আমার 
-     শক্তি। কারণ জানি না বলেই খুঁজছি।"
-  → সর্বোচ্চ স্তর। সক্রেটিস: 
-     "আমি জানি যে আমি কিছুই জানি না।"
-
-
-    অহংকারের ৩টা রূপ — সাবধান:
-
-    ১. "আমি ভালো কোডার, তাই ভালো গবেষক হবো"
-       → ভুল। কোডিং হলো টুল। গবেষণা হলো চিন্তা।
-       ভালো ছুরিধারী মানে ভালো রাঁধুনি নয়।
-
-    ২. "আমি এই টেকনোলজি জানি, তাই সব জানি"  
-       → ভুল। একটা টুল জানা মানে সব জানা নয়।
-       গবেষণা হলো সেই টুলের সীমাবদ্ধতা খোঁজা।
-
-    ৩. "আমি অভিজ্ঞ, তাই আমার থেকে শেখার নেই"
-       → ভুল। সবচেয়ে বিপজ্জনক। যে শেখা থামিয়ে দেয়,
-       সে বাঁচা থামিয়ে দেয়।
-
-
-    "আমি জানি না" বলার সাহস — ৩টা উপায়:
-
-    ১. কনফারেন্সে প্রশ্ন করো:
-       "এই অংশটা বুঝতে পারিনি। 
-        আরেকটু ব্যাখ্যা করবেন?"
-       → কেউ হাসবে না। সবাই সম্মান করবে।
-
-    ২. সিনিয়রকে বলো:
-       "এই পেপারের এই সমীকরণটা 
-        কীভাবে কাজ করে?"
-       → সিনিয়ররা ভালোবাসে এই প্রশ্ন।
-
-    ৩. নিজেকে বলো:
-       "আমি এখনো পুরোপুরি বুঝিনি। 
-        আবার পড়বো।"
-       → সবচেয়ে গুরুত্বপূর্ণ। নিজের কাছে 
-         সৎ হওয়া।</div>
+<div class="callout tip"><span class="co-icon">🙋</span><div><strong>"আমি জানি না" বলার সাহস:</strong> কনফারেন্সে — "এই অংশটা বুঝিনি, আরেকটু ব্যাখ্যা করবেন?" (কেউ হাসবে না, সম্মান করবে)। সিনিয়রকে — "এই সমীকরণ কীভাবে কাজ করে?" (তারা এই প্রশ্ন ভালোবাসে)। নিজেকে — "পুরোপুরি বুঝিনি, আবার পড়বো।" (সবচেয়ে গুরুত্বপূর্ণ — নিজের কাছে সৎ হওয়া)।</div></div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ অহংকারী মন</div>"আমি ৫ বছর ধরে কোড করছি। আমি LLM জানি। RAG জানি। আমার থেকে শেখার নেই।" — এই মন গবেষক হয় না। এই মন আটকে যায়। পাঁচ বছর পরেও একই জায়গায়।</div>
@@ -277,56 +206,27 @@ doors.push({
 <div class="dialogue">"আমি যখন প্রথম গবেষণা শুরু করলাম," খাদিজা বললেন, "আমি ভেবেছিলাম — এক বছরে পেপার পাবো। দুই বছরে নাম হবে। তিন বছরে গ্রান্ট। ভুল। প্রথম পেপার পেতে আমার সাড়ে তিন বছর লেগেছে। সাড়ে তিন বছর — কোনো ফল ছাড়া। অনেকে থেমে গেল। আমি থামলাম না। কারণ জানতাম — গবেষণা গাছের মতো। প্রথমে শিকড়, তারপর কাণ্ড, তারপর ডাল, তারপর পাতা, তারপর ফুল, তারপর ফল। সব তার সময়ে।"</div>
 <div class="dialogue en">"When I first started research," Khadija said, "I thought — paper in one year. Name in two. Grant in three. Wrong. My first paper took three and a half years. Three and a half years — with no fruit. Many stopped. I didn't. Because I knew — research is like a tree. First roots, then stem, then branches, then leaves, then flowers, then fruit. Everything in its time."</div>
 
-<div class="code-block">গবেষণার টাইমলাইন — বাস্তব সংখ্যা:
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">১.৫-৩ বছর</div><div class="sc-label">প্রথম পেপার প্রকাশ</div></div>
+<div class="stat-card"><div class="sc-num">৩-৫ বছর</div><div class="sc-label">প্রথম গ্রান্ট লাভ</div></div>
+<div class="stat-card"><div class="sc-num">১-২ বছর</div><div class="sc-label">প্রকাশের পর প্রথম সাইটেশন</div></div>
+<div class="stat-card"><div class="sc-num">৬-৭ বছর</div><div class="sc-label">টেনিউর (পোস্ট-PhD)</div></div>
+</div>
 
-    প্রথম পেপার প্রকাশ: গড়ে ১.৫-৩ বছর
-    প্রথম গ্রান্ট লাভ: গড়ে ৩-৫ বছর  
-    প্রথম সাইটেশন: পেপার প্রকাশের ১-২ বছর পর
-    টেনিউর (অধ্যাপক): ৬-৭ বছর পোস্ট-PhD
+<div class="callout tip"><span class="co-icon">🪨</span><div><strong>Duckworth-এর গ্রিট সূত্র:</strong> প্রতিভা × প্রচেষ্টা = দক্ষতা; দক্ষতা × প্রচেষ্টা = অর্জন। অর্থাৎ <strong>প্রতিভা × প্রচেষ্টা² = অর্জন</strong> — প্রচেষ্টা দুইবার গোনা হয়, প্রতিভার চেয়ে বেশি গুরুত্বপূর্ণ।</div></div>
 
-    ┌─────────────────────────────────────────────┐
-    │  গবেষণার গ্রিট স্কেল (Angela Duckworth):   │
-    │                                             │
-    │  প্রতিভা × প্রচেষ্টা = দক্ষতা                │
-    │  দক্ষতা × প্রচেষ্টা = অর্জন                  │
-    │                                             │
-    │  অর্থাৎ:                                    │
-    │  প্রতিভা × প্রচেষ্টা² = অর্জন                │
-    │                                             │
-    │  প্রচেষ্টা স্কয়ারড!                         │
-    │  প্রচেষ্টা প্রতিভার চেয়ে বেশি গুরুত্বপূর্ণ! │
-    └─────────────────────────────────────────────┘
+<table class="kv-table"><tr><th>সময়সীমা</th><th>লক্ষ্য</th></tr>
+<tr><td class="hl">সপ্তাহ</td><td>একটা পেপার পড়ো, একটা নোট লেখো</td></tr>
+<tr><td class="hl">মাস</td><td>একটা সামারি — কী শিখলে, কোন কনসেপ্ট পরিষ্কার হলো</td></tr>
+<tr><td class="hl">বছর</td><td>একটা পেপার প্রস্তুত করো (৫ বছরে PhD, ১০ বছরে বিশেষজ্ঞ)</td></tr></table>
 
-    দীর্ঘমেয়াদী চিন্তা — ৩টা সময়সীমা:
-
-    সপ্তাহ: কী পড়বো, কী পরীক্ষা করবো
-      → ছোট লক্ষ্য। প্রতি সপ্তাহ একটা পেপার।
-      → প্রতি সপ্তাহ একটা নোট।
-
-    মাস: কী বুঝলাম, কী প্রশ্ন আছে  
-      → মাসে একটা সামারি। কোথায় আছো?
-      → কী শিখলে? কী কনসেপ্ট পরিষ্কার হলো?
-
-    বছর: কোথায় পৌঁছাতে চাও  
-      → এই বছরে একটা পেপার প্রস্তুত করবো।
-      → ৫ বছরে PhD। ১০ বছরে বিশেষজ্ঞ।
-
-    ┌──────────────────────────────────────────────┐
-    │  গ্রিট বানানোর ৪টা অভ্যাস:                  │
-    │                                              │
-    │  ১. প্রতিদিন কাজ করো — এক ঘণ্টা হলেও       │
-    │     → দৈনিক অভ্যাস > পর্বায়মান পরিশ্রম     │
-    │                                              │
-    │  ২. ছোট লক্ষ্য বানাও — সাপ্তাহিক            │
-    │     → এক পেপার পড়ো, এক নোট লেখো           │
-    │                                              │
-    │  ৩. প্রগ্রেস ট্র্যাক করো — মাসে              │
-    │     → কোথায় ছিলে ৩ মাস আগে, কোথায় এখন?    │
-    │                                              │
-    │  ৪. উদ্‌যাপন করো — প্রতিটা ছোট জয়           │
-    │     → প্রথম পেপার পড়া শেষ? উদযাপন।         │
-    │     → প্রথম নোট লেখা? উদযাপন।               │
-    └──────────────────────────────────────────────┘</div>
+<div class="callout info"><span class="co-icon">🌱</span><div><strong>গ্রিট বানানোর ৪টা অভ্যাস:</strong></div></div>
+<ul class="checklist">
+<li><strong>প্রতিদিন কাজ করো</strong> — এক ঘণ্টা হলেও। দৈনিক অভ্যাস &gt; মাঝেমধ্যে বড় পরিশ্রম।</li>
+<li><strong>ছোট সাপ্তাহিক লক্ষ্য</strong> — এক পেপার, এক নোট।</li>
+<li><strong>প্রগ্রেস ট্র্যাক করো</strong> — ৩ মাস আগে কোথায় ছিলে, এখন কোথায়?</li>
+<li><strong>প্রতিটা ছোট জয় উদযাপন করো</strong> — প্রথম পেপার শেষ, প্রথম নোট — উদযাপন।</li>
+</ul>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ স্প্রিন্টার মাইন্ডসেট</div>"আমি এই মাসে একটা পেপার লিখবো!" — এক সপ্তাহ পর হতাশ। ছেড়ে দিলে। আবার শুরু। আবার ছেড়ে। এই প্যাটার্নে কিছু হয় না। গবেষণা স্প্রিন্ট নয়।</div>
@@ -364,61 +264,26 @@ doors.push({
 <div class="dialogue">তাঁরা সবাই তোমার চারপাশে দাঁড়ালেন। খাদিজা বললেন: "তুমি ভেবেছিলে গবেষক হওয়া মানে একটা নতুন দক্ষতা শেখা। ভুল। গবেষক হওয়া মানে একটা নতুন মানুষ হওয়া। এই নয়টা গুণ আলাদা নয় — এগুলো এক মানুষের নয়টা রূপ। কৌতূহল থেকে জন্ম নেয় প্রশ্ন। প্রশ্ন থেকে পাঠ। পাঠ থেকে সন্দেহ। সন্দেহ থেকে সংযোগ। সংযোগ থেকে পরীক্ষা। পরীক্ষা থেকে ব্যর্থতা। ব্যর্থতা থেকে লেখা। লেখা থেকে বিনয়। বিনয় থেকে অধ্যবসায়। আর অধ্যবসায় থেকে আবার কৌতূহ়ল। এটা চক্র। গবেষক এই চক্রে ঘোরে — জীবনভর।"</div>
 <div class="dialogue en">They all stood around you. Khadija said: "You thought becoming a researcher means learning a new skill. Wrong. Becoming a researcher means becoming a new person. These nine qualities are not separate — they are nine forms of one person. Curiosity births questions. Questions lead to reading. Reading leads to doubt. Doubt leads to connections. Connections lead to experiments. Experiments lead to failure. Failure leads to writing. Writing leads to humility. Humility leads to persistence. And persistence leads back to curiosity. It's a cycle. A researcher spins in this cycle — for life."</div>
 
-<div class="code-block">গবেষকের চক্র — The Research Loop:
+<table class="kv-table"><tr><th>শিক্ষক</th><th>গুণ</th><th>গোপন কথা</th></tr>
+<tr><td class="hl">নুসরাত 🌱</td><td>কৌতূহল</td><td>প্রতিদিন একটা নতুন "কেন"</td></tr>
+<tr><td class="hl">ইমরান 🎯</td><td>প্রশ্ন</td><td>নতুন, গুরুত্বপূর্ণ, সমাধানযোগ্য</td></tr>
+<tr><td class="hl">সালমা 📖</td><td>পাঠ</td><td>থ্রি-পাস: স্কিম → স্ট্রাকচার → গভীর</td></tr>
+<tr><td class="hl">দাউদ 🔍</td><td>সন্দেহ</td><td>প্রতিটা দাবিতে প্রমাণ দাবি করো</td></tr>
+<tr><td class="hl">জাইনব 🕸️</td><td>সংযোগ</td><td>আলাদা ফিল্ডের মাঝে সংযোগ খোঁজো</td></tr>
+<tr><td class="hl">ইব্রাহিম 🔥</td><td>ব্যর্থতা</td><td>ব্যর্থতা গাইড, শত্রু নয়</td></tr>
+<tr><td class="hl">মরিয়ম ✍️</td><td>লেখনী</td><td>প্রতিদিন রিসার্চ ডায়েরি</td></tr>
+<tr><td class="hl">ইউসুফ 🤲</td><td>বিনয়</td><td>"আমি জানি না" — সবচেয়ে শক্তিশালী শব্দ</td></tr>
+<tr><td class="hl">খাদিজা 🪨</td><td>অধ্যবসায়</td><td>গ্রিট &gt; প্রতিভা; প্রতিদিন এক ঘণ্টা</td></tr>
+</table>
 
-    ┌──────────────────────────────────────────┐
-    │                                          │
-    │    ① কৌতূহল (Curiosity)                  │
-    │         ↓                                │
-    │    ② প্রশ্ন (Question)                    │
-    │         ↓                                │
-    │    ③ পাঠ (Reading)                       │
-    │         ↓                                │
-    │    ④ সন্দেহ (Doubt)                      │
-    │         ↓                                │
-    │    ⑤ সংযোগ (Connection)                 │
-    │         ↓                                │
-    │    ⑥ ব্যর্থতা (Failure)                  │
-    │         ↓                                │
-    │    ⑦ লেখা (Writing)                      │
-    │         ↓                                │
-    │    ⑧ বিনয় (Humility)                    │
-    │         ↓                                │
-    │    ⑨ অধ্যবসায় (Persistence)             │
-    │         ↓                                │
-    │    ↻ আবার ① — নতুন কৌতূহল               │
-    │                                          │
-    │    এই চক্র থামে না। জীবনভর ঘোরে।        │
-    └──────────────────────────────────────────┘
+<div class="timeline">
+<div class="tl-step"><div class="tl-title">① কৌতূহল → ② প্রশ্ন → ③ পাঠ</div><div class="tl-body">অজানা থেকে জিজ্ঞাসা, জিজ্ঞাসা থেকে পড়া।</div></div>
+<div class="tl-step"><div class="tl-title">④ সন্দেহ → ⑤ সংযোগ → ⑥ ব্যর্থতা</div><div class="tl-body">যাচাই, ভিন্ন জগতের সংযোগ, পরীক্ষা ও ব্যর্থতা।</div></div>
+<div class="tl-step"><div class="tl-title">⑦ লেখা → ⑧ বিনয় → ⑨ অধ্যবসায়</div><div class="tl-body">লিখে স্পষ্ট করা, নিজের সীমা মানা, লেগে থাকা।</div></div>
+<div class="tl-step"><div class="tl-title">↻ আবার ① — নতুন কৌতূহল</div><div class="tl-body">চক্র থামে না — জীবনভর ঘোরে।</div></div>
+</div>
 
-    নয়জন শিক্ষকের নয়টা গোপন কথা:
-
-    নুসরাত 🌱  → প্রতিদিন একটা নতুন কেন
-    ইমরান 🎯  → প্রশ্ন নতুন, গুরুত্বপূর্ণ, সমাধানযোগ্য
-    সালমা 📖  → থ্রি-পাস পড়া — স্কিম, স্ট্রাকচার, গভীর
-    দাউদ 🔍  → প্রতিটা দাবিতে প্রমাণ দাবি করো
-    জাইনব 🕸️ → আলাদা ফিল্ডের মাঝে সংযোগ খোঁজো
-    ইব্রাহিম 🔥 → ব্যর্থতা গাইড, শত্রু নয়
-    মরিয়ম ✍️ → প্রতিদিন রিসার্চ ডায়েরি
-    ইউসুফ 🤲 → আমি জানি না — সবচেয়ে শক্তিশালী শব্দ
-    খাদিজা 🪨 → গ্রিট > প্রতিভা। প্রতিদিন এক ঘণ্টা
-
-    এক কথায়:
-
-    ┌─────────────────────────────────────────┐
-    │                                         │
-    │  গবেষক হওয়া মানে:                       │
-    │                                         │
-    │  শিশুর কৌতূহল                           │
-    │    + কারিগরের নিপুণতা                   │
-    │    + সন্ন্যাসীর ধৈর্য                    │
-    │    + যোদ্ধার সাহস                        │
-    │                                         │
-    │  = একটা মানুষ যে জানে না,               │
-    │    কিন্তু জানতে চায়,                    │
-    │    এবং জানা পর্যন্ত থামে না              │
-    │                                         │
-    └─────────────────────────────────────────┘</div>
+<div class="callout tip"><span class="co-icon">🎓</span><div><strong>এক কথায়, গবেষক হওয়া মানে:</strong> শিশুর কৌতূহল + কারিগরের নিপুণতা + সন্ন্যাসীর ধৈর্য + যোদ্ধার সাহস = এমন একজন, যে জানে না, কিন্তু জানতে চায়, এবং জানা পর্যন্ত থামে না।</div></div>
 
 <div class="dialogue">"এখন তুমি জিজ্ঞেস করবে," খাদিজা বললেন, "আমি কি PhD পাবো?" সব শিক্ষক হাসলেন। ইউসুফ বললেন: "এই প্রশ্নটা ভুল। সঠিক প্রশ্ন — আমার কি গবেষকের মন আছে? যদি থাকে, PhD হলো শুধু একটা ফলাফল। যদি না থাকে, PhD হলো শুধু একটা কাগজ।" ইব্রাহিম যোগ করলেন: "Research Pilgrimage বইটা তোমাকে শিখিয়েছে কীভাবে PhD পাবে। এই বই তোমাকে শিখিয়েছে — PhD পাওয়ার আগে তুমি কে হবে।"</div>
 <div class="dialogue en">"Now you'll ask," Khadija said, "will I get a PhD?" All teachers smiled. Yusuf said: "That's the wrong question. The right question — do I have a researcher's mind? If yes, PhD is just a result. If no, PhD is just a paper." Ibrahim added: "Research Pilgrimage taught you how to get a PhD. This book taught you — who you become before the PhD."</div>

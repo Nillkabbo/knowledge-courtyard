@@ -26,29 +26,12 @@ doors.push({
 <div class="dialogue">ক্লেইভ থম্পসন একে বলেছেন "complete spectrum overload।" যখন সবকিছু পাওয়া যায়, তখন সবচেয়ে দুর্লভ সম্পদ হয়ে দাঁড়ায় দৃষ্টি (attention) এবং গুণগত বিচার (discernment)। শেখার সুপারপাওয়ার আসলে "কত দ্রুত শিখছেন" তা নয়, বরং "কী শিখবেন এবং কী উপেক্ষা করবেন" — সেই নির্বাচনই আসল দক্ষতা।</div>
 <div class="dialogue en">"Clive Thompson called this 'complete spectrum overload.' When everything is available, attention and discernment become the rarest resources. The learning superpower isn't 'how fast you learn' — it's 'what to learn and what to ignore' — that selection is the real skill."</div>
 
-<div class="code-block">Attention Economics:
-
-যে সমস্যাটি জনপ্রিয় "২০-ঘণ্টা" ভিডিওটি (Josh Kaufman-এর "The First 20 Hours") মিস করেছে:
-
-  ১৯৯০-এর দশকে: একটা পেপার খুঁজতে লাইব্রেরিতে যেতে হতো
-  আজ: সেটি কয়েক সেকেন্ডের ব্যাপার
-  
-  কিন্তু — তথ্যের আধিক্যই এখন নতুন বাধা।
-
-তিনটি দক্ষতা যা ফিল্টার হিসেবে কাজ করে:
-
-  ১. উৎস যাচাই (Source Verification)
-     → কে বলছে? কেন বলছে? প্রমাণ কী?
-     
-  ২. প্রাসঙ্গিকতা ফিল্টার (Relevance Filter)  
-     → এটা কি আমার লক্ষ্যের সাথে সম্পর্কিত?
-     
-  ৩. গভীরতা বনাম প্রস্তুতি (Depth vs Preparation)
-     → এটা কি পৃষ্ঠপোষিত না গভীর?
-
-নিয়ম: প্রতিদিন যা শিখবে, আগে জিজ্ঞেস করো — 
-"এটা কি আমার সময়ের যোগ্য?" যদি হ্যাঁ — যাও। 
-যদি না — উপেক্ষা করো। নীরবতাও একটা দক্ষতা।</div>
+<div class="callout info"><span class="co-icon">🌊</span><div><strong>যা "২০-ঘণ্টা" ভিডিওটি মিস করেছে:</strong> ১৯৯০-এ একটা পেপার খুঁজতে লাইব্রেরিতে যেতে হতো; আজ কয়েক সেকেন্ড। কিন্তু <em>তথ্যের আধিক্যই</em> এখন নতুন বাধা (Clive Thompson-এর "complete spectrum overload")। সুপারপাওয়ার "কত দ্রুত শিখছ" নয় — "কী শিখবে ও কী উপেক্ষা করবে"।</div></div>
+<table class="kv-table"><tr><th>ফিল্টার</th><th>প্রশ্ন</th></tr>
+<tr><td class="hl">Source verification</td><td>কে বলছে? কেন? প্রমাণ কী?</td></tr>
+<tr><td class="hl">Relevance filter</td><td>এটা কি আমার লক্ষ্যের সাথে সম্পর্কিত?</td></tr>
+<tr><td class="hl">Depth vs surface</td><td>এটা কি পৃষ্ঠতল, নাকি গভীর?</td></tr></table>
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>নিয়ম:</strong> শেখার আগে জিজ্ঞেস করো — "এটা কি আমার সময়ের যোগ্য?" হ্যাঁ হলে যাও, না হলে উপেক্ষা করো। নীরবতাও একটা দক্ষতা।</div></div>
 
 <div class="dialogue">নূর — আলো। কুরআনে আল্লাহ বলেন — "আল্লাহ আসমান ও জমিনের নূর।" (২৪:৩৫)। আলো সব জায়গায় নয় — নির্দিষ্ট দিকে। বাতিঘরও তেমনি — সব দিকে নয়, নির্দিষ্ট পথে। তোমার মনোযোগও নূর। সব তথ্যে নয় — যা গুরুত্বপূর্ণ, ঠিক সেখানে। অন্য সব অন্ধকারে থাকুক। এটাই বাতিকরের শিল্প — নির্বাচনের শিল্প।</div>
 <div class="dialogue en">"Nur — light. Allah says — 'Allah is the Light of the heavens and earth.' (24:35). Light isn't everywhere — it's focused. The lighthouse too — not all directions, a specific path. Your attention is nur too. Not all information — only what matters, precisely there. Everything else stays dark. This is the lighthouse keeper's art — the art of selection."</div>`,
@@ -77,35 +60,12 @@ doors.push({
 <div class="dialogue">বাতিকর বলেছিলেন — নির্বাচন করো। কিন্তু আমি বলি — নির্বাচন করার পর আসে যাত্রা। আর যাত্রার তিনটি স্তর আছে। ভিডিও বলেছে "২০ ঘণ্টা।" সত্য — কিন্তু অর্ধেক সত্য। ২০ ঘণ্টা শুরু, গন্তব্য নয়।</div>
 <div class="dialogue en">"The lighthouse keeper said — select. But I say — after selection comes the journey. And the journey has three levels. The video said '20 hours.' True — but half-true. 20 hours is the start, not the destination."</div>
 
-<div class="code-block">The Three Milestones — ভিন্ন ভিন্ন লক্ষ্য:
-
-┌──────────────────────────────────────┐
-│  ২০ ঘণ্টা    │ "Decent" দক্ষতা         │
-│  (Josh Kaufman)│ কাজ চালানো যায়       │
-│              │ Dunning-Kruger ঝুঁকি!  │
-├──────────────────────────────────────┤
-│  ~১,০০০ ঘণ্টা │ পেশাদার মান             │
-│              │ জন্য টাকা কামানো যায়   │
-│              │ জটিল সমস্যা সমাধানযোগ্য │
-├──────────────────────────────────────┤
-│  ১০,০০০ ঘণ্টা │ World-class mastery     │
-│ (Ericsson)   │ বিশ্বসেরা পর্যায়       │
-│              │ Deliberate practice লাগে│
-└──────────────────────────────────────┘
-
-  ⚠️ সতর্ক পাঠ: Macnamara et al. (২০১৪) meta-analysis 
-    দেখায় deliberate practice শুধু ~১-২৬% variance 
-    ব্যাখ্যা করে (game-এ বেশি, profession-এ কম)। 
-    ১০,০০০ ঘণ্টা = necessary কিন্তু sufficient নয়। 
-    talent, coaching, starting age, resources-ও গুরুত্বপূর্ণ। 
-    "ঘণ্টা গোনা" নয় — "কেমন অনুশীলন" সেটাই আসল।
-
-ভিডিও যে ভুল করেছে:
-  এই তিনটি একে অপরের প্রতিদ্বন্দ্বী নয়।
-  তারা ভিন্ন ভিন্ন লক্ষ্যের কথা বলে।
-  
-  "২০ ঘণ্টাই যথেষ্ট" মনে করলে তুমি 
-  মাঝামাঝি পর্যায়ে আটকে যাবে।</div>
+<table class="kv-table"><tr><th>মাইলফলক</th><th>স্তর</th><th>মানে</th></tr>
+<tr><td class="hl">২০ ঘণ্টা</td><td>"Decent" — কাজ চালানো (Josh Kaufman)</td><td>শূন্য → functional; ⚠️ Dunning-Kruger ঝুঁকি</td></tr>
+<tr><td class="hl">~১,০০০ ঘণ্টা</td><td>পেশাদার মান</td><td>টাকা কামানো যায়, জটিল সমস্যা সমাধানযোগ্য</td></tr>
+<tr><td class="hl">১০,০০০ ঘণ্টা</td><td>World-class (Ericsson)</td><td>বিশ্বসেরা; deliberate practice লাগে</td></tr></table>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> Macnamara et al. (2014) meta-analysis দেখায় deliberate practice শুধু ~১-২৬% variance ব্যাখ্যা করে (game-এ বেশি, profession-এ কম)। ১০,০০০ ঘণ্টা necessary কিন্তু sufficient নয় — talent, coaching, starting age, resources-ও গুরুত্বপূর্ণ। "ঘণ্টা গোনা" নয়, "কেমন অনুশীলন" সেটাই আসল।</div></div>
+<div class="callout info"><span class="co-icon">🎯</span><div>এই তিনটি একে অপরের প্রতিদ্বন্দ্বী নয় — ভিন্ন লক্ষ্যের কথা বলে। "২০ ঘণ্টাই যথেষ্ট" ভাবলে তুমি মাঝামাঝি পর্যায়ে আটকে যাবে।</div></div>
 
 <div class="dialogue">জশ কফম্যান — "The First 20 Hours" বইয়ের লেখক। তিনি বলেছেন যেকোনো দক্ষতার প্রথম ২০ ঘণ্টা সবচেয়ে গুরুত্বপূর্ণ — যেখানে তুমি শূন্য থেকে কিছু করতে পারো। কিন্তু ১০,০০০ ঘণ্টার ধারণাটি অ্যান্ডার্স এরিকসনের গবেষণা থেকে — যা ম্যালকম গ্ল্যাডওয়েল "Outliers"-এ জনপ্রিয় করেছিলেন। তবে এটি কেবল world-class mastery বা বিশ্বসেরা পর্যায়ের জন্য। এই দুটি নিয়ম একে অপরের প্রতিদ্বন্দ্বী নয় — তারা ভিন্ন ভিন্ন লক্ষ্যের কথা বলে।</div>
 <div class="dialogue en">"Josh Kaufman — author of 'The First 20 Hours.' He said the first 20 hours of any skill are most important — where you go from zero to functional. But the 10,000-hour concept comes from Anders Ericsson's research — popularized by Malcolm Gladwell in 'Outliers.' But that's for world-class mastery only. These two rules aren't rivals — they speak to different goals."</div>
@@ -139,39 +99,14 @@ doors.push({
 <div class="dialogue">মাইলফলক রক্ষক বলেছিলেন — তিন স্তরের যাত্রা। কিন্তু আমি বলি — যাত্রার প্রথম স্তরেই সবচেয়ে বড় বিপদ। বিপদটির নাম — Dunning-Kruger effect। ২০ ঘণ্টা পরে তুমি নিজেকে চমৎকার মনে করবে। ঠিক যখন তুমি সবচেয়ে বেশি অজ্ঞ।</div>
 <div class="dialogue en">"The milestone guardian said — three levels of journey. But I say — the first level holds the biggest danger. The danger is called the Dunning-Kruger effect. After 20 hours you'll feel excellent. Right when you're most ignorant."</div>
 
-<div class="code-block">Dunning-Kruger Effect — আত্মবিশ্বাসের পাহাড়:
-
-       আত্মবিশ্বাস
-          ↑
-     "আমি পারি!" ────╮ 
-                        │  ← ২০ ঘণ্টা: উচ্চ আত্মবিশ্বাস
-     "ওহ না..."     │     কম জ্ঞান
-          ↓             │
-     "এত কিছু       ↓
-      জানি না"     "ভ্যালি অফ ডিসপেয়ার"
-                        │     ← প্রকৃত জ্ঞান শুরু
-                        │       আত্মবিশ্বাস কমে
-          →─────────────╯
-          
-     "সত্যিই জানি" ──── ১০০০+ ঘণ্টা:
-                        আত্মবিশ্বাস ফিরে আসে, কিন্তু বিনয়ী
-
-Illusion of Competence:
-  • পড়ে মনে হয় "জানি" — কিন্তু মুখস্থ, বোঝা নয়
-  • কোর্স শেষ করলে মনে হয় "পারি" — কিন্তু প্রয়োগ?
-  • পরীক্ষায় ভালো করলে মনে হয় "বিশেষজ্ঞ" — কিন্তু বাস্তব?
-
-বিভ্রম ভাঙার উপায়:
-  ১. নিজেকে পরীক্ষা করো (active recall)
-  ২. প্রয়োগ করো — প্রজেক্ট বানাও
-  ৩. অন্যকে শেখাও — গ্যাপ ধরা পড়বে
-
-⚠️ সতর্ক পাঠ: উপরের U-curve হলো popular visualization।
-  Dunning-Kruger-এর আসল ফলাফল (১৯৯৯) হলো — নিচের 
-  স্তরের ব্যক্তিরা নিজের র‍্যাঙ্ক সবচেয়ে বেশি অতিরঞ্জিত 
-  করে (overestimate)। আত্মবিশ্বাসের U-আকৃতি ধ্রুব সত্য নয় — 
-  তবে "নতুন শিক্ষার্থী নিজেকে বেশি পারদর্শী মনে করে" 
-  এই মূল পর্যবেক্ষণ সঠিক ও প্রাসঙ্গিক।</div>
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">~২০ ঘণ্টা</div><div class="tl-title">⛰️ "আমি পারি!"</div><div class="tl-body">উচ্চ আত্মবিশ্বাস, কম জ্ঞান — বিভ্রমের চূড়া।</div></div>
+<div class="tl-step"><div class="tl-when">গভীরে যেতে শুরু</div><div class="tl-title">😰 Valley of Despair</div><div class="tl-body">"এত কিছু জানি না" — আত্মবিশ্বাস কমে, প্রকৃত জ্ঞান শুরু।</div></div>
+<div class="tl-step"><div class="tl-when">১০০০+ ঘণ্টা</div><div class="tl-title">🧘 "সত্যিই জানি"</div><div class="tl-body">আত্মবিশ্বাস ফেরে — কিন্তু এবার বিনয়ী।</div></div>
+</div>
+<div class="callout warn"><span class="co-icon">🪞</span><div><strong>Illusion of competence:</strong> পড়ে মনে হয় "জানি" (আসলে মুখস্থ) · কোর্স শেষে মনে হয় "পারি" (কিন্তু প্রয়োগ?) · পরীক্ষায় ভালো করে মনে হয় "বিশেষজ্ঞ" (কিন্তু বাস্তবে?)।</div></div>
+<div class="callout tip"><span class="co-icon">🔨</span><div><strong>বিভ্রম ভাঙার উপায়:</strong> নিজেকে পরীক্ষা করো (active recall) · প্রয়োগ করো (প্রজেক্ট বানাও) · অন্যকে শেখাও (গ্যাপ ধরা পড়বে)।</div></div>
+<div class="callout info"><span class="co-icon">📖</span><div><strong>সতর্ক পাঠ:</strong> উপরের U-curve একটা popular visualization। Dunning-Kruger-এর আসল ফলাফল (1999) — নিচু স্তরের ব্যক্তিরা নিজের র‍্যাঙ্ক সবচেয়ে বেশি overestimate করে। আত্মবিশ্বাসের নির্দিষ্ট U-আকৃতি ধ্রুব সত্য নয়, তবে "নতুন শিক্ষার্থী নিজেকে বেশি পারদর্শী ভাবে" — এই মূল পর্যবেক্ষণ সঠিক ও প্রাসঙ্গিক।</div></div>
 
 <div class="dialogue">কুরআনে আল্লাহ বলেন — "তিনি তোমাদেরকে মাটি থেকে, তারপর শুক্রবিন্দু থেকে, তারপর জমাট রক্ত থেকে সৃষ্টি করেছেন।" সৃষ্টির পর্যায় ক্রমিক — প্রতিটি স্তরে আগের স্তরের অজ্ঞতা ধরা পড়ে। শেখাও তেমনি — প্রতিটি স্তরে তুমি বুঝবে আগের স্তরে কত কম জানতে। এই বিনয় — এই "আমি জানি না" — সেটাই গভীর শেখার শুরু। যে বলে "আমি জানি," সে আটকে যায়। যে বলে "আমি এখনও শিখছি," সে বাড়ে।</div>
 <div class="dialogue en">"Allah says — 'He created you from dust, then from a drop, then from a clot.' Creation is staged — at each level, the previous level's ignorance is revealed. Learning too — at each level you realize how little you knew before. This humility — this 'I don't know yet' — is the start of deep learning. One who says 'I know' gets stuck. One who says 'I'm still learning' grows."</div>`,
@@ -200,36 +135,13 @@ doors.push({
 <div class="dialogue">বরফ-ডুবুরি বলেছিলেন — গভীরে যাও। কিন্তু আমি বলি — গভীরে যাওয়ার পরে আসে প্রতিক্রিয়া। তুমি যা করছ তা ঠিক আছে কি না — কীভাবে জানবে? ফিডব্যাক ছাড়া? অসম্ভব। ভিডিও এখানে সবচেয়ে বড় জিনিস মিস করেছে — পঞ্চম ধাপ: ফিডব্যাক লুপ।</div>
 <div class="dialogue en">"The ice diver said — go deeper. But I say — after going deeper comes reaction. How do you know what you're doing is right? Without feedback? Impossible. The video missed the most important thing here — the fifth step: the feedback loop."</div>
 
-<div class="code-block">The Feedback Loop — ভিডিও যা মিস করেছে:
-
-ভিডিওর চার ধাপ:
-  ১. লক্ষ্য নির্ধারণ ✓
-  ২. অংশে ভাগ করা ✓
-  ৩. ডিস্ট্রাকশন দূর করা ✓
-  ৪. ২০ ঘণ্টা প্র্যাকটিস ✓
-  
-  ─── MISSING ───
-
-৫. ফিডব্যাক লুপ ← যা ছাড়া বাকি চারটে অর্থহীন!
-
-কেন?
-  নিছক পুনরাবৃত্তি (naive repetition) = ভুল মজবুত
-  
-  ফিডব্যাক সহ:
-    Practice → ভুল খোঁজো → কেন ভুল বুঝো → 
-    ঠিক করো → আবার practice → উন্নতি
-
-ফিডব্যাকের চার উৎস:
-  ১. স্বয়ংক্রিয়: টেস্ট, linter, error message
-  ২. AI (২০২৪+): Claude/ChatGPT-কে তোমার কাজ দেখাও
-     → "এই কোডে সমস্যা কী?" → instant critique
-     → Feynman partner: কনসেপ্ট ব্যাখ্যা করো, AI ফাঁক ধরবে
-     → ⚠️ AI মাঝে মাঝে ভুল বা অস্তিত্বহীন তথ্য দেয় — verify করো
-  ৩. মানুষ: mentor, peer review, teacher
-  ৪. স্বয়ং: নিজের কাজ রিভিউ, video replay
-
-নিয়ম: প্রতিটা practice session-এ অন্তত
-একটা ফিডব্যাক উৎস থাকতেই হবে।</div>
+<div class="callout warn"><span class="co-icon">🔁</span><div><strong>ভিডিওর ৪ ধাপ:</strong> ① লক্ষ্য নির্ধারণ ② অংশে ভাগ ③ distraction দূর ④ ২০ ঘণ্টা practice — কিন্তু <strong>৫ম ধাপ মিসিং: feedback loop</strong>, যা ছাড়া বাকি চারটে অর্থহীন। নিছক পুনরাবৃত্তি = ভুল পদ্ধতি মজবুত করা। feedback সহ: practice → ভুল খোঁজো → কেন বুঝো → ঠিক করো → আবার practice → উন্নতি।</div></div>
+<table class="kv-table"><tr><th>Feedback-এর উৎস</th><th>উদাহরণ</th></tr>
+<tr><td class="hl">স্বয়ংক্রিয়</td><td>test, linter, error message</td></tr>
+<tr><td class="hl">AI (২০২৪+)</td><td>Claude/ChatGPT-কে কাজ দেখাও → instant critique; Feynman partner (⚠️ AI ভুল/hallucinate করতে পারে — verify করো)</td></tr>
+<tr><td class="hl">মানুষ</td><td>mentor, peer review, teacher</td></tr>
+<tr><td class="hl">স্বয়ং</td><td>নিজের কাজ রিভিউ, video replay</td></tr></table>
+<div class="callout tip"><span class="co-icon">✔️</span><div><strong>নিয়ম:</strong> প্রতিটা practice session-এ অন্তত একটা feedback উৎস থাকতেই হবে।</div></div>
 
 <div class="dialogue">কুরআনে আল্লাহ বলেন — "নিশ্চয় আল্লাহ তাদের কাজ দেখেন যারা সৎকর্ম করে।" প্রতিটি কাজ পর্যবেক্ষিত — ফিডব্যাক ছাড়া কিছু নয়। মুহাসাবা — নিজের কাজ যাচাই করা। উমর (রা) বলেছেন — "নিজেকে বিচার করো আগে, তোমাকে বিচার করা হবে।" প্রতিটা practice session-এ নিজেকে বিচার করো — কী ভালো হলো, কী খারাপ, কী বদলাবে। এটাই ফিডব্যাক লুপ।</div>
 <div class="dialogue en">"Allah says — 'Indeed Allah sees the work of those who do good.' Every work is observed — nothing is without feedback. Muhasabah — auditing your own work. Umar (RA) said — 'Judge yourselves before you are judged.' In every practice session, judge yourself — what was good, what was bad, what to change. This is the feedback loop."</div>`,

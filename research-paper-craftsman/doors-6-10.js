@@ -22,146 +22,13 @@ doors.push({
 <div class="dialogue">Research question বলেছিলেন — সঠিক প্রশ্ন খোঁজো। কিন্তু আমি বলি — প্রশ্ন পেলেও কীভাবে পেপার লেখবে? নকশা ছাড়া। Door ১-এ তুমি IMRaD পড়তে শিখেছ। এখন শেখো লেখতে। প্রতিটা সেকশনের নির্দিষ্ট কাজ — যেমন ভবনের প্রতিটা তলার নির্দিষ্ট উদ্দেশ্য। বিনা — স্থাপত্যের শিল্প।</div>
 <div class="dialogue en">"Research question said — find the right question. But I say — even with a question, how do you write the paper? Without a blueprint. In Door 1 you learned to read IMRaD. Now learn to write it. Each section has a specific job — like each floor of a building has a specific purpose. Bina — the art of architecture."</div>
 
-<div class="code-block">PAPER ARCHITECTURE — How to Write Each Section:
-
-SIMON PEYTON JONES' ADVICE (Microsoft Research):
-  "Writing the paper IS the research. You think 
-   you know, but until you write it, you don't."
-  
-  His method:
-    ১. Write the OUTLINE first (not the content)
-    ২. Each section: ৩-৫ bullet points
-    ৩. Fill in SLOWLY, section by section
-    ৪. Iterate: write → review → rewrite
-    ৫. Submit when you'd be embarrassed NOT to
-
-THE OUTLINE (before any prose):
-
-  ┌──────────────────────────────────────────────┐
-  │ TITLE (working): [10-20 words, descriptive]   │
-  ├──────────────────────────────────────────────┤
-  │ ABSTRACT:                                     │
-  │   - Problem: [1 sentence]                     │
-  │   - Method: [1 sentence]                      │
-  │   - Result: [1 sentence]                      │
-  │   - Impact: [1 sentence]                      │
-  ├──────────────────────────────────────────────┤
-  │ ১. INTRODUCTION (1.5 pages)                   │
-  │   1.1 Context: [what's the domain?]           │
-  │   1.2 Problem: [what's broken?]               │
-  │   1.3 Existing approaches: [what's been done?]│
-  │   1.4 Gap: [what's missing?]                  │
-  │   1.5 This paper: [what WE do]                │
-  │   1.6 Contributions: [3-4 bullet points]      │
-  ├──────────────────────────────────────────────┤
-  │ ২. RELATED WORK (0.5-1 page)                  │
-  │   - Group by APPROACH (not by paper)          │
-  │   - Show how YOUR work differs                │
-  ├──────────────────────────────────────────────┤
-  │ ৩. METHODS (2-3 pages)                        │
-  │   3.1 Overview: [high-level architecture]     │
-  │   3.2 [Component 1]: [detail]                 │
-  │   3.3 [Component 2]: [detail]                 │
-  │   3.4 Training/Setup: [parameters]            │
-  ├──────────────────────────────────────────────┤
-  │ ৪. RESULTS (2-3 pages)                        │
-  │   4.1 Experimental setup: [datasets, metrics] │
-  │   4.2 Main results: [table + analysis]        │
-  │   4.3 Ablation study: [what each part does]   │
-  │   4.4 Analysis: [why does it work?]           │
-  ├──────────────────────────────────────────────┤
-  │ ৫. DISCUSSION (0.5-1 page)                    │
-  │   - What do results MEAN?                     │
-  │   - Limitations                               │
-  │   - Future work                               │
-  ├──────────────────────────────────────────────┤
-  │ ৬. CONCLUSION (0.25 page)                     │
-  │   - Summary in 3-5 sentences                  │
-  └──────────────────────────────────────────────┘
-
-SECTION-BY-SECTION WRITING GUIDE:
-
-INTRODUCTION — The Funnel:
-  
-  Wide → Narrow → Your contribution
-  
-  Start: "Document AI has revolutionized..."
-  Middle: "However, OCR for [specific] remains..."
-  Narrow: "Prior work [A, B] addressed X but..."
-  Your work: "In this paper, we propose..."
-  Contributions: "Our contributions are: (1)... (2)... (3)..."
-  
-  Key: the LAST paragraph of Introduction 
-    should list your contributions explicitly
-    → reviewers SCAN for this
-
-METHODS — The Recipe:
-  
-  Write like a COOKBOOK — someone should be able 
-  to reproduce from your Methods alone.
-  
-  Include:
-    → Architecture diagram (Figure ১)
-    → Mathematical formulation (if applicable)
-    → Hyperparameters (table)
-    → Training details (hardware, time, optimizer)
-    → Data preprocessing steps
-  
-  Don't include:
-    → Implementation details (that's in the code)
-    → Trivial steps ("we used Python")
-  
-  Key: if a reader can't REPRODUCE → Methods fails
-
-RESULTS — The Evidence:
-  
-  Lead with FIGURES and TABLES.
-  Text supports the visuals, not vice versa.
-  
-  Each result:
-    ১. What did you measure? (metric)
-    ২. What was the result? (number)
-    ৩. What does it mean? (interpretation)
-    ৪. Why? (analysis)
-  
-  Always include:
-    → Comparison with baselines (Table)
-    → Main result figure (the "money figure")
-    → Ablation study (removing components)
-    → Error analysis (where does it fail?)
-
-DISCUSSION — The Interpretation:
-  
-  This is where you show MATURITY:
-    → "Our method works well on X but fails on Y"
-    → "This suggests that Z is important"
-    → "A limitation is that we assumed W"
-    → "Future work could explore V"
-  
-  NEVER skip limitations — reviewers will find them
-    anyway. If YOU point them out first → you look
-    thoughtful. If reviewers find them → you look
-    careless.
-
-WRITING ORDER (NOT start-to-finish!):
-
-  ┌────────────────┬────────────────────────────┐
-  │ Write Order     │ Why                        │
-  ├────────────────┼────────────────────────────┤
-  │ ১. Figures/Tables│ They tell the story       │
-  │ ২. Methods       │ You know this best        │
-  │ ৩. Results       │ Around the figures        │
-  │ ৪. Discussion    │ Interpret results         │
-  │ ৫. Introduction  │ Now you know the story    │
-  │ ৬. Abstract      │ Summary of everything     │
-  │ ৭. Conclusion    │ Final summary             │
-  │ ৮. Related Work  │ Last (needs full context) │
-  │ ৯. Title         │ Final polish              │
-  └────────────────┴────────────────────────────┘
-
-  Most beginners: write intro first → rewrite ৫ times
-  Experienced: write methods first → intro last
-    → intro is easier when you know the whole story</div>
+<div class="callout info"><span class="co-icon">🏗️</span><div><strong>Simon Peyton Jones (Microsoft Research):</strong> "Writing the paper IS the research।" পদ্ধতি: আগে outline লেখো (content নয়) → প্রতি section-এ ৩-৫ bullet → ধীরে ভরাট → iterate। <em>Problem-এর প্রেমে পড়ো, solution-এর নয় — solution শুধু evidence।</em></div></div>
+<table class="kv-table"><tr><th>Section (লেখার জন্য)</th><th>কাজ</th></tr>
+<tr><td class="hl">Introduction (funnel)</td><td>Wide → Narrow → contribution; শেষ প্যারায় contribution explicit list (reviewer এটাই scan করে)</td></tr>
+<tr><td class="hl">Methods (recipe)</td><td>cookbook-এর মতো — Methods থেকেই reproduce করা যাবে; diagram, hyperparameter, training</td></tr>
+<tr><td class="hl">Results (evidence)</td><td>figure/table আগে; প্রতি ফল: কী মাপলে → সংখ্যা → মানে → কেন; baseline + ablation</td></tr>
+<tr><td class="hl">Discussion (maturity)</td><td>"X-এ ভালো, Y-তে fail" — limitation লুকিও না; নিজে ধরলে thoughtful, reviewer ধরলে careless</td></tr></table>
+<div class="callout tip"><span class="co-icon">🔀</span><div><strong>লেখার ক্রম (শুরু-থেকে-শেষ নয়):</strong> Figures → Methods (তুমি এটাই ভালো জানো) → Results → Discussion → Introduction (এখন পুরো গল্প জানো) → Abstract → Conclusion → Related Work → Title।</div></div>
 
 <div class="dialogue">বিনা — building, construction, architecture। কুরআনে আল্লাহ বলেন — "যিনি সৃষ্টি করেছেন এবং নিয়মে বেঁধেছেন।" (৮৭:২)। নিয়মে বাঁধা = বিনা। পত্র নির্মাণও বিনা — নিয়মে বাঁধা। প্রতিটা সেকশনের নির্দিষ্ট কাজ। প্রতিটা প্যারাগ্রাফের নির্দিষ্ট স্থান। যে বিনা করে, সে নিখুঁত। যে অগোছালো লেখে, সে বিভ্রান্ত করে। Simon Peyton Jones বলেন — writing IS research। কারণ লেখার সময় তুমি বোঝো — কোথায় তোমার গবেষণার ঘাটতি। বিনা — স্থাপত্যের শিল্প।</div>
 <div class="dialogue en">"Bina — building, construction, architecture. Allah says — 'Who created and proportioned.' (87:2). Proportioning = bina. Paper construction too — proportioned. Each section with its specific job. Each paragraph in its specific place. One who builds with bina, perfects. One who writes messily, confuses. Simon Peyton Jones says — writing IS research. Because while writing, you discover — where your research falls short. Bina — the art of architecture."</div>`,
@@ -189,158 +56,20 @@ doors.push({
 <div class="dialogue">পত্রের নকশা বলেছিলেন — প্রতিটা সেকশনের কাজ। কিন্তু আমি বলি — নকশা পূরণ করার সময় ভয় আসবে। কী লেখব? কেমন লেখব? ইউসুফ বলেন — শুধু লেখো। খারাপ হলে হবে। কিন্তু খালি পাতা = কিছু নয়। খারাপ খসড়া = সম্পাদনার উপাদান। জ্ঞানের কারিগর (Book ২৬, Door ৮) বলেছিলেন — writing IS thinking। লেখার সময় তুমি ভাবো। ভাবার সময় তুমি বুঝো। কলম চালাও।</div>
 <div class="dialogue en">"Paper architecture said — each section's job. But I say — filling the outline brings fear. What to write? How to write? Yusuf says — just write. Bad is fine. But blank page = nothing. Bad draft = material for editing. The Knowledge Craftsman (Book 26, Door 8) said — writing IS thinking. While writing, you think. While thinking, you understand. Move the pen."</div>
 
-<div class="code-block">WRITING THE PAPER — From Outline to Draft:
-
-THE WRITING PROCESS (Stephen King, Lamott, Graham):
-
-  Draft ১: SHITTY (just get words on page)
-    → don't edit while writing
-    → don't worry about grammar, flow, citations
-    → goal: FILL THE OUTLINE
-    → time: ১-২ weeks
-  
-  Draft ২: STRUCTURAL (fix the argument)
-    → does each section flow logically?
-    → does each paragraph have ONE main point?
-    → are claims supported by evidence?
-    → reorder paragraphs if needed
-    → time: ১ week
-  
-  Draft ৩: LINE EDIT (fix the sentences)
-    → each sentence clear and concise
-    → no passive voice (usually)
-    → no unnecessary words
-    → "very", "really", "actually" → DELETE
-    → time: ৩-৫ days
-  
-  Draft ৪: POLISH (final pass)
-    → read ALOUD (catches awkward phrasing)
-    → check every figure/table reference
-    → verify every citation
-    → spell-check, grammar-check
-    → time: ২-৩ days
-
-TOOLS FOR PAPER WRITING:
-
-  ┌──────────────┬──────────────────────────────┐
-  │ Tool          │ Purpose                      │
-  ├──────────────┼──────────────────────────────┤
-  │ Overleaf      │ Collaborative LaTeX editing  │
-  │ (online)      │ (most CS/ML papers use this) │
-  ├──────────────┼──────────────────────────────┤
-  │ LaTeX         │ Typesetting system            │
-  │ (local)       │ Professional formatting       │
-  ├──────────────┼──────────────────────────────┤
-  │ Zotero        │ Reference management (free)   │
-  │               │ Auto-generates bibliography   │
-  ├──────────────┼──────────────────────────────┤
-  │ Mendeley      │ Reference management + PDF    │
-  │               │ annotation                   │
-  ├──────────────┼──────────────────────────────┤
-  │ Google Docs   │ Early drafts (collaborative)  │
-  │               │ Then export to LaTeX          │
-  ├──────────────┼──────────────────────────────┤
-  │ Grammarly     │ Grammar/style checking        │
-  ├──────────────┼──────────────────────────────┤
-  │ matplotlib    │ Python figure generation      │
-  │ /seaborn      │ (for results plots)           │
-  ├──────────────┼──────────────────────────────┤
-  │ draw.io       │ Architecture diagrams         │
-  │ /excalidraw   │ (for Methods figures)         │
-  ├──────────────┼──────────────────────────────┤
-  │ tables        │ Use booktabs LaTeX package    │
-  │               │ (professional-looking tables) │
-  └──────────────┴──────────────────────────────┘
-
-LLM-ASSISTED WRITING (২০২৪+ — জানতে হবে):
-  LLM (Claude, GPT) লেখায় সাহায্য করতে পারে — কিন্তু সাবধানে।
-
-  ✅ ঠিক ব্যবহার:
-    • খসড়ার outline বা structure brainstorm
-    • grammar/clarity polish (Grammarly-এর উন্নত version)
-    • জটিল বাক্য সরল করা
-    • abstract বা intro একাধিক version-এ লেখা
-
-  ❌ ভুল ব্যবহার:
-    • গোটা পেপার LLM দিয়ে লেখা (hallucinated citation!)
-    • data/methods অংশে অপরিচিত LLM ছাড়া
-    • LLM-এর দেওয়া সংখ্যা/reference verify না করা
-
-  ⚠️ জার্নাল policy (২০২৫-২৬):
-    • Nature, Science, IEEE — AI ব্যবহার disclosure দরকার
-    • অনেক venue-এ methods-এ উল্লেখ করতে হবে কোন tool, কোন অংশে
-    • LLM কখনো author হতে পারে না (ICMJE/Nature policy)
-    • প্রতিটা venue-এর policy আলাদা — verify করো
-
-  সবচেয়ে নিরাপদ: LLM শুধু polish/brainstorm-এ, সব content
-    ও citation নিজে যাচাই করো। </div>
-
-FIGURES — The Most Important Part:
-
-  Figures communicate MORE than text.
-  Reviewers look at figures FIRST.
-  
-  Figure types you need:
-    ১. Architecture diagram (Figure ১)
-       → overview of your method
-       → clear boxes, arrows, labels
-       → should make sense ALONE (without text)
-    
-    ২. Main results (Figure/Table ২)
-       → comparison with baselines
-       → bold the BEST numbers
-       → show statistical significance
-    
-    ৩. Ablation study (Table ৩)
-       → remove each component → show impact
-       → proves EACH part contributes
-    
-    ৪. Qualitative examples (Figure ৩)
-       → show actual outputs
-       → "look, our method works on THESE examples"
-  
-  Rules:
-    → use vector graphics (PDF, SVG) NOT raster
-    → readable at ১০০% zoom (font size ≥ ৮pt)
-    → consistent color scheme
-    → caption tells the WHOLE story
-    → "Figure ১: Our method processes [X] by [Y]. 
-       The [Z] component achieves [result]."
-
-CITATIONS — The Knowledge Chain:
-
-  Zotero workflow:
-    ১. Save papers to Zotero (browser extension)
-    ২. In Overleaf/LaTeX, use \\cite{key}
-    ৩. Zotero generates .bib file automatically
-    ৪. LaTeX formats bibliography automatically
-  
-  Citation rules:
-    → cite the ORIGINAL source, not a textbook
-    → cite RECENT work (shows you're current)
-    → cite YOUR PRIOR work (if applicable)
-    → don't over-cite (৩০-৬০ refs for ৮-page paper)
-    → don't under-cite (reviewers will notice)
-  
-  Self-citation: ১-৩ max (more = suspicious)
-
-THE FEAR OF THE BLANK PAGE:
-
-  Stephen King: "The scariest moment is always 
-    just BEFORE you start."
-  
-  Solution: start with the EASIEST section
-    → Methods (you know this best)
-    → or Results (you have the data)
-    → NEVER start with Introduction (hardest)
-  
-  Paul Graham: "Writing and thinking are the 
-    same thing. If you can't write, you're not 
-    thinking clearly."
-  
-  Anne Lamott: "Write it badly. Write it really 
-    badly. You can fix bad writing. You can't fix 
-    a blank page."</div>
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">Draft ১ · ১-২ সপ্তাহ</div><div class="tl-title">💩 Shitty first draft</div><div class="tl-body">শুধু পাতায় শব্দ আনো; লেখার সময় edit নয়; লক্ষ্য — outline ভরাট (Anne Lamott)।</div></div>
+<div class="tl-step"><div class="tl-when">Draft ২ · ১ সপ্তাহ</div><div class="tl-title">🧱 Structural</div><div class="tl-body">প্রতি section flow করে? প্রতি প্যারায় এক main point? claim-এর সমর্থন আছে?</div></div>
+<div class="tl-step"><div class="tl-when">Draft ৩ · ৩-৫ দিন</div><div class="tl-title">✂️ Line edit</div><div class="tl-body">প্রতি বাক্য স্পষ্ট ও সংক্ষিপ্ত; "very/really/actually" মুছো।</div></div>
+<div class="tl-step"><div class="tl-when">Draft ৪ · ২-৩ দিন</div><div class="tl-title">✨ Polish</div><div class="tl-body">জোরে পড়ো; প্রতিটা figure reference ও citation যাচাই।</div></div>
+</div>
+<table class="kv-table"><tr><th>টুল</th><th>কাজ</th></tr>
+<tr><td class="hl">Overleaf</td><td>collaborative LaTeX (বেশিরভাগ CS/ML পেপার)</td></tr>
+<tr><td class="hl">Zotero</td><td>free reference manager, auto bibliography</td></tr>
+<tr><td class="hl">matplotlib/seaborn</td><td>results plot</td></tr>
+<tr><td class="hl">draw.io / excalidraw</td><td>architecture diagram</td></tr></table>
+<div class="callout warn"><span class="co-icon">🤖</span><div><strong>LLM-assisted writing (2024+):</strong> ✅ outline brainstorm, grammar polish, বাক্য সরল করা। ❌ গোটা পেপার LLM দিয়ে লেখা (hallucinated citation!), সংখ্যা/reference verify না করা। ⚠️ Nature/Science/IEEE-তে AI disclosure লাগে; LLM author হতে পারে না (ICMJE/Nature)। নিরাপদ — LLM শুধু polish/brainstorm-এ, সব content ও citation নিজে যাচাই করো।</div></div>
+<div class="callout tip"><span class="co-icon">📊</span><div><strong>Figures = সবচেয়ে গুরুত্বপূর্ণ:</strong> reviewer আগে figure দেখে। architecture diagram (text ছাড়াই বোঝা যাবে), main results (best number bold), ablation, qualitative examples। vector graphics, font ≥৮pt, caption পুরো গল্প বলবে।</div></div>
+<div class="callout info"><span class="co-icon">🔗</span><div><strong>Citations ও blank page:</strong> মূল source cite করো (textbook নয়), ৮-পাতায় ~৩০-৬০ ref, self-citation ১-৩ max। সহজতম section (Methods/Results) দিয়ে শুরু করো, Introduction দিয়ে নয়। "খারাপ করে লেখো — খারাপ লেখা ঠিক করা যায়, খালি পাতা যায় না।"</div></div>
 
 <div class="dialogue">কলম — pen, the instrument of knowledge। কুরআনে আল্লাহ বলেন — "যিনি কলমের মাধ্যমে শিখিয়েছেন।" (৯৬:৪)। কলম জ্ঞানের হাতিয়ার। জ্ঞানের কারিগর (Book ২৬) বলেছিলেন — লেখা = চিন্তা। এখন আমি বলি — গবেষণাপত্র লেখা = গবেষণা। লেখার সময় তুমি বোঝো — কোথায় গবেষণার ঘাটতি। কলম চালাও। ভুল হলে হবে। খালি পাতা রাখো না। কলম — জ্ঞানের স্থায়ী হাতিয়ার।</div>
 <div class="dialogue en">"Qalam — pen, the instrument of knowledge. Allah says — 'Who taught by the pen.' (96:4). The pen is the tool of knowledge. The Knowledge Craftsman (Book 26) said — writing = thinking. Now I say — writing a research paper = research. While writing, you discover gaps. Move the pen. Mistakes are fine. Don't leave the page blank. Qalam — the permanent tool of knowledge."</div>`,
@@ -368,135 +97,20 @@ doors.push({
 <div class="dialogue">Draft writer বলেছিলেন — লেখো, খসড়া। কিন্তু আমি বলি — লেখার পরে আসল পরীক্ষা — peer review। Reviewer কঠোর হবেন। কিন্তু মনে রাখো — human psychology book (Book ২৪) বলেছিলেন — সমালোচনা = প্রতিক্রিয়া, উন্নতির সুযোগ। Reviewer comment = আক্রমণ নয়, উন্নতির পরামর্শ। মুহাসাবা — সমালোচনা গ্রহণ, সম্মানজনক উত্তর, উন্নতি।</div>
 <div class="dialogue en">"The draft writer said — write, draft. But I say — after writing comes the real test — peer review. Reviewers will be harsh. But remember — the human psychology book (Book 24) said — criticism = feedback, opportunity to improve. Reviewer comments = not attacks, advice for improvement. Muhasabah — accepting criticism, responding respectfully, improving."</div>
 
-<div class="code-block">PEER REVIEW — The Gauntlet:
-
-THE PUBLICATION CYCLE:
-
-  Submit → Editor Desk Review → 
-    → Send to Reviewers (২-৪) → 
-    → Wait (১-৬ months) →
-    → Decision:
-       ✓ Accept (rare, <৫%)
-       ✓ Minor Revision (good, ২০%)
-       ✓ Major Revision (common, ৪০%)
-       ✗ Reject (common, ৩৫%)
-    → Revise (if revision) →
-    → Resubmit →
-    → Second review →
-    → Accept →
-    → Camera-ready →
-    → Published!
-
-DECISION TYPES:
-
-  ┌────────────────────┬──────────────────────────────┐
-  │ Decision            │ What It Means                │
-  ├────────────────────┼──────────────────────────────┤
-  │ Accept as-is        │ Miracle. Celebrate.          │
-  │ Minor Revision      │ Close. Fix typos, small      │
-  │                     │ issues. ১-২ weeks.           │
-  │ Major Revision      │ Very good. Significant work  │
-  │                     │ needed but they want it.     │
-  │                     │ ১-৩ months.                  │
-  │ Reject & Resubmit   │ Rejected but invited to      │
-  │                     │ resubmit as new paper.       │
-  │ Reject              │ Not accepted. Try elsewhere. │
-  └────────────────────┴──────────────────────────────┘
-
-  KEY: Major Revision ≠ failure
-       It means: "We want this paper, but it needs work"
-       This is the MOST COMMON path to publication.
-
-RESPONDING TO REVIEWERS:
-
-  The Response Letter is AS IMPORTANT as the paper.
-  
-  Structure:
-    ১. Thank the reviewer (always)
-    ২. Quote the comment
-    ৩. Your response
-    ৪. What you changed (with page/line numbers)
-  
-  Tone: RESPECTFUL ALWAYS
-    ❌ "The reviewer is wrong"
-    ✅ "We appreciate this concern. However, 
-       [evidence] suggests..."
-    
-    ❌ "This is obvious"
-    ✅ "We have clarified this in Section X"
-    
-    ❌ "We disagree"
-    ✅ "We understand the reviewer's perspective. 
-       In our context, [explanation]. We have added 
-       a note about this limitation."
-  
-  If reviewer asks for new experiments:
-    → if feasible: DO THEM
-    → if not: explain why, offer alternative
-    → NEVER ignore a comment
-
-THE REVISION TIMELINE:
-
-  Day ১-২: Read all comments. Process emotionally.
-    (yes, it hurts. Take ২ days to feel it.)
-  
-  Day ৩-৫: Plan revisions. Categorize comments:
-    → Category A: easy fixes (typos, clarifications)
-    → Category B: medium (new analysis, figure changes)
-    → Category C: hard (new experiments, major rewrite)
-  
-  Day ৬-৩০: Execute revisions.
-    → Start with A (quick wins, builds momentum)
-    → Then B
-    → Then C (most time)
-  
-  Day ৩১-৩৩: Write response letter.
-    → address EVERY comment
-    → be specific (page X, line Y)
-    → be grateful
-  
-  Day ৩৪: Resubmit.
-
-CHOOSING WHERE TO SUBMIT:
-
-  ┌──────────────────┬──────────────────────────────┐
-  │ Venue             │ Acceptance Rate              │
-  ├──────────────────┼──────────────────────────────┤
-  │ Top conf (NeurIPS)│ ~২০-২৫%                      │
-  │ Top journal       │ ~১৫-২০%                      │
-  │ Mid conference    │ ~৩০%                         │
-  │ Mid journal       │ ~২৫%                         │
-  │ Workshop          │ ~৪০-৫০%                      │
-  │ arXiv (preprint)  │ ১০০% (no review)             │
-  └──────────────────┴──────────────────────────────┘
-
-  Strategy for first paper:
-    ১. arXiv preprint (establish priority, get feedback)
-    ২. Workshop (lower bar, good experience)
-    ৩. Mid conference/journal (realistic)
-    ৪. THEN aim for top venues
-
-REJECTION = NOT FAILURE:
-
-  Famous rejected papers (anecdotal — sourcing varies,
-  but the pattern is real):
-    → Google's PageRank work faced skepticism
-      (it was a Stanford tech report, not a clean
-      "rejected by journal" story — the anecdote is
-      widely repeated but loosely sourced)
-    → Nobel Prize-winning CRISPR papers faced rejection
-    → "The payoff would be small" — reviewer of
-       TCP/IP (the protocol that runs the internet)
-
-  দাবি নয়, তবে পর্যবেক্ষণ: অনেক গুরুত্বপূর্ণ কাজ প্রথম
-  চেষ্টায় প্রত্যাখ্যাত হয়েছে। verify করো না — শুধু
-  সান্ত্বনা নাও।
-
-  Rejection means: try elsewhere, or revise.
-  It does NOT mean: your research is worthless.
-  
-  "Papers are like swords. They get sharper 
-   with each strike of the reviewer's hammer."</div>
+<div class="callout info"><span class="co-icon">🔄</span><div><strong>Publication cycle:</strong> Submit → editor desk review → reviewers (২-৪) → wait (১-৬ মাস) → decision → revise → resubmit → second review → accept → camera-ready → published।</div></div>
+<table class="kv-table"><tr><th>সিদ্ধান্ত</th><th>মানে</th></tr>
+<tr><td class="hl">Accept as-is</td><td>অলৌকিক — উদযাপন করো</td></tr>
+<tr><td class="hl">Minor revision (~২০%)</td><td>কাছাকাছি; typo/ছোট issue, ১-২ সপ্তাহ</td></tr>
+<tr><td class="hl">Major revision (~৪০%)</td><td>খুব ভালো — তারা চায়, কাজ লাগবে (১-৩ মাস)। <strong>ব্যর্থতা নয়</strong> — প্রকাশনার সবচেয়ে সাধারণ পথ</td></tr>
+<tr><td class="hl">Reject (~৩৫%)</td><td>অন্য venue-তে চেষ্টা করো</td></tr></table>
+<div class="callout tip"><span class="co-icon">✉️</span><div><strong>Response letter (পেপারের মতোই গুরুত্বপূর্ণ):</strong> প্রতি comment — ধন্যবাদ → quote → উত্তর → কী বদলালে (page/line)। Tone সবসময় সম্মানজনক: "reviewer ভুল" নয়, "We appreciate this concern; however..."। কোনো comment উপেক্ষা কোরো না।</div></div>
+<div class="callout info"><span class="co-icon">📅</span><div><strong>Revision timeline:</strong> Day 1-2 আবেগ process করো (কষ্ট হবে, স্বাভাবিক) · Day 3-5 comment ভাগ: A (সহজ)/B (মাঝারি)/C (কঠিন) · Day 6-30 A দিয়ে শুরু, তারপর B, C · Day 31-33 response letter · Day 34 resubmit।</div></div>
+<table class="kv-table"><tr><th>Venue</th><th>Acceptance rate</th></tr>
+<tr><td class="hl">Top conf (NeurIPS)</td><td>~২০-২৫%</td></tr>
+<tr><td class="hl">Mid conf/journal</td><td>~২৫-৩০%</td></tr>
+<tr><td class="hl">Workshop</td><td>~৪০-৫০%</td></tr>
+<tr><td class="hl">arXiv (preprint)</td><td>১০০% (no review)</td></tr></table>
+<div class="callout tip"><span class="co-icon">🗡️</span><div><strong>Rejection = ব্যর্থতা নয়:</strong> প্রথম পেপারের কৌশল — arXiv preprint → workshop → mid venue → top venue। (অনেক গুরুত্বপূর্ণ কাজ প্রথমে প্রত্যাখ্যাত হয়েছিল — সান্ত্বনা হিসেবে নাও, তথ্য হিসেবে নয়।) "পেপার তলোয়ারের মতো — reviewer-এর হাতুড়ির প্রতিটা আঘাতে ধারালো হয়।"</div></div>
 
 <div class="dialogue">মুহাসাবা — self-examination, accountability, taking stock। ইসলামী ঐতিহ্যে মুহাসাবা হলো — নিজেকে যাচাই করা, আগে বিচার করা যাতে পরে বিচারিত না হতে হয়। Peer review-ও মুহাসাবা — তোমার কাজ যাচাই। যে মুহাসাবা গ্রহণ করে, সে উন্নতি করে। যে প্রতিরোধ করে, সে আটকে যায়। Reviewer = শত্রু নয়, মুহাসাবাকারী। প্রতিটা comment = উন্নতির সুযোগ। মুহাসাবা — সমালোচনা গ্রহণ ও উত্তরের গুণ।</div>
 <div class="dialogue en">"Muhasabah — self-examination, accountability, taking stock. In Islamic tradition, muhasabah is examining yourself, judging yourself before being judged. Peer review too — verification of your work. One who accepts muhasabah, improves. One who resists, gets stuck. Reviewers = not enemies, accountants. Each comment = opportunity for improvement. Muhasabah — the virtue of accepting and responding to criticism."</div>`,
@@ -524,126 +138,12 @@ doors.push({
 <div class="dialogue">Peer review বলেছিলেন — সমালোচনা গ্রহণ করো। কিন্তু আমি বলি — সমালোচনা গ্রহণের পরে আসে সংযোগ। তুমি শুধু পড়ো না, লেখো না — তুমি সংযুক্ত করো। অন্যের কাজ স্বীকার, প্রসার, যাচাই। এটাই research-এর চক্র — পড়ো → বোঝো → সংযুক্ত করো → সৃষ্টি করো → পরের জন্য ছেড়ে যাও। সিলসিলা — জ্ঞানের শৃঙ্খলে নিজের যোগ।</div>
 <div class="dialogue en">"Peer review said — accept criticism. But I say — after accepting criticism comes connection. You don't just read, write — you connect. Acknowledge, extend, verify others' work. This is the research cycle — read → understand → connect → create → leave for the next person. Silsila — joining the chain of knowledge."</div>
 
-<div class="code-block">USING PAPERS — The Three Connections:
-
-১. CITATION (Acknowledgment)
-  
-  Citing = giving credit where due.
-  NOT citing = plagiarism (academic death sentence).
-  
-  When to cite:
-    → using their method → cite
-    → using their dataset → cite
-    → their idea inspired yours → cite
-    → comparing with their results → cite
-    → "Prior work [X] showed..." → cite X
-  
-  Citation styles:
-    → \\cite{author২০২৩} in LaTeX
-    → APA, IEEE, ACM formats
-    → Zotero handles formatting automatically
-  
-  Golden rule: OVER-cite, never under-cite.
-    → better to cite unnecessarily than plagiarize
-    → reviewers check for missing citations
-    → missing a key reference → instant reject
-
-২. EXTENSION (Building On)
-  
-  This is how science ADVANCES:
-    Paper A proposes method X
-    Paper B extends X for domain Y
-    Paper C improves X's accuracy
-    Paper D combines X with method Z
-  
-  YOUR paper should:
-    → clearly state what's from prior work
-    → clearly state what's YOUR contribution
-    → "Building on [A], we propose [B] which adds..."
-  
-  Types of extension:
-    a. DOMAIN TRANSFER
-       → "Method X works on English. We apply to Bengali."
-       → legitimate IF the transfer is non-trivial
-       → show WHY it needed adaptation
-    
-    b. METHOD IMPROVEMENT  
-       → "Method X has limitation Y. We fix Y."
-       → show COMPARISON with original X
-       → show MEASURABLE improvement
-    
-    c. COMBINATION
-       → "Method A does X. Method B does Y.
-          We combine A+B to do X+Y."
-       → show NEITHER alone works as well
-    
-    d. SCALE
-       → "Method X was tested on ১০০ items.
-          We test on ১০,০০০."
-       → legitimate IF scale reveals new insights
-
-৩. REPRODUCTION (Verification)
-  
-  The highest form of respect: REPRODUCE their work.
-  
-  "I ran your method on your data with your code.
-   Here's what I found."
-  
-  Why reproduce?
-    → catches errors (replication crisis!)
-    → builds trust in the method
-    → positions YOU as an expert
-    → publication-worthy (reproduction papers exist)
-  
-  Reproduction paper structure:
-    → "We reproduce [X]'s results..."
-    → "Our results match/differ from original..."
-    → "We identify [discrepancy]..."
-    → "This suggests [insight]..."
-  
-  The ML reproduction workflow:
-    ১. Clone their repo
-    ২. Run on their data (exactly as described)
-    ৩. Compare numbers with their reported results
-    ৪. If match: method is reproducible ✓
-    ৫. If differ: investigate WHY (seed? data? bug?)
-    ৬. Run on YOUR data (domain transfer test)
-    ৭. Document everything → becomes YOUR paper
-
-THE RESEARCH CYCLE (your place in it):
-
-  ┌──────────────────────────────────────────────┐
-  │ THE KNOWLEDGE CHAIN                           │
-  │                                               │
-  │  [Paper A] → [Paper B] → [Paper C] → [YOU]   │
-  │     ↓           ↓           ↓        ↓       │
-  │  method X   improved X   applied X  extend X │
-  │     ↓           ↓           ↓        ↓       │
-  │  [Paper E] ← [Paper D] ← [YOUR PAPER] ←──────┘
-  │     ↓
-  │  future work builds on YOU
-  │                                               │
-  │  You are both:                                │
-  │  → STANDING ON prior work (cite)              │
-  │  → LEAVING GROUND for future work (contribute)│
-  └──────────────────────────────────────────────┘
-
-PRACTICAL: TURNING READING INTO BUILDING
-
-  When you read a paper with engineering intent:
-  
-    ১. Read Methods → understand the approach
-    ২. Find code → clone, run
-    ৩. Test on YOUR data → does it work?
-    ৪. Identify limitation → what doesn't work?
-    ৫. Propose fix → how to improve?
-    ৬. Implement fix → code + experiments
-    ৭. Compare → original vs your improvement
-    ৮. Write paper → "We improve [X] by [Y]"
-  
-  This is a COMPLETE research arc from reading ONE paper.
-  One paper → one idea → one experiment → one paper.
-  The cycle continues.</div>
+<table class="kv-table"><tr><th>৩ সংযোগ</th><th>কী</th></tr>
+<tr><td class="hl">১. Citation (স্বীকার)</td><td>method/dataset/idea/তুলনা ব্যবহার করলে cite; না করলে plagiarism। over-cite করো — missing key reference = instant reject।</td></tr>
+<tr><td class="hl">২. Extension (প্রসার)</td><td>domain transfer · method improvement · combination (A+B) · scale। স্পষ্ট করো কোনটা prior work, কোনটা তোমার contribution।</td></tr>
+<tr><td class="hl">৩. Reproduction (যাচাই)</td><td>সর্বোচ্চ সম্মান — তাদের কোড/data-তে run করে মেলানো। error ধরে, trust গড়ে, expert বানায়; reproduction পেপারও প্রকাশযোগ্য।</td></tr></table>
+<div class="callout info"><span class="co-icon">🔗</span><div><strong>জ্ঞানের শৃঙ্খল:</strong> [Paper A] → [Paper B] → [Paper C] → <strong>[তুমি]</strong> → ভবিষ্যতের কাজ তোমার উপর গড়ে। তুমি একই সাথে prior work-এর উপর দাঁড়িয়ে (cite) আর ভবিষ্যতের জন্য জমি ছেড়ে (contribute)।</div></div>
+<div class="callout tip"><span class="co-icon">🌉</span><div><strong>একটা পেপার → একটা পেপার:</strong> Methods পড়ো → কোড clone/run → তোমার data-তে test → limitation → fix propose → implement → original বনাম তোমার তুলনা → পেপার ("We improve X by Y")। চক্র চলতে থাকে।</div></div>
 
 <div class="dialogue">সিলসিলা — chain, connection, linkage। কুরআনে আল্লাহ বলেন — "তোমরা সবাই আল্লাহর রশি দৃঢ়ভাবে ধরো, একসাথে।" (৩:১০৩)। একসাথে = সিলসিলা। research-ও সিলসিলা — জ্ঞানের শৃঙ্খল। প্রতিটা paper আগের paper-এর সাথে সংযুক্ত। তুমি নতুন লিঙ্ক — পুরোনো সংযুক্ত, নতুন সৃষ্টি, ভবিষ্যতের জন্য ছেড়ে যাও। যে সিলসিলা ভাঙে (plagiarism), সে বিচ্ছিন্ন হয়। যে সিলসিলা মানে (cite), সে সম্মানিত হয়। যে সিলসিলা বাড়ায় (extend), সে সৃষ্টি করে। সিলসিলা — জ্ঞানের শৃঙ্খলে নিজের যোগ।</div>
 <div class="dialogue en">"Silsila — chain, connection, linkage. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Together = silsila. Research too — a chain of knowledge. Each paper connected to prior papers. You are a new link — connecting the old, creating the new, leaving for the future. One who breaks the chain (plagiarism) is disconnected. One who honors the chain (cite) is respected. One who extends the chain (build on) creates. Silsila — joining the chain of knowledge."</div>`,
@@ -671,143 +171,21 @@ doors.push({
 <div class="dialogue">নয়টি দরজা পেরিয়েছ। Anatomy বলেছিলেন, পত্রের কাঠামো। Engineer বলেছিলেন, প্রয়োগ। Scientist বলেছিলেন, যাচাই। PhD বলেছিলেন, gap। Question বলেছিলেন, প্রশ্ন। Architecture বলেছিলেন, নকশা। Draft বলেছিলেন, লেখা। Review বলেছিলেন, সমালোচনা। Bridge বলেছিলেন, সংযোগ। এখন — সব একসাথে। তুমি এখন গবেষণার স্থপতি। শুধু পাঠক নয় — স্রষ্টা।</div>
 <div class="dialogue en">"You've passed nine doors. Anatomy said, the paper's structure. Engineer said, application. Scientist said, verification. PhD said, gaps. Question said, asking. Architecture said, blueprint. Draft said, writing. Review said, criticism. Bridge said, connection. Now — all together. You are now a research architect. Not just a reader — a creator."</div>
 
-<div class="code-block">COMPLETE RESEARCH WORKFLOW — The Synthesis:
-
-┌──────────────────────────────────────────────────┐
-│ THE RESEARCH ARCHITECT'S STACK                    │
-├──────────────────────────────────────────────────┤
-│                                                    │
-│  PHASE ১: READ (Doors ১-৪)                       │
-│  ├── Paper anatomy: IMRaD structure               │
-│  ├── Engineer's read: extract code + methods      │
-│  ├── Scientist's eye: verify claims               │
-│  └── PhD reader: find gaps in the field           │
-│                                                    │
-│  PHASE ২: DISCOVER (Door ৫)                      │
-│  ├── From gaps → research questions               │
-│  ├── FINER test: feasible, interesting, novel?    │
-│  └── Choose ONE question to pursue                │
-│                                                    │
-│  PHASE ৩: BUILD (Doors ৬-৭)                      │
-│  ├── Outline: IMRaD blueprint                     │
-│  ├── Methods: implement your approach             │
-│  ├── Experiments: run, measure, ablate            │
-│  └── Draft: shitty first → polished final         │
-│                                                    │
-│  PHASE ৪: PUBLISH (Door ৮)                        │
-│  ├── Submit to venue (conference/journal)         │
-│  ├── Peer review: accept, revise, resubmit        │
-│  ├── Response letter: respectful, thorough        │
-│  └── Camera-ready → published                     │
-│                                                    │
-│  PHASE ৫: CONNECT (Door ৯)                        │
-│  ├── Cite properly (silsila)                      │
-│  ├── Release code + data (open science)           │
-│  ├── Others build on YOUR work                    │
-│  └── You are now part of the chain                │
-│                                                    │
-└──────────────────────────────────────────────────┘
-
-THE CROSS-BOOK SYNTHESIS:
-
-  This book connects to ALL previous books:
-  
-  ┌──────────────┬────────────────────────────────┐
-  │ Book         │ Connection to Research Papers  │
-  ├──────────────┼────────────────────────────────┤
-  │ Book ২০ (PhD)│ Research paper = PhD currency  │
-  │              │ Papers = your academic value   │
-  ├──────────────┼────────────────────────────────┤
-  │ Book ২৪      │ Power dynamics in peer review  │
-  │ (Psych)      │ Reviewer = power; stay calm    │
-  ├──────────────┼────────────────────────────────┤
-  │ Book ২৬      │ Adler, Luhmann, Feynman →      │
-  │ (Knowledge)  │ applied to research papers     │
-  │              │ Zettelkasten for lit review    │
-  ├──────────────┼────────────────────────────────┤
-  │ Book ৫       │ Deep analysis = Feynman +      │
-  │ (Learn)      │ critical reading combined      │
-  ├──────────────┼────────────────────────────────┤
-  │ Book ২৩      │ Timeless value: research       │
-  │ (Irreplaceable│ skills compound over years    │
-  │  Engineer)   │ Publication record = assets    │
-  └──────────────┴────────────────────────────────┘
-
-THE RESEARCH TOOLKIT:
-
-  ┌──────────────┬──────────────────────────────┐
-  │ Function      │ Tool                         │
-  ├──────────────┼──────────────────────────────┤
-  │ Find papers   │ Google Scholar, arXiv        │
-  │ Manage refs   │ Zotero (free)                │
-  │ Visualize     │ Connected Papers             │
-  │ Code          │ Papers With Code, GitHub     │
-  │ Write         │ Overleaf (LaTeX)             │
-  │ Figures       │ matplotlib, draw.io          │
-  │ Notes         │ Obsidian (Zettelkasten)      │
-  │ Stats         │ Python (scipy, statsmodels)  │
-  │ Preprints     │ arXiv                        │
-  │ Collaboration │ Overleaf, Google Docs        │
-  └──────────────┴──────────────────────────────┘
-
-YOUR FIRST PAPER — 90-DAY PLAN:
-
-  Week ১-২: Read ৫-২০ papers (Door ৪)
-    → identify subfield landscape
-    → find ৩ gaps
-  
-  Week ৩: Formulate research question (Door ৫)
-    → FINER test
-    → choose ONE question
-  
-  Week ৪-৬: Implement + experiment (Door ৬-৭)
-    → code your method
-    → run experiments
-    → ablation study
-    → create figures
-  
-  Week ৭-৮: Write first draft (Door ৭)
-    → Methods first, then Results, then Discussion
-    → Introduction and Abstract LAST
-    → get feedback from advisor/peers
-  
-  Week ৯: Revise (Door ৬-৭)
-    → structural edit
-    → line edit
-    → polish
-  
-  Week ১০: Submit (Door ৮)
-    → arXiv preprint
-    → submit to venue
-  
-  Week ১১-১২: Wait, then revise based on reviews
-    → response letter
-    → resubmit
-  
-  Week ১৩: PUBLISHED.
-    → you are now a researcher.
-
-THE FINAL PRINCIPLE:
-
-  Reading papers makes you INFORMED.
-  Analyzing papers makes you CRITICAL.
-  Writing papers makes you a CONTRIBUTOR.
-  Building on papers makes you a RESEARCHER.
-  
-  The progression:
-    Consumer → Reader → Analyzer → Writer → Builder → Architect
-  
-  You started this book as a consumer.
-  You finish as an architect.
-  
-  The knowledge chain is infinite.
-  You are now a link in it.
-  
-  হিকমাহ — applied knowledge. Not just knowing — DOING.
-  Not just reading — CREATING.
-  Not just consuming — CONTRIBUTING.
-  
-  This is the research paper craftsman.</div>
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">Phase ১ · দ্বার ১-৪</div><div class="tl-title">📖 READ</div><div class="tl-body">Paper anatomy (IMRaD) · engineer read (code+method) · scientist eye (verify) · PhD reader (gap)।</div></div>
+<div class="tl-step"><div class="tl-when">Phase ২ · দ্বার ৫</div><div class="tl-title">💡 DISCOVER</div><div class="tl-body">gap → research question; FINER test (Feasible, Interesting, Novel, Ethical, Relevant); একটা প্রশ্ন বাছো।</div></div>
+<div class="tl-step"><div class="tl-when">Phase ৩ · দ্বার ৬-৭</div><div class="tl-title">🏗️ BUILD</div><div class="tl-body">IMRaD outline → implement → experiment (run, measure, ablate) → shitty first draft → polished final।</div></div>
+<div class="tl-step"><div class="tl-when">Phase ৪ · দ্বার ৮</div><div class="tl-title">📤 PUBLISH</div><div class="tl-body">submit → peer review → respectful response letter → camera-ready।</div></div>
+<div class="tl-step"><div class="tl-when">Phase ৫ · দ্বার ৯</div><div class="tl-title">🔗 CONNECT</div><div class="tl-body">সঠিক cite, code+data release, অন্যরা তোমার কাজের উপর গড়ে — তুমি শৃঙ্খলের অংশ।</div></div>
+</div>
+<table class="kv-table"><tr><th>কাজ</th><th>টুল</th></tr>
+<tr><td class="hl">পেপার খোঁজা</td><td>Google Scholar, arXiv, Connected Papers</td></tr>
+<tr><td class="hl">Reference</td><td>Zotero (free)</td></tr>
+<tr><td class="hl">Code</td><td>Papers With Code, GitHub</td></tr>
+<tr><td class="hl">লেখা / figure</td><td>Overleaf (LaTeX), matplotlib, draw.io</td></tr>
+<tr><td class="hl">নোট / stats</td><td>Obsidian, Python (scipy)</td></tr></table>
+<div class="callout info"><span class="co-icon">🗓️</span><div><strong>প্রথম পেপার — ৯০ দিনের প্ল্যান:</strong> সপ্তাহ ১-২ ৫-২০ পেপার, ৩ gap → সপ্তাহ ৩ research question (FINER) → সপ্তাহ ৪-৬ implement + experiment + ablation + figure → সপ্তাহ ৭-৮ first draft (Methods আগে, Intro/Abstract শেষে), feedback → সপ্তাহ ৯ revise → সপ্তাহ ১০ arXiv + submit → সপ্তাহ ১১-১৩ review-ভিত্তিক revise → প্রকাশিত।</div></div>
+<div class="callout tip"><span class="co-icon">🚀</span><div><strong>অগ্রগতি:</strong> Consumer → Reader → Analyzer → Writer → Builder → <strong>Architect</strong>। পড়া <em>informed</em>, বিশ্লেষণ <em>critical</em>, লেখা <em>contributor</em>, নির্মাণ <em>researcher</em>। শুরু করেছিলে consumer হিসেবে, শেষ করছ architect হিসেবে। হিকমাহ — শুধু জানা নয়, DOING; শুধু consuming নয়, CONTRIBUTING।</div></div>
 
 <div class="verse">"তিনি মানুষকে শিখিয়েছেন কলমের মাধ্যমে। মানুষকে শিখিয়েছেন যা সে জানত না।"<br>— কুরআন ৯৬:৪-৫<br><br>গবেষণাপত্র = জ্ঞানের সম্প্রসারণ। তুমি পড়ো, বোঝো, যাচাই করো, প্রশ্ন করো, গবেষণা করো, লেখো, প্রকাশ করো। তোমার পত্র পরে কেউ পড়বে, সংযুক্ত করবে, প্রসারিত করবে। এটাই জ্ঞানের শৃঙ্খল — প্রতিটা প্রজন্ম আগের কাঁধে দাঁড়ায়। তুমি এখন সেই শৃঙ্খলে একটি লিঙ্ক। হিকমাহ — প্রয়োগকৃত জ্ঞান। যে প্রয়োগ করে, সে জানে। যে জানে, সে সৃষ্টি করে। যে সৃষ্টি করে, সে অবিচ্ছেয্য।</div>
 

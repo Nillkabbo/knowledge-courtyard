@@ -7,13 +7,13 @@ const SAVE_KEY = 'csOcean_v1';
 const MAX_XP = 1000;
 const RANKS = [
   {min:0,   name:'নাবিক শিক্ষানবিশ',     icon:'🧳'},
-  {min:100, name:'ডোমেইন অন্বেষক',   icon:'🏔️'},
-  {min:200, name:'ডোমেইন বিশেষজ্ঞ',     icon:'🗺️'},
-  {min:300, name:'ডোমেইন মহাসমুদ্র জ্ঞানী',     icon:'📚'},
+  {min:100, name:'ডোমেইন অন্বেষক',   icon:'🧭'},
+  {min:200, name:'গভীর ডুবুরি',     icon:'🤿'},
+  {min:300, name:'ডোমেইন বিশেষজ্ঞ',     icon:'📚'},
   {min:400, name:'মহাসমুদ্র জ্ঞানী',           icon:'🎓'},
-  {min:500, name:'সমুদ্র নেভিগেটর',     icon:'🔬'},
-  {min:600, name:'মহাসমুদ্র জ্ঞানী',    icon:'👑'},
-  {min:700, name:'মহাসমুদ্র মাস্টার',    icon:'👑'}
+  {min:500, name:'সমুদ্র নেভিগেটর',     icon:'🧪'},
+  {min:600, name:'মহাসমুদ্র অধিনায়ক',    icon:'👑'},
+  {min:700, name:'মহাসমুদ্র মাস্টার',    icon:'🌌'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}
 function loadState(){try{const r=localStorage.getItem(SAVE_KEY);if(!r)return;const s=JSON.parse(r);state.xp=s.xp||0;state.completedDoors=s.completedDoors||[];state.prologueSeen=s.prologueSeen||false}catch(e){}}

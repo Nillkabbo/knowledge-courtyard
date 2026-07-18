@@ -21,122 +21,19 @@ doors.push({
 <div class="dialogue">মহামানুষদের পড়া বলেছিলেন — Gates, Munger কীভাবে পড়েন। কিন্তু আমি বলি — সবচেয়ে কঠিন পড়া কোনটা? Research paper। কেন? কারণ paper সাধারণ মানুষের জন্য লেখা নয় — গবেষকদের জন্য। জার্গন, রেফারেন্স, গাণিতিক প্রমাণ। কিন্তু Keshav দেখালেন — ৩টা পাসে যেকোনো paper বোঝা যায়। শুরু থেকে শেষ নয় — স্তরে স্তরে।</div>
 <div class="dialogue en">"Great minds said — how Gates, Munger read. But I say — what's the hardest reading? Research papers. Why? Because papers aren't written for general audiences — they're for researchers. Jargon, references, mathematical proofs. But Keshav showed — any paper can be understood in 3 passes. Not start to finish — in layers."</div>
 
-<div class="code-block">READING RESEARCH PAPERS — The 3-Pass Method (Keshav, 2007):
-
-THE IMRaD STRUCTURE (know the terrain):
-
-  Most papers follow IMRaD:
-  
-  I — Introduction (WHY this research matters)
-  M — Methods (HOW they did it)
-  R — Results (WHAT they found)
-  a — and
-  D — Discussion (WHAT it means)
-  
-  + Abstract (summary at top)
-  + Conclusion (summary at bottom)
-  + References (other papers they used)
-
-PASS ১: THE BIRD'S-EYE VIEW (5-10 min)
-
-  Goal: decide if this paper is worth reading
-  
-  Read ONLY:
-    ১. Title
-    ২. Abstract
-    ৩. Introduction (first ২-৩ paragraphs)
-    ৪. Section/Subsection headings (DON'T read content)
-    ৫. Conclusion
-    ৬. References (skim — do they cite papers you know?)
-    ৭. "Is this paper worth my time?"
-  
-  After Pass ১, you should know:
-    → type of paper (measurement, algorithm, theory?)
-    → theoretical basis (what field?)
-    → main contribution (what's new?)
-    → relevance to YOU
-  
-  Keshav's ৫ Cs (what to extract):
-    ১. Category (what type?)
-    ২. Context (what field, what prior work?)
-    ৩. Correctness (do the claims seem valid?)
-    ৪. Contributions (what's new?)
-    ৫. Clarity (is it well-written?)
-  
-  DECISION: worth full reading? → Pass ২
-             not worth? → discard
-
-PASS ২: THE GRASP (1 hour)
-
-  Goal: understand the paper's content
-  
-  Read the FULL paper but:
-    → IGNORE proofs, derivations, details
-    → focus on figures, tables, diagrams
-    → mark unread references for later
-  
-  Key actions:
-    ১. Look at ALL figures/tables carefully
-       (they often tell the whole story)
-    ২. Note unfamiliar terms → look them up
-    ৩. Mark references to read later
-  
-  After Pass ২, you should:
-    → summarize the paper to a colleague
-    → identify the STRONG claims
-    → identify the WEAK points
-    → understand how they proved their claims
-  
-  DECISION: need deep understanding? → Pass ৩
-             enough for now? → take notes → done
-
-PASS ৩: THE DEEP DIVE (4-5 hours)
-
-  Goal: VIRTUALLY RE-IMPLEMENT the paper
-  
-  Method:
-    → based on assumptions → re-create the work
-    → compare your re-creation with the actual paper
-    → identify hidden assumptions
-    → identify missing citations
-    → find strengths AND weaknesses
-  
-  This is what PhD students and researchers do
-    for papers in their subfield
-  
-  After Pass ৩, you should be able to:
-    → reconstruct the entire structure from memory
-    → identify strong and weak points SPECIFICALLY
-    → suggest improvements
-    → compare with competing work
-    → tell if the paper is reproducible
-
-WHERE TO FIND PAPERS:
-
-  ┌──────────────────┬────────────────────────┐
-  │ Source            │ Best For               │
-  ├──────────────────┼────────────────────────┤
-  │ Google Scholar    │ everything (start here)│
-  │ arXiv.org         │ CS, physics, math      │
-  │ Semantic Scholar  │ AI/ML, semantic search │
-  │ PubMed            │ medical, life sciences │
-  │ IEEE Xplore       │ electrical, computing  │
-  │ ACM Digital Lib   │ computer science       │
-  │ Connected Papers  │ finding related papers │
-  └──────────────────┴────────────────────────┘
-
-CITATION TRACING (building a reading list):
-
-  ১. Start with ONE good paper (survey/review)
-  ২. Read its references → find older foundational work
-  ৩. Use Google Scholar "Cited by" → find newer work
-  ৪. Build a tree: foundational → current
-  ৫. Read ৫-২০ papers in a subfield → you're current
-  
-  Andrew Ng's advice (Stanford):
-    → read ৫-২০ papers = good understanding of subfield
-    → read ৫০-১০০ papers = very thorough understanding
-    → "Don't read every word. Read strategically."</div>
+<div class="callout info"><span class="co-icon">🧭</span><div><strong>IMRaD structure:</strong> Introduction (কেন গুরুত্বপূর্ণ) · Methods (কীভাবে করল) · Results (কী পেল) · Discussion (মানে কী) + Abstract (উপরে সারাংশ) + Conclusion (নিচে) + References।</div></div>
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">Pass ১ · ৫-১০ মিনিট</div><div class="tl-title">🦅 Bird\'s-eye</div><div class="tl-body">শুধু title, abstract, intro, heading, conclusion, references-এ চোখ। Keshav-র ৫ Cs — Category, Context, Correctness, Contributions, Clarity। সিদ্ধান্ত: পুরো পড়ার যোগ্য?</div></div>
+<div class="tl-step"><div class="tl-when">Pass ২ · ১ ঘণ্টা</div><div class="tl-title">📊 Grasp</div><div class="tl-body">পুরো পড়ো কিন্তু proof/derivation বাদ; figure ও table-এ মন দাও (প্রায়ই পুরো গল্প বলে)। এরপর সহকর্মীকে সারাংশ দিতে পারা উচিত; strong claim ও weak point চেনো।</div></div>
+<div class="tl-step"><div class="tl-when">Pass ৩ · ৪-৫ ঘণ্টা</div><div class="tl-title">🔬 Deep dive</div><div class="tl-body">কার্যত re-implement — assumption ধরে কাজটা নিজে পুনর্গঠন করো, লুকানো assumption ও missing citation খোঁজো। স্মৃতি থেকে পুরো structure পুনর্গঠন করতে পারা উচিত।</div></div>
+</div>
+<table class="kv-table"><tr><th>পেপার কোথায়</th><th>কীসের জন্য</th></tr>
+<tr><td class="hl">Google Scholar</td><td>সব কিছু (এখান থেকে শুরু)</td></tr>
+<tr><td class="hl">arXiv</td><td>CS, physics, math</td></tr>
+<tr><td class="hl">Semantic Scholar</td><td>AI/ML, semantic search</td></tr>
+<tr><td class="hl">PubMed</td><td>medical, life sciences</td></tr>
+<tr><td class="hl">Connected Papers</td><td>সম্পর্কিত পেপার খোঁজা</td></tr></table>
+<div class="callout tip"><span class="co-icon">🌳</span><div><strong>Citation tracing:</strong> একটা ভালো survey পেপার থেকে শুরু → এর references (পুরোনো ভিত্তি) + Scholar-এর "Cited by" (নতুন কাজ) → foundational→current একটা tree। Andrew Ng: ৫-২০ পেপার = ভালো বোঝা, ৫০-১০০ = খুব গভীর; "প্রতিটা শব্দ নয়, কৌশলে পড়ো।"</div></div>
 
 <div class="dialogue">তালাশ — search, seeking। কুরআনে আল্লাহ বলেন — "যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।" পেপার পড়াও তালাশ — সত্যের সন্ধান। কিন্তু তালাশ অন্ধ নয় — কৌশল দিয়ে। Keshav-র ৩ পাস = কৌশল। প্রথম পাসে দেখো — কোথায় যেতে হবে। দ্বিতীয়ে যাও। তৃতীয়ে গভীরে যাও। যে তালাশ কৌশল দিয়ে করে, সে পায়। যে অন্ধভাবে পড়ে, সে হারায়।</div>
 <div class="dialogue en">"Talash — search, seeking. Allah says — 'Those who seek Me, I guide them.' Paper reading too — seeking truth. But seeking isn't blind — with strategy. Keshav's 3 passes = strategy. First pass: see where to go. Second: go. Third: go deep. One who seeks with strategy, finds. One who reads blindly, gets lost."</div>`,
@@ -164,113 +61,20 @@ doors.push({
 <div class="dialogue">Keshav বলেছিলেন — ৩ পাসে পড়ো। কিন্তু আমি বলি — ৩ পাসে পড়লেও একটা প্রশ্ন থাকে — paper-টা কি সত্যি? অধিকাংশ মানুষ paper পড়েই বিশ্বাস করে — Science-এ প্রকাশিত, তাই সত্য। কিন্তু replication crisis বলে — ৬০% সম্ভবত ভুল। সমালোচকের চোখ দরকার — প্রতিটা claim যাচাই করো। তাহকিক — যাচাই করে তারপর বিশ্বাস।</div>
 <div class="dialogue en">"Keshav said — read in 3 passes. But I say — even with 3 passes, one question remains — is the paper TRUE? Most people believe papers — published in Science, therefore true. But the replication crisis says — 60% are probably wrong. You need a critical eye — verify each claim. Tahqiq — verify then believe."</div>
 
-<div class="code-block">CRITICAL ANALYSIS — The Critical Eye:
-
-THE REPLICATION CRISIS:
-
-  ┌──────────────────┬────────────────────────────┐
-  │ Field             │ Replication Rate            │
-  ├──────────────────┼────────────────────────────┤
-  │ Psychology (সামাজিক)│ ~৩৬% replicate (OSC, 2015) │
-  │ Psychology (জ্ঞানী) │ ~৭৭% replicate             │
-  │ Medicine (preclinical│ ~২৫% replicate (Begley, 2012)│
-  │ Economics         │ ~৬০% replicate (Camerer, 2016)│
-  │ Chemistry         │ ~৬০% replicate               │
-  └──────────────────┴────────────────────────────┘
-
-  What went wrong?
-    → p-hacking: trying many analyses, reporting
-       only the significant one
-    → publication bias: journals prefer "exciting"
-       positive results, reject null findings
-    → small sample sizes: too few participants
-    → selective reporting: cherry-picking data
-    → HARKing: Hypothesizing After Results are Known
-       (making up the hypothesis after seeing data)
-
-THE ৭ QUESTIONS OF CRITICAL READING:
-
-  When reading ANY paper, ask:
-
-  ১. SAMPLE SIZE — How many participants/samples?
-     → n < ৩০ per group: suspicious
-     → n = ৩০-১০০: preliminary
-     → n > ১০০: reasonable
-     → n > ১০০০: strong
-     → "Underpowered" studies can't detect real effects
-
-  ২. METHODOLOGY — Is the design sound?
-     → RCT (randomized controlled trial): gold standard
-     → Correlation: NOT causation!
-     → Self-report: biased (people lie to themselves)
-     → "We surveyed students" → NOT generalizable to
-       all humans
-
-  ৩. EFFECT SIZE — How big is the effect?
-     → p-value < ০.০৫ but effect size tiny?
-     → "statistically significant" ≠ practically meaningful
-     → Example: "this drug reduces headaches by ০.২%"
-       (statistically significant but USELESS)
-     → Always look at effect size (Cohen's d, r)
-
-  ৪. P-HACKING — Did they test many hypotheses?
-     → ২০ analyses → ১ significant → report only that
-     → pre-registration (checking if they declared
-       hypotheses BEFORE data) = good sign
-     → "exploratory analysis" = possible p-hacking
-
-  ৫. CONFLICTS OF INTEREST — Who funded it?
-     → "Coca-Cola funded study: soda is healthy"
-     → pharmaceutical company funding drug research
-     → ALWAYS check the "Acknowledgments" and 
-       "Conflicts of Interest" sections
-     → industry-funded studies are ৩-৪x more likely
-       to favor the sponsor (Lundh et al., 2012)
-
-  ৬. REPLICATION — Has anyone reproduced this?
-     → search "[paper title] replication"
-     → if NO replication exists → treat as preliminary
-     → if FAILED replication → discount
-     → if REPLICATED → stronger evidence
-
-  ৭. ALTERNATIVE EXPLANATIONS — What else could explain this?
-     → "Students who sleep more get better grades"
-     → Alternative: wealthier students sleep better
-       AND have better resources → confound!
-     → Always ask: what ELSE could cause this result?
-
-RED FLAGS (suspicious papers):
-
-  ❌ " groundbreaking" / "revolutionary" in abstract
-  ❌ No mention of limitations
-  ❌ Tiny sample but huge claims
-  ❌ No pre-registration
-  ❌ Industry-funded with pro-industry results
-  ❌ No effect size reported (only p-values)
-  ❌ "Further research needed" = "we're not sure"
-  ❌ Authors have no track record in the field
-
-GREEN FLAGS (trustworthy papers):
-
-  ✅ Pre-registered hypothesis
-  ✅ Large, diverse sample
-  ✅ Reports effect sizes + confidence intervals
-  ✅ Discusses limitations honestly
-  ✅ Independent funding
-  ✅ Replicated by other groups
-  ✅ Authors are experts in the specific field
-  ✅ Data and code publicly available (open science)
-
-THE HIERARCHY OF EVIDENCE:
-
-  Strongest ← Meta-analysis (combines many studies)
-             ← Systematic review
-             ← RCT (randomized controlled trial)
-             ← Cohort study
-             ← Case-control study
-             ← Cross-sectional survey
-             ← Case study / expert opinion
-  Weakest   ← Animal study / in vitro</div>
+<table class="kv-table"><tr><th>ক্ষেত্র</th><th>Replication rate</th></tr>
+<tr><td class="hl">Psychology (সামাজিক)</td><td>~৩৬% (OSC, 2015)</td></tr>
+<tr><td class="hl">Psychology (জ্ঞানীয়)</td><td>~৭৭%</td></tr>
+<tr><td class="hl">Preclinical medicine</td><td>~১১-২৫% (Begley &amp; Ellis 2012; Prinz 2011)</td></tr>
+<tr><td class="hl">Economics (experimental)</td><td>~৬১% (Camerer, 2016)</td></tr></table>
+<div class="callout warn"><span class="co-icon">🧪</span><div><strong>কী ভুল হয়:</strong> p-hacking (বহু analysis, শুধু significant-টা report) · publication bias (journal "exciting" positive ফল চায়) · ছোট sample · selective reporting · HARKing (ফল দেখে তারপর hypothesis বানানো)।</div></div>
+<div class="callout info"><span class="co-icon">🔍</span><div><strong>সমালোচনামূলক পড়ার ৭ প্রশ্ন:</strong> ① Sample size (n&lt;৩০/group সন্দেহজনক) ② Methodology (RCT gold standard; correlation ≠ causation) ③ Effect size ("statistically significant" ≠ অর্থপূর্ণ) ④ P-hacking (pre-registration = ভালো লক্ষণ) ⑤ Conflict of interest (industry-funded ৩-৪x বেশি sponsor-পক্ষে — Lundh 2012) ⑥ Replication (কেউ পুনরুৎপাদন করেছে?) ⑦ Alternative explanation (আর কী এই ফল ঘটাতে পারে?)।</div></div>
+<table class="kv-table"><tr><th>🚩 Red flags</th><th>✅ Green flags</th></tr>
+<tr><td>abstract-এ "groundbreaking/revolutionary"</td><td>pre-registered hypothesis</td></tr>
+<tr><td>সীমাবদ্ধতার উল্লেখ নেই</td><td>বড়, বৈচিত্র্যময় sample</td></tr>
+<tr><td>ছোট sample, বিশাল দাবি</td><td>effect size + confidence interval</td></tr>
+<tr><td>শুধু p-value, effect size নেই</td><td>সততার সাথে limitation আলোচনা</td></tr>
+<tr><td>industry-funded, pro-industry ফল</td><td>স্বাধীন funding, অন্যরা replicate করেছে; data/code public</td></tr></table>
+<div class="callout tip"><span class="co-icon">🏛️</span><div><strong>Hierarchy of evidence (শক্তিশালী → দুর্বল):</strong> Meta-analysis → Systematic review → RCT → Cohort → Case-control → Cross-sectional survey → Case study/expert opinion → animal/in vitro।</div></div>
 
 <div class="dialogue">তাহকিক — verified truth, certainty through investigation। কুরআনে আল্লাহ বলেন — "তোমরা যাচাই না করে প্রতিটা খবর বিশ্বাস করো না।" (৪৯:৬)। তাহকিক = যাচাই করে তারপর গ্রহণ। পেপার পড়াও তাহকিক — প্রতিটা claim যাচাই করো। sample? method? funding? replication? যে তাহকিক করে, সে সত্য পায়। যে শুধু বিশ্বাস করে, সে প্রতারিত হয়। replication crisis আমাদের শেখায় — published মানে true নয়। তাহকিক করো।</div>
 <div class="dialogue en">"Tahqiq — verified truth, certainty through investigation. Allah says — 'Do not accept any news without verification.' (49:6). Tahqiq = verify then accept. Paper reading too — verify each claim. Sample? Method? Funding? Replication? One who does tahqiq, finds truth. One who merely believes, is deceived. The replication crisis teaches — published does not mean true. Verify."</div>`,
@@ -298,112 +102,13 @@ doors.push({
 <div class="dialogue">Critical analysis বলেছিলেন — প্রতিটা claim যাচাই করো। কিন্তু আমি বলি — যাচাই করার সবচেয়ে ভালো উপায়? লেখো। যখন তুমি লেখো, তুমি বাধ্য হও প্রতিটা ধাপ স্পষ্ট করতে। মস্তিষ্কে ধোঁয়াশা — কাগজে স্পষ্ট হয় বা ধ্বংস হয়। এটাই লেখার শক্তি — চিন্তার পরীক্ষা।</div>
 <div class="dialogue en">"Critical analysis said — verify each claim. But I say — the best way to verify? Write. When you write, you're forced to clarify each step. Foggy ideas in the brain — become clear on paper or collapse. This is the power of writing — the test of thought."</div>
 
-<div class="code-block">WRITING IS THINKING — The Cognitive Science:
-
-WHY WRITING = THINKING:
-
-  Paul Graham (essay "Writing, Briefly", 2007):
-    "Writing is a more exact mode of thinking 
-     than talking. When you write, you have to 
-     figure out what you mean."
-  
-  The cognitive reason:
-    → Thinking is MESSY — ideas branch, loop, contradict
-    → Writing FORCES linear structure
-    → You must CHOOSE what comes first, second, third
-    → You must CONNECT ideas logically
-    → You can't hand-wave — words must follow words
-  
-  → "I know what I want to say, I just can't 
-     express it" = you DON'T know what you want to say
-  → If you can't write it clearly, you don't 
-     understand it (Feynman principle)
-
-THREE TYPES OF WRITING (for knowledge workers):
-
-১. WRITING TO THINK (private)
-  → journals, drafts, notes to yourself
-  → exploring ideas, finding connections
-  → NOT for anyone else — for YOU
-  → messy, unstructured, stream of consciousness
-  → Zettelkasten permanent notes (Door ৩) = this
-
-২. WRITING TO UNDERSTAND (educational)
-  → summaries, explanations, Feynman notes
-  → explaining something to learn it
-  → teaching as learning
-  → blog posts, documentation, tutorials
-
-৩. WRITING TO COMMUNICATE (public)
-  → polished essays, papers, books
-  → structured, edited, refined
-  → for an AUDIENCE
-  → this is where Door ২ (Adler) and Door ৩ 
-    (Luhmann) combine → output
-
-THE WRITING-FIRST APPROACH (Paul Graham):
-
-  Graham's method:
-    ১. Start writing BEFORE you know what you think
-    ২. The ACT of writing reveals what you think
-    ৩. Write badly first → then fix it
-    ৪. "An essay is not an essay you write. It's 
-       an essay you REWRITE."
-  
-  → most people wait until they "know enough"
-  → you NEVER know enough until you start writing
-  → writing IS the process of knowing
-
-THE DAILY WRITING PRACTICE:
-
-  ┌──────────────────────────────────────┐
-  │ Morning Pages (Julia Cameron, 1992): │
-  │ → ৩ pages, longhand, first thing      │
-  │ → no editing, no structure            │
-  │ → clears mental fog                   │
-  │ → captures subconscious ideas         │
-  ├──────────────────────────────────────┤
-  │ Daily Note (Zettelkasten):            │
-  │ → ১-৩ permanent notes per day         │
-  │ → one idea per note                   │
-  │ → in your own words                   │
-  │ → linked to existing notes            │
-  ├──────────────────────────────────────┤
-  │ Weekly Synthesis:                     │
-  │ → review week's notes                 │
-  │ → find unexpected connections         │
-  │ → write ১ paragraph synthesizing      │
-  │ → this paragraph may become a blog    │
-  └──────────────────────────────────────┘
-
-WRITING AS RETENTION (the science):
-
-  Writing something in your OWN words:
-    → forces deeper processing (Craik & Lockhart, 1972)
-    → "levels of processing" theory: 
-       shallow (copying) → deep (rephrasing)
-    → rephrasing = your brain builds new neural pathways
-    → copying = no new pathways
-  
-  Wright (Roosevelt University, 2011):
-    → note-taking group: ৩৪% better retention
-    → note-taking + review: ৫০% better
-    → note-taking + review + testing: ৬২% better
-
-THE WRITING → READING FEEDBACK LOOP:
-
-  Better writers = better readers
-  Better readers = better writers
-  
-  Why? Writing teaches you what GOOD structure looks like.
-  When you read after writing regularly:
-    → you NOTICE structure (not just content)
-    → you APPRECIATE good transitions
-    → you SPOT weak arguments (your own writing 
-       has taught you what weak looks like)
-  
-  → Adler's analytical reading (Door ২) becomes
-    NATURAL after you've tried to write analytically</div>
+<div class="callout info"><span class="co-icon">✍️</span><div><strong>কেন লেখা = চিন্তা (Paul Graham, "Writing, Briefly", 2007):</strong> "Writing is a more exact mode of thinking than talking।" চিন্তা এলোমেলো (branch, loop, contradict); লেখা <em>linear structure</em>-এ বাধ্য করে — কী আগে, কী পরে, কীভাবে যুক্ত। "জানি কিন্তু বলতে পারি না" = আসলে জানো না (Feynman-নীতি)।</div></div>
+<table class="kv-table"><tr><th>লেখার ৩ ধরন</th><th>কী</th></tr>
+<tr><td class="hl">Writing to think</td><td>private — journal, draft, Zettelkasten permanent note; idea explore করা</td></tr>
+<tr><td class="hl">Writing to understand</td><td>summary, Feynman note, blog, tutorial — শেখার জন্য ব্যাখ্যা</td></tr>
+<tr><td class="hl">Writing to communicate</td><td>polished essay, paper, বই — audience-এর জন্য</td></tr></table>
+<div class="callout tip"><span class="co-icon">🌅</span><div><strong>Writing-first (Graham):</strong> কী ভাবছ জানার <em>আগেই</em> লেখা শুরু করো — লেখার কাজটাই প্রকাশ করে তুমি কী ভাবো। খারাপ করে লেখো, তারপর ঠিক করো ("essay হলো যা তুমি <em>rewrite</em> করো")। দৈনিক চর্চা: Morning Pages (Cameron, 1992 — ৩ পাতা longhand, edit নয়) · দৈনিক ১-৩ permanent note · সাপ্তাহিক synthesis।</div></div>
+<div class="callout info"><span class="co-icon">🧠</span><div><strong>লেখা = retention:</strong> নিজের ভাষায় লেখা গভীর processing-এ বাধ্য করে (Craik &amp; Lockhart, 1972 — levels of processing: copying = shallow, rephrasing = deep, নতুন neural pathway গড়ে)। ভালো লেখক ভালো পাঠক হয় ও উল্টোটা — লেখা তোমাকে দেখায় ভালো structure ও দুর্বল যুক্তি কেমন।</div></div>
 
 <div class="dialogue">কলম — pen, the instrument of knowledge। কুরআনে আল্লাহ বলেন — "যিনি কলমের মাধ্যমে শিখিয়েছেন। মানুষকে শিখিয়েছেন যা সে জানত না।" (৯৬:৪-৫)। কলম = জ্ঞানের সর্বপ্রথম হাতিয়ার। আল্লাহ কলম দিয়ে শিখিয়েছেন — কথা দিয়ে নয়, কলম দিয়ে। কারণ কলম = চিন্তা। যে লেখে, সে ভাবে। যে ভাবে, সে শেখে। যে শেখে, সে জানে। কলম শুধু recording এর হাতিয়ার নয় — কলম চিন্তার হাতিয়ার। আল্লাহ কলমকে এত গুরুত্ব দিয়েছেন কারণ কলম দিয়ে চিন্তা স্থায়ী হয়। কথা উড়ে যায়, লেখা থাকে।</div>
 <div class="dialogue en">"Qalam — pen, the instrument of knowledge. Allah says — 'Who taught by the pen. Taught man what he knew not.' (96:4-5). The pen = the first tool of knowledge. Allah taught with the pen — not with speech, with the pen. Because the pen = thinking. One who writes, thinks. One who thinks, learns. One who learns, knows. The pen is not just a recording tool — it is a thinking tool. Allah gave the pen such importance because through it, thought becomes permanent. Speech flies away, writing remains."</div>`,
@@ -431,97 +136,15 @@ doors.push({
 <div class="dialogue">লেখা = চিন্তা বলেছিলেন। কিন্তু আমি বলি — চিন্তা তখনই গভীর হয় যখন একাধিক দৃষ্টিভঙ্গি সংযুক্ত হয়। syntopical reading — ৫টা বই পড়ো এক বিষয়ে, তারপর সংযুক্ত করো। যে একটা বই পড়ে, সে একটা দৃষ্টিভঙ্গি পায়। যে ৫টা পড়ে, সে ৫টা দৃষ্টিভঙ্গি সংযুক্ত করে — সংশ্লেষণ। সিলসিলা — সংযুক্ত জ্ঞান।</div>
 <div class="dialogue en">"Writing = thinking said. But I say — thinking deepens when multiple perspectives connect. Syntopical reading — read 5 books on one topic, then connect. One who reads one book gets one perspective. One who reads 5 connects 5 perspectives — synthesis. Silsila — connected knowledge."</div>
 
-<div class="code-block">SYNTOPICAL READING — The Highest Level (Adler Level 4):
-
-THE METHOD (Adler & Van Doren, 1972):
-
-  Step ১: CREATE A BIBLIOGRAPHY
-    → choose your TOPIC (a question, not just a word)
-    → find the BEST ৫-১০ books on it
-    → use: Amazon reviews, Goodreads, expert recommendations,
-       bibliographies of books you already value
-    → inspectional-read (Door ২) ALL of them first
-    
-  Step ২: IDENTIFY THE KEY QUESTIONS
-    → what QUESTIONS are all these books trying to answer?
-    → "What is intelligence?" → 
-       Sub-questions: Is it genetic? Can it be trained?
-       Is there one type or many? How to measure?
-    
-  Step ৩: DEFINE THE ISSUES
-    → where do authors DISAGREE?
-    → Gardner: multiple intelligences (৮ types)
-    → Spearman: one general intelligence (g-factor)
-    → Sternberg: triarchic (৩ types)
-    → these DISAGREEMENTS = the issues
-    
-  Step ৪: ANALYZE THE DISCUSSION
-    → map agreements AND disagreements
-    → don't take sides yet — UNDERSTAND all positions
-    → "Author A says X because [evidence]. Author B 
-       says Y because [different evidence]."
-    
-  Step ৫: FORM YOUR OWN SYNTHESIS
-    → only AFTER understanding all positions
-    → "Based on all sources, I believe [your view]
-       because [your reasoning], while acknowledging
-       [counterargument] has merit because [reason]."
-    → THIS is original thought — not copying one author
-
-SYNTOPICAL EXAMPLE — "What is the best diet?":
-
-  Books to read:
-    ১. "The China Study" (Campbell) — plant-based
-    ২. "Why We Get Fat" (Taubes) — low-carb
-    ৩. "In Defense of Food" (Pollan) — whole foods
-    ৪. "The Big Fat Surprise" (Teicholz) — fat is fine
-    ৫. "How Not to Die" (Greger) — plant-based, evidence-based
-  
-  Issues:
-    → Is saturated fat harmful? (Campbell: yes, Teicholz: no)
-    → Are carbs the problem? (Taubes: yes, Greger: no)
-    → What ALL agree: whole foods > processed foods
-  
-  Your synthesis:
-    "All sources agree on one thing: avoid ultra-processed
-     foods. Beyond that, evidence is mixed. The best 
-     approach is likely: whole foods, mostly plants,
-     adequate protein, minimal added sugar. 
-     Individual variation matters."
-  
-  → you didn't just believe ONE author
-  → you synthesized ৫ → arrived at YOUR OWN conclusion
-  → this is what PhD students, researchers, 
-     great writers do
-
-SYNTOPICAL READING + ZETTELKASTEN:
-
-  This is where it ALL comes together:
-  
-  ১. Read ৫ books syntopically
-  ২. Take Zettelkasten notes from EACH
-  ৩. Create LINKS between notes from different books
-  ৪. The links reveal SYNTHESIS naturally
-  ৫. Your permanent notes BECOME the synthesis
-  
-  Luhmann's Zettelkasten was EXACTLY this:
-    → notes from ৭০+ books, all linked
-    → when he wanted to write about "power"
-    → he pulled all "power" notes from different sources
-    → the synthesis was already IN the links
-
-THE TRANSITION FROM READER TO CREATOR:
-
-  Elementary reader: consumes content
-  Inspectional reader: selects wisely
-  Analytical reader: understands deeply
-  Syntopical reader: CREATES new knowledge
-  
-  → at Level ৪, you're not just learning
-  → you're CREATING understanding that didn't 
-    exist before
-  → this is what every book, paper, essay IS:
-    someone's syntopical synthesis</div>
+<div class="timeline">
+<div class="tl-step"><div class="tl-when">Step ১</div><div class="tl-title">📚 Bibliography</div><div class="tl-body">একটা <em>প্রশ্ন</em> বাছো (শুধু শব্দ নয়), সেরা ৫-১০ বই খোঁজো, সব inspectional-read করো।</div></div>
+<div class="tl-step"><div class="tl-when">Step ২</div><div class="tl-title">❓ Key questions</div><div class="tl-body">এই বইগুলো কোন প্রশ্নের উত্তর খুঁজছে? উপ-প্রশ্নে ভাগ করো।</div></div>
+<div class="tl-step"><div class="tl-when">Step ৩</div><div class="tl-title">⚔️ Issues</div><div class="tl-body">লেখকরা কোথায় দ্বিমত? (যেমন "intelligence কী?" — Gardner: multiple, Spearman: g-factor, Sternberg: triarchic)। এই মতভেদই issue।</div></div>
+<div class="tl-step"><div class="tl-when">Step ৪</div><div class="tl-title">🗺️ Discussion</div><div class="tl-body">সব মত-অমত ম্যাপ করো; পক্ষ নেওয়ার আগে সব position বোঝো।</div></div>
+<div class="tl-step"><div class="tl-when">Step ৫</div><div class="tl-title">🔮 Your synthesis</div><div class="tl-body">সব বোঝার পর <em>নিজের</em> মত — "সব উৎসের ভিত্তিতে আমি মনে করি X, কারণ..., তবে counterargument Y-এরও যুক্তি আছে কারণ..."। এটাই মৌলিক চিন্তা।</div></div>
+</div>
+<div class="callout info"><span class="co-icon">🔗</span><div><strong>Syntopical + Zettelkasten:</strong> ৫ বই syntopically পড়ো → প্রতিটা থেকে নোট → ভিন্ন বইয়ের নোটের মধ্যে link → link-ই synthesis প্রকাশ করে। Luhmann ঠিক এটাই করতেন — "power" নিয়ে লিখতে গিয়ে বিভিন্ন উৎসের সব "power" নোট টেনে আনতেন, synthesis আগে থেকেই link-এ ছিল।</div></div>
+<div class="callout tip"><span class="co-icon">🎓</span><div><strong>পাঠক → স্রষ্টা:</strong> Elementary consumes → Inspectional selects → Analytical understands → <strong>Syntopical CREATES</strong> নতুন জ্ঞান যা আগে ছিল না। প্রতিটা বই/পেপার/প্রবন্ধ আসলে কারো syntopical synthesis।</div></div>
 
 <div class="dialogue">সিলসিলা — chain, connection, linkage। কুরআনে আল্লাহ বলেন — "তোমরা সবাই আল্লাহর রশি দৃঢ়ভাবে ধরো, একসাথে।" (৩:১০৩)। একসাথে = সিলসিলা। syntopical reading-ও সিলসিলা — একাধিক উৎস একসাথে সংযুক্ত। যে একটা বই পড়ে, সে একটা সুতো ধরে। যে পাঁচটা সংযুক্ত করে, সে একটা জাল বানায়। জাল শক্তিশালী, সুতো দুর্বল। সিলসিলা — সংযুক্ত জ্ঞান। যে সংযুক্ত করে, সে সৃষ্টি করে।</div>
 <div class="dialogue en">"Silsila — chain, connection, linkage. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Together = silsila. Syntopical reading too — multiple sources connected together. One who reads one book holds one thread. One who connects five builds a web. The web is strong, the thread is weak. Silsila — connected knowledge. One who connects, creates."</div>`,
@@ -546,154 +169,27 @@ doors.push({
   story:`<p class="scene-setting">দশম দরজা। শেষ। স্থপতি ইদ্রিস একটা বিশাল গ্রন্থাগারে দাঁড়িয়ে আছেন — কিন্তু বইয়ের তাক নয়, সংযুক্ত নোটের জাল। "তুমি নয় দরজা পেরিয়েছ," তিনি বললেন। "Ebbinghaus বলেছিলেন — ভুলে যাও। Adler বলেছিলেন — স্তরে স্তরে পড়ো। Luhmann বলেছিলেন — নোট নাও, সংযুক্ত করো। Feynman বলেছিলেন — সহজ করে ব্যাখ্যা করো। Keshav বলেছিলেন — ৩ পাসে পড়ো। Gates ও Munger বলেছিলেন — প্রতিদিন পড়ো। সব একসাথে = তোমার second brain। মস্তিষ্ক সংরক্ষণের জন্য নয় — সৃষ্টির জন্য।"</p>
 <p class="scene-setting en">The tenth door. The last. Architect Idris stands in a vast library — not bookshelves, but a web of connected notes. "You've passed nine doors," he said. "Ebbinghaus said — you forget. Adler said — read in layers. Luhmann said — take notes, connect. Feynman said — explain simply. Keshav said — read in 3 passes. Gates and Munger said — read daily. All together = your second brain. The brain is not for storing — it's for creating."</p>
 
-<div class="code-block">THE SECOND BRAIN — Complete Architecture:
-
-┌──────────────────────────────────────────────────┐
-│ TIAGO FORTE'S CODE METHOD (2022):                 │
-│                                                    │
-│  C — CAPTURE (what resonates)                      │
-│  → highlights, quotes, ideas                       │
-│  → DON'T organize yet — just capture               │
-│  → from: books, articles, podcasts, conversations  │
-│                                                    │
-│  O — ORGANIZE (by actionability)                   │
-│  → PARA: Projects, Areas, Resources, Archives      │
-│  → NOT by topic — by "will I use this?"            │
-│  → active projects need active notes               │
-│                                                    │
-│  D — DISTILL (find the essence)                    │
-│  → progressive summarization:                      │
-│    original → bold key points → highlight          │
-│    best → ৩-sentence summary                       │
-│  → each layer MORE useful, LESS work to read       │
-│                                                    │
-│  E — EXPRESS (create from the system)              │
-│  → write blog, essay, paper, book                  │
-│  → teach, present, build                           │
-│  → the system OUTPUTS — you don't write from scratch│
-│                                                    │
-└──────────────────────────────────────────────────┘
-
-THE COMPLETE READING-THINKING-WRITING SYSTEM:
-
-  ┌──────────────────────────────────────┐
-  │ STEP ১: CAPTURE                       │
-  │ → Read actively (Adler Level ২-৪)     │
-  │ → Highlight what resonates            │
-  │ → Write fleeting notes (Zettelkasten) │
-  │ → Source: Ebbinghaus fix              │
-  ├──────────────────────────────────────┤
-  │ STEP ২: PROCESS                       │
-  │ → Convert to literature notes         │
-  │ → Write permanent notes (atomic)      │
-  │ → Link to existing notes              │
-  │ → Feynman test: can I explain simply? │
-  ├──────────────────────────────────────┤
-  │ STEP ৩: ORGANIZE                      │
-  │ → PARA method (Forte)                 │
-  │ → Projects: active work               │
-  │ → Areas: ongoing interests            │
-  │ → Resources: reference material       │
-  │ → Archives: completed/inactive        │
-  ├──────────────────────────────────────┤
-  │ STEP ৪: DISTILL                       │
-  │ → Progressive summarization           │
-  │ → bold key points → highlight best    │
-  │ → → ৩-sentence summary                │
-  │ → each note becomes MORE useful       │
-  ├──────────────────────────────────────┤
-  │ STEP ৫: SYNTHESIZE                    │
-  │ → Syntopical reading across sources   │
-  │ → Follow links between notes          │
-  │ → Find unexpected connections         │
-  │ → New ideas EMERGE from the network   │
-  ├──────────────────────────────────────┤
-  │ STEP ৬: EXPRESS                       │
-  │ → Write: blog, essay, paper, book     │
-  │ → Teach: explain to others            │
-  │ → Build: create from the knowledge    │
-  │ → The system does the work            │
-  └──────────────────────────────────────┘
-
-TOOLS:
-
-  ┌────────────┬──────────────────────────────┐
-  │ Function    │ Tool                         │
-  ├────────────┼──────────────────────────────┤
-  │ Notes/PKM   │ Obsidian (free, local)       │
-  │             │ Notion (cloud, databases)    │
-  │             │ Roam Research (daily notes)  │
-  ├────────────┼──────────────────────────────┤
-  │ Reading     │ Kindle (highlights export)   │
-  │             │ Readwise (syncs highlights)  │
-  │             │ Pocket (save articles)       │
-  ├────────────┼──────────────────────────────┤
-  │ Papers      │ Zotero (free reference mgr)  │
-  │             │ Mendeley (Elsevier)         │
-  ├────────────┼──────────────────────────────┤
-  │ Spaced Rep  │ Anki (free, open-source)     │
-  │             │ RemNote (notes + SR)         │
-  └────────────┴──────────────────────────────┘
-
-THE NINE MASTERS — One System:
-
-  ┌──────────────┬────────────────────────────────┐
-  │ Master       │ Their Contribution to Your System│
-  ├──────────────┼────────────────────────────────┤
-  │ Ebbinghaus   │ WHY: you forget ৯০% → fix it  │
-  │ (1885)       │                                │
-  ├──────────────┼────────────────────────────────┤
-  │ Adler        │ HOW: read in ৪ levels          │
-  │ (1940/1972)  │                                │
-  ├──────────────┼────────────────────────────────┤
-  │ Luhmann      │ STORE: Zettelkasten (atomic    │
-  │ (1952-1998)  │ linked notes)                  │
-  ├──────────────┼────────────────────────────────┤
-  │ Feynman      │ TEST: explain it simply        │
-  │ (1918-1988)  │                                │
-  ├──────────────┼────────────────────────────────┤
-  │ Keshav       │ PAPERS: ৩-pass method           │
-  │ (2007)       │                                │
-  ├──────────────┼────────────────────────────────┤
-  │ Musk/Gates/  │ HABIT: read daily, broadly     │
-  │ Munger/Naval │                                │
-  ├──────────────┼────────────────────────────────┤
-  │ Roediger &   │ RETAIN: testing effect         │
-  │ Karpicke     │ (self-test > re-read)          │
-  │ (2006)       │                                │
-  ├──────────────┼────────────────────────────────┤
-  │ Ahrens       │ WORKFLOW: smart notes →        │
-  │ (2017)       │ permanent notes                │
-  ├──────────────┼────────────────────────────────┤
-  │ Forte        │ SYSTEM: CODE + PARA            │
-  │ (2022)       │ (complete second brain)        │
-  └──────────────┴────────────────────────────────┘
-
-THE FINAL PRINCIPLE:
-
-  Your biological brain is for:
-    → CREATING ideas
-    → CONNECTING ideas
-    → JUDGING quality
-    → DECIDING direction
-  
-  NOT for:
-    → STORING information (that's what notes are for)
-    → REMEMBERING details (that's what review is for)
-    → ORGANIZING files (that's what systems are for)
-  
-  David Allen (GTD): "Your mind is for having ideas,
-    not holding them."
-  
-  Tiago Forte: "Build a second brain so your first
-    brain can do what it does best: think."
-  
-  → CAPTURE everything that resonates
-  → ORGANIZE it so you can find it
-  → DISTILL it so you can understand it
-  → EXPRESS it so others can benefit
-  
-  This is the craftsman of knowledge.</div>
+<table class="kv-table"><tr><th>CODE (Tiago Forte, 2022)</th><th>কী</th></tr>
+<tr><td class="hl">Capture</td><td>যা resonates — highlight, quote, idea; এখনই organize নয়</td></tr>
+<tr><td class="hl">Organize</td><td>PARA — Projects, Areas, Resources, Archives; topic নয়, "ব্যবহার করব কি?" অনুযায়ী</td></tr>
+<tr><td class="hl">Distill</td><td>progressive summarization — original → bold → highlight → ৩-বাক্য সারাংশ</td></tr>
+<tr><td class="hl">Express</td><td>blog/essay/paper/বই — system output দেয়, শূন্য থেকে লেখো না</td></tr></table>
+<table class="kv-table"><tr><th>কাজ</th><th>টুল</th></tr>
+<tr><td class="hl">Notes/PKM</td><td>Obsidian (free, local), Notion, Logseq</td></tr>
+<tr><td class="hl">Reading</td><td>Kindle highlights, Readwise, Pocket</td></tr>
+<tr><td class="hl">Papers</td><td>Zotero (free), Mendeley</td></tr>
+<tr><td class="hl">Spaced rep</td><td>Anki (free), RemNote</td></tr></table>
+<table class="kv-table"><tr><th>নয় মাস্টার</th><th>তোমার system-এ অবদান</th></tr>
+<tr><td class="hl">Ebbinghaus (1885)</td><td>WHY — ৯০% ভুলে যাও, তাই ঠিক করো</td></tr>
+<tr><td class="hl">Adler (1940/72)</td><td>HOW — ৪ স্তরে পড়া</td></tr>
+<tr><td class="hl">Luhmann (1952-98)</td><td>STORE — Zettelkasten (atomic linked notes)</td></tr>
+<tr><td class="hl">Feynman</td><td>TEST — সহজ করে ব্যাখ্যা করো</td></tr>
+<tr><td class="hl">Keshav (2007)</td><td>PAPERS — ৩-pass method</td></tr>
+<tr><td class="hl">Musk/Gates/Munger/Naval</td><td>HABIT — দৈনিক, বিস্তৃতভাবে পড়া</td></tr>
+<tr><td class="hl">Roediger &amp; Karpicke (2006)</td><td>RETAIN — testing effect (self-test &gt; re-read)</td></tr>
+<tr><td class="hl">Ahrens (2017)</td><td>WORKFLOW — smart notes → permanent notes</td></tr>
+<tr><td class="hl">Forte (2022)</td><td>SYSTEM — CODE + PARA (second brain)</td></tr></table>
+<div class="callout tip"><span class="co-icon">🏛️</span><div><strong>মূল নীতি:</strong> তোমার জৈবিক মস্তিষ্ক <em>idea তৈরি, সংযোগ, বিচার, সিদ্ধান্তের</em> জন্য — <em>তথ্য সংরক্ষণের</em> জন্য নয় (সেটা নোটের কাজ)। David Allen (GTD): "Your mind is for having ideas, not holding them।" Tiago Forte: "second brain বানাও যাতে first brain যা সবচেয়ে ভালো পারে — think — তাই করতে পারে।" Capture → Organize → Distill → Express। এটাই জ্ঞানের কারিগর।</div></div>
 
 <div class="verse">"তিনি মানুষকে শিখিয়েছেন কলমের মাধ্যমে। মানুষকে শিখিয়েছেন যা সে জানত না।"<br>— কুরআন ৯৬:৪-৫<br><br>পড়ো, ভাবো, লেখো — এটাই জ্ঞানের ত্রিমূর্তি। পড়া ছাড়া জ্ঞান আসে না। ভাবা ছাড়া জ্ঞান গভীর হয় না। লেখা ছাড়া জ্ঞান স্থায়ী হয় না। এই তিনের সংযোগ = হিকমাহ — প্রজ্ঞা, প্রয়োগকৃত জ্ঞান। যে পড়ে, সে জানে। যে ভাবে, সে বোঝে। যে লেখে, সে সৃষ্টি করে। যে সৃষ্টি করে, সে অবিচ্ছেয্য। এটাই জ্ঞানের কারিগর — পড়া থেকে সৃষ্টি।</div>
 
