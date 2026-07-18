@@ -207,6 +207,59 @@ doors.push({
 <div class="callout tip"><span class="co-icon">🔨</span><div><strong>বিভ্রম ভাঙার উপায়:</strong> নিজেকে পরীক্ষা করো (active recall) · প্রয়োগ করো (প্রজেক্ট বানাও) · অন্যকে শেখাও (গ্যাপ ধরা পড়বে)।</div></div>
 <div class="callout info"><span class="co-icon">📖</span><div><strong>সতর্ক পাঠ:</strong> উপরের U-curve একটা popular visualization। Dunning-Kruger-এর আসল ফলাফল (1999) — নিচু স্তরের ব্যক্তিরা নিজের র‍্যাঙ্ক সবচেয়ে বেশি overestimate করে। আত্মবিশ্বাসের নির্দিষ্ট U-আকৃতি ধ্রুব সত্য নয়, তবে "নতুন শিক্ষার্থী নিজেকে বেশি পারদর্শী ভাবে" — এই মূল পর্যবেক্ষণ সঠিক ও প্রাসঙ্গিক।</div></div>
 
+<div class="diagram">
+  <div class="diag-title">Dunning-Kruger — আত্মবিশ্বাস বনাম প্রকৃত জ্ঞান</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <line class="axis" x1="50" y1="190" x2="520" y2="190"/>
+    <line class="axis" x1="50" y1="30" x2="50" y2="190"/>
+    <text class="lbl-sm" x="285" y="215" fill="#9290a8">অভিজ্ঞতা / ঘণ্টা →</text>
+    <text class="lbl-sm" x="20" y="110" fill="#9290a8" transform="rotate(-90 20,110)">আত্মবিশ্বাস →</text>
+    <!-- confidence curve: peak early, valley, slow rise -->
+    <path d="M 50 150 Q 120 40 180 60 Q 230 160 300 150 Q 400 110 510 70" fill="none" stroke="#a78bfa" stroke-width="2.5"/>
+    <!-- competence curve: steady rise -->
+    <path d="M 50 180 Q 200 150 350 110 T 510 55" fill="none" stroke="#52c41a" stroke-width="2" stroke-dasharray="5,4"/>
+    <!-- peak of mount stupid -->
+    <circle cx="120" cy="55" r="5" class="node-hot"/>
+    <text class="lbl-hot" x="120" y="40">"পারি!"</text>
+    <text class="lbl-sm" x="120" y="170" fill="#ff6b35" style="font-size:9px">~২০ ঘণ্টা</text>
+    <!-- valley of despair -->
+    <circle cx="240" cy="155" r="5" class="node-hot"/>
+    <text class="lbl-hot" x="255" y="172">Valley</text>
+    <text class="lbl-sm" x="240" y="125" fill="#9290a8" style="font-size:9px">"কিছুই জানি না"</text>
+    <!-- slope of enlightenment -->
+    <circle cx="420" cy="95" r="5" class="node-cyan"/>
+    <text class="lbl-cyan" x="445" y="92">বিনয়ী জ্ঞান</text>
+    <text class="lbl-sm" x="285" y="225" fill="#5e5c74">বেগুনি = আত্মবিশ্বাস, সবুজ (ড্যাশ) = প্রকৃত দক্ষতা — দুটো একই নয়</text>
+  </svg>
+  <div class="diag-cap">~২০ ঘণ্টায় আত্মবিশ্বাস চূড়ায়, কিন্তু প্রকৃত দক্ষতা এখনও কম। গভীরে গেলে আত্মবিশ্বাস পড়ে (Valley) — সেখানেই আসল শেখা শুরু। বিনয়ই চাবি।</div>
+</div>
+
+<div class="code-block">Illusion of Competence — ৩ লক্ষণ ও ৩ প্রতিকার:
+
+  লক্ষণ (তুমি বিভ্রমে আছ):
+    • পড়ে মনে হয় "জানি" (আসলে মুখস্থ)
+    • কোর্স শেষে "পারি" (কিন্তু প্রয়োগ?)
+    • পরীক্ষায় ভালো = "বিশেষজ্ঞ" (কিন্তু বাস্তবে?)
+
+  প্রতিকার (বিভ্রম ভাঙো):
+    ১. Active recall — বই বন্ধ করে মনে করো / খালি পাতায় লেখো
+    ২. Apply — প্রজেক্ট বানাও, প্রয়োগ করো
+    ৩. Teach — অন্যকে শেখাও (Feynman) — gap ধরা পড়বে
+
+  নিয়ম: যদি ১২ বছরের শিশুকে বোঝাতে না পারো —
+         তুমি বুঝিনি, শুধু চিনেছ।</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">১৯৯৯</div><div class="sc-label">Dunning-Kruger মূল পেপার</div></div>
+<div class="stat-card"><div class="sc-num">bottom quartile</div><div class="sc-label">নিজের র‍্যাঙ্ক সবচেয়ে বেশি overestimate করে</div></div>
+<div class="stat-card"><div class="sc-num">৩ প্রতিকার</div><div class="sc-label">recall · apply · teach</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">⚠️ বিভ্রমের চূড়া</div>"আমি পারি!" — ২০ ঘণ্টা পর আত্মবিশ্বাস চূড়ায়, কিন্তু প্রকৃত জ্ঞান সবচেয়ে কম। পড়ে মনে হয় "জানি" (মুখস্থ মাত্র), পরীক্ষায় ভালো হলে "বিশেষজ্ঞ"। এই বিভ্রমে আটকে গেলে আর বাড়বে না — কারণ "আমি জানি" বললে শেখা বন্ধ।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ Valley-র বিনয়</div>"কত কম জানি!" — গভীরে গেলে আত্মবিশ্বাস পড়ে, সেখানেই আসল শেখা শুরু। এই বিনয় ("আমি এখনও শিখছি") হলো প্রকৃত শেখার চাবি। নিজেকে পরীক্ষা করো (recall), প্রয়োগ করো, অন্যকে শেখাও — বিভ্রম ভাঙবে।</div>
+</div>
+
 <div class="dialogue">কুরআনে আল্লাহ বলেন — "তিনি তোমাদেরকে মাটি থেকে, তারপর শুক্রবিন্দু থেকে, তারপর জমাট রক্ত থেকে সৃষ্টি করেছেন।" সৃষ্টির পর্যায় ক্রমিক — প্রতিটি স্তরে আগের স্তরের অজ্ঞতা ধরা পড়ে। শেখাও তেমনি — প্রতিটি স্তরে তুমি বুঝবে আগের স্তরে কত কম জানতে। এই বিনয় — এই "আমি জানি না" — সেটাই গভীর শেখার শুরু। যে বলে "আমি জানি," সে আটকে যায়। যে বলে "আমি এখনও শিখছি," সে বাড়ে।</div>
 <div class="dialogue en">"Allah says — 'He created you from dust, then from a drop, then from a clot.' Creation is staged — at each level, the previous level's ignorance is revealed. Learning too — at each level you realize how little you knew before. This humility — this 'I don't know yet' — is the start of deep learning. One who says 'I know' gets stuck. One who says 'I'm still learning' grows."</div>`,
   senior:{
@@ -241,6 +294,46 @@ doors.push({
 <tr><td class="hl">মানুষ</td><td>mentor, peer review, teacher</td></tr>
 <tr><td class="hl">স্বয়ং</td><td>নিজের কাজ রিভিউ, video replay</td></tr></table>
 <div class="callout tip"><span class="co-icon">✔️</span><div><strong>নিয়ম:</strong> প্রতিটা practice session-এ অন্তত একটা feedback উৎস থাকতেই হবে।</div></div>
+
+<div class="diagram">
+  <div class="diag-title">Feedback Loop — প্র্যাকটিস চক্র যা ছাড়া অগ্রগতি অসম্ভব</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowLeafD4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#52c41a"/></marker>
+    </defs>
+    <!-- 4 nodes in a cycle -->
+    ${[ ['Practice',140,70], ['ভুল খোঁজো',380,70], ['কেন বুঝো',380,160], ['ঠিক করো',140,160] ].map(s=>`<rect class="cell-good" x="${s[1]-65}" y="${s[2]-20}" width="130" height="40" rx="8"/><text class="lbl-sm" x="${s[1]}" y="${s[2]+5}" fill="#52c41a" style="font-weight:700">${s[0]}</text>`).join('')}
+    <!-- cycle arrows -->
+    <line class="edge-cyan" x1="205" y1="70" x2="310" y2="70" marker-end="url(#arrowLeafD4)"/>
+    <line class="edge-cyan" x1="380" y1="92" x2="380" y2="138" marker-end="url(#arrowLeafD4)"/>
+    <line class="edge-cyan" x1="315" y1="160" x2="210" y2="160" marker-end="url(#arrowLeafD4)"/>
+    <line class="edge-cyan" x1="140" y1="138" x2="140" y2="92" marker-end="url(#arrowLeafD4)"/>
+    <!-- center label -->
+    <text class="lbl-sm" x="260" y="118" fill="#c4b5fd">→ উন্নতি →</text>
+    <text class="lbl-sm" x="260" y="208" fill="#5e5c74">নিছক পুনরাবৃত্তি = ভুল পদ্ধতি মজবুত করা। feedback সহ চক্র = প্রকৃত উন্নতি।</text>
+  </svg>
+  <div class="diag-cap">প্রতিটা practice session-এ এই চক্র ঘুরতে হবে। শুধু practice নয় — ভুল ধরা, কারণ বোঝা, ঠিক করা, আবার practice। ছাড়া এটা অন্ধ পুনরাবৃত্তি।</div>
+</div>
+
+<div class="code-block">Feedback Loop — ৫ম ধাপ যা ভিডিও মিস করেছে:
+
+  ভিডিওর ৪ ধাপ (অসম্পূর্ণ):
+    ① লক্ষ্য নির্ধারণ  ② অংশে ভাগ
+    ③ distraction দূর   ④ ২০ ঘণ্টা practice
+    ❌ ৫ম ধাপ মিসিং: FEEDBACK LOOP
+
+  সঠিক চক্র (প্রতিটা session-এ):
+    practice → ভুল খোঁজো → কেন বুঝো → ঠিক করো → আবার practice
+    ⚠️ ছাড়া এটা: ভুল পদ্ধতি ২০ ঘণ্টা মজবুত করা = শূন্য।
+
+  Feedback-এর ৪ উৎস:
+    স্বয়ংক্রিয় (test/linter) · AI (Claude/ChatGPT, verify করো)
+    মানুষ (mentor/peer) · স্বয়ং (২৪ ঘণ্টা পর নিজের কাজ দেখো)</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ অন্ধ প্র্যাকটিস</div>২০ ঘণ্টা practice — কিন্তু কোন feedback নেই। একই ভুল বারবার, সেটাই মজবুত হয়। মনে হয় "অনেক কাজ করেছি" — কিন্তু উন্নতি নেই। ঘণ্টা গোনা, পদ্ধতি নয়।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ প্রতিক্রিয়াশীল প্র্যাকটিস</div>প্রতিটা session-এ অন্তত একটা feedback উৎস। practice → ভুল ধরা → কেন বোঝা → ঠিক করা → আবার। এখানেই deliberate practice শুরু — প্রতিটা পুনরাবৃত্তি তোমাকে ভালো করে।</div>
+</div>
 
 <div class="dialogue">কুরআনে আল্লাহ বলেন — "নিশ্চয় আল্লাহ তাদের কাজ দেখেন যারা সৎকর্ম করে।" প্রতিটি কাজ পর্যবেক্ষিত — ফিডব্যাক ছাড়া কিছু নয়। মুহাসাবা — নিজের কাজ যাচাই করা। উমর (রা) বলেছেন — "নিজেকে বিচার করো আগে, তোমাকে বিচার করা হবে।" প্রতিটা practice session-এ নিজেকে বিচার করো — কী ভালো হলো, কী খারাপ, কী বদলাবে। এটাই ফিডব্যাক লুপ।</div>
 <div class="dialogue en">"Allah says — 'Indeed Allah sees the work of those who do good.' Every work is observed — nothing is without feedback. Muhasabah — auditing your own work. Umar (RA) said — 'Judge yourselves before you are judged.' In every practice session, judge yourself — what was good, what was bad, what to change. This is the feedback loop."</div>`,
