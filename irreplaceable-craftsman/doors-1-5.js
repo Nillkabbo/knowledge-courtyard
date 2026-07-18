@@ -24,17 +24,22 @@ doors.push({
 
 <div class="code-block">THE OBSOLESCENCE TRAP — অবচয় ফাঁদ:
 
-  PERISHABLE KNOWLEDGE (decreases in value):
+  PERISHABLE KNOWLEDGE (decreases in value — এখন আরও দ্রুত):
     → Specific frameworks (jQuery, Angular, Flash)
     → Specific tools (IDE configs, build tools)
     → Specific APIs (versioned, deprecated)
-    → Syntax memorization
+    → Syntax memorization — ২০২৬-তে AI এই সব লেখে
     → Platform-specific tricks
+    → Boilerplate generation, CRUD scaffolding
+    → "মুখস্থ করা" যায় এমন যেকোনো কাজ
+  
+  ⚠️ ২০২৬ acceleration: AI কোড লেখে → perishable skill-এর 
+    value আরও দ্রুত কমে। যে কাজ AI পারে — সেটা perishable।
     
     Value curve: HIGH at start → ZERO in ৩-৫ years
     জহিরের গল্প: ১০ বছর mastery → ০ value
 
-  PERMANENT KNOWLEDGE (increases in value):
+  PERMANENT KNOWLEDGE (increases in value — এখন আরও মূল্যবান):
     → First principles (how computers work)
     → Systems thinking (cause-effect chains)
     → Problem decomposition (breaking complexity)
@@ -42,9 +47,12 @@ doors.push({
     → Pattern recognition (transferable insights)
     → Business understanding (why code matters)
     → Curiosity + learning ability (meta-skill)
-    
+    → Judgment: কী বানানো উচিত, কেন, কখন "না" বলতে হবে
+    → Accountability: ভুল হলে দায়ী কে — AI না তুমি?
+
     Value curve: LOW at start → COMPOUNDS over decades
     The senior who learns new tools in days = permanent foundation
+    ২০২৬-তে: AI execute করে, তুমি judge করো — সেটাই permanent
 
   THE CURVE:
   

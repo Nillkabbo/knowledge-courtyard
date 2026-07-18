@@ -54,6 +54,17 @@ doors.push({
   │     Robustness, interpretability,            │
   │     value alignment                          │
   │     Conferences: NeurIPS, ICML, ICLR         │
+  │                                              │
+  │     উপ-ক্ষেত্র (২০২৪-২৬-তে বড় হয়েছে):       │
+  │     • Mechanistic Interpretability           │
+  │       (circuit analysis, sparse autoencoders │
+  │       — Anthropic, OpenAI, DeepMind)         │
+  │     • AI Governance & Policy                 │
+  │       (compute governance, frontier evals,   │
+  │       EU AI Act, US EO)                      │
+  │       Conferences: AIES, SaTML               │
+  │     • Red-teaming & adversarial robustness   │
+  │     • Scaling laws & emergence               │
   └─────────────────────────────────────────────┘
 
   ফান্ডিং পরিসংখ্যান:

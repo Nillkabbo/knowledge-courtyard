@@ -252,6 +252,29 @@ TOOLS FOR PAPER WRITING:
   │               │ (professional-looking tables) │
   └──────────────┴──────────────────────────────┘
 
+LLM-ASSISTED WRITING (২০২৪+ — জানতে হবে):
+  LLM (Claude, GPT) লেখায় সাহায্য করতে পারে — কিন্তু সাবধানে।
+
+  ✅ ঠিক ব্যবহার:
+    • খসড়ার outline বা structure brainstorm
+    • grammar/clarity polish (Grammarly-এর উন্নত version)
+    • জটিল বাক্য সরল করা
+    • abstract বা intro একাধিক version-এ লেখা
+
+  ❌ ভুল ব্যবহার:
+    • গোটা পেপার LLM দিয়ে লেখা (hallucinated citation!)
+    • data/methods অংশে অপরিচিত LLM ছাড়া
+    • LLM-এর দেওয়া সংখ্যা/reference verify না করা
+
+  ⚠️ জার্নাল policy (২০২৫-২৬):
+    • Nature, Science, IEEE — AI ব্যবহার disclosure দরকার
+    • অনেক venue-এ methods-এ উল্লেখ করতে হবে কোন tool, কোন অংশে
+    • LLM কখনো author হতে পারে না (ICMJE/Nature policy)
+    • প্রতিটা venue-এর policy আলাদা — verify করো
+
+  সবচেয়ে নিরাপদ: LLM শুধু polish/brainstorm-এ, সব content
+    ও citation নিজে যাচাই করো। </div>
+
 FIGURES — The Most Important Part:
 
   Figures communicate MORE than text.
@@ -455,12 +478,20 @@ CHOOSING WHERE TO SUBMIT:
 
 REJECTION = NOT FAILURE:
 
-  Famous rejected papers:
-    → Google's original PageRank paper was rejected
+  Famous rejected papers (anecdotal — sourcing varies,
+  but the pattern is real):
+    → Google's PageRank work faced skepticism
+      (it was a Stanford tech report, not a clean
+      "rejected by journal" story — the anecdote is
+      widely repeated but loosely sourced)
     → Nobel Prize-winning CRISPR papers faced rejection
-    → "The payoff would be small" — reviewer of 
+    → "The payoff would be small" — reviewer of
        TCP/IP (the protocol that runs the internet)
-  
+
+  দাবি নয়, তবে পর্যবেক্ষণ: অনেক গুরুত্বপূর্ণ কাজ প্রথম
+  চেষ্টায় প্রত্যাখ্যাত হয়েছে। verify করো না — শুধু
+  সান্ত্বনা নাও।
+
   Rejection means: try elsewhere, or revise.
   It does NOT mean: your research is worthless.
   

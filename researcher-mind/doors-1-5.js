@@ -29,12 +29,16 @@ doors.push({
 <div class="dialogue">তুমি চুপ করে গেলে। এগুলো তুমি কখনো ভাবোনি। নুসরাত বললেন: "এটাই প্রথম পাঠ। তুমি একজন ডেভেলপার। তুমি কোড লেখো, বিল্ড করো, ডিপ্লয় করো। কিন্তু কখন শেষবার কোনো কোড লেখার সময় ভেবেছ — এটা কেন কাজ করে? শুধু কীভাবে নয় — কেন? সেই কেন-এর জায়গা থেকেই গবেষণা শুরু হয়।"</div>
 <div class="dialogue en">You went quiet. You'd never thought about these. Nusrat said: "This is the first lesson. You're a developer. You write code, build, deploy. But when did you last write code and wonder — why does this work? Not how — why? Research begins from that 'why'."</div>
 
-<div class="code-block">শিশুর কৌতূহল — বয়সভেদে কতা কমে যায়:
+<div class="code-block">শিশুর কৌতূহল — বয়সভেদে কমে যায় (আনুমানিক, সঠিক সংখ্যা নিয়ে মতভেদ):
 
-    বয়স ৪:    দিনে ~২০০-৩০০টা প্রশ্ন
-    বয়স ৬:    দিনে ~১০০-১৫০টা প্রশ্ন  
-    বয়স ১১:   দিনে ~৩০-৫০টা প্রশ্ন
-    বয়স ২৫+:  দিনে ~৫-১০টা প্রশ্ন (?)
+    বয়স ৪:    দিনে অনেক প্রশ্ন (সাধারণত ~২০০-৪০০ বলা হয়)
+    বয়স ৬:    অর্ধেকে নেমেছে
+    বয়স ১১:   আরও কম
+    বয়স ২৫+:  দিনে খুব কম (?)
+
+    (সঠিক সংখ্যা গবেষণায় বহুল প্রচলিত কিন্তু অনিশ্চিত —
+    মূল পয়েন্ট পরিবর্তন হয় না: বয়সের সাথে কৌতূহল কমে।
+    গবেষক হলো সে যার কৌতূহল কমেনি।)
 
     বিদ্যালয় কৌতূহলকে প্রশ্ন দিয়ে বদলে দেয় —
     উত্তর দিয়ে নয়। পরীক্ষা উত্তর চায়।
@@ -165,7 +169,9 @@ doors.push({
 <div class="dialogue">"আমি তোমাকে আমার ভুলের কথা বলি," সালমা বললেন। "প্রথমবার যখন আমি একটা পেপার পড়তে গেলাম, আমি প্রথম লাইন থেকে শুরু করলাম। তিন ঘণ্টা পরে আমি পৃষ্ঠা ৩-এ। কিছু বুঝতে পারছি না। মাথা ব্যথা। আমি ভেঙে পড়লাম। ভাবলাম — আমি বোকা।" তিনি থামলেন। "কিন্তু আমি বোকা ছিলাম না। আমি ভুল পদ্ধতিতে পড়ছিলাম। পেপার পড়ার নিজস্ব ভাষা আছে, নিজস্ব কাঠামো আছে। সেটা শিখতে হয়।"</div>
 <div class="dialogue en">"Let me tell you my mistake," Salma said. "The first time I tried to read a paper, I started from the first line. Three hours later, I was on page 3. Understood nothing. Headache. I broke. I thought — I'm stupid." She paused. "But I wasn't stupid. I was reading wrong. Papers have their own language, their own structure. You have to learn it."</div>
 
-<div class="code-block">থ্রি-পাস পড়ার পদ্ধতি (Three-Pass Method):
+<div class="code-block">থ্রি-পাস পড়ার পদ্ধতি (Three-Pass Method, Keshav ২০০৭/২০১৬):
+  (Keshav-এর "How to Read a Paper" — CS-এর সবচেয়ে canonical
+  পেপার-পড়ার পদ্ধতি। বিস্তারিত: cr.yp.to/~keshav/papers/07-pager.pdf)
 
 পাস ১: স্কিম (৫-১০ মিনিট)
   ┌─────────────────────────────────────────┐

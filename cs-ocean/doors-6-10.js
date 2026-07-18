@@ -421,6 +421,14 @@ doors.push({
   │     CS + Biology — $৩০B+ pharma funding    │
   │     Conferences: RECOMB, ISMB, Nature       │
   │                                              │
+  │  🧪 AI for Science (AI4Science)              │
+  │     AlphaFold3 (২০২৪ Nobel Chemistry),     │
+  │     GNoME (materials), AlphaProof (math),  │
+  │     GraphCast (weather)                    │
+  │     CS + Physics/Chem/Math/Biology         │
+  │     Conferences: NeurIPS AI4Science wks,   │
+  │     ICML, DeepMind/Google research         │
+  │                                              │
   │  🌍 Climate Tech & Green Computing          │
   │     Carbon-aware computing, climate model.,│
   │     sustainable AI, energy-efficient syst. │

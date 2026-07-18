@@ -174,8 +174,14 @@ PRINCIPLE ৪: AUTHORITY (কর্তৃপক্ষ)
   Research: Milgram obedience (1961)
     → ৬৫% people delivered "lethal" shocks
        when authority figure said "continue"
-    → average person obeys authority even 
+    → average person obeys authority even
        against conscience
+  
+  NOTE: archival research (Russell, Perry) দেখায়
+    Milgram-এর experimenter অনেক probing করতেন
+    (যা original paper-এ পুরোপুরি স্পষ্ট নয়)। 
+    "৬৫%" ও "agentic state" theory নিয়ে বিতর্ক আছে।
+    কিন্তু মূল পর্যবেক্ষণ — authority চাপ দেয় — টিকে আছে।
   
   Brain: prefrontal cortex (moral reasoning)
     SHUTS DOWN when authority figure present

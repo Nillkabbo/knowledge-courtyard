@@ -73,6 +73,14 @@ THE fMRI EVIDENCE (Mosher, 2011):
   → It's not about "feeling good about failure"
   → It's about the brain USING failure as data
 
+  ⚠️ সতর্ক পাঠ:
+    Growth mindset-এর core ধারণা সঠিক, কিন্তু effect size 
+    নিয়ে বিতর্ক আছে। Macnamara & Burgoyne (২০২৩) 
+    pre-registered গবেষণায় দেখিয়েছেন mindset intervention-এর 
+    প্রভাব popular framing-এর চেয়ে ছোট।
+    Mindset গুরুত্বপূর্ণ — কিন্তু জাদুর কাঠি নয়।
+    বাস্তব উন্নতির জন্য deliberate practice-ও ( Door 4 ) দরকার।
+
 THE POWER OF "YET" (Dweck, 2014 TED talk):
 
   School in Chicago: 

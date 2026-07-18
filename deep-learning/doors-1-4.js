@@ -93,6 +93,13 @@ doors.push({
 │              │ Deliberate practice লাগে│
 └──────────────────────────────────────┘
 
+  ⚠️ সতর্ক পাঠ: Macnamara et al. (২০১৪) meta-analysis 
+    দেখায় deliberate practice শুধু ~১-২৬% variance 
+    ব্যাখ্যা করে (game-এ বেশি, profession-এ কম)। 
+    ১০,০০০ ঘণ্টা = necessary কিন্তু sufficient নয়। 
+    talent, coaching, starting age, resources-ও গুরুত্বপূর্ণ। 
+    "ঘণ্টা গোনা" নয় — "কেমন অনুশীলন" সেটাই আসল।
+
 ভিডিও যে ভুল করেছে:
   এই তিনটি একে অপরের প্রতিদ্বন্দ্বী নয়।
   তারা ভিন্ন ভিন্ন লক্ষ্যের কথা বলে।
@@ -157,7 +164,14 @@ Illusion of Competence:
 বিভ্রম ভাঙার উপায়:
   ১. নিজেকে পরীক্ষা করো (active recall)
   ২. প্রয়োগ করো — প্রজেক্ট বানাও
-  ৩. অন্যকে শেখাও — গ্যাপ ধরা পড়বে</div>
+  ৩. অন্যকে শেখাও — গ্যাপ ধরা পড়বে
+
+⚠️ সতর্ক পাঠ: উপরের U-curve হলো popular visualization।
+  Dunning-Kruger-এর আসল ফলাফল (১৯৯৯) হলো — নিচের 
+  স্তরের ব্যক্তিরা নিজের র‍্যাঙ্ক সবচেয়ে বেশি অতিরঞ্জিত 
+  করে (overestimate)। আত্মবিশ্বাসের U-আকৃতি ধ্রুব সত্য নয় — 
+  তবে "নতুন শিক্ষার্থী নিজেকে বেশি পারদর্শী মনে করে" 
+  এই মূল পর্যবেক্ষণ সঠিক ও প্রাসঙ্গিক।</div>
 
 <div class="dialogue">কুরআনে আল্লাহ বলেন — "তিনি তোমাদেরকে মাটি থেকে, তারপর শুক্রবিন্দু থেকে, তারপর জমাট রক্ত থেকে সৃষ্টি করেছেন।" সৃষ্টির পর্যায় ক্রমিক — প্রতিটি স্তরে আগের স্তরের অজ্ঞতা ধরা পড়ে। শেখাও তেমনি — প্রতিটি স্তরে তুমি বুঝবে আগের স্তরে কত কম জানতে। এই বিনয় — এই "আমি জানি না" — সেটাই গভীর শেখার শুরু। যে বলে "আমি জানি," সে আটকে যায়। যে বলে "আমি এখনও শিখছি," সে বাড়ে।</div>
 <div class="dialogue en">"Allah says — 'He created you from dust, then from a drop, then from a clot.' Creation is staged — at each level, the previous level's ignorance is revealed. Learning too — at each level you realize how little you knew before. This humility — this 'I don't know yet' — is the start of deep learning. One who says 'I know' gets stuck. One who says 'I'm still learning' grows."</div>`,
@@ -205,12 +219,16 @@ doors.push({
     Practice → ভুল খোঁজো → কেন ভুল বুঝো → 
     ঠিক করো → আবার practice → উন্নতি
 
-ফিডব্যাকের তিন উৎস:
+ফিডব্যাকের চার উৎস:
   ১. স্বয়ংক্রিয়: টেস্ট, linter, error message
-  ২. মানুষ: mentor, peer review, teacher  
-  ৩. স্বয়ং: নিজের কাজ রিভিউ, video replay
-  
-নিয়ম: প্রতিটা practice session-এ অন্তত 
+  ২. AI (২০২৪+): Claude/ChatGPT-কে তোমার কাজ দেখাও
+     → "এই কোডে সমস্যা কী?" → instant critique
+     → Feynman partner: কনসেপ্ট ব্যাখ্যা করো, AI ফাঁক ধরবে
+     → ⚠️ AI মাঝে মাঝে ভুল বা অস্তিত্বহীন তথ্য দেয় — verify করো
+  ৩. মানুষ: mentor, peer review, teacher
+  ৪. স্বয়ং: নিজের কাজ রিভিউ, video replay
+
+নিয়ম: প্রতিটা practice session-এ অন্তত
 একটা ফিডব্যাক উৎস থাকতেই হবে।</div>
 
 <div class="dialogue">কুরআনে আল্লাহ বলেন — "নিশ্চয় আল্লাহ তাদের কাজ দেখেন যারা সৎকর্ম করে।" প্রতিটি কাজ পর্যবেক্ষিত — ফিডব্যাক ছাড়া কিছু নয়। মুহাসাবা — নিজের কাজ যাচাই করা। উমর (রা) বলেছেন — "নিজেকে বিচার করো আগে, তোমাকে বিচার করা হবে।" প্রতিটা practice session-এ নিজেকে বিচার করো — কী ভালো হলো, কী খারাপ, কী বদলাবে। এটাই ফিডব্যাক লুপ।</div>

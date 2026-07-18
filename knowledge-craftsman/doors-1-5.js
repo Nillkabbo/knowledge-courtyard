@@ -40,6 +40,13 @@ EBBINGHAUS FORGETTING CURVE (1885):
   │ ৩১ দিন   │ ২১%        │ ৭৯%        │
   └──────────┴────────────┴────────────┘
 
+  ⚠️ সতর্ক পাঠ: এই সঠিক শতাংশগুলো অনেক প্রচলিত কিন্তু
+    পুরোপুরি নির্ভরযোগ্য নয়। Ebbinghaus-এর গবেষণা ছিল
+    N=১ (নিজে নিজে), nonsense syllables দিয়ে। বাস্তব
+    তথ্যের ক্ষেত্রে curve-এর আকৃতি ভিন্ন হয়।
+    তবে মূল নীতি — "ব্যবধানে না পুনরাবৃত্তি করলে দ্রুত
+    ভুলে যাই" — সুপ্রতিষ্ঠিত।
+
   → "I read a book last year" = effectively NEW again
   → unless you used retention techniques
 
@@ -548,11 +555,13 @@ APPLICATION TO READING:
     the author's argument — in YOUR words
 
 THE ULTIMATE TEST:
-  
-  "If you can't explain it simply, 
+
+  "If you can't explain it simply,
    you don't understand it well enough."
-  — attributed to Einstein
-   (originated from Feynman's principle)</div>
+  — commonly attributed to Einstein (apocryphal;
+    no solid evidence he said it).
+    The principle itself is sound — and it's
+    exactly what Feynman practiced (Door ৪).</div>
 
 <div class="dialogue">বায়ান — clear speech, expression। কুরআনে আল্লাহ বলেন — "তিনি মানুষকে শিখিয়েছেন বায়ান — স্পষ্ট বাক্য।" (৫৫:৩-৪)। বায়ান হলো স্পষ্ট করে প্রকাশ করার ক্ষমতা — জটিলকে সহজ করা। ফাইনম্যান টেকনিক-ও বায়ান — যা বুঝেছ, তা স্পষ্ট করে প্রকাশ করো। যেখানে আটকাও, সেখানে ঘাটতি। যে বায়ান করতে পারে, সে বোঝে। যে পারে না, সে ভান করে। বায়ান — বোঝার আসল পরীক্ষা। কুরআনে বায়ান আল্লাহর নিয়ামত — কথা স্পষ্ট করার ক্ষমতা। ফাইনম্যান দেখালেন — যে স্পষ্ট করতে পারে, সে-ই জানে।</div>
 <div class="dialogue en">"Bayan — clear speech, expression. Allah says — 'He taught man bayan — clear speech.' (55:3-4). Bayan is the ability to express clearly — making complex simple. The Feynman technique too is bayan — express clearly what you understand. Where you get stuck, there's the gap. One who can do bayan, understands. One who can't, pretends. Bayan — the real test of understanding. In the Quran, bayan is Allah's gift — the power to speak clearly. Feynman showed — one who can speak clearly, truly knows."</div>`,
