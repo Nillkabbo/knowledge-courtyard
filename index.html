@@ -77,6 +77,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card.game-27::before{background:linear-gradient(90deg,var(--moon),var(--cyan),var(--moon))}
 .game-card.game-28::before{background:linear-gradient(90deg,var(--gold),var(--fire),var(--gold))}
 .game-card.game-29::before{background:linear-gradient(90deg,var(--rose),var(--gold-bright),var(--rose))}
+.game-card.game-30::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -114,6 +115,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card.game-27 .game-tag{background:rgba(91,158,255,.12);color:var(--moon)}
 .game-card.game-28 .game-tag{background:rgba(251,191,36,.12);color:var(--gold)}
 .game-card.game-29 .game-tag{background:rgba(240,98,146,.12);color:var(--rose)}
+.game-card.game-30 .game-tag{background:rgba(179,127,235,.12);color:var(--purple)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -156,7 +158,47 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card.game-27 .game-link{color:var(--moon)}
 .game-card.game-28 .game-link{color:var(--gold)}
 .game-card.game-29 .game-link{color:var(--rose)}
+.game-card.game-30 .game-link{color:var(--purple)}
 .game-card:hover .game-link{gap:.6rem}
+
+/* ── READING ROAD ── */
+[data-category="road"].hidden{display:none!important}
+.road-wrap{margin-top:1.2rem}
+.road-intro{font-size:.86rem;color:var(--ink-dim);line-height:1.8;background:var(--panel);border:1px solid var(--panel-border);border-left:3px solid var(--gold);border-radius:14px;padding:1rem 1.2rem;margin-bottom:1.8rem}
+.road-intro .en{font-size:.78rem;color:var(--ink-mute);display:block;margin-top:.4rem}
+.road-intro a{color:var(--gold-bright);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}
+.road-phase{margin-bottom:2rem;position:relative}
+.road-phase-head{display:flex;align-items:center;gap:.7rem;margin-bottom:.9rem;flex-wrap:wrap}
+.road-phase-num{font-family:'Cinzel',serif;font-size:.7rem;font-weight:900;letter-spacing:.12em;color:var(--bg-deep);background:linear-gradient(135deg,var(--gold-bright),var(--gold));padding:.25rem .7rem;border-radius:999px;text-transform:uppercase}
+.road-phase-title{font-family:'Cinzel',serif;font-size:clamp(.95rem,2vw,1.15rem);font-weight:700;color:var(--ink)}
+.road-phase-note{font-size:.74rem;color:var(--ink-mute);font-style:italic;width:100%;margin-top:.1rem;padding-left:.1rem}
+.road-line{display:flex;flex-direction:column;gap:.7rem;position:relative;padding-left:1.5rem}
+.road-line::before{content:'';position:absolute;left:.42rem;top:.6rem;bottom:.6rem;width:2px;background:linear-gradient(180deg,var(--gold),var(--teal),var(--purple));border-radius:2px;opacity:.4}
+.road-step{position:relative;display:flex;align-items:flex-start;gap:.8rem;padding:.7rem .9rem;background:var(--panel);border:1px solid var(--panel-border);border-radius:12px;text-decoration:none;color:inherit;transition:all .3s cubic-bezier(.4,0,.2,1)}
+.road-step:hover{transform:translateX(4px);border-color:var(--gold-glow);box-shadow:0 6px 20px rgba(0,0,0,.3),0 0 24px rgba(232,197,71,.08)}
+.road-step:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.road-step::before{content:'';position:absolute;left:-1.08rem;top:50%;transform:translateY(-50%);width:.75rem;height:.75rem;border-radius:50%;background:var(--bg-mid);border:2px solid var(--gold);box-shadow:0 0 0 3px var(--bg-deep)}
+.road-step-num{font-family:'Cinzel',serif;font-size:.62rem;font-weight:900;letter-spacing:.1em;color:var(--gold-bright);background:rgba(232,197,71,.1);padding:.18rem .5rem;border-radius:6px;flex-shrink:0;text-transform:uppercase;white-space:nowrap}
+.road-step-body{flex:1;min-width:0}
+.road-step-icon{font-size:1.4rem;line-height:1;flex-shrink:0}
+.road-step-title{font-family:'Cinzel',serif;font-size:.92rem;font-weight:700;color:var(--ink);display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.road-step-title-bn{font-size:.82rem;color:var(--ink-dim);font-weight:600}
+.road-step-meta{font-size:.74rem;color:var(--ink-mute);margin-top:.2rem;line-height:1.6}
+.road-step-meta .ch{color:var(--teal);font-weight:700}
+.road-step-meta .why{font-style:italic}
+.road-step-arrow{font-size:1.1rem;color:var(--gold);flex-shrink:0;align-self:center;transition:transform .3s}
+.road-step:hover .road-step-arrow{transform:translateX(3px)}
+.road-step.parallel{border-left:3px solid var(--teal)}
+.road-step.parallel .road-step-meta::before{content:'⟂ parallel';display:inline-block;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.1em;color:var(--teal);background:rgba(45,212,191,.1);padding:.1rem .4rem;border-radius:5px;margin-right:.5rem;text-transform:uppercase;vertical-align:middle}
+.road-step.finale{border-left:3px solid var(--gold-bright);background:linear-gradient(135deg,rgba(232,197,71,.06),var(--panel))}
+.road-step.finale::before{border-color:var(--gold-bright);box-shadow:0 0 0 3px var(--bg-deep),0 0 12px rgba(232,197,71,.4)}
+.road-step.keystone{border-left:3px solid var(--purple)}
+.road-step.keystone .road-step-meta::after{content:' ★ keystone';font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.1em;color:var(--purple);background:rgba(179,127,235,.12);padding:.1rem .4rem;border-radius:5px;margin-left:.5rem;text-transform:uppercase;vertical-align:middle}
+@media(max-width:600px){
+  .road-line{padding-left:1.2rem}
+  .road-step{flex-wrap:wrap}
+  .road-step-arrow{display:none}
+}
 
 /* ── FOOTER ── */
 .footer{text-align:center;padding:2.5rem 0 1rem;border-top:1px solid var(--panel-border);margin-top:2rem}
@@ -195,21 +237,427 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">২৯</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">৩০৫</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">৩০৫০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">৩০</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num">৩৪২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">৩৪২০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 ঊনত্রিশটি যাত্রা — Twenty-Nine Journeys</div>
+  <div class="section-label">📚 ত্রিশটি যাত্রা — Thirty Journeys</div>
 
   <!-- ══ FILTER TABS ══ -->
   <div class="filter-bar" id="filterBar">
-    <button class="filter-tab active" data-filter="all">📚 সব · All <span class="count">২৯</span></button>
+    <button class="filter-tab active" data-filter="all">📚 সব · All <span class="count">৩০</span></button>
+    <button class="filter-tab" data-filter="road">🛣️ Reading Road <span class="count">✦</span></button>
     <button class="filter-tab" data-filter="core">🏛️ Core Six <span class="count">৬</span></button>
     <button class="filter-tab" data-filter="ai">🧬 AI Deep Dives <span class="count">১৩</span></button>
-    <button class="filter-tab" data-filter="growth">🌳 Growth &amp; Research <span class="count">৯</span></button>
+    <button class="filter-tab" data-filter="growth">🌳 Growth &amp; Research <span class="count">১০</span></button>
     <button class="filter-tab" data-filter="extras">🚗 Extras <span class="count">১</span></button>
+  </div>
+
+  <!-- ══ READING ROAD ── dependency-ordered path through all 29 books ══ -->
+  <div class="road-wrap" data-category="road" id="roadWrap">
+    <div class="road-intro">
+      তাক ক্রমানুসারে নয় — নির্ভরতার ক্রমানুসারে পড়ো। প্রতিটা ধাপ আগের ধাপের উপর দাঁড়িয়ে আছে। মেটা-লার্নিং প্রথমে, ক্যাপস্টোন সবার শেষে।
+      <span class="en">Read in <strong>dependency order</strong>, not shelf order. Each step builds on the last. Meta-learning first (it compounds), the LLM Anatomy keystone before any deep-dive, Embeddings lifted ahead of RAG, and the Knowledge Web capstone dead last. <a href="./READING-ROADMAP.md">Full reasoning → READING-ROADMAP.md</a></span>
+    </div>
+
+    <!-- ══ PHASE 0 ══ -->
+    <div class="road-phase">
+      <div class="road-phase-head">
+        <span class="road-phase-num">Phase 0</span>
+        <span class="road-phase-title">Learn How to Learn · শেখার গলা</span>
+        <span class="road-phase-note">Do this first — it roughly doubles the retention of every book that follows.</span>
+      </div>
+      <div class="road-line">
+        <a class="road-step" href="./knowledge-craftsman/index.html">
+          <span class="road-step-num">1</span>
+          <span class="road-step-icon">📖</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 26 · The Craftsman of Knowledge <span class="road-step-title-bn">জ্ঞানের কারিগর</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · Ebbinghaus, Adler, Zettelkasten, Feynman, second-brain <span class="why">— referenced by 27 &amp; 28, so upstream of both.</span></span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./learn-to-learn/index.html">
+          <span class="road-step-num">2</span>
+          <span class="road-step-icon">🌱</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 5 · The Seed of Learning <span class="road-step-title-bn">শিক্ষার বীজ</span></span>
+            <span class="road-step-meta"><span class="ch">9 ch</span> · growth mindset, spaced repetition, active recall, sleep</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./deep-learning/index.html">
+          <span class="road-step-num">3</span>
+          <span class="road-step-icon">🔮</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 25 · The Council of Deep Knowledge <span class="road-step-title-bn">গভীর জ্ঞানের পরিষদ</span></span>
+            <span class="road-step-meta"><span class="ch">8 ch</span> · 20h vs 10,000h, Dunning-Kruger, metacognition</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ PHASE 1 ══ -->
+    <div class="road-phase">
+      <div class="road-phase-head">
+        <span class="road-phase-num">Phase 1</span>
+        <span class="road-phase-title">Mindset &amp; North Star · মন ও দিক</span>
+      </div>
+      <div class="road-line">
+        <a class="road-step" href="./researcher-mind/index.html">
+          <span class="road-step-num">4</span>
+          <span class="road-step-icon">🌱</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 21 · The Researcher's Mind <span class="road-step-title-bn">গবেষকের মন</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · curiosity, question-crafting, intellectual humility</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./irreplaceable-craftsman/index.html">
+          <span class="road-step-num">5</span>
+          <span class="road-step-icon">🛡️</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 23 · The Irreplaceable Craftsman <span class="road-step-title-bn">অপ্রতিস্থাপনীয় কারিগর</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · permanent vs perishable skills, systems thinking</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./human-psychology/index.html">
+          <span class="road-step-num">6</span>
+          <span class="road-step-icon">🧠</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 24 · The Throne of the Mind <span class="road-step-title-bn">মনের সিংহাসন</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · biases, Cialdini, learned helplessness <span class="why">— referenced by 27 &amp; 28.</span></span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ PHASE 2 ══ -->
+    <div class="road-phase">
+      <div class="road-phase-head">
+        <span class="road-phase-num">Phase 2</span>
+        <span class="road-phase-title">The Map &amp; the Engineer's Craft</span>
+      </div>
+      <div class="road-line">
+        <a class="road-step" href="./ai-engineering-game/index.html">
+          <span class="road-step-num">7</span>
+          <span class="road-step-icon">🤖</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 1 · Twenty-Seven Doors of AI Engineering <span class="road-step-title-bn">কৃত্রিম বুদ্ধিমত্তার সাতাশটি দরজা</span></span>
+            <span class="road-step-meta"><span class="ch">27 ch</span> · read <span class="why">inspectionally — the flyover of all 13 deep-dives.</span></span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./engineer-journey/index.html">
+          <span class="road-step-num">8</span>
+          <span class="road-step-icon">🏛️</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 3 · The Court of the Grand Muhandis <span class="road-step-title-bn">মুহান্দিসের দরবার</span></span>
+            <span class="road-step-meta"><span class="ch">11 ch</span> · first principles, abstraction, debugging</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./prompt-engineering/index.html">
+          <span class="road-step-num">9</span>
+          <span class="road-step-icon">🔥</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 7 · The Word Weaver's Forge <span class="road-step-title-bn">শব্দ বোনার কামার</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · prompt &amp; context engineering — most immediately useful skill</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ PHASE 3 ══ -->
+    <div class="road-phase">
+      <div class="road-phase-head">
+        <span class="road-phase-num">Phase 3</span>
+        <span class="road-phase-title">What an LLM Actually Is · the keystone</span>
+        <span class="road-phase-note">⚠️ Math primer first: skim the existing <code>math-for-ml</code> doors (vectors, matrices, eigenvalues, probability). Its later doors (calculus, backprop) are not yet written — see Phase 6 note.</span>
+      </div>
+      <div class="road-line">
+        <a class="road-step keystone" href="./llm-anatomy/index.html">
+          <span class="road-step-num">10</span>
+          <span class="road-step-icon">🧠</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 8 · The LLM Anatomy <span class="road-step-title-bn">এলএলএম-এর শারীরস্থান</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · tokenization, attention, transformers, RLHF <span class="why">— five downstream books depend on this.</span></span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ PHASE 4 ══ -->
+    <div class="road-phase">
+      <div class="road-phase-head">
+        <span class="road-phase-num">Phase 4</span>
+        <span class="road-phase-title">Meaning, Context &amp; Retrieval</span>
+      </div>
+      <div class="road-line">
+        <a class="road-step" href="./embeddings/index.html">
+          <span class="road-step-num">11</span>
+          <span class="road-step-icon">📐</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 18 · The Geometry of Meaning <span class="road-step-title-bn">অর্থের জ্যামিতি</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · embeddings, vector search <span class="why">— lifted from shelf #18; RAG/context/multimodal all need it.</span></span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./context-engineering/index.html">
+          <span class="road-step-num">12</span>
+          <span class="road-step-icon">📜</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 9 · The Canvas of Sight <span class="road-step-title-bn">দৃষ্টির ক্যানভাস</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · chunking, reranking, Lost-in-the-Middle</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./rag-mastery/index.html">
+          <span class="road-step-num">13</span>
+          <span class="road-step-icon">🌊</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 10 · The Well of Knowledge <span class="road-step-title-bn">জ্ঞানের কুয়ো</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · RAG mastery — needs embeddings + context</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ PHASE 5 ══ -->
+    <div class="road-phase">
+      <div class="road-phase-head">
+        <span class="road-phase-num">Phase 5</span>
+        <span class="road-phase-title">Make the Model Act · কাজে নামানো</span>
+      </div>
+      <div class="road-line">
+        <a class="road-step" href="./tools-mcp/index.html">
+          <span class="road-step-num">14</span>
+          <span class="road-step-icon">🔌</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 19 · The Tool Forge <span class="road-step-title-bn">সরঞ্জামের কামারখানা</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · function calling, MCP <span class="why">— hard prereq for agents.</span></span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./ai-agents/index.html">
+          <span class="road-step-num">15</span>
+          <span class="road-step-icon">🤖</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 12 · The Autonomous Mind <span class="road-step-title-bn">স্বায়ত্তশাসিত মন</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · ReAct, planning, multi-agent — built on tools</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ PHASE 6 ══ -->
+    <div class="road-phase">
+      <div class="road-phase-head">
+        <span class="road-phase-num">Phase 6</span>
+        <span class="road-phase-title">Harden &amp; Go Deep</span>
+        <span class="road-phase-note">⚠️ Fine-tuning Door 5 (SFT/DPO/PPO) leans on calculus/backprop — the missing half of <code>math-for-ml</code>. Backfill if you hit a wall.</span>
+      </div>
+      <div class="road-line">
+        <a class="road-step" href="./llm-security/index.html">
+          <span class="road-step-num">16</span>
+          <span class="road-step-icon">🛡️</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 13 · The Fortress Guard <span class="road-step-title-bn">দুর্গের প্রহরী</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · prompt injection, red-teaming, guardrails</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./fine-tuning/index.html">
+          <span class="road-step-num">17</span>
+          <span class="road-step-icon">🔧</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 11 · The Forge of Refinement <span class="road-step-title-bn">নিখুঁত করার কামার</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · LoRA/QLoRA, DPO/PPO</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ PHASE 7 ══ -->
+    <div class="road-phase">
+      <div class="road-phase-head">
+        <span class="road-phase-num">Phase 7</span>
+        <span class="road-phase-title">Measure, Accelerate, Operate, Extend</span>
+        <span class="road-phase-note">📏 Evals (Book 16) before you ship anything from Phase 6.</span>
+      </div>
+      <div class="road-line">
+        <a class="road-step" href="./llm-evals/index.html">
+          <span class="road-step-num">18</span>
+          <span class="road-step-icon">📏</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 16 · The Measure <span class="road-step-title-bn">পরিমাপ</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · LLM-as-judge, RAGAS, benchmarks</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./inference-optimization/index.html">
+          <span class="road-step-num">19</span>
+          <span class="road-step-icon">⚡</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 17 · The Forged Edge <span class="road-step-title-bn">ধারালো ফলা</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · KV cache, quantization, speculative decoding</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./llmops/index.html">
+          <span class="road-step-num">20</span>
+          <span class="road-step-icon">⚓</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 14 · The Control Tower <span class="road-step-title-bn">নিয়ন্ত্রণ স্তম্ভ</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · vLLM, PagedAttention, monitoring</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./multimodal-ai/index.html">
+          <span class="road-step-num">21</span>
+          <span class="road-step-icon">🌈</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 15 · The Five Senses <span class="road-step-title-bn">পাঁচ ইন্দ্রিয়</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · ViT/CLIP, diffusion, VLMs — needs anatomy + embeddings + RAG</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ PHASE 8 (parallel) ══ -->
+    <div class="road-phase">
+      <div class="road-phase-head">
+        <span class="road-phase-num">Phase 8</span>
+        <span class="road-phase-title">General Systems Engineering</span>
+        <span class="road-phase-note">⟂ Run in parallel with Phases 4–7 if you have time. Independent of the AI chain.</span>
+      </div>
+      <div class="road-line">
+        <a class="road-step parallel" href="./system-design-game/index.html">
+          <span class="road-step-num">22</span>
+          <span class="road-step-icon">🏙️</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 4 · The City Builder's Codex <span class="road-step-title-bn">নগর নির্মাতার পুস্তক</span></span>
+            <span class="road-step-meta"><span class="ch">20 ch</span> · CAP, consensus, replication, idempotency</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ PHASE 9 (parallel) ══ -->
+    <div class="road-phase">
+      <div class="road-phase-head">
+        <span class="road-phase-num">Phase 9</span>
+        <span class="road-phase-title">Slow Parallel Track · DSA</span>
+        <span class="road-phase-note">⟂ Run alongside Phases 2–7 at ~3 chapters/week, not as a block. Live Python (Pyodide).</span>
+      </div>
+      <div class="road-line">
+        <a class="road-step parallel" href="./dsa-bazaar/index.html">
+          <span class="road-step-num">23</span>
+          <span class="road-step-icon">🧮</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 2 · The Bazaar of Algorithms <span class="road-step-title-bn">অ্যালগরিদমের বাজার</span></span>
+            <span class="road-step-meta"><span class="ch">18 ch</span> · Big-O → graphs → DP</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ PHASE 10 ══ -->
+    <div class="road-phase">
+      <div class="road-phase-head">
+        <span class="road-phase-num">Phase 10</span>
+        <span class="road-phase-title">Research Track · if grad-school bound</span>
+      </div>
+      <div class="road-line">
+        <a class="road-step" href="./research-paper-craftsman/index.html">
+          <span class="road-step-num">24</span>
+          <span class="road-step-icon">✍️</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 27 · The Research Paper Craftsman <span class="road-step-title-bn">গবেষণাপত্র কারিগর</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · IMRaD, Keshav, peer review</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./cs-ocean/index.html">
+          <span class="road-step-num">25</span>
+          <span class="road-step-icon">🧭</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 22 · The Ocean of Computer Science <span class="road-step-title-bn">কম্পিউটার বিজ্ঞানের মহাসাগর</span></span>
+            <span class="road-step-meta"><span class="ch">20 ch</span> · survey of 10 CS domains <span class="why">— references 8 other books; last among deep-dives.</span></span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step" href="./phd-journey/index.html">
+          <span class="road-step-num">26</span>
+          <span class="road-step-icon">🏔️</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 20 · The Research Pilgrimage <span class="road-step-title-bn">গবেষণার তীর্থ</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · PhD funding, SOP, cold-emailing</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ PHASE 11 ══ -->
+    <div class="road-phase">
+      <div class="road-phase-head">
+        <span class="road-phase-num">Phase 11</span>
+        <span class="road-phase-title">Synthesis &amp; Career · the finale</span>
+      </div>
+      <div class="road-line">
+        <a class="road-step" href="./interview-prep-game/index.html">
+          <span class="road-step-num">27</span>
+          <span class="road-step-icon">⚔️</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 6 · The Arena of Trials <span class="road-step-title-bn">পরীক্ষার ময়দান</span></span>
+            <span class="road-step-meta"><span class="ch">8 ch</span> · resume, STAR, negotiation — read when job-hunting</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+        <a class="road-step finale" href="./knowledge-web/index.html">
+          <span class="road-step-num">28</span>
+          <span class="road-step-icon">🕸️</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 28 · The Knowledge Web <span class="road-step-title-bn">জ্ঞানের জাল</span></span>
+            <span class="road-step-meta"><span class="ch">10 ch</span> · the capstone — references 14 other books. Read dead last.</span>
+          </span>
+          <span class="road-step-arrow">★</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ EXTRA ══ -->
+    <div class="road-phase">
+      <div class="road-phase-head">
+        <span class="road-phase-num">Extra</span>
+        <span class="road-phase-title">Anytime</span>
+      </div>
+      <div class="road-line">
+        <a class="road-step parallel" href="./mi-driving/index.html">
+          <span class="road-step-num">29</span>
+          <span class="road-step-icon">🚗</span>
+          <span class="road-step-body">
+            <span class="road-step-title">Book 29 · The Michigan Driving Guide <span class="road-step-title-bn">মিশিগান ড্রাইভিং গাইড</span></span>
+            <span class="road-step-meta"><span class="ch">11 ch</span> · GDL, road rules, OWI</span>
+          </span>
+          <span class="road-step-arrow">→</span>
+        </a>
+      </div>
+    </div>
   </div>
 
   <!-- ══ GROUP 1: THE CORE SIX ══ -->
@@ -1256,6 +1704,38 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
+    <!-- ══ GAME 30: MATH FOR ML ══ -->
+    <a class="game-card game-30" href="./math-for-ml/index.html">
+      <div class="game-head">
+        <div class="game-icon">🧭</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 30 · Math Foundations</div>
+          <div class="game-title">The Architect's Compass</div>
+          <div class="game-title-bn">গণিতের নিকোবর</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        মেশিন লার্নিংয়ের গাণিতিক ভিত্তি — ভেক্টর থেকে ব্যাকপ্রোপাগেশন পর্যন্ত। Al-Khwarizmi-এর বীজগণিত, Ibn al-Haytham-এর ক্যালকুলাস, Al-Khalil-এর সংযোজনবিদ্যা।
+        <span class="en">Mathematical foundations of ML — from vectors to backpropagation. Featuring Al-Khwarizmi (algebra), Ibn al-Haytham (calculus), Al-Khalil (combinatorics), Al-Kindi (frequency analysis), and Shannon (information theory). Ten doors connecting math to all 13 AI books.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🧭 Vectors</span>
+        <span class="topic-chip">🔷 Matrices</span>
+        <span class="topic-chip">🧲 Eigenvalues</span>
+        <span class="topic-chip">🎲 Probability</span>
+        <span class="topic-chip">📊 Statistics</span>
+        <span class="topic-chip">∇ Calculus</span>
+        <span class="topic-chip">🔗 Backprop</span>
+        <span class="topic-chip">🌊 Entropy</span>
+      </div>
+      <div class="game-meta">
+        <span>📊 1000 XP</span>
+        <span>🧩 10 Doors</span>
+        <span>📈 8 Ranks</span>
+      </div>
+      <div class="game-link">প্রবেশ করো →</div>
+    </a>
+
   </div>
 
   <!-- ══ GROUP 4: EXTRAS ══ -->
@@ -1322,7 +1802,9 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   function apply(filter){
     tabs.forEach(t=>t.classList.toggle('active',t.dataset.filter===filter));
     groups.forEach(g=>{
-      const show=(filter==='all'||g.dataset.category===filter);
+      // The Reading Road is shown ONLY on its own tab — not under "All".
+      const isRoad=g.dataset.category==='road';
+      const show=isRoad ? filter==='road' : (filter==='all'||g.dataset.category===filter);
       g.classList.toggle('hidden',!show);
     });
   }

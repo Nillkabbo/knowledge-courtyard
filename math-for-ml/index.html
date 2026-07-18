@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>গণিতের নিকোবর — The Architect's Compass</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">الْجَبْر وَالْمُقَابَلَة</div>
+  <h1 class="title-main">গণিতের নিকোবর</h1>
+  <div class="title-sub">The Architect's Compass</div>
+  <div class="title-desc">
+    মেশিন লার্নিংয়ের গাণিতিক ভিত্তি — ভেক্টর থেকে ব্যাকপ্রোপাগেশন পর্যন্ত।<br>
+    দশটি দরজা — Al-Khwarizmi-এর বীজগণিত, Ibn al-Haytham-এর ক্যালকুলাস, Al-Khalil-এর সংযোজনবিদ্যা, Shannon-এর তথ্য তত্ত্ব।<br><br>
+    <em>Mathematical foundations of machine learning — from vectors to backpropagation. Ten doors: vectors, matrices, eigenvalues, probability, statistics, calculus, chain rule, optimization, and information theory. Connected to 13 AI books in the Courtyard. Featuring Al-Khwarizmi (algebra), Ibn al-Haytham (calculus seeds), Al-Khalil (combinatorics), Al-Kindi (frequency analysis), and Shannon (information theory).</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🧭 যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">ছাদের উপর তারা — The Star Above the Roof</div>
+    <p>তুমি একটা সুন্দর ভবনে দাঁড়িয়ে আছো। দেয়াল, ছাদ, খিলান — সব নিখুঁত। কিন্তু কেউ জিজ্ঞেস করল — এই ভবন কেন দাঁড়িয়ে আছে? তুমি বললে — স্থপতি ভালো ডিজাইন করেছেন। কিন্তু আসল উত্তর ভিত্তিতে — যা মাটির নিচে, যা দেখা যায় না। তেরোটি AI বই তোমাকে শিখিয়েছে ভবনের সৌন্দর্য — attention, embeddings, RAG, fine-tuning। কিন্তু ভিত্তি? সেই গণিত যা সবকিছু ধরে রাখে? সেই গণিত যা আবিষ্কার করেছিলেন মুসলিম বিজ্ঞানীরা — Al-Khwarizmi, Ibn al-Haytham, Al-Khalil?</p>
+    <p class="en">You stand before a beautiful building. Walls, roof, arches — all perfect. But someone asks — why does this building stand? You say — the architect designed it well. But the real answer is in the foundation — underground, invisible. Thirteen AI books taught you the building's beauty — attention, embeddings, RAG, fine-tuning. But the foundation? The mathematics holding it all up? The mathematics discovered by Muslim scientists — Al-Khwarizmi, Ibn al-Haytham, Al-Khalil?</p>
+    <hr class="p-divider">
+    <p>এই বই সেই ভিত্তি দেখাবে। ভেক্টর থেকে শুরু — ম্যাট্রিক্স, আইগেনভেক্টর, সম্ভাবনা, ক্যালকুলাস, চেইন রুল, অপ্টিমাইজেশন, এবং তথ্য তত্ত্ব। প্রতিটা ধারণা একজন শিক্ষকের গল্পে — Al-Khwarizmi-এর আবিষ্কার থেকে Shannon-এর এন্ট্রপি পর্যন্ত। এবং প্রতিটা দরজায় দেখানো হবে — এই গণিত কীভাবে তোমার পরিচিত AI ধারণার ইঞ্জিন।</p>
+    <p class="en">This book reveals that foundation. Starting with vectors — matrices, eigenvectors, probability, calculus, chain rule, optimization, and information theory. Each concept in a teacher's story — from Al-Khwarizmi's discovery to Shannon's entropy. And each door shows how this math is the engine behind the AI concepts you already know.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🧭</span><span id="hud-rank-name">ছাত্র</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা — গণিত থেকে মেশিন লার্নিং পর্যন্ত।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← নিকোবরে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🧭</div>
+  <h1 class="complete-title">তুমি এখন নিকোবর ধারক</h1>
+  <p class="complete-text">দশটি দরজা পেরিয়েছ। ভেক্টর থেকে এন্ট্রপি — মেশিন লার্নিংয়ের সম্পূর্ণ গাণিতিক ভিত্তি আয়ত্ত করেছ।<br><br>Al-Khwarizmi-এর বীজগণিত, Ibn al-Haytham-এর অবকলন, Al-Khalil-এর সংযোজনবিদ্যা, Bayes-এর সম্ভাবনা, Shannon-এর তথ্য তত্ত্ব — এখন তুমি জানো কেন attention কাজ করে, কেন gradient descent ন্যূনতম খুঁজে পায়, কেন cross-entropy loss শেখায়।<br><br><strong>গণিত হলো সেই নিকোবর যা দিক দেখায় — অন্ধকারেও।</strong></p>
+  <div class="complete-verse">وَعَلَّمَ آدَمَ الْأَسْمَاءَ كُلَّهَا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"এবং তিনি আদমকে সব নাম শিখিয়েছিলেন।" — কুরআন ২:৩১</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 নিকোবর চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 নিকোবর চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
