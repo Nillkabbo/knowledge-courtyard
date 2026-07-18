@@ -17,7 +17,7 @@ doors.push({
     aen:"Because for small inputs every algorithm is fast. The real question — if input grows 10×, how much does work grow? O(n) → 10×, O(n²) → 100×, O(2ⁿ) → explosion. Big-O measures that scaling."
   },
   story:`
-<p class="scene-setting">প্রথম দোকান। জ্যোতির্বিদের কক্ষ। পিতলের অ্যাস্ট্রোলেব, নক্ষত্য মানচিত্র, দেয়ালে ঘূর্ণায়মান গিয়ার। উস্তাদ ফাহিম দাঁড়িয়ে আছেন — হাতে একটা পিতলের যন্ত্র, চোখে তীক্ষ্ণতা। তিনি মাপেন। নক্ষত্রের দূরত্ব, গ্রহের কক্ষপথ, সময়ের গতি। "সবকিছু মাপা যায়," তিনি বলেন। "এমনকি চিন্তাও। তোমার অ্যালগরিদম কত দ্রুত? তবে সবচেয়ে গুরুত্বপূর্ণ — ইনপুট বাড়লে কত দ্রুত ধীর হয়?"</p>
+<p class="scene-setting">প্রথম দোকান। জ্যোতির্বিদের কক্ষ। পিতলের অ্যাস্ট্রোলেব, নক্ষত্র মানচিত্র, দেয়ালে ঘূর্ণায়মান গিয়ার। উস্তাদ ফাহিম দাঁড়িয়ে আছেন — হাতে একটা পিতলের যন্ত্র, চোখে তীক্ষ্ণতা। তিনি মাপেন। নক্ষত্রের দূরত্ব, গ্রহের কক্ষপথ, সময়ের গতি। "সবকিছু মাপা যায়," তিনি বলেন। "এমনকি চিন্তাও। তোমার অ্যালগরিদম কত দ্রুত? তবে সবচেয়ে গুরুত্বপূর্ণ — ইনপুট বাড়লে কত দ্রুত ধীর হয়?"</p>
 <p class="scene-setting en">The first shop. The Astrolabe Maker's chamber. Brass astrolabes, star charts, rotating gears on the walls. Ustad Fahim stands — a brass instrument in hand, sharp eyes. He measures. Distance of stars, planetary orbits, the flow of time. "Everything can be measured," he says. "Even thought. How fast is your algorithm? But most important — as input grows, how fast does it slow?"</p>
 
 <div class="dialogue">তুমি প্রোগ্রামার। কিন্তু একজন কারিগর আর একজন মাস্টার কারিগরের পার্থক্য কী? কারিগর বলে "এটা কাজ করে।" মাস্টার বলে "এটা কাজ করে — এবং ইনপুট দশ গুণ হলে এটা এত গুণ ধীর হবে।" এই মাপই Big-O। চিন্তার মাপ।</div>
@@ -82,7 +82,7 @@ doors.push({
 স্মরণে রাখার কৌশল:
   • ধ্রুবক গুণনীয়ক বাদ:  O(2n) = O(n)
   • নিম্ন পদ বাদ:        O(n² + n) = O(n²)
-  • সবচেয়ে খারাপ ক্ষেত্র:  Big-O = worst case
+  • সাধারণত worst case:  Big-O প্রায়ই worst-case বর্ণনা করে, তবে best/average-ও সম্ভব
   • log এর ভিত্তি অপ্রাসঙ্গিক: O(log₂ n) = O(log₁₀ n) = O(log n)</div>
 
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। প্রতিটা পছন্দে Big-O ভাবো। Vector search — O(n) brute নাকি O(log n) HNSW? RAG retrieval — কত docs, কত ধাপ? LLM inference — O(n²) attention (n = token count) — তাই দীর্ঘ context দ্রুত ধীর। Sorting embeddings — O(n log n) কেন, O(n²) কেন নয়। সিনিয়র ইঞ্জিনিয়ার চিন্তেন স্কেলে, শুধু "এখন" নয়।</div>
@@ -115,16 +115,17 @@ def sum_slow(n):
     """O(n²) — nested loop (একই উত্তর, ভুল পদ্ধতি)"""
     total = 0
     for i in range(n):
-        for j in range(1):       # উদ্দেশ্যহীন nested loop
-            total += i
+        for j in range(n):       # প্রতিটা i-এর জন্য পুরো n বার লুপ — n×n = O(n²)
+            if i == j:            # শুধু মিলে গেলে যোগ করি (একই ফলাফল পেতে)
+                total += i
     return total
 
 # ছোট n — পার্থক্য দেখা যায় না
 print("n=1000:")
 print("  fast:", sum_fast(1000))
 
-# বড় n — পার্থক্ষ স্পষ্ট
-for n in [10_000, 50_000, 100_000]:
+# বড় n — পার্থক্য স্পষ্ট (n² তাই বেশি বড় সংখ্যা দিলে ধীর হয়ে যাবে)
+for n in [1_000, 2_000, 4_000]:
     t1 = time.time(); sum_fast(n); tf = time.time() - t1
     t2 = time.time(); sum_slow(n); ts = time.time() - t2
     print(f"n={n:>7}:  O(n)={tf:.5f}s   O(n²)={ts:.5f}s   অনুপাত={ts/tf:.1f}x")
@@ -225,8 +226,8 @@ THREE CLASSIC PATTERNS:
   ৩. বিভাজন (divide):      merge sort, binary search
      f(big) = combine(f(left), f(right))</div>
 
-<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Recursion সবখানে। JSON ট্রি পরিভ্রমণ — nested অবজেক্ট। File system walk — ফোল্ডারের ভেতরে ফোল্ডার। AST (abstract syntax tree) — কোড পার্স করা। Tree search — minimax গেম AI। Backtracking (পরের দোকান) — recursion + ফেরা। যে recursion বোঝে সে গাছ বোঝে, যে গাছ বোঝে সে অনেক সমস্যা বোঝে।</div>
-<div class="dialogue en">"You're an AI engineer. Recursion is everywhere. JSON tree traversal — nested objects. File system walk — folders in folders. AST (abstract syntax tree) — parsing code. Tree search — minimax game AI. Backtracking (later shop) — recursion + retreat. Who understands recursion understands trees; who understands trees understands many problems."</div>
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Recursion সবখানে। JSON ট্রি পরিভ্রমণ — nested অবজেক্ট। File system walk — ফোল্ডারের ভেতরে ফোল্ডার। AST (abstract syntax tree) — কোড পার্স করা। Tree search — minimax গেম AI। Backtracking (দোকান ১৬) — recursion + ফেরা। যে recursion বোঝে সে গাছ বোঝে, যে গাছ বোঝে সে অনেক সমস্যা বোঝে।</div>
+<div class="dialogue en">"You're an AI engineer. Recursion is everywhere. JSON tree traversal — nested objects. File system walk — folders in folders. AST (abstract syntax tree) — parsing code. Tree search — minimax game AI. Backtracking (Door 16) — recursion + retreat. Who understands recursion understands trees; who understands trees understands many problems."</div>
 
 <div class="dialogue">আয়াত — নিদর্শন। কুরআনে বারবার বলা হয়েছে — "আকাশ ও পৃথিবীর সৃষ্টিতে, নিজেদের সৃষ্টিতে... চিন্তা করো না?" প্রতিটা নিদর্শনের ভেতরে আরেকটা নিদর্শন — কোষের ভেতরে কোষ, পরমাণুর ভেতরে পরমাণু, সূর্যের চারপাশে গ্রহ, গ্রহের চারপাশে উপগ্রহ। একই কাঠামো — ছোট স্কেলে। আত্তুবুহ — ফিরে দেখা — recursion-এর ফেরার পথের মতো।</div>
 <div class="dialogue en">"Ayah — a sign. The Quran repeats — 'In the creation of the heavens and earth, in your own creation... will you not reflect?' Within each sign, another sign — cell within cell, atom within atom, planets around a sun, moons around a planet. The same structure — at smaller scale. Recursive creation — like the return path of recursion."</div>`,
@@ -254,7 +255,7 @@ def factorial(n):
     return n * factorial(n - 1)   # recursive case
 
 print("factorial(5) =", factorial(5))
-print(f"মোট কল: {call_count}")     # 6 (5,4,3,2,1 + base return)
+print(f"মোট কল: {call_count}")     # 5 (n=5,4,3,2,1 — প্রতিটা কল, base case-সহ)
 
 # Fibonacci — naive recursion কত খারাপ?
 fib_calls = 0
@@ -270,7 +271,7 @@ for n in [5, 10, 20, 25]:
     result = fib(n)
     print(f"fib({n}) = {result}, কল সংখ্যা: {fib_calls}")
 
-# প্রশ্ন: fib(20) কেন 13,000+ কল নেয়?
+# প্রশ্ন: fib(20) কেন 21,000+ কল নেয় (ঠিক করে বললে ২১,৮৯১টি)?
 # (কারণ একই সমস্যা বারবার গণনা হয় — O(2^n)।
 #  এটাই DP (Door 15) কেন দরকার!)
 
@@ -353,7 +354,7 @@ Index rules:
     <p><strong>Senior habit:</strong> <code>import numpy as np</code> — সংখ্যা নিয়ে কাজ করলে list ভুলে যাও।</p>`
   },
   exercise:{
-    hint:"reshape, slice, আর indexing অনুশীলন — কোড চালাও!",
+    hint:"indexing, slicing, আর reverse করা অনুশীলন — কোড চালাও!",
     starterCode:`# টালি নির্মাতার কারখানা — Array Operations
 # নিচের কোড পড়ো, চালাও, তারপর নিজে চেষ্টা করো
 
@@ -416,8 +417,8 @@ doors.push({
     <line class="edge-cyan" x1="${30+i*130+90}" y1="70" x2="${30+(i+1)*130}" y2="70"/>
     `).join('')}
     <!-- final next to None -->
-    <line class="edge" x1="420" y1="70" x2="470" y2="70"/>
-    <text class="lbl-sm" x="500" y="73">None</text>
+    <line class="edge" x1="510" y1="70" x2="530" y2="70"/>
+    <text class="lbl-sm" x="545" y="73">None</text>
     <text class="lbl-sm" x="30" y="32" fill="#f0c14b">head</text>
     <line class="edge-hot" x1="45" y1="35" x2="45" y2="42"/>
     <text class="lbl-sm" x="280" y="125" text-anchor="middle">insert head: নতুন node, next = পুরোনো head → O(1)</text>
@@ -425,7 +426,7 @@ doors.push({
   <div class="diag-cap">প্রতিটা node শুধু পরের node-এর ঠিকানা জানে — ধারাবাহিক মেমরি লাগে না।</div>
 </div>
 
-<div class="dialogue">কিন্তু দাম আছে। টালি নির্মাতা যেকোনো বাক্সে সরাসরি যেতে পারেন — index দিলেই, O(1)। আমি? প্রথম মুক্তো থেকে শুরু, এক এক করে পরেরটায় যেতে হয় — শততম মুক্তো চাইলে ১০০ ধাপ। O(n)। সবছাই দাম আছে।</div>
+<div class="dialogue">কিন্তু দাম আছে। টালি নির্মাতা যেকোনো বাক্সে সরাসরি যেতে পারেন — index দিলেই, O(1)। আমি? প্রথম মুক্তো থেকে শুরু, এক এক করে পরেরটায় যেতে হয় — শততম মুক্তো চাইলে ১০০ ধাপ। O(n)। সবকিছুরই দাম আছে।</div>
 <div class="dialogue en">"But there's a price. The tile maker jumps to any box directly — give an index, O(1). Me? Start from the first pearl, step to the next one by one — the 100th pearl costs 100 steps. O(n). Everything has a price."</div>
 
 <div class="code-block">Linked List — Three Variants:

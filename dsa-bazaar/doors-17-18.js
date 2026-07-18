@@ -30,7 +30,7 @@ doors.push({
     ${'ABABDABACD'.split('').map((c,i)=>`<rect class="cell" x="${80+i*30}" y="38" width="26" height="22" rx="3"/><text class="lbl-sm" x="${93+i*30}" y="53">${c}</text>`).join('')}
     <text class="lbl-sm" x="30" y="80">প্যাটার্ন:</text>
     ${'ABAC'.split('').map((c,i)=>`<rect class="cell-hot" x="${80+i*30}" y="68" width="26" height="22" rx="3"/><text class="lbl-sm" x="${93+i*30}" y="83">${c}</text>`).join('')}
-    <text class="lbl-sm" x="280" y="108" text-anchor="middle" fill="#ff6b35">C≠D → প্যাটার্ন ১ ধাপ ডানে → আবার পুরো তুলনা। O(n·m)।</text>
+    <text class="lbl-sm" x="280" y="108" text-anchor="middle" fill="#ff6b35">B≠C (৪র্থ ঘরে) → প্যাটার্ন ১ ধাপ ডানে → আবার পুরো তুলনা। O(n·m)।</text>
 
     <line class="edge" x1="280" y1="120" x2="280" y2="130"/>
 
@@ -39,7 +39,7 @@ doors.push({
     ${'ABAC'.split('').map((c,i)=>`<rect class="cell-good" x="${80+i*30}" y="168" width="26" height="22" rx="3" style="fill:rgba(82,196,26,.2)"/><text class="lbl-sm" x="${93+i*30}" y="183">${c}</text>`).join('')}
     <text class="lbl-sm" x="210" y="183" fill="#52c41a">LPS = [0,0,1,0] → A পর্যন্ত মিল ছিল, সেখান থেকেই চালাও</text>
   </svg>
-  <div class="diag-cap">naive প্রতিবার শুরা থেকে, KMP প্যাটার্নের ভেতরের পুনরাবৃত্তি জেনে স্মার্ট ফেরে।</div>
+  <div class="diag-cap">naive প্রতিবার শুরু থেকে, KMP প্যাটার্নের ভেতরের পুনরাবৃত্তি জেনে স্মার্ট ফেরে।</div>
 </div>
 
 <div class="dialogue">KMP — Knuth-Morris-Pratt। দুটো ধাপ। প্রথমে প্যাটার্ন থেকে একটা failure function বানাও (LPS — longest prefix-suffix)। এটা বলে — এই অবস্থানে মিল না হলে কত পিছিয়ে ফিরবে। তারপর টেক্সট একবারই চলো, মিল না হলে failure function দেখে ফেরো। O(n+m) — নিশ্চিত রৈখিক।</div>
@@ -100,14 +100,14 @@ kmp_search("ABABDABACDABACDABAC", "ABAC")  # → 5</div>
   senior:{
     title:"কোন অ্যালগরিদম কখন — Senior Choice",
     body:`
-    <p><strong>নিজে না লিখে:</strong> Python <code>str.find()</code>, <code>in</code> operator — ভেতরে Boyer-Moore-Horspool (KMP-এর চাচাতো ভাই), C-তে optimized। ৯৯% ক্ষেত্রে এটাই যথেষ্ট।</p>
+    <p><strong>নিজে না লিখে:</strong> Python <code>str.find()</code>, <code>in</code> operator — ছোট স্ট্রিং-এ Boyer-Moore-Horspool ঘরানার skip-table, বড় স্ট্রিং-এ Crochemore-Perrin Two-Way অ্যালগরিদম (KMP-এর মতোই worst-case O(n) নিশ্চিত করে) — সবই C-তে optimized। ৯৯% ক্ষেত্রে এটাই যথেষ্ট।</p>
     <p><strong>KMP কখন:</strong> নিশ্চিত O(n+m) দরকার, বারবার একই প্যাটার্ন, বা শেখা/ইন্টারভিউ।</p>
     <p><strong>Rabin-Karp কখন:</strong> একসাথে অনেক প্যাটার্ন (multi-pattern), বা ডকুমেন্ট ফিঙ্গারপ্রিন্ট (rolling hash dedup)।</p>
     <p><strong>Aho-Corasick কখন:</strong> হাজার প্যাটার্ন একসাথে খুঁজছি (spam filter, sensitive-word detection)। KMP-এর বহু-প্যাটার্ন সাধারণীকরণ।</p>
     <p><strong>স্ট্রিং = অক্ষরের অ্যারে:</strong> কিন্তু immutable (Python)। বারবার পরিবর্তন করলে <code>''.join(parts)</code> ব্যবহার করো, <code>s += c</code> নয় (O(n²))।</p>`
   },
   exercise:{
-    hint:"Naive ও KMP পাশাপাশি লেখো — তুলনা কম্পারিজন গোনো!",
+    hint:"Naive ও KMP পাশাপাশি লেখো — comparisons গোনো!",
     starterCode:`# নকল-নির্দেশকের গ্রন্থাগার — Naive vs KMP
 comparisons_naive = 0
 comparisons_kmp = 0
@@ -230,7 +230,7 @@ PYTHON — শক্তিশালী বিট টুল:
   1 << 4               # → 16  (2⁴)
   13 >> 2              # → 3   (13 ÷ 4)
   13 & 1               # → 1   (বিজোড়?)
-  13.bit_count()       # → 3   (কতগুলো 1-bit)
+  (13).bit_count()     # → 3   (কতগুলো 1-bit; 13. বলে লিখলে SyntaxError হবে!)
 
 XOR ম্যাজিক — দুটো বৈশিষ্ট্য:
   • a ^ a = 0   (কোনোটার সাথে নিজেকে XOR = ০)
@@ -263,14 +263,17 @@ XOR ম্যাজিক — দুটো বৈশিষ্ট্য:
 <div class="dialogue">Bloom filter — বিট দিয়ে তৈরি একটা অদ্ভুত কাঠামো। একটা বড় বিট-অ্যারে। প্রতিটা উপাদানে কয়েকটা hash (Door 6!) বানাও, সেই অবস্থানগুলো ১ করে দাও। খুঁজতে? আবার hash বানাও, সব অবস্থান ১ কি না দেখো। সব ১ হলে "সম্ভবত আছে"। কোনোটা ০ হলে "নিশ্চিত নেই"। কখনো মিথ্যা হ্যাঁ বলতে পারে, মিথ্যা না বলে না। দ্রুত, সস্তা, probabilistic।</div>
 <div class="dialogue en">"Bloom filter — a strange structure made of bits. A large bit-array. For each element, make a few hashes (Door 6!), set those positions to 1. To look up? Hash again, check if all positions are 1. All 1 → 'probably present'. Any 0 → 'definitely absent'. May say yes falsely, never says no falsely. Fast, cheap, probabilistic."</div>
 
-<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। বিট লুকিয়ে আছে সবখানে। Bloom filter — RAG-এ cached query dedup, বিশাল URL seen-set। Quantization — মডেল weight কে ৮/৪-বিটে চাপা (vLLM, Door 14 — LLMOps)। Bit flags — এক int-এ অনেক boolean (permissions, config)। Hashing internals — XOR, prime mixing। Packed embeddings — এক int-ে একাধিক ছোট মান। দ্রুত, সংক্ষিপ্ত, কম মেমোরি।</div>
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। বিট লুকিয়ে আছে সবখানে। Bloom filter — RAG-এ cached query dedup, বিশাল URL seen-set। Quantization — মডেল weight কে ৮/৪-বিটে চাপা (vLLM)। Bit flags — এক int-এ অনেক boolean (permissions, config)। Hashing internals — XOR, prime mixing। Packed embeddings — এক int-ে একাধিক ছোট মান। দ্রুত, সংক্ষিপ্ত, কম মেমোরি।</div>
 <div class="dialogue en">"You're an AI engineer. Bits hide everywhere. Bloom filter — cached query dedup in RAG, massive URL seen-set. Quantization — compress model weights to 8/4-bit (vLLM). Bit flags — many booleans in one int (permissions, config). Hashing internals — XOR, prime mixing. Packed embeddings — multiple small values in one int. Fast, compact, less memory."</div>
 
 <div class="dialogue">মাথানী — জোড়া, পুনরাবৃত্তি। কুরআনকে আল্লাহ "কিতাব মাথানী" বলেছেন (৩৯:২৩) — যার অর্থ বিতর্কিত, কিন্তু অনেকে ব্যাখ্যা করেন "জোড়ায় জোড়ায় অবতীর্ণ", বা "পুনরাবৃত্তিময়"। সত্য জোড়ায় জোড়ায় আসে — আকিদা ও আমল, দুনিয়া ও আখিরাত, সওয়াব ও শাস্তি। বিটও তেমনি — ০ ও ১, জোড় অবস্থা, যার পুনরাবৃত্তি থেকে অসংখ্য নকশা গঠিত। দুই থেকে অসংখ্য — সেই তাওহীদের ছায়া, এক থেকে বহু।</div>
 <div class="dialogue en">"Mathani — paired, repeated. Allah called the Quran 'Kitaban Mathani' (39:23) — its meaning debated, but often read as 'sent in pairs' or 'oft-repeated'. Truth comes in pairs — creed and deed, this world and the next, reward and punishment. The bit too — 0 and 1, paired states, whose repetition forms countless patterns. From two, the countless — the shadow of tawhid, from One, the many."</div>
 
 <div class="dialogue">আঠারোটা দোকান পেরিয়েছ। জ্যোতির্বিদ মাপতে শিখিয়েছিলেন, আরবেস্ক খোদাইকারী ছোট করে ডাকতে। টালি নির্মাতা সারিবদ্ধ করেছিলেন, মুক্তোর মালা গেঁথেছিলেন, কাফেলা প্রধান ক্রম দিয়েছিলেন। তালা নির্মাতা চাবি দিয়ে খুঁজতে শিখিয়েছিলেন, মসলা ব্যবসায়ী সেরাটা উপরে রেখেছিলেন, বংশবিদ শাখায় খুঁজেছিলেন। তাঁতি জাল বুনেছিলেন, গোত্রপতি গোত্র গেঁথেছিলেন, গ্রন্থাগারিক সাজিয়ে দ্রুত খুঁজেছিলেন। পাথর বিভাজক ভাগ করে জয় করেছিলেন, ক্যালিগ্রাফার দুই হাতে এগিয়েছিলেন, রেশম ব্যবসায়ী মুহূর্তের সেরা ধরেছিলেন। মালি ধাপে ধাপে গড়েছিলেন, অলিগলির পথিক ফিরে এসেছিলেন, নকল-নির্দেশক প্যাটার্ন খুঁজেছিলেন। আর আমি — আমি সবচেয়ে ছোট থেকে সবচেয়ে বড় গড়েছি। আঠারোটা কৌশল — এক একটা দৃষ্টিভঙ্গি। সিনিয়র ইঞ্জিনিয়ার তিনিই যিনি জানেন কোন সমস্যায় কোন দৃষ্টি লাগবে।</div>
-<div class="dialogue en">"Eighteen shops you've passed. The astrolabe maker taught to measure, the arabesque carver to call on smaller. The tile maker arranged in rows, the pearl maker strung, the caravan master gave order. The locksmith taught to search by key, the spice merchant kept the best on top, the genealogist searched through branches. The weaver wove the web, the clan elder built clans, the librarian sorted and searched fast. The stone splitter divided and conquered, the calligrapher advanced with two hands, the silk merchant seized the moment's best. The gardener built step by step, the alley explorer returned, the concord maker found patterns. And I — I built the vast from the smallest. Eighteen techniques — eighteen perspectives. A senior engineer is one who knows which perspective each problem needs."</div>`,
+<div class="dialogue en">"Eighteen shops you've passed. The astrolabe maker taught to measure, the arabesque carver to call on smaller. The tile maker arranged in rows, the pearl maker strung, the caravan master gave order. The locksmith taught to search by key, the spice merchant kept the best on top, the genealogist searched through branches. The weaver wove the web, the clan elder built clans, the librarian sorted and searched fast. The stone splitter divided and conquered, the calligrapher advanced with two hands, the silk merchant seized the moment's best. The gardener built step by step, the alley explorer returned, the concord maker found patterns. And I — I built the vast from the smallest. Eighteen techniques — eighteen perspectives. A senior engineer is one who knows which perspective each problem needs."</div>
+
+<div class="dialogue">বেগম আয়িশা তাঁতের দিকে তাকিয়ে শেষ কার্ডটা বসান। "নকশা শেষ হলে তাঁতি থামে না — নতুন সুতো টানে, নতুন কার্ড কাটে। তুমিও তাই। আঠারো দোকান শেষ, কিন্তু শেখা এইমাত্র শুরু হলো। প্রতিটা প্রোডাকশন bug, প্রতিটা নতুন মডেল, প্রতিটা স্কেলিং সমস্যা — নতুন কার্ড, নতুন নকশা। বাজার বন্ধ হয় না, শুধু দরজা খোলে। যাও এখন — বাজারের বাইরে তোমার নিজের কারখানা গড়ো।"</div>
+<div class="dialogue en">Begum Aisha looks at the loom and sets the last card. "When one pattern ends, the weaver doesn't stop — she draws a new thread, cuts a new card. So it is with you. Eighteen shops are done, but the learning has only just begun. Every production bug, every new model, every scaling problem — a new card, a new pattern. The bazaar never closes; it only opens new doors. Go now — build your own workshop beyond the bazaar."</div>`,
   senior:{
     title:"Bit Manipulation — Production Patterns",
     body:`
@@ -278,7 +281,7 @@ XOR ম্যাজিক — দুটো বৈশিষ্ট্য:
     <p><strong>Python নির্দিষ্ট:</strong> <code>int.bit_count()</code> (Python 3.10+) — popcount এর জন্য নিজে না লিখে এটাই ব্যবহার করো। <code>int.bit_length()</code> — কত বিট দরকার।</p>
     <p><strong>Flags pattern:</strong> একাধিক boolean কে এক int-এ প্যাক করো — <code>PERMISSION_READ = 1&lt;&lt;0</code>, <code>WRITE = 1&lt;&lt;1</code> ইত্যাদি। মেমোরি সাশ্রয়ী, দ্রুত চেক।</p>
     <p><strong>Bloom filter লাইব্রেরি:</strong> <code>pybloom_live</code> বা <code>bloom-filter2</code>। নিজে না লিখে — tested implementation ব্যবহার করো।</p>
-    <p><strong>সতর্কতা:</strong> নেতিবাচক সংখ্যার right-shift ভাষাভেদে আলাদা (logical vs arithmetic)। সর্বদা অন্য পরীক্ষা করো।</p>`
+    <p><strong>সতর্কতা:</strong> নেতিবাচক সংখ্যার right-shift ভাষাভেদে আলাদা (logical vs arithmetic)। Python-এ <code>&gt;&gt;</code> সবসময় arithmetic (যেমন <code>-8 &gt;&gt; 1 == -4</code>), কিন্তু C/Java-তে unsigned/signed অনুযায়ী আলাদা আচরণ করে — নতুন ভাষায় গেলে সর্বদা নিজে টেস্ট করে নিশ্চিত হও।</p>`
   },
   exercise:{
     hint:"XOR ম্যাজিক — single number, swap, power-of-two চেখো!",
@@ -316,7 +319,7 @@ def count_bits(n):
     return count
 
 print(f"\\n13-এ কয়টা 1-bit? {count_bits(13)}")   # 1101 → ৩টা
-print(f"Python এর নিজস্ব: {13.bit_count()}")    # Python 3.10+
+print(f"Python এর নিজস্ব: {(13).bit_count()}")    # Python 3.10+
 
 # ৫. বাম shift = দ্রুত গুণ
 print(f"\\n1 << 4 = {1 << 4}   (= 2^4)")

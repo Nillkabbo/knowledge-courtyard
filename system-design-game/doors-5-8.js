@@ -137,7 +137,7 @@ doors.push({
     aen:"Because calling individually takes time, someone gets missed. Azan — everyone hears at once. Message Queue too — one event reaches multiple services without them talking to each other. Decoupling."
   },
   story:`
-<p class="scene-setting">ষষ্ঠ স্থান। নগরীর সর্বোচ্চ বুরুজ। উপরে মুয়াজ্জিন বিলাল দাঁড়িয়ে আছেন — হাতে কোনো যন্ত্র নেয়, শুধু তাঁর কণ্ঠ। নিচে নগরী — হাজার ঘর, হাজার মানুষ। সবাইকে জানাতে হবে — "সময় হয়েছে।" একে একে ডাকলে দিন শেষ। কিন্তু তিনি একবার উঁচু কণ্ঠে আযান দিলেন — পুরো নগরী শুনল।</p>
+<p class="scene-setting">ষষ্ঠ স্থান। নগরীর সর্বোচ্চ বুরুজ। উপরে মুয়াজ্জিন বিলাল দাঁড়িয়ে আছেন — হাতে কোনো যন্ত্র নেই, শুধু তাঁর কণ্ঠ। নিচে নগরী — হাজার ঘর, হাজার মানুষ। সবাইকে জানাতে হবে — "সময় হয়েছে।" একে একে ডাকলে দিন শেষ। কিন্তু তিনি একবার উঁচু কণ্ঠে আযান দিলেন — পুরো নগরী শুনল।</p>
 <p class="scene-setting en">The sixth place. The city's tallest tower. Atop, Muazzin Bilal stands — no instrument, just his voice. Below — the city: thousands of homes, thousands of people. All must know — "The time has come." Calling individually — the day would end. But he raised his voice once in azan — the entire city heard.</p>
 
 <div class="dialogue">সরাইখানা প্রধান শিখিয়েছিলেন — sync কীভাবে (REST, gRPC)। কিন্তু আমি বলি — কখনো sync যথেষ্ট নয়। কখনো এক সার্ভিস অনেক কাজ পাঠায়, আরেক সার্ভিস তার গতিতে করে। একে অপরের জন্য অপেক্ষা করে না। এটাই async — মাঝখানে একটা বার্তাবাহক।</div>
@@ -190,11 +190,14 @@ AT-LEAST-ONCE পৃথিবীতে (বাস্তবতা):
   → consumer idempotent হতে হবে (একই কাজ দুইবার = একবার)
   → idempotency key, dedup table (Door 15)</div>
 
-<div class="dialogue">আযান — একজন মুয়াজ্জিন, একবার কণ্ঠ, কিন্তু হাজার কান। মসজিদে যাওয়ার নির্দেশ একে একে দরকার নেই — একবার আযান, সবাই শোনে, প্রতেকে নিজ নিজ গতিতে আসে। Message queue-ও তেমনি — একটা event publish করো, একাধিক service subscribe করে। publisher জানে না কে listen করছে — সে শুধু বলে দেয়। এটাই pub/sub। আযান = প্রকাশ্য ঘোষণা। pub/sub = প্রকাশ্য event।</div>
-<div class="dialogue en">"Azan — one muazzin, one voice, but thousands of ears. The call to prayer doesn't need individual summons — one azan, everyone hears, each comes at their own pace. Message queue too — publish one event, multiple services subscribe. The publisher doesn't know who's listening — just announces. This is pub/sub — publish/subscribe. Azan = public announcement. Pub/sub = public event."</div>`,
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Async processing AI infrastructure-এর মেরুদণ্ড। Batch inference job — sync API ঘণ্টার পর ঘণ্টা ব্লক করতে পারে না, তাই request queue-তে রাখো, "job_id ফেরত দাও, ফলাফল পরে নাও" (webhook বা polling)। Training pipeline orchestration — ডেটা প্রিপ্রসেসিং → training → evaluation → deployment, প্রতিটা স্টেজ শেষ হলে event পরেরটা trigger করে (Airflow, Kubeflow, বা কাস্টম queue)। নতুন মডেল রেডি হলে "model.trained" event — canary rollout, monitoring setup, registry update, একাধিক downstream একসাথে পায় (pub/sub)। GPU worker pool queue থেকে টাস্ক নেয় নিজের গতিতে — GPU ব্যস্ত থাকলে backpressure, queue বাড়ে, কমলে drain হয়। Failed training run বা corrupted batch? DLQ-তে যায় — silently হারায় না, পরে তদন্ত হয়।</div>
+<div class="dialogue en">"You're an AI engineer. Async processing is the backbone of AI infrastructure. Batch inference jobs — a sync API can't block for hours, so queue the request, return a job_id, fetch the result later (webhook or polling). Training pipeline orchestration — data preprocessing → training → evaluation → deployment, each stage finishing triggers the next via an event (Airflow, Kubeflow, or a custom queue). When a new model is ready, a 'model.trained' event reaches multiple downstreams at once — canary rollout, monitoring setup, registry update (pub/sub). A GPU worker pool pulls tasks at its own pace — busy GPUs mean backpressure, the queue grows; free GPUs drain it. A failed training run or corrupted batch? Goes to the DLQ — not silently lost, investigated later."</div>
+
+<div class="dialogue">আযান — একজন মুয়াজ্জিন, একবার কণ্ঠ, কিন্তু হাজার কান। মসজিদে যাওয়ার নির্দেশ একে একে দরকার নেই — একবার আযান, সবাই শোনে, প্রতেকে নিজ নিজ গতিতে আসে। কুরআনে আল্লাহ বলেন — "যখন জুমার দিন নামাজের জন্য আহ্বান করা হয়, তখন তোমরা আল্লাহর স্মরণের দিকে দ্রুত ধাবিত হও।" (৬২:৯)। একটাই আহ্বান, কিন্তু প্রত্যেকে নিজে সাড়া দেয় — কেউ কাউকে আলাদাভাবে ডাকে না। Message queue-ও তেমনি — একটা event publish করো, একাধিক service subscribe করে, প্রত্যেকে নিজ গতিতে সাড়া দেয়। publisher জানে না কে listen করছে — সে শুধু বলে দেয়। এটাই pub/sub। আযান = প্রকাশ্য ঘোষণা। pub/sub = প্রকাশ্য event।</div>
+<div class="dialogue en">"Azan — one muazzin, one voice, but thousands of ears. The call to prayer doesn't need individual summons — one azan, everyone hears, each comes at their own pace. Allah says — 'When the call is proclaimed for prayer on the day of Jumu'ah (Friday), hasten to the remembrance of Allah.' (62:9). One call, but each responds on their own — no one is summoned individually. Message queue too — publish one event, multiple services subscribe, each responding at its own pace. The publisher doesn't know who's listening — just announces. This is pub/sub — publish/subscribe. Azan = public announcement. Pub/sub = public event."</div>`,
   senior:{
     title:"Kafka vs RabbitMQ vs SQS — কখন কোনটা?",
-    body:`<p><strong>Kafka:</strong> স্ট্রিম, উচ্চ throughput, event sourcing। লগ হিসেবে কাজ করে — replay করা যায়। জটিল কিন্তু শক্তিশালী। Netflix, LinkedIn ব্যবহার করে।</p><p><strong>RabbitMQ:</strong> traditional message broker। routing সহজ, নির্ভরযোগ্য। task queue, work queue। মাঝারি জটিলতা।</p><p><strong>SQS (AWS):</strong> managed, serverless। সহজ, কোনো পরিচালনা নেয়। কিন্তু vendor lock-in।</p><p><strong>নিয়ম:</strong> event streaming → Kafka। task distribution → RabbitMQ/SQS। সহজ শুরু → SQS।</p>`
+    body:`<p><strong>Kafka:</strong> স্ট্রিম, উচ্চ throughput, event sourcing। লগ হিসেবে কাজ করে — replay করা যায়। জটিল কিন্তু শক্তিশালী। Netflix, LinkedIn ব্যবহার করে।</p><p><strong>RabbitMQ:</strong> traditional message broker। routing সহজ, নির্ভরযোগ্য। task queue, work queue। মাঝারি জটিলতা।</p><p><strong>SQS (AWS):</strong> managed, serverless। সহজ, পরিচালনার দরকার নেই। কিন্তু vendor lock-in।</p><p><strong>নিয়ম:</strong> event streaming → Kafka। task distribution → RabbitMQ/SQS। সহজ শুরু → SQS।</p>`
   }
 });
 
@@ -216,6 +219,39 @@ doors.push({
 
 <div class="dialogue">সংকেত প্রহরী বলেছিলেন — async-এ সার্ভিস আলাদা। কিন্তু আমি বলি — আলাদা সার্ভিসেও এক চৌকি দরকার। কে ঢুকছে, কত ঢুকছে, কোথায় যাচ্ছে — এই তিন প্রশ্ন প্রতিটা অনুরোধে। এটাই API Gateway-এর কাজ।</div>
 <div class="dialogue en">"The signal watcher said — async keeps services separate. But I say — even separate services need one checkpoint. Who enters, how much, where — these three questions for every request. This is the API Gateway's job."</div>
+
+<div class="diagram">
+  <div class="diag-title">Token Bucket বনাম Leaky Bucket — burst সামলানোর দুই কৌশল</div>
+  <svg viewBox="0 0 560 215" xmlns="http://www.w3.org/2000/svg">
+    <!-- TOKEN BUCKET -->
+    <text class="lbl-cyan" x="130" y="20" text-anchor="middle">Token Bucket</text>
+    <rect class="node-cyan" x="70" y="28" width="120" height="100" rx="10"/>
+    <rect class="cell-cyan" x="82" y="40" width="22" height="22" rx="3"/>
+    <rect class="cell-cyan" x="108" y="40" width="22" height="22" rx="3"/>
+    <rect class="cell-cyan" x="134" y="40" width="22" height="22" rx="3"/>
+    <rect class="cell-cyan" x="82" y="66" width="22" height="22" rx="3"/>
+    <rect class="cell-cyan" x="108" y="66" width="22" height="22" rx="3"/>
+    <rect class="cell-cyan" x="134" y="66" width="22" height="22" rx="3"/>
+    <rect class="cell" x="82" y="92" width="22" height="22" rx="3"/>
+    <rect class="cell" x="108" y="92" width="22" height="22" rx="3"/>
+    <rect class="cell" x="134" y="92" width="22" height="22" rx="3"/>
+    <line class="edge-cyan" x1="18" y1="78" x2="68" y2="78"/>
+    <text class="lbl-sm" x="43" y="68" text-anchor="middle" style="font-size:9px">refill: +১ token/সময়ে</text>
+    <line class="edge-cyan" x1="130" y1="130" x2="130" y2="158"/>
+    <text class="lbl-sm" x="130" y="175" text-anchor="middle" style="font-size:10px">burst OK — জমানো token একসাথে খরচ</text>
+    <!-- LEAKY BUCKET -->
+    <text class="lbl-hot" x="420" y="20" text-anchor="middle">Leaky Bucket</text>
+    <rect class="node-hot" x="360" y="28" width="120" height="100" rx="10"/>
+    <line class="edge-hot" x1="392" y1="4" x2="400" y2="26"/>
+    <line class="edge-hot" x1="420" y1="4" x2="420" y2="26"/>
+    <line class="edge-hot" x1="448" y1="4" x2="440" y2="26"/>
+    <text class="lbl-sm" x="420" y="42" text-anchor="middle" style="font-size:9px">burst request একসাথে ঢোকে</text>
+    <circle class="ring" cx="420" cy="122" r="6"/>
+    <line class="edge-hot" x1="420" y1="130" x2="420" y2="158"/>
+    <text class="lbl-sm" x="420" y="175" text-anchor="middle" style="font-size:10px">সমান গতিতে বের হয় — burst শোষিত</text>
+    <text class="lbl-sm" x="280" y="204" text-anchor="middle" fill="#9290a8" style="font-size:9px">একই burst ট্রাফিক — token bucket তাৎক্ষণিক পার করে দেয়, leaky bucket সবসময় সমান গতিতে ছাড়ে</text>
+  </svg>
+</div>
 
 <div class="code-block">API Gateway — এক চৌকি, অনেক কাজ:
 
@@ -241,6 +277,9 @@ doors.push({
 ৬. AuthZ (Authorization) — "কী করতে পারো?"
    Role-based access (admin? user?)
    Scope check (read? write?)</div>
+
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। LLM API-এর সামনে gateway না থাকলে বিপদ। Rate limiting per-API-key করো — শুধু request গুনলে চলবে না, token গুনো (একটা কলে ১০০ token, আরেকটায় ১০,০০০ — খরচ সমান নয়)। Key management — OpenAI/Anthropic-এর আসল key কোনো downstream service নিজে রাখে না, gateway-এর মধ্য দিয়ে কল করে — centralized cost tracking, key leak হলে এক জায়গায় rotate। Model routing — /v1/chat কোন মডেলে যাবে (GPT-4, Claude, নিজস্ব fine-tuned) gateway ঠিক করে, মডেল ব্যর্থ হলে fallback করে। Guardrail layer — prompt injection ফিল্টার, PII redaction gateway-তে একবার বসালে প্রতিটা service আলাদা করে লিখতে হয় না। কিন্তু গুলিয়ো না — এসব gateway-এর কাজ, load balancer শুধু ট্রাফিক ছড়ায়, auth/rate-limit/routing decision নেয় না।</div>
+<div class="dialogue en">"You're an AI engineer. Without a gateway in front of LLM APIs, trouble follows. Rate limit per API key — counting requests alone isn't enough, count tokens (one call costs 100 tokens, another 10,000 — not equal cost). Key management — no downstream service holds the real OpenAI/Anthropic key itself; it calls through the gateway — centralized cost tracking, one place to rotate if a key leaks. Model routing — the gateway decides which model /v1/chat goes to (GPT-4, Claude, your own fine-tune), and falls back if a model fails. Guardrail layer — prompt-injection filtering, PII redaction sit once at the gateway instead of being rewritten in every service. But don't confuse this with a load balancer — that just spreads traffic; it doesn't make auth/rate-limit/routing decisions."</div>
 
 <div class="dialogue">মীকাত — হজ্জের সীমানা। মক্কায় প্রবেশের আগে নির্দিষ্ট স্থানে থামতে হয় — ইহরাম পরতে হয়, নিয়ম মানতে হয়। সরাসরি কাবায় যাওয়া যায় না। API Gateway হলো সেই মীকাত — প্রতিটা অনুরোধ আগে এখানে থামে, নিয়ম মেনে নেয়, তারপর ভেতরে যায়। মীকাত ছাড়া হজ্জ হয় না। Gateway ছাড়া production API হয় না।</div>
 <div class="dialogue en">"Miqat — the Hajj boundary. Before entering Mecca, you stop at designated points — wear ihram, follow rules. You can't go directly to the Kaaba. API Gateway is that miqat — every request stops here first, follows rules, then enters. Without miqat, no Hajj. Without gateway, no production API."</div>`,
@@ -269,6 +308,35 @@ doors.push({
 <div class="dialogue">গোলাঘর রক্ষক বলেছিলেন — cache বানাও, দ্রুত দাও। কিন্তু আমি বলি — cache শুধু সেন্ট্রাল সার্ভারে হলে, দূরের ইউজারের কাছে পৌঁছাতে সময় লাগে। latency। ব্রাজিলের ইউজার আমেরিকার সার্ভার থেকে ডেটা চাইলে — ২০০ms। প্রতিটা request এই দূরত্ব পাড়ি। এটাই CDN সমাধান করে।</div>
 <div class="dialogue en">"The granary keeper said — build a cache, serve fast. But I say — if the cache sits only at the central server, reaching distant users takes time. Latency. A Brazilian user requesting data from a US server — 200ms. Every request pays this distance. The CDN solves this."</div>
 
+<div class="diagram">
+  <div class="diag-title">CDN ছাড়া বনাম CDN সহ — একই দূরত্ব, ভিন্ন ফলাফল</div>
+  <svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg">
+    <!-- WITHOUT CDN -->
+    <text class="lbl-hot" x="140" y="20" text-anchor="middle">CDN ছাড়া</text>
+    <circle class="node" cx="35" cy="110" r="16"/>
+    <text class="lbl-sm" x="35" y="112" text-anchor="middle" style="font-size:8px">User (BR)</text>
+    <line class="edge-hot" x1="53" y1="110" x2="198" y2="110"/>
+    <text class="lbl-hot" x="125" y="98" text-anchor="middle" style="font-size:10px">~২০০-৪০০ms</text>
+    <rect class="node-purple" x="200" y="85" width="80" height="50" rx="8"/>
+    <text class="lbl-sm" x="240" y="112" text-anchor="middle" style="font-size:9px">Origin (US)</text>
+    <text class="lbl-sm" x="140" y="175" text-anchor="middle" style="font-size:9px">প্রতিটা request পুরো দূরত্ব পাড়ি দেয়</text>
+    <!-- WITH CDN -->
+    <text class="lbl-cyan" x="420" y="20" text-anchor="middle">CDN সহ</text>
+    <circle class="node" cx="305" cy="140" r="14"/>
+    <text class="lbl-sm" x="305" y="142" text-anchor="middle" style="font-size:8px">User (BR)</text>
+    <line class="edge-cyan" x1="320" y1="140" x2="358" y2="140"/>
+    <text class="lbl-cyan" x="338" y="128" text-anchor="middle" style="font-size:10px">~২০ms</text>
+    <rect class="node-cyan" x="360" y="115" width="70" height="50" rx="8"/>
+    <text class="lbl-sm" x="395" y="142" text-anchor="middle" style="font-size:9px">Edge POP (BR)</text>
+    <line class="edge-amber" x1="430" y1="118" x2="475" y2="75" style="stroke-dasharray:4,3"/>
+    <text class="lbl-sm" x="470" y="95" text-anchor="middle" style="font-size:8px">cache miss হলেই</text>
+    <rect class="node-purple" x="470" y="45" width="60" height="35" rx="6"/>
+    <text class="lbl-sm" x="500" y="66" text-anchor="middle" style="font-size:8px">Origin</text>
+    <text class="lbl-sm" x="420" y="175" text-anchor="middle" style="font-size:9px">hit হলে origin ছোঁয়ারও দরকার নেই</text>
+    <text class="lbl-sm" x="280" y="198" text-anchor="middle" fill="#9290a8" style="font-size:9px">একই ইউজার, একই কন্টেন্ট — দূরত্ব বদলালে latency-ও বদলে যায়</text>
+  </svg>
+</div>
+
 <div class="code-block">CDN — Content Delivery Network:
 
 THE LATENCY PROBLEM:
@@ -293,15 +361,18 @@ WHAT GOES ON A CDN:
 
 EDGE COMPUTE (2024-26):
   Cloudflare Workers, Vercel Edge Functions
-  → শুধু cache নয় — edge-এ কোড চালাও
-  → sub-50ms globally, কোনো origin call না
+  → শুধু cache নয় — edge-এ কোড চালাও (auth check, A/B routing, personalization)
+  → origin-এর কাছাকাছি নয়, ইউজারের কাছাকাছি চলে — সাধারণত sub-50ms, কিন্তু origin/API কল লাগলে সেই latency যোগ হয়
 
 CDN = SECURITY LAYER too:
   → DDoS absorption (বিশাল bandwidth)
   → WAF, TLS termination, bot filtering</div>
 
-<div class="dialogue">তাসরীফ — কাছে এগিয়ে যাওয়া। কুরআনে আল্লাহ বলেন — "তোমাদের কাছে এসেছে আমার রসূল, স্পষ্ট প্রমাণ সহ।" (২:১০১)। জ্ঞান দূরে রাখলে কাজে লাগে না — কাছে আনতে হয়। CDN-ও তেমনি — কন্টেন্ট অরিজিনে নয়, ইউজারের কাছে। যে সেবা কাছে পৌঁছায়, সে সেবা সফল।</div>
-<div class="dialogue en">"Tasreef — bringing close. Allah says — 'My messengers came to you with clear proofs.' (2:101). Knowledge kept distant serves no one — it must be brought near. The CDN too — content not at the origin, but near the user. Service that reaches close, succeeds."</div>`,
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। এখানে একটা ভুল খুব সাধারণ — CDN দিয়ে inference দ্রুত করা যায় ভাবা। যায় না। CDN কাজ করে static জিনিসে: ফ্রন্টএন্ড bundle (React/Next.js JS-CSS), model card ও ডকুমেন্টেশন পাতা, ডেমো ইমেজ, এমনকি বড় model weight ফাইল ডাউনলোড (deployment-এর সময় দ্রুত পৌঁছাতে)। কিন্তু live LLM response? না — প্রতিটা ইউজারের prompt আলাদা, cache করার মতো একই জিনিস নেই (হুবহু একই prompt বারবার এলে সেটা response cache/semantic cache, ভিন্ন layer, CDN edge caching নয়)। inference দ্রুত করতে দরকার compute কাছে আনা (একাধিক region-এ GPU deploy) — content কাছে আনা নয়। ব্যতিক্রম একটাই — সত্যিকারের static output (যেমন একটা fixed FAQ bot-এর common answer pre-computed) CDN-এ বসতে পারে। বাকি সব dynamic generation-এর জন্য CDN ভুল টুল।</div>
+<div class="dialogue en">"You're an AI engineer. A common mistake here — thinking a CDN can speed up inference. It can't. A CDN handles static things: frontend bundles (React/Next.js JS-CSS), model card and doc pages, demo images, even large model-weight file downloads (for fast reach during deployment). But a live LLM response? No — every user's prompt differs, there's nothing identical to cache (if the exact same prompt does repeat, that's response/semantic caching — a different layer, not CDN edge caching). Speeding up inference means bringing compute closer (deploying GPUs across regions), not bringing content closer. One exception — genuinely static output (like a fixed FAQ bot's pre-computed common answers) can sit on a CDN. For everything else that's dynamically generated, a CDN is the wrong tool."</div>
+
+<div class="dialogue">তাসরীফ — কাছে এগিয়ে যাওয়া। কুরআনে আল্লাহ বলেন — "তোমার পূর্বেও রসূলগণ স্পষ্ট প্রমাণসহ এসেছিলেন।" (৩:১৮৪)। প্রমাণ দূরে রাখলে কাজে লাগে না — কাছে পৌঁছাতে হয়। CDN-ও তেমনি — কন্টেন্ট অরিজিনে আটকে থাকলে চলে না, ইউজারের কাছে পৌঁছাতে হয়। যে সেবা কাছে পৌঁছায়, সে সেবা সফল।</div>
+<div class="dialogue en">"Tasreef — bringing close. Allah says — 'Even before you, messengers came with clear proofs.' (3:184). Proof kept distant serves no one — it must reach people. The CDN too — content can't stay locked at the origin, it must reach the user. Service that reaches close, succeeds."</div>`,
   senior:{
     title:"CDN in Production — Setup Checklist",
     body:`<p><strong>Static assets first:</strong> images/CSS/JS সব CDN-এ। এটাই সবচেয়ে সহজ জয়।</p><p><strong>Cache headers ঠিক করো:</strong> <code>Cache-Control: public, max-age=31536000, immutable</code> — fingerprinted assets-এ।</p><p><strong>Purge strategy:</strong> ডিপ্লয় করার সময় পুরোনো version URL বাদ দাও (fingerprint)।</p><p><strong>Providers:</strong> Cloudflare (সস্তা), CloudFront (AWS), Fastly (instant purge), Vercel (DX + edge)।</p>`

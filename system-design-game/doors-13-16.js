@@ -103,18 +103,20 @@ ANOMALIES (কী ভাঙে):
   Non-repeatable  — এক row দুইবার ভিন্ন
   Phantom          — নতুন row যুক্ত
   Lost Update      — দুই txn এক row বদলালে একটা হারায়
-  Write Skew       — দুই txn প্রত্যেকে constraint মানে, একসাথে না
+  Write Skew       — প্রতিটা txn আলাদাভাবে constraint মানে, কিন্তু একসাথে চললে নিয়ম ভাঙে
 
 CONCURRENCY CONTROL:
   ১. PESSIMISTIC (2PL — Two-Phase Locking)
      আগেই lock — "আগে আমি, তুমি অপেক্ষা"
      ✅ নিরাপদ ❌ deadlock, ধীর
-  ২. OPTIMISTIC (OCC — MVCC)
+  ২. OPTIMISTIC (OCC, প্রায়ই MVCC দিয়ে বাস্তবায়িত)
      শেষে যাচাই — "ভাবি কেউ নেই, conflict হলে retry"
+     (MVCC নিজে শুধু versioning — OCC হলো commit-এ validate করার কৌশল)
      ✅ দ্রুত (low conflict) ❌ retry storm (high conflict)
   ৩. SSI (Serializable Snapshot Isolation)
-     MVCC + serializable — PostgreSQL এর পথ
-     ✅ প্রায় serializable, কম overhead
+     MVCC + conflict-detection — PostgreSQL SERIALIZABLE এর পথ
+     ✅ সম্পূর্ণ serializable (আসল গ্যারান্টি!), কিন্তু traditional
+        lock-based 2PL serializable-এর চেয়ে কম overhead
 
 DISTRIBUTED TRANSACTIONS (একাধিক service/DB):
   ২PC (Two-Phase Commit):
@@ -129,7 +131,7 @@ DISTRIBUTED TRANSACTIONS (একাধিক service/DB):
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। AI platform-এ transactions সবখানে। ক্রেডিট কাটা + LLM API কল — atomic? সাধারণত নয় (LLM কল অনিশ্চিত) — saga প্যাটার্ন। RAG: ডকুমেন্ট আপলোড + embedding তৈরি + index যোগ — এক transaction বা outbox pattern (Door 15)। Training run: checkpoint atomic — partial checkpoint কাজে লাগে না। Vector DB লেখা — durability দরকার, ক্র্যাশে হারালে আবার embed! ACID ভাবো প্রতিটা critical state change-এ।</div>
 <div class="dialogue en">"You're an AI engineer. Transactions everywhere in AI platforms. Credit deduction + LLM API call — atomic? Usually not (LLM call uncertain) — saga pattern. RAG: doc upload + embedding creation + index add — one transaction or outbox pattern (Door 15). Training: checkpoint atomic — partial checkpoint useless. Vector DB writes — durability needed, lose it on crash and re-embed! Think ACID for every critical state change."</div>
 
-<div class="dialogue">বারাআত — মুক্তি, সম্পূর্ণ নিষ্পত্তি। ইসলামী ঐত্রহ্যে লেনদেন (মুআমালাত) সুস্পষ্ট নিয়মে — ঋণ লেখা হবে, সাক্ষী থাকবে, সময় নির্দিষ্ট থাকবে। কুরআনে আল্লাহ বলেন — "হে বিশ্বাসীরা, যখন একে অপরের সাথে নির্দিষ্ট মেয়াদে ঋণের লেনদেন করো, তখন তা লিখে রাখো।" (২:২৮২)। লিখিত, সাক্ষী, নির্দিষ্ট — এটাই ACID-এর আত্মিক রূপ: atomic (পুরো লেনদেন লেখা), durable (লিখিত নথি), consistent (নিয়ম মানা), isolated (একে অপরের থেকে স্বাধীন)। আধুনিক transaction প্রাচীন প্রজ্ঞারই কোডে রূপ।</div>
+<div class="dialogue">বারাআত — মুক্তি, সম্পূর্ণ নিষ্পত্তি। ইসলামী ঐতিহ্যে লেনদেন (মুআমালাত) সুস্পষ্ট নিয়মে — ঋণ লেখা হবে, সাক্ষী থাকবে, সময় নির্দিষ্ট থাকবে। কুরআনে আল্লাহ বলেন — "হে বিশ্বাসীরা, যখন একে অপরের সাথে নির্দিষ্ট মেয়াদে ঋণের লেনদেন করো, তখন তা লিখে রাখো।" (২:২৮২)। লিখিত, সাক্ষী, নির্দিষ্ট — এটাই ACID-এর আত্মিক রূপ: atomic (পুরো লেনদেন লেখা), durable (লিখিত নথি), consistent (নিয়ম মানা), isolated (একে অপরের থেকে স্বাধীন)। আধুনিক transaction প্রাচীন প্রজ্ঞারই কোডে রূপ।</div>
 <div class="dialogue en">"Bara'at — clearance, complete settlement. In Islamic tradition, transactions (muamalat) follow clear rules — debts recorded, witnesses present, terms fixed. Allah says — 'O believers, when you contract a debt for a fixed term, write it down.' (2:282). Written, witnessed, fixed — this is ACID's spiritual form: atomic (whole transaction written), durable (written record), consistent (rules met), isolated (independent of others). Modern transactions are ancient wisdom in code."</div>`,
   senior:{
     title:"Isolation Level বাছাই — Production Reality",
@@ -163,7 +165,7 @@ doors.push({
       <marker id="arrF14" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L5,3.5 L0,7" fill="#ff6b35"/></marker>
       <marker id="arrT14" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L5,3.5 L0,7" fill="#3dd6c4"/></marker>
     </defs>
-    <text class="lbl-sm" x="280" y="22" text-anchor="middle" fill="#ffc857" style="font-size:13px">Term 5 — এক Leader, ৪ Follower</text>
+    <text class="lbl-sm" x="280" y="22" text-anchor="middle" fill="#ffc857" style="font-size:13px">Term 5 — এক Leader, ৩ Follower</text>
     <!-- leader -->
     <rect class="node-hot" x="240" y="40" width="80" height="44" rx="8"/>
     <text class="lbl" x="280" y="58">Leader</text>
@@ -228,12 +230,13 @@ RAFT — Understandable Consensus (প্রিয় পছন্দ):
     ৪. সংখ্যাগরিষ্ঠতা replicate হলে → commit
     ৫. client-কে সাফল্য, follower-কে commit জানায়
 
-  SAFETY (৫ rule):
-    • Election restriction — candidate-এর log সবচেয়ে up-to-date
-    • Leader append-only — leader লগ থেকে মোছে না
-    • Log matching — same index+term = same everything
-    • Leader completeness — committed entry কখনো হারে না
-    • State machine safety — same log = same state
+  SAFETY (৫ guarantee, Raft paper-এর মূল সংজ্ঞা):
+    • Election Safety — এক term-এ সর্বোচ্চ এক leader (majority vote,
+      + voting restriction: candidate-এর log সবচেয়ে up-to-date না হলে ভোট নেই)
+    • Leader Append-Only — leader নিজের লগ থেকে কখনো মোছে না, শুধু যোগ করে
+    • Log Matching — same index+term = আগের সব entry পর্যন্ত identical
+    • Leader Completeness — committed entry পরের কোনো leader-এর log থেকে হারায় না
+    • State Machine Safety — এক index-এ apply হলে সব server-এ same entry
 
 PAXOS — ক্লাসিক, কিন্তু কঠিন বোঝা
   Leslie Lamport 1989। তিন role: Proposer, Acceptor, Learner।
@@ -432,7 +435,7 @@ doors.push({
     })()}
     <!-- some keys -->
     ${(()=>{
-      const keys=[['k1',300],['k2',200],['k3',100],['k4',20],['k5',380]];
+      const keys=[['k1',300],['k2',200],['k3',100],['k4',20],['k5',350]];
       return keys.map(k=>{
         const a=(k[1]-90)*Math.PI/180;const x=280+Math.cos(a)*70;const y=140+Math.sin(a)*70;
         return `<circle class="node-leaf" cx="${x}" cy="${y}" r="9"/><text class="lbl-sm" x="${x}" y="${y+2}" style="font-size:8px">${k[0]}</text>`;
@@ -443,7 +446,7 @@ doors.push({
       const a=(220-90)*Math.PI/180;const x=280+Math.cos(a)*100;const y=140+Math.sin(a)*100;
       return `<rect class="node-cyan" x="${x-26}" y="${y-16}" width="52" height="32" rx="6" style="stroke-dasharray:3,2"/><text class="lbl-sm" x="${x}" y="${y+1}" style="font-size:10px;font-weight:700" fill="#3dd6c4">N5 NEW</text>`;
     })()}
-    <text class="lbl-sm" x="280" y="265" text-anchor="middle">N5 যোগ হলে — শুধু N2 থেকে কিছু key N5-এ যায় (নিকটস্থ পাল্টা)</text>
+    <text class="lbl-sm" x="280" y="265" text-anchor="middle">N5 যোগ হলে — শুধু N1 থেকে কিছু key N5-এ যায় (N2-N1 এর মাঝে বসে N5 সেগুলো আটকায়)</text>
     <text class="lbl-sm" x="280" y="278" text-anchor="middle">বাকি সব key যেখানে ছিল সেখানেই থাকে — minimal rebalance ✨</text>
   </svg>
   <div class="diag-cap">প্রতিটা key → ঘড়ির কাঁটায় নিকটস্থ node-এ। node যোগ/বাদ = শুধু সেই অংশের key সরে।</div>
@@ -500,8 +503,8 @@ WHY IT MATTERS:
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। AI infrastructure-এ consistent hashing সবখানে। Vector DB cluster — embedding কোন shard-এ? consistent hash (key = doc_id)। RAG cache — query cache কোন node-এ? ring। Distributed inference — এক মডেল অনেক GPU, request কোন replica? hash(user_id) → sticky (cache locality)। Training data sharding — sample_id ring-এ। Feature store — user_id shard। LLM token routing — session_id hash → session এক replica-তে (KV cache reuse!)। বিনা consistent hashing-এ distributed AI অসম্ভব।</div>
 <div class="dialogue en">"You're an AI engineer. Consistent hashing everywhere in AI infra. Vector DB cluster — which shard holds the embedding? Consistent hash (key = doc_id). RAG cache — which node has the query cache? Ring. Distributed inference — one model many GPUs, which replica? hash(user_id) → sticky (cache locality). Training data sharding — sample_id on ring. Feature store — user_id shard. LLM token routing — session_id hash → session on one replica (KV cache reuse!). Distributed AI is impossible without consistent hashing."</div>
 
-<div class="dialogue">দাওয়াম আল-হালকা — চিরস্থায়ী রিং। কুরআনে আল্লাহ শপথ করেছেন আকাশের — "যন্ত্রণাদায়ক শাস্তির দিনের শপথ, এবং যে দিনের গুণ আছে, এবং রাত্রির যখন তা আবৃত করে।" সূর্য, চাঁদ, গ্রহ — সব বৃত্তাকার পথে। প্রকৃতিতে সব চক্র — ঋতু, জীবন, জল। বৃত্তের জাদু: এক অংশ সরলে পুরো বৃত্ত নষ্ট হয় না, প্রতিবেশী সামঞ্জস্য রাখে। consistent hashing সেই প্রাকৃতিক প্যাটার্ন — বৃত্তে ছড়িয়ে, পরিবর্তন স্থানীয়, সমষ্টি স্থিতিশীল।</div>
-<div class="dialogue en">"Dawam al-halqa — the enduring ring. Allah swore by the sky — by the sky with its constellations. Sun, moon, planets — all on circular paths. In nature everything is cyclic — seasons, life, water. The circle's magic: one part moving doesn't break the whole, neighbors maintain balance. Consistent hashing is that natural pattern — spread on a ring, change local, sum stable."</div>`,
+<div class="dialogue">দাওয়াম আল-হালকা — চিরস্থায়ী রিং। কুরআনে আল্লাহ বলেন — "সূর্যের সাধ্য নেই চাঁদকে ধরার, রাত্রিও দিনের আগে যায় না; প্রত্যেকে নিজ নিজ কক্ষপথে (ফালাক) সাঁতরাচ্ছে।" (৩৬:৪০)। সূর্য, চাঁদ, গ্রহ — সব বৃত্তাকার পথে। প্রকৃতিতে সব চক্র — ঋতু, জীবন, জল। বৃত্তের জাদু: এক অংশ সরলে পুরো বৃত্ত নষ্ট হয় না, প্রতিবেশী সামঞ্জস্য রাখে। consistent hashing সেই প্রাকৃতিক প্যাটার্ন — বৃত্তে ছড়িয়ে, পরিবর্তন স্থানীয়, সমষ্টি স্থিতিশীল।</div>
+<div class="dialogue en">"Dawam al-halqa — the enduring ring. Allah says — 'It is not for the sun to overtake the moon, nor does the night outstrip the day; each swims in an orbit (falak) of its own.' (36:40). Sun, moon, planets — all on circular paths. In nature everything is cyclic — seasons, life, water. The circle's magic: one part moving doesn't break the whole, neighbors maintain balance. Consistent hashing is that natural pattern — spread on a ring, change local, sum stable."</div>`,
   senior:{
     title:"Consistent Hashing — Implementation Notes",
     body:`<p><strong>নিজে লেখো না:</strong> লাইব্রেরি আছে — Python <code>hashring</code>, Go <code>consistent</code>, Jump Consistent Hash (Google)। subtle edge cases অনেক।</p><p><strong>Virtual nodes সংখ্যা:</strong> ১০০-২০০ per physical সাধারণ। বেশি = সমান ভাগ কিন্তু lookup ধীর (sorted structure-এ search)।</p><p><strong>Lookup কৌশল:</strong> node অবস্থানগুলো sorted array → key hash → binary search (next clockwise)। O(log N) per lookup।</p><p><strong>Jump Consistent Hash:</strong> Google-এর সহজ সংস্করণ — শুধু এক ফাংশন, কোনো ring নয়। কিন্তু node যোগ/বাদ ক্রম নির্দিষ্ট (0..N)। সীমিত ক্ষেত্রে দ্রুত।</p><p><strong>Replication সহ:</strong> প্রতিটা key শুধু নিকটস্থ নয়, পরের দুই-তিন node-এও (replication factor R)। Cassandra এভাবে — ring-এ পরের R node = replicas।</p>`

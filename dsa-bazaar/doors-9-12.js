@@ -94,8 +94,8 @@ def bfs(graph, start, target):
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার — graph তোমার সবকিছুতে। Knowledge graph: ধারণা আর তাদের সম্পর্ক। Agent workflow: এজেন্ট A → টুল B → এজেন্ট C — একটা DAG (directed acyclic graph)। RAG retrieval: প্রশ্ন থেকে সম্পর্কিত ডকুমেন্টে যাওয়া — graph traversal। সব সম্পর্ক, সব পথ।</div>
 <div class="dialogue en">"You're an AI engineer — graphs are everywhere. Knowledge graphs: concepts and their relationships. Agent workflows: Agent A → Tool B → Agent C — a DAG. RAG retrieval: going from query to related documents — graph traversal. All relationships, all paths."</div>
 
-<div class="dialogue">উম্মাহ — সম্প্রদায়। কুরআনে আল্লাহ বলেন — "এই উম্মাহ তোমাদের জন্য এক সম্প্রদায়।" (২:১৪৩)। প্রতিটা মানুষ একটা নোড, সম্পর্ক হলো edge। কেউ একা নয় — সবাই সংযুক্ত। Graph হলো সেই সংযোগের গাণিতিক রূপ — সম্পর্কের জাল।</div>
-<div class="dialogue en">"Ummah — community. Allah says in the Quran — 'This community is one community for you.' (2:143). Each person is a node, relationships are edges. No one is alone — all connected. The graph is the mathematical form of that connection — the web of relationships."</div>`,
+<div class="dialogue">উম্মাহ — সম্প্রদায়। কুরআনে আল্লাহ বলেন — "নিশ্চয় এই তোমাদের উম্মাহ, একই উম্মাহ, আর আমি তোমাদের প্রতিপালক।" (২১:৯২)। প্রতিটা মানুষ একটা নোড, সম্পর্ক হলো edge। কেউ একা নয় — সবাই সংযুক্ত। Graph হলো সেই সংযোগের গাণিতিক রূপ — সম্পর্কের জাল।</div>
+<div class="dialogue en">"Ummah — community. Allah says in the Quran — 'Indeed this, your religion [ummah], is one religion, and I am your Lord.' (21:92). Each person is a node, relationships are edges. No one is alone — all connected. The graph is the mathematical form of that connection — the web of relationships."</div>`,
   senior:{
     title:"Adjacency List vs Matrix — কখন কোনটা?",
     body:`
@@ -148,7 +148,7 @@ else:
 doors.push({
   num:10, icon:"🏛️", color:"#fb923c", name:"গোত্রপতির পরিষদ",
   subtitle:"The Clan Elder's Council", tech:"Union-Find (Disjoint Set Union)",
-  secret:"হাজার উপাদান — কে কোন গোত্রে? গোত্র এক হলে (union) আবার ভাঙতে পারবে না। Union-Find — union ও find, দুটোই প্রায় O(1) (path compression সহ)।",
+  secret:"হাজার উপাদান — কে কোন গোত্রে? গোত্র এক হলে (union) আবার ভাঙতে পারবে না। Union-Find — union ও find, দুটোই প্রায় O(1) (path compression + union by rank একসাথে থাকলে — আসলে amortized O(α(n)))।",
   recall:{
     q:"গোত্রপতি কীভাবে হাজার মানুষের মধ্যে দুজন একই গোত্রের কি না সাথে সাথে বলেন?",
     qen:"How does the clan elder instantly tell if two among thousands belong to the same clan?",
@@ -226,6 +226,9 @@ WHY "NO SPLIT":
   যদি edge মুছতে হয় → offline reverse trick
   (সব operation পেছন থেকে প্রশ্ন সাজাও — delete → union হয়ে যায়)।</div>
 
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার — Union-Find তোমার ডেটা পাইপলাইনেও লুকিয়ে থাকে। Entity resolution: দুই রেকর্ড কি একই ব্যক্তি? মিললে union করো — শেষে যে root গুলো বাঁচে, সেগুলোই আসল unique entity। Embedding clustering: দুই ভেক্টরের similarity থ্রেশহোল্ডের বেশি হলে union করো — connected components-ই হয়ে যায় cluster (single-linkage-এর দ্রুততম বাস্তবায়ন)। Streaming deduplication-এও একই কৌশল — নতুন রেকর্ড এলে শুধু union করো, পুরো ডেটাসেট আবার স্ক্যান করতে হয় না।</div>
+<div class="dialogue en">"You're an AI engineer — union-find hides inside your data pipelines too. Entity resolution: are two records the same person? If they match, union them — the surviving roots are the unique entities. Embedding clustering: if two vectors' similarity crosses a threshold, union them — the connected components become the clusters (the fastest way to implement single-linkage clustering). The same trick works for streaming deduplication — when a new record arrives, just union it in, no need to rescan the whole dataset."</div>
+
 <div class="dialogue">জামাত — দল, সম্প্রদায়। ইসলামে জামাতের গুরুত্ব অপরিসীম — "একজন আরেকজনের ভাই," "এক জামাতে থাকো।" গোত্র একবার যুক্ত হলে আলাদা হয় না — সম্প্রদায়ের বাঁধন শক্ত। Union-Find-এর সৌন্দর্য — একবার union, চিরস্থায়ী। find শুধু জিজ্ঞেস করে — তুমি কার সাথে যুক্ত?</div>
 <div class="dialogue en">"Jamaat — group, community. In Islam, the community's importance is boundless — 'one is brother to another,' 'stay in the group.' Once clans join, they don't separate — the bond of community is strong. The beauty of union-find — once unioned, forever. Find only asks — who are you connected to?"</div>`,
   senior:{
@@ -302,7 +305,7 @@ doors.push({
     <text class="lbl-sm" x="53" y="20">✓ ছোট</text>
     <text class="lbl-sm" x="289" y="20" fill="#ff6b35">target = 23</text>
     <text class="lbl-sm" x="495" y="20">বাদ</text>
-    <text class="lbl-sm" x="280" y="95" text-anchor="middle">ধাপ ১: mid=23 ✓ পাওয়া গেছে! (ভাগ্য ভালো। সাধারণত আরও কয়েক ধাপ।)</text>
+    <text class="lbl-sm" x="280" y="95" text-anchor="middle">৩ ধাপ লাগে: mid=16 (ছোট → ডানে যাও), mid=56 (বড় → বামে যাও), mid=23 ✓ পাওয়া গেছে!</text>
     <text class="lbl-sm" x="280" y="115" text-anchor="middle">১০২৪-এর মধ্যে খুঁজতে সর্বোচ্চ log₂(1024) = ১০ ধাপ।</text>
   </svg>
 </div>
@@ -330,8 +333,8 @@ sorted_list = [1, 3, 5, 7, 9, 11, 13]
 idx = bisect.bisect_left(sorted_list, 7)  # → 3
 # Found in O(log n)!</div>
 
-<div class="dialogue">কিস্ত — ন্যায়বিচার। আল্লাহ বলেন — "তোমরা ন্যায়ের খাতায় দাঁড়াও।" (৫৫:৮)। ন্যায়বিচার মানে প্রতিটা জিনিসকে তার সঠিক স্থানে রাখা। Sorting হলো সেই কিস্তের ছায়া — প্রতিটা উপাদানকে তার স্থানে। Binary search তখনই কাজ করে যখন কিস্ত প্রতিষ্ঠিত — যখন সবকিছু তার জায়গায়।</div>
-<div class="dialogue en">"Qist — justice. Allah says — 'Stand firmly for justice.' (55:8). Justice means placing each thing in its correct position. Sorting is the shadow of qist — each element in its place. Binary search works only when qist is established — when everything is where it belongs."</div>`,
+<div class="dialogue">কিস্ত — ন্যায়বিচার। আল্লাহ বলেন — "হে ঈমানদারগণ, তোমরা আল্লাহর জন্য ন্যায়ের সাক্ষী হয়ে দৃঢ়ভাবে দাঁড়াও।" (৫:৮)। ন্যায়বিচার মানে প্রতিটা জিনিসকে তার সঠিক স্থানে রাখা। Sorting হলো সেই কিস্তের ছায়া — প্রতিটা উপাদানকে তার স্থানে। Binary search তখনই কাজ করে যখন কিস্ত প্রতিষ্ঠিত — যখন সবকিছু তার জায়গায়।</div>
+<div class="dialogue en">"Qist — justice. Allah says — 'O you who have believed, be persistently standing firm for Allah, witnesses in justice.' (5:8). Justice means placing each thing in its correct position. Sorting is the shadow of qist — each element in its place. Binary search works only when qist is established — when everything is where it belongs."</div>`,
   senior:{
     title:"Python Sorting — Senior Patterns",
     body:`
@@ -476,7 +479,7 @@ WHY O(n log n):
     title:"Merge Sort বনাম Quick Sort — Senior Choice",
     body:`
     <p><strong>Merge sort:</strong> stable, <strong>O(n log n) worst-case</strong>, কিন্তু O(n) অতিরিক্ত মেমোরি। linked list sort-এ সেরা। "সবসময় দ্রুত" চাইলে merge sort।</p>
-    <p><strong>Quick sort:</strong> in-place (O(log n) স্ট্যাক), গড়ে দ্রুত (cache-friendly), কিন্তু worst-case O(n²) যদি pivot খারাপ হয়। random/median-of-three pivot দিয়ে এড়াও। Python/Java-র ডিফল্ট sort এর উপর ভিত্তি করে।</p>
+    <p><strong>Quick sort:</strong> in-place (গড়ে O(log n) স্ট্যাক), গড়ে দ্রুত (cache-friendly), কিন্তু pivot খারাপ হলে worst-case O(n²) সময় আর O(n) স্ট্যাক — দুটোই একসাথে খারাপ হয়। random/median-of-three pivot দিয়ে এড়াও। Python/Java-র ডিফল্ট sort এর উপর ভিত্তি করে।</p>
     <p><strong>বাস্তবে:</strong> Python <code>sorted()</code> = Timsort (merge+insertion হাইব্রিড), stable, O(n log n)। নিজে লেখা বাদ দাও — Timsort প্রায় সব ক্ষেত্রে সেরা।</p>
     <p><strong>সবচেয়ে গুরুত্বপূর্ণ:</strong> D&C একটা চিন্তাভাবনা — শুধু sorting নয়। যেকোনো বড় সমস্যা ভাগ করতে পারো কি না, সেটাই প্রশ্ন।</p>`
   },

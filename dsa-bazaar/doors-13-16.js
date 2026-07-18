@@ -36,20 +36,20 @@ doors.push({
     <text class="lbl-sm" x="157" y="40" fill="#f06292">window [7,2,9]</text>
     <!-- window 2 -->
     <rect x="238" y="46" width="150" height="42" rx="6" fill="none" stroke="#f0c14b" stroke-width="2.5" stroke-dasharray="4,3"/>
-    <text class="lbl-sm" x="313" y="110" fill="#f0c14b">slide → [9,1,5]</text>
+    <text class="lbl-sm" x="313" y="110" fill="#f0c14b">slide → [1,5,8]</text>
     <line class="edge-hot" x1="200" y1="100" x2="240" y2="100"/>
-    <text class="lbl-sm" x="280" y="140" text-anchor="middle">বাক্স সরাও — পুরোনো বেরোয় (বাঁয়া), নতুন ঢোকে (ডানা)। প্রতিটা উপাদান একবারই ছুঁয়ে যায় → O(n)।</text>
+    <text class="lbl-sm" x="280" y="140" text-anchor="middle">বাক্স সরাও — পুরোনো বেরোয় (বাঁয়ে), নতুন ঢোকে (ডানে)। প্রতিটা উপাদান একবারই ছুঁয়ে যায় → O(n)।</text>
   </svg>
 </div>
 
 <div class="dialogue">Two pointers — দুটো নির্দেশক। একটা শুরু থেকে, একটা শেষ থেকে। অথবা দুটোই শুরু থেকে, কিন্তু আলাদা গতিতে। Sorted array-তে দুটো সংখ্যা খুঁজছো যাদের যোগ = target? বাঁ প্রান্ত আর ডান প্রান্ত ধরো। ছোট? বাঁ সরাও। বড়? ডান সরাও। O(n)। Nested loop নয় — O(n²) নয়।</div>
 <div class="dialogue en">"Two pointers — two indicators. One from the start, one from the end. Or both from the start, but different speeds. Finding two numbers that sum to target in a sorted array? Left end and right end. Too small? Move left. Too big? Move right. O(n). Not nested loops — not O(n²)."</div>
 
-<div class="dialogue">Sliding window — একটা চলমান বাক্স। বাক্সের ভেতরে নির্দিষ্ট সংখ্যক উপাদান। বাক্স সরলে — পুরনো বেরোয়, নতুন ঢোকে। Text chunking-এ লাগে — একটা নির্দিশ্ট window-এ টোকেন ধরে, window সরাও। Moving average — গত ৭ দিনের গড়। প্রতিদিন window সরে — পুরনো দিন বেরোয়, নতুন ঢোকে।</div>
+<div class="dialogue">Sliding window — একটা চলমান বাক্স। বাক্সের ভেতরে নির্দিষ্ট সংখ্যক উপাদান। বাক্স সরলে — পুরনো বেরোয়, নতুন ঢোকে। Text chunking-এ লাগে — একটা নির্দিষ্ট window-এ টোকেন ধরে, window সরাও। Moving average — গত ৭ দিনের গড়। প্রতিদিন window সরে — পুরনো দিন বেরোয়, নতুন ঢোকে।</div>
 <div class="dialogue en">"Sliding window — a moving box. Inside the box: a fixed number of elements. Slide the box — old exits, new enters. Used in text chunking — hold tokens in a fixed window, slide. Moving average — the last 7 days' mean. Each day the window slides — old day exits, new enters."</div>
 
-<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Token chunking — বড় টেক্সটকে ছোট ছোট অংশে ভাগ করা। প্রতিটা chunk-এ overlap দেওয়া — sliding window। Streaming data — real-time আসা ডেটা প্রক্রিয়া করা। কোনো সময় পুরো ডেটা মেমোরিতে রাখা যায় না — window দিয়ে অংশে অংশে।</div>
-<div class="dialogue en">"You're an AI engineer. Token chunking — dividing large text into smaller pieces. Overlap between chunks — sliding window. Streaming data — processing data arriving in real-time. Sometimes the whole dataset can't fit in memory — process by windows."</div>
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Token chunking — বড় টেক্সটকে ছোট ছোট অংশে ভাগ করা। প্রতিটা chunk-এ overlap দেওয়া — sliding window। Streaming data — real-time আসা ডেটা প্রক্রিয়া করা। কোনো সময় পুরো ডেটা মেমোরিতে রাখা যায় না — window দিয়ে অংশে অংশে। LLM inference-এও এই ধারণা — context window সীমিত (৮k, ১২৮k টোকেন), তাই পুরোনো টোকেন "truncate" করতে হয়। কিছু model (Mistral, Longformer) সরাসরি sliding-window attention ব্যবহার করে — প্রতিটা টোকেন শুধু কাছাকাছি একটা fixed window-এর টোকেন দেখে, পুরো sequence নয় — এতে attention-এর O(n²) খরচ কমে O(n·w)-তে।</div>
+<div class="dialogue en">"You're an AI engineer. Token chunking — dividing large text into smaller pieces. Overlap between chunks — sliding window. Streaming data — processing data arriving in real-time. Sometimes the whole dataset can't fit in memory — process by windows. This shows up in LLM inference too — the context window is finite (8k, 128k tokens), so old tokens must be 'truncated'. Some models (Mistral, Longformer) use sliding-window attention directly — each token attends only to a fixed nearby window, not the whole sequence — cutting attention cost from O(n²) to O(n·w)."</div>
 
 <div class="code-block">Sliding Window — Token Chunking:
 
@@ -167,13 +167,12 @@ doors.push({
     <rect class="cell" x="${30+a[0]*40}" y="${45+i*22}" width="${(a[1]-a[0])*40}" height="16" rx="3"/>
     <text class="lbl-sm" x="${35+a[0]*40}" y="${56+i*22}">কাজ${i+1} [${a[0]}-${a[1]}]</text>
     `).join('')}
-    <!-- greedy picks highlighted -->
-    <rect x="30" y="43" width="80" height="20" rx="3" fill="none" stroke="#52c41a" stroke-width="2.5"/>
-    <rect x="150" y="65" width="80" height="20" rx="3" fill="none" stroke="#52c41a" stroke-width="2.5"/>
-    <rect x="230" y="87" width="40" height="20" rx="3" fill="none" stroke="#52c41a" stroke-width="2.5"/>
-    <rect x="270" y="87" width="40" height="20" rx="3" fill="none" stroke="#52c41a" stroke-width="2.5"/>
-    <rect x="350" y="131" width="80" height="20" rx="3" fill="none" stroke="#52c41a" stroke-width="2.5"/>
-    <text class="lbl-sm" x="450" y="100" fill="#52c41a">✓ greedy: ৫ কাজ</text>
+    <!-- greedy picks highlighted: (1,3),(4,6),(6,7),(8,10) — earliest-finish-first selection -->
+    <rect x="68" y="43" width="84" height="20" rx="3" fill="none" stroke="#52c41a" stroke-width="2.5"/>
+    <rect x="188" y="87" width="84" height="20" rx="3" fill="none" stroke="#52c41a" stroke-width="2.5"/>
+    <rect x="268" y="109" width="44" height="20" rx="3" fill="none" stroke="#52c41a" stroke-width="2.5"/>
+    <rect x="348" y="153" width="84" height="20" rx="3" fill="none" stroke="#52c41a" stroke-width="2.5"/>
+    <text class="lbl-sm" x="450" y="100" fill="#52c41a">✓ greedy: ৪ কাজ</text>
     <text class="lbl-sm" x="280" y="185" text-anchor="middle">প্রতিটা ধাপে "যেটা আগে শেষ" বেছো → সর্বোচ্চ কাজ। (Greedy = optimal এই সমস্যায়।)</text>
   </svg>
 </div>
@@ -191,6 +190,7 @@ doors.push({
 
   ৩. Dijkstra (ভরযুক্ত graph shortest path) — Door 9 এর সম্প্রসারণ।
      প্রতিটা ধাপে সবচেয়ে কাছের unvisited node বেছো।
+     (শর্ত: সব edge-এর ওজন অ-ঋণাত্মক হতে হবে — ঋণাত্মক ওজন থাকলে greedy choice ভেঙে পড়ে, তখন Bellman-Ford লাগে।)
 
   ৪. Kruskal/Prim MST — সবচেয়ে ছোট edge বেছো, cycle না হয় পর্যন্ত।
      (Union-Find লাগে — Door 10।)
@@ -203,8 +203,8 @@ GREEDY vs DP — কোনটা?
   • যদি সাব-সমস্যার সমাধান মনে রাখতে হয় → DP (Door 15)
   • সন্দেহ হলে: brute force দিয়ে ছোট ইনপুটে যাচাই করো।</div>
 
-<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Greedy লুকিয়ে আছে সবখানে। Huffman — embedding বা টোকেন compression। Dijkstra — knowledge graph-এ সবচেয়ে সম্পর্কিত পথ। Top-k greedy — RAG-এ সেরা k doc বেছো। Clustering seeding — প্রতিটা ধাপে সবচেয়ে দূরের point বেছো। সহজ, দ্রুত, এবং প্রায়ই "যথেষ্ট ভালো"।</div>
-<div class="dialogue en">"You're an AI engineer. Greedy hides everywhere. Huffman — embedding or token compression. Dijkstra — most related path in knowledge graphs. Top-k greedy — pick the best k docs in RAG. Clustering seeding — at each step pick the farthest point. Simple, fast, and often 'good enough'."</div>
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Greedy লুকিয়ে আছে সবখানে। LLM token generation-এ greedy decoding — প্রতিটা ধাপে সবচেয়ে সম্ভাব্য পরবর্তী টোকেন বেছো (logits-এর argmax)। দ্রুত, কিন্তু local optimum — পুরো বাক্যের সেরা সম্ভাবনা মিস হতে পারে। তাই beam search — একসাথে কয়েকটা candidate path সমান্তরাল রাখো, শেষে সেরাটা বেছো। Beam search আসলে "বহু-পথ greedy" — pure greedy আর brute-force search-এর মাঝামাঝি। Huffman — embedding বা টোকেন compression। Dijkstra — knowledge graph-এ সবচেয়ে সম্পর্কিত পথ। Top-k greedy — RAG-এ সেরা k doc বেছো। Clustering seeding — প্রতিটা ধাপে সবচেয়ে দূরের point বেছো। সহজ, দ্রুত, এবং প্রায়ই "যথেষ্ট ভালো"।</div>
+<div class="dialogue en">"You're an AI engineer. Greedy hides everywhere. LLM token generation uses greedy decoding — pick the most probable next token at each step (argmax of logits). Fast, but a local optimum — the best full-sentence probability can be missed. So beam search — keep several candidate paths in parallel, pick the best at the end. Beam search is really 'multi-path greedy' — a middle ground between pure greedy and brute-force search. Huffman — embedding or token compression. Dijkstra — most related path in knowledge graphs. Top-k greedy — pick the best k docs in RAG. Clustering seeding — at each step pick the farthest point. Simple, fast, and often 'good enough'."</div>
 
 <div class="dialogue">সাʿআহ — মুহূর্ত, সুযোগ। কুরআনে আল্লাহ বলেন — "তোমাদের কাছে যা আছে তা শেষ হয়ে যাবে, আর আল্লাহর কাছে যা আছে তা স্থায়ী।" (১৬:৯৬)। কিন্তু সাথে সাথে সতর্কতা — আল্লাহ তাড়াহুড়ো পছন্দ করেন না (৮৭:১৯ এর প্রেক্ষিতে, "তাড়াহুড়ো শয়তানের কাজ")। Greedy হলো সাʿআহ-এর ছায়া — মুহূর্তের সেরা ধরো। কিন্তু অন্ধ তাড়া নয় — প্রথমে জানো, এই সমস্যায় কি স্থানীয় সেরা সার্বজনীন সেরা দেয়?</div>
 <div class="dialogue en">"Saʿah — moment, opportunity. Allah says — 'What you have runs out, what is with Allah remains.' (16:96). But also caution — haste is not loved (the saying goes, 'haste is from Satan'). Greedy is the shadow of saʿah — seize the moment's best. But not blind haste — first know, does this problem reward local best with global best?"</div>`,
@@ -470,13 +470,13 @@ WHEN TO REACH FOR BACKTRACKING:
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Backtracking লুকিয়ে আছে অনেক জায়গায়। Constraint satisfaction — scheduling, resource allocation। Hyperparameter search — প্রতিটা সংমিশ্রণ চেষ্টা (বুদ্ধিমান প্রুনিং সহ)। Combinatorial optimization — feature selection, model architecture search। Game tree search — minimax সহ backtrack। Prompt combinatorics — কোন tool sequence কাজ করবে? সব চেষ্টা নয় — বুদ্ধিমান প্রুনিং।</div>
 <div class="dialogue en">"You're an AI engineer. Backtracking hides in many places. Constraint satisfaction — scheduling, resource allocation. Hyperparameter search — try combinations with smart pruning. Combinatorial optimization — feature selection, architecture search. Game tree search — minimax with backtracking. Prompt combinatorics — which tool sequence works? Not all — smart pruning."</div>
 
-<div class="dialogue">রুজুʿ — ফিরে আসা, প্রত্যাবর্তন। কুরআনে বারবার আল্লাহ বলেছেন — "তওবা করো, ফিরে এসো।" (২:২২২ এবং অন্যান্য)। তওবা মানে শুধু অনুশোচনা নয় — পথ থেকে ফিরে আসা, নতুন পথে যাওয়া। backtracking সেই রুজুʿ-এর ছায়া — ভুল পছন্ন থেকে ফিরে আসা, সঠিক শাখায় যাওয়া। যে ফিরে আসতে পারে সে গোলকধাঁধা জয় করে।</div>
+<div class="dialogue">রুজুʿ — ফিরে আসা, প্রত্যাবর্তন। কুরআনে বারবার আল্লাহ বলেছেন — "তওবা করো, ফিরে এসো।" (২:২২২ এবং অন্যান্য)। তওবা মানে শুধু অনুশোচনা নয় — পথ থেকে ফিরে আসা, নতুন পথে যাওয়া। backtracking সেই রুজুʿ-এর ছায়া — ভুল পছন্দ থেকে ফিরে আসা, সঠিক শাখায় যাওয়া। যে ফিরে আসতে পারে সে গোলকধাঁধা জয় করে।</div>
 <div class="dialogue en">"Rujuʿ — returning, retreating. Allah repeatedly says in the Quran — 'repent, return.' (2:222 and elsewhere). Tawbah is not just regret — it's returning from a path, taking a new one. Backtracking is the shadow of rujuʿ — returning from a wrong choice, going to the right branch. Who can return can conquer the maze."</div>`,
   senior:{
     title:"Backtracking — দ্রুত করার কৌশল (Pruning)",
     body:`
     <p><strong>1. Pruning early:</strong> যত শীঘ্র সম্ভব মৃত শাখা কেটে ফেলো। N-Queens-এ — রানি রাখার আগেই চেক করো আক্রান্ত হবে কি না। না হলে বসাওই না। এতে সময় কয়েক গুণ কমে।</p>
-    <p><strong>2. Order matters:</strong> কোন পছন্ন আগে চেষ্টা করবে তা গুরুত্বপূর্ণ। সম্ভাবনার ক্রমে সাজাও — most constrained first (constraint propagation)।</p>
+    <p><strong>2. Order matters:</strong> কোন পছন্দ আগে চেষ্টা করবে তা গুরুত্বপূর্ণ। সম্ভাবনার ক্রমে সাজাও — most constrained first (constraint propagation)।</p>
     <p><strong>3. Symmetry breaking:</strong> প্রতিসম সমাধান একবারই গণনা করো। N-Queens-এ আয়না/ঘূর্ণন প্রতিসম বাদ দাও।</p>
     <p><strong>4. Memoization যোগ করো:</strong> একই অবস্থায় এলে মনে রাখো — এটাকে DP-তে রূপান্তর করে (Door 15 এর সাথে মিলিত)।</p>
     <p><strong>Senior warning:</strong> backtracking exponential O(b^d) — গভীর বা চওড়া গাছে বিস্ফোরণ। বাস্তবে প্রুনিং বা heuristic সহ (A*, branch-and-bound) লাগে।</p>`

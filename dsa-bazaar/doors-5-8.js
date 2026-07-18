@@ -12,7 +12,7 @@ doors.push({
   recall:{
     q:"কাফেলার সারিতে কে আগে বেরোয় — যে আগে এসেছে, নাকি যে পরে?",
     qen:"In the caravan line, who leaves first — who came first, or who came last?",
-    a:"দুই রকম নিয়ম। Queue-এ (FIFO) — যে আগে এসেছে সে আগে যায়। Stack-এ (LIFO) — যে পরে এসেছে সে আগে বেরে যায়, স্তূপের মতো। কাজ অনুযায়ী নিয়ম বাছো।",
+    a:"দুই রকম নিয়ম। Queue-এ (FIFO) — যে আগে এসেছে সে আগে যায়। Stack-এ (LIFO) — যে পরে এসেছে সে আগে বেরিয়ে যায়, স্তূপের মতো। কাজ অনুযায়ী নিয়ম বাছো।",
     aen:"Two rules. In a queue (FIFO) — who came first leaves first. In a stack (LIFO) — who came last leaves first, like a pile. Choose the rule per task."
   },
   story:`
@@ -46,8 +46,8 @@ doors.push({
   </svg>
 </div>
 
-<div class="dialogue">Stack — LIFO। Last In, First Out। মালের স্তূপে সবশেষে যা রাখলে, সেটাই প্রথম তুলবে। থালার স্তূপ, বইয়ের স্তূপ, কল স্ট্যাক (function call) — সব LIFO। ফাংশন কল করলে স্ট্যাকে ঢোকে, শেষেরটা প্রথম ফিরে আসে। recursion-ও stack-এ চলে (গত দোকানে দেখলে)।</div>
-<div class="dialogue en">"Stack — LIFO. Last In, First Out. Whatever you place last on the pile, you pick up first. Plate stacks, book stacks, the call stack (function calls) — all LIFO. Call a function, it enters the stack; the last returns first. Recursion runs on a stack too (last shop)."</div>
+<div class="dialogue">Stack — LIFO। Last In, First Out। মালের স্তূপে সবশেষে যা রাখলে, সেটাই প্রথম তুলবে। থালার স্তূপ, বইয়ের স্তূপ, কল স্ট্যাক (function call) — সব LIFO। ফাংশন কল করলে স্ট্যাকে ঢোকে, শেষেরটা প্রথম ফিরে আসে। recursion-ও stack-এ চলে (দ্বিতীয় দোকানে দেখেছিলে)।</div>
+<div class="dialogue en">"Stack — LIFO. Last In, First Out. Whatever you place last on the pile, you pick up first. Plate stacks, book stacks, the call stack (function calls) — all LIFO. Call a function, it enters the stack; the last returns first. Recursion runs on a stack too (second shop, remember?)."</div>
 
 <div class="dialogue">Queue — FIFO। First In, First Out। কাফেলার সারিতে যে আগে এসেছে, সে আগে যায়। টিকিটের লাইন, প্রিন্টারের কাজ, মেসেজ কিউ — সব FIFO। AI-এ? task queue — একাধিক inference request সারিতে, এক এক করে প্রসেস।</div>
 <div class="dialogue en">"Queue — FIFO. First In, First Out. Whoever came first to the caravan line goes first. Ticket lines, printer jobs, message queues — all FIFO. In AI? Task queues — many inference requests in line, processed one by one."</div>
@@ -272,7 +272,7 @@ doors.push({
     aen:"Because full sorting is O(n log n). Keeping just the top costs O(log n) per insert. Heap always keeps the most important element on top — O(1) peek, O(log n) extract."
   },
   story:`
-<p class="scene-setting">সপ্তম দোকান। মসলা ব্যবসায়ীর দোকান। শুকনো মরিচের ঝাঁঝ, জায়ফলের উষ্ণতা, জাভাত্রির তীক্ষ্ণতা। হাজি মুহতার দাঁড়িয়ে আছেন — সামনে কাঠের তাক, প্রতিটা তাকে মসলা, কিন্তু ক্রম অনুযায়ী নয়। শুধু একটা নিয়ম — সবচেয়ে ঝাঁঝালো মসলা সবসময় উপরে। বাকিগুলো যেখরে হোক। কিন্তু উপরেরটা সবসময় সেরা।</p>
+<p class="scene-setting">সপ্তম দোকান। মসলা ব্যবসায়ীর দোকান। শুকনো মরিচের ঝাঁঝ, জায়ফলের উষ্ণতা, জয়ত্রীর তীক্ষ্ণতা। হাজি মুহতার দাঁড়িয়ে আছেন — সামনে কাঠের তাক, প্রতিটা তাকে মসলা, কিন্তু ক্রম অনুযায়ী নয়। শুধু একটা নিয়ম — সবচেয়ে ঝাঁঝালো মসলা সবসময় উপরে। বাকিগুলো যেখরে হোক। কিন্তু উপরেরটা সবসময় সেরা।</p>
 <p class="scene-setting en">The seventh shop. The Spice Merchant's stall. The bite of dried chili, warmth of nutmeg, sharpness of mace. Haji Mukhtar stands — wooden shelves before him, spices on each, but not fully sorted. One rule only — the sharpest spice always on top. The rest wherever. But the top is always the best.</p>
 
 <div class="dialogue">তালা নির্মাতা বলেছিলেন — নাম দিয়ে খোঁজা যায়, O(1)-এ। কিন্তু আমি বলি — কখনো নাম লাগে না। কখনো লাগে শুধু সেরাটা। সবচেয়ে ঝাঁঝালো মসলা কোনটা? সব নাম মনে রাখার দরকার নেই — শুধু উপরেরটা নাও।</div>
@@ -436,8 +436,8 @@ doors.push({
 <div class="dialogue">Trie — আরেক ধরনের বৃক্ষ। কিন্তু এখানে শাখা হলো অক্ষর। "cat" → 'c' → 'a' → 't'। প্রতিটা অক্ষর একটা শাখা। এটা autocomplete-এ অপ্রতিদ্বন্দ্বী। ইউজার টাইপ করছে "ca" — trie বলে দেয় cat, car, card সব সম্ভায় শাখা আছে। Tokenizer-এও — LLM কীভাবে শব্দ ভাঙে? Trie-এর মতো করে।</div>
 <div class="dialogue en">"Trie — another kind of tree. But here, branches are letters. 'cat' → 'c' → 'a' → 't'. Each letter is a branch. This is unmatched for autocomplete. User types 'ca' — the trie says cat, car, card — all branches that exist. In tokenizers too — how does an LLM break words? Like a trie."</div>
 
-<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Tokenization হলো trie-এর ভাষা — BPE (Byte Pair Encoding) মূলত একটা trie traversal। Decision tree, random forest — সব tree-ই। BST-ভিত্তিক index-এ ডেটাবেস search কাজ করে। বংশতালিকা শুধু কাগজে নয় — কোডেও।</div>
-<div class="dialogue en">"You're an AI engineer. Tokenization speaks trie — BPE (Byte Pair Encoding) is essentially a trie traversal. Decision trees, random forests — all trees. Database indexes work on BST principles. Family trees aren't just on paper — in code too."</div>
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Tokenization হলো trie-এর ভাষা — BPE (Byte Pair Encoding) মূলত একটা trie traversal। Decision tree, random forest — সব tree-ই। ডেটাবেস index-ও এই একই ধারণার সন্তান — যদিও production DB-তে (Postgres, MySQL) সাধারণত pure BST নয়, B-tree/B+-tree ব্যবহার হয় — disk-এ কম I/O লাগে বলে প্রতিটা node-এ বহু key রাখে, শুধু দুটো নয়। বংশতালিকা শুধু কাগজে নয় — কোডেও।</div>
+<div class="dialogue en">"You're an AI engineer. Tokenization speaks trie — BPE (Byte Pair Encoding) inference walks a trie/prefix-match structure over merge rules. Decision trees, random forests — all trees. Database indexes are children of the same idea — though production databases (Postgres, MySQL) usually don't use a pure BST but a B-tree/B+-tree, which packs many keys per node instead of two, cutting disk I/O. Family trees aren't just on paper — in code too."</div>
 
 <div class="dialogue">নসল — বংশধর। কুরআনে বংশের গুরুত্ব বারবার এসেছে — প্রতিটা প্রজন্ম আগের প্রজন্মের ধারক। Tree-ও তেমনি — প্রতিটা child তার parent-এর উত্তরাধিকারী। Root থেকে ডাল — একটাই উৎস, কিন্তু অসংখ্য শাখা।</div>
 <div class="dialogue en">"Nasl — descendants. The Quran repeatedly emphasizes lineage — each generation carries the previous. The tree is the same — each child inherits from its parent. From root to branch — one source, but countless branches."</div>`,

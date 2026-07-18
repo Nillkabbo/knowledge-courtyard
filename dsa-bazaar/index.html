@@ -9,6 +9,19 @@
 </head>
 <body>
 <canvas id="particles"></canvas>
+<!-- Global SVG marker defs — shared by every diagram's .edge-hot / .edge-cyan classes
+     (see style.css: marker-end:url(#arrowFire) / url(#arrowCyan)). Defined once here
+     so every door's inline diagram gets working arrowheads without redefining them. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="arrowFire" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L6,4 L0,8" fill="#ff6b35"/>
+    </marker>
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L6,4 L0,8" fill="#36d6e7"/>
+    </marker>
+  </defs>
+</svg>
 
 <!-- ══ TITLE ══ -->
 <div id="title-screen" class="screen active">

@@ -17,15 +17,15 @@ doors.push({
     aen:"Because different documents need different structures. Some rigid (SQL), some flexible (NoSQL). When huge — split (sharding), copy (replication)."
   },
   story:`
-<p class="scene-setting">নবম স্থান। একটা সুবিশাল সংরক্ষণাগার। দেয়ালে তাকে তাকে স্ক্রল, খাতা, পুথি। কিন্তু এই গ্রন্থাগারটি অন্যরকম — প্রতিটা কক্ষে ভিন্ন ধরনের সংরক্ষণ। এক কক্ষে সুসজ্জিত টেবিল — প্রতিটি সারিতে নির্দিষ্ট তথ্য, নির্দিষ্ট ক্রমে। অন্য কক্ষে ঢিলেঢালা বস্তা — প্রতিটিতে ভিন্ন জিনিস, কোনো নির্দিষ্ট ক্রম নেয়। সংরক্ষণাগারিক জাইদ বলেন — "প্রতিটা ধরনের তথ্যের নিজস্ব ঘর দরকার।"</p>
+<p class="scene-setting">নবম স্থান। একটা সুবিশাল সংরক্ষণাগার। দেয়ালে তাকে তাকে স্ক্রল, খাতা, পুথি। কিন্তু এই গ্রন্থাগারটি অন্যরকম — প্রতিটা কক্ষে ভিন্ন ধরনের সংরক্ষণ। এক কক্ষে সুসজ্জিত টেবিল — প্রতিটি সারিতে নির্দিষ্ট তথ্য, নির্দিষ্ট ক্রমে। অন্য কক্ষে ঢিলেঢালা বস্তা — প্রতিটিতে ভিন্ন জিনিস, কোনো নির্দিষ্ট ক্রম নেই। সংরক্ষণাগারিক জাইদ বলেন — "প্রতিটা ধরনের তথ্যের নিজস্ব ঘর দরকার।"</p>
 <p class="scene-setting en">The ninth place. A vast archive. Shelves of scrolls, ledgers, manuscripts. But this library is different — each room stores differently. One room: organized tables — each row with specific data, specific order. Another room: loose sacks — each with different items, no fixed order. Archivist Zaid says — "Each type of data needs its own room."</p>
 
 <div class="dialogue">বাজার বিতরণকারী বলেছিলেন — কাছে আনো (CDN)। কিন্তু সব তথ্য edge-এ রাখা যায় না। সব তথ্য একটা স্থায়ী ঘর দরকার। সেই ঘরই ডেটাবেস। কিন্তু কোন ঘর?</div>
 <div class="dialogue en">"The distributor said — bring close (CDN). But not all data lives at the edge. All data needs a permanent home. That home is the database. But which home?"</div>
 
 <div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">📊 SQL (Relational)</div>টেবিল, সারি, কলাম। কঠোর কাঠামো। ACID guarantee। JOIN, foreign key, transaction। ভালো: ইউজার, অর্ডার, পেমেন্ট — যেখানে সম্পর্ক গুরুত্বপূর্ণ।<br>PostgreSQL, MySQL</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">📄 NoSQL (Non-relational)</div>নমনীয় কাঠামো। JSON-এর মতো। Schema-less। horizontal scaling সহজ। ভালো: কন্টেন্ট, লগ, IoT — যেখানে কাঠামো বদলায়।<br>MongoDB, Cassandra, DynamoDB</div>
+<div class="cmp-card cmp-neutral"><div class="cmp-label">📊 SQL (Relational)</div>টেবিল, সারি, কলাম। কঠোর কাঠামো। ACID guarantee। JOIN, foreign key, transaction। ভালো: ইউজার, অর্ডার, পেমেন্ট — যেখানে সম্পর্ক গুরুত্বপূর্ণ। আধুনিক SQL-ও horizontal scale করে (Citus, Vitess, CockroachDB) — scaling শুধু NoSQL-এর একচেটিয়া গুণ নয়।<br>PostgreSQL, MySQL</div>
+<div class="cmp-card cmp-neutral"><div class="cmp-label">📄 NoSQL (Non-relational)</div>নমনীয় কাঠামো। JSON-এর মতো। Schema-less। horizontal scaling built-in ও সহজ। ভালো: কন্টেন্ট, লগ, IoT — যেখানে কাঠামো বদলায়।<br>MongoDB, Cassandra, DynamoDB</div>
 </div>
 
 <div class="dialogue">কিন্তু একটা সমস্যা। যখন তথ্য বাড়ে — কোটি কোটি রেকর্ড — একটা সংরক্ষণাগারে রাখা যায় না। দুটো সমাধান: Sharding — ভাগ করা। Replication — অনুলিপি রাখা। আমি ভাগ শিখাই, আমার ভাই আয়না গিল্ড (Door 11) অনুলিপি শেখাবেন।</div>
@@ -42,7 +42,7 @@ Sharding (ভাগ করা):
 
 Replication (অনুলিপি):
   Primary DB → লেখা এখানে
-  Replica 1 → পড়া এখাম থেকে
+  Replica 1 → পড়া এখান থেকে
   → read throughput বাড়ে
   → একটা ক্র্যাশ করলে বাকিরা আছে
 
@@ -53,11 +53,11 @@ NOSQL FLAVORS (শুধু এক নয়):
   Graph (Neo4j) — সম্পর্ক, knowledge graph
   Vector (Pinecone, pgvector) — AI/embedding search!</div>
 
-<div class="dialogue">কুরআনের সংকলনও এভাবে হয়েছে। প্রথমে বিক্ষিপ্ত — হাড়ে, পাতায়, মুখস্থে। তারপে কাঠামো — সূরা ক্রম, আয়াত ক্রম। তারপে যাচাই — প্রতিটা আয়াত দুইজন সাক্ষীর মুখস্থের সাথে মিলিয়ে। তারপে বিতরণ — একাধিক অনুলিপি বিভিন্ন অঞ্চলে। SQL = কাঠামো (সূরা ক্রম)। ACID = যাচাই (সাক্ষী)। Replication = বিতরণ (অনুলিপি)। ডেটাবেস নকশা নতুন কিছু নয় — এটা জ্ঞান সংরক্ষণের প্রাচীন প্রজ্ঞা।</div>
+<div class="dialogue">কুরআনের সংকলনও এভাবে হয়েছে। প্রথমে বিক্ষিপ্ত — হাড়ে, পাতায়, মুখস্থে। তারপর কাঠামো — সূরা ক্রম, আয়াত ক্রম। তারপর যাচাই — প্রতিটা আয়াত দুইজন সাক্ষীর মুখস্থের সাথে মিলিয়ে। তারপর বিতরণ — একাধিক অনুলিপি বিভিন্ন অঞ্চলে। SQL = কাঠামো (সূরা ক্রম)। ACID = যাচাই (সাক্ষী)। Replication = বিতরণ (অনুলিপি)। ডেটাবেস নকশা নতুন কিছু নয় — এটা জ্ঞান সংরক্ষণের প্রাচীন প্রজ্ঞা।</div>
 <div class="dialogue en">"The compilation of the Quran happened this way. First scattered — on bone, leaf, memory. Then structured — surah order, ayah order. Then verified — each ayah cross-checked against two witnesses' memorization. Then distributed — multiple copies to different regions. SQL = structure (surah order). ACID = verification (witnesses). Replication = distribution (copies). Database design isn't new — it's the ancient wisdom of preserving knowledge."</div>`,
   senior:{
     title:"CAP Theorem পূর্বরূপ — ডেটাবেস বাছাই",
-    body:`<p>ডেটাবেস বাছাই করার আগে বুঝো: <strong>CAP Theorem</strong> — Consistency, Availability, Partition tolerance। তিনটার মধ্যে দুটো পাবে, একটা বিসর্জন। (বিস্তারিত Door 12 — CAP)।</p><p><strong>SQL (PostgreSQL):</strong> Consistency + Partition tolerance (CP)। সঠিক ডেটা সবসময়। কিন্তু নেটওয়ার্ক ভাঙলে কিছু অনুরোধ ব্যর্থ।</p><p><strong>NoSQL (Cassandra):</strong> Availability + Partition tolerance (AP)। সবসময় উত্তর দেয়। কিন্তু কিছুক্ষণ পুরনো ডেটা (eventual consistency)।</p>`
+    body:`<p>ডেটাবেস বাছাই করার আগে বুঝো: <strong>CAP Theorem</strong> — Consistency, Availability, Partition tolerance। বাস্তবে P (network partition) এড়ানো যায় না — তাই আসল প্রশ্ন তিনটার মধ্যে দুটো বাছাই নয়, বরং: partition ঘটলে Consistency রাখবে না Availability? (বিস্তারিত Door 12 — CAP)।</p><p><strong>SQL (একক PostgreSQL / sync replica-set):</strong> সাধারণত CP ধাঁচ বেছে নেয়। সঠিক ডেটা সবসময়। কিন্তু নেটওয়ার্ক ভাঙলে কিছু অনুরোধ ব্যর্থ।</p><p><strong>NoSQL (Cassandra):</strong> সাধারণত AP ধাঁচ বেছে নেয়। সবসময় উত্তর দেয়। কিন্তু কিছুক্ষণ পুরনো ডেটা (eventual consistency)।</p>`
   }
 });
 
@@ -105,9 +105,9 @@ INDEX TYPES:
     → (country, city) query দ্রুত
     → (country) query ও দ্রুত (leftmost prefix)
     → কিন্তু (city) alone এ কাজ করবে না!
- ৪. PARTIAL — শর্ত সহ
-    CREATE INDEX ON orders WHERE status='pending';
- ৫. COVERING — index-এ সব column, table-এ যেতেই নয়
+ ৪. PARTIAL — শর্ত সহ, ছোট ও দ্রুত
+    CREATE INDEX idx_pending ON orders(status) WHERE status='pending';
+ ৫. COVERING — query-র সব column index-এই আছে, তাই table-এ যাওয়ার দরকারই নেই
  ৬. GIN/GiST (PostgreSQL) — array, JSONB, full-text
 
 THE COST (no free lunch):
@@ -121,7 +121,10 @@ EXPLAIN — সূচি কাজ করছে কি না:
   → "Seq Scan" (bad) নাকি "Index Scan" (good)?
 
 WHY THIS MATTERS FOR AI:
-  → Vector DB-এ HNSW index (approximate nearest neighbor)
+  → B-tree = exact/range match এর জন্য নিখুঁত (deterministic)
+  → Vector DB-এ HNSW/IVF index — ভিন্ন গোত্র: ANN (Approximate
+    Nearest Neighbor)। নিখুঁত নয়, সম্ভাব্য কাছের ফল, কিন্তু
+    উচ্চ-মাত্রার embedding space-এ O(log n)-এর মতো দ্রুত
   → RAG retrieval সব index-এর উপর নির্ভর
   → pgvector: ivfflat / hnsw index
   → প্রতিটা ML system একটা database স্পর্শ করে</div>
@@ -130,7 +133,7 @@ WHY THIS MATTERS FOR AI:
 <div class="dialogue en">"Fihrist — index, the map of quick finding. When the Quran was revealed, the companions compiled it — but could it be found without an index? In Islamic tradition, the collection of ilm is always organized — by chapter, letter, topic. Without an index, ilm is chaos. The database too — without an index, slow, chaotic, blind."</div>`,
   senior:{
     title:"Index Audit — তোমার ডেটাবেসে",
-    body:`<p><strong>Slow query? প্রথম ধাপ:</strong> <code>EXPLAIN ANALYZE</code> চালাও। Seq Scan দেখলে index দরকার।</p><p><strong>Foreign keys:</strong> প্রতিটা FK-তে index দাও। JOIN ধীরে হয় নাহলে (PostgreSQL অটো index করে না)।</p><p><strong>Composite index order:</strong> সবচেয়ে selective column আগে রাখো।</p><p><strong>Vector search (AI):</strong> pgvector + HNSW index। ১M+ embeddings-এ milliseconds search।</p><p><strong>Unused index মুছো:</strong> <code>pg_stat_user_indexes</code> দেখো — কোন index কখনো read হয়নি? সে শুধু write ধীরে করছে। মুছে ফেলো।</p>`
+    body:`<p><strong>Slow query? প্রথম ধাপ:</strong> <code>EXPLAIN ANALYZE</code> চালাও। Seq Scan দেখলে index দরকার।</p><p><strong>Foreign keys:</strong> প্রতিটা FK-তে index দাও। JOIN ধীরে হয় নাহলে (PostgreSQL অটো index করে না)।</p><p><strong>Composite index order:</strong> equality-তে ব্যবহৃত column আগে, range/sort column পরে (leftmost prefix rule) — এবং সমান শর্তে সবচেয়ে selective column আগে রাখো।</p><p><strong>Vector search (AI):</strong> pgvector + HNSW index। ১M+ embeddings-এ milliseconds search।</p><p><strong>Unused index মুছো:</strong> <code>pg_stat_user_indexes</code> দেখো — কোন index কখনো read হয়নি? সে শুধু write ধীরে করছে। মুছে ফেলো।</p>`
   }
 });
 
@@ -138,7 +141,7 @@ WHY THIS MATTERS FOR AI:
 doors.push({
   num:11, icon:"🪞", color:"#36d6e7", name:"আয়না গিল্ডের প্রাসাদ",
   subtitle:"The Mirror Guild's Palace", tech:"Replication & Partitioning (Leader-based, Leaderless, Rebalancing)",
-  spirit:"ইখলাত — বিশ্বস্ত অনুলিপি, একই ছবি বহু আয়নায়",
+  spirit:"তাওয়াতুর — বহু স্বাধীন সূত্রে একই বার্তা, একই ছবি বহু আয়নায়",
   secret:"এক অনুলিপি নয় — বহু। কিন্তু কে লিখবে? এক নেতা (single-leader)? সবাই (multi-leader)? কেউ না (leaderless)? প্রতিটা পথে ভিন্ন ঝুঁকি। আর ভাগ করলে কে কোন অংশ পাবে — rebalancing কঠিন।",
   recall:{
     q:"আয়না গিল্ড কেন এক আয়না রাখে না, বহু আয়নায় একই ছবি প্রতিফলিত করে?",
@@ -177,8 +180,8 @@ doors.push({
     <text class="lbl-sm" x="280" y="22" fill="#3dd6c4" style="font-size:12px">MULTI-LEADER</text>
     ${[0,1,2].map(i=>`<rect class="node-cyan" x="${220+i*60}" y="50" width="50" height="32" rx="5"/><text class="lbl-sm" x="${245+i*60}" y="70" style="font-size:9px">L${i+1}</text>`).join('')}
     <text class="lbl-sm" x="280" y="100" style="font-size:9px">সবাই write পারে</text>
-    <line class="edge-cyan" x1="270" y1="66" x2="220" y2="66" marker-end="url(#arrT11)"/>
-    <line class="edge-cyan" x1="270" y1="66" x2="330" y2="66" marker-end="url(#arrT11)"/>
+    <line class="edge-cyan" x1="270" y1="66" x2="280" y2="66" marker-start="url(#arrT11)" marker-end="url(#arrT11)"/>
+    <line class="edge-cyan" x1="330" y1="66" x2="340" y2="66" marker-start="url(#arrT11)" marker-end="url(#arrT11)"/>
     <text class="lbl-sm" x="280" y="160" style="font-size:9px" fill="#52c41a">multi-DC, fast</text>
     <text class="lbl-sm" x="280" y="174" style="font-size:9px" fill="#52c41a">writes</text>
     <text class="lbl-sm" x="280" y="195" style="font-size:9px" fill="#ff6b35">conflict resolve</text>
@@ -262,8 +265,8 @@ REBALANCING — node যোগ/বাদ করলে:
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Vector DB-এ replication সবখানে। Pinecone, Weaviate — leaderless, multi-AZ। Embedding বিশাল — partitioning আবশ্যক। RAG pipeline-এ "read-your-writes" ল্যাগ সমস্যা — ডকুমেন্ট আপলোড করলে, সাথে সাথে query করলে নাও পাবে! সমাধান: leader-থেকে পড়ো বা index refresh অপেক্ষা করো। Feature store — user_id দিয়ে shard করো, যাতে এক ইউজারের সব ফিচার এক shard-এ।</div>
 <div class="dialogue en">"You're an AI engineer. Replication in vector DBs everywhere. Pinecone, Weaviate — leaderless, multi-AZ. Embeddings are huge — partitioning essential. In RAG pipelines, 'read-your-writes' lag is a real problem — upload a doc, query immediately, and it may not be found! Fix: read from leader or wait for index refresh. Feature store — shard by user_id so one user's features stay together."</div>
 
-<div class="dialogue">ইখলাত — বিশ্বস্ত অনুলিপি। কুরআন সংরক্ষণের ইতিহাসে দুটো পদ্ধতি — কিতাব (লিখিত অনুলিপি) ও হিফয (মুখস্থ অনুলিপি)। এক নয়, বহু — প্রতিটা হাফিজ এক "replica", প্রতিটা মুসহাফ এক "replica"। কেউ ভুল করলে অন্যরা ধরে — cross-validation। এক অনুলিপি পুড়লে কুরআন হারায় না — বহু replica। replication-এর প্রজ্ঞা ইসলামী ঐত্রহ্যে গভীরভাবে উপস্থিত — redundancy সুরক্ষা, সম্প্রদায় = নির্ভরযোগ্যতা।</div>
-<div class="dialogue en">"Ikhlat — faithful copying. In the Quran's preservation history, two methods — kitab (written copies) and hifz (memorized copies). Not one, but many — each hafiz a 'replica', each mushaf a 'replica'. If one errs, others catch it — cross-validation. One copy burning doesn't lose the Quran — many replicas. Replication's wisdom runs deep in Islamic tradition — redundancy as protection, community as reliability."</div>`,
+<div class="dialogue">তাওয়াতুর — বহু স্বাধীন সূত্র একই বার্তায় মিলে যাওয়া, যা মিথ্যার সম্ভাবনা উড়িয়ে দেয়। কুরআন সংরক্ষণের ইতিহাসে দুটো পদ্ধতি — কিতাব (লিখিত অনুলিপি) ও হিফয (মুখস্থ অনুলিপি)। এক নয়, বহু — প্রতিটা হাফিজ এক "replica", প্রতিটা মুসহাফ এক "replica"। কেউ ভুল করলে অন্যরা ধরে — cross-validation। এক অনুলিপি পুড়লে কুরআন হারায় না — বহু replica। replication-এর প্রজ্ঞা ইসলামী ঐতিহ্যে গভীরভাবে উপস্থিত — তাওয়াতুরের নীতি: redundancy সুরক্ষা, সম্প্রদায় = নির্ভরযোগ্যতা।</div>
+<div class="dialogue en">"Tawatur — many independent sources converging on the same message, a convergence too improbable to be a lie. In the Quran's preservation history, two methods — kitab (written copies) and hifz (memorized copies). Not one, but many — each hafiz a 'replica', each mushaf a 'replica'. If one errs, others catch it — cross-validation. One copy burning doesn't lose the Quran — many replicas. Replication's wisdom runs deep in Islamic tradition — the principle of tawatur: redundancy as protection, community as reliability."</div>`,
   senior:{
     title:"Replication বাছাই — Production Cheat Sheet",
     body:`<p><strong>Single-leader শুরু করো:</strong> ৯৫% অ্যাপ এতে থাকে। PostgreSQL/MySQL — পরিচিত, tooling পরিপক্ব।</p><p><strong>Multi-leader যখন:</strong> multi-region active-active (দুই DC-তে সক্রিয় লেখা), offline-first mobile apps। conflict resolution না শিখলে ভয়ংকর।</p><p><strong>Leaderless যখন:</strong> massive write throughput (IoT, time-series, event log), multi-region, "always writeable" দরকার। Cassandra/DynamoDB।</p><p><strong>Quorum formula:</strong> N nodes, W write quorum, R read quorum। <strong>W + R > N</strong> → strong consistency (প্রতিটা read সর্বশেষ write দেখে)। W=R=N/2+1 সাধারণ।</p><p><strong>Shard key সাবধানে:</strong> একবার বাছাই → পরিবর্তন নরক। আগেই অনেক ছোট partition (মোটামুটি ১০x বেশি node-এর জন্য) বানাও, তারপর node-এ assignment বদলাও।</p>`
@@ -275,12 +278,12 @@ doors.push({
   num:12, icon:"🛤️", color:"#ffc857", name:"চৌরাস্তার মানচিত্রকার",
   subtitle:"The Crossroads Cartographer", tech:"CAP Theorem & Consistency",
   spirit:"কিবলা — এক দিক বেছে নেওয়া",
-  secret:"তিনটা গুণ — Consistency, Availability, Partition tolerance। তিনটে একসাথে অসম্ভব। দুটো পাবে, একটা বিসর্জন। পছন্দ তোমার।",
+  secret:"তিনটা গুণ — Consistency, Availability, Partition tolerance। তিনটে একসাথে অসম্ভব। কিন্তু বাস্তবে P (network partition) এড়ানো যায় না — তাই আসল প্রশ্ন তিনের মধ্যে দুই বাছাই নয়, বরং: partition ঘটলে C না A? পছন্দ তোমার।",
   recall:{
     q:"চৌরাস্তায় দাঁড়িয়ে তিন দিকে একসাথে যাওয়া যায় কি?",
     qen:"Standing at a crossroads, can you go three directions simultaneously?",
-    a:"না। এক দিক বেছে নিতে হয়। CAP Theorem-ও তেমনি — Consistency, Availability, Partition tolerance — তিনটার মধ্যে দুটো পাবে, একটা বিসর্জন। কোন দুটো — সেই সিদ্ধান্তই তোমার সিস্টেমের চরিত্র।",
-    aen:"No. You must choose one direction. CAP Theorem too — Consistency, Availability, Partition tolerance — you get two, sacrifice one. Which two — that defines your system's character."
+    a:"না। এক দিক বেছে নিতে হয়। CAP Theorem-ও তেমনি — কিন্তু বাস্তবে P (network partition) এড়ানো যায় না, তাই তৃতীয়টা সত্যিকারের ঐচ্ছিক বিকল্প নয়। আসল প্রশ্ন: partition ঘটলে তুমি Consistency রাখবে (CP) না Availability রাখবে (AP)? কোনটা — সেই সিদ্ধান্তই তোমার সিস্টেমের চরিত্র।",
+    aen:"No. You must choose one direction. CAP Theorem is similar — but in practice P (network partition) can't be avoided, so the third option isn't really a free choice. The real question: when a partition happens, do you keep Consistency (CP) or Availability (AP)? That choice defines your system's character."
   },
   story:`
 <p class="scene-setting">দ্বাদশ স্থান। একটা বিশাল চৌরাস্তা — চার দিকে চার রাস্তা। মাঝখানে একটা পাথরের স্তম্ভ, তাতে চার দিকের নাম। মানচিত্রকার ইসহাক দাঁড়িয়ে আছেন — হাতে কম্পাস, পাশে মানচিত্রের বই। একজন ভ্রমণকারী এসে জিজ্ঞেস করলেন — "আমি উত্তর আর পূর্ব দুটোই একসাথে যেতে চাই।" ইসহাক হাসলেন। "অসম্ভব। এক দিক বেছে নাও।"</p>
@@ -317,14 +320,14 @@ CONSISTENCY MODELS (spectrum):
   → CAP "C" মানে strong, কিন্তু বাস্তবে spectrum!</div>
 
 <div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">🔴 CP — Consistency বেছে নাও</div>নেটওয়ার্ক ভাঙলে পুরনো ডেটা দেওয়ার চেয়ে উত্তর না দেওয়া ভালো। ব্যাংকিং, পেমেন্ট — ভুল উত্তর মানে টাকা হারালো।<br>PostgreSQL, MongoDB (strong), HBase, etcd</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">🟢 AP — Availability বেছে নাও</div>নেটওয়ার্ক ভাঙলেও উত্তর দাও — পুরনো হলেও। সোশ্যাল মিডিয়া ফিড — ১ সেকেন্ড পুরনো হলে কিছু যায় না। থামলে যায়।<br>Cassandra, DynamoDB, CouchDB</div>
+<div class="cmp-card cmp-neutral"><div class="cmp-label">🔒 CP — Consistency বেছে নাও</div>নেটওয়ার্ক ভাঙলে পুরনো ডেটা দেওয়ার চেয়ে উত্তর না দেওয়া ভালো। ব্যাংকিং, পেমেন্ট — ভুল উত্তর মানে টাকা হারালো।<br>PostgreSQL, MongoDB (strong), HBase, etcd</div>
+<div class="cmp-card cmp-neutral"><div class="cmp-label">🌐 AP — Availability বেছে নাও</div>নেটওয়ার্ক ভাঙলেও উত্তর দাও — পুরনো হলেও। সোশ্যাল মিডিয়া ফিড — ১ সেকেন্ড পুরনো হলে কিছু যায় না। থামলে যায়।<br>Cassandra, DynamoDB, CouchDB</div>
 </div>
 
 <div class="dialogue">কিবলা — দিক। নামাজে এক কিবলা — কাবার দিক। কেউ উত্তর আর পূর্ব দুটো একসাথে মুখ করতে পারে না। এক দিক বেছে নিতে হয়। CAP Theorem-ও তেমনি — তুমি Consistency আর Availability দুটোই চাও। কিন্তু partition (নেটওয়ার্ক বিভাজন) হলে — একটা বিসর্জন দিতে হয়। কোনটা — সেটা তোমার কিবলা। তোমার সিস্টেমের চরিত্র সেই সিদ্ধান্তে।</div>
 <div class="dialogue en">"Qibla — direction. In prayer, one qibla — toward the Kaaba. No one faces north and east simultaneously. You choose one direction. CAP Theorem is the same — you want both Consistency and Availability. But when partition (network split) happens — one must be sacrificed. Which — that's your qibla. Your system's character lies in that decision."</div>`,
   senior:{
     title:"Eventual Consistency — বাস্তবতা",
-    body:`<p>বেশিরভাগ সিস্টেম AP বেছে নেয় — Availability + Partition tolerance। তাই eventual consistency — শেষ পর্যন্ত সবাই একমত হবে, কিন্তু একই মুহূর্তে নয়।</p><p><strong>উদাহরণ:</strong> Facebook like দিলে — তোমার বন্ধু দেখতে পাবে ২ সেকেন্ড পরে। সমস্যা নেই।</p><p><strong>কিন্তু ব্যাংকিং?</strong> একই টাকা দুই জায়গা থেকে তুলে দেখলে — consistency চাই। strong consistency।</p><p><strong>PACELC (CAP-এর সম্প্রসারণ):</strong> পার্টিশন হলে (P): A না E, নরমালে (E): L না C। সব সময় tradeoff।</p>`
+    body:`<p>বেশিরভাগ সিস্টেম AP বেছে নেয় — Availability + Partition tolerance। তাই eventual consistency — শেষ পর্যন্ত সবাই একমত হবে, কিন্তু একই মুহূর্তে নয়।</p><p><strong>উদাহরণ:</strong> Facebook like দিলে — তোমার বন্ধু দেখতে পাবে ২ সেকেন্ড পরে। সমস্যা নেই।</p><p><strong>কিন্তু ব্যাংকিং?</strong> একই টাকা দুই জায়গা থেকে তুলে দেখলে — consistency চাই। strong consistency।</p><p><strong>PACELC (CAP-এর সম্প্রসারণ):</strong> Partition হলে (P): Availability না Consistency (A/C)? Else — অর্থাৎ normal অবস্থায় (E): Latency না Consistency (L/C)? পার্টিশন নাই থাকুক, tradeoff থেকেই যায়।</p>`
   }
 });
