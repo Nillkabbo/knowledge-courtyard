@@ -1,6 +1,6 @@
 # জ্ঞানের প্রাঙ্গণ — The Learning Courtyard
 
-An interactive bilingual (Bengali/English) learning library built with the Seven Doors Method. **29 books, 322 chapters, 32,200 XP** — covering AI engineering, data structures, system design, LLM deep dives, research craft, career mindset, and more.
+An interactive bilingual (Bengali/English) learning library built with the Seven Doors Method. **29 books, 332 chapters, 33,200 XP** — covering AI engineering, data structures, system design, LLM deep dives, research craft, career mindset, and more.
 
 ## 📚 The 29 Books
 
@@ -39,7 +39,7 @@ An interactive bilingual (Bengali/English) learning library built with the Seven
 |---|------|-------|
 | 🏔️ 20 | **The Pilgrimage of Research** | PhD Journey (funding, SOP, cold-emailing, life) |
 | 🌱 21 | **The First Question** | Researcher Mindset (curiosity, Bloom's, persistence) |
-| 🧭 22 | **The CS Archipelago** | CS Domain Ocean (AI/ML, systems, security, theory, quantum) |
+| 🧭 22 | **The CS Archipelago** | CS Domain Ocean — 20 doors across 10 domains (AI/ML, systems, security, data, HCI, SE/PL, theory, quantum, robotics, emerging) |
 | 🛡️ 23 | **The Irreplaceable Craftsman** | Career & AI obsolescence (permanent vs perishable skills) |
 | 🧠 24 | **The Mirror of the Mind** | Human Psychology (Cialdini, learned helplessness, biases) |
 | 🔮 25 | **The Council of Deep Knowledge** | The Art of Deep Learning (meta-learning, 20h/10000h, feedback) |
