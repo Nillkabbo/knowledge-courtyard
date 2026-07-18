@@ -109,24 +109,221 @@ doors.push({
   }
 });
 
-// ══ DOOR 7: MLSys (AI + SYSTEMS) (placeholder) ══
+// ══ DOOR 7: MLSys (AI + SYSTEMS) ══
 doors.push({
   num:7, icon:"🔥", color:"#52c41a", name:"MLSys-এর কারখানা",
   subtitle:"The MLSys Forge", tech:"ML Systems (AI + Systems) 🔥",
-  spirit:"আল্লামা — যন্ত্র ও জ্ঞানের মিলন",
-  secret:"MLSys = AI + Systems। Training infra, serving, GPU scheduling। সবচেয়ে হট area — AI-এর চেয়ে কম প্রতিযোগিতা।",
-  recall:{q:"(প্লেসহোল্ডার)",qen:"(placeholder)",a:"পূর্ণ কন্টেন্ট শীঘ্রই।",aen:"Full content coming soon."},
-  story:`<p class="scene-setting">দরজা ৭ — MLSys-এর কারখানা। পূর্ণ গভীর ডুব শীঘ্রই।</p><p class="scene-setting en">Door 7 — the MLSys Forge. Full deep dive coming soon.</p>`
+  spirit:"জামেয়া — দুই জ্ঞানের মিলনভূমি",
+  secret:"MLSys = AI + Systems — দুই জগতের মিলন। LLM কীভাবে ট্রেন হয় (২০৪৮ GPU, fault tolerance), কীভাবে সার্ভ হয় (KV cache, batching)। AI-এর চেয়ে কম প্রতিযোগিতা, কিন্তু AI-এর সাফল্য এখানে নির্ভর। তোমার developer background + AI interest = সোনার মিলন। এটি এখন সবচেয়ে হট crossover — এবং তোমার প্রোফাইলের জন্য সেরা primary পছন্দ।",
+  recall:{
+    q:"রাজু কেন বললেন কারখানা ছাড়া নকশা শুধু কাগজে থাকে?",
+    qen:"Why did Raju say without a factory, a design stays on paper?",
+    a:"কারণ একটা LLM নকশা (model) কাগজে চমৎকার, কিন্তু ট্রেন করতে হাজার GPU, মাসের পর মাস, fault tolerance লাগে। সেটা কারখানা — MLSys। যার কারখানা নেই, সে শুধু কল্পনা করে। যার আছে, সে বাস্তবে বানায়। DeepSeek-এর ২০৪৮-GPU training ছাড়া R1 হতো না। AI গবেষণা এখন MLSys-এর উপর দাঁড়িয়ে।",
+    aen:"Because an LLM design (model) is beautiful on paper, but training needs thousands of GPUs, months, fault tolerance. That's the factory — MLSys. One without a factory only imagines. One with it, builds in reality. Without DeepSeek's 2048-GPU training, R1 wouldn't exist. AI research now stands on MLSys."
+  },
+  story:`
+<p class="scene-setting">সপ্তম দরজা। নাদিয়ার যন্ত্রকক্ষ পেরিয়ে তুমি একটা বিশাল কারখানায় — কিন্তু সাধারণ নয়। কনভেয়রে চলছে না পণ্য, চলছে GPU — হাজার হাজার, ঝকঝকে, গরম। প্রতিটা GPU-তে একটা করে LLM-এর অংশ ট্রেন হচ্ছে। মাঝখানে দাঁড়িয়ে রাজু — সাদা কোট, হাতে একটা গ্লোবাল স্কিডিউলার, চোখে প্রকৌশলীর গর্ব ও শ্রম। মারিয়া পেছনে দাঁড়িয়ে আলেকজান্ডারের সাথে কথা বলছেন — দুই সমুদ্রের সীমানায় দাঁড়িয়ে এই কারখানা। GPU-র গরম বাতাস, পাখার গর্জন, তামার তারের ঝলক।</p>
+<p class="scene-setting en">The seventh door. Past Nadia's machine room, you enter a vast factory — but not ordinary. The conveyor carries not goods, but GPUs — thousands of them, gleaming, hot. On each GPU a fragment of an LLM trains. In the center stands Raju — white coat, a global scheduler in hand, engineer's pride and labor in his eyes. Behind, Maria talks with Alexander — this factory stands at the boundary of two seas. Hot GPU air, the roar of fans, the flash of copper wire.</p>
+
+<div class="dialogue">মারিয়া ও আলেকজান্ডার একসাথে বললেন। আলেকজান্ডার: "আমার AI সমুদ্র চায় — model।" মারিয়া: "আমার সিস্টেমস সমুদ্র চায় — কারখানা।" রাজু হাসলেন। "আমি দুইয়ের মিলন। MLSys।" তিনি একটা GPU দেখালেন। "এটা একটা ইঞ্জিন। কিন্তু একটা LLM ট্রেন করতে হাজার ইঞ্জিন লাগে, একসাথে, সমন্বিতভাবে। আমার কাজ হলো সেই সমন্বয় — scheduling, memory, communication। DeepSeek-R1 হাজার GPU-তে ট্রেন হয়েছে — এটা সম্ভব হয়েছে MLSys-এর জন্য।"</div>
+<div class="dialogue en">Maria and Alexander spoke together. Alexander: "My AI sea wants — models." Maria: "My systems sea wants — factories." Raju smiled. "I'm the union of both. MLSys." He showed a GPU. "This is one engine. But training one LLM needs thousands of engines, together, coordinated. My job is that coordination — scheduling, memory, communication. DeepSeek-R1 trained on thousands of GPUs — possible because of MLSys."</div>
+
+<div class="diagram">
+  <div class="diag-title">LLM Training — হাজার GPU-তে Synchronized</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowLeaf7" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#52c41a"/></marker>
+      <marker id="arrowCyan7" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#3dd6c4"/></marker>
+    </defs>
+    <text class="lbl-sm" x="280" y="22" fill="#7dd3fc">৪টি stage, প্রতিটায় অনেক GPU — pipeline + tensor parallel</text>
+    <!-- 4 pipeline stages -->
+    ${[0,1,2,3].map(i=>`<rect class="cell-good" x="${60+i*120}" y="55" width="100" height="50" rx="8"/><text class="lbl-sm" x="${110+i*120}" y="78" fill="#52c41a">stage ${i+1}</text><text class="lbl-sm" x="${110+i*120}" y="94" fill="#9290a8" style="font-size:9px">${[24,24,24,24][i]} GPUs</text>`).join('')}
+    <!-- dataflow arrows between stages -->
+    ${[0,1,2].map(i=>`<line class="edge-cyan" x1="${160+i*120}" y1="80" x2="${180+i*120}" y2="80" marker-end="url(#arrowCyan7)"/>`).join('')}
+    <!-- allreduce ring among one stage's GPUs -->
+    <text class="lbl-sm" x="110" y="135" fill="#ff6b35">all-reduce (gradient sync)</text>
+    ${[0,1,2,3,4].map(i=>`<circle class="node-hot" cx="${70+i*20}" cy="150" r="7"/>`).join('')}
+    ${[0,1,2,3].map(i=>`<line class="edge" x1="${77+i*20}" y1="150" x2="${83+i*20}" y2="150" style="stroke:#ff6b35"/>`).join('')}
+    <text class="lbl-sm" x="280" y="180" fill="#5e5c74">NVLink/RDMA দিয়ে micro-batch flow + gradient sync — এটাই distributed training</text>
+    <text class="lbl-sm" x="280" y="200" fill="#5e5c74">একটা GPU ভাঙলে checkpoint থেকে recover — fault tolerance (Maria-র উপহার)</text>
+  </svg>
+  <div class="diag-cap">LLM training = pipeline parallel (stages) × tensor parallel (within stage) × data parallel (replicas)। communication হলো bottleneck — RDMA/NVLink MLSys-এর জয়।</div>
+</div>
+
+<div class="code-block">MLSys — গবেষণার শাখাসমূহ (🔥 সবচেয়ে হট crossover):
+
+১. TRAINING INFRASTRUCTURE (🔥)
+   - Distributed training: data/pipeline/tensor parallel (Megatron, DeepSpeed)
+   - Fault tolerance: checkpoint/restart for 1000+ GPU runs
+   - Communication: NCCL, RDMA, all-reduce topology
+
+২. SERVING & INFERENCE (🔥🔥 — Book 17 সাথে)
+   - vLLM/PagedAttention, continuous batching, prefix caching
+   - Speculative decoding, Medusa, quantization (GPTQ, AWQ, FP8)
+   - Disaggregated prefill/decode, dist serving
+
+৩. GPU SCHEDULING (🔥)
+   - MPS/MIG, multi-tenant GPU, fair-share
+   - Gang scheduling for distributed jobs
+   - Spot/preemptible training
+
+৪. COMPILERS & RUNTIME
+   - XLA, Triton, TVM, torch.compile, kernel fusion
+   - Custom kernels: FlashAttention, FlashInfer
+
+৫. SYSTEMS FOR LLMs
+   - Long-context memory mgmt, KV cache offload
+   - MoE serving (expert routing, load balance)
+   - Agent serving (Book 12 — multi-turn, tool use)
+
+৬. ML FOR SYSTEMS (বিপরীত দিক)
+   - ML for scheduling, caching, index tuning
+   - Learned indexes, ML-driven congestion control</div>
+
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🔥 Training</td><td>3D parallel, fault tolerance, RDMA</td><td>MLSys, OSDI, ASPLOS, NSDI</td></tr>
+<tr><td class="hl">🔥🔥 Serving</td><td>vLLM, PagedAttention, speculative, quant</td><td>MLSys, OSDI, SOSP, EuroSys</td></tr>
+<tr><td class="hl">🔥 GPU Sched</td><td>MPS/MIG, multi-tenant, gang sched</td><td>OSDI, ASPLOS, MLSys</td></tr>
+<tr><td class="hl">⚡ Compilers</td><td>Triton, XLA, torch.compile, kernels</td><td>MLSys, CGO, PLDI</td></tr>
+<tr><td class="hl">🧠 LLM Systems</td><td>Long ctx, MoE serving, agent runtime</td><td>MLSys, OSDI, SOSP</td></tr>
+<tr><td class="hl">🤖 ML4Sys</td><td>Learned indexes, ML scheduling, caching</td><td>MLSys, SOSP, SIGMOD</td></tr></table>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৩-৬%</div><div class="sc-label">গ্রহণের হার (AI-এর চেয়ে কম ভিড়!)</div></div>
+<div class="stat-card"><div class="sc-num">🔥🔥🔥</div><div class="sc-label">সবচেয়ে হট crossover</div></div>
+<div class="stat-card"><div class="sc-num">$২৫০-৫০০K</div><div class="sc-label">industry (OpenAI, Anthropic, Meta, NVIDIA)</div></div>
+<div class="stat-card"><div class="sc-num">$৩B+</div><div class="sc-label">AI infra ফান্ডিং (DOE + industry)</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"MLSys মানে শুধু PyTorch ব্যবহার করা। এটা engineering, research নয়।" ভুল। PyTorch ব্যবহার = consumer। MLSys research = PyTorch-এর পেছনের কারখানা ডিজাইন করা — 3D parallelism, PagedAttention, FlashAttention। এগুলো সরাসরি research, OSDI/MLSys-এ publish হয়, আর AI গবেষণার সম্ভাবনা নির্ধারণ করে।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"MLSys হলো AI-এর কারখানা। কোন model সম্ভব আর কোনটা নয় — সেটা MLSys নির্ধারণ করে। vLLM/PagedAttention ছাড়া LLM serving অসম্ভব শস্তা। FlashAttention ছাড়া long context অসম্ভব। AI-এর চেয়ে কম প্রতিযোগিতা, কিন্তু সবচেয়ে বেশি প্রভাব — কারণ সব AI গবেষণা এর উপর নির্ভর।"</div>
+</div>
+
+<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড়:</strong> vLLM/PagedAttention (SOSP'23) পুরো serving industry বদলেছে, DeepSeek-V3 (৬৭১B MoE) শস্তা training, FP8/INT4 quantization mainstream, speculative decoding (Medusa, EAGLE), disaggregated prefill/decode (Splitwise), দীর্ঘ-context (১M+ tokens)।</div></div>
+
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅✅✅ হ্যাঁ — এটা তোমার প্রোফাইলের জন্য <strong>primary</strong> পছন্দ। developer background (LedgerPilot) + AI interest = সোনার মিলন। কম প্রতিযোগিতা (AI-এর চেয়ে), সবচেয়ে হট, AI-এর সাফল্য এখানে নির্ভর। ⚠️ GPU/CUDA শিখতে হবে — শুরুতে কঠিন, কিন্তু শেখা যায়।</div></div>
+
+<div class="dialogue">"তোমার একটা বিশেষ সুবিধা আছে MLSys-এ," রাজু বললেন। "তুমি developer — backend, API, database জানো (LedgerPilot)। কিন্তু তুমি AI-ও বোঝো। এই দুইয়ের মিলন বিরল। pure AI গবেষক GPU স্কেলিং বোঝেন না, pure systems গবেষক model বোঝেন না। তুমি দুটোই পারো। MLSys-এ এটা সবচেয়ে কাঙ্ক্ষিত skill। vLLM-এর মতো project-এ contribution করো — এটা তোমার ক্যারিয়ার বদলে দেবে।"</div>
+<div class="dialogue en">"You have a special advantage in MLSys," Raju said. "You're a developer — backend, API, database (LedgerPilot). But you also understand AI. This union is rare. Pure AI researchers don't get GPU scaling; pure systems researchers don't get models. You can do both. In MLSys this is the most sought-after skill. Contribute to a project like vLLM — it'll change your career."</div>
+
+<div class="dialogue">জামেয়া — দুই জ্ঞানের মিলনভূমি। কুরআনে আল্লাহ বলেন: "তিনি তোমাদের এক আত্মা থেকে সৃষ্টি করেছেন।" (৪:১) — মিলন থেকে সৃষ্টি। প্রতিটা মহান কাজ দুইয়ের মিলনে — দুই নদীর সঙ্গমে ভরা নদী, দুই জ্ঞানের মিলনে নতুন জ্ঞান। MLSys হলো AI ও systems-এর মিলনভূমি — আর এই মিলন থেকেই আজকের সব LLM সম্ভব। যে মিলন করে, সে নতুন সৃষ্টি করে। যে শুধু এক জ্ঞানে থাকে, সে একা। গবেষক হলো স্রষ্টা — দুই জগতের মিলন ঘটায়।</div>
+<div class="dialogue en">Jameya — the meeting ground of two knowledges. Allah says: "He created you from one soul." (4:1) — creation from union. Every great work is in the union of two — at the confluence of two rivers a fuller river, from the union of two knowledges a new knowledge. MLSys is the meeting ground of AI and systems — and from this union all today's LLMs are possible. One who unites, creates anew. One who stays in one knowledge, is alone. A researcher is a creator — bringing two worlds together.</div>
+
+<div class="secret-box">🔥 MLSys: AI + Systems মিলন। সবচেয়ে হট crossover, AI-এর চেয়ে কম প্রতিযোগিতা (৩-৬%)। training infra, serving (vLLM/PagedAttention), GPU scheduling। তোমার developer+AI background = primary পছন্দ।</div>`,
+  senior:{
+    title:"MLSys PhD — তোমার সেরা পথ (Primary)",
+    body:`<p><strong>এটা তোমার primary পছন্দ হওয়া উচিত:</strong> developer background + AI interest + AI-এর চেয়ে কম ভিড় = গাণিতিকভাবে সেরা। প্রতিটা top lab (Meta, OpenAI, Anthropic, NVIDIA, Google) MLSys গবেষক খুঁজছে।</p><p><strong>vLLM/SGLang-এ contribute করো:</strong> GitHub-এ open PR = সবচেয়ে শক্ত profile signal। একটা kernel optimization (FlashAttention-ভিত্তিক), একটা scheduling improvement — এতেই MLSys workshop paper।</p><p><strong>CUDA শিখো:</strong> NVIDIA-এর 'Programming Massively Parallel Processors' (Bkirk) + একটা custom CUDA kernel (FlashAttention-এর simplified version)। এটা প্রবেশের key। Triton (OpenAI) এখন সবচেয়ে hot intermediate।</p><p><strong>Re-implement একটা paper:</strong> PagedAttention বা Megatron-LM-এর simplified re-implementation GitHub-এ। MLSys ভর্তিতে এটা golden credential — দেখায় তুমি research-grade systems code লেখো।</p>`
+  }
 });
 
-// ══ DOOR 8: SYSTEMS SECURITY & CRYPTO (placeholder) ══
+// ══ DOOR 8: SYSTEMS SECURITY & CRYPTO ══
 doors.push({
   num:8, icon:"🔐", color:"#ef4444", name:"দুর্গের তলদেশ",
   subtitle:"The Fortress Depths", tech:"Systems Security & Cryptography",
-  spirit:"হিফয — রক্ষা, সুরক্ষা",
-  secret:"Systems security (intrusion, malware, zero-days) + cryptography (post-quantum, ZK, MPC)।",
-  recall:{q:"(প্লেসহোল্ডার)",qen:"(placeholder)",a:"পূর্ণ কন্টেন্ট শীঘ্রই।",aen:"Full content coming soon."},
-  story:`<p class="scene-setting">দরজা ৮ — দুর্গের তলদেশ। পূর্ণ গভীর ডুব শীঘ্রই।</p><p class="scene-setting en">Door 8 — the Fortress Depths. Full deep dive coming soon.</p>`
+  spirit:"হিফয — রক্ষা, সুরক্ষা, আমানত পালন",
+  secret:"Systems security + cryptography হলো চিরকালীন — প্রতিটা নতুন প্রযুক্তিতে নতুন নিরাপত্তা সমস্যা। intrusion detection, malware, zero-days + cryptography (post-quantum, ZK, MPC)। মাঝারি প্রতিযোগিতা (৫-১০%), সরকারি (NSA/DARPA) + বেসরকারি উভয় ফান্ডিং। ভাঙা শেখো আগে, তারপর বানানো — red team থেকে blue team।",
+  recall:{
+    q:"ওমর কেন বললেন দুর্গ নির্মাতাকে আগে আক্রমণকারী হতে হয়?",
+    qen:"Why did Omar say a fortress builder must first be an attacker?",
+    a:"কারণ যে শুধু দেয়াল বানায় সে জানে না কোথায় ফাঁক। যে ভাঙে, সে জানে প্রতিটা ফাঁক। security গবেষণা হলো ভাঙার শিল্প — তারপর সেই জ্ঞানে দুর্গ মজবুত করা। red team (আক্রমণ) → blue team (প্রতিরক্ষা)। আক্রমণই সেরা প্রতিরক্ষা — কারণ প্রতিরক্ষক ভাঙার কল্পনা না করলে দুর্গ দুর্বল থাকে।",
+    aen:"Because one who only builds walls doesn't know where the gaps are. One who breaks, knows every gap. Security research is the art of breaking — then using that knowledge to strengthen the fortress. Red team (attack) → blue team (defense). Attack is the best defense — because a defender who can't imagine breaking leaves the fortress weak."
+  },
+  story:`
+<p class="scene-setting">অষ্টম দরজা। রাজুর কারখানা পেরিয়ে তুমি একটা পাহাড়ের চূড়ায় বিশাল দুর্গে — কিন্তু দেয়ালে ফাটল, কোথাও ইট খসে পড়েছে। দুর্গের ভেতরে বসে আছেন ওমর — কালো পোশাক, হাতে একটা লুকানো ছুরি এবং একটা দেয়ালের ব্লুপ্রিন্ট। তাঁর মুখে সতর্কতা, চোখে কৌশল। দুর্গের তলদেশে নেমে যাওয়া সুড়ঙ্গ — সেখানে পাথরের তালা, সিফার, এনক্রিপ্টেড স্ক্রল। পুরনো পাথরের গন্ধ, ধাতব অস্ত্রের ঝনঝন, দূরে নকশলের শব্দ।</p>
+<p class="scene-setting en">The eighth door. Past Raju's factory, you reach a vast fortress atop a mountain — but cracked walls, bricks fallen. Inside sits Omar — black garb, a hidden dagger and a wall blueprint in hand. Caution on his face, strategy in his eyes. Tunnels descend beneath the fortress — there, stone locks, ciphers, encrypted scrolls. Smell of old stone, metallic clang of weapons, distant pickaxe sounds.</p>
+
+<div class="dialogue">ওমর তোমাকে দেখলেন। "মারিয়া তোমাকে ভিত্তি দেখিয়েছেন, রাজু কারখানা। কিন্তু ভিত্তি নিরাপদ না হলে কিছুই কাজে লাগবে না।" তিনি দেয়ালের ফাটল দেখালেন। "এই ফাটল — একজন attacker এই ফাটল দিয়ে ঢুকবে। আমি জানি কারণ আমি নিজে ছিলাম attacker।" তিনি ছুরি ঘুরিয়ে দেখালেন কীভাবে ভাঙে। "আমি এখন দুর্গ বানাই — কিন্তু আক্রমণকারীর মন দিয়ে। যে শুধু বানায়, সে ফাঁক দেখে না। যে ভাঙে, সে প্রতিটা ফাঁক জানে।"</div>
+<div class="dialogue en">Omar saw you. "Maria showed you the foundation, Raju the factory. But if the foundation isn't secure, nothing works." He showed the crack. "This crack — an attacker will enter through it. I know because I was an attacker myself." He twirled the dagger, showed how to break. "I now build fortresses — but with an attacker's mind. One who only builds doesn't see gaps. One who breaks, knows every gap."</div>
+
+<div class="diagram">
+  <div class="diag-title">Security-এর দুই মুখ — ভাঙা ও বানানো</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowFire8" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#ff6b35"/></marker>
+      <marker id="arrowLeaf8" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#52c41a"/></marker>
+    </defs>
+    <text class="lbl-sm" x="140" y="30" fill="#ff6b35">RED TEAM — আক্রমণ</text>
+    <text class="lbl-sm" x="420" y="30" fill="#52c41a">BLUE TEAM — প্রতিরক্ষা</text>
+    <!-- Red side -->
+    ${[ ['Exploit',60],['Malware',60],['Zero-day',60], ['Crypto-break',60] ].map((s,i)=>`<rect class="cell-hot" x="${30}" y="${50+i*32}" width="110" height="26" rx="5"/><text class="lbl-sm" x="${85}" y="${66+i*32}" fill="#ff6b35">${s[0]}</text>`).join('')}
+    <!-- Blue side -->
+    ${[ ['Patch',420],['EDR/AV',420],['Pen-test',420], ['PQ crypto',420] ].map((s,i)=>`<rect class="cell-good" x="${400}" y="${50+i*32}" width="120" height="26" rx="5"/><text class="lbl-sm" x="${460}" y="${66+i*32}" fill="#52c41a">${s[0]}</text>`).join('')}
+    <!-- Arrow between: attack feeds defense -->
+    <line class="edge-cyan" x1="150" y1="115" x2="390" y2="115" marker-end="url(#arrowLeaf8)"/>
+    <text class="lbl-sm" x="270" y="108" fill="#3dd6c4">ভাঙা → শেখা → বানানো</text>
+    <text class="lbl-sm" x="270" y="128" fill="#5e5c74" style="font-size:9px">প্রতিটা exploit একটা patch জন্ম দেয়</text>
+    <text class="lbl-sm" x="280" y="200" fill="#5e5c74">responsible disclosure: vulnerability পেলে আগে কোম্পানিকে জানাও, সময় দাও, তারপর পেপার</text>
+  </svg>
+  <div class="diag-cap">security research একটা cycle — red team ভাঙে, সেই জ্ঞানে blue team বানায়। crypto-তেও তাই: cryptanalysis (ভাঙা) → new scheme (বানানো)। এটাই প্রতিটা secure system-এর পেছনের cycle।</div>
+</div>
+
+<div class="code-block">Systems Security & Crypto — গবেষণার শাখাসমূহ:
+
+১. SYSTEMS SECURITY
+   - Intrusion detection, EDR, malware analysis
+   - Vulnerability discovery (fuzzing, symbolic execution)
+   - Web/app security, IoT security, cloud security
+
+২. CRYPTOGRAPHY (গণিত-নির্ভর)
+   - Post-quantum crypto (lattice, code, hash-based — Door 18)
+   - Zero-knowledge proofs (zk-SNARK/STARK)
+   - Homomorphic encryption, MPC, TEE-based
+
+৩. APPLIED CRYPTO
+   - TLS, secure messaging (Signal protocol), e2e encryption
+   - Blockchain/DLT, consensus security
+   - Authentication, password hashing, biometric
+
+৪. USABLE SECURITY (Door 12 সাথে)
+   - Phishing, authentication UX, security tooling
+   - Human factors in security
+
+৫. NETWORK SECURITY
+   - DDoS, traffic analysis, censorship resistance
+   - Secure routing, BGP security, DNSSEC
+
+৬. CRYPTO THEORY (Door 16 সাথে)
+   - Provable security, reduction, game-based proofs
+   - Lower bounds, assumptions</div>
+
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🛡️ Systems Sec.</td><td>Intrusion, malware, fuzzing, web/cloud sec</td><td>S&amp;P, CCS, USENIX Sec., NDSS</td></tr>
+<tr><td class="hl">🔐 Crypto</td><td>PQ, ZK, FHE, MPC, TEE</td><td>CRYPTO, EUROCRYPT, ASIACRYPT, CCS</td></tr>
+<tr><td class="hl">📱 Applied</td><td>TLS, messaging, auth, blockchain sec</td><td>USENIX, CCS, PETS</td></tr>
+<tr><td class="hl">👥 Usable Sec</td><td>Phishing, auth UX, human factors</td><td>SOUPS, USENIX, CHI</td></tr>
+<tr><td class="hl">🌐 Network</td><td>DDoS, traffic analysis, censorship resist</td><td>USENIX, CCS, NDSS, SIGCOMM</td></tr>
+<tr><td class="hl">📐 Crypto Theory</td><td>Provable sec, lower bounds, assumptions</td><td>CRYPTO, TCC, EUROCRYPT</td></tr></table>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৫-১০%</div><div class="sc-label">গ্রহণের হার</div></div>
+<div class="stat-card"><div class="sc-num">$৮০০M+</div><div class="sc-label">NSA/DARPA/NSF ফান্ডিং</div></div>
+<div class="stat-card"><div class="sc-num">$১৫০-৩৫০K</div><div class="sc-label">industry বেতন</div></div>
+<div class="stat-card"><div class="sc-num">$২০০-৫০০K</div><div class="sc-label">consulting (bug bounty আলাদা)</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"Security = শুধু compliance, password, firewall। নতুন কিছু নেই।" ভুল। PQ crypto (NIST ২০২৪), ZK proofs (blockchain/privacy), FHE (এনক্রিপ্টেড ডেটায় কাজ), AI-আসisted exploit discovery, supply-chain security — সব এখন frontier। প্রতিটা নতুন প্রযুক্তিতে নতুন নিরাপত্তা সমস্যা জন্ম নেয়। AI security (Door 9) একটা গোটা নতুন ক্ষেত্র।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"Security হলো চিরকালীন arms race — প্রতিটা নতুন প্রযুক্তিতে নতুন threat। গবেষকরা ভাঙেন (red team), সেই জ্ঞানে মজবুত করেন (blue team)। PQ crypto পুরো TLS বদলাচ্ছে, ZK নতুন trust paradigm। stable funding, real impact, চিরকালীন প্রাসঙ্গিকতা।"</div>
+</div>
+
+<div class="callout warn"><span class="co-icon">⚖️</span><div><strong>Responsible disclosure:</strong> vulnerability পেলে সরাসরি প্রকাশ কোরো না — আগে কোম্পানিকে জানাও (৯০ দিন standard), সময় দাও, তারপর পেপার। এই নীতিবোধ ছাড়া security গবেষক বিপজ্জনক। আইনি ঝুঁকিও আছে — CFAA, DMCA।</div></div>
+
+<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড়:</strong> NIST PQ standards চূড়ান্ত (ML-KEM/ML-DSA, ২০২৪), zkTLS (proving web data), FHE এখন practical (Zama, ২০২৫), SGX/SEV-SNP confidential computing, AI-আসisted vulnerability discovery, supply-chain security (SLSA, Sigstore)।</div></div>
+
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ ভাঙা আর বানানো একসাথে ভালোবাসো · ✅ crypto গণিত (number theory, lattices) ভালো লাগে · ✅ government/clearance career চাও (NSA, national labs) · ✅ real-world impact চাও · 💡 CTF (picoCTP, ফ্রি) দিয়ে শুরু — এটা entry-র সবচেয়ে ভালো পথ।</div></div>
+
+<div class="dialogue">"security গবেষণায় একটা unique challenge আছে," ওমর বললেন। "তুমি যা জানো, তা প্রকাশ করতে হয় সাবধানে। responsible disclosure। তুমি একটা zero-day খুঁজে পেলে — সরাসরি প্রকাশ করো না। প্রথমে কোম্পানিকে জানাও, সময় দাও, তারপর পেপার। এই নীতিবোধ ছাড়া security গবেষক বিপজ্জনক।" তিনি একটা সিফার দেখালেন। "crypto-ও তাই — একটা ভাঙা encryption, সরাসরি নয়, সাবধানে। আমানত পালন করো।"</div>
+<div class="dialogue en">"Security research has a unique challenge," Omar said. "You must publish what you know carefully. Responsible disclosure. If you find a zero-day — don't publish directly. First notify the company, give time, then paper. Without this ethics, a security researcher is dangerous." He showed a cipher. "Crypto too — a broken encryption, not directly, carefully. Keep the trust."</div>
+
+<div class="dialogue">হিফয — রক্ষা, সুরক্ষা। কুরআনে আল্লাহ বলেন: "আমি স্মরণ (কুরআন) নাজিল করেছি এবং আমিই এর রক্ষক।" (১৫:৯)। হিফয মানে সুরক্ষা, পাহারা। security গবেষণা হলো হিফয — মানুষের ডেটা, গোপনীয়তা, অধিকার রক্ষা করা। এটা আমানত। যে আমানত রক্ষা করে, সে বিশ্বস্ত। বিশ্বস্ত মানুষ আল্লাহও বিশ্বাস করেন। security গবেষক হলো ডিজিটাল দুনিয়ার প্রহরী — যে অন্যের তথ্য রক্ষা করে নিজের জ্ঞান দিয়ে। এটা বিশ্বাসের কাজ, এটাই হিফয।</div>
+<div class="dialogue en">Hifz — protection, guarding. Allah says: "We have sent down the Reminder and We are its protector." (15:9). Hifz means security, guarding. Security research is hifz — protecting people's data, privacy, rights. It's a trust. One who protects the trust, is trustworthy. The trustworthy person, Allah trusts too. A security researcher is the guardian of the digital world — protecting others' information with their knowledge. This is work of trust, this is hifz.</div>
+
+<div class="secret-box">🔐 Systems Sec + Crypto: চিরকালীন। মাঝারি প্রতিযোগিতা (৫-১০%), সরকারি+বেসরকারি ফান্ডিং। হট: PQ crypto (NIST standards), ZK, FHE। ভাঙা শেখো আগে (CTF), তারপর বানানো। responsible disclosure = নৈতিকতার শর্ত।</div>`,
+  senior:{
+    title:"Security/Crypto PhD — Senior Path",
+    body:`<p><strong>CTF দিয়ে শুরু:</strong> picoCTF (ফ্রি, CMU) থেকে শুরু করো, তারপর DEF CON qualifier, Google CTF। একটা CTF writeup blog = entry-level credential। ভর্তিতে security প্রফেসররা CTF খেলোয়ারদের খোঁজেন।</p><p><strong>একটা CVE পাও:</strong> open-source প্রজেক্টে vulnerability খুঁজে দাও, responsible disclosure করো, CVE পাও। এটা সবচেয়ে concrete profile signal — "আমি একটা real bug খুঁজে পেয়েছি।"</p><p><strong>Crypto = গণিত:</strong> lattice-based crypto (PQ) এখন সবচেয়ে হট কিন্তু গণিত-নির্ভর। Boneh-Shoup 'Graduate Course in Applied Cryptography' ফ্রি — পড়ো। number theory + abstract algebra শক্ত হলেই crypto theory-তে যাও।</p><p><strong>Government path:</strong> NSA, national labs (Sandia, Livermore), DARPA — security-এ বিশাল ফান্ডিং, clearance career। citizenship requirement থাকতে পারে — দেখে নাও। academia-এও industry-grade কাজ, কিন্তু government = সর্বোচ্চ stable funding।</p>`
+  }
 });
 
 // ══ DOOR 9: AI SECURITY & PRIVACY (placeholder) ══
