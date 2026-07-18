@@ -217,24 +217,216 @@ doors.push({
   }
 });
 
-// ══ DOOR 3: REINFORCEMENT LEARNING (placeholder) ══
+// ══ DOOR 3: REINFORCEMENT LEARNING ══
 doors.push({
   num:3, icon:"🎮", color:"#38bdf8", name:"সিদ্ধান্তের সমুদ্র",
   subtitle:"The Sea of Decisions", tech:"Reinforcement Learning",
-  spirit:"সাবর — ধৈর্য, পুরস্কারের জন্য অপেক্ষা",
-  secret:"RL — agents that learn from reward। Game agents, robotics, decision making। PPO, GRPO, RLHF।",
-  recall:{q:"(প্লেসহোল্ডার)",qen:"(placeholder)",a:"পূর্ণ কন্টেন্ট শীঘ্রই।",aen:"Full content coming soon."},
-  story:`<p class="scene-setting">দরজা ৩ — সিদ্ধান্তের সমুদ্র। পূর্ণ গভীর ডুব শীঘ্রই।</p><p class="scene-setting en">Door 3 — the Sea of Decisions. Full deep dive coming soon.</p>`
+  spirit:"সবর — ধৈর্য, দীর্ঘমেয়াদী পুরস্কারের জন্য অপেক্ষা",
+  secret:"RL — agent পুরস্কার থেকে শেখে সিদ্ধান্ত নিতে। একসময় শুধু গেম (AlphaGo), এখন LLM alignment-এর ইঞ্জিন (RLHF/GRPO), robotics, drug design। তীব্রভাবে ক্রমবর্ধমান, কিন্তু কঠিন — sample inefficiency, sparse reward, sim-to-real gap এখনো open। গণিত শক্তিশালী হলে এখানে সোনা।",
+  recall:{
+    q:"লিও কেন বললেন ভালো দাবা খেলোয়াড় পরের চাল নয়, দশ চাল পরের ফল দেখে?",
+    qen:"Why did Leo say a good chess player looks not at the next move, but the outcome ten moves later?",
+    a:"কারণ RL-এ এটাই মূল — delayed reward। একটা চাল এখন খারাপ মনে হতে পারে, কিন্তু দশ চাল পরে জয় আনতে পারে। agent-কে শিখতে হয় শুধু তাৎক্ষণিক পুরস্কার নয় — long-term return। এটাই RL-কে কঠিন করে: credit assignment problem। কোন চালটা আসলে জয়ের কারণ? সবর — ধৈর্য ধরে দেখা।",
+    aen:"Because this is the heart of RL — delayed reward. A move may seem bad now, but bring victory ten moves later. The agent must learn not immediate reward — but long-term return. This is what makes RL hard: the credit assignment problem. Which move actually caused the win? Sabr — patiently watching."
+  },
+  story:`
+<p class="scene-setting">তৃতীয় দরজা। ইউকির গ্যালারি পেরিয়ে তুমি একটা দাবার কোর্টে — কিন্তু দাবার ঘুঁটিগুলো নিজে নিজে চলছে। একটা বিশাল বোর্ডে দুই পক্ষ খেলছে, প্রতিটা চালের সাথে পুরস্কারের ঝনঝন। কোর্টের কোণায় বসে লিও — কালো টুপি, হাতে একটা ঘড়ি আর একটা স্কোরবোর্ড, চোখে কৌশলীর গভীরতা। আলেকজান্ডার পেছনে দাঁড়িয়ে ইশারায় বলছেন — এটাও তাঁর সমুদ্রের অংশ। কাঠের ঘুঁটির ঠকঠক, ঘড়ির টিকটিক, জয়ের শিস।</p>
+<p class="scene-setting en">The third door. Past Yuki's gallery, you enter a chess court — but the pieces move on their own. On a vast board two sides play, each move chiming with reward. In a corner sits Leo — black cap, a clock and scoreboard in hand, a tactician's depth in his eyes. Alexander stands behind, gesturing — this too is part of his sea. The clack of wooden pieces, the ticking clock, the whistle of victory.</p>
+
+<div class="dialogue">আলেকজান্ডার বললেন, "ইভা শব্দ দেখালেন, ইউকি ছবি — এবার লিও দেখাবে সিদ্ধান্ত।" লিও একটা ঘুঁটি সরালেন। "এই চালটা এখন খারাপ মনে হচ্ছে — একটা বোড়ে হারালাম। কিন্তু দশ চাল পরে এই চালটাই রানি জিতে দেবে।" তিনি ঘড়িটা দেখালেন। "RL-এ এটাই কঠিন — একটা চাল ভালো না খারাপ, সেটা এখন বোঝা যায় না। শুধু শেষে জিতলে বোঝা যায়। একে বলে delayed reward।"</div>
+<div class="dialogue en">Alexander said, "Eva showed words, Yuki images — now Leo shows decisions." Leo moved a piece. "This move seems bad now — I lost a pawn. But ten moves later this same move will win the queen." He showed the clock. "This is the hard part of RL — whether a move is good or bad can't be known now. Only at the end, if you win. This is called delayed reward."</div>
+
+<div class="diagram">
+  <div class="diag-title">RL লুপ — Agent পরিবেশ থেকে শেখে</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowAmber3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#7dd3fc"/></marker>
+      <marker id="arrowTeal3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#3dd6c4"/></marker>
+    </defs>
+    <!-- Agent box -->
+    <rect class="cell-cyan" x="60" y="80" width="130" height="70" rx="10"/>
+    <text class="lbl" x="125" y="105" fill="#3dd6c4">AGENT</text>
+    <text class="lbl-sm" x="125" y="128">policy π(a|s)</text>
+    <!-- Environment box -->
+    <rect class="cell-good" x="370" y="80" width="130" height="70" rx="10"/>
+    <text class="lbl" x="435" y="105" fill="#52c41a">ENVIRONMENT</text>
+    <text class="lbl-sm" x="435" y="128">state, reward</text>
+    <!-- Action arrow (agent -> env, top) -->
+    <text class="lbl-sm" x="280" y="60" fill="#7dd3fc">action a</text>
+    <line class="edge-amber" x1="190" y1="95" x2="370" y2="95" marker-end="url(#arrowAmber3)"/>
+    <!-- Reward/state arrows (env -> agent, bottom) -->
+    <text class="lbl-sm" x="280" y="180" fill="#3dd6c4">state s' + reward r</text>
+    <line class="edge-cyan" x1="370" y1="140" x2="190" y2="140" marker-end="url(#arrowTeal3)"/>
+    <text class="lbl-sm" x="280" y="208" fill="#5e5c74">লক্ষ্য: cumulative reward বৃদ্ধি করো — শুধু তাৎক্ষণিক নয়, দীর্ঘমেয়াদী</text>
+  </svg>
+  <div class="diag-cap">RL = trial-and-error লুপ। agent কাজ করে, পরিবেশ ফল দেয়, agent নীতি বদলায়। এটাই কীভাবে AlphaGo, ChatGPT (RLHF), রোবট শেখে।</div>
+</div>
+
+<div class="code-block">Reinforcement Learning — গবেষণার শাখাসমূহ:
+
+১. CORE RL ALGORITHMS
+   - Model-free: Q-learning, DQN, SAC, PPO (শিল্পে standard)
+   - Model-based: world models, MuZero, planning (Dreamer)
+   - Offline RL: logged data থেকে শেখা (production-safe)
+
+২. RL FOR LLMs (🔥 সবচেয়ে বড় crossover)
+   - RLHF (InstructGPT, ChatGPT), RLAIF, DPO (offline simplification)
+   - GRPO (DeepSeek-R1, ২০২৪-২৫) — value-function-ফ্রি, শস্তা
+   - Reasoning via RL: o1/o3, test-time compute
+
+৩. ROBOTICS & CONTROL (Door 19 এর সাথে সংযোগ)
+   - Manipulation, locomotion, dexterous, sim-to-real
+   - LfD (learning from demonstration), RL+diffusion policies
+
+৪. MULTI-AGENT & GAME THEORY
+   - Self-play (AlphaGo, AlphaStar, Diplomacy,麻将)
+   - MARL, emergent behavior, strategic interaction
+
+৫. SCIENCE & OPTIMIZATION (🔥 emerging)
+   - RL for chip design, drug discovery, math (AlphaProof)
+   - Combinatorial optimization, neural architecture search
+
+৬. THEORY
+   - Sample complexity, exploration (curiosity, count-based)
+   - Offline RL identifiability, representation learning</div>
+
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🔥 RL for LLMs</td><td>RLHF, GRPO, DPO, reasoning RL</td><td>NeurIPS, ICML, ICLR, COLM</td></tr>
+<tr><td class="hl">🔥 Deep RL</td><td>PPO, SAC, offline RL, world models</td><td>NeurIPS, ICML, ICLR</td></tr>
+<tr><td class="hl">🤖 Robot RL</td><td>Manipulation, sim-to-real, diffusion policy</td><td>CoRL, ICRA, RSS</td></tr>
+<tr><td class="hl">♟️ Games/Self-play</td><td>AlphaZero, multi-agent, MARL</td><td>NeurIPS, AAMAS, ICML</td></tr>
+<tr><td class="hl">🧪 RL4Science</td><td>Chip floorplan, drug discovery, math</td><td>NeurIPS, ICML, Nature</td></tr>
+<tr><td class="hl">📐 RL Theory</td><td>Sample complexity, exploration, offline</td><td>COLT, NeurIPS, ICML</td></tr></table>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">২-৫%</div><div class="sc-label">গ্রহণের হার (তীব্র, কিন্তু niche-এ কম)</div></div>
+<div class="stat-card"><div class="sc-num">$১.৫B+</div><div class="sc-label">DARPA + industry RL ফান্ডিং</div></div>
+<div class="stat-card"><div class="sc-num">$২০০-৪৫০K</div><div class="sc-label">industry (DeepMind, OpenAI, Anthropic)</div></div>
+<div class="stat-card"><div class="sc-num">🔥🔥🔥</div><div class="sc-label">RLHF/GRPO = LLM alignment-এর ইঞ্জিন</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"RL মানে শুধু game-playing। AlphaGo হয়ে গেছে, এখন আর কিছু নেই।" ভুল। AlphaGo RL-এর শুরু ছিল; RLHF ছাড়া ChatGPT হতো না, DeepSeek-R1 হতো না। Robotics, drug design, chip design — RL এখন সব জায়গায়। reasoning model (o1) RL-এর উপর দাঁড়িয়ে।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"RL হলো sequential decision-making-এর সাধারণ কাঠামো — game, LLM alignment, robotics, science optimization সব এক ছাতার নিচে। core RL (sample efficiency, exploration) এখনো hard open problem। যে এখানে depth দেয়, সে প্রতিটা AI wave-এ প্রাসঙ্গিক থাকে।"</div>
+</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>RL-এর কঠিন সত্য:</strong> deep RL খারাপভাবে sample-inefficient (মিলিয়ন episode লাগে), reward shaping কঠিন, sim-to-real gap বড়। industry-এ offline RL + imitation বেশি ব্যবহৃত হয়। pure online deep RL-এ যাওয়ার আগে এই কঠিনতা মেনে নাও।</div></div>
+
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ গণিত (probability, optimization, dynamic programming) ভালোবাসো · ✅ দীর্ঘমেয়াদী চিন্তা পছন্দ · ✅ LLM alignment (RLHF/GRPO) বা robotics-এ আগ্রহ · ⚠️ experiment চালানো ব্যয়বহুল (compute, environment) · 💡 RL theory = কম ভিড়, উচ্চ academic মূল্য।</div></div>
+
+<div class="dialogue">"RL-এর একটা গভীর সত্য আছে," লিও বললেন। "এটা শেখার প্রক্রিয়া মানুষের মতো — trial and error। শিশু হাঁটতে শেখে পড়ে পড়ে। রোবটও তাই। ChatGPT-ও RLHF দিয়ে মানুষের পছন্দ থেকে শেখেছে। RL হলো শেখার সবচেয়ে সাধারণ কাঠামো — শুধু AI নয়, জীবনও। আমরা সবাই পুরস্কার থেকে শিখি, শাস্তি থেকে শিখি। কিন্তু গণিত দিয়ে সেটা বোঝা — সেটাই গবেষণা।"</div>
+<div class="dialogue en">"RL has a deep truth," Leo said. "Its learning process is like a human's — trial and error. A child learns to walk by falling. So does a robot. Even ChatGPT learned from human preference via RLHF. RL is the most general framework of learning — not just AI, but life. We all learn from reward, from punishment. But understanding that with mathematics — that's research."</div>
+
+<div class="dialogue">সবর — ধৈর্য। কুরআনে আল্লাহ বলেন: "ধৈর্যধারণে আল্লাহ ধৈর্যশীলদের সাথে আছেন।" (৮:৪৬)। RL-এর মূলে সবর — delayed reward। একটা চালের ফল আজ নয়, দশ ধাপ পরে আসে। যে তাৎক্ষণিক পুরস্কারে লালায়িত হয়, সে ভালো খেলোয়াড় হয় না। যে সবর করে — দীর্ঘমেয়াদী return দেখে — সে জেতে। জীবনেও তাই — আল্লাহর পুরস্কার পৃথিবীতে নয়, আখিরাতে। সবরকারী দীর্ঘদৃষ্টি রাখে। RL গবেষক হলো সে যে এই দীর্ঘদৃষ্টির গণিত করে।</div>
+<div class="dialogue en">Sabr — patience. Allah says: "Allah is with the patient." (8:46). At RL's core is sabr — delayed reward. The fruit of a move comes not today, but ten steps later. One who craves immediate reward, doesn't become a good player. One who is patient — who sees long-term return — wins. So in life — Allah's reward is not in this world, but the hereafter. The patient keep the long view. An RL researcher is one who does the math of this long view.</div>
+
+<div class="secret-box">🎮 RL: sequential decision-making-এর সাধারণ কাঠামো। RLHF/GRPO = LLM alignment-এর ইঞ্জিন; robotics, RL4Science। core (sample efficiency, exploration) open problem। কঠিন কিন্তু প্রতিটা AI wave-এ প্রাসঙ্গিক। গণিত শক্ত হলে যাও।</div>`,
+  senior:{
+    title:"RL PhD-তে যেখানে মূল্য — Senior Path",
+    body:`<p><strong>RLHF/GRPO crossover = সোনার খনি:</strong> RL + LLM-এর intersection এখন সবচেয়ে হট (DeepSeek-R1, o1)। pure RL-এর চেয়ে এখানে বেশি ফান্ডিং ও প্রভাব। একটা recent RLHF/GRPO paper re-implement করো — এটা দারুণ profile builder।</p><p><strong>Sim-to-real এখনো unsolved:</strong> robotics RL-এ সিমুলেটরে কাজ করলেও বাস্তবে transfer কঠিন। domain randomization, real-data fine-tuning — এই gap-এ প্রোফাইল বানাও (CoRL, RSS)।</p><p><strong>Offline RL = industry-friendly:</strong> online RL প্রোডাকশনে বিপজ্জনক (agent ভুল করলে ক্ষতি)। offline RL (logged data থেকে শেখা) industry-এ বেশি demand — recommendation, healthcare, finance।</p><p><strong>Compute reality:</strong> deep RL experiment ব্যয়বহুল। RL theory বা offline RL-এ compute কম, কিন্তু গণিত বেশি। তোমার শক্তি (math vs engineering) অনুযায়ী niche বেছে নাও।</p>`
+  }
 });
 
-// ══ DOOR 4: ML THEORY & AI SAFETY (placeholder) ══
+// ══ DOOR 4: ML THEORY & AI SAFETY ══
 doors.push({
   num:4, icon:"🛡️", color:"#38bdf8", name:"নিরাপত্তার সমুদ্র",
   subtitle:"The Sea of Safety", tech:"ML Theory & AI Safety",
-  spirit:"আমানা — নিরাপত্তা, বিশ্বস্ততা",
-  secret:"ML Theory (generalization, optimization) + AI Safety (alignment, interpretability, robustness)।",
-  recall:{q:"(প্লেসহোল্ডার)",qen:"(placeholder)",a:"পূর্ণ কন্টেন্ট শীঘ্রই।",aen:"Full content coming soon."},
-  story:`<p class="scene-setting">দরজা ৪ — নিরাপত্তার সমুদ্র। পূর্ণ গভীর ডুব শীঘ্রই।</p><p class="scene-setting en">Door 4 — the Sea of Safety. Full deep dive coming soon.</p>`
+  spirit:"আমানা — আমানত, বিশ্বস্ততা, দায়িত্ব পালন",
+  secret:"ML Theory (generalization কেন কাজ করে, optimization dynamics) + AI Safety (alignment, interpretability, robustness) — AI-এর 'কেন' ও 'কতটা নিরাপদ'। একদম গণিতের গভীরে, কিন্তু সবচেয়ে বেশি প্রভাব — ভুল alignment মানবতার ক্ষতি করতে পারে। কম ভিড়, উচ্চ মূল্য। frontier AI labs (Anthropic, OpenAI) এখানে অর্থ ঢালছে।",
+  recall:{
+    q:"মায়া কেন বললেন সুড়ঙ্গ বানানো সহজ, সুড়ঙ্গের দেয়াল মজবুত করা কঠিন?",
+    qen:"Why did Maya say digging a tunnel is easy, but making its walls strong is hard?",
+    a:"কারণ সুড়ঙ্গ খোঁড়া = model বানানো (সহজ, কেউ পারে)। কিন্তু দেয়াল মজবুত না হলে সুড়ঙ্গ ধসে পড়বে — একদিন। ML theory হলো সেই দেয়াল — generalization কেন কাজ করে, কখন ভাঙে। AI safety হলো সেই নিশ্চয়তা — model যেন উদ্দেশ্য থেকে বিচ্যুত না হয়। বানানো সহজ, বুঝা ও নিরাপদ রাখা কঠিন।",
+    aen:"Because digging a tunnel = building a model (easy, anyone can). But if the walls aren't strong, it collapses — one day. ML theory is that wall — why generalization works, when it breaks. AI safety is that assurance — that the model won't deviate from purpose. Building is easy; understanding and keeping safe is hard."
+  },
+  story:`
+<p class="scene-setting">চতুর্থ দরজা। লিওর দাবা কোর্ট পেরিয়ে তুমি একটা অন্ধকার সুড়ঙ্গে — বিশাল, পাথরের দেয়াল। সুড়ঙ্গের এক প্রান্তে আলো, অন্য প্রান্তে অন্ধকার। দেয়ালে ফাটল — কোথাও জল গড়িয়ে পড়ছে। সুড়ঙ্গের মাঝখানে হাত দিয়ে দেয়াল পরীক্ষা করছেন মায়া — সাদা কোট, হাতে একটা ক্যালিপার ও স্ট্রেস-টেস্ট রিগ, চোখে সতর্ক নিখুঁততা। আলেকজান্ডার পেছনে ফিসফিস করে বলছেন — এটা তাঁর সমুদ্রের সবচেয়ে সূক্ষ্ম অংশ। ভেজা পাথরের ঠান্ডা গন্ধ, জলের ফোঁটার শব্দ, দূরে পাথর খসার আওয়াজ।</p>
+<p class="scene-setting en">The fourth door. Past Leo's chess court, you enter a dark tunnel — vast, stone walls. Light at one end, darkness at the other. Cracks in the walls — water seeping somewhere. At the center, Maya tests a wall with her hand — white coat, a caliper and stress-test rig in hand, careful precision in her eyes. Alexander whispers from behind — this is the most subtle part of his sea. Smell of damp stone, the drip of water, distant rock-fall.</p>
+
+<div class="dialogue">আলেকজান্ডার বললেন, "ইভা, ইউকি, লিও — সবাই মডেল বানায়। কিন্তু মায়া জিজ্ঞেস করে সেই মডেল কেন কাজ করে, আর কতটা নিরাপদ।" মায়া একটা ফাটল দেখালেন। "এই ফাটলটা ছোট মনে হয়। কিন্তু চাপ দিলে পুরো সুড়ঙ্গ ধসে যাবে। মডেলও তাই — training data-তে ভালো, কিন্তু distribution shift-এ বিপর্যয়। আমার কাজ হলো সেই ফাটল খোঁজা — theory দিয়ে, নিরাপত্তা দিয়ে।"</div>
+<div class="dialogue en">Alexander said, "Eva, Yuki, Leo — all build models. But Maya asks why those models work, and how safe they are." Maya showed a crack. "This crack looks small. But under pressure, the whole tunnel collapses. So with models — good on training data, but disaster under distribution shift. My job is finding those cracks — with theory, with safety."</div>
+
+<div class="diagram">
+  <div class="diag-title">AI Safety-এর চার স্তম্ভ — কেন মডেল ভাঙে</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowFire4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#ff6b35"/></marker>
+    </defs>
+    <text class="lbl-sm" x="280" y="22" fill="#7dd3fc">চারটি বিপদের উৎস</text>
+    ${[ ['OBJECTIVE','ভুল লক্ষ্য','optimize হয়',60,'#ef4444'], ['DISTRIBUTION','train ≠ real','shift, adversarial',200,'#f97316'], ['CAPABILITY','খুব শক্তিশালী','দুরুপযোগের ঝুঁকি',340,'#b37feb'], ['OVERSIGHT','ভেতরে অন্ধকার','আমরা বুঝি না',480,'#5b9eff'] ].map(s=>`<rect class="cell-hot" x="${s[3]-55}" y="45" width="110" height="58" rx="8" style="fill:${s[4]}22;stroke:${s[4]}"/><text class="lbl-sm" x="${s[3]}" y="66" fill="${s[4]}" style="font-weight:700">${s[0]}</text><text class="lbl-sm" x="${s[3]}" y="83" fill="#9290a8">${s[1]}</text><text class="lbl-sm" x="${s[3]}" y="96" fill="#9290a8" style="font-size:8px">${s[2]}</text>`).join('')}
+    <!-- converging lines down to a central model -->
+    ${[60,200,340,480].map(x=>`<line class="edge" x1="${x}" y1="115" x2="280" y2="150" style="stroke:#ff6b35"/>`).join('')}
+    <rect class="cell" x="210" y="148" width="140" height="34" rx="8"/>
+    <text class="lbl" x="280" y="166" fill="#ff6b35">MISSPECIFIED GOAL</text>
+    <text class="lbl-sm" x="280" y="205" fill="#5e5c74">আসল সমস্যা: মানুষের উদ্দেশ্য সম্পূর্ণ নির্দিষ্ট করা কঠিন — এটাই alignment problem</text>
+  </svg>
+  <div class="diag-cap">AI Safety = চারটি risk-এর সংমিশ্রণ পরিচালনা। Alignment-এর মূল সত্য: আমরা যা চাই তা নির্ভুলভাবে specify করা প্রায় অসম্ভব।</div>
+</div>
+
+<div class="code-block">ML Theory & AI Safety — গবেষণার শাখাসমূহ:
+
+১. ML THEORY (গণিতের গভীরে)
+   - Generalization: over-parameterized কেন generalize করে? (double descent)
+   - Optimization: SGD dynamics, loss landscape, implicit bias
+   - Learning theory: PAC, Rademacher, sample complexity
+
+২. INTERPRETABILITY (🔥 সবচেয়ে সক্রিয়)
+   - Mechanistic: circuits, sparse autoencoders (Anthropic), dictionary learning
+   - Probing, causal tracing, activation analysis
+   - Monitor: real-time inspection of frontier models
+
+৩. ALIGNMENT (🔥 frontier labs-এ বড়)
+   - Scalable oversight (debate, recursive reward)
+   - Constitutional AI, RLHF/RLAIF improvements
+   - Value learning, preference modeling, deceptive alignment
+
+৪. ROBUSTNESS
+   - Distribution shift, OOD detection, adversarial (Door 9)
+   - Certified robustness, conformal prediction
+   - Hallucination mitigation, factuality
+
+৫. EVALUATION & FORENSICS
+   - Frontier evals (dangerous capabilities), red-teaming
+   - Model organism research, detection (watermarking, fingerprints)
+
+৬. GOVERNANCE ADJACENT (সাথে)
+   - Compute governance, AI policy, responsible scaling</div>
+
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🔥 Mech Interp</td><td>Circuits, sparse autoencoders, dictionary learning</td><td>ICLR, NeurIPS, BlackboxNLP</td></tr>
+<tr><td class="hl">🔥 Alignment</td><td>Scalable oversight, scalable RLHF, deceptive alignment</td><td>NeurIPS, ICML, SaTML</td></tr>
+<tr><td class="hl">📐 ML Theory</td><td>Generalization, optimization, learning theory</td><td>COLT, NeurIPS, ICML</td></tr>
+<tr><td class="hl">🛡️ Robustness</td><td>OOD, certified, conformal, adversarial</td><td>ICLR, NeurIPS, SaTML</td></tr>
+<tr><td class="hl">⚖️ AI Gov.</td><td>Frontier evals, compute governance, policy</td><td>AIES, FAccT, SaTML</td></tr>
+<tr><td class="hl">🔴 Red-team</td><td>Bio/cyber risk evals, dangerous capabilities</td><td>NeurIPS (safety), arXiv</td></tr></table>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">২-৪%</div><div class="sc-label">গ্রহণের হার (niche, কম ভিড়)</div></div>
+<div class="stat-card"><div class="sc-num">$৫B+</div><div class="sc-label">frontier labs-এর safety বাজেট</div></div>
+<div class="stat-card"><div class="sc-num">$২৫০-৫০০K</div><div class="sc-label">industry (Anthropic, OpenAI, Apollo)</div></div>
+<div class="stat-card"><div class="sc-num">নোবেল</div><div class="sc-label">২০২৪ Physics: Hopfield/Hinton (NN foundations)</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"AI safety = 'AI ধ্বংস করবে' সিনেমার গল্প। research নয়, দর্শন।" অর্ধেক সত্য। catastrophic risk দর্শন আছে, কিন্তু বাকি সব — interp, robustness, alignment, frontier evals — কঠোর empirical/mathematical research। Anthropic-এর sparse autoencoder paper পড়ে দেখো — এটা সরাসরি বিজ্ঞান।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"AI safety = empirical + mathematical research যা মডেলকে বোঝা ও নিয়ন্ত্রণ নিশ্চিত করে। mech interp, alignment, robustness — সব পরিমাপযোগ্য। frontier labs এখন এখানে বিলিয়ন ঢালছে কারণ capability > understanding — আর এটাই বিপজ্জনক।"</div>
+</div>
+
+<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড়:</strong> sparse autoencoders (Anthropic's "Scaling Monosemanticity" — Claude 3-এর features), frontier model evals (UK/US AI Safety Institutes, ২০২৪), scaling laws for interp, deceptive alignment research, OpenAI o1-এর reasoning-এ safety implications।</div></div>
+
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ গণিত (proof, probability, optimization) শক্ত · ✅ জিজ্ঞাসা "কেন" ও "কতটা নিরাপদ" · ✅ উচ্চ প্রভাবের কাজ চাও (মানবতার সুরক্ষা) · ⚠️ "AI doom" বনাম "AI benefit" রাজনীতিতে না জড়ালে ভালো · 💡 interp = সবচেয়ে empirical/tractable প্রবেশপথ।</div></div>
+
+<div class="dialogue">"একটা গভীর কথা," মায়া বললেন। "AI যত শক্তিশালী হচ্ছে, তত বুঝতে হবে ভেতরে কী চলছে। capability বাড়ছে, understanding পিছিয়ে। এটাই সবচেয়ে বিপজ্জনক gap। frontier labs এখন interp-এ অর্থ ঢালছে কারণ একটা শক্তিশালী মডেল যা আমরা বুঝি না — তাকে নিয়ন্ত্রণ করা অসম্ভব। যে এই gap পূরণ করবে, সে শুধু research করবে না — মানবতাকে সাহায্য করবে।"</div>
+<div class="dialogue en">"A deep point," Maya said. "The more powerful AI gets, the more we must understand what's happening inside. Capability grows, understanding lags. This is the most dangerous gap. Frontier labs now pour money into interp because a powerful model we don't understand — controlling it is impossible. One who fills this gap, doesn't just do research — helps humanity."</div>
+
+<div class="dialogue">আমানা — আমানত, বিশ্বস্ততা। কুরআনে আল্লাহ বলেন: "নিশ্চয় আল্লাহ তোমাদের আমানত আদায়ের নির্দেশ দেন এবং মানুষের মাঝে বিচার করলে ন্যায্যতার নির্দেশ দেন।" (৪:৫৮)। AI safety হলো আমানা — শক্তিশালী technology-র দায়িত্ব গ্রহণ। যে শক্তি মানুষের হাতে, তার বিশ্বস্ত ব্যবহার আমানত। AI researcher শুধু শক্তিশালী মডেল বানায় না — সেই মডেল যেন উদ্দেশ্য থেকে বিচ্যুত না হয়, সেটা নিশ্চিত করে। এটাই দায়িত্ব, এটাই আমানা। যে আমানা রক্ষা করে, সে সত্যিকারের বিশ্বস্ত।</div>
+<div class="dialogue en">Amanah — trust, trustworthiness. Allah says: "Allah commands you to deliver trusts to whom they are due, and when you judge between people, to judge with justice." (4:58). AI safety is amanah — taking responsibility for powerful technology. The power in human hands, its trustworthy use is a trust. An AI researcher doesn't just build powerful models — ensures they don't deviate from purpose. This is responsibility, this is amanah. One who keeps the trust is truly trustworthy.</div>
+
+<div class="secret-box">🛡️ ML Theory + AI Safety: AI-এর 'কেন' ও 'কতটা নিরাপদ'। হট: mech interp (sparse autoencoders), alignment, frontier evals। কম ভিড়, উচ্চ প্রভাব — frontier labs এখানে বিলিয়ন ঢালছে। গণিত শক্ত হলে সোনা।</div>`,
+  senior:{
+    title:"Safety/Theory PhD-তে প্রবেশপথ — Senior Path",
+    body:`<p><strong>Interp = সবচেয়ে tractable entry:</strong> mech interpretability (sparse autoencoders, circuits) এখন empirical ও measurable। Anthropic, OpenAI, DeepMind — সবাই এখানে অর্থ ঢালছে। একটা SAE re-implement করে feature analysis করো — দারুণ profile।</p><p><strong>Theory = উচ্চ bar, উচ্চ reward:</strong> COLT/NeurIPS theory track-এ ভর্তি কঠিন কিন্তু সম্মান সর্বোচ্চ। generalization, optimization dynamics-এ একটা clean theoretical result = lifetime credential। গণিত PhD-level শক্ত হলেই যাও।</p><p><strong>Frontier evals:</strong> UK/US AI Safety Institutes (২০২৪) এখন academic collaboration খুঁজছে। dangerous capability evals (bio, cyber, persuasion) — government funding, real impact।</p><p><strong>Politics trap:</strong> "AI doom" vs "e/acc" রাজনীতিতে না জড়িয়ে empirical work-এ মন দাও। তোমার research দারুণ হলে উভয় পক্ষ শুনবে।</p>`
+  }
 });
 
 // ══ DOOR 5: DISTRIBUTED SYSTEMS (placeholder) ══
