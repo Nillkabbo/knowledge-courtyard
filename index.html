@@ -78,6 +78,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card.game-28::before{background:linear-gradient(90deg,var(--gold),var(--fire),var(--gold))}
 .game-card.game-29::before{background:linear-gradient(90deg,var(--rose),var(--gold-bright),var(--rose))}
 .game-card.game-30::before{background:linear-gradient(90deg,var(--purple),var(--moon),var(--purple))}
+.game-card.game-31::before{background:linear-gradient(90deg,var(--teal),var(--leaf),var(--teal))}
 .game-card:hover{transform:translateY(-4px);border-color:var(--gold-glow);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 40px rgba(232,197,71,.1)}
 .game-card:hover::before{height:6px}
 .game-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
@@ -116,6 +117,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card.game-28 .game-tag{background:rgba(251,191,36,.12);color:var(--gold)}
 .game-card.game-29 .game-tag{background:rgba(240,98,146,.12);color:var(--rose)}
 .game-card.game-30 .game-tag{background:rgba(179,127,235,.12);color:var(--purple)}
+.game-card.game-31 .game-tag{background:rgba(45,212,191,.12);color:var(--teal)}
 .game-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:var(--ink);margin-bottom:.2rem}
 .game-title-bn{font-size:1rem;color:var(--ink-dim);font-weight:600}
 
@@ -159,6 +161,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card.game-28 .game-link{color:var(--gold)}
 .game-card.game-29 .game-link{color:var(--rose)}
 .game-card.game-30 .game-link{color:var(--purple)}
+.game-card.game-31 .game-link{color:var(--teal)}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── READING ROAD ── */
@@ -200,6 +203,47 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   .road-step-arrow{display:none}
 }
 
+/* ── SEARCH ── */
+.search-bar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,var(--bg-deep) 70%,rgba(7,6,13,0));backdrop-filter:blur(10px);padding:1rem 0 .8rem;margin:0 0 1.2rem}
+.search-row{position:relative;display:flex;gap:.6rem;align-items:center;background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:.5rem .8rem;transition:all .25s}
+.search-row:focus-within{border-color:var(--gold-glow);box-shadow:0 0 0 3px rgba(232,197,71,.08),0 6px 24px rgba(0,0,0,.3)}
+.search-icon{font-size:1.1rem;opacity:.7;flex-shrink:0}
+.search-input{flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--ink);font-family:'Noto Sans Bengali','Segoe UI',sans-serif;font-size:1rem;padding:.4rem 0}
+.search-input::placeholder{color:var(--ink-mute)}
+.search-clear{display:none;background:transparent;border:none;color:var(--ink-mute);font-size:1.1rem;cursor:pointer;padding:.2rem .4rem;border-radius:8px;line-height:1;flex-shrink:0}
+.search-clear:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.search-clear.show{display:block}
+.search-scope{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
+.scope-chip{display:inline-flex;align-items:center;gap:.3rem;padding:.28rem .65rem;font-size:.7rem;font-weight:600;letter-spacing:.03em;color:var(--ink-mute);background:rgba(255,255,255,.04);border:1px solid var(--panel-border);border-radius:999px;cursor:pointer;transition:all .2s;user-select:none}
+.scope-chip:hover{color:var(--ink-dim);border-color:rgba(232,197,71,.3)}
+.scope-chip.active{color:var(--bg-deep);background:linear-gradient(135deg,var(--gold-bright),var(--gold));border-color:transparent;font-weight:700}
+.scope-chip .dot{width:.5rem;height:.5rem;border-radius:50%;background:currentColor;opacity:.6}
+.search-meta{font-size:.72rem;color:var(--ink-mute);margin:.4rem .2rem 0;display:none}
+.search-meta.show{display:block}
+.search-results{display:none;margin-top:.6rem}
+.search-results.show{display:block}
+.sr-item{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--panel-border);border-left:3px solid var(--panel-border);border-radius:12px;padding:.8rem 1rem;margin-bottom:.6rem;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.sr-item:hover{transform:translateX(3px);border-left-color:var(--gold-bright);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.sr-item:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.sr-head{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap;margin-bottom:.25rem}
+.sr-book{font-family:'Cinzel',serif;font-size:.62rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-bright);background:rgba(232,197,71,.1);padding:.12rem .45rem;border-radius:5px;white-space:nowrap}
+.sr-tech{font-family:'Cinzel',serif;font-size:.78rem;font-weight:700;color:var(--ink)}
+.sr-title-bn{font-size:.86rem;color:var(--ink);font-weight:600}
+.sr-title-en{font-size:.74rem;color:var(--ink-mute);font-style:italic}
+.sr-snippet{font-size:.76rem;color:var(--ink-dim);line-height:1.6;margin-top:.3rem}
+.sr-snippet mark{background:rgba(232,197,71,.22);color:var(--gold-bright);padding:0 .1rem;border-radius:2px}
+.sr-tag{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.08rem .35rem;border-radius:4px;margin-left:.3rem;vertical-align:middle}
+.sr-tag.tech{color:var(--purple);background:rgba(179,127,235,.12)}
+.sr-tag.title{color:var(--teal);background:rgba(45,212,191,.12)}
+.sr-tag.book{color:var(--gold-bright);background:rgba(232,197,71,.12)}
+.sr-tag.content{color:var(--cyan);background:rgba(54,214,231,.12)}
+.sr-empty{text-align:center;padding:2rem 1rem;color:var(--ink-mute);font-size:.85rem}
+.sr-empty .big{font-size:2rem;display:block;margin-bottom:.5rem;opacity:.5}
+@media(max-width:600px){
+  .search-bar{padding:.8rem 0 .6rem}
+  .sr-tech{font-size:.74rem}
+}
+
 /* ── FOOTER ── */
 .footer{text-align:center;padding:2.5rem 0 1rem;border-top:1px solid var(--panel-border);margin-top:2rem}
 .footer-verse{font-family:'Amiri',serif;font-size:1.1rem;color:var(--gold-bright);margin-bottom:.3rem}
@@ -237,435 +281,61 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ STATS ══ -->
   <div class="stats">
-    <div class="stat"><div class="stat-num">৩০</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">৩৪২</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">৩৪২০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num" id="statBooks">—</div><div class="stat-label">বই / Books</div></div>
+    <div class="stat"><div class="stat-num" id="statChapters">—</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num" id="statXP">—</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
-  <div class="section-label">📚 ত্রিশটি যাত্রা — Thirty Journeys</div>
+  <div class="section-label" id="journeysLabel">📚 যাত্রা — Journeys</div>
+
+  <!-- ══ SEARCH BAR ── finds any topic across all 30 books ══ -->
+  <div class="search-bar" id="searchBar">
+    <div class="search-row">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="searchInput" type="search" autocomplete="off"
+             placeholder="যেকোনো বিষয় খুঁজুন — search any topic, chapter, or book…"
+             aria-label="Search across all books">
+      <button class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
+    </div>
+    <div class="search-scope" id="searchScope">
+      <span class="scope-chip active" data-scope="all"><span class="dot"></span>সব · All</span>
+      <span class="scope-chip" data-scope="tech"><span class="dot"></span>বিষয় · Topic</span>
+      <span class="scope-chip" data-scope="title"><span class="dot"></span>অধ্যায় · Chapter</span>
+      <span class="scope-chip" data-scope="book"><span class="dot"></span>বই · Book</span>
+      <span class="scope-chip" data-scope="content"><span class="dot"></span>বিষয়বস্তু · Content</span>
+    </div>
+    <div class="search-meta" id="searchMeta"></div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
 
   <!-- ══ FILTER TABS ══ -->
   <div class="filter-bar" id="filterBar">
-    <button class="filter-tab active" data-filter="all">📚 সব · All <span class="count">৩০</span></button>
+    <button class="filter-tab active" data-filter="all">📚 সব · All <span class="count">৩১</span></button>
     <button class="filter-tab" data-filter="road">🛣️ Reading Road <span class="count">✦</span></button>
     <button class="filter-tab" data-filter="core">🏛️ Core Six <span class="count">৬</span></button>
     <button class="filter-tab" data-filter="ai">🧬 AI Deep Dives <span class="count">১৩</span></button>
-    <button class="filter-tab" data-filter="growth">🌳 Growth &amp; Research <span class="count">১০</span></button>
+    <button class="filter-tab" data-filter="growth">🌳 Growth &amp; Research <span class="count">১১</span></button>
     <button class="filter-tab" data-filter="extras">🚗 Extras <span class="count">১</span></button>
   </div>
 
   <!-- ══ READING ROAD ── dependency-ordered path through all 29 books ══ -->
+  <!-- ══ READING ROAD ── rendered dynamically from books.json by #roadRenderer ══ -->
   <div class="road-wrap" data-category="road" id="roadWrap">
     <div class="road-intro">
       তাক ক্রমানুসারে নয় — নির্ভরতার ক্রমানুসারে পড়ো। প্রতিটা ধাপ আগের ধাপের উপর দাঁড়িয়ে আছে। মেটা-লার্নিং প্রথমে, ক্যাপস্টোন সবার শেষে।
       <span class="en">Read in <strong>dependency order</strong>, not shelf order. Each step builds on the last. Meta-learning first (it compounds), the LLM Anatomy keystone before any deep-dive, Embeddings lifted ahead of RAG, and the Knowledge Web capstone dead last. <a href="./READING-ROADMAP.md">Full reasoning → READING-ROADMAP.md</a></span>
     </div>
-
-    <!-- ══ PHASE 0 ══ -->
-    <div class="road-phase">
-      <div class="road-phase-head">
-        <span class="road-phase-num">Phase 0</span>
-        <span class="road-phase-title">Learn How to Learn · শেখার গলা</span>
-        <span class="road-phase-note">Do this first — it roughly doubles the retention of every book that follows.</span>
-      </div>
-      <div class="road-line">
-        <a class="road-step" href="./knowledge-craftsman/index.html">
-          <span class="road-step-num">1</span>
-          <span class="road-step-icon">📖</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 26 · The Craftsman of Knowledge <span class="road-step-title-bn">জ্ঞানের কারিগর</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · Ebbinghaus, Adler, Zettelkasten, Feynman, second-brain <span class="why">— referenced by 27 &amp; 28, so upstream of both.</span></span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./learn-to-learn/index.html">
-          <span class="road-step-num">2</span>
-          <span class="road-step-icon">🌱</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 5 · The Seed of Learning <span class="road-step-title-bn">শিক্ষার বীজ</span></span>
-            <span class="road-step-meta"><span class="ch">9 ch</span> · growth mindset, spaced repetition, active recall, sleep</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./deep-learning/index.html">
-          <span class="road-step-num">3</span>
-          <span class="road-step-icon">🔮</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 25 · The Council of Deep Knowledge <span class="road-step-title-bn">গভীর জ্ঞানের পরিষদ</span></span>
-            <span class="road-step-meta"><span class="ch">8 ch</span> · 20h vs 10,000h, Dunning-Kruger, metacognition</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- ══ PHASE 1 ══ -->
-    <div class="road-phase">
-      <div class="road-phase-head">
-        <span class="road-phase-num">Phase 1</span>
-        <span class="road-phase-title">Mindset &amp; North Star · মন ও দিক</span>
-      </div>
-      <div class="road-line">
-        <a class="road-step" href="./researcher-mind/index.html">
-          <span class="road-step-num">4</span>
-          <span class="road-step-icon">🌱</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 21 · The Researcher's Mind <span class="road-step-title-bn">গবেষকের মন</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · curiosity, question-crafting, intellectual humility</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./irreplaceable-craftsman/index.html">
-          <span class="road-step-num">5</span>
-          <span class="road-step-icon">🛡️</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 23 · The Irreplaceable Craftsman <span class="road-step-title-bn">অপ্রতিস্থাপনীয় কারিগর</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · permanent vs perishable skills, systems thinking</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./human-psychology/index.html">
-          <span class="road-step-num">6</span>
-          <span class="road-step-icon">🧠</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 24 · The Throne of the Mind <span class="road-step-title-bn">মনের সিংহাসন</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · biases, Cialdini, learned helplessness <span class="why">— referenced by 27 &amp; 28.</span></span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- ══ PHASE 2 ══ -->
-    <div class="road-phase">
-      <div class="road-phase-head">
-        <span class="road-phase-num">Phase 2</span>
-        <span class="road-phase-title">The Map &amp; the Engineer's Craft</span>
-      </div>
-      <div class="road-line">
-        <a class="road-step" href="./ai-engineering-game/index.html">
-          <span class="road-step-num">7</span>
-          <span class="road-step-icon">🤖</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 1 · Twenty-Seven Doors of AI Engineering <span class="road-step-title-bn">কৃত্রিম বুদ্ধিমত্তার সাতাশটি দরজা</span></span>
-            <span class="road-step-meta"><span class="ch">27 ch</span> · read <span class="why">inspectionally — the flyover of all 13 deep-dives.</span></span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./engineer-journey/index.html">
-          <span class="road-step-num">8</span>
-          <span class="road-step-icon">🏛️</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 3 · The Court of the Grand Muhandis <span class="road-step-title-bn">মুহান্দিসের দরবার</span></span>
-            <span class="road-step-meta"><span class="ch">11 ch</span> · first principles, abstraction, debugging</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./prompt-engineering/index.html">
-          <span class="road-step-num">9</span>
-          <span class="road-step-icon">🔥</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 7 · The Word Weaver's Forge <span class="road-step-title-bn">শব্দ বোনার কামার</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · prompt &amp; context engineering — most immediately useful skill</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- ══ PHASE 3 ══ -->
-    <div class="road-phase">
-      <div class="road-phase-head">
-        <span class="road-phase-num">Phase 3</span>
-        <span class="road-phase-title">What an LLM Actually Is · the keystone</span>
-        <span class="road-phase-note">⚠️ Math primer first: skim the existing <code>math-for-ml</code> doors (vectors, matrices, eigenvalues, probability). Its later doors (calculus, backprop) are not yet written — see Phase 6 note.</span>
-      </div>
-      <div class="road-line">
-        <a class="road-step keystone" href="./llm-anatomy/index.html">
-          <span class="road-step-num">10</span>
-          <span class="road-step-icon">🧠</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 8 · The LLM Anatomy <span class="road-step-title-bn">এলএলএম-এর শারীরস্থান</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · tokenization, attention, transformers, RLHF <span class="why">— five downstream books depend on this.</span></span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- ══ PHASE 4 ══ -->
-    <div class="road-phase">
-      <div class="road-phase-head">
-        <span class="road-phase-num">Phase 4</span>
-        <span class="road-phase-title">Meaning, Context &amp; Retrieval</span>
-      </div>
-      <div class="road-line">
-        <a class="road-step" href="./embeddings/index.html">
-          <span class="road-step-num">11</span>
-          <span class="road-step-icon">📐</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 18 · The Geometry of Meaning <span class="road-step-title-bn">অর্থের জ্যামিতি</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · embeddings, vector search <span class="why">— lifted from shelf #18; RAG/context/multimodal all need it.</span></span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./context-engineering/index.html">
-          <span class="road-step-num">12</span>
-          <span class="road-step-icon">📜</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 9 · The Canvas of Sight <span class="road-step-title-bn">দৃষ্টির ক্যানভাস</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · chunking, reranking, Lost-in-the-Middle</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./rag-mastery/index.html">
-          <span class="road-step-num">13</span>
-          <span class="road-step-icon">🌊</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 10 · The Well of Knowledge <span class="road-step-title-bn">জ্ঞানের কুয়ো</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · RAG mastery — needs embeddings + context</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- ══ PHASE 5 ══ -->
-    <div class="road-phase">
-      <div class="road-phase-head">
-        <span class="road-phase-num">Phase 5</span>
-        <span class="road-phase-title">Make the Model Act · কাজে নামানো</span>
-      </div>
-      <div class="road-line">
-        <a class="road-step" href="./tools-mcp/index.html">
-          <span class="road-step-num">14</span>
-          <span class="road-step-icon">🔌</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 19 · The Tool Forge <span class="road-step-title-bn">সরঞ্জামের কামারখানা</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · function calling, MCP <span class="why">— hard prereq for agents.</span></span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./ai-agents/index.html">
-          <span class="road-step-num">15</span>
-          <span class="road-step-icon">🤖</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 12 · The Autonomous Mind <span class="road-step-title-bn">স্বায়ত্তশাসিত মন</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · ReAct, planning, multi-agent — built on tools</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- ══ PHASE 6 ══ -->
-    <div class="road-phase">
-      <div class="road-phase-head">
-        <span class="road-phase-num">Phase 6</span>
-        <span class="road-phase-title">Harden &amp; Go Deep</span>
-        <span class="road-phase-note">⚠️ Fine-tuning Door 5 (SFT/DPO/PPO) leans on calculus/backprop — the missing half of <code>math-for-ml</code>. Backfill if you hit a wall.</span>
-      </div>
-      <div class="road-line">
-        <a class="road-step" href="./llm-security/index.html">
-          <span class="road-step-num">16</span>
-          <span class="road-step-icon">🛡️</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 13 · The Fortress Guard <span class="road-step-title-bn">দুর্গের প্রহরী</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · prompt injection, red-teaming, guardrails</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./fine-tuning/index.html">
-          <span class="road-step-num">17</span>
-          <span class="road-step-icon">🔧</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 11 · The Forge of Refinement <span class="road-step-title-bn">নিখুঁত করার কামার</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · LoRA/QLoRA, DPO/PPO</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- ══ PHASE 7 ══ -->
-    <div class="road-phase">
-      <div class="road-phase-head">
-        <span class="road-phase-num">Phase 7</span>
-        <span class="road-phase-title">Measure, Accelerate, Operate, Extend</span>
-        <span class="road-phase-note">📏 Evals (Book 16) before you ship anything from Phase 6.</span>
-      </div>
-      <div class="road-line">
-        <a class="road-step" href="./llm-evals/index.html">
-          <span class="road-step-num">18</span>
-          <span class="road-step-icon">📏</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 16 · The Measure <span class="road-step-title-bn">পরিমাপ</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · LLM-as-judge, RAGAS, benchmarks</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./inference-optimization/index.html">
-          <span class="road-step-num">19</span>
-          <span class="road-step-icon">⚡</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 17 · The Forged Edge <span class="road-step-title-bn">ধারালো ফলা</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · KV cache, quantization, speculative decoding</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./llmops/index.html">
-          <span class="road-step-num">20</span>
-          <span class="road-step-icon">⚓</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 14 · The Control Tower <span class="road-step-title-bn">নিয়ন্ত্রণ স্তম্ভ</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · vLLM, PagedAttention, monitoring</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./multimodal-ai/index.html">
-          <span class="road-step-num">21</span>
-          <span class="road-step-icon">🌈</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 15 · The Five Senses <span class="road-step-title-bn">পাঁচ ইন্দ্রিয়</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · ViT/CLIP, diffusion, VLMs — needs anatomy + embeddings + RAG</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- ══ PHASE 8 (parallel) ══ -->
-    <div class="road-phase">
-      <div class="road-phase-head">
-        <span class="road-phase-num">Phase 8</span>
-        <span class="road-phase-title">General Systems Engineering</span>
-        <span class="road-phase-note">⟂ Run in parallel with Phases 4–7 if you have time. Independent of the AI chain.</span>
-      </div>
-      <div class="road-line">
-        <a class="road-step parallel" href="./system-design-game/index.html">
-          <span class="road-step-num">22</span>
-          <span class="road-step-icon">🏙️</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 4 · The City Builder's Codex <span class="road-step-title-bn">নগর নির্মাতার পুস্তক</span></span>
-            <span class="road-step-meta"><span class="ch">20 ch</span> · CAP, consensus, replication, idempotency</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- ══ PHASE 9 (parallel) ══ -->
-    <div class="road-phase">
-      <div class="road-phase-head">
-        <span class="road-phase-num">Phase 9</span>
-        <span class="road-phase-title">Slow Parallel Track · DSA</span>
-        <span class="road-phase-note">⟂ Run alongside Phases 2–7 at ~3 chapters/week, not as a block. Live Python (Pyodide).</span>
-      </div>
-      <div class="road-line">
-        <a class="road-step parallel" href="./dsa-bazaar/index.html">
-          <span class="road-step-num">23</span>
-          <span class="road-step-icon">🧮</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 2 · The Bazaar of Algorithms <span class="road-step-title-bn">অ্যালগরিদমের বাজার</span></span>
-            <span class="road-step-meta"><span class="ch">18 ch</span> · Big-O → graphs → DP</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- ══ PHASE 10 ══ -->
-    <div class="road-phase">
-      <div class="road-phase-head">
-        <span class="road-phase-num">Phase 10</span>
-        <span class="road-phase-title">Research Track · if grad-school bound</span>
-      </div>
-      <div class="road-line">
-        <a class="road-step" href="./research-paper-craftsman/index.html">
-          <span class="road-step-num">24</span>
-          <span class="road-step-icon">✍️</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 27 · The Research Paper Craftsman <span class="road-step-title-bn">গবেষণাপত্র কারিগর</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · IMRaD, Keshav, peer review</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./cs-ocean/index.html">
-          <span class="road-step-num">25</span>
-          <span class="road-step-icon">🧭</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 22 · The Ocean of Computer Science <span class="road-step-title-bn">কম্পিউটার বিজ্ঞানের মহাসাগর</span></span>
-            <span class="road-step-meta"><span class="ch">20 ch</span> · survey of 10 CS domains <span class="why">— references 8 other books; last among deep-dives.</span></span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step" href="./phd-journey/index.html">
-          <span class="road-step-num">26</span>
-          <span class="road-step-icon">🏔️</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 20 · The Research Pilgrimage <span class="road-step-title-bn">গবেষণার তীর্থ</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · PhD funding, SOP, cold-emailing</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- ══ PHASE 11 ══ -->
-    <div class="road-phase">
-      <div class="road-phase-head">
-        <span class="road-phase-num">Phase 11</span>
-        <span class="road-phase-title">Synthesis &amp; Career · the finale</span>
-      </div>
-      <div class="road-line">
-        <a class="road-step" href="./interview-prep-game/index.html">
-          <span class="road-step-num">27</span>
-          <span class="road-step-icon">⚔️</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 6 · The Arena of Trials <span class="road-step-title-bn">পরীক্ষার ময়দান</span></span>
-            <span class="road-step-meta"><span class="ch">8 ch</span> · resume, STAR, negotiation — read when job-hunting</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-        <a class="road-step finale" href="./knowledge-web/index.html">
-          <span class="road-step-num">28</span>
-          <span class="road-step-icon">🕸️</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 28 · The Knowledge Web <span class="road-step-title-bn">জ্ঞানের জাল</span></span>
-            <span class="road-step-meta"><span class="ch">10 ch</span> · the capstone — references 14 other books. Read dead last.</span>
-          </span>
-          <span class="road-step-arrow">★</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- ══ EXTRA ══ -->
-    <div class="road-phase">
-      <div class="road-phase-head">
-        <span class="road-phase-num">Extra</span>
-        <span class="road-phase-title">Anytime</span>
-      </div>
-      <div class="road-line">
-        <a class="road-step parallel" href="./mi-driving/index.html">
-          <span class="road-step-num">29</span>
-          <span class="road-step-icon">🚗</span>
-          <span class="road-step-body">
-            <span class="road-step-title">Book 29 · The Michigan Driving Guide <span class="road-step-title-bn">মিশিগান ড্রাইভিং গাইড</span></span>
-            <span class="road-step-meta"><span class="ch">11 ch</span> · GDL, road rules, OWI</span>
-          </span>
-          <span class="road-step-arrow">→</span>
-        </a>
-      </div>
-    </div>
+    <div id="roadmap-render"></div>
   </div>
+
 
   <!-- ══ GROUP 1: THE CORE SIX ══ -->
   <div class="section-label" data-category="core">🏛️ মূল ছয়টি বই — The Core Six</div>
   <div class="games-grid" data-category="core">
 
     <!-- ══ GAME 1: AI ENGINEERING ══ -->
-    <a class="game-card game-1" href="./ai-engineering-game/index.html">
+    <a class="game-card game-1" data-folder="ai-engineering-game" href="./ai-engineering-game/index.html">
       <div class="game-head">
         <div class="game-icon">🤖</div>
         <div class="game-head-text">
@@ -716,7 +386,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 2: DSA BAZAAR ══ -->
-    <a class="game-card game-2" href="./dsa-bazaar/index.html">
+    <a class="game-card game-2" data-folder="dsa-bazaar" href="./dsa-bazaar/index.html">
       <div class="game-head">
         <div class="game-icon">🧮</div>
         <div class="game-head-text">
@@ -757,7 +427,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 3: ENGINEER JOURNEY ══ -->
-    <a class="game-card game-3" href="./engineer-journey/index.html">
+    <a class="game-card game-3" data-folder="engineer-journey" href="./engineer-journey/index.html">
       <div class="game-head">
         <div class="game-icon">🏛️</div>
         <div class="game-head-text">
@@ -793,7 +463,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 4: SYSTEM DESIGN ══ -->
-    <a class="game-card game-4" href="./system-design-game/index.html">
+    <a class="game-card game-4" data-folder="system-design-game" href="./system-design-game/index.html">
       <div class="game-head">
         <div class="game-icon">🏙️</div>
         <div class="game-head-text">
@@ -835,7 +505,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 5: LEARN TO LEARN ══ -->
-    <a class="game-card game-5" href="./learn-to-learn/index.html">
+    <a class="game-card game-5" data-folder="learn-to-learn" href="./learn-to-learn/index.html">
       <div class="game-head">
         <div class="game-icon">🌱</div>
         <div class="game-head-text">
@@ -869,7 +539,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 6: INTERVIEW PREP ══ -->
-    <a class="game-card game-6" href="./interview-prep-game/index.html">
+    <a class="game-card game-6" data-folder="interview-prep-game" href="./interview-prep-game/index.html">
       <div class="game-head">
         <div class="game-icon">⚔️</div>
         <div class="game-head-text">
@@ -909,7 +579,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   <div class="games-grid" data-category="ai">
 
     <!-- ══ GAME 7: PROMPT ENGINEERING ══ -->
-    <a class="game-card game-7" href="./prompt-engineering/index.html">
+    <a class="game-card game-7" data-folder="prompt-engineering" href="./prompt-engineering/index.html">
       <div class="game-head">
         <div class="game-icon">🔥</div>
         <div class="game-head-text">
@@ -945,7 +615,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 8: LLM ANATOMY ══ -->
-    <a class="game-card game-8" href="./llm-anatomy/index.html">
+    <a class="game-card game-8" data-folder="llm-anatomy" href="./llm-anatomy/index.html">
       <div class="game-head">
         <div class="game-icon">🔬</div>
         <div class="game-head-text">
@@ -981,7 +651,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 9: CONTEXT ENGINEERING ══ -->
-    <a class="game-card game-9" href="./context-engineering/index.html">
+    <a class="game-card game-9" data-folder="context-engineering" href="./context-engineering/index.html">
       <div class="game-head">
         <div class="game-icon">👁️</div>
         <div class="game-head-text">
@@ -1017,7 +687,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 10: RAG MASTERY ══ -->
-    <a class="game-card game-10" href="./rag-mastery/index.html">
+    <a class="game-card game-10" data-folder="rag-mastery" href="./rag-mastery/index.html">
       <div class="game-head">
         <div class="game-icon">🪣</div>
         <div class="game-head-text">
@@ -1053,7 +723,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 11: FINE-TUNING ══ -->
-    <a class="game-card game-11" href="./fine-tuning/index.html">
+    <a class="game-card game-11" data-folder="fine-tuning" href="./fine-tuning/index.html">
       <div class="game-head">
         <div class="game-icon">⚒️</div>
         <div class="game-head-text">
@@ -1089,7 +759,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 12: AI AGENTS ══ -->
-    <a class="game-card game-12" href="./ai-agents/index.html">
+    <a class="game-card game-12" data-folder="ai-agents" href="./ai-agents/index.html">
       <div class="game-head">
         <div class="game-icon">🤖</div>
         <div class="game-head-text">
@@ -1125,7 +795,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 13: LLM SECURITY ══ -->
-    <a class="game-card game-13" href="./llm-security/index.html">
+    <a class="game-card game-13" data-folder="llm-security" href="./llm-security/index.html">
       <div class="game-head">
         <div class="game-icon">🛡️</div>
         <div class="game-head-text">
@@ -1161,7 +831,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 14: LLMOPS ══ -->
-    <a class="game-card game-14" href="./llmops/index.html">
+    <a class="game-card game-14" data-folder="llmops" href="./llmops/index.html">
       <div class="game-head">
         <div class="game-icon">🚀</div>
         <div class="game-head-text">
@@ -1197,7 +867,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 15: MULTIMODAL AI ══ -->
-    <a class="game-card game-15" href="./multimodal-ai/index.html">
+    <a class="game-card game-15" data-folder="multimodal-ai" href="./multimodal-ai/index.html">
       <div class="game-head">
         <div class="game-icon">👁️</div>
         <div class="game-head-text">
@@ -1233,7 +903,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 16: LLM EVALS ══ -->
-    <a class="game-card game-16" href="./llm-evals/index.html">
+    <a class="game-card game-16" data-folder="llm-evals" href="./llm-evals/index.html">
       <div class="game-head">
         <div class="game-icon">📏</div>
         <div class="game-head-text">
@@ -1269,7 +939,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 17: INFERENCE OPTIMIZATION ══ -->
-    <a class="game-card game-17" href="./inference-optimization/index.html">
+    <a class="game-card game-17" data-folder="inference-optimization" href="./inference-optimization/index.html">
       <div class="game-head">
         <div class="game-icon">⚙️</div>
         <div class="game-head-text">
@@ -1305,7 +975,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 18: EMBEDDINGS ══ -->
-    <a class="game-card game-18" href="./embeddings/index.html">
+    <a class="game-card game-18" data-folder="embeddings" href="./embeddings/index.html">
       <div class="game-head">
         <div class="game-icon">📐</div>
         <div class="game-head-text">
@@ -1341,7 +1011,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 19: TOOLS & MCP ══ -->
-    <a class="game-card game-19" href="./tools-mcp/index.html">
+    <a class="game-card game-19" data-folder="tools-mcp" href="./tools-mcp/index.html">
       <div class="game-head">
         <div class="game-icon">🔧</div>
         <div class="game-head-text">
@@ -1383,7 +1053,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   <div class="games-grid" data-category="growth">
 
     <!-- ══ GAME 20: PHD JOURNEY ══ -->
-    <a class="game-card game-20" href="./phd-journey/index.html">
+    <a class="game-card game-20" data-folder="phd-journey" href="./phd-journey/index.html">
       <div class="game-head">
         <div class="game-icon">🎓</div>
         <div class="game-head-text">
@@ -1419,7 +1089,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 21: RESEARCHER'S MIND ══ -->
-    <a class="game-card game-21" href="./researcher-mind/index.html">
+    <a class="game-card game-21" data-folder="researcher-mind" href="./researcher-mind/index.html">
       <div class="game-head">
         <div class="game-icon">🧠</div>
         <div class="game-head-text">
@@ -1455,7 +1125,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 22: CS OCEAN ══ -->
-    <a class="game-card game-22" href="./cs-ocean/index.html">
+    <a class="game-card game-22" data-folder="cs-ocean" href="./cs-ocean/index.html">
       <div class="game-head">
         <div class="game-icon">🌊</div>
         <div class="game-head-text">
@@ -1491,7 +1161,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 23: IRREPLACEABLE CRAFTSMAN ══ -->
-    <a class="game-card game-23" href="./irreplaceable-craftsman/index.html">
+    <a class="game-card game-23" data-folder="irreplaceable-craftsman" href="./irreplaceable-craftsman/index.html">
       <div class="game-head">
         <div class="game-icon">🌳</div>
         <div class="game-head-text">
@@ -1527,7 +1197,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 24: HUMAN PSYCHOLOGY ══ -->
-    <a class="game-card game-24" href="./human-psychology/index.html">
+    <a class="game-card game-24" data-folder="human-psychology" href="./human-psychology/index.html">
       <div class="game-head">
         <div class="game-icon">🧠</div>
         <div class="game-head-text">
@@ -1563,7 +1233,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 25: DEEP LEARNING ══ -->
-    <a class="game-card game-25" href="./deep-learning/index.html">
+    <a class="game-card game-25" data-folder="deep-learning" href="./deep-learning/index.html">
       <div class="game-head">
         <div class="game-icon">🔮</div>
         <div class="game-head-text">
@@ -1597,7 +1267,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 26: KNOWLEDGE CRAFTSMAN ══ -->
-    <a class="game-card game-26" href="./knowledge-craftsman/index.html">
+    <a class="game-card game-26" data-folder="knowledge-craftsman" href="./knowledge-craftsman/index.html">
       <div class="game-head">
         <div class="game-icon">📖</div>
         <div class="game-head-text">
@@ -1633,7 +1303,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 27: RESEARCH PAPER CRAFTSMAN ══ -->
-    <a class="game-card game-27" href="./research-paper-craftsman/index.html">
+    <a class="game-card game-27" data-folder="research-paper-craftsman" href="./research-paper-craftsman/index.html">
       <div class="game-head">
         <div class="game-icon">📄</div>
         <div class="game-head-text">
@@ -1669,7 +1339,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 28: KNOWLEDGE WEB ══ -->
-    <a class="game-card game-28" href="./knowledge-web/index.html">
+    <a class="game-card game-28" data-folder="knowledge-web" href="./knowledge-web/index.html">
       <div class="game-head">
         <div class="game-icon">🧩</div>
         <div class="game-head-text">
@@ -1705,7 +1375,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     </a>
 
     <!-- ══ GAME 30: MATH FOR ML ══ -->
-    <a class="game-card game-30" href="./math-for-ml/index.html">
+    <a class="game-card game-30" data-folder="math-for-ml" href="./math-for-ml/index.html">
       <div class="game-head">
         <div class="game-icon">🧭</div>
         <div class="game-head-text">
@@ -1736,6 +1406,37 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       <div class="game-link">প্রবেশ করো →</div>
     </a>
 
+    <!-- ══ GAME 31: CLASSIC ML ══ -->
+    <a class="game-card game-31" data-folder="classic-ml" href="./classic-ml/index.html">
+      <div class="game-head">
+        <div class="game-icon">🌱</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 31 · Classic ML</div>
+          <div class="game-title">The Marketplace of Algorithms</div>
+          <div class="game-title-bn">মেশিনের বাজার</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        সনাতন মেশিন লার্নিং — লিনিয়ার রিগ্রেশন থেকে নিউরাল নেটওয়ার্ক। Al-Tusi, Ibn Sina, Omar Khayyam-এর আবিষ্কার।
+        <span class="en">Classic ML — from linear regression to neural networks. Featuring Al-Tusi (regression), Ibn Sina (decision trees), Omar Khayyam (SVM/kernels), Ibn Muqla (neural networks). Ten doors covering the complete ML fundamentals every PhD interview demands.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">⭐ Regression</span>
+        <span class="topic-chip">⚖️ Logistic</span>
+        <span class="topic-chip">🌳 Trees</span>
+        <span class="topic-chip">🛡️ SVM</span>
+        <span class="topic-chip">🏠 k-NN</span>
+        <span class="topic-chip">🏘️ k-Means</span>
+        <span class="topic-chip">✍️ Neural Net</span>
+      </div>
+      <div class="game-meta">
+        <span>📊 1000 XP</span>
+        <span>🧩 10 Doors</span>
+        <span>📈 8 Ranks</span>
+      </div>
+      <div class="game-link">প্রবেশ করো →</div>
+    </a>
+
   </div>
 
   <!-- ══ GROUP 4: EXTRAS ══ -->
@@ -1743,7 +1444,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   <div class="games-grid" data-category="extras">
 
     <!-- ══ GAME 29: MI DRIVING GUIDE ══ -->
-    <a class="game-card game-29" href="./mi-driving/index.html">
+    <a class="game-card game-29" data-folder="mi-driving" href="./mi-driving/index.html">
       <div class="game-head">
         <div class="game-icon">🚗</div>
         <div class="game-head-text">
@@ -1799,6 +1500,33 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   const tabs=bar.querySelectorAll('.filter-tab');
   const groups=document.querySelectorAll('[data-category]');
   const KEY='courtyard-filter';
+
+  // Bengali numeral conversion for the count badges.
+  const BN=['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  const bn=n=>String(n).replace(/\d/g,d=>BN[d]);
+
+  // Recompute the count badge on each filter tab from the cards actually present
+  // in the DOM — so adding a card anywhere auto-updates the tab counts.
+  function refreshCounts(){
+    const counts={all:0,core:0,ai:0,growth:0,extras:0};
+    document.querySelectorAll('.game-card[data-folder]').forEach(c=>{
+      // find this card's parent grid category
+      const grid=c.closest('.games-grid');
+      const cat=grid?grid.dataset.category:'growth';
+      counts.all++;
+      if(counts[cat]!=null) counts[cat]++;
+    });
+    tabs.forEach(t=>{
+      const f=t.dataset.filter;
+      const span=t.querySelector('.count');
+      if(!span) return;
+      span.textContent = f==='road' ? '✦' : bn(counts[f]||0);
+    });
+    // Also update the journeys label count if present.
+    const lbl=document.querySelector('.section-label');
+    // (leave section labels alone — they're descriptive, not counts)
+  }
+
   function apply(filter){
     tabs.forEach(t=>t.classList.toggle('active',t.dataset.filter===filter));
     groups.forEach(g=>{
@@ -1815,9 +1543,323 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     try{localStorage.setItem(KEY,f)}catch(_){}
     apply(f);
   });
+  refreshCounts();
   let saved='all';
   try{saved=localStorage.getItem(KEY)||'all'}catch(_){}
   apply(saved);
+})();
+</script>
+
+<!-- ══ ROADMAP RENDERER ── builds the Reading Road from books.json ══ -->
+<script>
+(function(){
+  'use strict';
+  const HOST = document.getElementById('roadmap-render');
+  if(!HOST) return;
+  // Expose a promise so the search module can await the loaded manifest.
+  window.__booksManifest = fetch('books.json', {cache:'force-cache'})
+    .then(r => r.json())
+    .then(manifest => { window.__books = manifest; return manifest; })
+    .catch(e => { console.warn('books.json failed', e); return null; });
+
+  function esc(s){ return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+  // Bengali numeral conversion for the stat counters + journeys label.
+  const BN=['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  const bn=n=>String(n).replace(/\d/g,d=>BN[d]);
+
+  window.__booksManifest.then(manifest => {
+    if(!manifest){ HOST.innerHTML = '<div class="sr-empty">Roadmap unavailable.</div>'; return; }
+    const byN = {};
+    manifest.books.forEach(b => byN[b.n] = b);
+
+    // ── Populate the header stats + journeys label from the manifest ──
+    // (single source: books.json). Falls back gracefully if elements absent.
+    const live = manifest.books.filter(b => b.status !== 'hidden');
+    const setStat = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
+    setStat('statBooks', bn(live.length));
+    // Chapters + XP require the search index; populate after it loads.
+    fetch('search-index.json', {cache:'force-cache'})
+      .then(r => r.json())
+      .then(idx => {
+        setStat('statChapters', bn(idx.chapters));
+        setStat('statXP', bn(idx.chapters * 100));
+      }).catch(()=>{});
+    const jl = document.getElementById('journeysLabel');
+    if(jl) jl.textContent = '📚 ' + bn(live.length) + ' যাত্রা — ' + live.length + ' Journeys';
+
+    const html = manifest.roadmap.map(phase => {
+      const steps = phase.books.map(entry => {
+        const n = typeof entry === 'number' ? entry : entry.book;
+        const role = (typeof entry === 'object' && entry.role) || 'plain';
+        const why = (typeof entry === 'object' && entry.why) ? entry.why : '';
+        const b = byN[n];
+        if(!b) return `<!-- book ${n} not in manifest -->`;
+        const cls = role==='plain' ? '' : ' '+role;
+        const whyHTML = why ? ' · <span class="why">' + esc(why) + '</span>' : '';
+        return '<a class="road-step'+cls+'" href="./'+b.folder+'/index.html">'
+          + '<span class="road-step-icon">'+b.icon+'</span>'
+          + '<span class="road-step-body">'
+            + '<span class="road-step-title">Book '+b.n+' · '+esc(b.title_en)
+            + ' <span class="road-step-title-bn">'+esc(b.title_bn)+'</span></span>'
+            + '<span class="road-step-meta">'+whyHTML+'</span>'
+          + '</span>'
+          + '<span class="road-step-arrow">'+(role==='finale'?'★':'→')+'</span>'
+        + '</a>';
+      }).join('');
+      const label = phase.label || ('Phase ' + phase.phase);
+      const noteHTML = phase.note ? '<span class="road-phase-note">'+esc(phase.note)+'</span>' : '';
+      return '<div class="road-phase">'
+        + '<div class="road-phase-head">'
+          + '<span class="road-phase-num">'+esc(label)+'</span>'
+          + '<span class="road-phase-title">'+esc(phase.title)+'</span>'
+          + noteHTML
+        + '</div>'
+        + '<div class="road-line">' + steps + '</div>'
+      + '</div>';
+    }).join('');
+    HOST.innerHTML = html;
+  });
+})();
+</script>
+
+<!-- ══ FULL-TEXT SEARCH ── deep ranked search across all 30 books ══ -->
+<script>
+(function(){
+  'use strict';
+  const INPUT   = document.getElementById('searchInput');
+  const CLEAR   = document.getElementById('searchClear');
+  const RESULTS = document.getElementById('searchResults');
+  const META    = document.getElementById('searchMeta');
+  const SCOPE   = document.getElementById('searchScope');
+  const BAR     = document.getElementById('searchBar');
+  if(!INPUT||!RESULTS) return;
+
+  let INDEX = null;          // search-index.json once fetched
+  let DOCS  = null;          // flattened per-chapter docs
+  let activeScope = 'all';
+  let lastQuery = '';
+
+  // Dim the book grids + filter tabs while search is active, so results stand out.
+  function dimSiblings(){
+    const searching = RESULTS.classList.contains('show') && INPUT.value.trim().length>0;
+    document.querySelectorAll('.filter-bar, [data-category]').forEach(el=>{
+      el.style.opacity = searching ? '.25' : '';
+      el.style.pointerEvents = searching ? 'none' : '';
+      el.style.transition = 'opacity .3s';
+    });
+  }
+
+  // ── Fetch + flatten the index lazily (on first keystroke), cache in memory ──
+  async function loadIndex(){
+    if(INDEX) return INDEX;
+    try{
+      const r = await fetch('search-index.json', {cache:'force-cache'});
+      INDEX = await r.json();
+      DOCS = [];
+      for(const book of INDEX.index){
+        for(const ch of book.chapters){
+          DOCS.push({
+            b: book.book, folder: book.folder,
+            ben: book.title_en, bbn: book.title_bn,
+            n: ch.n, nbn: ch.name_bn, nen: ch.name_en,
+            tech: ch.tech, spirit: ch.spirit, secret: ch.secret,
+            rq: ch.rq, rqen: ch.rqen, ra: ch.ra, raen: ch.raen,
+            body: ch.body
+          });
+        }
+      }
+    }catch(e){
+      console.warn('search index failed to load', e);
+      INDEX = false;
+    }
+    return INDEX;
+  }
+
+  // ── Text normalization: case + Bengali digits → ASCII + collapse ──
+  const BN = {'০':'0','১':'1','২':'2','৩':'3','৪':'4','৫':'5','৬':'6','৭':'7','৮':'8','৯':'9'};
+  function norm(s){
+    if(!s) return '';
+    return String(s).toLowerCase()
+      .replace(/[০-৯]/g, d=>BN[d]||d)
+      .replace(/[—–−]/g,'-')
+      .replace(/[’‘`]/g,"'")
+      .replace(/\s+/g,' ');
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+  // ── Scoring: where and how a token matches, not just whether ──
+  // Field weights — topic/tech highest, then titles, then essence, then content.
+  const W = { tech:10, nbn:8, nen:8, secret:6, rq:4, rqen:4, bbn:5, ben:5, body:2, spirit:2, ra:2, raen:2 };
+
+  // Restrict to which fields a given scope inspects.
+  const SCOPE_FIELDS = {
+    all:     ['tech','nbn','nen','secret','rq','rqen','bbn','ben','body','spirit','ra','raen'],
+    tech:    ['tech','secret','spirit'],
+    title:   ['nbn','nen'],
+    book:    ['bbn','ben'],
+    content: ['body','rq','rqen','ra','raen','secret']
+  };
+
+  function scoreDoc(doc, qNorm, qTokens, scope){
+    const fields = SCOPE_FIELDS[scope] || SCOPE_FIELDS.all;
+    let score = 0;
+    const hits = {};
+    for(const f of fields){
+      const fv = norm(doc[f]);
+      if(!fv) continue;
+      // Whole-phrase match bonus (contiguous, in order)
+      if(fv.indexOf(qNorm) !== -1){
+        score += W[f] * 2;
+        hits[f] = 'phrase';
+        // prefix-of-field boost (e.g. "rag" at start of "rag mastery")
+        if(fv.startsWith(qNorm)) score += W[f];
+      }
+      // Per-token match — rewards documents containing ALL query tokens
+      let tokenHits = 0;
+      for(const t of qTokens){
+        if(!t) continue;
+        if(fv.indexOf(t) !== -1){
+          score += W[f];
+          tokenHits++;
+          hits[f] = hits[f] || 'token';
+        }
+      }
+      if(tokenHits === qTokens.length && qTokens.length>1) score += W[f]; // all-tokens-in-field bonus
+    }
+    return {score, hits};
+  }
+
+  function highlight(text, qTokens){
+    if(!text) return '';
+    let out = esc(text);
+    // escape first, then highlight on the escaped string using escaped tokens
+    const seen = new Set();
+    for(const t of qTokens){
+      if(!t || seen.has(t) || t.length<2) continue;
+      seen.add(t);
+      const re = new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+      out = out.replace(re,'<mark>$1</mark>');
+    }
+    return out;
+  }
+
+  function snippetAround(text, qNorm, len=140){
+    if(!text) return '';
+    const i = norm(text).indexOf(qNorm);
+    if(i === -1) return esc(text.slice(0,len)) + (text.length>len?'…':'');
+    const start = Math.max(0, i-30);
+    const end = Math.min(text.length, start+len);
+    return (start>0?'…':'') + text.slice(start,end) + (end<text.length?'…':'');
+  }
+
+  function tagFor(hits){
+    // pick the highest-priority field that matched, for the badge
+    for(const f of ['tech','title','book','content']){
+      const mapping = {tech:['tech','secret','spirit'], title:['nbn','nen'], book:['bbn','ben'], content:['body','rq','rqen','ra','raen']};
+      if(mapping[f].some(h=>hits[h])) return f;
+    }
+    return null;
+  }
+
+  function runSearch(rawQuery){
+    lastQuery = rawQuery;
+    const q = rawQuery.trim();
+    CLEAR.classList.toggle('show', q.length>0);
+    dimSiblings();   // toggle opacity of book grids based on whether results show
+    if(!q){
+      RESULTS.classList.remove('show');
+      META.classList.remove('show');
+      RESULTS.innerHTML = '';
+      return;
+    }
+    if(!DOCS){
+      RESULTS.classList.add('show');
+      RESULTS.innerHTML = '<div class="sr-empty"><span class="big">⏳</span>Loading index…</div>';
+      return;
+    }
+    const qNorm = norm(q);
+    const qTokens = qNorm.split(/\s+/).filter(t=>t.length>0);
+
+    const scored = [];
+    for(const doc of DOCS){
+      const {score, hits} = scoreDoc(doc, qNorm, qTokens, activeScope);
+      if(score>0) scored.push({doc, score, hits});
+    }
+    scored.sort((a,b)=> b.score - a.score || a.doc.b - b.doc.b || a.doc.n - b.doc.n);
+    const top = scored.slice(0, 12);
+
+    META.classList.add('show');
+    META.textContent = scored.length===0
+      ? 'কোনো ফলাফল নেই — No results'
+      : (scored.length>12 ? `প্রথম ১২টি / Top 12 of ${scored.length} results` : `${scored.length} ফলাফল / result${scored.length>1?'s':''}`);
+
+    if(top.length===0){
+      RESULTS.classList.add('show');
+      RESULTS.innerHTML = '<div class="sr-empty"><span class="big">🔍</span>"'+esc(q)+'" — কোনো বইয়ে পাওয়া যায়নি<br><span style="font-size:.78rem">Not found in any book. Try a topic, e.g. "attention", "LoRA", "RAG".</span></div>';
+      return;
+    }
+
+    RESULTS.classList.add('show');
+    RESULTS.innerHTML = top.map(({doc,hits})=>{
+      const url = './'+doc.folder+'/index.html?door='+doc.n;
+      const tag = tagFor(hits);
+      const tagHTML = tag ? '<span class="sr-tag '+tag+'">'+tag+'</span>' : '';
+      const snip = snippetAround(doc.body || doc.secret || doc.tech, qNorm);
+      return '<a class="sr-item" href="'+url+'">'
+        + '<div class="sr-head">'
+          + '<span class="sr-book">Book '+doc.b+' · Ch '+doc.n+'</span>'
+          + '<span class="sr-tech">'+highlight(doc.tech, qTokens)+'</span>'
+          + tagHTML
+        + '</div>'
+        + '<div class="sr-title-bn">'+highlight(doc.nbn || '', qTokens)+'</div>'
+        + '<div class="sr-title-en">'+esc(doc.nen || '')+'</div>'
+        + '<div class="sr-snippet">'+highlight(snip, qTokens)+'</div>'
+        + '</a>';
+    }).join('');
+  }
+
+  // ── Debounced input handler ──
+  let t = null;
+  let loading = false;
+  INPUT.addEventListener('input', ()=>{
+    const q = INPUT.value;
+    CLEAR.classList.toggle('show', q.length>0);
+    clearTimeout(t);
+    // Lazy-load index on first meaningful query (>=2 chars)
+    if(q.trim().length>=2 && !INDEX && !loading){
+      loading = true;
+      loadIndex().then(()=>{ loading=false; runSearch(INPUT.value); });
+      RESULTS.classList.add('show');
+      RESULTS.innerHTML = '<div class="sr-empty"><span class="big">⏳</span>Loading index…</div>';
+      return;
+    }
+    t = setTimeout(()=>runSearch(INPUT.value), 90);
+  });
+
+  // ── Scope chip toggle ──
+  SCOPE.addEventListener('click', e=>{
+    const chip = e.target.closest('.scope-chip');
+    if(!chip) return;
+    activeScope = chip.dataset.scope;
+    SCOPE.querySelectorAll('.scope-chip').forEach(c=>c.classList.toggle('active', c===chip));
+    if(INPUT.value.trim()) runSearch(INPUT.value);
+  });
+
+  // ── Clear button ──
+  CLEAR.addEventListener('click', ()=>{
+    INPUT.value=''; INPUT.focus();
+    runSearch('');
+  });
+
+  // ── Keyboard: '/' focuses search; Escape clears ──
+  document.addEventListener('keydown', e=>{
+    if(e.key==='/' && document.activeElement!==INPUT && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)){
+      e.preventDefault(); INPUT.focus();
+    }
+    if(e.key==='Escape' && document.activeElement===INPUT){
+      INPUT.value=''; runSearch(''); INPUT.blur();
+    }
+  });
 })();
 </script>
 

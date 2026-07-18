@@ -246,3 +246,22 @@ document.addEventListener('keydown',e=>{
     else if(document.getElementById('story-screen').classList.contains('active'))goToMap();
   }
 });
+//
+// // DEEP-LINK HOOK (search) allows ./index.html?door=N to open a chapter directly.
+;(function(){
+  function boot(){
+    try{
+      var m=/(?:\?|&)door=(\d+)/.exec(location.search);
+      if(!m)return;
+      var t=Math.max(0,Math.min(doors.length-1,parseInt(m[1],10)-1));
+      // Bypass the prologue gate and unlock the chain up to the target door.
+      state.prologueSeen=true;
+      for(var i=0;i<t;i++){ if(state.completedDoors.indexOf(i)===-1) state.completedDoors.push(i); }
+      saveState&&saveState();
+      if(typeof startGame==='function') startGame();
+      openDoor(t);
+    }catch(e){ /* fail silently — reader lands on the welcome screen */ }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot);
+  else boot();
+})();
