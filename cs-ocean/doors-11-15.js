@@ -221,24 +221,223 @@ doors.push({
   }
 });
 
-// ══ DOOR 13: AR/VR & BCI (placeholder) ══
+// ══ DOOR 13: AR/VR & BRAIN-COMPUTER INTERFACES ══
 doors.push({
   num:13, icon:"🥽", color:"#c084fc", name:"অন্য দুনিয়ার দরজা",
   subtitle:"The Other-World Gate", tech:"AR/VR & Brain-Computer Interfaces",
-  spirit:"মিসর — অন্য জগতে যাত্রা",
-  secret:"AR/VR (virtual environments, mixed reality, spatial) + BCI (EEG, neural prosthetics)।",
-  recall:{q:"(প্লেসহোল্ডার)",qen:"(placeholder)",a:"পূর্ণ কন্টেন্ট শীঘ্রই।",aen:"Full content coming soon."},
-  story:`<p class="scene-setting">দরজা ১৩ — অন্য দুনিয়ার দরজা। পূর্ণ গভীর ডুব শীঘ্রই।</p><p class="scene-setting en">Door 13 — the Other-World Gate. Full deep dive coming soon.</p>`
+  spirit:"মিথাক — অন্য জগতে যাত্রা, নতুন দিক",
+  secret:"AR/VR + BCI হলো HCI-এর সবচেয়ে frontier অংশ — সম্পূর্ণ নতুন interaction paradigm। VR (সম্পূর্ণ অন্য দুনিয়া), AR (বাস্তবের উপর স্তর), BCI (চিন্তা দিয়ে নিয়ন্ত্রণ)। Vision Pro, Neuralink — এখন যুগ শুরু। niche, কম ভিড়, কিন্তু hardware-নির্ভর ও high-risk। যদি ভবিষ্যতের frontier-এ থাকতে চাও — এটা। কিন্তু hardware lab ও patience দরকার।",
+  recall:{
+    q:"নুসরাত কেন বললেন একটা গ্লাস পরলে তুমি অন্য দুনিয়ায়, কিন্তু সেই দুনিয়া সত্যি নয়?",
+    qen:"Why did Nusrat say putting on a glass takes you to another world, but that world isn't real?",
+    a:"কারণ VR চোখকে বোকা বানায় — সম্পূর্ণ অন্য দুনিয়া দেখায় যা সত্যি নয়। AR আংশিক — বাস্তবের উপর স্তর। BCI একদম অন্য — চিন্তা পড়ে, কোনো হাত লাগে না। এই সব frontier interaction। কিন্তু চ্যালেঞ্জ — motion sickness, latency, BCI noise, ethics। গবেষণা মানে এই সমস্যা সমাধান করা। ভবিষ্যতের কম্পিউটিং এখানে — spatial computing।",
+    aen:"Because VR fools the eyes — shows a wholly other world that isn't real. AR is partial — a layer over reality. BCI is wholly different — reads thoughts, no hands needed. These are frontier interactions. But challenges — motion sickness, latency, BCI noise, ethics. Research means solving these. The future of computing is here — spatial computing."
+  },
+  story:`
+<p class="scene-setting">ত্রয়োদশ দরজা। আয়েশার সেতু পেরিয়ে তুমি একটা অন্ধকার কক্ষে — কিন্তু দেয়ালে ভাসমান দরজা, মেঝেতে আলোর বৃত্ত। একটা টেবিলে সাজানো চশমা (ভিআর হেডসেট), হাতের মোজা (haptic glove), আর একটা মাথায় পরার রিং (BCI EEG cap)। মাঝখানে দাঁড়িয়ে নুসরাত — ছোট কালো চুল, হাতে একটা VR হেডসেট ও একটা EEG signal monitor, চোখে অভিযাত্রীর বিস্ময়। আয়েশা পেছনে ফিসফিস করে বলছেন — এটা তাঁর HCI-এর সবচেয়ে দুঃসাহসী সীমানা। প্লাস্টিক ও তারের গন্ধ, LED-র নরম আলো, দূরে সার্ভো মোটরের ঝিঁঝিঁ।</p>
+<p class="scene-setting en">The thirteenth door. Past Ayesha's bridge, you enter a dark chamber — but floating doors on the walls, circles of light on the floor. On a table: glasses (VR headset), hand-gloves (haptic), and a head-ring (BCI EEG cap). In the center stands Nusrat — short black hair, a VR headset and an EEG signal monitor in hand, an explorer's wonder in her eyes. Ayesha whispers behind — this is HCI's boldest frontier. Smell of plastic and wire, soft LED light, distant servo whine.</p>
+
+<div class="dialogue">আয়েশা বললেন, "আমি সেতু দেখালাম — কম্পিউটার ও মানুষের মাঝে। কিন্তু নুসরাত সেই সেতুকে একদম অন্য জায়গায় নিয়ে যায় — অন্য দুনিয়ায়।" নুসরাত একটা VR হেডসেট তোমার হাতে দিলেন। "এটা পরো।" তুমি পরলে — সম্পূর্ণ অন্য দুনিয়া। নদী, পাহাড়, সব কাল্পনিক কিন্তু বাস্তব মনে হচ্ছে। "এটা VR — virtual reality।" তারপর তিনি EEG রিংটা দেখালেন। "এটা শুধু দেখো না — চিন্তা দিয়ে নিয়ন্ত্রণ করো। BCI। মানুষের মস্তিষ্কের signal পড়ে কম্পিউটার চালায়। এটাই frontier।"</div>
+<div class="dialogue en">Ayesha said, "I showed the bridge — between computer and human. But Nusrat takes that bridge somewhere wholly else — to another world." Nusrat placed a VR headset in your hand. "Put it on." You did — a wholly other world. Rivers, mountains, all imaginary but feeling real. "This is VR — virtual reality." Then she showed the EEG ring. "Not just see — control with thought. BCI. Reading human brain signals to drive a computer. This is the frontier."</div>
+
+<div class="diagram">
+  <div class="diag-title">Spatial Computing Spectrum — বাস্তব থেকে অন্য দুনিয়া</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowPurple13" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#b37feb"/></marker>
+    </defs>
+    <line class="axis" x1="40" y1="100" x2="520" y2="100"/>
+    <text class="lbl-sm" x="60" y="90" fill="#52c41a">বাস্তব</text>
+    <text class="lbl-sm" x="500" y="90" fill="#b37feb">অন্য দুনিয়া</text>
+    ${[ ['BCI','চিন্তা দিয়ে',100,'#5b9eff'], ['AR','বাস্তবে স্তর',220,'#3dd6c4'], ['MR','মিশ্র বাস্তব',340,'#b37feb'], ['VR','সম্পূর্ণ অন্য',460,'#ef4444'] ].map(s=>`<circle cx="${s[2]}" cy="100" r="9" style="fill:${s[3]}22;stroke:${s[3]};stroke-width:2"/><text class="lbl-sm" x="${s[2]}" y="75" fill="${s[3]}" style="font-weight:700">${s[0]}</text><text class="lbl-sm" x="${s[2]}" y="130" fill="#9290a8" style="font-size:9px">${s[1]}</text>`).join('')}
+    <text class="lbl-sm" x="100" y="160" fill="#5b9eff">EEG, fNIRS, spike — Neuralink</text>
+    <text class="lbl-sm" x="220" y="160" fill="#3dd6c4">HoloLens, Vision Pro, Meta glasses</text>
+    <text class="lbl-sm" x="340" y="160" fill="#b37feb">Quest, passthrough, depth</text>
+    <text class="lbl-sm" x="460" y="160" fill="#ef4444">Quest, Apple Vision, fully immersive</text>
+    <text class="lbl-sm" x="280" y="195" fill="#5e5c74">চ্যালেঞ্জ: latency (motion sickness), resolution, haptic, BCI noise</text>
+    <text class="lbl-sm" x="280" y="215" fill="#5e5c74">🔥 spatial computing = next platform (Apple/Meta-র বিলিয়ন ডলার bet)</text>
+  </svg>
+  <div class="diag-cap">BCI → AR → MR → VR: একটা spectrum, বাস্তব থেকে কল্পনা পর্যন্ত। প্রতিটা নিজস্ব চ্যালেঞ্জ। spatial computing হলো পরবর্তী computing platform — smartphone-এর পর।</div>
+</div>
+
+<div class="code-block">AR/VR & BCI — গবেষণার শাখাসমূহ:
+
+১. VIRTUAL REALITY (VR)
+   - Immersive rendering, foveated, varifocal
+   - Locomotion, motion sickness, presence
+   - Social VR, collaborative VR
+
+২. AUGMENTED/MIXED REALITY (AR/MR)
+   - SLAM, depth sensing, scene understanding
+   - Optical see-through displays, occlusion
+   - Hand tracking, gaze interaction
+   - Vision Pro, HoloLens, Meta glasses (২০২৪-২৫)
+
+৩. HAPTICS & EMBODIMENT
+   - Force feedback, tactile, mid-air haptics
+   - Avatars, embodiment, self-presence
+   - Full-body tracking
+
+৪. BRAIN-COMPUTER INTERFACES (BCI) 🔥
+   - Non-invasive: EEG, fNIRS, MEG
+   - Invasive: Neuralink, Utah array, neuropixels
+   - Motor imagery, speech decoding, spelling
+   - Neural prosthetics, restoration (paralysis)
+
+৫. SPATIAL COMPUTING SYSTEMS
+   - Real-time 3D rendering pipeline, runtime
+   - Latency optimization (Door 6 crossover)
+   - Cross-device, cloud rendering
+
+৬. XR APPLICATIONS
+   - Training (medical, military, industrial)
+   - Therapy (phobia, PTSD, rehab)
+   - Education, collaboration, accessibility</div>
+
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🥽 VR</td><td>Rendering, locomotion, presence, social VR</td><td>CHI, UIST, IEEE VR, ISMAR</td></tr>
+<tr><td class="hl">👓 AR/MR</td><td>SLAM, display, Vision Pro, hand tracking</td><td>ISMAR, CHI, UIST, ISS</td></tr>
+<tr><td class="hl">🧠 BCI</td><td>EEG, Neuralink, motor/speech decoding</td><td>CHI, NeurIPS, SfN, NER</td></tr>
+<tr><td class="hl">🤚 Haptics</td><td>Force feedback, tactile, embodiment</td><td>UIST, WHC, EuroHaptics</td></tr>
+<tr><td class="hl">⚡ Systems</td><td>Rendering pipeline, latency, cloud XR</td><td>MobiSys, SIGCOMM, ISMAR</td></tr>
+<tr><td class="hl">🏥 Applications</td><td>Training, therapy, education, access</td><td>CHI, VRST, MICCAI</td></tr></table>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৬-১০%</div><div class="sc-label">গ্রহণের হার (niche, hardware)</div></div>
+<div class="stat-card"><div class="sc-num">$১B+</div><div class="sc-label">Meta/Apple XR research বাজেট</div></div>
+<div class="stat-card"><div class="sc-num">$১৫০-৩৫০K</div><div class="sc-label">industry (Meta RLabs, Apple, Neuralink)</div></div>
+<div class="stat-card"><div class="sc-num">🔥 spatial</div><div class="sc-label">next computing platform</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"VR একটা fad — Google Glass ব্যর্থ হয়েছে, Vision Pro-ও হবে। গবেষণার জায়গা নেই।" অর্ধেক সত্য। consumer VR এখনো niche, কিন্তু enterprise (training, medical, design), accessibility, BCI (Neuralink-র first human implant, ২০২৪) — এসব frontier research। spatial computing Apple/Meta-র পরবর্তী platform bet — smartphone-এর পর যা আসবে।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"XR + BCI হলো HCI-র frontier — সম্পূর্ণ নতুন interaction paradigm। niche, hardware-নির্ভর, কিন্তু যারা এখন যায় তারা প্রথম প্রজন্মের spatial computing গবেষক হবে — ১৯৯০-এর web-এর মতো। BCI (Neuralink) একদম নতুন — চিন্তা দিয়ে কম্পিউটার। উচ্চ ঝুঁকি, উচ্চ পুরস্কার।"</div>
+</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Reality check:</strong> XR/BCI research hardware-নির্ভর — headset, EEG, haptic device দরকার, কোড একা চলে না। lab access থাকা জরুরি। এছাড়া consumer success এখনো uncertain — Apple Vision Pro-র গ্রহণ ধীর (২০২৪-২৫)। academic research industry hype-র চেয়ে ধীর।</div></div>
+
+<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড়:</strong> Apple Vision Pro (spatial computing), Meta Quest 3 + smart glasses (Ray-Ban), Neuralink first human implant (২০২৪ — arthropod patient chess play), passthrough MR, neural speech decoding (Stanford/UCSF, ২০২৪ — ৭৮ words/min)।</div></div>
+
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ⚠️ সতর্কতার সাথে — hardware lab ও patience দরকার। ✅ frontier-এ থাকতে চাও (next platform) · ✅ HCI (Door 12) + graphics (Door 2) পরিচিত · ⚠️ consumer success uncertain · 💡 BCI neural decoding = সবচেয়ে frontier, সবচেয়ে কঠিন, সবচেয়ে প্রভাবশালী (paralysis restoration)।</div></div>
+
+<div class="dialogue">"একটা গভীর কথা," নুসরাত বললেন। "VR শুধু খেলা নয় — এটা মানুষের empathy বাড়ায়। একজন অন্ধ মানুষের দুনিয়া VR-এ অন্যেরা অনুভব করতে পারে। একজন PTSD রোগীর ভয় VR থেরাপিতে কমানো যায়। আর BCI — একজন পক্ষাঘাতগ্রস্ত মানুষ চিন্তা দিয়ে কম্পিউটার চালাতে পারে। এটা শুধু technology নয় — মানুষের কষ্ট কমানো। frontier research হলো এটাই — সম্পূর্ণ নতুন দুনিয়া খোলা, যারা পারে না তাদের জন্য।"</div>
+<div class="dialogue en">"A deep point," Nusrat said. "VR isn't just games — it grows human empathy. A blind person's world can be felt by others in VR. A PTSD patient's fear can be reduced in VR therapy. And BCI — a paralyzed person can drive a computer with thought. This isn't just technology — it's reducing human suffering. Frontier research is this — opening wholly new worlds, for those who can't."</div>
+
+<div class="dialogue">মিথাক — অন্য জগতে যাত্রা, নতুন দিক। কুরআনে আল্লাহ বলেন: "তোমাদের জন্য জান্নাতে যা চাই, তা আছে।" (অনেক আয়াত)। জান্নাত হলো সম্পূর্ণ অন্য দুনিয়া — যা চোখে দেখা যায়নি, কানে শোনা যায়নি, মনে আসেনি। VR হলো সেই অন্য দুনিয়ার একটা ছোট reflection — কল্পনাকে দৃশ্যমান করা। BCI হলো চিন্তার সরাসরি প্রকাশ — বাক্যের আগে যা মনে আসে। গবেষক হলো সে যে নতুন দুনিয়া খোলে — শুধু বর্তমান নয়, ভবিষ্যতের। spatial computing হলো পরবর্তী যুগের দরজা। যে এই দরজা খোলে, সে নতুন দিক দেখায়।</div>
+<div class="dialogue en">Mithaq — journey to another world, a new horizon. Allah says: "In Paradise you have what you desire." Paradise is a wholly other world — unseen by eyes, unheard by ears, unimagined by minds. VR is a small reflection of that other world — making imagination visible. BCI is the direct expression of thought — what comes to mind before words. A researcher is one who opens new worlds — not just the present, but the future's. Spatial computing is the door to the next era. One who opens this door shows a new horizon.</div>
+
+<div class="secret-box">🥽 AR/VR + BCI: HCI-র frontier, spatial computing = next platform। niche, hardware-নির্ভর (৬-১০%), কিন্তু যারা এখন যায় তারা pioneer। BCI = চিন্তা দিয়ে কম্পিউটার (Neuralink)। উচ্চ ঝুঁকি, উচ্চ পুরস্কার।</div>`,
+  senior:{
+    title:"XR/BCI PhD — Frontier Path",
+    body:`<p><strong>Lab access জরুরি:</strong> XR/BCI research-এ headset (Quest, Vision Pro), EEG/fNIRS, haptic device দরকার — একা কোডে চলে না। একটা lab সহ PI খোঁজো আগে। Meta Reality Labs, Apple, Microsoft HoloLens-এর internship = গোল্ডেন entry।</p><p><strong>WebXR দিয়ে শুরু:</strong> headset না থাকলে WebXR (browser-ভিত্তিক VR) দিয়ে শুরু করো — A-Frame, Three.js। একটা WebXR study = CHI/UIST workshop paper, hardware ছাড়া।</p><p><strong>BCI neural decoding:</strong> Stanford/UCSF-এর speech decoding paper (২০২৪) পড়ো। public EEG dataset (PhysioNet, ফ্রি) দিয়ে motor imagery classification করো — entry-level, কিন্তু concrete। NeurIPS/CHI BCI workshop।</p><p><strong>Application research:</strong> শুধু technology নয় — প্রয়োগ (medical training, phobia therapy, accessibility) এখানে প্রভাব সরাসরি। niche = কম ভিড়। medical/therapy XR = NIH funding।</p>`
+  }
 });
 
-// ══ DOOR 14: SOFTWARE ENGINEERING (placeholder) ══
+// ══ DOOR 14: SOFTWARE ENGINEERING ══
 doors.push({
   num:14, icon:"⚙️", color:"#64748b", name:"কোডের কারখানা",
   subtitle:"The Code Factory", tech:"Software Engineering",
-  spirit:"ইহসান — সুন্দরভাবে কাজ করা",
-  secret:"SE — testing, verification, program analysis, DevOps। প্রতিটা ডেভেলপার এটা ব্যবহার করে।",
-  recall:{q:"(প্লেসহোল্ডার)",qen:"(placeholder)",a:"পূর্ণ কন্টেন্ট শীঘ্রই।",aen:"Full content coming soon."},
-  story:`<p class="scene-setting">দরজা ১৪ — কোডের কারখানা। পূর্ণ গভীর ডুব শীঘ্রই।</p><p class="scene-setting en">Door 14 — the Code Factory. Full deep dive coming soon.</p>`
+  spirit:"ইহসান — সুন্দরভাবে কাজ করা, যেন আল্লাহ দেখছেন",
+  secret:"Software engineering গবেষণা হলো — কীভাবে ভালো কোড লেখা যায়, কীভাবে বিশাল সিস্টেম maintain করা যায়। niche ডোমেইন, মাঝারি প্রতিযোগিতা (৬-১০%), স্থিতিশীল ক্যারিয়ার। প্রতিটা ডেভেলপার git/testing/CI-CD ব্যবহার করে — কিন্তু কেউ ভাবে না সেটা কেন কাজ করে। গবেষক সেটা ভাবে। তুমি প্রতিদিন SE করো — তোমার অভিজ্ঞতা এখানে সরাসরি কাজে দেয়।",
+  recall:{
+    q:"রবার্ট কেন বললেন কারখানা বন্ধ হলে কাজ চলে, কিন্তু খারাপ কোড চলতেই থাকে?",
+    qen:"Why did Robert say a factory can stop, but bad code keeps running?",
+    a:"কারণ একটা কারখানা বন্ধ হলে শুধু সেই কারখানা থামে। কিন্তু খারাপ কোড একবার deploy হলে — লাখ লাখ মানুষের সিস্টেমে চলে, বাগ ছড়ায়, security hole তৈরি করে। CrowdStrike incident (২০২৪) — একটা বাগ পুরো বিশ্বের flight/hospital থামিয়ে দিয়েছিল। SE গবেষণা হলো কোডের মান বাড়ানো — যাতে কোড নিরাপদ, নির্ভরযোগ্য, maintainable হয়। ইহসান = সুন্দর কোড।",
+    aen:"Because a factory stopping affects only that factory. But bad code once deployed — runs on millions of systems, spreads bugs, creates security holes. The CrowdStrike incident (2024) — one bug stopped the world's flights/hospitals. SE research is improving code quality — so code is safe, reliable, maintainable. Ihsan = beautiful code."
+  },
+  story:`
+<p class="scene-setting">চতুর্দশ দরজা। নুসরাতের অন্য দুনিয়া পেরিয়ে তুমি একটা বিশাল কারখানায় — কনভেয়র বেল্টে কোডের ব্লক চলছে। কিছু ব্লক পরিষ্কার ঝকঝকে, কিছু জট পাকানো, কালো। দেয়ালে টানানো — test coverage গ্রাফ, bug report, code metric। মাঝখানে দাঁড়িয়ে রবার্ট — সাদা কোট, হাতে একটা ম্যাগনিফাইং গ্লাস ও একটা static analyzer, চোখে নিপুণতা। তাঁর পাশে ছড়ানো commit log, code review checklist। মেশিনের গর্জন, ধাতব ক্লিক, তেলের গন্ধ।</p>
+<p class="scene-setting en">The fourteenth door. Past Nusrat's other world, you enter a vast factory — code blocks moving on conveyor belts. Some blocks clean and gleaming, some tangled, black. On the walls: test coverage graphs, bug reports, code metrics. In the center stands Robert — white coat, a magnifying glass and a static analyzer in hand, precision in his eyes. Beside him: commit logs, code review checklists. Machine roar, metallic clicks, smell of oil.</p>
+
+<div class="dialogue">রবার্ট তোমাকে দেখলেন। "তুমি একজন developer। প্রতিদিন git করো, test লেখো, code review করো। কিন্তু কখনো ভেবেছো — এই সব কেন কাজ করে? কোন testing strategy সেরা? কোন review process বাগ ধরে? এটাই SE গবেষণা।" তিনি একটা জট পাকানো কোড ব্লক দেখালেন। "এটা legacy code। কেউ জানে না কীভাবে কাজ করে। কিন্তু চলছে বছরের পর বছর। ভাঙলে — লাখ লাখ মানুষ প্রভাবিত। CrowdStrike-এর মতো।" তিনি static analyzer চালালেন — ব্লকে লাল দাগ ফুটে উঠল, vulnerabilities। "এটাই আমার কাজ — কোড বোঝা, মাপা, মজবুত করা।"</div>
+<div class="dialogue en">Robert saw you. "You're a developer. Every day you git, write tests, do code review. But have you ever wondered — why does all this work? Which testing strategy is best? Which review process catches bugs? That's SE research." He showed a tangled code block. "This is legacy code. Nobody knows how it works. But it runs for years. If it breaks — millions affected. Like CrowdStrike." He ran the static analyzer — red marks appeared on the block, vulnerabilities. "This is my job — understanding code, measuring it, strengthening it."</div>
+
+<div class="diagram">
+  <div class="diag-title">SE Research Pipeline — Code এর জীবনচক্র গবেষণা</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowGray14" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#7dd3fc"/></marker>
+    </defs>
+    <text class="lbl-sm" x="280" y="22" fill="#7dd3fc">code এর প্রতিটা স্তরে গবেষণা</text>
+    ${[ ['WRITE','code gen, IDE, AI4SE',70,'#52c41a'], ['TEST','coverage, mutation, fuzz',200,'#3dd6c4'], ['REVIEW','static, dynamic analy.',330,'#7dd3fc'], ['DEPLOY','CI/CD, canary, DevOps',460,'#b37feb'] ].map((s,i)=>`<rect class="cell" x="${s[2]-55}" y="50" width="110" height="46" rx="8" style="stroke:${s[3]}"/><text class="lbl-sm" x="${s[2]}" y="70" fill="${s[3]}" style="font-weight:700">${s[0]}</text><text class="lbl-sm" x="${s[2]}" y="86" fill="#9290a8" style="font-size:9px">${s[1]}</text>`).join('')}
+    ${[200,330,460].map(x=>`<line class="edge-cyan" x1="${x-55}" y1="73" x2="${x-65}" y2="73" marker-end="url(#arrowGray14)"/>`).join('')}
+    <!-- feedback loop -->
+    <path class="edge" d="M 460 100 Q 460 140 280 140 Q 70 140 70 100" fill="none" style="stroke:#ff6b35"/>
+    <text class="lbl-sm" x="280" y="155" fill="#ff6b35">feedback loop — bug/telemetry থেকে শেখা</text>
+    <text class="lbl-sm" x="280" y="185" fill="#5e5c74">🔥 AI4SE: Copilot/Cursor — LLM দিয়ে code gen, review, repair</text>
+    <text class="lbl-sm" x="280" y="205" fill="#5e5c74">🔥 empirical SE: GitHub-scale mining — "১০০M commit থেকে কী শিখি?"</text>
+    <text class="lbl-sm" x="280" y="222" fill="#5e5c74">SE-র সব গবেষণা empirical — real developer, real codebase</text>
+  </svg>
+  <div class="diag-cap">SE research code এর পুরো lifecycle কভার করে — write থেকে deploy পর্যন্ত। সব কিছুর উপর feedback loop। AI4SE (Door 15) এখন সবচেয়ে হট। সব গবেষণা empirical — real data।</div>
+</div>
+
+<div class="code-block">Software Engineering — গবেষণার শাখাসমূহ:
+
+১. TESTING & VERIFICATION
+   - Test generation, mutation testing, fuzz testing
+   - Regression test selection, flaky test detection
+   - Formal verification, model checking, program proof
+
+২. PROGRAM ANALYSIS
+   - Static (dataflow, pointer, taint), dynamic analysis
+   - Symbolic execution, abstract interpretation
+   - LLM-based analysis (bug prediction, code comprehension)
+
+৩. EMPIRICAL SE (🔥 সব গবেষণার ভিত্তি)
+   - Mining software repositories (GitHub-scale)
+   - Developer studies, replication, open science
+   - OSS ecosystems, supply chain
+
+৪. DEVOPS & RELEASE
+   - CI/CD, continuous deployment, canary
+   - Incident analysis, postmortem, SRE
+   - Feature flags, A/B, gradual rollout
+
+৫. REQUIREMENTS & DESIGN
+   - Software architecture, microservices (Door 4)
+   - Self-adaptive systems, technical debt
+   - Domain-specific languages
+
+৬. AI4SE (🔥🔥 crossover — Door 15)
+   - Code completion, generation, repair
+   - Automated bug finding, code review
+   - Developer productivity, Copilot impact</div>
+
+<table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
+<tr><td class="hl">🧪 Test/Verify</td><td>Gen, mutation, fuzz, formal verification</td><td>ICSE, FSE, ASE, ISSTA</td></tr>
+<tr><td class="hl">🔬 Analysis</td><td>Static/dynamic, symbolic, LLM-based</td><td>ICSE, FSE, OOPSLA, PLDI</td></tr>
+<tr><td class="hl">🔥🔥 AI4SE</td><td>Code gen, repair, Copilot, agent</td><td>ICSE, FSE, ASE, ISSTA, NeurIPS</td></tr>
+<tr><td class="hl">📊 Empirical</td><td>Mining repos, dev studies, OSS</td><td>ICSE, FSE, MSR, ESEM</td></tr>
+<tr><td class="hl">☁️ DevOps</td><td>CI/CD, incident, SRE, release</td><td>ICSE, FSE, Middleware</td></tr>
+<tr><td class="hl">🏗️ Architecture</td><td>Microservices, adaptive, tech debt</td><td>ICSE, WICSA, ECSA</td></tr></table>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৬-১০%</div><div class="sc-label">গ্রহণের হার</div></div>
+<div class="stat-card"><div class="sc-num">$১৫০M+</div><div class="sc-label">NSF SE ফান্ডিং</div></div>
+<div class="stat-card"><div class="sc-num">$১৫০-৩২০K</div><div class="sc-label">industry (Microsoft, GitHub, Google)</div></div>
+<div class="stat-card"><div class="sc-num">🔥 AI4SE</div><div class="sc-label">সবচেয়ে হট — Copilot era</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"SE গবেষণা মানে নতুন framework বা tool বানানো। engineering, research নয়।" ভুল। একটা tool বানানো engineering। কিন্তু "কোন testing strategy বাগ বেশি ধরে?", "Copilot কি developer productivity বাড়ায়?", "microservice কখন monolith-এর চেয়ে ভালো?" — এগুলো empirical প্রশ্ন, rigorous research method দিয়ে উত্তর হয়। ICSE/FSE full paper = real research।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"SE গবেষণা হলো software-এর বিজ্ঞান — কীভাবে ভালো কোড হয়, কেন বাগ হয়, কোন tool কাজ করে। সব empirical — real developer, real codebase। AI4SE (Copilot/Cursor) এখন সবচেয়ে হট। niche, stable, প্রতিটা কোম্পানির দরকার। তোমার developer অভিজ্ঞতা এখানে direct relevance — বিরল combination।"</div>
+</div>
+
+<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড়:</strong> AI4SE explosion (Copilot, Cursor, Claude Code, Devin — autonomous agent), LLM-based bug repair, automated code review, empirical impact study (GitHub research: Copilot ৫৫% faster), supply-chain security (SLSA, Sigstore), CrowdStrike postmortem থেকing incident research।</div></div>
+
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅✅ হ্যাঁ — তুমি developer, প্রতিদিন git/test/CI-CD করো। তোমার অভিজ্ঞতা SE-তে direct relevance। ✅ code quality নিয়ে ভাবো · ✅ developer tool বানাতে ভালোবাসো · ✅ niche, stable career · 💡 AI4SE = secondary পছন্দ (LLM দিয়ে code), তোমার AI আগ্রহের সাথে মিলে।</div></div>
+
+<div class="dialogue">"তোমার একটা বিশাল সুবিধা আছে," রবার্ট বললেন। "তুমি developer — প্রতিদিন git, testing, CI/CD করো। তুমি জানো কোন tool কী অনুভব করায়। pure AI গবেষক এটা জানেন না। SE-তে developer experience একটা research topic — আর তুমি সেটার subject-matter expert। LedgerPilot বানিয়েছ, real codebase। এখন ভাবো — কোন decision কেন নিয়েছিলে, কোন tool কেন বেছেছিলে। এটাই empirical SE। তোমার developer অভিজ্ঞতা = research data।"</div>
+<div class="dialogue en">"You have a huge advantage," Robert said. "You're a developer — every day git, testing, CI/CD. You know how tools feel. Pure AI researchers don't. In SE, developer experience is a research topic — and you're the subject-matter expert. You built LedgerPilot, a real codebase. Now think — why did you take each decision, why pick each tool. That's empirical SE. Your developer experience = research data."</div>
+
+<div class="dialogue">ইহসান — সুন্দরভাবে কাজ করা। হাদিসে আছে: "আল্লাহ তোমাদের জন্য ইহসান পছন্দ করেন; তুমি যখন কিছু করো, তা সুন্দরভাবে করো।" কোডে ইহসান মানে — পরিষ্কার কোড, টেস্টেড কোড, ডকুমেন্টেড কোড, অন্যকে সাহায্য করে এমন কোড। শুধু কাজ করলে হয় না — সুন্দরভাবে কাজ করতে হয়। SE গবেষণা হলো কোডে ইহসান আনা — এমন পদ্ধতি, টুল, জ্ঞান যা প্রতিটা developer-কে সুন্দর কোড লিখতে সাহায্য করে। এটা শিল্প, এটা ইবাদত — কারণ সুন্দর কাজ আল্লাহ দেখেন।</div>
+<div class="dialogue en">Ihsan — doing work beautifully. Hadith: "Allah loves ihsan from you; when you do something, do it well." In code, ihsan means — clean code, tested code, documented code, code that helps others. Not just working — working beautifully. SE research is bringing ihsan to code — methods, tools, knowledge that help every developer write beautiful code. This is art, this is worship — because Allah sees beautiful work.</div>
+
+<div class="secret-box">⚙️ SE: কীভাবে ভালো কোড লেখা যায়। niche, stable (৬-১০%)। হট: AI4SE (Copilot/Cursor/Devin)। তোমার প্রতিদিনের git/test/CI-CD = direct research relevance। developer experience একটা research topic।</div>`,
+  senior:{
+    title:"SE PhD — Developer's Home Field",
+    body:`<p><strong>তোমার developer অভিজ্ঞতা = research asset:</strong> pure AI/ML গবেষকদের কাছে নেই এমন একটা thing — তুমি real codebase, real developer workflow জানো। "developer experience" এখন SE-তে hot topic, আর তুমি সেটার expert। এটা তোমার unfair advantage।</p><p><strong>Empirical study দিয়ে শুরু:</strong> একটা open-source ecosystem mine করো (GitHub API ফ্রি) — "১০০K commit থেকে কী pattern বের হয়?" MSR (Mining Software Repositories) conference = সহজ entry। একটা paper = ICSE/FSE workshop।</p><p><strong>AI4SE crossover:</strong> Copilot/Cursor-এর impact study, LLM-based bug repair, automated code review — এখন সবচেয়ে হট। GitHub research-এর "Copilot ৫৫% faster" paper পড়ো। একটা controlled Copilot study = high-impact, তোমার AI + developer background = perfect fit।</p><p><strong>Real tool বানাও:</strong> একটা VS Code extension, GitHub Action, linter — open-source, ব্যবহার হয়। এটা concrete profile signal — SE প্রফেসররা tool-builder খোঁজেন।</p>`
+  }
 });
 
 // ══ DOOR 15: PROGRAMMING LANGUAGES & AI4SE (placeholder) ══
