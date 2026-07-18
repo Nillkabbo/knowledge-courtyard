@@ -5,108 +5,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>মস্তিষ্কের কারিগরি · The Brain Mechanic's Codex</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Amiri:wght@400;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
 </head>
 <body>
 <canvas id="particles"></canvas>
 
-<!-- ═══ HUD ═══ -->
-<div class="hud">
-  <div class="hud-rank"><span id="hud-rank-icon">😴</span> <span id="hud-rank-name">ঘুমন্ত মন</span></div>
-  <div class="hud-xp"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill"></div></div><span id="hud-xp-text">0 / 1500 XP</span></div>
-  <div class="hud-level" id="hud-level">স্তর ১</div>
-</div>
-
-<!-- ═══ TITLE ═══ -->
-<div class="screen active" id="title-screen">
-  <div class="title-wrap">
-    <div class="title-icon">🧠</div>
-    <h1 class="title-main">মস্তিষ্কের কারিগরি</h1>
-    <div class="title-sub">The Brain Mechanic's Codex</div>
-    <div class="title-tagline">তোমার মস্তিষ্ককে জোর করো না — এমন ব্যবস্থা বানাও যেখানে কাজ করাটা সহজ</div>
-    <div class="title-tagline en">Don't force your brain — engineer the world so doing the work is easy</div>
-    <div class="title-stats">
-      <div class="ts-item"><span class="ts-num">১৫</span><span class="ts-lbl">দরজা · Doors</span></div>
-      <div class="ts-item"><span class="ts-num">১৫০০</span><span class="ts-lbl">XP</span></div>
-      <div class="ts-item"><span class="ts-num">৪</span><span class="ts-lbl">ধাপ · Phases</span></div>
-    </div>
-    <button class="start-btn" onclick="startGame()">শুরু করো · Begin →</button>
-    <div class="title-note">⚠️ সতর্কতা: এই বই শিক্ষার জন্য। গুরুতর মানসিক স্বাস্থ্য সমস্যার জন্য একজন যোগ্য থেরাপিস্ট বা সাইকিয়াট্রিস্টের পরামর্শ নিন।</div>
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">মস্তিষ্কের কারিগরি</h1>
+  <div class="title-sub">The Brain Mechanic's Codex</div>
+  <div class="title-desc">
+    তোমার মস্তিষ্ককে জোর করো না — এমন ব্যবস্থা বানাও যেখানে কাজ করাটা সহজ, না করাটা কঠিন।<br>
+    ১৫টি দরজা — ৪টি ধাপে বিভক্ত। ডোপামিন, কিউ, পরিবেশ, শ্বাস, আলো — মস্তিষ্কের নিয়ম তোমার হাতে।<br><br>
+    <em>Don't force your brain — engineer the world so doing the work is easy. 15 doors across 4 phases: instant wins, mind-body switches, habit engineering, and the full operating system. ⚠️ Educational content, not a substitute for therapy — consult a licensed professional for serious mental health concerns.</em>
   </div>
-  <a href="../index.html" class="back-link">← জ্ঞানের প্রাঙ্গণে ফিরে যাও</a>
+  <button class="start-btn" onclick="startGame()">🧠 শুরু করো · Begin</button>
 </div>
 
-<!-- ═══ PROLOGUE ═══ -->
-<div class="screen" id="prologue-screen">
-  <div class="prologue-wrap">
-    <h2 class="prologue-title">📜 ভূমিকা — মস্তিষ্কের সাথে চুক্তি</h2>
-    <div class="prologue-body">
-      <p class="scene-setting">তুমি এই বই খুলেছ কারণ তোমার মস্তিষ্ক তোমার কথা শোনে না। তুমি বলো — "পড়তে হবে।" মস্তিষ্ক বলে — "একটু পরে।" তুমি বলো — "ফোকাস করতে হবে।" মস্তিষ্ক বলে — "ফোনটা একটু দেখি।" তুমি হারিয়ে যাও। প্রতিদিন। আবার আবার।</p>
-      <p class="scene-setting en">You opened this book because your brain doesn't listen to you. You say "study." It says "later." You say "focus." It says "just check the phone." You lose. Every day. Again and again.</p>
-      <p class="scene-setting">কিন্তু সমস্যা তোমার ইচ্ছাশক্তিতে নয়। সমস্যা এই ভুল ধারণায় যে তোমাকে <strong>জোর করে</strong> কাজ করতে হবে। এই বই সেই ভুল ভাঙবে।</p>
-      <p class="scene-setting">এখানে তুমি শিখবে মস্তিষ্ককে <strong>হারানো</strong> না — মস্তিষ্কের সাথে <strong>চুক্তি</strong> করতে। মস্তিষ্ক যে নিয়মে চলে — ডোপামিন, কিউ, পরিবেশ, শ্বাস, আলো — সেই সব নিয়ম তোমার হাতে তুলে দেব। তারপর তুমি এমন একটা ব্যবস্থা বানাবে যেখানে কাজ করাটা সহজ, না করাটা কঠিন।</p>
-      <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্কতা — Disclaimer:</strong> এই বই শিক্ষার জন্য, থেরাপির বিকল্প নয়। গুরুতর মানসিক স্বাস্থ্য সমস্যার জন্য (depression, ADHD, anxiety disorder) একজন যোগ্য থেরাপিস্ট বা সাইকিয়াট্রিস্টের পরামর্শ নিন। বইটির কৌশলগুলো সাধারণ সুস্থ মস্তিষ্কের জন্য কার্যকর, কিন্তু ক্লিনিক্যাল চিকিৎসার বিকল্প নয়।</div></div>
-      <div class="callout info"><span class="co-icon">🧭</span><div><strong>যাত্রার মানচিত্র — The Journey Map:</strong> ১৫টি দরজা, ৪টি ধাপে বিভক্ত। ধাপ ১ (দরজা ১-৪) আজই কাজে লাগবে। ধাপ ২ (৫-৮) তোমার শরীর-মনের সুইচ শেখাবে। ধাপ ৩ (৯-১২) অভ্যাস ইঞ্জিনিয়ারিং। ধাপ ৪ (১৩-১৫) সম্পূর্ণ অপারেটিং সিস্টেম।</div></div>
-      <div class="verse">"নিশ্চয়ই আল্লাহ কোনো ব্যক্তির জন্য তার অবস্থার পরিবর্তন করেন না, যতক্ষণ না সে নিজের অবস্থার পরিবর্তন করে।" — কুরআন ১৩:১১</div>
-      <div class="verse en">"Allah does not change the condition of a people until they change what is in themselves." — Quran 13:11</div>
-    </div>
-    <button class="start-btn" onclick="startMap()">যাত্রা শুরু করো · Enter the Workshop →</button>
-    <a href="../index.html" class="back-link">← জ্ঞানের প্রাঙ্গণে ফিরে যাও</a>
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">📜 ভূমিকা — মস্তিষ্কের সাথে চুক্তি</div>
+    <p>তুমি এই বই খুলেছ কারণ তোমার মস্তিষ্ক তোমার কথা শোনে না। তুমি বলো — "পড়তে হবে।" মস্তিষ্ক বলে — "একটু পরে।" তুমি বলো — "ফোকাস করতে হবে।" মস্তিষ্ক বলে — "ফোনটা একটু দেখি।" তুমি হারিয়ে যাও। প্রতিদিন। আবার আবার।</p>
+    <p class="en">You opened this book because your brain doesn't listen to you. You say "study." It says "later." You say "focus." It says "just check the phone." You lose. Every day. Again and again.</p>
+    <p>কিন্তু সমস্যা তোমার ইচ্ছাশক্তিতে নয়। সমস্যা এই ভুল ধারণায় যে তোমাকে <strong>জোর করে</strong> কাজ করতে হবে। এই বই সেই ভুল ভাঙবে।</p>
+    <p>এখানে তুমি শিখবে মস্তিষ্ককে <strong>হারানো</strong> না — মস্তিষ্কের সাথে <strong>চুক্তি</strong> করতে। মস্তিষ্ক যে নিয়মে চলে — ডোপামিন, কিউ, পরিবেশ, শ্বাস, আলো — সেই সব নিয়ম তোমার হাতে তুলে দেব। তারপর তুমি এমন একটা ব্যবস্থা বানাবে যেখানে কাজ করাটা সহজ, না করাটা কঠিন।</p>
+    <hr class="p-divider">
+    <p><strong>⚠️ সতর্কতা — Disclaimer:</strong> এই বই শিক্ষার জন্য, থেরাপির বিকল্প নয়। গুরুতর মানসিক স্বাস্থ্য সমস্যার জন্য (depression, ADHD, anxiety disorder) একজন যোগ্য থেরাপিস্ট বা সাইকিয়াট্রিস্টের পরামর্শ নিন। বইটির কৌশলগুলো সাধারণ সুস্থ মস্তিষ্কের জন্য কার্যকর, কিন্তু ক্লিনিক্যাল চিকিৎসার বিকল্প নয়।</p>
+    <p>এই বই শিক্ষার জন্য। গুরুতর মানসিক স্বাস্থ্য সমস্যার জন্য একজন যোগ্য থেরাপিস্ট বা সাইকিয়াট্রিস্টের পরামর্শ নিন।</p>
+    <hr class="p-divider">
+    <p><strong>🧭 যাত্রার মানচিত্র — The Journey Map:</strong> ১৫টি দরজা, ৪টি ধাপে বিভক্ত। ধাপ ১ (দরজা ১-৪) আজই কাজে লাগবে। ধাপ ২ (৫-৮) তোমার শরীর-মনের সুইচ শেখাবে। ধাপ ৩ (৯-১২) অভ্যাস ইঞ্জিনিয়ারিং। ধাপ ৪ (১৩-১৫) সম্পূর্ণ অপারেটিং সিস্টেম।</p>
+    <p class="en">15 doors across 4 phases. Phase 1 (doors 1-4) works today. Phase 2 (5-8) teaches your body-mind switches. Phase 3 (9-12) is habit engineering. Phase 4 (13-15) is the full operating system.</p>
+    <div style="text-align:center;margin-top:1.6rem;font-family:'Amiri',serif;font-size:1.05rem;color:var(--amber-bright)">"নিশ্চয়ই আল্লাহ কোনো ব্যক্তির জন্য তার অবস্থার পরিবর্তন করেন না, যতক্ষণ না সে নিজের অবস্থার পরিবর্তন করে।" — কুরআন ১৩:১১</div>
+    <p class="en" style="text-align:center">"Allah does not change the condition of a people until they change what is in themselves." — Quran 13:11</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 কর্মশালায় ঢোকো · Enter the Workshop</button></div>
   </div>
 </div>
 
-<!-- ═══ MAP ═══ -->
-<div class="screen" id="map-screen">
-  <div class="map-header">
-    <h2 class="map-title">🧠 কর্মশালার মানচিত্র</h2>
-    <div class="map-sub">The Brain Mechanic's Workshop · ১৫টি স্টেশন</div>
-    <div class="map-actions">
-      <button class="action-btn" onclick="openCheatModal()">📋 চিট শিট</button>
-      <button class="action-btn" onclick="confirmReset()">🔄 রিসেট</button>
-      <button class="action-btn mute-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
-    </div>
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">😴</span><span id="hud-rank-name">ঘুমন্ত মন</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1500 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
   </div>
+  <div class="map-header"><h2>🧠 কর্মশালার মানচিত্র</h2><p>The Brain Mechanic's Workshop · ১৫টি স্টেশন</p></div>
   <div class="doors-grid" id="doors-grid"></div>
-  <a href="../index.html" class="back-link">← জ্ঞানের প্রাঙ্গণে ফিরে যাও</a>
 </div>
 
-<!-- ═══ STORY ═══ -->
-<div class="screen" id="story-screen">
-  <div class="story-back-bar">
-    <button class="back-to-map" onclick="goToMap()">← মানচিত্র</button>
-    <button class="action-btn mute-btn" id="mute-btn-story" onclick="toggleMute()">🔊</button>
-  </div>
-  <div id="story-container" class="story-container"></div>
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← মানচিত্র</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
 </div>
 
-<!-- ═══ COMPLETE ═══ -->
-<div class="screen" id="complete-screen">
-  <div class="complete-wrap">
-    <div class="complete-icon">⚡</div>
-    <h2 class="complete-title">তুমি নিজের মস্তিষ্কের কারিগর হয়েছ</h2>
-    <div class="complete-sub">You are now a Brain Mechanic</div>
-    <p class="complete-text">১৫টি দরজা পার হয়েছ। এখন তোমার কাছে সম্পূর্ণ অপারেটিং সিস্টেম আছে। নিচের চিট শিটটি তোমার জীবনের ব্লুপ্রিন্ট।</p>
-    <div class="cheat-grid" id="cheat-grid-end"></div>
-    <button class="start-btn" onclick="goToMap()">← মানচিত্রে ফিরে যাও</button>
-  </div>
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">⚡</div>
+  <h1 class="complete-title">তুমি নিজের মস্তিষ্কের কারিগর হয়েছ</h1>
+  <p class="complete-text">১৫টি দরজা পার হয়েছ। এখন তোমার কাছে সম্পূর্ণ অপারেটিং সিস্টেম আছে — ডোপামিন, কিউ, পরিবেশ, অভ্যাস ইঞ্জিনিয়ারিং। নিচের চিটশিটটি তোমার জীবনের ব্লুপ্রিন্ট।<br><br><em>You are now a Brain Mechanic. You have the full operating system.</em></p>
+  <button class="start-btn" onclick="resetGame()">↻ আবার শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 জীবনের ব্লুপ্রিন্ট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
 </div>
 
-<!-- ═══ CHEAT MODAL ═══ -->
-<div class="modal" id="cheat-modal" style="display:none">
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="modal-title">📋 চিট শিট — Cheat Sheet</span>
-      <span class="modal-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</span>
-    </div>
-    <div class="cheat-grid" id="cheat-modal-grid"></div>
-    <div id="cheat-modal-empty"></div>
-  </div>
-</div>
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
 
-<!-- ═══ XP POPUP ═══ -->
-<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span></div>
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 চিট শিট — Cheat Sheet</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
 
 <script src="doors-1-5.js"></script>
 <script src="doors-6-10.js"></script>
