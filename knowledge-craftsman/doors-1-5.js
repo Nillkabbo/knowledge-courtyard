@@ -228,6 +228,56 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>মূল পার্থক্য = CONNECTIONS।</strong> একটা নোট = একটা fact; নোটের network = emergent idea। Luhmann-এর অন্তর্দৃষ্টি: সৃজনশীলতা আসে নোটের মধ্যে <em>অপ্রত্যাশিত</em> সংযোগ থেকে (biology-র নোট economics-এর নোটের সাথে জোড়া → নতুন insight)।</div></div>
 
+<div class="diagram">
+  <div class="diag-title">Zettelkasten — নোটের জাল, linear তালিকা নয়</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <!-- LEFT: linear notes (dead) -->
+    <text class="lbl-sm" x="120" y="30" fill="#ff6b35">সাধারণ নোট (linear)</text>
+    ${[0,1,2,3,4].map(i=>`<rect class="cell-hot" x="60" y="${50+i*30}" width="120" height="22" rx="4"/>`).join('')}
+    <text class="lbl-sm" x="120" y="205" fill="#9290a8" style="font-size:9px">খাতায় লেখা, আর দেখা হয় না</text>
+    <!-- RIGHT: network (alive) -->
+    <text class="lbl-sm" x="400" y="30" fill="#52c41a">Zettelkasten (network)</text>
+    ${[ ['A',300,80],['B',400,60],['C',480,100],['D',380,130],['E',300,150],['F',440,160] ].map(n=>`<rect class="cell-good" x="${n[1]-20}" y="${n[2]-15}" width="40" height="30" rx="5"/><text class="lbl-sm" x="${n[1]}" y="${n[2]+4}" fill="#52c41a">${n[0]}</text>`).join('')}
+    <line class="edge-cyan" x1="320" y1="80" x2="380" y2="60" style="stroke:#52c41a"/>
+    <line class="edge-cyan" x1="420" y1="65" x2="465" y2="100" style="stroke:#52c41a"/>
+    <line class="edge-cyan" x1="395" y1="115" x2="400" y2="135" style="stroke:#52c41a"/>
+    <line class="edge-cyan" x1="365" y1="145" x2="320" y2="150" style="stroke:#52c41a"/>
+    <line class="edge-cyan" x1="300" y1="135" x2="300" y2="95" style="stroke:#52c41a"/>
+    <line class="edge-cyan" x1="420" y1="170" x2="460" y2="165" style="stroke:#52c41a"/>
+    <line class="edge-cyan" x1="465" y1="115" x2="430" y2="155" style="stroke:#52c41a;opacity:.5"/>
+    <text class="lbl-sm" x="400" y="205" fill="#9290a8" style="font-size:9px">প্রতিটা নোট atomic + linked → emergent idea</text>
+    <text class="lbl-sm" x="280" y="222" fill="#5e5c74">প্রতিটা নতুন নোট অন্তত ১টা বিদ্যমান নোটের সাথে link করো — এখানেই insight</text>
+  </svg>
+  <div class="diag-cap">সাধারণ নোট = linear তালিকা, মরা। Zettelkasten = network, জীবন্ত। সৃজনশীলতা আসে অপ্রত্যাশিত সংযোগ থেকে — biology-র নোট economics-এর সাথে জোড়া হলে নতুন insight জন্মায়।</div>
+</div>
+
+<div class="code-block">Zettelkasten — ৩ ধরনের নোট (Ahrens, 2017):
+
+  FLEETING (ক্ষণস্থায়ী)
+    পড়া/জীবনের সময় দ্রুত idea।
+    ১-২ দিনে permanent-এ রূপান্তর বা বাদ।
+
+  LITERATURE (সাহিত্যিক)
+    উৎস পড়ার সময় সংক্ষিপ্ত সারাংশ।
+    নিজের ভাষায়, source-সহ।
+
+  PERMANENT (স্থায়ী) — মূল ইউনিট
+    এক নোটে এক idea (atomic)।
+    প্রকাশযোগ্য ভাষায়।
+    বিদ্যমান নোটের সাথে link। dated।
+
+  সোনালি নিয়ম: প্রতিটা নতুন নোট অন্তত ১টা
+  বিদ্যমান নোটের সাথে link করো।
+  এখানেই insight লুকায়।
+
+  Luhmann-এর হার: দিনে ৫-৬ permanent note।
+  দিনে ১টা হলেও = বছরে ৩৬৫ = একটা বইয়ের মতো।</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ সাধারণ নোট (মরা)</div>খাতায় লেখা, আর কখনো দেখা হয় না। topic-ভিত্তিক, linear। নোটের মধ্যে সংযোগ নেই। output: কিছুই না। বছরে ১০টা খাতা ভর্তি হয়, কিন্তু কোনো idea জন্ম নেয় না। তথ্যের কবরখানা।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ Zettelkasten (জীবন্ত)</div>প্রতিটা নোট atomic (এক idea), পরস্পর linked, cross-referenced। idea-ভিত্তিক network। output: বই, পেপার, insight। অপ্রত্যাশিত সংযোগে নতুন idea জন্মায়। Luhmann: ৯০,০০০ নোট → ৭০+ বই। হিফজ — সংযুক্ত সংরক্ষণ।</div>
+</div>
+
 <div class="callout info"><span class="co-icon">🛠️</span><div><strong>আধুনিক টুল:</strong> Obsidian (free, local, সবচেয়ে জনপ্রিয়), Logseq, Notion, Heptabase, Capacities/Tana। AI-PKM (2024-26): Obsidian Smart Connections/Copilot, Notion AI, NotebookLM (multi-doc synthesis)। ⚠️ AI ভুল সংযোগ বা অস্তিত্বহীন citation বানাতে পারে — verify করো। <strong>শুরু:</strong> প্রতিটা নতুন নোট অন্তত ১টা বিদ্যমান নোটের সাথে link করো — এখানেই insight।</div></div>
 
 <div class="dialogue">হিফজ — preservation, memorization, the act of keeping। কুরআনে আল্লাহ বলেন — "নিশ্চয় আমরা কুরআন নাজিল করেছি এবং নিশ্চয় আমরাই এর সংরক্ষক।" (১৫:৯)। সংরক্ষণ = হিফজ। Zettelkasten-ও হিফজ — জ্ঞান সংরক্ষণ করা। কিন্তু শুধু সংরক্ষণ নয় — সংযুক্ত করা। যে হিফজ করে, সে ধরে রাখে। যে সংযুক্ত করে, সে গড়ে। Luhmann শুধু পড়েননি — তিনি হিফজ করেছেন, সংযুক্ত করেছেন, গড়েছেন। ৯০,০০০ নোট = একটা সংরক্ষিত জ্ঞানের মস্তিষ্ক। হিফজ — শুধু মুখস্থ নয়, সংযুক্ত সংরক্ষণ।</div>
@@ -262,7 +312,50 @@ doors.push({
 <div class="tl-step"><div class="tl-when">ধাপ ৩</div><div class="tl-title">🕳️ গ্যাপ চিহ্নিত করো</div><div class="tl-body">যেখানে সহজে বলতে পারলে না, jargon দিয়ে লুকালে, আটকে গেলে — সেটাই তোমার ঘাটতি। "জানি কিন্তু বলতে পারি না" = জানো না।</div></div>
 <div class="tl-step"><div class="tl-when">ধাপ ৪</div><div class="tl-title">🔁 ফিরে গিয়ে শেখো</div><div class="tl-body">উৎসে ফিরে সেই গ্যাপ শেখো, আবার ব্যাখ্যা করো — যতক্ষণ না পুরোটা সহজে বয়ে যায়।</div></div>
 </div>
-<div class="callout info"><span class="co-icon">🔬</span><div><strong>কেন কাজ করে:</strong> Illusion of competence (Koriat & Bjork, 2005) — সাবলীল পড়া বোঝার বিভ্রম দেয়। Testing effect (Roediger & Karpicke, 2006) — শূন্য থেকে ব্যাখ্যা তৈরি re-reading-এর চেয়ে ~৩৩% ভালো retention। Metacognition (Flavell, 1979) — নিজের জানা যাচাই; Feynman technique = বাধ্যতামূলক metacognition।</div></div>
+<div class="callout info"><span class="co-icon">🔬</span><div><strong>কেন কাজ করে:</strong> Illusion of competence (Koriat & Bjork, 2005) — সাবলীল পড়া বোঝার বিভ্রম দেয়। Testing effect (Roediger & Karpicke, 2006) — শূন্য থেকে ব্যাখ্যা তৈরি re-reading-ের চেয়ে ~৩৩% ভালো retention। Metacognition (Flavell, 1979) — নিজের জানা যাচাই; Feynman technique = বাধ্যতামূলক metacognition।</div></div>
+
+<div class="diagram">
+  <div class="diag-title">Feynman Loop — বোঝার আসল পরীক্ষা</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowAmberD4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#fcd34d"/></marker>
+    </defs>
+    ${[ ['১ · বাছো','concept খালি পাতায়',120,60,'#fcd34d'], ['২ · ব্যাখ্যা','১২ বছরের শিশুকে',290,60,'#52c41a'], ['৩ · গ্যাপ','যেখানে আটকাও',440,60,'#ff6b35'], ['৪ · ফিরে যাও','শেখো, আবার ব্যাখ্যা',290,160,'#5b9eff'] ].map(s=>`<rect x="${s[2]-65}" y="${s[3]-22}" width="130" height="44" rx="8" style="fill:${s[4]}22;stroke:${s[4]}"/><text class="lbl-sm" x="${s[2]}" y="${s[3]-3}" fill="${s[4]}" style="font-weight:700">${s[0]}</text><text class="lbl-sm" x="${s[2]}" y="${s[3]+13}" fill="#9290a8" style="font-size:9px">${s[1]}</text>`).join('')}
+    <line class="edge-amber" x1="185" y1="60" x2="225" y2="60" marker-end="url(#arrowAmberD4)"/>
+    <line class="edge-amber" x1="355" y1="60" x2="375" y2="60" marker-end="url(#arrowAmberD4)"/>
+    <line class="edge-amber" x1="420" y1="82" x2="330" y2="138" marker-end="url(#arrowAmberD4)"/>
+    <line class="edge-amber" x1="250" y1="155" x2="170" y2="92" marker-end="url(#arrowAmberD4)"/>
+    <text class="lbl-sm" x="290" y="118" fill="#fcd34d">যতক্ষণ না সহজে বয়</text>
+    <text class="lbl-sm" x="280" y="210" fill="#5e5c74">"জানি কিন্তু বলতে পারি না" = জানো না। সহজে ব্যাখ্যা করতে পারলেই বুঝেছ।</text>
+  </svg>
+  <div class="diag-cap">Feynman টেকনিক একটা লুপ — বাছো → সহজে ব্যাখ্যা → গ্যাপ ধরা → ফিরে গিয়ে শেখা → আবার ব্যাখ্যা। যতক্ষণ না পুরোটা সহজে বয়ে যায়। এটাই বোঝার আসল পরীক্ষা — বায়ান, স্পষ্ট প্রকাশ।</div>
+</div>
+
+<div class="code-block">Feynman Technique — ৪ ধাপ (এখনই করো):
+
+  একটা কনসেপ্ট বাছো যা তুমি "জানো":
+    ১. খালি পাতার উপরে concept-টা লেখো।
+    ২. ১২ বছরের শিশুকে বোঝাচ্ছ যেন — jargon নয়, analogy।
+       (quantum entanglement: "দুটো জাদুর কয়েন — একটা
+        NY-এ heads হলে Tokyo-রটা তৎক্ষণাৎ tails।")
+    ৩. যেখানে আটকাও, jargon দিয়ে লুকাও, বলতে না পারো —
+       সেটাই তোমার ঘাটতি। চিহ্নিত করো।
+    ৪. উৎসে ফিরে সেই গ্যাপ শেখো, আবার ব্যাখ্যা করো —
+       যতক্ষণ না পুরোটা সহজে বয়ে যায়।
+
+  Zettelkasten-এর সাথে মিল: permanent note = Feynman explanation।
+  এক idea, সহজ ভাষায়, নিজের কথায়। সেটাই বোঝার পরীক্ষা।</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">~৩৩%</div><div class="sc-label">বেশি retention re-reading-এর চেয়ে (Roediger 2006)</div></div>
+<div class="stat-card"><div class="sc-num">১২ বছর</div><div class="sc-label">শিশুর বয়স — target audience</div></div>
+<div class="stat-card"><div class="sc-num">১৯৬৪</div><div class="sc-label">Feynman-এর Cornell lecture (Gates "Project Tuva")</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ বিভ্রমের বোঝা</div>"জানি কিন্তু বলতে পারি না" — এটা জানা নয়, শুধু চেনা। সাবলীল পড়া বোঝার বিভ্রম দেয় (Koriat & Bjork 2005)। jargon দিয়ে ঘাটতি লুকানো যায় — কিন্তু শিশুকে বোঝানো যায় না। যে ভান করে, সে পরীক্ষায় বা প্রয়োগে ধরা পড়ে।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ বায়ান — স্পষ্ট প্রকাশ</div>সহজ ভাষায় ব্যাখ্যা করো। যেখানে আটকাও, সে তোমার ঘাটতি — ফিরে যাও, শেখো, আবার ব্যাখ্যা। যতক্ষণ না ১২ বছরের শিশু বুঝবে। যে বায়ান করতে পারে, সে-ই জানে। Feynman: "যে বোঝে না, সে জটিল করে। যে বোঝে, সে সহজ করে।"</div>
+</div>
 <div class="callout tip"><span class="co-icon">💬</span><div><strong>জীবনী-প্রমাণ:</strong> Gleick-এর "Genius" (1992) — Feynman ঘণ্টার পর ঘণ্টা ফলাফল নিজে নতুন করে derive করতেন ("তাদের জ্ঞান এত ভঙ্গুর!")। Bill Gates: Feynman-এর 1964 Cornell lecture-এর distribution-স্বত্ব কিনে "Project Tuva" নাম দেন — "the best teacher I never had।" <em>("সহজে ব্যাখ্যা করতে না পারলে যথেষ্ট বোঝোনি" — প্রায়ই Einstein-কে দায়ী করা হয়, কিন্তু তার প্রমাণ নেই; নীতিটি তবু সঠিক, আর এটাই Feynman করতেন।)</em></div></div>
 
 <div class="dialogue">বায়ান — clear speech, expression। কুরআনে আল্লাহ বলেন — "তিনি মানুষকে শিখিয়েছেন বায়ান — স্পষ্ট বাক্য।" (৫৫:৩-৪)। বায়ান হলো স্পষ্ট করে প্রকাশ করার ক্ষমতা — জটিলকে সহজ করা। ফাইনম্যান টেকনিক-ও বায়ান — যা বুঝেছ, তা স্পষ্ট করে প্রকাশ করো। যেখানে আটকাও, সেখানে ঘাটতি। যে বায়ান করতে পারে, সে বোঝে। যে পারে না, সে ভান করে। বায়ান — বোঝার আসল পরীক্ষা। কুরআনে বায়ান আল্লাহর নিয়ামত — কথা স্পষ্ট করার ক্ষমতা। ফাইনম্যান দেখালেন — যে স্পষ্ট করতে পারে, সে-ই জানে।</div>
