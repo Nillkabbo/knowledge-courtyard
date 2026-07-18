@@ -40,8 +40,8 @@
     { "n": 27, "folder": "research-paper-craftsman","title_en": "The Research Paper Craftsman",        "title_bn": "গবেষণার কারিগর",              "icon": "📄", "category": "growth", "color": "game-27", "tag": "Book 27 · Research Paper Read/Write Deep Dive","status": "live" },
     { "n": 28, "folder": "knowledge-web",           "title_en": "The Knowledge Web",                   "title_bn": "জ্ঞানের জাল",                 "icon": "🧩", "category": "growth", "color": "game-28", "tag": "Book 28 · Knowledge Connection Capstone", "status": "live" },
     { "n": 29, "folder": "mi-driving",              "title_en": "The Michigan Driving Guide",          "title_bn": "মিশিগান ড্রাইভিং গাইড",       "icon": "🚗", "category": "extras", "color": "game-29", "tag": "Book 29 · Michigan Driving Guide",        "status": "live" },
-    { "n": 30, "folder": "math-for-ml",             "title_en": "The Architect's Compass",             "title_bn": "গণিতের নিকোবর",              "icon": "🧭", "category": "growth", "color": "game-30", "tag": "Book 30 · Math Foundations",              "status": "stub" },
-    { "n": 31, "folder": "classic-ml",              "title_en": "The Marketplace of Algorithms",       "title_bn": "মেশিনের বাজার",              "icon": "📊", "category": "growth", "color": "game-31", "tag": "Book 31 · Classical ML",                  "status": "stub" }
+    { "n": 30, "folder": "math-for-ml",             "title_en": "The Architect's Compass",             "title_bn": "গণিতের নিকোবর",              "icon": "🧭", "category": "growth", "color": "game-30", "tag": "Book 30 · Math Foundations",              "status": "live" },
+    { "n": 31, "folder": "classic-ml",              "title_en": "The Marketplace of Algorithms",       "title_bn": "মেশিনের বাজার",              "icon": "🌱", "category": "growth", "color": "game-31", "tag": "Book 31 · Classic ML",                       "status": "live" }
   ],
 
   "roadmap": [
@@ -75,9 +75,10 @@
     },
     {
       "phase": 3,
-      "title": "What an LLM Actually Is · the keystone",
-      "note": "⚠️ Math primer first: skim Book 30's existing doors (vectors, matrices, eigenvalues, probability). Its later doors (calculus, backprop) are not yet written — see Phase 6 note.",
+      "title": "Math Foundations → What an LLM Actually Is · the keystone",
+      "note": "📖 Book 30 teaches the math (vectors → entropy) that every door below depends on. Then Book 8 unlocks the transformer.",
       "books": [
+        { "book": 30, "why": "vectors, matrices, eigenvalues, probability, calculus, backprop, information theory — the math underneath all 13 AI books." },
         { "book": 8,  "role": "keystone", "why": "tokenization, attention, transformers, RLHF — five downstream books depend on this." }
       ]
     },
@@ -100,9 +101,10 @@
     },
     {
       "phase": 6,
-      "title": "Harden & Go Deep",
-      "note": "⚠️ Fine-tuning Door 5 (SFT/DPO/PPO) leans on calculus/backprop — the missing half of Book 30. Backfill if you hit a wall.",
+      "title": "Classic ML → Harden & Go Deep",
+      "note": "🌱 Book 31 gives you the classic ML foundation (regression → neural networks) that every PhD interview demands. Then harden your LLMs.",
       "books": [
+        { "book": 31, "why": "linear/logistic regression, decision trees, SVM, k-NN, k-means, neural network fundamentals — the No Free Lunch toolbox." },
         { "book": 13, "why": "prompt injection, red-teaming, guardrails" },
         { "book": 11, "why": "LoRA/QLoRA, DPO/PPO" }
       ]
