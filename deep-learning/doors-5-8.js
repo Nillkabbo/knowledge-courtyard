@@ -178,6 +178,64 @@ doors.push({
 <div class="callout info"><span class="co-icon">🧩</span><div><strong>Active recall:</strong> পড়া = declarative (দ্রুত মুছে যায়); মনে করার চেষ্টা = procedural (স্থায়ী)। পড়ে মনে হয় "জানি" — কিন্তু বই বন্ধ করে খালি পাতায় লিখলে কিছুই আসে না। সমাধান — বই বন্ধ করে মনে করো: নিজেকে পরীক্ষা দাও · কাউকে শেখাও (Feynman) · খালি কাগজে মানচিত্র আঁকো।</div></div>
 <div class="callout tip"><span class="co-icon">🛠️</span><div><strong>আজই শুরু:</strong> Anki (ফ্রি) — প্রতিটা কনসেপ্ট একটা card, অ্যালগরিদম তোমার forgetting curve মাপে। প্রতিটা পড়ার পর — বই বন্ধ, খালি পাতায় যা মনে আছে লেখো; যা মিস করো সেটাই তোমার গ্যাপ। এই দুটো ছাড়া দ্রুত শেখা = দ্রুত ভুলে যাওয়া।</div></div>
 
+<div class="diagram">
+  <div class="diag-title">Ebbinghaus Forgetting Curve — বিরতিতে review ছাড়া</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <line class="axis" x1="50" y1="190" x2="520" y2="190"/>
+    <line class="axis" x1="50" y1="30" x2="50" y2="190"/>
+    <text class="lbl-sm" x="285" y="215" fill="#9290a8">সময় (দিন) →</text>
+    <text class="lbl-sm" x="22" y="110" fill="#9290a8" transform="rotate(-90 22,110)">মনে আছে (%) →</text>
+    <!-- without review: steep drop -->
+    <path d="M 50 40 Q 90 130 130 165 Q 200 180 280 182 Q 400 183 510 183" fill="none" stroke="#ff6b35" stroke-width="2.5"/>
+    <text class="lbl-hot" x="300" y="175">without review (৭৫% ভুলে যায়)</text>
+    <!-- with spaced review: each review lifts the curve -->
+    <path d="M 50 40 Q 75 90 95 95" fill="none" stroke="#52c41a" stroke-width="2"/>
+    <circle cx="95" cy="95" r="4" class="node-leaf"/>
+    <text class="lbl-sm" x="95" y="85" fill="#52c41a" style="font-size:9px">D1</text>
+    <path d="M 95 95 Q 140 125 165 120" fill="none" stroke="#52c41a" stroke-width="2"/>
+    <circle cx="165" cy="120" r="4" class="node-leaf"/>
+    <text class="lbl-sm" x="165" y="110" fill="#52c41a" style="font-size:9px">D3</text>
+    <path d="M 165 120 Q 230 140 265 132" fill="none" stroke="#52c41a" stroke-width="2"/>
+    <circle cx="265" cy="132" r="4" class="node-leaf"/>
+    <text class="lbl-sm" x="265" y="122" fill="#52c41a" style="font-size:9px">D7</text>
+    <path d="M 265 132 Q 360 145 410 138" fill="none" stroke="#52c41a" stroke-width="2"/>
+    <circle cx="410" cy="138" r="4" class="node-leaf"/>
+    <text class="lbl-sm" x="410" y="128" fill="#52c41a" style="font-size:9px">D16</text>
+    <text class="lbl-leaf" x="450" y="80">review দিলে</text>
+    <text class="lbl-leaf" x="450" y="95">স্থায়ী</text>
+    <text class="lbl-sm" x="285" y="225" fill="#5e5c74">প্রতিটা review ভুলে যাওয়ার ঠিক আগে — তখনই curve উপরে ওঠে, স্থায়ী হয়</text>
+  </svg>
+  <div class="diag-cap">বিরােক্ত review ছাড়া: ১ দিনে ৭০%, ১ সপ্তাহে ৭৫% ভুলে যাওয়া। review সহ (Day 1→3→7→16→35): প্রতিটা review curve উপরে তোলে — শেষে প্রায় স্থায়ী।</div>
+</div>
+
+<div class="code-block">Spaced Repetition + Active Recall — ২ টুল, আজই:
+
+  Spaced Repetition (Ebbinghaus, ১৮৮৫):
+    review schedule: Day 1 → 3 → 7 → 16 → 35
+    প্রতিটা review তোমার ভুলে যাওয়ার ঠিক আগে।
+    টুল: Anki (ফ্রি) — অ্যালগরিদম তোমার curve মাপে।
+
+  Active Recall (retrieval practice):
+    বই বন্ধ করো → খালি পাতায় যা মনে আছে লেখো
+    → যা মিস করো, সে তোমার গ্যাপ।
+    পড়া = declarative (মুছে যায়)।
+    মনে করা = procedural (স্থায়ী)।
+
+  ⚠️ ফাঁদ: "আবার পড়লাম" = re-reading, কাজ করে না।
+     মনে করার চেষ্টাই শক্তি দেয়।</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">~৫০%</div><div class="sc-label">১ ঘণ্টায় ভুলে যাওয়া (without review)</div></div>
+<div class="stat-card"><div class="sc-num">~৭৫%</div><div class="sc-label">১ সপ্তাহে ভুলে যাওয়া</div></div>
+<div class="stat-card"><div class="sc-num">১৮৮৫</div><div class="sc-label">Ebbinghaus-এর মূল পরীক্ষা</div></div>
+<div class="stat-card"><div class="sc-num">Anki</div><div class="sc-label">ফ্রি SRS টুল — আজই শুরু করো</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Re-reading (বাল্কে পানি)</div>"আবার পড়লাম, তাহলেই মনে থাকবে।" — ভুল। re-reading familiarity বাড়ায় ("চিনি"), কিন্তু retrieval নয়। পরীক্ষায় বা প্রয়োগে গেলে কিছু আসে না। ২০ ঘণ্টা শিখলে এক সপ্তাহে ৭৫% উধাও — কারণ কোনো review, কোনো recall নেই।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ Spaced recall (স্থায়ী)</div>বিরতিতে review (Day 1→3→7→16→35) + প্রতিটা review-এ active recall (বই বন্ধ, মনে করো)। প্রতিটা review curve উপরে তোলে — শেষে প্রায় স্থায়ী। Anki-র মতো SRS টুল তোমার ভুলে যাওয়ার রেখা মাপে, ঠিক আগে মনে করিয়ে দেয়।</div>
+</div>
+
 <div class="dialogue">কুরআনে আল্লাহ বলেন — "তোমরা কি এই উপদেশে বিস্ময় প্রকাশ করছ যে তোমাদেরকে স্মরণ করানো হচ্ছে? এবং তোমরা একে অস্বীকার করছ?" স্মরণ — বিরতিতে, বারবার, সক্রিয়ভাবে। কুরআনে একই কাহিনী বিভিন্ন সূরায় বিভিন্ন কোণ থেকে বলা হয়েছে — spaced repetition। আর শুধু শোনা নয় — নিজে চিন্তা করতে বলা হয়েছে — active recall। দুটোই আল্লাহ কুরআনে প্রয়োগ করেছেন।</div>
 <div class="dialogue en">"Allah says — 'Do you wonder that a reminder has come to you? And you deny it?' Remembrance — at intervals, repeatedly, actively. The Quran tells the same story from different angles in different surahs — spaced repetition. And not just hearing — you're told to reflect yourself — active recall. Allah uses both in the Quran."</div>`,
   senior:{
@@ -214,9 +272,58 @@ doors.push({
 <tr><td class="hl">Monitoring</td><td>"আমি কি বুঝছি? কোথায় আটকাচ্ছি?" — শেখার সময় নিজেকে track</td></tr>
 <tr><td class="hl">Evaluation</td><td>"আমি কি সত্যিই শিখেছি? কী মিস করেছি?" — শেখার পর যাচাই</td></tr></table>
 <div class="callout tip"><span class="co-icon">🔁</span><div><strong>The cycle:</strong> Plan → Learn → Monitor → Adjust → Evaluate → Re-plan → deeper learning।</div></div>
+
+<div class="diagram">
+  <div class="diag-title">Metacognition — চিন্তা সম্পর্কে চিন্তা করার চক্র</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowAmberD8" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#c4b5fd"/></marker>
+    </defs>
+    <!-- 3-phase cycle -->
+    ${[ ['PLAN\nশেখার আগে',140,60,'#a78bfa'], ['MONITOR\nশেখার সময়',410,60,'#5b9eff'], ['EVALUATE\nশেখার পর',275,170,'#52c41a'] ].map(s=>`<rect x="${s[1]-70}" y="${s[2]-22}" width="140" height="44" rx="8" style="fill:${s[3]}22;stroke:${s[3]}"/><text class="lbl-sm" x="${s[1]}" y="${s[2]-3}" fill="${s[3]}" style="font-weight:700">${s[0].split('\\n')[0]}</text><text class="lbl-sm" x="${s[1]}" y="${s[2]+13}" fill="#9290a8" style="font-size:9px">${s[0].split('\\n')[1]}</text>`).join('')}
+    <line class="edge-amber" x1="210" y1="60" x2="340" y2="60" marker-end="url(#arrowAmberD8)"/>
+    <line class="edge-amber" x1="380" y1="90" x2="315" y2="148" marker-end="url(#arrowAmberD8)"/>
+    <line class="edge-amber" x1="235" y1="155" x2="175" y2="92" marker-end="url(#arrowAmberD8)"/>
+    <text class="lbl-sm" x="275" y="115" fill="#c4b5fd">"আমি কি সত্যিই শিখছি?"</text>
+    <text class="lbl-sm" x="275" y="210" fill="#5e5c74">প্রহরী যে প্রহরীকে দেখে — নিজের চিন্তা সম্পর্কে সচেতন থাকাই সবচেয়ে গভীর দক্ষতা</text>
+  </svg>
+  <div class="diag-cap">Plan (কী শিখব, কেন) → Monitor (বুঝছি কি, কোথায় আটকাচ্ছি) → Evaluate (সত্যিই শিখেছি কি) → আবার Plan। এই চক্রই metacognition — master skill যা সব অন্য দক্ষতা নিয়ন্ত্রণ করে।</div>
+</div>
+
+<div class="code-block">Metacognition — ৩ স্তরে নিজেকে প্রশ্ন করো:
+
+  PLANNING (শেখার আগে):
+    "আমি কী শিখতে যাচ্ছি? কেন? কীভাবে?"
+
+  MONITORING (শেখার সময়):
+    "আমি কি বুঝছি? কোথায় আটকাচ্ছি?
+     শিখেছি বলে মনে করছি, নাকি সত্যিই শিখছি?"
+
+  EVALUATION (শেখার পর):
+    "আমি কি সত্যিই শিখেছি? কী মিস করেছি?
+     ১২ বছরের শিশুকে বোঝাতে পারব?"
+
+  চক্র: Plan → Learn → Monitor → Adjust → Evaluate → Re-plan
+  ⚠️ "দ্রুত"-এর অন্ধকার দিক: কিছু জিন্তিস ধীরেই শিখতে হয় —
+     গাণিতিক অন্তর্দৃষ্টি, দার্শনিক চিন্তন, সৃজনশীলতা।</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">master skill</div><div class="sc-label">সব দক্ষতার উপরের নিয়ন্ত্রক</div></div>
+<div class="stat-card"><div class="sc-num">৩ স্তর</div><div class="sc-label">Plan · Monitor · Evaluate</div></div>
+<div class="stat-card"><div class="sc-num">মুরাকাবা</div><div class="sc-label">নিজেকে দেখা — আত্ম-পর্যবেক্ষণ</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">⚠️ অন্ধ শিক্ষার্থী</div>শেখার সময় নিজেকে প্রশ্ন করে না। "বুঝেছি" ধরে নেয়, এগিয়ে যায়। শেষে দেখে — কিছুই আয়ত্ত হয়নি। এটাই "শিখেছি বলে মনে করা" বনাম "সত্যিই শেখা"-র পার্থক্য। যে নিজেকে দেখে না, সে নিজের ভুল ধরতে পারে না।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ মেটাকগনিটিভ শিক্ষার্থী</div>প্রতিটা ধাপে নিজেকে প্রশ্ন করে — "আমি কি সত্যিই শিখছি?" Plan → Monitor → Evaluate চক্র। নিজের জ্ঞানের সীমা চেনে, gap ধরে, ফিরে যায়। যে এটা পেয়েছে, সে শিক্ষার নিয়ন্ত্রক — শিক্ষার্থী নয়।</div>
+</div>
 <div class="callout warn"><span class="co-icon">🐢</span><div><strong>"দ্রুত"-এর অন্ধকার দিক:</strong> কিছু জিনিস ধীরেই শিখতে হয় — গভীর গাণিতিক অন্তর্দৃষ্টি, দার্শনিক চিন্তন, সৃজনশীল দক্ষতা। সব দ্রুত শেখা যায় না; জোর করলে পৃষ্ঠতলীয় জ্ঞান হয়।</div></div>
 
 <div class="verse">"নিশ্চয় আসমান ও জমিনের সৃষ্টিতে, রাত ও দিনের পরিবর্তনে, জ্ঞানীদের জন্য নিদর্শন রয়েছে।"<br>— কুরআন ৩:১৯০<br><br>মেটাকগনিশন হলো সেই দৃষ্টি — যা নিজের চিন্তাকে দেখে, নিজের শেখাকে যাচাই করে, নিজের জ্ঞানের সীমা চেনে। যে এটা পেয়েছে, সে শিক্ষার স্রষ্টা — শিক্ষার্থী নয়।</div>
 
-<div class="secret-box"><div class="label">অষ্টম আসন — রহস্য</div><div class="text">🧠 নিজের চিন্তা সম্পর্কে চিন্তা করো।<br><small>প্রতিটা শেখার সময় — "আমি কি সত্যিই শিখছি?" এই প্রশ্নটাই সবচেয়ে গভীর দক্ষতা। মুরাকাবা — নিজেকে দেখা।</small></div></div>`
+<div class="secret-box"><div class="label">অষ্টম আসন — রহস্য</div><div class="text">🧠 নিজের চিন্তা সম্পর্কে চিন্তা করো।<br><small>প্রতিটা শেখার সময় — "আমি কি সত্যিই শিখছি?" এই প্রশ্নটাই সবচেয়ে গভীর দক্ষতা। মুরাকাবা — নিজেকে দেখা।</small></div></div>`,
+  senior:{
+    title:"Metacognition Ritual — প্রতিটা শেখার চক্র",
+    body:`<p><strong>প্রতিটা শেখার সেশনে তিনবার থামো:</strong></p><p><strong>১. শুরুতে (Plan):</strong> "আমি কী শিখতে যাচ্ছি? কেন? কীভাবে?" লক্ষ্য স্পষ্ট না হলে শেখা ছড়িয়ে পড়ে।</p><p><strong>২. মাঝে (Monitor):</strong> "আমি কি বুঝছি? কোথায় আটকাচ্ছি?" শুধু এগিয়ে যেও না — আটকে গেলে থামো, চিন্তা করো।</p><p><strong>৩. শেষে (Evaluate):</strong> "আমি কি সত্যিই শিখেছি? ১২ বছরের শিশুকে বোঝাতে পারব? কী মিস করেছি?" যদি "না" হয় — ফিরে যাও।</p><p>এই তিন থামা = metacognition। যে এটা করে, সে নিজের শেখার নিয়ন্ত্রক — শিক্ষার্থী নয়।</p>`
+  }
 });
