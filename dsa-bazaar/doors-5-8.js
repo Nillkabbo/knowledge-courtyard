@@ -1,10 +1,391 @@
 // ════════════════════════════════════════
 // DSA BAZAAR — DOORS 5-8
+// 5. Stacks & Queues   6. Hash Maps
+// 7. Heaps             8. Trees (BST, Trie)
 // ════════════════════════════════════════
 
-// ── DOOR 5: TREES (BST, TRIE) ──
+// ── DOOR 5: STACK & QUEUE ──
 doors.push({
-  num:5, icon:"📜", color:"#b37feb", name:"বংশবিদের স্ক্রল",
+  num:5, icon:"🐪", color:"#f0c75e", name:"কাফেলার সারি",
+  subtitle:"The Caravan Line", tech:"Stacks & Queues (LIFO / FIFO)",
+  secret:"Stack = স্তূপ পাত্র — শেষে রাখা প্রথম বেরোয় (LIFO)। Queue = কাফেলার সারি — যে আগে এসেছে সে আগে যায় (FIFO)। দুটোই সাধারণ, কিন্তু DFS/BFS-এর মূল।",
+  recall:{
+    q:"কাফেলার সারিতে কে আগে বেরোয় — যে আগে এসেছে, নাকি যে পরে?",
+    qen:"In the caravan line, who leaves first — who came first, or who came last?",
+    a:"দুই রকম নিয়ম। Queue-এ (FIFO) — যে আগে এসেছে সে আগে যায়। Stack-এ (LIFO) — যে পরে এসেছে সে আগে বেরে যায়, স্তূপের মতো। কাজ অনুযায়ী নিয়ম বাছো।",
+    aen:"Two rules. In a queue (FIFO) — who came first leaves first. In a stack (LIFO) — who came last leaves first, like a pile. Choose the rule per task."
+  },
+  story:`
+<p class="scene-setting">পঞ্চম দোকান। কাফেলার সারি। বাইরে উটের কাফেলা — এক সারিতে, একজন পরে একজন। ভেতরে মালের স্তূপ — একটার উপর একটা, সবশেষে রাখা সবার উপরে। কাফেলা প্রধান ওমর বললেন — "দুই জিনিস আছে। সারি — যে আগে এসেছে সে আগে যাবে। স্তূপ — যে শেষে রাখা, সে আগে তোলা।"</p>
+<p class="scene-setting en">The fifth shop. The caravan line. Outside, a camel caravan — single file, one after another. Inside, a pile of goods — one on another, the last placed on top. Caravan-master Omar said — "Two things. The line — who came first goes first. The pile — what was placed last is taken first."</p>
+
+<div class="dialogue">মুক্তোর মালা বলেছিলেন — এক সারি, pointer দিয়ে গাঁথা। কিন্তু আমি বলি — কখনো ক্রম গুরুত্বপূর্ণ। কে আগে? কে পরে? Stack আর queue — দুটোই ক্রমের নিয়ম। সহজ, কিন্তু এগুলো ছাড়া DFS/BFS বোঝা যায় না।</div>
+<div class="dialogue en">"The pearl necklace maker said — a chain, threaded by pointers. But I say — sometimes order matters. Who's first? Who's last? Stack and queue — two rules of order. Simple, but without them, DFS and BFS cannot be understood."</div>
+
+<div class="diagram">
+  <div class="diag-title">Stack (LIFO) বনাম Queue (FIFO)</div>
+  <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+    <!-- STACK -->
+    <text class="lbl-sm" x="140" y="25" fill="#f0c75e" style="font-size:13px">STACK — push/pop top থেকে</text>
+    ${[0,1,2].map(i=>`
+    <rect class="${i===2?'cell-hot':'cell'}" x="${90}" y="${60+i*36}" width="100" height="30" rx="4"/>
+    <text class="lbl-sm" x="140" y="${78+i*36}">${['1','2','3 (top)'][i]}</text>
+    `).join('')}
+    <text class="lbl-sm" x="140" y="195" fill="#ff6b35">pop() → 3 (শেষে রাখা প্রথম)</text>
+    <line class="edge-hot" x1="200" y1="155" x2="220" y2="155"/>
+
+    <!-- QUEUE -->
+    <text class="lbl-sm" x="420" y="25" fill="#36d6e7" style="font-size:13px">QUEUE — enqueue back, dequeue front</text>
+    ${[0,1,2].map(i=>`
+    <rect class="${i===0?'cell-good':'cell-cyan'}" x="${300+i*70}" y="90" width="60" height="36" rx="4" style="${i===0?'fill:rgba(82,196,26,.25);stroke:#52c41a':''}"/>
+    <text class="lbl-sm" x="${330+i*70}" y="112">${['1 (front)','2','3 (back)'][i]}</text>
+    `).join('')}
+    <text class="lbl-sm" x="330" y="150" fill="#52c41a">dequeue() → 1 (আগে এসেছে আগে)</text>
+    <line class="edge-cyan" x1="300" y1="140" x2="270" y2="140"/>
+    <text class="lbl-sm" x="140" y="208" text-anchor="middle">একই উপাদান — দুই নিয়ম। DFS চাইলে stack, BFS চাইলে queue।</text>
+  </svg>
+</div>
+
+<div class="dialogue">Stack — LIFO। Last In, First Out। মালের স্তূপে সবশেষে যা রাখলে, সেটাই প্রথম তুলবে। থালার স্তূপ, বইয়ের স্তূপ, কল স্ট্যাক (function call) — সব LIFO। ফাংশন কল করলে স্ট্যাকে ঢোকে, শেষেরটা প্রথম ফিরে আসে। recursion-ও stack-এ চলে (গত দোকানে দেখলে)।</div>
+<div class="dialogue en">"Stack — LIFO. Last In, First Out. Whatever you place last on the pile, you pick up first. Plate stacks, book stacks, the call stack (function calls) — all LIFO. Call a function, it enters the stack; the last returns first. Recursion runs on a stack too (last shop)."</div>
+
+<div class="dialogue">Queue — FIFO। First In, First Out। কাফেলার সারিতে যে আগে এসেছে, সে আগে যায়। টিকিটের লাইন, প্রিন্টারের কাজ, মেসেজ কিউ — সব FIFO। AI-এ? task queue — একাধিক inference request সারিতে, এক এক করে প্রসেস।</div>
+<div class="dialogue en">"Queue — FIFO. First In, First Out. Whoever came first to the caravan line goes first. Ticket lines, printer jobs, message queues — all FIFO. In AI? Task queues — many inference requests in line, processed one by one."</div>
+
+<div class="code-block">Stacks & Queues — The Two Orders:
+
+STACK (LIFO — Last In, First Out):
+
+  Operations (all O(1)):
+    push(x)  — top-এ যোগ
+    pop()    — top থেকে সরাও
+    peek()   — top দেখো (সরাও না)
+    is_empty()
+
+  Python: list দিয়ে — append() + pop()
+    stack = []
+    stack.append(1); stack.append(2)
+    stack.pop()  # → 2
+
+QUEUE (FIFO — First In, First Out):
+
+  Operations (all O(1) with right structure):
+    enqueue(x) — back-এ যোগ
+    dequeue()  — front থেকে সরাও
+    peek()     — front দেখো
+
+  Python: collections.deque — দুই পাশে O(1)
+    from collections import deque
+    q = deque()
+    q.append(1); q.append(2)   # enqueue
+    q.popleft()                # dequeue → 1
+
+  ❌ list.pop(0) → O(n)! পুরো list shift করে
+  ✅ deque.popleft() → O(1)
+
+THE TWO GREAT ALGORITHMS — DFS ও BFS:
+
+  DFS (Depth-First Search) — STACK দিয়ে:
+    যতটা সম্ভব গভীরে যাও, তারপর ফিরো।
+    → maze solving, topological sort, cycle detect
+
+  BFS (Breadth-First Search) — QUEUE দিয়ে:
+    প্রতিটা neighbor আগে দেখো, তারপর গভীরে।
+    → shortest path (unweighted), level-order, peer discovery
+
+  একই কোড — শুধু stack (LIFO) বদলে queue (FIFO)।
+  এটাই DFS ও BFS-এর পার্থক্যের মূল। (বিস্তারিত Door 9 — Graphs)</div>
+
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Stack = autograd backprop chain (reverse-mode auto-diff পিছনে হাঁটে)। Queue = inference batching, training data shuffling, RL replay buffer। যখন PyTorch/TensorFlow <code>loss.backward()</code> কল করো — এটা একটা stack-based traversal। এই দুই সরল কাঠামো পুরো AI ইঞ্জিনিয়ারিং জুড়ে।</div>
+<div class="dialogue en">"You're an AI engineer. Stack = autograd backprop chain (reverse-mode autodiff walks backward). Queue = inference batching, training data shuffling, RL replay buffer. When PyTorch/TensorFlow calls <code>loss.backward()</code> — it's a stack-based traversal. These two simple structures span all of AI engineering."</div>
+
+<div class="dialogue">সাফ — সারি, পংক্তি। কুরআনে আল্লাহ বলেন — "নিশ্চয়ই আল্লাহ তাদের ভালোবাসেন যারা সারিবদ্ধ হয়ে লড়ে, যেন ঢালাই করা দেয়াল।" (৬১:৪)। সারি — শৃঙ্খলা। কে আগে, কে পরে — এই শৃঙ্খলা ছাড়া কাফেলা ছড়িয়ে যায়। Stack ও queue — ক্রমের দুই রূপ, দুই নিয়ম। সঠিক নিয়ম বেছে নাও।</div>
+<div class="dialogue en">"Saff — row, line. Allah says — 'Allah loves those who fight in ranks, as if a cemented wall.' (61:4). The line — discipline. Who's first, who's next — without this discipline, the caravan scatters. Stack and queue — two forms of order, two rules. Choose the right one."</div>`,
+  senior:{
+    title:"Stack & Queue — Production Patterns",
+    body:`
+    <p><strong>Python এ stack:</strong> শুধু <code>list</code> ব্যবহারো — <code>append()</code> + <code>pop()</code>, O(1)।</p>
+    <p><strong>Python এ queue:</strong> <code>collections.deque</code> — কখনো <code>list.pop(0)</code> করবে না (O(n))।</p>
+    <p><strong>Monotonic stack:</strong> ক্রমবাধক stack — পরবর্তী বড়/ছোট element খুঁজতে। LeetCode-এ প্রিয় প্যাটার্ন।</p>
+    <p><strong>Two-stack queue:</strong> interview ক্লাসিক — দুই stack দিয়ে queue বানাও (amortized O(1))।</p>
+    <p><strong>AI tip:</strong> backpropagation = reverse-mode autodiff = DFS on computation graph।</p>`
+  },
+  exercise:{
+    hint:"Stack দিয়ে bracket matching করো — ( { [ ] } ) সঠিক কি না!",
+    starterCode:`# কাফেলার সারি — Stack দিয়ে Bracket Matching
+# প্রতিটা opening bracket স্ট্যাকে রাখো, closing এলে মেলাও
+
+def is_balanced(expression):
+    """( { [ ] } ) সঠিকভাবে মিলেছে কি? stack দিয়ে যাচাই।"""
+    stack = []
+    matching = {')': '(', '}': '{', ']': '['}
+
+    for char in expression:
+        if char in "({[":
+            stack.append(char)            # opening → push
+        elif char in ")}]":
+            if not stack:                 # closing কিন্তু stack খালি!
+                return False
+            top = stack.pop()             # pop করে মেলাও
+            if top != matching[char]:
+                return False              # mismatch
+
+    return len(stack) == 0                # stack খালি হতে হবে
+
+# পরীক্ষা করি!
+print(is_balanced("(a + b) * [c - {d / e}]"))   # True
+print(is_balanced("(a + b]"))                    # False
+print(is_balanced("((()"))                       # False (stack খালি না)
+print(is_balanced(")("))                         # False
+
+# TODO: stack দিয়ে একটা string উল্টে দাও
+# (প্রতিটা অক্ষর push করো, তারপর pop করে পড়ো)
+`
+  }
+});
+
+// ── DOOR 6: HASH MAPS ──
+doors.push({
+  num:6, icon:"🔑", color:"#52c41a", name:"তালা নির্মাতার ভাণ্ডার",
+  subtitle:"The Locksmith's Vault", tech:"Hash Maps / Dictionaries",
+  secret:"Hash map = চাবি → ঠিকানা → ধন। O(1) lookup। Caching-এর ভিত্তি।",
+  recall:{
+    q:"তালা নির্মাতা কীভাবে এক সেকেন্ডে সঠিক ধন খুঁজে পান?",
+    qen:"How does the locksmith find the exact treasure in one second?",
+    a:"কারণ চাবির একটা গাণিতিক মান (hash) আছে যা সরাসরি একটা বাক্সে নিয়ে যায়। খুঁজতে হয় না। O(1) lookup।",
+    aen:"Because the key has a mathematical value (hash) that directly leads to a box. No searching. O(1) lookup."
+  },
+  story:`
+<p class="scene-setting">ষষ্ঠ দোকান। তালা নির্মাতার ভাণ্ডার। লোহার চাবির ঝনঝন, তেলের গন্ধ, সারিবদ্ধ ধাতব বাক্স। উস্তাদ ইদ্রিস দাঁড়িয়ে আছেন — হাতে একগুচ্ছ চাবি, সামনে শত শত বাক্স। প্রতিটা চাবি একটা নির্দিষ্ট বাক্স খোলে। কোনো খোঁজ নেই — চাবি দিয়েই সরাসরি।</p>
+<p class="scene-setting en">The sixth shop. The Locksmith's Vault. Clink of iron keys, smell of oil, rows of metal boxes. Ustad Idris stands — keys in hand, hundreds of boxes before him. Each key opens one specific box. No searching — direct access.</p>
+
+<div class="dialogue">টালি নির্মাতা বলেছিলেন — সারিতে থাকলে সরাসরি পাওয়া যায়, index দিয়ে। কিন্তু আমি বলি — index মনে রাখা কঠিন। আমি চাই নাম দিয়ে খুঁজি। "ইদ্রিসের ধন" বললেই — সরাসরি সেই বাক্সে যাই। কীভাবে? Hash।</div>
+<div class="dialogue en">"The tile maker said — in a row, you find directly by index. But I say — indices are hard to remember. I want to search by name. Say 'Idris's treasure' — go directly to that box. How? Hashing."</div>
+
+<div class="diagram">
+  <div class="diag-title">Hash Function — চাবি থেকে বাক্সে</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <!-- keys -->
+    <text class="lbl-sm" x="80" y="40" fill="#f0c75e">Keys</text>
+    ${['"name"','"age"','"email"'].map((k,i)=>`
+    <rect class="cell-cyan" x="40" y="${55+i*45}" width="100" height="32" rx="6" style="fill:rgba(54,214,231,.15);stroke:#36d6e7"/>
+    <text class="lbl-sm" x="90" y="${75+i*45}" fill="#36d6e7">${k}</text>
+    `).join('')}
+    <!-- hash fn -->
+    <rect class="node-hot" x="220" y="95" width="120" height="40" rx="8"/>
+    <text class="lbl" x="280" y="115">hash()</text>
+    <text class="lbl-sm" x="280" y="150" fill="#ff6b35">math transform</text>
+    <!-- arrows in -->
+    ${[0,1,2].map(i=>`<line class="edge-cyan" x1="140" y1="${71+i*45}" x2="218" y2="110"/>`).join('')}
+    <!-- buckets -->
+    <text class="lbl-sm" x="460" y="40" fill="#f0c75e">Buckets</text>
+    ${[7,2,9].map((b,i)=>`
+    <rect class="cell" x="410" y="${55+i*45}" width="80" height="32" rx="6"/>
+    <text class="lbl-sm" x="450" y="${75+i*45}">[${b}]</text>
+    <line class="edge-hot" x1="340" y1="115" x2="408" y2="${71+i*45}"/>
+    `).join('')}
+    <text class="lbl-sm" x="280" y="200" text-anchor="middle">"email" → hash → 9 → bucket[9]। O(1), কোনো খোঁজ নেই।</text>
+  </svg>
+</div>
+
+<div class="dialogue">Hash হলো একটা গাণিতিক ফাংশন — যেকোনো নাম (key) কে একটা সংখ্যায় রূপান্তর করে। সেই সংখ্যাটা বাক্সের ঠিকানা। "user_email" → hash → 47 → বাক্স 47। O(1)। খুঁজতে হয় না। এটাই Python dictionary-র কাজ।</div>
+<div class="dialogue en">"Hash is a mathematical function — transforms any name (key) into a number. That number is the box's address. 'user_email' → hash → 47 → box 47. O(1). No searching. This is how Python dictionaries work."</div>
+
+<div class="dialogue">কিন্তু সমস্যা আছে। দুটো ভিন্ন চাবি কখনো একই বাক্সে যেতে পারে — collision। যেমন "abc" আর "cba" হয়তো একই hash দেয়। সমাধান? বাক্সে একটা ছোট list রাখা — একই বাক্সে একাধিক জিনিস থাকতে পারে। সেটাকে বলে chaining।</div>
+<div class="dialogue en">"But there's a problem. Two different keys may map to the same box — collision. 'abc' and 'cba' might have the same hash. Solution? Keep a small list in the box — multiple items per box. This is called chaining."</div>
+
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার — তুমি dict প্রতিদিন ব্যবহার করো। Caching: API response সেভ করা — key = request, value = response। পরের বার সরাসরি। Deduplication: একই embedding দুইবার সেভ না করা। Feature store: user_id → features। সব O(1) lookup।</div>
+<div class="dialogue en">"You're an AI engineer — you use dicts daily. Caching: save API responses — key = request, value = response. Next time, direct hit. Deduplication: don't save the same embedding twice. Feature store: user_id → features. All O(1) lookup."</div>
+
+<div class="code-block">Python Dict Patterns for AI:
+
+# Basic cache
+cache = {}
+def get_embedding(text):
+    if text in cache:          # O(1) check!
+        return cache[text]
+    emb = model.encode(text)   # expensive
+    cache[text] = emb          # save
+    return emb
+
+# Counter (word frequency)
+from collections import Counter
+words = ["AI", "ML", "AI", "DL", "AI"]
+freq = Counter(words)  # {"AI": 3, "ML": 1, "DL": 1}
+
+# defaultdict (no KeyError)
+from collections import defaultdict
+graph = defaultdict(list)</div>
+
+<div class="dialogue">মিযান — দাঁড়িপাল্লা। আল্লাহ বলেছেন — "আমরা কায়িম করেছি মিযান।" (৫৫:৭)। প্রতিটা কিছুর একটা নিভুল মান আছে। Hash function সেই মিযানের মতো — প্রতিটা key-কে তার সঠিক স্থানে রাখে। ভুল নেই — যদি hash ভালো হয়।</div>
+<div class="dialogue en">"Mizan — the scale. Allah said — 'We established the balance.' (55:7). Everything has a precise measure. The hash function is like that scale — placing each key in its correct position. No error — if the hash is good."</div>`,
+  senior:{
+    title:"Dict Internals — Senior Engineer কী জানে",
+    body:`
+    <p>Python dict তে ভর্তি হলে (load factor > 2/3) resize হয় — O(n) খরচ। তাই বড় dict বানানোর সময় <code>dict.fromkeys()</code> বা pre-size করলে ভালো।</p>
+    <p><strong>Key constraint:</strong> key অবশ্যই hashable হতে হবে — immutable (str, int, tuple)। List কখনো key হতে পারে না। <code>frozenset</code> ব্যবহার করো set কে key করতে।</p>
+    <p><code>collections.Counter</code>, <code>defaultdict</code>, <code>OrderedDict</code> — এগুলো dict-এর বিশেষ রূপ। সঠিক টুল বেছো।</p>`
+  },
+  exercise:{
+    hint:"dict দিয়ে একটা সাধারণ cache বানাও — AI-এর caching pattern শিখো",
+    starterCode:`# তালা নির্মাতার ভাণ্ডার — Hash Map Cache
+# একটা সাধারণ cache বানাচ্ছি
+
+cache = {}
+
+def expensive_operation(n):
+    """এই ফাংশন 'ভারী' — সিমুলেট করছি"""
+    print(f"  গণনা হচ্ছে... computing for {n}")
+    return n * n  # সাধারণ গুণ, কিন্তু ভাবো এটা API call
+
+def smart_compute(n):
+    if n in cache:
+        print(f"  ✅ Cache hit! {n} already computed")
+        return cache[n]
+    result = expensive_operation(n)
+    cache[n] = result
+    return result
+
+print("প্রথমবার (cache miss):")
+print(smart_compute(5))
+
+print("\\nদ্বিতীয়বার (cache hit):")
+print(smart_compute(5))
+
+print("\\nনতুন সংখ্যা (cache miss):")
+print(smart_compute(10))
+
+print(f"\\nCache size: {len(cache)} আইটেম")
+`
+  }
+});
+
+// ── DOOR 7: HEAPS / PRIORITY QUEUES ──
+doors.push({
+  num:7, icon:"🌶️", color:"#faad14", name:"মসলা ব্যবসায়ীর তাক",
+  subtitle:"The Spice Merchant's Shelves", tech:"Heaps & Priority Queues",
+  secret:"Heap = সবসময় সবচেয়ে গুরুত্বপূর্ণ উপরে। Top-K retrieval-এর ভিত্তি।",
+  recall:{
+    q:"মসলা ব্যবসায়ী কেন সব বাক্স সাজান না, শুধু শীর্ষটা রাখেন?",
+    qen:"Why doesn't the spice merchant sort all boxes, just keeps the top one?",
+    a:"কারণ সম্পূর্ণ সাজানো O(n log n)। শুধু শীর্ষ রাখা O(log n) প্রতিটা ঢোকায়। Heap সবসময় সবচেয়ে গুরুত্বপূর্ণ উপাদান উপরে রাখে — O(1) দেখা, O(log n) বের করা।",
+    aen:"Because full sorting is O(n log n). Keeping just the top costs O(log n) per insert. Heap always keeps the most important element on top — O(1) peek, O(log n) extract."
+  },
+  story:`
+<p class="scene-setting">সপ্তম দোকান। মসলা ব্যবসায়ীর দোকান। শুকনো মরিচের ঝাঁঝ, জায়ফলের উষ্ণতা, জাভাত্রির তীক্ষ্ণতা। হাজি মুহতার দাঁড়িয়ে আছেন — সামনে কাঠের তাক, প্রতিটা তাকে মসলা, কিন্তু ক্রম অনুযায়ী নয়। শুধু একটা নিয়ম — সবচেয়ে ঝাঁঝালো মসলা সবসময় উপরে। বাকিগুলো যেখরে হোক। কিন্তু উপরেরটা সবসময় সেরা।</p>
+<p class="scene-setting en">The seventh shop. The Spice Merchant's stall. The bite of dried chili, warmth of nutmeg, sharpness of mace. Haji Mukhtar stands — wooden shelves before him, spices on each, but not fully sorted. One rule only — the sharpest spice always on top. The rest wherever. But the top is always the best.</p>
+
+<div class="dialogue">তালা নির্মাতা বলেছিলেন — নাম দিয়ে খোঁজা যায়, O(1)-এ। কিন্তু আমি বলি — কখনো নাম লাগে না। কখনো লাগে শুধু সেরাটা। সবচেয়ে ঝাঁঝালো মসলা কোনটা? সব নাম মনে রাখার দরকার নেই — শুধু উপরেরটা নাও।</div>
+<div class="dialogue en">"The locksmith said — find by name in O(1). But I say — sometimes you don't need names. Sometimes you need only the best. Which spice is sharpest? No need to remember all names — just take the top."</div>
+
+<div class="diagram">
+  <div class="diag-title">Max-Heap — গাছের আকারে, root-এ সর্বোচ্চ</div>
+  <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+    <!-- level 0 -->
+    <rect class="node-hot" x="250" y="20" width="60" height="40" rx="8"/>
+    <text class="lbl" x="280" y="42">99</text>
+    <!-- level 1 -->
+    <rect class="node" x="140" y="90" width="55" height="38" rx="8"/>
+    <text class="lbl" x="167.5" y="111">92</text>
+    <rect class="node" x="365" y="90" width="55" height="38" rx="8"/>
+    <text class="lbl" x="392.5" y="111">78</text>
+    <!-- level 2 -->
+    <rect class="node-leaf" x="80" y="160" width="50" height="34" rx="8"/>
+    <text class="lbl-sm" x="105" y="178">45</text>
+    <rect class="node-leaf" x="170" y="160" width="50" height="34" rx="8"/>
+    <text class="lbl-sm" x="195" y="178">67</text>
+    <rect class="node-leaf" x="330" y="160" width="50" height="34" rx="8"/>
+    <text class="lbl-sm" x="355" y="178">33</text>
+    <rect class="node-leaf" x="420" y="160" width="50" height="34" rx="8"/>
+    <text class="lbl-sm" x="445" y="178">15</text>
+    <!-- edges -->
+    <line class="edge" x1="280" y1="60" x2="170" y2="90"/>
+    <line class="edge" x1="280" y1="60" x2="365" y2="90"/>
+    <line class="edge" x1="167.5" y1="128" x2="105" y2="160"/>
+    <line class="edge" x1="167.5" y1="128" x2="195" y2="160"/>
+    <line class="edge" x1="392.5" y1="128" x2="355" y2="160"/>
+    <line class="edge" x1="392.5" y1="128" x2="445" y2="160"/>
+    <text class="lbl-sm" x="280" y="225" text-anchor="middle">নিয়ম: parent ≥ child। সম্পূর্ণ সাজানো নয় — শুধু root সবসময় সর্বোচ্চ। peek O(1), pop O(log n)।</text>
+  </svg>
+</div>
+
+<div class="dialogue">একে বলে heap। একটা বিশেষ গাছের মতো বিন্যাস — parent সবসময় child-এর চেয়ে বড় (বা ছোট)। উপরে সবসময় সর্বোচ্চ (বা সর্বনিম্ন)। সব সাজানো নেই — শুধু এই নিয়ম। কিন্তু এই নিয়মেই সেরাটা O(1)-এ পাওয়া যায়, বের করা O(log n)-এ।</div>
+<div class="dialogue en">"This is called a heap. A special tree-like arrangement — parent always greater (or smaller) than children. On top, always the max (or min). Not fully sorted — just this rule. But this rule gives the best in O(1), extraction in O(log n)."</div>
+
+<div class="dialogue">তুমি AI ইঞ্জিনিয়ার — এটা তোমার রোজকার। Vector search-এ তুমি হাজার হাজার embedding থেকে সেরা ৫টা চাও। সব সাজালে O(n log n)। কিন্তু heap দিয়ে — ছোট k-র জন্য শুধু সেই k-টা ধরে রাখো, প্রতিটা O(log k)। মোট O(n log k)। আবার beam search-এ LLM যখন পরবর্তী k টোকেন বিবেচনা করে — heap।</div>
+<div class="dialogue en">"You're an AI engineer — this is your daily bread. In vector search, you want the best 5 from thousands of embeddings. Full sort is O(n log n). But with a heap — for small k, keep just those k, each at O(log k). Total O(n log k). And in beam search, when an LLM considers the next k tokens — heap."</div>
+
+<div class="code-block">Python heapq — Top-K Retrieval:
+
+import heapq
+
+scores = [0.92, 0.15, 0.78, 0.45, 0.99, 0.33, 0.67]
+# সেরা ৩টা
+top3 = heapq.nlargest(3, scores)
+# → [0.99, 0.92, 0.78]
+
+# সবচেয়ে কম ৩টা
+bot3 = heapq.nsmallest(3, scores)
+# → [0.15, 0.33, 0.45]
+
+# RAG-এ: সেরা documents
+docs = [("doc1", 0.95), ("doc2", 0.72), ("doc3", 0.88)]
+best = heapq.nlargest(2, docs, key=lambda x: x[1])</div>
+
+<div class="dialogue">আফদাল — শ্রেষ্ঠ। কুরআনে আল্লাহ বলেন — "তোমরা মানুষের জন্য প্রকাশিত সর্বোত্তম জাতি।" (৩:১১০)। শ্রেষ্ঠ হওয়া শুধু ব্যক্তিগত নয় — দায়িত্ব। Heap-ও তেমনি — সবচেয়ে গুরুত্বপূর্ণকে উপরে রাখে, কিন্তু সেটা দায়িত্ব — সেরাটা আগে দিতে হবে। Priority মানে দায়িত্ব।</div>
+<div class="dialogue en">"Afdal — the best. Allah says in the Quran — 'You are the best nation produced for mankind.' (3:110). Being the best isn't just personal — it's responsibility. The heap is the same — it puts the most important on top, but that's a duty — the best must be served first. Priority means responsibility."</div>`,
+  senior:{
+    title:"heapq vs sorted — কখন কোনটা? (complexity স্পষ্ট করে)",
+    body:`
+    <p><strong>Top-K বের করা, ছোট k (যেমন k ≤ ১০০০):</strong> <code>heapq.nlargest(k, data)</code> — ভেতরে একটা size-k heap রাখে, প্রতিটা উপাদানে <code>O(log k)</code>। মোট <strong>O(n log k)</strong>। যখন k ≪ n, এটা <code>O(n log n)</code> full sort-এর চেয়ে অনেক দ্রুত।</p>
+    <p><strong>বিকল্প — একবারে heapify করে বারবার pop:</strong> প্রথমে <code>heapq.heapify(data)</code> <strong>O(n)</strong>, তারপর k বার pop প্রতিটা <code>O(log n)</code> — মোট <strong>O(n + k log n)</strong>। এটা তখন ভালো যখন k বড় (n-এর কাছাকাছি)।</p>
+    <p><strong>পুরো list সাজানো:</strong> <code>sorted(data)</code> <strong>O(n log n)</strong> — যদি সব দরকার হয়।</p>
+    <p><strong>Streaming top-K:</strong> যদি ডেটা একটানা আসে — size-k heap ধরে রাখো। <code>heapq.heappush()</code> / <code>heapq.heappop()</code>।</p>
+    <p><strong>Senior trap:</strong> <code>heapq</code> min-heap। Max-heap চাইলে সংখ্যা উল্টো করো (<code>-x</code>) বা key হিসেবে tuple ব্যবহার করো।</p>`
+  },
+  exercise:{
+    hint:"heapq দিয়ে top-K retrieval — RAG-এর মতো!",
+    starterCode:`# মসলা ব্যবসায়ীর তাক — Top-K with heapq
+import heapq
+
+# ৭টা document-এর relevance scores (RAG scenario)
+documents = [
+    ("AI Basics", 0.45),
+    ("LLM Guide", 0.92),
+    ("RAG Tutorial", 0.88),
+    ("Cooking Tips", 0.12),
+    ("Python Tips", 0.67),
+    ("Vector Search", 0.95),
+    ("Old News", 0.05),
+]
+
+top3 = heapq.nlargest(3, documents, key=lambda x: x[1])
+print("সেরা ৩টা document (Top-3):")
+for name, score in top3:
+    print(f"  {name}: {score}")
+
+worst2 = heapq.nsmallest(2, documents, key=lambda x: x[1])
+print("\nসবচেয়ে কম relevant:")
+for name, score in worst2:
+    print(f"  {name}: {score}")
+
+# BONUS: একটা priority queue বানাও
+pq = []
+heapq.heappush(pq, (2, "medium priority"))
+heapq.heappush(pq, (1, "high priority"))
+heapq.heappush(pq, (3, "low priority"))
+
+print("\nPriority Queue (ক্রমানুসারে):")
+while pq:
+    priority, task = heapq.heappop(pq)
+    print(f"  Priority {priority}: {task}")
+`
+  }
+});
+
+// ── DOOR 8: TREES (BST, TRIE) ──
+doors.push({
+  num:8, icon:"📜", color:"#b37feb", name:"বংশবিদের স্ক্রল",
   subtitle:"The Genealogist's Scroll", tech:"Trees (BST, Trie)",
   secret:"Tree = শাখাবিহীন সম্পর্ক। BST = বাঁয়া ছোট, ডানা বড়। Trie = অক্ষর ধরে ধরে শাখা। O(log n) সন্ধান।",
   recall:{
@@ -14,14 +395,43 @@ doors.push({
     aen:"In a BST, each step eliminates half — left is smaller, right is larger. O(log n). In a trie, characters branch by letter — unmatched for prefix matching."
   },
   story:`
-<p class="scene-setting">পঞ্চম দোকান। বংশবিদের কামরা। পুরনো কাগজের গন্ধ, কালির দাগ, দেয়ালে বিশাল বংশলতিকা — মূল থেকে ডাল, ডাল থেকে শাখা, শাখা থেকে প্রশাখা। শায়খ আব্দুর রহমান বসে আছেন — চশমা নাকের ডগায়, হাতে কলম, সামনে বিস্তৃত বংশতালিকা। প্রতিটা ব্যক্তি একটা node, parent থেকে child বেরোয় — শাখার মতো।</p>
-<p class="scene-setting en">The fifth shop. The Genealogist's chamber. Smell of old paper, ink stains, a vast family tree on the wall — root to branch, branch to limb, limb to twig. Shaykh Abdur Rahman sits — spectacles on nose, pen in hand, the lineage spread before him. Each person is a node, parent to child — like branches.</p>
+<p class="scene-setting">অষ্টম দোকান। বংশবিদের কামরা। পুরনো কাগজের গন্ধ, কালির দাগ, দেয়ালে বিশাল বংশলতিকা — মূল থেকে ডাল, ডাল থেকে শাখা, শাখা থেকে প্রশাখা। শায়খ আব্দুর রহমান বসে আছেন — চশমা নাকের ডগায়, হাতে কলম, সামনে বিস্তৃত বংশতালিকা। প্রতিটা ব্যক্তি একটা node, parent থেকে child বেরোয় — শাখার মতো।</p>
+<p class="scene-setting en">The eighth shop. The Genealogist's chamber. Smell of old paper, ink stains, a vast family tree on the wall — root to branch, branch to limb, limb to twig. Shaykh Abdur Rahman sits — spectacles on nose, pen in hand, the lineage spread before him. Each person is a node, parent to child — like branches.</p>
 
-<div class="dialogue">তাঁতি বলেছিলেন — সম্পর্ক একটা জাল। কিন্তু আমি বলি — কখনো সম্পর্ক জাল নয়, বৃক্ষ। একটা মূল থেকে শাখা বেরোয়, প্রতিটা শাখা থেকে আরও। কোনো শাখা বৃত্তে ফিরে যায় না — উপরে উঠে বা নিচে নামে। এটাই tree — cycle নেই।</div>
-<div class="dialogue en">"The weaver said — relationships are a web. But I say — sometimes relationships aren't a web, but a tree. From one root, branches grow, each branch splitting further. No branch loops back — it only goes up or down. This is a tree — no cycles."</div>
+<div class="dialogue">কাফেলা প্রধান বলেছিলেন — ক্রম গুরুত্বপূর্ণ, কে আগে কে পরে। কিন্তু আমি বলি — কখনো সম্পর্ক শৃঙ্খল নয়, বৃক্ষ। একটা মূল থেকে শাখা বেরোয়, প্রতিটা শাখা থেকে আরও। কোনো শাখা বৃত্তে ফিরে যায় না — উপরে উঠে বা নিচে নামে। এটাই tree — cycle নেই।</div>
+<div class="dialogue en">"The caravan master said — order matters, who's first who's next. But I say — sometimes relationships aren't a chain, but a tree. From one root, branches grow, each branch splitting further. No branch loops back — it only goes up or down. This is a tree — no cycles."</div>
 
-<div class="dialogue">BST — Binary Search Tree। একটা নিয়ম: বাঁয়া child সবসময় parent-এর চেয়ে ছোট, ডানা child সবসময় বড়। এই নিয়মে যেকোনো নাম খুঁজতে প্রতিটা ধাপে অর্ধেক বাদ যায় — O(log n)। হাজার নামের মধ্যে মাত্র ১০ ধাপে পাওয়া যায়।</div>
-<div class="dialogue en">"BST — Binary Search Tree. One rule: left child is always smaller than parent, right child always larger. With this rule, searching eliminates half at each step — O(log n). Among a thousand names, found in just 10 steps."</div>
+<div class="diagram">
+  <div class="diag-title">Binary Search Tree — বাঁয়া ছোট, ডানা বড়</div>
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+    <rect class="node-hot" x="250" y="15" width="60" height="38" rx="8"/>
+    <text class="lbl" x="280" y="36">50</text>
+    <rect class="node" x="140" y="80" width="55" height="36" rx="8"/>
+    <text class="lbl" x="167.5" y="100">30</text>
+    <rect class="node" x="360" y="80" width="55" height="36" rx="8"/>
+    <text class="lbl" x="387.5" y="100">70</text>
+    <rect class="node-leaf" x="80" y="150" width="48" height="32" rx="8"/>
+    <text class="lbl-sm" x="104" y="170">20</text>
+    <rect class="node-leaf" x="170" y="150" width="48" height="32" rx="8"/>
+    <text class="lbl-sm" x="194" y="170">40</text>
+    <rect class="node-leaf" x="320" y="150" width="48" height="32" rx="8"/>
+    <text class="lbl-sm" x="344" y="170">60</text>
+    <rect class="node-leaf" x="410" y="150" width="48" height="32" rx="8"/>
+    <text class="lbl-sm" x="434" y="170">80</text>
+    <line class="edge" x1="280" y1="53" x2="170" y2="80"/>
+    <line class="edge" x1="280" y1="53" x2="360" y2="80"/>
+    <line class="edge" x1="167.5" y1="116" x2="104" y2="150"/>
+    <line class="edge" x1="167.5" y1="116" x2="194" y2="150"/>
+    <line class="edge" x1="387.5" y1="116" x2="344" y2="150"/>
+    <line class="edge" x1="387.5" y1="116" x2="434" y2="150"/>
+    <text class="lbl-sm" x="220" y="68" fill="#36d6e7">← smaller</text>
+    <text class="lbl-sm" x="305" y="68" fill="#ff6b35">larger →</text>
+    <text class="lbl-sm" x="280" y="215" text-anchor="middle">search(40): 50→বাঁয়া→30→ডানা→40 ✓ প্রতি ধাপে অর্ধেক বাদ। O(log n)।</text>
+  </svg>
+</div>
+
+<div class="dialogue">BST — Binary Search Tree। একটা নিয়ম: বাঁয়া child সবসময় parent-এর চেয়ে ছোট, ডানা child সবসময় বড়। এই নিয়মে যেকোনো নাম খুঁজতে প্রতিটা ধাপে অর্ধেক বাদ যায় — O(log n)। হাজার নামের মধ্যে মাত্র ১০ ধাপে পাওয়া যায়। (জ্যোতির্বিদের কথা মনে আছে — O(log n) দ্রুততার সিঁড়ির দ্বিতীয় ধাপ।)</div>
+<div class="dialogue en">"BST — Binary Search Tree. One rule: left child is always smaller than parent, right child always larger. With this rule, searching eliminates half at each step — O(log n). Among a thousand names, found in just 10 steps. (Remember the astrolabe maker — O(log n) is the second rung of the ladder.)"</div>
 
 <div class="dialogue">Trie — আরেক ধরনের বৃক্ষ। কিন্তু এখানে শাখা হলো অক্ষর। "cat" → 'c' → 'a' → 't'। প্রতিটা অক্ষর একটা শাখা। এটা autocomplete-এ অপ্রতিদ্বন্দ্বী। ইউজার টাইপ করছে "ca" — trie বলে দেয় cat, car, card সব সম্ভায় শাখা আছে। Tokenizer-এও — LLM কীভাবে শব্দ ভাঙে? Trie-এর মতো করে।</div>
 <div class="dialogue en">"Trie — another kind of tree. But here, branches are letters. 'cat' → 'c' → 'a' → 't'. Each letter is a branch. This is unmatched for autocomplete. User types 'ca' — the trie says cat, car, card — all branches that exist. In tokenizers too — how does an LLM break words? Like a trie."</div>
@@ -36,13 +446,12 @@ doors.push({
     body:`
     <p><strong>Recursive:</strong> স্বাভাবিক, পড়তে সহজ। কিন্তু deep tree-তে <code>RecursionError</code> (Python ~1000 depth limit)।</p>
     <p><strong>Iterative:</strong> Stack দিয়ে নিজে নিয়ন্ত্রণ করো। বেশি কোড, কিন্তু deep tree-তে নিরাপদ।</p>
-    <p><strong>Senior habit:</strong> ছোট tree → recursive (পড়তে সুন্দর)। Production/deep → iterative (safe)। উভয় জানো।</p>`
+    <p><strong>Senior habit:</strong> ছোট tree → recursive (পড়তে সুন্দর)। Production/deep → iterative (safe)। উভয় জানো। (Recursion শেখা হয়ে গেছে Door 2-এ।)</p>
+    <p><strong>BST সাবধানতা:</strong> সাজানো ডেটা insert করলে BST একটা linked list হয়ে যায় — O(n) search। সমাধান: self-balancing tree (AVL, Red-Black) — সব সময় O(log n)।</p>`
   },
   exercise:{
     hint:"একটা সাধারণ BST class বানাও — insert আর search!",
     starterCode:`# বংশবিদের স্ক্রল — Binary Search Tree
-# একটা সাধারণ BST বানাচ্ছি
-
 class TreeNode:
     def __init__(self, value):
         self.value = value
@@ -52,14 +461,13 @@ class TreeNode:
 class BST:
     def __init__(self):
         self.root = None
-    
+
     def insert(self, value):
-        """BST-তে value যোগ করো"""
         if self.root is None:
             self.root = TreeNode(value)
         else:
             self._insert_recursive(self.root, value)
-    
+
     def _insert_recursive(self, node, value):
         if value < node.value:
             if node.left is None:
@@ -71,11 +479,10 @@ class BST:
                 node.right = TreeNode(value)
             else:
                 self._insert_recursive(node.right, value)
-    
+
     def search(self, value):
-        """BST-তে value খুঁজো — O(log n)"""
         return self._search_recursive(self.root, value)
-    
+
     def _search_recursive(self, node, value):
         if node is None:
             return False
@@ -85,7 +492,7 @@ class BST:
             return self._search_recursive(node.left, value)
         else:
             return self._search_recursive(node.right, value)
-    
+
     def inorder(self, node=None):
         """ inorder traversal — sorted order! """
         if node is None:
@@ -100,7 +507,6 @@ class BST:
             result.extend(self.inorder(node.right))
         return result
 
-# পরীক্ষা করি!
 tree = BST()
 for val in [50, 30, 70, 20, 40, 60, 80]:
     tree.insert(val)
@@ -111,357 +517,6 @@ print("৯০ আছে?", tree.search(90))      # False
 
 # TODO: আরও কিছু value insert করো
 # তারপর inorder দেখো — sorted হবে!
-`
-  }
-});
-
-// ── DOOR 6: SORTING & BINARY SEARCH ──
-doors.push({
-  num:6, icon:"📚", color:"#4a9eff", name:"গ্রন্থাগারিকের তালিকা",
-  subtitle:"The Librarian's Catalog", tech:"Sorting & Binary Search",
-  secret:"সাজানো তালিকায় খোঁজ = O(log n)। অসাজানো = O(n)। সাজানো = ক্ষমতা।",
-  recall:{
-    q:"গ্রন্থাগারিক হাজার বইয়ের মধ্যে কীভাবে এক সেকেন্ডে খুঁজে পান?",
-    qen:"How does the librarian find one book among thousands in one second?",
-    a:"বইগুলো সাজানো থাকে — alphabetically বা numerically। Binary search: মাঝে দেখো, অর্ধেক বাদ দাও, আবার মাঝে দেখো। প্রতি ধাপে অর্ধেক কমে। O(log n)।",
-    aen:"Books are sorted — alphabetically or numerically. Binary search: check the middle, discard half, check the new middle. Halves each step. O(log n)."
-  },
-  story:`
-<p class="scene-setting">ষষ্ঠ দোকান। একটা প্রাচীন গ্রন্থাগার। কাগজের সুবাস, চামড়ার বাঁধাই, সারিবদ্ধ তাক। কাতিব ইউসুফ দাঁড়িয়ে আছেন — লম্বা, কৃশকায়, চোখে ধৈর্য। তাঁর সামনে হাজার বই — কিন্তু সব সাজানো। Alphabetically। কোনো বই ছড়ানো নেই। প্রতিটা তাকে নির্দিষ্ট অক্ষর।</p>
-<p class="scene-setting en">The sixth shop. An ancient library. Scent of paper, leather bindings, ordered shelves. Katib Yusuf stands — tall, lean, patience in his eyes. Before him: thousands of books — but all sorted. Alphabetically. None scattered. Each shelf a specific letter.</p>
-
-<div class="dialogue">বংশবিদ বলেছিলেন — বৃক্ষে খোঁজা যায়, O(log n)-এ। কিন্তু আমি বলি — বৃক্ষ লাগে না যদি তালিকা সাজানো থাকে। Binary search — মাঝে দেখো, অর্ধেক বাদ দাও, আবার মাঝে। প্রতি ধাপে অর্ধেক কমে। হাজার বইয়ের মধ্যে ১০ ধাপে। মিলিয়নে ২০ ধাপে।</div>
-<div class="dialogue en">"The genealogist said — trees give O(log n) search. But I say — no tree needed if the list is sorted. Binary search — check the middle, discard half, check again. Halves each step. A thousand books in 10 steps. A million in 20."</div>
-
-<div class="dialogue">কিন্তু শর্ত আছে — তালিকা সাজানো থাকতে হবে। সাজানো না থাকলে? একটা একটা করে দেখতে হবে — O(n)। সাজানো ক্ষমতা — এটাই sorting-এর মূল্য। একবার সাজাও, বারবার দ্রুত খোঁজো।</div>
-<div class="dialogue en">"But there's a condition — the list must be sorted. Not sorted? Check one by one — O(n). Sorting is power — this is its price. Sort once, search fast forever."</div>
-
-<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। RAG-এ retrieved documents rank করতে হয় — relevance score অনুযায়ী sort। Hyperparameter tuning-এ range-এ binary search করা যায়। Log analysis — timestamp অনুযায়ী sort করে specific সময়ের event খুঁজি। Sorted data হলো ক্ষমতার ভিত্তি।</div>
-<div class="dialogue en">"You're an AI engineer. In RAG, retrieved documents must be ranked — sorted by relevance score. In hyperparameter tuning, binary search across a range. In log analysis — sort by timestamp, then find specific events. Sorted data is the foundation of power."</div>
-
-<div class="code-block">Python Sorting & Binary Search:
-
-# Python's sorted() uses Timsort — O(n log n)
-scores = [0.3, 0.9, 0.1, 0.7, 0.5]
-sorted_scores = sorted(scores, reverse=True)
-# → [0.9, 0.7, 0.5, 0.3, 0.1]
-
-# Sort by key (RAG ranking)
-docs = [("doc1", 0.45), ("doc2", 0.92), ("doc3", 0.78)]
-ranked = sorted(docs, key=lambda x: x[1], reverse=True)
-
-# Binary Search (bisect module)
-import bisect
-sorted_list = [1, 3, 5, 7, 9, 11, 13]
-idx = bisect.bisect_left(sorted_list, 7)  # → 3
-# Found in O(log n)!</div>
-
-<div class="dialogue">কিস্ত — ন্যায়বিচার। আল্লাহ বলেন — "তোমরা ন্যায়ের খাতায় দাঁড়াও।" ন্যায়বিচার মানে প্রতিটা জিনিসকে তার সঠিক স্থানে রাখা। Sorting হলো সেই কিস্তের ছায়া — প্রতিটা উপাদানকে তার স্থানে। Binary search তখনই কাজ করে যখন কিস্ত প্রতিষ্ঠিত — যখন সবকিছু তার জায়গায়।</div>
-<div class="dialogue en">"Qist — justice. Allah says — 'Stand firmly for justice.' Justice means placing each thing in its correct position. Sorting is the shadow of qist — each element in its place. Binary search works only when qist is established — when everything is where it belongs."</div>`,
-  senior:{
-    title:"Python Sorting — Senior Patterns",
-    body:`
-    <p><code>sorted()</code> নতুন list তৈরি করে। <code>.sort()</code> in-place। Memory-sensitive হলে <code>.sort()</code>।</p>
-    <p><strong>Key function:</strong> <code>key=lambda x: (x.priority, x.name)</code> — multi-criteria sort। খুব শক্তিশালী।</p>
-    <p><code>operator.itemgetter(1)</code> <code>lambda x: x[1]</code>-এর চেয়ে দ্রুত। Production code-এ ব্যবহার করো।</p>
-    <p>Binary search-এর জন্য নিজে লেখো না — <code>bisect</code> module ব্যবহার করো। Tested, optimized, correct।</p>`
-  },
-  exercise:{
-    hint:"Binary search implement করো — তারপর bisect দিয়ে তুলনা করো!",
-    starterCode:`# গ্রন্থাগারিকের তালিকা — Binary Search
-
-def binary_search(arr, target):
-    """সাজানো তালিকায় target খুঁজি — O(log n)
-    তালিকা অবশ্যই সাজানো থাকতে হবে!"""
-    left, right = 0, len(arr) - 1
-    steps = 0  # কত ধাপ লাগলো গোনার জন্য
-    
-    while left <= right:
-        steps += 1
-        mid = (left + right) // 2
-        
-        if arr[mid] == target:
-            return mid, steps  # পেয়েছি!
-        elif arr[mid] < target:
-            left = mid + 1    # ডান অর্ধেকে যাও
-        else:
-            right = mid - 1   # বাঁ অর্ধেকে যাও
-    
-    return -1, steps  # পাওয়া যায়নি
-
-# পরীক্ষা করি — সাজানো তালিকা
-sorted_docs = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-
-target = 70
-index, steps = binary_search(sorted_docs, target)
-print(f"{target} খুঁজছি...")
-print(f"পাওয়া গেছে index {index}-এ, মাত্র {steps} ধাপে!")
-
-# তুলনা: linear search কত ধাপ?
-linear_steps = sorted_docs.index(target) + 1
-print(f"Linear search-এ লাগত: {linear_steps} ধাপ")
-
-# Python-এর bisect দিয়ে দেখি
-import bisect
-bisect_idx = bisect.bisect_left(sorted_docs, target)
-print(f"bisect দিয়ে: index {bisect_idx}")
-
-# BONUS: ১০০০টা সংখ্যার মধ্যে খুঁজে দেখো কত ধাপ লাগে!
-big_list = list(range(0, 1000, 2))  # ০ থেকে ৯৯৮, জোড় সংখ্যা
-idx, steps = binary_search(big_list, 500)
-print(f"\n১০০০-এর তালিকায় ৫০০ খুঁজতে ধাপ: {steps}")
-`
-  }
-});
-
-// ── DOOR 7: DYNAMIC PROGRAMMING ──
-doors.push({
-  num:7, icon:"🌱", color:"#52c41a", name:"মালির ধাপ",
-  subtitle:"The Gardener's Terraces", tech:"Dynamic Programming",
-  secret:"DP = overlapping subproblems + optimal substructure। ছোট সমস্যা সমাধান করো, মনে রাখো, বড়টা বানাও।",
-  recall:{
-    q:"মালি কেন প্রতিটা ধাপে নতুন করে বীজ বোনেন না, আগের ফসল ব্যবহার করেন?",
-    qen:"Why doesn't the gardener plant new seeds each terrace, but uses previous harvest?",
-    a:"কারণ প্রতিটা ধাপের ফসল আগের ধাপের উপর নির্ভর করে। আগের ফল মনে রাখলে (memoize) বারবার কাজ করতে হয় না। DP = স্মৃতি দিয়ে দক্ষতা।",
-    aen:"Because each terrace's harvest depends on the previous. If you remember previous results (memoize), you don't repeat work. DP = efficiency through memory."
-  },
-  story:`
-<p class="scene-setting">সপ্তম দোকান। পাহাড়ের ঢালে ধাপে ধাপে বাগান — terrace farming। মাটির গন্ধ, সেচের শব্দ, সবুজের স্তর। মালি বশির কাজ করছেন — বয়স্ক, পিঠ বাঁকা, কিন্তু প্রতিটা ধাপে নিখুঁত। তাঁর বাগান একটা সিঁড়ির মতো — প্রতিটা ধাপ আগের ধাপের উপর ভর করে দাঁড়িয়ে। উপরের ফসল নিচের ফসলের উপর নির্ভরশীল।</p>
-<p class="scene-setting en">The seventh shop. Terraced gardens on a hillside — terrace farming. Smell of soil, sound of irrigation, layers of green. Mali Bashir works — elderly, back bent, but precise at every step. His garden is like a staircase — each terrace rests on the one below. The upper harvest depends on the lower.</p>
-
-<div class="dialogue">গ্রন্থাগারিক বলেছিলেন — সাজানো তালিকায় দ্রুত খোঁজা যায়। কিন্তু আমি বলি — কখনো একবার খোঁজা যথেষ্ট নয়। কখনো প্রতিটা উত্তর আগের উত্তরের উপর দাঁড়ায়। ধাপে ধাপে। একে বলে Dynamic Programming — প্রতিটা ছোট সমস্যা সমাধান করো, মনে রাখো, বড়টা বানাও।</div>
-<div class="dialogue en">"The librarian said — sorted lists search fast. But I say — sometimes searching once isn't enough. Sometimes each answer stands on the previous answer. Step by step. This is Dynamic Programming — solve each small problem, remember it, build the big one."</div>
-
-<div class="dialogue">ফাইবোনাচ্চি সংখ্যা জানো? ১, ১, ২, ৩, ৫, ৮, ১৩... প্রতিটা সংখ্যা আগের দুটোর যোগফল। সাধারণ recursion-এ একই সংখ্যা বারবার গণনা হয় — O(2^n)। কিন্তু যদি মনে রাখো? প্রতিটা একবারই গণনা — O(n)। এটাই memoization। মনে রাখা = সময় বাঁচানো।</div>
-<div class="dialogue en">"You know Fibonacci numbers? 1, 1, 2, 3, 5, 8, 13... Each is the sum of the previous two. Naive recursion recalculates the same numbers — O(2^n). But if you remember? Each computed once — O(n). This is memoization. Remembering = saving time."</div>
-
-<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Edit distance — দুটো শব্দ কতটা আলাদা? DP দিয়ে গণনা। এটা fuzzy matching-এ লাগে — ইউজার "recieve" লিখলে "receive" সাজেস্ট করো। Viterbi algorithm — HMM-এ সবচেয়ে সম্ভাব্য অনুক্রম খোঁজা, DP-ই। Reinforcement learning-এ value iteration — DP। Agent memoization — আগের সিদ্ধান্ত মনে রেখে নতুন সিদ্ধান্ত।</div>
-<div class="dialogue en">"You're an AI engineer. Edit distance — how different are two words? Computed with DP. This is used in fuzzy matching — user types 'recieve', suggest 'receive'. Viterbi algorithm — finding the most likely sequence in HMMs, that's DP. Value iteration in RL — DP. Agent memoization — remembering past decisions for new ones."</div>
-
-<div class="code-block">Edit Distance (Levenshtein) — DP Classic:
-
-def edit_distance(s1, s2):
-    m, n = len(s1), len(s2)
-    # dp[i][j] = s1-এর প্রথম i অক্ষরকে 
-    #            s2-এর প্রথম j অক্ষরে রূপান্তরের খরচ
-    dp = [[0]*(n+1) for _ in range(m+1)]
-    
-    for i in range(m+1): dp[i][0] = i  # delete all
-    for j in range(n+1): dp[0][j] = j  # insert all
-    
-    for i in range(1, m+1):
-        for j in range(1, n+1):
-            if s1[i-1] == s2[j-1]:
-                dp[i][j] = dp[i-1][j-1]  # no cost
-            else:
-                dp[i][j] = 1 + min(
-                    dp[i-1][j],    # delete
-                    dp[i][j-1],    # insert
-                    dp[i-1][j-1]   # replace
-                )
-    return dp[m][n]
-
-edit_distance("cat", "cut")  # → 1 (replace a→u)
-edit_distance("sunday", "saturday")  # → 3</div>
-
-<div class="dialogue">দারাজাত — স্তর। কুরআনে আল্লাহ বলেন — "তাদের জন্য রয়েছে স্তরসমূহ।" প্রতিটা স্তর আগের স্তরের চেয়ে উঁচু। কেউ এক লাফে শীর্ষে যায় না — ধাপে ধাপে। DP-ও তেমনি — বড় উত্তর ছোট উত্তরের স্তরে স্তরে গঠন। ধৈর্য আর স্মৃতি দিয়ে।</div>
-<div class="dialogue en">"Darajat — degrees/levels. Allah says — 'For them are degrees.' Each level higher than the last. No one leaps to the summit in one jump — step by step. DP is the same — the big answer built from small answers, level by level. With patience and memory."</div>`,
-  senior:{
-    title:"DP চেনার দুটো লক্ষণ",
-    body:`
-    <p><strong>1. Overlapping subproblems:</strong> একই ছোট সমস্যা বারবার আসে। Fibonacci-তে <code>fib(3)</code> কয়েকবার গণনা হয়।</p>
-    <p><strong>2. Optimal substructure:</strong> বড় সমস্যার সর্বোত্তম সমাধান ছোট সমস্যার সর্বোত্তম সমাধান থেকে গঠিত।</p>
-    <p>দুটোই থাকলে DP। একটাও না থাকলে greedy বা brute force।</p>
-    <p><strong>Top-down (memoization):</strong> recursive + cache। পড়তে সহজ। <strong>Bottom-up (tabulation):</strong> iterative, small→big। দ্রুত। Production-এ সাধারণত bottom-up।</p>`
-  },
-  exercise:{
-    hint:"Fibonacci দুইভাবে — naive বনাম memoized। পার্থক্য দেখো!",
-    starterCode:`# মালির ধাপ — Dynamic Programming
-# Fibonacci: naive vs memoized vs bottom-up
-
-import time
-
-# ১. Naive recursion — O(2^n) — ভয়ংকর ধীর!
-def fib_naive(n):
-    if n <= 1:
-        return n
-    return fib_naive(n-1) + fib_naive(n-2)
-
-# ২. Memoized (top-down DP) — O(n) — মনে রাখে!
-memo = {}
-def fib_memo(n):
-    if n <= 1:
-        return n
-    if n in memo:    # আগে গণনা করেছি?
-        return memo[n]
-    memo[n] = fib_memo(n-1) + fib_memo(n-2)
-    return memo[n]
-
-# ৩. Bottom-up (tabulation) — O(n) — সবচেয়ে দ্রুত
-def fib_bottom_up(n):
-    if n <= 1:
-        return n
-    dp = [0] * (n + 1)
-    dp[1] = 1
-    for i in range(2, n + 1):
-        dp[i] = dp[i-1] + dp[i-2]
-    return dp[n]
-
-# তুলনা করি!
-n = 30
-
-t1 = time.time()
-result1 = fib_naive(n)
-t1 = time.time() - t1
-
-t2 = time.time()
-result2 = fib_memo(n)
-t2 = time.time() - t2
-
-t3 = time.time()
-result3 = fib_bottom_up(n)
-t3 = time.time() - t3
-
-print(f"Fibonacci({n}) = {result1}")
-print(f"Naive:       {t1:.4f}s  (O(2^n))")
-print(f"Memoized:    {t2:.6f}s  (O(n))")
-print(f"Bottom-up:   {t3:.6f}s  (O(n))")
-print(f"\nMemoized কত গুণ দ্রুত? {t1/t2:.0f}x!")
-
-# BONUS: n=40 চেষ্টা করো — naive কত সময় নেয় দেখো!
-`
-  }
-});
-
-// ── DOOR 8: TWO POINTERS / SLIDING WINDOW ──
-doors.push({
-  num:8, icon:"📏", color:"#f06292", name:"ক্যালিগ্রাফারের মাপকাঠি",
-  subtitle:"The Calligrapher's Ruler", tech:"Two Pointers & Sliding Window",
-  secret:"দুটো pointer দিয়ে এক চলনে O(n)। Nested loop নয় — স্লাইডিং উইন্ডো।",
-  recall:{
-    q:"ক্যালিগ্রাফার কেন একটানা লেখেন না, একটা মাপকাঠি সরিয়ে সরিয়ে?",
-    qen:"Why doesn't the calligrapher write continuously, but slides a ruler?",
-    a:"কারণ মাপকাঠি একটা 'উইন্ডো' তৈরি করে — নির্দিষ্ট অংশ দেখা যায়। সরালে নতুন অংশ দেখা যায়। Two pointers = দুটো প্রান্ত, sliding window = একটা চলমান বাক্স। O(n)-এ পুরো স্ট্রিং প্রক্রিয়া করা যায়।",
-    aen:"Because the ruler creates a 'window' — a specific portion is visible. Sliding reveals new portions. Two pointers = two ends, sliding window = a moving box. The whole string processed in O(n)."
-  },
-  story:`
-<p class="scene-setting">অষ্টম দোকান। শেষ দোকান। ক্যালিগ্রাফারের কামরা। কালির গন্ধ, নরম কাগজ, জানালার আলো। উস্তাদ নুর কাজ করছেন — হাতে বাঁশের কলম, সামনে একটা বিশাল কাগজে আরবি ক্যালিগ্রাফি। কিন্তু তিনি একটানা লেখেন না। একটা মাপকাঠি রাখেন, তার মধ্যে লেখেন, তারপর মাপকাঠি সরান — পরের অংশ। উইন্ডো সরে যায়, লেখা এগোয়।</p>
-<p class="scene-setting en">The eighth shop. The last shop. The Calligrapher's chamber. Smell of ink, soft paper, window light. Ustad Noor works — bamboo pen in hand, a vast sheet of Arabic calligraphy before him. But he doesn't write continuously. He places a ruler, writes within it, then slides the ruler — the next section. The window moves, the writing advances.</p>
-
-<div class="dialogue">মালি বলেছিলেন — ধাপে ধাপে উত্তর বানাও, মনে রাখো। কিন্তু আমি বলি — কখনো মনে রাখা লাগে না। কখনো শুধু দুটো হাত লাগে — একটা শুরুতে, একটা শেষে। দুটো একসাথে চলে — O(n)-এ পুরো কাজ শেষ।</div>
-<div class="dialogue en">"The gardener said — build answers step by step, remember. But I say — sometimes memory isn't needed. Sometimes just two hands — one at the start, one at the end. Both move together — the whole work done in O(n)."</div>
-
-<div class="dialogue">Two pointers — দুটো নির্দেশক। একটা শুরু থেকে, একটা শেষ থেকে। অথবা দুটোই শুরু থেকে, কিন্তু আলাদা গতিতে। Sorted array-তে দুটো সংখ্যা খুঁজছো যাদের যোগ = target? বাঁ প্রান্ত আর ডান প্রান্ত ধরো। ছোট? বাঁ সরাও। বড়? ডান সরাও। O(n)। Nested loop নয় — O(n²) নয়।</div>
-<div class="dialogue en">"Two pointers — two indicators. One from the start, one from the end. Or both from the start, but different speeds. Finding two numbers that sum to target in a sorted array? Left end and right end. Too small? Move left. Too big? Move right. O(n). Not nested loops — not O(n²)."</div>
-
-<div class="dialogue">Sliding window — একটা চলমান বাক্স। বাক্সের ভেতরে নির্দিষ্ট সংখ্যক উপাদান। বাক্স সরলে — পুরনো বেরোয়, নতুন ঢোকে। Text chunking-এ লাগে — একটা নির্দিষ্ট window-এ টোকেন ধরে, window সরাও। Moving average — গত ৭ দিনের গড়। প্রতিদিন window সরে — পুরনো দিন বেরোয়, নতুন ঢোকে।</div>
-<div class="dialogue en">"Sliding window — a moving box. Inside the box: a fixed number of elements. Slide the box — old exits, new enters. Used in text chunking — hold tokens in a fixed window, slide. Moving average — the last 7 days' mean. Each day the window slides — old day exits, new enters."</div>
-
-<div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Token chunking — বড় টেক্সটকে ছোট ছোট অংশে ভাগ করা। প্রতিটা chunk-এ overlap দেওয়া — sliding window। Streaming data — real-time আসা ডেটা প্রক্রিয়া করা। কোনো সময় পুরো ডেটা মেমোরিতে রাখা যায় না — window দিয়ে অংশে অংশে।</div>
-<div class="dialogue en">"You're an AI engineer. Token chunking — dividing large text into smaller pieces. Overlap between chunks — sliding window. Streaming data — processing data arriving in real-time. Sometimes the whole dataset can't fit in memory — process by windows."</div>
-
-<div class="code-block">Sliding Window — Token Chunking:
-
-def chunk_text(text, chunk_size=100, overlap=20):
-    """টেক্সটকে overlapping chunks-এ ভাগ করি
-    chunk_size: প্রতিটা chunk-এ কয় শব্দ
-    overlap: কত শব্দ overlap করবে"""
-    words = text.split()
-    chunks = []
-    start = 0
-    
-    while start < len(words):
-        end = start + chunk_size
-        chunk = words[start:end]
-        chunks.append(' '.join(chunk))
-        start += chunk_size - overlap  # overlap!
-    
-    return chunks
-
-# RAG-এ ব্যবহার:
-# বড় ডকুমেন্ট → ছোট overlapping chunks → 
-# প্রতিটা chunk embedding → vector DB</div>
-
-<div class="dialogue">তাদাব্বুর — গভীর চিন্তা। কুরআনে আল্লাহ বারবার বলেছেন — "চিন্তা করো না?" তাদাব্বুর মানে একটা অংশে থামা, গভীরে যাওয়া, তারপর পরের অংশে। Sliding window-এর মতো — একটা অংশ দেখো, বুঝো, তারপর সরাও। পুরো কুরআন একবারে নয় — অংশে অংশে। প্রতিটা অংশে থামো, চিন্তা করো, তারপর এগোও।</div>
-<div class="dialogue en">"Tadabbur — deep contemplation. Allah repeatedly says in the Quran — 'Will you not reflect?' Tadabbur means pausing at a portion, going deep, then moving to the next. Like a sliding window — see a section, understand, then slide. Not the whole Quran at once — portion by portion. Pause at each, reflect, then advance."</div>
-
-<div class="dialogue">আর এখন — আটটা দোকান পেরিয়েছ। টালি নির্মাতা বলেছিলেন, সারিতে সাজাও। তালা নির্মাতা বলেছিলেন, চাবি দিয়ে খোঁজো। মসলা ব্যবসায়ী বলেছিলেন, সেরাটা উপরে রাখো। তাঁতি বলেছিলেন, সম্পর্কের জাল বুনো। বংশবিদ বলেছিলেন, বৃক্ষের শাখায় খোঁজো। গ্রন্থাগারিক বলেছিলেন, সাজাও তারপর দ্রুত খোঁজো। মালি বলেছিলেন, ধাপে ধাপে বানাও। আর আমি বলি — দুটো হাতে এক চলনে শেষ করো। আটটা কৌশল — এক একটা দৃষ্টিভঙ্গি। সিনিয়র ইঞ্জিনিয়ার তিনিই যিনি জানেন কোন সমস্যায় কোন দৃষ্টি লাগবে।</div>
-<div class="dialogue en">"And now — you've passed eight shops. The tile maker said — arrange in rows. The locksmith said — search by key. The spice merchant said — keep the best on top. The weaver said — weave the web of relationships. The genealogist said — search through branches. The librarian said — sort, then search fast. The gardener said — build step by step. And I say — finish in one pass with two hands. Eight techniques — eight perspectives. A senior engineer is one who knows which perspective each problem needs."</div>`,
-  senior:{
-    title:"Two Pointers চেনার উপায়",
-    body:`
-    <p><strong>লক্ষণ ১:</strong> Sorted array + pair/triplet খুঁজছো → Two pointers (start + end)।</p>
-    <p><strong>লক্ষণ ২:</strong> Contiguous subarray/substring নিয়ে কাজ → Sliding window।</p>
-    <p><strong>লক্ষণ ৩:</strong> "Fast and slow" — cycle detection, middle of linked list → দুটো pointer আলাদা গতিতে।</p>
-    <p><strong>Senior trap:</strong> Nested loop দেখলে থামো। কি two pointers দিয়ে O(n) করা যায়? এটাই সিনিয়র চিন্তার পার্থক্য — brute force নয়, efficient pattern।</p>`
-  },
-  exercise:{
-    hint:"Sliding window দিয়ে text chunking — RAG-এর মতো!",
-    starterCode:`# ক্যালিগ্রাফারের মাপকাঠি — Sliding Window
-# Text chunking with overlap — RAG-এর জন্য!
-
-def chunk_text(text, chunk_size=5, overlap=2):
-    """টেক্সটকে overlapping chunks-এ ভাগ করি
-    
-    Args:
-        text: ইনপুট টেক্সট
-        chunk_size: প্রতিটা chunk-এ কয় শব্দ  
-        overlap: কত শব্দ overlap করবে (পরের chunk-এর সাথে)
-    
-    Returns:
-        chunk-এর list
-    """
-    words = text.split()
-    chunks = []
-    start = 0
-    
-    while start < len(words):
-        end = start + chunk_size
-        chunk = ' '.join(words[start:end])
-        chunks.append(chunk)
-        
-        # পরের chunk-এ যাও — overlap সহ
-        step = chunk_size - overlap
-        if step <= 0:
-            step = 1  # নিরাপত্তা
-        start += step
-    
-    return chunks
-
-# পরীক্ষা করি — একটা AI-related text
-sample_text = """
-Artificial intelligence transforms how we build software. 
-Engineers must understand data structures algorithms and system design. 
-RAG combines retrieval and generation for accurate answers. 
-Agents use tools to complete multi-step workflows autonomously.
-""".strip()
-
-chunks = chunk_text(sample_text, chunk_size=6, overlap=2)
-
-print(f"মোট {len(chunks)} chunk:\n")
-for i, chunk in enumerate(chunks):
-    print(f"Chunk {i+1}: \"{chunk}\"")
-    print()
-
-# TODO: chunk_size আর overlap পরিবর্তন করে দেখো!
-# কী হয় যখন overlap=0?
-# কী হয় যখন overlap = chunk_size - 1?
-
-# BONUS: Two pointer — sorted array-তে target sum খুঁজি
-def two_sum_sorted(arr, target):
-    left, right = 0, len(arr) - 1
-    while left < right:
-        current = arr[left] + arr[right]
-        if current == target:
-            return (left, right)
-        elif current < target:
-            left += 1
-        else:
-            right -= 1
-    return None
-
-sorted_nums = [1, 3, 5, 7, 9, 11, 13]
-print(f"two_sum_sorted([1,3,5,7,9,11,13], 16) = {two_sum_sorted(sorted_nums, 16)}")
 `
   }
 });

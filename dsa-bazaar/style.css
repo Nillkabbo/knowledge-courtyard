@@ -162,6 +162,41 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .cheat-section-end{max-width:760px;margin:0 auto;padding:2rem 1rem}
 .cheat-section-end h3{font-family:'Cinzel',serif;text-align:center;font-size:1.4rem;color:var(--gold-bright);margin-bottom:1.2rem}
 
+/* ── DIAGRAMS (inline SVG) ── */
+.story-text .diagram{background:linear-gradient(135deg,rgba(20,16,45,.6),rgba(10,8,21,.8));border:1px solid var(--panel-border);border-radius:14px;padding:1rem;margin:1.2rem 0;overflow:hidden}
+.story-text .diagram svg{display:block;width:100%;height:auto;max-width:560px;margin:0 auto;font-family:'Courier New',monospace}
+.story-text .diagram .diag-cap{font-size:.72rem;color:var(--ink-mute);text-align:center;margin-top:.6rem;font-style:italic;letter-spacing:.02em}
+.story-text .diagram .diag-title{font-family:'Cinzel',serif;font-size:.78rem;color:var(--gold);text-align:center;margin-bottom:.6rem;letter-spacing:.1em;text-transform:uppercase}
+.story-text .diagram svg .grid-line{stroke:rgba(240,193,75,.1);stroke-width:1}
+.story-text .diagram svg .axis{stroke:var(--ink-mute);stroke-width:1.5}
+.story-text .diagram svg .axis-label{fill:var(--ink-mute);font-size:10px}
+.story-text .diagram svg .node{fill:rgba(20,16,45,.95);stroke:var(--gold);stroke-width:2}
+.story-text .diagram svg .node-hot{fill:rgba(255,107,53,.25);stroke:var(--fire);stroke-width:2.5}
+.story-text .diagram svg .node-cyan{fill:rgba(54,214,231,.18);stroke:var(--cyan);stroke-width:2}
+.story-text .diagram svg .node-leaf{fill:rgba(82,196,26,.18);stroke:var(--leaf);stroke-width:2}
+.story-text .diagram svg .edge{stroke:var(--ink-dim);stroke-width:1.5;fill:none}
+.story-text .diagram svg .edge-hot{stroke:var(--fire);stroke-width:2.5;fill:none;marker-end:url(#arrowFire)}
+.story-text .diagram svg .edge-cyan{stroke:var(--cyan);stroke-width:2;fill:none;marker-end:url(#arrowCyan)}
+.story-text .diagram svg .lbl{fill:var(--ink);font-size:12px;font-weight:700;text-anchor:middle;dominant-baseline:central}
+.story-text .diagram svg .lbl-sm{fill:var(--ink-dim);font-size:10px;text-anchor:middle}
+.story-text .diagram svg .curve{fill:none;stroke-width:2.5}
+.story-text .diagram svg .c1{stroke:var(--leaf)}
+.story-text .diagram svg .clog{stroke:var(--cyan)}
+.story-text .diagram svg .cn{stroke:var(--gold)}
+.story-text .diagram svg .cnlog{stroke:#b37feb}
+.story-text .diagram svg .cn2{stroke:var(--rose)}
+.story-text .diagram svg .c2n{stroke:var(--fire)}
+.story-text .diagram svg .dot{fill:var(--gold-bright)}
+.story-text .diagram svg .cell{fill:rgba(20,16,45,.6);stroke:var(--ink-dim);stroke-width:1}
+.story-text .diagram svg .cell-hot{fill:rgba(255,107,53,.3);stroke:var(--fire);stroke-width:1.5}
+.story-text .diagram svg .cell-good{fill:rgba(82,196,26,.25);stroke:var(--leaf);stroke-width:1.5}
+.story-text .diagram svg .legend{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:.6rem;font-size:.7rem;color:var(--ink-dim)}
+.story-text .legend-item{display:inline-flex;align-items:center;gap:.3rem}
+.story-text .legend-swatch{display:inline-block;width:14px;height:3px;border-radius:2px}
+.story-text .diagram svg .q-mark{fill:var(--fire);font-size:18px;font-weight:900;text-anchor:middle}
+.story-text .diagram svg .bit-on{fill:var(--gold-bright);stroke:var(--gold);stroke-width:1.5}
+.story-text .diagram svg .bit-off{fill:rgba(20,16,45,.6);stroke:var(--ink-mute);stroke-width:1.5}
+
 /* ── MOBILE ── */
 @media(max-width:600px){
   .doors-grid{grid-template-columns:1fr}

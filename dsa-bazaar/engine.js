@@ -4,20 +4,21 @@
 
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
-const SAVE_KEY = 'dsaBazaar_v1';
-const MAX_XP = 1100;
+const SAVE_KEY = 'dsaBazaar_v2';   // v2: 18-door complete reference (bumped from v1)
+const MAX_XP = 1800;
 const RANKS = [
-  {min:0,   name:'শিক্ষানবিশ',  icon:'🧒'},
-  {min:100, name:'শিক্ষার্থী',   icon:'📖'},
-  {min:200, name:'কারিগর',      icon:'🔨'},
-  {min:300, name:'দক্ষ কর্মী',   icon:'⚙️'},
-  {min:400, name:'বিশেষজ্ঞ',     icon:'🎯'},
-  {min:500, name:'শিল্পী',       icon:'🎨'},
-  {min:600, name:'উস্তাদ',       icon:'🧙'},
-  {min:700, name:'মাস্টার',      icon:'👑'},
-  {min:800, name:'প্রধান উস্তাদ', icon:'🏛️'},
-  {min:900, name:'কারিগরদের সুলতান', icon:'🏅'},
-  {min:1000,name:'জ্ঞানের কেন্দ্র',  icon:'🌟'}
+  {min:0,    name:'শিক্ষানবিশ',     icon:'🧒'},
+  {min:100,  name:'শিক্ষার্থী',      icon:'📖'},
+  {min:200,  name:'কারিগর',         icon:'🔨'},
+  {min:300,  name:'দক্ষ কর্মী',      icon:'⚙️'},
+  {min:400,  name:'বিশেষজ্ঞ',        icon:'🎯'},
+  {min:500,  name:'শিল্পী',          icon:'🎨'},
+  {min:600,  name:'উস্তাদ',          icon:'🧙'},
+  {min:700,  name:'মাস্টার',         icon:'👑'},
+  {min:900,  name:'প্রধান উস্তাদ',    icon:'🏛️'},
+  {min:1100, name:'কারিগরদের সুলতান', icon:'🏅'},
+  {min:1400, name:'জ্ঞানের কেন্দ্র',    icon:'🌟'},
+  {min:1700, name:'চিরস্থায়ী কারিগর', icon:'✨'}
 ];
 
 function saveState(){
@@ -136,7 +137,7 @@ function updateHUD(){
   for(let i=RANKS.length-1;i>=0;i--){if(state.xp>=RANKS[i].min){rank=RANKS[i];break}}
   document.getElementById('hud-rank-icon').textContent=rank.icon;
   document.getElementById('hud-rank-name').textContent=rank.name;
-  document.getElementById('hud-level').textContent=`স্তর ${Math.min(8,Math.floor(state.xp/100)+1)}`;
+  document.getElementById('hud-level').textContent=`স্তর ${Math.min(18,Math.floor(state.xp/100)+1)}`;
 }
 
 // ── CHEAT MODAL ──
