@@ -1,6 +1,5 @@
 // ════════════════════════════════════════
-// CITY BUILDER'S CODEX — ENGINE
-// System Design: From One Server to a City
+// Book 9 · Context Engineering — Engine
 // ════════════════════════════════════════
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;

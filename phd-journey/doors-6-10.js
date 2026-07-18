@@ -70,7 +70,7 @@ Signature: CV সংযুক্ত (PDF, ২ পৃষ্ঠা)
 <div class="dialogue en">"Suhbat — companionship, seeking associates. In Islam, companionship is vital — the Prophet (pbuh) said, 'A person follows the religion of their friend.' In PhD too, companionship matters — which professor, which lab. Cold email is seeking that companionship — early, with intention. One who seeks, finds. One who waits, loses."</div>`,
   senior:{
     title:"ইমেইল কৌশল — ৩০-৫০ প্রফেসরকে করো",
-    body:`<p><strong>শুরু করো আগস্ট-সেপ্টেম্বরে:</strong> Fall 2027 অ্যাডমিশনের জন্য জুন-আগস্ট ইমেইল শুরু করো।</p><p><strong>প্রতিটা ইমেইল আলাদা:</strong> টেমপ্লেট নয়। প্রতিটা প্রফেসরের কাজ পড়ে, নির্দিষ্ট সংযোগ খোঁজো।</p><p><strong>ফলো-আপ:</strong> ২ সপ্তাহ পর উত্তর না এলে একবার রিমাইন্ডার। তারপর ছেড়ে দাও।</p><p><strong>সবচেয়ে গুরুত্বপূর্ণ:</strong> প্রফেসরের সাম্প্রতিক পেপারের একটি নির্দিষ্ট অংশ উল্লেখ করো। এটাই প্রমাণ করে তুমি আসলেই পড়েছ।</p>`
+    body:`<p><strong>শুরু করো আগস্ট-সেপ্টেম্বরে:</strong> Fall 2027 অ্যাডমিশনের জন্য জুন-আগস্ট ইমেইল শুরু করো।</p><p><strong>প্রতিটা ইমেইল আলাদা:</strong> টেমপ্লেট নয়। প্রতিটা প্রফেসরের কাজ পড়ে, নির্দিষ্ট সংযোগ খোঁজো।</p><p><strong>২০২৬ reality:</strong> অনেক প্রফেসর এখন AI-assisted inbox triage ব্যবহার করেন — জেনেরিক মেইল আরও বেশি ফিল্টার হয়। প্রথম লাইনেই তাঁর নির্দিষ্ট পেপার + তোমার নির্দিষ্ট কন্ট্রিবিউশন লেখো।</p><p><strong>ফলো-আপ:</strong> ২ সপ্তাহ পর উত্তর না এলে একবার রিমাইন্ডার। তারপর ছেড়ে দাও।</p><p><strong>সবচেয়ে গুরুত্বপূর্ণ:</strong> প্রফেসরের সাম্প্রতিক পেপারের একটি নির্দিষ্ট অংশ উল্লেখ করো। এটাই প্রমাণ করে তুমি আসলেই পড়েছ।</p>`
   }
 });
 

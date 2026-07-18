@@ -5,7 +5,7 @@
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
 const SAVE_KEY = 'systemDesignCodex_v1';
-const MAX_XP = 800;
+const MAX_XP = 1000;
 const RANKS = [
   {min:0,   name:'গ্রাম কারিগর',     icon:'🛖'},
   {min:100, name:'রাস্তা নির্মাতা',   icon:'🛤️'},
@@ -14,7 +14,9 @@ const RANKS = [
   {min:400, name:'স্থপতি',           icon:'🏛️'},
   {min:500, name:'নগর নির্মাতা',     icon:'🌆'},
   {min:600, name:'মহানগর স্থপতি',    icon:'🌇'},
-  {min:700, name:'নগরী নির্মাতা',    icon:'👑'}
+  {min:700, name:'নগরী নির্মাতা',    icon:'👑'},
+  {min:800, name:'বিশ্বব্যাপী বিতরণকারী', icon:'🌍'},
+  {min:900, name:'মহানগর স্থপতি প্রধান', icon:'🏛️'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}
 function loadState(){try{const r=localStorage.getItem(SAVE_KEY);if(!r)return;const s=JSON.parse(r);state.xp=s.xp||0;state.completedDoors=s.completedDoors||[];state.prologueSeen=s.prologueSeen||false}catch(e){}}

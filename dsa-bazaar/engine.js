@@ -5,7 +5,7 @@
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
 const SAVE_KEY = 'dsaBazaar_v1';
-const MAX_XP = 800;
+const MAX_XP = 1100;
 const RANKS = [
   {min:0,   name:'শিক্ষানবিশ',  icon:'🧒'},
   {min:100, name:'শিক্ষার্থী',   icon:'📖'},
@@ -14,7 +14,10 @@ const RANKS = [
   {min:400, name:'বিশেষজ্ঞ',     icon:'🎯'},
   {min:500, name:'শিল্পী',       icon:'🎨'},
   {min:600, name:'উস্তাদ',       icon:'🧙'},
-  {min:700, name:'মাস্টার',      icon:'👑'}
+  {min:700, name:'মাস্টার',      icon:'👑'},
+  {min:800, name:'প্রধান উস্তাদ', icon:'🏛️'},
+  {min:900, name:'কারিগরদের সুলতান', icon:'🏅'},
+  {min:1000,name:'জ্ঞানের কেন্দ্র',  icon:'🌟'}
 ];
 
 function saveState(){

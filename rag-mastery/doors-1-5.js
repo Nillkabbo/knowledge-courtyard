@@ -405,19 +405,78 @@ doors.push({
   
   LangChain: ContextualCompressionRetriever
 
+৬. LATE CHUNKING (Jina, ২০২৪)
+
+  সমস্যা: সাধারণ chunking করলে প্রতিটা chunk
+    আলাদা — context হারায়। "it", "he", "the company"
+    → কোন company? chunk একা, তাই embedding দুর্বল।
+
+  সমাধান: পুরো ডকুমেন্ট আগে encode করো, পরে chunk করো।
+    → প্রতিটা chunk তার আশেপাশের context মনে রাখে।
+    → embedding আর একা নয় — পুরো ডকুমেন্টের অংশ।
+
+  Before (standard chunking):
+    Doc → split into chunks → embed each chunk alone
+    → "it" → what is "it"? ❌
+
+  Late Chunking:
+    Doc → embed WHOLE doc (long-context model)
+    → THEN split into chunk embeddings
+    → "it" → refers to company from earlier ✅
+
+  → Jina Embeddings v2 (8K context) বা অনুরূপ
+  → long-context embedding model দরকার
+  → বিশেষ করে effective: coreference resolution ছাড়াই
+  → Gunther et al. (Jina AI, সেপ্টেম্বর ২০২৪)
+
+৭. CONTEXTUAL RETRIEVAL (Anthropic, সেপ্টেম্বর ২০২৪)
+
+  সমস্যা: chunk একা থাকলে তার "বৃহত্তর context" হারায়।
+    একটা chunk: "Q3 revenue increased 15%"
+    → কোন company? কোন year? কোন currency?
+
+  সমাধান: প্রতিটা chunk-এর আগে short context prefix যোগ করো।
+    → LLM পুরো ডকুমেন্ট পড়ে প্রতিটা chunk-এর জন্য
+      50-100 token context summary বানায়।
+    → এই prefix chunk-এর সাথে embed ও BM25 index করো।
+
+  Example:
+    Original chunk:
+    "Q3 revenue increased 15% over the previous quarter."
+
+    Contextual prefix (LLM-generated):
+    "This chunk is from Acme Corp's 2024 Q3 earnings
+     report. The company is a SaaS platform."
+
+    Stored as: [prefix] + [original chunk]
+    → retrieval accuracy dramatically up
+
+  Anthropic-এর results:
+    → baseline: 9% failure rate
+    → + contextual retrieval: 4.9% failure
+    → + contextual + reranking + HyDE: 2.5% failure
+    → 67% reduction in retrieval failures!
+
+  Cost: প্রতিটা chunk-এর জন্য একটা ছোট LLM call
+    → prompt caching দিয়ে ~$1.02 / মিলিয়ন tokens
+    → long doc (1000 pages) ≈ $2.30 একবারে
+    → index করার সময় একবার, query করার সময় ফ্রি
+
 ACCURACY COMPARISON:
 
-  ┌─────────────────────┬──────────┐
-  │ Method              │ Accuracy │
-  ├─────────────────────┼──────────┤
-  │ Naive RAG           │ ৬০%      │
-  │ + Hybrid search     │ ৭০%      │
-  │ + Reranking         │ ৭৮%      │
-  │ + Parent-child      │ ৮২%      │
-  │ + Query transform   │ ৮৫%      │
-  │ + HyDE              │ ৮৭%      │
-  │ All combined        │ ৯০%+     │
-  └─────────────────────┴──────────┘
+  ┌──────────────────────────┬──────────┐
+  │ Method                   │ Accuracy │
+  ├──────────────────────────┼──────────┤
+  │ Naive RAG                │ ৬০%      │
+  │ + Hybrid search          │ ৭০%      │
+  │ + Reranking              │ ৭৮%      │
+  │ + Parent-child           │ ৮২%      │
+  │ + Query transform        │ ৮৫%      │
+  │ + HyDE                   │ ৮৭%      │
+  │ + Late chunking          │ ৮৯%      │
+  │ + Contextual retrieval   │ ৯২%      │
+  │ All combined             │ ৯৫%+     │
+  └──────────────────────────┴──────────┘
 
 LATENCY IMPACT:
   Naive: ১০০ms
@@ -433,7 +492,7 @@ LATENCY IMPACT:
 <div class="dialogue en">"Gabhirata — depth. Allah says — 'We created all things in due measure.' In nature, depth = refinement. Advanced retrieval too — each technique goes deeper, gives finer results. But each layer = time and effort. Depth has a price."</div>`,
   senior:{
     title:"Advanced RAG Stack — কোন কৌশল কবে",
-    body:`<p><strong>Sরল start:</strong> Naive + Hybrid search + Reranking = ৭৮%। এটাই baseline production।</p><p><strong>Comparison questions বেশি?</strong> → Sub-question decomposition।</p><p><strong>Short queries?</strong> → HyDE (hypothetical document)।</p><p><strong>Long documents?</strong> → Parent-child chunking।</p><p><strong>Tight latency budget?</strong> → Naive + hybrid only, skip HyDE/query rewrite।</p>`
+    body:`<p><strong>সরল start:</strong> Naive + Hybrid search + Reranking = ৭৮%। এটাই baseline production।</p><p><strong>Comparison questions বেশি?</strong> → Sub-question decomposition।</p><p><strong>Short queries?</strong> → HyDE (hypothetical document)।</p><p><strong>Long documents, pronoun সমস্যা?</strong> → Late Chunking (Jina) — পুরো ডকুমেন্ট context-এ রাখে।</p><p><strong>Chunks থেকে context হারায়?</strong> → Contextual Retrieval (Anthropic) — প্রতিটা chunk-এ ছোট prefix যোগ করো। 67% failure reduction।</p><p><strong>Long documents সাধারণভাবে?</strong> → Parent-child chunking।</p><p><strong>Tight latency budget?</strong> → Naive + hybrid only, skip HyDE/query rewrite।</p>`
   }
 });
 

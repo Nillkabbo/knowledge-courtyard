@@ -134,9 +134,7 @@ doors.push({
 <p class="scene-setting en">The seventh workshop. Testing chamber. Each tool tested — correct args, wrong args, empty args, oversized args. Craftsman Hasan said — "Building a tool isn't the end. Test every scenario. Correct input? Wrong input? What happens with each? Ikhtibar."</p>
 
 <div class="dialogue">Ecosystem বলেছিলেন — হাজার টুল ব্যবহার করো। কিন্তু আমি বলি — ব্যবহার করার আগে পরীক্ষা করো। টুল কি সঠিক কাজ করে? ভুল arguments এ কী হয়? Timeout? Permission denied? প্রতিটা scenario পরীক্ষা ব্যতীত production deploy করবে না।</div>
-<div class="dialogue en">"The ecosystem said — use thousands of tools. But I say — before using, test. Does the tool work correctly? What happens with wrong arguments? Timeout? Permission denied? Never deploy to production without testing every scenario."</div>,
-
-  story:`<p class="scene-setting">The seventh workshop. Testing chamber. Each tool went through a battery of tests on a conveyor belt. Correct inputs, wrong inputs, missing inputs, oversized inputs, malicious inputs. Craftsman Hasan inspected every result. "A tool that fails gracefully is good," he said. "A tool that crashes silently is dangerous."</p>
+<div class="dialogue en">"The ecosystem said — use thousands of tools. But I say — before using, test. Does the tool work correctly? What happens with wrong arguments? Timeout? Permission denied? Never deploy to production without testing every scenario."</div>
 
 <div class="code-block">Tool Testing — Every Scenario Matters:
 

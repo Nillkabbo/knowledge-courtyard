@@ -34,8 +34,17 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .stat-num{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:900;color:var(--gold-bright)}
 .stat-label{font-size:.7rem;color:var(--ink-mute);letter-spacing:.05em;text-transform:uppercase}
 
+/* ── FILTER TABS ── */
+.filter-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:1.5rem 0 .5rem;padding:.8rem;background:var(--panel);border:1px solid var(--panel-border);border-radius:16px;backdrop-filter:blur(8px)}
+.filter-tab{position:relative;display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .9rem;font-family:'Cinzel',serif;font-size:clamp(.65rem,1.4vw,.78rem);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);background:transparent;border:1px solid var(--panel-border);border-radius:999px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);overflow:hidden}
+.filter-tab:hover{color:var(--gold-bright);border-color:rgba(232,197,71,.45);transform:translateY(-1px)}
+.filter-tab .count{font-family:'Noto Sans Bengali','Segoe UI',sans-serif;font-size:.7rem;color:var(--ink-mute);background:rgba(255,255,255,.05);padding:.05rem .4rem;border-radius:999px}
+.filter-tab.active{color:var(--gold-bright);border-color:rgba(232,197,71,.6);background:linear-gradient(135deg,rgba(232,197,71,.12),rgba(45,212,191,.08));box-shadow:0 0 18px rgba(232,197,71,.15)}
+.filter-tab.active::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:999px 999px 0 0;background:linear-gradient(90deg,var(--gold),var(--gold-bright),var(--teal))}
+
 /* ── GAME CARDS ── */
 .section-label{text-align:center;font-family:'Cinzel',serif;font-size:.8rem;color:var(--ink-mute);letter-spacing:.2em;text-transform:uppercase;margin:2.5rem 0 .1rem}
+[data-category].hidden{display:none!important}
 .games-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:1.2rem}
 .game-card{position:relative;background:var(--panel);border:1px solid var(--panel-border);border-radius:20px;padding:2rem;overflow:hidden;transition:all .5s cubic-bezier(.4,0,.2,1);text-decoration:none;color:inherit;cursor:pointer;display:block}
 .game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:20px 20px 0 0;transition:height .4s ease}
@@ -187,16 +196,25 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   <!-- ══ STATS ══ -->
   <div class="stats">
     <div class="stat"><div class="stat-num">২৯</div><div class="stat-label">বই / Books</div></div>
-    <div class="stat"><div class="stat-num">২৯৭</div><div class="stat-label">অধ্যায় / Chapters</div></div>
-    <div class="stat"><div class="stat-num">২৯৭০০</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num">৩০৪</div><div class="stat-label">অধ্যায় / Chapters</div></div>
+    <div class="stat"><div class="stat-num">৩০৪০০</div><div class="stat-label">XP</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">শেখার পথ</div></div>
   </div>
 
   <div class="section-label">📚 ঊনত্রিশটি যাত্রা — Twenty-Nine Journeys</div>
 
+  <!-- ══ FILTER TABS ══ -->
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-tab active" data-filter="all">📚 সব · All <span class="count">২৯</span></button>
+    <button class="filter-tab" data-filter="core">🏛️ Core Six <span class="count">৬</span></button>
+    <button class="filter-tab" data-filter="ai">🧬 AI Deep Dives <span class="count">১৩</span></button>
+    <button class="filter-tab" data-filter="growth">🌳 Growth &amp; Research <span class="count">৯</span></button>
+    <button class="filter-tab" data-filter="extras">🚗 Extras <span class="count">১</span></button>
+  </div>
+
   <!-- ══ GROUP 1: THE CORE SIX ══ -->
-  <div class="section-label">🏛️ মূল ছয়টি বই — The Core Six</div>
-  <div class="games-grid">
+  <div class="section-label" data-category="core">🏛️ মূল ছয়টি বই — The Core Six</div>
+  <div class="games-grid" data-category="core">
 
     <!-- ══ GAME 1: AI ENGINEERING ══ -->
     <a class="game-card game-1" href="./ai-engineering-game/index.html">
@@ -276,8 +294,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
       <div class="game-footer">
         <div class="game-meta">
-          <span>📊 800 XP</span>
-          <span>🏪 8 Shops</span>
+          <span>📊 1100 XP</span>
+          <span>🏪 11 Shops</span>
           <span>🐍 Python Playground</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
@@ -312,9 +330,9 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
       <div class="game-footer">
         <div class="game-meta">
-          <span>📊 1000 XP</span>
-          <span>🏛️ 10 Chambers</span>
-          <span>📈 10 Ranks</span>
+          <span>📊 1100 XP</span>
+          <span>🏛️ 11 Chambers</span>
+          <span>📈 11 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
       </div>
@@ -346,9 +364,9 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
       <div class="game-footer">
         <div class="game-meta">
-          <span>📊 800 XP</span>
-          <span>🏙️ 8 Places</span>
-          <span>📈 8 Ranks</span>
+          <span>📊 1000 XP</span>
+          <span>🏙️ 10 Places</span>
+          <span>📈 10 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
       </div>
@@ -380,9 +398,9 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
       <div class="game-footer">
         <div class="game-meta">
-          <span>📊 800 XP</span>
-          <span>🌱 8 Gardens</span>
-          <span>📈 8 Ranks</span>
+          <span>📊 900 XP</span>
+          <span>🌱 9 Gardens</span>
+          <span>📈 9 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
       </div>
@@ -425,8 +443,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   </div>
 
   <!-- ══ GROUP 2: THE AI DEEP DIVES ══ -->
-  <div class="section-label">🧬 এআই গভীর অনুসন্ধান — The AI Deep Dives</div>
-  <div class="games-grid">
+  <div class="section-label" data-category="ai">🧬 এআই গভীর অনুসন্ধান — The AI Deep Dives</div>
+  <div class="games-grid" data-category="ai">
 
     <!-- ══ GAME 7: PROMPT ENGINEERING ══ -->
     <a class="game-card game-7" href="./prompt-engineering/index.html">
@@ -899,8 +917,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   </div>
 
   <!-- ══ GROUP 3: GROWTH & RESEARCH CRAFT ══ -->
-  <div class="section-label">🌳 বৃদ্ধি ও গবেষণা কারুশিল্প — Growth &amp; Research Craft</div>
-  <div class="games-grid">
+  <div class="section-label" data-category="growth">🌳 বৃদ্ধি ও গবেষণা কারুশিল্প — Growth &amp; Research Craft</div>
+  <div class="games-grid" data-category="growth">
 
     <!-- ══ GAME 20: PHD JOURNEY ══ -->
     <a class="game-card game-20" href="./phd-journey/index.html">
@@ -1087,7 +1105,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       <div class="game-head">
         <div class="game-icon">🔮</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 25 · Deep Learning Science</div>
+          <div class="game-tag">Book 25 · The Art of Deep Learning</div>
           <div class="game-title">The Council of Deep Knowledge</div>
           <div class="game-title-bn">গভীর জ্ঞানের সভা</div>
         </div>
@@ -1227,8 +1245,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   </div>
 
   <!-- ══ GROUP 4: EXTRAS ══ -->
-  <div class="section-label">🚗 বাড়তি — Extras</div>
-  <div class="games-grid">
+  <div class="section-label" data-category="extras">🚗 বাড়তি — Extras</div>
+  <div class="games-grid" data-category="extras">
 
     <!-- ══ GAME 29: MI DRIVING GUIDE ══ -->
     <a class="game-card game-29" href="./mi-driving/index.html">
@@ -1271,13 +1289,41 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     <div class="footer-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
     <div class="footer-verse-trans">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
     <div class="footer-note">
-      ঊনত্রিশটি বই, ২৯৭টি অধ্যায়, এক যাত্রা — শিক্ষানবিশ থেকে কারিগর।<br>
-      <em>Twenty-nine books, 297 chapters, one journey — from apprentice to craftsman.</em><br><br>
+      ঊনত্রিশটি বই, ৩০৪টি অধ্যায়, এক যাত্রা — শিক্ষানবিশ থেকে কারিগর।<br>
+      <em>Twenty-nine books, 304 chapters, one journey — from apprentice to craftsman.</em><br><br>
       প্রতিটা বই সম্পূর্ণ স্বাধীন — যেকোনো ক্রমে পড়তে পারো। তবে সুপারিশ: মূল ছয়টি বই দিয়ে শুরু করো (mindset → skills → domain), তারপর গভীর বিষয়ে ডুব দাও।
     </div>
   </div>
 
 </div>
+
+<!-- ══ CATEGORY FILTER ══ -->
+<script>
+(function(){
+  const bar=document.getElementById('filterBar');
+  if(!bar)return;
+  const tabs=bar.querySelectorAll('.filter-tab');
+  const groups=document.querySelectorAll('[data-category]');
+  const KEY='courtyard-filter';
+  function apply(filter){
+    tabs.forEach(t=>t.classList.toggle('active',t.dataset.filter===filter));
+    groups.forEach(g=>{
+      const show=(filter==='all'||g.dataset.category===filter);
+      g.classList.toggle('hidden',!show);
+    });
+  }
+  bar.addEventListener('click',e=>{
+    const tab=e.target.closest('.filter-tab');
+    if(!tab)return;
+    const f=tab.dataset.filter;
+    try{localStorage.setItem(KEY,f)}catch(_){}
+    apply(f);
+  });
+  let saved='all';
+  try{saved=localStorage.getItem(KEY)||'all'}catch(_){}
+  apply(saved);
+})();
+</script>
 
 <!-- ══ PARTICLE BACKGROUND ══ -->
 <script>

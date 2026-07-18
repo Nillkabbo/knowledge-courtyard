@@ -281,7 +281,7 @@ doors.push({
      IBM Quantum Experience ফ্রি</div>
 
 <div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"Quantum computing এখন প্রস্তুত — classical কম্পিউটার বাতিল।" ভুল। Quantum এখনও noisy, small (১০০০ qubits)। Classical কম্পিউটার ৫-১০ বছরে কোথাও যাচ্ছে না। Quantum শুধু নির্দিষ্ট সমস্যায় ভালো — factoring, simulation, optimization। সবকিছুতে নয়।</div>
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"Quantum computing এখন প্রস্তুত — classical কম্পিউটার বাতিল।" ভুল। Quantum এখনও NISQ যুগে — noisy (IBM Condor ১,১২১ qubits, ২০২৩)। Error-corrected logical qubits এখনও অল্প। Classical কম্পিউটার ৫-১০ বছরে কোথাও যাচ্ছে না। Quantum শুধু নির্দিষ্ট সমস্যায় ভালো — factoring, simulation, optimization। সবকিছুতে নয়।</div>
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"Quantum এখন যেখানে classical ছিল ১৯৬০-এ। NISQ era — Noisy Intermediate-Scale Quantum। এখনই যারা quantum শিখছে, তারা প্রথম প্রজন্মের quantum গবেষক হবে। যেমন ১৯৬০-এ যারা classical শুরু করেছিল, তারা আজ প্রতিষ্ঠাতা। এখনই শুরু করো — অগ্রিকে।"</div>
 </div>
 

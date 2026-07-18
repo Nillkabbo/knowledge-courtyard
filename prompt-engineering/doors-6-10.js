@@ -113,9 +113,10 @@ doors.push({
 <div class="code-block">Context Window Engineering — The Vault:
 
 কন্টেক্সট উইন্ডো = মডেলের "short-term memory"
-  GPT-4o: ১২৮,০০০ টোকেন ≈ ৯৬,০০০ শব্দ
-  Claude 3.5 Sonnet: ২০০,০০০ টোকেন ≈ ১৫০,০০০ শব্দ
-  Gemini 1.5 Pro: ১,০০০,০০০+ টোকেন ≈ ৭৫০,০০০ শব্দ
+  GPT-5 / o-series: ২০০,০০০-৪০০,০০০ টোকেন
+  Claude 4 Sonnet / Opus: ২০০,০০০ টোকেন
+  Gemini 2 Pro: ১,০০০,০০০-২,০০০,০০০+ টোকেন
+  (উইন্ডো বাড়ছে — কিন্তু "Lost in the Middle" এখনো আছে)
 
 কিন্তু — বড় উইন্ডো মানে ভালো নয়!
 
@@ -159,13 +160,39 @@ doors.push({
    System prompt → সবার উপরে
    RAG results → মাঝে
    User question → শেষে
-   → মডেল সর্বশেষ প্রশ্নে ফোকাস করে</div>
+   → মডেল সর্বশেষ প্রশ্নে ফোকাস করে
+
+৬. PROMPT CACHING (2024-2025 — বড় সাশ্রয়)
+   একই system prompt বারবার পাঠাও? পুরো পরিমাণে
+   টোকেন খরচ হয়। কিন্তু caching চালু করলে —
+
+   → prefix একবার process হয়, KV cache-এ থাকে
+   → পরবর্তী request-এ same prefix → cache hit
+   → ~10x সস্তা (input token price 10% বা তারও কম)
+   → কিছু provider-এ output token-ও cache হয়
+
+   কখন কাজে লাগে:
+     ✅ বড় system prompt (২K+ tokens) প্রতিটা request-এ
+     ✅ Few-shot examples প্রতি call-এ একই
+     ✅ বড় doc / knowledge base প্রতি query-তে
+     ✅ Agentic loops (একই context বারবার)
+
+   Provider support (2025-26):
+     Anthropic: prompt caching (5-min বা 1-hour TTL)
+     OpenAI: automatic + explicit caching
+     Google: implicit context caching
+     → কনফিগারেশন কোনো কোড পরিবর্তন না-ও লাগতে পারে
+
+   কৌশল: stable prefix আগে রাখো, dynamic অংশ পরে
+     ✅ system prompt + tools + few-shot → cache হবে
+     ❌ user query + timestamp → cache ভাঙবে
+     → তাই prompt structure: stable | dynamic</div>
 
 <div class="dialogue">মিযান — ভারসাম্য। কুরআনে আল্লাহ বলেন — "আমরা সত্যের সাথে মিযান স্থাপন করেছি।" কন্টেক্সট উইন্ডো হলো সেই মিযানের স্থান — কী রাখবে, কী বাদ দেবে। সব রাখলে মিযান ভেঙে যায়। সঠিক নির্বাচন = সঠিক মিযান। প্রতিটা টোকেন গুরুত্বপূর্ণ — কারণ স্থান সীমিত।</div>
 <div class="dialogue en">"Mizan — balance. Allah says — 'We established the scale with truth.' The context window is the space of that scale — what to keep, what to discard. Keeping everything breaks the scale. Right selection = right balance. Every token matters — because space is limited."</div>`,
   senior:{
     title:"RAG in Production — সঠিক কন্টেক্সট দাও",
-    body:`<p><strong>RAG pipeline:</strong> Document → chunks → embeddings → vector DB → query → similarity search → top-k chunks → LLM context → answer.</p><p><strong>সঠিক chunk size:</strong> ৫১২-১০২৪ টোকেন, ২০% overlap। খুব ছোট = context হারায়। খুব বড় = noise বাড়ে।</p><p><strong>top-k:</strong> ৩-৫টি chunk সাধারণত যথেষ্ট। বেশি = মডেল হারিয়ে যায়।</p><p><strong>Citation:</strong> "Based on [source], the answer is..." — মডেলকে উৎস উল্লেখ করতে বাধ্য করো। hallucination কমে।</p>`
+    body:`<p><strong>RAG pipeline:</strong> Document → chunks → embeddings → vector DB → query → similarity search → top-k chunks → LLM context → answer.</p><p><strong>সঠিক chunk size:</strong> ৫১২-১০২৪ টোকেন, ২০% overlap। খুব ছোট = context হারায়। খুব বড় = noise বাড়ে।</p><p><strong>top-k:</strong> ৩-৫টি chunk সাধারণত যথেষ্ট। বেশি = মডেল হারিয়ে যায়।</p><p><strong>Citation:</strong> "Based on [source], the answer is..." — মডেলকে উৎস উল্লেখ করতে বাধ্য করো। hallucination কমে।</p><p><strong>খরচ কমাও:</strong> বড় system prompt প্রতি request-এ? Prompt caching চালু করো — ~10x কম খরচ। Anthropic/OpenAI/Google সবার আছে। Stable prefix আগে রাখো, dynamic অংশ পরে।</p>`
   }
 });
 

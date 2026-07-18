@@ -317,7 +317,7 @@ KILLER APPS (2024-2025):
   Screenshot → Code:
     Input: [UI screenshot]
     Prompt: "Build this as React component"
-    → GPT-4o/Vercel v0 → working code
+    → GPT-5/Vercel v0 → working code
     
   Medical VLM:
     Input: [chest X-ray]
@@ -362,7 +362,7 @@ BUILDING MULTIMODAL APPS:
   Tech Stack:
     Frontend: React + file upload (image/audio/video)
     Backend: FastAPI + multimodal API calls
-    Vision: GPT-4o vision / Claude 3.5
+    Vision: GPT-5 vision / Claude Sonnet 4
     Audio: Whisper (STT) + OpenAI TTS
     Images: DALL-E 3 / Stable Diffusion
     Storage: S3 for media files
@@ -378,7 +378,7 @@ BUILDING MULTIMODAL APPS:
 <div class="dialogue en">"Khalifatul Ard — steward of the earth. Allah says — 'I will place a khalifa on earth.' (2:30). Khalifa = earth's worker, builder. Multimodal AI applications = tools of that building. One who builds, is a khalifa. One who only watches, is a spectator. Khalifatul Ard — be a steward of earth."</div>`,
   senior:{
     title:"Build Your First Multimodal App",
-    body:`<p><strong>Easiest:</strong> GPT-4o vision API + Streamlit — image upload + Q&A। ৩০ lines of Python।</p><p><strong>Meeting summarizer:</strong> Whisper (audio) + GPT-4o (reasoning) + text summary। FastAPI backend।</p><p><strong>Screenshot to code:</strong> GPT-4o vision → "Build this as HTML/CSS" → working code।</p><p><strong>Multimodal RAG:</strong> LlamaIndex MultiModalVectorStoreIndex + CLIP + Qdrant।</p><p><strong>Production:</strong> Start with API (GPT-4o/Claude 3.5)। Switch to open (LLaVA/Whisper) when cost matters।</p>`
+    body:`<p><strong>Easiest:</strong> GPT-5 vision API + Streamlit — image upload + Q&A। ৩০ lines of Python।</p><p><strong>Meeting summarizer:</strong> Whisper (audio) + GPT-5 (reasoning) + text summary। FastAPI backend।</p><p><strong>Screenshot to code:</strong> GPT-5 vision → "Build this as HTML/CSS" → working code।</p><p><strong>Multimodal RAG:</strong> LlamaIndex MultiModalVectorStoreIndex + CLIP + Qdrant।</p><p><strong>Production:</strong> Start with API (GPT-5/Claude Sonnet 4)। Switch to open (LLaVA/Whisper) when cost matters।</p>`
   }
 });
 
@@ -553,9 +553,9 @@ doors.push({
 │  └── Projection: image emb → LLM space           │
 │                                                   │
 │  REASONING (multimodal brain)                    │
-│  ├── GPT-4o: native multimodal LLM               │
-│  ├── Claude 3.5: vision + text                   │
-│  ├── Gemini 1.5: text+image+audio+video          │
+│  ├── GPT-5: native multimodal LLM               │
+│  ├── Claude Sonnet 4: vision + text                   │
+│  ├── Gemini 2.5: text+image+audio+video          │
 │  └── LLaVA: open-source VLM                      │
 │                                                   │
 │  GENERATION (output creation)                    │
@@ -604,7 +604,7 @@ MULTIMODAL MATURITY MODEL:
   Level ৫: Full multimodal
     → all modalities, input + output
     → cross-modal reasoning
-    → real-time conversation (GPT-4o)
+    → real-time conversation (GPT-5)
     → native video understanding
 
 TECH STACK RECOMMENDATION:
@@ -612,11 +612,11 @@ TECH STACK RECOMMENDATION:
   ┌─────────────┬──────────────────────────────┐
   │ Component   │ Tool                         │
   ├─────────────┼──────────────────────────────┤
-  │ VLM         │ GPT-4o / Claude 3.5          │
+  │ VLM         │ GPT-5 / Claude Sonnet 4          │
   │ STT         │ Whisper large-v৩             │
   │ TTS         │ OpenAI TTS / ElevenLabs      │
   │ Image Gen   │ DALL-E 3 / Stable Diffusion  │
-  │ Video       │ Gemini 1.5 Pro (understand)  │
+  │ Video       │ Gemini 2.5 Pro (understand)  │
   │ Embeddings  │ CLIP + CLAP                  │
   │ Vector DB   │ Qdrant (multimodal)          │
   │ Framework   │ LlamaIndex multimodal        │

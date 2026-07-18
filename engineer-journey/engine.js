@@ -6,7 +6,7 @@
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
 const SAVE_KEY = 'engineerJourney_v1';
-const MAX_XP = 1000;
+const MAX_XP = 1100;
 const RANKS = [
   {min:0,    name:'শিক্ষানবিশ',     icon:'🌱'},
   {min:100,  name:'কোডার',          icon:'⌨️'},
@@ -17,7 +17,8 @@ const RANKS = [
   {min:600,  name:'স্থপতি',           icon:'🏛️'},
   {min:700,  name:'প্রিন্সিপাল',      icon:'🎯'},
   {min:800,  name:'স্টাফ ইঞ্জিনিয়ার',  icon:'🔬'},
-  {min:900,  name:'মহাকারিগর',       icon:'👑'}
+  {min:900,  name:'মহাকারিগর',       icon:'👑'},
+  {min:1000, name:'প্রধান মহাকারিগর',  icon:'📐'}
 ];
 
 function saveState(){

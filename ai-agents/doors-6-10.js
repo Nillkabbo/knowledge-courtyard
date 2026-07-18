@@ -374,8 +374,8 @@ doors.push({
 │ ✅ Simplest API                              │
 │ ✅ Clean agent handoffs                      │
 │ ✅ OpenAI ecosystem                          │
-│ ❌ Experimental (late 2024)                  │
-│ ❌ Limited features                          │
+│ ✅ GA/stable (2025+)                         │
+│ ❌ OpenAI-locked (other providers limited)   │
 │                                              │
 │ Best for: Simple OpenAI-based agents         │
 ├──────────────────────────────────────────────┤
@@ -419,9 +419,46 @@ BUILD VS FRAMEWORK:
     → human-in-the-loop (complex)
     → multi-agent (hard to build)
     → checkpointing (hard to build)
-  
-  → সাধারণত: framework দিয়ে শুরু, 
-    দরকার হলে custom-এ যাও</div>
+
+  → সাধারণত: framework দিয়ে শুরু,
+    দরকার হলে custom-এ যাও
+
+THE 2025 PARADIGM SHIFT — CODE AGENTS:
+
+  আগের agent pattern (2023-2024):
+    → ReAct loop: think → tool call → observe → repeat
+    → প্রতিটা tool আলাদা function call
+    → narrow, single-task agents
+
+  Code-agent pattern (2025+ — dominant paradigm):
+    → একটা বড় LLM, tools নয় — code লেখে
+    → পুরো environment-এ অ্যাক্সেস: file system,
+      terminal, browser, git, language server
+    → কোনো predefined tool নয় — যা দরকার তা-ই
+      code দিয়ে করে
+
+  Examples (2025-26):
+    → Claude Code (Anthropic) — terminal agent
+    → Cursor / Windsurf / Zed — code editor agents
+    → Aider / Devin — autonomous software engineer
+    → OpenAI Codex CLI — terminal code agent
+
+  কেন বড় পরিবর্তন?
+    → tool-call agent: শুধু দেওয়া tool ব্যবহার করে
+    → code agent: নিজে নতুন tool (code) লেখে
+    → flexibility অনেক বেশি — কিন্তু risk-ও
+
+  সতর্কতা:
+    → sandbox-এ চালাও (container, VM)
+    → human approval for destructive actions
+    → cost limit (এক কাজে অনেক token যেতে পারে)
+    → audit log — কী কী command চালালো
+
+  কখন code agent vs tool-call agent?
+    → well-defined task, limited tools? tool-call agent
+    → open-ended software task? code agent
+    → research, exploration? code agent
+    → production, auditable? tool-call (easier to audit)</div>
 
 <div class="dialogue">মিযান — balance, right choice। কুরআনে আল্লাহ বলেন — "আমরা প্রত্যেক জিনিস সঠিক মাপে সৃষ্টি করেছি।" প্রতিটা কাজের সঠিক কাঠামো। Framework নির্বাচনও মিযান — সঠিক টুল, সঠিক কাজ। বেশি জটিল framework ছোট কাজে = অপচয়। কম framework বড় কাজে = বিপর্যয়।</div>
 <div class="dialogue en">"Mizan — balance, right choice. Allah says — 'We created all things in due measure.' Right structure for each task. Framework selection is mizan too — right tool, right job. Over-complex framework for small task = waste. Under-powered framework for big task = disaster."</div>`,

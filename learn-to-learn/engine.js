@@ -5,7 +5,7 @@
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
 const SAVE_KEY = 'learnToLearn_v1';
-const MAX_XP = 800;
+const MAX_XP = 900;
 const RANKS = [
   {min:0,   name:'বীজ',     icon:'🌱'},
   {min:100, name:'অঙ্কুর',   icon:'🌿'},
@@ -14,7 +14,8 @@ const RANKS = [
   {min:400, name:'পল্লব',    icon:'🍃'},
   {min:500, name:'ফুল',      icon:'🌸'},
   {min:600, name:'ফল',       icon:'🍎'},
-  {min:700, name:'বৃক্ষ',     icon:'🌳'}
+  {min:700, name:'বৃক্ষ',     icon:'🌳'},
+  {min:800, name:'বনজ্ঞানী',  icon:'🌙'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}
 function loadState(){try{const r=localStorage.getItem(SAVE_KEY);if(!r)return;const s=JSON.parse(r);state.xp=s.xp||0;state.completedDoors=s.completedDoors||[];state.prologueSeen=s.prologueSeen||false}catch(e){}}

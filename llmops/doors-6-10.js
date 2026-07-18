@@ -152,7 +152,7 @@ BENCHMARKING:
 <div class="dialogue en">"Sariah — speed, promptness, quickness. Allah says — 'Race to forgiveness.' (3:133). Sariah is speed in good deeds. Latency optimization too — fast service. User time is valuable. One who is fast, respects. One who is slow, neglects."</div>`,
   senior:{
     title:"Latency Quick Wins — Do Today",
-    body:`<p><strong>১. Enable streaming:</strong> Biggest perceived improvement — user sees tokens immediately।</p><p><strong>২. Enable prefix caching:</strong> vLLM flag — system prompt cached, TTFT drops ৫০%+।</p><p><strong>৩. Shorten system prompt:</strong> Remove unnecessary text — every token saved = faster TTFT।</p><p><strong>৪. Model routing:</strong> Easy queries → small fast model (GPT-4o-mini, Claude Haiku) — ৩-৫x faster।</p><p><strong>৫. Measure p99:</strong> Use vLLM benchmark_serving.py — know your worst-case latency।</p>`
+    body:`<p><strong>১. Enable streaming:</strong> Biggest perceived improvement — user sees tokens immediately।</p><p><strong>২. Enable prefix caching:</strong> vLLM flag — system prompt cached, TTFT drops ৫০%+।</p><p><strong>৩. Provider prompt caching:</strong> Anthropic/OpenAI/Google native caching — বড় stable prefix-এ ~৫০-৯০% সস্তা। cache_control flag যোগ করো।</p><p><strong>৪. Shorten system prompt:</strong> Remove unnecessary text — every token saved = faster TTFT।</p><p><strong>৫. Model routing:</strong> Easy queries → small fast model (GPT-5-mini, Claude Haiku, Gemini Flash) — ৩-৫x faster। Reasoning queries → o4-mini (শুধু দরকার হলে)।</p><p><strong>৬. Measure p99:</strong> Use vLLM benchmark_serving.py — know your worst-case latency।</p>`
   }
 });
 

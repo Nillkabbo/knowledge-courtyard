@@ -189,7 +189,7 @@ PRINCIPLE ৫: LIKING (পছন্দ)
   
   Research: Tupperware parties (friend invites)
     → people buy ৩x more from friends than strangers
-    → physical attractiveness = +জ% compliance
+    → physical attractiveness = +১০% compliance
   
   Brain: oxytocin release with liked people
     → reduces critical thinking
@@ -607,11 +607,11 @@ ROTTER'S ORIGINAL SCALE (1966):
 
 THE BILLIONAIRE CONNECTION:
 
-  Research (self-made billionaires, 
-  Peltz & Dhir, 2020):
+  Decades of research following Rotter (1966):
   
-  → ৯৫% of self-made billionaires score 
-    HIGH on internal locus of control
+  → internal locus of control correlates with
+    achievement, health, and well-being
+    (Rotter, 1966; subsequent meta-analyses)
   → They believe: "I can change things"
   → They take ACTION when others wait
   → They take RESPONSIBILITY when others blame

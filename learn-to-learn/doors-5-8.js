@@ -202,8 +202,107 @@ Charlie Munger-এর জাল:
 
 <div class="verse">"আমি শীঘ্রই তাদের দেখাব আমার নিদর্শন দিগন্তে আর তাদের নিজেদের ভেতরে।"<br>— কুরআন ৪১:৫৩<br><br>প্রতিটা জ্ঞান একটা নিদর্শন — আয়াত। আয়াতগুলো বিচ্ছিন্ন নয় — সংযুক্ত। যখন সব সংযুক্ত হয়, তখন বোঝা আসে। বটগাছ = জ্ঞানের গাছ। শেকড় = ঐশী প্রজ্ঞা।</div>
 
-<div class="dialogue">আটটা বাগান পেরিয়েছ। কিন্তু এটা শেষ নয় — শুরু। তুমি এখন জানো কীভাবে শিখতে হয়। এখন প্রতিটা নতুন বিষয় — AI, DSA, System Design — এই আটটা নীতি দিয়ে শেখো। Growth mindset নিয়ে শুরু করো। Spaced repetition-এ ধরে রাখো। Feynman দিয়ে গভীরে যাও। Deliberate practice-এ নিখুঁত করো। Active recall-এ যাচাই করো। Interleaving-এ সংযুক্ত করো। Focus/diffuse-এ সময় দাও। Mental model হিসেবে গাছে যোগ করো। এটাই শেখার শিল্প। এটাই সবচেয়ে গুরুত্বপূর্ণ দক্ষতা।</div>
-<div class="dialogue en">"You've passed eight gardens. But this isn't the end — it's the beginning. You now know how to learn. Now learn every new subject — AI, DSA, System Design — with these eight principles. Start with growth mindset. Retain with spaced repetition. Go deep with Feynman. Perfect with deliberate practice. Verify with active recall. Connect with interleaving. Time with focus/diffuse. Add to your tree as mental models. This is the art of learning. This is the most important skill."</div>
+<div class="dialogue">আটটা বাগান পেরিয়েছ। কিন্তু একটা বাগান বাকি — সবচেয়ে নীরব, সবচেয়ে গুরুত্বপূর্ণ। তুমি এখন জানো কীভাবে শিখতে হয় — mindset, repetition, Feynman, practice, recall, interleaving, focus, আর mental model। কিন্তু একটা অদৃশ্য শিক্ষক আছে যে এগুলো সব স্থায়ী করে — ঘুম। আয়েশার বাগানে যাও — রাতের বাগানে।</div>
+<div class="dialogue en">"You've passed eight gardens. But one remains — the most silent, the most important. You now know how to learn — mindset, repetition, Feynman, practice, recall, interleaving, focus, and mental models. But there's an invisible teacher that makes all of it permanent — sleep. Go to Ayesha's garden — the night garden."</div>
 
 <div class="secret-box"><div class="label">অষ্টম বাগান — রহস্য</div><div class="text">🌳 বিচ্ছিন্ন তথ্য ভুলে যায়। সংযুক্ত তথ্য চিরকাল থাকে।<br><small>প্রতিটা নতুন ধারণা একটা ডাল — আগের শাখায় যুক্ত করো। বটগাছ = জ্ঞানের গাছ।</small></div></div>`
 });
+
+// ══ DOOR 9: SLEEP & MEMORY CONSOLIDATION ══
+doors.push({
+  num:9, icon:"🌙", color:"#5b9eff", name:"ঘুমের বাগান",
+  subtitle:"The Garden of Sleep", tech:"Sleep & Memory Consolidation",
+  spirit:"রাহাত — বিশ্রাম, প্রশান্তি",
+  secret:"তুমি দিনে শেখো না — রাতে। ঘুমের সময় মস্তিষ্ক দিনের তথ্য সাজায়, দৃঢ় করে, অপ্রয়োজনীয় মুছে। ঘুম ছাড়া শেখা অসম্পূর্ণ — ভাঙা বাড়ির মতো, যা ঝড়ে ভেঙে পড়ে।",
+  recall:{
+    q:"ঘুমের বাগান কেন বলা হয় 'অদৃশ্য শিক্ষক'?",
+    qen:"Why is the sleep garden called 'the invisible teacher'?",
+    a:"কারণ তুমি যা দিনে শেখো, তা ঘুমের সময়ই স্থায়ী হয়। NREM-এ তথ্য দৃঢ় হয়, REM-এ সংযুক্ত হয়। ঘুম ছাড়া শেখা = বালির উপর বাড়ি। রাহাত — প্রশান্তির মাধ্যমে জ্ঞান।",
+    aen:"Because what you learn by day becomes permanent during sleep. NREM strengthens facts, REM connects them. Learning without sleep = a house on sand. Rahat — knowledge through rest."
+  },
+  story:`
+<p class="scene-setting">নবম বাগান। সবচেয়ে নীরব বাগান। রাত নেমেছে — চাঁদের আলো, শান্ত বাতাস, ঘুমন্ত ফুল। মালি আয়েশা নিঃশব্দে কাজ করছেন — কোনো কথা নেই। "দিনের বাগান তুমি দেখেছ," তিনি ফিসফিস করে বললেন। "কিন্তু রাতের বাগান দেখোনি। এখানেই আসল কাজ হয় — যখন তুমি ঘুমাও।"</p>
+<p class="scene-setting en">The ninth garden. The most silent. Night has fallen — moonlight, still air, sleeping flowers. Gardener Ayesha works soundlessly — no words. "You've seen the day gardens," she whispered. "But not the night garden. Here the real work happens — while you sleep."</p>
+
+<div class="dialogue">বটগাছের মালি বলেছিলেন — তথ্য সংযুক্ত করো। কিন্তু আমি বলি — সংযুক্ত করার পরও কাজ বাকি। তুমি দিনে যা শিখেছ, তা এখনো নড়নডে — ভাসমান। রাতে ঘুমের সময় মস্তিষ্ক তা ধরে, দৃঢ় করে, স্থায়ী করে। ঘুম ছাড়া শেখা = খালি হাতে ছুঁইছুঁই জল ধরা।</div>
+<div class="dialogue en">"The banyan gardener said — connect knowledge. But I say — even after connecting, work remains. What you learned today is still loose — floating. During sleep, the brain catches it, firms it, makes it permanent. Learning without sleep = catching water with open hands."</div>
+
+<div class="code-block">Sleep & Memory Consolidation — The Science:
+
+WHAT HAPPENS DURING SLEEP (Matthew Walker, "Why We Sleep", ২০১৭):
+
+  NREM (Non-REM) — deep sleep:
+    → hippocampus (দিনের তথ্যের অস্থায়ী স্টোর) 
+      → neocortex (দীর্ঘমেয়াদী স্টোর)-এ তথ্য স্থানান্তর
+    → ফ্যাক্ট, সূত্র, ভাষা — দৃঢ় হয়
+    → "memory transfer" — short-term → long-term
+
+  REM (Rapid Eye Movement) — dream sleep:
+    → আবেগ, সৃজনশীলতা, pattern recognition
+    → বিচ্ছিন্ন তথ্য সংযুক্ত করে — "aha!" moments
+    → দক্ষতা (piano, খেলা) motor consolidation
+
+  THE CYCLE (৯০ মিনিটের চক্র):
+    NREM → REM → NREM → REM ...
+    → রাতে ৪-৬ টা চক্র
+    → প্রথম অর্ধেক: বেশি NREM (factual consolidation)
+    → দ্বিতীয় অর্ধেক: বেশি REM (creative linking)
+
+KEY STUDIES:
+
+  ১. Stickgold Tetris study (২০০০, Harvard):
+     → novice players দিনে Tetris খেলল
+     → রাতে REM-এ তারা Tetris-এর স্বপ্ন দেখল
+     → পরদিন দক্ষতা বেশি বেড়েছে যারা ঘুমেছে
+     → মস্তিষ্ক রাতে গেম "rehearse" করেছে
+
+  ২. Walker "sleep on it" (২০০২):
+     → একটা কঠিন সমস্যা — দুই গ্রুপ
+     → গ্রুপ A: সকালে সমস্যা দেখল, ১২ ঘণ্টা পর (দিন) solve
+     → গ্রুপ B: সন্ধ্যায় দেখল, sleep, পরদিন সকালে solve
+     → গ্রুপ B ৩x বেশি সফল — insight পেল
+     → ঘুম সৃজনশীল সমাধান খুঁজে দেয়
+
+  ৩. All-nighter cost (Walker, ২০০০):
+     → ৩৫ ঘণ্টা জেগে থাকা = ৪০% memory retention loss
+     → hippocampus "বন্ধ" — নতুন তথ্য গ্রহণ করতে পারে না
+     → "যেন একটা ভর্তি হার্ডড্রাইভে লেখা যাচ্ছে না"
+
+PRACTICAL IMPLICATIONS:
+
+  ✅ কঠিন বিষয় শেখার পর ঘুমাও
+     → ঘুমের আগের ১-২ ঘণ্টা শেখা সবচেয়ে দৃঢ় হয়
+     → কারণ প্রথম NREM চক্রে তা consolidation পায়
+
+  ✅ ৭-৯ ঘণ্টা ঘুম (প্রাপ্তবয়স্কদের জন্য)
+     → Walker: "ঘুম হলো সবচেয়ে কার্যকর 
+       cognitive enhancer"
+     → টেস্টের আগের রাতে ঘুম = পড়ার চেয়ে বেশি কার্যকর
+
+  ❌ All-nighter এড়াও
+     → র‍্যাম ভর্তি মস্তিষ্ক = কিছু ধরে রাখতে পারে না
+     → পড়েই যায় — যেমন চালু কলের জলে দাগ কষা
+
+  ✅ Power nap (১০-২০ মিনিট)
+     → alertness বাড়ে, fatigue কমে
+     → কিন্তু deep consolidation হয় না (সেটা রাতের ঘুমে)
+
+  ✅ সম্পূর্ণ cycle nap (৯০ মিনিট)
+     → একটা পূর্ণ NREM+REM cycle
+     → skill consolidation ঘটে
+     → "perfect nap" length
+
+THE LEARNING TIMELINE:
+
+  সকাল: কঠিন ফ্যাক্ট শেখো (ব্রেন fresh)
+  দুপুর: practice, সমস্যা সমাধান
+  সন্ধ্যা: review, সংযুক্ত করো
+  রাত: ঘুম — মস্তিষ্ক সাজায়, দৃঢ় করে
+  পরদিন সকাল: active recall — যাচাই করো কী থেকেছে</div>
+
+<div class="dialogue">রাহাত — বিশ্রাম, প্রশান্তি। কুরআনে আল্লাহ বলেন — "আমি তোমাদের ঘুম করিয়েছি বিশ্রামের জন্য, এবং রাত্রিকে করেছি আবরণ।" (৭৮:৯-১০)। নবীজি (সা) বলেছেন — "তোমাদের শরীরের উপর তোমাদের অধিকার আছে।" ঘুম অলসতা নয় — ইবাদতের অংশ, যদি নিয়ত থাকে শেখার। যে ঘুমায় যাতে শিখতে পারে — সে ঘুমেও ইবাদত করে।</div>
+<div class="dialogue en">"Rahat — rest, tranquility. Allah says — 'We made your sleep for rest, and made the night a covering.' (78:9-10). The Prophet (pbuh) said — 'Your body has a right over you.' Sleep isn't laziness — it's part of worship, if the intention is learning. One who sleeps so they can learn — worships even in sleep."</div>
+
+<div class="secret-box"><div class="label">নবম বাগান — রহস্য</div><div class="text">🌙 তুমি দিনে শেখো না — রাতে।<br><small>কঠিন বিষয় ঘুমের আগে শেখো। ৭-৯ ঘণ্টা ঘুমাও। All-nighter এড়াও — এটা ৪০% জ্ঞান মুছে দেয়। ঘুম = অদৃশ্য শিক্ষক।</small></div></div>`
+});
+

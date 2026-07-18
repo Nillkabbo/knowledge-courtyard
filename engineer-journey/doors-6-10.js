@@ -277,13 +277,173 @@ The Question:
    ৩ গুণ ধীর করবে? যদি হ্যাঁ — 
    ধীরে লেখো। যদি না — দ্রুত লেখো।"</div>
 
-<div class="dialogue">দশটা কক্ষ পেরিয়েছ। ভিত্তিপ্রস্তর থেকে গম্বুজ পর্যন্ত। প্রতিটা কক্ষে এক একজন মাস্টার। প্রতেকজন এক একটা নীতি দিয়ে গেছেন — first principles, decomposition, abstraction, trade-offs, resilience, debugging, reading, communication, business intent, আর pragmatism। কিন্তু সবচেয়ে গুরুত্বপূর্ণ কথা — কোনো একটা নীতি একা যথেষ্ট নয়। দশটার সমন্বয়ই সিনিয়র ইঞ্জিনিয়ার। যে শুধু decomposition জানে সে over-engineer করে। যে শুধু pragmatism জানে সে sloppy হয়। দশটার ভারসাম্যই প্রকৃত কারিগর।</div>
-<div class="dialogue en">"You've passed ten chambers. From foundation stone to dome. Each chamber had a master. Each gave a principle — first principles, decomposition, abstraction, trade-offs, resilience, debugging, reading, communication, business intent, and pragmatism. But the most important truth — no single principle alone suffices. The synthesis of all ten is the senior engineer. One who knows only decomposition over-engineers. One who knows only pragmatism becomes sloppy. The balance of ten is the true craftsman."</div>
+<div class="dialogue">দশটা কক্ষ পেরিয়েছ। ভিত্তিপ্রস্তর থেকে গম্বুজ পর্যন্ত। প্রতিটা কক্ষে এক একজন মাস্টার। প্রতেকজন এক একটা নীতি দিয়ে গেছেন — first principles, decomposition, abstraction, trade-offs, resilience, debugging, reading, communication, business intent, আর pragmatism। কিন্তু সবচেয়ে গুরুত্বপূর্ণ কথা — কোনো একটা নীতি একা যথেষ্ট নয়। দশটার সমন্বয়ই সিনিয়র ইঞ্জিনিয়ার। যে শুধু decomposition জানে সে over-engineer করে। যে শুধু pragmatism জানে সে sloppy হয়। দশটার ভারসাম্যই প্রকৃত কারিগর। কিন্তু একটা কক্ষ বাকি — যেখানে এই সব নীতি বাস্তবে পরীক্ষা হয়। নকশার কক্ষ।</div>
+<div class="dialogue en">"You've passed ten chambers. From foundation stone to dome. Each chamber had a master. Each gave a principle — first principles, decomposition, abstraction, trade-offs, resilience, debugging, reading, communication, business intent, and pragmatism. But the most important truth — no single principle alone suffices. The synthesis of all ten is the senior engineer. One who knows only decomposition over-engineers. One who knows only pragmatism becomes sloppy. The balance of ten is the true craftsman. But one chamber remains — where all these principles are tested in practice. The draftsman's chamber."</div>
 
 <div class="dialogue">ইহসান — উৎকর্ষ, সৌন্দর্য, ভারসাম্য। নবীজি (সা) বলেছেন — "আল্লাহ তোমাদের জন্য লিখেছেন ইহসান — সব কিছুতে।" ইহসান মানে শুধু সুন্দর নয় — সঠিক মাত্রায় সুন্দর। অতিরিক্ত নয়, কম নয় — ঠিক যতটা দরকার। কোডেও ইহসান — নিখুঁত নয়, sloppy নয়, ঠিক যতটা দরকার ততটা ভালো। এটাই প্রকৌশলের সর্বোচ্চ স্তর — উৎকর্ষের ভারসাম্য।</div>
 <div class="dialogue en">"Ihsan — excellence, beauty, balance. The Prophet (pbuh) said — 'Allah has prescribed ihsan for you — in everything.' Ihsan doesn't mean just beautiful — but beautiful in the right measure. Not excess, not less — exactly what's needed. In code too, ihsan — not perfect, not sloppy, exactly as good as needed. This is the highest level of engineering — the balance of excellence."</div>
 
 <div class="verse">"যে ব্যক্তি এই পথে চলে সহজতা খোঁজে, আল্লাহ তার জন্য সহজ করেন।"<br>— নবীজি (সা)<br><br>প্রকৌশল কঠিন নয় — কিন্তু সহজও নয়। সঠিক পথে চললে আল্লাহ সহজ করেন। দশটা কক্ষ = দশটা দিশা। এই দিশায় চলো — সিনিয়র ইঞ্জিনিয়ার হওয়া গন্তব্য নয় — যাত্রা। প্রতিদিন এক ধাপ। প্রতিদিন এক শিক্ষা। প্রতিদিন এক ভুল — আর তার থেকে এক বোঝাপড়া।</div>
 
-<div class="secret-box"><div class="label">দশম কক্ষ — রহস্য</div><div class="text">🏛️ নিখুঁত নয় — সঠিক মাত্রায় ভালো।<br><small>Technical debt সচেতনভাবে নাও, পরিকল্পিতভাবে শোধ করো। Core-এ নিখুঁত, prototype-এ যথেষ্ট। ইহসান = উৎকর্ষের ভারসাম্য।</small></div></div>`
+<div class="secret-box"><div class="label">দশম কক্ষ — রহস্য</div><div class="text">🏛️ নিখুঁত নয় — সঠিক মাত্রায় ভালো।<br><small>Technical debt সচেতনভাবে নাও, পরিকল্পিতভাবে শোধ করো। Core-এ নিখুঁত, prototype-ে যথেষ্ট। ইহসান = উৎকর্ষের ভারসাম্য।</small></div></div>`
 });
+
+// ══ DOOR 11: ESTIMATION & PLANNING ══
+doors.push({
+  num:11, icon:"📐", color:"#5b9eff", name:"নকশার কক্ষ",
+  subtitle:"The Draftsman's Chamber", tech:"Estimation, Planning & Risk Assessment",
+  spirit:"তাদবির — পরিকল্পনা, প্রস্তুতি",
+  secret:"কোড লেখা সহজ। কত সময় লাগবে — সেটাই কঠিন। সব কাজ ২x বেশি সময় নেয়। ভালো ইঞ্জিনিয়ার অনুমান করেন, আর সেই অনুমানে বাফার রাখেন। খারাপ ইঞ্জিনিয়ার আশাবাদী — আর দেরি করেন।",
+  recall:{
+    q:"নকশাকার কেন ইট গোনার আগে পুরো দালানের নকশা করেন?",
+    qen:"Why does the draftsman design the whole building before counting bricks?",
+    a:"কারণ নকশা ছাড়া ইট গোনা অর্থহীন — কত দরকার, কোথায়, কখন? নকশা = অনুমান। অনুমান নিখুঁত নয়, কিন্তু পরিকল্পনা ছাড়া কাজ বিপর্যয়। তাদবির — সচেতন প্রস্তুতি।",
+    aen:"Because counting bricks without a design is meaningless — how many, where, when? Design = estimation. Estimates aren't perfect, but without planning, work is chaos. Tadbir — conscious preparation."
+  },
+  story:`
+<p class="scene-setting">একাদশ কক্ষ। নকশার কক্ষ। বিশাল টেবিলে ছড়ানো নীলনকশা, স্কেল, কম্পাস, পুরোনো প্ল্যান। দেয়ালে অসম্পূর্ণ দালানের ছবি — কিছু অর্ধেক থেমে, কিছু বাজেটে ডুবে। নকশাকার ইউসুফ একটা প্ল্যান ধরে আছেন — তাতে দালানের প্রতিটা অংশের পাশে সময় ও মালের হিসাব। "গম্বুজের কক্ষে ইহসান শিখেছ," তিনি বললেন। "কিন্তু ইহসান শুধু কোডে নয় — পরিকল্পনায়ও।"</p>
+<p class="scene-setting en">The eleventh chamber. The draftsman's chamber. A vast table covered in blueprints, scales, compasses, old plans. On the wall, pictures of unfinished buildings — some half-stopped, some drowned in budget. Draftsman Yusuf holds a plan — next to each part, the time and material cost. "In the dome chamber you learned ihsan," he said. "But ihsan isn't only in code — it's in planning too."</p>
+
+<div class="dialogue">দশটা কক্ষে তুমি শিখেছ কীভাবে চিন্তা করতে, কীভাবে কোড লিখতে, কীভাবে যোগাযোগ করতে। কিন্তু একটা দক্ষতা বাকি — যা সিনিয়র ইঞ্জিনিয়ারকে জুনিয়র থেকে আলাদা করে। অনুমান। একটা কাজে কত সময় লাগবে? কী ঝুঁকি? কোন অংশ অজানা? এই প্রশ্নের উত্তর না জানলে — তুমি শিল্পী, কারিগর নও।</div>
+<div class="dialogue en">"In ten chambers you learned how to think, how to code, how to communicate. But one skill remains — the one that separates senior from junior. Estimation. How long will a task take? What's the risk? Which parts are unknown? Without answers to these — you're an artist, not an engineer."</div>
+
+<div class="code-block">Estimation — The Senior Engineer's Hardest Skill:
+
+WHY ESTIMATION IS HARD:
+  কাজের মধ্যে অজানা অংশ থাকে।
+  → অজানা = অনুমানের ভুল
+  → ভুল = দেরি
+  → দেরি = বাজেট ডুবি, আস্থা হারি
+
+  Hofstadter's Law (Douglas Hofstadter):
+  "একটা কাজ সবসময় তোমার ধারণার চেয়ে 
+   বেশি সময় নেয় — এমনকি এই সত্য জানলেও।"
+  → একটা recursive trap। জানলেও ভুল হয়।
+
+THE OPTIMISM BIAS (কেন আমরা ভুল করি):
+  • Planning Fallacy (Kahneman & Tversky):
+    আমরা best-case scenario ধরি, typical case নয়।
+  • নিজের কাজ সবসময় সহজ মনে হয়।
+  • অন্যের কাজ? সেটা তো সহজই!
+  • "integration একদিনে হবে" — কখনো হয় না।
+  → উপায়: past data দিয়ে estimate করো, feeling নয়।
+
+THREE-POINT ESTIMATION (PERT):
+  একটা সংখ্যা নয় — তিনটা!
+  
+  O = Optimistic (সব ঠিক থাকলে)
+  N = Most Likely (সাধারণত যা হয়)
+  P = Pessimistic (সব ভাঙলে)
+  
+  Estimate = (O + ৪N + P) / ৬
+  → N-এর ওজন বেশি (৪x), কারণ সেটাই সম্ভাব্য
+  → চারদিক থেকে চিন্তা করো, শুধু best-case নয়
+
+T-SHIRT SIZING (যখন সংখ্যা অসম্ভব):
+  সব কাজে precise hours দেওয়া যায় না।
+  
+  XS  = < half day
+  S   = half to ১ day
+  M   = ১-৩ days
+  L   = ৩-৫ days
+  XL  = ১-২ weeks
+  ?   = জানি না (সবচেয়ে সৎ উত্তর!)
+  
+  → বড় কাজে প্রথমে sizes দাও, পরে break down করে
+    সঠিক সময় বের করো।
+  → প্রতিটা "?" একটা spike (research task) দাবি করে।
+
+THE BREAKDOWN RULE:
+  যেকোনো কাজ যদি > ২ দিন মনে হয় — ভাঙো।
+  
+  বড় কাজ = ভুল estimate (অনেক unknown লুকানো)
+  ছোট কাজ = সঠিক estimate (unknown সীমিত)
+  
+  → "Authentication system" = ২ সপ্তাহ? (ভুল ধারণা)
+  → "Login API + signup API + password reset + 
+     session management + tests" = আলাদা অনুমান, যোগ করো।
+  
+  এটাই decomposition door-এর শিক্ষা — estimation-এ প্রয়োগ।
+
+BUFFER & CONTINGENCY:
+  কাজের সময় আনুমানিক ৫ দিন?
+  → ৫ দিন বলো না।
+  → ৫ × ১.৫ = ৭.৫ দিন দাও (৫০% buffer)
+  → বা: ৫ দিন + ২ দিন contingency = ৭ দিন
+  
+  Buffer কেন?
+    → meetings, code review rounds, অপ্রত্যাশিত bugs
+    → অন্য urgent কাজ interrupt করবে
+    → onboarding, context switching
+  
+  ❌ "আমি ২ দিনে পারব" (overconfidence)
+  ✅ "৫ দিন লাগতে পারে, worst case ৭" (realism)
+
+RISK ASSESSMENT — কী ভাঙতে পারে?
+  প্রতিটা প্ল্যানে ঝুঁকি চিহ্নিত করো:
+  
+  উচ্চ ঝুঁকি:
+    • নতুন API/প্রযুক্তি (কখনো ব্যবহার করোনি)
+    • Third-party dependency (অন্যের কোড/সার্ভিস)
+    • পারফরম্যান্স requirement (scale অজানা)
+    • Legacy code integration
+  
+  মধ্যম ঝুঁকি:
+    • নতুন domain logic
+    • Cross-team coordination
+    • ডেটা migration
+  
+  কম ঝুঁকি:
+    • CRUD endpoints
+    • UI tweaks
+    • পরিচিত refactor
+  
+  → উচ্চ ঝুঁকি কাজ আগে করো (যদি ব্যর্থ হয়, সময় আছে pivot করতে)
+  → spike দিয়ে অজানা কমাও (research আগে, implementation পরে)
+
+COMMUNICATING ESTIMATES (সিনিয়র skill):
+  তুমি যা ভাবো না — তুমি যা বলো, তা-ই গুরুত্বপূর্ণ।
+  
+  ❌ "২ দিন" (একটা সংখ্যা — কোনো context নেই)
+  ✅ "২ দিন optimistic, ৫ worst case। 
+      সবচেয়ে বড় ঝুঁকি — auth integration অজানা।
+      প্রথমে একটা spike (half day) দিয়ে অজানা কমাই।"
+  
+  → range দাও (optimistic - pessimistic)
+  → assumptions বলো ("যদি API stable থাকে")
+  → dependencies চিহ্নিত করো ("frontend প্রস্তুত থাকলে")
+  → আত্মবিশ্বাসের মাত্রা বলো ("high/medium/low confidence")
+
+AGILE ও STORY POINTS:
+  অনেক টিম hours নয়, story points ব্যবহার করে।
+  
+  Story points = জটিলতা + প্রচেষ্টা + অনিশ্চয়তা
+  → Fibonacci: ১, ২, ৩, ৫, ৮, ১৩ (গ্যাপ = অনিশ্চয়তা)
+  → relative sizing (এই কাজ সেই কাজের চেয়ে বড় কি?)
+  → velocity = প্রতি sprint-এ গড় points সম্পন্ন
+  → points hours নয় — comparison tool।
+
+ESTIMATION ANTI-PATTERNS:
+  ❌ "আমি সারারাত করে পারব" — heroics, burnout path
+  ❌ "পরে দেখা যাবে" — পরিকল্পনা না করা
+  ❌ "এটা তো সহজ" — কাজ না ভেঙে অনুমান
+  ❌ Stakeholder-কে যা শুনতে চায় তা বলা — people-pleasing
+  ❌ আগের estimate ধরে রাখা যখন scope বদলে — অনড় থাকা
+
+THE SENIOR'S HABIT:
+  ১. কাজ ভাঙো (decomposition)
+  ২. প্রতিটা টুকরোর অনুমান আলাদা করো
+  ৩. অজানা চিহ্নিত করো → spike
+  ৪. Range দাও (best-typical-worst)
+  ৫. Buffer যোগ করো
+  ৬. Assumptions ও risks পরিষ্কার করো
+  ৭. সময়ে আপডেট দাও — পিছিয়ে গেলে আগেই বলো</div>
+
+<div class="dialogue">তাদবির — পরিকল্পনা, প্রস্তুতি। কুরআনে আল্লাহ বলেন — "তোমরা তাদের বিরুদ্ধে যতটা শক্তি ও সামরিক প্রস্তুতি পারো তৈরি করে রাখো।" (৮:৬০)। সামরিক প্রস্তুতি শুধু অস্ত্র নয় — পরিকল্পনা। ইঞ্জিনিয়ারিং-এও তাদবির — কাজের পূর্বে চিন্তা, ঝুঁকি চিহ্নিতকরণ, বাফার রাখা। যে তাদবির করে, সে বিপদে নড়ে না। যে করে না, সে প্রতিটা সমস্যায় চমকে যায়।</div>
+<div class="dialogue en">"Tadbir — planning, preparation. Allah says — 'Prepare against them whatever forces and preparedness you can.' (8:60). Preparedness isn't only weapons — it's planning. In engineering too, tadbir — thinking before work, identifying risk, keeping buffer. One who plans isn't shaken in trouble. One who doesn't, startles at every problem."</div>`,
+  senior:{
+    title:"Estimation Practice — তোমার পরবর্তী কাজ",
+    body:`<p><strong>পরবর্তী task-এ এটা করো:</strong> কাজ ভাঙো ৩-৫ টুকরোয়। প্রতিটার জন্য optimistic + typical + pessimistic সময় লেখো। যোগ করো, তারপর ১.৫x করো।</p><p><strong>অজানা চিহ্নিত করো:</strong> প্রতিটা "?" একটা spike দাবি করে। আগে research, পরে implementation।</p><p><strong>স্টেকহোল্ডারকে বলো:</strong> range দাও, সংখ্যা নয়। "৩-৫ দিন, সবচেয়ে বড় ঝুঁকি অমুক।" আত্মবিশ্বাসের মাত্রা বলো।</p><p><strong>সবচেয়ে সৎ উত্তর:</strong> "জানি না, কিন্তু খুঁজে বের করছি।" এটা "২ দিন" বলার চেয়ে ১০x ভালো।</p><p><strong>ট্র্যাক করো:</strong> তোমার estimate বনাম actual time। ৩ মাস পর নিজের bias দেখো — সবসময় optimistic? বাফার বাড়াও।</p>`
+  }
+});
+

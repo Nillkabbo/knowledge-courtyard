@@ -1,7 +1,7 @@
 // ════════════════════════════════════════
 // গবেষণার কারিগর — DOORS 6-10
 // Research Paper: Writing → Building → Synthesis
-// Cross-references Book 24, 8, 23
+// Cross-references Book 26, 20, 24
 // ════════════════════════════════════════
 
 // ══ DOOR 6: PAPER STRUCTURE & OUTLINE ══
@@ -186,8 +186,8 @@ doors.push({
   story:`<p class="scene-setting">নকশা তৈরি (Door ৬)। এখন লেখা। কারিগর ইউসুফ বললেন — ভয় পেও না। প্রথম খসড়া সবার জন্য খারাপ। Anne Lamott (১৯৯৫) তার বই Bird by Bird-এ লিখেছেন — shitty first drafts। প্রতিটা ভালো লেখা একটা খারাপ খসড়া থেকে শুরু। তুমি শুধু লেখো। সম্পাদনা পরে। উন্নতি আরও পরে। কলম চালাও — বন্ধ করো না।</p>
 <p class="scene-setting en">Blueprint ready (Door 6). Now writing. Craftsman Yusuf said — don't be afraid. The first draft is bad for everyone. Anne Lamott (1995) wrote in Bird by Bird — shitty first drafts. Every good writing starts from a bad draft. You just write. Edit later. Improve even later. Move the pen — don't stop.</p>
 
-<div class="dialogue">পত্রের নকশা বলেছিলেন — প্রতিটা সেকশনের কাজ। কিন্তু আমি বলি — নকশা পূরণ করার সময় ভয় আসবে। কী লেখব? কেমন লেখব? ইউসুফ বলেন — শুধু লেখো। খারাপ হলে হবে। কিন্তু খালি পাতা = কিছু নয়। খারাপ খসড়া = সম্পাদনার উপাদান। জ্ঞানের কারিগর (Book ২৪, Door ৮) বলেছিলেন — writing IS thinking। লেখার সময় তুমি ভাবো। ভাবার সময় তুমি বুঝো। কলম চালাও।</div>
-<div class="dialogue en">"Paper architecture said — each section's job. But I say — filling the outline brings fear. What to write? How to write? Yusuf says — just write. Bad is fine. But blank page = nothing. Bad draft = material for editing. The Knowledge Craftsman (Book 24, Door 8) said — writing IS thinking. While writing, you think. While thinking, you understand. Move the pen."</div>
+<div class="dialogue">পত্রের নকশা বলেছিলেন — প্রতিটা সেকশনের কাজ। কিন্তু আমি বলি — নকশা পূরণ করার সময় ভয় আসবে। কী লেখব? কেমন লেখব? ইউসুফ বলেন — শুধু লেখো। খারাপ হলে হবে। কিন্তু খালি পাতা = কিছু নয়। খারাপ খসড়া = সম্পাদনার উপাদান। জ্ঞানের কারিগর (Book ২৬, Door ৮) বলেছিলেন — writing IS thinking। লেখার সময় তুমি ভাবো। ভাবার সময় তুমি বুঝো। কলম চালাও।</div>
+<div class="dialogue en">"Paper architecture said — each section's job. But I say — filling the outline brings fear. What to write? How to write? Yusuf says — just write. Bad is fine. But blank page = nothing. Bad draft = material for editing. The Knowledge Craftsman (Book 26, Door 8) said — writing IS thinking. While writing, you think. While thinking, you understand. Move the pen."</div>
 
 <div class="code-block">WRITING THE PAPER — From Outline to Draft:
 
@@ -319,8 +319,8 @@ THE FEAR OF THE BLANK PAGE:
     badly. You can fix bad writing. You can't fix 
     a blank page."</div>
 
-<div class="dialogue">কলম — pen, the instrument of knowledge। কুরআনে আল্লাহ বলেন — "যিনি কলমের মাধ্যমে শিখিয়েছেন।" (৯৬:৪)। কলম জ্ঞানের হাতিয়ার। জ্ঞানের কারিগর (Book ২৪) বলেছিলেন — লেখা = চিন্তা। এখন আমি বলি — গবেষণাপত্র লেখা = গবেষণা। লেখার সময় তুমি বোঝো — কোথায় গবেষণার ঘাটতি। কলম চালাও। ভুল হলে হবে। খালি পাতা রাখো না। কলম — জ্ঞানের স্থায়ী হাতিয়ার।</div>
-<div class="dialogue en">"Qalam — pen, the instrument of knowledge. Allah says — 'Who taught by the pen.' (96:4). The pen is the tool of knowledge. The Knowledge Craftsman (Book 24) said — writing = thinking. Now I say — writing a research paper = research. While writing, you discover gaps. Move the pen. Mistakes are fine. Don't leave the page blank. Qalam — the permanent tool of knowledge."</div>`,
+<div class="dialogue">কলম — pen, the instrument of knowledge। কুরআনে আল্লাহ বলেন — "যিনি কলমের মাধ্যমে শিখিয়েছেন।" (৯৬:৪)। কলম জ্ঞানের হাতিয়ার। জ্ঞানের কারিগর (Book ২৬) বলেছিলেন — লেখা = চিন্তা। এখন আমি বলি — গবেষণাপত্র লেখা = গবেষণা। লেখার সময় তুমি বোঝো — কোথায় গবেষণার ঘাটতি। কলম চালাও। ভুল হলে হবে। খালি পাতা রাখো না। কলম — জ্ঞানের স্থায়ী হাতিয়ার।</div>
+<div class="dialogue en">"Qalam — pen, the instrument of knowledge. Allah says — 'Who taught by the pen.' (96:4). The pen is the tool of knowledge. The Knowledge Craftsman (Book 26) said — writing = thinking. Now I say — writing a research paper = research. While writing, you discover gaps. Move the pen. Mistakes are fine. Don't leave the page blank. Qalam — the permanent tool of knowledge."</div>`,
   senior:{
     title:"Write Your First Draft — This Month",
     body:`<p><strong>Start with Methods section</strong> (easiest — you know this best). Don't start with Introduction (hardest).</p><p><strong>Tool setup:</strong> Overleaf (free LaTeX), Zotero (free reference manager), matplotlib/seaborn for figures.</p><p><strong>Rule: shitty first draft.</strong> Don't edit while writing. Just get words on the page. Fill every section of the outline. Bad writing can be fixed. A blank page cannot.</p><p><strong>After first draft:</strong> Read aloud. Every sentence should be clear. Every figure should tell a story. Every claim should have a citation.</p><p><strong>Time: 2-3 weeks for first draft. 2-3 more weeks for revision. Then — submit.</strong></p>`
@@ -342,8 +342,8 @@ doors.push({
   story:`<p class="scene-setting">তুমি paper submit করেছ। ৩ মাস অপেক্ষা। একদিন ইমেইল — Decision: Major Revision। হৃদপিণ্ড থমকে। কিন্তু কারিগর হাসান বললেন — এটাই স্বাভাবিক। ৯০% paper প্রথমবার reject বা major revision পায়। এটা ব্যর্থতা নয় — প্রক্রিয়া। Reviewer তোমার শত্রু নয় — তারা তোমার paper ভালো করতে চায়। প্রতিটা comment সম্মানের সাথে উত্তর দাও। যে ধৈর্য ধরে, সে publish করে।</p>
 <p class="scene-setting en">You submitted your paper. 3 months waiting. One day email — Decision: Major Revision. Heart stops. But Craftsman Hasan said — this is normal. 90% of papers get rejected or major revision first time. This isn't failure — it's process. Reviewers aren't your enemy — they want to make your paper better. Answer each comment respectfully. One who is patient, publishes.</p>
 
-<div class="dialogue">Draft writer বলেছিলেন — লেখো, খসড়া। কিন্তু আমি বলি — লেখার পরে আসল পরীক্ষা — peer review। Reviewer কঠোর হবেন। কিন্তু মনে রাখো — human psychology book (Book ২৩) বলেছিলেন — সমালোচনা = প্রতিক্রিয়া, উন্নতির সুযোগ। Reviewer comment = আক্রমণ নয়, উন্নতির পরামর্শ। মুহাসাবা — সমালোচনা গ্রহণ, সম্মানজনক উত্তর, উন্নতি।</div>
-<div class="dialogue en">"The draft writer said — write, draft. But I say — after writing comes the real test — peer review. Reviewers will be harsh. But remember — the human psychology book (Book 23) said — criticism = feedback, opportunity to improve. Reviewer comments = not attacks, advice for improvement. Muhasabah — accepting criticism, responding respectfully, improving."</div>
+<div class="dialogue">Draft writer বলেছিলেন — লেখো, খসড়া। কিন্তু আমি বলি — লেখার পরে আসল পরীক্ষা — peer review। Reviewer কঠোর হবেন। কিন্তু মনে রাখো — human psychology book (Book ২৪) বলেছিলেন — সমালোচনা = প্রতিক্রিয়া, উন্নতির সুযোগ। Reviewer comment = আক্রমণ নয়, উন্নতির পরামর্শ। মুহাসাবা — সমালোচনা গ্রহণ, সম্মানজনক উত্তর, উন্নতি।</div>
+<div class="dialogue en">"The draft writer said — write, draft. But I say — after writing comes the real test — peer review. Reviewers will be harsh. But remember — the human psychology book (Book 24) said — criticism = feedback, opportunity to improve. Reviewer comments = not attacks, advice for improvement. Muhasabah — accepting criticism, responding respectfully, improving."</div>
 
 <div class="code-block">PEER REVIEW — The Gauntlet:
 
@@ -684,20 +684,20 @@ THE CROSS-BOOK SYNTHESIS:
   ┌──────────────┬────────────────────────────────┐
   │ Book         │ Connection to Research Papers  │
   ├──────────────┼────────────────────────────────┤
-  │ Book ৮ (PhD) │ Research paper = PhD currency  │
+  │ Book ২০ (PhD)│ Research paper = PhD currency  │
   │              │ Papers = your academic value   │
   ├──────────────┼────────────────────────────────┤
-  │ Book ২৩      │ Power dynamics in peer review  │
+  │ Book ২৪      │ Power dynamics in peer review  │
   │ (Psych)      │ Reviewer = power; stay calm    │
   ├──────────────┼────────────────────────────────┤
-  │ Book ২৪      │ Adler, Luhmann, Feynman →      │
+  │ Book ২৬      │ Adler, Luhmann, Feynman →      │
   │ (Knowledge)  │ applied to research papers     │
   │              │ Zettelkasten for lit review    │
   ├──────────────┼────────────────────────────────┤
-  │ Book ৭       │ Deep analysis = Feynman +      │
+  │ Book ৫       │ Deep analysis = Feynman +      │
   │ (Learn)      │ critical reading combined      │
   ├──────────────┼────────────────────────────────┤
-  │ Book ২২      │ Timeless value: research       │
+  │ Book ২৩      │ Timeless value: research       │
   │ (Irreplaceable│ skills compound over years    │
   │  Engineer)   │ Publication record = assets    │
   └──────────────┴────────────────────────────────┘

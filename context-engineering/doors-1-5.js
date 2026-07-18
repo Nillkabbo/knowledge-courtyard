@@ -281,7 +281,41 @@ CHUNKING METHODS:
    H1/H2/H3 = natural boundaries
    → docs, wikis, technical specs
 
-METADATA — প্রতিটা chunk-এ ট্যাগ:
+৬. LATE CHUNKING (Jina, সেপ্টেম্বর ২০২৪) — উল্টো পদ্ধতি
+   সাধারণ নিয়ম: প্রথমে chunk করো, পরে embed।
+   Late Chunking: প্রথমে পুরো doc embed করো, পরে chunk।
+
+   কেন? সাধারণ chunk-এ "it", "he", "the company"
+   একা থাকে — কোন company? embedding দুর্বল।
+   Late Chunking-এ পুরো doc-এর context প্রতিটা
+   chunk-এ থাকে — pronoun resolution স্বয়ংক্রিয়।
+
+   Before: Doc → split → embed each chunk alone
+   Late:   Doc → embed whole (long-ctx model)
+              → extract per-chunk token embeddings
+              → প্রতিটা chunk তার neighbors মনে রাখে
+
+   ✅ context-aware embeddings, বিশেষ করে long docs
+   ❌ long-context embedding model দরকার (Jina v2 8K)
+   → Gunther et al. (Jina AI, ২০২৪)
+
+৭. CONTEXTUAL RETRIEVAL (Anthropic, সেপ্টেম্বর ২০২৪)
+   প্রতিটা chunk-এর আগে short context prefix যোগ করো।
+   → LLM পুরো doc পড়ে প্রতিটা chunk-এর জন্য
+     50-100 token summary বানায়।
+
+   Stored: [LLM prefix] + [original chunk]
+   → "Q3 revenue grew 15%" একা নয় —
+     "From Acme Corp's 2024 Q3 report..." সহ
+   → retrieval failure 67% কমে (Anthropic-এর পরীক্ষায়)
+   → prompt caching দিয়ে ~$1/M tokens — সস্তা
+
+   Late Chunking vs Contextual Retrieval:
+     Late Chunking: embedding model-এ বদল (server-side)
+     Contextual Retrieval: chunk text-এ prefix যোগ
+     → দুটো একসাথে কাজ করতে পারে!
+
+METADATA — প্রতিটা chunk-ে ট্যাগ:
   {
     text: "...",
     source: "doc.pdf",
@@ -296,7 +330,7 @@ METADATA — প্রতিটা chunk-এ ট্যাগ:
 <div class="dialogue en">"Vibhajan — division, partition. Allah says — 'Ramadan, the month in which the Quran was revealed... in separate nights.' (2:185). The Quran was revealed in pieces — over 23 years, at relevant times. But each piece carries complete meaning. Chunking too — cut at the right place, so each piece carries complete meaning."</div>`,
   senior:{
     title:"Chunking Audit — তোমার RAG-এ",
-    body:`<p><strong>শুরু:</strong> ৫১২ টোকেন + ২০% overlap + sentence boundary। এটাই baseline।</p><p><strong>পরীক্ষা:</strong> একই ডকুমেন্ট তিনভাবে chunk করো (fixed, sentence, paragraph)। retrieval precision তুলনা করো।</p><p><strong>Advanced:</strong> semantic chunking — embedding similarity drop-এ কাটো। LangChain SemanticChunker, LlamaIndex SemanticSplitter।</p><p><strong>প্রোডাকশন:</strong> প্রতিটা chunk-এ metadata দাও — source, page, section। citation সহজ হয়।</p>`
+    body:`<p><strong>শুরু:</strong> ৫১২ টোকেন + ২০% overlap + sentence boundary। এটাই baseline।</p><p><strong>পরীক্ষা:</strong> একই ডকুমেন্ট তিনভাবে chunk করো (fixed, sentence, paragraph)। retrieval precision তুলনা করো।</p><p><strong>Advanced:</strong> semantic chunking — embedding similarity drop-ে কাটো। LangChain SemanticChunker, LlamaIndex SemanticSplitter।</p><p><strong>Long docs, pronoun সমস্যা (2024+)?</strong> → Late Chunking (Jina) — পুরো doc context-এ রাখে। অথবা Contextual Retrieval (Anthropic) — প্রতিটা chunk-এ short prefix যোগ। 67% failure reduction।</p><p><strong>প্রোডাকশন:</strong> প্রতিটা chunk-এ metadata দাও — source, page, section। citation সহজ হয়।</p>`
   }
 });
 

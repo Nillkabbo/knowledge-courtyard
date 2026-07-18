@@ -370,13 +370,26 @@ WHY ZETTELKASTEN WORKS:
 THE MODERN ZETTELKASTEN:
 
   Digital tools:
-    → Obsidian (free, local, markdown)
-    → Roam Research (cloud, daily notes)
-    → Notion (database + linking)
+    → Obsidian (free, local, markdown) — সবচেয়ে জনপ্রিয়
     → Logseq (open-source, outliner)
-    → Analog: physical index cards 
+    → Notion (database + linking)
+    → Heptabase (object-based, visual cards)
+    → Capacities / Tana (newer, typed objects)
+    → Roam Research (cloud, daily notes — কিন্তু ২০২৪+
+      এ জনপ্রিয়তা কমেছে)
+    → Analog: physical index cards
       (Luhmann's original method)
-  
+
+  AI-assisted PKM (২০২৪-২০২৬):
+    → Obsidian Smart Connections / Copilot —
+      তোমার নোটের সাথে chat, auto-linked suggestions
+    → Notion AI — summarize, draft, auto-fill
+    → NotebookLM (Google) — multi-doc synthesis,
+      source-grounded Q&A
+    → Mem / Reflect — AI auto-organizes notes
+    → ⚠️ সতর্কতা: AI মাঝে মাঝে ভুল সংযোগ বা
+      অস্তিত্বহীন citation বানায়। verify করো।
+
   Best for beginners:
     → Obsidian (free, powerful, local)
     → start with ৩ types of notes

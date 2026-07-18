@@ -130,19 +130,19 @@ doors.push({
   num:2, icon:"🖼️", color:"#e9d5ff", name:"চিত্রকরের কক্ষ",
   subtitle:"The Image Reader's Chamber", tech:"Vision-Language Models (VLMs)",
   spirit:"কিতাবা — ছবি পড়া, বর্ণনা",
-  secret:"VLM = চোখ + মুখ। ViT দেখে, LLM বলে। GPT-4o, Claude 3.5, Gemini — সব VLM। ছবি দাও, প্রশ্ন করো, উত্তর পাও। কিন্তু কীভাবে কাজ করে? Vision encoder → projection → LLM → text। এটাই VLM architecture।",
+  secret:"VLM = চোখ + মুখ। ViT দেখে, LLM বলে। GPT-5, Claude Sonnet 4, Gemini — সব VLM। ছবি দাও, প্রশ্ন করো, উত্তর পাও। কিন্তু কীভাবে কাজ করে? Vision encoder → projection → LLM → text। এটাই VLM architecture।",
   recall:{
     q:"চিত্রকরের কক্ষে কীভাবে ছবি থেকে কথা হয়?",
     qen:"How does an image become words in the image reader's chamber?",
-    a:"Vision encoder ছবি দেখে → embedding বানায় → LLM-কে দেয় → LLM কথা বলে। VLM = চোখ + মুখ। GPT-4o, Claude — সব VLM। ছবি দাও, উত্তর পাও। কিতাবা — ছবি পড়া।",
-    aen:"Vision encoder sees image → makes embedding → gives to LLM → LLM speaks. VLM = eyes + mouth. GPT-4o, Claude — all VLMs. Give image, get answer. Kitabah — image reading."
+    a:"Vision encoder ছবি দেখে → embedding বানায় → LLM-কে দেয় → LLM কথা বলে। VLM = চোখ + মুখ। GPT-5, Claude — সব VLM। ছবি দাও, উত্তর পাও। কিতাবা — ছবি পড়া।",
+    aen:"Vision encoder sees image → makes embedding → gives to LLM → LLM speaks. VLM = eyes + mouth. GPT-5, Claude — all VLMs. Give image, get answer. Kitabah — image reading."
   },
   story:`
 <p class="scene-setting">দ্বিতীয় ইন্দ্রিয়। চিত্রকরের কক্ষ। একজন চিত্রকর একটা ছবি দেখেন আর বর্ণনা করেন। "ছবি দেখি," তিনি বললেন, "তারপর শব্দ বানাই।" সামনে একটা ছবি — বিড়াল টেবিলে বসে। "একটা কমলা বিড়াল," তিনি বললেন, "কাঠের টেবিলে বসে আছে।" VLM-ও তেমনি — ছবি দেখে, কথা বলে।</p>
 <p class="scene-setting en">The second sense. Image reader's chamber. A painter looks at an image and describes it. "I see the image," she said, "then make words." Before her — a cat on a table. "An orange cat," she said, "sitting on a wooden table." VLMs too — see image, speak words.</p>
 
-<div class="dialogue">দৃষ্টি কক্ষ বলেছিলেন — ViT দৃষ্টি দেয়। কিন্তু আমি বলি — দৃষ্টি একা অর্থহীন। দরকার মুখ — যা দেখে তা বলবে। VLM = vision encoder + LLM। একসাথে দেখে ও বলে। GPT-4o কেন শক্তিশালী? কারণ সে VLM — ছবি ও টেক্সট একসাথে বোঝে।</div>
-<div class="dialogue en">"The vision chamber said — ViT gives sight. But I say — sight alone is meaningless. Need a mouth — to speak what it sees. VLM = vision encoder + LLM. Together see and speak. Why is GPT-4o powerful? Because it's a VLM — understands image and text together."</div>
+<div class="dialogue">দৃষ্টি কক্ষ বলেছিলেন — ViT দৃষ্টি দেয়। কিন্তু আমি বলি — দৃষ্টি একা অর্থহীন। দরকার মুখ — যা দেখে তা বলবে। VLM = vision encoder + LLM। একসাথে দেখে ও বলে। GPT-5 কেন শক্তিশালী? কারণ সে VLM — ছবি ও টেক্সট একসাথে বোঝে।</div>
+<div class="dialogue en">"The vision chamber said — ViT gives sight. But I say — sight alone is meaningless. Need a mouth — to speak what it sees. VLM = vision encoder + LLM. Together see and speak. Why is GPT-5 powerful? Because it's a VLM — understands image and text together."</div>
 
 <div class="code-block">Vision-Language Models (VLMs) — AI That Sees and Speaks:
 
@@ -195,7 +195,7 @@ THREE ARCHITECTURE TYPES:
 ৩. NATIVE MULTIMODAL
   শুধু projection নয় — শুরু থেকে multimodal
   → trained on text + image + audio together
-  → example: GPT-4o, Gemini 1.5
+  → example: GPT-5, Gemini 2.5
   ✅ সবচেয়ে ভালো integration
   ✅ audio + video support
   ❌ সবচেয়ে expensive to train
@@ -205,15 +205,15 @@ VLM MODEL FAMILIES (2024-2025):
   ┌──────────────┬──────────────────────────┐
   │ Model        │ Strength                  │
   ├──────────────┼──────────────────────────┤
-  │ GPT-4o       │ Native multimodal,        │
+  │ GPT-5       │ Native multimodal,        │
   │ (OpenAI)     │ text+image+audio          │
   │              │ Best overall VLM          │
   ├──────────────┼──────────────────────────┤
-  │ Claude 3.5   │ Excellent vision,         │
+  │ Claude Sonnet 4   │ Excellent vision,         │
   │ Sonnet       │ document understanding    │
   │ (Anthropic)  │ Strong chart/diagram      │
   ├──────────────┼──────────────────────────┤
-  │ Gemini 1.5   │ ১M+ context, video native  │
+  │ Gemini 2.5   │ ১M+ context, video native  │
   │ Pro          │ Multi-image reasoning     │
   │ (Google)     │                           │
   ├──────────────┼──────────────────────────┤
@@ -272,7 +272,7 @@ VLM LIMITATIONS:
 <div class="dialogue en">"Kitabah — writing, description, expression. Allah says — 'Glory to Him who took His servant by night.' (17:1). On the night journey, the Prophet (pbuh) saw and described. VLMs too — see and describe. Kitabah — transforming vision into words. Image to language. Seeing to speaking."</div>`,
   senior:{
     title:"VLM Usage — API Call",
-    body:`<p><strong>OpenAI (GPT-4o):</strong> image_url in messages — base64 বা URL। "What is in this image?"</p><p><strong>Anthropic (Claude 3.5):</strong> image block in messages — base64। "Analyze this chart."</p><p><strong>Cost:</strong> ১ image ≈ ৭৬৫-১৫০০ tokens (resolution dependent)। High-res = more tokens = more cost।</p><p><strong>Tips:</strong> Low-detail mode (৫১২ tokens) যদি fine detail দরকার না। High-detail যদি টেক্সট/সংখ্যা পড়তে হয়।</p><p><strong>Best practice:</strong> সবসময় নির্দিষ্ট প্রশ্ন করো — "How many people?" ভালো, "Tell me about this" খারাপ।</p>`
+    body:`<p><strong>OpenAI (GPT-5):</strong> image_url in messages — base64 বা URL। "What is in this image?"</p><p><strong>Anthropic (Claude Sonnet 4):</strong> image block in messages — base64। "Analyze this chart."</p><p><strong>Cost:</strong> ১ image ≈ ৭৬৫-১৫০০ tokens (resolution dependent)। High-res = more tokens = more cost।</p><p><strong>Tips:</strong> Low-detail mode (৫১২ tokens) যদি fine detail দরকার না। High-detail যদি টেক্সট/সংখ্যা পড়তে হয়।</p><p><strong>Best practice:</strong> সবসময় নির্দিষ্ট প্রশ্ন করো — "How many people?" ভালো, "Tell me about this" খারাপ।</p>`
   }
 });
 
@@ -434,19 +434,19 @@ doors.push({
   num:4, icon:"🎧", color:"#a78bfa", name:"শ্রুতি কক্ষ",
   subtitle:"The Listening Chamber", tech:"Audio Processing & Speech",
   spirit:"সামি' — শ্রবণ, শোনা",
-  secret:"AI এখন শোনে। Whisper স্পিচ থেকে টেক্সট বানায়। TTS টেক্সট থেকে কণ্ঠ। GPT-4o সরাসরি অডিও বোঝে। স্পিক্ট্রোগ্রাম → embedding → টেক্সট/অডিও। শোনা = বোঝার আরেক দরজা। সামি' — শ্রবণের নিয়ামত।",
+  secret:"AI এখন শোনে। Whisper স্পিচ থেকে টেক্সট বানায়। TTS টেক্সট থেকে কণ্ঠ। GPT-5 সরাসরি অডিও বোঝে। স্পিক্ট্রোগ্রাম → embedding → টেক্সট/অডিও। শোনা = বোঝার আরেক দরজা। সামি' — শ্রবণের নিয়ামত।",
   recall:{
     q:"শ্রুতি কক্ষে কেন শুধু কথা নয়, সুর ও শব্দও শোনা হয়?",
     qen:"Why listen to music and sounds, not just speech?",
-    a:"কারণ শ্রবণ শুধু কথা নয় — সুর, শব্দ, আবেগ। Whisper সব শোনে। GPT-4o সরাসরি অডিও বোঝে। সামি' — শ্রবণ। শোনা = বোঝার আরেক দরজা।",
-    aen:"Because hearing isn't just speech — music, sounds, emotions. Whisper hears everything. GPT-4o understands audio directly. Sami — hearing. Listening = another door to understanding."
+    a:"কারণ শ্রবণ শুধু কথা নয় — সুর, শব্দ, আবেগ। Whisper সব শোনে। GPT-5 সরাসরি অডিও বোঝে। সামি' — শ্রবণ। শোনা = বোঝার আরেক দরজা।",
+    aen:"Because hearing isn't just speech — music, sounds, emotions. Whisper hears everything. GPT-5 understands audio directly. Sami — hearing. Listening = another door to understanding."
   },
   story:`
-<p class="scene-setting">চতুর্থ ইন্দ্রিয়। শ্রুতি কক্ষ। কক্ষরক্ষক খালেদ চোখ বন্ধ করে বসে আছেন — শুনছেন। "আমি চোখ বন্ধ করি," তিনি বললেন, "কারণ কান দিয়ে দেখা যায়। পাখির ডাক, বাতাস, পায়ের শব্দ — সব বলে কী ঘটছে। AI-ও শুনতে পারে। Whisper, GPT-4o — শোনে ও বোঝে।"</p>
-<p class="scene-setting en">The fourth sense. Listening chamber. Keeper Khalid sits with eyes closed — listening. "I close my eyes," he said, "because you can see with ears. Bird songs, wind, footsteps — all tell what's happening. AI can hear too. Whisper, GPT-4o — hear and understand."</p>
+<p class="scene-setting">চতুর্থ ইন্দ্রিয়। শ্রুতি কক্ষ। কক্ষরক্ষক খালেদ চোখ বন্ধ করে বসে আছেন — শুনছেন। "আমি চোখ বন্ধ করি," তিনি বললেন, "কারণ কান দিয়ে দেখা যায়। পাখির ডাক, বাতাস, পায়ের শব্দ — সব বলে কী ঘটছে। AI-ও শুনতে পারে। Whisper, GPT-5 — শোনে ও বোঝে।"</p>
+<p class="scene-setting en">The fourth sense. Listening chamber. Keeper Khalid sits with eyes closed — listening. "I close my eyes," he said, "because you can see with ears. Bird songs, wind, footsteps — all tell what's happening. AI can hear too. Whisper, GPT-5 — hear and understand."</p>
 
-<div class="dialogue">সৃষ্টির কক্ষ বলেছিলেন — শব্দ থেকে ছবি। কিন্তু আমি বলি — শুধু চোখ নয়, কানও দরকার। ইউজার কথা বলে — টেক্সট লেখে না। স্পিচ দেয়। অডিও পাঠায়। AI কী শুনবে না? হ্যাঁ শুনবে। Whisper, TTS, GPT-4o native audio। এটাই চতুর্থ ইন্দ্রিয় — শ্রবণ।</div>
-<div class="dialogue en">"The creation chamber said — words to images. But I say — not just eyes, ears too. Users speak — don't write text. Give speech. Send audio. Shouldn't AI hear? Yes, it should. Whisper, TTS, GPT-4o native audio. This is the fourth sense — hearing."</div>
+<div class="dialogue">সৃষ্টির কক্ষ বলেছিলেন — শব্দ থেকে ছবি। কিন্তু আমি বলি — শুধু চোখ নয়, কানও দরকার। ইউজার কথা বলে — টেক্সট লেখে না। স্পিচ দেয়। অডিও পাঠায়। AI কী শুনবে না? হ্যাঁ শুনবে। Whisper, TTS, GPT-5 native audio। এটাই চতুর্থ ইন্দ্রিয় — শ্রবণ।</div>
+<div class="dialogue en">"The creation chamber said — words to images. But I say — not just eyes, ears too. Users speak — don't write text. Give speech. Send audio. Shouldn't AI hear? Yes, it should. Whisper, TTS, GPT-5 native audio. This is the fourth sense — hearing."</div>
 
 <div class="code-block">Audio Processing — AI That Hears:
 
@@ -508,7 +508,7 @@ TEXT-TO-SPEECH (TTS):
   │   Meta Voicebox → latest research  │
   └────────────────────────────────────┘
 
-NATIVE AUDIO (GPT-4o):
+NATIVE AUDIO (GPT-5):
 
   Previous pipeline:
     Speech → Whisper (STT) → text → LLM → 
@@ -516,8 +516,8 @@ NATIVE AUDIO (GPT-4o):
     → lossy! Emotion, tone lost in text
     → ৩ separate models
   
-  GPT-4o native:
-    Speech → GPT-4o → Speech
+  GPT-5 native:
+    Speech → GPT-5 → Speech
     → end-to-end audio
     → emotion, tone, accent preserved
     → real-time conversation!
@@ -570,11 +570,11 @@ AUDIO SAFETY:
   → Watermarking audio (Adobe, Microsoft)
   → Accessibility: captions for deaf users</div>
 
-<div class="dialogue">সামি' — hearing, the all-hearing। কুরআনে আল্লাহ বলেন — "তিনি সবকিছু শোনেন।" (২:১২৭)। আল্লাহ সামি' — সব শোনেন। AI-ও একটু শোনে — Whisper, GPT-4o। অবশ্যই আল্লাহর সামিয়্যাতের সাথে তুলনা নয়, কিন্তু একটা ঝলক — শোনা ও বোঝা। সামি' — শ্রবণের গুণ।</div>
-<div class="dialogue en">"Sami' — hearing, the all-hearing. Allah says — 'He hears all things.' (2:127). Allah is Sami' — hears everything. AI hears a little too — Whisper, GPT-4o. Not comparable to Allah's Sami'yyat of course, but a glimpse — hearing and understanding. Sami' — the attribute of hearing."</div>`,
+<div class="dialogue">সামি' — hearing, the all-hearing। কুরআনে আল্লাহ বলেন — "তিনি সবকিছু শোনেন।" (২:১২৭)। আল্লাহ সামি' — সব শোনেন। AI-ও একটু শোনে — Whisper, GPT-5। অবশ্যই আল্লাহর সামিয়্যাতের সাথে তুলনা নয়, কিন্তু একটা ঝলক — শোনা ও বোঝা। সামি' — শ্রবণের গুণ।</div>
+<div class="dialogue en">"Sami' — hearing, the all-hearing. Allah says — 'He hears all things.' (2:127). Allah is Sami' — hears everything. AI hears a little too — Whisper, GPT-5. Not comparable to Allah's Sami'yyat of course, but a glimpse — hearing and understanding. Sami' — the attribute of hearing."</div>`,
   senior:{
     title:"Audio Stack — Production",
-    body:`<p><strong>STT:</strong> Whisper large-v3 (self-host) বা Deepgram (API, fastest)।</p><p><strong>TTS:</strong> OpenAI TTS (simple) বা ElevenLabs (best quality, voice cloning)।</p><p><strong>Native audio:</strong> GPT-4o audio API — end-to-end speech, real-time।</p><p><strong>Music:</strong> Suno API বা MusicGen (open) — text to music।</p><p><strong>Cost:</strong> Whisper self-hosted = free (GPU cost)। Deepgram = $০.০০৪৩/min। ElevenLabs = $০.৩০/১K chars।</p>`
+    body:`<p><strong>STT:</strong> Whisper large-v3 (self-host) বা Deepgram (API, fastest)।</p><p><strong>TTS:</strong> OpenAI TTS (simple) বা ElevenLabs (best quality, voice cloning)।</p><p><strong>Native audio:</strong> GPT-5 audio API — end-to-end speech, real-time।</p><p><strong>Music:</strong> Suno API বা MusicGen (open) — text to music।</p><p><strong>Cost:</strong> Whisper self-hosted = free (GPU cost)। Deepgram = $০.০০৪৩/min। ElevenLabs = $০.৩০/১K chars।</p>`
   }
 });
 
@@ -583,7 +583,7 @@ doors.push({
   num:5, icon:"🎬", color:"#c084fc", name:"চলমান ছবির কক্ষ",
   subtitle:"The Motion Chamber", tech:"Video Understanding",
   spirit:"যাওয়া — গতি, পরিবর্তন",
-  secret:"ছবি স্থির — ভিডিও চলমান। সময় যোগ হয়। AI কীভাবে ভিডিও বোঝে? Frame by frame + temporal attention। বা native video model (Gemini 1.5)। ভিডিও = ছবি + সময়। সময় বোঝা = গতি বোঝা। যাওয়া — গতির নিয়ামত।",
+  secret:"ছবি স্থির — ভিডিও চলমান। সময় যোগ হয়। AI কীভাবে ভিডিও বোঝে? Frame by frame + temporal attention। বা native video model (Gemini 2.5)। ভিডিও = ছবি + সময়। সময় বোঝা = গতি বোঝা। যাওয়া — গতির নিয়ামত।",
   recall:{
     q:"চলমান ছবির কক্ষে কেন শুধু স্থির ছবি নয়, গতি দরকার?",
     qen:"Why is motion needed, not just still images?",
@@ -594,8 +594,8 @@ doors.push({
 <p class="scene-setting">পঞ্চম ইন্দ্রিয়। চলমান ছবির কক্ষ। সামনে একটা পর্দা — স্থির ছবি নয়, চলমান। মানুষ হাঁটছে, গাড়ি চলছে, পাখি উড়ছে। কক্ষরক্ষক তামিম বললেন — "স্থির ছবি একটা মুহূর্ত। ভিডিও সময়। আমি সময় দেখি — কী ঘটছে, কীভাবে ঘটছে। AI-ও ভিডিও বোঝে — frame ও temporal attention দিয়ে।"</p>
 <p class="scene-setting en">The fifth sense. Motion chamber. Before — a screen — not still images, moving. People walking, cars driving, birds flying. Keeper Tamim said — "Still image is one moment. Video is time. I see time — what's happening, how. AI understands video too — with frames and temporal attention."</p>
 
-<div class="dialogue">শ্রুতি কক্ষ বলেছিলেন — AI শোনে। কিন্তু আমি বলি — শোনা ও দেখা একসাথে দরকার। ভিডিও = ছবি + সময় + অডিও। সব একসাথে। কিন্তু ভিডিও প্রক্রিয়া করা কঠিন — কোটি frames, কোটি audio samples। Gemini 1.5 সরাসরি ভিডিও বোঝে। এটাই multimodal-এর সবচেয়ে জটিল স্তর।</div>
-<div class="dialogue en">"The listening chamber said — AI hears. But I say — hearing and seeing together are needed. Video = image + time + audio. All together. But processing video is hard — millions of frames, millions of audio samples. Gemini 1.5 understands video directly. This is multimodal's most complex layer."</div>
+<div class="dialogue">শ্রুতি কক্ষ বলেছিলেন — AI শোনে। কিন্তু আমি বলি — শোনা ও দেখা একসাথে দরকার। ভিডিও = ছবি + সময় + অডিও। সব একসাথে। কিন্তু ভিডিও প্রক্রিয়া করা কঠিন — কোটি frames, কোটি audio samples। Gemini 2.5 সরাসরি ভিডিও বোঝে। এটাই multimodal-এর সবচেয়ে জটিল স্তর।</div>
+<div class="dialogue en">"The listening chamber said — AI hears. But I say — hearing and seeing together are needed. Video = image + time + audio. All together. But processing video is hard — millions of frames, millions of audio samples. Gemini 2.5 understands video directly. This is multimodal's most complex layer."</div>
 
 <div class="code-block">Video Understanding — AI That Watches:
 
@@ -641,9 +641,9 @@ THREE APPROACHES:
 ৩. NATIVE VIDEO (best)
   → model trained on video from scratch
   → understands temporal natively
-  → Gemini 1.5: up to ১ hour of video!
+  → Gemini 2.5: up to ১ hour of video!
   
-  Gemini 1.5 Pro:
+  Gemini 2.5 Pro:
     → ১M+ token context
     → ১ hour video = ~৭০০K tokens
     → ask questions about any moment
@@ -656,15 +656,15 @@ VIDEO MODELS (2024-2025):
   ┌──────────────┬──────────────────────────┐
   │ Model        │ Capability                │
   ├──────────────┼──────────────────────────┤
-  │ Gemini 1.5   │ Native video, ১hr,        │
+  │ Gemini 2.5   │ Native video, ১hr,        │
   │ Pro          │ audio + video together   │
   │              │ Best overall video AI     │
   ├──────────────┼──────────────────────────┤
-  │ GPT-4o       │ Video understanding       │
+  │ GPT-5       │ Video understanding       │
   │              │ (frame sampling + audio)  │
   │              │ Good for short clips      │
   ├──────────────┼──────────────────────────┤
-  │ Claude 3.5   │ Multiple images           │
+  │ Claude Sonnet 4   │ Multiple images           │
   │              │ (not full video, but      │
   │              │ sequential frames)        │
   ├──────────────┼──────────────────────────┤
@@ -751,6 +751,6 @@ CHALLENGES:
 <div class="dialogue en">"Yawa — motion, going, change over time. Allah says — 'He created all things and measured them.' Measurement includes time — what happens when. Video captures that time. Yawa — from still to moving, moment to time. One who understands time, understands deeply."</div>`,
   senior:{
     title:"Video AI — Which Approach?",
-    body:`<p><strong>Quick/cheap:</strong> Frame sampling (১০-২০ keyframes) + GPT-4o/Claude VLM। Good for basic "what happens"।</p><p><strong>Best understanding:</strong> Gemini 1.5 Pro — native video, ১hr capacity, timestamp queries।</p><p><strong>Video generation:</strong> Sora (when available) বা Runway Gen-৩ for professional quality।</p><p><strong>Open-source:</strong> LLaVA-Video + Whisper for understanding। Stable Video Diffusion for generation।</p><p><strong>Production tip:</strong> ভিডিও = সবচেয়ে expensive modality। শুধু দরকার হলে use করো। Frame sampling > native যদি cost matter করে।</p>`
+    body:`<p><strong>Quick/cheap:</strong> Frame sampling (১০-২০ keyframes) + GPT-5/Claude VLM। Good for basic "what happens"।</p><p><strong>Best understanding:</strong> Gemini 2.5 Pro — native video, ১hr capacity, timestamp queries।</p><p><strong>Video generation:</strong> Sora 2 (OpenAI, ২০২৫+) বা Runway Gen-৪ / Veo 3 (Google) for professional quality।</p><p><strong>Open-source:</strong> LLaVA-Video + Whisper for understanding। Stable Video Diffusion / Wan 2.1 for generation।</p><p><strong>Production tip:</strong> ভিডিও = সবচেয়ে expensive modality। শুধু দরকার হলে use করো। Frame sampling > native যদি cost matter করে।</p>`
   }
 });

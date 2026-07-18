@@ -72,10 +72,18 @@ doors.push({
   AI ACCELERATES OBSOLESCENCE:
     → Coders who only write boilerplate → replaceable
     → Coders who understand WHY → irreplaceable
-    → The question isn't: "Can AI write code?"
-    → The question is: "Can AI decide WHAT code to write?"
-    → If your job is typing code → AI replaces you
-    → If your job is solving problems → AI amplifies you</div>
+    → ২০২৬ reality: AI agents (Claude Code, Cursor, Devin)
+      এখন নিজেরাই decide করতে পারে কী কোড লিখবে, কোথায়,
+      কোন abstraction ব্যবহার করবে। "typing vs deciding"
+      dichotomy আর কাজ করে না।
+    → নতুন প্রশ্ন: "যখন AI execute করতে পারে, তখন তুমি 
+      কী করো যেটা AI পারে না?"
+    → AI পারে না: কোন সমস্যা আদৌ সমাধান দরকার, কোন 
+      trade-off কোম্পানির জন্য গ্রহণযোগ্য, কে দায়ী হবে 
+      যদি ভুল হয়, এবং কখন "না" বলতে হবে।
+    → If your job is executing code → AI replaces you
+    → If your job is judging what should be built, why,
+      and at what cost → AI amplifies you</div>
 
 <div class="dialogue">ফানা — impermanence, annihilation, that which passes away। সুফি ঐতিহ্যে ফানা হলো সেই অবস্থা যেখানে অহংকার, দক্ষতা, পরিচয় — সব ক্ষয় হয়। জহিরের jQuery দক্ষতা ফানার শিকার হয়েছে। কিন্তু ফানার বিপরীত হলো বাকা — permanence, eternity, that which remains। যে কারিগর নিজের দক্ষতাকে ফানা থেকে বাকায় স্থানান্তর করে, সে অবিচ্ছেয্য হয়। ফানা থেকে বাকা — এটাই এই বইয়ের যাত্রা।</div>
 <div class="dialogue en">"Fana — impermanence, annihilation, that which passes away. In Sufi tradition, fana is the state where ego, skill, identity — all dissolve. Zahir's jQuery mastery fell victim to fana. But the opposite of fana is baqa — permanence, eternity, that which remains. The craftsman who transfers their investment from fana to baqa becomes irreplaceable. From fana to baqa — this is this book's journey."</div>`,

@@ -142,15 +142,46 @@ doors.push({
 <div class="code-block">Salary Negotiation — Step by Step:
 
 ১. RESEARCH (আগে থেকে)
-   • levels.fyi → কোম্পানির স্ট্যান্ডার্ড
+   • levels.fyi → কোম্পানির স্ট্যান্ডার্ড (US/global tech)
    • Glassdoor → এলাকার গড়
    • বন্ধু/নেটওয়ার্ক → বাস্তব সংখ্যা
-   → জানো তোমার মূল্য
+   
+   অঞ্চলভিত্তিক উৎস:
+   • US/EU tech: levels.fyi, Glassdoor
+   • বাংলাদেশ: glassdoor.com.bd, LinkedIn Salary,
+     local tech groups (BD Tech community)
+   • ভারত: AmbitionBox, Payscale India, levels.fyi
+   • গালফ/মধ্যপ্রাচ্য: GulfTalent, Bayt, Naukri Gulf
+   → জানো তোমার মূল্য — তোমার অঞ্চলের ডেটা দিয়ে
 
 ২. TOTAL COMPENSATION (শুধু base নয়)
-   Base Salary + Bonus + Equity/Stock 
+   Base Salary + Bonus + Equity/Stock
    + Signing Bonus + Benefits
-   → equity কেউ ভুলে যায় — সেটাই সবচেয়ে বড়
+   → equity কেউ ভুলে যায় — সেটাই সবচেয়ে বড় (US/EU tech-এ)
+
+   ⚠️ কিন্তু কাঠামো অঞ্চলভিত্তিক ভিন্ন!
+   
+   US/EU tech (FAANG-style):
+     Base + Annual Bonus + RSU/Options + Signing
+     → equity বড় অংশ (৩০-৫০%)
+     → প্রতি বছর refresh grant
+     → ৪-বছর vesting cliff
+   
+   বাংলাদেশ / দক্ষিণ এশিয়া:
+     Base + Annual Bonus (১-৩ মাস) + PF/Gratuity
+     → equity বিরল (শুধু startup-এ)
+     → দরদাম মূলত base + bonus-এ
+     → কখনো কখনো আবাসন/যাতায়াত allowance
+   
+   গালফ (UAE/Saudi/Qatar):
+     All-inclusive package — Base + Housing + Transport
+     → equity নেই (প্রায় সব ক্ষেত্রে)
+     → tax-free salary (বড় সুবিধা!)
+     → দরদাম সাধারণত শুধু base-এ
+     → end-of-service gratuity (দীর্ঘ সেবার জন্য)
+   
+   → তোমার অঞ্চলের কাঠামো জানো।
+     সব অঞ্চলে equity কাজ করে না।
 
 ৩. FIRST OFFER → সাথে সাথে রাজি হয়ো না
    "ধন্যবাদ! আমি কয়েকদিন ভাবছি।"
@@ -172,14 +203,14 @@ doors.push({
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ সাথে সাথে রাজি</div>"ওয়াও, ধন্যবাদ! হ্যাঁ!" — প্রথম অফারে রাজি। ১০-২০% কম পেলে। পরে অনুশোচনা — "আরেকটু বললে পারতাম।"</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ দরদাম</div>"ধন্যবাদ। levels.fyi অনুযায়ী এই role-এ গড় X। আমার experience বিবেচনায় Y প্রত্যাশিত।" — ডেটা, সম্মান, নীরবতা। ১৫% বেশি পাওয়া সাধারণ।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ দরদাম</div>"ধন্যবাদ। বাজার research অনুযায়ী (levels.fyi / AmbitionBox / Bayt — তোমার অঞ্চলের উৎস) এই role-এ গড় X। আমার experience বিবেচনায় Y প্রত্যাশিত।" — ডেটা, সম্মান, নীরবতা। ১০-২০% বেশি পাওয়া সাধারণ (অঞ্চল ভেদে)।</div>
 </div>
 
 <div class="dialogue">মিযান — ভারসাম্য, ন্যায্যতা। কুরআনে আল্লাহ বলেন — "দাঁড়িপাল্লায় কম দিও না।" তোমার শ্রমের মূল্য ন্যায্য হওয়া উচিত। কিন্তু অতিরিক্তও নয় — চরম লোভ নয়। মিযান = সঠিক মূল্য। নিজের মূল্য জানো, ডেটা দাও, দরদাম করো — সম্মানের সাথে। এটাই মিযানের প্রয়োগ।</div>
 <div class="dialogue en">"Mizan — balance, fairness. Allah says — 'Don't give short measure.' Your labor deserves fair value. But not excess — not extreme greed. Mizan = correct price. Know your value, give data, negotiate — with respect. This is mizan applied."</div>`,
   senior:{
     title:"Negotiation Scripts — কী বলবে",
-    body:`<p><strong>প্রথম অফার পেলে:</strong> "Thank you so much, I'm really excited about this role. Let me review the details and get back to you by [day]."</p><p><strong>কাউন্টার দিলে:</strong> "Based on my research on levels.fyi and my experience, I was hoping for [X]. Is there flexibility?"</p><p><strong>তারা "no" বললে:</strong> "I understand. What about signing bonus or additional equity?"</p><p><strong>নিয়ম:</strong> নাম্বার সবার আগে তুমি বলো না — তাদের বলতে দাও। যদি জোর করে জিজ্ঞেস করে — একটা range দাও।</p>`
+    body:`<p><strong>প্রথম অফার পেলে:</strong> "Thank you so much, I'm really excited about this role. Let me review the details and get back to you by [day]."</p><p><strong>কাউন্টার দিলে:</strong> "Based on my market research and my experience, I was hoping for [X]. Is there flexibility?" (ডেটা উৎস: levels.fyi US/EU-তে, AmbitionBox ভারতে, Bayt গালফে)</p><p><strong>তারা "no" বললে — US/EU tech-এ:</strong> "I understand. What about signing bonus or additional equity / RSU refresh?"</p><p><strong>তারা "no" বললে — BD/India/Gulf-এ:</strong> "I understand. What about annual bonus, joining bonus, বা housing/transport allowance?" (equity সাধারণত নেই — base/bonus/allowance দরদাম করো)</p><p><strong>নিয়ম:</strong> নাম্বার সবার আগে তুমি বলো না — তাদের বলতে দাও। যদি জোর করে জিজ্ঞেস করে — একটা range দাও।</p>`
   }
 });
 

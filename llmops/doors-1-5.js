@@ -651,7 +651,7 @@ THE COST EXPLOSION PROBLEM:
   
   → এটা ধ্বংস! কমাতে হবে।
 
-৭ COST OPTIMIZATION STRATEGIES:
+৮ COST OPTIMIZATION STRATEGIES:
 
 ১. SEMANTIC CACHING (৩০-৬০% save)
   একই বা সমার্থক কোয়েরি → cached answer
@@ -668,12 +668,13 @@ THE COST EXPLOSION PROBLEM:
   → ৩০-৬০% cost reduction!
 
 ২. MODEL ROUTING (৫০-৮০% save on some queries)
-  সব কোয়েরি GPT-4 দরকার নয়।
-  
+  সব কোয়েরি frontier model দরকার নয়।
+
   Router: কোয়েরি কত জটিল?
-    → সহজ ("what is X?") → GPT-4o-mini ($০.০০২)
-    → মাঝারি ("explain X in context") → Claude Haiku
-    → জটিল ("design a system for X") → GPT-4o ($০.০২)
+    → সহজ ("what is X?") → GPT-5-mini / Haiku-class ($০.০০১-০.০০২)
+    → মাঝারি ("explain X in context") → Claude Haiku / Gemini Flash
+    → জটিল ("design a system for X") → GPT-5 / Claude Sonnet 4 ($০.০১-০.০২)
+    → হার্ড রিজনিং → o4-mini (reasoning, test-time compute)
   
   Route ৪০% easy, ৪০% medium, ২০% hard:
     ৪০% × $০.০০২ + ৪০% × $০.০০৫ + ২০% × $০.০২
@@ -732,6 +733,39 @@ THE COST EXPLOSION PROBLEM:
   
   Production serving: on-demand (reliable)
   Background: spot (cheap)
+
+৮. PROMPT CACHING (provider-side, ২০২৪-২০২৬ গেম-চেঞ্জার)
+  Anthropic, OpenAI, Google — সবার এখন native prompt caching।
+
+  একই system prompt বারবার পাঠাও? prefix একবার process,
+  cache হয়। পরের request-এ same prefix → cache hit।
+
+  Pricing (২০২৫-২৬, approximate):
+    Anthropic: cache write = ১.২৫× base, cache read = ০.১× base
+      → ১০th request থেকে ~৯০% cheaper on the cached prefix
+    OpenAI: cached input tokens ~৫০% cheaper (automatic + explicit)
+    Google: implicit context caching
+
+  Cache lifetime:
+    → সাধারণত ৫-১০ মিনিট (idle reset)
+    → Anthropic ১-hour TTL option (long docs, agents)
+
+  কখন বড় সাশ্রয়:
+    ✅ বড় system prompt (২K+ tokens) প্রতি request-এ
+    ✅ Few-shot examples একই থাকে
+    ✅ বড় doc/knowledge base প্রতি query
+    ✅ Agentic loops (একই context বারবার পুনরায় পাঠানো হয়)
+    ✅ Tool definitions (অনেক tokens, কখনো বদলায় না)
+
+  কৌশল: stable | dynamic prompt structure
+    ✅ [system + tools + few-shot] → cache হবে (stable)
+    ❌ [user query + timestamp] → cache ভাঙবে (dynamic)
+    → stable অংশ আগে রাখো, dynamic অংশ পরে
+
+  Implementation:
+    Anthropic: cache_control: {type: "ephemeral"}
+    OpenAI: স্বয়ংক্রিয় (last ১০২৪ tokens), বা explicit
+    → কোড পরিবর্তন ন্যূনতম — config ফ্ল্যাগ মাত্র
 
 COST MONITORING:
   Per-user cost tracking

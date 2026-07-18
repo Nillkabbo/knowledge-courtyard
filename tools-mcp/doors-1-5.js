@@ -299,8 +299,8 @@ doors.push({
   story:`<p class="scene-setting">তৃতীয় কর্মশালা। সংযোগের কক্ষ। একটা বিশাল বোর্ড — উপরে অনেক plug, নিচে একটা universal adapter। যেকোনো tool, যেকোনো LLM — সব এই adapter দিয়ে সংযুক্ত। কারিগর আদনান বললেন — "এর আগে প্রতিটা LLM-এর জন্য আলাদা tool বানাতে হতো। এখন? MCP। এক বার বানাও, সব জায়গায় চলে। সিলসিলা।"</p>
 <p class="scene-setting en">The third workshop. Connection chamber. A large board — many plugs above, one universal adapter below. Any tool, any LLM — all connected through this adapter. Craftsman Adnan said — "Before, you had to build separate tools for each LLM. Now? MCP. Build once, runs everywhere. Silsila."</p>
 
-<div class="dialogue">Tool design বলেছিলেন — টুল ভালো করে বানাও। কিন্তু আমি বলি — ভালো টুল বানালেও প্রতিটা LLM-এর জন্য আলাদা? সময় নষ্ট। MCP — Model Context Protocol। Anthropic বানিয়েছে। এক MCP server, সব LLM-এ কাজ করে। এটাই টুল ইকোসিস্টেমের ভবিষ্যৎ।</div>
-<div class="dialogue en">"Tool design said — build tools well. But I say — even well-built tools, separate for each LLM? Waste of time. MCP — Model Context Protocol. Built by Anthropic. One MCP server, works on all LLMs. This is the future of the tool ecosystem."</div>,
+<div class="dialogue">Tool design বলেছিলেন — টুল ভালো করে বানাও। কিন্তু আমি বলি — ভালো টুল বানালেও প্রতিটা LLM-এর জন্য আলাদা? সময় নষ্ট। MCP — Model Context Protocol। Anthropic শুরু করেছে (নভেম্বর ২০২৪), এখন OpenAI ও Google-ও গ্রহণ করেছে। এক MCP server, সব LLM-ে কাজ করে। এটাই টুল ইকোসিস্টেমের ভবিষ্যৎ।</div>
+<div class="dialogue en">"Tool design said — build tools well. But I say — even well-built tools, separate for each LLM? Waste of time. MCP — Model Context Protocol. Anthropic started it (November 2024), now OpenAI and Google have adopted it too. One MCP server, works on all LLMs. This is the future of the tool ecosystem."</div>,
 
 <div class="code-block">MCP — Model Context Protocol:
 
@@ -328,6 +328,12 @@ WHAT IS MCP?
   → JSON-RPC ২.০ based
   → client-server architecture
 
+  ২০২৫: বিস্তৃত গ্রহণযোগ্যতা
+  → OpenAI গ্রহণ করেছে (Agents SDK)
+  → Google (Gemini) গ্রহণ করেছে
+  → Microsoft, Cursor, Windsurf, Zed, Replit
+  → de facto standard হয়ে উঠছে — এক protocol, সব LLM
+
   ┌────────────────┐     MCP      ┌────────────────┐
   │  MCP CLIENT    │ ←─────────→  │  MCP SERVER    │
   │  (Claude,      │  JSON-RPC    │  (your tools)  │
@@ -337,10 +343,12 @@ WHAT IS MCP?
 MCP ARCHITECTURE:
 
   Client side (LLM apps):
-    → Claude Desktop
+    → Claude Desktop / Claude Code
     → Cursor (code editor)
     → Windsurf
     → Zed
+    → ChatGPT (OpenAI MCP support, ২০২৫)
+    → Gemini (Google MCP support, ২০২৫)
     → any app that implements MCP client
   
   Server side (tool providers):
@@ -489,13 +497,9 @@ doors.push({
 <p class="scene-setting en">The fourth workshop. Pattern chamber. Designs on walls — sequential, parallel, conditional branch, recursion. Craftswoman Mariam said — "One tool is easy. But many? Which first? Which after? Which parallel? This is pattern — the right order."</p>
 
 <div class="dialogue">MCP বলেছিলেন — standard protocol দাও। কিন্তু আমি বলি — protocol দিলেও কীভাবে ব্যবহার করবে? এক টুল? সহজ। কিন্তু ৫ টুল? কোনটা আগে, কোনটা পরে? সঠিক pattern ছাড়া টুল = বিশৃঙ্খলা। তাদবির — টুল পরিকল্পনা।</div>
-<div class="dialogue en">"MCP said — give standard protocol. But I say — even with protocol, how to use? One tool? Easy. But 5 tools? Which first, which after? Without right pattern, tools = chaos. Tadbir — tool planning."</div>,
+<div class="dialogue en">"MCP said — give standard protocol. But I say — even with protocol, how to use? One tool? Easy. But 5 tools? Which first, which after? Without right pattern, tools = chaos. Tadbir — tool planning."</div>
 
-  story:`<p class="scene-setting">The fourth workshop. Pattern chamber. Flowcharts on the wall showing linear sequences, parallel forks, conditional branches, and loops. Craftsman Mariam pointed to each. One tool is a single step, but real work needs multiple tools in the right order. Search then read then analyze then write. Or search A and search B in parallel then merge. The pattern determines efficiency.</p>
-
-<p class="scene-setting en">The fourth workshop. Pattern chamber. Flowcharts on the wall showing linear sequences, parallel forks, conditional branches, and loops. Craftsman Mariam pointed to each. One tool is a single step, but real work needs multiple tools in the right order. The pattern determines efficiency.</p>onal branches, and loops. Craftsman Mariam pointed to each. One tool is a single step, but real work needs multiple tools in the right order. The pattern determines efficiency.</p>
-
-PATTERN ১: SEQUENTIAL (pipeline)
+<div class="code-block">PATTERN ১: SEQUENTIAL (pipeline)
   Tool A → Tool B → Tool C
   
   search("RAG papers") → read(top paper) → summarize
@@ -599,11 +603,7 @@ doors.push({
 <p class="scene-setting en">The fifth workshop. Safety chamber. Each tool surrounded by defenses — validation, rate limit, sandbox, audit log. Craftswoman Salma said — "Tools break. Not when — but what to do. Give good error messages, the LLM fixes itself. Destructive tools? Human approval. Hifz — protection."</p>
 
 <div class="dialogue">Pattern কক্ষ বলেছিলেন — সঠিক ক্রমে টুল ব্যবহার করো। কিন্তু আমি বলি — সঠিক ক্রমেও টুল ভাঙে। API down, টাইমআউট, ভুল data। Error handling ছাড়া সব থেমে যায়। আর destructive টুল — delete, send, deploy — এগুলো সুরক্ষা চায়। হিফয — প্রতিটা টুলের সুরক্ষা।</div>
-<div class="dialogue en">"The pattern chamber said — use tools in right order. But I say — even in right order, tools break. API down, timeout, wrong data. Without error handling, everything stops. And destructive tools — delete, send, deploy — these need protection. Hifz — protection for every tool."</div>,
-
-  story:`<p class="scene-setting">The fifth workshop. Safety chamber. Each tool sat behind a protective shield — input validation, rate limiting, sandboxing, audit logging. Tools fail, Craftswoman Salma said. APIs go down, timeouts happen, wrong arguments arrive. The question is not IF — it is WHAT you do. Return clear errors. Let the LLM adapt. For destructive actions — require human approval.</p>
-
-<p class="scene-setting en">The fifth workshop. Safety chamber. Each tool sat behind a protective shield — input validation, rate limiting, sandboxing, audit logging. "Tools fail," Craftswoman Salma said. "APIs go down, timeouts happen, wrong arguments arrive. The question isn't IF — it's WHAT you do. Return clear errors. Let the LLM adapt. For destructive actions — require human approval."</p>
+<div class="dialogue en">"The pattern chamber said — use tools in right order. But I say — even in right order, tools break. API down, timeout, wrong data. Without error handling, everything stops. And destructive tools — delete, send, deploy — these need protection. Hifz — protection for every tool."</div>
 
 <div class="code-block">Tool Error Handling & Safety:
 

@@ -1,7 +1,7 @@
 // ════════════════════════════════════════
 // গবেষণার কারিগর — DOORS 1-5
 // Research Paper: Anatomy → Reading Like PhD
-// Cross-references Book 24 (Knowledge Craftsman)
+// Cross-references Book 26 (Knowledge Craftsman)
 // ════════════════════════════════════════
 const doors = [];
 
@@ -20,8 +20,8 @@ doors.push({
   story:`<p class="scene-setting">তুমি একটা paper হাতে পেলে। ২৫ পাতা। প্রথম পাতা থেকে পড়তে শুরু করলে — এক ঘণ্টা পর আটকে। কিন্তু কারিগর জাকেরিয়া বললেন — থামো। পত্র একটা জীব — প্রতিটা অংশের নির্দিষ্ট কাজ। তুমি সব অংশ একভাবে পড়ছ তাই আটকে যাচ্ছ। পত্র পড়ার নিয়ম — প্রতিটা অংশ আলাদাভাবে, নির্দিষ্ট উদ্দেশ্য নিয়ে।</p>
 <p class="scene-setting en">You get a paper. 25 pages. You start from page one — stuck after an hour. But Craftsman Zakariya said — stop. A paper is a living thing — each part has a specific job. You're reading all parts the same way — that's why you're stuck. The rule — read each part separately, with a specific purpose.</p>
 
-<div class="dialogue">জ্ঞানের কারিগর (Book ২৪) তোমাকে Adler-এর ৪ স্তর শিখিয়েছে। কিন্তু এখন আমি বলি — research paper একটা আলাদা জন্তু। বই নয়। প্রতিটা অংশ আলাদা কাজ করে। তুমি যদি প্রথম থেকে শেষ পর্যন্ত পড়ো — তুমি সব অংশ একভাবে দেখছ, কিন্তু প্রতিটা অংশ আলাদা নিয়মে কাজ করে। এটাই paper-এর শারীরস্থান — IMRaD।</div>
-<div class="dialogue en">"The Knowledge Craftsman (Book 24) taught you Adler's 4 levels. But now I say — a research paper is a different beast. Not a book. Each part works differently. If you read start to finish — you're treating all parts the same, but each part follows its own rules. This is the paper's anatomy — IMRaD."</div>
+<div class="dialogue">জ্ঞানের কারিগর (Book ২৬) তোমাকে Adler-এর ৪ স্তর শিখিয়েছে। কিন্তু এখন আমি বলি — research paper একটা আলাদা জন্তু। বই নয়। প্রতিটা অংশ আলাদা কাজ করে। তুমি যদি প্রথম থেকে শেষ পর্যন্ত পড়ো — তুমি সব অংশ একভাবে দেখছ, কিন্তু প্রতিটা অংশ আলাদা নিয়মে কাজ করে। এটাই paper-এর শারীরস্থান — IMRaD।</div>
+<div class="dialogue en">"The Knowledge Craftsman (Book 26) taught you Adler's 4 levels. But now I say — a research paper is a different beast. Not a book. Each part works differently. If you read start to finish — you're treating all parts the same, but each part follows its own rules. This is the paper's anatomy — IMRaD."</div>
 
 <div class="code-block">PAPER ANATOMY — The IMRaD Structure:
 
@@ -284,7 +284,7 @@ doors.push({
   num:3, icon:"🧪", color:"#818cf8", name:"বৈজ্ঞানিকের চোখ",
   subtitle:"The Scientist's Eye", tech:"Methodology, Statistics, Validity",
   spirit:"তাহকিক — যাচাইকৃত সত্য",
-  secret:"বৈজ্ঞানিক পড়ে বিশ্বাস করার জন্য নয় — যাচাই করার জন্য। sample size? methodology? statistics? p-hacking? replication? জ্ঞানের কারিগর (Book ২৪) তোমাকে replication crisis শিখিয়েছে। এখন দেখো — কীভাবে প্রতিটা paper-এর প্রতিটা claim যাচাই করবে। তাহকিক — যাচাই তারপর বিশ্বাস।",
+  secret:"বৈজ্ঞানিক পড়ে বিশ্বাস করার জন্য নয় — যাচাই করার জন্য। sample size? methodology? statistics? p-hacking? replication? জ্ঞানের কারিগর (Book ২৬) তোমাকে replication crisis শিখিয়েছে। এখন দেখো — কীভাবে প্রতিটা paper-এর প্রতিটা claim যাচাই করবে। তাহকিক — যাচাই তারপর বিশ্বাস।",
   recall:{
     q:"বৈজ্ঞানিক কীভাবে paper যাচাই করে?",
     qen:"How does a scientist verify a paper?",
@@ -294,8 +294,8 @@ doors.push({
   story:`<p class="scene-setting">ইঞ্জিনিয়ার বলেছিলেন — ব্যবহার করো। কিন্তু কারিগর খাদিজা বললেন — ব্যবহার করার আগে যাচাই করো। কারণ মনে রাখো — replication crisis। ৬০% paper সম্ভবত ভুল। তুমি যদি এমন একটা method ব্যবহার করো যা ভুল — তোমার প্রজেক্ট ভেঙে যাবে। তাই প্রথমে যাচাই। sample? method? statistics? বৈজ্ঞানিক পড়ে বিশ্বাসের জন্য নয় — যাচাইয়ের জন্য।</p>
 <p class="scene-setting en">The engineer said — use it. But Craftswoman Khadija said — before using, verify. Because remember — the replication crisis. 60% of papers are probably wrong. If you use a method that's wrong — your project breaks. So verify first. Sample? Method? Statistics? A scientist reads not to believe — but to verify.</p>
 
-<div class="dialogue">ইঞ্জিনিয়ারের পাঠ বলেছিলেন — প্রয়োগের চোখ। কিন্তু আমি বলি — প্রয়োগের আগে যাচাই। জ্ঞানের কারিগর (Book ২৪, Door ৭) তোমাকে replication crisis শিখিয়েছে। এখন আমি শেখাবো — কীভাবে প্রতিটা paper-ের প্রতিটা claim যাচাই করবে। বৈজ্ঞানিকের চোখ = যাচাইয়ের চোখ। তাহকিক — যাচাই করে তারপর গ্রহণ।</div>
-<div class="dialogue en">"The engineer's read said — the application eye. But I say — before application, verification. The Knowledge Craftsman (Book 24, Door 7) taught you the replication crisis. Now I'll teach — how to verify each claim in each paper. The scientist's eye = the verification eye. Tahqiq — verify then accept."</div>
+<div class="dialogue">ইঞ্জিনিয়ারের পাঠ বলেছিলেন — প্রয়োগের চোখ। কিন্তু আমি বলি — প্রয়োগের আগে যাচাই। জ্ঞানের কারিগর (Book ২৬, Door ৭) তোমাকে replication crisis শিখিয়েছে। এখন আমি শেখাবো — কীভাবে প্রতিটা paper-ের প্রতিটা claim যাচাই করবে। বৈজ্ঞানিকের চোখ = যাচাইয়ের চোখ। তাহকিক — যাচাই করে তারপর গ্রহণ।</div>
+<div class="dialogue en">"The engineer's read said — the application eye. But I say — before application, verification. The Knowledge Craftsman (Book 26, Door 7) taught you the replication crisis. Now I'll teach — how to verify each claim in each paper. The scientist's eye = the verification eye. Tahqiq — verify then accept."</div>
 
 <div class="code-block">THE SCIENTIST'S EYE — Deep Verification:
 
@@ -351,7 +351,7 @@ THE ৭-POINT VERIFICATION CHECKLIST:
     → is the improvement within MARGIN OF ERROR?
   
   ML-specific:
-    → "স% improvement" → over what baseline? significant?
+    → "X% improvement" → over what baseline? significant?
     → variance: did they run ৩ times? ৫? ১০?
     → error bars: are they shown? tight or wide?
     → statistical significance test (t-test, Wilcoxon)?
@@ -600,6 +600,36 @@ WHERE TO FIND PAPERS:
   │ ACM Digital Library │ computer science            │
   │ PubMed              │ medical, life sciences      │
   └────────────────────┴────────────────────────────┘
+
+AI-ASSISTED PAPER TOOLS (২০২৪-২০২৬):
+
+  ┌──────────────────┬────────────────────────────────┐
+  │ Tool              │ What it does                    │
+  ├──────────────────┼────────────────────────────────┤
+  │ Elicit            │ LLM literature review,          │
+  │                   │ Q&A across papers, extraction   │
+  │ Consensus         │ LLM search over 200M+ papers,   │
+  │                   │ claims for/against a question   │
+  │ NotebookLM        │ multi-PDF synthesis,            │
+  │                   │ source-grounded Q&A (Google)    │
+  │ scite.ai          │ citation context:               │
+  │                   │ supporting/contradicting/mention│
+  │ SciSpace / ChatPDF│ PDF Q&A, section extraction     │
+  │ Inciteful         │ citation-graph building         │
+  └──────────────────┴────────────────────────────────┘
+
+  HOW TO USE THEM (hybrid workflow):
+  
+    AI does: first-pass summary, claim extraction,
+             finding related/contradicting work
+    তুমি করো: verification, deep reading (Keshav Pass ২-৩),
+             judging credibility, spotting hallucination
+    
+    → AI Keshav Pass ১ করে ৫ সেকেন্ডে (summary)
+    → কিন্তু Pass ২-৩ এখনো তোমার — verify, critique
+    → সবসময় source PDF যাচাই করো — AI মাঝে মাঝে 
+      ভুল বা অস্তিত্বহীন citation বানায়
+    → এটাই Door 3-এর scientist's eye-এর আধুনিক রূপ
 
 THE ৫-২০ PAPER READING SPREE:
 

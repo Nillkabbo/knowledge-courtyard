@@ -1,6 +1,5 @@
 // ════════════════════════════════════════
-// CITY BUILDER'S CODEX — ENGINE
-// System Design: From One Server to a City
+// Book 28 · Knowledge Connection — Engine
 // ════════════════════════════════════════
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
@@ -13,7 +12,7 @@ const RANKS = [
   {min:300, name:'সংশ্লেষক',     icon:'📐'},
   {min:400, name:'জ্ঞান স্থপতি',           icon:'🏛️'},
   {min:500, name:'জাল নির্মাতা',     icon:'🌆'},
-  {min:600, name:'মহানগর জ্ঞান স্থপতি',    icon:'🌇'},
+  {min:600, name:'জ্ঞান স্থপতি',    icon:'🌇'},
   {min:700, name:'জ্ঞানের সুলতান',    icon:'👑'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}

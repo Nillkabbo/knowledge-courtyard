@@ -20,12 +20,12 @@ doors.push({
   story:`<p class="scene-setting">স্থপতি ইদ্রিস তোমাকে একটা শহরে নিয়ে গেলেন। কিন্তু অদ্ভুত শহর — কোনো রাস্তা নেই। প্রতিটা বাড়ি একটা দ্বীপের মতো — চারদিকে পরিখা। প্রতিটা বাড়িতে একটা করে গুণ: একটা বাড়িতে শুধু পাথর, আরেকটাতে শুধু কাঠ, আরেকটাতে শুধু লোহা। প্রচুর সম্পদ — কিন্তু কেউ কিছু বানাতে পারে না। কারণ কোনো রাস্তা নেই। সম্পদ বিচ্ছিন্ন। "এটাই তোমার মস্তিষ্ক," ইদ্রিস বললেন।</p>
 <p class="scene-setting en">Architect Idris took you to a city. But a strange city — no roads. Each house is an island — surrounded by a moat. Each house has one resource: one has only stone, another only wood, another only iron. Abundant resources — but nothing can be built. Because no roads connect them. Resources are isolated. "This is your brain," Idris said.</p>
 
-<div class="dialogue">তুমি ২৫টা বই পড়েছ। ২৫টা বাড়ি। কিন্তু কোনো রাস্তা নেই। RAG শিখেছ (Book ১২), কিন্তু human psychology-এর (Book ২৩) সাথে সংযুক্ত করোনি। Prompt engineering (Book ৯) শিখেছ, কিন্তু research paper reading-এর (Book ২৫) সাথে যুক্ত করোনি। System design (Book ৪) জানো, কিন্তু fine-tuning-এর (Book ১৩) সাথে সংযুক্ত করোনি। প্রতিটা বই একটা দ্বীপ। সম্পদ আছে — কিন্তু সেতু নেই।</div>
-<div class="dialogue en">"You've read 25 books. 25 houses. But no roads. You learned RAG (Book 12), but didn't connect it to human psychology (Book 23). You learned prompt engineering (Book 9), but didn't link it to research paper reading (Book 25). You know system design (Book 4), but haven't connected it to fine-tuning (Book 13). Each book is an island. Resources exist — but no bridges."</div>
+<div class="dialogue">তুমি ২৭টা বই পড়েছ। ২৭টা বাড়ি। কিন্তু কোনো রাস্তা নেই। RAG শিখেছ (Book ১০), কিন্তু human psychology-এর (Book ২৪) সাথে সংযুক্ত করোনি। Prompt engineering (Book ৭) শিখেছ, কিন্তু research paper reading-এর (Book ২৭) সাথে যুক্ত করোনি। System design (Book ৪) জানো, কিন্তু fine-tuning-এর (Book ১১) সাথে সংযুক্ত করোনি। প্রতিটা বই একটা দ্বীপ। সম্পদ আছে — কিন্তু সেতু নেই।</div>
+<div class="dialogue en">"You've read 27 books. 27 houses. But no roads. You learned RAG (Book 10), but didn't connect it to human psychology (Book 24). You learned prompt engineering (Book 7), but didn't link it to research paper reading (Book 27). You know system design (Book 4), but haven't connected it to fine-tuning (Book 11). Each book is an island. Resources exist — but no bridges."</div>
 
 <div class="code-block">THE SILO PROBLEM — Why Disconnected Knowledge Fails:
 
-THE TOORPUnderSTANDING PROBLEM:
+THE TOO-POOR-UNDERSTANDING PROBLEM:
 
   ┌──────────────────────────────────────────────┐
   │  ISOLATED KNOWLEDGE (what most people have)   │
@@ -64,15 +64,15 @@ CHARLIE MUNGER'S "MAN WITH A HAMMER":
     → see which model applies to which problem
     → COMBINE models for complex problems
 
-WHY YOUR 25 BOOKS AREN'T ENOUGH (yet):
+WHY YOUR 27 BOOKS AREN'T ENOUGH (yet):
 
-  You have 25 books = 25 knowledge domains
+  You have 27 books = 27 knowledge domains
   But if they're disconnected:
     → reading them gave you INFORMATION
     → NOT understanding
     → NOT the ability to CREATE
 
-  Connected, the same 25 books become:
+  Connected, the same 27 books become:
     → a KNOWLEDGE WEB
     → you can COMBINE any domains
     → you can CREATE new solutions
@@ -119,7 +119,7 @@ HOW CONNECTION WORKS (preview):
 <div class="dialogue en">"Ayat — sign, symbol, evidence. Allah says — 'In everything We have placed signs for those who reflect.' Signs aren't separate — they're connected. A leaf is a sign. But leaf + flower + fruit + root = a tree. Tree + soil + water + sun = an ecosystem. Each layer connects to the previous. Seeing signs separately = not seeing connections. Seeing connected signs = understanding ayat. This is the knowledge web."</div>`,
   senior:{
     title:"তোমার বিচ্ছিন্ন দ্বীপগুলো খুঁজে নাও — Find Your Disconnected Islands",
-    body:`<p><strong>এখনই তোমার জ্ঞান যাচাই করো — Audit your knowledge right now:</strong></p><p><em>তোমার ৫টা বই থেকে ৫টা জিনিস লেখো যা তুমি শিখেছ। প্রতিটা জোড়ার জন্য জিজ্ঞেস করো — "X কীভাবে Y-এর সাথে সংযুক্ত?" যদি সংযোগ খুঁজে না পাও — সেটাই gap।</em></p><p>১. List 5 things you learned from different books (e.g., Zettelkasten from Book 24, learned helplessness from Book 23, first principles from Book 22).</p><p>২. For EACH pair, ask: "How does X connect to Y?"</p><p>৩. If you can't find a connection — that's a missing bridge. You have two islands with no road.</p><p><strong>Example connections you should be able to make:</strong></p><p>- Book 23 (helplessness) + Book 24 (Feynman) = "If you have learned helplessness about math, Feynman technique can break it because it forces you to explain simply — revealing that the gap is small."</p><p>- Book 12 (RAG) + Book 22 (systems thinking) = "RAG is a system with feedback loops — the retrieval quality affects generation quality, which affects user trust, which affects usage."</p><p>- Book 7 (spaced repetition) + Book 25 (reading papers) = "Use spaced repetition for key paper findings — review your paper notes at 1 day, 7 days, 30 days."</p><p><strong>If you can make 10+ such connections — you're building a web. If fewer than 5 — you're in silos.</strong></p>`
+    body:`<p><strong>এখনই তোমার জ্ঞান যাচাই করো — Audit your knowledge right now:</strong></p><p><em>তোমার ৫টা বই থেকে ৫টা জিনিস লেখো যা তুমি শিখেছ। প্রতিটা জোড়ার জন্য জিজ্ঞেস করো — "X কীভাবে Y-এর সাথে সংযুক্ত?" যদি সংযোগ খুঁজে না পাও — সেটাই gap।</em></p><p>১. List 5 things you learned from different books (e.g., Zettelkasten from Book 26, learned helplessness from Book 24, first principles from Book 23).</p><p>২. For EACH pair, ask: "How does X connect to Y?"</p><p>৩. If you can't find a connection — that's a missing bridge. You have two islands with no road.</p><p><strong>Example connections you should be able to make:</strong></p><p>- Book 24 (helplessness) + Book 26 (Feynman) = "If you have learned helplessness about math, Feynman technique can break it because it forces you to explain simply — revealing that the gap is small."</p><p>- Book 10 (RAG) + Book 23 (systems thinking) = "RAG is a system with feedback loops — the retrieval quality affects generation quality, which affects user trust, which affects usage."</p><p>- Book 5 (spaced repetition) + Book 27 (reading papers) = "Use spaced repetition for key paper findings — review your paper notes at 1 day, 7 days, 30 days."</p><p><strong>If you can make 10+ such connections — you're building a web. If fewer than 5 — you're in silos.</strong></p>`
   }
 });
 
@@ -135,8 +135,8 @@ doors.push({
     a:"মানুষ নতুন ধারণা বোঝে পুরোনোর সাথে মিলিয়ে। X যেমন, Y-ও তেমন। কোথায় মিল, কোথায় অমিল — সেটাই analogy। Gentner (১৯৮৩)। সিলসিলা — সেতু।",
     aen:"Humans understand new concepts by mapping them to known ones. X is like Y. What maps, what doesn't — that's analogy. Gentner (1983). Silsila — bridge."
   },
-  story:`<p class="scene-setting">কারিগর সাবরিনা তোমাকে একটা নতুন ধারণা বোঝাতে চান — কিন্তু তুমি বুঝতে পারছ না। তিনি থামলেন। "ঠামো," বললেন। "তুমি Zettelkasten জানো?" (Book ২৪)। হ্যাঁ। "Zettelkasten হলো একটা গ্রন্থাগার যেখানে প্রতিটা বই একে অপরের সাথে সংযুক্ত।" হ্যাঁ। "একটা neural network-ও তেমনি — প্রতিটা neuron একে অপরের সাথে সংযুক্ত। গ্রন্থাগারের মতো।" হ্যাঁ! বুঝলে! "এটাই analogy," সাবরিনা বললেন। "Zettelkasten = bridge। তুমি যা জানো তার সাথে নতুন ধারণা সংযুক্ত করো।"</p>
-<p class="scene-setting en">Craftswoman Sabrina wants to explain a new concept — but you don't understand. She stopped. "Wait," she said. "Do you know Zettelkasten?" (Book 24). Yes. "Zettelkasten is a library where every book connects to every other." Yes. "A neural network is the same — every neuron connects to every other. Like a library." Yes! You understood! "That's analogy," Sabrina said. "Zettelkasten = bridge. You connect the new concept to what you already know."</p>
+  story:`<p class="scene-setting">কারিগর সাবরিনা তোমাকে একটা নতুন ধারণা বোঝাতে চান — কিন্তু তুমি বুঝতে পারছ না। তিনি থামলেন। "ঠামো," বললেন। "তুমি Zettelkasten জানো?" (Book ২৬)। হ্যাঁ। "Zettelkasten হলো একটা গ্রন্থাগার যেখানে প্রতিটা বই একে অপরের সাথে সংযুক্ত।" হ্যাঁ। "একটা neural network-ও তেমনি — প্রতিটা neuron একে অপরের সাথে সংযুক্ত। গ্রন্থাগারের মতো।" হ্যাঁ! বুঝলে! "এটাই analogy," সাবরিনা বললেন। "Zettelkasten = bridge। তুমি যা জানো তার সাথে নতুন ধারণা সংযুক্ত করো।"</p>
+<p class="scene-setting en">Craftswoman Sabrina wants to explain a new concept — but you don't understand. She stopped. "Wait," she said. "Do you know Zettelkasten?" (Book 26). Yes. "Zettelkasten is a library where every book connects to every other." Yes. "A neural network is the same — every neuron connects to every other. Like a library." Yes! You understood! "That's analogy," Sabrina said. "Zettelkasten = bridge. You connect the new concept to what you already know."</p>
 
 <div class="dialogue">সিলো বলেছিলেন — বিচ্ছিন্ন জ্ঞান ভঙ্গুর। কিন্তু আমি বলি — সংযুক্ত করার প্রথম সরঞ্জাম হলো analogy। তুমি যা জানো, তার সাথে নতুনকে মিলিয়ে। Gentner (১৯৮৩) এর নাম — structure-mapping theory। মস্তিষ্ক বলে — 'এটা ওটার মতো।' কিন্তু ভালো analogy শুধু মিল নয় — মিল এবং অমিল দেখায়। Zettelkasten এবং neural network অনেকটা এক — কিন্তু Zettelkasten-এ backpropagation নেই। সেখানেই অমিল।</div>
 <div class="dialogue en">"Silos said — isolated knowledge is fragile. But I say — the first tool of connection is analogy. You map the new to the known. Gentner (1983) calls it structure-mapping theory. The brain says — 'this is like that.' But a good analogy doesn't just show similarity — it shows where the similarity ENDS. Zettelkasten and neural networks are alike — but Zettelkasten has no backpropagation. That's where they differ."</div>
@@ -209,12 +209,12 @@ HOLYOAK'S PRAGMATIC REASONING:
        to solve it — IF they saw the analogy (Gick & 
        Holyoak, ১৯৮০)
 
-CROSS-DOMAIN ANALOGIES (connecting your 25 books):
+CROSS-DOMAIN ANALOGIES (connecting your 27 books):
 
   ┌──────────────────────┬──────────────────────────────┐
   │ Known (Source)        │ New (Target)                  │
   ├──────────────────────┼──────────────────────────────┤
-  │ Immune system (bio)   │ Computer security (Book ১৫)  │
+  │ Immune system (bio)   │ Computer security (Book ১৩)  │
   │ → antibodies adapt    │ → adaptive firewalls          │
   │ → memory cells        │ → threat databases            │
   ├──────────────────────┼──────────────────────────────┤
@@ -222,14 +222,14 @@ CROSS-DOMAIN ANALOGIES (connecting your 25 books):
   │ → mutation + selection│ → random changes + testing    │
   │ → fitness landscape   │ → code quality metrics        │
   ├──────────────────────┼──────────────────────────────┤
-  │ Garden (Book ৫)       │ ML model training (Book ১৩)  │
+  │ Garden (Book ৫)       │ ML model training (Book ১১)  │
   │ → soil preparation    │ → data preprocessing          │
   │ → seed selection      │ → model architecture          │
   │ → regular watering    │ → training schedule           │
   │ → pruning             │ → hyperparameter tuning       │
   ├──────────────────────┼──────────────────────────────┤
   │ Learned helplessness  │ Imposter syndrome (career)    │
-  │ (Book ২৩)             │ → brain learned "I can't"     │
+  │ (Book ২৪)             │ → brain learned "I can't"     │
   │ → dog stops trying    │ → professional stops trying   │
   │ → cure: small wins    │ → cure: small wins             │
   ├──────────────────────┼──────────────────────────────┤
@@ -271,7 +271,7 @@ POLYA'S HEURISTICS (1945):
 <div class="dialogue en">"Silsila — chain, connection. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Together = silsila. Analogy too — connecting one knowledge to another. Through connection, new concepts become understandable. Gentner showed — this is how the brain works. Mapping the new to the known. One who builds silsila, understands. One who isolates, forgets."</div>`,
   senior:{
     title:"প্রতিদিন analogy বানাও — Build Analogies Daily",
-    body:`<p><strong>প্রতিটি নতুন ধারণার জন্য এটা করো — For every new concept:</strong></p><p><em>১. জিজ্ঞেস করো — "এটা কীর মতো?" ২. কাঠামো মিলিয়ে দেখো। ৩. সীমা খুঁজে বের করো — কোথায় analogy ভাঙে।</em></p><p>১. <strong>"What is this LIKE?"</strong> — Find a known concept from a DIFFERENT field that has similar structure.</p><p>২. <strong>Map the structure</strong> — What parts correspond? What relationships correspond?</p><p>৩. <strong>Find the LIMITS</strong> — Where does the analogy break? This is just as important as where it works.</p><p><strong>Examples across your library:</strong></p><p>- "RAG hallucination (Book 12) is like false memory in psychology (Book 23) — both fill gaps with plausible but wrong information."</p><p>- "Zettelkasten (Book 24) is like a neural network — nodes and connections. But Zettelkasten has no learning algorithm."</p><p>- "Growth mindset (Book 23) is like fine-tuning (Book 13) — both update weights based on feedback."</p><p>- "Peer review (Book 25) is like adversarial training (Book 15) — both improve through challenge."</p><p><strong>5+ analogies per day = your brain becomes a connection machine.</strong></p>`
+    body:`<p><strong>প্রতিটি নতুন ধারণার জন্য এটা করো — For every new concept:</strong></p><p><em>১. জিজ্ঞেস করো — "এটা কীর মতো?" ২. কাঠামো মিলিয়ে দেখো। ৩. সীমা খুঁজে বের করো — কোথায় analogy ভাঙে।</em></p><p>১. <strong>"What is this LIKE?"</strong> — Find a known concept from a DIFFERENT field that has similar structure.</p><p>২. <strong>Map the structure</strong> — What parts correspond? What relationships correspond?</p><p>৩. <strong>Find the LIMITS</strong> — Where does the analogy break? This is just as important as where it works.</p><p><strong>Examples across your library:</strong></p><p>- "RAG hallucination (Book 10) is like false memory in psychology (Book 24) — both fill gaps with plausible but wrong information."</p><p>- "Zettelkasten (Book 26) is like a neural network — nodes and connections. But Zettelkasten has no learning algorithm."</p><p>- "Growth mindset (Book 24) is like fine-tuning (Book 11) — both update weights based on feedback."</p><p>- "Peer review (Book 27) is like adversarial training (Book 13) — both improve through challenge."</p><p><strong>5+ analogies per day = your brain becomes a connection machine.</strong></p>`
   }
 });
 
@@ -324,7 +324,7 @@ THE ~১০০ MODELS (organized by discipline):
   │               │ natural selection, ecosystems,       │
   │               │ homeostasis, mutation                │
   ├──────────────┼──────────────────────────────────────┤
-  │ PSYCHOLOGY    │ cognitive bias (Book ২৩),            │
+  │ PSYCHOLOGY    │ cognitive bias (Book ২৪),            │
   │               │ social proof, anchoring,             │
   │               │ loss aversion, Dunning-Kruger,       │
   │               │ learned helplessness, growth mindset │
@@ -340,7 +340,7 @@ THE ~১০০ MODELS (organized by discipline):
   ├──────────────┼──────────────────────────────────────┤
   │ ENGINEERING   │ feedback loops, redundancy,          │
   │               │ bottlenecks (Book ৪), quality control│
-  │               │ (Book ১৬), system design (Book ৪)   │
+  │               │ (Book ১৪), system design (Book ৪)   │
   ├──────────────┼──────────────────────────────────────┤
   │ COMPUTER SCI  │ abstraction, algorithms, complexity, │
   │               │ recursion, caching, indexing         │
@@ -358,11 +358,11 @@ MULTIPLE MODEL APPLICATION:
       → knowledge compounds over decades
     Model ৩: SUNK COST (economics)
       → don't do it because I already invested in MSIS
-    Model ৪: GROWTH MINDSET (psychology, Book ২৩)
+    Model ৪: GROWTH MINDSET (psychology, Book ২৪)
       → I can develop research skills
     Model ৫: REGRESSION TO MEAN (statistics)
       → most outcomes are average; what makes mine different?
-    Model ৬: SOCIAL PROOF (psychology, Book ২৩)
+    Model ৬: SOCIAL PROOF (psychology, Book ২৪)
       → are smart people doing PhDs? why?
     Model ৭: ENTROPY (physics)
       → skills decay without use; PhD maintains learning momentum
@@ -371,32 +371,32 @@ MULTIPLE MODEL APPLICATION:
   → MULTIPLE models REVEAL different aspects
   → The DECISION emerges from the intersection
 
-YOUR 25 BOOKS AS A STARTER LATTICEWORK:
+YOUR 27 BOOKS AS A STARTER LATTICEWORK:
 
-  Each of your 25 books provides models:
-  
-  Book ৪ (System Design): bottlenecks, load balancing, 
+  Each of your 27 books provides models:
+
+  Book ৪ (System Design): bottlenecks, load balancing,
     caching, redundancy → apply to any system
-  Book ৭ (Meta-learning): spaced repetition, chunking → 
+  Book ৫ (Meta-learning): spaced repetition, chunking →
     apply to learning anything
-  Book ৯ (Prompt Eng): clear communication, 
+  Book ৭ (Prompt Eng): clear communication,
     instruction design → apply to human management
-  Book ১২ (RAG): retrieval, relevance, context → 
+  Book ১০ (RAG): retrieval, relevance, context →
     apply to how YOU retrieve knowledge
-  Book ১৩ (Fine-tuning): adaptation, feedback loops → 
+  Book ১১ (Fine-tuning): adaptation, feedback loops →
     apply to personal development
-  Book ১৫ (Security): adversarial thinking, defense in 
+  Book ১৩ (Security): adversarial thinking, defense in
     depth → apply to career protection
-  Book ১৬ (LLMOps): monitoring, observability → 
+  Book ১৪ (LLMOps): monitoring, observability →
     apply to self-monitoring
-  Book ২২ (Irreplaceable): first principles, value → 
+  Book ২৩ (Irreplaceable): first principles, value →
     apply to career decisions
-  Book ২৩ (Psychology): bias, locus of control → 
+  Book ২৪ (Psychology): bias, locus of control →
     apply to self-understanding
-  Book ২৪ (Knowledge): Zettelkasten, Feynman → 
+  Book ২৬ (Knowledge): Zettelkasten, Feynman →
     apply to learning method
   
-  → Your 25 books = 25 model clusters
+  → Your 27 books = 27 model clusters
   → Together = a POWERFUL latticework
   → But ONLY if you CONNECT them
 
@@ -409,7 +409,7 @@ HOW TO BUILD YOUR LATTICEWORK:
   
   Step ২: CONNECT models (weekly)
     → find links between models from different books
-    → "Book ২৩'s growth mindset + Book ১৩'s fine-tuning
+    → "Book ২৪'s growth mindset + Book ১১'s fine-tuning
        = both update based on feedback"
     → write these connections in your Zettelkasten
   
@@ -428,7 +428,7 @@ HOW TO BUILD YOUR LATTICEWORK:
 <div class="dialogue en">"Hikmah — wisdom, applied knowledge. Allah says — 'Whoever is given hikmah has been given much good.' (2:269). Hikmah is not just knowledge — it's APPLIED knowledge. Munger's latticework too is hikmah — not collecting knowledge, but applying connected knowledge. One who knows one model, knows. One who applies 100 connected models, attains hikmah. Hikmah = the application of connected knowledge."</div>`,
   senior:{
     title:"এই মাসে তোমার Latticework বানাও — Build Your Latticework",
-    body:`<p><strong>তোমার ২৫টা বইয়ের প্রতিটি থেকে ৩-৫টা মডেল বের করো।</strong> <em>"নীতি → উৎস → প্রয়োগ" হিসেবে লেখো।</em></p><p>Extract 3-5 models from each book. Write as: "Principle → Source → Application." Write them as: "Principle → Source → Application."</p><p><strong>Example:</strong></p><p>- Book 23: "Learned helplessness is reversible through small wins" → applies to any area where you feel stuck.</p><p>- Book 7: "Spaced repetition exploits the forgetting curve" → applies to retaining ANY knowledge.</p><p>- Book 4: "A system's bottleneck determines its throughput" → applies to your career, your project, your life.</p><p><strong>Then find connections:</strong> "Book 23's learned helplessness + Book 7's spaced repetition = small daily reviews break helplessness by proving you CAN remember and learn."</p><p><strong>Goal: 50+ models extracted, 20+ connections found by end of month.</strong> This is your starter latticework.</p>`
+    body:`<p><strong>তোমার ২৭টা বইয়ের প্রতিটি থেকে ৩-৫টা মডেল বের করো।</strong> <em>"নীতি → উৎস → প্রয়োগ" হিসেবে লেখো।</em></p><p>Extract 3-5 models from each book. Write as: "Principle → Source → Application." Write them as: "Principle → Source → Application."</p><p><strong>Example:</strong></p><p>- Book 24: "Learned helplessness is reversible through small wins" → applies to any area where you feel stuck.</p><p>- Book 5: "Spaced repetition exploits the forgetting curve" → applies to retaining ANY knowledge.</p><p>- Book 4: "A system's bottleneck determines its throughput" → applies to your career, your project, your life.</p><p><strong>Then find connections:</strong> "Book 24's learned helplessness + Book 5's spaced repetition = small daily reviews break helplessness by proving you CAN remember and learn."</p><p><strong>Goal: 50+ models extracted, 20+ connections found by end of month.</strong> This is your starter latticework.</p>`
   }
 });
 
@@ -437,18 +437,18 @@ doors.push({
   num:4, icon:"🎯", color:"#67e8f9", name:"শূন্যস্থান সন্ধানী",
   subtitle:"The Gap Finder", tech:"Knowledge Gap Identification Methodology",
   spirit:"তালাশ — সন্ধান",
-  secret:"সবচেয়ে বিপজ্জনক অজ্ঞতা — যা তুমি জানো না তা জানো না। Rumsfeld-এর 'unknown unknowns'। কিন্তু systematic gap finding আছে। Feynman technique (Book ২৪) একটা উপায় — ব্যাখ্যা করার চেষ্টা করো, যেখানে আটকাও সেই gap। আরেকটা — একটা মডেল নাও, প্রয়োগ করো, কোথায় ভাঙে সেটা gap। তালাশ — সচেতন সন্ধান।",
+  secret:"সবচেয়ে বিপজ্জনক অজ্ঞতা — যা তুমি জানো না তা জানো না। Rumsfeld-এর 'unknown unknowns'। কিন্তু systematic gap finding আছে। Feynman technique (Book ২৬) একটা উপায় — ব্যাখ্যা করার চেষ্টা করো, যেখানে আটকাও সেই gap। আরেকটা — একটা মডেল নাও, প্রয়োগ করো, কোথায় ভাঙে সেটা gap। তালাশ — সচেতন সন্ধান।",
   recall:{
     q:"Knowledge gap কীভাবে খুঁজবে?",
     qen:"How to find knowledge gaps?",
     a:"Feynman technique — ব্যাখ্যা করো, যেখানে আটকাও সেই gap। মডেল প্রয়োগ — কোথায় ভাঙে সেই gap। বইয়ের দরজার মধ্যে missing সংযোগ — সেই gap। তালাশ।",
     aen:"Feynman technique — explain, where stuck is the gap. Apply a model — where it breaks is the gap. Missing connections between books — that's a gap. Talash."
   },
-  story:`<p class="scene-setting">কারিগর ফারহান তোমাকে একটা বড় পর্দার সামনে দাঁড় করালেন। পর্দায় তোমার ২৫টা বইয়ের নাম — নকশার মতো সাজানো। কিন্তু কিছু জায়গায় ফাঁকা। "এই ফাঁকাগুলো কী?" তুমি জিজ্ঞেস করলে। "তোমার knowledge gap," ফারহান বললেন। "তুমি RAG জানো (Book ১২), Prompt Engineering জানো (Book ৯)। কিন্তু এগুলোর মধ্যে সংযোগ কী? সেটা তুমি জানো না। সেই gap। আর সবচেয়ে বিপজ্জনক — তুমি জানো না যে তুমি জানো না।"</p>
-<p class="scene-setting en">Craftsman Farhan stood you before a large screen. Your 25 books displayed like a map. But some spots are blank. "What are these blanks?" you asked. "Your knowledge gaps," Farhan said. "You know RAG (Book 12), prompt engineering (Book 9). But what's the connection between them? You don't know. That's a gap. And most dangerous — you don't know that you don't know."</p>
+  story:`<p class="scene-setting">কারিগর ফারহান তোমাকে একটা বড় পর্দার সামনে দাঁড় করালেন। পর্দায় তোমার ২৭টা বইয়ের নাম — নকশার মতো সাজানো। কিন্তু কিছু জায়গায় ফাঁকা। "এই ফাঁকাগুলো কী?" তুমি জিজ্ঞেস করলে। "তোমার knowledge gap," ফারহান বললেন। "তুমি RAG জানো (Book ১০), Prompt Engineering জানো (Book ৭)। কিন্তু এগুলোর মধ্যে সংযোগ কী? সেটা তুমি জানো না। সেই gap। আর সবচেয়ে বিপজ্জনক — তুমি জানো না যে তুমি জানো না।"</p>
+<p class="scene-setting en">Craftsman Farhan stood you before a large screen. Your 27 books displayed like a map. But some spots are blank. "What are these blanks?" you asked. "Your knowledge gaps," Farhan said. "You know RAG (Book 10), prompt engineering (Book 7). But what's the connection between them? You don't know. That's a gap. And most dangerous — you don't know that you don't know."</p>
 
-<div class="dialogue">latticework বলেছিলেন — মডেল সংযুক্ত করো। কিন্তু আমি বলি — সংযোগের আগে খুঁজে বের করো কোথায় ফাঁকা। gap। জ্ঞানের কারিগর (Book ২৪, Door ৪) Feynman technique শিখিয়েছে — সহজ করে ব্যাখ্যা করো, যেখানে আটকাও সেই gap। PhD পাঠক (Book ২৫, Door ৪) gap finding শিখিয়েছে — research-এ কী missing। এখন আমি শেখাবো — একটা বইয়ের জ্ঞান আরেকটার সাথে কীভাবে সংযুক্ত করবে, এবং কোথায় gap।</div>
-<div class="dialogue en">"The latticework said — connect models. But I say — before connecting, find where it's blank. The gap. The Knowledge Craftsman (Book 24, Door 4) taught the Feynman technique — explain simply, where stuck is the gap. The PhD reader (Book 25, Door 4) taught gap finding in research — what's missing. Now I'll teach — how to connect one book's knowledge to another, and where the gaps are."</div>
+<div class="dialogue">latticework বলেছিলেন — মডেল সংযুক্ত করো। কিন্তু আমি বলি — সংযোগের আগে খুঁজে বের করো কোথায় ফাঁকা। gap। জ্ঞানের কারিগর (Book ২৬, Door ৪) Feynman technique শিখিয়েছে — সহজ করে ব্যাখ্যা করো, যেখানে আটকাও সেই gap। PhD পাঠক (Book ২৭, Door ৪) gap finding শিখিয়েছে — research-এ কী missing। এখন আমি শেখাবো — একটা বইয়ের জ্ঞান আরেকটার সাথে কীভাবে সংযুক্ত করবে, এবং কোথায় gap।</div>
+<div class="dialogue en">"The latticework said — connect models. But I say — before connecting, find where it's blank. The gap. The Knowledge Craftsman (Book 26, Door 4) taught the Feynman technique — explain simply, where stuck is the gap. The PhD reader (Book 27, Door 4) taught gap finding in research — what's missing. Now I'll teach — how to connect one book's knowledge to another, and where the gaps are."</div>
 
 <div class="code-block">KNOWLEDGE GAP IDENTIFICATION — Finding What You Don't Know:
 
@@ -465,7 +465,7 @@ THE FOUR TYPES OF GAPS:
   │ (connection)      │ can't see how they connect"       │
   │                   │ Fix: this book (Door ২-৩)         │
   ├──────────────────┼──────────────────────────────────┤
-  │ ৩. MISSING-book   │ "My 25 books don't cover          │
+  │ ৩. MISSING-book   │ "My 27 books don't cover          │
   │ (domain)          │ [topic X]"                        │
   │                   │ Fix: read new books               │
   ├──────────────────┼──────────────────────────────────┤
@@ -474,7 +474,7 @@ THE FOUR TYPES OF GAPS:
   │                   │ Fix: exposure, discomfort, test    │
   └──────────────────┴──────────────────────────────────┘
 
-THE FEYNMAN GAP TEST (from Book ২৪):
+THE FEYNMAN GAP TEST (from Book ২৬):
 
   For any concept from any book:
     ১. Close the book
@@ -483,7 +483,7 @@ THE FEYNMAN GAP TEST (from Book ২৪):
     ৪. Go back, fill the gap
     ৫. Repeat until you can explain it fully
   
-  Apply this across ALL 25 books:
+  Apply this across ALL 27 books:
     → Can you explain learned helplessness simply?
     → Can you explain PagedAttention simply?
     → Can you explain Zettelkasten simply?
@@ -497,7 +497,7 @@ THE CONNECTION GAP TEST (new in this book):
     → if you CAN'T: gap exists ❌
   
   Example:
-    Book ৭ (spaced repetition) + Book ১২ (RAG) = ?
+    Book ৫ (spaced repetition) + Book ১০ (RAG) = ?
     → Connection: "RAG retrieval is like human recall — 
        both work better with spaced exposure to data.
        Re-indexing documents periodically is like spaced 
@@ -520,7 +520,7 @@ THE APPLICATION GAP TEST:
 THE LATTICEWORK GAP TEST:
 
   Draw your mental models as a network:
-    → nodes = models from your 25 books
+    → nodes = models from your 27 books
     → edges = connections you can make
   
   Gaps are visible as:
@@ -551,7 +551,7 @@ THE DIKW PYRAMID (where are your gaps?):
   Gap ২: KNOWLEDGE → WISDOM (applying)
   
   This book targets Gap ১ (connecting)
-  Book ২২ targets Gap ২ (applying)
+  Book ২৩ targets Gap ২ (applying)
 
 PRACTICAL GAP-FINDING EXERCISE:
 
@@ -572,8 +572,8 @@ PRACTICAL GAP-FINDING EXERCISE:
   ৩. THE "EXPLAIN TO A FRIEND" TEST
     → try explaining a concept from one book
        using a concept from another book
-    → "Fine-tuning (Book ১৩) is like learning
-       helplessness recovery (Book ২৩) — both
+    → "Fine-tuning (Book ১১) is like learning
+       helplessness recovery (Book ২৪) — both
        involve updating weights based on feedback"
     → if you can't = gap
   
@@ -587,7 +587,7 @@ PRACTICAL GAP-FINDING EXERCISE:
 <div class="dialogue en">"Talash — search, seeking. Allah says — 'Those who are guided, We increase them in guidance.' Talash isn't just seeking new knowledge — it's seeking gaps in your existing knowledge. One who seeks, finds gaps. One who finds gaps, fills them. One who fills, grows. The most dangerous state — thinking 'I know everything.' Because then seeking stops. Gaps become invisible. Knowledge stagnates."</div>`,
   senior:{
     title:"এখনই তোমার Gap খুঁজে নাও — Find Your Gaps",
-    body:`<p><strong>বইয়ের জোড়া ম্যাট্রিক্স ব্যায়াম — Book Pair Matrix:</strong></p><p><em>৫টা বই বেছে নাও। প্রতিটি জোড়ার জন্য একটা করে সংযোগের বাক্য লেখো। যে জোড়ায় পারবে না — সেই তোমার সবচেয়ে বড় gap।</em></p><p>Pick 5 books from your library. For each of the 10 possible pairs, write ONE sentence connecting them.</p><p><strong>Example pairs:</strong></p><p>- Book 7 (Meta-learning) + Book 13 (Fine-tuning) = "Fine-tuning IS meta-learning for models — updating weights based on feedback, like humans updating understanding through practice."</p><p>- Book 9 (Prompt Eng) + Book 23 (Psychology) = "Prompt engineering IS applied psychology — you're manipulating attention and instruction-following, same principles as Cialdini's influence."</p><p>- Book 16 (LLMOps) + Book 22 (Irreplaceable) = "LLMOps monitoring principles apply to career monitoring — observe, detect drift, respond quickly."</p><p><strong>Pairs where you CAN'T write a connecting sentence = your biggest gaps. Write those down. Those are your learning priorities.</strong></p>`
+    body:`<p><strong>বইয়ের জোড়া ম্যাট্রিক্স ব্যায়াম — Book Pair Matrix:</strong></p><p><em>৫টা বই বেছে নাও। প্রতিটি জোড়ার জন্য একটা করে সংযোগের বাক্য লেখো। যে জোড়ায় পারবে না — সেই তোমার সবচেয়ে বড় gap।</em></p><p>Pick 5 books from your library. For each of the 10 possible pairs, write ONE sentence connecting them.</p><p><strong>Example pairs:</strong></p><p>- Book 5 (Meta-learning) + Book 11 (Fine-tuning) = "Fine-tuning IS meta-learning for models — updating weights based on feedback, like humans updating understanding through practice."</p><p>- Book 7 (Prompt Eng) + Book 24 (Psychology) = "Prompt engineering IS applied psychology — you're manipulating attention and instruction-following, same principles as Cialdini's influence."</p><p>- Book 14 (LLMOps) + Book 23 (Irreplaceable) = "LLMOps monitoring principles apply to career monitoring — observe, detect drift, respond quickly."</p><p><strong>Pairs where you CAN'T write a connecting sentence = your biggest gaps. Write those down. Those are your learning priorities.</strong></p>`
   }
 });
 
@@ -654,7 +654,7 @@ KOUNIOS & BEEMAN (2009):
     → this is when the brain CONNECTS distant ideas
     
     → Default mode network does:
-      ট. connects distant memories
+      ১. connects distant memories
       ২. explores unusual associations
       ৩. simulates scenarios
       ৪. processes background information
@@ -725,22 +725,22 @@ EINSTEIN'S INSIGHT METHOD:
        entirely alone, and of good cheer — it is on 
        such occasions that my ideas flow best."
 
-CONNECTING INSIGHT TO YOUR 25 BOOKS:
+CONNECTING INSIGHT TO YOUR 27 BOOKS:
 
   Insight connects DISTANT ideas:
-    → your 25 books are "distant" knowledge domains
+    → your 27 books are "distant" knowledge domains
     → when your DMN processes them during rest
     → it finds connections your conscious mind misses
   
   Example insight:
-    "RAG hallucination (Book ১২) is like human false memory 
-     (Book ২৩) — both happen when the retrieval system fills 
-     gaps with plausible but wrong information. So RAG 
-     evaluation (Book ১৮) should test for false memories 
+    "RAG hallucination (Book ১০) is like human false memory
+     (Book ২৪) — both happen when the retrieval system fills
+     gaps with plausible but wrong information. So RAG
+     evaluation (Book ১৬) should test for false memories
      the same way psychologists do."
-  
+
   → This connection was UNAVAILABLE through linear thinking
-  → It required the DMN to connect Book ১২ + ২৩ + ১৮
+  → It required the DMN to connect Book ১০ + ২৪ + ১৬
   → This is what the Knowledge Web DOES</div>
 
 <div class="dialogue">ইলহাম — divine inspiration, sudden knowledge। ইসলামী ঐতিহ্যে ইলহাম হলো এমন জ্ঞান যা হঠাৎ আসে — চেষ্টা ছাড়া। নবীগণ ইলহাম পেতেন। কিন্তু সাধারণ মানুষও insight পায় — যখন তারা গভীরভাবে চিন্তা করে, তারপর ছেড়ে দেয়। মস্তিষ্ক বিশ্রামে সংযুক্ত করে। ইলহাম। Kounios ও Beeman দেখালেন — এটা মস্তিষ্কের প্রক্রিয়া। default mode network। gamma waves। ইলহাম এলোমেলো নয় — এটা প্রস্তুতির ফল। যে গভীরভাবে চিন্তা করে, তারপর ছাড়ে — তার মস্তিষ্ক সংযুক্ত করে। ইলহাম।</div>

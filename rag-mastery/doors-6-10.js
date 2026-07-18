@@ -581,13 +581,47 @@ FAILURE HANDLING (Door 9):
 TECH STACK (recommended):
   Framework: LangChain বা LlamaIndex
   Vector DB: Qdrant (hybrid support)
-  Embedding: BGE-large-en-v1.5
+  Embedding: BGE-large-en-v1.5 / voyage-3
   Reranker: BGE-Reranker-v2 (open) / Cohere
-  LLM: GPT-4o / Claude 3.5 Sonnet
+  LLM: GPT-5 / Claude 4 Sonnet / Gemini 2 (models change; patterns don't)
   Eval: RAGAS
   Observability: Langfuse (open)
   Guardrails: Guardrails AI
   Orchestration: FastAPI + Celery
+  Prompt caching: ON (cuts cost ~90% for repeated system prompts)
+
+THE 2025 EVOLUTION — AGENTIC RAG:
+
+  Classic RAG (এই বইয়ের পুরো ফোকাস):
+    User query → retrieve → generate → answer
+    → এক ধাপ retrieval, এক ধাপ generation
+
+  Agentic RAG (2025+):
+    User query → Agent decides:
+      → কী retrieve করতে হবে?
+      → একাধিক source দরকান?
+      → প্রতিটি source থেকে কী প্রশ্ন?
+      → retrieved info যথেষ্ট না? → retrieve আবার
+      → একাধিক round, iterative refinement
+
+    Example: "Compare Q3 earnings of Apple and Microsoft"
+      Round 1: agent → retrieve Apple Q3
+      Round 2: agent → retrieve Microsoft Q3
+      Round 3: agent → both retrieved → synthesize
+      → agent decides when "enough" to answer
+
+  Trade-offs:
+    ✅ complex, multi-hop questions — far better
+    ✅ self-correcting (retrieves again if first attempt weak)
+    ❌ slower (multiple LLM calls + retrievals)
+    ❌ costlier (3-5x classic RAG)
+    ❌ harder to evaluate (non-deterministic path)
+
+  When to use:
+    → simple lookup? Classic RAG (Door 4 stack)
+    → multi-source synthesis? Agentic RAG
+    → research questions? Agentic RAG
+    → high-volume simple Q&A? Classic RAG
 
 BUDGET:
   Per query: ~$০.০৩-০.০৮

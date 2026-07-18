@@ -52,7 +52,7 @@ THE UNIVERSAL PATTERNS (appear across all fields):
   │                 │ (Bk ১০)  │          │ (Bk ২৩)  │          │
   ├────────────────┼──────────┼──────────┼──────────┼──────────┤
   │ COMPOUND GROWTH │ cell     │ data     │ habit    │ interest │
-  │                 │ division │ Moors law│ formation│ (Bk ২২)  │
+  │                 │ division │ Moore's law│ formation│ (Bk ২২)  │
   ├────────────────┼──────────┼──────────┼──────────┼──────────┤
   │ EVOLUTION       │ natural  │ genetic  │ memetics │ market   │
   │                 │ selection│ algo     │ idea     │ selection│
@@ -80,7 +80,7 @@ THE POWER OF PATTERN RECOGNITION:
   
   Example:
     → You know feedback loops from biology (homeostasis)
-    → You see imposter syndrome (psychology, Book ২৩)
+    → You see imposter syndrome (psychology, Book ২৪)
     → You recognize: "imposter syndrome is a NEGATIVE 
        feedback loop — feeling inadequate → overwork → 
        burnout → less confidence → more inadequacy"
@@ -90,7 +90,7 @@ THE POWER OF PATTERN RECOGNITION:
 POLYA'S HEURISTIC METHOD (1945):
 
   George Polya, "How to Solve It":
-    ট. UNDERSTAND the problem
+    ১. UNDERSTAND the problem
     ২. Have I seen a SIMILAR problem?
     ৩. Can I RESTATE it as a known type?
     ৪. Can I solve a SIMPLER version first?
@@ -104,44 +104,44 @@ POLYA'S HEURISTIC METHOD (1945):
   
   Once you identify the pattern → apply known solutions
 
-YOUR 25 BOOKS AS PATTERN LIBRARY:
+YOUR 27 BOOKS AS PATTERN LIBRARY:
 
   Each book teaches patterns that APPLY ELSEWHERE:
   
   Book ৪ (System Design): load balancing
-    → applies to: work delegation, study schedule, 
+    → applies to: work delegation, study schedule,
        emotional energy distribution
-  
-  Book ১০ (LLM Anatomy): attention mechanism
-    → applies to: human attention (Book ২৩ Door ১),
+
+  Book ৮ (LLM Anatomy): attention mechanism
+    → applies to: human attention (Book ২৪ Door ১),
        prioritization, focus management
-  
-  Book ১২ (RAG): retrieval + generation
+
+  Book ১০ (RAG): retrieval + generation
     → applies to: how humans recall + create,
        how teams access knowledge + make decisions
-  
-  Book ১৬ (LLMOps): monitoring + drift detection
-    → applies to: self-monitoring (Book ৭ Door ৪),
+
+  Book ১৪ (LLMOps): monitoring + drift detection
+    → applies to: self-monitoring (Book ৫ Door ৪),
        career drift, skill staleness
-  
-  Book ২৩ (Psychology): bias + locus of control
-    → applies to: ML bias (Book ১৮), 
+
+  Book ২৪ (Psychology): bias + locus of control
+    → applies to: ML bias (Book ১৬),
        code review bias, decision-making
 
 PATTERN TRANSFER EXERCISE:
 
   Daily: take ONE pattern from one field → apply to another
-  
+
   Examples:
-    ট. "RAG retrieval" (Book ১২) → 
-       "How does my BRAIN retrieve memories? 
+    ১. "RAG retrieval" (Book ১০) →
+       "How does my BRAIN retrieve memories?
         Is my personal retrieval system optimized?"
-    
-    ২. "Adversarial training" (Book ১৫) →
+
+    ২. "Adversarial training" (Book ১৩) →
        "Who is the 'adversary' challenging my ideas?
         Am I stress-testing my beliefs?"
-    
-    ৩. "Fine-tuning" (Book ১৩) →
+
+    ৩. "Fine-tuning" (Book ১১) →
        "What experiences are 'fine-tuning' my mind?
         Am I training on the right data?"</div>
 
@@ -149,7 +149,7 @@ PATTERN TRANSFER EXERCISE:
 <div class="dialogue en">"Ayat — sign, symbol, evidence that repeats. Allah says — 'On earth and within yourselves are many signs.' (51:20-21). Signs not once — but repeated. Same pattern in different places. See it in rivers, trees, blood. One who sees ayat — recognizes patterns. One who recognizes patterns — applies knowledge from one field to another. This is the knowledge web — connecting through repeating signs."</div>`,
   senior:{
     title:"প্যাটার্ন স্থানান্তর অনুশীলন করো — Practice Pattern Transfer",
-    body:`<p><strong>দৈনিক ব্যায়াম: একটা বই থেকে একটা প্যাটার্ন নাও → ভিন্ন ক্ষেত্রে প্রয়োগ করো।</strong></p><p><em>প্যাটার্ন চেনা = এক ক্ষেত্রের জ্ঞান অন্য ক্ষেত্রে প্রয়োগ। যে প্যাটার্ন দেখে, সে দ্রুত শেখে।</em></p><p><strong>Examples:</strong></p><p>- "KV cache" (Book 19) → "What do I cache in daily life? What do I recompute unnecessarily?"</p><p>- "Cialdini reciprocity" (Book 23) → "How does RAG system create reciprocity? Give context → get better answers?"</p><p>- "Spaced repetition" (Book 7) → "How could spaced repetition improve my code quality? Revisit old code at intervals?"</p><p>- "Fine-tuning feedback loop" (Book 13) → "What's my personal feedback loop? Am I getting feedback on my work?"</p><p><strong>The test: can you find ONE pattern from each book that applies OUTSIDE its domain? If yes — you're seeing the web. If no — keep looking.</strong></p>`
+    body:`<p><strong>দৈনিক ব্যায়াম: একটা বই থেকে একটা প্যাটার্ন নাও → ভিন্ন ক্ষেত্রে প্রয়োগ করো।</strong></p><p><em>প্যাটার্ন চেনা = এক ক্ষেত্রের জ্ঞান অন্য ক্ষেত্রে প্রয়োগ। যে প্যাটার্ন দেখে, সে দ্রুত শেখে।</em></p><p><strong>Examples:</strong></p><p>- "KV cache" (Book 17) → "What do I cache in daily life? What do I recompute unnecessarily?"</p><p>- "Cialdini reciprocity" (Book 24) → "How does RAG system create reciprocity? Give context → get better answers?"</p><p>- "Spaced repetition" (Book 5) → "How could spaced repetition improve my code quality? Revisit old code at intervals?"</p><p>- "Fine-tuning feedback loop" (Book 11) → "What's my personal feedback loop? Am I getting feedback on my work?"</p><p><strong>The test: can you find ONE pattern from each book that applies OUTSIDE its domain? If yes — you're seeing the web. If no — keep looking.</strong></p>`
   }
 });
 
@@ -158,18 +158,18 @@ doors.push({
   num:7, icon:"🧠", color:"#06b6d4", name:"মানচিত্র নির্মাতার কক্ষ",
   subtitle:"The Map Maker", tech:"Concept Mapping (Novak, Sowa)",
   spirit:"ফিহরিস্ত — মানচিত্র, সূচি",
-  secret:"Joseph Novak (১৯৭২, Cornell) concept map তৈরি করলেন — ধারণার মানচিত্র। প্রতিটা নোড একটা ধারণা, প্রতিটা সংযোগ একটা সম্পর্ক। Zettelkasten (Book ২৪) একটা সরঞ্জাম। Concept map একটা কৌশল। একসাথে — জ্ঞানের মানচিত্র। ফিহরিস্ত — জ্ঞানের ভূগোল দেখা।",
+  secret:"Joseph Novak (১৯৭২, Cornell) concept map তৈরি করলেন — ধারণার মানচিত্র। প্রতিটা নোড একটা ধারণা, প্রতিটা সংযোগ একটা সম্পর্ক। Zettelkasten (Book ২৬) একটা সরঞ্জাম। Concept map একটা কৌশল। একসাথে — জ্ঞানের মানচিত্র। ফিহরিস্ত — জ্ঞানের ভূগোল দেখা।",
   recall:{
     q:"Concept map কী এবং কেন দরকার?",
     qen:"What is a concept map and why is it needed?",
     a:"Novak (১৯৭২): ধারণার মানচিত্র। নোড = ধারণা, সংযোগ = সম্পর্ক। Zettelkasten + concept map = জ্ঞানের মানচিত্র। ফিহরিস্ত — জ্ঞানের ভূগোল।",
     aen:"Novak (1972): map of concepts. Node = concept, link = relationship. Zettelkasten + concept map = knowledge map. Fihrist — geography of knowledge."
   },
-  story:`<p class="scene-setting">কারিগর আদনান একটা বড় কাগজ খুললেন। তাতে তিনি বৃত্ত আর তীর দিয়ে একটা নকশা তৈরি করলেন। প্রতিটা বৃত্তে একটা ধারণা — "learned helplessness", "spaced repetition", "Feynman technique"। প্রতিটা তীরে একটা সম্পর্ক — "সংশোধন করে", "শক্তিশালী করে", "বিপরীত"। "এটা concept map," আদনান বললেন। "তোমার Zettelkasten (Book ২৪) একটা সরঞ্জাম — নোট রাখে। কিন্তু concept map দেখায় — কোন ধারণা কোনটার সাথে কীভাবে সম্পর্কিত। এটা জ্ঞানের মানচিত্র।"</p>
-<p class="scene-setting en">Craftsman Adnan unrolled a large paper. On it, he drew circles and arrows — a map. Each circle held a concept — "learned helplessness", "spaced repetition", "Feynman technique". Each arrow showed a relationship — "corrects", "strengthens", "opposes". "This is a concept map," Adnan said. "Your Zettelkasten (Book 24) is a tool — stores notes. But a concept map shows — which concept relates to which, and how. This is the map of knowledge."</p>
+  story:`<p class="scene-setting">কারিগর আদনান একটা বড় কাগজ খুললেন। তাতে তিনি বৃত্ত আর তীর দিয়ে একটা নকশা তৈরি করলেন। প্রতিটা বৃত্তে একটা ধারণা — "learned helplessness", "spaced repetition", "Feynman technique"। প্রতিটা তীরে একটা সম্পর্ক — "সংশোধন করে", "শক্তিশালী করে", "বিপরীত"। "এটা concept map," আদনান বললেন। "তোমার Zettelkasten (Book ২৬) একটা সরঞ্জাম — নোট রাখে। কিন্তু concept map দেখায় — কোন ধারণা কোনটার সাথে কীভাবে সম্পর্কিত। এটা জ্ঞানের মানচিত্র।"</p>
+<p class="scene-setting en">Craftsman Adnan unrolled a large paper. On it, he drew circles and arrows — a map. Each circle held a concept — "learned helplessness", "spaced repetition", "Feynman technique". Each arrow showed a relationship — "corrects", "strengthens", "opposes". "This is a concept map," Adnan said. "Your Zettelkasten (Book 26) is a tool — stores notes. But a concept map shows — which concept relates to which, and how. This is the map of knowledge."</p>
 
-<div class="dialogue">pattern seer বলেছিলেন — প্যাটার্ন দেখো। কিন্তু আমি বলি — প্যাটার্ন শুধু দেখলে হবে না। মানচিত্রে বসাও। Novak (১৯৭২) concept map তৈরি করলেন — ধারণার ভিজ্যুয়াল মানচিত্র। Zettelkasten (Book ২৪) টেক্সট। Concept map ছবি। একসাথে — জ্ঞানের সম্পূর্ণ মানচিত্র। ফিহরিস্ত — জ্ঞানের ভূগোল। যে মানচিত্র বানায়, সে দেখে — কোথায় জ্ঞান আছে, কোথায় ফাঁকা।</div>
-<div class="dialogue en">"The pattern seer said — see patterns. But I say — seeing isn't enough. Put them on a map. Novak (1972) created concept maps — visual maps of concepts. Zettelkasten (Book 24) is text. Concept map is image. Together — the complete map of knowledge. Fihrist — the geography of knowledge. One who maps, sees — where knowledge is, where it's blank."</div>
+<div class="dialogue">pattern seer বলেছিলেন — প্যাটার্ন দেখো। কিন্তু আমি বলি — প্যাটার্ন শুধু দেখলে হবে না। মানচিত্রে বসাও। Novak (১৯৭২) concept map তৈরি করলেন — ধারণার ভিজ্যুয়াল মানচিত্র। Zettelkasten (Book ২৬) টেক্সট। Concept map ছবি। একসাথে — জ্ঞানের সম্পূর্ণ মানচিত্র। ফিহরিস্ত — জ্ঞানের ভূগোল। যে মানচিত্র বানায়, সে দেখে — কোথায় জ্ঞান আছে, কোথায় ফাঁকা।</div>
+<div class="dialogue en">"The pattern seer said — see patterns. But I say — seeing isn't enough. Put them on a map. Novak (1972) created concept maps — visual maps of concepts. Zettelkasten (Book 26) is text. Concept map is image. Together — the complete map of knowledge. Fihrist — the geography of knowledge. One who maps, sees — where knowledge is, where it's blank."</div>
 
 <div class="code-block">CONCEPT MAPPING — Visualizing Knowledge Structure:
 
@@ -230,7 +230,7 @@ JOHN SOWA'S CONCEPTUAL GRAPHS (1976/2000):
 YOUR KNOWLEDGE GRAPH — Mapping All 25 Books:
 
   Create ONE large concept map:
-    → each of your 25 books = a major node
+    → each of your 27 books = a major node
     → key concepts from each book = sub-nodes
     → connections between concepts = links
     → the MAP shows your entire knowledge structure
@@ -256,7 +256,7 @@ YOUR KNOWLEDGE GRAPH — Mapping All 25 Books:
 
 THE OBSIDIAN GRAPH (your Zettelkasten AS concept map):
 
-  If you use Obsidian for Zettelkasten (Book ২৪):
+  If you use Obsidian for Zettelkasten (Book ২৬):
     → every note = a node
     → every [[link]] = a connection
     → Graph View shows your ENTIRE knowledge web
@@ -296,7 +296,7 @@ CONCEPT MAP vs MIND MAP:
 <div class="dialogue en">"Fihrist — index, catalog, map. Allah says — 'We have explained everything in detail.' (17:12). Explanation = fihrist — each thing in its specific place, specific relationship. A concept map is knowledge's fihrist — each concept's place, each relationship's direction. One who maps, sees the geography of knowledge. Where are mountains (deep knowledge), valleys (connections), deserts (gaps). Fihrist — the geography of knowledge."</div>`,
   senior:{
     title:"তোমার জ্ঞানের মানচিত্র তৈরি করো — Create Your Knowledge Map",
-    body:`<p><strong>টুল: Obsidian (ফ্রি) বা Miro বা কলম ও কাগজ।</strong></p><p><em>তোমার ২৫টা বইয়ের মানচিত্র বানাও। প্রতিটা বই একটা নোড, প্রতিটা সংযোগ একটা তীর। মানচিত্র দেখাবে — কোথায় জ্ঞান আছে, কোথায় ফাঁকা।</em></p><p><strong>Map your 25 books:</strong></p><p>১. Place each book as a major node.</p><p>২. Under each, list 3-5 key concepts (sub-nodes).</p><p>৩. Draw arrows between concepts from DIFFERENT books.</p><p>৪. Label each arrow: "causes", "contradicts", "supports", "extends", "is like".</p><p><strong>What the map reveals:</strong></p><p>- Books with many connections = core knowledge (high value).</p><p>- Books with few connections = silos (need integration).</p><p>- Missing arrows = your knowledge gaps.</p><p>- Dense clusters = your areas of strength.</p><p><strong>Update this map monthly. As you learn more, the map grows. The map IS your knowledge.</strong></p>`
+    body:`<p><strong>টুল: Obsidian (ফ্রি) বা Miro বা কলম ও কাগজ।</strong></p><p><em>তোমার ২৭টা বইয়ের মানচিত্র বানাও। প্রতিটা বই একটা নোড, প্রতিটা সংযোগ একটা তীর। মানচিত্র দেখাবে — কোথায় জ্ঞান আছে, কোথায় ফাঁকা।</em></p><p><strong>Map your 27 books:</strong></p><p>১. Place each book as a major node.</p><p>২. Under each, list 3-5 key concepts (sub-nodes).</p><p>৩. Draw arrows between concepts from DIFFERENT books.</p><p>৪. Label each arrow: "causes", "contradicts", "supports", "extends", "is like".</p><p><strong>What the map reveals:</strong></p><p>- Books with many connections = core knowledge (high value).</p><p>- Books with few connections = silos (need integration).</p><p>- Missing arrows = your knowledge gaps.</p><p>- Dense clusters = your areas of strength.</p><p><strong>Update this map monthly. As you learn more, the map grows. The map IS your knowledge.</strong></p>`
   }
 });
 
@@ -312,8 +312,8 @@ doors.push({
     a:"Johansson (২০০৪): innovation আসে intersection থেকে — দুটো ভিন্ন ক্ষেত্রের সংযোগ। biology + CS = bioinformatics। এক ক্ষেত্রে গভীর = expert। দুইয়ের সংযোগে = innovator। বিনা।",
     aen:"Johansson (2004): innovation comes from intersections — two different fields meeting. Biology + CS = bioinformatics. Deep in one = expert. At the intersection of two = innovator. Bina."
   },
-  story:`<p class="scene-setting">১৫শ শতাব্দী। ফ্লোরেন্স। Medici পরিবার শিল্পী, বৈজ্ঞানিক, দার্শনিক, ব্যাংকার — সবাইকে এক ছাদের নিচে আনলেন। ভাস্কর আর গণিতজ্ঞ কথা বললেন। চিত্রশিল্পী আর প্রকৌশলী আইডিয়া শেয়ার করলেন। ফল? Renaissance। মানব ইতিহাসের সবচেয়ে সৃজনশীল সময়। Frans Johansson (২০০৪) এর নাম দিলেন — Medici Effect। যখন ভিন্ন ক্ষেত্রের মানুষ সংযুক্ত হয় — innovation ঘটে। তোমার ২৫টা বই = ২৫টা ক্ষেত্র। সংযোগ = Medici Effect।</p>
-<p class="scene-setting en">15th century. Florence. The Medici family brought artists, scientists, philosophers, bankers — all under one roof. Sculptor talked with mathematician. Painter shared ideas with engineer. Result? The Renaissance. The most creative period in human history. Frans Johansson (2004) named it — the Medici Effect. When people from different fields connect — innovation happens. Your 25 books = 25 fields. Connection = Medici Effect.</p>
+  story:`<p class="scene-setting">১৫শ শতাব্দী। ফ্লোরেন্স। Medici পরিবার শিল্পী, বৈজ্ঞানিক, দার্শনিক, ব্যাংকার — সবাইকে এক ছাদের নিচে আনলেন। ভাস্কর আর গণিতজ্ঞ কথা বললেন। চিত্রশিল্পী আর প্রকৌশলী আইডিয়া শেয়ার করলেন। ফল? Renaissance। মানব ইতিহাসের সবচেয়ে সৃজনশীল সময়। Frans Johansson (২০০৪) এর নাম দিলেন — Medici Effect। যখন ভিন্ন ক্ষেত্রের মানুষ সংযুক্ত হয় — innovation ঘটে। তোমার ২৭টা বই = ২৫টা ক্ষেত্র। সংযোগ = Medici Effect।</p>
+<p class="scene-setting en">15th century. Florence. The Medici family brought artists, scientists, philosophers, bankers — all under one roof. Sculptor talked with mathematician. Painter shared ideas with engineer. Result? The Renaissance. The most creative period in human history. Frans Johansson (2004) named it — the Medici Effect. When people from different fields connect — innovation happens. Your 27 books = 27 fields. Connection = Medici Effect.</p>
 
 <div class="dialogue">concept mapping বলেছিলেন — মানচিত্র বানাও। কিন্তু আমি বলি — মানচিত্রের সবচেয়ে গুরুত্বপূর্ণ জায়গা কোথায়? সংযোগস্থল। যেখানে দুটো ভিন্ন ক্ষেত্র মিলিত হয়। Johansson (২০০৪) একে বলেন intersection। সবচেয়ে বড় innovation intersection থেকে আসে। Darwin: biology + geology = evolution। তোমার ক্ষেত্রে — psychology + AI = human-centered AI। বিনা — সংযোগে নির্মাণ।</div>
 <div class="dialogue en">"Concept mapping said — build maps. But I say — what's the most important part of the map? The intersections. Where two different fields meet. Johansson (2004) calls them intersections. The biggest innovation comes from intersections. Darwin: biology + geology = evolution. For you — psychology + AI = human-centered AI. Bina — building at intersections."</div>
@@ -355,32 +355,32 @@ FRANS JOHANSSON (2004):
     │ Art + Mathematics     │ Fractal art, origami math │
     └──────────────────────┴──────────────────────────┘
 
-YOUR INTERSECTION MAP (from 25 books):
+YOUR INTERSECTION MAP (from 27 books):
 
   Your books create multiple intersections:
   
   ┌─────────────────────────┬──────────────────────────────┐
   │ Intersection             │ Potential Innovation          │
   ├─────────────────────────┼──────────────────────────────┤
-  │ Book ৯ (Prompt Eng) +   │ AI systems that understand   │
-  │ Book ২৩ (Psychology)     │ human cognitive biases       │
+  │ Book ৭ (Prompt Eng) +   │ AI systems that understand   │
+  │ Book ২৪ (Psychology)     │ human cognitive biases       │
   │                         │ → bias-aware AI assistants   │
   ├─────────────────────────┼──────────────────────────────┤
-  │ Book ১২ (RAG) +          │ Self-documenting codebases   │
+  │ Book ১০ (RAG) +          │ Self-documenting codebases   │
   │ Book ৪ (System Design)   │ that retrieve their own arch │
   ├─────────────────────────┼──────────────────────────────┤
-  │ Book ১৩ (Fine-tuning) + │ Personalized learning AI     │
-  │ Book ৭ (Meta-learning)   │ that adapts to user's pace   │
+  │ Book ১১ (Fine-tuning) + │ Personalized learning AI     │
+  │ Book ৫ (Meta-learning)   │ that adapts to user's pace   │
   ├─────────────────────────┼──────────────────────────────┤
-  │ Book ১৫ (Security) +     │ Adversarial-resistant human  │
-  │ Book ২৩ (Psychology)     │ psychology (defense against  │
+  │ Book ১৩ (Security) +     │ Adversarial-resistant human  │
+  │ Book ২৪ (Psychology)     │ psychology (defense against  │
   │                         │ manipulation)                │
   ├─────────────────────────┼──────────────────────────────┤
-  │ Book ২২ (Irreplaceable) +│ Self-improving AI system     │
-  │ Book ১৪ (Agents)         │ (agents that learn values)   │
+  │ Book ২৩ (Irreplaceable) +│ Self-improving AI system     │
+  │ Book ১২ (Agents)         │ (agents that learn values)   │
   ├─────────────────────────┼──────────────────────────────┤
-  │ Book ২৪ (Knowledge) +    │ AI-assisted research reading │
-  │ Book ২৫ (Research)       │ → Zettelkasten auto-filling  │
+  │ Book ২৬ (Knowledge) +    │ AI-assisted research reading │
+  │ Book ২৭ (Research)       │ → Zettelkasten auto-filling  │
   └─────────────────────────┴──────────────────────────────┘
 
 HOW TO FIND YOUR INTERSECTION:
@@ -416,14 +416,14 @@ WHY INTERSECTION BEATS DEPTH:
     → not the best at ONE thing
     → the ONLY one at the INTERSECTION of many things
   
-  → Book ২২ Door ১০: "Unique combination = irreplaceable"
+  → Book ২৩ Door ১০: "Unique combination = irreplaceable"
   → This is HOW you build that unique combination</div>
 
 <div class="dialogue">বিনা — building, construction, architecture। কুরআনে আল্লাহ বলেন — "যিনি সৃষ্টি করেছেন এবং নিয়মে বেঁধেছেন।" (৮৭:২)। নিয়মে বাঁধা = বিনা। Medici Effect-ও বিনা — ভিন্ন ক্ষেত্রের নিয়ম একসাথে বাঁধা। যে বিনা করে — সে নির্মাণ করে। যে অন্যের পথে হাঁটে, সে অনুসরণ করে। intersection এ বিনা করো — নতুন জ্ঞানের স্থাপত্য।</div>
 <div class="dialogue en">"Bina — building, construction. Allah says — 'Who created and proportioned.' (87:2). Proportioning = bina. The Medici Effect too is bina — binding different fields' rules together. One who does bina — constructs. One who follows others' paths — imitates. Build at intersections — new architecture of knowledge."</div>`,
   senior:{
     title:"তোমার Intersection খুঁজে নাও — Find YOUR Intersection",
-    body:`<p><strong>২৫টা বই থেকে তোমার ২টা শক্তিশালী ক্ষেত্র চিনে নাও।</strong> <em>কোথায় তোমার সবচেয়ে গভীর জ্ঞান? সেই দুটোর সংযোগস্থলেই তোমার unique value।</em></p><p>Identify your 2 strongest domains. Where do you have the deepest understanding?</p><p><strong>Ask:</strong> What problem exists at the boundary of these two fields? What would combining them create?</p><p><strong>Your potential intersections (examples):</strong></p><p>- AI Engineering (Books 10-21) + Psychology (Book 23) = Human-centered AI systems</p><p>- Research Methods (Book 25) + AI Engineering (Books 10-21) = AI-assisted research</p><p>- Meta-learning (Books 7, 24) + Fine-tuning (Book 13) = Adaptive learning systems</p><p>- Entrepreneurship (Book 22) + AI Agents (Book 14) = Autonomous business agents</p><p><strong>At your intersection, you're not competing — you're creating. That's your irreplaceable position.</strong></p>`
+    body:`<p><strong>২৭টা বই থেকে তোমার ২টা শক্তিশালী ক্ষেত্র চিনে নাও।</strong> <em>কোথায় তোমার সবচেয়ে গভীর জ্ঞান? সেই দুটোর সংযোগস্থলেই তোমার unique value।</em></p><p>Identify your 2 strongest domains. Where do you have the deepest understanding?</p><p><strong>Ask:</strong> What problem exists at the boundary of these two fields? What would combining them create?</p><p><strong>Your potential intersections (examples):</strong></p><p>- AI Engineering (Books 7-19) + Psychology (Book 24) = Human-centered AI systems</p><p>- Research Methods (Book 27) + AI Engineering (Books 7-19) = AI-assisted research</p><p>- Meta-learning (Books 5, 26) + Fine-tuning (Book 11) = Adaptive learning systems</p><p>- Entrepreneurship (Book 23) + AI Agents (Book 12) = Autonomous business agents</p><p><strong>At your intersection, you're not competing — you're creating. That's your irreplaceable position.</strong></p>`
   }
 });
 
@@ -432,7 +432,7 @@ doors.push({
   num:9, icon:"🔮", color:"#06b6d4", name:"সংশ্লেষণের কক্ষ",
   subtitle:"The Synthesis Mind", tech:"Dialectical Thinking (Hegel, 1807)",
   spirit:"তাহকিক — যাচাইকৃত সত্য",
-  secret:"Hegel (১৮০৭) দেখালেন — thesis (ধারণা) → antithesis (বিপরীত ধারণা) → synthesis (উচ্চতর ধারণা)। দুটো বিপরীত ধারণা সংঘর্ষ করলে — উচ্চতর সত্য জন্ম নেয়। তোমার ২৫টা বইয়ে অনেক বিপরীত ধারণা আছে। optimization vs safety। speed vs accuracy। দুটোকে একসাথে ভাবো — synthesis। তাহকিক — বিপরীত সত্য একসাথে দেখা।",
+  secret:"Hegel (১৮০৭) দেখালেন — thesis (ধারণা) → antithesis (বিপরীত ধারণা) → synthesis (উচ্চতর ধারণা)। দুটো বিপরীত ধারণা সংঘর্ষ করলে — উচ্চতর সত্য জন্ম নেয়। তোমার ২৭টা বইয়ে অনেক বিপরীত ধারণা আছে। optimization vs safety। speed vs accuracy। দুটোকে একসাথে ভাবো — synthesis। তাহকিক — বিপরীত সত্য একসাথে দেখা।",
   recall:{
     q:"Dialectical thinking কীভাবে কাজ করে?",
     qen:"How does dialectical thinking work?",
@@ -468,13 +468,13 @@ HEGEL'S DIALECTIC (1807, "Phenomenology of Spirit"):
       → synthesis = TRANSCEND (a new framework that 
          includes both as partial truths)
 
-DIALECTICAL PAIRS IN YOUR 25 BOOKS:
+DIALECTICAL PAIRS IN YOUR 27 BOOKS:
 
   ┌──────────────────┬──────────────────┬──────────────────┐
   │ Thesis            │ Antithesis        │ Synthesis         │
   ├──────────────────┼──────────────────┼──────────────────┤
-  │ Specialize deeply │ Generalize broadly│ T-shaped (Bk২২)  │
-  │ (Book ১০-২১)      │ (Book ১-৯)        │ deep + broad      │
+  │ Specialize deeply │ Generalize broadly│ T-shaped (Bk২৩)  │
+  │ (Book ৭-১৯)       │ (Book ১-৬)        │ deep + broad      │
   ├──────────────────┼──────────────────┼──────────────────┤
   │ Optimize for      │ Optimize for      │ Constrained       │
   │ speed (Bk ১৯)     │ safety (Bk ১৫)    │ optimization      │
@@ -566,15 +566,15 @@ doors.push({
   num:10, icon:"🌌", color:"#06b6d4", name:"জ্ঞানের সুলতান",
   subtitle:"The Lattice Master", tech:"Complete Knowledge Architecture Synthesis",
   spirit:"হিকমাহ — প্রজ্ঞা, প্রয়োগকৃত জ্ঞান",
-  secret:"নয়টি দরজা পেরিয়েছ। Silos → analogy → latticework → gap → insight → pattern → map → intersection → synthesis। সব একসাথে = জ্ঞানের জাল। ২৫টা বই বিচ্ছিন্ন দ্বীপ ছিল — এখন জীবন্ত জাল। হিকমাহ — সংযুক্ত জ্ঞানের প্রয়োগ। তুমি এখন শুধু জানো না — তুমি দেখো কীভাবে সব জ্ঞান সংযুক্ত। এটাই জ্ঞানের সুলতান।",
+  secret:"নয়টি দরজা পেরিয়েছ। Silos → analogy → latticework → gap → insight → pattern → map → intersection → synthesis। সব একসাথে = জ্ঞানের জাল। ২৭টা বই বিচ্ছিন্ন দ্বীপ ছিল — এখন জীবন্ত জাল। হিকমাহ — সংযুক্ত জ্ঞানের প্রয়োগ। তুমি এখন শুধু জানো না — তুমি দেখো কীভাবে সব জ্ঞান সংযুক্ত। এটাই জ্ঞানের সুলতান।",
   recall:{
     q:"সব দরজার সারমর্ম কী?",
     qen:"What is the essence of all doors?",
-    a:"Silos → analogy → latticework → gap → insight → pattern → map → intersection → synthesis। ২৫টা বই = জীবন্ত জাল। হিকমাহ — সংযুক্ত জ্ঞানের প্রয়োগ। জ্ঞানের সুলতান।",
-    aen:"Silos → analogy → latticework → gap → insight → pattern → map → intersection → synthesis. 25 books = living web. Hikmah — applied connected knowledge. Sultan of knowledge."
+    a:"Silos → analogy → latticework → gap → insight → pattern → map → intersection → synthesis। ২৭টা বই = জীবন্ত জাল। হিকমাহ — সংযুক্ত জ্ঞানের প্রয়োগ। জ্ঞানের সুলতান।",
+    aen:"Silos → analogy → latticework → gap → insight → pattern → map → intersection → synthesis. 27 books = living web. Hikmah — applied connected knowledge. Sultan of knowledge."
   },
-  story:`<p class="scene-setting">দশম দরজা। শেষ। স্থপতি ইদ্রিস একটা বিশাল গম্বুজের নিচে দাঁড়িয়ে আছেন। মাথার উপরে — একটা বিশাল জাল। হাজার হাজার আলোর বিন্দু — প্রতিটা একটা জ্ঞান। প্রতিটা আলো অন্য আলোর সাথে সূক্ষ্ম সূতো দিয়ে সংযুক্ত। জাল নড়ে, বাড়ে, পরিবর্তন হয়। জীবন্ত। "এটাই তোমার জ্ঞানের জাল," ইদ্রিস বললেন। "নয়টি দরজা পেরিয়েছ — বিচ্ছিন্ন দ্বীপ থেকে জীবন্ত জাল। ২৫টা বইয়ের জ্ঞান এখন সংযুক্ত। প্রতিটা ধারণা একটা আলো, প্রতিটা সংযোগ একটা সেতু। জাল বড় হয়, জ্ঞান গভীর হয়। হিকমাহ — সংযুক্ত জ্ঞানের প্রয়োগ।"</p>
-<p class="scene-setting en">The tenth door. The last. Architect Idris stands beneath a vast dome. Above — a massive web. Thousands of points of light — each a piece of knowledge. Each connected to others by delicate threads. The web moves, grows, changes. Alive. "This is your knowledge web," Idris said. "You've passed nine doors — from isolated islands to a living web. 25 books' knowledge is now connected. Each concept a light, each connection a bridge. The web grows, knowledge deepens. Hikmah — the application of connected knowledge."</p>
+  story:`<p class="scene-setting">দশম দরজা। শেষ। স্থপতি ইদ্রিস একটা বিশাল গম্বুজের নিচে দাঁড়িয়ে আছেন। মাথার উপরে — একটা বিশাল জাল। হাজার হাজার আলোর বিন্দু — প্রতিটা একটা জ্ঞান। প্রতিটা আলো অন্য আলোর সাথে সূক্ষ্ম সূতো দিয়ে সংযুক্ত। জাল নড়ে, বাড়ে, পরিবর্তন হয়। জীবন্ত। "এটাই তোমার জ্ঞানের জাল," ইদ্রিস বললেন। "নয়টি দরজা পেরিয়েছ — বিচ্ছিন্ন দ্বীপ থেকে জীবন্ত জাল। ২৭টা বইয়ের জ্ঞান এখন সংযুক্ত। প্রতিটা ধারণা একটা আলো, প্রতিটা সংযোগ একটা সেতু। জাল বড় হয়, জ্ঞান গভীর হয়। হিকমাহ — সংযুক্ত জ্ঞানের প্রয়োগ।"</p>
+<p class="scene-setting en">The tenth door. The last. Architect Idris stands beneath a vast dome. Above — a massive web. Thousands of points of light — each a piece of knowledge. Each connected to others by delicate threads. The web moves, grows, changes. Alive. "This is your knowledge web," Idris said. "You've passed nine doors — from isolated islands to a living web. 27 books' knowledge is now connected. Each concept a light, each connection a bridge. The web grows, knowledge deepens. Hikmah — the application of connected knowledge."</p>
 
 <div class="code-block">THE COMPLETE KNOWLEDGE ARCHITECTURE:
 
@@ -624,42 +624,46 @@ doors.push({
 │                                                    │
 └──────────────────────────────────────────────────┘
 
-THE 26-BOOK KNOWLEDGE MAP:
+THE 27-BOOK KNOWLEDGE MAP:
 
-  Your complete library, connected:
+  Your complete library, connected (this book = Bk২৮):
 
-  FOUNDATIONS (Books ১-৯):
-    AI Engineering (Bk১) ─── DSA (Bk২) ─── Engineering (Bk৩)
+  CORE SIX (Books ১-৬):
+    AI Engineering (Bk১) ─── DSA (Bk২) ─── Engineer (Bk৩)
          │                      │               │
-    System Design (Bk৪)     Learn-to-Learn (Bk৫) Interview (Bk৬)
-         │                      │
-    Deep Learning (Bk৭)     PhD Journey (Bk৮) ─── Prompt Eng (Bk৯)
+    System Design (Bk৪)  Learn-to-Learn (Bk৫)  Interview (Bk৬)
 
-  AI DEEP DIVES (Books ১০-২১):
-    LLM Anatomy (Bk১০) ─── Context Eng (Bk১১) ─── RAG (Bk১২)
+  AI DEEP DIVES (Books ৭-১৯):
+    Prompt Eng (Bk৭) ─── LLM Anatomy (Bk৮) ─── Context Eng (Bk৯)
          │                    │                    │
-    Fine-tuning (Bk১৩)    Agents (Bk১৪)       Security (Bk১৫)
+    RAG (Bk১০)          Fine-tuning (Bk১১)   AI Agents (Bk১২)
          │                    │                    │
-    LLMOps (Bk১৬)        Multimodal (Bk১৭)   Evals (Bk১৮)
+    LLM Security (Bk১৩) LLMOps (Bk১৪)       Multimodal (Bk১৫)
          │                    │                    │
-    Inference Opt (Bk১৯)  Embeddings (Bk২০)  Tools/MCP (Bk২১)
+    LLM Evals (Bk১৬)    Inference Opt (Bk১৭) Embeddings (Bk১৮)
+         │
+    Tools/MCP (Bk১৯)
 
-  HUMAN & CAREER (Books ২২-২৬):
-    Irreplaceable (Bk২২) ─── Psychology (Bk২৩)
+  GROWTH & RESEARCH (Books ২০-২৮):
+    PhD Journey (Bk২০) ─── Researcher Mind (Bk২১) ─── CS Ocean (Bk২২)
+         │                      │                       │
+    Irreplaceable (Bk২৩)  Psychology (Bk২৪)    Deep Learning (Bk২৫)
+         │                      │                       │
+    Knowledge Craft (Bk২৬)  Research Paper (Bk২৭)
          │                      │
-    Knowledge Craft (Bk২৪)  Research (Bk২৫)
-         │                      │
-         └──── KNOWLEDGE WEB (Bk২৬) ────┘
+         └──── KNOWLEDGE WEB (Bk২৮) ────┘
                    (THIS BOOK — connects all)
 
+  (Book ২৯ — MI Driving — এই ক্যাপস্টোনের বাইরে, আলাদা রেফারেন্স)
+
   CROSS-BOOK CONNECTIONS (examples):
-    Bk৭ (spaced repetition) ←→ Bk২৪ (Zettelkasten review)
-    Bk১২ (RAG) ←→ Bk২৩ (human memory)
-    Bk১৫ (security) ←→ Bk২৩ (manipulation defense)
-    Bk১৬ (monitoring) ←→ Bk৭ (feedback loop)
-    Bk২২ (first principles) ←→ Bk২৪ (Feynman)
-    Bk২৫ (peer review) ←→ Bk১৫ (adversarial)
-    Bk২৬ (THIS) ←→ ALL BOOKS
+    Bk৫ (spaced repetition) ←→ Bk২৬ (Zettelkasten review)
+    Bk১০ (RAG) ←→ Bk২৪ (human memory)
+    Bk১৩ (security) ←→ Bk২৪ (manipulation defense)
+    Bk১৪ (LLMOps monitoring) ←→ Bk৫ (feedback loop)
+    Bk২৩ (first principles) ←→ Bk২৬ (Feynman)
+    Bk২৭ (peer review) ←→ Bk১৩ (adversarial)
+    Bk২৮ (THIS) ←→ ALL BOOKS
 
 THE DAILY PRACTICE:
 
@@ -691,21 +695,21 @@ THE FINAL EQUATION:
   Understanding = Edges (how they connect)
   Wisdom = Hikmah (applying the connected whole)
 
-  25 books without connections = 25 nodes, few edges
+  27 books without connections = 27 nodes, few edges
     → information rich, understanding poor
   
-  25 books with connections = 25 nodes, hundreds of edges
+  27 books with connections = 27 nodes, hundreds of edges
     → information rich AND understanding deep
   
-  25 books with connections + APPLICATION = hikmah
+  27 books with connections + APPLICATION = hikmah
     → not just knowing — DOING with connected knowledge
 
   THIS is the difference between:
-    → a person who read 25 books (informed)
-    → a person who connected 25 books (understanding)
+    → a person who read 27 books (informed)
+    → a person who connected 27 books (understanding)
     → a person who APPLIES connected knowledge (hikmah)</div>
 
 <div class="verse">"যাকে হিকমাহ দেওয়া হয়েছে, তাকে প্রচুর কল্যাণ দেওয়া হয়েছে। কিন্তু যারা বুদ্ধিমান, তারা ছাড়া কেউ উপদেশ গ্রহণ করে না।"<br>— কুরআন ২:২৬৯<br><br>এই বই ছিল সংযোগের যাত্রা — বিচ্ছিন্ন দ্বীপ থেকে জীবন্ত জাল। নয়টি দরজায় নয়টি সেতু। Gentner-এর analogy, Munger-এর latticework, Kounios-এর insight, Hofstadter-এর pattern, Novak-এর concept map, Johansson-এর Medici Effect, Hegel-এর synthesis। সব এক দিকে নির্দেশ করে — জ্ঞান বিচ্ছিন্ন নয়, সংযুক্ত। যে সংযুক্ত করে, সে বোঝে। যে বোঝে, সে সৃষ্টি করে। যে সৃষ্টি করে, সে অবিচ্ছেয্য। হিকমাহ — সংযুক্ত জ্ঞানের প্রয়োগ। এটাই জ্ঞানের সুলতান।</div>
 
-<div class="secret-box"><div class="label">দশম দরজা — সমন্বয়</div><div class="text">🌌 Knowledge Sultan = Recognize + Connect + Weave + Gap + Insight + Pattern + Map + Intersect + Synthesize + Apply।<br><small>২৫টা বই = ২৫টা আলো। সংযোগ = সেতু। জাল = জ্ঞান। হিকমাহ = সংযুক্ত জ্ঞানের প্রয়োগ। তুমি এখন জ্ঞানের সুলতান।</small></div></div>`
+<div class="secret-box"><div class="label">দশম দরজা — সমন্বয়</div><div class="text">🌌 Knowledge Sultan = Recognize + Connect + Weave + Gap + Insight + Pattern + Map + Intersect + Synthesize + Apply।<br><small>২৭টা বই = ২৭টা আলো। সংযোগ = সেতু। জাল = জ্ঞান। হিকমাহ = সংযুক্ত জ্ঞানের প্রয়োগ। তুমি এখন জ্ঞানের সুলতান।</small></div></div>`
 });

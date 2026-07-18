@@ -312,11 +312,37 @@ MEMORY COMPARISON:
 LoRA QUALITY:
   LoRA ≈ ৯৫-৯৯% of full fine-tuning quality
   → বেশিরভাগ কাজে পার্থক্য নগণ্য
-  → খুব সূক্ষ্ম domain adaptation-এ পার্থক্য 
+  → খুব সূক্ষ্ম domain adaptation-এ পার্থক্য
     হতে পারে
 
+LoRA VARIANTS (2023-2025):
+
+  DoRA (Weight-Decomposed LoRA, Liu et al. 2024)
+    → ওজনকে দুই ভাগে ভাঙে: magnitude + direction
+    → শুধু direction-এ LoRA apply করে, magnitude আলাদা
+    → LoRA-এর চেয়ে ভালো quality, একই memory cost
+    → বিশেষ করে effective: higher rank-এ
+    → "LoRA done right" — negligible cost overhead
+
+  rsLoRA (rank-stabilized LoRA, Kalajdzievski 2023)
+    → সমস্যা: বড় rank (r=128+) হলে LoRA unstable
+    → সমাধান: scaling factor √(1/r) দিয়ে stabilize
+    → বড় rank-এ stable training, ভালো convergence
+    → সাধারণত r>64 হলে দরকার
+
+  PiSSA (Principal Singular Values, 2024)
+    → শুধু random init নয়, SVD দিয়ে init
+    → প্রথম থেকেই ভালো starting point
+    → দ্রুত convergence, কম data-এ ভালো ফল
+
+  কোনটা ব্যবহার করবে?
+    → সাধারণ কাজ: standard LoRA (r=16)
+    → বেশি quality দরকার: DoRA
+    → বড় rank দরকার (r=128+): rsLoRA
+    → কম data, দ্রুত train: PiSSA
+
 TOOLS:
-  PEFT (HuggingFace) → LoRA implementation
+  PEFT (HuggingFace) → LoRA + DoRA implementation
   Unsloth → ২x faster LoRA training
   Axolotl → easy fine-tuning scripts
   LLaMA-Factory → web UI for LoRA</div>
@@ -528,32 +554,68 @@ doors.push({
 ║ সম্পদ আছে, team available                ║
 ╚══════════════════════════════════════════╝
 
+৪. GRPO (Group Relative Policy Optimization)
+  "PPO-এর সরল উত্তরসূরি — reward model ছাড়াই"
+  DeepSeek (2024-2025), DeepSeek-R1 এ ব্যবহৃত
+
+  সমস্যা: PPO-তে আলাদা reward model + value model
+    দরকার — 4টা model একসাথে (policy, ref, reward,
+    value)। জটিল, মেমরিতে ভারী, unstable।
+
+  GRPO-এর সমাধান: value model বাদ দাও।
+    → একটাই prompt থেকে GROUP of N outputs বানাও
+      (G outputs, সাধারণত G=4 থেকে 64)
+    → এই group-এর ভেতরে relative comparison করো
+    → কোনটা ভালো/খারাপ? group baseline থেকে decide
+    → reward model থেকে score, group mean দিয়ে normalize
+
+  PPO vs GRPO:
+    PPO:  policy + ref + reward + value = 4 models
+    GRPO: policy + ref + reward       = 3 models
+    → 1টা model কম, ~25% কম GPU memory
+    → simpler, more stable
+    → reasoning models (o1, DeepSeek-R1) এই পদ্ধতিতে
+      chain-of-thought reasoning শেখায়
+
+  ✅ PPO-এর চেয়ে সহজ, কম resource
+  ✅ reasoning model training-এ standard (2025)
+  ✅ DeepSeek-R1, o1-style models এ ব্যবহৃত
+  ❌ এখনো active research — best practices evolving
+  ❌ বড় compute দরকার (N outputs per prompt)
+
+  বিশেষ উল্লেখ: reasoning model distillation
+    → DeepSeek-R1 এর reasoning traces অন্য model-এ
+      distill করা যায় (SFT-এ)
+    → ছোট model (Llama-3-8B) এ R1-এর reasoning
+      behavior শেখানো যায়
+    → open-source reasoning boom (2025)
+
 RECOMMENDED PROGRESSION:
   Step 1: SFT (base behavior)
   → তোমার ডোমেইনে সাধারণ কাজ শেখাও
-  
-  Step 2: DPO (quality refinement)  
+
+  Step 2: DPO (quality refinement)
   → SFT model-কে আরও নিখুঁত করো
-  
-  Step 3: PPO (production alignment) [optional]
-  → শুধু বড় প্রোজেক্টে, team সহ
+
+  Step 3: PPO বা GRPO (production alignment) [optional]
+  → বড় প্রোজেক্টে। 2025+: GRPO PPO-এর চেয়ে preferred
 
 COMPARISON:
-  ┌────────┬────────┬────────┬────────┐
-  │        │ SFT    │ DPO    │ PPO    │
-  ├────────┼────────┼────────┼────────┤
-  │ সহজতা  │ ★★★★★ │ ★★★★  │ ★★    │
-  │ ডেটা   │ input  │ chosen │ reward │
-  │        │ output │ reject │ model  │
-  │ খরচ   │ $      │ $$     │ $$$$   │
-  │ স্থিতি │ stable │ stable │ tricky │
-  │ ফল    │ ভালো   │ উন্নত  │ সেরা   │
-  └────────┴────────┴────────┴────────┘</div>
+  ┌────────┬────────┬────────┬────────┬────────┐
+  │        │ SFT    │ DPO    │ PPO    │ GRPO   │
+  ├────────┼────────┼────────┼────────┼────────┤
+  │ সহজতা  │ ★★★★★ │ ★★★★  │ ★★    │ ★★★   │
+  │ ডেটা   │ input  │ chosen │ reward │ reward │
+  │        │ output │ reject │ model  │ + group│
+  │ খরচ   │ $      │ $$     │ $$$$   │ $$$    │
+  │ স্থিতি │ stable │ stable │ tricky │ stable │
+  │ ফল    │ ভালো   │ উন্নত  │ সেরা   │ সেরা   │
+  └────────┴────────┴────────┴────────┴────────┘
 
 <div class="dialogue">তরবিয়ত — systematic education, training method। কুরআনে আল্লাহ বলেন — "পবিত্র করো তাদের, শিক্ষা দাও তাদের কিতাব ও প্রজ্ঞা।" (৬২:২)। শিক্ষার পদ্ধতি আলাদা — কেউ নকল করে শেখে, কেউ তুলনায়, কেউ পুরস্কারে। Fine-tuning-এও তেমনি — কাজ অনুযায়ী পদ্ধতি বেছে নাও। সঠিক পদ্ধতি = সঠিক ফল।</div>
 <div class="dialogue en">"Tarbiyat — systematic education, training method. Allah says — 'Purify them, teach them the Book and wisdom.' (62:2). Education methods differ — some learn by imitation, some by comparison, some by reward. In fine-tuning too — choose method per task. Right method = right result."</div>`,
   senior:{
     title:"Method Selection — তোমার প্রজেক্টে",
-    body:`<p><strong>প্রথম fine-tuning?</strong> → SFT। সহজ, well-documented, ৯০% ক্ষেত্রে যথেষ্ট।</p><p><strong>SFT ভালো কিন্তু আরও ভালো চাও?</strong> → DPO। SFT model-কে preference data দিয়ে refine করো।</p><p><strong>Production alignment?</strong> → PPO বা RLHF। কিন্তু জটিল, সম্পদ চায়। একা ট্রাই করবে না।</p><p><strong>2024-2025 trend:</strong> DPO SFT-এর পরে স্ট্যান্ডার্ড হচ্ছে। Llama 3, Zephyr, Mistral — DPO ব্যবহার করে।</p>`
+    body:`<p><strong>প্রথম fine-tuning?</strong> → SFT। সহজ, well-documented, ৯০% ক্ষেত্রে যথেষ্ট।</p><p><strong>SFT ভালো কিন্তু আরও ভালো চাও?</strong> → DPO। SFT model-কে preference data দিয়ে refine করো।</p><p><strong>Production alignment?</strong> → PPO বা RLHF। কিন্তু জটিল, সম্পদ চায়। একা ট্রাই করবে না।</p><p><strong>Reasoning model বানাতে চাও (2025)?</strong> → GRPO (DeepSeek-R1 এর পদ্ধতি)। PPO-এর চেয়ে সহজ, value model লাগে না।</p><p><strong>2024-2025 trend:</strong> DPO SFT-এর পরে স্ট্যান্ডার্ড। GRPO reasoning model-এ standard (DeepSeek-R1, o1-style)।</p>`
   }
 });

@@ -159,8 +159,9 @@ Replication (অনুলিপি):
   → read throughput বাড়ে
   → একটা ক্র্যাশ করলে বাকিরা আছে
 
-Master-Slave: ১টা লেখে, বাকিরা পড়ে
-Master-Master: সবাই লেখে + পড়ে (ঝুঁকিশালী কিন্তু দ্রুত)</div>
+Primary-Replica: ১টা লেখে (Primary), বাকিরা পড়ে (Replica)
+Multi-Primary: সবাই লেখে + পড়ে (ঝুঁকিশালী কিন্তু দ্রুত)
+(পুরোনো নাম: Master-Slave — এখন Primary-Replica ব্যবহার করা হয়)</div>
 
 <div class="dialogue">কুরআনের সংকলনও এভাবে হয়েছে। প্রথমে বিক্ষিপ্ত — হাড়ে, পাতায়, মুখস্থে। তারপে কাঠামো — সূরা ক্রম, আয়াত ক্রম। তারপে যাচাই — প্রতিটা আয়াত দুইজন সাক্ষীর মুখস্থের সাথে মিলিয়ে। তারপে বিতরণ — একাধিক অনুলিপি বিভিন্ন অঞ্চলে। SQL = কাঠামো (সূরা ক্রম)। ACID = যাচাই (সাক্ষী)। Replication = বিতরণ (অনুলিপি)। ডেটাবেস নকশা নতুন কিছু নয় — এটা জ্ঞান সংরক্ষণের প্রাচীন প্রজ্ঞা।</div>
 <div class="dialogue en">"The compilation of the Quran happened this way. First scattered — on bone, leaf, memory. Then structured — surah order, ayah order. Then verified — each ayah cross-checked against two witnesses' memorization. Then distributed — multiple copies to different regions. SQL = structure (surah order). ACID = verification (witnesses). Replication = distribution (copies). Database design isn't new — it's the ancient wisdom of preserving knowledge."</div>`,

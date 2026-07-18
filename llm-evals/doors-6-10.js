@@ -71,9 +71,11 @@ MAJOR BENCHMARKS (2024-2025):
 ├──────────────────────────────────────────────┤
 │ Chatbot Arena (LMSYS)                        │
 │ → blind A/B human comparison                 │
-│ → Elo rating                                 │
+│ → Elo rating from millions of votes          │
 │ → "which chatbot is better?"                 │
-│ → most trusted ranking 2024                  │
+│ → hardest to game (no fixed test set)        │
+│ → 2025-26: Arena-Hard (harder prompts),      │
+│   Vision Arena, WebDev Arena (per-domain)    │
 ├──────────────────────────────────────────────┤
 │ MMMU (Multimodal)                            │
 │ → multimodal understanding                   │
@@ -88,20 +90,29 @@ MAJOR BENCHMARKS (2024-2025):
 
 BENCHMARK PROBLEMS:
 
-১. CONTAMINATION
-  → benchmark data in training data!
-  → model has "seen the test"
-  → inflated scores
-  
+১. CONTAMINATION (সবচেয়ে বড় সমস্যা, 2024-25)
+  → benchmark data প্রশিক্ষণ data-এ চলে যায়!
+  → model "পরীক্ষা দেখে ফেলে" — inflated score
+  → 2024-এ প্রমাণ: অনেক model MMLU/GSM8K items
+    verbatim মনে রাখে (memorization)
+
+  কতটা সমস্যা?
+    → কিছু benchmark-এ 5-15% score inflation
+    → reasoning benchmarks-এ বেশি (চিনতে সহজ)
+    → knowledge benchmarks-এ কম (চিনতে কঠিন)
+
   Detection:
     → canary strings (unique markers)
-    → membership inference
-    → compare old vs new benchmark items
-  
+    → membership inference attacks
+    → paraphrase test (একই প্রশ্ন অন্য ভাষায়)
+    → নতুন vs পুরোনো items compare
+    → "rewrite this question" — memorized hole ধরা দেয়
+
   Mitigation:
-    → private benchmarks (not public)
-    → dynamic benchmarks (new items regularly)
-    → GoldMPI, freshQA (fresh questions)
+    → private benchmarks (নয়, প্রকাশিত)
+    → dynamic benchmarks (নিয়মিত নতুন items)
+    → LiveBench, freshQA (সবসময় তাজা)
+    →নিজের eval set (তোমার ডোমেইনে) — সবচেয়ে নির্ভরযোগ্য
 
 ২. GOODHART'S LAW
   "When a measure becomes a target, 

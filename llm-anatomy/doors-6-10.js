@@ -268,13 +268,14 @@ MODEL FAMILIES (2024-2025 landscape):
   ┌──────────────────────────────────────┐
   │ PROPRIETARY (API, paid)              │
   │                                      │
-  │ GPT-4o / o1 (OpenAI):                │
+  │ GPT-5 / o4-mini (OpenAI):            │
   │   → multimodal, fastest, large ctx   │
+  │   → o-series: reasoning, test-time   │
   │                                      │
-  │ Claude 3.5 Sonnet (Anthropic):       │
-  │   → best coding, 200K context        │
+  │ Claude Sonnet 4 (Anthropic):         │
+  │   → best coding, 200K+ context       │
   │                                      │
-  │ Gemini 1.5 Pro (Google):             │
+  │ Gemini 2.5 Pro (Google):             │
   │   → 1M+ context, multimodal native   │
   └──────────────────────────────────────┘
 
@@ -288,18 +289,19 @@ MOE (Mixture of Experts):
   → fast + capable
 
 CHOOSE BY NEED:
-  প্রোডাকশন chat → GPT-4o বা Claude 3.5
-  কোড → Claude 3.5 Sonnet  
+  প্রোডাকশন chat → GPT-5 বা Claude Sonnet 4
+  কোড → Claude Sonnet 4
+  হার্ড রিজনিং → o4-mini / o3 (test-time compute)
   বাজেট → Llama 3.1 8B (local/free)
-  মোবাইল → Phi-3 mini
-  দীর্ঘ ডকুমেন্ট → Gemini 1.5 (1M ctx)
+  মোবাইল → Phi-3 mini / Qwen 3 ছোট
+  দীর্ঘ ডকুমেন্ট → Gemini 2.5 (1M+ ctx)
   বহুভাষিক → Qwen 2.5 / Llama 3.1</div>
 
 <div class="dialogue">পরিমাণ — quantity, measure। কুরআনে আল্লাহ বলেন — "যদি পৃথিবীর সব গাছ কলম হতো এবং সমুদ্র কালি হতো... আল্লাহর জ্ঞান শেষ হতো না।" (৩১:২৭)। আল্লাহর জ্ঞান অসীম। মডেলের জ্ঞান সীমিত — কিন্তু scaling। বেশি ডেটা, বেশি প্যারামিটার = বেশি জ্ঞান। কিন্তু সঠিক অনুপাতে। Chinchilla — প্রতি প্যারামিটারে ২০ টোকেন। এটাই scaling-এর মিযান।</div>
 <div class="dialogue en">"Qadar — quantity, measure. Allah says — 'If all trees on earth were pens and the ocean were ink... Allah's knowledge would not be exhausted.' (31:27). Allah's knowledge is infinite. The model's knowledge is finite — but scalable. More data, more parameters = more knowledge. But in the right ratio. Chinchilla — 20 tokens per parameter. This is scaling's mizan."</div>`,
   senior:{
     title:"মডেল নির্বাচন — কোনটা কখন",
-    body:`<p><strong>ছোট + ফাস্ট (8B):</strong> Llama 3.1 8B — লোকাল, ফ্রি, মোবাইল পারফরম্যান্স ভালো।</p><p><strong>মাঝারি (70B):</strong> Llama 3.1 70B — RAG, code, বেশিরভাগ production।</p><p><strong>বড় (405B):</strong> Llama 3.1 405B — GPT-4 লেভেল, কিন্তু ভারী।</p><p><strong>প্রোপাইটারি:</strong> Claude 3.5 = কোডে সেরা। GPT-4o = মাল্টিমোডাল+স্পিড। Gemini 1.5 = লং কন্টেক্সট।</p><p><strong>নিয়ম:</strong> ছোট মডেল দিয়ে শুরু করো, দরকার হলে বড় করো।</p>`
+    body:`<p><strong>ছোট + ফাস্ট (8B):</strong> Llama 3.1 8B — লোকাল, ফ্রি, মোবাইল পারফরম্যান্স ভালো।</p><p><strong>মাঝারি (70B):</strong> Llama 3.1 70B — RAG, code, বেশিরভাগ production।</p><p><strong>বড় (405B):</strong> Llama 3.1 405B — frontier-class, কিন্তু ভারী।</p><p><strong>প্রোপাইটারি:</strong> Claude Sonnet 4 = কোডে সেরা। GPT-5 = মাল্টিমোডাল+স্পিড। Gemini 2.5 = লং কন্টেক্সট। o4-mini / o3 = হার্ড রিজনিং।</p><p><strong>নিয়ম:</strong> ছোট মডেল দিয়ে শুরু করো, দরকার হলে বড় করো।</p>`
   }
 });
 
@@ -356,7 +358,7 @@ MULTIMODALITY — শুধু টেক্সট নয়:
     input: "একটা বিড়ালের ছবি দেখো"
     → দেখতে পায় না। শুধু টেক্সট।
   
-  Vision-Language (GPT-4o, Claude 3):
+  Vision-Language (GPT-4V era → GPT-5, Claude Sonnet 4):
     input: [image bytes] + "এই ছবিতে কী?"
     → ছবি বোঝে! টেক্সট ও ছবি একসাথে।
     
@@ -371,9 +373,9 @@ MULTIMODALITY — শুধু টেক্সট নয়:
     Audio: spectrogram → embedding (Whisper)
     Video: frame-by-frame + temporal
 
-  GPT-4o: text + image + audio (native)
-  Gemini 1.5: text + image + audio + video
-  Claude 3.5: text + image (no audio yet)
+  GPT-5: text + image + audio (native)
+  Gemini 2.5: text + image + audio + video
+  Claude Sonnet 4: text + image (audio via app, not API)
 
   ব্যবহার:
     • Image analysis: "এই X-ray-এ কী দেখো?"
@@ -391,7 +393,7 @@ FUTURE DIRECTIONS:
 <div class="dialogue en">"Bahutva — multiplicity, diversity. Allah says — 'I created humans and jinn as a single community' — but diversity came. MoE too — one model, but multiple experts. For each problem, the right expert works. Strength in diversity. Multimodal too — not just one input type, but many. Diversity is the foundation of understanding."</div>`,
   senior:{
     title:"MoE ও Multimodal — প্রোডাকশনে",
-    body:`<p><strong>MoE benefit:</strong> Mixtral 8x7B চালাও — ৪৭B ক্ষমতা, ১৩B গতি।</p><p><strong>Vision API:</strong> GPT-4o vision — screenshot থেকে code, document থেকে data extraction।</p><p><strong>Audio:</strong> Whisper (OpenAI) স্পিচ-টু-টেক্সট, GPT-4o native audio।</p><p><strong>Cost:</strong> Multimodal = বেশি টোকেন (ছবি টোকেন বেশি খায়)। দরকার না হলে text-only ব্যবহার করো।</p>`
+    body:`<p><strong>MoE benefit:</strong> Mixtral 8x7B চালাও — ৪৭B ক্ষমতা, ১৩B গতি। DeepSeek-V3 / Qwen 3 MoE — আরও আধুনিক sparse-MoE।</p><p><strong>Vision API:</strong> GPT-5 vision — screenshot থেকে code, document থেকে data extraction।</p><p><strong>Audio:</strong> Whisper (OpenAI) স্পিচ-টু-টেক্সট, GPT-5 native audio (real-time conversation)।</p><p><strong>Cost:</strong> Multimodal = বেশি টোকেন (ছবি টোকেন বেশি খায়)। দরকার না হলে text-only ব্যবহার করো।</p>`
   }
 });
 
