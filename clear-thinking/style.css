@@ -146,11 +146,13 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .checklist li{position:relative;padding:.42rem .4rem .42rem 1.9rem;font-size:.85rem;line-height:1.55;border-bottom:1px solid var(--panel-border)}
 .story-text .checklist li:last-child{border-bottom:none}
 .story-text .checklist li::before{content:'✔';position:absolute;left:.5rem;top:.42rem;color:var(--teal);font-weight:700}
-.story-text .kv-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.82rem}
-.story-text .kv-table th,.story-text .kv-table td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--panel-border);vertical-align:top}
-.story-text .kv-table th{color:var(--teal);font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em}
+.story-text .kv-table{width:100%;border-collapse:separate;border-spacing:0;margin:1rem 0;font-size:.82rem;background:rgba(99,102,241,.04);border-radius:12px;overflow:hidden;border:1px solid rgba(99,102,241,.15)}
+.story-text .kv-table th,.story-text .kv-table td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid rgba(99,102,241,.1);vertical-align:top}
+.story-text .kv-table th{color:var(--amber-bright);font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;background:rgba(99,102,241,.1);border-bottom:1px solid rgba(99,102,241,.2)}
+.story-text .kv-table td{color:var(--ink-dim)}
 .story-text .kv-table td.hl{color:var(--amber-bright);font-weight:600}
 .story-text .kv-table tr:last-child td{border-bottom:none}
+.story-text .kv-table tr:nth-child(even) td{background:rgba(99,102,241,.03)}
 @media(max-width:600px){
   .doors-grid{grid-template-columns:1fr}
   .story-container{padding:1.4rem 1rem 3rem}
@@ -158,5 +160,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   .hud-xp-wrap{flex:1 1 100%;order:3}
   #hud{gap:.35rem;padding:.45rem .55rem}
   .story-text .compare{grid-template-columns:1fr}
+  .story-text .kv-table{font-size:.72rem}
+  .story-text .kv-table th,.story-text .kv-table td{padding:.4rem .35rem}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
