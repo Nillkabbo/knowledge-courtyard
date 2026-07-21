@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>যুক্তির তাঁত — The Loom of Reason</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1 class="title-main">যুক্তির তাঁত</h1>
+  <div class="title-sub">The Loom of Reason</div>
+  <div class="title-desc">
+    মনের ত্রয়ীর তৃতীয় খণ্ড — চিন্তাকে ধার দেওয়ার দশটা হাতিয়ার।<br>
+    এক তাঁতির কাছে নয়টা সূত্র সংগ্রহ, দশম দরজায় এক কাপড়ে বোনা।<br>
+    বই ২৪ মনকে রক্ষা করে, বই ৩২ মস্তিষ্ক ঠিক রাখে — এই বই চিন্তাকে ধার দেয়।<br><br>
+    <em>The third volume of the mind trilogy. Ten tools that sharpen thinking — from mental models to Bayesian updating to second-order systems. One loom, nine threads, one woven cloth.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🪡 তাঁতে বসো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">তাঁতির উঠোন — The Weaver's Courtyard</div>
+    <p>তুমি একজন ভালো কারিগর। কোড লেখো, সিস্টেম বানাও, সমস্যা সমাধান করো। কিন্তু মাঝে মাঝে একটা অনুভূতি আসে — তুমি একই হাতিয়ার বারবার ব্যবহার করছ। হাতুড়ি। আর সব সমস্যা তোমার কাছে পেরেক হয়ে দেখা দেয়। কিন্তু কিছু সমস্যা পেরেক নয় — সেগুলো সূত্র, আর সূত্র ধরতে হয় আঙুল দিয়ে, হাতুড়ি দিয়ে নয়।</p>
+    <p class="en">You are a good craftsperson. You write code, build systems, solve problems. But sometimes a feeling comes — you're using the same tool, again and again. A hammer. And every problem arrives as a nail. But some problems aren't nails — they're threads. And threads are held with fingers, not struck with hammers.</p>
+    <hr class="p-divider">
+    <p>এই বই <strong>মনের ত্রয়ীর শেষ পর্ব</strong>। বই ২৪ (সিংহাসন) শিখিয়েছে কীভাবে মনকে রক্ষা করতে হয় — পক্ষপাতিতা চেনা, প্রতিরোধ করা। বই ৩২ (মস্তিষ্কের কারিগর) শিখিয়েছে কীভাবে মস্তিষ্ককে চালু রাখতে হয় — অভ্যাস, ঘুম, মনোযোগ। কিন্তু রক্ষা আর রক্ষণাবেক্ষণ যথেষ্ট নয়। একটা তীক্ষ্ণ মন লাগে — যে মন জানে কখন যুক্তি দিয়ে কাটতে হবে, কখন সম্ভাবনা দিয়ে আন্দাজ করতে হবে, কখন উল্টো ভেবে সমাধান খুঁজবে। <strong>সেই তীক্ষ্ণতার নাম এই বই: যুক্তির তাঁত।</strong></p>
+    <p class="en">This book is the <strong>final volume of the mind trilogy</strong>. Book 24 (Throne of the Mind) taught how to defend the mind — recognizing bias, resisting it. Book 32 (Brain Mechanic) taught how to maintain the brain — habits, sleep, attention. But defense and maintenance are not enough. You need a sharp mind — one that knows when to cut with logic, when to estimate with probability, when to think backwards to find the answer. <strong>That sharpness is this book: The Loom of Reason.</strong></p>
+    <hr class="p-divider">
+    <p>দশটা দরজা। প্রতিটা দরজায় এক কারিগর — তাঁর হাতে এক একটা চিন্তার হাতিয়ার। প্রথম দরজায় তাঁতি জাকিরা তোমাকে একটা খালি তাঁত দেবেন। পরের নয়টা দরজায় তুমি নয়টা সূত্র সংগ্রহ করবে — যুক্তি, ভ্রষ্টাচার, সম্ভাবনা, মূলসূত্র, সমস্যা-সমাধান, আন্দাজ, সিদ্ধান্ত, দ্বিতীয়-স্তর। দশম দরজায় জাকিরা ফিরবেন — আর তোমাকে দেখাবেন কীভাবে নয়টা সূত্র এক কাপড়ে বোনা যায়। যে কাপড়ের নাম: সুচিন্তিত জীবন।</p>
+    <p class="en">Ten doors. Each door a craftsperson — holding one tool of thought. In the first door, the weaver Zakira hands you an empty loom. The next nine doors you collect nine threads — logic, fallacies, probability, first principles, problem-solving, estimation, decision, second-order thinking. In the tenth door Zakira returns — and shows you how all nine threads weave into one cloth. The name of that cloth: a deliberate life.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 তাঁতের দিকে যাও</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🧵</span><span id="hud-rank-name">শিক্ষানবিশ</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটা দরজা, ক্রমানুসারে। প্রতিটা দরজায় এক নতুন সূত্র।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← তাঁতে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🪡</div>
+  <h1 class="complete-title">তুমি এখন তাঁতের কারিগর</h1>
+  <p class="complete-text">দশটা দরজা পেরিয়েছ। নয়টা সূত্র সংগ্রহ করেছ। এক কাপড়ে বুনেছ।<br><br>মডেল, যুক্তি, ভ্রষ্টাচার, সম্ভাবনা, মূলসূত্র, সমাধান, আন্দাজ, সিদ্ধান্ত, দ্বিতীয়-স্তর।<br><br>এখন তোমার মন এমন — যে মন জানে কখন কোন হাতিয়ার ধরবে।<br><strong>মনের ত্রয়ী সম্পূর্ণ। রক্ষা, রক্ষণাবেক্ষণ, তীক্ষ্ণতা — তিনটাই তোমার হাতে।</strong></p>
+  <div class="complete-verse">وَيُعَلِّمُكُمُ ٱللَّٰهُ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"আর আল্লাহ তোমাদের শেখান।" — কুরআন ২:২৮২</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার বোনো</button>
+  <div class="cheat-section-end"><h3>📋 যুক্তির চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">সূত্র সংগ্রহ!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 যুক্তির চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>

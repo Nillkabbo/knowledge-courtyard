@@ -42,7 +42,8 @@
     { "n": 29, "folder": "mi-driving",              "title_en": "The Michigan Driving Guide",          "title_bn": "মিশিগান ড্রাইভিং গাইড",       "icon": "🚗", "category": "extras", "color": "game-29", "tag": "Book 29 · Michigan Driving Guide",        "status": "live" },
     { "n": 30, "folder": "math-for-ml",             "title_en": "The Architect's Compass",             "title_bn": "গণিতের নিকোবর",              "icon": "🧭", "category": "growth", "color": "game-30", "tag": "Book 30 · Math Foundations",              "status": "live" },
     { "n": 31, "folder": "classic-ml",              "title_en": "The Marketplace of Algorithms",       "title_bn": "মেশিনের বাজার",              "icon": "🌱", "category": "growth", "color": "game-31", "tag": "Book 31 · Classic ML",                       "status": "live" },
-    { "n": 32, "folder": "mind-mechanic",           "title_en": "The Brain Mechanic's Codex",          "title_bn": "মস্তিষ্কের কারিগরি",          "icon": "🧠", "category": "growth", "color": "game-32", "tag": "Book 32 · Brain & Habits",                    "status": "live" }
+    { "n": 32, "folder": "mind-mechanic",           "title_en": "The Brain Mechanic's Codex",          "title_bn": "মস্তিষ্কের কারিগরি",          "icon": "🧠", "category": "growth", "color": "game-32", "tag": "Book 32 · Brain & Habits",                    "status": "live" },
+    { "n": 33, "folder": "clear-thinking",          "title_en": "The Loom of Reason",                  "title_bn": "যুক্তির তাঁত",                "icon": "🪡", "category": "growth", "color": "game-33", "tag": "Book 33 · Critical Thinking",                 "status": "live" }
   ],
 
   "roadmap": [
@@ -63,7 +64,8 @@
         { "book": 21, "why": "curiosity, question-crafting, intellectual humility" },
         { "book": 23, "why": "permanent vs perishable skills, systems thinking" },
         { "book": 24, "why": "biases, Cialdini, learned helplessness — referenced by 27 & 28." },
-        { "book": 32, "why": "daily operating system — brain hacks, habits, state regulation. Read alongside 5 & 25 for immediate practical gains." }
+        { "book": 32, "why": "daily operating system — brain hacks, habits, state regulation. Read alongside 5 & 25 for immediate practical gains." },
+        { "book": 33, "why": "completes the mind trilogy — 24 defends the mind, 32 maintains the brain, 33 sharpens the thinking. Ten tools: latticework, logic, fallacies, Bayes, first principles, Polya, Fermi, decisions, second-order." }
       ]
     },
     {
