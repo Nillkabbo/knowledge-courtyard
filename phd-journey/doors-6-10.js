@@ -19,7 +19,7 @@ doors.push({
 <p class="scene-setting">ষষ্ঠ স্থান। একটা দুর্গের ফটক। সামনে একজন কঠোর দরোয়ান — দীর্ঘ দাড়ি, লোহার দণ্ড, চোখে তীক্ষ্ণতা। ভিড় — শত শত আবেদনকারী। কিন্তু দরোয়ান সবাইকে ঢুকতে দেয় না। কিছু মানুষ আসে — দরোয়ান তাদের দেখে হাসেন, দরজা খোলেন। তারা আগে থেকে পরিচিত।</p>
 <p class="scene-setting en">The sixth station. A fortress gate. Before it: a stern gatekeeper — long beard, iron staff, sharp eyes. A crowd — hundreds of applicants. But the gatekeeper doesn't let everyone in. Some people come — the gatekeeper smiles, opens the door. They're already known.</p>
 
-<div class="dialogue">পণ্ডিত বলেছিলেন — SOP লেখো। কিন্তু আমি বলি — SOP লেখার অনেক আগে শুরু। কারণ PhD অ্যাডমিশন কমিটি সিদ্ধান্ত নেয় না — প্রফেসর নেন। যদি কোনো প্রফেসর তোমাকে চান, তিনি কমিটিকে বলেন "এই ছাত্র নাও।" কিন্তু তিনি তোমাকে চিনবেন কীভাবে? কোল্ড ইমেইল।</p>
+<div class="dialogue">পণ্ডিত বলেছিলেন — SOP লেখো। কিন্তু আমি বলি — SOP লেখার অনেক আগে শুরু। কারণ PhD অ্যাডমিশন কমিটি সিদ্ধান্ত নেয় না — প্রফেসর নেন। যদি কোনো প্রফেসর তোমাকে চান, তিনি কমিটিকে বলেন "এই ছাত্র নাও।" কিন্তু তিনি তোমাকে চিনবেন কীভাবে? কোল্ড ইমেইল।</div>
 <div class="dialogue en">"The scholar said — write your SOP. But I say — start long before the SOP. Because the PhD admissions committee doesn't decide — the professor does. If a professor wants you, they tell the committee 'take this student.' But how will they know you? Cold email."</div>
 
 <div class="code-block">Cold Email to Professors — ধাপে ধাপে:
@@ -63,6 +63,22 @@ Signature: CV সংযুক্ত (PDF, ২ পৃষ্ঠা)</div>
 <div class="stat-card"><div class="sc-num">১-২</div><div class="sc-label">"Yes, apply to my lab"</div></div>
 </div>
 
+<div class="svg-fig">
+<svg viewBox="0 0 640 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cold email funnel">
+<polygon points="70,30 570,30 470,80 170,80" fill="rgba(91,158,255,.2)" stroke="#5b9eff"/>
+<text x="320" y="60" fill="#e8e6f0" font-size="13" text-anchor="middle">৩০-৫০টা নির্দিষ্ট, ব্যক্তিগত ইমেইল</text>
+<polygon points="170,90 470,90 400,140 240,140" fill="rgba(94,234,212,.18)" stroke="#5eead4"/>
+<text x="320" y="120" fill="#e8e6f0" font-size="12" text-anchor="middle">~১০-২০% উত্তর দেয় (৫-১০ জন)</text>
+<polygon points="240,150 400,150 370,195 270,195" fill="rgba(240,199,94,.2)" stroke="#f0c75e"/>
+<text x="320" y="177" fill="#e8e6f0" font-size="12" text-anchor="middle">৩-৫ কথোপকথন</text>
+<polygon points="270,205 370,205 350,235 290,235" fill="rgba(82,196,26,.25)" stroke="#52c41a"/>
+<text x="320" y="226" fill="#52c41a" font-size="12" text-anchor="middle" font-weight="bold">১-২ "apply to my lab"</text>
+</svg>
+<div class="fig-cap">চিত্র: ভালো লেখা ইমেইলেও ১০-২০% উত্তর — স্বাভাবিক। এটা ব্যর্থতা নয়, সংখ্যার খেলা। ডেডলাইনের অন্তত ৩ মাস আগে প্রথম ব্যাচ পাঠাও।</div>
+</div>
+
+<div class="src-box"><div class="src-label">যাচাইকৃত উৎস / Verified Sources</div>Cold-email প্রতিক্রিয়ার হার: ভালো personalized ইমেইলে ১০-২০% reply স্বাভাবিক; ১৫০-২০০ শব্দ, ৩ প্যারা — একাধিক admission-guide-এর ঐকমত্য (academiatoindustry.com; riseglobaleducation.com) · টাইমিং: ডেডলাইনের ≥৩ মাস আগে প্রথম ব্যাচ · প্রফেসর খোঁজা: csrankings.org + Google Scholar সাম্প্রতিক পেপার।</div>
+
 <div class="callout tip"><span class="co-icon">📨</span><div><strong>Funnel বাস্তবতা:</strong> নীরবতা ব্যর্থতা নয় — সংখ্যার খেলা। ১-২ জন সত্যিকারের আগ্রহী প্রফেসরই একটা অ্যাডমিশন এনে দিতে যথেষ্ট। তাই কম মানের ৫টা নয়, বেশি মানের ৩০-৫০টা নির্দিষ্ট ইমেইল পাঠাও।</div></div>
 
 <div class="dialogue">সুহবত — সঙ্গ, সাথী খোঁজা। ইসলামে সঙ্গের গুরুত্ব অনেক — নবীজি (সা) বলেছেন, "মানুষ তার বন্ধুর দ্বীনে থাকে।" PhD-তেও সঙ্গ গুরুত্বপূর্ণ — কোন প্রফেসরের সাথে, কোন ল্যাবে। কোল্ড ইমেইল হলো সেই সঙ্গ খোঁজা — আগে থেকে, নিয়ত সহকারে। যে সঙ্গ খোঁজে, সে পায়। যে অপেক্ষা করে, সে হারায়।</div>
@@ -96,6 +112,30 @@ doors.push({
 <tr><td class="hl">🥇 High</td><td>GPA ৩.৮+, ১-২+ পাবলিকেশন, thesis/RA, একাডেমিক LOR</td><td>Top-20 reach + Top-50 match, ১০-১৫টি</td><td>২০-৪০% (অন্তত একটি top-20)</td></tr>
 <tr><td class="hl">🥈 Mid</td><td>GPA ৩.৩-৩.৭, ০-১ পাবলিকেশন, শক্ত প্রজেক্ট, প্রফেশনাল LOR</td><td>Top-50→100 reach + 100→150 match, ১৫-২০টি</td><td>১৫-৩০% (bridge সহ ~৪০%)</td></tr>
 <tr><td class="hl">🥉 Low</td><td>GPA &lt;৩.৩, রিসার্চ নেই, সাধারণ LOR</td><td>Bridge year বা MS আগে; 150→250 match, ২০+টি</td><td>৫-১৫% (bridge ছাড়া)</td></tr></table>
+
+<div class="svg-fig">
+<svg viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Profile strategy ladder">
+<text x="320" y="20" fill="#e8e6f0" font-size="13" text-anchor="middle" font-weight="bold">প্রোফাইল → কৌশল → একই গন্তব্য</text>
+<rect x="40" y="40" width="170" height="120" rx="12" fill="rgba(240,199,94,.12)" stroke="#f0c75e"/>
+<text x="125" y="66" fill="#f0c75e" font-size="13" text-anchor="middle" font-weight="bold">🥇 High</text>
+<text x="125" y="90" fill="#e8e6f0" font-size="10.5" text-anchor="middle">GPA ৩.৮+, পাবলিকেশন</text>
+<text x="125" y="110" fill="#9290a8" font-size="10.5" text-anchor="middle">সরাসরি Top-20 reach</text>
+<text x="125" y="130" fill="#9290a8" font-size="10.5" text-anchor="middle">১০-১৫ আবেদন</text>
+<rect x="235" y="40" width="170" height="120" rx="12" fill="rgba(240,98,146,.1)" stroke="#f06292"/>
+<text x="320" y="66" fill="#f06292" font-size="13" text-anchor="middle" font-weight="bold">🥈 Mid</text>
+<text x="320" y="90" fill="#e8e6f0" font-size="10.5" text-anchor="middle">GPA ৩.৩-৩.৭, প্রজেক্ট</text>
+<text x="320" y="110" fill="#9290a8" font-size="10.5" text-anchor="middle">Mix + কোল্ড ইমেইল</text>
+<text x="320" y="130" fill="#9290a8" font-size="10.5" text-anchor="middle">+ ঐচ্ছিক bridge → mid+</text>
+<rect x="430" y="40" width="170" height="120" rx="12" fill="rgba(179,127,235,.12)" stroke="#b37feb"/>
+<text x="515" y="66" fill="#b37feb" font-size="13" text-anchor="middle" font-weight="bold">🥉 Low</text>
+<text x="515" y="90" fill="#e8e6f0" font-size="10.5" text-anchor="middle">রিসার্চ এখনো নেই</text>
+<text x="515" y="110" fill="#9290a8" font-size="10.5" text-anchor="middle">Bridge year / MS আগে</text>
+<text x="515" y="130" fill="#9290a8" font-size="10.5" text-anchor="middle">তারপর আবেদন</text>
+<path d="M125 165 C 200 200, 440 200, 515 165" fill="none" stroke="#5eead4" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="320" y="215" fill="#5eead4" font-size="12" text-anchor="middle">সব পথই PhD-তে পৌঁছায় — গতি আলাদা, গন্তব্য এক 🎓</text>
+</svg>
+<div class="fig-cap">চিত্র: প্রোফাইল কোনো রায় নয় — শুধু শুরুর বিন্দু। bridge year একটা low/mid প্রোফাইলকে ৬-১২ মাসে বদলে দিতে পারে।</div>
+</div>
 
 <div class="callout info"><span class="co-icon">🥈</span><div><strong>Mid-profile = সবচেয়ে সাধারণ জায়গা।</strong> এখানে কোল্ড ইমেইল আর একটা bridge (নিচে) তোমার সম্ভাবনা প্রায় দ্বিগুণ করতে পারে — কারণ কমিটি "potential researcher" খোঁজে, নিখুঁত অতীত নয়।</div></div>
 
@@ -141,6 +181,20 @@ doors.push({
 <tr><td class="hl">Open-source</td><td>PapersWithCode/HuggingFace রিপো, arXiv preprint</td><td>মাঝারি (প্রফেসর জড়িত নন)</td></tr>
 <tr><td class="hl">Workshop paper</td><td>ছোট, নির্দিষ্ট টপিক; review হয় ও প্রকাশ পায়</td><td>উচ্চ — প্রথম পাবলিকেশনের সেরা জায়গা</td></tr>
 <tr><td class="hl">Poster / abstract</td><td>কনফারেন্সে ছোট abstract + poster</td><td>নিম্ন-মাঝারি (তুমি রিসার্চে আছো তার প্রমাণ)</td></tr></table>
+
+<div class="svg-fig">
+<svg viewBox="0 0 660 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Paper pipeline">
+<text x="330" y="20" fill="#e8e6f0" font-size="13" text-anchor="middle" font-weight="bold">প্রথম পেপারের পাইপলাইন (৬ মাসের সংস্করণ)</text>
+<rect x="20" y="45" width="140" height="44" rx="10" fill="rgba(179,127,235,.15)" stroke="#b37feb"/><text x="90" y="63" fill="#b37feb" font-size="11" text-anchor="middle">মাস ১-২</text><text x="90" y="80" fill="#e8e6f0" font-size="10.5" text-anchor="middle">২০ পেপার → গ্যাপ খোঁজা</text>
+<rect x="180" y="45" width="140" height="44" rx="10" fill="rgba(94,234,212,.15)" stroke="#5eead4"/><text x="250" y="63" fill="#5eead4" font-size="11" text-anchor="middle">মাস ৩-৪</text><text x="250" y="80" fill="#e8e6f0" font-size="10.5" text-anchor="middle">এক্সপেরিমেন্ট + ডেটা</text>
+<rect x="340" y="45" width="140" height="44" rx="10" fill="rgba(240,199,94,.15)" stroke="#f0c75e"/><text x="410" y="63" fill="#f0c75e" font-size="11" text-anchor="middle">মাস ৫</text><text x="410" y="80" fill="#e8e6f0" font-size="10.5" text-anchor="middle">লেখা → arXiv preprint</text>
+<rect x="500" y="45" width="140" height="44" rx="10" fill="rgba(82,196,26,.18)" stroke="#52c41a"/><text x="570" y="63" fill="#52c41a" font-size="11" text-anchor="middle">মাস ৬</text><text x="570" y="80" fill="#e8e6f0" font-size="10.5" text-anchor="middle">Workshop submit 🎉</text>
+<path d="M160 67 L178 67 M320 67 L338 67 M480 67 L498 67" stroke="#5e5c74" stroke-width="2" marker-end="none"/>
+<path d="M570 95 C 570 125, 300 130, 250 95" fill="none" stroke="#ff6b35" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="410" y="135" fill="#ff6b35" font-size="10.5" text-anchor="middle">Review → revision → আবার এক্সপেরিমেন্ট (স্বাভাবিক লুপ!)</text>
+</svg>
+<div class="fig-cap">চিত্র: রিজেক্ট হলে লুপে ফেরো — এটাই রিসার্চ। প্রথমবার সবচেয়ে ধীর; দ্বিতীয় পেপার দ্বিগুণ দ্রুত হয়।</div>
+</div>
 
 <div class="callout info"><span class="co-icon">🔬</span><div><strong>The paper pipeline (৬-১৮ মাস):</strong> Idea → Literature Review → Hypothesis → Experiment → Analysis → Writing → Submission → Review → Revision → Publication। প্রতিটা ধাপ ছোট মনে হলেও শেখার — প্রথমবার সবচেয়ে ধীর, পরেরবার দ্বিগুণ দ্রুত।</div></div>
 
@@ -192,6 +246,23 @@ doors.push({
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ ভালো উত্তর</div>"আমি আপনার ২০২৩ paper on constrained decoding পড়েছি। আমি LedgerPilot-এ RAG নিয়ে কাজ করেছি — একই সমস্যা। আমি জানতে চাই — constrained generation কি retrieval-augmented settings-এ কাজ করে?" — নির্দিষ্ট, পেপারের উল্লেখ, প্রশ্ন।</div>
 </div>
 
+<div class="svg-fig">
+<svg viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two-way interview evaluation">
+<rect x="40" y="45" width="200" height="80" rx="14" fill="rgba(54,214,231,.12)" stroke="#36d6e7"/>
+<text x="140" y="75" fill="#36d6e7" font-size="13" text-anchor="middle" font-weight="bold">প্রফেসর যাচাই করেন</text>
+<text x="140" y="97" fill="#9290a8" font-size="10.5" text-anchor="middle">কৌতূহল · চিন্তার প্রক্রিয়া</text>
+<text x="140" y="113" fill="#9290a8" font-size="10.5" text-anchor="middle">৫ বছর একসাথে কাজের ফিট</text>
+<rect x="400" y="45" width="200" height="80" rx="14" fill="rgba(94,234,212,.12)" stroke="#5eead4"/>
+<text x="500" y="75" fill="#5eead4" font-size="13" text-anchor="middle" font-weight="bold">তুমিও যাচাই করো</text>
+<text x="500" y="97" fill="#9290a8" font-size="10.5" text-anchor="middle">advising style · ফান্ডিং</text>
+<text x="500" y="113" fill="#9290a8" font-size="10.5" text-anchor="middle">ল্যাব সংস্কৃতি · প্রাক্তনরা কোথায়</text>
+<path d="M245 70 L395 70" stroke="#36d6e7" stroke-width="2"/><polygon points="395,70 383,64 383,76" fill="#36d6e7"/>
+<path d="M395 100 L245 100" stroke="#5eead4" stroke-width="2"/><polygon points="245,100 257,94 257,106" fill="#5eead4"/>
+<text x="320" y="155" fill="#e8e6f0" font-size="12" text-anchor="middle">ইন্টারভিউ = দ্বিমুখী যাচাই। খারাপ advisor-fit-ই ঝরে পড়ার ১ নম্বর কারণ।</text>
+</svg>
+<div class="fig-cap">চিত্র: প্রশ্ন করা দুর্বলতা নয় — ভালো প্রশ্ন করাই সবচেয়ে শক্ত সিগন্যাল যে তুমি গবেষকের মতো ভাবছ।</div>
+</div>
+
 <div class="dialogue">বাইআত — আনুগত্যের শপথ। বাইআতে দুই পক্ষ — এক হাত বাড়ায়, অন্য গ্রহণ করে। PhD ইন্টারভিউও তেমনি — প্রফেসর দেখছেন তুমি তাঁর সাথে কাজ করতে প্রস্তুত কি না। তুমি দেখছ তাঁর ল্যাব তোমার জন্য ঠিক কি না। বাইআত একপাক্ষিক নয় — উভয়ের সম্মতি। ইন্টারভিউও — তুমিও প্রশ্ন করো, শুধু উত্তর দাও না।</div>
 <div class="dialogue en">"Bai'at — pledge of allegiance. In bai'at, two parties — one extends hand, other accepts. PhD interview too — the professor sees if you're ready to work with them. You see if their lab is right for you. Bai'at isn't one-sided — mutual consent. Interview too — you also ask questions, don't just answer."</div>`,
   senior:{
@@ -224,11 +295,30 @@ doors.push({
 <div class="callout warn"><span class="co-icon">💥</span><div><strong>ব্যর্থতা:</strong> রিসার্চ = ব্যর্থতার আরেক নাম। এক্সপেরিমেন্ট ভাঙবে, পেপার বারবার রিজেক্ট হবে — কিন্তু "negative result"-ও ফলাফল, প্রতিটা ব্যর্থতা শেখা।</div></div>
 <div class="callout warn"><span class="co-icon">🧠</span><div><strong>মানসিক স্বাস্থ্য:</strong> PhD-তে depression/anxiety-র হার উচ্চ; imposter syndrome ("আমি যথেষ্ট ভালো না") প্রায় সবার হয়। এটা দুর্বলতা নয় — সিস্টেমের চাপ। থেরাপি, কমিউনিটি, ঘুম ও ব্যায়ামকে "luxury" নয়, রিসার্চের অংশ ভাবো। প্রয়োজনে সাহায্য চাওয়াই শক্তি।</div></div>
 
+<div class="svg-fig">
+<svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Post PhD career branches">
+<circle cx="90" cy="110" r="38" fill="rgba(167,139,250,.18)" stroke="#a78bfa" stroke-width="2"/>
+<text x="90" y="106" fill="#a78bfa" font-size="13" text-anchor="middle" font-weight="bold">PhD</text>
+<text x="90" y="124" fill="#9290a8" font-size="10" text-anchor="middle">🎓 চাবি</text>
+<path d="M128 92 C 220 40, 320 35, 430 35" fill="none" stroke="#7dd3fc" stroke-width="2"/>
+<path d="M128 103 C 230 85, 330 82, 430 82" fill="none" stroke="#5eead4" stroke-width="2"/>
+<path d="M128 120 C 230 135, 330 138, 430 138" fill="none" stroke="#f0c75e" stroke-width="2"/>
+<path d="M128 131 C 220 180, 320 185, 430 185" fill="none" stroke="#ff6b35" stroke-width="2"/>
+<text x="440" y="40" fill="#7dd3fc" font-size="12">🏛️ একাডেমিয়া — নিজের ল্যাব, শিক্ষার্থী</text>
+<text x="440" y="87" fill="#5eead4" font-size="12">🔬 ইন্ডাস্ট্রি রিসার্চ — DeepMind, MSR, FAIR</text>
+<text x="440" y="143" fill="#f0c75e" font-size="12">🚀 স্টার্টআপ — রিসার্চ → প্রোডাক্ট</text>
+<text x="440" y="190" fill="#ff6b35" font-size="12">🏦 সরকারি / জাতীয় ল্যাব</text>
+</svg>
+<div class="fig-cap">চিত্র: মুকুট নয় — চাবি। একই PhD থেকে চারটা দরজা খোলে, আর মাঝপথে দরজা বদলানোও যায়।</div>
+</div>
+
 <table class="kv-table"><tr><th>PhD-এর পরে</th><th>কী</th><th>আয় (আনুমানিক)</th></tr>
 <tr><td class="hl">একাডেমিয়া</td><td>প্রফেসর → নিজের ল্যাব, রিসার্চ, শিক্ষার্থী</td><td>$৮০-১৫০K+ (tenure-track)</td></tr>
 <tr><td class="hl">ইন্ডাস্ট্রি রিসার্চ</td><td>Google DeepMind, MS Research, Meta FAIR, Anthropic</td><td>$২০০-৪০০K+</td></tr>
 <tr><td class="hl">স্টার্টআপ</td><td>নিজের রিসার্চ → প্রোডাক্ট → কোম্পানি</td><td>পরিবর্তনশীল (equity)</td></tr>
 <tr><td class="hl">সরকারি/জাতীয় ল্যাব</td><td>NSF, DARPA, NASA, national labs</td><td>$১০০-১৮০K</td></tr></table>
+
+<div class="src-box"><div class="src-label">যাচাইকৃত উৎস / Verified Sources</div>মানসিক স্বাস্থ্য: Evans et al., <em>Nature Biotechnology</em> 36, 282–284 (2018) — ৪১% মাঝারি-গুরুতর anxiety, ৩৯% depression; ভালো mentor-সম্পর্ক ও work-life balance কম উপসর্গের সাথে যুক্ত · ক্যারিয়ার ও আয়ের রেঞ্জ আনুমানিক — বর্তমান সংখ্যার জন্য NSF SED "postgraduation plans" টেবিল (ncses.nsf.gov) ও levels.fyi (self-reported) দেখো।</div>
 
 <div class="dialogue">ইলম — জ্ঞান। নবীজি (সা) বলেছেন — "জ্ঞান অর্জন প্রতিটি মুসলিমের উপর ফরজ।" PhD হলো জ্ঞানের সবচেয়ে গভীর পথ — শুধু জ্ঞান গ্রহণ নয়, জ্ঞান সৃষ্টি। এটা শুধু পেশাগত নয় — আধ্যাত্মিক। প্রতিটি নতুন আবিষ্কার আল্লাহর সৃষ্টির একটি নতুন দিক উন্মোচন। PhD-র মাধ্যমে তুমি আল্লাহর কালামের আরেকটি আয়াত পড়ো — "সবকিছু আমরা গণনা করেছি একটি সুরক্ষিত গ্রন্থে।" (৭৮:২৯)</div>
 <div class="dialogue en">"Ilm — knowledge. The Prophet (pbuh) said — 'Seeking knowledge is obligatory upon every Muslim.' PhD is the deepest path of knowledge — not just receiving knowledge, but creating it. This isn't just professional — it's spiritual. Each new discovery reveals a new aspect of Allah's creation. Through PhD you read another ayah of Allah's word — 'We have enumerated all things in a secure register.' (78:29)"</div>

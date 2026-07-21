@@ -40,10 +40,29 @@ doors.push({
 <div class="stat-card"><div class="sc-num">৫.৮ বছর</div><div class="sc-label">CS PhD-এর গড় সময় (CGS)</div></div>
 <div class="stat-card"><div class="sc-num">~৬০-৭০%</div><div class="sc-label">CS-এ completion rate (অন্য ফিল্ডে ~৫০%)</div></div>
 <div class="stat-card"><div class="sc-num">৫৮,১৩১</div><div class="sc-label">২০২৪-এ US ডক্টরেট (NSF SED)</div></div>
-<div class="stat-card"><div class="sc-num">~৯০%</div><div class="sc-label">যারা শেষ করে, বলে "সঠিক ছিল"</div></div>
+<div class="stat-card"><div class="sc-num">≤৭৫%</div><div class="sc-label">সর্বোচ্চ completion (CGS: অনুকূল অবস্থাতেও)</div></div>
 </div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Reality check:</strong> ঝরে পড়ার বড় কারণ একাডেমিক দুর্বলতা নয় — advisor mismatch, ফান্ডিং শেষ হওয়া, আর mental health। PhD শিক্ষার্থীদের মধ্যে depression ও anxiety-র হার সাধারণ জনসংখ্যার চেয়ে অনেক বেশি (Evans et al., <em>Nature Biotechnology</em> 2018 — ~৩৯% মাঝারি থেকে গুরুতর উদ্বেগ/বিষণ্নতা)। ভালো advisor আর ভালো fit — এই দুটোই টিকে থাকার আসল ভিত্তি।</div></div>
+<div class="svg-fig">
+<svg viewBox="0 0 640 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PhD vs Industry divergence">
+<line x1="40" y1="200" x2="600" y2="200" stroke="#5e5c74" stroke-width="1.5"/>
+<line x1="40" y1="200" x2="40" y2="30" stroke="#5e5c74" stroke-width="1.5"/>
+<text x="320" y="228" fill="#9290a8" font-size="12" text-anchor="middle">সময় (বছর) →</text>
+<text x="20" y="115" fill="#9290a8" font-size="12" text-anchor="middle" transform="rotate(-90 20 115)">আয় / গভীরতা</text>
+<path d="M40 190 C 160 170, 300 130, 600 60" fill="none" stroke="#7dd3fc" stroke-width="3"/>
+<path d="M40 190 C 200 188, 340 185, 460 175 C 520 165, 560 110, 600 45" fill="none" stroke="#5eead4" stroke-width="3" stroke-dasharray="7 5"/>
+<circle cx="460" cy="175" r="5" fill="#5eead4"/>
+<text x="455" y="160" fill="#5eead4" font-size="11" text-anchor="middle">PhD শেষ (~বছর ৬)</text>
+<text x="500" y="90" fill="#7dd3fc" font-size="12">Industry আয়</text>
+<text x="540" y="30" fill="#5eead4" font-size="12">PhD পথ</text>
+<text x="200" y="215" fill="#5e5c74" font-size="10">১</text><text x="330" y="215" fill="#5e5c74" font-size="10">৩</text><text x="460" y="215" fill="#5e5c74" font-size="10">৬</text><text x="580" y="215" fill="#5e5c74" font-size="10">১০</text>
+</svg>
+<div class="fig-cap">চিত্র: PhD-তে প্রথম ৫-৬ বছর আয় কম — কিন্তু এরপর research-lab পথ খুলে যায়। সিদ্ধান্তটা টাকার নয় — <em>কোন কাজ তোমাকে টানে</em> তার।</div>
+</div>
+
+<div class="src-box"><div class="src-label">যাচাইকৃত উৎস / Verified Sources</div>NSF Survey of Earned Doctorates 2024 (NSF 26-315): ২০২৪-এ ৫৮,১৩১ ডক্টরেট — ncses.nsf.gov · CGS PhD Completion Project: অনুকূল অবস্থাতেও ≤৭৫% completion; ছোট প্রোগ্রামে হার বেশি — phdcompletion.org · Evans et al., <em>Nature Biotechnology</em> 36, 282–284 (2018): ২,২৭৯ গ্র্যাড শিক্ষার্থীর জরিপে ৪১% মাঝারি-গুরুতর anxiety, ৩৯% depression (নমুনা self-selected — পরে সমালোচিতও হয়েছে, তবু সতর্কবার্তা স্পষ্ট)।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Reality check:</strong> ঝরে পড়ার বড় কারণ একাডেমিক দুর্বলতা নয় — advisor mismatch, ফান্ডিং শেষ হওয়া, আর mental health। PhD শিক্ষার্থীদের মধ্যে depression ও anxiety-র হার সাধারণ জনসংখ্যার চেয়ে অনেক বেশি (Evans et al., <em>Nature Biotechnology</em> 2018 — ৪১% মাঝারি-গুরুতর উদ্বেগ, ৩৯% বিষণ্নতা)। ভালো advisor আর ভালো fit — এই দুটোই টিকে থাকার আসল ভিত্তি।</div></div>
 
 <div class="callout info"><span class="co-icon">🧭</span><div><strong>এক লাইনের প্রশ্ন:</strong> তুমি কি ৫-৭ বছর এমন একটা সমস্যা নিয়ে কাজ করতে প্রস্তুত — যার উত্তর হয়তো <em>নেই</em>, আর যা খোঁজার পথ কেউ তোমাকে দেখিয়ে দেবে না?</div></div>
 
@@ -82,13 +101,26 @@ doors.push({
 <div class="tl-step"><div class="tl-when">বছর ৫-৭ · Dissertation</div><div class="tl-title">👑 ডিসার্টেশন ও ডিফেন্স</div><div class="tl-body">১০০-২০০ পৃষ্ঠার থিসিস; কমিটি + বাইরের এক্সামিনারের সামনে ডিফেন্স। <em>লক্ষ্য: এই সমস্যায় তুমি এখন বিশ্বের অন্যতম বিশেষজ্ঞ।</em></div></div>
 </div>
 
+<div class="svg-fig">
+<svg viewBox="0 0 660 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PhD stages overlap chart">
+<text x="10" y="34" fill="#9290a8" font-size="11">Coursework</text><rect x="110" y="22" width="150" height="16" rx="8" fill="#7dd3fc" opacity=".85"/>
+<text x="10" y="64" fill="#9290a8" font-size="11">Research</text><rect x="150" y="52" width="430" height="16" rx="8" fill="#5eead4" opacity=".75"/>
+<text x="10" y="94" fill="#9290a8" font-size="11">Qualifying</text><rect x="230" y="82" width="60" height="16" rx="8" fill="#f0c75e" opacity=".9"/>
+<text x="10" y="124" fill="#9290a8" font-size="11">Proposal</text><rect x="320" y="112" width="60" height="16" rx="8" fill="#ff6b35" opacity=".85"/>
+<text x="10" y="154" fill="#9290a8" font-size="11">Dissertation</text><rect x="470" y="142" width="130" height="16" rx="8" fill="#b37feb" opacity=".85"/>
+<line x1="110" y1="170" x2="610" y2="170" stroke="#5e5c74" stroke-width="1"/>
+<text x="110" y="185" fill="#5e5c74" font-size="10">বছর ১</text><text x="270" y="185" fill="#5e5c74" font-size="10">বছর ৩</text><text x="430" y="185" fill="#5e5c74" font-size="10">বছর ৫</text><text x="580" y="185" fill="#5e5c74" font-size="10">বছর ৭</text>
+</svg>
+<div class="fig-cap">চিত্র: ধাপগুলো আসলে overlap করে — coursework চলতে চলতেই রিসার্চ শুরু হয়, আর রিসার্চ চলে শেষ পর্যন্ত। মাঝের রঙিন মাইলফলক তিনটিই "গেট"।</div>
+</div>
+
 <div class="callout tip"><span class="co-icon">💡</span><div>এই ধাপগুলো লিনিয়ার মনে হলেও বাস্তবে overlap করে — coursework চলাকালীনই রিসার্চ শুরু হয়, আর proposal-এর পরও নতুন দিক আসতে পারে। মানচিত্র আছে বলেই পথ সোজা নয় — কিন্তু হারিয়ে যাওয়া কম।</div></div>
 
 <div class="dialogue">সফর — যাত্রা। কুরআনে আল্লাহ বলেন — "পৃথিবীতে ভ্রমণ করো এবং দেখো।" PhD একটা জ্ঞানের সফর। কিন্তু এই সফরের মানচিত্র জানা দরকার — কোথায় কী চ্যালেঞ্জ, কতদিন লাগবে। মানচিত্র ছাড়া সফর = হারিয়ে যাওয়া। মানচিত্র সহ = প্রস্তুত। প্রতিটা স্তর একটা মাইলফলক — স্তম্ভের মতো, পথের পাশে।</div>
 <div class="dialogue en">"Safar — journey. Allah says — 'Travel through the earth and observe.' PhD is a journey of knowledge. But you need the map of this journey — what challenge where, how long. Without a map, travel = getting lost. With a map = prepared. Each stage is a milestone — like pillars, beside the path."</div>`,
   senior:{
-    title:"R1 বনাম R2 বিশ্ববিদ্যালয় — পার্থক্য বুঝো",
-    body:`<p><strong>R1 (Very High Research Activity):</strong> MIT, Stanford, CMU, Berkeley, Georgia Tech, UIUC। ফান্ডিং বেশি, রিসার্চ সুযোগ বেশি, কিন্তু ভর্তি অত্যন্ত প্রতিযোগিতামূলক (১-৫% গ্রহণের হার)।</p><p><strong>R2 (High Research Activity):</strong> ছোট স্টেট ইউনিভার্সিটি, কম প্রতিযোগিতা, কিন্তু ফান্ডিং কম হতে পারে।</p><p><strong>তোমার কৌশল:</strong> R1-এ রিচ (reach) করো, R2-তে সেফটি (safety) রাখো। ১০-১৫ অ্যাপ্লিকেশন দাও — ৩-৪ R1, ৫-৬ R2, ২-৩ সেফটি।</p>`
+    title:"R1 বনাম R2 বিশ্ববিদ্যালয় — পার্থক্য বুঝো (Carnegie 2025)",
+    body:`<p><strong>২০২৫-এ Carnegie Classification নতুন সংজ্ঞা দিয়েছে:</strong></p><p><strong>R1 (Very High Research Spending & Doctorate Production):</strong> বছরে ≥$৫০M রিসার্চ ব্যয় + ≥৭০ ডক্টরেট। ২০২৫-এ ১৮৭টি প্রতিষ্ঠান R1 — MIT, Stanford, CMU, Berkeley, Georgia Tech, UIUC থেকে শুরু করে অনেক বড় স্টেট ইউনিভও। ফান্ডিং বেশি, কিন্তু শীর্ষগুলোতে ভর্তি অত্যন্ত প্রতিযোগিতামূলক।</p><p><strong>R2:</strong> ≥$৫M ব্যয় + ≥২০ ডক্টরেট। কম প্রতিযোগিতা, ফান্ডিং প্রোগ্রামভেদে।</p><p><strong>মনে রাখো:</strong> R1 এখন ১৮৭টি — সব R1 সমান নয়! CSRankings-এ <em>তোমার এরিয়ার</em> শক্তি দেখো, শুধু লেবেল নয়।</p><p><strong>তোমার কৌশল:</strong> ১০-১৫ অ্যাপ্লিকেশন — ৩-৪ reach (top R1), ৫-৬ match (mid R1/শক্ত R2), ২-৩ সেফটি।</p><p style="font-size:.72rem;opacity:.75">উৎস: Carnegie Classifications 2025 Research Activity Designations — carnegieclassifications.acenet.edu</p>`
   }
 });
 
@@ -125,9 +157,29 @@ doors.push({
 <div class="stat-card"><div class="sc-num">12+24 মাস</div><div class="sc-label">OPT + STEM OPT (CS)</div></div>
 </div>
 
+<div class="svg-fig">
+<svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Funded PhD package value">
+<text x="320" y="20" fill="#e8e6f0" font-size="13" text-anchor="middle" font-weight="bold">ফান্ডেড PhD প্যাকেজ — বছরে আসল মূল্য</text>
+<rect x="80" y="60" width="200" height="120" rx="10" fill="none" stroke="#5e5c74" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="180" y="125" fill="#9290a8" font-size="12" text-anchor="middle">আন-ফান্ডেড:</text>
+<text x="180" y="145" fill="#ff6b35" font-size="14" text-anchor="middle" font-weight="bold">−$50-60K টিউশন</text>
+<rect x="360" y="40" width="200" height="60" rx="10" fill="rgba(82,196,26,.18)" stroke="#52c41a"/>
+<text x="460" y="65" fill="#52c41a" font-size="12" text-anchor="middle" font-weight="bold">টিউশন মাফ</text>
+<text x="460" y="85" fill="#e8e6f0" font-size="12" text-anchor="middle">+$50-60K মূল্য</text>
+<rect x="360" y="110" width="200" height="60" rx="10" fill="rgba(94,234,212,.15)" stroke="#5eead4"/>
+<text x="460" y="135" fill="#5eead4" font-size="12" text-anchor="middle" font-weight="bold">স্টাইপেন্ড</text>
+<text x="460" y="155" fill="#e8e6f0" font-size="12" text-anchor="middle">+$29-54K নগদ</text>
+<text x="460" y="200" fill="#f0c75e" font-size="13" text-anchor="middle" font-weight="bold">= মোট $79-114K+/বছর</text>
+<text x="180" y="200" fill="#5e5c74" font-size="11" text-anchor="middle">এই পথে যেও না</text>
+</svg>
+<div class="fig-cap">চিত্র: "ফান্ডেড" মানে শুধু ফ্রি নয় — তুমি <em>বেতনভুক্ত গবেষক</em>। এজন্যই নিয়ম: ফান্ডিং ছাড়া PhD-তে যেও না।</div>
+</div>
+
 <div class="callout info"><span class="co-icon">📊</span><div><strong>যাচাই করো নিজে:</strong> <em>csstipendrankings.org</em> (stipend-ভিত্তিক CS র‍্যাঙ্কিং) আর <em>phdstipends.com</em> (আসল, self-reported সংখ্যা)। মনে রাখো COL — Bay Area-র $৪K ≈ Midwest-এর $২.৫K জীবনযাত্রায়।</div></div>
 
-<div class="callout warn"><span class="co-icon">🛂</span><div><strong>আন্তর্জাতিক ছাত্রদের জন্য (২০২৫-২৬):</strong> ফান্ডেড F-1 PhD-তে সাধারণত সমস্যা নেই। কিন্তু DHS "Duration of Status" (D/S) বাতিলের প্রস্তাব করেছে — দীর্ঘ প্রোগ্রামে এটি নজরে রাখো, নিয়মিত DSO-র সাথে কথা বলো। স্পাউস (F-2) কাজ করতে পারে না। স্টাইপেন্ডে ট্যাক্স প্রযোজ্য (প্রথম কয়েক বছরে কিছু ট্রিটি-ছাড় থাকতে পারে)।</div></div>
+<div class="callout warn"><span class="co-icon">🛂</span><div><strong>আন্তর্জাতিক ছাত্রদের জন্য — বড় আপডেট (জুলাই ২০২৬):</strong> DHS "Duration of Status" (D/S) বাতিলের নিয়ম <strong>চূড়ান্ত করেছে</strong> (final rule প্রকাশ: ১৭ জুলাই ২০২৬; কার্যকর: ১৫ সেপ্টেম্বর ২০২৬)। F-1 এখন সর্বোচ্চ <strong>৪ বছরের নির্দিষ্ট মেয়াদে</strong> অ্যাডমিট হবে — অথচ PhD লাগে ৫-৭ বছর! মানে মাঝপথে <strong>Extension of Stay</strong> আবেদন করতে হবে। Grace period-ও ৬০ → ৩০ দিনে নেমেছে। আতঙ্কের কিছু নেই — extension-এর পথ আছে — কিন্তু ভর্তি হওয়ার পর প্রথম দিন থেকেই DSO-র সাথে টাইমলাইন প্ল্যান করো। স্পাউস (F-2) কাজ করতে পারে না। স্টাইপেন্ডে ট্যাক্স প্রযোজ্য (ট্রিটি-ছাড় থাকতে পারে)।</div></div>
+
+<div class="src-box"><div class="src-label">যাচাইকৃত উৎস / Verified Sources</div>NSF GRFP (NSF 25-547): বার্ষিক $৩৭,০০০ স্টাইপেন্ড + $১৬,০০০ Cost-of-Education, ৩ বছর — শুধু US citizen/national/green-card holder — nsf.gov · DHS Final Rule "Establishing a Fixed Time Period of Admission" — Federal Register, 17 July 2026 · স্টাইপেন্ড ডেটা: csstipendrankings.org, phdstipends.com (self-reported)।</div>
 
 <div class="dialogue">রিযিক — জীবিকা। কুরআনে আল্লাহ বলেন — "পৃথিবীতে কোনো প্রাণী নেই যার রিযিক আল্লাহর দায়িত্বে নয়।" (১১:৬)। কিন্তু রিযিক চাইলে চেষ্টা করতে হয়। PhD ফান্ডিংও তেমনি — আল্লাহ দেবেন, কিন্তু তোমাকে প্রফেসরকে ইমেইল করতে হবে, গ্রান্ট খুঁজতে হবে, ফেলোশিপের জন্য আবেদন করতে হবে। চেষ্টা ছাড়া রিযিক আসে না।</div>
 <div class="dialogue en">"Rizq — provision. Allah says — 'There is no creature on earth whose provision is not Allah's responsibility.' (11:6). But provision requires effort. PhD funding too — Allah provides, but you must email professors, seek grants, apply for fellowships. Without effort, provision doesn't come."</div>`,
@@ -165,6 +217,24 @@ doors.push({
 <div class="callout info"><span class="co-icon">🏛️</span><div><strong>শীর্ষ ল্যাব:</strong> AI/ML → Stanford AI, MIT CSAIL, CMU ML · Systems → Berkeley Sky/RISE, UW, CMU · HCI → CMU HCII, Georgia Tech, MIT Media Lab। কিন্তু নাম নয় — <em>প্রফেসরের সাম্প্রতিক পেপার</em> পড়ে ঠিক করো কোথায় ফিট।</div></div>
 
 <div class="callout tip"><span class="co-icon">🎯</span><div><strong>প্রোফাইল-ভিত্তিক কৌশল:</strong> High-profile → AI/ML at R1 (reach)। Mid-profile → Systems/Security at R1 বা AI/ML at R2। Low-profile → Emerging/HCI at R2 বা niche এরিয়া, যেখানে ভিড় কম কিন্তু ভালো কাজের সুযোগ বেশি।</div></div>
+
+<div class="svg-fig">
+<svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interest skill opportunity venn">
+<circle cx="270" cy="105" r="80" fill="rgba(94,234,212,.12)" stroke="#5eead4" stroke-width="1.5"/>
+<circle cx="370" cy="105" r="80" fill="rgba(240,199,94,.12)" stroke="#f0c75e" stroke-width="1.5"/>
+<circle cx="320" cy="180" r="80" fill="rgba(125,211,252,.12)" stroke="#7dd3fc" stroke-width="1.5"/>
+<text x="235" y="75" fill="#5eead4" font-size="13" text-anchor="middle" font-weight="bold">আগ্রহ</text>
+<text x="410" y="75" fill="#f0c75e" font-size="13" text-anchor="middle" font-weight="bold">দক্ষতা</text>
+<text x="320" y="238" fill="#7dd3fc" font-size="13" text-anchor="middle" font-weight="bold">সুযোগ (ল্যাব+ফান্ডিং)</text>
+<text x="320" y="130" fill="#ff6b35" font-size="14" text-anchor="middle" font-weight="bold">🎯</text>
+<text x="320" y="150" fill="#e8e6f0" font-size="11" text-anchor="middle">তোমার এরিয়া</text>
+<text x="90" y="120" fill="#5e5c74" font-size="10" text-anchor="middle">আগ্রহ আছে, দক্ষতা নেই</text>
+<text x="90" y="134" fill="#5e5c74" font-size="10" text-anchor="middle">= আগে শেখো</text>
+<text x="555" y="120" fill="#5e5c74" font-size="10" text-anchor="middle">দক্ষতা আছে, আগ্রহ নেই</text>
+<text x="555" y="134" fill="#5e5c74" font-size="10" text-anchor="middle">= ৫ বছর টিকবে না</text>
+</svg>
+<div class="fig-cap">চিত্র: তিনটার ছেদবিন্দুই তোমার এরিয়া। দুটো মিললেও ৫-৭ বছরের জন্য যথেষ্ট নয়।</div>
+</div>
 
 <div class="callout warn"><span class="co-icon">⚖️</span><div><strong>Hot ≠ সহজ:</strong> AI/ML-এ ফান্ডিং বেশি কিন্তু গ্রহণ-হার সবচেয়ে কম আর প্রতিযোগীরা প্রকাশনা নিয়ে আসে। কম-ভিড় এরিয়ায় একই পরিশ্রমে তুমি দ্রুত "top student" হতে পারো — এটাই অনেক সময় স্মার্ট বাজি।</div></div>
 
@@ -205,11 +275,23 @@ doors.push({
 <li><strong>Application fee</strong> — $৭৫-১২৫/ইউনিভ; অনেক জায়গায় fee waiver পাওয়া যায়।</li>
 </ul>
 
-<div class="callout warn"><span class="co-icon">📋</span><div><strong>GRE (২০২৫-২৬):</strong> CS PhD-তে GRE এখন প্রায় সর্বত্র optional বা waived (post-COVID trend স্থায়ী)। কিছু top-15 প্রোগ্রাম এখনো চাইতে পারে — যাচাই করো। "Optional" মানে "গণনা হয় না" নয় — ভালো স্কোর থাকলে দাও। waiver-tracking: <em>ymgrad.com</em>।</div></div>
+<div class="callout warn"><span class="co-icon">📋</span><div><strong>GRE (২০২৬ আপডেট):</strong> ছবিটা মিশ্র — post-COVID "সবাই optional" trend আংশিক <em>উল্টে গেছে</em>। Top-50-এর একটা বড় অংশ PhD-তে GRE আবার require বা "strongly recommend" করছে; কেউ কেউ (যেমন UMinn CS) GRE <em>নেয়ই না</em>। তাই নিয়ম একটাই: <strong>প্রতিটা প্রোগ্রামের admissions পেজ নিজে যাচাই করো</strong> — অনুমান নয়। "Optional" মানে "গণনা হয় না" নয় — ভালো স্কোর থাকলে দাও।</div></div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ খারাপ SOP</div>"আমি ছোটবেলা থেকে কম্পিউটার ভালোবাসি। আমি ভালো ছাত্র ছিলাম। আমি কঠোর পরিশ্রমী। আমি আপনাদের বিশ্ববিদ্যালয়ে পড়তে চাই কারণ এটা ভালো।" — জেনেরিক। কোনো রিসার্চ প্রশ্ন নেই। কোনো প্রফেসরের নাম নেই। বাতিল।</div>
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ ভালো SOP</div>"আমি LedgerPilot-এ কাজ করার সময় লক্ষ্য করেছি যে NACHA ফাইল জেনারেশনে LLM ভুল করে। আমি একটি RAG সিস্টেম বানিয়েছি যা ৪০% ভুল কমায়। এই অভিজ্ঞতা থেকে আমি গবেষণার প্রশ্ন পেলাম — কীভাবে structured output-এ LLM নির্ভরতা বাড়ানো যায়? আমি প্রফেসর X-এর গবেষণায় আগ্রহী কারণ তাঁর recent paper on constrained decoding আমার কাজের সাথে মেলে।" — নির্দিষ্ট। রিসার্চ প্রশ্ন আছে। প্রফেসরের নাম আছে। গৃহীত।</div>
+</div>
+
+<div class="svg-fig">
+<svg viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SOP anatomy">
+<text x="320" y="20" fill="#e8e6f0" font-size="13" text-anchor="middle" font-weight="bold">SOP-এর শারীরস্থান — ১.৫ পৃষ্ঠা</text>
+<rect x="120" y="34" width="400" height="34" rx="8" fill="rgba(255,107,53,.15)" stroke="#ff6b35"/><text x="320" y="56" fill="#ff6b35" font-size="12" text-anchor="middle">১. Hook — যে অভিজ্ঞতা প্রশ্ন জাগালো (২০%)</text>
+<rect x="120" y="76" width="400" height="34" rx="8" fill="rgba(240,199,94,.15)" stroke="#f0c75e"/><text x="320" y="98" fill="#f0c75e" font-size="12" text-anchor="middle">২. Research Question — কী জানতে চাও (১৫%)</text>
+<rect x="120" y="118" width="400" height="48" rx="8" fill="rgba(94,234,212,.15)" stroke="#5eead4"/><text x="320" y="140" fill="#5eead4" font-size="12" text-anchor="middle">৩. Preparation — প্রজেক্ট, কাজ, রিসার্চ (৩৫%)</text><text x="320" y="157" fill="#9290a8" font-size="10" text-anchor="middle">সবচেয়ে বড় অংশ — প্রমাণ, দাবি নয়</text>
+<rect x="120" y="174" width="400" height="34" rx="8" fill="rgba(125,211,252,.15)" stroke="#7dd3fc"/><text x="320" y="196" fill="#7dd3fc" font-size="12" text-anchor="middle">৪. Fit — কেন এই ইউনিভ, কোন প্রফেসর, কোন পেপার (২০%)</text>
+<rect x="120" y="216" width="400" height="28" rx="8" fill="rgba(179,127,235,.15)" stroke="#b37feb"/><text x="320" y="235" fill="#b37feb" font-size="12" text-anchor="middle">৫. Future — PhD-এর পরে কী (১০%)</text>
+</svg>
+<div class="fig-cap">চিত্র: ভাগগুলোর ওজন লক্ষ করো — জীবনী নয়, প্রস্তুতি ও ফিটই SOP-এর হৃদয়। ৪ নম্বর অংশ প্রতিটা ইউনিভের জন্য নতুন করে লেখো।</div>
 </div>
 
 <div class="dialogue">নিয়্যাত — সংকল্প। হজ্জের আগে নিয়ত — কেন তুমি যাচ্ছ। PhD-এর আগেও নিয়ত — SOP-তে লেখা। কেন? কী নিয়ে? কোথায়? নিয়ত স্পষ্ট না হলে হজ্জ হয় না। SOP স্পষ্ট না হলে অ্যাডমিশন হয় না। কমিটি শুধু তোমার নিয়ত পড়ে — তোমার মার্কশিট নয়। নিয়তই তোমার পরিচয়।</div>
