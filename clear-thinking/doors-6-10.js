@@ -27,7 +27,7 @@ doors.push({
 <div class=\"dialogue\">\"জর্জ পলিয়া,\" হালিমা বললেন, \"একজন হাঙ্গেরিয়ান গণিতজ্ঞ। ১৯৪৫ সালে তিনি একটা বই লিখেছিলেন — <em>How to Solve It</em>। সেই বইয়ে তিনি সমস্যা সমাধানের চারটে ধাপ দিলেন। আমি সেই চার ধাপ দিয়ে প্রতিটা জামা বানাই। তুমি সেই চার ধাপ দিয়ে প্রতিটা সমস্যা সমাধান করবে।\"</div>
 <div class=\"dialogue en\">\"George Polya,\" Halima said, \"a Hungarian mathematician. In 1945 he wrote a book — <em>How to Solve It</em>. In it he gave four steps to solve problems. I make every garment with those four steps. You'll solve every problem with those four steps.\"</div>
 
-<div class=\"kv-table\"><tr><th>ধাপ</th><th>নাম</th><th>দরজির কাজ</th><th>তোমার কাজ</th></tr>
+<table class=\"kv-table\"><tr><th>ধাপ</th><th>নাম</th><th>দরজির কাজ</th><th>তোমার কাজ</th></tr>
 <tr><td class=\"hl\">১</td><td>বুঝো (Understand)</td><td>শরীর মাপা, পছন্দ জানা</td><td>সমস্যা পড়ো, কী চায় বুঝো</td></tr>
 <tr><td class=\"hl\">২</td><td>পরিকল্পনা (Plan)</td><td>প্যাটার্ন কাটা, ক্রম ঠিক</td><td>কৌশল বেছো, ডিজাইন</td></tr>
 <tr><td class=\"hl\">৩</td><td>বানাও (Execute)</td><td>সেলাই করা, ফিটিং</td><td>কোড লেখো, বানাও</td></tr>
@@ -105,7 +105,7 @@ doors.push({
 <div class=\"dialogue\">\"এখন সবচেয়ে কঠিন অংশ,\" আবদুল্লাহ গম্ভীর হলেন। \"ক্যালিব্রেশন। তুমি যখন বলো — 'আমি ৯০% নিশ্চিত এই সংখ্যাটা এই সীমার মধ্যে।' তোমার সেই আন্দাজগুলো কি সত্যিই ৯০% সময় সঠিক? ফিলিপ টেটলক (২০০৫) একটা দশক ধরে বিশেষজ্ঞদের আন্দাজ যাচাই করেছেন। দেখেছেন — যারা '৮০% নিশ্চিত' বলে, তাদের আসলে মাত্র ~৪৫% সময় সঠিক — টেটলক একে বলেছেন 'ছুঁড়ি মারা শিম্পাঞ্জি'। অতি-আত্মবিশ্বাস। এটাই সবচেয়ে বড় ভুল — নিজেকে না চেনা।\"</div>
 <div class=\"dialogue en\">\"Now the hardest part,\" Abdullah grew serious. \"Calibration. When you say — 'I'm 90% sure this number is within this range.' Are your estimates actually right 90% of the time? Philip Tetlock (2005) verified experts' estimates over a decade. Found — those who say '80% sure' are actually right only ~45% of the time — Tetlock's famous "dart-throwing chimpanzee" result. Overconfidence. This is the biggest error — not knowing yourself.\"</div>
 
-<div class=\"kv-table\"><tr><th>তুমি বলো</th><th>বাস্তবে সঠিক</th><th>সমস্যা</th></tr>
+<table class=\"kv-table\"><tr><th>তুমি বলো</th><th>বাস্তবে সঠিক</th><th>সমস্যা</th></tr>
 <tr><td class=\"hl\">৮০% নিশ্চিত</td><td>~৪৫%</td><td>অতি-আত্মবিশ্বাস (টেটলক)</td></tr>
 <tr><td class=\"hl\">৫০% নিশ্চিত</td><td>~৩০%</td><td>একই সমস্যা</td></tr>
 <tr><td class=\"hl\">প্রশিক্ষণ পরে</td><td>৮০%+</td><td>উন্নতি সম্ভব (সুপারফরকাস্টিং)</td></tr>
@@ -159,7 +159,7 @@ doors.push({
 <div class=\"dialogue\">\"এখন তিনটা হাতিয়ার,\" ইব্রাহিম বললেন। \"প্রথম — <strong>প্রত্যাশিত মান (Expected Value)</strong>। আমি যখন সমুদ্রে যেতে চিন্তা করি, আমি ভাবি: ভালো হলে কত মাছ? ~১০০ কেজি। খারাপ হলে কত ক্ষয়? ~নৌকা ক্ষতি, জীবন ঝুঁকি। ভালো হওয়ার সম্ভাবনা? ~৬০%। খারাপের? ~৪০%। প্রত্যাশিত মান = (০.৬ × ১০০ কেজি মাছ) − (০.৪ × নৌকা ক্ষয়)। যদি প্রত্যাশিত মান পজিটিভ হয় — যাওয়া যায়। নেগেটিভ হলে — বন্দরে থাকো।\"</div>
 <div class=\"dialogue en\">\"Now three tools,\" Ibrahim said. \"First — <strong>expected value</strong>. When I consider going to sea, I think: if good, how much fish? ~100 kg. If bad, how much loss? ~boat damage, life risk. Probability of good? ~60%. Of bad? ~40%. Expected value = (0.6 × 100 kg fish) − (0.4 × boat loss). If positive — go. If negative — stay in harbor.\"</div>
 
-<div class=\"kv-table\"><tr><th>প্রত্যাশিত মান সূত্র</th></tr>
+<table class=\"kv-table\"><tr><th>প্রত্যাশিত মান সূত্র</th></tr>
 <tr><td class=\"hl\">EV = Σ (সম্ভাবনা × ফলাফলের মান)</td></tr>
 <tr><td>ভালো ফল: ৬০% × +১০০ = +৬০</td></tr>
 <tr><td>খারাপ ফল: ৪০% × −৮০ = −৩২</td></tr>
@@ -280,7 +280,7 @@ doors.push({
 <div class=\"dialogue\">তুমি বললে — \"ঠিক আছে। আমার একটা আসল সমস্যা আছে।\" তুমি একটা নিঃশ্বাস নিলে। \"আমার একটা স্টার্টআপ আইডিয়া আছে — একটা AI-চালিত শিক্ষা প্ল্যাটফর্ম। আমি ভাবছি — চাকরি ছেড়ে এটায় ঝাঁপ দেব কিনা।\" জাকিরা ঘাড় নাড়লেন। \"ভালো সমস্যা। একটা সময় ছিল যখন এই সিদ্ধান্ত শুধু আবেগে নিতে হতো। এখন তোমার কাছে নয়টা সূত্র আছে। চলো দেখি।\"</div>
 <div class=\"dialogue en\">You said — \"Alright. I have a real problem.\" You took a breath. \"I have a startup idea — an AI-driven education platform. I'm thinking — should I quit my job and jump into this?\" Zakira nodded. \"Good problem. Once, this decision had to be made by emotion alone. Now you have nine threads. Let's see.\"</div>
 
-<div class=\"kv-table\"><tr><th>সূত্র</th><th>কারিগর</th><th>সমস্যায় কী বলে</th></tr>
+<table class=\"kv-table\"><tr><th>সূত্র</th><th>কারিগর</th><th>সমস্যায় কী বলে</th></tr>
 <tr><td class=\"hl\">১ মডেল</td><td>জাকিরা</td><td>অন্য স্টার্টআপ কীভাবে শুরু হয়েছিল? শুধু এক মডেল (থ্যাল) নয়।</td></tr>
 <tr><td class=\"hl\">২ যুক্তি</td><td>ইউসুফ</td><td>'AI গরম, তাই শিক্ষা AI সফল' — এই যুক্তি বৈধ কি? লুকানো প্রিমিস খোঁজো।</td></tr>
 <tr><td class=\"hl\">৩ ভ্রষ্টাচার</td><td>নাফিসা</td><td>'সবাই AI স্টার্টআপ করছে' — কি ফলস ডাইলেমা? স্টিলম্যান করো প্রতিপক্ষের।</td></tr>

@@ -44,7 +44,7 @@ doors.push({
 <div class="dialogue">"ম্যাঞ্জার বলেছিলেন," জাকিরা আবার বসলেন, "যে একজন মানুষ যদি শুধু একটা বিষয়ে দক্ষ হয় — শুধু অ্যাকাউন্টিং, বা শুধু ইঞ্জিনিয়ারিং, বা শুধু মার্কেটিং — সে একটা হাতুড়িওয়ালা। সে সব সমস্যা নিজের এক লেন্স দিয়ে দেখে। কিন্তু যে ব্যক্তি অনেকগুলো ডিসিপ্লিনের বেসিক মডেল জানে — সে একটা ল্যাটিসওয়ার্ক বানায়। একটা জাল। যে জালে অনেক গাঁথুনি আছে। সে যখন কোনো সমস্যা দেখে, সে ভাবে — 'এটা কি অর্থনীতির সমস্যা? মনোবিজ্ঞানের? ফিজিক্সের? জীববিজ্ঞানের?' — আর যেটা ফিট করে, সেই মডেলটা টানে।" জাকিরা হাত দিয়ে দেখালেন — তাঁর আঙুল বাতাসে একটা জাল আঁকল।</div>
 <div class="dialogue en">"Munger said," Zakira sat again, "that if a person is expert in only one field — only accounting, or only engineering, or only marketing — he is a man with a hammer. He sees every problem through his one lens. But one who knows the basic models of many disciplines — he builds a latticework. A mesh. With many junctions. When he sees a problem, he thinks — 'Is this an economics problem? Psychology? Physics? Biology?' — and pulls the model that fits." Zakira gestured — her fingers drew a mesh in the air.</div>
 
-<div class="kv-table"><tr><th>মডেল</th><th>কোথা থেকে</th><th>কী দেখায়</th></tr>
+<table class="kv-table"><tr><th>মডেল</th><th>কোথা থেকে</th><th>কী দেখায়</th></tr>
 <tr><td class="hl">অপর্টিউনিটি কস্ট</td><td>অর্থনীতি</td><td>একটা হ্যাঁ মানে অন্য না-গুলো</td></tr>
 <tr><td class="hl">কমন-কার্স ট্র্যাজেডি</td><td>অর্থনীতি</td><td>সবার ভালো vs সবার খারাপ</td></tr>
 <tr><td class="hl">প্রতিক্রিয়াশীলতা</td><td>মনোবিজ্ঞান</td><td>কীভাবে উদ্দীপনা আচরণ চালায়</td></tr>
@@ -120,7 +120,7 @@ doors.push({
 <div class="dialogue">"তিন — অ্যাবডাকশন। এটা ইনডাকশনের চাচাতো ভাই। ঘটনা থেকে সবচেয়ে সম্ভাব্য ব্যাখ্যা।" ইউসুফ দরজার একটা প্যানেল দেখালেন — তাতে একটা দাঁতের দাগ। "এই দাঁতের দাগ দেখে আমি বলি — কুকুর কামড়েছে। আমি কুকুরকে দেখিনি। কিন্তু দাঁতের গঠন দেখে আমি অনুমান করি। এটাই অ্যাবডাকশন — লক্ষণ থেকে কারণ। ডাক্তাররা এটা করে — লক্ষণ দেখে রোগ বলে। ডিটেকটিভরা এটা করে। তুমিও কোড ডিবাগ করার সময় এটা করো — বাগ দেখে কারণ অনুমান করো।"</div>
 <div class="dialogue en">"Three — abduction. It's induction's cousin. From event to most likely explanation." Yusuf showed a door panel — a tooth mark on it. "From this tooth mark I say — a dog bit it. I didn't see the dog. But from the mark's shape I infer. This is abduction — symptom to cause. Doctors do it — symptoms to disease. Detectives do it. You do it debugging code — bug to cause."</div>
 
-<div class="kv-table"><tr><th>প্রকার</th><th>দিক</th><th>নিশ্চয়তা</th><th>উদাহরণ ক্ষেত্র</th></tr>
+<table class="kv-table"><tr><th>প্রকার</th><th>দিক</th><th>নিশ্চয়তা</th><th>উদাহরণ ক্ষেত্র</th></tr>
 <tr><td class="hl">ডিডাকশন</td><td>সাধারণ → নির্দিষ্ট</td><td>১০০% (বৈধ হলে)</td><td>গণিত, লজিক, আইন</td></tr>
 <tr><td class="hl">ইনডাকশন</td><td>নির্দিষ্ট → সাধারণ</td><td>সম্ভাবনা</td><td>বিজ্ঞান, পরিসংখ্যান</td></tr>
 <tr><td class="hl">অ্যাবডাকশন</td><td>লক্ষণ → কারণ</td><td>সর্বোত্তম অনুমান</td><td>ডাক্তারি, ডিবাগ, ডিটেকটিভ</td></tr>
@@ -167,7 +167,7 @@ doors.push({
 <div class="dialogue">দ্বিতীয় মূর্তি — একটা কাঠের পুতুল, খড়ের তৈরি। "এই ফাটল: <strong>স্ট্রম্যান</strong>। খড়ের পুতুল। প্রতিপক্ষের যুক্তি যেমন আছে তেমন না ধরে, একটা দুর্বল সংস্করণ বানিয়ে তাকে আক্রমণ।" উদাহরণ: "কেউ বলল — 'আমাদের টেস্ট কভারেজ বাড়ানো উচিত।' উত্তর: 'তুমি বলছ আমরা কোনো কোড লিখব না, শুধু টেস্ট লিখব? পাগলামি!' আসল যুক্তিটা ছিল — কভারেজ বাড়ানো। কিন্তু উত্তরে একটা চরম সংস্করণ বানানো হলো — 'শুধু টেস্ট, কোড নয়' — আর সেটা ভাঙা গেল। খড়ের পুতুল পুড়িয়ে বলা হলো — 'দেখো, জিতলাম।'"</div>
 <div class="dialogue en">Second statue — a puppet made of straw. "This crack: <strong>strawman</strong>. A straw puppet. Instead of addressing the opponent's argument as it is, you build a weak version and attack that." Example: "Someone said — 'we should increase test coverage.' Reply: 'You're saying we write no code, only tests? Madness!' The real argument was — increase coverage. But the reply built an extreme version — 'only tests, no code' — and broke that. Burning the straw puppet and saying — 'See, I won.'"</div>
 
-<div class="kv-table"><tr><th>ফাটল</th><th>নাম</th><th>কী হয়</th></tr>
+<table class="kv-table"><tr><th>ফাটল</th><th>নাম</th><th>কী হয়</th></tr>
 <tr><td class="hl">১</td><td>অ্যাড হোমিনেম</td><td>মানুষকে আক্রমণ, যুক্তিকে নয়</td></tr>
 <tr><td class="hl">২</td><td>স্ট্রম্যান</td><td>দুর্বল সংস্করণ বানিয়ে ভাঙা</td></tr>
 <tr><td class="hl">৩</td><td>ফলস ডাইলেমা</td><td>মাত্র দুটো বিকল্প, আসলে আরও আছে</td></tr>
@@ -226,7 +226,7 @@ doors.push({
 <div class="dialogue">রুকাইয়া বোর্ডে একটা উদাহরণ লিখলেন। "ধরো — একটা রোগ জনসংখ্যার ১%-এ আছে। পরীক্ষাটা ৯৯% সঠিক — অর্থাৎ অসুস্থ থাকলে ৯৯% ক্ষেত্রে পজিটিভ দেবে, সুস্থ থাকলে ৯৯% ক্ষেত্রে নেগেটিভ দেবে। তুমি পরীক্ষা করলে — পজিটিভ এল। তোমার কত সম্ভাবনা সত্যিই অসুস্থ?" তুমি দ্রুত বললে — "৯৯%।" রুকাইয়া মাথা নাড়লেন। "ভুল। চলো হিসাব করি।"</div>
 <div class="dialogue en">Rukayya wrote an example on the board. "Say — a disease affects 1% of population. The test is 99% accurate — meaning if sick, 99% chance of positive; if well, 99% chance of negative. You take the test — positive. What's your chance of truly being sick?" You said quickly — "99%." Rukayya shook her head. "Wrong. Let's calculate."</div>
 
-<div class="kv-table"><tr><th>গোষ্ঠী</th><th>সংখ্যা (১০০০ জনে)</th><th>পজিটিভ ফল</th></tr>
+<table class="kv-table"><tr><th>গোষ্ঠী</th><th>সংখ্যা (১০০০ জনে)</th><th>পজিটিভ ফল</th></tr>
 <tr><td class="hl">সত্যিই অসুস্থ (১%)</td><td>১০ জন</td><td>৯.৯ জন (সঠিক পজিটিভ)</td></tr>
 <tr><td class="hl">সুস্থ (৯৯%)</td><td>৯৯০ জন</td><td>৯.৯ জন (মিথ্যা পজিটিভ)</td></tr>
 <tr><td class="hl">মোট পজিটিভ</td><td>—</td><td class="hl">১৯.৮ জন</td></tr>
