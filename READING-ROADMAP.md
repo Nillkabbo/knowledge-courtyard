@@ -1,8 +1,8 @@
 # 🗺️ The Reading Road — পড়ার পথ
 
-> A **dependency-ordered** reading path through the courtyard's 29 books — not the shelf order (Books 1–29), but the order in which concepts actually build on each other. Built from a structural audit of every chapter's topic and the author's own cross-book references.
+> A **dependency-ordered** reading path through the courtyard's 33 books — not the shelf order (Books 1–33), but the order in which concepts actually build on each other. Built from a structural audit of every chapter's topic and the author's own cross-book references.
 
-**Scale:** 29 visible books · ~332 chapters · ≈220 hrs.
+**Scale:** 33 visible books · ~377 chapters · ≈250 hrs.
 **Pace:** 1 chapter/day → ~11 months · 2/day → ~5.5 months.
 
 The hub courtyard now has a **🛣️ Reading Road** tab that shows this path interactively. This file is the long-form reference.
@@ -45,6 +45,8 @@ The single highest-leverage move. These books roughly double the retention of ev
 - [ ] 🌱 **Book 21 — The Researcher's Mind** (10 ch) · curiosity, question-crafting, intellectual humility
 - [ ] 🛡️ **Book 23 — The Irreplaceable Craftsman** (10 ch) · permanent vs perishable skills, systems thinking
 - [ ] 🧠 **Book 24 — The Throne of the Mind** (10 ch) · psychology, biases, Cialdini, learned helplessness
+- [ ] 🧠 **Book 32 — The Brain Mechanic's Codex** (15 ch) · brain hacks, habits, sleep, state regulation — the daily operating system
+- [ ] 🪡 **Book 33 — The Loom of Reason** (10 ch) · mental models, logic, Bayes, first principles, Polya, Fermi — the reasoning toolkit before the technical phases
 
 ## Phase 2 — The Map & the Engineer's Craft
 
