@@ -1,8 +1,8 @@
 # জ্ঞানের প্রাঙ্গণ — The Learning Courtyard
 
-An interactive bilingual (Bengali/English) learning library built with the Seven Doors Method. **29 books, 332 chapters, 33,200 XP** — covering AI engineering, data structures, system design, LLM deep dives, research craft, career mindset, and more.
+An interactive bilingual (Bengali/English) learning library built with the Seven Doors Method. **33 books, 377 chapters, 37,700 XP** — covering AI engineering, data structures, system design, LLM deep dives, math foundations, classic ML, research craft, career mindset, critical thinking, and more.
 
-## 📚 The 29 Books
+## 📚 The 33 Books
 
 ### 🏛️ Core Six (Books 1–6) — the foundation
 
@@ -33,7 +33,7 @@ An interactive bilingual (Bengali/English) learning library built with the Seven
 | 📐 18 | **The Geometry Chamber** | Embeddings (BGE, OpenAI, Matryoshka, vector search) |
 | 🔌 19 | **The Connection Chamber** | Tools & MCP (function calling, Model Context Protocol) |
 
-### 🌳 Growth & Research (Books 20–28) — 9 books on research, career, and craft
+### 🌳 Growth & Research (Books 20–31, 33) — 13 books on research, career, math, and craft
 
 | # | Book | Topic |
 |---|------|-------|
@@ -46,6 +46,10 @@ An interactive bilingual (Bengali/English) learning library built with the Seven
 | 📖 26 | **The Knowledge Craftsman** | Reading/Thinking/Writing — 10 doors with SVG diagrams (Zettelkasten, Feynman, Adler, Ebbinghaus, second-brain CODE) |
 | ✍️ 27 | **The Paper Architect** | Research Paper Read/Write (IMRaD, Keshav, peer review) |
 | 🕸️ 28 | **The Knowledge Web** | Knowledge Connection Capstone (connects all books) |
+| 🧮 30 | **The Architect's Compass** | Mathematical Foundations of ML — 10 doors (vectors → entropy, Al-Khwarizmi → Shannon) |
+| 🌿 31 | **The Marketplace of Algorithms** | Classic ML Algorithms — 10 doors (linear regression → neural networks, Al-Tusi → Ibn Muqla) |
+| 🧩 32 | **The Brain Mechanic's Codex** | Brain Hacks, Rituals & Habit Systems — 15 doors (tiny habits → neuroplasticity, Fogg → Merzenich) |
+| 🪡 33 | **The Loom of Reason** | Critical Thinking & Problem Solving — 10 doors (mental models, Bayesian reasoning, Polya, Fermi, second-order thinking) |
 
 ### 🚗 Extras (Book 29)
 
@@ -90,7 +94,7 @@ book-folder/
 └── doors-N-M.js    ← More story content
 ```
 
-The root `index.html` is the hub — the courtyard with filter tabs that connects all 29 books.
+The root `index.html` is the hub — the courtyard with filter tabs that connects all 33 books.
 
 ## 📖 Pedagogy — the Seven Doors Method
 
