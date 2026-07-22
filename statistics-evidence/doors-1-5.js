@@ -45,43 +45,67 @@ doors.push({
 
   <div class="diagram">
     <div class="diag-title">দৃষ্টান্তমূলক প্রমাণের ত্রয়ী — Three Modes of Evidence</div>
-    <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrTeal1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L9,3 z" fill="#2dd4bf"/>
+          <path d="M0,0 L0,6 L9,3 z" fill="#3dd6c4"/>
+        </marker>
+        <marker id="arrFire1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="#ff6b35"/>
+        </marker>
+        <marker id="arrLeaf1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="#52c41a"/>
         </marker>
       </defs>
-      <!-- Three columns -->
-      <rect class="cell-cyan" x="20" y="30" width="170" height="70" rx="12"/>
-      <text class="lbl-cyan" x="105" y="55" text-anchor="middle" font-weight="700">নিগমন / Deductive</text>
-      <text class="lbl-sm" x="105" y="75" text-anchor="middle">সাধারণ → বিশেষ</text>
-      <text class="lbl-sm" x="105" y="90" text-anchor="middle">All ravens are black →</text>
-      <text class="lbl-sm" x="105" y="102" text-anchor="middle">this raven is black</text>
+      <!-- Title row -->
+      <text x="280" y="18" text-anchor="middle" font-family="Cinzel,serif" font-size="11" font-weight="700" fill="#5eead4" letter-spacing="2">THREE MODES OF EVIDENCE — প্রমাণের ত্রয়ী</text>
 
-      <rect class="cell-hot" x="215" y="30" width="170" height="70" rx="12"/>
-      <text class="lbl-hot" x="300" y="55" text-anchor="middle" font-weight="700">আগমন / Inductive</text>
-      <text class="lbl-sm" x="300" y="75" text-anchor="middle">বিশেষ → সাধারণ</text>
-      <text class="lbl-sm" x="300" y="90" text-anchor="middle">1000 ravens observed →</text>
-      <text class="lbl-sm" x="300" y="102" text-anchor="middle">probably all are black</text>
+      <!-- Column 1: Deductive -->
+      <rect x="15" y="35" width="165" height="95" rx="10" fill="rgba(61,214,196,0.1)" stroke="#3dd6c4" stroke-width="1.5"/>
+      <circle cx="40" cy="55" r="10" fill="rgba(61,214,196,0.2)" stroke="#3dd6c4" stroke-width="1.5"/>
+      <text x="40" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#3dd6c4">১</text>
+      <text x="97" y="59" text-anchor="middle" font-size="12" font-weight="700" fill="#3dd6c4">নিগমন</text>
+      <text x="97" y="73" text-anchor="middle" font-size="9" fill="#9290a8">Deductive</text>
+      <text x="97" y="92" text-anchor="middle" font-size="9" fill="#9290a8">সাধারণ → বিশেষ</text>
+      <text x="97" y="106" text-anchor="middle" font-size="9" fill="#e8e6f0">All ravens are black</text>
+      <text x="97" y="119" text-anchor="middle" font-size="9" fill="#e8e6f0">→ this raven is black</text>
+      <text x="97" y="138" text-anchor="middle" font-size="8" font-style="italic" fill="#52c41a">✓ ১০০% নিশ্চিত</text>
 
-      <rect class="cell-leaf" x="410" y="30" width="170" height="70" rx="12"/>
-      <text class="lbl-leaf" x="495" y="55" text-anchor="middle" font-weight="700">অভিন্নকরণ / Abductive</text>
-      <text class="lbl-sm" x="495" y="75" text-anchor="middle">ফলাফল → সম্ভাব্য কারণ</text>
-      <text class="lbl-sm" x="495" y="90" text-anchor="middle">Wet grass → probably</text>
-      <text class="lbl-sm" x="495" y="102" text-anchor="middle">it rained (best guess)</text>
+      <!-- Column 2: Inductive -->
+      <rect x="197" y="35" width="165" height="95" rx="10" fill="rgba(255,107,53,0.1)" stroke="#ff6b35" stroke-width="1.5"/>
+      <circle cx="222" cy="55" r="10" fill="rgba(255,107,53,0.2)" stroke="#ff6b35" stroke-width="1.5"/>
+      <text x="222" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#ff6b35">২</text>
+      <text x="279" y="59" text-anchor="middle" font-size="12" font-weight="700" fill="#ff6b35">আগমন</text>
+      <text x="279" y="73" text-anchor="middle" font-size="9" fill="#9290a8">Inductive</text>
+      <text x="279" y="92" text-anchor="middle" font-size="9" fill="#9290a8">বিশেষ → সাধারণ</text>
+      <text x="279" y="106" text-anchor="middle" font-size="9" fill="#e8e6f0">1000 ravens observed</text>
+      <text x="279" y="119" text-anchor="middle" font-size="9" fill="#e8e6f0">→ probably all black</text>
+      <text x="279" y="138" text-anchor="middle" font-size="8" font-style="italic" fill="#fbbf24">≈ সম্ভাব্য (৯৯%?)</text>
 
-      <!-- Arrows down -->
-      <line class="edge-cyan" x1="105" y1="105" x2="105" y2="145" marker-end="url(#arrTeal1)"/>
-      <line class="edge-hot" x1="300" y1="105" x2="300" y2="145" marker-end="url(#arrTeal1)"/>
-      <line class="edge-amber" x1="495" y1="105" x2="495" y2="145" marker-end="url(#arrTeal1)"/>
+      <!-- Column 3: Abductive -->
+      <rect x="379" y="35" width="165" height="95" rx="10" fill="rgba(179,127,235,0.1)" stroke="#b37feb" stroke-width="1.5"/>
+      <circle cx="404" cy="55" r="10" fill="rgba(179,127,235,0.2)" stroke="#b37feb" stroke-width="1.5"/>
+      <text x="404" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#b37feb">৩</text>
+      <text x="461" y="59" text-anchor="middle" font-size="12" font-weight="700" fill="#b37feb">অভিন্নকরণ</text>
+      <text x="461" y="73" text-anchor="middle" font-size="9" fill="#9290a8">Abductive</text>
+      <text x="461" y="92" text-anchor="middle" font-size="9" fill="#9290a8">ফলাফল → কারণ</text>
+      <text x="461" y="106" text-anchor="middle" font-size="9" fill="#e8e6f0">Wet grass → probably</text>
+      <text x="461" y="119" text-anchor="middle" font-size="9" fill="#e8e6f0">→ it rained</text>
+      <text x="461" y="138" text-anchor="middle" font-size="8" font-style="italic" fill="#fbbf24">? সর্বোত্তম অনুমান</text>
 
-      <!-- Bottom: convergence -->
-      <rect class="cell" x="140" y="150" width="320" height="60" rx="12"/>
-      <text class="lbl" x="300" y="175" text-anchor="middle" font-weight="700" font-size="14">পরিসংখ্যান হলো তিনটের সংযোগ</text>
-      <text class="lbl-sm" x="300" y="193" text-anchor="middle">Statistics = where evidence meets uncertainty</text>
+      <!-- Arrows converging down -->
+      <path d="M 97 148 Q 97 165 200 185" fill="none" stroke="#3dd6c4" stroke-width="1.5" marker-end="url(#arrTeal1)"/>
+      <path d="M 279 148 L 279 185" fill="none" stroke="#ff6b35" stroke-width="1.5" marker-end="url(#arrFire1)"/>
+      <path d="M 461 148 Q 461 165 360 185" fill="none" stroke="#b37feb" stroke-width="1.5" marker-end="url(#arrLeaf1)"/>
 
-      <!-- Al-Kindi note -->
-      <text class="lbl-sm" x="300" y="235" text-anchor="middle" font-style="italic">আল-কিন্দি (c. ৮৫০): গণনা → প্যাটার্ন → সত্য</text>
+      <!-- Convergence box -->
+      <rect x="120" y="195" width="320" height="55" rx="10" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="1"/>
+      <text x="280" y="215" text-anchor="middle" font-size="13" font-weight="700" fill="#5eead4">পরিসংখ্যান</text>
+      <text x="280" y="230" text-anchor="middle" font-size="9" fill="#9290a8">Statistics = bridge between</text>
+      <text x="280" y="242" text-anchor="middle" font-size="9" fill="#9290a8">evidence and uncertainty</text>
+
+      <!-- Bottom note -->
+      <text x="280" y="268" text-anchor="middle" font-size="9" font-style="italic" fill="#9290a8">আল-কিন্দি (c. ৮৫০): গণনা → প্যাটার্ন → সত্য</text>
     </svg>
     <div class="diag-cap">পরিসংখ্যান তিন ধরনের প্রমাণকে একত্র করে — নিগমন (গ্যারান্টিযুক্ত সিদ্ধান্ত), আগমন (সম্ভাব্য সাধারণীকরণ), অভিন্নকরণ (সেরা ব্যাখ্যা)। আল-কিন্দির ফ্রিকোয়েন্সি বিশ্লেষণ ছিল আগমনের প্রথম রূপ।</div>
   </div>
