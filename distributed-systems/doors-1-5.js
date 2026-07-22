@@ -113,7 +113,7 @@ doors.push({
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Builder's Codex / System Design) Door ৭-এ Consensus শিখেছিলে — Paxos, Raft। সেই Paxos-এর জনক এই ল্যাম্পোর্ট। Book ৩৪ (Scale of Evidence) Door ৮-এ Causal Inference শিখেছিলে — Lamport clock হলো সেই কার্যকারণের (cause → effect) গাণিতিক রূপ।</div></div>
 
   <div class="verse">
-    <div class="verse-arabic">إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّلْقَوْمِ يَتَفَكَّرُونَ</div>
+    <div class="verse-arabic">إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</div>
     <div class="verse-translation">নিশ্চয় এতে চিন্তাশীল সম্প্রদায়ের জন্য নিদর্শন রয়েছে।</div>
     <div class="verse-ref">— কুরআন ৪৫:১৩</div>
   </div>
@@ -629,8 +629,8 @@ doors.push({
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Builder's Codex) Door ৫-এ Transactions, ACID & Isolation Levels শিখেছিলে — এই দরজা সেই একই ধারণার বিতরণ সংস্করণ। Book ৩৪ (Scale of Evidence) Door ৮-এ Causal Inference — ট্রানজেকশন commit/abort হলো কার্যকারণ চেইন: প্রতিটা ধাপ আগের ধাপের উপর নির্ভর করে।</div></div>
 
   <div class="verse">
-    <div class="verse-arabic">إِنَّ اللَّهَ يُحِبُّ الَّذِينَ يَتُوبُونَ</div>
-    <div class="verse-translation">নিশ্চয় আল্লাহ তাদের ভালোবাসেন যারা ফিরে আসে।</div>
+    <div class="verse-arabic">إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ وَيُحِبُّ الْمُتَطَهِّرِينَ</div>
+    <div class="verse-translation">নিশ্চয় আল্লাহ তাদের ভালোবাসেন যারা বারবার ফিরে আসে এবং পবিত্র থাকে।</div>
     <div class="verse-ref">— কুরআন ২:২২২</div>
   </div>
 
