@@ -74,11 +74,11 @@ doors.push({
       <rect class="cell-leaf" x="380" y="30" width="160" height="70" rx="12"/>
       <text class="lbl-leaf" x="460" y="55" text-anchor="middle" font-weight="700">৩. ব্লকিং</text>
       <text class="lbl-leaf" x="460" y="70" text-anchor="middle">Blocking</text>
-      <text class="lbl-sm" x="460" y="85" text-anchor="middle">মিলযুক্ত মাটি</text>
+      <text class="lbl-sm" x="460" y="83" text-anchor="middle">মিলযুক্ত মাটি</text>
       <text class="lbl-sm" x="460" y="95" text-anchor="middle">একসাথে দলবদ্ধ</text>
       <g transform="translate(395,105)">
-        <rect class="cell-cyan" width="40" height="16" rx="2"/><text class="lbl-sm" x="20" y="12" text-anchor="middle">ব্লক ১</text>
-        <rect class="cell-purple" x="48" width="40" height="16" rx="2"/><text class="lbl-sm" x="68" y="12" text-anchor="middle">ব্লক ২</text>
+        <rect class="cell-cyan" width="35" height="16" rx="2"/><text class="lbl-sm" x="17" y="12" text-anchor="middle">ব্লক ১</text>
+        <rect class="cell-purple" x="43" width="35" height="16" rx="2"/><text class="lbl-sm" x="60" y="12" text-anchor="middle">ব্লক ২</text>
       </g>
 
       <!-- Arrows down -->
@@ -461,7 +461,7 @@ doors.push({
         <rect class="cell-cyan" x="48" y="14" width="12" height="10" rx="1"/>
         <rect class="cell-cyan" x="64" y="14" width="12" height="10" rx="1"/>
       </g>
-      <text class="lbl-sm" x="445" y="220" text-anchor="middle" font-style="italic" fill="#ef4444">এটাই বিজ্ঞানের সবচেয়ে বড় সমস্যা</text>
+      <text class="lbl-sm" x="280" y="220" text-anchor="middle" font-style="italic" fill="#ef4444">এটাই বিজ্ঞানের বৃহত্তম সমস্যা</text>
     </svg>
     <div class="diag-cap">p-hacking: ২০টা পরীক্ষা করো, ১টায় দুর্ঘটনাক্রমে p < ০.০৫ পাবে। সেটাই প্রকাশ করো — বাকিগুলো লুকাও। এটাই Ioannidis-এর সতর্কতা।</div>
   </div>

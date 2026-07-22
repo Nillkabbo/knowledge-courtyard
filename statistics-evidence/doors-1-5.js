@@ -45,43 +45,43 @@ doors.push({
 
   <div class="diagram">
     <div class="diag-title">দৃষ্টান্তমূলক প্রমাণের ত্রয়ী — Three Modes of Evidence</div>
-    <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrTeal1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
           <path d="M0,0 L0,6 L9,3 z" fill="#2dd4bf"/>
         </marker>
       </defs>
       <!-- Three columns -->
-      <rect class="cell-cyan" x="20" y="30" width="160" height="70" rx="12"/>
-      <text class="lbl-cyan" x="100" y="55" text-anchor="middle" font-weight="700">নিগমন / Deductive</text>
-      <text class="lbl-sm" x="100" y="75" text-anchor="middle">সাধারণ → বিশেষ</text>
-      <text class="lbl-sm" x="100" y="90" text-anchor="middle">All ravens are black →</text>
-      <text class="lbl-sm" x="100" y="102" text-anchor="middle">this raven is black</text>
+      <rect class="cell-cyan" x="20" y="30" width="170" height="70" rx="12"/>
+      <text class="lbl-cyan" x="105" y="55" text-anchor="middle" font-weight="700">নিগমন / Deductive</text>
+      <text class="lbl-sm" x="105" y="75" text-anchor="middle">সাধারণ → বিশেষ</text>
+      <text class="lbl-sm" x="105" y="90" text-anchor="middle">All ravens are black →</text>
+      <text class="lbl-sm" x="105" y="102" text-anchor="middle">this raven is black</text>
 
-      <rect class="cell-hot" x="200" y="30" width="160" height="70" rx="12"/>
-      <text class="lbl-hot" x="280" y="55" text-anchor="middle" font-weight="700">আগমন / Inductive</text>
-      <text class="lbl-sm" x="280" y="75" text-anchor="middle">বিশেষ → সাধারণ</text>
-      <text class="lbl-sm" x="280" y="90" text-anchor="middle">1000 ravens observed →</text>
-      <text class="lbl-sm" x="280" y="102" text-anchor="middle">all ravens are probably black</text>
+      <rect class="cell-hot" x="215" y="30" width="170" height="70" rx="12"/>
+      <text class="lbl-hot" x="300" y="55" text-anchor="middle" font-weight="700">আগমন / Inductive</text>
+      <text class="lbl-sm" x="300" y="75" text-anchor="middle">বিশেষ → সাধারণ</text>
+      <text class="lbl-sm" x="300" y="90" text-anchor="middle">1000 ravens observed →</text>
+      <text class="lbl-sm" x="300" y="102" text-anchor="middle">probably all are black</text>
 
-      <rect class="cell-leaf" x="380" y="30" width="160" height="70" rx="12"/>
-      <text class="lbl-leaf" x="460" y="55" text-anchor="middle" font-weight="700">অভিন্নকরণ / Abductive</text>
-      <text class="lbl-sm" x="460" y="75" text-anchor="middle">ফলাফল → সম্ভাব্য কারণ</text>
-      <text class="lbl-sm" x="460" y="90" text-anchor="middle">Wet grass → probably</text>
-      <text class="lbl-sm" x="460" y="102" text-anchor="middle">it rained (best explanation)</text>
+      <rect class="cell-leaf" x="410" y="30" width="170" height="70" rx="12"/>
+      <text class="lbl-leaf" x="495" y="55" text-anchor="middle" font-weight="700">অভিন্নকরণ / Abductive</text>
+      <text class="lbl-sm" x="495" y="75" text-anchor="middle">ফলাফল → সম্ভাব্য কারণ</text>
+      <text class="lbl-sm" x="495" y="90" text-anchor="middle">Wet grass → probably</text>
+      <text class="lbl-sm" x="495" y="102" text-anchor="middle">it rained (best guess)</text>
 
       <!-- Arrows down -->
-      <line class="edge-cyan" x1="100" y1="105" x2="100" y2="145" marker-end="url(#arrTeal1)"/>
-      <line class="edge-hot" x1="280" y1="105" x2="280" y2="145" marker-end="url(#arrTeal1)"/>
-      <line class="edge-amber" x1="460" y1="105" x2="460" y2="145" marker-end="url(#arrTeal1)"/>
+      <line class="edge-cyan" x1="105" y1="105" x2="105" y2="145" marker-end="url(#arrTeal1)"/>
+      <line class="edge-hot" x1="300" y1="105" x2="300" y2="145" marker-end="url(#arrTeal1)"/>
+      <line class="edge-amber" x1="495" y1="105" x2="495" y2="145" marker-end="url(#arrTeal1)"/>
 
       <!-- Bottom: convergence -->
-      <rect class="cell" x="120" y="150" width="320" height="60" rx="12"/>
-      <text class="lbl" x="280" y="175" text-anchor="middle" font-weight="700" font-size="14">পরিসংখ্যান হলো তিনটের সংযোগ</text>
-      <text class="lbl-sm" x="280" y="193" text-anchor="middle">Statistics = the bridge where evidence meets uncertainty</text>
+      <rect class="cell" x="140" y="150" width="320" height="60" rx="12"/>
+      <text class="lbl" x="300" y="175" text-anchor="middle" font-weight="700" font-size="14">পরিসংখ্যান হলো তিনটের সংযোগ</text>
+      <text class="lbl-sm" x="300" y="193" text-anchor="middle">Statistics = where evidence meets uncertainty</text>
 
       <!-- Al-Kindi note -->
-      <text class="lbl-sm" x="280" y="235" text-anchor="middle" font-style="italic">আল-কিন্দি (c. ৮৫০): গণনা করো → প্যাটার্ন দেখো → সত্যে পৌঁছাও</text>
+      <text class="lbl-sm" x="300" y="235" text-anchor="middle" font-style="italic">আল-কিন্দি (c. ৮৫০): গণনা → প্যাটার্ন → সত্য</text>
     </svg>
     <div class="diag-cap">পরিসংখ্যান তিন ধরনের প্রমাণকে একত্র করে — নিগমন (গ্যারান্টিযুক্ত সিদ্ধান্ত), আগমন (সম্ভাব্য সাধারণীকরণ), অভিন্নকরণ (সেরা ব্যাখ্যা)। আল-কিন্দির ফ্রিকোয়েন্সি বিশ্লেষণ ছিল আগমনের প্রথম রূপ।</div>
   </div>
@@ -184,12 +184,10 @@ doors.push({
       </g>
       <!-- Mean line -->
       <line class="edge-hot" x1="210" y1="30" x2="210" y2="190" stroke-dasharray="5,3" stroke-width="2"/>
-      <text class="lbl-hot" x="210" y="25" text-anchor="middle" font-weight="700">গড় / Mean</text>
-      <text class="lbl-sm" x="210" y="205" text-anchor="middle">(x̄ = Σx/n)</text>
+      <text class="lbl-hot" x="380" y="25" text-anchor="middle" font-weight="700">গড় / Mean (x̄ = Σx/n)</text>
       <!-- Median line -->
       <line class="edge-cyan" x1="170" y1="30" x2="170" y2="190" stroke-dasharray="3,3" stroke-width="2"/>
-      <text class="lbl-cyan" x="125" y="25" text-anchor="middle" font-weight="700">মধ্যমা / Median</text>
-      <text class="lbl-sm" x="125" y="205" text-anchor="middle">(মাঝের মান)</text>
+      <text class="lbl-cyan" x="100" y="25" text-anchor="middle" font-weight="700">মধ্যমা / Median</text>
       <!-- Mode -->
       <circle class="node-hot" cx="186" cy="55" r="5"/>
       <text class="lbl-amber" x="270" y="50" font-weight="700">বহুলক / Mode</text>
@@ -309,8 +307,8 @@ doors.push({
       <text class="lbl-cyan" x="280" y="155" text-anchor="middle" font-size="11">(±১σ)</text>
       <text class="lbl-leaf" x="345" y="170" text-anchor="middle" font-weight="700" font-size="13">৯৫%</text>
       <text class="lbl-leaf" x="345" y="184" text-anchor="middle" font-size="10">(±২σ)</text>
-      <text class="lbl-amber" x="395" y="195" text-anchor="middle" font-weight="700" font-size="11">৯৯.৭%</text>
-      <text class="lbl-amber" x="395" y="205" text-anchor="middle" font-size="9">(±৩σ)</text>
+      <text class="lbl-amber" x="395" y="190" text-anchor="middle" font-weight="700" font-size="11">৯৯.৭%</text>
+      <text class="lbl-amber" x="395" y="202" text-anchor="middle" font-size="9">(±৩σ)</text>
     </svg>
     <div class="diag-cap">৬৮-৯৫-৯৯.৭ নিয়ম: গডেট থেকে ±১σ ব্যবধানে ৬৮% ডেটা, ±২σ তে ৯৫%, ±৩σ তে ৯৯.৭%। বাইরে মাত্র ০.৩% — চরম বিরল। এটাই প্রকৃতির ছন্দ।</div>
   </div>
@@ -431,8 +429,8 @@ doors.push({
       <text class="lbl-sm" x="280" y="30" text-anchor="middle" font-weight="700" font-size="13">শূন্য অনুকল্প বণ্টন (H₀)</text>
       <text class="lbl-amber" x="470" y="225" text-anchor="middle" font-weight="700">α = ০.০৫</text>
       <text class="lbl-amber" x="90" y="225" text-anchor="middle" font-weight="700">α = ০.০৫</text>
-      <text class="lbl-hot" x="480" y="145" text-anchor="start" font-size="11">p < ০.০৫</text>
-      <text class="lbl-hot" x="480" y="158" text-anchor="start" font-size="10">(প্রত্যাখ্যান এলাকা)</text>
+      <text class="lbl-hot" x="440" y="145" text-anchor="middle" font-size="11">p < ০.০৫</text>
+      <text class="lbl-hot" x="440" y="158" text-anchor="middle" font-size="10">(প্রত্যাখ্যান)</text>
       <text class="lbl-sm" x="280" y="220" text-anchor="middle">গ্রহণ এলাকা (৯৫%)</text>
       <!-- Axis -->
       <line class="axis" x1="30" y1="200" x2="530" y2="200"/>
@@ -564,10 +562,10 @@ doors.push({
       <circle class="node-leaf" cx="295" cy="170" r="4"/>
       <text class="lbl-sm" x="180" y="174" text-anchor="end">নমুনা ৫ ✓</text>
       <!-- Legend -->
-      <rect class="cell-good" x="380" y="200" width="12" height="12" rx="2"/>
-      <text class="lbl-sm" x="400" y="210">ধারণ করেছে (৯৫%)</text>
-      <rect class="cell-hot" x="380" y="220" width="12" height="12" rx="2"/>
-      <text class="lbl-sm" x="400" y="230">মিস করেছে (৫%)</text>
+      <rect class="cell-good" x="360" y="200" width="12" height="12" rx="2"/>
+      <text class="lbl-sm" x="378" y="210">ধারণ (৯৫%)</text>
+      <rect class="cell-hot" x="360" y="220" width="12" height="12" rx="2"/>
+      <text class="lbl-sm" x="378" y="230">মিস (৫%)</text>
     </svg>
     <div class="diag-cap">১০০টা নমুনা নিলে, ৯৫টা CI সত্যিকারের মান ধারণ করবে (সবুজ)। মাত্র ৫টা মিস করবে (লাল)। এটাই ৯৫% CI-এর অর্থ।</div>
   </div>
