@@ -259,9 +259,9 @@ doors.push({
     a: "গড় থেকে ±১σ ব্যবধানে ৬৮% ডেটা, ±২σ তে ৯৫%, ±৩σ তে ৯৯.৭%। যেমন গড় উচ্চতা ৬৫″ হলে — ৬৮% মানুষ ৬২″-৬৮″ এর মধ্যে, ৯৫% ৫৯″-৭১″ এর মধ্যে। মাত্র ০.৩% এর বাইরে — খুব লম্বা বা খুব খাটো।",
     aen: "Within ±1σ of the mean: 68% of data. ±2σ: 95%. ±3σ: 99.7%. E.g., mean height 65″ — 68% of people are between 62″-68″, 95% between 59″-71″. Only 0.3% beyond — very tall or very short."
   },
-  story: `<p class="scene-setting">গটিঙেন, জার্মানি, ১৮০১। রাতের আকাশে একটা নতুন আলো জ্বলে উঠল — Ceres নামের একটা বামন গ্রহ (dwarf planet)। কিন্তু সেটা সূর্যের আলোয় হারিয়ে গেল। পুরো ইউরোপের জ্যোতির্বিজ্ঞানীরা চিন্তিত — গ্রহটা কোথায় গেল? একজন ২৪ বছরের গণিতবিদ একটা অদ্ভুত পদ্ধতি ব্যবহার করলেন — তিনি পূর্বের পর্যবেক্ষণগুলো নিয়ে একটা বক্ররেখা (curve) বানালেন এবং ভবিষ্যতের অবস্থান গণনা করলেন। তাঁর নাম — কার্ল ফ্রিডরিখ গাউস (Carl Friedrich Gauss)।</p>
+  story: `<p class="scene-setting">ব্রাউনশভাইগ, জার্মানি, ১৮০১। রাতের আকাশে একটা নতুন আলো জ্বলে উঠল — Ceres নামের একটা বামন গ্রহ (dwarf planet)। কিন্তু সেটা সূর্যের আলোয় হারিয়ে গেল। পুরো ইউরোপের জ্যোতির্বিজ্ঞানীরা চিন্তিত — গ্রহটা কোথায় গেল? একজন ২৪ বছরের গণিতবিদ একটা অদ্ভুত পদ্ধতি ব্যবহার করলেন — তিনি পূর্বের পর্যবেক্ষণগুলো নিয়ে একটা বক্ররেখা (curve) বানালেন এবং ভবিষ্যতের অবস্থান গণনা করলেন। তাঁর নাম — কার্ল ফ্রিডরিখ গাউস (Carl Friedrich Gauss)।</p>
 
-  <p class="scene-setting en">Göttingen, Germany, 1801. A new light appeared in the night sky — a dwarf planet named Ceres. But it disappeared into the sun's glare. Astronomers across Europe despaired — where did it go? A 24-year-old mathematician used a strange method — he took previous observations, drew a curve, and calculated the future position. His name — Carl Friedrich Gauss.</p>
+  <p class="scene-setting en">Brunswick, Germany, 1801. A new light appeared in the night sky — a dwarf planet named Ceres. But it disappeared into the sun's glare. Astronomers across Europe despaired — where did it go? A 24-year-old mathematician used a strange method — he took previous observations, drew a curve, and calculated the future position. His name — Carl Friedrich Gauss.</p>
 
   <div class="dialogue">
     <p><strong>গাউস:</strong> প্রকৃতির প্রতিটা ঘটনায় একটা প্যাটার্ন আছে। শত শত পরিমাপ নাও — কখনো সব এক হয় না। কিন্তু যদি একটা গ্রাফ বানাও — মানগুলো একটা ঘণ্টার আকার ধারণ করে। মাঝে সবচেয়ে বেশি মান, দুই পাশে কম। এটাই স্বাভাবিক বণ্টন (normal distribution)।</p>
@@ -604,9 +604,9 @@ doors.push({
   </div>
 
   <div class="verse">
-    <div class="verse-arabic">وَمَا يُكَذِّبُ بِهِ إِلَّا كُلُّ مُعْتَدٍ أَثِيمٍ</div>
-    <div class="verse-translation">আর একে মিথ্যা বলে না কেবল প্রতিটি সীমালঙ্ঘনকারী পাপী।</div>
-    <div class="verse-ref">— কুরআন ৪৫:৩২ (অনুমানের সীমা সম্পর্কে যারা নিশ্চিত হতে চায় না তাদের কথা)</div>
+    <div class="verse-arabic">وَإِذَا قِيلَ إِنَّ وَعْدَ اللَّهِ حَقٌّ وَالسَّاعَةُ لَا رَيْبَ فِيهَا قُلْتُم مَّا نَدْرِي مَا السَّاعَةُ إِن نَّظُنُّ إِلَّا ظَنًّا وَمَا بِنَا مِن مُّبْصِرِينَ</div>
+    <div class="verse-translation">আর যখন বলা হয় আল্লাহর প্রতিশ্রুতি সত্য এবং কিয়ামতে কোনো সন্দেহ নেই, তখন তোমরা বল — আমরা জানি না কিয়ামত কী, আমরা তো কেবল অনুমান করি, আর আমরা নিশ্চিত কিছু জানি না।</div>
+    <div class="verse-ref">— কুরআন ৪৫:৩২ (যারা অনুমানেই সন্তুষ্ট, নিশ্চিত হতে চায় না তাদের কথা)</div>
   </div>
 
   <div class="secret-box">
