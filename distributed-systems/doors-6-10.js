@@ -1,0 +1,606 @@
+// ════════════════════════════════════════
+// সংযোগের সেতু — DOORS 6-10
+// The Bridge of Connections: MapReduce → Dynamo → Byzantine → Kleppmann → Synthesis
+// ════════════════════════════════════════
+
+doors.push({
+  num: 6,
+  icon: "🗺️",
+  color: "#fbbf24",
+  name: "ভাগ করে জয় করো",
+  subtitle: "Divide and Conquer",
+  tech: "MapReduce — Distributed Data Processing (Dean & Ghemawat, OSDI 2004)",
+  spirit: "আয়াত — বিচ্ছিন্ন অংশ থেকে সম্পূর্ণ সত্য, ভাগ করে সমাধান",
+  secret: "বিশাল কাজকে হাজার টুকরোয় ভাগ করো — প্রতিটা ছোট, সব মিলে বিশাল।",
+  recall: {
+    q: "MapReduce কীভাবে কাজ করে? Map এবং Reduce কী করে?",
+    qen: "How does MapReduce work? What do Map and Reduce do?",
+    a: "Map: প্রতিটা নোড নিজের ডেটার অংশ নিয়ে কাজ করে — key-value pair তৈরি করে। Reduce: একই key-র সব value এক জায়গায় এনে যোগ করে। যেমন: হাজার ফাইলে শব্দ গোনা — প্রতিটা নোড একটা ফাইল গোনে, তারপর সব যোগ।",
+    aen: "Map: each node processes its data chunk — creates key-value pairs. Reduce: all values for same key are combined. E.g., word count across thousands of files — each node counts one file, then sum."
+  },
+  story: `<p class="scene-setting">মাউন্টেন ভিউ, ক্যালিফোর্নিয়া, ২০০৩। Google-এ দুজন ইঞ্জিনিয়ার একটা অসম্ভব সমস্যায় আছেন — পুরো ইন্টারনেটের ওয়েব পেজ index করতে হবে। কোটি কোটি পেজ। একটা মেশিনে এই কাজ করতে গেলে মাস লাগবে। কিন্তু Google-এর হাজার মেশিন আছে। কীভাবে কাজটা ভাগ করবে? তাঁদের নাম — জেফ্রি ডিন (Jeffrey Dean) এবং সঞ্জয় ঘেমাওয়াত (Sanjay Ghemawat)।</p>
+
+  <p class="scene-setting en">Mountain View, California, 2003. Two engineers at Google face an impossible problem — index the entire internet's web pages. Billions of pages. On one machine this would take months. But Google has thousands of machines. How to split the work? Their names — Jeffrey Dean and Sanjay Ghemawat.</p>
+
+  <div class="dialogue">
+    <p><strong>ডিন:</strong> দুটো ধাপ। Map — প্রতিটা মেশিন নিজের অংশে কাজ করে। যেমন শব্দ গোনা: প্রতিটা মেশিন একটা ফাইল নেয়, শব্দ গোনে, key-value pair বানায় — ('বিড়াল', ৩), ('কুকুর', ৫)।</p>
+    <p><strong>তুমি:</strong> তারপর?</p>
+    <p><strong>ঘেমাওয়াত:</strong> Reduce — একই key-র সব value এক জায়গায় এনে যোগ। মেশিন ১ বলছে ('বিড়াল', ৩), মেশিন ২ বলছে ('বিড়াল', ৭)। Reduce বলবে — ('বিড়াল', ১০)। ভাগ করে জয় করো।</p>
+  </div>
+
+  <div class="dialogue en">
+    <p><strong>Dean:</strong> Two steps. Map — each machine works on its own chunk. E.g., word count: each machine takes a file, counts words, creates key-value pairs — ('cat', 3), ('dog', 5).</p>
+    <p><strong>You:</strong> Then what?</p>
+    <p><strong>Ghemawat:</strong> Reduce — all values for the same key are summed. Machine 1 says ('cat', 3), Machine 2 says ('cat', 7). Reduce says — ('cat', 10). Divide and conquer.</p>
+  </div>
+
+  <div class="callout info"><span class="co-icon">📜</span><div><strong>ঐতিহাসিক তথ্য:</strong> Jeffrey Dean এবং Sanjay Ghemawat Google-এ কাজ করেন। MapReduce গবেষণাপত্র — <em>"MapReduce: Simplified Data Processing on Large Clusters"</em>, OSDI ২০০৪ (USENIX Symposium on Operating Systems Design and Implementation)। একই জুটি Google File System (GFS) প্রকাশ করেন SOSP ২০০৩-এ। Bigtable — Chang et al., OSDI ২০০৬ (Best Paper)। Apache Spark — Matei Zaharia et al., <em>"Resilient Distributed Datasets"</em>, NSDI ২০১২।</div></div>
+
+  <div class="diagram">
+    <div class="diag-title">MapReduce প্রবাহ — শব্দ গোনার উদাহরণ</div>
+    <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrOrange6" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="#f97316"/>
+        </marker>
+      </defs>
+
+      <text x="280" y="18" text-anchor="middle" font-family="Cinzel,serif" font-size="10" font-weight="700" fill="#fbbf24" letter-spacing="2">MAPREDUCE — WORD COUNT</text>
+
+      <!-- Input files -->
+      <text x="90" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#9290a8">INPUT</text>
+      <rect x="45" y="50" width="90" height="22" rx="4" fill="rgba(92,92,116,0.15)" stroke="#5e5c74" stroke-width="1"/>
+      <text x="90" y="64" text-anchor="middle" font-size="8" fill="#9290a8">ফাইল ১: "বিড়াল কুকুর"</text>
+      <rect x="45" y="78" width="90" height="22" rx="4" fill="rgba(92,92,116,0.15)" stroke="#5e5c74" stroke-width="1"/>
+      <text x="90" y="92" text-anchor="middle" font-size="8" fill="#9290a8">ফাইল ২: "বিড়াল বিড়াল"</text>
+
+      <!-- Arrow to Map -->
+      <text x="175" y="70" text-anchor="middle" font-size="9" font-weight="700" fill="#f97316">MAP</text>
+      <path d="M 140 61 L 200 61" fill="none" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrOrange6)"/>
+      <path d="M 140 89 L 200 89" fill="none" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrOrange6)"/>
+
+      <!-- Map output -->
+      <text x="250" y="42" text-anchor="middle" font-size="8" fill="#fbbf24">(key, ১)</text>
+      <rect x="205" y="50" width="90" height="22" rx="4" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1"/>
+      <text x="250" y="64" text-anchor="middle" font-size="8" fill="#f97316">(বিড়াল,১)(কুকুর,১)</text>
+      <rect x="205" y="78" width="90" height="22" rx="4" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1"/>
+      <text x="250" y="92" text-anchor="middle" font-size="8" fill="#f97316">(বিড়াল,১)(বিড়াল,১)</text>
+
+      <!-- Shuffle arrow -->
+      <text x="355" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#3dd6c4">SHUFFLE</text>
+      <path d="M 300 61 L 360 61" fill="none" stroke="#3dd6c4" stroke-width="1.5" marker-end="url(#arrOrange6)" stroke-dasharray="4,2"/>
+      <path d="M 300 89 L 360 89" fill="none" stroke="#3dd6c4" stroke-width="1.5" marker-end="url(#arrOrange6)" stroke-dasharray="4,2"/>
+
+      <!-- Grouped -->
+      <rect x="360" y="50" width="100" height="50" rx="4" fill="rgba(61,214,196,0.1)" stroke="#3dd6c4" stroke-width="1"/>
+      <text x="410" y="64" text-anchor="middle" font-size="8" font-weight="700" fill="#3dd6c4">Group by key</text>
+      <text x="410" y="76" text-anchor="middle" font-size="8" fill="#3dd6c4">বিড়াল: [১,১,১]</text>
+      <text x="410" y="88" text-anchor="middle" font-size="8" fill="#3dd6c4">কুকুর: [১]</text>
+
+      <!-- Reduce -->
+      <text x="490" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#52c41a">REDUCE</text>
+      <path d="M 465 75 L 495 75" fill="none" stroke="#52c41a" stroke-width="1.5" marker-end="url(#arrOrange6)"/>
+
+      <!-- Output -->
+      <rect x="480" y="105" width="65" height="40" rx="4" fill="rgba(82,196,26,0.1)" stroke="#52c41a" stroke-width="1"/>
+      <text x="512" y="122" text-anchor="middle" font-size="9" font-weight="700" fill="#52c41a">বিড়াল: ৩</text>
+      <text x="512" y="136" text-anchor="middle" font-size="9" font-weight="700" fill="#52c41a">কুকুর: ১</text>
+
+      <!-- Scale note -->
+      <rect x="40" y="170" width="480" height="70" rx="8" fill="rgba(249,115,22,0.05)" stroke="#f97316" stroke-width="0.5"/>
+      <text x="280" y="190" text-anchor="middle" font-size="10" font-weight="700" fill="#fbbf24">কেন MapReduce বিপ্লবাত্মক ছিল?</text>
+      <text x="280" y="208" text-anchor="middle" font-size="9" fill="#9290a8">হাজার মেশিন → কোটি পেজ → মিনিটে শেষ</text>
+      <text x="280" y="223" text-anchor="middle" font-size="9" fill="#9290a8">এক মেশিনে অসম্ভব → হাজার মেশিনে সহজ</text>
+
+      <!-- Spark -->
+      <rect x="80" y="255" width="400" height="40" rx="6" fill="rgba(179,127,235,0.08)" stroke="#b37feb" stroke-width="0.5"/>
+      <text x="280" y="272" text-anchor="middle" font-size="9" font-weight="700" fill="#b37feb">Apache Spark (২০১২) — MapReduce-এর উত্তরসূরি</text>
+      <text x="280" y="286" text-anchor="middle" font-size="8" fill="#9290a8">In-memory processing → MapReduce-এর চেয়ে ১০-১০০x দ্রুত</text>
+    </svg>
+    <div class="diag-cap">Map: প্রতিটা মেশিন নিজের অংশে key-value তৈরি করে। Shuffle: একই key এক জায়গায়। Reduce: যোগ করে। ভাগ করে জয়।</div>
+  </div>
+
+  <div class="code-block">
+    <h4>🔬 Google-এর বিগ থ্রি — Big Data ভিত্তি</h4>
+    <table class="kv-table">
+      <tr><th>সিস্টেম</th><th>বছর</th><th>কাজ</th></tr>
+      <tr><td class="hl">GFS</td><td>২০০৩ (SOSP)</td><td>বিশাল ফাইল হাজার মেশিনে ছড়ানো</td></tr>
+      <tr><td class="hl">MapReduce</td><td>২০০৪ (OSDI)</td><td>বিশাল ডেটা সমান্তরালে প্রক্রিয়া</td></tr>
+      <tr><td class="hl">Bigtable</td><td>২০০৬ (OSDI)</td><td>বিশাল টেবিল — কোটি কোটি সারি</td></tr>
+      <tr><td class="hl">Spark</td><td>২০১২ (NSDI)</td><td>In-memory — ডিস্ক I/O এড়িয়ে ১০-১০০x দ্রুত</td></tr>
+    </table>
+    <br>
+    <p><strong>Dean & Ghemawat-এর উত্তরাধিকার:</strong> GFS ও MapReduce প্রকাশের পর আমাজন, ইয়াহু, ফেসবুক সবাই নিজেদের সংস্করণ বানায় — Hadoop (Yahoo), DynamoDB (Amazon), Cassandra (Facebook)। Google-এর গবেষণাপত্রগুলো বিগ ডেটা শিল্পের ভিত্তি।</p>
+  </div>
+
+  <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Builder's Codex) Door ১৩-এ Message Queues & Async Processing শিখেছিলে — MapReduce হলো সেই async processing-এর বিশাল রূপ। Book ৩৪ (Scale of Evidence) Door ২-এ Descriptive Statistics — MapReduce দিয়ে কোটি ডেটার গডেট বের করা যায়।</div></div>
+
+  <div class="verse">
+    <div class="verse-arabic">وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ</div>
+    <div class="verse-translation">আর বলো: কাজ করো — আল্লাহ তোমাদের কাজ দেখবেন।</div>
+    <div class="verse-ref">— কুরআন ৯:১০৫</div>
+  </div>
+
+  <div class="secret-box">
+    <div class="secret-icon">🗺️</div>
+    <div class="secret-text">বিশাল কাজকে ভাগ করো — হাজার ছোট কাজ সহজ, এক বিশাল কাজ অসম্ভব।</div>
+    <div class="secret-sub">Divide huge work — thousands of small tasks are easy, one huge task is impossible.</div>
+  </div>`,
+  senior: {
+    title: "Spark > MapReduce আজকাল",
+    body: `<p><strong>১. MapReduce বুঝো কিন্তু Spark ব্যবহার করো:</strong> MapReduce ডিস্কে লেখে — ধীর। Spark মেমরিতে রাখে — ১০-১০০x দ্রুত।</p>
+    <p><strong>২. Partitioning:</strong> ডেটা কীভাবে ভাগ করবে তা shuffle-এর আগে ঠিক করো। খারাপ partitioning → data skew → কিছু নোড ব্যস্ত, কিছু অলস।</p>
+    <p><strong>৩. বাস্তব ব্যবহার:</strong> Hadoop (Yahoo-এর MapReduce সংস্করণ), Spark (Databricks), Beam (Google) — সব MapReduce দর্শন থেকে এসেছে।</p>`
+  }
+});
+
+doors.push({
+  num: 7,
+  icon: "🔮",
+  color: "#f97316",
+  name: "শেষ পর্যন্ত সত্য",
+  subtitle: "Eventually True",
+  tech: "Amazon Dynamo — Eventual Consistency, Consistent Hashing, Vector Clocks (DeCandia et al., SOSP 2007)",
+  spirit: "সিলসিলা — শৃঙ্খল, ছড়িয়ে পড়া সত্য যা শেষে সব জায়গায় পৌঁছায়",
+  secret: "সত্য একসাথে সব জায়গায় আসে না — কিন্তু শেষ পর্যন্ত পৌঁছায়। ধৈর্য ধরো।",
+  recall: {
+    q: "Dynamo কোন CAP পছন্দ করে? Consistent hashing কী?",
+    qen: "Which CAP choice does Dynamo make? What is consistent hashing?",
+    a: "Dynamo AP বেছে নেয় — Availability + Partition Tolerance। Consistency ছাড়ে। সব রিকোয়েস্টে উত্তর মেলে, কিন্তু কিছু সময় পুরোনো ডেটা। Consistent hashing: নোড যোগ/বিদায় হলে শুধু প্রতিবেশী প্রভাবিত, সব নয়।",
+    aen: "Dynamo chooses AP — Availability + Partition Tolerance. Trades away Consistency. Every request answered, but sometimes stale data. Consistent hashing: when nodes join/leave only neighbors affected, not all."
+  },
+  story: `<p class="scene-setting">সিয়াটেল, ২০০৪-২০০৭। Amazon-এ একটা সমস্যা — ব্ল্যাক ফ্রাইডে। লক্ষ লক্ষ মানুষ একসাথে কেনাকাটা। শপিং কার্ট ক্র্যাশ করলে — ক্রেতা চলে যায়। উপলব্ধতা (availability) সবচেয়ে গুরুত্বপূর্ণ। একটু পুরোনো ডেটা মেনে নেওয়া যায়, কিন্তু কোনো রিকোয়েস্ট ব্যর্থ হবে না। এই দর্শন থেকে জন্ম Dynamo — Amazon-এর অভ্যন্তরীণ key-value স্টোর।</p>
+
+  <p class="scene-setting en">Seattle, 2004-2007. Amazon faces a problem — Black Friday. Millions of people shopping simultaneously. If the shopping cart crashes — customers leave. Availability is most important. Slightly stale data is acceptable, but no request fails. This philosophy birthed Dynamo — Amazon's internal key-value store.</p>
+
+  <div class="dialogue">
+    <p><strong>ডায়নামো টিম:</strong> আমরা AP বেছে নিলাম। Availability + Partition Tolerance। Consistency ছাড়লাম। কেন? কারণ Amazon-এ বিক্রি থামলে টাকা যায়। একটু পুরোনো দাম দেখালেও ক্রেতা কিনবে। কিন্তু 'সার্ভার ডাউন' দেখালে চলে যাবে।</p>
+    <p><strong>তুমি:</strong> কিন্তু পুরোনো ডেটা দেখালে সমস্যা হবে না?</p>
+    <p><strong>ডায়নামো টিম:</strong> শেষ পর্যন্ত সত্য (eventual consistency)। কিছু সময় পরে সব নোডে নতুন ডেটা পৌঁছাবে। ধৈর্য ধরো। ভেক্টর ক্লক (vector clock) দিয়ে ট্র্যাক করি কোন ভার্সন নতুন।</p>
+  </div>
+
+  <div class="dialogue en">
+    <p><strong>Dynamo team:</strong> We chose AP. Availability + Partition Tolerance. We traded Consistency. Why? Because at Amazon, stopping sales loses money. Slightly old price still lets customers buy. But 'server down' sends them away.</p>
+    <p><strong>You:</strong> But won't stale data cause problems?</p>
+    <p><strong>Dynamo team:</strong> Eventually consistent. After some time, new data reaches all nodes. Be patient. Vector clocks track which version is newer.</p>
+  </div>
+
+  <div class="callout info"><span class="co-icon">📜</span><div><strong>ঐতিহাসিক তথ্য:</strong> Dynamo গবেষণাপত্র — DeCandia এট আল. (২০০৭), <em>"Dynamo: Amazon's Highly Available Key-value Store"</em>, SOSP ২০০৭ (21st ACM SIGOPS Symposium)। ভার্নার ভোগেলস (Werner Vogels) — Amazon CTO। তাঁর <em>"Eventually Consistent"</em> প্রকাশিত ACM Queue, খণ্ড ৬, সংখ্যা ৬ (ডিসেম্বর ২০০৮)। Consistent hashing — Karger এট আল. (১৯৯৭), STOC '৯৭। <strong>গুরুত্বপূর্ণ:</strong> ভেক্টর ক্লক Lamport (১৯৭৮) আবিষ্কার করেননি — Lamport scalar clocks আবিষ্কার করেন। ভেক্টর ক্লক স্বাধীনভাবে আবিষ্কার করেন Fidge (ফেব্রুয়ারি ১৯৮৮) এবং Mattern (অক্টোবর ১৯৮৮)।</div></div>
+
+  <div class="diagram">
+    <div class="diag-title">Consistent Hashing — Dynamo-এর ডেটা বণ্টন</div>
+    <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrOrange7" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="#f97316"/>
+        </marker>
+      </defs>
+
+      <text x="280" y="18" text-anchor="middle" font-family="Cinzel,serif" font-size="10" font-weight="700" fill="#fbbf24" letter-spacing="2">CONSISTENT HASHING RING</text>
+
+      <!-- Hash ring circle -->
+      <circle cx="280" cy="130" r="80" fill="none" stroke="rgba(92,92,116,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+      <!-- Nodes on ring -->
+      <circle cx="280" cy="50" r="14" fill="rgba(249,115,22,0.2)" stroke="#f97316" stroke-width="2"/>
+      <text x="280" y="53" text-anchor="middle" font-size="9" font-weight="700" fill="#f97316">N₁</text>
+
+      <circle cx="360" cy="100" r="14" fill="rgba(61,214,196,0.2)" stroke="#3dd6c4" stroke-width="2"/>
+      <text x="360" y="103" text-anchor="middle" font-size="9" font-weight="700" fill="#3dd6c4">N₂</text>
+
+      <circle cx="340" cy="195" r="14" fill="rgba(179,127,235,0.2)" stroke="#b37feb" stroke-width="2"/>
+      <text x="340" y="198" text-anchor="middle" font-size="9" font-weight="700" fill="#b37feb">N₃</text>
+
+      <circle cx="220" cy="195" r="14" fill="rgba(82,196,26,0.2)" stroke="#52c41a" stroke-width="2"/>
+      <text x="220" y="198" text-anchor="middle" font-size="9" font-weight="700" fill="#52c41a">N₄</text>
+
+      <circle cx="200" cy="100" r="14" fill="rgba(251,191,36,0.2)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="200" y="103" text-anchor="middle" font-size="9" font-weight="700" fill="#fbbf24">N₅</text>
+
+      <!-- Data items (small dots) -->
+      <circle cx="250" cy="55" r="3" fill="#9290a8"/>
+      <text x="240" y="44" text-anchor="middle" font-size="7" fill="#5e5c74">D₁</text>
+      <circle cx="320" cy="70" r="3" fill="#9290a8"/>
+      <text x="330" y="62" font-size="7" fill="#5e5c74">D₂</text>
+
+      <!-- Explanation -->
+      <rect x="40" y="225" width="480" height="30" rx="6" fill="rgba(249,115,22,0.05)" stroke="#f97316" stroke-width="0.5"/>
+      <text x="280" y="244" text-anchor="middle" font-size="9" fill="#9290a8">ডেটা হ্যাশ → রিং-এর অবস্থান → ঘড়ির দিকে পরবর্তী নোডে সংরক্ষণ</text>
+
+      <!-- Right side notes -->
+      <text x="450" y="55" font-size="8" font-weight="700" fill="#fbbf24">সুবিধা:</text>
+      <text x="450" y="70" font-size="7" fill="#9290a8">নোড যোগ → শুধু</text>
+      <text x="450" y="80" font-size="7" fill="#9290a8">প্রতিবেশী প্রভাবিত</text>
+      <text x="450" y="95" font-size="7" fill="#9290a8">নোড বিদায় → ডেটা</text>
+      <text x="450" y="105" font-size="7" fill="#9290a8">পরবর্তীতে চলে যায়</text>
+    </svg>
+    <div class="diag-cap">Consistent hashing: ডেটা ও নোড উভয়ই একটা রিং-এ স্থাপিত। প্রতিটা ডেটা ঘড়ির দিকে পরবর্তী নোডে যায়। নোড যোগ/বিদায় হলে শুধু প্রতিবেশী প্রভাবিত হয়।</div>
+  </div>
+
+  <div class="code-block">
+    <h4>🔬 Dynamo প্রযুক্তি — মূল উপাদান</h4>
+    <table class="kv-table">
+      <tr><th>প্রযুক্তি</th><th>কাজ</th><th>উৎস</th></tr>
+      <tr><td class="hl">Consistent Hashing</td><td>ডেটা নোডে বণ্টন</td><td>Karger et al. ১৯৯৭</td></tr>
+      <tr><td class="hl">Vector Clocks</td><td>ভার্সন ট্র্যাকিং</td><td>Fidge/Mattern ১৯৮৮</td></tr>
+      <tr><td class="hl">Read Repair</td><td>পড়ার সময় পুরোনো নোড আপডেট</td><td>Dynamo ২০০৭</td></tr>
+      <tr><td class="hl">Hinted Handoff</td><td>নোড ডাউন হলে অস্থায়ী হস্তান্তর</td><td>Dynamo ২০০৭</td></tr>
+      <tr><td class="hl">Merkle Trees</td><td>দ্রুত সিঙ্ক্রোনাইজেশন</td><td>Dynamo ২০০৭</td></tr>
+    </table>
+    <br>
+    <p><strong>Dynamo-এর উত্তরাধিকার:</strong> Amazon DynamoDB (পাবলিক ক্লাউড), Cassandra (Facebook, Dynamo থেকে অনুপ্রাণিত), Riak, Voldemort (LinkedIn)। সবাই AP মডেল ব্যবহার করে — availability সবচেয়ে গুরুত্বপূর্ণ।</p>
+    <p><strong>Vector clock correction:</strong> গুরুত্বপূর্ণ — Lamport ১৯৭৮ scalar clocks আবিষ্কার করেন (একটা সংখ্যা)। Vector clocks হলো ভেক্টর (একাধিক সংখ্যা) — Fidge এবং Mattern ১৯৮৮ সালে স্বাধীনভাবে আবিষ্কার করেন।</p>
+  </div>
+
+  <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Builder's Codex) Door ৮-এ Consistent Hashing শিখেছিলে। Door ৩-এ CAP বেছেছিলে — Dynamo হলো AP-র বাস্তব উদাহরণ। Door ৪-এ Consensus — Dynamo-তে strict consensus নেই, eventual consistency আছে।</div></div>
+
+  <div class="verse">
+    <div class="verse-arabic">وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا وَلَا تَفَرَّقُوا</div>
+    <div class="verse-translation">আর তোমরা সবাই মিলে আল্লাহর রজ্জুকে শক্ত ধরো এবং বিচ্ছিন্ন হয়ো না।</div>
+    <div class="verse-ref">— কুরআন ৩:১০৩</div>
+  </div>
+
+  <div class="secret-box">
+    <div class="secret-icon">🔮</div>
+    <div class="secret-text">সত্য ধীরে ছড়ায় — কিন্তু শেষ পর্যন্ত সব জায়গায় পৌঁছায়।</div>
+    <div class="secret-sub">Truth spreads slowly — but eventually reaches everywhere.</div>
+  </div>`,
+  senior: {
+    title: "AP বনাম CP প্রয়োগ অনুযায়ী বেছে নাও",
+    body: `<p><strong>১. কখন AP (Dynamo):</strong> সোশ্যাল মিডিয়া, শপিং কার্ট, recommendation — উপলব্ধতা গুরুত্বপূর্ণ।</p>
+    <p><strong>২. কখন CP (Spanner):</strong> ব্যাংকিং, টাকা লেনদেন — সঠিক ডেটা গুরুত্বপূর্ণ।</p>
+    <p><strong>৩. Cassandra:</strong> Dynamo-এর উত্তরসূরি — Facebook তৈরি করেছে, এখন Apache প্রোজেক্ট। AP মডেল, consistent hashing, tunable consistency।</p>`
+  }
+});
+
+doors.push({
+  num: 8,
+  icon: "🛡️",
+  color: "#fbbf24",
+  name: "বিশ্বাসঘাতকতার সময়",
+  subtitle: "Time of Betrayal",
+  tech: "Byzantine Fault Tolerance — Byzantine Generals (Lamport 1982), pBFT (Castro & Liskov 1999), Bitcoin (Nakamoto 2008)",
+  spirit: "আমানত — বিশ্বাস, প্রতারণা সত্ত্বেও সত্য নির্ধারণ",
+  secret: "যখন কেউ মিথ্যা বলতে পারে — তখনও সত্য পৌঁছানো যায়, যদি সৎ সংখ্যাগরিষ্ঠ থাকে।",
+  recall: {
+    q: "Byzantine Generals Problem কী? Bitcoin কীভাবে সমাধান করে?",
+    qen: "What is the Byzantine Generals Problem? How does Bitcoin solve it?",
+    a: "জেনারেলরা শহর অবরোধ করেছে — একসাথে আক্রমণ বা পিছিয়ে যেতে হবে। কিন্তু কিছু জেনারেল বিশ্বাসঘাতক — মিথ্যা বার্তা পাঠায়। Byzantine Fault Tolerance: 3f+1 জেনারেল থাকলে f বিশ্বাসঘাতক সহ্য করা যায়। Bitcoin proof-of-work দিয়ে — প্রতারক হতে কম্পিউটিং শক্তি লাগে।",
+    aen: "Generals besiege a city — must attack or retreat together. But some generals are traitors — send false messages. Byzantine Fault Tolerance: with 3f+1 generals, f traitors can be tolerated. Bitcoin uses proof-of-work — being a traitor costs computing power."
+  },
+  story: `<p class="scene-setting">একটা প্রাচীন শহর অবরোধ করা হয়েছে। কয়েকজন বাইজেন্টাইন জেনারেল শহরের চারপাশে। তাদের একমত হতে হবে — একসাথে আক্রমণ করবে নাকি পিছিয়ে যাবে। কিন্তু তারা চিঠির মাধ্যমে যোগাযোগ করে — এবং কিছু জেনারেল বিশ্বাসঘাতক! তারা মিথ্যা বার্তা পাঠায় — কাউকে আক্রমণ বলে, কাউকে পিছিয়ে যেতে। যদি তারা একমত না হয় — পরাজয় নিশ্চিত। এটাই Byzantine Generals Problem — Lamport ১৯৮২ সালে আনুষ্ঠানিকভাবে বর্ণনা করেন।</p>
+
+  <p class="scene-setting en">An ancient city is besieged. Several Byzantine generals surround it. They must agree — attack together or retreat together. But they communicate by messages — and some generals are traitors! They send false messages — telling some to attack, others to retreat. If they don't agree — defeat is certain. This is the Byzantine Generals Problem — Lamport formally described it in 1982.</p>
+
+  <div class="dialogue">
+    <p><strong>ল্যাম্পোর্ট:</strong> যদি ৩f+১ জেনারেল থাকে, তাহলে f বিশ্বাসঘাতক সহ্য করা যায়। ৪ জেনারেল, ১ বিশ্বাসঘাতক? চলবে। কিন্তু ৩ জেনারেল, ১ বিশ্বাসঘাতক? অসম্ভব। সৎদের সংখ্যাগরিষ্ঠ দরকার।</p>
+    <p><strong>তুমি:</strong> কিন্তু এটা কম্পিউটারে কেমন?</p>
+    <p><strong>ল্যাম্পোর্ট:</strong> নোড = জেনারেল। Crash = অসুস্থ জেনারেল। Byzantine fault = বিশ্বাসঘাতক — শুধু crash নয়, ইচ্ছাকৃতভাবে ভুল উত্তর দেয়। হ্যাকার, দুর্নীতিপরায়ণ নোড।</p>
+    <p><strong>নাকামোতো (Bitcoin):</strong> আমার সমাধান আলাদা। প্রতারক হতে গেলে — কম্পিউটিং শক্তি লাগে। অনেক শক্তি। Proof-of-work — গণিতের সমস্যা সমাধান করতে হবে। সৎ নোডগুলো যদি বেশি শক্তি রাখে, প্রতারক জিততে পারবে না।</p>
+  </div>
+
+  <div class="dialogue en">
+    <p><strong>Lamport:</strong> If there are 3f+1 generals, then f traitors can be tolerated. 4 generals, 1 traitor? Works. But 3 generals, 1 traitor? Impossible. Honest majority is needed.</p>
+    <p><strong>You:</strong> But how does this apply to computers?</p>
+    <p><strong>Lamport:</strong> Node = general. Crash = sick general. Byzantine fault = traitor — not just crash, deliberately wrong answers. Hackers, corrupt nodes.</p>
+    <p><strong>Nakamoto (Bitcoin):</strong> My solution is different. To be a traitor — you need computing power. A lot. Proof-of-work — solve a math problem. If honest nodes have more power, the traitor can't win.</p>
+  </div>
+
+  <div class="callout info"><span class="co-icon">📜</span><div><strong>ঐতিহাসিক তথ্য:</strong> Byzantine Generals Problem — Lamport, L., Shostak, R., Pease, M. (১৯৮২), <em>"The Byzantine Generals Problem"</em>, ACM TOPLAS (Transactions on Programming Languages and Systems), খণ্ড ৪, সংখ্যা ৩, পৃষ্ঠা ৩৮২-৪০১। <strong>গুরুত্বপূর্ণ: ভেন্যু TOPLAS, TOCS নয়।</strong> Practical BFT (pBFT) — Castro, M. এবং Liskov, B. (১৯৯৯), OSDI '৯৯, পৃষ্ঠা ১৭৩-১৮৬। Bitcoin — Nakamoto, S. (৩১ অক্টোবর ২০০৮), <em>"Bitcoin: A Peer-to-Peer Electronic Cash System"</em> — ক্রিপ্টোগ্রাফি মেইলিং লিস্টে পোস্ট করা ৯-পৃষ্ঠার PDF। Genesis block খনন: ৩ জানুয়ারি ২০০৯।</div></div>
+
+  <div class="diagram">
+    <div class="diag-title">Byzantine Generals — বিশ্বাসঘাতক সহ্য করা</div>
+    <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrOrange8" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="#f97316"/>
+        </marker>
+        <marker id="arrRed8" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/>
+        </marker>
+      </defs>
+
+      <text x="280" y="18" text-anchor="middle" font-family="Cinzel,serif" font-size="10" font-weight="700" fill="#fbbf24" letter-spacing="2">BYZANTINE FAULT TOLERANCE</text>
+
+      <!-- Commander -->
+      <rect x="235" y="35" width="90" height="28" rx="6" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1.5"/>
+      <text x="280" y="53" text-anchor="middle" font-size="9" font-weight="700" fill="#fbbf24">Commander</text>
+
+      <!-- Honest generals -->
+      <circle cx="120" cy="120" r="16" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="2"/>
+      <text x="120" y="123" text-anchor="middle" font-size="8" font-weight="700" fill="#52c41a">G₁</text>
+      <text x="120" y="146" text-anchor="middle" font-size="7" fill="#52c41a">সৎ ✓</text>
+
+      <circle cx="440" cy="120" r="16" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="2"/>
+      <text x="440" y="123" text-anchor="middle" font-size="8" font-weight="700" fill="#52c41a">G₂</text>
+      <text x="440" y="146" text-anchor="middle" font-size="7" fill="#52c41a">সৎ ✓</text>
+
+      <!-- Traitor general -->
+      <circle cx="280" cy="150" r="16" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2"/>
+      <text x="280" y="153" text-anchor="middle" font-size="8" font-weight="700" fill="#ef4444">G₃</text>
+      <text x="280" y="176" text-anchor="middle" font-size="7" fill="#ef4444">বিশ্বাসঘাতক ✗</text>
+
+      <!-- Messages from commander -->
+      <path d="M 255 63 L 130 105" fill="none" stroke="#52c41a" stroke-width="1.5" marker-end="url(#arrOrange8)"/>
+      <text x="175" y="78" text-anchor="middle" font-size="7" fill="#52c41a">"আক্রমণ"</text>
+
+      <path d="M 280 63 L 280 134" fill="none" stroke="#ef4444" stroke-width="1" marker-end="url(#arrRed8)" stroke-dasharray="3,2"/>
+      <text x="298" y="98" font-size="7" fill="#ef4444">"পিছাও"</text>
+
+      <path d="M 305 63 L 430 105" fill="none" stroke="#52c41a" stroke-width="1.5" marker-end="url(#arrOrange8)"/>
+      <text x="385" y="78" text-anchor="middle" font-size="7" fill="#52c41a">"আক্রমণ"</text>
+
+      <!-- G₃ sends conflicting messages -->
+      <path d="M 268 162 L 140 130" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arrRed8)"/>
+      <path d="M 292 162 L 420 130" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arrRed8)"/>
+
+      <!-- Bottom: formula -->
+      <rect x="80" y="200" width="400" height="45" rx="8" fill="rgba(249,115,22,0.05)" stroke="#f97316" stroke-width="0.5"/>
+      <text x="280" y="220" text-anchor="middle" font-size="11" font-weight="700" fill="#fbbf24">নিয়ম: N ≥ 3f + 1</text>
+      <text x="280" y="236" text-anchor="middle" font-size="9" fill="#9290a8">N = মোট নোড, f = বিশ্বাসঘাতক। f=১ হলে N≥৪ দরকার</text>
+    </svg>
+    <div class="diag-cap">Byzantine Generals: সৎ সংখ্যাগরিষ্ঠ দরকার (3f+1)। Bitcoin: proof-of-work দিয়ে প্রতারক হতে ব্যয়বহুল করে তোলে — শক্তি ছাড়া সম্ভব নয়।</div>
+  </div>
+
+  <div class="code-block">
+    <h4>🔬 Byzantine Fault Tolerance — পদ্ধতি</h4>
+    <table class="kv-table">
+      <tr><th>পদ্ধতি</th><th>বছর</th><th>কীভাবে</th></tr>
+      <tr><td class="hl">Byzantine Generals</td><td>১৯৮২</td><td>3f+1 নোড, সব দিয়ে যোগাযোগ</td></tr>
+      <tr><td class="hl">pBFT</td><td>১৯৯৯</td><td>প্র্যাকটিক্যাল — কম নোডে কাজ করে</td></tr>
+      <tr><td class="hl">Proof-of-Work (Bitcoin)</td><td>২০০৮</td><td>গণিত সমাধান → শক্তি খরচ → প্রতারণা ব্যয়বহুল</td></tr>
+      <tr><td class="hl">Proof-of-Stake (Ethereum)</td><td>২০২২</td><td>টোকেন জামানত → প্রতারণা = টোকেন হারানো</td></tr>
+    </table>
+    <br>
+    <p><strong>Nakamoto-এর ব্রেকথ্রু:</strong> আগের BFT পদ্ধতিগুলো কয়েক ডজন নোডে কাজ করত। Bitcoin হাজার হাজার অজানা নোডে কাজ করে — কারণ proof-of-work প্রতারকের জন্য ব্যয়বহুল কিন্তু সৎ-এর জন্য পুরস্কৃত। Genesis block (৩ জানুয়ারি ২০০৯)-এ লেখা: <em>"The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"</em> — সেদিনের লন্ডন টাইমস-এর শিরোনাম।</p>
+  </div>
+
+  <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Design) Door ৭-এ Consensus (Paxos/Raft) শিখেছিলে — সেগুলো crash fault tolerant (CFT), Byzantine fault tolerant (BFT) নয়। এই দরজায় আরও শক্ত সমস্যা — নোড crash না করে ইচ্ছাকৃতভাবে মিথ্যা বলে।</div></div>
+
+  <div class="verse">
+    <div class="verse-arabic">يَا أَيُّهَا الَّذِينَ آمَنُوا إِن جَاءَكُمْ فَاسِقٌ بِنَبَأٍ فَتَبَيَّنُوا</div>
+    <div class="verse-translation">হে বিশ্বাসীরা! যদি কোনো পাপাচারী তোমাদের কাছে সংবাদ আনে, তবে তা যাচাই করে দেখো।</div>
+    <div class="verse-ref">— কুরআন ৪৯:৬</div>
+  </div>
+
+  <div class="secret-box">
+    <div class="secret-icon">🛡️</div>
+    <div class="secret-text">যখন কেউ মিথ্যা বলতে পারে — সৎ সংখ্যাগরিষ্ঠই সত্য নিশ্চিত করে।</div>
+    <div class="secret-sub">When anyone can lie — honest majority secures truth.</div>
+  </div>`,
+  senior: {
+    title: "BFT বনাম CFT — হুমকির ধরন অনুযায়ী",
+    body: `<p><strong>১. CFT (Crash Fault Tolerance):</strong> নোড বন্ধ হয়ে যায় কিন্তু মিথ্যা বলে না। Paxos/Raft এই ধরন সহ্য করে। ডেটা সেন্টারে যথেষ্ট।</p>
+    <p><strong>২. BFT (Byzantine Fault Tolerance):</strong> নোড ইচ্ছাকৃতভাবে মিথ্যা বলে। ব্লকচেইন, ক্রিপ্টোকারেন্সি — অজানা অংশগ্রহণকারীদের সিস্টেম।</p>
+    <p><strong>৩. Proof-of-Stake:</strong> Ethereum ২০২২ সালে PoW থেকে PoS-এ চলে যায় — শক্তি খরচ ৯৯.৯৫% কম। প্রতারক তার জামানত (stake) হারায়।</p>`
+  }
+});
+
+doors.push({
+  num: 9,
+  icon: "📖",
+  color: "#f97316",
+  name: "ডেটার গভীর চিন্তা",
+  subtitle: "Thinking Deeply About Data",
+  tech: "Modern Data Architecture — Event Sourcing, CQRS, Stream Processing (Kleppmann, 2017)",
+  spirit: "হিকমাহ — প্রয়োগকৃত জ্ঞান, গভীর বোঝা",
+  secret: "ডেটাবেস শুধু সংরক্ষণ নয় — এটা একটা সিদ্ধান্তের ইতিহাস। প্রতিটা ইভেন্ট একটা সত্য।",
+  recall: {
+    q: "Kleppmann-এর বই কেন গুরুত্বপূর্ণ? Event sourcing কী?",
+    qen: "Why is Kleppmann's book important? What is event sourcing?",
+    a: "Designing Data-Intensive Applications (২০১৭) বিতরণ সিস্টেমের বাইবেল। Event sourcing: বর্তমান অবস্থা নয়, সব পরিবর্তনের ইতিহাস সংরক্ষণ। পুরোনো ইভেন্ট থেকে বর্তমান তৈরি করা যায় — অডিট, রিপ্লে, ডিবাগ সব সম্ভব।",
+    aen: "Designing Data-Intensive Applications (2017) is the bible of distributed systems. Event sourcing: store history of all changes, not just current state. Current state can be rebuilt from events — audit, replay, debug all possible."
+  },
+  story: `<p class="scene-setting">কেমব্রিজ, ইংল্যান্ড, ২০১৭। কেমব্রিজ বিশ্ববিদ্যালয়ের একজন গবেষক একটা বই লিখলেন যা বিতরণ সিস্টেমের জগতে বাইবেল হয়ে গেল। নাম — <em>Designing Data-Intensive Applications</em>। O'Reilly থেকে প্রকাশিত। তাঁর নাম — মার্টিন ক্লেপম্যান (Martin Kleppmann)। তিনি দেখালেন — ডেটাবেস, মেসেজ কিউ, ক্যাশ — সব আসলে একই জিনিসের ভিন্ন রূপ।</p>
+
+  <p class="scene-setting en">Cambridge, England, 2017. A researcher at the University of Cambridge wrote a book that became the bible of distributed systems. Title — Designing Data-Intensive Applications. Published by O'Reilly. His name — Martin Kleppmann. He showed — databases, message queues, caches — are all variations of the same thing.</p>
+
+  <div class="dialogue">
+    <p><strong>ক্লেপম্যান:</strong> তুমি ভাবো ডেটাবেস, ক্যাশ, মেসেজ কিউ — আলাদা জিনিস। কিন্তু আমি দেখাই — সব একই। একটা write-ahead log হলো ডেটাবেস। একটা materialized view হলো ক্যাশ। একটা stream হলো message queue। অন্তর্নিহিত সত্য একটাই — ইভেন্টের ক্রম।</p>
+    <p><strong>তুমি:</strong> এটা বোঝালে কী হবে?</p>
+    <p><strong>ক্লেপম্যান:</strong> যখন তুমি ডেটাবেস ও ক্যাশকে একই জিনিস মনে করো — তখন তুমি event sourcing ব্যবহার করো। শুধু বর্তমান অবস্থা নয় — সব পরিবর্তনের ইতিহাস রাখো। যেকোনো সময় অতীতে ফিরে যেতে পারো, রিপ্লে করতে পারো, ডিবাগ করতে পারো।</p>
+  </div>
+
+  <div class="dialogue en">
+    <p><strong>Kleppmann:</strong> You think databases, caches, message queues — are different things. But I show — they're all one. A write-ahead log is a database. A materialized view is a cache. A stream is a message queue. The underlying truth is one — an ordered sequence of events.</p>
+    <p><strong>You:</strong> What's the benefit of understanding this?</p>
+    <p><strong>Kleppmann:</strong> When you see databases and caches as the same thing — you use event sourcing. Not just current state — store the full history of changes. Go back to any point in time, replay, debug.</p>
+  </div>
+
+  <div class="callout info"><span class="co-icon">📜</span><div><strong>ঐতিহাসিক তথ্য:</strong> মার্টিন ক্লেপম্যান — কেমব্রিজ বিশ্ববিদ্যালয়ের কম্পিউটার সায়েন্স অ্যাসোসিয়েট প্রফেসর। <em>Designing Data-Intensive Applications</em> (মার্চ ২০১৭, O'Reilly Media)। গবেষণা: local-first collaboration software (CRDT), distributed systems security। বিখ্যাত টক: <em>"Turning the Database Inside-Out"</em> (মার্চ ২০১৫)। <strong>নোট:</strong> ক্লেপম্যানের কোনো ইংরেজি উইকিপিডিয়া পেজ নেই — তাঁর হোমপেজ martin.kleppmann.com থেকে তথ্য যাচাই করা হয়েছে।</p></div>
+
+  <div class="code-block">
+    <h4>🔬 Kleppmann-এর একীভূত দর্শন — Turn the Database Inside-Out</h4>
+    <table class="kv-table">
+      <tr><th>ডেটাবেস ধারণা</th><th>ডিস্ট্রিবিউটেড সিস্টেমে রূপ</th></tr>
+      <tr><td class="hl">Write-Ahead Log (WAL)</td><td>Event log / Kafka topic</td></tr>
+      <tr><td class="hl">Materialized View</td><td>Cache / read replica</td></tr>
+      <tr><td class="hl">Index</td><td>Search engine (Elasticsearch)</td></tr>
+      <tr><td class="hl">Trigger</td><td>Stream processor (Flink/Spark)</td></tr>
+      <tr><td class="hl">Transaction</td><td>Exactly-once processing</td></tr>
+      <tr><td class="hl">Replication</td><td>Multi-region deployment</td></tr>
+    </table>
+    <br>
+    <p><strong>Event Sourcing:</strong> বর্তমান অবস্থা সংরক্ষণ নয় — প্রতিটা পরিবর্তন একটা ইভেন্ট হিসেবে লেখা হয়। উদাহরণ: ব্যাংক অ্যাকাউন্ট — ব্যালেন্স ৫০০ নয়, বরং: (+১০০০, -২০০, -৩০০) = ৫০০। ব্যালেন্স পুনরায় গণনা করা যায়। কোনো পরিবর্তন মুছে ফেলা হয় না — অডিট ট্রেইল স্বয়ংক্রিয়।</p>
+    <p><strong>CQRS (Command Query Responsibility Segregation):</strong> লেখা ও পড়া আলাদা মডেল। Command (write) একটা সিস্টেমে, Query (read) অন্যটাতে। উদাহরণ: লেখা → event log, পড়া → materialized view।</p>
+  </div>
+
+  <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Design) পুরো বই — Kleppmann-এর দর্শন হলো সেই বইয়ের তাত্ত্বিক ভিত্তি। Door ১৩ (Message Queues), Door ১৬ (Databases) — সব একই দর্শনের অংশ। Book ১৪ (LLMOps) — LLM সিস্টেমেও event sourcing প্রাসঙ্গিক।</div></div>
+
+  <div class="verse">
+    <div class="verse-arabic">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+    <div class="verse-translation">হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।</div>
+    <div class="verse-ref">— কুরআন ২০:১১৪</div>
+  </div>
+
+  <div class="secret-box">
+    <div class="secret-icon">📖</div>
+    <div class="secret-text">ডেটাবেস, ক্যাশ, কিউ — সব এক। অন্তর্নিহিত সত্য একটাই: ইভেন্টের ক্রম।</div>
+    <div class="secret-sub">Database, cache, queue — all one. The underlying truth: ordered events.</div>
+  </div>`,
+  senior: {
+    title: "DDIA পড়ো — এটা বিতরণ সিস্টেমের বাইবেল",
+    body: `<p><strong>১. বই পড়ো:</strong> <em>Designing Data-Intensive Applications</em> — O'Reilly। ২য় সংস্করণ ২০২৬ (Chris Riccomani সহ)। প্রতিটা অধ্যায় একটা বিশাল বিষয় কভার করে।</p>
+    <p><strong>২. Event sourcing বিবেচনা করো:</strong> যদি অডিট ট্রেইল দরকার হয় — event sourcing। কিন্তু জটিলতা বাড়ে। সব জায়গায় দরকার নয়।</p>
+    <p><strong>৩. Local-first:</strong> Kleppmann-এর বর্তমান গবেষণা — local-first software। অফলাইনে কাজ করো, অনলাইনে সিঙ্ক করো। CRDT (Conflict-free Replicated Data Type) দিয়ে।</p>`
+  }
+});
+
+doors.push({
+  num: 10,
+  icon: "🌐",
+  color: "#fbbf24",
+  name: "সেতুতে প্রত্যাবর্তন",
+  subtitle: "Return to the Bridge",
+  tech: "Synthesis — The Complete Distributed Architecture: One Request's Journey",
+  spirit: "জামাত — সম্মিলিত শক্তি, একতায় অবিচলতা",
+  secret: "একটা রিকোয়েস্ট হাজার মেশিন পার হয় — প্রতিটা স্তরে দশটি দরজার জ্ঞান কাজ করে।",
+  recall: {
+    q: "একটা রিকোয়েস্ট লোড ব্যালেন্সার থেকে ডেটাবেস পর্যন্ত — কোন স্তরে কোন দরজার জ্ঞান লাগে?",
+    qen: "A request from load balancer to database — which door's knowledge applies at each layer?",
+    a: "লোড ব্যালেন্সার (Door ৭ hashing) → সার্ভিস (Door ২ locking) → ক্যাশ (Door ৩ CAP) → ডেটাবেস (Door ৪ consensus) → রেপ্লিকা (Door ৫ transactions) → কিউ (Door ৬ MapReduce)। সব মিলে একটা সম্পূর্ণ বিতরণ সিস্টেম।",
+    aen: "Load balancer (Door 7 hashing) → Service (Door 2 locking) → Cache (Door 3 CAP) → Database (Door 4 consensus) → Replica (Door 5 transactions) → Queue (Door 6 MapReduce). Together = complete distributed system."
+  },
+  story: `<p class="scene-setting">তুমি এখন দাঁড়িয়ে আছো সংযোগের সেতুর শীর্ষে। পেছনে নয়টি দরজা — নয়জন স্থপতি। তাঁরা সবাই ফিরে এসেছেন। ল্যাম্পোর্ট তাঁর ঘড়ি নিয়ে, ডাইকস্ট্রা তাঁর সিগন্যাল নিয়ে, ব্রুয়ার তাঁর ত্রিভুজ নিয়ে, ল্যাম্পোর্ট আবার — এবার Paxos নিয়ে, গ্রে তাঁর ট্রানজেকশন নিয়ে, ডিন তাঁর MapReduce নিয়ে, ভোগেলস তাঁর ডায়নামো নিয়ে, নাকামোতো তাঁর ব্লকচেইন নিয়ে, ক্লেপম্যান তাঁর বই নিয়ে।</p>
+
+  <p class="scene-setting en">You now stand at the summit of the Bridge of Connections. Behind you: nine doors, nine architects. They have all returned. Lamport with his clocks, Dijkstra with his signals, Brewer with his triangle, Lamport again — this time with Paxos, Gray with his transactions, Dean with his MapReduce, Vogels with his Dynamo, Nakamoto with his blockchain, Kleppmann with his book.</p>
+
+  <div class="dialogue">
+    <p><strong>ল্যাম্পোর্ট (১):</strong> আমি শিখিয়েছিলাম — সময়ের হিসাব ছাড়া শৃঙ্খল নেই।</p>
+    <p><strong>ডাইকস্ট্রা (২):</strong> আমি বলেছিলাম — এক সময় একজন, নাহলে ধ্বংস।</p>
+    <p><strong>ব্রুয়ার (৩):</strong> আমি দেখিয়েছিলাম — তিনের মধ্যে দুটো, ত্যাগ ছাড়া মুক্তি নেই।</p>
+    <p><strong>ল্যাম্পোর্ট (৪):</strong> আমি শিখিয়েছিলাম — সংখ্যাগরিষ্ঠ একমত, তবু চলে।</p>
+    <p><strong>গ্রে (৫):</strong> আমি বলেছিলাম — সব না কিছু, অর্ধেক নয়।</p>
+    <p><strong>ডিন (৬):</strong> আমি দেখিয়েছিলাম — ভাগ করে জয়, হাজার মেশিনে।</p>
+    <p><strong>ভোগেলস (৭):</strong> আমি শিখিয়েছিলাম — সত্য ধীরে ছড়ায়, কিন্তু পৌঁছায়।</p>
+    <p><strong>নাকামোতো (৮):</strong> আমি দেখিয়েছিলাম — বিশ্বাসঘাতক সত্ত্বেও সত্য।</p>
+    <p><strong>ক্লেপম্যান (৯):</strong> আমি বলেছিলাম — সব এক, অন্তর্নিহিত ইভেন্টের ক্রম।</p>
+    <p><strong>সবাই একসাথে:</strong> এখন তুমি জানো — কীভাবে একটা সিস্টেমকে হাজার মেশিনে ছড়িয়ে দিতে হয়। এটাই বিতরণ সিস্টেম।</p>
+  </div>
+
+  <div class="diagram">
+    <div class="diag-title">একটা রিকোয়েস্টের যাত্রা — One Request Through the System</div>
+    <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrOrange10" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="#f97316"/>
+        </marker>
+      </defs>
+
+      <text x="280" y="18" text-anchor="middle" font-family="Cinzel,serif" font-size="10" font-weight="700" fill="#fbbf24" letter-spacing="2">ONE REQUEST'S JOURNEY</text>
+
+      <!-- User -->
+      <circle cx="280" cy="45" r="18" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="280" y="49" text-anchor="middle" font-size="11">👤</text>
+      <text x="280" y="77" text-anchor="middle" font-size="8" fill="#9290a8">ব্যবহারকারী</text>
+
+      <!-- Arrow down -->
+      <line x1="280" y1="82" x2="280" y2="95" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrOrange10)"/>
+
+      <!-- Load Balancer -->
+      <rect x="200" y="100" width="160" height="30" rx="6" fill="rgba(61,214,196,0.12)" stroke="#3dd6c4" stroke-width="1.5"/>
+      <text x="280" y="120" text-anchor="middle" font-size="9" font-weight="700" fill="#3dd6c4">Load Balancer</text>
+      <text x="380" y="120" font-size="7" fill="#5e5c74">D৭: Hashing</text>
+
+      <line x1="280" y1="135" x2="280" y2="145" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrOrange10)"/>
+
+      <!-- Service (3 nodes) -->
+      <circle cx="180" cy="165" r="12" fill="rgba(249,115,22,0.15)" stroke="#f97316" stroke-width="1.5"/>
+      <text x="180" y="168" text-anchor="middle" font-size="7" fill="#f97316">S₁</text>
+      <circle cx="280" cy="165" r="12" fill="rgba(249,115,22,0.15)" stroke="#f97316" stroke-width="1.5"/>
+      <text x="280" y="168" text-anchor="middle" font-size="7" fill="#f97316">S₂</text>
+      <circle cx="380" cy="165" r="12" fill="rgba(249,115,22,0.15)" stroke="#f97316" stroke-width="1.5"/>
+      <text x="380" y="168" text-anchor="middle" font-size="7" fill="#f97316">S₃</text>
+      <text x="440" y="168" font-size="7" fill="#5e5c74">D২: Locking</text>
+
+      <line x1="280" y1="180" x2="280" y2="190" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrOrange10)"/>
+
+      <!-- Cache -->
+      <rect x="200" y="195" width="160" height="26" rx="6" fill="rgba(179,127,235,0.12)" stroke="#b37feb" stroke-width="1.5"/>
+      <text x="280" y="213" text-anchor="middle" font-size="9" font-weight="700" fill="#b37feb">Cache (Redis)</text>
+      <text x="380" y="213" font-size="7" fill="#5e5c74">D৩: CAP-AP</text>
+
+      <line x1="280" y1="225" x2="280" y2="235" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrOrange10)"/>
+
+      <!-- Database (Raft cluster) -->
+      <circle cx="200" cy="255" r="12" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="1.5"/>
+      <text x="200" y="258" text-anchor="middle" font-size="7" fill="#52c41a">DB₁</text>
+      <circle cx="280" cy="255" r="12" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="1.5"/>
+      <text x="280" y="258" text-anchor="middle" font-size="7" fill="#52c41a">DB₂</text>
+      <circle cx="360" cy="255" r="12" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="1.5"/>
+      <text x="360" y="258" text-anchor="middle" font-size="7" fill="#52c41a">DB₃</text>
+      <text x="440" y="258" font-size="7" fill="#5e5c74">D৪: Raft</text>
+
+      <line x1="280" y1="270" x2="280" y2="280" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrOrange10)"/>
+
+      <!-- Message Queue -->
+      <rect x="160" y="285" width="240" height="26" rx="6" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1"/>
+      <text x="280" y="303" text-anchor="middle" font-size="9" font-weight="700" fill="#fbbf24">Message Queue (Kafka)</text>
+      <text x="420" y="303" font-size="7" fill="#5e5c74">D৫/৬</text>
+    </svg>
+    <div class="diag-cap">একটা রিকোয়েস্ট: ব্যবহারকারী → লোড ব্যালেন্সার (D৭) → সার্ভিস (D২) → ক্যাশ (D৩) → ডেটাবেস Raft (D৪) → কিউ (D৫/৬)। প্রতিটা স্তরে একটা দরজার জ্ঞান কাজ করে।</div>
+  </div>
+
+  <div class="code-block">
+    <h4>🔬 বিতরণ সিস্টেম চেকলিস্ট — The Architect's Checklist</h4>
+    <table class="kv-table">
+      <tr><th>সিদ্ধান্ত</th><th>প্রশ্ন</th><th>দরজা</th></tr>
+      <tr><td class="hl">সময়</td><td>কোন ইভেন্ট আগে?</td><td>১ — Lamport Clock</td></tr>
+      <tr><td class="hl">কনকারেন্সি</td><td>একাধিক রাইটার?</td><td>২ — Semaphore/Mutex</td></tr>
+      <tr><td class="hl">CAP পছন্দ</td><td>CP না AP?</td><td>৩ — CAP Theorem</td></tr>
+      <tr><td class="hl">Consensus</td><td>নোডগুলো একমত?</td><td>৪ — Paxos/Raft</td></tr>
+      <tr><td class="hl">Atomicity</td><td>সব না কিছু?</td><td>৫ — 2PC/Saga</td></tr>
+      <tr><td class="hl">ডেটা প্রসেসিং</td><td>বিশাল ডেটা?</td><td>৬ — MapReduce/Spark</td></tr>
+      <tr><td class="hl">স্টোরেজ</td><td>কীভাবে বণ্টন?</td><td>৭ — Consistent Hashing</td></tr>
+      <tr><td class="hl">হুমকি</td><td>বিশ্বাসঘাতক?</td><td>৮ — BFT/Blockchain</td></tr>
+      <tr><td class="hl">দর্শন</td><td>ইভেন্ট না state?</td><td>৯ — Kleppmann</td></tr>
+    </table>
+    <br>
+    <p><strong>সময়রেখা — ৫৫ বছরের যাত্রা:</strong></p>
+    <p>• <strong>১৯৬৫:</strong> Dijkstra — semaphore</p>
+    <p>• <strong>১৯৭৮:</strong> Lamport — logical clocks</p>
+    <p>• <strong>১৯৮২:</strong> Lamport — Byzantine Generals</p>
+    <p>• <strong>১৯৮৭:</strong> Garcia-Molina — Saga</p>
+    <p>• <strong>১৯৯৭:</strong> Karger — consistent hashing</p>
+    <p>• <strong>১৯৯৮:</strong> Lamport — Paxos</p>
+    <p>• <strong>২০০০:</strong> Brewer — CAP theorem</p>
+    <p>• <strong>২০০৪:</strong> Dean & Ghemawat — MapReduce</p>
+    <p>• <strong>২০০৭:</strong> DeCandia et al. — Dynamo</p>
+    <p>• <strong>২০০৮:</strong> Nakamoto — Bitcoin</p>
+    <p>• <strong>২০১৪:</strong> Ongaro — Raft</p>
+    <p>• <strong>২০১৭:</strong> Kleppmann — DDIA</p>
+  </div>
+
+  <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স — পুরো লাইব্রেরির সংযোগ:</strong> এই বই হলো <strong>infrastructure layer</strong> — Book ৪ (System Design) এর গভীরে যাওয়া। Book ৪ single-machine design শেখায়, এই বই multi-machine design শেখায়। Book ৩৪ (Statistics) বলে কীভাবে প্রমাণ করবে সিস্টেম কাজ করে — এই বই বলে কীভাবে সিস্টেম বানাবে যা কাজ করবে। PhD interview: "How would you design distributed training for a 70B model?" — এখন উত্তর দিতে পারবে।</div></div>
+
+  <div class="checklist">
+    <li>ঘড়ির উপর নির্ভর করবে না — Lamport clock ব্যবহার করো</li>
+    <li>শেয়ার্ড রিসোর্সে সবসময় mutex/lock দাও</li>
+    <li>CAP পছন্দ সচেতনভাবে করো — CP না AP?</li>
+    <li>Consensus দরকার হলে Raft ব্যবহার করো</li>
+    <li>ডিস্ট্রিবিউটেড ট্রানজেকশনে Saga বিবেচনা করো</li>
+    <li>বিশাল ডেটায় MapReduce/Spark ব্যবহার করো</li>
+    <li>Consistent hashing দিয়ে ডেটা বণ্টন করো</li>
+    <li>অজানা অংশগ্রহণকারী থাকলে BFT দরকার</li>
+    <li>ইভেন্ট সোর্সিং বিবেচনা করো — শুধু state নয়</li>
+    <li>DDIA পড়ো — এটা বাইবেল</li>
+  </div>
+
+  <div class="verse">
+    <div class="verse-arabic">وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا وَلَا تَفَرَّقُوا</div>
+    <div class="verse-translation">আর তোমরা সবাই মিলে আল্লাহর রজ্জুকে শক্ত ধরো এবং বিচ্ছিন্ন হয়ো না।</div>
+    <div class="verse-ref">— কুরআন ৩:১০৩</div>
+  </div>
+
+  <div class="secret-box">
+    <div class="secret-icon">🌐</div>
+    <div class="secret-text">এক মেশিন থামলে সিস্টেম চলে — কারণ বাকি হাজার মেশিন জীবিত।</div>
+    <div class="secret-sub">One machine stops, the system runs — because a thousand others are alive.</div>
+  </div>`,
+  senior: {
+    title: "তুমি এখন বিতরণ মাস্টার",
+    body: `<p><strong>পরবর্তী পদক্ষেপ:</strong> একটা সিস্টেম ডিজাইন করো — একটা URL shortener বা চ্যাট অ্যাপ। প্রতিটা স্তরে দশটি দরজার সিদ্ধান্ত প্রয়োগ করো।</p>
+    <p><strong>পড়ার তালিকা:</strong> ১. Kleppmann (২০১৭) DDIA. ২. Lamport (১৯৭৮) Time, Clocks. ৩. DeCandia et al. (২০০৭) Dynamo. ৪. Ongaro & Ousterhout (২০১৪) Raft।</p>
+    <p><strong>প্র্যাকটিস:</strong> MIT 6.824 Distributed Systems (ফ্রি অনলাইন) — Go-তে Raft ইমপ্লিমেন্ট করো। Designing Data-Intensive Applications পড়ো।</p>`
+  }
+});
