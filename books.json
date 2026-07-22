@@ -43,7 +43,8 @@
     { "n": 30, "folder": "math-for-ml",             "title_en": "The Architect's Compass",             "title_bn": "গণিতের নিকোবর",              "icon": "🧭", "category": "growth", "color": "game-30", "tag": "Book 30 · Math Foundations",              "status": "live" },
     { "n": 31, "folder": "classic-ml",              "title_en": "The Marketplace of Algorithms",       "title_bn": "মেশিনের বাজার",              "icon": "🌱", "category": "growth", "color": "game-31", "tag": "Book 31 · Classic ML",                       "status": "live" },
     { "n": 32, "folder": "mind-mechanic",           "title_en": "The Brain Mechanic's Codex",          "title_bn": "মস্তিষ্কের কারিগরি",          "icon": "🧠", "category": "growth", "color": "game-32", "tag": "Book 32 · Brain & Habits",                    "status": "live" },
-    { "n": 33, "folder": "clear-thinking",          "title_en": "The Loom of Reason",                  "title_bn": "যুক্তির তাঁত",                "icon": "🪡", "category": "growth", "color": "game-33", "tag": "Book 33 · Critical Thinking & Problem Solving Deep Dive",                 "status": "live" }
+    { "n": 33, "folder": "clear-thinking",          "title_en": "The Loom of Reason",                  "title_bn": "যুক্তির তাঁত",                "icon": "🪡", "category": "growth", "color": "game-33", "tag": "Book 33 · Critical Thinking & Problem Solving Deep Dive",                 "status": "live" },
+    { "n": 34, "folder": "statistics-evidence",     "title_en": "The Scale of Evidence",               "title_bn": "প্রমাণের দাঁড়িপাল্লা",         "icon": "⚖️", "category": "growth", "color": "game-34", "tag": "Book 34 · Statistics & Experimental Design",                              "status": "live" }
   ],
 
   "roadmap": [
@@ -65,7 +66,8 @@
         { "book": 23, "why": "permanent vs perishable skills, systems thinking" },
         { "book": 24, "why": "biases, Cialdini, learned helplessness — referenced by 27 & 28." },
         { "book": 32, "why": "daily operating system — brain hacks, habits, state regulation. Read alongside 5 & 25 for immediate practical gains." },
-        { "book": 33, "why": "completes the mind trilogy — 24 defends the mind, 32 maintains the brain, 33 sharpens the thinking. Ten tools: latticework, logic, fallacies, Bayes, first principles, Polya, Fermi, decisions, second-order." }
+        { "book": 33, "why": "completes the mind trilogy — 24 defends the mind, 32 maintains the brain, 33 sharpens the thinking. Ten tools: latticework, logic, fallacies, Bayes, first principles, Polya, Fermi, decisions, second-order." },
+        { "book": 34, "why": "the evidence foundation — statistics & experimental design. Al-Kindi to Pearl, 1167 years. How to PROVE ideas work: hypothesis testing, confidence intervals, A/B testing, causal inference, replication crisis. The keystone that validates all other books." }
       ]
     },
     {

@@ -168,6 +168,9 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-card.game-31 .game-link{color:var(--teal)}
 .game-card.game-32 .game-link{color:var(--purple)}
 .game-card.game-33 .game-link{color:#a5b4fc}
+.game-card.game-34::before{background:linear-gradient(90deg,var(--teal-ev,#2dd4bf),var(--amber),var(--teal-ev,#2dd4bf))}
+.game-card.game-34 .game-tag{background:rgba(45,212,191,.12);color:#5eead4}
+.game-card.game-34 .game-link{color:#5eead4}
 .game-card:hover .game-link{gap:.6rem}
 
 /* ── READING ROAD ── */
@@ -295,7 +298,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <div class="section-label" id="journeysLabel">📚 যাত্রা — Journeys</div>
 
-  <!-- ══ SEARCH BAR ── finds any topic across all 33 books ══ -->
+  <!-- ══ SEARCH BAR ── finds any topic across all 34 books ══ -->
   <div class="search-bar" id="searchBar">
     <div class="search-row">
       <span class="search-icon">🔍</span>
@@ -317,15 +320,15 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ FILTER TABS ══ -->
   <div class="filter-bar" id="filterBar">
-    <button class="filter-tab active" data-filter="all">📚 সব · All <span class="count">৩৩</span></button>
+    <button class="filter-tab active" data-filter="all">📚 সব · All <span class="count">৩৪</span></button>
     <button class="filter-tab" data-filter="road">🛣️ Reading Road <span class="count">✦</span></button>
     <button class="filter-tab" data-filter="core">🏛️ Core Six <span class="count">৬</span></button>
     <button class="filter-tab" data-filter="ai">🧬 AI Deep Dives <span class="count">১৩</span></button>
-    <button class="filter-tab" data-filter="growth">🌳 Growth &amp; Research <span class="count">১৩</span></button>
+    <button class="filter-tab" data-filter="growth">🌳 Growth &amp; Research <span class="count">১৪</span></button>
     <button class="filter-tab" data-filter="extras">🚗 Extras <span class="count">১</span></button>
   </div>
 
-  <!-- ══ READING ROAD ── dependency-ordered path through all 33 books ══ -->
+  <!-- ══ READING ROAD ── dependency-ordered path through all 34 books ══ -->
   <!-- ══ READING ROAD ── rendered dynamically from books.json by #roadRenderer ══ -->
   <div class="road-wrap" data-category="road" id="roadWrap">
     <div class="road-intro">
@@ -1502,6 +1505,34 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       <div class="game-link">প্রবেশ করো →</div>
     </a>
 
+    <!-- ══ GAME 34: SCALE OF EVIDENCE ══ -->
+    <a class="game-card game-34" data-folder="statistics-evidence" href="./statistics-evidence/index.html">
+      <div class="game-head">
+        <div class="game-icon">⚖️</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 34 · Statistics &amp; Experimental Design</div>
+          <div class="game-title">The Scale of Evidence</div>
+          <div class="game-title-bn">প্রমাণের দাঁড়িপাল্লা</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        প্রমাণ ছাড়া দাবি শূন্য — Al-Kindi-এর ফ্রিকোয়েন্সি বিশ্লেষণ থেকে Pearl-এর কার্যকারণ তত্ত্ব পর্যন্ত ১১৬৭ বছরের যাত্রা। Fisher-এর p-value, Neyman-ের বিশ্বাস্যতা-ব্যবধান, Kohavi-ের A/B পরীক্ষা, Ioannidis-ের সতর্কতা।
+        <span class="en">Claims without evidence are empty — from Al-Kindi's frequency analysis to Pearl's causal inference, a 1167-year journey. Fisher's p-value, Neyman's confidence intervals, Kohavi's A/B testing, Ioannidis's replication crisis warning.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">📊 Statistics</span>
+        <span class="topic-chip">⚖️ Evidence</span>
+        <span class="topic-chip">🧪 A/B Testing</span>
+        <span class="topic-chip">🔗 Causal Inference</span>
+      </div>
+      <div class="game-meta">
+        <span>📊 1000 XP</span>
+        <span>⚖️ 10 Doors</span>
+        <span>📈 8 Ranks</span>
+      </div>
+      <div class="game-link">প্রবেশ করো →</div>
+    </a>
+
   </div>
 
   <!-- ══ GROUP 4: EXTRAS ══ -->
@@ -1549,8 +1580,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     <div class="footer-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
     <div class="footer-verse-trans">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
     <div class="footer-note">
-      তেত্রিশটি বই, ৩৭৭টি অধ্যায়, এক যাত্রা — শিক্ষানবিশ থেকে কারিগর।<br>
-      <em>Thirty-three books, 377 chapters, one journey — from apprentice to craftsman.</em><br><br>
+      চৌত্রিশটি বই, ৩৮৭টি অধ্যায়, এক যাত্রা — শিক্ষানবিশ থেকে কারিগর।<br>
+      <em>Thirty-four books, 387 chapters, one journey — from apprentice to craftsman.</em><br><br>
       প্রতিটা বই সম্পূর্ণ স্বাধীন — যেকোনো ক্রমে পড়তে পারো। তবে সুপারিশ: মূল ছয়টি বই দিয়ে শুরু করো (mindset → skills → domain), তারপর গভীর বিষয়ে ডুব দাও।
     </div>
   </div>
@@ -1687,7 +1718,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 })();
 </script>
 
-<!-- ══ FULL-TEXT SEARCH ── deep ranked search across all 33 books ══ -->
+<!-- ══ FULL-TEXT SEARCH ── deep ranked search across all 34 books ══ -->
 <script>
 (function(){
   'use strict';

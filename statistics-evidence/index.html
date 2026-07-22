@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>প্রমাণের দাঁড়িপাল্লা — The Scale of Evidence</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">شَهِيدَ اللَّهِ أَنَّهُ لَا إِلَهَ إِلَّا هُوَ</div>
+  <h1 class="title-main">প্রমাণের দাঁড়িপাল্লা</h1>
+  <div class="title-sub">The Scale of Evidence</div>
+  <div class="title-desc">
+    প্রমাণ ছাড়া দাবি শূন্য — পরিসংখ্যান ছাড়া জ্ঞান অন্ধকার।<br>
+    দশটি দরজা — Al-Kindi-এর ফ্রিকোয়েন্সি বিশ্লেষণ, Graunt-এর মৃত্যুর হিসাব, Gauss-এর ঘণ্টা-বক্রতা, Fisher-এর p-value, Neyman-এর বিশ্বাস্যতা-ব্যবধান, Pearl-এর কার্যকারণ তত্ত্ব।<br><br>
+    <em>Claims without evidence are empty — knowledge without statistics is blind. Ten doors: Al-Kindi's frequency analysis, Graunt's mortality tables, Gauss's bell curve, Fisher's p-value and experimental design, Neyman's confidence intervals, Kohavi's A/B testing, Pearl's causal inference, Ioannidis's replication crisis. From the first counting of deaths (1662) to the crisis of false discoveries (2005).</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">⚖️ যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">ভাঙা হাঁড়ি — The Shattered Pot</div>
+    <p>একজন কারিগর দাবি করল — আমার মাটির হাঁড়ি আগুনে পোড়ায় না। গ্রাহক জিজ্ঞেস করল — কীভাবে জানব? কারিগর বলল — আমি বলছি তো! গ্রাহক একটা হাঁড়ি আগুনে রাখল। হাঁড়ি ফেটে গেল। কারিগর চুপ। এটাই প্রমাণের শক্তি — দাবি সসীম, পরীক্ষা অসীম। Book ৩৩ (যুক্তির তাঁত) তোমাকে শিখিয়েছে কীভাবে চিন্তা করতে হয়। কিন্তু চিন্তা থেকে সত্যে পৌঁছাতে চাইলে চাই প্রমাণ — সংখ্যা দিয়ে, পরীক্ষা দিয়ে, পরিসংখ্যান দিয়ে।</p>
+    <p class="en">A potter claims — my clay pots don't crack in fire. The customer asks — how do I know? The potter says — I'm telling you! The customer puts a pot in the fire. It shatters. The potter falls silent. This is the power of evidence — claims are finite, testing is infinite. Book 33 (Loom of Reason) taught you how to think. But to get from thought to truth, you need evidence — numbers, experiments, statistics.</p>
+    <hr class="p-divider">
+    <p>এই বই তোমাকে শেখাবে — কীভাবে প্রমাণ করবে যে তোমার ধারণা সত্য। কীভাবে পরীক্ষা করবে, সংখ্যা পড়বে, সিদ্ধান্ত নেবে। Fisher (১৯২৫) বলেছিলেন — পর্যবেক্ষণ কথা বলে না, পরীক্ষা কথা বলে। Ioannidis (২০০৫) দেখিয়েছিলেন — বেশিরভাগ প্রকাশিত গবেষণার ফল ভুল। কারণ প্রমাণের পাল্লা টলে যায় যখন পদ্ধতি ভুল হয়। দশটি দরজায় দশজন প্রমাণ-কারিগর — Al-Kindি থেকে Pearl পর্যন্ত, ১১৬৭ বছরের যাত্রা।</p>
+    <p class="en">This book teaches you — how to prove your ideas are true. How to experiment, read numbers, make decisions. Fisher (1925) said — observation does not speak, experiment speaks. Ioannidis (2005) showed — most published research findings are false. Because the scale of evidence tilts when the method is wrong. Ten doors, ten evidence-craftsmen — from Al-Kindi to Pearl, a 1167-year journey.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🔍</span><span id="hud-rank-name">পর্যবেক্ষক</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা, ক্রমানুসারে। প্রতিটি প্রমাণের এক একটি স্তর।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← দাঁড়িপাল্লায় ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">⚖️</div>
+  <h1 class="complete-title">তুমি এখন বুরহান অধিকারী</h1>
+  <p class="complete-text">দশটি দরজা পেরিয়েছ। প্রমাণের প্রতিটি স্তর আয়ত্ত করেছ।<br><br>Al-Kindi-এর ফ্রিকোয়েন্সি বিশ্লেষণ, Graunt-এর জীবন-সারণি, Gauss-এর বক্রতা, Fisher-ের পরীক্ষা-নকশা, Neyman-ের বিশ্বাস্যতা-ব্যবধান, Kohavi-ের A/B পরীক্ষা, Pearl-ের কার্যকারণ তত্ত্ব, Ioannidis-এর সংকট-সতর্কতা।<br><br>এখন তুমি জানো — সত্য শুধু চিন্তা দিয়ে আসে না। সত্য আসে পরীক্ষা দিয়ে, সংখ্যা দিয়ে, সততা দিয়ে।<br><strong>প্রমাণের মাধ্যমে স্থায়ী সত্য।</strong></p>
+  <div class="complete-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 প্রমাণের চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 প্রমাণের চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
