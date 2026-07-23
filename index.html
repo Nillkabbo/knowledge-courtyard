@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="জ্ঞানের প্রাঙ্গণ — The Learning Courtyard: 35 free bilingual (Bengali/English) interactive books covering AI engineering, DSA, system design, PhD research, and career growth, taught through story-driven chapters.">
+<meta name="description" content="জ্ঞানের প্রাঙ্গণ — The Learning Courtyard: 39 free bilingual (Bengali/English) interactive books covering AI engineering, CS fundamentals, system design, PhD research, and career growth, taught through story-driven chapters.">
 <title>জ্ঞানের প্রাঙ্গণ — The Learning Courtyard</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -1767,8 +1767,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     <div class="footer-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
     <div class="footer-verse-trans">"হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
     <div class="footer-note">
-      পঁয়ত্রিশটি বই, ৩৯৭টি অধ্যায়, এক যাত্রা — শিক্ষানবিশ থেকে কারিগর।<br>
-      <em>Thirty-five books, 397 chapters, one journey — from apprentice to craftsman.</em><br><br>
+      একত্রিশটি বই, ৪৩৭টি অধ্যায়, এক যাত্রা — শিক্ষানবিশ থেকে কারিগর।<br>
+      <em>Thirty-nine books, 437 chapters, one journey — from apprentice to craftsman.</em><br><br>
       প্রতিটা বই সম্পূর্ণ স্বাধীন — যেকোনো ক্রমে পড়তে পারো। তবে সুপারিশ: মূল ছয়টি বই দিয়ে শুরু করো (mindset → skills → domain), তারপর গভীর বিষয়ে ডুব দাও।
     </div>
   </div>
@@ -1791,11 +1791,11 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   // Recompute the count badge on each filter tab from the cards actually present
   // in the DOM — so adding a card anywhere auto-updates the tab counts.
   function refreshCounts(){
-    const counts={all:0,core:0,ai:0,growth:0,extras:0};
+    const counts={all:0,core:0,ai:0,cs:0,research:0,extras:0};
     document.querySelectorAll('.game-card[data-folder]').forEach(c=>{
       // find this card's parent grid category
       const grid=c.closest('.games-grid');
-      const cat=grid?grid.dataset.category:'growth';
+      const cat=grid?grid.dataset.category:'research';
       counts.all++;
       if(counts[cat]!=null) counts[cat]++;
     });
