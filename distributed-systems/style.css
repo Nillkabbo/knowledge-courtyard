@@ -77,7 +77,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .secret-box{background:linear-gradient(135deg,rgba(249,115,22,.08),rgba(61,214,196,.05));border:1px solid var(--amber-bright);border-radius:16px;padding:1rem;margin:1rem 0;text-align:center}
 .story-text .secret-box .label{font-size:.68rem;color:var(--amber-bright);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.25rem;font-weight:700}
 .story-text .secret-box .text{font-size:.92rem;font-weight:600;color:var(--ink)}
-.story-text .code-block{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:.9rem 1rem;margin:.9rem 0;font-family:'Courier New',monospace;font-size:.8rem;color:var(--teal);overflow-x:auto;line-height:1.55;white-space:pre}
+.story-text .code-block{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:.9rem 1rem;margin:.9rem 0;font-family:'Courier New',monospace;font-size:.8rem;color:var(--teal);overflow-x:auto;line-height:1.55;white-space:pre-wrap;overflow-wrap:break-word}
+.story-text .code-block table,.story-text .code-block th,.story-text .code-block td{white-space:normal;overflow-wrap:anywhere}
 .story-text .compare{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:1rem 0}
 .story-text .cmp-card{border-radius:10px;padding:.8rem;font-size:.8rem;line-height:1.55}
 .story-text .cmp-bad{background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.2)}
@@ -154,8 +155,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .checklist li{position:relative;padding:.42rem .4rem .42rem 1.9rem;font-size:.85rem;line-height:1.55;border-bottom:1px solid var(--panel-border)}
 .story-text .checklist li:last-child{border-bottom:none}
 .story-text .checklist li::before{content:'✔';position:absolute;left:.5rem;top:.42rem;color:var(--teal);font-weight:700}
-.story-text .kv-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.8rem}
-.story-text .kv-table th,.story-text .kv-table td{text-align:left;padding:.5rem .55rem;border-bottom:1px solid var(--panel-border);vertical-align:top}
+.story-text .kv-table{width:100%;border-collapse:collapse;table-layout:fixed;margin:1rem 0;font-size:.8rem}
+.story-text .kv-table th,.story-text .kv-table td{text-align:left;padding:.5rem .55rem;border-bottom:1px solid var(--panel-border);vertical-align:top;word-break:break-word;overflow-wrap:anywhere}
 .story-text .kv-table th{color:var(--teal);font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em}
 .story-text .kv-table td.hl{color:var(--amber-bright);font-weight:600}
 .story-text .kv-table tr:last-child td{border-bottom:none}

@@ -88,7 +88,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .secret-box{background:linear-gradient(135deg,rgba(45,212,191,.08),rgba(212,167,71,.05));border:1px solid var(--teal-bright);border-radius:16px;padding:1.1rem;margin:1.2rem 0;text-align:center}
 .story-text .secret-box .label{font-size:.7rem;color:var(--teal-bright);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem;font-weight:700}
 .story-text .secret-box .text{font-size:.95rem;font-weight:600;color:var(--ink)}
-.story-text .code-block{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:1rem 1.1rem;margin:1rem 0;font-family:'Courier New',monospace;font-size:.82rem;color:var(--teal-bright);overflow-x:auto;line-height:1.6;white-space:pre}
+.story-text .code-block{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:1rem 1.1rem;margin:1rem 0;font-family:'Courier New',monospace;font-size:.82rem;color:var(--teal-bright);overflow-x:auto;line-height:1.6;white-space:pre-wrap;overflow-wrap:break-word}
+.story-text .code-block table,.story-text .code-block th,.story-text .code-block td{white-space:normal;overflow-wrap:anywhere}
 .story-text .junior-vs-senior{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1.2rem 0}
 .story-text .jvs-card{border-radius:12px;padding:.9rem;font-size:.83rem;line-height:1.6}
 .story-text .jvs-junior{background:rgba(232,112,74,.08);border:1px solid rgba(232,112,74,.2)}

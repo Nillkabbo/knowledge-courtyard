@@ -77,7 +77,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .secret-box{background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(61,214,196,.05));border:1px solid var(--amber-bright);border-radius:16px;padding:1rem;margin:1rem 0;text-align:center}
 .story-text .secret-box .label{font-size:.68rem;color:var(--amber-bright);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.25rem;font-weight:700}
 .story-text .secret-box .text{font-size:.92rem;font-weight:600;color:var(--ink)}
-.story-text .code-block{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:.9rem 1rem;margin:.9rem 0;font-family:'Courier New',monospace;font-size:.8rem;color:var(--teal);overflow-x:auto;line-height:1.55;white-space:pre}
+.story-text .code-block{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:.9rem 1rem;margin:.9rem 0;font-family:'Courier New',monospace;font-size:.8rem;color:var(--teal);overflow-x:auto;line-height:1.55;white-space:pre-wrap;overflow-wrap:break-word}
+.story-text .code-block table,.story-text .code-block th,.story-text .code-block td{white-space:normal;overflow-wrap:anywhere}
 .story-text .compare{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:1rem 0}
 .story-text .cmp-card{border-radius:10px;padding:.8rem;font-size:.8rem;line-height:1.55}
 .story-text .cmp-bad{background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.2)}

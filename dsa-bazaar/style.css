@@ -90,7 +90,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .secret-box{background:linear-gradient(135deg,rgba(240,193,75,.08),rgba(82,196,26,.05));border:1px solid var(--gold);border-radius:16px;padding:1.1rem;margin:1.2rem 0;text-align:center}
 .story-text .secret-box .label{font-size:.7rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem;font-weight:700}
 .story-text .secret-box .text{font-size:.95rem;font-weight:600;color:var(--ink)}
-.story-text .code-block{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:1rem 1.1rem;margin:1rem 0;font-family:'Courier New',monospace;font-size:.82rem;color:var(--cyan);overflow-x:auto;line-height:1.6;white-space:pre}
+.story-text .code-block{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:1rem 1.1rem;margin:1rem 0;font-family:'Courier New',monospace;font-size:.82rem;color:var(--cyan);overflow-x:auto;line-height:1.6;white-space:pre-wrap;overflow-wrap:break-word}
+.story-text .code-block table,.story-text .code-block th,.story-text .code-block td{white-space:normal;overflow-wrap:anywhere}
 
 /* ── RECALL ── */
 .recall-box{background:rgba(74,158,255,.05);border:1px solid rgba(74,158,255,.2);border-radius:16px;padding:1.1rem 1.3rem;margin:1.2rem 0}

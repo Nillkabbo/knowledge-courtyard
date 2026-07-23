@@ -131,7 +131,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .game-topics{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem}
 .topic-chip{font-size:.7rem;padding:.2rem .6rem;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid var(--panel-border);color:var(--ink-dim)}
 
-.game-footer{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--panel-border)}
+.game-footer{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--panel-border)}
 .game-meta{font-size:.72rem;color:var(--ink-mute)}
 .game-meta span{margin-right:.8rem}
 .game-link{font-family:'Cinzel',serif;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;transition:gap .3s}
@@ -301,7 +301,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <div class="section-label" id="journeysLabel">📚 যাত্রা — Journeys</div>
 
-  <!-- ══ SEARCH BAR ── finds any topic across all 34 books ══ -->
+  <!-- ══ SEARCH BAR ── finds any topic across all 35 books ══ -->
   <div class="search-bar" id="searchBar">
     <div class="search-row">
       <span class="search-icon">🔍</span>
@@ -331,7 +331,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     <button class="filter-tab" data-filter="extras">🚗 Extras <span class="count">১</span></button>
   </div>
 
-  <!-- ══ READING ROAD ── dependency-ordered path through all 34 books ══ -->
+  <!-- ══ READING ROAD ── dependency-ordered path through all 35 books ══ -->
   <!-- ══ READING ROAD ── rendered dynamically from books.json by #roadRenderer ══ -->
   <div class="road-wrap" data-category="road" id="roadWrap">
     <div class="road-intro">
@@ -1749,7 +1749,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 })();
 </script>
 
-<!-- ══ FULL-TEXT SEARCH ── deep ranked search across all 34 books ══ -->
+<!-- ══ FULL-TEXT SEARCH ── deep ranked search across all 35 books ══ -->
 <script>
 (function(){
   'use strict';

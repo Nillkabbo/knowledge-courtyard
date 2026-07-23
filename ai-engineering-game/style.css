@@ -88,7 +88,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .secret-box{background:linear-gradient(135deg,rgba(54,214,231,.08),rgba(82,196,26,.05));border:1px solid rgba(54,214,231,.3);border-radius:16px;padding:1.2rem;margin:1.5rem 0;text-align:center}
 .story-text .secret-box .label{font-size:.7rem;color:var(--cyan);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem;font-weight:700}
 .story-text .secret-box .text{font-size:1rem;font-weight:600;color:var(--ink)}
-.story-text .code-block{background:rgba(0,0,0,.4);border:1px solid rgba(54,214,231,.15);border-radius:12px;padding:1rem 1.2rem;margin:1rem 0;font-family:'Courier New',monospace;font-size:.85rem;color:var(--cyan);overflow-x:auto;line-height:1.6;white-space:pre}
+.story-text .code-block{background:rgba(0,0,0,.4);border:1px solid rgba(54,214,231,.15);border-radius:12px;padding:1rem 1.2rem;margin:1rem 0;font-family:'Courier New',monospace;font-size:.85rem;color:var(--cyan);overflow-x:auto;line-height:1.6;white-space:pre-wrap;overflow-wrap:break-word}
+.story-text .code-block table,.story-text .code-block th,.story-text .code-block td{white-space:normal;overflow-wrap:anywhere}
 .story-text p.en,.story-text .scene-setting.en{color:var(--ink-mute);font-style:italic;font-size:.875rem;line-height:1.7;margin-top:-0.6rem;margin-bottom:1.5rem;padding-left:1rem;border-left:2px solid rgba(54,214,231,.08)}
 .story-text .dialogue.en{background:rgba(240,193,75,.02);border-color:rgba(240,193,75,.06);color:var(--ink-mute);font-style:italic;font-size:.875rem;margin-top:-0.4rem}
 .story-text .dialogue.en::before{content:'↳';color:var(--ink-mute)}
@@ -119,7 +120,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .real-example-header .terminal-dots span:nth-child(3){background:#28c840}
 .real-example-title{font-family:'Cinzel',serif;font-size:.8rem;color:#28c840;letter-spacing:.06em;margin-left:.3rem}
 .real-example-lang{margin-left:auto;font-size:.65rem;color:#28c84088;font-family:monospace;letter-spacing:.05em}
-.real-example-body{padding:1.2rem;font-family:'Fira Code','Courier New',monospace;font-size:.78rem;line-height:1.65;color:#a8d8b8;overflow-x:auto;white-space:pre}
+.real-example-body{padding:1.2rem;font-family:'Fira Code','Courier New',monospace;font-size:.78rem;line-height:1.65;color:#a8d8b8;overflow-x:auto;white-space:pre-wrap;overflow-wrap:break-word}
 .real-example-body .c-keyword{color:#c792ea}
 .real-example-body .c-string{color:#c3e88d}
 .real-example-body .c-comment{color:#5c6c73;font-style:italic}
