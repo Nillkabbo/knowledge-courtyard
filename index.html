@@ -361,9 +361,10 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   <div class="filter-bar" id="filterBar">
     <button class="filter-tab active" data-filter="all">📚 সব · All <span class="count">৩৯</span></button>
     <button class="filter-tab" data-filter="road">🛣️ Reading Road <span class="count">✦</span></button>
-    <button class="filter-tab" data-filter="core">🏛️ Core Six <span class="count">৬</span></button>
-    <button class="filter-tab" data-filter="ai">🧬 AI Deep Dives <span class="count">১৩</span></button>
-    <button class="filter-tab" data-filter="growth">🌳 Growth &amp; Research <span class="count">১৯</span></button>
+    <button class="filter-tab" data-filter="core">🏛️ Core <span class="count">৬</span></button>
+    <button class="filter-tab" data-filter="ai">🧬 AI &amp; ML <span class="count">১৪</span></button>
+    <button class="filter-tab" data-filter="cs">⚙️ CS &amp; Systems <span class="count">৭</span></button>
+    <button class="filter-tab" data-filter="research">🔬 Research &amp; Mind <span class="count">১১</span></button>
     <button class="filter-tab" data-filter="extras">🚗 Extras <span class="count">১</span></button>
   </div>
 
@@ -379,7 +380,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
 
   <!-- ══ GROUP 1: THE CORE SIX ══ -->
-  <div class="section-label" data-category="core">🏛️ মূল ছয়টি বই — The Core Six</div>
+  <div class="section-label" data-category="core">🏛️ মূল ভিত্তি — Core Foundations</div>
   <div class="games-grid" data-category="core">
 
     <!-- ══ GAME 1: AI ENGINEERING ══ -->
@@ -623,7 +624,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   </div>
 
   <!-- ══ GROUP 2: THE AI DEEP DIVES ══ -->
-  <div class="section-label" data-category="ai">🧬 এআই গভীর অনুসন্ধান — The AI Deep Dives</div>
+  <div class="section-label" data-category="ai">🧬 এআই ও এমএল — AI &amp; ML Pipeline</div>
   <div class="games-grid" data-category="ai">
 
     <!-- ══ GAME 7: PROMPT ENGINEERING ══ -->
@@ -1094,11 +1095,256 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
+    <!-- ══ GAME 36: ARCHITECTURE OF THOUGHT ══ -->
+    <a class="game-card game-36" data-folder="deep-learning-arch" href="./deep-learning-arch/index.html">
+      <div class="game-head">
+        <div class="game-icon">🧠</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 36 · Deep Learning Architectures</div>
+          <div class="game-title">The Architecture of Thought</div>
+          <div class="game-title-bn">চিন্তার স্থাপত্য</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        নিউরন থেকে ট্রান্সফর্মার — ডিপ লার্নিংয়ের প্রতিটি স্থাপত্য। Perceptron, CNN, LSTM, Transformer, GAN, Diffusion, training dynamics, regularization, modern architectures।
+        <span class="en">From neuron to transformer — every deep learning architecture. Perceptrons, CNNs, LSTMs, the attention revolution, GANs, diffusion models, training dynamics, regularization, and modern architectures (ViT, BERT, GPT, MoE).</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🧠 Deep Learning</span>
+        <span class="topic-chip">⚡ Transformer</span>
+        <span class="topic-chip">👁️ CNN</span>
+        <span class="topic-chip">🌅 Diffusion</span>
+      </div>
+      <div class="game-meta">
+        <span>📊 1000 XP</span>
+        <span>🧠 10 Doors</span>
+        <span>📈 8 Ranks</span>
+      </div>
+      <div class="game-link">প্রবেশ করো →</div>
+    </a>
+
   </div>
 
-  <!-- ══ GROUP 3: GROWTH & RESEARCH CRAFT ══ -->
-  <div class="section-label" data-category="growth">🌳 বৃদ্ধি ও গবেষণা কারুশিল্প — Growth &amp; Research Craft</div>
-  <div class="games-grid" data-category="growth">
+  <!-- ══ GROUP: CS & SYSTEMS ══ -->
+  <div class="section-label" data-category="cs">⚙️ কম্পিউটার বিজ্ঞান ও সিস্টেম — CS &amp; Systems</div>
+  <div class="games-grid" data-category="cs">
+
+    <!-- ══ GAME 22: CS OCEAN ══ -->
+    <a class="game-card game-22" data-folder="cs-ocean" href="./cs-ocean/index.html">
+      <div class="game-head">
+        <div class="game-icon">🌊</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 22 · CS Domain Deep Dive</div>
+          <div class="game-title">The Ocean of Computer Science</div>
+          <div class="game-title-bn">কম্পিউটার সায়েন্সের মহাসমুদ্র</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        কোন ডোমেইনে PhD করবে? দশটা ডোমেইনের বিশটি দরজায় গভীর ডুব — AI/ML (NLP, Vision, RL, Safety), Systems (Distributed, OS, MLSys), Security (Crypto, AI Sec), Data (DB, Mining), HCI (Access, AR/VR), SE/PL (SE, AI4SE), Theory, Quantum, Robotics, Emerging। প্রতিটি দরজায়: sub-areas, conferences, funding, competition, career, future outlook — একটা করে SVG diagram, code-block, ও senior insight সহ। শেষ দরজায় একটা decision framework — interest × strength × market × purpose। গবেষকের মন (Book 21) শেখায় কীভাবে চিন্তা করতে হয় — এই বই শেখায় কোথায় সেই চিন্তা প্রয়োগ করবে। Knowledge Courtyard-এর সবচেয়ে গুরুত্বপূর্ণ বই — কারণ এটি তোমার PhD-এর দিক নির্ধারণ করবে।
+        <span class="en">Which domain for your PhD? A deep dive into 20 doors across 10 CS domains — AI/ML (NLP, Vision, RL, Safety), Systems (Distributed, OS, MLSys), Security (Crypto, AI Sec), Data (DB, Mining), HCI (Access, AR/VR), SE/PL (SE, AI4SE), Theory, Quantum, Robotics, and Emerging. Each door covers: sub-areas, conferences, funding levels, competition rates, career outlook, and future trends — with an SVG diagram, code-block, and senior insight. The final door includes a PhD domain selection framework — interest × strength × market × purpose. The most important book in the Courtyard — because it determines your PhD direction and your next 5-7 years.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🧠 AI/ML</span>
+        <span class="topic-chip">🏗️ Systems</span>
+        <span class="topic-chip">🛡️ Security</span>
+        <span class="topic-chip">🗄️ Data</span>
+        <span class="topic-chip">👋 HCI</span>
+        <span class="topic-chip">⚙️ SE/PL</span>
+        <span class="topic-chip">📐 Theory</span>
+        <span class="topic-chip">⚛️ Quantum</span>
+        <span class="topic-chip">🤖 Robotics</span>
+        <span class="topic-chip">🧭 Decision</span>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">
+          <span>📊 1000 XP</span>
+          <span>🌊 10 Domains</span>
+          <span>📈 8 Ranks</span>
+        </div>
+        <div class="game-link">প্রবেশ করো →</div>
+      </div>
+    </a>
+
+    <!-- ══ GAME 30: MATH FOR ML ══ -->
+    <a class="game-card game-30" data-folder="math-for-ml" href="./math-for-ml/index.html">
+      <div class="game-head">
+        <div class="game-icon">🧭</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 30 · Math Foundations</div>
+          <div class="game-title">The Architect's Compass</div>
+          <div class="game-title-bn">গণিতের নিকোবর</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        মেশিন লার্নিংয়ের গাণিতিক ভিত্তি — ভেক্টর থেকে ব্যাকপ্রোপাগেশন পর্যন্ত। Al-Khwarizmi-এর বীজগণিত, Ibn al-Haytham-এর ক্যালকুলাস, Al-Khalil-এর সংযোজনবিদ্যা।
+        <span class="en">Mathematical foundations of ML — from vectors to backpropagation. Featuring Al-Khwarizmi (algebra), Ibn al-Haytham (calculus), Al-Khalil (combinatorics), Al-Kindi (frequency analysis), and Shannon (information theory). Ten doors connecting math to all 13 AI books.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🧭 Vectors</span>
+        <span class="topic-chip">🔷 Matrices</span>
+        <span class="topic-chip">🧲 Eigenvalues</span>
+        <span class="topic-chip">🎲 Probability</span>
+        <span class="topic-chip">📊 Statistics</span>
+        <span class="topic-chip">∇ Calculus</span>
+        <span class="topic-chip">🔗 Backprop</span>
+        <span class="topic-chip">🌊 Entropy</span>
+      </div>
+      <div class="game-meta">
+        <span>📊 1000 XP</span>
+        <span>🧩 10 Doors</span>
+        <span>📈 8 Ranks</span>
+      </div>
+      <div class="game-link">প্রবেশ করো →</div>
+    </a>
+
+    <!-- ══ GAME 31: CLASSIC ML ══ -->
+    <a class="game-card game-31" data-folder="classic-ml" href="./classic-ml/index.html">
+      <div class="game-head">
+        <div class="game-icon">🌱</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 31 · Classic ML</div>
+          <div class="game-title">The Marketplace of Algorithms</div>
+          <div class="game-title-bn">মেশিনের বাজার</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        সনাতন মেশিন লার্নিং — লিনিয়ার রিগ্রেশন থেকে নিউরাল নেটওয়ার্ক। Al-Tusi, Ibn Sina, Omar Khayyam-এর আবিষ্কার।
+        <span class="en">Classic ML — from linear regression to neural networks. Featuring Al-Tusi (regression), Ibn Sina (decision trees), Omar Khayyam (SVM/kernels), Ibn Muqla (neural networks). Ten doors covering the complete ML fundamentals every PhD interview demands.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">⭐ Regression</span>
+        <span class="topic-chip">⚖️ Logistic</span>
+        <span class="topic-chip">🌳 Trees</span>
+        <span class="topic-chip">🛡️ SVM</span>
+        <span class="topic-chip">🏠 k-NN</span>
+        <span class="topic-chip">🏘️ k-Means</span>
+        <span class="topic-chip">✍️ Neural Net</span>
+      </div>
+      <div class="game-meta">
+        <span>📊 1000 XP</span>
+        <span>🧩 10 Doors</span>
+        <span>📈 8 Ranks</span>
+      </div>
+      <div class="game-link">প্রবেশ করো →</div>
+    </a>
+
+    <!-- ══ GAME 35: BRIDGE OF CONNECTIONS ══ -->
+    <a class="game-card game-35" data-folder="distributed-systems" href="./distributed-systems/index.html">
+      <div class="game-head">
+        <div class="game-icon">🌐</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 35 · Distributed Systems Deep Dive</div>
+          <div class="game-title">The Bridge of Connections</div>
+          <div class="game-title-bn">সংযোগের সেতু</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        একটা মেশিনের সীমা পার হও — হাজার মেশিনে ছড়িয়ে দাও। Lamport-এর ঘড়ি, Dijkstra-এর সিগন্যাল, Brewer-ের CAP, Paxos ও Raft, MapReduce, Dynamo, বাইজেন্টাইন ফল্ট টলারেন্স, এবং Kleppmann-এর আধুনিক আর্কিটেকচার।
+        <span class="en">One machine's limit surpassed — spread across a thousand. Lamport clocks, Dijkstra semaphores, CAP theorem, Paxos and Raft, MapReduce, Dynamo, Byzantine fault tolerance, and modern data-intensive architecture.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🌐 Distributed</span>
+        <span class="topic-chip">⚖️ Consensus</span>
+        <span class="topic-chip">🗺️ MapReduce</span>
+        <span class="topic-chip">🛡️ BFT</span>
+      </div>
+      <div class="game-meta">
+        <span>📊 1000 XP</span>
+        <span>🌐 10 Doors</span>
+        <span>📈 8 Ranks</span>
+      </div>
+      <div class="game-link">প্রবেশ করো →</div>
+    </a>
+
+    <!-- ══ GAME 37: WEB OF WIRES ══ -->
+    <a class="game-card game-37" data-folder="computer-networks" href="./computer-networks/index.html">
+      <div class="game-head">
+        <div class="game-icon">🌐</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 37 · Computer Networks Deep Dive</div>
+          <div class="game-title">The Web of Wires</div>
+          <div class="game-title-bn">তারের জাল</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        একটি প্যাকেটের যাত্রা — তোমার কম্পিউটার থেকে বিশ্বের প্রান্তে। OSI-এর সাত স্তর, Ethernet, IP রাউটিং, TCP ও UDP, DNS, HTTP/HTTPS, CDN, WebSocket, নেটওয়ার্ক সিকিউরিটি এবং একটি প্যাকেটের সম্পূর্ণ যাত্রা।
+        <span class="en">A packet's journey — from your computer to the world's edge. OSI's seven layers, Ethernet, IP routing, TCP and UDP, DNS, HTTP/HTTPS, CDN, WebSocket, network security, and one packet's complete journey across the internet.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🌐 Networking</span>
+        <span class="topic-chip">📦 TCP/IP</span>
+        <span class="topic-chip">📖 DNS</span>
+        <span class="topic-chip">🔒 TLS</span>
+      </div>
+      <div class="game-meta">
+        <span>📊 1000 XP</span>
+        <span>🌐 10 Doors</span>
+        <span>📈 8 Ranks</span>
+      </div>
+      <div class="game-link">প্রবেশ করো →</div>
+    </a>
+
+    <!-- ══ GAME 38: MACHINE'S SOUL ══ -->
+    <a class="game-card game-38" data-folder="operating-systems" href="./operating-systems/index.html">
+      <div class="game-head">
+        <div class="game-icon">🖥️</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 38 · Operating Systems Deep Dive</div>
+          <div class="game-title">The Machine's Soul</div>
+          <div class="game-title-bn">যন্ত্রের আত্মা</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        প্রোগ্রাম থেকে প্রসেস — OS-এর প্রতিটি স্তর। প্রসেস ও থ্রেড, CPU শিডিউলিং, Dijkstra-এর semaphore, ডেডলক, virtual memory, ফাইল সিস্টেম, I/O ও ড্রাইভার, Docker ও VM, এবং একটি fork() কলের সম্পূর্ণ যাত্রা।
+        <span class="en">From program to process — every layer of the operating system. Processes and threads, CPU scheduling, Dijkstra's semaphore, deadlocks, virtual memory, file systems, I/O and drivers, Docker and VMs, and one fork() call's complete journey through the kernel.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🖥️ OS</span>
+        <span class="topic-chip">🔐 Semaphore</span>
+        <span class="topic-chip">🧠 Memory</span>
+        <span class="topic-chip">🐳 Docker</span>
+      </div>
+      <div class="game-meta">
+        <span>📊 1000 XP</span>
+        <span>🖥️ 10 Doors</span>
+        <span>📈 8 Ranks</span>
+      </div>
+      <div class="game-link">প্রবেশ করো →</div>
+    </a>
+
+    <!-- ══ GAME 39: DATA VAULT ══ -->
+    <a class="game-card game-39" data-folder="databases" href="./databases/index.html">
+      <div class="game-head">
+        <div class="game-icon">📊</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 39 · Databases Deep Dive</div>
+          <div class="game-title">The Data Vault</div>
+          <div class="game-title-bn">উপাত্তের ভল্ট</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        একটি query-র যাত্রা — সারি থেকে অর্থ পর্যন্ত। Codd-এর relational model, SQL, B-tree indexing, ACID transactions, normalization, NoSQL (Redis/MongoDB/Cassandra/Neo4j), distributed databases, query optimization, data warehousing, এবং একটি query-র সম্পূর্ণ যাত্রা।
+        <span class="en">A query's journey — from rows to meaning. Codd's relational model, SQL, B-tree indexing, ACID transactions, normalization, NoSQL (Redis/MongoDB/Cassandra/Neo4j), distributed databases, query optimization, data warehousing, and one query's complete journey through the database engine.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">📊 Database</span>
+        <span class="topic-chip">🗂️ Indexing</span>
+        <span class="topic-chip">🔐 ACID</span>
+        <span class="topic-chip">🌐 NoSQL</span>
+      </div>
+      <div class="game-meta">
+        <span>📊 1000 XP</span>
+        <span>📊 10 Doors</span>
+        <span>📈 8 Ranks</span>
+      </div>
+      <div class="game-link">প্রবেশ করো →</div>
+    </a>
+
+  </div>
+
+  <!-- ══ GROUP: RESEARCH & MIND ══ -->
+  <div class="section-label" data-category="research">🔬 গবেষণা ও মন — Research &amp; Mind</div>
+  <div class="games-grid" data-category="research">
 
     <!-- ══ GAME 20: PHD JOURNEY ══ -->
     <a class="game-card game-20" data-folder="phd-journey" href="./phd-journey/index.html">
@@ -1166,42 +1412,6 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-meta">
           <span>📊 1000 XP</span>
           <span>🧠 10 Doors</span>
-          <span>📈 8 Ranks</span>
-        </div>
-        <div class="game-link">প্রবেশ করো →</div>
-      </div>
-    </a>
-
-    <!-- ══ GAME 22: CS OCEAN ══ -->
-    <a class="game-card game-22" data-folder="cs-ocean" href="./cs-ocean/index.html">
-      <div class="game-head">
-        <div class="game-icon">🌊</div>
-        <div class="game-head-text">
-          <div class="game-tag">Book 22 · CS Domain Deep Dive</div>
-          <div class="game-title">The Ocean of Computer Science</div>
-          <div class="game-title-bn">কম্পিউটার সায়েন্সের মহাসমুদ্র</div>
-        </div>
-      </div>
-      <div class="game-desc">
-        কোন ডোমেইনে PhD করবে? দশটা ডোমেইনের বিশটি দরজায় গভীর ডুব — AI/ML (NLP, Vision, RL, Safety), Systems (Distributed, OS, MLSys), Security (Crypto, AI Sec), Data (DB, Mining), HCI (Access, AR/VR), SE/PL (SE, AI4SE), Theory, Quantum, Robotics, Emerging। প্রতিটি দরজায়: sub-areas, conferences, funding, competition, career, future outlook — একটা করে SVG diagram, code-block, ও senior insight সহ। শেষ দরজায় একটা decision framework — interest × strength × market × purpose। গবেষকের মন (Book 21) শেখায় কীভাবে চিন্তা করতে হয় — এই বই শেখায় কোথায় সেই চিন্তা প্রয়োগ করবে। Knowledge Courtyard-এর সবচেয়ে গুরুত্বপূর্ণ বই — কারণ এটি তোমার PhD-এর দিক নির্ধারণ করবে।
-        <span class="en">Which domain for your PhD? A deep dive into 20 doors across 10 CS domains — AI/ML (NLP, Vision, RL, Safety), Systems (Distributed, OS, MLSys), Security (Crypto, AI Sec), Data (DB, Mining), HCI (Access, AR/VR), SE/PL (SE, AI4SE), Theory, Quantum, Robotics, and Emerging. Each door covers: sub-areas, conferences, funding levels, competition rates, career outlook, and future trends — with an SVG diagram, code-block, and senior insight. The final door includes a PhD domain selection framework — interest × strength × market × purpose. The most important book in the Courtyard — because it determines your PhD direction and your next 5-7 years.</span>
-      </div>
-      <div class="game-topics">
-        <span class="topic-chip">🧠 AI/ML</span>
-        <span class="topic-chip">🏗️ Systems</span>
-        <span class="topic-chip">🛡️ Security</span>
-        <span class="topic-chip">🗄️ Data</span>
-        <span class="topic-chip">👋 HCI</span>
-        <span class="topic-chip">⚙️ SE/PL</span>
-        <span class="topic-chip">📐 Theory</span>
-        <span class="topic-chip">⚛️ Quantum</span>
-        <span class="topic-chip">🤖 Robotics</span>
-        <span class="topic-chip">🧭 Decision</span>
-      </div>
-      <div class="game-footer">
-        <div class="game-meta">
-          <span>📊 1000 XP</span>
-          <span>🌊 10 Domains</span>
           <span>📈 8 Ranks</span>
         </div>
         <div class="game-link">প্রবেশ করো →</div>
@@ -1279,6 +1489,37 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         <div class="game-link">প্রবেশ করো →</div>
       </div>
     </a>
+
+    <!-- ══ GAME 32: MIND MECHANIC ══ -->
+    <a class="game-card game-32" data-folder="mind-mechanic" href="./mind-mechanic/index.html">
+      <div class="game-head">
+        <div class="game-icon">🧠</div>
+        <div class="game-head-text">
+          <div class="game-tag">Book 32 · Brain & Habits</div>
+          <div class="game-title">The Brain Mechanic's Codex</div>
+          <div class="game-title-bn">মস্তিষ্কের কারিগরি</div>
+        </div>
+      </div>
+      <div class="game-desc">
+        তোমার মস্তিষ্ককে জোর করো না — এমন ব্যবস্থা বানাও যেখানে কাজ করাটা সহজ। ১৫টি দরজা — ডোপামিন, অভ্যাস লুপ, শ্বাস-সুইচ, ঘুম, ফোকাস, নিউরোপ্লাস্টিসিটি ও ফ্লো। Huberman, Clear, Duhigg, Walker, Brewer, Fogg, Newport এর verified গবেষণা।
+        <span class="en">Don't force your brain — engineer the world so doing the work is easy. 15 doors covering dopamine contracts, habit loops, breath switches, circadian biology, sleep consolidation, attention training, neuroplasticity, and flow. Every claim backed by verified research with named researchers + years.</span>
+      </div>
+      <div class="game-topics">
+        <span class="topic-chip">🧠 Dopamine</span>
+        <span class="topic-chip">🔄 Habits</span>
+        <span class="topic-chip">🌬️ Breath</span>
+        <span class="topic-chip">😴 Sleep</span>
+        <span class="topic-chip">🎯 Focus</span>
+        <span class="topic-chip">🧬 Plasticity</span>
+      </div>
+      <div class="game-meta">
+        <span>📊 1500 XP</span>
+        <span>🧩 15 Doors</span>
+        <span>📈 10 Ranks</span>
+      </div>
+      <div class="game-link">প্রবেশ করো →</div>
+    </a>
+
 
     <!-- ══ GAME 25: DEEP LEARNING ══ -->
     <a class="game-card game-25" data-folder="deep-learning" href="./deep-learning/index.html">
@@ -1422,99 +1663,35 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       </div>
     </a>
 
-    <!-- ══ GAME 30: MATH FOR ML ══ -->
-    <a class="game-card game-30" data-folder="math-for-ml" href="./math-for-ml/index.html">
+    <!-- ══ GAME 34: SCALE OF EVIDENCE ══ -->
+    <a class="game-card game-34" data-folder="statistics-evidence" href="./statistics-evidence/index.html">
       <div class="game-head">
-        <div class="game-icon">🧭</div>
+        <div class="game-icon">⚖️</div>
         <div class="game-head-text">
-          <div class="game-tag">Book 30 · Math Foundations</div>
-          <div class="game-title">The Architect's Compass</div>
-          <div class="game-title-bn">গণিতের নিকোবর</div>
+          <div class="game-tag">Book 34 · Statistics &amp; Experimental Design</div>
+          <div class="game-title">The Scale of Evidence</div>
+          <div class="game-title-bn">প্রমাণের দাঁড়িপাল্লা</div>
         </div>
       </div>
       <div class="game-desc">
-        মেশিন লার্নিংয়ের গাণিতিক ভিত্তি — ভেক্টর থেকে ব্যাকপ্রোপাগেশন পর্যন্ত। Al-Khwarizmi-এর বীজগণিত, Ibn al-Haytham-এর ক্যালকুলাস, Al-Khalil-এর সংযোজনবিদ্যা।
-        <span class="en">Mathematical foundations of ML — from vectors to backpropagation. Featuring Al-Khwarizmi (algebra), Ibn al-Haytham (calculus), Al-Khalil (combinatorics), Al-Kindi (frequency analysis), and Shannon (information theory). Ten doors connecting math to all 13 AI books.</span>
+        প্রমাণ ছাড়া দাবি শূন্য — Al-Kindi-এর ফ্রিকোয়েন্সি বিশ্লেষণ থেকে Pearl-এর কার্যকারণ তত্ত্ব পর্যন্ত ১১৬৭ বছরের যাত্রা। Fisher-এর p-value, Neyman-ের বিশ্বাস্যতা-ব্যবধান, Kohavi-ের A/B পরীক্ষা, Ioannidis-ের সতর্কতা।
+        <span class="en">Claims without evidence are empty — from Al-Kindi's frequency analysis to Pearl's causal inference, a 1167-year journey. Fisher's p-value, Neyman's confidence intervals, Kohavi's A/B testing, Ioannidis's replication crisis warning.</span>
       </div>
       <div class="game-topics">
-        <span class="topic-chip">🧭 Vectors</span>
-        <span class="topic-chip">🔷 Matrices</span>
-        <span class="topic-chip">🧲 Eigenvalues</span>
-        <span class="topic-chip">🎲 Probability</span>
         <span class="topic-chip">📊 Statistics</span>
-        <span class="topic-chip">∇ Calculus</span>
-        <span class="topic-chip">🔗 Backprop</span>
-        <span class="topic-chip">🌊 Entropy</span>
+        <span class="topic-chip">⚖️ Evidence</span>
+        <span class="topic-chip">🧪 A/B Testing</span>
+        <span class="topic-chip">🔗 Causal Inference</span>
       </div>
       <div class="game-meta">
         <span>📊 1000 XP</span>
-        <span>🧩 10 Doors</span>
+        <span>⚖️ 10 Doors</span>
         <span>📈 8 Ranks</span>
       </div>
       <div class="game-link">প্রবেশ করো →</div>
     </a>
 
-    <!-- ══ GAME 31: CLASSIC ML ══ -->
-    <a class="game-card game-31" data-folder="classic-ml" href="./classic-ml/index.html">
-      <div class="game-head">
-        <div class="game-icon">🌱</div>
-        <div class="game-head-text">
-          <div class="game-tag">Book 31 · Classic ML</div>
-          <div class="game-title">The Marketplace of Algorithms</div>
-          <div class="game-title-bn">মেশিনের বাজার</div>
-        </div>
-      </div>
-      <div class="game-desc">
-        সনাতন মেশিন লার্নিং — লিনিয়ার রিগ্রেশন থেকে নিউরাল নেটওয়ার্ক। Al-Tusi, Ibn Sina, Omar Khayyam-এর আবিষ্কার।
-        <span class="en">Classic ML — from linear regression to neural networks. Featuring Al-Tusi (regression), Ibn Sina (decision trees), Omar Khayyam (SVM/kernels), Ibn Muqla (neural networks). Ten doors covering the complete ML fundamentals every PhD interview demands.</span>
-      </div>
-      <div class="game-topics">
-        <span class="topic-chip">⭐ Regression</span>
-        <span class="topic-chip">⚖️ Logistic</span>
-        <span class="topic-chip">🌳 Trees</span>
-        <span class="topic-chip">🛡️ SVM</span>
-        <span class="topic-chip">🏠 k-NN</span>
-        <span class="topic-chip">🏘️ k-Means</span>
-        <span class="topic-chip">✍️ Neural Net</span>
-      </div>
-      <div class="game-meta">
-        <span>📊 1000 XP</span>
-        <span>🧩 10 Doors</span>
-        <span>📈 8 Ranks</span>
-      </div>
-      <div class="game-link">প্রবেশ করো →</div>
-    </a>
-
-    <!-- ══ GAME 32: MIND MECHANIC ══ -->
-    <a class="game-card game-32" data-folder="mind-mechanic" href="./mind-mechanic/index.html">
-      <div class="game-head">
-        <div class="game-icon">🧠</div>
-        <div class="game-head-text">
-          <div class="game-tag">Book 32 · Brain & Habits</div>
-          <div class="game-title">The Brain Mechanic's Codex</div>
-          <div class="game-title-bn">মস্তিষ্কের কারিগরি</div>
-        </div>
-      </div>
-      <div class="game-desc">
-        তোমার মস্তিষ্ককে জোর করো না — এমন ব্যবস্থা বানাও যেখানে কাজ করাটা সহজ। ১৫টি দরজা — ডোপামিন, অভ্যাস লুপ, শ্বাস-সুইচ, ঘুম, ফোকাস, নিউরোপ্লাস্টিসিটি ও ফ্লো। Huberman, Clear, Duhigg, Walker, Brewer, Fogg, Newport এর verified গবেষণা।
-        <span class="en">Don't force your brain — engineer the world so doing the work is easy. 15 doors covering dopamine contracts, habit loops, breath switches, circadian biology, sleep consolidation, attention training, neuroplasticity, and flow. Every claim backed by verified research with named researchers + years.</span>
-      </div>
-      <div class="game-topics">
-        <span class="topic-chip">🧠 Dopamine</span>
-        <span class="topic-chip">🔄 Habits</span>
-        <span class="topic-chip">🌬️ Breath</span>
-        <span class="topic-chip">😴 Sleep</span>
-        <span class="topic-chip">🎯 Focus</span>
-        <span class="topic-chip">🧬 Plasticity</span>
-      </div>
-      <div class="game-meta">
-        <span>📊 1500 XP</span>
-        <span>🧩 15 Doors</span>
-        <span>📈 10 Ranks</span>
-      </div>
-      <div class="game-link">প্রবেশ করো →</div>
-    </a>
-
+  </div>
     <a class="game-card game-33" data-folder="clear-thinking" href="./clear-thinking/index.html">
       <div class="game-head">
         <div class="game-icon">🪡</div>
@@ -1544,175 +1721,6 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
       <div class="game-link">প্রবেশ করো →</div>
     </a>
 
-    <!-- ══ GAME 34: SCALE OF EVIDENCE ══ -->
-    <a class="game-card game-34" data-folder="statistics-evidence" href="./statistics-evidence/index.html">
-      <div class="game-head">
-        <div class="game-icon">⚖️</div>
-        <div class="game-head-text">
-          <div class="game-tag">Book 34 · Statistics &amp; Experimental Design</div>
-          <div class="game-title">The Scale of Evidence</div>
-          <div class="game-title-bn">প্রমাণের দাঁড়িপাল্লা</div>
-        </div>
-      </div>
-      <div class="game-desc">
-        প্রমাণ ছাড়া দাবি শূন্য — Al-Kindi-এর ফ্রিকোয়েন্সি বিশ্লেষণ থেকে Pearl-এর কার্যকারণ তত্ত্ব পর্যন্ত ১১৬৭ বছরের যাত্রা। Fisher-এর p-value, Neyman-ের বিশ্বাস্যতা-ব্যবধান, Kohavi-ের A/B পরীক্ষা, Ioannidis-ের সতর্কতা।
-        <span class="en">Claims without evidence are empty — from Al-Kindi's frequency analysis to Pearl's causal inference, a 1167-year journey. Fisher's p-value, Neyman's confidence intervals, Kohavi's A/B testing, Ioannidis's replication crisis warning.</span>
-      </div>
-      <div class="game-topics">
-        <span class="topic-chip">📊 Statistics</span>
-        <span class="topic-chip">⚖️ Evidence</span>
-        <span class="topic-chip">🧪 A/B Testing</span>
-        <span class="topic-chip">🔗 Causal Inference</span>
-      </div>
-      <div class="game-meta">
-        <span>📊 1000 XP</span>
-        <span>⚖️ 10 Doors</span>
-        <span>📈 8 Ranks</span>
-      </div>
-      <div class="game-link">প্রবেশ করো →</div>
-    </a>
-
-    <!-- ══ GAME 35: BRIDGE OF CONNECTIONS ══ -->
-    <a class="game-card game-35" data-folder="distributed-systems" href="./distributed-systems/index.html">
-      <div class="game-head">
-        <div class="game-icon">🌐</div>
-        <div class="game-head-text">
-          <div class="game-tag">Book 35 · Distributed Systems Deep Dive</div>
-          <div class="game-title">The Bridge of Connections</div>
-          <div class="game-title-bn">সংযোগের সেতু</div>
-        </div>
-      </div>
-      <div class="game-desc">
-        একটা মেশিনের সীমা পার হও — হাজার মেশিনে ছড়িয়ে দাও। Lamport-এর ঘড়ি, Dijkstra-এর সিগন্যাল, Brewer-ের CAP, Paxos ও Raft, MapReduce, Dynamo, বাইজেন্টাইন ফল্ট টলারেন্স, এবং Kleppmann-এর আধুনিক আর্কিটেকচার।
-        <span class="en">One machine's limit surpassed — spread across a thousand. Lamport clocks, Dijkstra semaphores, CAP theorem, Paxos and Raft, MapReduce, Dynamo, Byzantine fault tolerance, and modern data-intensive architecture.</span>
-      </div>
-      <div class="game-topics">
-        <span class="topic-chip">🌐 Distributed</span>
-        <span class="topic-chip">⚖️ Consensus</span>
-        <span class="topic-chip">🗺️ MapReduce</span>
-        <span class="topic-chip">🛡️ BFT</span>
-      </div>
-      <div class="game-meta">
-        <span>📊 1000 XP</span>
-        <span>🌐 10 Doors</span>
-        <span>📈 8 Ranks</span>
-      </div>
-      <div class="game-link">প্রবেশ করো →</div>
-    </a>
-
-    <!-- ══ GAME 36: ARCHITECTURE OF THOUGHT ══ -->
-    <a class="game-card game-36" data-folder="deep-learning-arch" href="./deep-learning-arch/index.html">
-      <div class="game-head">
-        <div class="game-icon">🧠</div>
-        <div class="game-head-text">
-          <div class="game-tag">Book 36 · Deep Learning Architectures</div>
-          <div class="game-title">The Architecture of Thought</div>
-          <div class="game-title-bn">চিন্তার স্থাপত্য</div>
-        </div>
-      </div>
-      <div class="game-desc">
-        নিউরন থেকে ট্রান্সফর্মার — ডিপ লার্নিংয়ের প্রতিটি স্থাপত্য। Rosenblatt-এর Perceptron, LeCun-এর CNN, Hochreiter-এর LSTM, Vaswani-এর Transformer, Goodfellow-এর GAN, Diffusion models, training dynamics, regularization।
-        <span class="en">From neuron to transformer — every deep learning architecture. Perceptrons, CNNs, LSTMs, the attention revolution, GANs, diffusion models, training dynamics, regularization, and modern architectures (ViT, BERT, GPT, MoE).</span>
-      </div>
-      <div class="game-topics">
-        <span class="topic-chip">🧠 Deep Learning</span>
-        <span class="topic-chip">⚡ Transformer</span>
-        <span class="topic-chip">👁️ CNN</span>
-        <span class="topic-chip">🌅 Diffusion</span>
-      </div>
-      <div class="game-meta">
-        <span>📊 1000 XP</span>
-        <span>🧠 10 Doors</span>
-        <span>📈 8 Ranks</span>
-      </div>
-      <div class="game-link">প্রবেশ করো →</div>
-    </a>
-
-    <!-- ══ GAME 37: WEB OF WIRES ══ -->
-    <a class="game-card game-37" data-folder="computer-networks" href="./computer-networks/index.html">
-      <div class="game-head">
-        <div class="game-icon">🌐</div>
-        <div class="game-head-text">
-          <div class="game-tag">Book 37 · Computer Networks Deep Dive</div>
-          <div class="game-title">The Web of Wires</div>
-          <div class="game-title-bn">তারের জাল</div>
-        </div>
-      </div>
-      <div class="game-desc">
-        একটি প্যাকেটের যাত্রা — তোমার কম্পিউটার থেকে বিশ্বের প্রান্তে। OSI-এর সাত স্তর, Ethernet, IP রাউটিং, TCP ও UDP, DNS, HTTP/HTTPS, CDN, WebSocket, নেটওয়ার্ক সিকিউরিটি এবং একটি প্যাকেটের সম্পূর্ণ যাত্রা।
-        <span class="en">A packet's journey — from your computer to the world's edge. OSI's seven layers, Ethernet, IP routing, TCP and UDP, DNS, HTTP/HTTPS, CDN, WebSocket, network security, and one packet's complete journey across the internet.</span>
-      </div>
-      <div class="game-topics">
-        <span class="topic-chip">🌐 Networking</span>
-        <span class="topic-chip">📦 TCP/IP</span>
-        <span class="topic-chip">📖 DNS</span>
-        <span class="topic-chip">🔒 TLS</span>
-      </div>
-      <div class="game-meta">
-        <span>📊 1000 XP</span>
-        <span>🌐 10 Doors</span>
-        <span>📈 8 Ranks</span>
-      </div>
-      <div class="game-link">প্রবেশ করো →</div>
-    </a>
-
-    <!-- ══ GAME 38: MACHINE'S SOUL ══ -->
-    <a class="game-card game-38" data-folder="operating-systems" href="./operating-systems/index.html">
-      <div class="game-head">
-        <div class="game-icon">🖥️</div>
-        <div class="game-head-text">
-          <div class="game-tag">Book 38 · Operating Systems Deep Dive</div>
-          <div class="game-title">The Machine's Soul</div>
-          <div class="game-title-bn">যন্ত্রের আত্মা</div>
-        </div>
-      </div>
-      <div class="game-desc">
-        প্রোগ্রাম থেকে প্রসেস — OS-এর প্রতিটি স্তর। প্রসেস ও থ্রেড, CPU শিডিউলিং, Dijkstra-এর semaphore, ডেডলক, virtual memory, ফাইল সিস্টেম, I/O ও ড্রাইভার, Docker ও VM, এবং একটি fork() কলের সম্পূর্ণ যাত্রা।
-        <span class="en">From program to process — every layer of the operating system. Processes and threads, CPU scheduling, Dijkstra's semaphore, deadlocks, virtual memory, file systems, I/O and drivers, Docker and VMs, and one fork() call's complete journey through the kernel.</span>
-      </div>
-      <div class="game-topics">
-        <span class="topic-chip">🖥️ OS</span>
-        <span class="topic-chip">🔐 Semaphore</span>
-        <span class="topic-chip">🧠 Memory</span>
-        <span class="topic-chip">🐳 Docker</span>
-      </div>
-      <div class="game-meta">
-        <span>📊 1000 XP</span>
-        <span>🖥️ 10 Doors</span>
-        <span>📈 8 Ranks</span>
-      </div>
-      <div class="game-link">প্রবেশ করো →</div>
-    </a>
-
-    <!-- ══ GAME 39: DATA VAULT ══ -->
-    <a class="game-card game-39" data-folder="databases" href="./databases/index.html">
-      <div class="game-head">
-        <div class="game-icon">📊</div>
-        <div class="game-head-text">
-          <div class="game-tag">Book 39 · Databases Deep Dive</div>
-          <div class="game-title">The Data Vault</div>
-          <div class="game-title-bn">উপাত্তের ভল্ট</div>
-        </div>
-      </div>
-      <div class="game-desc">
-        একটি query-র যাত্রা — সারি থেকে অর্থ পর্যন্ত। Codd-এর relational model, SQL, B-tree indexing, ACID transactions, normalization, NoSQL (Redis/MongoDB/Cassandra/Neo4j), distributed databases, query optimization, data warehousing, এবং একটি query-র সম্পূর্ণ যাত্রা।
-        <span class="en">A query's journey — from rows to meaning. Codd's relational model, SQL, B-tree indexing, ACID transactions, normalization, NoSQL (Redis/MongoDB/Cassandra/Neo4j), distributed databases, query optimization, data warehousing, and one query's complete journey through the database engine.</span>
-      </div>
-      <div class="game-topics">
-        <span class="topic-chip">📊 Database</span>
-        <span class="topic-chip">🗂️ Indexing</span>
-        <span class="topic-chip">🔐 ACID</span>
-        <span class="topic-chip">🌐 NoSQL</span>
-      </div>
-      <div class="game-meta">
-        <span>📊 1000 XP</span>
-        <span>📊 10 Doors</span>
-        <span>📈 8 Ranks</span>
-      </div>
-      <div class="game-link">প্রবেশ করো →</div>
-    </a>
-
-  </div>
 
   <!-- ══ GROUP 4: EXTRAS ══ -->
   <div class="section-label" data-category="extras">🚗 বাড়তি — Extras</div>

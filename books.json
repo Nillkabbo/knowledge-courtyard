@@ -55,129 +55,121 @@
   "roadmap": [
     {
       "phase": 0,
-      "title": "Learn How to Learn · শেখার গলা",
+      "title": "Phase 0: Learn How to Learn · শেখার গলা",
       "note": "Do this first — it roughly doubles the retention of every book that follows.",
       "books": [
-        { "book": 26, "why": "Ebbinghaus, Adler, Zettelkasten, Feynman, second-brain — referenced by 27 & 28, so upstream of both." },
-        { "book": 5,  "why": "growth mindset, spaced repetition, active recall, sleep" },
-        { "book": 25, "why": "20h vs 10,000h, Dunning-Kruger, metacognition" }
+        { "book": 26, "why": "Ebbinghaus, Adler, Zettelkasten, Feynman, second-brain." },
+        { "book": 5,  "why": "growth mindset, spaced repetition, active recall, sleep." },
+        { "book": 25, "why": "20h vs 10,000h, Dunning-Kruger, metacognition." }
       ]
     },
     {
       "phase": 1,
-      "title": "Mindset & North Star · মন ও দিক",
+      "title": "Phase 1: Mindset & Identity · মন ও পরিচয়",
       "books": [
-        { "book": 21, "why": "curiosity, question-crafting, intellectual humility" },
-        { "book": 23, "why": "permanent vs perishable skills, systems thinking" },
-        { "book": 24, "why": "biases, Cialdini, learned helplessness — referenced by 27 & 28." },
-        { "book": 32, "why": "daily operating system — brain hacks, habits, state regulation. Read alongside 5 & 25 for immediate practical gains." },
-        { "book": 33, "why": "completes the mind trilogy — 24 defends the mind, 32 maintains the brain, 33 sharpens the thinking. Ten tools: latticework, logic, fallacies, Bayes, first principles, Polya, Fermi, decisions, second-order." },
-        { "book": 34, "why": "the evidence foundation — statistics & experimental design. Al-Kindi to Pearl, 1167 years. How to PROVE ideas work: hypothesis testing, confidence intervals, A/B testing, causal inference, replication crisis. The keystone that validates all other books." },
-        { "book": 35, "why": "the infrastructure deep dive — distributed systems. Lamport to Kleppmann, 55 years. How to build systems that span thousands of machines: clocks, consensus, CAP, MapReduce, Dynamo, BFT. Goes DEEPER than Book 4's single-machine system design." },
-        { "book": 36, "why": "the architecture deep dive — neural network architectures. From McCulloch-Pitts (1943) to Transformers, GANs, Diffusion. Every architecture Book 31 (Classic ML) leads into, this takes DEEPER. The PhD interview question: 'Explain how a CNN works' — answered here." },
-        { "book": 37, "why": "the infrastructure foundation — computer networks. Cerf-Kahn to QUIC, 50 years. What happens when you type google.com — OSI layers, TCP/IP, DNS, HTTP, TLS, CDN, WebSocket. Goes BENEATH Book 4 (system design) and Book 35 (distributed systems). The PhD interview question: 'What happens when you type google.com?' — answered here." },
-        { "book": 38, "why": "the machine foundation — operating systems. Dijkstra semaphores to Docker containers, 60 years. Processes, threads, scheduling, synchronization, deadlocks, virtual memory, file systems, I/O, containers. Goes BENEATH everything — the OS IS the machine. The PhD interview question: 'What happens when a program calls fork()?' — answered here." },
-        { "book": 39, "why": "the data foundation — databases. Codd relational model to distributed NoSQL, 55 years. Relational model, SQL, indexing, ACID, normalization, NoSQL, distributed databases, query optimization, data warehousing. The PhD interview question: 'How does a database index work?' — answered here." }
+        { "book": 21, "why": "curiosity, question-crafting, intellectual humility — become a researcher." },
+        { "book": 23, "why": "permanent vs perishable skills, systems thinking, product sense." },
+        { "book": 32, "why": "daily operating system — brain hacks, habits, state regulation." },
+        { "book": 33, "why": "critical thinking: latticework, logic, Bayes, first principles, Polya, Fermi." },
+        { "book": 24, "why": "biases, Cialdini, learned helplessness — understand human psychology." }
       ]
     },
     {
       "phase": 2,
-      "title": "The Map & the Engineer's Craft",
+      "title": "Phase 2: The Engineer's Craft · প্রকৌশলীর হাত",
       "books": [
-        { "book": 1,  "why": "read inspectionally — the flyover of all 13 deep-dives." },
-        { "book": 3,  "why": "first principles, abstraction, debugging" },
-        { "book": 7,  "why": "prompt & context engineering — most immediately useful skill" }
+        { "book": 1,  "why": "read inspectionally — the flyover of all AI deep-dives." },
+        { "book": 3,  "why": "first principles, abstraction, debugging, estimation." },
+        { "book": 7,  "why": "prompt & context engineering — most immediately useful skill." }
       ]
     },
     {
       "phase": 3,
-      "title": "Math Foundations → What an LLM Actually Is · the keystone",
-      "note": "📖 Book 30 teaches the math (vectors → entropy) that every door below depends on. Then Book 8 unlocks the transformer.",
+      "title": "Phase 3: CS Fundamentals · কম্পিউটার বিজ্ঞানের ভিত্তি",
+      "note": "⚙️ The CS quartet: Algorithms → Networks → OS → Databases. Four pillars every PhD interview probes.",
       "books": [
-        { "book": 30, "why": "vectors, matrices, eigenvalues, probability, calculus, backprop, information theory — the math underneath all 13 AI books." },
-        { "book": 8,  "role": "keystone", "why": "tokenization, attention, transformers, RLHF — five downstream books depend on this." }
+        { "book": 2,  "why": "Big-O, data structures, graphs, DP — run alongside other phases." },
+        { "book": 37, "why": "OSI, TCP/IP, DNS, HTTP, TLS — what happens when you type google.com." },
+        { "book": 38, "why": "processes, threads, scheduling, semaphores, memory, containers — fork()." },
+        { "book": 39, "why": "relational model, SQL, indexing, ACID, NoSQL — how indexes work." }
       ]
     },
     {
       "phase": 4,
-      "title": "Meaning, Context & Retrieval",
+      "title": "Phase 4: Math → LLM Keystone · গণিত ও ট্রান্সফর্মার",
+      "note": "📖 Book 30 teaches the math (vectors → entropy) that every AI book depends on. Then Book 8 unlocks the transformer.",
       "books": [
-        { "book": 18, "why": "embeddings, vector search — lifted from shelf #18; RAG/context/multimodal all need it." },
-        { "book": 9,  "why": "chunking, reranking, Lost-in-the-Middle" },
-        { "book": 10, "why": "RAG mastery — needs embeddings + context" }
+        { "book": 30, "why": "vectors, matrices, probability, calculus, backprop, information theory." },
+        { "book": 8,  "role": "keystone", "why": "tokenization, attention, transformers, RLHF." }
       ]
     },
     {
       "phase": 5,
-      "title": "Make the Model Act · কাজে নামানো",
+      "title": "Phase 5: Meaning & Retrieval · অর্থ ও সংগ্রহ",
       "books": [
-        { "book": 19, "why": "function calling, MCP — hard prereq for agents." },
-        { "book": 12, "why": "ReAct, planning, multi-agent — built on tools" }
+        { "book": 18, "why": "embeddings, vector search — RAG/context/multimodal all need it." },
+        { "book": 9,  "why": "chunking, reranking, Lost-in-the-Middle." },
+        { "book": 10, "why": "RAG mastery — needs embeddings + context." }
       ]
     },
     {
       "phase": 6,
-      "title": "Classic ML → Harden & Go Deep",
-      "note": "🌱 Book 31 gives you the classic ML foundation (regression → neural networks) that every PhD interview demands. Then harden your LLMs.",
+      "title": "Phase 6: Action & Intelligence · ক্রিয়া ও বুদ্ধিমত্তা",
       "books": [
-        { "book": 31, "why": "linear/logistic regression, decision trees, SVM, k-NN, k-means, neural network fundamentals — the No Free Lunch toolbox." },
-        { "book": 13, "why": "prompt injection, red-teaming, guardrails" },
-        { "book": 11, "why": "LoRA/QLoRA, DPO/PPO" }
+        { "book": 19, "why": "function calling, MCP — hard prereq for agents." },
+        { "book": 12, "why": "ReAct, planning, multi-agent — built on tools." }
       ]
     },
     {
       "phase": 7,
-      "title": "Measure, Accelerate, Operate, Extend",
-      "note": "📏 Evals (Book 16) before you ship anything from Phase 6.",
+      "title": "Phase 7: ML Foundations → Deep Learning → Harden · মেশিন লার্নিং ও সুরক্ষা",
+      "note": "🌱 Classic ML → DL architectures → Security → Fine-tuning.",
       "books": [
-        { "book": 16, "why": "LLM-as-judge, RAGAS, benchmarks" },
-        { "book": 17, "why": "KV cache, quantization, speculative decoding" },
-        { "book": 14, "why": "vLLM, PagedAttention, monitoring" },
-        { "book": 15, "why": "ViT/CLIP, diffusion, VLMs — needs anatomy + embeddings + RAG" }
+        { "book": 31, "why": "linear/logistic regression, decision trees, SVM, k-NN, k-means." },
+        { "book": 36, "why": "Perceptron → CNN → LSTM → Transformer → GAN → Diffusion." },
+        { "book": 13, "why": "prompt injection, red-teaming, guardrails." },
+        { "book": 11, "why": "LoRA/QLoRA, DPO/PPO — adapt models to your domain." }
       ]
     },
     {
       "phase": 8,
-      "title": "General Systems Engineering",
-      "parallel": true,
-      "note": "⟂ Run in parallel with Phases 4–7 if you have time. Independent of the AI chain.",
+      "title": "Phase 8: Measure, Ship & Extend · পরিমাপ ও উৎপাদন",
+      "note": "📏 Evals before you ship. Then optimize, deploy, extend.",
       "books": [
-        { "book": 4, "role": "parallel", "why": "CAP, consensus, replication, idempotency" }
+        { "book": 16, "why": "LLM-as-judge, RAGAS, benchmarks." },
+        { "book": 17, "why": "KV cache, quantization, speculative decoding." },
+        { "book": 14, "why": "vLLM, PagedAttention, monitoring." },
+        { "book": 15, "why": "ViT/CLIP, diffusion, VLMs — multimodal." }
       ]
     },
     {
       "phase": 9,
-      "title": "Slow Parallel Track · DSA",
-      "parallel": true,
-      "note": "⟂ Run alongside Phases 2–7 at ~3 chapters/week, not as a block. Live Python (Pyodide).",
+      "title": "Phase 9: Systems Engineering & Evidence · সিস্টেম ও প্রমাণ",
+      "note": "🏗️ Scale up: system design → distributed systems → statistics.",
       "books": [
-        { "book": 2, "role": "parallel", "why": "Big-O → graphs → DP" }
+        { "book": 4,  "why": "CAP, consensus, replication, idempotency — system design." },
+        { "book": 35, "why": "Lamport clocks, Paxos/Raft, MapReduce, Dynamo, BFT." },
+        { "book": 34, "why": "hypothesis testing, A/B testing, causal inference, replication crisis." }
       ]
     },
     {
       "phase": 10,
-      "title": "Research Track · if grad-school bound",
+      "title": "Phase 10: Research & Synthesis · গবেষণা ও সংশ্লেষ",
       "books": [
-        { "book": 27, "why": "IMRaD, Keshav, peer review" },
-        { "book": 22, "why": "survey of 10 CS domains — references 8 other books; last among deep-dives." },
-        { "book": 20, "why": "PhD funding, SOP, cold-emailing" }
-      ]
-    },
-    {
-      "phase": 11,
-      "title": "Synthesis & Career · the finale",
-      "books": [
-        { "book": 6,  "why": "resume, STAR, negotiation — read when job-hunting" },
+        { "book": 27, "why": "IMRaD, Keshav 3-pass, peer review — read and write papers." },
+        { "book": 22, "why": "survey of 20 CS domains — references 8 other books." },
+        { "book": 20, "why": "PhD funding, SOP, cold-emailing — if grad-school bound." },
+        { "book": 6,  "why": "resume, STAR, negotiation — read when job-hunting." },
         { "book": 28, "role": "finale", "why": "the capstone — references 14 other books. Read dead last." }
       ]
     },
     {
       "phase": 99,
       "label": "Extra",
-      "title": "Anytime",
+      "title": "Phase 99: Anytime",
       "parallel": true,
       "books": [
-        { "book": 29, "role": "parallel", "why": "GDL, road rules, OWI" }
+        { "book": 29, "role": "parallel", "why": "learner permit, road rules, OWI — Michigan driving." }
       ]
     }
   ]
