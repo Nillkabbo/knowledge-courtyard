@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="জ্ঞানের প্রাঙ্গণ — The Learning Courtyard: 29 free bilingual (Bengali/English) interactive books covering AI engineering, DSA, system design, PhD research, and career growth, taught through story-driven chapters.">
+<meta name="description" content="জ্ঞানের প্রাঙ্গণ — The Learning Courtyard: 35 free bilingual (Bengali/English) interactive books covering AI engineering, DSA, system design, PhD research, and career growth, taught through story-driven chapters.">
 <title>জ্ঞানের প্রাঙ্গণ — The Learning Courtyard</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -300,6 +300,30 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   </div>
 
   <div class="section-label" id="journeysLabel">📚 যাত্রা — Journeys</div>
+
+  <!-- ══ STATS POPULATOR ── fills book/chapter/XP counts from books.json + search-index.json ══ -->
+  <script>
+  (function(){
+    'use strict';
+    const BN=['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+    const bn=n=>String(n).replace(/\d/g,d=>BN[d]);
+    const setStat=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
+    fetch('books.json',{cache:'force-cache'})
+      .then(r=>r.json())
+      .then(m=>{
+        const live=m.books.filter(b=>b.status!=='hidden');
+        setStat('statBooks',bn(live.length));
+        const jl=document.getElementById('journeysLabel');
+        if(jl) jl.textContent='📚 '+bn(live.length)+' যাত্রা — '+live.length+' Journeys';
+      }).catch(()=>{});
+    fetch('search-index.json',{cache:'force-cache'})
+      .then(r=>r.json())
+      .then(idx=>{
+        setStat('statChapters',bn(idx.chapters));
+        setStat('statXP',bn(idx.chapters*100));
+      }).catch(()=>{});
+  })();
+  </script>
 
   <!-- ══ SEARCH BAR ── finds any topic across all 35 books ══ -->
   <div class="search-bar" id="searchBar">
@@ -1698,21 +1722,6 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     if(!manifest){ HOST.innerHTML = '<div class="sr-empty">Roadmap unavailable.</div>'; return; }
     const byN = {};
     manifest.books.forEach(b => byN[b.n] = b);
-
-    // ── Populate the header stats + journeys label from the manifest ──
-    // (single source: books.json). Falls back gracefully if elements absent.
-    const live = manifest.books.filter(b => b.status !== 'hidden');
-    const setStat = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
-    setStat('statBooks', bn(live.length));
-    // Chapters + XP require the search index; populate after it loads.
-    fetch('search-index.json', {cache:'force-cache'})
-      .then(r => r.json())
-      .then(idx => {
-        setStat('statChapters', bn(idx.chapters));
-        setStat('statXP', bn(idx.chapters * 100));
-      }).catch(()=>{});
-    const jl = document.getElementById('journeysLabel');
-    if(jl) jl.textContent = '📚 ' + bn(live.length) + ' যাত্রা — ' + live.length + ' Journeys';
 
     const html = manifest.roadmap.map(phase => {
       const steps = phase.books.map(entry => {
