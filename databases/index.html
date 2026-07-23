@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>উপাত্তের ভল্ট — The Data Vault</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَعِنْدَهُ مَفَاتِحُ الْغَيْبِ لَا يَعْلَمُهَا إِلَّا هُوَ</div>
+  <h1 class="title-main">উপাত্তের ভল্ট</h1>
+  <div class="title-sub">The Data Vault</div>
+  <div class="title-desc">
+    একটি query-র যাত্রা — সারি থেকে অর্থ পর্যন্ত।<br>
+    দশটি দরজা: relational model (Codd 1970), SQL, indexing (B-tree, Hash), ACID transactions, normalization, NoSQL (key-value, document, graph), distributed databases (replication, sharding, CAP), query optimization, data warehousing + OLAP, এবং একটি query-র সম্পূর্ণ যাত্রা।<br><br>
+    <em>A query's journey — from rows to meaning. Ten doors: the relational model (Codd 1970), SQL, indexing (B-tree, Hash), ACID transactions, normalization, NoSQL (key-value, document, graph), distributed databases (replication, sharding, CAP), query optimization, data warehousing + OLAP, and one query's complete journey through the database engine.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">📊 যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">একটি ফাইল ক্যাবিনেটের গল্প — The Filing Cabinet</div>
+    <p>তুমি একটি অফিসে কাজ করছো। হাজার হাজার কাগজ — চালান, চুক্তি, রিপোর্ট। সব এলোমেলো স্তূপে। একটি নির্দিষ্ট চালান খুঁজতে কতক্ষণ লাগবে? ঘণ্টা। কিন্তু যদি প্রতিটি কাগজ একটি নিয়মে সাজানো থাকে — তারিখ অনুসারে, ক্লায়েন্ট অনুসারে, সংখ্যা অনুসারে? তাহলে সেকেন্ডে পাওয়া যায়। এটাই ডাটাবেস — একটি সুসংগঠিত ফাইল ক্যাবিনেট যা হাজার হাজার সারিকে সেকেন্ডে খুঁজে বের করতে পারে।</p>
+    <p class="en">You work in an office. Thousands of papers — invoices, contracts, reports. All in messy piles. How long to find a specific invoice? Hours. But if each paper is organized by a rule — by date, by client, by number? Then found in seconds. This is a database — an organized filing cabinet that can search thousands of rows in seconds.</p>
+    <hr class="p-divider">
+    <p>এই বই তোমাকে নিয়ে যাবে উপাত্তের জগতে — Codd-এর relational model (১৯৭০) থেকে আধুনিক distributed database পর্যন্ত। প্রতিটি দরজায় একজন কারিগর — Codd, Stonebraker, Vogels — যারা এই স্থাপত্য তৈরি করেছেন। তুমি শিখবে কীভাবে একটি query ডাটাবেসে প্রবেশ করে, indexing-এর মাধ্যমে দ্রুত খুঁজে বের হয়, transaction-এর মাধ্যমে নিরাপদে সম্পন্ন হয়, এবং distributed system-এ প্রতিলিপি তৈরি করে।</p>
+    <p class="en">This book takes you into the world of data — from Codd's relational model (1970) to modern distributed databases. Each door features a craftsman — Codd, Stonebraker, Vogels — who built this architecture. You'll learn how a query enters the database, is found quickly through indexing, completes safely through transactions, and is replicated across distributed systems.</p>
+    <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (সিস্টেম ডিজাইন):</strong> সেখানে তুমি database-এর ভূমিকা শিখেছিলে। এই বই সেই ভিত্তিকে গভীর করে। LedgerPilot MySQL, Ipractus PostgreSQL — তুমি প্রতিদিন যে DB ব্যবহার করছো তার ভেতরের যন্ত্র এখানে।</div></div>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">📋</span><span id="hud-rank-name">উপাত্ত শিক্ষার্থী</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা — একটি query-র উপাত্তের ভল্টে যাত্রা।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← ভল্টে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🏛️</div>
+  <h1 class="complete-title">তুমি এখন উপাত্তের গুরু</h1>
+  <p class="complete-text">দশটি দরজা পেরিয়েছ। Codd-এর relational model থেকে distributed database পর্যন্ত — প্রতিটি স্তর তোমার কাছে স্বচ্ছ।<br><br>তুমি এখন জানো কী ঘটে যখন তুমি SELECT * FROM users WHERE age > 18 লেখো — প্রতিটি ধাপ, প্রতিটি index lookup, প্রতিটি join।<br>Book ৪-এর সিস্টেম ডিজাইন এবং Book ৩৫-এর ডিস্ট্রিবিউটেড সিস্টেমস এখন তোমার কাছে আরও গভীর — কারণ তুমি বুঝতে পারো ডাটাবেসের ভেতরে কী চলছে।<br><strong>একটি query-র সম্পূর্ণ যাত্রা — সারি থেকে অর্থ।</strong></p>
+  <div class="complete-verse">وَعِنْدَهُ مَفَاتِحُ الْغَيْبِ لَا يَعْلَمُهَا إِلَّا هُوَ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"এবং তাঁর কাছেই রয়েছে অদৃশ্যের চাবিকাঠি, যা তিনি ছাড়া কেউ জানে না।" — কুরআন ৬:৫৯</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 উপাত্তের ভল্ট চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 উপাত্তের ভল্ট চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>

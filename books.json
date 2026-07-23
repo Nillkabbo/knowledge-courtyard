@@ -48,7 +48,8 @@
     { "n": 35, "folder": "distributed-systems",     "title_en": "The Bridge of Connections",            "title_bn": "সংযোগের সেতু",                "icon": "🌐", "category": "growth", "color": "game-35", "tag": "Book 35 · Distributed Systems Deep Dive",                                "status": "live" },
     { "n": 36, "folder": "deep-learning-arch",      "title_en": "The Architecture of Thought",          "title_bn": "চিন্তার স্থাপত্য",              "icon": "🧠", "category": "growth", "color": "game-36", "tag": "Book 36 · Deep Learning Architectures",                                 "status": "live" },
     { "n": 37, "folder": "computer-networks",       "title_en": "The Web of Wires",                     "title_bn": "তারের জাল",                    "icon": "🌐", "category": "growth", "color": "game-37", "tag": "Book 37 · Computer Networks Deep Dive",                                "status": "live" },
-    { "n": 38, "folder": "operating-systems",       "title_en": "The Machine's Soul",                   "title_bn": "যন্ত্রের আত্মা",              "icon": "🖥️", "category": "growth", "color": "game-38", "tag": "Book 38 · Operating Systems Deep Dive",                                "status": "live" }
+    { "n": 38, "folder": "operating-systems",       "title_en": "The Machine's Soul",                   "title_bn": "যন্ত্রের আত্মা",              "icon": "🖥️", "category": "growth", "color": "game-38", "tag": "Book 38 · Operating Systems Deep Dive",                                "status": "live" },
+    { "n": 39, "folder": "databases",                "title_en": "The Data Vault",                       "title_bn": "উপাত্তের ভল্ট",                "icon": "📊", "category": "growth", "color": "game-39", "tag": "Book 39 · Databases Deep Dive",                                        "status": "live" }
   ],
 
   "roadmap": [
@@ -75,7 +76,8 @@
         { "book": 35, "why": "the infrastructure deep dive — distributed systems. Lamport to Kleppmann, 55 years. How to build systems that span thousands of machines: clocks, consensus, CAP, MapReduce, Dynamo, BFT. Goes DEEPER than Book 4's single-machine system design." },
         { "book": 36, "why": "the architecture deep dive — neural network architectures. From McCulloch-Pitts (1943) to Transformers, GANs, Diffusion. Every architecture Book 31 (Classic ML) leads into, this takes DEEPER. The PhD interview question: 'Explain how a CNN works' — answered here." },
         { "book": 37, "why": "the infrastructure foundation — computer networks. Cerf-Kahn to QUIC, 50 years. What happens when you type google.com — OSI layers, TCP/IP, DNS, HTTP, TLS, CDN, WebSocket. Goes BENEATH Book 4 (system design) and Book 35 (distributed systems). The PhD interview question: 'What happens when you type google.com?' — answered here." },
-        { "book": 38, "why": "the machine foundation — operating systems. Dijkstra semaphores to Docker containers, 60 years. Processes, threads, scheduling, synchronization, deadlocks, virtual memory, file systems, I/O, containers. Goes BENEATH everything — the OS IS the machine. The PhD interview question: 'What happens when a program calls fork()?' — answered here." }
+        { "book": 38, "why": "the machine foundation — operating systems. Dijkstra semaphores to Docker containers, 60 years. Processes, threads, scheduling, synchronization, deadlocks, virtual memory, file systems, I/O, containers. Goes BENEATH everything — the OS IS the machine. The PhD interview question: 'What happens when a program calls fork()?' — answered here." },
+        { "book": 39, "why": "the data foundation — databases. Codd relational model to distributed NoSQL, 55 years. Relational model, SQL, indexing, ACID, normalization, NoSQL, distributed databases, query optimization, data warehousing. The PhD interview question: 'How does a database index work?' — answered here." }
       ]
     },
     {
