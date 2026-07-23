@@ -1,0 +1,317 @@
+const doors = [];
+
+doors.push({
+  num: 1,
+  icon: "🏗️",
+  color: "#38bdf8",
+  name: "সাত তলার ভবন",
+  subtitle: "The Seven-Story Building",
+  tech: "OSI Model (ISO 1984) + TCP/IP Model (Cerf-Kahn 1974) — layered network architecture",
+  spirit: "তাবাকা — স্তরে স্তরে গঠন, প্রতিটি স্তর আগের উপর নির্মিত",
+  secret: "নেটওয়ার্ক = একটি সাত তলার ভবন। প্রতিটি তলে একটি নির্দিষ্ট কাজ। তুমি শুধু তোমার তল নিয়ে চিন্তা করো, উপরের বা নিচের তল প্রোটোকল সামলাবে।",
+  recall: {
+    q: " OSI মডেলে কয়টি স্তর আছে?",
+    qen: "How many layers does the OSI model have?",
+    a: "৭টি — Application, Presentation, Session, Transport, Network, Data Link, Physical।",
+    aen: "7 — Application, Presentation, Session, Transport, Network, Data Link, Physical."
+  },
+  story: `<p class="scene-setting">তুমি একটি সাত তলার ভবনে দাঁড়িয়ে আছো। সপ্তম তলে একটি বার্তা লেখা হয়েছে। সেই বার্তাটি ষষ্ঠ তলে যায় — সেখানে একটি খামে ভরা হয়। পঞ্চম তলে একটি সেশন শুরু হয়। চতুর্থ তলে বার্তাটি ছোট ছোট টুকরোয় ভাগ করা হয়। তৃতীয় তলে প্রতিটি টুকরোর উপর ঠিকানা লেখা হয়। দ্বিতীয় তলে একটি ফ্রেমে ভরা হয়। প্রথম তলে — তারের ভেতর দিয়ে বৈদ্যুতিক সংকেত হিসেবে পাঠানো হয়।</p>
+<p class="scene-setting en">You're standing in a seven-story building. On the seventh floor, a message is written. It goes to the sixth floor — put in an envelope. On the fifth, a session begins. On the fourth, the message is split into pieces. On the third, each piece gets an address. On the second, it's framed. On the first — it's sent as electrical signals through a wire.</p>
+
+<div class="callout info"><span class="co-icon">🏢</span><div><strong>OSI মডেলের ৭টি স্তর (উপর থেকে নিচে):</strong><br>
+<strong>৭. Application:</strong> ব্যবহারকারীর ইন্টারফেস — HTTP, FTP, SMTP<br>
+<strong>৬. Presentation:</strong> এনক্রিপশন, কম্প্রেশন, ফরম্যাট — TLS, JPEG, JSON<br>
+<strong>৫. Session:</strong> সংযোগ ব্যবস্থাপনা — সেশন খোলা/বন্ধ<br>
+<strong>৪. Transport:</strong> নির্ভরযোগ্য পরিবহন — TCP, UDP<br>
+<strong>৩. Network:</strong> ঠিকানা ও রাউটিং — IP<br>
+<strong>২. Data Link:</strong> ফ্রেম, MAC ঠিকানা — Ethernet, Wi-Fi<br>
+<strong>১. Physical:</strong> তার, সংকেত, বিট — কেবল, ফাইবার, রেডিও</div></div>
+
+<div class="dialogue"><strong>তুমি:</strong> এত স্তর কেন? এক স্তরে কাজ শেষ করলেই তো হয়?</div>
+<div class="dialogue"><strong>স্থপতি আদম:</strong> ভাবো তুমি একটি বাড়ি বানাচ্ছো। ভিত্তি, দেয়াল, ছাদ, বৈদ্যুতিক, প্লাম্বিং, রং — সব একসাথে করলে কী হবে? একটি সমস্যা হলে কোনটি ঠিক করবে? স্তর থাকলে প্রতিটি স্তর আলাদাভাবে কাজ করে। Wi-Fi বদলালে HTTP বদলাতে হবে না। এটাই abstraction-এর শক্তি।</div>
+<div class="dialogue en"><strong>You:</strong> Why so many layers? Why not do everything in one layer?<br><strong>Architect Adam:</strong> Imagine building a house. Foundation, walls, roof, electrical, plumbing, paint — do it all at once? If one breaks, which to fix? With layers, each works independently. Change Wi-Fi without changing HTTP. This is the power of abstraction.</div>
+
+<p class="scene-setting">কিন্তু একটি সত্য — OSI মডেলটি একটি তাত্ত্বিক কাঠামো। বাস্তবে ইন্টারনেট চলে TCP/IP মডেলে — মাত্র ৪টি স্তর। ১৯৭৪ সালে Vint Cerf এবং Bob Kahn এটি ডিজাইন করেছিলেন।</p>
+<p class="scene-setting en">But a truth — the OSI model is a theoretical framework. In practice, the internet runs on the TCP/IP model — only 4 layers. In 1974, Vint Cerf and Bob Kahn designed it.</p>
+
+<div class="callout info"><span class="co-icon">📐</span><div><strong>TCP/IP মডেলের ৪টি স্তর:</strong><br>
+<strong>৪. Application:</strong> OSI-এর ৭+৬+৫ একত্রিত — HTTP, DNS, SMTP<br>
+<strong>৩. Transport:</strong> TCP, UDP<br>
+<strong>২. Internet:</strong> IP — OSI-এর Network স্তর<br>
+<strong>১. Network Access:</strong> OSI-এর ২+১ একত্রিত — Ethernet, Wi-Fi</div></div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">ওপেন কিন্তু জটিল</div>OSI — ৭ স্তর। তাত্ত্বিকভাবে সম্পূর্ণ কিন্তু বাস্তবে কয়েকটি স্তর খালি থাকে। শেখানো হয় কিন্তু ব্যবহার কম হয়।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ সরল এবং বাস্তব</div>TCP/IP — ৪ স্তর। বাস্তব ইন্টারনেট এটিতে চলে। সরল, প্র্যাকটিক্যাল, প্রমাণিত।</div>
+</div>
+
+<div class="verse">الَّذِي خَلَقَ سَبْعَ سَمَاوَاتٍ طِبَاقًا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"যিনি সৃষ্টি করেছেন সাতটি আসমান স্তরে স্তরে।" — কুরআন ৬৭:৩</div>
+
+<p class="scene-setting">এই আয়াতে সাতটি আসমানের কথা বলা হয়েছে — স্তরে স্তরে। নেটওয়ার্কের OSI মডেলেও সাতটি স্তর — প্রতিটি আলাদা কাজ করে, কিন্তু সব মিলে একটি সম্পূর্ণ ব্যবস্থা। প্রতিটি স্তর উপরের স্তরকে সহায়তা করে, নিচের স্তরের উপর নির্ভর করে।</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (সিস্টেম ডিজাইন):</strong> API Gateway, Load Balancer, Microservices — এগুলো Application স্তরের ধারণা। Book ৩৫ (ডিস্ট্রিবিউটেড সিস্টেমস): Consensus, CAP — এগুলো Transport ও Network স্তরের উপর নির্ভর করে।</div></div>
+
+<div class="secret-box">🏗️ <strong>নেটওয়ার্ক = সাত তলার ভবন।</strong> তুমি সপ্তম তল থেকে বার্তা পাঠাও, প্রথম তল থেকে বৈদ্যুতিক সংকেত যায়। প্রতিটি তলের নিজস্ব কাজ, নিজস্ব ভাষা। এটাই abstraction — উপরের তল জানেই না নিচে কী হচ্ছে। কিন্তু এই ভবনের ভিত্তি কী? তার এবং সংকেত। সেই যাত্রা শুরু হবে পরের দরজায়।</div>`,
+  senior: {
+    title: "OSI + TCP/IP এক নজরে",
+    body: `<table class="kv-table"><tr><th>OSI স্তর</th><th>TCP/IP স্তর</th><th>প্রোটোকল</th></tr>
+<tr><td class="hl">7. Application</td><td rowspan="3">Application</td><td>HTTP, DNS, SMTP, FTP</td></tr>
+<tr><td class="hl">6. Presentation</td><td>TLS, JPEG, JSON</td></tr>
+<tr><td class="hl">5. Session</td><td>RPC, NetBIOS</td></tr>
+<tr><td class="hl">4. Transport</td><td>Transport</td><td>TCP, UDP</td></tr>
+<tr><td class="hl">3. Network</td><td>Internet</td><td>IP, ICMP</td></tr>
+<tr><td class="hl">2. Data Link</td><td rowspan="2">Network Access</td><td>Ethernet, Wi-Fi, ARP</td></tr>
+<tr><td class="hl">1. Physical</td><td>Cables, Fiber, Radio</td></tr></table>
+<p style="margin-top:.8rem"><strong>মনে রাখার কৌশল:</strong> <em>All People Seem To Need Data Processing</em> (7→1)</p>`
+  }
+});
+
+doors.push({
+  num: 2,
+  icon: "🔌",
+  color: "#38bdf8",
+  name: "তারের রাজ্যে",
+  subtitle: "Into the Wires",
+  tech: "Physical Layer + Data Link — cables, fiber, radio, Ethernet (Metcalfe 1973), MAC addressing, CSMA/CD, switches",
+  spirit: "আয়ত — নিদর্শন, দৃশ্যমান সংকেত থেকে অদৃশ্য অর্থ",
+  secret: "Physical স্তর = ১ এবং ০ কে তারের ভেতর দিয়ে পাঠানো। Data Link = কার থেকে কার কাছে যাচ্ছে (MAC ঠিকানা)।",
+  recall: {
+    q: " MAC ঠিকানা এবং IP ঠিকানার পার্থক্য কী?",
+    qen: "What's the difference between MAC and IP addresses?",
+    a: "MAC হার্ডওয়্যারে পাওয়া (NIC-তে লেখা), IP লজিক্যাল (নেটওয়ার্কে দেওয়া)। MAC বদলায় না, IP বদলায়।",
+    aen: "MAC is hardware (burned into NIC), IP is logical (assigned). MAC doesn't change, IP can."
+  },
+  story: `<p class="scene-setting">তুমি একটি কেবল ধরে আছো। তামার তার। এর ভেতর দিয়ে বিদ্যুৎ প্রবাহিত হয়। কিন্তু বিদ্যুৎ কীভাবে ডেটা হয়? উত্তর: সংকেত। উচ্চ ভোল্টেজ = ১, নিম্ন ভোল্টেজ = ০। এই ১ এবং ০-এর স্রোতই হলো সমস্ত ডেটার ভিত্তি — ছবি, ভিডিও, টেক্সট, সবকিছু।</p>
+<p class="scene-setting en">You're holding a cable. Copper wire. Electricity flows through it. But how does electricity become data? Answer: signals. High voltage = 1, low voltage = 0. This stream of 1s and 0s is the foundation of all data — images, video, text, everything.</p>
+
+<div class="callout info"><span class="co-icon">📡</span><div><strong>মাধ্যমের প্রকারভেদ:</strong><br>
+<strong>তামার তার (Twisted Pair):</strong> সস্তা, সহজ — CAT6, সর্বোচ্চ ১০ Gbps, ~১০০m পর্যন্ত<br>
+<strong>কো-এক্সিয়াল:</strong> কেবল TV — ব্রডব্যান্ড ইন্টারনেট<br>
+<strong>ফাইবার অপটিক:</strong> আলোর স্রোত — ১০০ Gbps+, কয়েক কিলোমিটার, কোনো ইলেকট্রোম্যাগনেটিক ব্যাঘাত নেই<br>
+<strong>রেডিও (Wireless):</strong> Wi-Fi, 4G/5G, স্যাটেলাইট — আলোর চেয়ে ধীর কিন্তু তার ছাড়া</div></div>
+
+<p class="scene-setting">১৯৭৩ সাল। Xerox PARC। Bob Metcalfe একটি সমস্যায় আছেন — অফিসের কম্পিউটারগুলোকে যুক্ত করতে হবে। তিনি একটি সহজ সমাধান ভাবলেন: একটি শেয়ার্ড কেবল। সব কম্পিউটার একই কেবলে যুক্ত। কেউ বার্তা পাঠাতে চাইলে আগে শোনে — কেউ কথা বলছে কি না? যদি না বলছে, তবে সে পাঠায়। যদি দুজন একসাথে পাঠায় — collision! উভয়ে থামে, অপেক্ষা করে, আবার চেষ্টা করে।</p>
+<p class="scene-setting en">1973. Xerox PARC. Bob Metcalfe has a problem — connect office computers. He thought of a simple solution: a shared cable. All computers on one cable. Before sending, listen — is anyone talking? If not, send. If two send at once — collision! Both stop, wait, retry.</p>
+
+<div class="callout info"><span class="co-icon">📐</span><div><strong>Ethernet + CSMA/CD (Carrier Sense Multiple Access with Collision Detection):</strong><br>
+১. শোনো — কেউ পাঠাচ্ছে কি না (Carrier Sense)<br>
+২. নিরব হলে পাঠাও<br>
+৩. দুজন একসাথে পাঠালে — collision detect<br>
+৪. উভয়ে থামো, random time অপেক্ষা করো (backoff)<br>
+৫. আবার চেষ্টা করো</div></div>
+
+<div class="callout info"><span class="co-icon">🏠</span><div><strong>MAC ঠিকানা (Media Access Control):</strong> প্রতিটি Network Interface Card (NIC)-এ একটি অনন্য ৪৮-বিট ঠিকানা থাকে। যেমন: ৩C:5A:B4:০F:১২:৭D। এটি কারখানায় লেখা হয় — হার্ডওয়্যারে। এটি স্থানীয় নেটওয়ার্কে ফ্রেম সঠিক গন্তব্যে পৌঁছাতে সাহায্য করে।</div></div>
+
+<div class="callout info"><span class="co-icon">🔀</span><div><strong>Switch vs Hub:</strong><br>
+<strong>Hub:</strong> আসা ফ্রেম সব পোর্টে পাঠায় — সবাই শোনে, ধীর।<br>
+<strong>Switch:</strong> MAC ঠিকানা দেখে শুধু সঠিক পোর্টে পাঠায় — দ্রুত, নিরাপদ। Switch একটি MAC টেবিল রাখে — কোন পোর্টে কোন MAC আছে।</div></div>
+
+<div class="verse">أَلَمْ تَرَوْا أَنَّ اللَّهَ سَخَّرَ لَكُم مَّا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"তোমরা কি দেখো না যে আল্লাহ আসমান ও পৃথিবীতে যা কিছু আছে তা তোমাদের অধীন করেছেন?" — কুরআন ৩১:২০</div>
+
+<p class="scene-setting">এই আয়াত বলে — আল্লাহ আসমান ও পৃথিবীর সম্পদ মানুষের অধীন করেছেন। তামা, সিলিকন, আলো — এই উপাদানগুলো প্রকৃতিতে আছে। মানুষ সেগুলো দিয়ে তৈরি করেছে তার, ফাইবার, সুইচ — যা সংযোগ সম্ভব করে।</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৫ (ডিস্ট্রিবিউটেড সিস্টেমস) Door ২:</strong> Dijkstra-এর semaphore শিখেছিলে — shared resource access control। CSMA/CD একই সমস্যার নেটওয়ার্ক সংস্করণ: শেয়ার্ড মাধ্যমে কে কবে কথা বলবে?</div></div>
+
+<div class="secret-box">🔌 <strong>Physical স্তর = ভিত্তি।</strong> তারের ভেতর বিদ্যুৎ, ফাইবারের ভেতর আলো, বাতাসে রেডিও তরঙ্গ। ১ এবং ০ — এই দুটি সংখ্যা দিয়ে গড়ে উঠেছে পুরো ইন্টারনেট। আর Data Link স্তর ঠিক করে কোন ১ এবং ০ কার জন্য। কিন্তু এই ফ্রেমগুলো শুধু স্থানীয় নেটওয়ার্কেই থাকে। এক নেটওয়ার্ক থেকে আরেক নেটওয়ার্কে যেতে হলে দরকার একটি সার্বজনীন ঠিকানা। সেই যাত্রা শুরু হবে পরের দরজায়।</div>`,
+  senior: {
+    title: "Physical + Data Link এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">মাধ্যম</td><td>তামার তার, কো-এক্সিয়াল, ফাইবার, রেডিও</td></tr>
+<tr><td class="hl">সংকেত</td><td>ভোল্টেজ (তামার), আলোর পালস (ফাইবার), রেডিও তরঙ্গ (Wi-Fi)</td></tr>
+<tr><td class="hl">Ethernet</td><td>Metcalfe ১৯৭৩ — Xerox PARC, শেয়ার্ড কেবল</td></tr>
+<tr><td class="hl">CSMA/CD</td><td>শোনো → পাঠাও → collision → থামো → অপেক্ষা → পুনরায়</td></tr>
+<tr><td class="hl">MAC ঠিকানা</td><td>৪৮-বিট হার্ডওয়্যার ঠিকানা (NIC-তে লেখা)</td></tr>
+<tr><td class="hl">Switch</td><td>MAC টেবিল ব্যবহার করে সঠিক পোর্টে ফ্রেম পাঠায়</td></tr>
+<tr><td class="hl">ফ্রেম</td><td>ডেটা + উৎস MAC + গন্তব্য MAC + error check</td></tr></table>`
+  }
+});
+
+doors.push({
+  num: 3,
+  icon: "🛣️",
+  color: "#38bdf8",
+  name: "রাস্তার প্রহরী",
+  subtitle: "The Road Guardian",
+  tech: "Network Layer — IP Addressing (IPv4, IPv6), Subnetting, Routing (BGP, OSPF), TTL, Traceroute",
+  spirit: "তারীক — পথ, গন্তব্যে পৌঁছানোর রাস্তা",
+  secret: "IP ঠিকানা = বাড়ির ঠিকানা। রাউটার = মোড়ের সাইনবোর্ড। প্যাকেট প্রতিটি মোড়ে জিজ্ঞেস করে — এর পর কোন দিকে?",
+  recall: {
+    q: " IPv4 ঠিকানায় কয়টি বিট থাকে?",
+    qen: "How many bits are in an IPv4 address?",
+    a: "৩২ বিট — প্রায় ৪.৩ বিলিয়ন ঠিকানা। IPv6 তে ১২৮ বিট — ৩.৪×১০³⁸।",
+    aen: "32 bits — about 4.3 billion addresses. IPv6 has 128 bits — 3.4×10^38."
+  },
+  story: `<p class="scene-setting">তুমি একটি চিঠি হাতে দাঁড়িয়ে আছো। চিঠির উপর ঠিকানা: "১৯২.১৬৮.১.১০০"। এটি একটি IP ঠিকানা। কিন্তু এটি কীভাবে গন্তব্যে পৌঁছাবে? রাস্তা কীভাবে খুঁজে পাবে?</p>
+<p class="scene-setting en">You're standing with a letter. The address: "192.168.1.100." This is an IP address. But how will it reach the destination? How will it find the road?</p>
+
+<div class="dialogue"><strong>রাস্তার প্রহরী মালেক:</strong> ভাবো তুমি একটি শহরে নতুন। একটি মোড়ে দাঁড়িয়ে আছো। তুমি জিজ্ঞেস করো — "১৯২.১৬৮ সড়কটি কোন দিকে?" একজন দেখায় — "ডানে যাও।" তুমি যাও। পরের মোড়ে আবার জিজ্ঞেস করো। এভাবে এক মোড় থেকে আরেক মোড়ে — গন্তব্যে পৌঁছাও। এটাই routing।</div>
+<div class="dialogue en"><strong>Road Guardian Malik:</strong> Imagine you're new in a city. Standing at an intersection. You ask — "Which way to 192.168 Road?" Someone points — "Go right." You go. At the next intersection, you ask again. From one intersection to the next — you arrive. This is routing.</div>
+
+<div class="callout info"><span class="co-icon">📐</span><div><strong>IPv4 ঠিকানা গঠন:</strong> ৩২ বিট, ৪ ভাগে বিভক্ত — যেমন ১৯২.১৬৮.১.১০০<br>
+প্রতিটি ভাগ: ০-২৫৫ (৮ বিট)। মোট: ২^৩২ = ৪,২৯৪,৯৬৭,২৯৬ ≈ ৪.৩ বিলিয়ন।<br>
+<strong>সাবনেট মাস্ক:</strong> কোন অংশ নেটওয়ার্ক, কোন অংশ হোস্ট — যেমন ২৫৫.২৫৫.২৫৫.০ মানে প্রথম ৩ ভাগ নেটওয়ার্ক, শেষ ভাগ হোস্ট।</div></div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>IPv4 সংকট:</strong> ৪.৩ বিলিয়ন ঠিকানা শেষ হচ্ছে! সমাধান: NAT (Network Address Translation) — একটি পাবলিক IP-তে অনেক প্রাইভেট IP লুকানো। আর IPv6 — ১২৮ বিট, ৩.৪×১০³⁸ ঠিকানা। "প্রতিটি বালুকণায় একটি করে IP দিলেও শেষ হবে না।"</div></div>
+
+<div class="callout info"><span class="co-icon">🗺️</span><div><strong>রাউটিং প্রোটোকল:</strong><br>
+<strong>OSPF (Open Shortest Path First):</strong> অভ্যন্তরীণ — Dijkstra-এর shortest path অ্যালগরিদম ব্যবহার করে।<br>
+<strong>BGP (Border Gateway Protocol):</strong> ইন্টারনেটের মেরুদণ্ড — আলাদা অটোনোমাস সিস্টেম (AS) এর মধ্যে রাস্তা। BGP ইন্টারনেটকে সংযুক্ত রাখে।<br>
+<strong>Routing Table:</strong> প্রতিটি রাউটারে একটি টেবিল — "এই গন্তব্যে যেতে এই পোর্টে যাও।"</div></div>
+
+<div class="callout info"><span class="co-icon">⏱️</span><div><strong>TTL (Time To Live):</strong> প্রতিটি প্যাকেটে একটি কাউন্টার থাকে — সর্বোচ্চ কতটা রাউটার পার হতে পারবে। প্রতিটি রাউটারে ১ কমে। শূন্য হলে প্যাকেট বাতিল। কেন? যাতে প্যাকেট অনন্তকাল ঘুরে না বেড়ায়। সাধারণত TTL = ৬৪।</div></div>
+
+<div class="callout tip"><span class="co-icon">🔍</span><div><strong>Traceroute:</strong> TTL ব্যবহার করে পথ খুঁজে বের করে। প্রথম প্যাকেট TTL=১ — প্রথম রাউটারে বাতিল, সেই রাউটারের ঠিকানা পাওয়া যায়। দ্বিতীয় TTL=২ — দ্বিতীয় রাউটার। এভাবে পুরো পথ ম্যাপ হয়।</div></div>
+
+<div class="verse">وَجَعَلْنَا فِي الْأَرْضِ رَوَاسِيَ وَفَجَّرْنَا فِيهَا أَنْهَارًا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং পৃথিবীতে আমরা স্থাপন করেছি পর্বতমালা এবং সেখানে প্রবাহিত করেছি নদী।" — কুরআন ৫০:৭</div>
+
+<p class="scene-setting">এই আয়াতে পৃথিবীর অবকাঠামোর কথা বলা হয়েছে — পর্বত স্থিতি রাখে, নদী পথ তৈরি করে। নেটওয়ার্কেও তেমন — রাউটার স্থির পয়েন্ট, রাউটিং টেবিল পথ তৈরি করে। প্যাকেট এক রাউটার থেকে আরেকটিতে যায়, নদীর মতো প্রবাহিত হয়।</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ২ (DSA Bazaar) Door ১৫:</strong> Dijkstra-এর shortest path algorithm শিখেছিলে — সেটাই OSPF routing-এ ব্যবহৃত হয়! Book ২ Door ১৪: Graph BFS/DFS — নেটওয়ার্ক topology একটি graph।</div></div>
+
+<div class="secret-box">🛣️ <strong>IP ঠিকানা = বাড়ির ঠিকানা, রাউটার = ডাকপিয়নের পথনির্দেশক।</strong> প্যাকেট প্রতিটি রাউটারে থামে, জিজ্ঞেস করে — এর পর কোন দিকে? TTL নিশ্চিত করে যে প্যাকেট চিরকাল ঘুরবে না। কিন্তু পথ পাওয়া যাবে — কিন্তু প্যাকেট পৌঁছালেই কি কাজ শেষ? না। প্যাকেট হারিয়ে গেলে? ক্রম ভুল হলে? সেই সমাধান আসবে পরের দরজায়।</div>`,
+  senior: {
+    title: "Network Layer (IP + Routing) এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">IPv4</td><td>৩২ বিট — ৪.৩ বিলিয়ন ঠিকানা (শেষ হচ্ছে)</td></tr>
+<tr><td class="hl">IPv6</td><td>১২৮ বিট — ৩.৪×১০³⁸ ঠিকানা (সসীম নয়)</td></tr>
+<tr><td class="hl">Subnet Mask</td><td>নেটওয়ার্ক ও হোস্ট অংশ আলাদা করে — ২৫৫.২৫৫.২৫৫.০</td></tr>
+<tr><td class="hl">NAT</td><td>এক পাবলিক IP-তে অনেক প্রাইভেট IP লুকানো</td></tr>
+<tr><td class="hl">Router</td><td>রাউটিং টেবিল দেখে প্যাকেট সঠিক দিকে পাঠায়</td></tr>
+<tr><td class="hl">OSPF</td><td>অভ্যন্তরীণ — Dijkstra shortest path</td></tr>
+<tr><td class="hl">BGP</td><td>ইন্টারনেটের মেরুদণ্ড — AS এর মধ্যে রাস্তা</td></tr>
+<tr><td class="hl">TTL</td><td>সর্বোচ্চ হপ কাউন্ট — সাধারণত ৬৪</td></tr></table>`
+  }
+});
+
+doors.push({
+  num: 4,
+  icon: "📦",
+  color: "#38bdf8",
+  name: "নির্ভরযোগ্য বার্তাবাহক",
+  subtitle: "The Reliable Messenger",
+  tech: "Transport Layer — TCP (Cerf-Kahn 1974), 3-way handshake, UDP, ports, flow control, congestion control",
+  spirit: "আমানত — আস্থা, বার্তা নিরাপদে পৌঁছানোর দায়িত্ব",
+  secret: "TCP = নিবন্ধিত ডাক — প্রতিটি প্যাকেটে রসিদ। UDP = সাধারণ ডাক — পাঠাও, পৌঁছালে পৌঁছালো।",
+  recall: {
+    q: " TCP 3-way handshake-এর তিনটি ধাপ কী?",
+    qen: "What are the three steps of TCP 3-way handshake?",
+    a: "SYN → SYN-ACK → ACK। ক্লায়েন্ট অনুরোধ পাঠায়, সার্ভার স্বীকার করে, ক্লায়েন্ট নিশ্চিত করে।",
+    aen: "SYN → SYN-ACK → ACK. Client requests, server acknowledges, client confirms."
+  },
+  story: `<p class="scene-setting">তুমি একটি গুরুত্বপূর্ণ দলিল পাঠাচ্ছো। দুটি উপায়: প্রথম — সাধারণ ডাকে পাঠাও। সস্তা, দ্রুত, কিন্তু কোনো নিশ্চয়তা নেই। পৌঁছালে ভালো, না পৌঁছালে জানবেও না। দ্বিতীয় — নিবন্ধিত ডাকে পাঠাও। প্রতিটি ধাপে স্বাক্ষর, রসিদ। দামি, ধীর, কিন্তু নিশ্চিত। প্রথমটি UDP, দ্বিতীয়টি TCP।</p>
+<p class="scene-setting en">You're sending an important document. Two ways: first — regular mail. Cheap, fast, but no guarantee. Arrived? Good. Didn't? You won't know. Second — registered mail. Signature at each step, receipt. Expensive, slow, but certain. The first is UDP, the second is TCP.</p>
+
+<div class="callout info"><span class="co-icon">📐</span><div><strong>TCP (Transmission Control Protocol):</strong><br>
+<strong>৩-way handshake:</strong> SYN → SYN-ACK → ACK (সংযোগ স্থাপন)<br>
+<strong>Sequence Numbers:</strong> প্রতিটি বাইটের একটি ক্রম নম্বর<br>
+<strong>Acknowledgment:</strong> "আমি প্যাকেট ১-৫ পেয়েছি, এখন ৬ পাঠাও"<br>
+<strong>Retransmission:</strong> রসিদ না পেলে আবার পাঠাও<br>
+<strong>Flow Control:</strong> প্রাপক বলে — "আমি ১০০০ বাইট ধারণ করতে পারি, বেশি পাঠিও না" (sliding window)<br>
+<strong>Congestion Control:</strong> নেটওয়ার্ক ব্যস্ত হলে গতি কমাও (slow start, AIMD)</div></div>
+
+<div class="callout info"><span class="co-icon">⚡</span><div><strong>UDP (User Datagram Protocol):</strong><br>
+কোনো সংযোগ নেই। কোনো রসিদ নেই। কোনো ক্রম নেই।<br>
+শুধু — পাঠাও। দ্রুত। সস্তা।<br>
+<strong>ব্যবহার:</strong> ভিডিও স্ট্রিমিং, অনলাইন গেম, VoIP, DNS — যেখানে একটু ডেটা হারিয়ে গেলেও সমস্যা নেই, কিন্তু গতি দরকার।</div></div>
+
+<div class="compare">
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ TCP</div>নির্ভরযোগ্য, ক্রম ঠিক, রসিদ আছে। ওয়েব পেজ, ইমেইল, ফাইল ট্রান্সফার। ধীর কিন্তু নিশ্চিত।</div>
+<div class="cmp-card cmp-bad"><div class="cmp-label">⚡ UDP</div>দ্রুত, সস্তা, কোনো নিশ্চয়তা নেই। স্ট্রিমিং, গেম, DNS। একটু হারিয়ে গেলেও চলবে।</div>
+</div>
+
+<div class="callout info"><span class="co-icon">🚪</span><div><strong>পোর্ট (Ports):</strong> একটি IP ঠিকানা = একটি ভবন। পোর্ট = ভবনের কোন কক্ষে যাবে।<br>
+HTTP → পোর্ট ৮০ | HTTPS → পোর্ট ৪৪৩ | SSH → পোর্ট ২২ | DNS → পোর্ট ৫৩<br>
+০-১০২৩: ওয়েল-নোন (সিস্টেম) | ১০২৪-৪৯১৫১: রেজিস্টার্ড | ৪৯১৫২-৬৫৫৩৫: ডায়নামিক</div></div>
+
+<div class="verse">إِنَّ اللَّهَ يَأْمُرُكُمْ أَن تُؤَدُّوا الْأَمَانَاتِ إِلَى أَهْلِهَا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই আল্লাহ তোমাদের নির্দেশ দিচ্ছেন আমানত তার অধিকারীর কাছে পৌঁছাতে।" — কুরআন ৪:৫৮</div>
+
+<p class="scene-setting">এই আয়াত আমানত পৌঁছানোর নির্দেশ দেয়। TCP-ও তেমন — এটি একটি আমানতদার বার্তাবাহক। প্রতিটি প্যাকেট একটি আমানত। TCP নিশ্চিত করে যে প্যাকেট সঠিকভাবে, সঠিক ক্রমে, নিরুপায় গন্তব্যে পৌঁছেছে। UDP ক্ষেত্রে — আমানত পাঠানো হলো, কিন্তু দায়িত্ব প্রাপকের।</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৫ (ডিস্ট্রিবিউটেড সিস্টেমস) Door ৫:</strong> 2PC, 3PC, Saga pattern শিখেছিলে — এগুলো TCP-এর reliability-র উপর নির্মিত। Book ৪ (সিস্টেম ডিজাইন): Load balancer, Circuit Breaker — এগুলো Transport স্তরের উপর কাজ করে।</div></div>
+
+<div class="secret-box">📦 <strong>TCP = নিবন্ধিত ডাক, UDP = সাধারণ ডাক।</strong> প্রতিটি প্রোটোকল একটি ট্রেড-অফ — নির্ভরযোগ্যতা নাকি গতি। TCP জিনিস পৌঁছায় নিশ্চিত করে, UDP দ্রুত পাঠায়। কোনটি ব্যবহার করবে তা নির্ভর করে তুমি কী পাঠাচ্ছো তার উপর। কিন্তু তুমি "google.com" লিখে এন্টার চাপলে — কে বলে গুগলের সার্ভার কোথায় আছে? সেই সমাধান আসবে পরের দরজায়।</div>`,
+  senior: {
+    title: "Transport Layer (TCP + UDP) এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">TCP</td><td>নির্ভরযোগ্য, সংযোগ-ভিত্তিক, ক্রম ঠিক</td></tr>
+<tr><td class="hl">UDP</td><td>দ্রুত, সংযোগহীন, কোনো নিশ্চয়তা নেই</td></tr>
+<tr><td class="hl">3-way Handshake</td><td>SYN → SYN-ACK → ACK</td></tr>
+<tr><td class="hl">Sequence + ACK</td><td>প্রতিটি বাইটের ক্রম, রসিদ</td></tr>
+<tr><td class="hl">Sliding Window</td><td>flow control — প্রাপক ধারণক্ষমতা জানায়</td></tr>
+<tr><td class="hl">Congestion Control</td><td>slow start → AIMD → নেটওয়ার্ক সুরক্ষা</td></tr>
+<tr><td class="hl">Ports</td><td>০-৬৫৫৩৫ — HTTP:৮০, HTTPS:৪৪৩, DNS:৫৩, SSH:২২</td></tr></table>`
+  }
+});
+
+doors.push({
+  num: 5,
+  icon: "📖",
+  color: "#38bdf8",
+  name: "নামের রক্ষক",
+  subtitle: "The Name Keeper",
+  tech: "DNS (Domain Name System) — Mockapetris 1983, hierarchical resolution, root/TLD/authoritative servers, caching, TTL",
+  spirit: "আসমা — নামকরণ, সবকিছুর একটি নাম আর একটি ঠিকানা",
+  secret: "DNS = ইন্টারনেটের ফোনবুক। নাম দাও, ঠিকানা পাও। কেউ মুখস্থ করে না ১৪২.২৫০.১৯০.৪৬ — সবাই বলে google.com।",
+  recall: {
+    q: " DNS resolution-এ কয়টি স্তর থাকে?",
+    qen: "How many levels are in DNS resolution?",
+    a: "৪টি — Root (.) → TLD (.com) → Authoritative (google.com) → IP। Browser cache → OS cache → Recursive → Root → TLD → Authoritative।",
+    aen: "4 — Root (.) → TLD (.com) → Authoritative (google.com) → IP."
+  },
+  story: `<p class="scene-setting">তুমি একটি বন্ধুকে ফোন করতে চাও। কিন্তু তার নম্বর মনে নেই। তুমি একটি ফোনবুক খোলো — "রহিম" খোঁজো। ফোনবুক বলে: "রহিম — ০১৭xxxxxxxx।" তুমি নম্বর ডায়াল করো। সংযোগ। ঠিক এভাবে DNS কাজ করে। তুমি "google.com" লেখো — DNS বলে: "১৪২.২৫০.১৯০.৪৬।" ব্রাউজার সেই ঠিকানায় যায়।</p>
+<p class="scene-setting en">You want to call a friend. Don't remember the number. You open a phonebook — look up "Rahim." Phonebook says: "Rahim — 017xxxxxxxx." You dial. Connected. DNS works exactly like this. You type "google.com" — DNS says: "142.250.190.46." Browser goes there.</p>
+
+<div class="dialogue"><strong>নামের রক্ষক ইদ্রিস:</strong> কিন্তু ফোনবুক একটি বই — DNS একটি বিশাল, বিতরণ করা ডাটাবেস। পুরো বিশ্বে ছড়িয়ে আছে। কোনো একটি সার্ভারে সব নাম রাখা সম্ভব নয় — বিলিয়ন বিলিয়ন নাম! তাই Paul Mockapetris ১৯৮৩ সালে একটি hierarchical ব্যবস্থা তৈরি করেছিলেন।</div>
+<div class="dialogue en"><strong>Name Keeper Idris:</strong> But a phonebook is one book — DNS is a massive, distributed database. Spread across the entire world. No single server can hold all names — billions! So Paul Mockapetris in 1983 created a hierarchical system.</div>
+
+<div class="callout info"><span class="co-icon">🌳</span><div><strong>DNS শ্রেণীক্রম (Hierarchy):</strong><br>
+<strong>১. Root Servers (.):</strong> বিশ্বে ১৩টি logical root (হাজারো physical instances)। বলে — ".com কোথায়?"<br>
+<strong>২. TLD Servers (.com, .org, .bn):</strong> Top-Level Domain। বলে — "google.com কোথায়?"<br>
+<strong>৩. Authoritative Servers:</strong> প্রতিটি ডোমেইনের নিজস্ব সার্ভার। বলে — "google.com = ১৪২.২৫০.১৯০.৪৬"<br>
+<strong>৪. Recursive Resolvers:</strong> তোমার ISP-এর সার্ভার। তোমার জন্য উপরের তিন স্তরে জিজ্ঞেস করে।</div></div>
+
+<div class="callout info"><span class="co-icon">📝</span><div><strong>DNS Resolution প্রক্রিয়া:</strong><br>
+১. তুমি "google.com" টাইপ করো<br>
+২. ব্রাউজার cache চেক করে — আছে? ব্যবহার করো।<br>
+৩. OS cache চেক করে — আছে? ব্যবহার করো।<br>
+৪. Recursive Resolver (ISP) — cache চেক করে।<br>
+৫. Root Server → ".com TLD-তে যাও"<br>
+৬. TLD Server → "google.com-এর Authoritative-তে যাও"<br>
+৭. Authoritative Server → "১৪২.২৫০.১৯০.৪৬"<br>
+৮. Resolver তোমাকে দেয়, cache-এ সংরক্ষণ করে (TTL পর্যন্ত)।</div></div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>DNS Caching + TTL:</strong> প্রতিটি ডোমেইন একটি TTL সেট করে — কত সেকেন্ড এই ঠিকানা cache-এ রাখা যাবে। TTL শেষ হলে আবার জিজ্ঞেস করতে হয়। এটি ট্রাফিক কমায় কিন্তু সমস্যাও তৈরি করে — ঠিকানা বদলালে সবাই তৎক্ষণাৎ জানবে না।</div></div>
+
+<div class="callout info"><span class="co-icon">📋</span><div><strong>DNS Record Types:</strong><br>
+<strong>A:</strong> ডোমেইন → IPv4 ঠিকানা<br>
+<strong>AAAA:</strong> ডোমেইন → IPv6 ঠিকানা<br>
+<strong>CNAME:</strong> একটি নাম → আরেকটি নাম (alias)<br>
+<strong>MX:</strong> মেইল সার্ভার ঠিকানা<br>
+<strong>TXT:</strong> যাচাইকৃত টেক্সট (SPF, DKIM)<br>
+<strong>NS:</strong> এই ডোমেইনের Authoritative সার্ভার কোনটি</div></div>
+
+<div class="verse">وَعَلَّمَ آدَمَ الْأَسْمَاءَ كُلَّهَا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং তিনি আদমকে শিখিয়েছিলেন সমস্ত নাম।" — কুরআন ২:৩১</div>
+
+<p class="scene-setting">এই আয়াতে আল্লাহ আদমকে সমস্ত নাম শিখিয়েছিলেন — নামকরণ জ্ঞানের ভিত্তি। DNS-ও তেমন — নাম ছাড়া ইন্টারনেট ব্যবহার অসম্ভব। আমরা আইপি ঠিকানা মনে রাখি না, নাম মনে রাখি। DNS সেই নামকে ঠিকানায় অনুবাদ করে। এটিই ইন্টারনেটের প্রথম পদক্ষেপ — নাম থেকে ঠিকানা।</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (সিস্টেম ডিজাইন):</strong> CDN, Load Balancer, API Gateway — সবই DNS-এর উপর নির্ভর করে। Book ৩৫ (ডিস্ট্রিবিউটেড সিস্টেমস): বিতরণ করা ডাটাবেস — DNS হলো বিশ্বের সবচেয়ে বড় distributed database।</div></div>
+
+<div class="secret-box">📖 <strong>DNS = ইন্টারনেটের ফোনবুক।</strong> নাম দাও, ঠিকানা পাও। শ্রেণীক্রমে প্রশ্ন করে — Root → TLD → Authoritative। প্রতিটি স্তরে cache করে যাতে পরের বার দ্রুত পাওয়া যায়। এখন তুমি জানো ঠিকানা পাওয়া যায় — কিন্তু সেই ঠিকানায় কীভাবে কথা বলবে? কোন ভাষায়? সেই যাত্রা শুরু হবে পরের দরজায়।</div>`,
+  senior: {
+    title: "DNS এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">DNS</td><td>Mockapetris ১৯৮৩ — Domain Name System</td></tr>
+<tr><td class="hl">Hierarchy</td><td>Root (.) → TLD (.com) → Authoritative → IP</td></tr>
+<tr><td class="hl">Root Servers</td><td>১৩টি logical, হাজারো physical instances</td></tr>
+<tr><td class="hl">Recursive Resolver</td><td>ISP সার্ভার — তোমার জন্য জিজ্ঞেস করে</td></tr>
+<tr><td class="hl">Caching</td><td>ব্রাউজার → OS → Resolver — TTL পর্যন্ত</td></tr>
+<tr><td class="hl">A Record</td><td>ডোমেইন → IPv4</td></tr>
+<tr><td class="hl">CNAME</td><td>alias — এক নাম থেকে আরেক নাম</td></tr>
+<tr><td class="hl">MX Record</td><td>মেইল সার্ভার ঠিকানা</td></tr></table>`
+  }
+});

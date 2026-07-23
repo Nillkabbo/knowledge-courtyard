@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>তারের জাল — The Web of Wires</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَاللَّهُ خَلَقَ كُلَّ دَابَّةٍ مِن مَّاءٍ</div>
+  <h1 class="title-main">তারের জাল</h1>
+  <div class="title-sub">The Web of Wires</div>
+  <div class="title-desc">
+    একটি প্যাকেটের যাত্রা — তোমার কম্পিউটার থেকে বিশ্বের প্রান্তে।<br>
+    দশটি দরজা: OSI ও TCP/IP মডেল, ফিজিক্যাল লেয়ার, IP রাউটিং, TCP vs UDP, DNS, HTTP/HTTPS, CDN, WebSocket, নেটওয়ার্ক সিকিউরিটি, এবং একটি প্যাকেটের সম্পূর্ণ যাত্রা।<br><br>
+    <em>A packet's journey — from your computer to the world's edge. Ten doors: the OSI and TCP/IP models, physical layer, IP routing, TCP vs UDP, DNS, HTTP/HTTPS, CDN caching, WebSocket, network security, and one packet's complete journey across the internet. Each taught through lived experience before formal definition.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🌐 যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">একটি চিঠির গল্প — The Story of a Letter</div>
+    <p>তুমি একটি চিঠি লিখেছো। প্রতিবেশীর বাড়িতে দিতে হবে। সহজ — নিজেই নিয়ে যাও। কিন্তু যদি চিঠিটি পাঠাতে হয় আরেক দেশে? তুমি নিজে যেতে পারবে না। তুমি ডাকবাক্সে দাও। ডাকপিয়ন নেয়, পোস্ট অফিসে নিয়ে যায়, সেখান থেকে বিমানে, তারপর আরেক দেশের পোস্ট অফিসে, তারপর ডাকপিয়ন, তারপর ঠিকানায়। ছুঁয়ে গেল কত হাত, কত স্তর।</p>
+    <p class="en">You wrote a letter. Deliver it next door — easy, take it yourself. But what if it must go to another country? You can't go yourself. You put it in a mailbox. A postman takes it to the post office, from there by plane, then another country's post office, then a postman, then the address. How many hands, how many layers it touched.</p>
+    <hr class="p-divider">
+    <p>ইন্টারনেট ঠিক তেমনই কাজ করে। তুমি যখন google.com এ যাও, তোমার অনুরোধ শুধু একটা কল নয় — এটি কয়েকটি স্তরে ভাগ হয়। প্রতিটি স্তরের নিজস্ব ভাষা, নিজস্ব নিয়ম, নিজস্ব কাজ। এই বই তোমাকে নিয়ে যাবে সেই যাত্রায় — একটি প্যাকেটের সাথে, তোমার কম্পিউটার থেকে সার্ভার পর্যন্ত।</p>
+    <p class="en">The internet works exactly like that. When you go to google.com, your request isn't a single call — it divides into layers. Each layer has its own language, rules, and job. This book takes you on that journey — alongside a packet, from your computer to the server.</p>
+    <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (সিস্টেম ডিজাইন) ও Book ৩৫ (ডিস্ট্রিবিউটেড সিস্টেমস):</strong> সেখানে তুমি শিখেছিলে কীভাবে একটি সিস্টেম ডিজাইন করতে হয়। এই বই তোমাকে দেখাবে সেই সিস্টেমের নিচে কী আছে — তার এবং সংকেতের জগৎ।</div></div>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">📡</span><span id="hud-rank-name">সংকেত পাঠক</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা — একটি প্যাকেটের যাত্রা স্তরে স্তরে।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← নেটওয়ার্ক কক্ষে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🌐</div>
+  <h1 class="complete-title">তুমি এখন সংযোগের গুরু</h1>
+  <p class="complete-text">দশটি দরজা পেরিয়েছ। OSI-এর সাত স্তর থেকে TLS এনক্রিপশন পর্যন্ত — প্রতিটি স্তর তোমার কাছে স্বচ্ছ।<br><br>তুমি এখন জানো কী হয় যখন তুমি google.com টাইপ করো — প্রতিটি ধাপ, প্রতিটি প্রোটোকল, প্রতিটি স্তর।<br>Book ৪-এর সিস্টেম ডিজাইন এবং Book ৩৫-এর ডিস্ট্রিবিউটেড সিস্টেমস এখন তোমার কাছে আরও গভীর — কারণ তুমি বুঝতে পারো তার নিচে কী চলছে।<br><strong>একটি প্যাকেটের সম্পূর্ণ যাত্রা — তোমার থেকে বিশ্ব পর্যন্ত।</strong></p>
+  <div class="complete-verse">وَاللَّهُ خَلَقَ كُلَّ دَابَّةٍ مِن مَّاءٍ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"আল্লাহ প্রতিটি জীবকে সৃষ্টি করেছেন পানি থেকে।" — কুরআন ২৪:৪৫</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 তারের জাল চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 তারের জাল চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
