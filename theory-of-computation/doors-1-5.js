@@ -71,7 +71,7 @@ Rabin ও Scott (১৯৫৯) প্রমাণ করেন — NFA এবং
 <hr>
 <div style="text-align:center;font-size:.82rem">
 <strong>Kleene Star (ক্লিনি তারকা):</strong> কোনো ভাষা L-এর জন্য L* = শূন্য বা ততোধিক L-এর সংযোগ। যেমন {a}* = {ε, a, aa, aaa, ...}<br>
-Stephen Cole Kleene (১৯০৯-১৯৯৪) — ম্যাসাচুসেটসে জন্ম, প্রিন্সটনে গবেষণা। "Representation of Events in Nerve Nets and Finite Automata" (১৯৫৬, RAND Corporation)।
+Stephen Cole Kleene (১৯০৯-১৯৯৪) — ম্যাসাচুসেটসে জন্ম, প্রিন্সটনে গবেষণা। "Representation of Events in Nerve Nets and Finite Automata" (১৯৫১ RAND memo, ১৯৫৬-এ Automata Studies-এ পুনঃপ্রকাশিত)।
 </div>
 </div>`,
   senior: {
@@ -141,11 +141,9 @@ NFA দিয়ে ভাবা সহজ — DFA দিয়ে বাস্�
 
 <div class="verse">
 <strong>Rabin ও Scott-এর ঐতিহাসিক অবদান:</strong><br>
-মাইকেল রাবিন (জন্ম ১৯৩১, ব্রেসলাউ/ইসরায়েল) এবং ডানা স্কট (জন্য ১৯৩২, ক্যালিফোর্নিয়া)।<br>
+মাইকেল রাবিন (১৯৩১-২০২৬, ব্রেসলাউ/ইসরায়েল) এবং ডানা স্কট (জন্ম ১৯৩২, ক্যালিফোর্নিয়া)।<br>
 "Finite Automata and Their Decision Problems" (১৯৫৯, IBM Journal of Research and Development)।<br><br>
-রাবিন ১৯৭৬ সালে Turing Award পান (nondeterminism শুধু এই কাজের জন্য নয়, randomized algorithms-এর জন্যও)।<br>
-স্কট ১৯৭৬ সালে Turing Award পান (automatic theorem proving এবং programming language semantics-এর জন্য)।<br>
-তারা একে অপরের থেকে স্বাধীনভাবে Turing Award পান — কিন্তু এই ১৯৫৯ paper তাদের যৌথ কীর্তি।
+রাবিন ও স্কট যৌথভাবে ১৯৭৬ সালে Turing Award পান — "nondeterministic machines-এর ধারণা প্রবর্তনের জন্য।" দুজনেই ছিলেন Alonzo Church-এর ছাত্র প্রিন্সটনে।
 </div>
 
 <div class="secret-box">
