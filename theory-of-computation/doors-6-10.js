@@ -57,7 +57,7 @@ F-এর সামঞ্জস্য (consistency) নিজেই F-এর ভ�
 
 <div class="verse">
 <strong>কার্ট ফ্রেডরিখ গোডেল (১৯০৬-১৯৭৮):</strong><br>
-ব্রুন (অস্ট্রিয়া, এখন চেকিয়া) এ জন্ম। ভিয়েনা বিশ্ববিদ্যালয়ে গবেষণা।<br>
+ব্রুন (অস্ট্রিয়া-হাঙ্গেরি সাম্রাজ্য, এখন চেকিয়ার ব্রনো) এ জন্ম। ভিয়েনা বিশ্ববিদ্যালয়ে গবেষণা।<br>
 "Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme" (১৯৩১, Monatshefte für Mathematik und Physik)।<br><br>
 এই paper-কে ২০শ শতকের সবচেয়ে গুরুত্বপূর্ণ গাণিতিক paper বলা হয়।<br>
 গোডেল টুরিং-এর সাথে প্রিন্সটনে IAS-এ কাজ করেছেন (১৯৪০-এর দশকে)।<br>

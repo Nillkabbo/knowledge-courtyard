@@ -71,7 +71,7 @@ Rabin ও Scott (১৯৫৯) প্রমাণ করেন — NFA এবং
 <hr>
 <div style="text-align:center;font-size:.82rem">
 <strong>Kleene Star (ক্লিনি তারকা):</strong> কোনো ভাষা L-এর জন্য L* = শূন্য বা ততোধিক L-এর সংযোগ। যেমন {a}* = {ε, a, aa, aaa, ...}<br>
-Stephen Cole Kleene (১৯০৯-১৯৯৪) — ম্যাসাচুসেটসে জন্ম, প্রিন্সটনে গবেষণা। "Representation of Events in Nerve Nets and Finite Automata" (১৯৫১ RAND memo, ১৯৫৬-এ Automata Studies-এ পুনঃপ্রকাশিত)।
+Stephen Cole Kleene (১৯০৯-১৯৯৪) — হার্টফোর্ড, কানেকটিকাটে জন্ম, প্রিন্সটনে গবেষণা। "Representation of Events in Nerve Nets and Finite Automata" (১৯৫১ RAND memo, ১৯৫৬-এ Automata Studies-এ পুনঃপ্রকাশিত)।
 </div>
 </div>`,
   senior: {
@@ -141,7 +141,7 @@ NFA দিয়ে ভাবা সহজ — DFA দিয়ে বাস্�
 
 <div class="verse">
 <strong>Rabin ও Scott-এর ঐতিহাসিক অবদান:</strong><br>
-মাইকেল রাবিন (১৯৩১-২০২৬, ব্রেসলাউ/ইসরায়েল) এবং ডানা স্কট (জন্ম ১৯৩২, ক্যালিফোর্নিয়া)।<br>
+মাইকেল রাবিন (১৯৩১-২০২৬, ব্রেসলাউ/জার্মানি (এখন উরোকলাউ, পোল্যান্ড), পরে ইসরায়েল) এবং ডানা স্কট (জন্ম ১৯৩২, ক্যালিফোর্নিয়া)।<br>
 "Finite Automata and Their Decision Problems" (১৯৫৯, IBM Journal of Research and Development)।<br><br>
 রাবিন ও স্কট যৌথভাবে ১৯৭৬ সালে Turing Award পান — "nondeterministic machines-এর ধারণা প্রবর্তনের জন্য।" দুজনেই ছিলেন Alonzo Church-এর ছাত্র প্রিন্সটনে।
 </div>
@@ -398,7 +398,7 @@ H(M, w) = "হ্যাঁ (halt)" বা "না (loop forever)"
 <div class="dialogue"><strong>টুরিং:</strong> গণনা দিয়ে — না। এটাই আমার উত্তর Hilbert-কে। Hilbert ভেবেছিলেন প্রতিটি গাণিতিক প্রশ্নের উত্তর যন্ত্র দিয়ে পাওয়া যাবে। আমি দেখালাম — না। Gödel এটা আগেই দেখিয়েছিলেন গণিতের ভাষায় (পরের দরজা)। আমি দেখালাম যন্ত্রের ভাষায়। কিছু সত্য গণনার নাগালের বাইরে।</div>
 <div class="dialogue en"><strong>Turing:</strong> By computation — no. This is my answer to Hilbert. He believed every mathematical question could be answered by a machine. I showed — no. Gödel had shown it earlier in the language of mathematics (next door). I showed it in the language of machines. Some truths are beyond the reach of computation.</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> Halting Problem অসমাধানযোগ্য হলেও অনেক নির্দিষ্ট প্রোগ্রামের জন্য আমরা বলতে পারি থামবে কি না। সমস্যাটি হলো একটি সাধারণ যন্ত্র যা যেকোনো প্রোগ্রামের জন্য উত্তর দেবে — সেটাই অসম্ভব। Rice's Theorem (১৯৫৩) এটাকে আরও প্রসারিত করে: কোনো Turing Machine-এর কোনো অ-তুচ্ছ semantic property (যেমন "এটা কি সঠিক উত্তর দেয়?") নির্ধারণ করাও undecidable।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> Halting Problem অসমাধানযোগ্য হলেও অনেক নির্দিষ্ট প্রোগ্রামের জন্য আমরা বলতে পারি থামবে কি না। সমস্যাটি হলো একটি সাধারণ যন্ত্র যা যেকোনো প্রোগ্রামের জন্য উত্তর দেবে — সেটাই অসম্ভব। মজার বিষয়: টুরিং নিজে "halting problem" শব্দটি কখনো ব্যবহার করেননি — এই শব্দটি প্রথম ব্যবহার করেন Martin Davis, ১৯৫২ সালে। Rice's Theorem (১৯৫৩) এটাকে আরও প্রসারিত করে: কোনো Turing Machine-এর কোনো অ-তুচ্ছ semantic property (যেমন "এটা কি সঠিক উত্তর দেয়?") নির্ধারণ করাও undecidable।</div></div>
 
 <div class="verse">
 <strong>Halting Problem-এর প্রভাব:</strong><br>
