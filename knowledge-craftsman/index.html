@@ -16,7 +16,7 @@
   <div class="title-sub">The Craftsman of Knowledge</div>
   <div class="title-desc">
     পড়ো, ভাবো, লেখো — গভীরে যাওয়ার শিল্প।<br>
-    দশটি দরজা — Adler-এর ৪ স্তর, Luhmann-এর Zettelkasten, Feynman টেকনিক, Keshav-এর ৩-পাস পদ্ধতি, এবং কীভাবে Musk, Gates, Munger, Naval পড়েন।<br><br>
+    তেরটি দরজা — Adler-এর ৪ স্তর, Luhmann-এর Zettelkasten, Feynman টেকনিক, Keshav-এর ৩-পাস পদ্ধতি, এবং কীভাবে Musk, Gates, Munger, Naval পড়েন — সাথে নতুন: Desirable Difficulty (Bjork), ঘুম ও স্মৃতি (Walker), দৃশ্যমান জ্ঞান (Buzan/Novak)।<br><br>
     <em>Read, think, write — the craft of going deep. Ten doors: Adler's 4 levels of reading, Luhmann's Zettelkasten (90,000 notes → 70 books), Feynman technique, Keshav's 3-pass paper reading, how the greatest minds read (Musk, Gates, Munger, Naval, Holiday), critical analysis, syntopical reading, building a second brain. All backed by named researchers and biographical sources.</em>
   </div>
   <button class="start-btn" onclick="startGame()">📖 যাত্রা শুরু করো</button>
@@ -43,7 +43,7 @@
     <button class="hud-btn" onclick="openCheatModal()">📋</button>
     <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
   </div>
-  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা, ক্রমানুসারে। প্রতিটি জ্ঞানের এক একটি স্তর।</p></div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>তেরটি দরজা, ক্রমানুসারে। প্রতিটি জ্ঞানের এক একটি স্তর।</p></div>
   <div class="doors-grid" id="doors-grid"></div>
 </div>
 
@@ -53,9 +53,9 @@
 </div>
 
 <div id="complete-screen" class="screen">
-  <div class="complete-crown">🏛️</div>
-  <h1 class="complete-title">তুমি এখন হিকমাহ অধিকারী</h1>
-  <p class="complete-text">দশটি দরজা পেরিয়েছ। পড়া, ভাবা, লেখার প্রতিটি স্তর আয়ত্ত করেছ।<br><br>Adler-এর ৪ স্তর, Luhmann-এর Zettelkasten, Feynman টেকনিক, Keshav-এর ৩-পাস পদ্ধতি, কীভাবে Musk/Gates/Munger/Naval পড়েন, critical analysis, syntopical reading, এবং second brain synthesis।<br><br>এখন তুমি জানো — পড়া শেষ নয়, শুরু। পড়ার পরেই আসল কাজ — ভাবা, লেখা, সংযুক্ত করা।<br><strong>কলমের মাধ্যমে স্থায়ী জ্ঞান।</strong></p>
+  <div class="complete-crown">🌟</div>
+  <h1 class="complete-title">তুমি এখন অধিকারী শিক্ষার্থী</h1>
+  <p class="complete-text">তেরটি দরজা পেরিয়েছ। পড়া, ভাবা, লেখা, এবং দৃশ্যমান করার প্রতিটি স্তর আয়ত্ত করেছ।<br><br>Adler-এর ৪ স্তর, Luhmann-এর Zettelkasten, Feynman টেকনিক, Keshav-এর ৩-পাস পদ্ধতি, Munger-এর পড়া, Bjork-এর Desirable Difficulty, Walker-এর ঘুম ও স্মৃতি, Buzan ও Novak-এর দৃশ্যমান জ্ঞান — ১৩টি মানসিক মডেল একসাথে।<br><br>এখন তুমি জানো — শেখা শেষ নয়, সারাজীবনের যাত্রা।<br><strong>কলমের মাধ্যমে স্থায়ী জ্ঞান। দৃশ্যমান মানচিত্রে সম্পূর্ণ বোধ।</strong></p>
   <div class="complete-verse">اقْرَأْ وَرَبُّكَ الْأَكْرَمُ ۝ الَّذِي عَلَّمَ بِالْقَلَمِ</div>
   <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"পড়ো, এবং তোমার রব সর্বাধিক দাতা — যিনি কলমের মাধ্যমে শিখিয়েছেন।" — কুরআন ৯৬:৩-৪</div>
   <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
@@ -70,6 +70,7 @@
 
 <script src="doors-1-5.js"></script>
 <script src="doors-6-10.js"></script>
+<script src="doors-11-13.js"></script>
 <script src="engine.js"></script>
 </body>
 </html>
