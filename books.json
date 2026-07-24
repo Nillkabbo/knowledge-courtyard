@@ -50,7 +50,8 @@
     { "n": 37, "folder": "computer-networks",       "title_en": "The Web of Wires",                     "title_bn": "তারের জাল",                    "icon": "🌐", "category": "cs", "color": "game-37", "tag": "Book 37 · Computer Networks Deep Dive",                                "status": "live" },
     { "n": 38, "folder": "operating-systems",       "title_en": "The Machine's Soul",                   "title_bn": "যন্ত্রের আত্মা",              "icon": "🖥️", "category": "cs", "color": "game-38", "tag": "Book 38 · Operating Systems Deep Dive",                                "status": "live" },
     { "n": 39, "folder": "databases",                "title_en": "The Data Vault",                       "title_bn": "উপাত্তের ভল্ট",                "icon": "📊", "category": "cs", "color": "game-39", "tag": "Book 39 · Databases Deep Dive",                                        "status": "live" },
-    { "n": 40, "folder": "software-engineering",     "title_en": "The Codebuilder's Guild",              "title_bn": "কোড নির্মাতার শিল্প",          "icon": "🔨", "category": "cs", "color": "game-40", "tag": "Book 40 · Software Engineering Big Picture",                          "status": "live" }
+    { "n": 40, "folder": "software-engineering",     "title_en": "The Codebuilder's Guild",              "title_bn": "কোড নির্মাতার শিল্প",          "icon": "🔨", "category": "cs", "color": "game-40", "tag": "Book 40 · Software Engineering Big Picture",                          "status": "live" },
+    { "n": 41, "folder": "theory-of-computation",  "title_en": "The Clockwork of Thought",            "title_bn": "গণনার তত্ত্ব",               "icon": "🧮", "category": "cs", "color": "game-41", "tag": "Book 41 · Theory of Computation",                                    "status": "live" }
   ],
 
   "roadmap": [
@@ -93,7 +94,8 @@
         { "book": 37, "why": "OSI, TCP/IP, DNS, HTTP, TLS — what happens when you type google.com." },
         { "book": 38, "why": "processes, threads, scheduling, semaphores, memory, containers — fork()." },
         { "book": 39, "why": "relational model, SQL, indexing, ACID, NoSQL — how indexes work." },
-        { "book": 40, "why": "SDLC, SOLID, design patterns, TDD, Git, architecture, DevOps, security, AI-assisted dev — the profession of software engineering. Connects B2+B37+B38+B39 into a unified workflow." }
+        { "book": 40, "why": "SDLC, SOLID, design patterns, TDD, Git, architecture, DevOps, security, AI-assisted dev — the profession of software engineering. Connects B2+B37+B38+B39 into a unified workflow." },
+        { "book": 41, "why": "Turing machines, halting problem, Gödel incompleteness, P vs NP — the THEORETICAL foundation beneath all CS books. Every PhD interview asks 'what can/cannot be computed?' Connects to B2 (Big-O), B35 (FLP impossibility), B38 (deadlock undecidability), B40 (Rice's theorem)." }
       ]
     },
     {

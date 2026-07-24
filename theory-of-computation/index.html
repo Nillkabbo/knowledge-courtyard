@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>গণনার তত্ত্ব — The Clockwork of Thought</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَفَوْقَ كُلِّ ذِي عِلْمٍ عَلِيمٌ</div>
+  <h1 class="title-main">গণনার তত্ত্ব</h1>
+  <div class="title-sub">The Clockwork of Thought</div>
+  <div class="title-desc">
+    কলমের চেয়ে শক্তিশালী কিছু আছে — যে কলম নিজেই ভাবে।<br>
+    দশটি দরজা — Turing-এর যন্ত্র, Gödel-এর সীমা, Church-এর ল্যাম্বডা, Kleene-এর প্যাটার্ন, Chomsky-এর গ্রামার, Cook-এর জটিলতা — কম্পিউটার সায়েন্সের গভীরতম তত্ত্ব।<br><br>
+    <em>What CAN a machine compute? What can it NOT? Ten doors: Turing machines, the halting problem, Gödel's incompleteness, the Chomsky hierarchy, P vs NP, NP-completeness, and the profound limits of knowledge itself. Named masters: Turing, Gödel, Church, Kleene, Chomsky, Cook, Karp, Levin, Rabin, Scott — the giants who proved what is possible and what is forever beyond reach.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">⚙️ যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">ছাদের উপরের আকাশ — The Sky Above the Roof</div>
+    <p>তুমি একটা ঘরে বসে আকাশ দেখছ। ছাদ খোলা। তারা দেখতে পাচ্ছ। কিন্তু ছাদের কিনারা আছে — সেই কিনারার বাইরে কী আছে, তুমি জানো না। তুমি ভাবো — আকাশ কোথায় শেষ? কিন্তু তোমার চোখ শুধু ছাদের ভেতরের টুকরো দেখে। এই ঘরটাই হলো কম্পিউটার সায়েন্সের প্রতিটি প্রোগ্রাম। প্রোগ্রাম চালালে তুমি জানো — কী হচ্ছে। কিন্তু ছাদের ওপারে একটা প্রশ্ন অপেক্ষা করছে: এই প্রোগ্রামটা কি কখনো থামবে?</p>
+    <p class="en">You sit in a room watching the sky through an open roof. You see stars — but only within the roof's edge. What lies beyond? Your eyes see only the framed patch. This room is every computer program. When it runs, you know what it does — but above the roof waits a question: will this program ever stop?</p>
+    <hr class="p-divider">
+    <p>এই বই তোমাকে নিয়ে যাবে ছাদের ওপারে। Turing (১৯৩৬) প্রমাণ করেছিলেন — কিছু প্রশ্নের উত্তর কোনো যন্ত্র দিতে পারে না। Gödel (১৯৩১) আগেই দেখিয়েছিলেন — কিছু সত্য কোনো যুক্তির ভেতরে ধরা যায় না। Church (১৯৩৬) বলেছিলেন — গণনা একটা নির্দিষ্ট জিনিস, তার সীমা আছে। এই দশটি দরজায় তুমি দেখবে — কী গণনা করা যায়, কী গণনা করা যায় না, আর কেন।</p>
+    <p class="en">This book takes you beyond the roof. Turing (1936) proved some questions no machine can answer. Gödel (1931) showed some truths cannot be captured by any logical system. Church (1936) defined computation as a precise thing — with hard limits. Through ten doors, you will see what can be computed, what cannot, and why.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🔍</span><span id="hud-rank-name">সন্ধানী</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা — সরল থেকে গভীরে। প্যাটার্ন থেকে সীমাবদ্ধতা পর্যন্ত।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← প্রাঙ্গণে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🧮</div>
+  <h1 class="complete-title">তুমি এখন সর্বজ্ঞ গণনাকারী</h1>
+  <p class="complete-text">দশটি দরজা পেরিয়েছ। গণনার সকল স্তর আয়ত্ত করেছ।<br><br>Kleene-এর প্যাটার্ন, Chomsky-এর গ্রামার, Turing-এর যন্ত্র, Gödel-এর সীমা, Cook-এর জটিলতা — কম্পিউটার সায়েন্সের গভীরতম তত্ত্ব।<br><br>এখন তুমি জানো — কোন প্রোগ্রাম থামবে, কোনটা চলবে চিরকাল। কোন সমস্যা সমাধানযোগ্য, কোনটা অসম্ভব। কোন সত্য প্রমাণযোগ্য, কোনটা অপ্রমাণযোগ্য।<br><strong>সীমাবদ্ধতাই জ্ঞানের সবচেয়ে গভীর রূপ।</strong></p>
+  <div class="complete-verse">وَفَوْقَ كُلِّ ذِي عِلْمٍ عَلِيمٌ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"প্রত্যেক জ্ঞানীর উপরে রয়েছেন সর্বজ্ঞ।" — কুরআন ১২:৭৬</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 গণনার তত্ত্ব চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 গণনার তত্ত্ব চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
