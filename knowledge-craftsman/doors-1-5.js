@@ -194,15 +194,15 @@ doors.push({
   num:3, icon:"📝", color:"#f59e0b", name:"নোটের ভাণ্ডার",
   subtitle:"The Note Vault", tech:"Zettelkasten (Luhmann, 1952-1998)",
   spirit:"হিফজ — সংরক্ষণ, ধরে রাখা",
-  secret:"Niklas Luhmann — জার্মান সমাজবিজ্ঞানী। ৪৬ বছরে ৯০,০০০ নোট কার্ড। ফল? ৭০+ বই, ৪০০+ প্রবন্ধ। কীভাবে? Zettelkasten — slip-box পদ্ধতি। প্রতিটা নোট atomic, সংযুক্ত, স্থায়ী। নোট = শুধু লেখা নয় — চিন্তার সংযোগ। যে সংযুক্ত করে, সে জ্ঞান গড়ে। যে শুধু পড়ে, সে ভুলে।",
+  secret:"Niklas Luhmann — জার্মান সমাজবিজ্ঞানী। ৪৬ বছরে ৯০,০০০ নোট কার্ড। ফল? ~৫০ বই, ~৫৫০ প্রবন্ধ। কীভাবে? Zettelkasten — slip-box পদ্ধতি। প্রতিটা নোট atomic, সংযুক্ত, স্থায়ী। নোট = শুধু লেখা নয় — চিন্তার সংযোগ। যে সংযুক্ত করে, সে জ্ঞান গড়ে। যে শুধু পড়ে, সে ভুলে।",
   recall:{
     q:"Luhmann-এর Zettelkasten কেন এত শক্তিশালী?",
     qen:"Why is Luhmann's Zettelkasten so powerful?",
-    a:"৯০,০০০ নোট → ৭০+ বই, ৪০০+ প্রবন্ধ। কারণ নোট atomic, সংযুক্ত, স্থায়ী। নোট = চিন্তার সংযোগ। যে সংযুক্ত করে, সে জ্ঞান গড়ে। হিফজ — সংরক্ষণ।",
-    aen:"90,000 notes → 70+ books, 400+ articles. Because notes are atomic, linked, permanent. Notes = connections of thought. One who connects, builds knowledge. Hifz — preservation."
+    a:"৯০,০০০ নোট → ~৫০ বই, ~৫৫০ প্রবন্ধ। কারণ নোট atomic, সংযুক্ত, স্থায়ী। নোট = চিন্তার সংযোগ। যে সংযুক্ত করে, সে জ্ঞান গড়ে। হিফজ — সংরক্ষণ।",
+    aen:"90,000 notes → ~50 books, ~550 articles. Because notes are atomic, linked, permanent. Notes = connections of thought. One who connects, builds knowledge. Hifz — preservation."
   },
-  story:`<p class="scene-setting">১৯৫২ সাল। জার্মানি। একজন সরকারি কর্মচারী — নিকলাস লুহমান (Niklas Luhmann)। সন্ধ্যায় সমাজবিজ্ঞান পড়তেন। নোট নিতেন — কিন্তু সাধারণ নোট নয়। প্রতিটা নোট একটা ছোট কার্ডে। প্রতিটা কার্ডে একটা ধারণা। প্রতিটা কার্ড অন্য কার্ডের সাথে সংযুক্ত। ৪৬ বছর ধরে এই কাজ চলল। শেষে? ৯০,০০০ কার্ড। এই কার্ড থেকে ৭০+ বই, ৪০০+ প্রবন্ধ। তিনি অসাধারণ প্রায়োগিক সমাজবিজ্ঞানী হলেন — শুধু নোট কার্ড দিয়ে।</p>
-<p class="scene-setting en">1952. Germany. A civil servant — Niklas Luhmann. In the evenings, he read sociology. He took notes — but not ordinary notes. Each note on a small card. Each card had ONE idea. Each card linked to other cards. This continued for 46 years. Result? 90,000 cards. From these cards: 70+ books, 400+ articles. He became one of the most productive sociologists ever — just from note cards.</p>
+  story:`<p class="scene-setting">১৯৫২ সাল। জার্মানি। একজন সরকারি কর্মচারী — নিকলাস লুহমান (Niklas Luhmann)। সন্ধ্যায় সমাজবিজ্ঞান পড়তেন। নোট নিতেন — কিন্তু সাধারণ নোট নয়। প্রতিটা নোট একটা ছোট কার্ডে। প্রতিটা কার্ডে একটা ধারণা। প্রতিটা কার্ড অন্য কার্ডের সাথে সংযুক্ত। ৪৬ বছর ধরে এই কাজ চলল। শেষে? ৯০,০০০ কার্ড। এই কার্ড থেকে ~৫০ বই, ~৫৫০ প্রবন্ধ। তিনি অসাধারণ প্রায়োগিক সমাজবিজ্ঞানী হলেন — শুধু নোট কার্ড দিয়ে।</p>
+<p class="scene-setting en">1952. Germany. A civil servant — Niklas Luhmann. In the evenings, he read sociology. He took notes — but not ordinary notes. Each note on a small card. Each card had ONE idea. Each card linked to other cards. This continued for 46 years. Result? 90,000 cards. From these cards: ~50 books, ~550 articles. He became one of the most productive sociologists ever — just from note cards.</p>
 
 <div class="dialogue">Adler বলেছিলেন — ৪ স্তরে পড়ো। কিন্তু আমি বলি — পড়ে যা শিখলে, তা কোথায় রাখবে? মস্তিষ্কে? Ebbinghaus বলেন — ৯০% ভুলে যাবে। খাতায়? খাতা হারিয়ে যায়। Luhmann দেখালেন একটা সিস্টেম — Zettelkasten। নোট শুধু লেখা নয় — চিন্তার জাল। প্রতিটা নোট একটা নোড, প্রতিটা সংযোগ একটা সেতু। জাল বড় হয়, জ্ঞান গভীর হয়।</div>
 <div class="dialogue en">"Adler said — read at 4 levels. But I say — once you learn, where do you store it? Brain? Ebbinghaus says — 90% forgotten. Notebook? Notebooks get lost. Luhmann showed a system — Zettelkasten. Notes aren't just writing — they're a web of thought. Each note a node, each connection a bridge. The web grows, knowledge deepens."</div>
@@ -210,8 +210,8 @@ doors.push({
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">৪৬ বছর</div><div class="sc-label">Luhmann-এর slip-box (1952-98)</div></div>
 <div class="stat-card"><div class="sc-num">~৯০,০০০</div><div class="sc-label">নোট কার্ড</div></div>
-<div class="stat-card"><div class="sc-num">৭০+</div><div class="sc-label">বই</div></div>
-<div class="stat-card"><div class="sc-num">৪০০+</div><div class="sc-label">প্রবন্ধ</div></div>
+<div class="stat-card"><div class="sc-num">~৫০</div><div class="sc-label">বই</div></div>
+<div class="stat-card"><div class="sc-num">~৫৫০</div><div class="sc-label">প্রবন্ধ</div></div>
 </div>
 <div class="callout info"><span class="co-icon">🗃️</span><div>Luhmann: "আমি নিজেকে creative মনে করি না — আমি শুধু machine-এর সামনে দাঁড়িয়ে হাতল ঘোরাই।" সৃজনশীলতা এসেছে <strong>সিস্টেম</strong> থেকে, ব্যক্তি থেকে নয়। দিনে ~৫-৬ card।</div></div>
 
@@ -275,7 +275,7 @@ doors.push({
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ সাধারণ নোট (মরা)</div>খাতায় লেখা, আর কখনো দেখা হয় না। topic-ভিত্তিক, linear। নোটের মধ্যে সংযোগ নেই। output: কিছুই না। বছরে ১০টা খাতা ভর্তি হয়, কিন্তু কোনো idea জন্ম নেয় না। তথ্যের কবরখানা।</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ Zettelkasten (জীবন্ত)</div>প্রতিটা নোট atomic (এক idea), পরস্পর linked, cross-referenced। idea-ভিত্তিক network। output: বই, পেপার, insight। অপ্রত্যাশিত সংযোগে নতুন idea জন্মায়। Luhmann: ৯০,০০০ নোট → ৭০+ বই। হিফজ — সংযুক্ত সংরক্ষণ।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ Zettelkasten (জীবন্ত)</div>প্রতিটা নোট atomic (এক idea), পরস্পর linked, cross-referenced। idea-ভিত্তিক network। output: বই, পেপার, insight। অপ্রত্যাশিত সংযোগে নতুন idea জন্মায়। Luhmann: ৯০,০০০ নোট → ~৫০ বই। হিফজ — সংযুক্ত সংরক্ষণ।</div>
 </div>
 
 <div class="callout info"><span class="co-icon">🛠️</span><div><strong>আধুনিক টুল:</strong> Obsidian (free, local, সবচেয়ে জনপ্রিয়), Logseq, Notion, Heptabase, Capacities/Tana। AI-PKM (2024-26): Obsidian Smart Connections/Copilot, Notion AI, NotebookLM (multi-doc synthesis)। ⚠️ AI ভুল সংযোগ বা অস্তিত্বহীন citation বানাতে পারে — verify করো। <strong>শুরু:</strong> প্রতিটা নতুন নোট অন্তত ১টা বিদ্যমান নোটের সাথে link করো — এখানেই insight।</div></div>
