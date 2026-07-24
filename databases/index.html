@@ -16,7 +16,7 @@
   <div class="title-sub">The Data Vault</div>
   <div class="title-desc">
     একটি query-র যাত্রা — সারি থেকে অর্থ পর্যন্ত।<br>
-    দশটি দরজা: relational model (Codd 1970), SQL, indexing (B-tree, Hash), ACID transactions, normalization, NoSQL (key-value, document, graph), distributed databases (replication, sharding, CAP), query optimization, data warehousing + OLAP, এবং একটি query-র সম্পূর্ণ যাত্রা।<br><br>
+    তেরটি দরজা: relational model (Codd 1970), SQL, indexing (B-tree, Hash), ACID transactions, normalization, NoSQL, distributed databases, query optimization, data warehousing, একটি query-র সম্পূর্ণ যাত্রা, এবং নতুন — ভেক্টর ডাটাবেস, ANN indexing (HNSW/IVF), ও AI উপাত্ত স্থাপত্য।<br><br>
     <em>A query's journey — from rows to meaning. Ten doors: the relational model (Codd 1970), SQL, indexing (B-tree, Hash), ACID transactions, normalization, NoSQL (key-value, document, graph), distributed databases (replication, sharding, CAP), query optimization, data warehousing + OLAP, and one query's complete journey through the database engine.</em>
   </div>
   <button class="start-btn" onclick="startGame()">📊 যাত্রা শুরু করো</button>
@@ -44,7 +44,7 @@
     <button class="hud-btn" onclick="openCheatModal()">📋</button>
     <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
   </div>
-  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা — একটি query-র উপাত্তের ভল্টে যাত্রা।</p></div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>তেরটি দরজা — সারি থেকে অর্থ, কাঠামো থেকে AI স্থাপত্য।</p></div>
   <div class="doors-grid" id="doors-grid"></div>
 </div>
 
@@ -54,9 +54,9 @@
 </div>
 
 <div id="complete-screen" class="screen">
-  <div class="complete-crown">🏛️</div>
-  <h1 class="complete-title">তুমি এখন উপাত্তের গুরু</h1>
-  <p class="complete-text">দশটি দরজা পেরিয়েছ। Codd-এর relational model থেকে distributed database পর্যন্ত — প্রতিটি স্তর তোমার কাছে স্বচ্ছ।<br><br>তুমি এখন জানো কী ঘটে যখন তুমি SELECT * FROM users WHERE age > 18 লেখো — প্রতিটি ধাপ, প্রতিটি index lookup, প্রতিটি join।<br>Book ৪-এর সিস্টেম ডিজাইন এবং Book ৩৫-এর ডিস্ট্রিবিউটেড সিস্টেমস এখন তোমার কাছে আরও গভীর — কারণ তুমি বুঝতে পারো ডাটাবেসের ভেতরে কী চলছে।<br><strong>একটি query-র সম্পূর্ণ যাত্রা — সারি থেকে অর্থ।</strong></p>
+  <div class="complete-crown">🤖</div>
+  <h1 class="complete-title">তুমি এখন AI উপাত্ত কারিগর</h1>
+  <p class="complete-text">তেরটি দরজা পেরিয়েছ। Codd-এর relational model থেকে Malkov-এর HNSW গ্রাফ — ৫৫ বছরের ডাটাবেস বিবর্তন তোমার কাছে স্বচ্ছ।<br><br>তুমি এখন জানো — সম্পর্কিত DB (কাঠামো), ভেক্টর DB (অর্থ), ফিচার স্টোর (জ্ঞান), টাইম-সিরিজ (স্মৃতি), অবজেক্ট স্টোরেজ (ভাণ্ডার) — পাঁচ রূপ, এক সত্য।<br><br>Book ৪ (System Design), Book ১০ (RAG), Book ১৪ (LLMOps), Book ১৮ (Embeddings), Book ৩৫ (Distributed Systems) — সব এখন এই বইয়ের সাথে সংযুক্ত।<br><strong>ডাটাবেস একটি প্রযুক্তি নয় — এটি একটি মানসিকতা।</strong></p>
   <div class="complete-verse">وَعِنْدَهُ مَفَاتِحُ الْغَيْبِ لَا يَعْلَمُهَا إِلَّا هُوَ</div>
   <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"এবং তাঁর কাছেই রয়েছে অদৃশ্যের চাবিকাঠি, যা তিনি ছাড়া কেউ জানে না।" — কুরআন ৬:৫৯</div>
   <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
@@ -71,6 +71,7 @@
 
 <script src="doors-1-5.js"></script>
 <script src="doors-6-10.js"></script>
+<script src="doors-11-13.js"></script>
 <script src="engine.js"></script>
 </body>
 </html>
