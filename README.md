@@ -1,55 +1,67 @@
 # জ্ঞানের প্রাঙ্গণ — The Learning Courtyard
 
-An interactive bilingual (Bengali/English) learning library built with the Seven Doors Method. **33 books, 377 chapters, 37,700 XP** — covering AI engineering, data structures, system design, LLM deep dives, math foundations, classic ML, research craft, career mindset, critical thinking, and more.
+An interactive bilingual (Bengali/English) learning library built with the Seven Doors Method. **40 books, 447 chapters, 44,700 XP** — covering AI engineering, CS fundamentals, software engineering, math, statistics, research craft, career mindset, and more.
 
-## 📚 The 33 Books
+## 📚 The 40 Books — 5 Categories
 
-### 🏛️ Core Six (Books 1–6) — the foundation
+### 🏛️ Core Foundations (Books 1–6)
 
 | # | Book | Topic | Chapters |
 |---|------|-------|----------|
-| 🤖 1 | **Twenty-Seven Doors of AI Engineering** | LLMs, prompting, RAG, embeddings, fine-tuning, agents, MCP, multimodal | 27 |
-| 🧮 2 | **The Bazaar of Algorithms** | Data structures & algorithms with live Python (Pyodide) | 18 |
-| 🏛️ 3 | **Court of the Grand Muhandis** | Engineer mindset: Hello World → Senior (incl. estimation) | 11 |
-| 🏙️ 4 | **The City Builder's Codex** | System design: scaling, microservices, protocols, databases, replication, CAP, transactions, consensus, idempotency, consistent hashing, resilience, observability + 2 capstones | 20 |
-| 🌱 5 | **The Seed of Learning** | Meta-learning: how to learn (growth mindset, spaced repetition, Feynman, sleep) | 9 |
-| ⚔️ 6 | **The Arena of Trials** | Interview preparation: resume, STAR, coding patterns, negotiation | 8 |
+| 🤖 1 | **Twelve Doors of Light** | AI Engineering overview | 27 |
+| 🧮 2 | **The Bazaar of Algorithms** | Data structures & algorithms with live Python | 18 |
+| 🏛️ 3 | **The Court of the Grand Muhandis** | Engineer mindset: Hello World → Senior | 11 |
+| 🏙️ 4 | **The City Builder's Codex** | System design: scaling, microservices, CAP, consensus | 20 |
+| 🌱 5 | **The Seed of Learning** | Meta-learning: growth mindset, spaced repetition, Feynman | 9 |
+| ⚔️ 6 | **The Arena of Trials** | Interview preparation: resume, STAR, negotiation | 8 |
 
-### 🧬 AI Deep Dives (Books 7–19) — 13 books on modern LLM engineering
-
-| # | Book | Topic |
-|---|------|-------|
-| 🔥 7 | **The Word Weaver's Forge** | Prompt & Context Engineering (incl. prompt caching) |
-| 🧠 8 | **The Anatomy Chamber** | LLM Architecture (transformers, attention, MoE) |
-| 📜 9 | **The Canvas Manager's Table** | Context Engineering (Lost in the Middle, chunking, reranking) |
-| 🌊 10 | **The Infinite Well** | RAG Mastery (Late Chunking, Contextual Retrieval, Agentic RAG) |
-| 🔧 11 | **The Perfectionist's Forge** | Fine-tuning (LoRA/QLoRA, GRPO, DoRA, DPO/PPO) |
-| 🤖 12 | **The Agent's Genesis** | AI Agents (ReAct, planning, multi-agent, code agents) |
-| 🛡️ 13 | **The Fortress of Guardrails** | LLM Security (injection, red-teaming, NeMo/Guardrails AI) |
-| ⚓ 14 | **The LLMOps Harbor** | LLMOps (vLLM, PagedAttention, monitoring, cost optimization) |
-| 🌈 15 | **The Synesthete's Atelier** | Multimodal AI (ViT/CLIP, diffusion, VLMs, video) |
-| 📏 16 | **The Measurement Chamber** | LLM Evals (LLM-as-judge, RAGAS, benchmarks, contamination) |
-| ⚡ 17 | **The Optimization Forge** | Inference Optimization (KV cache, quantization, speculative decoding) |
-| 📐 18 | **The Geometry Chamber** | Embeddings (BGE, OpenAI, Matryoshka, vector search) |
-| 🔌 19 | **The Connection Chamber** | Tools & MCP (function calling, Model Context Protocol) |
-
-### 🌳 Growth & Research (Books 20–31, 33) — 13 books on research, career, math, and craft
+### 🧬 AI & ML Pipeline (Books 7–19) — 13 books
 
 | # | Book | Topic |
 |---|------|-------|
-| 🏔️ 20 | **The Pilgrimage of Research** | PhD Journey (funding, SOP, cold-emailing, life) |
-| 🌱 21 | **The First Question** | Researcher Mindset (curiosity, Bloom's, persistence) |
-| 🧭 22 | **The CS Archipelago** | CS Domain Ocean — 20 doors across 10 domains (AI/ML, systems, security, data, HCI, SE/PL, theory, quantum, robotics, emerging) |
-| 🛡️ 23 | **The Irreplaceable Craftsman** | Career & AI obsolescence (permanent vs perishable skills) |
-| 🧠 24 | **The Mirror of the Mind** | Human Psychology (Cialdini, learned helplessness, biases) |
-| 🔮 25 | **The Council of Deep Knowledge** | The Art of Deep Learning — 8 doors with SVG diagrams (meta-learning, 20h/10000h, Dunning-Kruger, feedback, metacognition) |
-| 📖 26 | **The Knowledge Craftsman** | Reading/Thinking/Writing — 10 doors with SVG diagrams (Zettelkasten, Feynman, Adler, Ebbinghaus, second-brain CODE) |
-| ✍️ 27 | **The Paper Architect** | Research Paper Read/Write (IMRaD, Keshav, peer review) |
+| 🔥 7 | **The Word Weaver's Forge** | Prompt & Context Engineering |
+| 🧠 8 | **The LLM Anatomy** | LLM Architecture (transformers, attention, MoE) |
+| 📜 9 | **The Canvas of Sight** | Context Engineering (Lost in the Middle, chunking) |
+| 🌊 10 | **The Well of Knowledge** | RAG Mastery (Agentic RAG, Contextual Retrieval) |
+| 🔧 11 | **The Forge of Refinement** | Fine-tuning (LoRA/QLoRA, DPO/PPO) |
+| 🤖 12 | **The Autonomous Mind** | AI Agents (ReAct, planning, multi-agent) |
+| 🛡️ 13 | **The Fortress Guard** | LLM Security (injection, red-teaming, guardrails) |
+| ⚓ 14 | **The Control Tower** | LLMOps (vLLM, PagedAttention, monitoring) |
+| 🌈 15 | **The Five Senses** | Multimodal AI (ViT/CLIP, diffusion, VLMs) |
+| 📏 16 | **The Measure** | LLM Evals (LLM-as-judge, RAGAS, benchmarks) |
+| ⚡ 17 | **The Forged Edge** | Inference Optimization (KV cache, quantization) |
+| 📐 18 | **The Geometry of Meaning** | Embeddings (vector search, Matryoshka) |
+| 🔌 19 | **The Tool Forge** | Tools & MCP (function calling, Model Context Protocol) |
+
+### ⚙️ CS & Systems (Books 22, 30–31, 35–40) — 9 books
+
+| # | Book | Topic | Chapters |
+|---|------|-------|----------|
+| 🌊 22 | **The Ocean of Computer Science** | CS Domain deep-dive (20 domains) | 20 |
+| 🧭 30 | **The Architect's Compass** | Math Foundations of ML (vectors → entropy) | 10 |
+| 🌿 31 | **The Marketplace of Algorithms** | Classic ML (regression → neural networks) | 10 |
+| 🌐 35 | **The Bridge of Connections** | Distributed Systems (Lamport → Kleppmann) | 10 |
+| 🧠 36 | **The Architecture of Thought** | Deep Learning Architectures (CNN → Transformer → Diffusion) | 10 |
+| 🌐 37 | **The Web of Wires** | Computer Networks (OSI, TCP/IP, DNS, HTTP, TLS) | 10 |
+| 🖥️ 38 | **The Machine's Soul** | Operating Systems (process, memory, scheduling) | 10 |
+| 📊 39 | **The Data Vault** | Databases (SQL, indexing, ACID, NoSQL, warehouse) | 10 |
+| 🔨 40 | **The Codebuilder's Guild** | Software Engineering (SDLC, SOLID, patterns, TDD, DevOps) | 10 |
+
+### 🔬 Research & Mind (Books 20–21, 23–28, 32–34) — 11 books
+
+| # | Book | Topic |
+|---|------|-------|
+| 🏔️ 20 | **The Research Pilgrimage** | PhD Journey (funding, SOP, cold-emailing) |
+| 🌱 21 | **The Researcher's Mind** | Researcher Mindset (curiosity, question-crafting) |
+| 🛡️ 23 | **The Irreplaceable Craftsman** | Career & Mindset (permanent vs perishable skills) |
+| 🧠 24 | **The Throne of the Mind** | Human Psychology (Cialdini, Seligman, Frankl) |
+| 🔮 25 | **The Council of Deep Knowledge** | Deep Learning mastery (Dunning-Kruger, metacognition) |
+| 📖 26 | **The Craftsman of Knowledge** | Reading/Thinking/Writing (Adler, Zettelkasten, Feynman) |
+| ✍️ 27 | **The Research Paper Craftsman** | Research Paper Read/Write (IMRaD, Keshav, peer review) |
 | 🕸️ 28 | **The Knowledge Web** | Knowledge Connection Capstone (connects all books) |
-| 🧮 30 | **The Architect's Compass** | Mathematical Foundations of ML — 10 doors (vectors → entropy, Al-Khwarizmi → Shannon) |
-| 🌿 31 | **The Marketplace of Algorithms** | Classic ML Algorithms — 10 doors (linear regression → neural networks, Al-Tusi → Ibn Muqla) |
-| 🧩 32 | **The Brain Mechanic's Codex** | Brain Hacks, Rituals & Habit Systems — 15 doors (tiny habits → neuroplasticity, Fogg → Merzenich) |
-| 🪡 33 | **The Loom of Reason** | Critical Thinking & Problem Solving — 10 doors (mental models, Bayesian reasoning, Polya, Fermi, second-order thinking) |
+| 🧩 32 | **The Brain Mechanic's Codex** | Brain Hacks & Habit Systems (Fogg → Merzenich) |
+| 🪡 33 | **The Loom of Reason** | Critical Thinking (Bayes, Polya, Fermi, first principles) |
+| ⚖️ 34 | **The Scale of Evidence** | Statistics & Experimental Design (Al-Kindi → Pearl) |
 
 ### 🚗 Extras (Book 29)
 
@@ -70,21 +82,19 @@ python3 -m http.server 8740
 
 ## ✨ Features
 
-- **Category filter tabs** — filter the courtyard by Core Six / AI Deep Dives / Growth & Research / Extras
+- **Category filter tabs** — filter by Core / AI & ML / CS & Systems / Research & Mind / Extras
+- **Reading Road** — 11-phase learning roadmap from meta-learning to research synthesis
+- **Search** — chapter-level search across all 40 books
 - **Seven Doors Method** — each concept taught through story, metaphor, sacred analogue, and recall challenge
 - **Bilingual** — Bengali primary, English secondary throughout
 - **Progressive unlocking** — chapters unlock sequentially with XP and rank progression
 - **Cheat sheets** — collect one-line secrets from each chapter
-- **Live Python** — DSA book includes Pyodide-powered code execution (run real Python in-browser)
-- **Synthesized audio** — Web Audio API sound effects, no audio files
-- **Particle effects** — CSS/Canvas animations
-- **Progress saving** — localStorage persistence (per-book, survives reloads)
+- **Live Python** — DSA book includes Pyodide-powered code execution
 - **Zero dependencies** — pure HTML/CSS/JS, no build step, no frameworks
 
 ## 🏗️ Architecture
 
 Each book is a self-contained multi-file project:
-
 ```
 book-folder/
 ├── index.html      ← Structure & screens
@@ -94,7 +104,7 @@ book-folder/
 └── doors-N-M.js    ← More story content
 ```
 
-The root `index.html` is the hub — the courtyard with filter tabs that connects all 33 books.
+The root `index.html` is the hub — the courtyard with filter tabs that connects all 40 books.
 
 ## 📖 Pedagogy — the Seven Doors Method
 
