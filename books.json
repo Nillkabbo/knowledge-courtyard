@@ -49,7 +49,8 @@
     { "n": 36, "folder": "deep-learning-arch",      "title_en": "The Architecture of Thought",          "title_bn": "চিন্তার স্থাপত্য",              "icon": "🧠", "category": "growth", "color": "game-36", "tag": "Book 36 · Deep Learning Architectures",                                 "status": "live" },
     { "n": 37, "folder": "computer-networks",       "title_en": "The Web of Wires",                     "title_bn": "তারের জাল",                    "icon": "🌐", "category": "growth", "color": "game-37", "tag": "Book 37 · Computer Networks Deep Dive",                                "status": "live" },
     { "n": 38, "folder": "operating-systems",       "title_en": "The Machine's Soul",                   "title_bn": "যন্ত্রের আত্মা",              "icon": "🖥️", "category": "growth", "color": "game-38", "tag": "Book 38 · Operating Systems Deep Dive",                                "status": "live" },
-    { "n": 39, "folder": "databases",                "title_en": "The Data Vault",                       "title_bn": "উপাত্তের ভল্ট",                "icon": "📊", "category": "growth", "color": "game-39", "tag": "Book 39 · Databases Deep Dive",                                        "status": "live" }
+    { "n": 39, "folder": "databases",                "title_en": "The Data Vault",                       "title_bn": "উপাত্তের ভল্ট",                "icon": "📊", "category": "growth", "color": "game-39", "tag": "Book 39 · Databases Deep Dive",                                        "status": "live" },
+    { "n": 40, "folder": "software-engineering",     "title_en": "The Codebuilder's Guild",              "title_bn": "কোড নির্মাতার শিল্প",          "icon": "🔨", "category": "cs", "color": "game-40", "tag": "Book 40 · Software Engineering Big Picture",                          "status": "live" }
   ],
 
   "roadmap": [
@@ -91,7 +92,8 @@
         { "book": 2,  "why": "Big-O, data structures, graphs, DP — run alongside other phases." },
         { "book": 37, "why": "OSI, TCP/IP, DNS, HTTP, TLS — what happens when you type google.com." },
         { "book": 38, "why": "processes, threads, scheduling, semaphores, memory, containers — fork()." },
-        { "book": 39, "why": "relational model, SQL, indexing, ACID, NoSQL — how indexes work." }
+        { "book": 39, "why": "relational model, SQL, indexing, ACID, NoSQL — how indexes work." },
+        { "book": 40, "why": "SDLC, SOLID, design patterns, TDD, Git, architecture, DevOps, security, AI-assisted dev — the profession of software engineering. Connects B2+B37+B38+B39 into a unified workflow." }
       ]
     },
     {

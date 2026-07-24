@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>কোড নির্মাতার শিল্প — The Codebuilder's Guild</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ</div>
+  <h1 class="title-main">কোড নির্মাতার শিল্প</h1>
+  <div class="title-sub">The Codebuilder's Guild</div>
+  <div class="title-desc">
+    একটি ফিচারের যাত্রা — আইডিয়া থেকে প্রোডাকশন পর্যন্ত।<br>
+    দশটি দরজা: SDLC ও মেথডলজি (Waterfall→Agile→DevOps→Platform Engineering), SOLID ও Clean Code, Design Patterns (GoF 1994), Testing (TDD/BDD), Git ও কোলাবোরেশন, Architecture Patterns (Clean/Hexagonal/Microservices/Serverless), DevOps ও CI/CD, Software Security, AI-Assisted Development ও ভবিষ্যৎ, এবং একটি ফিচারের সম্পূর্ণ যাত্রা।<br><br>
+    <em>A feature's journey — from idea to production. Ten doors: SDLC methodologies (Waterfall→Agile→DevOps→Platform Engineering), SOLID principles and clean code, design patterns (GoF 1994), testing (TDD/BDD), Git and collaboration, architecture patterns (Clean/Hexagonal/Microservices/Serverless), DevOps and CI/CD, software security, AI-assisted development and the future, and one feature's complete journey from idea to production.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🔨 যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">একটি ভাস্করের গল্প — The Sculptor's Story</div>
+    <p>একজন ভাস্কর পাথর কাটেন। প্রথমে অগোছালো — বড় ছুরি, ভাঙা টুকরো। তারপর সূক্ষ্ম — ছোট হাতুড়ি, নিখুঁত রেখা। শেষে চর্চন — বালির কাগজ, মসৃণ পৃষ্ঠ। প্রতিটি ধাপে একটি নিয়ম, একটি সরঞ্জাম, একটি কৌশল। কোডও তেমন — প্রথমে কাঁচামাল (আইডিয়া), তারপর গঠন (আর্কিটেকচার), তারপর সূক্ষ্মতা (টেস্টিং), তারপর মসৃণতা (CI/CD)। একজন কারিগর শুধু কোড লেখে না — সে একটি জীবন্ত ব্যবস্থা গড়ে তোলে যা বছরের পর বছর টিকে থাকে।</p>
+    <p class="en">A sculptor cuts stone. First rough — big chisel, broken pieces. Then fine — small hammer, precise lines. Finally polishing — sandpaper, smooth surface. Each step has a rule, a tool, a technique. Code is the same — first raw material (idea), then structure (architecture), then precision (testing), then smoothness (CI/CD). A craftsman doesn't just write code — they build a living system that lasts for years.</p>
+    <hr class="p-divider">
+    <p>এই বই তোমাকে নিয়ে যাবে সফটওয়্যার ইঞ্জিনিয়ারিংয়ের সম্পূর্ণ ল্যান্ডস্কেপে — ১৯৭০-এর Waterfall থেকে আজকের AI-assisted development পর্যন্ত। প্রতিটি দরজায় একজন কারিগর — Beck (TDD), Fowler (refactoring), Martin (clean code), Gamma (patterns) — যারা এই শিল্প তৈরি করেছেন। তুমি শিখবে কীভাবে একটি ফিচার আইডিয়া থেকে শুরু করে requirement, design, code, test, deploy, monitor হয়ে ব্যবহারকারীর হাতে পৌঁছায়। এটি শুধু কোড নয় — এটি একটি পেশার গল্প।</p>
+    <p class="en">This book takes you through the complete landscape of software engineering — from 1970s Waterfall to today's AI-assisted development. Each door features a craftsman — Beck (TDD), Fowler (refactoring), Martin (clean code), Gamma (patterns) — who built this craft. You'll learn how a feature goes from idea through requirements, design, code, test, deploy, monitor to the user's hands. This isn't just code — it's the story of a profession.</p>
+    <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩ (Engineer's Journey):</strong> সেখানে তুমি engineering mindset শিখেছিলে — first principles, abstraction, debugging। এই বই সেই ভিত্তিকে গভীর করে — কীভাবে সেই mindset একটি পেশায় পরিণত হয়। LedgerPilot ও Ipractus — তুমি প্রতিদিন এই নীতিগুলো ব্যবহার করছো।</div></div>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">📝</span><span id="hud-rank-name">কোড শিক্ষার্থী</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা — একটি ফিচারের আইডিয়া থেকে প্রোডাকশন পর্যন্ত যাত্রা।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← গিল্ডে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🔨</div>
+  <h1 class="complete-title">তুমি এখন কোড নির্মাতা</h1>
+  <p class="complete-text">দশটি দরজা পেরিয়েছ। Waterfall থেকে AI-assisted development — সফটওয়্যার ইঞ্জিনিয়ারিংয়ের সম্পূর্ণ ল্যান্ডস্কেপ তোমার কাছে স্বচ্ছ।<br><br>SOLID principles, design patterns, TDD, clean architecture, DevOps, security — তুমি এখন বোঝো কীভাবে একটি ফিচার আইডিয়া থেকে প্রোডাকশন পর্যন্ত যায়।<br>Book ৩-এর engineering mindset এখন তোমার কাছে একটি সম্পূর্ণ পেশা — শুধু চিন্তা নয়, অভ্যাস।<br><strong>একটি ফিচারের সম্পূর্ণ যাত্রা — আইডিয়া থেকে ব্যবহারকারী।</strong></p>
+  <div class="complete-verse">وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"এবং মানুষের জন্য তা ছাড়া আর কিছু নেই যা সে অর্জন করে।" — কুরআন ৫৩:৩৯</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 কোড নির্মাতার শিল্প চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 কোড নির্মাতার শিল্প চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
