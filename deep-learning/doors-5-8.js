@@ -90,7 +90,7 @@ doors.push({
   num:6, icon:"🔄", color:"#ff6b35", name:"কুমারের চাকা",
   subtitle:"The Potter's Wheel", tech:"Unlearn, Learn, Relearn",
   spirit:"তওবা — শুরুতে ফিরে যাওয়া",
-  secret:"আলভিন টফলার: ২১শ শতকের নিরক্ষর যারা পড়তে লিখতে পারে না নয় — যারা শিখতে, আনলেয়ার্ন করতে, রিলেয়ার্ন করতে পারে না। আনলেয়ার্ন সবচেয়ে কঠিন।",
+  secret:'হার্বার্ট গেরজয় (প্রায়শই টফলারকে ভুলভাবে আরোপিত): ২১শ শতকের নিরক্ষর যারা পড়তে লিখতে পারে না নয় — যারা শিখতে, আনলেয়ার্ন করতে, রিলেয়ার্ন করতে পারে না। আনলেয়ার্ন সবচেয়ে কঠিন।',
   recall:{
     q:"কুমার কেন মাঝে মাঝে পুরো হাঁড়ি ভেঙে ফেলেন?",
     qen:"Why does the potter sometimes smash the entire pot?",
@@ -101,10 +101,10 @@ doors.push({
 <p class="scene-setting">ষষ্ঠ আসন। একটা কুমারের ঘর। মাটির গন্ধ, চাকার আওয়াজ, ভেজা মাটির ঠান্ডা স্পর্শ। কুমার আদম চাকায় একটা হাঁড়ি বানাচ্ছেন — কিন্তু হঠাৎ থামলেন। হাঁড়িটা একটু বাঁকা। তিনি এটা ঠিক করার চেষ্টা করলেন না। তিনি পুরোটা চেপে গুঁড়িয়ে দিলেন মাটিতে। আবার শুরু।</p>
 <p class="scene-setting en">The sixth seat. A potter's hut. Smell of clay, hum of the wheel, cold touch of wet earth. Potter Adam shapes a pot on the wheel — but suddenly stops. The pot is slightly crooked. He doesn't try to fix it. He crushes the whole thing back to clay. Starts again.</p>
 
-<div class="dialogue">সেতু নির্মাতা বলেছিলেন — জ্ঞান × কর্ম। কিন্তু আমি বলি — কর্মের আগে আসে ভাঙা। পুরোনো ভুল ধারণা না ভাঙলে নতুন সঠিক ধারণা বসে না। আলভিন টফলার — ভবিষ্যৎ প্রভাবক। তিনি বলেছেন একটা গভীর কথা, যা ভিডিওর সবচেয়ে গুরুত্বপূর্ণ অংশ।</div>
-<div class="dialogue en">"The bridge builder said — knowledge × action. But I say — before action comes breaking. Without breaking old wrong ideas, new correct ones don't take root. Alvin Toffler — futurist. He said something deep, the video's most important part."</div>
+<div class="dialogue">সেতু নির্মাতা বলেছিলেন — জ্ঞান × কর্ম। কিন্তু আমি বলি — কর্মের আগে আসে ভাঙা। পুরোনো ভুল ধারণা না ভাঙলে নতুন সঠিক ধারণা বসে না। হার্বার্ট গেরজয় — মনোবিজ্ঞানী। তাঁর একটি উক্তি (প্রায়শই টফলারকে ভুলভাবে আরোপিত) এই ভিডিওর সবচেয়ে গুরুত্বপূর্ণ অংশ।</div>
+<div class="dialogue en">"The bridge builder said — knowledge × action. But I say — before action comes breaking. Without breaking old wrong ideas, new correct ones don't take root. Herbert Gerjuoy — psychologist. His quote (often misattributed to Toffler) is the video's most important part."</div>
 
-<div class="callout info"><span class="co-icon">🔄</span><div><strong>Alvin Toffler:</strong> "২১শ শতকের নিরক্ষর তারা নয় যারা পড়তে-লিখতে পারে না — বরং যারা <strong>LEARN, UNLEARN, ও RELEARN</strong> করতে পারে না।"</div></div>
+<div class="callout info"><span class="co-icon">🔄</span><div><strong>হার্বার্ট গেরজয় (প্রায়শই টফলারকে আরোপিত):</strong> "২১শ শতকের নিরক্ষর তারা নয় যারা পড়তে-লিখতে পারে না — বরং যারা <strong>LEARN, UNLEARN, ও RELEARN</strong> করতে পারে না।" <em>(টফলার-এর "Future Shock" বইয়ে উক্তিটি উদ্ধৃত হওয়ায় প্রায়ই তাঁকে আরোপ করা হয়, কিন্তু প্রকৃত উক্তিটি গেরজয়ের — Wikipedia নিশ্চিত করেছে।)</em></div></div>
 <table class="kv-table"><tr><th>ধাপ</th><th>কী</th><th>ভিডিও?</th></tr>
 <tr><td class="hl">Learn</td><td>নতুন জ্ঞান গ্রহণ</td><td>✅ বলেছে</td></tr>
 <tr><td class="hl">Unlearn</td><td>পুরোনো জ্ঞান বর্জন — "fire together, wire together"; পুরোনো path ভাঙা শারীরিক ও আবেগগতভাবে কঠিন (পরিচয়ের অংশ)</td><td>⚠️ মিস করেছে</td></tr>
@@ -125,7 +125,7 @@ doors.push({
     <text class="lbl-sm" x="270" y="50" fill="#ff6b35" style="font-size:9px">সবচেয়ে কঠিন</text>
     <line class="edge-hot" x1="370" y1="90" x2="310" y2="148" marker-end="url(#arrowFireD6)"/>
     <line class="edge-cyan" x1="225" y1="155" x2="175" y2="92" marker-end="url(#arrowLeafD6)"/>
-    <text class="lbl-sm" x="280" y="210" fill="#5e5c74">tofu. আলভিন টফলার: ২১শ শতকের নিরক্ষর = যে learn, unlearn, relearn করতে পারে না</text>
+    <text class="lbl-sm" x="280" y="210" fill="#5e5c74">tofu. হার্বার্ট গেরজয়: ২১শ শতকের নিরক্ষর = যে learn, unlearn, relearn করতে পারে না</text>
   </svg>
   <div class="diag-cap">Unlearn সবচেয়ে কঠিন — মস্তিষ্ক পুরোনো path ভাঙতে চায় না, পরিচয়ের অংশ হয়ে যায়। কিন্তু নতুন বানাতে হলে পুরোনো ভাঙতেই হবে — কুমারের মতো হাঁড়ি গুঁড়িয়ে আবার শুরু।</div>
 </div>
