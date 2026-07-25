@@ -54,7 +54,8 @@
     { "n": 41, "folder": "theory-of-computation",  "title_en": "The Clockwork of Thought",            "title_bn": "গণনার তত্ত্ব",               "icon": "🧮", "category": "cs", "color": "game-41", "tag": "Book 41 · Theory of Computation",                                    "status": "live" },
     { "n": 42, "folder": "computer-architecture",   "title_en": "The Clockwork Forge",                   "title_bn": "যন্ত্রের কারখানা",            "icon": "⚙️", "category": "cs", "color": "game-42", "tag": "Book 42 · Computer Architecture",                                   "status": "live" },
     { "n": 43, "folder": "cloud-devops",              "title_en": "The Sky Fortress",                      "title_bn": "আকাশের দুর্গ",                "icon": "☁️", "category": "cs", "color": "game-43", "tag": "Book 43 · Cloud & DevOps Engineering",                              "status": "live" },
-    { "n": 44, "folder": "data-engineering",        "title_en": "The River of Data",                     "title_bn": "নদীর ডাটা",                 "icon": "🌊", "category": "cs", "color": "game-44", "tag": "Book 44 · Data Engineering & Pipelines",                           "status": "live" }
+    { "n": 44, "folder": "data-engineering",        "title_en": "The River of Data",                     "title_bn": "নদীর ডাটা",                 "icon": "🌊", "category": "cs", "color": "game-44", "tag": "Book 44 · Data Engineering & Pipelines",                           "status": "live" },
+    { "n": 45, "folder": "compilers-plt",            "title_en": "The Word Smithy",                        "title_bn": "শব্দের কারখানা",             "icon": "🔤", "category": "cs", "color": "game-45", "tag": "Book 45 · Compilers & Programming Language Theory",              "status": "live" }
   ],
 
   "roadmap": [
