@@ -53,7 +53,8 @@
     { "n": 40, "folder": "software-engineering",     "title_en": "The Codebuilder's Guild",              "title_bn": "কোড নির্মাতার শিল্প",          "icon": "🔨", "category": "cs", "color": "game-40", "tag": "Book 40 · Software Engineering Big Picture",                          "status": "live" },
     { "n": 41, "folder": "theory-of-computation",  "title_en": "The Clockwork of Thought",            "title_bn": "গণনার তত্ত্ব",               "icon": "🧮", "category": "cs", "color": "game-41", "tag": "Book 41 · Theory of Computation",                                    "status": "live" },
     { "n": 42, "folder": "computer-architecture",   "title_en": "The Clockwork Forge",                   "title_bn": "যন্ত্রের কারখানা",            "icon": "⚙️", "category": "cs", "color": "game-42", "tag": "Book 42 · Computer Architecture",                                   "status": "live" },
-    { "n": 43, "folder": "cloud-devops",              "title_en": "The Sky Fortress",                      "title_bn": "আকাশের দুর্গ",                "icon": "☁️", "category": "cs", "color": "game-43", "tag": "Book 43 · Cloud & DevOps Engineering",                              "status": "live" }
+    { "n": 43, "folder": "cloud-devops",              "title_en": "The Sky Fortress",                      "title_bn": "আকাশের দুর্গ",                "icon": "☁️", "category": "cs", "color": "game-43", "tag": "Book 43 · Cloud & DevOps Engineering",                              "status": "live" },
+    { "n": 44, "folder": "data-engineering",        "title_en": "The River of Data",                     "title_bn": "নদীর ডাটা",                 "icon": "🌊", "category": "cs", "color": "game-44", "tag": "Book 44 · Data Engineering & Pipelines",                           "status": "live" }
   ],
 
   "roadmap": [
