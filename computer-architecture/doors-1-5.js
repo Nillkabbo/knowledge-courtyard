@@ -30,8 +30,106 @@ doors.push({
 <div class="dialogue"><strong>শকলি:</strong> (হাসেন) একটা সুইচ দিয়ে না। কিন্তু দুটো সুইচ একসাথে কী করতে পারে — সেটা ভাবো। ধরো দুটো সুইচ সিরিজে যুক্ত — পানি বইতে পারে শুধু যদি <strong>দুটোই</strong> খোলা থাকে। এটাই <strong>AND gate</strong>। এখন ধরো দুটো সুইচ সমান্তরালে — পানি বইতে পারে যদি <strong>যেকোনো একটা</strong> খোলা থাকে। এটাই <strong>OR gate</strong>। আর যদি একটা সুইচ উল্টে দাও — চালু হলে বন্ধ, বন্ধ হলে চালু — সেটাই <strong>NOT gate</strong>। এই তিনটে গেট দিয়ে সব যন্ত্র বানানো যায়।</div>
 <div class="dialogue en"><strong>Shockley:</strong> (laughs) Not from one switch. But think — what can two switches do together? Two switches in series — water flows only if <strong>both</strong> are open. That's an <strong>AND gate</strong>. Two switches in parallel — water flows if <strong>either</strong> is open. That's an <strong>OR gate</strong>. Flip one — on becomes off, off becomes on — that's a <strong>NOT gate</strong>. From these three, everything can be built.</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <!-- Transistor -->
+  <rect x="15" y="20" width="110" height="60" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <text x="70" y="42" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">⚡ Transistor</text>
+  <text x="70" y="58" text-anchor="middle" fill="#fcd34d" font-size="9">switch: ON/OFF</text>
+  <text x="70" y="72" text-anchor="middle" fill="#fcd34d" font-size="8">1 or 0</text>
+
+  <!-- Arrow -->
+  <line x1="125" y1="50" x2="155" y2="50" stroke="#475569" stroke-width="1.5" marker-end="url(#arrG)"/>
+  <defs><marker id="arrG" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
+
+  <!-- Logic Gates -->
+  <rect x="155" y="15" width="120" height="70" rx="8" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="215" y="35" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="700">🔧 Logic Gates</text>
+  <text x="215" y="52" text-anchor="middle" fill="#bae6fd" font-size="9">AND · OR · NOT</text>
+  <text x="215" y="68" text-anchor="middle" fill="#bae6fd" font-size="9">XOR · NAND · NOR</text>
+
+  <line x1="275" y1="50" x2="305" y2="50" stroke="#475569" stroke-width="1.5" marker-end="url(#arrG)"/>
+
+  <!-- Adder/ALU -->
+  <rect x="305" y="15" width="120" height="70" rx="8" fill="#312e81" stroke="#818cf8" stroke-width="2"/>
+  <text x="365" y="35" text-anchor="middle" fill="#c7d2fe" font-size="11" font-weight="700">🔢 Adder → ALU</text>
+  <text x="365" y="52" text-anchor="middle" fill="#a5b4fc" font-size="9">Half Adder = XOR+AND</text>
+  <text x="365" y="68" text-anchor="middle" fill="#a5b4fc" font-size="9">32 chained = 32-bit add</text>
+
+  <line x1="425" y1="50" x2="455" y2="50" stroke="#475569" stroke-width="1.5" marker-end="url(#arrG)"/>
+
+  <!-- CPU -->
+  <rect x="455" y="15" width="110" height="70" rx="8" fill="#7c2d12" stroke="#f97316" stroke-width="2"/>
+  <text x="510" y="35" text-anchor="middle" fill="#fdba74" font-size="11" font-weight="700">🖥️ CPU</text>
+  <text x="510" y="52" text-anchor="middle" fill="#fb923c" font-size="9">Datapath</text>
+  <text x="510" y="68" text-anchor="middle" fill="#fb923c" font-size="9">Pipeline</text>
+
+  <!-- Truth Table -->
+  <rect x="30" y="110" width="250" height="160" rx="10" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <text x="155" y="130" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700">NAND Truth Table (Universal Gate)</text>
+  <line x1="45" y1="138" x2="265" y2="138" stroke="#334155" stroke-width="1"/>
+  <text x="80" y="155" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="600">A</text>
+  <text x="120" y="155" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="600">B</text>
+  <text x="170" y="155" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">AND</text>
+  <text x="215" y="155" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="600">OR</text>
+  <text x="250" y="155" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="600">NAND</text>
+
+  <text x="80" y="175" text-anchor="middle" fill="#cbd5e1" font-size="10">0</text>
+  <text x="120" y="175" text-anchor="middle" fill="#cbd5e1" font-size="10">0</text>
+  <text x="170" y="175" text-anchor="middle" fill="#94a3b8" font-size="10">0</text>
+  <text x="215" y="175" text-anchor="middle" fill="#94a3b8" font-size="10">0</text>
+  <text x="250" y="175" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">1</text>
+
+  <text x="80" y="195" text-anchor="middle" fill="#cbd5e1" font-size="10">0</text>
+  <text x="120" y="195" text-anchor="middle" fill="#cbd5e1" font-size="10">1</text>
+  <text x="170" y="195" text-anchor="middle" fill="#94a3b8" font-size="10">0</text>
+  <text x="215" y="195" text-anchor="middle" fill="#94a3b8" font-size="10">1</text>
+  <text x="250" y="195" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">1</text>
+
+  <text x="80" y="215" text-anchor="middle" fill="#cbd5e1" font-size="10">1</text>
+  <text x="120" y="215" text-anchor="middle" fill="#cbd5e1" font-size="10">0</text>
+  <text x="170" y="215" text-anchor="middle" fill="#94a3b8" font-size="10">0</text>
+  <text x="215" y="215" text-anchor="middle" fill="#94a3b8" font-size="10">1</text>
+  <text x="250" y="215" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">1</text>
+
+  <text x="80" y="235" text-anchor="middle" fill="#cbd5e1" font-size="10">1</text>
+  <text x="120" y="235" text-anchor="middle" fill="#cbd5e1" font-size="10">1</text>
+  <text x="170" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">1</text>
+  <text x="215" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">1</text>
+  <text x="250" y="235" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">0</text>
+
+  <text x="155" y="260" text-anchor="middle" fill="#fbbf24" font-size="9" font-style="italic">NAND দিয়েই AND, OR, NOT সব বানানো যায়!</text>
+
+  <!-- NAND = 4 transistors -->
+  <rect x="300" y="110" width="260" height="160" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="430" y="130" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="700">NAND = 4 Transistors</text>
+
+  <!-- CMOS diagram simplified -->
+  <rect x="340" y="145" width="20" height="20" rx="3" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="350" y="159" text-anchor="middle" fill="#a5b4fc" font-size="8">P</text>
+  <line x1="360" y1="155" x2="380" y2="155" stroke="#64748b" stroke-width="1"/>
+  <rect x="380" y="145" width="20" height="20" rx="3" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="390" y="159" text-anchor="middle" fill="#a5b4fc" font-size="8">P</text>
+  <line x1="350" y1="165" x2="350" y2="185" stroke="#64748b" stroke-width="1"/>
+  <line x1="390" y1="165" x2="390" y2="185" stroke="#64748b" stroke-width="1"/>
+
+  <rect x="340" y="185" width="20" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1"/>
+  <text x="350" y="199" text-anchor="middle" fill="#fb923c" font-size="8">N</text>
+  <rect x="380" y="185" width="20" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1"/>
+  <text x="390" y="199" text-anchor="middle" fill="#fb923c" font-size="8">N</text>
+
+  <text x="350" y="225" text-anchor="middle" fill="#fbbf24" font-size="9">A</text>
+  <text x="390" y="225" text-anchor="middle" fill="#fbbf24" font-size="9">B</text>
+  <text x="430" y="190" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">OUT</text>
+  <line x1="400" y1="195" x2="420" y2="195" stroke="#4ade80" stroke-width="1.5"/>
+
+  <text x="430" y="245" text-anchor="middle" fill="#94a3b8" font-size="9">2 PMOS (top) + 2 NMOS (bottom)</text>
+  <text x="430" y="260" text-anchor="middle" fill="#64748b" font-size="8">Modern CPU = ~10 billion transistors</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Transistor → Logic Gates → Adder → ALU → CPU। NAND gate = ৪টা transistor, আর NAND দিয়েই সব gate বানানো যায়।</div>
+
 <div class="code-block">
-<strong>Logic Gate সত্য ছক (Truth Tables):</strong>
 
 <table style="width:100%;border-collapse:collapse;margin-top:.5rem">
 <tr style="border-bottom:2px solid var(--accent)">
@@ -109,6 +207,100 @@ doors.push({
 
 <div class="dialogue"><strong>হেনেসি:</strong> আমি জন হেনেসি। স্ট্যানফোর্ড। ১৯৮০-এ আমি আর ডেভিড প্যাটারসন একটা সহজ আইডিয়া নিয়ে এসেছিলাম — CPU ডিজাইনকে সরল করো। প্রতিটা instruction একই পাঁচটা স্টেজে যাবে। কোনো বাড়তি জটিলতা নেই। প্রতিটা স্টেজ এক সাইকেলে শেষ। এর নাম আমরা দিলাম — RISC। Reduced Instruction Set Computer।</div>
 <div class="dialogue en"><strong>Hennessy:</strong> I'm John Hennessy. Stanford. In 1980, David Patterson and I brought a simple idea — simplify CPU design. Every instruction goes through the same five stages. No extra complexity. Each stage takes one cycle. We called it — RISC. Reduced Instruction Set Computer.</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs><marker id="arrP" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
+
+  <!-- 5 Pipeline Stages -->
+  <rect x="20" y="20" width="95" height="80" rx="8" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="67" y="42" text-anchor="middle" fill="#7dd3fc" font-size="14" font-weight="900">IF</text>
+  <text x="67" y="58" text-anchor="middle" fill="#bae6fd" font-size="9">Instruction</text>
+  <text x="67" y="70" text-anchor="middle" fill="#bae6fd" font-size="9">Fetch</text>
+  <text x="67" y="88" text-anchor="middle" fill="#38bdf8" font-size="8">PC → Instr Mem</text>
+
+  <line x1="115" y1="60" x2="135" y2="60" stroke="#475569" stroke-width="1.5" marker-end="url(#arrP)"/>
+
+  <rect x="135" y="20" width="95" height="80" rx="8" fill="#312e81" stroke="#818cf8" stroke-width="2"/>
+  <text x="182" y="42" text-anchor="middle" fill="#c7d2fe" font-size="14" font-weight="900">ID</text>
+  <text x="182" y="58" text-anchor="middle" fill="#a5b4fc" font-size="9">Decode +</text>
+  <text x="182" y="70" text-anchor="middle" fill="#a5b4fc" font-size="9">Read Regs</text>
+  <text x="182" y="88" text-anchor="middle" fill="#818cf8" font-size="8">opcode → signals</text>
+
+  <line x1="230" y1="60" x2="250" y2="60" stroke="#475569" stroke-width="1.5" marker-end="url(#arrP)"/>
+
+  <rect x="250" y="20" width="95" height="80" rx="8" fill="#7c2d12" stroke="#f97316" stroke-width="2"/>
+  <text x="297" y="42" text-anchor="middle" fill="#fdba74" font-size="14" font-weight="900">EX</text>
+  <text x="297" y="58" text-anchor="middle" fill="#fb923c" font-size="9">ALU</text>
+  <text x="297" y="70" text-anchor="middle" fill="#fb923c" font-size="9">Execute</text>
+  <text x="297" y="88" text-anchor="middle" fill="#f97316" font-size="8">add · sub · addr</text>
+
+  <line x1="345" y1="60" x2="365" y2="60" stroke="#475569" stroke-width="1.5" marker-end="url(#arrP)"/>
+
+  <rect x="365" y="20" width="95" height="80" rx="8" fill="#581c87" stroke="#a855f7" stroke-width="2"/>
+  <text x="412" y="42" text-anchor="middle" fill="#d8b4fe" font-size="14" font-weight="900">MEM</text>
+  <text x="412" y="58" text-anchor="middle" fill="#c084fc" font-size="9">Memory</text>
+  <text x="412" y="70" text-anchor="middle" fill="#c084fc" font-size="9">Access</text>
+  <text x="412" y="88" text-anchor="middle" fill="#a855f7" font-size="8">LW read · SW write</text>
+
+  <line x1="460" y1="60" x2="480" y2="60" stroke="#475569" stroke-width="1.5" marker-end="url(#arrP)"/>
+
+  <rect x="480" y="20" width="80" height="80" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="520" y="42" text-anchor="middle" fill="#86efac" font-size="14" font-weight="900">WB</text>
+  <text x="520" y="58" text-anchor="middle" fill="#4ade80" font-size="9">Write</text>
+  <text x="520" y="70" text-anchor="middle" fill="#4ade80" font-size="9">Back</text>
+  <text x="520" y="88" text-anchor="middle" fill="#22c55e" font-size="8">result → Reg</text>
+
+  <!-- Pipelining visualization -->
+  <text x="290" y="130" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700">⏱️ Pipelining — 5 instructions overlap (1 per cycle!)</text>
+
+  <!-- Cycle headers -->
+  <text x="130" y="155" text-anchor="middle" fill="#64748b" font-size="9">C1</text>
+  <text x="180" y="155" text-anchor="middle" fill="#64748b" font-size="9">C2</text>
+  <text x="230" y="155" text-anchor="middle" fill="#64748b" font-size="9">C3</text>
+  <text x="280" y="155" text-anchor="middle" fill="#64748b" font-size="9">C4</text>
+  <text x="330" y="155" text-anchor="middle" fill="#64748b" font-size="9">C5</text>
+  <text x="380" y="155" text-anchor="middle" fill="#64748b" font-size="9">C6</text>
+  <text x="430" y="155" text-anchor="middle" fill="#64748b" font-size="9">C7</text>
+  <text x="480" y="155" text-anchor="middle" fill="#64748b" font-size="9">C8</text>
+
+  <!-- Instr 1 -->
+  <text x="55" y="175" text-anchor="middle" fill="#94a3b8" font-size="9">ADD</text>
+  <rect x="110" y="162" width="40" height="18" rx="3" fill="#0ea5e9" opacity=".6"/><text x="130" y="175" text-anchor="middle" fill="#7dd3fc" font-size="7">IF</text>
+  <rect x="160" y="162" width="40" height="18" rx="3" fill="#818cf8" opacity=".6"/><text x="180" y="175" text-anchor="middle" fill="#c7d2fe" font-size="7">ID</text>
+  <rect x="210" y="162" width="40" height="18" rx="3" fill="#f97316" opacity=".6"/><text x="230" y="175" text-anchor="middle" fill="#fdba74" font-size="7">EX</text>
+  <rect x="260" y="162" width="40" height="18" rx="3" fill="#a855f7" opacity=".6"/><text x="280" y="175" text-anchor="middle" fill="#d8b4fe" font-size="7">MEM</text>
+  <rect x="310" y="162" width="40" height="18" rx="3" fill="#22c55e" opacity=".6"/><text x="330" y="175" text-anchor="middle" fill="#86efac" font-size="7">WB</text>
+
+  <!-- Instr 2 -->
+  <text x="55" y="195" text-anchor="middle" fill="#94a3b8" font-size="9">SUB</text>
+  <rect x="160" y="182" width="40" height="18" rx="3" fill="#0ea5e9" opacity=".6"/><text x="180" y="195" text-anchor="middle" fill="#7dd3fc" font-size="7">IF</text>
+  <rect x="210" y="182" width="40" height="18" rx="3" fill="#818cf8" opacity=".6"/><text x="230" y="195" text-anchor="middle" fill="#c7d2fe" font-size="7">ID</text>
+  <rect x="260" y="182" width="40" height="18" rx="3" fill="#f97316" opacity=".6"/><text x="280" y="195" text-anchor="middle" fill="#fdba74" font-size="7">EX</text>
+  <rect x="310" y="182" width="40" height="18" rx="3" fill="#a855f7" opacity=".6"/><text x="330" y="195" text-anchor="middle" fill="#d8b4fe" font-size="7">MEM</text>
+  <rect x="360" y="182" width="40" height="18" rx="3" fill="#22c55e" opacity=".6"/><text x="380" y="195" text-anchor="middle" fill="#86efac" font-size="7">WB</text>
+
+  <!-- Instr 3 -->
+  <text x="55" y="215" text-anchor="middle" fill="#94a3b8" font-size="9">LW</text>
+  <rect x="210" y="202" width="40" height="18" rx="3" fill="#0ea5e9" opacity=".6"/><text x="230" y="215" text-anchor="middle" fill="#7dd3fc" font-size="7">IF</text>
+  <rect x="260" y="202" width="40" height="18" rx="3" fill="#818cf8" opacity=".6"/><text x="280" y="215" text-anchor="middle" fill="#c7d2fe" font-size="7">ID</text>
+  <rect x="310" y="202" width="40" height="18" rx="3" fill="#f97316" opacity=".6"/><text x="330" y="215" text-anchor="middle" fill="#fdba74" font-size="7">EX</text>
+  <rect x="360" y="202" width="40" height="18" rx="3" fill="#a855f7" opacity=".6"/><text x="380" y="215" text-anchor="middle" fill="#d8b4fe" font-size="7">MEM</text>
+  <rect x="410" y="202" width="40" height="18" rx="3" fill="#22c55e" opacity=".6"/><text x="430" y="215" text-anchor="middle" fill="#86efac" font-size="7">WB</text>
+
+  <!-- Instr 4 -->
+  <text x="55" y="235" text-anchor="middle" fill="#94a3b8" font-size="9">SW</text>
+  <rect x="260" y="222" width="40" height="18" rx="3" fill="#0ea5e9" opacity=".6"/><text x="280" y="235" text-anchor="middle" fill="#7dd3fc" font-size="7">IF</text>
+  <rect x="310" y="222" width="40" height="18" rx="3" fill="#818cf8" opacity=".6"/><text x="330" y="235" text-anchor="middle" fill="#c7d2fe" font-size="7">ID</text>
+  <rect x="360" y="222" width="40" height="18" rx="3" fill="#f97316" opacity=".6"/><text x="380" y="235" text-anchor="middle" fill="#fdba74" font-size="7">EX</text>
+  <rect x="410" y="222" width="40" height="18" rx="3" fill="#a855f7" opacity=".6"/><text x="430" y="235" text-anchor="middle" fill="#d8b4fe" font-size="7">MEM</text>
+  <rect x="460" y="222" width="40" height="18" rx="3" fill="#22c55e" opacity=".6"/><text x="480" y="235" text-anchor="middle" fill="#86efac" font-size="7">WB</text>
+
+  <text x="290" y="270" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">প্রতি cycle-এ একটা instruction শেষ হয়! 5x throughput.</text>
+  <text x="290" y="285" text-anchor="middle" fill="#64748b" font-size="9" font-style="italic">Without pipeline: 5 cycles per instruction. With pipeline: 1 instruction per cycle.</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: ৫-স্টেজ RISC pipeline — IF→ID→EX→MEM→WB। পাইপলাইনে ৫টা instruction একসাথে চলে, প্রতি cycle-এ একটা শেষ।</div>
 
 <div class="code-block">
 <strong>৫-স্টেজ RISC Datapath (CMU 18-447, MIT 6.823):</strong>
@@ -346,6 +538,50 @@ doors.push({
 
 <div class="dialogue"><strong>প্যাটারসন:</strong> মেমোরি hierarchy-এর কারণ একটাই — <strong>trade-off</strong>। দ্রুত মেমোরি = দামি ছোট। ধীর মেমোরি = সস্তা বড়। কোনো একটা দিয়ে সব কাজ চলবে না। তাই hierarchy। ছোট দ্রুত মেমোরি (L1) সবচেয়ে ব্যবহৃত ডেটা রাখে। বড় ধীর মেমোরি (RAM) সব ডেটা রাখে। hierarchy-এর মাধ্যমে আমরা সেরা দুটো জগত পাই — দ্রুতি আর ধারণক্ষমতা।</div>
 <div class="dialogue en"><strong>Patterson:</strong> Memory hierarchy exists for one reason — <strong>trade-off</strong>. Fast memory = expensive, small. Slow memory = cheap, large. You can't use just one. So hierarchy. Small fast memory (L1) holds most-used data. Large slow memory (RAM) holds everything. Through hierarchy, we get the best of both — speed and capacity.</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <!-- Pyramid layers -->
+  <polygon points="270,20 310,20 325,60 255,60" fill="#f59e0b" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="290" y="47" text-anchor="middle" fill="#1e293b" font-size="9" font-weight="900">Registers</text>
+  <text x="380" y="47" fill="#fcd34d" font-size="9">~1KB · 0 cycle</text>
+
+  <polygon points="255,60 325,60 345,100 235,100" fill="#0ea5e9" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="290" y="85" text-anchor="middle" fill="#e0f2fe" font-size="10" font-weight="700">L1 Cache</text>
+  <text x="400" y="85" fill="#7dd3fc" font-size="9">32-64KB · 1-3 cycles (4ns)</text>
+
+  <polygon points="235,100 345,100 370,140 210,140" fill="#818cf8" stroke="#a5b4fc" stroke-width="1.5"/>
+  <text x="290" y="125" text-anchor="middle" fill="#e0e7ff" font-size="10" font-weight="700">L2 Cache</text>
+  <text x="415" y="125" fill="#a5b4fc" font-size="9">256KB-1MB · 10-14 cycles</text>
+
+  <polygon points="210,140 370,140 400,180 180,180" fill="#a855f7" stroke="#c084fc" stroke-width="1.5"/>
+  <text x="290" y="165" text-anchor="middle" fill="#f3e8ff" font-size="10" font-weight="700">L3 Cache</text>
+  <text x="425" y="165" fill="#c084fc" font-size="9">8-32MB · 30-70 cycles</text>
+
+  <polygon points="180,180 400,180 440,230 140,230" fill="#ef4444" stroke="#f87171" stroke-width="1.5"/>
+  <text x="290" y="210" text-anchor="middle" fill="#fee2e2" font-size="12" font-weight="700">RAM (DRAM)</text>
+  <text x="460" y="210" fill="#f87171" font-size="9">8-64GB · 150-300 cycles</text>
+
+  <polygon points="140,230 440,230 480,270 100,270" fill="#64748b" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="290" y="255" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700">SSD</text>
+  <text x="495" y="255" fill="#94a3b8" font-size="9">256GB-2TB · 10K-100K cycles</text>
+
+  <polygon points="100,270 480,270 530,305 50,305" fill="#334155" stroke="#475569" stroke-width="1.5"/>
+  <text x="290" y="293" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="700">HDD / Network</text>
+  <text x="290" y="310" text-anchor="middle" fill="#64748b" font-size="8">1-8TB · ~10M cycles</text>
+
+  <!-- Labels -->
+  <text x="70" y="30" fill="#fbbf24" font-size="10" font-weight="700" transform="rotate(-90 70 30)">⚡ Fast</text>
+  <text x="70" y="290" fill="#64748b" font-size="10" font-weight="700" transform="rotate(-90 70 290)">🐌 Slow</text>
+  <text x="540" y="30" fill="#ef4444" font-size="10" font-weight="700" transform="rotate(90 540 30)">💸 Expensive</text>
+  <text x="540" y="290" fill="#22c55e" font-size="10" font-weight="700" transform="rotate(90 540 290)">💰 Cheap</text>
+
+  <!-- Bottom note -->
+  <rect x="80" y="320" width="420" height="30" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="290" y="340" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">⚠️ L1 = 4ns → RAM = 137ns = 34× slower! Cache misses = invisible performance cliffs</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Memory Hierarchy Pyramid — উপরে ছোট দ্রুত (Registers), নিচে বড় ধীর (HDD)। প্রতি স্তর ১০x ধীর। Cache miss = performance cliff।</div>
 
 <div class="code-block">
 <strong>মেমোরি Hierarchy — Latency & Capacity:</strong>

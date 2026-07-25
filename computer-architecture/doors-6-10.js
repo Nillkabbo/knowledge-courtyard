@@ -213,6 +213,78 @@ doors.push({
 <div class="dialogue"><strong>এনভিডিয়া ইঞ্জিনিয়ার:</strong> ২০০৬ সালে আমরা CUDA বাজারে আনলাম। GPU-তে আমরা একটা নতুন মডেল ব্যবহার করি — SIMT (Single Instruction Multiple Threads)। এটা SIMD এর মতো — কিন্তু thread-ভিত্তিক। প্রতি ৩২টা thread একটা warp তৈরি করে। এক warp-এর সবাই একই instruction একই সময়ে execute করে — কিন্তু প্রত্যেক thread নিজের ডেটায় কাজ করে। Programmer thread লেখে — hardware warp বানায়।</div>
 <div class="dialogue en"><strong>NVIDIA Engineer:</strong> In 2006, we launched CUDA. GPUs use a new model — SIMT (Single Instruction Multiple Threads). It's like SIMD — but thread-based. Every 32 threads form a warp. All threads in a warp execute the same instruction simultaneously — but each works on its own data. The programmer writes threads — hardware forms warps.</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🧵 GPU Warp = 32 Threads in Lockstep (SIMT)</text>
+
+  <!-- No divergence -->
+  <text x="290" y="55" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">✅ No Divergence — All threads same path = 100% efficient</text>
+  <g transform="translate(0, 65)">
+    <rect x="160" y="0" width="32" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+    <rect x="194" y="0" width="32" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+    <rect x="228" y="0" width="32" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+    <rect x="262" y="0" width="32" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+    <rect x="296" y="0" width="32" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+    <rect x="330" y="0" width="32" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+    <rect x="364" y="0" width="32" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+    <rect x="398" y="0" width="32" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+    <text x="290" y="38" text-anchor="middle" fill="#86efac" font-size="9">All 32 threads: same instruction · same time</text>
+  </g>
+
+  <!-- Warp divergence -->
+  <text x="290" y="145" text-anchor="middle" fill="#f87171" font-size="11" font-weight="700">❌ Warp Divergence — if-else splits warp = 50% efficient!</text>
+
+  <!-- Step 1: IF path -->
+  <g transform="translate(0, 155)">
+    <text x="50" y="15" text-anchor="middle" fill="#94a3b8" font-size="9">if-branch:</text>
+    <rect x="160" y="0" width="32" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+    <rect x="194" y="0" width="32" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="208" y="14" text-anchor="middle" fill="#4ade80" font-size="7">ACTIVE</text>
+    <rect x="228" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
+    <rect x="262" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
+    <rect x="296" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
+    <rect x="330" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
+    <rect x="364" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
+    <rect x="398" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
+    <text x="345" y="14" text-anchor="middle" fill="#64748b" font-size="7">IDLE (waiting)</text>
+    <text x="450" y="14" fill="#facc15" font-size="9">⏱️ 50% wasted</text>
+  </g>
+
+  <!-- Step 2: ELSE path -->
+  <g transform="translate(0, 185)">
+    <text x="50" y="15" text-anchor="middle" fill="#94a3b8" font-size="9">else-branch:</text>
+    <rect x="160" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
+    <rect x="194" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
+    <text x="208" y="14" text-anchor="middle" fill="#64748b" font-size="7">IDLE</text>
+    <rect x="228" y="0" width="32" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+    <rect x="262" y="0" width="32" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+    <rect x="296" y="0" width="32" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+    <rect x="330" y="0" width="32" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+    <rect x="364" y="0" width="32" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+    <rect x="398" y="0" width="32" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+    <text x="345" y="14" text-anchor="middle" fill="#fb923c" font-size="7">ACTIVE</text>
+    <text x="450" y="14" fill="#facc15" font-size="9">⏱️ 50% wasted</text>
+  </g>
+
+  <!-- Batch size table -->
+  <text x="290" y="240" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700">📊 Batch Size = Multiple of 32 (Warp Fill)</text>
+  <rect x="100" y="255" width="380" height="50" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <rect x="110" y="265" width="80" height="30" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="150" y="284" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">32 ✅</text>
+  <rect x="200" y="265" width="80" height="30" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="240" y="284" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">64 ✅</text>
+  <rect x="290" y="265" width="80" height="30" rx="4" fill="#451a03" stroke="#f97316" stroke-width="1.5"/>
+  <text x="330" y="284" text-anchor="middle" fill="#fb923c" font-size="10" font-weight="700">48 ⚠️</text>
+  <rect x="380" y="265" width="80" height="30" rx="4" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="420" y="284" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">20 ❌</text>
+  <text x="150" y="305" text-anchor="middle" fill="#4ade80" font-size="8">100% fill</text>
+  <text x="240" y="305" text-anchor="middle" fill="#4ade80" font-size="8">100% fill</text>
+  <text x="330" y="305" text-anchor="middle" fill="#fb923c" font-size="8">75% (waste)</text>
+  <text x="420" y="305" text-anchor="middle" fill="#f87171" font-size="8">63% (waste)</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: GPU Warp — ৩২টা thread একসাথে চলে। if-else এ ভাগ হলে ৫০% thread অলস। Batch size ৩২-এর গুণিতক রাখো।</div>
+
 <div class="code-block">
 <strong>SIMD vs SIMT (CUDA Programming Guide):</strong>
 
@@ -294,6 +366,112 @@ doors.push({
 
 <div class="dialogue"><strong>কুং:</strong> আমি এইচ. টি. কুং। ১৯৮২। CMU। আমি একটা সমস্যা ভাবছিলাম — Von Neumann architecture-এ প্রতিটা calculation এ memory access লাগে। operand আনো, কম্পিউট করো, ফলাফল ফের মেমোরিতে লেখো। এই memory access-ই বাধা। কিন্তু যদি ডেটা এক PE থেকে সরাসরি পরের PE-তে যায়? কোনো memory access না? তাহলে — দ্রুততম। এই ধারণার নাম দিলাম <strong>systolic array</strong> — হৃদপিণ্ডের স্পন্দন (systole) থেকে, কারণ ডেটা pulse করে পাম্প হয়।</div>
 <div class="dialogue en"><strong>Kung:</strong> I'm H.T. Kung. 1982. CMU. I was thinking about a problem — Von Neumann architecture requires memory access for every calculation. Fetch operands, compute, write result back. This memory access is the bottleneck. But what if data flows directly from one PE to the next? No memory access? Then — fastest. I named it <strong>systolic array</strong> — from the heartbeat (systole), because data pumps in pulses.</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrSys" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker>
+  </defs>
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">❤️ Systolic Array (TPU) — Data Flows Like a Heartbeat</text>
+
+  <!-- Input labels -->
+  <text x="50" y="80" fill="#38bdf8" font-size="9">Input →</text>
+  <text x="70" y="120" fill="#94a3b8" font-size="8">x₁</text>
+  <text x="70" y="160" fill="#94a3b8" font-size="8">x₂</text>
+  <text x="70" y="200" fill="#94a3b8" font-size="8">x₃</text>
+
+  <!-- 3x3 PE Grid -->
+  <g id="pes">
+    <!-- Row 1 -->
+    <rect x="100" y="90" width="60" height="50" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
+    <text x="130" y="110" text-anchor="middle" fill="#c7d2fe" font-size="10" font-weight="700">PE</text>
+    <text x="130" y="125" text-anchor="middle" fill="#a5b4fc" font-size="8">w₁₁</text>
+
+    <rect x="180" y="90" width="60" height="50" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
+    <text x="210" y="110" text-anchor="middle" fill="#c7d2fe" font-size="10" font-weight="700">PE</text>
+    <text x="210" y="125" text-anchor="middle" fill="#a5b4fc" font-size="8">w₁₂</text>
+
+    <rect x="260" y="90" width="60" height="50" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
+    <text x="290" y="110" text-anchor="middle" fill="#c7d2fe" font-size="10" font-weight="700">PE</text>
+    <text x="290" y="125" text-anchor="middle" fill="#a5b4fc" font-size="8">w₁₃</text>
+
+    <!-- Row 2 -->
+    <rect x="100" y="150" width="60" height="50" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
+    <text x="130" y="170" text-anchor="middle" fill="#c7d2fe" font-size="10" font-weight="700">PE</text>
+    <text x="130" y="185" text-anchor="middle" fill="#a5b4fc" font-size="8">w₂₁</text>
+
+    <rect x="180" y="150" width="60" height="50" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
+    <text x="210" y="170" text-anchor="middle" fill="#c7d2fe" font-size="10" font-weight="700">PE</text>
+    <text x="210" y="185" text-anchor="middle" fill="#a5b4fc" font-size="8">w₂₂</text>
+
+    <rect x="260" y="150" width="60" height="50" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
+    <text x="290" y="170" text-anchor="middle" fill="#c7d2fe" font-size="10" font-weight="700">PE</text>
+    <text x="290" y="185" text-anchor="middle" fill="#a5b4fc" font-size="8">w₂₃</text>
+
+    <!-- Row 3 -->
+    <rect x="100" y="210" width="60" height="50" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
+    <text x="130" y="230" text-anchor="middle" fill="#c7d2fe" font-size="10" font-weight="700">PE</text>
+    <text x="130" y="245" text-anchor="middle" fill="#a5b4fc" font-size="8">w₃₁</text>
+
+    <rect x="180" y="210" width="60" height="50" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
+    <text x="210" y="230" text-anchor="middle" fill="#c7d2fe" font-size="10" font-weight="700">PE</text>
+    <text x="210" y="245" text-anchor="middle" fill="#a5b4fc" font-size="8">w₃₂</text>
+
+    <rect x="260" y="210" width="60" height="50" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
+    <text x="290" y="230" text-anchor="middle" fill="#c7d2fe" font-size="10" font-weight="700">PE</text>
+    <text x="290" y="245" text-anchor="middle" fill="#a5b4fc" font-size="8">w₃₃</text>
+  </g>
+
+  <!-- Horizontal flow arrows (input data →) -->
+  <line x1="85" y1="115" x2="100" y2="115" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrSys)"/>
+  <line x1="85" y1="175" x2="100" y2="175" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrSys)"/>
+  <line x1="85" y1="235" x2="100" y2="235" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrSys)"/>
+  <line x1="160" y1="115" x2="180" y2="115" stroke="#38bdf8" stroke-width="1" marker-end="url(#arrSys)"/>
+  <line x1="240" y1="115" x2="260" y2="115" stroke="#38bdf8" stroke-width="1" marker-end="url(#arrSys)"/>
+  <line x1="160" y1="175" x2="180" y2="175" stroke="#38bdf8" stroke-width="1" marker-end="url(#arrSys)"/>
+  <line x1="240" y1="175" x2="260" y2="175" stroke="#38bdf8" stroke-width="1" marker-end="url(#arrSys)"/>
+  <line x1="160" y1="235" x2="180" y2="235" stroke="#38bdf8" stroke-width="1" marker-end="url(#arrSys)"/>
+  <line x1="240" y1="235" x2="260" y2="235" stroke="#38bdf8" stroke-width="1" marker-end="url(#arrSys)"/>
+
+  <!-- Vertical flow arrows (partial sums ↓) -->
+  <line x1="130" y1="140" x2="130" y2="150" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrSys)"/>
+  <line x1="130" y1="200" x2="130" y2="210" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrSys)"/>
+  <line x1="210" y1="140" x2="210" y2="150" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrSys)"/>
+  <line x1="210" y1="200" x2="210" y2="210" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrSys)"/>
+  <line x1="290" y1="140" x2="290" y2="150" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrSys)"/>
+  <line x1="290" y1="200" x2="290" y2="210" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrSys)"/>
+
+  <!-- Output -->
+  <text x="130" y="280" text-anchor="middle" fill="#4ade80" font-size="9">y₁ ↓</text>
+  <text x="210" y="280" text-anchor="middle" fill="#4ade80" font-size="9">y₂ ↓</text>
+  <text x="290" y="280" text-anchor="middle" fill="#4ade80" font-size="9">y₃ ↓</text>
+  <line x1="130" y1="260" x2="130" y2="275" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrSys)"/>
+  <line x1="210" y1="260" x2="210" y2="275" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrSys)"/>
+  <line x1="290" y1="260" x2="290" y2="275" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrSys)"/>
+
+  <!-- PE operation -->
+  <rect x="360" y="90" width="200" height="60" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="460" y="110" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">PE Operation</text>
+  <text x="460" y="128" text-anchor="middle" fill="#fcd34d" font-size="10" font-family="monospace">out = x × w + partial_sum</text>
+  <text x="460" y="142" text-anchor="middle" fill="#94a3b8" font-size="8">Multiply-Accumulate (MAC)</text>
+
+  <!-- Key insight -->
+  <rect x="360" y="165" width="200" height="90" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="460" y="185" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">💡 Key Insight</text>
+  <text x="460" y="202" text-anchor="middle" fill="#86efac" font-size="9">Weights stay FIXED in PEs</text>
+  <text x="460" y="216" text-anchor="middle" fill="#86efac" font-size="9">Input streams through</text>
+  <text x="460" y="230" text-anchor="middle" fill="#86efac" font-size="9">Partial sums accumulate</text>
+  <text x="460" y="246" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Zero memory access!</text>
+
+  <!-- TPU stats -->
+  <rect x="360" y="270" width="200" height="70" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="460" y="290" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="700">TPU v1 Stats</text>
+  <text x="460" y="305" text-anchor="middle" fill="#94a3b8" font-size="9">256×256 = 65,536 PEs</text>
+  <text x="460" y="320" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">92 TOPS (INT8)</text>
+  <text x="460" y="333" text-anchor="middle" fill="#64748b" font-size="8">28nm · 2015</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Systolic Array — weights PE-তে স্থির, input বাঁ দিক থেকে প্রবাহিত, partial sums উপর থেকে নিচে। কোনো memory access নেই — শুধু MAC। এটাই TPU-এর হৃদপিণ্ড।</div>
 
 <div class="code-block">
 <strong>TPU v1 Architecture (Google, 2015):</strong>
