@@ -1,0 +1,337 @@
+{
+  "title": "Driving Flashcards",
+  "cards": [
+    {
+      "front": "What is the minimum age to begin Michigan's Segment 1 Driver Education?",
+      "back": "14 years and 8 months."
+    },
+    {
+      "front": "In Michigan, what are the three required components of Segment 1 Driver Education?",
+      "back": "24 hours of classroom instruction, 6 hours of behind-the-wheel driving, and 4 hours of observation."
+    },
+    {
+      "front": "At what minimum age is a teen eligible for a Level 1 Learner License in Michigan?",
+      "back": "14 years and 9 months."
+    },
+    {
+      "front": "What is the primary restriction for a driver with a Level 1 Learner License?",
+      "back": "They must be accompanied by a licensed adult aged 21 or older."
+    },
+    {
+      "front": "How many hours of supervised driving must a teen complete before Segment 2, and how many must be at night?",
+      "back": "30 hours total, with at least 2 of those hours at night."
+    },
+    {
+      "front": "How many total hours of supervised driving are required for a Level 2 Provisional License?",
+      "back": "50 hours, including 10 hours at night."
+    },
+    {
+      "front": "What is the minimum age for a Michigan Level 2 Provisional License?",
+      "back": "16 years."
+    },
+    {
+      "front": "Between what hours is a Level 2 driver restricted from driving solo without a valid exception?",
+      "back": "10:00 p.m. to 5:00 a.m."
+    },
+    {
+      "front": "What is the passenger restriction for a Level 2 Provisional License holder regarding people under age 21?",
+      "back": "Only one non-family member passenger under 21 is allowed unless supervised by an adult."
+    },
+    {
+      "front": "At what age does a Level 2 license automatically upgrade to a Level 3 Full License if the driver has been crash-free for 6 months?",
+      "back": "17 years."
+    },
+    {
+      "front": "What is the validity period of a Temporary Instruction Permit (TIP) for adults aged 18 and older?",
+      "back": "180 days."
+    },
+    {
+      "front": "The Michigan Knowledge Test consists of 50 questions divided into which two distinct categories?",
+      "back": "25 traffic signs and 25 traffic rules."
+    },
+    {
+      "front": "To pass the Michigan Knowledge Test, a student must score at least _____ correct answers in each of the two sections.",
+      "back": "20"
+    },
+    {
+      "front": "What are the vision standards for a Michigan driver's license regarding acuity and peripheral vision?",
+      "back": "20/40 acuity and 110-degree peripheral vision."
+    },
+    {
+      "front": "What traffic sign shape is reserved exclusively for 'STOP' signs?",
+      "back": "Octagon."
+    },
+    {
+      "front": "What does an inverted triangle sign colored red and white indicate?",
+      "back": "Yield the right-of-way."
+    },
+    {
+      "front": "A yellow diamond-shaped sign belongs to which category of traffic signs?",
+      "back": "Warning signs."
+    },
+    {
+      "front": "What is the meaning of a pennant-shaped sign placed on the left side of the road?",
+      "back": "No Passing Zone."
+    },
+    {
+      "front": "A pentagon-shaped sign (house shape) indicates which specific area?",
+      "back": "School Zone."
+    },
+    {
+      "front": "What color are construction and maintenance warning signs?",
+      "back": "Orange."
+    },
+    {
+      "front": "What is the legal consequence for speeding in a Michigan construction zone?",
+      "back": "Fines are doubled."
+    },
+    {
+      "front": "What information is typically provided by a green rectangular sign?",
+      "back": "Guide and destination directions."
+    },
+    {
+      "front": "Blue rectangular signs are used to indicate which type of facilities?",
+      "back": "Motorist services like gas, food, and hospitals."
+    },
+    {
+      "front": "Brown signs are used to highlight what specific locations?",
+      "back": "Parks, recreation areas, and historical sites."
+    },
+    {
+      "front": "What does a round yellow sign with an 'X' and 'RR' indicate?",
+      "back": "Railroad crossing ahead."
+    },
+    {
+      "front": "When encountering a 'WRONG WAY' or 'DO NOT ENTER' sign, what should a driver do immediately?",
+      "back": "Stop and turn around safely."
+    },
+    {
+      "front": "A white rectangular sign with black text typically represents what kind of sign?",
+      "back": "Regulatory signs (the law)."
+    },
+    {
+      "front": "The _____ is the only traffic sign that is placed on the left side of a two-way roadway.",
+      "back": "No Passing Zone pennant"
+    },
+    {
+      "front": "On a Michigan highway, what does a blue-and-red shield marker identify?",
+      "back": "Interstate Highway."
+    },
+    {
+      "front": "What color has replaced yellow for new signs marking school zones and pedestrian crossings?",
+      "back": "Fluorescent yellow-green."
+    },
+    {
+      "front": "What should a driver do at a flashing red traffic light?",
+      "back": "Treat it as a stop sign: stop completely and proceed when safe."
+    },
+    {
+      "front": "What is the correct response to a flashing yellow traffic light?",
+      "back": "Slow down and proceed with caution."
+    },
+    {
+      "front": "What does a steady yellow arrow indicate for a driver in a turn lane?",
+      "back": "The protected turn is ending; prepare to stop."
+    },
+    {
+      "front": "In Michigan, a flashing yellow arrow means a driver may turn left after _____.",
+      "back": "Yielding to oncoming traffic and pedestrians."
+    },
+    {
+      "front": "If a traffic signal is completely dark due to a power outage, how must the intersection be treated?",
+      "back": "As a four-way stop."
+    },
+    {
+      "front": "What do double solid yellow lines in the center of a road signify?",
+      "back": "Passing is prohibited in both directions."
+    },
+    {
+      "front": "A dashed yellow line on the driver's side of the center of the road means what?",
+      "back": "Passing is permitted when safe."
+    },
+    {
+      "front": "What is the purpose of solid white lines on the right edge of the roadway?",
+      "back": "They mark the outer edge of the pavement (fog lines)."
+    },
+    {
+      "front": "Where should a driver stop their vehicle when approaching a stop sign with a painted white stop line?",
+      "back": "Behind the stop line."
+    },
+    {
+      "front": "A diamond symbol painted on a road lane indicates that the lane is reserved for _____.",
+      "back": "High-Occupancy Vehicles (HOV)."
+    },
+    {
+      "front": "According to the 4-way stop rule, if two vehicles arrive at the same time, who has the right-of-way?",
+      "back": "The vehicle to the right."
+    },
+    {
+      "front": "When turning left at an intersection with a solid green light (no arrow), you must yield to _____.",
+      "back": "Oncoming traffic and pedestrians."
+    },
+    {
+      "front": "In a roundabout, traffic must always move in which direction?",
+      "back": "Counterclockwise (to the right)."
+    },
+    {
+      "front": "To whom must a driver entering a roundabout yield?",
+      "back": "Traffic already circulating inside the roundabout."
+    },
+    {
+      "front": "When a school bus has its red lights flashing and stop arm extended, which drivers must stop?",
+      "back": "Drivers in both directions, unless the road is divided by a physical barrier."
+    },
+    {
+      "front": "What is the 'Michigan Left' maneuver?",
+      "back": "A turn where a driver goes straight through an intersection, makes a U-turn at a median crossover, and then turns right."
+    },
+    {
+      "front": "A center two-way left-turn lane may only be used for _____.",
+      "back": "Starting or completing a left turn."
+    },
+    {
+      "front": "What is the default speed limit for Michigan residential and business districts?",
+      "back": "25 mph."
+    },
+    {
+      "front": "What is the default speed limit on Michigan freeways for passenger vehicles?",
+      "back": "70 mph (unless posted otherwise)."
+    },
+    {
+      "front": "What does the 'Basic Speed Law' require of drivers?",
+      "back": "To drive at a careful and prudent speed based on current weather and road conditions."
+    },
+    {
+      "front": "How many feet must a vehicle be parked away from a fire hydrant?",
+      "back": "15 feet."
+    },
+    {
+      "front": "What is the minimum parking distance allowed from a stop sign?",
+      "back": "30 feet."
+    },
+    {
+      "front": "When parking downhill with a curb, in which direction should the front wheels be turned?",
+      "back": "Toward the curb (right)."
+    },
+    {
+      "front": "When parking uphill with a curb, in which direction should the front wheels be turned?",
+      "back": "Away from the curb (left)."
+    },
+    {
+      "front": "Michigan's seatbelt law is a 'primary enforcement' law, which means _____.",
+      "back": "Police can pull you over solely for not wearing a seatbelt."
+    },
+    {
+      "front": "What is the '3-second rule' used for in driving?",
+      "back": "Determining a safe following distance in dry weather."
+    },
+    {
+      "front": "How should following distance be adjusted in rain or snow?",
+      "back": "Increased to 4 seconds for rain and 6+ seconds for snow or ice."
+    },
+    {
+      "front": "What are the areas around a vehicle that cannot be seen in the mirrors called?",
+      "back": "Blind spots."
+    },
+    {
+      "front": "Before changing lanes, a driver should check their mirrors and then _____.",
+      "back": "Perform a shoulder check (look over the shoulder)."
+    },
+    {
+      "front": "According to Michigan law, if your windshield wipers are on, what else must be on?",
+      "back": "Headlights."
+    },
+    {
+      "front": "When must high-beam headlights be dimmed for an oncoming vehicle?",
+      "back": "When the vehicle is within 500 feet."
+    },
+    {
+      "front": "When following a vehicle at night, how far back should you dim your high beams?",
+      "back": "300 feet (or 200 feet depending on the source segment)."
+    },
+    {
+      "front": "What is the proper way to use Anti-lock Brakes (ABS) in an emergency?",
+      "back": "Apply firm, steady pressure; do not pump the brakes."
+    },
+    {
+      "front": "How much space should a driver leave when passing a bicyclist?",
+      "back": "At least 3 feet."
+    },
+    {
+      "front": "What are the 'No Zones' around a large truck?",
+      "back": "Large blind spots located at the front, back, and sides of the truck."
+    },
+    {
+      "front": "Michigan's 'Move Over Law' requires drivers to do what when passing a stopped emergency vehicle with lights flashing?",
+      "back": "Change lanes away from the vehicle or slow down significantly if a lane change is impossible."
+    },
+    {
+      "front": "If a vehicle begins to skid, in which direction should the driver steer?",
+      "back": "In the direction they want the front of the car to go (steer into the skid)."
+    },
+    {
+      "front": "What is 'hydroplaning'?",
+      "back": "When tires lose contact with the road and slide on a thin layer of water."
+    },
+    {
+      "front": "Why do bridges and overpasses freeze before the rest of the road?",
+      "back": "Cold air circulates both above and below the road surface, lacking the insulation of the ground."
+    },
+    {
+      "front": "If a gas pedal sticks, the driver should shift the car into _____ and apply the brakes.",
+      "back": "Neutral"
+    },
+    {
+      "front": "What should a driver do if they see a deer on the road and cannot stop in time?",
+      "back": "Brake firmly but do not swerve, as swerving can lead to more severe crashes."
+    },
+    {
+      "front": "In Michigan, a driver is considered legally intoxicated (OWI) if their Blood Alcohol Content (BAC) is _____ or higher.",
+      "back": "0.08"
+    },
+    {
+      "front": "What is the BAC limit for drivers under the age of 21 under Michigan's Zero Tolerance law?",
+      "back": "0.02"
+    },
+    {
+      "front": "What does Michigan's 'Implied Consent' law mean for a driver?",
+      "back": "By driving, you agree to take a chemical test for alcohol/drugs if requested by police; refusal results in an automatic 1-year license suspension."
+    },
+    {
+      "front": "What is Michigan's 'Super Drunk' law threshold?",
+      "back": "A BAC of 0.17 or higher."
+    },
+    {
+      "front": "Under Michigan's 2023 Hands-Free Law, what is prohibited while operating a vehicle?",
+      "back": "Holding or using a handheld mobile device for any purpose, including at red lights."
+    },
+    {
+      "front": "How long do points for traffic violations remain on a Michigan driving record?",
+      "back": "Two years."
+    },
+    {
+      "front": "Term: Eminent Domain",
+      "back": "Definition: The power of the government to seize private land for public use with compensation."
+    },
+    {
+      "front": "Term: Easement",
+      "back": "Definition: A legal right to use or cross someone else's land for a specific purpose without owning it."
+    },
+    {
+      "front": "What happens to a right-of-way easement when a railroad line is formally 'abandoned'?",
+      "back": "The land rights typically revert to the adjoining property owners."
+    },
+    {
+      "front": "Concept: Railbanking",
+      "back": "Definition: A legal process that preserves a railroad right-of-way for future rail use by converting it into a recreational trail in the interim."
+    },
+    {
+      "front": "According to the Wikipedia excerpt, what percentage of rivers in England and Wales have public access rights?",
+      "back": "2%."
+    },
+    {
+      "front": "What is the 'Centerline Presumption' in property law?",
+      "back": "The legal theory that owners of land abutting an abandoned right-of-way own to the center of that corridor."
+    }
+  ]
+}

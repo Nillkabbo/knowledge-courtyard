@@ -1,0 +1,209 @@
+{
+  "name": "Charlie Munger & Irreplaceable Skills",
+  "children": [
+    {
+      "name": "Charlie Munger",
+      "children": [
+        {
+          "name": "Background",
+          "children": [
+            {
+              "name": "Born 1924, Omaha"
+            },
+            {
+              "name": "Harvard Law J.D."
+            },
+            {
+              "name": "Army Meteorologist"
+            }
+          ]
+        },
+        {
+          "name": "Berkshire Hathaway",
+          "children": [
+            {
+              "name": "Vice Chairman"
+            },
+            {
+              "name": "Buffett's Architect"
+            },
+            {
+              "name": "Modern Philosophy Creator"
+            }
+          ]
+        },
+        {
+          "name": "Investment Philosophy",
+          "children": [
+            {
+              "name": "Lollapalooza Effect"
+            },
+            {
+              "name": "Elementary Worldly Wisdom"
+            },
+            {
+              "name": "Mental Models Latticework"
+            },
+            {
+              "name": "High Ethical Standards"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "First Principles Thinking",
+      "children": [
+        {
+          "name": "Definition",
+          "children": [
+            {
+              "name": "Basic Assumptions"
+            },
+            {
+              "name": "Indeducible Truths"
+            },
+            {
+              "name": "Ab Initio Reasoning"
+            }
+          ]
+        },
+        {
+          "name": "Philosophical Roots",
+          "children": [
+            {
+              "name": "Aristotle's Arche"
+            },
+            {
+              "name": "Descartes' Method of Doubt"
+            },
+            {
+              "name": "Aql (Intellect)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Systems Thinking",
+      "children": [
+        {
+          "name": "Core Concepts",
+          "children": [
+            {
+              "name": "Relationships over Wholes"
+            },
+            {
+              "name": "Feedback Control"
+            },
+            {
+              "name": "Interdependencies"
+            }
+          ]
+        },
+        {
+          "name": "Business Application",
+          "children": [
+            {
+              "name": "Ripples of Decisions"
+            },
+            {
+              "name": "Feedback Loops"
+            },
+            {
+              "name": "Theory of Constraints"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Irreplaceable Craftsman",
+      "children": [
+        {
+          "name": "Avoid Obsolescence",
+          "children": [
+            {
+              "name": "Perishable Tools (Fana)"
+            },
+            {
+              "name": "Permanent Principles (Baqa)"
+            }
+          ]
+        },
+        {
+          "name": "The Business Brain",
+          "children": [
+            {
+              "name": "Value Chain awareness"
+            },
+            {
+              "name": "Opportunity Cost"
+            },
+            {
+              "name": "Rizq (Provision)"
+            }
+          ]
+        },
+        {
+          "name": "Communication Multiplier",
+          "children": [
+            {
+              "name": "Bayan (Expression)"
+            },
+            {
+              "name": "Team Alignment"
+            },
+            {
+              "name": "Feynman Test"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Innovation & Growth",
+      "children": [
+        {
+          "name": "T-Shaped Skills",
+          "children": [
+            {
+              "name": "Vertical: Deep Expertise"
+            },
+            {
+              "name": "Horizontal: Collaboration"
+            },
+            {
+              "name": "Cross-Pollination"
+            }
+          ]
+        },
+        {
+          "name": "Leverage",
+          "children": [
+            {
+              "name": "Positive: Benefits"
+            },
+            {
+              "name": "Negative: Threats"
+            },
+            {
+              "name": "Normative: Consistency"
+            }
+          ]
+        },
+        {
+          "name": "Entrepreneurial Leap",
+          "children": [
+            {
+              "name": "Calculated Risk"
+            },
+            {
+              "name": "Tawakkul (Reliance)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

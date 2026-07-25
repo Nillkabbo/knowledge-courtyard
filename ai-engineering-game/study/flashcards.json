@@ -1,0 +1,321 @@
+{
+  "title": "Transformer Flashcards",
+  "cards": [
+    {
+      "front": "What is the primary mechanism that defines the transformer family of artificial neural network architectures?",
+      "back": "The multi-head attention mechanism."
+    },
+    {
+      "front": "In a transformer, what is text converted into before being transformed into numerical vectors?",
+      "back": "Tokens."
+    },
+    {
+      "front": "How does each token obtain its initial vector representation in a transformer layer?",
+      "back": "Via lookup from a word embedding table."
+    },
+    {
+      "front": "Why must transformers inject positional information, such as positional encodings, into the input?",
+      "back": "Because the self-attention mechanism alone is permutation-invariant."
+    },
+    {
+      "front": "What is the primary advantage of transformers over earlier recurrent neural architectures like LSTM?",
+      "back": "They have no recurrent units, requiring less training time due to increased parallelization."
+    },
+    {
+      "front": "Modern transformer designs are generally grouped into which three variants?",
+      "back": "Encoder-only, decoder-only, and encoder-decoder."
+    },
+    {
+      "front": "Who authored the 2017 paper \"Attention Is All You Need,\" which first proposed the transformer architecture?",
+      "back": "Researchers at Google."
+    },
+    {
+      "front": "What problem in plain Recurrent Neural Networks (RNNs) causes the model's state to lose precise information about preceding tokens in long sentences?",
+      "back": "The vanishing-gradient problem."
+    },
+    {
+      "front": "Which RNN architecture introduced multiplicative gating units to mitigate the vanishing gradient problem in 1997?",
+      "back": "Long Short-Term Memory (LSTM)."
+    },
+    {
+      "front": "Why can RNNs and LSTMs not operate in parallel over all tokens in a sequence?",
+      "back": "They operate sequentially, one token at a time from first to last."
+    },
+    {
+      "front": "The linearly scaling fast weight controller (1992) was later shown to be equivalent to which transformer variant?",
+      "back": "The unnormalized linear transformer."
+    },
+    {
+      "front": "Early sequence-to-sequence (seq2seq) models suffered from a _____ because the whole source sentence had to be compressed into a fixed-size vector.",
+      "back": "Bottleneck problem."
+    },
+    {
+      "front": "What did the \"RNN search\" model introduce to seq2seq architectures to solve the fixed-size vector bottleneck?",
+      "back": "An attention mechanism."
+    },
+    {
+      "front": "Which 2016 model demonstrated that self-attention applied to feedforward networks could achieve state-of-the-art results without recurrence?",
+      "back": "Decomposable attention."
+    },
+    {
+      "front": "The first OpenAI model series that became state-of-the-art in natural language generation was based on which transformer variant?",
+      "back": "Decoder-only transformers (GPT series)."
+    },
+    {
+      "front": "Which 2018 encoder-only transformer model was used by Google to process search queries starting in 2019?",
+      "back": "BERT (Bidirectional Encoder Representations from Transformers)."
+    },
+    {
+      "front": "What computer vision architecture breaks input images into patches and treats them as token embedding vectors?",
+      "back": "Vision transformer (ViT)."
+    },
+    {
+      "front": "What training method involves linearly scaling the learning rate from 0 to its maximum value at the start of training to help the model converge?",
+      "back": "Learning rate warmup."
+    },
+    {
+      "front": "In a \"pre-LN\" Transformer, where is the layer normalization applied relative to the multihead attention and feedforward layers?",
+      "back": "Before the layers."
+    },
+    {
+      "front": "What is the standard two-step pipeline for training modern transformers on specific applications?",
+      "back": "Self-supervised pretraining followed by supervised fine-tuning."
+    },
+    {
+      "front": "In a masked language modeling task, how is the loss function typically calculated?",
+      "back": "As the sum of log-perplexities for the masked-out tokens."
+    },
+    {
+      "front": "Which class of language modeling tasks involves predicting the next token in a sequence based on all preceding revealed tokens?",
+      "back": "Autoregressive tasks."
+    },
+    {
+      "front": "What are the four primary components found in all transformer architectures?",
+      "back": "Tokenizers, embedding layer, transformer layers, and un-embedding layer."
+    },
+    {
+      "front": "What is the term for the process of splitting text into coarse-grained segments before they are further segmented into vocabulary tokens?",
+      "back": "Pretokenization."
+    },
+    {
+      "front": "What is the most important hyperparameter determined during the training of a subword tokenizer?",
+      "back": "Vocabulary size ($|V|$)."
+    },
+    {
+      "front": "What specific vector representation provides information about where tokens are located within an input sequence?",
+      "back": "Positional encoding."
+    },
+    {
+      "front": "In the original transformer paper, what is the hidden size (embedding dimension) referred to as?",
+      "back": "$d_{\\text{model}}$."
+    },
+    {
+      "front": "What is the purpose of the un-embedding layer in a transformer?",
+      "back": "To convert a vector representation back into a probability distribution over the vocabulary."
+    },
+    {
+      "front": "The practice of using the transpose of the embedding matrix as the un-embedding matrix to save parameters is called _____.",
+      "back": "Weight tying."
+    },
+    {
+      "front": "Why did the original transformer paper utilize sinusoidal functions for positional encoding?",
+      "back": "Because it allows shifts and neighbor calculations to be represented as linear transformations."
+    },
+    {
+      "front": "What is the purpose of each layer in a transformer encoder?",
+      "back": "To create contextualized representations of tokens by mixing information from other input tokens."
+    },
+    {
+      "front": "Which decoder mechanism allows the model to draw relevant information from the encodings generated by the encoder?",
+      "back": "Cross-attention (encoder-decoder attention)."
+    },
+    {
+      "front": "In a transformer, the feedforward network (FFN) is typically a 2-layered multilayer perceptron with which activation function in the original design?",
+      "back": "ReLU (Rectified Linear Unit)."
+    },
+    {
+      "front": "What is the typical relationship between the feedforward intermediate size ($d_{\\text{ffn}}$) and the embedding size ($d_{\\text{emb}}$) in BERT and GPT-2?",
+      "back": "$d_{\\text{ffn}} = 4 d_{\\text{emb}}$."
+    },
+    {
+      "front": "What three learned weight matrices are used to calculate scaled dot-product attention for a single head?",
+      "back": "Query ($W^Q$), Key ($W^K$), and Value ($W^V$)."
+    },
+    {
+      "front": "In the scaled dot-product attention formula, why are attention weights divided by $\\sqrt{d_k}$?",
+      "back": "To stabilize gradients during training."
+    },
+    {
+      "front": "The attention calculation is expressed as $\\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V$. What does the softmax function do here?",
+      "back": "It normalizes the weights so that they sum to 1 across each row."
+    },
+    {
+      "front": "What architectural feature allows the transformer to capture multiple different definitions of \"relevance\" between tokens in a single layer?",
+      "back": "Multihead attention."
+    },
+    {
+      "front": "What is the purpose of \"causal masking\" in a transformer decoder's self-attention module?",
+      "back": "To prevent tokens from attending to future tokens that have not yet been generated."
+    },
+    {
+      "front": "How does a standard transformer encoder layer differ from a decoder layer in terms of attention masking?",
+      "back": "The encoder layer uses all-to-all attention with no masking."
+    },
+    {
+      "front": "In the transformer architecture, what components are added to improve numerical stability and facilitate convergence during training?",
+      "back": "Residual connections and layer normalization."
+    },
+    {
+      "front": "Which convention for placing layer normalization is used in the original 2017 transformer?",
+      "back": "Post-LN (normalization after the sublayer and residual connection)."
+    },
+    {
+      "front": "What is the primary use case for an \"encoder-only\" transformer like BERT?",
+      "back": "Text embedding and representation learning for downstream applications."
+    },
+    {
+      "front": "What sublayers compose a standard decoder-only transformer layer?",
+      "back": "Causally masked self-attention and a feedforward network."
+    },
+    {
+      "front": "A \"prefixLM\" architecture uses _____ masking instead of standard causal masking.",
+      "back": "Prefix."
+    },
+    {
+      "front": "Which alternative activation function is used in the Llama and PaLM series of models?",
+      "back": "SwiGLU."
+    },
+    {
+      "front": "What is the primary benefit of Rotary Positional Embedding (RoPE) regarding vector dot-products?",
+      "back": "The dot-product between two vectors depends only on their relative location."
+    },
+    {
+      "front": "How does Attention with Linear Biases (ALiBi) incorporate positional information?",
+      "back": "By adding a linear bias matrix directly into the attention mechanism."
+    },
+    {
+      "front": "What inference optimization method saves computed key and value vectors to avoid recomputation at each new token?",
+      "back": "KV caching."
+    },
+    {
+      "front": "What is the term for the initial forward-pass in an autoregressive model where the KV caches for the input prompt are computed?",
+      "back": "Prefilling."
+    },
+    {
+      "front": "Which algorithm implements transformer attention by minimizing data copying between GPU caches through blocked matrix multiplication?",
+      "back": "FlashAttention."
+    },
+    {
+      "front": "How does Multi-Query Attention (MQA) reduce the memory footprint compared to standard Multihead Attention?",
+      "back": "All attention heads share a single set of key and value weights."
+    },
+    {
+      "front": "What attention mechanism partitions heads into groups where each group shares a single key-value pair?",
+      "back": "Grouped-query attention (GQA)."
+    },
+    {
+      "front": "What acceleration method uses a smaller model to guess future tokens, which are then verified in parallel by a larger model?",
+      "back": "Speculative decoding."
+    },
+    {
+      "front": "In multi-token prediction, how is the model modified to predict multiple future tokens in a single pass?",
+      "back": "The final embedding vector is processed by additional transformer blocks, each predicting a subsequent token."
+    },
+    {
+      "front": "Which transformer variant uses locality-sensitive hashing to achieve $O(N \\ln N)$ computational complexity?",
+      "back": "Reformer."
+    },
+    {
+      "front": "How do Random Feature Attention and the Performer model achieve linear time complexity?",
+      "back": "By approximating the softmax kernel using Fourier random features."
+    },
+    {
+      "front": "What speech recognition model by OpenAI treats a spectrogram as an image patches for a standard transformer?",
+      "back": "Whisper."
+    },
+    {
+      "front": "In image generation, how does the Muse model differ from DALL-E in its generation process?",
+      "back": "Muse uses an encoder-only transformer to predict masked image tokens iteratively."
+    },
+    {
+      "front": "What transformer-based architecture achieved grandmaster-level performance in evaluating chess board positions without search?",
+      "back": "A transformer with an Elo of 2895."
+    },
+    {
+      "front": "What is the term for the finite set of strings that a tokenizer can produce?",
+      "back": "Vocabulary."
+    },
+    {
+      "front": "In a transformer, why is the attention weight $a_{ij}$ from token $i$ to token $j$ not necessarily equal to $a_{ji}$?",
+      "back": "The model uses separate query and key projection matrices ($W^Q$ and $W^K$)."
+    },
+    {
+      "front": "In the pre-LN convention, the output of each sublayer is expressed as $x + \\text{Sublayer}(\\text{LayerNorm}(x))$. How does this affect training?",
+      "back": "It allows for faster convergence and eliminates the need for a learning rate warmup."
+    },
+    {
+      "front": "Which sub-quadratic transformer model uses random small-world networks to achieve $O(N)$ growth?",
+      "back": "BigBird."
+    },
+    {
+      "front": "What is \"weight tying\" in the context of transformer architecture?",
+      "back": "The practice of using the same parameters for the embedding and un-embedding matrices."
+    },
+    {
+      "front": "In FlashAttention, what is the purpose of \"rematerialization\" during the backward pass?",
+      "back": "To recompute attention matrices from cached intermediate arrays instead of storing the full matrices."
+    },
+    {
+      "front": "Which transformer optimization specifically targets the rise in demand for handling extremely long context lengths?",
+      "back": "FlashAttention-2."
+    },
+    {
+      "front": "What 2024 text-to-video model from OpenAI utilizes transformers to break data into tokens and calculate relevance using self-attention?",
+      "back": "Sora."
+    },
+    {
+      "front": "Which transformer component is responsible for mapping a token identifier into its initial $d_{\\text{emb}}$-dimensional vector?",
+      "back": "The embedding layer."
+    },
+    {
+      "front": "How is a transformer encoder layer able to use \"all-to-all\" attention?",
+      "back": "It processes the entire input sequence simultaneously, so no future information needs to be hidden."
+    },
+    {
+      "front": "In the un-embedding layer, what function is applied after the linear transformation to produce token probabilities?",
+      "back": "Softmax."
+    },
+    {
+      "front": "What is the primary difference between \"absolute\" and \"relative\" positional encodings?",
+      "back": "Absolute encodings assign a fixed vector to each position, while relative encodings represent distances between tokens."
+    },
+    {
+      "front": "Why do transformers typically require computation time that is quadratic in the size of the context window?",
+      "back": "Because every token in the sequence must calculate attention weights for every other token."
+    },
+    {
+      "front": "In a transformer decoder, which mechanism is inserted between the self-attention and feedforward sublayers?",
+      "back": "Cross-attention (encoder-decoder attention)."
+    },
+    {
+      "front": "Which subword tokenization algorithm uses a unigram language model for segmentation?",
+      "back": "ULM (Unigram Language Model)."
+    },
+    {
+      "front": "What component of the transformer architecture contains the majority of the model's parameters?",
+      "back": "The feedforward networks (FFN)."
+    },
+    {
+      "front": "What training stability issue was pre-LN layer normalization specifically designed to address?",
+      "back": "Difficulty in converging without careful hyperparameter tuning and warmup."
+    },
+    {
+      "front": "In the attention mechanism, the dimension of the key vectors is denoted by $d_k$. What is this value also equal to in practice?",
+      "back": "The query size ($d_{\\text{query}}$)."
+    },
+    {
+      "front": "Which variant of the transformer architecture is specifically designed to handle multimodal data efficiently, such as text and images together?",
+      "back": "Perceivers."
+    }
+  ]
+}

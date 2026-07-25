@@ -1,0 +1,281 @@
+{
+  "name": "Autonomous AI Agents",
+  "children": [
+    {
+      "name": "Definitions & Core Concepts",
+      "children": [
+        {
+          "name": "Autonomous Agent",
+          "children": [
+            {
+              "name": "Independent Task Execution"
+            },
+            {
+              "name": "Purposeful Action"
+            },
+            {
+              "name": "Environment Interaction"
+            }
+          ]
+        },
+        {
+          "name": "Agentic AI",
+          "children": [
+            {
+              "name": "Project Scoping"
+            },
+            {
+              "name": "Tool Utilization"
+            }
+          ]
+        },
+        {
+          "name": "Khalifa Analogy",
+          "children": [
+            {
+              "name": "Representative"
+            },
+            {
+              "name": "Active Worker"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Agent Anatomy (The Brain)",
+      "children": [
+        {
+          "name": "LLM (Brain)",
+          "children": [
+            {
+              "name": "Reasoning"
+            },
+            {
+              "name": "Decision Making"
+            },
+            {
+              "name": "Planning"
+            }
+          ]
+        },
+        {
+          "name": "Tools (Functions)",
+          "children": [
+            {
+              "name": "Function Calling"
+            },
+            {
+              "name": "MCP Protocol"
+            },
+            {
+              "name": "API Integration"
+            }
+          ]
+        },
+        {
+          "name": "Memory Systems",
+          "children": [
+            {
+              "name": "Short-term (Conversation)"
+            },
+            {
+              "name": "Working (Task State)"
+            },
+            {
+              "name": "Long-term (Vector DB)"
+            },
+            {
+              "name": "Episodic (Past Events)"
+            }
+          ]
+        },
+        {
+          "name": "Control Loop",
+          "children": [
+            {
+              "name": "Autonomy"
+            },
+            {
+              "name": "Reason-Act-Observe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Frameworks & Logic",
+      "children": [
+        {
+          "name": "ReAct",
+          "children": [
+            {
+              "name": "Thought"
+            },
+            {
+              "name": "Action"
+            },
+            {
+              "name": "Observation"
+            }
+          ]
+        },
+        {
+          "name": "Planning Strategies",
+          "children": [
+            {
+              "name": "Plan-and-Execute"
+            },
+            {
+              "name": "Adaptive Re-planning"
+            },
+            {
+              "name": "Hierarchical Decomposition"
+            }
+          ]
+        },
+        {
+          "name": "Advanced Search",
+          "children": [
+            {
+              "name": "Reflexion"
+            },
+            {
+              "name": "Tree-of-Thought"
+            },
+            {
+              "name": "LATS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Multi-Agent Systems (MAS)",
+      "children": [
+        {
+          "name": "Orchestration Models",
+          "children": [
+            {
+              "name": "Sequential Pipeline"
+            },
+            {
+              "name": "Manager-Worker"
+            },
+            {
+              "name": "Conversational Debate"
+            }
+          ]
+        },
+        {
+          "name": "Popular Frameworks",
+          "children": [
+            {
+              "name": "CrewAI (Role-based)"
+            },
+            {
+              "name": "LangGraph (State-based)"
+            },
+            {
+              "name": "AutoGen (Conversational)"
+            },
+            {
+              "name": "OpenAI Swarm"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Challenges & Safety",
+      "children": [
+        {
+          "name": "Failure Modes",
+          "children": [
+            {
+              "name": "Infinite Loops"
+            },
+            {
+              "name": "Hallucinated Tools"
+            },
+            {
+              "name": "Cost Explosion"
+            },
+            {
+              "name": "Context Pollution"
+            }
+          ]
+        },
+        {
+          "name": "Safety Layers",
+          "children": [
+            {
+              "name": "Guardrails"
+            },
+            {
+              "name": "Sandboxing"
+            },
+            {
+              "name": "Human-in-the-Loop"
+            },
+            {
+              "name": "Amanat (Verification)"
+            }
+          ]
+        },
+        {
+          "name": "Ethical Concerns",
+          "children": [
+            {
+              "name": "Accountability"
+            },
+            {
+              "name": "Privacy/Data Protection"
+            },
+            {
+              "name": "Manipulation Vulnerability"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Applications",
+      "children": [
+        {
+          "name": "Software Engineering",
+          "children": [
+            {
+              "name": "Devin AI"
+            },
+            {
+              "name": "Autonomous Coder"
+            }
+          ]
+        },
+        {
+          "name": "Enterprise",
+          "children": [
+            {
+              "name": "Business Automation"
+            },
+            {
+              "name": "Salesforce Agentforce"
+            }
+          ]
+        },
+        {
+          "name": "IoT/Infrastructure",
+          "children": [
+            {
+              "name": "Smart Homes"
+            },
+            {
+              "name": "Industrial Monitoring"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

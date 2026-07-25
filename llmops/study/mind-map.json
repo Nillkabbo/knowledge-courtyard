@@ -1,0 +1,268 @@
+{
+  "name": "Modern Software Engineering and MLOps",
+  "children": [
+    {
+      "name": "A/B Testing",
+      "children": [
+        {
+          "name": "Definition",
+          "children": [
+            {
+              "name": "Randomized Experiment"
+            },
+            {
+              "name": "User Experience Research"
+            },
+            {
+              "name": "Bucket/Split Testing"
+            }
+          ]
+        },
+        {
+          "name": "Statistics",
+          "children": [
+            {
+              "name": "Welch's t-test"
+            },
+            {
+              "name": "Fisher's Exact Test"
+            },
+            {
+              "name": "Z-tests"
+            }
+          ]
+        },
+        {
+          "name": "Applications",
+          "children": [
+            {
+              "name": "E-commerce"
+            },
+            {
+              "name": "Social Media"
+            },
+            {
+              "name": "Political Campaigns"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Continuous Integration (CI)",
+      "children": [
+        {
+          "name": "Practices",
+          "children": [
+            {
+              "name": "Build Automation"
+            },
+            {
+              "name": "Atomic Commits"
+            },
+            {
+              "name": "Frequent Commits"
+            },
+            {
+              "name": "Fast Builds"
+            }
+          ]
+        },
+        {
+          "name": "Core Concepts",
+          "children": [
+            {
+              "name": "Integration Branch"
+            },
+            {
+              "name": "Automated Testing"
+            },
+            {
+              "name": "CI/CD Pipeline"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Docker & Containers",
+      "children": [
+        {
+          "name": "Core Components",
+          "children": [
+            {
+              "name": "Docker Engine"
+            },
+            {
+              "name": "Images & Containers"
+            },
+            {
+              "name": "Docker Registry/Hub"
+            }
+          ]
+        },
+        {
+          "name": "Tools",
+          "children": [
+            {
+              "name": "Docker Compose"
+            },
+            {
+              "name": "Docker Swarm"
+            },
+            {
+              "name": "Docker Volumes"
+            }
+          ]
+        },
+        {
+          "name": "Virtualization",
+          "children": [
+            {
+              "name": "OS-level Virtualization"
+            },
+            {
+              "name": "Libcontainer"
+            },
+            {
+              "name": "Cgroups & Namespaces"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kubernetes (K8s)",
+      "children": [
+        {
+          "name": "Control Plane",
+          "children": [
+            {
+              "name": "Etcd"
+            },
+            {
+              "name": "API Server"
+            },
+            {
+              "name": "Scheduler"
+            },
+            {
+              "name": "Controller Manager"
+            }
+          ]
+        },
+        {
+          "name": "Node Components",
+          "children": [
+            {
+              "name": "Kubelet"
+            },
+            {
+              "name": "Container Runtime"
+            },
+            {
+              "name": "Kube-proxy"
+            }
+          ]
+        },
+        {
+          "name": "Workload Objects",
+          "children": [
+            {
+              "name": "Pods"
+            },
+            {
+              "name": "Deployments"
+            },
+            {
+              "name": "StatefulSets"
+            },
+            {
+              "name": "DaemonSets"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Load Balancing",
+      "children": [
+        {
+          "name": "Algorithms",
+          "children": [
+            {
+              "name": "Static: Round-robin"
+            },
+            {
+              "name": "Dynamic: Work Stealing"
+            },
+            {
+              "name": "Least Connections"
+            }
+          ]
+        },
+        {
+          "name": "Implementation",
+          "children": [
+            {
+              "name": "Server-side"
+            },
+            {
+              "name": "Client-side Random"
+            },
+            {
+              "name": "Round-robin DNS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MLOps",
+      "children": [
+        {
+          "name": "Definition",
+          "children": [
+            {
+              "name": "ML + DevOps + Data Engineering"
+            },
+            {
+              "name": "Lifecycle Management"
+            }
+          ]
+        },
+        {
+          "name": "Feature Store",
+          "children": [
+            {
+              "name": "Centralized Repository"
+            },
+            {
+              "name": "Batch & Real-time Pipelines"
+            },
+            {
+              "name": "Feature Versioning"
+            }
+          ]
+        },
+        {
+          "name": "Goals",
+          "children": [
+            {
+              "name": "Reproducibility"
+            },
+            {
+              "name": "Automation"
+            },
+            {
+              "name": "Scalability"
+            },
+            {
+              "name": "Governance"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

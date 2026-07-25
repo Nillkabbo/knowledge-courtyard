@@ -1,0 +1,345 @@
+{
+  "title": "Prompting Flashcards",
+  "cards": [
+    {
+      "front": "What is the core definition of prompt engineering?",
+      "back": "The process of structuring natural language inputs to produce specified outputs from a generative artificial intelligence model."
+    },
+    {
+      "front": "Term: Context Engineering",
+      "back": "A field of software engineering focusing on managing non-prompt contexts like system instructions, metadata, and API tools supplied to GenAI models."
+    },
+    {
+      "front": "What defines a 'prompt' in the context of large language models?",
+      "back": "Natural language text that describes and prescribes a task for an artificial intelligence to perform."
+    },
+    {
+      "front": "Effective prompt engineering requires an understanding of how a model _____ language.",
+      "back": "interprets"
+    },
+    {
+      "front": "Why has the specific job title of 'prompt engineer' lost traction in corporations since its $2023$ peak?",
+      "back": "AI models have improved at generating better prompts than humans and companies have integrated prompting into general employee training."
+    },
+    {
+      "front": "According to the Oxford English Dictionary, what is the primary goal of prompt engineering?",
+      "back": "To optimize an AI's output or achieve a desired outcome."
+    },
+    {
+      "front": "A prompt for a text-to-text model may include context, instructions, conversation history, and a _____.",
+      "back": "query"
+    },
+    {
+      "front": "What specific technique involves assigning a character for an AI to mimic to guide its responses?",
+      "back": "Role assignment"
+    },
+    {
+      "front": "What is 'vibe coding' in the context of software development?",
+      "back": "An AI-assisted method where a user prompts a model with a description of desired functionality and lets it generate or edit the code."
+    },
+    {
+      "front": "Context engineering aims to improve reliability, provenance, and _____ in production LLM systems.",
+      "back": "token efficiency"
+    },
+    {
+      "front": "What operational practice in context engineering ensures that changes to supplied context do not silently alter system behavior?",
+      "back": "Context regression tests"
+    },
+    {
+      "front": "Research indicates that reordering examples in a prompt can shift model accuracy by more than $40\\%$ percent.",
+      "back": "True"
+    },
+    {
+      "front": "The emergent property of large language models to temporarily learn from prompts without gradient updates is known as _____ learning.",
+      "back": "in-context"
+    },
+    {
+      "front": "How does 'in-context learning' differ from 'fine-tuning'?",
+      "back": "In-context learning is temporary and occurs through prompts, whereas fine-tuning produces lasting changes to model parameters."
+    },
+    {
+      "front": "Training a model to perform in-context learning is considered a form of _____.",
+      "back": "meta-learning"
+    },
+    {
+      "front": "How many accuracy points can format changes in few-shot settings shift LLM performance?",
+      "back": "Up to $76$ points."
+    },
+    {
+      "front": "Linguistic features such as _____ syntax have been found to improve consistency and reduce uncertainty in knowledge retrieval.",
+      "back": "clausal"
+    },
+    {
+      "front": "Term: FormatSpread",
+      "back": "An evaluative method that facilitates systematic analysis by evaluating a range of plausible prompt formats."
+    },
+    {
+      "front": "What is the purpose of the 'PromptEval' method?",
+      "back": "To estimate performance distributions across diverse prompts to enable robust metrics like performance quantiles."
+    },
+    {
+      "front": "The inclusion of a few input/output examples within a prompt to guide a model is called _____ prompting.",
+      "back": "multi-shot"
+    },
+    {
+      "front": "Term: Chain-of-thought (CoT) prompting",
+      "back": "A technique that induces an LLM to solve a problem as a series of intermediate reasoning steps before providing a final answer."
+    },
+    {
+      "front": "Which specific phrase can be appended to a prompt to enable zero-shot chain-of-thought reasoning?",
+      "back": "\"Let's think step-by-step\""
+    },
+    {
+      "front": "How does 'self-consistency' enhance chain-of-thought prompting results?",
+      "back": "It performs several rollouts and selects the most commonly reached conclusion from the results."
+    },
+    {
+      "front": "What is the core characteristic of 'tree-of-thought' prompting?",
+      "back": "Generating multiple lines of reasoning in parallel with the ability to backtrack or explore other paths."
+    },
+    {
+      "front": "Unlike large language models, early text-to-image models often struggle to understand _____ and sentence structure.",
+      "back": "negation"
+    },
+    {
+      "front": "In text-to-image prompting, where should the most heavily emphasized words typically be placed?",
+      "back": "Closer to the start of the prompt."
+    },
+    {
+      "front": "Term: Textual inversion",
+      "back": "An optimization process that creates a new word embedding (pseudo-word) from example images to express specific content or style."
+    },
+    {
+      "front": "The Meta AI model 'Segment Anything' can perform image segmentation using prompts like bounding boxes or _____.",
+      "back": "segmentation masks"
+    },
+    {
+      "front": "Why is the brittle nature of prompts considered a limitation of prompt engineering?",
+      "back": "Minor changes in phrasing or punctuation can produce dramatically different outputs even if intent is identical."
+    },
+    {
+      "front": "What technology enables LLMs to respond to queries using domain-specific or updated information from specified documents?",
+      "back": "Retrieval-augmented generation (RAG)"
+    },
+    {
+      "front": "How does RAG reduce the frequency of 'AI hallucinations'?",
+      "back": "By dynamically retrieving relevant text from databases or web sources to supplement generating responses."
+    },
+    {
+      "front": "Term: GraphRAG",
+      "back": "An extension of RAG that uses a knowledge graph to connect disparate information and synthesize insights over large data collections."
+    },
+    {
+      "front": "In the 'automatic prompt engineer' algorithm, how is an instruction's 'score' computed?",
+      "back": "By calculating and adding the log-probabilities of the target LLM's outputs when prompted with that instruction."
+    },
+    {
+      "front": "The 'auto-CoT' technique involves selecting diverse questions using _____ analysis to generate demonstration datasets.",
+      "back": "cluster"
+    },
+    {
+      "front": "Which framework optimizes instructions and few-shot demonstrations for multi-stage language model programs without needing module-level labels?",
+      "back": "MIPRO (Multi-prompt Instruction Proposal Optimizer)"
+    },
+    {
+      "front": "How does GEPA (Genetic-Pareto) optimize compound AI systems?",
+      "back": "By combining language-model-based analysis of execution traces with a Pareto-based evolutionary search."
+    },
+    {
+      "front": "Term: Soft prompting",
+      "back": "A technique where floating-point vectors are searched directly via gradient descent to maximize output likelihood."
+    },
+    {
+      "front": "What is the formal search objective in automated token sequence optimization?",
+      "back": "$\\arg \\max_{\\tilde{X}} \\sum_{i} \\log Pr[Y^{i}|{\\tilde{X}}\\ast X^{i}]$ where $\\tilde{X}$ is the token sequence."
+    },
+    {
+      "front": "The $1999$ 'Intelligent Filling Manager' is an early precedent of prompt-like workflows using a rule-based _____ system.",
+      "back": "expert"
+    },
+    {
+      "front": "In $2018$, researchers proposed that all NLP tasks could be cast as _____ problems.",
+      "back": "question-answer"
+    },
+    {
+      "front": "What is a 'prompt injection' attack?",
+      "back": "A cybersecurity exploit where adversaries craft inputs designed to cause unintended behavior by bypassing a model's safeguards."
+    },
+    {
+      "front": "Prompt injection takes advantage of a model's inability to distinguish between user inputs and _____.",
+      "back": "developer-defined prompts"
+    },
+    {
+      "front": "What is the 'vibe coding' word of the year for $2025$ according to Collins Dictionary?",
+      "back": "vibe coding"
+    },
+    {
+      "front": "Cloze: In text-to-image models, word _____ affects output, with earlier words receiving more emphasis.",
+      "back": "order"
+    },
+    {
+      "front": "What is the significance of the GSM8K benchmark in prompting research?",
+      "back": "It was used to show that Chain-of-Thought prompting allowed models like PaLM to achieve state-of-the-art mathematical reasoning results."
+    },
+    {
+      "front": "Cloze: Prompting techniques are highly model-_____, meaning what works for one may degrade performance on another.",
+      "back": "specific"
+    },
+    {
+      "front": "What is the purpose of 'observability' in context engineering?",
+      "back": "Logging exactly which context was supplied to the model to ensure system reliability."
+    },
+    {
+      "front": "Linguistic features like _____ significantly influence prompt effectiveness across various tasks.",
+      "back": "morphology"
+    },
+    {
+      "front": "How does 'prefix-tuning' optimize model generation?",
+      "back": "By searching for continuous vectors via gradient descent as a lightweight alternative to fine-tuning."
+    },
+    {
+      "front": "The 'automatic prompt engineer' algorithm uses _____ search to iterate over potential prompts.",
+      "back": "beam"
+    },
+    {
+      "front": "What is the primary role of 'exemplars' in few-shot prompting?",
+      "back": "To provide input/output examples that demonstrate the desired model output format and logic."
+    },
+    {
+      "front": "Concept: Self-consistency",
+      "back": "The method of selecting the most common conclusion from multiple chain-of-thought reasoning paths."
+    },
+    {
+      "front": "Which $2022$ model release triggered the widespread rise of 'prompt engineering' as a business skill?",
+      "back": "ChatGPT"
+    },
+    {
+      "front": "In context engineering, 'token budgeting' is used to improve production _____.",
+      "back": "efficiency"
+    },
+    {
+      "front": "What is the runner-up for the Oxford word of the year in $2023$?",
+      "back": "prompt"
+    },
+    {
+      "front": "Text-to-image prompts often include the desired subject, medium, style, lighting, color, and _____.",
+      "back": "texture"
+    },
+    {
+      "front": "Artist style imitation in Stable Diffusion often used the phrase 'in the style of _____' as a common test.",
+      "back": "Greg Rutkowski"
+    },
+    {
+      "front": "Cloze: Automated prompt generation methods use _____ feedback or evolutionary processes to refine inputs.",
+      "back": "reinforcement"
+    },
+    {
+      "front": "What is the function of 'provenance tags' in context engineering?",
+      "back": "To track the origin and reliability of information retrieved and supplied to the LLM."
+    },
+    {
+      "front": "Why is 'negation' difficult for early text-to-image models?",
+      "back": "They do not interpret grammar in the same way as LLMs, often including subjects the prompt explicitly asks to exclude."
+    },
+    {
+      "front": "Cloze: In 'prefix-tuning', vectors are searched to maximize the _____ on outputs.",
+      "back": "log-likelihood"
+    },
+    {
+      "front": "What does a typical text-to-audio prompt describe?",
+      "back": "The desired musical characteristics, such as BPM, genre, and mood."
+    },
+    {
+      "front": "How does 'Auto-CoT' handle question diversity?",
+      "back": "It clusters questions converted to vectors and selects those closest to each cluster's centroid."
+    },
+    {
+      "front": "In 2024, a survey identified over $50$ distinct text-based _____ techniques.",
+      "back": "prompting"
+    },
+    {
+      "front": "What makes in-context learning an 'emergent' ability?",
+      "back": "Its efficacy increases significantly only after a model reaches a certain scale, breaking standard scaling laws."
+    },
+    {
+      "front": "What is the 'Automatic Prompt Engineer' (APE) primary function?",
+      "back": "Using one LLM to automatically generate and score prompts for another target LLM."
+    },
+    {
+      "front": "Term: Prompt brittle nature",
+      "back": "The phenomenon where minor surface-level changes in a prompt produce dramatically different AI outputs."
+    },
+    {
+      "front": "Why is 'context metadata' managed in context engineering?",
+      "back": "To provide the model with task-specific information that accompanies the user's primary prompt."
+    },
+    {
+      "front": "Cloze: RAG allows LLMs to use domain-specific and updated information without frequent _____.",
+      "back": "retraining"
+    },
+    {
+      "front": "Which dictionary named 'vibe coding' as its word of the year in $2025$?",
+      "back": "Collins Dictionary"
+    },
+    {
+      "front": "What is 'clausal syntax' in the context of prompting rationale?",
+      "back": "A linguistic property that enhances the consistency of knowledge retrieval from LLMs."
+    },
+    {
+      "front": "How does 'Segment Anything' accept prompts other than text?",
+      "back": "Through bounding boxes, segmentation masks, or foreground/background points."
+    },
+    {
+      "front": "Term: Multi-shot learning (LLMs)",
+      "back": "Providing several input-output examples in a prompt to enable the model to learn a task in-context."
+    },
+    {
+      "front": "What is the role of 'pseudo-words' in textual inversion?",
+      "back": "They act as embedding vectors that can be included in a prompt to replicate a specific style or object."
+    },
+    {
+      "front": "The ability of models to follow trusted instructions while being vulnerable to malicious user inputs is the basis of _____.",
+      "back": "prompt injection"
+    },
+    {
+      "front": "What does the 'GEPA' optimizer use to propose changes to module prompts?",
+      "back": "Analysis of execution traces and textual feedback combined with a Pareto-based evolutionary search."
+    },
+    {
+      "front": "What was the hottest AI job of $2023$, according to The Wall Street Journal?",
+      "back": "Prompt engineer"
+    },
+    {
+      "front": "Cloze: In automated prompt engineering, 'soft prompts' are learned through _____.",
+      "back": "back-propagation"
+    },
+    {
+      "front": "What is the 'PIP' dataset used for?",
+      "back": "Enhancing text-to-image generation through personalized prompt rewriting based on user categorization."
+    },
+    {
+      "front": "Concept: In-context learning vs. Gradient descent",
+      "back": "In-context learning requires no parameter updates, while gradient descent is used in fine-tuning and soft prompting."
+    },
+    {
+      "front": "What is the primary benefit of 'GraphRAG' for narrative private data?",
+      "back": "It allows the model to synthesize insights and connect disparate pieces of information across large collections."
+    },
+    {
+      "front": "How does the 'Automatic Prompt Engineer' algorithm vary instructions?",
+      "back": "It takes the highest-scored instructions and gives them back to the prompting LLM for further variations."
+    },
+    {
+      "front": "In text-to-image prompts, what is 'rim lighting' an example of?",
+      "back": "Lighting parameters used to achieve a desired aesthetic in the generated image."
+    },
+    {
+      "front": "Term: Prompt optimization",
+      "back": "The use of algorithms to automatically refine prompt strings using evaluation datasets and task-specific metrics."
+    },
+    {
+      "front": "Which $2020$ paper first identified that language models are 'few-shot learners'?",
+      "back": "Brown et al. (Language models are few-shot learners)"
+    }
+  ]
+}

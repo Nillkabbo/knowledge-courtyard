@@ -1,0 +1,305 @@
+{
+  "title": "Turing Flashcards",
+  "cards": [
+    {
+      "front": "In which London district was Alan Turing born in 1912?",
+      "back": "Maida Vale"
+    },
+    {
+      "front": "What was the name of Alan Turing's father, who served in the Indian Civil Service?",
+      "back": "Julius Mathison Turing"
+    },
+    {
+      "front": "Alan Turing's mother, Ethel Sara Stoney, belonged to a Protestant _____ gentry family.",
+      "back": "Anglo-Irish"
+    },
+    {
+      "front": "Which 1922 book by Edwin Tenney Brewster did Turing credit with opening his eyes to science?",
+      "back": "Natural Wonders Every Child Should Know"
+    },
+    {
+      "front": "At age 13, Turing began attending _____, an independent boarding school in Dorset.",
+      "back": "Sherborne School"
+    },
+    {
+      "front": "During the 1926 General Strike, how many miles did Turing ride his bicycle alone to reach school for the start of term?",
+      "back": "60 miles (97 km)"
+    },
+    {
+      "front": "In 1928, at age 16, Turing successfully deduced _____ questioning of Newton's laws of motion from a text.",
+      "back": "Albert Einstein's"
+    },
+    {
+      "front": "Who was Turing's close friend at Sherborne whose death from bovine tuberculosis in 1930 caused him great sorrow?",
+      "back": "Christopher Collan Morcom"
+    },
+    {
+      "front": "Turing attended undergraduate studies at _____ from 1931 to 1934.",
+      "back": "King's College, Cambridge"
+    },
+    {
+      "front": "Turing's 1934 dissertation, which earned him a fellowship, proved a version of the _____.",
+      "back": "Central limit theorem"
+    },
+    {
+      "front": "In his 1936 paper 'On Computable Numbers', Turing replaced Gödel's formal language with hypothetical devices now called _____.",
+      "back": "Turing machines"
+    },
+    {
+      "front": "What mathematical problem, posed by David Hilbert in 1928, did Turing prove had no solution?",
+      "back": "The Entscheidungsproblem (decision problem)"
+    },
+    {
+      "front": "Turing proved the decision problem is unsolvable by showing that the _____ for Turing machines is undecidable.",
+      "back": "Halting problem"
+    },
+    {
+      "front": "The _____ thesis states that Turing machines and lambda calculus can compute anything that is computable.",
+      "back": "Church–Turing"
+    },
+    {
+      "front": "From 1936 to 1938, Turing obtained his PhD from _____.",
+      "back": "Princeton University"
+    },
+    {
+      "front": "Who served as Turing's doctoral advisor at Princeton University?",
+      "back": "Alonzo Church"
+    },
+    {
+      "front": "In his PhD dissertation, Turing introduced the concept of _____ computing, which involves Turing machines augmented with 'oracles'.",
+      "back": "Relative"
+    },
+    {
+      "front": "During WWII, Turing led _____, the section at Bletchley Park responsible for German naval cryptanalysis.",
+      "back": "Hut 8"
+    },
+    {
+      "front": "What was the name of the electromechanical machine Turing specified to break Enigma ciphers more effectively?",
+      "back": "The bombe"
+    },
+    {
+      "front": "The bombe was an improvement on the pre-war Polish method known as the _____.",
+      "back": "Bomba"
+    },
+    {
+      "front": "Turing's cryptanalytic method for the bombe relied on finding a fragment of probable plaintext known as a _____.",
+      "back": "Crib"
+    },
+    {
+      "front": "In 1941, Turing and colleagues wrote directly to _____ to request more resources for codebreaking.",
+      "back": "Winston Churchill"
+    },
+    {
+      "front": "What was the name of the sequential statistical technique Turing invented to assist in breaking the naval Enigma?",
+      "back": "Banburismus"
+    },
+    {
+      "front": "Turing used a measure of weight of evidence in Banburismus called the _____, often used in units of tenths.",
+      "back": "Ban (or deciban)"
+    },
+    {
+      "front": "What technique did Turing devise in 1942 for use against the Lorenz cipher produced by the 'Tunny' machine?",
+      "back": "Turingery (or Turingismus)"
+    },
+    {
+      "front": "Turing introduced codebreaker Tommy Flowers to Max Newman, leading to the development of the _____ computer.",
+      "back": "Colossus"
+    },
+    {
+      "front": "What was the codename for the portable secure voice scrambler Turing developed at Hanslope Park?",
+      "back": "Delilah"
+    },
+    {
+      "front": "While at the National Physical Laboratory (NPL), Turing designed the _____, one of the first designs for a stored-program computer.",
+      "back": "Automatic Computing Engine (ACE)"
+    },
+    {
+      "front": "In 1948, Turing joined the Computing Machine Laboratory at the _____.",
+      "back": "University of Manchester"
+    },
+    {
+      "front": "In the 1950 paper 'Computing Machinery and Intelligence', Turing proposed an experiment known as the _____.",
+      "back": "Turing test"
+    },
+    {
+      "front": "What was the primary goal of the Turing test in the field of artificial intelligence?",
+      "back": "To determine if a machine can 'think' by being indistinguishable from a human in conversation."
+    },
+    {
+      "front": "What is the name of the first computer chess program, completed by Turing and D.G. Champernowne in 1950?",
+      "back": "Turochamp"
+    },
+    {
+      "front": "Turing's 1952 paper, 'The Chemical Basis of Morphogenesis', focuses on the development of patterns in _____.",
+      "back": "Biological organisms"
+    },
+    {
+      "front": "Turing suggested that patterns in nature could be accounted for by a _____ system involving chemicals diffusing and reacting.",
+      "back": "Reaction–diffusion"
+    },
+    {
+      "front": "In a reaction-diffusion system, an _____ reaction provides positive feedback that can be modeled by nonlinear differential equations.",
+      "back": "Autocatalytic"
+    },
+    {
+      "front": "Which Russian biochemist performed experiments on oscillating chemical reactions similar to those predicted by Turing's morphogenesis work?",
+      "back": "Boris Belousov"
+    },
+    {
+      "front": "Recent research suggests Turing's work explains how _____ genes control the number of digits in limbs.",
+      "back": "Hox"
+    },
+    {
+      "front": "In 1941, Turing was briefly engaged to his Bletchley Park colleague and fellow mathematician _____.",
+      "back": "Joan Clarke"
+    },
+    {
+      "front": "In 1952, Turing was prosecuted for 'gross indecency' due to his relationship with _____.",
+      "back": "Arnold Murray"
+    },
+    {
+      "front": "To avoid prison after his 1952 conviction, Turing accepted a procedure commonly called _____.",
+      "back": "Chemical castration (or organotherapy)"
+    },
+    {
+      "front": "The drug _____ (a synthetic oestrogen) was used in Turing's hormone treatment following his conviction.",
+      "back": "Stilboestrol (or diethylstilbestrol)"
+    },
+    {
+      "front": "What major professional consequence did Turing face following his criminal conviction regarding national security?",
+      "back": "The removal of his security clearance (barring him from GCHQ consultancy)."
+    },
+    {
+      "front": "Alan Turing died on June 7, 1954, from _____ poisoning.",
+      "back": "Cyanide"
+    },
+    {
+      "front": "Although the official inquest verdict was suicide, what alternative theory did philosopher Jack Copeland suggest for Turing's death?",
+      "back": "Accidental inhalation of cyanide fumes from an electroplating experiment."
+    },
+    {
+      "front": "Which British Prime Minister issued an official public apology for Turing's treatment in 2009?",
+      "back": "Gordon Brown"
+    },
+    {
+      "front": "In 2013, _____ granted Alan Turing a posthumous royal pardon.",
+      "back": "Queen Elizabeth II"
+    },
+    {
+      "front": "What is the informal name of the 2017 UK law that retroactively pardoned men convicted under historical anti-homosexuality legislation?",
+      "back": "Alan Turing law"
+    },
+    {
+      "front": "Turing's portrait was released on the Bank of England _____ note on June 23, 2021.",
+      "back": "£50"
+    },
+    {
+      "front": "What was the name of the London dining club for researchers in cybernetics that Turing joined in 1949?",
+      "back": "Ratio Club"
+    },
+    {
+      "front": "In cryptanalysis, what is the term for a fragment of text that is assumed to be in the original message?",
+      "back": "Crib"
+    },
+    {
+      "front": "Term: Universal Turing Machine",
+      "back": "Definition: A hypothetical device capable of simulating any other Turing machine, forming the basis for general-purpose computers."
+    },
+    {
+      "front": "Turing solved the indicator system for the German _____ Enigma, which was more complex than other branches.",
+      "back": "Naval"
+    },
+    {
+      "front": "What was the name of the simpler machine replaced by Colossus for codebreaking the Lorenz cipher?",
+      "back": "Heath Robinson"
+    },
+    {
+      "front": "Turing provided the first detailed design of a _____ computer in 1946.",
+      "back": "Stored-program"
+    },
+    {
+      "front": "The _____ is an Internet security test based on a reversed form of the Turing test.",
+      "back": "CAPTCHA"
+    },
+    {
+      "front": "Turing's mathematical models of morphogenesis predicted _____ chemical reactions, which were not observed until the 1960s.",
+      "back": "Oscillating"
+    },
+    {
+      "front": "According to official war historian Harry Hinsley, the work at Bletchley Park shortened the war in Europe by more than _____.",
+      "back": "Two years"
+    },
+    {
+      "front": "What was the title of Turing's PhD dissertation at Princeton?",
+      "back": "Systems of Logic Based on Ordinals"
+    },
+    {
+      "front": "Turing was appointed an _____ of the Order of the British Empire in 1946.",
+      "back": "Officer (OBE)"
+    },
+    {
+      "front": "Turing's 'round-the-house chess' required a player to make a move and then _____ before the opponent's move.",
+      "back": "Run around the house"
+    },
+    {
+      "front": "What was the name of the psychiatric consultant Turing saw in his later years who became a family friend?",
+      "back": "Franz Greenbaum"
+    },
+    {
+      "front": "In the 1940s, Turing buried _____ near Bletchley Park to protect his savings from a potential invasion.",
+      "back": "Two silver bars"
+    },
+    {
+      "front": "The 2023 study with _____ verified Turing's mathematical morphogenesis model using living vegetation.",
+      "back": "Chia seeds"
+    },
+    {
+      "front": "At Sherborne, headmaster Nowell Smith warned that if Turing remained solely a 'Scientific Specialist', he was _____.",
+      "back": "Wasting his time (at a public school)"
+    },
+    {
+      "front": "Turing's 'Universal Machine' could perform any conceivable mathematical computation representable as an _____.",
+      "back": "Algorithm"
+    },
+    {
+      "front": "Turing's 1948 work on 'Intelligent Machinery' suggested simulating a _____ mind rather than an adult mind for AI development.",
+      "back": "Child's"
+    },
+    {
+      "front": "The annual award for computing innovation named after Turing is often referred to as the 'Nobel Prize of Computing'. What is its name?",
+      "back": "Turing Award"
+    },
+    {
+      "front": "In 1930, Turing was awarded a scholarship called an _____ to King's College, Cambridge.",
+      "back": "Exhibition"
+    },
+    {
+      "front": "Turing'sTryout time for the 1948 Olympic _____ was only 11 minutes slower than the silver medalist.",
+      "back": "Marathon"
+    },
+    {
+      "front": "Turing's first published paper, 'Equivalence of left and right almost periodicity', appeared in which journal?",
+      "back": "Journal of the London Mathematical Society"
+    },
+    {
+      "front": "At Bletchley Park, Turing was nicknamed 'Prof' and his treatise on Enigma was known as the _____.",
+      "back": "Prof's Book"
+    },
+    {
+      "front": "Turing designed a secure speech system called _____ while consulting at Bell Labs during the war.",
+      "back": "SIGSALY"
+    },
+    {
+      "front": "The pilot version of ACE executed its first program on May 10, _____.",
+      "back": "1950"
+    },
+    {
+      "front": "Turing's 'ban' unit of evidence was based on the _____ base-10 scale.",
+      "back": "Logarithmic"
+    },
+    {
+      "front": "Turing was elected a Fellow of the _____ in 1951.",
+      "back": "Royal Society (FRS)"
+    }
+  ]
+}

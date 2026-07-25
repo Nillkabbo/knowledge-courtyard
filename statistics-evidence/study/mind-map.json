@@ -1,0 +1,163 @@
+{
+  "name": "Distributed Systems",
+  "children": [
+    {
+      "name": "Fundamental Concepts",
+      "children": [
+        {
+          "name": "Logical Time",
+          "children": [
+            {
+              "name": "Lamport Clocks"
+            },
+            {
+              "name": "Happens-before Relation"
+            },
+            {
+              "name": "Causality"
+            }
+          ]
+        },
+        {
+          "name": "Consistency Models",
+          "children": [
+            {
+              "name": "Eventual Consistency"
+            },
+            {
+              "name": "Strong Eventual Consistency"
+            },
+            {
+              "name": "ACID vs BASE"
+            }
+          ]
+        },
+        {
+          "name": "CAP Theorem",
+          "children": [
+            {
+              "name": "Consistency"
+            },
+            {
+              "name": "Availability"
+            },
+            {
+              "name": "Partition Tolerance"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Consensus & Coordination",
+      "children": [
+        {
+          "name": "Algorithms",
+          "children": [
+            {
+              "name": "Paxos"
+            },
+            {
+              "name": "Raft"
+            },
+            {
+              "name": "Byzantine Fault Tolerance"
+            }
+          ]
+        },
+        {
+          "name": "Mutual Exclusion",
+          "children": [
+            {
+              "name": "Semaphores"
+            },
+            {
+              "name": "Race Conditions"
+            },
+            {
+              "name": "Mutex"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Storage & Processing",
+      "children": [
+        {
+          "name": "Partitioning (Sharding)",
+          "children": [
+            {
+              "name": "Horizontal Partitioning"
+            },
+            {
+              "name": "Vertical Partitioning"
+            },
+            {
+              "name": "Consistent Hashing"
+            }
+          ]
+        },
+        {
+          "name": "Replication",
+          "children": [
+            {
+              "name": "Single-leader"
+            },
+            {
+              "name": "Multi-leader"
+            },
+            {
+              "name": "Leaderless"
+            }
+          ]
+        },
+        {
+          "name": "Processing Models",
+          "children": [
+            {
+              "name": "MapReduce"
+            },
+            {
+              "name": "Stream Processing"
+            },
+            {
+              "name": "Event Sourcing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Distributed Transactions",
+      "children": [
+        {
+          "name": "Two-Phase Commit (2PC)"
+        },
+        {
+          "name": "Three-Phase Commit (3PC)"
+        },
+        {
+          "name": "Saga Pattern"
+        }
+      ]
+    },
+    {
+      "name": "Technologies & Platforms",
+      "children": [
+        {
+          "name": "Apache Kafka"
+        },
+        {
+          "name": "Amazon Dynamo"
+        },
+        {
+          "name": "Distributed Hash Tables (DHT)"
+        },
+        {
+          "name": "Blockchain (Bitcoin)"
+        }
+      ]
+    }
+  ]
+}

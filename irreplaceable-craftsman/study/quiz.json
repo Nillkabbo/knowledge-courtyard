@@ -1,0 +1,395 @@
+{
+  "title": "Munger Quiz",
+  "questions": [
+    {
+      "question": "How did Warren Buffett describe Charlie Munger's specific contribution to the evolution of Berkshire Hathaway?",
+      "answerOptions": [
+        {
+          "text": "The architect of the business philosophy",
+          "isCorrect": true,
+          "rationale": "Buffett credited Munger as the primary designer of the modern firm's investment and business approach, moving beyond simple stock picking."
+        },
+        {
+          "text": "The primary capital allocator",
+          "isCorrect": false,
+          "rationale": "While Munger was a vice chairman, Buffett is more traditionally associated with the final execution of capital allocation."
+        },
+        {
+          "text": "The chief financial auditor",
+          "isCorrect": false,
+          "rationale": "Munger's influence was conceptual and strategic rather than focused on the technical auditing of accounts."
+        },
+        {
+          "text": "The sole director of operations",
+          "isCorrect": false,
+          "rationale": "Munger served as vice chairman and a close partner, but the firm operates with a decentralized structure and multiple directors."
+        }
+      ],
+      "hint": "Think of a term used for someone who designs the fundamental structure or blueprint of a system."
+    },
+    {
+      "question": "Between 1962 and 1975, how did the annual compound returns of Munger's investment partnership compare to the Dow Jones Industrial Average?",
+      "answerOptions": [
+        {
+          "text": "$19.8\\%$ compared to $5.0\\%$",
+          "isCorrect": true,
+          "rationale": "Munger's partnership significantly outperformed the market average during this period, nearly quadrupling the Dow's annual rate."
+        },
+        {
+          "text": "$31.0\\%$ compared to $15.0\\%$",
+          "isCorrect": false,
+          "rationale": "These figures do not match the historical performance records cited in Buffett's essay on superinvestors."
+        },
+        {
+          "text": "$5.0\\%$ compared to $19.8\\%$",
+          "isCorrect": false,
+          "rationale": "This invert the actual performance, suggesting the market outperformed Munger, which is incorrect."
+        },
+        {
+          "text": "$12.5\\%$ compared to $10.0\\%$",
+          "isCorrect": false,
+          "rationale": "While these represent positive growth, they understate the actual degree of outperformance Munger achieved."
+        }
+      ],
+      "hint": "The partnership returns were nearly four times higher than the annual market appreciation rate."
+    },
+    {
+      "question": "In Charlie Munger's investment philosophy, what is the 'Lollapalooza effect'?",
+      "answerOptions": [
+        {
+          "text": "The confluence of multiple biases or tendencies acting in the same direction",
+          "isCorrect": true,
+          "rationale": "This effect describes how different psychological factors can compound, leading to extreme and often irrational outcomes."
+        },
+        {
+          "text": "The tendency for a stock price to revert to its historical mean",
+          "isCorrect": false,
+          "rationale": "Mean reversion is a statistical concept, whereas Munger's term specifically addresses psychological and behavioral patterns."
+        },
+        {
+          "text": "A strategy involving the diversification of assets across uncorrelated markets",
+          "isCorrect": false,
+          "rationale": "Munger generally favored concentration over broad diversification, and this term refers to human misjudgment rather than portfolio structure."
+        },
+        {
+          "text": "The impact of external macroeconomic shocks on localized businesses",
+          "isCorrect": false,
+          "rationale": "The term focuses on internal mental models and psychological biases rather than external economic indicators."
+        }
+      ],
+      "hint": "Consider what happens when several psychological forces combine to drive a single result."
+    },
+    {
+      "question": "What common architectural feature did Munger advocate for in his university dormitory designs, which led to significant public controversy?",
+      "answerOptions": [
+        {
+          "text": "Windowless bedrooms",
+          "isCorrect": true,
+          "rationale": "Munger's designs for the University of Michigan and UC Santa Barbara prioritized high-density occupancy, often resulting in rooms without natural light."
+        },
+        {
+          "text": "Open-air communal bathrooms",
+          "isCorrect": false,
+          "rationale": "While Munger had unconventional views, the controversy centered on the lack of light and ventilation in living quarters, not bathroom layout."
+        },
+        {
+          "text": "Straw-bale insulation",
+          "isCorrect": false,
+          "rationale": "Munger's architectural preferences were based on efficiency and social interaction, not specific sustainable building materials like straw."
+        },
+        {
+          "text": "Rotating living modules",
+          "isCorrect": false,
+          "rationale": "His designs focused on fixed, high-density layouts rather than kinetic or modular architectural features."
+        }
+      ],
+      "hint": "This feature relates to a lack of access to natural light in individual student rooms."
+    },
+    {
+      "question": "According to the source material, how does systems thinking differ from traditional analytical approaches?",
+      "answerOptions": [
+        {
+          "text": "It examines wholes and relationships rather than isolated parts",
+          "isCorrect": true,
+          "rationale": "Systems thinking is characterized by a holistic view that focuses on interdependencies rather than reductionist decomposition."
+        },
+        {
+          "text": "It focuses solely on linear cause-and-effect sequences",
+          "isCorrect": false,
+          "rationale": "Systems thinking often deals with non-linear feedback loops and complex interrelations rather than simple linear paths."
+        },
+        {
+          "text": "It prioritizes the study of stagnant objects over dynamic interactions",
+          "isCorrect": false,
+          "rationale": "The methodology is specifically designed to understand behavior over time and active relationships."
+        },
+        {
+          "text": "It requires the complete removal of a system's boundary to function",
+          "isCorrect": false,
+          "rationale": "Identifying system boundaries is a core part of the process to understand energy and information exchange."
+        }
+      ],
+      "hint": "Think about the difference between looking at a single tree and looking at the entire forest's ecosystem."
+    },
+    {
+      "question": "How did Isaac Newton's 'System of the World' redefine the definition of a 'system' compared to earlier thinkers like Robert Hooke?",
+      "answerOptions": [
+        {
+          "text": "He described the universe as a mechanical, physical system governed by gravity",
+          "isCorrect": true,
+          "rationale": "Newton moved the concept from a visual arrangement of stars to a dynamic physical model determined by mathematical laws."
+        },
+        {
+          "text": "He viewed the universe as a purely biological entity that evolves",
+          "isCorrect": false,
+          "rationale": "Newton's work was foundational to physics and mechanics, not evolutionary biology."
+        },
+        {
+          "text": "He defined systems based on their socio-political hierarchies",
+          "isCorrect": false,
+          "rationale": "Newton's definition focused on the physical cosmos rather than social or political structures."
+        },
+        {
+          "text": "He argued that systems are visual maps without physical properties",
+          "isCorrect": false,
+          "rationale": "This reflects the earlier approach Newton was moving away from in favor of physical dynamics."
+        }
+      ],
+      "hint": "Consider the shift from a visual map to a set of laws involving forces and movement."
+    },
+    {
+      "question": "In systems thinking, what is the term used for the analog of equilibrium in a living system?",
+      "answerOptions": [
+        {
+          "text": "Homeostasis",
+          "isCorrect": true,
+          "rationale": "Homeostasis refers to the self-regulating process by which biological systems maintain stability while adjusting to changing conditions."
+        },
+        {
+          "text": "Thermodynamics",
+          "isCorrect": false,
+          "rationale": "Thermodynamics is the study of heat and energy, whereas the question asks for the specific state of living system stability."
+        },
+        {
+          "text": "Self-organization",
+          "isCorrect": false,
+          "rationale": "Self-organization is the process of creating structure, while the maintaining of a steady internal state is homeostasis."
+        },
+        {
+          "text": "Entropy",
+          "isCorrect": false,
+          "rationale": "Entropy represents a state of disorder or decline, which is the opposite of the maintained stability in living systems."
+        }
+      ],
+      "hint": "This biological term describes how organisms keep their internal environment stable."
+    },
+    {
+      "question": "What does the horizontal bar represent in the metaphor of 'T-shaped skills'?",
+      "answerOptions": [
+        {
+          "text": "The ability to collaborate across disciplines and apply knowledge outside one's expertise",
+          "isCorrect": true,
+          "rationale": "The horizontal bar symbolizes the breadth of a person's ability to work with others and understand different fields."
+        },
+        {
+          "text": "The depth of technical expertise in a single, specialized field",
+          "isCorrect": false,
+          "rationale": "Depth is represented by the vertical bar of the 'T', not the horizontal one."
+        },
+        {
+          "text": "The number of years an individual has served in a leadership role",
+          "isCorrect": false,
+          "rationale": "The metaphor describes skill types and collaboration potential rather than a simple measure of tenure."
+        },
+        {
+          "text": "The mastery of a single tool or software language",
+          "isCorrect": false,
+          "rationale": "A single specialized skill would fall under the vertical bar representing depth."
+        }
+      ],
+      "hint": "Think about reaching out to other people and different areas of knowledge."
+    },
+    {
+      "question": "Which skill shape is used to describe professionals who have two parallel disciplinary depths converging at a shared problem?",
+      "answerOptions": [
+        {
+          "text": "V-shaped",
+          "isCorrect": true,
+          "rationale": "V-shaped professionals, such as a 'Nurse+Engineer', possess deep knowledge in two distinct areas that meet to solve complex issues."
+        },
+        {
+          "text": "$\\pi$-shaped",
+          "isCorrect": false,
+          "rationale": "$\\pi$-shaped refers to broad management skills combined with a few spikes of functional expertise, rather than two converging depths."
+        },
+        {
+          "text": "X-shaped",
+          "isCorrect": false,
+          "rationale": "X-shaped is typically associated with leadership skills combined with technical depth."
+        },
+        {
+          "text": "I-shaped",
+          "isCorrect": false,
+          "rationale": "I-shaped individuals possess deep expertise in one area but lack the breadth to collaborate effectively across others."
+        }
+      ],
+      "hint": "The shape reflects two lines of deep expertise that come together at a 'vanishing point'."
+    },
+    {
+      "question": "What skill in card playing did Charlie Munger believe was a critical 'important skill' that he applied to business and investing?",
+      "answerOptions": [
+        {
+          "text": "Folding early when odds are against you and backing heavily when you have a big edge",
+          "isCorrect": true,
+          "rationale": "Munger believed that opportunities are rare, so one must be disciplined enough to wait and then act decisively when the advantage is clear."
+        },
+        {
+          "text": "Predicting the irrational and emotional behavior of opponents",
+          "isCorrect": false,
+          "rationale": "Munger actually warned against treating shares like trading cards because it requires predicting irrational human behavior."
+        },
+        {
+          "text": "Bluffing to manipulate market sentiment",
+          "isCorrect": false,
+          "rationale": "Munger's philosophy emphasized high ethics and honesty rather than deceptive practices like bluffing."
+        },
+        {
+          "text": "Memorizing every card played to calculate exact probabilities",
+          "isCorrect": false,
+          "rationale": "While he valued math, his emphasis was on the strategic patience and seizing rare opportunities rather than just rote memory."
+        }
+      ],
+      "hint": "This skill involves knowing when to quit and when to commit fully based on the odds."
+    },
+    {
+      "question": "What is a 'black box' in the context of systems thinking?",
+      "answerOptions": [
+        {
+          "text": "A subsystem whose operation is characterized by inputs and outputs without regard to internal detail",
+          "isCorrect": true,
+          "rationale": "A black box allows researchers to study a system's interface with its environment without needing to understand its internal complexity."
+        },
+        {
+          "text": "A fail-safe storage device used to record a system's history during a crash",
+          "isCorrect": false,
+          "rationale": "This is a literal interpretation from aviation; in systems theory, it is a conceptual tool for modeling subsystems."
+        },
+        {
+          "text": "A system that has reached total entropy and no longer exchanges energy",
+          "isCorrect": false,
+          "rationale": "Total entropy describes a dead or closed system, whereas a black box can still be an active part of a larger dynamic."
+        },
+        {
+          "text": "The physical boundary that prevents energy from escaping a system",
+          "isCorrect": false,
+          "rationale": "A system boundary regulates exchange, but a 'black box' refers specifically to the opacity of a subsystem's internal workings."
+        }
+      ],
+      "hint": "Think about a component where you only care about what goes in and what comes out."
+    },
+    {
+      "question": "Charlie Munger was highly critical of cryptocurrencies; which of the following phrases did he use to describe Bitcoin?",
+      "answerOptions": [
+        {
+          "text": "Noxious poison",
+          "isCorrect": true,
+          "rationale": "Munger used several harsh analogies, including 'noxious poison' and 'venereal disease', to express his disdain for cryptocurrency."
+        },
+        {
+          "text": "The future of digital equity",
+          "isCorrect": false,
+          "rationale": "Munger viewed cryptocurrency as 'beneath contempt' and completely rejected its utility or value."
+        },
+        {
+          "text": "A harmless technological experiment",
+          "isCorrect": false,
+          "rationale": "Munger did not consider it harmless; he compared it to diseases and suggested it should be banned."
+        },
+        {
+          "text": "The ultimate hedge against inflation",
+          "isCorrect": false,
+          "rationale": "This is a common argument made by crypto-proponents, which Munger dismissed as 'stupid' and 'immoral'."
+        }
+      ],
+      "hint": "His description compared the asset to something highly toxic or medically dangerous."
+    },
+    {
+      "question": "According to Jay Forrester, as cited in the systems thinking material, what are 'leverage points'?",
+      "answerOptions": [
+        {
+          "text": "Places in a system where a small change could lead to a large shift in behavior",
+          "isCorrect": true,
+          "rationale": "Leverage points are strategic areas where interventions are most effective at producing significant systemic change."
+        },
+        {
+          "text": "The points where a system's energy output is at its absolute minimum",
+          "isCorrect": false,
+          "rationale": "Minimal output points are usually areas of inefficiency rather than strategic points for shifting behavior."
+        },
+        {
+          "text": "The rigid physical structures that prevent a system from evolving",
+          "isCorrect": false,
+          "rationale": "These would be constraints; leverage points are specifically about the potential for intentional change."
+        },
+        {
+          "text": "External forces that attempt to break a system's boundary",
+          "isCorrect": false,
+          "rationale": "Leverage points are found within the structure of the system itself, not just in external pressures."
+        }
+      ],
+      "hint": "Think about the concept of a lever in physics, where a small effort yields a big movement."
+    },
+    {
+      "question": "In the ethnographic work of Brittany Fiore, what do the Greek letters $\\Gamma$ and $\\mathrm{M}$ represent in terms of workforce skills?",
+      "answerOptions": [
+        {
+          "text": "Individuals with supporting strengths in computationally and software-intensive fields",
+          "isCorrect": true,
+          "rationale": "These shapes indicate specific patterns of expertise found in data science and software research communities."
+        },
+        {
+          "text": "Managers who lack technical depth but have high emotional intelligence",
+          "isCorrect": false,
+          "rationale": "The $\\Gamma$ and $\\mathrm{M}$ labels specifically denote strengths in software and computational depth."
+        },
+        {
+          "text": "The ratio of junior to senior developers in an agile scrum team",
+          "isCorrect": false,
+          "rationale": "These letters describe individual skill profiles rather than team composition ratios."
+        },
+        {
+          "text": "The degradation of software quality over a specific lifecycle",
+          "isCorrect": false,
+          "rationale": "While software rot is a topic, these symbols are metaphors for human skills and capabilities."
+        }
+      ],
+      "hint": "These shapes are used as metaphors for people working in data-heavy and software-focused environments."
+    },
+    {
+      "question": "Munger proposed a 'worldly wisdom' consisting of a 'latticework' of what specific components to solve business problems?",
+      "answerOptions": [
+        {
+          "text": "Mental models",
+          "isCorrect": true,
+          "rationale": "Munger advocated for learning the big ideas from multiple disciplines and organizing them into a functional framework for decision-making."
+        },
+        {
+          "text": "Legal precedents",
+          "isCorrect": false,
+          "rationale": "While Munger was a lawyer, his 'worldly wisdom' concept was interdisciplinary and went far beyond the law."
+        },
+        {
+          "text": "Technical stock indicators",
+          "isCorrect": false,
+          "rationale": "Munger and Buffett generally avoided technical analysis, focusing instead on the underlying business and psychology."
+        },
+        {
+          "text": "Hierarchical management charts",
+          "isCorrect": false,
+          "rationale": "A 'latticework' implies an interconnected web of ideas rather than a top-down reporting structure."
+        }
+      ],
+      "hint": "These are conceptual tools or frameworks from various disciplines used to understand how the world works."
+    }
+  ]
+}

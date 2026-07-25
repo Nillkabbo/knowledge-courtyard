@@ -1,0 +1,265 @@
+{
+  "title": "Engineering Quiz",
+  "questions": [
+    {
+      "question": "In the context of A/B testing, which statistical test is most appropriate for comparing means when the underlying distribution is Gaussian and the standard deviation is unknown?",
+      "answerOptions": [
+        {
+          "text": "Welch's t-test",
+          "isCorrect": true,
+          "rationale": "This test is the most common choice for comparing means because it assumes the least about the equality of variances between two samples."
+        },
+        {
+          "text": "Z-test",
+          "isCorrect": false,
+          "rationale": "This test requires stringent conditions such as a known standard deviation and clear normality, which are rarely met in real-world samples."
+        },
+        {
+          "text": "Fisher's exact test",
+          "isCorrect": false,
+          "rationale": "This method is specifically used for binomial distributions, such as comparing click-through rates, rather than means of Gaussian distributions."
+        },
+        {
+          "text": "Chi-squared test",
+          "isCorrect": false,
+          "rationale": "This statistic is typically used for multinomial distributions, such as comparing the number of different products purchased across variants."
+        }
+      ],
+      "hint": "Consider the test that allows for the most relaxed assumptions regarding sample variance."
+    },
+    {
+      "question": "Microsoft utilizes a technique known as CUPED to improve the efficiency of A/B tests. What is the primary purpose of this technique?",
+      "answerOptions": [
+        {
+          "text": "To reduce variance using pre-experiment data",
+          "isCorrect": true,
+          "rationale": "By accounting for data before the experiment starts, fewer samples are needed to produce a statistically significant result."
+        },
+        {
+          "text": "To automate the segmentation of customer attributes",
+          "isCorrect": false,
+          "rationale": "While segmentation is important, this specific technique focuses on the mathematical error reduction rather than demographic sorting."
+        },
+        {
+          "text": "To prevent data leakage between variants",
+          "isCorrect": false,
+          "rationale": "Data leakage is a concern in machine learning and feature stores, but CUPED is a statistical adjustment for experiment sensitivity."
+        },
+        {
+          "text": "To route HTTP traffic via a reverse proxy",
+          "isCorrect": false,
+          "rationale": "Traffic routing is a deployment mechanism, whereas this technique is used during the analysis phase to handle standard error."
+        }
+      ],
+      "hint": "Think about how researchers can use existing information to reach conclusions with smaller sample sizes."
+    },
+    {
+      "question": "Continuous Integration (CI) advocates suggest that a system should be buildable from a fresh checkout. According to the source, what is a recommended practice to achieve this?",
+      "answerOptions": [
+        {
+          "text": "Storing all dependencies and build info in version control",
+          "isCorrect": true,
+          "rationale": "Ensuring the repository contains everything needed for a build allows any developer to verify the system without external environmental hurdles."
+        },
+        {
+          "text": "Using a separate pre-production staging environment",
+          "isCorrect": false,
+          "rationale": "While staging environments are used for testing, they are distinct from the requirement of making the source code repository self-sufficient for builds."
+        },
+        {
+          "text": "Implementing feature toggles for all new code",
+          "isCorrect": false,
+          "rationale": "Feature toggles allow incomplete code to be integrated, but they do not solve the problem of missing build dependencies."
+        },
+        {
+          "text": "Limiting the number of pipelines to one per team",
+          "isCorrect": false,
+          "rationale": "The number of pipelines is a productivity and organizational choice rather than a requirement for build reproducibility."
+        }
+      ],
+      "hint": "Focus on where the necessary files for the software construction process are kept."
+    },
+    {
+      "question": "The 'Tree-Shaped computation' algorithm is utilized in load balancing to manage tasks that have a specific property. What is that property?",
+      "answerOptions": [
+        {
+          "text": "The ability to be broken down into subtasks during execution",
+          "isCorrect": true,
+          "rationale": "This algorithm takes advantage of task divisibility, allowing a parent task to be distributed recursively across a work tree."
+        },
+        {
+          "text": "The requirement for atomic execution on a single node",
+          "isCorrect": false,
+          "rationale": "Atomic tasks cannot be subdivided, making them unsuitable for the hierarchical distribution pattern of this specific algorithm."
+        },
+        {
+          "text": "A precisely known execution time before the start",
+          "isCorrect": false,
+          "rationale": "Knowing execution times allows for static optimal distribution, while this algorithm is designed for dynamic situations where subtasks emerge."
+        },
+        {
+          "text": "Complete independence from all other system resources",
+          "isCorrect": false,
+          "rationale": "While task nature matters, the critical factor for the tree model is the structural capacity for subdivision."
+        }
+      ],
+      "hint": "Consider how a single large job might be distributed if it can be split into smaller pieces."
+    },
+    {
+      "question": "Which of the following describes a 'malleable' load balancing algorithm?",
+      "answerOptions": [
+        {
+          "text": "It can handle a fluctuating number of processors during execution",
+          "isCorrect": true,
+          "rationale": "Malleable algorithms are highly flexible, adapting to hardware resources that change even as the task is being processed."
+        },
+        {
+          "text": "The number of computing units must be fixed before execution",
+          "isCorrect": false,
+          "rationale": "This describes a 'moldable' algorithm, which is less flexible than a truly malleable one."
+        },
+        {
+          "text": "It assigns tasks based solely on pseudo-random permutations",
+          "isCorrect": false,
+          "rationale": "This is a static randomized approach that does not account for the dynamic availability of hardware units."
+        },
+        {
+          "text": "It utilizes a master-worker scheme to resolve bottlenecks",
+          "isCorrect": false,
+          "rationale": "Master-worker schemes often suffer from scalability issues and do not inherently define the algorithm's ability to change processor counts."
+        }
+      ],
+      "hint": "Think about the highest level of flexibility regarding hardware changes during the runtime."
+    },
+    {
+      "question": "In machine learning, what is a primary advantage of using a centralized feature store?",
+      "answerOptions": [
+        {
+          "text": "Ensuring consistency between training and production environments",
+          "isCorrect": true,
+          "rationale": "Centralization provides a unified interface for curated features, which prevents discrepancies when moving models from lab to real-world use."
+        },
+        {
+          "text": "Automating the selection of the best hyperparameter values",
+          "isCorrect": false,
+          "rationale": "Feature stores manage data attributes rather than the specific configurations or 'hyperparameters' of the learning algorithm itself."
+        },
+        {
+          "text": "Reducing the need for batch data pipelines",
+          "isCorrect": false,
+          "rationale": "Feature stores actually support and often rely on both batch and real-time pipelines to compute their stored values."
+        },
+        {
+          "text": "Eliminating the need for version control in codebases",
+          "isCorrect": false,
+          "rationale": "While they offer feature versioning, they complement rather than replace standard code version control systems."
+        }
+      ],
+      "hint": "Consider the importance of having the same data definitions available at different stages of the model lifecycle."
+    },
+    {
+      "question": "A/B testing is frequently used when deploying new API versions. If a reverse proxy is configured to route $n \\%$ of traffic to a new version, what is the primary goal of this configuration?",
+      "answerOptions": [
+        {
+          "text": "To limit the exposure of customers to potential bugs",
+          "isCorrect": true,
+          "rationale": "This ingress control mechanism ensures that only a small portion of users is affected if the newer backend instance has defects."
+        },
+        {
+          "text": "To calculate the statistical significance of server latency",
+          "isCorrect": false,
+          "rationale": "While latency can be measured, the primary purpose of fractional routing in this context is risk mitigation."
+        },
+        {
+          "text": "To achieve a random permutation of data packets",
+          "isCorrect": false,
+          "rationale": "Packet permutations are related to randomized static load balancing, not controlled feature exposure in API testing."
+        },
+        {
+          "text": "To eliminate the need for a Layer 7 reversal",
+          "isCorrect": false,
+          "rationale": "This configuration actually requires a Layer 7 reverse proxy to function effectively."
+        }
+      ],
+      "hint": "Think about the safety and stability of the user experience when introducing a new backend."
+    },
+    {
+      "question": "When implementing Continuous Integration, what is the consequence of entering 'integration hell'?",
+      "answerOptions": [
+        {
+          "text": "The time to integrate changes exceeds the time taken to create them",
+          "isCorrect": true,
+          "rationale": "This occurs when developer branches diverge too far from the baseline, resulting in massive, complex conflicts."
+        },
+        {
+          "text": "The build latency drops to zero, causing resource starvation",
+          "isCorrect": false,
+          "rationale": "Zero latency would be ideal; 'integration hell' is characterized by excessive delays and failures rather than speed."
+        },
+        {
+          "text": "The version control system fails to support atomic commits",
+          "isCorrect": false,
+          "rationale": "Atomic commits are a prerequisite tool to avoid this state, but the 'hell' itself refers to the conflict resolution process."
+        },
+        {
+          "text": "The automated test suite provides inaccurate software metrics",
+          "isCorrect": false,
+          "rationale": "While bad tests are a risk, this specific term describes the manual burden of merging conflicting code."
+        }
+      ],
+      "hint": "Consider the relationship between the duration of development and the difficulty of merging code."
+    },
+    {
+      "question": "What is the primary function of 'TLS offloading' in a load balancer?",
+      "answerOptions": [
+        {
+          "text": "Moving cryptographic calculations from web servers to the balancer",
+          "isCorrect": true,
+          "rationale": "This frees up the web server's CPU to focus on application logic instead of encryption overhead."
+        },
+        {
+          "text": "Encoding cookies to prevent end-user manipulation",
+          "isCorrect": false,
+          "rationale": "While load balancers can encrypt cookies, TLS offloading refers specifically to the protocol's handshake and encryption tasks."
+        },
+        {
+          "text": "Consolidating multiple HTTP requests into a single TCP socket",
+          "isCorrect": false,
+          "rationale": "This describes TCP offloading or multiplexing, which is a different optimization feature."
+        },
+        {
+          "text": "Validating client credentials against external databases",
+          "isCorrect": false,
+          "rationale": "This is a feature of client authentication, not the offloading of cryptographic protocol math."
+        }
+      ],
+      "hint": "Focus on the computational burden associated with HTTPS traffic."
+    },
+    {
+      "question": "In an A/B test scenario, why might a company choose to send 'Variant B' to men and 'Variant A' to women in the future?",
+      "answerOptions": [
+        {
+          "text": "Because responses to variants can be heterogeneous across segments",
+          "isCorrect": true,
+          "rationale": "A variant might fail overall but succeed significantly within a specific subgroup, allowing for a higher total response rate through targeting."
+        },
+        {
+          "text": "To ensure the test is evenly distributed across attributes",
+          "isCorrect": false,
+          "rationale": "Even distribution is necessary during the test to avoid bias, but the final decision to target groups happens after the test analysis."
+        },
+        {
+          "text": "To minimize the use of Fisher's exact test in the future",
+          "isCorrect": false,
+          "rationale": "Statistical tests are tools for analysis; targeting decisions are based on the results of those tests, not a desire to avoid them."
+        },
+        {
+          "text": "Because Variant B showed a lower response rate overall",
+          "isCorrect": false,
+          "rationale": "Choosing a variant solely because it performed worse overall would be counterproductive unless it excelled in a targeted segment."
+        }
+      ],
+      "hint": "Consider how different groups of people might react differently to the same marketing strategy."
+    }
+  ]
+}

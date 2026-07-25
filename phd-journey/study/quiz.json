@@ -1,0 +1,334 @@
+{
+  "title": "JSON Quiz",
+  "questions": [
+    {
+      "question": "Which of the following data types is NOT inherently supported by the standard JSON specification?",
+      "answerOptions": [
+        {
+          "text": "Number",
+          "rationale": "JSON supports signed decimal numbers that can include fractional parts and exponential notation.",
+          "isCorrect": false
+        },
+        {
+          "text": "Boolean",
+          "rationale": "True and false values are explicitly defined as basic data types within the JSON framework.",
+          "isCorrect": false
+        },
+        {
+          "text": "Undefined",
+          "rationale": "While JavaScript has an 'undefined' type, JSON only recognizes 'null' as an empty or non-existent value.",
+          "isCorrect": true
+        },
+        {
+          "text": "Array",
+          "rationale": "An ordered list of values enclosed in square brackets is a fundamental structure in JSON.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Consider the differences between standard JavaScript variables and the subset used for data interchange."
+    },
+    {
+      "question": "According to the 2017 international standard, how should the acronym 'JSON' be pronounced?",
+      "answerOptions": [
+        {
+          "text": "Like the name 'Jason'",
+          "rationale": "The ECMA-404 and ISO/IEC standards specify the pronunciation as in 'Jason and the Argonauts'.",
+          "isCorrect": true
+        },
+        {
+          "text": "J-S-O-N (letter by letter)",
+          "rationale": "While some users may spell it out, the official standard provides a specific phonetic guide.",
+          "isCorrect": false
+        },
+        {
+          "text": "Jay-SAWN",
+          "rationale": "This is a common regional pronunciation, but the international standard points to a different classical reference.",
+          "isCorrect": false
+        },
+        {
+          "text": "Jay-SUN",
+          "rationale": "This is phonetically similar to the standard, but the standard specifically references a mythical hero.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "The standard references a specific character from Greek mythology."
+    },
+    {
+      "question": "In the Model Context Protocol (MCP) architecture, which component is typically an AI agent that requires services from external servers?",
+      "answerOptions": [
+        {
+          "text": "MCP Server",
+          "rationale": "The server is the component that provides the specific tools or resources, such as database access.",
+          "isCorrect": false
+        },
+        {
+          "text": "MCP Client",
+          "rationale": "The client is a dedicated interface created by the host to communicate with a specific server.",
+          "isCorrect": false
+        },
+        {
+          "text": "MCP Host",
+          "rationale": "The host acts as the main AI agent or application that orchestrates interactions between the LLM and the protocol components.",
+          "isCorrect": true
+        },
+        {
+          "text": "MCP Gateway",
+          "rationale": "While gateways exist in networking, they are not one of the three primary distinct roles defined in the core MCP architecture.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "This component manages the LLM and instructs other sub-components to call tools."
+    },
+    {
+      "question": "Which specific transport protocol does the Model Context Protocol use for communication between clients and servers?",
+      "answerOptions": [
+        {
+          "text": "SOAP",
+          "rationale": "SOAP is an XML-based protocol, whereas MCP relies on a more lightweight, JSON-based messaging format.",
+          "isCorrect": false
+        },
+        {
+          "text": "REST",
+          "rationale": "While common in web APIs, MCP uses a specific remote procedure call framework for its message flow.",
+          "isCorrect": false
+        },
+        {
+          "text": "JSON-RPC 2.0",
+          "rationale": "MCP leverages JSON-RPC 2.0 as the standard for sending requests and receiving notifications between components.",
+          "isCorrect": true
+        },
+        {
+          "text": "GraphQL",
+          "rationale": "GraphQL is a query language for APIs, but it does not serve as the underlying transport for MCP's server-client interactions.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Think of a protocol that enables remote procedure calls using JSON syntax."
+    },
+    {
+      "question": "What was the primary reason Douglas Crockford added the 'Good, not Evil' clause to the original JSON license?",
+      "answerOptions": [
+        {
+          "text": "To prevent use by military organizations",
+          "rationale": "The clause was not intended for a specific sector but rather as a way to mock corporate legal procedures.",
+          "isCorrect": false
+        },
+        {
+          "text": "To ensure interoperability",
+          "rationale": "Interoperability is a technical goal achieved through syntax standards, not through licensing clauses.",
+          "isCorrect": false
+        },
+        {
+          "text": "To mock corporate lawyers and pedantic individuals",
+          "rationale": "Crockford included the humorous clause to poke fun at overly complex software licensing and the legal profession.",
+          "isCorrect": true
+        },
+        {
+          "text": "To align with the Creative Commons license",
+          "rationale": "The clause actually caused compatibility issues with common open-source licenses because it restricted the purpose of use.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "The creator intended this addition to be a form of satire or mockery."
+    },
+    {
+      "question": "For maximum interoperability, what is the recommended character encoding for JSON messages exchanged in an open ecosystem?",
+      "answerOptions": [
+        {
+          "text": "UTF-16",
+          "rationale": "UTF-16 is used for surrogate pairs within escaped sequences, but it is not the primary required encoding for the document itself.",
+          "isCorrect": false
+        },
+        {
+          "text": "UTF-8",
+          "rationale": "The RFC 8259 standard specifies that JSON exchange must be encoded in UTF-8 to ensure widespread support.",
+          "isCorrect": true
+        },
+        {
+          "text": "ASCII",
+          "rationale": "ASCII is too limited to represent the full Unicode character set supported by JSON.",
+          "isCorrect": false
+        },
+        {
+          "text": "ISO-8859-1",
+          "rationale": "This legacy encoding does not support the multi-language requirements of modern data interchange.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "This is the most common variable-width character encoding used on the web."
+    },
+    {
+      "question": "In a Web API URL, which character is used to separate the endpoint from the query string parameters?",
+      "answerOptions": [
+        {
+          "text": "The ampersand ($&$)",
+          "rationale": "The ampersand is used to separate individual parameters within the query string from one another.",
+          "isCorrect": false
+        },
+        {
+          "text": "The question mark ($?$)",
+          "rationale": "The question mark denotes the end of the static endpoint and the beginning of the dynamic parameters.",
+          "isCorrect": true
+        },
+        {
+          "text": "The hash symbol ($#$)",
+          "rationale": "The hash symbol is typically used for fragment identifiers on a page, not for API parameters.",
+          "isCorrect": false
+        },
+        {
+          "text": "The colon ($:$)",
+          "rationale": "Colons are used in JSON name-value pairs, but not as the primary separator for URL query strings.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Think of the punctuation that typically precedes an API key in a browser address bar."
+    },
+    {
+      "question": "Which of the following is a security risk associated with the Model Context Protocol identified by researchers?",
+      "answerOptions": [
+        {
+          "text": "Brute force password attacks",
+          "rationale": "While a general risk, the specific research highlighted vulnerabilities unique to AI model interactions.",
+          "isCorrect": false
+        },
+        {
+          "text": "Prompt injection",
+          "rationale": "Security analysis found that MCP is susceptible to prompt injection, where malicious input manipulates the AI's behavior.",
+          "isCorrect": true
+        },
+        {
+          "text": "Denial of Service via XML bombs",
+          "rationale": "MCP uses JSON-RPC, so it is less likely to be targeted by XML-specific vulnerabilities like 'billion laughs' attacks.",
+          "isCorrect": false
+        },
+        {
+          "text": "Hardware-level side-channel attacks",
+          "rationale": "These attacks target physical processors, whereas the identified MCP issues reside at the application and protocol layers.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "This risk involves manipulating the instructions given to a Large Language Model."
+    },
+    {
+      "question": "Regarding the syntax of keys/names, how does JSON differ from XML?",
+      "answerOptions": [
+        {
+          "text": "JSON keys cannot contain spaces, while XML tags can.",
+          "rationale": "In fact, neither JSON nor XML typically allow unescaped spaces in names, but JSON is more flexible with characters.",
+          "isCorrect": false
+        },
+        {
+          "text": "JSON keys can begin with a numeric digit, while XML tag names cannot.",
+          "rationale": "XML has strict rules forbidding names from starting with numbers, while JSON allows any string as a key.",
+          "isCorrect": true
+        },
+        {
+          "text": "XML allows quotation marks in tag names, while JSON does not.",
+          "rationale": "JSON keys must be enclosed in double quotes, and XML tag names have very restricted character sets.",
+          "isCorrect": false
+        },
+        {
+          "text": "JSON keys must be unique within an object, while XML tag names can repeat.",
+          "rationale": "Standard JSON actually does not strictly require unique names, though it is recommended for interoperability.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Think about the naming restrictions for variables or elements in both formats."
+    },
+    {
+      "question": "Which company introduced the Model Context Protocol to address the 'N x M' data integration problem?",
+      "answerOptions": [
+        {
+          "text": "OpenAI",
+          "rationale": "While OpenAI adopted the protocol in March 2025, they were not the original developers.",
+          "isCorrect": false
+        },
+        {
+          "text": "Anthropic",
+          "rationale": "Anthropic released the protocol in November 2024 to standardize how AI systems share data with external tools.",
+          "isCorrect": true
+        },
+        {
+          "text": "Microsoft",
+          "rationale": "Microsoft integrates the protocol into Azure, but the open standard was created by another AI provider.",
+          "isCorrect": false
+        },
+        {
+          "text": "Google DeepMind",
+          "rationale": "Google announced they would embrace the standard in 2025, following its initial release by the creator.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "This company is also the developer of the Claude family of AI models."
+    },
+    {
+      "question": "What is the primary difference between how JSON and XML handle comments?",
+      "answerOptions": [
+        {
+          "text": "JSON uses $//$ for comments, while XML uses $<!-- -->$.",
+          "rationale": "This describes some JSON derivatives, but standard JSON does not support comments at all.",
+          "isCorrect": false
+        },
+        {
+          "text": "XML supports comments, whereas standard JSON intentionally excludes them.",
+          "rationale": "Douglas Crockford removed comments from JSON to prevent people from using them for parsing directives.",
+          "isCorrect": true
+        },
+        {
+          "text": "JSON only allows block comments, while XML only allows single-line comments.",
+          "rationale": "Standard JSON lacks any comment syntax, whereas XML provides a specific tag-based format.",
+          "isCorrect": false
+        },
+        {
+          "text": "Both formats support comments using the exact same syntax.",
+          "rationale": "The two formats have entirely different structural philosophies, especially regarding metadata and annotations.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "One of these formats was designed to be comment-free to ensure interoperability."
+    },
+    {
+      "question": "For 'good interoperability,' what is the maximum numerical precision recommended for JSON implementations?",
+      "answer": "IEEE 754 binary64",
+      "answerOptions": [
+        {
+          "text": "Arbitrary precision decimals",
+          "rationale": "While the format allows arbitrary precision, many implementations (like JavaScript) cannot process them without loss.",
+          "isCorrect": false
+        },
+        {
+          "text": "32-bit integers",
+          "rationale": "32-bit limits are too restrictive for the general-purpose decimal numbers JSON is designed to carry.",
+          "isCorrect": false
+        },
+        {
+          "text": "IEEE 754 binary64",
+          "rationale": "This format, common in JavaScript double-precision values, is the recommended baseline for ensuring numbers are handled correctly across systems.",
+          "isCorrect": true
+        },
+        {
+          "text": "BigInt notation",
+          "rationale": "BigInt is a specific JavaScript extension and is not part of the base JSON interoperability recommendation.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "This recommendation matches the double-precision floating-point format used by JavaScript."
+    },
+    {
+      "question": "True or False: Standard JSON allows a trailing comma after the last value in an array or object.",
+      "answerOptions": [
+        {
+          "text": "True",
+          "rationale": "While derivatives like JSON5 allow this, the core JSON standard strictly forbids trailing commas.",
+          "isCorrect": false
+        },
+        {
+          "text": "False",
+          "rationale": "The JSON specification disallows commas after the final element, often causing errors in automated parsers.",
+          "isCorrect": true
+        }
+      ],
+      "hint": "Think about the strict punctuation rules that distinguish JSON from more flexible languages like JavaScript."
+    }
+  ]
+}

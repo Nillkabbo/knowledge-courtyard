@@ -1,0 +1,349 @@
+{
+  "title": "Prompting Flashcards",
+  "cards": [
+    {
+      "front": "In the context of machine learning, what is Few-shot learning (FSL)?",
+      "back": "A problem setup where a model learns to perform a task from only a small number of labeled examples per class."
+    },
+    {
+      "front": "What is the specific case of the $N$-way $K$-shot framing where $K$ equals one?",
+      "back": "One-shot learning."
+    },
+    {
+      "front": "Which machine learning paradigm requires no training on examples of the specific class to be classified?",
+      "back": "Zero-shot learning (ZSL)."
+    },
+    {
+      "front": "Zero-shot learning generalizes classification tasks by using examples of _____.",
+      "back": "Other classes."
+    },
+    {
+      "front": "What is the smallest unit of processing that a Large Language Model (LLM) actually 'sees'?",
+      "back": "A token."
+    },
+    {
+      "front": "The word 'unbelievable' typically breaks down into which three tokens?",
+      "back": "[\"un\", \"believe\", \"able\"]."
+    },
+    {
+      "front": "What tokenization method is commonly used by LLMs (e.g., GPT models)?",
+      "back": "BPE (Byte Pair Encoding)."
+    },
+    {
+      "front": "How many tokens are typically in the phrase 'Hello world'?",
+      "back": "2 tokens."
+    },
+    {
+      "front": "In terms of token usage, why is prompting in Bengali generally more expensive than in English?",
+      "back": "Bengali characters often split into multiple tokens, resulting in more tokens per word."
+    },
+    {
+      "front": "What is the approximate word-to-token ratio for English text in LLMs?",
+      "back": "1 word $\\approx$ 1.3 tokens."
+    },
+    {
+      "front": "In prompt engineering, why should unnecessary spaces be removed from a prompt?",
+      "back": "Spaces are counted as tokens, which adds to cost and context window usage."
+    },
+    {
+      "front": "What does a temperature setting of $0.0$ signify for an LLM's output?",
+      "back": "The output is deterministic, choosing only the tokens with the highest probability."
+    },
+    {
+      "front": "For creative tasks like storytelling, what is the recommended temperature range?",
+      "back": "0.7 to 1.0+."
+    },
+    {
+      "front": "Which sampling parameter selects tokens from the top $P$ percentage of the cumulative probability distribution?",
+      "back": "top_p (Nucleus Sampling)."
+    },
+    {
+      "front": "What is the primary risk of using high temperature (e.g., 1.2) for code generation?",
+      "back": "Increased hallucinations and syntax errors due to excessive randomness."
+    },
+    {
+      "front": "Which parameter is used to decrease the likelihood of a model repeating the same words or phrases?",
+      "back": "frequency_penalty."
+    },
+    {
+      "front": "What is the golden rule when adjusting 'temperature' and 'top_p'?",
+      "back": "Do not change both at the same time; modify one and leave the other at default."
+    },
+    {
+      "front": "In the hierarchy of prompt messages, which type of prompt carries the most weight in defining the model's rules and persona?",
+      "back": "System Prompt."
+    },
+    {
+      "front": "What is the purpose of 'Assistant Messages' in a conversation history?",
+      "back": "To provide previous context and model responses to guide the ongoing interaction."
+    },
+    {
+      "front": "What phenomenon describes a model's tendency to agree with a user even if the user is wrong?",
+      "back": "Sycophancy."
+    },
+    {
+      "front": "Which training technique often leads to models producing generic 'As an AI language model' refusals?",
+      "back": "RLHF (Reinforcement Learning from Human Feedback)."
+    },
+    {
+      "front": "In prompt hierarchy, which message type has the lowest weight compared to system instructions?",
+      "back": "User Message."
+    },
+    {
+      "front": "What simple six-word phrase is the foundation of 'Zero-Shot Chain-of-Thought' (CoT) prompting?",
+      "back": "Let's think step by step."
+    },
+    {
+      "front": "Research indicates that 'Chain-of-Thought' prompting can increase reasoning accuracy by what percentage?",
+      "back": "30% to 60%."
+    },
+    {
+      "front": "How does 'Self-Consistency' improve reasoning over standard Chain-of-Thought?",
+      "back": "It runs multiple rollouts and selects the most common conclusion."
+    },
+    {
+      "front": "What advanced reasoning framework allows the model to explore multiple potential thought paths and backtrack if necessary?",
+      "back": "Tree of Thoughts (ToT)."
+    },
+    {
+      "front": "The 'ReAct' framework is based on which two iterative actions?",
+      "back": "Reasoning (Thought) and Acting (Action)."
+    },
+    {
+      "front": "What is the key difference between Zero-Shot prompting and Few-Shot prompting?",
+      "back": "Zero-Shot gives no examples, while Few-Shot provides a small set of input-output examples."
+    },
+    {
+      "front": "In Few-Shot prompting, what is the 'recency bias'?",
+      "back": "The model's tendency to be more influenced by the last example provided in the sequence."
+    },
+    {
+      "front": "Why is 'Persona Engineering' effective for controlling the depth of an LLM's response?",
+      "back": "A specific role (e.g., 'Senior Engineer') triggers specific subsets of training data and appropriate tones."
+    },
+    {
+      "front": "Which technique ensures that an LLM's output can be easily parsed by software applications?",
+      "back": "Structured Output (or JSON Mode)."
+    },
+    {
+      "front": "What is 'Context Engineering'?",
+      "back": "The process of managing non-prompt elements like metadata, tool definitions, and token budgets to improve reliability."
+    },
+    {
+      "front": "What is the 'Lost in the Middle' problem in context window management?",
+      "back": "The model's tendency to forget or ignore information placed in the middle of a long prompt."
+    },
+    {
+      "front": "Which technique retrieves only the relevant parts of a large document to fit within the context window?",
+      "back": "RAG (Retrieval-Augmented Generation)."
+    },
+    {
+      "front": "What is the benefit of 'Prompt Caching' introduced in 2024-2025?",
+      "back": "It reduces costs and latency by reusing the pre-processed state of a stable prefix (e.g., system prompts)."
+    },
+    {
+      "front": "What is a 'Prompt Injection' attack?",
+      "back": "A cybersecurity exploit where malicious user input tricks the model into ignoring instructions or revealing secrets."
+    },
+    {
+      "front": "How does 'Input Separation' help defend against prompt injection?",
+      "back": "It uses clear delimiters (like XML tags) to distinguish between instructions and user-provided data."
+    },
+    {
+      "front": "What are the components of an 'Agent Loop'?",
+      "back": "Thought $\\rightarrow$ Action $\\rightarrow$ Observation."
+    },
+    {
+      "front": "What is 'Vibe Coding' in the context of software development?",
+      "back": "An AI-assisted method where a user describes the desired outcome and lets the LLM generate/edit the code."
+    },
+    {
+      "front": "How does 'GraphRAG' differ from standard RAG?",
+      "back": "It uses a knowledge graph to connect disparate information and synthesize insights over large data collections."
+    },
+    {
+      "front": "Which term describes a model's ability to temporarily learn new tasks from a prompt without permanent parameter changes?",
+      "back": "In-context learning."
+    },
+    {
+      "front": "What is 'Textual Inversion' in text-to-image models?",
+      "back": "An optimization process that creates a new word embedding (pseudo-word) to represent a specific style or object."
+    },
+    {
+      "front": "What is the purpose of 'Negative Prompts' in image generation?",
+      "back": "To explicitly list elements that should not appear in the generated image."
+    },
+    {
+      "front": "In automated prompt generation, what does the 'MIPRO' algorithm optimize?",
+      "back": "Instructions and few-shot demonstrations of multi-stage language model programs."
+    },
+    {
+      "front": "What is 'Prompt Tuning' (or soft prompting)?",
+      "back": "A method where floating-point vectors are searched via gradient descent to maximize likelihood, rather than editing text."
+    },
+    {
+      "front": "Why is the placement of instructions *after* the data often considered better for some models?",
+      "back": "It capitalizes on the model's focus on the most recent tokens (recency bias)."
+    },
+    {
+      "front": "What is 'Chain-of-Verification' (CoVe)?",
+      "back": "A method where a model generates a response, then verifies each claim to reduce hallucinations."
+    },
+    {
+      "front": "Which sampling parameter acts as a direct alternative to temperature by restricting the token pool to the top $k$ tokens?",
+      "back": "top_k."
+    },
+    {
+      "front": "In the context of 'Frontier Secrets,' how does adding 'Take a deep breath' impact mathematical reasoning?",
+      "back": "It has been shown to increase accuracy, likely by triggering a 'calm' or 'deliberate' reasoning context."
+    },
+    {
+      "front": "What does the 'Alignment Tax' refer to in AI development?",
+      "back": "The decrease in raw model capability or creativity that occurs as a result of making the model safer (RLHF)."
+    },
+    {
+      "front": "In computer vision, what is 'Image Prompting' as demonstrated by Meta's Segment Anything model?",
+      "back": "Using points, bounding boxes, or masks as input to guide image segmentation."
+    },
+    {
+      "front": "What is 'Dataless Classification'?",
+      "back": "An early name for zero-shot classification in natural language processing."
+    },
+    {
+      "front": "How does 'Explicit Semantic Analysis' (ESA) facilitate zero-shot learning?",
+      "back": "By representing labels and documents in the same semantic space to calculate similarity."
+    },
+    {
+      "front": "What is 'Generalized Zero-Shot Learning'?",
+      "back": "A setup where the test set includes samples from both seen (known) and unseen (new) classes."
+    },
+    {
+      "front": "What is 'Prefix-tuning' in the context of automated prompting?",
+      "back": "Directly searching for continuous vectors that optimize the model's output for a specific task."
+    },
+    {
+      "front": "In terms of 'Context Window Engineering,' what is 'Chunking'?",
+      "back": "Breaking large documents into smaller, overlapping pieces to be processed or retrieved individually."
+    },
+    {
+      "front": "What is the purpose of 'Presence Penalty'?",
+      "back": "To encourage the model to talk about new topics by penalizing tokens based on whether they have appeared at all."
+    },
+    {
+      "front": "Why is it important to 'Sandbox' user data in production LLM applications?",
+      "back": "To prevent user inputs from being interpreted as executable system-level commands (preventing injection)."
+    },
+    {
+      "front": "What does 'Stop Condition' refer to in an autonomous agent loop?",
+      "back": "The criteria or limit that prevents the agent from running indefinitely or spending too many tokens."
+    },
+    {
+      "front": "What is 'Response Priming' (or Prefill)?",
+      "back": "Starting the model's response with specific text (e.g., '{\\n') to force it into a certain format or tone."
+    },
+    {
+      "front": "Which company's models are noted for having a specific 'XML Formatting Bias'?",
+      "back": "Anthropic (Claude)."
+    },
+    {
+      "front": "How does 'Emotional Language' (e.g., 'This is critical for my career') affect LLM output?",
+      "back": "It often increases the quality or effort of the response due to patterns learned during RLHF."
+    },
+    {
+      "front": "What is 'Constitutional AI'?",
+      "back": "A method used by Anthropic where a model is trained to follow a list of rules (a 'constitution') to self-correct its outputs."
+    },
+    {
+      "front": "In prompt engineering, what is 'Role Assignment'?",
+      "back": "Telling the model to act as a specific character or professional to influence its tone and knowledge access."
+    },
+    {
+      "front": "What is the 'Zero-data learning' paradigm in computer vision?",
+      "back": "The original term for zero-shot learning introduced at AAAI'08."
+    },
+    {
+      "front": "Define 'In-context learning' in the context of scaling laws.",
+      "back": "An emergent ability where model efficacy increases significantly once a certain model scale is reached."
+    },
+    {
+      "front": "What is 'Transductive Learning' (or bootstrapping) in ZSL?",
+      "back": "Using an unlabeled collection of examples to improve classification performance through semi-supervised methods."
+    },
+    {
+      "front": "In zero-shot learning, what are 'Attributes'?",
+      "back": "Pre-defined structured descriptions (e.g., 'red head', 'long beak') used to associate seen and unseen classes."
+    },
+    {
+      "front": "What is the primary function of a 'Gating Module' in Generalized Zero-Shot Learning?",
+      "back": "To decide whether a test sample belongs to a known seen class or a new unseen class."
+    },
+    {
+      "front": "Which parameter value is standard for general chat and Q&A in ChatGPT?",
+      "back": "Temperature $\\approx$ 0.7."
+    },
+    {
+      "front": "What does a negative value for frequency penalty typically do?",
+      "back": "It would theoretically increase repetition, though it is rarely used this way."
+    },
+    {
+      "front": "What is the main limitation of manual prompting as AI models improve?",
+      "back": "Models are becoming better at intuiting intent, making elaborate, manual 'hacks' less necessary."
+    },
+    {
+      "front": "In the 'ReAct' framework, what does 'Observation' represent?",
+      "back": "The information returned to the LLM after it performs an external action (e.g., a tool result)."
+    },
+    {
+      "front": "What is 'Prompt Hierarchy' designed to prevent?",
+      "back": "Instruction override, ensuring that system-level safety and style rules take precedence over user input."
+    },
+    {
+      "front": "What is a 'Token Budget'?",
+      "back": "The management of the limited context window to ensure there is enough room for instructions, data, and the response."
+    },
+    {
+      "front": "How does 'Data Exfiltration' occur via prompt injection?",
+      "back": "The attacker tricks the model into sending sensitive information (like system prompts) to an external URL."
+    },
+    {
+      "front": "What is the 'Automatic Prompt Engineer' (APE)?",
+      "back": "An algorithm where one LLM generates and scores instructions for another LLM to optimize task performance."
+    },
+    {
+      "front": "In 'Auto-CoT', how are demonstration questions selected?",
+      "back": "Questions are clustered by semantic vectors, and those closest to the centroids are chosen for diversity."
+    },
+    {
+      "front": "What is 'GEPA' (Genetic-Pareto) in prompt optimization?",
+      "back": "An evolutionary search optimizer that improves candidate systems using execution traces and textual feedback."
+    },
+    {
+      "front": "What historical rule-based system (1999) featured prompt-like workflows for regulatory filings?",
+      "back": "The Intelligent Filling Manager."
+    },
+    {
+      "front": "Why is 'Human in the Loop' (HITL) critical for autonomous agents?",
+      "back": "To provide a safety check and approval for sensitive actions initiated by the agent's logic."
+    },
+    {
+      "front": "In prompt ordering, where should the 'Specific Question' ideally be placed for best results?",
+      "back": "At the very end of the prompt."
+    },
+    {
+      "front": "What is 'Jailbreaking' in the context of AI safety?",
+      "back": "A form of prompt injection that uses complex personas (like 'DAN') to bypass the model's safety filters."
+    },
+    {
+      "front": "Which sampling parameter is often referred to as 'Nucleus Sampling'?",
+      "back": "top_p."
+    },
+    {
+      "front": "How does 'XML Tags' improve prompt clarity for models like Claude?",
+      "back": "They create unambiguous boundaries that help the model distinguish between instructions, examples, and user text."
+    },
+    {
+      "front": "What is the primary reason for 'lost in the middle' in context windows?",
+      "back": "The underlying transformer architecture tends to place higher attention on the start and end of the input sequence."
+    }
+  ]
+}

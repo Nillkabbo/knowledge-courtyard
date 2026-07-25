@@ -1,0 +1,317 @@
+{
+  "title": "Algorithms Quiz",
+  "questions": [
+    {
+      "question": "In Big O notation, how do powers of $n$ generally relate to logarithms of $n$ as $n$ approaches infinity?",
+      "answerOptions": [
+        {
+          "text": "Any positive power of $n$ dominates any power of $\\log n$.",
+          "isCorrect": true,
+          "rationale": "Asymptotic growth rules state that polynomial functions grow faster than logarithmic functions regardless of the specific powers involved."
+        },
+        {
+          "text": "Logarithms grow faster than powers of $n$ because they are calculated more frequently.",
+          "isCorrect": false,
+          "rationale": "This misidentifies the growth rates, as logarithms actually have a significantly slower rate of increase than even small polynomial powers."
+        },
+        {
+          "text": "They grow at the same rate, making them interchangeable in complexity analysis.",
+          "isCorrect": false,
+          "rationale": "Functions are only considered to have the same growth rate if they are within a constant factor of each other, which is not true for powers and logarithms."
+        },
+        {
+          "text": "Powers of $n$ only dominate logarithms if the power is greater than $1$.",
+          "isCorrect": false,
+          "rationale": "Even fractional powers of $n$, such as $n^{0.1}$, will eventually exceed any power of a logarithm as $n$ becomes sufficiently large."
+        }
+      ],
+      "hint": "Consider which function type increases more slowly as the input value becomes extremely large."
+    },
+    {
+      "question": "What is the primary distinction between an Abstract Data Type (ADT) and a data structure according to the source material?",
+      "answerOptions": [
+        {
+          "text": "The ADT describes logical operations, while the data structure describes the physical memory implementation.",
+          "isCorrect": true,
+          "rationale": "An ADT serves as a high-level model of behavior, whereas a data structure is the concrete representation of how that data is stored and manipulated."
+        },
+        {
+          "text": "Data structures are used in high-level languages, while ADTs are reserved for assembly programming.",
+          "isCorrect": false,
+          "rationale": "Both concepts are used across various levels of programming, with ADTs actually being more common in high-level design than assembly."
+        },
+        {
+          "text": "ADTs are used to organize primary memory, while data structures organize secondary storage.",
+          "isCorrect": false,
+          "rationale": "Data structures are used for both primary and secondary storage, and the distinction between ADT and data structure is about abstraction level rather than hardware location."
+        },
+        {
+          "text": "There is no distinction; the terms are used interchangeably by all authors.",
+          "isCorrect": false,
+          "rationale": "While some authors may conflate the terms, the standard definition differentiates between the logical interface and the physical representation."
+        }
+      ],
+      "hint": "Think about the difference between 'what' a system does and 'how' it is actually built in the computer."
+    },
+    {
+      "question": "What are the two essential attributes a problem must possess for dynamic programming to be an effective solution method?",
+      "answerOptions": [
+        {
+          "text": "Optimal substructure and overlapping sub-problems.",
+          "isCorrect": true,
+          "rationale": "Dynamic programming relies on being able to combine optimal solutions of sub-problems that are encountered multiple times during the computation."
+        },
+        {
+          "text": "Recursive definitions and non-overlapping sub-problems.",
+          "isCorrect": false,
+          "rationale": "Problems with non-overlapping sub-problems are generally solved using 'divide and conquer' strategies rather than dynamic programming."
+        },
+        {
+          "text": "Linear complexity and a finite state domain.",
+          "isCorrect": false,
+          "rationale": "Dynamic programming can handle problems with various complexities and is often used to reduce exponential time to polynomial time."
+        },
+        {
+          "text": "High-level language support and automated memoization.",
+          "isCorrect": false,
+          "rationale": "These are implementation details or language features rather than inherent mathematical properties of the problem itself."
+        }
+      ],
+      "hint": "One attribute involves finding a total optimal solution from parts, and the other involves repetitive smaller tasks."
+    },
+    {
+      "question": "Why does a naive recursive approach to calculating the Fibonacci sequence result in exponential time complexity?",
+      "answerOptions": [
+        {
+          "text": "It repeatedly recalculates the same sub-problems multiple times.",
+          "isCorrect": true,
+          "rationale": "Without storage of previous results, the recursion tree expands exponentially because lower values like $F_{2}$ are recomputed in every branch."
+        },
+        {
+          "text": "The sequence itself grows exponentially, forcing the algorithm to be exponential.",
+          "isCorrect": false,
+          "rationale": "The growth of the sequence's values does not dictate the algorithm's time complexity, as shown by efficient $O(n)$ dynamic programming methods."
+        },
+        {
+          "text": "Recursive calls in Python are inherently limited to constant time.",
+          "isCorrect": false,
+          "rationale": "Recursive calls add overhead, but the exponential complexity is caused by the redundant work in the algorithm's logic rather than language specificities."
+        },
+        {
+          "text": "It requires $O(n)$ space which slows down the processing speed.",
+          "isCorrect": false,
+          "rationale": "Naive recursion actually often uses more stack space, but it is the redundant time spent on calculations that defines its complexity class, not the space usage."
+        }
+      ],
+      "hint": "Look at the branching of the function calls and whether the same value is requested more than once."
+    },
+    {
+      "question": "What allows arrays to provide fast indexed access to their elements?",
+      "answerOptions": [
+        {
+          "text": "They allocate elements in contiguous memory locations.",
+          "isCorrect": true,
+          "rationale": "Continuous allocation allows the computer to calculate any element's address using simple multiplication and addition based on the index."
+        },
+        {
+          "text": "They use pointers to link each node to the next one in the sequence.",
+          "isCorrect": false,
+          "rationale": "This describes a linked list, which actually makes random access slower because it requires traversing all previous nodes."
+        },
+        {
+          "text": "They use a hash function to map indices directly to memory.",
+          "isCorrect": false,
+          "rationale": "While hash tables use hashing, standard arrays use direct memory offsets calculated from integer indices."
+        },
+        {
+          "text": "They are always fixed-length, which simplifies the CPU's lookup table.",
+          "isCorrect": false,
+          "rationale": "Even resizable arrays benefit from contiguous allocation for fast access; the fixed nature of a layout is what facilitates the math, not necessarily a static length."
+        }
+      ],
+      "hint": "Consider how the physical arrangement of data in RAM affects how quickly a specific piece can be found."
+    },
+    {
+      "question": "What is the primary objective of the dynamic programming approach in the matrix chain multiplication problem?",
+      "answerOptions": [
+        {
+          "text": "To determine the optimal parenthesization that minimizes scalar multiplications.",
+          "isCorrect": true,
+          "rationale": "Since matrix multiplication is associative, different grouping orders can vastly change the number of operations required to get the same result."
+        },
+        {
+          "text": "To prove that matrix multiplication is commutative.",
+          "isCorrect": false,
+          "rationale": "Matrix multiplication is not commutative, and dynamic programming is used to manage its associativity efficiently, not to change its algebraic properties."
+        },
+        {
+          "text": "To reduce the number of matrices in the chain to a single identity matrix.",
+          "isCorrect": false,
+          "rationale": "The goal is to compute the product of the existing matrices in the most efficient sequence, not to alter or simplify the matrices themselves."
+        },
+        {
+          "text": "To find the largest possible value that can be produced by a multiplication chain.",
+          "isCorrect": false,
+          "rationale": "The objective is computational efficiency (speed/cost), not finding a maximum mathematical value from the matrix elements."
+        }
+      ],
+      "hint": "Think about how the associative property allows different grouping orders for the same final product."
+    },
+    {
+      "question": "How does Big O notation handle a function $f(n)$ being multiplied by a positive constant $k$?",
+      "answerOptions": [
+        {
+          "text": "The complexity remains $O(f(n))$ because constant factors are ignored in asymptotic analysis.",
+          "isCorrect": true,
+          "rationale": "Big O focuses on the fundamental rate of growth as $n$ tends toward infinity, making constant multipliers irrelevant to the classification."
+        },
+        {
+          "text": "The complexity becomes $O(k \\cdot f(n))$ to maintain precision in the formula.",
+          "isCorrect": false,
+          "rationale": "The notation's purpose is to simplify functions to their highest-order term without constants, so $k$ is stripped away."
+        },
+        {
+          "text": "The function shifts to a higher order of complexity, such as from $O(n)$ to $O(n^{2})$.",
+          "isCorrect": false,
+          "rationale": "A constant factor cannot change the power or type of the growth; only multiplying by a variable factor like $n$ would do that."
+        },
+        {
+          "text": "Big O notation is only defined for functions where $k = 1$.",
+          "isCorrect": false,
+          "rationale": "The definition explicitly accounts for constants by stating there exists a constant $c$ such that $|f(n)| \\le c|g(n)|$."
+        }
+      ],
+      "hint": "Recall if $O(2n)$ is considered different from $O(n)$ in standard complexity analysis."
+    },
+    {
+      "question": "In the context of mathematical optimization, what is the 'Bellman equation' used for?",
+      "answerOptions": [
+        {
+          "text": "Calculating value functions by working backwards from a final state.",
+          "isCorrect": true,
+          "rationale": "The Bellman equation provides the recursive relationship needed to find optimal decisions by breaking down multi-stage processes."
+        },
+        {
+          "text": "Determining the Big O complexity of a sorting algorithm.",
+          "isCorrect": false,
+          "rationale": "Complexity analysis is a separate field from the recursive optimization modeling represented by the Bellman equation."
+        },
+        {
+          "text": "Allocating contiguous blocks of memory for array storage.",
+          "isCorrect": false,
+          "rationale": "This is a low-level implementation detail of data structures, whereas the Bellman equation is a high-level mathematical principle."
+        },
+        {
+          "text": "Measuring the performance of hardware benchmarks in real-time.",
+          "isCorrect": false,
+          "rationale": "The equation is a theoretical tool for finding optimal solutions, not a hardware measurement utility."
+        }
+      ],
+      "hint": "This concept is central to finding the value of a larger problem based on the values of its sub-problems."
+    },
+    {
+      "question": "What is a significant advantage of a linked list over a standard array?",
+      "answerOptions": [
+        {
+          "text": "Efficient insertion and removal of elements without relocating the entire collection.",
+          "isCorrect": true,
+          "rationale": "Since linked lists use pointers between nodes, elements can be added or removed by simply updating addresses rather than shifting data."
+        },
+        {
+          "text": "Instantaneous random access to any element using an integer index.",
+          "isCorrect": false,
+          "rationale": "Linked lists actually lack this advantage, as finding the $n$-th element requires traversing all $n-1$ preceding nodes."
+        },
+        {
+          "text": "Lower memory usage per element due to the absence of metadata.",
+          "isCorrect": false,
+          "rationale": "Linked lists generally use more memory because they must store additional pointer or reference information for each node."
+        },
+        {
+          "text": "Inherent support for parallel thread access without synchronization.",
+          "isCorrect": false,
+          "rationale": "Linked lists require complex management for concurrent access to prevent pointer corruption, often being more difficult to synchronize than arrays."
+        }
+      ],
+      "hint": "Consider what happens to the rest of the data when you add a new item to the middle of the collection."
+    },
+    {
+      "question": "Which dynamic programming approach involves starting with the smallest sub-problems and building up to the final solution using a tabular form?",
+      "answerOptions": [
+        {
+          "text": "Bottom-up approach",
+          "isCorrect": true,
+          "rationale": "This method iteratively generates solutions to increasingly larger sub-problems using pre-computed values from smaller ones."
+        },
+        {
+          "text": "Top-down approach",
+          "isCorrect": false,
+          "rationale": "The top-down approach starts with the main problem and uses recursion with memoization to solve sub-problems only as needed."
+        },
+        {
+          "text": "Divide and conquer",
+          "isCorrect": false,
+          "rationale": "While it also breaks problems down, divide and conquer does not specifically focus on building from smaller sub-problems in a reused tabular fashion for overlapping cases."
+        },
+        {
+          "text": "Brute force search",
+          "isCorrect": false,
+          "rationale": "Brute force explores all possibilities without the strategic reuse of sub-problem solutions that characterizes the bottom-up DP approach."
+        }
+      ],
+      "hint": "This approach is often associated with loops and iterative generation rather than pure recursion."
+    },
+    {
+      "question": "If $f(n) = O(g(n))$ and $g(n) = O(h(n))$, what property of Big O notation allows us to conclude that $f(n) = O(h(n))$?",
+      "answerOptions": [
+        {
+          "text": "Transitive property",
+          "isCorrect": true,
+          "rationale": "The transitive property ensures that if one function is bounded by a second, and that second by a third, the first is bounded by the third."
+        },
+        {
+          "text": "Sum property",
+          "isCorrect": false,
+          "rationale": "The sum property relates to the complexity of adding two functions together, not the chain of bounds between three functions."
+        },
+        {
+          "text": "Product property",
+          "isCorrect": false,
+          "rationale": "The product property describes how Big O notation behaves when two functions are multiplied, which is not what is happening here."
+        },
+        {
+          "text": "Multiplicative constant property",
+          "isCorrect": false,
+          "rationale": "This property deals with how coefficients are treated, not the relationship between distinct growth functions."
+        }
+      ],
+      "hint": "Think of this like an inequality chain where $A \\le B$ and $B \\le C$ implies $A \\le C$."
+    },
+    {
+      "question": "For which specific task is a trie (prefix tree) most useful compared to other tree structures?",
+      "answerOptions": [
+        {
+          "text": "Efficiently retrieving strings based on their character prefixes.",
+          "isCorrect": true,
+          "rationale": "In a trie, each node represents a character, making it ideal for prefix-based tasks like autocomplete or dictionary lookups."
+        },
+        {
+          "text": "Storing large numerical datasets in contiguous memory blocks.",
+          "isCorrect": false,
+          "rationale": "Tries are linked structures and are generally specialized for string-like data rather than contiguous numerical storage."
+        },
+        {
+          "text": "Implementing a Last In, First Out (LIFO) data retrieval system.",
+          "isCorrect": false,
+          "rationale": "LIFO behavior is the characteristic of a stack, not a tree structure like a trie."
+        },
+        {
+          "text": "Minimizing the number of edges in a directed acyclic graph.",
+          "isCorrect": false,
+          "rationale": "While a trie is a type of graph, its purpose is organizational efficiency for string retrieval, not general edge minimization in graphs."
+        }
+      ],
+      "hint": "Consider the name 'prefix tree' and how it might be used in a search engine search bar."
+    }
+  ]
+}

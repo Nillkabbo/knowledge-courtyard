@@ -1,0 +1,163 @@
+{
+  "name": "RAG Mastery & Knowledge Retrieval",
+  "children": [
+    {
+      "name": "Document Ingestion Pipeline",
+      "children": [
+        {
+          "name": "Format-Specific Parsing (PDF, HTML, DOCX, OCR)"
+        },
+        {
+          "name": "Universal Pipeline: Load, Extract, Clean, Structure"
+        },
+        {
+          "name": "Metadata Tagging & Citation"
+        },
+        {
+          "name": "Tools: Unstructured.io, LlamaParse, Docling"
+        }
+      ]
+    },
+    {
+      "name": "Indexing & Vector DB",
+      "children": [
+        {
+          "name": "Vector Embeddings & High-Dimensional Space"
+        },
+        {
+          "name": "Algorithms",
+          "children": [
+            {
+              "name": "HNSW (Graph-based, High Performance)"
+            },
+            {
+              "name": "IVF (Cluster-based Search)"
+            },
+            {
+              "name": "Product Quantization (Compression)"
+            }
+          ]
+        },
+        {
+          "name": "Storage: Pinecone, Qdrant, Weaviate, Milvus"
+        }
+      ]
+    },
+    {
+      "name": "Retrieval Patterns",
+      "children": [
+        {
+          "name": "Naive RAG",
+          "children": [
+            {
+              "name": "Embed-Search-Generate Cycle"
+            },
+            {
+              "name": "Limitations: Wrong Chunks, Lost Context"
+            }
+          ]
+        },
+        {
+          "name": "Advanced Retrieval",
+          "children": [
+            {
+              "name": "Hybrid Search (Dense + Lexical BM25)"
+            },
+            {
+              "name": "Parent-Child / Small-to-Big Chunking"
+            },
+            {
+              "name": "HyDE (Hypothetical Embeddings)"
+            },
+            {
+              "name": "Contextual Retrieval & Late Chunking"
+            },
+            {
+              "name": "Reranking (Cross-Encoders)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Query Transformation",
+      "children": [
+        {
+          "name": "Query Rewriting & Specificity"
+        },
+        {
+          "name": "Multi-Query Expansion"
+        },
+        {
+          "name": "Sub-question Decomposition"
+        },
+        {
+          "name": "Step-Back Prompting"
+        }
+      ]
+    },
+    {
+      "name": "Evaluation & Reliability",
+      "children": [
+        {
+          "name": "RAGAS Framework",
+          "children": [
+            {
+              "name": "Context Precision & Recall"
+            },
+            {
+              "name": "Answer Faithfulness & Relevance"
+            }
+          ]
+        },
+        {
+          "name": "Failure Modes",
+          "children": [
+            {
+              "name": "Hallucination & Stale Data"
+            },
+            {
+              "name": "Prompt Injection & Poisoning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Connected Knowledge",
+      "children": [
+        {
+          "name": "GraphRAG",
+          "children": [
+            {
+              "name": "Entity & Relation Extraction"
+            },
+            {
+              "name": "Community Detection"
+            },
+            {
+              "name": "Multi-hop Reasoning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Production Implementation",
+      "children": [
+        {
+          "name": "Semantic Caching"
+        },
+        {
+          "name": "Observability & Tracing (LangSmith, Phoenix)"
+        },
+        {
+          "name": "Guardrails & Safety"
+        },
+        {
+          "name": "Frameworks: LangChain, LlamaIndex, Haystack"
+        }
+      ]
+    }
+  ]
+}

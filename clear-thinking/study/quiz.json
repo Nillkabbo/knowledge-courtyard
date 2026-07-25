@@ -1,0 +1,265 @@
+{
+  "title": "Kahneman Quiz",
+  "questions": [
+    {
+      "question": "Daniel Kahneman was awarded the Nobel Memorial Prize in Economic Sciences in 2002 for his work in which specific area?",
+      "answerOptions": [
+        {
+          "text": "Integrating psychological research into economic science, particularly judgment and decision-making.",
+          "isCorrect": true,
+          "rationale": "Kahneman's primary contribution was applying cognitive psychology to understand human judgment under uncertainty, challenging assumptions of rationality."
+        },
+        {
+          "text": "Developing the first mathematical models for experimental market analysis.",
+          "isCorrect": false,
+          "rationale": "This describes the work of Vernon L. Smith, with whom Kahneman shared the prize, rather than Kahneman's own focus on psychological insights."
+        },
+        {
+          "text": "The discovery of the laws governing macro-economic stability in developing nations.",
+          "isCorrect": false,
+          "rationale": "Kahneman's work focused on individual psychology and micro-level behavioral economics rather than macro-level national stability."
+        },
+        {
+          "text": "Proving the absolute rationality of human agents in competitive game theory.",
+          "isCorrect": false,
+          "rationale": "Kahneman's empirical findings actually challenged the assumption of human rationality that prevailed in modern economic theory."
+        }
+      ],
+      "hint": "Consider the academic discipline Kahneman bridged with economics to earn the prize."
+    },
+    {
+      "question": "Which of the following describes the 'peak-end rule' as formulated by Kahneman?",
+      "answerOptions": [
+        {
+          "text": "An experience is judged based on how it felt at its most intense moment and at its conclusion.",
+          "isCorrect": true,
+          "rationale": "This rule identifies that memories of pleasure or pain are dominated by the peak intensity and the final moments rather than the total duration."
+        },
+        {
+          "text": "The total sum of pleasure or pain is averaged across the entire duration of an event.",
+          "isCorrect": false,
+          "rationale": "This contradicts Kahneman's findings, which suggest that duration is often neglected in favor of specific emotional snapshots."
+        },
+        {
+          "text": "A person remembers only the beginning of an event and the final outcome.",
+          "isCorrect": false,
+          "rationale": "While the end is critical, the 'peak' refers to the most intense point of the experience, not necessarily the beginning."
+        },
+        {
+          "text": "The first impression is the most vital factor in determining the utility of a past experience.",
+          "isCorrect": false,
+          "rationale": "This refers to the primacy effect, whereas Kahneman's rule specifically highlights the most intense moment and the finale."
+        }
+      ],
+      "hint": "Think about the specific snapshots of an experience that most heavily influence our memories."
+    },
+    {
+      "question": "According to Kahneman and David Schkade's 1998 study, why did Midwesterners believe Californians were happier than themselves despite similar reported satisfaction levels?",
+      "answerOptions": [
+        {
+          "text": "The focusing illusion led them to exaggerate the importance of the weather distinction.",
+          "isCorrect": true,
+          "rationale": "The Midwesterners focused on a single distinguishing factor (weather), overestimating its impact on overall life satisfaction."
+        },
+        {
+          "text": "Californians possess a higher baseline of experienced utility due to social yardsticks.",
+          "isCorrect": false,
+          "rationale": "The study actually found that both groups reported similar levels of life satisfaction; the difference was only in perception."
+        },
+        {
+          "text": "The availability heuristic made them recall more positive media depictions of California.",
+          "isCorrect": false,
+          "rationale": "While related to mental shortcuts, the study specifically illustrates the 'focusing' on a single attribute to predict happiness."
+        },
+        {
+          "text": "Midwesterners were experiencing higher levels of duration neglect during the winter months.",
+          "isCorrect": false,
+          "rationale": "Duration neglect refers to the length of an episode, not the comparative judgment of geographic locations."
+        }
+      ],
+      "hint": "Focus on the error people make when they look at one specific factor to judge overall well-being."
+    },
+    {
+      "question": "Which psychological self did Kahneman initially believe was the 'true' measure of well-being, before acknowledging that humans actually pursue life satisfaction?",
+      "answerOptions": [
+        {
+          "text": "The experiencing self",
+          "isCorrect": true,
+          "rationale": "Kahneman initially prioritized the moment-to-moment feelings of the experiencing self over the retrospective judgments of the remembering self."
+        },
+        {
+          "text": "The remembering self",
+          "isCorrect": false,
+          "rationale": "The remembering self is what Kahneman later realized people actually serve when they pursue life satisfaction and social yardsticks."
+        },
+        {
+          "text": "The utilitarian self",
+          "isCorrect": false,
+          "rationale": "Kahneman distinguished between types of utility (experienced vs. decision), but 'utilitarian self' is not a term used to describe these two perspectives."
+        },
+        {
+          "text": "The rational self",
+          "isCorrect": false,
+          "rationale": "Kahneman's work focused on the systematic errors that move humans away from the idealized 'rational' behavior of classical economics."
+        }
+      ],
+      "hint": "This self is aware of pleasure and pain as they are happening in the present moment."
+    },
+    {
+      "question": "During his military service in the Israel Defense Forces (IDF), what significant tool did Kahneman develop that remained in use for decades?",
+      "answerOptions": [
+        {
+          "text": "A structured interview for combat recruits",
+          "isCorrect": true,
+          "rationale": "Kahneman applied psychological principles to create a standardized system for evaluating the potential of military recruits."
+        },
+        {
+          "text": "A psychological test to identify potential for shell shock",
+          "isCorrect": false,
+          "rationale": "While he served in the psychology department, his documented contribution was a hiring/selection tool for recruits, not a trauma diagnostic."
+        },
+        {
+          "text": "The pupillary change monitoring system for pilots",
+          "isCorrect": false,
+          "rationale": "Kahneman studied pupillary changes later in his academic career during his research on attention and effort, not during his IDF service."
+        },
+        {
+          "text": "A behavioral game theory model for infantry tactics",
+          "isCorrect": false,
+          "rationale": "Kahneman served as a second lieutenant in the infantry and then moved to the psychology department to focus on recruit evaluation."
+        }
+      ],
+      "hint": "This contribution involved a standard method for assessing people during the entry process."
+    },
+    {
+      "question": "Kahneman's collaboration with Richard Thaler led to the publication of a 1980 paper titled 'Toward a Positive Theory of Consumer Choice.' How did Kahneman characterize this work?",
+      "answerOptions": [
+        {
+          "text": "The founding text of behavioral economics",
+          "isCorrect": true,
+          "rationale": "Kahneman credits Thaler's work, which built on prospect theory, as the essential starting point for the field of behavioral economics."
+        },
+        {
+          "text": "The definitive proof of the endowment effect",
+          "isCorrect": false,
+          "rationale": "While Thaler and Kahneman worked on the endowment effect later, this specific paper is cited for its broader impact on establishing the field."
+        },
+        {
+          "text": "A summary of heuristics and biases",
+          "isCorrect": false,
+          "rationale": "The compilation on heuristics and biases was edited by Kahneman, Tversky, and Slovic in 1982, distinct from Thaler's 1980 paper."
+        },
+        {
+          "text": "The empirical refutation of utility theory",
+          "isCorrect": false,
+          "rationale": "Kahneman's work integrated psychological insights into economics rather than simply refuting the concept of utility."
+        }
+      ],
+      "hint": "Consider the historical role this paper played in launching a new branch of economics."
+    },
+    {
+      "question": "What factor contributed to the eventual 'divorce' or tapering off of the intense partnership between Kahneman and Amos Tversky in the early 1980s?",
+      "answerOptions": [
+        {
+          "text": "Tversky receiving a disproportionate amount of external credit for their joint work.",
+          "isCorrect": true,
+          "rationale": "External perceptions and a reduction in the generosity of their interactions led to an estrangement, despite continued publications."
+        },
+        {
+          "text": "A fundamental disagreement over the validity of prospect theory.",
+          "isCorrect": false,
+          "rationale": "The two actually continued to refine their theories and work on joint introductions until Tversky's death; their disagreement was interpersonal and professional."
+        },
+        {
+          "text": "Kahneman's decision to leave the field of psychology for pure economics.",
+          "isCorrect": false,
+          "rationale": "Kahneman remained a research psychologist throughout his career, often stating he never took a single economics course."
+        },
+        {
+          "text": "The failure of their first paper, 'Belief in the Law of Small Numbers.'",
+          "isCorrect": false,
+          "rationale": "Their early papers were highly successful and formed the bedrock of their influential partnership."
+        }
+      ],
+      "hint": "Think about how public recognition and the internal dynamics of their friendship shifted over time."
+    },
+    {
+      "question": "In his research on 'Variants of Utility,' Kahneman distinguished 'remembered utility' from 'experienced utility.' Which of the following is a key finding of his experiments in this area?",
+      "answerOptions": [
+        {
+          "text": "Remembered utility is the best predictor of subsequent decision utility.",
+          "isCorrect": true,
+          "rationale": "People make future choices based on their evaluation of past experiences (remembered utility), even if those memories are inaccurate."
+        },
+        {
+          "text": "Experienced utility and remembered utility are typically identical in duration and intensity.",
+          "isCorrect": false,
+          "rationale": "Kahneman found that memories of experiences are systematically inaccurate and often neglect the duration of the episode."
+        },
+        {
+          "text": "Momentary utility is a more accurate predictor of future choices than retrospective evaluations.",
+          "isCorrect": false,
+          "rationale": "The 'remembered utility'—despite being inaccurate—is what people actually use to guide their subsequent decisions."
+        },
+        {
+          "text": "Temporal integration of utility is the only method humans use to evaluate past events.",
+          "isCorrect": false,
+          "rationale": "Kahneman’s research showed that people do not use temporal integration; instead, they rely on heuristics like the peak-end rule."
+        }
+      ],
+      "hint": "Consider which version of a past event actually influences our future behaviors."
+    },
+    {
+      "question": "Kahneman's 1973 book 'Attention and Effort' presented a theory based on which physiological measurement?",
+      "answerOptions": [
+        {
+          "text": "Pupillary changes during mental tasks",
+          "isCorrect": true,
+          "rationale": "Kahneman used changes in pupil diameter as an indicator of the mental effort exerted during various cognitive activities."
+        },
+        {
+          "text": "Heart rate variability under uncertainty",
+          "isCorrect": false,
+          "rationale": "While heart rate is a physiological measure, Kahneman's specific theory of effort was built on his studies of eye behavior."
+        },
+        {
+          "text": "Galvanic skin response during loss aversion",
+          "isCorrect": false,
+          "rationale": "Loss aversion was a central part of prospect theory, but the book 'Attention and Effort' focused on earlier work regarding visual perception."
+        },
+        {
+          "text": "Cortisol levels in response to cognitive biases",
+          "isCorrect": false,
+          "rationale": "Kahneman's early research was grounded in experimental psychology and psychophysics rather than endocrinology."
+        }
+      ],
+      "hint": "Look for a response related to an involuntary change in the eye."
+    },
+    {
+      "question": "What did Kahneman conclude about the relationship between 'happiness' and 'life satisfaction' in his later work with the Gallup World Poll?",
+      "answerOptions": [
+        {
+          "text": "Humans generally pursue life satisfaction, which is tied to social yardsticks and goals, rather than momentary happiness.",
+          "isCorrect": true,
+          "rationale": "He realized that while he initially studied moment-to-moment affect, people define a 'good life' by achievement and meeting expectations."
+        },
+        {
+          "text": "Happiness and life satisfaction are interchangeable terms that describe the same psychological state.",
+          "isCorrect": false,
+          "rationale": "Kahneman explicitly distinguished between the two, noting that one is an immediate experience while the other is an aggregate evaluation."
+        },
+        {
+          "text": "Economic success has a significantly greater impact on happiness than it does on life satisfaction.",
+          "isCorrect": false,
+          "rationale": "The source suggests that life satisfaction is more closely connected to social yardsticks, which often include economic achievements."
+        },
+        {
+          "text": "Measuring moment-to-moment happiness is the only reliable way for economists to assess well-being.",
+          "isCorrect": false,
+          "rationale": "Kahneman admitted that his effort to prioritize 'experienced happiness' as the superior concept was only partly successful."
+        }
+      ],
+      "hint": "Think about the distinction between 'how I feel right now' and 'how I feel about my life as a whole.'"
+    }
+  ]
+}

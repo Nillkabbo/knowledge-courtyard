@@ -1,0 +1,265 @@
+{
+  "title": "Academia Quiz",
+  "questions": [
+    {
+      "question": "What is the primary purpose of academic tenure as defined in the provided source material?",
+      "answerOptions": [
+        {
+          "text": "To guarantee that a professor can never be fired regardless of their conduct or financial situation.",
+          "isCorrect": false,
+          "rationale": "Even tenured staff can be dismissed for just cause, financial exigency, or program discontinuation."
+        },
+        {
+          "text": "To provide a semi-permanent position that protects faculty from dismissal based on their personal beliefs.",
+          "isCorrect": true,
+          "rationale": "Tenure is specifically designed to defend academic freedom and protect scholars from being fired for expressing unpopular views."
+        },
+        {
+          "text": "To ensure that all university professors receive higher salaries than those in the private sector.",
+          "isCorrect": false,
+          "rationale": "Tenure is often viewed as a trade-off for lower pay compared to private industry, offering job security instead of high financial remuneration."
+        },
+        {
+          "text": "To mandate that all faculty members must participate in university marketing and industry competition.",
+          "isCorrect": false,
+          "rationale": "Marketing and industry competition were specific management goals introduced in Denmark, not the core global definition of tenure."
+        }
+      ],
+      "hint": "Consider the relationship between job security and the freedom to pursue unorthodox research."
+    },
+    {
+      "question": "According to the history of academic tenure in Germany, what occurred under the Third Reich?",
+      "answerOptions": [
+        {
+          "text": "The tenure system was abolished entirely and replaced with temporary yearly contracts for all staff.",
+          "isCorrect": false,
+          "rationale": "While curtailed, the system was used to purge existing professors and replace them with party members rather than being abolished."
+        },
+        {
+          "text": "Academic freedom was severely curtailed, leading to the purge of approximately 1,500 professors.",
+          "isCorrect": true,
+          "rationale": "The Nazi regime integrated racial theories into curriculums and removed faculty who did not align with their ideology."
+        },
+        {
+          "text": "Germany adopted the American model of tenure to protect professors teaching Keynesian economics.",
+          "isCorrect": false,
+          "rationale": "Keynesian economics was actually labeled as heresy by the University of Illinois in the late 1940s, not during the Third Reich."
+        },
+        {
+          "text": "Universal education was expanded to promote tenure-track positions for diverse ethnic groups.",
+          "isCorrect": false,
+          "rationale": "Adolf Hitler referred to universal education as a 'poison' and sought to integrate Nazi racial theories instead."
+        }
+      ],
+      "hint": "Focus on how the regime used the education system to integrate specific ideologies."
+    },
+    {
+      "question": "In the context of a PhD journey, which milestone typically marks the transition to becoming an official 'PhD Candidate'?",
+      "answerOptions": [
+        {
+          "text": "Completion of the initial coursework phase.",
+          "isCorrect": false,
+          "rationale": "Coursework provides the knowledge base but does not automatically grant candidate status."
+        },
+        {
+          "text": "Successful completion of the Qualifying Exam.",
+          "isCorrect": true,
+          "rationale": "Passing this written and oral examination proves the student is ready to conduct independent research, thus earning them the title of 'Candidate'."
+        },
+        {
+          "text": "The formal defense of the final 200-page dissertation.",
+          "isCorrect": false,
+          "rationale": "The defense is the final step to earning the 'Doctor' title, which follows the candidacy phase."
+        },
+        {
+          "text": "Receiving a first-year stipend from a Research Assistantship.",
+          "isCorrect": false,
+          "rationale": "Stipends are a form of financial support and are not an academic milestone for candidacy."
+        }
+      ],
+      "hint": "This milestone usually involves proving you have read and understood a large volume of existing research in your area."
+    },
+    {
+      "question": "Which funding model is described as the 'Merchant's Offer' where the student works on a professor's grant?",
+      "answerOptions": [
+        {
+          "text": "Teaching Assistantship (TA)",
+          "isCorrect": false,
+          "rationale": "A TA involves teaching undergraduates, which may be separate from the professor's specific research grant."
+        },
+        {
+          "text": "Research Assistantship (RA)",
+          "isCorrect": true,
+          "rationale": "In an RA position, the student is paid to perform research that aligns with the professor's funded projects."
+        },
+        {
+          "text": "Fellowship",
+          "isCorrect": false,
+          "rationale": "Fellowships generally allow for 100% focus on research without specific work obligations to a professor's grant."
+        },
+        {
+          "text": "Self-Funding",
+          "isCorrect": false,
+          "rationale": "Self-funding involves the student paying for their own tuition and living costs without a work-exchange model."
+        }
+      ],
+      "hint": "Think about the role where the work you are paid for is directly related to a specific research project."
+    },
+    {
+      "question": "How does the French education system typically rank professional doctorates in health sciences (e.g., MD) compared to other disciplines?",
+      "answerOptions": [
+        {
+          "text": "They are ranked as higher than a PhD in humanities due to the length of clinical training.",
+          "isCorrect": false,
+          "rationale": "PhD degrees are generally ranked higher in terms of original research requirements."
+        },
+        {
+          "text": "They are considered equivalent to a Master's degree.",
+          "isCorrect": true,
+          "rationale": "In France, medical diplomas are ranked as equivalent to a Master's to distinguish them from research-based doctorates."
+        },
+        {
+          "text": "They are ranked lower than a standard Bachelor's degree due to vocational focus.",
+          "isCorrect": false,
+          "rationale": "Health degrees are postgraduate qualifications and are certainly ranked higher than undergraduate degrees."
+        },
+        {
+          "text": "They are categorized as 'Grandes Écoles' diplomas which carry no academic weight.",
+          "isCorrect": false,
+          "rationale": "Grandes Écoles are prestigious institutions, but health diplomas are their own category within the system."
+        }
+      ],
+      "hint": "Consider the difference between professional training and original research requirements."
+    },
+    {
+      "question": "In PhD admissions, what is the 'Bridge Year' strategy used for?",
+      "answerOptions": [
+        {
+          "text": "To skip the dissertation phase and move directly into industry research labs.",
+          "isCorrect": false,
+          "rationale": "The dissertation is a mandatory requirement for completing a PhD and cannot be skipped by a bridge year."
+        },
+        {
+          "text": "To improve a low or mid-tier profile by gaining research experience before applying.",
+          "isCorrect": true,
+          "rationale": "A bridge year allows candidates to volunteer as RAs or publish papers to become more competitive for top-tier programs."
+        },
+        {
+          "text": "To allow tenured professors to transition from one university to another.",
+          "isCorrect": false,
+          "rationale": "This strategy is for applicants seeking entry into a PhD program, not for established faculty."
+        },
+        {
+          "text": "To fulfill the coursework requirement during the first year of a Master's program.",
+          "isCorrect": false,
+          "rationale": "A bridge year is typically a period of self-improvement taken before or during the application cycle, not a standard coursework year."
+        }
+      ],
+      "hint": "Think about a way to build a 'potential researcher' image if your past grades are not perfect."
+    },
+    {
+      "question": "What common misconception about the 'Statement of Purpose' (SOP) does the source material highlight?",
+      "answerOptions": [
+        {
+          "text": "That it should be a detailed biography of one's life and childhood hobbies.",
+          "isCorrect": true,
+          "rationale": "The source states that an SOP is not a biography, but rather a specific research intention and proof of fit."
+        },
+        {
+          "text": "That it must include a specific research question and name potential advisors.",
+          "isCorrect": false,
+          "rationale": "This is actually a requirement for a *good* SOP, not a misconception to avoid."
+        },
+        {
+          "text": "That it should be written differently for every university applied to.",
+          "isCorrect": false,
+          "rationale": "The source explicitly recommends tailoring each SOP to the specific university and professor."
+        },
+        {
+          "text": "That it is the least important part of the application compared to GPA.",
+          "isCorrect": false,
+          "rationale": "The source identifies the SOP as one of the most critical elements for proving research potential."
+        }
+      ],
+      "hint": "Avoid focusing on your personal history and childhood interests in this document."
+    },
+    {
+      "question": "According to the source material, why is 'Cold Emailing' professors considered a strategic necessity for PhD applicants?",
+      "answerOptions": [
+        {
+          "text": "It is the only way to obtain a waiver for the expensive application fees.",
+          "isCorrect": false,
+          "rationale": "While fee waivers exist, they are usually handled by the admissions office, not via cold emails to professors."
+        },
+        {
+          "text": "Professors often make the final decision on admissions and funding for their labs.",
+          "isCorrect": true,
+          "rationale": "If a professor wants a specific student for their research group, they can influence the admissions committee to accept them."
+        },
+        {
+          "text": "It ensures that the applicant will receive a reply from every professor they contact.",
+          "isCorrect": false,
+          "rationale": "The source notes that roughly 90% of cold emails receive no response at all."
+        },
+        {
+          "text": "It is required by the DHS for international students to maintain 'Duration of Status'.",
+          "isCorrect": false,
+          "rationale": "DHS regulations are about legal stay and visas, not about the professional networking step of cold emailing."
+        }
+      ],
+      "hint": "Think about who holds the power to fund a student's research within a specific department."
+    },
+    {
+      "question": "What does the 'Duration of Status' (D/S) update (July 2026) mean for international PhD students in the US?",
+      "answerOptions": [
+        {
+          "text": "F-1 visas now automatically last for the full 7 years required for a PhD.",
+          "isCorrect": false,
+          "rationale": "The update actually introduced a fixed time period of admission, meaning the visa might not cover the full duration of the PhD."
+        },
+        {
+          "text": "Students are admitted for a fixed period (typically 4 years) and must apply for extensions.",
+          "isCorrect": true,
+          "rationale": "Because PhDs take 5-7 years, students now face a requirement to apply for an 'Extension of Stay' during their program."
+        },
+        {
+          "text": "The grace period to leave the country after graduation has been increased to 90 days.",
+          "isCorrect": false,
+          "rationale": "The grace period was actually reduced from 60 days to 30 days under the new rule."
+        },
+        {
+          "text": "International students are no longer allowed to serve as Teaching Assistants.",
+          "isCorrect": false,
+          "rationale": "There is no mention of the rule prohibiting international students from being TAs."
+        }
+      ],
+      "hint": "Consider how the change from 'indefinite stay' to a 'fixed period' affects a long-term degree."
+    },
+    {
+      "question": "In the UK, what was the significant change introduced by the Education Reform Act of 1988 regarding academic staff?",
+      "answerOptions": [
+        {
+          "text": "It introduced the 'Habilitation' requirement for all lecturers.",
+          "isCorrect": false,
+          "rationale": "Habilitation is a German requirement; the UK system does not use it."
+        },
+        {
+          "text": "It removed the original form of academic tenure.",
+          "isCorrect": true,
+          "rationale": "Since 1988, UK academics generally have permanent or temporary contracts rather than traditional tenure."
+        },
+        {
+          "text": "It mandated that all professors be employed as state civil servants.",
+          "isCorrect": false,
+          "rationale": "Civil servant status for professors is a characteristic of the German system, not the UK."
+        },
+        {
+          "text": "It abolished the PhD requirement for senior management positions.",
+          "isCorrect": false,
+          "rationale": "The Act focused on tenure and contracts, not on removing degree requirements for management."
+        }
+      ],
+      "hint": "Think about the shift away from 'jobs for life' in the British university system."
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "title": "LangChain Flashcards",
+  "cards": [
+    {
+      "front": "The software framework designed to facilitate the integration of large language models (LLMs) into applications is called _____.",
+      "back": "LangChain"
+    },
+    {
+      "front": "Identify the developer who launched LangChain as an open-source project in October 2022.",
+      "back": "Harrison Chase"
+    },
+    {
+      "front": "LangChain was originally written in which two programming languages?",
+      "back": "Python and JavaScript"
+    },
+    {
+      "front": "What is the primary license under which LangChain is released?",
+      "back": "MIT License"
+    },
+    {
+      "front": "In LangChain, what does the acronym LCEL stand for?",
+      "back": "LangChain Expression Language"
+    },
+    {
+      "front": "What is the purpose of the LangChain Expression Language (LCEL)?",
+      "back": "It provides a declarative way to define chains of actions."
+    },
+    {
+      "front": "The LangChain tool designed to host LCEL code as a production-ready API is called _____.",
+      "back": "LangServe"
+    },
+    {
+      "front": "What is the function of the LangSmith platform within the LangChain ecosystem?",
+      "back": "It provides observability and evaluation for LLM applications."
+    },
+    {
+      "front": "Identify the purpose of the LangGraph platform.",
+      "back": "It provides managed infrastructure for deploying long-running, stateful AI agents."
+    },
+    {
+      "front": "How does InfoWorld define LangChain in the context of connecting LLMs to external applications?",
+      "back": "As a software development kit (SDK) that simplifies connections through a unified API."
+    },
+    {
+      "front": "Which LangChain feature allows developers to bring in context from relational databases or CSV files?",
+      "back": "Integrations"
+    },
+    {
+      "front": "In the context of LangChain, what is the role of a vector database like Milvus or Weaviate?",
+      "back": "To store and retrieve vector embeddings."
+    },
+    {
+      "front": "Term: Retrieval-augmented generation (RAG)",
+      "back": "Definition: A technique enabling LLMs to retrieve and incorporate information from external data sources before generating a response."
+    },
+    {
+      "front": "How does RAG help reduce 'AI hallucinations' in chatbots?",
+      "back": "By blending the LLM process with a document look-up process to ground responses in facts."
+    },
+    {
+      "front": "What is one financial benefit of using RAG instead of retraining an LLM with new data?",
+      "back": "It reduces the computational and financial costs associated with frequent retraining."
+    },
+    {
+      "front": "How does RAG improve transparency for the end user?",
+      "back": "It allows the LLM to include and cite sources in its responses for verification."
+    },
+    {
+      "front": "When was the term 'retrieval-augmented generation' first introduced in a research paper?",
+      "back": "2020"
+    },
+    {
+      "front": "Define 'prompt stuffing' in the context of RAG systems.",
+      "back": "Adding relevant retrieved context to a user's input to guide the model's response."
+    },
+    {
+      "front": "In the RAG process, external data is typically converted into numerical representations called _____.",
+      "back": "Embeddings"
+    },
+    {
+      "front": "In RAG, where are document embeddings stored to facilitate efficient retrieval?",
+      "back": "Vector database"
+    },
+    {
+      "front": "What is the first step a RAG system takes after receiving a user query?",
+      "back": "It calls a document retriever to select the most relevant documents."
+    },
+    {
+      "front": "How does 're-ranking' improve the output of a RAG model?",
+      "back": "By refining the order of retrieved documents to prioritize the most relevant information."
+    },
+    {
+      "front": "What is the difference between dense vectors and sparse vectors in information retrieval?",
+      "back": "Dense vectors encode meaning, while sparse vectors typically encode the identity of specific words."
+    },
+    {
+      "front": "How do 'Late Interactions' enhance retrieval accuracy in RAG systems?",
+      "back": "They allow the system to compare words more precisely after retrieval to refine document ranking."
+    },
+    {
+      "front": "The retriever-centric optimization technique that involves predicting masked text within documents is called _____.",
+      "back": "Inverse Cloze Task (ICT)"
+    },
+    {
+      "front": "What is the core hypothesis behind the 'Retro' language model design?",
+      "back": "Providing domain knowledge during training allows the model to devote fewer weight resources to facts and more to semantics."
+    },
+    {
+      "front": "Identify the reproducible version of the 'Retro' language model.",
+      "back": "Retro++"
+    },
+    {
+      "front": "In RAG data preparation, what does the process of 'chunking' involve?",
+      "back": "Breaking down data into smaller segments or vectors to help the retriever find specific details."
+    },
+    {
+      "front": "What is a major advantage of file format-based chunking for code files?",
+      "back": "It keeps whole functions or classes intact as single vectorized units."
+    },
+    {
+      "front": "Define 'Hybrid Search' in the context of RAG.",
+      "back": "Combining traditional full-text search results with vector-based semantic search results."
+    },
+    {
+      "front": "Why might an LLM with RAG still produce misinformation despite having factually correct sources?",
+      "back": "The model may misinterpret the context of the retrieved information."
+    },
+    {
+      "front": "What is 'RAG poisoning'?",
+      "back": "The retrieval of factually correct but misleading or out-of-context sources that result in incorrect conclusions."
+    },
+    {
+      "front": "Term: Semantic Search",
+      "back": "Definition: An information retrieval approach that seeks to understand the searcher's intent and contextual meaning rather than just literal keyword matches."
+    },
+    {
+      "front": "How does semantic search differ from lexical search?",
+      "back": "Semantic search looks for meaning, while lexical search looks for literal matches of query words."
+    },
+    {
+      "front": "Which Google tool provides structured relationships between entities to enrich query interpretation in semantic search?",
+      "back": "Knowledge Graph"
+    },
+    {
+      "front": "Identify two common models used to convert sentences into dense vectors for similarity comparison.",
+      "back": "BERT and Sentence-BERT"
+    },
+    {
+      "front": "Term: Vector Database",
+      "back": "Definition: A database that stores and retrieves data as high-dimensional vectors (embeddings) rather than exact text matches."
+    },
+    {
+      "front": "Unlike traditional databases, vector databases use _____ algorithms to find records similar to an input.",
+      "back": "Approximate nearest neighbor (ANN)"
+    },
+    {
+      "front": "What determines the number of dimensions in a vector embedding?",
+      "back": "The complexity of the data being represented, typically ranging from hundreds to thousands."
+    },
+    {
+      "front": "What is the primary goal of computing feature vectors for semantically similar data items?",
+      "back": "To ensure that similar items receive vectors that are close to each other in high-dimensional space."
+    },
+    {
+      "front": "Identify the high-performance technique for similarity search that uses graphs.",
+      "back": "Hierarchical Navigable Small World (HNSW) graphs"
+    },
+    {
+      "front": "Name one technique besides HNSW graphs used for similarity search on high-dimensional vectors.",
+      "back": "Locality-sensitive hashing (LSH)"
+    },
+    {
+      "front": "In a RAG application, what is added to the 'context window' of an LLM to generate a response?",
+      "back": "Relevant document embeddings or document sections retrieved from a vector database."
+    },
+    {
+      "front": "Identify an open-source implementation of a vector database released under the Apache 2.0 license.",
+      "back": "Milvus (or Chroma, or Qdrant)"
+    },
+    {
+      "front": "Which popular relational database can be extended to support vector search via the 'pgvector' extension?",
+      "back": "PostgreSQL"
+    },
+    {
+      "front": "The managed vector database service known as 'Pinecone' uses which type of license?",
+      "back": "Proprietary"
+    },
+    {
+      "front": "What is the significance of the 'Curse of Dimensionality' in the context of vector databases?",
+      "back": "It refers to the difficulties that arise when analyzing or searching data with a very high number of aspects or dimensions."
+    },
+    {
+      "front": "In LangChain's history, which venture firm led a funding round at a valuation of at least \\$200 million in April 2023?",
+      "back": "Sequoia Capital"
+    },
+    {
+      "front": "Which LangChain integration allows for the execution of shell scripts and syntax checking?",
+      "back": "Bash"
+    },
+    {
+      "front": "What LangChain integration is used to find and summarize 'todo' tasks within source code?",
+      "back": "Code analysis/summarization"
+    },
+    {
+      "front": "Which specific vector database integration in LangChain is used to 'cache embedding and data objects'?",
+      "back": "Weaviate"
+    },
+    {
+      "front": "According to the source, how many document types and data sources could LangChain read from as of April 2023?",
+      "back": "More than 50"
+    },
+    {
+      "front": "The LangChain tool 'Alpha Vantage' requires an API key but provides what kind of data?",
+      "back": "Financial data and analytics"
+    },
+    {
+      "front": "Which LangChain tool allows for the indexing of unstructured data and requires a commercial license?",
+      "back": "Nuclia"
+    },
+    {
+      "front": "Which LangChain tool is used to fine-tune an LLM to memorize information using unsupervised learning?",
+      "back": "Memorize"
+    },
+    {
+      "front": "What is the purpose of the 'Human as a tool' integration in LangChain?",
+      "back": "To incorporate human input into the chain of actions."
+    },
+    {
+      "front": "According to the RAG stages, what phase involves the LLM drawing from both its internal training data and the augmented prompt?",
+      "back": "The generative phase"
+    },
+    {
+      "front": "In RAG, what is the 'parametric' part of the system?",
+      "back": "The pre-trained language model."
+    },
+    {
+      "front": "In RAG, what is the 'non-parametric' part of the system?",
+      "back": "The external memory or knowledge base accessed through retrieval."
+    },
+    {
+      "front": "Which RAG improvement method uses dot products to enhance similarity scoring?",
+      "back": "Encoder optimization"
+    },
+    {
+      "front": "How does 'approximate nearest neighbor' (ANN) search compare to 'K-nearest neighbors' (KNN) in terms of efficiency?",
+      "back": "ANN improves retrieval efficiency over KNN in large high-dimensional datasets."
+    },
+    {
+      "front": "What is the purpose of 'supervised retriever optimization' in RAG?",
+      "back": "To align the retriever's selections with the generator model's likelihood distribution."
+    },
+    {
+      "front": "Identify the chunking strategy that involves a 'fixed length with overlap.'",
+      "back": "A strategy where overlapping consecutive chunks maintain semantic context across segments."
+    },
+    {
+      "front": "What library does the source mention as helpful for syntax-based chunking into sentences?",
+      "back": "spaCy (or NLTK)"
+    },
+    {
+      "front": "What is a primary risk of RAG systems when they encounter conflicting information from multiple sources?",
+      "back": "The model may produce responses that merge outdated and updated information in a misleading manner."
+    },
+    {
+      "front": "Which type of search technique converts words or documents into numerical vectors to find results based on context?",
+      "back": "Semantic search"
+    },
+    {
+      "front": "What does a vector database store specifically to allow for semantic similarity searches?",
+      "back": "Embeddings (vector representations of data)."
+    },
+    {
+      "front": "In vector database terminology, what is 'product quantization' (PQ)?",
+      "back": "A technique used for similarity search on high-dimensional vectors."
+    },
+    {
+      "front": "Which vector database implementation is listed as having an Apache 2.0 license and being 'built on Amazon S3'?",
+      "back": "LanceDB"
+    },
+    {
+      "front": "Identify a vector database that uses a 'Server Side Public License' (SSPL).",
+      "back": "Elasticsearch (or MongoDB Atlas)."
+    },
+    {
+      "front": "Which LangChain integration provides computational knowledge through a website and SDK?",
+      "back": "WolframAlpha"
+    },
+    {
+      "front": "What is the primary function of the LangChain tool 'Apify'?",
+      "back": "Web scraping and automation."
+    },
+    {
+      "front": "The tool 'Eleven Labs Text2Speech' in LangChain is categorized under which license type?",
+      "back": "Commercial"
+    },
+    {
+      "front": "Which LangChain tool is designed to provide search engine results page (SERP) scraping?",
+      "back": "SerpAPI (or Google Serper)."
+    },
+    {
+      "front": "What is the function of the 'DuckDuckGo Search' tool in the LangChain ecosystem?",
+      "back": "Privacy-focused web search."
+    },
+    {
+      "front": "In LangChain, what does the 'Zapier Natural Language Actions' tool facilitate?",
+      "back": "Workflow automation through natural language."
+    },
+    {
+      "front": "What is the goal of 'reranking' in the context of RAG retriever-centric methods?",
+      "back": "To prioritize the most relevant retrieved documents during training to refine performance."
+    },
+    {
+      "front": "According to the 'RAG and LLM limitations' section, what happened to Google's stock value after Google Bard provided incorrect information about the James Webb Space Telescope?",
+      "back": "It declined by \\$100 billion."
+    },
+    {
+      "front": "Why is it important to respect file formats (like HTML) during the chunking process?",
+      "back": "To ensure that structural elements like base64 encoded images or specific tags remain intact."
+    },
+    {
+      "front": "In the context of vector databases, what are 'inverted files' used for?",
+      "back": "As a technique for similarity search on high-dimensional vectors."
+    }
+  ]
+}

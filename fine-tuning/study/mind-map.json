@@ -1,0 +1,246 @@
+{
+  "name": "Machine Learning and AI Evaluation",
+  "children": [
+    {
+      "name": "Benchmarking (Computing)",
+      "children": [
+        {
+          "name": "Purpose",
+          "children": [
+            {
+              "name": "Standardized performance evaluation"
+            },
+            {
+              "name": "Architectural comparison"
+            },
+            {
+              "name": "Workload mimicry"
+            }
+          ]
+        },
+        {
+          "name": "Benchmarking Principles",
+          "children": [
+            {
+              "name": "Relevance"
+            },
+            {
+              "name": "Repeatability"
+            },
+            {
+              "name": "Equity"
+            },
+            {
+              "name": "Scalability"
+            },
+            {
+              "name": "Transparency"
+            }
+          ]
+        },
+        {
+          "name": "Benchmark Types",
+          "children": [
+            {
+              "name": "Synthetic Benchmarks"
+            },
+            {
+              "name": "Application Benchmarks"
+            },
+            {
+              "name": "Microbenchmarks"
+            },
+            {
+              "name": "I/O and Database Benchmarks"
+            }
+          ]
+        },
+        {
+          "name": "Common Standards",
+          "children": [
+            {
+              "name": "SPEC (SPECint, SPECfp)"
+            },
+            {
+              "name": "TPC (DBMS benchmarks)"
+            },
+            {
+              "name": "EEMBC (Embedded)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Confusion Matrix",
+      "children": [
+        {
+          "name": "Core Components",
+          "children": [
+            {
+              "name": "True Positive (TP)"
+            },
+            {
+              "name": "True Negative (TN)"
+            },
+            {
+              "name": "False Positive (FP)"
+            },
+            {
+              "name": "False Negative (FN)"
+            }
+          ]
+        },
+        {
+          "name": "Derived Metrics",
+          "children": [
+            {
+              "name": "Accuracy"
+            },
+            {
+              "name": "Precision (PPV)"
+            },
+            {
+              "name": "Recall (Sensitivity)"
+            },
+            {
+              "name": "Specificity (TNR)"
+            },
+            {
+              "name": "F1 Score"
+            },
+            {
+              "name": "Matthews Correlation Coefficient"
+            }
+          ]
+        },
+        {
+          "name": "Advanced Variants",
+          "children": [
+            {
+              "name": "Multi-class Matrices"
+            },
+            {
+              "name": "Multi-label Classification"
+            },
+            {
+              "name": "Transport-based Confusion Matrix"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LLM Evaluation Methods",
+      "children": [
+        {
+          "name": "Evaluation Pillars",
+          "children": [
+            {
+              "name": "Mizan (Measurement Culture)"
+            },
+            {
+              "name": "Dailil (Metrics Selection)"
+            },
+            {
+              "name": "Qiyas (LLM-as-Judge)"
+            },
+            {
+              "name": "Shahadah (Human Testimony)"
+            }
+          ]
+        },
+        {
+          "name": "LLM Metrics",
+          "children": [
+            {
+              "name": "Faithfulness"
+            },
+            {
+              "name": "Relevance"
+            },
+            {
+              "name": "Coherence"
+            },
+            {
+              "name": "Fluency"
+            },
+            {
+              "name": "Instruction Following"
+            }
+          ]
+        },
+        {
+          "name": "Standard LLM Benchmarks",
+          "children": [
+            {
+              "name": "MMLU (General Knowledge)"
+            },
+            {
+              "name": "GSM8K (Math Reasoning)"
+            },
+            {
+              "name": "HumanEval (Coding)"
+            },
+            {
+              "name": "Chatbot Arena (Elo Rating)"
+            }
+          ]
+        },
+        {
+          "name": "Operational Eval",
+          "children": [
+            {
+              "name": "Regression Detection"
+            },
+            {
+              "name": "Production Sampling"
+            },
+            {
+              "name": "A/B Testing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Evaluation Challenges",
+      "children": [
+        {
+          "name": "Pitfalls",
+          "children": [
+            {
+              "name": "Data Contamination"
+            },
+            {
+              "name": "Goodhart's Law"
+            },
+            {
+              "name": "Selection Bias"
+            },
+            {
+              "name": "Vendor Over-tuning"
+            }
+          ]
+        },
+        {
+          "name": "Limitations",
+          "children": [
+            {
+              "name": "Black Box Opacity"
+            },
+            {
+              "name": "Hallucinations"
+            },
+            {
+              "name": "Model Collapse"
+            },
+            {
+              "name": "Adversarial Vulnerabilities"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

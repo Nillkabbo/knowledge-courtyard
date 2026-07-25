@@ -1,0 +1,377 @@
+{
+  "title": "Distributed Flashcards",
+  "cards": [
+    {
+      "front": "Who first proposed logical clocks and the 'happens-before' relation in 1978?",
+      "back": "Leslie Lamport"
+    },
+    {
+      "front": "In distributed systems, why is physical clock time unreliable for event ordering?",
+      "back": "Each machine has its own clock, and even millisecond differences prevent perfect synchronization."
+    },
+    {
+      "front": "The 'happens-before' relation ($A \\to B$) establishes that event $A$ is the _____ of event $B$.",
+      "back": "Cause"
+    },
+    {
+      "front": "According to the Lamport Clock algorithm, what must happen to a local counter during any local event?",
+      "back": "The local counter must be incremented by 1."
+    },
+    {
+      "front": "When sending a message in a Lamport Clock system, what must be included with the message?",
+      "back": "The current logical timestamp of the sender."
+    },
+    {
+      "front": "What is the formula for updating a Lamport logical clock ($C$) upon receiving a message with timestamp $T_{msg}$?",
+      "back": "$C = \\max(C_{local}, T_{msg}) + 1$"
+    },
+    {
+      "front": "If event $A \\to B$ (happens-before), what is the relationship between their Lamport timestamps ($T$)?",
+      "back": "$T(A) < T(B)$"
+    },
+    {
+      "front": "Leslie Lamport received the Turing Award in 2013 for his work on which subject?",
+      "back": "Distributed and concurrent systems."
+    },
+    {
+      "front": "Which typesetting system, widely used in academia, was created by Leslie Lamport?",
+      "back": "LaTeX"
+    },
+    {
+      "front": "What term describes the situation where two programs attempt to write to the same file simultaneously, resulting in corrupted data?",
+      "back": "Race condition"
+    },
+    {
+      "front": "Who introduced the concept of the semaphore in 1965 to solve mutual exclusion problems?",
+      "back": "Edsger Dijkstra"
+    },
+    {
+      "front": "In a semaphore context, what does an integer value of 1 typically indicate?",
+      "back": "The shared resource is currently free and available for use."
+    },
+    {
+      "front": "What is the function of the 'P' (proberen/wait) operation in a semaphore?",
+      "back": "It decrements the semaphore value and forces the process to wait if the resource is busy."
+    },
+    {
+      "front": "In a semaphore system, what is the 'V' (verhogen/signal) operation used for?",
+      "back": "It increments the semaphore value and wakes up any waiting processes."
+    },
+    {
+      "front": "What specific problem occurs when process $A$ waits for $B$, and $B$ waits for $A$ indefinitely?",
+      "back": "Deadlock"
+    },
+    {
+      "front": "Edsger Dijkstra's 1968 paper 'Go To Statement Considered Harmful' provided the foundation for which programming paradigm?",
+      "back": "Structured programming"
+    },
+    {
+      "front": "What are the three properties addressed by the CAP theorem?",
+      "back": "Consistency, Availability, and Partition Tolerance."
+    },
+    {
+      "front": "Who first presented the CAP theorem at the PODC symposium in 2000?",
+      "back": "Eric Brewer"
+    },
+    {
+      "front": "According to the CAP theorem, why can a distributed system not achieve all three properties simultaneously during a network split?",
+      "back": "The system must choose between remaining available but inconsistent or being consistent but unavailable."
+    },
+    {
+      "front": "In the CAP theorem, what does 'Consistency' mean?",
+      "back": "Every node in the system sees the same data at the same time."
+    },
+    {
+      "front": "In the CAP theorem, what does 'Availability' guarantee?",
+      "back": "Every request received by a non-failing node must result in a response."
+    },
+    {
+      "front": "Which property of the CAP theorem describes the system's ability to continue operating despite network failures that split the nodes?",
+      "back": "Partition Tolerance"
+    },
+    {
+      "front": "In a network partition scenario, a 'CP' system prioritizes _____ over availability.",
+      "back": "Consistency"
+    },
+    {
+      "front": "Which database type is characterized as an 'AP' system under the CAP theorem?",
+      "back": "DynamoDB (or Cassandra/CouchDB)."
+    },
+    {
+      "front": "Eric Brewer's 2012 update to the CAP theorem noted that Consistency and Availability are both possible under what condition?",
+      "back": "The absence of a network partition."
+    },
+    {
+      "front": "What is the primary objective of consensus algorithms like Paxos and Raft?",
+      "back": "To ensure that multiple nodes agree on a single value even if some nodes fail."
+    },
+    {
+      "front": "What are the three roles defined in the original Paxos algorithm?",
+      "back": "Proposer, Acceptor, and Learner."
+    },
+    {
+      "front": "In Paxos, what is the minimum number of nodes required to reach a decision called?",
+      "back": "A quorum (typically a majority)."
+    },
+    {
+      "front": "Why was the Raft consensus algorithm created in 2014 as an alternative to Paxos?",
+      "back": "Raft was designed to be easier to understand and implement than Paxos."
+    },
+    {
+      "front": "What is the primary mechanism for decision-making in the Raft algorithm?",
+      "back": "A single elected Leader manages log replication across followers."
+    },
+    {
+      "front": "Which distributed key-value store, used by Kubernetes, utilizes the Raft algorithm?",
+      "back": "etcd"
+    },
+    {
+      "front": "What consensus variant is used by Apache ZooKeeper?",
+      "back": "ZAB (ZooKeeper Atomic Broadcast)."
+    },
+    {
+      "front": "Who is the primary creator of the Two-Phase Commit (2PC) protocol and a pioneer in transaction processing?",
+      "back": "Jim Gray"
+    },
+    {
+      "front": "What is the core purpose of the 'Prepare' phase in a Two-Phase Commit protocol?",
+      "back": "The coordinator asks all nodes if they are ready to commit the transaction."
+    },
+    {
+      "front": "If a single node responds with 'no' during the Prepare phase of 2PC, what action does the coordinator take?",
+      "back": "The coordinator sends an 'Abort' command to all nodes to cancel the transaction."
+    },
+    {
+      "front": "What is the 'blocking problem' in the Two-Phase Commit protocol?",
+      "back": "If the coordinator crashes after the prepare phase, nodes may stay stuck in a 'prepared' state indefinitely."
+    },
+    {
+      "front": "How does the Saga pattern handle failures in a long-running distributed transaction?",
+      "back": "It executes compensating actions to undo the effects of previous successful steps."
+    },
+    {
+      "front": "In MapReduce, what is the responsibility of the 'Map' function?",
+      "back": "It processes input data to generate intermediate key-value pairs."
+    },
+    {
+      "front": "What occurs during the 'Shuffle' phase of MapReduce?",
+      "back": "Data is redistributed so that all values associated with the same key are moved to the same worker node."
+    },
+    {
+      "front": "In the MapReduce framework, what is the purpose of the 'Reduce' function?",
+      "back": "It aggregates or summarizes all values associated with a specific key."
+    },
+    {
+      "front": "Which property of monoids ensures that MapReduce operations can be safely parallelized?",
+      "back": "Associativity"
+    },
+    {
+      "front": "Why is the calculation of a direct average not suitable for a basic MapReduce reduction operation?",
+      "back": "Averages are not associative, meaning the result depends on the grouping of data."
+    },
+    {
+      "front": "What is the primary performance bottleneck in most MapReduce implementations?",
+      "back": "Communication cost (network bandwidth and data transmission between nodes)."
+    },
+    {
+      "front": "Which Google technology replaced MapReduce for batch processing to allow for 'live' search result updates?",
+      "back": "Percolator (or FlumeJava/MillWheel)."
+    },
+    {
+      "front": "How does Amazon Dynamo achieve 'Eventual Consistency'?",
+      "back": "It allows writes to be accepted by any node and propagates the data across the cluster over time."
+    },
+    {
+      "front": "In consistent hashing, what happens when a node is added or removed from the cluster?",
+      "back": "Only the immediate neighbors in the hash ring are affected, minimizing data remapping."
+    },
+    {
+      "front": "What is the 'Byzantine Generals Problem'?",
+      "back": "A scenario where nodes must reach a consensus even if some nodes are traitors and send conflicting information."
+    },
+    {
+      "front": "In Byzantine Fault Tolerance (BFT), how many total nodes ($n$) are required to tolerate $f$ faulty or traitorous nodes?",
+      "back": "$n = 3f + 1$"
+    },
+    {
+      "front": "How does Bitcoin's proof-of-work system solve the Byzantine Generals Problem?",
+      "back": "It makes it computationally expensive to be a traitor, requiring massive energy to manipulate the chain."
+    },
+    {
+      "front": "What is the fundamental difference between horizontal and vertical database partitioning?",
+      "back": "Horizontal partitioning splits data by rows, while vertical partitioning splits data by columns."
+    },
+    {
+      "front": "In database terminology, what is a 'Shard'?",
+      "back": "A horizontal partition of data stored on a separate database server or node."
+    },
+    {
+      "front": "What is 'skew' in the context of database partitioning?",
+      "back": "The uneven distribution of data or query load across partitions."
+    },
+    {
+      "front": "What term describes a partition that experiences an excessive amount of data or query load?",
+      "back": "Hot spot"
+    },
+    {
+      "front": "How does hash-based partitioning help prevent hot spots?",
+      "back": "It uses a hash function to uniformly distribute keys across available partitions regardless of the original data distribution."
+    },
+    {
+      "front": "What is a major disadvantage of hash-based partitioning compared to range-based partitioning?",
+      "back": "It makes range queries inefficient because adjacent keys are scattered across different partitions."
+    },
+    {
+      "front": "What partitioning criterion assigns data based on continuous boundaries, such as ZIP codes 10000 to 19999?",
+      "back": "Range partitioning"
+    },
+    {
+      "front": "Which partitioning strategy assigns the $i^{th}$ tuple to partition ($i \\mod n$)?",
+      "back": "Round-robin partitioning"
+    },
+    {
+      "front": "In Cassandra, what is the purpose of using a 'compound primary key' in partitioning?",
+      "back": "It hashes the first part for distribution while keeping the rest sorted within the partition for efficient range scans."
+    },
+    {
+      "front": "What is 'vertical partitioning' often synonymous with in database design?",
+      "back": "Normalization"
+    },
+    {
+      "front": "In a distributed transaction, what is 'Atomicity'?",
+      "back": "The 'all or nothing' property ensuring a transaction either completes fully across all nodes or not at all."
+    },
+    {
+      "front": "Why is a single-threaded implementation of MapReduce usually not faster than traditional sequential processing?",
+      "back": "The overhead of the framework only pays off when processing massive datasets in parallel across many processors."
+    },
+    {
+      "front": "What historical database system first introduced partitioning in the 1980s?",
+      "back": "Teradata (or NonStop SQL)."
+    },
+    {
+      "front": "In a leader-follower replication system, can a single node be a leader for one partition and a follower for another?",
+      "back": "Yes"
+    },
+    {
+      "front": "What is the 'input reader's' job in the MapReduce dataflow?",
+      "back": "It divides input data into splits (typically 64MB to 128MB) and converts them into key-value pairs."
+    },
+    {
+      "front": "Which function in MapReduce is responsible for determining which reducer receives a specific key's data?",
+      "back": "The partition function."
+    },
+    {
+      "front": "The 'open-closed principle' in MapReduce framework design means the _____ is a frozen spot, while Map and Reduce functions are hot spots.",
+      "back": "Large distributed sort"
+    },
+    {
+      "front": "What mathematical structure requires an associative binary operation and a neutral element?",
+      "back": "Monoid"
+    },
+    {
+      "front": "In MapReduce terminology, what is the 'Output Writer' responsible for?",
+      "back": "Writing the final results from the Reduce phase to stable storage, such as a distributed file system."
+    },
+    {
+      "front": "Which scientist criticized MapReduce in 2008 as a 'major step backwards' for parallel databases?",
+      "back": "David DeWitt (or Michael Stonebraker)."
+    },
+    {
+      "front": "What is 'List Partitioning'?",
+      "back": "Assigning data to a partition if the partitioning key matches a specific set of discrete values (e.g., a list of countries)."
+    },
+    {
+      "front": "The ability of a system to increase its capacity linearly as nodes are added is called _____.",
+      "back": "Linear scaling"
+    },
+    {
+      "front": "In MapReduce, what is the time complexity drawback of the Reduce phase?",
+      "back": "The sorting/grouping of keys within the phase has non-linear complexity."
+    },
+    {
+      "front": "What is a 'catamorphism' in the theoretical context of MapReduce?",
+      "back": "A function that maps a list of input data to a single value within a monoid."
+    },
+    {
+      "front": "Which consensus protocol uses 'heartbeats' to detect the failure of a leader node?",
+      "back": "Raft"
+    },
+    {
+      "front": "In the Saga pattern, what is the name for the action taken to undo a step that failed?",
+      "back": "Compensating action"
+    },
+    {
+      "front": "What is the 'Master Node's' role in a MapReduce failure scenario?",
+      "back": "It detects dead nodes by monitoring status updates and reschedules their assigned work to other nodes."
+    },
+    {
+      "front": "Which property must a Reduce function have for multiple instances of it to be run in parallel on the same key's data?",
+      "back": "Associativity"
+    },
+    {
+      "front": "What is the name for the strategy of breaking a large database into smaller pieces to achieve horizontal scalability?",
+      "back": "Sharding"
+    },
+    {
+      "front": "In MongoDB, what is the specific term used for a partition?",
+      "back": "Shard"
+    },
+    {
+      "front": "In HBase, what is the specific term used for a partition?",
+      "back": "Region"
+    },
+    {
+      "front": "What term does Bigtable use to refer to a data partition?",
+      "back": "Tablet"
+    },
+    {
+      "front": "In Cassandra, what is the term used for a virtual node or partition?",
+      "back": "vnode"
+    },
+    {
+      "front": "What does Couchbase call its data partitions?",
+      "back": "vBucket"
+    },
+    {
+      "front": "In distributed database design, what is the main purpose of replication?",
+      "back": "To provide fault tolerance by storing copies of partitions on multiple nodes."
+    },
+    {
+      "front": "What is the 'combiner' function in a MapReduce optimization context?",
+      "back": "A local reduction performed at the mapper node to reduce the amount of data sent over the network."
+    },
+    {
+      "front": "Why does a calculation of a sum work perfectly as a MapReduce reduction?",
+      "back": "Addition is associative and has a neutral element (0), forming a monoid."
+    },
+    {
+      "front": "What happens to the performance of MapReduce if the 'split unit size' is set too small (e.g., $<1$MB)?",
+      "back": "The management overhead per split becomes too high, slowing down the system."
+    },
+    {
+      "front": "In the CAP theorem's 2012 revision, what is the 'usual' state of a distributed system?",
+      "back": "Operating with both Consistency and Availability because partitions are rare."
+    },
+    {
+      "front": "What is the 'Proposer's' job in the Paxos consensus algorithm?",
+      "back": "To suggest a value to the cluster for agreement."
+    },
+    {
+      "front": "What is 'Composite Partitioning'?",
+      "back": "Applying multiple partitioning schemes in sequence, such as range partitioning followed by hash partitioning."
+    },
+    {
+      "front": "In the 2PC protocol, which node manages the process and communicates with all participants?",
+      "back": "The Coordinator"
+    },
+    {
+      "front": "What is the primary trade-off when choosing a high number of reducers in MapReduce?",
+      "back": "Small partition sizes reduce sorting time but increase the overhead of managing many tasks."
+    },
+    {
+      "front": "In vertical partitioning, why might frequently used columns be separated from infrequently used ones?",
+      "back": "To improve cache performance and reduce the amount of data read from disk for common queries."
+    }
+  ]
+}

@@ -1,0 +1,349 @@
+{
+  "title": "Psychology Flashcards",
+  "cards": [
+    {
+      "front": "In which city was the futurist Alvin Toffler born?",
+      "back": "New York City."
+    },
+    {
+      "front": "What was the year of Alvin Toffler's birth?",
+      "back": "1928."
+    },
+    {
+      "front": "Alvin Toffler is best known for his work titled *Future _____*.",
+      "back": "Shock."
+    },
+    {
+      "front": "Along with *Future Shock* and *Powershift*, name the third notable work of Alvin Toffler mentioned in his bibliography.",
+      "back": "*The Third Wave*."
+    },
+    {
+      "front": "What professional title is given to a writer like Toffler who studies and predicts the future?",
+      "back": "Futurist."
+    },
+    {
+      "front": "Which 16th-century figure did John B. Watson call the father of modern psychology?",
+      "back": "Juan Luis Vives."
+    },
+    {
+      "front": "According to Juan Luis Vives, what is the relationship between attending to stimuli and memory?",
+      "back": "The more closely one attends to stimuli, the better they are retained in memory."
+    },
+    {
+      "front": "Nicolas Malebranche argued that attention is necessary to prevent perceptions from being confused and _____.",
+      "back": "imperfect."
+    },
+    {
+      "front": "Who introduced the concept of apperception in the 17th century?",
+      "back": "Gottfried Wilhelm Leibniz."
+    },
+    {
+      "front": "Definition: The process by which new experience is assimilated to past experience to form a new whole.",
+      "back": "Apperception."
+    },
+    {
+      "front": "According to Leibniz, what state must a perceived event undergo to become a conscious event?",
+      "back": "Apperception."
+    },
+    {
+      "front": "Leibniz categorized voluntary, directed attention as _____ orienting.",
+      "back": "endogenous."
+    },
+    {
+      "front": "Leibniz categorized reflexive, involuntary attention as _____ orienting.",
+      "back": "exogenous."
+    },
+    {
+      "front": "What term describes the delay in responding to a second stimulus when it closely follows a first?",
+      "back": "Psychological refractory period."
+    },
+    {
+      "front": "Who identified the psychological refractory period in 1931?",
+      "back": "C. W. Telford."
+    },
+    {
+      "front": "In what year did John Ridley Stroop develop the Stroop effect?",
+      "back": "1935."
+    },
+    {
+      "front": "The Stroop effect demonstrates that task-irrelevant information, such as _____, can interfere with performance.",
+      "back": "word meaning."
+    },
+    {
+      "front": "During which decade did psychology undergo the 'cognitive revolution'?",
+      "back": "The 1950s."
+    },
+    {
+      "front": "Which 1953 investigation by Colin Cherry focused on how people attend to one conversation in a noisy environment?",
+      "back": "The cocktail party problem."
+    },
+    {
+      "front": "What experimental task involves participants hearing two simultaneous speech streams and repeating one while ignoring the other?",
+      "back": "Dichotic listening."
+    },
+    {
+      "front": "What is the specific term for repeating a speech stream aloud during a dichotic listening task?",
+      "back": "Shadowing."
+    },
+    {
+      "front": "In A. R. Luria's three-part model of the working brain, what are the three co-active systems?",
+      "back": "Attention, memory (mnestic), and cortical activation."
+    },
+    {
+      "front": "The Dunning–Kruger effect is a cognitive bias where people with low ability in an area give _____ assessments of that ability.",
+      "back": "overly positive."
+    },
+    {
+      "front": "High performers affected by the Dunning–Kruger effect tend to _____ their own skills.",
+      "back": "underestimate."
+    },
+    {
+      "front": "In what year was the Dunning–Kruger effect formalized and empirically studied?",
+      "back": "1999."
+    },
+    {
+      "front": "Who were the two psychologists who formalized the Dunning–Kruger effect in 1999?",
+      "back": "David Dunning and Justin Kruger."
+    },
+    {
+      "front": "Contrary to popular belief, the Dunning–Kruger effect denotes specific overconfidence in unskilled areas rather than general low _____.",
+      "back": "intelligence."
+    },
+    {
+      "front": "K. Anders Ericsson is internationally recognized for his research on the psychological nature of _____ and human performance.",
+      "back": "expertise."
+    },
+    {
+      "front": "What type of practice, characterized by high concentration and being outside one's comfort zone, did Ericsson study?",
+      "back": "Deliberate practice."
+    },
+    {
+      "front": "Who did Ericsson collaborate with to develop the Theory of Skilled Memory?",
+      "back": "Bill Chase."
+    },
+    {
+      "front": "Ericsson and Walter Kintsch extended skilled memory theory into _____ to account for the superior working memory of experts.",
+      "back": "long-term memory."
+    },
+    {
+      "front": "What was the digit span achieved by a student trained in one of Ericsson's most striking experiments?",
+      "back": "More than 100 digits."
+    },
+    {
+      "front": "In 2016, Ericsson and Robert Pool published a book titled *Peak: Secrets from the New Science of _____*.",
+      "back": "Expertise."
+    },
+    {
+      "front": "Metacognition is most informally defined as '_____ about thinking'.",
+      "back": "Thinking."
+    },
+    {
+      "front": "Who was the American developmental psychologist who labeled 'higher-level cognition' as metacognition in 1979?",
+      "back": "John H. Flavell."
+    },
+    {
+      "front": "According to Flavell, metacognition involves two main things: knowledge about cognition and _____ of cognition.",
+      "back": "control."
+    },
+    {
+      "front": "What are the two general components of metacognition?",
+      "back": "Cognitive conceptions and a cognitive regulation system."
+    },
+    {
+      "front": "Metamemory is defined as knowing about memory and _____ strategies.",
+      "back": "mnemonic."
+    },
+    {
+      "front": "Metacognitive knowledge type: understanding of one's own capabilities, such as a student evaluating their subject knowledge.",
+      "back": "Content knowledge (or declarative knowledge)."
+    },
+    {
+      "front": "Metacognitive knowledge type: how one perceives the difficulty, length, and type of an assignment.",
+      "back": "Task knowledge (or procedural knowledge)."
+    },
+    {
+      "front": "Metacognitive knowledge type: one's capability for using strategies to learn information.",
+      "back": "Strategic knowledge (or conditional knowledge)."
+    },
+    {
+      "front": "What term does Andreas Demetriou use to refer to self-monitoring, self-representation, and self-regulation?",
+      "back": "Hyper-cognition."
+    },
+    {
+      "front": "Studies show that students often mistake a lack of _____ for a lack of understanding when evaluating themselves.",
+      "back": "effort."
+    },
+    {
+      "front": "Greater confidence in having performed well is statistically associated with _____ accurate metacognitive judgment.",
+      "back": "less."
+    },
+    {
+      "front": "What metacognitive construct creates rules to describe and understand the physical world through higher-order thinking?",
+      "back": "MSK (Metacognitive Skill Knowledge)."
+    },
+    {
+      "front": "Who first highlighted the potential of metacognition to illuminate the understanding of action by discussing meta-attention in 1996?",
+      "back": "Aidan Moran."
+    },
+    {
+      "front": "The _____ effect states that testing prior knowledge is more beneficial for learning than reading or passive study.",
+      "back": "testing."
+    },
+    {
+      "front": "Testing knowledge is particularly beneficial when the test is more _____ for memory.",
+      "back": "challenging."
+    },
+    {
+      "front": "Which philosopher discussed testing as a learning strategy as early as 1620?",
+      "back": "Francis Bacon."
+    },
+    {
+      "front": "Testing knowledge produces better results in learning, transfer, and retrieval when compared to _____, such as highlighting.",
+      "back": "recognition."
+    },
+    {
+      "front": "According to the 'book25.md' source, what analogy is used to describe the difference between surface clarity and deep truth?",
+      "back": "The ice diver."
+    },
+    {
+      "front": "In the ice diver analogy, a person who has spent only 20 hours learning is at the '_____' level.",
+      "back": "surface."
+    },
+    {
+      "front": "Going deeper into a subject reveals how little you know; what trait is described as the real start of learning?",
+      "back": "Humility."
+    },
+    {
+      "front": "What is the first phase of the metacognitive cycle mentioned in the planning section of the sources?",
+      "back": "Planning ('What am I going to learn? Why?')."
+    },
+    {
+      "front": "What is the second phase of the metacognitive cycle where one tracks their own understanding?",
+      "back": "Monitoring ('Do I understand? Where am I stuck?')."
+    },
+    {
+      "front": "What is the final phase of the metacognitive cycle involving verification of what was learned?",
+      "back": "Evaluation ('Did I really learn? What did I miss?')."
+    },
+    {
+      "front": "Researcher: Donald Broadbent. Field of Study: _____.",
+      "back": "Attention."
+    },
+    {
+      "front": "Researcher: Henry Roediger. Field of Study: _____.",
+      "back": "The Testing Effect (or Retrieval Practice)."
+    },
+    {
+      "front": "Researcher: John Ridley Stroop. Field of Study: _____.",
+      "back": "Interference in Attention."
+    },
+    {
+      "front": "Leibniz's view of attention emphasized a reflexive, _____ view, while also recognizing voluntary attention.",
+      "back": "involuntary."
+    },
+    {
+      "front": "The Theory of Skilled Memory suggests that exceptional memory performance is an _____ skill rather than an innate one.",
+      "back": "acquired."
+    },
+    {
+      "front": "In the context of expertise, deliberate practice must take place beyond one's _____ zone.",
+      "back": "comfort."
+    },
+    {
+      "front": "Strategic knowledge (conditional knowledge) typically begins to develop when students are in _____ school.",
+      "back": "upper elementary."
+    },
+    {
+      "front": "MSK (Metacognitive Skill Knowledge) is the capability of an individual to take apart _____ problems.",
+      "back": "complex."
+    },
+    {
+      "front": "Testing prior knowledge is an example of an _____ study strategy.",
+      "back": "active."
+    },
+    {
+      "front": "Passive study methods, such as re-reading, often rely on _____ rather than retrieval.",
+      "back": "recognition."
+    },
+    {
+      "front": "True or False: The Dunning–Kruger effect suggests that high performers tend to overestimate their own ability.",
+      "back": "False (they tend to underestimate it)."
+    },
+    {
+      "front": "Which psychologist's theory used the term 'hyper-cognition'?",
+      "back": "Andreas Demetriou."
+    },
+    {
+      "front": "According to the sources, metacognition is considered the '_____ skill' above all other skills.",
+      "back": "master."
+    },
+    {
+      "front": "What does the root word 'meta' mean in the context of metacognition?",
+      "back": "Beyond (or 'on top of')."
+    },
+    {
+      "front": "In dichotic listening, what is the term for the stream of speech that the participant is asked to ignore?",
+      "back": "The unattended stream."
+    },
+    {
+      "front": "Luria's mnestic system specifically refers to which cognitive function?",
+      "back": "Memory."
+    },
+    {
+      "front": "The Dunning–Kruger effect describes a systematic tendency in people with _____ ability.",
+      "back": "low."
+    },
+    {
+      "front": "Who is the co-author with Ericsson of the 2016 book *Peak*?",
+      "back": "Robert Pool."
+    },
+    {
+      "front": "Metacognitive _____ involve reflecting on one's ways of thinking and strategy use.",
+      "back": "processes."
+    },
+    {
+      "front": "Content knowledge in metacognition is also known as _____ knowledge.",
+      "back": "declarative."
+    },
+    {
+      "front": "Task knowledge in metacognition is also known as _____ knowledge.",
+      "back": "procedural."
+    },
+    {
+      "front": "Condition: A delay in the nervous system when stimuli are too close together. Term: _____.",
+      "back": "Psychological refractory period."
+    },
+    {
+      "front": "Who wrote 'De Anima et Vita', arguing that attention improves memory retention?",
+      "back": "Juan Luis Vives."
+    },
+    {
+      "front": "The investigation of the 'cocktail party problem' was a starting point for _____ experimental work on attention.",
+      "back": "modern."
+    },
+    {
+      "front": "Ericsson studied expert performance in domains such as medicine, music, chess, and _____.",
+      "back": "sports."
+    },
+    {
+      "front": "Metacognition cycle: Plan $\\rightarrow$ Learn $\\rightarrow$ Monitor $\\rightarrow$ Adjust $\\rightarrow$ _____.",
+      "back": "Evaluate."
+    },
+    {
+      "front": "In the ice diver analogy, which level contains the 'actual truth'?",
+      "back": "The deep level."
+    },
+    {
+      "front": "Alvin Toffler was an American writer, businessman, and _____.",
+      "back": "futurist."
+    },
+    {
+      "front": "Toffler's book *Powershift* is part of his notable works along with *The Third Wave* and _____.",
+      "back": "*Future Shock*."
+    },
+    {
+      "front": "Which psychologist receive a PhD in 1976 from Stockholm University and became a 'Conradi Eminent Scholar'?",
+      "back": "K. Anders Ericsson."
+    }
+  ]
+}

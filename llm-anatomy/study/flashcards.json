@@ -1,0 +1,313 @@
+{
+  "title": "LLM Flashcards",
+  "cards": [
+    {
+      "front": "In natural language processing, what are the numerical 'chunks' that Large Language Models process instead of whole words?",
+      "back": "Tokens."
+    },
+    {
+      "front": "What algorithm is used to break words into tokens by finding the most common character pairs iteratively?",
+      "back": "Byte Pair Encoding (BPE)."
+    },
+    {
+      "front": "Why do Large Language Models often struggle with arithmetic on large numbers like 1,234,567?",
+      "back": "Tokenization breaks large numbers into separate, unrelated numerical fragments."
+    },
+    {
+      "front": "Based on the BPE algorithm, how are rare words typically handled during tokenization?",
+      "back": "They are broken down into smaller, more common sub-word fragments already present in the vocabulary."
+    },
+    {
+      "front": "Why does a Bengali sentence often cost more to process in an LLM API than its English translation?",
+      "back": "Bengali words are often split into more tokens (e.g., 4 tokens vs. 1) because they are rarer in training data."
+    },
+    {
+      "front": "Term: Word Embedding",
+      "back": "Definition: A real-valued vector representation of a word that encodes its semantic meaning in a high-dimensional space."
+    },
+    {
+      "front": "In the geometry of meaning, what does the vector operation $\\text{vec(\"king\")} - \\text{vec(\"man\")} + \\text{vec(\"woman\")}$ approximately equal?",
+      "back": "$\\text{vec(\"queen\")}$."
+    },
+    {
+      "front": "How is semantic similarity measured between two word embeddings mathematically?",
+      "back": "Cosine similarity."
+    },
+    {
+      "front": "What is the primary limitation of 'static' word embeddings like early Word2Vec regarding word meaning?",
+      "back": "They cannot properly handle polysemy or homonymy, as every sense of a word is conflated into one vector."
+    },
+    {
+      "front": "How do contextually-meaningful embeddings like BERT handle the word 'club' differently than static embeddings?",
+      "back": "They generate a unique token-level embedding for each occurrence based on the surrounding context."
+    },
+    {
+      "front": "In machine learning, what mechanism determines the relative importance of different components within a sequence?",
+      "back": "Attention."
+    },
+    {
+      "front": "Unlike 'hard' weights updated during training, when are 'soft' attention weights calculated?",
+      "back": "During the forward pass of the model."
+    },
+    {
+      "front": "What specific problem in Recurrent Neural Networks (RNNs) was the attention mechanism designed to solve?",
+      "back": "RNNs favor information at the end of a sentence and tend to lose information from the beginning."
+    },
+    {
+      "front": "In the attention mechanism, which vector represents 'what I am looking for'?",
+      "back": "The Query vector (Q)."
+    },
+    {
+      "front": "In the attention mechanism, which vector represents 'what I offer or contain'?",
+      "back": "The Key vector (K)."
+    },
+    {
+      "front": "In the attention mechanism, which vector contains the actual information to be extracted once a match is found?",
+      "back": "The Value vector (V)."
+    },
+    {
+      "front": "What is the formula for standard scaled dot-product attention?",
+      "back": "$A = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V$."
+    },
+    {
+      "front": "What is the purpose of the $\\sqrt{d_k}$ scaling factor in the attention formula?",
+      "back": "It prevents high variance in the dot product that could lead to extremely small gradients in the softmax function."
+    },
+    {
+      "front": "Which 2017 research paper introduced the Transformer architecture and formalized self-attention?",
+      "back": "\"Attention Is All You Need\"."
+    },
+    {
+      "front": "What is 'Multi-head' attention?",
+      "back": "The use of multiple parallel attention mechanisms to allow the model to focus on different types of relationships simultaneously."
+    },
+    {
+      "front": "In a Transformer, what is the function of the Embedding layer?",
+      "back": "It converts token IDs into high-dimensional vectors and adds positional encoding."
+    },
+    {
+      "front": "Why is 'Positional Encoding' necessary in Transformer models?",
+      "back": "Because Transformers process all tokens in a sequence simultaneously and have no inherent sense of word order."
+    },
+    {
+      "front": "What is the role of the Feed-Forward Network (FFN) layer in a Transformer block?",
+      "back": "It processes the information gathered by attention and is often where the model's 'memorized' knowledge is stored."
+    },
+    {
+      "front": "What do 'Residual Connections' (or skip connections) prevent within deep Transformer architectures?",
+      "back": "They prevent the loss of information and ensure smooth gradient flow during training."
+    },
+    {
+      "front": "What is the purpose of 'Layer Normalization' in the Transformer architecture?",
+      "back": "It stabilizes the training process by keeping the values of the vectors within a consistent scale."
+    },
+    {
+      "front": "In the Transformer pipeline, what does the final 'Output Head' produce?",
+      "back": "A probability distribution over the entire vocabulary for the next token."
+    },
+    {
+      "front": "What is the first stage of LLM training, involving the prediction of the next token from trillions of internet text fragments?",
+      "back": "Pre-training."
+    },
+    {
+      "front": "What is the result of the Pre-training stage before any fine-tuning occurs?",
+      "back": "A Base Model."
+    },
+    {
+      "front": "Which training stage uses thousands of human-written Q&A examples to teach a model to follow instructions?",
+      "back": "Supervised Fine-Tuning (SFT)."
+    },
+    {
+      "front": "What does RLHF stand for in the context of LLM alignment?",
+      "back": "Reinforcement Learning from Human Feedback."
+    },
+    {
+      "front": "What is the primary goal of the RLHF stage in model training?",
+      "back": "To align the model's behavior with human preferences for safety, helpfulness, and truthfulness."
+    },
+    {
+      "front": "What is DPO (Direct Preference Optimization)?",
+      "back": "A faster, more efficient alternative to RLHF that does not require a separate reward model."
+    },
+    {
+      "front": "What does it mean for LLM generation to be 'Autoregressive'?",
+      "back": "The model generates output one token at a time, using each previously generated token as context for the next."
+    },
+    {
+      "front": "In LLM generation, what does a 'Temperature' setting of 0 produce?",
+      "back": "Greedy decoding, where the model always picks the single most probable token."
+    },
+    {
+      "front": "How does a high 'Temperature' (e.g., 1.5) affect LLM output?",
+      "back": "It flattens the probability distribution, making the output more diverse and random."
+    },
+    {
+      "front": "What generation strategy selects the next token from the top $p$ percent of the probability mass?",
+      "back": "Nucleus Sampling (Top-P)."
+    },
+    {
+      "front": "What is the purpose of 'KV Caching' during the generation process?",
+      "back": "It stores previous Key and Value vectors to avoid recomputing the entire context for every new token generated."
+    },
+    {
+      "front": "What is an LLM 'Hallucination'?",
+      "back": "When a model provides factually incorrect information with high confidence."
+    },
+    {
+      "front": "Why is the RLHF process sometimes a cause of hallucinations through 'sycophancy'?",
+      "back": "The model is trained to please the user, which can lead it to agree with false premises provided by the user."
+    },
+    {
+      "front": "What is 'Grounding' in the context of preventing hallucinations?",
+      "back": "Providing the model with a specific source or document (RAG) and instructing it to answer only using that data."
+    },
+    {
+      "front": "How does the 'Lost in the Middle' phenomenon affect LLM attention?",
+      "back": "Models tend to focus more on information at the beginning and end of long prompts, potentially ignoring the middle."
+    },
+    {
+      "front": "According to the Chinchilla Scaling Law, what is the optimal ratio of tokens to parameters?",
+      "back": "Approximately 20 tokens per 1 parameter."
+    },
+    {
+      "front": "How does a 'Mixture of Experts' (MoE) model differ from a standard Transformer during inference?",
+      "back": "It only activates a small subset of its total parameters (experts) for each token, making it faster than its size suggests."
+    },
+    {
+      "front": "What is a 'Multimodal' Large Language Model?",
+      "back": "A model capable of processing multiple types of input, such as text, images, and audio, simultaneously."
+    },
+    {
+      "front": "In multimodal models, what component typically processes image bytes before they are fed into the Transformer?",
+      "back": "A Vision Encoder."
+    },
+    {
+      "front": "Who led the Google team that created the influential Word2Vec toolkit in 2013?",
+      "back": "Tomas Mikolov."
+    },
+    {
+      "front": "What 1957 linguistic principle by J.R. Firth underlies the concept of distributional semantics?",
+      "back": "\"A word is characterized by the company it keeps.\""
+    },
+    {
+      "front": "What ethical concern was highlighted in the 2016 paper regarding word analogies like 'Man is to computer programmer as woman is to homemaker'?",
+      "back": "Word embeddings can inherit and amplify gender and racial biases present in their training data."
+    },
+    {
+      "front": "What is the 'Filter Model of Attention' in the context of the history of machine learning?",
+      "back": "A 1950s/60s psychological concept describing how humans focus on content by filtering out background noise."
+    },
+    {
+      "front": "In image processing, what filter introduced in 1998 uses pairwise affinity matrices to propagate relevance, similar to attention?",
+      "back": "The bilateral filter."
+    },
+    {
+      "front": "What is 'Flash Attention'?",
+      "back": "An optimization technique designed to speed up the calculation of attention weights."
+    },
+    {
+      "front": "In the attention formula, what does the matrix $K^T$ represent?",
+      "back": "The transpose of the Key matrix."
+    },
+    {
+      "front": "How many heads might a large model like GPT-4 typically have per layer?",
+      "back": "Approximately 96 heads."
+    },
+    {
+      "front": "What is the purpose of 'Stop Sequences' in autoregressive generation?",
+      "back": "They act as conditions to prevent the model from generating text infinitely."
+    },
+    {
+      "front": "What is 'Streaming' (SSE) in the context of LLM interfaces?",
+      "back": "The practice of sending each token to the user as soon as it is generated to reduce perceived latency."
+    },
+    {
+      "front": "According to the Kaplan Scaling Law, does increasing compute always result in lower loss?",
+      "back": "Yes, but it follows a power law where the rate of improvement eventually slows down."
+    },
+    {
+      "front": "What is the 'Alignment Tax'?",
+      "back": "The phenomenon where making a model safer and more aligned (via RLHF) slightly reduces its overall capability or creativity."
+    },
+    {
+      "front": "Term: BioVectors (BioVec)",
+      "back": "Definition: Word embeddings applied to biological sequences like DNA, RNA, and proteins for bioinformatics."
+    },
+    {
+      "front": "What is the primary function of the 'Softmax' function in the attention block?",
+      "back": "It converts raw alignment scores into a probability distribution that sums to 1."
+    },
+    {
+      "front": "In the encoder-decoder attention model, what does the 'Context Vector' ($c$) represent?",
+      "back": "A linear combination of encoder hidden vectors weighted by the attention weights ($w$)."
+    },
+    {
+      "front": "What is the difference between 'Self-attention' and 'Cross-attention'?",
+      "back": "Self-attention relates different positions of a single sequence, while cross-attention relates positions from two different sequences (e.g., encoder and decoder)."
+    },
+    {
+      "front": "Which component in a Mixture of Experts model decides which expert should process a specific token?",
+      "back": "The Router."
+    },
+    {
+      "front": "What does the 'Prompt Sensitivity' of an LLM refer to?",
+      "back": "The fact that changing the order or phrasing of words in a prompt changes the attention flow and final output."
+    },
+    {
+      "front": "In BPE, what is the 'Vocabulary Construction' process?",
+      "back": "Starting with all individual Unicode bytes and iteratively merging the most frequent pairs until a target vocabulary size is reached."
+    },
+    {
+      "front": "Why is 'temperature=0' often used for tasks requiring high factual accuracy, like code generation?",
+      "back": "It makes the model deterministic, ensuring it always provides the most likely (often most correct) answer."
+    },
+    {
+      "front": "What is 'Constrained Decoding'?",
+      "back": "A generation strategy that only allows specific tokens to be picked to guarantee structured output like JSON."
+    },
+    {
+      "front": "What is 'Sycophancy' in Large Language Models?",
+      "back": "The tendency of a model to agree with a user's stated opinion or false premise to be 'helpful'."
+    },
+    {
+      "front": "How does 'Feature Learning' contribute to the creation of word embeddings?",
+      "back": "It automatically maps words from a vocabulary to vectors of real numbers by observing their usage in large datasets."
+    },
+    {
+      "front": "What is the difference between 'hard' weights and 'soft' weights in neural networks?",
+      "back": "Hard weights are permanent learned parameters; soft weights are temporary values calculated during a specific forward pass."
+    },
+    {
+      "front": "What are 'Latent Semantic Analysis' (LSA) models from the late 1980s?",
+      "back": "Early semantic models that used singular value decomposition to reduce the dimensionality of word co-occurrence data."
+    },
+    {
+      "front": "What is a 'Thought Vector'?",
+      "back": "An extension of word embeddings to represent the semantic meaning of entire sentences or documents."
+    },
+    {
+      "front": "Why is 'Random Indexing' used in word space models?",
+      "back": "It is an approach for collecting word co-occurrence contexts that avoids the extreme sparsity of high-dimensional vector spaces."
+    },
+    {
+      "front": "In the context of scaling laws, what is 'Loss'?",
+      "back": "A mathematical measure of how poorly the model is predicting the next token, which decreases as the model improves."
+    },
+    {
+      "front": "What does it mean for a model to be 'Multimodal Native'?",
+      "back": "The model was trained from the start on multiple data types (e.g., text, image, and video) rather than having them grafted on later."
+    },
+    {
+      "front": "What is the 'Vocabulary Index' of a token?",
+      "back": "The specific integer assigned to a token fragment in the model's fixed dictionary."
+    },
+    {
+      "front": "In the Transformer Blueprint, what happens during the 'Repeat' stage?",
+      "back": "The core Transformer block (Attention + FFN) is repeated many times (e.g., 96 layers) to build deeper understanding."
+    },
+    {
+      "front": "What is 'Grounding' in the context of RAG?",
+      "back": "Ensuring the model's response is supported by retrieved factual documents to prevent hallucinations."
+    }
+  ]
+}

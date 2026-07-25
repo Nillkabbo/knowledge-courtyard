@@ -1,0 +1,308 @@
+{
+  "title": "RAG Quiz",
+  "questions": [
+    {
+      "question": "Which specific tool was introduced by LangChain in October 2023 to facilitate the deployment of LangChain Expression Language (LCEL) code as a production-ready API?",
+      "answerOptions": [
+        {
+          "text": "LangSmith",
+          "isCorrect": false,
+          "rationale": "This platform is primarily used for observability and evaluation of LLM applications rather than API deployment."
+        },
+        {
+          "text": "LangGraph",
+          "isCorrect": false,
+          "rationale": "This tool provides infrastructure specifically for managed stateful AI agents rather than general LCEL deployment."
+        },
+        {
+          "text": "LangServe",
+          "isCorrect": true,
+          "rationale": "It was designed to turn LCEL definitions into hosted APIs for production use cases."
+        },
+        {
+          "text": "LangChain Hub",
+          "isCorrect": false,
+          "rationale": "While related to the ecosystem, it is not the specific tool described for hosting LCEL as an API."
+        }
+      ],
+      "hint": "Consider the name that suggests 'serving' or 'service' for a deployment context."
+    },
+    {
+      "question": "In the context of Retrieval-augmented generation (RAG), what is the primary function of the 'non-parametric' external memory?",
+      "answer": "To provide access to information outside the model's static training data during inference.",
+      "answerOptions": [
+        {
+          "text": "To permanently update the model's weights with new data",
+          "isCorrect": false,
+          "rationale": "Updating internal weights is a characteristic of parametric training, not external memory retrieval."
+        },
+        {
+          "text": "To serve as a repository of external documents for retrieval at inference time",
+          "isCorrect": true,
+          "rationale": "This external memory allows the model to reference specific documents to ground its responses in facts not found in its weights."
+        },
+        {
+          "text": "To increase the computational speed of the LLM's transformer layers",
+          "isCorrect": false,
+          "rationale": "External memory retrieval actually adds a processing step, which typically does not increase raw computation speed."
+        },
+        {
+          "text": "To eliminate the need for any prompt engineering or user input",
+          "isCorrect": false,
+          "rationale": "Prompt engineering remains essential to integrate the retrieved information effectively into the user's query."
+        }
+      ],
+      "hint": "Think about how RAG complements the 'static' knowledge learned during initial training."
+    },
+    {
+      "question": "What is the primary objective of using 'prompt stuffing' within a RAG system?",
+      "answerOptions": [
+        {
+          "text": "To reduce the token count of the query to save costs",
+          "isCorrect": false,
+          "rationale": "Prompt stuffing actually increases the token count by adding retrieved context to the original user query."
+        },
+        {
+          "text": "To force the model to prioritize retrieved facts over its pre-existing training knowledge",
+          "isCorrect": true,
+          "rationale": "By providing key information early in the prompt, the model is encouraged to rely on the supplied data for its response."
+        },
+        {
+          "text": "To allow the model to operate without an internet connection",
+          "isCorrect": false,
+          "rationale": "While it uses local data, the term refers to the method of prompt construction rather than connectivity status."
+        },
+        {
+          "text": "To automatically retrain the LLM on every user interaction",
+          "isCorrect": false,
+          "rationale": "RAG specifically avoids the need for frequent retraining by providing context dynamically."
+        }
+      ],
+      "hint": "Focus on the hierarchy of information that the model receives during the generation phase."
+    },
+    {
+      "question": "According to the source material, why does RAG not completely solve the problem of AI hallucinations?",
+      "answerOptions": [
+        {
+          "text": "The LLM can still fabricate details around the provided source material",
+          "isCorrect": true,
+          "rationale": "Even with correct facts, the generative nature of the model can lead it to misinterpret or embellish the retrieved context."
+        },
+        {
+          "text": "RAG systems cannot access unstructured data like PDFs",
+          "isCorrect": false,
+          "rationale": "The source explicitly states that RAG can use various document types, including unstructured text from PDFs."
+        },
+        {
+          "text": "Retrieved sources are always factually incorrect",
+          "isCorrect": false,
+          "rationale": "Hallucinations occur even when the sources are correct if the model fails to interpret them properly."
+        },
+        {
+          "text": "Vector databases are limited to only 10 dimensions",
+          "isCorrect": false,
+          "rationale": "Vector embeddings typically range from a few hundred to tens of thousands of dimensions."
+        }
+      ],
+      "hint": "Consider the difference between having the right information and correctly synthesizing it."
+    },
+    {
+      "question": "In semantic search, how do vector embeddings differ from traditional lexical search methods?",
+      "answerOptions": [
+        {
+          "text": "They focus on literal matches of query words",
+          "isCorrect": false,
+          "rationale": "Literal keyword matching is the defining characteristic of lexical search, not semantic search."
+        },
+        {
+          "text": "They convert text into numerical vectors to find results based on meaning",
+          "isCorrect": true,
+          "rationale": "Mathematical representations allow the system to calculate similarities in context and intent rather than just characters."
+        },
+        {
+          "text": "They use XML tags to define search parameters",
+          "isCorrect": false,
+          "rationale": "While XML is used on the Semantic Web, modern semantic search primarily relies on dense vector comparisons."
+        },
+        {
+          "text": "They are only compatible with relational databases",
+          "isCorrect": false,
+          "rationale": "Vector embeddings are specifically stored in vector databases or specialized indices, often separate from traditional relational tables."
+        }
+      ],
+      "hint": "Think about the transition from 'keyword' matching to 'concept' matching."
+    },
+    {
+      "question": "Which algorithm is cited as a top performer for approximate nearest neighbor (ANN) searches in vector databases?",
+      "answerOptions": [
+        {
+          "text": "K-Nearest Neighbors (KNN)",
+          "isCorrect": false,
+          "rationale": "ANN is typically used as a more efficient alternative to exact KNN searches in high-dimensional spaces."
+        },
+        {
+          "text": "Hierarchical Navigable Small World (HNSW) graphs",
+          "isCorrect": true,
+          "rationale": "HNSW implementations are highlighted as being among the best performers in recent search benchmarks."
+        },
+        {
+          "text": "Inverse Cloze Task (ICT)",
+          "isCorrect": false,
+          "rationale": "ICT is a technique for pre-training a retriever, not a primary search algorithm for vector retrieval."
+        },
+        {
+          "text": "MapReduce",
+          "isCorrect": false,
+          "rationale": "This is a programming model for processing large datasets in parallel, mentioned as a LangChain integration for combining documents."
+        }
+      ],
+      "hint": "Look for a specific graph-based structure mentioned for its efficiency in similarity searches."
+    },
+    {
+      "question": "In the context of retriever optimization, if the retriever's selection distribution is $P$ and the generator's likelihood distribution is $Q$, what mathematical metric is minimized to align the two?",
+      "answerOptions": [
+        {
+          "text": "Dot product",
+          "isCorrect": false,
+          "rationale": "The dot product is used to score similarities between vectors rather than to measure the divergence between probability distributions."
+        },
+        {
+          "text": "Kullback-Leibler (KL) divergence",
+          "isCorrect": true,
+          "rationale": "Minimizing $D_{KL}(P || Q)$ is a standard method to ensure the retriever picks documents that the generator finds most useful."
+        },
+        {
+          "text": "N-gram overlap scoring",
+          "isCorrect": false,
+          "rationale": "This metric measures the similarity of text sequences based on character or word chains, not probability alignment."
+        },
+        {
+          "text": "Cosine similarity",
+          "isCorrect": false,
+          "rationale": "This measures the angle between vectors and is common for retrieval but not for aligning generator-retriever distributions."
+        }
+      ],
+      "hint": "This metric is frequently used in statistics to measure how one probability distribution differs from a second."
+    },
+    {
+      "question": "What is a major trade-off when using 'Retro' language models compared to standard RAG implementations?",
+      "answerOptions": [
+        {
+          "text": "It requires high training costs as it is trained from scratch",
+          "isCorrect": true,
+          "rationale": "Unlike standard RAG, which uses pre-trained models, Retro redesigns the network architecture and requires intensive training runs."
+        },
+        {
+          "text": "It is significantly larger than standard models",
+          "isCorrect": false,
+          "rationale": "Retro aims to use a much smaller network that achieves comparable performance to larger models by utilizing a retriever."
+        },
+        {
+          "text": "It cannot access external memory",
+          "isCorrect": false,
+          "rationale": "Retro is specifically designed with a retriever in mind to integrate domain knowledge during training."
+        },
+        {
+          "text": "It only supports structured data like JSON",
+          "isCorrect": false,
+          "rationale": "Retro focuses on retrieving from massive amounts of text tokens, similar to other RAG schemes."
+        }
+      ],
+      "hint": "Think about why RAG was originally adopted to avoid certain computational and financial expenses."
+    },
+    {
+      "question": "What happens in a 'hybrid search' workflow used in vector databases?",
+      "answerOptions": [
+        {
+          "text": "It combines semantic vector search with traditional full-text search",
+          "isCorrect": true,
+          "rationale": "Merging these results helps capture specific keyword facts that vector-only semantic searches might miss."
+        },
+        {
+          "text": "It uses both Python and JavaScript simultaneously for data processing",
+          "isCorrect": false,
+          "rationale": "While LangChain is written in these languages, 'hybrid search' refers to the retrieval technique, not the coding language."
+        },
+        {
+          "text": "It alternates between cloud storage and local storage for every query",
+          "isCorrect": false,
+          "rationale": "Hybrid search refers to the combination of different search methodologies rather than storage hardware."
+        },
+        {
+          "text": "It strictly uses only structured relational databases",
+          "isCorrect": false,
+          "rationale": "Relational databases typically rely on exact matches, whereas hybrid search integrates semantic and lexical approaches."
+        }
+      ],
+      "hint": "The term 'hybrid' suggests combining two different methods of finding information."
+    },
+    {
+      "question": "True or False: LangGraph Platform is specifically designed for the deployment of stateful AI agents that can run for long periods.",
+      "answerOptions": [
+        {
+          "text": "True",
+          "isCorrect": true,
+          "rationale": "Released in May 2025, it provides managed infrastructure specifically for long-running AI agent processes."
+        },
+        {
+          "text": "False",
+          "isCorrect": false,
+          "rationale": "The source explicitly describes LangGraph as a platform for deploying long-running, stateful agents."
+        }
+      ],
+      "hint": "Recall the announcement made in May 2025 regarding managed infrastructure."
+    },
+    {
+      "question": "Which specific risk involves an LLM extracting statements from a retrieved source while failing to understand the surrounding context?",
+      "answerOptions": [
+        {
+          "text": "RAG poisoning",
+          "isCorrect": true,
+          "rationale": "This can lead to 'interpreted errors' where a model takes a rhetorical statement or a title as a factual claim."
+        },
+        {
+          "text": "Parametric overload",
+          "isCorrect": false,
+          "rationale": "This is not a term used in the source; the source discusses the misinterpretation of retrieved data."
+        },
+        {
+          "text": "Product quantization",
+          "isCorrect": false,
+          "rationale": "This is a technical compression method for vectors, not a conceptual risk associated with context misinterpretation."
+        },
+        {
+          "text": "Sparse vector collision",
+          "isCorrect": false,
+          "rationale": "This refers to indexing technicalities rather than the high-level error of missing linguistic context."
+        }
+      ],
+      "hint": "Consider the example of the book title regarding Barack Obama mentioned in the text."
+    },
+    {
+      "question": "In the context of data chunking, why might 'File format-based chunking' be preferred for code files?",
+      "answerOptions": [
+        {
+          "text": "It allows the system to vectorize whole functions or classes intact",
+          "isCorrect": true,
+          "rationale": "Maintaining the structural integrity of code ensures the retriever understands the complete logical unit rather than fragmented lines."
+        },
+        {
+          "text": "It is the only method that supports Python 3.0",
+          "isCorrect": false,
+          "rationale": "Code support in frameworks like LangChain is more general and not restricted to a single chunking style for a specific language version."
+        },
+        {
+          "text": "It reduces the dimensionality of the vectors from $1024$ to $256$",
+          "isCorrect": false,
+          "rationale": "Vector dimensionality is determined by the embedding model used, not the method of chunking the input text."
+        },
+        {
+          "text": "It automatically converts all code into human-readable summaries",
+          "isCorrect": false,
+          "rationale": "Chunking is the process of breaking data for indexing; summarization is a separate generative task."
+        }
+      ],
+      "hint": "Think about what logical units in programming make the most sense to keep together for analysis."
+    }
+  ]
+}

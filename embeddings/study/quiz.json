@@ -1,0 +1,265 @@
+{
+  "title": "BERT Quiz",
+  "questions": [
+    {
+      "question": "In the pre-training of BERT, what is the specific distribution used for the $15\\%$ of tokens selected for the Masked Language Modeling (MLM) task?",
+      "answerOptions": [
+        {
+          "text": "$80\\%$ are replaced with [MASK], $10\\%$ with a random token, and $10\\%$ remain unchanged.",
+          "isCorrect": true,
+          "rationale": "This strategy prevents the model from only focusing on the [MASK] token, which helps mitigate the dataset shift problem during fine-tuning."
+        },
+        {
+          "text": "$100\\%$ of selected tokens are replaced with the [MASK] special token.",
+          "isCorrect": false,
+          "rationale": "Always masking selected tokens would create a discrepancy between pre-training and inference, as the [MASK] token never appears during actual use."
+        },
+        {
+          "text": "$50\\%$ are masked, $25\\%$ are randomized, and $25\\%$ are omitted from the sequence.",
+          "isCorrect": false,
+          "rationale": "Omitting tokens would change the sequence length, which contradicts BERT's architecture of representing each input position with a hidden vector."
+        },
+        {
+          "text": "$80\\%$ are randomized, $10\\%$ are masked, and $10\\%$ are swapped with the next sentence.",
+          "isCorrect": false,
+          "rationale": "Sentence swapping is part of the Next Sentence Prediction task, not the specific masking logic applied within the MLM task."
+        }
+      ],
+      "hint": "Consider how the model needs to handle words that it might encounter during inference when no special mask tokens are present."
+    },
+    {
+      "question": "Which component of the BERT architecture is responsible for distinguishing whether a token belongs to the first or second sentence in a pair of inputs?",
+      "answerOptions": [
+        {
+          "text": "Segment type embeddings",
+          "isCorrect": true,
+          "rationale": "BERT uses a learned embedding for each segment (e.g., $0$ for sentence A and $1$ for sentence B) to provide the model with sentence-level context."
+        },
+        {
+          "text": "Position embeddings",
+          "isCorrect": false,
+          "rationale": "These embeddings provide information about the absolute or relative location of a token within the entire sequence, not the specific sentence boundary."
+        },
+        {
+          "text": "The [SEP] special token",
+          "isCorrect": false,
+          "rationale": "While this token acts as a delimiter, the actual vector representation that distinguishes segments comes from a specific embedding layer."
+        },
+        {
+          "text": "The Task Head",
+          "isCorrect": false,
+          "rationale": "The task head is used at the very end of the network to produce predictions, whereas sentence distinction is handled at the input embedding stage."
+        }
+      ],
+      "hint": "Look for the embedding layer that uses a simple vocabulary of only $0$ or $1$."
+    },
+    {
+      "question": "According to the 'Distributional Hypothesis' mentioned in the source material, how is the meaning of a word determined?",
+      "answerOptions": [
+        {
+          "text": "By the company it keeps (the context of surrounding words).",
+          "isCorrect": true,
+          "rationale": "The hypothesis suggests that words appearing in similar contexts will share similar geometric positions in the embedding space."
+        },
+        {
+          "text": "By its dictionary definition and linguistic root.",
+          "isCorrect": false,
+          "rationale": "While linguistically relevant, computer models typically learn meaning through statistical patterns in usage rather than formal definitions."
+        },
+        {
+          "text": "By the number of syllables and characters it contains.",
+          "isCorrect": false,
+          "rationale": "The physical structure of a word is a surface feature and does not inherently convey its semantic relationship to other concepts."
+        },
+        {
+          "text": "By its frequency of appearance relative to the entire corpus.",
+          "isCorrect": false,
+          "rationale": "Frequency helps determine importance (like in TF-IDF), but it does not define the relational meaning between different words."
+        }
+      ],
+      "hint": "Think about J.R. Firth's famous $1957$ quote regarding how we 'know a word'."
+    },
+    {
+      "question": "What is a primary disadvantage of BERT's encoder-only architecture compared to decoder-based models like GPT?",
+      "answerOptions": [
+        {
+          "text": "It cannot naturally generate text or be easily prompted for continuation.",
+          "isCorrect": true,
+          "rationale": "Because BERT is designed to look at the entire context simultaneously, it lacks the autoregressive property required for efficient step-by-step text generation."
+        },
+        {
+          "text": "It is unable to understand bidirectional context.",
+          "isCorrect": false,
+          "rationale": "Being an encoder-only model actually allows BERT to be deeply bidirectional, which is one of its core strengths."
+        },
+        {
+          "text": "It requires significantly more parameters to achieve the same accuracy.",
+          "isCorrect": false,
+          "rationale": "BERT models are often highly efficient; for example, DistilBERT achieves $95\\%$ of BERT's performance with only $60\\%$ of the parameters."
+        },
+        {
+          "text": "It is incompatible with GPU or TPU acceleration.",
+          "isCorrect": false,
+          "rationale": "BERT was specifically developed by Google to be trained efficiently on Cloud TPUs."
+        }
+      ],
+      "hint": "Consider the difference between understanding an existing sentence versus writing a new one."
+    },
+    {
+      "question": "When performing vector arithmetic such as $king - man + woman \\approx queen$, what does the result of $king - man$ represent in the embedding space?",
+      "answerOptions": [
+        {
+          "text": "The abstract vector direction for the concept of 'royalty'.",
+          "isCorrect": true,
+          "rationale": "By subtracting the 'man' component from 'king', the remaining vector isolates the features related to being a royal leader."
+        },
+        {
+          "text": "An empty null vector with no semantic meaning.",
+          "isCorrect": false,
+          "rationale": "In a well-trained embedding space, mathematical operations between vectors yield new vectors that represent shifted meanings."
+        },
+        {
+          "text": "The exact vector for the word 'crown'.",
+          "isCorrect": false,
+          "rationale": "While 'crown' might be nearby, the arithmetic specifically isolates the shared attribute (royalty) rather than a related object."
+        },
+        {
+          "text": "The distance between the words in a physical dictionary.",
+          "isCorrect": false,
+          "rationale": "Embeddings represent semantic geometry, which is independent of alphabetical order or dictionary page numbers."
+        }
+      ],
+      "hint": "Think about what attribute is left over if you remove the 'gender' from a specific male-gendered title."
+    },
+    {
+      "question": "Which BERT variant introduced 'disentangled attention' by treating positional and token encodings separately?",
+      "answerOptions": [
+        {
+          "text": "DeBERTa",
+          "isCorrect": true,
+          "rationale": "DeBERTa computes three distinct attention matrices (Content-to-Content, Content-to-Position, and Position-to-Content) instead of a single combined matrix."
+        },
+        {
+          "text": "RoBERTa",
+          "isCorrect": false,
+          "rationale": "RoBERTa focuses on training improvements, such as larger batch sizes and removing NSP, rather than fundamental changes to the attention mechanism."
+        },
+        {
+          "text": "ALBERT",
+          "isCorrect": false,
+          "rationale": "ALBERT utilizes parameter sharing across layers to reduce the memory footprint but maintains the standard attention structure."
+        },
+        {
+          "text": "DistilBERT",
+          "isCorrect": false,
+          "rationale": "DistilBERT is a smaller version of the original BERT architecture created through knowledge distillation, not an architectural redesign."
+        }
+      ],
+      "hint": "The name of this model refers to its 'Decoding-enhanced' nature and its unique way of handling relative positions."
+    },
+    {
+      "question": "In semantic search, why is it often considered a mistake to encode a short query and a long document using the exact same embedding mode?",
+      "answerOptions": [
+        {
+          "text": "Queries and documents have asymmetric roles and different statistical distributions.",
+          "isCorrect": true,
+          "rationale": "Asymmetric embeddings (e.g., using prefixes like 'query:' and 'passage:') account for the fact that a short question and a long answer should be mapped differently."
+        },
+        {
+          "text": "Long documents exceed the $512$ token limit of all modern embedding models.",
+          "isCorrect": false,
+          "rationale": "While some models have limits, many variants (like Jina Embed) support long contexts, and the error refers to the encoding strategy, not length limits."
+        },
+        {
+          "text": "Encoding a document twice would result in a dot product of zero.",
+          "isCorrect": false,
+          "rationale": "Encoding the same text twice would result in identical vectors, leading to a high similarity score, not a zero score."
+        },
+        {
+          "text": "Short queries do not contain enough characters to generate a $768$-dimensional vector.",
+          "isCorrect": false,
+          "rationale": "Even a single word can be projected into a high-dimensional space; the dimensions are determined by the model's architecture, not the input length."
+        }
+      ],
+      "hint": "Think about the difference between a few words in a search bar versus several paragraphs in a Wikipedia article."
+    },
+    {
+      "question": "How does Cosine Similarity differ from Euclidean Distance when measuring the closeness of two word vectors?",
+      "answerOptions": [
+        {
+          "text": "Cosine Similarity measures the angle between vectors, making it independent of their magnitude.",
+          "isCorrect": true,
+          "rationale": "This is ideal for semantics because it focuses on the direction (meaning) rather than how frequently the word might appear in the training data."
+        },
+        {
+          "text": "Euclidean Distance measures the angle, while Cosine measures the straight-line distance.",
+          "isCorrect": false,
+          "rationale": "The definitions are reversed; Euclidean distance is the geometric 'straight-line' distance between two points ($L_2$ norm)."
+        },
+        {
+          "text": "Cosine Similarity is only used for keyword matching, not semantic embeddings.",
+          "isCorrect": false,
+          "rationale": "Cosine similarity is the standard metric for semantic similarity in modern vector search and embedding models."
+        },
+        {
+          "text": "Euclidean Distance is faster to compute because it does not require a square root calculation.",
+          "isCorrect": false,
+          "rationale": "The formula for Euclidean distance is $d = \\\\sqrt{\\\\sum(a_i - b_i)^2}$, which specifically requires a square root."
+        }
+      ],
+      "hint": "Consider which metric focuses on the 'direction' the vector is pointing versus the 'space' between the points."
+    },
+    {
+      "question": "Which technique allows a single embedding model to support multiple output dimensions (e.g., from $3072$ down to $256$) without retraining?",
+      "answerOptions": [
+        {
+          "text": "Matryoshka embeddings",
+          "isCorrect": true,
+          "rationale": "This approach trains models so that the most important information is stored in the earlier dimensions, allowing for easy truncation to save storage."
+        },
+        {
+          "text": "Knowledge Distillation",
+          "isCorrect": false,
+          "rationale": "Distillation involves training a smaller 'student' model to mimic a 'teacher' model, which results in a separate, fixed-size model."
+        },
+        {
+          "text": "Sinusoidal Position Encoding",
+          "isCorrect": false,
+          "rationale": "This is a method for injecting sequence order into a transformer, not a method for varying the size of the output vector."
+        },
+        {
+          "text": "WordPiece Tokenization",
+          "isCorrect": false,
+          "rationale": "Tokenization is the process of breaking text into integers; it does not dictate the dimensionality of the final latent vector."
+        }
+      ],
+      "hint": "This technique is named after a type of nested Russian doll."
+    },
+    {
+      "question": "During the Next Sentence Prediction (NSP) task, which specific token's final hidden state is used to classify the sentence pair as [IsNext] or [NotNext]?",
+      "answerOptions": [
+        {
+          "text": "The [CLS] token",
+          "isCorrect": true,
+          "rationale": "The [CLS] (classification) token is designed to aggregate the representation of the entire sequence for classification tasks."
+        },
+        {
+          "text": "The [SEP] token",
+          "isCorrect": false,
+          "rationale": "The [SEP] token is a delimiter used to separate the two sentences, but it is not typically used as the input for the final classifier."
+        },
+        {
+          "text": "The [MASK] token",
+          "isCorrect": false,
+          "rationale": "The [MASK] token is used for predicting individual missing words, not for classifying the relationship between sentences."
+        },
+        {
+          "text": "The [UNK] token",
+          "isCorrect": false,
+          "rationale": "The [UNK] token is a placeholder for words not found in the WordPiece vocabulary and does not carry sequence-level information."
+        }
+      ],
+      "hint": "This special token always appears at the very beginning of the input sequence."
+    }
+  ]
+}

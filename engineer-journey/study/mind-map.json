@@ -1,0 +1,150 @@
+{
+  "name": "Software Engineering & Development Concepts",
+  "children": [
+    {
+      "name": "First Principles & Fundamental Truths",
+      "children": [
+        {
+          "name": "Basic Propositions"
+        },
+        {
+          "name": "Axiomatic Reasoning"
+        },
+        {
+          "name": "5 Whys Technique"
+        },
+        {
+          "name": "Iqra (Deep Understanding)"
+        }
+      ]
+    },
+    {
+      "name": "Problem Decomposition",
+      "children": [
+        {
+          "name": "Breaking Big into Small"
+        },
+        {
+          "name": "Atomic Functions"
+        },
+        {
+          "name": "Solvable Sub-problems"
+        },
+        {
+          "name": "Step-by-step Implementation"
+        }
+      ]
+    },
+    {
+      "name": "Abstraction & Interface Design",
+      "children": [
+        {
+          "name": "Hiding Complexity"
+        },
+        {
+          "name": "Simplified Interfaces"
+        },
+        {
+          "name": "Zahir (Visible) vs Batin (Hidden)"
+        },
+        {
+          "name": "Information Hiding"
+        }
+      ]
+    },
+    {
+      "name": "Trade-offs & Balance",
+      "children": [
+        {
+          "name": "The Iron Triangle"
+        },
+        {
+          "name": "Speed vs Quality vs Cost"
+        },
+        {
+          "name": "Mizan (Justice & Equilibrium)"
+        },
+        {
+          "name": "Pragmatic Excellence"
+        }
+      ]
+    },
+    {
+      "name": "Testing & Resilience",
+      "children": [
+        {
+          "name": "Designing for Failure"
+        },
+        {
+          "name": "Graceful Degradation"
+        },
+        {
+          "name": "Test Pyramid"
+        },
+        {
+          "name": "Circuit Breakers"
+        },
+        {
+          "name": "Sabr (Steadfastness)"
+        }
+      ]
+    },
+    {
+      "name": "Debugging & Investigation",
+      "children": [
+        {
+          "name": "Root Cause Analysis"
+        },
+        {
+          "name": "Scientific Method"
+        },
+        {
+          "name": "Tahqiq (Verification)"
+        },
+        {
+          "name": "Narrowing Search Space"
+        }
+      ]
+    },
+    {
+      "name": "Knowledge & Communication",
+      "children": [
+        {
+          "name": "Code Review"
+        },
+        {
+          "name": "Reading vs Writing Ratio"
+        },
+        {
+          "name": "Tadabbur (Contemplation)"
+        },
+        {
+          "name": "Feynman Technique"
+        },
+        {
+          "name": "Hikmah (Wisdom)"
+        }
+      ]
+    },
+    {
+      "name": "Business Impact & Planning",
+      "children": [
+        {
+          "name": "Understanding the 'Why'"
+        },
+        {
+          "name": "Niyyah (Intent)"
+        },
+        {
+          "name": "Estimation & Buffer"
+        },
+        {
+          "name": "Tadbir (Preparation)"
+        },
+        {
+          "name": "Risk Assessment"
+        }
+      ]
+    }
+  ]
+}

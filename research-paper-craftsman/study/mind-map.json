@@ -1,0 +1,210 @@
+{
+  "name": "Algorithm & Technical Interview Preparation",
+  "children": [
+    {
+      "name": "Fundamentals of Algorithms",
+      "children": [
+        {
+          "name": "Definitions",
+          "children": [
+            {
+              "name": "Finite sequence of instructions"
+            },
+            {
+              "name": "Effective method"
+            },
+            {
+              "name": "Heuristic vs. Formal"
+            }
+          ]
+        },
+        {
+          "name": "Algorithmic Analysis",
+          "children": [
+            {
+              "name": "Execution efficiency"
+            },
+            {
+              "name": "Time & Space complexity"
+            },
+            {
+              "name": "Best and Worst case scenarios"
+            }
+          ]
+        },
+        {
+          "name": "Classification",
+          "children": [
+            {
+              "name": "By implementation (Recursive, Parallel)"
+            },
+            {
+              "name": "By design paradigm (Brute-force, Divide and conquer)"
+            },
+            {
+              "name": "By problem type (Optimization, Search)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Big O Notation",
+      "children": [
+        {
+          "name": "Concepts",
+          "children": [
+            {
+              "name": "Upper bound of growth"
+            },
+            {
+              "name": "Bachmann–Landau family"
+            },
+            {
+              "name": "Asymptotic analysis"
+            }
+          ]
+        },
+        {
+          "name": "Common Orders",
+          "children": [
+            {
+              "name": "O(1) Constant"
+            },
+            {
+              "name": "O(log n) Logarithmic"
+            },
+            {
+              "name": "O(n) Linear"
+            },
+            {
+              "name": "O(n log n) Linearithmic"
+            },
+            {
+              "name": "O(n^2) Quadratic"
+            },
+            {
+              "name": "O(2^n) Exponential"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Structures",
+      "children": [
+        {
+          "name": "Linear Structures",
+          "children": [
+            {
+              "name": "Arrays (Contiguous memory)"
+            },
+            {
+              "name": "Linked Lists (Nodes and pointers)"
+            },
+            {
+              "name": "Stacks (LIFO)"
+            },
+            {
+              "name": "Queues (FIFO)"
+            }
+          ]
+        },
+        {
+          "name": "Non-Linear Structures",
+          "children": [
+            {
+              "name": "Trees (Hierarchical, B-tree, Trie)"
+            },
+            {
+              "name": "Graphs (Nodes and Edges)"
+            },
+            {
+              "name": "Hash Tables (Key-value mapping)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Interview Preparation Strategies",
+      "children": [
+        {
+          "name": "Personal Storytelling",
+          "children": [
+            {
+              "name": "Resume Impact (Action + Context + Result)"
+            },
+            {
+              "name": "Present-Past-Future Structure"
+            },
+            {
+              "name": "STAR Method for behavior (Shahadat)"
+            }
+          ]
+        },
+        {
+          "name": "Technical Execution",
+          "children": [
+            {
+              "name": "Pattern Recognition (Sliding Window, Two Pointers)"
+            },
+            {
+              "name": "System Design (Clarify, High-level, Deep dive)"
+            },
+            {
+              "name": "Thinking Out Loud (Tadabbur)"
+            }
+          ]
+        },
+        {
+          "name": "Closing and Negotiation",
+          "children": [
+            {
+              "name": "Salary Negotiation (Mizan)"
+            },
+            {
+              "name": "Asking strategic questions"
+            },
+            {
+              "name": "Total Compensation research"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Competitive Programming & Platforms",
+      "children": [
+        {
+          "name": "Platforms",
+          "children": [
+            {
+              "name": "LeetCode (Interview prep focus)"
+            },
+            {
+              "name": "Codeforces (Competitive sport focus)"
+            },
+            {
+              "name": "HackerRank & CodeChef"
+            }
+          ]
+        },
+        {
+          "name": "Competitions",
+          "children": [
+            {
+              "name": "ICPC (University level)"
+            },
+            {
+              "name": "Google Code Jam"
+            },
+            {
+              "name": "Meta Hacker Cup"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

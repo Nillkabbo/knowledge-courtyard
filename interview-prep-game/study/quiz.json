@@ -1,0 +1,395 @@
+{
+  "title": "OS Quiz",
+  "questions": [
+    {
+      "question": "Which of the following best describes the primary purpose of an operating system (OS)?",
+      "answerOptions": [
+        {
+          "text": "It acts as the layer of software that manages a computer's hardware resources for its users and applications.",
+          "isCorrect": true,
+          "rationale": "The OS serves as an intermediary and resource allocator to ensure efficient and safe use of the hardware by various programs."
+        },
+        {
+          "text": "It is a specialized hardware component that executes binary application code directly.",
+          "isCorrect": false,
+          "rationale": "Hardware executes code, but the OS is system software that manages how that hardware is used rather than being hardware itself."
+        },
+        {
+          "text": "It is a set of application programs designed to perform specific user tasks like word processing.",
+          "isCorrect": false,
+          "rationale": "Applications perform specific tasks for users, whereas the OS provides the environment and services for those applications to run."
+        },
+        {
+          "text": "It is a library of code used exclusively for calculating processor time and cost allocation.",
+          "isCorrect": false,
+          "rationale": "While some OS versions include accounting software, this is only a minor feature compared to resource management and hardware abstraction."
+        }
+      ],
+      "hint": "Think about how software sits between the physical machine and the user's programs."
+    },
+    {
+      "question": "When an operating system allocates resources to ensure no single program monopolizes the system, how is the Central Processing Unit (CPU) typically shared?",
+      "answerOptions": [
+        {
+          "text": "By space partitioning",
+          "isCorrect": false,
+          "rationale": "Space partitioning is typically used for memory allocation, not for the processor's execution time."
+        },
+        {
+          "text": "By time-sharing",
+          "isCorrect": true,
+          "rationale": "The OS schedules tasks by giving each application a 'slice' of the CPU's processing time to enable multitasking."
+        },
+        {
+          "text": "By physical duplication",
+          "isCorrect": false,
+          "rationale": "Sharing a single resource involves scheduling its use, rather than duplicating the hardware for every process."
+        },
+        {
+          "text": "By read-only access",
+          "isCorrect": false,
+          "rationale": "CPU sharing involves execution permissions rather than simple read access to data."
+        }
+      ],
+      "hint": "Consider the difference between dividing a physical container and dividing a schedule."
+    },
+    {
+      "question": "What is the distinguishing factor of embedded operating systems compared to general-purpose operating systems?",
+      "answerOptions": [
+        {
+          "text": "They always require a minimum of $100 \\text{ MB}$ of storage.",
+          "isCorrect": false,
+          "rationale": "Embedded systems are often extremely small, with some running in less than $10 \\text{ KB}$."
+        },
+        {
+          "text": "They do not load user-installed software.",
+          "isCorrect": true,
+          "rationale": "Embedded systems are designed for specific tasks and do not allow the same flexibility for user-installed apps as a PC or smartphone."
+        },
+        {
+          "text": "They are exclusively used for internet-connected appliances.",
+          "isCorrect": false,
+          "rationale": "Embedded systems can be used in both networked 'Internet of Things' objects and devices not connected to a network."
+        },
+        {
+          "text": "They require more complex protection designs between applications.",
+          "isCorrect": false,
+          "rationale": "Because they don't run arbitrary user software, they can often have simpler designs with less application-to-application protection."
+        }
+      ],
+      "hint": "Think about the level of flexibility a user has to install new programs on a household appliance."
+    },
+    {
+      "question": "In a hard real-time operating system, which of the following is an absolute requirement?",
+      "answerOptions": [
+        {
+          "text": "Guaranteed processing of events by a specific moment in time",
+          "isCorrect": true,
+          "rationale": "Hard real-time systems require exact timing where missing a deadline is considered a total system failure."
+        },
+        {
+          "text": "The ability to occasionally miss an event for better audio quality",
+          "isCorrect": false,
+          "rationale": "Accepting occasional missed events characterizes soft real-time systems, such as multimedia or smartphones."
+        },
+        {
+          "text": "A high-performance graphical user interface",
+          "isCorrect": false,
+          "rationale": "Timing accuracy is the priority for hard real-time systems, and many do not use a GUI at all."
+        },
+        {
+          "text": "Isolation between application and kernel libraries",
+          "isCorrect": false,
+          "rationale": "To achieve exact timing, hard real-time systems are often just libraries without protection domains."
+        }
+      ],
+      "hint": "Focus on the strictness of the 'real-time' deadline."
+    },
+    {
+      "question": "What is a primary benefit of a library operating system (libOS) when constructing a unikernel?",
+      "answerOptions": [
+        {
+          "text": "It provides a multi-user environment with complex security domains.",
+          "isCorrect": false,
+          "rationale": "LibOSes are typically single-address space and single-application, removing the need for multi-user isolation."
+        },
+        {
+          "text": "It eliminates the overhead of context switches between user and kernel modes.",
+          "isCorrect": true,
+          "rationale": "Because the application and OS services are bound together in one space, services are accessed via simple library calls."
+        },
+        {
+          "text": "It increases the attack surface by including every possible OS service.",
+          "isCorrect": false,
+          "rationale": "Unikernels improve security by extracting and binding only the absolute necessary pieces of code."
+        },
+        {
+          "text": "It requires the use of multiple virtual machines to run one application.",
+          "isCorrect": false,
+          "rationale": "A unikernel is a single machine image designed to run a single application directly on a hypervisor or cloud environment."
+        }
+      ],
+      "hint": "Consider the performance impact of moving back and forth between a 'user zone' and a 'kernel zone'."
+    },
+    {
+      "question": "The IBM System/360 was historically significant because its operating system, OS/360, was the first popular one to support which feature?",
+      "answerOptions": [
+        {
+          "text": "Touchscreen navigation",
+          "isCorrect": false,
+          "rationale": "Touchscreen technology emerged much later than the 1960s mainframe era."
+        },
+        {
+          "text": "Multiprogramming",
+          "isCorrect": true,
+          "rationale": "OS/360 allowed a second job to use the CPU while another job was waiting for input/output operations."
+        },
+        {
+          "text": "Plugboard programming",
+          "isCorrect": false,
+          "rationale": "Plugboards were used in the 1940s and 1950s, whereas System/360 used advanced software logic."
+        },
+        {
+          "text": "A graphical desktop environment",
+          "isCorrect": false,
+          "rationale": "OS/360 relied on operator consoles and batch processing, not modern GUIs."
+        }
+      ],
+      "hint": "This feature allowed the computer to stay busy even when one task was waiting on a slow device."
+    },
+    {
+      "question": "Most modern operating systems operate in two modes to improve reliability. What happens when the hardware is in 'user mode'?",
+      "answerOptions": [
+        {
+          "text": "The software has unrestricted power to modify any hardware resource.",
+          "isCorrect": false,
+          "rationale": "Unrestricted power is reserved for kernel mode; user mode is restricted to protect the system."
+        },
+        {
+          "text": "The hardware checks that the software only executes legal, non-privileged instructions.",
+          "isCorrect": true,
+          "rationale": "User mode restricts the set of instructions available to applications to prevent them from crashing the system or stealing data."
+        },
+        {
+          "text": "The kernel is bypassed entirely to speed up processor execution.",
+          "isCorrect": false,
+          "rationale": "The kernel still manages the process, and any privileged action requires a switch out of user mode."
+        },
+        {
+          "text": "The CPU stops checking for hardware interrupts.",
+          "isCorrect": false,
+          "rationale": "Interrupts must be checked regardless of the mode to allow the OS to react to the environment."
+        }
+      ],
+      "hint": "Think about the safety measures taken to keep a standard app from breaking the whole computer."
+    },
+    {
+      "question": "In Unix-like systems, what is the specific role of 'signals'?",
+      "answerOptions": [
+        {
+          "text": "They are used to provide the user with a graphical notification of error messages.",
+          "isCorrect": false,
+          "rationale": "Signals are low-level software interrupts between processes, not necessarily visual notifications."
+        },
+        {
+          "text": "They inform processes of the occurrence of asynchronous events.",
+          "isCorrect": true,
+          "rationale": "Signals like SIGINT or SIGSEGV notify a process that something external or unexpected has happened."
+        },
+        {
+          "text": "They are used exclusively to speed up internet connection packets.",
+          "isCorrect": false,
+          "rationale": "Networking stacks handle packets; signals are for inter-process communication and error handling."
+        },
+        {
+          "text": "They allow a process to directly bypass the kernel to access memory.",
+          "isCorrect": false,
+          "rationale": "Accessing memory bypasses is a feature of DMA hardware, whereas signals are a software messaging mechanism."
+        }
+      ],
+      "hint": "Consider how one program might tell another program to stop immediately."
+    },
+    {
+      "question": "Why is Direct Memory Access (DMA) used for devices like hard disk drives?",
+      "answerOptions": [
+        {
+          "text": "To allow the CPU to process every single byte of data individually for higher precision.",
+          "isCorrect": false,
+          "rationale": "Processing every byte individually is the slow 'interrupt-driven I/O' method that DMA seeks to avoid."
+        },
+        {
+          "text": "To allow high-speed devices to transfer data to memory independently of the CPU.",
+          "isCorrect": true,
+          "rationale": "DMA saves CPU time by allowing the hardware to handle the transfer, only interrupting the CPU once the whole block is finished."
+        },
+        {
+          "text": "To encrypt data before it reaches the computer's RAM.",
+          "isCorrect": false,
+          "rationale": "DMA is a transfer mechanism, not a security or encryption protocol."
+        },
+        {
+          "text": "To prevent the hard drive from ever needing a device driver.",
+          "isCorrect": false,
+          "rationale": "Device drivers are still required to tell the OS and the DMA controller how to interact with the specific hardware."
+        }
+      ],
+      "hint": "Think about how the CPU can stay productive instead of manually moving thousands of small data pieces."
+    },
+    {
+      "question": "What occurs when a program attempts to access a memory address that has been restricted or is out of range?",
+      "answerOptions": [
+        {
+          "text": "The computer automatically adds more RAM to resolve the conflict.",
+          "isCorrect": false,
+          "rationale": "RAM is a physical resource that cannot be created on the fly by software errors."
+        },
+        {
+          "text": "A segmentation violation (Seg-V) triggers an interrupt, and the kernel usually terminates the program.",
+          "isCorrect": true,
+          "rationale": "The OS uses memory protection to isolate programs; an illegal access is a sign of a bug or malware, leading to program termination."
+        },
+        {
+          "text": "The program is granted temporary supervisor mode to fix the error.",
+          "isCorrect": false,
+          "rationale": "Granting supervisor mode to a failing program would be a major security risk."
+        },
+        {
+          "text": "The data at that address is automatically deleted to protect system integrity.",
+          "isCorrect": false,
+          "rationale": "The system protects the memory by blocking access, not by deleting data which might belong to a different process."
+        }
+      ],
+      "hint": "Recall the term used for a memory protection fault and the likely consequence for the offending program."
+    },
+    {
+      "question": "Virtual memory allows an operating system to 'trick' programs into perceiving more memory than is physically available. How is this achieved?",
+      "answerOptions": [
+        {
+          "text": "By duplicating physical RAM chips using high-voltage electrical pulses.",
+          "isCorrect": false,
+          "rationale": "Virtual memory is a software and architecture illusion, not a physical hardware modification."
+        },
+        {
+          "text": "By using memory scattered across the hard disk and RAM as if it were one continuous chunk.",
+          "isCorrect": true,
+          "rationale": "The OS manages mapping and 'swapping' to provide the illusion of a large, continuous address space."
+        },
+        {
+          "text": "By restricting applications to only use $10\\%$ of the computer's actual capacity.",
+          "isCorrect": false,
+          "rationale": "Virtual memory expands the usable memory space for a program rather than shrinking it."
+        },
+        {
+          "text": "By converting binary data into text files to save space on the disk.",
+          "isCorrect": false,
+          "rationale": "Data remains in binary; the mechanism involves mapping virtual addresses to physical storage locations."
+        }
+      ],
+      "hint": "Think about how a library might use an off-site warehouse to store books while only having a small on-site shelf."
+    },
+    {
+      "question": "In the context of concurrency, what is the primary difference between a process and a thread?",
+      "answerOptions": [
+        {
+          "text": "Threads are completely isolated from one another, whereas processes share a heap.",
+          "isCorrect": false,
+          "rationale": "Processes are isolated, while threads within the same process share code, data, and resources."
+        },
+        {
+          "text": "Threads share resources like code and data with others in the same process, while processes have their own independent resources.",
+          "isCorrect": true,
+          "rationale": "This sharing allows threads to have less overhead during creation and communication compared to full processes."
+        },
+        {
+          "text": "Threads can only run on single-CPU systems, while processes require multi-CPU systems.",
+          "isCorrect": false,
+          "rationale": "Both can run on any system, but threads are particularly useful for exploiting parallelism on multi-CPU systems."
+        },
+        {
+          "text": "Processes are managed by the kernel, while threads are managed directly by the hardware.",
+          "isCorrect": false,
+          "rationale": "The kernel is responsible for scheduling both processes and threads."
+        }
+      ],
+      "hint": "Consider which one is a 'subset' of the other and shares its parent's 'belongings'."
+    },
+    {
+      "question": "According to the 'CIA triad' of operating system security, which component ensures that unauthorized users cannot modify data?",
+      "answerOptions": [
+        {
+          "text": "Confidentiality",
+          "isCorrect": false,
+          "rationale": "Confidentiality ensures that unauthorized users cannot *access* or read data."
+        },
+        {
+          "text": "Integrity",
+          "isCorrect": true,
+          "rationale": "Integrity is the principle that information should only be modified by those authorized to do so."
+        },
+        {
+          "text": "Availability",
+          "isCorrect": false,
+          "rationale": "Availability ensures that the system remains accessible to authorized users when needed."
+        },
+        {
+          "text": "Isolation",
+          "isCorrect": false,
+          "rationale": "While isolation is a method to achieve security, it is not one of the three core goals of the CIA triad."
+        }
+      ],
+      "hint": "Think about the word that describes something being 'whole' or 'unaltered'."
+    },
+    {
+      "question": "What security principle suggests granting the minimum privilege essential for performing a specific task?",
+      "answerOptions": [
+        {
+          "text": "Principle of least authority",
+          "isCorrect": true,
+          "rationale": "By limiting privileges, the system reduces the potential damage if a process or user account is compromised."
+        },
+        {
+          "text": "Principle of maximum exclusion",
+          "isCorrect": false,
+          "rationale": "This is not a standard security term; the principle focuses on minimizing authority, not just excluding users."
+        },
+        {
+          "text": "Security by obscurity",
+          "isCorrect": false,
+          "rationale": "Security by obscurity relies on keeping secrets (like source code) hidden, which is often considered unreliable."
+        },
+        {
+          "text": "Formal verification",
+          "isCorrect": false,
+          "rationale": "Formal verification is a mathematical method for proving software correctness, not a principle for assigning permissions."
+        }
+      ],
+      "hint": "This principle is often applied to ensure a program doesn't have more power than it absolutely needs."
+    },
+    {
+      "question": "Which operating system is currently the most popular worldwide based on web traffic metrics, with approximately $38\\%$ market share?",
+      "answerOptions": [
+        {
+          "text": "Microsoft Windows",
+          "isCorrect": false,
+          "rationale": "Windows follows closely but is generally second to the leading mobile OS in total web traffic share."
+        },
+        {
+          "text": "Android",
+          "isCorrect": true,
+          "rationale": "Android's dominance on smartphones has made it the most popular OS for connecting to the web."
+        },
+        {
+          "text": "iOS",
+          "isCorrect": false,
+          "rationale": "iOS holds a significant portion (around $15\\%$), but is not the market leader."
+        },
+        {
+          "text": "Linux",
+          "isCorrect": false,
+          "rationale": "While dominant in servers, Linux accounts for only about $1\\%$ of general web traffic."
+        }
+      ],
+      "hint": "This OS is closely based on the Linux kernel and is very common on mobile phones."
+    }
+  ]
+}

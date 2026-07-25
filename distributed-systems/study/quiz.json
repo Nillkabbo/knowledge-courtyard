@@ -1,0 +1,317 @@
+{
+  "title": "Computing Quiz",
+  "questions": [
+    {
+      "question": "In the context of the CAP theorem, how is 'Availability' specifically defined?",
+      "answerOptions": [
+        {
+          "text": "Every request received by a non-failing node must result in a response, regardless of data version.",
+          "isCorrect": true,
+          "rationale": "This definition emphasizes that the system remains functional and responsive to all queries, even if it cannot guarantee the data provided is the most recent."
+        },
+        {
+          "text": "The system must ensure that every node in the cluster is operational and reachable at all times.",
+          "isCorrect": false,
+          "rationale": "This describes a state of total system health rather than the specific functional guarantee required for every individual request under the CAP theorem."
+        },
+        {
+          "text": "Every read request must return the most recent write to ensure system-wide uptime.",
+          "isCorrect": false,
+          "rationale": "This description mistakenly combines the definitions of consistency and availability, which are distinct trade-offs in distributed systems."
+        },
+        {
+          "text": "The system must prevent any message drops or delays between nodes to maintain service.",
+          "isCorrect": false,
+          "rationale": "The prevention of network failures describes partition tolerance or network reliability rather than the availability of a response from a node."
+        }
+      ],
+      "hint": "Consider what a user expects to receive from a functioning node even when the network is struggling."
+    },
+    {
+      "question": "Which cache write policy postpones updating the backing store until the modified content is about to be evicted?",
+      "answerOptions": [
+        {
+          "text": "Write-through",
+          "isCorrect": false,
+          "rationale": "This policy performs writes to both the cache and the backing store simultaneously to ensure they are always synchronized."
+        },
+        {
+          "text": "Write-back",
+          "isCorrect": true,
+          "rationale": "This policy improves performance by writing only to the cache initially and marking the data as 'dirty' until a later eviction triggers the update to main storage."
+        },
+        {
+          "text": "Write-allocate",
+          "isCorrect": false,
+          "rationale": "This refers to a write-miss policy regarding whether data is loaded into the cache, not the timing of synchronization with the backing store."
+        },
+        {
+          "text": "No-write allocate",
+          "isCorrect": false,
+          "rationale": "This policy bypasses the cache on a write miss and writes directly to the backing store, rather than deferring the write."
+        }
+      ],
+      "hint": "Focus on the policy that uses a 'dirty bit' to track modified data for later synchronization."
+    },
+    {
+      "question": "What is the primary difference between the 1960s navigational database models and the relational model proposed by Edgar F. Codd?",
+      "answerOptions": [
+        {
+          "text": "Navigational models used pointers to follow relationships, while the relational model used content-based search.",
+          "isCorrect": true,
+          "rationale": "Codd's model moved away from physical disk addresses and linked lists, favoring logical keys that allow applications to find data by its content."
+        },
+        {
+          "text": "The relational model required more powerful hardware to follow physical disk addresses than navigational models.",
+          "isCorrect": false,
+          "rationale": "The relational model actually sought to abstract away physical disk addresses, although it did require more processing power for query optimization."
+        },
+        {
+          "text": "Navigational models used SQL for data access, whereas the relational model introduced navigational APIs.",
+          "isCorrect": false,
+          "rationale": "The situation is reversed; navigational models relied on APIs for record-by-record traversal, while SQL was developed later for the relational model."
+        },
+        {
+          "text": "Navigational models organized data into tables, while the relational model used a strict hierarchy.",
+          "isCorrect": false,
+          "rationale": "The hierarchical model is a type of navigational model, whereas the relational model is characterized by the use of tables."
+        }
+      ],
+      "hint": "Think about how a programmer moves from one record to another—either by following a link or by matching values."
+    },
+    {
+      "question": "According to the PACELC theorem, what is the trade-off a distributed system faces during normal operation (when no partition is present)?",
+      "answerOptions": [
+        {
+          "text": "Latency vs. Consistency",
+          "isCorrect": true,
+          "rationale": "The 'E' in PACELC stands for 'Else', indicating that in the absence of partitions, designers must still choose between faster response times or stricter data accuracy."
+        },
+        {
+          "text": "Availability vs. Partition Tolerance",
+          "isCorrect": false,
+          "rationale": "This trade-off is a component of the original CAP theorem during a network failure, not the 'Else' condition of PACELC."
+        },
+        {
+          "text": "Throughput vs. Bandwidth",
+          "isCorrect": false,
+          "rationale": "While these are performance metrics, they are not the fundamental architectural trade-off described by the PACELC theorem."
+        },
+        {
+          "text": "Consistency vs. Durability",
+          "isCorrect": false,
+          "rationale": "These are both properties within the ACID model for transactions, rather than the distributed system trade-offs identified in PACELC."
+        }
+      ],
+      "hint": "Focus on the 'E' (Else) part of the acronym and the cost of waiting for data to sync during healthy operations."
+    },
+    {
+      "question": "Which concept describes the cache's ability to serve data requested that is stored near data that has already been requested?",
+      "answerOptions": [
+        {
+          "text": "Temporal locality",
+          "isCorrect": false,
+          "rationale": "This refers to the tendency to access the same data item repeatedly within a short period of time."
+        },
+        {
+          "text": "Spatial locality",
+          "isCorrect": true,
+          "rationale": "This principle exploits the fact that if a memory location is accessed, nearby locations are likely to be accessed soon, which justifies loading blocks of data into the cache."
+        },
+        {
+          "text": "Write allocation",
+          "isCorrect": false,
+          "rationale": "This is a policy used during write misses to determine if data should be loaded into the cache, not a type of reference locality."
+        },
+        {
+          "text": "Cache coherence",
+          "isCorrect": false,
+          "rationale": "This refers to the protocols used to ensure that data remains consistent across multiple different caches in a system."
+        }
+      ],
+      "hint": "Think about the physical or logical distance between different data items in storage."
+    },
+    {
+      "question": "In the three-level database architecture, which level is responsible for unifying various user views into a single, compatible global view?",
+      "answerOptions": [
+        {
+          "text": "Internal level",
+          "isCorrect": false,
+          "rationale": "This level is concerned with the physical storage layout and performance optimizations like indexing on the hardware."
+        },
+        {
+          "text": "External level",
+          "isCorrect": false,
+          "rationale": "This level describes how individual groups of end-users perceive the data, often through specific subsets or views."
+        },
+        {
+          "text": "Conceptual level",
+          "isCorrect": true,
+          "rationale": "Also known as the logical level, it provides a community view that abstracts away physical storage details while synthesizing all external requirements."
+        },
+        {
+          "text": "Physical level",
+          "isCorrect": false,
+          "rationale": "This is simply another name for the internal level, which deals with how data is encoded and stored on disks."
+        }
+      ],
+      "hint": "Look for the level that acts as an intermediary synthesis of all user-facing perspectives."
+    },
+    {
+      "question": "A cache miss occurs and the system decides not to load the missed data into the cache, writing it directly to the backing store instead. Which policy is being used?",
+      "answerOptions": [
+        {
+          "text": "Write allocate",
+          "isCorrect": false,
+          "rationale": "In this policy, the data would be loaded into the cache immediately after a write miss, anticipating future access."
+        },
+        {
+          "text": "No-write allocate",
+          "isCorrect": true,
+          "rationale": "Also known as 'write around', this policy avoids cluttering the cache with data that is only being written and might not be read again soon."
+        },
+        {
+          "text": "Write-back",
+          "isCorrect": false,
+          "rationale": "This policy determines how modified data in the cache is synchronized with the backing store, not whether it is loaded upon a miss."
+        },
+        {
+          "text": "Demand paging",
+          "isCorrect": false,
+          "rationale": "This is a virtual memory management technique that loads data from disk into RAM only when it is needed for a read."
+        }
+      ],
+      "hint": "This policy is frequently paired with write-through caches because subsequent writes have no inherent advantage in being cached."
+    },
+    {
+      "question": "Which property of ACID transactions ensures that once a transaction is committed, its effects remain even in the event of a system failure?",
+      "answerOptions": [
+        {
+          "text": "Atomicity",
+          "isCorrect": false,
+          "rationale": "This property ensures that a transaction is treated as a single unit that either completely succeeds or completely fails."
+        },
+        {
+          "text": "Consistency",
+          "isCorrect": false,
+          "rationale": "In the ACID context, this ensures that a transaction brings the database from one valid state to another, following all defined rules."
+        },
+        {
+          "text": "Isolation",
+          "isCorrect": false,
+          "rationale": "This ensures that concurrent execution of transactions leaves the database in the same state as if they were executed sequentially."
+        },
+        {
+          "text": "Durability",
+          "isCorrect": true,
+          "rationale": "This property guarantees that the results of a committed transaction are permanently recorded in non-volatile storage."
+        }
+      ],
+      "hint": "Think about the 'permanence' of data after a successful completion of a task."
+    },
+    {
+      "question": "What is a 'cache hit ratio'?",
+      "answerOptions": [
+        {
+          "text": "The speed at which data can be retrieved from the cache compared to main memory.",
+          "isCorrect": false,
+          "rationale": "This describes the latency benefit of caching rather than the statistical success rate of finding data in the cache."
+        },
+        {
+          "text": "The percentage of total data access attempts that are successfully served by the cache.",
+          "isCorrect": true,
+          "rationale": "This metric measures the efficiency of the cache by tracking how often the backing store access is successfully avoided."
+        },
+        {
+          "text": "The amount of storage capacity currently utilized by active cache entries.",
+          "isCorrect": false,
+          "rationale": "This refers to cache utilization or occupancy, not the success rate of request fulfillment."
+        },
+        {
+          "text": "The frequency at which the cache must evict old entries to make room for new ones.",
+          "isCorrect": false,
+          "rationale": "This is related to the replacement policy and eviction rate, which are distinct from the successful hit rate."
+        }
+      ],
+      "hint": "This term represents a percentage of successes versus total attempts."
+    },
+    {
+      "question": "In Information-Centric Networking (ICN), how does the 'Time Aware Least Recently Used' (TLRU) algorithm improve upon standard LRU?",
+      "answerOptions": [
+        {
+          "text": "It prioritizes content that has been accessed most frequently within a specific time window.",
+          "isCorrect": false,
+          "rationale": "This describes a frequency-based policy (LFRU) rather than one focused on content expiration or lifetime."
+        },
+        {
+          "text": "It utilizes a 'time to use' (TTU) stamp to replace short-lived or unpopular content first.",
+          "isCorrect": true,
+          "rationale": "TLRU factors in the valid lifetime of content, allowing administrators to regulate storage by evicting items that are no longer usable."
+        },
+        {
+          "text": "It tracks the propagation delay of signals to ensure data is retrieved from the closest geographical node.",
+          "isCorrect": false,
+          "rationale": "This describes network latency optimization or spatial distribution rather than an eviction policy based on time stamps."
+        },
+        {
+          "text": "It prevents any content from being evicted until its 'dirty bit' has been synchronized with the origin server.",
+          "isCorrect": false,
+          "rationale": "This describes a write-back synchronization requirement rather than a replacement heuristic for network-level caching."
+        }
+      ],
+      "hint": "Consider the relevance of a 'expiration date' for information in a dynamic network."
+    },
+    {
+      "question": "Why is the common 'two out of three' explanation of the CAP theorem considered somewhat misleading by Eric Brewer?",
+      "answerOptions": [
+        {
+          "text": "Because it is impossible to ever achieve partition tolerance in a real-world network.",
+          "isCorrect": false,
+          "rationale": "Modern distributed systems must be partition tolerant because network failures are an unavoidable reality."
+        },
+        {
+          "text": "Because designers only need to sacrifice consistency or availability during an actual partition event.",
+          "isCorrect": true,
+          "rationale": "Brewer clarified that systems can often provide all three guarantees during normal operation; the choice only becomes mandatory when a failure occurs."
+        },
+        {
+          "text": "Because advanced databases like MongoDB have proven that all three can be achieved simultaneously.",
+          "isCorrect": false,
+          "rationale": "The material states that MongoDB resolves partitions by maintaining consistency while compromising on availability, adhering to the theorem's limits."
+        },
+        {
+          "text": "Because the definition of consistency in CAP is identical to the definition used in ACID.",
+          "isCorrect": false,
+          "rationale": "The source material explicitly states that CAP consistency is different from ACID consistency, which is a common point of confusion."
+        }
+      ],
+      "hint": "Consider how the system behaves when the network is functioning perfectly vs. when a wire is cut."
+    },
+    {
+      "question": "A processor is accessing data from a DRAM with a latency of several hundred clock cycles. Which technique can be used to bypass this latency by guessing future data needs?",
+      "answerOptions": [
+        {
+          "text": "Prefetching",
+          "isCorrect": true,
+          "rationale": "This technique anticipates future requests and loads data into the cache ahead of time, potentially reducing or eliminating the wait for the slower storage."
+        },
+        {
+          "text": "Memoization",
+          "isCorrect": false,
+          "rationale": "This is a software-level optimization that stores the results of expensive function calls, rather than a hardware memory access technique."
+        },
+        {
+          "text": "Swizzling",
+          "isCorrect": false,
+          "rationale": "This is a technique used in graphics processing to improve locality of reference, not a general method for predictive data loading."
+        },
+        {
+          "text": "Write-through synchronization",
+          "isCorrect": false,
+          "rationale": "This policy ensures data is written to main storage immediately but does not address the latency of reading data from that storage."
+        }
+      ],
+      "hint": "Think about the 'anticipatory' action of fetching data before it is explicitly requested."
+    }
+  ]
+}

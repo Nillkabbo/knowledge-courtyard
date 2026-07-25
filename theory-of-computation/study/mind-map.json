@@ -1,0 +1,127 @@
+{
+  "name": "Alan Turing",
+  "children": [
+    {
+      "name": "Early Life",
+      "children": [
+        {
+          "name": "Born 1912"
+        },
+        {
+          "name": "Education",
+          "children": [
+            {
+              "name": "Sherborne School"
+            },
+            {
+              "name": "King's College, Cambridge"
+            },
+            {
+              "name": "Princeton University PhD"
+            }
+          ]
+        },
+        {
+          "name": "Christopher Morcom"
+        }
+      ]
+    },
+    {
+      "name": "Theoretical Contributions",
+      "children": [
+        {
+          "name": "Turing Machine"
+        },
+        {
+          "name": "Computability"
+        },
+        {
+          "name": "Halting Problem"
+        },
+        {
+          "name": "Turing Test"
+        },
+        {
+          "name": "Morphogenesis"
+        }
+      ]
+    },
+    {
+      "name": "Wartime Work",
+      "children": [
+        {
+          "name": "Bletchley Park"
+        },
+        {
+          "name": "Enigma Cryptanalysis"
+        },
+        {
+          "name": "The Bombe"
+        },
+        {
+          "name": "Hut 8"
+        },
+        {
+          "name": "Lorenz Cipher"
+        },
+        {
+          "name": "Delilah Speech Scrambler"
+        }
+      ]
+    },
+    {
+      "name": "Computing Career",
+      "children": [
+        {
+          "name": "Automatic Computing Engine (ACE)"
+        },
+        {
+          "name": "Manchester Mark 1"
+        },
+        {
+          "name": "Turochamp Chess Program"
+        },
+        {
+          "name": "Ratio Club"
+        }
+      ]
+    },
+    {
+      "name": "Personal Life and Death",
+      "children": [
+        {
+          "name": "Homosexuality"
+        },
+        {
+          "name": "Indecency Conviction"
+        },
+        {
+          "name": "Chemical Castration"
+        },
+        {
+          "name": "Died 1954 (Cyanide)"
+        }
+      ]
+    },
+    {
+      "name": "Legacy and Recognition",
+      "children": [
+        {
+          "name": "Government Apology (2009)"
+        },
+        {
+          "name": "Royal Pardon (2013)"
+        },
+        {
+          "name": "Alan Turing Law"
+        },
+        {
+          "name": "Bank of England £50 Note"
+        },
+        {
+          "name": "Turing Award"
+        }
+      ]
+    }
+  ]
+}

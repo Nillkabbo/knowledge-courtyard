@@ -1,0 +1,395 @@
+{
+  "title": "Circadian Quiz",
+  "questions": [
+    {
+      "question": "To be scientifically classified as a 'circadian rhythm' rather than just a 'diurnal rhythm,' which specific condition must a biological process meet?",
+      "answerOptions": [
+        {
+          "text": "It must be observable in both plants and animals.",
+          "isCorrect": false,
+          "rationale": "While circadian rhythms are found in many kingdoms, universality is not a defining criterion for the specific classification of a single rhythm."
+        },
+        {
+          "text": "It must be endogenous and persist in the absence of environmental cues.",
+          "isCorrect": true,
+          "rationale": "True circadian rhythms originate within the organism and maintain a period near 24 hours even in constant conditions, such as total darkness."
+        },
+        {
+          "text": "It must be exactly 24 hours in duration under all circumstances.",
+          "isCorrect": false,
+          "rationale": "The term 'circadian' implies 'about' a day, and free-running periods often deviate slightly from the 24-hour solar cycle."
+        },
+        {
+          "text": "It must be exclusively regulated by external temperature changes.",
+          "isCorrect": false,
+          "rationale": "Rhythms driven solely by external temperature are considered responses to stimuli rather than endogenous circadian cycles."
+        }
+      ],
+      "hint": "Consider the distinction between a process that reacts to the sun and one that predicts it."
+    },
+    {
+      "question": "What is indicated by a $Q_{10}$ temperature coefficient remaining approximately 1 in a biological rhythm?",
+      "answerOptions": [
+        {
+          "text": "The rhythm is undergoing rapid entrainment to a new zeitgeber.",
+          "isCorrect": false,
+          "rationale": "The $Q_{10}$ coefficient is a measure of rate change over a temperature range, not a measure of the speed of adjustment to external cues."
+        },
+        {
+          "text": "The rhythm is highly sensitive to metabolic fluctuations.",
+          "isCorrect": false,
+          "rationale": "Sensitivity to metabolic changes would typically cause a rhythm to fluctuate, whereas a $Q_{10}$ of 1 implies a steady period."
+        },
+        {
+          "text": "The rhythm exhibits temperature compensation.",
+          "isCorrect": true,
+          "rationale": "Temperature compensation ensures that the clock's period remains stable despite the changing kinetics of molecular processes at different physiological temperatures."
+        },
+        {
+          "text": "The rhythm has ceased functioning due to thermal stress.",
+          "isCorrect": false,
+          "rationale": "A coefficient of 1 indicates that the process is successfully maintaining its rate, not that it has stopped."
+        }
+      ],
+      "hint": "This value relates to how the clock maintains accuracy despite environmental heat changes."
+    },
+    {
+      "question": "Jean-Jacques d'Ortous de Mairan's 1729 experiment with the plant $Mimosa pudica$ was significant because it demonstrated that:",
+      "answerOptions": [
+        {
+          "text": "Plants require sunlight to generate energy for leaf movement.",
+          "isCorrect": false,
+          "rationale": "While plants do need light for photosynthesis, the experiment was designed to observe behavior in the absence of light."
+        },
+        {
+          "text": "Leaf opening and closing patterns continued even in total darkness.",
+          "isCorrect": true,
+          "rationale": "By showing that the patterns persisted without light, de Mairan provided the first evidence of an internal, endogenous clock."
+        },
+        {
+          "text": "The plant's rhythm was immediately reset by changes in ambient temperature.",
+          "isCorrect": false,
+          "rationale": "The experiment focused on the persistence of the rhythm in constant darkness rather than its reaction to temperature shifts."
+        },
+        {
+          "text": "Circadian rhythms in plants are strictly dependent on soil nutrients.",
+          "isCorrect": false,
+          "rationale": "The study was an investigation of temporal organization and light stimuli, not nutrition."
+        }
+      ],
+      "hint": "Think about the results of keeping a 'sleepy' plant in a dark room."
+    },
+    {
+      "question": "Recent hypotheses suggest that circadian rhythms evolved in all three domains of life as a response to which major historical environmental event?",
+      "answerOptions": [
+        {
+          "text": "The development of the Earth's magnetic field.",
+          "isCorrect": false,
+          "rationale": "There is little evidence linking the origin of circadian oscillators specifically to magnetoreception."
+        },
+        {
+          "text": "The Great Oxidation Event approximately 2.3 billion years ago.",
+          "isCorrect": true,
+          "rationale": "The rise in oxygen levels necessitated the evolution of rhythms to anticipate and counteract damaging daily redox reactions."
+        },
+        {
+          "text": "The first major ice age during the Cryogenian period.",
+          "isCorrect": false,
+          "rationale": "While temperature affects rhythms, the fundamental driver for the cellular clock is currently theorized to be oxygen levels and redox cycles."
+        },
+        {
+          "text": "The emergence of multicellular animals in the Cambrian explosion.",
+          "isCorrect": false,
+          "rationale": "Circadian rhythms are present in simpler prokaryotic life forms that predate multicellular animals by billions of years."
+        }
+      ],
+      "hint": "This event involved a dramatic shift in the Earth's atmospheric chemistry."
+    },
+    {
+      "question": "In the central oscillator of the cyanobacteria *Synechococcus elongatus*, which three proteins are sufficient to reconstitute a circadian rhythm $in$ $vitro$?",
+      "answerOptions": [
+        {
+          "text": "PER, TIM, and DBT",
+          "isCorrect": false,
+          "rationale": "These proteins are components of the $Drosophila$ (fruit fly) circadian system, not the bacterial system."
+        },
+        {
+          "text": "CCA1, LHY, and TOC1",
+          "isCorrect": false,
+          "rationale": "These are the primary components of the transcription-translation feedback loops in plants."
+        },
+        {
+          "text": "KaiA, KaiB, and KaiC",
+          "isCorrect": true,
+          "rationale": "These three proteins can sustain a rhythmic cycle of phosphorylation for several days when provided with ATP."
+        },
+        {
+          "text": "CLOCK, BMAL1, and PER2",
+          "isCorrect": false,
+          "rationale": "These proteins are key regulators found in the mammalian circadian clock system."
+        }
+      ],
+      "hint": "The names of these proteins are derived from a Japanese word for 'cycle' or 'time'."
+    },
+    {
+      "question": "The 'master clock' in mammals is located in which specific region of the brain?",
+      "answerOptions": [
+        {
+          "text": "The pineal gland in the epithalamus.",
+          "isCorrect": false,
+          "rationale": "The pineal gland receives signals from the master clock to secrete melatonin but is not the location of the master clock itself."
+        },
+        {
+          "text": "The suprachiasmatic nucleus (SCN) within the hypothalamus.",
+          "isCorrect": true,
+          "rationale": "The SCN serves as the primary pacemaker, coordinating rhythms throughout the body based on light input from the retina."
+        },
+        {
+          "text": "The optic lobe near the visual cortex.",
+          "isCorrect": false,
+          "rationale": "In organisms like the fruit fly, the optic lobe is involved, but in mammals, the master clock is more centrally located in the hypothalamus."
+        },
+        {
+          "text": "The adrenal gland above the kidneys.",
+          "isCorrect": false,
+          "rationale": "The adrenal gland contains peripheral oscillators but is not the master clock that synchronizes the rest of the body."
+        }
+      ],
+      "hint": "This cluster of cells is situated directly above the optic chiasm."
+    },
+    {
+      "question": "Which specialized cells in the retina are responsible for sending light signals directly to the mammalian master clock for entrainment?",
+      "answerOptions": [
+        {
+          "text": "Rod cells used for low-light vision.",
+          "isCorrect": false,
+          "rationale": "Rod cells provide visual input but are not the primary pathway for the entrainment of the circadian clock."
+        },
+        {
+          "text": "Cone cells used for color perception.",
+          "isCorrect": false,
+          "rationale": "Cone cells are part of the image-forming visual system and are distinct from the cells that regulate the biological clock."
+        },
+        {
+          "text": "Photosensitive ganglion cells containing melanopsin.",
+          "isCorrect": true,
+          "rationale": "These specialized cells detect light intensity and project directly to the SCN via the retinohypothalamic tract."
+        },
+        {
+          "text": "Bipolar cells that relay signals from the fovea.",
+          "isCorrect": false,
+          "rationale": "Bipolar cells act as intermediaries in the visual pathway rather than direct sensors for circadian entrainment."
+        }
+      ],
+      "hint": "These cells utilize a photopigment that is different from those used for traditional sight."
+    },
+    {
+      "question": "In the $Drosophila$ circadian system, what is the primary role of the protein $doubletime$ (DBT)?",
+      "answerOptions": [
+        {
+          "text": "It acts as a transcription factor to activate the $per$ gene.",
+          "isCorrect": false,
+          "rationale": "Transcriptional activation is performed by the CLK/CYC dimer, not by DBT."
+        },
+        {
+          "text": "It degrades the TIM protein in response to morning light.",
+          "isCorrect": false,
+          "rationale": "TIM degradation in the morning is primarily triggered by the activation of the $cry$ gene and its protein."
+        },
+        {
+          "text": "It causes the phosphorylation and turnover of monomeric PER proteins.",
+          "isCorrect": true,
+          "rationale": "DBT limits the accumulation of PER during the day by promoting its degradation until it can be stabilized by binding to TIM."
+        },
+        {
+          "text": "It facilitates the migration of the PER/TIM dimer into the cytoplasm.",
+          "isCorrect": false,
+          "rationale": "DBT's role is focused on the stability and degradation of PER rather than the transport of the dimer out of the nucleus."
+        }
+      ],
+      "hint": "This protein regulates the clock by managing the levels of a key protein before it can pair up."
+    },
+    {
+      "question": "The plant circadian clock has been recently reframed as a 'repressilator' model. What does this indicate about its core mechanism?",
+      "answerOptions": [
+        {
+          "text": "The clock is driven by three components that sequentially inhibit each other.",
+          "isCorrect": true,
+          "rationale": "Unlike the positive/negative loops in mammals, the plant model suggests components like TOC1 act as repressors for all other loop members."
+        },
+        {
+          "text": "The clock relies on a single master gene that represses all metabolic activity at night.",
+          "isCorrect": false,
+          "rationale": "The model involves multiple interacting loops and genes rather than a single master repressor."
+        },
+        {
+          "text": "Light acts as a repressor that completely stops the clock during the day.",
+          "isCorrect": false,
+          "rationale": "Light is a synchronizer (zeitgeber) that entrains the clock rather than an inhibitor that halts its oscillation."
+        },
+        {
+          "text": "The clock is solely dependent on the repression of chlorophyll production.",
+          "isCorrect": false,
+          "rationale": "Chlorophyll production is a behavior regulated by the clock, not the fundamental mechanism of the clock itself."
+        }
+      ],
+      "hint": "Consider a system where the 'off' switch for one gene is the 'on' trigger for the next in a circular fashion."
+    },
+    {
+      "question": "Why do researchers believe some Arctic animals, such as reindeer on Svalbard, lack behavioral circadian rhythms during the peak of summer and winter?",
+      "answerOptions": [
+        {
+          "text": "The extreme cold temperatures freeze the molecular oscillators.",
+          "isCorrect": false,
+          "rationale": "Circadian rhythms exhibit temperature compensation, allowing them to function across a range of physiological temperatures."
+        },
+        {
+          "text": "They lack the $per$ gene found in other mammals.",
+          "isCorrect": false,
+          "rationale": "These mammals possess the standard genetic machinery but do not express the behavioral rhythm under certain environmental conditions."
+        },
+        {
+          "text": "The environment lacks daily sunrises and sunsets to act as zeitgebers.",
+          "isCorrect": true,
+          "rationale": "Without the light-dark cycle of the sun crossing the horizon, these animals may stop showing rhythmic activity patterns."
+        },
+        {
+          "text": "Their metabolic rate is too low to sustain a 24-hour cycle.",
+          "isCorrect": false,
+          "rationale": "Rhythmicity is a regulator of metabolism, and metabolic rate itself does not preclude the existence of a circadian clock."
+        }
+      ],
+      "hint": "Look for a reason related to the lack of a 'time giver' in the environment."
+    },
+    {
+      "question": "When measuring the human circadian rhythm, which of the following is considered a more stable and reliable marker than the core body temperature minimum?",
+      "answerOptions": [
+        {
+          "text": "The time of the first meal of the day.",
+          "isCorrect": false,
+          "rationale": "Meal timing is a behavioral choice and is not as stable a biological marker as hormonal offsets."
+        },
+        {
+          "text": "Melatonin offset (the decline of melatonin levels).",
+          "isCorrect": true,
+          "rationale": "Research suggests that the declining phase and offset of melatonin correlate more strongly with sleep patterns than temperature minimums."
+        },
+        {
+          "text": "The peak of heart rate shortly after waking.",
+          "isCorrect": false,
+          "rationale": "While heart rate follows a rhythm, it is easily influenced by activity and stress, making it less reliable than hormonal markers."
+        },
+        {
+          "text": "The total duration of Rapid Eye Movement (REM) sleep.",
+          "isCorrect": false,
+          "rationale": "REM sleep is part of the sleep architecture but does not serve as a precise phase marker for the circadian period."
+        }
+      ],
+      "hint": "Think about the hormonal change that signals the transition from night to day."
+    },
+    {
+      "question": "In the context of indoor lighting, why does blue LED light suppress melatonin production significantly more than high-pressure sodium (HPS) light?",
+      "answerOptions": [
+        {
+          "text": "Blue light has a lower frequency that bypasses the SCN.",
+          "isCorrect": false,
+          "rationale": "Blue light actually has a higher frequency (shorter wavelength) and specifically targets the SCN-entrainment pathway."
+        },
+        {
+          "text": "The orange-yellow tint of HPS light is misinterpreted as daylight by the brain.",
+          "isCorrect": false,
+          "rationale": "HPS light has less effect on melatonin because it lacks the specific short-wavelength light that triggers the circadian system."
+        },
+        {
+          "text": "Circadian photoreceptors are most sensitive to the short-wavelength light found in blue LEDs.",
+          "isCorrect": true,
+          "rationale": "Melanopsin-containing ganglion cells are specifically tuned to blue light, leading to five times more melatonin suppression compared to HPS light."
+        },
+        {
+          "text": "LED lights flicker at a rate that disrupts the pineal gland's electrical activity.",
+          "isCorrect": false,
+          "rationale": "Suppression is caused by the spectral composition (color) of the light rather than any flickering effect."
+        }
+      ],
+      "hint": "Recall which part of the light spectrum the biological clock 'sees' most clearly."
+    },
+    {
+      "question": "The study of 'chronotherapeutics' suggests that medical treatments, such as for hypertension, are most effective when:",
+      "answerOptions": [
+        {
+          "text": "Administered in small doses continuously throughout a 48-hour period.",
+          "isCorrect": false,
+          "rationale": "Continuous dosing ignores the body's natural peaks and troughs in drug sensitivity and disease symptoms."
+        },
+        {
+          "text": "Timed to coordinate with the patient's internal biological clock.",
+          "isCorrect": true,
+          "rationale": "Timing treatment with circadian rhythms can maximize efficacy and significantly reduce toxicity or adverse reactions."
+        },
+        {
+          "text": "Taken immediately before a power-nap to improve drug absorption.",
+          "isCorrect": false,
+          "rationale": "While naps can reduce stress, the efficacy of chronotherapeutics relies on the alignment with long-term 24-hour cycles."
+        },
+        {
+          "text": "Aligned with the exact moment of 'metabolic dawn' in plants.",
+          "isCorrect": false,
+          "rationale": "Chronotherapeutics in humans is based on human circadian markers, not plant-specific metabolic hypotheses."
+        }
+      ],
+      "hint": "This field focuses on 'when' a drug is given rather than just 'how much'."
+    },
+    {
+      "question": "How does the Eastern North American monarch butterfly navigate during its fall migration to Mexico?",
+      "answerOptions": [
+        {
+          "text": "By following the magnetic fields of the Earth using iron deposits in their wings.",
+          "isCorrect": false,
+          "rationale": "While some animals use magnetic fields, monarchs specifically use a sun-based system for their long-distance migration."
+        },
+        {
+          "text": "Using a time-compensated sun compass dependent on a circadian clock in their antennae.",
+          "isCorrect": true,
+          "rationale": "The antennae house a clock that allows the butterfly to adjust its heading as the sun's position changes throughout the day."
+        },
+        {
+          "text": "By following pheromone trails left by previous generations of butterflies.",
+          "isCorrect": false,
+          "rationale": "Monarch migration is an instinctive journey performed by individuals that have never made the trip before, ruling out trail-following."
+        },
+        {
+          "text": "Relying on temperature gradients between the northern and southern United States.",
+          "isCorrect": false,
+          "rationale": "Temperature affects activity levels, but navigation requires a more precise directional system like the sun compass."
+        }
+      ],
+      "hint": "The mechanism involves combining the position of the sun with an internal sense of time."
+    },
+    {
+      "question": "What genetic factor has been identified as a cause of Familial Advanced Sleep Phase Syndrome (FASPS) in humans?",
+      "answerOptions": [
+        {
+          "text": "A complete deletion of the $clock$ gene on the X chromosome.",
+          "isCorrect": false,
+          "rationale": "Deletion of $clock$ in some models does not lead to a loss of rhythm, and FASPS is specifically linked to a protein mutation."
+        },
+        {
+          "text": "A single amino acid change ($S662 \\rightarrow G$) in the human PER2 protein.",
+          "isCorrect": true,
+          "rationale": "This specific mutation causes affected individuals to be extreme 'morning larks' with a 4-hour advancement in their sleep cycle."
+        },
+        {
+          "text": "The inability of the pineal gland to produce any melatonin during the night.",
+          "isCorrect": false,
+          "rationale": "FASPS involves a shift in the timing of the rhythm rather than the total absence of a hormone."
+        },
+        {
+          "text": "An over-expression of the $cryptochrome$ gene in retinal ganglion cells.",
+          "isCorrect": false,
+          "rationale": "While cryptochromes are part of the clock, the genetic characterization of FASPS focuses on the PER2 phosphorylation site."
+        }
+      ],
+      "hint": "It involves a tiny alteration in a protein named after the 'period' it regulates."
+    }
+  ]
+}

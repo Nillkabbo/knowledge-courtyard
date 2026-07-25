@@ -1,0 +1,349 @@
+{
+  "title": "Neural Flashcards",
+  "cards": [
+    {
+      "front": "What is the primary role of an activation function in an artificial neural network?",
+      "back": "It calculates the output of a node based on its individual inputs and their weights."
+    },
+    {
+      "front": "According to the Universal Approximation Theorem, what property must an activation function have for a two-layer network to be a universal function approximator?",
+      "back": "The activation function must be non-linear."
+    },
+    {
+      "front": "What happens to a multilayer neural network if it only uses the identity activation function?",
+      "back": "The entire network becomes equivalent to a single-layer model."
+    },
+    {
+      "front": "Why does a finite range in an activation function contribute to stable gradient-based training?",
+      "back": "Pattern presentations significantly affect only a limited set of weights."
+    },
+    {
+      "front": "What is the primary training efficiency advantage of using an activation function with an infinite range?",
+      "back": "Pattern presentations significantly affect most of the weights."
+    },
+    {
+      "front": "Why is the property of being continuously differentiable desirable for activation functions?",
+      "back": "It enables the use of gradient-based optimization methods."
+    },
+    {
+      "front": "Why can gradient-based optimization methods make no progress with the binary step activation function?",
+      "back": "The function is non-differentiable at 0 and has a derivative of 0 everywhere else."
+    },
+    {
+      "front": "Under what condition is an activation function $f$ considered 'saturating'?",
+      "back": "It is saturating if $\\lim_{|v| \\to \\infty} |\\nabla f(v)| = 0$."
+    },
+    {
+      "front": "Under what condition is an activation function $f$ considered 'nonsaturating'?",
+      "back": "It is nonsaturating if $\\lim_{|v| \\to \\infty} |\\nabla f(v)| \\ne 0$."
+    },
+    {
+      "front": "Why are non-saturating activation functions like ReLU often preferred over saturating ones?",
+      "back": "They are less likely to suffer from the vanishing gradient problem."
+    },
+    {
+      "front": "Which category of activation functions acts as a multivariate function on a linear combination of input variables?",
+      "back": "Ridge functions."
+    },
+    {
+      "front": "In biologically inspired neural networks, what does the activation function typically represent?",
+      "back": "The rate of action potential firing in the cell."
+    },
+    {
+      "front": "What biological limitation motivates the use of sigmoid activation functions?",
+      "back": "Neurons cannot fire faster than a certain maximum rate."
+    },
+    {
+      "front": "What type of activation functions are primarily used in RBF networks?",
+      "back": "Radial basis functions."
+    },
+    {
+      "front": "Formula: Gaussian radial activation function.",
+      "back": "$\\phi(v) = \\exp(-\\frac{||v-c||^{2}}{2\\sigma^{2}})$."
+    },
+    {
+      "front": "Where are folding activation functions, such as max or mean, most extensively used?",
+      "back": "In the pooling layers of convolutional neural networks."
+    },
+    {
+      "front": "Which folding activation function is commonly used in the output layers of multiclass classification networks?",
+      "back": "The softmax activation function."
+    },
+    {
+      "front": "Range: Logistic (sigmoid) activation function.",
+      "back": "$(0, 1)$."
+    },
+    {
+      "front": "Derivative: Hyperbolic tangent (tanh) activation function.",
+      "back": "$g'(x) = 1 - g(x)^{2}$."
+    },
+    {
+      "front": "Formula: Rectified Linear Unit (ReLU).",
+      "back": "$g(x) = \\max(0, x)$."
+    },
+    {
+      "front": "Which smooth version of the ReLU was used in the 2018 BERT language model?",
+      "back": "The Gaussian Error Linear Unit (GELU)."
+    },
+    {
+      "front": "Why is the softplus activation function suitable for predicting variances in variational autoencoders?",
+      "back": "It has a strictly positive range $(0, \\infty)$."
+    },
+    {
+      "front": "What is the difference between the Leaky ReLU and the Parametric ReLU (PReLU)?",
+      "back": "Leaky ReLU uses a fixed small slope (0.01) for negative values, while PReLU treats the slope as a learnable parameter."
+    },
+    {
+      "front": "In quantum neural networks, how is non-linearity implemented without measuring the output of each perceptron?",
+      "back": "By creating a Taylor series approximation of the argument using quantum circuits."
+    },
+    {
+      "front": "What is the primary purpose of an autoencoder?",
+      "back": "To learn efficient codings of unlabeled data in an unsupervised manner."
+    },
+    {
+      "front": "What are the two main functional components of an autoencoder?",
+      "back": "The encoding function and the decoding function."
+    },
+    {
+      "front": "Term: Latent variable (in the context of autoencoders).",
+      "back": "The encoded representation produced by the encoder, also known as the code."
+    },
+    {
+      "front": "What determines the 'quality' of an autoencoder during the training process?",
+      "back": "A reconstruction quality function that measures how much the decoded message differs from the original input."
+    },
+    {
+      "front": "Which optimization technique is most commonly used to train an autoencoder?",
+      "back": "Gradient descent."
+    },
+    {
+      "front": "Concept: Undercomplete autoencoder.",
+      "back": "An autoencoder where the code space has fewer dimensions than the input message space."
+    },
+    {
+      "front": "What is the risk of using an overcomplete autoencoder where the hidden units have excessive capacity?",
+      "back": "The model may simply learn the identity function, making it useless for feature learning."
+    },
+    {
+      "front": "How does the latent space of a Variational Autoencoder (VAE) differ from a standard autoencoder?",
+      "back": "The latent space in a VAE is composed of a mixture of distributions rather than fixed vectors."
+    },
+    {
+      "front": "What is the 'sparse coding hypothesis' that inspired sparse autoencoders?",
+      "back": "A hypothesis in neuroscience suggesting that brain cells utilize efficient, sparse representations of information."
+    },
+    {
+      "front": "How does a k-sparse autoencoder enforce sparsity in the latent layer?",
+      "back": "By clamping all but the highest-$k$ activations to zero."
+    },
+    {
+      "front": "In a regularized sparse autoencoder, what function is typically used to measure the difference between desired and actual sparsity?",
+      "back": "The Kullback-Leibler (KL) divergence."
+    },
+    {
+      "front": "What is the objective of a Denoising Autoencoder (DAE)?",
+      "back": "To recover the original, noise-free input from a version that has been intentionally corrupted."
+    },
+    {
+      "front": "Name three common types of noise used to train Denoising Autoencoders.",
+      "back": "Gaussian noise, masking noise, and salt-and-pepper noise."
+    },
+    {
+      "front": "How is the contractive regularization loss in a Contractive Autoencoder (CAE) defined?",
+      "back": "As the expected square of the Frobenius norm of the Jacobian matrix of the encoder activations."
+    },
+    {
+      "front": "What property does a low contractive regularization loss indicate in an encoder?",
+      "back": "The code is resistant to small variations or neighborhoods in the input message."
+    },
+    {
+      "front": "Which autoencoder variant uses a continuous relaxation of the categorical distribution for discrete feature selection?",
+      "back": "The concrete autoencoder."
+    },
+    {
+      "front": "What is one computational advantage of using deep autoencoders over shallow ones?",
+      "back": "Depth can exponentially reduce the computational cost of representing certain functions."
+    },
+    {
+      "front": "In Hinton's 2006 study, how were deep autoencoders initialized before fine-tuning with backpropagation?",
+      "back": "By pretraining a stack of restricted Boltzmann machines (RBMs)."
+    },
+    {
+      "front": "What does a single-layer linear autoencoder's latent space span in relation to PCA?",
+      "back": "It spans the same subspace as the first principal components found in Principal Component Analysis."
+    },
+    {
+      "front": "How is an anomaly detected using a trained autoencoder?",
+      "back": "By using the reconstruction error as an anomaly score, where high error indicates an outlier."
+    },
+    {
+      "front": "Why is setting the threshold for anomaly detection inherently difficult when using empirical quantiles?",
+      "back": "Variance in the quantile estimate grows significantly when considering extreme quantiles."
+    },
+    {
+      "front": "In the context of information retrieval, what is semantic hashing?",
+      "back": "Using an autoencoder to produce low-dimensional binary codes that allow database entries to be stored in a hash table."
+    },
+    {
+      "front": "How do autoencoders compete with JPEG 2000 in image processing?",
+      "back": "They can be used for lossy image compression, sometimes outperforming traditional approaches."
+    },
+    {
+      "front": "What is the primary difference between traditional autoencoders and those used in Neural Machine Translation (NMT)?",
+      "back": "In NMT, the output is generated in a different language than the input sequence."
+    },
+    {
+      "front": "Why are autoencoders useful in communication systems?",
+      "back": "They help encode data into representations that are resilient to channel impairments and noise."
+    },
+    {
+      "front": "Which activation function has the formula $g(x) = \\frac{x}{1+e^{-x}}$?",
+      "back": "The Sigmoid Linear Unit (SiLU), also known as Swish-1."
+    },
+    {
+      "front": "What is the derivative of the Identity activation function?",
+      "back": "$g'(x) = 1$."
+    },
+    {
+      "front": "Order of continuity: Rectified Linear Unit (ReLU).",
+      "back": "$C^{0}$."
+    },
+    {
+      "front": "Which activation function is non-differentiable at 0 and has the derivative $g'(x) = 0$ for $x < 0$ and $g'(x) = 1$ for $x > 0$?",
+      "back": "The Rectified Linear Unit (ReLU)."
+    },
+    {
+      "front": "The Minimum Description Length (MDL) principle suggests the best model for a dataset is the one that provides what?",
+      "back": "The shortest combined encoding of the model and the data."
+    },
+    {
+      "front": "What specific regularization strategy is used in Contractive Autoencoders to make features resist infinitesimal input perturbations?",
+      "back": "Penalizing the Frobenius norm of the encoder's Jacobian matrix."
+    },
+    {
+      "front": "Process: Training a Denoising Autoencoder.",
+      "back": "Intentionally corrupt the input, pass it through the autoencoder, and minimize the reconstruction loss against the clean original input."
+    },
+    {
+      "front": "What is the range of the Softsign activation function?",
+      "back": "$(-1, 1)$."
+    },
+    {
+      "front": "Which activation function uses the Gaussian error function ($\text{erf}$) in its formula?",
+      "back": "The Gaussian Error Linear Unit (GELU)."
+    },
+    {
+      "front": "Formula: Exponential Linear Unit (ELU) for $x \\le 0$.",
+      "back": "$g(x) = \\alpha(e^{x} - 1)$."
+    },
+    {
+      "front": "Under what condition is the ELU activation function $C^{1}$ continuous?",
+      "back": "When the parameter $\\alpha = 1$."
+    },
+    {
+      "front": "Which activation function is defined as $\\max_{i} x_{i}$ over a set of inputs?",
+      "back": "Maxout."
+    },
+    {
+      "front": "What is the code length component ($L_{\\text{code}}$) in an MDL-AE's objective function?",
+      "back": "The size or length of the compressed latent representation."
+    },
+    {
+      "front": "Why is it suggested that joint training for deep autoencoders depends heavily on regularization strategies?",
+      "back": "Without proper regularization, the model may fail to learn representative features for tasks like classification."
+    },
+    {
+      "front": "What is a 'Dirac measure' in the context of training an autoencoder on an empirical distribution?",
+      "back": "A point mass used to represent individual data points in the reference probability distribution."
+    },
+    {
+      "front": "Term: Undercomplete autoencoder (Interpretation).",
+      "back": "A model that performs data compression or dimensionality reduction by forcing a bottleneck."
+    },
+    {
+      "front": "What is the 'Frobenius norm' used for in Contractive Autoencoders?",
+      "back": "To measure the magnitude of the Jacobian matrix of the encoder."
+    },
+    {
+      "front": "In image processing, what is the 'anomaly score' typically based on?",
+      "back": "The reconstruction error between the original image and its autoencoded version."
+    },
+    {
+      "front": "How can an autoencoder be used to generate new data similar to the input data?",
+      "back": "By feeding the decoder arbitrary codes from the latent space."
+    },
+    {
+      "front": "What is the relationship between a single-layer linear autoencoder and Principal Component Analysis?",
+      "back": "The weights of the autoencoder span the same subspace as the principal components."
+    },
+    {
+      "front": "Which activation function is defined by the formula $g(x) = \\ln(1 + e^{x})$?",
+      "back": "Softplus."
+    },
+    {
+      "front": "Why might an infinite range activation function require a smaller learning rate during training?",
+      "back": "Because pattern presentations significantly affect most of the weights, causing larger potential updates."
+    },
+    {
+      "front": "What is the primary goal of the 'encoder' family of functions $E_{\\phi}$?",
+      "back": "To map a message from the input space $X$ to the code space $Z$."
+    },
+    {
+      "front": "What is the primary goal of the 'decoder' family of functions $D_{\\theta}$?",
+      "back": "To reconstruct the original message from the code space $Z$ back into the space $X$."
+    },
+    {
+      "front": "Concept: Overcomplete autoencoder.",
+      "back": "An autoencoder where the hidden layer or code space has more dimensions than the input space."
+    },
+    {
+      "front": "How does the 'k-sparse function' $f_{k}$ handle backpropagation?",
+      "back": "The gradient is set to 0 for non-top-k entries and preserved for the top-k entries."
+    },
+    {
+      "front": "In sparse autoencoders, what does the weight $w_{k}$ represent in the sparsity loss function?",
+      "back": "How much to enforce the sparsity constraint for a specific layer $k$."
+    },
+    {
+      "front": "Which noise type randomly sets a fraction of input entries to their minimum or maximum value?",
+      "back": "Salt-and-pepper noise."
+    },
+    {
+      "front": "Which autoencoder variant is considered the infinitesimal limit of the Denoising Autoencoder?",
+      "back": "The Contractive Autoencoder (CAE)."
+    },
+    {
+      "front": "What is the 'reconstruction error' in the context of an MDL-AE?",
+      "back": "The error or mismatch between the original data and the data reconstructed by the decoder."
+    },
+    {
+      "front": "How does depth in an autoencoder affect the amount of training data needed to learn certain functions?",
+      "back": "Depth can exponentially decrease the amount of training data required."
+    },
+    {
+      "front": "What was the result of using a 30-neuron bottleneck in Hinton's 2006 deep autoencoder study?",
+      "back": "It achieved a smaller reconstruction error than the first 30 components of PCA."
+    },
+    {
+      "front": "Why can autoencoders learn more powerful generalizations than PCA?",
+      "back": "Because of their non-linearity."
+    },
+    {
+      "front": "What is a 'hash table' used for in the context of semantic hashing?",
+      "back": "To map binary code vectors produced by an autoencoder to their corresponding database entries."
+    },
+    {
+      "front": "How does reconstruction performance typically change when an autoencoder encounters an anomaly?",
+      "back": "The reconstruction performance usually worsens, resulting in a higher error."
+    },
+    {
+      "front": "Which autoencoder application involves improving the resolution of medical images?",
+      "back": "Super-resolution."
+    },
+    {
+      "front": "Which neural network architecture has largely replaced autoencoders for modern machine translation?",
+      "back": "Transformer networks."
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "name": "Artificial Intelligence Modalities",
+  "children": [
+    {
+      "name": "Computer Vision",
+      "children": [
+        {
+          "name": "Typical Tasks",
+          "children": [
+            {
+              "name": "Recognition & Detection"
+            },
+            {
+              "name": "Motion Analysis"
+            },
+            {
+              "name": "Scene Reconstruction"
+            },
+            {
+              "name": "Image Restoration"
+            }
+          ]
+        },
+        {
+          "name": "Applications",
+          "children": [
+            {
+              "name": "Medical Imaging"
+            },
+            {
+              "name": "Machine Vision"
+            },
+            {
+              "name": "Autonomous Vehicles"
+            },
+            {
+              "name": "Military & Defense"
+            },
+            {
+              "name": "Tactile Feedback"
+            }
+          ]
+        },
+        {
+          "name": "System Methods",
+          "children": [
+            {
+              "name": "Image Acquisition"
+            },
+            {
+              "name": "Pre-processing"
+            },
+            {
+              "name": "Feature Extraction"
+            },
+            {
+              "name": "Decision Making"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Speech Recognition",
+      "children": [
+        {
+          "name": "Core Technologies",
+          "children": [
+            {
+              "name": "Hidden Markov Models"
+            },
+            {
+              "name": "Deep Learning & Neural Nets"
+            },
+            {
+              "name": "Long Short-Term Memory"
+            },
+            {
+              "name": "End-to-End Learning"
+            }
+          ]
+        },
+        {
+          "name": "Key Applications",
+          "children": [
+            {
+              "name": "Voice User Interfaces"
+            },
+            {
+              "name": "Medical Documentation"
+            },
+            {
+              "name": "Air Traffic Control"
+            },
+            {
+              "name": "Accessibility Tools"
+            },
+            {
+              "name": "In-car Systems"
+            }
+          ]
+        },
+        {
+          "name": "Performance Factors",
+          "children": [
+            {
+              "name": "Word Error Rate"
+            },
+            {
+              "name": "Speaker Independence"
+            },
+            {
+              "name": "Vocabulary Size"
+            },
+            {
+              "name": "Environmental Noise"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Image Generation (DALL-E)",
+      "children": [
+        {
+          "name": "Model Components",
+          "children": [
+            {
+              "name": "Discrete VAE"
+            },
+            {
+              "name": "Transformer Model"
+            },
+            {
+              "name": "CLIP Encoders"
+            }
+          ]
+        },
+        {
+          "name": "Features",
+          "children": [
+            {
+              "name": "Text-to-Image Generation"
+            },
+            {
+              "name": "Image Modification"
+            },
+            {
+              "name": "C2PA Watermarking"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

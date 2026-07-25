@@ -1,0 +1,265 @@
+{
+  "title": "Evaluation Quiz",
+  "questions": [
+    {
+      "question": "In the context of binary classification, why might a model with $99.9\\%$ accuracy still be considered poor for identifying rare events?",
+      "answerOptions": [
+        {
+          "text": "The model likely overfits the training data by ignoring the majority class.",
+          "isCorrect": false,
+          "rationale": "In imbalanced scenarios, models usually overfit the majority class rather than ignoring it."
+        },
+        {
+          "text": "Accuracy does not reflect performance on the minority class when there is a significant class imbalance.",
+          "isCorrect": true,
+          "rationale": "If a specific category is dominant in the dataset, a model can achieve high accuracy simply by predicting that dominant class every time, regardless of its ability to find the rare class."
+        },
+        {
+          "text": "High accuracy in imbalanced sets indicates that the precision and recall are perfectly aligned.",
+          "isCorrect": false,
+          "rationale": "High accuracy in these cases often hides extremely low precision or recall for the target class."
+        },
+        {
+          "text": "The F1 score automatically decreases as the accuracy of a simple model increases.",
+          "isCorrect": false,
+          "rationale": "The F1 score depends on the balance of precision and recall, not the specific value of accuracy itself."
+        }
+      ],
+      "hint": "Consider what happens to the metric if a model always predicts the most common outcome."
+    },
+    {
+      "question": "According to Goodhart's law, what happens to a statistical regularity when it is used for control or policy purposes?",
+      "answerOptions": [
+        {
+          "text": "The regularity becomes more stable as more pressure is applied to the system.",
+          "isCorrect": false,
+          "rationale": "Pressure for control purposes is what causes the statistical relationship to break down."
+        },
+        {
+          "text": "It tends to collapse because individuals begin to game the measure used as a target.",
+          "isCorrect": true,
+          "rationale": "When a measure becomes a target, people optimize their behavior to meet that specific metric rather than the underlying goal, making the measure useless as an indicator."
+        },
+        {
+          "text": "The measure becomes a 'gold standard' that is resistant to unintended consequences.",
+          "isCorrect": false,
+          "rationale": "Goodhart's law is actually considered a corollary of the law of unintended consequences."
+        },
+        {
+          "text": "It improves the accuracy of the metric by forcing agents to behave more predictably.",
+          "isCorrect": false,
+          "rationale": "Forcing behavior toward a metric actually degrades the metric's reliability as an indicator of actual performance."
+        }
+      ],
+      "hint": "Think about how people might change their behavior if they know exactly how they are being measured."
+    },
+    {
+      "question": "In machine learning, how is 'ground truth' best defined according to the provided text?",
+      "answerOptions": [
+        {
+          "text": "A set of labels that is objectively and universally correct in all possible contexts.",
+          "isCorrect": false,
+          "rationale": "The material notes that ground truth in ML is not necessarily objectively correct and may depend on subjective human judgment."
+        },
+        {
+          "text": "The ideal expected result used to prove or disprove research hypotheses.",
+          "isCorrect": true,
+          "rationale": "Ground truth serves as the reference point for evaluating model performance, whether it is objective data or human-labeled judgments."
+        },
+        {
+          "text": "Information provided solely by statistical inference rather than direct observation.",
+          "isCorrect": false,
+          "rationale": "Ground truth is specifically contrasted with inference, being derived from direct observation or measurement."
+        },
+        {
+          "text": "The results produced by the model after it has been fully trained on unlabeled data.",
+          "isCorrect": false,
+          "rationale": "The model's output is what is being tested against the ground truth, not the ground truth itself."
+        }
+      ],
+      "hint": "Focus on the role this data plays during the validation of a model's output."
+    },
+    {
+      "question": "When using an LLM-as-judge for evaluation, what is 'verbosity bias'?",
+      "answerOptions": [
+        {
+          "text": "The tendency of the judge to prefer responses that are factually dense but short.",
+          "isCorrect": false,
+          "rationale": "This bias actually refers to the length of the response, not just the density of facts."
+        },
+        {
+          "text": "The tendency of the judging model to give higher scores to longer answers.",
+          "isCorrect": true,
+          "rationale": "The material explains that judges may assume longer answers are more 'thoughtful' or better, even if a shorter answer is more effective."
+        },
+        {
+          "text": "The failure of the model to follow instructions regarding specific output formats.",
+          "isCorrect": false,
+          "rationale": "This is a failure of 'instruction following' rather than a bias during evaluation."
+        },
+        {
+          "text": "The bias where a judge model prefers outputs from its own model family.",
+          "isCorrect": false,
+          "rationale": "This describes 'self-preference bias,' which is distinct from a preference for length."
+        }
+      ],
+      "hint": "Consider how the sheer volume of text might affect an automated rater."
+    },
+    {
+      "question": "Which metric is specifically designed to measure if an LLM's answer is grounded in facts provided by a source document?",
+      "answerOptions": [
+        {
+          "text": "Relevance",
+          "isCorrect": false,
+          "rationale": "Relevance measures if the answer addresses the user's question, not necessarily if it is factually grounded."
+        },
+        {
+          "text": "Coherence",
+          "isCorrect": false,
+          "rationale": "Coherence evaluates how well-written and logical the structure of the answer is."
+        },
+        {
+          "text": "Faithfulness",
+          "isCorrect": true,
+          "rationale": "Faithfulness, often used in RAG evaluation, checks if the claims in the model's output are supported by the source context."
+        },
+        {
+          "text": "Fluency",
+          "isCorrect": false,
+          "rationale": "Fluency measures how natural or 'human-like' the language of the output is."
+        }
+      ],
+      "hint": "Look for the term that relates to loyalty to the source material."
+    },
+    {
+      "question": "In the 'terrorist profiling' example, if a model identifies 10 actual terrorists but also wrongly fails 990 innocent people, what is its precision?",
+      "answerOptions": [
+        {
+          "text": "$99.9\\%$",
+          "isCorrect": false,
+          "rationale": "This value represents the overall accuracy of the model, not its precision."
+        },
+        {
+          "text": "$1\\%$",
+          "isCorrect": true,
+          "rationale": "Precision is calculated as True Positives divided by the sum of True Positives and False Positives: $\\frac{10}{10 + 990} = 0.01$."
+        },
+        {
+          "text": "$100\\%$",
+          "isCorrect": false,
+          "rationale": "While the model caught all terrorists (high recall), the large number of false alarms makes the precision very low."
+        },
+        {
+          "text": "$2\\%$",
+          "isCorrect": false,
+          "rationale": "This is approximately the F1 score, which is the harmonic mean of precision and recall."
+        }
+      ],
+      "hint": "Recall that precision is the ratio of correct positive predictions to the total number of positive predictions made."
+    },
+    {
+      "question": "What is the primary risk associated with 'data contamination' in standard LLM benchmarks like MMLU?",
+      "answerOptions": [
+        {
+          "text": "The benchmark data is too difficult for modern models to solve.",
+          "isCorrect": false,
+          "rationale": "The difficulty is not the issue; the issue is that models might have 'seen' the answers before the test."
+        },
+        {
+          "text": "The model may have memorized the test questions during its training phase, leading to inflated scores.",
+          "isCorrect": true,
+          "rationale": "Contamination occurs when benchmark items are included in the model's training data, so it 'recollects' rather than 'reasons' its way to the answer."
+        },
+        {
+          "text": "Human evaluators might provide biased scores when they see the model's name.",
+          "isCorrect": false,
+          "rationale": "This refers to 'branding bias' in human evaluation, not data contamination in benchmarks."
+        },
+        {
+          "text": "The benchmark might focus on too narrow a scope, such as only testing math skills.",
+          "isCorrect": false,
+          "rationale": "Narrow scope is a separate benchmark limitation from the presence of test data in training sets."
+        }
+      ],
+      "hint": "Think about what happens if a student is allowed to see the exam questions before the test begins."
+    },
+    {
+      "question": "In the evaluation of Question Answering (QA) systems, what defines a 'closed-book' task?",
+      "answerOptions": [
+        {
+          "text": "The system is restricted to a specific domain like medicine or law.",
+          "isCorrect": false,
+          "rationale": "This describes 'closed-domain' question answering."
+        },
+        {
+          "text": "The system must answer questions using only its internal weights without accessing an external context or document.",
+          "isCorrect": true,
+          "rationale": "Closed-book QA relies on the facts the model 'memorized' during training, much like a student taking a test without notes."
+        },
+        {
+          "text": "The system is given a short article and must answer questions based only on that text.",
+          "isCorrect": false,
+          "rationale": "This is a form of reading comprehension or 'open-book' style evaluation where the answer is within the provided text."
+        },
+        {
+          "text": "The system construction is based on rules rather than statistical processing.",
+          "isCorrect": false,
+          "rationale": "The 'closed-book' designation refers to the availability of external resources, not the underlying architecture of the system."
+        }
+      ],
+      "hint": "Consider the analogy of a student taking an exam without any textbooks allowed."
+    },
+    {
+      "question": "What is the purpose of 'Regression Detection' in an AI engineering pipeline?",
+      "answerOptions": [
+        {
+          "text": "To increase the latency of the model to ensure it is thinking more deeply.",
+          "isCorrect": false,
+          "rationale": "Engineering usually aims to decrease latency, not increase it."
+        },
+        {
+          "text": "To identify if new changes have caused a drop in the model's previous capabilities.",
+          "isCorrect": true,
+          "rationale": "Regression detection ensures that a fix or update in one area hasn't 'broken' performance in another, comparing new scores to a baseline."
+        },
+        {
+          "text": "To sample real user queries to detect shifts in the distribution of input data.",
+          "isCorrect": false,
+          "rationale": "This describes 'drift detection' in production monitoring, rather than regression testing against a fixed set."
+        },
+        {
+          "text": "To eliminate the need for human evaluation by using automated statistical models.",
+          "isCorrect": false,
+          "rationale": "Regression detection can use automated metrics, but it is not intended to replace human evaluation entirely."
+        }
+      ],
+      "hint": "Focus on the idea of moving 'backward' in quality after an update."
+    },
+    {
+      "question": "The 'F1 score' is mathematically defined as which of the following?",
+      "answerOptions": [
+        {
+          "text": "The arithmetic mean of precision and recall.",
+          "isCorrect": false,
+          "rationale": "An arithmetic mean would overvalue one metric if the other is zero, whereas F1 is designed to punish such imbalance."
+        },
+        {
+          "text": "The harmonic mean of precision and recall.",
+          "isCorrect": true,
+          "rationale": "F1 score is calculated as $2 \\times \\frac{\\text{precision} \\times \\text{recall}}{\\text{precision} + \\text{recall}}$, providing a balanced measure for imbalanced classes."
+        },
+        {
+          "text": "The sum of true positives and true negatives divided by the total population.",
+          "isCorrect": false,
+          "rationale": "This is the definition of simple accuracy, which can be misleading in imbalanced datasets."
+        },
+        {
+          "text": "The percentage of errors of commission subtracted from the errors of omission.",
+          "isCorrect": false,
+          "rationale": "Errors of commission and omission are related to user and producer accuracy in remote sensing, but they do not define the F1 score."
+        }
+      ],
+      "hint": "It is a specific type of average that is used when dealing with rates and ratios."
+    }
+  ]
+}

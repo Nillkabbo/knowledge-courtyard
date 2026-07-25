@@ -1,0 +1,144 @@
+{
+  "name": "Backpropagation",
+  "children": [
+    {
+      "name": "Core Definition",
+      "children": [
+        {
+          "name": "Gradient computation method"
+        },
+        {
+          "name": "Chain rule application"
+        },
+        {
+          "name": "Efficient parameter updates"
+        }
+      ]
+    },
+    {
+      "name": "Mathematical Framework",
+      "children": [
+        {
+          "name": "Components",
+          "children": [
+            {
+              "name": "Loss function (Cost)"
+            },
+            {
+              "name": "Activation functions (Sigmoid, ReLU)"
+            },
+            {
+              "name": "Weights and Biases"
+            }
+          ]
+        },
+        {
+          "name": "Process",
+          "children": [
+            {
+              "name": "Forward pass: compute activations"
+            },
+            {
+              "name": "Backward pass: propagate error"
+            },
+            {
+              "name": "Weight gradient calculation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Optimization Context",
+      "children": [
+        {
+          "name": "Stochastic Gradient Descent (SGD)"
+        },
+        {
+          "name": "Adaptive Moment Estimation (Adam)"
+        },
+        {
+          "name": "Levenberg–Marquardt algorithm"
+        }
+      ]
+    },
+    {
+      "name": "History",
+      "children": [
+        {
+          "name": "Precursors",
+          "children": [
+            {
+              "name": "Leibniz (Chain rule)"
+            },
+            {
+              "name": "Optimal control theory (1950s)"
+            },
+            {
+              "name": "Bryson & Ho (1969)"
+            }
+          ]
+        },
+        {
+          "name": "Discovery",
+          "children": [
+            {
+              "name": "Seppo Linnainmaa (1970)"
+            },
+            {
+              "name": "Paul Werbos (1974/1982)"
+            },
+            {
+              "name": "Rumelhart, Hinton & Williams (1986)"
+            }
+          ]
+        },
+        {
+          "name": "Early Successes",
+          "children": [
+            {
+              "name": "NETtalk"
+            },
+            {
+              "name": "ALVINN (Autonomous driving)"
+            },
+            {
+              "name": "LeNet (Handwriting recognition)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Limitations",
+      "children": [
+        {
+          "name": "Local minima vs Global minimum"
+        },
+        {
+          "name": "Non-convexity of error surface"
+        },
+        {
+          "name": "Requires differentiable functions"
+        }
+      ]
+    },
+    {
+      "name": "Advanced Concepts",
+      "children": [
+        {
+          "name": "Automatic differentiation"
+        },
+        {
+          "name": "Reverse mode accumulation"
+        },
+        {
+          "name": "Adjoint graph"
+        },
+        {
+          "name": "Second-order gradients (Hessian)"
+        }
+      ]
+    }
+  ]
+}

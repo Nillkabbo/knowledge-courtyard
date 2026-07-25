@@ -1,0 +1,148 @@
+{
+  "name": "Richard Feynman and Learning Techniques",
+  "children": [
+    {
+      "name": "Richard Feynman",
+      "children": [
+        {
+          "name": "Academic Career",
+          "children": [
+            {
+              "name": "Theoretical Physicist"
+            },
+            {
+              "name": "Cornell University"
+            },
+            {
+              "name": "Caltech Professor"
+            },
+            {
+              "name": "Nobel Prize 1965"
+            }
+          ]
+        },
+        {
+          "name": "Scientific Contributions",
+          "children": [
+            {
+              "name": "Quantum Electrodynamics"
+            },
+            {
+              "name": "Feynman Diagrams"
+            },
+            {
+              "name": "Path Integral Formulation"
+            },
+            {
+              "name": "Nanotechnology Pioneer"
+            },
+            {
+              "name": "Quantum Computing"
+            }
+          ]
+        },
+        {
+          "name": "Public Service",
+          "children": [
+            {
+              "name": "Manhattan Project"
+            },
+            {
+              "name": "Rogers Commission"
+            },
+            {
+              "name": "Challenger Investigation"
+            }
+          ]
+        },
+        {
+          "name": "Pedagogy",
+          "children": [
+            {
+              "name": "Feynman Lectures on Physics"
+            },
+            {
+              "name": "Clear Thinking"
+            },
+            {
+              "name": "Anti-Rote Learning"
+            },
+            {
+              "name": "Cargo Cult Science"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spaced Repetition",
+      "children": [
+        {
+          "name": "Core Concepts",
+          "children": [
+            {
+              "name": "Spacing Effect"
+            },
+            {
+              "name": "Forgetting Curve"
+            },
+            {
+              "name": "Testing Effect"
+            }
+          ]
+        },
+        {
+          "name": "History and Research",
+          "children": [
+            {
+              "name": "Hermann Ebbinghaus"
+            },
+            {
+              "name": "Cecil Alec Mace"
+            },
+            {
+              "name": "Paul Pimsleur"
+            },
+            {
+              "name": "Sebastian Leitner"
+            }
+          ]
+        },
+        {
+          "name": "Implementations",
+          "children": [
+            {
+              "name": "Leitner System"
+            },
+            {
+              "name": "Flashcards"
+            },
+            {
+              "name": "Anki"
+            },
+            {
+              "name": "SuperMemo"
+            }
+          ]
+        },
+        {
+          "name": "Applications",
+          "children": [
+            {
+              "name": "Language Learning"
+            },
+            {
+              "name": "Mathematics"
+            },
+            {
+              "name": "Dementia Treatment"
+            },
+            {
+              "name": "Procedural Skills"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

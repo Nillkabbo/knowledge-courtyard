@@ -1,0 +1,205 @@
+{
+  "name": "Large Language Models (LLM)",
+  "children": [
+    {
+      "name": "Core Components",
+      "children": [
+        {
+          "name": "Tokenization",
+          "children": [
+            {
+              "name": "BPE Algorithm"
+            },
+            {
+              "name": "Vocabulary Index"
+            },
+            {
+              "name": "Compression"
+            }
+          ]
+        },
+        {
+          "name": "Embeddings",
+          "children": [
+            {
+              "name": "Vector Space"
+            },
+            {
+              "name": "Semantic Geometry"
+            },
+            {
+              "name": "Dimensionality"
+            }
+          ]
+        },
+        {
+          "name": "Attention Mechanism",
+          "children": [
+            {
+              "name": "Self-Attention"
+            },
+            {
+              "name": "Query-Key-Value (QKV)"
+            },
+            {
+              "name": "Multi-head Attention"
+            },
+            {
+              "name": "Context Window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Architecture",
+      "children": [
+        {
+          "name": "Transformer Foundation"
+        },
+        {
+          "name": "Feed-Forward Networks"
+        },
+        {
+          "name": "Residual Connections"
+        },
+        {
+          "name": "Layer Normalization"
+        },
+        {
+          "name": "Mixture of Experts (MoE)"
+        }
+      ]
+    },
+    {
+      "name": "Training Stages",
+      "children": [
+        {
+          "name": "Pre-training",
+          "children": [
+            {
+              "name": "Next Token Prediction"
+            },
+            {
+              "name": "Vast Text Corpora"
+            }
+          ]
+        },
+        {
+          "name": "Fine-tuning",
+          "children": [
+            {
+              "name": "Supervised (SFT)"
+            },
+            {
+              "name": "Instruction Following"
+            }
+          ]
+        },
+        {
+          "name": "Alignment",
+          "children": [
+            {
+              "name": "RLHF"
+            },
+            {
+              "name": "Safety Filtering"
+            },
+            {
+              "name": "Constitutional AI"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Generation Process",
+      "children": [
+        {
+          "name": "Autoregressive Logic"
+        },
+        {
+          "name": "Probability Distribution"
+        },
+        {
+          "name": "Sampling Strategies",
+          "children": [
+            {
+              "name": "Temperature"
+            },
+            {
+              "name": "Top-p / Nucleus"
+            },
+            {
+              "name": "Greedy Search"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Scaling & Properties",
+      "children": [
+        {
+          "name": "Scaling Laws (Chinchilla)"
+        },
+        {
+          "name": "Emergent Abilities"
+        },
+        {
+          "name": "Parameter Count"
+        }
+      ]
+    },
+    {
+      "name": "Extensions & Applications",
+      "children": [
+        {
+          "name": "RAG (Retrieval)"
+        },
+        {
+          "name": "Prompt Engineering",
+          "children": [
+            {
+              "name": "Few-shot"
+            },
+            {
+              "name": "Chain-of-Thought"
+            }
+          ]
+        },
+        {
+          "name": "Multimodality",
+          "children": [
+            {
+              "name": "Vision Encoders"
+            },
+            {
+              "name": "Audio/Video Input"
+            }
+          ]
+        },
+        {
+          "name": "Tool Use / Agency"
+        }
+      ]
+    },
+    {
+      "name": "Limitations & Challenges",
+      "children": [
+        {
+          "name": "Hallucinations"
+        },
+        {
+          "name": "Algorithmic Bias"
+        },
+        {
+          "name": "Prompt Injection"
+        },
+        {
+          "name": "Energy Demands"
+        }
+      ]
+    }
+  ]
+}

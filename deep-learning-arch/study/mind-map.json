@@ -1,0 +1,201 @@
+{
+  "name": "Neural Network Components",
+  "children": [
+    {
+      "name": "Activation Functions",
+      "children": [
+        {
+          "name": "Properties",
+          "children": [
+            {
+              "name": "Nonlinear (Universal Approximation)"
+            },
+            {
+              "name": "Continuously differentiable"
+            },
+            {
+              "name": "Range (Finite vs Infinite)"
+            },
+            {
+              "name": "Saturating vs Nonsaturating"
+            }
+          ]
+        },
+        {
+          "name": "Categories",
+          "children": [
+            {
+              "name": "Ridge Functions",
+              "children": [
+                {
+                  "name": "ReLU"
+                },
+                {
+                  "name": "Sigmoid / Logistic"
+                },
+                {
+                  "name": "Tanh"
+                },
+                {
+                  "name": "Heaviside Step"
+                }
+              ]
+            },
+            {
+              "name": "Radial Functions",
+              "children": [
+                {
+                  "name": "Gaussian"
+                },
+                {
+                  "name": "Multiquadratics"
+                }
+              ]
+            },
+            {
+              "name": "Folding Functions",
+              "children": [
+                {
+                  "name": "Softmax"
+                },
+                {
+                  "name": "Pooling (Max, Mean, Min)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Autoencoders",
+      "children": [
+        {
+          "name": "Core Components",
+          "children": [
+            {
+              "name": "Encoder (Mapping to Code)"
+            },
+            {
+              "name": "Decoder (Reconstruction)"
+            },
+            {
+              "name": "Latent Space / Code"
+            }
+          ]
+        },
+        {
+          "name": "Variants",
+          "children": [
+            {
+              "name": "Variational (VAE)"
+            },
+            {
+              "name": "Sparse (SAE)"
+            },
+            {
+              "name": "Denoising (DAE)"
+            },
+            {
+              "name": "Contractive (CAE)"
+            }
+          ]
+        },
+        {
+          "name": "Applications",
+          "children": [
+            {
+              "name": "Dimensionality Reduction"
+            },
+            {
+              "name": "Image Denoising"
+            },
+            {
+              "name": "Anomaly Detection"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Batch Normalization",
+      "children": [
+        {
+          "name": "Objectives",
+          "children": [
+            {
+              "name": "Faster Training"
+            },
+            {
+              "name": "Addressing Internal Covariate Shift"
+            },
+            {
+              "name": "Smoothing Objective Function"
+            }
+          ]
+        },
+        {
+          "name": "Process",
+          "children": [
+            {
+              "name": "Mini-batch Statistics (Mean/Var)"
+            },
+            {
+              "name": "Normalization (Zero Mean, Unit Var)"
+            },
+            {
+              "name": "Learnable Transform (Gamma/Beta)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Long Short-Term Memory (LSTM)",
+      "children": [
+        {
+          "name": "Gating Mechanism",
+          "children": [
+            {
+              "name": "Forget Gate"
+            },
+            {
+              "name": "Input Gate"
+            },
+            {
+              "name": "Output Gate"
+            }
+          ]
+        },
+        {
+          "name": "Key Concepts",
+          "children": [
+            {
+              "name": "Cell State (Long-term Memory)"
+            },
+            {
+              "name": "Vanishing Gradient Mitigation"
+            },
+            {
+              "name": "Sequential Processing"
+            }
+          ]
+        },
+        {
+          "name": "Applications",
+          "children": [
+            {
+              "name": "Speech Recognition"
+            },
+            {
+              "name": "Machine Translation"
+            },
+            {
+              "name": "Time Series Prediction"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "name": "Scientific Method and Communication",
+  "children": [
+    {
+      "name": "Scientific Method",
+      "children": [
+        {
+          "name": "Core Elements",
+          "children": [
+            {
+              "name": "Characterization"
+            },
+            {
+              "name": "Hypothesis Development"
+            },
+            {
+              "name": "Predictions"
+            },
+            {
+              "name": "Experiments"
+            }
+          ]
+        },
+        {
+          "name": "Inquiry Methods",
+          "children": [
+            {
+              "name": "Hypothetico-deductive"
+            },
+            {
+              "name": "Inductive Method"
+            },
+            {
+              "name": "Mathematical Modelling"
+            }
+          ]
+        },
+        {
+          "name": "Principles",
+          "children": [
+            {
+              "name": "Empiricism"
+            },
+            {
+              "name": "Falsifiability"
+            },
+            {
+              "name": "Reproducibility"
+            },
+            {
+              "name": "Skepticism"
+            }
+          ]
+        },
+        {
+          "name": "Heuristics",
+          "children": [
+            {
+              "name": "Parsimony (Occam's Razor)"
+            },
+            {
+              "name": "Elegance"
+            },
+            {
+              "name": "Invariance"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Scientific Writing",
+      "children": [
+        {
+          "name": "Genres",
+          "children": [
+            {
+              "name": "Journal Articles"
+            },
+            {
+              "name": "Literature Reviews"
+            },
+            {
+              "name": "Grant Proposals"
+            },
+            {
+              "name": "Scientific Reports"
+            }
+          ]
+        },
+        {
+          "name": "IMRaD Structure",
+          "children": [
+            {
+              "name": "Introduction"
+            },
+            {
+              "name": "Methods"
+            },
+            {
+              "name": "Results"
+            },
+            {
+              "name": "Discussion"
+            }
+          ]
+        },
+        {
+          "name": "Style and Conventions",
+          "children": [
+            {
+              "name": "Peer Review"
+            },
+            {
+              "name": "Citation Systems (APA, Chicago, Vancouver)"
+            },
+            {
+              "name": "Technical Communication"
+            },
+            {
+              "name": "Language Standards"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ethics and Integrity",
+      "children": [
+        {
+          "name": "Honesty and Openness"
+        },
+        {
+          "name": "Data Integrity"
+        },
+        {
+          "name": "Plagiarism Prevention"
+        },
+        {
+          "name": "Authorship Standards"
+        },
+        {
+          "name": "Diversity and Inclusivity"
+        }
+      ]
+    },
+    {
+      "name": "Perspectives and Philosophy",
+      "children": [
+        {
+          "name": "Philosophical Views",
+          "children": [
+            {
+              "name": "Rationalism"
+            },
+            {
+              "name": "Pragmatism"
+            },
+            {
+              "name": "Epistemological Anarchism"
+            }
+          ]
+        },
+        {
+          "name": "Sociology of Knowledge",
+          "children": [
+            {
+              "name": "Thought Collectives"
+            },
+            {
+              "name": "Epistemic Cultures"
+            },
+            {
+              "name": "Situated Cognition"
+            }
+          ]
+        },
+        {
+          "name": "Modern Challenges",
+          "children": [
+            {
+              "name": "Replication Crisis"
+            },
+            {
+              "name": "Large Language Models"
+            },
+            {
+              "name": "Big Data Limitations"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

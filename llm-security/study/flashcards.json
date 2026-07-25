@@ -1,0 +1,345 @@
+{
+  "title": "Adversarial Flashcards",
+  "cards": [
+    {
+      "front": "What is the primary study area of adversarial machine learning?",
+      "back": "The study of attacks on machine learning algorithms and the defenses against those attacks."
+    },
+    {
+      "front": "Machine learning techniques typically assume that training and test data are _____.",
+      "back": "Independent and Identically Distributed (IID)"
+    },
+    {
+      "front": "Which attack modality involves exploiting the imperfections of a trained model at the inference phase to cause misclassification?",
+      "back": "Evasion attack"
+    },
+    {
+      "front": "Term: Data Poisoning",
+      "back": "Definition: Contaminating the training dataset with malicious data to increase errors or influence the model's output."
+    },
+    {
+      "front": "In distributed machine learning, attacks where some computing machines deviate from expected behavior to harm the central model are called _____ attacks.",
+      "back": "Byzantine"
+    },
+    {
+      "front": "What is the objective of a 'model extraction' attack?",
+      "back": "To extract the sensitive data a model was trained on or to reconstruct the model itself."
+    },
+    {
+      "front": "Which 2004 event is cited as a starting point for adversarial ML, involving a spam filter defeating another spam filter?",
+      "back": "The MIT Spam Conference"
+    },
+    {
+      "front": "Research in 2012–2013 demonstrated that non-linear classifiers like neural networks are vulnerable to _____ attacks.",
+      "back": "gradient-based"
+    },
+    {
+      "front": "Why might adversarial attacks be harder to produce in uncontrolled, real-world environments compared to laboratory settings?",
+      "back": "Environmental constraints like rotation or illumination changes can cancel out the effect of adversarial noise."
+    },
+    {
+      "front": "Concept: Nightshade",
+      "back": "Definition: A data poisoning filter used by visual artists to corrupt text-to-image datasets to protect their intellectual property."
+    },
+    {
+      "front": "How did researchers successfully fool a Tesla Mobileye system into driving 50 mph over the speed limit?",
+      "back": "By adding a two-inch strip of black tape to a speed limit sign."
+    },
+    {
+      "front": "In the security domain, the process of converting security data (like binary files) into features can introduce _____ or inconsistencies.",
+      "back": "bias"
+    },
+    {
+      "front": "Term: Concept Drift",
+      "back": "Definition: The phenomenon where the statistical properties of malicious samples change over time as attackers adapt their techniques."
+    },
+    {
+      "front": "In realistic security deployments, what is the typical range for the proportion of malicious samples in a dataset?",
+      "back": "0.01% to 2%"
+    },
+    {
+      "front": "What common pitfall occurs when a model is trained using information that would not be available in a real-world scenario?",
+      "back": "Data snooping"
+    },
+    {
+      "front": "Why is 'accuracy' considered an insufficient metric for evaluating intrusion detection systems?",
+      "back": "It fails to account for high class imbalances and the critical importance of false-positive rates."
+    },
+    {
+      "front": "In the taxonomy of adversarial attacks, 'specificity' refers to the difference between targeted attacks and _____ attacks.",
+      "back": "indiscriminate"
+    },
+    {
+      "front": "A specific type of data poisoning that teaches a model to behave maliciously only when a specific 'trigger' is present is called a _____ attack.",
+      "back": "backdoor"
+    },
+    {
+      "front": "Which machine learning paradigm is particularly vulnerable to Byzantine attacks due to its reliance on edge devices sending parameters to a central server?",
+      "back": "Federated learning"
+    },
+    {
+      "front": "What is the difference between black-box and white-box attacks?",
+      "back": "Black-box attacks only access model outputs, while white-box attacks require access to internal model parameters."
+    },
+    {
+      "front": "The targeted model extraction attack used to infer whether a specific data point was used in a model's training set is known as _____.",
+      "back": "membership inference"
+    },
+    {
+      "front": "Adversarial training of a linear regression model with input perturbations restricted by the $\\infty$-norm resembles _____ regression.",
+      "back": "Lasso"
+    },
+    {
+      "front": "Formula: Fast Gradient Sign Method (FGSM)",
+      "back": "$adv_x = x + \\epsilon \\cdot sign(\\nabla_x J(\\theta, x, y))$ where $J$ is the loss function."
+    },
+    {
+      "front": "The Square Attack is a score-based black-box technique that does not require _____ information.",
+      "back": "gradient"
+    },
+    {
+      "front": "Which black-box attack relies solely on access to predicted output class labels and uses a modified binary search to find decision boundaries?",
+      "back": "HopSkipJump attack"
+    },
+    {
+      "front": "Term: Defensive Distillation",
+      "back": "Definition: A defense mechanism once thought effective but later bypassed by the Carlini & Wagner (C&W) attack."
+    },
+    {
+      "front": "According to the OWASP Top 10 for LLMs, what is the most critical (highest risk) vulnerability?",
+      "back": "Prompt Injection"
+    },
+    {
+      "front": "What is the primary difference between direct and indirect prompt injection?",
+      "back": "Direct injection comes from user input; indirect injection comes from external data like web pages or documents."
+    },
+    {
+      "front": "Term: Prompt Leaking",
+      "back": "Definition: An exploit designed to trick an LLM into revealing its internal system prompt or developer instructions."
+    },
+    {
+      "front": "In LLM security, the 'Excessive Agency' vulnerability refers to an agent having too much _____ or autonomy.",
+      "back": "functionality (or tool access)"
+    },
+    {
+      "front": "Which LLM security vulnerability involves an attacker providing a malicious fine-tuned model or plugin?",
+      "back": "Supply Chain Vulnerabilities"
+    },
+    {
+      "front": "Term: Jailbreaking",
+      "back": "Definition: Using adversarial prompts to bypass an LLM's alignment (RLHF) to force it to generate harmful or restricted content."
+    },
+    {
+      "front": "Which jailbreak technique utilizes the large context window of modern LLMs by providing hundreds of fake dialogues where the AI answers harmful questions?",
+      "back": "Many-shot jailbreak"
+    },
+    {
+      "front": "The 'Crescendo' jailbreak attack involves a _____ escalation of harmful requests across multiple conversation turns.",
+      "back": "gradual"
+    },
+    {
+      "front": "Why are translation attacks effective for jailbreaking LLMs?",
+      "back": "RLHF alignment is often weaker in low-resource languages compared to English."
+    },
+    {
+      "front": "Concept: Constitutional AI",
+      "back": "Definition: A defense where the model self-corrects by checking its own responses against a set of safety principles before outputting them."
+    },
+    {
+      "front": "What is 'Availability Poisoning' in the context of data security?",
+      "back": "Injecting contradictory or low-quality data to degrade the overall performance and accuracy of the model."
+    },
+    {
+      "front": "What is the primary goal of using 'Differential Privacy' (DP-SGD) during model training?",
+      "back": "To ensure that any single training example does not have an outsized influence, protecting against membership inference."
+    },
+    {
+      "front": "Term: Watermarking",
+      "back": "Definition: Embedding hidden statistical patterns in a model's responses to detect if the model's output is being used to train a copy."
+    },
+    {
+      "front": "In a Defense in Depth architecture, which layer is responsible for detecting prompt injection before the input reaches the LLM?",
+      "back": "Input Guardrails"
+    },
+    {
+      "front": "What does the 'Swiss Cheese Model' represent in security architecture?",
+      "back": "The idea that every defense has weaknesses (holes), but multiple layers prevent an attack from succeeding."
+    },
+    {
+      "front": "Which open-source NVIDIA tool is used for comprehensive LLM probing and red teaming?",
+      "back": "Garak"
+    },
+    {
+      "front": "Term: Kill Switch",
+      "back": "Definition: A production security mechanism that immediately halts all LLM traffic when a critical breach is detected."
+    },
+    {
+      "front": "What is the purpose of 'Output Perturbation' in defending against model extraction?",
+      "back": "Providing only top-1 labels instead of full probability distributions (logprobs) to make extraction more difficult."
+    },
+    {
+      "front": "The Sacred Analogue 'Basirah' represents _____ and vigilance in identifying the LLM threat landscape.",
+      "back": "foresight"
+    },
+    {
+      "front": "In LLM defense, using delimiters like tags to separate instructions from untrusted data is a form of _____.",
+      "back": "Input Sanitization"
+    },
+    {
+      "front": "What is the 'root cause' of prompt injection in LLMs?",
+      "back": "Instructions and data are processed in the same text channel, making it impossible for the model to distinguish between them."
+    },
+    {
+      "front": "Term: Payload Splitting",
+      "back": "Definition: A jailbreak method that breaks a harmful request into safe sub-parts that are only recombined at the final step."
+    },
+    {
+      "front": "Which LLM security framework uses 'Colang' to define canonical conversation flows and topic restrictions?",
+      "back": "NeMo Guardrails"
+    },
+    {
+      "front": "In security operations, 'Yaqaza' refers to constant _____ and the fact that the fortress guard never sleeps.",
+      "back": "wakefulness (or alertness)"
+    },
+    {
+      "front": "What is the first step in the Red Teaming process?",
+      "back": "Define scope (deciding what to test and success criteria)."
+    },
+    {
+      "front": "Which metric is used to evaluate the effectiveness of adversarial attacks during red teaming?",
+      "back": "Attack Success Rate (ASR)"
+    },
+    {
+      "front": "The 'Dual LLM' approach separates a privileged model with tool access from a _____ model that processes untrusted content.",
+      "back": "quarantined"
+    },
+    {
+      "front": "According to the UK NCSC, prompt injection may be an _____ issue with current LLM technology.",
+      "back": "inherent"
+    },
+    {
+      "front": "Term: Model Inversion",
+      "back": "Definition: An attack where the original input (like a face or PII) is reconstructed from a model's output or classification labels."
+    },
+    {
+      "front": "In 2025, researchers found that academic papers contained hidden prompts designed to manipulate _____.",
+      "back": "AI-powered peer review systems"
+    },
+    {
+      "front": "What codename was revealed when a Stanford student bypassed Bing Chat's safeguards using a direct injection attack?",
+      "back": "Sydney"
+    },
+    {
+      "front": "Which Chinese LLM was reported in 2025 to have a higher attack success rate for prompt injection compared to other reasoning models?",
+      "back": "DeepSeek-R1"
+    },
+    {
+      "front": "The 'Echo Chamber' attack was used in combination with Crescendo to jailbreak which specific model in 2025?",
+      "back": "Grok-4"
+    },
+    {
+      "front": "Why is 'Human-in-the-loop' essential for LLM agents performing sensitive tasks?",
+      "back": "To prevent 'Excessive Agency' where the agent might take irreversible harmful actions like deleting files."
+    },
+    {
+      "front": "Term: Overreliance",
+      "back": "Definition: A risk where users blindly trust LLM output (like code) and deploy it without critical review."
+    },
+    {
+      "front": "In the context of malware, the GAMMA attack uses _____ to inject benign content into Windows executables to evade detectors.",
+      "back": "genetic algorithms"
+    },
+    {
+      "front": "Which type of neural network is used by Mal-LSGAN to learn feature-space perturbations for malware evasion?",
+      "back": "Generative Adversarial Network (GAN)"
+    },
+    {
+      "front": "How does 'Feature Robustness' differ between static header fields and control-flow graphs in malware detection?",
+      "back": "Static attributes are easily manipulated, while control-flow graphs are structural and harder to modify."
+    },
+    {
+      "front": "A result of studying linear models is that adversarial training with $L_2$-norm restricted perturbations resembles _____ regression.",
+      "back": "Ridge"
+    },
+    {
+      "front": "What is the 'Base Rate Fallacy' in performance evaluation?",
+      "back": "The failure to interpret a model's performance correctly given the context of massive class imbalances."
+    },
+    {
+      "front": "Term: Threat Modeling",
+      "back": "Definition: Formalizing the attacker's goals and capabilities with respect to the target system before designing defenses."
+    },
+    {
+      "front": "In data collection for security, 'time-based leakage' occurs when samples from different time periods are not properly _____.",
+      "back": "separated (between training and testing splits)"
+    },
+    {
+      "front": "Which specific white-box attack is considered more robust than FGSM because it uses a non-linear optimization equation?",
+      "back": "Carlini & Wagner (C&W) attack"
+    },
+    {
+      "front": "In 2023, the University of Chicago released a data poisoning filter for visual artists called _____.",
+      "back": "Nightshade"
+    },
+    {
+      "front": "What is 'Information Laundering' in the context of adversarial defenses?",
+      "back": "Altering the information received by adversaries to prevent successful model stealing or extraction."
+    },
+    {
+      "front": "An 'indiscriminate' attack differs from a 'targeted' attack because its goal is to create _____.",
+      "back": "general mayhem (or widespread disruption)"
+    },
+    {
+      "front": "In distributed learning, 'Robust Gradient Aggregation' rules are used to mitigate _____ attacks.",
+      "back": "Byzantine"
+    },
+    {
+      "front": "What is the 'Dan' or 'FreedomGPT' persona an example of in LLM attacks?",
+      "back": "Role-play or Persona-based jailbreaking."
+    },
+    {
+      "front": "The 'Prefix Injection' jailbreak works because it forces the model to begin with a _____ phrase like 'Sure, here is...'.",
+      "back": "cooperative"
+    },
+    {
+      "front": "What is 'Obfuscation' in prompt engineering?",
+      "back": "Encoding or hiding instructions (using Base64, ROT13, or homoglyphs) to bypass input filters."
+    },
+    {
+      "front": "In the 7-layer LLM security architecture, where does 'Rate Limiting' primarily reside?",
+      "back": "Layer 1: Network Security"
+    },
+    {
+      "front": "What is the difference between 'Training Data Poisoning' and 'Model Extraction' regarding the attack timing?",
+      "back": "Poisoning happens during the training phase; Extraction happens during the inference/operation phase."
+    },
+    {
+      "front": "Which LLM security concept is associated with the Sacred Analogue 'Hudud' representing boundaries?",
+      "back": "Guardrail Frameworks"
+    },
+    {
+      "front": "Term: Incident Response Playbook",
+      "back": "Definition: A set of pre-defined steps (Detect, Contain, Investigate, Remediate, Post-mortem) for handling a security breach."
+    },
+    {
+      "front": "In the security maturity model, Level 5 represents continuous _____ operations.",
+      "back": "security"
+    },
+    {
+      "front": "Why is 'Data Hygiene' critical for RAG systems?",
+      "back": "To prevent malicious content from external sources from being retrieved and influencing the LLM via indirect injection."
+    },
+    {
+      "front": "What does the term 'Amanat' signify in the context of model extraction?",
+      "back": "Trust and confidentiality regarding the model, training data, and user data."
+    },
+    {
+      "front": "Concept: 3-D Printed Toy Turtle",
+      "back": "Definition: An adversarial physical object engineered to be classified as a rifle by AI from any viewing angle."
+    },
+    {
+      "front": "What is 'Spurious Correlation' in malware classification?",
+      "back": "When a model learns to identify a compiler artifact rather than the actual malicious behavior."
+    }
+  ]
+}

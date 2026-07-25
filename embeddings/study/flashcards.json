@@ -1,0 +1,325 @@
+{
+  "title": "BERT Flashcards",
+  "cards": [
+    {
+      "front": "What organization originally developed the BERT language model?",
+      "back": "Google AI"
+    },
+    {
+      "front": "What does the acronym BERT stand for?",
+      "back": "Bidirectional Encoder Representations from Transformers"
+    },
+    {
+      "front": "Which Transformer architecture component does BERT specifically utilize?",
+      "back": "The encoder-only architecture."
+    },
+    {
+      "front": "BERT learns to represent text as a sequence of vectors using _____ learning.",
+      "back": "self-supervised"
+    },
+    {
+      "front": "What are the two model sizes originally released for BERT?",
+      "back": "BERT BASE (110M parameters) and BERT LARGE (340M parameters)."
+    },
+    {
+      "front": "On what two primary datasets was the original BERT model trained?",
+      "back": "Toronto BookCorpus and English Wikipedia."
+    },
+    {
+      "front": "Name the four high-level modules that compose the BERT architecture.",
+      "back": "Tokenizer, Embedding, Encoder, and Task head."
+    },
+    {
+      "front": "What is the specific sub-word strategy used by the BERT tokenizer?",
+      "back": "WordPiece"
+    },
+    {
+      "front": "What is the vocabulary size of the BERT WordPiece tokenizer?",
+      "back": "30,000"
+    },
+    {
+      "front": "How does the BERT tokenizer handle tokens that do not appear in its vocabulary?",
+      "back": "It replaces them with the [UNK] (unknown) token."
+    },
+    {
+      "front": "The BERT embedding layer sums three types of embeddings: token type, position, and _____.",
+      "back": "segment type"
+    },
+    {
+      "front": "What mathematical function does BERT use to generate absolute position embeddings?",
+      "back": "A sinusoidal function."
+    },
+    {
+      "front": "In BERT segment embeddings, what integer is assigned to tokens appearing after the [SEP] special token?",
+      "back": "1 (type-1 tokens)."
+    },
+    {
+      "front": "What is the resulting vector dimensionality for each input token after BERT BASE embedding and normalization?",
+      "back": "768-dimensional vector."
+    },
+    {
+      "front": "In the BERT architectural family, what does the parameter $H$ represent?",
+      "back": "The hidden size (or embedding size)."
+    },
+    {
+      "front": "How is the number of self-attention heads determined in a BERT model based on hidden size $H$?",
+      "back": "$H / 64$"
+    },
+    {
+      "front": "The notation 24L/1024H refers to which specific BERT model size?",
+      "back": "BERT LARGE"
+    },
+    {
+      "front": "Which BERT pre-training task requires the model to predict a randomly changed word in a sequence?",
+      "back": "Masked Language Modeling (MLM)."
+    },
+    {
+      "front": "Which BERT pre-training task requires the model to determine if one sentence logically follows another?",
+      "back": "Next Sentence Prediction (NSP)."
+    },
+    {
+      "front": "In Masked Language Modeling, what total percentage of tokens are randomly selected for the prediction task?",
+      "back": "15%"
+    },
+    {
+      "front": "When a token is selected for MLM, what is the probability it is replaced with the [MASK] token?",
+      "back": "80%"
+    },
+    {
+      "front": "When a token is selected for MLM, what is the probability it is replaced with a random word token?",
+      "back": "10%"
+    },
+    {
+      "front": "What problem is avoided by only masking 80% of selected tokens in MLM (leaving 10% as random and 10% unchanged)?",
+      "back": "The dataset shift problem (mismatch between training and inference distributions)."
+    },
+    {
+      "front": "Which special token is used by BERT specifically for classification tasks and placed at the start of the first sentence?",
+      "back": "[CLS]"
+    },
+    {
+      "front": "Which special token is used to mark the boundary between two sentences in BERT input?",
+      "back": "[SEP]"
+    },
+    {
+      "front": "What procedure allows a pre-trained BERT model to be optimized for specific tasks like question answering using smaller datasets?",
+      "back": "Fine-tuning"
+    },
+    {
+      "front": "What is 'BERTology'?",
+      "back": "The study and interpretation of what is learned by BERT models."
+    },
+    {
+      "front": "Why is BERT's performance as a text generator limited compared to GPT-style models?",
+      "back": "It uses an encoder-only architecture and lacks a decoder for autoregressive generation."
+    },
+    {
+      "front": "How did RoBERTa (2019) modify the training of the original BERT model?",
+      "back": "It removed the Next Sentence Prediction (NSP) task and used much larger mini-batch sizes."
+    },
+    {
+      "front": "Which BERT variant uses parameter sharing across layers to reduce the number of parameters?",
+      "back": "ALBERT"
+    },
+    {
+      "front": "Which BERT variant treats position and token encodings separately using 'disentangled attention'?",
+      "back": "DeBERTa"
+    },
+    {
+      "front": "In DeBERTa's disentangled attention, which attention type combines a Token query with a Position key?",
+      "back": "Content-to-position"
+    },
+    {
+      "front": "In the 'Geometry Chamber,' what does the position of a word point represent?",
+      "back": "The meaning of the word."
+    },
+    {
+      "front": "According to the 'Distributional Hypothesis,' words that appear in similar contexts have _____ meanings.",
+      "back": "similar"
+    },
+    {
+      "front": "What is the intended result of the vector calculation: king - man + woman?",
+      "back": "queen"
+    },
+    {
+      "front": "Which similarity metric measures the angle between two vectors and is scale-independent?",
+      "back": "Cosine Similarity"
+    },
+    {
+      "front": "What value represents identical direction in Cosine Similarity?",
+      "back": "1.0"
+    },
+    {
+      "front": "Which distance metric is defined as the straight-line distance between two points ($d = \\sqrt{\\sum(a_i - b_i)^2}$)?",
+      "back": "Euclidean Distance ($L2$)."
+    },
+    {
+      "front": "How many dimensions are used in the OpenAI text-embedding-3 model?",
+      "back": "3072 dimensions (variable)."
+    },
+    {
+      "front": "How do contextual embeddings like BERT or ELMo differ from static embeddings like word2vec?",
+      "back": "Contextual embeddings provide different vectors for the same word based on its surrounding context."
+    },
+    {
+      "front": "What problem occurs when the same encoding mode is used for both short queries and long documents in retrieval tasks?",
+      "back": "Accuracy loss (typically 10-15%)."
+    },
+    {
+      "front": "What is 'Asymmetric Embedding'?",
+      "back": "The practice of using different encoding roles/prefixes for queries versus documents."
+    },
+    {
+      "front": "What does the MTEB benchmark evaluate?",
+      "back": "The performance of text embedding models across multiple tasks like retrieval, classification, and clustering."
+    },
+    {
+      "front": "Which term describes a library organized by meaning rather than title?",
+      "back": "Semantic search library."
+    },
+    {
+      "front": "What are Matryoshka embeddings?",
+      "back": "Embeddings from a single model that can be truncated to smaller dimensions while retaining effectiveness."
+    },
+    {
+      "front": "In the context of embeddings, what is 'Tazkiyah' (Fine-tuning)?",
+      "back": "The process of purifying or specializing a general embedding model for a specific domain."
+    },
+    {
+      "front": "Which embedding model parameter is used by Cohere to specify if an input is a query or a document?",
+      "back": "input_type"
+    },
+    {
+      "front": "In the embedding landscape, which model family is known as the top open-source retrieval model as of 2023?",
+      "back": "BGE (BAAI General Embedding)."
+    },
+    {
+      "front": "What are 'Hard Negatives' in the context of embedding fine-tuning?",
+      "back": "Examples that are geometrically close to the query but semantically incorrect, used to improve model precision."
+    },
+    {
+      "front": "How does Keyword search differ from Semantic search?",
+      "back": "Keyword search matches literal characters, while Semantic search matches underlying meaning."
+    },
+    {
+      "front": "In the provided text, what is the 'Maani' of a word?",
+      "back": "Its meaning, semantics, or significance."
+    },
+    {
+      "front": "Which specific BERT variant replaced the MLM task with a discriminator network similar to GANs?",
+      "back": "ELECTRA"
+    },
+    {
+      "front": "In DeBERTa's architecture, what happens to the absolute position encoding?",
+      "back": "It is included in the final self-attention layer as additional input."
+    },
+    {
+      "front": "What is the primary trade-off when increasing the number of embedding dimensions?",
+      "back": "Higher capacity for meaning versus increased storage cost and slower search speeds."
+    },
+    {
+      "front": "Sentence-BERT (2019) was specifically optimized to represent a full _____ as a single vector.",
+      "back": "sentence"
+    },
+    {
+      "front": "What is the estimated training cost for the original BERT BASE model on Cloud TPUs?",
+      "back": "500 USD"
+    },
+    {
+      "front": "In the provided text, what does 'Khiyar' refer to in the model chamber?",
+      "back": "The importance of the correct selection of a model for a specific task."
+    },
+    {
+      "front": "Which model is recommended for tasks requiring a very long context window (up to 8K tokens)?",
+      "back": "Jina Embed (v2)."
+    },
+    {
+      "front": "What special token classification value is returned if two sentences appear sequentially in the training corpus?",
+      "back": "[IsNext]"
+    },
+    {
+      "front": "What is the Feed-forward size (filter size) in a BERT model relative to the hidden size $H$?",
+      "back": "$4H$"
+    },
+    {
+      "front": "What was the word count of the English Wikipedia dataset used for BERT training?",
+      "back": "2,500 million words."
+    },
+    {
+      "front": "In 'The Arithmetic Chamber,' the vector calculation 'Paris - France + Italy' results in which city?",
+      "back": "Rome"
+    },
+    {
+      "front": "Which model variant first introduced 'task-instructed' embeddings in 2022?",
+      "back": "Instructor"
+    },
+    {
+      "front": "Which open-source model family is cited as being developed by Alibaba for strong multilingual performance?",
+      "back": "GTE"
+    },
+    {
+      "front": "In DeBERTa, content-to-content attention involves which two component types?",
+      "back": "Token query and Token key."
+    },
+    {
+      "front": "Which module in the BERT architecture converts hidden states back into predicted probability distributions over token types?",
+      "back": "The task head."
+    },
+    {
+      "front": "What dimensionality is typical for the BERT LARGE model?",
+      "back": "1024-dimensional vectors."
+    },
+    {
+      "front": "What semantic relationship is captured by the direction of a vector between 'man' and 'king'?",
+      "back": "Royalty"
+    },
+    {
+      "front": "Which similarity metric is calculated as the sum of products of components ($\\sum(a_i \\times b_i)$) and is sensitive to magnitude?",
+      "back": "Dot Product"
+    },
+    {
+      "front": "What is the Manhattan Distance ($L1$)?",
+      "back": "The sum of the absolute differences between vector components."
+    },
+    {
+      "front": "In the context of BERT variants, what does SOP stand for?",
+      "back": "Sentence-order prediction."
+    },
+    {
+      "front": "Which model is the smallest in the original BERT release with only 4 million parameters?",
+      "back": "BERT TINY"
+    },
+    {
+      "front": "What high-level architectural component is removed from BERT when adapting it for downstream tasks like sentiment classification?",
+      "back": "The pre-training task head."
+    },
+    {
+      "front": "What is the primary purpose of 'LayerNorm' in the BERT embedding module?",
+      "back": "To normalize the vector representation before it is passed to the Transformer encoder blocks."
+    },
+    {
+      "front": "In next sentence prediction, which token is used to separate the two input sequences?",
+      "back": "[SEP]"
+    },
+    {
+      "front": "What does the 'Muhasabah' (Evaluation) chamber emphasize regarding embeddings?",
+      "back": "The necessity of measuring and verifying embedding quality through benchmarks like MTEB."
+    },
+    {
+      "front": "Which AI model from 2013 was the first modern embedding model to use CBOW and Skip-gram?",
+      "back": "word2vec"
+    },
+    {
+      "front": "What is the core benefit of using 'Transformer' self-attention in BERT compared to previous RNN models?",
+      "back": "It allows the model to learn bidirectional context from both left and right sides simultaneously."
+    },
+    {
+      "front": "In the embedding model timeline, which model from 2014 used global matrix factorization?",
+      "back": "GloVe"
+    },
+    {
+      "front": "Which module in BERT consists of a stack of Transformer blocks with self-attention but without causal masking?",
+      "back": "The Encoder."
+    }
+  ]
+}

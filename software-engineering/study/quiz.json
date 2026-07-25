@@ -1,0 +1,265 @@
+{
+  "title": "Agile Quiz",
+  "questions": [
+    {
+      "question": "According to the Manifesto for Agile Software Development, which of the following is valued more than 'following a plan'?",
+      "answerOptions": [
+        {
+          "text": "Comprehensive documentation",
+          "isCorrect": false,
+          "rationale": "While documentation has value, the manifesto explicitly prioritizes working software over comprehensive documentation."
+        },
+        {
+          "text": "Responding to change",
+          "isCorrect": true,
+          "rationale": "The manifesto highlights that being adaptive to shifting requirements is more valuable than strictly adhering to a predetermined roadmap."
+        },
+        {
+          "text": "Contract negotiation",
+          "isCorrect": false,
+          "rationale": "The manifesto values customer collaboration over the formal rigidness of contract negotiation."
+        },
+        {
+          "text": "Process and tools",
+          "isCorrect": false,
+          "rationale": "The manifesto prioritizes individuals and their interactions over the mechanical use of processes and tools."
+        }
+      ],
+      "hint": "Consider the value that focuses on being flexible when new information or environmental factors arise."
+    },
+    {
+      "question": "In the context of the SOLID principles, what does the 'Open–closed principle' state regarding software entities?",
+      "answerOptions": [
+        {
+          "text": "Entities should be open for modification and closed for extension.",
+          "isCorrect": false,
+          "rationale": "This reverses the principle, as constant modification of source code often leads to regression bugs."
+        },
+        {
+          "text": "Entities should be open for extension but closed for modification.",
+          "isCorrect": true,
+          "rationale": "This principle encourages adding new functionality through extension without altering the already tested and existing source code."
+        },
+        {
+          "text": "Entities should be open for public access but closed for private inheritance.",
+          "isCorrect": false,
+          "rationale": "This describes access modifiers rather than the structural design principle of the Open-closed principle."
+        },
+        {
+          "text": "Entities should be open for refactoring and closed for testing.",
+          "isCorrect": false,
+          "rationale": "Refactoring is a separate practice, and no entity should ever be 'closed for testing' in a professional environment."
+        }
+      ],
+      "hint": "Think about a design that allows you to add new features without breaking old code."
+    },
+    {
+      "question": "What is the primary purpose of an 'information radiator' in an agile development environment?",
+      "answerOptions": [
+        {
+          "text": "To provide a secure storage area for sensitive project documentation.",
+          "isCorrect": false,
+          "rationale": "Information radiators are intended to be public and highly visible, not secure or hidden."
+        },
+        {
+          "text": "To automatically generate code from visual diagrams and models.",
+          "isCorrect": false,
+          "rationale": "This describes a CASE tool or model-driven development, whereas an information radiator is a communication tool."
+        },
+        {
+          "text": "To present an up-to-date summary of the product development status to passers-by.",
+          "isCorrect": true,
+          "rationale": "Information radiators are large, prominent displays designed to communicate project health and progress transparently to the whole team and stakeholders."
+        },
+        {
+          "text": "To track the individual billable hours of each developer on the team.",
+          "isCorrect": false,
+          "rationale": "Agile focuses on team value and progress rather than micro-managing individual billable time via public displays."
+        }
+      ],
+      "hint": "Consider a tool used for high-visibility communication within a shared workspace."
+    },
+    {
+      "question": "The 'Liskov substitution principle' is a part of SOLID that primarily deals with which concept?",
+      "answerOptions": [
+        {
+          "text": "Database normalization",
+          "isCorrect": false,
+          "rationale": "Liskov substitution is an object-oriented design principle, not a data modeling or relational database principle."
+        },
+        {
+          "text": "Strong encapsulation",
+          "isCorrect": false,
+          "rationale": "While encapsulation is important in OOP, Liskov specifically focuses on the relationship between types and their subtypes."
+        },
+        {
+          "text": "Subtype correctness and substitutability",
+          "isCorrect": true,
+          "rationale": "It dictates that objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program."
+        },
+        {
+          "text": "Asynchronous message passing",
+          "isCorrect": false,
+          "rationale": "This is related to concurrency and distributed systems, which is outside the specific scope of the Liskov principle."
+        }
+      ],
+      "hint": "This principle ensures that a derived class can stand in for its base class without causing errors."
+    },
+    {
+      "question": "In agile philosophy, what is a key difference between 'adaptive' methods and 'predictive' methods?",
+      "answerOptions": [
+        {
+          "text": "Adaptive methods rely on fixed-scope contracts, while predictive methods do not.",
+          "isCorrect": false,
+          "rationale": "Predictive methods are more likely to use fixed-scope contracts because they assume requirements are stable."
+        },
+        {
+          "text": "Adaptive methods focus on reacting to changing realities, while predictive methods focus on detailed long-term planning.",
+          "isCorrect": true,
+          "rationale": "Adaptive methods embrace the unknown and adjust as they go, whereas predictive methods attempt to account for risks through early, detailed analysis."
+        },
+        {
+          "text": "Adaptive methods are only for small teams, while predictive methods are only for large teams.",
+          "isCorrect": false,
+          "rationale": "While team size is a factor, both methods can be scaled or adapted to various team sizes depending on the project's criticality."
+        },
+        {
+          "text": "Predictive methods use iterations, while adaptive methods use a single long phase.",
+          "isCorrect": false,
+          "rationale": "This is the opposite of the truth; adaptive (agile) methods are iterative, while predictive methods (like waterfall) are often sequential."
+        }
+      ],
+      "hint": "Think about which approach is more comfortable with not knowing exactly what will happen six months from now."
+    },
+    {
+      "question": "Which agile pitfall occurs when a team prioritizes new features over defect remediation and code cleanup?",
+      "answerOptions": [
+        {
+          "text": "Lack of sponsor support",
+          "isCorrect": false,
+          "rationale": "This refers to a lack of management backing, not the internal technical state of the code."
+        },
+        {
+          "text": "Allowing technical debt to build up",
+          "isCorrect": true,
+          "rationale": "Focusing solely on new functionality without maintaining code quality leads to 'technical debt,' which eventually slows down development and increases defects."
+        },
+        {
+          "text": "Excessive preparation",
+          "isCorrect": false,
+          "rationale": "Excessive preparation involves spending too much time planning before starting work, which is the opposite of rushing new features."
+        },
+        {
+          "text": "Problem-solving in the daily stand-up",
+          "isCorrect": false,
+          "rationale": "This is a meeting efficiency issue rather than a long-term architectural or quality issue."
+        }
+      ],
+      "hint": "Consider the 'interest' a team pays later for taking shortcuts in the present."
+    },
+    {
+      "question": "According to the Agile Principles, what is considered the 'primary measure of progress'?",
+      "answerOptions": [
+        {
+          "text": "Lines of code written",
+          "isCorrect": false,
+          "rationale": "Lines of code is a misleading metric that does not necessarily equate to value or functionality."
+        },
+        {
+          "text": "Comprehensive documentation",
+          "isCorrect": false,
+          "rationale": "Documentation is a supporting artifact; progress is measured by the actual utility provided to the user."
+        },
+        {
+          "text": "Working software",
+          "isCorrect": true,
+          "rationale": "The agile principles explicitly state that progress is defined by the delivery of functional, valuable software to the customer."
+        },
+        {
+          "text": "The number of hours worked",
+          "isCorrect": false,
+          "rationale": "Agile focuses on outcomes and value rather than just the input of labor hours."
+        }
+      ],
+      "hint": "Think about the actual end-goal of a software development project."
+    },
+    {
+      "question": "What common pitfall is associated with the 'Scrum Master' role in the Scrum framework?",
+      "answerOptions": [
+        {
+          "text": "Acting as a technical contributor instead of a facilitator.",
+          "isCorrect": true,
+          "rationale": "If a Scrum Master is too focused on development tasks, they may lack the capacity to remove roadblocks and coach the team effectively."
+        },
+        {
+          "text": "Making all the architectural decisions for the team.",
+          "isCorrect": false,
+          "rationale": "Architectural decisions should emerge from the self-organizing team, though the Scrum Master facilitating this is not a 'contributor' pitfall."
+        },
+        {
+          "text": "Preventing the team from talking to the Product Owner.",
+          "isCorrect": false,
+          "rationale": "A Scrum Master should encourage communication; blocking it would be a failure in facilitation but isn't the 'contributor' trap."
+        },
+        {
+          "text": "Allowing the team to choose their own tasks.",
+          "isCorrect": false,
+          "rationale": "Empowering teams to choose tasks is a core agile value, not a pitfall."
+        }
+      ],
+      "hint": "This occurs when a process-focused leader reverts to doing the 'hands-on' work of the team."
+    },
+    {
+      "question": "What is the core idea behind the 'Dependency inversion principle' in SOLID?",
+      "answerOptions": [
+        {
+          "text": "Low-level modules should depend on high-level modules.",
+          "isCorrect": false,
+          "rationale": "This would still create a tight coupling; the principle states that both should depend on abstractions."
+        },
+        {
+          "text": "High-level modules and low-level modules should both depend on abstractions.",
+          "isCorrect": true,
+          "rationale": "By depending on abstractions (interfaces) rather than concrete implementations, the system becomes more decoupled and easier to change."
+        },
+        {
+          "text": "Abstractions should depend on details.",
+          "isCorrect": false,
+          "rationale": "The principle explicitly states that details (concrete implementations) should depend on abstractions, not the other way around."
+        },
+        {
+          "text": "Circular dependencies are necessary for complex systems.",
+          "isCorrect": false,
+          "rationale": "Circular dependencies are generally considered a design flaw that makes systems difficult to test and maintain."
+        }
+      ],
+      "hint": "Consider how to decouple software components so that changes in a specific utility don't break the main business logic."
+    },
+    {
+      "question": "In agile development, what is 'timeboxing'?",
+      "answerOptions": [
+        {
+          "text": "A technique for estimating the total cost of a project over several years.",
+          "isCorrect": false,
+          "rationale": "Timeboxing is about fixed short-term periods, not long-term financial estimation."
+        },
+        {
+          "text": "The process of archiving old code to save server space.",
+          "isCorrect": false,
+          "rationale": "This refers to data retention or version control management, not agile scheduling."
+        },
+        {
+          "text": "Allocating a fixed maximum unit of time to an activity, such as an iteration.",
+          "isCorrect": true,
+          "rationale": "Timeboxing ensures that work is broken into predictable segments (like 1-4 week sprints) to maintain pace and focus."
+        },
+        {
+          "text": "A method for measuring the speed of the CPU during unit tests.",
+          "isCorrect": false,
+          "rationale": "This describes performance profiling or benchmarking."
+        }
+      ],
+      "hint": "This concept involves putting a strict limit on how long a particular phase or meeting can last."
+    }
+  ]
+}

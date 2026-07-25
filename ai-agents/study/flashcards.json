@@ -1,0 +1,305 @@
+{
+  "title": "Learning Flashcards",
+  "cards": [
+    {
+      "front": "In deep learning, what is the definition of fine-tuning?",
+      "back": "The process of adapting a model trained for an upstream task to a different, more specific downstream task."
+    },
+    {
+      "front": "Fine-tuning is considered a form of _____ learning because it reuses knowledge from a previous training objective.",
+      "back": "transfer"
+    },
+    {
+      "front": "What happens to a neural network layer when it is 'frozen' during fine-tuning?",
+      "back": "The weights of that layer are not changed during the backpropagation process."
+    },
+    {
+      "front": "In the context of fine-tuning, what are 'adapters'?",
+      "back": "Lightweight modules inserted into a model architecture that are tuned while the rest of the weights remain frozen."
+    },
+    {
+      "front": "Why are earlier layers of a convolutional neural network typically frozen during fine-tuning?",
+      "back": "They capture low-level features that are generally applicable across different visual tasks."
+    },
+    {
+      "front": "Fine-tuning a model on its full parameters generally yields better results but is more _____ expensive.",
+      "back": "computationally"
+    },
+    {
+      "front": "Which specific machine learning objective was used to fine-tune GPT models into ChatGPT?",
+      "back": "Reinforcement learning from human feedback (RLHF)."
+    },
+    {
+      "front": "How can fine-tuning affect a model's robustness to distribution shifts?",
+      "back": "It can degrade the model's performance on out-of-distribution data."
+    },
+    {
+      "front": "What mitigation technique involves mixing a fine-tuned model's weights with the original model's weights?",
+      "back": "Linear interpolation."
+    },
+    {
+      "front": "Term: Low-rank adaptation (LoRA)",
+      "back": "Definition: An adapter-based fine-tuning technique that adds a low-rank matrix to the model's original weight matrix."
+    },
+    {
+      "front": "How does LoRA reduce the space requirements for fine-tuning large language models?",
+      "back": "It only tunes several million parameters instead of the billions found in the base model."
+    },
+    {
+      "front": "Representation fine-tuning (ReFT) differs from PEFT because it targets _____ instead of weights.",
+      "back": "representations (or hidden states)"
+    },
+    {
+      "front": "What specific ReFT method operates in the linear subspace spanned by a low-rank projection matrix?",
+      "back": "Low-rank linear subspace ReFT (LoReFT)."
+    },
+    {
+      "front": "According to the source, what is 'downstream task' performance usually compared against?",
+      "back": "The performance of the unmodified pre-trained model."
+    },
+    {
+      "front": "In mathematical modeling, what is 'overfitting'?",
+      "back": "Producing an analysis that corresponds too closely to a specific dataset, failing to generalize to new data."
+    },
+    {
+      "front": "An overfitted model contains more _____ than can be justified by the available data.",
+      "back": "parameters"
+    },
+    {
+      "front": "The essence of overfitting is extracting _____ variation from a dataset as if it were underlying structure.",
+      "back": "residual (or noise)"
+    },
+    {
+      "front": "When does 'underfitting' occur in mathematical modeling?",
+      "back": "When a model is too simple to adequately capture the underlying structure of the data."
+    },
+    {
+      "front": "Underfitting is typically characterized by high _____ and low variance.",
+      "back": "bias"
+    },
+    {
+      "front": "Overfitting is typically characterized by low bias and high _____.",
+      "back": "variance"
+    },
+    {
+      "front": "What is the 'Principle of Parsimony' (Occam's Razor) in model selection?",
+      "back": "The preference for simpler models over complex ones, assuming they provide similar explanatory power."
+    },
+    {
+      "front": "In regression, the 'one in ten rule' suggests having ten observations per _____ variable to avoid overfitting.",
+      "back": "independent (or explanatory)"
+    },
+    {
+      "front": "What is 'Freedman's paradox' in the context of regression?",
+      "back": "Finding false statistical significance when a model includes many variables that have no actual relation to the dependent variable."
+    },
+    {
+      "front": "How does 'early stopping' help prevent overfitting during neural network training?",
+      "back": "It halts training at the point where validation error reaches its global minimum."
+    },
+    {
+      "front": "What is the purpose of 'dropout' regularization in a neural network?",
+      "back": "To improve robustness by probabilistically removing inputs to a layer during training."
+    },
+    {
+      "front": "Term: Pruning",
+      "back": "Definition: Identifying and removing unnecessary parts of a neural network to create a sparse, optimal structure."
+    },
+    {
+      "front": "What is 'benign overfitting'?",
+      "back": "A phenomenon where a model generalizes well to unseen data despite fitting noisy training data perfectly."
+    },
+    {
+      "front": "In signal processing and computing, what is 'quantization'?",
+      "back": "The process of constraining an input from a continuous or large set of values to a discrete set."
+    },
+    {
+      "front": "What does 'quantization' refer to specifically for Large Language Models?",
+      "back": "Neural network weight optimization to reduce model size and complexity."
+    },
+    {
+      "front": "Term: Stochastic gradient descent (SGD)",
+      "back": "Definition: An iterative optimization method that replaces the actual gradient of a dataset with an estimate from a random subset."
+    },
+    {
+      "front": "In SGD, what is the 'learning rate' represented by the symbol $\\eta$?",
+      "back": "A parameter that determines the step size taken during each iteration of the algorithm."
+    },
+    {
+      "front": "Why is SGD preferred over 'batch' gradient descent for enormous training sets?",
+      "back": "It reduces computational burden by sampling only a subset of data at each step, allowing for faster iterations."
+    },
+    {
+      "front": "What is a 'mini-batch' in the context of gradient descent?",
+      "back": "A subset of training samples used to compute the gradient at each step, serving as a compromise between batch and stochastic methods."
+    },
+    {
+      "front": "Under what condition does SGD converge 'almost surely' to a global minimum?",
+      "back": "When the objective function is convex or pseudoconvex and the learning rates decrease at an appropriate rate."
+    },
+    {
+      "front": "The basic idea of stochastic approximation can be traced back to which 1950s algorithm?",
+      "back": "The Robbins–Monro algorithm."
+    },
+    {
+      "front": "Which 1952 optimization algorithm used 'central differences' to approximate the gradient?",
+      "back": "The Kiefer–Wolfowitz algorithm."
+    },
+    {
+      "front": "In the overparameterized case of linear regression ($m \\ge n$), SGD converges to the solution with the minimum _____ from the starting point.",
+      "back": "distance (or Euclidean distance)"
+    },
+    {
+      "front": "How does 'momentum' prevent oscillations in SGD?",
+      "back": "By incorporating a fraction of the previous update into the current one, tending to keep the vector traveling in the same direction."
+    },
+    {
+      "front": "In SGD with momentum, what does the decay factor $\\alpha$ determine?",
+      "back": "The relative contribution of the current gradient versus earlier gradients to the weight change."
+    },
+    {
+      "front": "Term: Averaged stochastic gradient descent",
+      "back": "Definition: An SGD variant that uses the average of the parameter vector over time as the final model output."
+    },
+    {
+      "front": "What is the core strategy of the AdaGrad optimizer?",
+      "back": "It adapts the learning rate for each parameter by dividing it by the historical sum of gradient squares."
+    },
+    {
+      "front": "AdaGrad is particularly effective for tasks with _____ data, such as natural language processing.",
+      "back": "sparse"
+    },
+    {
+      "front": "How does RMSProp improve upon AdaGrad for non-convex problems?",
+      "back": "It uses a running average of magnitudes (forgetting old data) to prevent the learning rate from diminishing too quickly."
+    },
+    {
+      "front": "In the RMSProp update formula, what is the purpose of the scalar $\\gamma$?",
+      "back": "It serves as a forgetting factor for the running average of the squared gradients."
+    },
+    {
+      "front": "What does the name 'Adam' stand for in machine learning optimization?",
+      "back": "Adaptive Moment Estimation."
+    },
+    {
+      "front": "Adam combines the running averages of both the gradients and the _____ moments of the gradients.",
+      "back": "second (or squared)"
+    },
+    {
+      "front": "In the Adam optimizer, what is the purpose of the small scalar $\\varepsilon$?",
+      "back": "To prevent division by zero during the parameter update calculation."
+    },
+    {
+      "front": "Implicit stochastic gradient descent (ISGD) is designed to solve what specific issue with large learning rates?",
+      "back": "Numerical instability (or divergence)."
+    },
+    {
+      "front": "Formula: Batch Gradient Descent update",
+      "back": "$w := w - \\frac{\\eta}{n}\\sum_{i=1}^{n}\\nabla Q_i(w)$"
+    },
+    {
+      "front": "Formula: Stochastic Gradient Descent (Single Sample) update",
+      "back": "$w := w - \\eta \\nabla Q_i(w)$"
+    },
+    {
+      "front": "In linear regression, what is the objective function $Q(w)$ that SGD typically minimizes?",
+      "back": "The sum of squared residuals: $\\sum_{i=1}^{n}(\\hat{y}_i - y_i)^2$."
+    },
+    {
+      "front": "What happens if the number of parameters is equal to or greater than the number of observations in a dataset?",
+      "back": "The model can perfectly predict (memorize) the training data but will likely fail on new data."
+    },
+    {
+      "front": "What is 'shrinkage' in the context of model diagnostics?",
+      "back": "The phenomenon where a fitted model performs less well on a new dataset than on the training dataset."
+    },
+    {
+      "front": "Which technique for resolving underfitting involves creating new features from existing ones?",
+      "back": "Feature engineering."
+    },
+    {
+      "front": "Why is overparameterization essential for benign overfitting in linear regression?",
+      "back": "It ensures the number of unimportant parameter directions significantly exceeds the sample size."
+    },
+    {
+      "front": "According to the source material, what are 'up-stream' tasks in deep learning?",
+      "back": "The original training objectives used to pre-train a foundation model."
+    },
+    {
+      "front": "In convolutional neural networks, later layers discern _____-level features more related to specific tasks.",
+      "back": "high"
+    },
+    {
+      "front": "What is the 'Bias-variance tradeoff' used for in machine learning?",
+      "back": "To balance the errors of underfitting and overfitting to achieve the best approximating model."
+    },
+    {
+      "front": "The Robbins–Siegmund theorem is used to analyze the _____ of stochastic gradient descent.",
+      "back": "convergence"
+    },
+    {
+      "front": "In the SGD Linear Regression update, what does the term $2x_i(w_1 + w_2x_i - y_i)$ represent?",
+      "back": "The partial derivative of the squared error with respect to the slope parameter $w_2$."
+    },
+    {
+      "front": "By the 2010s, which optimization strategy replaced constant learning rates with per-parameter rates?",
+      "back": "Adaptive learning rate approaches (like AdaGrad and RMSProp)."
+    },
+    {
+      "front": "Which popular machine learning libraries dominant in 2023 rely heavily on Adam-derived optimizers?",
+      "back": "TensorFlow and PyTorch."
+    },
+    {
+      "front": "How can overfitted generative models create legal problems regarding copyright?",
+      "back": "They can produce outputs that are virtually identical to copyrighted images in their training set."
+    },
+    {
+      "front": "One sign of underfitting is having high _____ and low variance.",
+      "back": "bias"
+    },
+    {
+      "front": "One way to resolve underfitting is to _____ the complexity of the model.",
+      "back": "increase"
+    },
+    {
+      "front": "The 'monkey who typed Hamlet' is used as an analogy to warn against what risk in statistical inference?",
+      "back": "Overfitting when selecting from too many candidate models."
+    },
+    {
+      "front": "In ISGD, the stochastic gradient is evaluated at the _____ iterate rather than the current one.",
+      "back": "next (or $w^{new}$)"
+    },
+    {
+      "front": "Nesterov Accelerated Gradient uses the gradient predicted at the _____ point.",
+      "back": "next"
+    },
+    {
+      "front": "What logic does Occam's razor use to imply that complex functions are less probable?",
+      "back": "A priori, simpler functions are more likely than complex ones unless the complexity gain is offset by a massive fit improvement."
+    },
+    {
+      "front": "In machine learning, 'on-line' gradient descent is a synonym for _____ gradient descent.",
+      "back": "stochastic"
+    },
+    {
+      "front": "Why is data often shuffled for each pass over a training set in SGD?",
+      "back": "To prevent the algorithm from falling into cycles."
+    },
+    {
+      "front": "In SGD Linear Regression, what happens if the learning rate remains constant in the underparameterized case ($m < n$)?",
+      "back": "The algorithm does not converge."
+    },
+    {
+      "front": "Which algorithm is the de facto standard for training artificial neural networks when combined with backpropagation?",
+      "back": "Stochastic gradient descent (SGD)."
+    },
+    {
+      "front": "A 'learning rate schedule' makes the learning rate a _____ function of the iteration number.",
+      "back": "decreasing"
+    },
+    {
+      "front": "The 'heavy ball method' is a synonym for which SGD extension?",
+      "back": "The momentum method."
+    }
+  ]
+}

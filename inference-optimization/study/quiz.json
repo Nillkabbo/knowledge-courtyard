@@ -1,0 +1,317 @@
+{
+  "title": "Inference Quiz",
+  "questions": [
+    {
+      "question": "Modern graphics processing units (GPUs) are increasingly used for artificial intelligence processing primarily due to their ability to accelerate which mathematical area?",
+      "answerOptions": [
+        {
+          "text": "Linear algebra",
+          "isCorrect": true,
+          "rationale": "GPUs excel at the parallel computations required for linear algebra, which is a fundamental component of both graphics and AI model training."
+        },
+        {
+          "text": "Discrete calculus",
+          "isCorrect": false,
+          "rationale": "While related to some computational fields, discrete calculus is not the primary mathematical area that GPUs are specialized to accelerate for AI."
+        },
+        {
+          "text": "Symbolic logic",
+          "isCorrect": false,
+          "rationale": "Symbolic logic manipulation was historically associated with Lisp and early AI research rather than modern GPU-accelerated neural networks."
+        },
+        {
+          "text": "Number theory",
+          "isCorrect": false,
+          "rationale": "Number theory is a branch of pure mathematics that does not directly describe the parallel data processing tasks optimized by GPU hardware."
+        }
+      ],
+      "hint": "Consider the type of math used to transform 3D images and train neural networks."
+    },
+    {
+      "question": "In the context of an inference engine, which reasoning mode starts with known facts and asserts new facts until a goal is reached?",
+      "answerOptions": [
+        {
+          "text": "Backward chaining",
+          "isCorrect": false,
+          "rationale": "This mode starts with a goal and works in reverse to determine which facts are necessary to achieve it."
+        },
+        {
+          "text": "Forward chaining",
+          "isCorrect": true,
+          "rationale": "Forward chaining is a data-driven approach that begins with the current knowledge base and applies rules to deduce more information."
+        },
+        {
+          "text": "Existential quantification",
+          "isCorrect": false,
+          "rationale": "This is a logical concept stating that there exists at least one element in a set, rather than a processing mode for an inference engine."
+        },
+        {
+          "text": "Universal quantification",
+          "isCorrect": false,
+          "rationale": "This refers to statements that apply to all members of a set and is not a specific mode of rule execution."
+        }
+      ],
+      "hint": "Think about the direction of the logical flow starting from the 'IF' part of a rule."
+    },
+    {
+      "question": "Without the use of a KV cache, how does the computational complexity of generating a sequence of $N$ tokens grow?",
+      "answerOptions": [
+        {
+          "text": "$O(N)$",
+          "isCorrect": false,
+          "rationale": "Linear growth is only achieved when using optimizations like KV caching that prevent redundant reprocessing of previous tokens."
+        },
+        {
+          "text": "$O(N^2)$",
+          "isCorrect": true,
+          "rationale": "Without a cache, every new token requires reprocessing the entire preceding context, leading to quadratic growth in total operations."
+        },
+        {
+          "text": "$O(\\log N)$",
+          "isCorrect": false,
+          "rationale": "Logarithmic growth would imply the work decreases relative to the sequence length, which is not the case for sequence generation."
+        },
+        {
+          "text": "$O(1)$",
+          "isCorrect": false,
+          "rationale": "Constant complexity is impossible because the attention mechanism must account for the increasing number of tokens in the sequence."
+        }
+      ],
+      "hint": "Recall the effect of reprocessing the entire context for every single new token produced."
+    },
+    {
+      "question": "Which quantization format effectively reduces a model's size from 14 GB to approximately 3.5 GB for an 8B parameter model?",
+      "answerOptions": [
+        {
+          "text": "int8",
+          "isCorrect": false,
+          "rationale": "An 8-bit format reduces memory usage by half compared to fp16, resulting in a size of 7 GB for an 8B model."
+        },
+        {
+          "text": "int4",
+          "isCorrect": true,
+          "rationale": "4-bit quantization reduces the precision from 16 bits to 4 bits, effectively making the model 4 times smaller in memory."
+        },
+        {
+          "text": "fp32",
+          "isCorrect": false,
+          "rationale": "Standard 32-bit floating point would double the size of an fp16 model rather than reducing it."
+        },
+        {
+          "text": "int2",
+          "isCorrect": false,
+          "rationale": "While even smaller, 2-bit quantization would reduce the model size to roughly 1.75 GB but typically results in significant quality loss."
+        }
+      ],
+      "hint": "Consider the ratio of bits needed to achieve a 4-fold reduction in memory from fp16."
+    },
+    {
+      "question": "What is the primary advantage of 'Continuous Batching' (used in frameworks like vLLM) over traditional 'Static Batching'?",
+      "answerOptions": [
+        {
+          "text": "It waits for the slowest request to finish before starting a new batch.",
+          "isCorrect": false,
+          "rationale": "Waiting for the slowest request is a characteristic of static batching, which leads to lower GPU utilization."
+        },
+        {
+          "text": "It allows new requests to join the batch at each token generation step.",
+          "isCorrect": true,
+          "rationale": "Continuous batching prevents head-of-line blocking by dynamically inserting new requests as soon as others finish their generation."
+        },
+        {
+          "text": "It reduces the total memory required for the model weights.",
+          "isCorrect": false,
+          "rationale": "Batching strategies optimize throughput and latency but do not change the underlying size of the model weights."
+        },
+        {
+          "text": "It eliminates the need for a KV cache.",
+          "isCorrect": false,
+          "rationale": "Batching actually increases the demand for efficient KV cache management because multiple contexts must be stored simultaneously."
+        }
+      ],
+      "hint": "Think about a conveyor belt where items can be added or removed independently."
+    },
+    {
+      "question": "How does FlashAttention improve inference speed without changing the mathematical output of the attention mechanism?",
+      "answerOptions": [
+        {
+          "text": "By reducing the sequence length using a sliding window.",
+          "isCorrect": false,
+          "rationale": "Sliding window is a separate technique that approximates attention; FlashAttention produces the exact same results as standard attention."
+        },
+        {
+          "text": "By avoiding the materialization of the full $N \\times N$ attention matrix in slow memory (HBM).",
+          "isCorrect": true,
+          "rationale": "FlashAttention uses tiling to perform computations in fast SRAM, reducing slow memory input/output operations."
+        },
+        {
+          "text": "By sharing keys and values across all attention heads.",
+          "isCorrect": false,
+          "rationale": "Sharing keys and values across heads describes Multi-Query Attention, which is an architectural change, not a kernel optimization."
+        },
+        {
+          "text": "By pruning low-saliency weights during the forward pass.",
+          "isCorrect": false,
+          "rationale": "FlashAttention does not remove weights; it optimizes the execution of the standard attention algorithm."
+        }
+      ],
+      "hint": "Focus on how the data is moved between different types of on-chip memory."
+    },
+    {
+      "question": "In speculative decoding, what happens if the 'target model' determines that a token proposed by the 'draft model' is incorrect?",
+      "answerOptions": [
+        {
+          "text": "The entire sequence generated so far is deleted.",
+          "isCorrect": false,
+          "rationale": "Only the tokens starting from the first incorrect guess are discarded; previous valid tokens are kept."
+        },
+        {
+          "text": "The target model accepts the incorrect token to maintain speed.",
+          "isCorrect": false,
+          "rationale": "Speculative decoding guarantees mathematical identicality to the target model, so incorrect guesses must be corrected."
+        },
+        {
+          "text": "The first incorrect token is resampled from a corrected distribution and subsequent tokens are discarded.",
+          "isCorrect": true,
+          "rationale": "This rejection sampling scheme ensures the final output follows the probability distribution of the larger, more accurate model."
+        },
+        {
+          "text": "The draft model is retrained immediately using the target model's output.",
+          "isCorrect": false,
+          "rationale": "Retraining is a 'Knowledge Distillation' or training-time process and does not happen during the inference-time speculative decoding cycle."
+        }
+      ],
+      "hint": "Recall the analogy of a master worker verifying the work of a fast apprentice."
+    },
+    {
+      "question": "During knowledge distillation, why is a high 'temperature' ($t$) used in the softmax function when generating soft targets?",
+      "answerOptions": [
+        {
+          "text": "To produce a sharper probability distribution that focuses on the correct class.",
+          "isCorrect": false,
+          "rationale": "Higher temperatures actually smooth the distribution, while lower temperatures make it sharper."
+        },
+        {
+          "text": "To increase the entropy of the output and provide more information about how the large model represents knowledge.",
+          "isCorrect": true,
+          "rationale": "A softer distribution reveals the relationships and 'pseudolikelihoods' between incorrect classes, which the smaller model can learn from."
+        },
+        {
+          "text": "To reduce the computational cost of evaluating the distilled model.",
+          "isCorrect": false,
+          "rationale": "Temperature is a parameter used during the training phase of distillation and does not inherently change the evaluation cost of the architecture."
+        },
+        {
+          "text": "To ensure the distilled model has more parameters than the teacher model.",
+          "isCorrect": false,
+          "rationale": "The goal of distillation is to create a smaller student model, not a larger one."
+        }
+      ],
+      "hint": "Consider what happens to the distribution of probabilities as the temperature parameter increases."
+    },
+    {
+      "question": "According to the 'Optimal Brain Damage' algorithm, what determines the 'saliency' of a parameter to be pruned?",
+      "answerOptions": [
+        {
+          "text": "The absolute magnitude of the weight.",
+          "isCorrect": false,
+          "rationale": "Magnitude-based pruning is a simpler method; Optimal Brain Damage specifically uses second-derivative information."
+        },
+        {
+          "text": "The increase in the loss function if that parameter is set to zero.",
+          "isCorrect": true,
+          "rationale": "Saliency approximates how much the model's performance will degrade if a specific parameter is removed, allowing for more strategic pruning."
+        },
+        {
+          "text": "The frequency of the parameter's use during the prefill phase.",
+          "isCorrect": false,
+          "rationale": "Saliency is calculated based on the loss surface and gradients, not the frequency of activation during a specific inference phase."
+        },
+        {
+          "text": "The total number of floating-point operations associated with that weight.",
+          "isCorrect": false,
+          "rationale": "Computational cost is not the same as saliency; a costly weight might still be essential for accuracy."
+        }
+      ],
+      "hint": "Think about the impact that removing a piece of information has on the overall result."
+    },
+    {
+      "question": "Which attention architecture serves as a 'sweet spot' by grouping query heads to share a smaller number of key and value heads?",
+      "answerOptions": [
+        {
+          "text": "Multi-Head Attention (MHA)",
+          "isCorrect": false,
+          "rationale": "MHA gives every query head its own key and value, which maximizes quality but also maximizes KV cache memory usage."
+        },
+        {
+          "text": "Multi-Query Attention (MQA)",
+          "isCorrect": false,
+          "rationale": "MQA shares a single key and value across all query heads, which saves the most memory but can lead to a drop in quality."
+        },
+        {
+          "text": "Grouped-Query Attention (GQA)",
+          "isCorrect": true,
+          "rationale": "GQA provides a balance by using $M$ groups of keys and values, offering a compromise between memory efficiency and model performance."
+        },
+        {
+          "text": "Sparse Attention",
+          "isCorrect": false,
+          "rationale": "Sparse attention refers to patterns where tokens only attend to a subset of other tokens, rather than how heads are organized."
+        }
+      ],
+      "hint": "Identify the method used in Llama 3 that sits between having separate KV for every head and one KV for all heads."
+    },
+    {
+      "question": "What is the primary bottleneck in standard autoregressive decoding that speculative decoding aims to bypass?",
+      "answerOptions": [
+        {
+          "text": "Arithmetic throughput of the Tensor cores.",
+          "isCorrect": false,
+          "rationale": "Modern processors are generally fast enough that arithmetic is not the main delay during single-token generation."
+        },
+        {
+          "text": "Memory bandwidth limits between HBM and the processor.",
+          "isCorrect": true,
+          "rationale": "Loading model parameters for just one token is inefficient; speculative decoding uses the spare bandwidth to process multiple candidate tokens at once."
+        },
+        {
+          "text": "The speed of light in fiber optic cables.",
+          "isCorrect": false,
+          "rationale": "While relevant for networking, this is not the internal architectural bottleneck of the decoding process itself."
+        },
+        {
+          "text": "The lack of labeled training data.",
+          "isCorrect": false,
+          "rationale": "Training data availability is a bottleneck for model development, not for the efficiency of the inference process."
+        }
+      ],
+      "hint": "Think about the time spent moving model data from storage to the processing unit."
+    },
+    {
+      "question": "In the 'match rules' step of an inference engine cycle, what is the engine specifically looking for during 'backward chaining'?",
+      "answerOptions": [
+        {
+          "text": "Facts in the knowledge base that match the 'IF' part of a rule.",
+          "isCorrect": false,
+          "rationale": "Matching the antecedent (IF part) to existing facts is the defining characteristic of forward chaining."
+        },
+        {
+          "text": "Rules that have an antecedent (left hand side) that can satisfy a current goal.",
+          "isCorrect": true,
+          "rationale": "Backward chaining is goal-driven, meaning the engine looks for rules that lead to the desired conclusion."
+        },
+        {
+          "text": "User inputs that contradict the current knowledge base.",
+          "isCorrect": false,
+          "rationale": "While engines can handle user input, the matching step specifically concerns the logical relationship between rules and the knowledge base."
+        },
+        {
+          "text": "Redundant rules that can be pruned for efficiency.",
+          "isCorrect": false,
+          "rationale": "Rule pruning is an optimization for the system itself, not a standard step in the inference engine's logical execution cycle."
+        }
+      ],
+      "hint": "Recall the difference between data-driven and goal-driven reasoning."
+    }
+  ]
+}

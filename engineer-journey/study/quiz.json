@@ -1,0 +1,265 @@
+{
+  "title": "Software Quiz",
+  "questions": [
+    {
+      "question": "Which architect is credited with introducing the concept of a design pattern as a reusable form of a solution to a design problem?",
+      "answerOptions": [
+        {
+          "text": "Christopher Alexander",
+          "isCorrect": true,
+          "rationale": "He first proposed the idea in his work on architectural patterns, which was later adapted into fields like software engineering."
+        },
+        {
+          "text": "Erich Gamma",
+          "isCorrect": false,
+          "rationale": "He is a member of the 'Gang of Four' who popularized software design patterns, but he did not originate the core concept."
+        },
+        {
+          "text": "Glenford J. Myers",
+          "isCorrect": false,
+          "rationale": "His primary contributions relate to the separation of software testing from debugging rather than design patterns."
+        },
+        {
+          "text": "John Vlissides",
+          "isCorrect": false,
+          "rationale": "While he co-authored a seminal book on design patterns, the foundational concept was borrowed from the field of physical architecture."
+        }
+      ],
+      "hint": "Consider the pioneer of the 'Pattern Language' in town and building construction."
+    },
+    {
+      "question": "In the context of design pattern documentation, what term describes the range of situations where a specific pattern can be applied?",
+      "answerOptions": [
+        {
+          "text": "Context",
+          "isCorrect": true,
+          "rationale": "The context defines the specific environment or set of circumstances in which a pattern's solution is valid and helpful."
+        },
+        {
+          "text": "Hierarchy",
+          "isCorrect": false,
+          "rationale": "This refers to the ranking or ordering of systems rather than the scope of a solution's applicability."
+        },
+        {
+          "text": "Force",
+          "isCorrect": false,
+          "rationale": "This represents the conflicting requirements or values a designer must balance, not the scope of the pattern's use."
+        },
+        {
+          "text": "Terminology",
+          "isCorrect": false,
+          "rationale": "This refers to the common language used by designers to discuss problems rather than the application range of a pattern."
+        }
+      ],
+      "hint": "This term refers to the background or environment that makes a problem relevant."
+    },
+    {
+      "question": "What is the primary function of a 'test oracle' in software testing?",
+      "answerOptions": [
+        {
+          "text": "To provide a mechanism for recognizing whether a test has passed or failed based on specific criteria.",
+          "isCorrect": true,
+          "rationale": "An oracle serves as a source of truth, such as a specification or past version, used to measure the correctness of a program's output."
+        },
+        {
+          "text": "To automatically generate all possible input combinations for a software system.",
+          "isCorrect": false,
+          "rationale": "Generating all combinations is often computationally infeasible, and this task is typically handled by test generation tools, not oracles."
+        },
+        {
+          "text": "To repair code defects immediately after they are detected during execution.",
+          "isCorrect": false,
+          "rationale": "Oracles are used for detection and comparison, whereas the actual fixing of code is part of the debugging and development process."
+        },
+        {
+          "text": "To manage the scheduling of test runs in a continuous integration pipeline.",
+          "isCorrect": false,
+          "rationale": "Scheduling and pipeline management are functions of CI/CD tools, not the logical comparison mechanism of a test oracle."
+        }
+      ],
+      "hint": "Think of a benchmark or reference point used to determine if software behavior is correct."
+    },
+    {
+      "question": "How did Glenford J. Myers influence the field of software engineering in 1979?",
+      "answerOptions": [
+        {
+          "text": "He introduced the separation of debugging from software testing.",
+          "isCorrect": true,
+          "rationale": "This distinction allowed the community to view verification as a separate activity from the construction and fixing of code."
+        },
+        {
+          "text": "He established the first set of international standards for accessibility testing.",
+          "isCorrect": false,
+          "rationale": "Accessibility standards were developed later by groups like the W3C, focusing on users with disabilities."
+        },
+        {
+          "text": "He developed the 'test pyramid' model for automated testing efficiency.",
+          "isCorrect": false,
+          "rationale": "The test pyramid is a more modern concept associated with agile methodologies and automated delivery pipelines."
+        },
+        {
+          "text": "He founded the National Institute of Standards and Technology (NIST) study on bug costs.",
+          "isCorrect": false,
+          "rationale": "NIST is a government agency that conducted the economic study in 2002, long after Myers' initial work."
+        }
+      ],
+      "hint": "His work focused on distinguishing the act of finding errors from the act of fixing them."
+    },
+    {
+      "question": "Which tier of the 'test pyramid' should contain the highest volume of tests in a typical automated testing strategy?",
+      "answerOptions": [
+        {
+          "text": "Unit tests",
+          "isCorrect": true,
+          "rationale": "Unit tests are isolated, fast, and form the foundational base of the pyramid to provide quick feedback on code components."
+        },
+        {
+          "text": "Integration tests",
+          "isCorrect": false,
+          "rationale": "While important for checking component interaction, these occupy the middle of the pyramid and are fewer in number than unit tests."
+        },
+        {
+          "text": "End-to-end tests",
+          "isCorrect": false,
+          "rationale": "These sit at the top of the pyramid and should be used sparingly because they are typically slow and expensive to maintain."
+        },
+        {
+          "text": "Manual exploratory tests",
+          "isCorrect": false,
+          "rationale": "Exploratory testing is an approach used for learning and discovery, rather than a quantifiable tier within the automated test pyramid model."
+        }
+      ],
+      "hint": "Consider the fastest and most isolated type of testing performed on source code."
+    },
+    {
+      "question": "What is a characteristic of 'grey-box testing' that distinguishes it from black-box testing?",
+      "answerOptions": [
+        {
+          "text": "The tester uses limited knowledge of internal data structures while testing from a user-level perspective.",
+          "isCorrect": true,
+          "rationale": "Grey-box testing combines an external functional approach with internal insights, such as database schemas or algorithm knowledge."
+        },
+        {
+          "text": "The tester is completely unaware of how the software implementation works.",
+          "isCorrect": false,
+          "rationale": "This describes black-box testing, where knowledge is limited strictly to the software's specified functionality."
+        },
+        {
+          "text": "The testing is focused solely on reviewing code structure and documentation without execution.",
+          "isCorrect": false,
+          "rationale": "This describes static testing, whereas grey-box testing involves executing the software."
+        },
+        {
+          "text": "The tester must have access to 100 percent of the source code to design every test case.",
+          "isCorrect": false,
+          "rationale": "Full internal access is the hallmark of white-box testing; grey-box testing relies on 'limited' or partial information."
+        }
+      ],
+      "hint": "This methodology sits between having no internal knowledge and having complete structural visibility."
+    },
+    {
+      "question": "Which testing type is specifically designed to ensure that previously working features have not been broken by recent code changes?",
+      "answerOptions": [
+        {
+          "text": "Regression testing",
+          "isCorrect": true,
+          "rationale": "Regression testing seeks to uncover unintended consequences of changes, ensuring old functionality remains intact."
+        },
+        {
+          "text": "Sanity testing",
+          "isCorrect": false,
+          "rationale": "This determines if it is reasonable to proceed with further testing at all, rather than checking the integrity of old features."
+        },
+        {
+          "text": "Smoke testing",
+          "isCorrect": false,
+          "rationale": "Smoke testing consists of minimal checks to see if basic functions operate before starting a deeper test effort."
+        },
+        {
+          "text": "Alpha testing",
+          "isCorrect": false,
+          "rationale": "This is a form of internal acceptance testing performed by developers or independent teams before releasing to external users."
+        }
+      ],
+      "hint": "This process is often the largest effort in commercial software development due to the constant addition of new features."
+    },
+    {
+      "question": "According to the source material, what is the primary benefit of 'shift-left testing'?",
+      "answerOptions": [
+        {
+          "text": "It identifies defects earlier in the lifecycle, significantly reducing the cost and time required to fix them.",
+          "isCorrect": true,
+          "rationale": "Integrating testing early prevents bugs from propagating into later stages where they become exponentially more expensive to eliminate."
+        },
+        {
+          "text": "It eliminates the need for developers to perform unit testing on their own code.",
+          "isCorrect": false,
+          "rationale": "Shift-left actually encourages earlier testing activities, which often includes developer-led unit testing."
+        },
+        {
+          "text": "It guarantees that 100 percent statement coverage is achieved before the system test phase.",
+          "isCorrect": false,
+          "rationale": "While it promotes better coverage, no single methodology can guarantee complete coverage of all possible logic paths."
+        },
+        {
+          "text": "It allows the software to be shipped immediately after the construction phase without a formal test closure.",
+          "isCorrect": false,
+          "rationale": "Testing still requires evaluation and closure; shift-left simply redistributes the testing effort throughout the process."
+        }
+      ],
+      "hint": "Think about the financial and temporal advantages of finding a mistake early in the design phase."
+    },
+    {
+      "question": "Which form of acceptance testing is used to verify that a system is operationally ready and supported in a production environment?",
+      "answerOptions": [
+        {
+          "text": "Operational Acceptance Testing (OAT)",
+          "isCorrect": true,
+          "rationale": "OAT focuses on non-functional aspects like maintainability and supportability within the target production environment."
+        },
+        {
+          "text": "User Acceptance Testing (UAT)",
+          "isCorrect": false,
+          "rationale": "UAT is generally performed by customers to ensure the software satisfies their business needs and expectations."
+        },
+        {
+          "text": "Beta testing",
+          "isCorrect": false,
+          "rationale": "Beta testing involves releasing software to a limited external audience to find final bugs before a general launch."
+        },
+        {
+          "text": "Contractual acceptance testing",
+          "isCorrect": false,
+          "rationale": "This is performed against legally defined criteria in a contract rather than operational readiness standards."
+        }
+      ],
+      "hint": "This type of testing is also known as 'operational readiness testing' (ORT)."
+    },
+    {
+      "question": "What is a fundamental limitation of software testing as stated in the source material?",
+      "answerOptions": [
+        {
+          "text": "It can show the presence of bugs but cannot prove their absence for all possible scenarios.",
+          "isCorrect": true,
+          "rationale": "Testing is finite and cannot exhaustively check every combination of input and environment to guarantee absolute correctness."
+        },
+        {
+          "text": "It is unable to measure non-functional requirements such as performance or scalability.",
+          "isCorrect": false,
+          "rationale": "Software testing can measure these attributes, although the interpretation of the results may be subjective."
+        },
+        {
+          "text": "It requires the software to be 100 percent complete before any static analysis can be performed.",
+          "isCorrect": false,
+          "rationale": "Static testing, such as code reviews and syntax checks, can occur as soon as the first lines of code or requirements are written."
+        },
+        {
+          "text": "It can only be performed by dedicated testers and cannot involve the original programmers.",
+          "isCorrect": false,
+          "rationale": "Testing is often a collaborative effort, especially in agile environments where programmers and testers work together."
+        }
+      ],
+      "hint": "Think about whether testing can truly find 'every' defect in a complex system."
+    }
+  ]
+}

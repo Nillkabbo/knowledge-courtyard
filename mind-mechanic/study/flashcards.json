@@ -1,0 +1,301 @@
+{
+  "title": "Circadian Flashcards",
+  "cards": [
+    {
+      "front": "The term 'circadian' is derived from which two Latin words?",
+      "back": "Circa (meaning 'around') and dies (meaning 'day')."
+    },
+    {
+      "front": "A process is only classified as a 'circadian rhythm' if it is confirmed to be _____.",
+      "back": "Endogenous (originating within the organism)."
+    },
+    {
+      "front": "What is the primary function of a circadian clock?",
+      "back": "To rhythmically coordinate biological processes to maximize an individual's fitness."
+    },
+    {
+      "front": "What term describes the process of resetting an endogenous rhythm via external stimuli?",
+      "back": "Entrainment."
+    },
+    {
+      "front": "What is the meaning of the German term 'zeitgeber' in the context of biological rhythms?",
+      "back": "Time giver."
+    },
+    {
+      "front": "Which 4th-century BC philosopher provided the earliest recorded account of a circadian process in plants?",
+      "back": "Theophrastus."
+    },
+    {
+      "front": "In 1729, Jean-Jacques d'Ortous de Mairan observed that the leaves of the plant _____ continued their 24-hour patterns in total darkness.",
+      "back": "Mimosa pudica."
+    },
+    {
+      "front": "Which scientist showed in 1918 that animals maintain 24-hour activity patterns without external light or temperature cues?",
+      "back": "J. S. Szymanski."
+    },
+    {
+      "front": "The first clock mutation in $Drosophila$, identified in 1971, was named the _____ gene.",
+      "back": "Period (per)."
+    },
+    {
+      "front": "Which three researchers shared the 2017 Nobel Prize in Physiology or Medicine for discovering molecular mechanisms of the circadian rhythm?",
+      "back": "Jeffrey Hall, Michael Rosbash, and Michael W. Young."
+    },
+    {
+      "front": "The first mammalian circadian clock mutation, discovered in 1994 by Joseph Takahashi, was named _____.",
+      "back": "clock$\\Delta$19."
+    },
+    {
+      "front": "Familial advanced sleep phase syndrome (FASPS) in humans is caused by an amino acid change in which protein?",
+      "back": "Human PER2."
+    },
+    {
+      "front": "To be considered circadian, a rhythm must have an endogenously derived free-running period of approximately _____.",
+      "back": "24 hours."
+    },
+    {
+      "front": "What Greek letter is used to denote the free-running period of a rhythm in constant conditions?",
+      "back": "$\\tau$ (tau)."
+    },
+    {
+      "front": "The property of maintaining a 24-hour periodicity despite changes in thermal energy is called _____.",
+      "back": "Temperature compensation."
+    },
+    {
+      "front": "Which coefficient is used to measure the temperature compensation effect in biological rhythms?",
+      "back": "The $Q_{10}$ temperature coefficient."
+    },
+    {
+      "front": "According to the Great Oxidation Event hypothesis, circadian rhythms evolved to counteract damaging _____ reactions.",
+      "back": "Redox."
+    },
+    {
+      "front": "The Great Oxidation Event, which likely drove the evolution of circadian rhythms, occurred approximately _____ years ago.",
+      "back": "2.3 billion."
+    },
+    {
+      "front": "In the $in$ $vitro$ reconstitution of the cyanobacteria clock, which three proteins are required for the central oscillator?",
+      "back": "KaiA, KaiB, and KaiC."
+    },
+    {
+      "front": "What molecule must be added to the KaiA, KaiB, and KaiC protein mixture to sustain a 22-hour rhythm?",
+      "back": "ATP."
+    },
+    {
+      "front": "The physiological reaction of an organism to the length of day or night is called _____.",
+      "back": "Photoperiodism."
+    },
+    {
+      "front": "Which environmental cue is most predictive for the seasonal timing of migration and hibernation?",
+      "back": "Changing length of the photoperiod (day length)."
+    },
+    {
+      "front": "Clock-mutant mice often display which two metabolic conditions?",
+      "back": "Obesity and hyperglycemia (diabetes predisposition)."
+    },
+    {
+      "front": "In general, the free-running period $\\tau$ for nocturnal animals is _____ than 24 hours.",
+      "back": "Shorter."
+    },
+    {
+      "front": "Arctic animals like reindeer only show circadian rhythms during which parts of the year?",
+      "back": "Parts of the year with daily sunrises and sunsets."
+    },
+    {
+      "front": "Which specific animal species has an exceptionally short circadian clock of about 19 hours?",
+      "back": "Cyclosa turbinata (spider)."
+    },
+    {
+      "front": "Monarch butterflies use a sun compass for migration that depends on a circadian clock located in their _____.",
+      "back": "Antennae."
+    },
+    {
+      "front": "Apart from light, what is a key synchronizer for peripheral clocks in the liver and muscles?",
+      "back": "Feeding (time-restricted feeding)."
+    },
+    {
+      "front": "The movement of plant leaves in response to the light-dark cycle is called _____.",
+      "back": "Nyctinasty."
+    },
+    {
+      "front": "Which blue-light receptors help maintain the period length of the plant circadian clock?",
+      "back": "Cryptochromes (cry 1–2)."
+    },
+    {
+      "front": "In the $Arabidopsis$ morning loop, which two genes encode MYB transcription factors?",
+      "back": "CCA1 and LHY."
+    },
+    {
+      "front": "Recent computational modeling suggests the plant circadian clock operates as a triple negative-component _____.",
+      "back": "Repressilator."
+    },
+    {
+      "front": "The hypothesis that sugars from photosynthesis help regulate the circadian rhythm is known as _____.",
+      "back": "Metabolic dawn."
+    },
+    {
+      "front": "In $Drosophila$, which neuropeptide acts as a neuromodulator between different clock neurons?",
+      "back": "Pigment dispersing factor (PDF)."
+    },
+    {
+      "front": "In the $Drosophila$ clock, which protein causes the phosphorylation and turnover of monomeric PER proteins during the day?",
+      "back": "Doubletime (DBT)."
+    },
+    {
+      "front": "What event in the $Drosophila$ morning cycle allows for the activation of $clk$ and $cyc$ genes?",
+      "back": "The light-activated breakdown of TIM by CRY."
+    },
+    {
+      "front": "The primary master circadian clock in mammals is located in the _____.",
+      "back": "Suprachiasmatic nucleus (SCN)."
+    },
+    {
+      "front": "Which specialized retinal cells project directly to the SCN to help entrain the master clock?",
+      "back": "Photosensitive ganglion cells."
+    },
+    {
+      "front": "Which photopigment is contained within the photosensitive ganglion cells used for circadian entrainment?",
+      "back": "Melanopsin."
+    },
+    {
+      "front": "The neural pathway from the retina to the suprachiasmatic nucleus is called the _____.",
+      "back": "Retinohypothalamic tract."
+    },
+    {
+      "front": "The SCN passes information about day length to the pineal gland to regulate the secretion of _____.",
+      "back": "Melatonin."
+    },
+    {
+      "front": "At what time of day does melatonin secretion typically reach its peak?",
+      "back": "At night."
+    },
+    {
+      "front": "According to a 1999 Harvard study, the natural human circadian rhythm is approximately _____.",
+      "back": "24 hours and 11 minutes."
+    },
+    {
+      "front": "What are the three classic phase markers used to measure the timing of a mammal's circadian rhythm?",
+      "back": "Melatonin secretion, core body temperature minimum, and plasma cortisol levels."
+    },
+    {
+      "front": "At what approximate time does the average human adult's core body temperature reach its minimum?",
+      "back": "5:00 a.m."
+    },
+    {
+      "front": "What does the acronym DLMO stand for in chronobiology?",
+      "back": "Dim-light melatonin onset."
+    },
+    {
+      "front": "Which physiological marker is considered more stable and reliable than the core temperature minimum?",
+      "back": "Melatonin phase markers (especially offset)."
+    },
+    {
+      "front": "Circadian oscillators found in organs like the liver or lungs are called _____.",
+      "back": "Peripheral oscillators."
+    },
+    {
+      "front": "The graph representing how light advances or delays the circadian rhythm based on timing is called the _____.",
+      "back": "Phase response curve (PRC)."
+    },
+    {
+      "front": "Which metric is used to design lighting systems that support the biological clock indoors?",
+      "back": "Melanopic equivalent daylight illuminance (M-EDI)."
+    },
+    {
+      "front": "A research protocol where sleep/wake cycles are intentionally uncoupled from the endogenous circadian period is called _____.",
+      "back": "Forced desynchrony."
+    },
+    {
+      "front": "The medical practice of timing treatments in coordination with the body clock is called _____.",
+      "back": "Chronotherapeutics."
+    },
+    {
+      "front": "Which type of indoor lighting suppresses melatonin production five times more than high-pressure sodium light?",
+      "back": "Blue LED lighting."
+    },
+    {
+      "front": "Why are airline pilots prone to circadian disruption and fatigue?",
+      "back": "They cross multiple time zones and lack sleep patterns corresponding to natural rhythms."
+    },
+    {
+      "front": "Chronic disruption of circadian rhythms enhances _____ stress, leading to neurodegeneration.",
+      "back": "Oxidative."
+    },
+    {
+      "front": "Which atherosclerosis biomarker is often elevated in shift workers due to circadian misalignment?",
+      "back": "Resistin."
+    },
+    {
+      "front": "Circadian misalignment in shift workers is associated with elevated levels of _____ which contribute to the hardening of arteries.",
+      "back": "Triacylglycerides."
+    },
+    {
+      "front": "What is the impact of circadian disruption on female fertility?",
+      "back": "It increases the odds of menstrual cycle disruption and infertility."
+    },
+    {
+      "front": "How does circadian disruption affect male reproductive health?",
+      "back": "It may lead to decreased semen quality."
+    },
+    {
+      "front": "Which Chinese medical text from the 13th century mentions diurnal cycles in humans?",
+      "back": "The Noon and Midnight Manual."
+    },
+    {
+      "front": "A definitions of circadian adopted in 1977 states a frequency of 1 cycle in _____ hours.",
+      "back": "$24 \\pm 4$."
+    },
+    {
+      "front": "In plants, which phytochrome is light labile and allows for germination when light is scarce?",
+      "back": "Phytochrome A (phyA)."
+    },
+    {
+      "front": "According to the PER-TIM model in $Drosophila$, what speeds up the degradation of the TIM protein?",
+      "back": "Light."
+    },
+    {
+      "front": "How does alcohol consumption affects the circadian rhythm?",
+      "back": "It causes dose-dependent alterations in melatonin, cortisol, and core body temperature."
+    },
+    {
+      "front": "A 'power-nap' during the day typically has what effect on the normal circadian rhythm?",
+      "back": "No measurable effect."
+    },
+    {
+      "front": "Circadian rhythms are crucial for maintaining a state of consciousness through their role in the _____ system.",
+      "back": "Reticular activating."
+    },
+    {
+      "front": "Which animal was used to show that circadian misalignment leads to profound cardiovascular and renal disease?",
+      "back": "Tau hamsters."
+    },
+    {
+      "front": "Shift work is associated with higher body mass because it favors _____.",
+      "back": "Irregular eating times."
+    },
+    {
+      "front": "Individuals over 50 who are chronic night shift workers have an increased risk of developing _____.",
+      "back": "Dementia."
+    },
+    {
+      "front": "In $Drosophila$, the CLK/CYC loop initiates the transcription of which two genes?",
+      "back": "per and tim."
+    },
+    {
+      "front": "What happens to the expression of CCA1 in plants when photosynthetic sugar levels increase?",
+      "back": "It increases (following the repression of PRR7)."
+    },
+    {
+      "front": "Which organ contains peripheral oscillators that respond to feeding rather than light?",
+      "back": "The liver."
+    },
+    {
+      "front": "What is the average human core body temperature minimum time for 'morning types'?",
+      "back": "4:00 a.m."
+    },
+    {
+      "front": "What is the average human core body temperature minimum time for 'evening types'?",
+      "back": "6:00 a.m."
+    }
+  ]
+}

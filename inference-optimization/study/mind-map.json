@@ -1,0 +1,137 @@
+{
+  "name": "AI Inference and Graphics Optimization",
+  "children": [
+    {
+      "name": "Core Technologies",
+      "children": [
+        {
+          "name": "Nvidia DLSS",
+          "children": [
+            {
+              "name": "DLSS 1: Spatial Upscaling"
+            },
+            {
+              "name": "DLSS 2: Temporal Anti-Aliasing"
+            },
+            {
+              "name": "DLSS 3: Frame Generation"
+            },
+            {
+              "name": "DLSS 3.5: Ray Reconstruction"
+            },
+            {
+              "name": "DLSS 4: Multi Frame Generation"
+            },
+            {
+              "name": "DLSS 5: Neural Rendering"
+            }
+          ]
+        },
+        {
+          "name": "Graphics Processing Unit (GPU)",
+          "children": [
+            {
+              "name": "Dedicated GPUs (Discrete)"
+            },
+            {
+              "name": "Integrated GPUs (Shared Memory)"
+            },
+            {
+              "name": "Tensor Cores (AI Acceleration)"
+            },
+            {
+              "name": "GPGPU (General Purpose Computing)"
+            }
+          ]
+        },
+        {
+          "name": "Inference Engines",
+          "children": [
+            {
+              "name": "Expert Systems Knowledge Base"
+            },
+            {
+              "name": "Forward Chaining (Fact-driven)"
+            },
+            {
+              "name": "Backward Chaining (Goal-driven)"
+            },
+            {
+              "name": "Neural Network Prediction"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Inference Optimization Strategies",
+      "children": [
+        {
+          "name": "Memory & Cache",
+          "children": [
+            {
+              "name": "KV Cache (Hafiz)"
+            },
+            {
+              "name": "PagedAttention (vLLM)"
+            },
+            {
+              "name": "Prefix Caching"
+            }
+          ]
+        },
+        {
+          "name": "Model Compression",
+          "children": [
+            {
+              "name": "Quantization (fp16 to int4)"
+            },
+            {
+              "name": "Pruning (Setting weights to zero)"
+            },
+            {
+              "name": "Knowledge Distillation (Teacher-Student)"
+            },
+            {
+              "name": "Low-rank Factorization"
+            }
+          ]
+        },
+        {
+          "name": "Computational Speedup",
+          "children": [
+            {
+              "name": "Speculative Decoding (Draft & Verify)"
+            },
+            {
+              "name": "Continuous Batching (Jamaat)"
+            },
+            {
+              "name": "FlashAttention (Tanzim)"
+            },
+            {
+              "name": "Custom Kernels (CUDA/Triton)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Performance Impact",
+      "children": [
+        {
+          "name": "Throughput (Tokens per second)"
+        },
+        {
+          "name": "Latency (Time to First Token)"
+        },
+        {
+          "name": "Hardware Selection (A100 vs H100 vs T4)"
+        },
+        {
+          "name": "Cost Reduction (Token Economics)"
+        }
+      ]
+    }
+  ]
+}

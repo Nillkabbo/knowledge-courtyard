@@ -1,0 +1,236 @@
+{
+  "name": "Evaluation Methodologies and Principles",
+  "children": [
+    {
+      "name": "A/B Testing",
+      "children": [
+        {
+          "name": "Methodology",
+          "children": [
+            {
+              "name": "Randomized Experiment"
+            },
+            {
+              "name": "Variant A vs Variant B"
+            },
+            {
+              "name": "Statistical Hypothesis Testing"
+            }
+          ]
+        },
+        {
+          "name": "Applications",
+          "children": [
+            {
+              "name": "User Experience"
+            },
+            {
+              "name": "E-commerce Funnels"
+            },
+            {
+              "name": "Social Media Engagement"
+            },
+            {
+              "name": "Product Pricing"
+            }
+          ]
+        },
+        {
+          "name": "Statistics",
+          "children": [
+            {
+              "name": "Z-tests"
+            },
+            {
+              "name": "T-tests"
+            },
+            {
+              "name": "Fisher's Exact Test"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Benchmarking",
+      "children": [
+        {
+          "name": "Purpose",
+          "children": [
+            {
+              "name": "Performance Assessment"
+            },
+            {
+              "name": "Architecture Comparison"
+            },
+            {
+              "name": "Workload Mimicry"
+            }
+          ]
+        },
+        {
+          "name": "Types",
+          "children": [
+            {
+              "name": "Synthetic Benchmarks"
+            },
+            {
+              "name": "Application Benchmarks"
+            },
+            {
+              "name": "Microbenchmarks"
+            }
+          ]
+        },
+        {
+          "name": "Key Principles",
+          "children": [
+            {
+              "name": "Relevance"
+            },
+            {
+              "name": "Repeatability"
+            },
+            {
+              "name": "Equity"
+            },
+            {
+              "name": "Scalability"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LLM Evaluation Architecture",
+      "children": [
+        {
+          "name": "Core Metrics",
+          "children": [
+            {
+              "name": "Accuracy"
+            },
+            {
+              "name": "Faithfulness"
+            },
+            {
+              "name": "Relevance"
+            },
+            {
+              "name": "Coherence"
+            }
+          ]
+        },
+        {
+          "name": "Evaluator Types",
+          "children": [
+            {
+              "name": "LLM-as-Judge",
+              "children": [
+                {
+                  "name": "GPT-4 Scoring"
+                },
+                {
+                  "name": "Pairwise Comparison"
+                },
+                {
+                  "name": "Bias Mitigation"
+                }
+              ]
+            },
+            {
+              "name": "Human Evaluation",
+              "children": [
+                {
+                  "name": "Gold Standard"
+                },
+                {
+                  "name": "Blind Side-by-Side"
+                },
+                {
+                  "name": "Likert Scale"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Standard Benchmarks",
+          "children": [
+            {
+              "name": "MMLU (Smartness)"
+            },
+            {
+              "name": "HumanEval (Coding)"
+            },
+            {
+              "name": "GSM8K (Math)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Evaluation Pitfalls & Paradoxes",
+      "children": [
+        {
+          "name": "Statistical Laws",
+          "children": [
+            {
+              "name": "Goodhart's Law",
+              "children": [
+                {
+                  "name": "Measure becomes target"
+                },
+                {
+                  "name": "Incentive Gaming"
+                }
+              ]
+            },
+            {
+              "name": "Campbell's Law"
+            }
+          ]
+        },
+        {
+          "name": "Measurement Errors",
+          "children": [
+            {
+              "name": "Accuracy Paradox",
+              "children": [
+                {
+                  "name": "Class Imbalance"
+                },
+                {
+                  "name": "F1 Score Necessity"
+                }
+              ]
+            },
+            {
+              "name": "Data Contamination"
+            },
+            {
+              "name": "Regression"
+            }
+          ]
+        },
+        {
+          "name": "Truth Validation",
+          "children": [
+            {
+              "name": "Ground Truth",
+              "children": [
+                {
+                  "name": "Direct Observation"
+                },
+                {
+                  "name": "Empirical Evidence"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

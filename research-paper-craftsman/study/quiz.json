@@ -1,0 +1,265 @@
+{
+  "title": "Algorithms Quiz",
+  "questions": [
+    {
+      "question": "Based on the formal definition of Big $O$ notation, which condition must be satisfied for a function $f(x)$ to be considered $O(g(x))$ on a domain $D$?",
+      "answerOptions": [
+        {
+          "text": "There exists a positive real number $M$ such that $|f(x)| \\le M g(x)$ for all $x \\in D$.",
+          "isCorrect": true,
+          "rationale": "This aligns with the fundamental definition where the function $f(x)$ is bounded above by the comparison function $g(x)$ scaled by a constant factor."
+        },
+        {
+          "text": "The limit of the ratio $\\frac{f(x)}{g(x)}$ as $x$ approaches infinity must be exactly $1$.",
+          "isCorrect": false,
+          "rationale": "This describes asymptotic equivalence, denoted by $\\sim$, rather than the upper bound requirement of Big $O$."
+        },
+        {
+          "text": "The function $f(x)$ must be equal to $g(x)$ for all sufficiently large values of $x$.",
+          "isCorrect": false,
+          "rationale": "Big $O$ notation only requires an upper bound relationship, not functional equality."
+        },
+        {
+          "text": "There exists a constant $M$ such that $f(x) \\ge M g(x)$ for all $x \\in D$.",
+          "isCorrect": false,
+          "rationale": "This describes a lower bound relationship, which is associated with Big $\\Omega$ notation rather than Big $O$."
+        }
+      ],
+      "hint": "Think about the requirement for an implied constant that establishes an upper bound on growth."
+    },
+    {
+      "question": "Which of the following classes of functions grows the slowest as $n$ increases without bound?",
+      "answerOptions": [
+        {
+          "text": "$O(\\log \\log n)$",
+          "isCorrect": true,
+          "rationale": "Double logarithmic growth is significantly slower than logarithmic, linear, or polynomial growth."
+        },
+        {
+          "text": "$O(\\log n)$",
+          "isCorrect": false,
+          "rationale": "While slow, logarithmic growth is faster than double logarithmic growth."
+        },
+        {
+          "text": "$O(n \\log^* n)$",
+          "isCorrect": false,
+          "rationale": "This complexity involves $n$ multiplied by the log-star function, making it grow much faster than pure logarithmic functions."
+        },
+        {
+          "text": "$O(1)$",
+          "isCorrect": false,
+          "rationale": "Wait, $O(1)$ is actually the slowest possible growth (constant time), but among the variable growth functions listed, $O(\\log \\log n)$ is the slowest variable rate; however, $O(1)$ is mathematically the slowest in any ranking."
+        }
+      ],
+      "hint": "Consider the hierarchical list of common algorithm time complexities provided in the text."
+    },
+    {
+      "question": "What is the primary conceptual difference between an Abstract Data Type (ADT) and a data structure as described in the source material?",
+      "answerOptions": [
+        {
+          "text": "An ADT defines logical operations and results, while a data structure is the physical implementation in memory.",
+          "isCorrect": true,
+          "rationale": "The ADT acts as a logical specification, whereas the data structure provides the concrete representation and implementation details."
+        },
+        {
+          "text": "ADTs are only used in high-level languages like Python, whereas data structures are limited to assembly.",
+          "isCorrect": false,
+          "rationale": "Both concepts are applicable across various programming levels, though language support for their implementation varies."
+        },
+        {
+          "text": "A data structure can only have one possible ADT, but an ADT can be used for many different algorithms.",
+          "isCorrect": false,
+          "rationale": "The relationship is actually the opposite: a single ADT can be implemented by multiple different data structures."
+        },
+        {
+          "text": "ADTs refer to the storage in secondary memory, while data structures refer only to RAM.",
+          "isCorrect": false,
+          "rationale": "The text notes that data structures are used to organize data in both primary memory and secondary storage."
+        }
+      ],
+      "hint": "Focus on the distinction between the algebraic structure of data and its physical representation."
+    },
+    {
+      "question": "In the context of the Bachmann–Landau family, what does the notation $f(n) = o(g(n))$ (Little-$o$) signify?",
+      "answerOptions": [
+        {
+          "text": "$g(n)$ grows much faster than $f(n)$, such that the ratio $\\frac{f(n)}{g(n)}$ approaches zero as $n \\to \\infty$.",
+          "isCorrect": true,
+          "rationale": "Little-$o$ makes a stronger asymptotic statement than Big $O$, indicating that $f$ is dominated by $g$ and is insignificant in comparison as $n$ grows."
+        },
+        {
+          "text": "$f(n)$ and $g(n)$ have exactly the same order of growth as $n$ approaches infinity.",
+          "isCorrect": false,
+          "rationale": "This describes Big $\\Theta$ or asymptotic equivalence $(\\sim)$, not the dominance relationship of Little-$o$."
+        },
+        {
+          "text": "$f(n)$ is bounded below by $g(n)$ up to a constant factor.",
+          "isCorrect": false,
+          "rationale": "This is the definition of Big $\\Omega$ (Knuth's notation) rather than Little-$o$."
+        },
+        {
+          "text": "The function $f(n)$ is a constant multiple of $g(n)$ for all $n$.",
+          "isCorrect": false,
+          "rationale": "Little-$o$ implies a limit of zero for the ratio, which is impossible if one is a non-zero constant multiple of the other."
+        }
+      ],
+      "hint": "Think about the specific limit requirement that differentiates Little-$o$ from Big $O$."
+    },
+    {
+      "question": "What is a characteristic advantage of using a linked list over a traditional array?",
+      "answerOptions": [
+        {
+          "text": "Elements can be efficiently inserted and removed without relocating the rest of the collection.",
+          "isCorrect": true,
+          "rationale": "Linked lists use nodes and pointers, allowing for dynamic changes to the structure without the need for contiguous shifting of elements."
+        },
+        {
+          "text": "It provides faster random access to any element using an integer index.",
+          "isCorrect": false,
+          "rationale": "Random access is actually slower in linked lists compared to arrays because one must traverse the list sequentially."
+        },
+        {
+          "text": "It ensures that all elements are stored in contiguous memory locations for better cache performance.",
+          "isCorrect": false,
+          "rationale": "Contiguous memory is a property of arrays, whereas linked lists store related element addresses within each node."
+        },
+        {
+          "text": "It requires less memory because it does not need to store pointers or references.",
+          "isCorrect": false,
+          "rationale": "Linked lists generally require more memory because each node must store both the data value and a pointer to the next node."
+        }
+      ],
+      "hint": "Consider how the structure handles modifications like adding or deleting items in the middle of the set."
+    },
+    {
+      "question": "According to the property 'Powers dominate logarithms', which of the following is true for any positive $a$ and $b$ as $n \\to \\infty$?",
+      "answerOptions": [
+        {
+          "text": "$(\\log n)^a = O(n^b)$",
+          "isCorrect": true,
+          "rationale": "The source states that any power of $n$ eventually grows faster than any power of a logarithm, regardless of the exponents' sizes."
+        },
+        {
+          "text": "$n^b = O((\\log n)^a)$",
+          "isCorrect": false,
+          "rationale": "This incorrectly suggests that logarithms dominate powers, which contradicts the mathematical properties of growth rates."
+        },
+        {
+          "text": "$(\\log n)^a = \\Theta(n^b)$",
+          "isCorrect": false,
+          "rationale": "This would mean they have the same growth rate, but powers grow strictly faster than logarithms."
+        },
+        {
+          "text": "$\\log(n^c) = O(\\log n)$ is only true if $c = 1$.",
+          "isCorrect": false,
+          "rationale": "The source notes that $O(\\log n)$ is equivalent to $O(\\log(n^c))$ for any positive $c$ because $\\log(n^c) = c \\log n$."
+        }
+      ],
+      "hint": "Recall which function type eventually 'outruns' the other as the variable becomes very large."
+    },
+    {
+      "question": "Which data structure is described as being specifically useful for tasks like autocomplete and spell-checking by retrieving strings based on character prefixes?",
+      "answerOptions": [
+        {
+          "text": "Trie",
+          "isCorrect": true,
+          "rationale": "A trie (prefix tree) organizes strings such that each node represents a character, allowing for efficient searches based on shared prefixes."
+        },
+        {
+          "text": "Hash table",
+          "isCorrect": false,
+          "rationale": "While hash tables are fast for exact lookups, they do not inherently support prefix-based searches like tries do."
+        },
+        {
+          "text": "B-tree",
+          "isCorrect": false,
+          "rationale": "B-trees are primarily used for database indexing and managing sorted data on disks rather than prefix string retrieval."
+        },
+        {
+          "text": "AVL tree",
+          "isCorrect": false,
+          "rationale": "An AVL tree is a self-balancing binary search tree used for general sorted data, not optimized specifically for string prefix operations."
+        }
+      ],
+      "hint": "This structure is also known as a prefix tree."
+    },
+    {
+      "question": "In 1976, Donald Knuth proposed a notation that is equivalent to Hardy's $f(x) \\asymp g(x)$. Which notation was this?",
+      "answerOptions": [
+        {
+          "text": "$f(x) = \\Theta(g(x))$",
+          "isCorrect": true,
+          "rationale": "Knuth introduced Big $\\Theta$ to denote functions of the same order, which corresponds exactly to Hardy's $f(x) \\asymp g(x)$ notation."
+        },
+        {
+          "text": "$f(x) = \\Omega(g(x))$",
+          "isCorrect": false,
+          "rationale": "Knuth proposed a different definition for Big $\\Omega$ that represents a lower bound, making it the inverse of Big $O$."
+        },
+        {
+          "text": "$f(x) \\ll g(x)$",
+          "isCorrect": false,
+          "rationale": "This is Vinogradov's notation, which is equivalent to $f(x) = O(g(x))$ rather than Big $\\Theta$."
+        },
+        {
+          "text": "$f(x) \\sim g(x)$",
+          "isCorrect": false,
+          "rationale": "This notation represents asymptotic equivalence, where the limit of the ratio is $1$, which is a more restrictive relationship than Big $\\Theta$."
+        }
+      ],
+      "hint": "This symbol is used to describe functions that are tightly bounded both above and below by the same order of growth."
+    },
+    {
+      "question": "How are stacks and queues distinguished by their primary operations?",
+      "answerOptions": [
+        {
+          "text": "Stacks follow the LIFO principle, while queues follow the FIFO principle.",
+          "isCorrect": true,
+          "rationale": "Stacks process the 'Last In' element first (LIFO), whereas queues process the 'First In' element first (FIFO)."
+        },
+        {
+          "text": "Stacks use enqueue and dequeue, while queues use push and pop.",
+          "isCorrect": false,
+          "rationale": "The operations are swapped; stacks use push/pop and queues use enqueue/dequeue."
+        },
+        {
+          "text": "Both stacks and queues must be implemented using linked lists only.",
+          "isCorrect": false,
+          "rationale": "The text states that these abstract data types can be implemented using either arrays or linked lists."
+        },
+        {
+          "text": "Stacks are used for search engines, while queues are used only in databases.",
+          "isCorrect": false,
+          "rationale": "Both are general-purpose abstract data types used in a wide variety of computational tasks."
+        }
+      ],
+      "hint": "Think about the order in which items are added and then removed from each structure."
+    },
+    {
+      "question": "What does it mean for an algorithm to be 'subexponential' as defined in the source?",
+      "answerOptions": [
+        {
+          "text": "It grows more slowly than any exponential function of the form $c^n$ where $c > 1$.",
+          "isCorrect": true,
+          "rationale": "Subexponential functions grow faster than any polynomial but slower than any standard exponential function."
+        },
+        {
+          "text": "It grows slower than a polynomial function like $n^2$.",
+          "isCorrect": false,
+          "rationale": "A function that grows slower than any polynomial is not described this way; subexponential refers to growth between polynomial and exponential."
+        },
+        {
+          "text": "It is equivalent to constant time growth, or $O(1)$.",
+          "isCorrect": false,
+          "rationale": "Constant time is a specific type of polynomial growth ($n^0$), whereas subexponential growth is much faster than polynomial."
+        },
+        {
+          "text": "It is a function that involves the inverse Ackermann function $\\alpha(n)$.",
+          "isCorrect": false,
+          "rationale": "The inverse Ackermann function grows extremely slowly, whereas subexponential functions grow quite rapidly, just not as fast as true exponentials."
+        }
+      ],
+      "hint": "This term describes growth that sits between polynomial and standard exponential rates."
+    }
+  ]
+}

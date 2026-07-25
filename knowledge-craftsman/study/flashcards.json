@@ -1,0 +1,361 @@
+{
+  "title": "Study Flashcards",
+  "cards": [
+    {
+      "front": "Which German psychologist pioneered the experimental study of memory and discovered the forgetting curve?",
+      "back": "Hermann Ebbinghaus"
+    },
+    {
+      "front": "According to Ebbinghaus, what is the approximate percentage of information lost within $2$ weeks if no review occurs?",
+      "back": "$90\\%$"
+    },
+    {
+      "front": "What mathematical function describes the loss of learned information over time according to Ebbinghaus's research?",
+      "back": "Exponential decay"
+    },
+    {
+      "front": "During which time interval does the forgetting curve show the sharpest decline in information retention?",
+      "back": "The first $20$ minutes"
+    },
+    {
+      "front": "After approximately how long does the Ebbinghaus forgetting curve typically begin to level off?",
+      "back": "$1$ day"
+    },
+    {
+      "front": "What type of stimuli did Ebbinghaus use in his experiments to measure mental associations and memory?",
+      "back": "Three-letter nonsense syllables"
+    },
+    {
+      "front": "The phenomenon where information is better retained when learning is spread out over time is known as the _____ effect.",
+      "back": "Spacing"
+    },
+    {
+      "front": "Hermann Ebbinghaus was the first person to describe the _____ curve, representing the rate of progress in gaining new skills.",
+      "back": "Learning"
+    },
+    {
+      "front": "In which $1885$ publication did Ebbinghaus describe his groundbreaking experiments on learning and forgetting?",
+      "back": "Über das Gedächtnis (On Memory)"
+    },
+    {
+      "front": "Which American psychologist described the forgetting curve studies as the \"single most brilliant investigation in the history of psychology\"?",
+      "back": "William James"
+    },
+    {
+      "front": "Cognitive psychology suggests that handwritten notes lead to better performance than typed notes due to _____ processing.",
+      "back": "Deeper"
+    },
+    {
+      "front": "Note-taking is described as an external cognitive aid for increasing _____.",
+      "back": "Learning"
+    },
+    {
+      "front": "Which note-taking method is specifically useful for subject matter that can be broken into categories like similarities and differences?",
+      "back": "The charting method"
+    },
+    {
+      "front": "In the charting method, tables drawn to organize information are sometimes referred to as _____.",
+      "back": "Study frames"
+    },
+    {
+      "front": "Who developed the Cornell Notes method of note-taking?",
+      "back": "Walter Pauk"
+    },
+    {
+      "front": "In what bestselling $1974$ book was the Cornell Notes method first promoted?",
+      "back": "How to Study in College"
+    },
+    {
+      "front": "What is the purpose of the left-hand column in a Cornell Notes layout?",
+      "back": "To record cues like key words or questions"
+    },
+    {
+      "front": "Where on a page of Cornell notes is the summary section located?",
+      "back": "The strip at the bottom"
+    },
+    {
+      "front": "What is the primary function of 'cues' in the Cornell Notes system?",
+      "back": "To help evoke key aspects of the topic during review"
+    },
+    {
+      "front": "Who introduced the SQ3R reading comprehension method in $1941$?",
+      "back": "Francis P. Robinson"
+    },
+    {
+      "front": "What does the 'S' in the SQ3R method stand for?",
+      "back": "Survey"
+    },
+    {
+      "front": "During the 'Survey' step of SQ3R, how many minutes should a reader typically spend scanning the text?",
+      "back": "$3$ to $5$ minutes"
+    },
+    {
+      "front": "In SQ3R, what is the goal of the 'Question' step?",
+      "back": "To generate inquiries by converting headings into questions"
+    },
+    {
+      "front": "What does the second 'R' (Recite) in SQ3R require the reader to do?",
+      "back": "Recall the material from memory in their own words"
+    },
+    {
+      "front": "The SQ4R method adds which specific step before the 'Review' phase?",
+      "back": "Relate"
+    },
+    {
+      "front": "What type of note handouts provide a 'map' of lecture content with key points missing for students to complete?",
+      "back": "Guided notes"
+    },
+    {
+      "front": "Which technique involves explaining a concept simply to identify gaps in one's own understanding?",
+      "back": "The Feynman Technique"
+    },
+    {
+      "front": "In the Feynman Technique, to what target audience should you imagine yourself explaining a concept?",
+      "back": "A $12$-year-old child"
+    },
+    {
+      "front": "According to the Feynman Technique, what does the use of complex jargon often mask?",
+      "back": "A lack of true comprehension"
+    },
+    {
+      "front": "What is the final step of the Feynman Technique after identifying gaps and reviewing source material?",
+      "back": "Repeating the simplified explanation until it is clear"
+    },
+    {
+      "front": "The illusion of understanding a topic merely because the material is easy to read is called the _____.",
+      "back": "Illusion of competence"
+    },
+    {
+      "front": "Who developed the 3-Pass Method for reading research papers in $2007$?",
+      "back": "S. Keshav"
+    },
+    {
+      "front": "In the 3-Pass Method, what is the estimated time duration for the first pass?",
+      "back": "$5$ to $10$ minutes"
+    },
+    {
+      "front": "What are the '5 Cs' used during the first pass of the 3-Pass Method to evaluate a paper?",
+      "back": "Category, Context, Correctness, Contributions, and Clarity"
+    },
+    {
+      "front": "What is the primary focus of the second pass in the 3-Pass Method?",
+      "back": "Grasping the content by focusing on figures and tables"
+    },
+    {
+      "front": "In the 3-Pass Method, what should a reader avoid during the second pass to save time?",
+      "back": "Detailed proofs or derivations"
+    },
+    {
+      "front": "What is the ultimate goal of the third pass in the 3-Pass Method?",
+      "back": "To virtually re-implement the paper and identify hidden assumptions"
+    },
+    {
+      "front": "The 'testing effect' is the psychological finding that memory is enhanced more by active _____ than by passive re-reading.",
+      "back": "Retrieval"
+    },
+    {
+      "front": "How does 'active repetition' differ from 'passive repetition' according to C.A. Mace?",
+      "back": "Active repetition involves recalling info without reference to the text"
+    },
+    {
+      "front": "What is the term for a knowledge management system involving index cards in a slip-box?",
+      "back": "Zettelkasten"
+    },
+    {
+      "front": "Which $20$th-century researcher is most famous for using a Zettelkasten to manage his intellectual work?",
+      "back": "Niklas Luhmann"
+    },
+    {
+      "front": "Who popularized the 'Second Brain' concept for managing digital information?",
+      "back": "Tiago Forte"
+    },
+    {
+      "front": "What does the 'C' stand for in Tiago Forte's CODE method?",
+      "back": "Capture"
+    },
+    {
+      "front": "In the CODE method, what is the purpose of the 'Distill' step?",
+      "back": "To find the core essence and most important points of information"
+    },
+    {
+      "front": "What is Charlie Munger's term for a collection of mental models from multiple disciplines?",
+      "back": "Latticework"
+    },
+    {
+      "front": "How many core mental models did Charlie Munger suggest mastering for superior judgment?",
+      "back": "Approximately $100$"
+    },
+    {
+      "front": "What is the term for knowledge stored outside the human body, such as in notebooks or digital systems?",
+      "back": "Exosomatic memory"
+    },
+    {
+      "front": "Which $1890$ book by William James first discussed the benefits of 'waiting and recollecting by an effort from within'?",
+      "back": "The Principles of Psychology"
+    },
+    {
+      "front": "The 'testing effect' is also commonly referred to in modern cognitive science as _____.",
+      "back": "Active recall"
+    },
+    {
+      "front": "What is the name of the mechanical device used in the $1890$s for presenting stimuli to be memorized?",
+      "back": "Mnemometer"
+    },
+    {
+      "front": "In note-taking, what is 'clustering'?",
+      "back": "A non-linear method of grouping related ideas"
+    },
+    {
+      "front": "According to the SQ3R method, why is 'passive reading' ineffective?",
+      "back": "It fails to engage the reader with the study material"
+    },
+    {
+      "front": "What is the primary benefit of the 'Review' step in SQ3R?",
+      "back": "It reinforces the main points and verifies comprehension"
+    },
+    {
+      "front": "The retrieval of prior learning to apply it to a new context is known as _____.",
+      "back": "Transfer"
+    },
+    {
+      "front": "Which study software is a prominent example of a spaced repetition tool mentioned in the texts?",
+      "back": "Anki"
+    },
+    {
+      "front": "Which $17$th-century system for organizing knowledge involved a device called an 'ark of studies'?",
+      "back": "Thomas Harrison's system"
+    },
+    {
+      "front": "What is 'metacognition'?",
+      "back": "Awareness and understanding of one's own thought processes"
+    },
+    {
+      "front": "In the Feynman Technique, why is using an analogy recommended during the explanation step?",
+      "back": "To simplify complex concepts and bridge them to familiar ideas"
+    },
+    {
+      "front": "What is the first step of the Feynman Technique?",
+      "back": "Write the name of the concept you want to learn"
+    },
+    {
+      "front": "The process of 'virtually re-implementing' a research paper in Pass $3$ means what?",
+      "back": "Redoing the work using the same assumptions as the authors"
+    },
+    {
+      "front": "What does 'citation tracing' involve when reading academic papers?",
+      "back": "Following references backward and finding newer papers that cited the work"
+    },
+    {
+      "front": "According to Tiago Forte, what is the 'First Brain' primarily used for in the Second Brain system?",
+      "back": "Creation and processing"
+    },
+    {
+      "front": "According to Tiago Forte, what is the 'Second Brain' primarily used for?",
+      "back": "Storage and preservation of information"
+    },
+    {
+      "front": "What is the 'Pareto principle' in the context of study skills?",
+      "back": "The idea that $80\\%$ of results come from $20\\%$ of effort"
+    },
+    {
+      "front": "In the Cornell method, when should the 'Summary' section be written?",
+      "back": "After the lecture or reading is complete"
+    },
+    {
+      "front": "Which researcher suggested that the testing effect decreases as the complexity of materials increases?",
+      "back": "Tamara van Gog"
+    },
+    {
+      "front": "Keyword mnemonics are helpful for retention, but their effects are often _____.",
+      "back": "Short-lived"
+    },
+    {
+      "front": "Which part of the brain is strengthened by retrieval practice according to Bertilsson et al. ($2021$)?",
+      "back": "Hippocampus"
+    },
+    {
+      "front": "What is the 'O' in the CODE method for digital knowledge management?",
+      "back": "Organize"
+    },
+    {
+      "front": "What is the 'E' in the CODE method for digital knowledge management?",
+      "back": "Express"
+    },
+    {
+      "front": "The 'testing knowledge' approach produces better learning results than which other common study form?",
+      "back": "Re-reading or highlighting"
+    },
+    {
+      "front": "What was Ebbinghaus's primary career field?",
+      "back": "Psychology"
+    },
+    {
+      "front": "Which university did Ebbinghaus attend first at age $17$?",
+      "back": "University of Bonn"
+    },
+    {
+      "front": "On what specific philosopher's work did Ebbinghaus write his dissertation?",
+      "back": "Eduard von Hartmann"
+    },
+    {
+      "front": "What major conflict interrupted Ebbinghaus's university studies in $1870$?",
+      "back": "The Franco-Prussian War"
+    },
+    {
+      "front": "How many languages is the Wikipedia page for Hermann Ebbinghaus available in?",
+      "back": "$44$"
+    },
+    {
+      "front": "Concept: Elaborative Interrogation",
+      "back": "Definition: A study method involving asking 'why' to explain facts or relationships. Example: Asking why the forgetting curve levels off after one day."
+    },
+    {
+      "front": "In the context of the 3-Pass method, what does 'semantic scholar' assist with?",
+      "back": "Finding related papers using AI and semantic search"
+    },
+    {
+      "front": "What is the 'latticework of mental models' meant to prevent in a professional's judgment?",
+      "back": "The 'man with a hammer' syndrome (treating every problem like a nail)"
+    },
+    {
+      "front": "What was the Bengali title given to the Feynman Technique in 'book26.md'?",
+      "back": "ফাইনম্যানের কক্ষ (Feynman's Room)"
+    },
+    {
+      "front": "In 'book26.md', what sacred analogue is used for the forgetting curve?",
+      "back": "যাওয়া পানি (Flowing water carried in a leaking bucket)"
+    },
+    {
+      "front": "According to 'book26.md', Bill Gates uses which active reading technique?",
+      "back": "Writing margin notes and reviews"
+    },
+    {
+      "front": "According to 'book26.md', which entrepreneur used reading to help build rockets?",
+      "back": "Elon Musk"
+    },
+    {
+      "front": "In the 3-Pass Method, what should you be able to do after a successful second pass?",
+      "back": "Summarize the paper's main claims to a colleague"
+    },
+    {
+      "front": "What are 'commonplace books'?",
+      "back": "Historical notebooks used to compile knowledge, quotes, and observations"
+    },
+    {
+      "front": "Which Enlightenment philosopher wrote 'A New Method of Making Common-place-books'?",
+      "back": "John Locke"
+    },
+    {
+      "front": "In the SQ3R method, how is the 'Recite' step related to the testing effect?",
+      "back": "It requires retrieval practice, which boosts long-term memory"
+    },
+    {
+      "front": "Research shows that Cornell Notes are effective for producing readable notes, but may not significantly affect _____.",
+      "back": "Student performance on exams"
+    },
+    {
+      "front": "What $16$th-century Swiss naturalist is mentioned as an early pioneer of using slips of paper for indexing?",
+      "back": "Conrad Gessner"
+    }
+  ]
+}

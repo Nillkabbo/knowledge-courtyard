@@ -1,0 +1,265 @@
+{
+  "title": "Distributed Quiz",
+  "questions": [
+    {
+      "question": "In Lamport's logical clocks, what does the \"happens-before\" relation ($A \\to B$) signify?",
+      "answerOptions": [
+        {
+          "text": "Event $A$ occurred at a physically earlier time than event $B$ across all system nodes.",
+          "isCorrect": false,
+          "rationale": "Physical time is unreliable in distributed systems due to clock skew, which is why Lamport introduced logical ordering."
+        },
+        {
+          "text": "Event $A$ is a causal precursor to event $B$, such as a message being sent before it is received.",
+          "isCorrect": true,
+          "rationale": "The relation defines a partial ordering based on causality and the flow of information rather than synchronized wall-clock time."
+        },
+        {
+          "text": "Event $A$ and event $B$ happened simultaneously on the same processor.",
+          "isCorrect": false,
+          "rationale": "The relation specifically tracks the order of events, while simultaneous events on different processors are considered concurrent."
+        },
+        {
+          "text": "Event $B$ must have a lower logical timestamp than event $A$.",
+          "isCorrect": false,
+          "rationale": "If $A \\to B$, the timestamp of $A$ must be strictly less than the timestamp of $B$ to preserve the causal order."
+        }
+      ],
+      "hint": "Think about how one event might influence another in a system with no global clock."
+    },
+    {
+      "question": "In Dijkstra's semaphore logic, what occurs during the $P$ (proberen) operation?",
+      "answerOptions": [
+        {
+          "text": "The semaphore value is incremented to signal that a resource is now free.",
+          "isCorrect": false,
+          "rationale": "Incrementing is the function of the $V$ (verhogen) operation, not the $P$ operation."
+        },
+        {
+          "text": "The process checks the value and decrements it; if the value is $0$, the process waits.",
+          "isCorrect": true,
+          "rationale": "The $P$ operation acts as a 'wait' or 'test' mechanism to acquire a resource and prevent others from entering the critical section."
+        },
+        {
+          "text": "The process forces all other waiting processes to terminate to prevent a deadlock.",
+          "isCorrect": false,
+          "rationale": "Semaphores manage access through waiting and signaling rather than process termination."
+        },
+        {
+          "text": "The semaphore value is reset to $1$ regardless of its current state.",
+          "isCorrect": false,
+          "rationale": "Resetting the value would violate the mutual exclusion principle by potentially allowing multiple processes in simultaneously."
+        }
+      ],
+      "hint": "Consider the action a program takes when it attempts to enter a 'locked' door."
+    },
+    {
+      "question": "According to the CAP Theorem, what is the consequence of a network partition in a distributed system?",
+      "answerOptions": [
+        {
+          "text": "The system must sacrifice Partition Tolerance to maintain both Consistency and Availability.",
+          "isCorrect": false,
+          "rationale": "Partition Tolerance is generally non-negotiable in distributed systems because network failures are inevitable."
+        },
+        {
+          "text": "The system can maintain all three properties if it uses a consensus algorithm like Paxos.",
+          "isCorrect": false,
+          "rationale": "The theorem states that only two of the three properties can be satisfied simultaneously during a partition."
+        },
+        {
+          "text": "The system must choose between returning an error (sacrificing Availability) or returning potentially stale data (sacrificing Consistency).",
+          "isCorrect": true,
+          "rationale": "When nodes cannot communicate, they must either stop responding to ensure data remains identical or keep responding with whatever data they have."
+        },
+        {
+          "text": "The system will automatically switch to a single-node RDBMS to avoid the dilemma.",
+          "isCorrect": false,
+          "rationale": "While a single node avoids partitions, it is no longer a distributed system, which is the context of the CAP theorem."
+        }
+      ],
+      "hint": "Imagine two nodes that cannot talk to each other; what happens if a user tries to update data on one of them?"
+    },
+    {
+      "question": "What was the primary motivation behind the creation of the Raft consensus algorithm?",
+      "answerOptions": [
+        {
+          "text": "To provide a consensus method that is faster than Paxos in all network conditions.",
+          "isCorrect": false,
+          "rationale": "While performance is a factor, Raft's primary goal was to address the complexity and lack of understanding surrounding Paxos."
+        },
+        {
+          "text": "To create an algorithm that is easier to understand and implement than Paxos.",
+          "isCorrect": true,
+          "rationale": "Raft was designed as an 'understandable' alternative to Paxos, using a strong leader model and clear phases for election and log replication."
+        },
+        {
+          "text": "To eliminate the need for a majority (quorum) to reach a decision.",
+          "isCorrect": false,
+          "rationale": "Both Raft and Paxos rely on a majority quorum to ensure consistency and handle node failures."
+        },
+        {
+          "text": "To allow consensus to be reached even if all nodes in the cluster crash.",
+          "isCorrect": false,
+          "rationale": "Consensus requires a majority of nodes to be operational; if all fail, the system cannot make progress."
+        }
+      ],
+      "hint": "Think about why students or engineers might struggle with 'The Part-Time Parliament' paper."
+    },
+    {
+      "question": "What is a major disadvantage of the Two-Phase Commit (2PC) protocol for distributed transactions?",
+      "answerOptions": [
+        {
+          "text": "It cannot guarantee atomicity if one node disagrees during the prepare phase.",
+          "isCorrect": false,
+          "rationale": "2PC is specifically designed to guarantee atomicity; if one node says 'no', the entire transaction is aborted."
+        },
+        {
+          "text": "It is a blocking protocol where nodes may remain stuck if the coordinator fails after the prepare phase.",
+          "isCorrect": true,
+          "rationale": "If the coordinator crashes after nodes have agreed to commit but before they receive the final command, they remain in a 'prepared' state, unable to move forward or back."
+        },
+        {
+          "text": "It requires $3f+1$ nodes to function correctly under normal conditions.",
+          "isCorrect": false,
+          "rationale": "The $3f+1$ requirement applies to Byzantine Fault Tolerance, not standard 2PC transactions."
+        },
+        {
+          "text": "It only works for transactions involving exactly two databases.",
+          "isCorrect": false,
+          "rationale": "The 'Two-Phase' refers to the steps of the process (Prepare and Commit), not the number of nodes or databases involved."
+        }
+      ],
+      "hint": "What happens to the participants if the leader disappears in the middle of a two-step voting process?"
+    },
+    {
+      "question": "In the MapReduce programming model, what is the specific role of the \"Shuffle\" phase?",
+      "answerOptions": [
+        {
+          "text": "To apply the user-defined filtering logic to the raw input data.",
+          "isCorrect": false,
+          "rationale": "Filtering and initial processing are the responsibility of the Map function."
+        },
+        {
+          "text": "To redistribute key-value pairs so that all values associated with the same key are sent to the same reducer.",
+          "isCorrect": true,
+          "rationale": "The shuffle phase acts as the communication bridge, ensuring that the Reduce step has all the necessary data for a specific key."
+        },
+        {
+          "text": "To write the final aggregated results back to the distributed file system.",
+          "isCorrect": false,
+          "rationale": "The Output Writer handles the final storage of results after the Reduce phase is complete."
+        },
+        {
+          "text": "To reduce the amount of data by summing up values locally on the mapper node.",
+          "isCorrect": false,
+          "rationale": "Local aggregation is typically done by an optional 'Combiner' function, not the shuffle itself."
+        }
+      ],
+      "hint": "Consider how data moves from a variety of independent mappers to the correct reducers."
+    },
+    {
+      "question": "How does Byzantine Fault Tolerance (BFT) differ from standard crash fault tolerance?",
+      "answerOptions": [
+        {
+          "text": "BFT assumes that nodes will only fail by stopping or crashing.",
+          "isCorrect": false,
+          "rationale": "This describes standard crash fault tolerance; BFT is more robust and handles intentional deception."
+        },
+        {
+          "text": "BFT accounts for 'traitorous' nodes that may send conflicting or malicious information.",
+          "isCorrect": true,
+          "rationale": "BFT is designed for environments where nodes may be compromised or act dishonestly, requiring a higher threshold of agreement."
+        },
+        {
+          "text": "BFT is only used in single-node database systems to prevent data corruption.",
+          "isCorrect": false,
+          "rationale": "BFT is a distributed systems concept designed for multiple nodes interacting over a network."
+        },
+        {
+          "text": "BFT requires $f+1$ nodes to handle $f$ failures, making it more efficient than Raft.",
+          "isCorrect": false,
+          "rationale": "BFT is less efficient, typically requiring $3f+1$ nodes to tolerate $f$ malicious failures."
+        }
+      ],
+      "hint": "Think about the difference between a machine breaking down and a person lying on purpose."
+    },
+    {
+      "question": "In a partitioned database, what characterizes \"Vertical Partitioning\"?",
+      "answerOptions": [
+        {
+          "text": "Splitting different rows of the same table into different tables based on a range (e.g., ZIP codes).",
+          "isCorrect": false,
+          "rationale": "Splitting by rows is known as Horizontal Partitioning or Sharding."
+        },
+        {
+          "text": "Splitting a table by its columns, putting infrequently used or very wide columns into separate tables.",
+          "isCorrect": true,
+          "rationale": "Vertical partitioning divides the schema itself to optimize memory usage or access speed for specific sets of attributes."
+        },
+        {
+          "text": "Replicating the entire database across multiple geographic regions for availability.",
+          "isCorrect": false,
+          "rationale": "Replication is the act of copying data, whereas partitioning is the act of dividing it."
+        },
+        {
+          "text": "Organizing data into a tree-like structure to improve search efficiency.",
+          "isCorrect": false,
+          "rationale": "This describes indexing (like B-trees), not the physical partitioning of data across tables or nodes."
+        }
+      ],
+      "hint": "Consider whether you are dividing the data by 'records' or by 'attributes'."
+    },
+    {
+      "question": "Which property of a mathematical Monoid is essential for a function to be used in the MapReduce \"Reduce\" phase?",
+      "answerOptions": [
+        {
+          "text": "Commutativity: the order of the operands does not matter (e.g., $a + b = b + a$).",
+          "isCorrect": false,
+          "rationale": "While helpful, commutativity is not strictly required by the monoid definition for reduction; associativity is the core requirement."
+        },
+        {
+          "text": "Associativity: the grouping of operations does not matter (e.g., $(a + b) + c = a + (b + c)$).",
+          "isCorrect": true,
+          "rationale": "Associativity allows the framework to regroup and parallelize the data reduction across different nodes without changing the result."
+        },
+        {
+          "text": "Invertibility: every operation can be undone by an inverse operation.",
+          "isCorrect": false,
+          "rationale": "MapReduce does not require operations to be reversible; it focuses on aggregation and summary."
+        },
+        {
+          "text": "Distributivity: the operation must distribute over another operation.",
+          "isCorrect": false,
+          "rationale": "Reduction involves a single binary operation, so distributivity between two different operations is not the primary concern."
+        }
+      ],
+      "hint": "Think about why the system can group values in any order to calculate the final sum or count."
+    },
+    {
+      "question": "How does the Saga pattern handle failures in a long-running distributed transaction?",
+      "answerOptions": [
+        {
+          "text": "It uses a global lock to prevent any other transactions from occurring until the failure is fixed.",
+          "isCorrect": false,
+          "rationale": "Sagas avoid global locks to maintain high availability and prevent blocking."
+        },
+        {
+          "text": "It executes 'compensating transactions' to undo the effects of successfully completed preceding steps.",
+          "isCorrect": true,
+          "rationale": "Since Sagas don't use a single commit point, if a step fails, the system must manually reverse previous successful steps to maintain consistency."
+        },
+        {
+          "text": "It automatically restarts the entire transaction from the beginning until it succeeds.",
+          "isCorrect": false,
+          "rationale": "While retries are possible, the core feature of a Saga is the compensation logic for when retries aren't enough or are inappropriate."
+        },
+        {
+          "text": "It ignores the failure and relies on 'Eventual Consistency' to fix the data later.",
+          "isCorrect": false,
+          "rationale": "While it leads to eventual consistency, it does so through active compensation rather than passive waiting."
+        }
+      ],
+      "hint": "If you booked a flight but the hotel booking failed, what would you have to do to the flight booking?"
+    }
+  ]
+}

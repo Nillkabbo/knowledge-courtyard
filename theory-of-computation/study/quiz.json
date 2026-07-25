@@ -1,0 +1,317 @@
+{
+  "title": "Turing Quiz",
+  "questions": [
+    {
+      "question": "What was the primary mathematical achievement that earned Alan Turing a fellowship at King's College, Cambridge, in 1935?",
+      "answerOptions": [
+        {
+          "text": "The development of the Lambda Calculus",
+          "isCorrect": false,
+          "rationale": "While related to his later work, this was actually developed independently by Alonzo Church."
+        },
+        {
+          "text": "A proof of the central limit theorem",
+          "isCorrect": true,
+          "rationale": "His dissertation on the Gaussian error function proved a version of this theorem, though it had been proven previously by Lindeberg."
+        },
+        {
+          "text": "The decryption of the Lorenz cipher",
+          "isCorrect": false,
+          "rationale": "This achievement occurred several years later during his wartime service at Bletchley Park."
+        },
+        {
+          "text": "A solution to the Halting Problem",
+          "isCorrect": false,
+          "rationale": "The Halting Problem was a core part of his 1936 paper on computable numbers, not his 1935 dissertation."
+        }
+      ],
+      "hint": "Consider the statistical concept related to the distribution of errors and the Gaussian function."
+    },
+    {
+      "question": "Which specific challenge was the 'universal computing machine' described in Turing's 1936 paper intended to address?",
+      "answerOptions": [
+        {
+          "text": "The Riemann Hypothesis",
+          "isCorrect": false,
+          "rationale": "This is a problem in number theory that was not the focus of Turing's foundational paper on computation."
+        },
+        {
+          "text": "The construction of the Colossus computer",
+          "isCorrect": false,
+          "rationale": "The Colossus was a physical machine built later during the war, whereas the universal machine was a theoretical concept."
+        },
+        {
+          "text": "The Entscheidungsproblem (Decision Problem)",
+          "isCorrect": true,
+          "rationale": "Turing used the concept of a universal machine to prove that there is no algorithmic solution to Hilbert's decision problem."
+        },
+        {
+          "text": "The synthesis of secure speech devices",
+          "isCorrect": false,
+          "rationale": "This describes his later work on projects like Delilah and SIGSALY."
+        }
+      ],
+      "hint": "The problem, posed by David Hilbert, asks whether an algorithm exists to determine the truth of any mathematical statement."
+    },
+    {
+      "question": "Turing's sequential statistical technique known as 'Banburismus' used a measure of evidence called a 'ban'. How was this technique applied during WWII?",
+      "answerOptions": [
+        {
+          "text": "To determine the physical location of U-boats via radio triangulation",
+          "isCorrect": false,
+          "rationale": "Banburismus was a cryptographic technique, not a physical tracking method."
+        },
+        {
+          "text": "To reduce the number of settings that needed to be tested on the bombes",
+          "isCorrect": true,
+          "rationale": "By calculating the 'weight of evidence,' it ruled out certain rotor sequences, making the bombe search much more efficient."
+        },
+        {
+          "text": "To identify the specific operator of an Enigma machine based on typing patterns",
+          "isCorrect": false,
+          "rationale": "This refers to 'fist' identification, which is distinct from the statistical wheel-breaking of Banburismus."
+        },
+        {
+          "text": "To coordinate the staff levels in Hut 8 during peak traffic",
+          "isCorrect": false,
+          "rationale": "Banburismus was a mathematical procedure for codebreaking, not a management or scheduling tool."
+        }
+      ],
+      "hint": "This technique helped optimize the use of electromechanical decryption hardware."
+    },
+    {
+      "question": "In the 'Action This Day' memo, Turing and his colleagues wrote to Winston Churchill to request more resources. What was the primary obstacle they faced?",
+      "answerOptions": [
+        {
+          "text": "Lack of adequate physical space at Bletchley Park",
+          "isCorrect": false,
+          "rationale": "While space was tight, the memo specifically focused on staffing and the production of decryption machinery."
+        },
+        {
+          "text": "Bureaucratic delays in funding and staffing",
+          "isCorrect": true,
+          "rationale": "They were frustrated by their inability to obtain enough people and bombes through standard administrative channels."
+        },
+        {
+          "text": "The complexity of the new four-rotor Enigma",
+          "isCorrect": false,
+          "rationale": "While the four-rotor variant was a challenge, the memo was a plea for administrative priority rather than a technical analysis."
+        },
+        {
+          "text": "Interference from the Secret Intelligence Service (MI6)",
+          "isCorrect": false,
+          "rationale": "The source material indicates their difficulty was with resource allocation, not agency interference."
+        }
+      ],
+      "hint": "They reached out to the Prime Minister because 'proper channels' were failing to provide necessary support."
+    },
+    {
+      "question": "Turing's project 'Delilah' was developed toward the end of the war for which specific purpose?",
+      "answerOptions": [
+        {
+          "text": "Automated translation of German documents",
+          "isCorrect": false,
+          "rationale": "Delilah was focused on communication security, not linguistic translation."
+        },
+        {
+          "text": "High-speed processing of teleprinter signals",
+          "isCorrect": false,
+          "rationale": "This better describes the Colossus computer's role in attacking the Lorenz cipher."
+        },
+        {
+          "text": "Secure voice encryption",
+          "isCorrect": true,
+          "rationale": "Delilah was designed as a portable system to encipher telephone or radio speech."
+        },
+        {
+          "text": "Predicting the growth patterns of biological organisms",
+          "isCorrect": false,
+          "rationale": "This describes his post-war interest in morphogenesis and mathematical biology."
+        }
+      ],
+      "hint": "Turing demonstrated this system by encrypting a recording of a speech by Winston Churchill."
+    },
+    {
+      "question": "According to Turing's proposal in 'Computing Machinery and Intelligence', what was the suggested method for developing a machine capable of passing the Turing test?",
+      "answerOptions": [
+        {
+          "text": "Hard-coding every possible conversational response",
+          "isCorrect": false,
+          "rationale": "Turing recognized that the 'lookup table' approach would be practically impossible given the infinite variety of language."
+        },
+        {
+          "text": "Simulating a child's mind and subjecting it to education",
+          "isCorrect": true,
+          "rationale": "He argued that it would be easier to create a simple mind that could learn rather than attempting to program an adult mind directly."
+        },
+        {
+          "text": "Connecting multiple Manchester Mark 1 computers in a neural network",
+          "isCorrect": false,
+          "rationale": "The source mentions his work on the Manchester computers, but the 'child mind' approach was a theoretical suggestion in his AI paper."
+        },
+        {
+          "text": "Implementing a reverse CAPTCHA protocol",
+          "isCorrect": false,
+          "rationale": "CAPTCHA is a modern application of the Turing test principles, not a method for building an intelligent machine."
+        }
+      ],
+      "hint": "He proposed a developmental approach similar to human maturation rather than a completed adult simulation."
+    },
+    {
+      "question": "What is the core mechanism of the 'reaction-diffusion system' described in Turing's work on morphogenesis?",
+      "answerOptions": [
+        {
+          "text": "The mutation of DNA sequences over successive generations",
+          "isCorrect": false,
+          "rationale": "Turing's model was chemical and mathematical, published before the structure of DNA was widely understood."
+        },
+        {
+          "text": "The physical movement of cells into specific organ structures",
+          "isCorrect": false,
+          "rationale": "While related to development, his specific theory focused on the distribution of chemicals rather than cell migration."
+        },
+        {
+          "text": "Interacting chemicals that diffuse at different rates to create patterns",
+          "isCorrect": true,
+          "rationale": "He proposed that an activator and an inhibitor diffusing at different speeds could spontaneously create shapes like spots or stripes."
+        },
+        {
+          "text": "The transfer of energy within an ecosystem's food chain",
+          "isCorrect": false,
+          "rationale": "Morphogenesis refers to the development of form in an organism, not ecological energy transfer."
+        }
+      ],
+      "hint": "Consider how a catalyst and an inhibitor might spread and react within a biological tissue."
+    },
+    {
+      "question": "Turing was prosecuted in 1952 for 'gross indecency' and sentenced to probation. What was the specific condition of his probation?",
+      "answerOptions": [
+        {
+          "text": "Permanent exile to Norway",
+          "isCorrect": false,
+          "rationale": "He visited Norway because it was more tolerant, but his sentence was served in the UK."
+        },
+        {
+          "text": "The removal of his academic post at Manchester University",
+          "isCorrect": false,
+          "rationale": "He actually kept his academic position; it was his security clearance that was revoked."
+        },
+        {
+          "text": "Agreement to undergo hormone treatment (organotherapy)",
+          "isCorrect": true,
+          "rationale": "He chose 'chemical castration' via stilboestrol injections as an alternative to a prison sentence."
+        },
+        {
+          "text": "A lifetime ban from working on computing machinery",
+          "isCorrect": false,
+          "rationale": "He continued his research in mathematical biology and computing until his death."
+        }
+      ],
+      "hint": "This medical procedure was intended to reduce libido and was often called 'chemical castration'."
+    },
+    {
+      "question": "In 2017, the UK passed a law informally named the 'Alan Turing Law'. What is the primary function of this legislation?",
+      "answerOptions": [
+        {
+          "text": "It mandates the inclusion of computer science in primary school curricula",
+          "isCorrect": false,
+          "rationale": "While his legacy impacts education, this law is specifically related to historical criminal justice."
+        },
+        {
+          "text": "It provides a retroactive pardon to men convicted of historical homosexual acts",
+          "isCorrect": true,
+          "rationale": "The law expanded Turing's individual pardon to thousands of others convicted under similar outdated legislation."
+        },
+        {
+          "text": "It regulates the ethical use of artificial intelligence in government",
+          "isCorrect": false,
+          "rationale": "There is currently no 'Alan Turing Law' regarding AI regulation mentioned in the source material."
+        },
+        {
+          "text": "It protects the pensions of former Bletchley Park codebreakers",
+          "isCorrect": false,
+          "rationale": "The law focuses on pardoning individuals for convictions under the Criminal Law Amendment Act 1885."
+        }
+      ],
+      "hint": "This law follows the public apology and individual royal pardon granted to Turing himself."
+    },
+    {
+      "question": "Why did Alan Turing bury silver bars in a wood near Bletchley Park during the 1940s?",
+      "answerOptions": [
+        {
+          "text": "As part of an experiment on soil corrosion and chemistry",
+          "isCorrect": false,
+          "rationale": "This was a personal financial decision rather than a scientific experiment."
+        },
+        {
+          "text": "To secure his savings against a potential German invasion",
+          "isCorrect": true,
+          "rationale": "He was concerned about the stability of the bank and the threat of invasion, but he later could not recover the bars."
+        },
+        {
+          "text": "To serve as a cryptographic 'treasure hunt' for his colleagues",
+          "isCorrect": false,
+          "rationale": "While he did encode the location, it was intended for his own security, not as a game for others."
+        },
+        {
+          "text": "As a symbolic offering for his deceased friend Christopher Morcom",
+          "isCorrect": false,
+          "rationale": "The source material identifies this act as a pragmatic, if eccentric, way to protect his wealth."
+        }
+      ],
+      "hint": "He was motivated by the fear of losing his assets to the Axis powers."
+    },
+    {
+      "question": "Turing's 'Turochamp' was a pioneering achievement in which field?",
+      "answerOptions": [
+        {
+          "text": "Electronic voice scrambling",
+          "isCorrect": false,
+          "rationale": "Turochamp was a software project, whereas voice scrambling involved projects like Delilah."
+        },
+        {
+          "text": "Computer chess",
+          "isCorrect": true,
+          "rationale": "Turochamp was one of the first chess programs, which Turing had to 'run' manually because a powerful enough computer did not yet exist."
+        },
+        {
+          "text": "The modeling of plant growth",
+          "isCorrect": false,
+          "rationale": "This refers to his work on phyllotaxis and morphogenesis, not Turochamp."
+        },
+        {
+          "text": "High-speed binary multiplication",
+          "isCorrect": false,
+          "rationale": "He built an electromechanical binary multiplier at Princeton, but this is unrelated to Turochamp."
+        }
+      ],
+      "hint": "This program played a 'recognizable game' against colleagues, even though it once lost to a colleague's wife."
+    },
+    {
+      "question": "Jack Copeland has questioned the verdict of suicide in Turing's death, suggesting it may have been accidental. What evidence does he cite for this theory?",
+      "answerOptions": [
+        {
+          "text": "A suicide note found to be written in someone else's handwriting",
+          "isCorrect": false,
+          "rationale": "The source material mentions that no suicide note was found, which is one reason the verdict is debated."
+        },
+        {
+          "text": "Inhalation of cyanide fumes from a home electroplating experiment",
+          "isCorrect": true,
+          "rationale": "Turing had an apparatus for electroplating gold onto spoons, which used potassium cyanide and could have produced fatal fumes."
+        },
+        {
+          "text": "Medical records showing Turing was allergic to apples",
+          "isCorrect": false,
+          "rationale": "There is no mention of an allergy; the apple was simply the suspected delivery method for the poison."
+        },
+        {
+          "text": "A secret diary entry expressing great optimism for the future",
+          "isCorrect": false,
+          "rationale": "While he left a list of tasks for his return to work, there is no mention of a secret diary in the text."
+        }
+      ],
+      "hint": "Consider a hobby involving chemicals that Turing was pursuing in his spare room at home."
+    }
+  ]
+}

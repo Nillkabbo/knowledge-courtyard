@@ -1,0 +1,189 @@
+{
+  "name": "Ensemble Learning",
+  "children": [
+    {
+      "name": "Overview",
+      "children": [
+        {
+          "name": "Definition: Combining multiple learning algorithms"
+        },
+        {
+          "name": "Goal: Better predictive performance"
+        },
+        {
+          "name": "Base Models: Weak or base learners"
+        },
+        {
+          "name": "Key Idea: Diverse high-bias/high-variance models"
+        }
+      ]
+    },
+    {
+      "name": "Common Ensemble Types",
+      "children": [
+        {
+          "name": "Bagging (Bootstrap Aggregating)",
+          "children": [
+            {
+              "name": "Homogeneous parallel ensembles"
+            },
+            {
+              "name": "Random sampling with replacement"
+            },
+            {
+              "name": "Aggregation via voting/averaging"
+            },
+            {
+              "name": "Application: Random Forest"
+            }
+          ]
+        },
+        {
+          "name": "Boosting",
+          "children": [
+            {
+              "name": "Sequential ensemble learning"
+            },
+            {
+              "name": "Iterative error reduction"
+            },
+            {
+              "name": "Application: AdaBoost, Gradient Boosting"
+            }
+          ]
+        },
+        {
+          "name": "Stacking",
+          "children": [
+            {
+              "name": "Heterogeneous parallel ensemble"
+            },
+            {
+              "name": "Combiner model (final estimator)"
+            },
+            {
+              "name": "Prevents overfitting"
+            }
+          ]
+        },
+        {
+          "name": "Bayesian Methods",
+          "children": [
+            {
+              "name": "Bayes Optimal Classifier"
+            },
+            {
+              "name": "Bayesian Model Averaging (BMA)"
+            },
+            {
+              "name": "Bayesian Model Combination (BMC)"
+            }
+          ]
+        },
+        {
+          "name": "Bucket of Models",
+          "children": [
+            {
+              "name": "Cross-validation selection"
+            },
+            {
+              "name": "Gating models"
+            },
+            {
+              "name": "Landmark learning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ensemble Theory",
+      "children": [
+        {
+          "name": "Diversity Requirement"
+        },
+        {
+          "name": "Geometric Framework"
+        },
+        {
+          "name": "Law of Diminishing Returns (Size)"
+        },
+        {
+          "name": "Error Decomposition: Accuracy, Diversity, Bias, Variance"
+        }
+      ]
+    },
+    {
+      "name": "Applications",
+      "children": [
+        {
+          "name": "Computer Security",
+          "children": [
+            {
+              "name": "Malware Detection"
+            },
+            {
+              "name": "Intrusion Detection"
+            },
+            {
+              "name": "DDoS detection"
+            }
+          ]
+        },
+        {
+          "name": "Finance",
+          "children": [
+            {
+              "name": "Credit Scoring"
+            },
+            {
+              "name": "Bankruptcy Prediction"
+            },
+            {
+              "name": "Fraud Detection"
+            }
+          ]
+        },
+        {
+          "name": "Remote Sensing",
+          "children": [
+            {
+              "name": "Land cover mapping"
+            },
+            {
+              "name": "Change detection"
+            }
+          ]
+        },
+        {
+          "name": "Medicine",
+          "children": [
+            {
+              "name": "Medical Diagnosis"
+            },
+            {
+              "name": "MRI Segmentation"
+            }
+          ]
+        },
+        {
+          "name": "Face & Emotion Recognition"
+        }
+      ]
+    },
+    {
+      "name": "Statistical Packages",
+      "children": [
+        {
+          "name": "Python: scikit-learn"
+        },
+        {
+          "name": "R: BMS, BAS, BMA, ensembleBMA"
+        },
+        {
+          "name": "MATLAB: Statistics/ML Toolbox"
+        }
+      ]
+    }
+  ]
+}

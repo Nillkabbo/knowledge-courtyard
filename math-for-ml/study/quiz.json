@@ -1,0 +1,265 @@
+{
+  "title": "Statistics Quiz",
+  "questions": [
+    {
+      "question": "Strictly speaking, what does the term \"backpropagation\" refer to within the field of machine learning?",
+      "answerOptions": [
+        {
+          "text": "An efficient algorithm for computing the gradient of a loss function with respect to weights.",
+          "isCorrect": true,
+          "rationale": "While often used to describe the entire training process, the term specifically denotes the method of calculating derivatives using the chain rule."
+        },
+        {
+          "text": "A specific optimization method like Stochastic Gradient Descent ($SGD$).",
+          "isCorrect": false,
+          "rationale": "Backpropagation only calculates the gradient; other algorithms are required to actually update the parameters using that gradient."
+        },
+        {
+          "text": "The forward pass where input data is mapped to a predicted output.",
+          "isCorrect": false,
+          "rationale": "The forward pass involves function composition and matrix multiplication, but it does not involve the propagation of derivatives."
+        },
+        {
+          "text": "The process of initializing network weights using a normal distribution.",
+          "isCorrect": false,
+          "rationale": "Weight initialization occurs before training begins, whereas backpropagation is a step within the training loop."
+        }
+      ],
+      "hint": "Consider the distinction between calculating a derivative and using that derivative to update a model."
+    },
+    {
+      "question": "Why is the backpropagation method considered computationally efficient compared to a naive forward-mode calculation of derivatives?",
+      "answerOptions": [
+        {
+          "text": "It performs vector-matrix multiplications rather than matrix-matrix multiplications.",
+          "isCorrect": true,
+          "rationale": "Propagating the error backwards allows for simpler partial products, avoiding the expensive tracking of every possible path from input to output."
+        },
+        {
+          "text": "It eliminates the need to cache intermediate activation values during the forward pass.",
+          "isCorrect": false,
+          "rationale": "Actually, activations must be cached during the forward pass to be used later in the backwards calculation."
+        },
+        {
+          "text": "It simplifies the chain rule into a series of basic additions.",
+          "isCorrect": false,
+          "rationale": "The method still relies on the chain rule, which fundamentally involves multiplication and function derivatives."
+        },
+        {
+          "text": "It ignores the weights of the hidden layers to focus solely on the output layer.",
+          "isCorrect": false,
+          "rationale": "The algorithm must compute gradients for all weights in the network to facilitate learning in hidden representations."
+        }
+      ],
+      "hint": "Think about the mathematical difference between multiplying two matrices versus multiplying a vector by a matrix."
+    },
+    {
+      "question": "Which mathematical condition must an activation function $\\varphi$ satisfy for standard backpropagation to be applicable?",
+      "answerOptions": [
+        {
+          "text": "The function must be differentiable.",
+          "isCorrect": true,
+          "rationale": "The chain rule requires the existence of a derivative at the points where the function is evaluated."
+        },
+        {
+          "text": "The function must be strictly linear.",
+          "isCorrect": false,
+          "rationale": "Multi-layer networks typically require non-linear activations to learn complex mappings, though they must still be differentiable."
+        },
+        {
+          "text": "The function must have a derivative that is always equal to 1.",
+          "isCorrect": false,
+          "rationale": "A constant derivative of 1 would mean the function is linear, which limits the network's ability to represent non-linear data."
+        },
+        {
+          "text": "The function must be discrete and produce only binary outputs.",
+          "isCorrect": false,
+          "rationale": "Discrete functions often have zero derivatives, which historically made backpropagation impossible for early researchers."
+        }
+      ],
+      "hint": "Recall the requirements for using the chain rule to find a gradient."
+    },
+    {
+      "question": "In the general normal distribution $N(\\mu, \\sigma^2)$, what is the specific role of the parameter $\\sigma$?",
+      "answerOptions": [
+        {
+          "text": "It represents the standard deviation, determining the width or scale of the distribution.",
+          "isCorrect": true,
+          "rationale": "This parameter measures the spread of the data around the central value."
+        },
+        {
+          "text": "It represents the mean, defining the location of the peak on the horizontal axis.",
+          "isCorrect": false,
+          "rationale": "The location of the distribution's peak is determined by the parameter $\\mu$."
+        },
+        {
+          "text": "It represents the precision, defined as the reciprocal of the variance.",
+          "isCorrect": false,
+          "rationale": "Precision is typically denoted by $\\tau$ and is equal to $1/\\sigma^2$."
+        },
+        {
+          "text": "It represents the total area under the probability density curve.",
+          "isCorrect": false,
+          "rationale": "The total area under any valid probability density function must always be exactly 1."
+        }
+      ],
+      "hint": "Focus on how the bell shape stretches or compresses horizontally."
+    },
+    {
+      "question": "Who is credited with first publishing the \"reverse mode of automatic differentiation\" in 1970, which is the mathematical basis for modern backpropagation?",
+      "answerOptions": [
+        {
+          "text": "Seppo Linnainmaa",
+          "isCorrect": true,
+          "rationale": "Linnainmaa's 1970 master's thesis described the reverse mode for discrete connected networks of nested differentiable functions."
+        },
+        {
+          "text": "Geoffrey Hinton",
+          "isCorrect": false,
+          "rationale": "Hinton co-authored the 1986 paper that popularized backpropagation, but he was not the first to discover the underlying method."
+        },
+        {
+          "text": "Frank Rosenblatt",
+          "isCorrect": false,
+          "rationale": "Rosenblatt introduced the terminology of error correction in 1962 but did not have a differentiable implementation."
+        },
+        {
+          "text": "Paul Werbos",
+          "isCorrect": false,
+          "rationale": "Werbos applied the method to multilayer perceptrons in the 1970s and 80s, but the general reverse mode was published earlier."
+        }
+      ],
+      "hint": "This individual's work predates the popularization of neural networks in the 1980s and focused on rounding errors."
+    },
+    {
+      "question": "Given a normal random variable $X$ with mean $\\mu$ and standard deviation $\\sigma$, which formula converts it into a standard normal deviate $Z$?",
+      "answerOptions": [
+        {
+          "text": "$Z = \\frac{X - \\mu}{\\sigma}$",
+          "isCorrect": true,
+          "rationale": "This process, known as standardization, shifts the mean to 0 and scales the standard deviation to 1."
+        },
+        {
+          "text": "$Z = \\frac{X - \\sigma}{\\mu}$",
+          "isCorrect": false,
+          "rationale": "This formula incorrectly swaps the roles of the location and scale parameters."
+        },
+        {
+          "text": "$Z = \\sigma X + \\mu$",
+          "isCorrect": false,
+          "rationale": "This is the formula used to transform a standard normal deviate back into a general normal deviate."
+        },
+        {
+          "text": "$Z = (X - \\mu)^2$",
+          "isCorrect": false,
+          "rationale": "Squaring the difference relates more closely to calculating variance rather than a linear standardization."
+        }
+      ],
+      "hint": "Think about the order of operations needed to center a value at zero and then rescale its spread."
+    },
+    {
+      "question": "According to the empirical 3-sigma rule, what is the approximate probability that a value from a normal distribution falls within one standard deviation of the mean?",
+      "answerOptions": [
+        {
+          "text": "$68.27\\%$",
+          "isCorrect": true,
+          "rationale": "This percentage represents the area under the curve between $\\mu - \\sigma$ and $\\mu + \\sigma$."
+        },
+        {
+          "text": "$95.45\\%$",
+          "isCorrect": false,
+          "rationale": "This percentage corresponds to values within two standard deviations of the mean."
+        },
+        {
+          "text": "$99.73\\%$",
+          "isCorrect": false,
+          "rationale": "This represents the coverage of values within three standard deviations of the mean."
+        },
+        {
+          "text": "$50.00\\%$",
+          "isCorrect": false,
+          "rationale": "While the mean is the median, exactly half of the values fall above or below it, but not within a specific range of standard deviation."
+        }
+      ],
+      "hint": "This is the first of the three values in the '68-95-99.7' rule."
+    },
+    {
+      "question": "What is a recognized limitation of the gradient descent method when used with backpropagation in training neural networks?",
+      "answerOptions": [
+        {
+          "text": "It is not guaranteed to find the global minimum of the error function.",
+          "isCorrect": true,
+          "rationale": "Because the error surfaces of neural networks are often non-convex, the algorithm may get trapped in a local minimum."
+        },
+        {
+          "text": "It cannot be used for multi-class classification problems.",
+          "isCorrect": false,
+          "rationale": "Backpropagation is widely used for multi-class classification, often in conjunction with functions like softmax."
+        },
+        {
+          "text": "It requires the input vectors to be normalized to exactly 1.",
+          "isCorrect": false,
+          "rationale": "While normalization can improve performance, the algorithm does not strictly require it to function."
+        },
+        {
+          "text": "It can only update weights in the positive direction of the gradient.",
+          "isCorrect": false,
+          "rationale": "Learning typically involves moving in the negative direction of the gradient to minimize the loss."
+        }
+      ],
+      "hint": "Consider the shape of a complex error landscape and the possibility of getting 'stuck'."
+    },
+    {
+      "question": "How is the cumulative distribution function (CDF) of the standard normal distribution, $\\Phi(x)$, related to the error function, $\\operatorname{erf}(x)$?",
+      "answerOptions": [
+        {
+          "text": "$\\Phi(x) = \\frac{1}{2} [ 1 + \\operatorname{erf}(\\frac{x}{\\sqrt{2}}) ]$",
+          "isCorrect": true,
+          "rationale": "This formula allows the standard normal integral to be computed using the standard error function available in many libraries."
+        },
+        {
+          "text": "$\\Phi(x) = \\operatorname{erf}(x)^2$",
+          "isCorrect": false,
+          "rationale": "The relationship is linear with respect to the error function, not quadratic."
+        },
+        {
+          "text": "$\\Phi(x) = 1 - \\operatorname{erf}(x)$",
+          "isCorrect": false,
+          "rationale": "This would represent a complement, but it fails to account for the necessary scaling and shifting to match the standard normal."
+        },
+        {
+          "text": "$\\Phi(x) = \\int \\operatorname{erf}(x) dx$",
+          "isCorrect": false,
+          "rationale": "The CDF is itself an integral of the density, not an integral of the error function."
+        }
+      ],
+      "hint": "The relationship involves scaling the input by the square root of two and adjusting the range from $[0, 1]$."
+    },
+    {
+      "question": "Which theorem explains why many physical quantities, resulting from the sum of many independent processes, tend to have a normal distribution?",
+      "answerOptions": [
+        {
+          "text": "The Central Limit Theorem",
+          "isCorrect": true,
+          "rationale": "This theorem states that the average of many independent random variables converges to a normal distribution as the sample size increases."
+        },
+        {
+          "text": "The Chain Rule of Calculus",
+          "isCorrect": false,
+          "rationale": "While essential for backpropagation, this rule describes how to differentiate composite functions, not the convergence of distributions."
+        },
+        {
+          "text": "Cramér's Theorem",
+          "isCorrect": false,
+          "rationale": "Cramér's theorem is related to the properties of normal variables but is not the primary explanation for the occurrence of normal distributions in nature."
+        },
+        {
+          "text": "The Law of Large Numbers",
+          "isCorrect": false,
+          "rationale": "This law states that the sample mean converges to the population mean, but it doesn't describe the shape of the resulting distribution."
+        }
+      ],
+      "hint": "This theorem focuses on the convergence of averages to a specific bell-shaped distribution."
+    }
+  ]
+}

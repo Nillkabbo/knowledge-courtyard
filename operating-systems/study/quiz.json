@@ -1,0 +1,265 @@
+{
+  "title": "Systems Quiz",
+  "questions": [
+    {
+      "question": "In a local file system's architecture, which layer is responsible for supporting multiple concurrent instances of different physical file system implementations?",
+      "answerOptions": [
+        {
+          "text": "Virtual file system layer",
+          "isCorrect": true,
+          "rationale": "This optional layer acts as an abstraction that allows the operating system to interact with various file system types simultaneously."
+        },
+        {
+          "text": "Logical file system layer",
+          "isCorrect": false,
+          "rationale": "This layer primarily handles high-level API operations like opening or closing files and managing file descriptors."
+        },
+        {
+          "text": "Physical file system layer",
+          "isCorrect": false,
+          "rationale": "This layer focuses on low-level device interactions, such as block placement and buffering on the storage medium."
+        },
+        {
+          "text": "Device driver layer",
+          "isCorrect": false,
+          "rationale": "This layer is responsible for the actual communication with the hardware, rather than managing multiple file system implementations."
+        }
+      ],
+      "hint": "Consider the layer that provides an abstraction between the application requests and the specific storage formats."
+    },
+    {
+      "question": "Why do tape file systems typically intermix directory entries with data in a process called 'streaming'?",
+      "answerOptions": [
+        {
+          "text": "To minimize time-consuming linear tape motion during writes",
+          "isCorrect": true,
+          "rationale": "Because tape is a sequential medium, writing a centralized directory would require frequent, slow rewinding and winding."
+        },
+        {
+          "text": "To allow for random access of data blocks within milliseconds",
+          "isCorrect": false,
+          "rationale": "Tapes are inherently sequential, and random access remains slow regardless of where directory entries are placed."
+        },
+        {
+          "text": "To ensure that file directory scans are faster for the user",
+          "isCorrect": false,
+          "rationale": "Streaming actually makes directory reading slower, as the entire tape must be scanned to find all scattered entries."
+        },
+        {
+          "text": "To reduce the physical wear on the magnetic tape surface",
+          "isCorrect": false,
+          "rationale": "While it reduces motion, the primary architectural driver is the efficiency of the writing process on sequential media."
+        }
+      ],
+      "hint": "Think about the mechanical limitations of winding and unwinding long reels of media."
+    },
+    {
+      "question": "Which type of operating system scheduler is responsible for controlling the 'degree of multiprogramming' by deciding which jobs are admitted to the ready queue?",
+      "answerOptions": [
+        {
+          "text": "Short-term scheduler",
+          "isCorrect": false,
+          "rationale": "This scheduler focuses on selecting which process in memory should be executed next by the CPU."
+        },
+        {
+          "text": "Medium-term scheduler",
+          "isCorrect": false,
+          "rationale": "This component manages memory by swapping processes in and out of main memory to secondary storage."
+        },
+        {
+          "text": "Long-term scheduler",
+          "isCorrect": true,
+          "rationale": "Also known as an admission scheduler, it determines which processes are authorized to begin execution on the system."
+        },
+        {
+          "text": "Dispatcher",
+          "isCorrect": false,
+          "rationale": "The dispatcher is the module that handles the context switch and gives control of the CPU to a selected process."
+        }
+      ],
+      "hint": "This scheduler acts as a gatekeeper for new tasks entering the system."
+    },
+    {
+      "question": "In the context of storage organization, what is 'slack space'?",
+      "answerOptions": [
+        {
+          "text": "The unused space within an allocation unit that is larger than the file content",
+          "isCorrect": true,
+          "rationale": "Because file systems allocate space in granular units (clusters), any file that is not a perfect multiple of that size leaves empty space."
+        },
+        {
+          "text": "The gap between non-contiguous blocks in a fragmented file system",
+          "isCorrect": false,
+          "rationale": "This describes external fragmentation rather than the internal unused space within a specific block."
+        },
+        {
+          "text": "The temporary memory buffer used by the physical file system layer",
+          "isCorrect": false,
+          "rationale": "Buffers are used for performance, whereas slack space is a result of the granular nature of disk allocation."
+        },
+        {
+          "text": "The reserved region of a disk used for storing the inode table",
+          "isCorrect": false,
+          "rationale": "Metadata storage is a necessary functional part of the disk, while slack space represents unusable capacity."
+        }
+      ],
+      "hint": "Consider the result of saving a 5-byte file into a 4,096-byte cluster."
+    },
+    {
+      "question": "How does a 'transactional' file system differ from a standard journaling file system in its interaction with programs?",
+      "answerOptions": [
+        {
+          "text": "Transactional systems expose atomicity and isolation guarantees to programs via an API",
+          "isCorrect": true,
+          "rationale": "Unlike journaling, which is used internally for consistency, transactional file systems allow programs to group multiple operations into a single commit/abort cycle."
+        },
+        {
+          "text": "Journaling systems provide higher performance for database applications",
+          "isCorrect": false,
+          "rationale": "Journaling is primarily a recovery mechanism for file system structures, not an application-level performance feature."
+        },
+        {
+          "text": "Transactional systems only record changes to metadata rather than file data",
+          "isCorrect": false,
+          "rationale": "Journaling systems often only record metadata, while transactional systems aim to protect the consistency of both data and metadata across multiple operations."
+        },
+        {
+          "text": "Journaling systems allow for automatic rollbacks of failed software installations",
+          "isCorrect": false,
+          "rationale": "Journaling ensures the file system itself doesn't corrupt, but it doesn't automatically undo a partially successful multi-file software update."
+        }
+      ],
+      "hint": "Look for the difference between internal consistency and guarantees provided to the developer."
+    },
+    {
+      "question": "What is the primary drawback of the First Come, First Served (FCFS) scheduling algorithm?",
+      "answerOptions": [
+        {
+          "text": "It requires significant computational overhead to reorder the queue",
+          "isCorrect": false,
+          "rationale": "FCFS has minimal overhead because it does not require any reorganization of the process queue."
+        },
+        {
+          "text": "Short processes may be delayed by a long process, known as the convoy effect",
+          "isCorrect": true,
+          "rationale": "Since there is no preemption or prioritization, a single CPU-bound task can force many short interactive tasks to wait."
+        },
+        {
+          "text": "Lower-priority processes may suffer from indefinite resource starvation",
+          "isCorrect": false,
+          "rationale": "As long as every process eventually finishes, FCFS guarantees that every task will eventually get its turn."
+        },
+        {
+          "text": "It relies on complex estimations of the time required for a process to complete",
+          "isCorrect": false,
+          "rationale": "Predicting processing time is a requirement for Shortest Remaining Time First, not for FCFS."
+        }
+      ],
+      "hint": "Think about what happens when a very long task starts just before several very short ones."
+    },
+    {
+      "question": "In Linux 2.6.23, the Completely Fair Scheduler (CFS) replaced the $O(1)$ scheduler. What is the scheduling complexity of CFS for reinserting a task after it has run?",
+      "answerOptions": [
+        {
+          "text": "$O(1)$",
+          "isCorrect": false,
+          "rationale": "While the previous scheduler used constant time, CFS uses a tree structure that changes based on the number of tasks."
+        },
+        {
+          "text": "$O(n)$",
+          "isCorrect": false,
+          "rationale": "Linear complexity was common in early Linux kernels like 2.4, but is too slow for modern systems with many tasks."
+        },
+        {
+          "text": "$O(\\log N)$",
+          "isCorrect": true,
+          "rationale": "Because the run queue is implemented as a red–black tree, reinsertion requires logarithmic time relative to the number of tasks."
+        },
+        {
+          "text": "$O(N^2)$",
+          "isCorrect": false,
+          "rationale": "Quadratic complexity would be far too inefficient for any process scheduling task."
+        }
+      ],
+      "hint": "This complexity is typical for operations performed on a balanced search tree like a red-black tree."
+    },
+    {
+      "question": "Which scheduling algorithm assigns a fixed time unit per process and cycles through the list, becoming FCFS if that time unit is set to a very large value?",
+      "answerOptions": [
+        {
+          "text": "Priority scheduling",
+          "isCorrect": false,
+          "rationale": "Priority scheduling relies on rank rather than time cycles, and wouldn't naturally default to FCFS based on time-slice size."
+        },
+        {
+          "text": "Round-robin scheduling",
+          "isCorrect": true,
+          "rationale": "By cycling through tasks for a specific quantum, the system ensures fairness, but a huge quantum allows the first task to simply finish first."
+        },
+        {
+          "text": "Shortest Remaining Time First",
+          "isCorrect": false,
+          "rationale": "This algorithm is preemptive based on estimated work remaining, not based on rotating through a fixed time slice."
+        },
+        {
+          "text": "Multilevel queue scheduling",
+          "isCorrect": false,
+          "rationale": "This involves splitting processes into separate queues with different policies, rather than cycling through a single list."
+        }
+      ],
+      "hint": "This policy is known for its use of a 'time quantum'."
+    },
+    {
+      "question": "How did the FAT file system in MS-DOS change between version 1.0 and version 2.0?",
+      "answerOptions": [
+        {
+          "text": "It transitioned from a flat file system to one supporting subdirectories",
+          "isCorrect": true,
+          "rationale": "Early microcomputer operating systems like MS-DOS 1.0 were flat; hierarchical directory support was a major addition in 2.0."
+        },
+        {
+          "text": "It introduced long filenames through the VFAT extension",
+          "isCorrect": false,
+          "rationale": "Long filename support via VFAT was introduced much later with Windows 95 and Windows NT 3.5."
+        },
+        {
+          "text": "It replaced FAT16 with FAT32 to overcome partition size limits",
+          "isCorrect": false,
+          "rationale": "FAT32 was not introduced until Windows 95 OSR2, many years after the early DOS versions."
+        },
+        {
+          "text": "It added mandatory file encryption for user data",
+          "isCorrect": false,
+          "rationale": "Standard FAT file systems do not provide built-in encryption; this is typically a feature of NTFS."
+        }
+      ],
+      "hint": "The change allowed users to organize files into groups rather than having them all in one single list."
+    },
+    {
+      "question": "According to the source material, what is the effect of file system fragmentation on solid-state drives (SSDs)?",
+      "answerOptions": [
+        {
+          "text": "It significantly degrades the performance of data retrieval",
+          "isCorrect": false,
+          "rationale": "Fragmentation degrades performance on hard disk drives due to physical head movement, but SSDs access data electronically."
+        },
+        {
+          "text": "It is effectively invisible to the hardware and does not affect performance",
+          "isCorrect": true,
+          "rationale": "Unlike hard drives that rely on physical platters and contiguous blocks, SSDs are not affected by non-contiguous block placement."
+        },
+        {
+          "text": "It increases the risk of data corruption during power failures",
+          "isCorrect": false,
+          "rationale": "Data corruption risks are typically managed by journaling or data integrity features rather than by block contiguity."
+        },
+        {
+          "text": "It causes the drive to reach its storage capacity faster",
+          "isCorrect": false,
+          "rationale": "Fragmentation affects the arrangement of data blocks, not the total number of blocks used or available."
+        }
+      ],
+      "hint": "Consider the difference between a physical spinning disk and electronic memory chips."
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "title": "Postgraduate Flashcards",
+  "cards": [
+    {
+      "front": "What is the primary purpose of academic tenure in higher education?",
+      "back": "To protect faculty members from being fired for their personal beliefs or practices, thereby defending academic freedom."
+    },
+    {
+      "front": "In which country did the concept of academic tenure originate in the early 20th century?",
+      "back": "The United States."
+    },
+    {
+      "front": "Under what specific conditions can a tenured professor typically still be dismissed?",
+      "back": "Under just cause laws or extraordinary circumstances like financial exigency or program discontinuation."
+    },
+    {
+      "front": "How did the Nazi regime affect academic tenure in Germany by 1939?",
+      "back": "Universal education was suppressed, 1,500 professors were purged, and nearly half of all faculty posts were occupied by Nazis."
+    },
+    {
+      "front": "What was the 'heresy' that led the University of Illinois to fire several untenured economists in the late 1940s?",
+      "back": "Teaching Keynesian economics."
+    },
+    {
+      "front": "Why did the University of Copenhagen's 2016 firing of Professor Hans Thybo cause controversy in Denmark?",
+      "back": "The university cited 'unacceptable behavior' involving pressure on a postdoc and private email use, but courts later ruled the dismissal unjustified."
+    },
+    {
+      "front": "How was academic tenure formally changed in the United Kingdom in 1988?",
+      "back": "The Education Reform Act removed the original form of academic tenure, replacing it with permanent versus temporary contracts."
+    },
+    {
+      "front": "In the German academic system, what is the 'Habilitation'?",
+      "back": "A high-level second PhD thesis that entitles the holder to become a full professor and eligible for tenureship."
+    },
+    {
+      "front": "What is the average age at which an academic in Germany typically obtains the position of Academic Assistant?",
+      "back": "42 years old."
+    },
+    {
+      "front": "The widely adopted '1940 Statement of Principles on Academic Freedom and Tenure' was formulated by which organization?",
+      "back": "The American Association of University Professors (AAUP)."
+    },
+    {
+      "front": "In the U.S. university system, what does 'non-tenure track' usually imply for positions like adjunct professors?",
+      "back": "Higher teaching loads, lower compensation, fewer benefits, and little protection of academic freedom."
+    },
+    {
+      "front": "According to defenders like Aeon J. Skoble, why is tenure necessary for heterodox scholars?",
+      "back": "It provides formal protection against firing for scholars whose views differ from the prevailing academic orthodoxy."
+    },
+    {
+      "front": "What economic argument does Ellen Schrecker use to justify the job security provided by tenure?",
+      "back": "It counterbalances the inability of universities to compete with the high financial remuneration of the private sector."
+    },
+    {
+      "front": "How does tenure protect K-12 public school teachers regarding curriculum?",
+      "back": "It protects them from being fired for teaching controversial subjects such as evolutionary biology or theology."
+    },
+    {
+      "front": "What is the 'string theory' criticism regarding tenure as described by physicist Lee Smolin?",
+      "back": "Young physicists may feel forced to conform to popular fields like string theory to avoid 'career suicide' before obtaining tenure."
+    },
+    {
+      "front": "Which negative incentive does economist Steven Levitt associate with the existence of tenure?",
+      "back": "It rewards complacency, as professors may reduce their effort once the difficulty of removal is established."
+    },
+    {
+      "front": "What is the typical time commitment for a PhD program according to the 'Knowledge Courtyard' material?",
+      "back": "5 to 7 years."
+    },
+    {
+      "front": "What is the average completion time for a Computer Science PhD according to the Council of Graduate Schools (CGS)?",
+      "back": "5.8 years."
+    },
+    {
+      "front": "What are the four primary stages of a PhD timeline?",
+      "back": "Coursework, Qualifying Exam, Proposal, and Defense."
+    },
+    {
+      "front": "In the PhD journey, what is the primary goal of the 'Qualifying Exam'?",
+      "back": "To determine if a student is capable of becoming an official PhD Candidate by testing their knowledge of 30-50 key papers."
+    },
+    {
+      "front": "What is the difference between a Research Assistantship (RA) and a Teaching Assistantship (TA)?",
+      "back": "An RA involves conducting research for a professor's grant, while a TA involves teaching undergraduate students."
+    },
+    {
+      "front": "Why is a Fellowship considered the most desirable form of PhD funding?",
+      "back": "It allows for 100% focus on research without the obligations of teaching or assisting a specific grant."
+    },
+    {
+      "front": "What is the approximate annual value of a funded PhD package in the U.S. (including tuition waiver and stipend)?",
+      "back": "$79,000 - $114,000+ per year."
+    },
+    {
+      "front": "According to the July 2026 DHS rule, what is the new fixed admission period for F-1 students?",
+      "back": "A maximum of 4 years."
+    },
+    {
+      "front": "When choosing a PhD research area, what does a 'Stable' area like Systems or Security offer compared to 'Hot' areas?",
+      "back": "Moderate competition and consistent, stable funding opportunities."
+    },
+    {
+      "front": "In a PhD application, what is the primary purpose of the Statement of Purpose (SOP)?",
+      "back": "To express the applicant's research intention, specific research questions, and fit with the university and professor."
+    },
+    {
+      "front": "Why is it discouraged to send a generic SOP to every university?",
+      "back": "Because committees look for a specific 'fit' with their faculty's recent research and the program's unique strengths."
+    },
+    {
+      "front": "What is 'Cold Emailing' in the context of PhD admissions?",
+      "back": "Emailing professors directly before applying to express interest in their research and inquire about lab openings."
+    },
+    {
+      "front": "What is a recommended 'High Profile' PhD applicant strategy?",
+      "back": "Applying to 10-15 programs, focusing on 'reach' schools in the Top-20 and 'match' schools in the Top-50."
+    },
+    {
+      "front": "For a 'Low Profile' PhD applicant, what is the purpose of a 'Bridge Year'?",
+      "back": "To gain research experience, publish a workshop paper, or complete a Master's to strengthen the profile for future applications."
+    },
+    {
+      "front": "What is the 'Paper Pipeline' sequence for a first-time researcher?",
+      "back": "Literature Review $\\rightarrow$ Hypothesis $\\rightarrow$ Experiment $\\rightarrow$ Analysis $\\rightarrow$ Writing $\\rightarrow$ Submission."
+    },
+    {
+      "front": "How does a PhD interview differ from a standard industry coding interview?",
+      "back": "It focuses on research conversation, the applicant's thought process, and curiosity rather than technical coding tests."
+    },
+    {
+      "front": "What is 'Imposter Syndrome' in PhD life?",
+      "back": "The persistent feeling that one is 'not good enough' despite evidence of success, common among graduate students."
+    },
+    {
+      "front": "Which career path after a PhD typically offers the highest salary range ($200K-$400K+)?",
+      "back": "Industry Research (e.g., DeepMind, Meta FAIR, Microsoft Research)."
+    },
+    {
+      "front": "In the hierarchical definition of postgraduate degrees, what does 'DEA' or 'DESS' refer to in the pre-2005 French system?",
+      "back": "Master's level degrees."
+    },
+    {
+      "front": "How do 'Higher Doctorates' like the Doctor of Science (D.Sc.) differ from a Ph.D. in some European systems?",
+      "back": "They are awarded to distinguished professors for a significant portfolio of work beyond the Ph.D. level."
+    },
+    {
+      "front": "What is an 'Honorary Degree'?",
+      "back": "A postgraduate level recognition awarded to individuals for achievements in fields like art or politics, without academic study."
+    },
+    {
+      "front": "In Argentina, what is the minimum requirement for admission to a postgraduate program?",
+      "back": "Full completion of an undergraduate course (carrera de grado), such as Licenciado or Ingeniero."
+    },
+    {
+      "front": "In Australia, what is the typical duration of a Graduate Certificate?",
+      "back": "Six months of full-time coursework."
+    },
+    {
+      "front": "How does the Australian 'Honours' year relate to PhD entry in the sciences?",
+      "back": "It is a one-year research program after a pass degree that is often considered equivalent to a British research Master's for PhD admission."
+    },
+    {
+      "front": "In Brazil, what is the difference between 'Lato sensu' and 'Stricto sensu' postgraduate programs?",
+      "back": "'Lato sensu' focuses on professional specialization, while 'Stricto sensu' refers to Master's and Doctoral programs for academic research."
+    },
+    {
+      "front": "What is the Canadian Association of Graduate Studies (CAGS) mandate?",
+      "back": "To promote and foster excellence in graduate education and university research across 58 Canadian universities."
+    },
+    {
+      "front": "In Canadian universities, what is the 'reclassification' process for graduate students?",
+      "back": "Allowing a student to move directly into a Ph.D. program from a Master's after satisfactory performance in the first year."
+    },
+    {
+      "front": "What is the language requirement for a PhD thesis at McGill University in Canada?",
+      "back": "Work can be submitted in either English or French, except when the course's purpose is language acquisition."
+    },
+    {
+      "front": "In France, what are 'Écoles doctorales'?",
+      "back": "Educational structures that provide structured doctoral training and manage the awarding of doctoral fellowships."
+    },
+    {
+      "front": "What is the minimum remuneration for a French 'contrat doctoral' as of 2024?",
+      "back": "€2,100."
+    },
+    {
+      "front": "How does the traditional 'Doktorvater' model of German doctoral studies function?",
+      "back": "A student conducts research individually under the supervision of a single professor without a formal curriculum."
+    },
+    {
+      "front": "What is the role of a 'Graduiertenkolleg' (Research Training Group) in Germany?",
+      "back": "To provide a team of 20-30 doctoral students with structured training and DFG-funded stipends for interdisciplinary research."
+    },
+    {
+      "front": "In Nigeria, what is the minimum weighted average required in a Master's degree for admission to a Doctoral program?",
+      "back": "60% (B average or $4.00/5$)."
+    },
+    {
+      "front": "In the UK, what degree is often used as a 'transfer' stage before a student is fully admitted to a Ph.D.?",
+      "back": "Master of Philosophy (M.Phil.) or Master of Research (M.Res.)."
+    },
+    {
+      "front": "What is the typical deadline for overseas students applying for major UK funding?",
+      "back": "Twelve months or more before the course begins."
+    },
+    {
+      "front": "What does the acronym 'ABD' stand for in U.S. doctoral education?",
+      "back": "'All But Dissertation,' referring to students who have advanced to candidacy but not yet filed their thesis."
+    },
+    {
+      "front": "In the U.S., what is the purpose of 'Comprehensive Examinations' (or 'Quals')?",
+      "back": "To test a doctoral student's grasp of their discipline and determine if they are ready to proceed to independent research."
+    },
+    {
+      "front": "What is the 'April 15 Resolution' by the Council of Graduate Schools in the U.S.?",
+      "back": "A deadline giving applicants until April 15 to accept or reject financial support offers for graduate study."
+    },
+    {
+      "front": "How does the National Labor Relations Act affect graduate employee unions at private U.S. universities?",
+      "back": "It governs their recognition, which was not established for private universities until 2001."
+    },
+    {
+      "front": "What is the difference between a 'Master's by Research' and a 'Taught Master's' in the UK?",
+      "back": "Research Master's focus on extensive original research (e.g., M.Res.), while Taught Master's (e.g., M.A., M.Sc.) focus on coursework and credits."
+    },
+    {
+      "front": "Why is 'just cause' significant in the context of academic tenure?",
+      "back": "It defines the specific, legitimate legal reasons (such as misconduct) for which a tenured employee may still be terminated."
+    },
+    {
+      "front": "The phrase 'Duration of Status' (D/S) on an F-1 visa is being replaced in 2026 by what?",
+      "back": "A fixed time period of admission (e.g., 4 years)."
+    },
+    {
+      "front": "What is the 'Non-pecuniary' benefit of tenure mentioned in the source material?",
+      "back": "Job security, which allows universities to pay lower salaries compared to the private sector."
+    },
+    {
+      "front": "In Australia, which government scheme provides tuition subsidies for domestic postgraduate students?",
+      "back": "FEE-Help (or HECS-Help for Commonwealth Supported Places)."
+    },
+    {
+      "front": "Term: Licentiate",
+      "back": "Definition: An academic degree in some European countries (e.g., Finland, Sweden) that is above a Master's but below a Doctorate."
+    },
+    {
+      "front": "In Argentina, who must review a candidate's dissertation according to postgraduate requirements?",
+      "back": "A committee composed of external examiners, with at least one external to the institution."
+    },
+    {
+      "front": "What is the typical CATS credit value of a one-year UK Master's degree?",
+      "back": "180 credits."
+    },
+    {
+      "front": "Which Latin word is the etymological root of 'Doctor,' meaning 'to teach'?",
+      "back": "Docere."
+    },
+    {
+      "front": "According to the PhD journey guide, what is the main reason for PhD dropouts?",
+      "back": "Advisor mismatch, loss of funding, and mental health issues rather than academic weakness."
+    },
+    {
+      "front": "What does a 'CV (Academic Format)' typically highlight that a professional resume might not?",
+      "back": "Research publications, presentations, specific academic projects, and teaching experience."
+    },
+    {
+      "front": "Why is 'Negative Result' considered a valid outcome in PhD research?",
+      "back": "Because in research, proving a hypothesis wrong is still a contribution to knowledge and a learning experience."
+    },
+    {
+      "front": "Which PhD funding type is specifically linked to teaching duties for about 20 hours per week?",
+      "back": "Teaching Assistantship (TA)."
+    },
+    {
+      "front": "What does the 'Diversity of Ideas' argument suggest about the necessity of tenure?",
+      "back": "Tenure protects scholars who challenge a field's 'orthodoxy' or political slant, preventing a departmental echo chamber."
+    },
+    {
+      "front": "In Germany, what is the 'Akademischer Rat'?",
+      "back": "A permanent civil service position for research and teaching below the level of full professorship."
+    },
+    {
+      "front": "What is a 'Graduate Diploma' in the Australian system?",
+      "back": "A twelve-month full-time coursework qualification."
+    },
+    {
+      "front": "In the US, what constitutes the 'residency' requirement for some doctorate programs?",
+      "back": "A fixed portion of coursework taken outside the student's department or university to broaden research abilities."
+    },
+    {
+      "front": "How does 'Financial Exigency' affect a tenured faculty member's job security?",
+      "back": "It is an extraordinary circumstance where severe financial crisis allows a university to layoff tenured staff."
+    },
+    {
+      "front": "What was the 'most corroding and disintegrating poison' according to Adolf Hitler?",
+      "back": "Universal education."
+    },
+    {
+      "front": "According to the PhD journey guide, what percentage of CS PhD applicants typically get accepted into high-profile AI/ML programs?",
+      "back": "1% to 3%."
+    },
+    {
+      "front": "What is the 'Hook' in a Statement of Purpose (SOP)?",
+      "back": "The opening section (about 20%) that describes a specific experience that sparked the applicant's research questions."
+    },
+    {
+      "front": "Why is 'Paper Pipeline' progress faster the second time around?",
+      "back": "Because the researcher has already learned the difficult fundamentals of literature review, experimental setup, and academic writing."
+    },
+    {
+      "front": "In the UK, which organization awards studentships for arts and humanities research?",
+      "back": "The Arts and Humanities Research Council (AHRC)."
+    },
+    {
+      "front": "What is the 'Stipend' in a funded PhD program?",
+      "back": "A regular living allowance paid to the student, separate from the tuition waiver."
+    },
+    {
+      "front": "What is the primary difference between a Master of Philosophy (M.Phil.) and a Ph.D. in most systems?",
+      "back": "The Ph.D. requires a more extensive original contribution to the field, whereas the M.Phil. has a shorter research scope."
+    }
+  ]
+}

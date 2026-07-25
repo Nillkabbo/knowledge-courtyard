@@ -1,0 +1,227 @@
+{
+  "name": "LLM Tools and Model Context Protocol (MCP)",
+  "children": [
+    {
+      "name": "Function Calling",
+      "children": [
+        {
+          "name": "Definition",
+          "children": [
+            {
+              "name": "LLM decides tool based on schema"
+            },
+            {
+              "name": "Structured output vs regular text"
+            }
+          ]
+        },
+        {
+          "name": "Steps",
+          "children": [
+            {
+              "name": "Define tools"
+            },
+            {
+              "name": "LLM receives context"
+            },
+            {
+              "name": "LLM matching intent"
+            },
+            {
+              "name": "Execution"
+            },
+            {
+              "name": "Response formulation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Model Context Protocol (MCP)",
+      "children": [
+        {
+          "name": "Standardization",
+          "children": [
+            {
+              "name": "Universal adapter for AI tools"
+            },
+            {
+              "name": "Eliminates N x M integration problem"
+            },
+            {
+              "name": "Based on JSON-RPC 2.0"
+            }
+          ]
+        },
+        {
+          "name": "Architecture",
+          "children": [
+            {
+              "name": "MCP Host (AI Agent)"
+            },
+            {
+              "name": "MCP Client"
+            },
+            {
+              "name": "MCP Server (Tool Provider)"
+            }
+          ]
+        },
+        {
+          "name": "Capabilities",
+          "children": [
+            {
+              "name": "Tools (standard functions)"
+            },
+            {
+              "name": "Resources (standardized data access)"
+            },
+            {
+              "name": "Prompts (standardized templates)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tool Design Principles",
+      "children": [
+        {
+          "name": "Naming",
+          "children": [
+            {
+              "name": "Clear and verb-based"
+            }
+          ]
+        },
+        {
+          "name": "Description",
+          "children": [
+            {
+              "name": "When to use vs when not to use"
+            }
+          ]
+        },
+        {
+          "name": "Parameters",
+          "children": [
+            {
+              "name": "Typed and constrained"
+            }
+          ]
+        },
+        {
+          "name": "Orchestration Patterns",
+          "children": [
+            {
+              "name": "Sequential"
+            },
+            {
+              "name": "Parallel"
+            },
+            {
+              "name": "Conditional"
+            },
+            {
+              "name": "Iterative (ReAct loop)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Safety and Error Handling",
+      "children": [
+        {
+          "name": "Hifz (Protection)",
+          "children": [
+            {
+              "name": "Input validation"
+            },
+            {
+              "name": "Sandboxed execution"
+            },
+            {
+              "name": "Human approval for destructive actions"
+            }
+          ]
+        },
+        {
+          "name": "Error Recovery",
+          "children": [
+            {
+              "name": "Timeouts"
+            },
+            {
+              "name": "API failures"
+            },
+            {
+              "name": "LLM self-correction from error messages"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tool Ecosystem",
+      "children": [
+        {
+          "name": "Platforms",
+          "children": [
+            {
+              "name": "Composio (10,000+ actions)"
+            },
+            {
+              "name": "LangChain Tools"
+            },
+            {
+              "name": "LlamaIndex"
+            }
+          ]
+        },
+        {
+          "name": "Advanced Use",
+          "children": [
+            {
+              "name": "Computer Use (screenshots/mouse/typing)"
+            },
+            {
+              "name": "Browser automation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Integration Technologies",
+      "children": [
+        {
+          "name": "JSON",
+          "children": [
+            {
+              "name": "Human-readable data interchange"
+            },
+            {
+              "name": "Language independent"
+            },
+            {
+              "name": "Name-value pairs and arrays"
+            }
+          ]
+        },
+        {
+          "name": "Web Interfaces",
+          "children": [
+            {
+              "name": "RESTful APIs"
+            },
+            {
+              "name": "Webhooks (HTTP callbacks)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

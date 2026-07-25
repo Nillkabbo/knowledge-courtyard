@@ -1,0 +1,345 @@
+{
+  "title": "Statistics Flashcards",
+  "cards": [
+    {
+      "front": "In machine learning, what specific computation method is commonly used to find parameter updates for training neural networks?",
+      "back": "Backpropagation"
+    },
+    {
+      "front": "Backpropagation is essentially an efficient application of the _____ to neural networks.",
+      "back": "chain rule"
+    },
+    {
+      "front": "How does backpropagation avoid redundant calculations when computing the gradient of the loss?",
+      "back": "By propagating derivatives backward one layer at a time from output to input."
+    },
+    {
+      "front": "True or False: Strictly speaking, backpropagation refers to the method for computing the gradient, not the entire learning algorithm.",
+      "back": "True"
+    },
+    {
+      "front": "What common optimization algorithm uses the gradient calculated by backpropagation to perform weight updates?",
+      "back": "Stochastic gradient descent (SGD)"
+    },
+    {
+      "front": "In the context of backpropagation, what is the 'reverse mode of automatic differentiation' another name for?",
+      "back": "Backpropagation"
+    },
+    {
+      "front": "In backpropagation notation, what does the variable $C$ represent?",
+      "back": "The loss function (or cost function)."
+    },
+    {
+      "front": "For multi-class classification, what activation function is typically used in the last layer of the network?",
+      "back": "Softmax (softargmax)"
+    },
+    {
+      "front": "Which activation function has become common for hidden layers today, replacing traditional sigmoids?",
+      "back": "Rectifier ($ReLU$)"
+    },
+    {
+      "front": "What is the relationship between bias terms and weights during the backpropagation process?",
+      "back": "Biases are treated as weights with a fixed input of 1."
+    },
+    {
+      "front": "What must be 'cached' during the forward pass of a neural network to be used later during backpropagation?",
+      "back": "The activations $a^l$ and the derivatives $(f^l)'$ evaluated at the weighted inputs."
+    },
+    {
+      "front": "In a feedforward network, the gradient $\\nabla_x C$ is the _____ of the derivative of the output in terms of the input.",
+      "back": "transpose"
+    },
+    {
+      "front": "What does the auxiliary quantity $\\delta^l$ represent in the matrix form of backpropagation?",
+      "back": "The 'error' or gradient of the input values at level $l$."
+    },
+    {
+      "front": "What is the formula for the gradient of the weights in layer $l$, denoted $\\nabla_{W^l} C$, using the error $\\delta^l$ and activations $a^{l-1}$?",
+      "back": "$\\nabla_{W^l} C = \\delta^l (a^{l-1})^T$"
+    },
+    {
+      "front": "Why is multiplying gradients 'backwards' (from right to left) more efficient than multiplying 'forwards'?",
+      "back": "It avoids matrix-matrix multiplications by performing vector-matrix multiplications at each step."
+    },
+    {
+      "front": "According to the source material, backpropagation is a special case of which broader class of techniques in automatic differentiation?",
+      "back": "Reverse accumulation"
+    },
+    {
+      "front": "What is the primary motivation for using backpropagation to train multi-layered neural networks?",
+      "back": "To learn internal representations that allow the network to learn arbitrary mappings from input to output."
+    },
+    {
+      "front": "If the relation between a linear neuron's output and its error is plotted for a single training case, what geometric shape is formed?",
+      "back": "A parabola"
+    },
+    {
+      "front": "In a regression problem, what is the most commonly used loss function that measures the discrepancy between target $t$ and computed output $y$?",
+      "back": "Squared error loss"
+    },
+    {
+      "front": "What does the 'steepest descent direction' of the loss function represent during backpropagation training?",
+      "back": "The direction in weight space that minimizes the error most efficiently."
+    },
+    {
+      "front": "What is the derivative of the logistic function $\\varphi(z) = \\frac{1}{1+e^{-z}}$ expressed in terms of $\\varphi(z)$?",
+      "back": "$\\frac{d\\varphi}{dz} = \\varphi(z)(1 - \\varphi(z))$"
+    },
+    {
+      "front": "Why does standard backpropagation require the activation functions to be differentiable?",
+      "back": "The algorithm depends on finding the partial derivative of the activation function with respect to its input."
+    },
+    {
+      "front": "What is the primary drawback of using the $ReLU$ activation function at the point $0$ regarding backpropagation?",
+      "back": "It is not differentiable at that exact point."
+    },
+    {
+      "front": "In backpropagation, the derivative of the error with respect to the output of an inner layer neuron $o_j$ is calculated _____, starting from the layer closer to the output.",
+      "back": "recursively"
+    },
+    {
+      "front": "What variable $\\eta > 0$ determines the size of the step taken in the negative direction of the gradient during training?",
+      "back": "Learning rate"
+    },
+    {
+      "front": "Which second-order optimization algorithm often converges faster than first-order gradient descent by using a Hessian matrix?",
+      "back": "Levenberg–Marquardt algorithm"
+    },
+    {
+      "front": "What statistical matrix can be used to approximate the Hessian in second-order optimization?",
+      "back": "Fisher information matrix"
+    },
+    {
+      "front": "What is one assumption required of a loss function to be compatible with the backpropagation algorithm?",
+      "back": "It must be written as an average over error functions for individual training examples."
+    },
+    {
+      "front": "What is the major theoretical drawback of gradient descent in neural networks due to the non-convexity of error functions?",
+      "back": "It may find a local minimum instead of the global minimum."
+    },
+    {
+      "front": "Who first published the 'reverse mode of automatic differentiation' in 1970?",
+      "back": "Seppo Linnainmaa"
+    },
+    {
+      "front": "In 1982, who applied backpropagation to Multilayer Perceptrons ($MLP$s) in the way that has become the modern standard?",
+      "back": "Paul Werbos"
+    },
+    {
+      "front": "Which 1986 paper in the journal 'Nature' is credited with popularizing backpropagation and starting a resurgence in neural network research?",
+      "back": "\"Learning representations by back-propagating errors\" by Rumelhart, Hinton, and Williams."
+    },
+    {
+      "front": "Which 1987 neural network learned to convert English text into pronunciation and was featured on the 'Today show'?",
+      "back": "$NETtalk$"
+    },
+    {
+      "front": "What was $ALVINN$, a neural network published in 1989, trained to do using backpropagation?",
+      "back": "Drive autonomously"
+    },
+    {
+      "front": "Which famous neural network was published in 1989 specifically for recognizing handwritten zip codes?",
+      "back": "$LeNet$"
+    },
+    {
+      "front": "What 1992 reinforcement learning agent achieved top human-level play in backgammon using backpropagation?",
+      "back": "$TD-Gammon$"
+    },
+    {
+      "front": "Recently, in 2023, a backpropagation algorithm was implemented on a _____ by a team at Stanford University.",
+      "back": "photonic processor"
+    },
+    {
+      "front": "The standard normal distribution is a special case of the normal distribution where $\\mu$ equals _____ and $\\sigma^2$ equals _____.",
+      "back": "0; 1"
+    },
+    {
+      "front": "What is the probability density function ($PDF$) of a general normal distribution with mean $\\mu$ and variance $\\sigma^2$?",
+      "back": "$f(x) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}} \\exp(-\\frac{(x-\\mu)^2}{2\\sigma^2})$"
+    },
+    {
+      "front": "What theorem states that the average of many independent samples of a random variable converges to a normal distribution?",
+      "back": "Central limit theorem"
+    },
+    {
+      "front": "A normal distribution is informally called a _____ due to its characteristic shape.",
+      "back": "bell curve"
+    },
+    {
+      "front": "The parameter $\\mu$ in a normal distribution represents the distribution's mean, median, and _____.",
+      "back": "mode"
+    },
+    {
+      "front": "In the standard normal distribution $\\varphi(z)$, at what values of $z$ are the inflection points located?",
+      "back": "$z = +1$ and $z = -1$"
+    },
+    {
+      "front": "How is a standard normal deviate $Z$ converted into a general normal deviate $X$ with mean $\\mu$ and standard deviation $\\sigma$?",
+      "back": "$X = \\sigma Z + \\mu$"
+    },
+    {
+      "front": "How is a general normal deviate $X$ 'standardized' into a standard normal deviate $Z$?",
+      "back": "$Z = \\frac{X - \\mu}{\\sigma}$"
+    },
+    {
+      "front": "What Greek letter is commonly used to denote the probability density function of the standard normal distribution?",
+      "back": "$\\phi$ (phi) or $\\varphi$"
+    },
+    {
+      "front": "What capital Greek letter is commonly used to denote the cumulative distribution function of the standard normal distribution?",
+      "back": "$\\Phi$ (Phi)"
+    },
+    {
+      "front": "In statistics, what is the 'precision' $\\tau$ defined as in relation to variance?",
+      "back": "The reciprocal of the variance ($1/\\sigma^2$)."
+    },
+    {
+      "front": "The standard normal cumulative distribution function $\\Phi(x)$ is defined as the _____ of the probability density function from $-\\infty$ to $x$.",
+      "back": "integral"
+    },
+    {
+      "front": "What special function is related to the normal $CDF$ and gives the probability of a variable falling in the range $[-x, x]$ for a distribution with mean 0 and variance 1/2?",
+      "back": "Error function ($erf(x)$)"
+    },
+    {
+      "front": "How can the standard normal $CDF$, $\\Phi(x)$, be expressed in terms of the error function $erf$?",
+      "back": "$\\Phi(x) = \\frac{1}{2} [1 + erf(\\frac{x}{\\sqrt{2}})]$"
+    },
+    {
+      "front": "In engineering texts, the complement of the standard normal $CDF$, $1 - \\Phi(x)$, is often called the _____.",
+      "back": "$Q$-function"
+    },
+    {
+      "front": "What type of rotational symmetry does the graph of the standard normal $CDF$ possess around the point $(0, 1/2)$?",
+      "back": "2-fold rotational symmetry"
+    },
+    {
+      "front": "Why is the Taylor series representation of the normal distribution ineffective for calculations where $x$ is large?",
+      "back": "It has slow convergence."
+    },
+    {
+      "front": "According to the 68–95–99.7 rule, what percentage of values drawn from a normal distribution lie within one standard deviation of the mean?",
+      "back": "68.27%"
+    },
+    {
+      "front": "According to the 68–95–99.7 rule, what percentage of values lie within two standard deviations of the mean?",
+      "back": "95.45%"
+    },
+    {
+      "front": "According to the 68–95–99.7 rule, what percentage of values lie within three standard deviations of the mean?",
+      "back": "99.73%"
+    },
+    {
+      "front": "The inverse of the cumulative distribution function for a probability distribution is known as the _____.",
+      "back": "quantile function"
+    },
+    {
+      "front": "What is the specific name for the quantile function of the standard normal distribution?",
+      "back": "Probit function"
+    },
+    {
+      "front": "The quantile $z_{0.975}$ of the standard normal distribution is approximately equal to what value?",
+      "back": "1.96"
+    },
+    {
+      "front": "A normal random variable will lie outside the interval $\\mu \\pm 1.96\\sigma$ in what percentage of cases?",
+      "back": "5%"
+    },
+    {
+      "front": "In a neural network, if node $j$ is in the first layer after input, its input $o_k$ is simply the _____.",
+      "back": "network input $x_k$"
+    },
+    {
+      "front": "Term: One-hot encoding",
+      "back": "Definition: A representation where a specific class is encoded by a vector with a single 1 and others 0. Example: $(0, 1, 0)$ for class 2 of 3."
+    },
+    {
+      "front": "In the context of the adjoint graph, backpropagation is a special case of which accumulation mode?",
+      "back": "Reverse mode"
+    },
+    {
+      "front": "What condition makes backpropagation 'impossible' for neurons, as observed by Frank Rosenblatt in 1962?",
+      "back": "Neurons having only discrete output levels (zero derivatives)."
+    },
+    {
+      "front": "Which 1960 learning algorithm used gradient descent with a squared error loss for a single layer?",
+      "back": "$ADALINE$"
+    },
+    {
+      "front": "The first multilayer perceptron trained by stochastic gradient descent was published in 1967 by _____.",
+      "back": "Shun'ichi Amari"
+    },
+    {
+      "front": "Why did physiologists initially object to the gradient descent method for neural networks?",
+      "back": "They believed neurons produced only discrete (0/1) signals, which have no gradient."
+    },
+    {
+      "front": "Which 2024 Nobel Prize winner in Physics is mentioned for his contributions to backpropagation and deep learning?",
+      "back": "Geoffrey Hinton"
+    },
+    {
+      "front": "Backpropagation returned to favor in the 2010s primarily due to the availability of cheap, powerful _____ systems.",
+      "back": "$GPU$-based computing"
+    },
+    {
+      "front": "Concept: $Z$-score",
+      "back": "Definition: The number of standard deviations a data point is from the mean. Formula: $z = (x - \\mu) / \\sigma$."
+    },
+    {
+      "front": "What is the peak value of the standard normal $PDF$, $\\varphi(z)$, at $z = 0$?",
+      "back": "$\\frac{1}{\\sqrt{2\\pi}}$"
+    },
+    {
+      "front": "The univariate normal distribution is generalized for vectors as the _____.",
+      "back": "multivariate normal distribution"
+    },
+    {
+      "front": "What does the $CDF$ value $\\Phi(0)$ equal in a standard normal distribution?",
+      "back": "0.5 (or 50%)"
+    },
+    {
+      "front": "Any linear combination of independent normal deviates is also a _____.",
+      "back": "normal deviate"
+    },
+    {
+      "front": "The $68-95-99.7$ rule is also commonly referred to as the _____ rule.",
+      "back": "3-sigma"
+    },
+    {
+      "front": "The error function $erf(x)$ is normalized such that $erf(\\infty)$ equals _____.",
+      "back": "1"
+    },
+    {
+      "front": "In the standard normal $CDF$, what does the property $\\Phi(-x) = 1 - \\Phi(x)$ signify?",
+      "back": "Symmetry about the mean (0)."
+    },
+    {
+      "front": "Who once defined a version of the normal distribution with a variance of 1/2?",
+      "back": "Carl Friedrich Gauss"
+    },
+    {
+      "front": "If a weight change affects the loss only through the next layer, and it does so _____, the layer gradients $\\delta^l$ are the only data needed for the weights at layer $l$.",
+      "back": "linearly"
+    },
+    {
+      "front": "In backpropagation history, the 'adjoint state method' from optimal control theory is considered a _____ version of backpropagation.",
+      "back": "continuous-time"
+    },
+    {
+      "front": "What is the result of integrating the standard normal $CDF$ $\\int \\Phi(x) dx$?",
+      "back": "$x\\Phi(x) + \\varphi(x) + C$"
+    },
+    {
+      "front": "Formula: Normal distribution variance",
+      "back": "$\\sigma^2$"
+    },
+    {
+      "front": "Formula: Normal distribution standard deviation",
+      "back": "$\\sigma$"
+    },
+    {
+      "front": "Cloze: In backpropagation, weights are modified along the _____ direction to minimize error.",
+      "back": "steepest descent"
+    }
+  ]
+}

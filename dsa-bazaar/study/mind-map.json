@@ -1,0 +1,197 @@
+{
+  "name": "Big O and Algorithmic Concepts",
+  "children": [
+    {
+      "name": "Big O Notation",
+      "children": [
+        {
+          "name": "Definition",
+          "children": [
+            {
+              "name": "Mathematical notation"
+            },
+            {
+              "name": "Approximate function behavior"
+            },
+            {
+              "name": "Upper bound on growth"
+            }
+          ]
+        },
+        {
+          "name": "Common Orders",
+          "children": [
+            {
+              "name": "O(1) Constant"
+            },
+            {
+              "name": "O(log n) Logarithmic"
+            },
+            {
+              "name": "O(n) Linear"
+            },
+            {
+              "name": "O(n log n) Linearithmic"
+            },
+            {
+              "name": "O(n²) Quadratic"
+            },
+            {
+              "name": "O(2ⁿ) Exponential"
+            }
+          ]
+        },
+        {
+          "name": "Properties",
+          "children": [
+            {
+              "name": "Drop constants"
+            },
+            {
+              "name": "Drop lower order terms"
+            },
+            {
+              "name": "Transitive property"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Recursion",
+      "children": [
+        {
+          "name": "Structure",
+          "children": [
+            {
+              "name": "Base case (stopping condition)"
+            },
+            {
+              "name": "Recursive case (self-call)"
+            }
+          ]
+        },
+        {
+          "name": "Types",
+          "children": [
+            {
+              "name": "Direct recursion"
+            },
+            {
+              "name": "Indirect/Mutual recursion"
+            },
+            {
+              "name": "Tail recursion"
+            },
+            {
+              "name": "Anonymous recursion"
+            }
+          ]
+        },
+        {
+          "name": "Applications",
+          "children": [
+            {
+              "name": "Factorial"
+            },
+            {
+              "name": "Fibonacci sequence"
+            },
+            {
+              "name": "Towers of Hanoi"
+            },
+            {
+              "name": "Tree traversals"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Structures",
+      "children": [
+        {
+          "name": "Linear",
+          "children": [
+            {
+              "name": "Arrays (Contiguous memory)"
+            },
+            {
+              "name": "Linked Lists (Pointers)"
+            },
+            {
+              "name": "Stacks (LIFO)"
+            },
+            {
+              "name": "Queues (FIFO)"
+            }
+          ]
+        },
+        {
+          "name": "Non-Linear",
+          "children": [
+            {
+              "name": "Trees (Hierarchical)"
+            },
+            {
+              "name": "Graphs (Nodes and edges)"
+            },
+            {
+              "name": "Hash Tables (Key-value maps)"
+            },
+            {
+              "name": "Heaps (Priority order)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Algorithmic Paradigms",
+      "children": [
+        {
+          "name": "Dynamic Programming",
+          "children": [
+            {
+              "name": "Overlapping sub-problems"
+            },
+            {
+              "name": "Optimal substructure"
+            },
+            {
+              "name": "Memoization (Top-down)"
+            },
+            {
+              "name": "Tabulation (Bottom-up)"
+            }
+          ]
+        },
+        {
+          "name": "Greedy Algorithms",
+          "children": [
+            {
+              "name": "Local optimal choice"
+            },
+            {
+              "name": "Fast and simple"
+            }
+          ]
+        },
+        {
+          "name": "Backtracking",
+          "children": [
+            {
+              "name": "Trial and error"
+            },
+            {
+              "name": "Return from dead ends"
+            },
+            {
+              "name": "N-Queens problem"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "name": "Machine Learning Optimization & Data Techniques",
+  "children": [
+    {
+      "name": "Data Augmentation",
+      "children": [
+        {
+          "name": "Image Classification",
+          "children": [
+            {
+              "name": "Geometric Transformations"
+            },
+            {
+              "name": "Color Space Transformations"
+            },
+            {
+              "name": "Noise Injection"
+            }
+          ]
+        },
+        {
+          "name": "Synthetic Oversampling",
+          "children": [
+            {
+              "name": "SMOTE"
+            },
+            {
+              "name": "Imbalanced Datasets"
+            }
+          ]
+        },
+        {
+          "name": "Signal Processing",
+          "children": [
+            {
+              "name": "Biological Signals (EEG/EMG)"
+            },
+            {
+              "name": "Mechanical Signals"
+            },
+            {
+              "name": "Generative Adversarial Networks"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fine-tuning",
+      "children": [
+        {
+          "name": "Core Concepts",
+          "children": [
+            {
+              "name": "Transfer Learning"
+            },
+            {
+              "name": "Upstream vs Downstream Tasks"
+            },
+            {
+              "name": "Frozen vs Unfrozen Layers"
+            }
+          ]
+        },
+        {
+          "name": "Variants",
+          "children": [
+            {
+              "name": "Low-rank Adaptation (LoRA)"
+            },
+            {
+              "name": "Representation Fine-tuning (ReFT)"
+            },
+            {
+              "name": "Parameter-efficient Fine-tuning (PEFT)"
+            }
+          ]
+        },
+        {
+          "name": "Applications",
+          "children": [
+            {
+              "name": "Natural Language Processing"
+            },
+            {
+              "name": "Large Language Models"
+            },
+            {
+              "name": "RLHF (ChatGPT/Sparrow)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Model Performance Issues",
+      "children": [
+        {
+          "name": "Overfitting",
+          "children": [
+            {
+              "name": "Memorizing Training Data"
+            },
+            {
+              "name": "High Variance"
+            },
+            {
+              "name": "Complexity vs Data Size"
+            }
+          ]
+        },
+        {
+          "name": "Underfitting",
+          "children": [
+            {
+              "name": "Simplistic Models"
+            },
+            {
+              "name": "High Bias"
+            }
+          ]
+        },
+        {
+          "name": "Bias-Variance Tradeoff"
+        }
+      ]
+    },
+    {
+      "name": "Regularization Techniques",
+      "children": [
+        {
+          "name": "Explicit Regularization",
+          "children": [
+            {
+              "name": "L1 (LASSO)"
+            },
+            {
+              "name": "L2 (Ridge Regression)"
+            },
+            {
+              "name": "Elastic Net"
+            }
+          ]
+        },
+        {
+          "name": "Implicit Regularization",
+          "children": [
+            {
+              "name": "Early Stopping"
+            },
+            {
+              "name": "Dropout"
+            },
+            {
+              "name": "Pruning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Optimization Algorithms",
+      "children": [
+        {
+          "name": "Stochastic Gradient Descent (SGD)",
+          "children": [
+            {
+              "name": "Mini-batch Gradient Descent"
+            },
+            {
+              "name": "Learning Rate Schedules"
+            },
+            {
+              "name": "Momentum/Heavy Ball"
+            }
+          ]
+        },
+        {
+          "name": "Adaptive Optimizers",
+          "children": [
+            {
+              "name": "AdaGrad"
+            },
+            {
+              "name": "RMSProp"
+            },
+            {
+              "name": "Adam"
+            },
+            {
+              "name": "AdamW"
+            }
+          ]
+        },
+        {
+          "name": "Advanced Methods",
+          "children": [
+            {
+              "name": "Implicit Updates (ISGD)"
+            },
+            {
+              "name": "Nesterov Accelerated Gradient"
+            },
+            {
+              "name": "Second-order Methods"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,365 @@
+{
+  "title": "Learning Flashcards",
+  "cards": [
+    {
+      "front": "Who pioneered the experimental study of memory and discovered the forgetting curve?",
+      "back": "Hermann Ebbinghaus"
+    },
+    {
+      "front": "Which psychologist received the E. L. Thorndike Award in 2009?",
+      "back": "Carol Dweck"
+    },
+    {
+      "front": "According to the forgetting curve, the sharpest decline in memory occurs within the first _____.",
+      "back": "20 minutes"
+    },
+    {
+      "front": "What type of stimuli did Ebbinghaus use to measure mental associations in his memory experiments?",
+      "back": "2,300 three-letter nonsense syllables"
+    },
+    {
+      "front": "The _____ effect describes the increased recall of information at the beginning of a list.",
+      "back": "Primacy"
+    },
+    {
+      "front": "Why does the recency effect facilitate better recall for items at the end of a list?",
+      "back": "The information is still held in short-term memory."
+    },
+    {
+      "front": "The phenomenon where learning is more effective when sessions are spread out over time is called the _____.",
+      "back": "Spacing effect"
+    },
+    {
+      "front": "Term: Learning curve",
+      "back": "A representation of how fast information is acquired, showing the sharpest increase after the first attempt."
+    },
+    {
+      "front": "Which Italian anatomist discovered in 1793 that extensive training increased cerebellum size in animals?",
+      "back": "Michele Vincenzo Malacarne"
+    },
+    {
+      "front": "In 1890, the idea that brain function is not fixed throughout adulthood was proposed by _____.",
+      "back": "William James"
+    },
+    {
+      "front": "Who produced the first scientific evidence of anatomical brain plasticity in 1964?",
+      "back": "Marian Diamond"
+    },
+    {
+      "front": "Which researcher documented changes in the hippocampal structure of London taxi drivers?",
+      "back": "Eleanor Maguire"
+    },
+    {
+      "front": "The 1943 learning rule suggesting synapses are produced when neurons fire simultaneously was proposed by _____.",
+      "back": "McCulloch and Pitts"
+    },
+    {
+      "front": "Concept: Hebbian learning",
+      "back": "A theory of neuroplasticity where the brain reorganizes based on simultaneous neuronal firing."
+    },
+    {
+      "front": "Hubel and Wiesel's experiment with kittens demonstrated that the brain rewires itself to avoid wasting '_____ real estate'.",
+      "back": "Cortical"
+    },
+    {
+      "front": "Who is the primary pioneer of research into deliberate practice?",
+      "back": "K. Anders Ericsson"
+    },
+    {
+      "front": "According to Ericsson, elite performance is the product of maximal effort over at least _____.",
+      "back": "One decade"
+    },
+    {
+      "front": "What is the core difference between 'deliberate practice' and 'purposeful practice'?",
+      "back": "Deliberate practice requires immediate coaching feedback."
+    },
+    {
+      "front": "Concept: Spaced repetition",
+      "back": "An evidence-based learning technique where time intervals between reviews increase as information is mastered."
+    },
+    {
+      "front": "Which flashcard system advances correctly answered cards to less frequent review boxes?",
+      "back": "Leitner system"
+    },
+    {
+      "front": "In spaced retrieval training, what happens to the review interval if the subject recalls the info correctly?",
+      "back": "The interval is doubled."
+    },
+    {
+      "front": "Spaced repetition has been notably successful in helping patients with _____ remember daily tasks.",
+      "back": "Dementia"
+    },
+    {
+      "front": "The testing effect is also widely known by the term _____.",
+      "back": "Active recall"
+    },
+    {
+      "front": "Who discussed testing as a learning strategy as early as 1620?",
+      "back": "Francis Bacon"
+    },
+    {
+      "front": "Research suggests the testing effect provides a greater impact for individuals with _____ ability.",
+      "back": "Lower"
+    },
+    {
+      "front": "Functional MRI suggests that retrieval practice strengthens retention through its effect on the _____.",
+      "back": "Hippocampus"
+    },
+    {
+      "front": "How does testing compare to re-reading regarding identifying knowledge gaps?",
+      "back": "Testing helps identify specific misconceptions and errors that re-reading may miss."
+    },
+    {
+      "front": "Who was the first recipient of the E. L. Thorndike Award in 1964?",
+      "back": "Sidney L. Pressey"
+    },
+    {
+      "front": "In what year did B. F. Skinner receive the E. L. Thorndike Award?",
+      "back": "1966"
+    },
+    {
+      "front": "Which psychologist, known for his stages of cognitive development, won the Thorndike Award in 1976?",
+      "back": "Jean Piaget"
+    },
+    {
+      "front": "Who received the E. L. Thorndike Award in 2024?",
+      "back": "Dale Schunk"
+    },
+    {
+      "front": "The theory that memory capacity for short-term storage is limited is often called the _____.",
+      "back": "Magical Number Seven"
+    },
+    {
+      "front": "What mechanical device was used in the 1890s to present memorization stimuli to research subjects?",
+      "back": "Mnemometer"
+    },
+    {
+      "front": "Ebbinghaus found that memory for new information is easier when it is built upon _____.",
+      "back": "Things you already know"
+    },
+    {
+      "front": "What is the primary factor that Ebbinghaus hypothesized accounts for individual differences in performance?",
+      "back": "Mnemonic representation skills"
+    },
+    {
+      "front": "Concept: Consolidation",
+      "back": "The process by which the brain stabilizes a memory trace after initial acquisition."
+    },
+    {
+      "front": "Which type of long-term memory involves the recall of personal events?",
+      "back": "Episodic memory"
+    },
+    {
+      "front": "What is the difference between explicit and implicit memory?",
+      "back": "Explicit memory is conscious recall, while implicit memory is unconscious performance."
+    },
+    {
+      "front": "Which researcher is associated with the development of the software SuperMemo?",
+      "back": "Piotr Woźniak"
+    },
+    {
+      "front": "How does the difficulty of the material affect the forgetting curve?",
+      "back": "Meaningful or easier material flattens the curve, slowing the rate of forgetting."
+    },
+    {
+      "front": "Which 1973 Thorndike Award recipient is famous for his taxonomy of educational objectives?",
+      "back": "Benjamin Bloom"
+    },
+    {
+      "front": "Who received the Thorndike Award in 1999 for his work on social learning theory?",
+      "back": "Albert Bandura"
+    },
+    {
+      "front": "The redistribution of _____ was observed in London taxi drivers compared to control groups.",
+      "back": "Grey matter"
+    },
+    {
+      "front": "Which neuroscientist claimed that brain exercises might treat schizophrenia and benefit the elderly?",
+      "back": "Michael Merzenich"
+    },
+    {
+      "front": "According to cognitive theory, excellent performance results from tasks that produce _____.",
+      "back": "Errors"
+    },
+    {
+      "front": "What role does feedback play in the effectiveness of practice?",
+      "back": "Appropriate feedback prevents practice from being ineffective or detrimental to learning."
+    },
+    {
+      "front": "Term: Serial position effect",
+      "back": "The tendency for the order of items in a sequence to influence how well they are recalled."
+    },
+    {
+      "front": "Who founded the third psychological testing lab in Germany in 1879?",
+      "back": "Hermann Ebbinghaus"
+    },
+    {
+      "front": "Which philosopher did Ebbinghaus study for his dissertation on the 'philosophy of the unconscious'?",
+      "back": "Eduard von Hartmann"
+    },
+    {
+      "front": "Ebbinghaus published his landmark work, 'On Memory', in the year _____.",
+      "back": "1885"
+    },
+    {
+      "front": "In the context of the testing effect, what is 'pretesting'?",
+      "back": "Testing knowledge prior to learning material to enhance subsequent retention."
+    },
+    {
+      "front": "The anterior and posterior _____ regions are dual-action sites for retrieval practice benefits.",
+      "back": "Hippocampus"
+    },
+    {
+      "front": "Which 1967 Thorndike Award recipient is known for work in educational psychology and testing?",
+      "back": "Lee Cronbach"
+    },
+    {
+      "front": "Who was the Thorndike Award recipient in 1981, known for his work on the cognitive development of children?",
+      "back": "Jerome Bruner"
+    },
+    {
+      "front": "Which researcher won the Thorndike Award in 2003 and is known for his triarchic theory of intelligence?",
+      "back": "Robert Sternberg"
+    },
+    {
+      "front": "The 1932 book 'Psychology of Study', which early-on recommended spaced retrieval, was written by _____.",
+      "back": "Cecil Alec Mace"
+    },
+    {
+      "front": "What is 'overlearning'?",
+      "back": "The practice of continuing to study a skill or information beyond the point of initial mastery."
+    },
+    {
+      "front": "Marian Diamond's 1964 research showed that an enriched environment could increase the thickness of the _____.",
+      "back": "Cerebral cortex"
+    },
+    {
+      "front": "Which researcher conducted experiments on rhesus monkeys in 1923 to demonstrate neuronal pathway changes?",
+      "back": "Karl Lashley"
+    },
+    {
+      "front": "The 'forgetting curve' is mathematically described as _____ decay.",
+      "back": "Exponential"
+    },
+    {
+      "front": "In medical education, deliberate practice is defined as the acquisition of _____ through repetitive performance.",
+      "back": "Clinical skills"
+    },
+    {
+      "front": "Which psychologist's 1890 work, 'The Principles of Psychology', proposed the idea of brain plasticity?",
+      "back": "William James"
+    },
+    {
+      "front": "How does Ebbinghaus's 'spacing effect' compare to 'cramming'?",
+      "back": "Spacing produces superior long-term retention compared to massed practice or cramming."
+    },
+    {
+      "front": "The E. L. Thorndike Award is presented to individuals for their contributions to _____.",
+      "back": "Educational psychology"
+    },
+    {
+      "front": "Who founded the journal 'The Psychology and Physiology of the Sense Organs' in 1890?",
+      "back": "Hermann Ebbinghaus and Arthur König"
+    },
+    {
+      "front": "Which 2012 Thorndike Award winner is known for his work on the psychology of reading and rational thinking?",
+      "back": "Keith Stanovich"
+    },
+    {
+      "front": "Which 1995 Thorndike recipient is noted for his work on teacher knowledge and professional standards?",
+      "back": "Lee Shulman"
+    },
+    {
+      "front": "According to Ebbinghaus, the forgetting curve flattens when information is solidifed by repeated _____.",
+      "back": "Recalling"
+    },
+    {
+      "front": "Mnemonic techniques help overcome individual differences in memory by improving _____.",
+      "back": "Representation skills"
+    },
+    {
+      "front": "Which psychological term describes practicing a skill to the point where it becomes automatic?",
+      "back": "Mastery"
+    },
+    {
+      "front": "In 1964, _____ published research providing the first anatomical evidence of neuroplasticity.",
+      "back": "Marian Diamond"
+    },
+    {
+      "front": "The '10,000 hour rule' is a popularized version of the findings of which researcher?",
+      "back": "K. Anders Ericsson"
+    },
+    {
+      "front": "What specific physiological factors did Ebbinghaus identify as influences on the speed of forgetting?",
+      "back": "Stress and sleep"
+    },
+    {
+      "front": "What is the primary benefit of 'elaborative interrogation' in the context of retrieval?",
+      "back": "It helps integrate new information with prior knowledge by asking 'why' questions."
+    },
+    {
+      "front": "The 1974 Thorndike Award recipient, Robert M. Gagné, is best known for his '_____ of Learning'.",
+      "back": "Conditions"
+    },
+    {
+      "front": "Who was the 2005 Thorndike recipient, noted for her research on motivation and gender in education?",
+      "back": "Jacquelynne Eccles"
+    },
+    {
+      "front": "Which software is cited as a popular application of the testing effect and active recall?",
+      "back": "Anki"
+    },
+    {
+      "front": "How does 'interference theory' relate to forgetting?",
+      "back": "It suggests that memory is lost because other information gets in the way of retrieval."
+    },
+    {
+      "front": "The term 'mnemometer' refers to an outdated mechanical device used for _____.",
+      "back": "Presenting stimuli for memorization"
+    },
+    {
+      "front": "Which researcher is associated with the 'Pimsleur Method' for language learning?",
+      "back": "Paul Pimsleur"
+    },
+    {
+      "front": "The 1984 Thorndike recipient, Anne Anastasi, was a pioneer in the field of _____.",
+      "back": "Psychometrics and psychological testing"
+    },
+    {
+      "front": "Which researcher's work with kittens proved the brain's ability to 'rewire' cortical maps?",
+      "back": "Hubel and Wiesel"
+    },
+    {
+      "front": "In the Leitner system, cards that are answered incorrectly return to which box?",
+      "back": "The first box"
+    },
+    {
+      "front": "The study of _____ memory involves how individuals remember past events from their own lives.",
+      "back": "Autobiographical"
+    },
+    {
+      "front": "Which 2011 Thorndike Award winner is associated with research on self-regulated learning?",
+      "back": "Barry Zimmerman"
+    },
+    {
+      "front": "What is the 'serial position effect' composed of?",
+      "back": "The primacy effect and the recency effect."
+    },
+    {
+      "front": "Which psychologist called Ebbinghaus's studies 'the single most brilliant investigation in the history of psychology'?",
+      "back": "William James"
+    },
+    {
+      "front": "The process of repeatedly retrieving information to solidify its place in long-term memory is known as _____.",
+      "back": "Retrieval practice"
+    },
+    {
+      "front": "Which 1971 Thorndike Award winner shared a surname with the award itself?",
+      "back": "Robert L. Thorndike"
+    },
+    {
+      "front": "According to Ebbinghaus, after about how long does the forgetting curve typically level off?",
+      "back": "One day"
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "title": "Algorithms Flashcards",
+  "cards": [
+    {
+      "front": "What does Big $O$ notation describe regarding a mathematical function?",
+      "back": "It describes the approximate or limiting behavior of a function as the argument tends towards a particular value or infinity."
+    },
+    {
+      "front": "What is the result of the product $O(f(n)) \\cdot O(g(n))$ in Big $O$ notation?",
+      "back": "The result is $O(f(n) \\cdot g(n))$."
+    },
+    {
+      "front": "According to the sum rule, how is $O(f(n)) + O(g(n))$ simplified?",
+      "back": "It is simplified to $O(\\max(f(n), g(n)))$."
+    },
+    {
+      "front": "In Big $O$ notation, how does multiplication by a constant $k$ affect $O(f(n))$?",
+      "back": "It has no effect on the notation, so $k \\cdot O(f(n)) = O(f(n))$."
+    },
+    {
+      "front": "What is the transitive property of Big $O$ notation?",
+      "back": "If $f(n) = O(g(n))$ and $g(n) = O(h(n))$, then $f(n) = O(h(n))$."
+    },
+    {
+      "front": "Between two powers $n^a$ and $n^b$ where $a > b > 0$, which dominates in Big $O$ notation?",
+      "back": "The larger power dominates, meaning $n^b = O(n^a)$."
+    },
+    {
+      "front": "Which class of functions always dominates logarithms $(\\log n)$ in asymptotic growth?",
+      "back": "Polynomial functions (powers of $n$) always dominate logarithms."
+    },
+    {
+      "front": "Which class of functions always dominates polynomial functions $(n^k)$ in asymptotic growth?",
+      "back": "Exponential functions always dominate polynomial functions."
+    },
+    {
+      "front": "What does the symbol $\\Omega$ (Big Omega) signify in asymptotic notation?",
+      "back": "It describes an asymptotic lower bound for a function."
+    },
+    {
+      "front": "What does the symbol $\\Theta$ (Big Theta) signify in asymptotic notation?",
+      "back": "It describes an asymptotically tight bound, representing both an upper and lower bound."
+    },
+    {
+      "front": "How does little-$o$ notation differ from Big $O$ notation?",
+      "back": "Little-$o$ denotes a strict upper bound, whereas Big $O$ allows for the possibility of the bound being tight."
+    },
+    {
+      "front": "What is a 'data structure' in computer science?",
+      "back": "A way to organize and store data chosen for efficient access and modification."
+    },
+    {
+      "front": "What is the relationship between a data structure and an Abstract Data Type (ADT)?",
+      "back": "A data structure is the physical implementation of an ADT, which defines the logical form and allowed operations."
+    },
+    {
+      "front": "According to Rob Pike, which choice usually has a greater impact on efficiency: the algorithm or the data structure?",
+      "back": "The choice of data structure."
+    },
+    {
+      "front": "Which data structure is characterized by storing elements in contiguous memory locations?",
+      "back": "An array."
+    },
+    {
+      "front": "What is the primary advantage of a linked list over an array?",
+      "back": "Elements can be efficiently inserted and removed without relocating the rest of the list."
+    },
+    {
+      "front": "What is the primary disadvantage of a linked list compared to an array?",
+      "back": "Random access to specific elements is slower because the list must be traversed sequentially."
+    },
+    {
+      "front": "Define the 'record' (also called a struct or tuple) data structure.",
+      "back": "An aggregate data structure that contains other values, typically in a fixed number and sequence, indexed by names."
+    },
+    {
+      "front": "How does a hash table achieve fast retrieval of values?",
+      "back": "It uses a hashing function to map keys directly to indexes in an array."
+    },
+    {
+      "front": "What are two common techniques used by hash tables to handle collisions?",
+      "back": "Chaining and open addressing."
+    },
+    {
+      "front": "Which data structure consists of nodes connected by edges to represent relationships between entities?",
+      "back": "A graph."
+    },
+    {
+      "front": "What principle governs the removal of elements from a stack?",
+      "back": "The Last In, First Out (LIFO) principle."
+    },
+    {
+      "front": "What principle governs the removal of elements from a queue?",
+      "back": "The First In, First Out (FIFO) principle."
+    },
+    {
+      "front": "In a tree data structure, what is the term for the single node from which all other nodes descend?",
+      "back": "The root."
+    },
+    {
+      "front": "What is a 'trie' (or prefix tree) specifically optimized for?",
+      "back": "Efficiently retrieving strings or searching based on string prefixes."
+    },
+    {
+      "front": "What are 'concurrent versions' of data structures?",
+      "back": "Implementations that allow multiple computing threads to access a single instance simultaneously."
+    },
+    {
+      "front": "Which data structure do relational databases commonly use for indexing to facilitate data retrieval?",
+      "back": "B-trees."
+    },
+    {
+      "front": "Which data structure is typically used by compilers to look up identifiers?",
+      "back": "Hash tables."
+    },
+    {
+      "front": "Define 'Dynamic Programming' (DP).",
+      "back": "A mathematical optimization method and algorithmic paradigm that simplifies complex problems by breaking them into simpler recursive sub-problems."
+    },
+    {
+      "front": "Who is credited with developing Dynamic Programming in the 1950s?",
+      "back": "Richard Bellman."
+    },
+    {
+      "front": "What does 'optimal substructure' mean in the context of DP?",
+      "back": "The solution to an optimization problem can be obtained by combining optimal solutions to its sub-problems."
+    },
+    {
+      "front": "What does 'overlapping sub-problems' mean in the context of DP?",
+      "back": "An algorithm solves the same sub-problems repeatedly rather than generating new ones."
+    },
+    {
+      "front": "How does Dynamic Programming differ from the 'divide and conquer' strategy?",
+      "back": "DP is used for overlapping sub-problems, while divide and conquer is used for non-overlapping sub-problems."
+    },
+    {
+      "front": "What is the 'Bellman equation' in optimization literature?",
+      "back": "A recursive relationship that describes the value of a larger problem in terms of the values of its sub-problems."
+    },
+    {
+      "front": "Describe the 'top-down' approach to Dynamic Programming.",
+      "back": "Formulating the problem recursively and using memoization to store sub-problem solutions in a table."
+    },
+    {
+      "front": "Describe the 'bottom-up' approach to Dynamic Programming.",
+      "back": "Solving smaller sub-problems first and iteratively using their solutions to build up to the solution for larger problems."
+    },
+    {
+      "front": "What is 'memoization'?",
+      "back": "A technique of saving the results of expensive function calls and returning the cached result when the same inputs occur again."
+    },
+    {
+      "front": "From a DP perspective, how does Dijkstra's algorithm solve the shortest path problem?",
+      "back": "It is a successive approximation scheme that solves the DP functional equation using the 'Reaching' method."
+    },
+    {
+      "front": "What is the time complexity of a naive recursive Fibonacci calculation?",
+      "back": "Exponential time."
+    },
+    {
+      "front": "What is the time complexity of a Fibonacci calculation using Dynamic Programming?",
+      "back": "$O(n)$ time."
+    },
+    {
+      "front": "How much space does a bottom-up Fibonacci DP solution require if it only keeps the last two values?",
+      "back": "Constant space or $O(1)$."
+    },
+    {
+      "front": "What are the three recursive options for editing sequence $A$ into sequence $B$ in sequence alignment?",
+      "back": "Inserting the first character of $B$, deleting the first character of $A$, or replacing the first character of $A$ with the first character of $B$."
+    },
+    {
+      "front": "What is the goal of the Matrix Chain Multiplication problem?",
+      "back": "To find the optimal order of parenthesizing a chain of matrices to minimize the total number of scalar multiplications."
+    },
+    {
+      "front": "If matrix $A$ is $m \\times n$ and matrix $B$ is $n \\times q$, how many scalar multiplications are required for $A \\times B$?",
+      "back": "The product $m \\cdot n \\cdot q$ scalar multiplications."
+    },
+    {
+      "front": "In the Matrix Chain Multiplication recurrence, what does $m[i,j]$ represent?",
+      "back": "The minimum number of scalar multiplications needed to multiply a chain of matrices from index $i$ to $j$."
+    },
+    {
+      "front": "What are the rules of the Tower of Hanoi puzzle?",
+      "back": "Only one disk moved at a time, each move takes the top disk, and no disk may be placed on a smaller disk."
+    },
+    {
+      "front": "What is the minimum number of moves required to solve a Tower of Hanoi puzzle with $n$ disks?",
+      "back": "The result is $2^n - 1$ moves."
+    },
+    {
+      "front": "What is the objective of the Egg Dropping puzzle?",
+      "back": "To find the lowest number of droppings guaranteed to identify the highest floor from which an egg can fall without breaking."
+    },
+    {
+      "front": "What are the two components of the 'state' in the Egg Dropping DP model?",
+      "back": "The number of test eggs available $(n)$ and the number of consecutive floors yet to be tested $(k)$."
+    },
+    {
+      "front": "In the faster egg dropping solution, what does $f(t, n)$ represent?",
+      "back": "The maximum number of distinguishable floors using $t$ tries and $n$ eggs."
+    },
+    {
+      "front": "Why did Richard Bellman choose the word 'dynamic' for his method?",
+      "back": "To capture the time-varying aspect of problems and because it was a term impossible to use in a pejorative sense."
+    },
+    {
+      "front": "In the term 'Dynamic Programming,' what does 'programming' originally refer to?",
+      "back": "The use of the method to find an optimal 'program' or schedule, similar to linear programming."
+    },
+    {
+      "front": "Which equation is the fundamental equation of DP in control theory?",
+      "back": "The Hamilton-Jacobi-Bellman equation."
+    },
+    {
+      "front": "In economics, what is Ramsey's problem an example of?",
+      "back": "A problem of optimal saving and intertemporal choice between current and future consumption."
+    },
+    {
+      "front": "In the Ramsey problem, how does the consumption fraction change as a consumer gets older?",
+      "back": "The consumer consumes a larger fraction of their current wealth as they get older."
+    },
+    {
+      "front": "What is a 'predecessor array' used for in the checkerboard shortest path problem?",
+      "back": "To record the path taken to each square so the complete shortest path can be reconstructed by backtracking."
+    },
+    {
+      "front": "Which DP algorithm is used for global sequence alignment in bioinformatics?",
+      "back": "The Needleman-Wunsch algorithm."
+    },
+    {
+      "front": "What is the state of a system in mathematical optimization DP?",
+      "back": "An argument $y$ representing the condition of the system at a specific time $i$."
+    },
+    {
+      "front": "How is the optimal value $V_1$ recovered in a multi-stage decision process?",
+      "back": "By tracking back the calculations performed during the backward induction of the Bellman equation."
+    },
+    {
+      "front": "In the context of the egg dropping puzzle, what happens if the first egg survives a fall from floor $a$?",
+      "back": "The remaining floors to test are from $a+1$ to $k$, using the same number of eggs $n$."
+    },
+    {
+      "front": "In the context of the egg dropping puzzle, what happens if the first egg breaks when dropped from floor $a$?",
+      "back": "The remaining floors to test are from $1$ to $a-1$, using $n-1$ eggs."
+    },
+    {
+      "front": "What is the time complexity of the matrix chain multiplication DP algorithm?",
+      "back": "$O(n^3)$ time."
+    },
+    {
+      "front": "What are 'opaque data types' in modular programming?",
+      "back": "Types that allow library clients to use data structures without knowing their internal implementation details."
+    },
+    {
+      "front": "Which data structure stores element addresses internally to allow for dynamic resizing and flexible memory usage?",
+      "back": "Linked data structures (like linked lists or trees)."
+    },
+    {
+      "front": "In Object-Oriented Programming, what are 'records' called to distinguish them from objects?",
+      "back": "Plain old data structures."
+    },
+    {
+      "front": "What is the 'LCP array' in the context of string data structures?",
+      "back": "An auxiliary array used with suffix arrays to store the length of the longest common prefix between adjacent sorted suffixes."
+    },
+    {
+      "front": "What is the 'Principle of Optimality'?",
+      "back": "The concept that an optimal policy has the property that whatever the initial state and initial decision, the remaining decisions must constitute an optimal policy with regard to the state resulting from the first decision."
+    },
+    {
+      "front": "What is the time complexity of the optimized Egg Dropping DP using binary search?",
+      "back": "$O(nk \\log k)$ time."
+    },
+    {
+      "front": "What is the time complexity of the Egg Dropping problem using the $f(t, n)$ parametrization with binary search on $t$?",
+      "back": "$O(n \\log k)$ algorithm."
+    },
+    {
+      "front": "In Big $O$ notation, why is $f(n) = 3n^2 + 10n + 5$ considered $O(n^2)$?",
+      "back": "Because for large $n$, the $n^2$ term grows the fastest and constant factors are ignored."
+    },
+    {
+      "front": "What is the base case for the Matrix Chain Multiplication recurrence $m[i,j]$?",
+      "back": "$m[i,i] = 0$ for all $i$, because a single matrix requires zero multiplications."
+    },
+    {
+      "front": "In DP, what does the term 'state' signify in a value function $V_t(k)$?",
+      "back": "The specific configuration or value of the system (e.g., amount of capital $k$) at time $t$."
+    },
+    {
+      "front": "What is the main application of 'Tries' in modern software?",
+      "back": "Autocomplete systems and spell-checkers."
+    },
+    {
+      "front": "Which data structure is the standard implementation for maintaining 'Last In, First Out' behavior?",
+      "back": "A stack."
+    },
+    {
+      "front": "Which rule of programming did Rob Pike state regarding data structures?",
+      "back": "Data structures, not algorithms, are central to programming because the algorithm is often self-evident once the data is organized."
+    },
+    {
+      "front": "In the egg dropping puzzle, why is $W(1, k) = k$?",
+      "back": "With only one egg, you must drop it from each floor sequentially from the bottom up to guarantee a result."
+    },
+    {
+      "front": "What is the 'Hamilton-Jacobi-Bellman' equation?",
+      "back": "A partial differential equation that is central to optimal control theory and serves as the continuous-time version of the Bellman equation."
+    },
+    {
+      "front": "How does the 'Reaching' method relate to Dijkstra's algorithm?",
+      "back": "It is the specific DP framework used to solve the shortest path functional equation by updating labels of reachable nodes."
+    },
+    {
+      "front": "In the Matrix Chain Multiplication recurrence, what are $p_{i-1}$, $p_k$, and $p_j$?",
+      "back": "They are the dimensions of the matrices being multiplied: $A_i \\dots A_k$ resulting in $p_{i-1} \\times p_k$ and $A_{k+1} \\dots A_j$ resulting in $p_k \\times p_j$."
+    },
+    {
+      "front": "Which property of logarithms makes $\\log_a n = O(\\log_b n)$ true for any bases $a, b > 1$?",
+      "back": "The change of base formula, which shows that logarithms of different bases differ only by a constant factor."
+    },
+    {
+      "front": "What characterizes the 'optimal substructure' of the shortest path in a graph?",
+      "back": "Any segment of an optimal path between two nodes is itself an optimal path between the segment's start and end nodes."
+    },
+    {
+      "front": "In bioinformatics, what is the 'Smith-Waterman' algorithm used for?",
+      "back": "Local sequence alignment using dynamic programming."
+    },
+    {
+      "front": "What is the asymptotic growth rate of the function $f(n) = n!$?",
+      "back": "It is factorial growth, which grows faster than exponential growth ($O(k^n)$)."
+    },
+    {
+      "front": "How does a 'circular buffer' differ from a standard array?",
+      "back": "It is an array where the end of the buffer wraps around to the beginning, behaving as if it were connected end-to-end."
+    },
+    {
+      "front": "What is a 'Splay Tree'?",
+      "back": "A self-balancing binary search tree where recently accessed elements are quick to access again."
+    }
+  ]
+}

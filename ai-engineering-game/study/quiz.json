@@ -1,0 +1,265 @@
+{
+  "title": "Transformer Quiz",
+  "questions": [
+    {
+      "question": "What primary issue in early recurrent neural networks (RNNs) like the Elman network led to the development of the Long Short-Term Memory (LSTM) architecture?",
+      "answerOptions": [
+        {
+          "text": "The vanishing gradient problem",
+          "isCorrect": true,
+          "rationale": "This phenomenon occurs when information from early tokens fails to propagate effectively through a long sequence during backpropagation."
+        },
+        {
+          "text": "The lack of parallel processing capabilities",
+          "isCorrect": false,
+          "rationale": "While RNNs are indeed sequential, LSTMs were specifically designed to address memory retention rather than parallelization."
+        },
+        {
+          "text": "Incompatibility with GPU acceleration",
+          "isCorrect": false,
+          "rationale": "RNNs can be run on GPUs, but their inherent sequential nature limits the efficiency gains typically seen with parallel hardware."
+        },
+        {
+          "text": "The inability to use ReLU activation functions",
+          "isCorrect": false,
+          "rationale": "The choice of activation function was not the fundamental limitation that LSTMs were designed to solve regarding long-term dependencies."
+        }
+      ],
+      "hint": "Consider the challenge of maintaining information over very long distances in a sequence."
+    },
+    {
+      "question": "Which architectural feature allows transformers to be trained significantly faster than predecessors like the LSTM?",
+      "answerOptions": [
+        {
+          "text": "The removal of recurrent units",
+          "isCorrect": true,
+          "rationale": "Eliminating recurrence allows the model to process all tokens in a sequence simultaneously rather than one by one."
+        },
+        {
+          "text": "The use of smaller vocabulary sizes",
+          "isCorrect": false,
+          "rationale": "Vocabulary size impacts memory and output layers but does not change the fundamental sequential or parallel nature of the hidden layers."
+        },
+        {
+          "text": "The reduction of total model parameters",
+          "isCorrect": false,
+          "rationale": "Transformers often have more parameters than RNNs; their speed advantage comes from how those parameters are computed, not their count."
+        },
+        {
+          "text": "The implementation of linear-softmax layers",
+          "isCorrect": false,
+          "rationale": "Softmax layers are common across many architectures and are not the source of the transformer's specific parallelization advantage."
+        }
+      ],
+      "hint": "Think about the difference between processing a sentence word-by-word versus all at once."
+    },
+    {
+      "question": "Why must transformers utilize positional encoding or learned positional embeddings?",
+      "answerOptions": [
+        {
+          "text": "Self-attention is naturally permutation-invariant",
+          "isCorrect": true,
+          "rationale": "Without explicit position data, the attention mechanism treats the input as a 'bag of words' where the order does not change the math."
+        },
+        {
+          "text": "To prevent the model from attending to future tokens",
+          "isCorrect": false,
+          "rationale": "Restricting attention to previous tokens is handled by masking, not by the positional encoding itself."
+        },
+        {
+          "text": "To reduce the computational complexity of the attention heads",
+          "isCorrect": false,
+          "rationale": "Positional encodings actually add a small amount of data to the input and do not simplify the $O(N^2)$ complexity of attention."
+        },
+        {
+          "text": "To enable the use of cross-attention in the decoder",
+          "isCorrect": false,
+          "rationale": "Cross-attention relies on the relationship between encoder and decoder states, independent of how positions are encoded."
+        }
+      ],
+      "hint": "Consider how the model would distinguish between 'the dog bit the man' and 'the man bit the dog' without these encodings."
+    },
+    {
+      "question": "In the context of the standard transformer architecture, what is the typical relationship between the embedding size $d_{\\text{emb}}$ and the intermediate feedforward size $d_{\\text{ffn}}$?",
+      "answerOptions": [
+        {
+          "text": "$d_{\\text{ffn}} = 4d_{\\text{emb}}$",
+          "isCorrect": true,
+          "rationale": "In many standard models like BERT and GPT-2, the hidden layer of the feedforward network is expanded to four times the dimension of the input vectors."
+        },
+        {
+          "text": "$d_{\\text{ffn}} = d_{\\text{emb}}$",
+          "isCorrect": false,
+          "rationale": "A feedforward layer of equal size would limit the model's capacity to transform and extract complex features between attention steps."
+        },
+        {
+          "text": "$d_{\\text{ffn}} = \\sqrt{d_{\\text{emb}}}$",
+          "isCorrect": false,
+          "rationale": "Scaling down the dimension would create a bottleneck that might lose important linguistic information extracted by the multi-head attention."
+        },
+        {
+          "text": "$d_{\\text{ffn}} = d_{\\text{emb}}^2$",
+          "isCorrect": false,
+          "rationale": "Quadratic scaling of the feedforward layer would result in an impractically large number of parameters for modern high-dimensional embeddings."
+        }
+      ],
+      "hint": "Modern architectures usually expand the dimensionality significantly within the FFN sublayer."
+    },
+    {
+      "question": "What is the purpose of 'causal masking' in the self-attention sublayer of a transformer decoder?",
+      "answerOptions": [
+        {
+          "text": "To ensure tokens only attend to themselves and preceding tokens",
+          "isCorrect": true,
+          "rationale": "This prevents the model from 'seeing' the correct answer when trained to predict the next token in an autoregressive fashion."
+        },
+        {
+          "text": "To remove unknown tokens from the vocabulary during training",
+          "isCorrect": false,
+          "rationale": "Handling unknown words is a function of the tokenizer and the '[UNK]' token, not the attention mask."
+        },
+        {
+          "text": "To align the source language with the target language in translation",
+          "isCorrect": false,
+          "rationale": "Alignment between different sequences is primarily managed by the cross-attention mechanism, not causal self-attention masking."
+        },
+        {
+          "text": "To reduce the memory usage of the $QK^T$ matrix",
+          "isCorrect": false,
+          "rationale": "The mask matrix is applied to the full $QK^T$ product, so it does not reduce the initial memory required to store that matrix."
+        }
+      ],
+      "hint": "Think about how an autoregressive model must be constrained during training so it doesn't look ahead."
+    },
+    {
+      "question": "The 'pre-LN' convention for layer normalization is often preferred over the original 'post-LN' convention because it:",
+      "answerOptions": [
+        {
+          "text": "Increases training stability and often removes the need for a warmup period",
+          "isCorrect": true,
+          "rationale": "Normalizing the input to sublayers rather than the output helps gradients flow more predictably from the start of training."
+        },
+        {
+          "text": "Reduces the number of parameters by half in each transformer block",
+          "isCorrect": false,
+          "rationale": "Changing the location of normalization does not change the number of weight matrices or bias vectors in the architecture."
+        },
+        {
+          "text": "Allows the model to process infinitely long context windows",
+          "isCorrect": false,
+          "rationale": "The context window is still limited by the $O(N^2)$ memory and compute requirements of the attention mechanism regardless of LN placement."
+        },
+        {
+          "text": "Eliminates the need for residual connections",
+          "isCorrect": false,
+          "rationale": "Both conventions rely heavily on residual connections ($x + \\text{Sublayer}(x)$) to maintain signal and avoid vanishing gradients."
+        }
+      ],
+      "hint": "Consider the challenges of initializing and starting the training process of very deep networks."
+    },
+    {
+      "question": "How does Rotary Positional Embedding (RoPE) differ from the original sinusoidal positional encoding used in the 2017 transformer?",
+      "answerOptions": [
+        {
+          "text": "It implements relative position information through vector rotation",
+          "isCorrect": true,
+          "rationale": "By rotating pairs of dimensions, the dot product of two vectors becomes a function of the relative distance between their positions."
+        },
+        {
+          "text": "It is an absolute encoding added to the embedding at the bottom of the stack",
+          "isCorrect": false,
+          "rationale": "While it is applied early, its unique benefit is providing relative rather than just fixed absolute coordinate information."
+        },
+        {
+          "text": "It uses a learned lookup table for every integer position in the sequence",
+          "isCorrect": false,
+          "rationale": "RoPE is a fixed mathematical transformation, unlike learned embeddings which require the model to optimize specific weights for every position."
+        },
+        {
+          "text": "It relies on a Toeplitz matrix to bias the attention scores",
+          "isCorrect": false,
+          "rationale": "Biasing attention scores with a Toeplitz matrix describes Relative Position Encodings or ALiBi, not the RoPE rotation method."
+        }
+      ],
+      "hint": "Consider the geometric interpretation of multiplying complex numbers by an angle."
+    },
+    {
+      "question": "Which efficiency-focused algorithm optimizes transformer attention by performing matrix multiplications in blocks that fit within GPU cache?",
+      "answerOptions": [
+        {
+          "text": "FlashAttention",
+          "isCorrect": true,
+          "rationale": "This communication-avoiding algorithm reduces slow data movement between GPU memory levels by fusing operations into a single loop."
+        },
+        {
+          "text": "Speculative Decoding",
+          "isCorrect": false,
+          "rationale": "Speculative decoding is an inference-time technique that uses a smaller model to guess tokens, rather than a hardware-level attention optimization."
+        },
+        {
+          "text": "Byte Pair Encoding",
+          "isCorrect": false,
+          "rationale": "This is a tokenization algorithm used to prepare text data, not a numerical method for accelerating matrix operations on a GPU."
+        },
+        {
+          "text": "KV Caching",
+          "isCorrect": false,
+          "rationale": "KV caching avoids redundant re-computation of keys and values during inference but does not address the fundamental arithmetic intensity of the attention calculation."
+        }
+      ],
+      "hint": "Think of an algorithm named after its ability to provide high speed through clever memory management."
+    },
+    {
+      "question": "In the training of models like T5, what characterizes a 'prefixLM' task?",
+      "answerOptions": [
+        {
+          "text": "A portion of the sequence is context, and the remainder is predicted autoregressively",
+          "isCorrect": true,
+          "rationale": "The model treats the initial tokens as a fully visible prefix, similar to an encoder's output, before switching to causal generation."
+        },
+        {
+          "text": "The model predicts if two sentences follow each other in a document",
+          "isCorrect": false,
+          "rationale": "Predicting sentence order is known as Next Sentence Prediction (NSP), which was a secondary task for models like BERT."
+        },
+        {
+          "text": "Random tokens throughout the entire sequence are hidden and must be filled in",
+          "isCorrect": false,
+          "rationale": "This describes Masked Language Modeling (MLM), where there is no distinct split between a context prefix and a generation suffix."
+        },
+        {
+          "text": "The model is trained to translate text without any specific prompt or context",
+          "isCorrect": false,
+          "rationale": "Translation is a downstream application; prefixLM refers to the specific masking pattern used during the pretraining stage."
+        }
+      ],
+      "hint": "Focus on the structure of the input where one part acts as a fixed prompt for the rest."
+    },
+    {
+      "question": "What is the primary advantage of Multi-Query Attention (MQA) over standard Multi-head Attention during model inference?",
+      "answerOptions": [
+        {
+          "text": "It significantly reduces the size of the KV cache",
+          "isCorrect": true,
+          "rationale": "By sharing a single set of keys and values across all attention heads, the memory required to store cached states is greatly diminished."
+        },
+        {
+          "text": "It allows the model to attend to longer sequences with $O(N)$ complexity",
+          "isCorrect": false,
+          "rationale": "MQA still uses the dot-product mechanism, which remains quadratic in terms of sequence length; it only optimizes memory per head."
+        },
+        {
+          "text": "It eliminates the need for feedforward sublayers",
+          "isCorrect": false,
+          "rationale": "Feedforward layers are still required to process the aggregated information from the attention heads; MQA only modifies the attention mechanism."
+        },
+        {
+          "text": "It improves the quality of generated text by using more diverse keys",
+          "isCorrect": false,
+          "rationale": "MQA actually uses fewer keys (one set instead of many), which is a tradeoff intended to gain speed, not necessarily to increase diversity."
+        }
+      ],
+      "hint": "Consider the memory bottlenecks involved in serving large models to many users simultaneously."
+    }
+  ]
+}

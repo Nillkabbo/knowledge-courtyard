@@ -1,0 +1,317 @@
+{
+  "title": "Inquiry Quiz",
+  "questions": [
+    {
+      "question": "According to Angela Duckworth's definition, what are the two primary components that constitute 'grit'?",
+      "answerOptions": [
+        {
+          "text": "High IQ and technical ability",
+          "isCorrect": false,
+          "rationale": "Research suggests that grit is largely orthogonal to or even slightly inversely correlated with intellectual talent."
+        },
+        {
+          "text": "Passion and perseverance for long-term goals",
+          "isCorrect": true,
+          "rationale": "This definition emphasizes the stamina required to maintain effort toward a specific end state over many years."
+        },
+        {
+          "text": "Ambition and the desire for external recognition",
+          "isCorrect": false,
+          "rationale": "Grit is distinguished from ambition because gritty individuals focus on personal goals rather than fame or superiority."
+        },
+        {
+          "text": "Resilience and immediate response to critical incidents",
+          "isCorrect": false,
+          "rationale": "While related, grit involves sustained effort over time without requiring a specific critical or 'at-risk' incident."
+        }
+      ],
+      "hint": "Consider the qualities needed to pursue a multi-year objective despite setbacks."
+    },
+    {
+      "question": "In the context of curiosity research, what is the fundamental difference between 'trait curiosity' and 'state curiosity'?",
+      "answerOptions": [
+        {
+          "text": "Trait curiosity is innate in animals, while state curiosity is unique to humans.",
+          "isCorrect": false,
+          "rationale": "This distinction describes perceptual versus epistemic curiosity rather than trait versus state."
+        },
+        {
+          "text": "Trait curiosity is a stable individual interest in learning, whereas state curiosity is a temporary feeling of wonder.",
+          "isCorrect": true,
+          "rationale": "Traits represent enduring personality characteristics, while states are transient conditions triggered by the environment."
+        },
+        {
+          "text": "Trait curiosity focuses on 'how' things work, while state curiosity focuses on 'where' things are.",
+          "isCorrect": false,
+          "rationale": "These descriptors align more with qualitative and quantitative research focuses than types of curiosity."
+        },
+        {
+          "text": "Trait curiosity is driven by fear, while state curiosity is driven by reward.",
+          "isCorrect": false,
+          "rationale": "Curiosity is generally viewed as an urge that draws people out of comfort zones, contrasting with fear."
+        }
+      ],
+      "hint": "Think about the difference between a person's general personality and a momentary reaction."
+    },
+    {
+      "question": "John Dewey, a key figure in the development of critical thinking, originally referred to the process as:",
+      "answerOptions": [
+        {
+          "text": "Skeptical inquiry",
+          "isCorrect": false,
+          "rationale": "While skepticism is a part of the process, it was not the specific term used by Dewey to coin the concept."
+        },
+        {
+          "text": "Reflective thinking",
+          "isCorrect": true,
+          "rationale": "Dewey used this term in his book 'How We Think' to describe the active and careful consideration of beliefs."
+        },
+        {
+          "text": "Metacognitive analysis",
+          "isCorrect": false,
+          "rationale": "Metacognition is a core skill within critical thinking, but the term itself is more modern than Dewey's initial phrasing."
+        },
+        {
+          "text": "Rational skepticism",
+          "isCorrect": false,
+          "rationale": "This term is associated with scientific skepticism rather than the specific coinage of the critical thinking movement."
+        }
+      ],
+      "hint": "The term emphasizes the 'thinking about thinking' aspect of his philosophical approach."
+    },
+    {
+      "question": "Which of the following is a core benefit associated with high levels of 'intellectual humility'?",
+      "answerOptions": [
+        {
+          "text": "A significant increase in general IQ scores",
+          "isCorrect": false,
+          "rationale": "Intellectual humility is a metacognitive process about knowledge limits, not a measure of cognitive capacity itself."
+        },
+        {
+          "text": "Improved decision-making and more accurate processing of information",
+          "isCorrect": true,
+          "rationale": "Recognizing one's fallibility leads to more scrutiny of information and better evaluation of evidence."
+        },
+        {
+          "text": "The ability to avoid all cognitive biases",
+          "isCorrect": false,
+          "rationale": "Humility involves recognizing fallibility, but it does not grant total immunity to inherent human biases."
+        },
+        {
+          "text": "An inherent preference for traditional disciplinary boundaries",
+          "isCorrect": false,
+          "rationale": "Intellectual humility is linked to openness to new ideas and diverse perspectives, often crossing traditional boundaries."
+        }
+      ],
+      "hint": "Focus on how acknowledging one's own limitations affects the quality of conclusions reached."
+    },
+    {
+      "question": "In the FINER criteria for constructing a research question, what does the 'N' represent?",
+      "answerOptions": [
+        {
+          "text": "Necessary",
+          "isCorrect": false,
+          "rationale": "While research should be useful, 'necessary' is not the specific term used in this methodological mnemonic."
+        },
+        {
+          "text": "Numerical",
+          "isCorrect": false,
+          "rationale": "Numerical data relates to quantitative studies but is not a requirement for the research question's construction criteria."
+        },
+        {
+          "text": "Novel",
+          "isCorrect": true,
+          "rationale": "A good research question should confirm, refute, or extend previous findings to add new value to the field."
+        },
+        {
+          "text": "Narrative",
+          "isCorrect": false,
+          "rationale": "Narrative relates to specific types of qualitative research rather than a general criterion for all research questions."
+        }
+      ],
+      "hint": "Think about the requirement that a study should provide something the scientific community does not already fully know."
+    },
+    {
+      "question": "Meta-analyses by critics like Marcus Crede suggest that the predictive power of grit is nearly identical to which 'Big Five' personality trait?",
+      "answerOptions": [
+        {
+          "text": "Openness to experience",
+          "isCorrect": false,
+          "rationale": "Openness is related to curiosity, but the persistent effort of grit is more closely aligned with order and duty."
+        },
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "Agreeableness involves social harmony, which does not overlap significantly with the perseverance required for grit."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": true,
+          "rationale": "Studies found high correlations between the two, suggesting grit may be a sub-facet of conscientiousness rather than a distinct trait."
+        },
+        {
+          "text": "Neuroticism",
+          "isCorrect": false,
+          "rationale": "Neuroticism relates to emotional instability, which is generally viewed as distinct from the industriousness found in grit."
+        }
+      ],
+      "hint": "This trait involves being disciplined, organized, and achievement-oriented."
+    },
+    {
+      "question": "A qualitative research study is most likely to center its research question on which of the following inquiries?",
+      "answerOptions": [
+        {
+          "text": "Where and when a phenomenon occurs",
+          "isCorrect": false,
+          "rationale": "Determining 'where' and 'when' typically requires mathematical and statistical analysis common in quantitative studies."
+        },
+        {
+          "text": "How or why a process or phenomenon functions",
+          "isCorrect": true,
+          "rationale": "Qualitative research seeks to explore meanings and patterns of culture, theory, or experience."
+        },
+        {
+          "text": "The exact statistical correlation between two variables",
+          "isCorrect": false,
+          "rationale": "Correlations and numerical measurements are the hallmarks of quantitative methodology."
+        },
+        {
+          "text": "The frequency of a specific behavior across a large population",
+          "isCorrect": false,
+          "rationale": "Frequency and population-wide statistics are objectives associated with quantitative data collection."
+        }
+      ],
+      "hint": "Think about whether the researcher is looking for mathematical data or deeper conceptual understanding."
+    },
+    {
+      "question": "According to the 'Curiosity-drive theory', what motivates an individual to engage in exploratory behavior?",
+      "answerOptions": [
+        {
+          "text": "The desire to maximize biological fitness in fear-induced situations",
+          "isCorrect": false,
+          "rationale": "While fear can induce curiosity, the core of the theory is the cognitive need for understanding and coherence."
+        },
+        {
+          "text": "The reduction of unpleasant feelings caused by uncertainty or ambiguity",
+          "isCorrect": true,
+          "rationale": "The theory posits that humans seek to restore coherence in their thought processes when confronted with the unfamiliar."
+        },
+        {
+          "text": "The biological need to find food and shelter",
+          "isCorrect": false,
+          "rationale": "These are primary drives, and while curiosity may lead to them, the theory defines curiosity as its own drive to rectify uncertainty."
+        },
+        {
+          "text": "The social pressure to conform to a group's knowledge base",
+          "isCorrect": false,
+          "rationale": "Curiosity-drive theory is primarily focused on the internal psychological state of the individual regarding unfamiliar stimuli."
+        }
+      ],
+      "hint": "Consider the emotional state one feels when they don't understand something and want to 'make sense' of it."
+    },
+    {
+      "question": "How does grit differ from 'hardiness' as defined by Salvatore Maddi?",
+      "answerOptions": [
+        {
+          "text": "Grit is a process of adaptation, while hardiness is a fixed genetic trait.",
+          "isCorrect": false,
+          "rationale": "Grit is actually conceptualized as a trait, while resilience is often described as a process."
+        },
+        {
+          "text": "Hardiness requires a critical life-changing event, whereas grit does not.",
+          "isCorrect": false,
+          "rationale": "This distinction is used to separate grit from resilience, not hardiness."
+        },
+        {
+          "text": "Grit focuses on a specific long-term goal, whereas hardiness focuses on persisting through general stressful circumstances.",
+          "isCorrect": true,
+          "rationale": "Hardiness is about turning stressful situations into growth, but it does not necessarily involve a singular multi-year objective."
+        },
+        {
+          "text": "Hardiness is inversely related to success, while grit is positively related to success.",
+          "isCorrect": false,
+          "rationale": "Both constructs are generally viewed as positive predictors of performance and achievement."
+        }
+      ],
+      "hint": "One term is about staying the course toward a particular outcome; the other is about coping with difficulty."
+    },
+    {
+      "question": "In the 'book21.md' source, what are the three tests a 'good research question' must pass?",
+      "answerOptions": [
+        {
+          "text": "Clarity, Accuracy, and Logic",
+          "isCorrect": false,
+          "rationale": "These are universal intellectual criteria for critical thinking but are not the specific 'three tests' for research questions in the source."
+        },
+        {
+          "text": "Novelty, Significance, and Feasibility",
+          "isCorrect": true,
+          "rationale": "A question must be new (not on Google Scholar), important (benefits the field), and solvable (with available data/time)."
+        },
+        {
+          "text": "Observation, Inference, and Metacognition",
+          "isCorrect": false,
+          "rationale": "These are core critical thinking skills, not the criteria for validating a research question."
+        },
+        {
+          "text": "Passion, Perseverance, and Purpose",
+          "isCorrect": false,
+          "rationale": "While passion and perseverance relate to grit, they do not define the technical 'tests' for a research question."
+        }
+      ],
+      "hint": "The tests ensure the question is new, important to the field, and actually possible to answer."
+    },
+    {
+      "question": "Why does psychologist K. Anders Ericsson criticize the use of 'grit' or 'willpower' to explain intense practice schedules?",
+      "answerOptions": [
+        {
+          "text": "Because he believes IQ is the only true predictor of expertise.",
+          "isCorrect": false,
+          "rationale": "Ericsson's critique is focused on the circular logic of traits, not on advocating for IQ."
+        },
+        {
+          "text": "Because he views these traits as 'circular thinking' assigned after the fact.",
+          "isCorrect": true,
+          "rationale": "He argues that labeling someone as having 'grit' because they practiced only discourages others who think they lack the trait."
+        },
+        {
+          "text": "Because grit only applies to children and not to adult experts.",
+          "isCorrect": false,
+          "rationale": "Ericsson's research on expertise involves both children and adults; his critique is regarding the classification of motivation as a rare gift."
+        },
+        {
+          "text": "Because his meta-analysis showed a genetic correlation of $0.86$ with conscientiousness.",
+          "isCorrect": false,
+          "rationale": "This genetic finding was from Rimfeld and colleagues, not Ericsson."
+        }
+      ],
+      "hint": "Think about the logic: 'He practiced because he has grit; we know he has grit because he practiced.'"
+    },
+    {
+      "question": "Interdisciplinarity is often motivated by the belief that traditional disciplines are:",
+      "answerOptions": [
+        {
+          "text": "Too focused on the 'unity-of-knowledge' ideal",
+          "isCorrect": false,
+          "rationale": "Interdisciplinarians actually use their approach to remind the academy of the 'unity-of-knowledge' ideal."
+        },
+        {
+          "text": "Unable or unwilling to address complex, real-world problems",
+          "isCorrect": true,
+          "rationale": "Complex issues like climate change or HIV/AIDS require insights from multiple fields that single disciplines cannot provide alone."
+        },
+        {
+          "text": "More suited for 'epistemic exploration' than practical results",
+          "isCorrect": false,
+          "rationale": "Single disciplines often provide very practical results; the issue is their narrow scope on multifaceted problems."
+        },
+        {
+          "text": "The only reliable source for creating new research funding programs",
+          "isCorrect": false,
+          "rationale": "Funding programs are actually a barrier for interdisciplinary work, which is why new fields strive to become their own disciplines."
+        }
+      ],
+      "hint": "Consider how a single perspective might fall short when dealing with a problem like global warming."
+    }
+  ]
+}

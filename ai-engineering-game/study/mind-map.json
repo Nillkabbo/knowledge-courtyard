@@ -1,0 +1,164 @@
+{
+  "name": "Large Language Models & Transformers",
+  "children": [
+    {
+      "name": "Core Architecture",
+      "children": [
+        {
+          "name": "Transformer Model",
+          "children": [
+            {
+              "name": "Encoder-Decoder Structure"
+            },
+            {
+              "name": "Multi-head Attention"
+            },
+            {
+              "name": "Context Window"
+            },
+            {
+              "name": "Feedforward Networks"
+            }
+          ]
+        },
+        {
+          "name": "Components",
+          "children": [
+            {
+              "name": "Tokenization (BPE, WordPiece)"
+            },
+            {
+              "name": "Word Embeddings"
+            },
+            {
+              "name": "Positional Encoding"
+            },
+            {
+              "name": "Softmax Layer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Training Process",
+      "children": [
+        {
+          "name": "Stages",
+          "children": [
+            {
+              "name": "Pre-training (Self-supervised)"
+            },
+            {
+              "name": "Fine-tuning (Downstream tasks)"
+            },
+            {
+              "name": "RLHF (Human Feedback)"
+            }
+          ]
+        },
+        {
+          "name": "Optimization",
+          "children": [
+            {
+              "name": "Scaling Laws (Chinchilla)"
+            },
+            {
+              "name": "Learning Rate Warmup"
+            },
+            {
+              "name": "Layer Normalization"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fine-tuning Variants",
+      "children": [
+        {
+          "name": "Parameter-Efficient (PEFT)",
+          "children": [
+            {
+              "name": "LoRA (Low-Rank Adaptation)"
+            },
+            {
+              "name": "Adapters"
+            }
+          ]
+        },
+        {
+          "name": "Representation (ReFT)",
+          "children": [
+            {
+              "name": "LoReFT"
+            }
+          ]
+        },
+        {
+          "name": "Instruction Tuning"
+        }
+      ]
+    },
+    {
+      "name": "Extensibility & Reasoning",
+      "children": [
+        {
+          "name": "Prompt Engineering"
+        },
+        {
+          "name": "Chain-of-Thought"
+        },
+        {
+          "name": "RAG (Retrieval-Augmented Generation)"
+        },
+        {
+          "name": "Tool Use & AI Agents"
+        },
+        {
+          "name": "Reasoning Models (OpenAI o1, DeepSeek-R1)"
+        }
+      ]
+    },
+    {
+      "name": "Evaluation & Properties",
+      "children": [
+        {
+          "name": "Perplexity Metric"
+        },
+        {
+          "name": "Emergent Abilities"
+        },
+        {
+          "name": "Hallucinations"
+        },
+        {
+          "name": "Algorithmic Bias"
+        },
+        {
+          "name": "Mechanistic Interpretability"
+        }
+      ]
+    },
+    {
+      "name": "Applications",
+      "children": [
+        {
+          "name": "NLP (Translation, Summarization)"
+        },
+        {
+          "name": "Computer Vision (ViT)"
+        },
+        {
+          "name": "Biology (Protein Folding)"
+        },
+        {
+          "name": "Programming (GitHub Copilot)"
+        },
+        {
+          "name": "Multimodality (GPT-4o, LLaVA)"
+        }
+      ]
+    }
+  ]
+}

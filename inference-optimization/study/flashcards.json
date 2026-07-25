@@ -1,0 +1,345 @@
+{
+  "title": "Inference Flashcards",
+  "cards": [
+    {
+      "front": "What specialized electronic circuit is designed for digital image processing and accelerating computer graphics?",
+      "back": "Graphics processing unit (GPU)."
+    },
+    {
+      "front": "Why are GPUs increasingly used for artificial intelligence processing and model training?",
+      "back": "They provide linear algebra acceleration."
+    },
+    {
+      "front": "Modern GPUs internalize calculations for 3D tasks like rotating and scaling, a function previously requiring the central processing unit (CPU).",
+      "back": "True."
+    },
+    {
+      "front": "Custom programs executed on a GPU to perform graphics tasks are known as _____.",
+      "back": "Shaders"
+    },
+    {
+      "front": "How do GPUs differ from earlier video display controllers regarding calculation capabilities?",
+      "back": "GPUs can internally perform calculations, whereas controllers had no internal calculation capability."
+    },
+    {
+      "front": "In the context of GPU architecture, what does the term 'SM' used by Nvidia represent?",
+      "back": "Streaming Multiprocessor."
+    },
+    {
+      "front": "What is the primary unit of measurement for GPU performance involving floating point operations?",
+      "back": "FLOPS (Floating Point Operations Per Second)."
+    },
+    {
+      "front": "Modern GPUs typically deliver performance measured in _____, which equals one trillion floating point operations per second.",
+      "back": "Teraflops (TFLOPS)"
+    },
+    {
+      "front": "Which software component of an AI system applies logical rules to a knowledge base to deduce new information?",
+      "back": "Inference engine."
+    },
+    {
+      "front": "In an expert system, what component stores facts about the world?",
+      "back": "Knowledge base."
+    },
+    {
+      "front": "Which inference mode starts with known facts and asserts new facts?",
+      "back": "Forward chaining."
+    },
+    {
+      "front": "Which inference mode starts with goals and works backward to determine required facts?",
+      "back": "Backward chaining."
+    },
+    {
+      "front": "Inference engine logic is typically represented in what specific format?",
+      "back": "IF-THEN rules (modus ponens)."
+    },
+    {
+      "front": "What are the three sequential steps in an inference engine cycle?",
+      "back": "Match rules, select rules, and execute rules."
+    },
+    {
+      "front": "Why was Lisp a frequent platform for early AI research and inference engines?",
+      "back": "It has a strong capability for symbolic manipulation."
+    },
+    {
+      "front": "Which forward-chaining engine used the Rete algorithm to optimize rule-firing efficiency?",
+      "back": "OPS5."
+    },
+    {
+      "front": "In LLM inference, what is the 'KV cache' used to store?",
+      "back": "The key-value pairs of previously processed tokens."
+    },
+    {
+      "front": "Without a KV cache, what is the computational complexity of generating tokens relative to the sequence length $N$?",
+      "back": "$O(N^{2})$ (Quadratic growth)."
+    },
+    {
+      "front": "With an active KV cache, token generation growth becomes _____.",
+      "back": "Linear ($O(N)$)"
+    },
+    {
+      "front": "What are the two distinct phases of the KV cache lifecycle during inference?",
+      "back": "Prefill phase and Decode phase."
+    },
+    {
+      "front": "In the KV cache context, what does 'Prefill' involve?",
+      "back": "Processing the initial prompt once to compute and store keys and values."
+    },
+    {
+      "front": "How does the 'Decode' phase utilize the KV cache?",
+      "back": "It computes only the Query ($Q$) for the new token and uses cached $K$ and $V$ for attention."
+    },
+    {
+      "front": "What is the primary drawback of using a KV cache for large context windows?",
+      "back": "It consumes a dominant amount of GPU memory (VRAM)."
+    },
+    {
+      "front": "Which vLLM optimization uses virtual memory techniques to reduce KV cache fragmentation?",
+      "back": "PagedAttention."
+    },
+    {
+      "front": "What optimization technique skips the prefill phase for shared system prompts across multiple requests?",
+      "back": "Prefix Caching."
+    },
+    {
+      "front": "What is 'Multi-Query Attention' (MQA)?",
+      "back": "An architecture where multiple attention heads share a single set of Key and Value pairs."
+    },
+    {
+      "front": "How does 'Grouped-Query Attention' (GQA) differ from standard Multi-Head Attention?",
+      "back": "Groups of Query heads share a single Key/Value head to reduce cache size with minimal quality loss."
+    },
+    {
+      "front": "Sacred Analogue: Hafiz represents which technical optimization concept?",
+      "back": "KV Cache (Memory preservation)."
+    },
+    {
+      "front": "What is the process of reducing the numerical precision of model weights to save memory?",
+      "back": "Quantization."
+    },
+    {
+      "front": "How much memory does a 7B parameter model typically require in fp16 precision?",
+      "back": "14 GB."
+    },
+    {
+      "front": "Converting a model from fp16 to int4 precision reduces memory usage by a factor of _____.",
+      "back": "4"
+    },
+    {
+      "front": "Which quantization method identifies and preserves 'important' weights in higher precision using activations?",
+      "back": "AWQ (Activation-aware Weight Quantization)."
+    },
+    {
+      "front": "Which model format is specifically optimized for CPU and Mac inference through multiple quantization levels?",
+      "back": "GGUF."
+    },
+    {
+      "front": "What is the main trade-off when using 4-bit quantization instead of 16-bit precision?",
+      "back": "Significant memory savings (4x) versus a slight loss in model quality (typically 2-5%)."
+    },
+    {
+      "front": "Sacred Analogue: Ikhtisar represents which technical optimization concept?",
+      "back": "Quantization (Brevity/Conciseness)."
+    },
+    {
+      "front": "What technique involves processing multiple inference requests simultaneously to increase GPU utilization?",
+      "back": "Batching."
+    },
+    {
+      "front": "Which batching strategy allows new requests to join a running batch at each token step?",
+      "back": "Continuous Batching."
+    },
+    {
+      "front": "What is 'Head-of-line blocking' in the context of static batching?",
+      "back": "When short requests are delayed because the batch must wait for the slowest/longest request to finish."
+    },
+    {
+      "front": "Why does continuous batching significantly increase throughput compared to static batching?",
+      "back": "It ensures the GPU is never idle by ejecting finished requests and inserting new ones immediately."
+    },
+    {
+      "front": "What is 'Chunked Prefill'?",
+      "back": "Breaking long prompts into smaller pieces to interleave them with the decoding of other requests."
+    },
+    {
+      "front": "Sacred Analogue: Jamaat represents which technical optimization concept?",
+      "back": "Batching (Grouped/Collective strength)."
+    },
+    {
+      "front": "What is the computational complexity of the standard Attention mechanism relative to sequence length $N$?",
+      "back": "$O(N^{2})$."
+    },
+    {
+      "front": "Which attention optimization avoids writing the full $N \\times N$ matrix to HBM by tiling the computation in SRAM?",
+      "back": "FlashAttention."
+    },
+    {
+      "front": "How does FlashAttention improve speed without changing the model's output?",
+      "back": "It reduces memory I/O by performing fused operations in fast SRAM."
+    },
+    {
+      "front": "In 'Sliding Window Attention', each token only attends to a fixed number of _____ tokens.",
+      "back": "Previous (or local)"
+    },
+    {
+      "front": "Sacred Analogue: Tanzim represents which technical optimization concept?",
+      "back": "Attention Optimization (Organization/Arrangement)."
+    },
+    {
+      "front": "What is 'Speculative Decoding'?",
+      "back": "Using a small, fast model to guess tokens and a large model to verify them in a single pass."
+    },
+    {
+      "front": "In speculative decoding, what happens if the target model rejects a token guessed by the draft model?",
+      "back": "The incorrect token and all following tokens are discarded, and the target model provides a correction."
+    },
+    {
+      "front": "What is the primary benefit of speculative decoding regarding model quality?",
+      "back": "It provides a 2-3x speedup while remaining mathematically identical to the large model's output."
+    },
+    {
+      "front": "Which speculative decoding variant uses extra decoding heads on the target model itself instead of a separate draft model?",
+      "back": "Medusa."
+    },
+    {
+      "front": "Sacred Analogue: Yaqin represents which technical optimization concept?",
+      "back": "Speculative Decoding (Certainty/Verified prediction)."
+    },
+    {
+      "front": "In GPU memory management, what does 'OOM' stand for?",
+      "back": "Out of Memory."
+    },
+    {
+      "front": "What optimization technique saves memory by only storing a subset of activations during training and recomputing the rest?",
+      "back": "Gradient Checkpointing."
+    },
+    {
+      "front": "Sacred Analogue: Tadbir represents which technical optimization concept?",
+      "back": "Memory Management (Planning/Resource management)."
+    },
+    {
+      "front": "What model compression technique involves setting specific model parameters to exactly zero?",
+      "back": "Pruning."
+    },
+    {
+      "front": "What is 'Knowledge Distillation'?",
+      "back": "The process of transferring knowledge from a large 'teacher' model to a smaller 'student' model."
+    },
+    {
+      "front": "In knowledge distillation, what is the role of the 'Temperature' parameter in the softmax function?",
+      "back": "It softens the probability distribution to provide more information about how the teacher model represents knowledge."
+    },
+    {
+      "front": "How does model compression differ from knowledge distillation?",
+      "back": "Compression reduces the size of the original model, while distillation trains a new, smaller model."
+    },
+    {
+      "front": "Sacred Analogue: Tazkiyah represents which technical optimization concept?",
+      "back": "Pruning and Distillation (Purification/Refinement)."
+    },
+    {
+      "front": "What are 'Custom Kernels' in the context of GPU optimization?",
+      "back": "Code written specifically for a particular hardware architecture to maximize execution speed."
+    },
+    {
+      "front": "Which domain-specific language developed by OpenAI is used to write high-performance GPU kernels?",
+      "back": "Triton."
+    },
+    {
+      "front": "Sacred Analogue: Mutalaba represents which technical optimization concept?",
+      "back": "Custom Kernels (Precise need/Specialized tools)."
+    },
+    {
+      "front": "Which Nvidia GPU is considered the high-end standard for production AI serving and features 80GB of VRAM?",
+      "back": "A100."
+    },
+    {
+      "front": "Sacred Analogue: Ala represents which technical optimization concept?",
+      "back": "Hardware Selection (Right tools/Equipment)."
+    },
+    {
+      "front": "In the 'Optimal Brain Damage' algorithm, what is 'Saliency' used to measure?",
+      "back": "The increase in the loss function if a specific parameter is deleted (set to zero)."
+    },
+    {
+      "front": "Knowledge distillation using a high temperature $t$ allows for a higher _____ during the training of the student model.",
+      "back": "Learning rate"
+    },
+    {
+      "front": "Which algorithm is used to losslessly compress a model after pruning and quantization in 'Deep Compression'?",
+      "back": "Huffman coding."
+    },
+    {
+      "front": "The 'softmax' operator converts raw logit values into pseudo-_____.",
+      "back": "Probabilities"
+    },
+    {
+      "front": "Formula: The cross-entropy loss $E$ for distillation with temperature $t$ is expressed as $E(\\mathbf{x}|t) = $ ____.",
+      "back": "$-\\sum_{i} \\hat{y}_{i}(\\mathbf{x}|t) \\log y_{i}(\\mathbf{x}|t)$"
+    },
+    {
+      "front": "What is the primary bottleneck for large language model inference speed at each decoding step?",
+      "back": "Memory bandwidth (loading parameters from HBM)."
+    },
+    {
+      "front": "In a teacher-student configuration, if the teacher correctly predicts a class, it assigns a high value to that class output and _____ values to others.",
+      "back": "Small (or non-zero)"
+    },
+    {
+      "front": "Which technique approximates weight matrices using two smaller matrices to reduce parameters and accelerate multiplication?",
+      "back": "Low-rank factorization (or approximation)."
+    },
+    {
+      "front": "The 'train big, then compress' method suggests that heavy compression on a large model results in better performance than a _____ model trained to convergence.",
+      "back": "Small (or lightly compressed)"
+    },
+    {
+      "front": "In the context of expert systems, 'Modus Ponens' refers to what logical structure?",
+      "back": "IF-THEN statements."
+    },
+    {
+      "front": "What historical AI researcher published early work on neural network distillation for RNNs in 1991?",
+      "back": "Jürgen Schmidhuber."
+    },
+    {
+      "front": "Which GPU company held the largest market share in 2009?",
+      "back": "Intel."
+    },
+    {
+      "front": "The ability of GPUs to handle vast numbers of calculations simultaneously makes them ideal for '_____ parallel' problems.",
+      "back": "Embarrassingly"
+    },
+    {
+      "front": "What is the purpose of 'Rejection Sampling' in speculative decoding?",
+      "back": "To ensure the final token distribution matches the target model exactly."
+    },
+    {
+      "front": "In LLM serving, what is 'TTFT'?",
+      "back": "Time To First Token."
+    },
+    {
+      "front": "What is the typical sequence length for draft tokens ($K$) in speculative decoding?",
+      "back": "Between 3 and 12 tokens."
+    },
+    {
+      "front": "Which variant of speculative decoding performs autoregression on internal feature representations rather than tokens?",
+      "back": "EAGLE."
+    },
+    {
+      "front": "Quantization from 16-bit to 8-bit precision is known as _____.",
+      "back": "int8 quantization"
+    },
+    {
+      "front": "What does the 'Fused' kernel in FlashAttention combine into a single pass?",
+      "back": "$Q \\times K$, softmax, and multiplication by $V$."
+    },
+    {
+      "front": "Which optimization strategy should be prioritized first according to the 'Diamond Synthesis' architecture?",
+      "back": "Using vLLM (Batching and FlashAttention)."
+    },
+    {
+      "front": "Sacred Analogue: Kamal represents which overall concept?",
+      "back": "Complete Optimization Architecture (Perfection/Synthesis)."
+    }
+  ]
+}

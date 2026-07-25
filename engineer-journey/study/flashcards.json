@@ -1,0 +1,329 @@
+{
+  "title": "Software Flashcards",
+  "cards": [
+    {
+      "front": "Term: Design pattern",
+      "back": "Definition: A re-usable form of a solution to a design problem."
+    },
+    {
+      "front": "Who is the architect credited with introducing the idea of design patterns?",
+      "back": "Christopher Alexander."
+    },
+    {
+      "front": "A collection of design patterns that relate to a particular field and provides a common terminology is called a _____.",
+      "back": "Pattern language"
+    },
+    {
+      "front": "In the context of pattern documentation, what does the 'context' describe?",
+      "back": "The range of situations in which a pattern can be used."
+    },
+    {
+      "front": "According to Alexander, from what do common design problems arise?",
+      "back": "Conflicting forces."
+    },
+    {
+      "front": "Beyond the problem and solution, what must the author of a pattern document to explain why a solution is 'best'?",
+      "back": "The values used to guide the decision."
+    },
+    {
+      "front": "Name one non-software field where design patterns are applied according to the source material.",
+      "back": "Gardening (or Teaching)."
+    },
+    {
+      "front": "Concept: Software testing",
+      "back": "Definition: The act of checking whether software meets its intended objectives and satisfies expectations."
+    },
+    {
+      "front": "Why is software testing unable to determine correctness for all possible scenarios?",
+      "back": "Testing every combination of inputs and preconditions is not feasible."
+    },
+    {
+      "front": "Term: Test oracle",
+      "back": "Definition: The criteria or mechanism used for measuring the correctness of software, such as specifications or contracts."
+    },
+    {
+      "front": "What is the difference between static and dynamic software testing?",
+      "back": "Static testing involves reviewing code and documentation, while dynamic testing involves running the software."
+    },
+    {
+      "front": "According to the 'test pyramid' approach, what type of test should be the most numerous?",
+      "back": "Unit tests."
+    },
+    {
+      "front": "According to a 2002 NIST study, what was the estimated annual cost of software bugs to the U.S. economy?",
+      "back": "$\\$59.5$ billion."
+    },
+    {
+      "front": "Who introduced the influential separation of debugging from testing in 1979?",
+      "back": "Glenford J. Myers."
+    },
+    {
+      "front": "Term: Software bug",
+      "back": "Definition: A defect in the code that causes an undesirable result."
+    },
+    {
+      "front": "Why is a defect in 'dead code' not typically considered a software failure?",
+      "back": "It is never executed during the program's operation."
+    },
+    {
+      "front": "What is a 'Requirements gap' in software testing?",
+      "back": "The omission of a requirement from the design."
+    },
+    {
+      "front": "Cloze: _____ testing is the use of software separate from the software being tested to control test execution and compare outcomes.",
+      "back": "Test automation"
+    },
+    {
+      "front": "Term: Unit testing",
+      "back": "Definition: A form of testing where isolated source code is tested to validate expected behavior."
+    },
+    {
+      "front": "What is the primary focus of integration testing?",
+      "back": "Verifying that multiple software components work as expected when combined."
+    },
+    {
+      "front": "Term: System testing",
+      "back": "Definition: Testing conducted on a complete software system, also known as end-to-end (E2E) testing."
+    },
+    {
+      "front": "How does 'passive testing' differ from active testing?",
+      "back": "Passive testing verifies behavior by observing logs and traces without interacting with the software."
+    },
+    {
+      "front": "Exploratory testing is characterized by the simultaneous performance of which three activities?",
+      "back": "Learning, test design, and test execution."
+    },
+    {
+      "front": "In testing strategies, what is the difference between 'preset' and 'adaptive' testing?",
+      "back": "Preset testing is decided before execution, while adaptive testing inputs depend on previous outputs."
+    },
+    {
+      "front": "Term: White-box testing",
+      "back": "Definition: A testing approach that verifies internal structures or workings of a program using the source code."
+    },
+    {
+      "front": "Which testing methodology involves designing test cases without knowledge of the internal implementation or source code?",
+      "back": "Black-box testing."
+    },
+    {
+      "front": "Term: Grey-box testing",
+      "back": "Definition: An approach that uses internal knowledge of data structures to design tests executed at the user level."
+    },
+    {
+      "front": "What does '100% statement coverage' ensure in code coverage analysis?",
+      "back": "Every code path or branch is executed at least once during testing."
+    },
+    {
+      "front": "In code coverage metrics, what is 'Decision coverage'?",
+      "back": "A report on whether both the True and False branches of a given test have been executed."
+    },
+    {
+      "front": "Which black-box testing variation focuses on data values passed between subsystem components?",
+      "back": "Component interface testing."
+    },
+    {
+      "front": "What is the core idea of 'visual testing'?",
+      "back": "Showing a problem to a developer through recorded video increases clarity and understanding."
+    },
+    {
+      "front": "Term: Ad hoc testing",
+      "back": "Definition: Improvised, impromptu testing where testers base variations off documented methods."
+    },
+    {
+      "front": "What is the primary limitation of ad hoc testing?",
+      "back": "A lack of repeatability."
+    },
+    {
+      "front": "What is the goal of installation testing?",
+      "back": "Verifying that users can successfully set up software in its intended environment."
+    },
+    {
+      "front": "Term: Compatibility testing",
+      "back": "Definition: Testing to ensure software works across different application software, operating systems, or target environments."
+    },
+    {
+      "front": "What is the purpose of a 'smoke test'?",
+      "back": "Minimal attempts to operate software to determine if basic problems prevent it from working at all."
+    },
+    {
+      "front": "What is the goal of regression testing?",
+      "back": "Finding defects after major code changes to uncover features that stopped working as intended."
+    },
+    {
+      "front": "Acceptance testing performed after each completed user story in an agile project is known as _____ testing.",
+      "back": "User acceptance"
+    },
+    {
+      "front": "What does Operational Acceptance Testing (OAT) focus on?",
+      "back": "The operational readiness of the system to be supported in a production environment."
+    },
+    {
+      "front": "Cloze: _____ testing is simulated operational testing by users or independent teams at the developer's site.",
+      "back": "Alpha"
+    },
+    {
+      "front": "What is 'Beta testing'?",
+      "back": "External user acceptance testing by a limited audience outside the programming team."
+    },
+    {
+      "front": "Compare functional and non-functional testing focus.",
+      "back": "Functional testing verifies specific actions of the code, while non-functional testing verifies quality aspects like scalability."
+    },
+    {
+      "front": "Term: Continuous testing",
+      "back": "Definition: Executing automated tests as part of the delivery pipeline to get immediate feedback on business risks."
+    },
+    {
+      "front": "What does 'destructive testing' verify?",
+      "back": "Whether software functions properly when receiving invalid or unexpected inputs."
+    },
+    {
+      "front": "Performance testing: What is 'Load testing'?",
+      "back": "Testing if a system can continue to operate under large quantities of data or a high number of users."
+    },
+    {
+      "front": "What is 'Stress testing' in the context of performance?",
+      "back": "Testing software reliability under unexpected or rare workloads."
+    },
+    {
+      "front": "Why can usability testing NOT be automated?",
+      "back": "It requires actual human users monitored by skilled designers to assess ease of use."
+    },
+    {
+      "front": "Term: Accessibility testing",
+      "back": "Definition: Testing to ensure software is usable by persons with disabilities, such as checking color contrast."
+    },
+    {
+      "front": "What is the purpose of security testing?",
+      "back": "Evaluating the degree to which data is protected and unauthorized access is prevented."
+    },
+    {
+      "front": "Cloze: _____ is a process used to test an application's translatability by identifying localization bugs early.",
+      "back": "Pseudolocalization"
+    },
+    {
+      "front": "What does 'Globalization testing' verify?",
+      "back": "That the software is adapted for a new culture, including currencies and time zones."
+    },
+    {
+      "front": "When is 'development testing' performed?",
+      "back": "During the construction phase of the software development lifecycle by the developer."
+    },
+    {
+      "front": "Term: A/B testing",
+      "back": "Definition: A controlled experiment to determine if a proposed change is more effective than the current approach."
+    },
+    {
+      "front": "What common problems does concurrency testing expose?",
+      "back": "Deadlocks, race conditions, and shared resource handling issues."
+    },
+    {
+      "front": "Term: Conformance testing",
+      "back": "Definition: Verifying that a product performs according to recognized industry standards."
+    },
+    {
+      "front": "What is 'Snapshot testing'?",
+      "back": "Comparing expected output (text or screenshots) with actual results, requiring human evaluation for inconsistencies."
+    },
+    {
+      "front": "How does property testing differ from traditional unit testing?",
+      "back": "It asserts the truth of a 'property' across many randomly generated inputs rather than specific expected outputs."
+    },
+    {
+      "front": "Term: VCR testing",
+      "back": "Definition: Recording system interactions with external APIs to replay them for faster regression tests."
+    },
+    {
+      "front": "In distributed systems, what is 'Contract testing'?",
+      "back": "Testing integration points by checking if requests and responses conform to shared expectations."
+    },
+    {
+      "front": "What is 'self-healing test automation' in AI-assisted testing?",
+      "back": "Automated tests that detect and adapt to UI changes without human intervention."
+    },
+    {
+      "front": "Term: Shift-left testing",
+      "back": "Definition: The practice of integrating testing activities as early as possible in the software development lifecycle."
+    },
+    {
+      "front": "What is a significant economic benefit of shift-left testing?",
+      "back": "It results in a $75\\%$-$85\\%$ reduction in the cost of eliminating defects."
+    },
+    {
+      "front": "In the Waterfall model, when is testing typically performed?",
+      "back": "After code completion but before shipping to the customer."
+    },
+    {
+      "front": "How does TDD (Test-Driven Development) handle unit-level testing?",
+      "back": "Unit testing is performed while writing the product code."
+    },
+    {
+      "front": "In the testing process, what occurs during 'Requirements analysis'?",
+      "back": "Testers determine what aspects of a design are testable and establish testing parameters."
+    },
+    {
+      "front": "What is 'Defect retesting'?",
+      "back": "Verifying a defect fix by the testing team after the developer has addressed it."
+    },
+    {
+      "front": "In software quality, what question does 'Verification' answer?",
+      "back": "\"Have we built the software right?\""
+    },
+    {
+      "front": "In software quality, what question does 'Validation' answer?",
+      "back": "\"Have we built the right software?\""
+    },
+    {
+      "front": "How does Software Quality Assurance (SQA) differ from traditional testing?",
+      "back": "SQA is concerned with the development process itself to reduce the defect rate."
+    },
+    {
+      "front": "Term: Test plan",
+      "back": "Definition: A document detailing the objectives, scope, procedures, and personnel for intended test activities."
+    },
+    {
+      "front": "What is the purpose of a 'traceability matrix' (TM)?",
+      "back": "Correlating baseline documents to assist in determining the completeness of requirements coverage."
+    },
+    {
+      "front": "What are the two essential components of a 'test case'?",
+      "back": "An input and an expected result."
+    },
+    {
+      "front": "Term: Test script",
+      "back": "Definition: A procedure or programming code that replicates user actions for testing."
+    },
+    {
+      "front": "What is a 'test suite'?",
+      "back": "A collection of test cases intended to show that a program has specific behaviors."
+    },
+    {
+      "front": "Term: Test harness",
+      "back": "Definition: The collective software, tools, data inputs/outputs, and configurations used for testing."
+    },
+    {
+      "front": "What is a 'test run'?",
+      "back": "The execution of a collection of test cases or suites to compare expected and actual results."
+    },
+    {
+      "front": "According to typical defect cost studies, finding a requirements error post-release can cost how much more than finding it during review?",
+      "back": "$10\\times$-$100\\times$ more."
+    },
+    {
+      "front": "Term: Pattern language",
+      "back": "Definition: An organized collection of design patterns that relates to a particular field."
+    },
+    {
+      "front": "Why is 100% statement coverage alone insufficient for ensuring correct functionality?",
+      "back": "The same code may process different inputs correctly or incorrectly despite being executed."
+    },
+    {
+      "front": "In performance testing, what is 'Stability testing'?",
+      "back": "Checking if software can continuously function well over an acceptable period."
+    },
+    {
+      "front": "What does a 'Test fixture' collect?",
+      "back": "All test values and changeable environmental components in separate files."
+    }
+  ]
+}

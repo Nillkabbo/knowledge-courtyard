@@ -1,0 +1,194 @@
+{
+  "name": "Adversarial Machine Learning and Security",
+  "children": [
+    {
+      "name": "Attack Modalities",
+      "children": [
+        {
+          "name": "Evasion Attacks",
+          "children": [
+            {
+              "name": "Adversarial Examples"
+            },
+            {
+              "name": "Black Box (Square, HopSkipJump)"
+            },
+            {
+              "name": "White Box (FGSM, C&W)"
+            }
+          ]
+        },
+        {
+          "name": "Data Poisoning",
+          "children": [
+            {
+              "name": "Backdoor/Trojan Attacks"
+            },
+            {
+              "name": "Bias Injection"
+            },
+            {
+              "name": "Availability Poisoning"
+            }
+          ]
+        },
+        {
+          "name": "Model Extraction",
+          "children": [
+            {
+              "name": "Model Stealing"
+            },
+            {
+              "name": "Membership Inference"
+            },
+            {
+              "name": "Sensitive Info Disclosure"
+            }
+          ]
+        },
+        {
+          "name": "Byzantine Attacks"
+        },
+        {
+          "name": "Model DoS"
+        }
+      ]
+    },
+    {
+      "name": "LLM Specific Threats",
+      "children": [
+        {
+          "name": "Prompt Injection",
+          "children": [
+            {
+              "name": "Direct (System Prompt Override)"
+            },
+            {
+              "name": "Indirect (Hidden Web/Doc Content)"
+            },
+            {
+              "name": "Prompt Leaking"
+            }
+          ]
+        },
+        {
+          "name": "Jailbreaking",
+          "children": [
+            {
+              "name": "Persona/Role-play (DAN)"
+            },
+            {
+              "name": "Many-shot Context Exploits"
+            },
+            {
+              "name": "Encoding/Obfuscation"
+            }
+          ]
+        },
+        {
+          "name": "Excessive Agency"
+        },
+        {
+          "name": "Supply Chain Vulnerabilities"
+        }
+      ]
+    },
+    {
+      "name": "Defense Mechanisms",
+      "children": [
+        {
+          "name": "Layered Defense (Defense in Depth)",
+          "children": [
+            {
+              "name": "Input/Output Guardrails"
+            },
+            {
+              "name": "Network Security (WAF)"
+            },
+            {
+              "name": "Action Validation"
+            }
+          ]
+        },
+        {
+          "name": "Guardrail Frameworks",
+          "children": [
+            {
+              "name": "NeMo Guardrails"
+            },
+            {
+              "name": "Guardrails AI"
+            },
+            {
+              "name": "Llama Guard"
+            }
+          ]
+        },
+        {
+          "name": "Proactive Testing",
+          "children": [
+            {
+              "name": "Red Teaming (Garak, PyRIT)"
+            },
+            {
+              "name": "Adversarial Training"
+            },
+            {
+              "name": "Alignment Hardening (RLHF)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "General Computer Security",
+      "children": [
+        {
+          "name": "Vulnerabilities",
+          "children": [
+            {
+              "name": "Social Engineering (Phishing)"
+            },
+            {
+              "name": "Malware (Viruses, Ransomware)"
+            },
+            {
+              "name": "Privilege Escalation"
+            }
+          ]
+        },
+        {
+          "name": "Countermeasures",
+          "children": [
+            {
+              "name": "Security by Design"
+            },
+            {
+              "name": "Digital Hygiene"
+            },
+            {
+              "name": "User Training"
+            },
+            {
+              "name": "Encryption (VPN, SSL/TLS)"
+            }
+          ]
+        },
+        {
+          "name": "Systems at Risk",
+          "children": [
+            {
+              "name": "Critical Infrastructure"
+            },
+            {
+              "name": "Financial/Medical Systems"
+            },
+            {
+              "name": "Internet of Things (IoT)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

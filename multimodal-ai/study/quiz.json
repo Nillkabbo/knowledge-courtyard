@@ -1,0 +1,265 @@
+{
+  "title": "Perception Quiz",
+  "questions": [
+    {
+      "question": "In the context of computer vision, how is 'understanding' specifically defined as a transformation process?",
+      "answerOptions": [
+        {
+          "text": "The conversion of visual images into descriptions of the world that can elicit appropriate action.",
+          "isCorrect": true,
+          "rationale": "The source defines understanding as transforming images into world descriptions that interface with thought processes and allow for action."
+        },
+        {
+          "text": "The digital enhancement of image resolution to match the human visual system's clarity.",
+          "isCorrect": false,
+          "rationale": "While resolution is important, understanding specifically refers to extracting symbolic information rather than just improving pixel density."
+        },
+        {
+          "text": "The process of storing high-dimensional data into numerical arrays for faster retrieval.",
+          "isCorrect": false,
+          "rationale": "Storage and retrieval are database functions, whereas understanding involves interpreting the content to make sense of the real world."
+        },
+        {
+          "text": "The automatic compression of video sequences to reduce transmission interference.",
+          "isCorrect": false,
+          "rationale": "Compression is a signal processing task that does not necessarily involve the 'disentangling of symbolic information' mentioned in the text."
+        }
+      ],
+      "hint": "Think about the end goal of a system that needs to act upon what it 'sees'."
+    },
+    {
+      "question": "What primary goal distinguished computer vision from digital image processing in the early 1970s?",
+      "answerOptions": [
+        {
+          "text": "The desire to extract $3$D structure to achieve full scene understanding.",
+          "isCorrect": true,
+          "rationale": "Early computer vision sought to go beyond $2$D pixel manipulation to interpret the three-dimensional depth and structure of a scene."
+        },
+        {
+          "text": "The implementation of pixel-wise operations like contrast enhancement.",
+          "isCorrect": false,
+          "rationale": "The text identifies $2$D pixel-wise operations as the primary focus of digital image processing, not the distinguishing goal of computer vision."
+        },
+        {
+          "text": "The development of hardware capable of capturing $60$ frames per second.",
+          "isCorrect": false,
+          "rationale": "High frame rates are a hardware capability, whereas the field's distinction was based on the algorithmic goal of spatial interpretation."
+        },
+        {
+          "text": "The use of quantum physics to design more sensitive image sensors.",
+          "isCorrect": false,
+          "rationale": "Quantum physics is related to the construction of sensors, but the goal of 'describing what it saw' was the defining aim of vision research."
+        }
+      ],
+      "hint": "Consider the difference between manipulating a flat picture and reconstructing a physical environment."
+    },
+    {
+      "question": "Which task involves determining the $3$D rigid motion of a camera from an image sequence?",
+      "answerOptions": [
+        {
+          "text": "Egomotion",
+          "isCorrect": true,
+          "rationale": "Egomotion is specifically defined as determining the rotation and translation of the camera itself relative to the environment."
+        },
+        {
+          "text": "Optical flow",
+          "isCorrect": false,
+          "rationale": "Optical flow determines how individual points move relative to the image plane, which is often a component used to calculate egomotion but is not the motion of the camera itself."
+        },
+        {
+          "text": "Object recognition",
+          "isCorrect": false,
+          "rationale": "Recognition identifies 'what' is in the image, whereas tracking the camera's physical displacement is a motion analysis task."
+        },
+        {
+          "text": "Image restoration",
+          "isCorrect": false,
+          "rationale": "Restoration aims to remove noise or blur rather than calculating the spatial trajectory of the recording device."
+        }
+      ],
+      "hint": "The name of this task suggests motion related to the 'self' of the device."
+    },
+    {
+      "question": "How does 'machine vision' typically differ from 'computer vision' in industrial applications?",
+      "answerOptions": [
+        {
+          "text": "It integrates image data with control theory and hardware to guide robots in controlled environments.",
+          "isCorrect": true,
+          "rationale": "Machine vision focuses on systems engineering for factory automation, often involving real-time processing and controlled lighting."
+        },
+        {
+          "text": "It focuses solely on $2$D pixel manipulation without any $3$D analysis.",
+          "isCorrect": false,
+          "rationale": "Machine vision often uses $3$D analysis for tasks like bin picking, though it applies these techniques within a manufacturing context."
+        },
+        {
+          "text": "It is a purely theoretical field concerned with biological visual models.",
+          "isCorrect": false,
+          "rationale": "The text describes machine vision as a technological and engineering discipline, while biological models are more related to neurobiology."
+        },
+        {
+          "text": "It uses passive visible-light sensors exclusively to avoid interference with machinery.",
+          "isCorrect": false,
+          "rationale": "Industrial systems often use active illumination or non-visible light, such as structured-light scanners, to improve accuracy."
+        }
+      ],
+      "hint": "Think about the practical requirements of a production line versus a general research environment."
+    },
+    {
+      "question": "What is the function of 'point markers' in tactile sensors that use embedded cameras?",
+      "answerOptions": [
+        {
+          "text": "They allow a computer to track how silicon deforms to determine how a surface is being pressed.",
+          "isCorrect": true,
+          "rationale": "By monitoring the shift in marker positions, the system can determine the exact shape and pressure applied to the sensor."
+        },
+        {
+          "text": "They act as strain gauges to measure electrical resistance across a rubber surface.",
+          "isCorrect": false,
+          "rationale": "While rubber pins and strain gauges are one type of sensor, the camera-based version relies on visual tracking of markers rather than resistance."
+        },
+        {
+          "text": "They provide active illumination for the camera in low-light environments.",
+          "isCorrect": false,
+          "rationale": "Illumination is provided by a separate system; the markers are the reference points used for tracking deformation."
+        },
+        {
+          "text": "They serve as labels for object recognition to identify the type of material being touched.",
+          "isCorrect": false,
+          "rationale": "The markers are used for geometric shape and pressure estimation, not for classifying the identity of the touched object."
+        }
+      ],
+      "hint": "Consider how a visual system might 'see' the physical distortion of a flexible material."
+    },
+    {
+      "question": "In speech recognition history, what was the significance of the 1952 'Audrey' system built by Bell Labs?",
+      "answerOptions": [
+        {
+          "text": "It was designed for single-speaker digit recognition using formant locations.",
+          "isCorrect": true,
+          "rationale": "Audrey was an early pioneer that successfully recognized spoken digits by analyzing the power spectrum of a single speaker."
+        },
+        {
+          "text": "It was the first system to achieve continuous, speaker-independent recognition.",
+          "isCorrect": false,
+          "rationale": "The text notes that speaker independence remained unsolved for several decades after 1952."
+        },
+        {
+          "text": "It utilized Hidden Markov Models to achieve a vocabulary of $1000$ words.",
+          "isCorrect": false,
+          "rationale": "HMMs were not applied to speech until the 1970s; Audrey used spectral analysis of formants."
+        },
+        {
+          "text": "It introduced the Connectionist Temporal Classification layer for neural networks.",
+          "isCorrect": false,
+          "rationale": "CTC is a modern deep learning technique introduced in the 21st century, long after Audrey."
+        }
+      ],
+      "hint": "This system focused on a very limited set of numerical sounds for a specific individual."
+    },
+    {
+      "question": "Why are Hidden Markov Models (HMMs) popular for speech recognition despite being linguistically simplistic?",
+      "answerOptions": [
+        {
+          "text": "They treat speech signals as piecewise stationary or short-time stationary processes.",
+          "isCorrect": true,
+          "rationale": "HMMs effectively model the way speech can be approximated as a stationary process in small $10$ millisecond scales."
+        },
+        {
+          "text": "They eliminate the need for acoustic modeling by focusing solely on syntax.",
+          "isCorrect": false,
+          "rationale": "HMMs actually allow researchers to combine acoustics, language, and syntax into a unified model."
+        },
+        {
+          "text": "They are the only models capable of resolving the vanishing gradient problem.",
+          "isCorrect": false,
+          "rationale": "The vanishing gradient problem is associated with neural networks; LSTMs were developed specifically to address it."
+        },
+        {
+          "text": "They automatically identify the speaker's native language using pronunciation assessment.",
+          "isCorrect": false,
+          "rationale": "While ASR can be used for pronunciation assessment, it is not the reason HMMs are the standard mathematical framework for signal modeling."
+        }
+      ],
+      "hint": "Focus on the physical characteristics of the speech signal over a very short duration."
+    },
+    {
+      "question": "What is a major advantage of 'end-to-end' ASR models over traditional phonetic-based systems?",
+      "answerOptions": [
+        {
+          "text": "They simplify deployment by learning all components (acoustic, pronunciation, language) at once.",
+          "isCorrect": true,
+          "rationale": "End-to-end models consolidate the separate training components of traditional models into a single framework."
+        },
+        {
+          "text": "They utilize massive $n$-gram language models that require gigabytes of local storage.",
+          "isCorrect": false,
+          "rationale": "The text states that traditional n-gram models are impractical for mobile devices due to their size, which end-to-end models aim to avoid."
+        },
+        {
+          "text": "They rely on the speaker pausing after every word to maintain accuracy.",
+          "isCorrect": false,
+          "rationale": "Continuous speech recognition was a milestone achieved in the 20th century; modern end-to-end models do not require artificial pauses."
+        },
+        {
+          "text": "They exclusively use Hidden Markov Models to estimate probability distributions.",
+          "isCorrect": false,
+          "rationale": "End-to-end models are typically based on neural network architectures like RNNs or Transformers, rather than traditional HMMs."
+        }
+      ],
+      "hint": "Think about the efficiency of training and the complexity of the internal system architecture."
+    },
+    {
+      "question": "How do 'Attention-based' ASR models like 'Listen, Attend and Spell' (LAS) differ from 'CTC-based' models?",
+      "answerOptions": [
+        {
+          "text": "They do not require conditional-independence assumptions and can learn the language model directly.",
+          "isCorrect": true,
+          "rationale": "LAS models pay attention to all parts of the signal and learn all speech recognizer components without the independence constraints of CTC."
+        },
+        {
+          "text": "They focus primarily on identifying the speaker's identity rather than transcribing text.",
+          "isCorrect": false,
+          "rationale": "LAS is an ASR (speech-to-text) model; speaker identification is a separate field called voice recognition."
+        },
+        {
+          "text": "They require users to wear electrodes to read neuromuscular signals from subvocalization.",
+          "isCorrect": false,
+          "rationale": "Reading neuromuscular signals is the function of the 'AlterEgo' project, not the LAS model architecture."
+        },
+        {
+          "text": "They are incapable of handleing lip reading or visual cues.",
+          "isCorrect": false,
+          "rationale": "The text mentions that LAS was extended to 'Watch, Listen, Attend and Spell' (WLAS) to handle lip reading."
+        }
+      ],
+      "hint": "Consider which model is more holistic in its learning of linguistic patterns and dependencies."
+    },
+    {
+      "question": "In computer vision systems, what is the specific role of a Vision Processing Unit (VPU)?",
+      "answerOptions": [
+        {
+          "text": "It is a specialized class of processor designed to complement CPUs and GPUs for vision tasks.",
+          "isCorrect": true,
+          "rationale": "VPUs emerged to handle the high computational demands of real-time vision processing alongside standard processors."
+        },
+        {
+          "text": "It acts as the primary image sensor that captures electromagnetic radiation.",
+          "isCorrect": false,
+          "rationale": "VPUs are processors; sensors like CCDs or LiDAR are the hardware responsible for capturing light or range data."
+        },
+        {
+          "text": "It provides the power source for the mechanical actuators in a robotic system.",
+          "isCorrect": false,
+          "rationale": "VPUs handle data processing, while power sources and actuators are separate physical components of the system hardware."
+        },
+        {
+          "text": "It is a software framework used solely for 3D model rendering in computer graphics.",
+          "isCorrect": false,
+          "rationale": "The VPU is a piece of hardware (processor), and its purpose in this context is vision (extracting data from images), not just graphics (producing images)."
+        }
+      ],
+      "hint": "Think about the 'brain' of the system and how it might be subdivided to handle intense visual data."
+    }
+  ]
+}

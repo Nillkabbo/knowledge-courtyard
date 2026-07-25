@@ -1,0 +1,345 @@
+{
+  "title": "OS Flashcards",
+  "cards": [
+    {
+      "front": "Which specific type of system software manages computer hardware and provides common services for computer programs?",
+      "back": "Operating system"
+    },
+    {
+      "front": "What is the primary role of an operating system acting as an intermediary?",
+      "back": "Managing the interaction between application programs and computer hardware."
+    },
+    {
+      "front": "According to data from October 2025, which operating system holds the largest global market share at 38%?",
+      "back": "Android"
+    },
+    {
+      "front": "Which three operating systems are primarily categorized as mobile operating systems?",
+      "back": "Android, iOS, and iPadOS."
+    },
+    {
+      "front": "What is the term for the core software component of an operating system that is always running?",
+      "back": "Kernel"
+    },
+    {
+      "front": "Operating systems isolate applications to protect them from _____ and security vulnerabilities in other programs.",
+      "back": "Errors"
+    },
+    {
+      "front": "By what mechanism does an operating system mask limited hardware resources to provide programs the illusion of nearly unlimited memory?",
+      "back": "Virtualization (specifically virtual memory)."
+    },
+    {
+      "front": "In a multicomputer or cluster system, how is the relationship between CPUs and memory defined?",
+      "back": "Each CPU has its own private memory."
+    },
+    {
+      "front": "What additional software layer is often used in distributed systems to improve consistency between distinct networked computers?",
+      "back": "Middleware"
+    },
+    {
+      "front": "What is the distinguishing factor of embedded operating systems regarding software installation?",
+      "back": "They do not load user-installed software."
+    },
+    {
+      "front": "Which type of operating system guarantees the processing of events or data by a specific moment in time?",
+      "back": "Real-time operating system (RTOS)"
+    },
+    {
+      "front": "How do 'hard' real-time systems differ from 'soft' real-time systems regarding timing errors?",
+      "back": "Hard systems require exact timing, while soft systems can accept occasional missed events."
+    },
+    {
+      "front": "Which software type emulates hardware to allow one operating system to run as an application within another?",
+      "back": "Hypervisor (or Virtual Machine)"
+    },
+    {
+      "front": "What is constructed when a library operating system (libOS) is composed with a single application into a specialized machine image?",
+      "back": "Unikernel"
+    },
+    {
+      "front": "How were the first computers of the late 1940s and 1950s programmed before the advent of operating systems?",
+      "back": "Directly with plugboards or machine code."
+    },
+    {
+      "front": "Which IBM operating system was the first popular one to support multiprogramming?",
+      "back": "OS/360"
+    },
+    {
+      "front": "What is the definition of 'multiprogramming' in the context of 1960s mainframes?",
+      "back": "Allowing one job to use the CPU while another job is blocked waiting for I/O."
+    },
+    {
+      "front": "Which operating system, originally developed for a single user as a descendant of MULTICS, became the basis for System V and BSD?",
+      "back": "UNIX"
+    },
+    {
+      "front": "What is the purpose of the POSIX standard released by the IEEE?",
+      "back": "To increase compatibility by defining standard application programming interfaces (APIs) for operating systems."
+    },
+    {
+      "front": "Which free software operating system was inspired by the educational UNIX clone known as MINIX?",
+      "back": "Linux"
+    },
+    {
+      "front": "In the early 1980s, which operating system was the most popular for microcomputers before the rise of MS-DOS?",
+      "back": "CP/M (Control Program for Microcomputers)"
+    },
+    {
+      "front": "Which Apple computer was the first popular system to utilize a graphical user interface (GUI)?",
+      "back": "Macintosh"
+    },
+    {
+      "front": "What was the name of the GUI overlay Microsoft originally added to the MS-DOS operating system?",
+      "back": "Windows"
+    },
+    {
+      "front": "Which open-source mobile operating system uses a Linux kernel and a C library called Bionic?",
+      "back": "Android"
+    },
+    {
+      "front": "What is the fundamental difference between 'user mode' and 'kernel mode' operation?",
+      "back": "The hardware restricts instructions in user mode, while the kernel has unrestricted powers."
+    },
+    {
+      "front": "Which kernel-level data structure is created to manage program binary code, assigned memory, and execution priority?",
+      "back": "Process"
+    },
+    {
+      "front": "What term describes the change in CPU control flow from a running program to an interrupt service routine (ISR)?",
+      "back": "Interrupt"
+    },
+    {
+      "front": "A _____ is a message to a process that an event has occurred, often referred to as a software interrupt.",
+      "back": "Signal"
+    },
+    {
+      "front": "Which Unix-like system call is used to send a signal to another process?",
+      "back": "kill(pid, signum)"
+    },
+    {
+      "front": "In a command-line environment, what is the effect of the 'interrupt character' (Control-C)?",
+      "back": "It terminates the currently running process."
+    },
+    {
+      "front": "What hardware feature allows I/O devices to bypass the CPU and access main memory directly?",
+      "back": "Direct Memory Access (DMA)"
+    },
+    {
+      "front": "Why is 'cooperative memory management' considered unreliable for modern systems?",
+      "back": "It relies on programs to voluntarily stay within their limits; a single bug can crash the entire system."
+    },
+    {
+      "front": "Which memory protection technique uses registers to specify allowed memory addresses and triggers an interrupt upon unauthorized access?",
+      "back": "Segmentation (or Paging)"
+    },
+    {
+      "front": "What specific interrupt occurs when a program tries to access memory that has been allocated but is not currently accessible in RAM?",
+      "back": "Page fault"
+    },
+    {
+      "front": "What is the term for moving less frequently accessed memory to a disk to free up space in RAM?",
+      "back": "Swapping (or Paging)"
+    },
+    {
+      "front": "How does 'preemptive multitasking' prevent a single thread from monopolizing the processor?",
+      "back": "The operating system can interrupt a running thread to switch to another."
+    },
+    {
+      "front": "What is the main difference between a 'process' and a 'thread' regarding resource sharing?",
+      "back": "Threads share code, heap data, and resources with other threads in the same process, whereas processes are isolated."
+    },
+    {
+      "front": "In a file system, what is the difference between an absolute path and a relative path?",
+      "back": "Absolute paths start at the root directory; relative paths start from the current directory."
+    },
+    {
+      "front": "How do operating systems reduce I/O latency when an application requests files?",
+      "back": "By caching recently used blocks and prefetching data the application might need next."
+    },
+    {
+      "front": "Which file system component tracks unallocated storage blocks, often using a bitmap?",
+      "back": "Free space map"
+    },
+    {
+      "front": "What design strategy ensures that permanent storage is not left in an inconsistent state if a crash occurs during a write operation?",
+      "back": "Atomic operations"
+    },
+    {
+      "front": "The CIA triad of security stands for Confidentiality, Integrity, and _____.",
+      "back": "Availability"
+    },
+    {
+      "front": "What is the 'principle of least authority' in operating system security?",
+      "back": "Granting the minimum privilege necessary to perform a specific task."
+    },
+    {
+      "front": "How does a 'microkernel' design improve security compared to a 'monolithic kernel'?",
+      "back": "It separates kernel privileges into multiple domains, reducing the impact of a single breach."
+    },
+    {
+      "front": "What is 'address space layout randomization' (ASLR) used for in OS hardening?",
+      "back": "To reduce vulnerabilities by randomizing where data and code are stored in memory."
+    },
+    {
+      "front": "What does the acronym WIMP stand for in the context of graphical user interfaces?",
+      "back": "Windows, Icons, Menus, and Pointers."
+    },
+    {
+      "front": "Which software license requires all derivatives of the Linux kernel to also release their source code?",
+      "back": "GNU General Public License (GPL)"
+    },
+    {
+      "front": "Linux was designed with a focus on consistency and simplicity, allowing its basic elements to be combined in _____ ways.",
+      "back": "Unlimited"
+    },
+    {
+      "front": "What is the primary file system used by modern versions of Microsoft Windows?",
+      "back": "NTFS (New Technology File System)"
+    },
+    {
+      "front": "In the Windows Executive, what term refers to data structures like processes and threads that are managed in kernel mode?",
+      "back": "Objects"
+    },
+    {
+      "front": "What is the standard name for an operating system whose code is not derived from existing systems and has a very small user base?",
+      "back": "Hobbyist operating system"
+    },
+    {
+      "front": "How can developers avoid the cost of porting an application to multiple operating systems?",
+      "back": "By using software platforms like Java or Qt that provide an abstraction layer."
+    },
+    {
+      "front": "What is 'time-sharing' in an operating system?",
+      "back": "Scheduling tasks to allow multiple users or programs to share the CPU efficiently."
+    },
+    {
+      "front": "A 'unikernel' typically runs in a _____ address space environment.",
+      "back": "Single"
+    },
+    {
+      "front": "What was the precursor to cloud computing that was intended to allow hundreds of simultaneous users?",
+      "back": "MULTICS"
+    },
+    {
+      "front": "Which operating system became dominant on mobile devices before being usurped by iOS and Android?",
+      "back": "Symbian OS"
+    },
+    {
+      "front": "What is the function of an 'Interrupt Service Routine' (ISR)?",
+      "back": "A specific piece of code that executes in response to a hardware or software interrupt."
+    },
+    {
+      "front": "In x86 architecture, which assembly instruction is used to generate a software interrupt?",
+      "back": "INT"
+    },
+    {
+      "front": "What is 'polling' in the context of I/O, and how do interrupts improve upon it?",
+      "back": "Polling requires the CPU to constantly check a device's status; interrupts allow the CPU to perform other tasks until the device is ready."
+    },
+    {
+      "front": "What is the function of a 'device-status table' maintained by the kernel?",
+      "back": "To track which processes are waiting for specific hardware devices."
+    },
+    {
+      "front": "Which tech used in solid-state drives is faster and more durable than magnetic disks?",
+      "back": "Flash memory"
+    },
+    {
+      "front": "What is 'segmentation violation' (Seg-V)?",
+      "back": "An interrupt triggered when a program attempts to access a memory address it is not permitted to use."
+    },
+    {
+      "front": "Parallelism in a program is achieved by running multiple threads on _____ CPUs.",
+      "back": "Different (or multiple)"
+    },
+    {
+      "front": "What role do 'checkums' play in file system reliability?",
+      "back": "They are used to detect whether data has been corrupted during storage or transfer."
+    },
+    {
+      "front": "In security, what is the 'attack surface'?",
+      "back": "The sum of all points where an unauthorized user can try to enter data to or extract data from an environment."
+    },
+    {
+      "front": "Why is 'C' or 'C++' often cited as a source of OS vulnerabilities?",
+      "back": "They lack automatic bounds checking, which can lead to buffer overflow attacks."
+    },
+    {
+      "front": "What is 'security by obscurity'?",
+      "back": "The unreliable practice of relying on secrecy of design or implementation to provide security."
+    },
+    {
+      "front": "Which mobile OS was introduced in 2008 as an open-source project based on the Linux kernel?",
+      "back": "Android"
+    },
+    {
+      "front": "Which desktop operating system holds approximately 31% of the global market share as of October 2025?",
+      "back": "Microsoft Windows"
+    },
+    {
+      "front": "What is 'Remote Direct Memory Access' (RDMA)?",
+      "back": "A technique that enables a CPU in a multicomputer system to access the memory of other CPUs directly."
+    },
+    {
+      "front": "Operating systems are found on devices ranging from cellular phones and video game consoles to web servers and _____.",
+      "back": "Supercomputers"
+    },
+    {
+      "front": "In the history of UNIX, which two versions were considered the most successful early branches?",
+      "back": "System V (AT&T) and BSD (Berkeley Software Distribution)."
+    },
+    {
+      "front": "What is 'context switching'?",
+      "back": "The process of saving the state of a running process and loading the state of another to allow multitasking."
+    },
+    {
+      "front": "Which type of multitasking requires threads to voluntarily relinquish control of the processor?",
+      "back": "Cooperative multitasking"
+    },
+    {
+      "front": "Which hardware component converts file names into block numbers for the operating system?",
+      "back": "The index (often implemented as a tree)."
+    },
+    {
+      "front": "What does RAID stand for in the context of data redundancy?",
+      "back": "Redundant Array of Inexpensive Disks"
+    },
+    {
+      "front": "Which software layer enables an operating system to work with different hardware without needing constant modification?",
+      "back": "Device drivers"
+    },
+    {
+      "front": "What is 'fragmentation' in a file system?",
+      "back": "A condition where files are stored in non-contiguous blocks, potentially reducing performance."
+    },
+    {
+      "front": "The 'Windows Executive' uses kernel-mode objects to manage data structures like _____ and threads.",
+      "back": "Processes"
+    },
+    {
+      "front": "What is the primary advantage of a GUI over a command-line interface for non-technical users?",
+      "back": "It is more user-friendly and provides a visual environment for interaction."
+    },
+    {
+      "front": "Which operating system is used in the controllers of most Intel microchips since 2008?",
+      "back": "MINIX"
+    },
+    {
+      "front": "What is a 'live CD'?",
+      "back": "An operating system that runs directly from a disc without needing installation on a hard drive."
+    },
+    {
+      "front": "Which specific hardware component is responsible for triggering a hardware interrupt?",
+      "back": "The system bus (sending a signal to the CPU)."
+    },
+    {
+      "front": "What is the difference between a 'library' and a 'system program'?",
+      "back": "System programs are associated with the OS but not part of the kernel; libraries are sets of functions used by programs."
+    },
+    {
+      "front": "In Windows, what is the 'Windows Driver Model' used for?",
+      "back": "It is the standard framework for writing I/O device drivers."
+    }
+  ]
+}

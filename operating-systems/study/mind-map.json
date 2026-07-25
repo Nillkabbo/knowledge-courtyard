@@ -1,0 +1,231 @@
+{
+  "name": "Operating System Architecture",
+  "children": [
+    {
+      "name": "Process Management",
+      "children": [
+        {
+          "name": "Process States",
+          "children": [
+            {
+              "name": "New"
+            },
+            {
+              "name": "Ready"
+            },
+            {
+              "name": "Running"
+            },
+            {
+              "name": "Waiting/Blocked"
+            },
+            {
+              "name": "Terminated"
+            }
+          ]
+        },
+        {
+          "name": "Process Control Block (PCB)",
+          "children": [
+            {
+              "name": "PID (Process ID)"
+            },
+            {
+              "name": "Program Counter"
+            },
+            {
+              "name": "CPU Registers"
+            },
+            {
+              "name": "Memory Limits"
+            }
+          ]
+        },
+        {
+          "name": "System Calls",
+          "children": [
+            {
+              "name": "fork()"
+            },
+            {
+              "name": "exec()"
+            },
+            {
+              "name": "wait()"
+            },
+            {
+              "name": "exit()"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Threads & Concurrency",
+      "children": [
+        {
+          "name": "Shared Address Space"
+        },
+        {
+          "name": "Context Switching"
+        },
+        {
+          "name": "Race Conditions"
+        },
+        {
+          "name": "Synchronization",
+          "children": [
+            {
+              "name": "Mutex"
+            },
+            {
+              "name": "Semaphores"
+            },
+            {
+              "name": "Monitors"
+            }
+          ]
+        },
+        {
+          "name": "Deadlocks",
+          "children": [
+            {
+              "name": "Coffman Conditions"
+            },
+            {
+              "name": "Banker's Algorithm"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CPU Scheduling",
+      "children": [
+        {
+          "name": "Algorithms",
+          "children": [
+            {
+              "name": "First Come First Served (FCFS)"
+            },
+            {
+              "name": "Shortest Job First (SJF)"
+            },
+            {
+              "name": "Round Robin"
+            },
+            {
+              "name": "Priority Scheduling"
+            },
+            {
+              "name": "Multi-Level Feedback Queue"
+            }
+          ]
+        },
+        {
+          "name": "Scheduler Types",
+          "children": [
+            {
+              "name": "Long-term (Admission)"
+            },
+            {
+              "name": "Medium-term (Swapping)"
+            },
+            {
+              "name": "Short-term (CPU)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Memory Management",
+      "children": [
+        {
+          "name": "Virtual Memory"
+        },
+        {
+          "name": "Paging & Page Tables"
+        },
+        {
+          "name": "Translation Lookaside Buffer (TLB)"
+        },
+        {
+          "name": "Demand Paging"
+        },
+        {
+          "name": "LRU Replacement"
+        }
+      ]
+    },
+    {
+      "name": "Storage & File Systems",
+      "children": [
+        {
+          "name": "Attributes",
+          "children": [
+            {
+              "name": "Inodes"
+            },
+            {
+              "name": "Directories"
+            },
+            {
+              "name": "Metadata"
+            }
+          ]
+        },
+        {
+          "name": "Implementations",
+          "children": [
+            {
+              "name": "FAT/NTFS"
+            },
+            {
+              "name": "ext4/XFS"
+            },
+            {
+              "name": "APFS"
+            },
+            {
+              "name": "Journaling"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "I/O & Isolation",
+      "children": [
+        {
+          "name": "I/O Systems",
+          "children": [
+            {
+              "name": "Device Drivers"
+            },
+            {
+              "name": "Interrupts vs Polling"
+            },
+            {
+              "name": "Direct Memory Access (DMA)"
+            }
+          ]
+        },
+        {
+          "name": "Isolation",
+          "children": [
+            {
+              "name": "Virtual Machines"
+            },
+            {
+              "name": "Containers (Docker)"
+            },
+            {
+              "name": "Namespaces & cgroups"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

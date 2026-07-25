@@ -1,0 +1,218 @@
+{
+  "name": "Prompt Engineering & LLM Fundamentals",
+  "children": [
+    {
+      "name": "Core Technical Concepts",
+      "children": [
+        {
+          "name": "Tokenization",
+          "children": [
+            {
+              "name": "Smallest unit of LLM processing"
+            },
+            {
+              "name": "Byte Pair Encoding (BPE)"
+            },
+            {
+              "name": "Impacts cost and context window"
+            }
+          ]
+        },
+        {
+          "name": "Sampling Parameters",
+          "children": [
+            {
+              "name": "Temperature: 0 (precise) to 1+ (creative)"
+            },
+            {
+              "name": "Top-P (Nucleus Sampling)"
+            },
+            {
+              "name": "Frequency and Presence Penalties"
+            }
+          ]
+        },
+        {
+          "name": "Prompt Hierarchy",
+          "children": [
+            {
+              "name": "System Prompt: Rules and persona"
+            },
+            {
+              "name": "Assistant Messages: Conversation history"
+            },
+            {
+              "name": "User Message: Specific task"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Prompting Techniques",
+      "children": [
+        {
+          "name": "Few-Shot Learning",
+          "children": [
+            {
+              "name": "Zero-shot: No examples"
+            },
+            {
+              "name": "One-shot: Exactly one example"
+            },
+            {
+              "name": "Few-shot: 3-5 diverse samples"
+            }
+          ]
+        },
+        {
+          "name": "Reasoning & Logic",
+          "children": [
+            {
+              "name": "Chain-of-Thought (CoT): Step-by-step thinking"
+            },
+            {
+              "name": "Tree-of-Thought: Parallel reasoning paths"
+            },
+            {
+              "name": "Self-Consistency: Voting on conclusions"
+            }
+          ]
+        },
+        {
+          "name": "Persona Engineering",
+          "children": [
+            {
+              "name": "Assigning specific roles (e.g., Expert)"
+            },
+            {
+              "name": "Tone and depth control"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Architecture & Advanced Methods",
+      "children": [
+        {
+          "name": "Retrieval-Augmented Generation (RAG)",
+          "children": [
+            {
+              "name": "Retrieving documents to reduce hallucinations"
+            },
+            {
+              "name": "GraphRAG: Using knowledge graphs"
+            }
+          ]
+        },
+        {
+          "name": "Agentic Loops",
+          "children": [
+            {
+              "name": "ReAct: Reason + Act"
+            },
+            {
+              "name": "Tool Use: Function calling"
+            },
+            {
+              "name": "Plan-and-Execute"
+            }
+          ]
+        },
+        {
+          "name": "Context Window Engineering",
+          "children": [
+            {
+              "name": "Lost in the Middle problem"
+            },
+            {
+              "name": "Prompt Caching"
+            },
+            {
+              "name": "Chunking and Compression"
+            }
+          ]
+        },
+        {
+          "name": "Structured Output",
+          "children": [
+            {
+              "name": "JSON Mode"
+            },
+            {
+              "name": "XML Tagging (Claude optimized)"
+            },
+            {
+              "name": "Schema validation (Pydantic)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Security & Limitations",
+      "children": [
+        {
+          "name": "Prompt Injection",
+          "children": [
+            {
+              "name": "Direct: User overriding instructions"
+            },
+            {
+              "name": "Indirect: Malicious data from external sources"
+            },
+            {
+              "name": "Jailbreaking & Prompt Leaking"
+            }
+          ]
+        },
+        {
+          "name": "Defense Strategies",
+          "children": [
+            {
+              "name": "Input separation and sandboxing"
+            },
+            {
+              "name": "Output validation"
+            },
+            {
+              "name": "Human-in-the-loop"
+            }
+          ]
+        },
+        {
+          "name": "Limitations",
+          "children": [
+            {
+              "name": "Model specificity (brittleness)"
+            },
+            {
+              "name": "Alignment tax"
+            },
+            {
+              "name": "Obsolescence via better models"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Frontier Secrets",
+      "children": [
+        {
+          "name": "Response Priming (Prefill)"
+        },
+        {
+          "name": "Recency Bias management"
+        },
+        {
+          "name": "Emotional language artifacts"
+        },
+        {
+          "name": "Chain-of-Verification"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "title": "Science Flashcards",
+  "cards": [
+    {
+      "front": "What is the primary empirical goal of the scientific method?",
+      "back": "To acquire knowledge through careful observation, rigorous skepticism, and experimental validation."
+    },
+    {
+      "front": "The scientific method acknowledges that interpretation of observations can be distorted by _____.",
+      "back": "Cognitive assumptions"
+    },
+    {
+      "front": "How does scientific inquiry typically generate a testable hypothesis?",
+      "back": "Through the application of inductive reasoning based on existing knowledge."
+    },
+    {
+      "front": "What is the defining characteristic of a 'falsifiable' hypothesis?",
+      "back": "It must be possible to identify a potential observation that conflicts with the hypothesis's predictions."
+    },
+    {
+      "front": "Why is the scientific method considered an iterative process?",
+      "back": "New information leads to revised characterizations, which generate new hypotheses in a continuous cycle."
+    },
+    {
+      "front": "In the 11th century, which scientist used experiments on refraction to disprove Aristotle's hypothesis that a vacuum does not exist?",
+      "back": "Alhacen (Ibn al-Haytham)"
+    },
+    {
+      "front": "Which 13th-century philosopher asserted that theories should be verified by sensory data and trustworthy witnesses in his work 'Opus Majus'?",
+      "back": "Roger Bacon"
+    },
+    {
+      "front": "What role did Francis Bacon and Robert Hooke play during the Scientific Revolution?",
+      "back": "They were primary advocates and furthered the development of empiricism."
+    },
+    {
+      "front": "Which scientist is credited with formulating the hypothetico-deductive model in the 20th century?",
+      "back": "C. S. Peirce"
+    },
+    {
+      "front": "The term 'scientific method' emerged in the 19th century to establish boundaries between science and _____.",
+      "back": "Pseudoscience"
+    },
+    {
+      "front": "What argument did Paul Feyerabend present in his 1975 book 'Against Method'?",
+      "back": "He argued that there are no universal, exception-free methodological rules governing scientific progress."
+    },
+    {
+      "front": "Which historian of science described the scientific method as a 'myth' or an 'idealization' in 2015?",
+      "back": "Daniel Thurs"
+    },
+    {
+      "front": "What are the four generally agreed-upon classification components of scientific inquiry?",
+      "back": "Characterizations, hypotheses, predictions, and experiments."
+    },
+    {
+      "front": "In the study of DNA's structure, what empirical observation predicted the 'X-shape' found in diffraction patterns?",
+      "back": "The Cochran-Crick-Vand-Stokes theorem regarding helical structures."
+    },
+    {
+      "front": "What was the significance of 'Photo 51' in the discovery of DNA's structure?",
+      "back": "It was a detailed X-ray diffraction image that confirmed the structure was helical."
+    },
+    {
+      "front": "According to Francis Crick, why can it be counterproductive to define a subject too early in an investigation?",
+      "back": "Early definitions can be restrictive when the subject remains ill-understood."
+    },
+    {
+      "front": "Define 'abductive reasoning' as described by Charles Sanders Peirce.",
+      "back": "The process of venturing a plausible guess or hunch to explain an 'irritation of doubt' caused by surprises."
+    },
+    {
+      "front": "Term: Occam's Razor",
+      "back": "Definition: A rule of thumb for choosing the simplest explanatory hypothesis among a group of equal alternatives."
+    },
+    {
+      "front": "What is the purpose of 'strong inference' in scientific methodology?",
+      "back": "To minimize confirmation bias by entertaining multiple alternative hypotheses simultaneously."
+    },
+    {
+      "front": "Why must the outcome of a test prediction be currently unknown to the researcher?",
+      "back": "A known outcome is merely a consequence already used to formulate the hypothesis, not a valid test of its truth."
+    },
+    {
+      "front": "What did Arthur Eddington's 1919 solar eclipse observations demonstrate regarding gravitational theory?",
+      "back": "They supported Einstein's general relativity over Newtonian gravitation by showing light bends in a gravitational field."
+    },
+    {
+      "front": "In experimental design, what is the function of the 'experimental control'?",
+      "back": "To isolate specific variables by comparing samples under differing conditions to account for observational error."
+    },
+    {
+      "front": "How does peer review serve the scientific community?",
+      "back": "It provides anonymous expert evaluation of a study's experimental soundness and methodology."
+    },
+    {
+      "front": "According to Ludwik Fleck, why is detailed record-keeping essential in science?",
+      "back": "It ensures the integrity of the procedure and allows other scientists to replicate the results."
+    },
+    {
+      "front": "Karl Popper's 'falsifiability criterion' was intended to demarcate scientific theory from _____.",
+      "back": "Non-science or pseudoscience (e.g., astrology)"
+    },
+    {
+      "front": "What is the concept of 'theory-laden' observation as introduced by Norwood Russell Hanson?",
+      "back": "The idea that no observation is pure because theory is required to interpret empirical data."
+    },
+    {
+      "front": "How does 'model-dependent realism' (proposed by Hawking) view scientific models?",
+      "back": "It suggests that models of reality should be accepted as long as they prove to make useful predictions."
+    },
+    {
+      "front": "How did Eadweard Muybridge's stop-action photography resolve the 'Horse in Motion' debate?",
+      "back": "It falsified the belief that a galloping horse's legs are splayed when off the ground, showing they are actually gathered."
+    },
+    {
+      "front": "Contrast inductive reasoning with deductive reasoning in the context of science.",
+      "back": "Induction builds general principles from observations, while deduction derives specific testable consequences from established principles."
+    },
+    {
+      "front": "How did Le Verrier identify a problem with Newton's gravitational theory in 1859?",
+      "back": "He observed that the precession of the perihelion of Mercury did not match Newtonian predictions."
+    },
+    {
+      "front": "In statistical analysis, what does the 'uncertainty estimate' represent?",
+      "back": "A calculation of the range of error based on repeated measurements or sampling limitations."
+    },
+    {
+      "front": "What is the primary function of Bayes' Theorem in scientific knowledge representation?",
+      "back": "It provides a mathematical method for adjusting standing probabilities when new information is discovered."
+    },
+    {
+      "front": "In the hypothetico-deductive method, what is actually being tested by the scientist?",
+      "back": "The falsifiable logical implications (predictions) derived from the hypothesis."
+    },
+    {
+      "front": "How does the modern 'inductive method' differ from a traditional 'fishing expedition'?",
+      "back": "It utilizes high-throughput data collection and large-scale observation where results are not initially clear."
+    },
+    {
+      "front": "What are the two main factors of mathematical modelling in science?",
+      "back": "Simplification (abstraction) and the establishment of correspondence rules to relate the model back to reality."
+    },
+    {
+      "front": "Why can no scientific theory ever be considered truly 'final'?",
+      "back": "Because scientific knowledge is always subject to falsification if new, incompatible evidence is discovered."
+    },
+    {
+      "front": "The modern evolutionary synthesis was formed by the unification of evolutionary theory with _____.",
+      "back": "Genetics"
+    },
+    {
+      "front": "Identify three criteria for a 'good' theory according to Thomas Kuhn.",
+      "back": "Accuracy, internal consistency, and fruitfulness for further research."
+    },
+    {
+      "front": "In confirmation theory, what does 'formal elegance' typically indicate?",
+      "back": "A subjective sense of familiarity or aesthetic simplicity in a theory's formulation."
+    },
+    {
+      "front": "How does 'parsimony' guide scientists when multiple explanations fit the data?",
+      "back": "It recommends choosing the simplest explanation or the theory with the fewest assumptions."
+    },
+    {
+      "front": "Define 'invariance' in the context of scientific accounts of reality.",
+      "back": "A structure or observation that remains unchanged regardless of perspective or coordinate transformation."
+    },
+    {
+      "front": "Which physicist coined the term 'not even wrong' to describe theories that resist falsification?",
+      "back": "Wolfgang Pauli"
+    },
+    {
+      "front": "What are the three basic assumptions of methodological naturalism?",
+      "back": "Reality is objective and consistent, humans can perceive it accurately, and rational explanations exist for the real world."
+    },
+    {
+      "front": "Concept: Scientific Pluralism",
+      "back": "Definition: The rejection of the idea that science is unified in its subject matter, epistemology, or research methods."
+    },
+    {
+      "front": "What was the core doctrine of 'Unificationism' within logical positivism?",
+      "back": "The belief that all sciences share a common method and should ideally be expressed in a universal language."
+    },
+    {
+      "front": "According to Paul Feyerabend's 'epistemological anarchism', why is a fixed method detrimental to science?",
+      "back": "It restricts the free flow of ideas and ignores historical episodes where violating norms contributed to progress."
+    },
+    {
+      "front": "In the 2013 US education standards (NGSS), the singular scientific method was replaced by _____.",
+      "back": "A broader conception of scientific and engineering practices across three dimensions."
+    },
+    {
+      "front": "What is the 'sociology of knowledge' concerned with in the context of science?",
+      "back": "The relationship between human scientific thought and the social context in which it arises."
+    },
+    {
+      "front": "Term: Thought Collectives (Ludwik Fleck)",
+      "back": "Definition: Groups of scientists who share assumptions and a specific 'thought-style' that guides their research."
+    },
+    {
+      "front": "What does the concept of 'situated cognition' suggest about a researcher's perspective?",
+      "back": "The researcher's personal and social perspective fundamentally influences the observations and conclusions they draw."
+    },
+    {
+      "front": "The 'Science Wars' refers to a conflict between which two philosophical perspectives?",
+      "back": "Postmodernism (knowledge as discourse) and Realism (knowledge as fundamental truth)."
+    },
+    {
+      "front": "What percentage of scientific discoveries are estimated to be the result of serendipity or chance?",
+      "back": "Between $33\\%$ and $50\\%$."
+    },
+    {
+      "front": "According to Louis Pasteur, luck favors only the _____.",
+      "back": "Prepared mind"
+    },
+    {
+      "front": "How does psychologist Kevin Dunbar describe the typical start of a scientific discovery?",
+      "back": "Researchers encounter 'bugs' or unexpected errors in their experiments that prove persistent and systematic."
+    },
+    {
+      "front": "Why does Nassim Nicholas Taleb describe the scientific method as 'anti-fragile'?",
+      "back": "It is a system that actually benefits from randomness, human error, and unexpected results to flourish."
+    },
+    {
+      "front": "According to John Ioannidis, why are research findings less likely to be true in fields with high competition?",
+      "back": "Intense competition often leads to increased bias and lower pre-study probabilities of yielding true findings."
+    },
+    {
+      "front": "What is a major criticism of applying the scientific method to 'Big Data'?",
+      "back": "Data may be stripped of material parameters, leading it to only support null hypotheses in predictive analytics."
+    },
+    {
+      "front": "In Eugene Wigner's view, what is 'obscure' about the relationship between mathematics and science?",
+      "back": "The 'unreasonable effectiveness' of mathematical concepts in describing and predicting the natural physical reality."
+    },
+    {
+      "front": "Name the four steps of George Pólya's mathematical problem-solving method.",
+      "back": "Understanding, Analysis, Synthesis, and Review."
+    },
+    {
+      "front": "In Pólya's method, what does 'Analysis' (working backward) involve?",
+      "back": "The heuristic construction of plausible arguments and devising a plan for the proof starting from the goal."
+    },
+    {
+      "front": "What did Imre Lakatos argue regarding the 'finality' of informal mathematical theorems?",
+      "back": "No theorem is perfect or final; knowledge accumulates as counterexamples are found and theorems are adjusted."
+    },
+    {
+      "front": "How did Carl Friedrich Gauss describe his method of discovering theorems?",
+      "back": "Through 'systematic palpable experimentation' (durch planmässiges Tattonieren)."
+    },
+    {
+      "front": "In science, what differentiates a 'conjecture' from a 'scientific theory'?",
+      "back": "A conjecture is a proposed explanation not yet proven, while a theory is a successful explanation tested across wide circumstances."
+    },
+    {
+      "front": "The process of 'peer review' is intended to assess the SOUNDNESS of research rather than certifying its _____.",
+      "back": "Correctness"
+    },
+    {
+      "front": "What is 'intersubjectivity' in scientific observation?",
+      "back": "The ability for different observers using the same conceptual framework to reach the same conclusions from data."
+    },
+    {
+      "front": "Mill's Canons are a set of techniques used specifically to _____.",
+      "back": "Isolate important factors in an effect through comparison and contrast."
+    },
+    {
+      "front": "Which scientist used a water-filled glass sphere to model the optical train of the human eye in 1604?",
+      "back": "Johannes Kepler"
+    },
+    {
+      "front": "In the hypothetico-deductive model, if an implication $(\\text{B})$ is true, does it definitively prove the hypothesis $(\\text{A})$?",
+      "back": "No; according to logic, $(\\text{A} \\Rightarrow \\text{B})$ does not imply $(\\text{B} \\Rightarrow \\text{A})$."
+    },
+    {
+      "front": "What is the relationship between 'Bayesian estimation' and random variables?",
+      "back": "It is a way to measure the dependence or interdependence of information under scrutiny."
+    },
+    {
+      "front": "According to the user material, what is 'allochthonous reasoning'?",
+      "back": "Another term for mathematical modelling, where constructs are tested in place of physical experiments."
+    },
+    {
+      "front": "What historical discovery is associated with the 'Treatise on Twilight' and Earth's atmosphere?",
+      "back": "Ibn Mu'adh's 1079 inference that the atmosphere is $50$ miles thick based on solar refraction."
+    },
+    {
+      "front": "Which 20th-century physicist highlighted 'invariance' as the structural feature that suggests physical reality?",
+      "back": "Max Born"
+    },
+    {
+      "front": "According to David Deutsch, what is the 'origin of all progress'?",
+      "back": "The search for hard-to-vary (invariant) explanations."
+    },
+    {
+      "front": "How does 'epistemic culture' differ from a 'thought collective'?",
+      "back": "Epistemic culture focuses on the distinct practices and reasonings of specific scientific communities (e.g., biology vs. physics)."
+    },
+    {
+      "front": "What was the significance of the 1752 kite-flying experiment mentioned in the text?",
+      "back": "It was Benjamin Franklin's experiment on the electrical nature of lightning, which others (like Richmann) attempted to replicate."
+    },
+    {
+      "front": "Cloze: According to Popper, successful theories are those that survive elimination through _____.",
+      "back": "Falsification"
+    },
+    {
+      "front": "How does 'Monte-Carlo simulation' generate data in mathematical modelling?",
+      "back": "It generates empirical data 'arbitrarily' to analyze systems through computational means."
+    },
+    {
+      "front": "What is the significance of the 'Standard Model' of physics regarding Einstein's theory of relativity?",
+      "back": "It suggests that certain concepts surrounding the theory are still unknown, even though the theory remains built upon deductively."
+    },
+    {
+      "front": "Identify the primary danger of over-reliance on 'elegance' or 'familiarity' in theory choice.",
+      "back": "It can lead to stagnation and the dismissal of valid but non-traditional ideas."
+    },
+    {
+      "front": "The ability of a hypothesis to 'stimulate research that illuminates bald suppositions' is called its _____.",
+      "back": "Service to science (or fruitfulness)"
+    },
+    {
+      "front": "What did John Stuart Mill believe regarding the origin of all knowledge?",
+      "back": "He believed all knowledge, including mathematical truths, arises from experience through induction."
+    },
+    {
+      "front": "How does 'big science' impact the role of individual researchers?",
+      "back": "Researchers often require shared access to massive infrastructure and shared machines (e.g., CERN's LHC)."
+    },
+    {
+      "front": "Einstein stated that there is no 'logical bridge' between which two things?",
+      "back": "Phenomena and their theoretical principles."
+    },
+    {
+      "front": "Define 'tautological' in the context of axiomatic mathematical systems.",
+      "back": "Statements that are internally logically true by virtue of their own definitions and rules."
+    },
+    {
+      "front": "What is 'situated cognition'?",
+      "back": "The sociological concept that a researcher's social context and perspective fundamentally affect their scientific work."
+    }
+  ]
+}

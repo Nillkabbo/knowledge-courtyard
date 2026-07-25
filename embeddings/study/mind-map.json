@@ -1,0 +1,146 @@
+{
+  "name": "Embeddings in AI",
+  "children": [
+    {
+      "name": "Core Concept",
+      "children": [
+        {
+          "name": "Geometry of meaning"
+        },
+        {
+          "name": "Words as vectors"
+        },
+        {
+          "name": "Distance reflects similarity"
+        },
+        {
+          "name": "Vector arithmetic (king-man+woman=queen)"
+        }
+      ]
+    },
+    {
+      "name": "Language Models",
+      "children": [
+        {
+          "name": "BERT",
+          "children": [
+            {
+              "name": "Transformer architecture"
+            },
+            {
+              "name": "Bidirectional context"
+            },
+            {
+              "name": "Token-level embeddings"
+            },
+            {
+              "name": "Pre-training (MLM/NSP)"
+            }
+          ]
+        },
+        {
+          "name": "Historical Evolution",
+          "children": [
+            {
+              "name": "word2vec (static)"
+            },
+            {
+              "name": "GloVe (global matrix)"
+            },
+            {
+              "name": "ELMo (contextual)"
+            },
+            {
+              "name": "Sentence-BERT (retrieval)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Similarity Metrics",
+      "children": [
+        {
+          "name": "Cosine Similarity (standard)"
+        },
+        {
+          "name": "Euclidean Distance (L2)"
+        },
+        {
+          "name": "Dot Product (fast)"
+        },
+        {
+          "name": "Angular Distance"
+        }
+      ]
+    },
+    {
+      "name": "Search & Retrieval",
+      "children": [
+        {
+          "name": "Semantic search"
+        },
+        {
+          "name": "Nearest Neighbor Search (NNS)"
+        },
+        {
+          "name": "Approximate NNS (HNSW/LSH)"
+        },
+        {
+          "name": "Vector databases"
+        }
+      ]
+    },
+    {
+      "name": "Technical Optimization",
+      "children": [
+        {
+          "name": "Dimensionality (768-1024 sweet spot)"
+        },
+        {
+          "name": "Fine-tuning (domain adaptation)"
+        },
+        {
+          "name": "Compression (Matryoshka/PCA)"
+        },
+        {
+          "name": "Asymmetric encoding"
+        }
+      ]
+    },
+    {
+      "name": "Applications",
+      "children": [
+        {
+          "name": "RAG (Retrieval-Augmented Generation)"
+        },
+        {
+          "name": "Classification & Clustering"
+        },
+        {
+          "name": "Recommendation systems"
+        },
+        {
+          "name": "Bioinformatics (BioVec)"
+        }
+      ]
+    },
+    {
+      "name": "Challenges",
+      "children": [
+        {
+          "name": "Ethical bias & stereotypes"
+        },
+        {
+          "name": "Polysemy (multiple meanings)"
+        },
+        {
+          "name": "Temporal drift"
+        },
+        {
+          "name": "Curse of dimensionality"
+        }
+      ]
+    }
+  ]
+}

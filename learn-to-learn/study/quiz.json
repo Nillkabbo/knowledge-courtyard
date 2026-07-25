@@ -1,0 +1,265 @@
+{
+  "title": "Learning Quiz",
+  "questions": [
+    {
+      "question": "According to Carol Dweck, how do individuals with a fixed mindset typically view failure?",
+      "answerOptions": [
+        {
+          "text": "As a signal to apply more effort and time to practice.",
+          "isCorrect": false,
+          "rationale": "This perspective is characteristic of a growth mindset, where setbacks are viewed as opportunities for skill development."
+        },
+        {
+          "text": "As a direct negative statement on their basic, underlying abilities.",
+          "isCorrect": true,
+          "rationale": "Individuals with a fixed mindset believe traits are static, meaning failure implies a permanent lack of talent or intelligence."
+        },
+        {
+          "text": "As a necessary step in the process of forming new neural synapses.",
+          "isCorrect": false,
+          "rationale": "This view aligns with neuroplasticity and the growth mindset rather than the belief that ability is immutable."
+        },
+        {
+          "text": "As an exciting challenge that makes them want to work harder.",
+          "isCorrect": false,
+          "rationale": "A fixed mindset often leads individuals to avoid challenges because they fear looking unintelligent if they fail."
+        }
+      ],
+      "hint": "Consider whether these individuals believe their intelligence can be changed or if it is a permanent trait."
+    },
+    {
+      "question": "Hermann Ebbinghaus used 'nonsense syllables' (CVC trigrams) in his memory research primarily to control for which variable?",
+      "answerOptions": [
+        {
+          "text": "The speed of the metronome during recitations.",
+          "isCorrect": false,
+          "rationale": "While the metronome was used to maintain consistent timing, it was not the reason for choosing nonsense syllables."
+        },
+        {
+          "text": "The auditory differences between vowel and consonant sounds.",
+          "isCorrect": false,
+          "rationale": "The structure of the syllables was meant to provide consistency, but the specific choice was focused on cognitive associations."
+        },
+        {
+          "text": "Prior cognitive associations and meaning-laden content.",
+          "isCorrect": true,
+          "rationale": "Ebbinghaus wanted to study pure learning and forgetting without the interference of pre-existing knowledge or meaningful patterns."
+        },
+        {
+          "text": "The physical fatigue resulting from thousands of recitations.",
+          "isCorrect": false,
+          "rationale": "Fatigue is a physiological factor that the use of nonsense syllables does not specifically mitigate."
+        }
+      ],
+      "hint": "Think about how regular words like 'Ball' or 'Dot' might be easier to remember than random strings like 'DAX'."
+    },
+    {
+      "question": "In the context of Ebbinghaus's research, what does 'savings' refer to?",
+      "answerOptions": [
+        {
+          "text": "The number of hours of sleep required to consolidate a memory.",
+          "isCorrect": false,
+          "rationale": "The source material does not link the term 'savings' to sleep duration or patterns."
+        },
+        {
+          "text": "The amount of information recalled after exactly $24$ hours.",
+          "isCorrect": false,
+          "rationale": "This describes a specific data point on the forgetting curve rather than the relative efficiency of relearning."
+        },
+        {
+          "text": "The relative amount of time saved during a second learning trial compared to the first.",
+          "isCorrect": true,
+          "rationale": "Savings measures the retention of information in the subconscious by showing how much faster someone can relearn material they have previously mastered."
+        },
+        {
+          "text": "The psychological benefit of using mnemonics to store facts.",
+          "isCorrect": false,
+          "rationale": "While mnemonics help with representation, 'savings' is a specific quantitative measure of relearning efficiency."
+        }
+      ],
+      "hint": "Consider the difference in effort between learning something for the first time versus the second time."
+    },
+    {
+      "question": "What is the primary differentiator between 'purposeful practice' and 'deliberate practice' according to K. Anders Ericsson?",
+      "answerOptions": [
+        {
+          "text": "The requirement of $10,000$ total hours of engagement.",
+          "isCorrect": false,
+          "rationale": "Ericsson argues that the quality of practice is more important than the specific number of hours, which he considers a myth."
+        },
+        {
+          "text": "The intensity of the concentration applied by the student.",
+          "isCorrect": false,
+          "rationale": "Both types of practice require high concentration, so this is not the specific factor that distinguishes them."
+        },
+        {
+          "text": "The use of immediate feedback to correct errors.",
+          "isCorrect": false,
+          "rationale": "Immediate feedback is a core component of both purposeful and deliberate practice."
+        },
+        {
+          "text": "The presence of a teacher to design the tasks and provide clear instructions.",
+          "isCorrect": true,
+          "rationale": "Ericsson defines deliberate practice as requiring a task designed by a teacher and performed under their specific guidance; otherwise, it is 'purposeful'."
+        }
+      ],
+      "hint": "Look for the specific characteristic that involves external expert intervention."
+    },
+    {
+      "question": "Based on Carol Dweck's findings, which type of praise is most likely to foster a growth mindset in students?",
+      "answerOptions": [
+        {
+          "text": "Praising their innate intelligence when they succeed.",
+          "isCorrect": false,
+          "rationale": "Praising intelligence can harm motivation by making children fear challenges that might make them look 'stupid'."
+        },
+        {
+          "text": "Praising the process, such as the strategies and effort they applied.",
+          "isCorrect": true,
+          "rationale": "This reinforces the idea that success is a result of controllable behaviors and persistence rather than fixed traits."
+        },
+        {
+          "text": "Praising their high scores relative to their peers.",
+          "isCorrect": false,
+          "rationale": "Social-comparison praise focuses on the outcome rather than the malleable process of learning."
+        },
+        {
+          "text": "Praising them only when they complete a task without making any mistakes.",
+          "isCorrect": false,
+          "rationale": "Fostering a growth mindset involves encouraging students to be intrigued by mistakes rather than fearing them."
+        }
+      ],
+      "hint": "Consider whether it is better to praise the person's identity or the person's actions."
+    },
+    {
+      "question": "According to the forgetting curve, at what point does the sharpest decline in memory retention typically occur?",
+      "answerOptions": [
+        {
+          "text": "Within the first $20$ minutes after learning.",
+          "isCorrect": true,
+          "rationale": "Ebbinghaus's data suggests that the most significant loss of information happens very shortly after the initial learning session."
+        },
+        {
+          "text": "Exactly $24$ hours after the first review session.",
+          "isCorrect": false,
+          "rationale": "While significant forgetting happens within a day, the sharpest rate of decay occurs much sooner."
+        },
+        {
+          "text": "One week after the information is first introduced.",
+          "isCorrect": false,
+          "rationale": "The forgetting curve typically levels off after one day, meaning the rate of loss is much slower after a week."
+        },
+        {
+          "text": "After the third spaced repetition session.",
+          "isCorrect": false,
+          "rationale": "Repetition actually flattens the curve and reduces the decline rather than causing the sharpest drop."
+        }
+      ],
+      "hint": "Think about the very beginning of the graph after the learning ends."
+    },
+    {
+      "question": "What does the 'spacing effect' discovered by Ebbinghaus suggest about learning efficiency?",
+      "answerOptions": [
+        {
+          "text": "Massed practice (cramming) leads to better long-term retention.",
+          "isCorrect": false,
+          "rationale": "The spacing effect suggests the opposite: that spreading out study sessions is more effective for memory."
+        },
+        {
+          "text": "Information is better retained when learning sessions are distributed over time.",
+          "isCorrect": true,
+          "rationale": "Spaced intervals allow for deeper processing and reset the forgetting curve, making the memory more stable."
+        },
+        {
+          "text": "The total number of hours spent practicing is the only variable that matters.",
+          "isCorrect": false,
+          "rationale": "The spacing effect focuses on the timing and distribution of practice, not just the cumulative duration."
+        },
+        {
+          "text": "Learning is most efficient when it takes place in a single, intense $10$-hour block.",
+          "isCorrect": false,
+          "rationale": "This describes massed retrieval, which generally results in faster forgetting than spaced retrieval."
+        }
+      ],
+      "hint": "Think about the difference between studying for five hours in one day versus one hour per day for five days."
+    },
+    {
+      "question": "In Malcolm Gladwell's 'Outliers', the 'Matthew Effect' refers to the idea that:",
+      "answerOptions": [
+        {
+          "text": "Talent is completely irrelevant if one practices for $10,000$ hours.",
+          "isCorrect": false,
+          "rationale": "Gladwell actually believes talent is important when combined with dedication and a support system."
+        },
+        {
+          "text": "Memory retention is halved every day unless information is reviewed.",
+          "isCorrect": false,
+          "rationale": "This describes the general principle of the forgetting curve, not the Matthew Effect."
+        },
+        {
+          "text": "Initial advantages and social support systems can lead to further success and superior outcomes.",
+          "isCorrect": true,
+          "rationale": "The Matthew Effect suggests that biases, early opportunities, and encouragement from coaches play a vital role in who reaches elite performance levels."
+        },
+        {
+          "text": "Nonsense syllables are harder to remember than meaningful words.",
+          "isCorrect": false,
+          "rationale": "This is a basic finding of cognitive psychology related to association values, not Gladwell's theory on success."
+        }
+      ],
+      "hint": "Consider how early life advantages or coaching might influence an individual's trajectory."
+    },
+    {
+      "question": "Which component of the 'serial position effect' explains why people often remember the first few items in a list better than the middle items?",
+      "answerOptions": [
+        {
+          "text": "The Recency Effect.",
+          "isCorrect": false,
+          "rationale": "The recency effect refers to the increased recall of the most recent items because they are still in short-term memory."
+        },
+        {
+          "text": "The Primacy Effect.",
+          "isCorrect": true,
+          "rationale": "The primacy effect occurs because the first items receive more rehearsal and are more likely to be committed to long-term memory."
+        },
+        {
+          "text": "Transience.",
+          "isCorrect": false,
+          "rationale": "Transience is the general process of forgetting over time, not a specific position-based recall advantage."
+        },
+        {
+          "text": "The Spacing Effect.",
+          "isCorrect": false,
+          "rationale": "The spacing effect relates to the timing of study sessions, not the position of items within a single session."
+        }
+      ],
+      "hint": "Think about the term for being 'first' in a sequence."
+    },
+    {
+      "question": "How does 'Active Recall' combined with spaced repetition affect the forgetting curve?",
+      "answerOptions": [
+        {
+          "text": "It makes the forgetting curve steeper over time.",
+          "isCorrect": false,
+          "rationale": "A steeper curve would mean faster forgetting, which is the opposite of what these techniques achieve."
+        },
+        {
+          "text": "It flattens the curve, making the information more permanent and stable.",
+          "isCorrect": true,
+          "rationale": "Each well-timed review resets the retention level higher and slows the rate of decay until the memory is solidified."
+        },
+        {
+          "text": "It ensures that $100\\%$ of information is retained after only one repetition.",
+          "isCorrect": false,
+          "rationale": "While it improves retention, one repetition is rarely enough for perfect long-term mastery of complex information."
+        },
+        {
+          "text": "It only works for nonsense syllables and cannot be applied to meaningful concepts.",
+          "isCorrect": false,
+          "rationale": "Research has shown that spaced repetition is effective for facts, mathematics, and even complex procedural skills."
+        }
+      ],
+      "hint": "Consider the visual representation where each review session 'lifts' the line of memory retention."
+    }
+  ]
+}

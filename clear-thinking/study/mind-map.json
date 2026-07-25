@@ -1,0 +1,210 @@
+{
+  "name": "Cognitive and Confirmation Bias",
+  "children": [
+    {
+      "name": "Definition and Types",
+      "children": [
+        {
+          "name": "Biased Search",
+          "children": [
+            {
+              "name": "Positive Test Strategy"
+            },
+            {
+              "name": "Selective Exposure"
+            }
+          ]
+        },
+        {
+          "name": "Biased Interpretation",
+          "children": [
+            {
+              "name": "Disconfirmation Bias"
+            },
+            {
+              "name": "Cognitive Dissonance"
+            }
+          ]
+        },
+        {
+          "name": "Biased Recall",
+          "children": [
+            {
+              "name": "Selective Recall"
+            },
+            {
+              "name": "Confirmatory Memory"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Information Processing Explanations",
+      "children": [
+        {
+          "name": "Cognitive Mechanism",
+          "children": [
+            {
+              "name": "Heuristics"
+            },
+            {
+              "name": "Availability Heuristic"
+            }
+          ]
+        },
+        {
+          "name": "Motivational Mechanism",
+          "children": [
+            {
+              "name": "Wishful Thinking"
+            },
+            {
+              "name": "Pollyanna Principle"
+            }
+          ]
+        },
+        {
+          "name": "Rational Acquisition",
+          "children": [
+            {
+              "name": "Cost-benefit Analysis"
+            },
+            {
+              "name": "Optimal Strategy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Real-World Effects",
+      "children": [
+        {
+          "name": "Social Media",
+          "children": [
+            {
+              "name": "Filter Bubbles"
+            },
+            {
+              "name": "Echo Chambers"
+            },
+            {
+              "name": "Fake News"
+            }
+          ]
+        },
+        {
+          "name": "Scientific Research",
+          "children": [
+            {
+              "name": "File Drawer Effect"
+            },
+            {
+              "name": "Peer Review Biases"
+            }
+          ]
+        },
+        {
+          "name": "Professional Fields",
+          "children": [
+            {
+              "name": "Finance and Investing"
+            },
+            {
+              "name": "Medicine and Diagnosis"
+            },
+            {
+              "name": "Police Investigations"
+            },
+            {
+              "name": "Judicial Decisions"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Associated Outcomes",
+      "children": [
+        {
+          "name": "Attitude Polarization",
+          "children": [
+            {
+              "name": "Backfire Effect"
+            }
+          ]
+        },
+        {
+          "name": "Belief Perseverance",
+          "children": [
+            {
+              "name": "Continued Influence Effect"
+            }
+          ]
+        },
+        {
+          "name": "Irrational Primacy Effect"
+        },
+        {
+          "name": "Illusory Correlation"
+        }
+      ]
+    },
+    {
+      "name": "Key Figures and Discovery",
+      "children": [
+        {
+          "name": "Peter Wason",
+          "children": [
+            {
+              "name": "Wason Selection Task"
+            },
+            {
+              "name": "Falsification Challenge"
+            }
+          ]
+        },
+        {
+          "name": "Daniel Kahneman",
+          "children": [
+            {
+              "name": "Thinking, Fast and Slow"
+            },
+            {
+              "name": "Prospect Theory"
+            },
+            {
+              "name": "Behavioral Economics"
+            }
+          ]
+        },
+        {
+          "name": "Amos Tversky",
+          "children": [
+            {
+              "name": "Heuristics and Biases"
+            },
+            {
+              "name": "Anchoring"
+            }
+          ]
+        },
+        {
+          "name": "Historical Observers",
+          "children": [
+            {
+              "name": "Francis Bacon"
+            },
+            {
+              "name": "Thucydides"
+            },
+            {
+              "name": "Leo Tolstoy"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

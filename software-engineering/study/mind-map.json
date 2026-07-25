@@ -1,0 +1,253 @@
+{
+  "name": "Software Engineering",
+  "children": [
+    {
+      "name": "Methodologies and Models",
+      "children": [
+        {
+          "name": "Agile",
+          "children": [
+            {
+              "name": "Manifesto Values"
+            },
+            {
+              "name": "12 Principles"
+            },
+            {
+              "name": "Scrum"
+            },
+            {
+              "name": "Kanban"
+            },
+            {
+              "name": "Extreme Programming (XP)"
+            },
+            {
+              "name": "Adaptive vs Predictive"
+            }
+          ]
+        },
+        {
+          "name": "Waterfall",
+          "children": [
+            {
+              "name": "Sequential Steps"
+            },
+            {
+              "name": "Royce (1970)"
+            }
+          ]
+        },
+        {
+          "name": "Other Models",
+          "children": [
+            {
+              "name": "Spiral (Risk-based)"
+            },
+            {
+              "name": "V-Model (Verification)"
+            },
+            {
+              "name": "RAD (Prototyping)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Core SDLC Activities",
+      "children": [
+        {
+          "name": "Requirements Analysis",
+          "children": [
+            {
+              "name": "Functional"
+            },
+            {
+              "name": "Non-functional"
+            },
+            {
+              "name": "Elicitation and Validation"
+            }
+          ]
+        },
+        {
+          "name": "Design",
+          "children": [
+            {
+              "name": "Architectural Design"
+            },
+            {
+              "name": "Interface Design"
+            },
+            {
+              "name": "Detailed Design"
+            }
+          ]
+        },
+        {
+          "name": "Construction",
+          "children": [
+            {
+              "name": "Coding"
+            },
+            {
+              "name": "Debugging"
+            }
+          ]
+        },
+        {
+          "name": "Testing",
+          "children": [
+            {
+              "name": "Unit Testing"
+            },
+            {
+              "name": "Integration Testing"
+            },
+            {
+              "name": "System/E2E Testing"
+            },
+            {
+              "name": "TDD (Red-Green-Refactor)"
+            }
+          ]
+        },
+        {
+          "name": "Maintenance",
+          "children": [
+            {
+              "name": "Error Correction"
+            },
+            {
+              "name": "Enhancement"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Architecture and Design Principles",
+      "children": [
+        {
+          "name": "SOLID Principles",
+          "children": [
+            {
+              "name": "Single Responsibility"
+            },
+            {
+              "name": "Open-Closed"
+            },
+            {
+              "name": "Liskov Substitution"
+            },
+            {
+              "name": "Interface Segregation"
+            },
+            {
+              "name": "Dependency Inversion"
+            }
+          ]
+        },
+        {
+          "name": "Architecture Patterns",
+          "children": [
+            {
+              "name": "Clean Architecture"
+            },
+            {
+              "name": "Microservices"
+            },
+            {
+              "name": "Layered (N-tier)"
+            },
+            {
+              "name": "Event-Driven"
+            }
+          ]
+        },
+        {
+          "name": "Core Concepts",
+          "children": [
+            {
+              "name": "DRY (Don't Repeat Yourself)"
+            },
+            {
+              "name": "KISS (Simple)"
+            },
+            {
+              "name": "YAGNI (Not Needed Yet)"
+            },
+            {
+              "name": "Design Patterns (GoF)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Modern Operations and Tools",
+      "children": [
+        {
+          "name": "DevOps",
+          "children": [
+            {
+              "name": "CI/CD Pipelines"
+            },
+            {
+              "name": "Infrastructure as Code"
+            },
+            {
+              "name": "SRE (Site Reliability)"
+            }
+          ]
+        },
+        {
+          "name": "Version Control",
+          "children": [
+            {
+              "name": "Git"
+            },
+            {
+              "name": "Branching Strategies"
+            },
+            {
+              "name": "Code Review/PR"
+            }
+          ]
+        },
+        {
+          "name": "Security",
+          "children": [
+            {
+              "name": "OWASP Top 10"
+            },
+            {
+              "name": "DevSecOps"
+            },
+            {
+              "name": "Secure Coding"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Profession and Future",
+      "children": [
+        {
+          "name": "History (1968 NATO Conference)"
+        },
+        {
+          "name": "Education and SWEBOK"
+        },
+        {
+          "name": "DORA Metrics"
+        },
+        {
+          "name": "AI-Assisted Development"
+        }
+      ]
+    }
+  ]
+}

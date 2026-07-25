@@ -1,0 +1,317 @@
+{
+  "title": "Science Quiz",
+  "questions": [
+    {
+      "question": "In the $11^{th}$ century, the scholar Alhacen utilized experimental evidence to overturn which ancient theory of vision supported by Euclid and Ptolemy?",
+      "answerOptions": [
+        {
+          "text": "Emission theory",
+          "isCorrect": true,
+          "rationale": "Alhacen's experiments with the camera obscura and light refraction proved that light enters the eye rather than originating from it."
+        },
+        {
+          "text": "Intromission theory",
+          "isCorrect": false,
+          "rationale": "This was actually the view Alhacen's work helped establish, positing that physical representatives of objects enter the eye."
+        },
+        {
+          "text": "Corpuscular theory",
+          "isCorrect": false,
+          "rationale": "While related to the nature of light, this specific theory was famously debated much later during the time of Newton and Huygens."
+        },
+        {
+          "text": "Geocentric theory",
+          "isCorrect": false,
+          "rationale": "This theory describes the structure of the solar system, not the physiological or physical mechanics of human vision."
+        }
+      ],
+      "hint": "Think about the ancient belief that the eyes sent out rays to 'touch' objects."
+    },
+    {
+      "question": "Which criterion, popularized by Karl Popper, defines a scientific theory by its ability to be proven wrong through experimental outcomes?",
+      "answerOptions": [
+        {
+          "text": "Falsifiability",
+          "isCorrect": true,
+          "rationale": "Popper argued that for a theory to be scientific, it must make risky predictions that can be tested and potentially refuted."
+        },
+        {
+          "text": "Verificationism",
+          "isCorrect": false,
+          "rationale": "This approach seeks to confirm theories through observation, which Popper critiqued as being insufficient to demarcate science from non-science."
+        },
+        {
+          "text": "Parsimony",
+          "isCorrect": false,
+          "rationale": "This principle refers to choosing the simplest explanation among competing ones rather than the inherent testability of a theory."
+        },
+        {
+          "text": "Invariance",
+          "isCorrect": false,
+          "rationale": "This refers to structures that remain unchanged regardless of perspective, which is a hallmark of good theory but not Popper's primary demarcation tool."
+        }
+      ],
+      "hint": "This concept suggests that 'the game of science' requires exposing ideas to the hazard of refutation."
+    },
+    {
+      "question": "According to Norwood Russell Hanson, why is there no such thing as 'pure' or neutral observation in scientific inquiry?",
+      "answerOptions": [
+        {
+          "text": "Observation is theory-laden",
+          "isCorrect": true,
+          "rationale": "The observer's conceptual framework and prior knowledge inevitably influence how empirical data is perceived and interpreted."
+        },
+        {
+          "text": "Human senses are inherently flawed",
+          "isCorrect": false,
+          "rationale": "While senses have limits, Hanson's specific argument focuses on the mental framework used to process sensory input, not biological limitations."
+        },
+        {
+          "text": "Intersubjectivity is impossible",
+          "isCorrect": false,
+          "rationale": "Intersubjectivity—shared understanding—is a goal of science; Hanson argued it is complicated by differing frameworks, not that it cannot exist."
+        },
+        {
+          "text": "Data collection is always biased by funding",
+          "isCorrect": false,
+          "rationale": "While social and economic factors can influence research, this is a sociological critique rather than Hanson's epistemological one."
+        }
+      ],
+      "hint": "Consider how two people looking at a sunrise might 'see' different celestial movements based on their beliefs."
+    },
+    {
+      "question": "Which type of reasoning is used to generate general principles or theories based on a large set of specific observations?",
+      "answerOptions": [
+        {
+          "text": "Inductive reasoning",
+          "isCorrect": true,
+          "rationale": "This process involves generalizing from specific data points to form broader conclusions, though the results are probable rather than guaranteed."
+        },
+        {
+          "text": "Deductive reasoning",
+          "isCorrect": false,
+          "rationale": "This logic moves in the opposite direction, deriving specific consequences from established general premises."
+        },
+        {
+          "text": "Abductive reasoning",
+          "isCorrect": false,
+          "rationale": "This involves seeking the most plausible explanation for a surprising observation, often used in the early stages of inquiry."
+        },
+        {
+          "text": "Reductive reasoning",
+          "isCorrect": false,
+          "rationale": "This typically refers to breaking down complex systems into simpler parts, which is a method of analysis rather than a type of logical inference."
+        }
+      ],
+      "hint": "Think of the 'bottom-up' approach where data leads to a theory."
+    },
+    {
+      "question": "In the hypothetico-deductive model, if an experiment yields a positive result that matches a prediction, what is the logical status of the hypothesis?",
+      "answerOptions": [
+        {
+          "text": "It is corroborated or supported",
+          "isCorrect": true,
+          "rationale": "Positive results provide evidence for the hypothesis but do not constitute a definitive proof, as other theories might predict the same outcome."
+        },
+        {
+          "text": "It is proven as a universal law",
+          "isCorrect": false,
+          "rationale": "Science avoids claims of absolute proof because new evidence could always surface to falsify the theory later."
+        },
+        {
+          "text": "It is verified via $modus$ $ponens$",
+          "isCorrect": false,
+          "rationale": "Affirming the consequent is a logical fallacy; just because the prediction came true doesn't mean the premise is the only possible cause."
+        },
+        {
+          "text": "It becomes an axiom",
+          "isCorrect": false,
+          "rationale": "Axioms are self-evident starting points in formal systems, whereas scientific hypotheses remain subject to empirical testing."
+        }
+      ],
+      "hint": "Recall that logic allows us to prove a theory false $(\\neg \\text{B} \\Rightarrow \\neg \\text{A})$ but not necessarily true $(\\text{B} \\Rightarrow \\text{A})$."
+    },
+    {
+      "question": "The principle of 'Parsimony,' often associated with Occam's Razor, suggests that scientists should prefer hypotheses that:",
+      "answerOptions": [
+        {
+          "text": "Are the simplest sufficient explanations",
+          "isCorrect": true,
+          "rationale": "Newton and others argued that nature does nothing in vain and that we should not seek more causes than are necessary to explain phenomena."
+        },
+        {
+          "text": "Have the highest mathematical complexity",
+          "isCorrect": false,
+          "rationale": "Complexity often introduces 'fudge factors' that can make a theory less elegant and harder to test."
+        },
+        {
+          "text": "Utilize the most recent technological data",
+          "isCorrect": false,
+          "rationale": "While technology improves measurements, the age of the data does not determine the simplicity or validity of the underlying explanation."
+        },
+        {
+          "text": "Cannot be varied or modified",
+          "isCorrect": false,
+          "rationale": "While being 'hard-to-vary' is a sign of a good theory, parsimony specifically deals with the economy of entities and assumptions."
+        }
+      ],
+      "hint": "This principle is essentially a rule of thumb for avoiding unnecessary complications."
+    },
+    {
+      "question": "Ludwik Fleck's concept of 'Thought Collectives' suggests that scientific progress is primarily influenced by:",
+      "answerOptions": [
+        {
+          "text": "Shared traditions and assumed assumptions",
+          "isCorrect": true,
+          "rationale": "Fleck argued that scientists work within a 'thought-style' that is instilled through social learning and shared within a specific community."
+        },
+        {
+          "text": "Individual creative genius",
+          "isCorrect": false,
+          "rationale": "Fleck's view is sociological, emphasizing the collective mindset over the isolated inspiration of a single researcher."
+        },
+        {
+          "text": "Rigid adherence to a universal method",
+          "isCorrect": false,
+          "rationale": "Fleck claimed that these thought-styles are often invisible and non-rational, rather than being the result of a fixed, logical procedure."
+        },
+        {
+          "text": "The objective reality of physical facts",
+          "isCorrect": false,
+          "rationale": "Fleck emphasized that what we call 'facts' have a developmental history and are conditioned by the social practices of the collective."
+        }
+      ],
+      "hint": "This idea highlights the social and communal nature of how scientific knowledge is produced."
+    },
+    {
+      "question": "According to John Ioannidis, what economic factor contributes significantly to the 'metascience' finding that most research results are false?",
+      "answerOptions": [
+        {
+          "text": "High levels of competition and financial interests",
+          "isCorrect": true,
+          "rationale": "Competition and financial stakes can lead to design flexibility and bias, decreasing the probability that a finding is true."
+        },
+        {
+          "text": "The lack of government funding",
+          "isCorrect": false,
+          "rationale": "The source material actually suggests that high stakes and competition, which often occur with *available* funding, drive the issue."
+        },
+        {
+          "text": "The high cost of peer-reviewed journals",
+          "isCorrect": false,
+          "rationale": "While journal access is a separate debate, it is not cited as a reason for the statistical falsity of research results."
+        },
+        {
+          "text": "Over-reliance on qualitative research",
+          "isCorrect": false,
+          "rationale": "Ioannidis focuses primarily on problems in statistical and biomedical research rather than a shift in research types."
+        }
+      ],
+      "hint": "Consider how external pressures for successful results might affect the integrity of a study's design."
+    },
+    {
+      "question": "In George Pólya's model of mathematical problem-solving, which phase involves constructing plausible arguments by 'working backward from the goal'?",
+      "answerOptions": [
+        {
+          "text": "Analysis",
+          "isCorrect": true,
+          "rationale": "Analysis is the heuristic stage where one explores arguments and plans the path to a solution, often by starting at the desired conclusion."
+        },
+        {
+          "text": "Understanding",
+          "isCorrect": false,
+          "rationale": "This initial stage focuses on defining the problem and questioning what is already known."
+        },
+        {
+          "text": "Synthesis",
+          "isCorrect": false,
+          "rationale": "Synthesis is the formal, step-by-step exposition of the details to reach the proof, moving forward from the premises."
+        },
+        {
+          "text": "Review",
+          "isCorrect": false,
+          "rationale": "This final stage involves re-examining the result and the path taken to verify its correctness and extend its application."
+        }
+      ],
+      "hint": "This stage occurs after you grasp the problem but before you write out the formal proof."
+    },
+    {
+      "question": "Which percentage range represents the estimated amount of scientific discoveries that were 'stumbled upon' rather than specifically sought out?",
+      "answerOptions": [
+        {
+          "text": "$33\\%$ to $50\\%$",
+          "isCorrect": true,
+          "rationale": "A significant portion of science relies on serendipity, where researchers recognize the importance of unexpected results in controlled experiments."
+        },
+        {
+          "text": "$5\\%$ to $10\\%$",
+          "isCorrect": false,
+          "rationale": "This range underestimates the role of chance, which scientists like Pasteur and Fleming famously highlighted."
+        },
+        {
+          "text": "$75\\%$ to $90\\%$",
+          "isCorrect": false,
+          "rationale": "This range is too high; while luck is important, the majority of research is still driven by systematic inquiry."
+        },
+        {
+          "text": "Less than $1\\%$",
+          "isCorrect": false,
+          "rationale": "This assumes science follows a perfectly linear, textbook model, which the source material identifies as a myth."
+        }
+      ],
+      "hint": "Consider the discovery of penicillin by Alexander Fleming as a benchmark for this frequency."
+    },
+    {
+      "question": "Paul Feyerabend's 'Against Method' famously argued for 'epistemological anarchism,' suggesting that the only universal rule is:",
+      "answerOptions": [
+        {
+          "text": "Anything goes",
+          "isCorrect": true,
+          "rationale": "Feyerabend jokingly suggested this to highlight that for every scientific rule, there is a historical instance where breaking it led to progress."
+        },
+        {
+          "text": "Skepticism above all",
+          "isCorrect": false,
+          "rationale": "While skepticism is a core principle, Feyerabend's specific critique was against the existence of *any* fixed methodological rules."
+        },
+        {
+          "text": "Verify then trust",
+          "isCorrect": false,
+          "rationale": "This is a conservative approach to method, whereas Feyerabend argued that science is a heterogeneous and local practice."
+        },
+        {
+          "text": "Follow the data",
+          "isCorrect": false,
+          "rationale": "This implies a standard inductivist method, which Feyerabend rejected as being too narrow to describe all scientific success."
+        }
+      ],
+      "hint": "This slogan represents the rejection of a single, homogeneous method for all of science."
+    },
+    {
+      "question": "What mathematical principle describes how scientists adjust the probability of a hypothesis being true as new information becomes available?",
+      "answerOptions": [
+        {
+          "text": "Bayes' theorem",
+          "isCorrect": true,
+          "rationale": "Bayesian inference is used to update the likelihood of a theory based on existing evidence and the results of new experiments."
+        },
+        {
+          "text": "Euclidean geometry",
+          "isCorrect": false,
+          "rationale": "This branch of math deals with shapes and spaces and was used by Alhacen and Newton, but it is not a tool for updating probabilities."
+        },
+        {
+          "text": "The law of large numbers",
+          "isCorrect": false,
+          "rationale": "This describes the results of performing the same experiment many times, focusing on the stability of averages rather than updating hypothesis confidence."
+        },
+        {
+          "text": "Monte-Carlo simulations",
+          "isCorrect": false,
+          "rationale": "These generate empirical data arbitrarily for analysis but do not represent the core logical principle of probability adjustment."
+        }
+      ],
+      "hint": "This theorem is essential for 'model-dependent realism' and adjusting beliefs based on surprise."
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "name": "Academic Path and Tenure",
+  "children": [
+    {
+      "name": "PhD Journey",
+      "children": [
+        {
+          "name": "Decision Phases",
+          "children": [
+            {
+              "name": "Motivations"
+            },
+            {
+              "name": "5-7 Year Commitment"
+            },
+            {
+              "name": "Crossroads: Industry vs. Academia"
+            }
+          ]
+        },
+        {
+          "name": "Program Structure",
+          "children": [
+            {
+              "name": "Coursework"
+            },
+            {
+              "name": "Qualifying Exams"
+            },
+            {
+              "name": "Research Proposal"
+            },
+            {
+              "name": "Dissertation and Defense"
+            }
+          ]
+        },
+        {
+          "name": "Funding Models",
+          "children": [
+            {
+              "name": "Research Assistantship (RA)"
+            },
+            {
+              "name": "Teaching Assistantship (TA)"
+            },
+            {
+              "name": "Fellowships"
+            },
+            {
+              "name": "Stipends and Tuition Waivers"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Academic Tenure",
+      "children": [
+        {
+          "name": "Definition",
+          "children": [
+            {
+              "name": "Semi-permanent Appointment"
+            },
+            {
+              "name": "Academic Freedom Protection"
+            },
+            {
+              "name": "Protection from Arbitrary Dismissal"
+            }
+          ]
+        },
+        {
+          "name": "Arguments Pro",
+          "children": [
+            {
+              "name": "Defense of Free Inquiry"
+            },
+            {
+              "name": "Recruitment of Talent"
+            },
+            {
+              "name": "Economic Security"
+            }
+          ]
+        },
+        {
+          "name": "Arguments Con",
+          "children": [
+            {
+              "name": "Rewards Complacency"
+            },
+            {
+              "name": "Incentivizes Mediocrity"
+            },
+            {
+              "name": "Financial Burden for Institutions"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Research and Scholarly Work",
+      "children": [
+        {
+          "name": "Citations",
+          "children": [
+            {
+              "name": "Acknowledging Sources"
+            },
+            {
+              "name": "Citation Styles (APA, MLA, Chicago)"
+            },
+            {
+              "name": "Impact Metrics"
+            },
+            {
+              "name": "Citation Politics and Diversity"
+            }
+          ]
+        },
+        {
+          "name": "Thesis/Dissertation",
+          "children": [
+            {
+              "name": "Monograph vs. Publication Style"
+            },
+            {
+              "name": "Supervisory Committee"
+            },
+            {
+              "name": "Viva Voce/Oral Defense"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Admissions and Networking",
+      "children": [
+        {
+          "name": "Application Materials",
+          "children": [
+            {
+              "name": "Statement of Purpose (SOP)"
+            },
+            {
+              "name": "Letters of Recommendation (LOR)"
+            },
+            {
+              "name": "Standardized Tests (GRE/TOEFL)"
+            }
+          ]
+        },
+        {
+          "name": "Networking",
+          "children": [
+            {
+              "name": "Cold Emailing Professors"
+            },
+            {
+              "name": "Research Experience"
+            },
+            {
+              "name": "Interviews"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

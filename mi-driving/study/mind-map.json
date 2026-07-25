@@ -1,0 +1,290 @@
+{
+  "name": "Michigan Driving and Licensing Guide",
+  "children": [
+    {
+      "name": "Licensing Ladder (GDL)",
+      "children": [
+        {
+          "name": "Segment 1 Education",
+          "children": [
+            {
+              "name": "Age 14y 8m+"
+            },
+            {
+              "name": "24h Classroom"
+            },
+            {
+              "name": "6h Behind-the-wheel"
+            },
+            {
+              "name": "4h Observation"
+            }
+          ]
+        },
+        {
+          "name": "Level 1 Learner License",
+          "children": [
+            {
+              "name": "Age 14y 9m+"
+            },
+            {
+              "name": "Drive with 21+ Adult"
+            },
+            {
+              "name": "50h Practice Total"
+            },
+            {
+              "name": "10h Night Practice"
+            }
+          ]
+        },
+        {
+          "name": "Segment 2 Education",
+          "children": [
+            {
+              "name": "3 Months at Level 1"
+            },
+            {
+              "name": "30h Practice Complete"
+            },
+            {
+              "name": "6h Classroom Only"
+            }
+          ]
+        },
+        {
+          "name": "Level 2 Provisional License",
+          "children": [
+            {
+              "name": "Age 16+"
+            },
+            {
+              "name": "Road Test Required"
+            },
+            {
+              "name": "Night Limit 10pm-5am"
+            },
+            {
+              "name": "Max 1 Under-21 Passenger"
+            }
+          ]
+        },
+        {
+          "name": "Level 3 Full License",
+          "children": [
+            {
+              "name": "Age 17+"
+            },
+            {
+              "name": "6 Months Clean Record"
+            },
+            {
+              "name": "All Restrictions Lifted"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Traffic Signs",
+      "children": [
+        {
+          "name": "Regulatory (Laws)",
+          "children": [
+            {
+              "name": "Red Octagon: STOP"
+            },
+            {
+              "name": "Red Triangle: YIELD"
+            },
+            {
+              "name": "White Rectangle: Speed Limit"
+            }
+          ]
+        },
+        {
+          "name": "Warning & Construction",
+          "children": [
+            {
+              "name": "Yellow Diamond: Caution"
+            },
+            {
+              "name": "Orange Diamond: Work Zone"
+            },
+            {
+              "name": "Yellow Pentagon: School"
+            }
+          ]
+        },
+        {
+          "name": "Special Shapes",
+          "children": [
+            {
+              "name": "Pennant: No Passing"
+            },
+            {
+              "name": "Crossbuck: Railroad"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rules of the Road",
+      "children": [
+        {
+          "name": "Signals & Lights",
+          "children": [
+            {
+              "name": "Flashing Red: STOP"
+            },
+            {
+              "name": "Flashing Yellow: Caution"
+            },
+            {
+              "name": "Flashing Yellow Arrow: Yield Turn"
+            }
+          ]
+        },
+        {
+          "name": "Right-of-Way",
+          "children": [
+            {
+              "name": "4-Way Stop: First-to-Stop"
+            },
+            {
+              "name": "Roundabout: Yield to Inside"
+            },
+            {
+              "name": "Emergency: Pull Right"
+            },
+            {
+              "name": "School Bus Red: STOP Both Ways"
+            }
+          ]
+        },
+        {
+          "name": "Michigan Left",
+          "children": [
+            {
+              "name": "No Direct Left Turns"
+            },
+            {
+              "name": "Pass Intersection"
+            },
+            {
+              "name": "Median U-Turn"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hazards & Safety",
+      "children": [
+        {
+          "name": "Winter Driving",
+          "children": [
+            {
+              "name": "Black Ice: Bridge Risks"
+            },
+            {
+              "name": "Steer into Skid"
+            },
+            {
+              "name": "Increase Following Distance"
+            }
+          ]
+        },
+        {
+          "name": "Space & Distance",
+          "children": [
+            {
+              "name": "3-Second Rule (Dry)"
+            },
+            {
+              "name": "6-Second Rule (Snow)"
+            },
+            {
+              "name": "Check Blind Spots (Shoulder)"
+            }
+          ]
+        },
+        {
+          "name": "Deer Safety",
+          "children": [
+            {
+              "name": "Brake Firmly"
+            },
+            {
+              "name": "Do Not Swerve"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Impaired & Distracted",
+      "children": [
+        {
+          "name": "Alcohol Limits (BAC)",
+          "children": [
+            {
+              "name": "0.08%+ OWI (21+)"
+            },
+            {
+              "name": "0.17%+ Super Drunk"
+            },
+            {
+              "name": "0.02%+ Zero Tolerance (U-21)"
+            }
+          ]
+        },
+        {
+          "name": "Distractions",
+          "children": [
+            {
+              "name": "2023 Hands-Free Law"
+            },
+            {
+              "name": "No Texting While Operating"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "The Road Test",
+      "children": [
+        {
+          "name": "Part A: Closed Course",
+          "children": [
+            {
+              "name": "Parallel Parking"
+            },
+            {
+              "name": "Y-Turn"
+            },
+            {
+              "name": "Backing Straight"
+            }
+          ]
+        },
+        {
+          "name": "Part B: On-Road",
+          "children": [
+            {
+              "name": "Speed Control"
+            },
+            {
+              "name": "3-Second Full Stops"
+            },
+            {
+              "name": "Mirror/Shoulder Checks"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

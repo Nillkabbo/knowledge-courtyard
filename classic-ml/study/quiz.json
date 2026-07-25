@@ -1,0 +1,395 @@
+{
+  "title": "Ensemble Quiz",
+  "questions": [
+    {
+      "question": "What is the primary objective of using ensemble methods in machine learning compared to individual learning algorithms?",
+      "answerOptions": [
+        {
+          "text": "To reduce the computational complexity and memory usage of the training process.",
+          "isCorrect": false,
+          "rationale": "Ensemble methods typically require more computation because they involve training and evaluating multiple models rather than just one."
+        },
+        {
+          "text": "To achieve better predictive performance than any of the constituent learning algorithms could alone.",
+          "isCorrect": true,
+          "rationale": "The fundamental goal of an ensemble is to combine multiple hypotheses to form a single prediction that is theoretically superior."
+        },
+        {
+          "text": "To eliminate the need for a hypothesis space search during the learning phase.",
+          "isCorrect": false,
+          "rationale": "Ensemble methods still require searching through hypothesis spaces, often performing multiple searches for the various base learners."
+        },
+        {
+          "text": "To ensure that the resulting model is easier to interpret for human end-users.",
+          "isCorrect": false,
+          "rationale": "Ensembles, especially those with many models like random forests, often sacrifice the intrinsic interpretability of single models for higher accuracy."
+        }
+      ],
+      "hint": "Consider the relationship between the whole ensemble and its individual parts."
+    },
+    {
+      "question": "In the context of ensemble learning, how does 'Boosting' differ from 'Bagging'?",
+      "answerOptions": [
+        {
+          "text": "Boosting trains models in parallel, while Bagging trains them in a sequential iterative process.",
+          "isCorrect": false,
+          "rationale": "This reverses the two; Bagging uses parallel training on random samples, while Boosting is inherently sequential."
+        },
+        {
+          "text": "Boosting fits the same model to different random samples, while Bagging fits different models to the same sample.",
+          "isCorrect": false,
+          "rationale": "Bagging (bootstrap aggregating) is the method that uses random samples with replacement to create diversity in parallel."
+        },
+        {
+          "text": "Boosting focuses on reducing model variance, whereas Bagging focuses exclusively on reducing bias.",
+          "isCorrect": false,
+          "rationale": "Bagging is primarily used to reduce variance, whereas Boosting is designed to reduce bias by incrementally improving errors."
+        },
+        {
+          "text": "Boosting sequentially trains each base model on the up-weighted errors of the previous model.",
+          "isCorrect": true,
+          "rationale": "Boosting is a sequential technique where each new model attempts to correct the misclassifications of the ensemble produced so far."
+        }
+      ],
+      "hint": "Focus on the temporal order of training and how errors are handled between iterations."
+    },
+    {
+      "question": "Which classification technique is considered an ensemble of all hypotheses in the hypothesis space and is theoretically impossible for any other ensemble to outperform on average?",
+      "answerOptions": [
+        {
+          "text": "Random Forest",
+          "isCorrect": false,
+          "rationale": "While highly effective, random forests use a finite set of trees rather than the entire hypothesis space."
+        },
+        {
+          "text": "Bayes optimal classifier",
+          "isCorrect": true,
+          "rationale": "By taking a weighted average of every possible hypothesis, this classifier provides the optimal result in the ensemble space."
+        },
+        {
+          "text": "Stacked Generalization",
+          "isCorrect": false,
+          "rationale": "Stacking combines specific trained models rather than the theoretical entirety of the hypothesis space."
+        },
+        {
+          "text": "AdaBoost",
+          "isCorrect": false,
+          "rationale": "AdaBoost is a specific implementation of boosting that relies on a finite set of weak learners."
+        }
+      ],
+      "hint": "Think about a technique that applies probabilities to the entire possible set of hypotheses."
+    },
+    {
+      "question": "The 'law of diminishing returns in ensemble construction' suggests that the highest accuracy is achieved when the number of independent component classifiers is equal to what value?",
+      "answerOptions": [
+        {
+          "text": "The total number of training observations in the dataset.",
+          "isCorrect": false,
+          "rationale": "Matching the number of observations would lead to high correlation and potentially severe overfitting."
+        },
+        {
+          "text": "The number of class labels in the problem.",
+          "isCorrect": true,
+          "rationale": "Theoretical frameworks suggest that having the same number of independent classifiers as class labels optimizes the balance of accuracy."
+        },
+        {
+          "text": "The square root of the number of available features, or $\\sqrt{p}$.",
+          "isCorrect": false,
+          "rationale": "While $\\sqrt{p}$ is a common parameter for feature selection in random forests, it is not the rule for optimal ensemble size."
+        },
+        {
+          "text": "An infinite number of classifiers, similar to a statistical ensemble in mechanics.",
+          "isCorrect": false,
+          "rationale": "Unlike statistical mechanics, machine learning ensembles are finite, and accuracy can deteriorate if too many models are added."
+        }
+      ],
+      "hint": "This value relates to the categorical outcomes the model is trying to predict."
+    },
+    {
+      "question": "What is the key functional difference between Bayesian Model Averaging (BMA) and Bayesian Model Combination (BMC)?",
+      "answerOptions": [
+        {
+          "text": "BMA uses cross-validation to select weights, while BMC relies on the Bayesian Information Criterion.",
+          "isCorrect": false,
+          "rationale": "BMA typically uses posterior probabilities or BIC, while BMC samples from a space of possible weight combinations."
+        },
+        {
+          "text": "BMA converges toward selecting the single best model, whereas BMC seeks the optimal combination of models.",
+          "isCorrect": true,
+          "rationale": "BMC modification overcomes the BMA tendency to shift all weight to one model by sampling the ensemble space via Dirichlet distribution."
+        },
+        {
+          "text": "BMC is a parallel ensemble method, while BMA is considered a sequential boosting method.",
+          "isCorrect": false,
+          "rationale": "Both are averaging techniques based on Bayesian principles rather than sequential additive boosting."
+        },
+        {
+          "text": "BMA uses a uniform prior for all hypotheses, whereas BMC uses subjective priors.",
+          "isCorrect": false,
+          "rationale": "BMA can use various priors; the fundamental difference is in how they weight the models (selection vs. combination)."
+        }
+      ],
+      "hint": "Think about whether the end goal is to find the 'closest' model or the 'closest' mixture of models."
+    },
+    {
+      "question": "When training a Random Forest for a classification problem with $p$ features, what is the typical default number of features randomly selected at each split?",
+      "answerOptions": [
+        {
+          "text": "$p / 3$",
+          "isCorrect": false,
+          "rationale": "Selecting one-third of the features is the recommended default for regression tasks, not classification."
+        },
+        {
+          "text": "$\\sqrt{p}$",
+          "isCorrect": true,
+          "rationale": "For classification, using the square root of the total features at each split is a standard heuristic to promote diversity."
+        },
+        {
+          "text": "$p - 1$",
+          "isCorrect": false,
+          "rationale": "Using nearly all features would result in highly correlated trees, defeating the purpose of feature bagging."
+        },
+        {
+          "text": "$\\ln(p)$",
+          "isCorrect": false,
+          "rationale": "While logarithmic scaling is used in some algorithms, the traditional Random Forest default is the square root."
+        }
+      ],
+      "hint": "Consider a common mathematical operation used to reduce a value while keeping it relative to the original scale."
+    },
+    {
+      "question": "How does the 'ExtraTrees' (Extremely Randomized Trees) algorithm increase randomization beyond that of a standard Random Forest?",
+      "answerOptions": [
+        {
+          "text": "It uses a smaller subset of training data for each tree.",
+          "isCorrect": false,
+          "rationale": "ExtraTrees actually uses the whole learning sample rather than bootstrap samples used in standard random forests."
+        },
+        {
+          "text": "It chooses the locally optimal cut-point but for only one randomly selected feature.",
+          "isCorrect": false,
+          "rationale": "ExtraTrees randomizes the cut-point selection itself rather than just the feature selection."
+        },
+        {
+          "text": "It selects random cut-points for features instead of calculating the optimal split based on information gain.",
+          "isCorrect": true,
+          "rationale": "By choosing splits from a uniform distribution within a feature's range, it adds a layer of randomness to the tree-building process."
+        },
+        {
+          "text": "It uses linear regression models instead of decision trees as the base estimators.",
+          "isCorrect": false,
+          "rationale": "ExtraTrees is still a tree-based ensemble; using different estimators would make it a variant like a random multinomial logit."
+        }
+      ],
+      "hint": "Think about the specific step in decision tree construction where a threshold is determined for a feature."
+    },
+    {
+      "question": "In the geometric framework for ensemble learning, performance is measured as the Euclidean distance between a model's output point and which of the following?",
+      "answerOptions": [
+        {
+          "text": "The centroid of all other model points.",
+          "isCorrect": false,
+          "rationale": "Distance to the centroid measures similarity between models, not necessarily the performance relative to the truth."
+        },
+        {
+          "text": "The origin $(0, 0, \\dots, 0)$.",
+          "isCorrect": false,
+          "rationale": "The origin is arbitrary and does not represent the target output of the classification or regression task."
+        },
+        {
+          "text": "The ideal point.",
+          "isCorrect": true,
+          "rationale": "The ideal point represents the target result or perfect prediction in the multi-dimensional output space."
+        },
+        {
+          "text": "The nearest neighbor in the training set.",
+          "isCorrect": false,
+          "rationale": "While related to some interpretations, the geometric framework defines performance specifically as the distance to the target result."
+        }
+      ],
+      "hint": "This point represents the perfect or target outcome in the multi-dimensional space."
+    },
+    {
+      "question": "What is the primary purpose of 'Landmark Learning' in a 'Bucket of Models' ensemble approach?",
+      "answerOptions": [
+        {
+          "text": "To identify which features are most informative before training any models.",
+          "isCorrect": false,
+          "rationale": "Landmark learning is a meta-learning approach focused on model performance rather than feature pre-filtering."
+        },
+        {
+          "text": "To use the performance of fast, simple algorithms to predict which slow, accurate algorithm will perform best.",
+          "isCorrect": true,
+          "rationale": "This meta-learning strategy avoids the high computational cost of training every complex model in the bucket by using 'landmarks' as indicators."
+        },
+        {
+          "text": "To provide a visual map of the hypothesis space for human interpretation.",
+          "isCorrect": false,
+          "rationale": "Its purpose is computational efficiency in model selection, not visualization or interpretability."
+        },
+        {
+          "text": "To ensure that the ensemble always chooses the most complex model available.",
+          "isCorrect": false,
+          "rationale": "The goal is to choose the *best* model for the specific task, which might be simpler depending on the landmark results."
+        }
+      ],
+      "hint": "Consider the trade-off between speed and accuracy when dealing with a large set of potential algorithms."
+    },
+    {
+      "question": "When assessing variable importance in a Random Forest via permutation, what specific action is taken to measure a feature's impact?",
+      "answerOptions": [
+        {
+          "text": "The feature is removed from the dataset entirely and the forest is retrained.",
+          "isCorrect": false,
+          "rationale": "Permutation importance involves perturbing values in the out-of-bag samples after training, rather than retraining without the feature."
+        },
+        {
+          "text": "The values of the feature are randomly shuffled in the out-of-bag samples to see how much error increases.",
+          "isCorrect": true,
+          "rationale": "Shuffling the values breaks the relationship between the feature and the target; a large error increase indicates the feature was important."
+        },
+        {
+          "text": "The feature's weights are set to zero in the final aggregation step.",
+          "isCorrect": false,
+          "rationale": "Random Forests don't typically use feature weights during aggregation; they use random selection during split construction."
+        },
+        {
+          "text": "The feature is replaced with a Gaussian noise variable with the same mean and variance.",
+          "isCorrect": false,
+          "rationale": "Permutation is preferred because it preserves the exact distribution of the variable while destroying its predictive link."
+        }
+      ],
+      "hint": "Think about a way to destroy the information content of a variable without changing its marginal distribution."
+    },
+    {
+      "question": "Which information measure can be used in the 'Amended Cross-Entropy Cost' approach to explicitly encourage diversity among classifiers in an ensemble?",
+      "answerOptions": [
+        {
+          "text": "Mean Squared Error",
+          "isCorrect": false,
+          "rationale": "MSE is typically used for regression tasks, whereas the Amended Cross-Entropy approach is specified for classification ensembles."
+        },
+        {
+          "text": "Gini Impurity",
+          "isCorrect": false,
+          "rationale": "Gini impurity is a split criterion for decision trees, not the primary cost function used in this diversity-encouragement framework."
+        },
+        {
+          "text": "Cross-entropy",
+          "isCorrect": true,
+          "rationale": "The cost function is amended by subtracting a weighted sum of the cross-entropy between the different classifiers to established diversity."
+        },
+        {
+          "text": "The Euclidean distance",
+          "isCorrect": false,
+          "rationale": "While Euclidean distance is used in the geometric framework, cross-entropy is the specific metric for this cost-function amendment."
+        }
+      ],
+      "hint": "This measure is standard for training classifiers and is modified by a parameter $\\lambda$ to establish diversity."
+    },
+    {
+      "question": "In Stacked Generalization (Stacking), what is the role of the 'combiner algorithm' or 'final estimator'?",
+      "answerOptions": [
+        {
+          "text": "To randomly sample the data to create diversity for the base learners.",
+          "isCorrect": false,
+          "rationale": "This describes the bagging process; the combiner in stacking works at a later stage."
+        },
+        {
+          "text": "To compute the simple plurality vote of all base estimators.",
+          "isCorrect": false,
+          "rationale": "A simple plurality vote is used in basic voting ensembles; stacking uses a trained model to perform a more complex combination."
+        },
+        {
+          "text": "To make a final prediction using the outputs of the other algorithms as its own input features.",
+          "isCorrect": true,
+          "rationale": "The combiner is a meta-model that learns the best way to integrate the predictions of the base estimators."
+        },
+        {
+          "text": "To prune the decision trees in the ensemble to prevent them from becoming too deep.",
+          "isCorrect": false,
+          "rationale": "Pruning is a technique for individual decision trees, whereas stacking is a method for combining multiple different models."
+        }
+      ],
+      "hint": "Think of this algorithm as a 'meta-model' that learns from other models."
+    },
+    {
+      "question": "What is a significant disadvantage of Random Forests compared to individual decision trees in practical applications?",
+      "answerOptions": [
+        {
+          "text": "They are significantly more prone to overfitting the training set.",
+          "isCorrect": false,
+          "rationale": "Random Forests are actually designed to correct for decision trees' habit of overfitting by averaging multiple models."
+        },
+        {
+          "text": "They cannot handle high-dimensional data or irrelevant features.",
+          "isCorrect": false,
+          "rationale": "Trees and forests are generally robust to irrelevant features and can be adapted for high-dimensional data."
+        },
+        {
+          "text": "They sacrifice the intrinsic interpretability that allows users to follow the logic of a single decision path.",
+          "isCorrect": true,
+          "rationale": "Following one tree is simple, but following the averaged logic of hundreds of trees is nearly impossible for humans."
+        },
+        {
+          "text": "They are unable to perform regression tasks.",
+          "isCorrect": false,
+          "rationale": "Random Forests are highly effective at both classification and regression tasks."
+        }
+      ],
+      "hint": "Consider the transparency of the model's 'reasoning' process."
+    },
+    {
+      "question": "How does the 'Mean Decrease in Impurity' feature importance differ from 'Permutation Importance'?",
+      "answerOptions": [
+        {
+          "text": "It uses an independent test set to validate feature usefulness.",
+          "isCorrect": false,
+          "rationale": "Mean Decrease in Impurity typically uses training statistics, which is one of its reported drawbacks."
+        },
+        {
+          "text": "It calculates importance based on how much a feature reduces the Gini coefficient or entropy during tree splits.",
+          "isCorrect": true,
+          "rationale": "This approach looks at the internal splitting mechanics of the trees rather than external shuffling of the data."
+        },
+        {
+          "text": "It is only applicable to regression problems involving Mean Squared Error.",
+          "isCorrect": false,
+          "rationale": "It can be used for both classification (using Gini or Entropy) and regression (using MSE)."
+        },
+        {
+          "text": "It is less likely to favor high-cardinality features than permutation importance.",
+          "isCorrect": false,
+          "rationale": "Actually, Mean Decrease in Impurity is known to favor high-cardinality features (those with many possible values)."
+        }
+      ],
+      "hint": "This method looks at the change in 'cleanness' of nodes as the tree is built."
+    },
+    {
+      "question": "According to the comparison between Random Forests and k-Nearest Neighbors (k-NN), both can be viewed as which type of scheme?",
+      "answerOptions": [
+        {
+          "text": "Linear factor models",
+          "isCorrect": false,
+          "rationale": "Neither algorithm assumes a linear relationship; they are non-parametric neighborhood schemes."
+        },
+        {
+          "text": "Weighted neighborhood schemes",
+          "isCorrect": true,
+          "rationale": "Both predict outcomes by looking at a 'neighborhood' of points, with weights assigned based on proximity or leaf sharing."
+        },
+        {
+          "text": "Sequential additive models",
+          "isCorrect": false,
+          "rationale": "Sequential additive models describe boosting, whereas bagging/forests and k-NN are based on local data grouping."
+        },
+        {
+          "text": "Stochastic discrimination frameworks",
+          "isCorrect": false,
+          "rationale": "While Random Forests have roots in stochastic discrimination theory, the specific link to k-NN is via weighted neighborhoods."
+        }
+      ],
+      "hint": "Think about how both models use the 'local' data around a new point to make a prediction."
+    }
+  ]
+}

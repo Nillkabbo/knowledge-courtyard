@@ -1,0 +1,385 @@
+{
+  "title": "Database Flashcards",
+  "cards": [
+    {
+      "front": "What does the 'CAP' in CAP theorem stand for?",
+      "back": "Consistency, Availability, and Partition tolerance."
+    },
+    {
+      "front": "Who is the computer scientist the CAP theorem is named after?",
+      "back": "Eric Brewer"
+    },
+    {
+      "front": "According to the CAP theorem, what is the maximum number of guarantees a distributed data store can provide simultaneously?",
+      "back": "Two"
+    },
+    {
+      "front": "In the context of the CAP theorem, how is 'Consistency' defined?",
+      "back": "Every read receives the most recent write or an error."
+    },
+    {
+      "front": "True or False: Consistency in the CAP theorem is identical to consistency in ACID database transactions.",
+      "back": "False"
+    },
+    {
+      "front": "How does the CAP theorem define 'Availability'?",
+      "back": "Every request received by a non-failing node must result in a response."
+    },
+    {
+      "front": "What is 'Partition tolerance' in a distributed system?",
+      "back": "The system continues to operate despite the network dropping or delaying messages between nodes."
+    },
+    {
+      "front": "In the presence of a network partition, what must a system designer choose between?",
+      "back": "Consistency or Availability."
+    },
+    {
+      "front": "What happens to a system that chooses consistency over availability during a network partition?",
+      "back": "It will return an error or a time-out if the data cannot be guaranteed to be up to date."
+    },
+    {
+      "front": "What happens to a system that chooses availability over consistency during a network partition?",
+      "back": "It will process the query and return the most recent available version, even if it might be outdated."
+    },
+    {
+      "front": "Under what conditions can a distributed data store satisfy all three CAP guarantees?",
+      "back": "During times of normal operations without network partitions."
+    },
+    {
+      "front": "Which database philosophy typically chooses availability over consistency, common in the NoSQL movement?",
+      "back": "The BASE philosophy."
+    },
+    {
+      "front": "Which database type generally prioritizes consistency over availability, following traditional ACID guarantees?",
+      "back": "Relational Database Management Systems (RDBMS)."
+    },
+    {
+      "front": "Name two NoSQL databases that maintain consistency during network partitions by compromising availability.",
+      "back": "MongoDB and Redis."
+    },
+    {
+      "front": "List three examples of 'AP' (Available and Partition tolerant) databases.",
+      "back": "CouchDB, Cassandra, and ScyllaDB."
+    },
+    {
+      "front": "Why are there no NoSQL databases classified as 'CA' (Consistent and Available)?",
+      "back": "Network partitions generally have to be tolerated in any distributed system."
+    },
+    {
+      "front": "Who published the formal proof of Brewer's conjecture in 2002?",
+      "back": "Seth Gilbert and Nancy Lynch."
+    },
+    {
+      "front": "What trade-off does the PACELC theorem add to the CAP theorem for times when no partition exists?",
+      "back": "The trade-off between latency (L) and consistency (C)."
+    },
+    {
+      "front": "According to PACELC, if a partition ($P$) occurs, the trade-off is between _____ ($A$) and _____ ($C$).",
+      "back": "Availability; Consistency"
+    },
+    {
+      "front": "According to PACELC, if no partition occurs ($E$ for 'Else'), the trade-off is between _____ ($L$) and _____ ($C$).",
+      "back": "Latency; Consistency"
+    },
+    {
+      "front": "What does the acronym 'SQL' stand for?",
+      "back": "Structured Query Language."
+    },
+    {
+      "front": "What is the primary use of SQL?",
+      "back": "Managing data in a relational database management system (RDBMS)."
+    },
+    {
+      "front": "Which IBM researchers initially developed SQL in the 1970s?",
+      "back": "Donald D. Chamberlin and Raymond F. Boyce."
+    },
+    {
+      "front": "What was the original name of SQL before it was changed for trademark reasons?",
+      "back": "SEQUEL (Structured English Query Language)."
+    },
+    {
+      "front": "Whose 1970 paper, 'A Relational Model of Data for Large Shared Data Banks', influenced the creation of SQL?",
+      "back": "Edgar F. Codd."
+    },
+    {
+      "front": "In what year did SQL first become an ANSI standard?",
+      "back": "1986"
+    },
+    {
+      "front": "Name one of the first commercially available SQL implementations introduced by Relational Software, Inc. in 1979.",
+      "back": "Oracle V2."
+    },
+    {
+      "front": "Which SQL sublanguage is used for retrieving data based on specific criteria?",
+      "back": "Data Query Language (DQL)."
+    },
+    {
+      "front": "Which SQL sublanguage includes commands like INSERT, UPDATE, and DELETE?",
+      "back": "Data Manipulation Language (DML)."
+    },
+    {
+      "front": "Which SQL sublanguage handles schema creation and modification?",
+      "back": "Data Definition Language (DDL)."
+    },
+    {
+      "front": "Which SQL sublanguage is used for data access control?",
+      "back": "Data Control Language (DCL)."
+    },
+    {
+      "front": "SQL is primarily a _____ language, meaning it specifies *what* data to retrieve rather than *how* to retrieve it.",
+      "back": "Declarative"
+    },
+    {
+      "front": "What is the standard character used as a statement terminator in SQL?",
+      "back": "Semicolon (;)"
+    },
+    {
+      "front": "In SQL syntax, what are 'Predicates' used for?",
+      "back": "To specify conditions that limit the effects of statements or change program flow."
+    },
+    {
+      "front": "What is the result of SQL 'three-valued logic' (3VL)?",
+      "back": "True, False, or Unknown."
+    },
+    {
+      "front": "What does a 'Null' marker indicate in an SQL column?",
+      "back": "The absence of a value."
+    },
+    {
+      "front": "How does PostgreSQL's handling of unquoted names differ from the SQL standard?",
+      "back": "PostgreSQL folds them to lower case, while the standard specifies upper case."
+    },
+    {
+      "front": "Which major database lacked a native TIME data type before its 2008 version?",
+      "back": "Microsoft SQL Server."
+    },
+    {
+      "front": "Term: Object-Relational Impedance Mismatch",
+      "back": "Definition: The difficulty of mapping between the declarative SQL language and procedural programming languages."
+    },
+    {
+      "front": "What are the three main categories of data types defined by the SQL standard?",
+      "back": "Predefined, Constructed, and User-defined data types."
+    },
+    {
+      "front": "In SQL, ARRAY and ROW are examples of which kind of data type?",
+      "back": "Constructed types."
+    },
+    {
+      "front": "Which 1999 SQL revision added triggers and recursive queries?",
+      "back": "SQL:1999 (also known as SQL3)."
+    },
+    {
+      "front": "Which SQL standard revision introduced window functions and XML-related features?",
+      "back": "SQL:2003."
+    },
+    {
+      "front": "The 2023 SQL standard revision specifically added support for which data type and query feature?",
+      "back": "JSON data type and Property Graph Queries (SQL/PGQ)."
+    },
+    {
+      "front": "Name one alternative to the SQL language that is based on object-oriented Datalog.",
+      "back": ".QL"
+    },
+    {
+      "front": "How does the relational model's definition of a table differ from SQL's implementation?",
+      "back": "The model defines a table as a set of tuples, while SQL allows ordered lists with duplicate rows."
+    },
+    {
+      "front": "What is the purpose of the 'Distributed Relational Database Architecture' (DRDA)?",
+      "back": "To enable network-connected relational databases to cooperate and fulfill SQL requests."
+    },
+    {
+      "front": "What is a common criticism regarding SQL's 'Null' feature?",
+      "back": "It forces the use of three-valued logic, which can be complex and controversial."
+    },
+    {
+      "front": "Why is SQL not considered a 'pure' relational language by some critics?",
+      "back": "It allows duplicate rows and relies on the order of rows in certain operations."
+    },
+    {
+      "front": "What is the official ISO/IEC number for the SQL standard?",
+      "back": "ISO/IEC 9075."
+    },
+    {
+      "front": "What is the difference between a Null and an empty string in a text column?",
+      "back": "Null indicates the absence of any value, while an empty string is a value with zero length."
+    },
+    {
+      "front": "Which procedural extension allows the hosting of managed .NET assemblies in Microsoft SQL Server?",
+      "back": "SQLCLR (Common Language Runtime)."
+    },
+    {
+      "front": "What is the SQL/JRT extension used for?",
+      "back": "Supporting Java code (Routines and Types) within SQL databases."
+    },
+    {
+      "front": "Name the SQL extension that provides a standard for persistent stored modules.",
+      "back": "SQL/PSM."
+    },
+    {
+      "front": "In SQL-92, which level of compliance was most commonly adopted as a FIPS standard?",
+      "back": "Entry Level SQL-92."
+    },
+    {
+      "front": "What are the three possible truth values in SQL's logic system?",
+      "back": "$True$, $False$, and $Unknown$."
+    },
+    {
+      "front": "Which major SQL implementation does not have a native TIME type and uses DATE to store both date and time?",
+      "back": "Oracle Database."
+    },
+    {
+      "front": "In the presence of a network partition, canceling an operation increases _____ but ensures _____.",
+      "back": "Consistency; Availability (Note: Canceling decreases availability but ensures consistency)."
+    },
+    {
+      "front": "Proceeding with an operation during a partition provides _____ but risks _____.",
+      "back": "Availability; Inconsistency"
+    },
+    {
+      "front": "What is 'geographic sharding' used for in distributed systems?",
+      "back": "To maintain availability of data on a queried node during a network partition."
+    },
+    {
+      "front": "Who first presented the CAP theorem as a conjecture in the year 2000?",
+      "back": "Eric Brewer"
+    },
+    {
+      "front": "At which symposium was the CAP principle first presented as a conjecture?",
+      "back": "Symposium on Principles of Distributed Computing (PODC)."
+    },
+    {
+      "front": "What is the informal name for the SQL-92 standard?",
+      "back": "SQL2"
+    },
+    {
+      "front": "What is the informal name for the SQL:1999 standard?",
+      "back": "SQL3"
+    },
+    {
+      "front": "Which SQL part defines the management of external data?",
+      "back": "SQL/MED"
+    },
+    {
+      "front": "Which SQL part defines the Call-Level Interface?",
+      "back": "SQL/CLI"
+    },
+    {
+      "front": "Name the sublanguage used for the command 'GRANT'.",
+      "back": "Data Control Language (DCL)."
+    },
+    {
+      "front": "Name the sublanguage used for the command 'CREATE TABLE'.",
+      "back": "Data Definition Language (DDL)."
+    },
+    {
+      "front": "Name the sublanguage used for the command 'SELECT'.",
+      "back": "Data Query Language (DQL)."
+    },
+    {
+      "front": "Which organization's trademark led to the change from 'SEQUEL' to 'SQL'?",
+      "back": "Hawker Siddeley Dynamics Engineering Limited."
+    },
+    {
+      "front": "The ability to access many records with one single command is a key advantage of _____.",
+      "back": "SQL"
+    },
+    {
+      "front": "Which 2011 SQL feature allows for the storage and querying of temporal data?",
+      "back": "PERIOD FOR"
+    },
+    {
+      "front": "What 2016 SQL revision feature supports operations on data stored in character string fields?",
+      "back": "JSON support."
+    },
+    {
+      "front": "What is 'SQUARE' in the context of SQL history?",
+      "back": "IBM's first attempt at a relational database language, which used complex subscript/superscript notation."
+    },
+    {
+      "front": "What is the primary difference between CAP Availability and high availability in software architecture?",
+      "back": "CAP availability requires *every* request to *every* non-failing node to respond, whereas high availability is a broader architectural goal."
+    },
+    {
+      "front": "What 1996 theorem by Birman and Friedman preceded the CAP theorem?",
+      "back": "A theorem stating the trade-off between consistency and availability restricted to non-commuting operations."
+    },
+    {
+      "front": "Which distributed environment is the CAP theorem particularly relevant for, according to Marc Brooker?",
+      "back": "Intermittently connected environments like the Internet of Things (IoT) and mobile apps."
+    },
+    {
+      "front": "In the acronym PACELC, what does the 'E' stand for?",
+      "back": "Else"
+    },
+    {
+      "front": "Which IBM project served as the testbed for the SEQUEL language?",
+      "back": "System R"
+    },
+    {
+      "front": "True or False: SQL strictly adheres to the relational model as described by Edgar F. Codd.",
+      "back": "False"
+    },
+    {
+      "front": "What is the filename extension usually associated with SQL scripts?",
+      "back": ".sql"
+    },
+    {
+      "front": "What is the IANA media type for SQL?",
+      "back": "application/sql"
+    },
+    {
+      "front": "Which SQL-based RDBMS was developed to target U.S. government agencies in the late 1970s?",
+      "back": "Oracle"
+    },
+    {
+      "front": "What was the name of the first commercially available SQL implementation by IBM in 1979?",
+      "back": "System/38"
+    },
+    {
+      "front": "SQL code can rarely be ported between systems without modification because of the lack of _____.",
+      "back": "Interoperability (or standardization compliance)."
+    },
+    {
+      "front": "What is 'vendor lock-in' in the context of database systems?",
+      "back": "A situation where it is difficult for a user to switch database suppliers due to proprietary extensions and incompatibility."
+    },
+    {
+      "front": "Which organization maintained the certification program for SQL DBMS compliance until 1996?",
+      "back": "National Institute of Standards and Technology (NIST)."
+    },
+    {
+      "front": "In SQL, what is an 'Expression'?",
+      "back": "A language element that can produce either scalar values or tables."
+    },
+    {
+      "front": "What is 'Insignificant whitespace' in SQL?",
+      "back": "Whitespace that is generally ignored, allowing for code formatting and readability."
+    },
+    {
+      "front": "Which SQL standard revision legalized 'ORDER BY' outside of cursor definitions?",
+      "back": "SQL:2008."
+    },
+    {
+      "front": "What does the 'TRUNCATE' statement do in SQL:2008?",
+      "back": "Quickly removes all rows from a table."
+    },
+    {
+      "front": "Name an alternative to the relational model itself.",
+      "back": "NoSQL (or navigational database)."
+    },
+    {
+      "front": "What is 'QUEL'?",
+      "back": "A query language introduced by the Ingres project that is closer to tuple relational calculus than SQL."
+    },
+    {
+      "front": "The 'Third Manifesto' by Darwen and Date argues for a language that returns strictly to _____ foundations.",
+      "back": "Relational"
+    },
+    {
+      "front": "What is the '3VL' logic value returned when a comparison involves a Null?",
+      "back": "Unknown"
+    }
+  ]
+}

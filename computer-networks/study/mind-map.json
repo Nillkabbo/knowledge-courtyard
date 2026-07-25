@@ -1,0 +1,167 @@
+{
+  "name": "Internet Security Protocols",
+  "children": [
+    {
+      "name": "Content Delivery Network (CDN)",
+      "children": [
+        {
+          "name": "Technology",
+          "children": [
+            {
+              "name": "Distributed Proxy Servers"
+            },
+            {
+              "name": "Edge Servers"
+            },
+            {
+              "name": "Points of Presence (PoPs)"
+            },
+            {
+              "name": "Origin Shield"
+            }
+          ]
+        },
+        {
+          "name": "Techniques",
+          "children": [
+            {
+              "name": "Web Caching"
+            },
+            {
+              "name": "Server Load Balancing"
+            },
+            {
+              "name": "Request Routing"
+            },
+            {
+              "name": "Anycasting"
+            }
+          ]
+        },
+        {
+          "name": "Types",
+          "children": [
+            {
+              "name": "Peer-to-Peer CDNs"
+            },
+            {
+              "name": "Private/Enterprise CDNs"
+            },
+            {
+              "name": "Telco CDNs"
+            },
+            {
+              "name": "Virtual CDNs (vCDN)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Domain Name System (DNS)",
+      "children": [
+        {
+          "name": "Function",
+          "children": [
+            {
+              "name": "Hostname Translation"
+            },
+            {
+              "name": "Resource Identification"
+            },
+            {
+              "name": "Distributed Database"
+            }
+          ]
+        },
+        {
+          "name": "Structure",
+          "children": [
+            {
+              "name": "Root Zone"
+            },
+            {
+              "name": "Top-Level Domains (TLD)"
+            },
+            {
+              "name": "Authoritative Name Servers"
+            },
+            {
+              "name": "Recursive Resolvers"
+            }
+          ]
+        },
+        {
+          "name": "Security & Privacy",
+          "children": [
+            {
+              "name": "DNSSEC"
+            },
+            {
+              "name": "DNS over TLS (DoT)"
+            },
+            {
+              "name": "DNS over HTTPS (DoH)"
+            },
+            {
+              "name": "DNSCrypt"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Transport Layer Security (TLS)",
+      "children": [
+        {
+          "name": "Core Principles",
+          "children": [
+            {
+              "name": "Confidentiality"
+            },
+            {
+              "name": "Data Integrity"
+            },
+            {
+              "name": "Authenticity"
+            }
+          ]
+        },
+        {
+          "name": "Mechanisms",
+          "children": [
+            {
+              "name": "TLS Handshake"
+            },
+            {
+              "name": "Digital Certificates"
+            },
+            {
+              "name": "Cipher Suites"
+            },
+            {
+              "name": "Forward Secrecy"
+            }
+          ]
+        },
+        {
+          "name": "Attacks",
+          "children": [
+            {
+              "name": "BEAST & POODLE"
+            },
+            {
+              "name": "CRIME & BREACH"
+            },
+            {
+              "name": "Heartbleed Bug"
+            },
+            {
+              "name": "Downgrade Attacks"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "title": "OS Flashcards",
+  "cards": [
+    {
+      "front": "What is the primary function of a local file system within an operating system?",
+      "back": "It governs file organization and access for applications running on the same computer."
+    },
+    {
+      "front": "How does a distributed file system differ from a local file system?",
+      "back": "It is a protocol that provides file access between networked computers rather than servicing a single local machine."
+    },
+    {
+      "front": "In the absence of a file system, what are three risks applications face when accessing mass storage?",
+      "back": "Resource contention, data corruption, and data loss."
+    },
+    {
+      "front": "Term: RAM disk",
+      "back": "Definition: A portion of computer main memory set up to serve as a storage device for a file system."
+    },
+    {
+      "front": "What is the function of a 'virtual' file system?",
+      "back": "It provides access to files that are either computed on request or mapped into another backing storage."
+    },
+    {
+      "front": "According to file system architecture, which layer provides the API for operations like open, close, read, and write?",
+      "back": "The logical file system layer."
+    },
+    {
+      "front": "In file system architecture, what is the role of the physical file system layer?",
+      "back": "It handles low-level storage device access, including reading/writing data blocks and memory management."
+    },
+    {
+      "front": "What optional architecture layer allows an operating system to support multiple concurrent instances of physical file systems?",
+      "back": "The virtual file system layer."
+    },
+    {
+      "front": "Why is file name uniqueness typically enforced within the context of a directory?",
+      "back": "To ensure an application can refer to exactly one specific file using a particular name."
+    },
+    {
+      "front": "The first file system to support arbitrary hierarchies of directories was found in which operating system?",
+      "back": "The Multics operating system."
+    },
+    {
+      "front": "Term: Metadata",
+      "back": "Definition: Information managed by a file system that is associated with a file but separate from its actual data content."
+    },
+    {
+      "front": "List four common examples of file metadata.",
+      "back": "File name, size, creation/modification timestamps, and access permissions."
+    },
+    {
+      "front": "What are 'forks' or 'streams' in the context of a file system?",
+      "back": "Multiple collections of data collection associated with a single file name."
+    },
+    {
+      "front": "How do file systems typically manage file revisions using naming conventions?",
+      "back": "By appending a version number to the filename, such as \"filename;4\" for the version from four saves ago."
+    },
+    {
+      "front": "Term: Slack space",
+      "back": "Definition: The unused space resulting from the granular nature of file system allocation units."
+    },
+    {
+      "front": "If a file system uses 4,096-byte clusters, what is the disk space required to store 100,000 files that are 5 bytes each?",
+      "back": "409,600,000 bytes."
+    },
+    {
+      "front": "Under what condition does a file become 'fragmented' in storage?",
+      "back": "When the space needed to store its content cannot be allocated in contiguous blocks."
+    },
+    {
+      "front": "Why does fragmentation degrade performance on hard disk drives but not on solid-state drives?",
+      "back": "HDDs work better with contiguous blocks due to mechanical head movement, while SSDs have near-instant random access."
+    },
+    {
+      "front": "What is the purpose of 'access control' in a file system?",
+      "back": "To prevent unauthorized users or programs from reading or modifying specific data."
+    },
+    {
+      "front": "In data integrity, why does a file system handle 'buffered but not written' data after a power failure?",
+      "back": "To ensure the stored data remains consistent despite the abnormal system termination."
+    },
+    {
+      "front": "What is the difference between 'byte stream access' and 'record access' in data retrieval?",
+      "back": "Byte stream access retrieves unorganized sequences, while record access treats data as a defined structure."
+    },
+    {
+      "front": "What directory utility term is used in Unix-like systems to refer to a directory entry?",
+      "back": "Dentry."
+    },
+    {
+      "front": "Why might a system administrator partition a disk to use multiple file systems with different allocation sizes?",
+      "back": "To optimize performance for different file types, such as small allocation for browser cache and large blocks for video."
+    },
+    {
+      "front": "What is a 'disk image' in the context of cloud systems and virtualization?",
+      "back": "A file within a host file system that houses an additional, independent file system."
+    },
+    {
+      "front": "Which file system type targets the ability of media to randomly address data in a short amount of time?",
+      "back": "Disk file systems."
+    },
+    {
+      "front": "What are the two common file system formats used for optical discs like DVDs and Blu-rays?",
+      "back": "ISO 9660 and Universal Disk Format (UDF)."
+    },
+    {
+      "front": "Why is the master file directory approach inefficient for tape file systems?",
+      "back": "Because tape is a sequential medium, and moving the head back and forth to update a central directory takes minutes."
+    },
+    {
+      "front": "How do tape file systems avoid time-consuming tape motions when writing new data?",
+      "back": "By spreading the file directory across the tape intermixed with data, a process known as streaming."
+    },
+    {
+      "front": "Term: Linear Tape File System (LTFS)",
+      "back": "Definition: A file system that uses a separate partition on tape to record index metadata, avoiding scattered directory entries."
+    },
+    {
+      "front": "What was the synchronization method for reading data from audio-cassette storage in the 1970s?",
+      "back": "The system wrote/listened for a specific sound burst to provide time synchronization before interpreting modulated sounds as data."
+    },
+    {
+      "front": "How does a 'database file system' identify files differently than a hierarchical system?",
+      "back": "Files are identified by their characteristics (metadata) like type, author, or topic rather than just their location in a tree."
+    },
+    {
+      "front": "What is the 'atomicity guarantee' in a transactional file system?",
+      "back": "It ensures that a set of file operations are either all committed successfully or all rolled back if any part fails."
+    },
+    {
+      "front": "Term: Journaling file system",
+      "back": "Definition: A system that uses an internal log to ensure structure consistency at the granularity of a single system call."
+    },
+    {
+      "front": "Which Linux virtual file systems expose kernel and process information as files?",
+      "back": "procfs and sysfs."
+    },
+    {
+      "front": "In a 'flat file system', how are entries for all files on a volume typically stored?",
+      "back": "In a single directory without subdirectories, such as a Volume Table of Contents (VTOC)."
+    },
+    {
+      "front": "The process of informing a Unix-like operating system where in the directory tree a new device's files should appear is called _____.",
+      "back": "Mounting."
+    },
+    {
+      "front": "What is 'supermounting' in a Linux context?",
+      "back": "A concept where the system automatically detects media changes and updates mount point contents without manual synchronization."
+    },
+    {
+      "front": "What is the standard file system used by modern macOS for solid-state drives?",
+      "back": "Apple File System (APFS)."
+    },
+    {
+      "front": "In the macOS HFS Plus system, what is the difference between a symbolic link and an alias?",
+      "back": "Symbolic links are interpreted by the file system, while aliases are interpreted by the File Manager code in userland."
+    },
+    {
+      "front": "Which Windows file system is intended for universal exchange but has a file size limit of approximately 4 GB?",
+      "back": "FAT32."
+    },
+    {
+      "front": "What is the '8.3 filename' limit in legacy FAT file systems?",
+      "back": "A restriction of eight characters for the file name and three characters for the extension."
+    },
+    {
+      "front": "Term: NTFS (New Technology File System)",
+      "back": "Definition: A Windows file system introduced in 1993 that supports ACL-based permissions, hard links, and encryption."
+    },
+    {
+      "front": "What is a 'sparse file' in the context of file system features?",
+      "back": "A type of file that attempts to use disk space more efficiently when the file is mostly empty."
+    },
+    {
+      "front": "On Windows, which utility is used to perform an in-place conversion from FAT32 to NTFS?",
+      "back": "convert.exe."
+    },
+    {
+      "front": "How are resources and tasks defined in the context of computer scheduling?",
+      "back": "Resources are hardware (processors, cards), and tasks are software units (threads, processes, flows)."
+    },
+    {
+      "front": "In scheduling, what is 'throughput'?",
+      "back": "The total amount of work completed per time unit."
+    },
+    {
+      "front": "How is 'wait time' defined in a scheduling context?",
+      "back": "The duration from when work becomes ready until the point it first begins execution."
+    },
+    {
+      "front": "In scheduling goals, what is the difference between latency and fairness?",
+      "back": "Latency is the time to finish or respond to work, whereas fairness is the equal or proportional distribution of CPU time."
+    },
+    {
+      "front": "What is the primary responsibility of a 'long-term' (admission) scheduler?",
+      "back": "Deciding which jobs are admitted to the ready queue in main memory and controlling the degree of multiprogramming."
+    },
+    {
+      "front": "Term: I/O-bound process",
+      "back": "Definition: A process that spends more of its time performing input/output operations than performing computations."
+    },
+    {
+      "front": "What action does a 'medium-term' scheduler take to free up main memory?",
+      "back": "It temporarily removes processes from main memory and places them in secondary memory (swapping out)."
+    },
+    {
+      "front": "What is the 'short-term' scheduler responsible for?",
+      "back": "Deciding which ready, in-memory process is executed by the CPU after an interrupt or system call."
+    },
+    {
+      "front": "Term: Preemptive scheduler",
+      "back": "Definition: A scheduler with the ability to pause a running process to start a new one without the running process's consent."
+    },
+    {
+      "front": "What is the role of the 'dispatcher' component in CPU scheduling?",
+      "back": "It gives control of the CPU to the specific process selected by the short-term scheduler."
+    },
+    {
+      "front": "List the three main functions performed by a dispatcher during a task switch.",
+      "back": "Context switching, switching to user mode, and jumping to the proper location in the user program."
+    },
+    {
+      "front": "Term: Dispatch latency",
+      "back": "Definition: The time it takes for the dispatcher to stop one process and start another."
+    },
+    {
+      "front": "How does the 'First Come, First Served' (FCFS) algorithm handle the process queue?",
+      "back": "It queues processes in the exact order that they arrive in the ready queue."
+    },
+    {
+      "front": "What is the 'convoy effect' in FCFS scheduling?",
+      "back": "A situation where throughput is low because short processes must wait a long time behind a single long process."
+    },
+    {
+      "front": "Term: Earliest Deadline First (EDF)",
+      "back": "Definition: A dynamic algorithm that prioritizes the task closest to its deadline for execution."
+    },
+    {
+      "front": "In 'Shortest Remaining Time First' scheduling, what happens if a shorter process arrives during the execution of a longer one?",
+      "back": "The currently running process is interrupted (preempted) to allow the shorter process to run."
+    },
+    {
+      "front": "What is 'resource starvation' in the context of priority scheduling?",
+      "back": "A condition where lower-priority processes are never executed because high-priority processes keep arriving."
+    },
+    {
+      "front": "How does 'Round-robin' scheduling ensure that starvation can never occur?",
+      "back": "By assigning a fixed time unit per process and cycling through them without giving priority to any process."
+    },
+    {
+      "front": "Term: Work-conserving scheduler",
+      "back": "Definition: A scheduler that always keeps resources busy as long as there are ready jobs to be scheduled."
+    },
+    {
+      "front": "What is 'processor affinity' in Symmetric Multiprocessing (SMP) systems?",
+      "back": "The tendency to schedule a process on the same processor it ran on previously to reduce cache thrashing."
+    },
+    {
+      "front": "How did Windows 3.1x's non-preemptive scheduler differ from modern schedulers?",
+      "back": "It relied on the program to voluntarily yield control (cooperative multitasking) rather than interrupting it."
+    },
+    {
+      "front": "In Windows NT-based systems, which priority levels (0–31) are reserved for 'soft real-time' tasks?",
+      "back": "Levels 16 through 31."
+    },
+    {
+      "front": "The Linux 'Completely Fair Scheduler' (CFS) uses which classic scheduling algorithm originally invented for packet networks?",
+      "back": "Fair queuing."
+    },
+    {
+      "front": "What is the Big O complexity of reinserting a task in the Linux CFS run queue?",
+      "back": "$O(\\log N)$, where $N$ is the number of tasks."
+    },
+    {
+      "front": "Which scheduling algorithm was proposed in 2023 to replace the Linux CFS in version 6.6?",
+      "back": "Earliest Eligible Virtual Deadline First (EEVDF)."
+    },
+    {
+      "front": "What is the 'sched_ext' mechanism introduced in Linux 6.12?",
+      "back": "A feature allowing scheduler extensions to be added from userspace using eBPF programs."
+    },
+    {
+      "front": "In Solaris scheduling, what do 'CPU shares' indicate?",
+      "back": "The entitlement to CPU resources allocated to a set of processes (a project)."
+    },
+    {
+      "front": "Which operating system uses a 'blue task' to cooperatively schedule processes within a preemptive kernel?",
+      "back": "Mac OS 9."
+    },
+    {
+      "front": "Term: Context switch",
+      "back": "Definition: The process of saving the state of a running thread/process and loading the saved state of a new one."
+    },
+    {
+      "front": "Why is 'throughput' often in conflict with 'latency' in scheduler design?",
+      "back": "Maximizing total work often requires longer execution blocks, which increases the time individual tasks must wait to finish."
+    }
+  ]
+}

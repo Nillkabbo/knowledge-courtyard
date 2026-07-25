@@ -1,0 +1,301 @@
+{
+  "title": "Networking Flashcards",
+  "cards": [
+    {
+      "front": "Concept: Content Delivery Network (CDN)",
+      "back": "A geographically distributed network of proxy servers and data centers designed to provide high availability and performance."
+    },
+    {
+      "front": "Which performance bottleneck was the primary reason for the emergence of CDNs in the late 1990s?",
+      "back": "Internet performance bottlenecks caused by the web becoming a critical medium."
+    },
+    {
+      "front": "In the internet ecosystem layer, what do content owners pay CDN operators to do?",
+      "back": "To deliver their content efficiently to end users."
+    },
+    {
+      "front": "To whom do CDN operators pay fees for hosting servers in data centers?",
+      "back": "Internet service providers (ISPs), carriers, and network operators."
+    },
+    {
+      "front": "List three examples of downloadable objects typically served by a CDN.",
+      "back": "Media files, software, and documents."
+    },
+    {
+      "front": "CDN nodes are typically deployed across multiple locations and often over multiple _____.",
+      "back": "Internet backbones"
+    },
+    {
+      "front": "What is the primary benefit of deploying a large number of remote points of presence (PoPs)?",
+      "back": "To reduce bandwidth costs, improve page load times, and increase global availability."
+    },
+    {
+      "front": "When optimizing for performance, how are CDN node locations typically measured relative to the client?",
+      "back": "By choosing locations with the fewest hops or the shortest response time."
+    },
+    {
+      "front": "In CDN terminology, what is an 'edge server'?",
+      "back": "A server located close to the end user at the edge of the network to optimize performance and cost."
+    },
+    {
+      "front": "Terminology: Content Provider Origin Server",
+      "back": "The web server that provides the source content to the CDN."
+    },
+    {
+      "front": "Terminology: CDN Origin Shield",
+      "back": "A service that helps protect the origin server from heavy traffic loads."
+    },
+    {
+      "front": "Terminology: CDN Footprint",
+      "back": "The geographic areas where the CDN's edge servers can effectively serve client requests."
+    },
+    {
+      "front": "What is a 'CDN selector' in a multi-CDN environment?",
+      "back": "A decision-making service used to choose the optimal provider among multiple CDNs."
+    },
+    {
+      "front": "Besides direct fees, how might CDN providers profit from websites using their scripts?",
+      "back": "By collecting user analytics and tracking data for behavioral targeting."
+    },
+    {
+      "front": "Why did a German court forbid the use of a CDN on a university website in 2021?",
+      "back": "The transmission of the user's IP address to the CDN violated the General Data Protection Regulation (GDPR)."
+    },
+    {
+      "front": "Which mechanism ensures that a web page only loads JavaScript with a known, constrained hash?",
+      "back": "Subresource Integrity (SRI)."
+    },
+    {
+      "front": "The Internet's 'core network' is designed to remain simple and move intelligence to endpoints, a concept known as the _____.",
+      "back": "End-to-end principle"
+    },
+    {
+      "front": "How does 'pull caching' differ from 'push caching' in web caches?",
+      "back": "Pull caching is populated by user requests, while push caching involves preloading content from servers."
+    },
+    {
+      "front": "How do Layer 4–7 switches facilitate server-load balancing?",
+      "back": "They share traffic among multiple servers or caches using a single virtual IP address."
+    },
+    {
+      "front": "Which routing technique directs client requests to the content source best able to serve them?",
+      "back": "Request routing."
+    },
+    {
+      "front": "Concept: Anycasting",
+      "back": "A network addressing and routing methodology in which a single destination IP address is shared by multiple servers."
+    },
+    {
+      "front": "What is the primary purpose of the Internet Content Adaptation Protocol (ICAP)?",
+      "back": "To provide an open standard for connecting application servers to content networks."
+    },
+    {
+      "front": "Terminology: Edge Side Includes (ESI)",
+      "back": "A small markup language for edge-level dynamic web content assembly."
+    },
+    {
+      "front": "What is a significant economic advantage of Peer-to-Peer (P2P) CDNs for the original distributor?",
+      "back": "The setup and running costs are very small because clients provide resources as they consume them."
+    },
+    {
+      "front": "What is the difference between a private CDN and an Enterprise CDN (eCDN)?",
+      "back": "A private CDN serves its owner's content, while an eCDN is a private CDN deployed specifically within a company network."
+    },
+    {
+      "front": "Why have telecommunications service providers (telcos) launched their own CDNs?",
+      "back": "To lessen demands on the network backbone and reduce infrastructure investments caused by video streaming growth."
+    },
+    {
+      "front": "What is the 'last mile' advantage of a telco CDN?",
+      "back": "Telcos can cache content deep in their own networks, minimizing the distance data travels over the general Internet."
+    },
+    {
+      "front": "Define 'Federated CDNs'.",
+      "back": "A group of interconnected provider networks that aggregate their audience to compete with large traditional CDNs."
+    },
+    {
+      "front": "How does the EDNS0 extension improve CDN performance for clients using non-local DNS resolvers?",
+      "back": "It allows CDNs to utilize the IP address of the requesting client's subnet to accurately localize responses."
+    },
+    {
+      "front": "Terminology: Virtual CDN (vCDN)",
+      "back": "A software-defined CDN where virtual caches are deployed dynamically as machines or containers on distributed servers."
+    },
+    {
+      "front": "What is the primary goal of an 'Image CDN'?",
+      "back": "To serve high-quality images while preserving download speeds by optimizing versions based on the browser's properties."
+    },
+    {
+      "front": "Which three components define a modern Image CDN?",
+      "back": "A fast-serving CDN, image manipulation/optimization tools, and device detection intelligence."
+    },
+    {
+      "front": "Concept: Domain Name System (DNS)",
+      "back": "A hierarchical and distributed name service that associates domain names with numerical IP addresses."
+    },
+    {
+      "front": "Who developed and maintained the first ARPANET directory (HOSTS.TXT)?",
+      "back": "Elizabeth Feinler."
+    },
+    {
+      "front": "In what year did Paul Mockapetris create the Domain Name System?",
+      "back": "1983."
+    },
+    {
+      "front": "What is the name of the first Unix name server implementation developed at UC Berkeley?",
+      "back": "Berkeley Internet Name Domain (BIND)."
+    },
+    {
+      "front": "DNS can be partitioned according to _____, allowing parallel namespace trees to exist.",
+      "back": "Class"
+    },
+    {
+      "front": "What is the maximum character length for a single DNS label?",
+      "back": "63 characters."
+    },
+    {
+      "front": "What is the maximum character length for a full domain name in its textual representation?",
+      "back": "253 characters."
+    },
+    {
+      "front": "Define the 'LDH rule' for domain name labels.",
+      "back": "Labels must only consist of letters, digits, and hyphens."
+    },
+    {
+      "front": "How does the Internationalized Domain Names in Applications (IDNA) system represent non-ASCII characters in DNS?",
+      "back": "By mapping Unicode strings into the valid DNS character set using Punycode."
+    },
+    {
+      "front": "In DNS delegation, what is the purpose of an 'NS record'?",
+      "back": "It points to the DNS names of the name servers responsible for a delegated child domain."
+    },
+    {
+      "front": "What are 'glue records' in the context of DNS delegation?",
+      "back": "IP addresses of child domain name servers provided by the parent domain to prevent circular dependencies."
+    },
+    {
+      "front": "What is the difference between a primary and a secondary authoritative name server?",
+      "back": "A primary server stores the original zone records, while a secondary server maintains a copy via an automatic update mechanism."
+    },
+    {
+      "front": "Which bit in a DNS response indicates that the responding server is an authority for the domain?",
+      "back": "The Authoritative Answer (AA) bit."
+    },
+    {
+      "front": "Define a 'lame delegation' in DNS.",
+      "back": "When a name server is designated as authoritative for a domain but does not possess authoritative data for it."
+    },
+    {
+      "front": "In a _____ query, a DNS server answers completely by querying other servers on behalf of the client.",
+      "back": "Recursive"
+    },
+    {
+      "front": "In an _____ query, a DNS resolver queries a chain of servers, following referrals until it can resolve the request.",
+      "back": "Iterative"
+    },
+    {
+      "front": "How is 'negative caching' determined in DNS?",
+      "back": "By using the values in the Start of Authority (SOA) record provided by authoritative servers when no record exists."
+    },
+    {
+      "front": "Which top-level domain is used for reverse DNS lookups in IPv4?",
+      "back": "in-addr.arpa"
+    },
+    {
+      "front": "Which top-level domain is used for reverse DNS lookups in IPv6?",
+      "back": "ip6.arpa"
+    },
+    {
+      "front": "DNS Type: PTR Record",
+      "back": "A pointer record used for reverse DNS lookups to associate an IP address with a domain name."
+    },
+    {
+      "front": "DNS Type: MX Record",
+      "back": "A mail exchanger record used to find the best mail server for delivering email to a specific domain."
+    },
+    {
+      "front": "DNS Type: CNAME Record",
+      "back": "A canonical name record used to create an alias for a domain name."
+    },
+    {
+      "front": "Which DNS mechanism updates a server with a client's IP address on-the-fly, such as when moving between mobile hotspots?",
+      "back": "Dynamic DNS (DDNS)."
+    },
+    {
+      "front": "List the four sections that follow the header in a DNS message.",
+      "back": "Question, Answer, Authority, and Additional sections."
+    },
+    {
+      "front": "What is the length of each field in a DNS header (e.g., Transaction ID, Flags)?",
+      "back": "16 bits."
+    },
+    {
+      "front": "In a DNS header, what does the QR bit indicate if set to 0?",
+      "back": "The message is a query."
+    },
+    {
+      "front": "What does the TC bit in a DNS header signify?",
+      "back": "The message was truncated due to excessive length."
+    },
+    {
+      "front": "In a DNS header, what does the RCODE field indicate?",
+      "back": "The response code, such as NOERROR or NXDOMAIN."
+    },
+    {
+      "front": "What is the maximum TTL value allowed for a DNS resource record in seconds?",
+      "back": "The maximum value is $2^{31}-1$ seconds."
+    },
+    {
+      "front": "What is a 'wildcard DNS record'?",
+      "back": "A record starting with an asterisk label ($*$) that matches any requested subdomain within a zone."
+    },
+    {
+      "front": "Which transport protocol and port number are conventionally used for clear-text DNS (Do53)?",
+      "back": "UDP port 53."
+    },
+    {
+      "front": "Protocol: DNS over TLS (DoT)",
+      "back": "An IETF standard that uses TLS to encrypt the entire DNS connection on TCP port 853."
+    },
+    {
+      "front": "Protocol: DNS over HTTPS (DoH)",
+      "back": "A standard that tunnels DNS query data over HTTPS via TCP port 443."
+    },
+    {
+      "front": "Which transport protocol provides privacy similar to DoT but with latency characteristics similar to UDP?",
+      "back": "DNS over QUIC (DoQ)."
+    },
+    {
+      "front": "How does 'Oblivious DoH' (ODoH) protect user privacy?",
+      "back": "It separates the identity of the client from the content of the query using ingress and egress nodes."
+    },
+    {
+      "front": "Concept: DNS Cache Poisoning",
+      "back": "An attack where false data is distributed to caching resolvers to redirect legitimate requests to malicious hosts."
+    },
+    {
+      "front": "Terminology: IDN Homograph Attack",
+      "back": "A spoofing attack where domain names are visual mimics of legitimate ones using similar-looking characters from different scripts."
+    },
+    {
+      "front": "How does a 'DNSMessenger' attack use the Domain Name System to control malware?",
+      "back": "It uses DNS TXT records to encode and send commands to infected systems."
+    },
+    {
+      "front": "Who is responsible for operating the database of names within a top-level domain (TLD) authoritative zone?",
+      "back": "A domain name registry."
+    },
+    {
+      "front": "Concept: Domain Name Registrar",
+      "back": "An organization accredited by ICANN to delegate the right to use domain names to registrants."
+    },
+    {
+      "front": "What is the difference between a 'thick' and 'thin' registry model?",
+      "back": "A thick registry stores all WHOIS data centrally, while a thin registry only holds basic data and points to registrar databases."
+    },
+    {
+      "front": "Which organization oversees the global Domain Name System and accredits registrars?",
+      "back": "Internet Corporation for Assigned Names and Numbers (ICANN)."
+    }
+  ]
+}

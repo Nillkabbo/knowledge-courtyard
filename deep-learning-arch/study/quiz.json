@@ -1,0 +1,265 @@
+{
+  "title": "Autoencoder Quiz",
+  "questions": [
+    {
+      "question": "According to the Universal Approximation Theorem, what property must an activation function possess for a two-layer neural network to be a universal function approximator?",
+      "answerOptions": [
+        {
+          "text": "The function must be non-linear.",
+          "isCorrect": true,
+          "rationale": "Non-linearity allows the network to model complex, non-additive relationships between inputs and outputs, whereas multiple linear layers would collapse into a single linear transformation."
+        },
+        {
+          "text": "The function must have a finite range.",
+          "isCorrect": false,
+          "rationale": "While a finite range can improve training stability, it is not the mathematical requirement for universal approximation."
+        },
+        {
+          "text": "The function must be continuously differentiable.",
+          "isCorrect": false,
+          "rationale": "Differentiability is vital for gradient-based optimization like backpropagation but is not the defining characteristic for universal approximation."
+        },
+        {
+          "text": "The function must be strictly positive.",
+          "isCorrect": false,
+          "rationale": "Strictly positive outputs, like those from the softplus function, are useful for specific tasks like variance prediction but do not satisfy the theorem's requirement."
+        }
+      ],
+      "hint": "Consider what happens to the mathematical capacity of a network if every layer merely performs a linear operation."
+    },
+    {
+      "question": "What is a primary advantage of using non-saturating activation functions like the Rectified Linear Unit ($ReLU$)?",
+      "answerOptions": [
+        {
+          "text": "They are less likely to suffer from the vanishing gradient problem.",
+          "isCorrect": true,
+          "rationale": "Non-saturating functions do not have gradients that approach zero as the input magnitude increases, ensuring that weights continue to update during training."
+        },
+        {
+          "text": "They provide a finite output range that stabilizes weight updates.",
+          "isCorrect": false,
+          "rationale": "Actually, non-saturating functions like $ReLU$ often have an infinite range on one side, which usually requires smaller learning rates."
+        },
+        {
+          "text": "They are continuously differentiable at all points including zero.",
+          "isCorrect": false,
+          "rationale": "Functions like $ReLU$ are not differentiable at exactly zero, which is a common trade-off for their computational efficiency."
+        },
+        {
+          "text": "They mimic the biological limit of maximum neuron firing rates.",
+          "isCorrect": false,
+          "rationale": "Biological limits are typically modeled by sigmoidal functions which have a fixed maximum value, unlike $ReLU$."
+        }
+      ],
+      "hint": "Think about the behavior of the gradient as the input value $v$ moves toward infinity."
+    },
+    {
+      "question": "In the context of autoencoders, how is an 'undercomplete' architecture typically defined?",
+      "answerOptions": [
+        {
+          "text": "The dimension of the latent space $Z$ is smaller than the dimension of the input space $X$.",
+          "isCorrect": true,
+          "rationale": "By forcing the data through a lower-dimensional bottleneck, the model is compelled to learn the most salient features for reconstruction."
+        },
+        {
+          "text": "The network contains fewer than three hidden layers between the encoder and decoder.",
+          "isCorrect": false,
+          "rationale": "Undercompleteness refers specifically to the dimensionality of the representation (code) rather than the depth of the layers."
+        },
+        {
+          "text": "The decoder family $D_{\\theta}$ is unable to perfectly reconstruct the input distribution.",
+          "isCorrect": false,
+          "rationale": "While reconstruction may not be perfect, undercompleteness is a structural constraint on the hidden units, not a measure of reconstruction error."
+        },
+        {
+          "text": "The hidden units have a higher capacity than the input units.",
+          "isCorrect": false,
+          "rationale": "This would describe an overcomplete autoencoder, which risks simply learning an identity function."
+        }
+      ],
+      "hint": "Recall the primary goal of dimensionality reduction."
+    },
+    {
+      "question": "A Contractive Autoencoder ($CAE$) includes a regularization term based on which mathematical construct?",
+      "answerOptions": [
+        {
+          "text": "The Frobenius norm of the Jacobian matrix of the encoder activations.",
+          "isCorrect": true,
+          "rationale": "This term penalizes sensitivity to small perturbations in the input, encouraging the encoder to map a local neighborhood of the input to a small area in the latent space."
+        },
+        {
+          "text": "The Kullback-Leibler divergence between the latent distribution and a prior.",
+          "isCorrect": false,
+          "rationale": "This describes the loss component used in variational autoencoders rather than contractive ones."
+        },
+        {
+          "text": "The $L1$ norm of the activation vector in the hidden layers.",
+          "isCorrect": false,
+          "rationale": "This is a penalty used to enforce sparsity in Sparse Autoencoders to limit the number of active neurons."
+        },
+        {
+          "text": "The $L2$ reconstruction error between the input $x$ and the decoded message $x'$.",
+          "isCorrect": false,
+          "rationale": "This is the standard least-squares loss for all basic autoencoders, not the specific contractive regularization term."
+        }
+      ],
+      "hint": "Think about a term that measures how much the code changes relative to infinitesimal changes in the input."
+    },
+    {
+      "question": "What is the relationship between a linear autoencoder with a single hidden layer and Principal Component Analysis ($PCA$)?",
+      "answerOptions": [
+        {
+          "text": "The weights of the autoencoder span the same subspace as the first $p$ principal components.",
+          "isCorrect": true,
+          "rationale": "While the weights themselves may not be identical or orthogonal to the principal components, they define the same vector subspace for the data projection."
+        },
+        {
+          "text": "The autoencoder weights are exactly equal to the eigenvectors of the data covariance matrix.",
+          "isCorrect": false,
+          "rationale": "Standard autoencoder training does not enforce the weights to be orthogonal or ordered by variance like eigenvectors in $PCA$."
+        },
+        {
+          "text": "Linear autoencoders are inherently less powerful than $PCA$ at reducing dimensionality.",
+          "isCorrect": false,
+          "rationale": "They are mathematically equivalent in their linear form, but the autoencoder provides a path toward non-linear generalizations."
+        },
+        {
+          "text": "The latent space of the autoencoder must be larger than the input space to emulate $PCA$.",
+          "isCorrect": false,
+          "rationale": "To reduce dimensionality like $PCA$, the hidden layer must have fewer units than the input."
+        }
+      ],
+      "hint": "Focus on the geometric subspace that the low-dimensional representation occupies."
+    },
+    {
+      "question": "Which noise process is commonly used during the training of Denoising Autoencoders ($DAE$) to ensure robust feature learning?",
+      "answerOptions": [
+        {
+          "text": "Salt-and-pepper noise.",
+          "isCorrect": true,
+          "rationale": "This type of noise randomly sets input values to their minimum or maximum, forcing the model to learn dependencies between features to recover the original signal."
+        },
+        {
+          "text": "Kronecker delta noise.",
+          "isCorrect": false,
+          "rationale": "The Kronecker delta is a discrete function used in mathematical notation and derivatives, not a standard stochastic noise process for training."
+        },
+        {
+          "text": "Periodic sinusoid perturbation.",
+          "isCorrect": false,
+          "rationale": "While sinusoids are used as activation functions, they are not standard noise models for corrupting autoencoder inputs."
+        },
+        {
+          "text": "Unit step masking.",
+          "isCorrect": false,
+          "rationale": "Masking noise involves setting inputs to zero, but the term 'unit step' refers to an activation function shape rather than a noise distribution."
+        }
+      ],
+      "hint": "Look for a noise type that involves extreme values of the input range."
+    },
+    {
+      "question": "Why might a Variational Autoencoder ($VAE$) be preferred over a standard autoencoder for generative tasks?",
+      "answerOptions": [
+        {
+          "text": "The latent space is composed of probability distributions rather than fixed vectors.",
+          "isCorrect": true,
+          "rationale": "This allows for smoother interpolation and sampling from the latent space to generate new, similar data points."
+        },
+        {
+          "text": "It uses the identity function to ensure the reconstruction is perfectly accurate.",
+          "isCorrect": false,
+          "rationale": "Perfect reconstruction via identity mapping would prevent the model from learning the underlying data distribution."
+        },
+        {
+          "text": "It eliminates the need for a decoder by using Bayesian inference.",
+          "isCorrect": false,
+          "rationale": "VAEs still require a decoder to transform sampled latent points back into the data space."
+        },
+        {
+          "text": "It is significantly more computationally efficient than standard backpropagation.",
+          "isCorrect": false,
+          "rationale": "VAEs actually introduce additional complexity due to the sampling process and the $KL$ divergence term."
+        }
+      ],
+      "hint": "Consider how the representation in the 'bottleneck' is structured to allow for random data synthesis."
+    },
+    {
+      "question": "The $GELU$ activation function, used in the $BERT$ model, is best described as a smooth version of which function?",
+      "answerOptions": [
+        {
+          "text": "Rectified Linear Unit ($ReLU$)",
+          "isCorrect": true,
+          "rationale": "$GELU$ weights inputs by their percentile according to a Gaussian distribution, creating a smoother transition than the sharp threshold of $ReLU$."
+        },
+        {
+          "text": "Hyperbolic Tangent ($tanh$)",
+          "isCorrect": false,
+          "rationale": "$GELU$ is non-saturating for positive values, unlike $tanh$ which saturates at $-1$ and $1$."
+        },
+        {
+          "text": "Logistic Sigmoid",
+          "isCorrect": false,
+          "rationale": "While related to the error function, $GELU$ acts more like a linear gate rather than a squashing function constrained between $0$ and $1$."
+        },
+        {
+          "text": "Heaviside Step Function",
+          "isCorrect": false,
+          "rationale": "The Heaviside function is discrete and non-differentiable at zero, which is the opposite of the smooth, differentiable $GELU$."
+        }
+      ],
+      "hint": "This function is a popular modern alternative that maintains linear behavior for large positive inputs while remaining smooth."
+    },
+    {
+      "question": "In anomaly detection using autoencoders, how is the 'anomaly score' typically calculated?",
+      "answerOptions": [
+        {
+          "text": "By measuring the magnitude of the reconstruction error.",
+          "isCorrect": true,
+          "rationale": "Because the model is trained on 'normal' data, it will struggle to accurately reconstruct data that deviates significantly from the training distribution."
+        },
+        {
+          "text": "By determining the sparsity level of the latent code $z$.",
+          "isCorrect": false,
+          "rationale": "Sparsity is a regularization constraint, not a direct measure of whether a specific input is an outlier."
+        },
+        {
+          "text": "By calculating the Frobenius norm of the weights in the decoder.",
+          "isCorrect": false,
+          "rationale": "Weight norms are used for regularization to prevent overfitting but do not vary based on the specific input being tested."
+        },
+        {
+          "text": "By checking if the activation function saturates for a given input.",
+          "isCorrect": false,
+          "rationale": "Saturation depends on the input magnitude and function type, but it doesn't necessarily indicate that an input is anomalous."
+        }
+      ],
+      "hint": "Consider what happens to the output when a model encounters something it hasn't been trained to reproduce."
+    },
+    {
+      "question": "What is the specific purpose of a Concrete Autoencoder?",
+      "answerOptions": [
+        {
+          "text": "Performing discrete feature selection from the input data.",
+          "isCorrect": true,
+          "rationale": "It uses a continuous relaxation of categorical distributions to learn which subset of input features is most useful for reconstruction."
+        },
+        {
+          "text": "Improving the efficiency of quantum activation functions.",
+          "isCorrect": false,
+          "rationale": "Concrete autoencoders are classical architectures focused on feature selection, not quantum circuit design."
+        },
+        {
+          "text": "Enforcing a strictly positive range on all hidden layers.",
+          "isCorrect": false,
+          "rationale": "While specific activation functions can do this, the 'concrete' aspect refers to the selection of discrete inputs."
+        },
+        {
+          "text": "Compressing text data for neural machine translation.",
+          "isCorrect": false,
+          "rationale": "While autoencoders can be used for translation, the Concrete variant is specifically tailored for selecting meaningful individual features."
+        }
+      ],
+      "hint": "Focus on the word 'discrete' and the idea of choosing a subset of inputs."
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "title": "Prompting Quiz",
+  "questions": [
+    {
+      "question": "In the context of machine learning, how does few-shot learning (FSL) primarily differ from conventional supervised learning?",
+      "answerOptions": [
+        {
+          "text": "It requires no labeled examples for the target class at all.",
+          "isCorrect": false,
+          "rationale": "This describes zero-shot learning, whereas few-shot learning requires a small number of labeled examples."
+        },
+        {
+          "text": "It relies on a minimal number of labeled examples per class rather than massive datasets.",
+          "isCorrect": true,
+          "rationale": "FSL is specifically defined by its ability to generalize from only a few instances per category."
+        },
+        {
+          "text": "It involves training the model on the entire internet to predict the next token.",
+          "isCorrect": false,
+          "rationale": "While large language models are trained this way, few-shot learning refers to the specific task setup of learning new classes from limited data."
+        },
+        {
+          "text": "It uses a larger context window to store all training examples simultaneously.",
+          "isCorrect": false,
+          "rationale": "The context window manages input size during inference, but FSL is about the model's ability to learn from the limited data provided."
+        }
+      ],
+      "hint": "Consider the quantity of training data needed for a model to recognize a new pattern."
+    },
+    {
+      "question": "According to the 'Word Weaver's Forge,' why is understanding tokenization critical for prompt engineering in Bengali compared to English?",
+      "answerOptions": [
+        {
+          "text": "Bengali words generally correspond to fewer tokens, making prompts cheaper.",
+          "isCorrect": false,
+          "rationale": "The source material notes that Bengali characters often split into more tokens, making them more expensive."
+        },
+        {
+          "text": "English and Bengali words have an identical $1:1$ word-to-token ratio.",
+          "isCorrect": false,
+          "rationale": "The ratio varies significantly by language; English is roughly $1.3$ tokens per word while Bengali is $3-5$."
+        },
+        {
+          "text": "Bengali words are more expensive as they often split into $3-5$ tokens per word.",
+          "isCorrect": true,
+          "rationale": "The way Byte Pair Encoding (BPE) handles non-Latin scripts often results in a higher token count for the same number of words."
+        },
+        {
+          "text": "Tokens in Bengali are ignored by the model's cost calculation logic.",
+          "isCorrect": false,
+          "rationale": "Every token, regardless of the language, contributes to the processing cost and context limit."
+        }
+      ],
+      "hint": "Think about how different scripts might be broken down by a sub-word tokenizer."
+    },
+    {
+      "question": "If a developer sets the 'temperature' parameter of an LLM to $0.0$, what is the most likely characteristic of the output?",
+      "answerOptions": [
+        {
+          "text": "The model will be highly creative and provide diverse, unpredictable answers.",
+          "isCorrect": false,
+          "rationale": "Higher temperature values (close to $1.0$ or above) lead to increased diversity and randomness."
+        },
+        {
+          "text": "The model will consistently choose the token with the highest probability, leading to deterministic results.",
+          "isCorrect": true,
+          "rationale": "A temperature of $0.0$ makes the model 'greedy,' ensuring it always picks the most likely next step."
+        },
+        {
+          "text": "The model will ignore the system prompt and focus only on user instructions.",
+          "isCorrect": false,
+          "rationale": "Temperature affects the sampling of tokens, not the weight hierarchy of the input instructions."
+        },
+        {
+          "text": "The model will hallucinate more frequently due to the lack of heat in the 'furnace'.",
+          "isCorrect": false,
+          "rationale": "Low temperature generally reduces hallucination in factual tasks by sticking to the most probable (and often most verified) tokens."
+        }
+      ],
+      "hint": "Recall the metaphor of the 'cool' furnace creating rigid, specific shapes."
+    },
+    {
+      "question": "Which component of the prompt hierarchy typically carries the most 'weight' in determining the model's personality and boundaries?",
+      "answerOptions": [
+        {
+          "text": "The User Message",
+          "isCorrect": false,
+          "rationale": "User messages are specific instructions for tasks but generally have less weight than the core rules."
+        },
+        {
+          "text": "The Assistant Messages",
+          "isCorrect": false,
+          "rationale": "Assistant messages provide context of previous turns but do not set the fundamental rules of the model."
+        },
+        {
+          "text": "The System Prompt",
+          "isCorrect": true,
+          "rationale": "The system prompt acts as the 'master blueprint,' setting the identity and safety constraints of the AI."
+        },
+        {
+          "text": "The RAG Metadata",
+          "isCorrect": false,
+          "rationale": "Metadata helps with retrieval and provenance but doesn't define the model's behavioral persona."
+        }
+      ],
+      "hint": "Think of the 'Command Hierarchy' metaphor regarding which scroll was described as the largest."
+    },
+    {
+      "question": "What is the primary benefit of adding the phrase 'Let's think step by step' to a prompt?",
+      "answerOptions": [
+        {
+          "text": "It reduces the total token count and lowers the cost of the API call.",
+          "isCorrect": false,
+          "rationale": "Adding words actually increases the token count slightly; its benefit is qualitative."
+        },
+        {
+          "text": "It triggers 'Zero-Shot Chain-of-Thought' reasoning, significantly improving accuracy on multi-step tasks.",
+          "isCorrect": true,
+          "rationale": "This specific phrase encourages the model to break down complex logic, which helps it avoid jumping to a wrong conclusion."
+        },
+        {
+          "text": "It forces the model to use JSON formatting for all mathematical answers.",
+          "isCorrect": false,
+          "rationale": "Formatting is controlled by structured output settings, not by phrases that encourage reasoning steps."
+        },
+        {
+          "text": "It creates a 'Shield Smith' layer to prevent prompt injection attacks.",
+          "isCorrect": false,
+          "rationale": "Reasoning phrases do not provide security; they only improve the logic of the response."
+        }
+      ],
+      "hint": "This technique is often called the '6-word revolution' for reasoning."
+    },
+    {
+      "question": "How does 'Few-Shot' prompting differ from 'Zero-Shot' prompting?",
+      "answerOptions": [
+        {
+          "text": "Few-shot requires the model to be fine-tuned on a new dataset before answering.",
+          "isCorrect": false,
+          "rationale": "Few-shot happens 'in-context' without changing the model's underlying parameters."
+        },
+        {
+          "text": "Zero-shot relies on the model's pre-existing knowledge, while few-shot provides $2-5$ examples to follow.",
+          "isCorrect": true,
+          "rationale": "The examples in few-shot prompting allow the model to recognize patterns in the input and output format."
+        },
+        {
+          "text": "Zero-shot is used only for images, while few-shot is used only for text.",
+          "isCorrect": false,
+          "rationale": "Both techniques are used across various modalities including text, image, and audio."
+        },
+        {
+          "text": "Few-shot prompting is less accurate because it confuses the model with too much data.",
+          "isCorrect": false,
+          "rationale": "Providing examples generally increases accuracy by $10-20\\%$ over zero-shot methods."
+        }
+      ],
+      "hint": "Think about the 'Mask Maker's' secret: showing is stronger than telling."
+    },
+    {
+      "question": "What is the 'Lost in the Middle' phenomenon in context window engineering?",
+      "answerOptions": [
+        {
+          "text": "Tokens located in the middle of a long prompt are more likely to be ignored or forgotten by the model.",
+          "isCorrect": true,
+          "rationale": "Models typically exhibit better recall for information at the very beginning and very end of a prompt."
+        },
+        {
+          "text": "The model becomes unable to process any tokens if the prompt length is exactly half of the context window.",
+          "isCorrect": false,
+          "rationale": "The model can still process the tokens, but its attention to their specific content decreases."
+        },
+        {
+          "text": "It refers to the model losing its persona and reverting to a 'base model' state.",
+          "isCorrect": false,
+          "rationale": "Persona stability is a different issue; 'Lost in the Middle' is specifically about information retrieval performance."
+        },
+        {
+          "text": "It is a security vulnerability where attackers hide malicious code in the middle of a text block.",
+          "isCorrect": false,
+          "rationale": "This describes a form of prompt injection, not the specific attention bottleneck of the transformer architecture."
+        }
+      ],
+      "hint": "Recall the 'Architect's Vault' and the diagram showing which parts of the vault are best remembered."
+    },
+    {
+      "question": "Which technique is recommended for production environments to ensure the model's output can be reliably parsed by other software?",
+      "answerOptions": [
+        {
+          "text": "Chain-of-Thought",
+          "isCorrect": false,
+          "rationale": "CoT produces conversational reasoning steps which are difficult for software to parse automatically."
+        },
+        {
+          "text": "Structured Outputs (e.g., JSON Mode)",
+          "isCorrect": true,
+          "rationale": "Using a schema or JSON mode ensures the output follows a strict format that machines can read."
+        },
+        {
+          "text": "Persona Engineering",
+          "isCorrect": false,
+          "rationale": "Giving a role influences the 'tone' and 'content' but does not guarantee a specific technical format."
+        },
+        {
+          "text": "Prompt Caching",
+          "isCorrect": false,
+          "rationale": "Caching is a method for optimizing cost and speed, not for controlling the format of the output."
+        }
+      ],
+      "hint": "Think about the 'Container Maker' fixing the shape of the vessel to hold water."
+    },
+    {
+      "question": "In the ReAct framework for autonomous agents, what is the role of the 'Observation' step?",
+      "answerOptions": [
+        {
+          "text": "It is where the user watches the model work without intervening.",
+          "isCorrect": false,
+          "rationale": "Observation is a step performed by the model itself, not the human user."
+        },
+        {
+          "text": "It is the feedback the model receives after taking an action, such as the result of a tool use.",
+          "isCorrect": true,
+          "rationale": "The model uses the observation to update its 'Thought' process for the next loop."
+        },
+        {
+          "text": "It is the initial step where the model reads the system prompt.",
+          "isCorrect": false,
+          "rationale": "Reading the system prompt happens before the loop begins; observations happen after an action is taken."
+        },
+        {
+          "text": "It is a security check that scans the model's internal weights for anomalies.",
+          "isCorrect": false,
+          "rationale": "Observations are external data points or tool outputs, not internal weight scans."
+        }
+      ],
+      "hint": "Consider the 'Automaton Maker's' loop: Thought $\\rightarrow$ Action $\\rightarrow$ Observation."
+    },
+    {
+      "question": "What is 'Prompt Injection' in the context of LLM security?",
+      "answerOptions": [
+        {
+          "text": "A way to speed up the model by injecting more tokens into the cache.",
+          "isCorrect": false,
+          "rationale": "This is prompt caching; injection is a malicious act."
+        },
+        {
+          "text": "A specialized technique to improve the 'Lost in the Middle' problem.",
+          "isCorrect": false,
+          "rationale": "RAG and chunking are used for that problem; injection is an exploit."
+        },
+        {
+          "text": "An attack where a user provides input designed to bypass safety filters or overwrite system instructions.",
+          "isCorrect": true,
+          "rationale": "Injection occurs when the model fails to distinguish between developer instructions and user-provided 'data'."
+        },
+        {
+          "text": "The process of injecting LaTeX code into a JSON object for better formatting.",
+          "isCorrect": false,
+          "rationale": "Formatting is a design choice, while injection refers to a security vulnerability."
+        }
+      ],
+      "hint": "Recall the 'Shield Smith' warning that the most dangerous enemy comes from 'within'."
+    },
+    {
+      "question": "Zero-shot learning relies on 'auxiliary information' to categorize unseen classes. Which of the following is an example of 'learning with attributes'?",
+      "answerOptions": [
+        {
+          "text": "Showing the model $10,000$ photos of a zebra until it learns the pattern.",
+          "isCorrect": false,
+          "rationale": "This is traditional supervised learning, which requires many examples."
+        },
+        {
+          "text": "Defining a zebra as looking like a 'horse' but with the property of 'stripes'.",
+          "isCorrect": true,
+          "rationale": "Attribute learning uses structured, observable properties to describe objects the model hasn't seen."
+        },
+        {
+          "text": "Using a $top\\_p$ value of $0.9$ to help the model guess what a zebra is.",
+          "isCorrect": false,
+          "rationale": "Sampling parameters do not provide the semantic knowledge needed for zero-shot recognition."
+        },
+        {
+          "text": "Asking the model to think step-by-step about why a zebra has stripes.",
+          "isCorrect": false,
+          "rationale": "Chain-of-thought helps with reasoning but doesn't provide the initial categorical definition for an unseen class."
+        }
+      ],
+      "hint": "Think about how you would describe an animal to someone who has never seen it before."
+    },
+    {
+      "question": "What is 'Prompt Caching' primarily used for in modern AI systems?",
+      "answerOptions": [
+        {
+          "text": "To allow the model to remember users' personal data across different accounts.",
+          "isCorrect": false,
+          "rationale": "Caching is for technical efficiency, not for long-term cross-user memory storage."
+        },
+        {
+          "text": "To reduce costs and latency by reusing pre-processed portions of the prompt, like long system instructions.",
+          "isCorrect": true,
+          "rationale": "If the prefix of a prompt remains stable, the provider can avoid re-processing it, saving compute time."
+        },
+        {
+          "text": "To increase the model's 'temperature' automatically when it gets stuck.",
+          "isCorrect": false,
+          "rationale": "Temperature is a static or dynamic sampling parameter, unrelated to the caching of token embeddings."
+        },
+        {
+          "text": "To prevent 'Vibe Coding' errors by locking the code in place.",
+          "isCorrect": false,
+          "rationale": "Vibe coding is a development methodology; caching is an infrastructure optimization."
+        }
+      ],
+      "hint": "Consider the 'Architect's Vault' and the benefit of a 'stable prefix'."
+    }
+  ]
+}

@@ -1,0 +1,395 @@
+{
+  "title": "Driving Quiz",
+  "questions": [
+    {
+      "question": "In Michigan's Graduated Driver Licensing (GDL) system, what is the minimum age required to begin Segment 1 driver education?",
+      "answerOptions": [
+        {
+          "text": "14 years and 8 months",
+          "isCorrect": true,
+          "rationale": "This is the legal minimum age to enroll in the first stage of the teen licensing process."
+        },
+        {
+          "text": "14 years and 9 months",
+          "isCorrect": false,
+          "rationale": "This age is actually the minimum required to apply for the Level 1 Learner License after completing Segment 1."
+        },
+        {
+          "text": "15 years",
+          "isCorrect": false,
+          "rationale": "While many students start at this age, the law allows them to begin several months earlier."
+        },
+        {
+          "text": "16 years",
+          "isCorrect": false,
+          "rationale": "At age 16, a teen is typically eligible for a Level 2 Provisional License, not just starting Segment 1."
+        }
+      ],
+      "hint": "Think of the earliest possible timeframe mentioned for starting the 'staircase' of licensing."
+    },
+    {
+      "question": "The pennant-shaped yellow sign indicating a 'No Passing Zone' is unique because of which placement rule?",
+      "answerOptions": [
+        {
+          "text": "It is the only sign placed on the left side of the road.",
+          "isCorrect": true,
+          "rationale": "Placement on the left ensures it is visible to drivers looking to the left as they prepare to pull out and pass."
+        },
+        {
+          "text": "It is always placed directly above the speed limit sign.",
+          "isCorrect": false,
+          "rationale": "Regulatory speed signs and warning pennant signs serve different purposes and are placed independently."
+        },
+        {
+          "text": "It must be placed at least 1,000 feet before a curve.",
+          "isCorrect": false,
+          "rationale": "Warning distances vary based on road speed and the specific hazard, and this is not a universal requirement for the pennant."
+        },
+        {
+          "text": "It is only used on one-way streets.",
+          "isCorrect": false,
+          "rationale": "No-passing zones are primarily used on two-lane, two-way roads where passing involves entering the oncoming lane."
+        }
+      ],
+      "hint": "Consider the driver's eye position when they are checking for oncoming traffic to overtake."
+    },
+    {
+      "question": "When approaching an intersection with a flashing yellow arrow, what action is required to turn left?",
+      "answerOptions": [
+        {
+          "text": "Yield to oncoming traffic and pedestrians before turning.",
+          "isCorrect": true,
+          "rationale": "A flashing yellow arrow allows a turn but indicates it is unprotected, requiring drivers to wait for a safe gap."
+        },
+        {
+          "text": "Stop completely and wait for the light to turn green.",
+          "isCorrect": false,
+          "rationale": "Stopping is not required unless there is a red light or a 'stop' condition; the flashing yellow allows movement if clear."
+        },
+        {
+          "text": "Turn immediately as oncoming traffic has a red light.",
+          "isCorrect": false,
+          "rationale": "This describes a steady green arrow; a flashing yellow means oncoming traffic still has a green light."
+        },
+        {
+          "text": "Proceed without yielding as you have the right-of-way.",
+          "isCorrect": false,
+          "rationale": "A flashing yellow indicates caution and a lack of protection, meaning you do not have the automatic right-of-way."
+        }
+      ],
+      "hint": "This signal is an 'unprotected' turn, unlike a solid green arrow."
+    },
+    {
+      "question": "If you arrive at an intersection where the traffic signal is completely dark due to a power outage, how should you proceed?",
+      "answerOptions": [
+        {
+          "text": "Treat the intersection as a four-way stop.",
+          "isCorrect": true,
+          "rationale": "In Michigan, a dead signal requires all drivers to stop and follow the rules of a four-way stop intersection."
+        },
+        {
+          "text": "Yield to traffic on the main road and proceed when clear.",
+          "isCorrect": false,
+          "rationale": "Treating one road as 'main' is dangerous when the lights are out; every driver must come to a full stop."
+        },
+        {
+          "text": "Maintain your speed but watch for cross-traffic.",
+          "isCorrect": false,
+          "rationale": "Proceeding without stopping at a dark signal is illegal and highly likely to cause a collision."
+        },
+        {
+          "text": "Wait until a police officer arrives to direct traffic.",
+          "isCorrect": false,
+          "rationale": "While an officer may eventually arrive, drivers are legally required to manage the intersection as a four-way stop in the meantime."
+        }
+      ],
+      "hint": "Consider the standard procedure for when no one has a 'green' light to move."
+    },
+    {
+      "question": "Two vehicles arrive at a four-way stop at the exact same time. Which driver has the legal right-of-way?",
+      "answerOptions": [
+        {
+          "text": "The driver on the right.",
+          "isCorrect": true,
+          "rationale": "Traffic laws specify that in a tie at a multi-way stop, the vehicle to the right goes first."
+        },
+        {
+          "text": "The driver traveling at a higher speed.",
+          "isCorrect": false,
+          "rationale": "Speed at arrival does not grant priority; the safety rules are based on relative position."
+        },
+        {
+          "text": "The driver on the more heavily traveled road.",
+          "isCorrect": false,
+          "rationale": "At a four-way stop, all roads are treated equally regardless of their usual traffic volume."
+        },
+        {
+          "text": "The driver going straight, regardless of position.",
+          "isCorrect": false,
+          "rationale": "While turns yield to straight traffic in some cases, the 'car on the right' rule is the primary tie-breaker for arrival."
+        }
+      ],
+      "hint": "The rule is designed to be a consistent tie-breaker based on position."
+    },
+    {
+      "question": "Under what condition are you NOT required to stop for a school bus with its red lights flashing and stop arm extended?",
+      "answerOptions": [
+        {
+          "text": "When traveling in the opposite direction on a highway divided by a physical barrier.",
+          "isCorrect": true,
+          "rationale": "A physical median, such as concrete or grass, separates traffic enough that the opposite side does not need to stop."
+        },
+        {
+          "text": "When there are at least four lanes of travel marked by painted lines.",
+          "isCorrect": false,
+          "rationale": "Painted lines do not count as a physical barrier; all lanes must stop on an undivided road."
+        },
+        {
+          "text": "When you are more than 50 feet away from the bus.",
+          "isCorrect": false,
+          "rationale": "Drivers must stop regardless of distance if they are approaching a bus with its stop signals active."
+        },
+        {
+          "text": "When the bus is stopped in a residential zone.",
+          "isCorrect": false,
+          "rationale": "The requirement to stop for a school bus applies to all types of roads, including residential streets."
+        }
+      ],
+      "hint": "Look for the difference between a 'painted' divider and a 'physical' one."
+    },
+    {
+      "question": "What is the minimum distance required for parking away from a fire hydrant in Michigan?",
+      "answerOptions": [
+        {
+          "text": "15 feet",
+          "isCorrect": true,
+          "rationale": "This distance ensures that emergency vehicles have enough space to access and operate the hydrant."
+        },
+        {
+          "text": "10 feet",
+          "isCorrect": false,
+          "rationale": "While common in some other states, Michigan law requires a wider clearance for hydrants."
+        },
+        {
+          "text": "20 feet",
+          "isCorrect": false,
+          "rationale": "This distance is the requirement for parking away from a crosswalk, not a fire hydrant."
+        },
+        {
+          "text": "30 feet",
+          "isCorrect": false,
+          "rationale": "A 30-foot clearance is required for parking near a stop sign or traffic signal."
+        }
+      ],
+      "hint": "The required distances generally increase as the hazard (like a railroad or stop sign) becomes more severe."
+    },
+    {
+      "question": "If your vehicle is equipped with an Anti-lock Braking System (ABS) and begins to skid on ice, how should you apply the brakes?",
+      "answerOptions": [
+        {
+          "text": "Apply firm, steady pressure and do not pump the pedal.",
+          "isCorrect": true,
+          "rationale": "ABS automatically pumps the brakes much faster than a human can; the driver just needs to maintain pressure."
+        },
+        {
+          "text": "Pump the brakes rapidly to prevent the wheels from locking.",
+          "isCorrect": false,
+          "rationale": "Pumping the brakes manually interferes with the ABS system's ability to regulate pressure."
+        },
+        {
+          "text": "Release the brake completely until the vehicle stops sliding.",
+          "isCorrect": false,
+          "rationale": "Releasing the brake entirely provides no stopping force; ABS is designed to allow braking while maintaining steering."
+        },
+        {
+          "text": "Shift the vehicle into neutral before braking.",
+          "isCorrect": false,
+          "rationale": "Shifting to neutral is a strategy for a stuck accelerator, not for managing a skid on ice."
+        }
+      ],
+      "hint": "The system is designed to do the 'pumping' for you."
+    },
+    {
+      "question": "According to Michigan's 'Zero Tolerance' law, a driver under the age of 21 is considered to be operating illegally with a Blood Alcohol Content (BAC) of at least:",
+      "answerOptions": [
+        {
+          "text": "0.02",
+          "isCorrect": true,
+          "rationale": "This very low threshold is intended to account for even minimal alcohol consumption by minors."
+        },
+        {
+          "text": "0.08",
+          "isCorrect": false,
+          "rationale": "This is the legal limit for drivers aged 21 and older, not for those under the legal drinking age."
+        },
+        {
+          "text": "0.04",
+          "isCorrect": false,
+          "rationale": "This is the legal limit specifically for commercial drivers (CDL holders)."
+        },
+        {
+          "text": "0.17",
+          "isCorrect": false,
+          "rationale": "This level triggers 'Super Drunk' penalties for adults, rather than the Zero Tolerance threshold for minors."
+        }
+      ],
+      "hint": "This limit is much lower than the adult standard to reflect a 'no alcohol' policy."
+    },
+    {
+      "question": "In winter conditions or on wet roads, the standard '3-second rule' for following distance should be increased to at least:",
+      "answerOptions": [
+        {
+          "text": "6 seconds or more",
+          "isCorrect": true,
+          "rationale": "Snow and ice significantly increase the distance needed to stop, requiring a much larger gap between vehicles."
+        },
+        {
+          "text": "4 seconds",
+          "isCorrect": false,
+          "rationale": "A 4-second gap is typically recommended for rain or night driving, but more is needed for snow and ice."
+        },
+        {
+          "text": "5 seconds",
+          "isCorrect": false,
+          "rationale": "While better than 3 or 4, 6 seconds is the specific safety standard cited for winter conditions in Michigan."
+        },
+        {
+          "text": "10 seconds",
+          "isCorrect": false,
+          "rationale": "While extremely safe, 10 seconds is not the standard minimum guideline mentioned in driving manuals."
+        }
+      ],
+      "hint": "The distance should double from the clear-weather standard when ice is a factor."
+    },
+    {
+      "question": "Which legal doctrine occasionally used in property disputes treats an abandoned right-of-way as if the boundary of the abutting property extends to the center of the route?",
+      "answerOptions": [
+        {
+          "text": "Centerline presumption",
+          "isCorrect": true,
+          "rationale": "Also known as the 'strip and gore' doctrine, it avoids leaving narrow, useless strips of land between property owners."
+        },
+        {
+          "text": "Easement by prescription",
+          "isCorrect": false,
+          "rationale": "This refers to the creation of a right-of-way through long-term use rather than the division of an abandoned one."
+        },
+        {
+          "text": "Eminent domain",
+          "isCorrect": false,
+          "rationale": "This is the government's power to seize land for public use, not a rule for dividing abandoned routes."
+        },
+        {
+          "text": "Railbanking",
+          "isCorrect": false,
+          "rationale": "This is a process to preserve a rail corridor for future use, preventing the land from reverting to neighbors."
+        }
+      ],
+      "hint": "The name of this doctrine implies a 'presumed' middle line."
+    },
+    {
+      "question": "What is the primary purpose of 'Railbanking' as described in the source material?",
+      "answerOptions": [
+        {
+          "text": "To preserve a railroad easement for future rail use while allowing it to be used as a trail.",
+          "isCorrect": true,
+          "rationale": "Railbanking prevents the full legal abandonment of the corridor, keeping it intact as a single linear piece of land."
+        },
+        {
+          "text": "To allow property owners to reclaim full ownership of the land immediately.",
+          "isCorrect": false,
+          "rationale": "Railbanking is specifically designed to prevent the land from reverting to the original owners."
+        },
+        {
+          "text": "To collect property taxes from railroad companies on out-of-service lines.",
+          "isCorrect": false,
+          "rationale": "Railbanking is a land-use preservation tool, not a tax collection mechanism."
+        },
+        {
+          "text": "To ensure that all abandoned tracks are immediately sold for scrap metal.",
+          "isCorrect": false,
+          "rationale": "While scrap may be sold, the primary goal of railbanking is corridor preservation rather than material salvage."
+        }
+      ],
+      "hint": "It 'banks' the corridor for potential future transportation needs."
+    },
+    {
+      "question": "If your right wheels drop off the paved edge of the road onto a soft shoulder, what is the safest recovery technique?",
+      "answerOptions": [
+        {
+          "text": "Ease off the gas, maintain a firm grip, and turn back only when speed is reduced.",
+          "isCorrect": true,
+          "rationale": "Sudden jerking of the wheel at high speeds often causes the car to roll over or dart into oncoming traffic."
+        },
+        {
+          "text": "Immediately steer back onto the pavement to avoid the soft shoulder.",
+          "isCorrect": false,
+          "rationale": "Yanking the steering wheel back while moving fast can cause the tires to 'catch' and flip the vehicle."
+        },
+        {
+          "text": "Apply the brakes firmly to stop as quickly as possible.",
+          "isCorrect": false,
+          "rationale": "Hard braking on uneven surfaces (pavement vs. gravel) can cause the car to spin out of control."
+        },
+        {
+          "text": "Accelerate slightly to pull the wheels back up onto the asphalt.",
+          "isCorrect": false,
+          "rationale": "Increasing speed makes the vehicle harder to control and increases the danger if a tire catches the edge."
+        }
+      ],
+      "hint": "Avoid any sudden steering movements until you have slowed down."
+    },
+    {
+      "question": "Why does a bridge often develop ice even when the rest of the road is dry and clear?",
+      "answerOptions": [
+        {
+          "text": "Cold air circulates both above and below the bridge, removing heat faster than the ground.",
+          "isCorrect": true,
+          "rationale": "The ground acts as an insulator for normal roads, but bridges lose heat from all sides, causing them to freeze earlier."
+        },
+        {
+          "text": "Bridges are typically painted with a reflective material that attracts frost.",
+          "isCorrect": false,
+          "rationale": "While colors can affect heat, the primary cause of bridge icing is the lack of ground insulation."
+        },
+        {
+          "text": "Exhaust fumes from cars below the bridge condense into ice on the surface.",
+          "isCorrect": false,
+          "rationale": "Condensation from below is not a significant factor compared to the loss of thermal energy to the air."
+        },
+        {
+          "text": "The salt used on bridges is less effective due to the elevation.",
+          "isCorrect": false,
+          "rationale": "Salt effectiveness is based on temperature and moisture, not elevation; the temperature on bridges is simply lower."
+        }
+      ],
+      "hint": "Think about the insulating properties of the earth versus open air."
+    },
+    {
+      "question": "A 'Michigan Left' turn requires a driver to go through an intersection and perform which maneuver?",
+      "answerOptions": [
+        {
+          "text": "Perform a U-turn at a median crossover and then turn right.",
+          "isCorrect": true,
+          "rationale": "This design replaces dangerous direct left turns with a combination of a U-turn and a right turn to improve safety."
+        },
+        {
+          "text": "Turn left directly from the far right lane.",
+          "isCorrect": false,
+          "rationale": "Turning left from a right lane is illegal and contrary to the structured design of a Michigan Left."
+        },
+        {
+          "text": "Wait in the center of the intersection until all lights turn red.",
+          "isCorrect": false,
+          "rationale": "Entering the intersection and waiting for the red light is known as 'clearing the intersection,' not a Michigan Left."
+        },
+        {
+          "text": "Exit the highway to a separate 'cloverleaf' ramp system.",
+          "isCorrect": false,
+          "rationale": "Cloverleaf ramps are used on freeways; the Michigan Left is used on divided surface streets with medians."
+        }
+      ],
+      "hint": "It involves using a designated 'crossover' area in the center of a divided road."
+    }
+  ]
+}

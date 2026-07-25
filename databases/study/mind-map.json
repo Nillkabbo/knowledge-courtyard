@@ -1,0 +1,190 @@
+{
+  "name": "Database Theory and Systems",
+  "children": [
+    {
+      "name": "Relational Model",
+      "children": [
+        {
+          "name": "Edgar F. Codd (1970)"
+        },
+        {
+          "name": "Mathematical Foundation (Set Theory)"
+        },
+        {
+          "name": "Key Concepts",
+          "children": [
+            {
+              "name": "Relation (Table)"
+            },
+            {
+              "name": "Tuple (Row)"
+            },
+            {
+              "name": "Attribute (Column)"
+            },
+            {
+              "name": "Primary & Foreign Keys"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SQL (Structured Query Language)",
+      "children": [
+        {
+          "name": "History",
+          "children": [
+            {
+              "name": "Donald Chamberlin & Raymond Boyce"
+            },
+            {
+              "name": "SEQUEL (IBM System R)"
+            }
+          ]
+        },
+        {
+          "name": "Sublanguages",
+          "children": [
+            {
+              "name": "DQL (Query)"
+            },
+            {
+              "name": "DDL (Definition)"
+            },
+            {
+              "name": "DML (Manipulation)"
+            },
+            {
+              "name": "DCL (Control)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Core Principles",
+      "children": [
+        {
+          "name": "ACID Transactions",
+          "children": [
+            {
+              "name": "Atomicity"
+            },
+            {
+              "name": "Consistency"
+            },
+            {
+              "name": "Isolation"
+            },
+            {
+              "name": "Durability"
+            }
+          ]
+        },
+        {
+          "name": "Normalization",
+          "children": [
+            {
+              "name": "1NF, 2NF, 3NF, BCNF"
+            },
+            {
+              "name": "Redundancy Reduction"
+            }
+          ]
+        },
+        {
+          "name": "CAP Theorem",
+          "children": [
+            {
+              "name": "Consistency"
+            },
+            {
+              "name": "Availability"
+            },
+            {
+              "name": "Partition Tolerance"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Database Types",
+      "children": [
+        {
+          "name": "NoSQL",
+          "children": [
+            {
+              "name": "Key-Value (Redis)"
+            },
+            {
+              "name": "Document (MongoDB)"
+            },
+            {
+              "name": "Column-Family (Cassandra)"
+            },
+            {
+              "name": "Graph (Neo4j)"
+            }
+          ]
+        },
+        {
+          "name": "Vector Databases",
+          "children": [
+            {
+              "name": "Embeddings Storage"
+            },
+            {
+              "name": "Similarity Search (Cosine)"
+            },
+            {
+              "name": "ANN Indexing (HNSW, IVF)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Performance & Architecture",
+      "children": [
+        {
+          "name": "Indexing",
+          "children": [
+            {
+              "name": "B-Tree (General Purpose)"
+            },
+            {
+              "name": "Hash Index (Exact Match)"
+            }
+          ]
+        },
+        {
+          "name": "Optimization",
+          "children": [
+            {
+              "name": "Cost-Based Optimizer"
+            },
+            {
+              "name": "Execution Plans (EXPLAIN)"
+            }
+          ]
+        },
+        {
+          "name": "Data Warehousing",
+          "children": [
+            {
+              "name": "OLAP vs OLTP"
+            },
+            {
+              "name": "Star & Snowflake Schemas"
+            },
+            {
+              "name": "Columnar Storage"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

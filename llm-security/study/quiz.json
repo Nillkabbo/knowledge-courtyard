@@ -1,0 +1,265 @@
+{
+  "title": "Adversarial Quiz",
+  "questions": [
+    {
+      "question": "In the context of adversarial machine learning, what is the primary distinction between an evasion attack and a data poisoning attack?",
+      "answerOptions": [
+        {
+          "text": "Evasion attacks occur during the inference phase, while poisoning attacks occur during the training phase.",
+          "isCorrect": true,
+          "rationale": "Evasion involves manipulating inputs to a trained model to cause misclassification, whereas poisoning involves contaminating the training data to influence the model's behavior from the start."
+        },
+        {
+          "text": "Poisoning attacks require white-box access, while evasion attacks are strictly black-box.",
+          "isCorrect": false,
+          "rationale": "Both types of attacks can be executed in either white-box or black-box settings depending on the adversary's knowledge."
+        },
+        {
+          "text": "Evasion attacks aim to steal the model parameters, while poisoning attacks aim to cause general system failure.",
+          "isCorrect": false,
+          "rationale": "Model extraction is the term for stealing parameters; evasion specifically focuses on tricking a model into making an incorrect prediction for a specific input."
+        },
+        {
+          "text": "Poisoning attacks only affect linear models, whereas evasion attacks target deep neural networks.",
+          "isCorrect": false,
+          "rationale": "Both attack modalities have been demonstrated across a wide range of architectures, including linear models, SVMs, and deep neural networks."
+        }
+      ],
+      "hint": "Consider the specific stage of the machine learning lifecycle where the adversary introduces the malicious influence."
+    },
+    {
+      "question": "Which mathematical relationship was discovered regarding adversarial training in linear regression models?",
+      "answerOptions": [
+        {
+          "text": "Adversarial training with perturbations restricted by the $\\infty$-norm is equivalent to Lasso regression.",
+          "isCorrect": true,
+          "rationale": "Research indicates that incorporating adversarial robustness against infinity-norm perturbations acts as a form of regularization similar to the $L_1$ penalty in Lasso."
+        },
+        {
+          "text": "Adversarial training using the $2$-norm is equivalent to using a Dropout layer.",
+          "isCorrect": false,
+          "rationale": "The source specifies that $2$-norm perturbations relate to Ridge regression (an $L_2$ penalty), not Dropout, which is a different regularization technique."
+        },
+        {
+          "text": "Adversarial training always results in a non-convex optimization problem for linear models.",
+          "isCorrect": false,
+          "rationale": "In the case of linear models, adversarial training remains convex, which simplifies the analytical study of these systems."
+        },
+        {
+          "text": "Perturbations restricted by the $\\infty$-norm are identical to Ridge regression penalties.",
+          "isCorrect": false,
+          "rationale": "Ridge regression corresponds to the $2$-norm (Euclidean norm), whereas the infinity-norm relates to Lasso regression."
+        }
+      ],
+      "hint": "Think about how different types of norm-restricted noise serve as forms of mathematical regularization."
+    },
+    {
+      "question": "What is 'indirect prompt injection' in the context of Large Language Models (LLMs)?",
+      "answerOptions": [
+        {
+          "text": "An attack where the malicious instructions are placed in external data sources like websites or emails retrieved by the model.",
+          "isCorrect": true,
+          "rationale": "Indirect injection occurs when the model processes content (like a webpage via RAG) that contains hidden instructions the model mistakes for legitimate commands."
+        },
+        {
+          "text": "An attack where the user explicitly tells the model to 'Ignore all previous instructions'.",
+          "isCorrect": false,
+          "rationale": "This describes a 'direct prompt injection' or 'jailbreak' where the user is the direct source of the adversarial command."
+        },
+        {
+          "text": "An attack that physically modifies the hardware running the LLM inference.",
+          "isCorrect": false,
+          "rationale": "Prompt injection is a software-level code injection attack and does not involve physical hardware tampering."
+        },
+        {
+          "text": "A method of poisoning the training dataset to include a permanent backdoor.",
+          "isCorrect": false,
+          "rationale": "While related to security, prompt injection happens during inference when processing prompts, rather than during the initial training phase."
+        }
+      ],
+      "hint": "Focus on the source of the malicious input and whether it comes directly from the user's chat box."
+    },
+    {
+      "question": "According to the 'Swiss Cheese Model' of defense in depth, how is a successful breach prevented?",
+      "answerOptions": [
+        {
+          "text": "By ensuring that the 'holes' or weaknesses in different security layers do not align.",
+          "isCorrect": true,
+          "rationale": "The model suggests that while every layer has flaws, multiple independent layers make it statistically unlikely for an attack to pass through all of them simultaneously."
+        },
+        {
+          "text": "By making a single, thick security layer that has no possible vulnerabilities.",
+          "isCorrect": false,
+          "rationale": "The source material notes that $100\\%$ security in a single layer is effectively impossible; hence, multiple layers are required."
+        },
+        {
+          "text": "By using human oversight as the only layer of defense for all queries.",
+          "isCorrect": false,
+          "rationale": "Human-in-the-loop is just one layer within a broader architecture that includes network security, guardrails, and system prompts."
+        },
+        {
+          "text": "By focusing entirely on input sanitization and ignoring the output validation.",
+          "isCorrect": false,
+          "rationale": "A robust defense in depth strategy requires monitoring both the input and the output to catch injections that might bypass initial filters."
+        }
+      ],
+      "hint": "Think about the geometric analogy of multiple slices with non-overlapping gaps."
+    },
+    {
+      "question": "In the study of LLM security, what is the primary goal of 'Red Teaming'?",
+      "answerOptions": [
+        {
+          "text": "Systematically attacking your own system to identify vulnerabilities before an adversary does.",
+          "isCorrect": true,
+          "rationale": "Red teaming involves simulating real-world attacks like jailbreaking or injection to measure success rates and patch flaws proactively."
+        },
+        {
+          "text": "Training a model using only 'Red' labeled datasets to improve political neutrality.",
+          "isCorrect": false,
+          "rationale": "Red teaming is a security testing methodology and is not related to the political categorization of training data."
+        },
+        {
+          "text": "Using a secondary LLM to automatically summarize long documents for the user.",
+          "isCorrect": false,
+          "rationale": "This describes a functional use case for LLMs (summarization) rather than a security testing protocol."
+        },
+        {
+          "text": "Increasing the model's temperature to make it more creative and resistant to repetitive inputs.",
+          "isCorrect": false,
+          "rationale": "Higher temperature actually makes a model more creative and potentially more susceptible to jailbreaks; Red Teaming is a process, not a parameter setting."
+        }
+      ],
+      "hint": "Consider the military-derived term for testing defenses by acting as the aggressor."
+    },
+    {
+      "question": "Which tool is specifically mentioned as an automated probing framework for testing LLM vulnerabilities like prompt injection and data leaks?",
+      "answerOptions": [
+        {
+          "text": "Garak",
+          "isCorrect": true,
+          "rationale": "Garak is an open-source tool used for comprehensive LLM probing, including checking for jailbreaks, prompt injections, and sensitive information disclosure."
+        },
+        {
+          "text": "Lasso",
+          "isCorrect": false,
+          "rationale": "Lasso is a mathematical regression technique used for regularization, not a security probing tool for LLMs."
+        },
+        {
+          "text": "Mobileye",
+          "isCorrect": false,
+          "rationale": "Mobileye is an autonomous driving system mentioned in the context of being tricked by physical adversarial attacks."
+        },
+        {
+          "text": "Nightshade",
+          "isCorrect": false,
+          "rationale": "Nightshade is a tool used by artists for training data poisoning to protect their work, not for probing LLM prompt security."
+        }
+      ],
+      "hint": "This tool is used in the 'Red Team' phase to perform hundreds of automated probes."
+    },
+    {
+      "question": "What is the 'Byzantine' problem in the context of distributed machine learning?",
+      "answerOptions": [
+        {
+          "text": "A scenario where a minority of participants in a federated learning network may send malicious gradients to corrupt the central model.",
+          "isCorrect": true,
+          "rationale": "Byzantine attacks involve participants deviating from expected behavior, necessitating robust aggregation rules to protect the integrity of the learning process."
+        },
+        {
+          "text": "The difficulty of translating ancient texts using modern natural language processing models.",
+          "isCorrect": false,
+          "rationale": "The term 'Byzantine' in computer science refers to a specific type of fault tolerance problem in distributed systems, not linguistic translation."
+        },
+        {
+          "text": "An attack where the model's weights are extracted via a side-channel energy analysis.",
+          "isCorrect": false,
+          "rationale": "This describes a hardware-based model extraction attack, whereas Byzantine faults focus on the coordination of distributed software nodes."
+        },
+        {
+          "text": "A failure caused by having too many non-iid data samples in a centralized training set.",
+          "isCorrect": false,
+          "rationale": "While non-iid data makes Byzantine resilience harder, the core Byzantine problem is the presence of actively malicious or failing nodes."
+        }
+      ],
+      "hint": "This concept relates to multi-agent or federated systems where some nodes cannot be trusted."
+    },
+    {
+      "question": "What is 'Membership Inference' in the context of model extraction attacks?",
+      "answerOptions": [
+        {
+          "text": "Determining whether a specific individual's data was used to train the target model.",
+          "isCorrect": true,
+          "rationale": "Membership inference leverages a model's higher confidence or overfitting on its training data to leak private information about who was in the dataset."
+        },
+        {
+          "text": "Inferring the brand of the GPU being used to host the model API.",
+          "isCorrect": false,
+          "rationale": "Membership inference is a privacy-related attack focused on the training data, not the underlying hardware architecture."
+        },
+        {
+          "text": "Guessing the system prompt by asking the model to 'repeat the word poem'.",
+          "isCorrect": false,
+          "rationale": "This technique (used on GPT-2) is a form of training data extraction, whereas membership inference specifically checks for a known data point's presence."
+        },
+        {
+          "text": "A technique where the adversary joins the developer's team to steal the source code.",
+          "isCorrect": false,
+          "rationale": "This would be an 'insider threat,' whereas membership inference is a technical attack performed by querying the model's outputs."
+        }
+      ],
+      "hint": "Think about the privacy risks associated with models trained on sensitive medical or personal records."
+    },
+    {
+      "question": "Why does the 'Base Rate Fallacy' pose a challenge for evaluating machine learning in the security domain?",
+      "answerOptions": [
+        {
+          "text": "Because high accuracy can be misleading when malicious events are extremely rare, leading to high false-positive volumes.",
+          "isCorrect": true,
+          "rationale": "In security, malicious samples often represent less than $1\\%$ of traffic; a model with $99\\%$ accuracy could still generate thousands of false alarms in a real-world setting."
+        },
+        {
+          "text": "Because security models are inherently unable to process more than two classes of data.",
+          "isCorrect": false,
+          "rationale": "The fallacy is a statistical interpretation error regarding probabilities, not a limitation on the number of classes a model can handle."
+        },
+        {
+          "text": "Because adversarial examples can only be generated if the base rate of the model is known.",
+          "isCorrect": false,
+          "rationale": "Adversarial examples are created via gradient or score-based methods; the base rate refers to the performance evaluation metrics."
+        },
+        {
+          "text": "Because the model weights decay over time due to concept drift.",
+          "isCorrect": false,
+          "rationale": "While concept drift is a problem, the base rate fallacy specifically concerns the misinterpretation of performance measures in unbalanced datasets."
+        }
+      ],
+      "hint": "Consider how a '99.9%' accurate virus scanner might behave if only one in a million files is actually a virus."
+    },
+    {
+      "question": "What is the primary function of a 'Kill Switch' in production LLM security operations?",
+      "answerOptions": [
+        {
+          "text": "To immediately stop all LLM traffic and tool access in the event of a critical breach or data leak.",
+          "isCorrect": true,
+          "rationale": "A kill switch is an emergency response mechanism used to 'contain the bleeding' when a system is compromised or acting dangerously."
+        },
+        {
+          "text": "To delete the model weights so an adversary cannot steal them via model inversion.",
+          "isCorrect": false,
+          "rationale": "Deleting weights would be too extreme for standard operation; the switch usually blocks traffic and returns a safe fallback message."
+        },
+        {
+          "text": "To automatically ban any user who mentions the word 'DAN'.",
+          "isCorrect": false,
+          "rationale": "This would be a specific 'Input Guardrail' or filter, whereas a kill switch is a broad system-wide emergency shutdown."
+        },
+        {
+          "text": "To restart the GPU server when the model's latency becomes too high.",
+          "isCorrect": false,
+          "rationale": "While servers may have restart triggers, a 'Kill Switch' specifically refers to a security intervention to prevent exploitation."
+        }
+      ],
+      "hint": "Think about the ultimate emergency procedure for a 'runaway' or compromised AI system."
+    }
+  ]
+}

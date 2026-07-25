@@ -1,0 +1,178 @@
+{
+  "name": "Circadian Rhythms and Dopamine",
+  "children": [
+    {
+      "name": "Circadian Rhythm",
+      "children": [
+        {
+          "name": "Definition",
+          "children": [
+            {
+              "name": "Natural oscillation"
+            },
+            {
+              "name": "24-hour cycle"
+            },
+            {
+              "name": "Endogenous process"
+            },
+            {
+              "name": "Environmentally entrained"
+            }
+          ]
+        },
+        {
+          "name": "Core Criteria",
+          "children": [
+            {
+              "name": "Free-running period"
+            },
+            {
+              "name": "Entrainability"
+            },
+            {
+              "name": "Temperature compensation"
+            }
+          ]
+        },
+        {
+          "name": "Biological Mechanisms",
+          "children": [
+            {
+              "name": "Suprachiasmatic Nucleus (SCN)"
+            },
+            {
+              "name": "Melatonin secretion"
+            },
+            {
+              "name": "Zeitgebers (light, temperature)"
+            },
+            {
+              "name": "Clock genes (PER, TIM, CLK)"
+            }
+          ]
+        },
+        {
+          "name": "Health Consequences",
+          "children": [
+            {
+              "name": "Jet lag"
+            },
+            {
+              "name": "Metabolic disorders"
+            },
+            {
+              "name": "Cardiovascular disease"
+            },
+            {
+              "name": "Cognitive impairment"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dopamine",
+      "children": [
+        {
+          "name": "Chemical Properties",
+          "children": [
+            {
+              "name": "Catecholamine family"
+            },
+            {
+              "name": "Neurotransmitter"
+            },
+            {
+              "name": "Paracrine messenger"
+            },
+            {
+              "name": "L-DOPA precursor"
+            }
+          ]
+        },
+        {
+          "name": "CNS Functions",
+          "children": [
+            {
+              "name": "Reward-motivated behavior"
+            },
+            {
+              "name": "Motivational salience"
+            },
+            {
+              "name": "Motor control"
+            },
+            {
+              "name": "Executive function"
+            }
+          ]
+        },
+        {
+          "name": "Peripheral Effects",
+          "children": [
+            {
+              "name": "Vasodilation"
+            },
+            {
+              "name": "Kidney sodium excretion"
+            },
+            {
+              "name": "Insulin reduction"
+            },
+            {
+              "name": "Immune suppression"
+            }
+          ]
+        },
+        {
+          "name": "Associated Disorders",
+          "children": [
+            {
+              "name": "Parkinson's disease"
+            },
+            {
+              "name": "Schizophrenia"
+            },
+            {
+              "name": "ADHD"
+            },
+            {
+              "name": "Drug addiction"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Interconnections",
+      "children": [
+        {
+          "name": "Shared Regulation",
+          "children": [
+            {
+              "name": "Substance abuse effects"
+            },
+            {
+              "name": "Sleep-wake cycle"
+            },
+            {
+              "name": "Bipolar disorder links"
+            }
+          ]
+        },
+        {
+          "name": "Environmental Impact",
+          "children": [
+            {
+              "name": "Light-driven inhibition"
+            },
+            {
+              "name": "Drug-induced desynchrony"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

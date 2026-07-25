@@ -1,0 +1,192 @@
+{
+  "name": "Neuroplasticity and Skill Acquisition",
+  "children": [
+    {
+      "name": "Neuroplasticity Core Concepts",
+      "children": [
+        {
+          "name": "Definition",
+          "children": [
+            {
+              "name": "Neural network reorganization"
+            },
+            {
+              "name": "Rewiring connections"
+            },
+            {
+              "name": "Brain adaptability"
+            }
+          ]
+        },
+        {
+          "name": "Types",
+          "children": [
+            {
+              "name": "Structural",
+              "children": [
+                {
+                  "name": "Neurogenesis"
+                },
+                {
+                  "name": "Axonal sprouting"
+                },
+                {
+                  "name": "Dendritic spine creation"
+                }
+              ]
+            },
+            {
+              "name": "Functional",
+              "children": [
+                {
+                  "name": "Homologous area adaptation"
+                },
+                {
+                  "name": "Map expansion"
+                },
+                {
+                  "name": "Cross-modal reassignment"
+                },
+                {
+                  "name": "Compensatory masquerade"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Influencing Factors",
+          "children": [
+            {
+              "name": "Age (higher in childhood)"
+            },
+            {
+              "name": "Environmental enrichment"
+            },
+            {
+              "name": "Psychological stress"
+            },
+            {
+              "name": "Physical exercise (BDNF)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Practice and Mastery",
+      "children": [
+        {
+          "name": "Deliberate Practice",
+          "children": [
+            {
+              "name": "K. Anders Ericsson research"
+            },
+            {
+              "name": "Clear goals and instructions"
+            },
+            {
+              "name": "Immediate feedback"
+            },
+            {
+              "name": "Repetition and concentration"
+            },
+            {
+              "name": "Cognitive effort"
+            }
+          ]
+        },
+        {
+          "name": "Practice Types",
+          "children": [
+            {
+              "name": "Purposeful practice"
+            },
+            {
+              "name": "Mental maintenance"
+            },
+            {
+              "name": "Skill chunking"
+            }
+          ]
+        },
+        {
+          "name": "Grit and Motivation",
+          "children": [
+            {
+              "name": "Angela Duckworth's grit"
+            },
+            {
+              "name": "Perseverance in adversity"
+            },
+            {
+              "name": "Sociocultural influence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Learning Frameworks",
+      "children": [
+        {
+          "name": "Zone of Proximal Development (ZPD)",
+          "children": [
+            {
+              "name": "Lev Vygotsky"
+            },
+            {
+              "name": "Independent vs. assisted performance"
+            },
+            {
+              "name": "More Knowledgeable Other (MKO)"
+            }
+          ]
+        },
+        {
+          "name": "Instructional Scaffolding",
+          "children": [
+            {
+              "name": "Jerome Bruner"
+            },
+            {
+              "name": "Support structure for learners"
+            },
+            {
+              "name": "Focused questions"
+            },
+            {
+              "name": "Gradual removal of aid"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Applications and Examples",
+      "children": [
+        {
+          "name": "Brain injury recovery"
+        },
+        {
+          "name": "Addiction-related changes"
+        },
+        {
+          "name": "Musical training"
+        },
+        {
+          "name": "Multilingualism"
+        },
+        {
+          "name": "Meditation"
+        },
+        {
+          "name": "Medical education"
+        },
+        {
+          "name": "Sensory compensation (blindness/deafness)"
+        }
+      ]
+    }
+  ]
+}

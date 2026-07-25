@@ -1,0 +1,196 @@
+{
+  "name": "Scientific Concepts and Figures",
+  "children": [
+    {
+      "name": "Angela Duckworth",
+      "children": [
+        {
+          "name": "Academic Career",
+          "children": [
+            {
+              "name": "Professor at University of Pennsylvania"
+            },
+            {
+              "name": "Founder of Character Lab"
+            },
+            {
+              "name": "MacArthur Fellow"
+            }
+          ]
+        },
+        {
+          "name": "Research Focus",
+          "children": [
+            {
+              "name": "Grit"
+            },
+            {
+              "name": "Self-control"
+            },
+            {
+              "name": "Character development"
+            }
+          ]
+        },
+        {
+          "name": "Publications",
+          "children": [
+            {
+              "name": "Grit: The Power of Passion and Perseverance"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grit (Personality Trait)",
+      "children": [
+        {
+          "name": "Definition",
+          "children": [
+            {
+              "name": "Perseverance for long-term goals"
+            },
+            {
+              "name": "Passion and stamina"
+            }
+          ]
+        },
+        {
+          "name": "Key Findings",
+          "children": [
+            {
+              "name": "Predicts success better than IQ"
+            },
+            {
+              "name": "Strongly correlated with conscientiousness"
+            },
+            {
+              "name": "Derived from perseverance of effort"
+            }
+          ]
+        },
+        {
+          "name": "Related Constructs",
+          "children": [
+            {
+              "name": "Resilience"
+            },
+            {
+              "name": "Hardiness"
+            },
+            {
+              "name": "Ambition"
+            },
+            {
+              "name": "Need for achievement"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Curiosity",
+      "children": [
+        {
+          "name": "Theories",
+          "children": [
+            {
+              "name": "Curiosity-drive theory"
+            },
+            {
+              "name": "Optimal-arousal theory"
+            },
+            {
+              "name": "Cognitive-consistency theory"
+            }
+          ]
+        },
+        {
+          "name": "Neurological Aspects",
+          "children": [
+            {
+              "name": "Dopamine reward pathway"
+            },
+            {
+              "name": "Nucleus accumbens"
+            },
+            {
+              "name": "Hippocampus (Memory)"
+            }
+          ]
+        },
+        {
+          "name": "Types",
+          "children": [
+            {
+              "name": "Perceptual vs Epistemic"
+            },
+            {
+              "name": "State vs Trait"
+            },
+            {
+              "name": "Social curiosity"
+            },
+            {
+              "name": "Morbid curiosity"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Scientific Method",
+      "children": [
+        {
+          "name": "Elements of Inquiry",
+          "children": [
+            {
+              "name": "Characterization (Observation)"
+            },
+            {
+              "name": "Hypothesis development"
+            },
+            {
+              "name": "Prediction"
+            },
+            {
+              "name": "Experimentation"
+            }
+          ]
+        },
+        {
+          "name": "Foundational Principles",
+          "children": [
+            {
+              "name": "Empiricism"
+            },
+            {
+              "name": "Falsifiability"
+            },
+            {
+              "name": "Reproducibility"
+            },
+            {
+              "name": "Peer review"
+            }
+          ]
+        },
+        {
+          "name": "Reasoning Modes",
+          "children": [
+            {
+              "name": "Inductive (Generalizing)"
+            },
+            {
+              "name": "Deductive (Specific conclusions)"
+            },
+            {
+              "name": "Abductive (Plausible explanation)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "name": "Statistics and Evidence",
+  "children": [
+    {
+      "name": "Foundational Concepts",
+      "children": [
+        {
+          "name": "Definition: Science of Uncertainty"
+        },
+        {
+          "name": "Population vs. Sample"
+        },
+        {
+          "name": "Data Types: Quantitative vs. Qualitative"
+        },
+        {
+          "name": "Levels of Measurement: Nominal, Ordinal, Interval, Ratio"
+        }
+      ]
+    },
+    {
+      "name": "Data Collection and Sampling",
+      "children": [
+        {
+          "name": "Probability Sampling",
+          "children": [
+            {
+              "name": "Simple Random Sampling"
+            },
+            {
+              "name": "Systematic Sampling"
+            },
+            {
+              "name": "Stratified Sampling"
+            },
+            {
+              "name": "Cluster Sampling"
+            },
+            {
+              "name": "PPS Sampling"
+            }
+          ]
+        },
+        {
+          "name": "Nonprobability Sampling",
+          "children": [
+            {
+              "name": "Convenience/Accidental Sampling"
+            },
+            {
+              "name": "Quota Sampling"
+            },
+            {
+              "name": "Snowball Sampling"
+            },
+            {
+              "name": "Voluntary Sampling"
+            }
+          ]
+        },
+        {
+          "name": "Sampling Frame"
+        },
+        {
+          "name": "Sampling Errors vs. Non-sampling Errors"
+        }
+      ]
+    },
+    {
+      "name": "Descriptive Statistics",
+      "children": [
+        {
+          "name": "Central Tendency",
+          "children": [
+            {
+              "name": "Mean"
+            },
+            {
+              "name": "Median"
+            },
+            {
+              "name": "Mode"
+            }
+          ]
+        },
+        {
+          "name": "Dispersion",
+          "children": [
+            {
+              "name": "Variance"
+            },
+            {
+              "name": "Standard Deviation"
+            },
+            {
+              "name": "Range"
+            }
+          ]
+        },
+        {
+          "name": "Normal Distribution (Gauss)"
+        },
+        {
+          "name": "68-95-99.7 Rule"
+        }
+      ]
+    },
+    {
+      "name": "Inferential Statistics",
+      "children": [
+        {
+          "name": "Hypothesis Testing",
+          "children": [
+            {
+              "name": "Null Hypothesis (H0)"
+            },
+            {
+              "name": "Alternative Hypothesis (H1)"
+            },
+            {
+              "name": "p-value and Significance Levels"
+            },
+            {
+              "name": "Type I and Type II Errors"
+            }
+          ]
+        },
+        {
+          "name": "Interval Estimation",
+          "children": [
+            {
+              "name": "Confidence Intervals"
+            },
+            {
+              "name": "Margin of Error"
+            },
+            {
+              "name": "Precision vs. Reliability"
+            }
+          ]
+        },
+        {
+          "name": "Bayesian Inference"
+        },
+        {
+          "name": "Causal Inference (DAGs and do-operator)"
+        }
+      ]
+    },
+    {
+      "name": "Experimental Design",
+      "children": [
+        {
+          "name": "Principles: Randomization, Replication, Blocking"
+        },
+        {
+          "name": "A/B Testing"
+        },
+        {
+          "name": "Experimental vs. Observational Studies"
+        },
+        {
+          "name": "Confounding Variables"
+        }
+      ]
+    },
+    {
+      "name": "Scientific Integrity",
+      "children": [
+        {
+          "name": "Replication Crisis"
+        },
+        {
+          "name": "p-hacking"
+        },
+        {
+          "name": "Preregistration and Open Data"
+        },
+        {
+          "name": "Misuse of Statistics"
+        }
+      ]
+    },
+    {
+      "name": "Historical Milestones",
+      "children": [
+        {
+          "name": "Al-Kindi (850): Frequency Analysis"
+        },
+        {
+          "name": "John Graunt (1662): Bills of Mortality"
+        },
+        {
+          "name": "Gauss (1809): Normal Distribution"
+        },
+        {
+          "name": "Fisher (1925): Hypothesis Testing"
+        },
+        {
+          "name": "Neyman (1937): Confidence Intervals"
+        },
+        {
+          "name": "Pearl (2000): Causality"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,365 @@
+{
+  "title": "Agile Flashcards",
+  "cards": [
+    {
+      "front": "The 17 software practitioners who agreed upon Agile values and principles in 2001 are known as the _____.",
+      "back": "Agile Alliance"
+    },
+    {
+      "front": "What is the primary document that outlines the values of the Agile Alliance?",
+      "back": "Manifesto for Agile Software Development"
+    },
+    {
+      "front": "According to the Agile Manifesto, what is valued over processes and tools?",
+      "back": "Individuals and interactions"
+    },
+    {
+      "front": "According to the Agile Manifesto, what is valued over comprehensive documentation?",
+      "back": "Working software"
+    },
+    {
+      "front": "According to the Agile Manifesto, what is valued over contract negotiation?",
+      "back": "Customer collaboration"
+    },
+    {
+      "front": "According to the Agile Manifesto, what is valued over following a plan?",
+      "back": "Responding to change"
+    },
+    {
+      "front": "In Agile terminology, what does 'capital A' Agile usually refer to?",
+      "back": "Concrete agile-based practices and methodologies."
+    },
+    {
+      "front": "In what year and location did the Agile Alliance first meet to discuss lightweight methods?",
+      "back": "2001 in Snowbird, Utah."
+    },
+    {
+      "front": "Which software development method, created in 1991, is considered a precursor to the Agile Manifesto?",
+      "back": "Rapid Application Development (RAD)"
+    },
+    {
+      "front": "Term: Information Radiator",
+      "back": "Definition: A large physical display located near the team that summarizes product development status."
+    },
+    {
+      "front": "Agile Principle 1: What is the highest priority for an Agile team?",
+      "back": "Satisfying the customer through early and continuous delivery of valuable software."
+    },
+    {
+      "front": "Agile Principle 2: How should Agile teams handle changing requirements late in development?",
+      "back": "They should welcome changes for the customer's competitive advantage."
+    },
+    {
+      "front": "Agile Principle 3: How frequently should working software be delivered?",
+      "back": "Every few weeks to every few months."
+    },
+    {
+      "front": "Agile Principle 4: Who must work together daily throughout the project?",
+      "back": "Business people and developers."
+    },
+    {
+      "front": "Agile Principle 5: Around what should Agile projects be built?",
+      "back": "Motivated individuals who are trusted to get the job done."
+    },
+    {
+      "front": "Agile Principle 6: What is the most effective method of conveying information to a development team?",
+      "back": "Face-to-face conversation."
+    },
+    {
+      "front": "Agile Principle 7: What is the primary measure of progress in Agile development?",
+      "back": "Working software."
+    },
+    {
+      "front": "Agile Principle 8: Agile processes promote sustainable development by maintaining a _____ pace.",
+      "back": "Constant"
+    },
+    {
+      "front": "Agile Principle 9: Continuous attention to technical excellence and _____ enhances agility.",
+      "back": "Good design"
+    },
+    {
+      "front": "Agile Principle 10: How is simplicity defined in the Agile context?",
+      "back": "The art of maximizing the amount of work not done."
+    },
+    {
+      "front": "Agile Principle 11: From what kind of teams do the best architectures and designs emerge?",
+      "back": "Self-organizing teams."
+    },
+    {
+      "front": "Agile Principle 12: How does a team improve its effectiveness at regular intervals?",
+      "back": "By reflecting on how to become more effective and adjusting behavior accordingly."
+    },
+    {
+      "front": "What are the typical timeframes for Agile iterations or sprints?",
+      "back": "One to four weeks."
+    },
+    {
+      "front": "What is the primary role of a 'Product Owner' in Scrum?",
+      "back": "A stakeholder representative who answers developer questions and prioritizes work."
+    },
+    {
+      "front": "What is the goal of the 'Daily Stand-up' or 'Daily Scrum'?",
+      "back": "To review progress toward a goal and adapt the approach in a brief session."
+    },
+    {
+      "front": "Concept: Timeboxing",
+      "back": "Definition: Setting a fixed, short period of time for an iteration or activity."
+    },
+    {
+      "front": "How do adaptive methods differ from predictive methods regarding future planning?",
+      "back": "Adaptive methods focus on responding to change, while predictive methods focus on detailed long-term planning."
+    },
+    {
+      "front": "According to Boehm and Turner, which culture type is best suited for Agile methods?",
+      "back": "A culture that responds to change."
+    },
+    {
+      "front": "How does the 'testing phase' in the Waterfall model differ from testing in Agile?",
+      "back": "In Waterfall, testing is a separate phase following builds; in Agile, testing occurs within the same iteration as programming."
+    },
+    {
+      "front": "What Agile term describes the philosophy that documentation should be 'just barely good enough'?",
+      "back": "JBGE (Just Barely Good Enough)"
+    },
+    {
+      "front": "Which Agile framework was primarily contributed by Ken Schwaber and Jeff Sutherland?",
+      "back": "Scrum"
+    },
+    {
+      "front": "Which Agile framework emphasizes practices like pair programming and test-driven development?",
+      "back": "Extreme Programming (XP)"
+    },
+    {
+      "front": "Which practice involves integrating source code changes frequently and testing them automatically?",
+      "back": "Continuous Integration (CI)"
+    },
+    {
+      "front": "Concept: Test-Driven Development (TDD)",
+      "back": "Definition: A practice where tests are written before the code that is being tested."
+    },
+    {
+      "front": "What is the purpose of a 'Product Backlog'?",
+      "back": "To maintain a prioritized list of functionality that a product should contain."
+    },
+    {
+      "front": "What is 'Acceptance Test-Driven Development' (ATDD)?",
+      "back": "A methodology based on communication between business customers, developers, and testers before implementation."
+    },
+    {
+      "front": "What is the term for a group of people with different functional expertise working toward a common goal?",
+      "back": "Cross-functional team"
+    },
+    {
+      "front": "The process of determining a specific system development approach for a unique project situation is called _____.",
+      "back": "Method tailoring"
+    },
+    {
+      "front": "What is 'Distributed Agile'?",
+      "back": "Applying agile software development with teams dispersed across multiple business locations."
+    },
+    {
+      "front": "Agile Pitfall: What is a consequence of 'Lack of overall product design'?",
+      "back": "It may allow rapid initial progress but require significant rework as the system scales."
+    },
+    {
+      "front": "Why is adding stories to an iteration in progress considered an 'agile smell'?",
+      "back": "It is detrimental to the flow of work and breaks the team's commitment to specific goals."
+    },
+    {
+      "front": "What is 'Technical Debt' in the context of Agile development?",
+      "back": "The accumulation of defects and lack of maintenance caused by focusing solely on new functionality."
+    },
+    {
+      "front": "What is the role of a 'Scrum Master' regarding the team's process?",
+      "back": "Facilitating the scrum process, coaching the team, and removing roadblocks."
+    },
+    {
+      "front": "How does 'Velocity tracking' help an Agile team?",
+      "back": "It serves as a metric to measure the amount of work a team can complete in an iteration."
+    },
+    {
+      "front": "What Agile practice involves two developers working together at one workstation?",
+      "back": "Pair Programming"
+    },
+    {
+      "front": "What is the 'Project Management Triangle'?",
+      "back": "The relationship between fixed time, resources, and scope."
+    },
+    {
+      "front": "In Agile management, what is 'Strategic Agility'?",
+      "back": "The ability of an organization to change course as its environment evolves."
+    },
+    {
+      "front": "What is the main difference between 'Agile' and 'Iterative' development methods?",
+      "back": "Agile completes small portions of deliverables in each cycle, while iterative methods evolve the entire set over time."
+    },
+    {
+      "front": "Which Agile practice uses 'Gherkin' style (Given/When/Then) to achieve a shared understanding of a problem?",
+      "back": "Behavior-Driven Development (BDD)"
+    },
+    {
+      "front": "What does the 'S' in SOLID stand for?",
+      "back": "Single Responsibility Principle"
+    },
+    {
+      "front": "What does the 'O' in SOLID stand for?",
+      "back": "Open–Closed Principle"
+    },
+    {
+      "front": "What does the 'L' in SOLID stand for?",
+      "back": "Liskov Substitution Principle"
+    },
+    {
+      "front": "What does the 'I' in SOLID stand for?",
+      "back": "Interface Segregation Principle"
+    },
+    {
+      "front": "What does the 'D' in SOLID stand for?",
+      "back": "Dependency Inversion Principle"
+    },
+    {
+      "front": "Who first proposed the term 'Continuous Integration' in 1991?",
+      "back": "Grady Booch"
+    },
+    {
+      "front": "The practice of improving code internal structure without changing its external behavior is called _____.",
+      "back": "Refactoring"
+    },
+    {
+      "front": "What is a 'Sprint Review'?",
+      "back": "A meeting at the end of an iteration where the team demonstrates the working product to stakeholders."
+    },
+    {
+      "front": "According to the text, what size of development effort is typically classified as 'large-scale'?",
+      "back": "$ > 20 $ developers."
+    },
+    {
+      "front": "Which survey has been tracking trends in Agile adoption since 2006?",
+      "back": "The State of Agile survey."
+    },
+    {
+      "front": "What is the 'Nokia test' used for?",
+      "back": "It is an internal assessment to determine if a team is truly following Scrum practices."
+    },
+    {
+      "front": "Agile Pitfall: What is the risk of having a Scrum Master who is also a primary technical contributor?",
+      "back": "They may lack the capacity to facilitate the process or remove team roadblocks effectively."
+    },
+    {
+      "front": "In a 'Pull system' of Agile coaching, when are tasks performed?",
+      "back": "Only when capacity is available."
+    },
+    {
+      "front": "What is the purpose of an 'Agile Retrospective'?",
+      "back": "For the team to reflect on the previous iteration and identify improvements for the next one."
+    },
+    {
+      "front": "How does 'User Story' help in requirement definition?",
+      "back": "It provides a brief, simplified description of a feature from the perspective of the end user."
+    },
+    {
+      "front": "Which Agile framework uses the 'Follow-the-sun' model for 24-hour development?",
+      "back": "Distributed Agile software development."
+    },
+    {
+      "front": "What is 'Code Refactoring' predicated on in Agile?",
+      "back": "Building quality in from the beginning and maintaining it through constant cleanup."
+    },
+    {
+      "front": "Why is 'Lack of sponsor support' listed as a common pitfall?",
+      "back": "Teams may face resistance from management and suffer from inadequate funding or resources."
+    },
+    {
+      "front": "What is the primary measure of progress according to Principle 7 of the Agile Manifesto?",
+      "back": "Working software."
+    },
+    {
+      "front": "Which individual is associated with 'Pragmatic Programming' and was an Agile Manifesto author?",
+      "back": "Dave Thomas (or Andrew Hunt)."
+    },
+    {
+      "front": "Concept: Planning Poker",
+      "back": "Definition: A consensus-based technique for estimating the effort or relative size of development tasks."
+    },
+    {
+      "front": "What does the term 'Agile Smells' refer to?",
+      "back": "Common anti-patterns or symptoms of a poorly implemented Agile process."
+    },
+    {
+      "front": "Principle: Co-location",
+      "back": "Definition: Situating team members together in the same physical space to improve communication."
+    },
+    {
+      "front": "Which Agile-related manifesto was written in 2009 to guide professional conduct and mastery?",
+      "back": "Software Craftsmanship Manifesto"
+    },
+    {
+      "front": "How does Agile development handle 'Criticality' compared to Formal methods?",
+      "back": "Agile is suited for low criticality, whereas Formal methods are for extreme criticality."
+    },
+    {
+      "front": "What is 'Sustainable Development' in the context of Principle 8?",
+      "back": "The ability of the sponsors, developers, and users to maintain a constant pace indefinitely."
+    },
+    {
+      "front": "In Agile, what is 'Backlog Refinement' (or grooming)?",
+      "back": "The ongoing process of reviewing and preparing stories for upcoming iterations."
+    },
+    {
+      "front": "What happens if problem-solving begins during a Daily Standup?",
+      "back": "It should be deferred to a separate sub-team meeting immediately following the standup."
+    },
+    {
+      "front": "How does 'Test Automation' support Agile refactoring?",
+      "back": "It allows developers to quickly confirm that changes have not introduced new defects."
+    },
+    {
+      "front": "What is the risk of having a development team member fill the Product Owner role?",
+      "back": "The team may make prioritization decisions without real feedback from the business."
+    },
+    {
+      "front": "Agile practices target 'complex systems' which have _____ properties.",
+      "back": "Indeterministic and non-linear"
+    },
+    {
+      "front": "In the PMBOK Guide, what is another name for 'Adaptive' life cycles?",
+      "back": "Change-driven life cycles."
+    },
+    {
+      "front": "What is 'Supply Chain Agility'?",
+      "back": "The ability of a supply chain to cope with uncertainty and rapidly adapt to changing demand."
+    },
+    {
+      "front": "Which Agile principle emphasizes that 'Simplicity' is essential?",
+      "back": "Principle 10"
+    },
+    {
+      "front": "What is the main goal of 'Agile Modeling' (AM)?",
+      "back": "To provide a collection of practices for effective modeling and documentation in a fast-changing environment."
+    },
+    {
+      "front": "How does 'Pair Programming' contribute to software quality?",
+      "back": "By providing continuous code review and knowledge sharing between two developers."
+    },
+    {
+      "front": "Which Agile framework was developed by Eric Ries and focuses on startups?",
+      "back": "Lean Startup"
+    },
+    {
+      "front": "What is 'Specification by Example' (SBE)?",
+      "back": "Using examples to capture requirements and guide coding and testing."
+    },
+    {
+      "front": "Why is 'Developer Burnout' a risk in Agile projects?",
+      "back": "Due to the focused pace and continuous nature of iterative practices."
+    },
+    {
+      "front": "In Scrum, what is a 'Sprint Planning' meeting?",
+      "back": "A session where the team negotiates and agrees on the work to be completed in the next iteration."
+    },
+    {
+      "front": "Which Agile method is often described as a 'Cooperative Game' by Alistair Cockburn?",
+      "back": "Crystal Clear"
+    }
+  ]
+}

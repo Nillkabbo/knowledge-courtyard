@@ -1,0 +1,225 @@
+{
+  "title": "AI Flashcards",
+  "cards": [
+    {
+      "front": "What is the primary scientific concern of computer vision?",
+      "back": "The theory behind artificial systems that extract information from images."
+    },
+    {
+      "front": "From an engineering perspective, computer vision seeks to automate tasks normally performed by the _____.",
+      "back": "Human visual system"
+    },
+    {
+      "front": "Which 1966 academic project initially believed computer vision could be solved in a single summer?",
+      "back": "The Summer Vision Project (MIT Papert project)."
+    },
+    {
+      "front": "In computer vision, 'understanding' refers to transforming visual images into descriptions of the world that can elicit _____.",
+      "back": "Appropriate action"
+    },
+    {
+      "front": "How did computer vision distinguish itself from digital image processing in the 1960s?",
+      "back": "By focusing on extracting three-dimensional structure for full scene understanding."
+    },
+    {
+      "front": "Which mathematical concept in the 1980s treated vision problems within an optimization framework alongside Markov random fields?",
+      "back": "Regularization"
+    },
+    {
+      "front": "Term: Scale-space",
+      "back": "Definition: A mathematical framework for multi-scale image representation used to enhance image structures."
+    },
+    {
+      "front": "The 1990s saw increased interaction between computer vision and which other discipline?",
+      "back": "Computer graphics"
+    },
+    {
+      "front": "Which specific statistical learning technique was first used in the 1990s for face recognition?",
+      "back": "Eigenface"
+    },
+    {
+      "front": "What is the technological goal of computer vision?",
+      "back": "To apply theories and models to the construction of computer vision systems."
+    },
+    {
+      "front": "Term: Machine Vision",
+      "back": "Definition: A systems engineering discipline focusing on factory automation and industrial applications."
+    },
+    {
+      "front": "How do computer vision and image processing differ in terms of output?",
+      "back": "Image processing typically outputs another image, while computer vision outputs a description or analysis of content."
+    },
+    {
+      "front": "Which field provides the core understanding of image formation through quantum physics?",
+      "back": "Solid-state physics"
+    },
+    {
+      "front": "The Neocognitron (1970s) was a neural network inspired by which biological structure?",
+      "back": "The primary visual cortex (V1)."
+    },
+    {
+      "front": "Concept: Biological Vision",
+      "back": "Definition: The study of physiological processes behind visual perception in humans and animals."
+    },
+    {
+      "front": "Which field uses computer vision to act as a vision sensor for path planning and deliberation?",
+      "back": "Robotic navigation"
+    },
+    {
+      "front": "Term: Visual Computing",
+      "back": "Definition: A generic term for all computer science disciplines dealing with images and 3D models."
+    },
+    {
+      "front": "In the medical field, what is the primary purpose of 'medical computer vision'?",
+      "back": "Extracting information from image data to diagnose a patient."
+    },
+    {
+      "front": "Term: Optical Sorting",
+      "back": "Definition: The agricultural process of using machine vision to remove undesirable foodstuff from bulk material."
+    },
+    {
+      "front": "How is computer vision utilized in modern military 'battlefield awareness'?",
+      "back": "By fusing information from multiple sensors to reduce complexity and support strategic decisions."
+    },
+    {
+      "front": "What technology do fully autonomous vehicles use to map their environment?",
+      "back": "Simultaneous Localization and Mapping (SLAM)."
+    },
+    {
+      "front": "How do vision-based tactile sensors determine surface imperfections?",
+      "back": "By measuring the deformation of a rubber mold or the shift of internal point markers via a camera."
+    },
+    {
+      "front": "What is the 'classical problem' in computer vision recognition?",
+      "back": "Determining whether or not image data contains a specific object, feature, or activity."
+    },
+    {
+      "front": "Difference: Identification vs. Detection",
+      "back": "Identification recognizes a specific individual instance; detection scans for objects and their locations."
+    },
+    {
+      "front": "Which benchmark test demonstrated that convolutional neural networks (CNNs) have reached human-level accuracy in object classification?",
+      "back": "The ImageNet Large Scale Visual Recognition Challenge."
+    },
+    {
+      "front": "Term: Optical Character Recognition (OCR)",
+      "back": "Definition: Identifying printed or handwritten characters in images to encode them into machine-editable text."
+    },
+    {
+      "front": "Concept: Egomotion",
+      "back": "Definition: Determining the 3D rigid motion (rotation and translation) of a camera from an image sequence."
+    },
+    {
+      "front": "What is the goal of 'optical flow' analysis?",
+      "back": "To determine the apparent motion of each point in an image relative to the image plane."
+    },
+    {
+      "front": "Term: Inpainting",
+      "back": "Definition: A technique in image restoration used to recover or restore damaged parts of an image."
+    },
+    {
+      "front": "In a computer vision system, what is the purpose of 'pre-processing'?",
+      "back": "To ensure image data satisfies assumptions required by extraction methods (e.g., noise reduction)."
+    },
+    {
+      "front": "Term: Feature Extraction",
+      "back": "Definition: The step where image primitives like lines, edges, ridges, or interest points are isolated from data."
+    },
+    {
+      "front": "What are the three levels of abstraction in Image-Understanding Systems (IUS)?",
+      "back": "Low level (primitives), intermediate level (boundaries/surfaces), and high level (objects/events)."
+    },
+    {
+      "front": "Term: Vision Processing Unit (VPU)",
+      "back": "Definition: A specialized class of processors designed to complement CPUs and GPUs for computer vision tasks."
+    },
+    {
+      "front": "Define 'Speech Recognition' (ASR).",
+      "back": "A sub-field of computational linguistics that translates spoken language into text or interpretable forms."
+    },
+    {
+      "front": "What is the primary distinction between speech recognition and voice recognition?",
+      "back": "Speech recognition identifies spoken content; voice recognition identifies the individual speaker."
+    },
+    {
+      "front": "Which 1952 Bell Labs system was the first to recognize single-speaker digits?",
+      "back": "Audrey."
+    },
+    {
+      "front": "Term: Source-Filter Model",
+      "back": "Definition: A model of speech production published by Gunnar Fant in 1960."
+    },
+    {
+      "front": "Which IBM machine, capable of recognizing 16 words, debuted at the 1962 World's Fair?",
+      "back": "Shoebox."
+    },
+    {
+      "front": "Who was the first researcher to work on 'continuous' speech recognition?",
+      "back": "Raj Reddy."
+    },
+    {
+      "front": "Term: Dynamic Time Warping (DTW)",
+      "back": "Definition: An algorithm that measures similarity between two sequences that may vary in time or speed."
+    },
+    {
+      "front": "Which probabilistic model replaced DTW as the dominant speech recognition algorithm in the 1980s?",
+      "back": "Hidden Markov Model (HMM)."
+    },
+    {
+      "front": "In HMM-based speech recognition, a speech signal is approximated as a _____ signal over short time scales.",
+      "back": "Piecewise stationary (or short-time stationary)"
+    },
+    {
+      "front": "Term: Cepstral Coefficients",
+      "back": "Definition: Features obtained by Fourier and cosine transforms of speech used as input vectors for HMMs."
+    },
+    {
+      "front": "Why are Long Short-Term Memory (LSTM) networks particularly effective for speech recognition?",
+      "back": "They avoid the vanishing gradient problem and can remember events over thousands of discrete time steps."
+    },
+    {
+      "front": "What milestone did Microsoft researchers achieve in 2017 regarding the Switchboard benchmark?",
+      "back": "They reached human parity in transcribing conversational speech."
+    },
+    {
+      "front": "The 2010 deep learning breakthrough in ASR decreased error rates by approximately what percentage?",
+      "back": "$30\\%$."
+    },
+    {
+      "front": "What is the defining characteristic of 'end-to-end' ASR systems?",
+      "back": "They learn pronunciation, acoustic, and language models as a single component directly from data."
+    },
+    {
+      "front": "Term: Connectionist Temporal Classification (CTC)",
+      "back": "Definition: A layer/method that allows neural networks to map speech acoustics directly to characters."
+    },
+    {
+      "front": "What is the specific functionality of the 'Listen, Attend and Spell' (LAS) model?",
+      "back": "It uses an attention mechanism to focus on parts of an acoustic signal and spell transcripts character by character."
+    },
+    {
+      "front": "Which MIT Media Lab device translates neuromuscular signals from subvocalization into words?",
+      "back": "AlterEgo."
+    },
+    {
+      "front": "In healthcare ASR, what occurs during 'back-end' or deferred speech recognition?",
+      "back": "Dictation is processed by a machine, and the draft is later finalized by a human editor."
+    },
+    {
+      "front": "Term: LipNet",
+      "back": "Definition: The first end-to-end sentence-level lipreading model introduced by the University of Oxford."
+    },
+    {
+      "front": "Why is 'speaker independence' considered a major breakthrough in speech recognition history?",
+      "back": "It removed the requirement for a 'training' period for every individual user's voice."
+    },
+    {
+      "front": "HMM-based systems often use $n$-dimensional real-valued vectors produced every _____ milliseconds.",
+      "back": "10"
+    },
+    {
+      "front": "Term: Gaussian Mixture Model (GMM)",
+      "back": "Definition: A statistical distribution used in HMM states to provide a likelihood for observed speech vectors."
+    }
+  ]
+}

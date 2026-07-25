@@ -1,0 +1,309 @@
+{
+  "title": "Psychology Flashcards",
+  "cards": [
+    {
+      "front": "What is the scientific study of conditions and processes that contribute to positive psychological states and well-being?",
+      "back": "Positive psychology"
+    },
+    {
+      "front": "According to Martin Seligman, what psychological condition results from a perceived absence of control over the outcome of a situation?",
+      "back": "Learned helplessness"
+    },
+    {
+      "front": "The original theory of learned helplessness was discovered using an experimental conditioning protocol involving _____.",
+      "back": "Dogs"
+    },
+    {
+      "front": "In learned helplessness experiments, why did the subjects fail to escape an unpleasant situation when they finally had the power to do so?",
+      "back": "They had previously learned that they were unable to avoid the situation."
+    },
+    {
+      "front": "Seligman reformulated the theory of learned helplessness to include _____, which refers to how individuals explain the causes of events.",
+      "back": "Attributional style"
+    },
+    {
+      "front": "Which psychological disorder did Seligman argue results in part from learned helplessness and a perceived absence of control?",
+      "back": "Clinical depression"
+    },
+    {
+      "front": "What is the 'positive' counterpart to the 'Diagnostic and Statistical Manual of Mental Disorders' (DSM) created by Seligman and Peterson?",
+      "back": "Character Strengths and Virtues"
+    },
+    {
+      "front": "List the six character strengths identified in the 'Character Strengths and Virtues' framework.",
+      "back": "Wisdom/knowledge, courage, humanity, justice, temperance, and transcendence."
+    },
+    {
+      "front": "In the 'Character Strengths and Virtues' framework, which virtue includes the sub-entries of forgiveness, humility, prudence, and self-regulation?",
+      "back": "Temperance"
+    },
+    {
+      "front": "True or False: The six virtues in 'Character Strengths and Virtues' are organized in a hierarchy where some are more fundamental than others.",
+      "back": "False"
+    },
+    {
+      "front": "According to Seligman's Well-Being Theory, what are the three properties an element must have to count as an element of well-being?",
+      "back": "It contributes to well-being, is pursued for its own sake, and is defined and measured independently of other elements."
+    },
+    {
+      "front": "What does the mnemonic PERMA stand for in Seligman's well-being model?",
+      "back": "Positive emotion, Engagement, Relationships, Meaning, and Achievement."
+    },
+    {
+      "front": "How is 'Positive emotion' assessed within the PERMA model?",
+      "back": "Subjectively"
+    },
+    {
+      "front": "Within the PERMA model, 'Engagement' is specifically defined as the presence of a _____.",
+      "back": "Flow state"
+    },
+    {
+      "front": "In the PERMA model, how is 'Meaning' defined?",
+      "back": "Belonging to and serving something bigger than one's self."
+    },
+    {
+      "front": "In the PERMA model, what defines 'Achievement'?",
+      "back": "Accomplishment pursued even in the absence of positive emotion, meaning, or positive relationships."
+    },
+    {
+      "front": "What theory, developed by Dacher Keltner, suggests that acquiring power has a disinhibiting effect on exercising it?",
+      "back": "Approach/Inhibition Theory of Power"
+    },
+    {
+      "front": "According to Dacher Keltner's research, how does social class generally affect a person's likelihood of behaving unethically?",
+      "back": "People from more privileged class backgrounds are more likely to engage in unethical behavior."
+    },
+    {
+      "front": "Research by Keltner and Piff found that people from privileged backgrounds are _____ likely to feel compassion for those who suffer.",
+      "back": "Less"
+    },
+    {
+      "front": "How do individuals from privileged social classes typically explain their success?",
+      "back": "In terms of their own superior traits."
+    },
+    {
+      "front": "According to the social functionalist framework, what is the primary purpose of emotions?",
+      "back": "To enable individuals to form relationships vital to survival."
+    },
+    {
+      "front": "Dacher Keltner's work has documented the universality of upwards of _____ distinct facial expressions.",
+      "back": "20"
+    },
+    {
+      "front": "Research suggests that emotion space is driven by _____ (e.g., awe, sympathy) rather than broader constructs like valence or arousal.",
+      "back": "Discrete emotion concepts"
+    },
+    {
+      "front": "Which complex emotion influences moral, spiritual, and aesthetic lives by inspiring cooperative tendencies?",
+      "back": "Awe"
+    },
+    {
+      "front": "Name the 'eight wonders of life' where individuals commonly find experiences of awe.",
+      "back": "Moral beauty, nature, moving in unison, music, visual art, spirituality, big ideas, and life and death."
+    },
+    {
+      "front": "How does awe help individuals integrate into strong communities?",
+      "back": "By inspiring cooperative tendencies and a more collective self."
+    },
+    {
+      "front": "What Confucian concept describes the relationship between actions that bring out the good in others versus the bad?",
+      "back": "The jen ratio"
+    },
+    {
+      "front": "According to Dacher Keltner, how does a person's 'jen ratio' score relate to their happiness?",
+      "back": "A greater score (more good-bringing actions) results in higher happiness."
+    },
+    {
+      "front": "What are Robert Cialdini's six original principles of influence?",
+      "back": "Reciprocity, Commitment and Consistency, Social Proof, Authority, Liking, and Scarcity."
+    },
+    {
+      "front": "In persuasion, what is the principle of 'Reciprocity'?",
+      "back": "The tendency for people to feel obligated to return a favor or a gift."
+    },
+    {
+      "front": "Which principle of influence describes the tendency to follow through on a choice or statement one has already made?",
+      "back": "Commitment and Consistency"
+    },
+    {
+      "front": "The principle of _____ states that people look to the behavior of others to determine their own actions, especially in uncertain situations.",
+      "back": "Social Proof"
+    },
+    {
+      "front": "What is the 'Unity Principle' in Cialdini's theory of persuasion?",
+      "back": "The more we identify ourselves with others, the more we are influenced by them."
+    },
+    {
+      "front": "The concept of _____ refers to the practice of influencing people in the moments immediately before a request is made.",
+      "back": "Pre-suasion"
+    },
+    {
+      "front": "Under the principle of _____, people are more easily persuaded by individuals they find attractive, similar to themselves, or who give them compliments.",
+      "back": "Liking"
+    },
+    {
+      "front": "The principle of _____ suggests that people assign more value to opportunities or products that are less available.",
+      "back": "Scarcity"
+    },
+    {
+      "front": "The principle of _____ describes the tendency for people to obey or be influenced by those perceived as experts or in positions of power.",
+      "back": "Authority"
+    },
+    {
+      "front": "Which virtue in the 'Character Strengths and Virtues' model includes the sub-entries of bravery, persistence, integrity, and vitality?",
+      "back": "Courage"
+    },
+    {
+      "front": "Which virtue in the 'Character Strengths and Virtues' model includes the sub-entries of creativity, curiosity, open-mindedness, love of learning, and perspective?",
+      "back": "Wisdom/knowledge"
+    },
+    {
+      "front": "Which virtue in the 'Character Strengths and Virtues' model includes the sub-entries of love, kindness, and social intelligence?",
+      "back": "Humanity"
+    },
+    {
+      "front": "Which virtue in the 'Character Strengths and Virtues' model includes the sub-entries of citizenship, fairness, and leadership?",
+      "back": "Justice"
+    },
+    {
+      "front": "Which virtue in the 'Character Strengths and Virtues' model includes the sub-entries of appreciation of beauty, gratitude, hope, humor, and spirituality?",
+      "back": "Transcendence"
+    },
+    {
+      "front": "According to Keltner's computational perspective, what drives the representation and recognition of emotional experience?",
+      "back": "Discrete emotion concepts"
+    },
+    {
+      "front": "What research method did Cialdini use to identify the principles of influence for his book 'Influence'?",
+      "back": "Undercover field research in car dealerships, fund-raising organizations, and telemarketing firms."
+    },
+    {
+      "front": "How does experiencing 'moving in unison' or music impact an individual's sense of community according to Keltner?",
+      "back": "It fosters experiences of awe that encourage community integration and cooperation."
+    },
+    {
+      "front": "According to the 'jen ratio' concept, actions that bring the good of others to _____ lead to a higher score.",
+      "back": "Completion"
+    },
+    {
+      "front": "Term: Flow State",
+      "back": "Definition: A state of total absorption in an activity, often used to measure 'Engagement' in well-being models."
+    },
+    {
+      "front": "In Positive Psychology, what is the 'positive' alternative to viewing psychology solely through the lens of pathology?",
+      "back": "Focusing on what 'goes right' and building character strengths."
+    },
+    {
+      "front": "Keltner suggests that emotions like embarrassment and teasing are actually _____ qualities that can be developed for well-being.",
+      "back": "Innate"
+    },
+    {
+      "front": "Seligman's later research suggests that 'Well-Being' is a more comprehensive target for positive psychology than the earlier focus on _____.",
+      "back": "Happiness"
+    },
+    {
+      "front": "What is the primary difference between how 'Positive Emotion' and 'Engagement' are measured in the PERMA model compared to 'Meaning'?",
+      "back": "Meaning can be measured objectively through belonging to something larger, while emotion and engagement are purely subjective."
+    },
+    {
+      "front": "According to Keltner, emotions enable parent-child attachments and friendships, illustrating their function in _____.",
+      "back": "Survival"
+    },
+    {
+      "front": "What finding did Keltner's research reveal about people with more privileged class backgrounds in pedestrian crosswalks?",
+      "back": "They are more likely to drive through crosswalks rather than stopping for pedestrians."
+    },
+    {
+      "front": "The 'Approach/Inhibition Theory' suggests that power makes individuals _____ concerned with the social consequences of their actions.",
+      "back": "Less"
+    },
+    {
+      "front": "Dacher Keltner's work on 'awe' suggests that experiences of this emotion account for why _____ benefit mental and physical health.",
+      "back": "Music, spirituality, and psychedelics"
+    },
+    {
+      "front": "According to Cialdini, identifying oneself with a group increases one's susceptibility to the group's influence. This is known as the _____.",
+      "back": "Unity Principle"
+    },
+    {
+      "front": "In Seligman's experiments, what was the 'inescapable' stimulus that led to learned helplessness?",
+      "back": "Electric shocks"
+    },
+    {
+      "front": "Seligman's PERMA model: The letter 'R' stands for _____, which involves the presence of friends, family, and social connection.",
+      "back": "Relationships"
+    },
+    {
+      "front": "Seligman's PERMA model: The letter 'M' stands for _____, defined as serving something bigger than one's self.",
+      "back": "Meaning"
+    },
+    {
+      "front": "Seligman's PERMA model: The letter 'A' stands for _____, which are goals pursued for their own sake.",
+      "back": "Achievement"
+    },
+    {
+      "front": "Keltner's research into 'awe' found that experiences of this emotion account for why spirituality and psychedelics improve _____.",
+      "back": "Well-being and health"
+    },
+    {
+      "front": "In Keltner’s research, the emotion space involves upwards of _____ distinct states.",
+      "back": "20"
+    },
+    {
+      "front": "Keltner posits that the representation of emotional experience is driven by discrete emotion concepts rather than broader constructs such as _____ or _____.",
+      "back": "Valence; arousal"
+    },
+    {
+      "front": "According to the text, what is the goal of 'Positive Organizational Scholarship' within the application of positive psychology?",
+      "back": "To apply the principles of positive psychology to workplace settings and institutions."
+    },
+    {
+      "front": "The principle of _____ involves a long-term commitment to a behavior after a person has taken an initial small step.",
+      "back": "Commitment and Consistency"
+    },
+    {
+      "front": "Cialdini's 'Pre-suasion' theory emphasizes that the _____ of an influence attempt is just as important as the content of the message.",
+      "back": "Timing"
+    },
+    {
+      "front": "True or False: Seligman believes that happiness can be taught.",
+      "back": "True"
+    },
+    {
+      "front": "According to Keltner, 'moving in unison' is one of the 'eight wonders' of life that can trigger _____.",
+      "back": "Awe"
+    },
+    {
+      "front": "The theoretical account of social class by Keltner, Piff, and Kraus suggests that social class shapes human _____, _____, and _____.",
+      "back": "Thought, feeling, and action."
+    },
+    {
+      "front": "Keltner's 'jen ratio' is based on a concept from which ancient philosophical tradition?",
+      "back": "Confucianism"
+    },
+    {
+      "front": "In the context of power, 'disinhibition' means that a person becomes _____ sensitive to social norms and the feelings of others.",
+      "back": "Less"
+    },
+    {
+      "front": "According to Seligman, what are the three paths to happiness identified in his early 2002 theory?",
+      "back": "Positive emotion, engagement, and meaning."
+    },
+    {
+      "front": "What is the primary critique of the experiments used to establish the theory of learned helplessness?",
+      "back": "Ethical concerns regarding the harm inflicted on the animals (dogs) used in the study."
+    },
+    {
+      "front": "Keltner has studied how people communicate emotions like love and compassion through the specific medium of _____.",
+      "back": "Touch"
+    },
+    {
+      "front": "According to the PERMA model, why is 'Engagement' measured subjectively?",
+      "back": "Because it is characterized by an internal state of flow that can only be reported by the individual."
+    },
+    {
+      "front": "Keltner's 'data-driven' approach to emotion found that 'blends' in emotion are _____, rather than emotions existing purely as isolated states.",
+      "back": "Common"
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "title": "Statistics Quiz",
+  "questions": [
+    {
+      "question": "What fundamental principle did Al-Kindi use in his 9th-century work to break ciphers by analyzing the rhythmic patterns of a language?",
+      "answerOptions": [
+        {
+          "text": "Frequency Analysis",
+          "isCorrect": true,
+          "rationale": "This method relies on the fact that different letters in a language, such as Arabic or English, appear with predictable regularity, allowing one to map symbols to the most frequent characters."
+        },
+        {
+          "text": "Bayesian Updating",
+          "isCorrect": false,
+          "rationale": "While related to updating beliefs based on new evidence, this formal mathematical framework was developed much later than the 9th century."
+        },
+        {
+          "text": "Randomized Controlled Trials",
+          "isCorrect": false,
+          "rationale": "This approach involves active intervention and control groups, which is a modern experimental design rather than a passive cryptographic analysis."
+        },
+        {
+          "text": "Deductive Proofs",
+          "isCorrect": false,
+          "rationale": "Deduction moves from general rules to specific certainties, whereas breaking a code by counting symbols is an inductive process based on observation."
+        }
+      ],
+      "hint": "Consider the technique of counting how often specific symbols appear in a text to find a pattern."
+    },
+    {
+      "question": "John Graunt's 1662 work on London's 'Bills of Mortality' is considered a milestone in statistics because it created the first:",
+      "answerOptions": [
+        {
+          "text": "Life Table",
+          "isCorrect": true,
+          "rationale": "By aggregating death records, Graunt established a way to predict mortality rates by age, which became the foundation for modern insurance and demography."
+        },
+        {
+          "text": "Normal Distribution Curve",
+          "isCorrect": false,
+          "rationale": "The mathematical description of the bell-shaped curve was not formally developed until the 19th century by Gauss."
+        },
+        {
+          "text": "P-value Threshold",
+          "isCorrect": false,
+          "rationale": "The concept of statistical significance and the $0.05$ threshold were popularized by Ronald Fisher in the 1920s."
+        },
+        {
+          "text": "Double-blind Experiment",
+          "isCorrect": false,
+          "rationale": "Graunt used observational data from parish records rather than conducting controlled experiments with human subjects."
+        }
+      ],
+      "hint": "His work looked at how many people died at different stages of life to understand social patterns."
+    },
+    {
+      "question": "According to the $68-95-99.7$ rule of normal distribution, what is the probability that a random data point falls within $\\pm 2\\sigma$ of the mean $\\mu$?",
+      "answerOptions": [
+        {
+          "text": "$95\\%$",
+          "isCorrect": true,
+          "rationale": "This rule dictates that approximately $95\\%$ of all observations in a normal distribution lie within two standard deviations of the center."
+        },
+        {
+          "text": "$68\\%$",
+          "isCorrect": false,
+          "rationale": "This percentage represents the data within only one standard deviation $(\\pm 1\\sigma)$ of the mean."
+        },
+        {
+          "text": "$99.7\\%$",
+          "isCorrect": false,
+          "rationale": "This higher percentage covers data within three standard deviations $(\\pm 3\\sigma)$, representing nearly the entire population."
+        },
+        {
+          "text": "$50\\%$",
+          "isCorrect": false,
+          "rationale": "In a symmetric normal distribution, $50\\%$ of the data is simply everything to one side of the mean, regardless of standard deviation."
+        }
+      ],
+      "hint": "This specific threshold is often used to identify values that are not considered 'extreme' in nature."
+    },
+    {
+      "question": "In Ronald Fisher's framework of hypothesis testing, a $p$-value of $0.03$ implies which of the following?",
+      "answerOptions": [
+        {
+          "text": "There is a $3\\%$ chance of seeing these results if the null hypothesis is true.",
+          "isCorrect": true,
+          "rationale": "The $p$-value measures the probability of obtaining the observed data (or more extreme) under the assumption that there is no real effect or difference."
+        },
+        {
+          "text": "There is a $97\\%$ probability that the researcher's hypothesis is correct.",
+          "isCorrect": false,
+          "rationale": "This is a common misconception; the $p$-value does not measure the probability of the hypothesis being 'true,' only the 'unusualness' of the data."
+        },
+        {
+          "text": "The null hypothesis has been proven to be false.",
+          "isCorrect": false,
+          "rationale": "Statistics deals with probability rather than absolute proof; a low $p$-value suggests the null is unlikely, not impossible."
+        },
+        {
+          "text": "The experiment is flawed and needs to be repeated with more samples.",
+          "isCorrect": false,
+          "rationale": "A $p$-value below the $0.05$ threshold is typically considered a 'successful' detection of a significant difference, not an indication of error."
+        }
+      ],
+      "hint": "Think of the $p$-value as a measure of how 'surprising' the results are if nothing actually changed."
+    },
+    {
+      "question": "Jerzy Neyman's $95\\%$ confidence interval (CI) is frequently misinterpreted. What is its correct technical meaning?",
+      "answerOptions": [
+        {
+          "text": "If we repeat the sampling process $100$ times, $95$ of the calculated intervals will contain the true population mean.",
+          "isCorrect": true,
+          "rationale": "The confidence level refers to the reliability of the procedure over repeated trials, not the probability of a single fixed interval."
+        },
+        {
+          "text": "There is a $95\\%$ probability that the true mean lies within this specific calculated range.",
+          "isCorrect": false,
+          "rationale": "In frequentist statistics, the true mean is a fixed point, and the interval either contains it or it doesn't; probability applies to the method, not the result."
+        },
+        {
+          "text": "We are $95\\%$ sure that our sample mean is exactly equal to the population mean.",
+          "isCorrect": false,
+          "rationale": "A confidence interval provides a range of plausible values to account for uncertainty, rather than claiming a point-exact match."
+        },
+        {
+          "text": "The data is $95\\%$ accurate and contains only a $5\\%$ margin of measurement error.",
+          "isCorrect": false,
+          "rationale": "While the CI relates to precision, it specifically measures the uncertainty of estimating a population parameter from a sample."
+        }
+      ],
+      "hint": "Recall that the true population value is fixed, while the interval itself changes every time you take a new sample."
+    },
+    {
+      "question": "Which principle of experimental design, as proposed by Fisher, is intended to eliminate hidden biases or 'confounders' such as varying soil quality in a field?",
+      "answerOptions": [
+        {
+          "text": "Randomization",
+          "isCorrect": true,
+          "rationale": "By randomly assigning treatments, any underlying differences in the subjects (like soil fertility) are distributed evenly, preventing them from biasing the results."
+        },
+        {
+          "text": "Replication",
+          "isCorrect": false,
+          "rationale": "While repeating the experiment increases precision and reduces random error, it does not inherently remove systematic bias on its own."
+        },
+        {
+          "text": "Blocking",
+          "isCorrect": false,
+          "rationale": "Blocking groups similar units together to handle known variation, but it is randomization that handles the unknown variables."
+        },
+        {
+          "text": "Hypothesis Formulation",
+          "isCorrect": false,
+          "rationale": "A hypothesis is a starting assumption, but it does not represent the physical layout or procedural structure used to ensure a fair test."
+        }
+      ],
+      "hint": "This principle involves using chance to decide which subjects receive which treatment."
+    },
+    {
+      "question": "In Judea Pearl's 'Causal Inference' framework, what does the $do$-operator, such as $P(Y | do(X))$, represent?",
+      "answerOptions": [
+        {
+          "text": "Intervention in the system",
+          "isCorrect": true,
+          "rationale": "The $do$-operator mathematically models what happens when we actively change a variable, as opposed to just observing it, which is the key to proving causation."
+        },
+        {
+          "text": "Simple statistical correlation",
+          "isCorrect": false,
+          "rationale": "Correlation only observes how variables move together ($P(Y | X)$) without determining if one forces the other to move."
+        },
+        {
+          "text": "The probability of a data error",
+          "isCorrect": false,
+          "rationale": "While causation requires accurate data, the $do$-operator is a logic tool for understanding relationships, not a measure of data quality."
+        },
+        {
+          "text": "A method for increasing sample size",
+          "isCorrect": false,
+          "rationale": "Causal inference is about the structure of relationships between variables, not the volume of the data collected."
+        }
+      ],
+      "hint": "This operator distinguishes between 'seeing' a pattern and 'acting' to create a change."
+    },
+    {
+      "question": "John Ioannidis's 2005 paper sparked the 'Replication Crisis' by arguing that:",
+      "answerOptions": [
+        {
+          "text": "Most published research findings are false due to misuse of statistics.",
+          "isCorrect": true,
+          "rationale": "Ioannidis highlighted how practices like $p$-hacking and publication bias lead to 'significant' results that cannot be replicated by other scientists."
+        },
+        {
+          "text": "Computers are making more errors in data processing than humans.",
+          "isCorrect": false,
+          "rationale": "His critique focused on human methodologies and statistical incentives, not the hardware or computational accuracy of the machines."
+        },
+        {
+          "text": "Peer review is an unnecessary barrier to scientific progress.",
+          "isCorrect": false,
+          "rationale": "The issue is actually that standard peer review often fails to catch the subtle statistical flaws he identified, necessitating more transparency."
+        },
+        {
+          "text": "The $0.05$ $p$-value threshold is too difficult for researchers to reach.",
+          "isCorrect": false,
+          "rationale": "The problem is the opposite: the threshold is often too 'easy' to manipulate through repeated testing until a 'significant' result accidentally appears."
+        }
+      ],
+      "hint": "He used statistics to show that many 'breakthroughs' are actually just statistical accidents."
+    },
+    {
+      "question": "In survey methodology, what is a 'sampling frame'?",
+      "answerOptions": [
+        {
+          "text": "The actual list or map from which a sample is drawn.",
+          "isCorrect": true,
+          "rationale": "A frame, such as a phone directory or a list of students, is the practical tool used to identify and select members of the population."
+        },
+        {
+          "text": "The physical boundaries of the study area.",
+          "isCorrect": false,
+          "rationale": "While geography can define a population, the 'frame' refers specifically to the list or method used to contact individuals within that area."
+        },
+        {
+          "text": "The time period during which the data is collected.",
+          "isCorrect": false,
+          "rationale": "This is referred to as the survey duration or wave, whereas the frame is about 'who' is being sampled, not 'when'."
+        },
+        {
+          "text": "The theoretical population the researcher wants to understand.",
+          "isCorrect": false,
+          "rationale": "The 'population' is the large group of interest; the 'frame' is the restricted, tangible version of that group available for selection."
+        }
+      ],
+      "hint": "Think of it as the 'directory' that allows you to reach the members of your target group."
+    },
+    {
+      "question": "Which sampling method involves dividing the population into non-overlapping groups and then selecting *everyone* within a few randomly chosen groups?",
+      "answerOptions": [
+        {
+          "text": "Cluster Sampling",
+          "isCorrect": true,
+          "rationale": "In cluster sampling, the population is divided into groups (clusters), and whole clusters are selected to be surveyed, often to save on travel or logistics costs."
+        },
+        {
+          "text": "Stratified Sampling",
+          "isCorrect": false,
+          "rationale": "This method selects a few individuals from *every* group (stratum) to ensure all sub-groups are represented, rather than selecting whole groups."
+        },
+        {
+          "text": "Simple Random Sampling",
+          "isCorrect": false,
+          "rationale": "This method selects individuals from the entire population at once without grouping them into clusters first."
+        },
+        {
+          "text": "Systematic Sampling",
+          "isCorrect": false,
+          "rationale": "This involves selecting every $k^{th}$ individual from a list, rather than using a multi-level grouping and selection process."
+        }
+      ],
+      "hint": "This method is often used by researchers who visit specific city blocks and interview every house on those blocks."
+    }
+  ]
+}

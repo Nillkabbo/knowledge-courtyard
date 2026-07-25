@@ -1,0 +1,345 @@
+{
+  "title": "Statistics Flashcards",
+  "cards": [
+    {
+      "front": "In the context of evidence, which mode moves from a general rule to a specific instance (e.g., 'All ravens are black, therefore this raven is black')?",
+      "back": "Deductive evidence."
+    },
+    {
+      "front": "Which mode of evidence moves from specific observations to a general rule (e.g., '1000 ravens are black, therefore all ravens are likely black')?",
+      "back": "Inductive evidence."
+    },
+    {
+      "front": "What type of evidence seeks the 'best explanation' for a given result (e.g., 'The grass is wet, therefore it probably rained')?",
+      "back": "Abductive evidence."
+    },
+    {
+      "front": "Who is credited with inventing frequency analysis in 850 CE to decipher cryptographic messages?",
+      "back": "Al-Kindi (Abu Yusuf Ya'qub ibn Ishaq al-Kindi)."
+    },
+    {
+      "front": "Al-Kindi's frequency analysis is considered the first systemic form of _____ evidence.",
+      "back": "Inductive"
+    },
+    {
+      "front": "Who published the first book in statistical history, 'Natural and Political Observations Made upon the Bills of Mortality' (1662)?",
+      "back": "John Graunt."
+    },
+    {
+      "front": "What was the primary data source for John Graunt's 1662 demographic study of London?",
+      "back": "The Bills of Mortality (weekly death records from parish churches)."
+    },
+    {
+      "front": "Concept: Mean",
+      "back": "Definition: The average value calculated by dividing the sum of all values by the count of values ($\\bar{x} = \\frac{\\sum x}{n}$)."
+    },
+    {
+      "front": "Concept: Median",
+      "back": "Definition: The middle value in a dataset when the values are arranged in order."
+    },
+    {
+      "front": "Concept: Mode",
+      "back": "Definition: The value that appears most frequently in a dataset."
+    },
+    {
+      "front": "In statistics, the measure of how far data points spread out from the mean is called _____.",
+      "back": "Variance ($\\sigma^2$)"
+    },
+    {
+      "front": "How is the 'Range' of a dataset calculated?",
+      "back": "By subtracting the minimum value from the maximum value."
+    },
+    {
+      "front": "What historical tool created by John Graunt serves as the foundation for modern insurance and public health policy?",
+      "back": "The life table."
+    },
+    {
+      "front": "Who used the 'Normal Distribution' to successfully predict the location of the dwarf planet Ceres in 1801?",
+      "back": "Carl Friedrich Gauss."
+    },
+    {
+      "front": "The peak of a bell curve in a Normal Distribution represents the _____.",
+      "back": "Mean ($\\mu$)"
+    },
+    {
+      "front": "According to the 68-95-99.7 rule, what percentage of data falls within $\\pm 1 \\sigma$ of the mean?",
+      "back": "68%."
+    },
+    {
+      "front": "According to the 68-95-99.7 rule, what percentage of data falls within $\\pm 2 \\sigma$ of the mean?",
+      "back": "95%."
+    },
+    {
+      "front": "According to the 68-95-99.7 rule, what percentage of data falls within $\\pm 3 \\sigma$ of the mean?",
+      "back": "99.7%."
+    },
+    {
+      "front": "Formula: Z-score",
+      "back": "$z = \\frac{x - \\mu}{\\sigma}$"
+    },
+    {
+      "front": "What does a Z-score represent?",
+      "back": "The number of standard deviations a specific value is away from the mean."
+    },
+    {
+      "front": "Who popularized the p-value and the $0.05$ significance threshold in his 1925 book 'Statistical Methods for Research Workers'?",
+      "back": "Ronald Aylmer Fisher."
+    },
+    {
+      "front": "What is the 'Null Hypothesis' ($H_0$) in a statistical test?",
+      "back": "The assumption that there is no effect or no difference between the groups being studied."
+    },
+    {
+      "front": "What is the technical definition of a 'p-value'?",
+      "back": "The probability of observing results as extreme as the ones obtained, assuming the null hypothesis is true."
+    },
+    {
+      "front": "If a p-value is less than $0.05$, what is the typical statistical decision regarding the null hypothesis?",
+      "back": "Reject the null hypothesis."
+    },
+    {
+      "front": "In Fisher's 'Lady Tasting Tea' experiment, what was the null hypothesis?",
+      "back": "The lady had no ability to distinguish whether milk or tea was poured first."
+    },
+    {
+      "front": "Who developed the framework for 'Confidence Intervals' in 1937?",
+      "back": "Jerzy Neyman."
+    },
+    {
+      "front": "What is the specific Z-score multiplier used to calculate a 95% Confidence Interval?",
+      "back": "$1.96$."
+    },
+    {
+      "front": "A 95% Confidence Interval means that if we repeat the sampling process 100 times, _____ intervals will contain the true population mean.",
+      "back": "95"
+    },
+    {
+      "front": "How does increasing the sample size ($n$) affect the width of a Confidence Interval?",
+      "back": "It makes the interval narrower (increases precision)."
+    },
+    {
+      "front": "Which principle of experimental design involves assigning treatments by chance to eliminate selection bias?",
+      "back": "Randomization."
+    },
+    {
+      "front": "Which principle of experimental design involves repeating an experiment on multiple subjects to increase reliability?",
+      "back": "Replication."
+    },
+    {
+      "front": "Which principle of experimental design involves grouping similar units together to isolate the effects of known variations?",
+      "back": "Blocking."
+    },
+    {
+      "front": "What is the core purpose of an 'A/B Test' in a digital environment?",
+      "back": "To compare a control version (A) with a treatment version (B) to see which performs better based on data."
+    },
+    {
+      "front": "In A/B testing, what does the acronym 'HiPPO' stand for?",
+      "back": "Highest Paid Person's Opinion."
+    },
+    {
+      "front": "Who developed the 'do-operator' and the mathematical language for 'Causal Inference'?",
+      "back": "Judea Pearl."
+    },
+    {
+      "front": "In causal inference, what is a 'Confounder'?",
+      "back": "A third variable that influences both the cause and the effect, creating a spurious correlation."
+    },
+    {
+      "front": "According to the phrase 'Correlation is not Causation,' a relationship between two variables does not necessarily mean _____.",
+      "back": "One variable causes the other."
+    },
+    {
+      "front": "What is the purpose of a 'Directed Acyclic Graph' (DAG) in statistics?",
+      "back": "To visually and mathematically represent causal relationships and identify potential confounders."
+    },
+    {
+      "front": "What was the main claim of John Ioannidis's famous 2005 paper?",
+      "back": "Most published research findings are false due to the misuse of statistics."
+    },
+    {
+      "front": "What is 'p-hacking'?",
+      "back": "The practice of running many tests and only reporting the ones that reach statistical significance."
+    },
+    {
+      "front": "What research practice involves declaring the hypothesis and analysis plan before collecting data to prevent bias?",
+      "back": "Preregistration."
+    },
+    {
+      "front": "What is the 'Replication Crisis'?",
+      "back": "A phenomenon where the results of many scientific studies are difficult or impossible to reproduce in subsequent investigations."
+    },
+    {
+      "front": "In statistics, what is 'Sampling'?",
+      "back": "The selection of a subset of individuals from a population to estimate characteristics of the whole."
+    },
+    {
+      "front": "What is the difference between a 'Population' and a 'Sample'?",
+      "back": "The population is the entire group of interest, while the sample is the specific subset from which data is collected."
+    },
+    {
+      "front": "What is a 'Sampling Frame'?",
+      "back": "A list or map of all the elements in a population from which the sample is actually drawn."
+    },
+    {
+      "front": "What defines 'Probability Sampling'?",
+      "back": "A method where every unit in the population has a known, non-zero chance of being selected."
+    },
+    {
+      "front": "Concept: Simple Random Sampling (SRS)",
+      "back": "Definition: A method where every possible subset of a given size has an equal probability of being selected."
+    },
+    {
+      "front": "In _____ sampling, elements are selected at regular intervals (e.g., every 10th person) from an ordered list.",
+      "back": "Systematic"
+    },
+    {
+      "front": "Which sampling method involves dividing the population into distinct categories (strata) and sampling from each?",
+      "back": "Stratified sampling."
+    },
+    {
+      "front": "What is 'Cluster Sampling'?",
+      "back": "A method where the population is divided into groups (clusters) and entire clusters are randomly selected for the sample."
+    },
+    {
+      "front": "In 'Sampling with Replacement' (WR), can the same element be selected more than once?",
+      "back": "Yes."
+    },
+    {
+      "front": "What is 'Convenience Sampling'?",
+      "back": "A non-probability method where the sample is drawn from the part of the population that is close at hand or easy to reach."
+    },
+    {
+      "front": "What is 'Quota Sampling'?",
+      "back": "A non-probability method where researchers select a specified number of subjects from different segments of the population."
+    },
+    {
+      "front": "In 'Snowball Sampling,' how are additional subjects recruited?",
+      "back": "Existing study subjects recruit more subjects from among their acquaintances."
+    },
+    {
+      "front": "What is 'Selection Bias'?",
+      "back": "A sampling error that occurs when the true selection probabilities differ from those assumed in calculating results."
+    },
+    {
+      "front": "What is 'Non-response Bias'?",
+      "back": "A bias that occurs when individuals who choose not to participate in a survey differ systematically from those who do."
+    },
+    {
+      "front": "What is the purpose of 'Survey Weights'?",
+      "back": "To adjust data so that it correctly represents the population, compensating for unequal selection probabilities or non-response."
+    },
+    {
+      "front": "What is a 'Type I Error' (implied by Fisher's framework)?",
+      "back": "Rejecting the null hypothesis when it is actually true (a 'false positive')."
+    },
+    {
+      "front": "What is a 'Type II Error' (implied by Neyman-Pearson)?",
+      "back": "Failing to reject the null hypothesis when it is actually false (a 'false negative')."
+    },
+    {
+      "front": "How does 'Probability Proportional to Size' (PPS) sampling function?",
+      "back": "Elements with a larger 'size' measure have a higher probability of being selected in the sample."
+    },
+    {
+      "front": "Which sampling method uses human judgment to try and simulate randomness without a formal process?",
+      "back": "Haphazard sampling."
+    },
+    {
+      "front": "What is 'Panel Sampling'?",
+      "back": "Selecting a group of participants and interviewing them several times over a period of time (longitudinal study)."
+    },
+    {
+      "front": "In statistics, what is a 'Census'?",
+      "back": "A study that attempts to collect data from every single member of the target population."
+    },
+    {
+      "front": "What is the 'Margin of Error'?",
+      "back": "A statistic expressing the amount of random sampling error in a survey's results."
+    },
+    {
+      "front": "How does 'Multistage Sampling' differ from simple Cluster Sampling?",
+      "back": "It involves taking random subsamples of selected clusters rather than surveying every unit in the cluster."
+    },
+    {
+      "front": "In the Normal Distribution, the area under the curve represents the total _____ of all possible outcomes.",
+      "back": "Probability"
+    },
+    {
+      "front": "What did the 1936 'Literary Digest' poll fail to account for, leading to an incorrect election prediction?",
+      "back": "Selection bias (the lists used were biased toward wealthier Republican voters)."
+    },
+    {
+      "front": "The _____ operator is used in Judea Pearl's calculus to represent active intervention in a system rather than passive observation.",
+      "back": "do"
+    },
+    {
+      "front": "What is the primary drawback of 'Cluster Sampling' compared to 'Simple Random Sampling'?",
+      "back": "It generally increases the variability of sample estimates, requiring a larger sample size for the same accuracy."
+    },
+    {
+      "front": "Which measure of central tendency is most robust (least affected) by extreme outliers in a dataset?",
+      "back": "The median."
+    },
+    {
+      "front": "In an 'EPS' (Equal Probability of Selection) design, every element has _____ chance of being selected.",
+      "back": "The same"
+    },
+    {
+      "front": "What is 'Judgmental Selection' (or Purposive Sampling)?",
+      "back": "A non-probability method where participants are hand-picked by an expert based on the value of the information they can provide."
+    },
+    {
+      "front": "Which error type includes mistakes in data coding or misunderstood questions by respondents?",
+      "back": "Non-sampling error."
+    },
+    {
+      "front": "According to Ioannidis, what is 'HARKing'?",
+      "back": "Hypothesizing After the Results are Known."
+    },
+    {
+      "front": "What is 'Over-coverage' in survey sampling?",
+      "back": "The inclusion of individuals or data points in the sample that are not actually part of the target population."
+    },
+    {
+      "front": "In a Normal Distribution, values far from the mean in the 'tails' of the bell curve are considered _____.",
+      "back": "Extremes (or rare)."
+    },
+    {
+      "front": "What is 'Theoretical Sampling'?",
+      "back": "Selecting samples based on previous data results to develop a deeper understanding of a specific phenomenon or theory."
+    },
+    {
+      "front": "Why is 'Randomization' considered the 'fair scale' (mizan) of experimental design?",
+      "back": "It ensures that unobserved variables are distributed evenly across groups, making the comparison fair."
+    },
+    {
+      "front": "The 'Standard Deviation' ($\\sigma$) is mathematically defined as the square root of the _____.",
+      "back": "Variance."
+    },
+    {
+      "front": "In Kohavi's Bing ad headline experiment, what was the impact of a small change that managers initially ignored?",
+      "back": "A 12% revenue increase, worth over $100 million annually."
+    },
+    {
+      "front": "What is 'Voluntary Sampling'?",
+      "back": "A non-probability method where subjects choose to participate in a study on their own accord."
+    },
+    {
+      "front": "Which sampling method is particularly useful for hidden populations that are difficult to enumerate?",
+      "back": "Snowball sampling."
+    },
+    {
+      "front": "In a Normal Distribution, $\\mu \\pm 1.96 \\sigma$ covers exactly _____% of the distribution.",
+      "back": "95"
+    },
+    {
+      "front": "According to Neyman, a Confidence Interval is an estimate of a _____ rather than a single point.",
+      "back": "Range"
+    },
+    {
+      "front": "What was Al-Kindi's 'Secret' regarding claims and proof?",
+      "back": "Claims are finite, but proof is infinite; he who can show proof speaks the truth."
+    }
+  ]
+}

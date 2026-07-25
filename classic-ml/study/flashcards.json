@@ -1,0 +1,321 @@
+{
+  "title": "Ensemble Flashcards",
+  "cards": [
+    {
+      "front": "What is the primary objective of using ensemble methods in machine learning?",
+      "back": "To obtain better predictive performance than any of the constituent learning algorithms could achieve alone."
+    },
+    {
+      "front": "In machine learning literature, what are the individual algorithms within an ensemble model typically called?",
+      "back": "They are generally referred to as base models, base learners, or weak learners."
+    },
+    {
+      "front": "How does a machine learning ensemble differ from a statistical ensemble in statistical mechanics?",
+      "back": "An ML ensemble consists of a concrete finite set of models, whereas a statistical ensemble is usually infinite."
+    },
+    {
+      "front": "Ensemble learning fundamentally combines multiple high-bias and high-variance models to produce a single _____ model.",
+      "back": "Low-variance"
+    },
+    {
+      "front": "What is the technical term for the technique known as 'bagging'?",
+      "back": "Bootstrap aggregating."
+    },
+    {
+      "front": "How does bagging create diversity among base models?",
+      "back": "By generating random samples from training observations and fitting the same model to each sample."
+    },
+    {
+      "front": "Ensembles created via bagging are also known as _____ parallel ensembles.",
+      "back": "Homogeneous"
+    },
+    {
+      "front": "Which ensemble technique involves sequentially training each base model on the up-weighted errors of the previous model?",
+      "back": "Boosting."
+    },
+    {
+      "front": "Boosting is also referred to as _____ ensemble learning.",
+      "back": "Sequential"
+    },
+    {
+      "front": "What characterizes 'stacking' or 'blending' in ensemble learning?",
+      "back": "Independent base models are trained and then combined, producing a heterogeneous parallel ensemble."
+    },
+    {
+      "front": "Why are fast algorithms like decision trees frequently used in ensemble methods?",
+      "back": "Because evaluating an ensemble requires significantly more computation than evaluating a single model."
+    },
+    {
+      "front": "Empirically, when do ensemble methods tend to yield the best results?",
+      "back": "When there is significant diversity among the constituent models."
+    },
+    {
+      "front": "According to ensemble theory, how can the lower bound of an ensemble system's error rate be decomposed?",
+      "back": "It is decomposed into accuracy, diversity, and a third residual term."
+    },
+    {
+      "front": "In the geometric framework of ensemble learning, what does the 'ideal point' represent?",
+      "back": "The target result for the entire dataset in a multi-dimensional space."
+    },
+    {
+      "front": "What metric is used in the geometric framework to measure the dissimilarity between two regressors?",
+      "back": "Euclidean distance."
+    },
+    {
+      "front": "What is the 'law of diminishing returns' in ensemble construction?",
+      "back": "The theory that there is an ideal number of component classifiers, and exceeding it may deteriorate accuracy."
+    },
+    {
+      "front": "According to theoretical frameworks, the highest accuracy for an ensemble is achieved when the number of independent classifiers equals the number of _____.",
+      "back": "Class labels"
+    },
+    {
+      "front": "What classification technique is defined as an ensemble of all hypotheses in the hypothesis space?",
+      "back": "The Bayes optimal classifier."
+    },
+    {
+      "front": "In the Bayes optimal classifier, how is each hypothesis's vote weighted?",
+      "back": "It is proportional to the likelihood of the training data being sampled if that hypothesis were true, multiplied by its prior probability."
+    },
+    {
+      "front": "Which specific classifier assumes data is conditionally independent on the class to make the Bayes optimal calculation feasible?",
+      "back": "The Naive Bayes classifier."
+    },
+    {
+      "front": "How is a 'bootstrapped' data set created for bagging?",
+      "back": "By selecting from the original training set with replacement."
+    },
+    {
+      "front": "What is the 'out-of-bag' set in the context of bagging?",
+      "back": "The training examples that were not included in a specific member's bootstrap set."
+    },
+    {
+      "front": "What is the standard method for making an overall prediction in a bagging ensemble?",
+      "back": "Voting (for classification) or aggregation of individual predictions."
+    },
+    {
+      "front": "What is the name of the most common implementation of the boosting technique?",
+      "back": "Adaboost."
+    },
+    {
+      "front": "How does Bayesian Model Averaging (BMA) make predictions?",
+      "back": "By averaging predictions weighted by their posterior probabilities given the data."
+    },
+    {
+      "front": "In BMA, which criterion provides a penalty for model complexity defined as $\\ln(n)k$?",
+      "back": "The Bayesian information criterion (BIC)."
+    },
+    {
+      "front": "What is the primary advantage of the Akaike information criterion (AIC) over BIC in large-sample theory?",
+      "back": "AIC is asymptotically efficient, meaning it minimizes mean square prediction error."
+    },
+    {
+      "front": "How does Bayesian Model Combination (BMC) differ from Bayesian Model Averaging (BMA)?",
+      "back": "BMC samples from the space of possible ensembles rather than individual models, seeking the optimal combination."
+    },
+    {
+      "front": "What distribution is used to randomly draw model weights in Bayesian Model Combination?",
+      "back": "The Dirichlet distribution."
+    },
+    {
+      "front": "Term: Bucket of models",
+      "back": "Definition: An ensemble technique that uses a selection algorithm to choose the best model for a specific problem."
+    },
+    {
+      "front": "In a 'bucket of models' approach, what is the 'bake-off contest'?",
+      "back": "Using cross-validation to select the best-performing model from a set of candidates."
+    },
+    {
+      "front": "What is 'gating' in the context of model selection?",
+      "back": "Training a secondary model (like a perceptron) to decide which model in a bucket is best-suited for a problem."
+    },
+    {
+      "front": "What meta-learning approach trains fast, imprecise algorithms to predict which slow, accurate algorithm will perform best?",
+      "back": "Landmark learning."
+    },
+    {
+      "front": "The Amended Cross-Entropy Cost uses a parameter $\\lambda$ to define what characteristic of the ensemble?",
+      "back": "Diversity."
+    },
+    {
+      "front": "In stacking, what is the role of the 'combiner' or 'final estimator'?",
+      "back": "To make a final prediction using the outputs of the 'base estimators' as inputs."
+    },
+    {
+      "front": "What is 'stacked generalization'?",
+      "back": "Another term for the stacking ensemble technique."
+    },
+    {
+      "front": "Which form of stacking generalizes the concept to the combination of posterior predictive distributions?",
+      "back": "Bayesian predictive stacking."
+    },
+    {
+      "front": "What is 'BEAST' in the context of remote sensing applications?",
+      "back": "A Bayesian ensemble changepoint detection algorithm used for time series analysis of satellite data."
+    },
+    {
+      "front": "How does moving target defense harden malware detection models against adversarial attacks?",
+      "back": "By rotating through an ensemble of models to diminish the attacker's knowledge advantage."
+    },
+    {
+      "front": "In financial decision-making, why are ensembles preferred over traditional scorecards for credit scoring?",
+      "back": "They exploit nonlinear relationships and handle noisy, high-dimensional data better than single models."
+    },
+    {
+      "front": "What is a 'Random Forest'?",
+      "back": "An ensemble learning method that constructs a multitude of decision trees during training."
+    },
+    {
+      "front": "How does a Random Forest make a prediction for a classification task?",
+      "back": "It outputs the class selected by the majority (plurality vote) of its component trees."
+    },
+    {
+      "front": "How does a Random Forest make a prediction for a regression task?",
+      "back": "It outputs the average of the predictions made by all individual trees."
+    },
+    {
+      "front": "Which major weakness of individual decision trees do Random Forests help correct?",
+      "back": "The tendency to overfit to the training set."
+    },
+    {
+      "front": "Who created the first algorithm for random decision forests in 1995?",
+      "back": "Tin Kam Ho."
+    },
+    {
+      "front": "Tin Kam Ho's original random forest formulation was based on what method?",
+      "back": "The random subspace method."
+    },
+    {
+      "front": "Leo Breiman and Adele Cutler's extension of Random Forests combines bagging with what other key idea?",
+      "back": "Random selection of features."
+    },
+    {
+      "front": "Deep decision trees typically exhibit low bias but very high _____.",
+      "back": "Variance"
+    },
+    {
+      "front": "What is the effect of averaging many uncorrelated deep decision trees in a Random Forest?",
+      "back": "It reduces the model's overall variance without significantly increasing the bias."
+    },
+    {
+      "front": "Why is bootstrap sampling essential for de-correlating trees in a Random Forest?",
+      "back": "Because training multiple trees on the exact same dataset would result in strongly correlated or identical trees."
+    },
+    {
+      "front": "How can the uncertainty of a Random Forest's regression prediction be estimated?",
+      "back": "By calculating the standard deviation of the predictions from all individual trees."
+    },
+    {
+      "front": "What is 'feature bagging'?",
+      "back": "Selecting a random subset of features at every candidate split in the tree learning process."
+    },
+    {
+      "front": "For a classification problem with $p$ features, what is the typical default number of features used in each Random Forest split?",
+      "back": "$\\sqrt{p}$ (rounded down)."
+    },
+    {
+      "front": "What is the recommended default number of features and minimum node size for regression Random Forests?",
+      "back": "$\\frac{p}{3}$ features and a minimum node size of 5."
+    },
+    {
+      "front": "How do 'Extremely Randomized Trees' (ExtraTrees) differ from standard Random Forests regarding data sampling?",
+      "back": "ExtraTrees use the whole learning sample for each tree rather than a bootstrap sample."
+    },
+    {
+      "front": "How are split points chosen in ExtraTrees compared to standard Random Forests?",
+      "back": "In ExtraTrees, split points are drawn randomly from a uniform distribution rather than calculating the optimal cut-point."
+    },
+    {
+      "front": "What is 'Enriched Random Forest' (ERF)?",
+      "back": "A variant that uses weighted random sampling at each node, favoring features that appear more informative."
+    },
+    {
+      "front": "In 'permutation importance,' how is a feature's score determined?",
+      "back": "By measuring the difference in out-of-bag error after permuting that feature's values compared to the original error."
+    },
+    {
+      "front": "What is a major drawback of the Mean Decrease in Impurity (MDI) feature importance method?",
+      "back": "It tends to favor high-cardinality features (features with many unique values)."
+    },
+    {
+      "front": "Which three statistics are commonly used as impurity measures for MDI?",
+      "back": "Entropy, Gini coefficient, and Mean Squared Error."
+    },
+    {
+      "front": "Lin and Jeon (2002) pointed out that Random Forests can be viewed as weighted _____ schemes.",
+      "back": "Neighborhood"
+    },
+    {
+      "front": "How do Random Forests relate to the $k$-nearest neighbor ($k$-NN) algorithm?",
+      "back": "Both look at a 'neighborhood' of points to make predictions, but RF neighborhoods adapt to local feature importance."
+    },
+    {
+      "front": "In unsupervised learning, how can Random Forests be used to define a dissimilarity measure?",
+      "back": "By training the forest to distinguish observed data from synthetic data drawn from a reference distribution."
+    },
+    {
+      "front": "What is the purpose of 'born-again' decision trees?",
+      "back": "To compress a Random Forest into a single, minimal tree that reproduces the same decision function for better interpretability."
+    },
+    {
+      "front": "Term: Kernel Random Forest (KeRF)",
+      "back": "Definition: A modification of Random Forests that rewrites them as kernel methods to make them easier to analyze."
+    },
+    {
+      "front": "What is the 'Centered Forest' model used in KeRF analysis?",
+      "back": "A simplified RF where splits are performed exactly at the center of the cell along a randomly chosen attribute."
+    },
+    {
+      "front": "How is a split point chosen in a 'Uniform Forest' for KeRF?",
+      "back": "It is drawn uniformly from the side of the cell along the selected feature."
+    },
+    {
+      "front": "What is a 'connection function' in the context of infinite KeRF?",
+      "back": "The proportion of cells shared between two points $x$ and $z$ across the forest."
+    },
+    {
+      "front": "Random Forests may fail to enhance accuracy if the relationship between the features and the target variable is _____.",
+      "back": "Linear"
+    },
+    {
+      "front": "What is 'Land Cover Mapping'?",
+      "back": "A remote sensing application using geospatial data to identify surface materials like roads, water, and vegetation."
+    },
+    {
+      "front": "Ensemble learning improves the robustness of normal behavior modeling, making it efficient for detecting what type of banking activity?",
+      "back": "Fraudulent activities/Fraud detection."
+    },
+    {
+      "front": "In the context of computer security, what is the benefit of combining single classifiers to detect DDoS attacks?",
+      "back": "It reduces the total error in discriminating attacks from legitimate flash crowds."
+    },
+    {
+      "front": "In medical imaging, ensemble U-Net models are commonly applied to what type of task?",
+      "back": "Medical segmentation (e.g., brain tumors or white matter hyperintensities)."
+    },
+    {
+      "front": "What is 'Landmark Learning'?",
+      "back": "A meta-learning approach that uses the performance of fast algorithms to predict which slow, accurate algorithm is best."
+    },
+    {
+      "front": "Which ensemble method convergence toward the point where the generating distribution projects onto a simplex of possible weightings?",
+      "back": "Bayesian Model Combination (BMC)."
+    },
+    {
+      "front": "Why is 'Permutation Importance' considered more robust than training statistics for identifying useful features?",
+      "back": "Because it reflects a feature's usefulness for predictions on unseen data rather than just training performance."
+    },
+    {
+      "front": "What is the primary trade-off when moving from a single decision tree to a Random Forest?",
+      "back": "The sacrifice of intrinsic interpretability for higher predictive accuracy."
+    },
+    {
+      "front": "Ensemble learning applications in neuroscience often focus on detecting which types of disorders using MRI data?",
+      "back": "Neuro-cognitive disorders (e.g., Alzheimer's or myotonic dystrophy)."
+    },
+    {
+      "front": "How does boosting reduce final model errors?",
+      "back": "By creating an additive model that focuses sequentially on previously misclassified data."
+    }
+  ]
+}

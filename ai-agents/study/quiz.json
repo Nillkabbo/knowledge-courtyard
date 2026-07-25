@@ -1,0 +1,395 @@
+{
+  "title": "Deep Learning Quiz",
+  "questions": [
+    {
+      "question": "In the context of deep learning, what distinguishes the 'upstream task' from the 'downstream task' during the process of fine-tuning?",
+      "answerOptions": [
+        {
+          "text": "The upstream task is the original objective for which a model was pre-trained, while the downstream task is the new, more specific target.",
+          "isCorrect": true,
+          "rationale": "Fine-tuning is defined as the process of adapting a model from a general source objective to a specialized application."
+        },
+        {
+          "text": "The upstream task refers to data preprocessing, whereas the downstream task refers to the final inference performed by the user.",
+          "isCorrect": false,
+          "rationale": "While preprocessing occurs before training, these terms specifically describe the transfer of learned knowledge between different training objectives."
+        },
+        {
+          "text": "Upstream tasks involve backpropagation through all layers, while downstream tasks only involve the output layer.",
+          "isCorrect": false,
+          "rationale": "Fine-tuning can involve updating all layers or just a subset, but this distinction does not define the tasks themselves."
+        },
+        {
+          "text": "The upstream task is a supervised learning objective, while the downstream task must be unsupervised.",
+          "isCorrect": false,
+          "rationale": "Both tasks can be supervised, and fine-tuning is typically accomplished through supervised learning for the specific downstream goal."
+        }
+      ],
+      "hint": "Consider the direction of knowledge transfer in transfer learning."
+    },
+    {
+      "question": "When fine-tuning a convolutional neural network, why is it common practice to 'freeze' the earlier layers closest to the input?",
+      "answerOptions": [
+        {
+          "text": "Earlier layers capture low-level features that are generally useful across different tasks, whereas later layers capture task-specific high-level features.",
+          "isCorrect": true,
+          "rationale": "Feature extraction moves from generic elements like edges to complex, domain-specific shapes as data passes deeper into the network."
+        },
+        {
+          "text": "Freezing earlier layers prevents the model from experiencing any loss of precision during quantization.",
+          "isCorrect": false,
+          "rationale": "Layer freezing is a technique for parameter efficiency and feature preservation, not a method for numerical bit-width reduction."
+        },
+        {
+          "text": "The earlier layers are mathematically fixed by the initial learning rate $\\eta$ and cannot be altered by backpropagation.",
+          "isCorrect": false,
+          "rationale": "Any layer can technically be updated; freezing is a choice made to preserve weights, not a mathematical impossibility."
+        },
+        {
+          "text": "Earlier layers contain the majority of the model's parameters, and updating them would always cause catastrophic forgetting.",
+          "isCorrect": false,
+          "rationale": "The decision to freeze is based on the nature of the features learned, though it does also save computational resources."
+        }
+      ],
+      "hint": "Think about the hierarchy of features a model learns as it processes images."
+    },
+    {
+      "question": "Which of the following best describes the core mechanism of Low-Rank Adaptation (LoRA)?",
+      "answerOptions": [
+        {
+          "text": "It adds a low-rank matrix to the original weight matrix, allowing for parameter-efficient updates without changing the base model weights.",
+          "isCorrect": true,
+          "rationale": "LoRA focuses on training a small number of additional parameters that modulate the behavior of a frozen base model."
+        },
+        {
+          "text": "It reduces the precision of model weights from floating-point to integers to save memory.",
+          "isCorrect": false,
+          "rationale": "This describes quantization, whereas LoRA is an architectural adapter technique."
+        },
+        {
+          "text": "It identifies and removes redundant neurons from the network to create a sparse structure.",
+          "isCorrect": false,
+          "rationale": "Identifying and removing redundant structures is known as pruning, which is distinct from low-rank adaptation."
+        },
+        {
+          "text": "It modifies the representations of less than $1\\%$ of the model's hidden layers during inference time.",
+          "isCorrect": false,
+          "rationale": "This describes Representation Fine-Tuning (ReFT), which is a representation-based equivalent to LoRA."
+        }
+      ],
+      "hint": "Think about how a small amount of new data can be added to a large, fixed set of values."
+    },
+    {
+      "question": "The essence of overfitting is the tendency of a model to mistakenly identify which of the following as underlying structure?",
+      "answerOptions": [
+        {
+          "text": "Residual variation or statistical noise.",
+          "isCorrect": true,
+          "rationale": "Overfitting occurs when the model 'memorizes' the specific random fluctuations in the training set rather than learning generalizable patterns."
+        },
+        {
+          "text": "Nonlinear relationships in a large dataset.",
+          "isCorrect": false,
+          "rationale": "Capturing legitimate nonlinear relationships is a goal of complex models; noise is the irrelevant data that causes errors."
+        },
+        {
+          "text": "The global minimum of the objective function $Q(w)$.",
+          "isCorrect": false,
+          "rationale": "Finding the global minimum is the ideal goal of optimization; overfitting represents a failure of that minimum to generalize."
+        },
+        {
+          "text": "Independent variables that have high variance.",
+          "isCorrect": false,
+          "rationale": "High variance in variables is a data characteristic; overfitting is the model's over-reliance on the specific instances of that data."
+        }
+      ],
+      "hint": "Consider what part of the data is unique to the training set and not present in the real world."
+    },
+    {
+      "question": "According to the 'Principle of Parsimony' mentioned in the source material, how can overfitting be avoided in statistical inference?",
+      "answerOptions": [
+        {
+          "text": "By selecting the simplest model that adequately explains the data.",
+          "isCorrect": true,
+          "rationale": "Parsimony suggests that a model should not be more complex than necessary, as unnecessary parameters increase sampling variance."
+        },
+        {
+          "text": "By increasing the number of variables until the coefficient of determination $R^2$ reaches $1.0$.",
+          "isCorrect": false,
+          "rationale": "A perfect $R^2$ often indicates extreme overfitting, as the model has likely memorized the noise in the data."
+        },
+        {
+          "text": "By ensuring that the number of parameters equals the number of observations $n$.",
+          "isCorrect": false,
+          "rationale": "Having as many parameters as observations allows for perfect memorization, which is an extreme example of overfitting."
+        },
+        {
+          "text": "By exclusively using linear regression for all types of nonlinear data.",
+          "isCorrect": false,
+          "rationale": "Using a linear model for nonlinear data results in underfitting, which is the opposite problem of overfitting."
+        }
+      ],
+      "hint": "Think of Occam's Razor applied to mathematical modeling."
+    },
+    {
+      "question": "Which consequence is most likely to occur when a generative model is overfitted to its training data?",
+      "answerOptions": [
+        {
+          "text": "The model may produce outputs that are virtually identical to specific instances from its training set.",
+          "isCorrect": true,
+          "rationale": "Overfitted models lose the ability to generate novel content and instead reproduce the 'memorized' training examples."
+        },
+        {
+          "text": "The model will automatically simplify its architecture to improve portability.",
+          "isCorrect": false,
+          "rationale": "Portability is lost as models become more complex and overfitted, not gained automatically."
+        },
+        {
+          "text": "The validation error will decrease as the number of training cycles increases.",
+          "isCorrect": false,
+          "rationale": "In overfitting, training error decreases while validation error typically increases."
+        },
+        {
+          "text": "The model will develop robustness to distribution shifts in new datasets.",
+          "isCorrect": false,
+          "rationale": "Overfitting specifically degrades a model's robustness and performance on unseen, shifted data."
+        }
+      ],
+      "hint": "Reflect on why copyright issues might arise with models like Stable Diffusion."
+    },
+    {
+      "question": "In the context of Large Language Models (LLMs), what is the primary goal of 'quantization'?",
+      "answerOptions": [
+        {
+          "text": "To constrain weights from a continuous set of values to a smaller, discrete set for optimization.",
+          "isCorrect": true,
+          "rationale": "Quantization reduces the bit-width of model parameters, which saves memory and can speed up inference."
+        },
+        {
+          "text": "To increase the rank of the weight matrix to capture more complex representations.",
+          "isCorrect": false,
+          "rationale": "Increasing rank would likely increase complexity and parameter count, whereas quantization is a form of compression."
+        },
+        {
+          "text": "To randomly remove $50\\%$ of the neurons to prevent the model from memorizing noise.",
+          "isCorrect": false,
+          "rationale": "This describes dropout regularization, not the discretization process of quantization."
+        },
+        {
+          "text": "To ensure that the model follows a linear learning rate schedule throughout training.",
+          "isCorrect": false,
+          "rationale": "Learning rate schedules are part of the optimization algorithm (like SGD), not weight discretization."
+        }
+      ],
+      "hint": "Think about the transition from real numbers to integers."
+    },
+    {
+      "question": "What is the fundamental difference between standard (batch) gradient descent and stochastic gradient descent (SGD)?",
+      "answerOptions": [
+        {
+          "text": "Batch gradient descent calculates the gradient using the entire dataset, while SGD estimates it using a randomly selected subset or single sample.",
+          "isCorrect": true,
+          "rationale": "SGD reduces the computational burden by approximating the true gradient, allowing for faster iterations in large-scale problems."
+        },
+        {
+          "text": "SGD only works for convex objective functions, whereas batch gradient descent works for all differentiable functions.",
+          "isCorrect": false,
+          "rationale": "Both methods are used for various types of functions, though convergence guarantees vary based on convexity."
+        },
+        {
+          "text": "Batch gradient descent requires a learning rate $\\eta$, but SGD does not use one.",
+          "isCorrect": false,
+          "rationale": "Both methods rely on a learning rate to determine the size of the update steps taken during optimization."
+        },
+        {
+          "text": "SGD is an exact method, while batch gradient descent is a stochastic approximation.",
+          "isCorrect": false,
+          "rationale": "The roles are reversed; batch gradient descent uses the true gradient, while SGD is the approximation."
+        }
+      ],
+      "hint": "Consider the amount of data processed before each parameter update."
+    },
+    {
+      "question": "How does the 'Momentum method' modify the basic stochastic gradient descent update rule?",
+      "answerOptions": [
+        {
+          "text": "It determines the next update as a linear combination of the current gradient and the previous update.",
+          "isCorrect": true,
+          "rationale": "Momentum helps prevent oscillations and accelerates the model's 'travel' through parameter space in a consistent direction."
+        },
+        {
+          "text": "It divides the learning rate by a running average of the magnitudes of recent gradients.",
+          "isCorrect": false,
+          "rationale": "This describes adaptive learning rate methods like RMSProp or Adagrad."
+        },
+        {
+          "text": "It evaluates the stochastic gradient at the next iterate rather than the current one to ensure stability.",
+          "isCorrect": false,
+          "rationale": "This describes implicit updates (ISGD), which are used to solve numerical instability issues."
+        },
+        {
+          "text": "It records an average of the parameter vector $w$ over time to produce the final output.",
+          "isCorrect": false,
+          "rationale": "This describes averaged stochastic gradient descent (ASGD), not the momentum-based update."
+        }
+      ],
+      "hint": "Think of a physical particle gaining acceleration as it rolls down a hill."
+    },
+    {
+      "question": "What specific problem does the AdaGrad algorithm attempt to solve in sparse data settings?",
+      "answerOptions": [
+        {
+          "text": "It adjusts the learning rate per parameter, increasing it for sparse parameters and decreasing it for frequent ones.",
+          "isCorrect": true,
+          "rationale": "By scaling the learning rate using the square root of the sum of historical squared gradients, AdaGrad balances updates across all features."
+        },
+        {
+          "text": "It prevents the model from underfitting by increasing the complexity of the objective function $Q(w)$.",
+          "isCorrect": false,
+          "rationale": "AdaGrad is an optimizer, not a method for altering the model's capacity or objective function complexity."
+        },
+        {
+          "text": "It uses a forgetting factor $\\gamma$ to ensure that the learning rate never becomes too small.",
+          "isCorrect": false,
+          "rationale": "AdaGrad's learning rate tends to diminish over time; the use of a forgetting factor is a feature of RMSProp."
+        },
+        {
+          "text": "It applies a linear interpolation between fine-tuned and original weights to increase robustness.",
+          "isCorrect": false,
+          "rationale": "Weight interpolation is a robustness technique, not an adaptive learning rate strategy."
+        }
+      ],
+      "hint": "Consider how an algorithm might handle features that appear very infrequently in the training data."
+    },
+    {
+      "question": "Which of the following describes the Adam optimizer, published in 2014?",
+      "answerOptions": [
+        {
+          "text": "It combines adaptive learning rates from RMSProp with the feature of moving averages from the Momentum method.",
+          "isCorrect": true,
+          "rationale": "Adam utilizes running averages of both the gradients (first moments) and the squared gradients (second moments) to update weights."
+        },
+        {
+          "text": "It is a second-order method that requires calculating the Hessian matrix at every step.",
+          "isCorrect": false,
+          "rationale": "Adam is a first-order method, meaning it only requires the gradient, making it computationally efficient for large models."
+        },
+        {
+          "text": "It is the only optimizer currently supported by the PyTorch and TensorFlow libraries.",
+          "isCorrect": false,
+          "rationale": "While Adam-derived optimizers are popular, libraries still support classic SGD, RMSProp, and others."
+        },
+        {
+          "text": "It relies on full-batch evaluations to ensure the algorithm never diverges.",
+          "isCorrect": false,
+          "rationale": "Adam is designed to work efficiently with mini-batches in a stochastic setting."
+        }
+      ],
+      "hint": "Think of it as a hybrid of two other major SGD extensions."
+    },
+    {
+      "question": "In the context of model diagnostics, a situation where validation error increases while training error continues to decrease is a primary indicator of:",
+      "answerOptions": [
+        {
+          "text": "Overfitting.",
+          "isCorrect": true,
+          "rationale": "This divergence indicates that the model is performing better on the data it has seen but losing its ability to generalize to new data."
+        },
+        {
+          "text": "Underfitting.",
+          "isCorrect": false,
+          "rationale": "Underfitting is typically indicated by high error on both training and validation sets because the model is too simple."
+        },
+        {
+          "text": "Benign overfitting.",
+          "isCorrect": false,
+          "rationale": "Benign overfitting refers to models that generalize well despite perfect training accuracy, which is a specific and somewhat counter-intuitive case."
+        },
+        {
+          "text": "Distribution shift.",
+          "isCorrect": false,
+          "rationale": "While distribution shift causes high error, the specific trend of diverging training and validation errors during training is the classic sign of overfitting."
+        }
+      ],
+      "hint": "Focus on the relationship between learning and 'memorizing' during the training cycle."
+    },
+    {
+      "question": "How does the technique of 'weight interpolation' help mitigate the loss of robustness caused by fine-tuning?",
+      "answerOptions": [
+        {
+          "text": "It linearly blends the weights of the fine-tuned model with those of the original pre-trained model.",
+          "isCorrect": true,
+          "rationale": "This approach aims to retain the specialized performance of the fine-tuned model while recovering the general out-of-distribution performance of the original."
+        },
+        {
+          "text": "It identifies and removes the $10$ most significant parameters per observation.",
+          "isCorrect": false,
+          "rationale": "This is a misinterpretation of the 'one in ten rule,' which is a guideline for the number of observations needed for reliable regression."
+        },
+        {
+          "text": "It replaces all parameters with a low-rank matrix to decrease space requirements.",
+          "isCorrect": false,
+          "rationale": "This describes LoRA, which is used for efficiency rather than specifically for interpolating weights for robustness."
+        },
+        {
+          "text": "It uses Reinforcement Learning from Human Feedback (RLHF) to re-train the output layer.",
+          "isCorrect": false,
+          "rationale": "RLHF is a fine-tuning objective for alignment, not a weight interpolation technique for distribution shifts."
+        }
+      ],
+      "hint": "Think about finding a middle ground between a 'new' specialist and an 'old' generalist."
+    },
+    {
+      "question": "What is the primary advantage of using 'mini-batches' in stochastic gradient descent over single-sample updates?",
+      "answerOptions": [
+        {
+          "text": "They allow for smoother convergence and take advantage of optimized vectorization libraries.",
+          "isCorrect": true,
+          "rationale": "Processing multiple samples at once provides a more stable gradient estimate and is computationally faster on modern hardware."
+        },
+        {
+          "text": "They guarantee that the model will always reach the global minimum of a non-convex function.",
+          "isCorrect": false,
+          "rationale": "No stochastic method can guarantee reaching the global minimum for non-convex functions; they can only guarantee a local minimum under certain conditions."
+        },
+        {
+          "text": "They eliminate the need to shuffle the training data between passes.",
+          "isCorrect": false,
+          "rationale": "Data shuffling is still recommended for mini-batches to prevent the model from learning the order of the data."
+        },
+        {
+          "text": "They reduce the model's sensitivity to the forgetting factor $\\gamma$.",
+          "isCorrect": false,
+          "rationale": "The forgetting factor is an internal parameter of specific optimizers like RMSProp, not a result of mini-batch processing."
+        }
+      ],
+      "hint": "Consider the trade-off between computational efficiency and the stability of the gradient estimate."
+    },
+    {
+      "question": "Under what condition can stochastic gradient descent be said to converge 'almost surely' to a global minimum?",
+      "answerOptions": [
+        {
+          "text": "When the objective function is convex or pseudoconvex and learning rates decrease appropriately.",
+          "isCorrect": true,
+          "rationale": "Convexity ensures that any local minimum is a global minimum, and proper learning rate schedules allow for convergence."
+        },
+        {
+          "text": "When the model is overparameterized and the learning rate $\\eta$ remains constant.",
+          "isCorrect": false,
+          "rationale": "Constant learning rates often cause the model to oscillate around the minimum rather than converging exactly."
+        },
+        {
+          "text": "When the number of parameters $w$ is exactly equal to the number of observations $n$.",
+          "isCorrect": false,
+          "rationale": "This condition usually leads to extreme overfitting and perfect memorization, not a generalizable global minimum."
+        },
+        {
+          "text": "When the central difference approximation is used instead of the true gradient.",
+          "isCorrect": false,
+          "rationale": "Central differences are a way to estimate the gradient when it is not directly calculable, but they do not guarantee global convergence."
+        }
+      ],
+      "hint": "Think about the shape of the objective function and the behavior of the step size."
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "name": "Positive Psychology and Behavioral Sciences",
+  "children": [
+    {
+      "name": "Martin Seligman",
+      "children": [
+        {
+          "name": "Foundational Theories",
+          "children": [
+            {
+              "name": "Learned Helplessness"
+            },
+            {
+              "name": "Positive Psychology Movement"
+            },
+            {
+              "name": "Well-being Theory (PERMA)"
+            }
+          ]
+        },
+        {
+          "name": "Key Publications",
+          "children": [
+            {
+              "name": "Authentic Happiness"
+            },
+            {
+              "name": "Flourish"
+            },
+            {
+              "name": "Character Strengths and Virtues"
+            }
+          ]
+        },
+        {
+          "name": "Academic Leadership",
+          "children": [
+            {
+              "name": "APA President (1998)"
+            },
+            {
+              "name": "Positive Psychology Center"
+            },
+            {
+              "name": "MAPP Program"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Positive Psychology Concepts",
+      "children": [
+        {
+          "name": "PERMA Framework",
+          "children": [
+            {
+              "name": "Positive Emotion"
+            },
+            {
+              "name": "Engagement (Flow)"
+            },
+            {
+              "name": "Relationships"
+            },
+            {
+              "name": "Meaning"
+            },
+            {
+              "name": "Accomplishments"
+            }
+          ]
+        },
+        {
+          "name": "Character Virtues",
+          "children": [
+            {
+              "name": "Wisdom and Knowledge"
+            },
+            {
+              "name": "Courage"
+            },
+            {
+              "name": "Humanity"
+            },
+            {
+              "name": "Justice"
+            },
+            {
+              "name": "Temperance"
+            },
+            {
+              "name": "Transcendence"
+            }
+          ]
+        },
+        {
+          "name": "Evolution of Field",
+          "children": [
+            {
+              "name": "First Wave: Disease Model Reaction"
+            },
+            {
+              "name": "Second Wave: Positive-Negative Dialectics"
+            },
+            {
+              "name": "Third Wave: Systems and Complexity"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dacher Keltner",
+      "children": [
+        {
+          "name": "Prosocial Emotions",
+          "children": [
+            {
+              "name": "Awe and Wonder"
+            },
+            {
+              "name": "Compassion"
+            },
+            {
+              "name": "Gratitude"
+            }
+          ]
+        },
+        {
+          "name": "Research Focus",
+          "children": [
+            {
+              "name": "Approach/Inhibition Theory of Power"
+            },
+            {
+              "name": "Social Class and Inequality"
+            },
+            {
+              "name": "Evolutionary Origins of Emotion"
+            }
+          ]
+        },
+        {
+          "name": "Public Impact",
+          "children": [
+            {
+              "name": "Greater Good Science Center"
+            },
+            {
+              "name": "Inside Out Consultant"
+            },
+            {
+              "name": "Science of Happiness MOOC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Robert Cialdini",
+      "children": [
+        {
+          "name": "Principles of Persuasion",
+          "children": [
+            {
+              "name": "Reciprocity"
+            },
+            {
+              "name": "Commitment and Consistency"
+            },
+            {
+              "name": "Social Proof"
+            },
+            {
+              "name": "Authority"
+            },
+            {
+              "name": "Liking"
+            },
+            {
+              "name": "Scarcity"
+            },
+            {
+              "name": "Unity Principle"
+            }
+          ]
+        },
+        {
+          "name": "Influential Books",
+          "children": [
+            {
+              "name": "Influence: Psychology of Persuasion"
+            },
+            {
+              "name": "Pre-Suasion"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Applications and Critiques",
+      "children": [
+        {
+          "name": "Practical Applications",
+          "children": [
+            {
+              "name": "Positive Organizational Scholarship"
+            },
+            {
+              "name": "Comprehensive Soldier Fitness"
+            },
+            {
+              "name": "National Indices of Happiness"
+            }
+          ]
+        },
+        {
+          "name": "Criticisms",
+          "children": [
+            {
+              "name": "Toxic Positivity"
+            },
+            {
+              "name": "Reality Distortion (Positive Illusions)"
+            },
+            {
+              "name": "Methodological/WEIRD Bias"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

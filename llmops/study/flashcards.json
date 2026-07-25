@@ -1,0 +1,325 @@
+{
+  "title": "Technical Flashcards",
+  "cards": [
+    {
+      "front": "What is the primary objective of A/B testing in user-experience research?",
+      "back": "To compare two or more versions of a single variable to determine which is more effective."
+    },
+    {
+      "front": "A/B testing is frequently referred to as _____ testing or split testing.",
+      "back": "bucket"
+    },
+    {
+      "front": "How does multivariate testing differ from simple A/B testing?",
+      "back": "It tests more than two versions at once or utilizes a larger number of controls."
+    },
+    {
+      "front": "Why are simple A/B tests considered invalid for observational or quasi-experimental situations?",
+      "back": "They require a randomized controlled environment to isolate the effect of the variable being tested."
+    },
+    {
+      "front": "In the context of marketing copy, what does 'call to action' refer to?",
+      "back": "The specific part of the copy that encourages a customer to perform an act, such as making a purchase."
+    },
+    {
+      "front": "What is the statistical goal of determining 'statistical significance' in an A/B test?",
+      "back": "To ensure that observed differences in response rates are real and repeatable rather than a result of random chance."
+    },
+    {
+      "front": "Beyond sales conversion, name two measurable outcomes that an A/B test might target.",
+      "back": "Clickthrough rate and registration rate."
+    },
+    {
+      "front": "Which two-sample hypothesis test is most commonly used when the mean of a metric needs to be optimized under the least number of assumptions?",
+      "back": "Welch's t-test"
+    },
+    {
+      "front": "Which statistical test is appropriate for comparing two binomial distributions, such as click-through rates?",
+      "back": "Fisher's exact test"
+    },
+    {
+      "front": "Under what conditions are Z-tests appropriate for comparing means in an experiment?",
+      "back": "When the data follows a normal distribution and the standard deviation is known."
+    },
+    {
+      "front": "In A/B testing, what is 'segmentation'?",
+      "back": "The practice of analyzing how different subgroups of a customer base respond to variants."
+    },
+    {
+      "front": "Why must an A/B test be properly designed to be evenly distributed across customer attributes if segmented results are expected?",
+      "back": "To prevent experiment bias and ensure that conclusions about specific subgroups are accurate."
+    },
+    {
+      "front": "What is the primary advantage of A/B testing regarding the interpretation of user preferences?",
+      "back": "The results are simple to interpret because they directly test one option against another."
+    },
+    {
+      "front": "Why do A/B tests require large sample sizes?",
+      "back": "To reduce the standard error and produce a result that is statistically significant."
+    },
+    {
+      "front": "What is the 'CUPED' technique used for in experimental analysis?",
+      "back": "Taking pre-experiment data into account to reduce variance and allow for smaller sample sizes."
+    },
+    {
+      "front": "What was the first recorded use of a randomized double-blind trial (conducted in 1835)?",
+      "back": "An assessment of the effectiveness of a homeopathic drug."
+    },
+    {
+      "front": "Which advertising pioneer used promotional coupons to test campaign effectiveness in the early 20th century?",
+      "back": "Claude Hopkins"
+    },
+    {
+      "front": "What was the objective of Google's first A/B test in the year 2000?",
+      "back": "To determine the optimum number of search results to display on a page."
+    },
+    {
+      "front": "In the context of e-commerce, why is the 'purchase funnel' a high-priority candidate for A/B testing?",
+      "back": "Even marginal decreases in drop-off rates can lead to significant gains in total sales."
+    },
+    {
+      "front": "How is A/B testing used in HTTP routing for API feature testing?",
+      "back": "A percentage ($n\\%$) of traffic is routed to a new backend version while the rest stays on the stable version to limit bug exposure."
+    },
+    {
+      "front": "What is the core practice of Continuous Integration (CI)?",
+      "back": "Frequently integrating source code changes and ensuring the codebase remains in a workable state."
+    },
+    {
+      "front": "Who first proposed the term 'Continuous Integration' in 1991?",
+      "back": "Grady Booch"
+    },
+    {
+      "front": "Which software development methodology, invented by Kent Beck and Ron Jeffries, championed CI in the late 1990s?",
+      "back": "Extreme Programming (XP)"
+    },
+    {
+      "front": "In CI, what is the role of an automated build system?",
+      "back": "To compile the software and run tests every time a change is committed to the integration branch."
+    },
+    {
+      "front": "What is an 'atomic commit' in the context of version control?",
+      "back": "A commit where all of a developer's changes are handled as a single, indivisible unit."
+    },
+    {
+      "front": "What is 'merge hell' or 'integration hell'?",
+      "back": "A situation where the time required to integrate changes exceeds the time it took to make the original changes."
+    },
+    {
+      "front": "Why do CI proponents suggest developers use 'feature toggles'?",
+      "back": "To allow incomplete features to be committed to the main branch while remaining disabled in the application."
+    },
+    {
+      "front": "What is the difference between Continuous Delivery and Continuous Deployment?",
+      "back": "Delivery ensures code is always ready for deployment; Deployment automates the actual release to production."
+    },
+    {
+      "front": "How frequently should developers commit code according to CI best practices to minimize conflict resolution effort?",
+      "back": "At least daily."
+    },
+    {
+      "front": "Why is it considered good practice to include a test case with every bug-fix commit?",
+      "back": "To prevent regressions, ensuring the fix is not accidentally reverted in the future."
+    },
+    {
+      "front": "Why should CI builds be kept fast?",
+      "back": "To allow for rapid identification and resolution of integration problems."
+    },
+    {
+      "front": "In CI testing, what is the purpose of 'service virtualization'?",
+      "back": "To obtain on-demand access to complex or evolving dependencies like third-party APIs that the team does not control."
+    },
+    {
+      "front": "How does frequent code commit support software quality according to CI research?",
+      "back": "It encourages the development of modular and less complex code."
+    },
+    {
+      "front": "What is a 'feature store' in machine learning?",
+      "back": "A centralized repository used to store, manage, and serve features for model training and inference."
+    },
+    {
+      "front": "What problem does a feature store solve regarding training and production environments?",
+      "back": "It ensures consistency between the features used to train models and those used during live inference."
+    },
+    {
+      "front": "Name two types of data pipelines that feature stores typically support.",
+      "back": "Batch and real-time data pipelines."
+    },
+    {
+      "front": "How do feature stores help reduce 'data leakage'?",
+      "back": "By providing curated, reusable features that maintain high data quality and governance standards."
+    },
+    {
+      "front": "What is the primary aim of 'load balancing' in computing?",
+      "back": "To distribute tasks over a set of resources to make overall processing more efficient and avoid overloads."
+    },
+    {
+      "front": "What is the difference between static and dynamic load balancing algorithms?",
+      "back": "Static algorithms ignore the system's current state; dynamic algorithms account for the current load of each node."
+    },
+    {
+      "front": "In task scheduling, how does a Directed Acyclic Graph (DAG) represent dependencies?",
+      "back": "It illustrates that some tasks cannot begin until specific parent tasks are completed."
+    },
+    {
+      "front": "What characterizes a load balancing algorithm as 'malleable'?",
+      "back": "It is capable of dealing with a fluctuating number of processors during its execution."
+    },
+    {
+      "front": "What is the 'prefix sum' algorithm used for in static load distribution?",
+      "back": "To calculate the optimal division of subdivided independent tasks in logarithmic time."
+    },
+    {
+      "front": "How does 'round-robin scheduling' distribute requests?",
+      "back": "It sends requests to servers in a fixed sequential order, starting over after reaching the last server."
+    },
+    {
+      "front": "What is the 'least connections' load balancing method?",
+      "back": "A strategy that assigns new requests to the server with the fewest active connections."
+    },
+    {
+      "front": "What is the primary drawback of the 'master-worker' scheme in large-scale systems?",
+      "back": "The master becomes a communication bottleneck, limiting the system's scalability."
+    },
+    {
+      "front": "Describe the core principle of 'work stealing'.",
+      "back": "Inactive processors 'steal' tasks from the queues of active or overloaded processors."
+    },
+    {
+      "front": "How does 'round-robin DNS' function as a load balancing technique?",
+      "back": "It associates multiple IP addresses with a single domain name, giving clients different IPs in a sequential fashion."
+    },
+    {
+      "front": "Why might client-side random load balancing provide better distribution than round-robin DNS?",
+      "back": "It is not affected by DNS caching issues that can skew traffic distribution toward specific servers."
+    },
+    {
+      "front": "What is 'persistence' (or stickiness) in a load-balanced service?",
+      "back": "The practice of sending all requests in a single user session to the same backend server."
+    },
+    {
+      "front": "What is the main downside of session persistence for failover scenarios?",
+      "back": "If the specific backend server goes down, the session information becomes inaccessible and is lost."
+    },
+    {
+      "front": "In load balancing, what is 'TLS offload'?",
+      "back": "Offloading cryptographic calculations from the web server to the load balancer to free up CPU resources."
+    },
+    {
+      "front": "What is the function of 'HTTP compression' in a load balancer?",
+      "back": "It uses algorithms like gzip to reduce the data volume transferred to the client, improving response times."
+    },
+    {
+      "front": "How does 'TCP buffering' (spoon-feeding) help backend web servers?",
+      "back": "It allows the server to free up threads faster by having the load balancer handle the slow delivery of data to clients."
+    },
+    {
+      "front": "What is the purpose of 'health checking' in a load balancer?",
+      "back": "The balancer polls servers for application health and removes unresponsive nodes from the active pool."
+    },
+    {
+      "front": "How does the IEEE 802.1aq standard (Shortest Path Bridging) improve network load balancing?",
+      "back": "It allows all links in a mesh topology to be active by sharing traffic across multiple equal-cost paths."
+    },
+    {
+      "front": "What differentiates 'proactive' from 'reactive' dynamic load balancing in data centers?",
+      "back": "Proactive fixing assignments once made; reactive shifting flows as network utilization changes."
+    },
+    {
+      "front": "How does load balancing support 'N+1 redundancy' for failover?",
+      "back": "By ensuring there is at least one extra component beyond the service's capacity to take over if one fails."
+    },
+    {
+      "front": "In 'AI factories', what role does load balancing play in data ingestion?",
+      "back": "It manages high-volume data pipelines to ensure high throughput and low latency for model training systems."
+    },
+    {
+      "front": "Why is connection pooling important for AI environments placed behind load balancers?",
+      "back": "It helps prevent congestion and ensures that computational resources remain efficiently utilized during heavy data demands."
+    },
+    {
+      "front": "How do load balancers assist with data governance in private AI workflows?",
+      "back": "They route sensitive training data locally or across private clouds to avoid public-cloud bandwidth limits and regulatory violations."
+    },
+    {
+      "front": "Which statistical distribution is typically assumed when calculating 'Transactions per paying user' in A/B testing?",
+      "back": "Poisson distribution"
+    },
+    {
+      "front": "A load balancer feature that brings standby servers online when active servers drop below a threshold is called _____.",
+      "back": "Priority activation"
+    },
+    {
+      "front": "What historical 1908 development by William Sealy Gosset is critical for modern A/B testing statistics?",
+      "back": "The creation of Student's t-test by altering the Z-test."
+    },
+    {
+      "front": "Why is 'URL rewriting' considered a security risk for session persistence?",
+      "back": "End-users can easily alter the URL to change session streams or access unauthorized data."
+    },
+    {
+      "front": "What is 'delayed-binding' in the context of DDoS protection?",
+      "back": "The load balancer prevents backend servers from seeing a client until the TCP handshake is fully completed."
+    },
+    {
+      "front": "What defines the 'Power of Two Choices' scheduling algorithm?",
+      "back": "The balancer picks two servers at random and chooses the one with the better performance metric."
+    },
+    {
+      "front": "In Continuous Integration, what is the 'Daily build' practice?",
+      "back": "The recommendation that a system should be built at least once every day to verify integration."
+    },
+    {
+      "front": "According to the CI series on software development, which support discipline covers the management of user interactions and satisfaction?",
+      "back": "User experience"
+    },
+    {
+      "front": "What is the primary risk of using 'shared-memory' (PRAM) models in parallel computing load balancing?",
+      "back": "Managing write conflicts can significantly slow down the individual execution speed of the computing units."
+    },
+    {
+      "front": "How does a 'weighted round-robin' algorithm differ from standard round-robin?",
+      "back": "It assigns a higher number of requests to more powerful units based on pre-defined weights."
+    },
+    {
+      "front": "Why is 'metadata management' a critical feature of a Feature Store?",
+      "back": "It helps track feature lineage, definitions, and usage to maintain high governance and reproducibility."
+    },
+    {
+      "front": "What term describes a load balancer's ability to modify traffic based on requested URLs?",
+      "back": "Content-aware switching"
+    },
+    {
+      "front": "In work stealing, when is 'receiver-initiated' sharing more efficient than 'sender-initiated'?",
+      "back": "When the network is heavily loaded, it is better for idle units to request work."
+    },
+    {
+      "front": "What is 'moldable' scalability in load balancing algorithms?",
+      "back": "The algorithm can adapt to a varying number of units, but that number must be fixed before execution begins."
+    },
+    {
+      "front": "What was the revenue impact of Microsoft's 2012 A/B test on advertising headlines for Bing?",
+      "back": "A revenue increase of $12\\%$ was achieved within hours."
+    },
+    {
+      "front": "In an A/B test, if variant A has a $5\\%$ response rate and variant B has $3\\%$, which approach determines if this result is repeatable?",
+      "back": "Statistical hypothesis testing"
+    },
+    {
+      "front": "What is the 'Principle of Least Privilege' in CI/CD pipeline security?",
+      "back": "Ensuring that pipeline-related permissions are limited to the minimum necessary to perform their functions."
+    },
+    {
+      "front": "Which load balancing approach uses a 'router' to associate a known set of tasks with available processors using a performance function?",
+      "back": "Static load balancing"
+    },
+    {
+      "front": "What is 'service virtualization' used to replace in a test environment?",
+      "back": "Dependencies that are beyond the team's control or too complex to configure, such as third-party APIs."
+    },
+    {
+      "front": "Why are A/B tests considered the 'simplest form of controlled experiment'?",
+      "back": "They typically involve only two variants and a single variable."
+    }
+  ]
+}

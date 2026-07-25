@@ -1,0 +1,255 @@
+{
+  "name": "Modern Computing Architecture and Data Management",
+  "children": [
+    {
+      "name": "CAP Theorem",
+      "children": [
+        {
+          "name": "Core Principles",
+          "children": [
+            {
+              "name": "Consistency"
+            },
+            {
+              "name": "Availability"
+            },
+            {
+              "name": "Partition Tolerance"
+            }
+          ]
+        },
+        {
+          "name": "Key Constraints",
+          "children": [
+            {
+              "name": "Maximum two of three guarantees"
+            },
+            {
+              "name": "Trade-off during network partition"
+            },
+            {
+              "name": "ACID vs BASE philosophy"
+            }
+          ]
+        },
+        {
+          "name": "Related Concepts",
+          "children": [
+            {
+              "name": "PACELC Theorem"
+            },
+            {
+              "name": "Eric Brewer"
+            },
+            {
+              "name": "Gilbert and Lynch Proof"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Caching Systems",
+      "children": [
+        {
+          "name": "Hardware Caches",
+          "children": [
+            {
+              "name": "CPU Cache (L1, L2, L3)"
+            },
+            {
+              "name": "GPU Texture Cache"
+            },
+            {
+              "name": "Translation Lookaside Buffer (TLB)"
+            }
+          ]
+        },
+        {
+          "name": "Software Caches",
+          "children": [
+            {
+              "name": "Web Cache"
+            },
+            {
+              "name": "Disk Cache"
+            },
+            {
+              "name": "Memoization"
+            }
+          ]
+        },
+        {
+          "name": "Operation Policies",
+          "children": [
+            {
+              "name": "Write-through vs Write-back"
+            },
+            {
+              "name": "LRU and LFU Replacement"
+            },
+            {
+              "name": "Prefetching"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Database Systems",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Relational (SQL)"
+            },
+            {
+              "name": "NoSQL (Key-Value, Document, Graph)"
+            },
+            {
+              "name": "Navigational (Hierarchical, Network)"
+            }
+          ]
+        },
+        {
+          "name": "DBMS Functions",
+          "children": [
+            {
+              "name": "Data Definition (DDL)"
+            },
+            {
+              "name": "Data Manipulation (DML)"
+            },
+            {
+              "name": "Concurrency Control"
+            },
+            {
+              "name": "Backup and Recovery"
+            }
+          ]
+        },
+        {
+          "name": "Architecture Levels",
+          "children": [
+            {
+              "name": "External Level"
+            },
+            {
+              "name": "Conceptual Level"
+            },
+            {
+              "name": "Internal Level"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Content Delivery Networks (CDN)",
+      "children": [
+        {
+          "name": "Core Architecture",
+          "children": [
+            {
+              "name": "Edge Servers"
+            },
+            {
+              "name": "Points of Presence (PoPs)"
+            },
+            {
+              "name": "Origin Shields"
+            }
+          ]
+        },
+        {
+          "name": "Delivery Techniques",
+          "children": [
+            {
+              "name": "Request Routing"
+            },
+            {
+              "name": "Server Load Balancing"
+            },
+            {
+              "name": "Anycasting"
+            },
+            {
+              "name": "P2P Offloading"
+            }
+          ]
+        },
+        {
+          "name": "Types",
+          "children": [
+            {
+              "name": "Commercial-as-a-Service"
+            },
+            {
+              "name": "Telco CDNs"
+            },
+            {
+              "name": "Private/Enterprise CDNs"
+            },
+            {
+              "name": "Image CDNs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Microservices",
+      "children": [
+        {
+          "name": "Characteristics",
+          "children": [
+            {
+              "name": "Loose Coupling"
+            },
+            {
+              "name": "Independent Deployment"
+            },
+            {
+              "name": "Modular Scaling"
+            },
+            {
+              "name": "Domain-Driven Design"
+            }
+          ]
+        },
+        {
+          "name": "Key Patterns",
+          "children": [
+            {
+              "name": "Service Mesh"
+            },
+            {
+              "name": "Circuit Breakers"
+            },
+            {
+              "name": "Bounded Contexts"
+            },
+            {
+              "name": "Sidecar Proxies"
+            }
+          ]
+        },
+        {
+          "name": "Challenges",
+          "children": [
+            {
+              "name": "Network Latency"
+            },
+            {
+              "name": "Data Consistency"
+            },
+            {
+              "name": "Operational Complexity"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

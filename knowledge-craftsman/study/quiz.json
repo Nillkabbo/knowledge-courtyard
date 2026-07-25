@@ -1,0 +1,265 @@
+{
+  "title": "Learning Quiz",
+  "questions": [
+    {
+      "question": "According to Hermann Ebbinghaus's research on memory, what happens to information retention after a period of two weeks if no conscious review occurs?",
+      "answerOptions": [
+        {
+          "text": "Retention drops to approximately $10\\%$.",
+          "isCorrect": true,
+          "rationale": "Ebbinghaus's experiments with nonsense syllables demonstrated that without review, humans lose roughly $90\\%$ of new knowledge within a matter of weeks."
+        },
+        {
+          "text": "Retention stabilizes at $50\\%$.",
+          "isCorrect": false,
+          "rationale": "The curve shows a much sharper decline than $50\\%$ over a two-week period, though $50\\%$ is often the loss measured within the first hour."
+        },
+        {
+          "text": "Retention remains at $75\\%$ due to 'savings'.",
+          "isCorrect": false,
+          "rationale": "While 'savings' refers to the ease of relearning, it does not imply that $75\\%$ of the material is consciously remembered after two weeks."
+        },
+        {
+          "text": "Information is completely lost ($0\\%$ retention).",
+          "isCorrect": false,
+          "rationale": "The forgetting curve levels off rather than hitting zero, as some information remains in the subconscious, known as savings."
+        }
+      ],
+      "hint": "Consider the 'brutal truth' mentioned regarding the percentage of a book you likely remember after fourteen days."
+    },
+    {
+      "question": "In Mortimer Adler's 'How to Read a Book', which level of reading is described as the highest and most difficult, involving the synthesis of multiple works on a single subject?",
+      "answerOptions": [
+        {
+          "text": "Elementary Reading",
+          "isCorrect": false,
+          "rationale": "This level is merely the basic decoding of words and phrases, typically mastered in childhood."
+        },
+        {
+          "text": "Inspectional Reading",
+          "isCorrect": false,
+          "rationale": "This level involves skimming or pre-reading to understand a book's structure within a very limited time frame."
+        },
+        {
+          "text": "Analytical Reading",
+          "isCorrect": false,
+          "rationale": "While deep, this level focuses on thoroughly understanding and criticizing a single book rather than multiple works."
+        },
+        {
+          "text": "Syntopical Reading",
+          "isCorrect": true,
+          "rationale": "Syntopical reading requires the reader to identify relationships, agreements, and contradictions across different authors to form their own conclusion."
+        }
+      ],
+      "hint": "This level is likened to a 'web' of knowledge or what researchers and PhD students perform."
+    },
+    {
+      "question": "Niklas Luhmann's Zettelkasten system relies on the principle of 'atomic' notes. What does this mean in the context of his slip-box method?",
+      "answerOptions": [
+        {
+          "text": "Each note should contain as much information as possible about a specific book.",
+          "isCorrect": false,
+          "rationale": "Including too much information violates the principle of modularity, making it harder to link specific ideas later."
+        },
+        {
+          "text": "Each note should focus on a single, discrete idea or concept.",
+          "isCorrect": true,
+          "rationale": "Atomic notes ensure that ideas are modular and can be easily interconnected with other notes in a non-linear web."
+        },
+        {
+          "text": "Notes are organized strictly by the date they were created.",
+          "isCorrect": false,
+          "rationale": "Luhmann focused on internal connections and cross-references rather than a simple chronological log."
+        },
+        {
+          "text": "The cards are organized alphabetically by the author's last name.",
+          "isCorrect": false,
+          "rationale": "This would create a linear bibliography rather than an emergent network of interconnected thoughts."
+        }
+      ],
+      "hint": "Think about the building blocks of matter; the idea is to keep each card limited to one specific thought."
+    },
+    {
+      "question": "What is the primary indicator of failure in the 'Feynman Technique' of learning?",
+      "answerOptions": [
+        {
+          "text": "Forgetting a specific mathematical formula.",
+          "isCorrect": false,
+          "rationale": "Feynman valued understanding the underlying concepts over rote memorization of symbols or terminology."
+        },
+        {
+          "text": "Taking more than ten minutes to summarize a chapter.",
+          "isCorrect": false,
+          "rationale": "The technique is a recursive process of improvement and does not impose strict time limits on the initial summary."
+        },
+        {
+          "text": "Falling back on complex jargon to explain a concept.",
+          "isCorrect": true,
+          "rationale": "The ability to explain a concept simply, such as to a 12-year-old, is the ultimate test of true comprehension according to Feynman."
+        },
+        {
+          "text": "Recording the information on a digital device rather than paper.",
+          "isCorrect": false,
+          "rationale": "The medium of the note is less important than the simplicity and clarity of the explanation provided."
+        }
+      ],
+      "hint": "Feynman believed that if you can't explain it simply, you don't understand it well enough."
+    },
+    {
+      "question": "In the 3-Pass Method developed by S. Keshav, what is the specific goal of the second pass?",
+      "answerOptions": [
+        {
+          "text": "To decide whether the paper is worth reading at all.",
+          "isCorrect": false,
+          "rationale": "This bird's-eye view assessment is the primary goal of the first pass, not the second."
+        },
+        {
+          "text": "To virtually re-implement the paper's findings from scratch.",
+          "isCorrect": false,
+          "rationale": "This deep dive, which can take several hours, is reserved for the third and final pass."
+        },
+        {
+          "text": "To grasp the paper's content while ignoring difficult proofs or derivations.",
+          "isCorrect": true,
+          "rationale": "The second pass involves reading the full paper to understand the main points and figures, but skipping over grueling technical details to maintain flow."
+        },
+        {
+          "text": "To perform citation tracing and find older foundational works.",
+          "isCorrect": false,
+          "rationale": "While important, citation tracing is a supplementary research task rather than the core focus of the second grasp-oriented pass."
+        }
+      ],
+      "hint": "This pass typically takes about an hour and should leave you able to summarize the paper's core findings to a colleague."
+    },
+    {
+      "question": "Tiago Forte's 'Second Brain' system uses the 'CODE' framework. What does the 'D' in CODE stand for?",
+      "answerOptions": [
+        {
+          "text": "Drafting",
+          "isCorrect": false,
+          "rationale": "While related to expression, drafting is a specific stage of writing rather than the general process of refining notes."
+        },
+        {
+          "text": "Distill",
+          "isCorrect": true,
+          "rationale": "Distilling involves progressively summarizing notes to find the 'essence' or 'soul' of the information for easier future retrieval."
+        },
+        {
+          "text": "Data-mining",
+          "isCorrect": false,
+          "rationale": "Data-mining refers to searching for patterns in large datasets, which is not a core step in this personal knowledge management framework."
+        },
+        {
+          "text": "Dividing",
+          "isCorrect": false,
+          "rationale": "Dividing is not a step in CODE, although the PARA system does involve categorization of materials."
+        }
+      ],
+      "hint": "Think about the process of reducing a substance to its most essential parts or highlights."
+    },
+    {
+      "question": "Hermann Ebbinghaus used the variable $b$ in his retention equation $b = \\frac{100k}{(\\log(t))^c + k}$. What does $b$ represent?",
+      "answerOptions": [
+        {
+          "text": "The difficulty of the learned material.",
+          "isCorrect": false,
+          "rationale": "Difficulty is a factor that influences the curve, but it is not the value output by the equation for 'Savings'."
+        },
+        {
+          "text": "The time elapsed in minutes.",
+          "isCorrect": false,
+          "rationale": "Time is represented by the variable $t$ in the denominator of the equation."
+        },
+        {
+          "text": "Savings expressed as a percentage.",
+          "isCorrect": true,
+          "rationale": "In Ebbinghaus's formula, 'Savings' refers to the relative amount of time saved during relearning compared to the original learning session."
+        },
+        {
+          "text": "The number of nonsense syllables memorized.",
+          "isCorrect": false,
+          "rationale": "The number of items is a constant of the experiment setup, not the percentage-based result of the curve."
+        }
+      ],
+      "hint": "In this context, it is analogous to the retention rate or the time 'saved' on a second trial."
+    },
+    {
+      "question": "In the PARA organization system, what is the distinction between 'Projects' and 'Areas'?",
+      "answerOptions": [
+        {
+          "text": "Projects have a deadline, while Areas represent ongoing responsibilities.",
+          "isCorrect": true,
+          "rationale": "Projects are finite tasks with a clear end-point, whereas Areas are spheres of life (like health or finance) that require consistent standard maintenance over time."
+        },
+        {
+          "text": "Areas are public while Projects are private.",
+          "isCorrect": false,
+          "rationale": "Privacy levels do not define the hierarchical structure of PARA; both can be either public or private."
+        },
+        {
+          "text": "Projects contain resources, while Areas contain archives.",
+          "isCorrect": false,
+          "rationale": "Resources and Archives are separate top-level categories in PARA, distinct from Projects and Areas."
+        },
+        {
+          "text": "Areas have specific outcomes, while Projects are for general interest.",
+          "isCorrect": false,
+          "rationale": "This is the opposite of the PARA logic, where Projects are driven by specific outcomes and deadlines."
+        }
+      ],
+      "hint": "One is a sprint with a finish line; the other is a marathon with no defined end."
+    },
+    {
+      "question": "What is the 'Golden Rule' Mortimer Adler proposes for readers before they can honestly state they 'agree' or 'disagree' with an author?",
+      "answerOptions": [
+        {
+          "text": "They must read the book at least twice.",
+          "isCorrect": false,
+          "rationale": "While helpful, re-reading is not the specific philosophical condition Adler sets for valid criticism."
+        },
+        {
+          "text": "They must first be able to say 'I understand.'",
+          "isCorrect": true,
+          "rationale": "Adler asserts that critical judgment (Analytical level) is only valid once the reader has fully grasped the author's terms and propositions."
+        },
+        {
+          "text": "They must have read at least three other books on the same topic.",
+          "isCorrect": false,
+          "rationale": "Multi-book reading is part of the Syntopical level, but the rule for critique applies within the Analytical level for a single work."
+        },
+        {
+          "text": "They must write a one-page summary of the book.",
+          "isCorrect": false,
+          "rationale": "Summary is a tool for understanding, but the actual 'rule' focuses on the intellectual prerequisite of comprehension before judgment."
+        }
+      ],
+      "hint": "You cannot judge a work effectively until you have first fully decoded and interpreted its meaning."
+    },
+    {
+      "question": "The Leitner System is a practical implementation of spaced repetition. How does it manage the frequency of card reviews?",
+      "answerOptions": [
+        {
+          "text": "Cards are reviewed every day regardless of performance.",
+          "isCorrect": false,
+          "rationale": "This would be massed practice, which is inefficient compared to the spacing effect."
+        },
+        {
+          "text": "Successfully recalled cards are moved to boxes with longer review intervals.",
+          "isCorrect": true,
+          "rationale": "The system uses partitions where 'known' items are reviewed less frequently to prioritize time for difficult or new material."
+        },
+        {
+          "text": "Failed cards are permanently removed from the learning set.",
+          "isCorrect": false,
+          "rationale": "Failed cards are actually moved back to the first 'daily' box to increase their review frequency."
+        },
+        {
+          "text": "Frequency is determined by the date the card was first created.",
+          "isCorrect": false,
+          "rationale": "The system is performance-based (active recall) rather than chronological."
+        }
+      ],
+      "hint": "Think about how successfully answering a question affects how soon you see it again."
+    }
+  ]
+}

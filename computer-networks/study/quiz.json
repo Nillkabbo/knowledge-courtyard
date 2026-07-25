@@ -1,0 +1,265 @@
+{
+  "title": "Networking Quiz",
+  "questions": [
+    {
+      "question": "In a Content Delivery Network (CDN), what is the primary role of an 'Edge Server'?",
+      "answerOptions": [
+        {
+          "text": "To serve content requests directly from clients at the edge of the network.",
+          "isCorrect": true,
+          "rationale": "Edge servers are geographically distributed nodes that are closest to the end users, allowing them to deliver content with lower latency."
+        },
+        {
+          "text": "To provide the original source of the content for the entire network.",
+          "isCorrect": false,
+          "rationale": "This describes the content provider origin server, not an edge server."
+        },
+        {
+          "text": "To protect the origin server from heavy traffic and DDoS attacks.",
+          "isCorrect": false,
+          "rationale": "While edge servers can help, the specific concept of an 'Origin Shield' is designated for protecting the origin server."
+        },
+        {
+          "text": "To choose which specific CDN to use in a multi-CDN environment.",
+          "isCorrect": false,
+          "rationale": "A 'CDN selector' is the decision-making service responsible for choosing between multiple CDNs."
+        }
+      ],
+      "hint": "Think about the geographical location of these servers relative to the person requesting the content."
+    },
+    {
+      "question": "Which DNS query type requires the DNS server to provide a complete answer by potentially querying other name servers on the requester's behalf?",
+      "answerOptions": [
+        {
+          "text": "Recursive query",
+          "isCorrect": true,
+          "rationale": "A recursive query delegates the entire resolution process to a single DNS server, which then interacts with other servers as needed to return the final result."
+        },
+        {
+          "text": "Iterative query",
+          "isCorrect": false,
+          "rationale": "In an iterative query, the server provides a referral to the next server in the chain rather than resolving it completely."
+        },
+        {
+          "text": "Non-recursive query",
+          "isCorrect": false,
+          "rationale": "This type of query only returns a result if the server is authoritative or has the data cached, without asking other servers."
+        },
+        {
+          "text": "Inverse query",
+          "isCorrect": false,
+          "rationale": "Inverse queries are used for different purposes, such as mapping an IP address back to a name, rather than the standard name-to-IP path."
+        }
+      ],
+      "hint": "Consider a process that involves a server taking full responsibility for finding the final answer."
+    },
+    {
+      "question": "What is the primary advantage of 'Telco CDNs' over traditional commercial CDN providers?",
+      "answerOptions": [
+        {
+          "text": "They own the 'last mile' of the network and can cache content deeper inside their own infrastructure.",
+          "isCorrect": true,
+          "rationale": "Telecommunications providers have direct control over the local access networks, allowing them to minimize the distance data travels."
+        },
+        {
+          "text": "They use Peer-to-Peer (P2P) mechanisms to offload traffic to user devices.",
+          "isCorrect": false,
+          "rationale": "P2P CDNs use client resources to share content, which is distinct from the infrastructure-based deep caching used by telcos."
+        },
+        {
+          "text": "They are exempt from the General Data Protection Regulation (GDPR) for user tracking.",
+          "isCorrect": false,
+          "rationale": "No specific entity is exempt from GDPR; in fact, CDN usage has been legally challenged in the EU due to IP address transmission."
+        },
+        {
+          "text": "They do not require the use of Domain Name System (DNS) for content routing.",
+          "isCorrect": false,
+          "rationale": "CDNs, including telco-operated ones, typically rely on DNS for directing user requests to the optimal server."
+        }
+      ],
+      "hint": "Think about the physical ownership of the cables and routers connecting to a user's home."
+    },
+    {
+      "question": "According to the LDH rule in DNS syntax, which of the following is a forbidden character for use in a domain name label?",
+      "answerOptions": [
+        {
+          "text": "Underscore (${\\_}$)",
+          "isCorrect": true,
+          "rationale": "The LDH rule stands for Letters, Digits, and Hyphen; other symbols like underscores are generally not permitted in standard hostnames."
+        },
+        {
+          "text": "Hyphen ($-$)",
+          "isCorrect": false,
+          "rationale": "The hyphen is one of the three character types explicitly allowed by the LDH rule."
+        },
+        {
+          "text": "Uppercase letter ($A$)",
+          "isCorrect": false,
+          "rationale": "Letters $a$ through $z$ and $A$ through $Z$ are allowed, and domain names are interpreted in a case-independent manner."
+        },
+        {
+          "text": "Digit ($9$)",
+          "isCorrect": false,
+          "rationale": "Numerical digits $0$ through $9$ are explicitly allowed under the LDH rule."
+        }
+      ],
+      "hint": "The LDH rule's name identifies the only three categories of characters allowed."
+    },
+    {
+      "question": "In the context of DNS delegation, what are 'glue records' used for?",
+      "answerOptions": [
+        {
+          "text": "To provide the IP address of a name server when its name is a subdomain of the domain being delegated.",
+          "isCorrect": true,
+          "rationale": "Glue records break circular dependencies by providing necessary IP addresses within the parent zone's response."
+        },
+        {
+          "text": "To link a content provider's origin server to multiple different CDNs simultaneously.",
+          "isCorrect": false,
+          "rationale": "This describes a multi-CDN strategy or a CDN selector, not a DNS glue record."
+        },
+        {
+          "text": "To encrypt the communication between the DNS resolver and the authoritative server.",
+          "isCorrect": false,
+          "rationale": "Encryption is handled by protocols like DoT or DoH, while glue records are simple address mappings."
+        },
+        {
+          "text": "To store the Time-To-Live ($TTL$) values for all resource records in a zone.",
+          "isCorrect": false,
+          "rationale": "Every individual resource record has its own $TTL$ field; it is not stored in a separate glue record."
+        }
+      ],
+      "hint": "Think about how a resolver would find a server's address if that server's name is inside the very domain it is trying to resolve."
+    },
+    {
+      "question": "Which of the following describes the 'Extension Mechanisms for DNS' ($EDNS0$)?",
+      "answerOptions": [
+        {
+          "text": "A mechanism that allows for larger UDP packet sizes and optional protocol elements like client subnet mapping.",
+          "isCorrect": true,
+          "rationale": "EDNS0 was introduced to add functionality to the original DNS protocol without increasing overhead when those features are not in use."
+        },
+        {
+          "text": "A protocol that enforces strict character limits on top-level domain ($TLD$) registrations.",
+          "isCorrect": false,
+          "rationale": "TLD registration rules are managed by ICANN and registries, not by the EDNS extension protocol."
+        },
+        {
+          "text": "A specialized CDN technique for serving responsive images based on device intelligence.",
+          "isCorrect": false,
+          "rationale": "Serving responsive images is the role of an Image CDN, which is an application-layer service."
+        },
+        {
+          "text": "An administrative system used by registries to maintain WHOIS database information.",
+          "isCorrect": false,
+          "rationale": "WHOIS and RDAP are the protocols used for registry data; EDNS0 is a transport-level extension for DNS queries."
+        }
+      ],
+      "hint": "This mechanism is often used to optimize CDN performance by providing more detailed network information during the DNS lookup."
+    },
+    {
+      "question": "Which specific DNS resource record type is used to map an IPv6 address to its corresponding domain name in reverse lookups?",
+      "answerOptions": [
+        {
+          "text": "PTR",
+          "isCorrect": true,
+          "rationale": "The Pointer (PTR) record is specifically designed for reverse DNS lookups in both IPv4 and IPv6 address spaces."
+        },
+        {
+          "text": "AAAA",
+          "isCorrect": false,
+          "rationale": "The AAAA record is used for forward lookups to map a name to a $128$-bit IPv6 address."
+        },
+        {
+          "text": "MX",
+          "isCorrect": false,
+          "rationale": "MX records identify the mail exchangers responsible for receiving email for a specific domain."
+        },
+        {
+          "text": "CNAME",
+          "isCorrect": false,
+          "rationale": "CNAME records are used to create aliases that point one domain name to another canonical name."
+        }
+      ],
+      "hint": "This record functions as a 'pointer' back to the name from the number."
+    },
+    {
+      "question": "What is a 'Private CDN' (or eCDN)?",
+      "answerOptions": [
+        {
+          "text": "A content delivery network consisting of nodes that only serve content for their owner, often within a company network.",
+          "isCorrect": true,
+          "rationale": "Private CDNs are built by content owners who want more control or lower costs than commercial services provide."
+        },
+        {
+          "text": "A CDN that uses encrypted protocols like $HTTPS$ to ensure user privacy.",
+          "isCorrect": false,
+          "rationale": "While CDNs use $HTTPS$, 'Private CDN' specifically refers to the ownership and exclusivity of the network nodes."
+        },
+        {
+          "text": "A network that only distributes content using non-$HTTP$ protocols like WebRTC.",
+          "isCorrect": false,
+          "rationale": "Non-$HTTP$ delivery is a performance optimization, not the defining characteristic of a private CDN."
+        },
+        {
+          "text": "A service that anonymizes DNS queries to prevent tracking by Internet Service Providers.",
+          "isCorrect": false,
+          "rationale": "This describes services like Oblivious DoH ($ODoH$), which are privacy-focused DNS tools."
+        }
+      ],
+      "hint": "Think about the distinction between a public utility and a self-owned piece of infrastructure."
+    },
+    {
+      "question": "Which DNS transport protocol operates on TCP port $443$ and is designed to look like standard web traffic to bypass firewalls?",
+      "answerOptions": [
+        {
+          "text": "DNS over HTTPS (DoH)",
+          "isCorrect": true,
+          "rationale": "DoH tunnels DNS queries through $HTTPS$, using the standard web port to hide the nature of the traffic from inspection."
+        },
+        {
+          "text": "DNS over TLS (DoT)",
+          "isCorrect": false,
+          "rationale": "DoT typically uses port $853$, making it easier for network operators to identify and potentially block."
+        },
+        {
+          "text": "DNS over UDP (Do53)",
+          "isCorrect": false,
+          "rationale": "Conventional DNS uses UDP port $53$ and sends requests in clear-text, which is easily monitored."
+        },
+        {
+          "text": "DNS over QUIC (DoQ)",
+          "isCorrect": false,
+          "rationale": "DoQ is a separate protocol defined in RFC $9250$ that focuses on latency and privacy, rather than hiding as web traffic."
+        }
+      ],
+      "hint": "Consider which protocol utilizes the same encrypted tunnel as a typical web browser connection."
+    },
+    {
+      "question": "In the DNS message header, what is the purpose of the 'Transaction ID' field?",
+      "answerOptions": [
+        {
+          "text": "To match a specific DNS response with its original corresponding query.",
+          "isCorrect": true,
+          "rationale": "The $16$-bit identification field ensures that the client can correctly identify which request the incoming data belongs to."
+        },
+        {
+          "text": "To identify which authoritative name server is responding to the request.",
+          "isCorrect": false,
+          "rationale": "Server identification is often handled by NSID options or anycast addressing, not the transaction ID."
+        },
+        {
+          "text": "To specify the order in which resource records should be cached.",
+          "isCorrect": false,
+          "rationale": "Resource record sets ($RRsets$) generally have no special ordering, though servers might use round-robin for load balancing."
+        },
+        {
+          "text": "To determine the priority of mail servers in an MX record set.",
+          "isCorrect": false,
+          "rationale": "Priority for mail servers is defined within the data ($RDATA$) field of the specific MX resource record."
+        }
+      ],
+      "hint": "This field is a $16$-bit number used to ensure that a client doesn't get 'confused' by multiple simultaneous requests."
+    }
+  ]
+}

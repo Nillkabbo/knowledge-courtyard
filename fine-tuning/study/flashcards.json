@@ -1,0 +1,305 @@
+{
+  "title": "Benchmarking Flashcards",
+  "cards": [
+    {
+      "front": "In computing, what is the core definition of a benchmark?",
+      "back": "The act of running a set of programs or operations to assess the relative performance of an object."
+    },
+    {
+      "front": "Benchmarking as part of a continuous integration pipeline is known as _____.",
+      "back": "Continuous Benchmarking"
+    },
+    {
+      "front": "What is the primary difference between synthetic benchmarks and application benchmarks?",
+      "back": "Synthetic benchmarks use specially created programs for workloads, while application benchmarks run real-world programs."
+    },
+    {
+      "front": "Why do processor architects use benchmarks during the CPU design phase?",
+      "back": "To measure and make tradeoffs in microarchitectural decisions using algorithms extracted from real applications."
+    },
+    {
+      "front": "How does 'cheating' typically manifest in vendor benchmarking?",
+      "back": "Designing systems to produce high benchmark numbers that do not reflect effectiveness in actual workloads."
+    },
+    {
+      "front": "Beyond raw speed, what quality of service factors are often neglected by standard computational benchmarks?",
+      "back": "Security, availability, reliability, execution integrity, and serviceability."
+    },
+    {
+      "front": "In benchmarking, what does the term 'Total Cost of Ownership' (TCO) encompass?",
+      "back": "A price-to-performance metric that accounts for partial acquisition and operational costs."
+    },
+    {
+      "front": "Why is 'code density' a critical performance factor for some embedded systems?",
+      "back": "High code density significantly reduces costs in systems where memory is expensive."
+    },
+    {
+      "front": "Benchmark Principle: Relevance",
+      "back": "Benchmarks should measure relatively vital features of the system under test."
+    },
+    {
+      "front": "Benchmark Principle: Equity",
+      "back": "All systems being evaluated should be fairly compared under the same standards."
+    },
+    {
+      "front": "Benchmark Principle: Repeatability",
+      "back": "The results of a benchmark test must be verifiable through consistent reproduction."
+    },
+    {
+      "front": "What defines a 'Microbenchmark' or 'Component Benchmark'?",
+      "back": "A relatively small piece of code designed to measure the performance of specific basic hardware parameters."
+    },
+    {
+      "front": "What is the specific purpose of a 'Kernel' benchmark?",
+      "back": "To test key code segments normally abstracted from actual programs, such as the Linpack benchmark."
+    },
+    {
+      "front": "The _____ benchmark suite, introduced around 1995, is widely used to compare performance across different architectures.",
+      "back": "SPEC (Standard Performance Evaluation Corporation)"
+    },
+    {
+      "front": "What is the primary function of the Whetstone synthetic benchmark?",
+      "back": "Measuring floating-point arithmetic performance."
+    },
+    {
+      "front": "In classification, what is a confusion matrix?",
+      "back": "A table layout that visualizes the performance of an algorithm by comparing actual classes against predicted classes."
+    },
+    {
+      "front": "In a binary confusion matrix, how is a 'True Positive' (TP) defined?",
+      "back": "A result where the actual classification is positive and the predicted classification is also positive."
+    },
+    {
+      "front": "What occurs in a 'False Negative' (FN) result?",
+      "back": "A positive sample is incorrectly identified by the classifier as being negative."
+    },
+    {
+      "front": "A 'False Positive' (FP) is also known in statistics as a _____ error.",
+      "back": "Type I"
+    },
+    {
+      "front": "A 'False Negative' (FN) is also known in statistics as a _____ error.",
+      "back": "Type II"
+    },
+    {
+      "front": "Why can accuracy be a misleading metric for unbalanced datasets?",
+      "back": "High accuracy can be achieved by simply predicting the majority class, masking a 0% recognition rate for the minority class."
+    },
+    {
+      "front": "Formula: Accuracy (ACC) in terms of TP, TN, P, and N",
+      "back": "$ACC = \\frac{TP + TN}{P + N}$"
+    },
+    {
+      "front": "Formula: Precision or Positive Predictive Value (PPV)",
+      "back": "$PPV = \\frac{TP}{TP + FP}$"
+    },
+    {
+      "front": "Formula: Recall, Sensitivity, or True Positive Rate (TPR)",
+      "back": "$TPR = \\frac{TP}{P}$"
+    },
+    {
+      "front": "Formula: Specificity or True Negative Rate (TNR)",
+      "back": "$TNR = \\frac{TN}{N}$"
+    },
+    {
+      "front": "What is the significance of the Matthews correlation coefficient (MCC) in binary classification?",
+      "back": "It is considered the most informative metric for evaluating a confusion matrix as it accounts for all four quadrants."
+    },
+    {
+      "front": "The harmonic mean of precision and recall is known as the _____.",
+      "back": "F1 score"
+    },
+    {
+      "front": "What is 'epistemic luck' in the context of classification evaluation?",
+      "back": "The problem where a confusion matrix cannot distinguish if correct predictions were reached through reasoning or chance."
+    },
+    {
+      "front": "What extension of the confusion matrix applies to multi-label and soft-label classification using optimal transport?",
+      "back": "Transport-based Confusion Matrix (TCM)"
+    },
+    {
+      "front": "In a binary confusion matrix, the sum of True Positives and False Negatives equals _____.",
+      "back": "Total Real Positives (P)"
+    },
+    {
+      "front": "Why is evaluation considered the most important yet neglected topic in AI engineering?",
+      "back": "Without measurement, developers run 'blind' in production, relying on small coverage examples that don't represent real usage."
+    },
+    {
+      "front": "How does evaluation prevent 'Regression' during model development?",
+      "back": "By measuring every change to ensure new versions or prompts do not break existing capabilities."
+    },
+    {
+      "front": "LLM Metric: Faithfulness",
+      "back": "Measures whether the model's answer is grounded in and derived from the provided source facts."
+    },
+    {
+      "front": "LLM Metric: Relevance",
+      "back": "Assess whether the model's output actually addresses the specific question asked by the user."
+    },
+    {
+      "front": "LLM Metric: Coherence",
+      "back": "Determines if the generated response is logical, well-structured, and consistent throughout."
+    },
+    {
+      "front": "What does the 'pass@k' metric measure in code generation tasks?",
+      "back": "The probability that at least one of $k$ generated solutions passes all provided test cases."
+    },
+    {
+      "front": "In NLP, the _____ metric measures token overlap between a generated answer and a ground truth reference.",
+      "back": "F1 Score"
+    },
+    {
+      "front": "What is 'BERTScore' and why is it used over traditional n-gram metrics?",
+      "back": "An embedding-based similarity metric that captures semantic meaning rather than just exact word overlaps."
+    },
+    {
+      "front": "What is the 'LLM-as-Judge' evaluation method?",
+      "back": "Using a powerful model like GPT-4 to read and score the outputs of another model based on specific rubrics."
+    },
+    {
+      "front": "Judge Bias: Position Bias",
+      "back": "The tendency of an LLM evaluator to prefer the first or last response in a pairwise comparison."
+    },
+    {
+      "front": "Judge Bias: Verbosity Bias",
+      "back": "The tendency of an LLM evaluator to assign higher scores to longer answers, regardless of quality."
+    },
+    {
+      "front": "Why is 'Human Evaluation' considered the 'Gold Standard' for LLM assessment?",
+      "back": "Humans can perceive nuances like creativity, cultural appropriateness, and emotional resonance that machines miss."
+    },
+    {
+      "front": "What is the purpose of 'Blind Side-by-Side Comparison' in human evaluation?",
+      "back": "To eliminate branding bias by having evaluators rate two anonymous responses against each other."
+    },
+    {
+      "front": "A Likert scale in LLM evaluation typically requires an evaluator to score an output on a scale of _____.",
+      "back": "1 to 5"
+    },
+    {
+      "front": "What does 'Inter-Evaluator Agreement' (Cohen's Kappa) indicate?",
+      "back": "The degree of consensus between different human evaluators or between humans and LLM judges."
+    },
+    {
+      "front": "RAG Evaluation: Context Precision",
+      "back": "Measures whether the retrieval system found relevant chunks of information for the query."
+    },
+    {
+      "front": "RAG Evaluation: Context Recall",
+      "back": "Measures whether all the information required to answer the question was present in the retrieved context."
+    },
+    {
+      "front": "LLM Benchmark: MMLU (Massive Multitask Language Understanding)",
+      "back": "A benchmark covering 57 subjects across math, history, and medicine to test a model's broad knowledge."
+    },
+    {
+      "front": "The _____ benchmark consists of 850 grade-school math word problems requiring multi-step reasoning.",
+      "back": "GSM8K"
+    },
+    {
+      "front": "What is the primary risk of 'Data Contamination' in standard AI benchmarks?",
+      "back": "Benchmark data leaking into training sets, leading to artificially inflated scores due to memorization."
+    },
+    {
+      "front": "Goodhart's Law: \"When a measure becomes a _____, it ceases to be a good measure.\"",
+      "back": "target"
+    },
+    {
+      "front": "How does 'Data Drift' affect LLM evaluation in production?",
+      "back": "User behavior and query topics change over time, making older evaluation sets unrepresentative of current traffic."
+    },
+    {
+      "front": "What is the difference between explicit and implicit user feedback in production?",
+      "back": "Explicit feedback includes ratings like thumbs up/down, while implicit feedback tracks actions like retrying or copying text."
+    },
+    {
+      "front": "Evaluation Pitfall: Survivorship Bias",
+      "back": "Occurs when only successful or 'clean' examples are evaluated, excluding difficult or messy real-world cases."
+    },
+    {
+      "front": "Evaluation Pitfall: Single Metric Syndrome",
+      "back": "Relying on one metric (like accuracy) while ignoring others (like faithfulness or cost), leading to an incomplete quality picture."
+    },
+    {
+      "front": "What is 'Regression Detection' in the context of model updates?",
+      "back": "Comparing scores against a baseline to ensure a new version hasn't lost existing capabilities."
+    },
+    {
+      "front": "In LLM-as-judge evaluation, what is 'Chain-of-Thought' judging?",
+      "back": "Requiring the judge model to explain its reasoning step-by-step before providing a final score."
+    },
+    {
+      "front": "Standard Benchmark: TruthfulQA",
+      "back": "Tests whether models mimic common human misconceptions or remain truthful under pressure."
+    },
+    {
+      "front": "What defines 'Supervised Learning' in machine learning?",
+      "back": "A paradigm where models are trained on labeled data to learn a mapping from inputs to desired outputs."
+    },
+    {
+      "front": "What is 'Overfitting' in model training?",
+      "back": "When a model learns the noise in training data too well, resulting in poor performance on new, unseen data."
+    },
+    {
+      "front": "In benchmarking, what does the term 'Megahertz Myth' refer to?",
+      "back": "The false assumption that a higher clock frequency always translates to more computational power."
+    },
+    {
+      "front": "What is the function of the 'Dhrystone' benchmark?",
+      "back": "Measuring integer arithmetic performance."
+    },
+    {
+      "front": "The _____ is an open-source framework by EleutherAI used to run over 200 standard benchmarks.",
+      "back": "LM Evaluation Harness"
+    },
+    {
+      "front": "In a confusion matrix, 'Fall-out' is synonymous with the _____.",
+      "back": "False Positive Rate (FPR)"
+    },
+    {
+      "front": "In a confusion matrix, 'Selectivity' is synonymous with the _____.",
+      "back": "True Negative Rate (TNR)"
+    },
+    {
+      "front": "Formula: Diagnostic Odds Ratio (DOR)",
+      "back": "$DOR = \\frac{LR+}{LR-}$ or $\\frac{TP \\times TN}{FP \\times FN}$"
+    },
+    {
+      "front": "In a confusion matrix, the 'Jaccard Index' is equivalent to the _____.",
+      "back": "Threat Score (TS) or Critical Success Index (CSI)"
+    },
+    {
+      "front": "What does the 'ROUGE-L' metric specifically measure in summarization?",
+      "back": "The Longest Common Subsequence between the generated summary and the reference."
+    },
+    {
+      "front": "How is 'Perplexity' used as an LLM evaluation metric?",
+      "back": "It measures how 'surprised' a model is by a text; lower perplexity indicates more natural language generation."
+    },
+    {
+      "front": "What is 'Self-Preference Bias' in LLM judges?",
+      "back": "The tendency of models to rate outputs from their own model family higher than competitors."
+    },
+    {
+      "front": "In RAG evaluation, what does 'Faithfulness' specifically check?",
+      "back": "If every claim in the generated answer can be verified against the retrieved context."
+    },
+    {
+      "front": "What characterizes the 'AgentBench' benchmark?",
+      "back": "It evaluates an AI model's ability to use tools, plan, and execute multi-step tasks as an agent."
+    },
+    {
+      "front": "What does a 'Hard Regression' signify during an evaluation check?",
+      "back": "A significant drop in performance scores (e.g., >5%) indicating a major failure in a new update."
+    },
+    {
+      "front": "In production monitoring, what does 'A/B Testing' involve?",
+      "back": "Splitting live traffic between a current model and a new version to compare real-world satisfaction and quality."
+    },
+    {
+      "front": "What is 'Closed-Loop Improvement' in AI engineering?",
+      "back": "A process where production failures are analyzed, fixed, and then added to the evaluation set to prevent recurrence."
+    }
+  ]
+}

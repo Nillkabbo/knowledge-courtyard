@@ -1,0 +1,265 @@
+{
+  "title": "Psychology Quiz",
+  "questions": [
+    {
+      "question": "According to the excerpts on Martin Seligman, what psychological condition occurs when an individual learns to act as if they have no control over their circumstances, even when they do?",
+      "answerOptions": [
+        {
+          "text": "Learned helplessness",
+          "isCorrect": true,
+          "rationale": "This condition describes a state where past inability to avoid adverse stimuli leads to a perceived absence of control in future situations."
+        },
+        {
+          "text": "Cognitive dissonance",
+          "isCorrect": false,
+          "rationale": "This refers to the mental discomfort from holding conflicting beliefs, which is not the specific focus of Seligman's shock experiments."
+        },
+        {
+          "text": "Social inhibition",
+          "isCorrect": false,
+          "rationale": "This term relates to the tendency for people to perform poorly on complex tasks when others are present, rather than a lack of perceived control."
+        },
+        {
+          "text": "Fixed mindset",
+          "isCorrect": false,
+          "rationale": "While related to how people view their abilities, this is not the specific term coined by Seligman during his foundational experiments at the University of Pennsylvania."
+        }
+      ],
+      "hint": "Think about the behavior of the dogs in the conditioning experiments who stopped trying to escape unpleasant shocks."
+    },
+    {
+      "question": "In Martin Seligman's PERMA model of well-being, what does the 'M' represent?",
+      "answerOptions": [
+        {
+          "text": "Meaning",
+          "isCorrect": true,
+          "rationale": "This element involves the sense of belonging to and serving something that is perceived as bigger than the self."
+        },
+        {
+          "text": "Mindfulness",
+          "isCorrect": false,
+          "rationale": "While a popular topic in psychology, this is not one of the five core independent pillars defined in the PERMA framework."
+        },
+        {
+          "text": "Motivation",
+          "isCorrect": false,
+          "rationale": "Seligman focuses on specific outcomes and states like achievement and positive emotion rather than the general internal drive of motivation."
+        },
+        {
+          "text": "Mastery",
+          "isCorrect": false,
+          "rationale": "Although similar to achievement, mastery is not the specific term used for the 'M' in the PERMA mnemonic."
+        }
+      ],
+      "hint": "This element focuses on the purpose found in serving a cause or entity larger than one's individual interests."
+    },
+    {
+      "question": "Which of the following is one of the six core character strengths identified in the work of Seligman and Christopher Peterson?",
+      "answerOptions": [
+        {
+          "text": "Transcendence",
+          "isCorrect": true,
+          "rationale": "Transcendence is one of the six universal virtues and include strengths like appreciation of beauty, hope, and gratitude."
+        },
+        {
+          "text": "Competitiveness",
+          "isCorrect": false,
+          "rationale": "The list was designed to reflect 'positive' virtues that look at what goes right, and zero-sum traits like competitiveness were not included."
+        },
+        {
+          "text": "Resilience",
+          "isCorrect": false,
+          "rationale": "While a major theme in positive psychology, resilience is often viewed as an outcome of various strengths rather than being one of the six primary categories."
+        },
+        {
+          "text": "Ambition",
+          "isCorrect": false,
+          "rationale": "The researchers distilled virtues from ancient traditions, and while valuable, ambition did not make the final list of the six fundamental virtues."
+        }
+      ],
+      "hint": "Consider a strength that involves connecting with a higher purpose or the broader universe."
+    },
+    {
+      "question": "Dacher Keltner's 'Approach/Inhibition Theory of Power' suggests that gaining power has what specific psychological effect?",
+      "answerOptions": [
+        {
+          "text": "A disinhibiting effect regarding social consequences",
+          "isCorrect": true,
+          "rationale": "The theory posits that power reduces the social constraints an individual feels, leading them to act with less regard for others' reactions."
+        },
+        {
+          "text": "An increase in altruistic behavior",
+          "isCorrect": false,
+          "rationale": "Keltner's research often highlights how power can actually lead to decreased empathy and less prosocial behavior toward those who suffer."
+        },
+        {
+          "text": "A heightened sense of moral responsibility",
+          "isCorrect": false,
+          "rationale": "While some may feel more responsible, Keltner’s specific theory focuses on how power often leads to acting on impulses with fewer social inhibitions."
+        },
+        {
+          "text": "An improvement in emotional recognition",
+          "isCorrect": false,
+          "rationale": "The theory suggests that power may actually impair an individual's ability to read others' emotions accurately, rather than improve it."
+        }
+      ],
+      "hint": "Consider how having influence might change how much a person worries about what others think of their actions."
+    },
+    {
+      "question": "Based on the research of Dacher Keltner and Paul Piff, how does social class generally influence ethical behavior?",
+      "answerOptions": [
+        {
+          "text": "Higher social class predicts increased unethical behavior",
+          "isCorrect": true,
+          "rationale": "Empirical studies showed that more privileged individuals were more likely to engage in behaviors like cheating or ignoring traffic laws."
+        },
+        {
+          "text": "Lower social class is linked to higher rates of cheating",
+          "isCorrect": false,
+          "rationale": "Keltner's empirical demonstrations found that the trend was actually the opposite, with higher-status individuals cheating more to win prizes."
+        },
+        {
+          "text": "There is no significant correlation between class and ethics",
+          "isCorrect": false,
+          "rationale": "The research specifically aimed to show that social class significantly shapes thought, feeling, and action regarding ethical standards."
+        },
+        {
+          "text": "Upper-class individuals demonstrate higher levels of compassion",
+          "isCorrect": false,
+          "rationale": "Data indicated that privileged individuals often felt less compassion for those in suffering compared to those from lower class backgrounds."
+        }
+      ],
+      "hint": "The findings might be counter-intuitive to the idea that wealth correlates with better manners or rule-following."
+    },
+    {
+      "question": "Robert Cialdini's seventh principle of influence, introduced in $2016$, is known as:",
+      "answerOptions": [
+        {
+          "text": "Unity",
+          "isCorrect": true,
+          "rationale": "The unity principle states that the more we identify ourselves with others, the more influenced we are by them."
+        },
+        {
+          "text": "Reciprocity",
+          "isCorrect": false,
+          "rationale": "Reciprocity is one of the original six principles published in $1984$, not the $2016$ addition."
+        },
+        {
+          "text": "Consensus",
+          "isCorrect": false,
+          "rationale": "Consensus is another term for social proof, which was already a core part of the original six principles."
+        },
+        {
+          "text": "Scarcity",
+          "isCorrect": false,
+          "rationale": "Scarcity was part of Cialdini's initial framework and relates to the perceived value of limited resources."
+        }
+      ],
+      "hint": "This principle is based on a sense of shared identity or 'we-ness' with a group."
+    },
+    {
+      "question": "What unique research method did Robert Cialdini use to develop his principles of persuasion for his book 'Influence'?",
+      "answerOptions": [
+        {
+          "text": "Undercover participant observation in sales environments",
+          "isCorrect": true,
+          "rationale": "Cialdini spent three years training at car dealerships and telemarketing firms to see how persuasion works in the real world."
+        },
+        {
+          "text": "Large-scale neuroimaging of consumers",
+          "isCorrect": false,
+          "rationale": "While neuroimaging is a tool in modern psychology, Cialdini focused on field methods and social observation."
+        },
+        {
+          "text": "Animal conditioning experiments",
+          "isCorrect": false,
+          "rationale": "Conditioning experiments with animals were used by Seligman for learned helplessness, not by Cialdini for persuasion research."
+        },
+        {
+          "text": "Meta-analysis of $19^{th}$-century literature",
+          "isCorrect": false,
+          "rationale": "Cialdini's work is based on contemporary 'real-life' situations of marketing and fundraising rather than historical texts."
+        }
+      ],
+      "hint": "Think about a researcher going 'incognito' to learn trade secrets from professional persuaders."
+    },
+    {
+      "question": "Dacher Keltner explores the Confucian idea of the $\\textit{jen}$ ratio in his work on happiness. What does this ratio measure?",
+      "answerOptions": [
+        {
+          "text": "The relationship between actions that help others versus harmful ones",
+          "isCorrect": true,
+          "rationale": "The $\\textit{jen}$ ratio compares behaviors that bring others' good to completion with those that bring out the bad."
+        },
+        {
+          "text": "The amount of income needed to reach peak life satisfaction",
+          "isCorrect": false,
+          "rationale": "While happiness and wealth are related in psychology, the $\\textit{jen}$ ratio is specifically about interpersonal social actions."
+        },
+        {
+          "text": "The frequency of awe-inspiring events in a typical week",
+          "isCorrect": false,
+          "rationale": "Awe is a major focus for Keltner, but the $\\textit{jen}$ ratio is a separate conceptual relationship regarding social goodness."
+        },
+        {
+          "text": "The balance of neurotransmitters in the human brain",
+          "isCorrect": false,
+          "rationale": "The $\\textit{jen}$ ratio is a behavioral and philosophical metric rather than a biological measurement of brain chemistry."
+        }
+      ],
+      "hint": "This concept involves a mathematical relationship between helpful social actions and negative ones."
+    },
+    {
+      "question": "Keltner and Alan Cowen's computational research into emotions found that emotional experience involves approximately how many distinct states?",
+      "answerOptions": [
+        {
+          "text": "Upwards of $20$",
+          "isCorrect": true,
+          "rationale": "Their data-driven mapping identified that the emotion space is rich and high-dimensional, involving over $20$ distinct states."
+        },
+        {
+          "text": "Only $5$ to $7$",
+          "isCorrect": false,
+          "rationale": "Older models of emotion often focused on a handful of basic emotions, but Keltner’s newer work argues for much greater variety."
+        },
+        {
+          "text": "Exactly $100$",
+          "isCorrect": false,
+          "rationale": "While the emotion space is large, their specific research documented a more manageable taxonomy of around $27$ distinct categories."
+        },
+        {
+          "text": "Only $2$ (positive and negative)",
+          "isCorrect": false,
+          "rationale": "The research argued against broader constructs like simple valence (good/bad), emphasizing discrete concepts like awe or sympathy instead."
+        }
+      ],
+      "hint": "Think of a number that reflects a more complex landscape than just 'happy, sad, angry, and fearful'."
+    },
+    {
+      "question": "Which specific emotion did Dacher Keltner assist Pixar with for the film 'Inside Out' and its sequel?",
+      "answerOptions": [
+        {
+          "text": "The general science of human emotion",
+          "isCorrect": true,
+          "rationale": "Keltner served as a consultant to ensure the films accurately represented how emotions like sadness and joy function and interact."
+        },
+        {
+          "text": "The specific evolution of fear",
+          "isCorrect": false,
+          "rationale": "While fear is a character, Keltner's broad expertise on the social functions of many emotions was the basis for the collaboration."
+        },
+        {
+          "text": "The neurological basis of disgust",
+          "isCorrect": false,
+          "rationale": "Keltner's work is social functionalist, meaning he focuses on how emotions help relationships rather than just their neurological mechanics."
+        },
+        {
+          "text": "The developmental psychology of infants",
+          "isCorrect": false,
+          "rationale": "The films focus on the internal emotional states of adolescents, guided by Keltner's research on distinct emotional categories."
+        }
+      ],
+      "hint": "The psychologist's role was to help the directors understand how different 'feelings' serve social and survival functions."
+    }
+  ]
+}

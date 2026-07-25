@@ -1,0 +1,317 @@
+{
+  "title": "AI Quiz",
+  "questions": [
+    {
+      "question": "Which organization introduced the Model Context Protocol (MCP) in November 2024 to address the $N \\times M$ data integration problem?",
+      "answerOptions": [
+        {
+          "text": "OpenAI",
+          "isCorrect": false,
+          "rationale": "While this organization adopted the protocol in early 2025, it was not the original developer of the standard."
+        },
+        {
+          "text": "Google DeepMind",
+          "isCorrect": false,
+          "rationale": "This entity embraced the standard in 2025 to improve data connectivity but did not lead the initial development."
+        },
+        {
+          "text": "Anthropic",
+          "isCorrect": true,
+          "rationale": "Engineers at this company created the framework to standardize how AI systems integrate with external tools and data sources."
+        },
+        {
+          "text": "Meta",
+          "isCorrect": false,
+          "rationale": "This organization released the Segment Anything model but was not mentioned as the creator of the MCP framework."
+        }
+      ],
+      "hint": "This company is also responsible for the development of the Claude model family."
+    },
+    {
+      "question": "In the Model Context Protocol architecture, which component is typically an AI agent that orchestrates interactions with the LLM?",
+      "answerOptions": [
+        {
+          "text": "MCP Server",
+          "isCorrect": false,
+          "rationale": "This component provides the actual tools or resources, such as database access or specific documentation."
+        },
+        {
+          "text": "MCP Host",
+          "isCorrect": true,
+          "rationale": "The host acts as the primary environment that manages the AI agent and creates dedicated clients for each connected server."
+        },
+        {
+          "text": "MCP Client",
+          "isCorrect": false,
+          "rationale": "This specific entity is created by the host to communicate with one individual server."
+        },
+        {
+          "text": "JSON-RPC Transport",
+          "isCorrect": false,
+          "rationale": "This refers to the communication protocol itself rather than a functional architectural role in the hierarchy."
+        }
+      ],
+      "hint": "Think of the central entity that manages the overall AI application and its various connections."
+    },
+    {
+      "question": "What is the primary distinction between 'Prompt Engineering' and 'Context Engineering'?",
+      "answerOptions": [
+        {
+          "text": "Prompt engineering focuses on training data, while context engineering focuses on fine-tuning.",
+          "isCorrect": false,
+          "rationale": "Both fields generally operate on pre-trained models rather than modifying the underlying parameters through traditional training."
+        },
+        {
+          "text": "Prompt engineering structures natural language inputs, while context engineering manages non-prompt elements like tokens and metadata.",
+          "isCorrect": true,
+          "rationale": "Context engineering is a software-focused discipline aimed at system reliability and efficiency through the management of system instructions and metadata."
+        },
+        {
+          "text": "Prompt engineering is automated, while context engineering is purely manual.",
+          "isCorrect": false,
+          "rationale": "Both fields utilize automated methods, such as RAG for prompts and token budgeting for contexts."
+        },
+        {
+          "text": "Prompt engineering only applies to text, while context engineering only applies to images.",
+          "isCorrect": false,
+          "rationale": "Both disciplines are applicable to multimodal systems that handle various types of input and output."
+        }
+      ],
+      "hint": "One deals with the user's specific request, while the other deals with the broader technical environment provided to the model."
+    },
+    {
+      "question": "Research on LLM sensitivity indicates that reordering examples within a prompt can cause accuracy shifts of up to what percentage?",
+      "answerOptions": [
+        {
+          "text": "$10\\%$",
+          "isCorrect": false,
+          "rationale": "This represents a minor shift, whereas research shows much higher volatility based on simple formatting changes."
+        },
+        {
+          "text": "$25\\%$",
+          "isCorrect": false,
+          "rationale": "While significant, this figure underestimates the potential impact that example sequence can have on performance."
+        },
+        {
+          "text": "$40\\%$",
+          "isCorrect": true,
+          "rationale": "Model performance is highly brittle, and studies have shown that even small variations like example ordering can lead to shifts of this magnitude."
+        },
+        {
+          "text": "$75\\%$",
+          "isCorrect": false,
+          "rationale": "While accuracy points can fluctuate by 76 in some specific cases, the shift cited specifically for reordering examples was lower."
+        }
+      ],
+      "hint": "The magnitude of the shift is significant enough to make prompt generalization a major challenge for developers."
+    },
+    {
+      "question": "Which prompting technique involves generating multiple lines of reasoning in parallel and allows the model to backtrack or explore different paths?",
+      "answerOptions": [
+        {
+          "text": "Chain-of-thought (CoT)",
+          "isCorrect": false,
+          "rationale": "This technique typically follows a linear series of intermediate steps rather than parallel exploration."
+        },
+        {
+          "text": "Tree-of-thought",
+          "isCorrect": true,
+          "rationale": "This approach generalizes linear reasoning by using search algorithms like breadth-first or depth-first search across multiple reasoning branches."
+        },
+        {
+          "text": "Few-shot prompting",
+          "isCorrect": false,
+          "rationale": "This technique relies on providing exemplars of input-output pairs but does not specify a multi-path reasoning process."
+        },
+        {
+          "text": "Self-consistency",
+          "isCorrect": false,
+          "rationale": "This method performs multiple rollouts but selects a final answer based on the most common conclusion rather than branching paths."
+        }
+      ],
+      "hint": "This method is named after a hierarchical data structure that allows for branching and parallel exploration."
+    },
+    {
+      "question": "What is the role of 'exemplars' in the context of few-shot prompting?",
+      "answerOptions": [
+        {
+          "text": "They are the system instructions that define the model's persona.",
+          "isCorrect": false,
+          "rationale": "Defining a character for the AI to mimic is known as role assignment, which is separate from providing examples."
+        },
+        {
+          "text": "They are input-output pairs provided to demonstrate the desired task to the model.",
+          "isCorrect": true,
+          "rationale": "Exemplars allow the model to engage in in-context learning by observing patterns in the provided demonstrations."
+        },
+        {
+          "text": "They are the tokens used to track the cost of the API request.",
+          "isCorrect": false,
+          "rationale": "Token management is a part of context engineering used for budgeting rather than task demonstration."
+        },
+        {
+          "text": "They are the automated gradients used to optimize the prompt.",
+          "isCorrect": false,
+          "rationale": "Exemplars consist of natural language text rather than the numerical values used in soft prompting or prefix-tuning."
+        }
+      ],
+      "hint": "Think of these as 'demonstration cases' used to teach the model a specific behavior within the current conversation."
+    },
+    {
+      "question": "In the context of automated prompt generation, what is the function of the 'automatic prompt engineer' algorithm?",
+      "answerOptions": [
+        {
+          "text": "It uses gradient descent to adjust the model's weights permanently.",
+          "isCorrect": false,
+          "rationale": "Automatic prompt engineering focuses on modifying the input string rather than changing the fixed model parameters."
+        },
+        {
+          "text": "It uses one LLM to generate and score instructions for another target LLM.",
+          "isCorrect": true,
+          "rationale": "The algorithm employs a prompting LLM to search for the highest-scoring instructions that lead to the desired output in the target model."
+        },
+        {
+          "text": "It manually removes hallucinated content from the model's responses.",
+          "isCorrect": false,
+          "rationale": "The algorithm is an automated optimization process and does not involve human manual editing of responses."
+        },
+        {
+          "text": "It creates a knowledge graph to connect disparate pieces of information.",
+          "isCorrect": false,
+          "rationale": "The creation of knowledge graphs for information synthesis is the primary characteristic of GraphRAG."
+        }
+      ],
+      "hint": "This process involves a feedback loop between a 'prompting' model and a 'target' model."
+    },
+    {
+      "question": "What does the term 'In-context learning' refer to in large language models?",
+      "answerOptions": [
+        {
+          "text": "The model's ability to update its weights based on user feedback.",
+          "isCorrect": false,
+          "rationale": "Weight updates occur during training or fine-tuning, whereas in-context learning is temporary and does not change the model parameters."
+        },
+        {
+          "text": "The emergent ability of a model to temporarily learn from information provided in the prompt.",
+          "isCorrect": true,
+          "rationale": "This property allows the model to adapt to new tasks during inference without being explicitly fine-tuned for them."
+        },
+        {
+          "text": "The process of retrieving documents from an external vector database.",
+          "isCorrect": false,
+          "rationale": "Document retrieval is the core component of RAG, which provides the context for in-context learning but is not the learning ability itself."
+        },
+        {
+          "text": "The model's ability to remember information across different user sessions.",
+          "isCorrect": false,
+          "rationale": "In-context learning is generally limited to the current window and does not persist once the specific session is closed."
+        }
+      ],
+      "hint": "This ability is described as 'learning to learn' and disappears once the prompt context is removed."
+    },
+    {
+      "question": "In the technical formulation of searching for token sequences in prefix-tuning, which of the following expressions represents the maximization of log-likelihood?",
+      "answerOptions": [
+        {
+          "text": "$\\arg \\max_{\\tilde{X}} \\sum_{i} \\log Pr[Y^{i}|{\\tilde{X}} \\ast X^{i}]$",
+          "isCorrect": true,
+          "rationale": "This formula identifies the token sequence that makes the observed output most probable given the inputs and the prepended prefix."
+        },
+        {
+          "text": "$N \\times M = \\text{Integration}$",
+          "isCorrect": false,
+          "rationale": "This describes the complexity of building custom connectors in legacy systems rather than a mathematical optimization objective."
+        },
+        {
+          "text": "$\\text{Tokens} + \\text{Metadata} = \\text{Context}$",
+          "isCorrect": false,
+          "rationale": "This is a conceptual representation of context engineering components rather than a formal likelihood calculation."
+        },
+        {
+          "text": "$\\text{CoT} + \\text{Rollouts} = \\text{Consistency}$",
+          "isCorrect": false,
+          "rationale": "This represents the concept of self-consistency in reasoning rollouts rather than a gradient-based search objective."
+        }
+      ],
+      "hint": "The formula involves finding the argument that maximizes the sum of probabilities for target outputs."
+    },
+    {
+      "question": "What security risk was highlighted by researchers regarding the Model Context Protocol in April 2025?",
+      "answerOptions": [
+        {
+          "text": "Server-side hardware failure",
+          "isCorrect": false,
+          "rationale": "Hardware failure is a general IT concern, but the specific research focused on vulnerabilities inherent to the protocol's integration."
+        },
+        {
+          "text": "Data exfiltration through poisoned tools",
+          "isCorrect": true,
+          "rationale": "Researchers found that malicious tools could be used to siphon data from other tools connected via the MCP framework."
+        },
+        {
+          "text": "Loss of API keys due to weak encryption",
+          "isCorrect": false,
+          "rationale": "While security related, the specific report emphasized issues like prompt injection and tool-based attacks rather than key encryption."
+        },
+        {
+          "text": "Excessive token consumption leading to high costs",
+          "isCorrect": false,
+          "rationale": "This is an operational or financial risk managed by context engineering, not a structural security vulnerability identified by researchers."
+        }
+      ],
+      "hint": "This risk involves using the protocol's connectivity against itself to steal information."
+    },
+    {
+      "question": "Graph retrieval-augmented generation (GraphRAG) was particularly noted for its effectiveness on which type of data collections?",
+      "answerOptions": [
+        {
+          "text": "Real-time stock market pricing",
+          "isCorrect": false,
+          "rationale": "Real-time data streams often require low-latency updates rather than the complex semantic synthesis provided by knowledge graphs."
+        },
+        {
+          "text": "Large datasets like news articles on violent incidents",
+          "isCorrect": true,
+          "rationale": "Knowledge graphs help connect disparate reports and synthesize summarized concepts over expansive, unstructured narratives."
+        },
+        {
+          "text": "Single short documents with clear summaries",
+          "isCorrect": false,
+          "rationale": "The overhead of a knowledge graph is typically unnecessary for small, isolated pieces of information that standard RAG handles well."
+        },
+        {
+          "text": "Numerical datasets stored in CSV format",
+          "isCorrect": false,
+          "rationale": "Standard structured querying or data access tools are usually more efficient for purely numerical or tabular data."
+        }
+      ],
+      "hint": "Think of a scenario where the model needs to connect 'disparate pieces of information' across a large narrative collection."
+    },
+    {
+      "question": "Which term describes an AI-assisted software development method where a user describes a goal and the model handles the code generation, popularized as a trend in 2025?",
+      "answerOptions": [
+        {
+          "text": "Hard coding",
+          "isCorrect": false,
+          "rationale": "Hard coding is a traditional manual practice where values are fixed directly in the source code."
+        },
+        {
+          "text": "Vibe coding",
+          "isCorrect": true,
+          "rationale": "This method relies on high-level natural language descriptions to guide the LLM's code creation, making it a form of 'vibe-based' interaction."
+        },
+        {
+          "text": "Prefix-tuning",
+          "isCorrect": false,
+          "rationale": "This is a technical optimization method for prompts rather than a general user-facing coding workflow."
+        },
+        {
+          "text": "Logic translation",
+          "isCorrect": false,
+          "rationale": "Logic translation is a general NLP task rather than a specific cultural trend in AI-assisted software development."
+        }
+      ],
+      "hint": "This term was selected as the Collins Dictionary word of the year for 2025."
+    }
+  ]
+}

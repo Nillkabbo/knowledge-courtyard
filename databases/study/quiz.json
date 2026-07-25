@@ -1,0 +1,265 @@
+{
+  "title": "Database Quiz",
+  "questions": [
+    {
+      "question": "According to the CAP theorem, which property is typically sacrificed in a distributed data store to ensure consistency during a network partition?",
+      "answerOptions": [
+        {
+          "text": "Availability",
+          "isCorrect": true,
+          "rationale": "Choosing consistency means the system must stop responding to requests if it cannot guarantee the data is up-to-date, thereby reducing availability."
+        },
+        {
+          "text": "Partition tolerance",
+          "isCorrect": false,
+          "rationale": "Partition tolerance is generally considered a requirement in distributed systems because network failures are unavoidable."
+        },
+        {
+          "text": "Latency",
+          "isCorrect": false,
+          "rationale": "While latency is a factor in the PACELC theorem, it is not one of the three primary pillars of the original CAP theorem."
+        },
+        {
+          "text": "Durability",
+          "isCorrect": false,
+          "rationale": "Durability is a component of the ACID model, whereas the CAP theorem focuses on the trade-off between consistency, availability, and partition tolerance."
+        }
+      ],
+      "hint": "Think about what must happen to a system's responsiveness if it refuses to provide potentially stale data."
+    },
+    {
+      "question": "Who were the researchers responsible for publishing the formal proof of Eric Brewer's CAP conjecture in $2002$?",
+      "answerOptions": [
+        {
+          "text": "Seth Gilbert and Nancy Lynch",
+          "isCorrect": true,
+          "rationale": "Gilbert and Lynch of MIT provided the mathematical proof that turned Brewer's conjecture into an established theorem."
+        },
+        {
+          "text": "Donald D. Chamberlin and Raymond F. Boyce",
+          "isCorrect": false,
+          "rationale": "These individuals were the primary designers of the SQL language at IBM rather than the provers of the CAP theorem."
+        },
+        {
+          "text": "Edgar F. Codd and Hugh Darwen",
+          "isCorrect": false,
+          "rationale": "Codd created the relational model, and Darwen is known for his work on relational theory, but they did not prove the CAP theorem."
+        },
+        {
+          "text": "Birman and Friedman",
+          "isCorrect": false,
+          "rationale": "While they published a similar trade-off result in $1996$, they did not provide the formal proof for Brewer's specific conjecture."
+        }
+      ],
+      "hint": "These two MIT researchers solidified the concept from a conjecture into a formal theorem."
+    },
+    {
+      "question": "In the context of the CAP theorem, how is 'Availability' specifically defined?",
+      "answerOptions": [
+        {
+          "text": "Every request received by a non-failing node must result in a response.",
+          "isCorrect": true,
+          "rationale": "The definition requires that the system remains responsive even if it cannot guarantee that the response contains the most recent version of the data."
+        },
+        {
+          "text": "The system must return the most recent write to every client instantly.",
+          "isCorrect": false,
+          "rationale": "This describes the property of consistency, which ensures all clients see the same data at the same time."
+        },
+        {
+          "text": "The system must remain $100\\%$ operational even if all nodes fail.",
+          "isCorrect": false,
+          "rationale": "Availability applies only to non-failing nodes within the system; it does not account for total system failure."
+        },
+        {
+          "text": "Every response must be mathematically guaranteed to be accurate and current.",
+          "isCorrect": false,
+          "rationale": "This definition conflates availability with consistency; availability only guarantees a response, not its 'up-to-the-minute' accuracy."
+        }
+      ],
+      "hint": "Consider what is required of a node when it receives a query, regardless of the data's version."
+    },
+    {
+      "question": "Which design philosophy, common in the NoSQL movement, generally prioritizes availability over strong consistency?",
+      "answerOptions": [
+        {
+          "text": "BASE",
+          "isCorrect": true,
+          "rationale": "The BASE (Basically Available, Soft state, Eventual consistency) philosophy focuses on maintaining availability at the expense of immediate consistency."
+        },
+        {
+          "text": "ACID",
+          "isCorrect": false,
+          "rationale": "ACID properties are typical of traditional RDBMS systems that prioritize consistency and transaction integrity."
+        },
+        {
+          "text": "DRDA",
+          "isCorrect": false,
+          "rationale": "This refers to the Distributed Relational Database Architecture, which is a protocol for database cooperation rather than a consistency philosophy."
+        },
+        {
+          "text": "ISAM",
+          "isCorrect": false,
+          "rationale": "ISAM is an older read-write API that preceded the widespread adoption of the relational model."
+        }
+      ],
+      "hint": "This acronym represents a model focused on 'eventual' rather than 'immediate' data synchronicity."
+    },
+    {
+      "question": "What was the original name for SQL before it was changed due to trademark issues with Hawker Siddeley Dynamics Engineering Limited?",
+      "answerOptions": [
+        {
+          "text": "SEQUEL",
+          "isCorrect": true,
+          "rationale": "The original name stood for Structured English Query Language but was shortened to SQL to avoid trademark infringement."
+        },
+        {
+          "text": "SQUARE",
+          "isCorrect": false,
+          "rationale": "SQUARE was the earlier attempt at a relational language by Chamberlin and Boyce that used difficult subscript notation."
+        },
+        {
+          "text": "QUEL",
+          "isCorrect": false,
+          "rationale": "QUEL was the query language for Ingres, and while SEQUEL was likely a pun on it, it was a different language."
+        },
+        {
+          "text": "System R",
+          "isCorrect": false,
+          "rationale": "System R was the name of the research project and prototype database system, not the query language itself."
+        }
+      ],
+      "hint": "The original name included a word that implied it was a follow-up or a continuation of a previous effort."
+    },
+    {
+      "question": "According to critics like Hugh Darwen and C.J. Date, what is a primary way SQL deviates from the theoretical relational model?",
+      "answerOptions": [
+        {
+          "text": "SQL treats query results as lists of rows rather than sets of tuples.",
+          "isCorrect": true,
+          "rationale": "In the formal relational model, tables are sets (no duplicates, no order), whereas SQL allows duplicates and ordered lists."
+        },
+        {
+          "text": "SQL lacks the ability to handle structured data relations.",
+          "isCorrect": false,
+          "rationale": "SQL is specifically designed to handle structured data incorporating relations, which is consistent with the model."
+        },
+        {
+          "text": "SQL is a procedural language rather than a declarative one.",
+          "isCorrect": false,
+          "rationale": "SQL is primarily declarative, though it includes procedural extensions; this is not the main point of Darwen and Date's criticism."
+        },
+        {
+          "text": "SQL does not support the use of indices for record retrieval.",
+          "isCorrect": false,
+          "rationale": "SQL explicitly eliminates the need for users to specify indices, which is a feature of its abstraction, not a deviation from the relational model."
+        }
+      ],
+      "hint": "Think about the difference between a mathematical 'set' and a common 'list' regarding duplicates and order."
+    },
+    {
+      "question": "The PACELC theorem states that in the absence of a network partition (Else), a system must trade off between consistency and which other factor?",
+      "answerOptions": [
+        {
+          "text": "Latency",
+          "isCorrect": true,
+          "rationale": "PACELC extends CAP by noting that even under normal conditions, there is a trade-off between how fast a system responds and how consistent that data is."
+        },
+        {
+          "text": "Availability",
+          "isCorrect": false,
+          "rationale": "In the PACELC model, availability is the trade-off only when a partition ($P$) occurs."
+        },
+        {
+          "text": "Throughput",
+          "isCorrect": false,
+          "rationale": "Throughput refers to the volume of data processed and is not the specific trade-off defined by the 'L' in PACELC."
+        },
+        {
+          "text": "Durability",
+          "isCorrect": false,
+          "rationale": "Durability ensures data is saved permanently and is not the primary trade-off against consistency in the Else ($E$) scenario."
+        }
+      ],
+      "hint": "This factor relates to the time delay or speed of the system's response to a query."
+    },
+    {
+      "question": "Which SQL sublanguage is specifically used to manage access permissions and security controls for database users?",
+      "answerOptions": [
+        {
+          "text": "Data Control Language (DCL)",
+          "isCorrect": true,
+          "rationale": "DCL includes commands that control access to data within the database, such as providing or revoking user permissions."
+        },
+        {
+          "text": "Data Definition Language (DDL)",
+          "isCorrect": false,
+          "rationale": "DDL is used for defining and modifying the structure of database objects like tables and schemas."
+        },
+        {
+          "text": "Data Manipulation Language (DML)",
+          "isCorrect": false,
+          "rationale": "DML is used for retrieving, inserting, modifying, and deleting data within the existing database structure."
+        },
+        {
+          "text": "Data Query Language (DQL)",
+          "isCorrect": false,
+          "rationale": "DQL is primarily concerned with the retrieval of data using queries, specifically the SELECT statement."
+        }
+      ],
+      "hint": "Focus on the sublanguage whose name implies the 'control' of system access."
+    },
+    {
+      "question": "The SQL standard enforces a specific type of logic to handle the concept of 'Null' values. What is this logic called?",
+      "answerOptions": [
+        {
+          "text": "$3$-valued logic",
+          "isCorrect": true,
+          "rationale": "SQL uses three-valued logic ($3VL$), where conditions can evaluate to True, False, or Unknown (Null)."
+        },
+        {
+          "text": "Boolean binary logic",
+          "isCorrect": false,
+          "rationale": "Standard Boolean logic only allows for True or False, which cannot sufficiently represent the 'absence' of a value in SQL."
+        },
+        {
+          "text": "Fuzzy logic",
+          "isCorrect": false,
+          "rationale": "Fuzzy logic deals with degrees of truth rather than the discrete True/False/Unknown states used in SQL."
+        },
+        {
+          "text": "Tuple calculus logic",
+          "isCorrect": false,
+          "rationale": "While SQL is based on tuple relational calculus, this refers to the language's theoretical foundation rather than its specific truth-value system."
+        }
+      ],
+      "hint": "This logical system includes an 'Unknown' state in addition to the standard two truth values."
+    },
+    {
+      "question": "Which of the following database systems is explicitly categorized as an 'AP' database, meaning it prioritizes availability and partition tolerance over consistency?",
+      "answerOptions": [
+        {
+          "text": "MongoDB",
+          "isCorrect": false,
+          "rationale": "MongoDB is a 'CP' database that maintains consistency during partitions by compromising on availability."
+        },
+        {
+          "text": "Redis",
+          "isCorrect": false,
+          "rationale": "Redis is classified as a 'CP' system because it resolves partitions by prioritizing data consistency over response availability."
+        },
+        {
+          "text": "Oracle RDBMS",
+          "isCorrect": false,
+          "rationale": "Traditional RDBMS systems are designed with ACID guarantees and typically choose consistency over availability."
+        },
+        {
+          "text": "Cassandra",
+          "isCorrect": true,
+          "rationale": "Cassandra is designed to remain available during network partitions, even if it means returning potentially inconsistent data."
+        }
+      ],
+      "hint": "Look for a NoSQL system known for high uptime in distributed environments, even when nodes are disconnected."
+    }
+  ]
+}

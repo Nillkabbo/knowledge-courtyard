@@ -1,0 +1,349 @@
+{
+  "title": "Psychology Flashcards",
+  "cards": [
+    {
+      "front": "The term 'curiosity' is derived from which Latin word meaning 'careful, diligent, or curious'?",
+      "back": "Cūriōsus"
+    },
+    {
+      "front": "What term describes the behavior of pursuing information to adapt to surroundings, often called the 'love of new things'?",
+      "back": "Neophilia"
+    },
+    {
+      "front": "In the context of animal behavior, what is the term for a fear of the unknown or the new?",
+      "back": "Neophobia"
+    },
+    {
+      "front": "According to Daniel Berlyne, which variable class corresponds to the physical intensity of a stimulus?",
+      "back": "Psychophysical variables"
+    },
+    {
+      "front": "Which class of variables identified by Berlyne relates to motivational significance and task relevance?",
+      "back": "Ecological variables"
+    },
+    {
+      "front": "Which class of curiosity variables involves comparing stimuli or features recalled from memory or perceived?",
+      "back": "Collative variables"
+    },
+    {
+      "front": "List the four primary collative variables identified by Daniel Berlyne.",
+      "back": "Novelty, complexity, uncertainty, and conflict."
+    },
+    {
+      "front": "Berlyne suggested three supplementary variables to novelty: change, surprisingness, and _____.",
+      "back": "Incongruity"
+    },
+    {
+      "front": "What is the difference between 'specific exploration' and 'diversive exploration'?",
+      "back": "Specific exploration is aroused by stimulus perception; diversive exploration is aroused by a lack of stimulation or boredom."
+    },
+    {
+      "front": "Term: Perceptual curiosity",
+      "back": "Definition: Innate exploratory behavior present in all animals. Example: A cat investigating a new box."
+    },
+    {
+      "front": "Term: Epistemic curiosity",
+      "back": "Definition: The desire for knowledge specifically attributed to humans. Example: A student researching the history of Rome."
+    },
+    {
+      "front": "Which theory of curiosity suggests that individuals seek knowledge to reduce the unpleasant feelings of uncertainty and ambiguity?",
+      "back": "Curiosity-drive theory"
+    },
+    {
+      "front": "What is a major shortcoming of the curiosity-drive model regarding stimuli?",
+      "back": "It does not address exploratory behavior that occurs in the absence of new or unfamiliar situations."
+    },
+    {
+      "front": "Which theory posits that people are motivated to maintain a pleasurable level of arousal through exploratory behavior?",
+      "back": "Optimal-arousal theory"
+    },
+    {
+      "front": "How does optimal-arousal theory explain behavior in a boring environment?",
+      "back": "Arousal falls below the optimal point, prompting exploratory behavior to increase stimulation."
+    },
+    {
+      "front": "Which theory assumes that arousal increases when simultaneously active cognitive structures are logically inconsistent?",
+      "back": "Cognitive-consistency theory"
+    },
+    {
+      "front": "According to cognitive-consistency theory, what occurs if the inconsistency between expectancy and perception is very large?",
+      "back": "Fear or aggressive behavior may be employed to resolve the inconsistency."
+    },
+    {
+      "front": "Which neurotransmitter is primarily linked to the brain's reward pathway and the assignment of value to new information?",
+      "back": "Dopamine"
+    },
+    {
+      "front": "The release of _____ by the nucleus accumbens is associated with the sensation of 'liking' or evaluating a novel object.",
+      "back": "Opioids"
+    },
+    {
+      "front": "Which region of the brain is highly responsive to dopamine and is thought to anticipate the reward of exploratory behavior?",
+      "back": "Caudate nucleus"
+    },
+    {
+      "front": "Which chemical associated with stress regulation may encourage curious behavior at low levels but initiate a 'back away' response at high levels?",
+      "back": "Cortisol"
+    },
+    {
+      "front": "The _____ is a brain region involved in attention and reward anticipation that coordinates motivation with body movement.",
+      "back": "Striatum"
+    },
+    {
+      "front": "A correlation exists between levels of curious behavior and the grey matter density of which brain region?",
+      "back": "Precuneus"
+    },
+    {
+      "front": "Which brain structure is essential for determining the novelty of stimuli by comparing them to stored memories?",
+      "back": "Hippocampus"
+    },
+    {
+      "front": "The _____ gyrus is an area of grey matter surrounding the hippocampus implicated in the amplification of curiosity.",
+      "back": "Parahippocampal"
+    },
+    {
+      "front": "Which brain region is associated with emotional processing, fear, and reactions toward unexpected stimuli?",
+      "back": "Amygdala"
+    },
+    {
+      "front": "Who argued that children develop intellectually by acting like 'scientists'—forming hypotheses and conducting experiments on their environment?",
+      "back": "Jean Piaget"
+    },
+    {
+      "front": "Research suggests that 11-year-olds who exhibit higher levels of _____ in classroom settings engage in less curious behavior.",
+      "back": "Anxiety"
+    },
+    {
+      "front": "Why is curiosity considered an 'epistemic virtue' by philosophers?",
+      "back": "It motivates people to acquire knowledge and understanding."
+    },
+    {
+      "front": "What mood disorder is characterized by a lack of interest in one’s environment and may be predicted by a lack of curiosity?",
+      "back": "Depression"
+    },
+    {
+      "front": "Term: Social curiosity",
+      "back": "Definition: The drive to understand one’s environment specifically regarding interactions and relationships with others."
+    },
+    {
+      "front": "What type of curiosity is focused on death, violence, or events that may cause physical or emotional harm?",
+      "back": "Morbid curiosity"
+    },
+    {
+      "front": "Term: State curiosity",
+      "back": "Definition: A temporary external state of wondering why something is happening. Example: Wondering why a specific store is closed."
+    },
+    {
+      "front": "Term: Trait curiosity",
+      "back": "Definition: A stable internal interest in learning or seeking new experiences. Example: Regularly traveling to unfamiliar countries."
+    },
+    {
+      "front": "In artificial intelligence, how is curiosity typically defined quantitatively?",
+      "back": "The uncertainty the agent has in predicting its own actions given its current state."
+    },
+    {
+      "front": "What term is used for a collection of curiosities or objects stored together for display?",
+      "back": "Curios"
+    },
+    {
+      "front": "How does psychologist Angela Duckworth define the personality trait 'grit'?",
+      "back": "Perseverance and passion for long-term goals."
+    },
+    {
+      "front": "According to Duckworth, grit is a better predictor of success than what traditional measure of intelligence?",
+      "back": "Intellectual talent or IQ."
+    },
+    {
+      "front": "Research on four separate samples found that grit was either slightly inversely correlated with or _____ to intelligence.",
+      "back": "Orthogonal"
+    },
+    {
+      "front": "Which of the 'Big Five' personality traits has the strongest correlation with grit?",
+      "back": "Conscientiousness"
+    },
+    {
+      "front": "What was the genetic correlation found between conscientiousness and grit in a large study of twins?",
+      "back": "$0.86$"
+    },
+    {
+      "front": "What component does grit add to the construct of persistence?",
+      "back": "Passion for the goal."
+    },
+    {
+      "front": "Concept: Hardiness",
+      "back": "Definition: Attitudes providing courage to turn stressful circumstances into growth opportunities. Contrast: Grit focuses on a specific long-term goal."
+    },
+    {
+      "front": "While grit is conceptualized as a stable trait, resilience is conceptualized as a _____.",
+      "back": "Process"
+    },
+    {
+      "front": "How does grit differ from ambition in terms of external recognition?",
+      "back": "Ambition is associated with a desire for fame, while grit is associated with achieving personal goals."
+    },
+    {
+      "front": "Gritty people pursue goals without positive feedback, whereas those with a 'need for achievement' require _____.",
+      "back": "Immediate feedback"
+    },
+    {
+      "front": "Duckworth's study of cadets at which institution found that grit predicted retention after the first summer?",
+      "back": "The United States Military Academy (West Point)."
+    },
+    {
+      "front": "What correlation ($r$ value) was found between grit and cumulative GPA in an Ivy League sample?",
+      "back": "$r = 0.25$"
+    },
+    {
+      "front": "Marcus Crede’s meta-analysis suggested that the predictive utility of grit stems primarily from which of its two facets?",
+      "back": "Perseverance of effort."
+    },
+    {
+      "front": "Why did K. Anders Ericsson criticize the use of the term 'grit' to explain persistent practice?",
+      "back": "He argued it is circular thinking that assigns a trait to someone after the fact of their success."
+    },
+    {
+      "front": "Critics of the 'grit narrative' in education argue it can lead to _____ by downplaying obstacles like poverty and racism.",
+      "back": "Victim blaming"
+    },
+    {
+      "front": "Grit is suggested to be domain-specific; what is the term for grit applied to second language acquisition?",
+      "back": "L2 grit"
+    },
+    {
+      "front": "According to Berlyne, which variable class includes novelty, complexity, uncertainty, and conflict?",
+      "back": "Collative variables"
+    },
+    {
+      "front": "What specific brain formation is important for the release of dopamine in response to novel or exciting stimuli?",
+      "back": "Nucleus accumbens"
+    },
+    {
+      "front": "In 1907, which psychologist challenged the field to investigate how some people access 'richer trait reservoirs' to accomplish more?",
+      "back": "William James"
+    },
+    {
+      "front": "The Short Grit Scale is known as _____ and the 12-item self-report measure is known as _____.",
+      "back": "Grit–S; Grit–O"
+    },
+    {
+      "front": "What correlation was found between the Grit–S scale and conscientiousness?",
+      "back": "$r = 0.77$"
+    },
+    {
+      "front": "What correlation was found between the Grit–O scale and conscientiousness?",
+      "back": "$r = 0.73$"
+    },
+    {
+      "front": "Which theory of curiosity explores the 'meta-emotions' involved in relating unusual circumstances to one's own experiences?",
+      "back": "Morbid curiosity theory"
+    },
+    {
+      "front": "In AI, what drives agents to learn advantageous game behaviors even when only rewarded for curiosity?",
+      "back": "Intrinsic motivation"
+    },
+    {
+      "front": "Which philosopher noted in his 'Poetics' that humans admire paintings of objects that would disgust them in reality?",
+      "back": "Aristotle"
+    },
+    {
+      "front": "The drive to learn new information is often prompted by the anticipation of _____.",
+      "back": "Reward"
+    },
+    {
+      "front": "A lack of curiosity for novel stimuli may serve as a predictor for which neurodegenerative disease?",
+      "back": "Alzheimer's disease"
+    },
+    {
+      "front": "Why is 'attention' considered vital to the process of curiosity?",
+      "back": "It allows the brain to focus limited cognitive resources on the most important or engaging stimuli."
+    },
+    {
+      "front": "Research suggests that dopamine release is higher when a reward is _____ compared to when it is familiar.",
+      "back": "Unknown"
+    },
+    {
+      "front": "Which regions of the brain correspond to both conflict and arousal, reinforcing exploratory models of curiosity?",
+      "back": "Anterior insula and anterior cingulate cortex."
+    },
+    {
+      "front": "What term did Bernd Heinrich use to describe the love of new things observed in curious animals like ravens?",
+      "back": "Neophilia"
+    },
+    {
+      "front": "In the curiosity-drive model, what is the 'drive' trying to restore?",
+      "back": "Coherent thought processes."
+    },
+    {
+      "front": "According to Berlyne, curiosity-driven behavior can be divided into orienting responses, investigatory responses, and _____.",
+      "back": "Locomotor exploration"
+    },
+    {
+      "front": "What percentage of variation in math scores was attributed to a combination of curiosity, motivation, and creativity in high schoolers?",
+      "back": "$33.1\\%$"
+    },
+    {
+      "front": "Grit is argued to be orthogonal to intelligence; what does 'orthogonal' mean in this context?",
+      "back": "The two traits are statistically independent and do not necessarily occur together."
+    },
+    {
+      "front": "Which researcher criticized the consistency of interest (passion) facet, arguing perseverance is the true predictor of success?",
+      "back": "Marcus Crede"
+    },
+    {
+      "front": "The 'Grit narrative' critics argue educators should focus more on inequality and structural support than on _____.",
+      "back": "Student character traits"
+    },
+    {
+      "front": "In a U.K. study of 2,321 twin pairs, grit added little predictive value for academic achievement beyond which Big Five factor?",
+      "back": "Conscientiousness"
+    },
+    {
+      "front": "What is the primary goal of the 'Curiosity in Classrooms' framework and coding protocol?",
+      "back": "To nurture and develop curiosity rather than treating it as a fixed attribute."
+    },
+    {
+      "front": "What term is used for the interno-fueled mental processes like thinking, often called 'epistemic exploration'?",
+      "back": "Symbolic activities"
+    },
+    {
+      "front": "How does social curiosity help an individual in varying environments?",
+      "back": "It helps them adapt to social situations and successfully navigate social interactions."
+    },
+    {
+      "front": "Which 1926 researcher studied the 'mental traits of three hundred geniuses' and emphasized traits beyond normal ability?",
+      "back": "Catharine M. Cox"
+    },
+    {
+      "front": "Which scale specifically measures the consistency of interests and perseverance of effort over time?",
+      "back": "Short Grit Scale (Grit–S)."
+    },
+    {
+      "front": "According to Erika Engelhaupt, morbid curiosity reassures us that even death follows _____.",
+      "back": "The rules of the natural world."
+    },
+    {
+      "front": "Grit researchers distinguish it from self-control by noting they operate over different _____.",
+      "back": "Timescales"
+    },
+    {
+      "front": "Which Finnish concept is often associated with grit and perseverance?",
+      "back": "Sisu"
+    },
+    {
+      "front": "Aristotle understood persistence and tenacity as a _____ as early as the Nicomachean Ethics.",
+      "back": "Virtue"
+    },
+    {
+      "front": "The 2017 paper in 'PLOS One' found that people choose to view _____ images longer than neutral or positive ones.",
+      "back": "Graphic (or negative)"
+    },
+    {
+      "front": "What is the 'meta-analytic' finding regarding grit's relationship to academic achievement across different cultures?",
+      "back": "Grit and its facets are cross-culturally related to academic achievement."
+    },
+    {
+      "front": "Which brain region's density correlates with levels of exploratory behavior?",
+      "back": "Precuneus"
+    }
+  ]
+}

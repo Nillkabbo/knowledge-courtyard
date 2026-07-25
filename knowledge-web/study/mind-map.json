@@ -1,0 +1,141 @@
+{
+  "name": "Prompt Engineering",
+  "children": [
+    {
+      "name": "Core Concepts",
+      "children": [
+        {
+          "name": "Prompt Definition"
+        },
+        {
+          "name": "Context Engineering"
+        },
+        {
+          "name": "In-context Learning"
+        },
+        {
+          "name": "Model Sensitivity"
+        }
+      ]
+    },
+    {
+      "name": "Prompting Techniques",
+      "children": [
+        {
+          "name": "Multi-shot / Few-shot"
+        },
+        {
+          "name": "Chain-of-thought (CoT)",
+          "children": [
+            {
+              "name": "Self-consistency"
+            },
+            {
+              "name": "Zero-shot CoT"
+            }
+          ]
+        },
+        {
+          "name": "Tree-of-thought"
+        },
+        {
+          "name": "Role Assignment"
+        },
+        {
+          "name": "Vibe Coding"
+        }
+      ]
+    },
+    {
+      "name": "Multimodal Prompting",
+      "children": [
+        {
+          "name": "Text-to-Image",
+          "children": [
+            {
+              "name": "Artist Styles"
+            },
+            {
+              "name": "Negative Prompts"
+            },
+            {
+              "name": "Textual Inversion"
+            }
+          ]
+        },
+        {
+          "name": "Image Prompting"
+        },
+        {
+          "name": "Text-to-Audio"
+        }
+      ]
+    },
+    {
+      "name": "Automated Generation",
+      "children": [
+        {
+          "name": "Retrieval-augmented Generation (RAG)",
+          "children": [
+            {
+              "name": "GraphRAG"
+            }
+          ]
+        },
+        {
+          "name": "Automatic Prompt Engineer (APE)"
+        },
+        {
+          "name": "Optimization Methods",
+          "children": [
+            {
+              "name": "MIPRO"
+            },
+            {
+              "name": "GEPA"
+            },
+            {
+              "name": "Gradient Descent Tuning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Challenges and Security",
+      "children": [
+        {
+          "name": "Limitations",
+          "children": [
+            {
+              "name": "Model Specificity"
+            },
+            {
+              "name": "Prompt Brittleness"
+            },
+            {
+              "name": "Obsolescence Risk"
+            }
+          ]
+        },
+        {
+          "name": "Prompt Injection"
+        }
+      ]
+    },
+    {
+      "name": "History and Professionalism",
+      "children": [
+        {
+          "name": "1990s Rule-based Systems"
+        },
+        {
+          "name": "2020s AI Boom"
+        },
+        {
+          "name": "Prompt Engineer Role"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,395 @@
+{
+  "title": "LLM Quiz",
+  "questions": [
+    {
+      "question": "In the standard scaled dot-product attention mechanism, what is the mathematical purpose of dividing the dot product of the Query ($Q$) and Key ($K$) by $\\sqrt{d_k}$ before applying the softmax function?",
+      "answerOptions": [
+        {
+          "text": "To prevent extremely large values that would cause the softmax gradient to vanish.",
+          "isCorrect": true,
+          "rationale": "Scaling by the square root of the head dimension prevents high variance in the dot product, ensuring the softmax function does not become overly peaked and result in vanishing gradients."
+        },
+        {
+          "text": "To ensure that the attention weights always sum to exactly one.",
+          "isCorrect": false,
+          "rationale": "The requirement for weights to sum to one is handled by the softmax function itself, not the scaling factor."
+        },
+        {
+          "text": "To convert the positional encoding into a probability distribution.",
+          "isCorrect": false,
+          "rationale": "Positional encoding is added to embeddings to provide sequence information and is distinct from the scaling of attention scores."
+        },
+        {
+          "text": "To reduce the dimensionality of the Value ($V$) matrix to save memory.",
+          "isCorrect": false,
+          "rationale": "Scaling affects the attention scores between tokens but does not alter the size or dimensionality of the Value matrix."
+        }
+      ],
+      "hint": "Consider how high-magnitude inputs affect the sensitivity and slope of activation functions like softmax."
+    },
+    {
+      "question": "Large Language Models (LLMs) often struggle with large-scale arithmetic. According to the source material on tokenization, why does the Byte Pair Encoding (BPE) algorithm contribute to this weakness?",
+      "answerOptions": [
+        {
+          "text": "It forces the model to treat all numbers as static word embeddings regardless of context.",
+          "isCorrect": false,
+          "rationale": "BPE is a sub-word segmentation tool, while context-dependency is handled by the attention layers later in the pipeline."
+        },
+        {
+          "text": "It breaks large numbers into inconsistent or arbitrary numerical chunks.",
+          "isCorrect": true,
+          "rationale": "Because BPE breaks rare sequences into smaller pieces, a large number may be split into fragments like '123', '45', and '67', destroying the model's ability to perceive the number as a single mathematical entity."
+        },
+        {
+          "text": "It assigns a unique token to every possible integer, exceeding the vocabulary limit.",
+          "isCorrect": false,
+          "rationale": "BPE actually prevents this problem by using sub-word units, though this solution creates the issue of fragmentation."
+        },
+        {
+          "text": "It ignores the white space between digits, causing numbers to merge into text strings.",
+          "isCorrect": false,
+          "rationale": "The material notes that white spaces are often preserved as specific tokens and do not cause digits to merge into text."
+        }
+      ],
+      "hint": "Think about how a single large number is represented in the model's vocabulary versus how we see it on a page."
+    },
+    {
+      "question": "Word embeddings allow models to perform semantic arithmetic. Which concept explains why a model can solve the analogy 'King - Man + Woman $\\approx$ Queen'?",
+      "answerOptions": [
+        {
+          "text": "The attention mechanism's use of soft weights during the forward pass.",
+          "isCorrect": false,
+          "rationale": "Attention weights determine relationships within a specific sentence, whereas these analogies rely on the pre-trained vector space."
+        },
+        {
+          "text": "The geometry of the vector space where specific dimensions represent abstract concepts.",
+          "isCorrect": true,
+          "rationale": "Embeddings place words in a high-dimensional space where directions represent relationships like gender or royalty, allowing vector addition and subtraction to yield meaningful results."
+        },
+        {
+          "text": "The use of Byte Pair Encoding to find common prefixes and suffixes.",
+          "isCorrect": false,
+          "rationale": "BPE deals with the spelling and structure of words, not the multi-dimensional semantic relationships found in embeddings."
+        },
+        {
+          "text": "The application of reinforcement learning to align model outputs with human logic.",
+          "isCorrect": false,
+          "rationale": "While RLHF improves conversational logic, semantic vector arithmetic is a fundamental property of the embedding space learned during pre-training."
+        }
+      ],
+      "hint": "Consider the spatial relationship between points in a multi-thousand-dimension coordinate system."
+    },
+    {
+      "question": "In the context of the Self-Attention mechanism, which vector acts as the 'offer' or 'label' that a token presents to be matched against other tokens?",
+      "answerOptions": [
+        {
+          "text": "The Query ($Q$) vector",
+          "isCorrect": false,
+          "rationale": "The Query represents what the current token is actively looking for in other tokens."
+        },
+        {
+          "text": "The Value ($V$) vector",
+          "isCorrect": false,
+          "rationale": "The Value vector contains the actual information that will be passed forward once a match is found."
+        },
+        {
+          "text": "The Key ($K$) vector",
+          "isCorrect": true,
+          "rationale": "The Key vector serves as the descriptor or index that the Query vector 'looks up' to determine relevance."
+        },
+        {
+          "text": "The Positional Encoding vector",
+          "isCorrect": false,
+          "rationale": "This vector provides information about a token's index in the sequence but does not participate in the matching process like the attention vectors."
+        }
+      ],
+      "hint": "Think of this in terms of a search engine: one vector is the search term, and another is the title or tag of the results."
+    },
+    {
+      "question": "Why is 'Positional Encoding' a necessary component of the Transformer architecture but was not required for earlier Recurrent Neural Networks (RNNs)?",
+      "answerOptions": [
+        {
+          "text": "RNNs process tokens sequentially, while Transformers process all tokens in a sequence simultaneously.",
+          "isCorrect": true,
+          "rationale": "Because Transformers use parallel attention, they have no inherent way to know the order of words without explicitly adding positional information to the embeddings."
+        },
+        {
+          "text": "Transformers have a fixed-width context window that cannot perceive long-range dependencies.",
+          "isCorrect": false,
+          "rationale": "Transformers are actually superior at long-range dependencies because attention allows direct access to any part of the sentence."
+        },
+        {
+          "text": "RNNs use 'hard' weights that naturally encode the distance between words.",
+          "isCorrect": false,
+          "rationale": "RNNs use the same weights at each step; their sequential nature, not the weight type, provides order."
+        },
+        {
+          "text": "Embeddings in Transformers are static and do not change based on the word's position.",
+          "isCorrect": false,
+          "rationale": "While static embeddings exist, the issue is the lack of sequential processing, which positional encoding resolves."
+        }
+      ],
+      "hint": "Think about the difference between reading a sentence word-by-word versus seeing the entire sentence all at once."
+    },
+    {
+      "question": "What distinguishes the 'SFT' (Supervised Fine-Tuning) stage from the 'Pre-training' stage in the development of an LLM?",
+      "answerOptions": [
+        {
+          "text": "SFT uses trillions of tokens of raw internet text to build a base model.",
+          "isCorrect": false,
+          "rationale": "Pre-training, not SFT, involves the massive intake of raw, uncurated internet data."
+        },
+        {
+          "text": "SFT focuses on teaching the model how to follow instructions and engage in dialogue using curated examples.",
+          "isCorrect": true,
+          "rationale": "During SFT, the model learns the conversational format by imitating human-written Q&A pairs, moving beyond simple next-token prediction."
+        },
+        {
+          "text": "SFT is the phase where the model learns its primary vocabulary and BPE splits.",
+          "isCorrect": false,
+          "rationale": "Vocabulary and tokenization rules are established before training even begins."
+        },
+        {
+          "text": "SFT utilizes human rankings to penalize harmful or incorrect responses.",
+          "isCorrect": false,
+          "rationale": "Ranking and human-feedback loops are the primary characteristic of the RLHF stage, which follows SFT."
+        }
+      ],
+      "hint": "One phase is about gathering general knowledge, while the other is about learning how to act as a helpful assistant."
+    },
+    {
+      "question": "Autoregressive generation means that an LLM produces an answer one token at a time. What is a major computational consequence of this process?",
+      "answerOptions": [
+        {
+          "text": "The entire model must perform a forward pass for every single token generated.",
+          "isCorrect": true,
+          "rationale": "Since each new token depends on all previous tokens, the model must re-process the context to predict each subsequent piece of the output."
+        },
+        {
+          "text": "The model can only look backward and cannot correct mistakes made earlier in the sentence.",
+          "isCorrect": false,
+          "rationale": "While it can't go back and 'erase' text once output, the issue described is about the high cost of forward passes."
+        },
+        {
+          "text": "The model's vocabulary size shrinks as it runs out of relevant tokens to predict.",
+          "isCorrect": false,
+          "rationale": "The vocabulary remains constant; the model simply selects the most probable token from that fixed list at each step."
+        },
+        {
+          "text": "The temperature of the model must increase for every token to prevent repetition.",
+          "isCorrect": false,
+          "rationale": "Temperature is typically a static hyperparameter or adjusted by the user, not a requirement that scales with sequence length."
+        }
+      ],
+      "hint": "Consider the relationship between a single output word and the complexity of the entire Transformer building."
+    },
+    {
+      "question": "When configuring an LLM's generation settings, what is the effect of setting the 'Temperature' to $0$?",
+      "answerOptions": [
+        {
+          "text": "The model will always pick the most probable token, leading to deterministic outputs.",
+          "isCorrect": true,
+          "rationale": "A temperature of zero collapses the probability distribution, making the model 'greedy' so it only chooses the highest-ranked option."
+        },
+        {
+          "text": "The model will stop generating text entirely once it reaches a period.",
+          "isCorrect": false,
+          "rationale": "Stopping is determined by 'stop sequences' or the end-of-text token, not the temperature setting."
+        },
+        {
+          "text": "The model will randomly sample from the entire vocabulary, producing gibberish.",
+          "isCorrect": false,
+          "rationale": "This would be the effect of an extremely high temperature, which flattens the probability distribution."
+        },
+        {
+          "text": "The model will prioritize tokens that have not appeared recently in the context.",
+          "isCorrect": false,
+          "rationale": "This describes a 'repetition penalty' or frequency bias, which is a different parameter than temperature."
+        }
+      ],
+      "hint": "Think about how a sharp vs. flat probability curve affects the 'choice' of the next word."
+    },
+    {
+      "question": "According to the 'Chinchilla Scaling Law' (2022), what is the optimal ratio for training a high-performing model?",
+      "answerOptions": [
+        {
+          "text": "Increasing parameters is more important than increasing data volume.",
+          "isCorrect": false,
+          "rationale": "The Chinchilla study actually found that many large models were undertrained and needed more data relative to their size."
+        },
+        {
+          "text": "A model should be trained on approximately $20$ tokens for every $1$ parameter.",
+          "isCorrect": true,
+          "rationale": "This ratio ensures the model has enough data to actually learn the capacity provided by its parameter count, avoiding waste."
+        },
+        {
+          "text": "The training data should be $100$ times larger than the number of neurons in the Transformer block.",
+          "isCorrect": false,
+          "rationale": "The source specifies a ratio of 20 tokens per parameter, not 100 per neuron."
+        },
+        {
+          "text": "Models should stop training once the 'loss' reaches a value equal to the embedding dimension.",
+          "isCorrect": false,
+          "rationale": "Training duration is based on compute budgets and data/parameter ratios rather than a specific loss value match."
+        }
+      ],
+      "hint": "Focus on the specific numerical proportion between the size of the model and the amount of information it consumes."
+    },
+    {
+      "question": "A 'Mixture of Experts' (MoE) architecture, such as in Mixtral 8x7B, provides what primary advantage over a standard Transformer of the same total size?",
+      "answerOptions": [
+        {
+          "text": "It can run much faster because only a fraction of its parameters are active for any given token.",
+          "isCorrect": true,
+          "rationale": "By using a 'router' to select only the most relevant experts, MoE models achieve high capacity with the inference speed of a much smaller model."
+        },
+        {
+          "text": "It requires significantly less VRAM because most 'experts' can be stored on disk.",
+          "isCorrect": false,
+          "rationale": "MoE models actually have a high memory footprint because all experts must be available in memory, even if they aren't active."
+        },
+        {
+          "text": "It eliminates hallucinations by ensuring only the 'Correct Expert' answers the prompt.",
+          "isCorrect": false,
+          "rationale": "MoE refers to structural routing, not a factual verification system, so it does not inherently prevent hallucinations."
+        },
+        {
+          "text": "It allows the model to process images and audio without needing separate vision encoders.",
+          "isCorrect": false,
+          "rationale": "This describes native multimodality, which is a separate concept from the expert-routing mechanism."
+        }
+      ],
+      "hint": "Think about the efficiency of calling a small specialized team instead of an entire massive army."
+    },
+    {
+      "question": "The source material differentiates between 'hard' weights and 'soft' weights in machine learning. Which statement correctly identifies their role in an attention-based system?",
+      "answerOptions": [
+        {
+          "text": "Hard weights are learned during training; soft weights are computed dynamically for every input step.",
+          "isCorrect": true,
+          "rationale": "Hard weights represent the model's 'knowledge' stored after training, whereas soft weights (attention scores) are ephemeral and change depending on the specific words in the prompt."
+        },
+        {
+          "text": "Soft weights are used for the backward training pass; hard weights are used for the forward inference pass.",
+          "isCorrect": false,
+          "rationale": "Both types play roles in the forward pass, and the hard weights are what are updated during the backward pass."
+        },
+        {
+          "text": "Hard weights represent the 1-hot dictionary vectors; soft weights represent the word embeddings.",
+          "isCorrect": false,
+          "rationale": "1-hot vectors are representations, not weights, and embeddings themselves utilize learned hard weights."
+        },
+        {
+          "text": "Soft weights are used to determine position; hard weights are used to determine importance.",
+          "isCorrect": false,
+          "rationale": "The source defines attention (soft weights) specifically as the method for determining importance."
+        }
+      ],
+      "hint": "Consider which values are 'baked' into the model file and which are 'calculated' on-the-fly based on what you type."
+    },
+    {
+      "question": "Which component is added to an LLM pipeline to allow it to process and 'understand' a scanned PDF or a screenshot?",
+      "answerOptions": [
+        {
+          "text": "A Vision Encoder that converts image patches into embeddings.",
+          "isCorrect": true,
+          "rationale": "Multimodal models use vision encoders to turn visual data into vectors that the Transformer can process alongside text embeddings."
+        },
+        {
+          "text": "An autoregressive router that picks a text expert or a math expert.",
+          "isCorrect": false,
+          "rationale": "This describes Mixture of Experts, which is an architectural efficiency strategy rather than a way to handle different data types."
+        },
+        {
+          "text": "A Byte Pair Encoding scheme that supports image pixels as tokens.",
+          "isCorrect": false,
+          "rationale": "BPE is specifically for text characters and sub-words; images use different embedding strategies like patches."
+        },
+        {
+          "text": "A larger context window that can fit the raw bytes of the image file.",
+          "isCorrect": false,
+          "rationale": "Raw image bytes are not directly interpretable by text models; they must first be converted into a compatible semantic space."
+        }
+      ],
+      "hint": "Think about the bridge needed to turn pixels into the same 'mathematical language' as words."
+    },
+    {
+      "question": "What is the function of the 'Feed-Forward Network' (FFN) or MLP layer that appears after the attention layer in each Transformer block?",
+      "answerOptions": [
+        {
+          "text": "It computes the correlations between different tokens in the sequence.",
+          "isCorrect": false,
+          "rationale": "The attention layer, not the FFN, is responsible for token-to-token correlations."
+        },
+        {
+          "text": "It processes the information gathered by attention and is where 'knowledge' is largely stored.",
+          "isCorrect": true,
+          "rationale": "The FFN layers act as the processing units that transform the context-aware vectors, storing many of the learned connections from training."
+        },
+        {
+          "text": "It normalizes the vectors to ensure training stability across different layers.",
+          "isCorrect": false,
+          "rationale": "Normalization is handled by specific Layer Norm components, which are separate from the FFN."
+        },
+        {
+          "text": "It adds positional encoding to the input before it reaches the next block.",
+          "isCorrect": false,
+          "rationale": "Positional encoding is added at the very beginning of the building (Layer 1) and is not repeated by the FFN."
+        }
+      ],
+      "hint": "Once a word 'looks' at its neighbors to get context, it needs a place to 'think' about and process that information."
+    },
+    {
+      "question": "LLM 'Grounding' is a technique used to reduce hallucinations. How is this typically achieved in practice?",
+      "answerOptions": [
+        {
+          "text": "By increasing the model's parameter count to provide more internal storage for facts.",
+          "isCorrect": false,
+          "rationale": "While larger models may know more, 'grounding' specifically refers to basing answers on external, verified data."
+        },
+        {
+          "text": "By providing specific source documents (RAG) and instructing the model to answer only from them.",
+          "isCorrect": true,
+          "rationale": "Retrieval-Augmented Generation (RAG) grounds the model in fact by forcing it to look at provided evidence rather than guessing from probability."
+        },
+        {
+          "text": "By setting the temperature higher to allow the model to explore more factual possibilities.",
+          "isCorrect": false,
+          "rationale": "Higher temperature actually increases randomness and the likelihood of hallucinations."
+        },
+        {
+          "text": "By training the model on a unique dictionary of 'true' and 'false' tokens.",
+          "isCorrect": false,
+          "rationale": "Grounding relies on context and retrieval, not a specialized binary vocabulary."
+        }
+      ],
+      "hint": "Think of an open-book exam versus a memory-only exam."
+    },
+    {
+      "question": "Why is the tokenization of languages like Bengali more 'expensive' than English in most commercial LLM APIs?",
+      "answerOptions": [
+        {
+          "text": "Bengali words are consistently broken into more tokens because they are rarer in the training data.",
+          "isCorrect": true,
+          "rationale": "Since BPE is frequency-based, common English words are often 1 token, while rare Bengali words might be split into 4 or more tokens."
+        },
+        {
+          "text": "Bengali script requires more GPU compute power to generate than the Latin alphabet.",
+          "isCorrect": false,
+          "rationale": "Compute power per token is the same regardless of the language; the cost difference is in the *number* of tokens."
+        },
+        {
+          "text": "The attention mechanism is slower when processing non-English grammatical structures.",
+          "isCorrect": false,
+          "rationale": "Attention speed is a function of sequence length (token count), not the complexity of the grammar."
+        },
+        {
+          "text": "Bengali embeddings occupy more dimensions in the vector space.",
+          "isCorrect": false,
+          "rationale": "All tokens, regardless of language, are mapped to the same fixed-dimension vector space (e.g., 4096 dimensions)."
+        }
+      ],
+      "hint": "Consider how the BPE algorithm prioritizes the most common character sequences it encountered during its setup."
+    }
+  ]
+}
