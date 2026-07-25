@@ -52,7 +52,8 @@
     { "n": 39, "folder": "databases",                "title_en": "The Data Vault",                       "title_bn": "উপাত্তের ভল্ট",                "icon": "📊", "category": "cs", "color": "game-39", "tag": "Book 39 · Databases Deep Dive",                                        "status": "live" },
     { "n": 40, "folder": "software-engineering",     "title_en": "The Codebuilder's Guild",              "title_bn": "কোড নির্মাতার শিল্প",          "icon": "🔨", "category": "cs", "color": "game-40", "tag": "Book 40 · Software Engineering Big Picture",                          "status": "live" },
     { "n": 41, "folder": "theory-of-computation",  "title_en": "The Clockwork of Thought",            "title_bn": "গণনার তত্ত্ব",               "icon": "🧮", "category": "cs", "color": "game-41", "tag": "Book 41 · Theory of Computation",                                    "status": "live" },
-    { "n": 42, "folder": "computer-architecture",   "title_en": "The Clockwork Forge",                   "title_bn": "যন্ত্রের কারখানা",            "icon": "⚙️", "category": "cs", "color": "game-42", "tag": "Book 42 · Computer Architecture",                                   "status": "live" }
+    { "n": 42, "folder": "computer-architecture",   "title_en": "The Clockwork Forge",                   "title_bn": "যন্ত্রের কারখানা",            "icon": "⚙️", "category": "cs", "color": "game-42", "tag": "Book 42 · Computer Architecture",                                   "status": "live" },
+    { "n": 43, "folder": "cloud-devops",              "title_en": "The Sky Fortress",                      "title_bn": "আকাশের দুর্গ",                "icon": "☁️", "category": "cs", "color": "game-43", "tag": "Book 43 · Cloud & DevOps Engineering",                              "status": "live" }
   ],
 
   "roadmap": [
@@ -97,7 +98,8 @@
         { "book": 39, "why": "relational model, SQL, indexing, ACID, NoSQL — how indexes work." },
         { "book": 40, "why": "SDLC, SOLID, design patterns, TDD, Git, architecture, DevOps, security, AI-assisted dev — the profession of software engineering. Connects B2+B37+B38+B39 into a unified workflow." },
         { "book": 41, "why": "Turing machines, halting problem, Gödel incompleteness, P vs NP — the THEORETICAL foundation beneath all CS books. Every PhD interview asks 'what can/cannot be computed?' Connects to B2 (Big-O), B35 (FLP impossibility), B38 (deadlock undecidability), B40 (Rice's theorem)." },
-        { "book": 42, "why": "Transistors → logic gates → CPU datapath → pipelining → cache hierarchy → coherence → GPU SIMT → systolic arrays (TPU) — the PHYSICAL foundation beneath all CS books. Every PhD interview asks 'how does hardware shape software?' Connects to B38 (OS↔hardware), B17 (GPU inference), B2 (cache-aware algorithms), B35 (coherence=consensus)." }
+        { "book": 42, "why": "Transistors → logic gates → CPU datapath → pipelining → cache hierarchy → coherence → GPU SIMT → systolic arrays (TPU) — the PHYSICAL foundation beneath all CS books. Every PhD interview asks 'how does hardware shape software?' Connects to B38 (OS↔hardware), B17 (GPU inference), B2 (cache-aware algorithms), B35 (coherence=consensus)." },
+        { "book": 43, "why": "Docker containers → Kubernetes orchestration → Terraform IaC → CI/CD → observability → SRE error budgets → service mesh → progressive delivery — the OPERATIONS layer. Every production system runs on these. Connects to B38 (OS↔containers), B35 (etcd=Raft), B37 (networking=OSI), B42 (eBPF=kernel), B40 (CI/CD=delivery)." }
       ]
     },
     {

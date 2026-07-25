@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আকাশের দুর্গ — The Sky Fortress</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَأَعِدُّوا لَهُم مَّا اسْتَطَعْتُم مِّن قُوَّةٍ</div>
+  <h1 class="title-main">আকাশের দুর্গ</h1>
+  <div class="title-sub">The Sky Fortress</div>
+  <div class="title-desc">
+    কোড থেকে প্রোডাকশন — একটা নিরাপদ, স্বয়ংক্রিয়, measurable যাত্রা।<br>
+    দশটি দরজা — Docker containers, Kubernetes orchestration, Terraform IaC, CI/CD pipelines, observability, SRE error budgets, service mesh, deployment strategies, GitOps, future of cloud।<br><br>
+    <em>Ten doors: from Docker containers (restricted Linux processes) to Kubernetes reconciliation loops, Terraform state, OpenTelemetry observability, SRE error budgets, eBPF service mesh, and progressive delivery. Named masters: Docker, Kubernetes, HashiCorp, Google SRE, Istio, Cilium, Argo — the tools that built the modern cloud.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">☁️ যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">মেঘের ভেতরে — Inside the Cloud</div>
+    <p>তুমি প্রতিদিন <code>docker compose up</code> চালাও। <code>kubectl apply</code> করো। <code>git push</code> করো। কিন্তু এর পেছনে কী ঘটছে? একটা container আসলে কী — lightweight VM? না। সেটা শুধু একটা Linux process, namespaces দিয়ে ঘেরা, cgroups দিয়ে সীমাবদ্ধ। Kubernetes কী করে? সে শুধু বারবার চেক করে — desired state আর actual state মিলছে কি না। এটাই reconciliation loop।</p>
+    <p class="en">You run <code>docker compose up</code> every day. <code>kubectl apply</code>. <code>git push</code>. But what happens behind the scenes? What is a container, really — a lightweight VM? No. It's just a Linux process, wrapped in namespaces, limited by cgroups. What does Kubernetes do? It simply checks, over and over — does desired state match actual state? This is the reconciliation loop.</p>
+    <hr class="p-divider">
+    <p>এই বই তোমাকে নিয়ে যাবে মেঘের ভেতরে। Docker (2013) দেখিয়েছিল container = isolated process। Google (2014) Kubernetes উন্মুক্ত করেছিল — Borg-এর উত্তরাধিকারী। HashiCorp (2014) Terraform দিয়েছিল — infrastructure as code। Google SRE (2016) error budget এর ধারণা ছড়িয়েছিল। Cilium (2018) eBPF দিয়ে kernel-level networking শুরু করেছিল। এই দশটি দরজায় তুমি দেখবে — কীভাবে আধুনিক cloud infrastructure কাজ করে।</p>
+    <p class="en">This book takes you inside the cloud. Docker (2013) showed container = isolated process. Google (2014) open-sourced Kubernetes — heir to Borg. HashiCorp (2014) gave us Terraform — infrastructure as code. Google SRE (2016) spread the error budget concept. Cilium (2018) began kernel-level networking with eBPF. Through ten doors, you will see how modern cloud infrastructure works.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🔍</span><span id="hud-rank-name">সন্ধানী</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা — container থেকে cloud architecture পর্যন্ত।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← প্রাঙ্গণে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🏰</div>
+  <h1 class="complete-title">তুমি এখন আকাশ দুর্গের গুরু</h1>
+  <p class="complete-text">দশটি দরজা পেরিয়েছ। Cloud & DevOps engineering-এর সকল স্তর আয়ত্ত করেছ।<br><br>Container internals, Kubernetes reconciliation, Terraform state, observability, SRE error budgets, service mesh, progressive delivery।<br><br>এখন তুমি জানো — তোমার <code>git push</code> এর পরে কী ঘটে। কেন container শুধু একটা process। কেন K8s একটা thermostat। কেন Terraform state একটা time bomb। কেন SRE error budget একটা mathematical contract।<br><strong>তুমি শুধু DevOps করো না — তুমি এখন DevOps বোঝো।</strong></p>
+  <div class="complete-verse">وَأَعِدُّوا لَهُم مَّا اسْتَطَعْتُم مِّن قُوَّةٍ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"তাদের বিরুদ্ধে তোমাদের সাধ্যমতো শক্তি প্রস্তুত রাখো।" — কুরআন ৮:৬০</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 ক্লাউড ও DevOps চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 ক্লাউড ও DevOps চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+<script src="../scripts/study-materials.js"></script>
+</body>
+</html>
