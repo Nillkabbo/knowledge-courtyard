@@ -22,6 +22,45 @@ doors.push({
 <div class="dialogue"><strong>এসআরই ইঞ্জিনিয়ার:</strong> Google ২০০৩ সালে SRE team তৈরি করেছিল — একটা সহজ আইডিয়া দিয়ে। "১০০% uptime অসম্ভব, আর চেষ্টা করলে innovation মরে যায়।" তাই একটা contract — SLO (Service Level Objective)। ৯৯.৯% মানে ০.১% error budget। এই budget শেষ হলে — dev team feature development বন্ধ করে, reliability কাজ শুরু করে। mathematically enforced সততা।</div>
 <div class="dialogue en"><strong>SRE Engineer:</strong> Google created the SRE team in 2003 — with a simple idea. "100% uptime is impossible, and trying kills innovation." So a contract — SLO (Service Level Objective). 99.9% means 0.1% error budget. When this budget runs out — dev team stops feature development, starts reliability work. Mathematically enforced honesty.</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <!-- SLO Gauge -->
+  <rect x="20" y="20" width="540" height="240" rx="12" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <text x="290" y="45" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="900">📊 Error Budget — 99.9% SLO (30-day window)</text>
+
+  <!-- Budget bar -->
+  <rect x="50" y="70" width="480" height="30" rx="5" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <rect x="50" y="70" width="430" height="30" rx="5" fill="#059669" opacity=".3"/>
+  <text x="100" y="89" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Uptime (99.9%)</text>
+  <rect x="480" y="70" width="50" height="30" rx="0" fill="#dc2626" opacity=".4"/>
+  <text x="505" y="89" text-anchor="middle" fill="#f87171" font-size="9" font-weight="600">Budget</text>
+  <text x="505" y="115" text-anchor="middle" fill="#fca5a5" font-size="8">0.1% = 43.2 min</text>
+
+  <!-- Burn rate gauge -->
+  <text x="290" y="140" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="600">Burn Rate (how fast budget is consumed)</text>
+  <rect x="50" y="155" width="480" height="24" rx="12" fill="#1e293b" stroke="#475569"/>
+  <!-- Gradient segments -->
+  <rect x="52" y="157" width="120" height="20" rx="10" fill="#059669" opacity=".5"/>
+  <text x="112" y="171" text-anchor="middle" fill="#4ade80" font-size="9">1x (steady)</text>
+  <rect x="174" y="157" width="120" height="20" fill="#eab308" opacity=".4"/>
+  <text x="234" y="171" text-anchor="middle" fill="#facc15" font-size="9">2x (slow burn)</text>
+  <rect x="296" y="157" width="120" height="20" fill="#f97316" opacity=".4"/>
+  <text x="356" y="171" text-anchor="middle" fill="#fb923c" font-size="9">6x (warning)</text>
+  <rect x="418" y="157" width="110" height="20" rx="10" fill="#dc2626" opacity=".5"/>
+  <text x="473" y="171" text-anchor="middle" fill="#f87171" font-size="9" font-weight="700">14.4x (🔥)</text>
+
+  <!-- Alert thresholds -->
+  <rect x="50" y="200" width="230" height="45" rx="8" fill="#451a03" stroke="#f97316" stroke-width="1.5"/>
+  <text x="165" y="220" text-anchor="middle" fill="#fdba74" font-size="11" font-weight="700">⚠️ Slow Burn Alert</text>
+  <text x="165" y="235" text-anchor="middle" fill="#fb923c" font-size="9">2x burn · 24h window</text>
+
+  <rect x="300" y="200" width="230" height="45" rx="8" fill="#450a0a" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="415" y="220" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="700">🚨 Fast Burn Alert</text>
+  <text x="415" y="235" text-anchor="middle" fill="#f87171" font-size="9">14.4x · 1h → budget gone in 2 days!</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Error Budget — 99.9% SLO মানে মাত্র 43.2 min/month downtime allowed। Burn rate বলে কত দ্রুত budget শেষ হচ্ছে।</div>
+
 <div class="code-block">
 <strong>SRE শব্দকোষ (SLI → SLO → SLA):</strong>
 
@@ -204,6 +243,62 @@ doors.push({
   story: `<p class="scene-setting">বিমানবন্দরে নিরাপত্তা। পুরোনো পদ্ধতি — প্রতিটা গাড়িতে একজন নিরাপত্তা রক্ষক বসানো। সব গাড়ি চেক হয় — কিন্তু কত লোক লাগে! হাজার গাড়ি = হাজার রক্ষক। নতুন পদ্ধতি — রাস্তার পিচেই scanner বসানো। গাড়ি যেমন চলবে তেমনই চলবে — scanner automatic ভাবে সব চেক করবে। কোনো অতিরিক্ত লোক লাগবে না। এটাই sidecar বনাম eBPF।</p>
 <p class="scene-setting en">Airport security. Old approach — put a security guard in every car. Every car checked — but how many guards! A thousand cars = a thousand guards. New approach — embed scanners in the road itself. Cars drive normally — the scanner checks everything automatically. No extra guards needed. This is sidecar vs eBPF.</p>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <!-- Sidecar (left) -->
+  <rect x="10" y="10" width="270" height="300" rx="12" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <text x="145" y="32" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="900">❌ Sidecar Mode (Old)</text>
+
+  <rect x="30" y="50" width="230" height="55" rx="8" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="145" y="72" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="600">Pod 1</text>
+  <rect x="45" y="78" width="90" height="20" rx="4" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="90" y="92" text-anchor="middle" fill="#bae6fd" font-size="8">App</text>
+  <rect x="145" y="78" width="100" height="20" rx="4" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+  <text x="195" y="92" text-anchor="middle" fill="#fca5a5" font-size="8">Envoy 70MB</text>
+
+  <rect x="30" y="115" width="230" height="55" rx="8" fill="#581c87" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="145" y="137" text-anchor="middle" fill="#d8b4fe" font-size="11" font-weight="600">Pod 2</text>
+  <rect x="45" y="143" width="90" height="20" rx="4" fill="#3b0764" stroke="#a855f7" stroke-width="1"/>
+  <text x="90" y="157" text-anchor="middle" fill="#e9d5ff" font-size="8">App</text>
+  <rect x="145" y="143" width="100" height="20" rx="4" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+  <text x="195" y="157" text-anchor="middle" fill="#fca5a5" font-size="8">Envoy 70MB</text>
+
+  <rect x="30" y="180" width="230" height="55" rx="8" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+  <text x="145" y="202" text-anchor="middle" fill="#fdba74" font-size="11" font-weight="600">Pod 3</text>
+  <rect x="45" y="208" width="90" height="20" rx="4" fill="#431407" stroke="#f97316" stroke-width="1"/>
+  <text x="90" y="222" text-anchor="middle" fill="#fed7aa" font-size="8">App</text>
+  <rect x="145" y="208" width="100" height="20" rx="4" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+  <text x="195" y="222" text-anchor="middle" fill="#fca5a5" font-size="8">Envoy 70MB</text>
+
+  <text x="145" y="265" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">3 Pods × 70MB = 210MB wasted</text>
+  <text x="145" y="282" text-anchor="middle" fill="#fca5a5" font-size="9">1000 Pods = 70 GB waste!</text>
+  <text x="145" y="298" text-anchor="middle" fill="#94a3b8" font-size="9">iptables interception · 1-3ms/hop</text>
+
+  <!-- eBPF (right) -->
+  <rect x="300" y="10" width="270" height="300" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="435" y="32" text-anchor="middle" fill="#86efac" font-size="12" font-weight="900">✅ eBPF / Cilium (New)</text>
+
+  <rect x="320" y="50" width="230" height="45" rx="8" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="435" y="72" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="600">Pod 1 (App only — no sidecar!)</text>
+
+  <rect x="320" y="105" width="230" height="45" rx="8" fill="#581c87" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="435" y="127" text-anchor="middle" fill="#d8b4fe" font-size="11" font-weight="600">Pod 2 (App only)</text>
+
+  <rect x="320" y="160" width="230" height="45" rx="8" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+  <text x="435" y="182" text-anchor="middle" fill="#fdba74" font-size="11" font-weight="600">Pod 3 (App only)</text>
+
+  <!-- Kernel layer -->
+  <rect x="320" y="220" width="230" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="435" y="242" text-anchor="middle" fill="#86efac" font-size="11" font-weight="700">🧠 Linux Kernel</text>
+  <text x="435" y="258" text-anchor="middle" fill="#4ade80" font-size="9">eBPF programs (routing, mTLS, LB)</text>
+  <text x="435" y="270" text-anchor="middle" fill="#4ade80" font-size="8">O(1) lookup · socket-level · zero proxy</text>
+
+  <text x="435" y="290" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">3 Pods × 0MB = 0MB overhead</text>
+  <text x="435" y="305" text-anchor="middle" fill="#86efac" font-size="9">1000 Pods = ~50MB/node (not per pod!)</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Sidecar বনাম eBPF — বাঁদিকে প্রতিটা Pod-এ ৭০MB proxy (1000 Pod = ৭০GB waste)। ডানদিকে eBPF kernel-এ directly — শূন্য overhead।</div>
+
 <div class="code-block">
 <strong>Service Mesh Evolution:</strong>
 
@@ -286,6 +381,69 @@ doors.push({
   },
   story: `<p class="scene-setting">তুমি একটা নতুন রেস্তোরাঁ খুলছ। দুটো পথ। প্রথম — Blue-Green: পুরোনো রেস্তোরাঁর পাশে একটা identical নতুন শাখা তৈরি করো। সব প্রস্তুত হলে — পুরোনোটার দরজা বন্ধ, নতুনটার দরজা খোলা। ১০০% গ্রাহক instant switch। সমস্যা হলে instant revert। দ্বিতীয় — Canary: soft opening। মাত্র ৫% গ্রাহককে নতুন শাখায় পাঠাও। মেট্রিক দেখো — খাবার ঠিক আছে? সন্তুষ্ট? তাহলে ২৫%, তারপর ৫০%, শেষে ১০০%।</p>
 <p class="scene-setting en">You're opening a new restaurant. Two paths. First — Blue-Green: build an identical new branch next to the old one. When ready — close old doors, open new. 100% of customers switch instantly. Problem? Instant revert. Second — Canary: soft opening. Send only 5% of customers to the new branch. Watch metrics — food good? Satisfied? Then 25%, then 50%, finally 100%.</p>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <!-- Blue-Green -->
+  <rect x="10" y="10" width="275" height="280" rx="12" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
+  <text x="147" y="32" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="900">🔵 Blue-Green Deployment</text>
+
+  <rect x="25" y="50" width="115" height="60" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="82" y="72" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">🔵 Blue (old)</text>
+  <text x="82" y="88" text-anchor="middle" fill="#60a5fa" font-size="9">v1.0 running</text>
+  <text x="82" y="100" text-anchor="middle" fill="#60a5fa" font-size="9">100% traffic</text>
+
+  <rect x="155" y="50" width="115" height="60" rx="8" fill="#065f46" stroke="#10b981" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="212" y="72" text-anchor="middle" fill="#6ee7b7" font-size="11" font-weight="700">🟢 Green (new)</text>
+  <text x="212" y="88" text-anchor="middle" fill="#34d399" font-size="9">v2.0 ready</text>
+  <text x="212" y="100" text-anchor="middle" fill="#34d399" font-size="9">0% traffic</text>
+
+  <!-- Switch arrow -->
+  <line x1="140" y1="130" x2="155" y2="130" stroke="#eab308" stroke-width="3" marker-end="url(#arrS)"/>
+  <text x="147" y="125" text-anchor="middle" fill="#facc15" font-size="9" font-weight="700">SWITCH</text>
+  <defs><marker id="arrS" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#eab308"/></marker></defs>
+
+  <rect x="25" y="145" width="115" height="50" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1" opacity=".3"/>
+  <text x="82" y="170" text-anchor="middle" fill="#60a5fa" font-size="10">🔵 Blue (old)</text>
+  <text x="82" y="183" text-anchor="middle" fill="#60a5fa" font-size="8">0% traffic</text>
+
+  <rect x="155" y="145" width="115" height="50" rx="8" fill="#065f46" stroke="#10b981" stroke-width="2"/>
+  <text x="212" y="170" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="700">🟢 Green (new)</text>
+  <text x="212" y="183" text-anchor="middle" fill="#34d399" font-size="8">100% traffic ✅</text>
+
+  <text x="147" y="225" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="600">Instant switch · Instant rollback</text>
+  <text x="147" y="245" text-anchor="middle" fill="#60a5fa" font-size="9">Best for: LedgerPilot (financial)</text>
+  <text x="147" y="265" text-anchor="middle" fill="#64748b" font-size="9">Cost: 2x resources temporarily</text>
+
+  <!-- Canary -->
+  <rect x="295" y="10" width="275" height="280" rx="12" fill="#0f172a" stroke="#eab308" stroke-width="2"/>
+  <text x="432" y="32" text-anchor="middle" fill="#fde047" font-size="12" font-weight="900">🐤 Canary Deployment</text>
+
+  <rect x="310" y="50" width="245" height="30" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <rect x="312" y="52" width="232" height="26" rx="4" fill="#1e3a5f"/>
+  <text x="432" y="70" text-anchor="middle" fill="#93c5fd" font-size="10">v1.0: 100% traffic</text>
+
+  <rect x="310" y="95" width="245" height="30" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <rect x="312" y="97" width="220" height="26" rx="4" fill="#1e3a5f"/>
+  <rect x="534" y="97" width="12" height="26" rx="2" fill="#eab308"/>
+  <text x="432" y="115" text-anchor="middle" fill="#93c5fd" font-size="9">v1.0: 95% · v2.0: 5% 🐤</text>
+
+  <rect x="310" y="140" width="245" height="30" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <rect x="312" y="142" width="160" height="26" rx="4" fill="#1e3a5f"/>
+  <rect x="474" y="142" width="72" height="26" rx="4" fill="#eab308"/>
+  <text x="432" y="160" text-anchor="middle" fill="#93c5fd" font-size="9">v1.0: 75% · v2.0: 25%</text>
+
+  <rect x="310" y="185" width="245" height="30" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <rect x="312" y="187" width="100" height="26" rx="4" fill="#1e3a5f"/>
+  <rect x="414" y="187" width="132" height="26" rx="4" fill="#eab308"/>
+  <text x="432" y="205" text-anchor="middle" fill="#93c5fd" font-size="9">v1.0: 50% · v2.0: 50%</text>
+
+  <text x="432" y="240" text-anchor="middle" fill="#fde047" font-size="10" font-weight="600">Gradual shift · Metric-driven</text>
+  <text x="432" y="258" text-anchor="middle" fill="#eab308" font-size="9">Best for: Ipractus (health/comms)</text>
+  <text x="432" y="275" text-anchor="middle" fill="#64748b" font-size="9">Auto-rollback on metric breach</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Blue-Green (instant switch) বনাম Canary (gradual 5%→25%→50%→100%)। LedgerPilot-এ Blue-Green, Ipractus-এ Canary।</div>
 
 <div class="code-block">
 <strong>Deployment Strategy Comparison:</strong>

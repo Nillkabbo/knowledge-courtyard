@@ -21,6 +21,61 @@ doors.push({
   story: `<p class="scene-setting">তুমি একটা বিশাল অফিস বিল্ডিংয়ে দাঁড়িয়ে আছ। শত শত কর্মী — কিন্তু প্রত্যেকে নিজের কিউবিকলে। দেয়ালগুলো শব্দপ্রতিরোধক — কেউ অন্যের কথা শুনতে পায় না। প্রতিটা কিউবিকলে একজন কর্মী নিজেকে একা ভাবে — সারা বিল্ডিং তার মনে হয়। কিন্তু বাইরে থেকে তুমি দেখো — শত শত কিউবিকল, সব এক ছাদের নিচে। এটাই container। একটা kernel, শত শত isolated process।</p>
 <p class="scene-setting en">You stand in a vast office building. Hundreds of workers — but each in their own cubicle. The walls are soundproof — no one hears another. Each worker believes they're alone — the entire building feels like theirs. But from outside, you see hundreds of cubicles under one roof. This is a container. One kernel, hundreds of isolated processes.</p>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <linearGradient id="hostBox" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e293b"/><stop offset="1" stop-color="#0f172a"/></linearGradient>
+    <linearGradient id="kernelBox" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#312e81"/><stop offset="1" stop-color="#1e1b4b"/></linearGradient>
+  </defs>
+  <!-- Host Machine -->
+  <rect x="10" y="10" width="560" height="320" rx="12" fill="url(#hostBox)" stroke="#334155" stroke-width="2"/>
+  <text x="290" y="35" text-anchor="middle" fill="#94a3b8" font-size="14" font-weight="700" font-family="sans-serif">🖥️ Host Machine (Linux Server)</text>
+
+  <!-- Containers -->
+  <rect x="30" y="55" width="150" height="170" rx="10" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2" opacity=".6"/>
+  <text x="105" y="78" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="700">📦 Container A</text>
+  <rect x="45" y="92" width="120" height="26" rx="5" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="105" y="109" text-anchor="middle" fill="#bae6fd" font-size="10">PID NS · NET NS</text>
+  <rect x="45" y="125" width="120" height="26" rx="5" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="105" y="142" text-anchor="middle" fill="#bae6fd" font-size="10">cgroup: 0.5 CPU</text>
+  <rect x="45" y="158" width="120" height="26" rx="5" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="105" y="175" text-anchor="middle" fill="#bae6fd" font-size="10">OverlayFS layers</text>
+  <text x="105" y="205" text-anchor="middle" fill="#38bdf8" font-size="9" font-style="italic">App: LedgerPilot</text>
+
+  <rect x="215" y="55" width="150" height="170" rx="10" fill="#581c87" stroke="#a855f7" stroke-width="2" opacity=".6"/>
+  <text x="290" y="78" text-anchor="middle" fill="#d8b4fe" font-size="12" font-weight="700">📦 Container B</text>
+  <rect x="230" y="92" width="120" height="26" rx="5" fill="#3b0764" stroke="#a855f7" stroke-width="1"/>
+  <text x="290" y="109" text-anchor="middle" fill="#e9d5ff" font-size="10">PID NS · NET NS</text>
+  <rect x="230" y="125" width="120" height="26" rx="5" fill="#3b0764" stroke="#a855f7" stroke-width="1"/>
+  <text x="290" y="142" text-anchor="middle" fill="#e9d5ff" font-size="10">cgroup: 1GB RAM</text>
+  <rect x="230" y="158" width="120" height="26" rx="5" fill="#3b0764" stroke="#a855f7" stroke-width="1"/>
+  <text x="290" y="175" text-anchor="middle" fill="#e9d5ff" font-size="10">OverlayFS layers</text>
+  <text x="290" y="205" text-anchor="middle" fill="#c084fc" font-size="9" font-style="italic">App: Ipractus</text>
+
+  <rect x="400" y="55" width="150" height="170" rx="10" fill="#7c2d12" stroke="#f97316" stroke-width="2" opacity=".6"/>
+  <text x="475" y="78" text-anchor="middle" fill="#fdba74" font-size="12" font-weight="700">📦 Container C</text>
+  <rect x="415" y="92" width="120" height="26" rx="5" fill="#431407" stroke="#f97316" stroke-width="1"/>
+  <text x="475" y="109" text-anchor="middle" fill="#fed7aa" font-size="10">PID NS · NET NS</text>
+  <rect x="415" y="125" width="120" height="26" rx="5" fill="#431407" stroke="#f97316" stroke-width="1"/>
+  <text x="475" y="142" text-anchor="middle" fill="#fed7aa" font-size="10">cgroup: 0.25 CPU</text>
+  <rect x="415" y="158" width="120" height="26" rx="5" fill="#431407" stroke="#f97316" stroke-width="1"/>
+  <text x="475" y="175" text-anchor="middle" fill="#fed7aa" font-size="10">OverlayFS layers</text>
+  <text x="475" y="205" text-anchor="middle" fill="#fb923c" font-size="9" font-style="italic">App: Nginx Proxy</text>
+
+  <!-- Shared Kernel -->
+  <rect x="30" y="250" width="520" height="60" rx="10" fill="url(#kernelBox)" stroke="#818cf8" stroke-width="2"/>
+  <text x="290" y="278" text-anchor="middle" fill="#c7d2fe" font-size="15" font-weight="900" font-family="sans-serif">🧠 Shared Linux Kernel (host kernel)</text>
+  <text x="290" y="297" text-anchor="middle" fill="#a5b4fc" font-size="10">namespaces + cgroups + OverlayFS = Container Isolation</text>
+
+  <!-- Connection arrows -->
+  <line x1="105" y1="225" x2="105" y2="250" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="290" y1="225" x2="290" y2="250" stroke="#475569" stroke-width="1.5"/>
+  <line x1="475" y1="225" x2="475" y2="250" stroke="#475569" stroke-width="1.5"/>
+  <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Container = isolated process on shared kernel. namespaces (কী দেখে) + cgroups (কতটুকু ব্যবহার করে) + OverlayFS (ফাইল স্তর)।</div>
+
 <div class="dialogue"><strong>ডকার ইঞ্জিনিয়ার:</strong> ২০১৩ সাল। Solomon Hykes একটা demo দিলেন — "একটা process চালাও, সে নিজেকে সম্পূর্ণ একা ভাববে। নিজের PID, নিজের network, নিজের filesystem। কিন্তু আসলে সে শুধু একটা Linux process — kernel features দিয়ে restricted।" এর নাম দিলাম Docker। আর container-এর ভেতরের প্রক্রিয়া? সে জানেই না যে সে restricted।</div>
 <div class="dialogue en"><strong>Docker Engineer:</strong> 2013. Solomon Hykes demoed — "run a process, it thinks it's completely alone. Its own PID, its own network, its own filesystem. But really it's just a Linux process — restricted via kernel features." We called it Docker. And the process inside the container? It doesn't even know it's restricted.</div>
 
@@ -111,6 +166,56 @@ doors.push({
 
 <div class="dialogue"><strong>কে-এস ইঞ্জিনিয়ার:</strong> Google ২০১৪ সালে Kubernetes উন্মুক্ত করে — তাদের ভেতরের Borg system থেকে অনুপ্রাণিত। মূল ধারণা সহজ — তুমি বলো কী চাও (desired state), K8s নিশ্চিত করে সেটা হয়। তুমি বলো "৩টা replica।" K8s দেখে ২টা চলছে — ১টা বেশি চালু করে। একটা মরে গেলে — আরেকটা তৈরি করে। node মরে গেলে — pods অন্যত্র সরিয়ে নেয়। এটাই reconciliation loop — চিরকাল চলে।</div>
 <div class="dialogue en"><strong>K8s Engineer:</strong> Google open-sourced Kubernetes in 2014 — inspired by their internal Borg system. The core idea is simple — you say what you want (desired state), K8s makes it happen. You say "3 replicas." K8s sees 2 running — starts 1 more. One dies — creates another. Node dies — moves pods elsewhere. This is the reconciliation loop — runs forever.</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <linearGradient id="cpBox" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e1b4b"/><stop offset="1" stop-color="#0c0a3e"/></linearGradient>
+    <linearGradient id="nodeBox" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#052e16"/><stop offset="1" stop-color="#022c1c"/></linearGradient>
+    <marker id="arr2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker>
+  </defs>
+  <rect x="60" y="10" width="460" height="160" rx="12" fill="url(#cpBox)" stroke="#818cf8" stroke-width="2"/>
+  <text x="290" y="33" text-anchor="middle" fill="#c7d2fe" font-size="13" font-weight="900">☸️ Control Plane (Board of Directors)</text>
+  <rect x="80" y="50" width="120" height="50" rx="8" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
+  <text x="140" y="72" text-anchor="middle" fill="#e0e7ff" font-size="12" font-weight="700">etcd</text>
+  <text x="140" y="88" text-anchor="middle" fill="#a5b4fc" font-size="9">Source of Truth (Raft)</text>
+  <rect x="230" y="50" width="120" height="50" rx="8" fill="#1e40af" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="290" y="72" text-anchor="middle" fill="#dbeafe" font-size="12" font-weight="700">API Server</text>
+  <text x="290" y="88" text-anchor="middle" fill="#93c5fd" font-size="9">Front Door · Gatekeeper</text>
+  <rect x="80" y="110" width="100" height="45" rx="8" fill="#3730a3" stroke="#a78bfa" stroke-width="1"/>
+  <text x="130" y="130" text-anchor="middle" fill="#ddd6fe" font-size="11" font-weight="600">Scheduler</text>
+  <text x="130" y="144" text-anchor="middle" fill="#c4b5fd" font-size="8">"pod→node?"</text>
+  <rect x="200" y="110" width="120" height="45" rx="8" fill="#3730a3" stroke="#a78bfa" stroke-width="1"/>
+  <text x="260" y="130" text-anchor="middle" fill="#ddd6fe" font-size="11" font-weight="600">Controller Mgr</text>
+  <text x="260" y="144" text-anchor="middle" fill="#c4b5fd" font-size="8">🔄 Reconciliation</text>
+  <rect x="340" y="110" width="110" height="45" rx="8" fill="#3730a3" stroke="#a78bfa" stroke-width="1"/>
+  <text x="395" y="130" text-anchor="middle" fill="#ddd6fe" font-size="11" font-weight="600">Cloud Ctlr</text>
+  <text x="395" y="144" text-anchor="middle" fill="#c4b5fd" font-size="8">DO/AWS/GCP</text>
+  <line x1="200" y1="75" x2="230" y2="75" stroke="#60a5fa" stroke-width="2"/>
+  <text x="215" y="68" text-anchor="middle" fill="#60a5fa" font-size="8">only path</text>
+  <rect x="30" y="200" width="160" height="160" rx="12" fill="url(#nodeBox)" stroke="#22c55e" stroke-width="2"/>
+  <text x="110" y="222" text-anchor="middle" fill="#86efac" font-size="12" font-weight="700">🖥️ Worker Node 1</text>
+  <rect x="45" y="235" width="130" height="28" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="110" y="253" text-anchor="middle" fill="#bbf7d0" font-size="10">Kubelet (agent)</text>
+  <rect x="45" y="270" width="130" height="28" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="110" y="288" text-anchor="middle" fill="#bbf7d0" font-size="10">kube-proxy</text>
+  <rect x="45" y="305" width="130" height="40" rx="5" fill="#14532d" stroke="#4ade80" stroke-width="1"/>
+  <text x="110" y="322" text-anchor="middle" fill="#86efac" font-size="10" font-weight="600">Pod A · Pod B</text>
+  <rect x="210" y="200" width="160" height="160" rx="12" fill="url(#nodeBox)" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="222" text-anchor="middle" fill="#86efac" font-size="12" font-weight="700">🖥️ Worker Node 2</text>
+  <rect x="225" y="235" width="130" height="28" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="290" y="253" text-anchor="middle" fill="#bbf7d0" font-size="10">Kubelet (agent)</text>
+  <rect x="225" y="270" width="130" height="28" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="290" y="288" text-anchor="middle" fill="#bbf7d0" font-size="10">kube-proxy</text>
+  <rect x="225" y="305" width="130" height="40" rx="5" fill="#14532d" stroke="#4ade80" stroke-width="1"/>
+  <text x="290" y="322" text-anchor="middle" fill="#86efac" font-size="10" font-weight="600">Pod C · Pod D</text>
+  <line x1="290" y1="155" x2="290" y2="195" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
+  <text x="310" y="178" fill="#94a3b8" font-size="9">"desired=3"</text>
+  <line x1="140" y1="155" x2="140" y2="195" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
+  <text x="290" y="375" text-anchor="middle" fill="#64748b" font-size="9" font-style="italic">Control Plane = desired state · Worker Nodes = actual state · Reconciliation = forever</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: K8s Architecture — Control Plane (etcd/API/Scheduler/Controllers) → Worker Nodes (Kubelet/kube-proxy/Pods)। শুধু API Server etcd কে ছোঁয়।</div>
 
 <div class="code-block">
 <strong>K8s Control Plane Components:</strong>
@@ -283,6 +388,50 @@ doors.push({
 <div class="dialogue"><strong>হ্যাশিকর্প ইঞ্জিনিয়ার:</strong> ২০১৪ সালে Terraform আবিষ্কার হয়েছিল। মূল ধারণা — infrastructure কে কোড দিয়ে বর্ণনা করো। তুমি বলো "আমি একটা DO droplet চাই, 2GB RAM।" Terraform দেখে তার state — এরকম আছে কি না। না থাকলে তৈরি করে। থাকলে কিছু করে না। এটাই declarative model — WHAT বলো, HOW নয়।</div>
 <div class="dialogue en"><strong>HashiCorp Engineer:</strong> Terraform was created in 2014. The core idea — describe infrastructure as code. You say "I want a DO droplet, 2GB RAM." Terraform checks its state — does this exist? If not, creates it. If yes, does nothing. This is the declarative model — you say WHAT, not HOW.</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs><marker id="arr3" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+  <!-- Terraform Code -->
+  <rect x="20" y="20" width="150" height="80" rx="10" fill="#1e293b" stroke="#7c3aed" stroke-width="2"/>
+  <text x="95" y="45" text-anchor="middle" fill="#c4b5fd" font-size="12" font-weight="700">📋 Terraform Code</text>
+  <text x="95" y="62" text-anchor="middle" fill="#a78bfa" font-size="9">"3 droplets"</text>
+  <text x="95" y="76" text-anchor="middle" fill="#a78bfa" font-size="9">"1 load balancer"</text>
+  <text x="95" y="90" text-anchor="middle" fill="#a78bfa" font-size="9">(declarative: WHAT)</text>
+
+  <!-- State File -->
+  <rect x="215" y="20" width="150" height="80" rx="10" fill="#7f1d1d" stroke="#ef4444" stroke-width="2"/>
+  <text x="290" y="45" text-anchor="middle" fill="#fca5a5" font-size="12" font-weight="700">🔑 State File</text>
+  <text x="290" y="62" text-anchor="middle" fill="#f87171" font-size="9">"2 droplets exist"</text>
+  <text x="290" y="76" text-anchor="middle" fill="#f87171" font-size="9">⚠️ plaintext secrets!</text>
+  <text x="290" y="90" text-anchor="middle" fill="#f87171" font-size="9">(inventory: WHAT EXISTS)</text>
+
+  <!-- Plan -->
+  <rect x="410" y="20" width="150" height="80" rx="10" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="485" y="45" text-anchor="middle" fill="#86efac" font-size="12" font-weight="700">✅ Plan</text>
+  <text x="485" y="62" text-anchor="middle" fill="#4ade80" font-size="9">"create 1 more"</text>
+  <text x="485" y="76" text-anchor="middle" fill="#4ade80" font-size="9">(diff: WHAT CHANGED)</text>
+
+  <!-- Arrows -->
+  <line x1="170" y1="60" x2="215" y2="60" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr3)"/>
+  <line x1="365" y1="60" x2="410" y2="60" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr3)"/>
+
+  <!-- Real World -->
+  <rect x="150" y="140" width="280" height="120" rx="12" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="290" y="165" text-anchor="middle" fill="#7dd3fc" font-size="14" font-weight="900">🌍 Real Cloud (DigitalOcean)</text>
+  <rect x="170" y="180" width="80" height="30" rx="5" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="210" y="200" text-anchor="middle" fill="#bae6fd" font-size="10">Droplet 1</text>
+  <rect x="260" y="180" width="80" height="30" rx="5" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="300" y="200" text-anchor="middle" fill="#bae6fd" font-size="10">Droplet 2</text>
+  <rect x="350" y="180" width="80" height="30" rx="5" fill="#064e3b" stroke="#22c55e" stroke-width="2" stroke-dasharray="3,2"/>
+  <text x="390" y="200" text-anchor="middle" fill="#4ade80" font-size="10">Droplet 3 ✨</text>
+  <text x="290" y="235" text-anchor="middle" fill="#38bdf8" font-size="9" font-style="italic">State maps code → real resources. Apply = execute plan.</text>
+
+  <line x1="290" y1="100" x2="290" y2="140" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr3)"/>
+  <text x="305" y="122" fill="#94a3b8" font-size="9">terraform apply</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Terraform = Code (WHAT) + State (WHAT EXISTS) → Plan (DIFF) → Apply (EXECUTE)। State ছাড়া Terraform জানে না কী আছে।</div>
+
 <div class="code-block">
 <strong>Terraform Workflow:</strong>
 <pre style="background:var(--bg);padding:.5rem;border-radius:.3rem">
@@ -387,6 +536,70 @@ doors.push({
 
 <div class="dialogue"><strong>অবজারভাবিলিটি ইঞ্জিনিয়ার:</strong> Monitoring আর observability এক নয়। Prometheus দিয়ে তুমি metric scrape করো — "checkout service-এ error rate ৫%!" কিন্তু কেন? কোথায়? তোমাকে Jaeger এ গিয়ে trace খুঁজতে হবে, Loki তে গিয়ে log খুঁজতে হবে — সব manual correlation। Observability এই তিনটাকে এক shared context দিয়ে যুক্ত করে। OpenTelemetry এই context propagate করে — W3C Trace Context header দিয়ে।</div>
 <div class="dialogue en"><strong>Observability engineer:</strong> Monitoring and observability aren't the same. With Prometheus you scrape metrics — "checkout service has 5% error rate!" But why? Where? You need to go to Jaeger for traces, Loki for logs — all manual correlation. Observability links these three with a shared context. OpenTelemetry propagates this context — via W3C Trace Context header.</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs><marker id="arr4" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+  <!-- User Request -->
+  <rect x="210" y="10" width="160" height="35" rx="8" fill="#1e40af" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="290" y="32" text-anchor="middle" fill="#dbeafe" font-size="12" font-weight="700">👤 User Request (trace-id: abc123)</text>
+
+  <!-- Service chain -->
+  <rect x="20" y="70" width="120" height="45" rx="8" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="80" y="90" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="600">Frontend</text>
+  <text x="80" y="105" text-anchor="middle" fill="#38bdf8" font-size="9">2s</text>
+
+  <rect x="170" y="70" width="120" height="45" rx="8" fill="#581c87" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="230" y="90" text-anchor="middle" fill="#d8b4fe" font-size="11" font-weight="600">Cart Service</text>
+  <text x="230" y="105" text-anchor="middle" fill="#c084fc" font-size="9">5s</text>
+
+  <rect x="320" y="70" width="120" height="45" rx="8" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+  <text x="380" y="90" text-anchor="middle" fill="#fdba74" font-size="11" font-weight="600">Payment Svc</text>
+  <text x="380" y="105" text-anchor="middle" fill="#fb923c" font-size="9">38s ⚠️</text>
+
+  <rect x="450" y="70" width="120" height="45" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="510" y="90" text-anchor="middle" fill="#86efac" font-size="11" font-weight="600">DB Query</text>
+  <text x="510" y="105" text-anchor="middle" fill="#4ade80" font-size="9">5s</text>
+
+  <line x1="140" y1="92" x2="170" y2="92" stroke="#475569" stroke-width="1"/>
+  <line x1="290" y1="92" x2="320" y2="92" stroke="#475569" stroke-width="1"/>
+  <line x1="440" y1="92" x2="450" y2="92" stroke="#475569" stroke-width="1"/>
+  <line x1="290" y1="45" x2="80" y2="70" stroke="#475569" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- Three Pillars -->
+  <rect x="30" y="150" width="160" height="130" rx="10" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="110" y="172" text-anchor="middle" fill="#86efac" font-size="13" font-weight="900">📊 Metrics</text>
+  <text x="110" y="192" text-anchor="middle" fill="#4ade80" font-size="10">"IF problem?"</text>
+  <text x="110" y="210" text-anchor="middle" fill="#bbf7d0" font-size="9">error rate: 5%</text>
+  <text x="110" y="225" text-anchor="middle" fill="#bbf7d0" font-size="9">p95 latency: 45s</text>
+  <text x="110" y="245" text-anchor="middle" fill="#86efac" font-size="9" font-style="italic">Prometheus</text>
+  <text x="110" y="262" text-anchor="middle" fill="#86efac" font-size="9" font-style="italic">🫀 Vital signs</text>
+
+  <rect x="210" y="150" width="160" height="130" rx="10" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+  <text x="290" y="172" text-anchor="middle" fill="#c7d2fe" font-size="13" font-weight="900">🔍 Traces</text>
+  <text x="290" y="192" text-anchor="middle" fill="#a5b4fc" font-size="10">"WHERE?"</text>
+  <text x="290" y="210" text-anchor="middle" fill="#a5b4fc" font-size="9">Payment Svc: 38s</text>
+  <text x="290" y="225" text-anchor="middle" fill="#a5b4fc" font-size="9">trace-id links all</text>
+  <text x="290" y="245" text-anchor="middle" fill="#c7d2fe" font-size="9" font-style="italic">Jaeger / OTel</text>
+  <text x="290" y="262" text-anchor="middle" fill="#c7d2fe" font-size="9" font-style="italic">🏥 ID bracelet</text>
+
+  <rect x="390" y="150" width="160" height="130" rx="10" fill="#7c2d12" stroke="#f97316" stroke-width="2"/>
+  <text x="470" y="172" text-anchor="middle" fill="#fdba74" font-size="13" font-weight="900">📝 Logs</text>
+  <text x="470" y="192" text-anchor="middle" fill="#fb923c" font-size="10">"WHY?"</text>
+  <text x="470" y="210" text-anchor="middle" fill="#fed7aa" font-size="9">"DB connection</text>
+  <text x="470" y="225" text-anchor="middle" fill="#fed7aa" font-size="9">timeout at line 42"</text>
+  <text x="470" y="245" text-anchor="middle" fill="#fdba74" font-size="9" font-style="italic">Loki / ELK</text>
+  <text x="470" y="262" text-anchor="middle" fill="#fdba74" font-size="9" font-style="italic">📋 Operation notes</text>
+
+  <!-- Shared context line -->
+  <line x1="110" y1="150" x2="110" y2="130" stroke="#22c55e" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="290" y1="150" x2="290" y2="130" stroke="#818cf8" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="470" y1="150" x2="470" y2="130" stroke="#f97316" stroke-width="1" stroke-dasharray="2,2"/>
+  <rect x="190" y="120" width="200" height="22" rx="5" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="290" y="135" text-anchor="middle" fill="#94a3b8" font-size="9">trace-id: abc123 links all 3 pillars</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Observability-র তিন স্তম্ভ — Metrics (IF), Traces (WHERE), Logs (WHY)। OpenTelemetry trace-id সব একসাথে যুক্ত করে।</div>
 
 <div class="code-block">
 <strong>দৃষ্টির তিন স্তম্ভ (Three Pillars of Observability):</strong>
