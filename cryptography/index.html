@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>তামার দুর্গ — The Copper Fortress</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="particles"></div>
+<div class="container">
+  <div class="header">
+    <div class="header-arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <h1 class="header-title">তামার দুর্গ</h1>
+    <div class="header-sub">The Copper Fortress — Cryptography & Network Security</div>
+    <div class="header-quote">
+      প্রতিটা বার্তা একটা দুর্গ — এটাকে রক্ষা করতে হবে ক্রিপ্টোগ্রাফির তামার দেয়াল দিয়ে। কিন্তু দুর্গ শুধু দেয়াল নয় — এটা বুদ্ধি, কৌশল, এবং বিশ্বাস।
+      <span class="en">Every message is a fortress — protected by the copper walls of cryptography. But a fortress is more than walls — it's strategy, protocol, and trust.</span>
+    </div>
+  </div>
+
+  <div id="statsBar" class="stats-bar">
+    <div class="stat"><div class="stat-num" id="xpDisplay">0</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num" id="rankDisplay">🔍</div><div class="stat-label" id="rankName">সন্ধানী</div></div>
+    <div class="stat"><div class="stat-num" id="doorsDisplay">0/10</div><div class="stat-label">দরজা</div></div>
+  </div>
+
+  <div id="game"></div>
+
+  <div class="footer">
+    <button class="reset-btn" onclick="confirmReset()">↺ আবার শুরু</button>
+    <div class="footer-note">
+      বুক ৪৬ · জ্ঞানের প্রাঙ্গণ<br>
+      <em>Book 46 · The Learning Courtyard</em>
+    </div>
+  </div>
+</div>
+<script src="engine.js"></script>
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script>
+  renderGame();
+</script>
+</body>
+</html>
