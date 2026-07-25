@@ -150,6 +150,70 @@ doors.push({
   story: `<p class="scene-setting">একসময় transform হতো app server-এ — Python/Java দিয়ে। ETL: Extract → Transform (app) → Load। কিন্তু এখন warehouse-এ অনেক compute আছে। তাই ELT: Extract → Load (raw) → Transform (warehouse-এ)। dbt এই transformation পরিচালনা করে — version-controlled SQL, Jinja templating, testing। React component-এর মতো।</p>
 <p class="scene-setting en">ELT replaced ETL. Load raw data first, transform inside the warehouse. dbt brings software engineering discipline to SQL: modularity, version control, testing, documentation.</p>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔧 ETL vs ELT: Where Does Transformation Happen?</text>
+
+  <!-- ETL (old) -->
+  <rect x="10" y="45" width="275" height="130" rx="12" fill="#0f172a" stroke="#f97316" stroke-width="2"/>
+  <text x="147" y="68" text-anchor="middle" fill="#fdba74" font-size="12" font-weight="700">❌ ETL (Old Way)</text>
+  <rect x="25" y="85" width="70" height="35" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+  <text x="60" y="107" text-anchor="middle" fill="#93c5fd" font-size="9">Extract</text>
+  <line x1="95" y1="102" x2="110" y2="102" stroke="#64748b" stroke-width="1" marker-end="url(#arrE)"/>
+  <defs><marker id="arrE" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+  <rect x="110" y="85" width="80" height="35" rx="6" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+  <text x="150" y="100" text-anchor="middle" fill="#fdba74" font-size="9" font-weight="700">Transform</text>
+  <text x="150" y="112" text-anchor="middle" fill="#fb923c" font-size="7">app server</text>
+  <line x1="190" y1="102" x2="205" y2="102" stroke="#64748b" stroke-width="1" marker-end="url(#arrE)"/>
+  <rect x="205" y="85" width="65" height="35" rx="6" fill="#1e40af" stroke="#60a5fa" stroke-width="1"/>
+  <text x="237" y="107" text-anchor="middle" fill="#93c5fd" font-size="9">Load</text>
+  <text x="147" y="140" text-anchor="middle" fill="#f87171" font-size="9">⚠️ Python/Java does transform</text>
+  <text x="147" y="155" text-anchor="middle" fill="#f87171" font-size="9">⚠️ Data leaves warehouse</text>
+
+  <!-- ELT (new) -->
+  <rect x="295" y="45" width="275" height="130" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="432" y="68" text-anchor="middle" fill="#86efac" font-size="12" font-weight="700">✅ ELT (Modern Way)</text>
+  <rect x="310" y="85" width="70" height="35" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+  <text x="345" y="107" text-anchor="middle" fill="#93c5fd" font-size="9">Extract</text>
+  <line x1="380" y1="102" x2="395" y2="102" stroke="#64748b" stroke-width="1" marker-end="url(#arrE)"/>
+  <rect x="395" y="85" width="65" height="35" rx="6" fill="#1e40af" stroke="#60a5fa" stroke-width="1"/>
+  <text x="427" y="107" text-anchor="middle" fill="#93c5fd" font-size="9">Load</text>
+  <line x1="460" y1="102" x2="475" y2="102" stroke="#64748b" stroke-width="1" marker-end="url(#arrE)"/>
+  <rect x="475" y="85" width="80" height="35" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="515" y="100" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Transform</text>
+  <text x="515" y="112" text-anchor="middle" fill="#4ade80" font-size="7">in warehouse!</text>
+  <text x="432" y="140" text-anchor="middle" fill="#4ade80" font-size="9">✅ Warehouse does transform</text>
+  <text x="432" y="155" text-anchor="middle" fill="#4ade80" font-size="9">✅ dbt: SQL + Git + tests</text>
+
+  <!-- dbt workflow -->
+  <text x="290" y="205" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700">🏗️ dbt = React Components for SQL</text>
+  <rect x="30" y="220" width="120" height="45" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="90" y="240" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="700">stg_customers</text>
+  <text x="90" y="255" text-anchor="middle" fill="#fcd34d" font-size="7">SELECT * FROM raw</text>
+
+  <rect x="170" y="220" width="120" height="45" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="230" y="240" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="700">stg_orders</text>
+  <text x="230" y="255" text-anchor="middle" fill="#fcd34d" font-size="7">SELECT * FROM raw</text>
+
+  <rect x="230" y="280" width="120" height="45" rx="8" fill="#312e81" stroke="#818cf8" stroke-width="2"/>
+  <text x="290" y="300" text-anchor="middle" fill="#c7d2fe" font-size="9" font-weight="700">fct_sales</text>
+  <text x="290" y="315" text-anchor="middle" fill="#a5b4fc" font-size="7">JOIN + aggregate</text>
+
+  <line x1="90" y1="265" x2="250" y2="285" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="230" y1="265" x2="280" y2="285" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="290" y="275" text-anchor="middle" fill="#64748b" font-size="7" font-style="italic">dbt auto-detects dependency graph</text>
+
+  <rect x="370" y="220" width="180" height="105" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="460" y="240" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">dbt Powers</text>
+  <text x="460" y="258" text-anchor="middle" fill="#86efac" font-size="8">✅ Version control (Git)</text>
+  <text x="460" y="272" text-anchor="middle" fill="#86efac" font-size="8">✅ Testing (not_null, unique)</text>
+  <text x="460" y="286" text-anchor="middle" fill="#86efac" font-size="8">✅ Documentation auto-gen</text>
+  <text x="460" y="300" text-anchor="middle" fill="#86efac" font-size="8">✅ Jinja templating</text>
+  <text x="460" y="314" text-anchor="middle" fill="#86efac" font-size="8">✅ Dependency DAG</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: ETL = transform app server-এ (ধীর)। ELT = transform warehouse-এ (দ্রুত)। dbt = modular SQL + Git + testing।</div>
+
 <div class="dialogue"><strong>ডিবিটি ইঞ্জিনিয়ার:</strong> dbt = data build tool। তুমি SQL <code>SELECT</code> statement লেখো — Jinja template দিয়ে। dbt স্বয়ংক্রিয়ভাবে dependency graph বুঝে নেয়, কোন model আগে run করতে হবে সেটা ঠিক করে। Version control (Git), testing (not_null, unique), documentation — সব আছে। এটা SQL-এর জন্য React component architecture এর মতো।</div>`,
   recall: [
     { q: "ETL vs ELT — পার্থক্য কী?", a: "ETL = Extract → Transform (app server) → Load। ELT = Extract → Load (raw) → Transform (warehouse-এ)। Modern warehouse-এ compute বেশি তাই ELT সস্তা ও দ্রুত।" },
