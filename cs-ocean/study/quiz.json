@@ -1,265 +1,395 @@
 {
-  "title": "Academia Quiz",
+  "title": "OS Quiz",
   "questions": [
     {
-      "question": "What is the primary purpose of academic tenure as defined in the provided source material?",
+      "question": "Which of the following best describes the primary purpose of an operating system (OS)?",
       "answerOptions": [
         {
-          "text": "To guarantee that a professor can never be fired regardless of their conduct or financial situation.",
-          "isCorrect": false,
-          "rationale": "Even tenured staff can be dismissed for just cause, financial exigency, or program discontinuation."
-        },
-        {
-          "text": "To provide a semi-permanent position that protects faculty from dismissal based on their personal beliefs.",
+          "text": "It acts as the layer of software that manages a computer's hardware resources for its users and applications.",
           "isCorrect": true,
-          "rationale": "Tenure is specifically designed to defend academic freedom and protect scholars from being fired for expressing unpopular views."
+          "rationale": "The OS serves as an intermediary and resource allocator to ensure efficient and safe use of the hardware by various programs."
         },
         {
-          "text": "To ensure that all university professors receive higher salaries than those in the private sector.",
+          "text": "It is a specialized hardware component that executes binary application code directly.",
           "isCorrect": false,
-          "rationale": "Tenure is often viewed as a trade-off for lower pay compared to private industry, offering job security instead of high financial remuneration."
+          "rationale": "Hardware executes code, but the OS is system software that manages how that hardware is used rather than being hardware itself."
         },
         {
-          "text": "To mandate that all faculty members must participate in university marketing and industry competition.",
+          "text": "It is a set of application programs designed to perform specific user tasks like word processing.",
           "isCorrect": false,
-          "rationale": "Marketing and industry competition were specific management goals introduced in Denmark, not the core global definition of tenure."
+          "rationale": "Applications perform specific tasks for users, whereas the OS provides the environment and services for those applications to run."
+        },
+        {
+          "text": "It is a library of code used exclusively for calculating processor time and cost allocation.",
+          "isCorrect": false,
+          "rationale": "While some OS versions include accounting software, this is only a minor feature compared to resource management and hardware abstraction."
         }
       ],
-      "hint": "Consider the relationship between job security and the freedom to pursue unorthodox research."
+      "hint": "Think about how software sits between the physical machine and the user's programs."
     },
     {
-      "question": "According to the history of academic tenure in Germany, what occurred under the Third Reich?",
+      "question": "When an operating system allocates resources to ensure no single program monopolizes the system, how is the Central Processing Unit (CPU) typically shared?",
       "answerOptions": [
         {
-          "text": "The tenure system was abolished entirely and replaced with temporary yearly contracts for all staff.",
+          "text": "By space partitioning",
           "isCorrect": false,
-          "rationale": "While curtailed, the system was used to purge existing professors and replace them with party members rather than being abolished."
+          "rationale": "Space partitioning is typically used for memory allocation, not for the processor's execution time."
         },
         {
-          "text": "Academic freedom was severely curtailed, leading to the purge of approximately 1,500 professors.",
+          "text": "By time-sharing",
           "isCorrect": true,
-          "rationale": "The Nazi regime integrated racial theories into curriculums and removed faculty who did not align with their ideology."
+          "rationale": "The OS schedules tasks by giving each application a 'slice' of the CPU's processing time to enable multitasking."
         },
         {
-          "text": "Germany adopted the American model of tenure to protect professors teaching Keynesian economics.",
+          "text": "By physical duplication",
           "isCorrect": false,
-          "rationale": "Keynesian economics was actually labeled as heresy by the University of Illinois in the late 1940s, not during the Third Reich."
+          "rationale": "Sharing a single resource involves scheduling its use, rather than duplicating the hardware for every process."
         },
         {
-          "text": "Universal education was expanded to promote tenure-track positions for diverse ethnic groups.",
+          "text": "By read-only access",
           "isCorrect": false,
-          "rationale": "Adolf Hitler referred to universal education as a 'poison' and sought to integrate Nazi racial theories instead."
+          "rationale": "CPU sharing involves execution permissions rather than simple read access to data."
         }
       ],
-      "hint": "Focus on how the regime used the education system to integrate specific ideologies."
+      "hint": "Consider the difference between dividing a physical container and dividing a schedule."
     },
     {
-      "question": "In the context of a PhD journey, which milestone typically marks the transition to becoming an official 'PhD Candidate'?",
+      "question": "What is the distinguishing factor of embedded operating systems compared to general-purpose operating systems?",
       "answerOptions": [
         {
-          "text": "Completion of the initial coursework phase.",
+          "text": "They always require a minimum of $100 \\text{ MB}$ of storage.",
           "isCorrect": false,
-          "rationale": "Coursework provides the knowledge base but does not automatically grant candidate status."
+          "rationale": "Embedded systems are often extremely small, with some running in less than $10 \\text{ KB}$."
         },
         {
-          "text": "Successful completion of the Qualifying Exam.",
+          "text": "They do not load user-installed software.",
           "isCorrect": true,
-          "rationale": "Passing this written and oral examination proves the student is ready to conduct independent research, thus earning them the title of 'Candidate'."
+          "rationale": "Embedded systems are designed for specific tasks and do not allow the same flexibility for user-installed apps as a PC or smartphone."
         },
         {
-          "text": "The formal defense of the final 200-page dissertation.",
+          "text": "They are exclusively used for internet-connected appliances.",
           "isCorrect": false,
-          "rationale": "The defense is the final step to earning the 'Doctor' title, which follows the candidacy phase."
+          "rationale": "Embedded systems can be used in both networked 'Internet of Things' objects and devices not connected to a network."
         },
         {
-          "text": "Receiving a first-year stipend from a Research Assistantship.",
+          "text": "They require more complex protection designs between applications.",
           "isCorrect": false,
-          "rationale": "Stipends are a form of financial support and are not an academic milestone for candidacy."
+          "rationale": "Because they don't run arbitrary user software, they can often have simpler designs with less application-to-application protection."
         }
       ],
-      "hint": "This milestone usually involves proving you have read and understood a large volume of existing research in your area."
+      "hint": "Think about the level of flexibility a user has to install new programs on a household appliance."
     },
     {
-      "question": "Which funding model is described as the 'Merchant's Offer' where the student works on a professor's grant?",
+      "question": "In a hard real-time operating system, which of the following is an absolute requirement?",
       "answerOptions": [
         {
-          "text": "Teaching Assistantship (TA)",
-          "isCorrect": false,
-          "rationale": "A TA involves teaching undergraduates, which may be separate from the professor's specific research grant."
-        },
-        {
-          "text": "Research Assistantship (RA)",
+          "text": "Guaranteed processing of events by a specific moment in time",
           "isCorrect": true,
-          "rationale": "In an RA position, the student is paid to perform research that aligns with the professor's funded projects."
+          "rationale": "Hard real-time systems require exact timing where missing a deadline is considered a total system failure."
         },
         {
-          "text": "Fellowship",
+          "text": "The ability to occasionally miss an event for better audio quality",
           "isCorrect": false,
-          "rationale": "Fellowships generally allow for 100% focus on research without specific work obligations to a professor's grant."
+          "rationale": "Accepting occasional missed events characterizes soft real-time systems, such as multimedia or smartphones."
         },
         {
-          "text": "Self-Funding",
+          "text": "A high-performance graphical user interface",
           "isCorrect": false,
-          "rationale": "Self-funding involves the student paying for their own tuition and living costs without a work-exchange model."
+          "rationale": "Timing accuracy is the priority for hard real-time systems, and many do not use a GUI at all."
+        },
+        {
+          "text": "Isolation between application and kernel libraries",
+          "isCorrect": false,
+          "rationale": "To achieve exact timing, hard real-time systems are often just libraries without protection domains."
         }
       ],
-      "hint": "Think about the role where the work you are paid for is directly related to a specific research project."
+      "hint": "Focus on the strictness of the 'real-time' deadline."
     },
     {
-      "question": "How does the French education system typically rank professional doctorates in health sciences (e.g., MD) compared to other disciplines?",
+      "question": "What is a primary benefit of a library operating system (libOS) when constructing a unikernel?",
       "answerOptions": [
         {
-          "text": "They are ranked as higher than a PhD in humanities due to the length of clinical training.",
+          "text": "It provides a multi-user environment with complex security domains.",
           "isCorrect": false,
-          "rationale": "PhD degrees are generally ranked higher in terms of original research requirements."
+          "rationale": "LibOSes are typically single-address space and single-application, removing the need for multi-user isolation."
         },
         {
-          "text": "They are considered equivalent to a Master's degree.",
+          "text": "It eliminates the overhead of context switches between user and kernel modes.",
           "isCorrect": true,
-          "rationale": "In France, medical diplomas are ranked as equivalent to a Master's to distinguish them from research-based doctorates."
+          "rationale": "Because the application and OS services are bound together in one space, services are accessed via simple library calls."
         },
         {
-          "text": "They are ranked lower than a standard Bachelor's degree due to vocational focus.",
+          "text": "It increases the attack surface by including every possible OS service.",
           "isCorrect": false,
-          "rationale": "Health degrees are postgraduate qualifications and are certainly ranked higher than undergraduate degrees."
+          "rationale": "Unikernels improve security by extracting and binding only the absolute necessary pieces of code."
         },
         {
-          "text": "They are categorized as 'Grandes Écoles' diplomas which carry no academic weight.",
+          "text": "It requires the use of multiple virtual machines to run one application.",
           "isCorrect": false,
-          "rationale": "Grandes Écoles are prestigious institutions, but health diplomas are their own category within the system."
+          "rationale": "A unikernel is a single machine image designed to run a single application directly on a hypervisor or cloud environment."
         }
       ],
-      "hint": "Consider the difference between professional training and original research requirements."
+      "hint": "Consider the performance impact of moving back and forth between a 'user zone' and a 'kernel zone'."
     },
     {
-      "question": "In PhD admissions, what is the 'Bridge Year' strategy used for?",
+      "question": "The IBM System/360 was historically significant because its operating system, OS/360, was the first popular one to support which feature?",
       "answerOptions": [
         {
-          "text": "To skip the dissertation phase and move directly into industry research labs.",
+          "text": "Touchscreen navigation",
           "isCorrect": false,
-          "rationale": "The dissertation is a mandatory requirement for completing a PhD and cannot be skipped by a bridge year."
+          "rationale": "Touchscreen technology emerged much later than the 1960s mainframe era."
         },
         {
-          "text": "To improve a low or mid-tier profile by gaining research experience before applying.",
+          "text": "Multiprogramming",
           "isCorrect": true,
-          "rationale": "A bridge year allows candidates to volunteer as RAs or publish papers to become more competitive for top-tier programs."
+          "rationale": "OS/360 allowed a second job to use the CPU while another job was waiting for input/output operations."
         },
         {
-          "text": "To allow tenured professors to transition from one university to another.",
+          "text": "Plugboard programming",
           "isCorrect": false,
-          "rationale": "This strategy is for applicants seeking entry into a PhD program, not for established faculty."
+          "rationale": "Plugboards were used in the 1940s and 1950s, whereas System/360 used advanced software logic."
         },
         {
-          "text": "To fulfill the coursework requirement during the first year of a Master's program.",
+          "text": "A graphical desktop environment",
           "isCorrect": false,
-          "rationale": "A bridge year is typically a period of self-improvement taken before or during the application cycle, not a standard coursework year."
+          "rationale": "OS/360 relied on operator consoles and batch processing, not modern GUIs."
         }
       ],
-      "hint": "Think about a way to build a 'potential researcher' image if your past grades are not perfect."
+      "hint": "This feature allowed the computer to stay busy even when one task was waiting on a slow device."
     },
     {
-      "question": "What common misconception about the 'Statement of Purpose' (SOP) does the source material highlight?",
+      "question": "Most modern operating systems operate in two modes to improve reliability. What happens when the hardware is in 'user mode'?",
       "answerOptions": [
         {
-          "text": "That it should be a detailed biography of one's life and childhood hobbies.",
+          "text": "The software has unrestricted power to modify any hardware resource.",
+          "isCorrect": false,
+          "rationale": "Unrestricted power is reserved for kernel mode; user mode is restricted to protect the system."
+        },
+        {
+          "text": "The hardware checks that the software only executes legal, non-privileged instructions.",
           "isCorrect": true,
-          "rationale": "The source states that an SOP is not a biography, but rather a specific research intention and proof of fit."
+          "rationale": "User mode restricts the set of instructions available to applications to prevent them from crashing the system or stealing data."
         },
         {
-          "text": "That it must include a specific research question and name potential advisors.",
+          "text": "The kernel is bypassed entirely to speed up processor execution.",
           "isCorrect": false,
-          "rationale": "This is actually a requirement for a *good* SOP, not a misconception to avoid."
+          "rationale": "The kernel still manages the process, and any privileged action requires a switch out of user mode."
         },
         {
-          "text": "That it should be written differently for every university applied to.",
+          "text": "The CPU stops checking for hardware interrupts.",
           "isCorrect": false,
-          "rationale": "The source explicitly recommends tailoring each SOP to the specific university and professor."
-        },
-        {
-          "text": "That it is the least important part of the application compared to GPA.",
-          "isCorrect": false,
-          "rationale": "The source identifies the SOP as one of the most critical elements for proving research potential."
+          "rationale": "Interrupts must be checked regardless of the mode to allow the OS to react to the environment."
         }
       ],
-      "hint": "Avoid focusing on your personal history and childhood interests in this document."
+      "hint": "Think about the safety measures taken to keep a standard app from breaking the whole computer."
     },
     {
-      "question": "According to the source material, why is 'Cold Emailing' professors considered a strategic necessity for PhD applicants?",
+      "question": "In Unix-like systems, what is the specific role of 'signals'?",
       "answerOptions": [
         {
-          "text": "It is the only way to obtain a waiver for the expensive application fees.",
+          "text": "They are used to provide the user with a graphical notification of error messages.",
           "isCorrect": false,
-          "rationale": "While fee waivers exist, they are usually handled by the admissions office, not via cold emails to professors."
+          "rationale": "Signals are low-level software interrupts between processes, not necessarily visual notifications."
         },
         {
-          "text": "Professors often make the final decision on admissions and funding for their labs.",
+          "text": "They inform processes of the occurrence of asynchronous events.",
           "isCorrect": true,
-          "rationale": "If a professor wants a specific student for their research group, they can influence the admissions committee to accept them."
+          "rationale": "Signals like SIGINT or SIGSEGV notify a process that something external or unexpected has happened."
         },
         {
-          "text": "It ensures that the applicant will receive a reply from every professor they contact.",
+          "text": "They are used exclusively to speed up internet connection packets.",
           "isCorrect": false,
-          "rationale": "The source notes that roughly 90% of cold emails receive no response at all."
+          "rationale": "Networking stacks handle packets; signals are for inter-process communication and error handling."
         },
         {
-          "text": "It is required by the DHS for international students to maintain 'Duration of Status'.",
+          "text": "They allow a process to directly bypass the kernel to access memory.",
           "isCorrect": false,
-          "rationale": "DHS regulations are about legal stay and visas, not about the professional networking step of cold emailing."
+          "rationale": "Accessing memory bypasses is a feature of DMA hardware, whereas signals are a software messaging mechanism."
         }
       ],
-      "hint": "Think about who holds the power to fund a student's research within a specific department."
+      "hint": "Consider how one program might tell another program to stop immediately."
     },
     {
-      "question": "What does the 'Duration of Status' (D/S) update (July 2026) mean for international PhD students in the US?",
+      "question": "Why is Direct Memory Access (DMA) used for devices like hard disk drives?",
       "answerOptions": [
         {
-          "text": "F-1 visas now automatically last for the full 7 years required for a PhD.",
+          "text": "To allow the CPU to process every single byte of data individually for higher precision.",
           "isCorrect": false,
-          "rationale": "The update actually introduced a fixed time period of admission, meaning the visa might not cover the full duration of the PhD."
+          "rationale": "Processing every byte individually is the slow 'interrupt-driven I/O' method that DMA seeks to avoid."
         },
         {
-          "text": "Students are admitted for a fixed period (typically 4 years) and must apply for extensions.",
+          "text": "To allow high-speed devices to transfer data to memory independently of the CPU.",
           "isCorrect": true,
-          "rationale": "Because PhDs take 5-7 years, students now face a requirement to apply for an 'Extension of Stay' during their program."
+          "rationale": "DMA saves CPU time by allowing the hardware to handle the transfer, only interrupting the CPU once the whole block is finished."
         },
         {
-          "text": "The grace period to leave the country after graduation has been increased to 90 days.",
+          "text": "To encrypt data before it reaches the computer's RAM.",
           "isCorrect": false,
-          "rationale": "The grace period was actually reduced from 60 days to 30 days under the new rule."
+          "rationale": "DMA is a transfer mechanism, not a security or encryption protocol."
         },
         {
-          "text": "International students are no longer allowed to serve as Teaching Assistants.",
+          "text": "To prevent the hard drive from ever needing a device driver.",
           "isCorrect": false,
-          "rationale": "There is no mention of the rule prohibiting international students from being TAs."
+          "rationale": "Device drivers are still required to tell the OS and the DMA controller how to interact with the specific hardware."
         }
       ],
-      "hint": "Consider how the change from 'indefinite stay' to a 'fixed period' affects a long-term degree."
+      "hint": "Think about how the CPU can stay productive instead of manually moving thousands of small data pieces."
     },
     {
-      "question": "In the UK, what was the significant change introduced by the Education Reform Act of 1988 regarding academic staff?",
+      "question": "What occurs when a program attempts to access a memory address that has been restricted or is out of range?",
       "answerOptions": [
         {
-          "text": "It introduced the 'Habilitation' requirement for all lecturers.",
+          "text": "The computer automatically adds more RAM to resolve the conflict.",
           "isCorrect": false,
-          "rationale": "Habilitation is a German requirement; the UK system does not use it."
+          "rationale": "RAM is a physical resource that cannot be created on the fly by software errors."
         },
         {
-          "text": "It removed the original form of academic tenure.",
+          "text": "A segmentation violation (Seg-V) triggers an interrupt, and the kernel usually terminates the program.",
           "isCorrect": true,
-          "rationale": "Since 1988, UK academics generally have permanent or temporary contracts rather than traditional tenure."
+          "rationale": "The OS uses memory protection to isolate programs; an illegal access is a sign of a bug or malware, leading to program termination."
         },
         {
-          "text": "It mandated that all professors be employed as state civil servants.",
+          "text": "The program is granted temporary supervisor mode to fix the error.",
           "isCorrect": false,
-          "rationale": "Civil servant status for professors is a characteristic of the German system, not the UK."
+          "rationale": "Granting supervisor mode to a failing program would be a major security risk."
         },
         {
-          "text": "It abolished the PhD requirement for senior management positions.",
+          "text": "The data at that address is automatically deleted to protect system integrity.",
           "isCorrect": false,
-          "rationale": "The Act focused on tenure and contracts, not on removing degree requirements for management."
+          "rationale": "The system protects the memory by blocking access, not by deleting data which might belong to a different process."
         }
       ],
-      "hint": "Think about the shift away from 'jobs for life' in the British university system."
+      "hint": "Recall the term used for a memory protection fault and the likely consequence for the offending program."
+    },
+    {
+      "question": "Virtual memory allows an operating system to 'trick' programs into perceiving more memory than is physically available. How is this achieved?",
+      "answerOptions": [
+        {
+          "text": "By duplicating physical RAM chips using high-voltage electrical pulses.",
+          "isCorrect": false,
+          "rationale": "Virtual memory is a software and architecture illusion, not a physical hardware modification."
+        },
+        {
+          "text": "By using memory scattered across the hard disk and RAM as if it were one continuous chunk.",
+          "isCorrect": true,
+          "rationale": "The OS manages mapping and 'swapping' to provide the illusion of a large, continuous address space."
+        },
+        {
+          "text": "By restricting applications to only use $10\\%$ of the computer's actual capacity.",
+          "isCorrect": false,
+          "rationale": "Virtual memory expands the usable memory space for a program rather than shrinking it."
+        },
+        {
+          "text": "By converting binary data into text files to save space on the disk.",
+          "isCorrect": false,
+          "rationale": "Data remains in binary; the mechanism involves mapping virtual addresses to physical storage locations."
+        }
+      ],
+      "hint": "Think about how a library might use an off-site warehouse to store books while only having a small on-site shelf."
+    },
+    {
+      "question": "In the context of concurrency, what is the primary difference between a process and a thread?",
+      "answerOptions": [
+        {
+          "text": "Threads are completely isolated from one another, whereas processes share a heap.",
+          "isCorrect": false,
+          "rationale": "Processes are isolated, while threads within the same process share code, data, and resources."
+        },
+        {
+          "text": "Threads share resources like code and data with others in the same process, while processes have their own independent resources.",
+          "isCorrect": true,
+          "rationale": "This sharing allows threads to have less overhead during creation and communication compared to full processes."
+        },
+        {
+          "text": "Threads can only run on single-CPU systems, while processes require multi-CPU systems.",
+          "isCorrect": false,
+          "rationale": "Both can run on any system, but threads are particularly useful for exploiting parallelism on multi-CPU systems."
+        },
+        {
+          "text": "Processes are managed by the kernel, while threads are managed directly by the hardware.",
+          "isCorrect": false,
+          "rationale": "The kernel is responsible for scheduling both processes and threads."
+        }
+      ],
+      "hint": "Consider which one is a 'subset' of the other and shares its parent's 'belongings'."
+    },
+    {
+      "question": "According to the 'CIA triad' of operating system security, which component ensures that unauthorized users cannot modify data?",
+      "answerOptions": [
+        {
+          "text": "Confidentiality",
+          "isCorrect": false,
+          "rationale": "Confidentiality ensures that unauthorized users cannot *access* or read data."
+        },
+        {
+          "text": "Integrity",
+          "isCorrect": true,
+          "rationale": "Integrity is the principle that information should only be modified by those authorized to do so."
+        },
+        {
+          "text": "Availability",
+          "isCorrect": false,
+          "rationale": "Availability ensures that the system remains accessible to authorized users when needed."
+        },
+        {
+          "text": "Isolation",
+          "isCorrect": false,
+          "rationale": "While isolation is a method to achieve security, it is not one of the three core goals of the CIA triad."
+        }
+      ],
+      "hint": "Think about the word that describes something being 'whole' or 'unaltered'."
+    },
+    {
+      "question": "What security principle suggests granting the minimum privilege essential for performing a specific task?",
+      "answerOptions": [
+        {
+          "text": "Principle of least authority",
+          "isCorrect": true,
+          "rationale": "By limiting privileges, the system reduces the potential damage if a process or user account is compromised."
+        },
+        {
+          "text": "Principle of maximum exclusion",
+          "isCorrect": false,
+          "rationale": "This is not a standard security term; the principle focuses on minimizing authority, not just excluding users."
+        },
+        {
+          "text": "Security by obscurity",
+          "isCorrect": false,
+          "rationale": "Security by obscurity relies on keeping secrets (like source code) hidden, which is often considered unreliable."
+        },
+        {
+          "text": "Formal verification",
+          "isCorrect": false,
+          "rationale": "Formal verification is a mathematical method for proving software correctness, not a principle for assigning permissions."
+        }
+      ],
+      "hint": "This principle is often applied to ensure a program doesn't have more power than it absolutely needs."
+    },
+    {
+      "question": "Which operating system is currently the most popular worldwide based on web traffic metrics, with approximately $38\\%$ market share?",
+      "answerOptions": [
+        {
+          "text": "Microsoft Windows",
+          "isCorrect": false,
+          "rationale": "Windows follows closely but is generally second to the leading mobile OS in total web traffic share."
+        },
+        {
+          "text": "Android",
+          "isCorrect": true,
+          "rationale": "Android's dominance on smartphones has made it the most popular OS for connecting to the web."
+        },
+        {
+          "text": "iOS",
+          "isCorrect": false,
+          "rationale": "iOS holds a significant portion (around $15\\%$), but is not the market leader."
+        },
+        {
+          "text": "Linux",
+          "isCorrect": false,
+          "rationale": "While dominant in servers, Linux accounts for only about $1\\%$ of general web traffic."
+        }
+      ],
+      "hint": "This OS is closely based on the Linux kernel and is very common on mobile phones."
     }
   ]
 }

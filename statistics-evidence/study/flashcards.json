@@ -1,377 +1,345 @@
 {
-  "title": "Distributed Flashcards",
+  "title": "Statistics Flashcards",
   "cards": [
     {
-      "front": "Who first proposed logical clocks and the 'happens-before' relation in 1978?",
-      "back": "Leslie Lamport"
+      "front": "In the context of evidence, which mode moves from a general rule to a specific instance (e.g., 'All ravens are black, therefore this raven is black')?",
+      "back": "Deductive evidence."
     },
     {
-      "front": "In distributed systems, why is physical clock time unreliable for event ordering?",
-      "back": "Each machine has its own clock, and even millisecond differences prevent perfect synchronization."
+      "front": "Which mode of evidence moves from specific observations to a general rule (e.g., '1000 ravens are black, therefore all ravens are likely black')?",
+      "back": "Inductive evidence."
     },
     {
-      "front": "The 'happens-before' relation ($A \\to B$) establishes that event $A$ is the _____ of event $B$.",
-      "back": "Cause"
+      "front": "What type of evidence seeks the 'best explanation' for a given result (e.g., 'The grass is wet, therefore it probably rained')?",
+      "back": "Abductive evidence."
     },
     {
-      "front": "According to the Lamport Clock algorithm, what must happen to a local counter during any local event?",
-      "back": "The local counter must be incremented by 1."
+      "front": "Who is credited with inventing frequency analysis in 850 CE to decipher cryptographic messages?",
+      "back": "Al-Kindi (Abu Yusuf Ya'qub ibn Ishaq al-Kindi)."
     },
     {
-      "front": "When sending a message in a Lamport Clock system, what must be included with the message?",
-      "back": "The current logical timestamp of the sender."
+      "front": "Al-Kindi's frequency analysis is considered the first systemic form of _____ evidence.",
+      "back": "Inductive"
     },
     {
-      "front": "What is the formula for updating a Lamport logical clock ($C$) upon receiving a message with timestamp $T_{msg}$?",
-      "back": "$C = \\max(C_{local}, T_{msg}) + 1$"
+      "front": "Who published the first book in statistical history, 'Natural and Political Observations Made upon the Bills of Mortality' (1662)?",
+      "back": "John Graunt."
     },
     {
-      "front": "If event $A \\to B$ (happens-before), what is the relationship between their Lamport timestamps ($T$)?",
-      "back": "$T(A) < T(B)$"
+      "front": "What was the primary data source for John Graunt's 1662 demographic study of London?",
+      "back": "The Bills of Mortality (weekly death records from parish churches)."
     },
     {
-      "front": "Leslie Lamport received the Turing Award in 2013 for his work on which subject?",
-      "back": "Distributed and concurrent systems."
+      "front": "Concept: Mean",
+      "back": "Definition: The average value calculated by dividing the sum of all values by the count of values ($\\bar{x} = \\frac{\\sum x}{n}$)."
     },
     {
-      "front": "Which typesetting system, widely used in academia, was created by Leslie Lamport?",
-      "back": "LaTeX"
+      "front": "Concept: Median",
+      "back": "Definition: The middle value in a dataset when the values are arranged in order."
     },
     {
-      "front": "What term describes the situation where two programs attempt to write to the same file simultaneously, resulting in corrupted data?",
-      "back": "Race condition"
+      "front": "Concept: Mode",
+      "back": "Definition: The value that appears most frequently in a dataset."
     },
     {
-      "front": "Who introduced the concept of the semaphore in 1965 to solve mutual exclusion problems?",
-      "back": "Edsger Dijkstra"
+      "front": "In statistics, the measure of how far data points spread out from the mean is called _____.",
+      "back": "Variance ($\\sigma^2$)"
     },
     {
-      "front": "In a semaphore context, what does an integer value of 1 typically indicate?",
-      "back": "The shared resource is currently free and available for use."
+      "front": "How is the 'Range' of a dataset calculated?",
+      "back": "By subtracting the minimum value from the maximum value."
     },
     {
-      "front": "What is the function of the 'P' (proberen/wait) operation in a semaphore?",
-      "back": "It decrements the semaphore value and forces the process to wait if the resource is busy."
+      "front": "What historical tool created by John Graunt serves as the foundation for modern insurance and public health policy?",
+      "back": "The life table."
     },
     {
-      "front": "In a semaphore system, what is the 'V' (verhogen/signal) operation used for?",
-      "back": "It increments the semaphore value and wakes up any waiting processes."
+      "front": "Who used the 'Normal Distribution' to successfully predict the location of the dwarf planet Ceres in 1801?",
+      "back": "Carl Friedrich Gauss."
     },
     {
-      "front": "What specific problem occurs when process $A$ waits for $B$, and $B$ waits for $A$ indefinitely?",
-      "back": "Deadlock"
+      "front": "The peak of a bell curve in a Normal Distribution represents the _____.",
+      "back": "Mean ($\\mu$)"
     },
     {
-      "front": "Edsger Dijkstra's 1968 paper 'Go To Statement Considered Harmful' provided the foundation for which programming paradigm?",
-      "back": "Structured programming"
+      "front": "According to the 68-95-99.7 rule, what percentage of data falls within $\\pm 1 \\sigma$ of the mean?",
+      "back": "68%."
     },
     {
-      "front": "What are the three properties addressed by the CAP theorem?",
-      "back": "Consistency, Availability, and Partition Tolerance."
+      "front": "According to the 68-95-99.7 rule, what percentage of data falls within $\\pm 2 \\sigma$ of the mean?",
+      "back": "95%."
     },
     {
-      "front": "Who first presented the CAP theorem at the PODC symposium in 2000?",
-      "back": "Eric Brewer"
+      "front": "According to the 68-95-99.7 rule, what percentage of data falls within $\\pm 3 \\sigma$ of the mean?",
+      "back": "99.7%."
     },
     {
-      "front": "According to the CAP theorem, why can a distributed system not achieve all three properties simultaneously during a network split?",
-      "back": "The system must choose between remaining available but inconsistent or being consistent but unavailable."
+      "front": "Formula: Z-score",
+      "back": "$z = \\frac{x - \\mu}{\\sigma}$"
     },
     {
-      "front": "In the CAP theorem, what does 'Consistency' mean?",
-      "back": "Every node in the system sees the same data at the same time."
+      "front": "What does a Z-score represent?",
+      "back": "The number of standard deviations a specific value is away from the mean."
     },
     {
-      "front": "In the CAP theorem, what does 'Availability' guarantee?",
-      "back": "Every request received by a non-failing node must result in a response."
+      "front": "Who popularized the p-value and the $0.05$ significance threshold in his 1925 book 'Statistical Methods for Research Workers'?",
+      "back": "Ronald Aylmer Fisher."
     },
     {
-      "front": "Which property of the CAP theorem describes the system's ability to continue operating despite network failures that split the nodes?",
-      "back": "Partition Tolerance"
+      "front": "What is the 'Null Hypothesis' ($H_0$) in a statistical test?",
+      "back": "The assumption that there is no effect or no difference between the groups being studied."
     },
     {
-      "front": "In a network partition scenario, a 'CP' system prioritizes _____ over availability.",
-      "back": "Consistency"
+      "front": "What is the technical definition of a 'p-value'?",
+      "back": "The probability of observing results as extreme as the ones obtained, assuming the null hypothesis is true."
     },
     {
-      "front": "Which database type is characterized as an 'AP' system under the CAP theorem?",
-      "back": "DynamoDB (or Cassandra/CouchDB)."
+      "front": "If a p-value is less than $0.05$, what is the typical statistical decision regarding the null hypothesis?",
+      "back": "Reject the null hypothesis."
     },
     {
-      "front": "Eric Brewer's 2012 update to the CAP theorem noted that Consistency and Availability are both possible under what condition?",
-      "back": "The absence of a network partition."
+      "front": "In Fisher's 'Lady Tasting Tea' experiment, what was the null hypothesis?",
+      "back": "The lady had no ability to distinguish whether milk or tea was poured first."
     },
     {
-      "front": "What is the primary objective of consensus algorithms like Paxos and Raft?",
-      "back": "To ensure that multiple nodes agree on a single value even if some nodes fail."
+      "front": "Who developed the framework for 'Confidence Intervals' in 1937?",
+      "back": "Jerzy Neyman."
     },
     {
-      "front": "What are the three roles defined in the original Paxos algorithm?",
-      "back": "Proposer, Acceptor, and Learner."
+      "front": "What is the specific Z-score multiplier used to calculate a 95% Confidence Interval?",
+      "back": "$1.96$."
     },
     {
-      "front": "In Paxos, what is the minimum number of nodes required to reach a decision called?",
-      "back": "A quorum (typically a majority)."
+      "front": "A 95% Confidence Interval means that if we repeat the sampling process 100 times, _____ intervals will contain the true population mean.",
+      "back": "95"
     },
     {
-      "front": "Why was the Raft consensus algorithm created in 2014 as an alternative to Paxos?",
-      "back": "Raft was designed to be easier to understand and implement than Paxos."
+      "front": "How does increasing the sample size ($n$) affect the width of a Confidence Interval?",
+      "back": "It makes the interval narrower (increases precision)."
     },
     {
-      "front": "What is the primary mechanism for decision-making in the Raft algorithm?",
-      "back": "A single elected Leader manages log replication across followers."
+      "front": "Which principle of experimental design involves assigning treatments by chance to eliminate selection bias?",
+      "back": "Randomization."
     },
     {
-      "front": "Which distributed key-value store, used by Kubernetes, utilizes the Raft algorithm?",
-      "back": "etcd"
+      "front": "Which principle of experimental design involves repeating an experiment on multiple subjects to increase reliability?",
+      "back": "Replication."
     },
     {
-      "front": "What consensus variant is used by Apache ZooKeeper?",
-      "back": "ZAB (ZooKeeper Atomic Broadcast)."
+      "front": "Which principle of experimental design involves grouping similar units together to isolate the effects of known variations?",
+      "back": "Blocking."
     },
     {
-      "front": "Who is the primary creator of the Two-Phase Commit (2PC) protocol and a pioneer in transaction processing?",
-      "back": "Jim Gray"
+      "front": "What is the core purpose of an 'A/B Test' in a digital environment?",
+      "back": "To compare a control version (A) with a treatment version (B) to see which performs better based on data."
     },
     {
-      "front": "What is the core purpose of the 'Prepare' phase in a Two-Phase Commit protocol?",
-      "back": "The coordinator asks all nodes if they are ready to commit the transaction."
+      "front": "In A/B testing, what does the acronym 'HiPPO' stand for?",
+      "back": "Highest Paid Person's Opinion."
     },
     {
-      "front": "If a single node responds with 'no' during the Prepare phase of 2PC, what action does the coordinator take?",
-      "back": "The coordinator sends an 'Abort' command to all nodes to cancel the transaction."
+      "front": "Who developed the 'do-operator' and the mathematical language for 'Causal Inference'?",
+      "back": "Judea Pearl."
     },
     {
-      "front": "What is the 'blocking problem' in the Two-Phase Commit protocol?",
-      "back": "If the coordinator crashes after the prepare phase, nodes may stay stuck in a 'prepared' state indefinitely."
+      "front": "In causal inference, what is a 'Confounder'?",
+      "back": "A third variable that influences both the cause and the effect, creating a spurious correlation."
     },
     {
-      "front": "How does the Saga pattern handle failures in a long-running distributed transaction?",
-      "back": "It executes compensating actions to undo the effects of previous successful steps."
+      "front": "According to the phrase 'Correlation is not Causation,' a relationship between two variables does not necessarily mean _____.",
+      "back": "One variable causes the other."
     },
     {
-      "front": "In MapReduce, what is the responsibility of the 'Map' function?",
-      "back": "It processes input data to generate intermediate key-value pairs."
+      "front": "What is the purpose of a 'Directed Acyclic Graph' (DAG) in statistics?",
+      "back": "To visually and mathematically represent causal relationships and identify potential confounders."
     },
     {
-      "front": "What occurs during the 'Shuffle' phase of MapReduce?",
-      "back": "Data is redistributed so that all values associated with the same key are moved to the same worker node."
+      "front": "What was the main claim of John Ioannidis's famous 2005 paper?",
+      "back": "Most published research findings are false due to the misuse of statistics."
     },
     {
-      "front": "In the MapReduce framework, what is the purpose of the 'Reduce' function?",
-      "back": "It aggregates or summarizes all values associated with a specific key."
+      "front": "What is 'p-hacking'?",
+      "back": "The practice of running many tests and only reporting the ones that reach statistical significance."
     },
     {
-      "front": "Which property of monoids ensures that MapReduce operations can be safely parallelized?",
-      "back": "Associativity"
+      "front": "What research practice involves declaring the hypothesis and analysis plan before collecting data to prevent bias?",
+      "back": "Preregistration."
     },
     {
-      "front": "Why is the calculation of a direct average not suitable for a basic MapReduce reduction operation?",
-      "back": "Averages are not associative, meaning the result depends on the grouping of data."
+      "front": "What is the 'Replication Crisis'?",
+      "back": "A phenomenon where the results of many scientific studies are difficult or impossible to reproduce in subsequent investigations."
     },
     {
-      "front": "What is the primary performance bottleneck in most MapReduce implementations?",
-      "back": "Communication cost (network bandwidth and data transmission between nodes)."
+      "front": "In statistics, what is 'Sampling'?",
+      "back": "The selection of a subset of individuals from a population to estimate characteristics of the whole."
     },
     {
-      "front": "Which Google technology replaced MapReduce for batch processing to allow for 'live' search result updates?",
-      "back": "Percolator (or FlumeJava/MillWheel)."
+      "front": "What is the difference between a 'Population' and a 'Sample'?",
+      "back": "The population is the entire group of interest, while the sample is the specific subset from which data is collected."
     },
     {
-      "front": "How does Amazon Dynamo achieve 'Eventual Consistency'?",
-      "back": "It allows writes to be accepted by any node and propagates the data across the cluster over time."
+      "front": "What is a 'Sampling Frame'?",
+      "back": "A list or map of all the elements in a population from which the sample is actually drawn."
     },
     {
-      "front": "In consistent hashing, what happens when a node is added or removed from the cluster?",
-      "back": "Only the immediate neighbors in the hash ring are affected, minimizing data remapping."
+      "front": "What defines 'Probability Sampling'?",
+      "back": "A method where every unit in the population has a known, non-zero chance of being selected."
     },
     {
-      "front": "What is the 'Byzantine Generals Problem'?",
-      "back": "A scenario where nodes must reach a consensus even if some nodes are traitors and send conflicting information."
+      "front": "Concept: Simple Random Sampling (SRS)",
+      "back": "Definition: A method where every possible subset of a given size has an equal probability of being selected."
     },
     {
-      "front": "In Byzantine Fault Tolerance (BFT), how many total nodes ($n$) are required to tolerate $f$ faulty or traitorous nodes?",
-      "back": "$n = 3f + 1$"
+      "front": "In _____ sampling, elements are selected at regular intervals (e.g., every 10th person) from an ordered list.",
+      "back": "Systematic"
     },
     {
-      "front": "How does Bitcoin's proof-of-work system solve the Byzantine Generals Problem?",
-      "back": "It makes it computationally expensive to be a traitor, requiring massive energy to manipulate the chain."
+      "front": "Which sampling method involves dividing the population into distinct categories (strata) and sampling from each?",
+      "back": "Stratified sampling."
     },
     {
-      "front": "What is the fundamental difference between horizontal and vertical database partitioning?",
-      "back": "Horizontal partitioning splits data by rows, while vertical partitioning splits data by columns."
+      "front": "What is 'Cluster Sampling'?",
+      "back": "A method where the population is divided into groups (clusters) and entire clusters are randomly selected for the sample."
     },
     {
-      "front": "In database terminology, what is a 'Shard'?",
-      "back": "A horizontal partition of data stored on a separate database server or node."
+      "front": "In 'Sampling with Replacement' (WR), can the same element be selected more than once?",
+      "back": "Yes."
     },
     {
-      "front": "What is 'skew' in the context of database partitioning?",
-      "back": "The uneven distribution of data or query load across partitions."
+      "front": "What is 'Convenience Sampling'?",
+      "back": "A non-probability method where the sample is drawn from the part of the population that is close at hand or easy to reach."
     },
     {
-      "front": "What term describes a partition that experiences an excessive amount of data or query load?",
-      "back": "Hot spot"
+      "front": "What is 'Quota Sampling'?",
+      "back": "A non-probability method where researchers select a specified number of subjects from different segments of the population."
     },
     {
-      "front": "How does hash-based partitioning help prevent hot spots?",
-      "back": "It uses a hash function to uniformly distribute keys across available partitions regardless of the original data distribution."
+      "front": "In 'Snowball Sampling,' how are additional subjects recruited?",
+      "back": "Existing study subjects recruit more subjects from among their acquaintances."
     },
     {
-      "front": "What is a major disadvantage of hash-based partitioning compared to range-based partitioning?",
-      "back": "It makes range queries inefficient because adjacent keys are scattered across different partitions."
+      "front": "What is 'Selection Bias'?",
+      "back": "A sampling error that occurs when the true selection probabilities differ from those assumed in calculating results."
     },
     {
-      "front": "What partitioning criterion assigns data based on continuous boundaries, such as ZIP codes 10000 to 19999?",
-      "back": "Range partitioning"
+      "front": "What is 'Non-response Bias'?",
+      "back": "A bias that occurs when individuals who choose not to participate in a survey differ systematically from those who do."
     },
     {
-      "front": "Which partitioning strategy assigns the $i^{th}$ tuple to partition ($i \\mod n$)?",
-      "back": "Round-robin partitioning"
+      "front": "What is the purpose of 'Survey Weights'?",
+      "back": "To adjust data so that it correctly represents the population, compensating for unequal selection probabilities or non-response."
     },
     {
-      "front": "In Cassandra, what is the purpose of using a 'compound primary key' in partitioning?",
-      "back": "It hashes the first part for distribution while keeping the rest sorted within the partition for efficient range scans."
+      "front": "What is a 'Type I Error' (implied by Fisher's framework)?",
+      "back": "Rejecting the null hypothesis when it is actually true (a 'false positive')."
     },
     {
-      "front": "What is 'vertical partitioning' often synonymous with in database design?",
-      "back": "Normalization"
+      "front": "What is a 'Type II Error' (implied by Neyman-Pearson)?",
+      "back": "Failing to reject the null hypothesis when it is actually false (a 'false negative')."
     },
     {
-      "front": "In a distributed transaction, what is 'Atomicity'?",
-      "back": "The 'all or nothing' property ensuring a transaction either completes fully across all nodes or not at all."
+      "front": "How does 'Probability Proportional to Size' (PPS) sampling function?",
+      "back": "Elements with a larger 'size' measure have a higher probability of being selected in the sample."
     },
     {
-      "front": "Why is a single-threaded implementation of MapReduce usually not faster than traditional sequential processing?",
-      "back": "The overhead of the framework only pays off when processing massive datasets in parallel across many processors."
+      "front": "Which sampling method uses human judgment to try and simulate randomness without a formal process?",
+      "back": "Haphazard sampling."
     },
     {
-      "front": "What historical database system first introduced partitioning in the 1980s?",
-      "back": "Teradata (or NonStop SQL)."
+      "front": "What is 'Panel Sampling'?",
+      "back": "Selecting a group of participants and interviewing them several times over a period of time (longitudinal study)."
     },
     {
-      "front": "In a leader-follower replication system, can a single node be a leader for one partition and a follower for another?",
-      "back": "Yes"
+      "front": "In statistics, what is a 'Census'?",
+      "back": "A study that attempts to collect data from every single member of the target population."
     },
     {
-      "front": "What is the 'input reader's' job in the MapReduce dataflow?",
-      "back": "It divides input data into splits (typically 64MB to 128MB) and converts them into key-value pairs."
+      "front": "What is the 'Margin of Error'?",
+      "back": "A statistic expressing the amount of random sampling error in a survey's results."
     },
     {
-      "front": "Which function in MapReduce is responsible for determining which reducer receives a specific key's data?",
-      "back": "The partition function."
+      "front": "How does 'Multistage Sampling' differ from simple Cluster Sampling?",
+      "back": "It involves taking random subsamples of selected clusters rather than surveying every unit in the cluster."
     },
     {
-      "front": "The 'open-closed principle' in MapReduce framework design means the _____ is a frozen spot, while Map and Reduce functions are hot spots.",
-      "back": "Large distributed sort"
+      "front": "In the Normal Distribution, the area under the curve represents the total _____ of all possible outcomes.",
+      "back": "Probability"
     },
     {
-      "front": "What mathematical structure requires an associative binary operation and a neutral element?",
-      "back": "Monoid"
+      "front": "What did the 1936 'Literary Digest' poll fail to account for, leading to an incorrect election prediction?",
+      "back": "Selection bias (the lists used were biased toward wealthier Republican voters)."
     },
     {
-      "front": "In MapReduce terminology, what is the 'Output Writer' responsible for?",
-      "back": "Writing the final results from the Reduce phase to stable storage, such as a distributed file system."
+      "front": "The _____ operator is used in Judea Pearl's calculus to represent active intervention in a system rather than passive observation.",
+      "back": "do"
     },
     {
-      "front": "Which scientist criticized MapReduce in 2008 as a 'major step backwards' for parallel databases?",
-      "back": "David DeWitt (or Michael Stonebraker)."
+      "front": "What is the primary drawback of 'Cluster Sampling' compared to 'Simple Random Sampling'?",
+      "back": "It generally increases the variability of sample estimates, requiring a larger sample size for the same accuracy."
     },
     {
-      "front": "What is 'List Partitioning'?",
-      "back": "Assigning data to a partition if the partitioning key matches a specific set of discrete values (e.g., a list of countries)."
+      "front": "Which measure of central tendency is most robust (least affected) by extreme outliers in a dataset?",
+      "back": "The median."
     },
     {
-      "front": "The ability of a system to increase its capacity linearly as nodes are added is called _____.",
-      "back": "Linear scaling"
+      "front": "In an 'EPS' (Equal Probability of Selection) design, every element has _____ chance of being selected.",
+      "back": "The same"
     },
     {
-      "front": "In MapReduce, what is the time complexity drawback of the Reduce phase?",
-      "back": "The sorting/grouping of keys within the phase has non-linear complexity."
+      "front": "What is 'Judgmental Selection' (or Purposive Sampling)?",
+      "back": "A non-probability method where participants are hand-picked by an expert based on the value of the information they can provide."
     },
     {
-      "front": "What is a 'catamorphism' in the theoretical context of MapReduce?",
-      "back": "A function that maps a list of input data to a single value within a monoid."
+      "front": "Which error type includes mistakes in data coding or misunderstood questions by respondents?",
+      "back": "Non-sampling error."
     },
     {
-      "front": "Which consensus protocol uses 'heartbeats' to detect the failure of a leader node?",
-      "back": "Raft"
+      "front": "According to Ioannidis, what is 'HARKing'?",
+      "back": "Hypothesizing After the Results are Known."
     },
     {
-      "front": "In the Saga pattern, what is the name for the action taken to undo a step that failed?",
-      "back": "Compensating action"
+      "front": "What is 'Over-coverage' in survey sampling?",
+      "back": "The inclusion of individuals or data points in the sample that are not actually part of the target population."
     },
     {
-      "front": "What is the 'Master Node's' role in a MapReduce failure scenario?",
-      "back": "It detects dead nodes by monitoring status updates and reschedules their assigned work to other nodes."
+      "front": "In a Normal Distribution, values far from the mean in the 'tails' of the bell curve are considered _____.",
+      "back": "Extremes (or rare)."
     },
     {
-      "front": "Which property must a Reduce function have for multiple instances of it to be run in parallel on the same key's data?",
-      "back": "Associativity"
+      "front": "What is 'Theoretical Sampling'?",
+      "back": "Selecting samples based on previous data results to develop a deeper understanding of a specific phenomenon or theory."
     },
     {
-      "front": "What is the name for the strategy of breaking a large database into smaller pieces to achieve horizontal scalability?",
-      "back": "Sharding"
+      "front": "Why is 'Randomization' considered the 'fair scale' (mizan) of experimental design?",
+      "back": "It ensures that unobserved variables are distributed evenly across groups, making the comparison fair."
     },
     {
-      "front": "In MongoDB, what is the specific term used for a partition?",
-      "back": "Shard"
+      "front": "The 'Standard Deviation' ($\\sigma$) is mathematically defined as the square root of the _____.",
+      "back": "Variance."
     },
     {
-      "front": "In HBase, what is the specific term used for a partition?",
-      "back": "Region"
+      "front": "In Kohavi's Bing ad headline experiment, what was the impact of a small change that managers initially ignored?",
+      "back": "A 12% revenue increase, worth over $100 million annually."
     },
     {
-      "front": "What term does Bigtable use to refer to a data partition?",
-      "back": "Tablet"
+      "front": "What is 'Voluntary Sampling'?",
+      "back": "A non-probability method where subjects choose to participate in a study on their own accord."
     },
     {
-      "front": "In Cassandra, what is the term used for a virtual node or partition?",
-      "back": "vnode"
+      "front": "Which sampling method is particularly useful for hidden populations that are difficult to enumerate?",
+      "back": "Snowball sampling."
     },
     {
-      "front": "What does Couchbase call its data partitions?",
-      "back": "vBucket"
+      "front": "In a Normal Distribution, $\\mu \\pm 1.96 \\sigma$ covers exactly _____% of the distribution.",
+      "back": "95"
     },
     {
-      "front": "In distributed database design, what is the main purpose of replication?",
-      "back": "To provide fault tolerance by storing copies of partitions on multiple nodes."
+      "front": "According to Neyman, a Confidence Interval is an estimate of a _____ rather than a single point.",
+      "back": "Range"
     },
     {
-      "front": "What is the 'combiner' function in a MapReduce optimization context?",
-      "back": "A local reduction performed at the mapper node to reduce the amount of data sent over the network."
-    },
-    {
-      "front": "Why does a calculation of a sum work perfectly as a MapReduce reduction?",
-      "back": "Addition is associative and has a neutral element (0), forming a monoid."
-    },
-    {
-      "front": "What happens to the performance of MapReduce if the 'split unit size' is set too small (e.g., $<1$MB)?",
-      "back": "The management overhead per split becomes too high, slowing down the system."
-    },
-    {
-      "front": "In the CAP theorem's 2012 revision, what is the 'usual' state of a distributed system?",
-      "back": "Operating with both Consistency and Availability because partitions are rare."
-    },
-    {
-      "front": "What is the 'Proposer's' job in the Paxos consensus algorithm?",
-      "back": "To suggest a value to the cluster for agreement."
-    },
-    {
-      "front": "What is 'Composite Partitioning'?",
-      "back": "Applying multiple partitioning schemes in sequence, such as range partitioning followed by hash partitioning."
-    },
-    {
-      "front": "In the 2PC protocol, which node manages the process and communicates with all participants?",
-      "back": "The Coordinator"
-    },
-    {
-      "front": "What is the primary trade-off when choosing a high number of reducers in MapReduce?",
-      "back": "Small partition sizes reduce sorting time but increase the overhead of managing many tasks."
-    },
-    {
-      "front": "In vertical partitioning, why might frequently used columns be separated from infrequently used ones?",
-      "back": "To improve cache performance and reduce the amount of data read from disk for common queries."
+      "front": "What was Al-Kindi's 'Secret' regarding claims and proof?",
+      "back": "Claims are finite, but proof is infinite; he who can show proof speaks the truth."
     }
   ]
 }

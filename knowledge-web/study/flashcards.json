@@ -1,345 +1,329 @@
 {
-  "title": "Prompting Flashcards",
+  "title": "JSON Flashcards",
   "cards": [
     {
-      "front": "What is the core definition of prompt engineering?",
-      "back": "The process of structuring natural language inputs to produce specified outputs from a generative artificial intelligence model."
+      "front": "What does the acronym JSON stand for?",
+      "back": "JavaScript Object Notation"
     },
     {
-      "front": "Term: Context Engineering",
-      "back": "A field of software engineering focusing on managing non-prompt contexts like system instructions, metadata, and API tools supplied to GenAI models."
+      "front": "Who originally specified the JSON format in the early 2000s?",
+      "back": "Douglas Crockford"
     },
     {
-      "front": "What defines a 'prompt' in the context of large language models?",
-      "back": "Natural language text that describes and prescribes a task for an artificial intelligence to perform."
+      "front": "Which data format serves as the basis for JSON's syntax?",
+      "back": "JavaScript"
     },
     {
-      "front": "Effective prompt engineering requires an understanding of how a model _____ language.",
-      "back": "interprets"
+      "front": "According to the 2017 international standard, what is the preferred pronunciation of JSON?",
+      "back": "Pronounced like the name 'Jason'."
     },
     {
-      "front": "Why has the specific job title of 'prompt engineer' lost traction in corporations since its $2023$ peak?",
-      "back": "AI models have improved at generating better prompts than humans and companies have integrated prompting into general employee training."
+      "front": "JSON is used to store and transmit data objects consisting of _____ and arrays.",
+      "back": "name–value pairs"
     },
     {
-      "front": "According to the Oxford English Dictionary, what is the primary goal of prompt engineering?",
-      "back": "To optimize an AI's output or achieve a desired outcome."
+      "front": "What is the current version of the JSON Internet Standard (STD 90)?",
+      "back": "RFC 8259"
     },
     {
-      "front": "A prompt for a text-to-text model may include context, instructions, conversation history, and a _____.",
-      "back": "query"
+      "front": "The ECMA and ISO/IEC standards for JSON describe only the allowed _____, excluding security or interoperability considerations.",
+      "back": "syntax"
     },
     {
-      "front": "What specific technique involves assigning a character for an AI to mimic to guide its responses?",
-      "back": "Role assignment"
+      "front": "Why did Douglas Crockford intentionally exclude comments from the JSON specification?",
+      "back": "To prevent people from using them to hold parsing directives, which would destroy interoperability."
     },
     {
-      "front": "What is 'vibe coding' in the context of software development?",
-      "back": "An AI-assisted method where a user prompts a model with a description of desired functionality and lets it generate or edit the code."
+      "front": "JSON exchange in an open ecosystem must be encoded in which format?",
+      "back": "UTF-8"
     },
     {
-      "front": "Context engineering aims to improve reliability, provenance, and _____ in production LLM systems.",
-      "back": "token efficiency"
+      "front": "Which Unicode characters allowed in JSON strings were originally problematic for JavaScript engines before 2019?",
+      "back": "$U+2028$ (Line Separator) and $U+2029$ (Paragraph Separator)."
     },
     {
-      "front": "What operational practice in context engineering ensures that changes to supplied context do not silently alter system behavior?",
-      "back": "Context regression tests"
+      "front": "True or False: The JSON format distinguishes between integers and floating-point numbers.",
+      "back": "False"
     },
     {
-      "front": "Research indicates that reordering examples in a prompt can shift model accuracy by more than $40\\%$ percent.",
-      "back": "True"
+      "front": "In JSON, what character is used to separate a key from its value within an object?",
+      "back": "The colon ($:$)."
     },
     {
-      "front": "The emergent property of large language models to temporarily learn from prompts without gradient updates is known as _____ learning.",
-      "back": "in-context"
+      "front": "Which character is used to delimit an array in JSON?",
+      "back": "Square brackets ($[ ]$)."
     },
     {
-      "front": "How does 'in-context learning' differ from 'fine-tuning'?",
-      "back": "In-context learning is temporary and occurs through prompts, whereas fine-tuning produces lasting changes to model parameters."
+      "front": "What are the six basic data types supported by JSON?",
+      "back": "Number, String, Boolean, Array, Object, and null."
     },
     {
-      "front": "Training a model to perform in-context learning is considered a form of _____.",
-      "back": "meta-learning"
+      "front": "How must strings be delimited in a standard JSON document?",
+      "back": "Double quotation marks."
     },
     {
-      "front": "How many accuracy points can format changes in few-shot settings shift LLM performance?",
-      "back": "Up to $76$ points."
+      "front": "JSON disallows _____, which is a comma placed after the last value in a data structure.",
+      "back": "trailing commas"
     },
     {
-      "front": "Linguistic features such as _____ syntax have been found to improve consistency and reduce uncertainty in knowledge retrieval.",
-      "back": "clausal"
+      "front": "What is the official MIME type for JSON text?",
+      "back": "application/json"
     },
     {
-      "front": "Term: FormatSpread",
-      "back": "An evaluative method that facilitates systematic analysis by evaluating a range of plausible prompt formats."
+      "front": "What is the standard filename extension for JSON files?",
+      "back": ".json"
     },
     {
-      "front": "What is the purpose of the 'PromptEval' method?",
-      "back": "To estimate performance distributions across diverse prompts to enable robust metrics like performance quantiles."
+      "front": "Why is it considered unsafe to use the JavaScript `eval()` function to parse JSON?",
+      "back": "It can execute arbitrary code contained within the text."
     },
     {
-      "front": "The inclusion of a few input/output examples within a prompt to guide a model is called _____ prompting.",
-      "back": "multi-shot"
+      "front": "Which function was added to ECMAScript 5 to safely parse JSON strings into objects?",
+      "back": "JSON.parse()"
     },
     {
-      "front": "Term: Chain-of-thought (CoT) prompting",
-      "back": "A technique that induces an LLM to solve a problem as a series of intermediate reasoning steps before providing a final answer."
+      "front": "In terms of metadata, how does XML differ primarily from JSON?",
+      "back": "XML separates data from metadata (via elements and attributes), while JSON does not have a metadata concept."
     },
     {
-      "front": "Which specific phrase can be appended to a prompt to enable zero-shot chain-of-thought reasoning?",
-      "back": "\"Let's think step-by-step\""
+      "front": "What is YAML version 1.2's relationship to JSON?",
+      "back": "It is a formal superset of JSON."
     },
     {
-      "front": "How does 'self-consistency' enhance chain-of-thought prompting results?",
-      "back": "It performs several rollouts and selects the most commonly reached conclusion from the results."
+      "front": "Which JSON derivative is designed specifically for representing geographical features?",
+      "back": "GeoJSON"
     },
     {
-      "front": "What is the core characteristic of 'tree-of-thought' prompting?",
-      "back": "Generating multiple lines of reasoning in parallel with the ability to backtrack or explore other paths."
+      "front": "What does the Model Context Protocol (MCP) aim to standardize?",
+      "back": "How AI systems (like LLMs) integrate and share data with external tools and sources."
     },
     {
-      "front": "Unlike large language models, early text-to-image models often struggle to understand _____ and sentence structure.",
-      "back": "negation"
+      "front": "Which company introduced the Model Context Protocol in November 2024?",
+      "back": "Anthropic"
     },
     {
-      "front": "In text-to-image prompting, where should the most heavily emphasized words typically be placed?",
-      "back": "Closer to the start of the prompt."
+      "front": "MCP addresses the 'NxM' integration problem, which occurs when developers must build custom _____ for every unique data source and AI tool.",
+      "back": "connectors"
     },
     {
-      "front": "Term: Textual inversion",
-      "back": "An optimization process that creates a new word embedding (pseudo-word) from example images to express specific content or style."
+      "front": "In the MCP architecture, what is the role of an 'MCP Host'?",
+      "back": "An AI agent that interacts with an LLM and requests services from servers."
     },
     {
-      "front": "The Meta AI model 'Segment Anything' can perform image segmentation using prompts like bounding boxes or _____.",
-      "back": "segmentation masks"
+      "front": "In the MCP architecture, what does an 'MCP Server' provide to the client?",
+      "back": "Specific tools (functions) or resources (data)."
     },
     {
-      "front": "Why is the brittle nature of prompts considered a limitation of prompt engineering?",
-      "back": "Minor changes in phrasing or punctuation can produce dramatically different outputs even if intent is identical."
+      "front": "What transport protocol is used for communication between an MCP client and an MCP server?",
+      "back": "JSON-RPC 2.0"
     },
     {
-      "front": "What technology enables LLMs to respond to queries using domain-specific or updated information from specified documents?",
-      "back": "Retrieval-augmented generation (RAG)"
+      "front": "Under which organization's governance was the Model Context Protocol donated in late 2025?",
+      "back": "The Agentic AI Foundation (AAIF) under the Linux Foundation."
     },
     {
-      "front": "How does RAG reduce the frequency of 'AI hallucinations'?",
-      "back": "By dynamically retrieving relevant text from databases or web sources to supplement generating responses."
+      "front": "In the context of MCP, what is the difference between a 'tool' and a 'resource'?",
+      "back": "A tool executes a function (like a calculator), while a resource provides static data (like a document)."
     },
     {
-      "front": "Term: GraphRAG",
-      "back": "An extension of RAG that uses a knowledge graph to connect disparate information and synthesize insights over large data collections."
+      "front": "Which major AI provider adopted MCP for its ChatGPT desktop app in March 2025?",
+      "back": "OpenAI"
     },
     {
-      "front": "In the 'automatic prompt engineer' algorithm, how is an instruction's 'score' computed?",
-      "back": "By calculating and adding the log-probabilities of the target LLM's outputs when prompted with that instruction."
+      "front": "What security vulnerability involves 'poisoned tools' in an MCP environment?",
+      "back": "Malicious tools that allow for data exfiltration through other connected tools."
     },
     {
-      "front": "The 'auto-CoT' technique involves selecting diverse questions using _____ analysis to generate demonstration datasets.",
-      "back": "cluster"
+      "front": "The MCP was release with SDKs for several languages, including Python, TypeScript, Java, and _____.",
+      "back": "C#"
     },
     {
-      "front": "Which framework optimizes instructions and few-shot demonstrations for multi-stage language model programs without needing module-level labels?",
-      "back": "MIPRO (Multi-prompt Instruction Proposal Optimizer)"
+      "front": "What is a server-side Web API?",
+      "back": "A request–response message system with publicly exposed endpoints on a web server."
     },
     {
-      "front": "How does GEPA (Genetic-Pareto) optimize compound AI systems?",
-      "back": "By combining language-model-based analysis of execution traces with a Pareto-based evolutionary search."
+      "front": "In a Web API, what is an 'endpoint'?",
+      "back": "A specific URI where resources can be accessed by third-party software."
     },
     {
-      "front": "Term: Soft prompting",
-      "back": "A technique where floating-point vectors are searched directly via gradient descent to maximize output likelihood."
+      "front": "Why must Web API endpoints remain static?",
+      "back": "To ensure that software interacting with them does not break when the resource location is changed."
     },
     {
-      "front": "What is the formal search objective in automated token sequence optimization?",
-      "back": "$\\arg \\max_{\\tilde{X}} \\sum_{i} \\log Pr[Y^{i}|{\\tilde{X}}\\ast X^{i}]$ where $\\tilde{X}$ is the token sequence."
+      "front": "How do RESTful Web APIs typically access resources?",
+      "back": "Using HTTP methods (GET, POST, etc.) and URL-encoded parameters."
     },
     {
-      "front": "The $1999$ 'Intelligent Filling Manager' is an early precedent of prompt-like workflows using a rule-based _____ system.",
-      "back": "expert"
+      "front": "Which protocol requires XML as the payload format and uses WSDL documents for definition?",
+      "back": "SOAP"
     },
     {
-      "front": "In $2018$, researchers proposed that all NLP tasks could be cast as _____ problems.",
-      "back": "question-answer"
+      "front": "What is a 'mashup' in web development?",
+      "back": "A web application that combines the use of multiple server-side Web APIs."
     },
     {
-      "front": "What is a 'prompt injection' attack?",
-      "back": "A cybersecurity exploit where adversaries craft inputs designed to cause unintended behavior by bypassing a model's safeguards."
+      "front": "A _____ is a Web API that takes a URI as input to trigger an event on another server, acting like a callback.",
+      "back": "Webhook"
     },
     {
-      "front": "Prompt injection takes advantage of a model's inability to distinguish between user inputs and _____.",
-      "back": "developer-defined prompts"
+      "front": "In an API URL, what character separates the endpoint from the query string?",
+      "back": "The question mark ($?$)."
     },
     {
-      "front": "What is the 'vibe coding' word of the year for $2025$ according to Collins Dictionary?",
-      "back": "vibe coding"
+      "front": "What character is used to separate multiple parameters within a URL query string?",
+      "back": "The ampersand ($\\&$)."
     },
     {
-      "front": "Cloze: In text-to-image models, word _____ affects output, with earlier words receiving more emphasis.",
-      "back": "order"
+      "front": "What is the purpose of an 'API key' in a web request?",
+      "back": "To identify the user and grant access to private or restricted endpoints."
     },
     {
-      "front": "What is the significance of the GSM8K benchmark in prompting research?",
-      "back": "It was used to show that Chain-of-Thought prompting allowed models like PaLM to achieve state-of-the-art mathematical reasoning results."
+      "front": "Which formatting style for JSON keys is mandatory for standard compatibility?",
+      "back": "Strings enclosed in double quotes."
     },
     {
-      "front": "Cloze: Prompting techniques are highly model-_____, meaning what works for one may degrade performance on another.",
-      "back": "specific"
+      "front": "True or False: JSON objects require name strings to be unique according to the ECMA standard.",
+      "back": "False (it does not require uniqueness, though it is recommended for interoperability)."
     },
     {
-      "front": "What is the purpose of 'observability' in context engineering?",
-      "back": "Logging exactly which context was supplied to the model to ensure system reliability."
+      "front": "How does JSON handle whitespace between syntactic elements?",
+      "back": "Whitespace is allowed and ignored."
     },
     {
-      "front": "Linguistic features like _____ significantly influence prompt effectiveness across various tasks.",
-      "back": "morphology"
+      "front": "Which specific characters are recognized as whitespace in JSON?",
+      "back": "Space, horizontal tab, line feed, and carriage return."
     },
     {
-      "front": "How does 'prefix-tuning' optimize model generation?",
-      "back": "By searching for continuous vectors via gradient descent as a lightweight alternative to fine-tuning."
+      "front": "What is the 'I-JSON' (Internet JSON) format?",
+      "back": "A restricted profile of JSON designed to avoid common interoperability issues."
     },
     {
-      "front": "The 'automatic prompt engineer' algorithm uses _____ search to iterate over potential prompts.",
-      "back": "beam"
+      "front": "JSON Schema is primarily used for the _____, documentation, and interaction control of JSON data.",
+      "back": "validation"
     },
     {
-      "front": "What is the primary role of 'exemplars' in few-shot prompting?",
-      "back": "To provide input/output examples that demonstrate the desired model output format and logic."
+      "front": "What does JSON-RPC allow a system to do regarding notifications?",
+      "back": "Send information to the server that does not require a response."
     },
     {
-      "front": "Concept: Self-consistency",
-      "back": "The method of selecting the most common conclusion from multiple chain-of-thought reasoning paths."
+      "front": "The technique 'AJAJ' is similar to 'Ajax' but uses _____ as the data format instead of XML.",
+      "back": "JSON"
     },
     {
-      "front": "Which $2022$ model release triggered the widespread rise of 'prompt engineering' as a business skill?",
-      "back": "ChatGPT"
+      "front": "Which database uses a 'JSON-like' format called BSON for its document-oriented storage?",
+      "back": "MongoDB"
     },
     {
-      "front": "In context engineering, 'token budgeting' is used to improve production _____.",
-      "back": "efficiency"
+      "front": "Which binary data format is promoted as an IETF standard alternative to JSON for faster processing?",
+      "back": "CBOR"
     },
     {
-      "front": "What is the runner-up for the Oxford word of the year in $2023$?",
-      "back": "prompt"
+      "front": "In the NASA APOD API example, what is the 'return value' format?",
+      "back": "JSON"
     },
     {
-      "front": "Text-to-image prompts often include the desired subject, medium, style, lighting, color, and _____.",
-      "back": "texture"
+      "front": "What is a 'WSDL' document used for in Web Services?",
+      "back": "To define the XML messages and transport bindings of a SOAP-based service."
     },
     {
-      "front": "Artist style imitation in Stable Diffusion often used the phrase 'in the style of _____' as a common test.",
-      "back": "Greg Rutkowski"
+      "front": "According to RFC 8259, what should applications do if a JSON object contains multiple members with the same name?",
+      "back": "Avoid transmitting them, as implementation behavior is unpredictable."
     },
     {
-      "front": "Cloze: Automated prompt generation methods use _____ feedback or evolutionary processes to refine inputs.",
-      "back": "reinforcement"
+      "front": "For maximum interoperability, what is the recommended limit for number precision in JSON?",
+      "back": "IEEE 754 binary64 (double precision)."
     },
     {
-      "front": "What is the function of 'provenance tags' in context engineering?",
-      "back": "To track the origin and reliability of information retrieved and supplied to the LLM."
+      "front": "Which JSON superset was used for configuring the Atom text editor and relies on significant indentation?",
+      "back": "CSON (CoffeeScript Object Notation)"
     },
     {
-      "front": "Why is 'negation' difficult for early text-to-image models?",
-      "back": "They do not interpret grammar in the same way as LLMs, often including subjects the prompt explicitly asks to exclude."
+      "front": "Which JSON superset is the primary configuration format for TIBCO Streaming and the Play Framework?",
+      "back": "HOCON"
     },
     {
-      "front": "Cloze: In 'prefix-tuning', vectors are searched to maximize the _____ on outputs.",
-      "back": "log-likelihood"
+      "front": "What are the main additions in the JSON5 specification compared to standard JSON?",
+      "back": "Comments, trailing commas, unquoted keys, and single-quoted strings."
     },
     {
-      "front": "What does a typical text-to-audio prompt describe?",
-      "back": "The desired musical characteristics, such as BPM, genre, and mood."
+      "front": "Which JSON derivative is used for encoding 'linked data'?",
+      "back": "JSON-LD"
     },
     {
-      "front": "How does 'Auto-CoT' handle question diversity?",
-      "back": "It clusters questions converted to vectors and selects those closest to each cluster's centroid."
+      "front": "How does the 'UBJSON' format differ from standard JSON?",
+      "back": "It is a binary format that imitates JSON but requires fewer bytes."
     },
     {
-      "front": "In 2024, a survey identified over $50$ distinct text-based _____ techniques.",
-      "back": "prompting"
+      "front": "What is the purpose of 'Jsonnet'?",
+      "back": "It is a domain-specific language used to generate JSON files with variables and loops."
     },
     {
-      "front": "What makes in-context learning an 'emergent' ability?",
-      "back": "Its efficacy increases significantly only after a model reaches a certain scale, breaking standard scaling laws."
+      "front": "What does an MCP client do when it first connects to an MCP server?",
+      "back": "It asks for a list of tools and resources and their expected calling formats."
     },
     {
-      "front": "What is the 'Automatic Prompt Engineer' (APE) primary function?",
-      "back": "Using one LLM to automatically generate and score prompts for another target LLM."
+      "front": "In the MCP workflow, what happens after an MCP server performs a tool action?",
+      "back": "It returns the results to the MCP host, which injects them into the LLM conversation."
     },
     {
-      "front": "Term: Prompt brittle nature",
-      "back": "The phenomenon where minor surface-level changes in a prompt produce dramatically different AI outputs."
+      "front": "Why is the Model Context Protocol referred to as the 'USB-C for AI'?",
+      "back": "Because it provides a universal standard for connecting different AI models to various data sources."
     },
     {
-      "front": "Why is 'context metadata' managed in context engineering?",
-      "back": "To provide the model with task-specific information that accompanies the user's primary prompt."
+      "front": "Which JSON derivative is used by Microsoft's Visual Studio Code to allow comments in configuration?",
+      "back": "JSONC"
     },
     {
-      "front": "Cloze: RAG allows LLMs to use domain-specific and updated information without frequent _____.",
-      "back": "retraining"
+      "front": "What is the primary difference between a 'public' and a 'private' Web API endpoint?",
+      "back": "Private endpoints require an access token or API key for authentication."
     },
     {
-      "front": "Which dictionary named 'vibe coding' as its word of the year in $2025$?",
-      "back": "Collins Dictionary"
+      "front": "What is the term for Web APIs that allow machine-based interactions using HTTP methods?",
+      "back": "RESTful APIs"
     },
     {
-      "front": "What is 'clausal syntax' in the context of prompting rationale?",
-      "back": "A linguistic property that enhances the consistency of knowledge retrieval from LLMs."
+      "front": "In a Web API request, where are parameters typically passed if they are not in the URL path?",
+      "back": "In the query string."
     },
     {
-      "front": "How does 'Segment Anything' accept prompts other than text?",
-      "back": "Through bounding boxes, segmentation masks, or foreground/background points."
+      "front": "Which character must NOT be generated by a conforming JSON implementation, though it may be accepted during parsing?",
+      "back": "The Byte Order Mark (BOM)."
     },
     {
-      "front": "Term: Multi-shot learning (LLMs)",
-      "back": "Providing several input-output examples in a prompt to enable the model to learn a task in-context."
+      "front": "What is the 'I-JSON Message Format' (RFC 7493)?",
+      "back": "A restricted JSON profile that constrains syntax to maximize interoperability."
     },
     {
-      "front": "What is the role of 'pseudo-words' in textual inversion?",
-      "back": "They act as embedding vectors that can be included in a prompt to replicate a specific style or object."
+      "front": "How does JSON handle the ordering of name-value pairs within an object?",
+      "back": "Ordering is not significant."
     },
     {
-      "front": "The ability of models to follow trusted instructions while being vulnerable to malicious user inputs is the basis of _____.",
-      "back": "prompt injection"
+      "front": "Which JSON-based format provides a contract for valid data structure and modification?",
+      "back": "JSON Schema"
     },
     {
-      "front": "What does the 'GEPA' optimizer use to propose changes to module prompts?",
-      "back": "Analysis of execution traces and textual feedback combined with a Pareto-based evolutionary search."
+      "front": "What is the significance of the 2019 revision of ECMAScript regarding JSON?",
+      "back": "JSON became a strict subset of ECMAScript."
     },
     {
-      "front": "What was the hottest AI job of $2023$, according to The Wall Street Journal?",
-      "back": "Prompt engineer"
+      "front": "In the NASA APOD API, what does the `url` key in the JSON return represent?",
+      "back": "A pointer to the actual photograph or image file."
     },
     {
-      "front": "Cloze: In automated prompt engineering, 'soft prompts' are learned through _____.",
-      "back": "back-propagation"
+      "front": "What is the function of the 'MCP Apps' extension?",
+      "back": "It standardizes the delivery of interactive user interfaces (like dashboards) from MCP servers."
     },
     {
-      "front": "What is the 'PIP' dataset used for?",
-      "back": "Enhancing text-to-image generation through personalized prompt rewriting based on user categorization."
+      "front": "Which security concern involves an attacker manipulating an LLM through its connected MCP data sources?",
+      "back": "Prompt injection"
     },
     {
-      "front": "Concept: In-context learning vs. Gradient descent",
-      "back": "In-context learning requires no parameter updates, while gradient descent is used in fine-tuning and soft prompting."
+      "front": "Why is JSON preferred over XML as a 'low-overhead' alternative?",
+      "back": "It typically uses fewer characters to represent the same data structures."
     },
     {
-      "front": "What is the primary benefit of 'GraphRAG' for narrative private data?",
-      "back": "It allows the model to synthesize insights and connect disparate pieces of information across large collections."
-    },
-    {
-      "front": "How does the 'Automatic Prompt Engineer' algorithm vary instructions?",
-      "back": "It takes the highest-scored instructions and gives them back to the prompting LLM for further variations."
-    },
-    {
-      "front": "In text-to-image prompts, what is 'rim lighting' an example of?",
-      "back": "Lighting parameters used to achieve a desired aesthetic in the generated image."
-    },
-    {
-      "front": "Term: Prompt optimization",
-      "back": "The use of algorithms to automatically refine prompt strings using evaluation datasets and task-specific metrics."
-    },
-    {
-      "front": "Which $2020$ paper first identified that language models are 'few-shot learners'?",
-      "back": "Brown et al. (Language models are few-shot learners)"
+      "front": "In JSON, what is 'null' used to represent?",
+      "back": "An empty value."
     }
   ]
 }

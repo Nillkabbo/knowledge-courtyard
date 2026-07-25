@@ -1,10 +1,28 @@
 // ═══════════════════════════════════════════════════════════════
 // Study Materials Panel — injected into every book's completion screen
-// Links to NotebookLM-generated study artifacts in /study/ folder
+// Links to NotebookLM notebook (interactive Q&A, audio, studio)
+// + local study artifacts (guide, quiz, flashcards, mind map)
 // ═══════════════════════════════════════════════════════════════
 
 (function() {
   'use strict';
+
+  // Detect this book's folder name from URL
+  var pathParts = window.location.pathname.split('/');
+  var bookFolder = pathParts[pathParts.length - 2] || '';
+
+  // Load notebook links mapping
+  var notebookUrl = null;
+  // We'll fetch the JSON synchronously (small file)
+  try {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../scripts/notebook-links.json', false);
+    xhr.send();
+    if (xhr.status === 200) {
+      var links = JSON.parse(xhr.responseText);
+      notebookUrl = links[bookFolder];
+    }
+  } catch(e) {}
 
   // Wait for page to fully load
   window.addEventListener('load', function() {
@@ -132,32 +150,27 @@
       completeScreen.appendChild(studySection);
     }
 
-    // Check if podcast exists and add link
-    fetch('study/podcast.mp3', { method: 'HEAD' })
-      .then(res => {
-        if (res.ok) {
-          const container = document.getElementById('podcast-link-container');
-          if (container) {
-            container.innerHTML = `
-              <a href="study/podcast.mp3" target="_blank" style="
-                display: inline-flex;
-                align-items: center;
-                gap: 0.5rem;
-                padding: 0.6rem 1.2rem;
-                background: rgba(34, 139, 34, 0.15);
-                border: 1px solid rgba(34, 139, 34, 0.4);
-                border-radius: 8px;
-                color: #6b8e23;
-                text-decoration: none;
-                font-size: 0.9rem;
-                transition: all 0.3s ease;
-              " onmouseover="this.style.background='rgba(34,139,34,0.3)'" onmouseout="this.style.background='rgba(34,139,34,0.15)'">
-                🎧 Podcast (~20 min)
-              </a>
-            `;
-          }
-        }
-      })
-      .catch(() => {});
+    // Add NotebookLM link (replaces podcast)
+    const container = document.getElementById('podcast-link-container');
+    if (container && notebookUrl) {
+      container.innerHTML = `
+        <a href="${notebookUrl}" target="_blank" style="
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.6rem 1.2rem;
+          background: rgba(34, 139, 34, 0.15);
+          border: 1px solid rgba(34, 139, 34, 0.4);
+          border-radius: 8px;
+          color: #6b8e23;
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+          margin-top: 0.5rem;
+        " onmouseover="this.style.background='rgba(34,139,34,0.3)'" onmouseout="this.style.background='rgba(34,139,34,0.15)'">
+          🔬 NotebookLM — Ask Questions, Audio Overview & More
+        </a>
+      `;
+    }
   });
 })();

@@ -1,11 +1,39 @@
 {
-  "name": "Modern Computing Architecture and Data Management",
+  "name": "Distributed Systems",
   "children": [
     {
-      "name": "CAP Theorem",
+      "name": "Fundamental Concepts",
       "children": [
         {
-          "name": "Core Principles",
+          "name": "Logical Time",
+          "children": [
+            {
+              "name": "Lamport Clocks"
+            },
+            {
+              "name": "Happens-before Relation"
+            },
+            {
+              "name": "Causality"
+            }
+          ]
+        },
+        {
+          "name": "Consistency Models",
+          "children": [
+            {
+              "name": "Eventual Consistency"
+            },
+            {
+              "name": "Strong Eventual Consistency"
+            },
+            {
+              "name": "ACID vs BASE"
+            }
+          ]
+        },
+        {
+          "name": "CAP Theorem",
           "children": [
             {
               "name": "Consistency"
@@ -17,237 +45,117 @@
               "name": "Partition Tolerance"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "name": "Consensus & Coordination",
+      "children": [
         {
-          "name": "Key Constraints",
+          "name": "Algorithms",
           "children": [
             {
-              "name": "Maximum two of three guarantees"
+              "name": "Paxos"
             },
             {
-              "name": "Trade-off during network partition"
+              "name": "Raft"
             },
             {
-              "name": "ACID vs BASE philosophy"
+              "name": "Byzantine Fault Tolerance"
             }
           ]
         },
         {
-          "name": "Related Concepts",
+          "name": "Mutual Exclusion",
           "children": [
             {
-              "name": "PACELC Theorem"
+              "name": "Semaphores"
             },
             {
-              "name": "Eric Brewer"
+              "name": "Race Conditions"
             },
             {
-              "name": "Gilbert and Lynch Proof"
+              "name": "Mutex"
             }
           ]
         }
       ]
     },
     {
-      "name": "Caching Systems",
+      "name": "Data Storage & Processing",
       "children": [
         {
-          "name": "Hardware Caches",
+          "name": "Partitioning (Sharding)",
           "children": [
             {
-              "name": "CPU Cache (L1, L2, L3)"
+              "name": "Horizontal Partitioning"
             },
             {
-              "name": "GPU Texture Cache"
+              "name": "Vertical Partitioning"
             },
             {
-              "name": "Translation Lookaside Buffer (TLB)"
+              "name": "Consistent Hashing"
             }
           ]
         },
         {
-          "name": "Software Caches",
+          "name": "Replication",
           "children": [
             {
-              "name": "Web Cache"
+              "name": "Single-leader"
             },
             {
-              "name": "Disk Cache"
+              "name": "Multi-leader"
             },
             {
-              "name": "Memoization"
+              "name": "Leaderless"
             }
           ]
         },
         {
-          "name": "Operation Policies",
+          "name": "Processing Models",
           "children": [
             {
-              "name": "Write-through vs Write-back"
+              "name": "MapReduce"
             },
             {
-              "name": "LRU and LFU Replacement"
+              "name": "Stream Processing"
             },
             {
-              "name": "Prefetching"
+              "name": "Event Sourcing"
             }
           ]
         }
       ]
     },
     {
-      "name": "Database Systems",
+      "name": "Distributed Transactions",
       "children": [
         {
-          "name": "Models",
-          "children": [
-            {
-              "name": "Relational (SQL)"
-            },
-            {
-              "name": "NoSQL (Key-Value, Document, Graph)"
-            },
-            {
-              "name": "Navigational (Hierarchical, Network)"
-            }
-          ]
+          "name": "Two-Phase Commit (2PC)"
         },
         {
-          "name": "DBMS Functions",
-          "children": [
-            {
-              "name": "Data Definition (DDL)"
-            },
-            {
-              "name": "Data Manipulation (DML)"
-            },
-            {
-              "name": "Concurrency Control"
-            },
-            {
-              "name": "Backup and Recovery"
-            }
-          ]
+          "name": "Three-Phase Commit (3PC)"
         },
         {
-          "name": "Architecture Levels",
-          "children": [
-            {
-              "name": "External Level"
-            },
-            {
-              "name": "Conceptual Level"
-            },
-            {
-              "name": "Internal Level"
-            }
-          ]
+          "name": "Saga Pattern"
         }
       ]
     },
     {
-      "name": "Content Delivery Networks (CDN)",
+      "name": "Technologies & Platforms",
       "children": [
         {
-          "name": "Core Architecture",
-          "children": [
-            {
-              "name": "Edge Servers"
-            },
-            {
-              "name": "Points of Presence (PoPs)"
-            },
-            {
-              "name": "Origin Shields"
-            }
-          ]
+          "name": "Apache Kafka"
         },
         {
-          "name": "Delivery Techniques",
-          "children": [
-            {
-              "name": "Request Routing"
-            },
-            {
-              "name": "Server Load Balancing"
-            },
-            {
-              "name": "Anycasting"
-            },
-            {
-              "name": "P2P Offloading"
-            }
-          ]
+          "name": "Amazon Dynamo"
         },
         {
-          "name": "Types",
-          "children": [
-            {
-              "name": "Commercial-as-a-Service"
-            },
-            {
-              "name": "Telco CDNs"
-            },
-            {
-              "name": "Private/Enterprise CDNs"
-            },
-            {
-              "name": "Image CDNs"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Microservices",
-      "children": [
-        {
-          "name": "Characteristics",
-          "children": [
-            {
-              "name": "Loose Coupling"
-            },
-            {
-              "name": "Independent Deployment"
-            },
-            {
-              "name": "Modular Scaling"
-            },
-            {
-              "name": "Domain-Driven Design"
-            }
-          ]
+          "name": "Distributed Hash Tables (DHT)"
         },
         {
-          "name": "Key Patterns",
-          "children": [
-            {
-              "name": "Service Mesh"
-            },
-            {
-              "name": "Circuit Breakers"
-            },
-            {
-              "name": "Bounded Contexts"
-            },
-            {
-              "name": "Sidecar Proxies"
-            }
-          ]
-        },
-        {
-          "name": "Challenges",
-          "children": [
-            {
-              "name": "Network Latency"
-            },
-            {
-              "name": "Data Consistency"
-            },
-            {
-              "name": "Operational Complexity"
-            }
-          ]
+          "name": "Blockchain (Bitcoin)"
         }
       ]
     }

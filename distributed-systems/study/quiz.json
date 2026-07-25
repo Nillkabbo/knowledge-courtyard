@@ -1,317 +1,265 @@
 {
-  "title": "Computing Quiz",
+  "title": "Distributed Quiz",
   "questions": [
     {
-      "question": "In the context of the CAP theorem, how is 'Availability' specifically defined?",
+      "question": "In Lamport's logical clocks, what does the \"happens-before\" relation ($A \\to B$) signify?",
       "answerOptions": [
         {
-          "text": "Every request received by a non-failing node must result in a response, regardless of data version.",
+          "text": "Event $A$ occurred at a physically earlier time than event $B$ across all system nodes.",
+          "isCorrect": false,
+          "rationale": "Physical time is unreliable in distributed systems due to clock skew, which is why Lamport introduced logical ordering."
+        },
+        {
+          "text": "Event $A$ is a causal precursor to event $B$, such as a message being sent before it is received.",
           "isCorrect": true,
-          "rationale": "This definition emphasizes that the system remains functional and responsive to all queries, even if it cannot guarantee the data provided is the most recent."
+          "rationale": "The relation defines a partial ordering based on causality and the flow of information rather than synchronized wall-clock time."
         },
         {
-          "text": "The system must ensure that every node in the cluster is operational and reachable at all times.",
+          "text": "Event $A$ and event $B$ happened simultaneously on the same processor.",
           "isCorrect": false,
-          "rationale": "This describes a state of total system health rather than the specific functional guarantee required for every individual request under the CAP theorem."
+          "rationale": "The relation specifically tracks the order of events, while simultaneous events on different processors are considered concurrent."
         },
         {
-          "text": "Every read request must return the most recent write to ensure system-wide uptime.",
+          "text": "Event $B$ must have a lower logical timestamp than event $A$.",
           "isCorrect": false,
-          "rationale": "This description mistakenly combines the definitions of consistency and availability, which are distinct trade-offs in distributed systems."
-        },
-        {
-          "text": "The system must prevent any message drops or delays between nodes to maintain service.",
-          "isCorrect": false,
-          "rationale": "The prevention of network failures describes partition tolerance or network reliability rather than the availability of a response from a node."
+          "rationale": "If $A \\to B$, the timestamp of $A$ must be strictly less than the timestamp of $B$ to preserve the causal order."
         }
       ],
-      "hint": "Consider what a user expects to receive from a functioning node even when the network is struggling."
+      "hint": "Think about how one event might influence another in a system with no global clock."
     },
     {
-      "question": "Which cache write policy postpones updating the backing store until the modified content is about to be evicted?",
+      "question": "In Dijkstra's semaphore logic, what occurs during the $P$ (proberen) operation?",
       "answerOptions": [
         {
-          "text": "Write-through",
+          "text": "The semaphore value is incremented to signal that a resource is now free.",
           "isCorrect": false,
-          "rationale": "This policy performs writes to both the cache and the backing store simultaneously to ensure they are always synchronized."
+          "rationale": "Incrementing is the function of the $V$ (verhogen) operation, not the $P$ operation."
         },
         {
-          "text": "Write-back",
+          "text": "The process checks the value and decrements it; if the value is $0$, the process waits.",
           "isCorrect": true,
-          "rationale": "This policy improves performance by writing only to the cache initially and marking the data as 'dirty' until a later eviction triggers the update to main storage."
+          "rationale": "The $P$ operation acts as a 'wait' or 'test' mechanism to acquire a resource and prevent others from entering the critical section."
         },
         {
-          "text": "Write-allocate",
+          "text": "The process forces all other waiting processes to terminate to prevent a deadlock.",
           "isCorrect": false,
-          "rationale": "This refers to a write-miss policy regarding whether data is loaded into the cache, not the timing of synchronization with the backing store."
+          "rationale": "Semaphores manage access through waiting and signaling rather than process termination."
         },
         {
-          "text": "No-write allocate",
+          "text": "The semaphore value is reset to $1$ regardless of its current state.",
           "isCorrect": false,
-          "rationale": "This policy bypasses the cache on a write miss and writes directly to the backing store, rather than deferring the write."
+          "rationale": "Resetting the value would violate the mutual exclusion principle by potentially allowing multiple processes in simultaneously."
         }
       ],
-      "hint": "Focus on the policy that uses a 'dirty bit' to track modified data for later synchronization."
+      "hint": "Consider the action a program takes when it attempts to enter a 'locked' door."
     },
     {
-      "question": "What is the primary difference between the 1960s navigational database models and the relational model proposed by Edgar F. Codd?",
+      "question": "According to the CAP Theorem, what is the consequence of a network partition in a distributed system?",
       "answerOptions": [
         {
-          "text": "Navigational models used pointers to follow relationships, while the relational model used content-based search.",
+          "text": "The system must sacrifice Partition Tolerance to maintain both Consistency and Availability.",
+          "isCorrect": false,
+          "rationale": "Partition Tolerance is generally non-negotiable in distributed systems because network failures are inevitable."
+        },
+        {
+          "text": "The system can maintain all three properties if it uses a consensus algorithm like Paxos.",
+          "isCorrect": false,
+          "rationale": "The theorem states that only two of the three properties can be satisfied simultaneously during a partition."
+        },
+        {
+          "text": "The system must choose between returning an error (sacrificing Availability) or returning potentially stale data (sacrificing Consistency).",
           "isCorrect": true,
-          "rationale": "Codd's model moved away from physical disk addresses and linked lists, favoring logical keys that allow applications to find data by its content."
+          "rationale": "When nodes cannot communicate, they must either stop responding to ensure data remains identical or keep responding with whatever data they have."
         },
         {
-          "text": "The relational model required more powerful hardware to follow physical disk addresses than navigational models.",
+          "text": "The system will automatically switch to a single-node RDBMS to avoid the dilemma.",
           "isCorrect": false,
-          "rationale": "The relational model actually sought to abstract away physical disk addresses, although it did require more processing power for query optimization."
-        },
-        {
-          "text": "Navigational models used SQL for data access, whereas the relational model introduced navigational APIs.",
-          "isCorrect": false,
-          "rationale": "The situation is reversed; navigational models relied on APIs for record-by-record traversal, while SQL was developed later for the relational model."
-        },
-        {
-          "text": "Navigational models organized data into tables, while the relational model used a strict hierarchy.",
-          "isCorrect": false,
-          "rationale": "The hierarchical model is a type of navigational model, whereas the relational model is characterized by the use of tables."
+          "rationale": "While a single node avoids partitions, it is no longer a distributed system, which is the context of the CAP theorem."
         }
       ],
-      "hint": "Think about how a programmer moves from one record to another—either by following a link or by matching values."
+      "hint": "Imagine two nodes that cannot talk to each other; what happens if a user tries to update data on one of them?"
     },
     {
-      "question": "According to the PACELC theorem, what is the trade-off a distributed system faces during normal operation (when no partition is present)?",
+      "question": "What was the primary motivation behind the creation of the Raft consensus algorithm?",
       "answerOptions": [
         {
-          "text": "Latency vs. Consistency",
+          "text": "To provide a consensus method that is faster than Paxos in all network conditions.",
+          "isCorrect": false,
+          "rationale": "While performance is a factor, Raft's primary goal was to address the complexity and lack of understanding surrounding Paxos."
+        },
+        {
+          "text": "To create an algorithm that is easier to understand and implement than Paxos.",
           "isCorrect": true,
-          "rationale": "The 'E' in PACELC stands for 'Else', indicating that in the absence of partitions, designers must still choose between faster response times or stricter data accuracy."
+          "rationale": "Raft was designed as an 'understandable' alternative to Paxos, using a strong leader model and clear phases for election and log replication."
         },
         {
-          "text": "Availability vs. Partition Tolerance",
+          "text": "To eliminate the need for a majority (quorum) to reach a decision.",
           "isCorrect": false,
-          "rationale": "This trade-off is a component of the original CAP theorem during a network failure, not the 'Else' condition of PACELC."
+          "rationale": "Both Raft and Paxos rely on a majority quorum to ensure consistency and handle node failures."
         },
         {
-          "text": "Throughput vs. Bandwidth",
+          "text": "To allow consensus to be reached even if all nodes in the cluster crash.",
           "isCorrect": false,
-          "rationale": "While these are performance metrics, they are not the fundamental architectural trade-off described by the PACELC theorem."
-        },
-        {
-          "text": "Consistency vs. Durability",
-          "isCorrect": false,
-          "rationale": "These are both properties within the ACID model for transactions, rather than the distributed system trade-offs identified in PACELC."
+          "rationale": "Consensus requires a majority of nodes to be operational; if all fail, the system cannot make progress."
         }
       ],
-      "hint": "Focus on the 'E' (Else) part of the acronym and the cost of waiting for data to sync during healthy operations."
+      "hint": "Think about why students or engineers might struggle with 'The Part-Time Parliament' paper."
     },
     {
-      "question": "Which concept describes the cache's ability to serve data requested that is stored near data that has already been requested?",
+      "question": "What is a major disadvantage of the Two-Phase Commit (2PC) protocol for distributed transactions?",
       "answerOptions": [
         {
-          "text": "Temporal locality",
+          "text": "It cannot guarantee atomicity if one node disagrees during the prepare phase.",
           "isCorrect": false,
-          "rationale": "This refers to the tendency to access the same data item repeatedly within a short period of time."
+          "rationale": "2PC is specifically designed to guarantee atomicity; if one node says 'no', the entire transaction is aborted."
         },
         {
-          "text": "Spatial locality",
+          "text": "It is a blocking protocol where nodes may remain stuck if the coordinator fails after the prepare phase.",
           "isCorrect": true,
-          "rationale": "This principle exploits the fact that if a memory location is accessed, nearby locations are likely to be accessed soon, which justifies loading blocks of data into the cache."
+          "rationale": "If the coordinator crashes after nodes have agreed to commit but before they receive the final command, they remain in a 'prepared' state, unable to move forward or back."
         },
         {
-          "text": "Write allocation",
+          "text": "It requires $3f+1$ nodes to function correctly under normal conditions.",
           "isCorrect": false,
-          "rationale": "This is a policy used during write misses to determine if data should be loaded into the cache, not a type of reference locality."
+          "rationale": "The $3f+1$ requirement applies to Byzantine Fault Tolerance, not standard 2PC transactions."
         },
         {
-          "text": "Cache coherence",
+          "text": "It only works for transactions involving exactly two databases.",
           "isCorrect": false,
-          "rationale": "This refers to the protocols used to ensure that data remains consistent across multiple different caches in a system."
+          "rationale": "The 'Two-Phase' refers to the steps of the process (Prepare and Commit), not the number of nodes or databases involved."
         }
       ],
-      "hint": "Think about the physical or logical distance between different data items in storage."
+      "hint": "What happens to the participants if the leader disappears in the middle of a two-step voting process?"
     },
     {
-      "question": "In the three-level database architecture, which level is responsible for unifying various user views into a single, compatible global view?",
+      "question": "In the MapReduce programming model, what is the specific role of the \"Shuffle\" phase?",
       "answerOptions": [
         {
-          "text": "Internal level",
+          "text": "To apply the user-defined filtering logic to the raw input data.",
           "isCorrect": false,
-          "rationale": "This level is concerned with the physical storage layout and performance optimizations like indexing on the hardware."
+          "rationale": "Filtering and initial processing are the responsibility of the Map function."
         },
         {
-          "text": "External level",
-          "isCorrect": false,
-          "rationale": "This level describes how individual groups of end-users perceive the data, often through specific subsets or views."
-        },
-        {
-          "text": "Conceptual level",
+          "text": "To redistribute key-value pairs so that all values associated with the same key are sent to the same reducer.",
           "isCorrect": true,
-          "rationale": "Also known as the logical level, it provides a community view that abstracts away physical storage details while synthesizing all external requirements."
+          "rationale": "The shuffle phase acts as the communication bridge, ensuring that the Reduce step has all the necessary data for a specific key."
         },
         {
-          "text": "Physical level",
+          "text": "To write the final aggregated results back to the distributed file system.",
           "isCorrect": false,
-          "rationale": "This is simply another name for the internal level, which deals with how data is encoded and stored on disks."
+          "rationale": "The Output Writer handles the final storage of results after the Reduce phase is complete."
+        },
+        {
+          "text": "To reduce the amount of data by summing up values locally on the mapper node.",
+          "isCorrect": false,
+          "rationale": "Local aggregation is typically done by an optional 'Combiner' function, not the shuffle itself."
         }
       ],
-      "hint": "Look for the level that acts as an intermediary synthesis of all user-facing perspectives."
+      "hint": "Consider how data moves from a variety of independent mappers to the correct reducers."
     },
     {
-      "question": "A cache miss occurs and the system decides not to load the missed data into the cache, writing it directly to the backing store instead. Which policy is being used?",
+      "question": "How does Byzantine Fault Tolerance (BFT) differ from standard crash fault tolerance?",
       "answerOptions": [
         {
-          "text": "Write allocate",
+          "text": "BFT assumes that nodes will only fail by stopping or crashing.",
           "isCorrect": false,
-          "rationale": "In this policy, the data would be loaded into the cache immediately after a write miss, anticipating future access."
+          "rationale": "This describes standard crash fault tolerance; BFT is more robust and handles intentional deception."
         },
         {
-          "text": "No-write allocate",
+          "text": "BFT accounts for 'traitorous' nodes that may send conflicting or malicious information.",
           "isCorrect": true,
-          "rationale": "Also known as 'write around', this policy avoids cluttering the cache with data that is only being written and might not be read again soon."
+          "rationale": "BFT is designed for environments where nodes may be compromised or act dishonestly, requiring a higher threshold of agreement."
         },
         {
-          "text": "Write-back",
+          "text": "BFT is only used in single-node database systems to prevent data corruption.",
           "isCorrect": false,
-          "rationale": "This policy determines how modified data in the cache is synchronized with the backing store, not whether it is loaded upon a miss."
+          "rationale": "BFT is a distributed systems concept designed for multiple nodes interacting over a network."
         },
         {
-          "text": "Demand paging",
+          "text": "BFT requires $f+1$ nodes to handle $f$ failures, making it more efficient than Raft.",
           "isCorrect": false,
-          "rationale": "This is a virtual memory management technique that loads data from disk into RAM only when it is needed for a read."
+          "rationale": "BFT is less efficient, typically requiring $3f+1$ nodes to tolerate $f$ malicious failures."
         }
       ],
-      "hint": "This policy is frequently paired with write-through caches because subsequent writes have no inherent advantage in being cached."
+      "hint": "Think about the difference between a machine breaking down and a person lying on purpose."
     },
     {
-      "question": "Which property of ACID transactions ensures that once a transaction is committed, its effects remain even in the event of a system failure?",
+      "question": "In a partitioned database, what characterizes \"Vertical Partitioning\"?",
       "answerOptions": [
         {
-          "text": "Atomicity",
+          "text": "Splitting different rows of the same table into different tables based on a range (e.g., ZIP codes).",
           "isCorrect": false,
-          "rationale": "This property ensures that a transaction is treated as a single unit that either completely succeeds or completely fails."
+          "rationale": "Splitting by rows is known as Horizontal Partitioning or Sharding."
         },
         {
-          "text": "Consistency",
-          "isCorrect": false,
-          "rationale": "In the ACID context, this ensures that a transaction brings the database from one valid state to another, following all defined rules."
-        },
-        {
-          "text": "Isolation",
-          "isCorrect": false,
-          "rationale": "This ensures that concurrent execution of transactions leaves the database in the same state as if they were executed sequentially."
-        },
-        {
-          "text": "Durability",
+          "text": "Splitting a table by its columns, putting infrequently used or very wide columns into separate tables.",
           "isCorrect": true,
-          "rationale": "This property guarantees that the results of a committed transaction are permanently recorded in non-volatile storage."
+          "rationale": "Vertical partitioning divides the schema itself to optimize memory usage or access speed for specific sets of attributes."
+        },
+        {
+          "text": "Replicating the entire database across multiple geographic regions for availability.",
+          "isCorrect": false,
+          "rationale": "Replication is the act of copying data, whereas partitioning is the act of dividing it."
+        },
+        {
+          "text": "Organizing data into a tree-like structure to improve search efficiency.",
+          "isCorrect": false,
+          "rationale": "This describes indexing (like B-trees), not the physical partitioning of data across tables or nodes."
         }
       ],
-      "hint": "Think about the 'permanence' of data after a successful completion of a task."
+      "hint": "Consider whether you are dividing the data by 'records' or by 'attributes'."
     },
     {
-      "question": "What is a 'cache hit ratio'?",
+      "question": "Which property of a mathematical Monoid is essential for a function to be used in the MapReduce \"Reduce\" phase?",
       "answerOptions": [
         {
-          "text": "The speed at which data can be retrieved from the cache compared to main memory.",
+          "text": "Commutativity: the order of the operands does not matter (e.g., $a + b = b + a$).",
           "isCorrect": false,
-          "rationale": "This describes the latency benefit of caching rather than the statistical success rate of finding data in the cache."
+          "rationale": "While helpful, commutativity is not strictly required by the monoid definition for reduction; associativity is the core requirement."
         },
         {
-          "text": "The percentage of total data access attempts that are successfully served by the cache.",
+          "text": "Associativity: the grouping of operations does not matter (e.g., $(a + b) + c = a + (b + c)$).",
           "isCorrect": true,
-          "rationale": "This metric measures the efficiency of the cache by tracking how often the backing store access is successfully avoided."
+          "rationale": "Associativity allows the framework to regroup and parallelize the data reduction across different nodes without changing the result."
         },
         {
-          "text": "The amount of storage capacity currently utilized by active cache entries.",
+          "text": "Invertibility: every operation can be undone by an inverse operation.",
           "isCorrect": false,
-          "rationale": "This refers to cache utilization or occupancy, not the success rate of request fulfillment."
+          "rationale": "MapReduce does not require operations to be reversible; it focuses on aggregation and summary."
         },
         {
-          "text": "The frequency at which the cache must evict old entries to make room for new ones.",
+          "text": "Distributivity: the operation must distribute over another operation.",
           "isCorrect": false,
-          "rationale": "This is related to the replacement policy and eviction rate, which are distinct from the successful hit rate."
+          "rationale": "Reduction involves a single binary operation, so distributivity between two different operations is not the primary concern."
         }
       ],
-      "hint": "This term represents a percentage of successes versus total attempts."
+      "hint": "Think about why the system can group values in any order to calculate the final sum or count."
     },
     {
-      "question": "In Information-Centric Networking (ICN), how does the 'Time Aware Least Recently Used' (TLRU) algorithm improve upon standard LRU?",
+      "question": "How does the Saga pattern handle failures in a long-running distributed transaction?",
       "answerOptions": [
         {
-          "text": "It prioritizes content that has been accessed most frequently within a specific time window.",
+          "text": "It uses a global lock to prevent any other transactions from occurring until the failure is fixed.",
           "isCorrect": false,
-          "rationale": "This describes a frequency-based policy (LFRU) rather than one focused on content expiration or lifetime."
+          "rationale": "Sagas avoid global locks to maintain high availability and prevent blocking."
         },
         {
-          "text": "It utilizes a 'time to use' (TTU) stamp to replace short-lived or unpopular content first.",
+          "text": "It executes 'compensating transactions' to undo the effects of successfully completed preceding steps.",
           "isCorrect": true,
-          "rationale": "TLRU factors in the valid lifetime of content, allowing administrators to regulate storage by evicting items that are no longer usable."
+          "rationale": "Since Sagas don't use a single commit point, if a step fails, the system must manually reverse previous successful steps to maintain consistency."
         },
         {
-          "text": "It tracks the propagation delay of signals to ensure data is retrieved from the closest geographical node.",
+          "text": "It automatically restarts the entire transaction from the beginning until it succeeds.",
           "isCorrect": false,
-          "rationale": "This describes network latency optimization or spatial distribution rather than an eviction policy based on time stamps."
+          "rationale": "While retries are possible, the core feature of a Saga is the compensation logic for when retries aren't enough or are inappropriate."
         },
         {
-          "text": "It prevents any content from being evicted until its 'dirty bit' has been synchronized with the origin server.",
+          "text": "It ignores the failure and relies on 'Eventual Consistency' to fix the data later.",
           "isCorrect": false,
-          "rationale": "This describes a write-back synchronization requirement rather than a replacement heuristic for network-level caching."
+          "rationale": "While it leads to eventual consistency, it does so through active compensation rather than passive waiting."
         }
       ],
-      "hint": "Consider the relevance of a 'expiration date' for information in a dynamic network."
-    },
-    {
-      "question": "Why is the common 'two out of three' explanation of the CAP theorem considered somewhat misleading by Eric Brewer?",
-      "answerOptions": [
-        {
-          "text": "Because it is impossible to ever achieve partition tolerance in a real-world network.",
-          "isCorrect": false,
-          "rationale": "Modern distributed systems must be partition tolerant because network failures are an unavoidable reality."
-        },
-        {
-          "text": "Because designers only need to sacrifice consistency or availability during an actual partition event.",
-          "isCorrect": true,
-          "rationale": "Brewer clarified that systems can often provide all three guarantees during normal operation; the choice only becomes mandatory when a failure occurs."
-        },
-        {
-          "text": "Because advanced databases like MongoDB have proven that all three can be achieved simultaneously.",
-          "isCorrect": false,
-          "rationale": "The material states that MongoDB resolves partitions by maintaining consistency while compromising on availability, adhering to the theorem's limits."
-        },
-        {
-          "text": "Because the definition of consistency in CAP is identical to the definition used in ACID.",
-          "isCorrect": false,
-          "rationale": "The source material explicitly states that CAP consistency is different from ACID consistency, which is a common point of confusion."
-        }
-      ],
-      "hint": "Consider how the system behaves when the network is functioning perfectly vs. when a wire is cut."
-    },
-    {
-      "question": "A processor is accessing data from a DRAM with a latency of several hundred clock cycles. Which technique can be used to bypass this latency by guessing future data needs?",
-      "answerOptions": [
-        {
-          "text": "Prefetching",
-          "isCorrect": true,
-          "rationale": "This technique anticipates future requests and loads data into the cache ahead of time, potentially reducing or eliminating the wait for the slower storage."
-        },
-        {
-          "text": "Memoization",
-          "isCorrect": false,
-          "rationale": "This is a software-level optimization that stores the results of expensive function calls, rather than a hardware memory access technique."
-        },
-        {
-          "text": "Swizzling",
-          "isCorrect": false,
-          "rationale": "This is a technique used in graphics processing to improve locality of reference, not a general method for predictive data loading."
-        },
-        {
-          "text": "Write-through synchronization",
-          "isCorrect": false,
-          "rationale": "This policy ensures data is written to main storage immediately but does not address the latency of reading data from that storage."
-        }
-      ],
-      "hint": "Think about the 'anticipatory' action of fetching data before it is explicitly requested."
+      "hint": "If you booked a flight but the hotel booking failed, what would you have to do to the flight booking?"
     }
   ]
 }

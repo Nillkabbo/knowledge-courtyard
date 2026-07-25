@@ -1,317 +1,395 @@
 {
-  "title": "Evaluation Quiz",
+  "title": "Deep Learning Quiz",
   "questions": [
     {
-      "question": "Which of the following describes the primary difference between synthetic benchmarks and application benchmarks?",
+      "question": "In the context of deep learning, what distinguishes the 'upstream task' from the 'downstream task' during the process of fine-tuning?",
       "answerOptions": [
         {
-          "text": "Synthetic benchmarks use specially created programs to impose specific workloads, while application benchmarks run real-world software.",
+          "text": "The upstream task is the original objective for which a model was pre-trained, while the downstream task is the new, more specific target.",
           "isCorrect": true,
-          "rationale": "Synthetic benchmarks are designed to isolate and test specific components through artificial workloads, whereas application benchmarks measure how the system handles actual programs."
+          "rationale": "Fine-tuning is defined as the process of adapting a model from a general source objective to a specialized application."
         },
         {
-          "text": "Application benchmarks are used only for testing individual components like hard disks, while synthetic benchmarks test whole systems.",
+          "text": "The upstream task refers to data preprocessing, whereas the downstream task refers to the final inference performed by the user.",
           "isCorrect": false,
-          "rationale": "This reverses the typical roles; synthetic benchmarks are actually more effective for testing specific, individual hardware components."
+          "rationale": "While preprocessing occurs before training, these terms specifically describe the transfer of learned knowledge between different training objectives."
         },
         {
-          "text": "Synthetic benchmarks provide a better measure of real-world performance than application benchmarks.",
+          "text": "Upstream tasks involve backpropagation through all layers, while downstream tasks only involve the output layer.",
           "isCorrect": false,
-          "rationale": "Real-world performance is better represented by application benchmarks because they execute the actual tasks users perform."
+          "rationale": "Fine-tuning can involve updating all layers or just a subset, but this distinction does not define the tasks themselves."
         },
         {
-          "text": "Only application benchmarks allow for the comparison of different chip architectures.",
+          "text": "The upstream task is a supervised learning objective, while the downstream task must be unsupervised.",
           "isCorrect": false,
-          "rationale": "Both types of benchmarks are used to compare performance across diverse architectures, though they measure different aspects of that performance."
+          "rationale": "Both tasks can be supervised, and fine-tuning is typically accomplished through supervised learning for the specific downstream goal."
         }
       ],
-      "hint": "Consider which type uses 'specially created programs' versus 'real-world programs'."
+      "hint": "Consider the direction of knowledge transfer in transfer learning."
     },
     {
-      "question": "In a binary confusion matrix for a medical test, what does a 'False Negative' result represent?",
+      "question": "When fine-tuning a convolutional neural network, why is it common practice to 'freeze' the earlier layers closest to the input?",
       "answerOptions": [
         {
-          "text": "A test result which wrongly indicates that a particular condition is absent when it is actually present.",
+          "text": "Earlier layers capture low-level features that are generally useful across different tasks, whereas later layers capture task-specific high-level features.",
           "isCorrect": true,
-          "rationale": "A false negative occurs when the actual condition is positive (present) but the classifier predicts it as negative (absent)."
+          "rationale": "Feature extraction moves from generic elements like edges to complex, domain-specific shapes as data passes deeper into the network."
         },
         {
-          "text": "A test result that correctly indicates the presence of a condition.",
+          "text": "Freezing earlier layers prevents the model from experiencing any loss of precision during quantization.",
           "isCorrect": false,
-          "rationale": "This describes a True Positive result, where the prediction matches the positive reality."
+          "rationale": "Layer freezing is a technique for parameter efficiency and feature preservation, not a method for numerical bit-width reduction."
         },
         {
-          "text": "A test result which wrongly indicates that a condition is present when it is actually absent.",
+          "text": "The earlier layers are mathematically fixed by the initial learning rate $\\eta$ and cannot be altered by backpropagation.",
           "isCorrect": false,
-          "rationale": "This describes a False Positive, also known as a Type I error or a 'false alarm'."
+          "rationale": "Any layer can technically be updated; freezing is a choice made to preserve weights, not a mathematical impossibility."
         },
         {
-          "text": "A test result that correctly indicates the absence of a condition.",
+          "text": "Earlier layers contain the majority of the model's parameters, and updating them would always cause catastrophic forgetting.",
           "isCorrect": false,
-          "rationale": "This describes a True Negative result, where the classifier accurately identifies the lack of a condition."
+          "rationale": "The decision to freeze is based on the nature of the features learned, though it does also save computational resources."
         }
       ],
-      "hint": "Think of this as a 'miss' where the system fails to detect an existing condition."
+      "hint": "Think about the hierarchy of features a model learns as it processes images."
     },
     {
-      "question": "According to researchers like Davide Chicco and Giuseppe Jurman, which metric is considered the most informative for evaluating a confusion matrix?",
+      "question": "Which of the following best describes the core mechanism of Low-Rank Adaptation (LoRA)?",
       "answerOptions": [
         {
-          "text": "Matthews correlation coefficient (MCC)",
+          "text": "It adds a low-rank matrix to the original weight matrix, allowing for parameter-efficient updates without changing the base model weights.",
           "isCorrect": true,
-          "rationale": "MCC is highlighted as more reliable and informative than accuracy or F1 score, particularly for unbalanced datasets."
+          "rationale": "LoRA focuses on training a small number of additional parameters that modulate the behavior of a frozen base model."
         },
         {
-          "text": "Overall Accuracy",
+          "text": "It reduces the precision of model weights from floating-point to integers to save memory.",
           "isCorrect": false,
-          "rationale": "Accuracy can be misleading if the dataset is unbalanced, as a model could achieve high accuracy by simply guessing the majority class."
+          "rationale": "This describes quantization, whereas LoRA is an architectural adapter technique."
         },
         {
-          "text": "F1 Score",
+          "text": "It identifies and removes redundant neurons from the network to create a sparse structure.",
           "isCorrect": false,
-          "rationale": "The source material notes that the F1 score can be unreliable in unbalanced cases compared to metrics like informedness or MCC."
+          "rationale": "Identifying and removing redundant structures is known as pruning, which is distinct from low-rank adaptation."
         },
         {
-          "text": "True Positive Rate (Sensitivity)",
+          "text": "It modifies the representations of less than $1\\%$ of the model's hidden layers during inference time.",
           "isCorrect": false,
-          "rationale": "While sensitivity is important, it only measures the recognition rate for the positive class and does not provide a holistic view of the matrix."
+          "rationale": "This describes Representation Fine-Tuning (ReFT), which is a representation-based equivalent to LoRA."
         }
       ],
-      "hint": "This metric is often preferred over F1 and Accuracy for binary classification evaluation."
+      "hint": "Think about how a small amount of new data can be added to a large, fixed set of values."
     },
     {
-      "question": "In LLM evaluation, what does the 'Faithfulness' metric specifically measure?",
+      "question": "The essence of overfitting is the tendency of a model to mistakenly identify which of the following as underlying structure?",
       "answerOptions": [
         {
-          "text": "Whether the model's answer is grounded in and derived solely from the provided source context.",
+          "text": "Residual variation or statistical noise.",
           "isCorrect": true,
-          "rationale": "Faithfulness ensures that the model is not 'hallucinating' information and that its claims can be verified against the source text."
+          "rationale": "Overfitting occurs when the model 'memorizes' the specific random fluctuations in the training set rather than learning generalizable patterns."
         },
         {
-          "text": "Whether the model followed the specific formatting instructions provided in the prompt.",
+          "text": "Nonlinear relationships in a large dataset.",
           "isCorrect": false,
-          "rationale": "This refers to 'Instruction Following', which focuses on structure and format compliance rather than factual grounding."
+          "rationale": "Capturing legitimate nonlinear relationships is a goal of complex models; noise is the irrelevant data that causes errors."
         },
         {
-          "text": "The naturalness and flow of the generated language.",
+          "text": "The global minimum of the objective function $Q(w)$.",
           "isCorrect": false,
-          "rationale": "This is measured by 'Fluency', which focuses on linguistic quality rather than the accuracy of the content."
+          "rationale": "Finding the global minimum is the ideal goal of optimization; overfitting represents a failure of that minimum to generalize."
         },
         {
-          "text": "The semantic similarity between the model's output and a reference ground truth.",
+          "text": "Independent variables that have high variance.",
           "isCorrect": false,
-          "rationale": "This describes metrics like 'BERTScore' or 'Accuracy', which compare a prediction to a known correct answer."
+          "rationale": "High variance in variables is a data characteristic; overfitting is the model's over-reliance on the specific instances of that data."
         }
       ],
-      "hint": "This metric is critical for RAG systems to ensure information is 'grounded'."
+      "hint": "Consider what part of the data is unique to the training set and not present in the real world."
     },
     {
-      "question": "What is 'Verbosity Bias' in the context of using an LLM-as-Judge to evaluate another model?",
+      "question": "According to the 'Principle of Parsimony' mentioned in the source material, how can overfitting be avoided in statistical inference?",
       "answerOptions": [
         {
-          "text": "The tendency of the judge to favor longer answers even if a shorter answer is more accurate.",
+          "text": "By selecting the simplest model that adequately explains the data.",
           "isCorrect": true,
-          "rationale": "LLM judges often assume 'longer equals more thoughtful', leading to inflated scores for wordy but potentially lower-quality responses."
+          "rationale": "Parsimony suggests that a model should not be more complex than necessary, as unnecessary parameters increase sampling variance."
         },
         {
-          "text": "The tendency of the judge to favor the first answer it reads when comparing two options.",
+          "text": "By increasing the number of variables until the coefficient of determination $R^2$ reaches $1.0$.",
           "isCorrect": false,
-          "rationale": "This describes 'Position Bias', which is related to the order of presentation rather than the length of the text."
+          "rationale": "A perfect $R^2$ often indicates extreme overfitting, as the model has likely memorized the noise in the data."
         },
         {
-          "text": "The tendency of a judge to rate models from its own developer family higher than others.",
+          "text": "By ensuring that the number of parameters equals the number of observations $n$.",
           "isCorrect": false,
-          "rationale": "This is 'Self-preference Bias', where a model like GPT-4 might favor GPT-generated text over Claude-generated text."
+          "rationale": "Having as many parameters as observations allows for perfect memorization, which is an extreme example of overfitting."
         },
         {
-          "text": "The failure of the judge to understand complex technical jargon in the output.",
+          "text": "By exclusively using linear regression for all types of nonlinear data.",
           "isCorrect": false,
-          "rationale": "This refers to a limitation in domain expertise rather than a specific behavioral bias toward text length."
+          "rationale": "Using a linear model for nonlinear data results in underfitting, which is the opposite problem of overfitting."
         }
       ],
-      "hint": "Consider how the length of a response might unfairly influence a machine's perception of its quality."
+      "hint": "Think of Occam's Razor applied to mathematical modeling."
     },
     {
-      "question": "Which standard LLM benchmark is composed of 57 subjects across math, history, law, and medicine to test broad knowledge?",
+      "question": "Which consequence is most likely to occur when a generative model is overfitted to its training data?",
       "answerOptions": [
         {
-          "text": "MMLU (Massive Multitask Language Understanding)",
+          "text": "The model may produce outputs that are virtually identical to specific instances from its training set.",
           "isCorrect": true,
-          "rationale": "MMLU is the industry standard for testing a model's broad knowledge across a wide variety of academic subjects."
+          "rationale": "Overfitted models lose the ability to generate novel content and instead reproduce the 'memorized' training examples."
         },
         {
-          "text": "HumanEval",
+          "text": "The model will automatically simplify its architecture to improve portability.",
           "isCorrect": false,
-          "rationale": "HumanEval specifically tests code generation ability using 164 hand-crafted coding problems."
+          "rationale": "Portability is lost as models become more complex and overfitted, not gained automatically."
         },
         {
-          "text": "GSM8K",
+          "text": "The validation error will decrease as the number of training cycles increases.",
           "isCorrect": false,
-          "rationale": "GSM8K focuses on grade-school level math word problems to test multi-step reasoning."
+          "rationale": "In overfitting, training error decreases while validation error typically increases."
         },
         {
-          "text": "TruthfulQA",
+          "text": "The model will develop robustness to distribution shifts in new datasets.",
           "isCorrect": false,
-          "rationale": "TruthfulQA is designed to test if a model avoids common human misconceptions rather than testing general subject knowledge."
+          "rationale": "Overfitting specifically degrades a model's robustness and performance on unseen, shifted data."
         }
       ],
-      "hint": "It is often used to answer the question, 'How smart is the model?' across many domains."
+      "hint": "Reflect on why copyright issues might arise with models like Stable Diffusion."
     },
     {
-      "question": "What is 'Contamination' problem in standard AI benchmarks?",
+      "question": "In the context of Large Language Models (LLMs), what is the primary goal of 'quantization'?",
       "answerOptions": [
         {
-          "text": "Benchmark data appearing in the model's training set, leading to memorized rather than reasoned answers.",
+          "text": "To constrain weights from a continuous set of values to a smaller, discrete set for optimization.",
           "isCorrect": true,
-          "rationale": "Contamination causes inflated scores because the model has already 'seen' the test questions during its training phase."
+          "rationale": "Quantization reduces the bit-width of model parameters, which saves memory and can speed up inference."
         },
         {
-          "text": "Users entering toxic prompts that degrade the model's performance over time.",
+          "text": "To increase the rank of the weight matrix to capture more complex representations.",
           "isCorrect": false,
-          "rationale": "This describes a safety or drift issue, not the specific benchmarking problem of data leakage."
+          "rationale": "Increasing rank would likely increase complexity and parameter count, whereas quantization is a form of compression."
         },
         {
-          "text": "The inability of a benchmark to scale to systems with multiple processors.",
+          "text": "To randomly remove $50\\%$ of the neurons to prevent the model from memorizing noise.",
           "isCorrect": false,
-          "rationale": "This is a scalability limitation of the benchmark tool itself, not a data-related contamination issue."
+          "rationale": "This describes dropout regularization, not the discretization process of quantization."
         },
         {
-          "text": "The use of multiple metrics that contradict each other's results.",
+          "text": "To ensure that the model follows a linear learning rate schedule throughout training.",
           "isCorrect": false,
-          "rationale": "While conflicting metrics are a challenge, contamination refers specifically to the integrity of the test data relative to training data."
+          "rationale": "Learning rate schedules are part of the optimization algorithm (like SGD), not weight discretization."
         }
       ],
-      "hint": "Think of this as a model 'cheating' because it has already seen the exam questions."
+      "hint": "Think about the transition from real numbers to integers."
     },
     {
-      "question": "In the context of machine learning theory, what is 'Empirical Risk Minimization'?",
+      "question": "What is the fundamental difference between standard (batch) gradient descent and stochastic gradient descent (SGD)?",
       "answerOptions": [
         {
-          "text": "A framework where learning algorithms aim to minimize the error rate on the provided training data.",
+          "text": "Batch gradient descent calculates the gradient using the entire dataset, while SGD estimates it using a randomly selected subset or single sample.",
           "isCorrect": true,
-          "rationale": "Under the PAC learning framework, most traditional and deep learning algorithms are described as minimizing risk (error) based on observed samples."
+          "rationale": "SGD reduces the computational burden by approximating the true gradient, allowing for faster iterations in large-scale problems."
         },
         {
-          "text": "A method for reducing the physical power consumption of a CPU during training.",
+          "text": "SGD only works for convex objective functions, whereas batch gradient descent works for all differentiable functions.",
           "isCorrect": false,
-          "rationale": "While power consumption is a benchmarking concern, Empirical Risk Minimization is a statistical and mathematical concept related to model accuracy."
+          "rationale": "Both methods are used for various types of functions, though convergence guarantees vary based on convexity."
         },
         {
-          "text": "The process of removing biased data from a dataset before a model is trained.",
+          "text": "Batch gradient descent requires a learning rate $\\eta$, but SGD does not use one.",
           "isCorrect": false,
-          "rationale": "This is a data cleaning or ethics task, whereas risk minimization is the core objective function of the learning algorithm."
+          "rationale": "Both methods rely on a learning rate to determine the size of the update steps taken during optimization."
         },
         {
-          "text": "A technique used to ensure that a model's 'hallucination' rate is kept below a certain threshold.",
+          "text": "SGD is an exact method, while batch gradient descent is a stochastic approximation.",
           "isCorrect": false,
-          "rationale": "Hallucination reduction is a goal in generative AI, but Empirical Risk Minimization is a broader mathematical principle used in almost all ML models."
+          "rationale": "The roles are reversed; batch gradient descent uses the true gradient, while SGD is the approximation."
         }
       ],
-      "hint": "This concept relates to the 'Probably Approximately Correct' (PAC) learning framework."
+      "hint": "Consider the amount of data processed before each parameter update."
     },
     {
-      "question": "Which type of confusion matrix extension uses 'optimal transport' and 'maximum entropy' to handle multi-label or soft-label classifications?",
+      "question": "How does the 'Momentum method' modify the basic stochastic gradient descent update rule?",
       "answerOptions": [
         {
-          "text": "Transport-based Confusion Matrix (TCM)",
+          "text": "It determines the next update as a linear combination of the current gradient and the previous update.",
           "isCorrect": true,
-          "rationale": "TCM builds on optimal transport theory to allow clear comparison between predictions and labels in complex, non-binary settings."
+          "rationale": "Momentum helps prevent oscillations and accelerates the model's 'travel' through parameter space in a consistent direction."
         },
         {
-          "text": "Matching Matrix",
+          "text": "It divides the learning rate by a running average of the magnitudes of recent gradients.",
           "isCorrect": false,
-          "rationale": "A matching matrix is simply another name for a standard confusion matrix used in unsupervised learning contexts."
+          "rationale": "This describes adaptive learning rate methods like RMSProp or Adagrad."
         },
         {
-          "text": "Contingency Table",
+          "text": "It evaluates the stochastic gradient at the next iterate rather than the current one to ensure stability.",
           "isCorrect": false,
-          "rationale": "A confusion matrix is a special kind of contingency table, but the specific extension for soft-labels mentioned is the TCM."
+          "rationale": "This describes implicit updates (ISGD), which are used to solve numerical instability issues."
         },
         {
-          "text": "Error Matrix",
+          "text": "It records an average of the parameter vector $w$ over time to produce the final output.",
           "isCorrect": false,
-          "rationale": "Error matrix is a synonym for the standard confusion matrix, not the advanced multi-label extension."
+          "rationale": "This describes averaged stochastic gradient descent (ASGD), not the momentum-based update."
         }
       ],
-      "hint": "Look for the acronym that stands for a 'unified theory' of confusion matrices."
+      "hint": "Think of a physical particle gaining acceleration as it rolls down a hill."
     },
     {
-      "question": "What is 'Regression Detection' in the lifecycle of an AI product?",
+      "question": "What specific problem does the AdaGrad algorithm attempt to solve in sparse data settings?",
       "answerOptions": [
         {
-          "text": "Comparing a new version's evaluation scores against a baseline to ensure updates haven't broken existing capabilities.",
+          "text": "It adjusts the learning rate per parameter, increasing it for sparse parameters and decreasing it for frequent ones.",
           "isCorrect": true,
-          "rationale": "Regression detection is vital to ensure that prompt changes or model swaps don't inadvertently degrade performance on previous tasks."
+          "rationale": "By scaling the learning rate using the square root of the sum of historical squared gradients, AdaGrad balances updates across all features."
         },
         {
-          "text": "Using linear regression to predict the future growth of a user base.",
+          "text": "It prevents the model from underfitting by increasing the complexity of the objective function $Q(w)$.",
           "isCorrect": false,
-          "rationale": "This is a business analytics use of the term 'regression', not the software testing/AI evaluation meaning."
+          "rationale": "AdaGrad is an optimizer, not a method for altering the model's capacity or objective function complexity."
         },
         {
-          "text": "A method for detecting if a model is 'hallucinating' in real-time production.",
+          "text": "It uses a forgetting factor $\\gamma$ to ensure that the learning rate never becomes too small.",
           "isCorrect": false,
-          "rationale": "Hallucination detection is a specific quality check, whereas regression detection is about performance drops compared to a prior version."
+          "rationale": "AdaGrad's learning rate tends to diminish over time; the use of a forgetting factor is a feature of RMSProp."
         },
         {
-          "text": "Identifying if a model has 'collapsed' and is only producing a single type of output.",
+          "text": "It applies a linear interpolation between fine-tuned and original weights to increase robustness.",
           "isCorrect": false,
-          "rationale": "Model collapse is a limitation where a model loses diversity, while regression is a decrease in measured accuracy or quality."
+          "rationale": "Weight interpolation is a robustness technique, not an adaptive learning rate strategy."
         }
       ],
-      "hint": "Consider the goal of 'catching a fall' in performance before a new version is deployed."
+      "hint": "Consider how an algorithm might handle features that appear very infrequently in the training data."
     },
     {
-      "question": "Which benchmarking principle emphasizes that benchmark results must be verifiable and consistent across different runs?",
+      "question": "Which of the following describes the Adam optimizer, published in 2014?",
       "answerOptions": [
         {
-          "text": "Repeatability",
+          "text": "It combines adaptive learning rates from RMSProp with the feature of moving averages from the Momentum method.",
           "isCorrect": true,
-          "rationale": "Repeatability ensures that results are not due to chance and can be independently verified by others."
+          "rationale": "Adam utilizes running averages of both the gradients (first moments) and the squared gradients (second moments) to update weights."
         },
         {
-          "text": "Equity",
+          "text": "It is a second-order method that requires calculating the Hessian matrix at every step.",
           "isCorrect": false,
-          "rationale": "Equity refers to the fair comparison of all systems, rather than the consistency of results over multiple trials."
+          "rationale": "Adam is a first-order method, meaning it only requires the gradient, making it computationally efficient for large models."
         },
         {
-          "text": "Relevance",
+          "text": "It is the only optimizer currently supported by the PyTorch and TensorFlow libraries.",
           "isCorrect": false,
-          "rationale": "Relevance focuses on whether the benchmark measures features that are vital to the actual use case."
+          "rationale": "While Adam-derived optimizers are popular, libraries still support classic SGD, RMSProp, and others."
         },
         {
-          "text": "Transparency",
+          "text": "It relies on full-batch evaluations to ensure the algorithm never diverges.",
           "isCorrect": false,
-          "rationale": "Transparency ensures that the metrics used are easy to understand, not necessarily that the tests are repeatable."
+          "rationale": "Adam is designed to work efficiently with mini-batches in a stochastic setting."
         }
       ],
-      "hint": "This principle is one of the seven vital characteristics and relates to scientific verification."
+      "hint": "Think of it as a hybrid of two other major SGD extensions."
     },
     {
-      "question": "In the 'Confusion Matrix' example of 12 individuals, if the system predicts 'Cancer' for a 'Non-cancer' individual, what is this specific error called?",
+      "question": "In the context of model diagnostics, a situation where validation error increases while training error continues to decrease is a primary indicator of:",
       "answerOptions": [
         {
-          "text": "False Positive (FP)",
+          "text": "Overfitting.",
           "isCorrect": true,
-          "rationale": "An FP occurs when the actual condition is negative (0) but the predicted condition is positive (1)."
+          "rationale": "This divergence indicates that the model is performing better on the data it has seen but losing its ability to generalize to new data."
         },
         {
-          "text": "False Negative (FN)",
+          "text": "Underfitting.",
           "isCorrect": false,
-          "rationale": "An FN would occur if the system predicted 'Non-cancer' for an individual who actually has 'Cancer'."
+          "rationale": "Underfitting is typically indicated by high error on both training and validation sets because the model is too simple."
         },
         {
-          "text": "True Negative (TN)",
+          "text": "Benign overfitting.",
           "isCorrect": false,
-          "rationale": "A TN would occur if the system correctly predicted 'Non-cancer' for a person without cancer."
+          "rationale": "Benign overfitting refers to models that generalize well despite perfect training accuracy, which is a specific and somewhat counter-intuitive case."
         },
         {
-          "text": "Type II Error",
+          "text": "Distribution shift.",
           "isCorrect": false,
-          "rationale": "Type II error is a synonym for False Negative, not False Positive (which is a Type I error)."
+          "rationale": "While distribution shift causes high error, the specific trend of diverging training and validation errors during training is the classic sign of overfitting."
         }
       ],
-      "hint": "This is also known as a 'false alarm' or Type I error."
+      "hint": "Focus on the relationship between learning and 'memorizing' during the training cycle."
+    },
+    {
+      "question": "How does the technique of 'weight interpolation' help mitigate the loss of robustness caused by fine-tuning?",
+      "answerOptions": [
+        {
+          "text": "It linearly blends the weights of the fine-tuned model with those of the original pre-trained model.",
+          "isCorrect": true,
+          "rationale": "This approach aims to retain the specialized performance of the fine-tuned model while recovering the general out-of-distribution performance of the original."
+        },
+        {
+          "text": "It identifies and removes the $10$ most significant parameters per observation.",
+          "isCorrect": false,
+          "rationale": "This is a misinterpretation of the 'one in ten rule,' which is a guideline for the number of observations needed for reliable regression."
+        },
+        {
+          "text": "It replaces all parameters with a low-rank matrix to decrease space requirements.",
+          "isCorrect": false,
+          "rationale": "This describes LoRA, which is used for efficiency rather than specifically for interpolating weights for robustness."
+        },
+        {
+          "text": "It uses Reinforcement Learning from Human Feedback (RLHF) to re-train the output layer.",
+          "isCorrect": false,
+          "rationale": "RLHF is a fine-tuning objective for alignment, not a weight interpolation technique for distribution shifts."
+        }
+      ],
+      "hint": "Think about finding a middle ground between a 'new' specialist and an 'old' generalist."
+    },
+    {
+      "question": "What is the primary advantage of using 'mini-batches' in stochastic gradient descent over single-sample updates?",
+      "answerOptions": [
+        {
+          "text": "They allow for smoother convergence and take advantage of optimized vectorization libraries.",
+          "isCorrect": true,
+          "rationale": "Processing multiple samples at once provides a more stable gradient estimate and is computationally faster on modern hardware."
+        },
+        {
+          "text": "They guarantee that the model will always reach the global minimum of a non-convex function.",
+          "isCorrect": false,
+          "rationale": "No stochastic method can guarantee reaching the global minimum for non-convex functions; they can only guarantee a local minimum under certain conditions."
+        },
+        {
+          "text": "They eliminate the need to shuffle the training data between passes.",
+          "isCorrect": false,
+          "rationale": "Data shuffling is still recommended for mini-batches to prevent the model from learning the order of the data."
+        },
+        {
+          "text": "They reduce the model's sensitivity to the forgetting factor $\\gamma$.",
+          "isCorrect": false,
+          "rationale": "The forgetting factor is an internal parameter of specific optimizers like RMSProp, not a result of mini-batch processing."
+        }
+      ],
+      "hint": "Consider the trade-off between computational efficiency and the stability of the gradient estimate."
+    },
+    {
+      "question": "Under what condition can stochastic gradient descent be said to converge 'almost surely' to a global minimum?",
+      "answerOptions": [
+        {
+          "text": "When the objective function is convex or pseudoconvex and learning rates decrease appropriately.",
+          "isCorrect": true,
+          "rationale": "Convexity ensures that any local minimum is a global minimum, and proper learning rate schedules allow for convergence."
+        },
+        {
+          "text": "When the model is overparameterized and the learning rate $\\eta$ remains constant.",
+          "isCorrect": false,
+          "rationale": "Constant learning rates often cause the model to oscillate around the minimum rather than converging exactly."
+        },
+        {
+          "text": "When the number of parameters $w$ is exactly equal to the number of observations $n$.",
+          "isCorrect": false,
+          "rationale": "This condition usually leads to extreme overfitting and perfect memorization, not a generalizable global minimum."
+        },
+        {
+          "text": "When the central difference approximation is used instead of the true gradient.",
+          "isCorrect": false,
+          "rationale": "Central differences are a way to estimate the gradient when it is not directly calculable, but they do not guarantee global convergence."
+        }
+      ],
+      "hint": "Think about the shape of the objective function and the behavior of the step size."
     }
   ]
 }

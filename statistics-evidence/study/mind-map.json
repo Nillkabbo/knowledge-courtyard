@@ -1,161 +1,206 @@
 {
-  "name": "Distributed Systems",
+  "name": "Statistics and Evidence",
   "children": [
     {
-      "name": "Fundamental Concepts",
+      "name": "Foundational Concepts",
       "children": [
         {
-          "name": "Logical Time",
-          "children": [
-            {
-              "name": "Lamport Clocks"
-            },
-            {
-              "name": "Happens-before Relation"
-            },
-            {
-              "name": "Causality"
-            }
-          ]
+          "name": "Definition: Science of Uncertainty"
         },
         {
-          "name": "Consistency Models",
-          "children": [
-            {
-              "name": "Eventual Consistency"
-            },
-            {
-              "name": "Strong Eventual Consistency"
-            },
-            {
-              "name": "ACID vs BASE"
-            }
-          ]
+          "name": "Population vs. Sample"
         },
         {
-          "name": "CAP Theorem",
-          "children": [
-            {
-              "name": "Consistency"
-            },
-            {
-              "name": "Availability"
-            },
-            {
-              "name": "Partition Tolerance"
-            }
-          ]
+          "name": "Data Types: Quantitative vs. Qualitative"
+        },
+        {
+          "name": "Levels of Measurement: Nominal, Ordinal, Interval, Ratio"
         }
       ]
     },
     {
-      "name": "Consensus & Coordination",
+      "name": "Data Collection and Sampling",
       "children": [
         {
-          "name": "Algorithms",
+          "name": "Probability Sampling",
           "children": [
             {
-              "name": "Paxos"
+              "name": "Simple Random Sampling"
             },
             {
-              "name": "Raft"
+              "name": "Systematic Sampling"
             },
             {
-              "name": "Byzantine Fault Tolerance"
+              "name": "Stratified Sampling"
+            },
+            {
+              "name": "Cluster Sampling"
+            },
+            {
+              "name": "PPS Sampling"
             }
           ]
         },
         {
-          "name": "Mutual Exclusion",
+          "name": "Nonprobability Sampling",
           "children": [
             {
-              "name": "Semaphores"
+              "name": "Convenience/Accidental Sampling"
             },
             {
-              "name": "Race Conditions"
+              "name": "Quota Sampling"
             },
             {
-              "name": "Mutex"
+              "name": "Snowball Sampling"
+            },
+            {
+              "name": "Voluntary Sampling"
             }
           ]
+        },
+        {
+          "name": "Sampling Frame"
+        },
+        {
+          "name": "Sampling Errors vs. Non-sampling Errors"
         }
       ]
     },
     {
-      "name": "Data Storage & Processing",
+      "name": "Descriptive Statistics",
       "children": [
         {
-          "name": "Partitioning (Sharding)",
+          "name": "Central Tendency",
           "children": [
             {
-              "name": "Horizontal Partitioning"
+              "name": "Mean"
             },
             {
-              "name": "Vertical Partitioning"
+              "name": "Median"
             },
             {
-              "name": "Consistent Hashing"
+              "name": "Mode"
             }
           ]
         },
         {
-          "name": "Replication",
+          "name": "Dispersion",
           "children": [
             {
-              "name": "Single-leader"
+              "name": "Variance"
             },
             {
-              "name": "Multi-leader"
+              "name": "Standard Deviation"
             },
             {
-              "name": "Leaderless"
+              "name": "Range"
             }
           ]
         },
         {
-          "name": "Processing Models",
-          "children": [
-            {
-              "name": "MapReduce"
-            },
-            {
-              "name": "Stream Processing"
-            },
-            {
-              "name": "Event Sourcing"
-            }
-          ]
+          "name": "Normal Distribution (Gauss)"
+        },
+        {
+          "name": "68-95-99.7 Rule"
         }
       ]
     },
     {
-      "name": "Distributed Transactions",
+      "name": "Inferential Statistics",
       "children": [
         {
-          "name": "Two-Phase Commit (2PC)"
+          "name": "Hypothesis Testing",
+          "children": [
+            {
+              "name": "Null Hypothesis (H0)"
+            },
+            {
+              "name": "Alternative Hypothesis (H1)"
+            },
+            {
+              "name": "p-value and Significance Levels"
+            },
+            {
+              "name": "Type I and Type II Errors"
+            }
+          ]
         },
         {
-          "name": "Three-Phase Commit (3PC)"
+          "name": "Interval Estimation",
+          "children": [
+            {
+              "name": "Confidence Intervals"
+            },
+            {
+              "name": "Margin of Error"
+            },
+            {
+              "name": "Precision vs. Reliability"
+            }
+          ]
         },
         {
-          "name": "Saga Pattern"
+          "name": "Bayesian Inference"
+        },
+        {
+          "name": "Causal Inference (DAGs and do-operator)"
         }
       ]
     },
     {
-      "name": "Technologies & Platforms",
+      "name": "Experimental Design",
       "children": [
         {
-          "name": "Apache Kafka"
+          "name": "Principles: Randomization, Replication, Blocking"
         },
         {
-          "name": "Amazon Dynamo"
+          "name": "A/B Testing"
         },
         {
-          "name": "Distributed Hash Tables (DHT)"
+          "name": "Experimental vs. Observational Studies"
         },
         {
-          "name": "Blockchain (Bitcoin)"
+          "name": "Confounding Variables"
+        }
+      ]
+    },
+    {
+      "name": "Scientific Integrity",
+      "children": [
+        {
+          "name": "Replication Crisis"
+        },
+        {
+          "name": "p-hacking"
+        },
+        {
+          "name": "Preregistration and Open Data"
+        },
+        {
+          "name": "Misuse of Statistics"
+        }
+      ]
+    },
+    {
+      "name": "Historical Milestones",
+      "children": [
+        {
+          "name": "Al-Kindi (850): Frequency Analysis"
+        },
+        {
+          "name": "John Graunt (1662): Bills of Mortality"
+        },
+        {
+          "name": "Gauss (1809): Normal Distribution"
+        },
+        {
+          "name": "Fisher (1925): Hypothesis Testing"
+        },
+        {
+          "name": "Neyman (1937): Confidence Intervals"
+        },
+        {
+          "name": "Pearl (2000): Causality"
         }
       ]
     }

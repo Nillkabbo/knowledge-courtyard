@@ -1,265 +1,334 @@
 {
-  "title": "Prompting Quiz",
+  "title": "JSON Quiz",
   "questions": [
     {
-      "question": "What is the primary distinction between prompt engineering and context engineering according to the text?",
+      "question": "Which of the following data types is NOT inherently supported by the standard JSON specification?",
       "answerOptions": [
         {
-          "text": "Prompt engineering focuses on natural language inputs, while context engineering manages non-prompt elements like system instructions and metadata.",
-          "isCorrect": true,
-          "rationale": "The source material defines context engineering as the management of non-prompt contexts such as system instructions, API tools, and tokens."
+          "text": "Number",
+          "rationale": "JSON supports signed decimal numbers that can include fractional parts and exponential notation.",
+          "isCorrect": false
         },
         {
-          "text": "Prompt engineering involves fine-tuning model weights, whereas context engineering only modifies the user's input text.",
-          "isCorrect": false,
-          "rationale": "Prompt engineering is about structuring inputs, but neither it nor context engineering involves the permanent weight updates associated with fine-tuning."
+          "text": "Boolean",
+          "rationale": "True and false values are explicitly defined as basic data types within the JSON framework.",
+          "isCorrect": false
         },
         {
-          "text": "Prompt engineering is performed by software engineers, while context engineering is reserved for general corporate employees.",
-          "isCorrect": false,
-          "rationale": "The text describes context engineering specifically as an area of software engineering, while prompting is seen as a general skill."
+          "text": "Undefined",
+          "rationale": "While JavaScript has an 'undefined' type, JSON only recognizes 'null' as an empty or non-existent value.",
+          "isCorrect": true
         },
         {
-          "text": "Context engineering is used exclusively for image generation, while prompt engineering is used for large language models.",
-          "isCorrect": false,
-          "rationale": "Both disciplines are applied to generative AI systems generally, including text-based large language models."
+          "text": "Array",
+          "rationale": "An ordered list of values enclosed in square brackets is a fundamental structure in JSON.",
+          "isCorrect": false
         }
       ],
-      "hint": "Consider which area focuses on the background infrastructure and operational metadata of the AI interaction."
+      "hint": "Consider the differences between standard JavaScript variables and the subset used for data interchange."
     },
     {
-      "question": "According to research mentioned in the source, how much can accuracy shift simply by reordering the examples provided in a prompt?",
+      "question": "According to the 2017 international standard, how should the acronym 'JSON' be pronounced?",
       "answerOptions": [
         {
-          "text": "Accuracy remains stable regardless of example order due to model robustness.",
-          "isCorrect": false,
-          "rationale": "Research highlights that models are actually highly sensitive to subtle changes in prompt structure."
+          "text": "Like the name 'Jason'",
+          "rationale": "The ECMA-404 and ISO/IEC standards specify the pronunciation as in 'Jason and the Argonauts'.",
+          "isCorrect": true
         },
         {
-          "text": "Shifts of more than $40\\%$ in accuracy have been observed.",
-          "isCorrect": true,
-          "rationale": "The material notes that performance is highly sensitive to the ordering of examples, with shifts exceeding $40\\%$ in some cases."
+          "text": "J-S-O-N (letter by letter)",
+          "rationale": "While some users may spell it out, the official standard provides a specific phonetic guide.",
+          "isCorrect": false
         },
         {
-          "text": "Accuracy only shifts by approximately $5\\%$ in extremely small models.",
-          "isCorrect": false,
-          "rationale": "The text indicates that this sensitivity persists even with larger model sizes and additional examples."
+          "text": "Jay-SAWN",
+          "rationale": "This is a common regional pronunciation, but the international standard points to a different classical reference.",
+          "isCorrect": false
         },
         {
-          "text": "Shifts only occur when using negative prompts in text-to-image models.",
-          "isCorrect": false,
-          "rationale": "Sensitivity to example ordering is specifically discussed in the context of large language model performance and in-context learning."
+          "text": "Jay-SUN",
+          "rationale": "This is phonetically similar to the standard, but the standard specifically references a mythical hero.",
+          "isCorrect": false
         }
       ],
-      "hint": "Think about the high degree of sensitivity models exhibit toward formatting and structural variations."
+      "hint": "The standard references a specific character from Greek mythology."
     },
     {
-      "question": "Which property describes 'in-context learning' as it relates to model scale?",
+      "question": "In the Model Context Protocol (MCP) architecture, which component is typically an AI agent that requires services from external servers?",
       "answerOptions": [
         {
-          "text": "It is an emergent ability where efficacy increases at a different rate in larger models compared to smaller ones.",
-          "isCorrect": true,
-          "rationale": "In-context learning is described as an emergent property of model scale that occurs when scaling laws break."
+          "text": "MCP Server",
+          "rationale": "The server is the component that provides the specific tools or resources, such as database access.",
+          "isCorrect": false
         },
         {
-          "text": "It is a permanent change to the model's parameters similar to fine-tuning.",
-          "isCorrect": false,
-          "rationale": "Unlike fine-tuning, in-context learning is temporary and does not produce lasting changes to the model."
+          "text": "MCP Client",
+          "rationale": "The client is a dedicated interface created by the host to communicate with a specific server.",
+          "isCorrect": false
         },
         {
-          "text": "It is a linear property where every increase in parameters leads to an identical increase in learning capability.",
-          "isCorrect": false,
-          "rationale": "The text states that breaks in scaling laws occur, meaning the efficacy does not increase at a uniform linear rate."
+          "text": "MCP Host",
+          "rationale": "The host acts as the main AI agent or application that orchestrates interactions between the LLM and the protocol components.",
+          "isCorrect": true
         },
         {
-          "text": "It is a capability found only in early rule-based expert systems from the $1990$s.",
-          "isCorrect": false,
-          "rationale": "In-context learning is specifically associated with modern large language models, while $1990$s systems used rule-based Q&A interfaces."
+          "text": "MCP Gateway",
+          "rationale": "While gateways exist in networking, they are not one of the three primary distinct roles defined in the core MCP architecture.",
+          "isCorrect": false
         }
       ],
-      "hint": "Recall how the effectiveness of the model changes as it reaches a certain size."
+      "hint": "This component manages the LLM and instructs other sub-components to call tools."
     },
     {
-      "question": "What phrase was identified by researchers at Google and the University of Tokyo as a way to trigger zero-shot chain-of-thought reasoning?",
+      "question": "Which specific transport protocol does the Model Context Protocol use for communication between clients and servers?",
       "answerOptions": [
         {
-          "text": "Provide the final answer immediately.",
-          "isCorrect": false,
-          "rationale": "This instruction would likely discourage the model from generating the intermediate reasoning steps required for chain-of-thought."
+          "text": "SOAP",
+          "rationale": "SOAP is an XML-based protocol, whereas MCP relies on a more lightweight, JSON-based messaging format.",
+          "isCorrect": false
         },
         {
-          "text": "Let's think step-by-step.",
-          "isCorrect": true,
-          "rationale": "Appending this specific phrase allows for chain-of-thought to be employed as a zero-shot technique without needing input/output exemplars."
+          "text": "REST",
+          "rationale": "While common in web APIs, MCP uses a specific remote procedure call framework for its message flow.",
+          "isCorrect": false
         },
         {
-          "text": "Use the style of Greg Rutkowski.",
-          "isCorrect": false,
-          "rationale": "This phrase is associated with styling in text-to-image models rather than reasoning in language models."
+          "text": "JSON-RPC 2.0",
+          "rationale": "MCP leverages JSON-RPC 2.0 as the standard for sending requests and receiving notifications between components.",
+          "isCorrect": true
         },
         {
-          "text": "Ignore previous instructions.",
-          "isCorrect": false,
-          "rationale": "This is a common tactic used in prompt injection attacks rather than a standard reasoning enhancement technique."
+          "text": "GraphQL",
+          "rationale": "GraphQL is a query language for APIs, but it does not serve as the underlying transport for MCP's server-client interactions.",
+          "isCorrect": false
         }
       ],
-      "hint": "Look for a common procedural instruction that encourages logical progression."
+      "hint": "Think of a protocol that enables remote procedure calls using JSON syntax."
     },
     {
-      "question": "How does the 'self-consistency' technique improve the reliability of model outputs?",
+      "question": "What was the primary reason Douglas Crockford added the 'Good, not Evil' clause to the original JSON license?",
       "answerOptions": [
         {
-          "text": "It performs multiple reasoning rollouts and selects the most common conclusion.",
-          "isCorrect": true,
-          "rationale": "Self-consistency involves generating several chain-of-thought paths and using a majority vote to determine the final answer."
+          "text": "To prevent use by military organizations",
+          "rationale": "The clause was not intended for a specific sector but rather as a way to mock corporate legal procedures.",
+          "isCorrect": false
         },
         {
-          "text": "It restricts the model to a single line of reasoning to prevent contradictions.",
-          "isCorrect": false,
-          "rationale": "Self-consistency actually encourages multiple diverse paths of reasoning rather than a single restricted one."
+          "text": "To ensure interoperability",
+          "rationale": "Interoperability is a technical goal achieved through syntax standards, not through licensing clauses.",
+          "isCorrect": false
         },
         {
-          "text": "It automatically adjusts the model's temperature to zero for every query.",
-          "isCorrect": false,
-          "rationale": "The technique focuses on the consensus of multiple rollouts rather than adjusting specific sampling parameters like temperature."
+          "text": "To mock corporate lawyers and pedantic individuals",
+          "rationale": "Crockford included the humorous clause to poke fun at overly complex software licensing and the legal profession.",
+          "isCorrect": true
         },
         {
-          "text": "It uses gradient descent to ensure the output matches a specific training label.",
-          "isCorrect": false,
-          "rationale": "Self-consistency is a prompting technique used during inference, whereas gradient descent is used for training or soft prompting."
+          "text": "To align with the Creative Commons license",
+          "rationale": "The clause actually caused compatibility issues with common open-source licenses because it restricted the purpose of use.",
+          "isCorrect": false
         }
       ],
-      "hint": "Think about how a group consensus might be more accurate than a single individual response."
+      "hint": "The creator intended this addition to be a form of satire or mockery."
     },
     {
-      "question": "In text-to-image prompting, what is the significance of word order?",
+      "question": "For maximum interoperability, what is the recommended character encoding for JSON messages exchanged in an open ecosystem?",
       "answerOptions": [
         {
-          "text": "Words closer to the start of a prompt may be emphasized more heavily by the model.",
-          "isCorrect": true,
-          "rationale": "The material notes that word order affects the output and that early words in a prompt typically receive more emphasis."
+          "text": "UTF-16",
+          "rationale": "UTF-16 is used for surrogate pairs within escaped sequences, but it is not the primary required encoding for the document itself.",
+          "isCorrect": false
         },
         {
-          "text": "The model reads prompts from right to left, prioritizing the final word.",
-          "isCorrect": false,
-          "rationale": "Standard text-to-image models generally follow a forward-reading logic that emphasizes the initial components of the description."
+          "text": "UTF-8",
+          "rationale": "The RFC 8259 standard specifies that JSON exchange must be encoded in UTF-8 to ensure widespread support.",
+          "isCorrect": true
         },
         {
-          "text": "Word order is irrelevant as long as all necessary keywords are present.",
-          "isCorrect": false,
-          "rationale": "The text explicitly states that word order affects the output, indicating it is a relevant factor in prompt engineering."
+          "text": "ASCII",
+          "rationale": "ASCII is too limited to represent the full Unicode character set supported by JSON.",
+          "isCorrect": false
         },
         {
-          "text": "Models only recognize verbs, so the order of nouns does not matter.",
-          "isCorrect": false,
-          "rationale": "Prompting involves subjects, mediums, and styles, all of which are influenced by their position in the prompt."
+          "text": "ISO-8859-1",
+          "rationale": "This legacy encoding does not support the multi-language requirements of modern data interchange.",
+          "isCorrect": false
         }
       ],
-      "hint": "Consider the 'primacy effect' and how the beginning of a sentence often sets the primary context."
+      "hint": "This is the most common variable-width character encoding used on the web."
     },
     {
-      "question": "What is the function of 'textual inversion' in the context of image generation models?",
+      "question": "In a Web API URL, which character is used to separate the endpoint from the query string parameters?",
       "answerOptions": [
         {
-          "text": "It creates a new word embedding or 'pseudo-word' based on a small set of example images.",
-          "isCorrect": true,
-          "rationale": "Textual inversion optimizes a vector to represent a specific concept or style, which can then be used in prompts like a standard word."
+          "text": "The ampersand ($&$)",
+          "rationale": "The ampersand is used to separate individual parameters within the query string from one another.",
+          "isCorrect": false
         },
         {
-          "text": "It automatically removes all negative prompts from a user's input.",
-          "isCorrect": false,
-          "rationale": "Negative prompts are a separate technique used to exclude elements, while textual inversion focuses on adding new concepts."
+          "text": "The question mark ($?$)",
+          "rationale": "The question mark denotes the end of the static endpoint and the beginning of the dynamic parameters.",
+          "isCorrect": true
         },
         {
-          "text": "It flips the pixels of a generated image to create a mirrored version.",
-          "isCorrect": false,
-          "rationale": "Textual inversion is a language-to-concept optimization process, not a literal image transformation like mirroring."
+          "text": "The hash symbol ($#$)",
+          "rationale": "The hash symbol is typically used for fragment identifiers on a page, not for API parameters.",
+          "isCorrect": false
         },
         {
-          "text": "It is a security technique used to prevent prompt injection attacks.",
-          "isCorrect": false,
-          "rationale": "While related to the model's internals, its purpose is concept personalization rather than cybersecurity."
+          "text": "The colon ($:$)",
+          "rationale": "Colons are used in JSON name-value pairs, but not as the primary separator for URL query strings.",
+          "isCorrect": false
         }
       ],
-      "hint": "Think about how a model might learn to represent a new, specific object using a custom token."
+      "hint": "Think of the punctuation that typically precedes an API key in a browser address bar."
     },
     {
-      "question": "How does Retrieval-augmented generation (RAG) assist in reducing AI hallucinations?",
+      "question": "Which of the following is a security risk associated with the Model Context Protocol identified by researchers?",
       "answerOptions": [
         {
-          "text": "By allowing the model to pull relevant information from specified documents rather than relying solely on static training data.",
-          "isCorrect": true,
-          "rationale": "RAG supplements the model's internal knowledge with dynamically retrieved external data, leading to more accurate responses."
+          "text": "Brute force password attacks",
+          "rationale": "While a general risk, the specific research highlighted vulnerabilities unique to AI model interactions.",
+          "isCorrect": false
         },
         {
-          "text": "By increasing the total number of parameters in the model until it can memorize all facts.",
-          "isCorrect": false,
-          "rationale": "RAG works by changing the prompt context at inference time, not by increasing the model's fixed parameter count."
+          "text": "Prompt injection",
+          "rationale": "Security analysis found that MCP is susceptible to prompt injection, where malicious input manipulates the AI's behavior.",
+          "isCorrect": true
         },
         {
-          "text": "By deleting the model's training data and forcing it to only use a knowledge graph.",
-          "isCorrect": false,
-          "rationale": "RAG uses external info to supplement existing training data, not to replace or delete it."
+          "text": "Denial of Service via XML bombs",
+          "rationale": "MCP uses JSON-RPC, so it is less likely to be targeted by XML-specific vulnerabilities like 'billion laughs' attacks.",
+          "isCorrect": false
         },
         {
-          "text": "By using gradient descent to permanently erase incorrect facts from the model's memory.",
-          "isCorrect": false,
-          "rationale": "RAG is an architectural intervention for retrieving info, whereas erasing facts would require a specialized training process."
+          "text": "Hardware-level side-channel attacks",
+          "rationale": "These attacks target physical processors, whereas the identified MCP issues reside at the application and protocol layers.",
+          "isCorrect": false
         }
       ],
-      "hint": "Consider the source of the information the model uses to construct its answer."
+      "hint": "This risk involves manipulating the instructions given to a Large Language Model."
     },
     {
-      "question": "Which automated prompt engineering technique uses gradient descent to search for floating-point vectors directly?",
+      "question": "Regarding the syntax of keys/names, how does JSON differ from XML?",
       "answerOptions": [
         {
-          "text": "Prefix-tuning or soft prompting.",
-          "isCorrect": true,
-          "rationale": "In prefix-tuning, numerical vectors are optimized directly via gradient descent to maximize likelihood, rather than searching for text tokens."
+          "text": "JSON keys cannot contain spaces, while XML tags can.",
+          "rationale": "In fact, neither JSON nor XML typically allow unescaped spaces in names, but JSON is more flexible with characters.",
+          "isCorrect": false
         },
         {
-          "text": "Beam search over discrete token sequences.",
-          "isCorrect": false,
-          "rationale": "Searching over token sequences is a discrete optimization, whereas prefix-tuning uses continuous floating-point vectors."
+          "text": "JSON keys can begin with a numeric digit, while XML tag names cannot.",
+          "rationale": "XML has strict rules forbidding names from starting with numbers, while JSON allows any string as a key.",
+          "isCorrect": true
         },
         {
-          "text": "Few-shot exemplar selection.",
-          "isCorrect": false,
-          "rationale": "Few-shot learning involves selecting natural language examples, not optimizing numerical vectors through back-propagation."
+          "text": "XML allows quotation marks in tag names, while JSON does not.",
+          "rationale": "JSON keys must be enclosed in double quotes, and XML tag names have very restricted character sets.",
+          "isCorrect": false
         },
         {
-          "text": "Role assignment.",
-          "isCorrect": false,
-          "rationale": "Role assignment is a manual prompting technique where the user describes a character for the AI to mimic."
+          "text": "JSON keys must be unique within an object, while XML tag names can repeat.",
+          "rationale": "Standard JSON actually does not strictly require unique names, though it is recommended for interoperability.",
+          "isCorrect": false
         }
       ],
-      "hint": "Distinguish between techniques that use human-readable text and those that use mathematical vector optimization."
+      "hint": "Think about the naming restrictions for variables or elements in both formats."
     },
     {
-      "question": "What is the core mechanism behind a 'prompt injection' cybersecurity attack?",
+      "question": "Which company introduced the Model Context Protocol to address the 'N x M' data integration problem?",
       "answerOptions": [
         {
-          "text": "The model's inability to distinguish between the developer's instructions and the user's input.",
-          "isCorrect": true,
-          "rationale": "Adversaries exploit this lack of separation to bypass safeguards and force the model to follow unintended malicious commands."
+          "text": "OpenAI",
+          "rationale": "While OpenAI adopted the protocol in March 2025, they were not the original developers.",
+          "isCorrect": false
         },
         {
-          "text": "Physically accessing the server to change the model's training data.",
-          "isCorrect": false,
-          "rationale": "Prompt injection is an input-based attack that occurs during interaction, not a physical server breach."
+          "text": "Anthropic",
+          "rationale": "Anthropic released the protocol in November 2024 to standardize how AI systems share data with external tools.",
+          "isCorrect": true
         },
         {
-          "text": "Overloading the model with too many tokens until it crashes.",
-          "isCorrect": false,
-          "rationale": "Crashing a model is a denial-of-service attack, whereas prompt injection aims to manipulate the model's behavior."
+          "text": "Microsoft",
+          "rationale": "Microsoft integrates the protocol into Azure, but the open standard was created by another AI provider.",
+          "isCorrect": false
         },
         {
-          "text": "Using GraphRAG to create a malicious knowledge graph.",
-          "isCorrect": false,
-          "rationale": "While any data source can be corrupted, prompt injection specifically targets the instruction-following mechanism via crafted prompts."
+          "text": "Google DeepMind",
+          "rationale": "Google announced they would embrace the standard in 2025, following its initial release by the creator.",
+          "isCorrect": false
         }
       ],
-      "hint": "Think about the confusion that might arise when instructions and data are mixed in the same input stream."
+      "hint": "This company is also the developer of the Claude family of AI models."
+    },
+    {
+      "question": "What is the primary difference between how JSON and XML handle comments?",
+      "answerOptions": [
+        {
+          "text": "JSON uses $//$ for comments, while XML uses $<!-- -->$.",
+          "rationale": "This describes some JSON derivatives, but standard JSON does not support comments at all.",
+          "isCorrect": false
+        },
+        {
+          "text": "XML supports comments, whereas standard JSON intentionally excludes them.",
+          "rationale": "Douglas Crockford removed comments from JSON to prevent people from using them for parsing directives.",
+          "isCorrect": true
+        },
+        {
+          "text": "JSON only allows block comments, while XML only allows single-line comments.",
+          "rationale": "Standard JSON lacks any comment syntax, whereas XML provides a specific tag-based format.",
+          "isCorrect": false
+        },
+        {
+          "text": "Both formats support comments using the exact same syntax.",
+          "rationale": "The two formats have entirely different structural philosophies, especially regarding metadata and annotations.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "One of these formats was designed to be comment-free to ensure interoperability."
+    },
+    {
+      "question": "For 'good interoperability,' what is the maximum numerical precision recommended for JSON implementations?",
+      "answer": "IEEE 754 binary64",
+      "answerOptions": [
+        {
+          "text": "Arbitrary precision decimals",
+          "rationale": "While the format allows arbitrary precision, many implementations (like JavaScript) cannot process them without loss.",
+          "isCorrect": false
+        },
+        {
+          "text": "32-bit integers",
+          "rationale": "32-bit limits are too restrictive for the general-purpose decimal numbers JSON is designed to carry.",
+          "isCorrect": false
+        },
+        {
+          "text": "IEEE 754 binary64",
+          "rationale": "This format, common in JavaScript double-precision values, is the recommended baseline for ensuring numbers are handled correctly across systems.",
+          "isCorrect": true
+        },
+        {
+          "text": "BigInt notation",
+          "rationale": "BigInt is a specific JavaScript extension and is not part of the base JSON interoperability recommendation.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "This recommendation matches the double-precision floating-point format used by JavaScript."
+    },
+    {
+      "question": "True or False: Standard JSON allows a trailing comma after the last value in an array or object.",
+      "answerOptions": [
+        {
+          "text": "True",
+          "rationale": "While derivatives like JSON5 allow this, the core JSON standard strictly forbids trailing commas.",
+          "isCorrect": false
+        },
+        {
+          "text": "False",
+          "rationale": "The JSON specification disallows commas after the final element, often causing errors in automated parsers.",
+          "isCorrect": true
+        }
+      ],
+      "hint": "Think about the strict punctuation rules that distinguish JSON from more flexible languages like JavaScript."
     }
   ]
 }

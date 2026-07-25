@@ -1,223 +1,170 @@
 {
-  "name": "LLM Tools and Model Context Protocol (MCP)",
+  "name": "Academic Path and Tenure",
   "children": [
     {
-      "name": "Function Calling",
+      "name": "PhD Journey",
+      "children": [
+        {
+          "name": "Decision Phases",
+          "children": [
+            {
+              "name": "Motivations"
+            },
+            {
+              "name": "5-7 Year Commitment"
+            },
+            {
+              "name": "Crossroads: Industry vs. Academia"
+            }
+          ]
+        },
+        {
+          "name": "Program Structure",
+          "children": [
+            {
+              "name": "Coursework"
+            },
+            {
+              "name": "Qualifying Exams"
+            },
+            {
+              "name": "Research Proposal"
+            },
+            {
+              "name": "Dissertation and Defense"
+            }
+          ]
+        },
+        {
+          "name": "Funding Models",
+          "children": [
+            {
+              "name": "Research Assistantship (RA)"
+            },
+            {
+              "name": "Teaching Assistantship (TA)"
+            },
+            {
+              "name": "Fellowships"
+            },
+            {
+              "name": "Stipends and Tuition Waivers"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Academic Tenure",
       "children": [
         {
           "name": "Definition",
           "children": [
             {
-              "name": "LLM decides tool based on schema"
+              "name": "Semi-permanent Appointment"
             },
             {
-              "name": "Structured output vs regular text"
+              "name": "Academic Freedom Protection"
+            },
+            {
+              "name": "Protection from Arbitrary Dismissal"
             }
           ]
         },
         {
-          "name": "Steps",
+          "name": "Arguments Pro",
           "children": [
             {
-              "name": "Define tools"
+              "name": "Defense of Free Inquiry"
             },
             {
-              "name": "LLM receives context"
+              "name": "Recruitment of Talent"
             },
             {
-              "name": "LLM matching intent"
+              "name": "Economic Security"
+            }
+          ]
+        },
+        {
+          "name": "Arguments Con",
+          "children": [
+            {
+              "name": "Rewards Complacency"
             },
             {
-              "name": "Execution"
+              "name": "Incentivizes Mediocrity"
             },
             {
-              "name": "Response formulation"
+              "name": "Financial Burden for Institutions"
             }
           ]
         }
       ]
     },
     {
-      "name": "Model Context Protocol (MCP)",
+      "name": "Research and Scholarly Work",
       "children": [
         {
-          "name": "Standardization",
+          "name": "Citations",
           "children": [
             {
-              "name": "Universal adapter for AI tools"
+              "name": "Acknowledging Sources"
             },
             {
-              "name": "Eliminates N x M integration problem"
+              "name": "Citation Styles (APA, MLA, Chicago)"
             },
             {
-              "name": "Based on JSON-RPC 2.0"
+              "name": "Impact Metrics"
+            },
+            {
+              "name": "Citation Politics and Diversity"
             }
           ]
         },
         {
-          "name": "Architecture",
+          "name": "Thesis/Dissertation",
           "children": [
             {
-              "name": "MCP Host (AI Agent)"
+              "name": "Monograph vs. Publication Style"
             },
             {
-              "name": "MCP Client"
+              "name": "Supervisory Committee"
             },
             {
-              "name": "MCP Server (Tool Provider)"
-            }
-          ]
-        },
-        {
-          "name": "Capabilities",
-          "children": [
-            {
-              "name": "Tools (standard functions)"
-            },
-            {
-              "name": "Resources (standardized data access)"
-            },
-            {
-              "name": "Prompts (standardized templates)"
+              "name": "Viva Voce/Oral Defense"
             }
           ]
         }
       ]
     },
     {
-      "name": "Tool Design Principles",
+      "name": "Admissions and Networking",
       "children": [
         {
-          "name": "Naming",
+          "name": "Application Materials",
           "children": [
             {
-              "name": "Clear and verb-based"
+              "name": "Statement of Purpose (SOP)"
+            },
+            {
+              "name": "Letters of Recommendation (LOR)"
+            },
+            {
+              "name": "Standardized Tests (GRE/TOEFL)"
             }
           ]
         },
         {
-          "name": "Description",
+          "name": "Networking",
           "children": [
             {
-              "name": "When to use vs when not to use"
-            }
-          ]
-        },
-        {
-          "name": "Parameters",
-          "children": [
-            {
-              "name": "Typed and constrained"
-            }
-          ]
-        },
-        {
-          "name": "Orchestration Patterns",
-          "children": [
-            {
-              "name": "Sequential"
+              "name": "Cold Emailing Professors"
             },
             {
-              "name": "Parallel"
+              "name": "Research Experience"
             },
             {
-              "name": "Conditional"
-            },
-            {
-              "name": "Iterative (ReAct loop)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Safety and Error Handling",
-      "children": [
-        {
-          "name": "Hifz (Protection)",
-          "children": [
-            {
-              "name": "Input validation"
-            },
-            {
-              "name": "Sandboxed execution"
-            },
-            {
-              "name": "Human approval for destructive actions"
-            }
-          ]
-        },
-        {
-          "name": "Error Recovery",
-          "children": [
-            {
-              "name": "Timeouts"
-            },
-            {
-              "name": "API failures"
-            },
-            {
-              "name": "LLM self-correction from error messages"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Tool Ecosystem",
-      "children": [
-        {
-          "name": "Platforms",
-          "children": [
-            {
-              "name": "Composio (10,000+ actions)"
-            },
-            {
-              "name": "LangChain Tools"
-            },
-            {
-              "name": "LlamaIndex"
-            }
-          ]
-        },
-        {
-          "name": "Advanced Use",
-          "children": [
-            {
-              "name": "Computer Use (screenshots/mouse/typing)"
-            },
-            {
-              "name": "Browser automation"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Integration Technologies",
-      "children": [
-        {
-          "name": "JSON",
-          "children": [
-            {
-              "name": "Human-readable data interchange"
-            },
-            {
-              "name": "Language independent"
-            },
-            {
-              "name": "Name-value pairs and arrays"
-            }
-          ]
-        },
-        {
-          "name": "Web Interfaces",
-          "children": [
-            {
-              "name": "RESTful APIs"
-            },
-            {
-              "name": "Webhooks (HTTP callbacks)"
+              "name": "Interviews"
             }
           ]
         }

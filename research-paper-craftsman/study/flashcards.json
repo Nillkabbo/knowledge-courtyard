@@ -1,365 +1,345 @@
 {
-  "title": "Asymptotic Flashcards",
+  "title": "Science Flashcards",
   "cards": [
     {
-      "front": "Who first introduced the Big O symbol in the book 'Analytische Zahlentheorie'?",
-      "back": "Paul Bachmann"
+      "front": "What is the primary empirical goal of the scientific method?",
+      "back": "To acquire knowledge through careful observation, rigorous skepticism, and experimental validation."
     },
     {
-      "front": "What does the letter 'O' represent in the context of Bachmann–Landau notation?",
-      "back": "Ordnung (the order of approximation)"
+      "front": "The scientific method acknowledges that interpretation of observations can be distorted by _____.",
+      "back": "Cognitive assumptions"
     },
     {
-      "front": "Which mathematician extended Bachmann's notation and introduced the small 'o' symbol in 1909?",
-      "back": "Edmund Landau"
+      "front": "How does scientific inquiry typically generate a testable hypothesis?",
+      "back": "Through the application of inductive reasoning based on existing knowledge."
     },
     {
-      "front": "How is Big O notation primarily used in the field of computer science?",
-      "back": "To classify algorithms by how their run time or space requirements grow with the input."
+      "front": "What is the defining characteristic of a 'falsifiable' hypothesis?",
+      "back": "It must be possible to identify a potential observation that conflicts with the hypothesis's predictions."
     },
     {
-      "front": "What type of bound does a description of a function in Big O notation provide?",
-      "back": "An upper bound on the growth rate of the function."
+      "front": "Why is the scientific method considered an iterative process?",
+      "back": "New information leads to revised characterizations, which generate new hypotheses in a continuous cycle."
     },
     {
-      "front": "What is the formal mathematical condition for the statement $f(x) = O(g(x))$ on a domain $D$?",
-      "back": "There exists a positive real number $M$ such that $|f(x)| \\le M g(x)$ for all $x \\in D$."
+      "front": "In the 11th century, which scientist used experiments on refraction to disprove Aristotle's hypothesis that a vacuum does not exist?",
+      "back": "Alhacen (Ibn al-Haytham)"
     },
     {
-      "front": "In the formal definition of Big O, what name is given to the positive real number $M$?",
-      "back": "The implied constant"
+      "front": "Which 13th-century philosopher asserted that theories should be verified by sensory data and trustworthy witnesses in his work 'Opus Majus'?",
+      "back": "Roger Bacon"
     },
     {
-      "front": "How is the domain of $x$ treated in computer science when using the notation $f(x) = O(g(x))$ as $x \\to \\infty$?",
-      "back": "The inequality holds for all $x$ that are large enough."
+      "front": "What role did Francis Bacon and Robert Hooke play during the Scientific Revolution?",
+      "back": "They were primary advocates and furthered the development of empiricism."
     },
     {
-      "front": "What is the meaning of the notation $f(x) = h(x) + O(g(x))$?",
-      "back": "$f(x) - h(x) = O(g(x))$ (the difference is bounded by $g(x)$)."
+      "front": "Which scientist is credited with formulating the hypothetico-deductive model in the 20th century?",
+      "back": "C. S. Peirce"
     },
     {
-      "front": "In the 'set version' of Big O notation, how is the expression $O(g(x))$ interpreted?",
-      "back": "As representing the set of all functions that satisfy the Big O condition for $g(x)$."
+      "front": "The term 'scientific method' emerged in the 19th century to establish boundaries between science and _____.",
+      "back": "Pseudoscience"
     },
     {
-      "front": "When simplifying $f(x) = 6x^4 - 2x^3 + 5$ using Big O notation for an infinite domain, what is the resulting form?",
-      "back": "$O(x^4)$"
+      "front": "What argument did Paul Feyerabend present in his 1975 book 'Against Method'?",
+      "back": "He argued that there are no universal, exception-free methodological rules governing scientific progress."
     },
     {
-      "front": "Why is the statement $f(x) = 6x^4 - 2x^3 + 5 = O(x^3)$ considered false for large $x$?",
-      "back": "The term $6x^4$ causes the ratio $\\frac{f(x)}{x^3}$ to be unbounded as $x$ increases."
+      "front": "Which historian of science described the scientific method as a 'myth' or an 'idealization' in 2015?",
+      "back": "Daniel Thurs"
     },
     {
-      "front": "How does Big O notation describe the error term in a finite interval approximation like a Taylor series?",
-      "back": "It summarizes the least-significant terms into a single term representing the maximum possible error."
+      "front": "What are the four generally agreed-upon classification components of scientific inquiry?",
+      "back": "Characterizations, hypotheses, predictions, and experiments."
     },
     {
-      "front": "In multivariate Big O notation, how is it indicated that the implied constant $M$ depends on a specific variable?",
-      "back": "By using subscripts attached to the Big O symbol (e.g., $O_b(x)$)."
+      "front": "In the study of DNA's structure, what empirical observation predicted the 'X-shape' found in diffraction patterns?",
+      "back": "The Cochran-Crick-Vand-Stokes theorem regarding helical structures."
     },
     {
-      "front": "What is the Big O product rule for two functions $f_1 = O(g_1)$ and $f_2 = O(g_2)$?",
-      "back": "$f_1 f_2 = O(g_1 g_2)$"
+      "front": "What was the significance of 'Photo 51' in the discovery of DNA's structure?",
+      "back": "It was a detailed X-ray diffraction image that confirmed the structure was helical."
     },
     {
-      "front": "What is the Big O sum rule for two functions $f_1 = O(g_1)$ and $f_2 = O(g_2)$?",
-      "back": "$f_1 + f_2 = O(\\max(g_1, g_2))$"
+      "front": "According to Francis Crick, why can it be counterproductive to define a subject too early in an investigation?",
+      "back": "Early definitions can be restrictive when the subject remains ill-understood."
     },
     {
-      "front": "How does multiplying a function by a non-zero constant $k$ affect its Big O classification?",
-      "back": "It does not change it; if $f = O(g)$, then $k \\cdot f = O(g)$."
+      "front": "Define 'abductive reasoning' as described by Charles Sanders Peirce.",
+      "back": "The process of venturing a plausible guess or hunch to explain an 'irritation of doubt' caused by surprises."
     },
     {
-      "front": "What mathematical property is illustrated by the statement: if $f = O(g)$ and $g = O(h)$, then $f = O(h)$?",
-      "back": "The transitive property"
+      "front": "Term: Occam's Razor",
+      "back": "Definition: A rule of thumb for choosing the simplest explanatory hypothesis among a group of equal alternatives."
     },
     {
-      "front": "As $n \\to \\infty$, which term determines the order of a finite sum of functions?",
-      "back": "The fastest-growing term."
+      "front": "What is the purpose of 'strong inference' in scientific methodology?",
+      "back": "To minimize confirmation bias by entertaining multiple alternative hypotheses simultaneously."
     },
     {
-      "front": "How do logarithms compare to powers in terms of asymptotic growth as $n \\to \\infty$?",
-      "back": "Powers dominate logarithms: $(\\log n)^a = O(n^b)$ for any positive $a$ and $b$."
+      "front": "Why must the outcome of a test prediction be currently unknown to the researcher?",
+      "back": "A known outcome is merely a consequence already used to formulate the hypothesis, not a valid test of its truth."
     },
     {
-      "front": "How do powers compare to exponentials in terms of asymptotic growth as $n \\to \\infty$?",
-      "back": "Exponentials dominate powers: $n^a = O(e^{bn})$ for any positive $a$ and $b$."
+      "front": "What did Arthur Eddington's 1919 solar eclipse observations demonstrate regarding gravitational theory?",
+      "back": "They supported Einstein's general relativity over Newtonian gravitation by showing light bends in a gravitational field."
     },
     {
-      "front": "What is the definition of a 'superpolynomial' function?",
-      "back": "A function that grows faster than $n^c$ for any constant $c$."
+      "front": "In experimental design, what is the function of the 'experimental control'?",
+      "back": "To isolate specific variables by comparing samples under differing conditions to account for observational error."
     },
     {
-      "front": "What is the definition of a 'subexponential' function?",
-      "back": "A function that grows more slowly than any exponential function of the form $c^n$ where $c > 1$."
+      "front": "How does peer review serve the scientific community?",
+      "back": "It provides anonymous expert evaluation of a study's experimental soundness and methodology."
     },
     {
-      "front": "Why are logarithms with different constant bases considered equivalent in Big O notation?",
-      "back": "Because they only differ by a constant factor ($\\, \\log_b n = \\frac{\\log_a n}{\\log_a b}$)."
+      "front": "According to Ludwik Fleck, why is detailed record-keeping essential in science?",
+      "back": "It ensures the integrity of the procedure and allows other scientists to replicate the results."
     },
     {
-      "front": "True or False: Exponentials with different bases, such as $2^n$ and $3^n$, are of the same order.",
-      "back": "False"
+      "front": "Karl Popper's 'falsifiability criterion' was intended to demarcate scientific theory from _____.",
+      "back": "Non-science or pseudoscience (e.g., astrology)"
     },
     {
-      "front": "In analytic number theory, what notation is equivalent to $g(x) = O(f(x))$ when both are positive functions?",
-      "back": "$f(x) \\gg g(x)$ (Vinogradov's notation)"
+      "front": "What is the concept of 'theory-laden' observation as introduced by Norwood Russell Hanson?",
+      "back": "The idea that no observation is pure because theory is required to interpret empirical data."
     },
     {
-      "front": "How did Donald Knuth define Big Omega ($\\Omega$) in 1976?",
-      "back": "$f(x) = \\Omega(g(x)) \\iff g(x) = O(f(x))$ (a lower bound)"
+      "front": "How does 'model-dependent realism' (proposed by Hawking) view scientific models?",
+      "back": "It suggests that models of reality should be accepted as long as they prove to make useful predictions."
     },
     {
-      "front": "In analytic number theory, what does the symbol $f(x) \\asymp g(x)$ (Hardy's notation) mean?",
-      "back": "That both $f(x) = O(g(x))$ and $g(x) = O(f(x))$ are true."
+      "front": "How did Eadweard Muybridge's stop-action photography resolve the 'Horse in Motion' debate?",
+      "back": "It falsified the belief that a galloping horse's legs are splayed when off the ground, showing they are actually gathered."
     },
     {
-      "front": "What notation did Knuth propose to represent functions of the 'same order' as an alternative to Hardy's $\\asymp$?",
-      "back": "Big Theta ($\\Theta$)"
+      "front": "Contrast inductive reasoning with deductive reasoning in the context of science.",
+      "back": "Induction builds general principles from observations, while deduction derives specific testable consequences from established principles."
     },
     {
-      "front": "The complexity class $O(1)$ is also known as _____ time.",
-      "back": "Constant"
+      "front": "How did Le Verrier identify a problem with Newton's gravitational theory in 1859?",
+      "back": "He observed that the precession of the perihelion of Mercury did not match Newtonian predictions."
     },
     {
-      "front": "What common operation is an example of $O(\\log n)$ or logarithmic time?",
-      "back": "Finding an item in a sorted array using binary search."
+      "front": "In statistical analysis, what does the 'uncertainty estimate' represent?",
+      "back": "A calculation of the range of error based on repeated measurements or sampling limitations."
     },
     {
-      "front": "Which complexity class describes performing a fast Fourier transform or a heapsort?",
-      "back": "$O(n \\log n)$ (linearithmic time)"
+      "front": "What is the primary function of Bayes' Theorem in scientific knowledge representation?",
+      "back": "It provides a mathematical method for adjusting standing probabilities when new information is discovered."
     },
     {
-      "front": "Simple sorting algorithms like bubble sort and selection sort typically have a time complexity of _____.",
-      "back": "$O(n^2)$ (quadratic time)"
+      "front": "In the hypothetico-deductive method, what is actually being tested by the scientist?",
+      "back": "The falsifiable logical implications (predictions) derived from the hypothesis."
     },
     {
-      "front": "The brute-force search for the travelling salesman problem belongs to which extreme complexity class?",
-      "back": "$O(n!)$ (factorial) or $O(c^n)$ (exponential)"
+      "front": "How does the modern 'inductive method' differ from a traditional 'fishing expedition'?",
+      "back": "It utilizes high-throughput data collection and large-scale observation where results are not initially clear."
     },
     {
-      "front": "What is the limit definition for 'Little-o' notation ($f(x) = o(g(x))$ as $x \\to \\infty$)?",
-      "back": "$\\lim_{x \\to \\infty} \\frac{f(x)}{g(x)} = 0$"
+      "front": "What are the two main factors of mathematical modelling in science?",
+      "back": "Simplification (abstraction) and the establishment of correspondence rules to relate the model back to reality."
     },
     {
-      "front": "True or False: Every function that is $o(g)$ is also $O(g)$, but the reverse is not necessarily true.",
-      "back": "True"
+      "front": "Why can no scientific theory ever be considered truly 'final'?",
+      "back": "Because scientific knowledge is always subject to falsification if new, incompatible evidence is discovered."
     },
     {
-      "front": "Using limit notation, when is $f(x)$ said to be 'asymptotic to' $g(x)$ ($f(x) \\sim g(x)$)?",
-      "back": "When $\\lim_{x \\to \\infty} \\frac{f(x)}{g(x)} = 1$."
+      "front": "The modern evolutionary synthesis was formed by the unification of evolutionary theory with _____.",
+      "back": "Genetics"
     },
     {
-      "front": "What is the limit definition for Knuth's little omega ($\\omega$)?",
-      "back": "$\\lim_{x \\to \\infty} \\frac{f(x)}{g(x)} = \\infty$"
+      "front": "Identify three criteria for a 'good' theory according to Thomas Kuhn.",
+      "back": "Accuracy, internal consistency, and fruitfulness for further research."
     },
     {
-      "front": "In analytic number theory, what is the Hardy–Littlewood definition of $f(x) = \\Omega(g(x))$ as $x \\to \\infty$?",
-      "back": "$\\limsup_{x \\to \\infty} \\left| \\frac{f(x)}{g(x)} \\right| > 0$"
+      "front": "In confirmation theory, what does 'formal elegance' typically indicate?",
+      "back": "A subjective sense of familiarity or aesthetic simplicity in a theory's formulation."
     },
     {
-      "front": "In computer science, what does 'Soft-O' notation ($\\tilde{O}$) typically hide?",
-      "back": "Polylogarithmic factors"
+      "front": "How does 'parsimony' guide scientists when multiple explanations fit the data?",
+      "back": "It recommends choosing the simplest explanation or the theory with the fewest assumptions."
     },
     {
-      "front": "Why is $O(x) = O(x^2)$ true while $O(x^2) = O(x)$ is false?",
-      "back": "Because Big O notation represents a one-way inequality (a subset relation) rather than a symmetric equality."
+      "front": "Define 'invariance' in the context of scientific accounts of reality.",
+      "back": "A structure or observation that remains unchanged regardless of perspective or coordinate transformation."
     },
     {
-      "front": "What is the typographic convention for the Big O symbol?",
-      "back": "An italicized uppercase Latin 'O'."
+      "front": "Which physicist coined the term 'not even wrong' to describe theories that resist falsification?",
+      "back": "Wolfgang Pauli"
     },
     {
-      "front": "How is a 'data structure' defined in computer science?",
-      "back": "A way to organize and store data usually chosen for efficient access."
+      "front": "What are the three basic assumptions of methodological naturalism?",
+      "back": "Reality is objective and consistent, humans can perceive it accurately, and rational explanations exist for the real world."
     },
     {
-      "front": "What is the relationship between a data structure and an Abstract Data Type (ADT)?",
-      "back": "A data structure is the physical implementation of an ADT."
+      "front": "Concept: Scientific Pluralism",
+      "back": "Definition: The rejection of the idea that science is unified in its subject matter, epistemology, or research methods."
     },
     {
-      "front": "While a data structure describes physical implementation, what does an ADT describe?",
-      "back": "The logical form or algebraic structure (what operations are allowed and their results)."
+      "front": "What was the core doctrine of 'Unificationism' within logical positivism?",
+      "back": "The belief that all sciences share a common method and should ideally be expressed in a universal language."
     },
     {
-      "front": "According to Rob Pike, why is the choice of data structure often more impactful than the choice of algorithm?",
-      "back": "Because the algorithm is often self-evident once the data structure is chosen."
+      "front": "According to Paul Feyerabend's 'epistemological anarchism', why is a fixed method detrimental to science?",
+      "back": "It restricts the free flow of ideas and ignores historical episodes where violating norms contributed to progress."
     },
     {
-      "front": "What are the two primary locations where data structures organize data?",
-      "back": "Primary memory (RAM) and secondary storage (disks)."
+      "front": "In the 2013 US education standards (NGSS), the singular scientific method was replaced by _____.",
+      "back": "A broader conception of scientific and engineering practices across three dimensions."
     },
     {
-      "front": "What is the difference between an array and a linked data structure in terms of memory allocation?",
-      "back": "Arrays use contiguous memory locations, while linked structures store the addresses of related elements within themselves."
+      "front": "What is the 'sociology of knowledge' concerned with in the context of science?",
+      "back": "The relationship between human scientific thought and the social context in which it arises."
     },
     {
-      "front": "What is the principal advantage of arrays over linked lists?",
-      "back": "Rapid indexed access and modification through arithmetic operations on memory addresses."
+      "front": "Term: Thought Collectives (Ludwik Fleck)",
+      "back": "Definition: Groups of scientists who share assumptions and a specific 'thought-style' that guides their research."
     },
     {
-      "front": "What is the primary advantage of a linked list over a fixed-length array?",
-      "back": "Elements can be efficiently inserted or removed without relocating the rest of the list."
+      "front": "What does the concept of 'situated cognition' suggest about a researcher's perspective?",
+      "back": "The researcher's personal and social perspective fundamentally influences the observations and conclusions they draw."
     },
     {
-      "front": "What name is given to a data structure that contains other values, typically indexed by names?",
-      "back": "A record (also called tuple or struct)."
+      "front": "The 'Science Wars' refers to a conflict between which two philosophical perspectives?",
+      "back": "Postmodernism (knowledge as discourse) and Realism (knowledge as fundamental truth)."
     },
     {
-      "front": "How do hash tables provide constant-time access in the average case?",
-      "back": "They use a hashing function to map keys directly to indexes in an array."
+      "front": "What percentage of scientific discoveries are estimated to be the result of serendipity or chance?",
+      "back": "Between $33\\%$ and $50\\%$."
     },
     {
-      "front": "What is 'chaining' or 'open addressing' used for in hash table implementations?",
-      "back": "Handling hash collisions."
+      "front": "According to Louis Pasteur, luck favors only the _____.",
+      "back": "Prepared mind"
     },
     {
-      "front": "In graph theory, what are the two components that represent relationships between entities?",
-      "back": "Vertices (nodes) and edges (connections)."
+      "front": "How does psychologist Kevin Dunbar describe the typical start of a scientific discovery?",
+      "back": "Researchers encounter 'bugs' or unexpected errors in their experiments that prove persistent and systematic."
     },
     {
-      "front": "What is the defining principle of a 'stack' data structure?",
-      "back": "Last In, First Out (LIFO)."
+      "front": "Why does Nassim Nicholas Taleb describe the scientific method as 'anti-fragile'?",
+      "back": "It is a system that actually benefits from randomness, human error, and unexpected results to flourish."
     },
     {
-      "front": "What is the defining principle of a 'queue' data structure?",
-      "back": "First In, First Out (FIFO)."
+      "front": "According to John Ioannidis, why are research findings less likely to be true in fields with high competition?",
+      "back": "Intense competition often leads to increased bias and lower pre-study probabilities of yielding true findings."
     },
     {
-      "front": "What are the two primary operations of a stack?",
-      "back": "Push (add to top) and Pop (remove from top)."
+      "front": "What is a major criticism of applying the scientific method to 'Big Data'?",
+      "back": "Data may be stripped of material parameters, leading it to only support null hypotheses in predictive analytics."
     },
     {
-      "front": "What are the two primary operations of a queue?",
-      "back": "Enqueue (add to rear) and Dequeue (remove from front)."
+      "front": "In Eugene Wigner's view, what is 'obscure' about the relationship between mathematics and science?",
+      "back": "The 'unreasonable effectiveness' of mathematical concepts in describing and predicting the natural physical reality."
     },
     {
-      "front": "In a tree data structure, what is the name of the single top-level node?",
-      "back": "The root"
+      "front": "Name the four steps of George Pólya's mathematical problem-solving method.",
+      "back": "Understanding, Analysis, Synthesis, and Review."
     },
     {
-      "front": "What specialized tree structure is used for tasks like autocomplete and spell-checking by retrieving strings via prefixes?",
-      "back": "A trie (or prefix tree)."
+      "front": "In Pólya's method, what does 'Analysis' (working backward) involve?",
+      "back": "The heuristic construction of plausible arguments and devising a plan for the proof starting from the goal."
     },
     {
-      "front": "Which low-level programming language is mentioned as lacking built-in support for data structures?",
-      "back": "BCPL (Basic Combined Programming Language)"
+      "front": "What did Imre Lakatos argue regarding the 'finality' of informal mathematical theorems?",
+      "back": "No theorem is perfect or final; knowledge accumulates as counterexamples are found and theorems are adjusted."
     },
     {
-      "front": "What are the two standard C/Pascal mechanisms for aggregate data?",
-      "back": "Structs and records"
+      "front": "How did Carl Friedrich Gauss describe his method of discovering theorems?",
+      "back": "Through 'systematic palpable experimentation' (durch planmässiges Tattonieren)."
     },
     {
-      "front": "What is the 'C++ Standard Template Library' (STL) an example of?",
-      "back": "A library mechanism that provides reusable data structure implementations."
+      "front": "In science, what differentiates a 'conjecture' from a 'scientific theory'?",
+      "back": "A conjecture is a proposed explanation not yet proven, while a theory is a successful explanation tested across wide circumstances."
     },
     {
-      "front": "What type of data structures allow multiple computing threads to access a single instance simultaneously?",
-      "back": "Concurrent data structures"
+      "front": "The process of 'peer review' is intended to assess the SOUNDNESS of research rather than certifying its _____.",
+      "back": "Correctness"
     },
     {
-      "front": "Which formula provides an asymptotic estimate for $n! \\sim (\\frac{n}{e})^n \\sqrt{2\\pi n}$?",
-      "back": "Stirling's formula"
+      "front": "What is 'intersubjectivity' in scientific observation?",
+      "back": "The ability for different observers using the same conceptual framework to reach the same conclusions from data."
     },
     {
-      "front": "The Prime Number Theorem states that the number of primes $\\pi(x)$ is asymptotic to which function?",
-      "back": "$\\frac{x}{\\log x}$"
+      "front": "Mill's Canons are a set of techniques used specifically to _____.",
+      "back": "Isolate important factors in an effect through comparison and contrast."
     },
     {
-      "front": "What is the Big O notation for the average number of comparisons in an interpolation search of uniformly distributed values?",
-      "back": "$O(\\log \\log n)$ (double logarithmic)"
+      "front": "Which scientist used a water-filled glass sphere to model the optical train of the human eye in 1604?",
+      "back": "Johannes Kepler"
     },
     {
-      "front": "Which complexity class represents the amortized complexity per operation for a Disjoint-set data structure?",
-      "back": "$O(\\alpha(n))$ (inverse Ackermann function)"
+      "front": "In the hypothetico-deductive model, if an implication $(\\text{B})$ is true, does it definitively prove the hypothesis $(\\text{A})$?",
+      "back": "No; according to logic, $(\\text{A} \\Rightarrow \\text{B})$ does not imply $(\\text{B} \\Rightarrow \\text{A})$."
     },
     {
-      "front": "What is the complexity class for schoolbook long multiplication of two $n$-digit numbers?",
-      "back": "$O(n^2)$"
+      "front": "What is the relationship between 'Bayesian estimation' and random variables?",
+      "back": "It is a way to measure the dependence or interdependence of information under scrutiny."
     },
     {
-      "front": "Which complexity class is described as 'linearithmic'?",
-      "back": "$O(n \\log n)$"
+      "front": "According to the user material, what is 'allochthonous reasoning'?",
+      "back": "Another term for mathematical modelling, where constructs are tested in place of physical experiments."
     },
     {
-      "front": "If a function is $O(n^c)$ where $c$ is a constant, it is said to have _____ complexity.",
-      "back": "Polynomial"
+      "front": "What historical discovery is associated with the 'Treatise on Twilight' and Earth's atmosphere?",
+      "back": "Ibn Mu'adh's 1079 inference that the atmosphere is $50$ miles thick based on solar refraction."
     },
     {
-      "front": "Which notation hide constant factors and lower-order terms to simplify the presentation of analytic inequalities?",
-      "back": "Big O notation"
+      "front": "Which 20th-century physicist highlighted 'invariance' as the structural feature that suggests physical reality?",
+      "back": "Max Born"
     },
     {
-      "front": "What term is used when the ratio $\\frac{f(x)}{g(x)}$ remains within a fixed range for all $x$ in the domain?",
-      "back": "Same order (or $\\Theta(g)$)"
+      "front": "According to David Deutsch, what is the 'origin of all progress'?",
+      "back": "The search for hard-to-vary (invariant) explanations."
     },
     {
-      "front": "In 1870, Paul du Bois-Reymond used the symbol $\\prec$ to mean which modern concept?",
-      "back": "Little-o notation (growing much slower)"
+      "front": "How does 'epistemic culture' differ from a 'thought collective'?",
+      "back": "Epistemic culture focuses on the distinct practices and reasonings of specific scientific communities (e.g., biology vs. physics)."
     },
     {
-      "front": "In Big O notation, how are factors that do not depend on the variable $x$ treated in a product?",
-      "back": "They are omitted."
+      "front": "What was the significance of the 1752 kite-flying experiment mentioned in the text?",
+      "back": "It was Benjamin Franklin's experiment on the electrical nature of lightning, which others (like Richmann) attempted to replicate."
     },
     {
-      "front": "True or False: $x \\sin y = O(x)$ for $x \\ge 1$ and any real $y$.",
-      "back": "True (since $\\sin y$ is bounded between -1 and 1)."
+      "front": "Cloze: According to Popper, successful theories are those that survive elimination through _____.",
+      "back": "Falsification"
     },
     {
-      "front": "What is the Big O classification for any function that is bounded by a constant?",
-      "back": "$O(1)$"
+      "front": "How does 'Monte-Carlo simulation' generate data in mathematical modelling?",
+      "back": "It generates empirical data 'arbitrarily' to analyze systems through computational means."
     },
     {
-      "front": "What does the expression $x \\to a$ signify in the statement $f(x) = O(g(x))$ as $x \\to a$?",
-      "back": "That the inequality holds in a small neighborhood of $a$."
+      "front": "What is the significance of the 'Standard Model' of physics regarding Einstein's theory of relativity?",
+      "back": "It suggests that certain concepts surrounding the theory are still unknown, even though the theory remains built upon deductively."
     },
     {
-      "front": "Why is the equals sign in $f(x) = O(g(x))$ considered 'non-symmetric'?",
-      "back": "Because you cannot reverse the sides; $O(g(x)) = f(x)$ is generally invalid."
+      "front": "Identify the primary danger of over-reliance on 'elegance' or 'familiarity' in theory choice.",
+      "back": "It can lead to stagnation and the dismissal of valid but non-traditional ideas."
     },
     {
-      "front": "Which branch of mathematics uses Big O notation for remainders in the prime number theorem?",
-      "back": "Analytic number theory"
+      "front": "The ability of a hypothesis to 'stimulate research that illuminates bald suppositions' is called its _____.",
+      "back": "Service to science (or fruitfulness)"
     },
     {
-      "front": "Which branch of mathematics uses Big O to bound the error when truncating a power series?",
-      "back": "Mathematical analysis (or calculus)"
+      "front": "What did John Stuart Mill believe regarding the origin of all knowledge?",
+      "back": "He believed all knowledge, including mathematical truths, arises from experience through induction."
     },
     {
-      "front": "What is the complexity class of finding the median in a sorted array?",
-      "back": "$O(1)$ (constant time)"
+      "front": "How does 'big science' impact the role of individual researchers?",
+      "back": "Researchers often require shared access to massive infrastructure and shared machines (e.g., CERN's LHC)."
     },
     {
-      "front": "What is the time complexity of searching in a balanced search tree?",
-      "back": "$O(\\log n)$"
+      "front": "Einstein stated that there is no 'logical bridge' between which two things?",
+      "back": "Phenomena and their theoretical principles."
     },
     {
-      "front": "Which algorithm for triangulating a simple polygon has a complexity of $O(n \\log^* n)$?",
-      "back": "Seidel's algorithm"
+      "front": "Define 'tautological' in the context of axiomatic mathematical systems.",
+      "back": "Statements that are internally logically true by virtue of their own definitions and rules."
     },
     {
-      "front": "In the L-notation $L_n[\\alpha, c]$, what range does the parameter $\\alpha$ occupy?",
-      "back": "$0 < \\alpha < 1$"
-    },
-    {
-      "front": "What is the time complexity class of finding a determinant using Laplace expansion?",
-      "back": "$O(n!)$ (factorial)"
-    },
-    {
-      "front": "What notation describes the growth of the Riemann zeta function as $s \\to 1^+$?",
-      "back": "$\\sum_{n=1}^{\\infty} \\frac{1}{n^s} \\sim \\frac{1}{s-1}$"
-    },
-    {
-      "front": "Which data structure implementation is characterized by the use of 'nodes' and 'pointers' for dynamic resizing?",
-      "back": "Linked data structure"
-    },
-    {
-      "front": "What are 'opaque data types' used for in modular programming?",
-      "back": "To hide implementation details from the client."
-    },
-    {
-      "front": "In the context of algorithm analysis, what is the 'Master theorem' used for?",
-      "back": "Analyzing divide-and-conquer recursive algorithms using Big O notation."
+      "front": "What is 'situated cognition'?",
+      "back": "The sociological concept that a researcher's social context and perspective fundamentally affect their scientific work."
     }
   ]
 }

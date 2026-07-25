@@ -1,206 +1,253 @@
 {
-  "name": "Statistics and Evidence",
+  "name": "Modern Computing Architecture and Data Management",
   "children": [
     {
-      "name": "Foundational Concepts",
+      "name": "CAP Theorem",
       "children": [
         {
-          "name": "Definition: Science of Uncertainty"
-        },
-        {
-          "name": "Population vs. Sample"
-        },
-        {
-          "name": "Data Types: Quantitative vs. Qualitative"
-        },
-        {
-          "name": "Levels of Measurement: Nominal, Ordinal, Interval, Ratio"
-        }
-      ]
-    },
-    {
-      "name": "Data Collection and Sampling",
-      "children": [
-        {
-          "name": "Probability Sampling",
+          "name": "Core Principles",
           "children": [
             {
-              "name": "Simple Random Sampling"
+              "name": "Consistency"
             },
             {
-              "name": "Systematic Sampling"
+              "name": "Availability"
             },
             {
-              "name": "Stratified Sampling"
-            },
-            {
-              "name": "Cluster Sampling"
-            },
-            {
-              "name": "PPS Sampling"
+              "name": "Partition Tolerance"
             }
           ]
         },
         {
-          "name": "Nonprobability Sampling",
+          "name": "Key Constraints",
           "children": [
             {
-              "name": "Convenience/Accidental Sampling"
+              "name": "Maximum two of three guarantees"
             },
             {
-              "name": "Quota Sampling"
+              "name": "Trade-off during network partition"
             },
             {
-              "name": "Snowball Sampling"
-            },
-            {
-              "name": "Voluntary Sampling"
+              "name": "ACID vs BASE philosophy"
             }
           ]
         },
         {
-          "name": "Sampling Frame"
-        },
-        {
-          "name": "Sampling Errors vs. Non-sampling Errors"
+          "name": "Related Concepts",
+          "children": [
+            {
+              "name": "PACELC Theorem"
+            },
+            {
+              "name": "Eric Brewer"
+            },
+            {
+              "name": "Gilbert and Lynch Proof"
+            }
+          ]
         }
       ]
     },
     {
-      "name": "Descriptive Statistics",
+      "name": "Caching Systems",
       "children": [
         {
-          "name": "Central Tendency",
+          "name": "Hardware Caches",
           "children": [
             {
-              "name": "Mean"
+              "name": "CPU Cache (L1, L2, L3)"
             },
             {
-              "name": "Median"
+              "name": "GPU Texture Cache"
             },
             {
-              "name": "Mode"
+              "name": "Translation Lookaside Buffer (TLB)"
             }
           ]
         },
         {
-          "name": "Dispersion",
+          "name": "Software Caches",
           "children": [
             {
-              "name": "Variance"
+              "name": "Web Cache"
             },
             {
-              "name": "Standard Deviation"
+              "name": "Disk Cache"
             },
             {
-              "name": "Range"
+              "name": "Memoization"
             }
           ]
         },
         {
-          "name": "Normal Distribution (Gauss)"
-        },
-        {
-          "name": "68-95-99.7 Rule"
+          "name": "Operation Policies",
+          "children": [
+            {
+              "name": "Write-through vs Write-back"
+            },
+            {
+              "name": "LRU and LFU Replacement"
+            },
+            {
+              "name": "Prefetching"
+            }
+          ]
         }
       ]
     },
     {
-      "name": "Inferential Statistics",
+      "name": "Database Systems",
       "children": [
         {
-          "name": "Hypothesis Testing",
+          "name": "Models",
           "children": [
             {
-              "name": "Null Hypothesis (H0)"
+              "name": "Relational (SQL)"
             },
             {
-              "name": "Alternative Hypothesis (H1)"
+              "name": "NoSQL (Key-Value, Document, Graph)"
             },
             {
-              "name": "p-value and Significance Levels"
-            },
-            {
-              "name": "Type I and Type II Errors"
+              "name": "Navigational (Hierarchical, Network)"
             }
           ]
         },
         {
-          "name": "Interval Estimation",
+          "name": "DBMS Functions",
           "children": [
             {
-              "name": "Confidence Intervals"
+              "name": "Data Definition (DDL)"
             },
             {
-              "name": "Margin of Error"
+              "name": "Data Manipulation (DML)"
             },
             {
-              "name": "Precision vs. Reliability"
+              "name": "Concurrency Control"
+            },
+            {
+              "name": "Backup and Recovery"
             }
           ]
         },
         {
-          "name": "Bayesian Inference"
-        },
-        {
-          "name": "Causal Inference (DAGs and do-operator)"
+          "name": "Architecture Levels",
+          "children": [
+            {
+              "name": "External Level"
+            },
+            {
+              "name": "Conceptual Level"
+            },
+            {
+              "name": "Internal Level"
+            }
+          ]
         }
       ]
     },
     {
-      "name": "Experimental Design",
+      "name": "Content Delivery Networks (CDN)",
       "children": [
         {
-          "name": "Principles: Randomization, Replication, Blocking"
+          "name": "Core Architecture",
+          "children": [
+            {
+              "name": "Edge Servers"
+            },
+            {
+              "name": "Points of Presence (PoPs)"
+            },
+            {
+              "name": "Origin Shields"
+            }
+          ]
         },
         {
-          "name": "A/B Testing"
+          "name": "Delivery Techniques",
+          "children": [
+            {
+              "name": "Request Routing"
+            },
+            {
+              "name": "Server Load Balancing"
+            },
+            {
+              "name": "Anycasting"
+            },
+            {
+              "name": "P2P Offloading"
+            }
+          ]
         },
         {
-          "name": "Experimental vs. Observational Studies"
-        },
-        {
-          "name": "Confounding Variables"
+          "name": "Types",
+          "children": [
+            {
+              "name": "Commercial-as-a-Service"
+            },
+            {
+              "name": "Telco CDNs"
+            },
+            {
+              "name": "Private/Enterprise CDNs"
+            },
+            {
+              "name": "Image CDNs"
+            }
+          ]
         }
       ]
     },
     {
-      "name": "Scientific Integrity",
+      "name": "Microservices",
       "children": [
         {
-          "name": "Replication Crisis"
+          "name": "Characteristics",
+          "children": [
+            {
+              "name": "Loose Coupling"
+            },
+            {
+              "name": "Independent Deployment"
+            },
+            {
+              "name": "Modular Scaling"
+            },
+            {
+              "name": "Domain-Driven Design"
+            }
+          ]
         },
         {
-          "name": "p-hacking"
+          "name": "Key Patterns",
+          "children": [
+            {
+              "name": "Service Mesh"
+            },
+            {
+              "name": "Circuit Breakers"
+            },
+            {
+              "name": "Bounded Contexts"
+            },
+            {
+              "name": "Sidecar Proxies"
+            }
+          ]
         },
         {
-          "name": "Preregistration and Open Data"
-        },
-        {
-          "name": "Misuse of Statistics"
-        }
-      ]
-    },
-    {
-      "name": "Historical Milestones",
-      "children": [
-        {
-          "name": "Al-Kindi (850): Frequency Analysis"
-        },
-        {
-          "name": "John Graunt (1662): Bills of Mortality"
-        },
-        {
-          "name": "Gauss (1809): Normal Distribution"
-        },
-        {
-          "name": "Fisher (1925): Hypothesis Testing"
-        },
-        {
-          "name": "Neyman (1937): Confidence Intervals"
-        },
-        {
-          "name": "Pearl (2000): Causality"
+          "name": "Challenges",
+          "children": [
+            {
+              "name": "Network Latency"
+            },
+            {
+              "name": "Data Consistency"
+            },
+            {
+              "name": "Operational Complexity"
+            }
+          ]
         }
       ]
     }

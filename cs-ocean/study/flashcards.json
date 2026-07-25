@@ -1,325 +1,345 @@
 {
-  "title": "Postgraduate Flashcards",
+  "title": "OS Flashcards",
   "cards": [
     {
-      "front": "What is the primary purpose of academic tenure in higher education?",
-      "back": "To protect faculty members from being fired for their personal beliefs or practices, thereby defending academic freedom."
+      "front": "Which specific type of system software manages computer hardware and provides common services for computer programs?",
+      "back": "Operating system"
     },
     {
-      "front": "In which country did the concept of academic tenure originate in the early 20th century?",
-      "back": "The United States."
+      "front": "What is the primary role of an operating system acting as an intermediary?",
+      "back": "Managing the interaction between application programs and computer hardware."
     },
     {
-      "front": "Under what specific conditions can a tenured professor typically still be dismissed?",
-      "back": "Under just cause laws or extraordinary circumstances like financial exigency or program discontinuation."
+      "front": "According to data from October 2025, which operating system holds the largest global market share at 38%?",
+      "back": "Android"
     },
     {
-      "front": "How did the Nazi regime affect academic tenure in Germany by 1939?",
-      "back": "Universal education was suppressed, 1,500 professors were purged, and nearly half of all faculty posts were occupied by Nazis."
+      "front": "Which three operating systems are primarily categorized as mobile operating systems?",
+      "back": "Android, iOS, and iPadOS."
     },
     {
-      "front": "What was the 'heresy' that led the University of Illinois to fire several untenured economists in the late 1940s?",
-      "back": "Teaching Keynesian economics."
+      "front": "What is the term for the core software component of an operating system that is always running?",
+      "back": "Kernel"
     },
     {
-      "front": "Why did the University of Copenhagen's 2016 firing of Professor Hans Thybo cause controversy in Denmark?",
-      "back": "The university cited 'unacceptable behavior' involving pressure on a postdoc and private email use, but courts later ruled the dismissal unjustified."
+      "front": "Operating systems isolate applications to protect them from _____ and security vulnerabilities in other programs.",
+      "back": "Errors"
     },
     {
-      "front": "How was academic tenure formally changed in the United Kingdom in 1988?",
-      "back": "The Education Reform Act removed the original form of academic tenure, replacing it with permanent versus temporary contracts."
+      "front": "By what mechanism does an operating system mask limited hardware resources to provide programs the illusion of nearly unlimited memory?",
+      "back": "Virtualization (specifically virtual memory)."
     },
     {
-      "front": "In the German academic system, what is the 'Habilitation'?",
-      "back": "A high-level second PhD thesis that entitles the holder to become a full professor and eligible for tenureship."
+      "front": "In a multicomputer or cluster system, how is the relationship between CPUs and memory defined?",
+      "back": "Each CPU has its own private memory."
     },
     {
-      "front": "What is the average age at which an academic in Germany typically obtains the position of Academic Assistant?",
-      "back": "42 years old."
+      "front": "What additional software layer is often used in distributed systems to improve consistency between distinct networked computers?",
+      "back": "Middleware"
     },
     {
-      "front": "The widely adopted '1940 Statement of Principles on Academic Freedom and Tenure' was formulated by which organization?",
-      "back": "The American Association of University Professors (AAUP)."
+      "front": "What is the distinguishing factor of embedded operating systems regarding software installation?",
+      "back": "They do not load user-installed software."
     },
     {
-      "front": "In the U.S. university system, what does 'non-tenure track' usually imply for positions like adjunct professors?",
-      "back": "Higher teaching loads, lower compensation, fewer benefits, and little protection of academic freedom."
+      "front": "Which type of operating system guarantees the processing of events or data by a specific moment in time?",
+      "back": "Real-time operating system (RTOS)"
     },
     {
-      "front": "According to defenders like Aeon J. Skoble, why is tenure necessary for heterodox scholars?",
-      "back": "It provides formal protection against firing for scholars whose views differ from the prevailing academic orthodoxy."
+      "front": "How do 'hard' real-time systems differ from 'soft' real-time systems regarding timing errors?",
+      "back": "Hard systems require exact timing, while soft systems can accept occasional missed events."
     },
     {
-      "front": "What economic argument does Ellen Schrecker use to justify the job security provided by tenure?",
-      "back": "It counterbalances the inability of universities to compete with the high financial remuneration of the private sector."
+      "front": "Which software type emulates hardware to allow one operating system to run as an application within another?",
+      "back": "Hypervisor (or Virtual Machine)"
     },
     {
-      "front": "How does tenure protect K-12 public school teachers regarding curriculum?",
-      "back": "It protects them from being fired for teaching controversial subjects such as evolutionary biology or theology."
+      "front": "What is constructed when a library operating system (libOS) is composed with a single application into a specialized machine image?",
+      "back": "Unikernel"
     },
     {
-      "front": "What is the 'string theory' criticism regarding tenure as described by physicist Lee Smolin?",
-      "back": "Young physicists may feel forced to conform to popular fields like string theory to avoid 'career suicide' before obtaining tenure."
+      "front": "How were the first computers of the late 1940s and 1950s programmed before the advent of operating systems?",
+      "back": "Directly with plugboards or machine code."
     },
     {
-      "front": "Which negative incentive does economist Steven Levitt associate with the existence of tenure?",
-      "back": "It rewards complacency, as professors may reduce their effort once the difficulty of removal is established."
+      "front": "Which IBM operating system was the first popular one to support multiprogramming?",
+      "back": "OS/360"
     },
     {
-      "front": "What is the typical time commitment for a PhD program according to the 'Knowledge Courtyard' material?",
-      "back": "5 to 7 years."
+      "front": "What is the definition of 'multiprogramming' in the context of 1960s mainframes?",
+      "back": "Allowing one job to use the CPU while another job is blocked waiting for I/O."
     },
     {
-      "front": "What is the average completion time for a Computer Science PhD according to the Council of Graduate Schools (CGS)?",
-      "back": "5.8 years."
+      "front": "Which operating system, originally developed for a single user as a descendant of MULTICS, became the basis for System V and BSD?",
+      "back": "UNIX"
     },
     {
-      "front": "What are the four primary stages of a PhD timeline?",
-      "back": "Coursework, Qualifying Exam, Proposal, and Defense."
+      "front": "What is the purpose of the POSIX standard released by the IEEE?",
+      "back": "To increase compatibility by defining standard application programming interfaces (APIs) for operating systems."
     },
     {
-      "front": "In the PhD journey, what is the primary goal of the 'Qualifying Exam'?",
-      "back": "To determine if a student is capable of becoming an official PhD Candidate by testing their knowledge of 30-50 key papers."
+      "front": "Which free software operating system was inspired by the educational UNIX clone known as MINIX?",
+      "back": "Linux"
     },
     {
-      "front": "What is the difference between a Research Assistantship (RA) and a Teaching Assistantship (TA)?",
-      "back": "An RA involves conducting research for a professor's grant, while a TA involves teaching undergraduate students."
+      "front": "In the early 1980s, which operating system was the most popular for microcomputers before the rise of MS-DOS?",
+      "back": "CP/M (Control Program for Microcomputers)"
     },
     {
-      "front": "Why is a Fellowship considered the most desirable form of PhD funding?",
-      "back": "It allows for 100% focus on research without the obligations of teaching or assisting a specific grant."
+      "front": "Which Apple computer was the first popular system to utilize a graphical user interface (GUI)?",
+      "back": "Macintosh"
     },
     {
-      "front": "What is the approximate annual value of a funded PhD package in the U.S. (including tuition waiver and stipend)?",
-      "back": "$79,000 - $114,000+ per year."
+      "front": "What was the name of the GUI overlay Microsoft originally added to the MS-DOS operating system?",
+      "back": "Windows"
     },
     {
-      "front": "According to the July 2026 DHS rule, what is the new fixed admission period for F-1 students?",
-      "back": "A maximum of 4 years."
+      "front": "Which open-source mobile operating system uses a Linux kernel and a C library called Bionic?",
+      "back": "Android"
     },
     {
-      "front": "When choosing a PhD research area, what does a 'Stable' area like Systems or Security offer compared to 'Hot' areas?",
-      "back": "Moderate competition and consistent, stable funding opportunities."
+      "front": "What is the fundamental difference between 'user mode' and 'kernel mode' operation?",
+      "back": "The hardware restricts instructions in user mode, while the kernel has unrestricted powers."
     },
     {
-      "front": "In a PhD application, what is the primary purpose of the Statement of Purpose (SOP)?",
-      "back": "To express the applicant's research intention, specific research questions, and fit with the university and professor."
+      "front": "Which kernel-level data structure is created to manage program binary code, assigned memory, and execution priority?",
+      "back": "Process"
     },
     {
-      "front": "Why is it discouraged to send a generic SOP to every university?",
-      "back": "Because committees look for a specific 'fit' with their faculty's recent research and the program's unique strengths."
+      "front": "What term describes the change in CPU control flow from a running program to an interrupt service routine (ISR)?",
+      "back": "Interrupt"
     },
     {
-      "front": "What is 'Cold Emailing' in the context of PhD admissions?",
-      "back": "Emailing professors directly before applying to express interest in their research and inquire about lab openings."
+      "front": "A _____ is a message to a process that an event has occurred, often referred to as a software interrupt.",
+      "back": "Signal"
     },
     {
-      "front": "What is a recommended 'High Profile' PhD applicant strategy?",
-      "back": "Applying to 10-15 programs, focusing on 'reach' schools in the Top-20 and 'match' schools in the Top-50."
+      "front": "Which Unix-like system call is used to send a signal to another process?",
+      "back": "kill(pid, signum)"
     },
     {
-      "front": "For a 'Low Profile' PhD applicant, what is the purpose of a 'Bridge Year'?",
-      "back": "To gain research experience, publish a workshop paper, or complete a Master's to strengthen the profile for future applications."
+      "front": "In a command-line environment, what is the effect of the 'interrupt character' (Control-C)?",
+      "back": "It terminates the currently running process."
     },
     {
-      "front": "What is the 'Paper Pipeline' sequence for a first-time researcher?",
-      "back": "Literature Review $\\rightarrow$ Hypothesis $\\rightarrow$ Experiment $\\rightarrow$ Analysis $\\rightarrow$ Writing $\\rightarrow$ Submission."
+      "front": "What hardware feature allows I/O devices to bypass the CPU and access main memory directly?",
+      "back": "Direct Memory Access (DMA)"
     },
     {
-      "front": "How does a PhD interview differ from a standard industry coding interview?",
-      "back": "It focuses on research conversation, the applicant's thought process, and curiosity rather than technical coding tests."
+      "front": "Why is 'cooperative memory management' considered unreliable for modern systems?",
+      "back": "It relies on programs to voluntarily stay within their limits; a single bug can crash the entire system."
     },
     {
-      "front": "What is 'Imposter Syndrome' in PhD life?",
-      "back": "The persistent feeling that one is 'not good enough' despite evidence of success, common among graduate students."
+      "front": "Which memory protection technique uses registers to specify allowed memory addresses and triggers an interrupt upon unauthorized access?",
+      "back": "Segmentation (or Paging)"
     },
     {
-      "front": "Which career path after a PhD typically offers the highest salary range ($200K-$400K+)?",
-      "back": "Industry Research (e.g., DeepMind, Meta FAIR, Microsoft Research)."
+      "front": "What specific interrupt occurs when a program tries to access memory that has been allocated but is not currently accessible in RAM?",
+      "back": "Page fault"
     },
     {
-      "front": "In the hierarchical definition of postgraduate degrees, what does 'DEA' or 'DESS' refer to in the pre-2005 French system?",
-      "back": "Master's level degrees."
+      "front": "What is the term for moving less frequently accessed memory to a disk to free up space in RAM?",
+      "back": "Swapping (or Paging)"
     },
     {
-      "front": "How do 'Higher Doctorates' like the Doctor of Science (D.Sc.) differ from a Ph.D. in some European systems?",
-      "back": "They are awarded to distinguished professors for a significant portfolio of work beyond the Ph.D. level."
+      "front": "How does 'preemptive multitasking' prevent a single thread from monopolizing the processor?",
+      "back": "The operating system can interrupt a running thread to switch to another."
     },
     {
-      "front": "What is an 'Honorary Degree'?",
-      "back": "A postgraduate level recognition awarded to individuals for achievements in fields like art or politics, without academic study."
+      "front": "What is the main difference between a 'process' and a 'thread' regarding resource sharing?",
+      "back": "Threads share code, heap data, and resources with other threads in the same process, whereas processes are isolated."
     },
     {
-      "front": "In Argentina, what is the minimum requirement for admission to a postgraduate program?",
-      "back": "Full completion of an undergraduate course (carrera de grado), such as Licenciado or Ingeniero."
+      "front": "In a file system, what is the difference between an absolute path and a relative path?",
+      "back": "Absolute paths start at the root directory; relative paths start from the current directory."
     },
     {
-      "front": "In Australia, what is the typical duration of a Graduate Certificate?",
-      "back": "Six months of full-time coursework."
+      "front": "How do operating systems reduce I/O latency when an application requests files?",
+      "back": "By caching recently used blocks and prefetching data the application might need next."
     },
     {
-      "front": "How does the Australian 'Honours' year relate to PhD entry in the sciences?",
-      "back": "It is a one-year research program after a pass degree that is often considered equivalent to a British research Master's for PhD admission."
+      "front": "Which file system component tracks unallocated storage blocks, often using a bitmap?",
+      "back": "Free space map"
     },
     {
-      "front": "In Brazil, what is the difference between 'Lato sensu' and 'Stricto sensu' postgraduate programs?",
-      "back": "'Lato sensu' focuses on professional specialization, while 'Stricto sensu' refers to Master's and Doctoral programs for academic research."
+      "front": "What design strategy ensures that permanent storage is not left in an inconsistent state if a crash occurs during a write operation?",
+      "back": "Atomic operations"
     },
     {
-      "front": "What is the Canadian Association of Graduate Studies (CAGS) mandate?",
-      "back": "To promote and foster excellence in graduate education and university research across 58 Canadian universities."
+      "front": "The CIA triad of security stands for Confidentiality, Integrity, and _____.",
+      "back": "Availability"
     },
     {
-      "front": "In Canadian universities, what is the 'reclassification' process for graduate students?",
-      "back": "Allowing a student to move directly into a Ph.D. program from a Master's after satisfactory performance in the first year."
+      "front": "What is the 'principle of least authority' in operating system security?",
+      "back": "Granting the minimum privilege necessary to perform a specific task."
     },
     {
-      "front": "What is the language requirement for a PhD thesis at McGill University in Canada?",
-      "back": "Work can be submitted in either English or French, except when the course's purpose is language acquisition."
+      "front": "How does a 'microkernel' design improve security compared to a 'monolithic kernel'?",
+      "back": "It separates kernel privileges into multiple domains, reducing the impact of a single breach."
     },
     {
-      "front": "In France, what are 'Écoles doctorales'?",
-      "back": "Educational structures that provide structured doctoral training and manage the awarding of doctoral fellowships."
+      "front": "What is 'address space layout randomization' (ASLR) used for in OS hardening?",
+      "back": "To reduce vulnerabilities by randomizing where data and code are stored in memory."
     },
     {
-      "front": "What is the minimum remuneration for a French 'contrat doctoral' as of 2024?",
-      "back": "€2,100."
+      "front": "What does the acronym WIMP stand for in the context of graphical user interfaces?",
+      "back": "Windows, Icons, Menus, and Pointers."
     },
     {
-      "front": "How does the traditional 'Doktorvater' model of German doctoral studies function?",
-      "back": "A student conducts research individually under the supervision of a single professor without a formal curriculum."
+      "front": "Which software license requires all derivatives of the Linux kernel to also release their source code?",
+      "back": "GNU General Public License (GPL)"
     },
     {
-      "front": "What is the role of a 'Graduiertenkolleg' (Research Training Group) in Germany?",
-      "back": "To provide a team of 20-30 doctoral students with structured training and DFG-funded stipends for interdisciplinary research."
+      "front": "Linux was designed with a focus on consistency and simplicity, allowing its basic elements to be combined in _____ ways.",
+      "back": "Unlimited"
     },
     {
-      "front": "In Nigeria, what is the minimum weighted average required in a Master's degree for admission to a Doctoral program?",
-      "back": "60% (B average or $4.00/5$)."
+      "front": "What is the primary file system used by modern versions of Microsoft Windows?",
+      "back": "NTFS (New Technology File System)"
     },
     {
-      "front": "In the UK, what degree is often used as a 'transfer' stage before a student is fully admitted to a Ph.D.?",
-      "back": "Master of Philosophy (M.Phil.) or Master of Research (M.Res.)."
+      "front": "In the Windows Executive, what term refers to data structures like processes and threads that are managed in kernel mode?",
+      "back": "Objects"
     },
     {
-      "front": "What is the typical deadline for overseas students applying for major UK funding?",
-      "back": "Twelve months or more before the course begins."
+      "front": "What is the standard name for an operating system whose code is not derived from existing systems and has a very small user base?",
+      "back": "Hobbyist operating system"
     },
     {
-      "front": "What does the acronym 'ABD' stand for in U.S. doctoral education?",
-      "back": "'All But Dissertation,' referring to students who have advanced to candidacy but not yet filed their thesis."
+      "front": "How can developers avoid the cost of porting an application to multiple operating systems?",
+      "back": "By using software platforms like Java or Qt that provide an abstraction layer."
     },
     {
-      "front": "In the U.S., what is the purpose of 'Comprehensive Examinations' (or 'Quals')?",
-      "back": "To test a doctoral student's grasp of their discipline and determine if they are ready to proceed to independent research."
+      "front": "What is 'time-sharing' in an operating system?",
+      "back": "Scheduling tasks to allow multiple users or programs to share the CPU efficiently."
     },
     {
-      "front": "What is the 'April 15 Resolution' by the Council of Graduate Schools in the U.S.?",
-      "back": "A deadline giving applicants until April 15 to accept or reject financial support offers for graduate study."
+      "front": "A 'unikernel' typically runs in a _____ address space environment.",
+      "back": "Single"
     },
     {
-      "front": "How does the National Labor Relations Act affect graduate employee unions at private U.S. universities?",
-      "back": "It governs their recognition, which was not established for private universities until 2001."
+      "front": "What was the precursor to cloud computing that was intended to allow hundreds of simultaneous users?",
+      "back": "MULTICS"
     },
     {
-      "front": "What is the difference between a 'Master's by Research' and a 'Taught Master's' in the UK?",
-      "back": "Research Master's focus on extensive original research (e.g., M.Res.), while Taught Master's (e.g., M.A., M.Sc.) focus on coursework and credits."
+      "front": "Which operating system became dominant on mobile devices before being usurped by iOS and Android?",
+      "back": "Symbian OS"
     },
     {
-      "front": "Why is 'just cause' significant in the context of academic tenure?",
-      "back": "It defines the specific, legitimate legal reasons (such as misconduct) for which a tenured employee may still be terminated."
+      "front": "What is the function of an 'Interrupt Service Routine' (ISR)?",
+      "back": "A specific piece of code that executes in response to a hardware or software interrupt."
     },
     {
-      "front": "The phrase 'Duration of Status' (D/S) on an F-1 visa is being replaced in 2026 by what?",
-      "back": "A fixed time period of admission (e.g., 4 years)."
+      "front": "In x86 architecture, which assembly instruction is used to generate a software interrupt?",
+      "back": "INT"
     },
     {
-      "front": "What is the 'Non-pecuniary' benefit of tenure mentioned in the source material?",
-      "back": "Job security, which allows universities to pay lower salaries compared to the private sector."
+      "front": "What is 'polling' in the context of I/O, and how do interrupts improve upon it?",
+      "back": "Polling requires the CPU to constantly check a device's status; interrupts allow the CPU to perform other tasks until the device is ready."
     },
     {
-      "front": "In Australia, which government scheme provides tuition subsidies for domestic postgraduate students?",
-      "back": "FEE-Help (or HECS-Help for Commonwealth Supported Places)."
+      "front": "What is the function of a 'device-status table' maintained by the kernel?",
+      "back": "To track which processes are waiting for specific hardware devices."
     },
     {
-      "front": "Term: Licentiate",
-      "back": "Definition: An academic degree in some European countries (e.g., Finland, Sweden) that is above a Master's but below a Doctorate."
+      "front": "Which tech used in solid-state drives is faster and more durable than magnetic disks?",
+      "back": "Flash memory"
     },
     {
-      "front": "In Argentina, who must review a candidate's dissertation according to postgraduate requirements?",
-      "back": "A committee composed of external examiners, with at least one external to the institution."
+      "front": "What is 'segmentation violation' (Seg-V)?",
+      "back": "An interrupt triggered when a program attempts to access a memory address it is not permitted to use."
     },
     {
-      "front": "What is the typical CATS credit value of a one-year UK Master's degree?",
-      "back": "180 credits."
+      "front": "Parallelism in a program is achieved by running multiple threads on _____ CPUs.",
+      "back": "Different (or multiple)"
     },
     {
-      "front": "Which Latin word is the etymological root of 'Doctor,' meaning 'to teach'?",
-      "back": "Docere."
+      "front": "What role do 'checkums' play in file system reliability?",
+      "back": "They are used to detect whether data has been corrupted during storage or transfer."
     },
     {
-      "front": "According to the PhD journey guide, what is the main reason for PhD dropouts?",
-      "back": "Advisor mismatch, loss of funding, and mental health issues rather than academic weakness."
+      "front": "In security, what is the 'attack surface'?",
+      "back": "The sum of all points where an unauthorized user can try to enter data to or extract data from an environment."
     },
     {
-      "front": "What does a 'CV (Academic Format)' typically highlight that a professional resume might not?",
-      "back": "Research publications, presentations, specific academic projects, and teaching experience."
+      "front": "Why is 'C' or 'C++' often cited as a source of OS vulnerabilities?",
+      "back": "They lack automatic bounds checking, which can lead to buffer overflow attacks."
     },
     {
-      "front": "Why is 'Negative Result' considered a valid outcome in PhD research?",
-      "back": "Because in research, proving a hypothesis wrong is still a contribution to knowledge and a learning experience."
+      "front": "What is 'security by obscurity'?",
+      "back": "The unreliable practice of relying on secrecy of design or implementation to provide security."
     },
     {
-      "front": "Which PhD funding type is specifically linked to teaching duties for about 20 hours per week?",
-      "back": "Teaching Assistantship (TA)."
+      "front": "Which mobile OS was introduced in 2008 as an open-source project based on the Linux kernel?",
+      "back": "Android"
     },
     {
-      "front": "What does the 'Diversity of Ideas' argument suggest about the necessity of tenure?",
-      "back": "Tenure protects scholars who challenge a field's 'orthodoxy' or political slant, preventing a departmental echo chamber."
+      "front": "Which desktop operating system holds approximately 31% of the global market share as of October 2025?",
+      "back": "Microsoft Windows"
     },
     {
-      "front": "In Germany, what is the 'Akademischer Rat'?",
-      "back": "A permanent civil service position for research and teaching below the level of full professorship."
+      "front": "What is 'Remote Direct Memory Access' (RDMA)?",
+      "back": "A technique that enables a CPU in a multicomputer system to access the memory of other CPUs directly."
     },
     {
-      "front": "What is a 'Graduate Diploma' in the Australian system?",
-      "back": "A twelve-month full-time coursework qualification."
+      "front": "Operating systems are found on devices ranging from cellular phones and video game consoles to web servers and _____.",
+      "back": "Supercomputers"
     },
     {
-      "front": "In the US, what constitutes the 'residency' requirement for some doctorate programs?",
-      "back": "A fixed portion of coursework taken outside the student's department or university to broaden research abilities."
+      "front": "In the history of UNIX, which two versions were considered the most successful early branches?",
+      "back": "System V (AT&T) and BSD (Berkeley Software Distribution)."
     },
     {
-      "front": "How does 'Financial Exigency' affect a tenured faculty member's job security?",
-      "back": "It is an extraordinary circumstance where severe financial crisis allows a university to layoff tenured staff."
+      "front": "What is 'context switching'?",
+      "back": "The process of saving the state of a running process and loading the state of another to allow multitasking."
     },
     {
-      "front": "What was the 'most corroding and disintegrating poison' according to Adolf Hitler?",
-      "back": "Universal education."
+      "front": "Which type of multitasking requires threads to voluntarily relinquish control of the processor?",
+      "back": "Cooperative multitasking"
     },
     {
-      "front": "According to the PhD journey guide, what percentage of CS PhD applicants typically get accepted into high-profile AI/ML programs?",
-      "back": "1% to 3%."
+      "front": "Which hardware component converts file names into block numbers for the operating system?",
+      "back": "The index (often implemented as a tree)."
     },
     {
-      "front": "What is the 'Hook' in a Statement of Purpose (SOP)?",
-      "back": "The opening section (about 20%) that describes a specific experience that sparked the applicant's research questions."
+      "front": "What does RAID stand for in the context of data redundancy?",
+      "back": "Redundant Array of Inexpensive Disks"
     },
     {
-      "front": "Why is 'Paper Pipeline' progress faster the second time around?",
-      "back": "Because the researcher has already learned the difficult fundamentals of literature review, experimental setup, and academic writing."
+      "front": "Which software layer enables an operating system to work with different hardware without needing constant modification?",
+      "back": "Device drivers"
     },
     {
-      "front": "In the UK, which organization awards studentships for arts and humanities research?",
-      "back": "The Arts and Humanities Research Council (AHRC)."
+      "front": "What is 'fragmentation' in a file system?",
+      "back": "A condition where files are stored in non-contiguous blocks, potentially reducing performance."
     },
     {
-      "front": "What is the 'Stipend' in a funded PhD program?",
-      "back": "A regular living allowance paid to the student, separate from the tuition waiver."
+      "front": "The 'Windows Executive' uses kernel-mode objects to manage data structures like _____ and threads.",
+      "back": "Processes"
     },
     {
-      "front": "What is the primary difference between a Master of Philosophy (M.Phil.) and a Ph.D. in most systems?",
-      "back": "The Ph.D. requires a more extensive original contribution to the field, whereas the M.Phil. has a shorter research scope."
+      "front": "What is the primary advantage of a GUI over a command-line interface for non-technical users?",
+      "back": "It is more user-friendly and provides a visual environment for interaction."
+    },
+    {
+      "front": "Which operating system is used in the controllers of most Intel microchips since 2008?",
+      "back": "MINIX"
+    },
+    {
+      "front": "What is a 'live CD'?",
+      "back": "An operating system that runs directly from a disc without needing installation on a hard drive."
+    },
+    {
+      "front": "Which specific hardware component is responsible for triggering a hardware interrupt?",
+      "back": "The system bus (sending a signal to the CPU)."
+    },
+    {
+      "front": "What is the difference between a 'library' and a 'system program'?",
+      "back": "System programs are associated with the OS but not part of the kernel; libraries are sets of functions used by programs."
+    },
+    {
+      "front": "In Windows, what is the 'Windows Driver Model' used for?",
+      "back": "It is the standard framework for writing I/O device drivers."
     }
   ]
 }

@@ -1,193 +1,161 @@
 {
-  "name": "Scientific Method and Communication",
+  "name": "RAG Mastery & Knowledge Retrieval",
   "children": [
     {
-      "name": "Scientific Method",
+      "name": "Document Ingestion Pipeline",
       "children": [
         {
-          "name": "Core Elements",
+          "name": "Format-Specific Parsing (PDF, HTML, DOCX, OCR)"
+        },
+        {
+          "name": "Universal Pipeline: Load, Extract, Clean, Structure"
+        },
+        {
+          "name": "Metadata Tagging & Citation"
+        },
+        {
+          "name": "Tools: Unstructured.io, LlamaParse, Docling"
+        }
+      ]
+    },
+    {
+      "name": "Indexing & Vector DB",
+      "children": [
+        {
+          "name": "Vector Embeddings & High-Dimensional Space"
+        },
+        {
+          "name": "Algorithms",
           "children": [
             {
-              "name": "Characterization"
+              "name": "HNSW (Graph-based, High Performance)"
             },
             {
-              "name": "Hypothesis Development"
+              "name": "IVF (Cluster-based Search)"
             },
             {
-              "name": "Predictions"
-            },
-            {
-              "name": "Experiments"
+              "name": "Product Quantization (Compression)"
             }
           ]
         },
         {
-          "name": "Inquiry Methods",
+          "name": "Storage: Pinecone, Qdrant, Weaviate, Milvus"
+        }
+      ]
+    },
+    {
+      "name": "Retrieval Patterns",
+      "children": [
+        {
+          "name": "Naive RAG",
           "children": [
             {
-              "name": "Hypothetico-deductive"
+              "name": "Embed-Search-Generate Cycle"
             },
             {
-              "name": "Inductive Method"
-            },
-            {
-              "name": "Mathematical Modelling"
+              "name": "Limitations: Wrong Chunks, Lost Context"
             }
           ]
         },
         {
-          "name": "Principles",
+          "name": "Advanced Retrieval",
           "children": [
             {
-              "name": "Empiricism"
+              "name": "Hybrid Search (Dense + Lexical BM25)"
             },
             {
-              "name": "Falsifiability"
+              "name": "Parent-Child / Small-to-Big Chunking"
             },
             {
-              "name": "Reproducibility"
+              "name": "HyDE (Hypothetical Embeddings)"
             },
             {
-              "name": "Skepticism"
-            }
-          ]
-        },
-        {
-          "name": "Heuristics",
-          "children": [
-            {
-              "name": "Parsimony (Occam's Razor)"
+              "name": "Contextual Retrieval & Late Chunking"
             },
             {
-              "name": "Elegance"
-            },
-            {
-              "name": "Invariance"
+              "name": "Reranking (Cross-Encoders)"
             }
           ]
         }
       ]
     },
     {
-      "name": "Scientific Writing",
+      "name": "Query Transformation",
       "children": [
         {
-          "name": "Genres",
+          "name": "Query Rewriting & Specificity"
+        },
+        {
+          "name": "Multi-Query Expansion"
+        },
+        {
+          "name": "Sub-question Decomposition"
+        },
+        {
+          "name": "Step-Back Prompting"
+        }
+      ]
+    },
+    {
+      "name": "Evaluation & Reliability",
+      "children": [
+        {
+          "name": "RAGAS Framework",
           "children": [
             {
-              "name": "Journal Articles"
+              "name": "Context Precision & Recall"
             },
             {
-              "name": "Literature Reviews"
-            },
-            {
-              "name": "Grant Proposals"
-            },
-            {
-              "name": "Scientific Reports"
+              "name": "Answer Faithfulness & Relevance"
             }
           ]
         },
         {
-          "name": "IMRaD Structure",
+          "name": "Failure Modes",
           "children": [
             {
-              "name": "Introduction"
+              "name": "Hallucination & Stale Data"
             },
             {
-              "name": "Methods"
-            },
-            {
-              "name": "Results"
-            },
-            {
-              "name": "Discussion"
-            }
-          ]
-        },
-        {
-          "name": "Style and Conventions",
-          "children": [
-            {
-              "name": "Peer Review"
-            },
-            {
-              "name": "Citation Systems (APA, Chicago, Vancouver)"
-            },
-            {
-              "name": "Technical Communication"
-            },
-            {
-              "name": "Language Standards"
+              "name": "Prompt Injection & Poisoning"
             }
           ]
         }
       ]
     },
     {
-      "name": "Ethics and Integrity",
+      "name": "Connected Knowledge",
       "children": [
         {
-          "name": "Honesty and Openness"
-        },
-        {
-          "name": "Data Integrity"
-        },
-        {
-          "name": "Plagiarism Prevention"
-        },
-        {
-          "name": "Authorship Standards"
-        },
-        {
-          "name": "Diversity and Inclusivity"
+          "name": "GraphRAG",
+          "children": [
+            {
+              "name": "Entity & Relation Extraction"
+            },
+            {
+              "name": "Community Detection"
+            },
+            {
+              "name": "Multi-hop Reasoning"
+            }
+          ]
         }
       ]
     },
     {
-      "name": "Perspectives and Philosophy",
+      "name": "Production Implementation",
       "children": [
         {
-          "name": "Philosophical Views",
-          "children": [
-            {
-              "name": "Rationalism"
-            },
-            {
-              "name": "Pragmatism"
-            },
-            {
-              "name": "Epistemological Anarchism"
-            }
-          ]
+          "name": "Semantic Caching"
         },
         {
-          "name": "Sociology of Knowledge",
-          "children": [
-            {
-              "name": "Thought Collectives"
-            },
-            {
-              "name": "Epistemic Cultures"
-            },
-            {
-              "name": "Situated Cognition"
-            }
-          ]
+          "name": "Observability & Tracing (LangSmith, Phoenix)"
         },
         {
-          "name": "Modern Challenges",
-          "children": [
-            {
-              "name": "Replication Crisis"
-            },
-            {
-              "name": "Large Language Models"
-            },
-            {
-              "name": "Big Data Limitations"
-            }
-          ]
+          "name": "Guardrails & Safety"
+        },
+        {
+          "name": "Frameworks: LangChain, LlamaIndex, Haystack"
         }
       ]
     }

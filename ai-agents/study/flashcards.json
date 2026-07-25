@@ -1,305 +1,345 @@
 {
-  "title": "Learning Flashcards",
+  "title": "AI Flashcards",
   "cards": [
     {
-      "front": "In deep learning, what is the definition of fine-tuning?",
-      "back": "The process of adapting a model trained for an upstream task to a different, more specific downstream task."
+      "front": "Which company introduced the Model Context Protocol (MCP) in November 2024?",
+      "back": "Anthropic"
     },
     {
-      "front": "Fine-tuning is considered a form of _____ learning because it reuses knowledge from a previous training objective.",
-      "back": "transfer"
+      "front": "What is the primary purpose of the Model Context Protocol (MCP)?",
+      "back": "To standardize how AI systems integrate and share data with external tools and systems."
     },
     {
-      "front": "What happens to a neural network layer when it is 'frozen' during fine-tuning?",
-      "back": "The weights of that layer are not changed during the backpropagation process."
+      "front": "The Model Context Protocol aims to solve the \"N×M\" data integration problem caused by _____.",
+      "back": "Information silos"
     },
     {
-      "front": "In the context of fine-tuning, what are 'adapters'?",
-      "back": "Lightweight modules inserted into a model architecture that are tuned while the rest of the weights remain frozen."
+      "front": "In the Model Context Protocol architecture, what is an 'MCP host'?",
+      "back": "An AI agent that interacts with an LLM and requires services from servers."
     },
     {
-      "front": "Why are earlier layers of a convolutional neural network typically frozen during fine-tuning?",
-      "back": "They capture low-level features that are generally applicable across different visual tasks."
+      "front": "What component does an MCP host create to communicate with a specific MCP server?",
+      "back": "An MCP client"
     },
     {
-      "front": "Fine-tuning a model on its full parameters generally yields better results but is more _____ expensive.",
-      "back": "computationally"
+      "front": "In the MCP framework, what is the role of an 'MCP server'?",
+      "back": "To provide specific tools or resources to the host application."
     },
     {
-      "front": "Which specific machine learning objective was used to fine-tune GPT models into ChatGPT?",
-      "back": "Reinforcement learning from human feedback (RLHF)."
+      "front": "What is the standard transport protocol used for communication between MCP clients and servers?",
+      "back": "JSON-RPC 2.0"
     },
     {
-      "front": "How can fine-tuning affect a model's robustness to distribution shifts?",
-      "back": "It can degrade the model's performance on out-of-distribution data."
+      "front": "In MCP terminology, what is a 'tool'?",
+      "back": "An executable function provided by a server, such as a calculator or database query."
     },
     {
-      "front": "What mitigation technique involves mixing a fine-tuned model's weights with the original model's weights?",
-      "back": "Linear interpolation."
+      "front": "In MCP terminology, what is a 'resource'?",
+      "back": "A piece of data or a document provided by a server, such as an FAQ document."
     },
     {
-      "front": "Term: Low-rank adaptation (LoRA)",
-      "back": "Definition: An adapter-based fine-tuning technique that adds a low-rank matrix to the model's original weight matrix."
+      "front": "Anthropic donated the Model Context Protocol to which organization in December 2025?",
+      "back": "The Agentic AI Foundation (AAIF)"
     },
     {
-      "front": "How does LoRA reduce the space requirements for fine-tuning large language models?",
-      "back": "It only tunes several million parameters instead of the billions found in the base model."
+      "front": "Which major AI provider integrated MCP across its products, including its desktop app, in March 2025?",
+      "back": "OpenAI"
     },
     {
-      "front": "Representation fine-tuning (ReFT) differs from PEFT because it targets _____ instead of weights.",
-      "back": "representations (or hidden states)"
+      "front": "Which Google division announced it would embrace the Model Context Protocol in April 2025?",
+      "back": "Google DeepMind"
     },
     {
-      "front": "What specific ReFT method operates in the linear subspace spanned by a low-rank projection matrix?",
-      "back": "Low-rank linear subspace ReFT (LoReFT)."
+      "front": "MCP re-uses the message-flow ideas of which existing protocol used in software development?",
+      "back": "Language Server Protocol (LSP)"
     },
     {
-      "front": "According to the source, what is 'downstream task' performance usually compared against?",
-      "back": "The performance of the unmodified pre-trained model."
+      "front": "What official MCP extension allows servers to deliver interactive user interfaces like dashboards?",
+      "back": "MCP Apps"
     },
     {
-      "front": "In mathematical modeling, what is 'overfitting'?",
-      "back": "Producing an analysis that corresponds too closely to a specific dataset, failing to generalize to new data."
+      "front": "What cybersecurity threat involves researchers using poisoned tools to exfiltrate data via MCP?",
+      "back": "Prompt injection"
     },
     {
-      "front": "An overfitted model contains more _____ than can be justified by the available data.",
-      "back": "parameters"
+      "front": "Which platform reported processing 4.5 million MCP calls by late May 2026?",
+      "back": "Salesforce"
     },
     {
-      "front": "The essence of overfitting is extracting _____ variation from a dataset as if it were underlying structure.",
-      "back": "residual (or noise)"
+      "front": "Term: Prompt engineering",
+      "back": "The process of structuring natural language inputs to produce specified outputs from generative AI."
     },
     {
-      "front": "When does 'underfitting' occur in mathematical modeling?",
-      "back": "When a model is too simple to adequately capture the underlying structure of the data."
+      "front": "Term: Context engineering",
+      "back": "The management of non-prompt elements like system instructions, metadata, and API tools."
     },
     {
-      "front": "Underfitting is typically characterized by high _____ and low variance.",
-      "back": "bias"
+      "front": "What is 'in-context learning' in the context of Large Language Models?",
+      "back": "The emergent ability of a model to temporarily learn from prompts without parameter updates."
     },
     {
-      "front": "Overfitting is typically characterized by low bias and high _____.",
-      "back": "variance"
+      "front": "The ability to learn in-context is considered an _____ property of model scale.",
+      "back": "Emergent"
     },
     {
-      "front": "What is the 'Principle of Parsimony' (Occam's Razor) in model selection?",
-      "back": "The preference for simpler models over complex ones, assuming they provide similar explanatory power."
+      "front": "What prompting technique involves providing a few examples for the model to learn from within the prompt?",
+      "back": "Few-shot (or multi-shot) prompting"
     },
     {
-      "front": "In regression, the 'one in ten rule' suggests having ten observations per _____ variable to avoid overfitting.",
-      "back": "independent (or explanatory)"
+      "front": "What is 'Chain-of-Thought' (CoT) prompting?",
+      "back": "A technique inducing the model to solve a problem through a series of intermediate reasoning steps."
     },
     {
-      "front": "What is 'Freedman's paradox' in the context of regression?",
-      "back": "Finding false statistical significance when a model includes many variables that have no actual relation to the dependent variable."
+      "front": "What phrase is typically added to a prompt to enable 'zero-shot' Chain-of-Thought reasoning?",
+      "back": "\"Let's think step-by-step\""
     },
     {
-      "front": "How does 'early stopping' help prevent overfitting during neural network training?",
-      "back": "It halts training at the point where validation error reaches its global minimum."
+      "front": "What is the 'Self-consistency' technique in Chain-of-Thought prompting?",
+      "back": "Generating multiple reasoning paths and selecting the most frequent final answer."
     },
     {
-      "front": "What is the purpose of 'dropout' regularization in a neural network?",
-      "back": "To improve robustness by probabilistically removing inputs to a layer during training."
+      "front": "How does 'Tree-of-Thought' prompting differ from standard Chain-of-Thought prompting?",
+      "back": "It explores multiple lines of reasoning in parallel with the ability to backtrack."
     },
     {
-      "front": "Term: Pruning",
-      "back": "Definition: Identifying and removing unnecessary parts of a neural network to create a sparse, optimal structure."
+      "front": "What is Retrieval-Augmented Generation (RAG)?",
+      "back": "A technique where the model pulls relevant information from external databases before generating a response."
     },
     {
-      "front": "What is 'benign overfitting'?",
-      "back": "A phenomenon where a model generalizes well to unseen data despite fitting noisy training data perfectly."
+      "front": "What is 'GraphRAG'?",
+      "back": "An extension of RAG that uses a knowledge graph to connect disparate pieces of information."
     },
     {
-      "front": "In signal processing and computing, what is 'quantization'?",
-      "back": "The process of constraining an input from a continuous or large set of values to a discrete set."
+      "front": "What is the main purpose of 'textual inversion' in text-to-image models?",
+      "back": "Creating new word embeddings to represent specific objects or styles using example images."
     },
     {
-      "front": "What does 'quantization' refer to specifically for Large Language Models?",
-      "back": "Neural network weight optimization to reduce model size and complexity."
+      "front": "What is 'Prompt injection'?",
+      "back": "A cybersecurity exploit where malicious inputs cause an AI to bypass safeguards or perform unintended actions."
     },
     {
-      "front": "Term: Stochastic gradient descent (SGD)",
-      "back": "Definition: An iterative optimization method that replaces the actual gradient of a dataset with an estimate from a random subset."
+      "front": "What is 'vibe coding'?",
+      "back": "An AI-assisted development method where a user describes desired behavior and the AI generates the code."
     },
     {
-      "front": "In SGD, what is the 'learning rate' represented by the symbol $\\eta$?",
-      "back": "A parameter that determines the step size taken during each iteration of the algorithm."
+      "front": "In context engineering, what is 'token budgeting'?",
+      "back": "The practice of managing the number of tokens supplied to an LLM to improve efficiency."
     },
     {
-      "front": "Why is SGD preferred over 'batch' gradient descent for enormous training sets?",
-      "back": "It reduces computational burden by sampling only a subset of data at each step, allowing for faster iterations."
+      "front": "Why is 'word order' significant in text-to-image prompts?",
+      "back": "Words closer to the start of the prompt are often emphasized more heavily by the model."
     },
     {
-      "front": "What is a 'mini-batch' in the context of gradient descent?",
-      "back": "A subset of training samples used to compute the gradient at each step, serving as a compromise between batch and stochastic methods."
+      "front": "Which 1990s AI system is cited as an early precedent for structured human-in-the-loop prompt workflows?",
+      "back": "The Intelligent Filling Manager"
     },
     {
-      "front": "Under what condition does SGD converge 'almost surely' to a global minimum?",
-      "back": "When the objective function is convex or pseudoconvex and the learning rates decrease at an appropriate rate."
+      "front": "What is a 'negative prompt' in text-to-image generation?",
+      "back": "An instruction specifying elements that should not appear in the generated image."
     },
     {
-      "front": "The basic idea of stochastic approximation can be traced back to which 1950s algorithm?",
-      "back": "The Robbins–Monro algorithm."
+      "front": "What is 'prefix-tuning' (or soft prompting)?",
+      "back": "A method using gradient descent to directly search for continuous vector inputs that optimize model output."
     },
     {
-      "front": "Which 1952 optimization algorithm used 'central differences' to approximate the gradient?",
-      "back": "The Kiefer–Wolfowitz algorithm."
+      "front": "What is the primary limitation of manual prompting as a standalone discipline?",
+      "back": "It is highly model-specific and often brittle to minor phrasing changes."
     },
     {
-      "front": "In the overparameterized case of linear regression ($m \\ge n$), SGD converges to the solution with the minimum _____ from the starting point.",
-      "back": "distance (or Euclidean distance)"
+      "front": "Which algorithm uses one LLM to perform a beam search for optimal prompts for a target LLM?",
+      "back": "Automatic Prompt Engineer (APE)"
     },
     {
-      "front": "How does 'momentum' prevent oscillations in SGD?",
-      "back": "By incorporating a fraction of the previous update into the current one, tending to keep the vector traveling in the same direction."
+      "front": "In the context of CoT, what are 'exemplars'?",
+      "back": "Input/output examples used to demonstrate the desired reasoning process to the model."
     },
     {
-      "front": "In SGD with momentum, what does the decay factor $\\alpha$ determine?",
-      "back": "The relative contribution of the current gradient versus earlier gradients to the weight change."
+      "front": "What is the role of the 'prompting LLM' in the automatic prompt engineer algorithm?",
+      "back": "To generate candidate instructions based on example input-output pairs."
     },
     {
-      "front": "Term: Averaged stochastic gradient descent",
-      "back": "Definition: An SGD variant that uses the average of the parameter vector over time as the final model output."
+      "front": "What optimization method is used by 'MIPRO' to improve multi-stage language model programs?",
+      "back": "Proposing small changes to module prompts and retaining those that improve performance metrics."
     },
     {
-      "front": "What is the core strategy of the AdaGrad optimizer?",
-      "back": "It adapts the learning rate for each parameter by dividing it by the historical sum of gradient squares."
+      "front": "Concept: Zero-shot learning",
+      "back": "Definition: The ability of a model to perform a task without any specific examples or previous training for that task."
     },
     {
-      "front": "AdaGrad is particularly effective for tasks with _____ data, such as natural language processing.",
-      "back": "sparse"
+      "front": "Why is 'role assignment' used in prompt engineering?",
+      "back": "To guide the AI to mimic a specific character or professional style for more consistent responses."
     },
     {
-      "front": "How does RMSProp improve upon AdaGrad for non-convex problems?",
-      "back": "It uses a running average of magnitudes (forgetting old data) to prevent the learning rate from diminishing too quickly."
+      "front": "In MCP, how do servers communicate their capabilities to the client?",
+      "back": "By providing natural-language descriptions of their tools and expected call formats."
     },
     {
-      "front": "In the RMSProp update formula, what is the purpose of the scalar $\\gamma$?",
-      "back": "It serves as a forgetting factor for the running average of the squared gradients."
+      "front": "According to research, reordering examples in a prompt can shift accuracy by up to _____ percent.",
+      "back": "40"
     },
     {
-      "front": "What does the name 'Adam' stand for in machine learning optimization?",
-      "back": "Adaptive Moment Estimation."
+      "front": "What is 'context regression testing'?",
+      "back": "Tests ensuring that changes to supplied context do not silently alter system behavior."
     },
     {
-      "front": "Adam combines the running averages of both the gradients and the _____ moments of the gradients.",
-      "back": "second (or squared)"
+      "front": "What is 'meta-learning' in the context of LLMs?",
+      "back": "The paradigm of \"learning to learn,\" where a model improves its ability to perform tasks through prompts."
     },
     {
-      "front": "In the Adam optimizer, what is the purpose of the small scalar $\\varepsilon$?",
-      "back": "To prevent division by zero during the parameter update calculation."
+      "front": "The Segment Anything model (SAM) performs image segmentation based on which non-text prompt types?",
+      "back": "Bounding boxes, segmentation masks, or points."
     },
     {
-      "front": "Implicit stochastic gradient descent (ISGD) is designed to solve what specific issue with large learning rates?",
-      "back": "Numerical instability (or divergence)."
+      "front": "In textual inversion, the resulting vector that represents a concept is called a _____.",
+      "back": "Pseudo-word"
     },
     {
-      "front": "Formula: Batch Gradient Descent update",
-      "back": "$w := w - \\frac{\\eta}{n}\\sum_{i=1}^{n}\\nabla Q_i(w)$"
+      "front": "What is the 'Automatic Chain of Thought' (auto-CoT) approach?",
+      "back": "Clustering questions and using an LLM to generate reasoning chains for representative questions."
     },
     {
-      "front": "Formula: Stochastic Gradient Descent (Single Sample) update",
-      "back": "$w := w - \\eta \\nabla Q_i(w)$"
+      "front": "The 'Genetic-Pareto' (GEPA) optimizer is designed for which type of AI setup?",
+      "back": "Compound AI systems"
     },
     {
-      "front": "In linear regression, what is the objective function $Q(w)$ that SGD typically minimizes?",
-      "back": "The sum of squared residuals: $\\sum_{i=1}^{n}(\\hat{y}_i - y_i)^2$."
+      "front": "In MCP architecture, where do the MCP client and host typically run?",
+      "back": "On the same machine."
     },
     {
-      "front": "What happens if the number of parameters is equal to or greater than the number of observations in a dataset?",
-      "back": "The model can perfectly predict (memorize) the training data but will likely fail on new data."
+      "front": "What is 'provenance' in the context of context engineering?",
+      "back": "Tracking the origin and reliability of information supplied to the model."
     },
     {
-      "front": "What is 'shrinkage' in the context of model diagnostics?",
-      "back": "The phenomenon where a fitted model performs less well on a new dataset than on the training dataset."
+      "front": "What common text-to-image limitation prevents a prompt like \"a party with no cake\" from working correctly?",
+      "back": "Lack of understanding of negation."
     },
     {
-      "front": "Which technique for resolving underfitting involves creating new features from existing ones?",
-      "back": "Feature engineering."
+      "front": "According to the Oxford English Dictionary, a prompt is an instruction that determines or _____ the content generated by an AI.",
+      "back": "Influences"
     },
     {
-      "front": "Why is overparameterization essential for benign overfitting in linear regression?",
-      "back": "It ensures the number of unimportant parameter directions significantly exceeds the sample size."
+      "front": "What is 'FormatSpread' in prompt evaluation?",
+      "back": "A method for systematic analysis of how different prompt formats affect model performance."
     },
     {
-      "front": "According to the source material, what are 'up-stream' tasks in deep learning?",
-      "back": "The original training objectives used to pre-train a foundation model."
+      "front": "In 'prefix-tuning', the search maximizes the _____ of the desired outputs.",
+      "back": "Log-likelihood"
     },
     {
-      "front": "In convolutional neural networks, later layers discern _____-level features more related to specific tasks.",
-      "back": "high"
+      "front": "Which framework is used to optimize instructions and few-shot demonstrations for multi-stage LM programs?",
+      "back": "MIPRO (Multi-prompt Instruction Proposal Optimizer)"
     },
     {
-      "front": "What is the 'Bias-variance tradeoff' used for in machine learning?",
-      "back": "To balance the errors of underfitting and overfitting to achieve the best approximating model."
+      "front": "How does RAG help reduce AI hallucinations?",
+      "back": "By providing the model with factual, retrieved information from external sources to supplement its training data."
     },
     {
-      "front": "The Robbins–Siegmund theorem is used to analyze the _____ of stochastic gradient descent.",
-      "back": "convergence"
+      "front": "What is a 'centriod' in the context of auto-CoT?",
+      "back": "The center of a cluster of similar question vectors used to select diverse examples."
     },
     {
-      "front": "In the SGD Linear Regression update, what does the term $2x_i(w_1 + w_2x_i - y_i)$ represent?",
-      "back": "The partial derivative of the squared error with respect to the slope parameter $w_2$."
+      "front": "In MCP, what happens after a server returns tool results to the client?",
+      "back": "The MCP host injects those results into the ongoing LLM conversation."
     },
     {
-      "front": "By the 2010s, which optimization strategy replaced constant learning rates with per-parameter rates?",
-      "back": "Adaptive learning rate approaches (like AdaGrad and RMSProp)."
+      "front": "What is the core distinction between MCP tools and MCP resources?",
+      "back": "Tools perform actions (dynamic), while resources provide data (static)."
     },
     {
-      "front": "Which popular machine learning libraries dominant in 2023 rely heavily on Adam-derived optimizers?",
-      "back": "TensorFlow and PyTorch."
+      "front": "What does 'observability' mean in context engineering?",
+      "back": "Logging exactly which context was supplied to the model for a given request."
     },
     {
-      "front": "How can overfitted generative models create legal problems regarding copyright?",
-      "back": "They can produce outputs that are virtually identical to copyrighted images in their training set."
+      "front": "In text-to-image prompting, what are 'artist styles'?",
+      "back": "Using names of famous artists (e.g., Greg Rutkowski) to mimic their aesthetic."
     },
     {
-      "front": "One sign of underfitting is having high _____ and low variance.",
-      "back": "bias"
+      "front": "What is 'prompt evaluation' (PromptEval)?",
+      "back": "Estimating performance distributions across diverse prompts to ensure robust metrics."
     },
     {
-      "front": "One way to resolve underfitting is to _____ the complexity of the model.",
-      "back": "increase"
+      "front": "MCP's goal is to address 'legacy systems' and 'information silos' by providing a _____ interface.",
+      "back": "Standardized"
     },
     {
-      "front": "The 'monkey who typed Hamlet' is used as an analogy to warn against what risk in statistical inference?",
-      "back": "Overfitting when selecting from too many candidate models."
+      "front": "In context engineering, what are 'context artifacts'?",
+      "back": "Versions of system instructions or retrieved data used as context for the AI."
     },
     {
-      "front": "In ISGD, the stochastic gradient is evaluated at the _____ iterate rather than the current one.",
-      "back": "next (or $w^{new}$)"
+      "front": "Which technique selects questions for few-shot learning by converting them to vectors and clustering them?",
+      "back": "Auto-CoT"
     },
     {
-      "front": "Nesterov Accelerated Gradient uses the gradient predicted at the _____ point.",
-      "back": "next"
+      "front": "What is the role of 'clausal syntax' in knowledge retrieval prompts?",
+      "back": "It improves consistency and reduces uncertainty in the model's response."
     },
     {
-      "front": "What logic does Occam's razor use to imply that complex functions are less probable?",
-      "back": "A priori, simpler functions are more likely than complex ones unless the complexity gain is offset by a massive fit improvement."
+      "front": "What is 'Group Relative Policy Optimization' (GRPO)?",
+      "back": "A reinforcement-learning-based optimization method compared against GEPA."
     },
     {
-      "front": "In machine learning, 'on-line' gradient descent is a synonym for _____ gradient descent.",
-      "back": "stochastic"
+      "front": "In the automatic prompt engineer algorithm, how is an instruction's 'score' determined?",
+      "back": "By computing the log-probabilities of the target LLM generating the correct outputs."
     },
     {
-      "front": "Why is data often shuffled for each pass over a training set in SGD?",
-      "back": "To prevent the algorithm from falling into cycles."
+      "front": "What is the 'USB-C for AI' analogy used to describe?",
+      "back": "The Model Context Protocol (MCP)"
     },
     {
-      "front": "In SGD Linear Regression, what happens if the learning rate remains constant in the underparameterized case ($m < n$)?",
-      "back": "The algorithm does not converge."
+      "front": "What is 'cloze deletion' in prompt engineering?",
+      "back": "A technique where a statement is provided with a blank space for the model to fill in."
     },
     {
-      "front": "Which algorithm is the de facto standard for training artificial neural networks when combined with backpropagation?",
-      "back": "Stochastic gradient descent (SGD)."
+      "front": "In the MCP dev summit of 2026, which signal indicated 'protocol hardening'?",
+      "back": "Gateways, gRPC, and observability."
     },
     {
-      "front": "A 'learning rate schedule' makes the learning rate a _____ function of the iteration number.",
-      "back": "decreasing"
+      "front": "What is the objective function for prefix-tuning, written in LaTeX?",
+      "back": "$\\arg \\max_{\\tilde{X}} \\sum_{i} \\log Pr[Y^{i}|{\\tilde{X}} \\ast X^{i}]$"
     },
     {
-      "front": "The 'heavy ball method' is a synonym for which SGD extension?",
-      "back": "The momentum method."
+      "front": "What is 'rim lighting' an example of in prompt engineering?",
+      "back": "A lighting description used in text-to-image prompts."
+    },
+    {
+      "front": "Which dictionary named 'vibe coding' as its 2025 word of the year?",
+      "back": "Collins Dictionary"
+    },
+    {
+      "front": "In RAG, what step occurs immediately before the model generates a response?",
+      "back": "Information retrieval (pulling relevant text from databases or sources)."
+    },
+    {
+      "front": "What is 'DSPy'?",
+      "back": "An open-source framework for compiling declarative LM calls into self-improving pipelines."
+    },
+    {
+      "front": "What is 'adversarial input' in the context of prompt injection?",
+      "back": "Inputs designed to appear legitimate but meant to cause unintended model behavior."
+    },
+    {
+      "front": "In textual inversion, how many example images are typically required to learn a new concept?",
+      "back": "3-5 images"
+    },
+    {
+      "front": "In MCP, which component is responsible for providing the natural-language description of a tool's capabilities?",
+      "back": "The MCP server"
+    },
+    {
+      "front": "The ability of RAG to use domain-specific info allows it to function without the need for frequent _____.",
+      "back": "Retraining"
+    },
+    {
+      "front": "What is 'system instruction' in context engineering?",
+      "back": "Non-prompt guidance provided to an LLM that defines its overarching behavior or constraints."
+    },
+    {
+      "front": "What was the 'word of the year' runner-up for Oxford in 2023?",
+      "back": "Prompt"
+    },
+    {
+      "front": "In the MCP architecture, can a single MCP host connect to multiple MCP servers?",
+      "back": "Yes"
     }
   ]
 }

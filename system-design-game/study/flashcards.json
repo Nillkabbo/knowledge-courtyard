@@ -1,345 +1,401 @@
 {
-  "title": "Statistics Flashcards",
+  "title": "Database Flashcards",
   "cards": [
     {
-      "front": "In the context of evidence, which mode moves from a general rule to a specific instance (e.g., 'All ravens are black, therefore this raven is black')?",
-      "back": "Deductive evidence."
+      "front": "According to the CAP theorem, what is the maximum number of guarantees a distributed data store can provide simultaneously?",
+      "back": "Two"
     },
     {
-      "front": "Which mode of evidence moves from specific observations to a general rule (e.g., '1000 ravens are black, therefore all ravens are likely black')?",
-      "back": "Inductive evidence."
+      "front": "In the context of the CAP theorem, what does 'Consistency' mean?",
+      "back": "Every read receives the most recent write or an error."
     },
     {
-      "front": "What type of evidence seeks the 'best explanation' for a given result (e.g., 'The grass is wet, therefore it probably rained')?",
-      "back": "Abductive evidence."
+      "front": "How is 'Availability' defined within the CAP theorem framework?",
+      "back": "Every request received by a non-failing node must result in a response."
     },
     {
-      "front": "Who is credited with inventing frequency analysis in 850 CE to decipher cryptographic messages?",
-      "back": "Al-Kindi (Abu Yusuf Ya'qub ibn Ishaq al-Kindi)."
+      "front": "What is the definition of 'Partition tolerance' in distributed systems?",
+      "back": "The system continues to operate despite messages being dropped or delayed between nodes."
     },
     {
-      "front": "Al-Kindi's frequency analysis is considered the first systemic form of _____ evidence.",
-      "back": "Inductive"
+      "front": "Which specific event forces a distributed system to choose between consistency and availability?",
+      "back": "A network partition"
     },
     {
-      "front": "Who published the first book in statistical history, 'Natural and Political Observations Made upon the Bills of Mortality' (1662)?",
-      "back": "John Graunt."
+      "front": "During times of normal operation without network failures, how many CAP guarantees can a data store satisfy?",
+      "back": "All three"
     },
     {
-      "front": "What was the primary data source for John Graunt's 1662 demographic study of London?",
-      "back": "The Bills of Mortality (weekly death records from parish churches)."
+      "front": "Relational database systems (RDBMS) designed with ACID guarantees typically prioritize consistency over _____.",
+      "back": "Availability"
     },
     {
-      "front": "Concept: Mean",
-      "back": "Definition: The average value calculated by dividing the sum of all values by the count of values ($\\bar{x} = \\frac{\\sum x}{n}$)."
+      "front": "Which philosophy, common in the NoSQL movement, generally chooses availability over consistency?",
+      "back": "BASE"
     },
     {
-      "front": "Concept: Median",
-      "back": "Definition: The middle value in a dataset when the values are arranged in order."
+      "front": "How do MongoDB and Redis typically resolve network partitions in terms of CAP trade-offs?",
+      "back": "They maintain consistency while compromising on availability."
     },
     {
-      "front": "Concept: Mode",
-      "back": "Definition: The value that appears most frequently in a dataset."
+      "front": "CouchDB, Cassandra, and ScyllaDB are classified as _____ databases under the CAP theorem.",
+      "back": "AP (Available and Partition-tolerant)"
     },
     {
-      "front": "In statistics, the measure of how far data points spread out from the mean is called _____.",
-      "back": "Variance ($\\sigma^2$)"
+      "front": "Who first presented the CAP principle as a conjecture in the year 2000?",
+      "back": "Eric Brewer"
     },
     {
-      "front": "How is the 'Range' of a dataset calculated?",
-      "back": "By subtracting the minimum value from the maximum value."
+      "front": "Which two scientists published the formal proof of Brewer's conjecture in 2002?",
+      "back": "Seth Gilbert and Nancy Lynch"
     },
     {
-      "front": "What historical tool created by John Graunt serves as the foundation for modern insurance and public health policy?",
-      "back": "The life table."
+      "front": "What does the 'E' stand for in the PACELC theorem?",
+      "back": "Else"
     },
     {
-      "front": "Who used the 'Normal Distribution' to successfully predict the location of the dwarf planet Ceres in 1801?",
-      "back": "Carl Friedrich Gauss."
+      "front": "In the PACELC theorem, what is the trade-off when a partition is NOT present?",
+      "back": "Latency vs. Consistency"
     },
     {
-      "front": "The peak of a bell curve in a Normal Distribution represents the _____.",
-      "back": "Mean ($\\mu$)"
+      "front": "According to the PACELC theorem, what is the trade-off in the presence of a network partition?",
+      "back": "Availability vs. Consistency"
     },
     {
-      "front": "According to the 68-95-99.7 rule, what percentage of data falls within $\\pm 1 \\sigma$ of the mean?",
-      "back": "68%."
+      "front": "What is the primary function of a 'cache' in computing?",
+      "back": "To store data so that future requests for that data can be served faster."
     },
     {
-      "front": "According to the 68-95-99.7 rule, what percentage of data falls within $\\pm 2 \\sigma$ of the mean?",
-      "back": "95%."
+      "front": "The situation where requested data can be found in a cache is called a _____.",
+      "back": "Cache hit"
     },
     {
-      "front": "According to the 68-95-99.7 rule, what percentage of data falls within $\\pm 3 \\sigma$ of the mean?",
-      "back": "99.7%."
+      "front": "What occurs when requested data cannot be found in a cache?",
+      "back": "A cache miss"
     },
     {
-      "front": "Formula: Z-score",
-      "back": "$z = \\frac{x - \\mu}{\\sigma}$"
+      "front": "Accessing data that has been requested recently is known as _____ locality.",
+      "back": "Temporal"
     },
     {
-      "front": "What does a Z-score represent?",
-      "back": "The number of standard deviations a specific value is away from the mean."
+      "front": "Accessing data stored near data that has already been requested is known as _____ locality.",
+      "back": "Spatial"
     },
     {
-      "front": "Who popularized the p-value and the $0.05$ significance threshold in his 1925 book 'Statistical Methods for Research Workers'?",
-      "back": "Ronald Aylmer Fisher."
+      "front": "In memory design, what is the inherent trade-off associated with larger capacity?",
+      "back": "Greater physical distances lead to increased propagation delays."
     },
     {
-      "front": "What is the 'Null Hypothesis' ($H_0$) in a statistical test?",
-      "back": "The assumption that there is no effect or no difference between the groups being studied."
+      "front": "What is the role of a 'tag' in a cache entry?",
+      "back": "It specifies the identity of the data in the backing store."
     },
     {
-      "front": "What is the technical definition of a 'p-value'?",
-      "back": "The probability of observing results as extreme as the ones obtained, assuming the null hypothesis is true."
+      "front": "The percentage of accesses that result in cache hits is known as the _____.",
+      "back": "Hit rate (or hit ratio)"
     },
     {
-      "front": "If a p-value is less than $0.05$, what is the typical statistical decision regarding the null hypothesis?",
-      "back": "Reject the null hypothesis."
+      "front": "What is the purpose of a cache 'replacement policy'?",
+      "back": "To select which existing cache entry to remove to make room for new data."
     },
     {
-      "front": "In Fisher's 'Lady Tasting Tea' experiment, what was the null hypothesis?",
-      "back": "The lady had no ability to distinguish whether milk or tea was poured first."
+      "front": "How does the Least Recently Used (LRU) replacement policy select an entry to evict?",
+      "back": "It replaces the entry that was accessed less recently than any other."
     },
     {
-      "front": "Who developed the framework for 'Confidence Intervals' in 1937?",
-      "back": "Jerzy Neyman."
+      "front": "In which cache write policy are writes performed synchronously to both the cache and the backing store?",
+      "back": "Write-through"
     },
     {
-      "front": "What is the specific Z-score multiplier used to calculate a 95% Confidence Interval?",
-      "back": "$1.96$."
+      "front": "What is the main characteristic of a 'write-back' cache policy?",
+      "back": "Writing is initially done only to the cache and postponed for the backing store."
     },
     {
-      "front": "A 95% Confidence Interval means that if we repeat the sampling process 100 times, _____ intervals will contain the true population mean.",
-      "back": "95"
+      "front": "What term refers to a cache location in a write-back system that has been modified but not yet updated in the backing store?",
+      "back": "Dirty"
     },
     {
-      "front": "How does increasing the sample size ($n$) affect the width of a Confidence Interval?",
-      "back": "It makes the interval narrower (increases precision)."
+      "front": "Under a 'write allocate' miss policy, what happens to data at the missed-write location?",
+      "back": "It is loaded into the cache before the write operation proceeds."
     },
     {
-      "front": "Which principle of experimental design involves assigning treatments by chance to eliminate selection bias?",
-      "back": "Randomization."
+      "front": "Under a 'no-write allocate' policy, where is data written during a cache miss?",
+      "back": "Directly to the backing store"
     },
     {
-      "front": "Which principle of experimental design involves repeating an experiment on multiple subjects to increase reliability?",
-      "back": "Replication."
+      "front": "What is 'cache coherence'?",
+      "back": "Communication protocols that keep data consistent between cache managers."
     },
     {
-      "front": "Which principle of experimental design involves grouping similar units together to isolate the effects of known variations?",
-      "back": "Blocking."
+      "front": "A 'demand paging' policy only reads the _____ amount of data from the backing store on a miss.",
+      "back": "Minimum"
     },
     {
-      "front": "What is the core purpose of an 'A/B Test' in a digital environment?",
-      "back": "To compare a control version (A) with a treatment version (B) to see which performs better based on data."
+      "front": "What technique involves guessing and loading the next likely chunk of data into the cache ahead of time?",
+      "back": "Prefetching (or anticipatory paging)"
     },
     {
-      "front": "In A/B testing, what does the acronym 'HiPPO' stand for?",
-      "back": "Highest Paid Person's Opinion."
+      "front": "Which specialized cache in an MMU records the results of virtual-to-physical address translations?",
+      "back": "Translation Lookaside Buffer (TLB)"
     },
     {
-      "front": "Who developed the 'do-operator' and the mathematical language for 'Causal Inference'?",
-      "back": "Judea Pearl."
+      "front": "What does Information-Centric Networking (ICN) use as the focal point instead of host connectivity?",
+      "back": "Identified information"
     },
     {
-      "front": "In causal inference, what is a 'Confounder'?",
-      "back": "A third variable that influences both the cause and the effect, creating a spurious correlation."
+      "front": "The Time Aware Least Recently Used (TLRU) algorithm uses a timestamp called _____ to stipulate usability time.",
+      "back": "Time to Use (TTU)"
     },
     {
-      "front": "According to the phrase 'Correlation is not Causation,' a relationship between two variables does not necessarily mean _____.",
-      "back": "One variable causes the other."
+      "front": "Which cache replacement scheme divides the cache into 'privileged' and 'unprivileged' partitions?",
+      "back": "Least Frequent Recently Used (LFRU)"
     },
     {
-      "front": "What is the purpose of a 'Directed Acyclic Graph' (DAG) in statistics?",
-      "back": "To visually and mathematically represent causal relationships and identify potential confounders."
+      "front": "What is the primary function of the 'page cache' in an operating system?",
+      "back": "Managing disk blocks in main memory."
     },
     {
-      "front": "What was the main claim of John Ioannidis's famous 2005 paper?",
-      "back": "Most published research findings are false due to the misuse of statistics."
+      "front": "What optimization technique stores the results of resource-consuming function calls to avoid repeated computation?",
+      "back": "Memoization"
     },
     {
-      "front": "What is 'p-hacking'?",
-      "back": "The practice of running many tests and only reporting the ones that reach statistical significance."
+      "front": "What is the main goal of a Content Delivery Network (CDN)?",
+      "back": "To replicate content on multiple servers globally to improve speed and availability."
     },
     {
-      "front": "What research practice involves declaring the hypothesis and analysis plan before collecting data to prevent bias?",
-      "back": "Preregistration."
+      "front": "A _____ connects a local network to cloud storage and provides a cache for frequently accessed cloud data.",
+      "back": "Cloud storage gateway"
     },
     {
-      "front": "What is the 'Replication Crisis'?",
-      "back": "A phenomenon where the results of many scientific studies are difficult or impossible to reproduce in subsequent investigations."
+      "front": "Why is 'write-through' operation common when operating over unreliable networks?",
+      "back": "It avoids the extreme complexity of coherency protocols required for write-back caches."
     },
     {
-      "front": "In statistics, what is 'Sampling'?",
-      "back": "The selection of a subset of individuals from a population to estimate characteristics of the whole."
+      "front": "While caching improves performance for repeated transfers, what is the fundamental intent of 'buffering'?",
+      "back": "To reduce the number of transfers by amortizing overhead over fewer, larger transfers."
     },
     {
-      "front": "What is the difference between a 'Population' and a 'Sample'?",
-      "back": "The population is the entire group of interest, while the sample is the specific subset from which data is collected."
+      "front": "Does strict buffering necessarily involve a cache coherency protocol?",
+      "back": "No"
     },
     {
-      "front": "What is a 'Sampling Frame'?",
-      "back": "A list or map of all the elements in a population from which the sample is actually drawn."
+      "front": "In the context of database terminology, what does 'DBMS' stand for?",
+      "back": "Database Management System"
     },
     {
-      "front": "What defines 'Probability Sampling'?",
-      "back": "A method where every unit in the population has a known, non-zero chance of being selected."
+      "front": "What is a 'Database System'?",
+      "back": "The collective sum of the database, the DBMS, and the associated applications."
     },
     {
-      "front": "Concept: Simple Random Sampling (SRS)",
-      "back": "Definition: A method where every possible subset of a given size has an equal probability of being selected."
+      "front": "Which database model became dominant in the 1980s and uses tables with rows and columns?",
+      "back": "Relational database"
     },
     {
-      "front": "In _____ sampling, elements are selected at regular intervals (e.g., every 10th person) from an ordered list.",
-      "back": "Systematic"
+      "front": "What language is used by the vast majority of relational databases for writing and querying data?",
+      "back": "SQL"
     },
     {
-      "front": "Which sampling method involves dividing the population into distinct categories (strata) and sampling from each?",
-      "back": "Stratified sampling."
+      "front": "Early navigational databases followed relationships between records using _____.",
+      "back": "Pointers (or physical disk addresses)"
     },
     {
-      "front": "What is 'Cluster Sampling'?",
-      "back": "A method where the population is divided into groups (clusters) and entire clusters are randomly selected for the sample."
+      "front": "The two main early navigational data models were the CODASYL model and the _____ model.",
+      "back": "Hierarchical"
     },
     {
-      "front": "In 'Sampling with Replacement' (WR), can the same element be selected more than once?",
-      "back": "Yes."
+      "front": "Who first proposed the relational model in 1970?",
+      "back": "Edgar F. Codd"
     },
     {
-      "front": "What is 'Convenience Sampling'?",
-      "back": "A non-probability method where the sample is drawn from the part of the population that is close at hand or easy to reach."
+      "front": "What term describes the difficulty of translating between programmed objects and relational database tables?",
+      "back": "Object-relational impedance mismatch"
     },
     {
-      "front": "What is 'Quota Sampling'?",
-      "back": "A non-probability method where researchers select a specified number of subjects from different segments of the population."
+      "front": "Which class of relational databases aims to match NoSQL performance while maintaining ACID guarantees?",
+      "back": "NewSQL"
     },
     {
-      "front": "In 'Snowball Sampling,' how are additional subjects recruited?",
-      "back": "Existing study subjects recruit more subjects from among their acquaintances."
+      "front": "A database that resides primarily in the computer's main memory is called an _____ database.",
+      "back": "In-memory"
     },
     {
-      "front": "What is 'Selection Bias'?",
-      "back": "A sampling error that occurs when the true selection probabilities differ from those assumed in calculating results."
+      "front": "What type of database uses an event-driven architecture to respond to conditions like security breaches?",
+      "back": "Active database"
     },
     {
-      "front": "What is 'Non-response Bias'?",
-      "back": "A bias that occurs when individuals who choose not to participate in a survey differ systematically from those who do."
+      "front": "What is the purpose of a 'Data Warehouse'?",
+      "back": "To archive data from operational databases for use by managers and end-users."
     },
     {
-      "front": "What is the purpose of 'Survey Weights'?",
-      "back": "To adjust data so that it correctly represents the population, compensating for unequal selection probabilities or non-response."
+      "front": "A _____ database management system transparently integrates multiple autonomous databases into a single conceptual view.",
+      "back": "Federated"
     },
     {
-      "front": "What is a 'Type I Error' (implied by Fisher's framework)?",
-      "back": "Rejecting the null hypothesis when it is actually true (a 'false positive')."
+      "front": "What kind of NoSQL database uses nodes, edges, and properties to represent information?",
+      "back": "Graph database"
     },
     {
-      "front": "What is a 'Type II Error' (implied by Neyman-Pearson)?",
-      "back": "Failing to reject the null hypothesis when it is actually false (a 'false negative')."
+      "front": "Which parallel database architecture involves each processing unit having its own main memory and its own storage?",
+      "back": "Shared-nothing architecture"
     },
     {
-      "front": "How does 'Probability Proportional to Size' (PPS) sampling function?",
-      "back": "Elements with a larger 'size' measure have a higher probability of being selected in the sample."
+      "front": "In a 'Shared memory' parallel database architecture, what is shared by multiple processors?",
+      "back": "The main memory space and other data storage."
     },
     {
-      "front": "Which sampling method uses human judgment to try and simulate randomness without a formal process?",
-      "back": "Haphazard sampling."
+      "front": "What does the 'Atomicity' property of an ACID transaction guarantee?",
+      "back": "The transaction is treated as a single unit that either entirely succeeds or entirely fails."
     },
     {
-      "front": "What is 'Panel Sampling'?",
-      "back": "Selecting a group of participants and interviewing them several times over a period of time (longitudinal study)."
+      "front": "What does the 'Consistency' property of an ACID transaction ensure?",
+      "back": "The database remains in a valid state according to all defined rules after the transaction."
     },
     {
-      "front": "In statistics, what is a 'Census'?",
-      "back": "A study that attempts to collect data from every single member of the target population."
+      "front": "The 'Isolation' property of ACID ensures that concurrent transactions result in a state that is the same as if they were _____.",
+      "back": "Executed serially"
     },
     {
-      "front": "What is the 'Margin of Error'?",
-      "back": "A statistic expressing the amount of random sampling error in a survey's results."
+      "front": "What does the 'Durability' property of ACID guarantee?",
+      "back": "Once a transaction is committed, it remains committed even in the event of a system failure."
     },
     {
-      "front": "How does 'Multistage Sampling' differ from simple Cluster Sampling?",
-      "back": "It involves taking random subsamples of selected clusters rather than surveying every unit in the cluster."
+      "front": "Which database sublanguage is used to define data types and structures, such as creating or dropping tables?",
+      "back": "Data Definition Language (DDL)"
     },
     {
-      "front": "In the Normal Distribution, the area under the curve represents the total _____ of all possible outcomes.",
-      "back": "Probability"
+      "front": "Which database sublanguage handles the insertion, modification, and deletion of data occurrences?",
+      "back": "Data Manipulation Language (DML)"
     },
     {
-      "front": "What did the 1936 'Literary Digest' poll fail to account for, leading to an incorrect election prediction?",
-      "back": "Selection bias (the lists used were biased toward wealthier Republican voters)."
+      "front": "In database architecture, which level defines how each group of end-users sees the organization of data?",
+      "back": "External level"
     },
     {
-      "front": "The _____ operator is used in Judea Pearl's calculus to represent active intervention in a system rather than passive observation.",
-      "back": "do"
+      "front": "The _____ level of database architecture unifies all external views into a compatible global view.",
+      "back": "Conceptual (or logical)"
     },
     {
-      "front": "What is the primary drawback of 'Cluster Sampling' compared to 'Simple Random Sampling'?",
-      "back": "It generally increases the variability of sample estimates, requiring a larger sample size for the same accuracy."
+      "front": "Which database architecture level is concerned with physical storage layout and performance structures like indexes?",
+      "back": "Internal (or physical) level"
     },
     {
-      "front": "Which measure of central tendency is most robust (least affected) by extreme outliers in a dataset?",
-      "back": "The median."
+      "front": "What is 'Physical data independence'?",
+      "back": "The ability to change physical storage without affecting application programs using the conceptual level."
     },
     {
-      "front": "In an 'EPS' (Equal Probability of Selection) design, every element has _____ chance of being selected.",
-      "back": "The same"
+      "front": "What is 'Logical data independence'?",
+      "back": "The ability to change the conceptual schema without affecting the external views."
     },
     {
-      "front": "What is 'Judgmental Selection' (or Purposive Sampling)?",
-      "back": "A non-probability method where participants are hand-picked by an expert based on the value of the information they can provide."
+      "front": "What are 'Materialized views'?",
+      "back": "Stored query results or external views used to save computation time during subsequent requests."
     },
     {
-      "front": "Which error type includes mistakes in data coding or misunderstood questions by respondents?",
-      "back": "Non-sampling error."
+      "front": "In database design, what is the goal of 'Normalization'?",
+      "back": "To ensure each elementary fact is recorded in only one place to maintain consistency."
     },
     {
-      "front": "According to Ioannidis, what is 'HARKing'?",
-      "back": "Hypothesizing After the Results are Known."
+      "front": "Which stage of database design involves producing a physical data model based on a specific DBMS?",
+      "back": "Physical database design"
     },
     {
-      "front": "What is 'Over-coverage' in survey sampling?",
-      "back": "The inclusion of individuals or data points in the sample that are not actually part of the target population."
+      "front": "A database built with one DBMS is generally not _____ to another DBMS without transformation.",
+      "back": "Portable"
     },
     {
-      "front": "In a Normal Distribution, values far from the mean in the 'tails' of the bell curve are considered _____.",
-      "back": "Extremes (or rare)."
+      "front": "What term describes the process of improving database performance by adjusting parameters or data structures?",
+      "back": "Tuning"
     },
     {
-      "front": "What is 'Theoretical Sampling'?",
-      "back": "Selecting samples based on previous data results to develop a deeper understanding of a specific phenomenon or theory."
+      "front": "What is the primary function of a 'Query optimizer'?",
+      "back": "To choose an efficient query plan to be executed to compute the result."
     },
     {
-      "front": "Why is 'Randomization' considered the 'fair scale' (mizan) of experimental design?",
-      "back": "It ensures that unobserved variables are distributed evenly across groups, making the comparison fair."
+      "front": "Which parallel architecture allows units to share storage but gives each unit its own private main memory?",
+      "back": "Shared disk architecture"
     },
     {
-      "front": "The 'Standard Deviation' ($\\sigma$) is mathematically defined as the square root of the _____.",
-      "back": "Variance."
+      "front": "What is 'Data virtualization'?",
+      "back": "Real-time access to data in its original location without creating a local copy."
     },
     {
-      "front": "In Kohavi's Bing ad headline experiment, what was the impact of a small change that managers initially ignored?",
-      "back": "A 12% revenue increase, worth over $100 million annually."
+      "front": "In caching, what is a 'dirty bit' used for?",
+      "back": "To track locations in a write-back cache that have been modified and need writing to the backing store."
     },
     {
-      "front": "What is 'Voluntary Sampling'?",
-      "back": "A non-probability method where subjects choose to participate in a study on their own accord."
+      "front": "What is the 'hit ratio' of a cache?",
+      "back": "The percentage of data accesses that result in cache hits."
     },
     {
-      "front": "Which sampling method is particularly useful for hidden populations that are difficult to enumerate?",
-      "back": "Snowball sampling."
+      "front": "Which replacement policy takes into account how often entries are used in addition to how recently they were used?",
+      "back": "Sophisticated caching algorithms (like LFRU)"
     },
     {
-      "front": "In a Normal Distribution, $\\mu \\pm 1.96 \\sigma$ covers exactly _____% of the distribution.",
-      "back": "95"
+      "front": "What are 'Atomic operations' in the context of GPU caches?",
+      "back": "Operations that are guaranteed to complete without interruption from other threads."
     },
     {
-      "front": "According to Neyman, a Confidence Interval is an estimate of a _____ rather than a single point.",
-      "back": "Range"
+      "front": "A _____ is a specialized computer dedicated to holding actual databases and running only the DBMS software.",
+      "back": "Database server"
     },
     {
-      "front": "What was Al-Kindi's 'Secret' regarding claims and proof?",
-      "back": "Claims are finite, but proof is infinite; he who can show proof speaks the truth."
+      "front": "The CODASYL model is an example of which broader database category?",
+      "back": "Network model"
+    },
+    {
+      "front": "What does the 'Set-Theoretic Data model' serve as the basis for?",
+      "back": "The MICRO Information Management System"
+    },
+    {
+      "front": "What Swedish project developed Mimer SQL in the mid-1970s?",
+      "back": "Uppsala University"
+    },
+    {
+      "front": "Which 1980s product creator claimed that his software did the 'dirty work' of file management for the user?",
+      "back": "C. Wayne Ratliff (creator of dBASE)"
+    },
+    {
+      "front": "What type of NoSQL database avoids join operations by storing denormalized data?",
+      "back": "Document-oriented database"
+    },
+    {
+      "front": "Which database classification term refers to data carryable on or synchronizable from a mobile device?",
+      "back": "Mobile database"
+    },
+    {
+      "front": "What is the 'internal engineering' of a DBMS primarily designed to affect?",
+      "back": "Performance, scalability, resilience, and security."
+    },
+    {
+      "front": "Which database sublanguage controls access to data, typically for security and authorization?",
+      "back": "Data Control Language (DCL)"
+    },
+    {
+      "front": "What is the 'External view' in a database designed to hide?",
+      "back": "The technical processing viewpoint and irrelevant data from specific user groups."
+    },
+    {
+      "front": "Which parallel architecture provides the highest degree of isolation between processing units?",
+      "back": "Shared-nothing architecture"
+    },
+    {
+      "front": "Why is database replication used in distributed environments?",
+      "back": "To increase data availability and provide resiliency against partial failure."
+    },
+    {
+      "front": "What is the role of a 'database engine' (or storage engine)?",
+      "back": "The core part of the DBMS interacting between the database and the application interface."
+    },
+    {
+      "front": "In memory design, what is the primary advantage of 'SRAM' over 'DRAM'?",
+      "back": "Speed/performance"
+    },
+    {
+      "front": "Which caching policy would be most effective when the backing store has long latency for the first chunk but short latency for sequential chunks?",
+      "back": "Anticipatory paging (or prefetching)"
+    },
+    {
+      "front": "What is the main concept of 'Hierarchical Storage Management'?",
+      "back": "Using a fast local disk to cache information held on slower remote or tape-based storage."
     }
   ]
 }

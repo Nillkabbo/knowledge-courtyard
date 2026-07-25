@@ -1,277 +1,232 @@
 {
-  "name": "Autonomous AI Agents",
+  "name": "Evaluation Methodologies and Principles",
   "children": [
     {
-      "name": "Definitions & Core Concepts",
+      "name": "A/B Testing",
       "children": [
         {
-          "name": "Autonomous Agent",
+          "name": "Methodology",
           "children": [
             {
-              "name": "Independent Task Execution"
+              "name": "Randomized Experiment"
             },
             {
-              "name": "Purposeful Action"
+              "name": "Variant A vs Variant B"
             },
             {
-              "name": "Environment Interaction"
+              "name": "Statistical Hypothesis Testing"
             }
           ]
         },
         {
-          "name": "Agentic AI",
+          "name": "Applications",
           "children": [
             {
-              "name": "Project Scoping"
+              "name": "User Experience"
             },
             {
-              "name": "Tool Utilization"
+              "name": "E-commerce Funnels"
+            },
+            {
+              "name": "Social Media Engagement"
+            },
+            {
+              "name": "Product Pricing"
             }
           ]
         },
         {
-          "name": "Khalifa Analogy",
+          "name": "Statistics",
           "children": [
             {
-              "name": "Representative"
+              "name": "Z-tests"
             },
             {
-              "name": "Active Worker"
+              "name": "T-tests"
+            },
+            {
+              "name": "Fisher's Exact Test"
             }
           ]
         }
       ]
     },
     {
-      "name": "Agent Anatomy (The Brain)",
+      "name": "Benchmarking",
       "children": [
         {
-          "name": "LLM (Brain)",
+          "name": "Purpose",
           "children": [
             {
-              "name": "Reasoning"
+              "name": "Performance Assessment"
             },
             {
-              "name": "Decision Making"
+              "name": "Architecture Comparison"
             },
             {
-              "name": "Planning"
+              "name": "Workload Mimicry"
             }
           ]
         },
         {
-          "name": "Tools (Functions)",
+          "name": "Types",
           "children": [
             {
-              "name": "Function Calling"
+              "name": "Synthetic Benchmarks"
             },
             {
-              "name": "MCP Protocol"
+              "name": "Application Benchmarks"
             },
             {
-              "name": "API Integration"
+              "name": "Microbenchmarks"
             }
           ]
         },
         {
-          "name": "Memory Systems",
+          "name": "Key Principles",
           "children": [
             {
-              "name": "Short-term (Conversation)"
+              "name": "Relevance"
             },
             {
-              "name": "Working (Task State)"
+              "name": "Repeatability"
             },
             {
-              "name": "Long-term (Vector DB)"
+              "name": "Equity"
             },
             {
-              "name": "Episodic (Past Events)"
-            }
-          ]
-        },
-        {
-          "name": "Control Loop",
-          "children": [
-            {
-              "name": "Autonomy"
-            },
-            {
-              "name": "Reason-Act-Observe"
+              "name": "Scalability"
             }
           ]
         }
       ]
     },
     {
-      "name": "Frameworks & Logic",
+      "name": "LLM Evaluation Architecture",
       "children": [
         {
-          "name": "ReAct",
+          "name": "Core Metrics",
           "children": [
             {
-              "name": "Thought"
+              "name": "Accuracy"
             },
             {
-              "name": "Action"
+              "name": "Faithfulness"
             },
             {
-              "name": "Observation"
+              "name": "Relevance"
+            },
+            {
+              "name": "Coherence"
             }
           ]
         },
         {
-          "name": "Planning Strategies",
+          "name": "Evaluator Types",
           "children": [
             {
-              "name": "Plan-and-Execute"
+              "name": "LLM-as-Judge",
+              "children": [
+                {
+                  "name": "GPT-4 Scoring"
+                },
+                {
+                  "name": "Pairwise Comparison"
+                },
+                {
+                  "name": "Bias Mitigation"
+                }
+              ]
             },
             {
-              "name": "Adaptive Re-planning"
-            },
-            {
-              "name": "Hierarchical Decomposition"
+              "name": "Human Evaluation",
+              "children": [
+                {
+                  "name": "Gold Standard"
+                },
+                {
+                  "name": "Blind Side-by-Side"
+                },
+                {
+                  "name": "Likert Scale"
+                }
+              ]
             }
           ]
         },
         {
-          "name": "Advanced Search",
+          "name": "Standard Benchmarks",
           "children": [
             {
-              "name": "Reflexion"
+              "name": "MMLU (Smartness)"
             },
             {
-              "name": "Tree-of-Thought"
+              "name": "HumanEval (Coding)"
             },
             {
-              "name": "LATS"
+              "name": "GSM8K (Math)"
             }
           ]
         }
       ]
     },
     {
-      "name": "Multi-Agent Systems (MAS)",
+      "name": "Evaluation Pitfalls & Paradoxes",
       "children": [
         {
-          "name": "Orchestration Models",
+          "name": "Statistical Laws",
           "children": [
             {
-              "name": "Sequential Pipeline"
+              "name": "Goodhart's Law",
+              "children": [
+                {
+                  "name": "Measure becomes target"
+                },
+                {
+                  "name": "Incentive Gaming"
+                }
+              ]
             },
             {
-              "name": "Manager-Worker"
-            },
-            {
-              "name": "Conversational Debate"
+              "name": "Campbell's Law"
             }
           ]
         },
         {
-          "name": "Popular Frameworks",
+          "name": "Measurement Errors",
           "children": [
             {
-              "name": "CrewAI (Role-based)"
+              "name": "Accuracy Paradox",
+              "children": [
+                {
+                  "name": "Class Imbalance"
+                },
+                {
+                  "name": "F1 Score Necessity"
+                }
+              ]
             },
             {
-              "name": "LangGraph (State-based)"
+              "name": "Data Contamination"
             },
             {
-              "name": "AutoGen (Conversational)"
-            },
-            {
-              "name": "OpenAI Swarm"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Challenges & Safety",
-      "children": [
-        {
-          "name": "Failure Modes",
-          "children": [
-            {
-              "name": "Infinite Loops"
-            },
-            {
-              "name": "Hallucinated Tools"
-            },
-            {
-              "name": "Cost Explosion"
-            },
-            {
-              "name": "Context Pollution"
+              "name": "Regression"
             }
           ]
         },
         {
-          "name": "Safety Layers",
+          "name": "Truth Validation",
           "children": [
             {
-              "name": "Guardrails"
-            },
-            {
-              "name": "Sandboxing"
-            },
-            {
-              "name": "Human-in-the-Loop"
-            },
-            {
-              "name": "Amanat (Verification)"
-            }
-          ]
-        },
-        {
-          "name": "Ethical Concerns",
-          "children": [
-            {
-              "name": "Accountability"
-            },
-            {
-              "name": "Privacy/Data Protection"
-            },
-            {
-              "name": "Manipulation Vulnerability"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Applications",
-      "children": [
-        {
-          "name": "Software Engineering",
-          "children": [
-            {
-              "name": "Devin AI"
-            },
-            {
-              "name": "Autonomous Coder"
-            }
-          ]
-        },
-        {
-          "name": "Enterprise",
-          "children": [
-            {
-              "name": "Business Automation"
-            },
-            {
-              "name": "Salesforce Agentforce"
-            }
-          ]
-        },
-        {
-          "name": "IoT/Infrastructure",
-          "children": [
-            {
-              "name": "Smart Homes"
-            },
-            {
-              "name": "Industrial Monitoring"
+              "name": "Ground Truth",
+              "children": [
+                {
+                  "name": "Direct Observation"
+                },
+                {
+                  "name": "Empirical Evidence"
+                }
+              ]
             }
           ]
         }

@@ -1,334 +1,265 @@
 {
-  "title": "JSON Quiz",
+  "title": "Academia Quiz",
   "questions": [
     {
-      "question": "Which of the following data types is NOT inherently supported by the standard JSON specification?",
+      "question": "What is the primary purpose of academic tenure as defined in the provided source material?",
       "answerOptions": [
         {
-          "text": "Number",
-          "rationale": "JSON supports signed decimal numbers that can include fractional parts and exponential notation.",
-          "isCorrect": false
+          "text": "To guarantee that a professor can never be fired regardless of their conduct or financial situation.",
+          "isCorrect": false,
+          "rationale": "Even tenured staff can be dismissed for just cause, financial exigency, or program discontinuation."
         },
         {
-          "text": "Boolean",
-          "rationale": "True and false values are explicitly defined as basic data types within the JSON framework.",
-          "isCorrect": false
+          "text": "To provide a semi-permanent position that protects faculty from dismissal based on their personal beliefs.",
+          "isCorrect": true,
+          "rationale": "Tenure is specifically designed to defend academic freedom and protect scholars from being fired for expressing unpopular views."
         },
         {
-          "text": "Undefined",
-          "rationale": "While JavaScript has an 'undefined' type, JSON only recognizes 'null' as an empty or non-existent value.",
-          "isCorrect": true
+          "text": "To ensure that all university professors receive higher salaries than those in the private sector.",
+          "isCorrect": false,
+          "rationale": "Tenure is often viewed as a trade-off for lower pay compared to private industry, offering job security instead of high financial remuneration."
         },
         {
-          "text": "Array",
-          "rationale": "An ordered list of values enclosed in square brackets is a fundamental structure in JSON.",
-          "isCorrect": false
+          "text": "To mandate that all faculty members must participate in university marketing and industry competition.",
+          "isCorrect": false,
+          "rationale": "Marketing and industry competition were specific management goals introduced in Denmark, not the core global definition of tenure."
         }
       ],
-      "hint": "Consider the differences between standard JavaScript variables and the subset used for data interchange."
+      "hint": "Consider the relationship between job security and the freedom to pursue unorthodox research."
     },
     {
-      "question": "According to the 2017 international standard, how should the acronym 'JSON' be pronounced?",
+      "question": "According to the history of academic tenure in Germany, what occurred under the Third Reich?",
       "answerOptions": [
         {
-          "text": "Like the name 'Jason'",
-          "rationale": "The ECMA-404 and ISO/IEC standards specify the pronunciation as in 'Jason and the Argonauts'.",
-          "isCorrect": true
+          "text": "The tenure system was abolished entirely and replaced with temporary yearly contracts for all staff.",
+          "isCorrect": false,
+          "rationale": "While curtailed, the system was used to purge existing professors and replace them with party members rather than being abolished."
         },
         {
-          "text": "J-S-O-N (letter by letter)",
-          "rationale": "While some users may spell it out, the official standard provides a specific phonetic guide.",
-          "isCorrect": false
+          "text": "Academic freedom was severely curtailed, leading to the purge of approximately 1,500 professors.",
+          "isCorrect": true,
+          "rationale": "The Nazi regime integrated racial theories into curriculums and removed faculty who did not align with their ideology."
         },
         {
-          "text": "Jay-SAWN",
-          "rationale": "This is a common regional pronunciation, but the international standard points to a different classical reference.",
-          "isCorrect": false
+          "text": "Germany adopted the American model of tenure to protect professors teaching Keynesian economics.",
+          "isCorrect": false,
+          "rationale": "Keynesian economics was actually labeled as heresy by the University of Illinois in the late 1940s, not during the Third Reich."
         },
         {
-          "text": "Jay-SUN",
-          "rationale": "This is phonetically similar to the standard, but the standard specifically references a mythical hero.",
-          "isCorrect": false
+          "text": "Universal education was expanded to promote tenure-track positions for diverse ethnic groups.",
+          "isCorrect": false,
+          "rationale": "Adolf Hitler referred to universal education as a 'poison' and sought to integrate Nazi racial theories instead."
         }
       ],
-      "hint": "The standard references a specific character from Greek mythology."
+      "hint": "Focus on how the regime used the education system to integrate specific ideologies."
     },
     {
-      "question": "In the Model Context Protocol (MCP) architecture, which component is typically an AI agent that requires services from external servers?",
+      "question": "In the context of a PhD journey, which milestone typically marks the transition to becoming an official 'PhD Candidate'?",
       "answerOptions": [
         {
-          "text": "MCP Server",
-          "rationale": "The server is the component that provides the specific tools or resources, such as database access.",
-          "isCorrect": false
+          "text": "Completion of the initial coursework phase.",
+          "isCorrect": false,
+          "rationale": "Coursework provides the knowledge base but does not automatically grant candidate status."
         },
         {
-          "text": "MCP Client",
-          "rationale": "The client is a dedicated interface created by the host to communicate with a specific server.",
-          "isCorrect": false
+          "text": "Successful completion of the Qualifying Exam.",
+          "isCorrect": true,
+          "rationale": "Passing this written and oral examination proves the student is ready to conduct independent research, thus earning them the title of 'Candidate'."
         },
         {
-          "text": "MCP Host",
-          "rationale": "The host acts as the main AI agent or application that orchestrates interactions between the LLM and the protocol components.",
-          "isCorrect": true
+          "text": "The formal defense of the final 200-page dissertation.",
+          "isCorrect": false,
+          "rationale": "The defense is the final step to earning the 'Doctor' title, which follows the candidacy phase."
         },
         {
-          "text": "MCP Gateway",
-          "rationale": "While gateways exist in networking, they are not one of the three primary distinct roles defined in the core MCP architecture.",
-          "isCorrect": false
+          "text": "Receiving a first-year stipend from a Research Assistantship.",
+          "isCorrect": false,
+          "rationale": "Stipends are a form of financial support and are not an academic milestone for candidacy."
         }
       ],
-      "hint": "This component manages the LLM and instructs other sub-components to call tools."
+      "hint": "This milestone usually involves proving you have read and understood a large volume of existing research in your area."
     },
     {
-      "question": "Which specific transport protocol does the Model Context Protocol use for communication between clients and servers?",
+      "question": "Which funding model is described as the 'Merchant's Offer' where the student works on a professor's grant?",
       "answerOptions": [
         {
-          "text": "SOAP",
-          "rationale": "SOAP is an XML-based protocol, whereas MCP relies on a more lightweight, JSON-based messaging format.",
-          "isCorrect": false
+          "text": "Teaching Assistantship (TA)",
+          "isCorrect": false,
+          "rationale": "A TA involves teaching undergraduates, which may be separate from the professor's specific research grant."
         },
         {
-          "text": "REST",
-          "rationale": "While common in web APIs, MCP uses a specific remote procedure call framework for its message flow.",
-          "isCorrect": false
+          "text": "Research Assistantship (RA)",
+          "isCorrect": true,
+          "rationale": "In an RA position, the student is paid to perform research that aligns with the professor's funded projects."
         },
         {
-          "text": "JSON-RPC 2.0",
-          "rationale": "MCP leverages JSON-RPC 2.0 as the standard for sending requests and receiving notifications between components.",
-          "isCorrect": true
+          "text": "Fellowship",
+          "isCorrect": false,
+          "rationale": "Fellowships generally allow for 100% focus on research without specific work obligations to a professor's grant."
         },
         {
-          "text": "GraphQL",
-          "rationale": "GraphQL is a query language for APIs, but it does not serve as the underlying transport for MCP's server-client interactions.",
-          "isCorrect": false
+          "text": "Self-Funding",
+          "isCorrect": false,
+          "rationale": "Self-funding involves the student paying for their own tuition and living costs without a work-exchange model."
         }
       ],
-      "hint": "Think of a protocol that enables remote procedure calls using JSON syntax."
+      "hint": "Think about the role where the work you are paid for is directly related to a specific research project."
     },
     {
-      "question": "What was the primary reason Douglas Crockford added the 'Good, not Evil' clause to the original JSON license?",
+      "question": "How does the French education system typically rank professional doctorates in health sciences (e.g., MD) compared to other disciplines?",
       "answerOptions": [
         {
-          "text": "To prevent use by military organizations",
-          "rationale": "The clause was not intended for a specific sector but rather as a way to mock corporate legal procedures.",
-          "isCorrect": false
+          "text": "They are ranked as higher than a PhD in humanities due to the length of clinical training.",
+          "isCorrect": false,
+          "rationale": "PhD degrees are generally ranked higher in terms of original research requirements."
         },
         {
-          "text": "To ensure interoperability",
-          "rationale": "Interoperability is a technical goal achieved through syntax standards, not through licensing clauses.",
-          "isCorrect": false
+          "text": "They are considered equivalent to a Master's degree.",
+          "isCorrect": true,
+          "rationale": "In France, medical diplomas are ranked as equivalent to a Master's to distinguish them from research-based doctorates."
         },
         {
-          "text": "To mock corporate lawyers and pedantic individuals",
-          "rationale": "Crockford included the humorous clause to poke fun at overly complex software licensing and the legal profession.",
-          "isCorrect": true
+          "text": "They are ranked lower than a standard Bachelor's degree due to vocational focus.",
+          "isCorrect": false,
+          "rationale": "Health degrees are postgraduate qualifications and are certainly ranked higher than undergraduate degrees."
         },
         {
-          "text": "To align with the Creative Commons license",
-          "rationale": "The clause actually caused compatibility issues with common open-source licenses because it restricted the purpose of use.",
-          "isCorrect": false
+          "text": "They are categorized as 'Grandes Écoles' diplomas which carry no academic weight.",
+          "isCorrect": false,
+          "rationale": "Grandes Écoles are prestigious institutions, but health diplomas are their own category within the system."
         }
       ],
-      "hint": "The creator intended this addition to be a form of satire or mockery."
+      "hint": "Consider the difference between professional training and original research requirements."
     },
     {
-      "question": "For maximum interoperability, what is the recommended character encoding for JSON messages exchanged in an open ecosystem?",
+      "question": "In PhD admissions, what is the 'Bridge Year' strategy used for?",
       "answerOptions": [
         {
-          "text": "UTF-16",
-          "rationale": "UTF-16 is used for surrogate pairs within escaped sequences, but it is not the primary required encoding for the document itself.",
-          "isCorrect": false
+          "text": "To skip the dissertation phase and move directly into industry research labs.",
+          "isCorrect": false,
+          "rationale": "The dissertation is a mandatory requirement for completing a PhD and cannot be skipped by a bridge year."
         },
         {
-          "text": "UTF-8",
-          "rationale": "The RFC 8259 standard specifies that JSON exchange must be encoded in UTF-8 to ensure widespread support.",
-          "isCorrect": true
+          "text": "To improve a low or mid-tier profile by gaining research experience before applying.",
+          "isCorrect": true,
+          "rationale": "A bridge year allows candidates to volunteer as RAs or publish papers to become more competitive for top-tier programs."
         },
         {
-          "text": "ASCII",
-          "rationale": "ASCII is too limited to represent the full Unicode character set supported by JSON.",
-          "isCorrect": false
+          "text": "To allow tenured professors to transition from one university to another.",
+          "isCorrect": false,
+          "rationale": "This strategy is for applicants seeking entry into a PhD program, not for established faculty."
         },
         {
-          "text": "ISO-8859-1",
-          "rationale": "This legacy encoding does not support the multi-language requirements of modern data interchange.",
-          "isCorrect": false
+          "text": "To fulfill the coursework requirement during the first year of a Master's program.",
+          "isCorrect": false,
+          "rationale": "A bridge year is typically a period of self-improvement taken before or during the application cycle, not a standard coursework year."
         }
       ],
-      "hint": "This is the most common variable-width character encoding used on the web."
+      "hint": "Think about a way to build a 'potential researcher' image if your past grades are not perfect."
     },
     {
-      "question": "In a Web API URL, which character is used to separate the endpoint from the query string parameters?",
+      "question": "What common misconception about the 'Statement of Purpose' (SOP) does the source material highlight?",
       "answerOptions": [
         {
-          "text": "The ampersand ($&$)",
-          "rationale": "The ampersand is used to separate individual parameters within the query string from one another.",
-          "isCorrect": false
+          "text": "That it should be a detailed biography of one's life and childhood hobbies.",
+          "isCorrect": true,
+          "rationale": "The source states that an SOP is not a biography, but rather a specific research intention and proof of fit."
         },
         {
-          "text": "The question mark ($?$)",
-          "rationale": "The question mark denotes the end of the static endpoint and the beginning of the dynamic parameters.",
-          "isCorrect": true
+          "text": "That it must include a specific research question and name potential advisors.",
+          "isCorrect": false,
+          "rationale": "This is actually a requirement for a *good* SOP, not a misconception to avoid."
         },
         {
-          "text": "The hash symbol ($#$)",
-          "rationale": "The hash symbol is typically used for fragment identifiers on a page, not for API parameters.",
-          "isCorrect": false
+          "text": "That it should be written differently for every university applied to.",
+          "isCorrect": false,
+          "rationale": "The source explicitly recommends tailoring each SOP to the specific university and professor."
         },
         {
-          "text": "The colon ($:$)",
-          "rationale": "Colons are used in JSON name-value pairs, but not as the primary separator for URL query strings.",
-          "isCorrect": false
+          "text": "That it is the least important part of the application compared to GPA.",
+          "isCorrect": false,
+          "rationale": "The source identifies the SOP as one of the most critical elements for proving research potential."
         }
       ],
-      "hint": "Think of the punctuation that typically precedes an API key in a browser address bar."
+      "hint": "Avoid focusing on your personal history and childhood interests in this document."
     },
     {
-      "question": "Which of the following is a security risk associated with the Model Context Protocol identified by researchers?",
+      "question": "According to the source material, why is 'Cold Emailing' professors considered a strategic necessity for PhD applicants?",
       "answerOptions": [
         {
-          "text": "Brute force password attacks",
-          "rationale": "While a general risk, the specific research highlighted vulnerabilities unique to AI model interactions.",
-          "isCorrect": false
+          "text": "It is the only way to obtain a waiver for the expensive application fees.",
+          "isCorrect": false,
+          "rationale": "While fee waivers exist, they are usually handled by the admissions office, not via cold emails to professors."
         },
         {
-          "text": "Prompt injection",
-          "rationale": "Security analysis found that MCP is susceptible to prompt injection, where malicious input manipulates the AI's behavior.",
-          "isCorrect": true
+          "text": "Professors often make the final decision on admissions and funding for their labs.",
+          "isCorrect": true,
+          "rationale": "If a professor wants a specific student for their research group, they can influence the admissions committee to accept them."
         },
         {
-          "text": "Denial of Service via XML bombs",
-          "rationale": "MCP uses JSON-RPC, so it is less likely to be targeted by XML-specific vulnerabilities like 'billion laughs' attacks.",
-          "isCorrect": false
+          "text": "It ensures that the applicant will receive a reply from every professor they contact.",
+          "isCorrect": false,
+          "rationale": "The source notes that roughly 90% of cold emails receive no response at all."
         },
         {
-          "text": "Hardware-level side-channel attacks",
-          "rationale": "These attacks target physical processors, whereas the identified MCP issues reside at the application and protocol layers.",
-          "isCorrect": false
+          "text": "It is required by the DHS for international students to maintain 'Duration of Status'.",
+          "isCorrect": false,
+          "rationale": "DHS regulations are about legal stay and visas, not about the professional networking step of cold emailing."
         }
       ],
-      "hint": "This risk involves manipulating the instructions given to a Large Language Model."
+      "hint": "Think about who holds the power to fund a student's research within a specific department."
     },
     {
-      "question": "Regarding the syntax of keys/names, how does JSON differ from XML?",
+      "question": "What does the 'Duration of Status' (D/S) update (July 2026) mean for international PhD students in the US?",
       "answerOptions": [
         {
-          "text": "JSON keys cannot contain spaces, while XML tags can.",
-          "rationale": "In fact, neither JSON nor XML typically allow unescaped spaces in names, but JSON is more flexible with characters.",
-          "isCorrect": false
+          "text": "F-1 visas now automatically last for the full 7 years required for a PhD.",
+          "isCorrect": false,
+          "rationale": "The update actually introduced a fixed time period of admission, meaning the visa might not cover the full duration of the PhD."
         },
         {
-          "text": "JSON keys can begin with a numeric digit, while XML tag names cannot.",
-          "rationale": "XML has strict rules forbidding names from starting with numbers, while JSON allows any string as a key.",
-          "isCorrect": true
+          "text": "Students are admitted for a fixed period (typically 4 years) and must apply for extensions.",
+          "isCorrect": true,
+          "rationale": "Because PhDs take 5-7 years, students now face a requirement to apply for an 'Extension of Stay' during their program."
         },
         {
-          "text": "XML allows quotation marks in tag names, while JSON does not.",
-          "rationale": "JSON keys must be enclosed in double quotes, and XML tag names have very restricted character sets.",
-          "isCorrect": false
+          "text": "The grace period to leave the country after graduation has been increased to 90 days.",
+          "isCorrect": false,
+          "rationale": "The grace period was actually reduced from 60 days to 30 days under the new rule."
         },
         {
-          "text": "JSON keys must be unique within an object, while XML tag names can repeat.",
-          "rationale": "Standard JSON actually does not strictly require unique names, though it is recommended for interoperability.",
-          "isCorrect": false
+          "text": "International students are no longer allowed to serve as Teaching Assistants.",
+          "isCorrect": false,
+          "rationale": "There is no mention of the rule prohibiting international students from being TAs."
         }
       ],
-      "hint": "Think about the naming restrictions for variables or elements in both formats."
+      "hint": "Consider how the change from 'indefinite stay' to a 'fixed period' affects a long-term degree."
     },
     {
-      "question": "Which company introduced the Model Context Protocol to address the 'N x M' data integration problem?",
+      "question": "In the UK, what was the significant change introduced by the Education Reform Act of 1988 regarding academic staff?",
       "answerOptions": [
         {
-          "text": "OpenAI",
-          "rationale": "While OpenAI adopted the protocol in March 2025, they were not the original developers.",
-          "isCorrect": false
+          "text": "It introduced the 'Habilitation' requirement for all lecturers.",
+          "isCorrect": false,
+          "rationale": "Habilitation is a German requirement; the UK system does not use it."
         },
         {
-          "text": "Anthropic",
-          "rationale": "Anthropic released the protocol in November 2024 to standardize how AI systems share data with external tools.",
-          "isCorrect": true
+          "text": "It removed the original form of academic tenure.",
+          "isCorrect": true,
+          "rationale": "Since 1988, UK academics generally have permanent or temporary contracts rather than traditional tenure."
         },
         {
-          "text": "Microsoft",
-          "rationale": "Microsoft integrates the protocol into Azure, but the open standard was created by another AI provider.",
-          "isCorrect": false
+          "text": "It mandated that all professors be employed as state civil servants.",
+          "isCorrect": false,
+          "rationale": "Civil servant status for professors is a characteristic of the German system, not the UK."
         },
         {
-          "text": "Google DeepMind",
-          "rationale": "Google announced they would embrace the standard in 2025, following its initial release by the creator.",
-          "isCorrect": false
+          "text": "It abolished the PhD requirement for senior management positions.",
+          "isCorrect": false,
+          "rationale": "The Act focused on tenure and contracts, not on removing degree requirements for management."
         }
       ],
-      "hint": "This company is also the developer of the Claude family of AI models."
-    },
-    {
-      "question": "What is the primary difference between how JSON and XML handle comments?",
-      "answerOptions": [
-        {
-          "text": "JSON uses $//$ for comments, while XML uses $<!-- -->$.",
-          "rationale": "This describes some JSON derivatives, but standard JSON does not support comments at all.",
-          "isCorrect": false
-        },
-        {
-          "text": "XML supports comments, whereas standard JSON intentionally excludes them.",
-          "rationale": "Douglas Crockford removed comments from JSON to prevent people from using them for parsing directives.",
-          "isCorrect": true
-        },
-        {
-          "text": "JSON only allows block comments, while XML only allows single-line comments.",
-          "rationale": "Standard JSON lacks any comment syntax, whereas XML provides a specific tag-based format.",
-          "isCorrect": false
-        },
-        {
-          "text": "Both formats support comments using the exact same syntax.",
-          "rationale": "The two formats have entirely different structural philosophies, especially regarding metadata and annotations.",
-          "isCorrect": false
-        }
-      ],
-      "hint": "One of these formats was designed to be comment-free to ensure interoperability."
-    },
-    {
-      "question": "For 'good interoperability,' what is the maximum numerical precision recommended for JSON implementations?",
-      "answer": "IEEE 754 binary64",
-      "answerOptions": [
-        {
-          "text": "Arbitrary precision decimals",
-          "rationale": "While the format allows arbitrary precision, many implementations (like JavaScript) cannot process them without loss.",
-          "isCorrect": false
-        },
-        {
-          "text": "32-bit integers",
-          "rationale": "32-bit limits are too restrictive for the general-purpose decimal numbers JSON is designed to carry.",
-          "isCorrect": false
-        },
-        {
-          "text": "IEEE 754 binary64",
-          "rationale": "This format, common in JavaScript double-precision values, is the recommended baseline for ensuring numbers are handled correctly across systems.",
-          "isCorrect": true
-        },
-        {
-          "text": "BigInt notation",
-          "rationale": "BigInt is a specific JavaScript extension and is not part of the base JSON interoperability recommendation.",
-          "isCorrect": false
-        }
-      ],
-      "hint": "This recommendation matches the double-precision floating-point format used by JavaScript."
-    },
-    {
-      "question": "True or False: Standard JSON allows a trailing comma after the last value in an array or object.",
-      "answerOptions": [
-        {
-          "text": "True",
-          "rationale": "While derivatives like JSON5 allow this, the core JSON standard strictly forbids trailing commas.",
-          "isCorrect": false
-        },
-        {
-          "text": "False",
-          "rationale": "The JSON specification disallows commas after the final element, often causing errors in automated parsers.",
-          "isCorrect": true
-        }
-      ],
-      "hint": "Think about the strict punctuation rules that distinguish JSON from more flexible languages like JavaScript."
+      "hint": "Think about the shift away from 'jobs for life' in the British university system."
     }
   ]
 }

@@ -1,208 +1,277 @@
 {
-  "name": "Machine Learning Optimization & Data Techniques",
+  "name": "Autonomous AI Agents",
   "children": [
     {
-      "name": "Data Augmentation",
+      "name": "Definitions & Core Concepts",
       "children": [
         {
-          "name": "Image Classification",
+          "name": "Autonomous Agent",
           "children": [
             {
-              "name": "Geometric Transformations"
+              "name": "Independent Task Execution"
             },
             {
-              "name": "Color Space Transformations"
+              "name": "Purposeful Action"
             },
             {
-              "name": "Noise Injection"
+              "name": "Environment Interaction"
             }
           ]
         },
         {
-          "name": "Synthetic Oversampling",
+          "name": "Agentic AI",
           "children": [
             {
-              "name": "SMOTE"
+              "name": "Project Scoping"
             },
             {
-              "name": "Imbalanced Datasets"
+              "name": "Tool Utilization"
             }
           ]
         },
         {
-          "name": "Signal Processing",
+          "name": "Khalifa Analogy",
           "children": [
             {
-              "name": "Biological Signals (EEG/EMG)"
+              "name": "Representative"
             },
             {
-              "name": "Mechanical Signals"
-            },
-            {
-              "name": "Generative Adversarial Networks"
+              "name": "Active Worker"
             }
           ]
         }
       ]
     },
     {
-      "name": "Fine-tuning",
+      "name": "Agent Anatomy (The Brain)",
       "children": [
         {
-          "name": "Core Concepts",
+          "name": "LLM (Brain)",
           "children": [
             {
-              "name": "Transfer Learning"
+              "name": "Reasoning"
             },
             {
-              "name": "Upstream vs Downstream Tasks"
+              "name": "Decision Making"
             },
             {
-              "name": "Frozen vs Unfrozen Layers"
+              "name": "Planning"
             }
           ]
         },
         {
-          "name": "Variants",
+          "name": "Tools (Functions)",
           "children": [
             {
-              "name": "Low-rank Adaptation (LoRA)"
+              "name": "Function Calling"
             },
             {
-              "name": "Representation Fine-tuning (ReFT)"
+              "name": "MCP Protocol"
             },
             {
-              "name": "Parameter-efficient Fine-tuning (PEFT)"
+              "name": "API Integration"
             }
           ]
         },
         {
-          "name": "Applications",
+          "name": "Memory Systems",
           "children": [
             {
-              "name": "Natural Language Processing"
+              "name": "Short-term (Conversation)"
             },
             {
-              "name": "Large Language Models"
+              "name": "Working (Task State)"
             },
             {
-              "name": "RLHF (ChatGPT/Sparrow)"
+              "name": "Long-term (Vector DB)"
+            },
+            {
+              "name": "Episodic (Past Events)"
+            }
+          ]
+        },
+        {
+          "name": "Control Loop",
+          "children": [
+            {
+              "name": "Autonomy"
+            },
+            {
+              "name": "Reason-Act-Observe"
             }
           ]
         }
       ]
     },
     {
-      "name": "Model Performance Issues",
+      "name": "Frameworks & Logic",
       "children": [
         {
-          "name": "Overfitting",
+          "name": "ReAct",
           "children": [
             {
-              "name": "Memorizing Training Data"
+              "name": "Thought"
             },
             {
-              "name": "High Variance"
+              "name": "Action"
             },
             {
-              "name": "Complexity vs Data Size"
+              "name": "Observation"
             }
           ]
         },
         {
-          "name": "Underfitting",
+          "name": "Planning Strategies",
           "children": [
             {
-              "name": "Simplistic Models"
+              "name": "Plan-and-Execute"
             },
             {
-              "name": "High Bias"
+              "name": "Adaptive Re-planning"
+            },
+            {
+              "name": "Hierarchical Decomposition"
             }
           ]
         },
         {
-          "name": "Bias-Variance Tradeoff"
-        }
-      ]
-    },
-    {
-      "name": "Regularization Techniques",
-      "children": [
-        {
-          "name": "Explicit Regularization",
+          "name": "Advanced Search",
           "children": [
             {
-              "name": "L1 (LASSO)"
+              "name": "Reflexion"
             },
             {
-              "name": "L2 (Ridge Regression)"
+              "name": "Tree-of-Thought"
             },
             {
-              "name": "Elastic Net"
-            }
-          ]
-        },
-        {
-          "name": "Implicit Regularization",
-          "children": [
-            {
-              "name": "Early Stopping"
-            },
-            {
-              "name": "Dropout"
-            },
-            {
-              "name": "Pruning"
+              "name": "LATS"
             }
           ]
         }
       ]
     },
     {
-      "name": "Optimization Algorithms",
+      "name": "Multi-Agent Systems (MAS)",
       "children": [
         {
-          "name": "Stochastic Gradient Descent (SGD)",
+          "name": "Orchestration Models",
           "children": [
             {
-              "name": "Mini-batch Gradient Descent"
+              "name": "Sequential Pipeline"
             },
             {
-              "name": "Learning Rate Schedules"
+              "name": "Manager-Worker"
             },
             {
-              "name": "Momentum/Heavy Ball"
+              "name": "Conversational Debate"
             }
           ]
         },
         {
-          "name": "Adaptive Optimizers",
+          "name": "Popular Frameworks",
           "children": [
             {
-              "name": "AdaGrad"
+              "name": "CrewAI (Role-based)"
             },
             {
-              "name": "RMSProp"
+              "name": "LangGraph (State-based)"
             },
             {
-              "name": "Adam"
+              "name": "AutoGen (Conversational)"
             },
             {
-              "name": "AdamW"
+              "name": "OpenAI Swarm"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Challenges & Safety",
+      "children": [
+        {
+          "name": "Failure Modes",
+          "children": [
+            {
+              "name": "Infinite Loops"
+            },
+            {
+              "name": "Hallucinated Tools"
+            },
+            {
+              "name": "Cost Explosion"
+            },
+            {
+              "name": "Context Pollution"
             }
           ]
         },
         {
-          "name": "Advanced Methods",
+          "name": "Safety Layers",
           "children": [
             {
-              "name": "Implicit Updates (ISGD)"
+              "name": "Guardrails"
             },
             {
-              "name": "Nesterov Accelerated Gradient"
+              "name": "Sandboxing"
             },
             {
-              "name": "Second-order Methods"
+              "name": "Human-in-the-Loop"
+            },
+            {
+              "name": "Amanat (Verification)"
+            }
+          ]
+        },
+        {
+          "name": "Ethical Concerns",
+          "children": [
+            {
+              "name": "Accountability"
+            },
+            {
+              "name": "Privacy/Data Protection"
+            },
+            {
+              "name": "Manipulation Vulnerability"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Applications",
+      "children": [
+        {
+          "name": "Software Engineering",
+          "children": [
+            {
+              "name": "Devin AI"
+            },
+            {
+              "name": "Autonomous Coder"
+            }
+          ]
+        },
+        {
+          "name": "Enterprise",
+          "children": [
+            {
+              "name": "Business Automation"
+            },
+            {
+              "name": "Salesforce Agentforce"
+            }
+          ]
+        },
+        {
+          "name": "IoT/Infrastructure",
+          "children": [
+            {
+              "name": "Smart Homes"
+            },
+            {
+              "name": "Industrial Monitoring"
             }
           ]
         }

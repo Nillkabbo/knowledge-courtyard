@@ -1,161 +1,139 @@
 {
-  "name": "RAG Mastery & Knowledge Retrieval",
+  "name": "Prompt Engineering",
   "children": [
     {
-      "name": "Document Ingestion Pipeline",
+      "name": "Core Concepts",
       "children": [
         {
-          "name": "Format-Specific Parsing (PDF, HTML, DOCX, OCR)"
+          "name": "Prompt Definition"
         },
         {
-          "name": "Universal Pipeline: Load, Extract, Clean, Structure"
+          "name": "Context Engineering"
         },
         {
-          "name": "Metadata Tagging & Citation"
+          "name": "In-context Learning"
         },
         {
-          "name": "Tools: Unstructured.io, LlamaParse, Docling"
+          "name": "Model Sensitivity"
         }
       ]
     },
     {
-      "name": "Indexing & Vector DB",
+      "name": "Prompting Techniques",
       "children": [
         {
-          "name": "Vector Embeddings & High-Dimensional Space"
+          "name": "Multi-shot / Few-shot"
         },
         {
-          "name": "Algorithms",
+          "name": "Chain-of-thought (CoT)",
           "children": [
             {
-              "name": "HNSW (Graph-based, High Performance)"
+              "name": "Self-consistency"
             },
             {
-              "name": "IVF (Cluster-based Search)"
-            },
-            {
-              "name": "Product Quantization (Compression)"
+              "name": "Zero-shot CoT"
             }
           ]
         },
         {
-          "name": "Storage: Pinecone, Qdrant, Weaviate, Milvus"
+          "name": "Tree-of-thought"
+        },
+        {
+          "name": "Role Assignment"
+        },
+        {
+          "name": "Vibe Coding"
         }
       ]
     },
     {
-      "name": "Retrieval Patterns",
+      "name": "Multimodal Prompting",
       "children": [
         {
-          "name": "Naive RAG",
+          "name": "Text-to-Image",
           "children": [
             {
-              "name": "Embed-Search-Generate Cycle"
+              "name": "Artist Styles"
             },
             {
-              "name": "Limitations: Wrong Chunks, Lost Context"
+              "name": "Negative Prompts"
+            },
+            {
+              "name": "Textual Inversion"
             }
           ]
         },
         {
-          "name": "Advanced Retrieval",
-          "children": [
-            {
-              "name": "Hybrid Search (Dense + Lexical BM25)"
-            },
-            {
-              "name": "Parent-Child / Small-to-Big Chunking"
-            },
-            {
-              "name": "HyDE (Hypothetical Embeddings)"
-            },
-            {
-              "name": "Contextual Retrieval & Late Chunking"
-            },
-            {
-              "name": "Reranking (Cross-Encoders)"
-            }
-          ]
+          "name": "Image Prompting"
+        },
+        {
+          "name": "Text-to-Audio"
         }
       ]
     },
     {
-      "name": "Query Transformation",
+      "name": "Automated Generation",
       "children": [
         {
-          "name": "Query Rewriting & Specificity"
-        },
-        {
-          "name": "Multi-Query Expansion"
-        },
-        {
-          "name": "Sub-question Decomposition"
-        },
-        {
-          "name": "Step-Back Prompting"
-        }
-      ]
-    },
-    {
-      "name": "Evaluation & Reliability",
-      "children": [
-        {
-          "name": "RAGAS Framework",
+          "name": "Retrieval-augmented Generation (RAG)",
           "children": [
             {
-              "name": "Context Precision & Recall"
-            },
-            {
-              "name": "Answer Faithfulness & Relevance"
+              "name": "GraphRAG"
             }
           ]
         },
         {
-          "name": "Failure Modes",
+          "name": "Automatic Prompt Engineer (APE)"
+        },
+        {
+          "name": "Optimization Methods",
           "children": [
             {
-              "name": "Hallucination & Stale Data"
+              "name": "MIPRO"
             },
             {
-              "name": "Prompt Injection & Poisoning"
+              "name": "GEPA"
+            },
+            {
+              "name": "Gradient Descent Tuning"
             }
           ]
         }
       ]
     },
     {
-      "name": "Connected Knowledge",
+      "name": "Challenges and Security",
       "children": [
         {
-          "name": "GraphRAG",
+          "name": "Limitations",
           "children": [
             {
-              "name": "Entity & Relation Extraction"
+              "name": "Model Specificity"
             },
             {
-              "name": "Community Detection"
+              "name": "Prompt Brittleness"
             },
             {
-              "name": "Multi-hop Reasoning"
+              "name": "Obsolescence Risk"
             }
           ]
+        },
+        {
+          "name": "Prompt Injection"
         }
       ]
     },
     {
-      "name": "Production Implementation",
+      "name": "History and Professionalism",
       "children": [
         {
-          "name": "Semantic Caching"
+          "name": "1990s Rule-based Systems"
         },
         {
-          "name": "Observability & Tracing (LangSmith, Phoenix)"
+          "name": "2020s AI Boom"
         },
         {
-          "name": "Guardrails & Safety"
-        },
-        {
-          "name": "Frameworks: LangChain, LlamaIndex, Haystack"
+          "name": "Prompt Engineer Role"
         }
       ]
     }

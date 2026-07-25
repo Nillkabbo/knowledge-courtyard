@@ -1,139 +1,225 @@
 {
-  "name": "Prompt Engineering",
+  "name": "LLM Tools and Model Context Protocol (MCP)",
   "children": [
     {
-      "name": "Core Concepts",
+      "name": "Function Calling",
       "children": [
         {
-          "name": "Prompt Definition"
-        },
-        {
-          "name": "Context Engineering"
-        },
-        {
-          "name": "In-context Learning"
-        },
-        {
-          "name": "Model Sensitivity"
-        }
-      ]
-    },
-    {
-      "name": "Prompting Techniques",
-      "children": [
-        {
-          "name": "Multi-shot / Few-shot"
-        },
-        {
-          "name": "Chain-of-thought (CoT)",
+          "name": "Definition",
           "children": [
             {
-              "name": "Self-consistency"
+              "name": "LLM decides tool based on schema"
             },
             {
-              "name": "Zero-shot CoT"
+              "name": "Structured output vs regular text"
             }
           ]
         },
         {
-          "name": "Tree-of-thought"
-        },
-        {
-          "name": "Role Assignment"
-        },
-        {
-          "name": "Vibe Coding"
-        }
-      ]
-    },
-    {
-      "name": "Multimodal Prompting",
-      "children": [
-        {
-          "name": "Text-to-Image",
+          "name": "Steps",
           "children": [
             {
-              "name": "Artist Styles"
+              "name": "Define tools"
             },
             {
-              "name": "Negative Prompts"
+              "name": "LLM receives context"
             },
             {
-              "name": "Textual Inversion"
-            }
-          ]
-        },
-        {
-          "name": "Image Prompting"
-        },
-        {
-          "name": "Text-to-Audio"
-        }
-      ]
-    },
-    {
-      "name": "Automated Generation",
-      "children": [
-        {
-          "name": "Retrieval-augmented Generation (RAG)",
-          "children": [
-            {
-              "name": "GraphRAG"
-            }
-          ]
-        },
-        {
-          "name": "Automatic Prompt Engineer (APE)"
-        },
-        {
-          "name": "Optimization Methods",
-          "children": [
-            {
-              "name": "MIPRO"
+              "name": "LLM matching intent"
             },
             {
-              "name": "GEPA"
+              "name": "Execution"
             },
             {
-              "name": "Gradient Descent Tuning"
+              "name": "Response formulation"
             }
           ]
         }
       ]
     },
     {
-      "name": "Challenges and Security",
+      "name": "Model Context Protocol (MCP)",
       "children": [
         {
-          "name": "Limitations",
+          "name": "Standardization",
           "children": [
             {
-              "name": "Model Specificity"
+              "name": "Universal adapter for AI tools"
             },
             {
-              "name": "Prompt Brittleness"
+              "name": "Eliminates N x M integration problem"
             },
             {
-              "name": "Obsolescence Risk"
+              "name": "Based on JSON-RPC 2.0"
             }
           ]
         },
         {
-          "name": "Prompt Injection"
+          "name": "Architecture",
+          "children": [
+            {
+              "name": "MCP Host (AI Agent)"
+            },
+            {
+              "name": "MCP Client"
+            },
+            {
+              "name": "MCP Server (Tool Provider)"
+            }
+          ]
+        },
+        {
+          "name": "Capabilities",
+          "children": [
+            {
+              "name": "Tools (standard functions)"
+            },
+            {
+              "name": "Resources (standardized data access)"
+            },
+            {
+              "name": "Prompts (standardized templates)"
+            }
+          ]
         }
       ]
     },
     {
-      "name": "History and Professionalism",
+      "name": "Tool Design Principles",
       "children": [
         {
-          "name": "1990s Rule-based Systems"
+          "name": "Naming",
+          "children": [
+            {
+              "name": "Clear and verb-based"
+            }
+          ]
         },
         {
-          "name": "2020s AI Boom"
+          "name": "Description",
+          "children": [
+            {
+              "name": "When to use vs when not to use"
+            }
+          ]
         },
         {
-          "name": "Prompt Engineer Role"
+          "name": "Parameters",
+          "children": [
+            {
+              "name": "Typed and constrained"
+            }
+          ]
+        },
+        {
+          "name": "Orchestration Patterns",
+          "children": [
+            {
+              "name": "Sequential"
+            },
+            {
+              "name": "Parallel"
+            },
+            {
+              "name": "Conditional"
+            },
+            {
+              "name": "Iterative (ReAct loop)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Safety and Error Handling",
+      "children": [
+        {
+          "name": "Hifz (Protection)",
+          "children": [
+            {
+              "name": "Input validation"
+            },
+            {
+              "name": "Sandboxed execution"
+            },
+            {
+              "name": "Human approval for destructive actions"
+            }
+          ]
+        },
+        {
+          "name": "Error Recovery",
+          "children": [
+            {
+              "name": "Timeouts"
+            },
+            {
+              "name": "API failures"
+            },
+            {
+              "name": "LLM self-correction from error messages"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tool Ecosystem",
+      "children": [
+        {
+          "name": "Platforms",
+          "children": [
+            {
+              "name": "Composio (10,000+ actions)"
+            },
+            {
+              "name": "LangChain Tools"
+            },
+            {
+              "name": "LlamaIndex"
+            }
+          ]
+        },
+        {
+          "name": "Advanced Use",
+          "children": [
+            {
+              "name": "Computer Use (screenshots/mouse/typing)"
+            },
+            {
+              "name": "Browser automation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Integration Technologies",
+      "children": [
+        {
+          "name": "JSON",
+          "children": [
+            {
+              "name": "Human-readable data interchange"
+            },
+            {
+              "name": "Language independent"
+            },
+            {
+              "name": "Name-value pairs and arrays"
+            }
+          ]
+        },
+        {
+          "name": "Web Interfaces",
+          "children": [
+            {
+              "name": "RESTful APIs"
+            },
+            {
+              "name": "Webhooks (HTTP callbacks)"
+            }
+          ]
         }
       ]
     }

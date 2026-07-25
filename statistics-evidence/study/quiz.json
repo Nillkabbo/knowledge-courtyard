@@ -1,265 +1,265 @@
 {
-  "title": "Distributed Quiz",
+  "title": "Statistics Quiz",
   "questions": [
     {
-      "question": "In Lamport's logical clocks, what does the \"happens-before\" relation ($A \\to B$) signify?",
+      "question": "What fundamental principle did Al-Kindi use in his 9th-century work to break ciphers by analyzing the rhythmic patterns of a language?",
       "answerOptions": [
         {
-          "text": "Event $A$ occurred at a physically earlier time than event $B$ across all system nodes.",
-          "isCorrect": false,
-          "rationale": "Physical time is unreliable in distributed systems due to clock skew, which is why Lamport introduced logical ordering."
-        },
-        {
-          "text": "Event $A$ is a causal precursor to event $B$, such as a message being sent before it is received.",
+          "text": "Frequency Analysis",
           "isCorrect": true,
-          "rationale": "The relation defines a partial ordering based on causality and the flow of information rather than synchronized wall-clock time."
+          "rationale": "This method relies on the fact that different letters in a language, such as Arabic or English, appear with predictable regularity, allowing one to map symbols to the most frequent characters."
         },
         {
-          "text": "Event $A$ and event $B$ happened simultaneously on the same processor.",
+          "text": "Bayesian Updating",
           "isCorrect": false,
-          "rationale": "The relation specifically tracks the order of events, while simultaneous events on different processors are considered concurrent."
+          "rationale": "While related to updating beliefs based on new evidence, this formal mathematical framework was developed much later than the 9th century."
         },
         {
-          "text": "Event $B$ must have a lower logical timestamp than event $A$.",
+          "text": "Randomized Controlled Trials",
           "isCorrect": false,
-          "rationale": "If $A \\to B$, the timestamp of $A$ must be strictly less than the timestamp of $B$ to preserve the causal order."
+          "rationale": "This approach involves active intervention and control groups, which is a modern experimental design rather than a passive cryptographic analysis."
+        },
+        {
+          "text": "Deductive Proofs",
+          "isCorrect": false,
+          "rationale": "Deduction moves from general rules to specific certainties, whereas breaking a code by counting symbols is an inductive process based on observation."
         }
       ],
-      "hint": "Think about how one event might influence another in a system with no global clock."
+      "hint": "Consider the technique of counting how often specific symbols appear in a text to find a pattern."
     },
     {
-      "question": "In Dijkstra's semaphore logic, what occurs during the $P$ (proberen) operation?",
+      "question": "John Graunt's 1662 work on London's 'Bills of Mortality' is considered a milestone in statistics because it created the first:",
       "answerOptions": [
         {
-          "text": "The semaphore value is incremented to signal that a resource is now free.",
-          "isCorrect": false,
-          "rationale": "Incrementing is the function of the $V$ (verhogen) operation, not the $P$ operation."
-        },
-        {
-          "text": "The process checks the value and decrements it; if the value is $0$, the process waits.",
+          "text": "Life Table",
           "isCorrect": true,
-          "rationale": "The $P$ operation acts as a 'wait' or 'test' mechanism to acquire a resource and prevent others from entering the critical section."
+          "rationale": "By aggregating death records, Graunt established a way to predict mortality rates by age, which became the foundation for modern insurance and demography."
         },
         {
-          "text": "The process forces all other waiting processes to terminate to prevent a deadlock.",
+          "text": "Normal Distribution Curve",
           "isCorrect": false,
-          "rationale": "Semaphores manage access through waiting and signaling rather than process termination."
+          "rationale": "The mathematical description of the bell-shaped curve was not formally developed until the 19th century by Gauss."
         },
         {
-          "text": "The semaphore value is reset to $1$ regardless of its current state.",
+          "text": "P-value Threshold",
           "isCorrect": false,
-          "rationale": "Resetting the value would violate the mutual exclusion principle by potentially allowing multiple processes in simultaneously."
+          "rationale": "The concept of statistical significance and the $0.05$ threshold were popularized by Ronald Fisher in the 1920s."
+        },
+        {
+          "text": "Double-blind Experiment",
+          "isCorrect": false,
+          "rationale": "Graunt used observational data from parish records rather than conducting controlled experiments with human subjects."
         }
       ],
-      "hint": "Consider the action a program takes when it attempts to enter a 'locked' door."
+      "hint": "His work looked at how many people died at different stages of life to understand social patterns."
     },
     {
-      "question": "According to the CAP Theorem, what is the consequence of a network partition in a distributed system?",
+      "question": "According to the $68-95-99.7$ rule of normal distribution, what is the probability that a random data point falls within $\\pm 2\\sigma$ of the mean $\\mu$?",
       "answerOptions": [
         {
-          "text": "The system must sacrifice Partition Tolerance to maintain both Consistency and Availability.",
-          "isCorrect": false,
-          "rationale": "Partition Tolerance is generally non-negotiable in distributed systems because network failures are inevitable."
-        },
-        {
-          "text": "The system can maintain all three properties if it uses a consensus algorithm like Paxos.",
-          "isCorrect": false,
-          "rationale": "The theorem states that only two of the three properties can be satisfied simultaneously during a partition."
-        },
-        {
-          "text": "The system must choose between returning an error (sacrificing Availability) or returning potentially stale data (sacrificing Consistency).",
+          "text": "$95\\%$",
           "isCorrect": true,
-          "rationale": "When nodes cannot communicate, they must either stop responding to ensure data remains identical or keep responding with whatever data they have."
+          "rationale": "This rule dictates that approximately $95\\%$ of all observations in a normal distribution lie within two standard deviations of the center."
         },
         {
-          "text": "The system will automatically switch to a single-node RDBMS to avoid the dilemma.",
+          "text": "$68\\%$",
           "isCorrect": false,
-          "rationale": "While a single node avoids partitions, it is no longer a distributed system, which is the context of the CAP theorem."
+          "rationale": "This percentage represents the data within only one standard deviation $(\\pm 1\\sigma)$ of the mean."
+        },
+        {
+          "text": "$99.7\\%$",
+          "isCorrect": false,
+          "rationale": "This higher percentage covers data within three standard deviations $(\\pm 3\\sigma)$, representing nearly the entire population."
+        },
+        {
+          "text": "$50\\%$",
+          "isCorrect": false,
+          "rationale": "In a symmetric normal distribution, $50\\%$ of the data is simply everything to one side of the mean, regardless of standard deviation."
         }
       ],
-      "hint": "Imagine two nodes that cannot talk to each other; what happens if a user tries to update data on one of them?"
+      "hint": "This specific threshold is often used to identify values that are not considered 'extreme' in nature."
     },
     {
-      "question": "What was the primary motivation behind the creation of the Raft consensus algorithm?",
+      "question": "In Ronald Fisher's framework of hypothesis testing, a $p$-value of $0.03$ implies which of the following?",
       "answerOptions": [
         {
-          "text": "To provide a consensus method that is faster than Paxos in all network conditions.",
-          "isCorrect": false,
-          "rationale": "While performance is a factor, Raft's primary goal was to address the complexity and lack of understanding surrounding Paxos."
-        },
-        {
-          "text": "To create an algorithm that is easier to understand and implement than Paxos.",
+          "text": "There is a $3\\%$ chance of seeing these results if the null hypothesis is true.",
           "isCorrect": true,
-          "rationale": "Raft was designed as an 'understandable' alternative to Paxos, using a strong leader model and clear phases for election and log replication."
+          "rationale": "The $p$-value measures the probability of obtaining the observed data (or more extreme) under the assumption that there is no real effect or difference."
         },
         {
-          "text": "To eliminate the need for a majority (quorum) to reach a decision.",
+          "text": "There is a $97\\%$ probability that the researcher's hypothesis is correct.",
           "isCorrect": false,
-          "rationale": "Both Raft and Paxos rely on a majority quorum to ensure consistency and handle node failures."
+          "rationale": "This is a common misconception; the $p$-value does not measure the probability of the hypothesis being 'true,' only the 'unusualness' of the data."
         },
         {
-          "text": "To allow consensus to be reached even if all nodes in the cluster crash.",
+          "text": "The null hypothesis has been proven to be false.",
           "isCorrect": false,
-          "rationale": "Consensus requires a majority of nodes to be operational; if all fail, the system cannot make progress."
+          "rationale": "Statistics deals with probability rather than absolute proof; a low $p$-value suggests the null is unlikely, not impossible."
+        },
+        {
+          "text": "The experiment is flawed and needs to be repeated with more samples.",
+          "isCorrect": false,
+          "rationale": "A $p$-value below the $0.05$ threshold is typically considered a 'successful' detection of a significant difference, not an indication of error."
         }
       ],
-      "hint": "Think about why students or engineers might struggle with 'The Part-Time Parliament' paper."
+      "hint": "Think of the $p$-value as a measure of how 'surprising' the results are if nothing actually changed."
     },
     {
-      "question": "What is a major disadvantage of the Two-Phase Commit (2PC) protocol for distributed transactions?",
+      "question": "Jerzy Neyman's $95\\%$ confidence interval (CI) is frequently misinterpreted. What is its correct technical meaning?",
       "answerOptions": [
         {
-          "text": "It cannot guarantee atomicity if one node disagrees during the prepare phase.",
-          "isCorrect": false,
-          "rationale": "2PC is specifically designed to guarantee atomicity; if one node says 'no', the entire transaction is aborted."
-        },
-        {
-          "text": "It is a blocking protocol where nodes may remain stuck if the coordinator fails after the prepare phase.",
+          "text": "If we repeat the sampling process $100$ times, $95$ of the calculated intervals will contain the true population mean.",
           "isCorrect": true,
-          "rationale": "If the coordinator crashes after nodes have agreed to commit but before they receive the final command, they remain in a 'prepared' state, unable to move forward or back."
+          "rationale": "The confidence level refers to the reliability of the procedure over repeated trials, not the probability of a single fixed interval."
         },
         {
-          "text": "It requires $3f+1$ nodes to function correctly under normal conditions.",
+          "text": "There is a $95\\%$ probability that the true mean lies within this specific calculated range.",
           "isCorrect": false,
-          "rationale": "The $3f+1$ requirement applies to Byzantine Fault Tolerance, not standard 2PC transactions."
+          "rationale": "In frequentist statistics, the true mean is a fixed point, and the interval either contains it or it doesn't; probability applies to the method, not the result."
         },
         {
-          "text": "It only works for transactions involving exactly two databases.",
+          "text": "We are $95\\%$ sure that our sample mean is exactly equal to the population mean.",
           "isCorrect": false,
-          "rationale": "The 'Two-Phase' refers to the steps of the process (Prepare and Commit), not the number of nodes or databases involved."
+          "rationale": "A confidence interval provides a range of plausible values to account for uncertainty, rather than claiming a point-exact match."
+        },
+        {
+          "text": "The data is $95\\%$ accurate and contains only a $5\\%$ margin of measurement error.",
+          "isCorrect": false,
+          "rationale": "While the CI relates to precision, it specifically measures the uncertainty of estimating a population parameter from a sample."
         }
       ],
-      "hint": "What happens to the participants if the leader disappears in the middle of a two-step voting process?"
+      "hint": "Recall that the true population value is fixed, while the interval itself changes every time you take a new sample."
     },
     {
-      "question": "In the MapReduce programming model, what is the specific role of the \"Shuffle\" phase?",
+      "question": "Which principle of experimental design, as proposed by Fisher, is intended to eliminate hidden biases or 'confounders' such as varying soil quality in a field?",
       "answerOptions": [
         {
-          "text": "To apply the user-defined filtering logic to the raw input data.",
-          "isCorrect": false,
-          "rationale": "Filtering and initial processing are the responsibility of the Map function."
-        },
-        {
-          "text": "To redistribute key-value pairs so that all values associated with the same key are sent to the same reducer.",
+          "text": "Randomization",
           "isCorrect": true,
-          "rationale": "The shuffle phase acts as the communication bridge, ensuring that the Reduce step has all the necessary data for a specific key."
+          "rationale": "By randomly assigning treatments, any underlying differences in the subjects (like soil fertility) are distributed evenly, preventing them from biasing the results."
         },
         {
-          "text": "To write the final aggregated results back to the distributed file system.",
+          "text": "Replication",
           "isCorrect": false,
-          "rationale": "The Output Writer handles the final storage of results after the Reduce phase is complete."
+          "rationale": "While repeating the experiment increases precision and reduces random error, it does not inherently remove systematic bias on its own."
         },
         {
-          "text": "To reduce the amount of data by summing up values locally on the mapper node.",
+          "text": "Blocking",
           "isCorrect": false,
-          "rationale": "Local aggregation is typically done by an optional 'Combiner' function, not the shuffle itself."
+          "rationale": "Blocking groups similar units together to handle known variation, but it is randomization that handles the unknown variables."
+        },
+        {
+          "text": "Hypothesis Formulation",
+          "isCorrect": false,
+          "rationale": "A hypothesis is a starting assumption, but it does not represent the physical layout or procedural structure used to ensure a fair test."
         }
       ],
-      "hint": "Consider how data moves from a variety of independent mappers to the correct reducers."
+      "hint": "This principle involves using chance to decide which subjects receive which treatment."
     },
     {
-      "question": "How does Byzantine Fault Tolerance (BFT) differ from standard crash fault tolerance?",
+      "question": "In Judea Pearl's 'Causal Inference' framework, what does the $do$-operator, such as $P(Y | do(X))$, represent?",
       "answerOptions": [
         {
-          "text": "BFT assumes that nodes will only fail by stopping or crashing.",
-          "isCorrect": false,
-          "rationale": "This describes standard crash fault tolerance; BFT is more robust and handles intentional deception."
-        },
-        {
-          "text": "BFT accounts for 'traitorous' nodes that may send conflicting or malicious information.",
+          "text": "Intervention in the system",
           "isCorrect": true,
-          "rationale": "BFT is designed for environments where nodes may be compromised or act dishonestly, requiring a higher threshold of agreement."
+          "rationale": "The $do$-operator mathematically models what happens when we actively change a variable, as opposed to just observing it, which is the key to proving causation."
         },
         {
-          "text": "BFT is only used in single-node database systems to prevent data corruption.",
+          "text": "Simple statistical correlation",
           "isCorrect": false,
-          "rationale": "BFT is a distributed systems concept designed for multiple nodes interacting over a network."
+          "rationale": "Correlation only observes how variables move together ($P(Y | X)$) without determining if one forces the other to move."
         },
         {
-          "text": "BFT requires $f+1$ nodes to handle $f$ failures, making it more efficient than Raft.",
+          "text": "The probability of a data error",
           "isCorrect": false,
-          "rationale": "BFT is less efficient, typically requiring $3f+1$ nodes to tolerate $f$ malicious failures."
+          "rationale": "While causation requires accurate data, the $do$-operator is a logic tool for understanding relationships, not a measure of data quality."
+        },
+        {
+          "text": "A method for increasing sample size",
+          "isCorrect": false,
+          "rationale": "Causal inference is about the structure of relationships between variables, not the volume of the data collected."
         }
       ],
-      "hint": "Think about the difference between a machine breaking down and a person lying on purpose."
+      "hint": "This operator distinguishes between 'seeing' a pattern and 'acting' to create a change."
     },
     {
-      "question": "In a partitioned database, what characterizes \"Vertical Partitioning\"?",
+      "question": "John Ioannidis's 2005 paper sparked the 'Replication Crisis' by arguing that:",
       "answerOptions": [
         {
-          "text": "Splitting different rows of the same table into different tables based on a range (e.g., ZIP codes).",
-          "isCorrect": false,
-          "rationale": "Splitting by rows is known as Horizontal Partitioning or Sharding."
-        },
-        {
-          "text": "Splitting a table by its columns, putting infrequently used or very wide columns into separate tables.",
+          "text": "Most published research findings are false due to misuse of statistics.",
           "isCorrect": true,
-          "rationale": "Vertical partitioning divides the schema itself to optimize memory usage or access speed for specific sets of attributes."
+          "rationale": "Ioannidis highlighted how practices like $p$-hacking and publication bias lead to 'significant' results that cannot be replicated by other scientists."
         },
         {
-          "text": "Replicating the entire database across multiple geographic regions for availability.",
+          "text": "Computers are making more errors in data processing than humans.",
           "isCorrect": false,
-          "rationale": "Replication is the act of copying data, whereas partitioning is the act of dividing it."
+          "rationale": "His critique focused on human methodologies and statistical incentives, not the hardware or computational accuracy of the machines."
         },
         {
-          "text": "Organizing data into a tree-like structure to improve search efficiency.",
+          "text": "Peer review is an unnecessary barrier to scientific progress.",
           "isCorrect": false,
-          "rationale": "This describes indexing (like B-trees), not the physical partitioning of data across tables or nodes."
+          "rationale": "The issue is actually that standard peer review often fails to catch the subtle statistical flaws he identified, necessitating more transparency."
+        },
+        {
+          "text": "The $0.05$ $p$-value threshold is too difficult for researchers to reach.",
+          "isCorrect": false,
+          "rationale": "The problem is the opposite: the threshold is often too 'easy' to manipulate through repeated testing until a 'significant' result accidentally appears."
         }
       ],
-      "hint": "Consider whether you are dividing the data by 'records' or by 'attributes'."
+      "hint": "He used statistics to show that many 'breakthroughs' are actually just statistical accidents."
     },
     {
-      "question": "Which property of a mathematical Monoid is essential for a function to be used in the MapReduce \"Reduce\" phase?",
+      "question": "In survey methodology, what is a 'sampling frame'?",
       "answerOptions": [
         {
-          "text": "Commutativity: the order of the operands does not matter (e.g., $a + b = b + a$).",
-          "isCorrect": false,
-          "rationale": "While helpful, commutativity is not strictly required by the monoid definition for reduction; associativity is the core requirement."
-        },
-        {
-          "text": "Associativity: the grouping of operations does not matter (e.g., $(a + b) + c = a + (b + c)$).",
+          "text": "The actual list or map from which a sample is drawn.",
           "isCorrect": true,
-          "rationale": "Associativity allows the framework to regroup and parallelize the data reduction across different nodes without changing the result."
+          "rationale": "A frame, such as a phone directory or a list of students, is the practical tool used to identify and select members of the population."
         },
         {
-          "text": "Invertibility: every operation can be undone by an inverse operation.",
+          "text": "The physical boundaries of the study area.",
           "isCorrect": false,
-          "rationale": "MapReduce does not require operations to be reversible; it focuses on aggregation and summary."
+          "rationale": "While geography can define a population, the 'frame' refers specifically to the list or method used to contact individuals within that area."
         },
         {
-          "text": "Distributivity: the operation must distribute over another operation.",
+          "text": "The time period during which the data is collected.",
           "isCorrect": false,
-          "rationale": "Reduction involves a single binary operation, so distributivity between two different operations is not the primary concern."
+          "rationale": "This is referred to as the survey duration or wave, whereas the frame is about 'who' is being sampled, not 'when'."
+        },
+        {
+          "text": "The theoretical population the researcher wants to understand.",
+          "isCorrect": false,
+          "rationale": "The 'population' is the large group of interest; the 'frame' is the restricted, tangible version of that group available for selection."
         }
       ],
-      "hint": "Think about why the system can group values in any order to calculate the final sum or count."
+      "hint": "Think of it as the 'directory' that allows you to reach the members of your target group."
     },
     {
-      "question": "How does the Saga pattern handle failures in a long-running distributed transaction?",
+      "question": "Which sampling method involves dividing the population into non-overlapping groups and then selecting *everyone* within a few randomly chosen groups?",
       "answerOptions": [
         {
-          "text": "It uses a global lock to prevent any other transactions from occurring until the failure is fixed.",
-          "isCorrect": false,
-          "rationale": "Sagas avoid global locks to maintain high availability and prevent blocking."
-        },
-        {
-          "text": "It executes 'compensating transactions' to undo the effects of successfully completed preceding steps.",
+          "text": "Cluster Sampling",
           "isCorrect": true,
-          "rationale": "Since Sagas don't use a single commit point, if a step fails, the system must manually reverse previous successful steps to maintain consistency."
+          "rationale": "In cluster sampling, the population is divided into groups (clusters), and whole clusters are selected to be surveyed, often to save on travel or logistics costs."
         },
         {
-          "text": "It automatically restarts the entire transaction from the beginning until it succeeds.",
+          "text": "Stratified Sampling",
           "isCorrect": false,
-          "rationale": "While retries are possible, the core feature of a Saga is the compensation logic for when retries aren't enough or are inappropriate."
+          "rationale": "This method selects a few individuals from *every* group (stratum) to ensure all sub-groups are represented, rather than selecting whole groups."
         },
         {
-          "text": "It ignores the failure and relies on 'Eventual Consistency' to fix the data later.",
+          "text": "Simple Random Sampling",
           "isCorrect": false,
-          "rationale": "While it leads to eventual consistency, it does so through active compensation rather than passive waiting."
+          "rationale": "This method selects individuals from the entire population at once without grouping them into clusters first."
+        },
+        {
+          "text": "Systematic Sampling",
+          "isCorrect": false,
+          "rationale": "This involves selecting every $k^{th}$ individual from a list, rather than using a multi-level grouping and selection process."
         }
       ],
-      "hint": "If you booked a flight but the hotel booking failed, what would you have to do to the flight booking?"
+      "hint": "This method is often used by researchers who visit specific city blocks and interview every house on those blocks."
     }
   ]
 }

@@ -2,264 +2,316 @@
   "title": "Evaluation Quiz",
   "questions": [
     {
-      "question": "In the context of binary classification, why might a model with $99.9\\%$ accuracy still be considered poor for identifying rare events?",
+      "question": "Which of the following describes the primary difference between synthetic benchmarks and application benchmarks?",
       "answerOptions": [
         {
-          "text": "The model likely overfits the training data by ignoring the majority class.",
-          "isCorrect": false,
-          "rationale": "In imbalanced scenarios, models usually overfit the majority class rather than ignoring it."
-        },
-        {
-          "text": "Accuracy does not reflect performance on the minority class when there is a significant class imbalance.",
+          "text": "Synthetic benchmarks use specially created programs to impose specific workloads, while application benchmarks run real-world software.",
           "isCorrect": true,
-          "rationale": "If a specific category is dominant in the dataset, a model can achieve high accuracy simply by predicting that dominant class every time, regardless of its ability to find the rare class."
+          "rationale": "Synthetic benchmarks are designed to isolate and test specific components through artificial workloads, whereas application benchmarks measure how the system handles actual programs."
         },
         {
-          "text": "High accuracy in imbalanced sets indicates that the precision and recall are perfectly aligned.",
+          "text": "Application benchmarks are used only for testing individual components like hard disks, while synthetic benchmarks test whole systems.",
           "isCorrect": false,
-          "rationale": "High accuracy in these cases often hides extremely low precision or recall for the target class."
+          "rationale": "This reverses the typical roles; synthetic benchmarks are actually more effective for testing specific, individual hardware components."
         },
         {
-          "text": "The F1 score automatically decreases as the accuracy of a simple model increases.",
+          "text": "Synthetic benchmarks provide a better measure of real-world performance than application benchmarks.",
           "isCorrect": false,
-          "rationale": "The F1 score depends on the balance of precision and recall, not the specific value of accuracy itself."
+          "rationale": "Real-world performance is better represented by application benchmarks because they execute the actual tasks users perform."
+        },
+        {
+          "text": "Only application benchmarks allow for the comparison of different chip architectures.",
+          "isCorrect": false,
+          "rationale": "Both types of benchmarks are used to compare performance across diverse architectures, though they measure different aspects of that performance."
         }
       ],
-      "hint": "Consider what happens to the metric if a model always predicts the most common outcome."
+      "hint": "Consider which type uses 'specially created programs' versus 'real-world programs'."
     },
     {
-      "question": "According to Goodhart's law, what happens to a statistical regularity when it is used for control or policy purposes?",
+      "question": "In a binary confusion matrix for a medical test, what does a 'False Negative' result represent?",
       "answerOptions": [
         {
-          "text": "The regularity becomes more stable as more pressure is applied to the system.",
-          "isCorrect": false,
-          "rationale": "Pressure for control purposes is what causes the statistical relationship to break down."
-        },
-        {
-          "text": "It tends to collapse because individuals begin to game the measure used as a target.",
+          "text": "A test result which wrongly indicates that a particular condition is absent when it is actually present.",
           "isCorrect": true,
-          "rationale": "When a measure becomes a target, people optimize their behavior to meet that specific metric rather than the underlying goal, making the measure useless as an indicator."
+          "rationale": "A false negative occurs when the actual condition is positive (present) but the classifier predicts it as negative (absent)."
         },
         {
-          "text": "The measure becomes a 'gold standard' that is resistant to unintended consequences.",
+          "text": "A test result that correctly indicates the presence of a condition.",
           "isCorrect": false,
-          "rationale": "Goodhart's law is actually considered a corollary of the law of unintended consequences."
+          "rationale": "This describes a True Positive result, where the prediction matches the positive reality."
         },
         {
-          "text": "It improves the accuracy of the metric by forcing agents to behave more predictably.",
+          "text": "A test result which wrongly indicates that a condition is present when it is actually absent.",
           "isCorrect": false,
-          "rationale": "Forcing behavior toward a metric actually degrades the metric's reliability as an indicator of actual performance."
+          "rationale": "This describes a False Positive, also known as a Type I error or a 'false alarm'."
+        },
+        {
+          "text": "A test result that correctly indicates the absence of a condition.",
+          "isCorrect": false,
+          "rationale": "This describes a True Negative result, where the classifier accurately identifies the lack of a condition."
         }
       ],
-      "hint": "Think about how people might change their behavior if they know exactly how they are being measured."
+      "hint": "Think of this as a 'miss' where the system fails to detect an existing condition."
     },
     {
-      "question": "In machine learning, how is 'ground truth' best defined according to the provided text?",
+      "question": "According to researchers like Davide Chicco and Giuseppe Jurman, which metric is considered the most informative for evaluating a confusion matrix?",
       "answerOptions": [
         {
-          "text": "A set of labels that is objectively and universally correct in all possible contexts.",
-          "isCorrect": false,
-          "rationale": "The material notes that ground truth in ML is not necessarily objectively correct and may depend on subjective human judgment."
-        },
-        {
-          "text": "The ideal expected result used to prove or disprove research hypotheses.",
+          "text": "Matthews correlation coefficient (MCC)",
           "isCorrect": true,
-          "rationale": "Ground truth serves as the reference point for evaluating model performance, whether it is objective data or human-labeled judgments."
+          "rationale": "MCC is highlighted as more reliable and informative than accuracy or F1 score, particularly for unbalanced datasets."
         },
         {
-          "text": "Information provided solely by statistical inference rather than direct observation.",
+          "text": "Overall Accuracy",
           "isCorrect": false,
-          "rationale": "Ground truth is specifically contrasted with inference, being derived from direct observation or measurement."
+          "rationale": "Accuracy can be misleading if the dataset is unbalanced, as a model could achieve high accuracy by simply guessing the majority class."
         },
         {
-          "text": "The results produced by the model after it has been fully trained on unlabeled data.",
+          "text": "F1 Score",
           "isCorrect": false,
-          "rationale": "The model's output is what is being tested against the ground truth, not the ground truth itself."
+          "rationale": "The source material notes that the F1 score can be unreliable in unbalanced cases compared to metrics like informedness or MCC."
+        },
+        {
+          "text": "True Positive Rate (Sensitivity)",
+          "isCorrect": false,
+          "rationale": "While sensitivity is important, it only measures the recognition rate for the positive class and does not provide a holistic view of the matrix."
         }
       ],
-      "hint": "Focus on the role this data plays during the validation of a model's output."
+      "hint": "This metric is often preferred over F1 and Accuracy for binary classification evaluation."
     },
     {
-      "question": "When using an LLM-as-judge for evaluation, what is 'verbosity bias'?",
+      "question": "In LLM evaluation, what does the 'Faithfulness' metric specifically measure?",
       "answerOptions": [
         {
-          "text": "The tendency of the judge to prefer responses that are factually dense but short.",
-          "isCorrect": false,
-          "rationale": "This bias actually refers to the length of the response, not just the density of facts."
-        },
-        {
-          "text": "The tendency of the judging model to give higher scores to longer answers.",
+          "text": "Whether the model's answer is grounded in and derived solely from the provided source context.",
           "isCorrect": true,
-          "rationale": "The material explains that judges may assume longer answers are more 'thoughtful' or better, even if a shorter answer is more effective."
+          "rationale": "Faithfulness ensures that the model is not 'hallucinating' information and that its claims can be verified against the source text."
         },
         {
-          "text": "The failure of the model to follow instructions regarding specific output formats.",
+          "text": "Whether the model followed the specific formatting instructions provided in the prompt.",
           "isCorrect": false,
-          "rationale": "This is a failure of 'instruction following' rather than a bias during evaluation."
+          "rationale": "This refers to 'Instruction Following', which focuses on structure and format compliance rather than factual grounding."
         },
         {
-          "text": "The bias where a judge model prefers outputs from its own model family.",
+          "text": "The naturalness and flow of the generated language.",
           "isCorrect": false,
-          "rationale": "This describes 'self-preference bias,' which is distinct from a preference for length."
+          "rationale": "This is measured by 'Fluency', which focuses on linguistic quality rather than the accuracy of the content."
+        },
+        {
+          "text": "The semantic similarity between the model's output and a reference ground truth.",
+          "isCorrect": false,
+          "rationale": "This describes metrics like 'BERTScore' or 'Accuracy', which compare a prediction to a known correct answer."
         }
       ],
-      "hint": "Consider how the sheer volume of text might affect an automated rater."
+      "hint": "This metric is critical for RAG systems to ensure information is 'grounded'."
     },
     {
-      "question": "Which metric is specifically designed to measure if an LLM's answer is grounded in facts provided by a source document?",
+      "question": "What is 'Verbosity Bias' in the context of using an LLM-as-Judge to evaluate another model?",
       "answerOptions": [
+        {
+          "text": "The tendency of the judge to favor longer answers even if a shorter answer is more accurate.",
+          "isCorrect": true,
+          "rationale": "LLM judges often assume 'longer equals more thoughtful', leading to inflated scores for wordy but potentially lower-quality responses."
+        },
+        {
+          "text": "The tendency of the judge to favor the first answer it reads when comparing two options.",
+          "isCorrect": false,
+          "rationale": "This describes 'Position Bias', which is related to the order of presentation rather than the length of the text."
+        },
+        {
+          "text": "The tendency of a judge to rate models from its own developer family higher than others.",
+          "isCorrect": false,
+          "rationale": "This is 'Self-preference Bias', where a model like GPT-4 might favor GPT-generated text over Claude-generated text."
+        },
+        {
+          "text": "The failure of the judge to understand complex technical jargon in the output.",
+          "isCorrect": false,
+          "rationale": "This refers to a limitation in domain expertise rather than a specific behavioral bias toward text length."
+        }
+      ],
+      "hint": "Consider how the length of a response might unfairly influence a machine's perception of its quality."
+    },
+    {
+      "question": "Which standard LLM benchmark is composed of 57 subjects across math, history, law, and medicine to test broad knowledge?",
+      "answerOptions": [
+        {
+          "text": "MMLU (Massive Multitask Language Understanding)",
+          "isCorrect": true,
+          "rationale": "MMLU is the industry standard for testing a model's broad knowledge across a wide variety of academic subjects."
+        },
+        {
+          "text": "HumanEval",
+          "isCorrect": false,
+          "rationale": "HumanEval specifically tests code generation ability using 164 hand-crafted coding problems."
+        },
+        {
+          "text": "GSM8K",
+          "isCorrect": false,
+          "rationale": "GSM8K focuses on grade-school level math word problems to test multi-step reasoning."
+        },
+        {
+          "text": "TruthfulQA",
+          "isCorrect": false,
+          "rationale": "TruthfulQA is designed to test if a model avoids common human misconceptions rather than testing general subject knowledge."
+        }
+      ],
+      "hint": "It is often used to answer the question, 'How smart is the model?' across many domains."
+    },
+    {
+      "question": "What is 'Contamination' problem in standard AI benchmarks?",
+      "answerOptions": [
+        {
+          "text": "Benchmark data appearing in the model's training set, leading to memorized rather than reasoned answers.",
+          "isCorrect": true,
+          "rationale": "Contamination causes inflated scores because the model has already 'seen' the test questions during its training phase."
+        },
+        {
+          "text": "Users entering toxic prompts that degrade the model's performance over time.",
+          "isCorrect": false,
+          "rationale": "This describes a safety or drift issue, not the specific benchmarking problem of data leakage."
+        },
+        {
+          "text": "The inability of a benchmark to scale to systems with multiple processors.",
+          "isCorrect": false,
+          "rationale": "This is a scalability limitation of the benchmark tool itself, not a data-related contamination issue."
+        },
+        {
+          "text": "The use of multiple metrics that contradict each other's results.",
+          "isCorrect": false,
+          "rationale": "While conflicting metrics are a challenge, contamination refers specifically to the integrity of the test data relative to training data."
+        }
+      ],
+      "hint": "Think of this as a model 'cheating' because it has already seen the exam questions."
+    },
+    {
+      "question": "In the context of machine learning theory, what is 'Empirical Risk Minimization'?",
+      "answerOptions": [
+        {
+          "text": "A framework where learning algorithms aim to minimize the error rate on the provided training data.",
+          "isCorrect": true,
+          "rationale": "Under the PAC learning framework, most traditional and deep learning algorithms are described as minimizing risk (error) based on observed samples."
+        },
+        {
+          "text": "A method for reducing the physical power consumption of a CPU during training.",
+          "isCorrect": false,
+          "rationale": "While power consumption is a benchmarking concern, Empirical Risk Minimization is a statistical and mathematical concept related to model accuracy."
+        },
+        {
+          "text": "The process of removing biased data from a dataset before a model is trained.",
+          "isCorrect": false,
+          "rationale": "This is a data cleaning or ethics task, whereas risk minimization is the core objective function of the learning algorithm."
+        },
+        {
+          "text": "A technique used to ensure that a model's 'hallucination' rate is kept below a certain threshold.",
+          "isCorrect": false,
+          "rationale": "Hallucination reduction is a goal in generative AI, but Empirical Risk Minimization is a broader mathematical principle used in almost all ML models."
+        }
+      ],
+      "hint": "This concept relates to the 'Probably Approximately Correct' (PAC) learning framework."
+    },
+    {
+      "question": "Which type of confusion matrix extension uses 'optimal transport' and 'maximum entropy' to handle multi-label or soft-label classifications?",
+      "answerOptions": [
+        {
+          "text": "Transport-based Confusion Matrix (TCM)",
+          "isCorrect": true,
+          "rationale": "TCM builds on optimal transport theory to allow clear comparison between predictions and labels in complex, non-binary settings."
+        },
+        {
+          "text": "Matching Matrix",
+          "isCorrect": false,
+          "rationale": "A matching matrix is simply another name for a standard confusion matrix used in unsupervised learning contexts."
+        },
+        {
+          "text": "Contingency Table",
+          "isCorrect": false,
+          "rationale": "A confusion matrix is a special kind of contingency table, but the specific extension for soft-labels mentioned is the TCM."
+        },
+        {
+          "text": "Error Matrix",
+          "isCorrect": false,
+          "rationale": "Error matrix is a synonym for the standard confusion matrix, not the advanced multi-label extension."
+        }
+      ],
+      "hint": "Look for the acronym that stands for a 'unified theory' of confusion matrices."
+    },
+    {
+      "question": "What is 'Regression Detection' in the lifecycle of an AI product?",
+      "answerOptions": [
+        {
+          "text": "Comparing a new version's evaluation scores against a baseline to ensure updates haven't broken existing capabilities.",
+          "isCorrect": true,
+          "rationale": "Regression detection is vital to ensure that prompt changes or model swaps don't inadvertently degrade performance on previous tasks."
+        },
+        {
+          "text": "Using linear regression to predict the future growth of a user base.",
+          "isCorrect": false,
+          "rationale": "This is a business analytics use of the term 'regression', not the software testing/AI evaluation meaning."
+        },
+        {
+          "text": "A method for detecting if a model is 'hallucinating' in real-time production.",
+          "isCorrect": false,
+          "rationale": "Hallucination detection is a specific quality check, whereas regression detection is about performance drops compared to a prior version."
+        },
+        {
+          "text": "Identifying if a model has 'collapsed' and is only producing a single type of output.",
+          "isCorrect": false,
+          "rationale": "Model collapse is a limitation where a model loses diversity, while regression is a decrease in measured accuracy or quality."
+        }
+      ],
+      "hint": "Consider the goal of 'catching a fall' in performance before a new version is deployed."
+    },
+    {
+      "question": "Which benchmarking principle emphasizes that benchmark results must be verifiable and consistent across different runs?",
+      "answerOptions": [
+        {
+          "text": "Repeatability",
+          "isCorrect": true,
+          "rationale": "Repeatability ensures that results are not due to chance and can be independently verified by others."
+        },
+        {
+          "text": "Equity",
+          "isCorrect": false,
+          "rationale": "Equity refers to the fair comparison of all systems, rather than the consistency of results over multiple trials."
+        },
         {
           "text": "Relevance",
           "isCorrect": false,
-          "rationale": "Relevance measures if the answer addresses the user's question, not necessarily if it is factually grounded."
+          "rationale": "Relevance focuses on whether the benchmark measures features that are vital to the actual use case."
         },
         {
-          "text": "Coherence",
+          "text": "Transparency",
           "isCorrect": false,
-          "rationale": "Coherence evaluates how well-written and logical the structure of the answer is."
-        },
-        {
-          "text": "Faithfulness",
-          "isCorrect": true,
-          "rationale": "Faithfulness, often used in RAG evaluation, checks if the claims in the model's output are supported by the source context."
-        },
-        {
-          "text": "Fluency",
-          "isCorrect": false,
-          "rationale": "Fluency measures how natural or 'human-like' the language of the output is."
+          "rationale": "Transparency ensures that the metrics used are easy to understand, not necessarily that the tests are repeatable."
         }
       ],
-      "hint": "Look for the term that relates to loyalty to the source material."
+      "hint": "This principle is one of the seven vital characteristics and relates to scientific verification."
     },
     {
-      "question": "In the 'terrorist profiling' example, if a model identifies 10 actual terrorists but also wrongly fails 990 innocent people, what is its precision?",
+      "question": "In the 'Confusion Matrix' example of 12 individuals, if the system predicts 'Cancer' for a 'Non-cancer' individual, what is this specific error called?",
       "answerOptions": [
         {
-          "text": "$99.9\\%$",
-          "isCorrect": false,
-          "rationale": "This value represents the overall accuracy of the model, not its precision."
-        },
-        {
-          "text": "$1\\%$",
+          "text": "False Positive (FP)",
           "isCorrect": true,
-          "rationale": "Precision is calculated as True Positives divided by the sum of True Positives and False Positives: $\\frac{10}{10 + 990} = 0.01$."
+          "rationale": "An FP occurs when the actual condition is negative (0) but the predicted condition is positive (1)."
         },
         {
-          "text": "$100\\%$",
+          "text": "False Negative (FN)",
           "isCorrect": false,
-          "rationale": "While the model caught all terrorists (high recall), the large number of false alarms makes the precision very low."
+          "rationale": "An FN would occur if the system predicted 'Non-cancer' for an individual who actually has 'Cancer'."
         },
         {
-          "text": "$2\\%$",
+          "text": "True Negative (TN)",
           "isCorrect": false,
-          "rationale": "This is approximately the F1 score, which is the harmonic mean of precision and recall."
+          "rationale": "A TN would occur if the system correctly predicted 'Non-cancer' for a person without cancer."
+        },
+        {
+          "text": "Type II Error",
+          "isCorrect": false,
+          "rationale": "Type II error is a synonym for False Negative, not False Positive (which is a Type I error)."
         }
       ],
-      "hint": "Recall that precision is the ratio of correct positive predictions to the total number of positive predictions made."
-    },
-    {
-      "question": "What is the primary risk associated with 'data contamination' in standard LLM benchmarks like MMLU?",
-      "answerOptions": [
-        {
-          "text": "The benchmark data is too difficult for modern models to solve.",
-          "isCorrect": false,
-          "rationale": "The difficulty is not the issue; the issue is that models might have 'seen' the answers before the test."
-        },
-        {
-          "text": "The model may have memorized the test questions during its training phase, leading to inflated scores.",
-          "isCorrect": true,
-          "rationale": "Contamination occurs when benchmark items are included in the model's training data, so it 'recollects' rather than 'reasons' its way to the answer."
-        },
-        {
-          "text": "Human evaluators might provide biased scores when they see the model's name.",
-          "isCorrect": false,
-          "rationale": "This refers to 'branding bias' in human evaluation, not data contamination in benchmarks."
-        },
-        {
-          "text": "The benchmark might focus on too narrow a scope, such as only testing math skills.",
-          "isCorrect": false,
-          "rationale": "Narrow scope is a separate benchmark limitation from the presence of test data in training sets."
-        }
-      ],
-      "hint": "Think about what happens if a student is allowed to see the exam questions before the test begins."
-    },
-    {
-      "question": "In the evaluation of Question Answering (QA) systems, what defines a 'closed-book' task?",
-      "answerOptions": [
-        {
-          "text": "The system is restricted to a specific domain like medicine or law.",
-          "isCorrect": false,
-          "rationale": "This describes 'closed-domain' question answering."
-        },
-        {
-          "text": "The system must answer questions using only its internal weights without accessing an external context or document.",
-          "isCorrect": true,
-          "rationale": "Closed-book QA relies on the facts the model 'memorized' during training, much like a student taking a test without notes."
-        },
-        {
-          "text": "The system is given a short article and must answer questions based only on that text.",
-          "isCorrect": false,
-          "rationale": "This is a form of reading comprehension or 'open-book' style evaluation where the answer is within the provided text."
-        },
-        {
-          "text": "The system construction is based on rules rather than statistical processing.",
-          "isCorrect": false,
-          "rationale": "The 'closed-book' designation refers to the availability of external resources, not the underlying architecture of the system."
-        }
-      ],
-      "hint": "Consider the analogy of a student taking an exam without any textbooks allowed."
-    },
-    {
-      "question": "What is the purpose of 'Regression Detection' in an AI engineering pipeline?",
-      "answerOptions": [
-        {
-          "text": "To increase the latency of the model to ensure it is thinking more deeply.",
-          "isCorrect": false,
-          "rationale": "Engineering usually aims to decrease latency, not increase it."
-        },
-        {
-          "text": "To identify if new changes have caused a drop in the model's previous capabilities.",
-          "isCorrect": true,
-          "rationale": "Regression detection ensures that a fix or update in one area hasn't 'broken' performance in another, comparing new scores to a baseline."
-        },
-        {
-          "text": "To sample real user queries to detect shifts in the distribution of input data.",
-          "isCorrect": false,
-          "rationale": "This describes 'drift detection' in production monitoring, rather than regression testing against a fixed set."
-        },
-        {
-          "text": "To eliminate the need for human evaluation by using automated statistical models.",
-          "isCorrect": false,
-          "rationale": "Regression detection can use automated metrics, but it is not intended to replace human evaluation entirely."
-        }
-      ],
-      "hint": "Focus on the idea of moving 'backward' in quality after an update."
-    },
-    {
-      "question": "The 'F1 score' is mathematically defined as which of the following?",
-      "answerOptions": [
-        {
-          "text": "The arithmetic mean of precision and recall.",
-          "isCorrect": false,
-          "rationale": "An arithmetic mean would overvalue one metric if the other is zero, whereas F1 is designed to punish such imbalance."
-        },
-        {
-          "text": "The harmonic mean of precision and recall.",
-          "isCorrect": true,
-          "rationale": "F1 score is calculated as $2 \\times \\frac{\\text{precision} \\times \\text{recall}}{\\text{precision} + \\text{recall}}$, providing a balanced measure for imbalanced classes."
-        },
-        {
-          "text": "The sum of true positives and true negatives divided by the total population.",
-          "isCorrect": false,
-          "rationale": "This is the definition of simple accuracy, which can be misleading in imbalanced datasets."
-        },
-        {
-          "text": "The percentage of errors of commission subtracted from the errors of omission.",
-          "isCorrect": false,
-          "rationale": "Errors of commission and omission are related to user and producer accuracy in remote sensing, but they do not define the F1 score."
-        }
-      ],
-      "hint": "It is a specific type of average that is used when dealing with rates and ratios."
+      "hint": "This is also known as a 'false alarm' or Type I error."
     }
   ]
 }

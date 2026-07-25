@@ -1,305 +1,305 @@
 {
-  "title": "Benchmarking Flashcards",
+  "title": "Learning Flashcards",
   "cards": [
     {
-      "front": "In computing, what is the core definition of a benchmark?",
-      "back": "The act of running a set of programs or operations to assess the relative performance of an object."
+      "front": "In deep learning, what is the definition of fine-tuning?",
+      "back": "The process of adapting a model trained for an upstream task to a different, more specific downstream task."
     },
     {
-      "front": "Benchmarking as part of a continuous integration pipeline is known as _____.",
-      "back": "Continuous Benchmarking"
+      "front": "Fine-tuning is considered a form of _____ learning because it reuses knowledge from a previous training objective.",
+      "back": "transfer"
     },
     {
-      "front": "What is the primary difference between synthetic benchmarks and application benchmarks?",
-      "back": "Synthetic benchmarks use specially created programs for workloads, while application benchmarks run real-world programs."
+      "front": "What happens to a neural network layer when it is 'frozen' during fine-tuning?",
+      "back": "The weights of that layer are not changed during the backpropagation process."
     },
     {
-      "front": "Why do processor architects use benchmarks during the CPU design phase?",
-      "back": "To measure and make tradeoffs in microarchitectural decisions using algorithms extracted from real applications."
+      "front": "In the context of fine-tuning, what are 'adapters'?",
+      "back": "Lightweight modules inserted into a model architecture that are tuned while the rest of the weights remain frozen."
     },
     {
-      "front": "How does 'cheating' typically manifest in vendor benchmarking?",
-      "back": "Designing systems to produce high benchmark numbers that do not reflect effectiveness in actual workloads."
+      "front": "Why are earlier layers of a convolutional neural network typically frozen during fine-tuning?",
+      "back": "They capture low-level features that are generally applicable across different visual tasks."
     },
     {
-      "front": "Beyond raw speed, what quality of service factors are often neglected by standard computational benchmarks?",
-      "back": "Security, availability, reliability, execution integrity, and serviceability."
+      "front": "Fine-tuning a model on its full parameters generally yields better results but is more _____ expensive.",
+      "back": "computationally"
     },
     {
-      "front": "In benchmarking, what does the term 'Total Cost of Ownership' (TCO) encompass?",
-      "back": "A price-to-performance metric that accounts for partial acquisition and operational costs."
+      "front": "Which specific machine learning objective was used to fine-tune GPT models into ChatGPT?",
+      "back": "Reinforcement learning from human feedback (RLHF)."
     },
     {
-      "front": "Why is 'code density' a critical performance factor for some embedded systems?",
-      "back": "High code density significantly reduces costs in systems where memory is expensive."
+      "front": "How can fine-tuning affect a model's robustness to distribution shifts?",
+      "back": "It can degrade the model's performance on out-of-distribution data."
     },
     {
-      "front": "Benchmark Principle: Relevance",
-      "back": "Benchmarks should measure relatively vital features of the system under test."
+      "front": "What mitigation technique involves mixing a fine-tuned model's weights with the original model's weights?",
+      "back": "Linear interpolation."
     },
     {
-      "front": "Benchmark Principle: Equity",
-      "back": "All systems being evaluated should be fairly compared under the same standards."
+      "front": "Term: Low-rank adaptation (LoRA)",
+      "back": "Definition: An adapter-based fine-tuning technique that adds a low-rank matrix to the model's original weight matrix."
     },
     {
-      "front": "Benchmark Principle: Repeatability",
-      "back": "The results of a benchmark test must be verifiable through consistent reproduction."
+      "front": "How does LoRA reduce the space requirements for fine-tuning large language models?",
+      "back": "It only tunes several million parameters instead of the billions found in the base model."
     },
     {
-      "front": "What defines a 'Microbenchmark' or 'Component Benchmark'?",
-      "back": "A relatively small piece of code designed to measure the performance of specific basic hardware parameters."
+      "front": "Representation fine-tuning (ReFT) differs from PEFT because it targets _____ instead of weights.",
+      "back": "representations (or hidden states)"
     },
     {
-      "front": "What is the specific purpose of a 'Kernel' benchmark?",
-      "back": "To test key code segments normally abstracted from actual programs, such as the Linpack benchmark."
+      "front": "What specific ReFT method operates in the linear subspace spanned by a low-rank projection matrix?",
+      "back": "Low-rank linear subspace ReFT (LoReFT)."
     },
     {
-      "front": "The _____ benchmark suite, introduced around 1995, is widely used to compare performance across different architectures.",
-      "back": "SPEC (Standard Performance Evaluation Corporation)"
+      "front": "According to the source, what is 'downstream task' performance usually compared against?",
+      "back": "The performance of the unmodified pre-trained model."
     },
     {
-      "front": "What is the primary function of the Whetstone synthetic benchmark?",
-      "back": "Measuring floating-point arithmetic performance."
+      "front": "In mathematical modeling, what is 'overfitting'?",
+      "back": "Producing an analysis that corresponds too closely to a specific dataset, failing to generalize to new data."
     },
     {
-      "front": "In classification, what is a confusion matrix?",
-      "back": "A table layout that visualizes the performance of an algorithm by comparing actual classes against predicted classes."
+      "front": "An overfitted model contains more _____ than can be justified by the available data.",
+      "back": "parameters"
     },
     {
-      "front": "In a binary confusion matrix, how is a 'True Positive' (TP) defined?",
-      "back": "A result where the actual classification is positive and the predicted classification is also positive."
+      "front": "The essence of overfitting is extracting _____ variation from a dataset as if it were underlying structure.",
+      "back": "residual (or noise)"
     },
     {
-      "front": "What occurs in a 'False Negative' (FN) result?",
-      "back": "A positive sample is incorrectly identified by the classifier as being negative."
+      "front": "When does 'underfitting' occur in mathematical modeling?",
+      "back": "When a model is too simple to adequately capture the underlying structure of the data."
     },
     {
-      "front": "A 'False Positive' (FP) is also known in statistics as a _____ error.",
-      "back": "Type I"
+      "front": "Underfitting is typically characterized by high _____ and low variance.",
+      "back": "bias"
     },
     {
-      "front": "A 'False Negative' (FN) is also known in statistics as a _____ error.",
-      "back": "Type II"
+      "front": "Overfitting is typically characterized by low bias and high _____.",
+      "back": "variance"
     },
     {
-      "front": "Why can accuracy be a misleading metric for unbalanced datasets?",
-      "back": "High accuracy can be achieved by simply predicting the majority class, masking a 0% recognition rate for the minority class."
+      "front": "What is the 'Principle of Parsimony' (Occam's Razor) in model selection?",
+      "back": "The preference for simpler models over complex ones, assuming they provide similar explanatory power."
     },
     {
-      "front": "Formula: Accuracy (ACC) in terms of TP, TN, P, and N",
-      "back": "$ACC = \\frac{TP + TN}{P + N}$"
+      "front": "In regression, the 'one in ten rule' suggests having ten observations per _____ variable to avoid overfitting.",
+      "back": "independent (or explanatory)"
     },
     {
-      "front": "Formula: Precision or Positive Predictive Value (PPV)",
-      "back": "$PPV = \\frac{TP}{TP + FP}$"
+      "front": "What is 'Freedman's paradox' in the context of regression?",
+      "back": "Finding false statistical significance when a model includes many variables that have no actual relation to the dependent variable."
     },
     {
-      "front": "Formula: Recall, Sensitivity, or True Positive Rate (TPR)",
-      "back": "$TPR = \\frac{TP}{P}$"
+      "front": "How does 'early stopping' help prevent overfitting during neural network training?",
+      "back": "It halts training at the point where validation error reaches its global minimum."
     },
     {
-      "front": "Formula: Specificity or True Negative Rate (TNR)",
-      "back": "$TNR = \\frac{TN}{N}$"
+      "front": "What is the purpose of 'dropout' regularization in a neural network?",
+      "back": "To improve robustness by probabilistically removing inputs to a layer during training."
     },
     {
-      "front": "What is the significance of the Matthews correlation coefficient (MCC) in binary classification?",
-      "back": "It is considered the most informative metric for evaluating a confusion matrix as it accounts for all four quadrants."
+      "front": "Term: Pruning",
+      "back": "Definition: Identifying and removing unnecessary parts of a neural network to create a sparse, optimal structure."
     },
     {
-      "front": "The harmonic mean of precision and recall is known as the _____.",
-      "back": "F1 score"
+      "front": "What is 'benign overfitting'?",
+      "back": "A phenomenon where a model generalizes well to unseen data despite fitting noisy training data perfectly."
     },
     {
-      "front": "What is 'epistemic luck' in the context of classification evaluation?",
-      "back": "The problem where a confusion matrix cannot distinguish if correct predictions were reached through reasoning or chance."
+      "front": "In signal processing and computing, what is 'quantization'?",
+      "back": "The process of constraining an input from a continuous or large set of values to a discrete set."
     },
     {
-      "front": "What extension of the confusion matrix applies to multi-label and soft-label classification using optimal transport?",
-      "back": "Transport-based Confusion Matrix (TCM)"
+      "front": "What does 'quantization' refer to specifically for Large Language Models?",
+      "back": "Neural network weight optimization to reduce model size and complexity."
     },
     {
-      "front": "In a binary confusion matrix, the sum of True Positives and False Negatives equals _____.",
-      "back": "Total Real Positives (P)"
+      "front": "Term: Stochastic gradient descent (SGD)",
+      "back": "Definition: An iterative optimization method that replaces the actual gradient of a dataset with an estimate from a random subset."
     },
     {
-      "front": "Why is evaluation considered the most important yet neglected topic in AI engineering?",
-      "back": "Without measurement, developers run 'blind' in production, relying on small coverage examples that don't represent real usage."
+      "front": "In SGD, what is the 'learning rate' represented by the symbol $\\eta$?",
+      "back": "A parameter that determines the step size taken during each iteration of the algorithm."
     },
     {
-      "front": "How does evaluation prevent 'Regression' during model development?",
-      "back": "By measuring every change to ensure new versions or prompts do not break existing capabilities."
+      "front": "Why is SGD preferred over 'batch' gradient descent for enormous training sets?",
+      "back": "It reduces computational burden by sampling only a subset of data at each step, allowing for faster iterations."
     },
     {
-      "front": "LLM Metric: Faithfulness",
-      "back": "Measures whether the model's answer is grounded in and derived from the provided source facts."
+      "front": "What is a 'mini-batch' in the context of gradient descent?",
+      "back": "A subset of training samples used to compute the gradient at each step, serving as a compromise between batch and stochastic methods."
     },
     {
-      "front": "LLM Metric: Relevance",
-      "back": "Assess whether the model's output actually addresses the specific question asked by the user."
+      "front": "Under what condition does SGD converge 'almost surely' to a global minimum?",
+      "back": "When the objective function is convex or pseudoconvex and the learning rates decrease at an appropriate rate."
     },
     {
-      "front": "LLM Metric: Coherence",
-      "back": "Determines if the generated response is logical, well-structured, and consistent throughout."
+      "front": "The basic idea of stochastic approximation can be traced back to which 1950s algorithm?",
+      "back": "The Robbins–Monro algorithm."
     },
     {
-      "front": "What does the 'pass@k' metric measure in code generation tasks?",
-      "back": "The probability that at least one of $k$ generated solutions passes all provided test cases."
+      "front": "Which 1952 optimization algorithm used 'central differences' to approximate the gradient?",
+      "back": "The Kiefer–Wolfowitz algorithm."
     },
     {
-      "front": "In NLP, the _____ metric measures token overlap between a generated answer and a ground truth reference.",
-      "back": "F1 Score"
+      "front": "In the overparameterized case of linear regression ($m \\ge n$), SGD converges to the solution with the minimum _____ from the starting point.",
+      "back": "distance (or Euclidean distance)"
     },
     {
-      "front": "What is 'BERTScore' and why is it used over traditional n-gram metrics?",
-      "back": "An embedding-based similarity metric that captures semantic meaning rather than just exact word overlaps."
+      "front": "How does 'momentum' prevent oscillations in SGD?",
+      "back": "By incorporating a fraction of the previous update into the current one, tending to keep the vector traveling in the same direction."
     },
     {
-      "front": "What is the 'LLM-as-Judge' evaluation method?",
-      "back": "Using a powerful model like GPT-4 to read and score the outputs of another model based on specific rubrics."
+      "front": "In SGD with momentum, what does the decay factor $\\alpha$ determine?",
+      "back": "The relative contribution of the current gradient versus earlier gradients to the weight change."
     },
     {
-      "front": "Judge Bias: Position Bias",
-      "back": "The tendency of an LLM evaluator to prefer the first or last response in a pairwise comparison."
+      "front": "Term: Averaged stochastic gradient descent",
+      "back": "Definition: An SGD variant that uses the average of the parameter vector over time as the final model output."
     },
     {
-      "front": "Judge Bias: Verbosity Bias",
-      "back": "The tendency of an LLM evaluator to assign higher scores to longer answers, regardless of quality."
+      "front": "What is the core strategy of the AdaGrad optimizer?",
+      "back": "It adapts the learning rate for each parameter by dividing it by the historical sum of gradient squares."
     },
     {
-      "front": "Why is 'Human Evaluation' considered the 'Gold Standard' for LLM assessment?",
-      "back": "Humans can perceive nuances like creativity, cultural appropriateness, and emotional resonance that machines miss."
+      "front": "AdaGrad is particularly effective for tasks with _____ data, such as natural language processing.",
+      "back": "sparse"
     },
     {
-      "front": "What is the purpose of 'Blind Side-by-Side Comparison' in human evaluation?",
-      "back": "To eliminate branding bias by having evaluators rate two anonymous responses against each other."
+      "front": "How does RMSProp improve upon AdaGrad for non-convex problems?",
+      "back": "It uses a running average of magnitudes (forgetting old data) to prevent the learning rate from diminishing too quickly."
     },
     {
-      "front": "A Likert scale in LLM evaluation typically requires an evaluator to score an output on a scale of _____.",
-      "back": "1 to 5"
+      "front": "In the RMSProp update formula, what is the purpose of the scalar $\\gamma$?",
+      "back": "It serves as a forgetting factor for the running average of the squared gradients."
     },
     {
-      "front": "What does 'Inter-Evaluator Agreement' (Cohen's Kappa) indicate?",
-      "back": "The degree of consensus between different human evaluators or between humans and LLM judges."
+      "front": "What does the name 'Adam' stand for in machine learning optimization?",
+      "back": "Adaptive Moment Estimation."
     },
     {
-      "front": "RAG Evaluation: Context Precision",
-      "back": "Measures whether the retrieval system found relevant chunks of information for the query."
+      "front": "Adam combines the running averages of both the gradients and the _____ moments of the gradients.",
+      "back": "second (or squared)"
     },
     {
-      "front": "RAG Evaluation: Context Recall",
-      "back": "Measures whether all the information required to answer the question was present in the retrieved context."
+      "front": "In the Adam optimizer, what is the purpose of the small scalar $\\varepsilon$?",
+      "back": "To prevent division by zero during the parameter update calculation."
     },
     {
-      "front": "LLM Benchmark: MMLU (Massive Multitask Language Understanding)",
-      "back": "A benchmark covering 57 subjects across math, history, and medicine to test a model's broad knowledge."
+      "front": "Implicit stochastic gradient descent (ISGD) is designed to solve what specific issue with large learning rates?",
+      "back": "Numerical instability (or divergence)."
     },
     {
-      "front": "The _____ benchmark consists of 850 grade-school math word problems requiring multi-step reasoning.",
-      "back": "GSM8K"
+      "front": "Formula: Batch Gradient Descent update",
+      "back": "$w := w - \\frac{\\eta}{n}\\sum_{i=1}^{n}\\nabla Q_i(w)$"
     },
     {
-      "front": "What is the primary risk of 'Data Contamination' in standard AI benchmarks?",
-      "back": "Benchmark data leaking into training sets, leading to artificially inflated scores due to memorization."
+      "front": "Formula: Stochastic Gradient Descent (Single Sample) update",
+      "back": "$w := w - \\eta \\nabla Q_i(w)$"
     },
     {
-      "front": "Goodhart's Law: \"When a measure becomes a _____, it ceases to be a good measure.\"",
-      "back": "target"
+      "front": "In linear regression, what is the objective function $Q(w)$ that SGD typically minimizes?",
+      "back": "The sum of squared residuals: $\\sum_{i=1}^{n}(\\hat{y}_i - y_i)^2$."
     },
     {
-      "front": "How does 'Data Drift' affect LLM evaluation in production?",
-      "back": "User behavior and query topics change over time, making older evaluation sets unrepresentative of current traffic."
+      "front": "What happens if the number of parameters is equal to or greater than the number of observations in a dataset?",
+      "back": "The model can perfectly predict (memorize) the training data but will likely fail on new data."
     },
     {
-      "front": "What is the difference between explicit and implicit user feedback in production?",
-      "back": "Explicit feedback includes ratings like thumbs up/down, while implicit feedback tracks actions like retrying or copying text."
+      "front": "What is 'shrinkage' in the context of model diagnostics?",
+      "back": "The phenomenon where a fitted model performs less well on a new dataset than on the training dataset."
     },
     {
-      "front": "Evaluation Pitfall: Survivorship Bias",
-      "back": "Occurs when only successful or 'clean' examples are evaluated, excluding difficult or messy real-world cases."
+      "front": "Which technique for resolving underfitting involves creating new features from existing ones?",
+      "back": "Feature engineering."
     },
     {
-      "front": "Evaluation Pitfall: Single Metric Syndrome",
-      "back": "Relying on one metric (like accuracy) while ignoring others (like faithfulness or cost), leading to an incomplete quality picture."
+      "front": "Why is overparameterization essential for benign overfitting in linear regression?",
+      "back": "It ensures the number of unimportant parameter directions significantly exceeds the sample size."
     },
     {
-      "front": "What is 'Regression Detection' in the context of model updates?",
-      "back": "Comparing scores against a baseline to ensure a new version hasn't lost existing capabilities."
+      "front": "According to the source material, what are 'up-stream' tasks in deep learning?",
+      "back": "The original training objectives used to pre-train a foundation model."
     },
     {
-      "front": "In LLM-as-judge evaluation, what is 'Chain-of-Thought' judging?",
-      "back": "Requiring the judge model to explain its reasoning step-by-step before providing a final score."
+      "front": "In convolutional neural networks, later layers discern _____-level features more related to specific tasks.",
+      "back": "high"
     },
     {
-      "front": "Standard Benchmark: TruthfulQA",
-      "back": "Tests whether models mimic common human misconceptions or remain truthful under pressure."
+      "front": "What is the 'Bias-variance tradeoff' used for in machine learning?",
+      "back": "To balance the errors of underfitting and overfitting to achieve the best approximating model."
     },
     {
-      "front": "What defines 'Supervised Learning' in machine learning?",
-      "back": "A paradigm where models are trained on labeled data to learn a mapping from inputs to desired outputs."
+      "front": "The Robbins–Siegmund theorem is used to analyze the _____ of stochastic gradient descent.",
+      "back": "convergence"
     },
     {
-      "front": "What is 'Overfitting' in model training?",
-      "back": "When a model learns the noise in training data too well, resulting in poor performance on new, unseen data."
+      "front": "In the SGD Linear Regression update, what does the term $2x_i(w_1 + w_2x_i - y_i)$ represent?",
+      "back": "The partial derivative of the squared error with respect to the slope parameter $w_2$."
     },
     {
-      "front": "In benchmarking, what does the term 'Megahertz Myth' refer to?",
-      "back": "The false assumption that a higher clock frequency always translates to more computational power."
+      "front": "By the 2010s, which optimization strategy replaced constant learning rates with per-parameter rates?",
+      "back": "Adaptive learning rate approaches (like AdaGrad and RMSProp)."
     },
     {
-      "front": "What is the function of the 'Dhrystone' benchmark?",
-      "back": "Measuring integer arithmetic performance."
+      "front": "Which popular machine learning libraries dominant in 2023 rely heavily on Adam-derived optimizers?",
+      "back": "TensorFlow and PyTorch."
     },
     {
-      "front": "The _____ is an open-source framework by EleutherAI used to run over 200 standard benchmarks.",
-      "back": "LM Evaluation Harness"
+      "front": "How can overfitted generative models create legal problems regarding copyright?",
+      "back": "They can produce outputs that are virtually identical to copyrighted images in their training set."
     },
     {
-      "front": "In a confusion matrix, 'Fall-out' is synonymous with the _____.",
-      "back": "False Positive Rate (FPR)"
+      "front": "One sign of underfitting is having high _____ and low variance.",
+      "back": "bias"
     },
     {
-      "front": "In a confusion matrix, 'Selectivity' is synonymous with the _____.",
-      "back": "True Negative Rate (TNR)"
+      "front": "One way to resolve underfitting is to _____ the complexity of the model.",
+      "back": "increase"
     },
     {
-      "front": "Formula: Diagnostic Odds Ratio (DOR)",
-      "back": "$DOR = \\frac{LR+}{LR-}$ or $\\frac{TP \\times TN}{FP \\times FN}$"
+      "front": "The 'monkey who typed Hamlet' is used as an analogy to warn against what risk in statistical inference?",
+      "back": "Overfitting when selecting from too many candidate models."
     },
     {
-      "front": "In a confusion matrix, the 'Jaccard Index' is equivalent to the _____.",
-      "back": "Threat Score (TS) or Critical Success Index (CSI)"
+      "front": "In ISGD, the stochastic gradient is evaluated at the _____ iterate rather than the current one.",
+      "back": "next (or $w^{new}$)"
     },
     {
-      "front": "What does the 'ROUGE-L' metric specifically measure in summarization?",
-      "back": "The Longest Common Subsequence between the generated summary and the reference."
+      "front": "Nesterov Accelerated Gradient uses the gradient predicted at the _____ point.",
+      "back": "next"
     },
     {
-      "front": "How is 'Perplexity' used as an LLM evaluation metric?",
-      "back": "It measures how 'surprised' a model is by a text; lower perplexity indicates more natural language generation."
+      "front": "What logic does Occam's razor use to imply that complex functions are less probable?",
+      "back": "A priori, simpler functions are more likely than complex ones unless the complexity gain is offset by a massive fit improvement."
     },
     {
-      "front": "What is 'Self-Preference Bias' in LLM judges?",
-      "back": "The tendency of models to rate outputs from their own model family higher than competitors."
+      "front": "In machine learning, 'on-line' gradient descent is a synonym for _____ gradient descent.",
+      "back": "stochastic"
     },
     {
-      "front": "In RAG evaluation, what does 'Faithfulness' specifically check?",
-      "back": "If every claim in the generated answer can be verified against the retrieved context."
+      "front": "Why is data often shuffled for each pass over a training set in SGD?",
+      "back": "To prevent the algorithm from falling into cycles."
     },
     {
-      "front": "What characterizes the 'AgentBench' benchmark?",
-      "back": "It evaluates an AI model's ability to use tools, plan, and execute multi-step tasks as an agent."
+      "front": "In SGD Linear Regression, what happens if the learning rate remains constant in the underparameterized case ($m < n$)?",
+      "back": "The algorithm does not converge."
     },
     {
-      "front": "What does a 'Hard Regression' signify during an evaluation check?",
-      "back": "A significant drop in performance scores (e.g., >5%) indicating a major failure in a new update."
+      "front": "Which algorithm is the de facto standard for training artificial neural networks when combined with backpropagation?",
+      "back": "Stochastic gradient descent (SGD)."
     },
     {
-      "front": "In production monitoring, what does 'A/B Testing' involve?",
-      "back": "Splitting live traffic between a current model and a new version to compare real-world satisfaction and quality."
+      "front": "A 'learning rate schedule' makes the learning rate a _____ function of the iteration number.",
+      "back": "decreasing"
     },
     {
-      "front": "What is 'Closed-Loop Improvement' in AI engineering?",
-      "back": "A process where production failures are analyzed, fixed, and then added to the evaluation set to prevent recurrence."
+      "front": "The 'heavy ball method' is a synonym for which SGD extension?",
+      "back": "The momentum method."
     }
   ]
 }

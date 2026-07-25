@@ -1,317 +1,265 @@
 {
-  "title": "AI Quiz",
+  "title": "Evaluation Quiz",
   "questions": [
     {
-      "question": "Which organization introduced the Model Context Protocol (MCP) in November 2024 to address the $N \\times M$ data integration problem?",
+      "question": "In the context of binary classification, why might a model with $99.9\\%$ accuracy still be considered poor for identifying rare events?",
       "answerOptions": [
         {
-          "text": "OpenAI",
+          "text": "The model likely overfits the training data by ignoring the majority class.",
           "isCorrect": false,
-          "rationale": "While this organization adopted the protocol in early 2025, it was not the original developer of the standard."
+          "rationale": "In imbalanced scenarios, models usually overfit the majority class rather than ignoring it."
         },
         {
-          "text": "Google DeepMind",
-          "isCorrect": false,
-          "rationale": "This entity embraced the standard in 2025 to improve data connectivity but did not lead the initial development."
-        },
-        {
-          "text": "Anthropic",
+          "text": "Accuracy does not reflect performance on the minority class when there is a significant class imbalance.",
           "isCorrect": true,
-          "rationale": "Engineers at this company created the framework to standardize how AI systems integrate with external tools and data sources."
+          "rationale": "If a specific category is dominant in the dataset, a model can achieve high accuracy simply by predicting that dominant class every time, regardless of its ability to find the rare class."
         },
         {
-          "text": "Meta",
+          "text": "High accuracy in imbalanced sets indicates that the precision and recall are perfectly aligned.",
           "isCorrect": false,
-          "rationale": "This organization released the Segment Anything model but was not mentioned as the creator of the MCP framework."
+          "rationale": "High accuracy in these cases often hides extremely low precision or recall for the target class."
+        },
+        {
+          "text": "The F1 score automatically decreases as the accuracy of a simple model increases.",
+          "isCorrect": false,
+          "rationale": "The F1 score depends on the balance of precision and recall, not the specific value of accuracy itself."
         }
       ],
-      "hint": "This company is also responsible for the development of the Claude model family."
+      "hint": "Consider what happens to the metric if a model always predicts the most common outcome."
     },
     {
-      "question": "In the Model Context Protocol architecture, which component is typically an AI agent that orchestrates interactions with the LLM?",
+      "question": "According to Goodhart's law, what happens to a statistical regularity when it is used for control or policy purposes?",
       "answerOptions": [
         {
-          "text": "MCP Server",
+          "text": "The regularity becomes more stable as more pressure is applied to the system.",
           "isCorrect": false,
-          "rationale": "This component provides the actual tools or resources, such as database access or specific documentation."
+          "rationale": "Pressure for control purposes is what causes the statistical relationship to break down."
         },
         {
-          "text": "MCP Host",
+          "text": "It tends to collapse because individuals begin to game the measure used as a target.",
           "isCorrect": true,
-          "rationale": "The host acts as the primary environment that manages the AI agent and creates dedicated clients for each connected server."
+          "rationale": "When a measure becomes a target, people optimize their behavior to meet that specific metric rather than the underlying goal, making the measure useless as an indicator."
         },
         {
-          "text": "MCP Client",
+          "text": "The measure becomes a 'gold standard' that is resistant to unintended consequences.",
           "isCorrect": false,
-          "rationale": "This specific entity is created by the host to communicate with one individual server."
+          "rationale": "Goodhart's law is actually considered a corollary of the law of unintended consequences."
         },
         {
-          "text": "JSON-RPC Transport",
+          "text": "It improves the accuracy of the metric by forcing agents to behave more predictably.",
           "isCorrect": false,
-          "rationale": "This refers to the communication protocol itself rather than a functional architectural role in the hierarchy."
+          "rationale": "Forcing behavior toward a metric actually degrades the metric's reliability as an indicator of actual performance."
         }
       ],
-      "hint": "Think of the central entity that manages the overall AI application and its various connections."
+      "hint": "Think about how people might change their behavior if they know exactly how they are being measured."
     },
     {
-      "question": "What is the primary distinction between 'Prompt Engineering' and 'Context Engineering'?",
+      "question": "In machine learning, how is 'ground truth' best defined according to the provided text?",
       "answerOptions": [
         {
-          "text": "Prompt engineering focuses on training data, while context engineering focuses on fine-tuning.",
+          "text": "A set of labels that is objectively and universally correct in all possible contexts.",
           "isCorrect": false,
-          "rationale": "Both fields generally operate on pre-trained models rather than modifying the underlying parameters through traditional training."
+          "rationale": "The material notes that ground truth in ML is not necessarily objectively correct and may depend on subjective human judgment."
         },
         {
-          "text": "Prompt engineering structures natural language inputs, while context engineering manages non-prompt elements like tokens and metadata.",
+          "text": "The ideal expected result used to prove or disprove research hypotheses.",
           "isCorrect": true,
-          "rationale": "Context engineering is a software-focused discipline aimed at system reliability and efficiency through the management of system instructions and metadata."
+          "rationale": "Ground truth serves as the reference point for evaluating model performance, whether it is objective data or human-labeled judgments."
         },
         {
-          "text": "Prompt engineering is automated, while context engineering is purely manual.",
+          "text": "Information provided solely by statistical inference rather than direct observation.",
           "isCorrect": false,
-          "rationale": "Both fields utilize automated methods, such as RAG for prompts and token budgeting for contexts."
+          "rationale": "Ground truth is specifically contrasted with inference, being derived from direct observation or measurement."
         },
         {
-          "text": "Prompt engineering only applies to text, while context engineering only applies to images.",
+          "text": "The results produced by the model after it has been fully trained on unlabeled data.",
           "isCorrect": false,
-          "rationale": "Both disciplines are applicable to multimodal systems that handle various types of input and output."
+          "rationale": "The model's output is what is being tested against the ground truth, not the ground truth itself."
         }
       ],
-      "hint": "One deals with the user's specific request, while the other deals with the broader technical environment provided to the model."
+      "hint": "Focus on the role this data plays during the validation of a model's output."
     },
     {
-      "question": "Research on LLM sensitivity indicates that reordering examples within a prompt can cause accuracy shifts of up to what percentage?",
+      "question": "When using an LLM-as-judge for evaluation, what is 'verbosity bias'?",
       "answerOptions": [
         {
-          "text": "$10\\%$",
+          "text": "The tendency of the judge to prefer responses that are factually dense but short.",
           "isCorrect": false,
-          "rationale": "This represents a minor shift, whereas research shows much higher volatility based on simple formatting changes."
+          "rationale": "This bias actually refers to the length of the response, not just the density of facts."
         },
         {
-          "text": "$25\\%$",
-          "isCorrect": false,
-          "rationale": "While significant, this figure underestimates the potential impact that example sequence can have on performance."
-        },
-        {
-          "text": "$40\\%$",
+          "text": "The tendency of the judging model to give higher scores to longer answers.",
           "isCorrect": true,
-          "rationale": "Model performance is highly brittle, and studies have shown that even small variations like example ordering can lead to shifts of this magnitude."
+          "rationale": "The material explains that judges may assume longer answers are more 'thoughtful' or better, even if a shorter answer is more effective."
         },
         {
-          "text": "$75\\%$",
+          "text": "The failure of the model to follow instructions regarding specific output formats.",
           "isCorrect": false,
-          "rationale": "While accuracy points can fluctuate by 76 in some specific cases, the shift cited specifically for reordering examples was lower."
+          "rationale": "This is a failure of 'instruction following' rather than a bias during evaluation."
+        },
+        {
+          "text": "The bias where a judge model prefers outputs from its own model family.",
+          "isCorrect": false,
+          "rationale": "This describes 'self-preference bias,' which is distinct from a preference for length."
         }
       ],
-      "hint": "The magnitude of the shift is significant enough to make prompt generalization a major challenge for developers."
+      "hint": "Consider how the sheer volume of text might affect an automated rater."
     },
     {
-      "question": "Which prompting technique involves generating multiple lines of reasoning in parallel and allows the model to backtrack or explore different paths?",
+      "question": "Which metric is specifically designed to measure if an LLM's answer is grounded in facts provided by a source document?",
       "answerOptions": [
         {
-          "text": "Chain-of-thought (CoT)",
+          "text": "Relevance",
           "isCorrect": false,
-          "rationale": "This technique typically follows a linear series of intermediate steps rather than parallel exploration."
+          "rationale": "Relevance measures if the answer addresses the user's question, not necessarily if it is factually grounded."
         },
         {
-          "text": "Tree-of-thought",
+          "text": "Coherence",
+          "isCorrect": false,
+          "rationale": "Coherence evaluates how well-written and logical the structure of the answer is."
+        },
+        {
+          "text": "Faithfulness",
           "isCorrect": true,
-          "rationale": "This approach generalizes linear reasoning by using search algorithms like breadth-first or depth-first search across multiple reasoning branches."
+          "rationale": "Faithfulness, often used in RAG evaluation, checks if the claims in the model's output are supported by the source context."
         },
         {
-          "text": "Few-shot prompting",
+          "text": "Fluency",
           "isCorrect": false,
-          "rationale": "This technique relies on providing exemplars of input-output pairs but does not specify a multi-path reasoning process."
-        },
-        {
-          "text": "Self-consistency",
-          "isCorrect": false,
-          "rationale": "This method performs multiple rollouts but selects a final answer based on the most common conclusion rather than branching paths."
+          "rationale": "Fluency measures how natural or 'human-like' the language of the output is."
         }
       ],
-      "hint": "This method is named after a hierarchical data structure that allows for branching and parallel exploration."
+      "hint": "Look for the term that relates to loyalty to the source material."
     },
     {
-      "question": "What is the role of 'exemplars' in the context of few-shot prompting?",
+      "question": "In the 'terrorist profiling' example, if a model identifies 10 actual terrorists but also wrongly fails 990 innocent people, what is its precision?",
       "answerOptions": [
         {
-          "text": "They are the system instructions that define the model's persona.",
+          "text": "$99.9\\%$",
           "isCorrect": false,
-          "rationale": "Defining a character for the AI to mimic is known as role assignment, which is separate from providing examples."
+          "rationale": "This value represents the overall accuracy of the model, not its precision."
         },
         {
-          "text": "They are input-output pairs provided to demonstrate the desired task to the model.",
+          "text": "$1\\%$",
           "isCorrect": true,
-          "rationale": "Exemplars allow the model to engage in in-context learning by observing patterns in the provided demonstrations."
+          "rationale": "Precision is calculated as True Positives divided by the sum of True Positives and False Positives: $\\frac{10}{10 + 990} = 0.01$."
         },
         {
-          "text": "They are the tokens used to track the cost of the API request.",
+          "text": "$100\\%$",
           "isCorrect": false,
-          "rationale": "Token management is a part of context engineering used for budgeting rather than task demonstration."
+          "rationale": "While the model caught all terrorists (high recall), the large number of false alarms makes the precision very low."
         },
         {
-          "text": "They are the automated gradients used to optimize the prompt.",
+          "text": "$2\\%$",
           "isCorrect": false,
-          "rationale": "Exemplars consist of natural language text rather than the numerical values used in soft prompting or prefix-tuning."
+          "rationale": "This is approximately the F1 score, which is the harmonic mean of precision and recall."
         }
       ],
-      "hint": "Think of these as 'demonstration cases' used to teach the model a specific behavior within the current conversation."
+      "hint": "Recall that precision is the ratio of correct positive predictions to the total number of positive predictions made."
     },
     {
-      "question": "In the context of automated prompt generation, what is the function of the 'automatic prompt engineer' algorithm?",
+      "question": "What is the primary risk associated with 'data contamination' in standard LLM benchmarks like MMLU?",
       "answerOptions": [
         {
-          "text": "It uses gradient descent to adjust the model's weights permanently.",
+          "text": "The benchmark data is too difficult for modern models to solve.",
           "isCorrect": false,
-          "rationale": "Automatic prompt engineering focuses on modifying the input string rather than changing the fixed model parameters."
+          "rationale": "The difficulty is not the issue; the issue is that models might have 'seen' the answers before the test."
         },
         {
-          "text": "It uses one LLM to generate and score instructions for another target LLM.",
+          "text": "The model may have memorized the test questions during its training phase, leading to inflated scores.",
           "isCorrect": true,
-          "rationale": "The algorithm employs a prompting LLM to search for the highest-scoring instructions that lead to the desired output in the target model."
+          "rationale": "Contamination occurs when benchmark items are included in the model's training data, so it 'recollects' rather than 'reasons' its way to the answer."
         },
         {
-          "text": "It manually removes hallucinated content from the model's responses.",
+          "text": "Human evaluators might provide biased scores when they see the model's name.",
           "isCorrect": false,
-          "rationale": "The algorithm is an automated optimization process and does not involve human manual editing of responses."
+          "rationale": "This refers to 'branding bias' in human evaluation, not data contamination in benchmarks."
         },
         {
-          "text": "It creates a knowledge graph to connect disparate pieces of information.",
+          "text": "The benchmark might focus on too narrow a scope, such as only testing math skills.",
           "isCorrect": false,
-          "rationale": "The creation of knowledge graphs for information synthesis is the primary characteristic of GraphRAG."
+          "rationale": "Narrow scope is a separate benchmark limitation from the presence of test data in training sets."
         }
       ],
-      "hint": "This process involves a feedback loop between a 'prompting' model and a 'target' model."
+      "hint": "Think about what happens if a student is allowed to see the exam questions before the test begins."
     },
     {
-      "question": "What does the term 'In-context learning' refer to in large language models?",
+      "question": "In the evaluation of Question Answering (QA) systems, what defines a 'closed-book' task?",
       "answerOptions": [
         {
-          "text": "The model's ability to update its weights based on user feedback.",
+          "text": "The system is restricted to a specific domain like medicine or law.",
           "isCorrect": false,
-          "rationale": "Weight updates occur during training or fine-tuning, whereas in-context learning is temporary and does not change the model parameters."
+          "rationale": "This describes 'closed-domain' question answering."
         },
         {
-          "text": "The emergent ability of a model to temporarily learn from information provided in the prompt.",
+          "text": "The system must answer questions using only its internal weights without accessing an external context or document.",
           "isCorrect": true,
-          "rationale": "This property allows the model to adapt to new tasks during inference without being explicitly fine-tuned for them."
+          "rationale": "Closed-book QA relies on the facts the model 'memorized' during training, much like a student taking a test without notes."
         },
         {
-          "text": "The process of retrieving documents from an external vector database.",
+          "text": "The system is given a short article and must answer questions based only on that text.",
           "isCorrect": false,
-          "rationale": "Document retrieval is the core component of RAG, which provides the context for in-context learning but is not the learning ability itself."
+          "rationale": "This is a form of reading comprehension or 'open-book' style evaluation where the answer is within the provided text."
         },
         {
-          "text": "The model's ability to remember information across different user sessions.",
+          "text": "The system construction is based on rules rather than statistical processing.",
           "isCorrect": false,
-          "rationale": "In-context learning is generally limited to the current window and does not persist once the specific session is closed."
+          "rationale": "The 'closed-book' designation refers to the availability of external resources, not the underlying architecture of the system."
         }
       ],
-      "hint": "This ability is described as 'learning to learn' and disappears once the prompt context is removed."
+      "hint": "Consider the analogy of a student taking an exam without any textbooks allowed."
     },
     {
-      "question": "In the technical formulation of searching for token sequences in prefix-tuning, which of the following expressions represents the maximization of log-likelihood?",
+      "question": "What is the purpose of 'Regression Detection' in an AI engineering pipeline?",
       "answerOptions": [
         {
-          "text": "$\\arg \\max_{\\tilde{X}} \\sum_{i} \\log Pr[Y^{i}|{\\tilde{X}} \\ast X^{i}]$",
+          "text": "To increase the latency of the model to ensure it is thinking more deeply.",
+          "isCorrect": false,
+          "rationale": "Engineering usually aims to decrease latency, not increase it."
+        },
+        {
+          "text": "To identify if new changes have caused a drop in the model's previous capabilities.",
           "isCorrect": true,
-          "rationale": "This formula identifies the token sequence that makes the observed output most probable given the inputs and the prepended prefix."
+          "rationale": "Regression detection ensures that a fix or update in one area hasn't 'broken' performance in another, comparing new scores to a baseline."
         },
         {
-          "text": "$N \\times M = \\text{Integration}$",
+          "text": "To sample real user queries to detect shifts in the distribution of input data.",
           "isCorrect": false,
-          "rationale": "This describes the complexity of building custom connectors in legacy systems rather than a mathematical optimization objective."
+          "rationale": "This describes 'drift detection' in production monitoring, rather than regression testing against a fixed set."
         },
         {
-          "text": "$\\text{Tokens} + \\text{Metadata} = \\text{Context}$",
+          "text": "To eliminate the need for human evaluation by using automated statistical models.",
           "isCorrect": false,
-          "rationale": "This is a conceptual representation of context engineering components rather than a formal likelihood calculation."
-        },
-        {
-          "text": "$\\text{CoT} + \\text{Rollouts} = \\text{Consistency}$",
-          "isCorrect": false,
-          "rationale": "This represents the concept of self-consistency in reasoning rollouts rather than a gradient-based search objective."
+          "rationale": "Regression detection can use automated metrics, but it is not intended to replace human evaluation entirely."
         }
       ],
-      "hint": "The formula involves finding the argument that maximizes the sum of probabilities for target outputs."
+      "hint": "Focus on the idea of moving 'backward' in quality after an update."
     },
     {
-      "question": "What security risk was highlighted by researchers regarding the Model Context Protocol in April 2025?",
+      "question": "The 'F1 score' is mathematically defined as which of the following?",
       "answerOptions": [
         {
-          "text": "Server-side hardware failure",
+          "text": "The arithmetic mean of precision and recall.",
           "isCorrect": false,
-          "rationale": "Hardware failure is a general IT concern, but the specific research focused on vulnerabilities inherent to the protocol's integration."
+          "rationale": "An arithmetic mean would overvalue one metric if the other is zero, whereas F1 is designed to punish such imbalance."
         },
         {
-          "text": "Data exfiltration through poisoned tools",
+          "text": "The harmonic mean of precision and recall.",
           "isCorrect": true,
-          "rationale": "Researchers found that malicious tools could be used to siphon data from other tools connected via the MCP framework."
+          "rationale": "F1 score is calculated as $2 \\times \\frac{\\text{precision} \\times \\text{recall}}{\\text{precision} + \\text{recall}}$, providing a balanced measure for imbalanced classes."
         },
         {
-          "text": "Loss of API keys due to weak encryption",
+          "text": "The sum of true positives and true negatives divided by the total population.",
           "isCorrect": false,
-          "rationale": "While security related, the specific report emphasized issues like prompt injection and tool-based attacks rather than key encryption."
+          "rationale": "This is the definition of simple accuracy, which can be misleading in imbalanced datasets."
         },
         {
-          "text": "Excessive token consumption leading to high costs",
+          "text": "The percentage of errors of commission subtracted from the errors of omission.",
           "isCorrect": false,
-          "rationale": "This is an operational or financial risk managed by context engineering, not a structural security vulnerability identified by researchers."
+          "rationale": "Errors of commission and omission are related to user and producer accuracy in remote sensing, but they do not define the F1 score."
         }
       ],
-      "hint": "This risk involves using the protocol's connectivity against itself to steal information."
-    },
-    {
-      "question": "Graph retrieval-augmented generation (GraphRAG) was particularly noted for its effectiveness on which type of data collections?",
-      "answerOptions": [
-        {
-          "text": "Real-time stock market pricing",
-          "isCorrect": false,
-          "rationale": "Real-time data streams often require low-latency updates rather than the complex semantic synthesis provided by knowledge graphs."
-        },
-        {
-          "text": "Large datasets like news articles on violent incidents",
-          "isCorrect": true,
-          "rationale": "Knowledge graphs help connect disparate reports and synthesize summarized concepts over expansive, unstructured narratives."
-        },
-        {
-          "text": "Single short documents with clear summaries",
-          "isCorrect": false,
-          "rationale": "The overhead of a knowledge graph is typically unnecessary for small, isolated pieces of information that standard RAG handles well."
-        },
-        {
-          "text": "Numerical datasets stored in CSV format",
-          "isCorrect": false,
-          "rationale": "Standard structured querying or data access tools are usually more efficient for purely numerical or tabular data."
-        }
-      ],
-      "hint": "Think of a scenario where the model needs to connect 'disparate pieces of information' across a large narrative collection."
-    },
-    {
-      "question": "Which term describes an AI-assisted software development method where a user describes a goal and the model handles the code generation, popularized as a trend in 2025?",
-      "answerOptions": [
-        {
-          "text": "Hard coding",
-          "isCorrect": false,
-          "rationale": "Hard coding is a traditional manual practice where values are fixed directly in the source code."
-        },
-        {
-          "text": "Vibe coding",
-          "isCorrect": true,
-          "rationale": "This method relies on high-level natural language descriptions to guide the LLM's code creation, making it a form of 'vibe-based' interaction."
-        },
-        {
-          "text": "Prefix-tuning",
-          "isCorrect": false,
-          "rationale": "This is a technical optimization method for prompts rather than a general user-facing coding workflow."
-        },
-        {
-          "text": "Logic translation",
-          "isCorrect": false,
-          "rationale": "Logic translation is a general NLP task rather than a specific cultural trend in AI-assisted software development."
-        }
-      ],
-      "hint": "This term was selected as the Collins Dictionary word of the year for 2025."
+      "hint": "It is a specific type of average that is used when dealing with rates and ratios."
     }
   ]
 }

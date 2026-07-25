@@ -1,170 +1,174 @@
 {
-  "name": "Academic Path and Tenure",
+  "name": "Computing Systems and Software",
   "children": [
     {
-      "name": "PhD Journey",
+      "name": "Artificial Intelligence",
       "children": [
         {
-          "name": "Decision Phases",
+          "name": "Core Goals",
           "children": [
             {
-              "name": "Motivations"
+              "name": "Reasoning and Problem-Solving"
             },
             {
-              "name": "5-7 Year Commitment"
+              "name": "Knowledge Representation"
             },
             {
-              "name": "Crossroads: Industry vs. Academia"
+              "name": "Planning and Decision-Making"
+            },
+            {
+              "name": "Machine Learning"
+            },
+            {
+              "name": "Natural Language Processing"
+            },
+            {
+              "name": "Machine Perception"
             }
           ]
         },
         {
-          "name": "Program Structure",
+          "name": "Techniques",
           "children": [
             {
-              "name": "Coursework"
+              "name": "Search and Optimization"
             },
             {
-              "name": "Qualifying Exams"
+              "name": "Formal Logic"
             },
             {
-              "name": "Research Proposal"
+              "name": "Probabilistic Methods"
             },
             {
-              "name": "Dissertation and Defense"
+              "name": "Artificial Neural Networks"
+            },
+            {
+              "name": "Deep Learning"
+            },
+            {
+              "name": "Generative AI (GPT)"
             }
           ]
         },
         {
-          "name": "Funding Models",
+          "name": "Applications",
           "children": [
             {
-              "name": "Research Assistantship (RA)"
+              "name": "Software Development"
             },
             {
-              "name": "Teaching Assistantship (TA)"
+              "name": "Healthcare and Medicine"
             },
             {
-              "name": "Fellowships"
+              "name": "Gaming (AlphaGo, Chess)"
             },
             {
-              "name": "Stipends and Tuition Waivers"
+              "name": "Finance and Military"
+            },
+            {
+              "name": "Autonomous Vehicles"
+            }
+          ]
+        },
+        {
+          "name": "Ethics and Risks",
+          "children": [
+            {
+              "name": "Privacy and Copyright"
+            },
+            {
+              "name": "Algorithmic Bias"
+            },
+            {
+              "name": "Transparency (XAI)"
+            },
+            {
+              "name": "Existential Risk"
+            },
+            {
+              "name": "Environmental Impact"
             }
           ]
         }
       ]
     },
     {
-      "name": "Academic Tenure",
+      "name": "Operating Systems",
       "children": [
         {
-          "name": "Definition",
+          "name": "Core Functions",
           "children": [
             {
-              "name": "Semi-permanent Appointment"
+              "name": "Resource Allocation"
             },
             {
-              "name": "Academic Freedom Protection"
+              "name": "Hardware Abstraction"
             },
             {
-              "name": "Protection from Arbitrary Dismissal"
+              "name": "Common Services"
             }
           ]
         },
         {
-          "name": "Arguments Pro",
+          "name": "Major Components",
           "children": [
             {
-              "name": "Defense of Free Inquiry"
+              "name": "Kernel"
             },
             {
-              "name": "Recruitment of Talent"
+              "name": "Process Management"
             },
             {
-              "name": "Economic Security"
+              "name": "Memory Management"
+            },
+            {
+              "name": "File Systems"
+            },
+            {
+              "name": "Device Drivers"
+            },
+            {
+              "name": "User Interface (GUI/CLI)"
             }
           ]
         },
         {
-          "name": "Arguments Con",
+          "name": "System Types",
           "children": [
             {
-              "name": "Rewards Complacency"
+              "name": "Distributed Systems"
             },
             {
-              "name": "Incentivizes Mediocrity"
+              "name": "Embedded Systems"
             },
             {
-              "name": "Financial Burden for Institutions"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Research and Scholarly Work",
-      "children": [
-        {
-          "name": "Citations",
-          "children": [
-            {
-              "name": "Acknowledging Sources"
+              "name": "Real-Time OS"
             },
             {
-              "name": "Citation Styles (APA, MLA, Chicago)"
+              "name": "Hypervisors"
             },
             {
-              "name": "Impact Metrics"
-            },
-            {
-              "name": "Citation Politics and Diversity"
+              "name": "Library OS (Unikernels)"
             }
           ]
         },
         {
-          "name": "Thesis/Dissertation",
+          "name": "Popular Platforms",
           "children": [
             {
-              "name": "Monograph vs. Publication Style"
+              "name": "Android (Mobile)"
             },
             {
-              "name": "Supervisory Committee"
+              "name": "Microsoft Windows"
             },
             {
-              "name": "Viva Voce/Oral Defense"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Admissions and Networking",
-      "children": [
-        {
-          "name": "Application Materials",
-          "children": [
-            {
-              "name": "Statement of Purpose (SOP)"
+              "name": "iOS / iPadOS"
             },
             {
-              "name": "Letters of Recommendation (LOR)"
+              "name": "Linux / Unix"
             },
             {
-              "name": "Standardized Tests (GRE/TOEFL)"
-            }
-          ]
-        },
-        {
-          "name": "Networking",
-          "children": [
-            {
-              "name": "Cold Emailing Professors"
-            },
-            {
-              "name": "Research Experience"
-            },
-            {
-              "name": "Interviews"
+              "name": "macOS"
             }
           ]
         }

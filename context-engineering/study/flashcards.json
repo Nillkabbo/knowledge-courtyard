@@ -1,325 +1,345 @@
 {
-  "title": "LangChain Flashcards",
+  "title": "Prompting Flashcards",
   "cards": [
     {
-      "front": "The software framework designed to facilitate the integration of large language models (LLMs) into applications is called _____.",
-      "back": "LangChain"
+      "front": "What is the core definition of prompt engineering?",
+      "back": "The process of structuring natural language inputs to produce specified outputs from a generative artificial intelligence model."
     },
     {
-      "front": "Identify the developer who launched LangChain as an open-source project in October 2022.",
-      "back": "Harrison Chase"
+      "front": "Term: Context Engineering",
+      "back": "A field of software engineering focusing on managing non-prompt contexts like system instructions, metadata, and API tools supplied to GenAI models."
     },
     {
-      "front": "LangChain was originally written in which two programming languages?",
-      "back": "Python and JavaScript"
+      "front": "What defines a 'prompt' in the context of large language models?",
+      "back": "Natural language text that describes and prescribes a task for an artificial intelligence to perform."
     },
     {
-      "front": "What is the primary license under which LangChain is released?",
-      "back": "MIT License"
+      "front": "Effective prompt engineering requires an understanding of how a model _____ language.",
+      "back": "interprets"
     },
     {
-      "front": "In LangChain, what does the acronym LCEL stand for?",
-      "back": "LangChain Expression Language"
+      "front": "Why has the specific job title of 'prompt engineer' lost traction in corporations since its $2023$ peak?",
+      "back": "AI models have improved at generating better prompts than humans and companies have integrated prompting into general employee training."
     },
     {
-      "front": "What is the purpose of the LangChain Expression Language (LCEL)?",
-      "back": "It provides a declarative way to define chains of actions."
+      "front": "According to the Oxford English Dictionary, what is the primary goal of prompt engineering?",
+      "back": "To optimize an AI's output or achieve a desired outcome."
     },
     {
-      "front": "The LangChain tool designed to host LCEL code as a production-ready API is called _____.",
-      "back": "LangServe"
+      "front": "A prompt for a text-to-text model may include context, instructions, conversation history, and a _____.",
+      "back": "query"
     },
     {
-      "front": "What is the function of the LangSmith platform within the LangChain ecosystem?",
-      "back": "It provides observability and evaluation for LLM applications."
+      "front": "What specific technique involves assigning a character for an AI to mimic to guide its responses?",
+      "back": "Role assignment"
     },
     {
-      "front": "Identify the purpose of the LangGraph platform.",
-      "back": "It provides managed infrastructure for deploying long-running, stateful AI agents."
+      "front": "What is 'vibe coding' in the context of software development?",
+      "back": "An AI-assisted method where a user prompts a model with a description of desired functionality and lets it generate or edit the code."
     },
     {
-      "front": "How does InfoWorld define LangChain in the context of connecting LLMs to external applications?",
-      "back": "As a software development kit (SDK) that simplifies connections through a unified API."
+      "front": "Context engineering aims to improve reliability, provenance, and _____ in production LLM systems.",
+      "back": "token efficiency"
     },
     {
-      "front": "Which LangChain feature allows developers to bring in context from relational databases or CSV files?",
-      "back": "Integrations"
+      "front": "What operational practice in context engineering ensures that changes to supplied context do not silently alter system behavior?",
+      "back": "Context regression tests"
     },
     {
-      "front": "In the context of LangChain, what is the role of a vector database like Milvus or Weaviate?",
-      "back": "To store and retrieve vector embeddings."
+      "front": "Research indicates that reordering examples in a prompt can shift model accuracy by more than $40\\%$ percent.",
+      "back": "True"
     },
     {
-      "front": "Term: Retrieval-augmented generation (RAG)",
-      "back": "Definition: A technique enabling LLMs to retrieve and incorporate information from external data sources before generating a response."
+      "front": "The emergent property of large language models to temporarily learn from prompts without gradient updates is known as _____ learning.",
+      "back": "in-context"
     },
     {
-      "front": "How does RAG help reduce 'AI hallucinations' in chatbots?",
-      "back": "By blending the LLM process with a document look-up process to ground responses in facts."
+      "front": "How does 'in-context learning' differ from 'fine-tuning'?",
+      "back": "In-context learning is temporary and occurs through prompts, whereas fine-tuning produces lasting changes to model parameters."
     },
     {
-      "front": "What is one financial benefit of using RAG instead of retraining an LLM with new data?",
-      "back": "It reduces the computational and financial costs associated with frequent retraining."
+      "front": "Training a model to perform in-context learning is considered a form of _____.",
+      "back": "meta-learning"
     },
     {
-      "front": "How does RAG improve transparency for the end user?",
-      "back": "It allows the LLM to include and cite sources in its responses for verification."
+      "front": "How many accuracy points can format changes in few-shot settings shift LLM performance?",
+      "back": "Up to $76$ points."
     },
     {
-      "front": "When was the term 'retrieval-augmented generation' first introduced in a research paper?",
-      "back": "2020"
+      "front": "Linguistic features such as _____ syntax have been found to improve consistency and reduce uncertainty in knowledge retrieval.",
+      "back": "clausal"
     },
     {
-      "front": "Define 'prompt stuffing' in the context of RAG systems.",
-      "back": "Adding relevant retrieved context to a user's input to guide the model's response."
+      "front": "Term: FormatSpread",
+      "back": "An evaluative method that facilitates systematic analysis by evaluating a range of plausible prompt formats."
     },
     {
-      "front": "In the RAG process, external data is typically converted into numerical representations called _____.",
-      "back": "Embeddings"
+      "front": "What is the purpose of the 'PromptEval' method?",
+      "back": "To estimate performance distributions across diverse prompts to enable robust metrics like performance quantiles."
     },
     {
-      "front": "In RAG, where are document embeddings stored to facilitate efficient retrieval?",
-      "back": "Vector database"
+      "front": "The inclusion of a few input/output examples within a prompt to guide a model is called _____ prompting.",
+      "back": "multi-shot"
     },
     {
-      "front": "What is the first step a RAG system takes after receiving a user query?",
-      "back": "It calls a document retriever to select the most relevant documents."
+      "front": "Term: Chain-of-thought (CoT) prompting",
+      "back": "A technique that induces an LLM to solve a problem as a series of intermediate reasoning steps before providing a final answer."
     },
     {
-      "front": "How does 're-ranking' improve the output of a RAG model?",
-      "back": "By refining the order of retrieved documents to prioritize the most relevant information."
+      "front": "Which specific phrase can be appended to a prompt to enable zero-shot chain-of-thought reasoning?",
+      "back": "\"Let's think step-by-step\""
     },
     {
-      "front": "What is the difference between dense vectors and sparse vectors in information retrieval?",
-      "back": "Dense vectors encode meaning, while sparse vectors typically encode the identity of specific words."
+      "front": "How does 'self-consistency' enhance chain-of-thought prompting results?",
+      "back": "It performs several rollouts and selects the most commonly reached conclusion from the results."
     },
     {
-      "front": "How do 'Late Interactions' enhance retrieval accuracy in RAG systems?",
-      "back": "They allow the system to compare words more precisely after retrieval to refine document ranking."
+      "front": "What is the core characteristic of 'tree-of-thought' prompting?",
+      "back": "Generating multiple lines of reasoning in parallel with the ability to backtrack or explore other paths."
     },
     {
-      "front": "The retriever-centric optimization technique that involves predicting masked text within documents is called _____.",
-      "back": "Inverse Cloze Task (ICT)"
+      "front": "Unlike large language models, early text-to-image models often struggle to understand _____ and sentence structure.",
+      "back": "negation"
     },
     {
-      "front": "What is the core hypothesis behind the 'Retro' language model design?",
-      "back": "Providing domain knowledge during training allows the model to devote fewer weight resources to facts and more to semantics."
+      "front": "In text-to-image prompting, where should the most heavily emphasized words typically be placed?",
+      "back": "Closer to the start of the prompt."
     },
     {
-      "front": "Identify the reproducible version of the 'Retro' language model.",
-      "back": "Retro++"
+      "front": "Term: Textual inversion",
+      "back": "An optimization process that creates a new word embedding (pseudo-word) from example images to express specific content or style."
     },
     {
-      "front": "In RAG data preparation, what does the process of 'chunking' involve?",
-      "back": "Breaking down data into smaller segments or vectors to help the retriever find specific details."
+      "front": "The Meta AI model 'Segment Anything' can perform image segmentation using prompts like bounding boxes or _____.",
+      "back": "segmentation masks"
     },
     {
-      "front": "What is a major advantage of file format-based chunking for code files?",
-      "back": "It keeps whole functions or classes intact as single vectorized units."
+      "front": "Why is the brittle nature of prompts considered a limitation of prompt engineering?",
+      "back": "Minor changes in phrasing or punctuation can produce dramatically different outputs even if intent is identical."
     },
     {
-      "front": "Define 'Hybrid Search' in the context of RAG.",
-      "back": "Combining traditional full-text search results with vector-based semantic search results."
+      "front": "What technology enables LLMs to respond to queries using domain-specific or updated information from specified documents?",
+      "back": "Retrieval-augmented generation (RAG)"
     },
     {
-      "front": "Why might an LLM with RAG still produce misinformation despite having factually correct sources?",
-      "back": "The model may misinterpret the context of the retrieved information."
+      "front": "How does RAG reduce the frequency of 'AI hallucinations'?",
+      "back": "By dynamically retrieving relevant text from databases or web sources to supplement generating responses."
     },
     {
-      "front": "What is 'RAG poisoning'?",
-      "back": "The retrieval of factually correct but misleading or out-of-context sources that result in incorrect conclusions."
+      "front": "Term: GraphRAG",
+      "back": "An extension of RAG that uses a knowledge graph to connect disparate information and synthesize insights over large data collections."
     },
     {
-      "front": "Term: Semantic Search",
-      "back": "Definition: An information retrieval approach that seeks to understand the searcher's intent and contextual meaning rather than just literal keyword matches."
+      "front": "In the 'automatic prompt engineer' algorithm, how is an instruction's 'score' computed?",
+      "back": "By calculating and adding the log-probabilities of the target LLM's outputs when prompted with that instruction."
     },
     {
-      "front": "How does semantic search differ from lexical search?",
-      "back": "Semantic search looks for meaning, while lexical search looks for literal matches of query words."
+      "front": "The 'auto-CoT' technique involves selecting diverse questions using _____ analysis to generate demonstration datasets.",
+      "back": "cluster"
     },
     {
-      "front": "Which Google tool provides structured relationships between entities to enrich query interpretation in semantic search?",
-      "back": "Knowledge Graph"
+      "front": "Which framework optimizes instructions and few-shot demonstrations for multi-stage language model programs without needing module-level labels?",
+      "back": "MIPRO (Multi-prompt Instruction Proposal Optimizer)"
     },
     {
-      "front": "Identify two common models used to convert sentences into dense vectors for similarity comparison.",
-      "back": "BERT and Sentence-BERT"
+      "front": "How does GEPA (Genetic-Pareto) optimize compound AI systems?",
+      "back": "By combining language-model-based analysis of execution traces with a Pareto-based evolutionary search."
     },
     {
-      "front": "Term: Vector Database",
-      "back": "Definition: A database that stores and retrieves data as high-dimensional vectors (embeddings) rather than exact text matches."
+      "front": "Term: Soft prompting",
+      "back": "A technique where floating-point vectors are searched directly via gradient descent to maximize output likelihood."
     },
     {
-      "front": "Unlike traditional databases, vector databases use _____ algorithms to find records similar to an input.",
-      "back": "Approximate nearest neighbor (ANN)"
+      "front": "What is the formal search objective in automated token sequence optimization?",
+      "back": "$\\arg \\max_{\\tilde{X}} \\sum_{i} \\log Pr[Y^{i}|{\\tilde{X}}\\ast X^{i}]$ where $\\tilde{X}$ is the token sequence."
     },
     {
-      "front": "What determines the number of dimensions in a vector embedding?",
-      "back": "The complexity of the data being represented, typically ranging from hundreds to thousands."
+      "front": "The $1999$ 'Intelligent Filling Manager' is an early precedent of prompt-like workflows using a rule-based _____ system.",
+      "back": "expert"
     },
     {
-      "front": "What is the primary goal of computing feature vectors for semantically similar data items?",
-      "back": "To ensure that similar items receive vectors that are close to each other in high-dimensional space."
+      "front": "In $2018$, researchers proposed that all NLP tasks could be cast as _____ problems.",
+      "back": "question-answer"
     },
     {
-      "front": "Identify the high-performance technique for similarity search that uses graphs.",
-      "back": "Hierarchical Navigable Small World (HNSW) graphs"
+      "front": "What is a 'prompt injection' attack?",
+      "back": "A cybersecurity exploit where adversaries craft inputs designed to cause unintended behavior by bypassing a model's safeguards."
     },
     {
-      "front": "Name one technique besides HNSW graphs used for similarity search on high-dimensional vectors.",
-      "back": "Locality-sensitive hashing (LSH)"
+      "front": "Prompt injection takes advantage of a model's inability to distinguish between user inputs and _____.",
+      "back": "developer-defined prompts"
     },
     {
-      "front": "In a RAG application, what is added to the 'context window' of an LLM to generate a response?",
-      "back": "Relevant document embeddings or document sections retrieved from a vector database."
+      "front": "What is the 'vibe coding' word of the year for $2025$ according to Collins Dictionary?",
+      "back": "vibe coding"
     },
     {
-      "front": "Identify an open-source implementation of a vector database released under the Apache 2.0 license.",
-      "back": "Milvus (or Chroma, or Qdrant)"
+      "front": "Cloze: In text-to-image models, word _____ affects output, with earlier words receiving more emphasis.",
+      "back": "order"
     },
     {
-      "front": "Which popular relational database can be extended to support vector search via the 'pgvector' extension?",
-      "back": "PostgreSQL"
+      "front": "What is the significance of the GSM8K benchmark in prompting research?",
+      "back": "It was used to show that Chain-of-Thought prompting allowed models like PaLM to achieve state-of-the-art mathematical reasoning results."
     },
     {
-      "front": "The managed vector database service known as 'Pinecone' uses which type of license?",
-      "back": "Proprietary"
+      "front": "Cloze: Prompting techniques are highly model-_____, meaning what works for one may degrade performance on another.",
+      "back": "specific"
     },
     {
-      "front": "What is the significance of the 'Curse of Dimensionality' in the context of vector databases?",
-      "back": "It refers to the difficulties that arise when analyzing or searching data with a very high number of aspects or dimensions."
+      "front": "What is the purpose of 'observability' in context engineering?",
+      "back": "Logging exactly which context was supplied to the model to ensure system reliability."
     },
     {
-      "front": "In LangChain's history, which venture firm led a funding round at a valuation of at least \\$200 million in April 2023?",
-      "back": "Sequoia Capital"
+      "front": "Linguistic features like _____ significantly influence prompt effectiveness across various tasks.",
+      "back": "morphology"
     },
     {
-      "front": "Which LangChain integration allows for the execution of shell scripts and syntax checking?",
-      "back": "Bash"
+      "front": "How does 'prefix-tuning' optimize model generation?",
+      "back": "By searching for continuous vectors via gradient descent as a lightweight alternative to fine-tuning."
     },
     {
-      "front": "What LangChain integration is used to find and summarize 'todo' tasks within source code?",
-      "back": "Code analysis/summarization"
+      "front": "The 'automatic prompt engineer' algorithm uses _____ search to iterate over potential prompts.",
+      "back": "beam"
     },
     {
-      "front": "Which specific vector database integration in LangChain is used to 'cache embedding and data objects'?",
-      "back": "Weaviate"
+      "front": "What is the primary role of 'exemplars' in few-shot prompting?",
+      "back": "To provide input/output examples that demonstrate the desired model output format and logic."
     },
     {
-      "front": "According to the source, how many document types and data sources could LangChain read from as of April 2023?",
-      "back": "More than 50"
+      "front": "Concept: Self-consistency",
+      "back": "The method of selecting the most common conclusion from multiple chain-of-thought reasoning paths."
     },
     {
-      "front": "The LangChain tool 'Alpha Vantage' requires an API key but provides what kind of data?",
-      "back": "Financial data and analytics"
+      "front": "Which $2022$ model release triggered the widespread rise of 'prompt engineering' as a business skill?",
+      "back": "ChatGPT"
     },
     {
-      "front": "Which LangChain tool allows for the indexing of unstructured data and requires a commercial license?",
-      "back": "Nuclia"
+      "front": "In context engineering, 'token budgeting' is used to improve production _____.",
+      "back": "efficiency"
     },
     {
-      "front": "Which LangChain tool is used to fine-tune an LLM to memorize information using unsupervised learning?",
-      "back": "Memorize"
+      "front": "What is the runner-up for the Oxford word of the year in $2023$?",
+      "back": "prompt"
     },
     {
-      "front": "What is the purpose of the 'Human as a tool' integration in LangChain?",
-      "back": "To incorporate human input into the chain of actions."
+      "front": "Text-to-image prompts often include the desired subject, medium, style, lighting, color, and _____.",
+      "back": "texture"
     },
     {
-      "front": "According to the RAG stages, what phase involves the LLM drawing from both its internal training data and the augmented prompt?",
-      "back": "The generative phase"
+      "front": "Artist style imitation in Stable Diffusion often used the phrase 'in the style of _____' as a common test.",
+      "back": "Greg Rutkowski"
     },
     {
-      "front": "In RAG, what is the 'parametric' part of the system?",
-      "back": "The pre-trained language model."
+      "front": "Cloze: Automated prompt generation methods use _____ feedback or evolutionary processes to refine inputs.",
+      "back": "reinforcement"
     },
     {
-      "front": "In RAG, what is the 'non-parametric' part of the system?",
-      "back": "The external memory or knowledge base accessed through retrieval."
+      "front": "What is the function of 'provenance tags' in context engineering?",
+      "back": "To track the origin and reliability of information retrieved and supplied to the LLM."
     },
     {
-      "front": "Which RAG improvement method uses dot products to enhance similarity scoring?",
-      "back": "Encoder optimization"
+      "front": "Why is 'negation' difficult for early text-to-image models?",
+      "back": "They do not interpret grammar in the same way as LLMs, often including subjects the prompt explicitly asks to exclude."
     },
     {
-      "front": "How does 'approximate nearest neighbor' (ANN) search compare to 'K-nearest neighbors' (KNN) in terms of efficiency?",
-      "back": "ANN improves retrieval efficiency over KNN in large high-dimensional datasets."
+      "front": "Cloze: In 'prefix-tuning', vectors are searched to maximize the _____ on outputs.",
+      "back": "log-likelihood"
     },
     {
-      "front": "What is the purpose of 'supervised retriever optimization' in RAG?",
-      "back": "To align the retriever's selections with the generator model's likelihood distribution."
+      "front": "What does a typical text-to-audio prompt describe?",
+      "back": "The desired musical characteristics, such as BPM, genre, and mood."
     },
     {
-      "front": "Identify the chunking strategy that involves a 'fixed length with overlap.'",
-      "back": "A strategy where overlapping consecutive chunks maintain semantic context across segments."
+      "front": "How does 'Auto-CoT' handle question diversity?",
+      "back": "It clusters questions converted to vectors and selects those closest to each cluster's centroid."
     },
     {
-      "front": "What library does the source mention as helpful for syntax-based chunking into sentences?",
-      "back": "spaCy (or NLTK)"
+      "front": "In 2024, a survey identified over $50$ distinct text-based _____ techniques.",
+      "back": "prompting"
     },
     {
-      "front": "What is a primary risk of RAG systems when they encounter conflicting information from multiple sources?",
-      "back": "The model may produce responses that merge outdated and updated information in a misleading manner."
+      "front": "What makes in-context learning an 'emergent' ability?",
+      "back": "Its efficacy increases significantly only after a model reaches a certain scale, breaking standard scaling laws."
     },
     {
-      "front": "Which type of search technique converts words or documents into numerical vectors to find results based on context?",
-      "back": "Semantic search"
+      "front": "What is the 'Automatic Prompt Engineer' (APE) primary function?",
+      "back": "Using one LLM to automatically generate and score prompts for another target LLM."
     },
     {
-      "front": "What does a vector database store specifically to allow for semantic similarity searches?",
-      "back": "Embeddings (vector representations of data)."
+      "front": "Term: Prompt brittle nature",
+      "back": "The phenomenon where minor surface-level changes in a prompt produce dramatically different AI outputs."
     },
     {
-      "front": "In vector database terminology, what is 'product quantization' (PQ)?",
-      "back": "A technique used for similarity search on high-dimensional vectors."
+      "front": "Why is 'context metadata' managed in context engineering?",
+      "back": "To provide the model with task-specific information that accompanies the user's primary prompt."
     },
     {
-      "front": "Which vector database implementation is listed as having an Apache 2.0 license and being 'built on Amazon S3'?",
-      "back": "LanceDB"
+      "front": "Cloze: RAG allows LLMs to use domain-specific and updated information without frequent _____.",
+      "back": "retraining"
     },
     {
-      "front": "Identify a vector database that uses a 'Server Side Public License' (SSPL).",
-      "back": "Elasticsearch (or MongoDB Atlas)."
+      "front": "Which dictionary named 'vibe coding' as its word of the year in $2025$?",
+      "back": "Collins Dictionary"
     },
     {
-      "front": "Which LangChain integration provides computational knowledge through a website and SDK?",
-      "back": "WolframAlpha"
+      "front": "What is 'clausal syntax' in the context of prompting rationale?",
+      "back": "A linguistic property that enhances the consistency of knowledge retrieval from LLMs."
     },
     {
-      "front": "What is the primary function of the LangChain tool 'Apify'?",
-      "back": "Web scraping and automation."
+      "front": "How does 'Segment Anything' accept prompts other than text?",
+      "back": "Through bounding boxes, segmentation masks, or foreground/background points."
     },
     {
-      "front": "The tool 'Eleven Labs Text2Speech' in LangChain is categorized under which license type?",
-      "back": "Commercial"
+      "front": "Term: Multi-shot learning (LLMs)",
+      "back": "Providing several input-output examples in a prompt to enable the model to learn a task in-context."
     },
     {
-      "front": "Which LangChain tool is designed to provide search engine results page (SERP) scraping?",
-      "back": "SerpAPI (or Google Serper)."
+      "front": "What is the role of 'pseudo-words' in textual inversion?",
+      "back": "They act as embedding vectors that can be included in a prompt to replicate a specific style or object."
     },
     {
-      "front": "What is the function of the 'DuckDuckGo Search' tool in the LangChain ecosystem?",
-      "back": "Privacy-focused web search."
+      "front": "The ability of models to follow trusted instructions while being vulnerable to malicious user inputs is the basis of _____.",
+      "back": "prompt injection"
     },
     {
-      "front": "In LangChain, what does the 'Zapier Natural Language Actions' tool facilitate?",
-      "back": "Workflow automation through natural language."
+      "front": "What does the 'GEPA' optimizer use to propose changes to module prompts?",
+      "back": "Analysis of execution traces and textual feedback combined with a Pareto-based evolutionary search."
     },
     {
-      "front": "What is the goal of 'reranking' in the context of RAG retriever-centric methods?",
-      "back": "To prioritize the most relevant retrieved documents during training to refine performance."
+      "front": "What was the hottest AI job of $2023$, according to The Wall Street Journal?",
+      "back": "Prompt engineer"
     },
     {
-      "front": "According to the 'RAG and LLM limitations' section, what happened to Google's stock value after Google Bard provided incorrect information about the James Webb Space Telescope?",
-      "back": "It declined by \\$100 billion."
+      "front": "Cloze: In automated prompt engineering, 'soft prompts' are learned through _____.",
+      "back": "back-propagation"
     },
     {
-      "front": "Why is it important to respect file formats (like HTML) during the chunking process?",
-      "back": "To ensure that structural elements like base64 encoded images or specific tags remain intact."
+      "front": "What is the 'PIP' dataset used for?",
+      "back": "Enhancing text-to-image generation through personalized prompt rewriting based on user categorization."
     },
     {
-      "front": "In the context of vector databases, what are 'inverted files' used for?",
-      "back": "As a technique for similarity search on high-dimensional vectors."
+      "front": "Concept: In-context learning vs. Gradient descent",
+      "back": "In-context learning requires no parameter updates, while gradient descent is used in fine-tuning and soft prompting."
+    },
+    {
+      "front": "What is the primary benefit of 'GraphRAG' for narrative private data?",
+      "back": "It allows the model to synthesize insights and connect disparate pieces of information across large collections."
+    },
+    {
+      "front": "How does the 'Automatic Prompt Engineer' algorithm vary instructions?",
+      "back": "It takes the highest-scored instructions and gives them back to the prompting LLM for further variations."
+    },
+    {
+      "front": "In text-to-image prompts, what is 'rim lighting' an example of?",
+      "back": "Lighting parameters used to achieve a desired aesthetic in the generated image."
+    },
+    {
+      "front": "Term: Prompt optimization",
+      "back": "The use of algorithms to automatically refine prompt strings using evaluation datasets and task-specific metrics."
+    },
+    {
+      "front": "Which $2020$ paper first identified that language models are 'few-shot learners'?",
+      "back": "Brown et al. (Language models are few-shot learners)"
     }
   ]
 }

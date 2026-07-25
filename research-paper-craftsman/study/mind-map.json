@@ -1,206 +1,191 @@
 {
-  "name": "Algorithm & Technical Interview Preparation",
+  "name": "Scientific Method and Communication",
   "children": [
     {
-      "name": "Fundamentals of Algorithms",
+      "name": "Scientific Method",
       "children": [
         {
-          "name": "Definitions",
+          "name": "Core Elements",
           "children": [
             {
-              "name": "Finite sequence of instructions"
+              "name": "Characterization"
             },
             {
-              "name": "Effective method"
+              "name": "Hypothesis Development"
             },
             {
-              "name": "Heuristic vs. Formal"
+              "name": "Predictions"
+            },
+            {
+              "name": "Experiments"
             }
           ]
         },
         {
-          "name": "Algorithmic Analysis",
+          "name": "Inquiry Methods",
           "children": [
             {
-              "name": "Execution efficiency"
+              "name": "Hypothetico-deductive"
             },
             {
-              "name": "Time & Space complexity"
+              "name": "Inductive Method"
             },
             {
-              "name": "Best and Worst case scenarios"
+              "name": "Mathematical Modelling"
             }
           ]
         },
         {
-          "name": "Classification",
+          "name": "Principles",
           "children": [
             {
-              "name": "By implementation (Recursive, Parallel)"
+              "name": "Empiricism"
             },
             {
-              "name": "By design paradigm (Brute-force, Divide and conquer)"
+              "name": "Falsifiability"
             },
             {
-              "name": "By problem type (Optimization, Search)"
+              "name": "Reproducibility"
+            },
+            {
+              "name": "Skepticism"
+            }
+          ]
+        },
+        {
+          "name": "Heuristics",
+          "children": [
+            {
+              "name": "Parsimony (Occam's Razor)"
+            },
+            {
+              "name": "Elegance"
+            },
+            {
+              "name": "Invariance"
             }
           ]
         }
       ]
     },
     {
-      "name": "Big O Notation",
+      "name": "Scientific Writing",
       "children": [
         {
-          "name": "Concepts",
+          "name": "Genres",
           "children": [
             {
-              "name": "Upper bound of growth"
+              "name": "Journal Articles"
             },
             {
-              "name": "Bachmann–Landau family"
+              "name": "Literature Reviews"
             },
             {
-              "name": "Asymptotic analysis"
+              "name": "Grant Proposals"
+            },
+            {
+              "name": "Scientific Reports"
             }
           ]
         },
         {
-          "name": "Common Orders",
+          "name": "IMRaD Structure",
           "children": [
             {
-              "name": "O(1) Constant"
+              "name": "Introduction"
             },
             {
-              "name": "O(log n) Logarithmic"
+              "name": "Methods"
             },
             {
-              "name": "O(n) Linear"
+              "name": "Results"
             },
             {
-              "name": "O(n log n) Linearithmic"
+              "name": "Discussion"
+            }
+          ]
+        },
+        {
+          "name": "Style and Conventions",
+          "children": [
+            {
+              "name": "Peer Review"
             },
             {
-              "name": "O(n^2) Quadratic"
+              "name": "Citation Systems (APA, Chicago, Vancouver)"
             },
             {
-              "name": "O(2^n) Exponential"
+              "name": "Technical Communication"
+            },
+            {
+              "name": "Language Standards"
             }
           ]
         }
       ]
     },
     {
-      "name": "Data Structures",
+      "name": "Ethics and Integrity",
       "children": [
         {
-          "name": "Linear Structures",
-          "children": [
-            {
-              "name": "Arrays (Contiguous memory)"
-            },
-            {
-              "name": "Linked Lists (Nodes and pointers)"
-            },
-            {
-              "name": "Stacks (LIFO)"
-            },
-            {
-              "name": "Queues (FIFO)"
-            }
-          ]
+          "name": "Honesty and Openness"
         },
         {
-          "name": "Non-Linear Structures",
-          "children": [
-            {
-              "name": "Trees (Hierarchical, B-tree, Trie)"
-            },
-            {
-              "name": "Graphs (Nodes and Edges)"
-            },
-            {
-              "name": "Hash Tables (Key-value mapping)"
-            }
-          ]
+          "name": "Data Integrity"
+        },
+        {
+          "name": "Plagiarism Prevention"
+        },
+        {
+          "name": "Authorship Standards"
+        },
+        {
+          "name": "Diversity and Inclusivity"
         }
       ]
     },
     {
-      "name": "Interview Preparation Strategies",
+      "name": "Perspectives and Philosophy",
       "children": [
         {
-          "name": "Personal Storytelling",
+          "name": "Philosophical Views",
           "children": [
             {
-              "name": "Resume Impact (Action + Context + Result)"
+              "name": "Rationalism"
             },
             {
-              "name": "Present-Past-Future Structure"
+              "name": "Pragmatism"
             },
             {
-              "name": "STAR Method for behavior (Shahadat)"
+              "name": "Epistemological Anarchism"
             }
           ]
         },
         {
-          "name": "Technical Execution",
+          "name": "Sociology of Knowledge",
           "children": [
             {
-              "name": "Pattern Recognition (Sliding Window, Two Pointers)"
+              "name": "Thought Collectives"
             },
             {
-              "name": "System Design (Clarify, High-level, Deep dive)"
+              "name": "Epistemic Cultures"
             },
             {
-              "name": "Thinking Out Loud (Tadabbur)"
+              "name": "Situated Cognition"
             }
           ]
         },
         {
-          "name": "Closing and Negotiation",
+          "name": "Modern Challenges",
           "children": [
             {
-              "name": "Salary Negotiation (Mizan)"
+              "name": "Replication Crisis"
             },
             {
-              "name": "Asking strategic questions"
+              "name": "Large Language Models"
             },
             {
-              "name": "Total Compensation research"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Competitive Programming & Platforms",
-      "children": [
-        {
-          "name": "Platforms",
-          "children": [
-            {
-              "name": "LeetCode (Interview prep focus)"
-            },
-            {
-              "name": "Codeforces (Competitive sport focus)"
-            },
-            {
-              "name": "HackerRank & CodeChef"
-            }
-          ]
-        },
-        {
-          "name": "Competitions",
-          "children": [
-            {
-              "name": "ICPC (University level)"
-            },
-            {
-              "name": "Google Code Jam"
-            },
-            {
-              "name": "Meta Hacker Cup"
+              "name": "Big Data Limitations"
             }
           ]
         }

@@ -1,174 +1,206 @@
 {
-  "name": "Computing Systems and Software",
+  "name": "Algorithm & Technical Interview Preparation",
   "children": [
     {
-      "name": "Artificial Intelligence",
+      "name": "Fundamentals of Algorithms",
       "children": [
         {
-          "name": "Core Goals",
+          "name": "Definitions",
           "children": [
             {
-              "name": "Reasoning and Problem-Solving"
+              "name": "Finite sequence of instructions"
             },
             {
-              "name": "Knowledge Representation"
+              "name": "Effective method"
             },
             {
-              "name": "Planning and Decision-Making"
-            },
-            {
-              "name": "Machine Learning"
-            },
-            {
-              "name": "Natural Language Processing"
-            },
-            {
-              "name": "Machine Perception"
+              "name": "Heuristic vs. Formal"
             }
           ]
         },
         {
-          "name": "Techniques",
+          "name": "Algorithmic Analysis",
           "children": [
             {
-              "name": "Search and Optimization"
+              "name": "Execution efficiency"
             },
             {
-              "name": "Formal Logic"
+              "name": "Time & Space complexity"
             },
             {
-              "name": "Probabilistic Methods"
-            },
-            {
-              "name": "Artificial Neural Networks"
-            },
-            {
-              "name": "Deep Learning"
-            },
-            {
-              "name": "Generative AI (GPT)"
+              "name": "Best and Worst case scenarios"
             }
           ]
         },
         {
-          "name": "Applications",
+          "name": "Classification",
           "children": [
             {
-              "name": "Software Development"
+              "name": "By implementation (Recursive, Parallel)"
             },
             {
-              "name": "Healthcare and Medicine"
+              "name": "By design paradigm (Brute-force, Divide and conquer)"
             },
             {
-              "name": "Gaming (AlphaGo, Chess)"
-            },
-            {
-              "name": "Finance and Military"
-            },
-            {
-              "name": "Autonomous Vehicles"
-            }
-          ]
-        },
-        {
-          "name": "Ethics and Risks",
-          "children": [
-            {
-              "name": "Privacy and Copyright"
-            },
-            {
-              "name": "Algorithmic Bias"
-            },
-            {
-              "name": "Transparency (XAI)"
-            },
-            {
-              "name": "Existential Risk"
-            },
-            {
-              "name": "Environmental Impact"
+              "name": "By problem type (Optimization, Search)"
             }
           ]
         }
       ]
     },
     {
-      "name": "Operating Systems",
+      "name": "Big O Notation",
       "children": [
         {
-          "name": "Core Functions",
+          "name": "Concepts",
           "children": [
             {
-              "name": "Resource Allocation"
+              "name": "Upper bound of growth"
             },
             {
-              "name": "Hardware Abstraction"
+              "name": "Bachmann–Landau family"
             },
             {
-              "name": "Common Services"
+              "name": "Asymptotic analysis"
             }
           ]
         },
         {
-          "name": "Major Components",
+          "name": "Common Orders",
           "children": [
             {
-              "name": "Kernel"
+              "name": "O(1) Constant"
             },
             {
-              "name": "Process Management"
+              "name": "O(log n) Logarithmic"
             },
             {
-              "name": "Memory Management"
+              "name": "O(n) Linear"
             },
             {
-              "name": "File Systems"
+              "name": "O(n log n) Linearithmic"
             },
             {
-              "name": "Device Drivers"
+              "name": "O(n^2) Quadratic"
             },
             {
-              "name": "User Interface (GUI/CLI)"
+              "name": "O(2^n) Exponential"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Structures",
+      "children": [
+        {
+          "name": "Linear Structures",
+          "children": [
+            {
+              "name": "Arrays (Contiguous memory)"
+            },
+            {
+              "name": "Linked Lists (Nodes and pointers)"
+            },
+            {
+              "name": "Stacks (LIFO)"
+            },
+            {
+              "name": "Queues (FIFO)"
             }
           ]
         },
         {
-          "name": "System Types",
+          "name": "Non-Linear Structures",
           "children": [
             {
-              "name": "Distributed Systems"
+              "name": "Trees (Hierarchical, B-tree, Trie)"
             },
             {
-              "name": "Embedded Systems"
+              "name": "Graphs (Nodes and Edges)"
             },
             {
-              "name": "Real-Time OS"
+              "name": "Hash Tables (Key-value mapping)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Interview Preparation Strategies",
+      "children": [
+        {
+          "name": "Personal Storytelling",
+          "children": [
+            {
+              "name": "Resume Impact (Action + Context + Result)"
             },
             {
-              "name": "Hypervisors"
+              "name": "Present-Past-Future Structure"
             },
             {
-              "name": "Library OS (Unikernels)"
+              "name": "STAR Method for behavior (Shahadat)"
             }
           ]
         },
         {
-          "name": "Popular Platforms",
+          "name": "Technical Execution",
           "children": [
             {
-              "name": "Android (Mobile)"
+              "name": "Pattern Recognition (Sliding Window, Two Pointers)"
             },
             {
-              "name": "Microsoft Windows"
+              "name": "System Design (Clarify, High-level, Deep dive)"
             },
             {
-              "name": "iOS / iPadOS"
+              "name": "Thinking Out Loud (Tadabbur)"
+            }
+          ]
+        },
+        {
+          "name": "Closing and Negotiation",
+          "children": [
+            {
+              "name": "Salary Negotiation (Mizan)"
             },
             {
-              "name": "Linux / Unix"
+              "name": "Asking strategic questions"
             },
             {
-              "name": "macOS"
+              "name": "Total Compensation research"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Competitive Programming & Platforms",
+      "children": [
+        {
+          "name": "Platforms",
+          "children": [
+            {
+              "name": "LeetCode (Interview prep focus)"
+            },
+            {
+              "name": "Codeforces (Competitive sport focus)"
+            },
+            {
+              "name": "HackerRank & CodeChef"
+            }
+          ]
+        },
+        {
+          "name": "Competitions",
+          "children": [
+            {
+              "name": "ICPC (University level)"
+            },
+            {
+              "name": "Google Code Jam"
+            },
+            {
+              "name": "Meta Hacker Cup"
             }
           ]
         }

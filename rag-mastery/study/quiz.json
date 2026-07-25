@@ -1,317 +1,308 @@
 {
-  "title": "Science Quiz",
+  "title": "RAG Quiz",
   "questions": [
     {
-      "question": "In the $11^{th}$ century, the scholar Alhacen utilized experimental evidence to overturn which ancient theory of vision supported by Euclid and Ptolemy?",
+      "question": "Which specific tool was introduced by LangChain in October 2023 to facilitate the deployment of LangChain Expression Language (LCEL) code as a production-ready API?",
       "answerOptions": [
         {
-          "text": "Emission theory",
+          "text": "LangSmith",
+          "isCorrect": false,
+          "rationale": "This platform is primarily used for observability and evaluation of LLM applications rather than API deployment."
+        },
+        {
+          "text": "LangGraph",
+          "isCorrect": false,
+          "rationale": "This tool provides infrastructure specifically for managed stateful AI agents rather than general LCEL deployment."
+        },
+        {
+          "text": "LangServe",
           "isCorrect": true,
-          "rationale": "Alhacen's experiments with the camera obscura and light refraction proved that light enters the eye rather than originating from it."
+          "rationale": "It was designed to turn LCEL definitions into hosted APIs for production use cases."
         },
         {
-          "text": "Intromission theory",
+          "text": "LangChain Hub",
           "isCorrect": false,
-          "rationale": "This was actually the view Alhacen's work helped establish, positing that physical representatives of objects enter the eye."
-        },
-        {
-          "text": "Corpuscular theory",
-          "isCorrect": false,
-          "rationale": "While related to the nature of light, this specific theory was famously debated much later during the time of Newton and Huygens."
-        },
-        {
-          "text": "Geocentric theory",
-          "isCorrect": false,
-          "rationale": "This theory describes the structure of the solar system, not the physiological or physical mechanics of human vision."
+          "rationale": "While related to the ecosystem, it is not the specific tool described for hosting LCEL as an API."
         }
       ],
-      "hint": "Think about the ancient belief that the eyes sent out rays to 'touch' objects."
+      "hint": "Consider the name that suggests 'serving' or 'service' for a deployment context."
     },
     {
-      "question": "Which criterion, popularized by Karl Popper, defines a scientific theory by its ability to be proven wrong through experimental outcomes?",
+      "question": "In the context of Retrieval-augmented generation (RAG), what is the primary function of the 'non-parametric' external memory?",
+      "answer": "To provide access to information outside the model's static training data during inference.",
       "answerOptions": [
         {
-          "text": "Falsifiability",
+          "text": "To permanently update the model's weights with new data",
+          "isCorrect": false,
+          "rationale": "Updating internal weights is a characteristic of parametric training, not external memory retrieval."
+        },
+        {
+          "text": "To serve as a repository of external documents for retrieval at inference time",
           "isCorrect": true,
-          "rationale": "Popper argued that for a theory to be scientific, it must make risky predictions that can be tested and potentially refuted."
+          "rationale": "This external memory allows the model to reference specific documents to ground its responses in facts not found in its weights."
         },
         {
-          "text": "Verificationism",
+          "text": "To increase the computational speed of the LLM's transformer layers",
           "isCorrect": false,
-          "rationale": "This approach seeks to confirm theories through observation, which Popper critiqued as being insufficient to demarcate science from non-science."
+          "rationale": "External memory retrieval actually adds a processing step, which typically does not increase raw computation speed."
         },
         {
-          "text": "Parsimony",
+          "text": "To eliminate the need for any prompt engineering or user input",
           "isCorrect": false,
-          "rationale": "This principle refers to choosing the simplest explanation among competing ones rather than the inherent testability of a theory."
-        },
-        {
-          "text": "Invariance",
-          "isCorrect": false,
-          "rationale": "This refers to structures that remain unchanged regardless of perspective, which is a hallmark of good theory but not Popper's primary demarcation tool."
+          "rationale": "Prompt engineering remains essential to integrate the retrieved information effectively into the user's query."
         }
       ],
-      "hint": "This concept suggests that 'the game of science' requires exposing ideas to the hazard of refutation."
+      "hint": "Think about how RAG complements the 'static' knowledge learned during initial training."
     },
     {
-      "question": "According to Norwood Russell Hanson, why is there no such thing as 'pure' or neutral observation in scientific inquiry?",
+      "question": "What is the primary objective of using 'prompt stuffing' within a RAG system?",
       "answerOptions": [
         {
-          "text": "Observation is theory-laden",
+          "text": "To reduce the token count of the query to save costs",
+          "isCorrect": false,
+          "rationale": "Prompt stuffing actually increases the token count by adding retrieved context to the original user query."
+        },
+        {
+          "text": "To force the model to prioritize retrieved facts over its pre-existing training knowledge",
           "isCorrect": true,
-          "rationale": "The observer's conceptual framework and prior knowledge inevitably influence how empirical data is perceived and interpreted."
+          "rationale": "By providing key information early in the prompt, the model is encouraged to rely on the supplied data for its response."
         },
         {
-          "text": "Human senses are inherently flawed",
+          "text": "To allow the model to operate without an internet connection",
           "isCorrect": false,
-          "rationale": "While senses have limits, Hanson's specific argument focuses on the mental framework used to process sensory input, not biological limitations."
+          "rationale": "While it uses local data, the term refers to the method of prompt construction rather than connectivity status."
         },
         {
-          "text": "Intersubjectivity is impossible",
+          "text": "To automatically retrain the LLM on every user interaction",
           "isCorrect": false,
-          "rationale": "Intersubjectivity—shared understanding—is a goal of science; Hanson argued it is complicated by differing frameworks, not that it cannot exist."
-        },
-        {
-          "text": "Data collection is always biased by funding",
-          "isCorrect": false,
-          "rationale": "While social and economic factors can influence research, this is a sociological critique rather than Hanson's epistemological one."
+          "rationale": "RAG specifically avoids the need for frequent retraining by providing context dynamically."
         }
       ],
-      "hint": "Consider how two people looking at a sunrise might 'see' different celestial movements based on their beliefs."
+      "hint": "Focus on the hierarchy of information that the model receives during the generation phase."
     },
     {
-      "question": "Which type of reasoning is used to generate general principles or theories based on a large set of specific observations?",
+      "question": "According to the source material, why does RAG not completely solve the problem of AI hallucinations?",
       "answerOptions": [
         {
-          "text": "Inductive reasoning",
+          "text": "The LLM can still fabricate details around the provided source material",
           "isCorrect": true,
-          "rationale": "This process involves generalizing from specific data points to form broader conclusions, though the results are probable rather than guaranteed."
+          "rationale": "Even with correct facts, the generative nature of the model can lead it to misinterpret or embellish the retrieved context."
         },
         {
-          "text": "Deductive reasoning",
+          "text": "RAG systems cannot access unstructured data like PDFs",
           "isCorrect": false,
-          "rationale": "This logic moves in the opposite direction, deriving specific consequences from established general premises."
+          "rationale": "The source explicitly states that RAG can use various document types, including unstructured text from PDFs."
         },
         {
-          "text": "Abductive reasoning",
+          "text": "Retrieved sources are always factually incorrect",
           "isCorrect": false,
-          "rationale": "This involves seeking the most plausible explanation for a surprising observation, often used in the early stages of inquiry."
+          "rationale": "Hallucinations occur even when the sources are correct if the model fails to interpret them properly."
         },
         {
-          "text": "Reductive reasoning",
+          "text": "Vector databases are limited to only 10 dimensions",
           "isCorrect": false,
-          "rationale": "This typically refers to breaking down complex systems into simpler parts, which is a method of analysis rather than a type of logical inference."
+          "rationale": "Vector embeddings typically range from a few hundred to tens of thousands of dimensions."
         }
       ],
-      "hint": "Think of the 'bottom-up' approach where data leads to a theory."
+      "hint": "Consider the difference between having the right information and correctly synthesizing it."
     },
     {
-      "question": "In the hypothetico-deductive model, if an experiment yields a positive result that matches a prediction, what is the logical status of the hypothesis?",
+      "question": "In semantic search, how do vector embeddings differ from traditional lexical search methods?",
       "answerOptions": [
         {
-          "text": "It is corroborated or supported",
+          "text": "They focus on literal matches of query words",
+          "isCorrect": false,
+          "rationale": "Literal keyword matching is the defining characteristic of lexical search, not semantic search."
+        },
+        {
+          "text": "They convert text into numerical vectors to find results based on meaning",
           "isCorrect": true,
-          "rationale": "Positive results provide evidence for the hypothesis but do not constitute a definitive proof, as other theories might predict the same outcome."
+          "rationale": "Mathematical representations allow the system to calculate similarities in context and intent rather than just characters."
         },
         {
-          "text": "It is proven as a universal law",
+          "text": "They use XML tags to define search parameters",
           "isCorrect": false,
-          "rationale": "Science avoids claims of absolute proof because new evidence could always surface to falsify the theory later."
+          "rationale": "While XML is used on the Semantic Web, modern semantic search primarily relies on dense vector comparisons."
         },
         {
-          "text": "It is verified via $modus$ $ponens$",
+          "text": "They are only compatible with relational databases",
           "isCorrect": false,
-          "rationale": "Affirming the consequent is a logical fallacy; just because the prediction came true doesn't mean the premise is the only possible cause."
-        },
-        {
-          "text": "It becomes an axiom",
-          "isCorrect": false,
-          "rationale": "Axioms are self-evident starting points in formal systems, whereas scientific hypotheses remain subject to empirical testing."
+          "rationale": "Vector embeddings are specifically stored in vector databases or specialized indices, often separate from traditional relational tables."
         }
       ],
-      "hint": "Recall that logic allows us to prove a theory false $(\\neg \\text{B} \\Rightarrow \\neg \\text{A})$ but not necessarily true $(\\text{B} \\Rightarrow \\text{A})$."
+      "hint": "Think about the transition from 'keyword' matching to 'concept' matching."
     },
     {
-      "question": "The principle of 'Parsimony,' often associated with Occam's Razor, suggests that scientists should prefer hypotheses that:",
+      "question": "Which algorithm is cited as a top performer for approximate nearest neighbor (ANN) searches in vector databases?",
       "answerOptions": [
         {
-          "text": "Are the simplest sufficient explanations",
+          "text": "K-Nearest Neighbors (KNN)",
+          "isCorrect": false,
+          "rationale": "ANN is typically used as a more efficient alternative to exact KNN searches in high-dimensional spaces."
+        },
+        {
+          "text": "Hierarchical Navigable Small World (HNSW) graphs",
           "isCorrect": true,
-          "rationale": "Newton and others argued that nature does nothing in vain and that we should not seek more causes than are necessary to explain phenomena."
+          "rationale": "HNSW implementations are highlighted as being among the best performers in recent search benchmarks."
         },
         {
-          "text": "Have the highest mathematical complexity",
+          "text": "Inverse Cloze Task (ICT)",
           "isCorrect": false,
-          "rationale": "Complexity often introduces 'fudge factors' that can make a theory less elegant and harder to test."
+          "rationale": "ICT is a technique for pre-training a retriever, not a primary search algorithm for vector retrieval."
         },
         {
-          "text": "Utilize the most recent technological data",
+          "text": "MapReduce",
           "isCorrect": false,
-          "rationale": "While technology improves measurements, the age of the data does not determine the simplicity or validity of the underlying explanation."
-        },
-        {
-          "text": "Cannot be varied or modified",
-          "isCorrect": false,
-          "rationale": "While being 'hard-to-vary' is a sign of a good theory, parsimony specifically deals with the economy of entities and assumptions."
+          "rationale": "This is a programming model for processing large datasets in parallel, mentioned as a LangChain integration for combining documents."
         }
       ],
-      "hint": "This principle is essentially a rule of thumb for avoiding unnecessary complications."
+      "hint": "Look for a specific graph-based structure mentioned for its efficiency in similarity searches."
     },
     {
-      "question": "Ludwik Fleck's concept of 'Thought Collectives' suggests that scientific progress is primarily influenced by:",
+      "question": "In the context of retriever optimization, if the retriever's selection distribution is $P$ and the generator's likelihood distribution is $Q$, what mathematical metric is minimized to align the two?",
       "answerOptions": [
         {
-          "text": "Shared traditions and assumed assumptions",
+          "text": "Dot product",
+          "isCorrect": false,
+          "rationale": "The dot product is used to score similarities between vectors rather than to measure the divergence between probability distributions."
+        },
+        {
+          "text": "Kullback-Leibler (KL) divergence",
           "isCorrect": true,
-          "rationale": "Fleck argued that scientists work within a 'thought-style' that is instilled through social learning and shared within a specific community."
+          "rationale": "Minimizing $D_{KL}(P || Q)$ is a standard method to ensure the retriever picks documents that the generator finds most useful."
         },
         {
-          "text": "Individual creative genius",
+          "text": "N-gram overlap scoring",
           "isCorrect": false,
-          "rationale": "Fleck's view is sociological, emphasizing the collective mindset over the isolated inspiration of a single researcher."
+          "rationale": "This metric measures the similarity of text sequences based on character or word chains, not probability alignment."
         },
         {
-          "text": "Rigid adherence to a universal method",
+          "text": "Cosine similarity",
           "isCorrect": false,
-          "rationale": "Fleck claimed that these thought-styles are often invisible and non-rational, rather than being the result of a fixed, logical procedure."
-        },
-        {
-          "text": "The objective reality of physical facts",
-          "isCorrect": false,
-          "rationale": "Fleck emphasized that what we call 'facts' have a developmental history and are conditioned by the social practices of the collective."
+          "rationale": "This measures the angle between vectors and is common for retrieval but not for aligning generator-retriever distributions."
         }
       ],
-      "hint": "This idea highlights the social and communal nature of how scientific knowledge is produced."
+      "hint": "This metric is frequently used in statistics to measure how one probability distribution differs from a second."
     },
     {
-      "question": "According to John Ioannidis, what economic factor contributes significantly to the 'metascience' finding that most research results are false?",
+      "question": "What is a major trade-off when using 'Retro' language models compared to standard RAG implementations?",
       "answerOptions": [
         {
-          "text": "High levels of competition and financial interests",
+          "text": "It requires high training costs as it is trained from scratch",
           "isCorrect": true,
-          "rationale": "Competition and financial stakes can lead to design flexibility and bias, decreasing the probability that a finding is true."
+          "rationale": "Unlike standard RAG, which uses pre-trained models, Retro redesigns the network architecture and requires intensive training runs."
         },
         {
-          "text": "The lack of government funding",
+          "text": "It is significantly larger than standard models",
           "isCorrect": false,
-          "rationale": "The source material actually suggests that high stakes and competition, which often occur with *available* funding, drive the issue."
+          "rationale": "Retro aims to use a much smaller network that achieves comparable performance to larger models by utilizing a retriever."
         },
         {
-          "text": "The high cost of peer-reviewed journals",
+          "text": "It cannot access external memory",
           "isCorrect": false,
-          "rationale": "While journal access is a separate debate, it is not cited as a reason for the statistical falsity of research results."
+          "rationale": "Retro is specifically designed with a retriever in mind to integrate domain knowledge during training."
         },
         {
-          "text": "Over-reliance on qualitative research",
+          "text": "It only supports structured data like JSON",
           "isCorrect": false,
-          "rationale": "Ioannidis focuses primarily on problems in statistical and biomedical research rather than a shift in research types."
+          "rationale": "Retro focuses on retrieving from massive amounts of text tokens, similar to other RAG schemes."
         }
       ],
-      "hint": "Consider how external pressures for successful results might affect the integrity of a study's design."
+      "hint": "Think about why RAG was originally adopted to avoid certain computational and financial expenses."
     },
     {
-      "question": "In George Pólya's model of mathematical problem-solving, which phase involves constructing plausible arguments by 'working backward from the goal'?",
+      "question": "What happens in a 'hybrid search' workflow used in vector databases?",
       "answerOptions": [
         {
-          "text": "Analysis",
+          "text": "It combines semantic vector search with traditional full-text search",
           "isCorrect": true,
-          "rationale": "Analysis is the heuristic stage where one explores arguments and plans the path to a solution, often by starting at the desired conclusion."
+          "rationale": "Merging these results helps capture specific keyword facts that vector-only semantic searches might miss."
         },
         {
-          "text": "Understanding",
+          "text": "It uses both Python and JavaScript simultaneously for data processing",
           "isCorrect": false,
-          "rationale": "This initial stage focuses on defining the problem and questioning what is already known."
+          "rationale": "While LangChain is written in these languages, 'hybrid search' refers to the retrieval technique, not the coding language."
         },
         {
-          "text": "Synthesis",
+          "text": "It alternates between cloud storage and local storage for every query",
           "isCorrect": false,
-          "rationale": "Synthesis is the formal, step-by-step exposition of the details to reach the proof, moving forward from the premises."
+          "rationale": "Hybrid search refers to the combination of different search methodologies rather than storage hardware."
         },
         {
-          "text": "Review",
+          "text": "It strictly uses only structured relational databases",
           "isCorrect": false,
-          "rationale": "This final stage involves re-examining the result and the path taken to verify its correctness and extend its application."
+          "rationale": "Relational databases typically rely on exact matches, whereas hybrid search integrates semantic and lexical approaches."
         }
       ],
-      "hint": "This stage occurs after you grasp the problem but before you write out the formal proof."
+      "hint": "The term 'hybrid' suggests combining two different methods of finding information."
     },
     {
-      "question": "Which percentage range represents the estimated amount of scientific discoveries that were 'stumbled upon' rather than specifically sought out?",
+      "question": "True or False: LangGraph Platform is specifically designed for the deployment of stateful AI agents that can run for long periods.",
       "answerOptions": [
         {
-          "text": "$33\\%$ to $50\\%$",
+          "text": "True",
           "isCorrect": true,
-          "rationale": "A significant portion of science relies on serendipity, where researchers recognize the importance of unexpected results in controlled experiments."
+          "rationale": "Released in May 2025, it provides managed infrastructure specifically for long-running AI agent processes."
         },
         {
-          "text": "$5\\%$ to $10\\%$",
+          "text": "False",
           "isCorrect": false,
-          "rationale": "This range underestimates the role of chance, which scientists like Pasteur and Fleming famously highlighted."
-        },
-        {
-          "text": "$75\\%$ to $90\\%$",
-          "isCorrect": false,
-          "rationale": "This range is too high; while luck is important, the majority of research is still driven by systematic inquiry."
-        },
-        {
-          "text": "Less than $1\\%$",
-          "isCorrect": false,
-          "rationale": "This assumes science follows a perfectly linear, textbook model, which the source material identifies as a myth."
+          "rationale": "The source explicitly describes LangGraph as a platform for deploying long-running, stateful agents."
         }
       ],
-      "hint": "Consider the discovery of penicillin by Alexander Fleming as a benchmark for this frequency."
+      "hint": "Recall the announcement made in May 2025 regarding managed infrastructure."
     },
     {
-      "question": "Paul Feyerabend's 'Against Method' famously argued for 'epistemological anarchism,' suggesting that the only universal rule is:",
+      "question": "Which specific risk involves an LLM extracting statements from a retrieved source while failing to understand the surrounding context?",
       "answerOptions": [
         {
-          "text": "Anything goes",
+          "text": "RAG poisoning",
           "isCorrect": true,
-          "rationale": "Feyerabend jokingly suggested this to highlight that for every scientific rule, there is a historical instance where breaking it led to progress."
+          "rationale": "This can lead to 'interpreted errors' where a model takes a rhetorical statement or a title as a factual claim."
         },
         {
-          "text": "Skepticism above all",
+          "text": "Parametric overload",
           "isCorrect": false,
-          "rationale": "While skepticism is a core principle, Feyerabend's specific critique was against the existence of *any* fixed methodological rules."
+          "rationale": "This is not a term used in the source; the source discusses the misinterpretation of retrieved data."
         },
         {
-          "text": "Verify then trust",
+          "text": "Product quantization",
           "isCorrect": false,
-          "rationale": "This is a conservative approach to method, whereas Feyerabend argued that science is a heterogeneous and local practice."
+          "rationale": "This is a technical compression method for vectors, not a conceptual risk associated with context misinterpretation."
         },
         {
-          "text": "Follow the data",
+          "text": "Sparse vector collision",
           "isCorrect": false,
-          "rationale": "This implies a standard inductivist method, which Feyerabend rejected as being too narrow to describe all scientific success."
+          "rationale": "This refers to indexing technicalities rather than the high-level error of missing linguistic context."
         }
       ],
-      "hint": "This slogan represents the rejection of a single, homogeneous method for all of science."
+      "hint": "Consider the example of the book title regarding Barack Obama mentioned in the text."
     },
     {
-      "question": "What mathematical principle describes how scientists adjust the probability of a hypothesis being true as new information becomes available?",
+      "question": "In the context of data chunking, why might 'File format-based chunking' be preferred for code files?",
       "answerOptions": [
         {
-          "text": "Bayes' theorem",
+          "text": "It allows the system to vectorize whole functions or classes intact",
           "isCorrect": true,
-          "rationale": "Bayesian inference is used to update the likelihood of a theory based on existing evidence and the results of new experiments."
+          "rationale": "Maintaining the structural integrity of code ensures the retriever understands the complete logical unit rather than fragmented lines."
         },
         {
-          "text": "Euclidean geometry",
+          "text": "It is the only method that supports Python 3.0",
           "isCorrect": false,
-          "rationale": "This branch of math deals with shapes and spaces and was used by Alhacen and Newton, but it is not a tool for updating probabilities."
+          "rationale": "Code support in frameworks like LangChain is more general and not restricted to a single chunking style for a specific language version."
         },
         {
-          "text": "The law of large numbers",
+          "text": "It reduces the dimensionality of the vectors from $1024$ to $256$",
           "isCorrect": false,
-          "rationale": "This describes the results of performing the same experiment many times, focusing on the stability of averages rather than updating hypothesis confidence."
+          "rationale": "Vector dimensionality is determined by the embedding model used, not the method of chunking the input text."
         },
         {
-          "text": "Monte-Carlo simulations",
+          "text": "It automatically converts all code into human-readable summaries",
           "isCorrect": false,
-          "rationale": "These generate empirical data arbitrarily for analysis but do not represent the core logical principle of probability adjustment."
+          "rationale": "Chunking is the process of breaking data for indexing; summarization is a separate generative task."
         }
       ],
-      "hint": "This theorem is essential for 'model-dependent realism' and adjusting beliefs based on surprise."
+      "hint": "Think about what logical units in programming make the most sense to keep together for analysis."
     }
   ]
 }

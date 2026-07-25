@@ -1,395 +1,317 @@
 {
-  "title": "Deep Learning Quiz",
+  "title": "AI Quiz",
   "questions": [
     {
-      "question": "In the context of deep learning, what distinguishes the 'upstream task' from the 'downstream task' during the process of fine-tuning?",
+      "question": "Which organization introduced the Model Context Protocol (MCP) in November 2024 to address the $N \\times M$ data integration problem?",
       "answerOptions": [
         {
-          "text": "The upstream task is the original objective for which a model was pre-trained, while the downstream task is the new, more specific target.",
+          "text": "OpenAI",
+          "isCorrect": false,
+          "rationale": "While this organization adopted the protocol in early 2025, it was not the original developer of the standard."
+        },
+        {
+          "text": "Google DeepMind",
+          "isCorrect": false,
+          "rationale": "This entity embraced the standard in 2025 to improve data connectivity but did not lead the initial development."
+        },
+        {
+          "text": "Anthropic",
           "isCorrect": true,
-          "rationale": "Fine-tuning is defined as the process of adapting a model from a general source objective to a specialized application."
+          "rationale": "Engineers at this company created the framework to standardize how AI systems integrate with external tools and data sources."
         },
         {
-          "text": "The upstream task refers to data preprocessing, whereas the downstream task refers to the final inference performed by the user.",
+          "text": "Meta",
           "isCorrect": false,
-          "rationale": "While preprocessing occurs before training, these terms specifically describe the transfer of learned knowledge between different training objectives."
-        },
-        {
-          "text": "Upstream tasks involve backpropagation through all layers, while downstream tasks only involve the output layer.",
-          "isCorrect": false,
-          "rationale": "Fine-tuning can involve updating all layers or just a subset, but this distinction does not define the tasks themselves."
-        },
-        {
-          "text": "The upstream task is a supervised learning objective, while the downstream task must be unsupervised.",
-          "isCorrect": false,
-          "rationale": "Both tasks can be supervised, and fine-tuning is typically accomplished through supervised learning for the specific downstream goal."
+          "rationale": "This organization released the Segment Anything model but was not mentioned as the creator of the MCP framework."
         }
       ],
-      "hint": "Consider the direction of knowledge transfer in transfer learning."
+      "hint": "This company is also responsible for the development of the Claude model family."
     },
     {
-      "question": "When fine-tuning a convolutional neural network, why is it common practice to 'freeze' the earlier layers closest to the input?",
+      "question": "In the Model Context Protocol architecture, which component is typically an AI agent that orchestrates interactions with the LLM?",
       "answerOptions": [
         {
-          "text": "Earlier layers capture low-level features that are generally useful across different tasks, whereas later layers capture task-specific high-level features.",
+          "text": "MCP Server",
+          "isCorrect": false,
+          "rationale": "This component provides the actual tools or resources, such as database access or specific documentation."
+        },
+        {
+          "text": "MCP Host",
           "isCorrect": true,
-          "rationale": "Feature extraction moves from generic elements like edges to complex, domain-specific shapes as data passes deeper into the network."
+          "rationale": "The host acts as the primary environment that manages the AI agent and creates dedicated clients for each connected server."
         },
         {
-          "text": "Freezing earlier layers prevents the model from experiencing any loss of precision during quantization.",
+          "text": "MCP Client",
           "isCorrect": false,
-          "rationale": "Layer freezing is a technique for parameter efficiency and feature preservation, not a method for numerical bit-width reduction."
+          "rationale": "This specific entity is created by the host to communicate with one individual server."
         },
         {
-          "text": "The earlier layers are mathematically fixed by the initial learning rate $\\eta$ and cannot be altered by backpropagation.",
+          "text": "JSON-RPC Transport",
           "isCorrect": false,
-          "rationale": "Any layer can technically be updated; freezing is a choice made to preserve weights, not a mathematical impossibility."
-        },
-        {
-          "text": "Earlier layers contain the majority of the model's parameters, and updating them would always cause catastrophic forgetting.",
-          "isCorrect": false,
-          "rationale": "The decision to freeze is based on the nature of the features learned, though it does also save computational resources."
+          "rationale": "This refers to the communication protocol itself rather than a functional architectural role in the hierarchy."
         }
       ],
-      "hint": "Think about the hierarchy of features a model learns as it processes images."
+      "hint": "Think of the central entity that manages the overall AI application and its various connections."
     },
     {
-      "question": "Which of the following best describes the core mechanism of Low-Rank Adaptation (LoRA)?",
+      "question": "What is the primary distinction between 'Prompt Engineering' and 'Context Engineering'?",
       "answerOptions": [
         {
-          "text": "It adds a low-rank matrix to the original weight matrix, allowing for parameter-efficient updates without changing the base model weights.",
+          "text": "Prompt engineering focuses on training data, while context engineering focuses on fine-tuning.",
+          "isCorrect": false,
+          "rationale": "Both fields generally operate on pre-trained models rather than modifying the underlying parameters through traditional training."
+        },
+        {
+          "text": "Prompt engineering structures natural language inputs, while context engineering manages non-prompt elements like tokens and metadata.",
           "isCorrect": true,
-          "rationale": "LoRA focuses on training a small number of additional parameters that modulate the behavior of a frozen base model."
+          "rationale": "Context engineering is a software-focused discipline aimed at system reliability and efficiency through the management of system instructions and metadata."
         },
         {
-          "text": "It reduces the precision of model weights from floating-point to integers to save memory.",
+          "text": "Prompt engineering is automated, while context engineering is purely manual.",
           "isCorrect": false,
-          "rationale": "This describes quantization, whereas LoRA is an architectural adapter technique."
+          "rationale": "Both fields utilize automated methods, such as RAG for prompts and token budgeting for contexts."
         },
         {
-          "text": "It identifies and removes redundant neurons from the network to create a sparse structure.",
+          "text": "Prompt engineering only applies to text, while context engineering only applies to images.",
           "isCorrect": false,
-          "rationale": "Identifying and removing redundant structures is known as pruning, which is distinct from low-rank adaptation."
-        },
-        {
-          "text": "It modifies the representations of less than $1\\%$ of the model's hidden layers during inference time.",
-          "isCorrect": false,
-          "rationale": "This describes Representation Fine-Tuning (ReFT), which is a representation-based equivalent to LoRA."
+          "rationale": "Both disciplines are applicable to multimodal systems that handle various types of input and output."
         }
       ],
-      "hint": "Think about how a small amount of new data can be added to a large, fixed set of values."
+      "hint": "One deals with the user's specific request, while the other deals with the broader technical environment provided to the model."
     },
     {
-      "question": "The essence of overfitting is the tendency of a model to mistakenly identify which of the following as underlying structure?",
+      "question": "Research on LLM sensitivity indicates that reordering examples within a prompt can cause accuracy shifts of up to what percentage?",
       "answerOptions": [
         {
-          "text": "Residual variation or statistical noise.",
+          "text": "$10\\%$",
+          "isCorrect": false,
+          "rationale": "This represents a minor shift, whereas research shows much higher volatility based on simple formatting changes."
+        },
+        {
+          "text": "$25\\%$",
+          "isCorrect": false,
+          "rationale": "While significant, this figure underestimates the potential impact that example sequence can have on performance."
+        },
+        {
+          "text": "$40\\%$",
           "isCorrect": true,
-          "rationale": "Overfitting occurs when the model 'memorizes' the specific random fluctuations in the training set rather than learning generalizable patterns."
+          "rationale": "Model performance is highly brittle, and studies have shown that even small variations like example ordering can lead to shifts of this magnitude."
         },
         {
-          "text": "Nonlinear relationships in a large dataset.",
+          "text": "$75\\%$",
           "isCorrect": false,
-          "rationale": "Capturing legitimate nonlinear relationships is a goal of complex models; noise is the irrelevant data that causes errors."
-        },
-        {
-          "text": "The global minimum of the objective function $Q(w)$.",
-          "isCorrect": false,
-          "rationale": "Finding the global minimum is the ideal goal of optimization; overfitting represents a failure of that minimum to generalize."
-        },
-        {
-          "text": "Independent variables that have high variance.",
-          "isCorrect": false,
-          "rationale": "High variance in variables is a data characteristic; overfitting is the model's over-reliance on the specific instances of that data."
+          "rationale": "While accuracy points can fluctuate by 76 in some specific cases, the shift cited specifically for reordering examples was lower."
         }
       ],
-      "hint": "Consider what part of the data is unique to the training set and not present in the real world."
+      "hint": "The magnitude of the shift is significant enough to make prompt generalization a major challenge for developers."
     },
     {
-      "question": "According to the 'Principle of Parsimony' mentioned in the source material, how can overfitting be avoided in statistical inference?",
+      "question": "Which prompting technique involves generating multiple lines of reasoning in parallel and allows the model to backtrack or explore different paths?",
       "answerOptions": [
         {
-          "text": "By selecting the simplest model that adequately explains the data.",
+          "text": "Chain-of-thought (CoT)",
+          "isCorrect": false,
+          "rationale": "This technique typically follows a linear series of intermediate steps rather than parallel exploration."
+        },
+        {
+          "text": "Tree-of-thought",
           "isCorrect": true,
-          "rationale": "Parsimony suggests that a model should not be more complex than necessary, as unnecessary parameters increase sampling variance."
+          "rationale": "This approach generalizes linear reasoning by using search algorithms like breadth-first or depth-first search across multiple reasoning branches."
         },
         {
-          "text": "By increasing the number of variables until the coefficient of determination $R^2$ reaches $1.0$.",
+          "text": "Few-shot prompting",
           "isCorrect": false,
-          "rationale": "A perfect $R^2$ often indicates extreme overfitting, as the model has likely memorized the noise in the data."
+          "rationale": "This technique relies on providing exemplars of input-output pairs but does not specify a multi-path reasoning process."
         },
         {
-          "text": "By ensuring that the number of parameters equals the number of observations $n$.",
+          "text": "Self-consistency",
           "isCorrect": false,
-          "rationale": "Having as many parameters as observations allows for perfect memorization, which is an extreme example of overfitting."
-        },
-        {
-          "text": "By exclusively using linear regression for all types of nonlinear data.",
-          "isCorrect": false,
-          "rationale": "Using a linear model for nonlinear data results in underfitting, which is the opposite problem of overfitting."
+          "rationale": "This method performs multiple rollouts but selects a final answer based on the most common conclusion rather than branching paths."
         }
       ],
-      "hint": "Think of Occam's Razor applied to mathematical modeling."
+      "hint": "This method is named after a hierarchical data structure that allows for branching and parallel exploration."
     },
     {
-      "question": "Which consequence is most likely to occur when a generative model is overfitted to its training data?",
+      "question": "What is the role of 'exemplars' in the context of few-shot prompting?",
       "answerOptions": [
         {
-          "text": "The model may produce outputs that are virtually identical to specific instances from its training set.",
+          "text": "They are the system instructions that define the model's persona.",
+          "isCorrect": false,
+          "rationale": "Defining a character for the AI to mimic is known as role assignment, which is separate from providing examples."
+        },
+        {
+          "text": "They are input-output pairs provided to demonstrate the desired task to the model.",
           "isCorrect": true,
-          "rationale": "Overfitted models lose the ability to generate novel content and instead reproduce the 'memorized' training examples."
+          "rationale": "Exemplars allow the model to engage in in-context learning by observing patterns in the provided demonstrations."
         },
         {
-          "text": "The model will automatically simplify its architecture to improve portability.",
+          "text": "They are the tokens used to track the cost of the API request.",
           "isCorrect": false,
-          "rationale": "Portability is lost as models become more complex and overfitted, not gained automatically."
+          "rationale": "Token management is a part of context engineering used for budgeting rather than task demonstration."
         },
         {
-          "text": "The validation error will decrease as the number of training cycles increases.",
+          "text": "They are the automated gradients used to optimize the prompt.",
           "isCorrect": false,
-          "rationale": "In overfitting, training error decreases while validation error typically increases."
-        },
-        {
-          "text": "The model will develop robustness to distribution shifts in new datasets.",
-          "isCorrect": false,
-          "rationale": "Overfitting specifically degrades a model's robustness and performance on unseen, shifted data."
+          "rationale": "Exemplars consist of natural language text rather than the numerical values used in soft prompting or prefix-tuning."
         }
       ],
-      "hint": "Reflect on why copyright issues might arise with models like Stable Diffusion."
+      "hint": "Think of these as 'demonstration cases' used to teach the model a specific behavior within the current conversation."
     },
     {
-      "question": "In the context of Large Language Models (LLMs), what is the primary goal of 'quantization'?",
+      "question": "In the context of automated prompt generation, what is the function of the 'automatic prompt engineer' algorithm?",
       "answerOptions": [
         {
-          "text": "To constrain weights from a continuous set of values to a smaller, discrete set for optimization.",
+          "text": "It uses gradient descent to adjust the model's weights permanently.",
+          "isCorrect": false,
+          "rationale": "Automatic prompt engineering focuses on modifying the input string rather than changing the fixed model parameters."
+        },
+        {
+          "text": "It uses one LLM to generate and score instructions for another target LLM.",
           "isCorrect": true,
-          "rationale": "Quantization reduces the bit-width of model parameters, which saves memory and can speed up inference."
+          "rationale": "The algorithm employs a prompting LLM to search for the highest-scoring instructions that lead to the desired output in the target model."
         },
         {
-          "text": "To increase the rank of the weight matrix to capture more complex representations.",
+          "text": "It manually removes hallucinated content from the model's responses.",
           "isCorrect": false,
-          "rationale": "Increasing rank would likely increase complexity and parameter count, whereas quantization is a form of compression."
+          "rationale": "The algorithm is an automated optimization process and does not involve human manual editing of responses."
         },
         {
-          "text": "To randomly remove $50\\%$ of the neurons to prevent the model from memorizing noise.",
+          "text": "It creates a knowledge graph to connect disparate pieces of information.",
           "isCorrect": false,
-          "rationale": "This describes dropout regularization, not the discretization process of quantization."
-        },
-        {
-          "text": "To ensure that the model follows a linear learning rate schedule throughout training.",
-          "isCorrect": false,
-          "rationale": "Learning rate schedules are part of the optimization algorithm (like SGD), not weight discretization."
+          "rationale": "The creation of knowledge graphs for information synthesis is the primary characteristic of GraphRAG."
         }
       ],
-      "hint": "Think about the transition from real numbers to integers."
+      "hint": "This process involves a feedback loop between a 'prompting' model and a 'target' model."
     },
     {
-      "question": "What is the fundamental difference between standard (batch) gradient descent and stochastic gradient descent (SGD)?",
+      "question": "What does the term 'In-context learning' refer to in large language models?",
       "answerOptions": [
         {
-          "text": "Batch gradient descent calculates the gradient using the entire dataset, while SGD estimates it using a randomly selected subset or single sample.",
+          "text": "The model's ability to update its weights based on user feedback.",
+          "isCorrect": false,
+          "rationale": "Weight updates occur during training or fine-tuning, whereas in-context learning is temporary and does not change the model parameters."
+        },
+        {
+          "text": "The emergent ability of a model to temporarily learn from information provided in the prompt.",
           "isCorrect": true,
-          "rationale": "SGD reduces the computational burden by approximating the true gradient, allowing for faster iterations in large-scale problems."
+          "rationale": "This property allows the model to adapt to new tasks during inference without being explicitly fine-tuned for them."
         },
         {
-          "text": "SGD only works for convex objective functions, whereas batch gradient descent works for all differentiable functions.",
+          "text": "The process of retrieving documents from an external vector database.",
           "isCorrect": false,
-          "rationale": "Both methods are used for various types of functions, though convergence guarantees vary based on convexity."
+          "rationale": "Document retrieval is the core component of RAG, which provides the context for in-context learning but is not the learning ability itself."
         },
         {
-          "text": "Batch gradient descent requires a learning rate $\\eta$, but SGD does not use one.",
+          "text": "The model's ability to remember information across different user sessions.",
           "isCorrect": false,
-          "rationale": "Both methods rely on a learning rate to determine the size of the update steps taken during optimization."
-        },
-        {
-          "text": "SGD is an exact method, while batch gradient descent is a stochastic approximation.",
-          "isCorrect": false,
-          "rationale": "The roles are reversed; batch gradient descent uses the true gradient, while SGD is the approximation."
+          "rationale": "In-context learning is generally limited to the current window and does not persist once the specific session is closed."
         }
       ],
-      "hint": "Consider the amount of data processed before each parameter update."
+      "hint": "This ability is described as 'learning to learn' and disappears once the prompt context is removed."
     },
     {
-      "question": "How does the 'Momentum method' modify the basic stochastic gradient descent update rule?",
+      "question": "In the technical formulation of searching for token sequences in prefix-tuning, which of the following expressions represents the maximization of log-likelihood?",
       "answerOptions": [
         {
-          "text": "It determines the next update as a linear combination of the current gradient and the previous update.",
+          "text": "$\\arg \\max_{\\tilde{X}} \\sum_{i} \\log Pr[Y^{i}|{\\tilde{X}} \\ast X^{i}]$",
           "isCorrect": true,
-          "rationale": "Momentum helps prevent oscillations and accelerates the model's 'travel' through parameter space in a consistent direction."
+          "rationale": "This formula identifies the token sequence that makes the observed output most probable given the inputs and the prepended prefix."
         },
         {
-          "text": "It divides the learning rate by a running average of the magnitudes of recent gradients.",
+          "text": "$N \\times M = \\text{Integration}$",
           "isCorrect": false,
-          "rationale": "This describes adaptive learning rate methods like RMSProp or Adagrad."
+          "rationale": "This describes the complexity of building custom connectors in legacy systems rather than a mathematical optimization objective."
         },
         {
-          "text": "It evaluates the stochastic gradient at the next iterate rather than the current one to ensure stability.",
+          "text": "$\\text{Tokens} + \\text{Metadata} = \\text{Context}$",
           "isCorrect": false,
-          "rationale": "This describes implicit updates (ISGD), which are used to solve numerical instability issues."
+          "rationale": "This is a conceptual representation of context engineering components rather than a formal likelihood calculation."
         },
         {
-          "text": "It records an average of the parameter vector $w$ over time to produce the final output.",
+          "text": "$\\text{CoT} + \\text{Rollouts} = \\text{Consistency}$",
           "isCorrect": false,
-          "rationale": "This describes averaged stochastic gradient descent (ASGD), not the momentum-based update."
+          "rationale": "This represents the concept of self-consistency in reasoning rollouts rather than a gradient-based search objective."
         }
       ],
-      "hint": "Think of a physical particle gaining acceleration as it rolls down a hill."
+      "hint": "The formula involves finding the argument that maximizes the sum of probabilities for target outputs."
     },
     {
-      "question": "What specific problem does the AdaGrad algorithm attempt to solve in sparse data settings?",
+      "question": "What security risk was highlighted by researchers regarding the Model Context Protocol in April 2025?",
       "answerOptions": [
         {
-          "text": "It adjusts the learning rate per parameter, increasing it for sparse parameters and decreasing it for frequent ones.",
+          "text": "Server-side hardware failure",
+          "isCorrect": false,
+          "rationale": "Hardware failure is a general IT concern, but the specific research focused on vulnerabilities inherent to the protocol's integration."
+        },
+        {
+          "text": "Data exfiltration through poisoned tools",
           "isCorrect": true,
-          "rationale": "By scaling the learning rate using the square root of the sum of historical squared gradients, AdaGrad balances updates across all features."
+          "rationale": "Researchers found that malicious tools could be used to siphon data from other tools connected via the MCP framework."
         },
         {
-          "text": "It prevents the model from underfitting by increasing the complexity of the objective function $Q(w)$.",
+          "text": "Loss of API keys due to weak encryption",
           "isCorrect": false,
-          "rationale": "AdaGrad is an optimizer, not a method for altering the model's capacity or objective function complexity."
+          "rationale": "While security related, the specific report emphasized issues like prompt injection and tool-based attacks rather than key encryption."
         },
         {
-          "text": "It uses a forgetting factor $\\gamma$ to ensure that the learning rate never becomes too small.",
+          "text": "Excessive token consumption leading to high costs",
           "isCorrect": false,
-          "rationale": "AdaGrad's learning rate tends to diminish over time; the use of a forgetting factor is a feature of RMSProp."
-        },
-        {
-          "text": "It applies a linear interpolation between fine-tuned and original weights to increase robustness.",
-          "isCorrect": false,
-          "rationale": "Weight interpolation is a robustness technique, not an adaptive learning rate strategy."
+          "rationale": "This is an operational or financial risk managed by context engineering, not a structural security vulnerability identified by researchers."
         }
       ],
-      "hint": "Consider how an algorithm might handle features that appear very infrequently in the training data."
+      "hint": "This risk involves using the protocol's connectivity against itself to steal information."
     },
     {
-      "question": "Which of the following describes the Adam optimizer, published in 2014?",
+      "question": "Graph retrieval-augmented generation (GraphRAG) was particularly noted for its effectiveness on which type of data collections?",
       "answerOptions": [
         {
-          "text": "It combines adaptive learning rates from RMSProp with the feature of moving averages from the Momentum method.",
+          "text": "Real-time stock market pricing",
+          "isCorrect": false,
+          "rationale": "Real-time data streams often require low-latency updates rather than the complex semantic synthesis provided by knowledge graphs."
+        },
+        {
+          "text": "Large datasets like news articles on violent incidents",
           "isCorrect": true,
-          "rationale": "Adam utilizes running averages of both the gradients (first moments) and the squared gradients (second moments) to update weights."
+          "rationale": "Knowledge graphs help connect disparate reports and synthesize summarized concepts over expansive, unstructured narratives."
         },
         {
-          "text": "It is a second-order method that requires calculating the Hessian matrix at every step.",
+          "text": "Single short documents with clear summaries",
           "isCorrect": false,
-          "rationale": "Adam is a first-order method, meaning it only requires the gradient, making it computationally efficient for large models."
+          "rationale": "The overhead of a knowledge graph is typically unnecessary for small, isolated pieces of information that standard RAG handles well."
         },
         {
-          "text": "It is the only optimizer currently supported by the PyTorch and TensorFlow libraries.",
+          "text": "Numerical datasets stored in CSV format",
           "isCorrect": false,
-          "rationale": "While Adam-derived optimizers are popular, libraries still support classic SGD, RMSProp, and others."
-        },
-        {
-          "text": "It relies on full-batch evaluations to ensure the algorithm never diverges.",
-          "isCorrect": false,
-          "rationale": "Adam is designed to work efficiently with mini-batches in a stochastic setting."
+          "rationale": "Standard structured querying or data access tools are usually more efficient for purely numerical or tabular data."
         }
       ],
-      "hint": "Think of it as a hybrid of two other major SGD extensions."
+      "hint": "Think of a scenario where the model needs to connect 'disparate pieces of information' across a large narrative collection."
     },
     {
-      "question": "In the context of model diagnostics, a situation where validation error increases while training error continues to decrease is a primary indicator of:",
+      "question": "Which term describes an AI-assisted software development method where a user describes a goal and the model handles the code generation, popularized as a trend in 2025?",
       "answerOptions": [
         {
-          "text": "Overfitting.",
+          "text": "Hard coding",
+          "isCorrect": false,
+          "rationale": "Hard coding is a traditional manual practice where values are fixed directly in the source code."
+        },
+        {
+          "text": "Vibe coding",
           "isCorrect": true,
-          "rationale": "This divergence indicates that the model is performing better on the data it has seen but losing its ability to generalize to new data."
+          "rationale": "This method relies on high-level natural language descriptions to guide the LLM's code creation, making it a form of 'vibe-based' interaction."
         },
         {
-          "text": "Underfitting.",
+          "text": "Prefix-tuning",
           "isCorrect": false,
-          "rationale": "Underfitting is typically indicated by high error on both training and validation sets because the model is too simple."
+          "rationale": "This is a technical optimization method for prompts rather than a general user-facing coding workflow."
         },
         {
-          "text": "Benign overfitting.",
+          "text": "Logic translation",
           "isCorrect": false,
-          "rationale": "Benign overfitting refers to models that generalize well despite perfect training accuracy, which is a specific and somewhat counter-intuitive case."
-        },
-        {
-          "text": "Distribution shift.",
-          "isCorrect": false,
-          "rationale": "While distribution shift causes high error, the specific trend of diverging training and validation errors during training is the classic sign of overfitting."
+          "rationale": "Logic translation is a general NLP task rather than a specific cultural trend in AI-assisted software development."
         }
       ],
-      "hint": "Focus on the relationship between learning and 'memorizing' during the training cycle."
-    },
-    {
-      "question": "How does the technique of 'weight interpolation' help mitigate the loss of robustness caused by fine-tuning?",
-      "answerOptions": [
-        {
-          "text": "It linearly blends the weights of the fine-tuned model with those of the original pre-trained model.",
-          "isCorrect": true,
-          "rationale": "This approach aims to retain the specialized performance of the fine-tuned model while recovering the general out-of-distribution performance of the original."
-        },
-        {
-          "text": "It identifies and removes the $10$ most significant parameters per observation.",
-          "isCorrect": false,
-          "rationale": "This is a misinterpretation of the 'one in ten rule,' which is a guideline for the number of observations needed for reliable regression."
-        },
-        {
-          "text": "It replaces all parameters with a low-rank matrix to decrease space requirements.",
-          "isCorrect": false,
-          "rationale": "This describes LoRA, which is used for efficiency rather than specifically for interpolating weights for robustness."
-        },
-        {
-          "text": "It uses Reinforcement Learning from Human Feedback (RLHF) to re-train the output layer.",
-          "isCorrect": false,
-          "rationale": "RLHF is a fine-tuning objective for alignment, not a weight interpolation technique for distribution shifts."
-        }
-      ],
-      "hint": "Think about finding a middle ground between a 'new' specialist and an 'old' generalist."
-    },
-    {
-      "question": "What is the primary advantage of using 'mini-batches' in stochastic gradient descent over single-sample updates?",
-      "answerOptions": [
-        {
-          "text": "They allow for smoother convergence and take advantage of optimized vectorization libraries.",
-          "isCorrect": true,
-          "rationale": "Processing multiple samples at once provides a more stable gradient estimate and is computationally faster on modern hardware."
-        },
-        {
-          "text": "They guarantee that the model will always reach the global minimum of a non-convex function.",
-          "isCorrect": false,
-          "rationale": "No stochastic method can guarantee reaching the global minimum for non-convex functions; they can only guarantee a local minimum under certain conditions."
-        },
-        {
-          "text": "They eliminate the need to shuffle the training data between passes.",
-          "isCorrect": false,
-          "rationale": "Data shuffling is still recommended for mini-batches to prevent the model from learning the order of the data."
-        },
-        {
-          "text": "They reduce the model's sensitivity to the forgetting factor $\\gamma$.",
-          "isCorrect": false,
-          "rationale": "The forgetting factor is an internal parameter of specific optimizers like RMSProp, not a result of mini-batch processing."
-        }
-      ],
-      "hint": "Consider the trade-off between computational efficiency and the stability of the gradient estimate."
-    },
-    {
-      "question": "Under what condition can stochastic gradient descent be said to converge 'almost surely' to a global minimum?",
-      "answerOptions": [
-        {
-          "text": "When the objective function is convex or pseudoconvex and learning rates decrease appropriately.",
-          "isCorrect": true,
-          "rationale": "Convexity ensures that any local minimum is a global minimum, and proper learning rate schedules allow for convergence."
-        },
-        {
-          "text": "When the model is overparameterized and the learning rate $\\eta$ remains constant.",
-          "isCorrect": false,
-          "rationale": "Constant learning rates often cause the model to oscillate around the minimum rather than converging exactly."
-        },
-        {
-          "text": "When the number of parameters $w$ is exactly equal to the number of observations $n$.",
-          "isCorrect": false,
-          "rationale": "This condition usually leads to extreme overfitting and perfect memorization, not a generalizable global minimum."
-        },
-        {
-          "text": "When the central difference approximation is used instead of the true gradient.",
-          "isCorrect": false,
-          "rationale": "Central differences are a way to estimate the gradient when it is not directly calculable, but they do not guarantee global convergence."
-        }
-      ],
-      "hint": "Think about the shape of the objective function and the behavior of the step size."
+      "hint": "This term was selected as the Collins Dictionary word of the year for 2025."
     }
   ]
 }

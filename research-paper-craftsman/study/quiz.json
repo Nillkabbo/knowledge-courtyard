@@ -1,265 +1,317 @@
 {
-  "title": "Algorithms Quiz",
+  "title": "Science Quiz",
   "questions": [
     {
-      "question": "Based on the formal definition of Big $O$ notation, which condition must be satisfied for a function $f(x)$ to be considered $O(g(x))$ on a domain $D$?",
+      "question": "In the $11^{th}$ century, the scholar Alhacen utilized experimental evidence to overturn which ancient theory of vision supported by Euclid and Ptolemy?",
       "answerOptions": [
         {
-          "text": "There exists a positive real number $M$ such that $|f(x)| \\le M g(x)$ for all $x \\in D$.",
+          "text": "Emission theory",
           "isCorrect": true,
-          "rationale": "This aligns with the fundamental definition where the function $f(x)$ is bounded above by the comparison function $g(x)$ scaled by a constant factor."
+          "rationale": "Alhacen's experiments with the camera obscura and light refraction proved that light enters the eye rather than originating from it."
         },
         {
-          "text": "The limit of the ratio $\\frac{f(x)}{g(x)}$ as $x$ approaches infinity must be exactly $1$.",
+          "text": "Intromission theory",
           "isCorrect": false,
-          "rationale": "This describes asymptotic equivalence, denoted by $\\sim$, rather than the upper bound requirement of Big $O$."
+          "rationale": "This was actually the view Alhacen's work helped establish, positing that physical representatives of objects enter the eye."
         },
         {
-          "text": "The function $f(x)$ must be equal to $g(x)$ for all sufficiently large values of $x$.",
+          "text": "Corpuscular theory",
           "isCorrect": false,
-          "rationale": "Big $O$ notation only requires an upper bound relationship, not functional equality."
+          "rationale": "While related to the nature of light, this specific theory was famously debated much later during the time of Newton and Huygens."
         },
         {
-          "text": "There exists a constant $M$ such that $f(x) \\ge M g(x)$ for all $x \\in D$.",
+          "text": "Geocentric theory",
           "isCorrect": false,
-          "rationale": "This describes a lower bound relationship, which is associated with Big $\\Omega$ notation rather than Big $O$."
+          "rationale": "This theory describes the structure of the solar system, not the physiological or physical mechanics of human vision."
         }
       ],
-      "hint": "Think about the requirement for an implied constant that establishes an upper bound on growth."
+      "hint": "Think about the ancient belief that the eyes sent out rays to 'touch' objects."
     },
     {
-      "question": "Which of the following classes of functions grows the slowest as $n$ increases without bound?",
+      "question": "Which criterion, popularized by Karl Popper, defines a scientific theory by its ability to be proven wrong through experimental outcomes?",
       "answerOptions": [
         {
-          "text": "$O(\\log \\log n)$",
+          "text": "Falsifiability",
           "isCorrect": true,
-          "rationale": "Double logarithmic growth is significantly slower than logarithmic, linear, or polynomial growth."
+          "rationale": "Popper argued that for a theory to be scientific, it must make risky predictions that can be tested and potentially refuted."
         },
         {
-          "text": "$O(\\log n)$",
+          "text": "Verificationism",
           "isCorrect": false,
-          "rationale": "While slow, logarithmic growth is faster than double logarithmic growth."
+          "rationale": "This approach seeks to confirm theories through observation, which Popper critiqued as being insufficient to demarcate science from non-science."
         },
         {
-          "text": "$O(n \\log^* n)$",
+          "text": "Parsimony",
           "isCorrect": false,
-          "rationale": "This complexity involves $n$ multiplied by the log-star function, making it grow much faster than pure logarithmic functions."
+          "rationale": "This principle refers to choosing the simplest explanation among competing ones rather than the inherent testability of a theory."
         },
         {
-          "text": "$O(1)$",
+          "text": "Invariance",
           "isCorrect": false,
-          "rationale": "Wait, $O(1)$ is actually the slowest possible growth (constant time), but among the variable growth functions listed, $O(\\log \\log n)$ is the slowest variable rate; however, $O(1)$ is mathematically the slowest in any ranking."
+          "rationale": "This refers to structures that remain unchanged regardless of perspective, which is a hallmark of good theory but not Popper's primary demarcation tool."
         }
       ],
-      "hint": "Consider the hierarchical list of common algorithm time complexities provided in the text."
+      "hint": "This concept suggests that 'the game of science' requires exposing ideas to the hazard of refutation."
     },
     {
-      "question": "What is the primary conceptual difference between an Abstract Data Type (ADT) and a data structure as described in the source material?",
+      "question": "According to Norwood Russell Hanson, why is there no such thing as 'pure' or neutral observation in scientific inquiry?",
       "answerOptions": [
         {
-          "text": "An ADT defines logical operations and results, while a data structure is the physical implementation in memory.",
+          "text": "Observation is theory-laden",
           "isCorrect": true,
-          "rationale": "The ADT acts as a logical specification, whereas the data structure provides the concrete representation and implementation details."
+          "rationale": "The observer's conceptual framework and prior knowledge inevitably influence how empirical data is perceived and interpreted."
         },
         {
-          "text": "ADTs are only used in high-level languages like Python, whereas data structures are limited to assembly.",
+          "text": "Human senses are inherently flawed",
           "isCorrect": false,
-          "rationale": "Both concepts are applicable across various programming levels, though language support for their implementation varies."
+          "rationale": "While senses have limits, Hanson's specific argument focuses on the mental framework used to process sensory input, not biological limitations."
         },
         {
-          "text": "A data structure can only have one possible ADT, but an ADT can be used for many different algorithms.",
+          "text": "Intersubjectivity is impossible",
           "isCorrect": false,
-          "rationale": "The relationship is actually the opposite: a single ADT can be implemented by multiple different data structures."
+          "rationale": "Intersubjectivity—shared understanding—is a goal of science; Hanson argued it is complicated by differing frameworks, not that it cannot exist."
         },
         {
-          "text": "ADTs refer to the storage in secondary memory, while data structures refer only to RAM.",
+          "text": "Data collection is always biased by funding",
           "isCorrect": false,
-          "rationale": "The text notes that data structures are used to organize data in both primary memory and secondary storage."
+          "rationale": "While social and economic factors can influence research, this is a sociological critique rather than Hanson's epistemological one."
         }
       ],
-      "hint": "Focus on the distinction between the algebraic structure of data and its physical representation."
+      "hint": "Consider how two people looking at a sunrise might 'see' different celestial movements based on their beliefs."
     },
     {
-      "question": "In the context of the Bachmann–Landau family, what does the notation $f(n) = o(g(n))$ (Little-$o$) signify?",
+      "question": "Which type of reasoning is used to generate general principles or theories based on a large set of specific observations?",
       "answerOptions": [
         {
-          "text": "$g(n)$ grows much faster than $f(n)$, such that the ratio $\\frac{f(n)}{g(n)}$ approaches zero as $n \\to \\infty$.",
+          "text": "Inductive reasoning",
           "isCorrect": true,
-          "rationale": "Little-$o$ makes a stronger asymptotic statement than Big $O$, indicating that $f$ is dominated by $g$ and is insignificant in comparison as $n$ grows."
+          "rationale": "This process involves generalizing from specific data points to form broader conclusions, though the results are probable rather than guaranteed."
         },
         {
-          "text": "$f(n)$ and $g(n)$ have exactly the same order of growth as $n$ approaches infinity.",
+          "text": "Deductive reasoning",
           "isCorrect": false,
-          "rationale": "This describes Big $\\Theta$ or asymptotic equivalence $(\\sim)$, not the dominance relationship of Little-$o$."
+          "rationale": "This logic moves in the opposite direction, deriving specific consequences from established general premises."
         },
         {
-          "text": "$f(n)$ is bounded below by $g(n)$ up to a constant factor.",
+          "text": "Abductive reasoning",
           "isCorrect": false,
-          "rationale": "This is the definition of Big $\\Omega$ (Knuth's notation) rather than Little-$o$."
+          "rationale": "This involves seeking the most plausible explanation for a surprising observation, often used in the early stages of inquiry."
         },
         {
-          "text": "The function $f(n)$ is a constant multiple of $g(n)$ for all $n$.",
+          "text": "Reductive reasoning",
           "isCorrect": false,
-          "rationale": "Little-$o$ implies a limit of zero for the ratio, which is impossible if one is a non-zero constant multiple of the other."
+          "rationale": "This typically refers to breaking down complex systems into simpler parts, which is a method of analysis rather than a type of logical inference."
         }
       ],
-      "hint": "Think about the specific limit requirement that differentiates Little-$o$ from Big $O$."
+      "hint": "Think of the 'bottom-up' approach where data leads to a theory."
     },
     {
-      "question": "What is a characteristic advantage of using a linked list over a traditional array?",
+      "question": "In the hypothetico-deductive model, if an experiment yields a positive result that matches a prediction, what is the logical status of the hypothesis?",
       "answerOptions": [
         {
-          "text": "Elements can be efficiently inserted and removed without relocating the rest of the collection.",
+          "text": "It is corroborated or supported",
           "isCorrect": true,
-          "rationale": "Linked lists use nodes and pointers, allowing for dynamic changes to the structure without the need for contiguous shifting of elements."
+          "rationale": "Positive results provide evidence for the hypothesis but do not constitute a definitive proof, as other theories might predict the same outcome."
         },
         {
-          "text": "It provides faster random access to any element using an integer index.",
+          "text": "It is proven as a universal law",
           "isCorrect": false,
-          "rationale": "Random access is actually slower in linked lists compared to arrays because one must traverse the list sequentially."
+          "rationale": "Science avoids claims of absolute proof because new evidence could always surface to falsify the theory later."
         },
         {
-          "text": "It ensures that all elements are stored in contiguous memory locations for better cache performance.",
+          "text": "It is verified via $modus$ $ponens$",
           "isCorrect": false,
-          "rationale": "Contiguous memory is a property of arrays, whereas linked lists store related element addresses within each node."
+          "rationale": "Affirming the consequent is a logical fallacy; just because the prediction came true doesn't mean the premise is the only possible cause."
         },
         {
-          "text": "It requires less memory because it does not need to store pointers or references.",
+          "text": "It becomes an axiom",
           "isCorrect": false,
-          "rationale": "Linked lists generally require more memory because each node must store both the data value and a pointer to the next node."
+          "rationale": "Axioms are self-evident starting points in formal systems, whereas scientific hypotheses remain subject to empirical testing."
         }
       ],
-      "hint": "Consider how the structure handles modifications like adding or deleting items in the middle of the set."
+      "hint": "Recall that logic allows us to prove a theory false $(\\neg \\text{B} \\Rightarrow \\neg \\text{A})$ but not necessarily true $(\\text{B} \\Rightarrow \\text{A})$."
     },
     {
-      "question": "According to the property 'Powers dominate logarithms', which of the following is true for any positive $a$ and $b$ as $n \\to \\infty$?",
+      "question": "The principle of 'Parsimony,' often associated with Occam's Razor, suggests that scientists should prefer hypotheses that:",
       "answerOptions": [
         {
-          "text": "$(\\log n)^a = O(n^b)$",
+          "text": "Are the simplest sufficient explanations",
           "isCorrect": true,
-          "rationale": "The source states that any power of $n$ eventually grows faster than any power of a logarithm, regardless of the exponents' sizes."
+          "rationale": "Newton and others argued that nature does nothing in vain and that we should not seek more causes than are necessary to explain phenomena."
         },
         {
-          "text": "$n^b = O((\\log n)^a)$",
+          "text": "Have the highest mathematical complexity",
           "isCorrect": false,
-          "rationale": "This incorrectly suggests that logarithms dominate powers, which contradicts the mathematical properties of growth rates."
+          "rationale": "Complexity often introduces 'fudge factors' that can make a theory less elegant and harder to test."
         },
         {
-          "text": "$(\\log n)^a = \\Theta(n^b)$",
+          "text": "Utilize the most recent technological data",
           "isCorrect": false,
-          "rationale": "This would mean they have the same growth rate, but powers grow strictly faster than logarithms."
+          "rationale": "While technology improves measurements, the age of the data does not determine the simplicity or validity of the underlying explanation."
         },
         {
-          "text": "$\\log(n^c) = O(\\log n)$ is only true if $c = 1$.",
+          "text": "Cannot be varied or modified",
           "isCorrect": false,
-          "rationale": "The source notes that $O(\\log n)$ is equivalent to $O(\\log(n^c))$ for any positive $c$ because $\\log(n^c) = c \\log n$."
+          "rationale": "While being 'hard-to-vary' is a sign of a good theory, parsimony specifically deals with the economy of entities and assumptions."
         }
       ],
-      "hint": "Recall which function type eventually 'outruns' the other as the variable becomes very large."
+      "hint": "This principle is essentially a rule of thumb for avoiding unnecessary complications."
     },
     {
-      "question": "Which data structure is described as being specifically useful for tasks like autocomplete and spell-checking by retrieving strings based on character prefixes?",
+      "question": "Ludwik Fleck's concept of 'Thought Collectives' suggests that scientific progress is primarily influenced by:",
       "answerOptions": [
         {
-          "text": "Trie",
+          "text": "Shared traditions and assumed assumptions",
           "isCorrect": true,
-          "rationale": "A trie (prefix tree) organizes strings such that each node represents a character, allowing for efficient searches based on shared prefixes."
+          "rationale": "Fleck argued that scientists work within a 'thought-style' that is instilled through social learning and shared within a specific community."
         },
         {
-          "text": "Hash table",
+          "text": "Individual creative genius",
           "isCorrect": false,
-          "rationale": "While hash tables are fast for exact lookups, they do not inherently support prefix-based searches like tries do."
+          "rationale": "Fleck's view is sociological, emphasizing the collective mindset over the isolated inspiration of a single researcher."
         },
         {
-          "text": "B-tree",
+          "text": "Rigid adherence to a universal method",
           "isCorrect": false,
-          "rationale": "B-trees are primarily used for database indexing and managing sorted data on disks rather than prefix string retrieval."
+          "rationale": "Fleck claimed that these thought-styles are often invisible and non-rational, rather than being the result of a fixed, logical procedure."
         },
         {
-          "text": "AVL tree",
+          "text": "The objective reality of physical facts",
           "isCorrect": false,
-          "rationale": "An AVL tree is a self-balancing binary search tree used for general sorted data, not optimized specifically for string prefix operations."
+          "rationale": "Fleck emphasized that what we call 'facts' have a developmental history and are conditioned by the social practices of the collective."
         }
       ],
-      "hint": "This structure is also known as a prefix tree."
+      "hint": "This idea highlights the social and communal nature of how scientific knowledge is produced."
     },
     {
-      "question": "In 1976, Donald Knuth proposed a notation that is equivalent to Hardy's $f(x) \\asymp g(x)$. Which notation was this?",
+      "question": "According to John Ioannidis, what economic factor contributes significantly to the 'metascience' finding that most research results are false?",
       "answerOptions": [
         {
-          "text": "$f(x) = \\Theta(g(x))$",
+          "text": "High levels of competition and financial interests",
           "isCorrect": true,
-          "rationale": "Knuth introduced Big $\\Theta$ to denote functions of the same order, which corresponds exactly to Hardy's $f(x) \\asymp g(x)$ notation."
+          "rationale": "Competition and financial stakes can lead to design flexibility and bias, decreasing the probability that a finding is true."
         },
         {
-          "text": "$f(x) = \\Omega(g(x))$",
+          "text": "The lack of government funding",
           "isCorrect": false,
-          "rationale": "Knuth proposed a different definition for Big $\\Omega$ that represents a lower bound, making it the inverse of Big $O$."
+          "rationale": "The source material actually suggests that high stakes and competition, which often occur with *available* funding, drive the issue."
         },
         {
-          "text": "$f(x) \\ll g(x)$",
+          "text": "The high cost of peer-reviewed journals",
           "isCorrect": false,
-          "rationale": "This is Vinogradov's notation, which is equivalent to $f(x) = O(g(x))$ rather than Big $\\Theta$."
+          "rationale": "While journal access is a separate debate, it is not cited as a reason for the statistical falsity of research results."
         },
         {
-          "text": "$f(x) \\sim g(x)$",
+          "text": "Over-reliance on qualitative research",
           "isCorrect": false,
-          "rationale": "This notation represents asymptotic equivalence, where the limit of the ratio is $1$, which is a more restrictive relationship than Big $\\Theta$."
+          "rationale": "Ioannidis focuses primarily on problems in statistical and biomedical research rather than a shift in research types."
         }
       ],
-      "hint": "This symbol is used to describe functions that are tightly bounded both above and below by the same order of growth."
+      "hint": "Consider how external pressures for successful results might affect the integrity of a study's design."
     },
     {
-      "question": "How are stacks and queues distinguished by their primary operations?",
+      "question": "In George Pólya's model of mathematical problem-solving, which phase involves constructing plausible arguments by 'working backward from the goal'?",
       "answerOptions": [
         {
-          "text": "Stacks follow the LIFO principle, while queues follow the FIFO principle.",
+          "text": "Analysis",
           "isCorrect": true,
-          "rationale": "Stacks process the 'Last In' element first (LIFO), whereas queues process the 'First In' element first (FIFO)."
+          "rationale": "Analysis is the heuristic stage where one explores arguments and plans the path to a solution, often by starting at the desired conclusion."
         },
         {
-          "text": "Stacks use enqueue and dequeue, while queues use push and pop.",
+          "text": "Understanding",
           "isCorrect": false,
-          "rationale": "The operations are swapped; stacks use push/pop and queues use enqueue/dequeue."
+          "rationale": "This initial stage focuses on defining the problem and questioning what is already known."
         },
         {
-          "text": "Both stacks and queues must be implemented using linked lists only.",
+          "text": "Synthesis",
           "isCorrect": false,
-          "rationale": "The text states that these abstract data types can be implemented using either arrays or linked lists."
+          "rationale": "Synthesis is the formal, step-by-step exposition of the details to reach the proof, moving forward from the premises."
         },
         {
-          "text": "Stacks are used for search engines, while queues are used only in databases.",
+          "text": "Review",
           "isCorrect": false,
-          "rationale": "Both are general-purpose abstract data types used in a wide variety of computational tasks."
+          "rationale": "This final stage involves re-examining the result and the path taken to verify its correctness and extend its application."
         }
       ],
-      "hint": "Think about the order in which items are added and then removed from each structure."
+      "hint": "This stage occurs after you grasp the problem but before you write out the formal proof."
     },
     {
-      "question": "What does it mean for an algorithm to be 'subexponential' as defined in the source?",
+      "question": "Which percentage range represents the estimated amount of scientific discoveries that were 'stumbled upon' rather than specifically sought out?",
       "answerOptions": [
         {
-          "text": "It grows more slowly than any exponential function of the form $c^n$ where $c > 1$.",
+          "text": "$33\\%$ to $50\\%$",
           "isCorrect": true,
-          "rationale": "Subexponential functions grow faster than any polynomial but slower than any standard exponential function."
+          "rationale": "A significant portion of science relies on serendipity, where researchers recognize the importance of unexpected results in controlled experiments."
         },
         {
-          "text": "It grows slower than a polynomial function like $n^2$.",
+          "text": "$5\\%$ to $10\\%$",
           "isCorrect": false,
-          "rationale": "A function that grows slower than any polynomial is not described this way; subexponential refers to growth between polynomial and exponential."
+          "rationale": "This range underestimates the role of chance, which scientists like Pasteur and Fleming famously highlighted."
         },
         {
-          "text": "It is equivalent to constant time growth, or $O(1)$.",
+          "text": "$75\\%$ to $90\\%$",
           "isCorrect": false,
-          "rationale": "Constant time is a specific type of polynomial growth ($n^0$), whereas subexponential growth is much faster than polynomial."
+          "rationale": "This range is too high; while luck is important, the majority of research is still driven by systematic inquiry."
         },
         {
-          "text": "It is a function that involves the inverse Ackermann function $\\alpha(n)$.",
+          "text": "Less than $1\\%$",
           "isCorrect": false,
-          "rationale": "The inverse Ackermann function grows extremely slowly, whereas subexponential functions grow quite rapidly, just not as fast as true exponentials."
+          "rationale": "This assumes science follows a perfectly linear, textbook model, which the source material identifies as a myth."
         }
       ],
-      "hint": "This term describes growth that sits between polynomial and standard exponential rates."
+      "hint": "Consider the discovery of penicillin by Alexander Fleming as a benchmark for this frequency."
+    },
+    {
+      "question": "Paul Feyerabend's 'Against Method' famously argued for 'epistemological anarchism,' suggesting that the only universal rule is:",
+      "answerOptions": [
+        {
+          "text": "Anything goes",
+          "isCorrect": true,
+          "rationale": "Feyerabend jokingly suggested this to highlight that for every scientific rule, there is a historical instance where breaking it led to progress."
+        },
+        {
+          "text": "Skepticism above all",
+          "isCorrect": false,
+          "rationale": "While skepticism is a core principle, Feyerabend's specific critique was against the existence of *any* fixed methodological rules."
+        },
+        {
+          "text": "Verify then trust",
+          "isCorrect": false,
+          "rationale": "This is a conservative approach to method, whereas Feyerabend argued that science is a heterogeneous and local practice."
+        },
+        {
+          "text": "Follow the data",
+          "isCorrect": false,
+          "rationale": "This implies a standard inductivist method, which Feyerabend rejected as being too narrow to describe all scientific success."
+        }
+      ],
+      "hint": "This slogan represents the rejection of a single, homogeneous method for all of science."
+    },
+    {
+      "question": "What mathematical principle describes how scientists adjust the probability of a hypothesis being true as new information becomes available?",
+      "answerOptions": [
+        {
+          "text": "Bayes' theorem",
+          "isCorrect": true,
+          "rationale": "Bayesian inference is used to update the likelihood of a theory based on existing evidence and the results of new experiments."
+        },
+        {
+          "text": "Euclidean geometry",
+          "isCorrect": false,
+          "rationale": "This branch of math deals with shapes and spaces and was used by Alhacen and Newton, but it is not a tool for updating probabilities."
+        },
+        {
+          "text": "The law of large numbers",
+          "isCorrect": false,
+          "rationale": "This describes the results of performing the same experiment many times, focusing on the stability of averages rather than updating hypothesis confidence."
+        },
+        {
+          "text": "Monte-Carlo simulations",
+          "isCorrect": false,
+          "rationale": "These generate empirical data arbitrarily for analysis but do not represent the core logical principle of probability adjustment."
+        }
+      ],
+      "hint": "This theorem is essential for 'model-dependent realism' and adjusting beliefs based on surprise."
     }
   ]
 }

@@ -1,329 +1,325 @@
 {
-  "title": "JSON Flashcards",
+  "title": "Postgraduate Flashcards",
   "cards": [
     {
-      "front": "What does the acronym JSON stand for?",
-      "back": "JavaScript Object Notation"
+      "front": "What is the primary purpose of academic tenure in higher education?",
+      "back": "To protect faculty members from being fired for their personal beliefs or practices, thereby defending academic freedom."
     },
     {
-      "front": "Who originally specified the JSON format in the early 2000s?",
-      "back": "Douglas Crockford"
+      "front": "In which country did the concept of academic tenure originate in the early 20th century?",
+      "back": "The United States."
     },
     {
-      "front": "Which data format serves as the basis for JSON's syntax?",
-      "back": "JavaScript"
+      "front": "Under what specific conditions can a tenured professor typically still be dismissed?",
+      "back": "Under just cause laws or extraordinary circumstances like financial exigency or program discontinuation."
     },
     {
-      "front": "According to the 2017 international standard, what is the preferred pronunciation of JSON?",
-      "back": "Pronounced like the name 'Jason'."
+      "front": "How did the Nazi regime affect academic tenure in Germany by 1939?",
+      "back": "Universal education was suppressed, 1,500 professors were purged, and nearly half of all faculty posts were occupied by Nazis."
     },
     {
-      "front": "JSON is used to store and transmit data objects consisting of _____ and arrays.",
-      "back": "name–value pairs"
+      "front": "What was the 'heresy' that led the University of Illinois to fire several untenured economists in the late 1940s?",
+      "back": "Teaching Keynesian economics."
     },
     {
-      "front": "What is the current version of the JSON Internet Standard (STD 90)?",
-      "back": "RFC 8259"
+      "front": "Why did the University of Copenhagen's 2016 firing of Professor Hans Thybo cause controversy in Denmark?",
+      "back": "The university cited 'unacceptable behavior' involving pressure on a postdoc and private email use, but courts later ruled the dismissal unjustified."
     },
     {
-      "front": "The ECMA and ISO/IEC standards for JSON describe only the allowed _____, excluding security or interoperability considerations.",
-      "back": "syntax"
+      "front": "How was academic tenure formally changed in the United Kingdom in 1988?",
+      "back": "The Education Reform Act removed the original form of academic tenure, replacing it with permanent versus temporary contracts."
     },
     {
-      "front": "Why did Douglas Crockford intentionally exclude comments from the JSON specification?",
-      "back": "To prevent people from using them to hold parsing directives, which would destroy interoperability."
+      "front": "In the German academic system, what is the 'Habilitation'?",
+      "back": "A high-level second PhD thesis that entitles the holder to become a full professor and eligible for tenureship."
     },
     {
-      "front": "JSON exchange in an open ecosystem must be encoded in which format?",
-      "back": "UTF-8"
+      "front": "What is the average age at which an academic in Germany typically obtains the position of Academic Assistant?",
+      "back": "42 years old."
     },
     {
-      "front": "Which Unicode characters allowed in JSON strings were originally problematic for JavaScript engines before 2019?",
-      "back": "$U+2028$ (Line Separator) and $U+2029$ (Paragraph Separator)."
+      "front": "The widely adopted '1940 Statement of Principles on Academic Freedom and Tenure' was formulated by which organization?",
+      "back": "The American Association of University Professors (AAUP)."
     },
     {
-      "front": "True or False: The JSON format distinguishes between integers and floating-point numbers.",
-      "back": "False"
+      "front": "In the U.S. university system, what does 'non-tenure track' usually imply for positions like adjunct professors?",
+      "back": "Higher teaching loads, lower compensation, fewer benefits, and little protection of academic freedom."
     },
     {
-      "front": "In JSON, what character is used to separate a key from its value within an object?",
-      "back": "The colon ($:$)."
+      "front": "According to defenders like Aeon J. Skoble, why is tenure necessary for heterodox scholars?",
+      "back": "It provides formal protection against firing for scholars whose views differ from the prevailing academic orthodoxy."
     },
     {
-      "front": "Which character is used to delimit an array in JSON?",
-      "back": "Square brackets ($[ ]$)."
+      "front": "What economic argument does Ellen Schrecker use to justify the job security provided by tenure?",
+      "back": "It counterbalances the inability of universities to compete with the high financial remuneration of the private sector."
     },
     {
-      "front": "What are the six basic data types supported by JSON?",
-      "back": "Number, String, Boolean, Array, Object, and null."
+      "front": "How does tenure protect K-12 public school teachers regarding curriculum?",
+      "back": "It protects them from being fired for teaching controversial subjects such as evolutionary biology or theology."
     },
     {
-      "front": "How must strings be delimited in a standard JSON document?",
-      "back": "Double quotation marks."
+      "front": "What is the 'string theory' criticism regarding tenure as described by physicist Lee Smolin?",
+      "back": "Young physicists may feel forced to conform to popular fields like string theory to avoid 'career suicide' before obtaining tenure."
     },
     {
-      "front": "JSON disallows _____, which is a comma placed after the last value in a data structure.",
-      "back": "trailing commas"
+      "front": "Which negative incentive does economist Steven Levitt associate with the existence of tenure?",
+      "back": "It rewards complacency, as professors may reduce their effort once the difficulty of removal is established."
     },
     {
-      "front": "What is the official MIME type for JSON text?",
-      "back": "application/json"
+      "front": "What is the typical time commitment for a PhD program according to the 'Knowledge Courtyard' material?",
+      "back": "5 to 7 years."
     },
     {
-      "front": "What is the standard filename extension for JSON files?",
-      "back": ".json"
+      "front": "What is the average completion time for a Computer Science PhD according to the Council of Graduate Schools (CGS)?",
+      "back": "5.8 years."
     },
     {
-      "front": "Why is it considered unsafe to use the JavaScript `eval()` function to parse JSON?",
-      "back": "It can execute arbitrary code contained within the text."
+      "front": "What are the four primary stages of a PhD timeline?",
+      "back": "Coursework, Qualifying Exam, Proposal, and Defense."
     },
     {
-      "front": "Which function was added to ECMAScript 5 to safely parse JSON strings into objects?",
-      "back": "JSON.parse()"
+      "front": "In the PhD journey, what is the primary goal of the 'Qualifying Exam'?",
+      "back": "To determine if a student is capable of becoming an official PhD Candidate by testing their knowledge of 30-50 key papers."
     },
     {
-      "front": "In terms of metadata, how does XML differ primarily from JSON?",
-      "back": "XML separates data from metadata (via elements and attributes), while JSON does not have a metadata concept."
+      "front": "What is the difference between a Research Assistantship (RA) and a Teaching Assistantship (TA)?",
+      "back": "An RA involves conducting research for a professor's grant, while a TA involves teaching undergraduate students."
     },
     {
-      "front": "What is YAML version 1.2's relationship to JSON?",
-      "back": "It is a formal superset of JSON."
+      "front": "Why is a Fellowship considered the most desirable form of PhD funding?",
+      "back": "It allows for 100% focus on research without the obligations of teaching or assisting a specific grant."
     },
     {
-      "front": "Which JSON derivative is designed specifically for representing geographical features?",
-      "back": "GeoJSON"
+      "front": "What is the approximate annual value of a funded PhD package in the U.S. (including tuition waiver and stipend)?",
+      "back": "$79,000 - $114,000+ per year."
     },
     {
-      "front": "What does the Model Context Protocol (MCP) aim to standardize?",
-      "back": "How AI systems (like LLMs) integrate and share data with external tools and sources."
+      "front": "According to the July 2026 DHS rule, what is the new fixed admission period for F-1 students?",
+      "back": "A maximum of 4 years."
     },
     {
-      "front": "Which company introduced the Model Context Protocol in November 2024?",
-      "back": "Anthropic"
+      "front": "When choosing a PhD research area, what does a 'Stable' area like Systems or Security offer compared to 'Hot' areas?",
+      "back": "Moderate competition and consistent, stable funding opportunities."
     },
     {
-      "front": "MCP addresses the 'NxM' integration problem, which occurs when developers must build custom _____ for every unique data source and AI tool.",
-      "back": "connectors"
+      "front": "In a PhD application, what is the primary purpose of the Statement of Purpose (SOP)?",
+      "back": "To express the applicant's research intention, specific research questions, and fit with the university and professor."
     },
     {
-      "front": "In the MCP architecture, what is the role of an 'MCP Host'?",
-      "back": "An AI agent that interacts with an LLM and requests services from servers."
+      "front": "Why is it discouraged to send a generic SOP to every university?",
+      "back": "Because committees look for a specific 'fit' with their faculty's recent research and the program's unique strengths."
     },
     {
-      "front": "In the MCP architecture, what does an 'MCP Server' provide to the client?",
-      "back": "Specific tools (functions) or resources (data)."
+      "front": "What is 'Cold Emailing' in the context of PhD admissions?",
+      "back": "Emailing professors directly before applying to express interest in their research and inquire about lab openings."
     },
     {
-      "front": "What transport protocol is used for communication between an MCP client and an MCP server?",
-      "back": "JSON-RPC 2.0"
+      "front": "What is a recommended 'High Profile' PhD applicant strategy?",
+      "back": "Applying to 10-15 programs, focusing on 'reach' schools in the Top-20 and 'match' schools in the Top-50."
     },
     {
-      "front": "Under which organization's governance was the Model Context Protocol donated in late 2025?",
-      "back": "The Agentic AI Foundation (AAIF) under the Linux Foundation."
+      "front": "For a 'Low Profile' PhD applicant, what is the purpose of a 'Bridge Year'?",
+      "back": "To gain research experience, publish a workshop paper, or complete a Master's to strengthen the profile for future applications."
     },
     {
-      "front": "In the context of MCP, what is the difference between a 'tool' and a 'resource'?",
-      "back": "A tool executes a function (like a calculator), while a resource provides static data (like a document)."
+      "front": "What is the 'Paper Pipeline' sequence for a first-time researcher?",
+      "back": "Literature Review $\\rightarrow$ Hypothesis $\\rightarrow$ Experiment $\\rightarrow$ Analysis $\\rightarrow$ Writing $\\rightarrow$ Submission."
     },
     {
-      "front": "Which major AI provider adopted MCP for its ChatGPT desktop app in March 2025?",
-      "back": "OpenAI"
+      "front": "How does a PhD interview differ from a standard industry coding interview?",
+      "back": "It focuses on research conversation, the applicant's thought process, and curiosity rather than technical coding tests."
     },
     {
-      "front": "What security vulnerability involves 'poisoned tools' in an MCP environment?",
-      "back": "Malicious tools that allow for data exfiltration through other connected tools."
+      "front": "What is 'Imposter Syndrome' in PhD life?",
+      "back": "The persistent feeling that one is 'not good enough' despite evidence of success, common among graduate students."
     },
     {
-      "front": "The MCP was release with SDKs for several languages, including Python, TypeScript, Java, and _____.",
-      "back": "C#"
+      "front": "Which career path after a PhD typically offers the highest salary range ($200K-$400K+)?",
+      "back": "Industry Research (e.g., DeepMind, Meta FAIR, Microsoft Research)."
     },
     {
-      "front": "What is a server-side Web API?",
-      "back": "A request–response message system with publicly exposed endpoints on a web server."
+      "front": "In the hierarchical definition of postgraduate degrees, what does 'DEA' or 'DESS' refer to in the pre-2005 French system?",
+      "back": "Master's level degrees."
     },
     {
-      "front": "In a Web API, what is an 'endpoint'?",
-      "back": "A specific URI where resources can be accessed by third-party software."
+      "front": "How do 'Higher Doctorates' like the Doctor of Science (D.Sc.) differ from a Ph.D. in some European systems?",
+      "back": "They are awarded to distinguished professors for a significant portfolio of work beyond the Ph.D. level."
     },
     {
-      "front": "Why must Web API endpoints remain static?",
-      "back": "To ensure that software interacting with them does not break when the resource location is changed."
+      "front": "What is an 'Honorary Degree'?",
+      "back": "A postgraduate level recognition awarded to individuals for achievements in fields like art or politics, without academic study."
     },
     {
-      "front": "How do RESTful Web APIs typically access resources?",
-      "back": "Using HTTP methods (GET, POST, etc.) and URL-encoded parameters."
+      "front": "In Argentina, what is the minimum requirement for admission to a postgraduate program?",
+      "back": "Full completion of an undergraduate course (carrera de grado), such as Licenciado or Ingeniero."
     },
     {
-      "front": "Which protocol requires XML as the payload format and uses WSDL documents for definition?",
-      "back": "SOAP"
+      "front": "In Australia, what is the typical duration of a Graduate Certificate?",
+      "back": "Six months of full-time coursework."
     },
     {
-      "front": "What is a 'mashup' in web development?",
-      "back": "A web application that combines the use of multiple server-side Web APIs."
+      "front": "How does the Australian 'Honours' year relate to PhD entry in the sciences?",
+      "back": "It is a one-year research program after a pass degree that is often considered equivalent to a British research Master's for PhD admission."
     },
     {
-      "front": "A _____ is a Web API that takes a URI as input to trigger an event on another server, acting like a callback.",
-      "back": "Webhook"
+      "front": "In Brazil, what is the difference between 'Lato sensu' and 'Stricto sensu' postgraduate programs?",
+      "back": "'Lato sensu' focuses on professional specialization, while 'Stricto sensu' refers to Master's and Doctoral programs for academic research."
     },
     {
-      "front": "In an API URL, what character separates the endpoint from the query string?",
-      "back": "The question mark ($?$)."
+      "front": "What is the Canadian Association of Graduate Studies (CAGS) mandate?",
+      "back": "To promote and foster excellence in graduate education and university research across 58 Canadian universities."
     },
     {
-      "front": "What character is used to separate multiple parameters within a URL query string?",
-      "back": "The ampersand ($\\&$)."
+      "front": "In Canadian universities, what is the 'reclassification' process for graduate students?",
+      "back": "Allowing a student to move directly into a Ph.D. program from a Master's after satisfactory performance in the first year."
     },
     {
-      "front": "What is the purpose of an 'API key' in a web request?",
-      "back": "To identify the user and grant access to private or restricted endpoints."
+      "front": "What is the language requirement for a PhD thesis at McGill University in Canada?",
+      "back": "Work can be submitted in either English or French, except when the course's purpose is language acquisition."
     },
     {
-      "front": "Which formatting style for JSON keys is mandatory for standard compatibility?",
-      "back": "Strings enclosed in double quotes."
+      "front": "In France, what are 'Écoles doctorales'?",
+      "back": "Educational structures that provide structured doctoral training and manage the awarding of doctoral fellowships."
     },
     {
-      "front": "True or False: JSON objects require name strings to be unique according to the ECMA standard.",
-      "back": "False (it does not require uniqueness, though it is recommended for interoperability)."
+      "front": "What is the minimum remuneration for a French 'contrat doctoral' as of 2024?",
+      "back": "€2,100."
     },
     {
-      "front": "How does JSON handle whitespace between syntactic elements?",
-      "back": "Whitespace is allowed and ignored."
+      "front": "How does the traditional 'Doktorvater' model of German doctoral studies function?",
+      "back": "A student conducts research individually under the supervision of a single professor without a formal curriculum."
     },
     {
-      "front": "Which specific characters are recognized as whitespace in JSON?",
-      "back": "Space, horizontal tab, line feed, and carriage return."
+      "front": "What is the role of a 'Graduiertenkolleg' (Research Training Group) in Germany?",
+      "back": "To provide a team of 20-30 doctoral students with structured training and DFG-funded stipends for interdisciplinary research."
     },
     {
-      "front": "What is the 'I-JSON' (Internet JSON) format?",
-      "back": "A restricted profile of JSON designed to avoid common interoperability issues."
+      "front": "In Nigeria, what is the minimum weighted average required in a Master's degree for admission to a Doctoral program?",
+      "back": "60% (B average or $4.00/5$)."
     },
     {
-      "front": "JSON Schema is primarily used for the _____, documentation, and interaction control of JSON data.",
-      "back": "validation"
+      "front": "In the UK, what degree is often used as a 'transfer' stage before a student is fully admitted to a Ph.D.?",
+      "back": "Master of Philosophy (M.Phil.) or Master of Research (M.Res.)."
     },
     {
-      "front": "What does JSON-RPC allow a system to do regarding notifications?",
-      "back": "Send information to the server that does not require a response."
+      "front": "What is the typical deadline for overseas students applying for major UK funding?",
+      "back": "Twelve months or more before the course begins."
     },
     {
-      "front": "The technique 'AJAJ' is similar to 'Ajax' but uses _____ as the data format instead of XML.",
-      "back": "JSON"
+      "front": "What does the acronym 'ABD' stand for in U.S. doctoral education?",
+      "back": "'All But Dissertation,' referring to students who have advanced to candidacy but not yet filed their thesis."
     },
     {
-      "front": "Which database uses a 'JSON-like' format called BSON for its document-oriented storage?",
-      "back": "MongoDB"
+      "front": "In the U.S., what is the purpose of 'Comprehensive Examinations' (or 'Quals')?",
+      "back": "To test a doctoral student's grasp of their discipline and determine if they are ready to proceed to independent research."
     },
     {
-      "front": "Which binary data format is promoted as an IETF standard alternative to JSON for faster processing?",
-      "back": "CBOR"
+      "front": "What is the 'April 15 Resolution' by the Council of Graduate Schools in the U.S.?",
+      "back": "A deadline giving applicants until April 15 to accept or reject financial support offers for graduate study."
     },
     {
-      "front": "In the NASA APOD API example, what is the 'return value' format?",
-      "back": "JSON"
+      "front": "How does the National Labor Relations Act affect graduate employee unions at private U.S. universities?",
+      "back": "It governs their recognition, which was not established for private universities until 2001."
     },
     {
-      "front": "What is a 'WSDL' document used for in Web Services?",
-      "back": "To define the XML messages and transport bindings of a SOAP-based service."
+      "front": "What is the difference between a 'Master's by Research' and a 'Taught Master's' in the UK?",
+      "back": "Research Master's focus on extensive original research (e.g., M.Res.), while Taught Master's (e.g., M.A., M.Sc.) focus on coursework and credits."
     },
     {
-      "front": "According to RFC 8259, what should applications do if a JSON object contains multiple members with the same name?",
-      "back": "Avoid transmitting them, as implementation behavior is unpredictable."
+      "front": "Why is 'just cause' significant in the context of academic tenure?",
+      "back": "It defines the specific, legitimate legal reasons (such as misconduct) for which a tenured employee may still be terminated."
     },
     {
-      "front": "For maximum interoperability, what is the recommended limit for number precision in JSON?",
-      "back": "IEEE 754 binary64 (double precision)."
+      "front": "The phrase 'Duration of Status' (D/S) on an F-1 visa is being replaced in 2026 by what?",
+      "back": "A fixed time period of admission (e.g., 4 years)."
     },
     {
-      "front": "Which JSON superset was used for configuring the Atom text editor and relies on significant indentation?",
-      "back": "CSON (CoffeeScript Object Notation)"
+      "front": "What is the 'Non-pecuniary' benefit of tenure mentioned in the source material?",
+      "back": "Job security, which allows universities to pay lower salaries compared to the private sector."
     },
     {
-      "front": "Which JSON superset is the primary configuration format for TIBCO Streaming and the Play Framework?",
-      "back": "HOCON"
+      "front": "In Australia, which government scheme provides tuition subsidies for domestic postgraduate students?",
+      "back": "FEE-Help (or HECS-Help for Commonwealth Supported Places)."
     },
     {
-      "front": "What are the main additions in the JSON5 specification compared to standard JSON?",
-      "back": "Comments, trailing commas, unquoted keys, and single-quoted strings."
+      "front": "Term: Licentiate",
+      "back": "Definition: An academic degree in some European countries (e.g., Finland, Sweden) that is above a Master's but below a Doctorate."
     },
     {
-      "front": "Which JSON derivative is used for encoding 'linked data'?",
-      "back": "JSON-LD"
+      "front": "In Argentina, who must review a candidate's dissertation according to postgraduate requirements?",
+      "back": "A committee composed of external examiners, with at least one external to the institution."
     },
     {
-      "front": "How does the 'UBJSON' format differ from standard JSON?",
-      "back": "It is a binary format that imitates JSON but requires fewer bytes."
+      "front": "What is the typical CATS credit value of a one-year UK Master's degree?",
+      "back": "180 credits."
     },
     {
-      "front": "What is the purpose of 'Jsonnet'?",
-      "back": "It is a domain-specific language used to generate JSON files with variables and loops."
+      "front": "Which Latin word is the etymological root of 'Doctor,' meaning 'to teach'?",
+      "back": "Docere."
     },
     {
-      "front": "What does an MCP client do when it first connects to an MCP server?",
-      "back": "It asks for a list of tools and resources and their expected calling formats."
+      "front": "According to the PhD journey guide, what is the main reason for PhD dropouts?",
+      "back": "Advisor mismatch, loss of funding, and mental health issues rather than academic weakness."
     },
     {
-      "front": "In the MCP workflow, what happens after an MCP server performs a tool action?",
-      "back": "It returns the results to the MCP host, which injects them into the LLM conversation."
+      "front": "What does a 'CV (Academic Format)' typically highlight that a professional resume might not?",
+      "back": "Research publications, presentations, specific academic projects, and teaching experience."
     },
     {
-      "front": "Why is the Model Context Protocol referred to as the 'USB-C for AI'?",
-      "back": "Because it provides a universal standard for connecting different AI models to various data sources."
+      "front": "Why is 'Negative Result' considered a valid outcome in PhD research?",
+      "back": "Because in research, proving a hypothesis wrong is still a contribution to knowledge and a learning experience."
     },
     {
-      "front": "Which JSON derivative is used by Microsoft's Visual Studio Code to allow comments in configuration?",
-      "back": "JSONC"
+      "front": "Which PhD funding type is specifically linked to teaching duties for about 20 hours per week?",
+      "back": "Teaching Assistantship (TA)."
     },
     {
-      "front": "What is the primary difference between a 'public' and a 'private' Web API endpoint?",
-      "back": "Private endpoints require an access token or API key for authentication."
+      "front": "What does the 'Diversity of Ideas' argument suggest about the necessity of tenure?",
+      "back": "Tenure protects scholars who challenge a field's 'orthodoxy' or political slant, preventing a departmental echo chamber."
     },
     {
-      "front": "What is the term for Web APIs that allow machine-based interactions using HTTP methods?",
-      "back": "RESTful APIs"
+      "front": "In Germany, what is the 'Akademischer Rat'?",
+      "back": "A permanent civil service position for research and teaching below the level of full professorship."
     },
     {
-      "front": "In a Web API request, where are parameters typically passed if they are not in the URL path?",
-      "back": "In the query string."
+      "front": "What is a 'Graduate Diploma' in the Australian system?",
+      "back": "A twelve-month full-time coursework qualification."
     },
     {
-      "front": "Which character must NOT be generated by a conforming JSON implementation, though it may be accepted during parsing?",
-      "back": "The Byte Order Mark (BOM)."
+      "front": "In the US, what constitutes the 'residency' requirement for some doctorate programs?",
+      "back": "A fixed portion of coursework taken outside the student's department or university to broaden research abilities."
     },
     {
-      "front": "What is the 'I-JSON Message Format' (RFC 7493)?",
-      "back": "A restricted JSON profile that constrains syntax to maximize interoperability."
+      "front": "How does 'Financial Exigency' affect a tenured faculty member's job security?",
+      "back": "It is an extraordinary circumstance where severe financial crisis allows a university to layoff tenured staff."
     },
     {
-      "front": "How does JSON handle the ordering of name-value pairs within an object?",
-      "back": "Ordering is not significant."
+      "front": "What was the 'most corroding and disintegrating poison' according to Adolf Hitler?",
+      "back": "Universal education."
     },
     {
-      "front": "Which JSON-based format provides a contract for valid data structure and modification?",
-      "back": "JSON Schema"
+      "front": "According to the PhD journey guide, what percentage of CS PhD applicants typically get accepted into high-profile AI/ML programs?",
+      "back": "1% to 3%."
     },
     {
-      "front": "What is the significance of the 2019 revision of ECMAScript regarding JSON?",
-      "back": "JSON became a strict subset of ECMAScript."
+      "front": "What is the 'Hook' in a Statement of Purpose (SOP)?",
+      "back": "The opening section (about 20%) that describes a specific experience that sparked the applicant's research questions."
     },
     {
-      "front": "In the NASA APOD API, what does the `url` key in the JSON return represent?",
-      "back": "A pointer to the actual photograph or image file."
+      "front": "Why is 'Paper Pipeline' progress faster the second time around?",
+      "back": "Because the researcher has already learned the difficult fundamentals of literature review, experimental setup, and academic writing."
     },
     {
-      "front": "What is the function of the 'MCP Apps' extension?",
-      "back": "It standardizes the delivery of interactive user interfaces (like dashboards) from MCP servers."
+      "front": "In the UK, which organization awards studentships for arts and humanities research?",
+      "back": "The Arts and Humanities Research Council (AHRC)."
     },
     {
-      "front": "Which security concern involves an attacker manipulating an LLM through its connected MCP data sources?",
-      "back": "Prompt injection"
+      "front": "What is the 'Stipend' in a funded PhD program?",
+      "back": "A regular living allowance paid to the student, separate from the tuition waiver."
     },
     {
-      "front": "Why is JSON preferred over XML as a 'low-overhead' alternative?",
-      "back": "It typically uses fewer characters to represent the same data structures."
-    },
-    {
-      "front": "In JSON, what is 'null' used to represent?",
-      "back": "An empty value."
+      "front": "What is the primary difference between a Master of Philosophy (M.Phil.) and a Ph.D. in most systems?",
+      "back": "The Ph.D. requires a more extensive original contribution to the field, whereas the M.Phil. has a shorter research scope."
     }
   ]
 }

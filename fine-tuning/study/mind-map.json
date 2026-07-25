@@ -1,242 +1,208 @@
 {
-  "name": "Machine Learning and AI Evaluation",
+  "name": "Machine Learning Optimization & Data Techniques",
   "children": [
     {
-      "name": "Benchmarking (Computing)",
+      "name": "Data Augmentation",
       "children": [
         {
-          "name": "Purpose",
+          "name": "Image Classification",
           "children": [
             {
-              "name": "Standardized performance evaluation"
+              "name": "Geometric Transformations"
             },
             {
-              "name": "Architectural comparison"
+              "name": "Color Space Transformations"
             },
             {
-              "name": "Workload mimicry"
+              "name": "Noise Injection"
             }
           ]
         },
         {
-          "name": "Benchmarking Principles",
+          "name": "Synthetic Oversampling",
           "children": [
             {
-              "name": "Relevance"
+              "name": "SMOTE"
             },
             {
-              "name": "Repeatability"
-            },
-            {
-              "name": "Equity"
-            },
-            {
-              "name": "Scalability"
-            },
-            {
-              "name": "Transparency"
+              "name": "Imbalanced Datasets"
             }
           ]
         },
         {
-          "name": "Benchmark Types",
+          "name": "Signal Processing",
           "children": [
             {
-              "name": "Synthetic Benchmarks"
+              "name": "Biological Signals (EEG/EMG)"
             },
             {
-              "name": "Application Benchmarks"
+              "name": "Mechanical Signals"
             },
             {
-              "name": "Microbenchmarks"
-            },
-            {
-              "name": "I/O and Database Benchmarks"
-            }
-          ]
-        },
-        {
-          "name": "Common Standards",
-          "children": [
-            {
-              "name": "SPEC (SPECint, SPECfp)"
-            },
-            {
-              "name": "TPC (DBMS benchmarks)"
-            },
-            {
-              "name": "EEMBC (Embedded)"
+              "name": "Generative Adversarial Networks"
             }
           ]
         }
       ]
     },
     {
-      "name": "Confusion Matrix",
+      "name": "Fine-tuning",
       "children": [
         {
-          "name": "Core Components",
+          "name": "Core Concepts",
           "children": [
             {
-              "name": "True Positive (TP)"
+              "name": "Transfer Learning"
             },
             {
-              "name": "True Negative (TN)"
+              "name": "Upstream vs Downstream Tasks"
             },
             {
-              "name": "False Positive (FP)"
-            },
-            {
-              "name": "False Negative (FN)"
+              "name": "Frozen vs Unfrozen Layers"
             }
           ]
         },
         {
-          "name": "Derived Metrics",
+          "name": "Variants",
           "children": [
             {
-              "name": "Accuracy"
+              "name": "Low-rank Adaptation (LoRA)"
             },
             {
-              "name": "Precision (PPV)"
+              "name": "Representation Fine-tuning (ReFT)"
             },
             {
-              "name": "Recall (Sensitivity)"
-            },
-            {
-              "name": "Specificity (TNR)"
-            },
-            {
-              "name": "F1 Score"
-            },
-            {
-              "name": "Matthews Correlation Coefficient"
+              "name": "Parameter-efficient Fine-tuning (PEFT)"
             }
           ]
         },
         {
-          "name": "Advanced Variants",
+          "name": "Applications",
           "children": [
             {
-              "name": "Multi-class Matrices"
+              "name": "Natural Language Processing"
             },
             {
-              "name": "Multi-label Classification"
+              "name": "Large Language Models"
             },
             {
-              "name": "Transport-based Confusion Matrix"
+              "name": "RLHF (ChatGPT/Sparrow)"
             }
           ]
         }
       ]
     },
     {
-      "name": "LLM Evaluation Methods",
+      "name": "Model Performance Issues",
       "children": [
         {
-          "name": "Evaluation Pillars",
+          "name": "Overfitting",
           "children": [
             {
-              "name": "Mizan (Measurement Culture)"
+              "name": "Memorizing Training Data"
             },
             {
-              "name": "Dailil (Metrics Selection)"
+              "name": "High Variance"
             },
             {
-              "name": "Qiyas (LLM-as-Judge)"
-            },
-            {
-              "name": "Shahadah (Human Testimony)"
+              "name": "Complexity vs Data Size"
             }
           ]
         },
         {
-          "name": "LLM Metrics",
+          "name": "Underfitting",
           "children": [
             {
-              "name": "Faithfulness"
+              "name": "Simplistic Models"
             },
             {
-              "name": "Relevance"
-            },
-            {
-              "name": "Coherence"
-            },
-            {
-              "name": "Fluency"
-            },
-            {
-              "name": "Instruction Following"
+              "name": "High Bias"
             }
           ]
         },
         {
-          "name": "Standard LLM Benchmarks",
+          "name": "Bias-Variance Tradeoff"
+        }
+      ]
+    },
+    {
+      "name": "Regularization Techniques",
+      "children": [
+        {
+          "name": "Explicit Regularization",
           "children": [
             {
-              "name": "MMLU (General Knowledge)"
+              "name": "L1 (LASSO)"
             },
             {
-              "name": "GSM8K (Math Reasoning)"
+              "name": "L2 (Ridge Regression)"
             },
             {
-              "name": "HumanEval (Coding)"
-            },
-            {
-              "name": "Chatbot Arena (Elo Rating)"
+              "name": "Elastic Net"
             }
           ]
         },
         {
-          "name": "Operational Eval",
+          "name": "Implicit Regularization",
           "children": [
             {
-              "name": "Regression Detection"
+              "name": "Early Stopping"
             },
             {
-              "name": "Production Sampling"
+              "name": "Dropout"
             },
             {
-              "name": "A/B Testing"
+              "name": "Pruning"
             }
           ]
         }
       ]
     },
     {
-      "name": "Evaluation Challenges",
+      "name": "Optimization Algorithms",
       "children": [
         {
-          "name": "Pitfalls",
+          "name": "Stochastic Gradient Descent (SGD)",
           "children": [
             {
-              "name": "Data Contamination"
+              "name": "Mini-batch Gradient Descent"
             },
             {
-              "name": "Goodhart's Law"
+              "name": "Learning Rate Schedules"
             },
             {
-              "name": "Selection Bias"
-            },
-            {
-              "name": "Vendor Over-tuning"
+              "name": "Momentum/Heavy Ball"
             }
           ]
         },
         {
-          "name": "Limitations",
+          "name": "Adaptive Optimizers",
           "children": [
             {
-              "name": "Black Box Opacity"
+              "name": "AdaGrad"
             },
             {
-              "name": "Hallucinations"
+              "name": "RMSProp"
             },
             {
-              "name": "Model Collapse"
+              "name": "Adam"
             },
             {
-              "name": "Adversarial Vulnerabilities"
+              "name": "AdamW"
+            }
+          ]
+        },
+        {
+          "name": "Advanced Methods",
+          "children": [
+            {
+              "name": "Implicit Updates (ISGD)"
+            },
+            {
+              "name": "Nesterov Accelerated Gradient"
+            },
+            {
+              "name": "Second-order Methods"
             }
           ]
         }

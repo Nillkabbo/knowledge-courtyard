@@ -1,345 +1,365 @@
 {
-  "title": "OS Flashcards",
+  "title": "Asymptotic Flashcards",
   "cards": [
     {
-      "front": "Which specific type of system software manages computer hardware and provides common services for computer programs?",
-      "back": "Operating system"
+      "front": "Who first introduced the Big O symbol in the book 'Analytische Zahlentheorie'?",
+      "back": "Paul Bachmann"
     },
     {
-      "front": "What is the primary role of an operating system acting as an intermediary?",
-      "back": "Managing the interaction between application programs and computer hardware."
+      "front": "What does the letter 'O' represent in the context of Bachmann–Landau notation?",
+      "back": "Ordnung (the order of approximation)"
     },
     {
-      "front": "According to data from October 2025, which operating system holds the largest global market share at 38%?",
-      "back": "Android"
+      "front": "Which mathematician extended Bachmann's notation and introduced the small 'o' symbol in 1909?",
+      "back": "Edmund Landau"
     },
     {
-      "front": "Which three operating systems are primarily categorized as mobile operating systems?",
-      "back": "Android, iOS, and iPadOS."
+      "front": "How is Big O notation primarily used in the field of computer science?",
+      "back": "To classify algorithms by how their run time or space requirements grow with the input."
     },
     {
-      "front": "What is the term for the core software component of an operating system that is always running?",
-      "back": "Kernel"
+      "front": "What type of bound does a description of a function in Big O notation provide?",
+      "back": "An upper bound on the growth rate of the function."
     },
     {
-      "front": "Operating systems isolate applications to protect them from _____ and security vulnerabilities in other programs.",
-      "back": "Errors"
+      "front": "What is the formal mathematical condition for the statement $f(x) = O(g(x))$ on a domain $D$?",
+      "back": "There exists a positive real number $M$ such that $|f(x)| \\le M g(x)$ for all $x \\in D$."
     },
     {
-      "front": "By what mechanism does an operating system mask limited hardware resources to provide programs the illusion of nearly unlimited memory?",
-      "back": "Virtualization (specifically virtual memory)."
+      "front": "In the formal definition of Big O, what name is given to the positive real number $M$?",
+      "back": "The implied constant"
     },
     {
-      "front": "In a multicomputer or cluster system, how is the relationship between CPUs and memory defined?",
-      "back": "Each CPU has its own private memory."
+      "front": "How is the domain of $x$ treated in computer science when using the notation $f(x) = O(g(x))$ as $x \\to \\infty$?",
+      "back": "The inequality holds for all $x$ that are large enough."
     },
     {
-      "front": "What additional software layer is often used in distributed systems to improve consistency between distinct networked computers?",
-      "back": "Middleware"
+      "front": "What is the meaning of the notation $f(x) = h(x) + O(g(x))$?",
+      "back": "$f(x) - h(x) = O(g(x))$ (the difference is bounded by $g(x)$)."
     },
     {
-      "front": "What is the distinguishing factor of embedded operating systems regarding software installation?",
-      "back": "They do not load user-installed software."
+      "front": "In the 'set version' of Big O notation, how is the expression $O(g(x))$ interpreted?",
+      "back": "As representing the set of all functions that satisfy the Big O condition for $g(x)$."
     },
     {
-      "front": "Which type of operating system guarantees the processing of events or data by a specific moment in time?",
-      "back": "Real-time operating system (RTOS)"
+      "front": "When simplifying $f(x) = 6x^4 - 2x^3 + 5$ using Big O notation for an infinite domain, what is the resulting form?",
+      "back": "$O(x^4)$"
     },
     {
-      "front": "How do 'hard' real-time systems differ from 'soft' real-time systems regarding timing errors?",
-      "back": "Hard systems require exact timing, while soft systems can accept occasional missed events."
+      "front": "Why is the statement $f(x) = 6x^4 - 2x^3 + 5 = O(x^3)$ considered false for large $x$?",
+      "back": "The term $6x^4$ causes the ratio $\\frac{f(x)}{x^3}$ to be unbounded as $x$ increases."
     },
     {
-      "front": "Which software type emulates hardware to allow one operating system to run as an application within another?",
-      "back": "Hypervisor (or Virtual Machine)"
+      "front": "How does Big O notation describe the error term in a finite interval approximation like a Taylor series?",
+      "back": "It summarizes the least-significant terms into a single term representing the maximum possible error."
     },
     {
-      "front": "What is constructed when a library operating system (libOS) is composed with a single application into a specialized machine image?",
-      "back": "Unikernel"
+      "front": "In multivariate Big O notation, how is it indicated that the implied constant $M$ depends on a specific variable?",
+      "back": "By using subscripts attached to the Big O symbol (e.g., $O_b(x)$)."
     },
     {
-      "front": "How were the first computers of the late 1940s and 1950s programmed before the advent of operating systems?",
-      "back": "Directly with plugboards or machine code."
+      "front": "What is the Big O product rule for two functions $f_1 = O(g_1)$ and $f_2 = O(g_2)$?",
+      "back": "$f_1 f_2 = O(g_1 g_2)$"
     },
     {
-      "front": "Which IBM operating system was the first popular one to support multiprogramming?",
-      "back": "OS/360"
+      "front": "What is the Big O sum rule for two functions $f_1 = O(g_1)$ and $f_2 = O(g_2)$?",
+      "back": "$f_1 + f_2 = O(\\max(g_1, g_2))$"
     },
     {
-      "front": "What is the definition of 'multiprogramming' in the context of 1960s mainframes?",
-      "back": "Allowing one job to use the CPU while another job is blocked waiting for I/O."
+      "front": "How does multiplying a function by a non-zero constant $k$ affect its Big O classification?",
+      "back": "It does not change it; if $f = O(g)$, then $k \\cdot f = O(g)$."
     },
     {
-      "front": "Which operating system, originally developed for a single user as a descendant of MULTICS, became the basis for System V and BSD?",
-      "back": "UNIX"
+      "front": "What mathematical property is illustrated by the statement: if $f = O(g)$ and $g = O(h)$, then $f = O(h)$?",
+      "back": "The transitive property"
     },
     {
-      "front": "What is the purpose of the POSIX standard released by the IEEE?",
-      "back": "To increase compatibility by defining standard application programming interfaces (APIs) for operating systems."
+      "front": "As $n \\to \\infty$, which term determines the order of a finite sum of functions?",
+      "back": "The fastest-growing term."
     },
     {
-      "front": "Which free software operating system was inspired by the educational UNIX clone known as MINIX?",
-      "back": "Linux"
+      "front": "How do logarithms compare to powers in terms of asymptotic growth as $n \\to \\infty$?",
+      "back": "Powers dominate logarithms: $(\\log n)^a = O(n^b)$ for any positive $a$ and $b$."
     },
     {
-      "front": "In the early 1980s, which operating system was the most popular for microcomputers before the rise of MS-DOS?",
-      "back": "CP/M (Control Program for Microcomputers)"
+      "front": "How do powers compare to exponentials in terms of asymptotic growth as $n \\to \\infty$?",
+      "back": "Exponentials dominate powers: $n^a = O(e^{bn})$ for any positive $a$ and $b$."
     },
     {
-      "front": "Which Apple computer was the first popular system to utilize a graphical user interface (GUI)?",
-      "back": "Macintosh"
+      "front": "What is the definition of a 'superpolynomial' function?",
+      "back": "A function that grows faster than $n^c$ for any constant $c$."
     },
     {
-      "front": "What was the name of the GUI overlay Microsoft originally added to the MS-DOS operating system?",
-      "back": "Windows"
+      "front": "What is the definition of a 'subexponential' function?",
+      "back": "A function that grows more slowly than any exponential function of the form $c^n$ where $c > 1$."
     },
     {
-      "front": "Which open-source mobile operating system uses a Linux kernel and a C library called Bionic?",
-      "back": "Android"
+      "front": "Why are logarithms with different constant bases considered equivalent in Big O notation?",
+      "back": "Because they only differ by a constant factor ($\\, \\log_b n = \\frac{\\log_a n}{\\log_a b}$)."
     },
     {
-      "front": "What is the fundamental difference between 'user mode' and 'kernel mode' operation?",
-      "back": "The hardware restricts instructions in user mode, while the kernel has unrestricted powers."
+      "front": "True or False: Exponentials with different bases, such as $2^n$ and $3^n$, are of the same order.",
+      "back": "False"
     },
     {
-      "front": "Which kernel-level data structure is created to manage program binary code, assigned memory, and execution priority?",
-      "back": "Process"
+      "front": "In analytic number theory, what notation is equivalent to $g(x) = O(f(x))$ when both are positive functions?",
+      "back": "$f(x) \\gg g(x)$ (Vinogradov's notation)"
     },
     {
-      "front": "What term describes the change in CPU control flow from a running program to an interrupt service routine (ISR)?",
-      "back": "Interrupt"
+      "front": "How did Donald Knuth define Big Omega ($\\Omega$) in 1976?",
+      "back": "$f(x) = \\Omega(g(x)) \\iff g(x) = O(f(x))$ (a lower bound)"
     },
     {
-      "front": "A _____ is a message to a process that an event has occurred, often referred to as a software interrupt.",
-      "back": "Signal"
+      "front": "In analytic number theory, what does the symbol $f(x) \\asymp g(x)$ (Hardy's notation) mean?",
+      "back": "That both $f(x) = O(g(x))$ and $g(x) = O(f(x))$ are true."
     },
     {
-      "front": "Which Unix-like system call is used to send a signal to another process?",
-      "back": "kill(pid, signum)"
+      "front": "What notation did Knuth propose to represent functions of the 'same order' as an alternative to Hardy's $\\asymp$?",
+      "back": "Big Theta ($\\Theta$)"
     },
     {
-      "front": "In a command-line environment, what is the effect of the 'interrupt character' (Control-C)?",
-      "back": "It terminates the currently running process."
+      "front": "The complexity class $O(1)$ is also known as _____ time.",
+      "back": "Constant"
     },
     {
-      "front": "What hardware feature allows I/O devices to bypass the CPU and access main memory directly?",
-      "back": "Direct Memory Access (DMA)"
+      "front": "What common operation is an example of $O(\\log n)$ or logarithmic time?",
+      "back": "Finding an item in a sorted array using binary search."
     },
     {
-      "front": "Why is 'cooperative memory management' considered unreliable for modern systems?",
-      "back": "It relies on programs to voluntarily stay within their limits; a single bug can crash the entire system."
+      "front": "Which complexity class describes performing a fast Fourier transform or a heapsort?",
+      "back": "$O(n \\log n)$ (linearithmic time)"
     },
     {
-      "front": "Which memory protection technique uses registers to specify allowed memory addresses and triggers an interrupt upon unauthorized access?",
-      "back": "Segmentation (or Paging)"
+      "front": "Simple sorting algorithms like bubble sort and selection sort typically have a time complexity of _____.",
+      "back": "$O(n^2)$ (quadratic time)"
     },
     {
-      "front": "What specific interrupt occurs when a program tries to access memory that has been allocated but is not currently accessible in RAM?",
-      "back": "Page fault"
+      "front": "The brute-force search for the travelling salesman problem belongs to which extreme complexity class?",
+      "back": "$O(n!)$ (factorial) or $O(c^n)$ (exponential)"
     },
     {
-      "front": "What is the term for moving less frequently accessed memory to a disk to free up space in RAM?",
-      "back": "Swapping (or Paging)"
+      "front": "What is the limit definition for 'Little-o' notation ($f(x) = o(g(x))$ as $x \\to \\infty$)?",
+      "back": "$\\lim_{x \\to \\infty} \\frac{f(x)}{g(x)} = 0$"
     },
     {
-      "front": "How does 'preemptive multitasking' prevent a single thread from monopolizing the processor?",
-      "back": "The operating system can interrupt a running thread to switch to another."
+      "front": "True or False: Every function that is $o(g)$ is also $O(g)$, but the reverse is not necessarily true.",
+      "back": "True"
     },
     {
-      "front": "What is the main difference between a 'process' and a 'thread' regarding resource sharing?",
-      "back": "Threads share code, heap data, and resources with other threads in the same process, whereas processes are isolated."
+      "front": "Using limit notation, when is $f(x)$ said to be 'asymptotic to' $g(x)$ ($f(x) \\sim g(x)$)?",
+      "back": "When $\\lim_{x \\to \\infty} \\frac{f(x)}{g(x)} = 1$."
     },
     {
-      "front": "In a file system, what is the difference between an absolute path and a relative path?",
-      "back": "Absolute paths start at the root directory; relative paths start from the current directory."
+      "front": "What is the limit definition for Knuth's little omega ($\\omega$)?",
+      "back": "$\\lim_{x \\to \\infty} \\frac{f(x)}{g(x)} = \\infty$"
     },
     {
-      "front": "How do operating systems reduce I/O latency when an application requests files?",
-      "back": "By caching recently used blocks and prefetching data the application might need next."
+      "front": "In analytic number theory, what is the Hardy–Littlewood definition of $f(x) = \\Omega(g(x))$ as $x \\to \\infty$?",
+      "back": "$\\limsup_{x \\to \\infty} \\left| \\frac{f(x)}{g(x)} \\right| > 0$"
     },
     {
-      "front": "Which file system component tracks unallocated storage blocks, often using a bitmap?",
-      "back": "Free space map"
+      "front": "In computer science, what does 'Soft-O' notation ($\\tilde{O}$) typically hide?",
+      "back": "Polylogarithmic factors"
     },
     {
-      "front": "What design strategy ensures that permanent storage is not left in an inconsistent state if a crash occurs during a write operation?",
-      "back": "Atomic operations"
+      "front": "Why is $O(x) = O(x^2)$ true while $O(x^2) = O(x)$ is false?",
+      "back": "Because Big O notation represents a one-way inequality (a subset relation) rather than a symmetric equality."
     },
     {
-      "front": "The CIA triad of security stands for Confidentiality, Integrity, and _____.",
-      "back": "Availability"
+      "front": "What is the typographic convention for the Big O symbol?",
+      "back": "An italicized uppercase Latin 'O'."
     },
     {
-      "front": "What is the 'principle of least authority' in operating system security?",
-      "back": "Granting the minimum privilege necessary to perform a specific task."
+      "front": "How is a 'data structure' defined in computer science?",
+      "back": "A way to organize and store data usually chosen for efficient access."
     },
     {
-      "front": "How does a 'microkernel' design improve security compared to a 'monolithic kernel'?",
-      "back": "It separates kernel privileges into multiple domains, reducing the impact of a single breach."
+      "front": "What is the relationship between a data structure and an Abstract Data Type (ADT)?",
+      "back": "A data structure is the physical implementation of an ADT."
     },
     {
-      "front": "What is 'address space layout randomization' (ASLR) used for in OS hardening?",
-      "back": "To reduce vulnerabilities by randomizing where data and code are stored in memory."
+      "front": "While a data structure describes physical implementation, what does an ADT describe?",
+      "back": "The logical form or algebraic structure (what operations are allowed and their results)."
     },
     {
-      "front": "What does the acronym WIMP stand for in the context of graphical user interfaces?",
-      "back": "Windows, Icons, Menus, and Pointers."
+      "front": "According to Rob Pike, why is the choice of data structure often more impactful than the choice of algorithm?",
+      "back": "Because the algorithm is often self-evident once the data structure is chosen."
     },
     {
-      "front": "Which software license requires all derivatives of the Linux kernel to also release their source code?",
-      "back": "GNU General Public License (GPL)"
+      "front": "What are the two primary locations where data structures organize data?",
+      "back": "Primary memory (RAM) and secondary storage (disks)."
     },
     {
-      "front": "Linux was designed with a focus on consistency and simplicity, allowing its basic elements to be combined in _____ ways.",
-      "back": "Unlimited"
+      "front": "What is the difference between an array and a linked data structure in terms of memory allocation?",
+      "back": "Arrays use contiguous memory locations, while linked structures store the addresses of related elements within themselves."
     },
     {
-      "front": "What is the primary file system used by modern versions of Microsoft Windows?",
-      "back": "NTFS (New Technology File System)"
+      "front": "What is the principal advantage of arrays over linked lists?",
+      "back": "Rapid indexed access and modification through arithmetic operations on memory addresses."
     },
     {
-      "front": "In the Windows Executive, what term refers to data structures like processes and threads that are managed in kernel mode?",
-      "back": "Objects"
+      "front": "What is the primary advantage of a linked list over a fixed-length array?",
+      "back": "Elements can be efficiently inserted or removed without relocating the rest of the list."
     },
     {
-      "front": "What is the standard name for an operating system whose code is not derived from existing systems and has a very small user base?",
-      "back": "Hobbyist operating system"
+      "front": "What name is given to a data structure that contains other values, typically indexed by names?",
+      "back": "A record (also called tuple or struct)."
     },
     {
-      "front": "How can developers avoid the cost of porting an application to multiple operating systems?",
-      "back": "By using software platforms like Java or Qt that provide an abstraction layer."
+      "front": "How do hash tables provide constant-time access in the average case?",
+      "back": "They use a hashing function to map keys directly to indexes in an array."
     },
     {
-      "front": "What is 'time-sharing' in an operating system?",
-      "back": "Scheduling tasks to allow multiple users or programs to share the CPU efficiently."
+      "front": "What is 'chaining' or 'open addressing' used for in hash table implementations?",
+      "back": "Handling hash collisions."
     },
     {
-      "front": "A 'unikernel' typically runs in a _____ address space environment.",
-      "back": "Single"
+      "front": "In graph theory, what are the two components that represent relationships between entities?",
+      "back": "Vertices (nodes) and edges (connections)."
     },
     {
-      "front": "What was the precursor to cloud computing that was intended to allow hundreds of simultaneous users?",
-      "back": "MULTICS"
+      "front": "What is the defining principle of a 'stack' data structure?",
+      "back": "Last In, First Out (LIFO)."
     },
     {
-      "front": "Which operating system became dominant on mobile devices before being usurped by iOS and Android?",
-      "back": "Symbian OS"
+      "front": "What is the defining principle of a 'queue' data structure?",
+      "back": "First In, First Out (FIFO)."
     },
     {
-      "front": "What is the function of an 'Interrupt Service Routine' (ISR)?",
-      "back": "A specific piece of code that executes in response to a hardware or software interrupt."
+      "front": "What are the two primary operations of a stack?",
+      "back": "Push (add to top) and Pop (remove from top)."
     },
     {
-      "front": "In x86 architecture, which assembly instruction is used to generate a software interrupt?",
-      "back": "INT"
+      "front": "What are the two primary operations of a queue?",
+      "back": "Enqueue (add to rear) and Dequeue (remove from front)."
     },
     {
-      "front": "What is 'polling' in the context of I/O, and how do interrupts improve upon it?",
-      "back": "Polling requires the CPU to constantly check a device's status; interrupts allow the CPU to perform other tasks until the device is ready."
+      "front": "In a tree data structure, what is the name of the single top-level node?",
+      "back": "The root"
     },
     {
-      "front": "What is the function of a 'device-status table' maintained by the kernel?",
-      "back": "To track which processes are waiting for specific hardware devices."
+      "front": "What specialized tree structure is used for tasks like autocomplete and spell-checking by retrieving strings via prefixes?",
+      "back": "A trie (or prefix tree)."
     },
     {
-      "front": "Which tech used in solid-state drives is faster and more durable than magnetic disks?",
-      "back": "Flash memory"
+      "front": "Which low-level programming language is mentioned as lacking built-in support for data structures?",
+      "back": "BCPL (Basic Combined Programming Language)"
     },
     {
-      "front": "What is 'segmentation violation' (Seg-V)?",
-      "back": "An interrupt triggered when a program attempts to access a memory address it is not permitted to use."
+      "front": "What are the two standard C/Pascal mechanisms for aggregate data?",
+      "back": "Structs and records"
     },
     {
-      "front": "Parallelism in a program is achieved by running multiple threads on _____ CPUs.",
-      "back": "Different (or multiple)"
+      "front": "What is the 'C++ Standard Template Library' (STL) an example of?",
+      "back": "A library mechanism that provides reusable data structure implementations."
     },
     {
-      "front": "What role do 'checkums' play in file system reliability?",
-      "back": "They are used to detect whether data has been corrupted during storage or transfer."
+      "front": "What type of data structures allow multiple computing threads to access a single instance simultaneously?",
+      "back": "Concurrent data structures"
     },
     {
-      "front": "In security, what is the 'attack surface'?",
-      "back": "The sum of all points where an unauthorized user can try to enter data to or extract data from an environment."
+      "front": "Which formula provides an asymptotic estimate for $n! \\sim (\\frac{n}{e})^n \\sqrt{2\\pi n}$?",
+      "back": "Stirling's formula"
     },
     {
-      "front": "Why is 'C' or 'C++' often cited as a source of OS vulnerabilities?",
-      "back": "They lack automatic bounds checking, which can lead to buffer overflow attacks."
+      "front": "The Prime Number Theorem states that the number of primes $\\pi(x)$ is asymptotic to which function?",
+      "back": "$\\frac{x}{\\log x}$"
     },
     {
-      "front": "What is 'security by obscurity'?",
-      "back": "The unreliable practice of relying on secrecy of design or implementation to provide security."
+      "front": "What is the Big O notation for the average number of comparisons in an interpolation search of uniformly distributed values?",
+      "back": "$O(\\log \\log n)$ (double logarithmic)"
     },
     {
-      "front": "Which mobile OS was introduced in 2008 as an open-source project based on the Linux kernel?",
-      "back": "Android"
+      "front": "Which complexity class represents the amortized complexity per operation for a Disjoint-set data structure?",
+      "back": "$O(\\alpha(n))$ (inverse Ackermann function)"
     },
     {
-      "front": "Which desktop operating system holds approximately 31% of the global market share as of October 2025?",
-      "back": "Microsoft Windows"
+      "front": "What is the complexity class for schoolbook long multiplication of two $n$-digit numbers?",
+      "back": "$O(n^2)$"
     },
     {
-      "front": "What is 'Remote Direct Memory Access' (RDMA)?",
-      "back": "A technique that enables a CPU in a multicomputer system to access the memory of other CPUs directly."
+      "front": "Which complexity class is described as 'linearithmic'?",
+      "back": "$O(n \\log n)$"
     },
     {
-      "front": "Operating systems are found on devices ranging from cellular phones and video game consoles to web servers and _____.",
-      "back": "Supercomputers"
+      "front": "If a function is $O(n^c)$ where $c$ is a constant, it is said to have _____ complexity.",
+      "back": "Polynomial"
     },
     {
-      "front": "In the history of UNIX, which two versions were considered the most successful early branches?",
-      "back": "System V (AT&T) and BSD (Berkeley Software Distribution)."
+      "front": "Which notation hide constant factors and lower-order terms to simplify the presentation of analytic inequalities?",
+      "back": "Big O notation"
     },
     {
-      "front": "What is 'context switching'?",
-      "back": "The process of saving the state of a running process and loading the state of another to allow multitasking."
+      "front": "What term is used when the ratio $\\frac{f(x)}{g(x)}$ remains within a fixed range for all $x$ in the domain?",
+      "back": "Same order (or $\\Theta(g)$)"
     },
     {
-      "front": "Which type of multitasking requires threads to voluntarily relinquish control of the processor?",
-      "back": "Cooperative multitasking"
+      "front": "In 1870, Paul du Bois-Reymond used the symbol $\\prec$ to mean which modern concept?",
+      "back": "Little-o notation (growing much slower)"
     },
     {
-      "front": "Which hardware component converts file names into block numbers for the operating system?",
-      "back": "The index (often implemented as a tree)."
+      "front": "In Big O notation, how are factors that do not depend on the variable $x$ treated in a product?",
+      "back": "They are omitted."
     },
     {
-      "front": "What does RAID stand for in the context of data redundancy?",
-      "back": "Redundant Array of Inexpensive Disks"
+      "front": "True or False: $x \\sin y = O(x)$ for $x \\ge 1$ and any real $y$.",
+      "back": "True (since $\\sin y$ is bounded between -1 and 1)."
     },
     {
-      "front": "Which software layer enables an operating system to work with different hardware without needing constant modification?",
-      "back": "Device drivers"
+      "front": "What is the Big O classification for any function that is bounded by a constant?",
+      "back": "$O(1)$"
     },
     {
-      "front": "What is 'fragmentation' in a file system?",
-      "back": "A condition where files are stored in non-contiguous blocks, potentially reducing performance."
+      "front": "What does the expression $x \\to a$ signify in the statement $f(x) = O(g(x))$ as $x \\to a$?",
+      "back": "That the inequality holds in a small neighborhood of $a$."
     },
     {
-      "front": "The 'Windows Executive' uses kernel-mode objects to manage data structures like _____ and threads.",
-      "back": "Processes"
+      "front": "Why is the equals sign in $f(x) = O(g(x))$ considered 'non-symmetric'?",
+      "back": "Because you cannot reverse the sides; $O(g(x)) = f(x)$ is generally invalid."
     },
     {
-      "front": "What is the primary advantage of a GUI over a command-line interface for non-technical users?",
-      "back": "It is more user-friendly and provides a visual environment for interaction."
+      "front": "Which branch of mathematics uses Big O notation for remainders in the prime number theorem?",
+      "back": "Analytic number theory"
     },
     {
-      "front": "Which operating system is used in the controllers of most Intel microchips since 2008?",
-      "back": "MINIX"
+      "front": "Which branch of mathematics uses Big O to bound the error when truncating a power series?",
+      "back": "Mathematical analysis (or calculus)"
     },
     {
-      "front": "What is a 'live CD'?",
-      "back": "An operating system that runs directly from a disc without needing installation on a hard drive."
+      "front": "What is the complexity class of finding the median in a sorted array?",
+      "back": "$O(1)$ (constant time)"
     },
     {
-      "front": "Which specific hardware component is responsible for triggering a hardware interrupt?",
-      "back": "The system bus (sending a signal to the CPU)."
+      "front": "What is the time complexity of searching in a balanced search tree?",
+      "back": "$O(\\log n)$"
     },
     {
-      "front": "What is the difference between a 'library' and a 'system program'?",
-      "back": "System programs are associated with the OS but not part of the kernel; libraries are sets of functions used by programs."
+      "front": "Which algorithm for triangulating a simple polygon has a complexity of $O(n \\log^* n)$?",
+      "back": "Seidel's algorithm"
     },
     {
-      "front": "In Windows, what is the 'Windows Driver Model' used for?",
-      "back": "It is the standard framework for writing I/O device drivers."
+      "front": "In the L-notation $L_n[\\alpha, c]$, what range does the parameter $\\alpha$ occupy?",
+      "back": "$0 < \\alpha < 1$"
+    },
+    {
+      "front": "What is the time complexity class of finding a determinant using Laplace expansion?",
+      "back": "$O(n!)$ (factorial)"
+    },
+    {
+      "front": "What notation describes the growth of the Riemann zeta function as $s \\to 1^+$?",
+      "back": "$\\sum_{n=1}^{\\infty} \\frac{1}{n^s} \\sim \\frac{1}{s-1}$"
+    },
+    {
+      "front": "Which data structure implementation is characterized by the use of 'nodes' and 'pointers' for dynamic resizing?",
+      "back": "Linked data structure"
+    },
+    {
+      "front": "What are 'opaque data types' used for in modular programming?",
+      "back": "To hide implementation details from the client."
+    },
+    {
+      "front": "In the context of algorithm analysis, what is the 'Master theorem' used for?",
+      "back": "Analyzing divide-and-conquer recursive algorithms using Big O notation."
     }
   ]
 }
