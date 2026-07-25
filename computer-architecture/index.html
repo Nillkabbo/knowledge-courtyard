@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>যন্ত্রের কারখানা — The Clockwork Forge</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَفِي أَنفُسِكُم أَفَلَا تُبصِرُونَ</div>
+  <h1 class="title-main">যন্ত্রের কারখানা</h1>
+  <div class="title-sub">The Clockwork Forge</div>
+  <div class="title-desc">
+    একটা সুইচ থেকে শুরু — কোটি কোটি সুইচের সিম্ফনি।<br>
+    দশটি দরজা — transistor, logic gates, CPU datapath, pipelining, cache hierarchy, coherence, out-of-order execution, GPU warps, systolic arrays, AI accelerators।<br><br>
+    <em>Ten doors: from a single transistor to Google's TPU. How does silicon think? How does hardware shape every line of code you write? Named masters: Shockley, Hennessy, Patterson, Tomasulo, Flynn, Kung — the architects who built the machines that built the future.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">⚡ যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">সিলিকনের ভেতরে — Inside the Silicon</div>
+    <p>তুমি প্রতিদিন কোটি কোটি transistor ব্যবহার করো। কিন্তু একটাকেও দেখোনি। তুমি লেখো <code>model.fit()</code> — আর হাজার হাজার matrix multiplication চলে যায় GPU-তে। কিন্তু কীভাবে? একটা transistor থেকে কীভাবে neural network train হয়? একটা AND gate থেকে কীভাবে ChatGPT তৈরি হয়?</p>
+    <p class="en">You use billions of transistors every day. But you've never seen one. You write <code>model.fit()</code> — and thousands of matrix multiplications flow through a GPU. But how? How does a transistor become a neural network? How does an AND gate become ChatGPT?</p>
+    <hr class="p-divider">
+    <p>এই বই তোমাকে নিয়ে যাবে সিলিকনের ভেতরে। Shockley (১৯৪৭) প্রথম transistor বানিয়েছিলেন — একটা সুইচ, যেটা চালু বা বন্ধ হয়। Hennessy ও Patterson (১৯৮০s) দেখিয়েছিলেন কীভাবে এই সুইচগুলো মিলে একটা CPU তৈরি করে। Tomasulo (১৯৬৭) আবিষ্কার করেছিলেন কীভাবে CPU তোমার কোডের ক্রম পাল্টে দ্রুত চলে। Flynn (১৯৬৬) শ্রেণীবদ্ধ করেছিলেন সমান্তরাল কম্পিউটিংয়ের রূপ। Kung (১৯৮২) তৈরি করেছিলেন systolic array — হৃদপিণ্ডের মতো স্পন্দিত যন্ত্র।</p>
+    <p class="en">This book takes you inside the silicon. Shockley (1947) built the first transistor — a switch, on or off. Hennessy and Patterson (1980s) showed how these switches become a CPU. Tomasulo (1967) discovered how CPUs reorder your code for speed. Flynn (1966) classified parallel computing. Kung (1982) created the systolic array — a machine that pulses like a heart.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🔍</span><span id="hud-rank-name">সন্ধানী</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা — transistor থেকে AI accelerator পর্যন্ত।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← প্রাঙ্গণে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🧭</div>
+  <h1 class="complete-title">তুমি এখন ক্লকওয়ার্ক ঋষি</h1>
+  <p class="complete-text">দশটি দরজা পেরিয়েছ। সিলিকনের পূর্ণ রহস্য আয়ত্ত করেছ।<br><br>Transistor থেকে TPU — কম্পিউটার আর্কিটেকচারের সকল স্তর।<br><br>এখন তুমি জানো — তোমার কোড কীভাবে hardware-এ পরিণত হয়। কেন cache-aware algorithm দ্রুত। কেন GPU তে warp divergence ক্ষতি করে। কেন TPU তে matrix multiplication এত দ্রুত।<br><strong>সফটওয়্যার বোঝো, থিওরি বোঝো — এখন হার্ডওয়্যারও বোঝো। তোমার জ্ঞান সম্পূর্ণ।</strong></p>
+  <div class="complete-verse">وَفِي أَنفُسِكُم أَفَلَا تُبصِرُونَ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"তোমাদের নিজেদের ভেতরেও নিদর্শন রয়েছে — তবু কি তোমরা দেখো না?" — কুরআন ৫১:২১</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 কম্পিউটার আর্কিটেকচার চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 কম্পিউটার আর্কিটেকচার চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+<script src="../scripts/study-materials.js"></script>
+</body>
+</html>
