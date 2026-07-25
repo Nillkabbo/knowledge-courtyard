@@ -56,7 +56,8 @@
     { "n": 43, "folder": "cloud-devops",              "title_en": "The Sky Fortress",                      "title_bn": "আকাশের দুর্গ",                "icon": "☁️", "category": "cs", "color": "game-43", "tag": "Book 43 · Cloud & DevOps Engineering",                              "status": "live" },
     { "n": 44, "folder": "data-engineering",        "title_en": "The River of Data",                     "title_bn": "নদীর ডাটা",                 "icon": "🌊", "category": "cs", "color": "game-44", "tag": "Book 44 · Data Engineering & Pipelines",                           "status": "live" },
     { "n": 45, "folder": "compilers-plt",            "title_en": "The Word Smithy",                        "title_bn": "শব্দের কারখানা",             "icon": "🔤", "category": "cs", "color": "game-45", "tag": "Book 45 · Compilers & Programming Language Theory",              "status": "live" },
-    { "n": 46, "folder": "cryptography",             "title_en": "The Copper Fortress",                     "title_bn": "তামার দুর্গ",                "icon": "🔐", "category": "cs", "color": "game-46", "tag": "Book 46 · Cryptography & Network Security",                      "status": "live" }
+    { "n": 46, "folder": "cryptography",             "title_en": "The Copper Fortress",                     "title_bn": "তামার দুর্গ",                "icon": "🔐", "category": "cs", "color": "game-46", "tag": "Book 46 · Cryptography & Network Security",                      "status": "live" },
+    { "n": 47, "folder": "testing-qa",               "title_en": "The Shields of Craft",                    "title_bn": "কারিগরের ঢাল",               "icon": "🛡️", "category": "cs", "color": "game-47", "tag": "Book 47 · Testing & Quality Assurance",                           "status": "live" }
   ],
 
   "roadmap": [

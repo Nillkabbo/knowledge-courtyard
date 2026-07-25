@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>কারিগরের ঢাল — The Shields of Craft</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="particles"></div>
+<div class="container">
+  <div class="header">
+    <div class="header-arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <h1 class="header-title">কারিগরের ঢাল</h1>
+    <div class="header-sub">The Shields of Craft — Testing & Quality Assurance</div>
+    <div class="header-quote">
+      কোড লেখা শিল্প, কিন্তু প্রমাণ করা যে সেটা কাজ করে — সেটাই কারিগরের ঢাল। প্রতিটা bug একটা শত্রু, প্রতিটা test একটা ঢাল।
+      <span class="en">Writing code is an art, but proving it works — that is the craftsman's shield. Every bug is an enemy, every test is a shield.</span>
+    </div>
+  </div>
+
+  <div id="statsBar" class="stats-bar">
+    <div class="stat"><div class="stat-num" id="xpDisplay">0</div><div class="stat-label">XP</div></div>
+    <div class="stat"><div class="stat-num" id="rankDisplay">🔍</div><div class="stat-label" id="rankName">সন্ধানী</div></div>
+    <div class="stat"><div class="stat-num" id="doorsDisplay">0/10</div><div class="stat-label">দরজা</div></div>
+  </div>
+
+  <div id="game"></div>
+
+  <div class="footer">
+    <button class="reset-btn" onclick="confirmReset()">↺ আবার শুরু</button>
+    <div class="footer-note">
+      বুক ৪৭ · জ্ঞানের প্রাঙ্গণ<br>
+      <em>Book 47 · The Learning Courtyard</em>
+    </div>
+  </div>
+</div>
+<script src="engine.js"></script>
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script>
+  renderGame();
+</script>
+</body>
+</html>
