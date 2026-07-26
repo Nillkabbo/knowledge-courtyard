@@ -88,6 +88,57 @@ struct Counter {
 <strong>Weak/Release Consistency:</strong> ARM, GPU — আরও relaxed। সব কিছু reorder হতে পারে। Programmer কে fence ব্যবহার করতে হয়।
 </div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs><marker id="arrC" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
+
+  <rect x="30" y="20" width="160" height="90" rx="8" fill="#1e293b" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="110" y="40" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="700">Core 0</text>
+  <rect x="45" y="50" width="130" height="25" rx="4" fill="#0c4a6e" stroke="#38bdf8"/>
+  <text x="110" y="67" text-anchor="middle" fill="#e0f2fe" font-size="9">L1 Cache</text>
+  <rect x="45" y="80" width="130" height="22" rx="4" fill="#064e3b" stroke="#10b981"/>
+  <text x="110" y="95" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="700">X = 42  [M]</text>
+
+  <rect x="210" y="20" width="160" height="90" rx="8" fill="#1e293b" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="290" y="40" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="700">Core 1</text>
+  <rect x="225" y="50" width="130" height="25" rx="4" fill="#0c4a6e" stroke="#38bdf8"/>
+  <text x="290" y="67" text-anchor="middle" fill="#e0f2fe" font-size="9">L1 Cache</text>
+  <rect x="225" y="80" width="130" height="22" rx="4" fill="#3b0764" stroke="#a855f7"/>
+  <text x="290" y="95" text-anchor="middle" fill="#d8b4fe" font-size="9" font-weight="700">X = 42  [S]</text>
+
+  <rect x="390" y="20" width="160" height="90" rx="8" fill="#1e293b" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="470" y="40" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="700">Core 2</text>
+  <rect x="405" y="50" width="130" height="25" rx="4" fill="#0c4a6e" stroke="#38bdf8"/>
+  <text x="470" y="67" text-anchor="middle" fill="#e0f2fe" font-size="9">L1 Cache</text>
+  <rect x="405" y="80" width="130" height="22" rx="4" fill="#451a03" stroke="#f59e0b"/>
+  <text x="470" y="95" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">—  [I]</text>
+
+  <line x1="110" y1="112" x2="110" y2="130" stroke="#475569" stroke-width="2"/>
+  <line x1="290" y1="112" x2="290" y2="130" stroke="#475569" stroke-width="2"/>
+  <line x1="470" y1="112" x2="470" y2="130" stroke="#475569" stroke-width="2"/>
+  <rect x="30" y="130" width="520" height="28" rx="4" fill="#334155" stroke="#64748b" stroke-width="1.5"/>
+  <text x="290" y="148" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="700">🔁 Snooping Bus — coherence protocol watches all caches</text>
+
+  <line x1="290" y1="160" x2="290" y2="175" stroke="#475569" stroke-width="2" marker-end="url(#arrC)"/>
+  <rect x="190" y="178" width="200" height="40" rx="6" fill="#7c2d12" stroke="#f97316" stroke-width="2"/>
+  <text x="290" y="195" text-anchor="middle" fill="#fdba74" font-size="11" font-weight="700">💾 Shared L3 / DRAM</text>
+  <text x="290" y="210" text-anchor="middle" fill="#fb923c" font-size="9">X = 42 (stale until write-back)</text>
+
+  <rect x="30" y="235" width="520" height="90" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="290" y="253" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">MESI Protocol — 4 Cache States</text>
+  <text x="50" y="273" fill="#6ee7b7" font-size="9" font-weight="700">[M] Modified</text>
+  <text x="165" y="273" fill="#cbd5e1" font-size="8">dirty, exclusive — only here, differs from memory</text>
+  <text x="50" y="290" fill="#d8b4fe" font-size="9" font-weight="700">[S] Shared</text>
+  <text x="165" y="290" fill="#cbd5e1" font-size="8">clean, may exist in multiple caches — identical to memory</text>
+  <text x="50" y="307" fill="#fcd34d" font-size="9" font-weight="700">[I] Invalid</text>
+  <text x="165" y="307" fill="#cbd5e1" font-size="8">stale copy — must re-fetch before use</text>
+  <text x="300" y="273" fill="#93c5fd" font-size="9" font-weight="700">[E] Exclusive</text>
+  <text x="415" y="273" fill="#cbd5e1" font-size="8">clean, only here — can upgrade to M silently</text>
+
+</svg>
+<div class="svg-caption">চিত্র: MESI protocol — Core 0 তে X Modified (dirty), Core 1 তে Shared (clean), Core 2 তে Invalid। Bus snooping দিয়ে সব core একমত হয়।</div>
+</div>
+
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> তোমার multi-threaded code যদি random ভাবে fail করে — ৯৯% সম্ভাবনা false sharing বা memory reordering-এ। সমাধান: memory fence, atomic, বা data padding।<br>
 <em>If your multi-threaded code randomly fails — 99% chance it's false sharing or memory reordering. Fix: memory fence, atomics, or data padding.</em>
@@ -171,6 +222,61 @@ SUB P33, R6, R7  // P33 = R6 - R7 (renamed R1→P33 — no WAW!)
 <strong>Common Data Bus (CDB):</strong> যখন একটা functional unit ফলাফল তৈরি করে — CDB তে broadcast করে। সব reservation station শোনে। যার এই ফলাফল দরকার — সে নিয়ে নেয়। এটাই Tomasulo-এর core innovation।<br><br>
 <strong>Eckert-Mauchly Award (1997):</strong> তোমাসুলো এই পুরস্কার পান — out-of-order execution-এর ভিত্তি স্থাপনের জন্য।<br>
 <a href="../software-engineering/index.html" style="color:var(--accent);font-size:.85rem">← Book 40 (SWE) — তোমার atomic/volatile কেন দরকার</a>
+</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs><marker id="arrO" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
+
+  <rect x="20" y="20" width="160" height="80" rx="8" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="100" y="40" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="700">📥 In-Order Frontend</text>
+  <text x="100" y="58" text-anchor="middle" fill="#bae6fd" font-size="9">Fetch → Decode</text>
+  <text x="100" y="73" text-anchor="middle" fill="#bae6fd" font-size="9">→ Register Rename</text>
+  <text x="100" y="90" text-anchor="middle" fill="#e0f2fe" font-size="8">I1 → I2 → I3 → I4 → I5</text>
+
+  <line x1="180" y1="60" x2="215" y2="60" stroke="#475569" stroke-width="2" marker-end="url(#arrO)"/>
+
+  <rect x="220" y="20" width="170" height="80" rx="8" fill="#312e81" stroke="#818cf8" stroke-width="2"/>
+  <text x="305" y="40" text-anchor="middle" fill="#c7d2fe" font-size="11" font-weight="700">🔀 Issue Queue</text>
+  <text x="305" y="56" text-anchor="middle" fill="#a5b4fc" font-size="9">Reservation Stations</text>
+  <rect x="235" y="65" width="65" height="14" rx="2" fill="#4c1d95"/><text x="267" y="75" text-anchor="middle" fill="#ddd6fe" font-size="7">I3 ready ✓</text>
+  <rect x="310" y="65" width="65" height="14" rx="2" fill="#3730a3"/><text x="342" y="75" text-anchor="middle" fill="#c7d2fe" font-size="7">I4 wait... r2</text>
+  <text x="305" y="92" text-anchor="middle" fill="#a5b4fc" font-size="8">operands ready → fire!</text>
+
+  <line x1="390" y1="60" x2="425" y2="60" stroke="#475569" stroke-width="2" marker-end="url(#arrO)"/>
+
+  <rect x="430" y="15" width="140" height="90" rx="8" fill="#7c2d12" stroke="#f97316" stroke-width="2"/>
+  <text x="500" y="33" text-anchor="middle" fill="#fdba74" font-size="10" font-weight="700">⚙️ Execute (OoO)</text>
+  <rect x="442" y="40" width="55" height="16" rx="2" fill="#9a3412"/><text x="469" y="51" text-anchor="middle" fill="#fed7aa" font-size="7">ALU</text>
+  <rect x="503" y="40" width="55" height="16" rx="2" fill="#9a3412"/><text x="530" y="51" text-anchor="middle" fill="#fed7aa" font-size="7">FPU</text>
+  <rect x="442" y="60" width="55" height="16" rx="2" fill="#9a3412"/><text x="469" y="71" text-anchor="middle" fill="#fed7aa" font-size="7">Load</text>
+  <rect x="503" y="60" width="55" height="16" rx="2" fill="#9a3412"/><text x="530" y="71" text-anchor="middle" fill="#fed7aa" font-size="7">Store</text>
+  <text x="500" y="92" text-anchor="middle" fill="#fb923c" font-size="8">any order, parallel</text>
+
+  <line x1="500" y1="107" x2="500" y2="130" stroke="#10b981" stroke-width="2" marker-end="url(#arrO)"/>
+  <rect x="350" y="125" width="220" height="22" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="460" y="140" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="700">📡 Common Data Bus (CDB) — broadcast results</text>
+
+  <line x1="460" y1="147" x2="460" y2="165" stroke="#475569" stroke-width="2" marker-end="url(#arrO)"/>
+
+  <rect x="200" y="168" width="380" height="80" rx="8" fill="#581c87" stroke="#a855f7" stroke-width="2"/>
+  <text x="390" y="188" text-anchor="middle" fill="#d8b4fe" font-size="11" font-weight="700">📝 Reorder Buffer (ROB) — In-Order Commit</text>
+  <text x="390" y="204" text-anchor="middle" fill="#e9d5ff" font-size="9">circular queue — results wait here until their turn</text>
+
+  <rect x="220" y="212" width="55" height="22" rx="3" fill="#6b21a8" stroke="#c084fc"/><text x="247" y="227" text-anchor="middle" fill="#e9d5ff" font-size="8">I1 ✓</text>
+  <rect x="280" y="212" width="55" height="22" rx="3" fill="#6b21a8" stroke="#c084fc"/><text x="307" y="227" text-anchor="middle" fill="#e9d5ff" font-size="8">I2 ✓</text>
+  <rect x="340" y="212" width="55" height="22" rx="3" fill="#6b21a8" stroke="#c084fc"/><text x="367" y="227" text-anchor="middle" fill="#e9d5ff" font-size="8">I3 ✓</text>
+  <rect x="400" y="212" width="55" height="22" rx="3" fill="#4c1d95" stroke="#818cf8"/><text x="427" y="227" text-anchor="middle" fill="#c7d2fe" font-size="8">I4 ⏳</text>
+  <rect x="460" y="212" width="55" height="22" rx="3" fill="#312e81" stroke="#6366f1" stroke-dasharray="3,2"/><text x="487" y="227" text-anchor="middle" fill="#a5b4fc" font-size="8">I5 …</text>
+  <text x="535" y="227" text-anchor="middle" fill="#a855f7" font-size="8">→ commit</text>
+
+  <rect x="20" y="265" width="540" height="60" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="290" y="285" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">Tomasulo's Insight (1967)</text>
+  <text x="290" y="300" text-anchor="middle" fill="#cbd5e1" font-size="9">Fetch in-order → rename registers → execute whenever ready → commit in-order</text>
+  <text x="290" y="314" text-anchor="middle" fill="#94a3b8" font-size="8">illusion of sequential execution · reality of parallel chaos · ROB restores order</text>
+
+</svg>
+<div class="svg-caption">চিত্র: Out-of-order execution — fetch ও commit ক্রমানুসারে, কিন্তু execute যেকোনো ক্রমে। Register renaming ও ROB এই জাদু সম্ভব করে।</div>
 </div>
 
 <div class="secret-box">
@@ -621,6 +727,53 @@ NIC (Network Interface Card) CPU কে না জানিয়ে directly me
 🟢 B31 (Classic ML) — SIMD acceleration<br>
 🟢 B34 (Statistics) — benchmark variance<br><br>
 <strong>৪১টি বইয়ের জ্ঞানের উপর হার্ডওয়্যারের গভীর বোঝা যুক্ত হলো। তোমার জ্ঞান সম্পূর্ণ।</strong>
+</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs><marker id="arrF" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
+
+  <rect x="180" y="15" width="220" height="38" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <text x="290" y="32" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">⚡ Transistor</text>
+  <text x="290" y="46" text-anchor="middle" fill="#fcd34d" font-size="8">a switch — on/off, 1/0</text>
+
+  <line x1="290" y1="55" x2="290" y2="68" stroke="#475569" stroke-width="2" marker-end="url(#arrF)"/>
+
+  <rect x="150" y="70" width="280" height="38" rx="6" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="290" y="87" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">🔧 Logic Gates — AND · OR · NOT · NAND</text>
+  <text x="290" y="101" text-anchor="middle" fill="#bae6fd" font-size="8">NAND = 4 transistors · universal — builds everything</text>
+
+  <line x1="290" y1="110" x2="290" y2="123" stroke="#475569" stroke-width="2" marker-end="url(#arrF)"/>
+
+  <rect x="120" y="125" width="340" height="38" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="2"/>
+  <text x="290" y="142" text-anchor="middle" fill="#c7d2fe" font-size="10" font-weight="700">🔢 ALU · Datapath · Pipeline</text>
+  <text x="290" y="156" text-anchor="middle" fill="#a5b4fc" font-size="8">5-stage pipeline · OoO execution · branch prediction</text>
+
+  <line x1="290" y1="165" x2="290" y2="178" stroke="#475569" stroke-width="2" marker-end="url(#arrF)"/>
+
+  <rect x="90" y="180" width="400" height="38" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="2"/>
+  <text x="290" y="197" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="700">💾 Memory Hierarchy · Cache · Coherence</text>
+  <text x="290" y="211" text-anchor="middle" fill="#a7f3d0" font-size="8">L1/L2/L3 · MESI · cache-aware = fast code</text>
+
+  <line x1="290" y1="220" x2="290" y2="233" stroke="#475569" stroke-width="2" marker-end="url(#arrF)"/>
+
+  <rect x="60" y="235" width="460" height="38" rx="6" fill="#7c2d12" stroke="#f97316" stroke-width="2"/>
+  <text x="290" y="252" text-anchor="middle" fill="#fdba74" font-size="10" font-weight="700">📜 ISA · OS Kernel · Drivers</text>
+  <text x="290" y="266" text-anchor="middle" fill="#fed7aa" font-size="8">scheduler · virtual memory · interrupts · system calls</text>
+
+  <line x1="290" y1="275" x2="290" y2="288" stroke="#475569" stroke-width="2" marker-end="url(#arrF)"/>
+
+  <rect x="30" y="290" width="520" height="38" rx="6" fill="#581c87" stroke="#a855f7" stroke-width="2"/>
+  <text x="290" y="307" text-anchor="middle" fill="#d8b4fe" font-size="10" font-weight="700">🌐 GPU · Warps · Systolic Arrays · TPU</text>
+  <text x="290" y="321" text-anchor="middle" fill="#e9d5ff" font-size="8">SIMT parallelism · matrix multiply at silicon speed</text>
+
+  <line x1="290" y1="330" x2="290" y2="343" stroke="#475569" stroke-width="2" marker-end="url(#arrF)"/>
+
+  <rect x="10" y="345" width="560" height="28" rx="6" fill="#be123c" stroke="#f43f5e" stroke-width="2"/>
+  <text x="290" y="363" text-anchor="middle" fill="#fda4af" font-size="10" font-weight="700">🧠 AI — model.fit() · ChatGPT · neural networks</text>
+
+</svg>
+<div class="svg-caption">চিত্র: সম্পূর্ণ সিলিকনের যাত্রা — transistor থেকে AI পর্যন্ত। প্রতিটা স্তর আগেরটার উপর তৈরি। একটা সুইচ থেকে কোটি কোটি সুইচের সিম্ফনি।</div>
 </div>
 
 <div class="secret-box">

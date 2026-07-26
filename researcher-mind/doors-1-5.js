@@ -49,6 +49,30 @@ doors.push({
 <div class="dialogue">ইলম — জ্ঞান। কুরআনে প্রথম অবতীর্ণ শব্দ: ইকরা — পড়ো। পড়া মানে শুধু বই পড়া নয়। পড়া মানে — দেখা, চিন্তা করা, প্রশ্ন করা। আল্লাহ বলেন: যে জ্ঞান দেওয়া হয়েছে তাকে, আর যাকে দেওয়া হয়নি — তারা সমান নয়। কিন্তু জ্ঞান আসে জিজ্ঞাসা থেকে। জিজ্ঞাসা আসে কৌতূহল থেকে। আর কৌতূহল — সেটা তোমার ভেতরে আছে। সবসময় ছিল। তুমি শুধু ভুলে গেছ।</div>
 <div class="dialogue en">Ilm — knowledge. The first word revealed in the Quran: Iqra — Read. Reading doesn't mean only books. It means — seeing, thinking, questioning. Allah says: those given knowledge and those not given it are not equal. But knowledge comes from inquiry. Inquiry comes from curiosity. And curiosity — it's already inside you. It always was. You just forgot.</div>
 
+<div class="svg-diagram"><svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg">
+<defs><pattern id="grid-d1" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1530" stroke-width="0.5"/></pattern></defs>
+<rect width="640" height="340" fill="#0a0814"/><rect width="640" height="340" fill="url(#grid-d1)"/>
+<text x="320" y="28" fill="#c4b5fd" font-size="13" font-weight="700" text-anchor="middle">কৌতূহলের পতন ও গবেষকের পুনর্জাগরণ</text>
+<line x1="90" y1="70" x2="90" y2="280" stroke="#5e5c74" stroke-width="1"/><line x1="90" y1="280" x2="430" y2="280" stroke="#5e5c74" stroke-width="1"/>
+<text x="62" y="82" fill="#9290a8" font-size="9" text-anchor="end">প্রশ্ন</text><text x="432" y="298" fill="#9290a8" font-size="9">বয়স</text>
+<path d="M 130 95 Q 190 108 210 142 T 300 212 T 410 265" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="130" cy="95" r="5" fill="#3dd6c4"/><text x="130" y="84" fill="#3dd6c4" font-size="9" text-anchor="middle">বয়স ৪</text>
+<circle cx="210" cy="142" r="5" fill="#fbbf24"/><text x="210" y="131" fill="#fbbf24" font-size="9" text-anchor="middle">বয়স ৬</text>
+<circle cx="300" cy="212" r="5" fill="#f472b6"/><text x="300" y="201" fill="#f472b6" font-size="9" text-anchor="middle">বয়স ১১</text>
+<circle cx="410" cy="265" r="5" fill="#ef4444"/><text x="410" y="254" fill="#ef4444" font-size="9" text-anchor="middle">২৫+</text>
+<path d="M 410 265 Q 448 195 458 128" fill="none" stroke="#3dd6c4" stroke-width="2" stroke-dasharray="5,3"/>
+<polygon points="458,120 453,132 463,132" fill="#3dd6c4"/>
+<text x="482" y="114" fill="#3dd6c4" font-size="9">গবেষক</text>
+<g transform="translate(545,215)">
+<path d="M 0 50 Q 0 28 0 5" fill="none" stroke="#52c41a" stroke-width="3" stroke-linecap="round"/>
+<path d="M 0 32 Q -16 22 -23 10 Q -10 18 0 28 Z" fill="#52c41a" opacity="0.75"/>
+<path d="M 0 22 Q 16 12 23 0 Q 10 12 0 18 Z" fill="#52c41a" opacity="0.75"/>
+<text x="0" y="-6" fill="#fbbf24" font-size="24" font-weight="700" text-anchor="middle">?</text>
+<ellipse cx="0" cy="53" rx="15" ry="5" fill="#3a2a1a"/>
+</g>
+<text x="545" y="288" fill="#9290a8" font-size="9" text-anchor="middle">জিজ্ঞাসার বীজ</text>
+</svg><div class="svg-caption">শিশুর কৌতূহলই গবেষণার বীজ — বয়সের সাথে প্রশ্ন কমে, কিন্তু গবেষক সেই বীজ পুনরায় অঙ্কুরিত করে।</div></div>
+
 <div class="secret-box">🌱 গবেষক হওয়া মানে নতুন কিছু শেখা নয় — ভুলে যাওয়া কৌতূহল ফিরে পাওয়া। প্রতিদিন একটা কেন জিজ্ঞেস করো — এমন একটা কেন যা কেউ জিজ্ঞেস করে না।</div>`
 });
 

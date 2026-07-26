@@ -424,6 +424,43 @@ RISC-V (উচ্চারণ: "risk-five") হলো UC Berkeley-তে তৈ�
 <a href="../operating-systems/index.html" style="color:var(--accent);font-size:.85rem">← Book 38 (OS) — kernel কীভাবে ISA ব্যবহার করে</a>
 </div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs><marker id="arrI" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
+
+  <rect x="40" y="15" width="500" height="45" rx="8" fill="#1e3a8a" stroke="#3b82f6" stroke-width="2"/>
+  <text x="290" y="33" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="700">💻 Software — C / Python / Rust</text>
+  <text x="290" y="49" text-anchor="middle" fill="#bfdbfe" font-size="9">compiler → machine code (instructions)</text>
+
+  <line x1="290" y1="62" x2="290" y2="82" stroke="#475569" stroke-width="2" marker-end="url(#arrI)"/>
+
+  <rect x="40" y="85" width="500" height="50" rx="8" fill="#7c2d12" stroke="#f97316" stroke-width="2.5"/>
+  <text x="290" y="105" text-anchor="middle" fill="#fdba74" font-size="13" font-weight="900">📜 ISA — The Contract</text>
+  <text x="290" y="122" text-anchor="middle" fill="#fb923c" font-size="9">which instructions · how many registers · addressing modes · encoding</text>
+
+  <line x1="170" y1="137" x2="170" y2="157" stroke="#475569" stroke-width="2" marker-end="url(#arrI)"/>
+  <line x1="410" y1="137" x2="410" y2="157" stroke="#475569" stroke-width="2" marker-end="url(#arrI)"/>
+
+  <rect x="50" y="160" width="240" height="120" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="2"/>
+  <text x="170" y="180" text-anchor="middle" fill="#6ee7b7" font-size="12" font-weight="700">RISC-V / ARM (RISC)</text>
+  <text x="170" y="198" text-anchor="middle" fill="#a7f3d0" font-size="9">fixed 32-bit instructions</text>
+  <text x="170" y="212" text-anchor="middle" fill="#a7f3d0" font-size="9">Load/Store — only LW/SW touch memory</text>
+  <text x="170" y="226" text-anchor="middle" fill="#a7f3d0" font-size="9">31 registers · simple · pipeline-friendly</text>
+  <text x="170" y="246" text-anchor="middle" fill="#34d399" font-size="9" font-weight="700">ADD x3, x1, x2</text>
+  <text x="170" y="262" text-anchor="middle" fill="#34d399" font-size="8">one instruction = one cycle (pipelined)</text>
+
+  <rect x="310" y="160" width="240" height="120" rx="8" fill="#581c87" stroke="#a855f7" stroke-width="2"/>
+  <text x="430" y="180" text-anchor="middle" fill="#d8b4fe" font-size="12" font-weight="700">x86 (CISC)</text>
+  <text x="430" y="198" text-anchor="middle" fill="#e9d5ff" font-size="9">variable-length: 1–15 bytes</text>
+  <text x="430" y="212" text-anchor="middle" fill="#e9d5ff" font-size="9">memory-to-memory operations</text>
+  <text x="430" y="226" text-anchor="middle" fill="#e9d5ff" font-size="9">16 registers · complex · μops inside</text>
+  <text x="430" y="246" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">ADD [mem], EAX</text>
+  <text x="430" y="262" text-anchor="middle" fill="#c084fc" font-size="8">decodes to RISC μops internally</text>
+
+</svg>
+<div class="svg-caption">চিত্র: ISA হলো চুক্তি — উপরে software, নিচে দুটো implementation। RISC (fixed, simple) আর CISC (variable, complex) — দুটোই একই চুক্তি মানে।</div>
+</div>
+
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> ISA হলো ঘড়ির কাঁটা — user যা দেখে। Microarchitecture হলো ভেতরের গিয়ার — কীভাবে কাজ করে। কাঁটা না বদলালে, গিয়ার বদলানো যায়।<br>
 <em>ISA = the clock face — what the user sees. Microarchitecture = the internal gears — how it works. Keep the face unchanged, redesign the gears freely.</em>
@@ -500,6 +537,68 @@ Branch prediction থেকে জন্ম নেয় speculative execution�
 <strong>Spectre Vulnerability (2018):</strong> Speculative execution-এর একটা dark side। আক্রমণকারী branch prediction প্রভাবিত করে — speculative execution এর মাধ্যমে secret data cache-এ আনে — তারপর side-channel দিয়ে পড়ে। এটাই Spectre attack।<br>
 <a href="../llm-security/index.html" style="color:var(--accent);font-size:.85rem">← Book 13 (Security) — Spectre/Meltdown deep dive</a><br>
 <a href="../dsa-bazaar/index.html" style="color:var(--accent);font-size:.85rem">← Book 2 (DSA) — sorted data তে branch prediction ভালো</a>
+</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+
+  <text x="20" y="30" fill="#94a3b8" font-size="10" font-weight="700">Cycle →</text>
+  <text x="95" y="30" text-anchor="middle" fill="#64748b" font-size="9">1</text>
+  <text x="155" y="30" text-anchor="middle" fill="#64748b" font-size="9">2</text>
+  <text x="215" y="30" text-anchor="middle" fill="#64748b" font-size="9">3</text>
+  <text x="275" y="30" text-anchor="middle" fill="#64748b" font-size="9">4</text>
+  <text x="335" y="30" text-anchor="middle" fill="#64748b" font-size="9">5</text>
+  <text x="395" y="30" text-anchor="middle" fill="#64748b" font-size="9">6</text>
+  <text x="455" y="30" text-anchor="middle" fill="#64748b" font-size="9">7</text>
+
+  <line x1="65" y1="38" x2="490" y2="38" stroke="#334155" stroke-width="1"/>
+  <line x1="125" y1="38" x2="125" y2="240" stroke="#334155" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="185" y1="38" x2="185" y2="240" stroke="#334155" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="245" y1="38" x2="245" y2="240" stroke="#334155" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="305" y1="38" x2="305" y2="240" stroke="#334155" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="365" y1="38" x2="365" y2="240" stroke="#334155" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="425" y1="38" x2="425" y2="240" stroke="#334155" stroke-width="0.5" stroke-dasharray="3,3"/>
+
+  <text x="55" y="65" text-anchor="end" fill="#e2e8f0" font-size="9" font-weight="600">I1: ADD</text>
+  <text x="55" y="100" text-anchor="end" fill="#e2e8f0" font-size="9" font-weight="600">I2: SUB</text>
+  <text x="55" y="135" text-anchor="end" fill="#e2e8f0" font-size="9" font-weight="600">I3: LW</text>
+  <text x="55" y="170" text-anchor="end" fill="#e2e8f0" font-size="9" font-weight="600">I4: SW</text>
+  <text x="55" y="205" text-anchor="end" fill="#e2e8f0" font-size="9" font-weight="600">I5: MUL</text>
+
+  <rect x="65" y="52" width="60" height="22" rx="3" fill="#0ea5e9" stroke="#38bdf8"/><text x="95" y="67" text-anchor="middle" fill="#f0f9ff" font-size="9" font-weight="700">IF</text>
+  <rect x="125" y="52" width="60" height="22" rx="3" fill="#10b981" stroke="#34d399"/><text x="155" y="67" text-anchor="middle" fill="#f0fdf4" font-size="9" font-weight="700">ID</text>
+  <rect x="185" y="52" width="60" height="22" rx="3" fill="#f59e0b" stroke="#fbbf24"/><text x="215" y="67" text-anchor="middle" fill="#fffbeb" font-size="9" font-weight="700">EX</text>
+  <rect x="245" y="52" width="60" height="22" rx="3" fill="#a855f7" stroke="#c084fc"/><text x="275" y="67" text-anchor="middle" fill="#fdf4ff" font-size="9" font-weight="700">MEM</text>
+  <rect x="305" y="52" width="60" height="22" rx="3" fill="#ef4444" stroke="#f87171"/><text x="335" y="67" text-anchor="middle" fill="#fef2f2" font-size="9" font-weight="700">WB</text>
+
+  <rect x="125" y="87" width="60" height="22" rx="3" fill="#0ea5e9" stroke="#38bdf8"/><text x="155" y="102" text-anchor="middle" fill="#f0f9ff" font-size="9" font-weight="700">IF</text>
+  <rect x="185" y="87" width="60" height="22" rx="3" fill="#10b981" stroke="#34d399"/><text x="215" y="102" text-anchor="middle" fill="#f0fdf4" font-size="9" font-weight="700">ID</text>
+  <rect x="245" y="87" width="60" height="22" rx="3" fill="#f59e0b" stroke="#fbbf24"/><text x="275" y="102" text-anchor="middle" fill="#fffbeb" font-size="9" font-weight="700">EX</text>
+  <rect x="305" y="87" width="60" height="22" rx="3" fill="#a855f7" stroke="#c084fc"/><text x="335" y="102" text-anchor="middle" fill="#fdf4ff" font-size="9" font-weight="700">MEM</text>
+  <rect x="365" y="87" width="60" height="22" rx="3" fill="#ef4444" stroke="#f87171"/><text x="395" y="102" text-anchor="middle" fill="#fef2f2" font-size="9" font-weight="700">WB</text>
+
+  <rect x="185" y="122" width="60" height="22" rx="3" fill="#0ea5e9" stroke="#38bdf8"/><text x="215" y="137" text-anchor="middle" fill="#f0f9ff" font-size="9" font-weight="700">IF</text>
+  <rect x="245" y="122" width="60" height="22" rx="3" fill="#10b981" stroke="#34d399"/><text x="275" y="137" text-anchor="middle" fill="#f0fdf4" font-size="9" font-weight="700">ID</text>
+  <rect x="305" y="122" width="60" height="22" rx="3" fill="#f59e0b" stroke="#fbbf24"/><text x="335" y="137" text-anchor="middle" fill="#fffbeb" font-size="9" font-weight="700">EX</text>
+  <rect x="365" y="122" width="60" height="22" rx="3" fill="#a855f7" stroke="#c084fc"/><text x="395" y="137" text-anchor="middle" fill="#fdf4ff" font-size="9" font-weight="700">MEM</text>
+  <rect x="425" y="122" width="60" height="22" rx="3" fill="#ef4444" stroke="#f87171"/><text x="455" y="137" text-anchor="middle" fill="#fef2f2" font-size="9" font-weight="700">WB</text>
+
+  <rect x="245" y="157" width="60" height="22" rx="3" fill="#0ea5e9" stroke="#38bdf8"/><text x="275" y="172" text-anchor="middle" fill="#f0f9ff" font-size="9" font-weight="700">IF</text>
+  <rect x="305" y="157" width="60" height="22" rx="3" fill="#10b981" stroke="#34d399"/><text x="335" y="172" text-anchor="middle" fill="#f0fdf4" font-size="9" font-weight="700">ID</text>
+  <rect x="365" y="157" width="60" height="22" rx="3" fill="#f59e0b" stroke="#fbbf24"/><text x="395" y="172" text-anchor="middle" fill="#fffbeb" font-size="9" font-weight="700">EX</text>
+  <rect x="425" y="157" width="60" height="22" rx="3" fill="#a855f7" stroke="#c084fc"/><text x="455" y="172" text-anchor="middle" fill="#fdf4ff" font-size="9" font-weight="700">MEM</text>
+
+  <rect x="305" y="192" width="60" height="22" rx="3" fill="#0ea5e9" stroke="#38bdf8"/><text x="335" y="207" text-anchor="middle" fill="#f0f9ff" font-size="9" font-weight="700">IF</text>
+  <rect x="365" y="192" width="60" height="22" rx="3" fill="#10b981" stroke="#34d399"/><text x="395" y="207" text-anchor="middle" fill="#f0fdf4" font-size="9" font-weight="700">ID</text>
+  <rect x="425" y="192" width="60" height="22" rx="3" fill="#f59e0b" stroke="#fbbf24"/><text x="455" y="207" text-anchor="middle" fill="#fffbeb" font-size="9" font-weight="700">EX</text>
+
+  <rect x="40" y="250" width="500" height="60" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="290" y="270" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">⚡ Pipeline Throughput</text>
+  <text x="290" y="287" text-anchor="middle" fill="#cbd5e1" font-size="9">without pipeline: 1 instruction per 5 cycles (CPI = 5)</text>
+  <text x="290" y="301" text-anchor="middle" fill="#cbd5e1" font-size="9">with pipeline: 1 instruction per 1 cycle (CPI ≈ 1) — 5× faster!</text>
+
+</svg>
+<div class="svg-caption">চিত্র: ৫-স্টেজ pipeline — IF, ID, EX, MEM, WB। প্রতিটা instruction এক সাইকেল পরপর শুরু হয়, ফলে প্রতি সাইকেলে একটা করে instruction শেষ হয়।</div>
 </div>
 
 <div class="secret-box">
