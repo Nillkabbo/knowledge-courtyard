@@ -59,6 +59,22 @@ doors.push({
     <li>ঢেউ নামলে শূন্যতা পূরণ করো — হাঁটা, পানি, কল</li>
     <li>ঘুমানোর আগে আজকের তাওবা করো — ক্ষমা চাও</li>
   </div>
+<div class="svg-diagram">
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="280" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌊 Urge Surfing: Wave Rises, Peaks, Falls</text>
+  <path d="M 30 180 Q 80 60 140 100 Q 200 140 280 100 Q 360 60 420 120 Q 480 160 530 130" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+  <circle cx="140" cy="100" r="6" fill="#fbbf24"/>
+  <text x="150" y="95" fill="#fcd34d" font-size="8">peak</text>
+  <text x="60" y="200" fill="#94a3b8" font-size="7">rise</text>
+  <text x="140" y="125" text-anchor="middle" fill="#fcd34d" font-size="7">surf here</text>
+  <text x="280" y="200" text-anchor="middle" fill="#94a3b8" font-size="7">falls naturally</text>
+  <rect x="380" y="170" width="150" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="455" y="188" text-anchor="middle" fill="#4ade80" font-size="7">name it then watch it</text>
+  <text x="455" y="200" text-anchor="middle" fill="#4ade80" font-size="7">then it passes</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: আকাঙ্ক্ষার ঢেউ — লড়াই করলে ডুব, সার্ফ করলে বাঁচ।</div>
+
   <div class="secret-box">
     <div class="secret-icon">🌊</div>
     <div class="secret-line">আকাঙ্ক্ষা ঢেউয়ের মতো — লড়াই করলে ডুব, সার্ফ করলে বাঁচ।</div>
@@ -134,6 +150,20 @@ doors.push({
     <li>ফলাফল নয়, প্রক্রিয়া ট্র্যাক করো ('পড়েছি কি না?')</li>
     <li>এক বছর ধৈর্য ধরো — ৩৭ গুণ ফল আসবে</li>
   </div>
+<div class="svg-diagram">
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="280" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📈 Compound Growth: 1% Better vs 1% Worse</text>
+  <path d="M 30 200 Q 200 195 300 150 Q 400 80 530 40" fill="none" stroke="#22c55e" stroke-width="2.5"/>
+  <text x="450" y="50" fill="#4ade80" font-size="8">+1% daily = 37x/year</text>
+  <path d="M 30 200 Q 200 200 300 210 Q 400 220 530 225" fill="none" stroke="#f87171" stroke-width="2"/>
+  <text x="420" y="235" fill="#fca5a5" font-size="8">-1% daily = ~0/year</text>
+  <line x1="30" y1="200" x2="530" y2="200" stroke="#64748b" stroke-width="0.5"/>
+  <text x="280" y="215" text-anchor="middle" fill="#94a3b8" font-size="7">Day 0 (baseline)</text>
+  <text x="280" y="140" text-anchor="middle" fill="#fbbf24" font-size="8">差距 widens daily</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: যৌগিক বৃদ্ধি — প্রতিদিন ১% উন্নতি = এক বছরে ৩৭ গুণ।</div>
+
   <div class="secret-box">
     <div class="secret-icon">📈</div>
     <div class="secret-line">প্রতিদিন ১% — এক বছরে ৩৭ গুণ। প্রতিদিন −১% — এক বছরে শূন্য।</div>
@@ -220,6 +250,28 @@ doors.push({
     <li>দিন শেষে শাটডাউন রিচুয়াল করো — 'আজকের কাজ শেষ'</li>
     <li>ছন্দময় (rhythmic) সময়সূচী বেছে নাও — প্রতিদিন একই ব্লক</li>
   </div>
+<div class="svg-diagram">
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="280" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🏗️ Deep Work: Architecture Required</text>
+  <rect x="20" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="70" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7">Where?</text>
+  <rect x="130" y="50" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="180" y="75" text-anchor="middle" fill="#4ade80" font-size="7">When?</text>
+  <rect x="240" y="50" width="100" height="40" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="290" y="75" text-anchor="middle" fill="#fcd34d" font-size="7">How long?</text>
+  <rect x="350" y="50" width="100" height="40" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="400" y="75" text-anchor="middle" fill="#c084fc" font-size="7">What?</text>
+  <rect x="460" y="50" width="80" height="40" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="500" y="75" text-anchor="middle" fill="#fca5a5" font-size="7">Shutdown</text>
+  <rect x="100" y="110" width="360" height="30" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+  <text x="280" y="130" text-anchor="middle" fill="#4ade80" font-size="8">90-min deep work blocks</text>
+  <text x="280" y="165" text-anchor="middle" fill="#94a3b8" font-size="7">Ritual triggers brain: this is deep mode</text>
+  <text x="280" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">Shutdown lets diffuse mode work</text>
+  <text x="280" y="210" text-anchor="middle" fill="#fbbf24" font-size="7">Newport: Deep Work = 21st century superpower</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: ডিপ ওয়ার্ক — চার সিদ্ধান্ত + রিচুয়াল + শাটডাউন।</div>
+
   <div class="secret-box">
     <div class="secret-icon">🏗️</div>
     <div class="secret-line">ডিপ ওয়ার্ক ঘটে না — তাকে সাজাতে হয়। চার সিদ্ধান্ত + রিচুয়াল + শাটডাউন।</div>
@@ -290,6 +342,29 @@ doors.push({
     <li>একসময় তুমি ভুলে যাবে যে কাজ করছো — সেটাই ফ্লো</li>
     <li>মনে রাখো — তোমার মস্তিষ্ক পাথর নয়, কাদামাটি</li>
   </div>
+<div class="svg-diagram">
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="280" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🧬 Neuroplasticity: Neurons That Fire Together Wire Together</text>
+  <circle cx="100" cy="100" r="15" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="100" y="105" text-anchor="middle" fill="#7dd3fc" font-size="8">A</text>
+  <circle cx="250" cy="80" r="15" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="250" y="85" text-anchor="middle" fill="#4ade80" font-size="8">B</text>
+  <circle cx="400" cy="110" r="15" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="400" y="115" text-anchor="middle" fill="#fcd34d" font-size="8">C</text>
+  <line x1="115" y1="95" x2="235" y2="82" stroke="#64748b" stroke-width="1"/>
+  <line x1="265" y1="85" x2="385" y2="107" stroke="#64748b" stroke-width="1"/>
+  <text x="175" y="80" fill="#94a3b8" font-size="6">weak</text>
+  <text x="330" y="85" fill="#94a3b8" font-size="6">weak</text>
+  <rect x="30" y="150" width="200" height="25" rx="4" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
+  <text x="130" y="167" text-anchor="middle" fill="#fca5a5" font-size="7">Before: thin connection, slow signal</text>
+  <rect x="330" y="150" width="200" height="25" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="430" y="167" text-anchor="middle" fill="#4ade80" font-size="7">After: myelin coat, 100x faster</text>
+  <text x="280" y="200" text-anchor="middle" fill="#fbbf24" font-size="8">Hebb: fire together = wire together</text>
+  <text x="280" y="215" text-anchor="middle" fill="#94a3b8" font-size="7">Flow = challenge matches skill</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: নিউরোপ্লাস্টিসিটি — বারবার অনুশীলন করলে সংযোগ শক্ত ও দ্রুত হয়।</div>
+
   <div class="secret-box">
     <div class="secret-icon">🧬</div>
     <div class="secret-line">মস্তিষ্ক কাদামাটি — প্রতিটা নতুন কাজে নতুন পথ তৈরি হয়।</div>
