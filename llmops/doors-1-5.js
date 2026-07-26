@@ -132,6 +132,32 @@ SERVING DECISION:
   
   Start: vLLM (most documented, most flexible)</div>
 
+<div style="text-align:center;margin:1.3rem 0">
+<svg viewBox="0 0 760 250" width="100%" style="max-width:760px;display:block;background:#070a0f;border:1px solid rgba(34,211,238,.18);border-radius:14px" font-family="Noto Sans Bengali,sans-serif" role="img" aria-label="MLOps pipeline">
+<defs><marker id="m1a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#3dd6c4"/></marker></defs>
+<rect x="20" y="16" width="720" height="44" rx="10" fill="rgba(34,211,238,.07)" stroke="#22d3ee" stroke-width="1.5"/>
+<text x="380" y="43" text-anchor="middle" fill="#67e8f9" font-size="14" font-weight="700">Serving Engine — vLLM · TGI · SGLang · Triton</text>
+<g font-size="13" fill="#e8e6f0">
+ <rect x="18" y="104" width="100" height="46" rx="9" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="68" y="131" text-anchor="middle">Data</text>
+ <rect x="146" y="104" width="100" height="46" rx="9" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="196" y="131" text-anchor="middle">Train</text>
+ <rect x="274" y="104" width="100" height="46" rx="9" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="324" y="131" text-anchor="middle">Evaluate</text>
+ <rect x="402" y="104" width="100" height="46" rx="9" fill="#0f1822" stroke="#3dd6c4" stroke-width="1.5"/><text x="452" y="131" text-anchor="middle" fill="#3dd6c4">Registry</text>
+ <rect x="530" y="104" width="100" height="46" rx="9" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="580" y="131" text-anchor="middle">Deploy</text>
+ <rect x="658" y="104" width="100" height="46" rx="9" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="708" y="131" text-anchor="middle">Monitor</text>
+</g>
+<g stroke="#3dd6c4" stroke-width="1.5" fill="none">
+ <line x1="118" y1="127" x2="142" y2="127" marker-end="url(#m1a)"/>
+ <line x1="246" y1="127" x2="270" y2="127" marker-end="url(#m1a)"/>
+ <line x1="374" y1="127" x2="398" y2="127" marker-end="url(#m1a)"/>
+ <line x1="502" y1="127" x2="526" y2="127" marker-end="url(#m1a)"/>
+ <line x1="630" y1="127" x2="654" y2="127" marker-end="url(#m1a)"/>
+ <path d="M708,150 C708,215 68,215 68,150" marker-end="url(#m1a)"/>
+</g>
+<text x="380" y="232" text-anchor="middle" fill="#9290a8" font-size="12" font-style="italic">feedback loop — মনিটরিং থেকে পুনরায় প্রশিক্ষণ</text>
+</svg>
+<div style="font-size:.78rem;color:#5e5c74;margin-top:.4rem;letter-spacing:.04em">চিত্র ১ · ML পাইপলাইন — ডেটা থেকে মনিটর পর্যন্ত চক্রাকার প্রবাহ</div>
+</div>
+
 <div class="dialogue">তাহকিক — implementation, realization, actual work। কুরআনে আল্লাহ বলেন — "নিশ্চয় আল্লাহ তাদের ভালোবাসেন যারা তাদের কাজ ভালোভাবে করে।" Serving engine হলো সেই ভালো কাজের টুল — notebook থেকে production নিয়ে যাওয়া। তাহকিক — শুধু তত্ত্ব নয়, বাস্তবায়ন।</div>
 <div class="dialogue en">"Tahqiq — implementation, realization, actual work. Allah says — 'Allah loves those who do their work well.' Serving engines are the tool of doing work well — moving from notebook to production. Tahqiq — not just theory, but implementation."</div>`,
   senior:{
@@ -279,6 +305,37 @@ INFRASTRUCTURE OPTIONS:
     → Modal: serverless GPU, pay per use
     → Replicate: deploy in minutes
     → no GPU management at all</div>
+
+<div style="text-align:center;margin:1.3rem 0">
+<svg viewBox="0 0 720 250" width="100%" style="max-width:720px;display:block;background:#070a0f;border:1px solid rgba(34,211,238,.18);border-radius:14px" font-family="Noto Sans Bengali,sans-serif" role="img" aria-label="Deployment patterns">
+<text x="16" y="40" fill="#67e8f9" font-size="13" font-weight="700">Rolling</text>
+<g font-size="11">
+ <rect x="110" y="24" width="40" height="34" rx="6" fill="#0f1822" stroke="#3dd6c4" stroke-width="1.5"/><text x="130" y="46" text-anchor="middle" fill="#e8e6f0">v1</text>
+ <rect x="160" y="24" width="40" height="34" rx="6" fill="#0f1822" stroke="#3dd6c4" stroke-width="1.5"/><text x="180" y="46" text-anchor="middle" fill="#e8e6f0">v1</text>
+ <rect x="210" y="24" width="40" height="34" rx="6" fill="rgba(34,211,238,.12)" stroke="#22d3ee" stroke-width="1.8" stroke-dasharray="3 2"/><text x="230" y="46" text-anchor="middle" fill="#67e8f9">v2</text>
+ <rect x="260" y="24" width="40" height="34" rx="6" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="280" y="46" text-anchor="middle" fill="#9290a8">v1</text>
+ <text x="320" y="46" fill="#9290a8" font-size="12">একটা একটা করে → zero downtime</text>
+</g>
+<text x="16" y="118" fill="#67e8f9" font-size="13" font-weight="700">Blue-Green</text>
+<g font-size="11">
+ <rect x="110" y="100" width="34" height="34" rx="6" fill="rgba(91,158,255,.12)" stroke="#5b9eff" stroke-width="1.5"/><text x="127" y="122" text-anchor="middle" fill="#5b9eff">B</text>
+ <rect x="150" y="100" width="34" height="34" rx="6" fill="rgba(91,158,255,.12)" stroke="#5b9eff" stroke-width="1.5"/><text x="167" y="122" text-anchor="middle" fill="#5b9eff">B</text>
+ <rect x="190" y="100" width="34" height="34" rx="6" fill="rgba(91,158,255,.12)" stroke="#5b9eff" stroke-width="1.5"/><text x="207" y="122" text-anchor="middle" fill="#5b9eff">B</text>
+ <text x="240" y="122" fill="#3dd6c4" font-size="16">⇄</text>
+ <rect x="270" y="100" width="34" height="34" rx="6" fill="rgba(82,196,26,.12)" stroke="#52c41a" stroke-width="1.5"/><text x="287" y="122" text-anchor="middle" fill="#52c41a">G</text>
+ <rect x="310" y="100" width="34" height="34" rx="6" fill="rgba(82,196,26,.12)" stroke="#52c41a" stroke-width="1.5"/><text x="327" y="122" text-anchor="middle" fill="#52c41a">G</text>
+ <rect x="350" y="100" width="34" height="34" rx="6" fill="rgba(82,196,26,.12)" stroke="#52c41a" stroke-width="1.5"/><text x="367" y="122" text-anchor="middle" fill="#52c41a">G</text>
+ <text x="400" y="122" fill="#9290a8" font-size="12">পাশাপাশি → তাৎক্ষণিক সুইচ</text>
+</g>
+<text x="16" y="196" fill="#67e8f9" font-size="13" font-weight="700">Canary</text>
+<g font-size="12">
+ <rect x="110" y="176" width="150" height="40" rx="8" fill="rgba(34,211,238,.06)" stroke="#22d3ee" stroke-width="1.5"/><text x="185" y="201" text-anchor="middle" fill="#e8e6f0">v1 · 95%</text>
+ <rect x="270" y="176" width="70" height="40" rx="8" fill="rgba(255,107,53,.12)" stroke="#ff6b35" stroke-width="1.8"/><text x="305" y="201" text-anchor="middle" fill="#ff6b35">v2 · 5%</text>
+ <text x="360" y="201" fill="#9290a8" font-size="12">5% → 25% → 50% → 100%</text>
+</g>
+</svg>
+<div style="font-size:.78rem;color:#5e5c74;margin-top:.4rem;letter-spacing:.04em">চিত্র ২ · ডিপ্লয়মেন্ট প্যাটার্ন — Rolling, Blue-Green, Canary</div>
+</div>
 
 <div class="dialogue">তাহকিল — completion, finishing। কুরআনে আল্লাহ বলেন — "আজ আমি তোমাদের জন্য ধর্ম পূর্ণ করলাম।" (৫:৩)। পূর্ণতা = প্রতিটা অংশ সম্পন্ন। LLM deployment-ও তেমনি — serving engine, container, orchestration, scaling, load balancing। একটাও বাদ দিলে অসম্পূর্ণ। তাহকিল — সম্পূর্ণ করা।</div>
 <div class="dialogue en">"Tahkil — completion, finishing. Allah says — 'Today I have perfected your religion for you.' (5:3). Perfection = every part complete. LLM deployment too — serving engine, container, orchestration, scaling, load balancing. Missing one, incomplete. Tahkil — completing."</div>`,
@@ -445,6 +502,30 @@ ROLLBACK:
   → instant rollback to previous version
   → zero downtime</div>
 
+<div style="text-align:center;margin:1.3rem 0">
+<svg viewBox="0 0 460 330" width="100%" style="max-width:460px;display:block;background:#070a0f;border:1px solid rgba(34,211,238,.18);border-radius:14px" font-family="Noto Sans Bengali,sans-serif" role="img" aria-label="CI/CD pipeline">
+<defs><marker id="m3a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#3dd6c4"/></marker></defs>
+<g font-size="13">
+ <rect x="120" y="16" width="220" height="34" rx="8" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="230" y="38" text-anchor="middle" fill="#e8e6f0">১ · Code Push</text>
+ <rect x="120" y="64" width="220" height="34" rx="8" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="230" y="86" text-anchor="middle" fill="#e8e6f0">২ · Code Tests</text>
+ <rect x="120" y="112" width="220" height="34" rx="8" fill="rgba(34,211,238,.10)" stroke="#67e8f9" stroke-width="2"/><text x="230" y="134" text-anchor="middle" fill="#67e8f9" font-weight="700">৩ · Eval Gate ★</text>
+ <rect x="120" y="160" width="220" height="34" rx="8" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="230" y="182" text-anchor="middle" fill="#e8e6f0">৪ · Security (Garak)</text>
+ <rect x="120" y="208" width="220" height="34" rx="8" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="230" y="230" text-anchor="middle" fill="#e8e6f0">৫ · Build + Push</text>
+ <rect x="120" y="256" width="220" height="34" rx="8" fill="rgba(82,196,26,.10)" stroke="#52c41a" stroke-width="1.5"/><text x="230" y="278" text-anchor="middle" fill="#52c41a">৬ · Canary Deploy</text>
+</g>
+<g stroke="#3dd6c4" stroke-width="1.5">
+ <line x1="230" y1="50" x2="230" y2="62" marker-end="url(#m3a)"/>
+ <line x1="230" y1="98" x2="230" y2="110" marker-end="url(#m3a)"/>
+ <line x1="230" y1="146" x2="230" y2="158" marker-end="url(#m3a)"/>
+ <line x1="230" y1="194" x2="230" y2="206" marker-end="url(#m3a)"/>
+ <line x1="230" y1="242" x2="230" y2="254" marker-end="url(#m3a)"/>
+</g>
+<path d="M120,273 C40,273 40,33 120,33" fill="none" stroke="#ff6b35" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#m3a)"/>
+<text x="44" y="155" text-anchor="middle" fill="#ff6b35" font-size="12">auto-rollback</text>
+</svg>
+<div style="font-size:.78rem;color:#5e5c74;margin-top:.4rem;letter-spacing:.04em">চিত্র ৩ · CI/CD — কোড পুশ থেকে ক্যানারি ডিপ্লয়, স্বয়ংক্রিয় রোলব্যাক সহ</div>
+</div>
+
 <div class="dialogue">ইনসান — organization, structure। কুরআনে আল্লাহ বলেন — "যিনি মানুষকে সৃষ্টি করেছেন এবং তাকে সুসংগঠিত করেছেন।" (৯১:৭)। সুসংগঠিত = প্রতিটা অংশ নিয়মে। CI/CD-ও তেমনি — প্রতিটা change নিয়মে, স্বয়ংক্রিয়ভাবে, নির্ভুলভাবে। যে সংগঠিত, সে নির্ভরযোগ্য। যে অগোছালো, সে বিপদে।</div>
 <div class="dialogue en">"Insan — organization, structure. Allah says — 'Who created man and proportioned him.' (91:7). Proportioned = every part in order. CI/CD too — every change in order, automated, accurate. One who is organized, is reliable. One who is messy, is in danger."</div>`,
   senior:{
@@ -606,6 +687,37 @@ DASHBOARD (Grafana example):
     → cost per day/week/month
     → cost per user
     → most expensive queries</div>
+
+<div style="text-align:center;margin:1.3rem 0">
+<svg viewBox="0 0 720 250" width="100%" style="max-width:720px;display:block;background:#070a0f;border:1px solid rgba(34,211,238,.18);border-radius:14px" font-family="Noto Sans Bengali,sans-serif" role="img" aria-label="Observability">
+<defs><marker id="m4a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#3dd6c4"/></marker></defs>
+<g font-size="12">
+ <rect x="30" y="30" width="150" height="40" rx="8" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="105" y="54" text-anchor="middle" fill="#e8e6f0">Metrics · Prometheus</text>
+ <rect x="30" y="82" width="150" height="40" rx="8" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="105" y="106" text-anchor="middle" fill="#e8e6f0">Logs · ELK / Loki</text>
+ <rect x="30" y="134" width="150" height="40" rx="8" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="105" y="158" text-anchor="middle" fill="#e8e6f0">Traces · Langfuse</text>
+</g>
+<rect x="270" y="60" width="180" height="84" rx="10" fill="rgba(34,211,238,.07)" stroke="#67e8f9" stroke-width="1.8"/>
+<text x="360" y="96" text-anchor="middle" fill="#67e8f9" font-size="14" font-weight="700">Dashboard</text>
+<text x="360" y="118" text-anchor="middle" fill="#9290a8" font-size="11">Grafana · LangSmith</text>
+<rect x="540" y="78" width="150" height="48" rx="10" fill="rgba(255,107,53,.10)" stroke="#ff6b35" stroke-width="1.5"/>
+<text x="615" y="107" text-anchor="middle" fill="#ff6b35" font-size="13" font-weight="700">🔔 Alerts</text>
+<g stroke="#3dd6c4" stroke-width="1.5" fill="none">
+ <line x1="180" y1="50" x2="266" y2="92" marker-end="url(#m4a)"/>
+ <line x1="180" y1="102" x2="266" y2="102" marker-end="url(#m4a)"/>
+ <line x1="180" y1="154" x2="266" y2="120" marker-end="url(#m4a)"/>
+ <line x1="450" y1="102" x2="536" y2="102" marker-end="url(#m4a)"/>
+</g>
+<text x="30" y="208" fill="#9290a8" font-size="12">Trace:</text>
+<g font-size="10" fill="#e8e6f0">
+ <rect x="90" y="196" width="60" height="20" rx="4" fill="rgba(91,158,255,.15)" stroke="#5b9eff" stroke-width="1"/><text x="120" y="210" text-anchor="middle">guard</text>
+ <rect x="152" y="196" width="120" height="20" rx="4" fill="rgba(34,211,238,.15)" stroke="#22d3ee" stroke-width="1"/><text x="212" y="210" text-anchor="middle">query rewrite</text>
+ <rect x="274" y="196" width="80" height="20" rx="4" fill="rgba(61,214,196,.15)" stroke="#3dd6c4" stroke-width="1"/><text x="314" y="210" text-anchor="middle">RAG</text>
+ <rect x="356" y="196" width="200" height="20" rx="4" fill="rgba(255,107,53,.15)" stroke="#ff6b35" stroke-width="1"/><text x="456" y="210" text-anchor="middle">LLM generation · 1800ms</text>
+</g>
+<text x="600" y="210" fill="#9290a8" font-size="11">← সবচেয়ে দীর্ঘ</text>
+</svg>
+<div style="font-size:.78rem;color:#5e5c74;margin-top:.4rem;letter-spacing:.04em">চিত্র ৪ · পর্যবেক্ষণ — মেট্রিক্স, লগ, ট্রেস একসাথে ড্যাশবোর্ডে</div>
+</div>
 
 <div class="dialogue">রুকইয়াহ — constant observation, watchfulness। কুরআনে আল্লাহ বলেন — "তিনি তোমাদের উপর প্রহরী নিযুক্ত করেছেন।" (৮২:১০)। প্রহরী = যে দেখে। LLMOps monitoring-ও তেমনি — প্রতিটা কল, প্রতিটা response পর্যবেক্ষণ। যে দেখে, সে ঠিক করে। যে দেখে না, সে অন্ধ। রুকইয়াহ — সতত পর্যবেক্ষণ।</div>
 <div class="dialogue en">"Ruqyah — constant observation, watchfulness. Allah says — 'There are over you watchmen.' (82:10). Watchmen = those who see. LLMOps monitoring too — every call, every response observed. One who watches, fixes. One who doesn't, is blind. Ruqyah — constant observation."</div>`,
@@ -795,6 +907,35 @@ REAL-WORLD COST BREAKDOWN:
     
     Optimized: ~$৫K/month
     → ৮৩% cost reduction!</div>
+
+<div style="text-align:center;margin:1.3rem 0">
+<svg viewBox="0 0 720 250" width="100%" style="max-width:720px;display:block;background:#070a0f;border:1px solid rgba(34,211,238,.18);border-radius:14px" font-family="Noto Sans Bengali,sans-serif" role="img" aria-label="Cost optimization">
+<line x1="60" y1="30" x2="60" y2="200" stroke="#3d4658" stroke-width="1.5"/>
+<line x1="60" y1="200" x2="690" y2="200" stroke="#3d4658" stroke-width="1.5"/>
+<g font-size="11">
+ <rect x="90" y="40" width="70" height="160" rx="4" fill="rgba(255,107,53,.18)" stroke="#ff6b35" stroke-width="1.5"/>
+ <text x="125" y="34" text-anchor="middle" fill="#ff6b35" font-weight="700">$60K</text>
+ <text x="125" y="218" text-anchor="middle" fill="#9290a8">বেস</text>
+ <rect x="200" y="90" width="70" height="110" rx="4" fill="rgba(255,159,64,.15)" stroke="#ff9f40" stroke-width="1.5"/>
+ <text x="235" y="84" text-anchor="middle" fill="#ff9f40" font-weight="700">$40K</text>
+ <text x="235" y="218" text-anchor="middle" fill="#9290a8">cache −৩০%</text>
+ <rect x="310" y="120" width="70" height="80" rx="4" fill="rgba(251,191,36,.15)" stroke="#fbbf24" stroke-width="1.5"/>
+ <text x="345" y="114" text-anchor="middle" fill="#fbbf24" font-weight="700">$22K</text>
+ <text x="345" y="218" text-anchor="middle" fill="#9290a8">routing</text>
+ <rect x="420" y="150" width="70" height="50" rx="4" fill="rgba(82,196,26,.15)" stroke="#52c41a" stroke-width="1.5"/>
+ <text x="455" y="144" text-anchor="middle" fill="#52c41a" font-weight="700">$11K</text>
+ <text x="455" y="218" text-anchor="middle" fill="#9290a8">batch</text>
+ <rect x="530" y="172" width="70" height="28" rx="4" fill="rgba(61,214,196,.15)" stroke="#3dd6c4" stroke-width="1.5"/>
+ <text x="565" y="166" text-anchor="middle" fill="#3dd6c4" font-weight="700">$7K</text>
+ <text x="565" y="218" text-anchor="middle" fill="#9290a8">compress</text>
+ <rect x="640" y="184" width="46" height="16" rx="4" fill="rgba(34,211,238,.2)" stroke="#67e8f9" stroke-width="1.8"/>
+ <text x="663" y="178" text-anchor="middle" fill="#67e8f9" font-weight="700">$5K</text>
+</g>
+<path d="M165,60 L635,180" fill="none" stroke="#67e8f9" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="380" y="240" text-anchor="middle" fill="#67e8f9" font-size="12" font-weight="700">৮৩% সাশ্রয় — প্রতিটা কৌশল খরচ কমায়</text>
+</svg>
+<div style="font-size:.78rem;color:#5e5c74;margin-top:.4rem;letter-spacing:.04em">চিত্র ৫ · খরচ হ্রাস — ক্যাশিং, রাউটিং, ব্যাচ, কম্প্রেশনে ৮৩% সাশ্রয়</div>
+</div>
 
 <div class="dialogue">সদ্ব্যয় — wise spending, proper use of resources। কুরআনে আল্লাহ বলেন — "তারা ব্যয় করে না অতিরিক্ত এবং কৃপণতা করে না।" (২৫:৬৭)। মাঝপথ — না বেশি, না কম। ঠিক যতটা দরকার। LLM cost-ও তেমনি — সদ্ব্যয়। ক্যাশিং, রাউটিং, ব্যাচিং। প্রতিটা টোকেন গোনা। যে সদ্ব্যয় জানে, সে টিকে।</div>
 <div class="dialogue en">"Sadvyay — wise spending, proper use of resources. Allah says — 'They are not extravagant, nor are they miserly.' (25:67). Middle path — not too much, not too little. Just what's needed. LLM cost too — sadvyay. Caching, routing, batching. Every token counted. One who spends wisely, survives."</div>`,

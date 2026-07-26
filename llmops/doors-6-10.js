@@ -148,6 +148,28 @@ BENCHMARKING:
   → p99 = worst-case user experience
   → optimize p99, not just average</div>
 
+<div style="text-align:center;margin:1.3rem 0">
+<svg viewBox="0 0 720 250" width="100%" style="max-width:720px;display:block;background:#070a0f;border:1px solid rgba(34,211,238,.18);border-radius:14px" font-family="Noto Sans Bengali,sans-serif" role="img" aria-label="Latency optimization">
+<text x="360" y="28" text-anchor="middle" fill="#67e8f9" font-size="14" font-weight="700">Latency Budget — Perceived &lt; ১ সেকেন্ড</text>
+<g font-size="11">
+ <rect x="40" y="60" width="110" height="34" rx="7" fill="rgba(91,158,255,.12)" stroke="#5b9eff" stroke-width="1.5"/><text x="95" y="82" text-anchor="middle" fill="#e8e6f0">network ১০০ms</text>
+ <rect x="170" y="60" width="110" height="34" rx="7" fill="rgba(34,211,238,.12)" stroke="#22d3ee" stroke-width="1.5"/><text x="225" y="82" text-anchor="middle" fill="#e8e6f0">guard ৫০ms</text>
+ <rect x="300" y="60" width="110" height="34" rx="7" fill="rgba(34,211,238,.12)" stroke="#22d3ee" stroke-width="1.5"/><text x="355" y="82" text-anchor="middle" fill="#e8e6f0">RAG ২০০ms</text>
+ <rect x="430" y="60" width="130" height="34" rx="7" fill="rgba(255,107,53,.15)" stroke="#ff6b35" stroke-width="1.8"/><text x="495" y="82" text-anchor="middle" fill="#ff6b35">TTFT ৫০০ms</text>
+ <rect x="580" y="60" width="110" height="34" rx="7" fill="rgba(82,196,26,.12)" stroke="#52c41a" stroke-width="1.5"/><text x="635" y="82" text-anchor="middle" fill="#e8e6f0">stream</text>
+</g>
+<line x1="40" y1="112" x2="690" y2="112" stroke="#3d4658" stroke-width="1"/>
+<text x="40" y="138" fill="#9290a8" font-size="12">Streaming = ইউজার ২০০ms-এ প্রথম টোকেন দেখে</text>
+<g font-size="12">
+ <rect x="40" y="160" width="200" height="40" rx="8" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="140" y="185" text-anchor="middle" fill="#e8e6f0">Prefix Caching</text>
+ <rect x="260" y="160" width="200" height="40" rx="8" fill="#0f1822" stroke="#3dd6c4" stroke-width="1.5"/><text x="360" y="185" text-anchor="middle" fill="#e8e6f0">Speculative Decoding</text>
+ <rect x="480" y="160" width="200" height="40" rx="8" fill="#0f1822" stroke="#b37feb" stroke-width="1.5"/><text x="580" y="185" text-anchor="middle" fill="#e8e6f0">Quantization + Batching</text>
+</g>
+<text x="360" y="230" text-anchor="middle" fill="#67e8f9" font-size="12" font-weight="700">Streaming + Cache + Speculative → দ্রুততা</text>
+</svg>
+<div style="font-size:.78rem;color:#5e5c74;margin-top:.4rem;letter-spacing:.04em">চিত্র ৬ · লেটেন্সি — স্ট্রিমিং, প্রিফিক্স ক্যাশ, স্পেকুলেটিভ ডিকোডিং</div>
+</div>
+
 <div class="dialogue">সরি'আহ — speed, promptness, quickness। কুরআনে আল্লাহ বলেন — "তাড়াতাড়ি করো ক্ষমার দিকে।" (৩:১৩৩)। সরি'আহ হলো দ্রুত ভালো কাজে। Latency optimization-ও তেমনি — দ্রুত সেবা। ইউজারের সময় মূল্যবান। যে দ্রুত, সে সম্মান করে। যে ধীর, সে অবহেলা করে।</div>
 <div class="dialogue en">"Sariah — speed, promptness, quickness. Allah says — 'Race to forgiveness.' (3:133). Sariah is speed in good deeds. Latency optimization too — fast service. User time is valuable. One who is fast, respects. One who is slow, neglects."</div>`,
   senior:{
@@ -299,6 +321,44 @@ A/B TESTING WITH VERSIONS:
   → winner → production
   → loser → archived</div>
 
+<div style="text-align:center;margin:1.3rem 0">
+<svg viewBox="0 0 720 290" width="100%" style="max-width:720px;display:block;background:#070a0f;border:1px solid rgba(34,211,238,.18);border-radius:14px" font-family="Noto Sans Bengali,sans-serif" role="img" aria-label="Versioning and model registry">
+<defs><marker id="m7a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#3dd6c4"/></marker></defs>
+<text x="360" y="28" text-anchor="middle" fill="#67e8f9" font-size="14" font-weight="700">চারটি সংস্করণ — Code · Model · Data · Prompt</text>
+<g font-size="12">
+ <rect x="40" y="52" width="120" height="36" rx="7" fill="rgba(82,196,26,.12)" stroke="#52c41a" stroke-width="1.5"/><text x="100" y="75" text-anchor="middle" fill="#e8e6f0">Code · Git</text>
+ <rect x="40" y="98" width="120" height="36" rx="7" fill="rgba(34,211,238,.12)" stroke="#22d3ee" stroke-width="1.5"/><text x="100" y="121" text-anchor="middle" fill="#e8e6f0">Model · MLflow</text>
+ <rect x="40" y="144" width="120" height="36" rx="7" fill="rgba(61,214,196,.12)" stroke="#3dd6c4" stroke-width="1.5"/><text x="100" y="167" text-anchor="middle" fill="#e8e6f0">Data · DVC</text>
+ <rect x="40" y="190" width="120" height="36" rx="7" fill="rgba(179,127,235,.12)" stroke="#b37feb" stroke-width="1.5"/><text x="100" y="213" text-anchor="middle" fill="#e8e6f0">Prompt · Langfuse</text>
+</g>
+<rect x="280" y="92" width="160" height="96" rx="10" fill="rgba(34,211,238,.07)" stroke="#67e8f9" stroke-width="1.8"/>
+<text x="360" y="120" text-anchor="middle" fill="#67e8f9" font-size="13" font-weight="700">Registry</text>
+<text x="360" y="142" text-anchor="middle" fill="#9290a8" font-size="11">v1.2.3 + commit hash</text>
+<text x="360" y="162" text-anchor="middle" fill="#9290a8" font-size="11">পূর্ণ reproducibility</text>
+<g stroke="#3dd6c4" stroke-width="1.5" fill="none">
+ <line x1="160" y1="70" x2="276" y2="110" marker-end="url(#m7a)"/>
+ <line x1="160" y1="116" x2="276" y2="120" marker-end="url(#m7a)"/>
+ <line x1="160" y1="162" x2="276" y2="150" marker-end="url(#m7a)"/>
+ <line x1="160" y1="208" x2="276" y2="170" marker-end="url(#m7a)"/>
+</g>
+<g font-size="12">
+ <rect x="500" y="60" width="70" height="34" rx="7" fill="rgba(255,159,64,.10)" stroke="#ff9f40" stroke-width="1.5"/><text x="535" y="82" text-anchor="middle" fill="#ff9f40">Dev</text>
+ <rect x="500" y="106" width="70" height="34" rx="7" fill="rgba(91,158,255,.12)" stroke="#5b9eff" stroke-width="1.5"/><text x="535" y="128" text-anchor="middle" fill="#5b9eff">Staging</text>
+ <rect x="500" y="152" width="70" height="34" rx="7" fill="rgba(82,196,26,.12)" stroke="#52c41a" stroke-width="1.5"/><text x="535" y="174" text-anchor="middle" fill="#52c41a">Prod</text>
+ <rect x="500" y="198" width="70" height="34" rx="7" fill="rgba(146,144,168,.10)" stroke="#9290a8" stroke-width="1.5"/><text x="535" y="220" text-anchor="middle" fill="#9290a8">Archive</text>
+</g>
+<g stroke="#3dd6c4" stroke-width="1.5" fill="none">
+ <line x1="440" y1="120" x2="496" y2="77" marker-end="url(#m7a)"/>
+ <line x1="570" y1="123" x2="596" y2="135" marker-end="url(#m7a)"/>
+ <path d="M535,186 L535,196" marker-end="url(#m7a)"/>
+</g>
+<text x="640" y="145" fill="#9290a8" font-size="11">promote</text>
+<text x="640" y="190" fill="#9290a8" font-size="11">rollback</text>
+<text x="360" y="272" text-anchor="middle" fill="#3dd6c4" font-size="12" font-weight="700">lifecycle — Dev → Staging → Prod → Archive</text>
+</svg>
+<div style="font-size:.78rem;color:#5e5c74;margin-top:.4rem;letter-spacing:.04em">চিত্র ৭ · সংস্করণ — কোড, মডেল, ডেটা, প্রম্পট এক রেজিস্ট্রিতে</div>
+</div>
+
 <div class="dialogue">হিফযাতুল ইলম — preservation of knowledge। ইসলামী ঐতিহ্যে জ্ঞান সংরক্ষণ অত্যন্ত গুরুত্বপূর্ণ — হাদিস লেখা, মুখস্থ করা, সংকলন করা। LLMOps versioning-ও তেমনি — জ্ঞান (model, data, prompt, code) সংরক্ষণ। প্রতিটা version সংরক্ষিত = প্রতিটা পদক্ষেপ traceable। যে সংরক্ষণ করে, সে নিরাপদ।</div>
 <div class="dialogue en">"Hifzatul Ilm — preservation of knowledge. In Islamic tradition, knowledge preservation is paramount — writing hadith, memorizing, compiling. LLMOps versioning too — preserving knowledge (model, data, prompt, code). Each version preserved = each step traceable. One who preserves, is safe."</div>`,
   senior:{
@@ -447,6 +507,47 @@ LLM-SPECIFIC A/B TOOLING:
   → Langfuse: experiment tracking
   → Portkey: model routing + A/B
   → Custom: feature flags + eval pipeline</div>
+
+<div style="text-align:center;margin:1.3rem 0">
+<svg viewBox="0 0 720 280" width="100%" style="max-width:720px;display:block;background:#070a0f;border:1px solid rgba(34,211,238,.18);border-radius:14px" font-family="Noto Sans Bengali,sans-serif" role="img" aria-label="Scaling and A/B testing">
+<defs><marker id="m8a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#3dd6c4"/></marker></defs>
+<text x="360" y="28" text-anchor="middle" fill="#67e8f9" font-size="14" font-weight="700">A/B পরীক্ষা — Shadow → Canary → Full</text>
+<circle cx="80" cy="90" r="22" fill="rgba(34,211,238,.10)" stroke="#22d3ee" stroke-width="1.5"/>
+<text x="80" y="95" text-anchor="middle" fill="#e8e6f0" font-size="11">user</text>
+<g font-size="11">
+ <rect x="160" y="48" width="180" height="34" rx="7" fill="rgba(91,158,255,.10)" stroke="#5b9eff" stroke-width="1.5"/><text x="250" y="70" text-anchor="middle" fill="#5b9eff">v1 · control · ৫০%</text>
+ <rect x="160" y="98" width="180" height="34" rx="7" fill="rgba(179,127,235,.12)" stroke="#b37feb" stroke-width="1.8"/><text x="250" y="120" text-anchor="middle" fill="#b37feb">v2 · treatment · ৫০%</text>
+</g>
+<g stroke="#3dd6c4" stroke-width="1.5" fill="none">
+ <line x1="102" y1="82" x2="156" y2="65" marker-end="url(#m8a)"/>
+ <line x1="102" y1="98" x2="156" y2="115" marker-end="url(#m8a)"/>
+</g>
+<rect x="400" y="60" width="140" height="64" rx="9" fill="rgba(34,211,238,.07)" stroke="#67e8f9" stroke-width="1.8"/>
+<text x="470" y="88" text-anchor="middle" fill="#67e8f9" font-size="13" font-weight="700">Metrics</text>
+<text x="470" y="108" text-anchor="middle" fill="#9290a8" font-size="10">quality · latency · cost · satisfaction</text>
+<g stroke="#3dd6c4" stroke-width="1.5" fill="none">
+ <line x1="340" y1="65" x2="396" y2="80" marker-end="url(#m8a)"/>
+ <line x1="340" y1="115" x2="396" y2="110" marker-end="url(#m8a)"/>
+</g>
+<rect x="600" y="60" width="100" height="64" rx="9" fill="rgba(82,196,26,.10)" stroke="#52c41a" stroke-width="1.5"/>
+<text x="650" y="88" text-anchor="middle" fill="#52c41a" font-size="12" font-weight="700">winner</text>
+<text x="650" y="108" text-anchor="middle" fill="#9290a8" font-size="10">promote → ১০০%</text>
+<line x1="540" y1="92" x2="596" y2="92" stroke="#3dd6c4" stroke-width="1.5" marker-end="url(#m8a)"/>
+<text x="40" y="178" fill="#67e8f9" font-size="13" font-weight="700">Scaling — Auto-scale</text>
+<g font-size="11">
+ <rect x="40" y="194" width="50" height="30" rx="6" fill="rgba(34,211,238,.08)" stroke="#22d3ee" stroke-width="1.5"/><text x="65" y="214" text-anchor="middle">pod</text>
+ <rect x="100" y="194" width="50" height="30" rx="6" fill="rgba(34,211,238,.08)" stroke="#22d3ee" stroke-width="1.5"/><text x="125" y="214" text-anchor="middle">pod</text>
+ <text x="165" y="214" fill="#3dd6c4" font-size="14">+</text>
+ <rect x="185" y="194" width="50" height="30" rx="6" fill="rgba(34,211,238,.08)" stroke="#22d3ee" stroke-width="1.5"/><text x="210" y="214" text-anchor="middle">pod</text>
+ <rect x="245" y="194" width="50" height="30" rx="6" fill="rgba(34,211,238,.08)" stroke="#22d3ee" stroke-width="1.5"/><text x="270" y="214" text-anchor="middle">pod</text>
+ <text x="310" y="214" fill="#3dd6c4" font-size="14">+</text>
+ <rect x="330" y="194" width="50" height="30" rx="6" fill="rgba(255,107,53,.12)" stroke="#ff6b35" stroke-width="1.8" stroke-dasharray="3 2"/><text x="355" y="214" text-anchor="middle" fill="#ff6b35">new</text>
+ <text x="400" y="214" fill="#9290a8" font-size="12">traffic বাড়লে → HPA স্বয়ংক্রিয়ভাবে পড যোগ করে</text>
+</g>
+<text x="360" y="258" text-anchor="middle" fill="#3dd6c4" font-size="12" font-weight="700">পরীক্ষা ও স্কেলিং — ডেটা-চালিত সিদ্ধান্ত</text>
+</svg>
+<div style="font-size:.78rem;color:#5e5c74;margin-top:.4rem;letter-spacing:.04em">চিত্র ৮ · স্কেলিং ও A/B — ট্রাফিক ভাগ, মেট্রিক তুলনা, স্বয়ংক্রিয় স্কেল</div>
+</div>
 
 <div class="dialogue">ইখতিবার — test, trial, experiment। কুরআনে আল্লাহ বলেন — "আমি তোমাদের পরীক্ষা করি।" (২১:৩৫)। পরীক্ষা শাস্তি নয় — উন্নতির পথ। A/B testing-ও তেমনি — পরীক্ষা করে সেরা খুঁজো। যে পরীক্ষা করে, সে জানে। যে অনুমান করে, সে ভুল করে। ইখতিবার — পরীক্ষার মাধ্যমে সত্য।</div>
 <div class="dialogue en">"Ikhtibar — test, trial, experiment. Allah says — 'We test you.' (21:35). Testing isn't punishment — it's the path to improvement. A/B testing too — find the best through experimentation. One who tests, knows. One who guesses, errs. Ikhtibar — truth through testing."</div>`,
