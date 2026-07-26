@@ -43,6 +43,76 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩ (Engineer Journey):</strong> Engineering mindset — first principles, abstraction। সেই চিন্তার সাথে methodology যুক্ত হলে একটি পেশা তৈরি হয়। LedgerPilot: তুমি feature branch → PR → review → merge প্যাটার্ন ব্যবহার করছো — এটাই Agile + Git workflow।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📜 SDLC Evolution: Waterfall → Agile → DevOps</text>
+  <rect x="20" y="50" width="150" height="180" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="95" y="72" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">Waterfall (1970)</text>
+  <rect x="35" y="82" width="120" height="18" rx="3" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
+  <text x="95" y="95" text-anchor="middle" fill="#fca5a5" font-size="7">Requirements</text>
+  <rect x="35" y="105" width="120" height="18" rx="3" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
+  <text x="95" y="118" text-anchor="middle" fill="#fca5a5" font-size="7">Design</text>
+  <rect x="35" y="128" width="120" height="18" rx="3" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
+  <text x="95" y="141" text-anchor="middle" fill="#fca5a5" font-size="7">Code</text>
+  <rect x="35" y="151" width="120" height="18" rx="3" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
+  <text x="95" y="164" text-anchor="middle" fill="#fca5a5" font-size="7">Test</text>
+  <rect x="35" y="174" width="120" height="18" rx="3" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
+  <text x="95" y="187" text-anchor="middle" fill="#fca5a5" font-size="7">Deploy</text>
+  <text x="95" y="215" text-anchor="middle" fill="#f87171" font-size="7">❌ No going back</text>
+  <rect x="200" y="50" width="170" height="180" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="285" y="72" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">Agile (2001)</text>
+  <path d="M 220 140 Q 285 80 350 140 Q 285 200 220 140" fill="none" stroke="#fbbf24" stroke-width="2.5"/>
+  <text x="285" y="110" text-anchor="middle" fill="#fde68a" font-size="7">Plan</text>
+  <text x="285" y="130" text-anchor="middle" fill="#fde68a" font-size="7">Code</text>
+  <text x="285" y="150" text-anchor="middle" fill="#fde68a" font-size="7">Test</text>
+  <text x="285" y="170" text-anchor="middle" fill="#fde68a" font-size="7">Review</text>
+  <text x="285" y="195" text-anchor="middle" fill="#fcd34d" font-size="7">Sprint: 2 weeks</text>
+  <text x="285" y="215" text-anchor="middle" fill="#fbbf24" font-size="7">✅ Adaptive loop</text>
+  <rect x="400" y="50" width="160" height="180" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="480" y="72" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">DevOps</text>
+  <text x="480" y="92" text-anchor="middle" fill="#86efac" font-size="7">Code → Build → Test</text>
+  <text x="480" y="110" text-anchor="middle" fill="#86efac" font-size="7">→ Deploy → Monitor</text>
+  <rect x="415" y="125" width="130" height="35" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="480" y="140" text-anchor="middle" fill="#7dd3fc" font-size="7">CI/CD Pipeline</text>
+  <text x="480" y="152" text-anchor="middle" fill="#7dd3fc" font-size="6">automated &lt; 5 min</text>
+  <text x="480" y="180" text-anchor="middle" fill="#4ade80" font-size="7">∞ Continuous</text>
+  <text x="480" y="200" text-anchor="middle" fill="#4ade80" font-size="7">DORA metrics</text>
+  <text x="480" y="215" text-anchor="middle" fill="#22c55e" font-size="7">✅ Fully automated</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Waterfall (linear, rigid) → Agile (iterative, adaptive) → DevOps (automated, continuous)।</div>
+
+<div class="code-block">— Git Workflow: Agile/DevOps in Practice —
+
+  # Feature branch workflow (trunk-based):
+  $ git checkout -b feature/payment-api
+  $ git add -A && git commit -m "feat: add payment endpoint"
+  $ git push origin feature/payment-api
+
+  # PR → CI runs → code review → merge
+  # GitHub Actions CI/CD:
+  # .github/workflows/ci.yml
+  name: CI
+  on: [pull_request]
+  jobs:
+    test:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - run: pip install -r requirements.txt
+        - run: pytest --cov
+        - run: ruff check .
+
+  # Scrum ceremony (Jira/Linear):
+  # Sprint planning → daily standup →
+  # sprint review → retrospective
+
+  # DORA metrics (measure DevOps):
+  # Deploy frequency: daily = elite
+  # Lead time: < 1 hour = elite
+  # MTTR: < 1 hour = elite
+  # Change failure rate: < 15% = elite</div>
+
 <div class="secret-box">📜 <strong>Methodology = কীভাবে কাজ করবে।</strong> Waterfall (planned), Agile (adaptive), DevOps (automated), Platform Engineering (self-service)। প্রতিটি যুগের সমাধান তার আগের যুগের সমস্যা থেকে জন্ম নেয়। কিন্তু নিয়ম জানা এক জিন্তু — ভালো কোড লেখা আরেক জিনিস। সেই কৌশল আসবে পরের দরজায় — clean code।</div>`,
   senior: {
     title: "SDLC & Methodologies এক নজরে",
@@ -105,6 +175,77 @@ doors.push({
 <p class="scene-setting">এই আয়াত বলে — মানুষ যা চেষ্টা করে তাই পায়। Clean code-ও তেমন — এটি কোনো accident নয়। প্রতিটি ভালো function, প্রতিটি স্পষ্ট নাম, প্রতিটি একক দায়িত্ব — চেষ্টার ফল। "working code" ও "clean code" এক জিনিস নয়। প্রথমটি মেশিনের জন্য, দ্বিতীয়টি মানুষের জন্য।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩ (Engineer Journey):</strong> Abstraction ও decomposition — clean code-এর ভিত্তি। LedgerPilot: Django models, views, serializers — প্রতিটি একটি কাজ করে = SRP। Ipractus: React components — ছোট, এক কাজ।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📐 SOLID Principles: Clean Code Foundation</text>
+  <rect x="20" y="50" width="100" height="80" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="70" y="72" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">S</text>
+  <text x="70" y="88" text-anchor="middle" fill="#7dd3fc" font-size="7">Single</text>
+  <text x="70" y="100" text-anchor="middle" fill="#7dd3fc" font-size="7">Responsibility</text>
+  <text x="70" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">এক class = এক কাজ</text>
+  <rect x="130" y="50" width="100" height="80" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="180" y="72" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">O</text>
+  <text x="180" y="88" text-anchor="middle" fill="#86efac" font-size="7">Open/Closed</text>
+  <text x="180" y="100" text-anchor="middle" fill="#86efac" font-size="7">Principle</text>
+  <text x="180" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">extend open, modify closed</text>
+  <rect x="240" y="50" width="100" height="80" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="72" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">L</text>
+  <text x="290" y="88" text-anchor="middle" fill="#fde68a" font-size="7">Liskov</text>
+  <text x="290" y="100" text-anchor="middle" fill="#fde68a" font-size="7">Substitution</text>
+  <text x="290" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">child replaces parent</text>
+  <rect x="350" y="50" width="100" height="80" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="400" y="72" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">I</text>
+  <text x="400" y="88" text-anchor="middle" fill="#fca5a5" font-size="7">Interface</text>
+  <text x="400" y="100" text-anchor="middle" fill="#fca5a5" font-size="7">Segregation</text>
+  <text x="400" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">ছোট ছোট interface</text>
+  <rect x="460" y="50" width="100" height="80" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
+  <text x="510" y="72" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">D</text>
+  <text x="510" y="88" text-anchor="middle" fill="#d8b4fe" font-size="7">Dependency</text>
+  <text x="510" y="100" text-anchor="middle" fill="#d8b4fe" font-size="7">Inversion</text>
+  <text x="510" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">depend on abstraction</text>
+  <rect x="20" y="150" width="540" height="70" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+  <text x="290" y="175" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">Other Principles</text>
+  <text x="290" y="195" text-anchor="middle" fill="#94a3b8" font-size="8">DRY (Don't Repeat Yourself) · KISS (Keep It Simple) · YAGNI (You Aren't Gonna Need It)</text>
+  <text x="290" y="210" text-anchor="middle" fill="#94a3b8" font-size="7">Boy Scout Rule: leave code cleaner than you found it</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: SOLID-এর ৫টি নীতি — Uncle Bob (Robert Martin, ২০০০)।</div>
+
+<div class="code-block">— Python: SOLID Principles বাস্তবে —
+
+  # ❌ SRP লঙ্ঘন: এক class-এ সব কাজ
+  class User:
+      def save(self): ...       # DB
+      def send_email(self): ... # email
+      def generate_pdf(self): ... # PDF
+
+  # ✅ SRP: প্রতিটি class-এ এক কাজ
+  class User: pass
+  class UserRepository:
+      def save(self, user): ...
+  class EmailService:
+      def send(self, user): ...
+  class PDFExporter:
+      def export(self, user): ...
+
+  # ✅ OCP: extend করো, modify করো না
+  class PaymentProcessor:
+      def process(self, method, amount):
+          # প্রতিটি নতুন method-এ এই file edit করো না!
+          method.pay(amount)  # strategy pattern
+
+  # ✅ DIP: depend on abstraction
+  from abc import ABC, abstractmethod
+  class PaymentMethod(ABC):
+      @abstractmethod
+      def pay(self, amount): pass
+
+  class StripePayment(PaymentMethod):
+      def pay(self, amount): ...
+
+  # ruff/flake8 — lint check:
+  $ ruff check . --select S,O,I  # SOLID violations</div>
 
 <div class="secret-box">📐 <strong>Clean Code = মানুষের জন্য লেখা।</strong> SOLID (SRP, OCP, LSP, ISP, DIP)। DRY, KISS, YAGNI। Boy Scout Rule। প্রতিটি নাম বলে একটি গল্প, প্রতিটি function একটি কাজ। কিন্তু ভালো কোড লেখা এক জিনিস — একই কাঠামো বারবার ব্যবহার করা আরেক জিনিস। সেই পুনরাবৃত্তি আসবে পরের দরজায় — design patterns।</div>`,
   senior: {
@@ -174,6 +315,94 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (System Design):</strong> Microservices architecture — প্যাটার্ন-এর large-scale রূপ। Book ৩৩ (Critical Thinking): pattern recognition = cognitive skill। LedgerPilot: Django ORM Manager = Factory। DRF Serializer = Facade। React Context = Observer।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔧 GoF Design Patterns: 23 Patterns in 3 Categories</text>
+  <rect x="20" y="50" width="170" height="190" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="105" y="72" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">Creational</text>
+  <text x="105" y="88" text-anchor="middle" fill="#7dd3fc" font-size="7">কীভাবে তৈরি করবে</text>
+  <rect x="35" y="98" width="140" height="16" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="105" y="110" text-anchor="middle" fill="#7dd3fc" font-size="6">Singleton: একটাই instance</text>
+  <rect x="35" y="118" width="140" height="16" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="105" y="130" text-anchor="middle" fill="#7dd3fc" font-size="6">Factory: type-based creation</text>
+  <rect x="35" y="138" width="140" height="16" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="105" y="150" text-anchor="middle" fill="#7dd3fc" font-size="6">Builder: step-by-step</text>
+  <rect x="35" y="158" width="140" height="16" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="105" y="170" text-anchor="middle" fill="#7dd3fc" font-size="6">Prototype: clone existing</text>
+  <text x="105" y="195" text-anchor="middle" fill="#94a3b8" font-size="6">Django: models.Manager</text>
+  <text x="105" y="210" text-anchor="middle" fill="#94a3b8" font-size="6">= Factory pattern</text>
+  <rect x="205" y="50" width="170" height="190" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="72" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Structural</text>
+  <text x="290" y="88" text-anchor="middle" fill="#86efac" font-size="7">কীভাবে যুক্ত করবে</text>
+  <rect x="220" y="98" width="140" height="16" rx="3" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+  <text x="290" y="110" text-anchor="middle" fill="#86efac" font-size="6">Adapter: interface convert</text>
+  <rect x="220" y="118" width="140" height="16" rx="3" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+  <text x="290" y="130" text-anchor="middle" fill="#86efac" font-size="6">Decorator: add behavior</text>
+  <rect x="220" y="138" width="140" height="16" rx="3" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+  <text x="290" y="150" text-anchor="middle" fill="#86efac" font-size="6">Facade: simplify interface</text>
+  <rect x="220" y="158" width="140" height="16" rx="3" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+  <text x="290" y="170" text-anchor="middle" fill="#86efac" font-size="6">Proxy: controlled access</text>
+  <text x="290" y="195" text-anchor="middle" fill="#94a3b8" font-size="6">Django: DRF Serializer</text>
+  <text x="290" y="210" text-anchor="middle" fill="#94a3b8" font-size="6">= Adapter pattern</text>
+  <rect x="390" y="50" width="170" height="190" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="475" y="72" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">Behavioral</text>
+  <text x="475" y="88" text-anchor="middle" fill="#fde68a" font-size="7">কীভাবে যোগাযোগ</text>
+  <rect x="405" y="98" width="140" height="16" rx="3" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="475" y="110" text-anchor="middle" fill="#fde68a" font-size="6">Observer: pub/sub events</text>
+  <rect x="405" y="118" width="140" height="16" rx="3" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="475" y="130" text-anchor="middle" fill="#fde68a" font-size="6">Strategy: swap algorithm</text>
+  <rect x="405" y="138" width="140" height="16" rx="3" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="475" y="150" text-anchor="middle" fill="#fde68a" font-size="6">Command: action as object</text>
+  <rect x="405" y="158" width="140" height="16" rx="3" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="475" y="170" text-anchor="middle" fill="#fde68a" font-size="6">Iterator: sequential access</text>
+  <text x="475" y="195" text-anchor="middle" fill="#94a3b8" font-size="6">Django signals = Observer</text>
+  <text x="475" y="210" text-anchor="middle" fill="#94a3b8" font-size="6">Redux/Saga = Command</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: GoF ২৩টি pattern — তিন ভাগে। প্রতিটিতে Django/React উদাহরণ।</div>
+
+<div class="code-block">— Python: Design Patterns বাস্তবে —
+
+  # Singleton: একটাই instance (Django settings)
+  class Database:
+      _instance = None
+      def __new__(cls):
+          if cls._instance is None:
+              cls._instance = super().__new__(cls)
+          return cls._instance
+
+  # Factory: type অনুযায়ী তৈরি
+  class PaymentFactory:
+      @staticmethod
+      def create(method: str):
+          if method == "stripe": return StripePayment()
+          if method == "paypal": return PayPalPayment()
+          raise ValueError(f"Unknown: {method}")
+
+  # Strategy: algorithm swap
+  from abc import ABC, abstractmethod
+  class SortStrategy(ABC):
+      @abstractmethod
+      def sort(self, data): pass
+
+  class QuickSort(SortStrategy):
+      def sort(self, data): return sorted(data)
+
+  # Observer: Django signals!
+  from django.dispatch import receiver
+  from django.db.models.signals import post_save
+  @receiver(post_save, sender=User)
+  def user_created(sender, instance, created, **kwargs):
+      if created:
+          send_welcome_email(instance)
+
+  # Decorator: Python @decorator!
+  def log_execution(func):
+      def wrapper(*args, **kwargs):
+          print(f"Calling {func.__name__}")
+          return func(*args, **kwargs)
+      return wrapper</div>
+
 <div class="secret-box">🔧 <strong>Pattern = প্রমাণিত সমাধানের টেমপ্লেট।</strong> Creational (কীভাবে তৈরি), Structural (কীভাবে যুক্ত), Behavioral (কীভাবে যোগাযোগ)। ২৩টি GoF pattern + অসংখ্য modern pattern। কিন্তু pattern জানা যথেষ্ট নয় — নিশ্চিত করতে হবে যে কোড সঠিকভাবে কাজ করে। সেই নিশ্চয়তা আসবে পরের দরজায় — testing।</div>`,
   senior: {
     title: "Design Patterns এক নজরে",
@@ -241,6 +470,53 @@ Cucumber, SpecFlow — BDD framework। Dan North (২০০৬) প্রবর
 <p class="scene-setting">এই আয়াত তথ্য যাচাইয়ের নির্দেশ দেয় — বিশ্বাস করার আগে নিশ্চিত হও। Testing-ও তেমন — কোডের সত্যতা যাচাই করা। "এই function কি সত্যিই সঠিক?" — প্রশ্ন করো, পরীক্ষা করো, নিশ্চিত হও। কোনো কোড বিশ্বাস ছাড়া প্রোডাকশনে যাওয়া উচিত নয়।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩ (Engineer Journey):</strong> Debugging = systematic investigation — testing-এর ভাই। Book ৩৪ (Statistics): A/B testing = production-এ experiment। LedgerPilot: pytest, Django TestCase। Ipractus: Jest, React Testing Library।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🧪 Testing Trophy: Integration Most Important</text>
+  <polygon points="260,50 320,50 345,110 235,110" fill="#dc2626" stroke="#f87171" stroke-width="2"/>
+  <text x="290" y="80" text-anchor="middle" fill="#fee2e2" font-size="9" font-weight="700">E2E</text>
+  <text x="290" y="95" text-anchor="middle" fill="#fca5a5" font-size="6">critical path only</text>
+  <polygon points="200,110 380,110 410,180 170,180" fill="#22c55e" stroke="#4ade80" stroke-width="2.5"/>
+  <text x="290" y="145" text-anchor="middle" fill="#052e16" font-size="11" font-weight="900">INTEGRATION</text>
+  <text x="290" y="162" text-anchor="middle" fill="#052e16" font-size="8">🏆 MOST IMPORTANT</text>
+  <polygon points="170,180 410,180 430,220 150,220" fill="#a855f7" stroke="#c084fc" stroke-width="2"/>
+  <text x="290" y="205" text-anchor="middle" fill="#f3e8ff" font-size="9">Unit + Static (mypy, ruff)</text>
+  <text x="290" y="240" text-anchor="middle" fill="#94a3b8" font-size="8">Guillermo Rauch: Write tests. Not too many. Mostly integration.</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Testing Trophy (Dodds 2018) — integration সবচেয়ে বড়। Pyramid-এর চেয়ে আধুনিক।</div>
+
+<div class="code-block">— pytest: Full Test Suite —
+
+  # সব টেস্ট চালাও:
+  $ pytest --cov=backend --cov-report=term-missing
+  =================== 47 passed in 12.34s ===================
+  Name                    Stmt   Miss  Cover
+  backend/views.py           42      2    95%
+  backend/models.py          38      0   100%
+
+  # TDD: Red → Green → Refactor
+  # Step 1: Write test FIRST (fails)
+  def test_transfer_insufficient_funds():
+      with pytest.raises(InsufficientFundsError):
+          transfer(acc_from=1, acc_to=2, amount=999999)
+
+  # Step 2: Minimal code to pass
+  def transfer(acc_from, acc_to, amount):
+      if amount > Account.objects.get(id=acc_from).balance:
+          raise InsufficientFundsError()
+
+  # Step 3: Refactor
+  # → custom exception class
+  # → logging
+  # → signal on insufficient
+
+  # Mutation testing:
+  $ mutmut run
+  $ mutmut results
+  # 2. transfer (>= → >): killed ✅
+  # 3. transfer (raise → return): killed ✅</div>
 
 <div class="secret-box">🧪 <strong>Test = আত্মবিশ্বাসের ভিত্তি।</strong> TDD (Red-Green-Refactor)। Test pyramid (unit > integration > E2E)। Mocking, BDD, property-based। Coverage নির্দেশক, লক্ষ্য নয়। কিন্তু test কীভাবে পরিবর্তন ট্র্যাক করে? কীভাবে টিম একসাথে কাজ করে? সেই যাত্রা আসবে পরের দরজায় — version control।</div>`,
   senior: {
@@ -311,6 +587,83 @@ Michael Fagan (১৯৭৬) — code inspection-এর জনক। তিন�
 <p class="scene-setting">এই আয়াত জ্ঞান বৃদ্ধির প্রার্থনা। Git-ও তেমন — প্রতিটি commit একটি শেখার রেকর্ড। কে কী শিখলো, কী ভুল করলো, কীভাবে ঠিক করলো। একটি ভালো commit history একটি জ্ঞানের ইতিহাস — শুধু কোড নয়, চিন্তার বিবর্তন।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>LedgerPilot workflow:</strong> feature branch off development → code → PR → review → merge → deploy। এটাই GitHub Flow। Book ৪ (System Design): microservices — প্রতিটি একটি repo বা monorepo-এর একটি package।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌳 Git: Branch Strategy (Trunk-Based)</text>
+  <line x1="290" y1="50" x2="290" y2="230" stroke="#22c55e" stroke-width="3"/>
+  <circle cx="290" cy="60" r="6" fill="#22c55e"/>
+  <text x="305" y="64" fill="#4ade80" font-size="8">main (production)</text>
+  <circle cx="290" cy="100" r="6" fill="#22c55e"/>
+  <text x="305" y="104" fill="#4ade80" font-size="7">commit A</text>
+  <circle cx="290" cy="140" r="6" fill="#22c55e"/>
+  <text x="305" y="144" fill="#4ade80" font-size="7">commit B</text>
+  <circle cx="290" cy="180" r="6" fill="#22c55e"/>
+  <text x="305" y="184" fill="#4ade80" font-size="7">commit C</text>
+  <circle cx="290" cy="220" r="6" fill="#22c55e"/>
+  <text x="305" y="224" fill="#4ade80" font-size="7">HEAD</text>
+  <line x1="290" y1="120" x2="180" y2="120" stroke="#fbbf24" stroke-width="2"/>
+  <line x1="180" y1="120" x2="180" y2="165" stroke="#fbbf24" stroke-width="2"/>
+  <circle cx="180" cy="120" r="5" fill="#fbbf24"/>
+  <circle cx="180" cy="140" r="5" fill="#fbbf24"/>
+  <text x="130" y="124" fill="#fcd34d" font-size="7">feature/payment</text>
+  <text x="130" y="144" fill="#fde68a" font-size="6">2 commits</text>
+  <circle cx="180" cy="160" r="5" fill="#fbbf24"/>
+  <text x="130" y="164" fill="#fde68a" font-size="6">PR → review → merge</text>
+  <path d="M 180 160 Q 230 170 290 180" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="225" y="175" fill="#4ade80" font-size="6">merge</text>
+  <rect x="400" y="55" width="160" height="170" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+  <text x="480" y="75" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="700">Git Commands</text>
+  <text x="415" y="95" fill="#7dd3fc" font-size="6">git checkout -b feature/x</text>
+  <text x="415" y="110" fill="#7dd3fc" font-size="6">git add -A</text>
+  <text x="415" y="125" fill="#7dd3fc" font-size="6">git commit -m "feat: ..."</text>
+  <text x="415" y="140" fill="#7dd3fc" font-size="6">git push origin feature/x</text>
+  <text x="415" y="155" fill="#7dd3fc" font-size="6">gh pr create</text>
+  <text x="415" y="170" fill="#7dd3fc" font-size="6">gh pr review</text>
+  <text x="415" y="185" fill="#7dd3fc" font-size="6">git merge --squash</text>
+  <text x="415" y="200" fill="#7dd3fc" font-size="6">git rebase -i HEAD~3</text>
+  <text x="415" y="215" fill="#7dd3fc" font-size="6">git cherry-pick HASH</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Trunk-based development — short-lived branches, fast merge। Git Flow-এর চেয়ে দ্রুত।</div>
+
+<div class="code-block">— Git: Daily Workflow —
+
+  # Feature branch তৈরি:
+  $ git checkout main && git pull
+  $ git checkout -b feature/payment-api
+
+  # কাজ করো, commit করো:
+  $ git add -A
+  $ git commit -m "feat: add Stripe payment endpoint
+
+  - POST /api/v1/payments/
+  - Amount validation
+  - Idempotency key support"
+
+  # Push ও PR:
+  $ git push -u origin feature/payment-api
+  $ gh pr create --title "feat: payment API" \
+      --body "Closes #42"
+
+  # Rebase (main এর সাথে sync):
+  $ git fetch origin
+  $ git rebase origin/main
+
+  # Conflict resolve:
+  $ git mergetool  # বা manual edit
+  $ git rebase --continue
+
+  # Squash merge:
+  $ git merge --squash feature/payment-api
+  $ git commit -m "feat: payment API (#42)"
+
+  # Amend last commit:
+  $ git commit --amend --no-edit
+
+  # Stash (temporary save):
+  $ git stash
+  $ git stash pop</div>
 
 <div class="secret-box">🌳 <strong>Git = টাইম মেশিন + সহযোগিতার ভিত্তি।</strong> Branch, commit, merge, rebase। Code review = গুণমানের কারিগর। Trunk-based দ্রুত, Git Flow কাঠামোগত। কিন্তু ভালো কোড ও ভালো process একত্রিত করলেও — সিস্টেমের কাঠামো কেমন? সেই আলোচনা আসবে পরের দরজায় — architecture patterns।</div>`,
   senior: {

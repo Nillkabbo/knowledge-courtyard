@@ -49,6 +49,53 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (System Design):</strong> সম্পূর্ণ system architecture — microservices, load balancer, CDN। সেই বই large-scale, এই দরজা code-level। Book ৩৫ (Distributed): consensus, CAP — microservices-এর ভিত্তি। LedgerPilot: Django monolith → modular। Ipractus: React + Django — client-server architecture।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🏗️ Clean Architecture: Dependency Points Inward</text>
+  <rect x="190" y="50" width="200" height="40" rx="20" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="290" y="75" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">Framework: Django, Vue, Express</text>
+  <rect x="170" y="100" width="240" height="40" rx="20" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="125" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">Interface: Controllers, Views, API</text>
+  <rect x="150" y="150" width="280" height="40" rx="20" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="175" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Use Cases: Business Logic</text>
+  <rect x="130" y="200" width="320" height="40" rx="20" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="225" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">Entities: Domain Models (core business)</text>
+  <text x="290" y="265" text-anchor="middle" fill="#94a3b8" font-size="8">Dependencies point INWARD → core knows nothing about outer layers</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Clean Architecture (Martin 2017) — dependency সবসময় ভেতরে। Framework বদলালেও core অপরিবর্তিত।</div>
+
+<div class="code-block">— Django Clean Architecture —
+
+  # Layer 1: Entity (core business)
+  class Account:
+      def transfer(self, target, amount):
+          if amount > self.balance:
+              raise InsufficientFunds()
+          self.balance -= amount
+          target.balance += amount
+
+  # Layer 2: Use Case (application)
+  class TransferUseCase:
+      def execute(self, from_id, to_id, amount):
+          source = self.repo.get(from_id)
+          target = self.repo.get(to_id)
+          source.transfer(target, amount)
+          self.repo.save(source)
+          self.repo.save(target)
+
+  # Layer 3: Interface (Django View)
+  class TransferView(APIView):
+      def post(self, request):
+          use_case = TransferUseCase(repo=DjangoAccountRepo())
+          use_case.execute(request.data['from'],
+                           request.data['to'],
+                           request.data['amount'])
+          return Response({"status": "ok"})
+
+  # Layer 4: Framework (settings.py)
+  # Django, DRF, database — swap without touching core</div>
+
 <div class="secret-box">🏗️ <strong>Architecture = বড় ছবি।</strong> Layered, Clean, Hexagonal, Microservices, Serverless, Event-Driven। Clean Architecture: dependency ভেতরে। DDD: business domain ও code এক। Microservices শক্তিশালী কিন্তু জটিল — monolith দিয়ে শুরু করো। কিন্তু architecture থাকলেও — কীভাবে প্রতিদিন deploy করবে? সেই স্বয়ংক্রিয়তা আসবে পরের দরজায় — DevOps।</div>`,
   senior: {
     title: "Architecture Patterns এক নজরে",
@@ -112,6 +159,80 @@ Manual server configuration? না। একটি code file — Terraform, Ans
 <p class="scene-setting">এই আয়াত পরিচ্ছন্নতা ও তওবা পছন্দ করেন। DevOps-ও তেমন — পরিচ্ছন্ন (automated, repeatable), এবং তওবা (failure থেকে recovery, rollback)। একটি ভালো DevOps culture failure-কে ভয় পায় না — কারণ recovery দ্রুত ও নিরাপদ।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>LedgerPilot DevOps:</strong> Docker → DigitalOcean → GitHub Actions = CI/CD। DOCKER/GUNICORN memory: Docker bypasses UFW → iptables। Book ৩৮ (OS) Door ৯: Containers = DevOps-এর ভিত্তি। Book ৪: System design = architecture, এই দরজা = operations।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚙️ DevOps Pipeline: Code to Production</text>
+  <rect x="10" y="60" width="80" height="50" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="50" y="80" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Code</text>
+  <text x="50" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">git push</text>
+  <rect x="100" y="60" width="80" height="50" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="140" y="80" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Build</text>
+  <text x="140" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">docker build</text>
+  <rect x="190" y="60" width="80" height="50" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="230" y="80" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="700">Test</text>
+  <text x="230" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">pytest, ruff</text>
+  <rect x="280" y="60" width="80" height="50" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="320" y="80" text-anchor="middle" fill="#fca5a5" font-size="7" font-weight="700">Scan</text>
+  <text x="320" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">bandit, trivy</text>
+  <rect x="370" y="60" width="80" height="50" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="410" y="80" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Deploy</text>
+  <text x="410" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">docker push</text>
+  <rect x="460" y="60" width="110" height="50" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="515" y="80" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="700">Monitor</text>
+  <text x="515" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">Grafana, Sentry</text>
+  <line x1="90" y1="85" x2="100" y2="85" stroke="#475569" stroke-width="1.5"/>
+  <line x1="180" y1="85" x2="190" y2="85" stroke="#475569" stroke-width="1.5"/>
+  <line x1="270" y1="85" x2="280" y2="85" stroke="#475569" stroke-width="1.5"/>
+  <line x1="360" y1="85" x2="370" y2="85" stroke="#475569" stroke-width="1.5"/>
+  <line x1="450" y1="85" x2="460" y2="85" stroke="#475569" stroke-width="1.5"/>
+  <rect x="100" y="140" width="380" height="80" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+  <text x="290" y="165" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">DORA Metrics</text>
+  <text x="170" y="185" text-anchor="middle" fill="#4ade80" font-size="7">Deploy Freq: daily</text>
+  <text x="290" y="185" text-anchor="middle" fill="#fcd34d" font-size="7">Lead Time: &lt; 1hr</text>
+  <text x="410" y="185" text-anchor="middle" fill="#fca5a5" font-size="7">MTTR: &lt; 1hr</text>
+  <text x="290" y="205" text-anchor="middle" fill="#c084fc" font-size="7">Change Failure: &lt; 15%</text>
+  <text x="290" y="240" text-anchor="middle" fill="#94a3b8" font-size="8">Terraform: Infrastructure as Code · Prometheus: Metrics · Grafana: Dashboards</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: DevOps pipeline — Code → Build → Test → Scan → Deploy → Monitor। DORA metrics মাপে।</div>
+
+<div class="code-block">— Terraform + Docker Compose: Infrastructure as Code —
+
+  # Terraform — server as code:
+  # main.tf
+  resource "digitalocean_droplet" "api" {
+    name   = "ledgerpilot-api"
+    region = "nyc1"
+    size   = "s-2vcpu-4gb"
+    image  = "docker-20-04"
+  }
+
+  # Docker Compose:
+  # docker-compose.yml
+  services:
+    api:
+      build: .
+      ports: ["8000:8000"]
+      environment:
+        - DATABASE_URL=postgres://...
+        - REDIS_URL=redis://...
+      depends_on: [db, redis]
+
+    db:
+      image: postgres:16
+      volumes: ["pgdata:/var/lib/postgresql/data"]
+
+    redis:
+      image: redis:7-alpine
+
+  # Deploy:
+  $ terraform apply    # server create
+  $ docker compose up -d  # app deploy
+
+  # Monitoring:
+  $ docker compose logs -f api
+  # Sentry (errors), Grafana (metrics)</div>
 
 <div class="secret-box">⚙️ <strong>DevOps = স্বয়ংক্রিয়তার শৃঙ্খল।</strong> CI (build+test), CD (deploy), IaC (server as code), observability (metrics/logs/traces), SRE (reliability engineering)। DORA metrics মাপে maturity। কিন্তু স্বয়ংক্রিয়তা থাকলেও — নিরাপত্তা কে দেবে? সেই যাত্রা আসবে পরের দরজায়।</div>`,
   senior: {
@@ -183,6 +304,66 @@ npm/pip package-এ malicious code? SolarWinds (২০২০), Log4j (২০২�
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ১৩ (LLM Security):</strong> Prompt injection, jailbreak — AI-specific security। Book ৩৭ (Networks) Door ৯: TLS, firewall, VPN — network security। LedgerPilot: Django middleware, CORS, CSRF token, HTTPS।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🛡️ OWASP Top 10: Most Critical Web Vulnerabilities</text>
+  <rect x="20" y="50" width="120" height="35" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="80" y="72" text-anchor="middle" fill="#fca5a5" font-size="7">1. Broken Access</text>
+  <rect x="150" y="50" width="120" height="35" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="210" y="72" text-anchor="middle" fill="#fca5a5" font-size="7">2. Crypto Failures</text>
+  <rect x="280" y="50" width="120" height="35" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="340" y="72" text-anchor="middle" fill="#fca5a5" font-size="7">3. Injection</text>
+  <rect x="410" y="50" width="150" height="35" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="485" y="72" text-anchor="middle" fill="#fca5a5" font-size="7">4. Insecure Design</text>
+  <rect x="20" y="95" width="120" height="35" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="80" y="117" text-anchor="middle" fill="#fcd34d" font-size="7">5. Security Misconf</text>
+  <rect x="150" y="95" width="120" height="35" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="210" y="117" text-anchor="middle" fill="#fcd34d" font-size="7">6. Vulnerable Deps</text>
+  <rect x="280" y="95" width="120" height="35" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="340" y="117" text-anchor="middle" fill="#fcd34d" font-size="7">7. Auth Failures</text>
+  <rect x="410" y="95" width="150" height="35" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="485" y="117" text-anchor="middle" fill="#fcd34d" font-size="7">8. Software/Data Integrity</text>
+  <rect x="20" y="140" width="120" height="35" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="80" y="162" text-anchor="middle" fill="#7dd3fc" font-size="7">9. Logging Failures</text>
+  <rect x="150" y="140" width="120" height="35" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="210" y="162" text-anchor="middle" fill="#7dd3fc" font-size="7">10. SSRF</text>
+  <rect x="100" y="195" width="380" height="35" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="290" y="217" text-anchor="middle" fill="#4ade80" font-size="8">Shift Left: Security from Day 1 · SAST + DAST + SCA</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: OWASP Top 10 (2021)। Shift Left — security শুরুতেই।</div>
+
+<div class="code-block">— Security Tools বাস্তবে —
+
+  # SAST (Static Analysis):
+  $ bandit -r backend/
+  $ semgrep --config=auto .
+
+  # Dependency scanning (SCA):
+  $ pip-audit
+  # ID    Package  Version Fix
+  # PYSEC-001 requests 2.28.0  2.31.0
+
+  $ npm audit  # Node.js
+  $ trivy image ledgerpilot:latest  # Docker image
+
+  # Django security checklist:
+  # ✅ DEBUG = False (production)
+  # ✅ SECRET_KEY from env
+  # ✅ ALLOWED_HOSTS set
+  # ✅ CSRF_TRUSTED_ORIGINS
+  # ✅ SECURE_SSL_REDIRECT = True
+  # ✅ SECURE_HSTS_SECONDS = 31536000
+  # ✅ SESSION_COOKIE_SECURE = True
+  # ✅ CORS_ALLOWED_ORIGINS whitelist
+
+  # Password policy:
+  AUTH_PASSWORD_VALIDATORS = [{
+      'NAME': 'django.contrib.auth.'
+              'password_validation.MinimumLengthValidator',
+      'OPTIONS': {'min_length': 12},
+  }]</div>
+
 <div class="secret-box">🛡️ <strong>Security = প্রতিটি স্তরে সতর্কতা।</strong> OWASP Top 10, secure coding, supply chain, chaos engineering, DevSecOps। Shift left — security শুরুতে। কিন্তু এত প্রক্রিয়া, এত নিয়ম, এত টুল — কীভাবে মানুষ এটা সামলাবে? উত্তর: AI সাহায্য করবে। সেই যাত্রা আসবে পরের দরজায় — AI-assisted development।</div>`,
   senior: {
     title: "Software Security এক নজরে",
@@ -253,6 +434,60 @@ Book ২৩ (Irreplaceable Craftsman) — এটাই তোমার আগে
 <p class="scene-setting">এই আয়াত বলে — আল্লাহ মানুষকে জ্ঞান দিয়েছেন, নাম শিখিয়েছেন। AI যন্ত্র — মানুষ সৃষ্টিকর্তা। যন্ত্র সাহায্য করে, কিন্তু চিন্তা, সৃজনশীলতা, নৈতিক বিচার — সেটা মানুষের। AI যুগে মানুষের ভূমিকা শেষ হচ্ছে না — বরং আরও গভীর হচ্ছে। implementation থেকে judgment, typing থেকে thinking।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ২৩ (Irreplaceable Craftsman):</strong> পুরো বইটাই এই দরজার ভিত্তি — AI যুগে কীভাবে irreplaceable হবে। Book ১২ (AI Agents): AI autonomous task — development-এ এটাই। Hermes Agent = AI coding tool।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🤖 AI-Assisted Development: Typing Less, Thinking More</text>
+  <rect x="20" y="50" width="160" height="150" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="100" y="72" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">Copilot (2021)</text>
+  <text x="100" y="90" text-anchor="middle" fill="#7dd3fc" font-size="7">Inline completion</text>
+  <text x="100" y="105" text-anchor="middle" fill="#7dd3fc" font-size="7">PR review</text>
+  <text x="100" y="120" text-anchor="middle" fill="#7dd3fc" font-size="7">Chat in IDE</text>
+  <text x="100" y="140" text-anchor="middle" fill="#94a3b8" font-size="6">30-50% faster</text>
+  <rect x="200" y="50" width="160" height="150" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="280" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Claude Code</text>
+  <text x="280" y="90" text-anchor="middle" fill="#86efac" font-size="7">Multi-file edits</text>
+  <text x="280" y="105" text-anchor="middle" fill="#86efac" font-size="7">Terminal access</text>
+  <text x="280" y="120" text-anchor="middle" fill="#86efac" font-size="7">Git operations</text>
+  <text x="280" y="140" text-anchor="middle" fill="#94a3b8" font-size="6">Full agent loop</text>
+  <rect x="380" y="50" width="180" height="150" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
+  <text x="470" y="72" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Future: Devin / AGI</text>
+  <text x="470" y="90" text-anchor="middle" fill="#d8b4fe" font-size="7">Autonomous tasks</text>
+  <text x="470" y="105" text-anchor="middle" fill="#d8b4fe" font-size="7">Self-debugging</text>
+  <text x="470" y="120" text-anchor="middle" fill="#d8b4fe" font-size="7">Deployment?</text>
+  <text x="470" y="140" text-anchor="middle" fill="#94a3b8" font-size="6">Human: empathy, ethics</text>
+  <text x="290" y="220" text-anchor="middle" fill="#94a3b8" font-size="8">Pattern: AI writes code · Human reviews, architects, decides</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: AI development বিবর্তন — Copilot → Claude Code → autonomous agents।</div>
+
+<div class="code-block">— AI-Assisted Dev Workflow —
+
+  # Claude Code: multi-file refactor
+  $ claude-code "add pagination to all list views"
+  # → reads models.py, views.py, serializers.py
+  # → edits all 3 files
+  # → runs pytest
+  # → commits
+
+  # GitHub Copilot in IDE:
+  # type: def calculate_tax(amount):
+  # Copilot suggests: return amount * 0.07 (Michigan)
+
+  # AI for testing:
+  $ claude "generate pytest tests for views.py"
+  # → reads views.py
+  # → creates test_views.py with edge cases
+
+  # AI for review:
+  $ gh pr review --ai
+  # → security check, style, logic
+
+  # What AI CANNOT do:
+  # ❌ Understand business requirements
+  # ❌ Make product decisions
+  # ❌ Empathize with users
+  # ❌ Take responsibility</div>
 
 <div class="secret-box">🤖 <strong>AI = নতুন টুল, নতুন ভূমিকা।</strong> Copilot, Claude Code, Devin — typing কম, চিন্তা বেশি। WASM, Edge, Platform Engineering — নতুন infrastructure। কিন্তু empathy, creativity, ethics — মানুষের। এখন তুমি সব স্তর জানো — process থেকে ভবিষ্যৎ। সময় এসেছে সব একত্রিত করার — একটি feature-এর সম্পূর্ণ যাত্রা।</div>`,
   senior: {
@@ -336,7 +571,51 @@ Production-এ feature চলছে। Grafana — request rate, error rate, lat
 <li>🤖 Claude Code / Copilot — try AI-assisted development</li>
 </div>
 
-<div class="secret-box">🔨 <strong>কোড নির্মাতার শিল্প = নয়টি দরজার সমষ্টি।</strong> SDLC মেথডলজি (দরজা ১) → Clean Code (দরজা ২) → Design Patterns (দরজা ৩) → Testing (দরজা ৪) → Version Control (দরজা ৫) → Architecture (দরজা ৬) → DevOps (দরজা ৭) → Security (দরজা ৮) → AI-Assisted Future (দরজা ৯)। Waterfall (১৯৭০) থেকে AI-assisted (২০২৪+) — ৫৫ বছরের বিবর্তন। Royce, Beck, Martin, Gamma, Torvalds, Cockburn — একেকজন একেকটি স্তম্ভ। এবং তুমি এখন প্রতিটি স্তর বোঝো। LedgerPilot-এ প্রতিদিন একটি feature branch খুললে — এই নয়টি দরজা একসাথে খোলে। এটাই software engineering — শুধু কোড নয়, একটি পেশার গল্প। একটি ফিচারের সম্পূর্ণ যাত্রা — আইডিয়া থেকে ব্যবহারকারী।</div>`,
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔨 One Feature: Idea to Production (9 Doors)</text>
+  <rect x="30" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="80" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Door 1: Idea</text>
+  <rect x="145" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="195" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Door 2: Code</text>
+  <rect x="260" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="310" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Door 3: Pattern</text>
+  <rect x="375" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="425" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Door 4: Test</text>
+  <rect x="470" y="50" width="90" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="515" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Door 5: PR</text>
+  <rect x="80" y="115" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="130" y="140" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Door 6: Arch</text>
+  <rect x="195" y="115" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="245" y="140" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Door 7: CI/CD</text>
+  <rect x="310" y="115" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="360" y="140" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Door 8: Secure</text>
+  <rect x="425" y="115" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="475" y="140" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Door 9: AI</text>
+  <rect x="190" y="185" width="200" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="210" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">PRODUCTION</text>
+  <text x="290" y="225" text-anchor="middle" fill="#86efac" font-size="7">LedgerPilot /api/v1/payments/</text>
+  <text x="290" y="260" text-anchor="middle" fill="#94a3b8" font-size="7">9 doors - 55 years of engineering - 1 feature shipped</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: একটি feature নয়টি দরজা পার হয়ে production-এ যায়।</div>
+
+<div class="code-block">— Complete Feature: Payment API Journey —
+
+  # Door 1: Idea (sprint planning)
+  # Door 2: Code (SRP - one service per concern)
+  # Door 3: Pattern (Factory for payment providers)
+  # Door 4: Test (pytest + mutation)
+  # Door 5: Git (feature branch + PR)
+  # Door 6: Architecture (views -> services -> models)
+  # Door 7: CI/CD (GitHub Actions: test -> build -> deploy)
+  # Door 8: Security (validation, rate limit, idempotency)
+  # Door 9: AI (Claude Code wrote boilerplate)
+
+  $ curl -X POST https://api.ledgerpilot.com/v1/payments/
+  # {"id":"pay_123","status":"succeeded"} PRODUCTION!</div>
+
+<div class="secret-box">🔨 <strong>কোড নির্মাতার শিল্প = নয়টি দরজার সমষ্টি।</strong> SDLC মেথডলজি (দরজা ১) → Clean Code (দরজা ২) → Design Patterns (দরজা ৩) → Testing (দরজা ৪) → Version Control (দরজা ৫) → Architecture (দরজা ৬) → DevOps (দরজা ৭) → Security (দরজা ৮) → AI-Assisted Future (দরজা ৯)। Waterfall (১৯৭০) থেকে AI-assisted (২০২৪+) — ৫৫ বছরের বিবর্তন। Royce, Beck, Martin, Gamma, Torvalds, Cockburn — একেকজন একেকটি স্তম্ভ। এবং তুমি এখন প্রতিটি স্তর বোঝো। LedgerPilot-ে প্রতিদিন একটি feature এই নয়টি দরজা পার হয় — idea থেকে production পর্যন্ত। এটাই কোড নির্মাতার শিল্প — একটি নিষ্প্রাণ আইডিয়াকে জীবন্ত প্রোডাক্টে রূপান্তর।</div>`,
   senior: {
     title: "One Feature's Complete Journey",
     body: `<table class="kv-table"><tr><th>ধাপ</th><th>কী ঘটে</th><th>দরজা</th></tr>
