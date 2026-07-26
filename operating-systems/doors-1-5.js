@@ -52,6 +52,74 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৭ (নেটওয়ার্কস) Door ৪:</strong> Port শিখেছিলে — প্রতিটি প্রসেস একটি পোর্টে কথা শোনে। Book ৩৫ (ডিস্ট্রিবিউটেড): একটি distributed system-এ শত শত প্রসেস একসাথে চলে — OS প্রতিটিকে আলাদা রাখে।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">💾 Process States: New → Ready → Running → Terminated</text>
+  <rect x="20" y="60" width="90" height="50" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="65" y="85" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">NEW</text>
+  <text x="65" y="100" text-anchor="middle" fill="#94a3b8" font-size="7">OS creates</text>
+  <rect x="140" y="60" width="90" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="185" y="85" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">READY</text>
+  <text x="185" y="100" text-anchor="middle" fill="#94a3b8" font-size="7">Waiting for CPU</text>
+  <rect x="260" y="60" width="90" height="50" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="305" y="85" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">RUNNING</text>
+  <text x="305" y="100" text-anchor="middle" fill="#94a3b8" font-size="7">On CPU now</text>
+  <rect x="380" y="60" width="90" height="50" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="425" y="85" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">WAITING</text>
+  <text x="425" y="100" text-anchor="middle" fill="#94a3b8" font-size="7">I/O or event</text>
+  <rect x="490" y="60" width="80" height="50" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+  <text x="530" y="85" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="700">TERMINATED</text>
+  <text x="530" y="100" text-anchor="middle" fill="#64748b" font-size="7">Done</text>
+  <line x1="110" y1="85" x2="140" y2="85" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrP)"/>
+  <line x1="230" y1="85" x2="260" y2="85" stroke="#22c55e" stroke-width="2" marker-end="url(#arrP)"/>
+  <line x1="350" y1="85" x2="380" y2="85" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrP)"/>
+  <line x1="470" y1="85" x2="490" y2="85" stroke="#f87171" stroke-width="2" marker-end="url(#arrP)"/>
+  <path d="M 305 110 Q 305 140 185 140 Q 185 150 185 110" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="245" y="155" text-anchor="middle" fill="#4ade80" font-size="7">preempt → ready</text>
+  <path d="M 425 110 Q 425 170 185 170 Q 185 110 185 110" fill="none" stroke="#67e8f9" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="305" y="185" text-anchor="middle" fill="#67e8f9" font-size="7">I/O done → ready</text>
+  <rect x="60" y="220" width="460" height="60" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="290" y="245" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">📋 PCB (Process Control Block)</text>
+  <text x="290" y="262" text-anchor="middle" fill="#94a3b8" font-size="8">PID · State · Program Counter · Registers · Memory Limits · Open Files</text>
+  <defs><marker id="arrP" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22d3ee"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: প্রসেসের ৫টি অবস্থা ও PCB। OS প্রতিটি প্রসেসের জন্য একটি PCB রাখে — পরিচয়, অবস্থা, সম্পদ।</div>
+
+<div class="code-block">— Terminal: Process দেখো ও নিয়ন্ত্রণ করো —
+
+  # সব চলমান প্রসেস দেখো
+  $ ps aux | head -10
+  USER  PID  %CPU %MEM   VSZ   RSS TTY STAT START COMMAND
+  root    1   0.0  0.1 169372 13424 ?   Ss   Jul25 /sbin/init
+  user  1234  2.5  1.3 245678 52340 ?   Sl   09:15 python manage.py runserver
+  user  1235  0.1  0.2 189234 42100 ?   S    09:15 celery worker
+
+  # real-time process monitor
+  $ top -o %CPU
+    PID USER  PR  NI  VIRT  RES  SHR S %CPU %MEM COMMAND
+    1234 user  20   0 245m  52m  8m S  2.5  1.3 python
+
+  # একটি প্রসেস kill করো
+  $ kill 1234              # SIGTERM (ভদ্রে থামো)
+  $ kill -9 1234           # SIGKILL (জোরে থামাও)
+
+  # /proc filesystem — kernel-এর ভেতর দেখো
+  $ cat /proc/1234/status
+  Name: python
+  State: S (sleeping)
+  Pid: 1234
+  VmRSS: 52340 kB        # ব্যবহৃত মেমোরি
+
+  # fork() in C — একটি প্রসেস থেকে আরেকটি জন্ম
+  pid_t pid = fork();
+  if (pid == 0) {
+      // child process — নতুন জীবন!
+      exec("/bin/ls");
+  } else {
+      wait(NULL);  // parent অপেক্ষা করে
+  }</div>
+
 <div class="secret-box">💾 <strong>Program = রেসিপি, Process = রান্না, OS = রাঁধুনি।</strong> একটি প্রোগ্রাম নিষ্প্রাণ — কিন্তু OS এতে প্রাণ দেয়। PID, মেমোরি, CPU সময় — এই তিনটি দিয়ে একটি প্রসেস জীবন্ত হয়। কিন্তু একটি CPU একসাথে একটি জিনিসই করতে পারে। তাহলে শত শত প্রসেস কীভাবে একসাথে চলে? সেই রহস্য আসবে পরের দরজায়।</div>`,
   senior: {
     title: "Process vs Program এক নজরে",
@@ -104,6 +172,80 @@ doors.push({
 <p class="scene-setting">এই আয়াতে দ্রুত ছুটে চলার কথা বলা হয়েছে — একে অপরের সাথে প্রতিযোগিতা। থ্রেডগুলোও তেমন — একে অপরের সাথে প্রতিযোগিতা করে CPU সময়ের জন্য। কিন্তু এই প্রতিযোগিতা যদি নিয়ন্ত্রণ না করা হয় — race condition, data corruption। পরের দরজায় দেখবে কীভাবে এই প্রতিযোগিতা নিয়ন্ত্রণ করা যায়।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৫ (ডিস্ট্রিবিউটেড সিস্টেমস) Door ২:</strong> Dijkstra-এর semaphore শিখেছিলে — concurrent process control। থ্রেড হলো সেই concurrency-র একই নীতি, শুধু এক মেশিনের ভেতরে।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🧵 Process vs Thread: Shared Memory Model</text>
+  <rect x="20" y="50" width="250" height="230" rx="10" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+  <text x="145" y="72" text-anchor="middle" fill="#67e8f9" font-size="11" font-weight="700">PROCESS (heavy)</text>
+  <rect x="40" y="85" width="90" height="30" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="85" y="104" text-anchor="middle" fill="#7dd3fc" font-size="8">Code</text>
+  <rect x="140" y="85" width="110" height="30" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="195" y="104" text-anchor="middle" fill="#7dd3fc" font-size="8">Heap (private)</text>
+  <rect x="40" y="125" width="90" height="30" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="85" y="144" text-anchor="middle" fill="#4ade80" font-size="8">Registers</text>
+  <rect x="140" y="125" width="110" height="30" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="195" y="144" text-anchor="middle" fill="#4ade80" font-size="8">Stack (private)</text>
+  <text x="145" y="180" text-anchor="middle" fill="#94a3b8" font-size="8">fork() = সব copy (~10ms</text>
+  <text x="145" y="200" text-anchor="middle" fill="#64748b" font-size="7">Own PID, own memory space</text>
+  <text x="145" y="225" text-anchor="middle" fill="#f87171" font-size="8">❌ No sharing → expensive</text>
+  <text x="145" y="250" text-anchor="middle" fill="#fbbf24" font-size="7">Safe: crash = isolated</text>
+  <rect x="310" y="50" width="250" height="230" rx="10" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="435" y="72" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="700">THREADS (light)</text>
+  <rect x="330" y="85" width="210" height="25" rx="5" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="435" y="102" text-anchor="middle" fill="#fcd34d" font-size="8">Shared Code + Heap</text>
+  <rect x="330" y="120" width="95" height="30" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="377" y="139" text-anchor="middle" fill="#4ade80" font-size="7">Thread 1 Stack</text>
+  <rect x="445" y="120" width="95" height="30" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="492" y="139" text-anchor="middle" fill="#4ade80" font-size="7">Thread 2 Stack</text>
+  <rect x="330" y="160" width="95" height="30" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="377" y="179" text-anchor="middle" fill="#4ade80" font-size="7">Thread 3 Stack</text>
+  <rect x="445" y="160" width="95" height="30" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="492" y="179" text-anchor="middle" fill="#4ade80" font-size="7">Thread 4 Stack</text>
+  <text x="435" y="215" text-anchor="middle" fill="#94a3b8" font-size="8">pthread_create() ~0.1ms</text>
+  <text x="435" y="235" text-anchor="middle" fill="#4ade80" font-size="8">✅ Shared memory → fast</text>
+  <text x="435" y="255" text-anchor="middle" fill="#f87171" font-size="7">⚠️ Race condition risk!</text>
+  <text x="435" y="272" text-anchor="middle" fill="#f87171" font-size="7">⚠️ crash kills ALL threads</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Process = সব আলাদা (ভারী)। Thread = মেমোরি ভাগ (হালকা)। দ্রুত কিন্তু race condition ঝুঁকি।</div>
+
+<div class="code-block">— Python: Threads ও GIL —
+
+  import threading
+
+  # ❌ Race condition!
+  counter = 0
+  def increment():
+      global counter
+      for _ in range(1000000):
+          counter += 1   # NOT atomic!
+
+  t1 = threading.Thread(target=increment)
+  t2 = threading.Thread(target=increment)
+  t1.start(); t2.start()
+  t1.join();  t2.join()
+  print(counter)  # ≈ 1.4M (not 2M!) — race!
+
+  # ✅ Lock দিয়ে fix:
+  lock = threading.Lock()
+  def safe_increment():
+      global counter
+      for _ in range(1000000):
+          with lock:        # এক সময় এক thread
+              counter += 1
+
+  # Python GIL: এক সময় এক thread CPU-তে
+  # CPU-bound কাজে threading ধীর! → multiprocessing
+  # I/O-bound কাজে (network, disk) → threading ভালো
+
+  # ps/thread দেখো:
+  $ ps -eLf | grep python
+  # LWP = Lightweight Process = thread ID
+
+  # thread info:
+  $ cat /proc/1234/status | grep Threads
+  # Threads: 4    ← এই process-এ ৪ threads</div>
 
 <div class="secret-box">🧵 <strong>Thread = এক ছাদের নিচে একাধিক কর্মী।</strong> মেমোরি ভাগ করে, দ্রুত কাজ করে। কিন্তু সম্পদ ভাগ করার ঝুঁকি — race condition। দুটি থ্রেড একসাথে একই সম্পদ ধরতে গেলে কী হবে? কে আগে পাবে? কে অপেক্ষা করবে? এই নিয়ন্ত্রণের যন্ত্র আসবে পরের দরজায়।</div>`,
   senior: {
@@ -158,6 +300,73 @@ doors.push({
 <p class="scene-setting">এই আয়াতে সালাতের জন্য নির্ধারিত সময়ের কথা বলা হয়েছে — পাঁচটি ওয়াক্ত, প্রতিটি নির্দিষ্ট সময়ে। OS-ও তেমন — প্রতিটি প্রসেসের জন্য নির্ধারিত CPU সময়। কেউ আগে, কেউ পরে, কিন্তু সবাই পায়। ন্যায্যতা ও দক্ষতার ভারসাম্য — এটাই scheduling-এর শিল্প।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ২ (DSA Bazaar) Door ১৬:</strong> Heap শিখেছিলে — priority queue। Priority scheduling একটি heap ব্যবহার করে! সর্বোচ্চ priority প্রসেস O(log n)-এ খুঁজে বের করা যায়।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⏱️ Scheduling: Round Robin vs FCFS Gantt Chart</text>
+  <rect x="20" y="50" width="540" height="90" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="30" y="45" fill="#67e8f9" font-size="9" font-weight="700">Round Robin (quantum=2ms):</text>
+  <rect x="30" y="60" width="60" height="30" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="60" y="80" text-anchor="middle" fill="#7dd3fc" font-size="9">P1</text>
+  <rect x="90" y="60" width="60" height="30" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="120" y="80" text-anchor="middle" fill="#4ade80" font-size="9">P2</text>
+  <rect x="150" y="60" width="60" height="30" rx="4" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="180" y="80" text-anchor="middle" fill="#fcd34d" font-size="9">P3</text>
+  <rect x="210" y="60" width="60" height="30" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="240" y="80" text-anchor="middle" fill="#7dd3fc" font-size="9">P1</text>
+  <rect x="270" y="60" width="60" height="30" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="300" y="80" text-anchor="middle" fill="#4ade80" font-size="9">P2</text>
+  <rect x="330" y="60" width="60" height="30" rx="4" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="360" y="80" text-anchor="middle" fill="#fcd34d" font-size="9">P3</text>
+  <rect x="390" y="60" width="60" height="30" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="420" y="80" text-anchor="middle" fill="#7dd3fc" font-size="9">P1</text>
+  <rect x="450" y="60" width="60" height="30" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="480" y="80" text-anchor="middle" fill="#4ade80" font-size="9">P2</text>
+  <text x="30" y="115" text-anchor="middle" fill="#64748b" font-size="7">0</text>
+  <text x="90" y="115" text-anchor="middle" fill="#64748b" font-size="7">2</text>
+  <text x="150" y="115" text-anchor="middle" fill="#64748b" font-size="7">4</text>
+  <text x="210" y="115" text-anchor="middle" fill="#64748b" font-size="7">6</text>
+  <text x="270" y="115" text-anchor="middle" fill="#64748b" font-size="7">8</text>
+  <text x="330" y="115" text-anchor="middle" fill="#64748b" font-size="7">10</text>
+  <text x="390" y="115" text-anchor="middle" fill="#64748b" font-size="7">12</text>
+  <text x="450" y="115" text-anchor="middle" fill="#64748b" font-size="7">14</text>
+  <text x="510" y="115" text-anchor="middle" fill="#64748b" font-size="7">16ms</text>
+  <text x="290" y="135" text-anchor="middle" fill="#4ade80" font-size="8">সব প্রসেস সমান সময় পায় — fair ✅</text>
+  <text x="30" y="165" fill="#67e8f9" font-size="9" font-weight="700">FCFS (First Come First Serve):</text>
+  <rect x="20" y="175" width="540" height="35" rx="6" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+  <rect x="30" y="183" width="180" height="20" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="120" y="197" text-anchor="middle" fill="#7dd3fc" font-size="8">P1 (6ms full)</text>
+  <rect x="210" y="183" width="120" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="270" y="197" text-anchor="middle" fill="#4ade80" font-size="8">P2 (4ms)</text>
+  <rect x="330" y="183" width="120" height="20" rx="3" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="390" y="197" text-anchor="middle" fill="#fcd34d" font-size="8">P3 (4ms)</text>
+  <text x="290" y="232" text-anchor="middle" fill="#f87171" font-size="8">P3 অনেক অপেক্ষা করে — unfair ❌ (convoy effect)</text>
+  <text x="290" y="255" text-anchor="middle" fill="#94a3b8" font-size="8">MLFQ: short job → high priority queue, long job → demoted</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Round Robin সবাইকে সমান সময় দেয়। FCFS-এ প্রথম প্রসেস দীর্ঘ হলে বাকিরা অপেক্ষা করে।</div>
+
+<div class="code-block">— Terminal: Scheduling দেখো —
+
+  # CPU scheduling policy দেখো
+  $ cat /proc/sys/kernel/sched_child_runs_first
+  0    # parent আগে
+
+  # nice value: priority (-20 থেকে +19)
+  $ nice -n -10 python heavy_compute.py   # high priority
+  $ renice +5 -p 1234                      # lower priority
+
+  # প্রতিটি CPU-র load:
+  $ cat /proc/loadavg
+  0.52 0.48 0.45 2/134 12345
+
+  # SCHED_FIFO (real-time) vs SCHED_OTHER (normal)
+  $ chrt -f 80 python realtime_task.py
+  # SCHED_FIFO = strict priority, no preemption by normal
+
+  # taskset: কোন CPU-তে চলবে
+  $ taskset -c 0,1 python parallel_task.py
+  # শুধু CPU 0 ও 1-এ</div>
 
 <div class="secret-box">⏱️ <strong>Scheduling = সময়ের ন্যায়বিচার।</strong> কে আগে চলবে, কে অপেক্ষা করবে, কতক্ষণ চলবে — প্রতিটি সিদ্ধান্ত performance ও fairness-কে প্রভাবিত করে। কিন্তু scheduling ঠিক করলেও একটি বড় সমস্যা থেকে যায় — দুটি প্রসেস যদি একই সম্পদ চায়? কে lock করবে, কে অপেক্ষা করবে? সেই সমাধান আসবে পরের দরজায়।</div>`,
   senior: {
@@ -217,6 +426,74 @@ signal(S): S = S + 1<br>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৫ (ডিস্ট্রিবিউটেড) Door ২:</strong> একই Dijkstra semaphore — সেখানে multi-machine, এখানে single machine। Book ২ (DSA): atomic operation = indivisible instruction। Book ৩৭ (নেটওয়ার্কস) Door ২: CSMA/CD = একই concurrency সমস্যা, শেয়ার্ড মাধ্যমে।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔐 Semaphore: Producer-Consumer with Counting</text>
+  <rect x="200" y="50" width="180" height="60" rx="10" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="72" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">Semaphore: empty=3, full=0</text>
+  <text x="290" y="92" text-anchor="middle" fill="#7dd3fc" font-size="8">mutex=1 (binary lock)</text>
+  <rect x="220" y="98" width="30" height="8" rx="2" fill="#22c55e"/>
+  <text x="235" y="105" text-anchor="middle" fill="#052e16" font-size="6">E</text>
+  <rect x="255" y="98" width="30" height="8" rx="2" fill="#22c55e"/>
+  <text x="270" y="105" text-anchor="middle" fill="#052e16" font-size="6">E</text>
+  <rect x="290" y="98" width="30" height="8" rx="2" fill="#22c55e"/>
+  <text x="305" y="105" text-anchor="middle" fill="#052e16" font-size="6">E</text>
+  <rect x="325" y="98" width="30" height="8" rx="2" fill="#dc2626"/>
+  <text x="340" y="105" text-anchor="middle" fill="#fee2e2" font-size="6">F</text>
+  <rect x="60" y="150" width="120" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="120" y="172" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">PRODUCER</text>
+  <text x="120" y="188" text-anchor="middle" fill="#86efac" font-size="7">wait(empty) → put → signal(full)</text>
+  <rect x="400" y="150" width="120" height="50" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="460" y="172" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">CONSUMER</text>
+  <text x="460" y="188" text-anchor="middle" fill="#fde68a" font-size="7">wait(full) → take → signal(empty)</text>
+  <line x1="180" y1="165" x2="200" y2="100" stroke="#4ade80" stroke-width="2" marker-end="url(#arrS)"/>
+  <text x="190" y="140" text-anchor="middle" fill="#4ade80" font-size="7">put</text>
+  <line x1="400" y1="165" x2="380" y2="100" stroke="#fcd34d" stroke-width="2" marker-end="url(#arrS)"/>
+  <text x="390" y="140" text-anchor="middle" fill="#fcd34d" font-size="7">take</text>
+  <text x="290" y="230" text-anchor="middle" fill="#94a3b8" font-size="8">empty = available slots · full = filled slots</text>
+  <text x="290" y="250" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">mutex = only ONE touches buffer at a time</text>
+  <defs><marker id="arrS" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Counting semaphore — empty/full slots গোনে। mutex এক সময় এক thread-কে ঢোকায়।</div>
+
+<div class="code-block">— Python: Semaphore ও Mutex —
+
+  import threading
+
+  # Binary semaphore (= mutex)
+  mutex = threading.Lock()
+
+  # Counting semaphore (N resources)
+  empty = threading.Semaphore(3)  # 3 empty slots
+  full  = threading.Semaphore(0)  # 0 full initially
+  buffer = []
+
+  def producer():
+      for i in range(10):
+          empty.acquire()   # wait for empty slot
+          mutex.acquire()   # lock buffer
+          buffer.append(i)  # put item
+          mutex.release()   # unlock
+          full.release()    # signal: one more full
+
+  def consumer():
+      for i in range(10):
+          full.acquire()    # wait for full slot
+          mutex.acquire()   # lock buffer
+          item = buffer.pop(0)  # take item
+          mutex.release()   # unlock
+          empty.release()   # signal: one more empty
+
+  # POSIX semaphore in C:
+  # sem_t sem;
+  # sem_init(&sem, 0, 3);     // initial value 3
+  # sem_wait(&sem);           // P: decrement, block if 0
+  # sem_post(&sem);           // V: increment, wake one
+
+  # futex: Linux fast userspace mutex
+  # kernel only involved on contention</div>
+
 <div class="secret-box">🔐 <strong>Synchronization = সম্পদের সীমাবদ্ধতা।</strong> Mutex, semaphore, monitor — প্রতিটি একটি উপায় shared সম্পদ সুরক্ষিত রাখার। কিন্তু একটি ভয়ংকর সমস্যা লুকিয়ে আছে — যদি প্রত্যেক থ্রেড একে অপরের সম্পদের জন্য অপেক্ষা করে? কেউ ছাড়বে না, কেউ এগোবে না — চিরকাল অপেক্ষা। সেই দুঃস্বপ্নের নাম deadlock। সেই যাত্রা আসবে পরের দরজায়।</div>`,
   senior: {
     title: "Synchronization এক নজরে",
@@ -239,7 +516,7 @@ doors.push({
   name: "অচল যন্ত্রণা",
   subtitle: "The Frozen Agony",
   tech: "Deadlocks — Coffman 4 conditions (1971), prevention, avoidance (Banker's algorithm, Dijkstra 1965), detection, recovery",
-  spirit: "সম্পর্ক to Book 35 Door 5 — distributed deadlock, circular wait",
+  spirit: "ফালাক — মুক্তি, আটকে পড়া অবস্থা থেকে বের হওয়ার পথ",
   secret: "Deadlock = চার বন্ধু এক রেস্তোরাঁয় — প্রত্যেকের হাতে একটি কাঁটা, কিন্তু খেতে হলে দুটি কাঁটা দরকার। কেউ ছাড়বে না — সবাই অপেক্ষা — চিরকাল।",
   recall: {
     q: " Deadlock-এর ৪টি Coffman শর্ত কী?",
@@ -270,6 +547,77 @@ doors.push({
 <p class="scene-setting">এই আয়াত আত্ম-ধ্বংস থেকে বিরত থাকতে বলে। Deadlock হলো একটি সিস্টেমের আত্ম-ধ্বংস — কেউ এগোয় না, কেউ পিছোয় না, সব স্থির। OS-কে এই অবস্থা এড়াতে হয় — prevention, avoidance, বা detection দিয়ে।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৫ (ডিস্ট্রিবিউটেড) Door ৫:</strong> Distributed deadlock — একই সমস্যা কিন্তু multiple machine-এ। Book ৪ (সিস্টেম ডিজাইন): Circuit Breaker pattern — deadlock-এর মতো স্থির অবস্থা ভাঙার উপায়।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">💀 Deadlock: Circular Wait (Coffman Condition #4)</text>
+  <rect x="60" y="60" width="100" height="50" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="110" y="82" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">P1</text>
+  <text x="110" y="97" text-anchor="middle" fill="#7dd3fc" font-size="7">holds R1, wants R2</text>
+  <rect x="420" y="60" width="100" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="470" y="82" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">P2</text>
+  <text x="470" y="97" text-anchor="middle" fill="#86efac" font-size="7">holds R2, wants R3</text>
+  <rect x="420" y="180" width="100" height="50" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="470" y="202" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">P3</text>
+  <text x="470" y="217" text-anchor="middle" fill="#fde68a" font-size="7">holds R3, wants R4</text>
+  <rect x="60" y="180" width="100" height="50" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="110" y="202" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">P4</text>
+  <text x="110" y="217" text-anchor="middle" fill="#fee2e2" font-size="7">holds R4, wants R1</text>
+  <line x1="160" y1="80" x2="420" y2="80" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrD)"/>
+  <line x1="470" y1="110" x2="470" y2="180" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrD)"/>
+  <line x1="420" y1="210" x2="160" y2="210" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrD)"/>
+  <line x1="110" y1="180" x2="110" y2="110" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrD)"/>
+  <circle cx="290" cy="145" r="40" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="290" y="142" text-anchor="middle" fill="#f87171" font-size="11" font-weight="900">CIRCLE!</text>
+  <text x="290" y="158" text-anchor="middle" fill="#fca5a5" font-size="7">No exit possible</text>
+  <text x="290" y="260" text-anchor="middle" fill="#e2e8f0" font-size="9">Coffman 4: Mutual Excl + Hold&amp;Wait + No Preempt + Circular Wait</text>
+  <defs><marker id="arrD" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#dc2626"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Circular wait — প্রতিটি প্রসেস একটি সম্পদ ধরে, পরেরটা চায়। চক্র ভাঙলে deadlock অসম্ভব।</div>
+
+<div class="code-block">— Deadlock: Detection ও Prevention —
+
+  # Linux deadlock detection:
+  $ dmesg | grep -i deadlock
+  # possible deadlock detected
+
+  # Python threading — deadlock উদাহরণ:
+  import threading
+
+  lock_a = threading.Lock()
+  lock_b = threading.Lock()
+
+  def task1():
+      lock_a.acquire()
+      time.sleep(0.1)  # context switch!
+      lock_b.acquire()  # ❌ waits for task2
+      print("task1 done")
+      lock_b.release()
+      lock_a.release()
+
+  def task2():
+      lock_b.acquire()
+      time.sleep(0.1)
+      lock_a.acquire()  # ❌ waits for task1
+      print("task2 done")
+      lock_a.release()
+      lock_b.release()
+  # DEADLOCK! কেউ ছাড়বে না।
+
+  # ✅ Fix: Lock ordering
+  def safe_task2():
+      lock_a.acquire()  # সবসময় একই ক্রমে!
+      lock_b.acquire()
+      ...
+
+  # Banker's Algorithm (Dijkstra 1965):
+  # Allocate শুধু যদি safe state থাকে
+  # Available >= Need হলে দাও
+
+  # OOM Killer (Linux):
+  $ dmesg | grep -i "killed process"
+  # kernel OOM kills process to free memory</div>
 
 <div class="secret-box">💀 <strong>Deadlock = চার শর্তের অভিশাপ।</strong> Mutual exclusion + hold & wait + no preemption + circular wait। যেকোনো একটি ভাঙলে deadlock অসম্ভব। Banker's Algorithm আগে থেকে এড়ায়, detection পরে ধরে। কিন্তু deadlock শুধু CPU-র সম্পদেই সীমাবদ্ধ নয় — মেমোরিও একটি সম্পদ। আর মেমোরি কীভাবে বরাদ্দ হয়, কীভাবে ভাগ হয় — সেই রহস্য আসবে পরের দরজায়।</div>`,
   senior: {

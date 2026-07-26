@@ -42,6 +42,79 @@ RAM-কে fixed-size block-এ ভাগ করো — page (সাধারণ
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৬ (DL Architecture) Door ৮:</strong> Training dynamics — GPU memory management এই নীতির উপর নির্মিত। Book ৩৭ (Networks) Door ৭: CDN caching = একই concept, network level-এ।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🧠 Virtual Memory: Page Table Translation</text>
+  <rect x="20" y="50" width="120" height="180" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="80" y="72" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">Virtual Addr</text>
+  <rect x="35" y="82" width="90" height="20" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="80" y="96" text-anchor="middle" fill="#7dd3fc" font-size="7">Page #:3 Offset:12</text>
+  <rect x="35" y="112" width="90" height="20" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="80" y="126" text-anchor="middle" fill="#7dd3fc" font-size="7">Page #:7 Offset:0</text>
+  <rect x="35" y="142" width="90" height="20" rx="3" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
+  <text x="80" y="156" text-anchor="middle" fill="#fca5a5" font-size="7">Page #:12 (swapped)</text>
+  <text x="80" y="190" text-anchor="middle" fill="#94a3b8" font-size="7">Each process sees</text>
+  <text x="80" y="205" text-anchor="middle" fill="#94a3b8" font-size="7">its own full address</text>
+  <text x="80" y="220" text-anchor="middle" fill="#67e8f9" font-size="7">space (illusion!)</text>
+  <rect x="200" y="60" width="140" height="160" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="270" y="82" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">Page Table</text>
+  <rect x="215" y="92" width="110" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="270" y="105" text-anchor="middle" fill="#4ade80" font-size="7">VPN 3 → Frame 7 ✓</text>
+  <rect x="215" y="115" width="110" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="270" y="128" text-anchor="middle" fill="#4ade80" font-size="7">VPN 7 → Frame 2 ✓</text>
+  <rect x="215" y="138" width="110" height="18" rx="3" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
+  <text x="270" y="151" text-anchor="middle" fill="#fca5a5" font-size="7">VPN 12 → DISK ⚠️</text>
+  <text x="270" y="175" text-anchor="middle" fill="#fbbf24" font-size="7">TLB cache: fast lookup</text>
+  <text x="270" y="195" text-anchor="middle" fill="#94a3b8" font-size="7">Page fault → disk → swap</text>
+  <rect x="400" y="50" width="160" height="180" rx="8" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+  <text x="480" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Physical RAM</text>
+  <rect x="415" y="82" width="130" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="480" y="95" text-anchor="middle" fill="#4ade80" font-size="7">Frame 0: Process A</text>
+  <rect x="415" y="105" width="130" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="480" y="118" text-anchor="middle" fill="#4ade80" font-size="7">Frame 2: VPN 7 data</text>
+  <rect x="415" y="128" width="130" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="480" y="141" text-anchor="middle" fill="#4ade80" font-size="7">Frame 7: VPN 3 data</text>
+  <text x="480" y="170" text-anchor="middle" fill="#94a3b8" font-size="7">Multiple processes</text>
+  <text x="480" y="185" text-anchor="middle" fill="#94a3b8" font-size="7">share one RAM</text>
+  <text x="480" y="205" text-anchor="middle" fill="#67e8f9" font-size="7">4KB pages typical</text>
+  <line x1="140" y1="95" x2="200" y2="100" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrM)"/>
+  <line x1="340" y1="100" x2="400" y2="115" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrM)"/>
+  <defs><marker id="arrM" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#fbbf24"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Virtual → Page Table → Physical। Page fault হলে ডিস্ক থেকে RAM-এ আনে (swap)।</div>
+
+<div class="code-block">— Terminal: Memory দেখো —
+
+  # সিস্টেমের মেমোরি সারাংশ:
+  $ free -h
+                total   used   free  available
+  Mem:           16Gi   8.2Gi  3.1Gi      7.5Gi
+  Swap:          4.0Gi   0.5Gi  3.5Gi
+
+  # প্রতিটি process-এর মেমোরি:
+  $ cat /proc/1234/maps
+  00400000-006b0000 r-xp  code segment
+  01000000-01200000 rw-p  heap (malloc)
+  7fff-7fff rwxp         stack
+
+  # page size:
+  $ getconf PAGE_SIZE
+  4096
+
+  # vmstat — real-time:
+  $ vmstat 1
+  procs  memory  swap  io  system  cpu
+   r b   swpd  free  buff  cache  si  so
+   1 0      0 3.2G  500M  2.1G    0   0
+
+  # OOM Score:
+  $ cat /proc/1234/oom_score
+  42  # কত সম্ভাবনা OOM কিল হওয়ার
+
+  # swap off/on:
+  $ sudo swapoff -a    # RAM-only mode</div>
+
 <div class="secret-box">🧠 <strong>Virtual Memory = সর্বজনীন বিভ্রম।</strong> প্রতিটি প্রসেস নিজেকে একা মনে করে। OS পেছনে থেকে paging, swapping, page replacement সব সামলায়। ডিস্ক একটি extension — RAM ফুলে গেলে ডিস্কে page পাঠায়। কিন্তু মেমোরি শুধু RAM-এই সীমাবদ্ধ নয় — ডেটা স্থায়ীভাবে কোথাও থাকতে হবে। সেই স্থান হলো ফাইল সিস্টেম। সেই যাত্রা শুরু হবে পরের দরজায়।</div>`,
   senior: {
     title: "Memory Management এক নজরে",
@@ -105,6 +178,80 @@ stat() → inode তথ্য দেখো</div></div>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (সিস্টেম ডিজাইন) Door ১৬:</strong> Database indexing শিখেছিলে — inode হলো সেই indexing-এর file system সংস্করণ। Book ৩৭ (Networks): HTTP file transfer — ফাইল সিস্টেমের উপরে।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">💿 inode: File System Internal Structure</text>
+  <rect x="20" y="50" width="140" height="180" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="90" y="72" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">Directory Entry</text>
+  <rect x="35" y="82" width="110" height="18" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="90" y="95" text-anchor="middle" fill="#7dd3fc" font-size="7">"report.txt" → inode 42</text>
+  <rect x="35" y="105" width="110" height="18" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="90" y="118" text-anchor="middle" fill="#7dd3fc" font-size="7">"photo.jpg" → inode 17</text>
+  <text x="90" y="145" text-anchor="middle" fill="#94a3b8" font-size="7">Name → inode number</text>
+  <text x="90" y="162" text-anchor="middle" fill="#94a3b8" font-size="7">(directory = table)</text>
+  <rect x="210" y="50" width="160" height="180" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">inode #42</text>
+  <rect x="225" y="82" width="130" height="16" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="290" y="93" text-anchor="middle" fill="#86efac" font-size="6">Mode: -rw-r--r--</text>
+  <rect x="225" y="102" width="130" height="16" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="290" y="113" text-anchor="middle" fill="#86efac" font-size="6">Owner: rakib · Size: 12KB</text>
+  <rect x="225" y="122" width="130" height="16" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="290" y="133" text-anchor="middle" fill="#86efac" font-size="6">12 direct + 1 indirect</text>
+  <rect x="225" y="142" width="130" height="16" rx="3" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="290" y="153" text-anchor="middle" fill="#fcd34d" font-size="6">Block ptr: 101, 102, 103...</text>
+  <text x="290" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">Metadata + pointers</text>
+  <text x="290" y="195" text-anchor="middle" fill="#94a3b8" font-size="7">NO filename stored!</text>
+  <rect x="420" y="50" width="140" height="180" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+  <text x="490" y="72" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">Data Blocks</text>
+  <rect x="435" y="82" width="110" height="18" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="490" y="95" text-anchor="middle" fill="#7dd3fc" font-size="7">Block 101: "Hello"</text>
+  <rect x="435" y="105" width="110" height="18" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="490" y="118" text-anchor="middle" fill="#7dd3fc" font-size="7">Block 102: "World"</text>
+  <rect x="435" y="128" width="110" height="18" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="490" y="141" text-anchor="middle" fill="#7dd3fc" font-size="7">Block 103: "..."</text>
+  <text x="490" y="170" text-anchor="middle" fill="#94a3b8" font-size="7">4KB each on disk</text>
+  <text x="490" y="190" text-anchor="middle" fill="#4ade80" font-size="7">ext4: journaled ✅</text>
+  <line x1="160" y1="95" x2="210" y2="95" stroke="#fcd34d" stroke-width="2" marker-end="url(#arrF)"/>
+  <line x1="370" y1="130" x2="420" y2="95" stroke="#4ade80" stroke-width="2" marker-end="url(#arrF)"/>
+  <defs><marker id="arrF" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: filename → directory → inode → data blocks। inode-এ মেটাডেটা ও pointer, ফাইলের নাম নয়।</div>
+
+<div class="code-block">— Terminal: File System দেখো —
+
+  # inode দেখো:
+  $ ls -i report.txt
+  42 report.txt    # inode number = 42
+
+  # বিস্তারিত inode:
+  $ stat report.txt
+    Size: 12288       Blocks: 24       IO Block: 4096
+    Inode: 42         Links: 1
+    Access: (0644/-rw-r--r--)  Uid: (1000)
+
+  # ডিস্ক ব্যবহার:
+  $ df -h /dev/sda1
+  Filesystem  Size  Used  Avail  Use%  Mounted on
+  /dev/sda1   100G   45G    55G   45%   /
+
+  # file system type:
+  $ mount | grep sda1
+  /dev/sda1 on / type ext4 (rw,relatime)
+
+  # journaling check:
+  $ tune2fs -l /dev/sda1 | grep features
+  Filesystem features: has_journal ext_attr ...
+
+  # iotop — I/O per process:
+  $ sudo iotop
+  TID  PRIO USER DISK READ DISK WRITE
+  1234 be/4 user 0.00 B/s 1.2M/s
+
+  # RAID status:
+  $ cat /proc/mdstat
+  md0 : active raid1 sda1[0] sdb1[1]</div>
+
 <div class="secret-box">💿 <strong>File System = স্থায়ী স্মৃতি।</strong> RAM সাময়িক — বিদ্যুৎ গেলে মুছে যায়। ডিস্ক স্থায়ী। inode প্রতিটি ফাইলের পরিচয় রাখে, directory সংগঠিত করে, journaling নিরাপত্তা দেয়। কিন্তু ফাইল সিস্টেম একা কাজ করতে পারে না — হার্ডওয়্যারের সাথে কথা বলতে হয়। সেই সেতু হলো I/O সিস্টেম। সেই যাত্রা আসবে পরের দরজায়।</div>`,
   senior: {
     title: "File Systems এক নজরে",
@@ -158,6 +305,76 @@ doors.push({
 <p class="scene-setting">এই আয়াত বলে — আল্লাহ আসমান ও পৃথিবীর সব কিছু মানুষের অধীন করেছেন। I/O সিস্টেমও সেই নীতি — মানুষ যন্ত্রকে নিয়ন্ত্রণ করে। Driver, interrupt, DMA — প্রতিটি যন্ত্র হার্ডওয়্যারকে নিয়ন্ত্রণের একটি উপায়।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৬ (DL Architecture):</strong> GPU driver — deep learning training-এ GPU-র সাথে কথা বলার জন্য CUDA driver দরকার। এটাই সেই I/O স্তর। Book ৩৭ (Networks) Door ২: NIC (Network Interface Card) — একটি I/O device।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔌 Polling vs Interrupt vs DMA</text>
+  <rect x="20" y="50" width="170" height="180" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="105" y="72" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">❌ POLLING</text>
+  <text x="105" y="92" text-anchor="middle" fill="#fca5a5" font-size="7">CPU: "Ready?"</text>
+  <text x="105" y="105" text-anchor="middle" fill="#f87171" font-size="7">Device: "No"</text>
+  <text x="105" y="120" text-anchor="middle" fill="#fca5a5" font-size="7">CPU: "Ready?"</text>
+  <text x="105" y="133" text-anchor="middle" fill="#f87171" font-size="7">Device: "No"</text>
+  <text x="105" y="148" text-anchor="middle" fill="#fca5a5" font-size="7">CPU: "Ready?"</text>
+  <text x="105" y="161" text-anchor="middle" fill="#4ade80" font-size="7">Device: "Yes!"</text>
+  <text x="105" y="185" text-anchor="middle" fill="#f87171" font-size="7">CPU waste: 99%</text>
+  <text x="105" y="200" text-anchor="middle" fill="#94a3b8" font-size="6">simple but slow</text>
+  <rect x="205" y="50" width="170" height="180" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="72" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">⚠️ INTERRUPT</text>
+  <text x="290" y="92" text-anchor="middle" fill="#fde68a" font-size="7">CPU does other work</text>
+  <text x="290" y="110" text-anchor="middle" fill="#fcd34d" font-size="7">Device: "IRQ!"</text>
+  <rect x="225" y="120" width="130" height="22" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="290" y="135" text-anchor="middle" fill="#7dd3fc" font-size="7">CPU saves state</text>
+  <rect x="225" y="148" width="130" height="22" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="290" y="163" text-anchor="middle" fill="#4ade80" font-size="7">ISR handler runs</text>
+  <rect x="225" y="176" width="130" height="22" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="290" y="191" text-anchor="middle" fill="#7dd3fc" font-size="7">CPU resumes</text>
+  <text x="290" y="215" text-anchor="middle" fill="#fcd34d" font-size="7">CPU transfer: byte-by-byte</text>
+  <rect x="390" y="50" width="170" height="180" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="475" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">✅ DMA</text>
+  <text x="475" y="92" text-anchor="middle" fill="#86efac" font-size="7">CPU: "DMA, transfer N bytes"</text>
+  <text x="475" y="110" text-anchor="middle" fill="#4ade80" font-size="7">CPU does OTHER work!</text>
+  <rect x="410" y="122" width="130" height="22" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="475" y="137" text-anchor="middle" fill="#7dd3fc" font-size="7">DMA → Memory (direct)</text>
+  <text x="475" y="160" text-anchor="middle" fill="#4ade80" font-size="7">Device: "Done!"</text>
+  <text x="475" y="180" text-anchor="middle" fill="#4ade80" font-size="7">CPU: one IRQ only</text>
+  <text x="475" y="205" text-anchor="middle" fill="#4ade80" font-size="7">CPU waste: ~0%</text>
+  <text x="475" y="220" text-anchor="middle" fill="#94a3b8" font-size="6">fastest — used by all modern I/O</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Polling (CPU waste) → Interrupt (better) → DMA (best — CPU free during transfer)।</div>
+
+<div class="code-block">— Terminal: I/O দেখো —
+
+  # interrupts দেখো:
+  $ cat /proc/interrupts | head -10
+           CPU0   CPU1   CPU2   CPU3
+    0:      42     0      0      0  IR-IO-APIC  edge  timer
+   16:    1234     0      0      0  IO-APIC     fasteoi  ehci_hcd:usb1
+  NMI:      12     8      5      3  Non-maskable interrupts
+
+  # I/O ports:
+  $ sudo cat /proc/ioports
+  0040-0043 : timer
+  00f0-00ff : fpu
+  03f8-03ff : serial
+
+  # lspci — hardware devices:
+  $ lspci -v | grep -A3 "USB"
+  00:14.0 USB Controller: Intel...
+      Kernel driver in use: xhci_hcd
+
+  # lsblk — block devices:
+  $ lsblk
+  NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+  sda      8:0    0   500G  0 disk
+  ├─sda1   8:1    0   100G  0 part /
+  └─sda2   8:2    0   400G  0 part /home
+
+  # strace — system calls:
+  $ strace -e read,write cat /etc/hosts
+  read(3, "127.0.0.1 localhost\n...", 1024) = 42
+  write(1, "127.0.0.1 localhost\n...", 42) = 42</div>
 
 <div class="secret-box">🔌 <strong>I/O = OS এবং হার্ডওয়্যারের সেতু।</strong> Driver অনুবাদ করে, interrupt সংকেত দেয়, DMA দ্রুত স্থানান্তর করে। CPU বারবার চেক করে না — ডিভাইস নিজে ডাকে। কিন্তু এই পর্যন্ত আলোচনা ছিল একটি মেশিনের ভেতরে। আজকের যুগে একটি মেশিনে সব চলে না — শত শত মেশিন একসাথে। সেই সমাধান আসবে পরের দরজায়।</div>`,
   senior: {
@@ -216,6 +433,83 @@ doors.push({
 <p class="scene-setting">এই আয়াত প্রতিযোগিতার কথা বলে। Container ও VM হলো দুটি প্রতিযোগী — প্রত্যেকের নিজস্ব সুবিধা ও অসুবিধা। Container হালকা ও দ্রুত, VM নিরাপদ ও সম্পূর্ণ। আধুনিক সিস্টেম প্রায়ই উভয় ব্যবহার করে — VM-এর ভেতরে container।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৫ (ডিস্ট্রিবিউটেড সিস্টেমস) Door ৬:</strong> Dynamo — container-এ container orchestration-এর পূর্বসূরী। Book ৪ (সিস্টেম ডিজাইন): Microservices — প্রতিটি container একটি microservice। Docker/Gunicorn memory: তোমার LedgerPilot Docker-এ চলে!</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🐳 Container vs VM: Isolation Layers</text>
+  <rect x="20" y="50" width="260" height="220" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+  <text x="150" y="72" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">CONTAINER (Docker)</text>
+  <rect x="35" y="82" width="80" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="75" y="100" text-anchor="middle" fill="#7dd3fc" font-size="8">App A</text>
+  <text x="75" y="112" text-anchor="middle" fill="#94a3b8" font-size="6">+ libs</text>
+  <rect x="125" y="82" width="80" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="165" y="100" text-anchor="middle" fill="#7dd3fc" font-size="8">App B</text>
+  <text x="165" y="112" text-anchor="middle" fill="#94a3b8" font-size="6">+ libs</text>
+  <rect x="215" y="82" width="55" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="242" y="100" text-anchor="middle" fill="#7dd3fc" font-size="7">App C</text>
+  <rect x="35" y="128" width="235" height="22" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="152" y="143" text-anchor="middle" fill="#4ade80" font-size="8">Docker Engine (namespaces + cgroups)</text>
+  <rect x="35" y="158" width="235" height="22" rx="4" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="152" y="173" text-anchor="middle" fill="#fcd34d" font-size="8">Host OS Kernel (SHARED!)</text>
+  <rect x="35" y="188" width="235" height="22" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+  <text x="152" y="203" text-anchor="middle" fill="#94a3b8" font-size="8">Hardware</text>
+  <text x="150" y="232" text-anchor="middle" fill="#4ade80" font-size="8">⚡ Boot: ~0.1s · Size: ~50MB</text>
+  <text x="150" y="250" text-anchor="middle" fill="#86efac" font-size="7">Share kernel → lightweight!</text>
+  <rect x="300" y="50" width="260" height="220" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="430" y="72" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">VIRTUAL MACHINE</text>
+  <rect x="315" y="82" width="70" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="350" y="100" text-anchor="middle" fill="#7dd3fc" font-size="7">App A</text>
+  <rect x="395" y="82" width="70" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="430" y="100" text-anchor="middle" fill="#7dd3fc" font-size="7">App B</text>
+  <rect x="475" y="82" width="70" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="510" y="100" text-anchor="middle" fill="#7dd3fc" font-size="7">App C</text>
+  <rect x="315" y="124" width="230" height="18" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="430" y="137" text-anchor="middle" fill="#4ade80" font-size="7">Guest OS Kernel (FULL — each VM!)</text>
+  <rect x="315" y="148" width="230" height="18" rx="4" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="430" y="161" text-anchor="middle" fill="#fcd34d" font-size="7">Hypervisor (VMware/KVM)</text>
+  <rect x="315" y="172" width="230" height="18" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+  <text x="430" y="185" text-anchor="middle" fill="#94a3b8" font-size="7">Host OS / Hardware</text>
+  <text x="430" y="212" text-anchor="middle" fill="#f87171" font-size="8">🐢 Boot: ~30s · Size: ~2GB</text>
+  <text x="430" y="232" text-anchor="middle" fill="#fca5a5" font-size="7">Full kernel copy → heavy!</text>
+  <text x="430" y="250" text-anchor="middle" fill="#94a3b8" font-size="6">Stronger isolation though</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Container = kernel share (হালকা)। VM = full OS copy (ভারী কিন্তু বেশি isolated)।</div>
+
+<div class="code-block">— Docker: Container তৈরি ও নিয়ন্ত্রণ —
+
+  # Docker image pull ও run
+  $ docker pull python:3.12-slim
+  $ docker run -d --name api \\
+      --memory=512m \\
+      --cpus=1.5 \\
+      -p 8000:8000 \\
+      python:3.12-slim gunicorn api.wsgi:application
+
+  # চলমান container দেখো:
+  $ docker ps
+  CONTAINER ID  IMAGE     STATUS     NAMES
+  a1b2c3d4      python    Up 2 min   api
+
+  # container-এ ঢুকো:
+  $ docker exec -it api bash
+
+  # resource usage দেখো:
+  $ docker stats
+  NAME  CPU%   MEM USAGE / LIMIT
+  api   12.5%  156MiB / 512MiB
+
+  # namespace দেখো (container-এর ভেতর থেকে):
+  $ ls -la /proc/self/ns/
+  ipc net pid user uts → প্রতিটি container-এ আলাদা!
+
+  # cgroup memory limit:
+  $ cat /sys/fs/cgroup/memory/memory.limit_in_bytes
+  536870912  # 512MB
+
+  # Kubernetes deployment:
+  kubectl create deployment api \\
+    --image=python:3.12-slim --replicas=3</div>
 
 <div class="secret-box">🐳 <strong>Container = এক ছাদের নিচে বিচ্ছিন্ন জগত।</strong> Namespace পরিচয় বিচ্ছিন্ন রাখে, cgroup সম্পদ সীমিত রাখে, UnionFS layer করে। VM আরও বেশি বিচ্ছিন্ন কিন্তু ভারী। Kubernetes হাজার container পরিচালনা করে। এখন তুমি সব স্তর জানো — প্রসেস থেকে container পর্যন্ত। সময় এসেছে সব একত্রিত করার।</div>`,
   senior: {
@@ -299,6 +593,79 @@ python "hello.py" খোলে — open() syscall। filesystem inode খুঁ�
 <li>🐳 <code>docker run -it python python hello.py</code> — container-এ চালাও</li>
 <li>📖 "Operating Systems: Three Easy Pieces" (OSTEP) — free online textbook</li>
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">fork() Journey: Through All OS Subsystems</text>
+  <rect x="220" y="45" width="140" height="35" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="63" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">fork() called</text>
+  <text x="290" y="75" text-anchor="middle" fill="#94a3b8" font-size="6">syscall #57</text>
+  <rect x="20" y="105" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="70" y="122" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Door 1</text>
+  <text x="70" y="135" text-anchor="middle" fill="#86efac" font-size="6">PCB created</text>
+  <rect x="130" y="105" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="180" y="122" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Door 2</text>
+  <text x="180" y="135" text-anchor="middle" fill="#86efac" font-size="6">Thread copied</text>
+  <rect x="240" y="105" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="290" y="122" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Door 3</text>
+  <text x="290" y="135" text-anchor="middle" fill="#86efac" font-size="6">Added to scheduler</text>
+  <rect x="350" y="105" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="400" y="122" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Door 4</text>
+  <text x="400" y="135" text-anchor="middle" fill="#86efac" font-size="6">COW semaphore</text>
+  <rect x="460" y="105" width="100" height="40" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="510" y="122" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Door 5</text>
+  <text x="510" y="135" text-anchor="middle" fill="#fde68a" font-size="6">Deadlock check</text>
+  <rect x="75" y="165" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="125" y="182" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">Door 6</text>
+  <text x="125" y="195" text-anchor="middle" fill="#bae6fd" font-size="6">VM: COW pages</text>
+  <rect x="185" y="165" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="235" y="182" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">Door 7</text>
+  <text x="235" y="195" text-anchor="middle" fill="#bae6fd" font-size="6">File descriptors</text>
+  <rect x="295" y="165" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="345" y="182" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">Door 8</text>
+  <text x="345" y="195" text-anchor="middle" fill="#bae6fd" font-size="6">I/O context</text>
+  <rect x="405" y="165" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="455" y="182" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">Door 9</text>
+  <text x="455" y="195" text-anchor="middle" fill="#bae6fd" font-size="6">cgroup inherited</text>
+  <rect x="190" y="230" width="200" height="35" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="253" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Child process ALIVE! 🎉</text>
+  <line x1="290" y1="80" x2="70" y2="105" stroke="#475569" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="290" y1="80" x2="510" y2="105" stroke="#475569" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="70" y1="145" x2="125" y2="165" stroke="#475569" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="510" y1="145" x2="455" y2="165" stroke="#475569" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="290" y1="205" x2="290" y2="230" stroke="#22c55e" stroke-width="2" marker-end="url(#arrJ)"/>
+  <defs><marker id="arrJ" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: একটি fork() call নয়টি OS subsystem-কে স্পর্শ করে। প্রতিটি দরজা এই যাত্রায় অংশ নেয়।</div>
+
+<div class="code-block">— Full fork() Journey: strace দিয়ে দেখো —
+
+  # fork() system call trace:
+  $ strace -f bash -c 'ls'
+
+  # প্রতিটি syscall দেখো:
+  clone(flags=CLONE_CHILD_CLEARTID|SIGCHLD) = 1235
+  #                    ↑ Door 1-2: process+thread created
+  mmap(NULL, 4096, PROT_READ|PROT_WRITE) = 0x7f...
+  #                    ↑ Door 6: virtual memory allocated
+  openat(AT_FDCWD, ".", O_RDONLY|O_DIRECTORY) = 3
+  #                    ↑ Door 7: file system
+  getdents64(3, ...)  = 512
+  #                    ↑ Door 8: I/O (directory read)
+  write(1, "file1.txt\nfile2.py\n...", 42) = 42
+  #                    ↑ Door 8: I/O (stdout write)
+  close(3)             = 0
+  exit_group(0)        = ?
+  #                    ↑ Door 1: terminated
+
+  # Docker-এ fork:
+  $ docker run --rm python python -c "import os; print(os.getpid())"
+  1  # container-এ PID 1! (Door 9: namespace isolation)
+
+  # সব একসাথে:
+  # fork → PCB → thread → schedule → memory
+  #      → file → I/O → container → ALIVE</div>
 
 <div class="secret-box">🖥️ <strong>যন্ত্রের আত্মা = নয়টি দরজার সমষ্টি।</strong> প্রসেস (দরজা ১) → থ্রেড (দরজা ২) → শিডিউলিং (দরজা ৩) → সিঙ্ক্রোনাইজেশন (দরজা ৪) → ডেডলক (দরজা ৫) → মেমোরি (দরজা ৬) → ফাইল সিস্টেম (দরজা ৭) → I/O (দরজা ৮) → কন্টেইনার (দরজা ৯)। তুমি এখন জানো কম্পিউটারের ভেতরে কী ঘটে — একটি প্রোগ্রাম থেকে একটি চলমান প্রসেস পর্যন্ত। Dijkstra-এর semaphore থেকে Docker-এর container — ৬০ বছরের যাত্রা। এবং তুমি এখন প্রতিটি ধাপ বোঝো। এটাই যন্ত্রের আত্মা — একটি নিষ্প্রাণ যন্ত্রে প্রাণ দানের শিল্প।</div>`,
   senior: {
