@@ -801,5 +801,29 @@ THE FUTURE OF MULTIMODAL AI:
 
 <div class="verse">"তিনি শিখিয়েছেন কলমের মাধ্যমে। শিখিয়েছেন মানুষকে যা সে জানত না।"<br>— কুরআন ৯৬:৪-৫<br><br>Multimodal AI হলো কলমের বাইরে — চোখ, কান, হাত। শুধু লেখা নয়, দেখা, শোনা, সৃষ্টি করা। যে এক ইন্দ্রিয়ে থাকে, সে অসম্পূর্ণ। যে পাঁচ ইন্দ্রিয়ে পৌঁছায়, সে সম্পূর্ণ। এটাই পঞ্চইন্দ্রিয়।</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrMM10" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#c084fc"/></marker></defs>
+<text x="290" y="24" text-anchor="middle" fill="#c084fc" font-size="13" font-weight="700">নয় ইন্দ্রিয় → এক রামধনু → পঞ্চইন্দ্রিয়</text>
+<path d="M 90 200 A 200 200 0 0 1 490 200" fill="none" stroke="#ef4444" stroke-width="10" stroke-linecap="round"/>
+<path d="M 100 200 A 190 190 0 0 1 480 200" fill="none" stroke="#f97316" stroke-width="10" stroke-linecap="round"/>
+<path d="M 110 200 A 180 180 0 0 1 470 200" fill="none" stroke="#eab308" stroke-width="10" stroke-linecap="round"/>
+<path d="M 120 200 A 170 170 0 0 1 460 200" fill="none" stroke="#22c55e" stroke-width="10" stroke-linecap="round"/>
+<path d="M 130 200 A 160 160 0 0 1 450 200" fill="none" stroke="#3b82f6" stroke-width="10" stroke-linecap="round"/>
+<path d="M 140 200 A 150 150 0 0 1 440 200" fill="none" stroke="#8b5cf6" stroke-width="10" stroke-linecap="round"/>
+<path d="M 150 200 A 140 140 0 0 1 430 200" fill="none" stroke="#ec4899" stroke-width="10" stroke-linecap="round"/>
+<text x="50" y="195" text-anchor="middle" fill="#9290a8" font-size="7">👁️ Vision</text>
+<text x="50" y="207" text-anchor="middle" fill="#9290a8" font-size="7">🖼️ VLM</text>
+<text x="50" y="219" text-anchor="middle" fill="#9290a8" font-size="7">🎨 Gen</text>
+<text x="530" y="195" text-anchor="middle" fill="#9290a8" font-size="7">🔊 Audio</text>
+<text x="530" y="207" text-anchor="middle" fill="#9290a8" font-size="7">🎬 Video</text>
+<text x="530" y="219" text-anchor="middle" fill="#9290a8" font-size="7">🔗 Align</text>
+<rect x="225" y="210" width="130" height="30" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="2"/>
+<text x="290" y="229" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="700">🌈 পঞ্চইন্দ্রিয়</text>
+<text x="290" y="245" text-anchor="middle" fill="#22c55e" font-size="8">এক ইন্দ্রিয় থেকে পাঁচ — টেক্সট থেকে সব</text>
+</svg>
+</div>
+<div class="svg-caption">নয়টি ইন্দ্রিয় এক রামধনুতে মিলে যায় — Vision, VLM, Generation, Audio, Video, Alignment, Embeddings, Applications, Challenges = সম্পূর্ণ Multimodal AI।</div>
+
 <div class="secret-box"><div class="label">দশম ইন্দ্রিয় — সমন্বয়</div><div class="text">🌈 Multimodal AI = Vision + VLM + Generation + Audio + Video + Alignment + Embeddings + Applications + Challenges।<br><small>এক ইন্দ্রিয় থেকে পাঁচ। টেক্সট থেকে সব। এটাই পঞ্চইন্দ্রিয়।</small></div></div>`
 });

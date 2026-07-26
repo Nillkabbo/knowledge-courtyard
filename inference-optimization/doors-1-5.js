@@ -139,7 +139,46 @@ KV CACHE LIFECYCLE:
 
   → cache management = critical for throughput</div>
 
-<div class="dialogue">হাফিয — preserver, memorizer। কুরআনে আল্লাহ বলেন — "নিশ্চয় আমরা কুরআন নাজিল করেছি এবং নিশ্চয় আমরাই এর সংরক্ষক।" (১৫:৯)। সংরক্ষণ = পুনরায় পড়ার প্রয়োজন নেই। KV cache-ও সেই সংরক্ষণ — পুরোনো হিসাব সংরক্ষণ, পুনরায় নয়। হাফিয — স্মৃতি সংরক্ষণের গুণ। যে সংরক্ষণ করে, সে দ্রুত। যে প্রতিবার আবার করে, সে ধীর।</div>
+<div class="svg-diagram">
+<svg viewBox="0 0 580 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect x="0" y="0" width="580" height="270" fill="#0f172a" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">KV Cache — Avoid Redundant Computation</text>
+<rect x="15" y="38" width="265" height="210" rx="8" fill="#1a2744" stroke="#ff6b35" stroke-width="1.5"/>
+<text x="147" y="55" text-anchor="middle" fill="#ff6b35" font-size="9" font-weight="bold">Without Cache — O(N²)</text>
+<rect x="30" y="65" width="40" height="12" rx="2" fill="#ff6b35" opacity=".9"/>
+<text x="78" y="75" fill="#94a3b8" font-size="6">tok 1: proc [1]</text>
+<rect x="30" y="80" width="70" height="12" rx="2" fill="#ff6b35" opacity=".8"/>
+<text x="108" y="90" fill="#94a3b8" font-size="6">tok 2: proc [1,2]</text>
+<rect x="30" y="95" width="100" height="12" rx="2" fill="#ff6b35" opacity=".7"/>
+<text x="138" y="105" fill="#94a3b8" font-size="6">tok 3: proc [1,2,3]</text>
+<rect x="30" y="110" width="130" height="12" rx="2" fill="#ff6b35" opacity=".6"/>
+<text x="168" y="120" fill="#94a3b8" font-size="6">tok N: proc [1..N]</text>
+<text x="147" y="145" text-anchor="middle" fill="#fcd34d" font-size="8">Total: 1+2+3+...+N = N²/2</text>
+<text x="147" y="160" text-anchor="middle" fill="#ff6b35" font-size="7">1000 tokens → 500,000 ops!</text>
+<rect x="40" y="180" width="215" height="50" rx="5" fill="#0d1526" stroke="#ff6b35" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="147" y="197" text-anchor="middle" fill="#ff6b35" font-size="7">⚠ Redundant re-computation</text>
+<text x="147" y="210" text-anchor="middle" fill="#94a3b8" font-size="6">Each token reprocesses ALL previous</text>
+<text x="147" y="222" text-anchor="middle" fill="#94a3b8" font-size="6">Quadratic growth → VERY slow</text>
+<rect x="300" y="38" width="265" height="210" rx="8" fill="#1a2744" stroke="#4ade80" stroke-width="1.5"/>
+<text x="432" y="55" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">With KV Cache — O(N)</text>
+<rect x="315" y="65" width="235" height="40" rx="4" fill="#1e293b" stroke="#22d3ee" stroke-width="1"/>
+<text x="432" y="80" text-anchor="middle" fill="#22d3ee" font-size="8" font-weight="bold">① Prefill: process prompt once</text>
+<text x="432" y="93" text-anchor="middle" fill="#94a3b8" font-size="6">compute K, V for ALL tokens → store</text>
+<rect x="315" y="112" width="235" height="28" rx="4" fill="#0d1526" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="432" y="129" text-anchor="middle" fill="#fcd34d" font-size="7">📦 KV Cache: stored K,V for all tokens</text>
+<rect x="315" y="150" width="235" height="55" rx="4" fill="#1e293b" stroke="#4ade80" stroke-width="1"/>
+<text x="432" y="164" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">② Decode: one token at a time</text>
+<text x="432" y="177" text-anchor="middle" fill="#94a3b8" font-size="6">new Q × cached K → weights × cached V</text>
+<text x="432" y="189" text-anchor="middle" fill="#94a3b8" font-size="6">append K,V → next token</text>
+<text x="432" y="220" text-anchor="middle" fill="#fcd34d" font-size="8">Total: N + N = 2N</text>
+<text x="432" y="234" text-anchor="middle" fill="#4ade80" font-size="7">1000 tokens → 2,000 ops!</text>
+<text x="290" y="135" text-anchor="middle" fill="#3dd6c4" font-size="14">→</text>
+<text x="290" y="148" text-anchor="middle" fill="#3dd6c4" font-size="7" font-weight="bold">250x</text>
+</svg>
+</div>
+<div class="svg-caption">KV Cache — পুরোনো হিসাব সংরক্ষণ, পুনরায় নয়; O(N²) থেকে O(N) তে রূপান্তর</div>
+
+<div class="dialogue">হাফিয় — preserver
 <div class="dialogue en">"Hafiz — preserver, memorizer. Allah says — 'We sent down the Quran and We are its preserver.' (15:9). Preservation = no need to re-read. KV cache too — old computations preserved, not redone. Hafiz — the virtue of memory preservation. One who preserves, is fast. One who redoes each time, is slow."</div>`,
   senior:{
     title:"KV Cache — Key Numbers",
@@ -281,6 +320,57 @@ KV CACHE QUANTIZATION:
   
   → vLLM: --kv-cache-dtype fp8
   → ২x more concurrent requests!</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Quantization — Less Precision, Same Capability</text>
+<text x="20" y="48" fill="#fcd34d" font-size="8" font-weight="bold">7B Model — Size vs Quality by Precision</text>
+<rect x="20" y="58" width="30" height="14" rx="2" fill="#3dd6c4" opacity=".9"/>
+<rect x="50" y="58" width="30" height="14" rx="2" fill="#3dd6c4" opacity=".8"/>
+<rect x="80" y="58" width="60" height="14" rx="2" fill="#3dd6c4" opacity=".7"/>
+<rect x="140" y="58" width="100" height="14" rx="2" fill="#3dd6c4" opacity=".55"/>
+<rect x="240" y="58" width="320" height="14" rx="2" fill="#3dd6c4" opacity=".4"/>
+<text x="35" y="68" text-anchor="middle" fill="#0f172a" font-size="5">int2</text>
+<text x="65" y="68" text-anchor="middle" fill="#0f172a" font-size="5">int4</text>
+<text x="110" y="68" text-anchor="middle" fill="#0f172a" font-size="5">int8</text>
+<text x="190" y="68" text-anchor="middle" fill="#0f172a" font-size="6">fp16</text>
+<text x="400" y="68" text-anchor="middle" fill="#0f172a" font-size="6">fp32</text>
+<line x1="35" y1="80" x2="35" y2="90" stroke="#3dd6c4" stroke-width="1"/>
+<text x="35" y="100" text-anchor="middle" fill="#94a3b8" font-size="6">1.75GB</text>
+<text x="35" y="110" text-anchor="middle" fill="#fcd34d" font-size="5">80% Q</text>
+<line x1="65" y1="80" x2="65" y2="90" stroke="#3dd6c4" stroke-width="1"/>
+<text x="65" y="100" text-anchor="middle" fill="#94a3b8" font-size="6">3.5GB</text>
+<text x="65" y="110" text-anchor="middle" fill="#4ade80" font-size="5">95% Q</text>
+<line x1="110" y1="80" x2="110" y2="90" stroke="#3dd6c4" stroke-width="1"/>
+<text x="110" y="100" text-anchor="middle" fill="#94a3b8" font-size="6">7GB</text>
+<text x="110" y="110" text-anchor="middle" fill="#4ade80" font-size="5">98% Q</text>
+<line x1="190" y1="80" x2="190" y2="90" stroke="#3dd6c4" stroke-width="1"/>
+<text x="190" y="100" text-anchor="middle" fill="#94a3b8" font-size="6">14GB</text>
+<text x="190" y="110" text-anchor="middle" fill="#4ade80" font-size="5">~100%</text>
+<line x1="400" y1="80" x2="400" y2="90" stroke="#3dd6c4" stroke-width="1"/>
+<text x="400" y="100" text-anchor="middle" fill="#94a3b8" font-size="6">28GB</text>
+<text x="400" y="110" text-anchor="middle" fill="#4ade80" font-size="5">100%</text>
+<text x="20" y="135" fill="#fcd34d" font-size="8" font-weight="bold">Methods (worst → best):</text>
+<rect x="20" y="143" width="120" height="22" rx="4" fill="#1a2744" stroke="#ff6b35" stroke-width="1"/>
+<text x="80" y="152" text-anchor="middle" fill="#ff6b35" font-size="7" font-weight="bold">RTN</text>
+<text x="80" y="161" text-anchor="middle" fill="#94a3b8" font-size="5">simple round, lossy</text>
+<rect x="150" y="143" width="120" height="22" rx="4" fill="#1a2744" stroke="#fbbf24" stroke-width="1"/>
+<text x="210" y="152" text-anchor="middle" fill="#fbbf24" font-size="7" font-weight="bold">GPTQ</text>
+<text x="210" y="161" text-anchor="middle" fill="#94a3b8" font-size="5">calibrated, one-shot</text>
+<rect x="280" y="143" width="120" height="22" rx="4" fill="#1a2744" stroke="#3dd6c4" stroke-width="1"/>
+<text x="340" y="152" text-anchor="middle" fill="#3dd6c4" font-size="7" font-weight="bold">AWQ</text>
+<text x="340" y="161" text-anchor="middle" fill="#94a3b8" font-size="5">activation-aware</text>
+<rect x="410" y="143" width="150" height="22" rx="4" fill="#1a2744" stroke="#4ade80" stroke-width="1.5"/>
+<text x="485" y="152" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">GGUF (llama.cpp)</text>
+<text x="485" y="161" text-anchor="middle" fill="#94a3b8" font-size="5">CPU/Mac k-quants</text>
+<rect x="20" y="180" width="540" height="55" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="290" y="197" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">Sweet spot: int4 AWQ</text>
+<text x="290" y="210" text-anchor="middle" fill="#94a3b8" font-size="6">4x smaller, 4x faster load, ~2-5% quality loss (acceptable)</text>
+<text x="290" y="222" text-anchor="middle" fill="#4ade80" font-size="6">GPU → AWQ int4 · CPU/Mac → GGUF Q4_K_M</text>
+</svg>
+</div>
+<div class="svg-caption">Quantization — precision কমাও, ক্ষমতা ধরে রাখো; fp16→int4 = ৪x কম মেমরি</div>
 
 <div class="dialogue">ইখতিসার — brevity, conciseness, summarization। কুরআনে আল্লাহ বলেন — "আমি তোমার জন্য কোরবানির পশুদের বিধান সহজ করেছি।" (২২:৩৪)। সহজ = সংক্ষিপ্ত। Quantization-ও তেমনি — precision কমিয়ে সহজ করো। কম জায়গা, কম খরচ, দ্রুত। কিন্তু সারমর্ম ধরে রাখো। ইখতিসার — সংক্ষিপ্ততার শিল্প, সারমর্ম হারানো নয়।</div>
 <div class="dialogue en">"Ikhtisar — brevity, conciseness, summarization. Allah says — 'We have made the sacrificial animals easy for you.' (22:34). Easy = concise. Quantization too — simplify by reducing precision. Less space, less cost, faster. But keep the essence. Ikhtisar — the art of brevity, not losing the essence."</div>`,
@@ -443,6 +533,59 @@ PRACTICAL SETUP (vLLM):
   → max-num-batched-tokens: total tokens 
     per batch step
   → auto-tuned by vLLM based on GPU memory</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrB3" markerWidth="6" markerHeight="6" refX="5" refY="2" orient="auto"><path d="M0,0 L5,2 L0,4 Z" fill="#22d3ee"/></marker></defs>
+<rect x="0" y="0" width="580" height="260" fill="#0f172a" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Continuous Batching — GPU Never Idle</text>
+<rect x="15" y="38" width="265" height="205" rx="8" fill="#1a2744" stroke="#ff6b35" stroke-width="1.5"/>
+<text x="147" y="55" text-anchor="middle" fill="#ff6b35" font-size="9" font-weight="bold">Static Batching — Waste</text>
+<rect x="30" y="68" width="235" height="30" rx="4" fill="#0d1526" stroke="#ff6b35" stroke-width="1"/>
+<rect x="35" y="73" width="55" height="20" rx="2" fill="#ff6b35" opacity=".8"/>
+<text x="62" y="86" text-anchor="middle" fill="#fff" font-size="6">Req A (long)</text>
+<rect x="95" y="73" width="40" height="20" rx="2" fill="#fbbf24" opacity=".8"/>
+<text x="115" y="86" text-anchor="middle" fill="#0f172a" font-size="6">Req B</text>
+<rect x="140" y="73" width="30" height="20" rx="2" fill="#4ade80" opacity=".8"/>
+<text x="155" y="86" text-anchor="middle" fill="#0f172a" font-size="6">Req C</text>
+<rect x="175" y="73" width="80" height="20" rx="2" fill="#1a2744"/>
+<text x="215" y="86" text-anchor="middle" fill="#ff6b35" font-size="6">idle ⌛</text>
+<text x="147" y="112" text-anchor="middle" fill="#94a3b8" font-size="6">GPU waits for slowest request (A)</text>
+<text x="147" y="125" text-anchor="middle" fill="#ff6b35" font-size="6">B, C finished but GPU idle</text>
+<rect x="30" y="135" width="235" height="95" rx="4" fill="#0d1526" stroke="#ff6b35" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="147" y="153" text-anchor="middle" fill="#ff6b35" font-size="7" font-weight="bold">Problems:</text>
+<text x="147" y="168" text-anchor="middle" fill="#94a3b8" font-size="6">• Must wait for full batch to complete</text>
+<text x="147" y="181" text-anchor="middle" fill="#94a3b8" font-size="6">• New requests queued until batch done</text>
+<text x="147" y="194" text-anchor="middle" fill="#94a3b8" font-size="6">• Variable length = padding waste</text>
+<text x="147" y="207" text-anchor="middle" fill="#ff6b35" font-size="6">• Throughput ↓, latency ↑</text>
+<text x="147" y="222" text-anchor="middle" fill="#94a3b8" font-size="6">• GPU utilization often &lt; 40%</text>
+<rect x="300" y="38" width="265" height="205" rx="8" fill="#1a2744" stroke="#4ade80" stroke-width="1.5"/>
+<text x="432" y="55" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Continuous Batching — Efficient</text>
+<rect x="315" y="68" width="235" height="30" rx="4" fill="#0d1526" stroke="#4ade80" stroke-width="1"/>
+<rect x="320" y="73" width="50" height="20" rx="2" fill="#ff6b35" opacity=".8"/>
+<text x="345" y="86" text-anchor="middle" fill="#fff" font-size="5">A</text>
+<rect x="375" y="73" width="35" height="20" rx="2" fill="#fbbf24" opacity=".8"/>
+<text x="392" y="86" text-anchor="middle" fill="#0f172a" font-size="5">B</text>
+<rect x="415" y="73" width="25" height="20" rx="2" fill="#4ade80" opacity=".8"/>
+<text x="427" y="86" text-anchor="middle" fill="#0f172a" font-size="5">C</text>
+<rect x="445" y="73" width="40" height="20" rx="2" fill="#a855f7" opacity=".8"/>
+<text x="465" y="86" text-anchor="middle" fill="#fff" font-size="5">D (new!)</text>
+<rect x="490" y="73" width="55" height="20" rx="2" fill="#3dd6c4" opacity=".8"/>
+<text x="517" y="86" text-anchor="middle" fill="#0f172a" font-size="5">E (new!)</text>
+<text x="432" y="112" text-anchor="middle" fill="#94a3b8" font-size="6">token-level scheduling — every step</text>
+<text x="432" y="125" text-anchor="middle" fill="#4ade80" font-size="6">finished? swap in new request instantly</text>
+<rect x="315" y="135" width="235" height="95" rx="4" fill="#0d1526" stroke="#4ade80" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="432" y="153" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">Wins:</text>
+<text x="432" y="168" text-anchor="middle" fill="#94a3b8" font-size="6">• Requests join/leave each step</text>
+<text x="432" y="181" text-anchor="middle" fill="#94a3b8" font-size="6">• No padding, no waiting</text>
+<text x="432" y="194" text-anchor="middle" fill="#94a3b8" font-size="6">• PagedAttention = no fragmentation</text>
+<text x="432" y="207" text-anchor="middle" fill="#4ade80" font-size="6">• Throughput ↑ 5-10x</text>
+<text x="432" y="222" text-anchor="middle" fill="#94a3b8" font-size="6">• GPU utilization &gt; 80%</text>
+<line x1="282" y1="140" x2="298" y2="140" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrB3)"/>
+<text x="290" y="133" text-anchor="middle" fill="#22d3ee" font-size="7" font-weight="bold">vLLM</text>
+</svg>
+</div>
+<div class="svg-caption">Continuous Batching — request একসাথে; GPU কখনো অলস নয়; throughput ৫-১০x</div>
 
 <div class="dialogue">জামায়াত — congregation, group, collective। কুরআনে আল্লাহ বলেন — "তোমরা সবাই আল্লাহর রশি ধরো, একসাথে থাকো।" (৩:১০৩)। একসাথে = শক্তি। একা = দুর্বল। Batching-ও তেমনি — request একসাথে = GPU শক্তিশালী ব্যবহার। একা একা = অপচয়। জামায়াত — দলবদ্ধ শক্তি। যে একসাথে কাজ করে, সে দক্ষ।</div>
 <div class="dialogue en">"Jamaat — congregation, group, collective. Allah says — 'Hold fast to the rope of Allah, together.' (3:103). Together = strength. Alone = weak. Batching too — requests together = powerful GPU use. One by one = waste. Jamaat — collective strength. One who works together, is efficient."</div>`,
@@ -611,6 +754,68 @@ WHAT TO USE:
   Custom models:
     → always use FlashAttention
     → consider GQA for KV cache savings</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect x="0" y="0" width="580" height="260" fill="#0f172a" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Attention Optimization — O(N²) → O(N)</text>
+<rect x="15" y="38" width="175" height="120" rx="8" fill="#1a2744" stroke="#ff6b35" stroke-width="1.5"/>
+<text x="102" y="55" text-anchor="middle" fill="#ff6b35" font-size="8" font-weight="bold">Standard Attention</text>
+<rect x="30" y="65" width="60" height="50" rx="3" fill="#0d1526" stroke="#ff6b35" stroke-width="1"/>
+<rect x="38" y="72" width="44" height="36" rx="2" fill="#ff6b35" opacity=".25"/>
+<text x="60" y="83" text-anchor="middle" fill="#ff6b35" font-size="6">N×N</text>
+<text x="60" y="93" text-anchor="middle" fill="#ff6b35" font-size="5">attention</text>
+<text x="60" y="103" text-anchor="middle" fill="#ff6b35" font-size="5">matrix</text>
+<text x="102" y="100" text-anchor="middle" fill="#fcd34d" font-size="7">→ O(N²) memory</text>
+<text x="102" y="113" text-anchor="middle" fill="#ff6b35" font-size="6">32K context? OOM!</text>
+<text x="102" y="128" text-anchor="middle" fill="#94a3b8" font-size="6">materialize full</text>
+<text x="102" y="140" text-anchor="middle" fill="#94a3b8" font-size="6">Q×Kᵀ softmax matrix</text>
+<text x="102" y="152" text-anchor="middle" fill="#ff6b35" font-size="6">reads/writes HBM 2-3x</text>
+<rect x="200" y="38" width="175" height="120" rx="8" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="287" y="55" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">FlashAttention-2</text>
+<rect x="215" y="65" width="60" height="50" rx="3" fill="#0d1526" stroke="#fbbf24" stroke-width="1"/>
+<rect x="223" y="72" width="22" height="36" rx="2" fill="#fbbf24" opacity=".3"/>
+<rect x="247" y="72" width="22" height="36" rx="2" fill="#fbbf24" opacity=".3"/>
+<text x="234" y="93" text-anchor="middle" fill="#fbbf24" font-size="5">block</text>
+<text x="258" y="93" text-anchor="middle" fill="#fbbf24" font-size="5">block</text>
+<text x="287" y="100" text-anchor="middle" fill="#fcd34d" font-size="7">→ O(N) memory</text>
+<text x="287" y="113" text-anchor="middle" fill="#4ade80" font-size="6">128K feasible!</text>
+<text x="287" y="128" text-anchor="middle" fill="#94a3b8" font-size="6">tile + fuse softmax</text>
+<text x="287" y="140" text-anchor="middle" fill="#94a3b8" font-size="6">in SRAM (fast cache)</text>
+<text x="287" y="152" text-anchor="middle" fill="#4ade80" font-size="6">2-4x faster, no materialize</text>
+<rect x="385" y="38" width="180" height="120" rx="8" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="475" y="55" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">GQA / MQA (cache shrink)</text>
+<rect x="400" y="65" width="70" height="50" rx="3" fill="#0d1526" stroke="#3dd6c4" stroke-width="1"/>
+<circle cx="412" cy="76" r="2.5" fill="#3dd6c4"/>
+<circle cx="422" cy="76" r="2.5" fill="#3dd6c4"/>
+<circle cx="432" cy="76" r="2.5" fill="#3dd6c4"/>
+<circle cx="442" cy="76" r="2.5" fill="#3dd6c4"/>
+<circle cx="452" cy="76" r="2.5" fill="#3dd6c4"/>
+<text x="435" y="88" text-anchor="middle" fill="#3dd6c4" font-size="5">32 query heads</text>
+<rect x="412" y="95" width="40" height="8" rx="1" fill="#fcd34d" opacity=".5"/>
+<text x="432" y="101" text-anchor="middle" fill="#fcd34d" font-size="4">8 KV heads (GQA)</text>
+<text x="475" y="100" text-anchor="middle" fill="#fcd34d" font-size="7">→ 4x less KV cache</text>
+<text x="475" y="113" text-anchor="middle" fill="#4ade80" font-size="6">more concurrent reqs</text>
+<text x="475" y="128" text-anchor="middle" fill="#94a3b8" font-size="6">MHA: 32 K,V heads</text>
+<text x="475" y="140" text-anchor="middle" fill="#94a3b8" font-size="6">GQA: 8 (Llama 3)</text>
+<text x="475" y="152" text-anchor="middle" fill="#94a3b8" font-size="6">MQA: 1 (Llama 2)</text>
+<rect x="15" y="170" width="550" height="75" rx="6" fill="#1a2744" stroke="#4ade80" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="290" y="188" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">Combined Impact — Llama 3.1 8B, 128K context</text>
+<rect x="30" y="198" width="120" height="22" rx="3" fill="#0d1526" stroke="#ff6b35" stroke-width="1"/>
+<text x="90" y="212" text-anchor="middle" fill="#ff6b35" font-size="6">Standard: OOM 💥</text>
+<text x="90" y="222" text-anchor="middle" fill="#94a3b8" font-size="5">cannot fit in 80GB</text>
+<rect x="165" y="198" width="120" height="22" rx="3" fill="#0d1526" stroke="#fbbf24" stroke-width="1"/>
+<text x="225" y="212" text-anchor="middle" fill="#fbbf24" font-size="6">+FlashAttn: works!</text>
+<text x="225" y="222" text-anchor="middle" fill="#94a3b8" font-size="5">~30 tok/s</text>
+<rect x="300" y="198" width="120" height="22" rx="3" fill="#0d1526" stroke="#3dd6c4" stroke-width="1"/>
+<text x="360" y="212" text-anchor="middle" fill="#3dd6c4" font-size="6">+GQA: 4x cache</text>
+<text x="360" y="222" text-anchor="middle" fill="#94a3b8" font-size="5">~32 tok/s, 4x reqs</text>
+<rect x="435" y="198" width="120" height="22" rx="3" fill="#0d1526" stroke="#4ade80" stroke-width="1.5"/>
+<text x="495" y="212" text-anchor="middle" fill="#4ade80" font-size="6">+PagedAttn: max</text>
+<text x="495" y="222" text-anchor="middle" fill="#94a3b8" font-size="5">~35 tok/s, 3x reqs</text>
+</svg>
+</div>
+<div class="svg-caption">Attention optimization — FlashAttention O(N²)→O(N); GQA/MQA KV cache ৪-৩২x কম</div>
 
 <div class="dialogue">তানজিম — organization, arrangement, optimization। কুরআনে আল্লাহ বলেন — "যিনি সৃষ্টি করেছেন এবং নিয়মে বেঁধেছেন।" (৮৭:২)। নিয়মে বাঁধা = তানজিম। Attention optimization-ও তেমনি — algorithm নিয়মে বাঁধা। প্রতিটা computation সুসংগঠিত, দ্রুত, নির্ভুল। তানজিম — সুসংগঠিত দ্রুততার গুণ।</div>
 <div class="dialogue en">"Tanzim — organization, arrangement, optimization. Allah says — 'Who created and proportioned.' (87:2). Proportioning = tanzim. Attention optimization too — organizing the algorithm. Each computation organized, fast, precise. Tanzim — the virtue of organized speed."</div>`,
@@ -783,6 +988,60 @@ BENCHMARK:
     Without spec: ~২৫ tokens/sec
     With spec (α=০.৫): ~৪৫ tokens/sec
     → ১.৮x speedup</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrSD5" markerWidth="6" markerHeight="6" refX="5" refY="2" orient="auto"><path d="M0,0 L5,2 L0,4 Z" fill="#22d3ee"/></marker></defs>
+<rect x="0" y="0" width="580" height="260" fill="#0f172a" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Speculative Decoding — Guess Fast, Verify Once</text>
+<rect x="15" y="38" width="265" height="100" rx="8" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="147" y="55" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">① Draft model guesses (fast)</text>
+<rect x="30" y="65" width="235" height="30" rx="4" fill="#0d1526" stroke="#fbbf24" stroke-width="1"/>
+<rect x="35" y="70" width="40" height="20" rx="2" fill="#fbbf24" opacity=".8"/>
+<text x="55" y="83" text-anchor="middle" fill="#0f172a" font-size="6">tok 1</text>
+<rect x="80" y="70" width="40" height="20" rx="2" fill="#fbbf24" opacity=".8"/>
+<text x="100" y="83" text-anchor="middle" fill="#0f172a" font-size="6">tok 2</text>
+<rect x="125" y="70" width="40" height="20" rx="2" fill="#fbbf24" opacity=".8"/>
+<text x="145" y="83" text-anchor="middle" fill="#0f172a" font-size="6">tok 3</text>
+<rect x="170" y="70" width="40" height="20" rx="2" fill="#fbbf24" opacity=".8"/>
+<text x="190" y="83" text-anchor="middle" fill="#0f172a" font-size="6">tok 4</text>
+<rect x="215" y="70" width="40" height="20" rx="2" fill="#fbbf24" opacity=".8"/>
+<text x="235" y="83" text-anchor="middle" fill="#0f172a" font-size="6">tok 5</text>
+<text x="147" y="110" text-anchor="middle" fill="#94a3b8" font-size="6">Small model (1B) generates 5 tokens in parallel</text>
+<text x="147" y="122" text-anchor="middle" fill="#fcd34d" font-size="6">~5x faster per token than big model</text>
+<rect x="147" y="128" width="0" height="0"/>
+<line x1="280" y1="88" x2="300" y2="88" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrSD5)"/>
+<rect x="300" y="38" width="265" height="100" rx="8" fill="#1a2744" stroke="#4ade80" stroke-width="1.5"/>
+<text x="432" y="55" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">② Big model verifies (one pass)</text>
+<rect x="315" y="65" width="235" height="30" rx="4" fill="#0d1526" stroke="#4ade80" stroke-width="1"/>
+<rect x="320" y="70" width="40" height="20" rx="2" fill="#4ade80" opacity=".9"/>
+<text x="340" y="83" text-anchor="middle" fill="#0f172a" font-size="6">✓ ok</text>
+<rect x="365" y="70" width="40" height="20" rx="2" fill="#4ade80" opacity=".9"/>
+<text x="385" y="83" text-anchor="middle" fill="#0f172a" font-size="6">✓ ok</text>
+<rect x="410" y="70" width="40" height="20" rx="2" fill="#4ade80" opacity=".9"/>
+<text x="430" y="83" text-anchor="middle" fill="#0f172a" font-size="6">✓ ok</text>
+<rect x="455" y="70" width="40" height="20" rx="2" fill="#ff6b35" opacity=".9"/>
+<text x="475" y="83" text-anchor="middle" fill="#fff" font-size="6">✗ no</text>
+<rect x="500" y="70" width="40" height="20" rx="2" fill="#1a2744" stroke="#ff6b35" stroke-width="1" stroke-dasharray="2,1"/>
+<text x="520" y="83" text-anchor="middle" fill="#ff6b35" font-size="6">reject</text>
+<text x="432" y="110" text-anchor="middle" fill="#94a3b8" font-size="6">Verify all 5 in ONE forward pass</text>
+<text x="432" y="122" text-anchor="middle" fill="#fcd34d" font-size="6">accept up to mismatch, regenerate from there</text>
+<rect x="15" y="150" width="550" height="95" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="290" y="168" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">Why it works — Math</text>
+<text x="290" y="183" text-anchor="middle" fill="#94a3b8" font-size="6">Acceptance rate α (draft accuracy). Expected tokens per verify pass:</text>
+<text x="290" y="197" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="bold">E[accepted] = (1 - α^(k+1)) / (1 - α) ≈ α/(1-α) for large k</text>
+<rect x="30" y="207" width="160" height="28" rx="3" fill="#0d1526" stroke="#fbbf24" stroke-width="1"/>
+<text x="110" y="220" text-anchor="middle" fill="#fbbf24" font-size="6">α=0.5 (Llama 1B→8B)</text>
+<text x="110" y="230" text-anchor="middle" fill="#4ade80" font-size="6">→ ~2x speedup</text>
+<rect x="210" y="207" width="160" height="28" rx="3" fill="#0d1526" stroke="#fbbf24" stroke-width="1"/>
+<text x="290" y="220" text-anchor="middle" fill="#fbbf24" font-size="6">α=0.7 (same family)</text>
+<text x="290" y="230" text-anchor="middle" fill="#4ade80" font-size="6">→ ~3x speedup</text>
+<rect x="390" y="207" width="160" height="28" rx="3" fill="#0d1526" stroke="#4ade80" stroke-width="1.5"/>
+<text x="470" y="220" text-anchor="middle" fill="#4ade80" font-size="6">ZERO quality loss</text>
+<text x="470" y="230" text-anchor="middle" fill="#94a3b8" font-size="6">mathematically identical</text>
+</svg>
+</div>
+<div class="svg-caption">Speculative decoding — ছোট মডেল অনুমান, বড় যাচাই; এক pass-এ কয়েক token; গতি ২-৩x, গুণমান অবিকৃত</div>
 
 <div class="dialogue">যাকিন — certainty, sure knowledge। কুরআনে আল্লাহ বলেন — "উপলব্ধি করো যাতে তোমাদের ঈমান যাকিনে পরিণত হয়।" যাকিন = নিশ্চিত জ্ঞান। Speculative decoding-ও যাকিন — অনুমান নয়, যাচাইকৃত। ছোট মডেল অনুমান করে, বড় যাচাই করে। ফল = নিশ্চিত সঠিক, দ্রুত। যাকিন — নিশ্চিত পূর্বাভাস।</div>
 <div class="dialogue en">"Yaqin — certainty, sure knowledge. Allah says — 'Understand so your faith becomes certainty.' Yaqin = certain knowledge. Speculative decoding too — not guessing, verified. Small model guesses, big verifies. Result = certainly correct, fast. Yaqin — certain prediction."</div>`,

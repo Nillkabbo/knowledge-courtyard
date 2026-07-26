@@ -22,6 +22,29 @@ doors.push({
 <div class="dialogue">চুরির কক্ষ বলেছিলেন — extraction প্রতিরক্ষা দাও। কিন্তু আমি বলি — প্রতিটা আক্রমণের জন্য আলাদা প্রতিরক্ষা নয়। সব আক্রমণের জন্য একটা সমন্বিত প্রতিরক্ষা। একাধিক স্তর। এক ভাঙলে পরের আছে। এটাই defense in depth — নিরাপত্তার স্থাপত্য।</div>
 <div class="dialogue en">"The theft chamber said — give extraction defense. But I say — not separate defense for each attack. An integrated defense for all attacks. Multiple layers. One breaks, the next remains. This is defense in depth — the architecture of security."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="280" fill="#0f172a"/>
+  <defs>
+    <marker id="arrD6" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#ef4444"/></marker>
+  </defs>
+  <text x="290" y="26" text-anchor="middle" fill="#5b9eff" font-size="12" font-weight="bold">সাত স্তর দুর্গ — Seven Layer Defense</text>
+  <rect x="40" y="50" width="500" height="36" rx="6" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+  <text x="290" y="73" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="bold">Layer ১: Network (WAF, DDoS, TLS)</text>
+  <rect x="60" y="92" width="460" height="36" rx="6" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1"/>
+  <text x="290" y="115" text-anchor="middle" fill="#3dd6c4" font-size="9" font-weight="bold">Layer ২: Auth (API key, JWT, RBAC)</text>
+  <rect x="80" y="134" width="420" height="36" rx="6" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1"/>
+  <text x="290" y="157" text-anchor="middle" fill="#3dd6c4" font-size="9" font-weight="bold">Layer ৩: Input Guardrail (injection detect)</text>
+  <rect x="100" y="176" width="380" height="36" rx="6" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1"/>
+  <text x="290" y="199" text-anchor="middle" fill="#3dd6c4" font-size="9" font-weight="bold">Layer ৪: System Prompt + Layer ৫: LLM</text>
+  <rect x="120" y="218" width="340" height="28" rx="6" fill="#14532d" stroke="#4ade80" stroke-width="1.2"/>
+  <text x="290" y="237" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">Layer ৬: Output + Action + Layer ৭: Monitor</text>
+  <line x1="20" y1="68" x2="36" y2="68" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arrD6)"/>
+  <text x="290" y="266" text-anchor="middle" fill="#94a3b8" font-size="8">এক স্তর ভাঙলে পরের আছে — Swiss Cheese: holes এক সারিতে নয়</text>
+</svg>
+</div>
+<div class="svg-caption">Defense in depth: সাতটি স্তর সংকুচিত হয়ে কেন্দ্রে মিলিত — হিসন, স্তরে স্তরে সুরক্ষা</div>
+
 <div class="code-block">Defense in Depth — ৭ Layer Architecture:
 
 ┌──────────────────────────────────────────────┐
@@ -132,6 +155,43 @@ doors.push({
 
 <div class="dialogue">স্তর কক্ষ বলেছিলেন — একাধিক স্তর দাও। কিন্তু আমি বলি — স্তর বানানোর টুল কী? Guardrails। নির্দিষ্ট framework যা input/output ফিল্টার করে, topic restrict করে, format enforce করে। NeMo Guardrails, Guardrails AI — প্রোডাকশন-গ্রেড guardrail ফ্রেমওয়ার্ক।</div>
 <div class="dialogue en">"The layer chamber said — give multiple layers. But I say — what tool to build them? Guardrails. Specific frameworks that filter input/output, restrict topics, enforce format. NeMo Guardrails, Guardrails AI — production-grade guardrail frameworks."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="280" fill="#0f172a"/>
+  <defs>
+    <marker id="arrD7" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#3dd6c4"/></marker>
+  </defs>
+  <text x="290" y="26" text-anchor="middle" fill="#52c41a" font-size="12" font-weight="bold">রেলের উপর ট্রেন — LLM on Guardrails</text>
+  <line x1="40" y1="100" x2="540" y2="100" stroke="#52c41a" stroke-width="3"/>
+  <line x1="40" y1="180" x2="540" y2="180" stroke="#52c41a" stroke-width="3"/>
+  <line x1="80" y1="100" x2="80" y2="180" stroke="#52c41a" stroke-width="1.5" opacity="0.5"/>
+  <line x1="160" y1="100" x2="160" y2="180" stroke="#52c41a" stroke-width="1.5" opacity="0.5"/>
+  <line x1="240" y1="100" x2="240" y2="180" stroke="#52c41a" stroke-width="1.5" opacity="0.5"/>
+  <line x1="320" y1="100" x2="320" y2="180" stroke="#52c41a" stroke-width="1.5" opacity="0.5"/>
+  <line x1="400" y1="100" x2="400" y2="180" stroke="#52c41a" stroke-width="1.5" opacity="0.5"/>
+  <line x1="480" y1="100" x2="480" y2="180" stroke="#52c41a" stroke-width="1.5" opacity="0.5"/>
+  <rect x="130" y="120" width="110" height="50" rx="8" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1.5"/>
+  <text x="185" y="142" text-anchor="middle" fill="#3dd6c4" font-size="10" font-weight="bold">LLM</text>
+  <text x="185" y="156" text-anchor="middle" fill="#94a3b8" font-size="7">নিরাপদ পথে</text>
+  <line x1="240" y1="145" x2="320" y2="145" stroke="#3dd6c4" stroke-width="1.8" marker-end="url(#arrD7)"/>
+  <text x="280" y="138" text-anchor="middle" fill="#3dd6c4" font-size="7">generate</text>
+  <circle cx="60" cy="80" r="14" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+  <text x="60" y="84" text-anchor="middle" fill="#fca5a5" font-size="8">✕</text>
+  <text x="60" y="58" text-anchor="middle" fill="#fca5a5" font-size="7">injection</text>
+  <circle cx="520" cy="80" r="14" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+  <text x="520" y="84" text-anchor="middle" fill="#fca5a5" font-size="8">✕</text>
+  <text x="520" y="58" text-anchor="middle" fill="#fca5a5" font-size="7">toxic</text>
+  <circle cx="60" cy="210" r="14" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+  <text x="60" y="214" text-anchor="middle" fill="#fca5a5" font-size="8">✕</text>
+  <text x="60" y="238" text-anchor="middle" fill="#fca5a5" font-size="7">PII</text>
+  <circle cx="520" cy="210" r="14" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+  <text x="520" y="214" text-anchor="middle" fill="#fca5a5" font-size="8">✕</text>
+  <text x="520" y="238" text-anchor="middle" fill="#fca5a5" font-size="7">off-topic</text>
+  <text x="290" y="260" text-anchor="middle" fill="#94a3b8" font-size="8">হুদুদ — সীমার মধ্যে স্বাধীনতা: NeMo, Guardrails AI, Llama Guard</text>
+</svg>
+</div>
+<div class="svg-caption">Guardrails = রেল: সীমার বাইরে বিপদ, ভেতরে নিরাপদ — input/output filter, topic restrict, format enforce</div>
 
 <div class="code-block">Guardrail Frameworks — Tools for Safety:
 
@@ -273,6 +333,41 @@ doors.push({
 <div class="dialogue">রেল কক্ষ বলেছিলেন — guardrails দাও। কিন্তু আমি বলি — guardrails কাজ করছে কি না, কীভাবে জানবে? পরীক্ষা করে। Red teaming — নিজে শত্রু হয়ে সিস্টেম আক্রমণ। দুর্বলতা খোঁজো। ঠিক করো। শত্রুর আগে নিজে পরীক্ষা করো।</div>
 <div class="dialogue en">"The rail chamber said — give guardrails. But I say — how do you know guardrails are working? Test. Red teaming — become the enemy, attack your system. Find weaknesses. Fix them. Test before the enemy does."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="280" fill="#0f172a"/>
+  <defs>
+    <marker id="arrD8" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b37feb"/></marker>
+  </defs>
+  <text x="290" y="26" text-anchor="middle" fill="#b37feb" font-size="12" font-weight="bold">রেড টিম চক্র — Attack Yourself First</text>
+  <rect x="40" y="60" width="110" height="40" rx="8" fill="#1e3a5f" stroke="#b37feb" stroke-width="1.5"/>
+  <text x="95" y="78" text-anchor="middle" fill="#b37feb" font-size="9" font-weight="bold">১. Scope</text>
+  <text x="95" y="92" text-anchor="middle" fill="#94a3b8" font-size="7">কী টেস্ট?</text>
+  <rect x="180" y="60" width="110" height="40" rx="8" fill="#1e3a5f" stroke="#b37feb" stroke-width="1.5"/>
+  <text x="235" y="78" text-anchor="middle" fill="#b37feb" font-size="9" font-weight="bold">২. Attack</text>
+  <text x="235" y="92" text-anchor="middle" fill="#94a3b8" font-size="7">Garak, PyRIT</text>
+  <rect x="320" y="60" width="110" height="40" rx="8" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="375" y="78" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="bold">৩. Analyze</text>
+  <text x="375" y="92" text-anchor="middle" fill="#94a3b8" font-size="7">ASR measure</text>
+  <rect x="460" y="60" width="100" height="40" rx="8" fill="#14532d" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="510" y="78" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">৪. Fix</text>
+  <text x="510" y="92" text-anchor="middle" fill="#94a3b8" font-size="7">patch</text>
+  <line x1="150" y1="80" x2="178" y2="80" stroke="#b37feb" stroke-width="1.5" marker-end="url(#arrD8)"/>
+  <line x1="290" y1="80" x2="318" y2="80" stroke="#b37feb" stroke-width="1.5" marker-end="url(#arrD8)"/>
+  <line x1="430" y1="80" x2="458" y2="80" stroke="#b37feb" stroke-width="1.5" marker-end="url(#arrD8)"/>
+  <path d="M 510 100 Q 510 160 95 160 Q 95 180 95 200" fill="none" stroke="#b37feb" stroke-width="1.5" marker-end="url(#arrD8)" stroke-dasharray="4,3"/>
+  <text x="300" y="155" text-anchor="middle" fill="#b37feb" font-size="8">৫. Re-test → repeat</text>
+  <rect x="40" y="200" width="200" height="40" rx="8" fill="#0a1428" stroke="#3dd6c4" stroke-width="1"/>
+  <text x="140" y="216" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">ASR Target: &lt; ৫%</text>
+  <text x="140" y="230" text-anchor="middle" fill="#94a3b8" font-size="7">Attack Success Rate</text>
+  <rect x="280" y="200" width="260" height="40" rx="8" fill="#0a1428" stroke="#3dd6c4" stroke-width="1"/>
+  <text x="410" y="216" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">Cadence: monthly auto + quarterly human</text>
+  <text x="410" y="230" text-anchor="middle" fill="#94a3b8" font-size="7">+ per-release regression</text>
+  <text x="290" y="265" text-anchor="middle" fill="#94a3b8" font-size="8">ইখতিবার — নিজেকে পরীক্ষা করো, শত্রুর আগে দুর্বলতা খোঁজো</text>
+</svg>
+</div>
+<div class="svg-caption">Red teaming চক্র: scope → attack → analyze → fix → re-test — শত্রুর আগে নিজে দুর্বলতা খোঁজো</div>
+
 <div class="code-block">Red Teaming — Attack Yourself First:
 
 WHAT IS RED TEAMING?
@@ -410,6 +505,54 @@ doors.push({
 <div class="dialogue">লাল দল বলেছিলেন — পরীক্ষা করো। কিন্তু আমি বলি — পরীক্ষা শেষ নয়। প্রোডাকশন security একটা চলমান প্রক্রিয়া। Monitoring, incident response, compliance। প্রতিদিন নতুন আক্রমণ, প্রতিদিন নতুন প্রতিরক্ষা। দুর্গের প্রহরী কখনো ঘুমায় না — প্রোডাকশন security-ও নয়।</div>
 <div class="dialogue en">"The red team said — test. But I say — testing isn't the end. Production security is an ongoing process. Monitoring, incident response, compliance. Every day new attacks, every day new defense. The fortress guard never sleeps — production security doesn't either."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="280" fill="#0f172a"/>
+  <defs>
+    <marker id="arrD9" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#3dd6c4"/></marker>
+  </defs>
+  <text x="290" y="26" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="bold">প্রোডাকশন সতর্কতা — Alert & Response</text>
+  <rect x="30" y="50" width="120" height="36" rx="6" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="90" y="65" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">🟢 LOW</text>
+  <text x="90" y="79" text-anchor="middle" fill="#94a3b8" font-size="7">২৪h — monitor</text>
+  <rect x="170" y="50" width="120" height="36" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="230" y="65" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">🟡 MEDIUM</text>
+  <text x="230" y="79" text-anchor="middle" fill="#94a3b8" font-size="7">৪h — investigate</text>
+  <rect x="310" y="50" width="120" height="36" rx="6" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="370" y="65" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="bold">🔴 HIGH</text>
+  <text x="370" y="79" text-anchor="middle" fill="#94a3b8" font-size="7">১h — act now</text>
+  <rect x="450" y="50" width="100" height="36" rx="6" fill="#000000" stroke="#ef4444" stroke-width="2"/>
+  <text x="500" y="65" text-anchor="middle" fill="#f87171" font-size="9" font-weight="bold">⚫ CRITICAL</text>
+  <text x="500" y="79" text-anchor="middle" fill="#94a3b8" font-size="7">১৫min</text>
+  <text x="290" y="112" text-anchor="middle" fill="#3dd6c4" font-size="10" font-weight="bold">ইনসিডেন্ট রেসপন্স — ৫ ধাপ</text>
+  <rect x="30" y="124" width="100" height="36" rx="6" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1"/>
+  <text x="80" y="140" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">১. Detect</text>
+  <text x="80" y="152" text-anchor="middle" fill="#94a3b8" font-size="7">alert fires</text>
+  <rect x="140" y="124" width="100" height="36" rx="6" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1"/>
+  <text x="190" y="140" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">২. Contain</text>
+  <text x="190" y="152" text-anchor="middle" fill="#94a3b8" font-size="7">stop bleeding</text>
+  <rect x="250" y="124" width="100" height="36" rx="6" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1"/>
+  <text x="300" y="140" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">৩. Investigate</text>
+  <text x="300" y="152" text-anchor="middle" fill="#94a3b8" font-size="7">trace attack</text>
+  <rect x="360" y="124" width="100" height="36" rx="6" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1"/>
+  <text x="410" y="140" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">৪. Remediate</text>
+  <text x="410" y="152" text-anchor="middle" fill="#94a3b8" font-size="7">patch</text>
+  <rect x="470" y="124" width="80" height="36" rx="6" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1"/>
+  <text x="510" y="140" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">৫. Learn</text>
+  <text x="510" y="152" text-anchor="middle" fill="#94a3b8" font-size="7">post-mortem</text>
+  <line x1="130" y1="142" x2="138" y2="142" stroke="#3dd6c4" stroke-width="1.2" marker-end="url(#arrD9)"/>
+  <line x1="240" y1="142" x2="248" y2="142" stroke="#3dd6c4" stroke-width="1.2" marker-end="url(#arrD9)"/>
+  <line x1="350" y1="142" x2="358" y2="142" stroke="#3dd6c4" stroke-width="1.2" marker-end="url(#arrD9)"/>
+  <line x1="460" y1="142" x2="468" y2="142" stroke="#3dd6c4" stroke-width="1.2" marker-end="url(#arrD9)"/>
+  <rect x="160" y="184" width="260" height="56" rx="10" fill="#7f1d1d" stroke="#ef4444" stroke-width="2"/>
+  <text x="290" y="206" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="bold">🛑 KILL SWITCH</text>
+  <text x="290" y="222" text-anchor="middle" fill="#94a3b8" font-size="8">সব traffic stop — safe fallback</text>
+  <text x="290" y="232" text-anchor="middle" fill="#94a3b8" font-size="7">emergency only</text>
+  <text x="290" y="265" text-anchor="middle" fill="#94a3b8" font-size="8">ইয়াকাযা — দুর্গের প্রহরী কখনো ঘুমায় না</text>
+</svg>
+</div>
+<div class="svg-caption">Production ops: ৪ alert level + ৫ ধাপ incident response + kill switch — সবসময় জাগ্রত থাকো</div>
+
 <div class="code-block">Production Security Operations:
 
 MONITORING — সবসময় দেখো:
@@ -544,6 +687,44 @@ doors.push({
 
 <div class="dialogue">নয়টি দুর্গ পেরিয়েছ। মানচিত্র বলেছিলেন, হুমকি জানো। অনুপ্রবেশ বলেছিলেন, injection এড়াও। শৃঙ্খল বলেছিলেন, jailbreak প্রতিরক্ষা। বিষ বলেছিলেন, poisoning প্রতিরক্ষা। চুরি বলেছিলেন, extraction প্রতিরক্ষা। স্তর বলেছিলেন, defense in depth। রেল বলেছিলেন, guardrails। লাল দল বলেছিলেন, red teaming। প্রহরী বলেছিলেন, production ops। এখন — সব একসাথে।</div>
 <div class="dialogue en">"You've passed nine gates. Map said, know threats. Breach said, avoid injection. Unchaining said, defend jailbreaks. Poison said, defend poisoning. Theft said, defend extraction. Layer said, defense in depth. Rail said, guardrails. Red team said, red teaming. Guard said, production ops. Now — all together."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="320" fill="#0f172a"/>
+  <defs>
+    <marker id="arrD10" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#f87171"/></marker>
+  </defs>
+  <text x="290" y="26" text-anchor="middle" fill="#f87171" font-size="13" font-weight="bold">🏔️ দশ দুর্গের সমন্বয় — Complete Architecture</text>
+  <rect x="210" y="44" width="160" height="28" rx="6" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="290" y="63" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="bold">USER REQUEST</text>
+  <line x1="290" y1="72" x2="290" y2="86" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arrD10)"/>
+  <rect x="60" y="88" width="460" height="22" rx="4" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="0.8"/>
+  <text x="290" y="103" text-anchor="middle" fill="#3dd6c4" font-size="8">Network + Auth (দুর্গ ৯)</text>
+  <rect x="80" y="114" width="420" height="22" rx="4" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="0.8"/>
+  <text x="290" y="129" text-anchor="middle" fill="#3dd6c4" font-size="8">Input Guardrail (দুর্গ ২, ৭)</text>
+  <rect x="100" y="140" width="380" height="22" rx="4" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="0.8"/>
+  <text x="290" y="155" text-anchor="middle" fill="#3dd6c4" font-size="8">System Prompt Fortified (দুর্গ ২)</text>
+  <rect x="130" y="166" width="320" height="28" rx="6" fill="#0a1428" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="290" y="184" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">LLM (aligned, RLHF/DPO)</text>
+  <rect x="100" y="198" width="380" height="22" rx="4" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="0.8"/>
+  <text x="290" y="213" text-anchor="middle" fill="#3dd6c4" font-size="8">Output Guardrail + Action Validation (দুর্গ ৭)</text>
+  <rect x="60" y="224" width="460" height="22" rx="4" fill="#14532d" stroke="#4ade80" stroke-width="0.8"/>
+  <text x="290" y="239" text-anchor="middle" fill="#4ade80" font-size="8">Monitoring + Audit + Kill Switch (দুর্গ ৯)</text>
+  <line x1="290" y1="246" x2="290" y2="260" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrD10)"/>
+  <rect x="210" y="262" width="160" height="28" rx="6" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="290" y="281" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">SAFE RESPONSE</text>
+  <text x="40" y="88" fill="#94a3b8" font-size="7">দুর্গ ১</text>
+  <text x="40" y="114" fill="#94a3b8" font-size="7">দুর্গ ২</text>
+  <text x="40" y="140" fill="#94a3b8" font-size="7">দুর্গ ৩</text>
+  <text x="40" y="166" fill="#94a3b8" font-size="7">দুর্গ ৪</text>
+  <text x="540" y="88" fill="#94a3b8" font-size="7">দুর্গ ৫</text>
+  <text x="540" y="114" fill="#94a3b8" font-size="7">দুর্গ ৬</text>
+  <text x="540" y="140" fill="#94a3b8" font-size="7">দুর্গ ৭</text>
+  <text x="540" y="166" fill="#94a3b8" font-size="7">দুর্গ ৮</text>
+  <text x="290" y="308" text-anchor="middle" fill="#f87171" font-size="8" font-style="italic">হিসনুল মুসলিম — অভেদ্য দুর্গ: শক্তি + সুরক্ষা একসাথে</text>
+</svg>
+</div>
+<div class="svg-caption">সমন্বয়: দশটি দুর্গ একত্রে = সম্পূর্ণ security architecture — শক্তি ও সুরক্ষার সমন্বয়</div>
 
 <div class="code-block">Complete Production LLM Security Architecture:
 
