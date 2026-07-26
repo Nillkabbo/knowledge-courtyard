@@ -22,6 +22,46 @@ doors.push({
 <div class="dialogue">স্মৃতি কক্ষ বলেছিলেন — মেমরি দাও। কিন্তু আমি বলি — মেমরি যথেষ্ট নয়। কাজ জটিল হলে একজন এজেন্ট সব পারে না। দরকার দল — একাধিক এজেন্ট, প্রত্যেকে বিশেষজ্ঞ। গবেষক এজেন্ট, কোডার এজেন্ট, পর্যালোচক এজেন্ট। একসাথে কাজ। এটাই multi-agent।</div>
 <div class="dialogue en">"The memory chamber said — give memory. But I say — memory isn't enough. Complex tasks can't be done by one agent. You need a team — multiple agents, each specialized. Researcher agent, coder agent, reviewer agent. Working together. This is multi-agent."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrA6" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+    <marker id="arrA6g" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4ade80"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Multi-Agent অর্কেস্ট্রেশন — শূরা</text>
+  <rect x="220" y="48" width="140" height="48" rx="10" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="290" y="70" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="bold">MANAGER</text>
+  <text x="290" y="86" text-anchor="middle" fill="#c084fc" font-size="8">plan · assign · integrate</text>
+  <line x1="260" y1="96" x2="120" y2="135" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrA6)"/>
+  <line x1="290" y1="96" x2="290" y2="135" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrA6)"/>
+  <line x1="320" y1="96" x2="460" y2="135" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrA6)"/>
+  <rect x="40" y="135" width="130" height="58" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="105" y="157" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">RESEARCHER</text>
+  <text x="105" y="173" text-anchor="middle" fill="#7dd3fc" font-size="8">তথ্য খোঁজে</text>
+  <text x="105" y="186" text-anchor="middle" fill="#94a3b8" font-size="7">search · read</text>
+  <rect x="225" y="135" width="130" height="58" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="157" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">CODER</text>
+  <text x="290" y="173" text-anchor="middle" fill="#4ade80" font-size="8">কোড লেখে</text>
+  <text x="290" y="186" text-anchor="middle" fill="#94a3b8" font-size="7">write · run</text>
+  <rect x="410" y="135" width="130" height="58" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="475" y="157" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">REVIEWER</text>
+  <text x="475" y="173" text-anchor="middle" fill="#7dd3fc" font-size="8">যাচাই করে</text>
+  <text x="475" y="186" text-anchor="middle" fill="#94a3b8" font-size="7">validate · test</text>
+  <path d="M 175 165 Q 200 175 225 165" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrA6g)"/>
+  <path d="M 355 165 Q 380 175 410 165" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrA6g)"/>
+  <text x="105" y="215" text-anchor="middle" fill="#7dd3fc" font-size="7">↳ ফলাফল</text>
+  <text x="290" y="215" text-anchor="middle" fill="#4ade80" font-size="7">↳ কোড</text>
+  <text x="475" y="215" text-anchor="middle" fill="#7dd3fc" font-size="7">↳ যাচাই</text>
+  <text x="290" y="238" text-anchor="middle" fill="#fbbf24" font-size="8">প্রতিটা agent নিজের কাজে নিখুঁত — একসাথে সম্পূর্ণ</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Multi-Agent অর্কেস্ট্রেশন — Manager পরিকল্পনা করে, বিশেষজ্ঞ agents (Researcher, Coder, Reviewer) কাজ করে। শূরা — সম্মিলিত প্রজ্ঞা।</div>
+
 <div class="code-block">Multi-Agent Orchestration — Teams of Agents:
 
 ARCHITECTURES:
@@ -170,6 +210,48 @@ doors.push({
 
 <div class="dialogue">পরিষদ কক্ষ বলেছিলেন — দল বানাও। কিন্তু আমি বলি — দল যতই ভালো হোক, সম্পূর্ণ স্বায়ত্তশাসন বিপজ্জনক। এজেন্ট ভুল করতে পারে। ইমেইল পাঠাতে পারে ভুল ব্যক্তিকে। টাকা স্থানান্তর করতে পারে ভুল পরিমাণ। এসব ক্ষেত্রে মানুষের অনুমোদন দরকার। Human-in-the-loop।</div>
 <div class="dialogue en">"The council chamber said — build teams. But I say — however good the team, full autonomy is dangerous. Agents can err. Can send email to the wrong person. Transfer the wrong amount. In these cases, human approval is needed. Human-in-the-loop."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrA7" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+    <marker id="arrA7g" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrA7r" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#f87171"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Human-in-the-Loop — আমানত</text>
+  <rect x="30" y="90" width="100" height="50" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="80" y="112" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">AGENT</text>
+  <text x="80" y="128" text-anchor="middle" fill="#7dd3fc" font-size="8">কাজ প্রস্তুত</text>
+  <polygon points="180,115 165,100 165,130" fill="#475569"/>
+  <rect x="185" y="80" width="120" height="70" rx="10" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="245" y="105" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="bold">⚠️ APPROVE?</text>
+  <text x="245" y="122" text-anchor="middle" fill="#c084fc" font-size="8">মানুষ দেখে</text>
+  <text x="245" y="138" text-anchor="middle" fill="#94a3b8" font-size="7">pause · wait</text>
+  <line x1="130" y1="115" x2="183" y2="115" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrA7)"/>
+  <rect x="350" y="60" width="100" height="40" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="400" y="78" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">✓ হ্যাঁ</text>
+  <text x="400" y="92" text-anchor="middle" fill="#4ade80" font-size="7">execute</text>
+  <rect x="350" y="130" width="100" height="40" rx="8" fill="#7f1d1d" stroke="#f87171" stroke-width="2"/>
+  <text x="400" y="148" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="bold">✗ না</text>
+  <text x="400" y="162" text-anchor="middle" fill="#fca5a5" font-size="7">revise</text>
+  <line x1="305" y1="100" x2="348" y2="80" stroke="#4ade80" stroke-width="2" marker-end="url(#arrA7g)"/>
+  <line x1="305" y1="130" x2="348" y2="150" stroke="#f87171" stroke-width="2" marker-end="url(#arrA7r)"/>
+  <rect x="475" y="60" width="90" height="40" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="520" y="78" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">DONE</text>
+  <text x="520" y="92" text-anchor="middle" fill="#4ade80" font-size="7">✓ পাঠানো</text>
+  <line x1="450" y1="80" x2="473" y2="80" stroke="#4ade80" stroke-width="2" marker-end="url(#arrA7g)"/>
+  <path d="M 400 170 Q 250 210 80 140" fill="none" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrA7r)"/>
+  <text x="230" y="225" text-anchor="middle" fill="#fbbf24" font-size="8">প্রত্যাখ্যান → এজেন্ট আবার চেষ্টা করে</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Human-in-the-Loop — এজেন্ট কাজ প্রস্তুত করে, থামে, মানুষ অনুমোদন দেয়। হ্যাঁ → execute, না → revise। আমানত — আস্থা কিন্তু যাচাই সহ।</div>
 
 <div class="code-block">Human-in-the-Loop — Trust but Verify:
 
@@ -460,6 +542,46 @@ THE 2025 PARADIGM SHIFT — CODE AGENTS:
     → research, exploration? code agent
     → production, auditable? tool-call (easier to audit)</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrA8" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+    <marker id="arrA8g" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrA8a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Framework নির্বাচন — কাজ অনুযায়ী কাঠামো</text>
+  <rect x="20" y="60" width="120" height="50" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="80" y="82" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">LangGraph</text>
+  <text x="80" y="98" text-anchor="middle" fill="#94a3b8" font-size="8">state machine</text>
+  <rect x="150" y="60" width="120" height="50" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="210" y="82" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">CrewAI</text>
+  <text x="210" y="98" text-anchor="middle" fill="#94a3b8" font-size="8">role-based team</text>
+  <rect x="280" y="60" width="120" height="50" rx="8" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="340" y="82" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="bold">AutoGen</text>
+  <text x="340" y="98" text-anchor="middle" fill="#94a3b8" font-size="8">conversational</text>
+  <rect x="410" y="60" width="150" height="50" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="485" y="82" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">OpenAI Agents SDK</text>
+  <text x="485" y="98" text-anchor="middle" fill="#94a3b8" font-size="8">lightweight handoff</text>
+  <rect x="100" y="150" width="180" height="46" rx="8" fill="#0c0a1d" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="190" y="170" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">সহজ agent, ১-৩ tools</text>
+  <text x="190" y="184" text-anchor="middle" fill="#fde68a" font-size="8">→ OpenAI SDK / LangGraph</text>
+  <rect x="300" y="150" width="180" height="46" rx="8" fill="#0c0a1d" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="390" y="170" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">production, জটিল state</text>
+  <text x="390" y="184" text-anchor="middle" fill="#fde68a" font-size="8">→ LangGraph</text>
+  <path d="M 80 110 Q 130 130 190 150" fill="none" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrA8)"/>
+  <path d="M 485 110 Q 440 130 390 150" fill="none" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrA8a)"/>
+  <text x="290" y="220" text-anchor="middle" fill="#94a3b8" font-size="9">মিজান — সঠিক framework = সঠিক কাঠামো</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: চারটি framework — LangGraph (flexible), CrewAI (team), AutoGen (conversational), OpenAI SDK (simple)। কাজের ধরন অনুযায়ী সঠিক কাঠামো বেছে নাও।</div>
+
 <div class="dialogue">মিযান — balance, right choice। কুরআনে আল্লাহ বলেন — "আমরা প্রত্যেক জিনিস সঠিক মাপে সৃষ্টি করেছি।" প্রতিটা কাজের সঠিক কাঠামো। Framework নির্বাচনও মিযান — সঠিক টুল, সঠিক কাজ। বেশি জটিল framework ছোট কাজে = অপচয়। কম framework বড় কাজে = বিপর্যয়।</div>
 <div class="dialogue en">"Mizan — balance, right choice. Allah says — 'We created all things in due measure.' Right structure for each task. Framework selection is mizan too — right tool, right job. Over-complex framework for small task = waste. Under-powered framework for big task = disaster."</div>`,
   senior:{
@@ -614,6 +736,53 @@ PRODUCTION CHECKLIST:
   ☐ Rate limiting
   ☐ Error logging + replay</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrA9" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+    <marker id="arrA9r" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#ff6b35"/>
+    </marker>
+    <marker id="arrA9g" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4ade80"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="26" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Failure Mode ও সতর্কতা স্তর</text>
+  <rect x="20" y="55" width="125" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
+  <text x="82" y="72" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">১. Infinite Loop</text>
+  <text x="82" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">→ max iterations</text>
+  <rect x="155" y="55" width="125" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
+  <text x="217" y="72" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">২. Cost Explosion</text>
+  <text x="217" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">→ cost limit</text>
+  <rect x="290" y="55" width="125" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
+  <text x="352" y="72" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">৩. Wrong Tool</text>
+  <text x="352" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">→ clear description</text>
+  <rect x="425" y="55" width="135" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
+  <text x="492" y="72" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">৪. Hallucination</text>
+  <text x="492" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">→ output validation</text>
+  <rect x="20" y="105" width="125" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
+  <text x="82" y="122" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">৫. Context Pollution</text>
+  <text x="82" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">→ summarize old</text>
+  <rect x="155" y="105" width="125" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
+  <text x="217" y="122" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">৬. Cascade Error</text>
+  <text x="217" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">→ validation gate</text>
+  <rect x="290" y="105" width="125" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
+  <text x="352" y="122" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">৭. Unauthorized</text>
+  <text x="352" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">→ action whitelist</text>
+  <rect x="425" y="105" width="135" height="40" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="492" y="122" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">✓ ৫ Safety Layers</text>
+  <text x="492" y="136" text-anchor="middle" fill="#86efac" font-size="7">input → output</text>
+  <line x1="352" y1="145" x2="425" y2="125" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrA9g)"/>
+  <rect x="60" y="170" width="460" height="44" rx="8" fill="#0c0a1d" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="290" y="188" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">সতর্কতা = নিরাপত্তা — Freedom without caution = disaster</text>
+  <text x="290" y="204" text-anchor="middle" fill="#94a3b8" font-size="8">max_iter · cost_limit · tool_whitelist · sandbox · kill_switch</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: সাতটি failure mode (লাল) এবং প্রতিটির fix (সবুজ ও ধূসর)। পাঁচ স্তরের guardrail ছাড়া স্বাধীন এজেন্ট = বিপজ্জনক।</div>
+
 <div class="dialogue">সতর্কতা — caution, vigilance। কুরআনে আল্লাহ বলেন — "তোমরা প্রস্তুত থাকো।" (৮:৬০)। প্রস্তুতি = সতর্কতা। এজেন্ট শক্তিশালী, কিন্তু সতর্কতা ছাড়া বিপজ্জনক। প্রতিটা failure mode একটি শিক্ষা। যে সতর্ক, সে নিরাপদ। যে অসতর্ক, সে পতন। স্বাধীনতার সাথে দায়িত্ব আসে।</div>
 <div class="dialogue en">"Satarkota — caution, vigilance. Allah says — 'Be prepared.' (8:60). Preparation = caution. Agents are powerful, but without caution, dangerous. Each failure mode is a lesson. One who is cautious, is safe. One who is careless, falls. Freedom comes with responsibility."</div>`,
   senior:{
@@ -737,6 +906,45 @@ THE FUTURE:
   → Agents = next platform shift</div>
 
 <div class="verse">"তিনি শিখিয়েছেন কলমের মাধ্যমে। শিখিয়েছেন মানুষকে যা সে জানত না।"<br>— কুরআন ৯৬:৪-৫<br><br>এজেন্ট হলো কলমের নতুন রূপ — শুধু লেখে না, কাজ করে। যে এজেন্ট বানায়, সে কর্মী বানায়। যে কর্মী বানায়, সে শক্তি তৈরি করে। কিন্তু শক্তির সাথে দায়িত্ব। স্বাধীনতার সাথে নিরাপত্তা। এটাই স্বাধীন বুদ্ধির শিল্প।</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrA10" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+    <marker id="arrA10g" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrA10a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="26" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Production Agent — ৫টি উপাদানের সমন্বয়</text>
+  <circle cx="290" cy="125" r="42" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="118" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">BRAIN</text>
+  <text x="290" y="133" text-anchor="middle" fill="#7dd3fc" font-size="8">LLM</text>
+  <rect x="40" y="80" width="110" height="46" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="95" y="100" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">TOOLS</text>
+  <text x="95" y="116" text-anchor="middle" fill="#86efac" font-size="8">search · code</text>
+  <rect x="40" y="140" width="110" height="46" rx="8" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="95" y="160" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="bold">MEMORY</text>
+  <text x="95" y="176" text-anchor="middle" fill="#d8b4fe" font-size="8">state · history</text>
+  <rect x="430" y="80" width="110" height="46" rx="8" fill="#7c2d12" stroke="#fbbf24" stroke-width="2"/>
+  <text x="485" y="100" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">LOOP</text>
+  <text x="485" y="116" text-anchor="middle" fill="#fde68a" font-size="8">ReAct cycle</text>
+  <rect x="430" y="140" width="110" height="46" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="485" y="160" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">SAFETY</text>
+  <text x="485" y="176" text-anchor="middle" fill="#86efac" font-size="8">guardrails</text>
+  <line x1="150" y1="103" x2="250" y2="118" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrA10g)"/>
+  <line x1="150" y1="163" x2="250" y2="135" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrA10)"/>
+  <line x1="330" y1="118" x2="430" y2="103" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrA10a)"/>
+  <line x1="330" y1="135" x2="430" y2="163" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrA10g)"/>
+  <text x="290" y="210" text-anchor="middle" fill="#94a3b8" font-size="9">কথা থেকে কাজ → কাজ থেকে স্বাধীনতা → স্বাধীনতা থেকে দায়িত্ব</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: একটি সম্পূর্ণ production agent — Brain (LLM) কেন্দ্রে, চারপাশে Tools, Memory, Loop, এবং Safety। সব মিলে স্বাধীন কর্মী।</div>
 
 <div class="secret-box"><div class="label">দশম কেন্দ্র — সমন্বয়</div><div class="text">🌌 Agent = Brain + Tools + Memory + Loop + Safety।<br><small>LLM থেকে স্বাধীন কর্মী। কথা থেকে কাজ। কাজ থেকে স্বাধীনতা। স্বাধীনতা থেকে দায়িত্ব।</small></div></div>`
 });
