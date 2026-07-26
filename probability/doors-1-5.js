@@ -1,409 +1,383 @@
 const doors = [];
 
-// ═══════════════════════════════════════════
-// DOOR 1 — The Belief Updater (Bayes)
-// ═══════════════════════════════════════════
 doors.push({
   num: 1,
   icon: "🔄",
-  color: "#0ea5e9",
-  tagline: "বিশ্বাসের আপডেটার — Belief Updater",
-  name: "The Belief Updater",
-  subtitle: "Bayes Theorem",
-  tech: "Bayes · Prior · Posterior",
-  secret: "Bayes: P(H|D) = P(D|H)·P(H)/P(D)। 99% accurate fraud test → only 1% real fraud! Base rate fallacy।",
-  story: `<p class="scene-setting">Bayes theorem হল বিশ্বাস আপডেট করার গাণিতিক সূত্র। তুমি fraud detection model বানালে — 99% accurate! কিন্তু fraud rate 0.01% হলে, positive alert এর সত্যিকার সম্ভাবনা শুধুমাত্র 1%! কারণ healthy transactions এত বেশি যে false positive আধিক্য হয়। এটাই base rate fallacy। Bayes: <code>P(H|D) = P(D|H)·P(H)/P(D)</code>। Prior (পূর্বধারণা) + evidence (প্রমাণ) = posterior (আপডেটেড বিশ্বাস)। ডাক্তার এটা ভুল বুঝে রোগীকে ভুল চিকিৎসা দেয়। Software engineer ভুল বুঝে false positive এ ডুবে যায়।</p>
+  color: "#8b5cf6",
+  name: "বিশ্বাসের আপডেটার",
+  subtitle: "The Belief Updater",
+  tech: "Bayes Theorem — Bayes 1763, prior/posterior, base rate fallacy, evidence updating",
+  spirit: "ইলম ইয়াকিন — জ্ঞানের নিশ্চয়তা, প্রমাণ দিয়ে বিশ্বাস আপডেট",
+  secret: "Bayes: P(H|D) = P(D|H)·P(H)/P(D)। 99% accurate fraud test → শুধু 1% সত্যিকার fraud! কারণ healthy transactions এত বেশি যে false positive আধিক্য হয়। Base rate fallacy।",
+  recall: {
+    q: " Bayes theorem কী? Base rate fallacy কী?",
+    qen: "What is Bayes theorem? What is the base rate fallacy?",
+    a: "Bayes: P(H|D) = P(D|H)·P(H)/P(D)। Prior + evidence = posterior। Base rate fallacy: prior উপেক্ষা করা। 99% accurate test কিন্তু fraud rate 0.01% → বেশিরভাগ false positive।",
+    aen: "Bayes: P(H|D) = P(D|H)·P(H)/P(D). Prior + evidence = posterior. Base rate fallacy: ignoring prior. 99% accurate test but 0.01% fraud rate → mostly false positives."
+  },
+  story: `<p class="scene-setting">Bayes theorem হল বিশ্বাস আপডেট করার গাণিতিক সূত্র। তুমি fraud detection model বানালে — 99% accurate! কিন্তু fraud rate 0.01% হলে, positive alert-এর সত্যিকার সম্ভাবনা শুধুমাত্র 1%! কারণ healthy transactions এত বেশি যে false positive আধিক্য হয়। এটাই base rate fallacy।</p>
+<p class="scene-setting en">Bayes theorem is the mathematical formula for updating beliefs. You build a fraud detection model — 99% accurate! But if fraud rate is 0.01%, a positive alert has only a 1% chance of being real fraud! Because healthy transactions are so numerous that false positives dominate. This is the base rate fallacy.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔄 Bayes Theorem: The Belief Updater</text>
+<div class="dialogue"><strong>বিশ্বাস-আপডেটকারী আলী:</strong> Reverend Thomas Bayes 1763 সালে একটি সূত্র আবিষ্কার করেন — মৃত্যুর পর প্রকাশিত। সূত্র: P(H|D) = P(D|H)·P(H)/P(D)। Prior বিশ্বাস P(H) + নতুন প্রমাণ P(D|H) = আপডেটেড বিশ্বাস P(H|D)। চিকিৎসক এটা ভুল বুঝে রোগীকে ভুল চিকিৎসা দেয়। Software engineer ভুল বুঝে false positive-এ ডুবে যায়। কিন্তু সঠিক বুঝলে — প্রতিটি পর্যবেক্ষণে বিশ্বাস নিখুঁত হয়।</div>
+<div class="dialogue en"><strong>Belief Updater Ali:</strong> Reverend Thomas Bayes in 1763 discovered a formula — published posthumously. P(H|D) = P(D|H)·P(H)/P(D). Prior belief P(H) + new evidence P(D|H) = updated belief P(H|D). Doctors misunderstand this and mistreat patients. Software engineers misunderstand and drown in false positives. But understood correctly — every observation refines belief.</div>
 
-  <!-- Prior -->
-  <rect x="20" y="50" width="160" height="100" rx="10" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="100" y="72" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">1. PRIOR P(H)</text>
-  <text x="100" y="92" text-anchor="middle" fill="#bae6fd" font-size="8">Initial belief</text>
-  <rect x="40" y="105" width="120" height="22" rx="4" fill="#1e293b" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="100" y="120" text-anchor="middle" fill="#7dd3fc" font-size="7" font-family="monospace">P(fraud) = 0.01%</text>
-  <text x="100" y="140" text-anchor="middle" fill="#64748b" font-size="7">1 in 10,000 transactions</text>
+<div class="code-block">— Python: Bayes Theorem —
 
-  <!-- Evidence -->
-  <rect x="210" y="50" width="160" height="100" rx="10" fill="#451a03" stroke="#f97316" stroke-width="2"/>
-  <text x="290" y="72" text-anchor="middle" fill="#fdba74" font-size="10" font-weight="700">2. EVIDENCE P(D|H)</text>
-  <text x="290" y="92" text-anchor="middle" fill="#fb923c" font-size="8">New data arrives</text>
-  <rect x="230" y="105" width="120" height="22" rx="4" fill="#1e293b" stroke="#f97316" stroke-width="1"/>
-  <text x="290" y="120" text-anchor="middle" fill="#fdba74" font-size="7" font-family="monospace">Model: 99% accurate</text>
-  <text x="290" y="140" text-anchor="middle" fill="#64748b" font-size="7">Alert fired! But...</text>
+  # Fraud detection example:
+  # P(fraud) = 0.0001 (0.01% — base rate)
+  # P(alert|fraud) = 0.99 (99% sensitive)
+  # P(alert|not fraud) = 0.01 (10% false positive)
 
-  <!-- Posterior -->
-  <rect x="400" y="50" width="160" height="100" rx="10" fill="#7f1d1d" stroke="#dc2626" stroke-width="2"/>
-  <text x="480" y="72" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">3. POSTERIOR P(H|D)</text>
-  <text x="480" y="92" text-anchor="middle" fill="#f87171" font-size="8">Updated belief</text>
-  <rect x="420" y="105" width="120" height="22" rx="4" fill="#1e293b" stroke="#dc2626" stroke-width="1"/>
-  <text x="480" y="120" text-anchor="middle" fill="#fca5a5" font-size="7" font-family="monospace">P(fraud|alert) ≈ 1%!</text>
-  <text x="480" y="140" text-anchor="middle" fill="#dc2626" font-size="7">⚠️ Not 99%! Base rate fallacy!</text>
+  P_fraud = 0.0001       # Prior
+  P_not_fraud = 1 - P_fraud
+  P_alert_given_fraud = 0.99
+  P_alert_given_not = 0.01
 
-  <!-- Arrows -->
-  <text x="195" y="100" text-anchor="middle" fill="#475569" font-size="14">→</text>
-  <text x="385" y="100" text-anchor="middle" fill="#475569" font-size="14">→</text>
+  # Total probability of alert:
+  P_alert = (P_alert_given_fraud * P_fraud +
+             P_alert_given_not * P_not_fraud)
+  # = 0.99*0.0001 + 0.01*0.9999 = 0.010098
 
-  <!-- Calculation -->
-  <rect x="40" y="170" width="500" height="55" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="290" y="188" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="700">P(fraud|alert) = P(alert|fraud)·P(fraud) / P(alert)</text>
-  <text x="290" y="202" text-anchor="middle" fill="#cbd5e1" font-size="8">= (0.99 × 0.0001) / (0.99×0.0001 + 0.01×0.9999)</text>
-  <text x="290" y="216" text-anchor="middle" fill="#dc2626" font-size="8" font-weight="700">= 0.000099 / 0.010098 ≈ 0.98% ← NOT 99%!</text>
+  # Bayes: P(fraud|alert) = ?
+  P_fraud_given_alert = (
+      P_alert_given_fraud * P_fraud / P_alert
+  )
+  print(f"{P_fraud_given_alert:.4f}")  # 0.0098!
+  # মাত্র 0.98% — 99% accurate test কিন্তু 99% false positive!
 
-  <rect x="120" y="245" width="340" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="290" y="265" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">💡 Fix: use Bayesian posterior, not raw model accuracy</text>
-  <text x="290" y="280" text-anchor="middle" fill="#86efac" font-size="7">Adjust thresholds, enrich features, or use cost-sensitive learning</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Bayes Theorem — Prior (0.01% fraud) + Evidence (99% accurate test) → Posterior (only ~1% real fraud among alerts!)। Base rate fallacy প্রতিটা software engineer কে ধোঁকা দেয়।</div>
+  — শিক্ষা: base rate উপেক্ষা করো না! —
+  — Prior + Evidence = Posterior —</div>
 
-<div class="code-block">— Bayes Theorem: Base Rate Fallacy (Python) —
+<div class="verse">وَالَّذِينَ أُوتُوا الْعِلْمَ دَرَجَاتٍ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং যাদের জ্ঞান দেওয়া হয়েছে তারা মর্যাদায় উঁচুতে।" — কুরআন ৫৮:১১</div>
 
-  import numpy as np
+<p class="scene-setting">ইলম ইয়াকিন — জ্ঞানের নিশ্চয়তা। Bayes theorem সেই নিশ্চয়তার গাণিতিক রূপ। জ্ঞান স্থির নয় — প্রতিটি প্রমাণে আপডেট হয়। prior থেকে posterior। অজ্ঞতা থেকে জ্ঞান। যাদের জ্ঞান আছে তারা মর্যাদায় উঁচুতে — কারণ তারা সঠিকভাবে আপডেট করে।</p>
+<p class="scene-setting en">Ilm Yaqeen — certainty of knowledge. Bayes theorem is the mathematical form of that certainty. Knowledge is not static — it updates with each piece of evidence. From prior to posterior. From ignorance to knowledge. Those with knowledge are elevated — because they update correctly.</p>
 
-  # 99% accurate fraud model, but fraud is very rare (base rate 0.01%)
-  p_fraud            = 0.0001   # P(H)   — prior, পূর্বধারণা
-  p_alert_given_fraud  = 0.99   # P(D|H) — sensitivity
-  p_alert_given_honest = 0.01   # P(D|¬H) — false positive rate
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৩ (Loom of Reason) Door ৫ (Bayesian):</strong> Bayesian reasoning শিখেছিলে — এখন গাণিতিক ভিত্তি! Book ৩৪ (Statistics) Door ৩: hypothesis testing = Bayes-এর বিপরীত।</div></div>
 
-  # Law of total probability → P(D) = P(D|H)P(H) + P(D|¬H)P(¬H)
-  p_alert = (p_alert_given_fraud * p_fraud +
-             p_alert_given_honest * (1 - p_fraud))
-
-  # Bayes: P(H|D) = P(D|H)·P(H) / P(D)
-  posterior = p_alert_given_fraud * p_fraud / p_alert
-  print(f"P(alert)        = {p_alert:.6f}")     # → 0.010098
-  print(f"P(fraud|alert)  = {posterior:.4f}")    # → 0.0098  (~1%!)
-  print(f"NOT 99% — base rate fallacy!")          # ← ডাক্তারও এখানে ভুল করে
-
-  — Sequential updating: প্রতিটা evidence prior কে আপডেট করে —
-  prior = 0.01
-  for evidence_likelihood in [0.8, 0.7, 0.9]:
-      num = evidence_likelihood * prior
-      den = num + (1 - evidence_likelihood) * (1 - prior)
-      prior = num / den                        # posterior → নতুন prior
-      print(f"after evidence: P = {prior:.3f}")  # → 0.288 → 0.544 → 0.914
-
-— scipy.stats দিয়ে একই হিসাব Bayesian confidence intervals-এ কাজে লাগে —</div>
-
-<div class="dialogue"><strong>রেভারেন্ড টমাস বেয়েস:</strong> আমি ১৮শ শতাব্দীতে এই সূত্র আবিষ্কার করেছিলাম। <code>P(H|D) = P(D|H)·P(H)/P(D)</code>। তুমি যখন fraud alert পাও, তোমার মস্তিষ্ক বলে '99% accurate model → 99% সত্যিকার fraud!' কিন্তু এটা ভুল! কারণ fraud এতই বিরল (0.01%) যে healthy transactions থেকে false positive এর সংখ্যা সত্যিকার fraud এর চেয়ে অনেক বেশি। Posterior = 1%, 99% নয়। এটাই base rate fallacy। LedgerPilot-এ fraud model এর threshold এই posterior এর উপর ভিত্তি করে সেট করতে হবে, raw accuracy এর উপর নয়।</div>`,
-  recall: [
-    { q: "Bayes theorem কী এবং কেন দরকার?", a: "P(H|D) = P(D|H)·P(H)/P(D)। Prior বিশ্বাসকে evidence দিয়ে আপডেট করে। ডাক্তারি পরীক্ষা, fraud detection, debugging — সব জায়গায় ভুল ধারণা ঠিক করে।" },
-    { q: "Base rate fallacy কী?", a: "সত্যিকার prevalence (base rate) উপেক্ষা করে শুধু test accuracy তে ফোকাস করা। 99% accurate test ও 0.1% prevalence → positive test = শুধু 9% sick। Fraud detection-এ একই ভুল।" },
-  ]
+<div class="secret-box">🔄 <strong>Bayes = প্রমাণ দিয়ে বিশ্বাস আপডেট। Prior → Posterior।</strong> কিন্তু বহু ঘটনা একসাথে ঘটলে? গড় কী বলে? সেই উত্তর — expectation। পরের দরজায়।</div>`,
+  senior: {
+    title: "Bayes Theorem এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Bayes (1763)</td><td>P(H|D) = P(D|H)·P(H)/P(D)</td></tr>
+<tr><td class="hl">Prior P(H)</td><td>প্রাথমিক বিশ্বাস</td></tr>
+<tr><td class="hl">Posterior P(H|D)</td><td>আপডেটেড বিশ্বাস</td></tr>
+<tr><td class="hl">Base Rate Fallacy</td><td>Prior উপেক্ষা</td></tr>
+<tr><td class="hl">Evidence</td><td>নতুন পর্যবেক্ষণ</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 2 — The Average Oracle (LLN)
-// ═══════════════════════════════════════════
 doors.push({
   num: 2,
   icon: "📊",
-  color: "#22c55e",
-  tagline: "গড়ের ভবিষ্যৎকথী — Average Oracle",
-  name: "The Average Oracle",
-  secret: "Law of Large Numbers: যত বেশি sample, average তত কাছে যায় true expected value এ।",
-  story: `<p class="scene-setting">Law of Large Numbers (LLN) — যত বেশি বার experiment করবে, sample average তত বেশি কাছে যাবে true expected value এ। Weak law: convergence in probability। Strong law: almost sure convergence (probability 1)। LedgerPilot: যত বেশি transaction হবে, average fraud rate actual fraud rate এ converge করবে। A/B test: যত বেশি user, তত নির্ভুল comparison। কিন্তু gambler's fallacy ভুল — past outcome future কে affect করে না (memoryless)। ৫ বার head এসেছে বলে ৬ষ্ঠ বার tail আসার সম্ভাবনা বেশি নয় — এখনো 50%!</p>
+  color: "#8b5cf6",
+  name: "গড়ের ভবিষ্যৎকথী",
+  subtitle: "The Average Oracle",
+  tech: "Expectation & Variance — E[X], Var(X), linearity of expectation, law of large numbers, Chebyshev",
+  spirit: "মিজান — ভারসাম্য, গড় ও বিচ্যুতি",
+  secret: "E[X] = গড় ফলাফল। Var(X) = কতটা ছড়ানো। Linearity: E[aX+bY] = aE[X]+bE[Y]। Law of Large Numbers: n→∞ হলে গড় → E[X]।",
+  recall: {
+    q: " E[X] ও Var(X) কী? Linearity of expectation কী?",
+    qen: "What are E[X] and Var(X)? What is linearity of expectation?",
+    a: "E[X] = গড় ফলাফল। Var(X) = গড় থেকে বিচ্যুতির বর্গ। Linearity: E[aX+bY] = aE[X]+bE[Y] — X, Y independent হওয়া দরকার না!",
+    aen: "E[X] = average outcome. Var(X) = squared deviation from mean. Linearity: E[aX+bY] = aE[X]+bE[Y] — X, Y need not be independent!"
+  },
+  story: `<p class="scene-setting">আলী (Door ১) তোমাকে Bayes শিখিয়েছেন। এখন একটি সহজ প্রশ্ন — একটি ছক্কা পাশার গড় কত? ১, ২, ৩, ৪, ৫, ৬ — প্রতিটি সমান সম্ভাবনা। E[X] = (১+২+৩+৪+৫+৬)/৬ = ৩.৫। কিন্তু ৩.৫ কখনো আসে না! গড় একটি প্রত্যাশা — দীর্ঘে গড় এদিকে যায়। Law of Large Numbers: যত বেশি পাশা মারবে, গড় তত ৩.৫-এর কাছে।</p>
+<p class="scene-setting en">Ali (Door 1) taught you Bayes. Now a simple question — what's the average of a die roll? 1, 2, 3, 4, 5, 6 — equal probability. E[X] = (1+2+3+4+5+6)/6 = 3.5. But 3.5 never comes up! The average is an expectation — over the long run, the mean approaches it. Law of Large Numbers: the more dice you roll, the closer the average gets to 3.5.</p>
 
-<div class="code-block">— Law of Large Numbers: গড় converge করে (Python) —
+<div class="dialogue"><strong>গড়-নির্ণয়কারী ফাতিমা:</strong> E[X] = Σ x·P(x)। প্রতিটি ফলাফল তার সম্ভাবনা দিয়ে গুণ, সব যোগ। Var(X) = E[(X-E[X])²] — গড় থেকে কতটা দূরে। সবচেয়ে সুন্দর ধারণা — linearity! E[X+Y] = E[X]+E[Y] — X ও Y independent হওয়ার দরকার নেই! দুটি পাশা মারলে গড় যোগফল = ৩.৫+৩.৫ = ৭। সবসময়। এটাই গাণিতিক জাদু।</div>
+<div class="dialogue en"><strong>Average Determiner Fatima:</strong> E[X] = Σ x·P(x). Multiply each outcome by its probability, sum all. Var(X) = E[(X-E[X])²] — how far from mean. The most beautiful concept — linearity! E[X+Y] = E[X]+E[Y] — X and Y need not be independent! Two dice rolled, average sum = 3.5+3.5 = 7. Always. This is mathematical magic.</div>
+
+<div class="code-block">— Python: Expectation ও Variance —
 
   import numpy as np
-  np.random.seed(2)
 
-  # Biased coin: P(head)=0.7 — true expected value = 0.7
-  p_true = 0.7
-  flips  = np.random.binomial(1, p_true, size=50_000)
+  # একটি fair die:
+  outcomes = [1, 2, 3, 4, 5, 6]
+  probs = [1/6] * 6
 
-  # Running mean — প্রতিটা step-এ sample average
-  running_avg = np.cumsum(flips) / np.arange(1, len(flips) + 1)
-  for n in [10, 100, 1_000, 10_000, 50_000]:
-      print(f"n={n:>6}: sample mean = {running_avg[n-1]:.4f}")  # → 0.7 এর কাছে
+  # E[X] = Σ x · P(x)
+  EX = sum(x * p for x, p in zip(outcomes, probs))
+  print(f"E[X] = {EX}")  # 3.5
 
-  — Gambler's fallacy পরীক্ষা: পাঁচ বার head-এর পরে কী? —
-  five_heads = 0; sixth_head = 0
-  for _ in range(1_000_000):
-      seq = np.random.binomial(1, 0.5, 6)        # fair coin, 6 flips
-      if seq[:5].sum() == 5:                     # প্রথম ৫টাই head?
-          five_heads += 1
-          if seq[5] == 1: sixth_head += 1
-  print(f"P(6th head | 5 heads) = {sixth_head/five_heads:.3f}")  # → ~0.500
-  print("Memoryless! অতীত ভবিষ্যৎকে প্রভাবিত করে না।")
+  # Var(X) = E[X²] - E[X]²
+  EX2 = sum(x**2 * p for x, p in zip(outcomes, probs))
+  VarX = EX2 - EX**2
+  print(f"Var(X) = {VarX:.4f}")  # ~2.917
 
-  — A/B test: কত sample লাগবে clear winner বুঝতে? —
-  ctrl = np.random.binomial(1, 0.10, 100)        # control: 10% conversion
-  treat = np.random.binomial(1, 0.13, 100)       # treatment: 13% conversion
-  print(f"100 users: ctrl={ctrl.mean():.3f}, treat={treat.mean():.3f}")  # noise!
-  ctrl = np.random.binomial(1, 0.10, 10_000)
-  treat = np.random.binomial(1, 0.13, 10_000)
-  print(f"10k users: ctrl={ctrl.mean():.3f}, treat={treat.mean():.3f}")   # clear winner
+  # Law of Large Numbers যাচাই:
+  rolls = np.random.randint(1, 7, size=100000)
+  cumulative_mean = np.cumsum(rolls) / np.arange(1, len(rolls)+1)
+  print(f"১০০০ রোলে গড়: {cumulative_mean[999]:.3f}")   # ~3.5
+  print(f"১০০০০০ রোলে গড়: {cumulative_mean[-1]:.3f}")  # ~3.500
 
-— Weak law (convergence in probability) vs Strong law (almost sure) —</div>
+  # Linearity: দুটি পাশা
+  two_dice = np.random.randint(1, 7, 100000) + \\
+             np.random.randint(1, 7, 100000)
+  print(f"দুটি পাশার যোগফল গড়: {two_dice.mean():.3f}")  # ~7.0
+  # E[X+Y] = E[X] + E[Y] = 3.5 + 3.5 = 7.0 ✅</div>
 
-<div class="dialogue"><strong>গণিতজ্ঞ:</strong> LLN-এর দুটো version: Weak (convergence in probability) আর Strong (almost sure convergence, probability 1)। প্রতিটা independent trial-এ average প্রত্যাশিত মানের দিকে যায়। LedgerPilot: প্রতিদিন ১০,০০০ transaction হলে, পরের দিনের fraud rate আজকের গড়ের কাছে থাকবে। A/B test: ১০০ user-এ শুধু noise, ১০,০০০ user-এ clear winner। কিন্তু মনে রাখো — regression to mean মানে "balancing" নয়। এটা শুধু মানে যে extreme events বিরল, তাই পরের event average হওয়ার সম্ভাবনাই বেশি। কোনো cosmic memory নেই!</div>`,
-  recall: [
-    { q: "Law of Large Numbers কী?", a: "যত বেশি independent trial, sample average তত বেশি converge করে true expected value এ। Weak (probability) vs Strong (almost sure)। A/B test, fraud rate estimation এর ভিত্তি।" },
-    { q: "Gambler's fallacy কী এবং কেন ভুল?", a: "'৫ বার head এসেছে, এখন tail আসবে' — ভুল! Memoryless property: প্রতিটা trial independent। ষষ্ঠ বারও 50/50। Past outcome future কে affect করে না।" },
-  ]
+<div class="callout info"><span class="co-icon">📊</span><div><strong>গুরুত্বপূর্ণ সূত্র:</strong><br>
+<strong>E[X] = Σ x·P(x):</strong> গড় ফলাফল<br>
+<strong>Var(X) = E[X²] - E[X]²:</strong> ছড়ানোর মাপ<br>
+<strong>Linearity:</strong> E[aX+bY] = aE[X]+bE[Y]<br>
+<strong>Law of Large Numbers:</strong> গড় → E[X] যখন n → ∞<br>
+<strong>Chebyshev:</strong> P(|X-E[X]| ≥ k) ≤ Var/k²</div></div>
+
+<div class="verse">وَكُلَّ شَيْءٍ أَحْصَيْنَاهُ فِي إِمَامٍ مُّبِينٍ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং প্রতিটি কিছু আমরা একটি স্পষ্ট অভিলেখে গণনা করেছি।" — কুরআন ৩৬:১২</div>
+
+<p class="scene-setting">মিজান — ভারসাম্য। E[X] সেই ভারসাম্যের কেন্দ্র — গড়। Var(X) সেই ভারসাম্য থেকে কতটা বিচ্যুতি। প্রকৃতিতে সবকিছুর একটি গড় আছে — বৃষ্টির পরিমাণ, মানুষের উচ্চতা, পাশার ফল। গড় থেকে বিচ্যুতি প্রকৃতির নিয়ম। গণনা সব লেখা আছে।</p>
+<p class="scene-setting en">Mizan — balance. E[X] is the center of that balance — the mean. Var(X) is the deviation from that balance. In nature, everything has a mean — rainfall, human height, die outcomes. Deviation from the mean is nature's law. Everything is counted and recorded.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৪ (Statistics) Door ৪ (Distributions):</strong> mean ও variance এর পূর্ণ আলোচনা। Book ৩৩ (Loom of Reason) Door ৪ (Fermi): estimation = expectation এর অনুমান।</div></div>
+
+<div class="secret-box">📊 <strong>E[X] = গড়, Var(X) = ছড়ানো। Linearity = জাদু।</strong> কিন্তু গড় সব বলে না — কিছু বিতরণ একটি বিশেষ আকৃতি অনুসরণ করে। সেই আকৃতি — bell curve। পরের দরজায়।</div>`,
+  senior: {
+    title: "Expectation ও Variance এক নজরে",
+    body: `<table class="kv-table"><tr><th>সূত্র</th><th>বিবরণ</th></tr>
+<tr><td class="hl">E[X]</td><td>Σ x·P(x) — গড় ফলাফল</td></tr>
+<tr><td class="hl">Var(X)</td><td>E[X²] - E[X]² — ছড়ানো</td></tr>
+<tr><td class="hl">Linearity</td><td>E[aX+bY] = aE[X]+bE[Y]</td></tr>
+<tr><td class="hl">Law of Large Numbers</td><td>গড় → E[X] যখন n → ∞</td></tr>
+<tr><td class="hl">Chebyshev</td><td>P(|X-μ| ≥ kσ) ≤ 1/k²</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 3 — The Bell Curve Magic (CLT)
-// ═══════════════════════════════════════════
 doors.push({
   num: 3,
   icon: "🔔",
-  color: "#a855f7",
-  tagline: "ঘণ্টা বক্ররেখার জাদু — Bell Curve Magic",
-  name: "The Bell Curve Magic",
-  secret: "Central Limit Theorem: যেকোনো distribution-এর sample average Gaussian হয়ে যায়! এটাই anomaly detection-এর ভিত্তি।",
-  story: `<p class="scene-setting">Central Limit Theorem (CLT) — পরিসংখ্যানের সবচেয়ে জাদুকরী উপপাদ্য। তোমার data যেমনই হোক — skewed, bimodal, heavy-tailed — sample average সবসময় Gaussian (bell curve) হয়ে যায়! শর্ত শুধু: finite mean আর variance। LedgerPilot: individual deposit wild (কয়েকজন whale, বাকি সব tiny)। কিন্তু daily average deposit = bell curve। 3-sigma rule: 99.7% দিন average ± 3σ এর ভেতরে। বাইরে গেলে anomaly! এটাই anomaly detection-এর পুরো ভিত্তি।</p>
+  color: "#8b5cf6",
+  name: "ঘণ্টা বক্ররেখার জাদু",
+  subtitle: "The Bell Curve Magic",
+  tech: "Normal Distribution — Gauss 1809, Central Limit Theorem, 68-95-99.7 rule, standard deviation, z-score",
+  spirit: "সানিয়াহ — প্রকাশ, সবকিছু একটি কেন্দ্রে একত্র",
+  secret: "Normal distribution: ঘণ্টা আকৃতি। μ কেন্দ্রে, σ প্রসারণ। 68% ডেটা μ±σ-এর মধ্যে। CLT: যেকোনো distribution-এর নমুনা গড় → normal! এটাই প্রকৃতির সবচেয়ে গুরুত্বপূর্ণ বিতরণ।",
+  recall: {
+    q: " Central Limit Theorem কী? 68-95-99.7 rule কী?",
+    qen: "What is the Central Limit Theorem? What is the 68-95-99.7 rule?",
+    a: "CLT: যেকোনো distribution থেকে নমুনা গড় → normal distribution। 68-95-99.7: μ±σ=৬৮%, μ±২σ=৯৫%, μ±৩σ=৯৯.৭%।",
+    aen: "CLT: sample means from any distribution converge to normal. 68-95-99.7: μ±σ=68%, μ±2σ=95%, μ±3σ=99.7%."
+  },
+  story: `<p class="scene-setting">ফাতিমা (Door ২) তোমাকে গড় ও variance শিখিয়েছেন। এখন একটি গভীর সত্য — প্রকৃতিতে সবকিছু একটি ঘণ্টা আকৃতি অনুসরণ করে! মানুষের উচ্চতা, পরীক্ষার নম্বর, রক্তচাপ — সব কেন্দ্রে বেশি, দুই প্রান্তে কম। Gauss ১৮০৯ সালে এটা গাণিতিকভাবে দেখান। কিন্তু সবচেয়ে অদ্ভুত — Central Limit Theorem। যেকোনো বিতরণ থেকে নমুনা গড় নাও — সেটা normal হয়ে যায়!</p>
+<p class="scene-setting en">Fatima (Door 2) taught you mean and variance. Now a deep truth — in nature, everything follows a bell shape! Human height, test scores, blood pressure — all concentrated at center, less at extremes. Gauss showed this mathematically in 1809. But most surprising — the Central Limit Theorem. Take sample means from ANY distribution — they become normal!</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔔 Central Limit Theorem: Everything Becomes Gaussian</text>
+<div class="dialogue"><strong>বক্ররেখা-যাজক ইউসুফ:</strong> Normal distribution: f(x) = (১/√(২πσ²))·e^(-(x-μ)²/(২σ²))। ভয় পেও না — শুধু মনে রাখো ঘণ্টা। μ = কেন্দ্র, σ = প্রসারণ। ৬৮-৯৫-৯৯.৭ নিয়ম: μ±σ এর মধ্যে ৬৮% ডেটা। μ±২σ = ৯৫%। μ±৩σ = ৯৯.৭%। মানুষের গড় উচ্চতা ৫'৭" (μ), σ = ৩"। তাহলে ৬৮% মানুষ ৫'৪" থেকে ৫'১০" এর মধ্যে। ৯৯.৭% ৪'১০" থেকে ৬'৪" এর মধ্যে।</div>
+<div class="dialogue en"><strong>Curve Priest Yusuf:</strong> Normal distribution: the bell curve formula. Don't worry — just remember the bell. μ = center, σ = spread. 68-95-99.7 rule: 68% data within μ±σ. μ±2σ = 95%. μ±3σ = 99.7%. Human average height 5'7" (μ), σ = 3". Then 68% of people between 5'4" and 5'10". 99.7% between 4'10" and 6'4".</div>
 
-  <!-- Original distribution (wild) -->
-  <rect x="20" y="50" width="250" height="200" rx="10" fill="#0f172a" stroke="#f97316" stroke-width="2"/>
-  <text x="145" y="72" text-anchor="middle" fill="#fdba74" font-size="10" font-weight="700">Original Distribution (Wild!)</text>
-  <text x="145" y="90" text-anchor="middle" fill="#fb923c" font-size="7">Individual deposits — NOT Gaussian</text>
-  <!-- Wild bars -->
-  <rect x="45" y="210" width="12" height="10" fill="#f97316"/>
-  <rect x="60" y="180" width="12" height="40" fill="#f97316"/>
-  <rect x="75" y="220" width="12" height="0" fill="#f97316"/>
-  <rect x="90" y="220" width="12" height="0" fill="#f97316"/>
-  <rect x="105" y="220" width="12" height="0" fill="#f97316"/>
-  <rect x="120" y="195" width="12" height="25" fill="#f97316"/>
-  <rect x="135" y="150" width="12" height="70" fill="#f97316"/>
-  <rect x="150" y="220" width="12" height="0" fill="#f97316"/>
-  <rect x="165" y="220" width="12" height="0" fill="#f97316"/>
-  <rect x="180" y="210" width="12" height="10" fill="#f97316"/>
-  <rect x="195" y="170" width="12" height="50" fill="#f97316"/>
-  <rect x="210" y="140" width="12" height="80" fill="#dc2626"/>
-  <rect x="225" y="220" width="12" height="0" fill="#f97316"/>
-  <text x="145" y="240" text-anchor="middle" fill="#64748b" font-size="7">Whales ($) + tiny deposits = bimodal</text>
-
-  <!-- Arrow -->
-  <text x="290" y="150" text-anchor="middle" fill="#22c55e" font-size="20" font-weight="900">→</text>
-  <text x="290" y="170" text-anchor="middle" fill="#4ade80" font-size="7">average!</text>
-
-  <!-- After CLT (Gaussian) -->
-  <rect x="310" y="50" width="250" height="200" rx="10" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
-  <text x="435" y="72" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">After CLT (Magic!)</text>
-  <text x="435" y="90" text-anchor="middle" fill="#d8b4fe" font-size="7">Daily average deposits → Gaussian!</text>
-  <!-- Bell curve -->
-  <path d="M 340 220 Q 380 220, 400 200 Q 420 160, 435 90 Q 450 160, 470 200 Q 490 220, 530 220" fill="none" stroke="#a855f7" stroke-width="2"/>
-  <path d="M 340 220 Q 380 220, 400 200 Q 420 160, 435 90 Q 450 160, 470 200 Q 490 220, 530 220 L 340 220 Z" fill="rgba(168,85,247,0.1)"/>
-
-  <!-- Sigma markers -->
-  <line x1="395" y1="85" x2="395" y2="225" stroke="#475569" stroke-width="1" stroke-dasharray="2,2"/>
-  <text x="395" y="240" text-anchor="middle" fill="#64748b" font-size="7">μ-3σ</text>
-  <line x1="415" y1="160" x2="415" y2="225" stroke="#475569" stroke-width="1" stroke-dasharray="2,2"/>
-  <text x="415" y="240" text-anchor="middle" fill="#64748b" font-size="7">μ-σ</text>
-  <line x1="435" y1="90" x2="435" y2="225" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="435" y="240" text-anchor="middle" fill="#fbbf24" font-size="7">μ (mean)</text>
-  <line x1="455" y1="160" x2="455" y2="225" stroke="#475569" stroke-width="1" stroke-dasharray="2,2"/>
-  <text x="455" y="240" text-anchor="middle" fill="#64748b" font-size="7">μ+σ</text>
-  <line x1="475" y1="85" x2="475" y2="225" stroke="#dc2626" stroke-width="1" stroke-dasharray="2,2"/>
-  <text x="475" y="240" text-anchor="middle" fill="#dc2626" font-size="7">μ+3σ ⚠️</text>
-
-  <text x="435" y="200" text-anchor="middle" fill="#a855f7" font-size="7">68% within ±1σ</text>
-  <text x="435" y="212" text-anchor="middle" fill="#a855f7" font-size="7">99.7% within ±3σ</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: CLT — wild individual deposits (bimodal: whales + tiny) → daily average = perfect Gaussian bell curve। 3-sigma rule: 99.7% দিন average ± 3σ এর ভেতরে। বাইরে = anomaly alert!</div>
-
-<div class="code-block">— Central Limit Theorem: সব কিছু Gaussian হয়ে যায় (Python) —
+<div class="code-block">— Python: Normal Distribution —
 
   import numpy as np
-  from scipy import stats
-  np.random.seed(3)
+  import scipy.stats as stats
 
-  # Wild bimodal data: 80% tiny deposits, 20% whales — clearly NOT Gaussian
-  def sample_deposits(n):
-      tiny  = np.random.uniform(1, 50, int(n*0.8))
-      whale = np.random.uniform(5000, 20000, int(n*0.2))
-      return np.concatenate([tiny, whale])
+  mu, sigma = 175, 7   # উচ্চতা: গড় 175cm, σ=7
+  height = np.random.normal(mu, sigma, 100000)
 
-  raw = sample_deposits(100_000)
-  print(f"raw deposits: skew={stats.skew(raw):.2f}, kurtosis={stats.kurtosis(raw):.2f}")
-  # → heavy skew, bimodal — Gaussian নয়
+  # 68-95-99.7 যাচাই:
+  within_1sigma = np.mean(np.abs(height - mu) <= sigma)
+  within_2sigma = np.mean(np.abs(height - mu) <= 2*sigma)
+  within_3sigma = np.mean(np.abs(height - mu) <= 3*sigma)
+  print(f"μ±σ: {within_1sigma:.3f}")   # ~0.68 ✅
+  print(f"μ±2σ: {within_2sigma:.3f}")  # ~0.95 ✅
+  print(f"μ±3σ: {within_3sigma:.3f}")  # ~0.997 ✅
 
-  — CLT জাদু: daily average (n=500 প্রতিদিন) Gaussian হয়ে যায়! —
-  daily_avgs = [sample_deposits(500).mean() for _ in range(2000)]
-  print(f"daily avg:   skew={stats.skew(daily_avgs):.2f}, kurtosis={stats.kurtosis(daily_avgs):.2f}")
-  # → ≈ 0, ≈ 0 → Gaussian!
+  # Z-score: কত σ দূরে?
+  z = (190 - mu) / sigma   # (190-175)/7 = 2.14
+  print(f"190cm-এর z-score: {z:.2f}")  # 2.14σ
+  print(f"P(height > 190): {1 - stats.norm.cdf(z):.4f}")  # ~1.6%
 
-  — 3-sigma anomaly detection: —
-  mu, sigma = np.mean(daily_avgs), np.std(daily_avgs)
-  lo3, hi3 = mu - 3*sigma, mu + 3*sigma
-  print(f"normal range: [{lo3:.0f}, {hi3:.0f}]")     # 99.7% দিন এই ভেতরে
-  anomalies = [x for x in daily_avgs if x < lo3 or x > hi3]
-  print(f"anomalies: {len(anomalies)/2000:.3%}")     # → ~0.3% (CLT-এর পূর্বাভাস)
-
-  — scipy.stats.norm দিয়ে exact probability: —
-  p_outside_3sigma = 2 * (1 - stats.norm.cdf(3))     # P(|Z|>3)
-  print(f"P(|Z| > 3) = {p_outside_3sigma:.4%}")      # → 0.27%
-
-— finite mean+variance থাকলেই CLT কাজ করে — distribution যেমনই হোক —</div>
-
-<div class="dialogue"><strong>গণিতজ্ঞ:</strong> CLT পরিসংখ্যানের সবচেয়ে জাদুকরী ফলাফল। Individual deposit: কয়েকজন whale (অনেক বড়), বাকি সব tiny। এটা Gaussian নয় — bimodal! কিন্তু যখন তুমি হাজার জনের daily average নাও, সেটা Gaussian হয়ে যায়। এটাই 3-sigma anomaly detection কে কাজ করায়। <code>P(|X - μ| > 3σ) < 0.3%</code>। যদি কোনো দিনের average deposit μ+3σ এর বাইরে যায় — alert! সম্ভবত কিছু ভুল হচ্ছে। CLT শুধু Gaussian-এর জন্য নয় — যেকোনো finite variance distribution-এর sample average-এর জন্য কাজ করে। এটাই এর জাদু।</div>`,
-  recall: [
-    { q: "Central Limit Theorem কী?", a: "যেকোনো distribution (finite mean+variance) থেকে sample নাও — average সবসময় Gaussian হয়, sample size বাড়ালে। Wild individual data ও average এ Gaussian হয়ে যায়।" },
-    { q: "CLT কিভাবে anomaly detection এ ব্যবহৃত হয়?", a: "Daily average = Gaussian → 3-sigma rule: 99.7% দিন average ± 3σ এর ভেতরে। বাইরে গেলে anomaly alert। LedgerPilot-এ daily average deposit monitoring।" },
+  # Central Limit Theorem যাচাই:
+  # uniform distribution থেকে নমুনা গড় → normal!
+  sample_means = [
+      np.random.uniform(0, 1, 100).mean()
+      for _ in range(10000)
   ]
+  # এটা uniform ছিল, কিন্তু গড় normal হয়ে গেছে!</div>
+
+<div class="callout info"><span class="co-icon">🔔</span><div><strong>Normal Distribution বৈশিষ্ট্য:</strong><br>
+<strong>Shape:</strong> ঘণ্টা — কেন্দ্রে বেশি, প্রান্তে কম<br>
+<strong>μ (mean):</strong> কেন্দ্র<br>
+<strong>σ (std dev):</strong> প্রসারণ<br>
+<strong>68-95-99.7:</strong> μ±σ, μ±২σ, μ±৩σ<br>
+<strong>Z-score:</strong> (x-μ)/σ — কত σ দূরে<br>
+<strong>CLT:</strong> যেকোনো distribution → sample mean → normal</div></div>
+
+<div class="verse">وَالْأَرْضِ وَمَا طَحَاهَا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"পৃথিবী ও যিনি তাকে বিস্তৃত করেছেন।" — কুরআন ৯১:৬</div>
+
+<p class="scene-setting">সানিয়াহ — প্রকাশ, বিস্তার। Normal distribution সেই প্রকাশের রূপ — সবকিছু একটি কেন্দ্রে একত্র হয়, তারপর বিস্তৃত হয়। প্রকৃতির সব পরিমাপ — উচ্চতা, ওজন, তাপমাত্রা — এই ঘণ্টা অনুসরণ করে। CLT আরও গভীর — যেকোনো বিতরণ থেকেই গড় এই আকৃতি ধারণ করে। এটাই প্রকৃতির গণিত।</p>
+<p class="scene-setting en">Saniyah — manifestation, spreading. Normal distribution is the form of that manifestation — everything gathers at a center, then spreads. All natural measurements — height, weight, temperature — follow this bell. CLT goes deeper — the mean of ANY distribution takes this shape. This is nature's mathematics.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৪ (Statistics) Door ৪ (Distributions):</strong> normal, binomial, Poisson — সব বিতরণ। Book ৩৩ (Loom of Reason) Door ৫ (Bayesian): normal = prior হিসেবে।</div></div>
+
+<div class="secret-box">🔔 <strong>Normal = ঘণ্টা। CLT = যেকোনো থেকে normal। 68-95-99.7।</strong> কিন্তু কিছু ঘটনা স্মৃতিহীন — অতীত ভবিষ্যতকে প্রভাবিত করে না। সেই বিশেষ ক্ষেত্র — memoryless। পরের দরজায়।</div>`,
+  senior: {
+    title: "Normal Distribution এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Gauss (1809)</td><td>Normal distribution গাণিতিক রূপ</td></tr>
+<tr><td class="hl">μ (mean)</td><td>কেন্দ্র</td></tr>
+<tr><td class="hl">σ (std dev)</td><td>প্রসারণ</td></tr>
+<tr><td class="hl">68-95-99.7</td><td>μ±σ, μ±২σ, μ±৩σ</td></tr>
+<tr><td class="hl">Z-score</td><td>(x-μ)/σ</td></tr>
+<tr><td class="hl">CLT</td><td>sample mean → normal</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 4 — The Memoryless Walker (Markov Chains)
-// ═══════════════════════════════════════════
 doors.push({
   num: 4,
-  icon: "🚶",
-  color: "#f59e0b",
-  tagline: "স্মৃতিহীন পথিক — Memoryless Walker",
-  name: "The Memoryless Walker",
-  secret: "Markov: next state depends only on current state। PageRank = stationary distribution!",
-  story: `<p class="scene-setting">Markov chain — স্মৃতিহীন stochastic process। পরের state শুধু current state এর উপর নির্ভর করে, past এর উপর নয়। Transition matrix P তে প্রতিটা entry হল state transition probability। Stationary distribution π পাওয়া যায় <code>π = πP</code> সমাধান করে। Ergodicity (aperiodic + positive recurrent) থাকলে unique stationary distribution থাকে। Google PageRank = web surfing Markov chain এর stationary distribution। Credit rating (Good→Watch→Default) ও Markov chain। LedgerPilot: user behavior states (active → idle → churn) একটা Markov chain।</p>
+  icon: "🎲",
+  color: "#8b5cf6",
+  name: "স্মৃতিহীন পথিক",
+  subtitle: "The Memoryless Walker",
+  tech: "Geometric & Exponential Distribution — memoryless property, hazard rate, waiting time, M/M/1 queue",
+  spirit: "তাওয়াক্কুল — ভরসা, ফল আল্লাহর হাতে",
+  secret: "Memoryless: P(X>s+t | X>s) = P(X>t)। অতীত ভবিষ্যতকে প্রভাবিত করে না! বাস ১০ মিনিট দেরি করেছে — পরের বাস এখনও একই সম্ভাবনায় আসে। Geometric = discrete, Exponential = continuous memoryless।",
+  recall: {
+    q: " Memoryless property কী? কোন দুটি distribution memoryless?",
+    qen: "What is the memoryless property? Which two distributions are memoryless?",
+    a: "P(X>s+t | X>s) = P(X>t)। Geometric (discrete) ও Exponential (continuous) — শুধু এই দুটি! অতীত প্রভাব ফেলে না।",
+    aen: "P(X>s+t | X>s) = P(X>t). Geometric (discrete) and Exponential (continuous) — only these two! Past has no effect."
+  },
+  story: `<p class="scene-setting">ইউসুফ (Door ৩) তোমাকে normal distribution শিখিয়েছেন। এখন একটি অদ্ভুত ধারণা — memoryless। তুমি বাসের জন্য অপেক্ষা করছো। ১০ মিনিট হলো। সাধারণ চিন্তায় — বাস এখন বেশি সম্ভব! কিন্তু memoryless property বলে — না! বাস আসার সম্ভাবনা এখনও একই। অতীত ১০ মিনিট প্রভাব ফেলে না। এটাই exponential distribution।</p>
+<p class="scene-setting en">Yusuf (Door 3) taught you normal distribution. Now a strange concept — memoryless. You wait for a bus. 10 minutes passed. Normally you'd think — the bus is more likely now! But memoryless property says — no! The probability of the bus arriving is the same. The past 10 minutes have no effect. This is exponential distribution.</p>
 
-<div class="code-block">— Markov Chain: Transition Matrix + Stationary Distribution (Python) —
+<div class="dialogue"><strong>স্মৃতিহীন-পথিক আমিন:</strong> Memoryless = অতীত প্রভাবহীন। P(X>২০ | X>১০) = P(X>১০)। বাস ১০ মিনিট দেরি করেছে? পরের বাস এখনও একই rate-এ আসে। Exponential: f(x) = λe^(-λx)। λ = rate (বাস প্রতি ঘণ্টায়)। Mean = ১/λ। Geometric = discrete version — কতবার চেষ্টা করলে প্রথম success? M/M/১ queue: Markovian arrival, Markovian service, ১ server।</div>
+<div class="dialogue en"><strong>Memoryless Walker Amin:</strong> Memoryless = past has no effect. P(X>20 | X>10) = P(X>10). Bus 10 minutes late? Next bus arrives at the same rate. Exponential: f(x) = λe^(-λx). λ = rate. Mean = 1/λ. Geometric = discrete version — how many trials until first success? M/M/1 queue: Markovian arrival, Markovian service, 1 server.</div>
+
+<div class="code-block">— Python: Memoryless Distribution —
 
   import numpy as np
+  from scipy.stats import expon
 
-  # Credit rating Markov chain: states = [Good, Watch, Default]
-  #        Good    Watch   Default
-  P = [[0.95,   0.04,   0.01],   # Good  → 95% stay, 4% watch, 1% default
-       [0.30,   0.60,   0.10],   # Watch → 30% recover, 60% stay, 10% default
-       [0.00,   0.00,   1.00]]   # Default (absorbing) — একবার গেলে আর ফেরা নেই
-  P = np.array(P)
+  # Exponential: বাস প্রতি ১৫ মিনিটে (λ = 1/15)
+  lam = 1/15  # rate
+  mean_wait = 1/lam  # = 15 minutes
 
-  — Step-by-step: একটা portfolio সব Good দিয়ে শুরু —
-  state = np.array([1.0, 0.0, 0.0])               # 100% Good
-  for year in range(1, 21):
-      state = state @ P                            # π_{t+1} = π_t · P
-      if year in [1, 2, 5, 10, 20]:
-          print(f"year {year:2d}: Good={state[0]:.3f}  Watch={state[1]:.3f}  Default={state[2]:.3f}")
+  # P(wait > 10)?
+  p_over_10 = expon.sf(10, scale=mean_wait)
+  print(f"P(X>10) = {p_over_10:.3f}")  # ~0.513
 
-  — Stationary distribution: π = πP সমাধান করো (eigenvalue = 1) —
-  eigvals, eigvecs = np.linalg.eig(P.T)            # left eigenvector
-  pi = eigvecs[:, np.isclose(eigvals, 1.0)][:, 0]
-  pi = np.real(pi / pi.sum())                      # normalize
-  print(f"stationary π = {pi}")                    # → [0  0  1]  (absorbing!)
+  # Memoryless যাচাই:
+  # P(X>20 | X>10) = P(X>10)?
+  p_over_20 = expon.sf(20, scale=mean_wait)
+  conditional = p_over_20 / p_over_10  # P(X>20|X>10)
+  print(f"P(X>20|X>10) = {conditional:.3f}")  # 0.513!
+  print(f"P(X>10)      = {p_over_10:.3f}")    # 0.513!
+  # একই! ✅ Memoryless proven!
 
-  — PageRank simulation: 4 web pages, random surf (with teleport) —
-  links = {0:[1,2], 1:[2], 2:[0,3], 3:[2]}         # page → outgoing links
-  d = 0.85; visits = np.zeros(4); page = 0
-  for _ in range(100_000):
-      if np.random.random() < d and links[page]:   # follow a link
-          page = np.random.choice(links[page])
-      else:                                          # random teleport
-          page = np.random.randint(4)
-      visits[page] += 1
-  print(f"PageRank ≈ {visits/visits.sum()}")        # stationary distribution
+  # Geometric: কতবার coin flip করলে first heads?
+  from scipy.stats import geom
+  p = 0.3  # heads probability
+  print(f"Expected flips: {1/p:.1f}")  # 3.3
+  print(f"P(first=3): {geom.pmf(3, p):.3f}")  # 0.147
 
-— memoryless property: next state depends only on current state — past এর উপর নয় —</div>
+  # M/M/1 Queue:
+  arrival_rate = 2   # per minute
+  service_rate = 3   # per minute
+  rho = arrival_rate / service_rate  # utilization
+  avg_wait = rho / (service_rate - arrival_rate)
+  print(f"Avg wait: {avg_wait:.2f} min")  # 0.67</div>
 
-<div class="dialogue"><strong>আন্দ্রেই মার্কভ:</strong> আমি ১৯০৬ সালে এই chain আবিষ্কার করেছিলাম। সবচেয়ে গুরুত্বপূর্ণ ধারণা — memoryless (Markov property)। পরের state শুধু current state এর উপর নির্ভর করে। Past এর কোনো ভূমিকা নেই। <code>π = πP</code> — একটা eigenvalue সমস্যা। সমাধান করলে stationary distribution পাওয়া যায়। Google PageRank এর পুরো ভিত্তি এটাই — web pages = states, links = transitions, stationary distribution = page importance। LedgerPilot-এ credit rating: Good (95% stay, 4% watch, 1% default), Watch (30% recover, 60% stay, 10% default), Default (absorbing)। Stationary distribution বলে দীর্ঘমেয়াদে পুরো portfolio কতটা risky।</div>`,
-  recall: [
-    { q: "Markov property কী?", a: "Next state depends only on current state, not on past history। Memoryless। P(X_{n+1} | X_n, X_{n-1}, ...) = P(X_{n+1} | X_n)।" },
-    { q: "Stationary distribution কী এবং PageRank কিভাবে কাজ করে?", a: "π = πP। Long-term probability of being in each state। PageRank = web surfing Markov chain এর stationary distribution। যে pages বেশি visited, সেগুলো বেশি important।" },
-  ]
+<div class="callout info"><span class="co-icon">🎲</span><div><strong>Memoryless distributions:</strong><br>
+<strong>Exponential (continuous):</strong> সময় পর্যন্ত অপেক্ষা — bus, server, radioactive decay<br>
+<strong>Geometric (discrete):</strong> কতবার চেষ্টা — coin flip পর্যন্ত heads<br>
+<strong>λ (rate):</strong> ঘটনার হার। Mean = ১/λ<br>
+<strong>M/M/1 Queue:</strong> arrival = exponential, service = exponential<br>
+<strong>Poisson Process:</strong> events per unit time = Poisson(λ)</div></div>
+
+<div class="verse">قُل لَّن يُصِيبَنَا إِلَّا مَا كَتَبَ اللَّهُ لَنَا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"বলো, আমাদের কেবল তাই হবে যা আল্লাহ আমাদের জন্য লিখেছেন।" — কুরআন ৯:৫১</div>
+
+<p class="scene-setting">তাওয়াক্কুল — ভরসা। Memoryless property সেই ভরসার গাণিতিক রূপ — অতীত ভবিষ্যতকে নির্ধারণ করে না। ফল আল্লাহর হাতে। বাস ১০ মিনিট দেরি — এর মানে এই নয় এখন বেশি সম্ভব। প্রতিটি মুহূর্ত নতুন — অতীত থেকে স্বাধীন। এটাই memoryless-এর দর্শন।</p>
+<p class="scene-setting en">Tawakkul — trust. Memoryless property is the mathematical form of that trust — the past does not determine the future. Outcomes are in Allah's hands. Bus 10 minutes late — doesn't mean more likely now. Each moment is new — free from the past. This is the philosophy of memoryless.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৪ (Statistics) Door ৪ (Distributions):</strong> Poisson, exponential, geometric — সব বিতরণ। Book ৩৮ (OS) Door ৬ (Scheduler): queue theory = M/M/1।</div></div>
+
+<div class="secret-box">🎲 <strong>Memoryless = অতীত প্রভাবহীন। Exponential ও Geometric।</strong> কিন্তু একটি বিপদ লুকানো — বিরল ঘটনা। কখনো কখনো চরম ঘটনা ঘটে। সেই ঝুঁকি — tail risk। পরের দরজায়।</div>`,
+  senior: {
+    title: "Memoryless Distributions এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Exponential</td><td>continuous memoryless — wait time</td></tr>
+<tr><td class="hl">Geometric</td><td>discrete memoryless — trials to success</td></tr>
+<tr><td class="hl">Memoryless</td><td>P(X>s+t|X>s) = P(X>t)</td></tr>
+<tr><td class="hl">λ (rate)</td><td>Mean = 1/λ</td></tr>
+<tr><td class="hl">M/M/1</td><td>exponential arrival + service queue</td></tr>
+<tr><td class="hl">Poisson Process</td><td>events per time unit</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 5 — The Exponential Shield (Concentration)
-// ═══════════════════════════════════════════
 doors.push({
   num: 5,
   icon: "🛡️",
-  color: "#dc2626",
-  tagline: "সূচকীয় ঢাল — Exponential Shield",
-  name: "The Exponential Shield",
-  secret: "Concentration inequalities: extreme events exponentially rare। Chernoff/Hoeffding → streaming algorithms সম্ভব।",
-  story: `<p class="scene-setting">Concentration inequalities প্রমাণ করে — random variable তার expected value থেকে কত বেশি দূরে যেতে পারে। Hierarchy: Markov (weakest, শুধু E[X] ব্যবহার করে) → Chebyshev (variance ব্যবহার করে, P(|X-μ|≥a) ≤ σ²/a²) → Chernoff/Hoeffding (exponential! independent sums এর জন্য)। Chernoff বলে: deviation probability <code>e^(-nε²)</code> — exponentially small! এটাই streaming algorithm, HyperLogLog, randomized algorithm এর পুরো ভিত্তি। কারণ এটা গ্যারান্টি দেয় যে average অল্প sample তেই converge করবে।</p>
+  color: "#8b5cf6",
+  name: "সূচকীয় ঢাল",
+  subtitle: "The Exponential Shield",
+  tech: "Concentration Inequalities — Markov, Chebyshev, Chernoff bound, tail risk, black swan events (Taleb)",
+  spirit: "হিফযু — সুরক্ষা, বিরল কিন্তু বিধ্বংসী ঘটনা থেকে",
+  secret: "Chebyshev: P(|X-μ|≥kσ) ≤ ১/k²। Markov: P(X≥a) ≤ E[X]/a। Chernoff: P(X≥(১+δ)μ) ≤ e^(-δ²μ/৩)। এই সূত্রগুলো বলে — বিরল ঘটনা কতটা বিরল। কিন্তু বিরল মানে অসম্ভব নয়!",
+  recall: {
+    q: " Chebyshev inequality কী? Tail risk কী?",
+    qen: "What is Chebyshev's inequality? What is tail risk?",
+    a: "Chebyshev: P(|X-μ|≥kσ) ≤ ১/k²। k=২ হলে ≤ ২৫%। Tail risk: বিরল কিন্তু বিধ্বংসী ঘটনা। Black Swan — অকল্পনীয় কিন্তু ঘটে।",
+    aen: "Chebyshev: P(|X-μ|≥kσ) ≤ 1/k². k=2 → ≤25%. Tail risk: rare but devastating events. Black Swan — unimaginable but happens."
+  },
+  story: `<p class="scene-setting">আমিন (Door ৪) তোমাকে memoryless শিখিয়েছেন। কিন্তু একটি বিপদ — বিরল ঘটনা। সাধারণত সব ঠিক থাকে। কিন্তু মাঝে মাঝে — এমন কিছু ঘটে যা কেউ ভাবেনি। ২০০৮ financial crisis। COVID-19। Nassim Taleb একে বলেন Black Swan — বিরল, বিধ্বংসী, পরে বোঝা যায়। Concentration inequalities বলে — এই বিরল ঘটনা গাণিতিকভাবে কতটা বিরল।</p>
+<p class="scene-setting en">Amin (Door 4) taught you memoryless. But a danger — rare events. Usually everything is fine. But sometimes — something happens that nobody imagined. 2008 financial crisis. COVID-19. Nassim Taleb calls them Black Swans — rare, devastating, understood in hindsight. Concentration inequalities tell us — mathematically how rare these events are.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🛡️ Concentration Inequality Hierarchy</text>
+<div class="dialogue"><strong>ঝুঁকি-প্রহরী ওমর:</strong> Markov inequality: P(X≥a) ≤ E[X]/a। সবচেয়ে সহজ — শুধু E[X] লাগে। Chebyshev: P(|X-μ|≥kσ) ≤ ১/k²। কিছুটা শক্ত — Var লাগে। k=৩ হলে সর্বোচ্চ ১/৯ ≈ ১১%। কিন্তু normal-এ ৩σ = ০.৩%। Chebyshev conservative! Chernoff: সবচেয়ে শক্ত — exponential decay। Hoeffding: sample mean কতটা নির্ভরযোগ্য। এগুলো tail risk মাপে।</div>
+<div class="dialogue en"><strong>Risk Guardian Umar:</strong> Markov inequality: P(X≥a) ≤ E[X]/a. Simplest — only needs E[X]. Chebyshev: P(|X-μ|≥kσ) ≤ 1/k². A bit stronger — needs Var. k=3 gives max 1/9 ≈ 11%. But for normal 3σ = 0.3%. Chebyshev is conservative! Chernoff: strongest — exponential decay. Hoeffding: how reliable is sample mean. These measure tail risk.</div>
 
-  <!-- Markov -->
-  <rect x="30" y="50" width="150" height="80" rx="8" fill="#451a03" stroke="#f97316" stroke-width="2"/>
-  <text x="105" y="72" text-anchor="middle" fill="#fdba74" font-size="10" font-weight="700">Markov (Weakest)</text>
-  <text x="105" y="90" text-anchor="middle" fill="#fb923c" font-size="7">P(X≥a) ≤ E[X]/a</text>
-  <text x="105" y="105" text-anchor="middle" fill="#64748b" font-size="6">Only uses expectation</text>
-  <text x="105" y="120" text-anchor="middle" fill="#f97316" font-size="7">Sample: O(1/δ)</text>
-
-  <!-- Chebyshev -->
-  <rect x="215" y="50" width="150" height="80" rx="8" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="290" y="72" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Chebyshev (Better)</text>
-  <text x="290" y="90" text-anchor="middle" fill="#bae6fd" font-size="7">P(|X-μ|≥a) ≤ σ²/a²</text>
-  <text x="290" y="105" text-anchor="middle" fill="#64748b" font-size="6">Uses variance</text>
-  <text x="290" y="120" text-anchor="middle" fill="#0ea5e9" font-size="7">Sample: O(1/δ)</text>
-
-  <!-- Chernoff/Hoeffding -->
-  <rect x="400" y="50" width="150" height="80" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="3"/>
-  <text x="475" y="72" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Chernoff/Hoeffding</text>
-  <text x="475" y="90" text-anchor="middle" fill="#86efac" font-size="7">P(deviation) ≤ e^{-nε²}</text>
-  <text x="475" y="105" text-anchor="middle" fill="#64748b" font-size="6">Exponential! Independent sums</text>
-  <text x="475" y="120" text-anchor="middle" fill="#22c55e" font-size="7" font-weight="700">Sample: O(log(1/δ))!</text>
-
-  <!-- Arrows -->
-  <text x="197" y="95" text-anchor="middle" fill="#475569" font-size="14">→</text>
-  <text x="382" y="95" text-anchor="middle" fill="#475569" font-size="14">→</text>
-  <text x="197" y="108" text-anchor="middle" fill="#64748b" font-size="6">+ variance</text>
-  <text x="382" y="108" text-anchor="middle" fill="#64748b" font-size="6">+ independence</text>
-
-  <!-- Bottom: Why it matters -->
-  <rect x="30" y="150" width="520" height="110" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="290" y="172" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">💡 Why Concentration Matters</text>
-  <text x="50" y="195" fill="#cbd5e1" font-size="7">Chebyshev: want 99% confidence (δ=0.01)? Need n = O(1/δ) = 100 samples</text>
-  <text x="50" y="210" fill="#4ade80" font-size="7">Chernoff: want 99% confidence (δ=0.01)? Need n = O(log(1/δ)) ≈ 5 samples!</text>
-  <text x="50" y="225" fill="#fbbf24" font-size="7">→ Exponential improvement makes streaming algorithms (HyperLogLog, Bloom filters) possible</text>
-  <text x="50" y="245" fill="#86efac" font-size="7">→ HyperLogLog: estimate 10⁹ unique items with 2% error using only 1.5KB!</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Concentration Inequality Hierarchy — Markov (weakest) → Chebyshev (variance) → Chernoff/Hoeffding (exponential)। শেষেরটা O(log 1/δ) sample লাগে, O(1/δ) নয়। HyperLogLog সম্ভব এটা দিয়ে।</div>
-
-<div class="code-block">— Concentration Inequalities: Markov → Chebyshev → Chernoff (Python) —
+<div class="code-block">— Python: Concentration Inequalities —
 
   import numpy as np
-  np.random.seed(5)
 
-  # 100 fair coin flips — expected heads = 50
-  n, p = 100, 0.5
-  mu, sigma_sq = n*p, n*p*(1-p)         # μ = 50, σ² = 25
+  # Markov: P(X>=a) <= E[X]/a
+  EX = 10  # average loss $10
+  a = 50   # threshold
+  markov_bound = EX / a
+  print(f"Markov: P(X>=50) <= {markov_bound:.2f}")  # 0.20
 
-  — ১. Markov inequality (weakest): P(X ≥ a) ≤ E[X]/a —
-  a = 75                                 # deviation of +25
-  markov = mu / a                        # ≤ 50/75 = 0.667
-  print(f"Markov:    P(X≥{a}) ≤ {markov:.3f}")        # → 0.667
+  # Chebyshev: P(|X-mu|>=k*sigma) <= 1/k^2
+  for k in [2, 3, 4]:
+      cheb = 1 / k**2
+      print(f"Chebyshev k={k}: <= {cheb:.4f}")
+  # k=2: 0.25, k=3: 0.111, k=4: 0.0625
 
-  — ২. Chebyshev inequality: P(|X-μ| ≥ a) ≤ σ²/a² —
-  cheb = sigma_sq / a**2                 # ≤ 25/5625 = 0.0044
-  print(f"Chebyshev: P(|X-μ|≥{a}) ≤ {cheb:.4f}")      # → 0.0044
+  # Chernoff (coin flips):
+  # P(>= 60 heads in 100 flips) when p=0.5
+  from scipy.stats import binom
+  exact = 1 - binom.cdf(59, 100, 0.5)
+  print(f"Exact P(X>=60): {exact:.4f}")  # ~0.028
+  # Chernoff: <= exp(-0.1^2 * 50 / 3) ≈ 0.044
 
-  — ৩. Chernoff / Hoeffding: P(|X-μ| ≥ nε) ≤ 2·exp(-2nε²) —
-  eps = (a - mu) / n                     # ε = 0.25
-  chernoff = 2 * np.exp(-2 * n * eps**2) # ≤ 2·e^{-12.5}
-  print(f"Chernoff:  P(|X-μ|≥{a}) ≤ {chernoff:.6f}")  # → 0.0000074!
+  # Black Swan simulation:
+  # 99% of days: +1. 1% of days: -200.
+  returns = np.where(
+      np.random.random(10000) < 0.99, 1, -200
+  )
+  cumulative = np.cumsum(returns)
+  # বেশিরভাগ দিন লাভ, কিন্তু rare crash সব মুছে দেয়!</div>
 
-  — Empirical verification: 100,000 trials —
-  trials = np.random.binomial(n, p, 100_000)
-  empirical = np.mean(trials >= a)
-  print(f"Empirical: P(X≥{a})  = {empirical:.6f}")    # → ~0.000000 (Chernoff-এর নিচে)
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Black Swan (Taleb 2007):</strong> বিরল, বিধ্বংসী, পরে বোঝা যায়। Normal distribution এই tail ধরে না! Financial crisis, pandemic, disaster — fat tail distribution। ৩σ তে বলে ০.৩% — কিন্তু বাস্তবে বেশি ঘটে। Power law: P(X) ~ 1/x^α। লম্বা tail — বিরল কিন্তু উপেক্ষা করা যায় না।</div></div>
 
-  — Sample complexity comparison (99% confidence, δ=0.01): —
-  delta = 0.01
-  n_cheb = int(np.ceil(1 / delta))                  # Chebyshev: O(1/δ) = 100
-  n_cher = int(np.ceil(np.log(2/delta) / (2*eps**2))) # Chernoff: O(log(1/δ)/ε²)
-  print(f"For 99% confidence: Chebyshev n={n_cheb}, Chernoff n={n_cher}")
+<div class="verse">وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهِ عِلْمٌ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং তুমি তার অনুসরণ করো না যার বিষয়ে তোমার জ্ঞান নেই।" — কুরআন ১৭:৩৬</div>
 
-— এটাই HyperLogLog, Bloom filter, streaming algorithm কে সম্ভব করে — exponential improvement —</div>
+<p class="scene-setting">হিফযু — সুরক্ষা। Concentration inequalities সেই সুরক্ষার গাণিতিক রূপ — ঝুঁকির সীমা নির্ধারণ। কোন পরিমাণ নিরাপদ, কোন পরিমাণ বিপজ্জনক? Chebyshev, Chernoff — এই সীমা দেয়। কিন্তু সতর্কতা — গাণিতিক সীমা কখনো Black Swan ধরে না। যার বিষয়ে জ্ঞান নেই তার অনুসরণ করো না — অজানা ঝুঁকি উপেক্ষা করো না।</p>
+<p class="scene-setting en">Hifz — protection. Concentration inequalities are the mathematical form of that protection — determining risk boundaries. What amount is safe, what is dangerous? Chebyshev, Chernoff — these give boundaries. But caution — mathematical bounds don't always catch Black Swans. Do not follow what you have no knowledge of — don't ignore unknown risks.</p>
 
-<div class="dialogue"><strong>গণিতজ্ঞ:</strong> চিন্তা করো — তুমি একটা coin flip করছ। ১০০ বার flip করলে কত head? Expected = ৫০। কিন্তু কত deviate করতে পারে? Markov বলে: P(≥১০০) ≤ ৫০/১০০ = ৫০% — খুব দুর্বল! Chebyshev: σ²=২৫, P(|X-৫০|≥২৫) ≤ ২৫/৬২৫ = ৪% — ভালো। Chernoff: P(|X-৫০|≥২৫) ≤ e^{-100·0.25²} ≈ 0.002% — এক্সপোনেনশিয়াল! এটাই streaming algorithm কে সম্ভব করে। HyperLogLog: 10⁹ unique item গণনা 1.5KB তে — concentration inequality গ্যারান্টি দেয় যে estimate সঠিক হবে। প্রতিটা randomized algorithm এর পেছনে এই গণিত আছে।</div>`,
-  recall: [
-    { q: "Markov, Chebyshev, Chernoff এর মধ্যে পার্থক্য কী?", a: "Markov: শুধু E[X] (weakest)। Chebyshev: + variance। Chernoff/Hoeffding: + independence → exponential bound। Sample complexity: O(1/δ) → O(log(1/δ))।" },
-    { q: "Concentration inequality কেন streaming algorithm এর জন্য গুরুত্বপূর্ণ?", a: "Exponential bound গ্যারান্টি দেয় যে অল্প sample তেই estimate সঠিক। HyperLogLog 10⁹ unique item 1.5KB তে count করে — এটা সম্ভব কারণ Chernoff bound deviation probability কে exponentially small করে।" },
-  ]
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৪ (Statistics) Door ৮ (Causal Inference):</strong> tail risk ও confounding। Book ৩৩ (Loom of Reason) Door ৬ (Second-Order): unintended consequences = tail risk।</div></div>
+
+<div class="secret-box">🛡️ <strong>Concentration = ঝুঁকির সীমা। Markov → Chebyshev → Chernoff।</strong> কিন্তু ঝুঁকি মাপলেই কি দূর হয়? না। ঝুঁকি নিয়ন্ত্রণ করতে হয় — simulation দিয়ে। সেই পরের দরজায়।</div>`,
+  senior: {
+    title: "Concentration Inequalities এক নজরে",
+    body: `<table class="kv-table"><tr><th>সূত্র</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Markov</td><td>P(X≥a) ≤ E[X]/a</td></tr>
+<tr><td class="hl">Chebyshev</td><td>P(|X-μ|≥kσ) ≤ 1/k²</td></tr>
+<tr><td class="hl">Chernoff</td><td>P(X≥(1+δ)μ) ≤ e^(-δ²μ/3)</td></tr>
+<tr><td class="hl">Hoeffding</td><td>sample mean reliability</td></tr>
+<tr><td class="hl">Black Swan</td><td>rare, devastating, fat tail</td></tr>
+<tr><td class="hl">Power Law</td><td>P(X) ~ 1/x^α — long tail</td></tr></table>`
+  }
 });
