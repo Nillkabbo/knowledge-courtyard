@@ -351,6 +351,32 @@ iptables rules দিয়ে — অথবা Cilium eBPF দিয়ে (Doo
 <strong>তোমার DO সার্ভারে:</strong> Docker Compose = single-node। K8s = multi-node। যখন multi-node দরকার — K8s।
 </div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔑 Kubernetes: Kubelet Architecture</text>
+  <rect x="20" y="50" width="150" height="180" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="95" y="72" text-anchor="middle" fill="#67e8f9" font-size="8" font-weight="700">API Server</text>
+  <text x="95" y="88" text-anchor="middle" fill="#7dd3fc" font-size="7">(brain)</text>
+  <rect x="215" y="60" width="150" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="80" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Kubelet</text>
+  <text x="290" y="95" text-anchor="middle" fill="#86efac" font-size="7">(faithful worker)</text>
+  <rect x="400" y="50" width="160" height="60" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="480" y="72" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Container Runtime</text>
+  <text x="480" y="88" text-anchor="middle" fill="#fde68a" font-size="7">containerd / Docker</text>
+  <line x1="170" y1="75" x2="215" y2="80" stroke="#475569" stroke-width="1.5" marker-end="url(#arrK1)"/>
+  <text x="190" y="70" text-anchor="middle" fill="#94a3b8" font-size="6">orders</text>
+  <line x1="365" y1="85" x2="400" y2="80" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrK1)"/>
+  <text x="383" y="73" text-anchor="middle" fill="#4ade80" font-size="6">start/stop</text>
+  <rect x="215" y="130" width="150" height="40" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="290" y="155" text-anchor="middle" fill="#c084fc" font-size="7">Pod (1+ containers)</text>
+  <rect x="215" y="180" width="150" height="35" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="290" y="202" text-anchor="middle" fill="#fca5a5" font-size="7">kube-proxy (networking)</text>
+  <line x1="290" y1="110" x2="290" y2="130" stroke="#475569" stroke-width="1"/>
+  <defs><marker id="arrK1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Kubelet — API Server থেকে নির্দেশ নেয়, Container Runtime চালায়।</div>
+
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> Kubelet হলো সবচেয়ে বিশ্বস্ত কর্মচারী — কখনো নিজে থেকে সিদ্ধান্ত নেয় না, শুধু নির্দেশ পালন করে। কিন্তু তার না থাকলে cluster চলে না — কেউ container চালাবে না।<br>
 <em>The kubelet is the most faithful employee — never decides on its own, just follows orders. But without it, the cluster can't run — no one starts containers.</em>

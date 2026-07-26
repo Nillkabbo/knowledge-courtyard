@@ -209,6 +209,34 @@ jobs:
 <a href="../software-engineering/index.html" style="color:var(--accent);font-size:.85rem">← Book 40 (SWE) — Git workflow, testing, DevOps</a>
 </div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🚀 CI/CD Pipeline: Assembly Line with Safety Nets</text>
+  <rect x="10" y="55" width="80" height="45" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="50" y="78" text-anchor="middle" fill="#7dd3fc" font-size="7">Git Push</text>
+  <rect x="100" y="55" width="80" height="45" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="140" y="78" text-anchor="middle" fill="#4ade80" font-size="7">Build</text>
+  <rect x="190" y="55" width="80" height="45" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="230" y="78" text-anchor="middle" fill="#fcd34d" font-size="7">Test</text>
+  <rect x="280" y="55" width="80" height="45" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="320" y="78" text-anchor="middle" fill="#fca5a5" font-size="7">Scan</text>
+  <rect x="370" y="55" width="80" height="45" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="410" y="78" text-anchor="middle" fill="#c084fc" font-size="7">Staging</text>
+  <rect x="460" y="55" width="100" height="45" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="510" y="78" text-anchor="middle" fill="#4ade80" font-size="7">Prod!</text>
+  <text x="50" y="115" text-anchor="middle" fill="#22c55e" font-size="6">Gate: lint</text>
+  <text x="140" y="115" text-anchor="middle" fill="#22c55e" font-size="6">Gate: compile</text>
+  <text x="230" y="115" text-anchor="middle" fill="#fcd34d" font-size="6">Gate: unit+E2E</text>
+  <text x="320" y="115" text-anchor="middle" fill="#fca5a5" font-size="6">Gate: security</text>
+  <text x="410" y="115" text-anchor="middle" fill="#c084fc" font-size="6">Gate: smoke</text>
+  <text x="510" y="115" text-anchor="middle" fill="#4ade80" font-size="6">auto-rollout</text>
+  <text x="290" y="150" text-anchor="middle" fill="#f87171" font-size="7">❌ Fail = belt stops, broken code blocked</text>
+  <text x="290" y="170" text-anchor="middle" fill="#94a3b8" font-size="7">GitOps: cluster pulls from Git, no manual push</text>
+  <text x="290" y="190" text-anchor="middle" fill="#94a3b8" font-size="7">ArgoCD / Flux: reconcile loop</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: CI/CD — assembly line with safety nets। প্রতিটা stage-এ gate।</div>
+
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> CI/CD = assembly line with safety nets। প্রতিটা stage-এ test। Fail = belt stop। ভাঙা code কখনো production-এ যায় না। GitOps = cluster নিজে Git থেকে pull করে — কোনো push নেই, কোনো credential leak নেই।<br>
 <em>CI/CD = assembly line with safety nets. Each stage tests. Fail = belt stops. Broken code never reaches production. GitOps = cluster pulls from Git itself — no push, no credential leak.</em>
@@ -557,6 +585,23 @@ doors.push({
   → DO DOKS (managed K8s) — DO-এর built-in
 </pre>
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌐 Cloud DevOps: 9 Doors of Modern Infrastructure</text>
+  <rect x="180" y="50" width="220" height="35" rx="17" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="72" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">D1-2: Cloud + Terraform (IaC)</text>
+  <rect x="140" y="95" width="300" height="35" rx="17" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="117" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">D3-5: Docker + K8s + Networking</text>
+  <rect x="100" y="140" width="380" height="35" rx="17" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="162" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">D6-8: Helm + CI/CD + Monitoring</text>
+  <rect x="60" y="185" width="460" height="35" rx="17" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
+  <text x="290" y="207" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">D9: Service Mesh (Istio/Linkerd)</text>
+  <rect x="120" y="235" width="340" height="35" rx="17" fill="#052e16" stroke="#4ade80" stroke-width="2.5"/>
+  <text x="290" y="257" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">HIKMAH: Ship Safely</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Cloud DevOps-এর যাত্রা — IaC থেকে Service Mesh পর্যন্ত।</div>
 
 <div class="dialogue"><strong>তুমি:</strong> এখন কী করব এই জ্ঞান দিয়ে?</div>
 <div class="dialogue en"><strong>You:</strong> What do I do with this knowledge?</div>
