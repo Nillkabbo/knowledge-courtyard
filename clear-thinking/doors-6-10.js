@@ -655,5 +655,39 @@ doors.push({
 <div class=\"dialogue\">জাকিরা উঠে দাঁড়ালেন। তাঁতের সামনে থেকে। কাপড় প্রায় তৈরি — নয় রঙের সূত্র এক জায়গায়, এক নকশায়, এক কাপড়ে। \"এটা তোমার,\" তিনি বললেন। \"এই কাপড়ের নাম — সুচিন্তিত জীবন। তুমি এখন তাঁতের কারিগর। মনের ত্রয়ী সম্পূর্ণ। রক্ষা, রক্ষণাবেক্ষণ, তীক্ষ্ণতা — তিনটাই তোমার হাতে। এখন যাও — আর বোনো।\" তুমি উঠে দাঁড়ালে। উঠোন ছেড়ে বের হলে। পেছনে জাকিরার তাঁতের ঠক-ঠক শব্দ আসছে — সদা চালু, সদা বুনছে।</div>
 <div class=\"dialogue en\">Zakira stood. From before the loom. The cloth is almost done — nine colored threads in one place, one pattern, one cloth. \"This is yours,\" she said. \"The name of this cloth — a deliberate life. You are now a weaver of the loom. The mind trilogy is complete. Defense, maintenance, sharpness — all three in your hands. Now go — and weave.\" You stood. Left the courtyard. Behind you came the clack-clack of Zakira's loom — always running, always weaving.</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🪡 Clear Thinking: 9 Models Unified</text>
+  <rect x="180" y="50" width="220" height="35" rx="17" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="72" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">D1: Mental Models</text>
+  <rect x="140" y="95" width="300" height="35" rx="17" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="117" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">D2-D3: Logic + Fallacies</text>
+  <rect x="100" y="140" width="380" height="35" rx="17" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="162" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">D4-D5: Bayesian + First Principles</text>
+  <rect x="60" y="185" width="460" height="35" rx="17" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
+  <text x="290" y="207" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">D6-D9: Problem Solving + Estimation + Decisions + Second-Order</text>
+  <rect x="120" y="235" width="340" height="35" rx="17" fill="#052e16" stroke="#4ade80" stroke-width="2.5"/>
+  <text x="290" y="257" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">HIKMAH: Applied Wisdom</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: নয়টি মডেল — জাকিরা থেকে হিকমাহ পর্যন্ত একটি তাঁত।</div>
+
+<div class="code-block">— Daily Clear Thinking Checklist —
+
+  # Morning (before work):
+  # 1. কোন মডেল আজ দরকার? (model selection)
+  # 2. সবচেয়ে গুরুত্বপূর্ণ সিদ্ধান্ত কী? (prioritization)
+  # 3. কী ভুল হতে পারে? (inversion/premortem)
+
+  # During work:
+  # 4. এটা কি আমার একমাত্র হাতিয়ার? (model diversity)
+  # 5. বেস রেট কত? (Bayesian thinking)
+  # 6. তারপর কী? (second-order consequences)
+
+  # Evening (reflection):
+  # 7. কোন যুক্তিতে ভুল ছিল? (fallacy check)
+  # 8. কোন সিদ্ধান্ত ভালো হয়েছে? (calibration)
+  # 9. আগামীকাল কী শিখব? (growth mindset)</div>
+
 <div class=\"secret-box\">🪡 নয়টা সূত্র এক কাপড়ে — সুচিন্তিত জীবন। জাকিরা (মডেল), ইউসুফ (যুক্তি), নাফিসা (ভ্রষ্টাচার), রুকাইয়া (সম্ভাবনা), সুলতান (মূলসূত্র), হালিমা (সমাধান), আবদুল্লাহ (আন্দাজ), ইব্রাহিম (সিদ্ধান্ত), সালমা (দ্বিতীয়-স্তর)। মনের ত্রয়ী সম্পূর্ণ: ২৪ রক্ষা, ৩২ রক্ষণাবেক্ষণ, ৩৩ তীক্ষ্ণতা। এখন তুমি তাঁতের কারিগর।</div>`
 });
