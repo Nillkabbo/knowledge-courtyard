@@ -43,6 +43,82 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (সিস্টেম ডিজাইন) Door ১৬:</strong> Database ও indexing-এর overview শিখেছিলে। এই বই সেই ভিত্তিকে গভীর করে। Book ৩৫ (ডিস্ট্রিবিউটেড): Distributed database — replication, sharding। LedgerPilot: MySQL = relational database, Ipractus: PostgreSQL = relational।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📊 Relational Model: Tables, PK, FK</text>
+  <rect x="20" y="50" width="200" height="170" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+  <text x="120" y="72" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">users (table)</text>
+  <rect x="30" y="82" width="180" height="20" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="40" y="96" fill="#7dd3fc" font-size="7">id (PK) 🔑</text>
+  <text x="100" y="96" fill="#94a3b8" font-size="7">| name</text>
+  <text x="170" y="96" fill="#94a3b8" font-size="7">| email</text>
+  <rect x="30" y="105" width="180" height="16" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="40" y="116" fill="#4ade80" font-size="7">1</text>
+  <text x="100" y="116" fill="#86efac" font-size="7">| Rakib</text>
+  <text x="170" y="116" fill="#86efac" font-size="7">| r@x.com</text>
+  <rect x="30" y="122" width="180" height="16" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="40" y="133" fill="#4ade80" font-size="7">2</text>
+  <text x="100" y="133" fill="#86efac" font-size="7">| Sara</text>
+  <text x="170" y="133" fill="#86efac" font-size="7">| s@x.com</text>
+  <text x="120" y="160" text-anchor="middle" fill="#94a3b8" font-size="7">Primary Key: unique per row</text>
+  <text x="120" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">Each column = attribute</text>
+  <text x="120" y="200" text-anchor="middle" fill="#94a3b8" font-size="7">Each row = tuple (record)</text>
+  <rect x="350" y="50" width="210" height="170" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="455" y="72" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">orders (table)</text>
+  <rect x="360" y="82" width="190" height="20" rx="3" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="370" y="96" fill="#fde68a" font-size="7">id (PK) 🔑</text>
+  <text x="420" y="96" fill="#fde68a" font-size="7">| user_id (FK) 🔗</text>
+  <text x="520" y="96" fill="#94a3b8" font-size="7">| amt</text>
+  <rect x="360" y="105" width="190" height="16" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="370" y="116" fill="#4ade80" font-size="7">101</text>
+  <text x="420" y="116" fill="#4ade80" font-size="7">| 1 (→Rakib)</text>
+  <text x="520" y="116" fill="#86efac" font-size="7">| $50</text>
+  <rect x="360" y="122" width="190" height="16" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="370" y="133" fill="#4ade80" font-size="7">102</text>
+  <text x="420" y="133" fill="#4ade80" font-size="7">| 2 (→Sara)</text>
+  <text x="520" y="133" fill="#86efac" font-size="7">| $30</text>
+  <text x="455" y="160" text-anchor="middle" fill="#94a3b8" font-size="7">Foreign Key: links to users.id</text>
+  <text x="455" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">Referential integrity</text>
+  <text x="455" y="200" text-anchor="middle" fill="#fcd34d" font-size="7">Codd 1970: relational algebra</text>
+  <path d="M 120 105 Q 235 60 350 105" fill="none" stroke="#a855f7" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="235" y="55" text-anchor="middle" fill="#c084fc" font-size="7">FK relationship</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Relational model — users ও orders টেবিল PK/FK দিয়ে যুক্ত।</div>
+
+<div class="code-block">— SQL: CREATE + INSERT + SELECT —
+
+  -- Table তৈরি:
+  CREATE TABLE users (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(100) NOT NULL,
+      email VARCHAR(255) UNIQUE NOT NULL,
+      created_at TIMESTAMP DEFAULT NOW()
+  );
+
+  CREATE TABLE orders (
+      id SERIAL PRIMARY KEY,
+      user_id INTEGER REFERENCES users(id),
+      amount DECIMAL(10,2),
+      status VARCHAR(20) DEFAULT 'pending'
+  );
+
+  -- সারি যোগ করো:
+  INSERT INTO users (name, email)
+  VALUES ('Rakib', 'r@x.com'), ('Sara', 's@x.com');
+
+  -- পড়ো:
+  SELECT u.name, o.amount
+  FROM users u
+  JOIN orders o ON u.id = o.user_id
+  WHERE o.amount > 20
+  ORDER BY o.amount DESC;
+
+  -- Django ORM equivalent:
+  User.objects.filter(
+      orders__amount__gt=20
+  ).order_by('-orders__amount')</div>
+
 <div class="secret-box">📊 <strong>Relational Model = উপাত্তের গাণিতিক সংগঠন।</strong> টেবিল = relation, সারি = tuple, কলাম = attribute। Primary key অনন্যতা দেয়, foreign key সম্পর্ক তৈরি করে। Codd-এর ১৯৭০ সালের ধারণা আজকের প্রতিটি database-এর ভিত্তি। কিন্তু টেবিল তৈরি করা এক জিনিস — তাতে প্রশ্ন করা আরেক জিনিস। সেই ভাষার নাম SQL। সেই যাত্রা শুরু হবে পরের দরজায়।</div>`,
   senior: {
     title: "Relational Model এক নজরে",
@@ -104,6 +180,54 @@ SELECT name FROM users WHERE id IN (SELECT user_id FROM orders WHERE total > ১
 <p class="scene-setting">এই আয়াত স্পষ্ট ভাষার কথা বলে। SQL হলো ডাটাবেসের সাথে স্পষ্ট ভাষায় কথা বলার মাধ্যম। তুমি যা চাও সঠিকভাবে বলো — SQL সেটি ডাটাবেস থেকে বের করে আনে। এটাই declarative ভাষার শক্তি — তুমি কী চাও বলো, কীভাবে পাবে সেটা ডাটাবেস সামলাবে।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>LedgerPilot:</strong> তুমি প্রতিদিন Django ORM ব্যবহার করছো — সেটি আসলে SQL generate করে। User.objects.filter(age__gt=১৮) → SELECT * FROM users WHERE age > ১৮। Book ৪ (সিস্টেম ডিজাইন): Database queries — performance depends on indexing।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">💻 SQL Query: JOIN + GROUP BY প্রবাহ</text>
+  <rect x="20" y="55" width="160" height="80" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+  <text x="100" y="78" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">users</text>
+  <text x="100" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">id | name | dept</text>
+  <text x="100" y="115" text-anchor="middle" fill="#86efac" font-size="7">1 | Rakib | Eng</text>
+  <text x="100" y="128" text-anchor="middle" fill="#86efac" font-size="7">2 | Sara | Sales</text>
+  <rect x="220" y="55" width="160" height="80" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="300" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">orders</text>
+  <text x="300" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">id | uid | amount</text>
+  <text x="300" y="115" text-anchor="middle" fill="#fde68a" font-size="7">10 | 1 | $50</text>
+  <text x="300" y="128" text-anchor="middle" fill="#fde68a" font-size="7">11 | 2 | $30</text>
+  <defs><marker id="arrD2a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="180" y1="95" x2="218" y2="95" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD2a)"/>
+  <text x="199" y="88" text-anchor="middle" fill="#c084fc" font-size="7">JOIN</text>
+  <rect x="200" y="165" width="180" height="70" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="185" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">GROUP BY dept</text>
+  <text x="290" y="205" text-anchor="middle" fill="#86efac" font-size="7">Eng | SUM=$50</text>
+  <text x="290" y="220" text-anchor="middle" fill="#86efac" font-size="7">Sales | SUM=$30</text>
+  <defs><marker id="arrD2b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#f87171"/></marker></defs>
+  <line x1="300" y1="135" x2="290" y2="163" stroke="#f87171" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrD2b)"/>
+  <text x="400" y="100" fill="#94a3b8" font-size="7">SELECT কোথা থেকে</text>
+  <text x="400" y="115" fill="#94a3b8" font-size="7">কী আনবে নির্দিষ্ট করে</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: SQL JOIN দুই টেবিলকে যুক্ত করে, GROUP BY সারাংশ তৈরি করে।</div>
+
+<div class="code-block">— SQL: SELECT + JOIN + GROUP BY —
+
+  -- টেবিল যোগ + গোষ্ঠীভুক্ত সারাংশ
+  SELECT u.dept,
+         COUNT(o.id) AS order_count,
+         SUM(o.amount) AS total_sales
+  FROM users u
+  LEFT JOIN orders o ON u.id = o.uid
+  WHERE o.created_at >= '2025-01-01'
+  GROUP BY u.dept
+  HAVING SUM(o.amount) > 100
+  ORDER BY total_sales DESC;
+
+  -- Subquery উদাহরণ:
+  SELECT name FROM users
+  WHERE id IN (
+      SELECT uid FROM orders
+      WHERE amount > (SELECT AVG(amount) FROM orders)
+  );</div>
 
 <div class="secret-box">💻 <strong>SQL = ডাটাবেসের ভাষা।</strong> SELECT পড়ো, INSERT লেখো, UPDATE বদলাও, DELETE মুছো। JOIN দিয়ে টেবিল যোগ করো, GROUP BY দিয়ে সারাংশ তৈরি করো। কিন্তু যখন মিলিয়ন মিলিয়ন সারি থাকে — SELECT * কতটা ধীর? সেই সমাধান আসবে পরের দরজায় — indexing।</div>`,
   senior: {
@@ -174,6 +298,70 @@ EXPLAIN SELECT * FROM users WHERE email = 'test@example.com'<br>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ২ (DSA Bazaar) Door ১৬:</strong> Heap = priority queue — B-tree-এর মতো balanced structure। Book ২ Door ১৫: Binary search — B-tree হলো binary search-এর generalized রূপ। Book ৩৮ (OS) Door ৭: inode = filesystem index।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🗂️ B-Tree Index — O(log n) অনুসন্ধান</text>
+  <rect x="260" y="45" width="60" height="35" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="67" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="700">50</text>
+  <line x1="280" y1="80" x2="200" y2="105" stroke="#475569" stroke-width="2"/>
+  <line x1="290" y1="80" x2="290" y2="105" stroke="#475569" stroke-width="2"/>
+  <line x1="300" y1="80" x2="380" y2="105" stroke="#475569" stroke-width="2"/>
+  <rect x="170" y="105" width="60" height="35" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+  <text x="200" y="127" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">30</text>
+  <rect x="260" y="105" width="60" height="35" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="127" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">50</text>
+  <rect x="350" y="105" width="60" height="35" rx="6" fill="#1e3a5f" stroke="#a855f7" stroke-width="2"/>
+  <text x="380" y="127" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">70</text>
+  <line x1="200" y1="140" x2="180" y2="165" stroke="#475569" stroke-width="1.5"/>
+  <line x1="200" y1="140" x2="220" y2="165" stroke="#475569" stroke-width="1.5"/>
+  <line x1="290" y1="140" x2="270" y2="165" stroke="#475569" stroke-width="1.5"/>
+  <line x1="290" y1="140" x2="310" y2="165" stroke="#475569" stroke-width="1.5"/>
+  <line x1="380" y1="140" x2="360" y2="165" stroke="#475569" stroke-width="1.5"/>
+  <line x1="380" y1="140" x2="400" y2="165" stroke="#475569" stroke-width="1.5"/>
+  <rect x="150" y="165" width="55" height="28" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="177" y="183" text-anchor="middle" fill="#86efac" font-size="7">20 → row</text>
+  <rect x="210" y="165" width="55" height="28" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="237" y="183" text-anchor="middle" fill="#86efac" font-size="7">30 → row</text>
+  <rect x="245" y="165" width="55" height="28" rx="4" fill="#052e16" stroke="#fbbf24" stroke-width="1"/>
+  <text x="272" y="183" text-anchor="middle" fill="#fde68a" font-size="7">40 → row</text>
+  <rect x="305" y="165" width="55" height="28" rx="4" fill="#052e16" stroke="#fbbf24" stroke-width="1"/>
+  <text x="332" y="183" text-anchor="middle" fill="#fde68a" font-size="7">50 → row</text>
+  <rect x="340" y="165" width="55" height="28" rx="4" fill="#052e16" stroke="#a855f7" stroke-width="1"/>
+  <text x="367" y="183" text-anchor="middle" fill="#c084fc" font-size="7">60 → row</text>
+  <rect x="400" y="165" width="55" height="28" rx="4" fill="#052e16" stroke="#a855f7" stroke-width="1"/>
+  <text x="427" y="183" text-anchor="middle" fill="#c084fc" font-size="7">70 → row</text>
+  <text x="290" y="215" text-anchor="middle" fill="#94a3b8" font-size="8">Root → Internal → Leaf (pointer to table row)</text>
+  <text x="60" y="60" fill="#f87171" font-size="8" font-weight="700">Hash Index</text>
+  <rect x="30" y="70" width="100" height="20" rx="4" fill="#1e3a5f" stroke="#f87171" stroke-width="1.5"/>
+  <text x="80" y="84" text-anchor="middle" fill="#fca5a5" font-size="7">hash(key) → bucket</text>
+  <text x="80" y="105" text-anchor="middle" fill="#94a3b8" font-size="7">O(1) exact match</text>
+  <text x="80" y="118" text-anchor="middle" fill="#f87171" font-size="7">কোনো range নয়</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: B-tree ব্যাল্যান্সড কাঠামো — O(log n)-এ অনুসন্ধান। Hash সরাসরি মিল।</div>
+
+<div class="code-block">— SQL: CREATE INDEX + EXPLAIN ANALYZE —
+
+  -- B-tree index (ডিফল্ট)
+  CREATE INDEX idx_user_email ON users(email);
+
+  -- Composite index (বহু-কলাম)
+  CREATE INDEX idx_orders_user_date
+      ON orders(user_id, created_at DESC);
+
+  -- Hash index (শুধু exact match)
+  CREATE INDEX idx_session_hash
+      ON sessions(token) USING hash;
+
+  -- Execution plan দেখো:
+  EXPLAIN ANALYZE
+  SELECT * FROM users WHERE email = 'r@x.com';
+
+  -- আউটপুট:
+  -- Index Scan using idx_user_email
+  --   (cost=0.29..8.31 rows=1 width=...)
+  -- Execution Time: 0.034 ms  # সূচি ছাড়া হতো Seq Scan</div>
+
 <div class="secret-box">🗂️ <strong>Index = সূচিপত্র।</strong> B-tree (range), Hash (exact), Composite (multi-column)। EXPLAIN দিয়ে দেখো ডাটাবেস কীভাবে query execute করছে। কিন্তু index শুধু read দ্রুত করে। যখন একাধিক ব্যবহারকারী একসাথে লেখে? যখন half-complete transaction থাকে? সেই সমাধান আসবে পরের দরজায় — ACID transactions।</div>`,
   senior: {
     title: "Indexing এক নজরে",
@@ -235,6 +423,71 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৫ (ডিস্ট্রিবিউটেড) Door ৫:</strong> 2PC, Saga pattern — distributed ACID। Book ৪ (সিস্টেম ডিজাইন): Circuit Breaker — transaction failure recovery। LedgerPilot: Django transactions — transaction.atomic() = ACID wrapper।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔐 ACID: Transaction Lifecycle</text>
+  <rect x="30" y="55" width="90" height="50" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="75" y="78" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">BEGIN</text>
+  <text x="75" y="95" text-anchor="middle" fill="#94a3b8" font-size="7">লেনদেন শুরু</text>
+  <defs><marker id="arrD4a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="120" y1="80" x2="148" y2="80" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD4a)"/>
+  <rect x="150" y="55" width="90" height="50" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="195" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">UPDATE</text>
+  <text x="195" y="95" text-anchor="middle" fill="#94a3b8" font-size="7">balance -= 100</text>
+  <defs><marker id="arrD4b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="240" y1="80" x2="268" y2="80" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD4b)"/>
+  <rect x="270" y="55" width="90" height="50" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="315" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">INSERT</text>
+  <text x="315" y="95" text-anchor="middle" fill="#94a3b8" font-size="7">log entry</text>
+  <defs><marker id="arrD4c" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="360" y1="80" x2="388" y2="80" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD4c)"/>
+  <rect x="390" y="40" width="85" height="40" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="432" y="58" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">COMMIT ✓</text>
+  <text x="432" y="72" text-anchor="middle" fill="#86efac" font-size="7">স্থায়ী</text>
+  <rect x="390" y="90" width="85" height="40" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="432" y="108" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">ROLLBACK ✗</text>
+  <text x="432" y="122" text-anchor="middle" fill="#fca5a5" font-size="7">বাতিল</text>
+  <defs><marker id="arrD4d" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#f87171"/></marker></defs>
+  <line x1="360" y1="95" x2="388" y2="105" stroke="#f87171" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrD4d)"/>
+  <rect x="50" y="150" width="240" height="80" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+  <text x="170" y="172" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">MVCC (Multi-Version Concurrency)</text>
+  <text x="170" y="192" text-anchor="middle" fill="#94a3b8" font-size="7">T1 reads old version, T2 writes new version</text>
+  <text x="170" y="207" text-anchor="middle" fill="#94a3b8" font-size="7">কেউ block হয় না — snapshot isolation</text>
+  <text x="170" y="222" text-anchor="middle" fill="#c084fc" font-size="7">PostgreSQL: xmin/xmax tuples</text>
+  <rect x="320" y="150" width="230" height="80" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="435" y="172" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">WAL (Write-Ahead Log)</text>
+  <text x="435" y="192" text-anchor="middle" fill="#94a3b8" font-size="7">প্রথমে log লেখো, তারপর data</text>
+  <text x="435" y="207" text-anchor="middle" fill="#94a3b8" font-size="7">crash হলে log থেকে পুনরুদ্ধার</text>
+  <text x="435" y="222" text-anchor="middle" fill="#4ade80" font-size="7">Durability নিশ্চিত</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Transaction BEGIN থেকে COMMIT/ROLLBACK — MVCC ও WAL দ্বারা নিরাপত্তা।</div>
+
+<div class="code-block">— SQL + Python: ACID Transaction —
+
+  -- PostgreSQL: দুই ধাপের স্থানান্তর
+  BEGIN;
+    UPDATE accounts SET balance = balance - 100
+        WHERE user_id = 1;
+    UPDATE accounts SET balance = balance + 100
+        WHERE user_id = 2;
+    INSERT INTO transfers (from_id, to_id, amount)
+        VALUES (1, 2, 100);
+  COMMIT;  -- সব সফল হলে স্থায়ী
+  -- ত্রুটি হলে: ROLLBACK;
+
+  # Django ORM (LedgerPilot উদাহরণ):
+  from django.db import transaction
+
+  @transaction.atomic          # ACID wrapper
+  def transfer_money(from_id, to_id, amt):
+      src = Account.objects.get(id=from_id)
+      dst = Account.objects.get(id=to_id)
+      src.balance -= amt
+      dst.balance += amt
+      src.save()
+      dst.save()  # exception হলে সব rollback</div>
+
 <div class="secret-box">🔐 <strong>ACID = লেনদেনের চার প্রতিশ্রুতি।</strong> Atomicity (সব বা কিছু না), Consistency (বৈধ অবস্থা), Isolation (স্বাধীন), Durability (চিরস্থায়ী)। MVCC দিয়ে concurrent transactions নিরাপদে চলে। কিন্তু ACID শুধু একটি মেশিনে। একাধিক মেশিনে ACID কঠিন — সেটা distributed transaction। সেই যাত্রা শুরু হবে পরের দরজায়।</div>`,
   senior: {
     title: "ACID Transactions এক নজরে",
@@ -295,6 +548,74 @@ enrollments (student_id, course_id) — junction table<br>
 <p class="scene-setting">এই আয়াত আলোর কথা বলে — স্বচ্ছতা। Normalization-ও তেমন — ডেটাকে স্বচ্ছ ও সুসংগঠিত করে। প্রতিটি তথ্য একটি নির্দিষ্ট স্থানে, কোনো পুনরাবৃত্তি নেই। স্বচ্ছতা ও সঙ্গতি — এটাই normalization-এর লক্ষ্য।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (সিস্টেম ডিজাইন):</strong> Database schema design — normalization-এর ব্যবহারিক প্রয়োগ। LedgerPilot: Django models — ForeignKey, ManyToMany = normalized relationships।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📐 Normalization: Redundancy → Purity</text>
+  <rect x="20" y="50" width="160" height="170" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="100" y="72" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">Unnormalized</text>
+  <text x="100" y="92" text-anchor="middle" fill="#94a3b8" font-size="7">id | name | orders</text>
+  <text x="100" y="108" text-anchor="middle" fill="#fca5a5" font-size="7">1 | Rakib | 50,30,90</text>
+  <text x="100" y="122" text-anchor="middle" fill="#fca5a5" font-size="7">2 | Sara | 20</text>
+  <text x="100" y="148" text-anchor="middle" fill="#f87171" font-size="7">⚠ repeating group</text>
+  <text x="100" y="163" text-anchor="middle" fill="#f87171" font-size="7">⚠ এক কলামে একাধিক মান</text>
+  <text x="100" y="183" text-anchor="middle" fill="#94a3b8" font-size="7">dept: Eng, Eng, Eng</text>
+  <text x="100" y="198" text-anchor="middle" fill="#f87171" font-size="7">⚠ redundancy</text>
+  <defs><marker id="arrD5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="180" y1="135" x2="228" y2="135" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD5)"/>
+  <text x="204" y="128" text-anchor="middle" fill="#c084fc" font-size="7">1NF</text>
+  <rect x="230" y="50" width="150" height="170" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="305" y="72" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">3NF (Normalized)</text>
+  <text x="305" y="92" text-anchor="middle" fill="#7dd3fc" font-size="7">users (table)</text>
+  <text x="305" y="108" text-anchor="middle" fill="#86efac" font-size="7">id | name | dept_id</text>
+  <text x="305" y="122" text-anchor="middle" fill="#86efac" font-size="7">1 | Rakib | 10</text>
+  <text x="305" y="136" text-anchor="middle" fill="#86efac" font-size="7">2 | Sara | 20</text>
+  <text x="305" y="158" text-anchor="middle" fill="#7dd3fc" font-size="7">orders (table)</text>
+  <text x="305" y="174" text-anchor="middle" fill="#fde68a" font-size="7">id | uid | amt</text>
+  <text x="305" y="188" text-anchor="middle" fill="#fde68a" font-size="7">10 | 1 | $50</text>
+  <text x="305" y="202" text-anchor="middle" fill="#fde68a" font-size="7">11 | 1 | $30</text>
+  <defs><marker id="arrD5b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>
+  <line x1="380" y1="135" x2="428" y2="135" stroke="#22c55e" stroke-width="2" marker-end="url(#arrD5b)"/>
+  <text x="404" y="128" text-anchor="middle" fill="#4ade80" font-size="7">FK</text>
+  <rect x="430" y="50" width="130" height="80" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="495" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">departments</text>
+  <text x="495" y="92" text-anchor="middle" fill="#86efac" font-size="7">id | name</text>
+  <text x="495" y="108" text-anchor="middle" fill="#86efac" font-size="7">10 | Eng</text>
+  <text x="495" y="122" text-anchor="middle" fill="#86efac" font-size="7">20 | Sales</text>
+  <rect x="430" y="150" width="130" height="70" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="495" y="170" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Normal Forms</text>
+  <text x="495" y="186" text-anchor="middle" fill="#fde68a" font-size="7">1NF: atomic values</text>
+  <text x="495" y="199" text-anchor="middle" fill="#fde68a" font-size="7">2NF: no partial dep</text>
+  <text x="495" y="212" text-anchor="middle" fill="#fde68a" font-size="7">3NF: no transitive</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: অসংগঠিত ডেটা থেকে ৩টি স্বাভাবিক টেবিলে রূপান্তর — redundancy দূর।</div>
+
+<div class="code-block">— SQL: Normalization ধাপে ধাপে —
+
+  -- ❌ অস্বাভাবিক (0NF): এক কলামে একাধিক মান
+  CREATE TABLE bad_orders (
+      id INT, customer_name TEXT,
+      items TEXT  -- "pen, paper, stapler"
+  );
+
+  -- ✅ 1NF: প্রতিটি কলাম atomic
+  CREATE TABLE orders_1nf (
+      order_id INT, item_name TEXT, qty INT
+  );
+
+  -- ✅ 3NF: আলাদা টেবিল, FK দিয়ে সম্পর্ক
+  CREATE TABLE customers (
+      id SERIAL PRIMARY KEY,
+      name TEXT NOT NULL,
+      dept_id INT REFERENCES departments(id)
+  );
+  CREATE TABLE orders (
+      id SERIAL PRIMARY KEY,
+      customer_id INT REFERENCES customers(id),
+      total DECIMAL(10,2)
+  );
+  -- redundancy দূর, consistency নিশ্চিত</div>
 
 <div class="secret-box">📐 <strong>Normalization = উপাত্তের পরিশুদ্ধি।</strong> 1NF → 2NF → 3NF → BCNF। প্রতিটি ধাপে redundancy কমে, consistency বাড়ে। কিন্তু কখনো খুব বেশি normalization = খুব বেশি JOIN = slow query। সেখানে আসে denormalization। কিন্তু relational database সব সমস্যার সমাধান নয়। কিছু ডেটা relational নয় — documents, graphs, key-value। সেই বিকল্প আসবে পরের দরজায় — NoSQL।</div>`,
   senior: {

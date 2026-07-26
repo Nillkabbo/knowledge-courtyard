@@ -81,6 +81,82 @@ pgvector (২০২১) — PostgreSQL extension, Andrew Kane (ankane) তৈর
 এই ক্ষেত্র মাত্র ~৫ বছরের পুরোনো — কিন্তু প্রতিটি AI অ্যাপ্লিকেশনে এখন এটি আবশ্যক।
 </div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🧭 Vector DB: অর্থ দিয়ে খোঁজা</text>
+  <rect x="30" y="50" width="130" height="100" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+  <text x="95" y="72" text-anchor="middle" fill="#67e8f9" font-size="8" font-weight="700">Query: "ML"</text>
+  <rect x="45" y="82" width="100" height="18" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="95" y="94" text-anchor="middle" fill="#7dd3fc" font-size="6">[0.2, 0.8, -0.1, ...]</text>
+  <text x="95" y="115" text-anchor="middle" fill="#94a3b8" font-size="6">embedding model</text>
+  <text x="95" y="128" text-anchor="middle" fill="#94a3b8" font-size="6">(1536-dim)</text>
+  <text x="95" y="142" text-anchor="middle" fill="#7dd3fc" font-size="6">→ query vector</text>
+  <defs><marker id="arrD11a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="160" y1="100" x2="198" y2="100" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD11a)"/>
+  <text x="179" y="93" text-anchor="middle" fill="#c084fc" font-size="6">search</text>
+  <rect x="200" y="50" width="220" height="170" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="310" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Vector Database</text>
+  <circle cx="250" cy="100" r="8" fill="#22c55e"/>
+  <text x="250" y="103" text-anchor="middle" fill="#052e16" font-size="6" font-weight="700">A</text>
+  <circle cx="310" cy="95" r="10" fill="#fbbf24"/>
+  <text x="310" y="98" text-anchor="middle" fill="#451a0a" font-size="6" font-weight="700">Q</text>
+  <circle cx="370" cy="110" r="7" fill="#22d3ee"/>
+  <text x="370" y="113" text-anchor="middle" fill="#0f172a" font-size="6" font-weight="700">B</text>
+  <circle cx="270" cy="140" r="6" fill="#a855f7"/>
+  <circle cx="350" cy="150" r="6" fill="#f87171"/>
+  <circle cx="230" cy="165" r="5" fill="#475569"/>
+  <circle cx="390" cy="170" r="5" fill="#475569"/>
+  <line x1="316" y1="100" x2="244" y2="100" stroke="#fbbf24" stroke-width="1.5"/>
+  <line x1="310" y1="105" x2="270" y2="137" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="240" y="195" text-anchor="middle" fill="#86efac" font-size="6">A: sim=0.92 ✓</text>
+  <text x="350" y="145" text-anchor="middle" fill="#fca5a5" font-size="6">B: sim=0.71</text>
+  <text x="310" y="212" text-anchor="middle" fill="#94a3b8" font-size="6">cosine(q, v) = nearest meaning</text>
+  <rect x="440" y="50" width="120" height="100" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="500" y="72" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Top-K Result</text>
+  <rect x="455" y="82" width="90" height="16" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="500" y="93" text-anchor="middle" fill="#86efac" font-size="6">doc A (0.92)</text>
+  <rect x="455" y="102" width="90" height="16" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="500" y="113" text-anchor="middle" fill="#86efac" font-size="6">doc C (0.85)</text>
+  <rect x="455" y="122" width="90" height="16" rx="3" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="500" y="133" text-anchor="middle" fill="#fde68a" font-size="6">doc B (0.71)</text>
+  <defs><marker id="arrD11b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>
+  <line x1="420" y1="100" x2="438" y2="100" stroke="#22c55e" stroke-width="2" marker-end="url(#arrD11b)"/>
+  <text x="290" y="240" text-anchor="middle" fill="#c084fc" font-size="7">pgvector | Pinecone | Milvus | Chroma | Weaviate</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Query ভেক্টর সবচেয়ে কাছের ডকুমেন্ট ভেক্টর খুঁজে বের করে — cosine similarity দিয়ে।</div>
+
+<div class="code-block">— Python: Vector Search with pgvector —
+
+  # pgvector — PostgreSQL-এ ভেক্টর search
+  import psycopg2
+
+  conn = psycopg2.connect("dbname=myapp")
+
+  # টেবিল তৈরি (১৫৩৬-মাত্রিক)
+  conn.execute('''
+      CREATE TABLE documents (
+          id SERIAL PRIMARY KEY,
+          content TEXT,
+          embedding vector(1536)  -- pgvector type
+      );
+  ''')
+
+  # HNSW index (পরের দরজায় বিস্তারিত)
+  conn.execute('''
+      CREATE INDEX ON documents
+      USING hnsw (embedding vector_cosine_ops);
+  ''')
+
+  # similarity search — k=5 nearest
+  results = conn.execute('''
+      SELECT content, 1 - (embedding <=> %s) AS similarity
+      FROM documents
+      ORDER BY embedding <=> %s      -- cosine distance
+      LIMIT 5;
+  ''', (query_vec, query_vec))
+  # <=> = cosine distance operator (pgvector)</div>
+
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> সম্পর্কিত DB মজুত রাখে "কী," ভেক্টর DB মজুত রাখে "অর্থ।" AI প্রয়োজন উভয়।<br>
 <em>Relational DBs store "what." Vector DBs store "meaning." AI needs both.</em>
@@ -173,6 +249,76 @@ GPU-তে চালানোর জন্য অপ্টিমাইজড। 
 এটি একটি অবিশ্বাস্য ফলাফল — নিকটতম প্রতিবেশী খোঁজা সমস্যায় (যা ১৯৭০-এর দশক থেকে অধ্যয়িত) এটি একটি যুগান্তকারী অ্যালগরিদম।<br>
 নেভিগেবল স্মল ওয়ার্ল্ড গ্রাফ ধারণাটি স্ট্যানলি মিলগ্রামের "six degrees of separation" (১৯৬৭) পরীক্ষা থেকে অনুপ্রাণিত — কম edge দিয়েও দ্রুত গন্তব্যে পৌঁছানো যায়।
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔬 HNSW: Hierarchical Graph (ANN)</text>
+  <rect x="20" y="45" width="170" height="195" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+  <text x="105" y="65" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">Layer 0 (সব পয়েন্ট)</text>
+  <circle cx="50" cy="90" r="5" fill="#22c55e"/>
+  <circle cx="90" cy="85" r="5" fill="#fbbf24"/>
+  <circle cx="130" cy="100" r="5" fill="#a855f7"/>
+  <circle cx="60" cy="130" r="5" fill="#22d3ee"/>
+  <circle cx="100" cy="140" r="5" fill="#f87171"/>
+  <circle cx="150" cy="150" r="5" fill="#4ade80"/>
+  <circle cx="55" cy="175" r="5" fill="#c084fc"/>
+  <circle cx="120" cy="180" r="5" fill="#fde68a"/>
+  <circle cx="160" cy="210" r="5" fill="#86efac"/>
+  <line x1="55" y1="90" x2="87" y2="86" stroke="#475569" stroke-width="1"/>
+  <line x1="93" y1="86" x2="127" y2="98" stroke="#475569" stroke-width="1"/>
+  <line x1="60" y1="130" x2="97" y2="138" stroke="#475569" stroke-width="1"/>
+  <line x1="103" y1="140" x2="147" y2="148" stroke="#475569" stroke-width="1"/>
+  <line x1="55" y1="175" x2="117" y2="178" stroke="#475569" stroke-width="1"/>
+  <rect x="210" y="45" width="170" height="120" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="295" y="65" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">Layer 1 (কম পয়েন্ট)</text>
+  <circle cx="250" cy="90" r="6" fill="#fbbf24"/>
+  <circle cx="310" cy="100" r="6" fill="#a855f7"/>
+  <circle cx="280" cy="135" r="6" fill="#f87171"/>
+  <circle cx="340" cy="140" r="6" fill="#4ade80"/>
+  <line x1="256" y1="92" x2="304" y2="98" stroke="#fde68a" stroke-width="1.2"/>
+  <line x1="310" y1="106" x2="282" y2="131" stroke="#fde68a" stroke-width="1.2"/>
+  <line x1="285" y1="138" x2="335" y2="139" stroke="#fde68a" stroke-width="1.2"/>
+  <rect x="400" y="45" width="160" height="90" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="480" y="65" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Layer 2 (entry)</text>
+  <circle cx="450" cy="95" r="7" fill="#22c55e"/>
+  <circle cx="510" cy="105" r="7" fill="#a855f7"/>
+  <line x1="457" y1="97" x2="503" y2="103" stroke="#86efac" stroke-width="1.5"/>
+  <defs><marker id="arrD12a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#f87171"/></marker></defs>
+  <line x1="450" y1="102" x2="300" y2="120" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrD12a)"/>
+  <text x="375" y="115" text-anchor="middle" fill="#fca5a5" font-size="6">greedy descent</text>
+  <rect x="210" y="180" width="350" height="55" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+  <text x="385" y="200" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">Exact O(n) vs ANN O(log n)</text>
+  <text x="290" y="218" text-anchor="middle" fill="#f87171" font-size="7">Exact: সব তুলনা → নিখুঁত</text>
+  <text x="470" y="218" text-anchor="middle" fill="#4ade80" font-size="7">ANN: গ্রাফ ট্রাভার্স → ৯৯% নিখুঁত, ১০০০×</text>
+  <text x="385" y="232" text-anchor="middle" fill="#94a3b8" font-size="7">Malkov 2016 | IVF: cluster + probe</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: HNSW বহু-স্তর গ্রাফ — উপরে কম, নিচে ঘন। দ্রুত descent দিয়ে নিকটতম পয়েন্ট।</div>
+
+<div class="code-block">— Python: HNSW + IVF Comparison —
+
+  import numpy as np
+  from sklearn.neighbors import NearestNeighbors
+
+  # ১০ লাখ ভেক্টর, ১২৮-মাত্রিক
+  data = np.random.rand(1_000_000, 128).astype('float32')
+  query = np.random.rand(128).astype('float32')
+
+  # ❌ Exact (brute force) — O(n)
+  nn = NearestNeighbors(algorithm='brute', metric='cosine')
+  nn.fit(data)
+  dist, idx = nn.kneighbors([query], k=5)
+  # সময়: ~২০০ ms per query
+
+  # ✅ HNSW (ANN) — O(log n)
+  import hnswlib
+  index = hnswlib.Index(space='cosine', dim=128)
+  index.init_index(max_elements=1_000_000, ef_construction=200, M=16)
+  index.add_items(data, np.arange(len(data)))
+  index.set_ef(50)  # search width
+  labels, distances = index.knn_query(query, k=5)
+  # সময়: ~০.২ ms — ১০০০× দ্রুত!
+  # recall@5 ≈ ৯৮% (প্রায় নিখুঁত)</div>
 
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> নিখুঁত অসম্ভব হলে, দ্রুত কাছাকাছিই জয়।<br>
@@ -273,6 +419,90 @@ AI উপাত্ত স্থাপত্য — পাঁচ ডাটাব�
 Codd-এর সারি-কলাম থেকে Malkov-এর HNSW গ্রাফ — ৫৫ বছরের বিবর্তন।<br>
 একটি ডাটাবেস নয় — একটি পরিবার। প্রতিটি সদস্যের নিজস্ব কাজ।
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🤖 RAG: Vector + Relational Hybrid</text>
+  <rect x="20" y="50" width="100" height="45" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="70" y="70" text-anchor="middle" fill="#67e8f9" font-size="8" font-weight="700">User Query</text>
+  <text x="70" y="85" text-anchor="middle" fill="#7dd3fc" font-size="6">"Explain X"</text>
+  <defs><marker id="arrD13a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="120" y1="72" x2="148" y2="72" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD13a)"/>
+  <rect x="150" y="50" width="110" height="45" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="205" y="68" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Embedding</text>
+  <text x="205" y="83" text-anchor="middle" fill="#fde68a" font-size="6">→ query vector</text>
+  <rect x="30" y="120" width="200" height="110" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="130" y="140" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Vector DB (semantic)</text>
+  <rect x="45" y="150" width="80" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="85" y="162" text-anchor="middle" fill="#86efac" font-size="6">doc A (0.92)</text>
+  <rect x="45" y="172" width="80" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="85" y="184" text-anchor="middle" fill="#86efac" font-size="6">doc C (0.85)</text>
+  <rect x="135" y="150" width="80" height="18" rx="3" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="175" y="162" text-anchor="middle" fill="#fde68a" font-size="6">HNSW index</text>
+  <text x="175" y="184" text-anchor="middle" fill="#fde68a" font-size="6">ANN search</text>
+  <text x="130" y="210" text-anchor="middle" fill="#86efac" font-size="6">অর্থ দিয়ে খোঁজে</text>
+  <text x="130" y="222" text-anchor="middle" fill="#94a3b8" font-size="6">Pinecone, pgvector</text>
+  <rect x="250" y="120" width="130" height="110" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+  <text x="315" y="140" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">Relational DB</text>
+  <rect x="265" y="150" width="100" height="18" rx="3" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
+  <text x="315" y="162" text-anchor="middle" fill="#c084fc" font-size="6">user_profile</text>
+  <rect x="265" y="172" width="100" height="18" rx="3" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
+  <text x="315" y="184" text-anchor="middle" fill="#c084fc" font-size="6">permissions</text>
+  <text x="315" y="210" text-anchor="middle" fill="#c084fc" font-size="6">কাঠামো দিয়ে খোঁজে</text>
+  <text x="315" y="222" text-anchor="middle" fill="#94a3b8" font-size="6">PostgreSQL, MySQL</text>
+  <defs><marker id="arrD13b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>
+  <line x1="230" y1="170" x2="248" y2="170" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrD13b)"/>
+  <rect x="410" y="120" width="150" height="110" rx="8" fill="#0f172a" stroke="#f87171" stroke-width="2"/>
+  <text x="485" y="140" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">LLM (GPT/Claude)</text>
+  <rect x="425" y="150" width="120" height="24" rx="4" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
+  <text x="485" y="166" text-anchor="middle" fill="#fca5a5" font-size="6">context + query</text>
+  <text x="485" y="190" text-anchor="middle" fill="#fca5a5" font-size="6">→ grounded answer</text>
+  <text x="485" y="210" text-anchor="middle" fill="#94a3b8" font-size="6">hallucination কমে</text>
+  <text x="485" y="222" text-anchor="middle" fill="#94a3b8" font-size="6">citation সহ</text>
+  <defs><marker id="arrD13c" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>
+  <line x1="380" y1="170" x2="408" y2="170" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrD13c)"/>
+  <defs><marker id="arrD13d" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="205" y1="95" x2="130" y2="118" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrD13d)"/>
+  <line x1="205" y1="95" x2="315" y2="118" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrD13d)"/>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: RAG pipeline — Vector DB (অর্থ) + Relational DB (কাঠামো) → LLM গ্রাউন্ডেড উত্তর।</div>
+
+<div class="code-block">— Python: Hybrid RAG Pipeline —
+
+  # Vector + Relational hybrid search
+  def rag_answer(question, user_id):
+      # ১. Query embedding তৈরি
+      q_vec = embed_model.encode(question)
+
+      # ২. Vector DB: semantic search
+      docs = vector_db.query(
+          vector=q_vec, top_k=5,
+          filter={"source": "knowledge_base"}
+      )  # → প্রাসঙ্গিক অনুচ্ছেদ
+
+      # ৩. Relational DB: structured filter
+      user = pg.query(
+          "SELECT tier, permissions FROM users WHERE id = %s",
+          [user_id]
+      )  # → ব্যবহারকারীর অনুমতি
+
+      # ৪. Context একত্রিত করো
+      context = "\n".join(d.content for d in docs)
+      if user.permissions != "premium":
+          context = filter_premium(context)
+
+      # ৫. LLM-কে grounded prompt
+      answer = llm.chat(
+          messages=[{
+              "role": "system",
+              "content": "শুধু context থেকে উত্তর দাও"
+          }, {
+              "role": "user",
+              "content": f"Context: {context}\nQ: {question}"
+          }]
+      )
+      return answer  # citation সহ</div>
 
 <div class="secret-box">
 <strong>🔑 চূড়ান্ত গোপন সত্য:</strong> ডাটাবেস একটি প্রযুক্তি নয় — এটি একটি মানসিকতা।<br>

@@ -46,6 +46,74 @@ Partition হলে (এবং হবে) — C বা A বেছে নাও�
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (সিস্টেম ডিজাইন):</strong> Microservices — প্রতিটি service-এর জন্য আলাদা database। Book ৩৫ (ডিস্ট্রিবিউটেড) Door ৩: CAP theorem deep dive। Book ১০ (RAG) Door ৩: Vector DB — NoSQL-এর নতুন ধরন।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌐 NoSQL পরিবার — চার ধরনের ডাটাবেস</text>
+  <rect x="20" y="50" width="125" height="85" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+  <text x="82" y="72" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">🔑 Key-Value</text>
+  <text x="82" y="90" text-anchor="middle" fill="#7dd3fc" font-size="7">Redis, DynamoDB</text>
+  <rect x="35" y="98" width="95" height="16" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="82" y="109" text-anchor="middle" fill="#86efac" font-size="7">"user:1" → {json}</text>
+  <text x="82" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">O(1) cache, session</text>
+  <rect x="160" y="50" width="125" height="85" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="222" y="72" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">📄 Document</text>
+  <text x="222" y="90" text-anchor="middle" fill="#fde68a" font-size="7">MongoDB, CouchDB</text>
+  <rect x="175" y="98" width="95" height="16" rx="3" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="222" y="109" text-anchor="middle" fill="#fde68a" font-size="7">{_id, name, ...}</text>
+  <text x="222" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">JSON tree, schemaless</text>
+  <rect x="300" y="50" width="125" height="85" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+  <text x="362" y="72" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">📊 Column-Family</text>
+  <text x="362" y="90" text-anchor="middle" fill="#c084fc" font-size="7">Cassandra, HBase</text>
+  <rect x="315" y="98" width="95" height="16" rx="3" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
+  <text x="362" y="109" text-anchor="middle" fill="#c084fc" font-size="7">row | col1 | col2</text>
+  <text x="362" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">write-heavy, IoT</text>
+  <rect x="440" y="50" width="125" height="85" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="502" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">🔗 Graph</text>
+  <text x="502" y="90" text-anchor="middle" fill="#86efac" font-size="7">Neo4j, Neptune</text>
+  <circle cx="475" cy="108" r="5" fill="#22c55e"/>
+  <circle cx="530" cy="105" r="5" fill="#22c55e"/>
+  <line x1="480" y1="108" x2="525" y2="106" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="502" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">nodes + edges</text>
+  <rect x="120" y="160" width="340" height="70" rx="8" fill="#0f172a" stroke="#f87171" stroke-width="2"/>
+  <text x="290" y="180" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">CAP Theorem — মাত্র ২টি বেছে নাও</text>
+  <text x="180" y="200" text-anchor="middle" fill="#fca5a5" font-size="7">C — Consistency</text>
+  <text x="290" y="200" text-anchor="middle" fill="#fca5a5" font-size="7">A — Availability</text>
+  <text x="400" y="200" text-anchor="middle" fill="#fca5a5" font-size="7">P — Partition Tol.</text>
+  <text x="290" y="218" text-anchor="middle" fill="#94a3b8" font-size="7">Cassandra = AP | MongoDB = CP</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: NoSQL-এর চার ধরন — Key-Value, Document, Column, Graph। CAP tradeoff।</div>
+
+<div class="code-block">— NoSQL: চার ধরনের উদাহরণ —
+
+  # Redis (Key-Value) — অত্যন্ত দ্রুত cache
+  SET user:1:name "Rakib"
+  GET user:1:name        # → "Rakib"
+  INR visit_count        # → atomic counter
+
+  # MongoDB (Document) — JSON-এর মতো
+  db.users.insertOne({
+      name: "Sara",
+      email: "s@x.com",
+      orders: [
+          {item: "book", price: 25},
+          {item: "pen", price: 5}
+      ]
+  });
+  db.users.find({"orders.price": {$gt: 20}});
+
+  # Neo4j (Graph) — Cypher query
+  CREATE (a:Person {name: "Karim"})
+  CREATE (b:Person {name: "Rita"})
+  CREATE (a)-[:KNOWS {since: 2020}]->(b);
+  MATCH (a)-[:KNOWS]-(b) RETURN a, b;
+
+  # Cassandra (Column) — CQL
+  CREATE TABLE events (
+      user_id UUID, ts TIMESTAMP,
+      event TEXT, PRIMARY KEY (user_id, ts)
+  );</div>
+
 <div class="secret-box">🌐 <strong>NoSQL = বিকল্প টুলবক্স।</strong> Key-value (দ্রুত), Document (নমনীয়), Column (বিশাল), Graph (সম্পর্ক)। BASE দর্শন, CAP tradeoff। কিন্তু একটি মেশিনে থাকলে সব সীমাবদ্ধ। যখন মিলিয়ন ব্যবহারকারী, হাজার সার্ভার — ডেটা বিভক্ত করতে হয়। সেই যাত্রা আসবে পরের দরজায় — distributed databases।</div>`,
   senior: {
     title: "NoSQL এক নজরে",
@@ -107,6 +175,75 @@ doors.push({
 <p class="scene-setting">এই আয়াতে জীবের বিস্তারের কথা বলা হয়েছে। Distributed database-ও তেমন — একটি মেশিনে সব রাখা সম্ভব নয়। ডেটা বিস্তৃত করতে হয় — replication ও sharding দিয়ে। প্রতিটি নোড একটি জীব — নিজস্ব ক্ষমতা, কিন্তু সব মিলে একটি সিস্টেম।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৫ (ডিস্ট্রিবিউটেড সিস্টেমস) Door ৬:</strong> Amazon Dynamo — sharding + replication একসাথে। Door ৩: CAP theorem। Book ৪: Database scaling — read replica, sharding।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌍 Distributed: Replication + Sharding</text>
+  <rect x="20" y="45" width="240" height="90" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+  <text x="140" y="65" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">Replication (কপি)</text>
+  <rect x="35" y="75" width="60" height="24" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="65" y="91" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Master</text>
+  <text x="65" y="108" text-anchor="middle" fill="#86efac" font-size="6">writes ✍️</text>
+  <defs><marker id="arrD7a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="95" y1="85" x2="135" y2="85" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrD7a)"/>
+  <line x1="95" y1="95" x2="135" y2="105" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrD7a)"/>
+  <rect x="135" y="75" width="55" height="20" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="162" y="88" text-anchor="middle" fill="#7dd3fc" font-size="7">Replica 1</text>
+  <rect x="135" y="100" width="55" height="20" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="162" y="113" text-anchor="middle" fill="#7dd3fc" font-size="7">Replica 2</text>
+  <text x="200" y="90" fill="#86efac" font-size="6">reads 📖</text>
+  <text x="140" y="128" text-anchor="middle" fill="#94a3b8" font-size="7">1 write → N read copies</text>
+  <rect x="280" y="45" width="280" height="90" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="420" y="65" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">Sharding (ভাগ)</text>
+  <text x="420" y="82" text-anchor="middle" fill="#fde68a" font-size="7">hash(user_id) % 3 → shard</text>
+  <rect x="295" y="90" width="75" height="35" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="332" y="105" text-anchor="middle" fill="#fde68a" font-size="7" font-weight="700">Shard 0</text>
+  <text x="332" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">id % 3 = 0</text>
+  <rect x="382" y="90" width="75" height="35" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="419" y="105" text-anchor="middle" fill="#fde68a" font-size="7" font-weight="700">Shard 1</text>
+  <text x="419" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">id % 3 = 1</text>
+  <rect x="469" y="90" width="75" height="35" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="506" y="105" text-anchor="middle" fill="#fde68a" font-size="7" font-weight="700">Shard 2</text>
+  <text x="506" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">id % 3 = 2</text>
+  <defs><marker id="arrD7b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>
+  <line x1="420" y1="82" x2="332" y2="88" stroke="#22c55e" stroke-width="1" marker-end="url(#arrD7b)"/>
+  <line x1="420" y1="82" x2="419" y2="88" stroke="#22c55e" stroke-width="1" marker-end="url(#arrD7b)"/>
+  <line x1="420" y1="82" x2="506" y2="88" stroke="#22c55e" stroke-width="1" marker-end="url(#arrD7b)"/>
+  <rect x="100" y="155" width="380" height="80" rx="8" fill="#0f172a" stroke="#f87171" stroke-width="2"/>
+  <text x="290" y="175" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">Consistency Models</text>
+  <text x="170" y="195" text-anchor="middle" fill="#fca5a5" font-size="7">Strong: সব নোড একই সাথে</text>
+  <text x="290" y="195" text-anchor="middle" fill="#fca5a5" font-size="7">Eventual: শেষে মিলবে</text>
+  <text x="410" y="195" text-anchor="middle" fill="#fca5a5" font-size="7">Causal: কারণ-ফল</text>
+  <text x="290" y="215" text-anchor="middle" fill="#94a3b8" font-size="7">Dynamo = eventual | Spanner = strong</text>
+  <text x="290" y="230" text-anchor="middle" fill="#f87171" font-size="7">CAP: partition হলে C বা A বেছে নাও</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Replication (কপি) ও Sharding (ভাগ) — consistency models সহ।</div>
+
+<div class="code-block">— Distributed DB: Sharding Logic —
+
+  # সাধারণ sharding strategy (Python)
+  NUM_SHARDS = 4
+
+  def get_shard(user_id):
+      # consistent hash → shard
+      return hash(user_id) % NUM_SHARDS
+
+  # PostgreSQL: declarative partitioning
+  CREATE TABLE orders (
+      id SERIAL, user_id INT, amount DECIMAL,
+      created_at TIMESTAMP
+  ) PARTITION BY HASH (user_id);
+
+  CREATE TABLE orders_p0 PARTITION OF orders
+      FOR VALUES WITH (modulus 4, remainder 0);
+  CREATE TABLE orders_p1 PARTITION OF orders
+      FOR VALUES WITH (modulus 4, remainder 1);
+  -- p2, p3 ...
+
+  -- Read replica থেকে পড়ো:
+  -- SET transaction_read_only = ON;
+  -- SELECT ... → replica-তে যায়</div>
 
 <div class="secret-box">🌍 <strong>Distributed = একাধিক নোডে ডেটা।</strong> Replication (কপি) + Sharding (ভাগ)। Master-slave, consistency models। কিন্তু এত স্তরে ডেটা ছড়িয়ে গেলে — query কীভাবে সঠিক নোডে যায়? কে ঠিক করে কোন plan সেরা? সেই সমাধান আসবে পরের দরজায় — query optimization।</div>`,
   senior: {
@@ -175,6 +312,69 @@ Optimizer সিদ্ধান্ত নিতে statistics ব্যবহা
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (সিস্টেম ডিজাইন):</strong> N+1 query problem — Django ORM-এ common। select_related/prefetch_related = optimization। Book ৩৩ (Critical Thinking): Performance debugging = systematic analysis।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚡ Query Optimizer: Parse → Plan → Execute</text>
+  <rect x="20" y="50" width="100" height="45" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="70" y="70" text-anchor="middle" fill="#67e8f9" font-size="8" font-weight="700">SQL Text</text>
+  <text x="70" y="85" text-anchor="middle" fill="#7dd3fc" font-size="7">SELECT * ...</text>
+  <defs><marker id="arrD8a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="120" y1="72" x2="148" y2="72" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD8a)"/>
+  <rect x="150" y="50" width="100" height="45" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="200" y="70" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Parser</text>
+  <text x="200" y="85" text-anchor="middle" fill="#fde68a" font-size="7">→ AST tree</text>
+  <defs><marker id="arrD8b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="250" y1="72" x2="278" y2="72" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD8b)"/>
+  <rect x="280" y="50" width="120" height="45" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+  <text x="340" y="68" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">Optimizer (CBO)</text>
+  <text x="340" y="85" text-anchor="middle" fill="#c084fc" font-size="7">cost-based, stats</text>
+  <defs><marker id="arrD8c" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>
+  <line x1="400" y1="72" x2="428" y2="72" stroke="#22c55e" stroke-width="2" marker-end="url(#arrD8c)"/>
+  <rect x="430" y="50" width="100" height="45" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="480" y="70" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Execute</text>
+  <text x="480" y="85" text-anchor="middle" fill="#86efac" font-size="7">→ result rows</text>
+  <rect x="120" y="120" width="340" height="110" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="140" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">Execution Plans (cost comparison)</text>
+  <rect x="135" y="150" width="150" height="28" rx="4" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="210" y="162" text-anchor="middle" fill="#fca5a5" font-size="7" font-weight="700">Plan A: Seq Scan</text>
+  <text x="210" y="173" text-anchor="middle" fill="#f87171" font-size="7">cost: 1450.0 ❌ slow</text>
+  <rect x="295" y="150" width="150" height="28" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="370" y="162" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Plan B: Index Scan</text>
+  <text x="370" y="173" text-anchor="middle" fill="#22c55e" font-size="7">cost: 8.3 ✓ best</text>
+  <text x="290" y="198" text-anchor="middle" fill="#fde68a" font-size="7">Statistics থেকে cost অনুমান:</text>
+  <text x="290" y="213" text-anchor="middle" fill="#94a3b8" font-size="7">rows=10000, selectivity=0.01, pages=500</text>
+  <text x="290" y="226" text-anchor="middle" fill="#c084fc" font-size="7">Selinger 1979: System R optimization</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Optimizer একাধিক plan তুলনা করে সর্বনিম্ন cost-এর পথ বেছে নেয়।</div>
+
+<div class="code-block">— SQL: EXPLAIN + Query Rewrite —
+
+  -- Optimizer-এর সিদ্ধান্ত দেখো:
+  EXPLAIN (ANALYZE, BUFFERS)
+  SELECT u.name, SUM(o.amount) AS total
+  FROM users u
+  JOIN orders o ON u.id = o.user_id
+  GROUP BY u.name;
+
+  -- আউটপুট (খারাপ):
+  -- Hash Join (cost=1450..3200 rows=5000)
+  --   Seq Scan on orders  ← পুরো টেবিল পড়ছে!
+  --   Hash (cost=20..20 rows=100)
+
+  -- সমাধান: index যোগ করো
+  CREATE INDEX idx_orders_uid ON orders(user_id);
+  ANALYZE orders;  -- statistics আপডেট
+
+  -- এখন plan:
+  -- Hash Join (cost=45..120 rows=50)
+  --   Index Scan using idx_orders_uid  ← O(log n)
+
+  -- N+1 সমস্যা (Django):
+  for u in User.objects.all():       # ❌ N+1 query
+      print(u.orders.count())
+  User.objects.prefetch_related('orders')  # ✅ 2 query</div>
+
 <div class="secret-box">⚡ <strong>Optimizer = ডাটাবেসের GPS।</strong> Cost-based, statistics-driven। Selinger ১৯৭৯ থেকে আজ পর্যন্ত। কিন্তু optimization শুধু OLTP-এর (transactions) জন্য নয়। যখন মিলিয়ন সারি analyze করতে হয় — reporting, dashboard, ML training — সেখানে দরকার ভিন্ন স্থাপত্য। সেই যাত্রা আসবে পরের দরজায় — data warehousing।</div>`,
   senior: {
     title: "Query Optimization এক নজরে",
@@ -236,6 +436,78 @@ Column-based (OLAP): প্রতিটি কলাম আলাদাভাব
 <p class="scene-setting">এই আয়াত বলে — প্রতিটি তথ্যে বুদ্ধিমানদের জন্য নিদর্শন আছে। Data warehouse-ও তেমন — কাঁচামাল (OLTP ডেটা) থেকে অন্তর্দৃষ্টি (analytics) তৈরি। বিলিয়ন ট্রানজেকশন থেকে একটি সত্য: "শীতে কফি বেশি বিক্রি হয়।" এটাই data-থেকে-জ্ঞানের যাত্রা।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (সিস্টেম ডিজাইন):</strong> Reporting system — data warehouse এর উপরে। Book ৩৪ (Statistics): A/B testing — analytics data থেকে। LedgerPilot: reporting/dashboard = OLAP queries।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📈 Data Warehouse: Star Schema + ETL</text>
+  <rect x="20" y="50" width="90" height="60" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="65" y="70" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">OLTP</text>
+  <text x="65" y="85" text-anchor="middle" fill="#86efac" font-size="6">MySQL/PG</text>
+  <text x="65" y="98" text-anchor="middle" fill="#94a3b8" font-size="6">transactional</text>
+  <defs><marker id="arrD9a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#fbbf24"/></marker></defs>
+  <line x1="110" y1="80" x2="138" y2="80" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrD9a)"/>
+  <text x="124" y="73" text-anchor="middle" fill="#fcd34d" font-size="6">ETL</text>
+  <rect x="140" y="50" width="90" height="60" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="185" y="70" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Transform</text>
+  <text x="185" y="85" text-anchor="middle" fill="#fde68a" font-size="6">clean, agg</text>
+  <text x="185" y="98" text-anchor="middle" fill="#fde68a" font-size="6">dimension</text>
+  <defs><marker id="arrD9b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#fbbf24"/></marker></defs>
+  <line x1="230" y1="80" x2="258" y2="80" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrD9b)"/>
+  <rect x="260" y="50" width="120" height="60" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="320" y="70" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Warehouse</text>
+  <text x="320" y="85" text-anchor="middle" fill="#86efac" font-size="6">columnar storage</text>
+  <text x="320" y="98" text-anchor="middle" fill="#86efac" font-size="6">Redshift, BigQuery</text>
+  <text x="80" y="140" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">⭐ Star Schema</text>
+  <rect x="230" y="135" width="100" height="45" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="280" y="153" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">fact_sales</text>
+  <text x="280" y="168" text-anchor="middle" fill="#94a3b8" font-size="6">amt, qty, date_id</text>
+  <rect x="60" y="160" width="80" height="35" rx="5" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="100" y="175" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="700">dim_date</text>
+  <text x="100" y="187" text-anchor="middle" fill="#c084fc" font-size="6">year, month</text>
+  <rect x="60" y="200" width="80" height="35" rx="5" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="100" y="215" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="700">dim_product</text>
+  <text x="100" y="227" text-anchor="middle" fill="#c084fc" font-size="6">name, category</text>
+  <rect x="420" y="160" width="80" height="35" rx="5" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="460" y="175" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="700">dim_store</text>
+  <text x="460" y="187" text-anchor="middle" fill="#c084fc" font-size="6">location</text>
+  <rect x="420" y="200" width="80" height="35" rx="5" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="460" y="215" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="700">dim_customer</text>
+  <text x="460" y="227" text-anchor="middle" fill="#c084fc" font-size="6">segment</text>
+  <line x1="140" y1="177" x2="228" y2="158" stroke="#475569" stroke-width="1.5"/>
+  <line x1="140" y1="217" x2="228" y2="165" stroke="#475569" stroke-width="1.5"/>
+  <line x1="420" y1="177" x2="332" y2="158" stroke="#475569" stroke-width="1.5"/>
+  <line x1="420" y1="217" x2="332" y2="165" stroke="#475569" stroke-width="1.5"/>
+  <text x="490" y="60" fill="#f87171" font-size="7" font-weight="700">Columnar</text>
+  <text x="490" y="75" fill="#94a3b8" font-size="6">col1: [1,2,3]</text>
+  <text x="490" y="87" fill="#94a3b8" font-size="6">col2: [a,b,c]</text>
+  <text x="490" y="100" fill="#f87171" font-size="6">agg = দ্রুত</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: OLTP থেকে ETL দিয়ে Warehouse — Star Schema-তে fact ও dimension টেবিল।</div>
+
+<div class="code-block">— SQL: OLAP Star Schema Query —
+
+  -- fact table: fact_sales (billions of rows)
+  -- dim tables: dim_date, dim_product, dim_store
+
+  SELECT
+      d.year, d.month,
+      p.category,
+      SUM(f.amount) AS revenue,
+      COUNT(*) AS txn_count
+  FROM fact_sales f                    -- কেন্দ্রীয় fact
+  JOIN dim_date d    ON f.date_id = d.id
+  JOIN dim_product p ON f.product_id = p.id
+  JOIN dim_store  s  ON f.store_id = s.id
+  WHERE d.year = 2025
+    AND s.region = 'Dhaka'
+  GROUP BY d.year, d.month, p.category
+  HAVING SUM(f.amount) > 100000
+  ORDER BY revenue DESC;
+
+  -- Columnar storage-এ SUM(amount):
+  -- শুধু amount কলাম পড়ে — row স্ক্যান নয়
+  -- বিলিয়ন row → কয়েক সেকেন্ড</div>
 
 <div class="secret-box">📈 <strong>Data Warehouse = জ্ঞানের ভাণ্ডার।</strong> OLTP (operational) থেকে OLAP (analytical) আলাদা। Star schema, columnar storage, ETL pipeline। Inmon-Kimball দুই দর্শন। এখন তুমি সব স্তর জানো — relational model থেকে data warehouse পর্যন্ত। সময় এসেছে সব একত্রিত করার — একটি query-র সম্পূর্ণ যাত্রা।</div>`,
   senior: {
@@ -324,6 +596,74 @@ result-এ প্রতিটি column সঠিক type? constraint মান�
 <li>🔧 Django: <code>print(queryset.query)</code> — ORM SQL দেখো</li>
 <li>🔧 PostgreSQL: <code>pg_stat_statements</code> — slow query analysis</li>
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🏛️ একটি Query-র সম্পূর্ণ যাত্রা</text>
+  <rect x="10" y="50" width="85" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="52" y="68" text-anchor="middle" fill="#67e8f9" font-size="7" font-weight="700">১. Parse</text>
+  <text x="52" y="80" text-anchor="middle" fill="#7dd3fc" font-size="6">SQL→AST</text>
+  <defs><marker id="arrD10a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="95" y1="70" x2="113" y2="70" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrD10a)"/>
+  <rect x="115" y="50" width="85" height="40" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="157" y="68" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="700">২. Optimize</text>
+  <text x="157" y="80" text-anchor="middle" fill="#fde68a" font-size="6">best plan</text>
+  <defs><marker id="arrD10b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="200" y1="70" x2="218" y2="70" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrD10b)"/>
+  <rect x="220" y="50" width="85" height="40" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="262" y="68" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">৩. Index</text>
+  <text x="262" y="80" text-anchor="middle" fill="#86efac" font-size="6">B-tree</text>
+  <defs><marker id="arrD10c" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="305" y1="70" x2="323" y2="70" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrD10c)"/>
+  <rect x="325" y="50" width="85" height="40" rx="6" fill="#0f172a" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="367" y="68" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="700">৪. MVCC</text>
+  <text x="367" y="80" text-anchor="middle" fill="#c084fc" font-size="6">visibility</text>
+  <defs><marker id="arrD10d" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
+  <line x1="410" y1="70" x2="428" y2="70" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrD10d)"/>
+  <rect x="430" y="50" width="85" height="40" rx="6" fill="#0f172a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="472" y="68" text-anchor="middle" fill="#fca5a5" font-size="7" font-weight="700">৫. Storage</text>
+  <text x="472" y="80" text-anchor="middle" fill="#fca5a5" font-size="6">buffer pool</text>
+  <defs><marker id="arrD10e" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>
+  <line x1="472" y1="90" x2="472" y2="108" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrD10e)"/>
+  <rect x="180" y="115" width="220" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="133" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">৬. Result → User</text>
+  <text x="290" y="148" text-anchor="middle" fill="#86efac" font-size="7">rows returned ✓</text>
+  <rect x="30" y="175" width="520" height="60" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="290" y="193" text-anchor="middle" fill="#67e8f9" font-size="8" font-weight="700">55 বছরের অগ্রগতি এক কোয়েরিতে</text>
+  <text x="120" y="210" text-anchor="middle" fill="#7dd3fc" font-size="6">Codd 1970</text>
+  <text x="220" y="210" text-anchor="middle" fill="#fde68a" font-size="6">Selinger 1979</text>
+  <text x="320" y="210" text-anchor="middle" fill="#c084fc" font-size="6">MVCC 1981</text>
+  <text x="420" y="210" text-anchor="middle" fill="#fca5a5" font-size="6">Stonebraker PG</text>
+  <text x="290" y="225" text-anchor="middle" fill="#94a3b8" font-size="6">→ আজকের distributed + columnar + vector</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: একটি query ৬টি স্তর অতিক্রম করে — Parse → Optimize → Index → MVCC → Storage → Result।</div>
+
+<div class="code-block">— Trace: SELECT এর সম্পূর্ণ যাত্রা —
+
+  -- ব্যবহারকারীর query:
+  SELECT name FROM users WHERE id = 42;
+
+  -- ১. Parser: SQL → parse tree
+  --    {SelectStmt: cols=[name], from=users, where=(id=42)}
+
+  -- ২. Optimizer: cost comparison
+  --    Plan A: Seq Scan (cost=145)
+  --    Plan B: Index Scan (cost=8.3) ← নির্বাচিত
+
+  -- ৩. Index Engine: B-tree traverse
+  --    root[50] → left[30] → right[42] → tuple pointer
+
+  -- ৪. Transaction Manager (MVCC):
+  --    xmin/xmax check — এই tuple কি দৃশ্যমান?
+
+  -- ৫. Storage Engine: page → buffer pool
+  --    page #42 মেমরিতে আনো → row পড়ো
+
+  -- ৬. Result: "Karim" ব্যবহারকারীকে ফেরত দাও
+
+  -- ⏱️ মোট সময়: 0.034 ms
+  -- ৫৫ বছরের গবেষণা — এক মুহূর্তে</div>
 
 <div class="secret-box">🏛️ <strong>উপাত্তের ভল্ট = নয়টি দরজার সমষ্টি।</strong> Relational Model (দরজা ১) → SQL (দরজা ২) → Indexing (দরজা ৩) → ACID (দরজা ৪) → Normalization (দরজা ৫) → NoSQL (দরজা ৬) → Distributed (দরজা ৭) → Optimization (দরজা ৮) → Data Warehouse (দরজা ৯)। Codd-এর ১৯৭০ সালের relational model থেকে আজকের distributed, NoSQL, columnar warehouse — ৫৫ বছরের যাত্রা। এবং তুমি এখন প্রতিটি স্তর বোঝো। LedgerPilot MySQL, Ipractus PostgreSQL — এখন তুমি জানো সেগুলোর ভেতরে কী চলছে। এটাই উপাত্তের ভল্ট — সারি থেকে অর্থ, query থেকে জ্ঞান।</div>`,
   senior: {
