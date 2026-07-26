@@ -1,678 +1,378 @@
-// ═══════════════════════════════════════════
-// DOOR 6 — The Pigeon's Warning (Pigeonhole)
-// ═══════════════════════════════════════════
 doors.push({
   num: 6,
   icon: "🕊️",
-  color: "#f472b6",
-  tagline: "কবুতরের সতর্কবাণী — Pigeon's Warning",
-  name: "The Pigeon's Warning",
-  secret: "n item, k box, n > k → collision গ্যারান্টিড। Hash collision অনিবার্য!",
-  story: `<p class="scene-setting">৩৬৭ জন মানুষ এক রুমে থাকলে অন্তত ২ জনের জন্মদিন একই! এই সহজ নীতিই Pigeonhole Principle। n item কে k box এ রাখলে, যদি n > k, তবে অন্তত এক box এ একাধিক item থাকবে। এটাই hash collision এর গাণিতিক ভিত্তি — infinite possible input, finite hash output। Birthday paradox: ৩৬৫ দিনে মাত্র ২৩ জনে ~৫০% duplicate birthday! এটাই birthday attack এর ভিত্তি — hash function এ collision খুঁজে বের করা।</p>
+  color: "#8b5cf6",
+  name: "কবুতরের খোঁয়াড়",
+  subtitle: "The Pigeonhole Principle",
+  tech: "Pigeonhole Principle — Dirichlet (1834), hash collisions, birthday threshold, Monte Carlo verification",
+  spirit: "হিসাব — গণনা, সীমাবদ্ধ স্থানে অধিক বস্তু",
+  secret: "n+১টি কবুতর nটি খোঁয়াড়ে — অন্তত একটি খোঁয়াড়ে দুটি কবুতর। এটাই পিজিওনহোল নীতি — সহজ কিন্তু অসম্ভব ফল দেয়। ৩৬৭ জন মানুষে অন্তত দুজনের জন্মদিন মিলবে — কারণ ৩৬৬ দিন (leap year)।",
+  recall: {
+    q: " পিজিওনহোল নীতি কী? একটি বাস্তব প্রয়োগ দাও।",
+    qen: "What is the Pigeonhole Principle? Give a real-world application.",
+    a: "n+১টি বস্তু nটি বাক্সে হলে অন্তত একটি বাক্সে দুটি। প্রয়োগ: hash collision — ২³²+১টি key হলে collision অনিবার্য।",
+    aen: "If n+1 objects go into n boxes, at least one box has 2. Application: hash collision — with 2^32+1 keys, collision is guaranteed."
+  },
+  story: `<p class="scene-setting">বার্লিন, ১৮৩৪। Peter Gustav Lejeune Dirichlet একটি সহজ কিন্তু শক্তিশালী নীতি লিখছেন। তার নাম দিলেন Schubfachprinzip — "ড্রয়ার নীতি।" সহজ ভাষায়: ১০টি মোজা ৯টি ড্রয়ারে রাখলে অন্তত একটি ড্রয়ারে দুটি মোজা। এটাই পিজিওনহোল নীতি — তুচ্ছ মনে হয় কিন্তু অসম্ভব ফল দেয়।</p>
+<p class="scene-setting en">Berlin, 1834. Peter Gustav Lejeune Dirichlet writes a simple but powerful principle. He calls it Schubfachprinzip — "drawer principle." Simply: 10 socks in 9 drawers means at least one drawer has 2 socks. This is the pigeonhole principle — seems trivial but yields impossible results.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🕊️ Pigeonhole Principle: Collision is Guaranteed</text>
+<div class="dialogue"><strong>গণনা-কারিগর সাবির:</strong> নাদিয়া (Door ৫) তোমাকে গোনা শিখিয়েছেন। এখন দেখো — গোনা ছাড়াও একটি শক্তিশালী নীতি। ১৩ জন মানুষ এক ঘরে — অন্তত দুজনের জন্ম মাস একই! কারণ মাস ১২টি, মানুষ ১৩টি। প্রমাণ লাগে না — সরল যুক্তি। কিন্তু এই নীতি দিয়ে hash collision প্রমাণ করা যায় — ২³²+১টি key, ২³²টি bucket — collision অনিবার্য!</div>
+<div class="dialogue en"><strong>Counting Artisan Sabir:</strong> Nadia (Door 5) taught you counting. Now see — a powerful principle beyond counting. 13 people in a room — at least two share a birth month! 12 months, 13 people. No proof needed — pure logic. But this principle proves hash collisions — 2^32+1 keys, 2^32 buckets — collision inevitable!</div>
 
-  <!-- Pigeons -->
-  <rect x="20" y="50" width="250" height="180" rx="10" fill="#831843" stroke="#ec4899" stroke-width="2"/>
-  <text x="145" y="72" text-anchor="middle" fill="#f9a8d4" font-size="10" font-weight="700">7 Pigeons (n=7)</text>
-  <g transform="translate(40, 85)">
-    <circle cx="0" cy="0" r="12" fill="#f472b6" stroke="#ec4899" stroke-width="1"/>
-    <text x="0" y="3" text-anchor="middle" fill="#fff" font-size="8">🐦</text>
-  </g>
-  <g transform="translate(80, 85)">
-    <circle cx="0" cy="0" r="12" fill="#f472b6" stroke="#ec4899" stroke-width="1"/>
-    <text x="0" y="3" text-anchor="middle" fill="#fff" font-size="8">🐦</text>
-  </g>
-  <g transform="translate(120, 85)">
-    <circle cx="0" cy="0" r="12" fill="#f472b6" stroke="#ec4899" stroke-width="1"/>
-    <text x="0" y="3" text-anchor="middle" fill="#fff" font-size="8">🐦</text>
-  </g>
-  <g transform="translate(160, 85)">
-    <circle cx="0" cy="0" r="12" fill="#f472b6" stroke="#ec4899" stroke-width="1"/>
-    <text x="0" y="3" text-anchor="middle" fill="#fff" font-size="8">🐦</text>
-  </g>
-  <g transform="translate(200, 85)">
-    <circle cx="0" cy="0" r="12" fill="#f472b6" stroke="#ec4899" stroke-width="1"/>
-    <text x="0" y="3" text-anchor="middle" fill="#fff" font-size="8">🐦</text>
-  </g>
-  <g transform="translate(60, 120)">
-    <circle cx="0" cy="0" r="12" fill="#f472b6" stroke="#ec4899" stroke-width="1"/>
-    <text x="0" y="3" text-anchor="middle" fill="#fff" font-size="8">🐦</text>
-  </g>
-  <g transform="translate(100, 120)">
-    <circle cx="0" cy="0" r="12" fill="#f472b6" stroke="#ec4899" stroke-width="1"/>
-    <text x="0" y="3" text-anchor="middle" fill="#fff" font-size="8">🐦</text>
-  </g>
-  <text x="145" y="155" text-anchor="middle" fill="#f9a8d4" font-size="8">7 items, but only 5 boxes...</text>
-  <rect x="40" y="170" width="210" height="22" rx="4" fill="#7f1d1d" stroke="#dc2626" stroke-width="1"/>
-  <text x="145" y="185" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">At least 1 box MUST have 2+! ⚠️</text>
-  <text x="145" y="210" text-anchor="middle" fill="#64748b" font-size="7">Hash: infinite inputs → finite outputs</text>
-  <text x="145" y="222" text-anchor="middle" fill="#64748b" font-size="7">Collision is MATHEMATICALLY CERTAIN</text>
+<div class="callout info"><span class="co-icon">🕊️</span><div><strong>পিজিওনহোল নীতি (Dirichlet ১৮৩৪):</strong><br>
+<strong>সহজ রূপ:</strong> n+১টি বস্তু nটি বাক্সে → কোনো না কোনো বাক্সে ≥ ২টি<br>
+<strong>সাধারণ রূপ:</strong> Nটি বস্তু kটি বাক্সে → কোনো না কোনো বাক্সে ≥ ⌈N/k⌉টি<br><br>
+<strong>বাস্তব প্রয়োগ:</strong><br>
+৩৬৭ জন মানুষ → অন্তত দুজনের জন্মদিন মিলবে (৩৬৬ দিন)<br>
+৫ জনের হাতে ৩টি আপেল → কেউ ২টি পেয়েছে<br>
+MD5 hash (১২৮-bit) → ২¹²৮+১টি input হলে collision অনিবার্য</div></div>
 
-  <!-- Boxes -->
-  <rect x="310" y="50" width="250" height="180" rx="10" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
-  <text x="435" y="72" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">5 Pigeonholes (k=5)</text>
-  <rect x="330" y="85" width="40" height="40" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="350" y="105" text-anchor="middle" fill="#f472b6" font-size="8">🐦🐦</text>
-  <text x="350" y="120" text-anchor="middle" fill="#ec4899" font-size="6">COLLISION!</text>
-  <rect x="380" y="85" width="40" height="40" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="400" y="108" text-anchor="middle" fill="#f472b6" font-size="8">🐦</text>
-  <rect x="430" y="85" width="40" height="40" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="450" y="108" text-anchor="middle" fill="#f472b6" font-size="8">🐦</text>
-  <rect x="480" y="85" width="40" height="40" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="500" y="108" text-anchor="middle" fill="#f472b6" font-size="8">🐦</text>
-  <rect x="330" y="135" width="40" height="40" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="350" y="158" text-anchor="middle" fill="#f472b6" font-size="8">🐦</text>
+<div class="code-block">— Python: পিজিওনহোল যাচাই —
 
-  <rect x="330" y="185" width="190" height="28" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="425" y="203" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Birthday: 23 people → 50% match!</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Pigeonhole Principle — ৭ pigeon, ৫ hole → অন্তত এক hole এ ২+ pigeon। Hash collision গ্যারান্টিড। Birthday paradox: ২৩ জনে ৫০% duplicate!</div>
+  import random, hashlib
 
-<div class="code-block">🐍 Python: Pigeonhole Principle — Hash Collision ও Birthday Attack
+  # ১০০০০ এলোমেলো সংখ্যা, ৩২-bit hash
+  seen = {}
+  for i in range(100000):
+      h = hash(str(i)) & 0xFFFFFFFF  # 32-bit
+      if h in seen:
+          print(f"Collision! '{seen[h]}' ও '{i}' → {h}")
+          break
+      seen[h] = i
+  # ~৭৭০০০-এ collision — ২^১৬ ≈ ৬৫৫৩৬ তে শুরু
+  # এটাই birthday threshold: √(2^32) ≈ 65536
 
-# Pigeonhole: n item, k box; n > k → অন্তত এক box এ একাধিক item
-def min_box_with_two(n_items, k_boxes):
-    # ⌈n/k⌉ — সবচেয়ে ভরা box এ অন্তত এতটা item
-    return -(-n_items // k_boxes)   # ceiling division
+  # Dirichlet-এর নীতি সহজে:
+  def must_collide(n_objects, n_boxes):
+      return n_objects > n_boxes  # সর্বদা True যদি n+1
 
-print("৭ pigeon, ৫ hole → max ≥", min_box_with_two(7, 5), "per hole")  # 2
-print("৩৬৭ মানুষ, ৩৬৬ day → max ≥", min_box_with_two(367, 366), "share birthday")  # 2
+  print(must_collide(367, 366))   # True — জন্মদিন মিলবে
+  print(must_collide(2**128 + 1, 2**128))  # True — hash collision</div>
 
-# Hash collision: infinite possible input, finite output → collision গ্যারান্টিড
-import hashlib
-def show_collision(space_bits=8):
-    space = 1 << space_bits   # 2^space_bits possible hashes
-    print(f"  {space_bits}-bit hash: {space} possible outputs")
-    # সবচেয়ে খারাপ ক্ষেত্রে space+1 input → pigeonhole → নিশ্চিত collision
-    print(f"  {space+1} টা input → নিশ্চিত collision (pigeonhole)")
+<div class="verse">وَكُلَّ شَيْءٍ أَحْصَيْنَاهُ فِي إِمَامٍ مُّبِينٍ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং প্রতিটি কিছু আমরা একটি স্পষ্ট অভিলেখে গণনা করেছি।" — কুরআন ৩৬:১২</div>
 
-show_collision(8)   # 256 outputs, 257 inputs → collision
-show_collision(16)  # 65536 outputs
+<p class="scene-setting">"আহসায়নাহু" — আমরা গণনা করেছি। পিজিওনহোল নীতি সেই গণনার শক্তি — যখন বস্তুর সংখ্যা স্থানের চেয়ে বেশি, মিল অনিবার্য। হিসাব — প্রতিটি কিছু গণনায় ধরা আছে। কোনো কিছুই হারিয়ে যায় না।</p>
+<p class="scene-setting en">"Ahsaynahu" — We have counted. The pigeonhole principle is the power of that counting — when objects exceed space, collision is inevitable. Hisab — everything is accounted for. Nothing is lost.</p>
 
-# Birthday attack: √N এর কাছাকাছি input এ ~50% collision সম্ভাবনা
-import math
-def birthday_threshold(space_bits):
-    n = 1 << space_bits
-    # আনুমানিক threshold ≈ √(π/2 · n) ≈ 1.1774 · √n
-    return int(math.sqrt(math.pi / 2 * n))
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৬ (Cryptography) Door ৩ (Hash):</strong> hash collision = পিজিওনহোল! ২¹²৮+১টি input হলে MD5 collision অনিবার্য। Book ৪৯ (Probability) Door ৫: birthday paradox — এটাই পিজিওনহোল-এর সম্ভাবনা সংস্করণ।</div></div>
 
-for bits in [16, 32, 64, 128]:
-    t = birthday_threshold(bits)
-    print(f"  {bits:3d}-bit space: ~{t:,} inputs → 50% collision")
-
-# Birthday Paradox সিমুলেশন (Monte Carlo verify)
-import random
-def birthday_sim(n_people, trials=10000, days=365):
-    hits = 0
-    for _ in range(trials):
-        bdays = [random.randrange(days) for _ in range(n_people)]
-        if len(bdays) != len(set(bdays)): hits += 1
-    return hits / trials
-
-print(f"২৩ জনে duplicate birthday (simulated): {birthday_sim(23)*100:.1f}%")  # ~50%
-
-# Django session ID collision ঝুঁকি (32-bit)
-# 2^32 ≈ 4.3 billion; birthday threshold ≈ 77,000 → ৭৭ হাজার session এ ৫০% collision
-print(f"Session ID 32-bit → 50% collision at ~{birthday_threshold(32):,} sessions")
-
-# UUID4: 2^122 random bits → collision ব্যবহারিকভাবে অসম্ভব
-print(f"UUID4 (122 bits) → 50% collision at ~{birthday_threshold(122):,}")
-# এই সংখ্যা মহাবিশ্বের পরমাণুর চেয়ে বড় → UUID নিরাপদ</div>
-
-<div class="dialogue"><strong>গণিতজ্ঞ:</strong> তোমার Django cache key hash করলে — infinite possible URL, finite hash output। Pigeonhole গ্যারান্টি দেয় — collision অনিবার্য! Birthday paradox বলে ২৩ জনে ৫০% duplicate birthday। এটাই birthday attack — hash function এ collision খুঁজে বের করা। UUID4 তে 2^122 possible value — collision প্রায় অসম্ভব। কিন্তু session ID (2^32) — ৭৭,০০০ session এ ৫০% collision! সবসময় বড় key space ব্যবহার করো।</div>`,
-  recall: [
-    { q: "Pigeonhole Principle কী?", a: "n item কে k box এ রাখলে, n > k হলে অন্তত এক box এ একাধিক item থাকবে। Hash collision এর গাণিতিক ভিত্তি।" },
-    { q: "Birthday paradox কী এবং এটা কেন গুরুত্বপূর্ণ?", a: "৩৬৫ দিনে ২৩ জন → ~৫০% duplicate birthday। Birthday attack এর ভিত্তি — ছোট hash space এ collision দ্রুত ঘটে। সবসময় বড় key space (UUID4, SHA-256) ব্যবহার করো।" },
-  ]
+<div class="secret-box">🕊️ <strong>পিজিওনহোল: বেশি বস্তু, কম বাক্স — মিল অনিবার্য।</strong> সহজ নীতি কিন্তু অসম্ভব ফল। hash collision, birthday paradox, এমনকি সনাতন গণিতের উপপাদ্য — সব এর উপর নির্ভর। কিন্তু বস্তু শুধু বাক্সে থাকে না — তারা সংযুক্ত হয়। সেই সংযোগের জগত — পরের দরজায়।</div>`,
+  senior: {
+    title: "Pigeonhole Principle এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Dirichlet (1834)</td><td>Schubfachprinzip — ড্রয়ার নীতি</td></tr>
+<tr><td class="hl">সহজ রূপ</td><td>n+১ বস্তু n বাক্সে → এক বাক্সে ≥২</td></tr>
+<tr><td class="hl">সাধারণ রূপ</td><td>N বস্তু k বাক্সে → ⌈N/k⌉</td></tr>
+<tr><td class="hl">Birthday Threshold</td><td>√N — collision শুরুর সীমা</td></tr>
+<tr><td class="hl">Hash Collision</td><td>২³²+১ keys → নিশ্চিত collision</td></tr>
+<tr><td class="hl">Birthday Paradox</td><td>২৩ জনে ৫০% — C(২৩,২)=২৫৩ জোড়া</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 7 — The Web of Connections (Graph Theory)
-// ═══════════════════════════════════════════
 doors.push({
   num: 7,
   icon: "🕸️",
-  color: "#06b6d4",
-  tagline: "সংযোগের জাল — Web of Connections",
-  name: "The Web of Connections",
-  secret: "Graph = vertices + edges। DAG = dependency ordering। Topological sort = build order।",
-  story: `<p class="scene-setting">Graph theory শুধু diagram নয় — এটা binary relation এর গাণিতিক মডেল। Vertices (নোড) আর edges (সংযোগ) দিয়ে যেকোনো network মডেল করা যায়। Social network (User = vertex, Follow = edge), URL routing (Trie tree), Celery task dependency (DAG)। Directed Acyclic Graph (DAG) এ কোনো cycle নেই — topological sort দিয়ে valid execution order বের করা যায়। Spark আর Airflow তে DAG হল pipeline execution model। BFS আর DFS হল graph traversal algorithm — B2 (DSA) তে শেখা।</p>
+  color: "#8b5cf6",
+  name: "সংযোগের জাল",
+  subtitle: "The Web of Connections",
+  tech: "Graph Theory — Euler (1736 Königsberg), BFS/DFS, topological sort, DAG, networkx",
+  spirit: "সিলসিলা — শৃঙ্খল, নোড থেকে নোডে সংযোগ",
+  secret: "গ্রাফ = নোড + এজ। বন্ধুদের সমাজ, রাস্তার নকশা, ওয়েব পেজের লিংক — সব গ্রাফ। BFS দেখে প্রশস্ততা, DFS গভীরতা। Topological sort দেখে ক্রম। Euler প্রথম এটা করেছিলেন — কোনিগসবার্গের সেতু নিয়ে।",
+  recall: {
+    q: " BFS এবং DFS-এর পার্থক্য কী? DAG কী?",
+    qen: "What is the difference between BFS and DFS? What is a DAG?",
+    a: "BFS = প্রশস্ততা — প্রথমে কাছের সব নোড, তারপর দূরে। DFS = গভীরতা — এক শাখায় শেষ পর্যন্ত। DAG = Directed Acyclic Graph — কোনো চক্র নেই, topological sort সম্ভব।",
+    aen: "BFS = breadth-first — visit all near nodes first. DFS = depth-first — go deep in one branch. DAG = Directed Acyclic Graph — no cycles, topological sort possible."
+  },
+  story: `<p class="scene-setting">কোনিগসবার্গ, ১৭৩৬। একটি নদী, দুটি দ্বীপ, সাতটি সেতু। প্রশ্ন: কোনো সেতু দুবার না পেরিয়ে সব সেতু পার হওয়া যায় কি? Leonhard Euler উত্তর দিলেন: না। কিন্তু তার প্রমাণ একটি নতুন গাণিতিক জগতের জন্ম দিল — গ্রাফ তত্ত্ব। নোড = স্থান, এজ = সেতু। এই সহজ মডেল থেকে — সামাজিক নেটওয়ার্ক, গুগলের PageRank, GPS রাস্তা — সব নির্মিত।</p>
+<p class="scene-setting en">Königsberg, 1736. A river, two islands, seven bridges. Question: can you cross all bridges exactly once? Leonhard Euler answered: no. But his proof birthed a new mathematical world — graph theory. Nodes = places, edges = bridges. From this simple model — social networks, Google PageRank, GPS routes — all built.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <defs><marker id="arrG7" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#06b6d4"/></marker></defs>
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🕸️ DAG: Transaction Dependency Graph</text>
+<div class="dialogue"><strong>জাল-নির্মাতা তামির:</strong> সাবির (Door ৬) তোমাকে গোনা শিখিয়েছেন। কিন্তু বস্তু শুধু বাক্সে থাকে না — তারা সংযুক্ত হয়! তোমার LedgerPilot-এ — ইউজার → অ্যাকাউন্ট → লেনদেন → ক্যাটেগরি। এটি একটি গ্রাফ! প্রতিটি টেবিল নোড, প্রতিটি foreign key এজ। BFS দিয়ে খুঁজো — এই ইউজারের সব লেনদেন কী? DFS দিয়ে গভীরে যাও — এই লেনদেন কোন ক্যাটেগরিতে?</div>
+<div class="dialogue en"><strong>Web Builder Tamir:</strong> Sabir (Door 6) taught you counting. But objects don't just sit in boxes — they connect! Your LedgerPilot: User → Account → Transaction → Category. This is a graph! Every table a node, every foreign key an edge. BFS: find all transactions for a user. DFS: go deep — which category does this transaction belong to?</div>
 
-  <!-- DAG Nodes -->
-  <ellipse cx="100" cy="80" rx="45" ry="22" fill="#0c4a6e" stroke="#06b6d4" stroke-width="2"/>
-  <text x="100" y="78" text-anchor="middle" fill="#67e8f9" font-size="8" font-weight="700">Create</text>
-  <text x="100" y="90" text-anchor="middle" fill="#67e8f9" font-size="7">Account</text>
+<div class="code-block">— Python: Graph অপারেশন (networkx) —
 
-  <ellipse cx="250" cy="80" rx="45" ry="22" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="250" y="78" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Deposit</text>
-  <text x="250" y="90" text-anchor="middle" fill="#4ade80" font-size="7">Funds</text>
+  import networkx as nx
 
-  <ellipse cx="100" cy="160" rx="45" ry="22" fill="#451a03" stroke="#f97316" stroke-width="2"/>
-  <text x="100" y="158" text-anchor="middle" fill="#fdba74" font-size="8" font-weight="700">Verify</text>
-  <text x="100" y="170" text-anchor="middle" fill="#fdba74" font-size="7">KYC</text>
+  G = nx.DiGraph()
+  # LedgerPilot-এর গ্রাফ
+  G.add_edge("User", "Account")         # foreign key
+  G.add_edge("Account", "Transaction")
+  G.add_edge("Transaction", "Category")
+  G.add_edge("Category", "Budget")
 
-  <ellipse cx="250" cy="160" rx="45" ry="22" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
-  <text x="250" y="158" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">Create</text>
-  <text x="250" y="170" text-anchor="middle" fill="#c084fc" font-size="7">Transaction</text>
+  # Topological sort (DAG তে ক্রম)
+  print(list(nx.topological_sort(G)))
+  # [User, Account, Transaction, Category, Budget]
 
-  <ellipse cx="400" cy="120" rx="50" ry="22" fill="#7f1d1d" stroke="#dc2626" stroke-width="2"/>
-  <text x="400" y="118" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">Update</text>
-  <text x="400" y="130" text-anchor="middle" fill="#fca5a5" font-size="7">Balance</text>
+  # Cycle detect
+  print(nx.is_directed_acyclic_graph(G))  # True — DAG ✅
 
-  <ellipse cx="510" cy="120" rx="45" ry="22" fill="#831843" stroke="#ec4899" stroke-width="2"/>
-  <text x="510" y="118" text-anchor="middle" fill="#f9a8d4" font-size="8" font-weight="700">Send</text>
-  <text x="510" y="130" text-anchor="middle" fill="#f9a8d4" font-size="7">Receipt</text>
+  # BFS: User থেকে কী কী পৌঁছানো যায়?
+  print(list(nx.bfs_tree(G, "User")))
+  # [User, Account, Transaction, Category, Budget]
 
-  <!-- Edges -->
-  <line x1="145" y1="80" x2="205" y2="80" stroke="#06b6d4" stroke-width="2" marker-end="url(#arrG7)"/>
-  <line x1="100" y1="102" x2="100" y2="138" stroke="#06b6d4" stroke-width="2" marker-end="url(#arrG7)"/>
-  <line x1="145" y1="160" x2="205" y2="160" stroke="#06b6d4" stroke-width="2" marker-end="url(#arrG7)"/>
-  <line x1="250" y1="102" x2="250" y2="138" stroke="#06b6d4" stroke-width="2" marker-end="url(#arrG7)"/>
-  <line x1="295" y1="80" x2="370" y2="110" stroke="#06b6d4" stroke-width="1.5" marker-end="url(#arrG7)"/>
-  <line x1="295" y1="160" x2="370" y2="130" stroke="#06b6d4" stroke-width="1.5" marker-end="url(#arrG7)"/>
-  <line x1="450" y1="120" x2="465" y2="120" stroke="#06b6d4" stroke-width="2" marker-end="url(#arrG7)"/>
+  # Euler-এর সমস্যা: Königsberg
+  K = nx.MultiGraph()
+  K.add_edges_from([("A","B"),("A","B"),("A","C"),
+                    ("A","C"),("A","D"),("B","D"),("C","D")])
+  print(nx.has_eulerian_path(K))  # False — Euler সঠিক ছিলেন!</div>
 
-  <!-- Topological Sort -->
-  <rect x="30" y="210" width="520" height="55" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="290" y="228" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="700">Topological Sort (valid execution order):</text>
-  <rect x="50" y="238" width="65" height="18" rx="3" fill="#0c4a6e" stroke="#06b6d4" stroke-width="1"/>
-  <text x="82" y="251" text-anchor="middle" fill="#67e8f9" font-size="7">1. Account</text>
-  <text x="125" y="250" fill="#475569" font-size="8">→</text>
-  <rect x="140" y="238" width="55" height="18" rx="3" fill="#451a03" stroke="#f97316" stroke-width="1"/>
-  <text x="167" y="251" text-anchor="middle" fill="#fdba74" font-size="7">2. KYC</text>
-  <text x="205" y="250" fill="#475569" font-size="8">→</text>
-  <rect x="220" y="238" width="65" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="252" y="251" text-anchor="middle" fill="#4ade80" font-size="7">3. Deposit</text>
-  <text x="295" y="250" fill="#475569" font-size="8">→</text>
-  <rect x="310" y="238" width="65" height="18" rx="3" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
-  <text x="342" y="251" text-anchor="middle" fill="#c084fc" font-size="7">4. Transact</text>
-  <text x="385" y="250" fill="#475569" font-size="8">→</text>
-  <rect x="400" y="238" width="65" height="18" rx="3" fill="#7f1d1d" stroke="#dc2626" stroke-width="1"/>
-  <text x="432" y="251" text-anchor="middle" fill="#fca5a5" font-size="7">5. Update</text>
-  <text x="475" y="250" fill="#475569" font-size="8">→</text>
-  <rect x="490" y="238" width="55" height="18" rx="3" fill="#831843" stroke="#ec4899" stroke-width="1"/>
-  <text x="517" y="251" text-anchor="middle" fill="#f9a8d4" font-size="7">6. Send</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: DAG — LedgerPilot transaction dependency graph। Topological sort দিয়ে valid execution order বের করা। Spark/Airflow তে এটাই pipeline model।</div>
+<div class="callout info"><span class="co-icon">🕸️</span><div><strong>গ্রাফের প্রকার:</strong><br>
+<strong>Directed (তীরযুক্ত):</strong> এজের দিক আছে — A → B মানে A থেকে B<br>
+<strong>Undirected (দিকহীন):</strong> দিক নেই — A — B উভয় দিক<br>
+<strong>DAG:</strong> Directed + Acyclic — চক্র নেই → topological sort সম্ভব<br>
+<strong>Tree:</strong> বিশেষ গ্রাফ — একটি root, কোনো চক্র নেই, প্রতিটি নোডে একটি পথ<br>
+<strong>Complete:</strong> প্রতিটি নোড প্রতিটির সাথে সংযুক্ত — Kₙ</div></div>
 
-<div class="code-block">🐍 Python: Graph Theory — DAG, Topological Sort (networkx)
+<div class="verse">وَالَّذِينَ يَصِلُونَ مَا أَمَرَ اللَّهُ بِهِ أَن يُوصَلَ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং যারা সংযুক্ত রাখে যা আল্লাহ সংযুক্ত রাখতে নির্দেশ দিয়েছেন।" — কুরআন ১৩:২১</div>
 
-import networkx as nx
+<p class="scene-setting">সিলসিলা — শৃঙ্খল, সংযোগ। গ্রাফ তত্ত্ব সেই সংযোগের গণিত। নোড থেকে নোডে — এজ দিয়ে। রক্তের শিরা, নদীর শাখা, সামাজিক বন্ধুত্ব — সব গ্রাফ। আল্লাহ সংযোগ রক্ষার নির্দেশ দিয়েছেন — গ্রাফ তত্ত্ব সেই সংযোগের ভাষা দেয়।</p>
+<p class="scene-setting en">Silsila — chain, connection. Graph theory is the mathematics of connection. Node to node — via edges. Blood vessels, river branches, social friendships — all graphs. Allah commands maintaining connections — graph theory gives the language for those connections.</p>
 
-# DAG তৈরি — LedgerPilot transaction pipeline
-G = nx.DiGraph()
-edges = [
-    ('CreateAccount', 'DepositFunds'),
-    ('CreateAccount', 'VerifyKYC'),
-    ('VerifyKYC',     'CreateTransaction'),
-    ('DepositFunds',  'CreateTransaction'),
-    ('DepositFunds',  'UpdateBalance'),
-    ('CreateTransaction', 'UpdateBalance'),
-    ('UpdateBalance', 'SendReceipt'),
-]
-G.add_edges_from(edges)
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ২ (DSA Bazaar) Door ১৪ (Graph BFS/DFS):</strong> গ্রাফ ট্রাভার্সাল শিখেছিলে — এখন দেখো সেই একই কৌশল LedgerPilot-এ প্রতিদিন কাজ করছে! Book ৩৭ (Networks) Door ৩: রাউটিং = shortest path গ্রাফে। Book ৩৫ (Distributed) Door ৫: distributed consensus = গ্রাফ topology।</div></div>
 
-print("Is DAG (cycle নেই)?", nx.is_directed_acyclic_graph(G))  # True
-print("Vertices (nodes):", list(G.nodes()))
-print("Edges:", list(G.edges()))
-print("|V| =", G.number_of_nodes(), " |E| =", G.number_of_edges())
-
-# Topological Sort — valid execution order (dependencies আগে)
-topo = list(nx.topological_sort(G))
-print("Topological order:", " → ".join(topo))
-# CreateAccount → VerifyKYC → DepositFunds → CreateTransaction → UpdateBalance → SendReceipt
-
-# Cycle থাকলে topological sort সম্ভব নয় — DependencyError!
-G_bad = nx.DiGraph([('A','B'), ('B','C'), ('C','A')])  # A→B→C→A cycle
-print("Has cycle?", not nx.is_directed_acyclic_graph(G_bad))  # True
-try:
-    list(nx.topological_sort(G_bad))
-except nx.NetworkXUnfeasible as e:
-    print("Cycle detected:", type(e).__name__)  # NetworkXUnfeasible
-
-# In-degree: কতটা dependency এসে পৌঁছাচ্ছে
-print("In-degree UpdateBalance:", G.in_degree('UpdateBalance'))  # 2 (Deposit+Transaction)
-# Out-degree: কতটা নির্ভর করছে এটার উপর
-print("Out-degree CreateAccount:", G.out_degree('CreateAccount'))  # 2
-
-# BFS / DFS traversal — shortest path ও connectivity চেক
-from collections import deque
-def bfs_shortest_path(graph, start, goal):
-    queue = deque([[start]])
-    seen = {start}
-    while queue:
-        path = queue.popleft()
-        if path[-1] == goal: return path
-        for nxt in graph[path[-1]]:
-            if nxt not in seen:
-                seen.add(nxt); queue.append(path + [nxt])
-    return None
-
-adj = {n: list(G.successors(n)) for n in G.nodes()}
-print("Shortest path CreateAccount → SendReceipt:")
-print("  ", " → ".join(bfs_shortest_path(adj, 'CreateAccount', 'SendReceipt')))
-
-# Indegree-0 source nodes (পাইলাইনের শুরু)
-sources = [n for n in G.nodes() if G.in_degree(n) == 0]
-sinks   = [n for n in G.nodes() if G.out_degree(n) == 0]
-print("Sources (in-degree 0):", sources)  # ['CreateAccount']
-print("Sinks (out-degree 0):", sinks)     # ['SendReceipt']</div>
-
-<div class="dialogue"><strong>গণিতজ্ঞ:</strong> Graph = vertices + edges। Directed graph (digraph) = arrows সহ। DAG = directed, no cycles। Topological sort = valid order যেখানে প্রতিটা node তার dependencies এর পরে আসে। LedgerPilot এ: Account তৈরি → KYC verify → Deposit → Transaction → Balance update → Receipt। এই order ভাঙলে error! Spark (B44) আর Airflow (B43) তে DAG হল pipeline model। Compilers (B45) এ DAG = expression evaluation tree।</div>`,
-  recall: [
-    { q: "DAG কী এবং topological sort কেন দরকার?", a: "DAG = Directed Acyclic Graph (cycle নেই)। Topological sort = valid execution order যেখানে প্রতিটা node তার dependencies এর পরে। Build system, Spark pipeline, Celery task ordering।" },
-    { q: "Graph theory কিভাবে software এ ব্যবহৃত হয়?", a: "Social network (User=vertex, Follow=edge), URL routing (Trie), task dependency (DAG), compiler AST (tree), database ER diagram। BFS/DFS/Dijkstra সব graph algorithm।" },
-  ]
+<div class="secret-box">🕸️ <strong>গ্রাফ = সংযোগের জাল। নোড + এজ।</strong> Euler থেকে PageRank — সব গ্রাফ। কিন্তু গ্রাফে একটি সমস্যা থাকে — কিছু নোড একসাথে থাকতে পারে না। প্রতিবেশী আলাদা রঙ চায়। সেই সমস্যা — পরের দরজায়।</div>`,
+  senior: {
+    title: "Graph Theory এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Euler (1736)</td><td>কোনিগসবার্গ সেতু — গ্রাফ তত্ত্বের জন্ম</td></tr>
+<tr><td class="hl">BFS</td><td>প্রশস্ততা — কাছের সব নোড আগে</td></tr>
+<tr><td class="hl">DFS</td><td>গভীরতা — এক শাখায় শেষ পর্যন্ত</td></tr>
+<tr><td class="hl">DAG</td><td>Directed Acyclic — topological sort</td></tr>
+<tr><td class="hl">Tree</td><td>বিশেষ গ্রাফ — root, কোনো চক্র নেই</td></tr>
+<tr><td class="hl">Degree</td><td>নোডের এজ সংখ্যা</td></tr>
+<tr><td class="hl">Path</td><td>নোড থেকে নোডে রাস্তা</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 8 — The Color Tournament (Graph Coloring)
-// ═══════════════════════════════════════════
 doors.push({
   num: 8,
   icon: "🎨",
-  color: "#f59e0b",
-  tagline: "রঙের প্রতিযোগিতা — Color Tournament",
-  name: "The Color Tournament",
-  secret: "Four Color Theorem: যেকোনো মানচিত্র ৪ রঙে রাঙানো যায়। Register allocation = graph coloring!",
-  story: `<p class="scene-setting">Four Color Theorem (1976) — যেকোনো planar map কে ৪টা রঙে রাঙানো যায় যেন পাশাপাশি দুটো region এর রং আলাদা। প্রমাণে ১২০ বছর লেগেছে — প্রথম computer-assisted proof! Akamai এই principle দিয়ে ৬৫,০০০ সার্ভার ৮ wave এ deploy করে। Graph coloring এর আরেকটা বিশাল application — compiler register allocation। Variables = vertices, overlapping lifetimes = edges, registers = colors। Chromatic number = minimum colors needed।</p>
+  color: "#8b5cf6",
+  name: "রঙের সমস্যা",
+  subtitle: "The Coloring Problem",
+  tech: "Graph Coloring — four color theorem (1976), chromatic number, Chaitin register allocation, map coloring",
+  spirit: "তাফসিল — পৃথকীকরণ, প্রতিটি প্রতিবেশী আলাদা",
+  secret: "গ্রাফ রঙ করো — প্রতিটি প্রতিবেশী আলাদা রঙে। যেকোনো মানচিত্র মাত্র ৪টি রঙে রাঙা যায় — four color theorem (১৯৭৬, প্রথম কম্পিউটার-প্রমাণিত উপপাদ্য)। কম্পাইলার এটা ব্যবহার করে — রেজিস্টার বরাদ্দে।",
+  recall: {
+    q: " Four Color Theorem কী? এটা কম্পাইলারে কীভাবে ব্যবহৃত হয়?",
+    qen: "What is the Four Color Theorem? How is it used in compilers?",
+    a: "যেকোনো মানচিত্র ৪ রঙে রাঙা যায় — প্রতিটি প্রতিবেশী আলাদা। কম্পাইলারে: প্রতিটি ভেরিয়েবল একটি নোড, একসাথে ব্যবহৃত হলে এজ। রঙ = রেজিস্টার। Chaitin (১৯৮১)।",
+    aen: "Any map can be colored with 4 colors — adjacent regions differ. In compilers: variables are nodes, simultaneous use creates edges. Color = register. Chaitin (1981)."
+  },
+  story: `<p class="scene-setting">১৮৫২, লন্ডন। Francis Guthrie একটি মানচিত্র রাঙছেন। তিনি লক্ষ্য করলেন — ইংল্যান্ডের কাউন্টি মাত্র ৪টি রঙে রাঙা যায়। প্রতিটি প্রতিবেশী কাউন্টি আলাদা রঙে। তিনি প্রশ্ন করলেন: কি যেকোনো মানচিত্র ৪ রঙে সম্ভব? ১২৪ বছর ধরে এই প্রশ্ন অমীমাংসিত ছিল। তারপর ১৯৭৬-এ Appel ও Haken প্রমাণ করলেন — কম্পিউটার দিয়ে। ১৯৩৬টি কেস চেক করে। এটাই প্রথম উপপাদ্য যা মানুষ নয়, কম্পিউটার প্রমাণ করেছিল।</p>
+<p class="scene-setting en">1852, London. Francis Guthrie colors a map. He notices England's counties need only 4 colors — each neighbor different. He asks: is 4 colors always enough? 124 years unsolved. Then 1976: Appel and Haken prove it — by computer. 1936 cases checked. The first theorem proven not by humans, but by machine.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎨 Graph Coloring: From Maps to Registers</text>
+<div class="dialogue"><strong>রঙ-কারিগর লাবিব:</strong> তামির (Door ৭) তোমাকে গ্রাফ দিয়েছেন। এখন সেই গ্রাফে রঙ করো। কেন? কম্পাইলারে ভেবে দেখো — তোমার ১৬টি CPU রেজিস্টার, কিন্তু ১০০টি ভেরিয়েবল। কোন ভেরিয়েবল কোন রেজিস্টারে? একই সময়ে ব্যবহৃত হলে আলাদা রেজিস্টার দরকার। এটাই graph coloring! প্রতিটি ভেরিয়েবল নোড, একসাথে ব্যবহৃত হলে এজ। রঙের সংখ্যা = রেজিস্টার সংখ্যা। Chaitin ১৯৮১-এ এটা দেখিয়েছিলেন।</div>
+<div class="dialogue en"><strong>Color Artisan Labib:</strong> Tamir (Door 7) gave you graphs. Now color them. Why? Think of compilers — 16 CPU registers, 100 variables. Which goes where? Simultaneous use needs separate registers. This IS graph coloring! Variables = nodes, conflict = edges. Number of colors = registers. Chaitin 1981.</div>
 
-  <!-- Map coloring -->
-  <rect x="20" y="50" width="250" height="200" rx="10" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
-  <text x="145" y="72" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">Four Color Theorem (1976)</text>
+<div class="code-block">— Python: Graph Coloring —
 
-  <!-- Regions -->
-  <path d="M 50,90 L 120,90 L 120,140 L 50,140 Z" fill="#dc2626" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-  <text x="85" y="118" text-anchor="middle" fill="#fff" font-size="7" font-weight="700">A</text>
+  import networkx as nx
 
-  <path d="M 120,90 L 220,90 L 220,140 L 120,140 Z" fill="#22c55e" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-  <text x="170" y="118" text-anchor="middle" fill="#fff" font-size="7" font-weight="700">B</text>
+  # ভেরিয়েবল কনফ্লিক্ট গ্রাফ (যেগুলো একসাথে live)
+  G = nx.Graph()
+  G.add_edges_from([
+      ("a", "b"), ("a", "c"),  # a ও b, a ও c একসাথে live
+      ("b", "c"), ("b", "d"),
+      ("c", "d"),
+  ])
 
-  <path d="M 50,140 L 120,140 L 120,210 L 50,210 Z" fill="#0ea5e9" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-  <text x="85" y="178" text-anchor="middle" fill="#fff" font-size="7" font-weight="700">C</text>
+  # Greedy coloring (সবচেয়ে কম রঙ)
+  coloring = nx.coloring.greedy_color(G, strategy="largest_first")
+  print(coloring)
+  # {'c': 0, 'b': 1, 'a': 2, 'd': 0}
+  # ৩টি রঙ লাগলো (= ৩টি রেজিস্টার)
 
-  <path d="M 120,140 L 220,140 L 220,210 L 120,210 Z" fill="#fbbf24" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-  <text x="170" y="178" text-anchor="middle" fill="#1e293b" font-size="7" font-weight="700">D</text>
+  # Chromatic number:
+  print(max(coloring.values()) + 1)  # 3
 
-  <text x="145" y="230" text-anchor="middle" fill="#fbbf24" font-size="7">4 colors suffice for ANY planar map!</text>
+  # Four Color Theorem: যেকোনো planar graph ≤ ৪
+  planar = nx.random_geometric_graph(20, 0.3)
+  coloring = nx.coloring.greedy_color(planar)
+  print(max(coloring.values()) + 1)  # ≤ 4 (সাধারণত)</div>
 
-  <!-- Register allocation -->
-  <rect x="310" y="50" width="250" height="200" rx="10" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
-  <text x="435" y="72" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Compiler Register Allocation</text>
+<div class="verse">وَفِي خَلْقِكُمْ وَمَا يَبُثُّ مِن دَابَّةٍ آيَاتٌ لِّقَوْمٍ يُوقِنُونَ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং তোমাদের সৃষ্টিতে এবং যেসব জীব তিনি ছড়িয়েছেন তাতে নিদর্শন রয়েছে।" — কুরআন ৪৫:৪</div>
 
-  <!-- Variable graph -->
-  <circle cx="360" cy="105" r="16" fill="#dc2626" stroke="#fff" stroke-width="1.5"/>
-  <text x="360" y="108" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">x</text>
+<p class="scene-setting">বৈচিত্র্য — প্রতিটি সৃষ্টি আলাদা, প্রতিটি রঙ ভিন্ন। গ্রাফ রঙও তেমন — প্রতিটি প্রতিবেশী আলাদা। তাফসিল — পৃথকীকরণ। প্রকৃতিতে বৈচিত্র্য একটি নিদর্শন। গণিতে সেই বৈচিত্র্যের সূত্র — ৪ রঙ যথেষ্ট।</p>
 
-  <circle cx="430" cy="105" r="16" fill="#22c55e" stroke="#fff" stroke-width="1.5"/>
-  <text x="430" y="108" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">y</text>
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৫ (Compilers) Door ৬ (Register Allocation):</strong> Chaitin-এর অ্যালগরিদম — graph coloring দিয়ে রেজিস্টার বরাদ্দ! এখন তুমি বোঝো সেই গণিত। Book ৪১ Door ৫ (P vs NP): graph coloring NP-complete — সবচেয়ে কম রঙ খুঁজা কঠিন।</div></div>
 
-  <circle cx="500" cy="105" r="16" fill="#dc2626" stroke="#fff" stroke-width="1.5"/>
-  <text x="500" y="108" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">z</text>
-
-  <circle cx="395" cy="170" r="16" fill="#22c55e" stroke="#fff" stroke-width="1.5"/>
-  <text x="395" y="173" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">w</text>
-
-  <circle cx="465" cy="170" r="16" fill="#dc2626" stroke="#fff" stroke-width="1.5"/>
-  <text x="465" y="173" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">v</text>
-
-  <!-- Edges (overlapping lifetimes) -->
-  <line x1="376" y1="105" x2="414" y2="105" stroke="#475569" stroke-width="2"/>
-  <line x1="446" y1="105" x2="484" y2="105" stroke="#475569" stroke-width="2"/>
-  <line x1="376" y1="115" x2="385" y2="155" stroke="#475569" stroke-width="2"/>
-  <line x1="414" y1="115" x2="410" y2="155" stroke="#475569" stroke-width="2"/>
-  <line x1="446" y1="115" x2="460" y2="155" stroke="#475569" stroke-width="2"/>
-  <line x1="484" y1="115" x2="476" y2="155" stroke="#475569" stroke-width="2"/>
-  <line x1="411" y1="170" x2="449" y2="170" stroke="#475569" stroke-width="2"/>
-
-  <text x="435" y="210" text-anchor="middle" fill="#c084fc" font-size="7">x,z,v = Register R0 (red)</text>
-  <text x="435" y="222" text-anchor="middle" fill="#4ade80" font-size="7">y,w = Register R1 (green)</text>
-  <text x="435" y="238" text-anchor="middle" fill="#fbbf24" font-size="7">Chromatic number = 2 registers!</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Graph Coloring — Four Color Theorem (মানচিত্র) আর Register Allocation (compiler)। Variables = vertices, overlap = edge, register = color।</div>
-
-<div class="code-block">🐍 Python: Graph Coloring — Map Coloring ও Compiler Register Allocation
-
-import networkx as nx
-
-# Map coloring: adjacency graph থেকে chromatic number বের করা
-# চারটি region A,B,C,D — A ও B পাশাপাশি, ইত্যাদি (conflict edges)
-map_graph = nx.Graph()
-map_graph.add_edges_from([('A','B'), ('A','C'), ('B','D'), ('C','D'), ('B','C')])
-print("Map adjacency:", list(map_graph.edges()))
-
-# Greedy graph coloring — chromatic number এর আসল মানের কাছাকাছি
-coloring = nx.coloring.greedy_color(map_graph, strategy='largest_first')
-print("Coloring:", coloring)  # {'B': 0, 'C': 1, 'A': 2, 'D': 2} → ৩ color
-chromatic = max(coloring.values()) + 1
-print("Chromatic number (greedy):", chromatic)  # ৩ color লাগছে এই map এ
-
-# Four Color Theorem: যেকোনো planar graph ≤ ৪ color এ colorable
-# Planar check + coloring
-print("Is planar?", nx.check_planarity(map_graph)[0])  # True
-
-# Register Allocation (Chaitin 1981): variables = vertices, overlap = edge
-# দুটি variable একই সময়ে live হলে তাদের আলাদা register লাগে
-reg_graph = nx.Graph()
-# x,y,z,w,v — x,y overlap; y,z overlap; z,v overlap; w,v overlap; ইত্যাদি
-reg_graph.add_edges_from([('x','y'), ('y','z'), ('z','v'), ('v','w'), ('x','w')])
-regs = nx.coloring.greedy_color(reg_graph, strategy='largest_first')
-print("\nRegister allocation:")
-for var, color in sorted(regs.items()):
-    print(f"  {var} → R{color}  (register)")
-print("Min registers needed:", max(regs.values()) + 1)
-
-# Akamai deploy wave example — conflict graph coloring দিয়ে batch
-# ৬৫,০০০ সার্ভার, pairwise conflict থাকলে আলাদা wave
-import random
-random.seed(42)
-servers = [f"s{i}" for i in range(20)]   # ছোট উদাহরণ
-deploy_graph = nx.Graph()
-for i in range(len(servers)):
-    for j in range(i+1, len(servers)):
-        if random.random() < 0.15:   # ১৫% conflict
-            deploy_graph.add_edge(servers[i], servers[j])
-waves = nx.coloring.greedy_color(deploy_graph, strategy='largest_first')
-print(f"\n{len(servers)} সার্ভার → {max(waves.values())+1} deploy wave")
-for w in sorted(set(waves.values())):
-    batch = [s for s, c in waves.items() if c == w]
-    print(f"  Wave {w}: {batch}")
-
-# প্রতিটা wave এর সার্ভাররা একে অপরের সাথে conflict করে না → নিরাপদে deploy</div>
-
-<div class="dialogue"><strong>গণিতজ্ঞ:</strong> Four Color Theorem — ১৮৫২ সালে conjecture, ১৯৭৬ সালে প্রমাণ! প্রথম computer-assisted proof — Appel আর Haken। Graph coloring এর সবচেয়ে বড় application হল compiler register allocation (B45)। Chaitin (1981): variables = vertices, overlapping lifetime = edge, register = color। Chromatic number = minimum registers needed। Akamai ৬৫,০০০ সার্ভার conflict graph coloring করে ৮ color → ৮ wave deploy! NP-complete কিন্তু heuristic দ্রুত।</div>`,
-  recall: [
-    { q: "Four Color Theorem কী?", a: "যেকোনো planar map কে ৪টা রঙে রাঙানো যায় যেন পাশাপাশি region এর রং আলাদা। ১৯৭৬ সালে প্রথম computer-assisted proof।" },
-    { q: "Graph coloring কিভাবে register allocation এ ব্যবহৃত হয়?", a: "Variables = vertices, overlapping lifetimes = edges, registers = colors। Chromatic number = minimum registers needed। Chaitin 1981 — NP-complete কিন্তু heuristic কাজ করে।" },
-  ]
+<div class="secret-box">🎨 <strong>রঙ করো — প্রতিবেশী আলাদা। ৪ রঙ যথেষ্ট।</strong> কম্পাইলার থেকে মানচিত্র — সব জায়গায় প্রযোজ্য। কিন্তু গ্রাফ শুধু সংযোগ নয় — কিছু সংখ্যা বিশেষ। কিছু সংখ্যা শুধু নিজে ও ১ দিয়ে ভাগ যায়। সেই সংখ্যার জগত — পরের দরজায়।</div>`,
+  senior: {
+    title: "Graph Coloring এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Four Color (1976)</td><td>যেকোনো মানচিত্র ৪ রঙে — Appel & Haken</td></tr>
+<tr><td class="hl">Chromatic Number χ(G)</td><td>সবচেয়ে কম রঙের সংখ্যা</td></tr>
+<tr><td class="hl">Greedy Algorithm</td><td>বড় নোড থেকে শুরু — সর্বদা ≤ সেরা + ১</td></tr>
+<tr><td class="hl">Chaitin (1981)</td><td>রেজিস্টার বরাদ্দ = graph coloring</td></tr>
+<tr><td class="hl">NP-complete</td><td>সবচেয়ে কম রঙ খুঁজা — কঠিন</td></tr>
+<tr><td class="hl">Planar Graph</td><td>সর্বদা ≤ ৪ রঙ</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 9 — The Clock Arithmetic (Modular)
-// ═══════════════════════════════════════════
 doors.push({
   num: 9,
-  icon: "🕐",
-  color: "#10b981",
-  tagline: "ঘড়ির পাটিগণিত — Clock Arithmetic",
-  name: "The Clock Arithmetic",
-  secret: "Modular arithmetic শুধু % নয় — একটা সম্পূর্ণ algebraic ring (ℤₙ)। RSA এর ভিত্তি!",
-  story: `<p class="scene-setting">Modular arithmetic শুধু <code>%</code> operator নয়। এটা একটা সম্পূর্ণ algebraic system — ring of integers modulo n (ℤₙ)। Addition, subtraction, multiplication, এমনকি multiplicative inverse! <code>1032 % 5 = 2</code> — round-robin task distribution। Euclidean algorithm (৬ষ্ঠ শতাব্দীর ভারতীয় 'kuttak') দিয়ে GCD বের করা যায় — RSA key generation এ ব্যবহৃত। Fermat এর Little Theorem আর Euler এর Totient function গ্যারান্টি দেয় যে RSA decryption কাজ করবে।</p>
+  icon: "🔢",
+  color: "#8b5cf6",
+  name: "সংখ্যার গহন",
+  subtitle: "The Depths of Numbers",
+  tech: "Number Theory — Euclid's primes (300 BCE), Fermat's Little Theorem, modular arithmetic, RSA foundation, GCD/LCM",
+  spirit: "আদদ — চিরস্থায়ী, সংখ্যার অনন্ত গভীরতা",
+  secret: "মৌলিক সংখ্যা = সংখ্যার পরমাণু। প্রতিটি সংখ্যা মৌলিকের গুণফল। Euclid প্রমাণ করেছিলেন — মৌলিকের সংখ্যা অসীম। Fermat দেখিয়েছিলেন a^(p-১) ≡ ১ (mod p)। এই সূত্র RSA-এর ভিত্তি — তোমার HTTPS।",
+  recall: {
+    q: " মৌলিক সংখ্যা কী? অসীম প্রমাণ করো। Fermat-এর সূত্র কী?",
+    qen: "What are prime numbers? Prove they are infinite. What is Fermat's theorem?",
+    a: "মৌলিক = শুধু ১ ও নিজে দিয়ে ভাগ যায়। অসীম: ধরো সসীম, সবগুলোর গুণফল + ১ — এটিও মৌলিক বা মৌলিক উপাদান। Fermat: a^(p-১) ≡ ১ (mod p), p মৌলিক হলে।",
+    aen: "Prime = divisible only by 1 and itself. Infinite: assume finite, multiply all + 1 — new prime factor. Fermat: a^(p-1) ≡ 1 (mod p) when p is prime."
+  },
+  story: `<p class="scene-setting">আলেকজান্দ্রিয়া, ৩০০ খ্রিস্টপূর্ব। ইউক্লিড (যিনি Door ৩-এ √২ প্রমাণ করেছেন) এবার একটি ভিন্ন প্রশ্ন নিয়ে আছেন। মৌলিক সংখ্যা কত? সসীম নাকি অসীম? তার প্রমাণ একটি অমর সৌন্দর্য: ধরে নাও সসীম। সব মৌলিকের গুণফল নাও, তাতে ১ যোগ করো। এই নতুন সংখ্যা — কোনো মৌলিক দিয়ে ভাগ যায় না! তাই নতুন মৌলিক আছে। অন্তর্বিরোধ। অসীম।</p>
+<p class="scene-setting en">Alexandria, 300 BCE. Euclid (who proved √2 irrational in Door 3) now asks: how many primes? Finite or infinite? His proof is immortal beauty: assume finite. Multiply all primes, add 1. This new number is divisible by no existing prime! So a new prime exists. Contradiction. Infinite.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🕐 Modular Arithmetic → RSA Encryption</text>
+<div class="dialogue"><strong>সংখ্যা-জ্ঞানী আরমান:</strong> লাবিব (Door ৮) তোমাকে রঙ শিখিয়েছেন। এখন সংখ্যার গভীরে যাও। মৌলিক সংখ্যা — ২, ৩, ৫, ৭, ১১, ১৩... কোনো প্যাটার্ন নেই। কিন্তু এরাই সবকিছুর ভিত্তি। ৬০ = ২² × ৩ × ৫। প্রতিটি সংখ্যা মৌলিকে ভাঙা যায় — Fundamental Theorem of Arithmetic। আর Fermat-এর সূত্র: ৭ মৌলিক হলে, ২⁶ = ৬৪, ৬৪ mod ৭ = ১। এই সহজ সত্যই তোমার RSA এনক্রিপশন চালায়!</div>
+<div class="dialogue en"><strong>Number Knower Arman:</strong> Labib (Door 8) taught you coloring. Now go deeper into numbers. Primes — 2, 3, 5, 7, 11, 13... No pattern. But they are the foundation. 60 = 2² × 3 × 5. Every number breaks into primes — Fundamental Theorem. And Fermat: if 7 is prime, 2⁶ = 64, 64 mod 7 = 1. This simple truth powers your RSA encryption!</div>
 
-  <!-- Clock -->
-  <circle cx="120" cy="130" r="70" fill="#0f172a" stroke="#10b981" stroke-width="3"/>
-  <text x="120" y="80" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="700">0</text>
-  <text x="165" y="100" text-anchor="middle" fill="#6ee7b7" font-size="10">1</text>
-  <text x="185" y="135" text-anchor="middle" fill="#6ee7b7" font-size="10">2</text>
-  <text x="165" y="170" text-anchor="middle" fill="#6ee7b7" font-size="10">3</text>
-  <text x="120" y="190" text-anchor="middle" fill="#6ee7b7" font-size="10">4</text>
-  <text x="75" y="170" text-anchor="middle" fill="#6ee7b7" font-size="10">5</text>
-  <text x="55" y="135" text-anchor="middle" fill="#6ee7b7" font-size="10">6</text>
-  <text x="75" y="100" text-anchor="middle" fill="#6ee7b7" font-size="10">7</text>
-  <text x="120" y="135" text-anchor="middle" fill="#10b981" font-size="9" font-weight="700">ℤ₈</text>
-  <text x="120" y="230" text-anchor="middle" fill="#64748b" font-size="7">Numbers wrap around!</text>
+<div class="code-block">— Python: Number Theory —
 
-  <!-- Sharding -->
-  <rect x="220" y="50" width="150" height="80" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="295" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Django Sharding</text>
-  <text x="295" y="92" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">user_id % NUM_SHARDS</text>
-  <text x="295" y="108" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">1032 % 5 = 2 → shard #2</text>
-  <text x="295" y="122" text-anchor="middle" fill="#64748b" font-size="6">Perfect round-robin distribution</text>
+  from math import gcd
+  from sympy import isprime, factorint, nextprime
 
-  <!-- GCD / Pulverizer -->
-  <rect x="220" y="140" width="150" height="80" rx="8" fill="#451a03" stroke="#f97316" stroke-width="1.5"/>
-  <text x="295" y="162" text-anchor="middle" fill="#fdba74" font-size="9" font-weight="700">Euclidean Algorithm</text>
-  <text x="295" y="180" text-anchor="middle" fill="#fb923c" font-size="7" font-family="monospace">gcd(259, 70):</text>
-  <text x="295" y="194" text-anchor="middle" fill="#fb923c" font-size="7" font-family="monospace">259 = 3×70 + 49</text>
-  <text x="295" y="208" text-anchor="middle" fill="#fb923c" font-size="7" font-family="monospace">70 = 1×49 + 21 ...</text>
-  <text x="295" y="218" text-anchor="middle" fill="#f97316" font-size="6">→ gcd = 7 (Pulverizer/kuttak)</text>
+  # মৌলিক সংখ্যা যাচাই
+  print(isprime(17))      # True
+  print(isprime(15))      # False — ৩×৫
 
-  <!-- RSA -->
-  <rect x="390" y="50" width="170" height="170" rx="8" fill="#7f1d1d" stroke="#dc2626" stroke-width="2"/>
-  <text x="475" y="72" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">🔐 RSA Encryption</text>
-  <text x="475" y="92" text-anchor="middle" fill="#fca5a5" font-size="7">1. Pick two large primes p, q</text>
-  <text x="475" y="105" text-anchor="middle" fill="#fca5a5" font-size="7">2. n = p × q</text>
-  <text x="475" y="118" text-anchor="middle" fill="#fca5a5" font-size="7">3. φ(n) = (p-1)(q-1)</text>
-  <text x="475" y="131" text-anchor="middle" fill="#fca5a5" font-size="7">4. Choose e coprime to φ(n)</text>
-  <text x="475" y="144" text-anchor="middle" fill="#fca5a5" font-size="7">5. d = e⁻¹ mod φ(n)</text>
-  <text x="475" y="157" text-anchor="middle" fill="#fca5a5" font-size="7">   (Extended Euclidean!)</text>
-  <line x1="410" y1="166" x2="540" y2="166" stroke="#dc2626" stroke-width="1"/>
-  <text x="475" y="180" text-anchor="middle" fill="#fbbf24" font-size="7">Encrypt: c = m^e mod n</text>
-  <text x="475" y="193" text-anchor="middle" fill="#4ade80" font-size="7">Decrypt: m = c^d mod n</text>
-  <text x="475" y="210" text-anchor="middle" fill="#dc2626" font-size="6">Factor n = P → breakable!</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Modular arithmetic — clock wrapping (ℤₙ) → sharding (user_id % N) → Euclidean algorithm (GCD/Pulverizer) → RSA encryption। সব সংযুক্ত!</div>
+  # উৎপাদকে বিভক্ত
+  print(factorint(360))   # {2: 3, 3: 2, 5: 1} → ২³×৩²×৫
 
-<div class="code-block">🐍 Python: Modular Arithmetic — Clock Math, GCD, ও RSA Encryption
+  # GCD (Euclidean algorithm)
+  print(gcd(48, 18))      # 6
 
-# Modular arithmetic: ℤₙ ring — সব অপারেশন 'wrap around' করে
-print("Clock ℤ₁₂: ৭+৮ =", (7 + 8) % 12)   # 3 — ৭ঘ পরে ৮ঘ = ৩ঘ (পরের দিন)
-print("Django shard: 1032 % 5 =", 1032 % 5) # 2 → shard #2 (round-robin)
+  # Modular arithmetic:
+  print(pow(2, 6, 7))     # 1 — Fermat! (৭ মৌলিক)
+  print(pow(3, 10, 11))   # 1 — Fermat! (১১ মৌলিক)
 
-# ℤ₅ এর সম্পূর্ণ addition ও multiplication table
-n = 5
-print(f"ℤ_{n} addition table:")
-for a in range(n):
-    print(" ", [(a + b) % n for b in range(n)])
-# ২টা column যোগ করে wrap করে — এটাই 'group' structure
+  # RSA-এর ভিত্তি:
+  # p, q মৌলিক → n = p×q
+  # φ(n) = (p-1)(q-1)
+  # e নির্বাচন → d = e^(-1) mod φ(n)
+  # encrypt: c = m^e mod n
+  # decrypt: m = c^d mod n
+  # এটাই Book ৪৬ (Cryptography) Door ১!</div>
 
-# Euclidean Algorithm (Pulverizer/kuttak) — GCD বের করা
-def gcd(a, b):
-    # ৬ষ্ঠ শতাব্দীর ভারতীয় অ্যালগরিদম, recursion দিয়ে
-    while b:
-        a, b = b, a % b
-    return a
+<div class="callout info"><span class="co-icon">🔢</span><div><strong>Fundamental Theorem of Arithmetic:</strong> প্রতিটি সংখ্যা > ১ কে মৌলিক উৎপাদকে অদ্বিতীয়ভাবে বিভক্ত করা যায়। ২৪ = ২³ × ৩। একমাত্র একটি উপায়। এটাই সংখ্যার ডিএনএ।<br><br>
+<strong>Fermat's Little Theorem (১৬৪০):</strong> p মৌলিক হলে, a^(p-১) ≡ ১ (mod p)। এটা RSA-এর গাণিতিক ভিত্তি। বিশাল সংখ্যার মৌলিক যাচাইও এটা দিয়ে।</div></div>
 
-print("gcd(259, 70) =", gcd(259, 70))   # 7
-print("gcd(1071, 462) =", gcd(1071, 462))  # 21
-# প্রতিটা ধাপ: 259 = 3·70 + 49 → 70 = 1·49 + 21 → 49 = 2·21 + 7 → 21 = 3·7 + 0
+<div class="verse">إِنَّا كُلَّ شَيْءٍ خَلَقْنَاهُ بِقَدَرٍ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই আমরা প্রতিটি কিছু সুনির্দিষ্ট পরিমাণে সৃষ্টি করেছি।" — কুরআন ৫৪:৪৯</div>
 
-# Extended Euclidean — multiplicative inverse বের করে (RSA private key!)
-def extended_gcd(a, b):
-    if b == 0: return (a, 1, 0)
-    g, x1, y1 = extended_gcd(b, a % b)
-    return (g, y1, x1 - (a // b) * y1)
+<p class="scene-setting">"কদর" — নির্দিষ্ট পরিমাণ। প্রতিটি সংখ্যার একটি অদ্বিতীয় মৌলিক গঠন — সেই কদর। ৬০ = ২²×৩×৫ — অন্যভাবে নয়। সংখ্যার জগতে প্রতিটি জিনিসের একটি নির্দিষ্ট সত্য আছে। আদদ — চিরস্থায়ী। মৌলিক সংখ্যা অসীম, কিন্তু প্রতিটি অদ্বিতীয়।</p>
 
-def mod_inverse(e, phi):
-    # e⁻¹ mod φ(n) — RSA এর private key d
-    g, x, _ = extended_gcd(e, phi)
-    return x % phi if g == 1 else None
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৬ (Cryptography) Door ১ (RSA):</strong> RSA = মৌলিক সংখ্যার উপর নির্মিত! Fermat-এর সূত্র ছাড়া RSA অসম্ভব। Book ৪১ Door ৪ (P vs NP): মৌলিক যাচাই = P, কিন্তু উৎপাদকে বিভক্ত = অজানা।</div></div>
 
-print("3⁻¹ mod 11 =", mod_inverse(3, 11))  # 4 (কারণ 3·4=12≡1 mod 11)
-
-# Fermat's Little Theorem: a^(p-1) ≡ 1 (mod p), p prime
-p = 17
-for a in [2, 3, 5]:
-    print(f"  {a}^{p-1} mod {p} = {pow(a, p-1, p)}")  # সব 1
-# এটাই RSA decryption এর গ্যারান্টি!
-
-# Mini RSA (educational — বাস্তবে বড় prime লাগে)
-def rsa_demo():
-    p, q = 61, 53                    # দুটো prime
-    n = p * q                        # 3233 — public modulus
-    phi = (p-1) * (q-1)              # 3120 — Euler totient
-    e = 17                           # public exponent (coprime to φ)
-    d = mod_inverse(e, phi)          # 2753 — private key
-
-    msg = 42                         # plaintext (একটা সংখ্যা)
-    cipher = pow(msg, e, n)          # encrypt: c = m^e mod n
-    decrypted = pow(cipher, d, n)    # decrypt: m = c^d mod n
-
-    print(f"  p={p}, q={q}, n={n}, φ={phi}")
-    print(f"  public key:  (e={e}, n={n})")
-    print(f"  private key: (d={d}, n={n})")
-    print(f"  message={msg} → cipher={cipher} → decrypted={decrypted}")
-    assert decrypted == msg, "RSA failed!"
-    print("  RSA round-trip ✅")
-
-rsa_demo()
-
-# n কে factor করতে পারলে RSA ভেঙে যায়
-print("Factor 3233 →", [(p, 3233//p) for p in range(2, 60) if 3233 % p == 0][0])
-# (61, 53) — বাস্তবে n হল ~2048-bit → factor করা ব্যবহারিকভাবে অসম্ভব</div>
-
-<div class="dialogue"><strong>গণিতজ্ঞ:</strong> Modular arithmetic শুধু <code>%</code> নয়। ℤₙ একটা সম্পূর্ণ ring — addition, multiplication, inverse সব কাজ করে। Euclidean algorithm — ভারতীয় নাম 'kuttak' (Pulverizer) — GCD বের করে। Extended version multiplicative inverse বের করে → এটাই RSA private key। Fermat এর Little Theorem: <code>a^(p-1) ≡ 1 (mod p)</code>। Euler এর totient: <code>a^φ(n) ≡ 1 (mod n)</code>। এই দুটো গ্যারান্টি দেয় RSA decryption কাজ করবে। HTTPS এর পুরো ভিত্তি!</div>`,
-  recall: [
-    { q: "Modular arithmetic কেন শুধু % নয়?", a: "ℤₙ একটা সম্পূর্ণ algebraic ring — addition, multiplication, inverse সব কাজ করে। RSA encryption এই ring এর properties এর উপর নির্ভর করে।" },
-    { q: "Euclidean algorithm কিভাবে RSA তে ব্যবহৃত হয়?", a: "Extended Euclidean (Pulverizer/kuttak) GCD আর multiplicative inverse বের করে। Inverse টাই RSA private key। ৬ষ্ঠ শতাব্দীর ভারতীয় গণিত!" },
-  ]
+<div class="secret-box">🔢 <strong>মৌলিক = সংখ্যার পরমাণু। অসীম। অদ্বিতীয় গঠন।</strong> Euclid থেকে Fermat — ২০০০ বছরের গবেষণা। এই সত্য ছাড়া RSA নেই, HTTPS নেই, ইন্টারনেট নেই। এখন নয়টি দরজা পেরিয়েছো — শেষ দরজায় সব মেলাও।</div>`,
+  senior: {
+    title: "Number Theory এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Euclid (~৩০০ BCE)</td><td>মৌলিক অসীম — contradiction দিয়ে প্রমাণ</td></tr>
+<tr><td class="hl">Fundamental Theorem</td><td>প্রতিটি সংখ্যা অদ্বিতীয় মৌলিক গুণফল</td></tr>
+<tr><td class="hl">Fermat (১৬৪০)</td><td>a^(p-১) ≡ ১ (mod p)</td></tr>
+<tr><td class="hl">GCD</td><td>Euclidean algorithm</td></tr>
+<tr><td class="hl">Modular Arithmetic</td><td>(a mod n) — ঘড়ির গণিত</td></tr>
+<tr><td class="hl">RSA</td><td>Fermat-এর সূত্রের প্রয়োগ</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 10 — The Compass Points (Master Theorem)
-// ═══════════════════════════════════════════
 doors.push({
   num: 10,
-  icon: "🧭",
+  icon: "🌟",
   color: "#8b5cf6",
-  tagline: "কম্পাসের দিক — The Compass Points",
-  name: "The Compass Points",
-  secret: "Master Theorem: T(n) = aT(n/b) + f(n) → instant Big-O! Recurrence থেকে complexity।",
-  story: `<p class="scene-setting">Master Theorem হল divide-and-conquer recurrence relation solver। <code>T(n) = aT(n/b) + f(n)</code> — a subproblems, n/b size, f(n) combine work। তিনটা case: (১) যদি f(n) ছোট হয় → <code>T(n) = Θ(n^(log_b a))</code>, (২) সমান হয় → <code>Θ(n^(log_b a) log n)</code>, (৩) f(n) বড় হয় → <code>Θ(f(n))</code>। Merge Sort: <code>T(n) = 2T(n/2) + O(n)</code> → Case 2 → <code>O(n log n)</code>! Binary Search: <code>T(n) = T(n/2) + O(1)</code> → <code>O(log n)</code>! এটাই B2 (DSA) এর Big-O analysis এর ভিত্তি। Generating functions ও recurrence solve করার আরেকটা tool — polynomial coefficient থেকে closed-form solution।</p>
+  name: "সব সত্যের সমন্বয়",
+  subtitle: "The Synthesis of All Truths",
+  tech: "Synthesis — how logic, proofs, sets, combinatorics, graphs, and numbers form the foundation of all computing",
+  spirit: "হিকমাহ — প্রয়োগিক জ্ঞান, সব সত্যের একত্র দৃষ্টি",
+  secret: "নয়টি দরজা, নয়জন শিক্ষক, একটি সত্য — ডিসক্রিট গণিত ছাড়া কম্পিউটার বিজ্ঞান অসম্ভব। if/else থেকে RSA পর্যন্ত — সবকিছুর ভিত্তি এই ছয়টি স্তম্ভ।",
+  recall: {
+    q: " ডিসক্রিট গণিতের ছয়টি স্তম্ভ কী কী? কম্পিউটিংয়ে কেন দরকার?",
+    qen: "What are the six pillars of discrete math? Why are they essential for computing?",
+    a: "লজিক (if/else), প্রমাণ (correctness), সেট (ডেটাবেস), কম্বিনেটরিক্স (সম্ভাবনা), গ্রাফ (নেটওয়ার্ক), সংখ্যা তত্ত্ব (ক্রিপ্টো)। কম্পিউটার = ডিসক্রিট মেশিন।",
+    aen: "Logic (if/else), proofs (correctness), sets (databases), combinatorics (probability), graphs (networks), number theory (crypto). Computers are discrete machines."
+  },
+  story: `<p class="scene-setting">তুমি এখন নয়টি দরজা পেরিয়েছো। প্রতিটি দরজায় একজন শিক্ষক একটি কৌশল দিয়েছেন। এখন সব একসাথে মেলাও। একটি কম্পিউটার প্রোগ্রাম লিখতে হবে। প্রতিটি দরজার শিক্ষক আসবে, তার কৌশল দেবে। এটাই সমন্বয় — নয়টি যন্ত্র একসাথে বাজে।</p>
+<p class="scene-setting en">You have passed nine doors. Each teacher gave you one technique. Now combine them all. Write a computer program. Each door's teacher appears, offering their technique. This is synthesis — nine instruments playing together.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🧭 Master Theorem: Divide & Conquer Big-O</text>
+<div class="callout info"><span class="co-icon">🌟</span><div><strong>সম্পূর্ণ ডিসক্রিট গণিত — নয় দরজার সমন্বয়:</strong><br>
+<strong>Door ১ — ইদ্রিস (Logic):</strong> if/else, De Morgan — প্রতিটি সিদ্ধান্ত<br>
+<strong>Door ২ — ইউসুফ (Induction):</strong> recursion, loop correctness<br>
+<strong>Door ৩ — জাইদ (Contradiction):</strong> অসম্ভব প্রমাণ, halting problem<br>
+<strong>Door ৪ — রিয়াদ (Sets):</strong> ডেটাবেস, SQL UNION/INTERSECT<br>
+<strong>Door ৫ — নাদিয়া (Combinatorics):</strong> hash collision, password শক্তি<br>
+<strong>Door ৬ — সাবির (Pigeonhole):</strong> collision অনিবার্য প্রমাণ<br>
+<strong>Door ৭ — তামির (Graphs):</strong> নেটওয়ার্ক, PageRank, রাউটিং<br>
+<strong>Door ৮ — লাবিব (Coloring):</strong> রেজিস্টার বরাদ্দ, scheduling<br>
+<strong>Door ৯ — আরমান (Numbers):</strong> RSA, এনক্রিপশন, মৌলিক</div></div>
 
-  <!-- Formula -->
-  <rect x="130" y="45" width="320" height="30" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
-  <text x="290" y="64" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700" font-family="monospace">T(n) = a·T(n/b) + f(n)</text>
+<div class="code-block">— একটি Django অ্যাপে সব ডিসক্রিট গণিত —
 
-  <!-- Three cases -->
-  <rect x="30" y="95" width="160" height="85" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="110" y="115" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Case 1: f(n) smaller</text>
-  <text x="110" y="135" text-anchor="middle" fill="#86efac" font-size="7">f(n) = O(n^(log_b a - ε))</text>
-  <rect x="45" y="145" width="130" height="20" rx="3" fill="#1e293b" stroke="#22c55e" stroke-width="1"/>
-  <text x="110" y="158" text-anchor="middle" fill="#4ade80" font-size="8" font-family="monospace">T(n) = Θ(n^(log_b a))</text>
+  # Door ১ (Logic): if/else ও De Morgan
+  if not (user.is_staff and user.is_active):
+      # ≡ user.is_staff == False OR user.is_active == False
 
-  <rect x="210" y="95" width="160" height="85" rx="8" fill="#451a03" stroke="#f97316" stroke-width="2"/>
-  <text x="290" y="115" text-anchor="middle" fill="#fdba74" font-size="9" font-weight="700">Case 2: f(n) equal</text>
-  <text x="290" y="135" text-anchor="middle" fill="#fb923c" font-size="7">f(n) = Θ(n^(log_b a))</text>
-  <rect x="225" y="145" width="130" height="20" rx="3" fill="#1e293b" stroke="#f97316" stroke-width="1"/>
-  <text x="290" y="158" text-anchor="middle" fill="#fdba74" font-size="8" font-family="monospace">T(n) = Θ(n^c · log n)</text>
+  # Door ৪ (Sets): QuerySet = সেট অপারেশন
+  active_users = User.objects.filter(is_active=True)
+  staff = User.objects.filter(is_staff=True)
+  both = active_users & staff  # intersection
 
-  <rect x="390" y="95" width="160" height="85" rx="8" fill="#7f1d1d" stroke="#dc2626" stroke-width="2"/>
-  <text x="470" y="115" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">Case 3: f(n) larger</text>
-  <text x="470" y="135" text-anchor="middle" fill="#fca5a5" font-size="7">f(n) = Ω(n^(log_b a + ε))</text>
-  <rect x="405" y="145" width="130" height="20" rx="3" fill="#1e293b" stroke="#dc2626" stroke-width="1"/>
-  <text x="470" y="158" text-anchor="middle" fill="#fca5a5" font-size="8" font-family="monospace">T(n) = Θ(f(n))</text>
+  # Door ৫ (Combinatorics): password শক্তি
+  # ৮-অক্ষর password, ৬২ অক্ষর → ৬২⁸ ≈ ২১৮ ট্রিলিয়ন
 
-  <!-- Examples -->
-  <rect x="30" y="195" width="520" height="70" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="290" y="213" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="700">Examples</text>
-  <rect x="45" y="222" width="150" height="18" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="120" y="235" text-anchor="middle" fill="#67e8f9" font-size="7" font-family="monospace">Merge: 2T(n/2)+n → O(n log n)</text>
-  <rect x="215" y="222" width="150" height="18" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="290" y="235" text-anchor="middle" fill="#67e8f9" font-size="7" font-family="monospace">Binary: T(n/2)+1 → O(log n)</text>
-  <rect x="385" y="222" width="150" height="18" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="460" y="235" text-anchor="middle" fill="#67e8f9" font-size="7" font-family="monospace">Strassen: 7T(n/2)+n² → O(n^2.81)</text>
-  <text x="290" y="255" text-anchor="middle" fill="#64748b" font-size="7">Master Theorem = instant Big-O from recurrence relation!</text>
-</svg>
+  # Door ৭ (Graph): foreign key = গ্রাফ এজ
+  # User → Account → Transaction → Category
+
+  # Door ৯ (Number Theory): RSA সার্টিফিকেট
+  # HTTPS সংযোগে p×q মৌলিক গুণফল</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৯</div><div class="sc-label">শিক্ষক</div></div>
+<div class="stat-card"><div class="sc-num">৬</div><div class="sc-label">স্তম্ভ</div></div>
+<div class="stat-card"><div class="sc-num">২০০০+</div><div class="sc-label">বছরের গবেষণা</div></div>
+<div class="stat-card"><div class="sc-num">∞</div><div class="sc-label">প্রয়োগ</div></div>
 </div>
-<div class="svg-caption">চিত্র: Master Theorem — T(n) = aT(n/b) + f(n) থেকে instant Big-O। Merge Sort = O(n log n), Binary Search = O(log n), Strassen = O(n^2.81)।</div>
 
-<div class="code-block">🐍 Python: Master Theorem — Divide & Conquer Recurrence → Big-O স্বয়ংক্রিয়
+<div class="verse">اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"আল্লাহ আসমান ও পৃথিবীর আলো।" — কুরআন ২৪:৩৫</div>
 
-import math
+<p class="scene-setting">নূর — আলো। ডিসক্রিট গণিত হলো সেই আলো যা প্রতিটি কম্পিউটার প্রোগ্রামকে দৃশ্যমান করে। বাইরে থেকে একটি অ্যাপ সহজ মনে হয় — কিন্তু ভেতরে চলছে এক বিশাল ডিসক্রিট সত্যের সমন্বয়। ইদ্রিসের লজিক, ইউসুফের ইনডাকশন, রিয়াদের সেট, নাদিয়ার গোনা, তামিরের গ্রাফ, আরমানের সংখ্যা — সব একসাথে। একটি সার্ভার চালু হওয়া — ২০০০ বছরের গবেষণার ফল।</p>
+<p class="scene-setting en">Nur — light. Discrete mathematics is the light that makes every computer program visible. Outside, an app seems simple — but inside runs a vast orchestration of discrete truth. Idris's logic, Yusuf's induction, Riyad's sets, Nadia's counting, Tamir's graphs, Arman's numbers — all at once. A server starting up — the fruit of 2000 years of research.</p>
 
-# Master Theorem: T(n) = a·T(n/b) + f(n)
-# তিনটি case, তুলনা করে f(n) vs n^(log_b a)
-def master_theorem(a, b, f_exponent, n=1024):
-    # f(n) ≈ n^f_exponent (polynomial assumption)
-    critical = math.log(a) / math.log(b)   # log_b(a) — এটাই সীমারেখা
-    print(f"  T(n) = {a}·T(n/{b}) + O(n^{f_exponent})")
-    print(f"  log_{b}({a}) = {critical:.4f}, সীমা n^{critical:.4f}")
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>সম্পূর্ণ লাইব্রেরি সংযোগ:</strong> Book ৩০ (Math for ML) → calculus ও linear algebra। Book ৪১ (Theory of Computation) → automata, টুরিং মেশিন। Book ৪৬ (Cryptography) → RSA, number theory-এর প্রয়োগ। Book ৪৫ (Compilers) → graph coloring, রেজিস্টার। Book ৩৯ (Databases) → SQL = সেট অপারেশন। এই বই সবার ভিত্তি।</div></div>
 
-    eps = 0.001
-    if f_exponent < critical - eps:
-        case = 1
-        result = f"Θ(n^{critical:.4f})  ≈  Θ(n^{round(critical,2)})"
-    elif abs(f_exponent - critical) < eps:
-        case = 2
-        result = f"Θ(n^{critical:.4f} · log n)  ≈  Θ(n^{round(critical,2)} · log n)"
-    else:
-        case = 3
-        result = f"Θ(n^{f_exponent})  (f আধিপত্য করে)"
-    print(f"  → Case {case}: {result}\n")
+<div class="checklist">
+<li>⚖️ De Morgan-এর নিয়ম Python-এ যাচাই করো</li>
+<li>🁢 Σi = n(n+১)/২ induction দিয়ে প্রমাণ করো</li>
+<li>🔍 √২ অমূলদ contradiction দিয়ে প্রমাণ করো</li>
+<li>⊇ পাওয়ার সেট বের করো: {a,b,c}</li>
+<li>🎲 ৫০ জনে birthday collision সম্ভাবনা হিসাও</li>
+<li>🕸️ networkx দিয়ে একটি DAG বানাও</li>
+<li>🔢 প্রথম ১০০টি মৌলিক সংখ্যা বের করো</li>
+<li>📖 "Discrete Mathematics and Its Applications" — Rosen পড়ো</li>
+</div>
 
-print("=== Classic Algorithms ===")
-master_theorem(a=2, b=2, f_exponent=1)   # Merge Sort
-master_theorem(a=1, b=2, f_exponent=0)   # Binary Search
-master_theorem(a=7, b=2, f_exponent=2)   # Strassen matrix multiply
-master_theorem(a=4, b=2, f_exponent=1)   # কোনো কাল্পনিক D&C
-master_theorem(a=2, b=2, f_exponent=2)   # '过度 work' case 3
-
-# Empirical verification — সত্যিকারের রান টাইম মাপা
-import time
-def merge_sort(arr):
-    if len(arr) <= 1: return arr
-    mid = len(arr) // 2
-    left = merge_sort(arr[:mid])
-    right = merge_sort(arr[mid:])
-    out, i = [], 0
-    # merge step (O(n) work)
-    while left and right:
-        out.append(left.pop(0) if left[0] < right[0] else right.pop(0))
-    return out + left + right
-
-def binary_search(arr, target):
-    lo, hi = 0, len(arr) - 1
-    steps = 0
-    while lo <= hi:
-        steps += 1
-        mid = (lo + hi) // 2
-        if arr[mid] == target: return steps
-        elif arr[mid] < target: lo = mid + 1
-        else: hi = mid - 1
-    return steps
-
-# Doubling-ratio experiment: n ২x হলে সময় কতগুণ বাড়ে?
-print("=== Empirical Big-O (doubling ratio) ===")
-for size in [1000, 2000, 4000, 8000]:
-    arr = list(range(size))
-    t0 = time.perf_counter()
-    merge_sort(arr.copy())
-    dt = time.perf_counter() - t0
-    bs_steps = binary_search(arr, size - 1)
-    print(f"  n={size:5d}: merge={dt*1000:6.2f}ms, binary_search steps={bs_steps} (~log₂({size})={math.log2(size):.1f})")
-# n ২x → merge_sort সময় ~২x (O(n log n)), binary search steps +১ (O(log n))
-
-# Master Theorem দিয়ে Strassen এর উন্নতি দেখানো
-print("\nStrassen: log₂(7) =", round(math.log2(7), 4), "< 3")
-print("  স্ট্যান্ডার্ড matmul: O(n³) — Strassen: O(n^2.807) → বড় n এ দ্রুত")
-
-# Recurrence tree: প্রতিটা স্তরে a বাচ্চা, গভীরতা log_b(n), মোট নোড n^(log_b a)
-n = 1024
-for name, (a, b) in [("Merge", (2,2)), ("Strassen", (7,2)), ("Karatsuba", (3,2))]:
-    depth = math.log(n, b)
-    leaves = a ** depth
-    print(f"  {name:10s}: depth=log_{b}({n})={depth:.0f}, leaves={a}^{depth:.0f}={leaves:.0e}")</div>
-
-<div class="dialogue"><strong>গণিতজ্ঞ:</strong> Master Theorem হল তোমার সব divide-and-conquer algorithm এর complexity calculator। Merge Sort: <code>2T(n/2) + O(n)</code> → Case 2 → <code>O(n log n)</code>। Binary Search: <code>T(n/2) + O(1)</code> → Case 1 → <code>O(log n)</code>। Strassen এর matrix multiply: <code>7T(n/2) + O(n²)</code> → Case 1 → <code>O(n^2.81)</code> — স্ট্যান্ডার্ড O(n³) এর চেয়ে দ্রুত! B2 (DSA) তে শেখা সব algorithm এর complexity এই theorem থেকে আসে। এটাই discrete math এর সবচেয়ে practical tool — induction + recurrence + logarithm এর সমন্বয়। Generating functions ও recurrence solve করে — polynomial এর coefficient থেকে closed-form solution।</div>
-
-<p class="finale">🎉 <strong>তুমি যুক্তির কম্পাস জয় করেছ!</strong> Logic থেকে infinity, proof থেকে graph, modular arithmetic থেকে RSA — discrete math এর পুরো landscape তোমার। এটাই CS এর ভাষা। প্রতিটা if/else একটা proposition, প্রতিটা recursion একটা induction, প্রতিটা hash একটা pigeonhole। তুমি এখন গাণিতিকভাবে চিন্তা করতে পারো। 🎉</p>`,
-  recall: [
-    { q: "Master Theorem এর তিনটা case কী?", a: "T(n)=aT(n/b)+f(n): Case 1 (f ছোট) → Θ(n^(log_b a))। Case 2 (f সমান) → Θ(n^(log_b a) log n)। Case 3 (f বড়) → Θ(f(n))। Merge Sort = Case 2।" },
-    { q: "Merge Sort এর Big-O Master Theorem দিয়ে কিভাবে?", a: "T(n) = 2T(n/2) + O(n)। a=2, b=2, f(n)=n। log_2(2)=1, f(n)=n^1 → Case 2 → O(n^1 · log n) = O(n log n)।" },
-  ]
+<div class="secret-box">🌟 <strong>ডিসক্রিট গণিত = কম্পিউটিংয়ের আলো।</strong> নয়টি দরজা, নয়জন শিক্ষক, একটি সত্য। প্রতিটি if/else একটি সত্য সারণি। প্রতিটি ডেটাবেস একটি সেট। প্রতিটি নেটওয়ার্ক একটি গ্রাফ। প্রতিটি এনক্রিপশন মৌলিক সংখ্যা। এখন তুমি জানো — শুধু কীভাবে নয়, কেন। কেন if/else কাজ করে। কেন hash collision অনিবার্য। কেন চার রঙ যথেষ্ট। কেন মৌলিক অসীম। এটাই হিকমাহ — সত্যের একত্র দৃষ্টি।</div>`,
+  senior: {
+    title: "সম্পূর্ণ ডিসক্রিট গণিত এক নজরে",
+    body: `<table class="kv-table"><tr><th>স্তম্ভ</th><th>কী</th><th>দরজা</th></tr>
+<tr><td class="hl">Logic</td><td>সত্য সারণি, De Morgan</td><td>১</td></tr>
+<tr><td class="hl">Proofs</td><td>Induction, Contradiction</td><td>২, ৩</td></tr>
+<tr><td class="hl">Sets</td><td>Union, Intersection, Power Set</td><td>৪</td></tr>
+<tr><td class="hl">Combinatorics</td><td>P(n,k), C(n,k), Birthday</td><td>৫</td></tr>
+<tr><td class="hl">Pigeonhole</td><td>Collision অনিবার্য</td><td>৬</td></tr>
+<tr><td class="hl">Graphs</td><td>BFS, DFS, DAG, Euler</td><td>৭</td></tr>
+<tr><td class="hl">Coloring</td><td>4-color, Register allocation</td><td>৮</td></tr>
+<tr><td class="hl">Number Theory</td><td>Primes, Fermat, RSA</td><td>৯</td></tr>
+<tr><td class="hl">Synthesis</td><td>সব একসাথে</td><td>১০</td></tr></table>`
+  }
 });

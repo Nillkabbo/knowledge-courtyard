@@ -1,50 +1,64 @@
 const doors = [];
 
-// ═══════════════════════════════════════════
-// DOOR 1 — The Language of Truth (Logic)
-// ═══════════════════════════════════════════
 doors.push({
   num: 1,
   icon: "⚖️",
-  color: "#0ea5e9",
-  tagline: "সত্যের ভাষা — Language of Truth",
-  name: "The Language of Truth",
-  secret: "De Morgan's Law: ¬(P ∧ Q) = ¬P ∨ ¬Q। তুমি Django QuerySet এ প্রতিদিন ব্যবহার করছ!",
-  story: `<p class="scene-setting">তুমি প্রতিদিন <code>if/else</code> লেখো। কিন্তু propositional logic এর সাথে তোমার পরিচয় কতটুকু? De Morgan's Law — <code>¬(A ∧ B) = ¬A ∨ ¬B</code> — তুমি অজান্তেই ব্যবহার করছ। Django তে <code>exclude(is_staff=True, is_active=True)</code> আর <code>filter(Q(is_staff=False) | Q(is_active=False))</code> — একই জিনিস! De Morgan প্রমাণ করেছেন।</p>
+  color: "#8b5cf6",
+  name: "সত্যের ভাষা",
+  subtitle: "The Language of Truth",
+  tech: "Propositional Logic — Aristotle (350 BCE), De Morgan (1847), Boolean algebra, truth tables, implications",
+  spirit: "সিদ্ক — সত্য, প্রতিটি যুক্তির ভিত্তি",
+  secret: "প্রতিটি if/else একটি যৌক্তিক সমীকরণ। De Morgan-এর নিয়ম: NOT(A AND B) = NOT A OR NOT B। তুমি Django QuerySet-এ প্রতিদিন এটা ব্যবহার করছ — অজান্তেই।",
+  recall: {
+    q: " De Morgan-এর নিয়ম কী? একটি বাস্তব উদাহরণ দাও।",
+    qen: "What is De Morgan's Law? Give a real-world example.",
+    a: "NOT(A AND B) = NOT A OR NOT B। Django-তে: exclude(is_staff=True, is_active=True) ≡ filter(Q(is_staff=False) | Q(is_active=False))।",
+    aen: "NOT(A AND B) = NOT A OR NOT B. In Django: exclude(a=True, b=True) ≡ filter(Q(a=False) | Q(b=False))."
+  },
+  story: `<p class="scene-setting">এথেন্স, ৩৫০ খ্রিস্টপূর্ব। একটি ছায়ায় ঢাকা বারান্দায় একজন বৃদ্ধ পায়চারি করছেন। তার দাড়ি সাদা, চোখে তীক্ষ্ণতা — অন্ধকারেও সত্য খুঁজে বের করার মতো। তিনি হলেন অ্যারিস্টটল। তার হাতে একটি মোমবাতি — প্রতীকী, কারণ তিনি যে জিনিস আবিষ্কার করছেন তা আলো: যুক্তির ভাষা। "প্রতিটি বাক্য হয় সত্য হয় মিথ্যা," তিনি বলেন। "মাঝামাঝি কিছু নেই।" এটাই প্রোপোজিশনাল লজিক — সত্যের বীজগণিত।</p>
+<p class="scene-setting en">Athens, 350 BCE. A covered colonnade. An old man paces — white beard, sharp eyes that find truth even in darkness. He is Aristotle. In his hand a candle — symbolic, for what he discovers is light itself: the language of logic. "Every statement is either true or false," he declares. "Nothing in between." This is propositional logic — the algebra of truth.</p>
+
+<div class="dialogue"><strong>তুমি:</strong> কিন্তু আমি তো প্রতিদিন if/else লিখি। এটা কি সেই একই জিনিস?</div>
+<div class="dialogue en"><strong>You:</strong> But I write if/else every day. Is this the same thing?</div>
+
+<div class="dialogue"><strong>সত্য-রক্ষক ইদ্রিস:</strong> হ্যাঁ — আর তুমি অজান্তেই De Morgan-এর নিয়ম প্রতিদিন প্রয়োগ করছ। তোমার Django QuerySet: exclude(is_staff=True, is_active=True)। এটা মানে NOT(staff AND active)। কিন্তু De Morgan বলেন — এটা একই যে NOT staff OR NOT active। দুই রাস্তা, এক ফল। এটাই লজিকের জাদু — একই সত্যকে দুই রূপে দেখা।</div>
+<div class="dialogue en"><strong>Truth Keeper Idris:</strong> Yes — and you unknowingly apply De Morgan's Law every day. Your Django exclude(is_staff=True, is_active=True) means NOT(staff AND active). De Morgan proved this equals NOT staff OR NOT active. Two paths, one truth. This is the magic of logic — the same truth seen in two forms.</div>
+
+<div class="callout info"><span class="co-icon">📐</span><div><strong>প্রোপোজিশনাল লজিকের সত্য সারণি:</strong><br>
+<strong>P</strong> → একটি সত্য/মিথ্যা বাক্য<br>
+<strong>¬P</strong> → উল্টা (negation): P সত্য হলে ¬P মিথ্যা<br>
+<strong>P ∧ Q</strong> → AND: দুটোই সত্য হলেই সত্য<br>
+<strong>P ∨ Q</strong> → OR: যেকোনো একটা সত্য হলে সত্য<br>
+<strong>P → Q</strong> → IMPLIES: P সত্য হলে Q-ও সত্য হতে হবে</div></div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚖️ De Morgan's Laws: The Hidden Rules of if/else</text>
 
   <!-- Truth Table -->
-  <rect x="20" y="50" width="250" height="190" rx="10" fill="#0f172a" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="145" y="72" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="700">Truth Table</text>
-  <!-- Headers -->
-  <rect x="30" y="82" width="40" height="20" rx="3" fill="#1e3a5f" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="50" y="96" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">P</text>
-  <rect x="72" y="82" width="40" height="20" rx="3" fill="#1e3a5f" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="92" y="96" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">Q</text>
-  <rect x="114" y="82" width="70" height="20" rx="3" fill="#1e3a5f" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="149" y="96" text-anchor="middle" fill="#7dd3fc" font-size="7">¬(P∧Q)</text>
+  <rect x="20" y="50" width="250" height="190" rx="10" fill="#0f172a" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="145" y="72" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="700">Truth Table</text>
+  <rect x="30" y="82" width="40" height="20" rx="3" fill="#1e3a5f" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="50" y="96" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">P</text>
+  <rect x="72" y="82" width="40" height="20" rx="3" fill="#1e3a5f" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="92" y="96" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">Q</text>
+  <rect x="114" y="82" width="70" height="20" rx="3" fill="#1e3a5f" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="149" y="96" text-anchor="middle" fill="#a78bfa" font-size="7">¬(P∧Q)</text>
   <rect x="186" y="82" width="70" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
   <text x="221" y="96" text-anchor="middle" fill="#4ade80" font-size="7">¬P∨¬Q</text>
 
-  <!-- Row 1: T T -->
   <text x="50" y="115" text-anchor="middle" fill="#cbd5e1" font-size="8">T</text>
   <text x="92" y="115" text-anchor="middle" fill="#cbd5e1" font-size="8">T</text>
   <text x="149" y="115" text-anchor="middle" fill="#cbd5e1" font-size="8">F</text>
   <text x="221" y="115" text-anchor="middle" fill="#4ade80" font-size="8">F ✓</text>
-  <!-- Row 2: T F -->
   <text x="50" y="135" text-anchor="middle" fill="#cbd5e1" font-size="8">T</text>
   <text x="92" y="135" text-anchor="middle" fill="#cbd5e1" font-size="8">F</text>
   <text x="149" y="135" text-anchor="middle" fill="#cbd5e1" font-size="8">T</text>
   <text x="221" y="135" text-anchor="middle" fill="#4ade80" font-size="8">T ✓</text>
-  <!-- Row 3: F T -->
   <text x="50" y="155" text-anchor="middle" fill="#cbd5e1" font-size="8">F</text>
   <text x="92" y="155" text-anchor="middle" fill="#cbd5e1" font-size="8">T</text>
   <text x="149" y="155" text-anchor="middle" fill="#cbd5e1" font-size="8">T</text>
   <text x="221" y="155" text-anchor="middle" fill="#4ade80" font-size="8">T ✓</text>
-  <!-- Row 4: F F -->
   <text x="50" y="175" text-anchor="middle" fill="#cbd5e1" font-size="8">F</text>
   <text x="92" y="175" text-anchor="middle" fill="#cbd5e1" font-size="8">F</text>
   <text x="149" y="175" text-anchor="middle" fill="#cbd5e1" font-size="8">T</text>
@@ -67,400 +81,317 @@ doors.push({
   <text x="425" y="198" text-anchor="middle" fill="#4ade80" font-size="7" font-family="monospace">  Q(is_staff=False) | Q(is_active=False))</text>
   <text x="425" y="222" text-anchor="middle" fill="#4ade80" font-size="7">Same result! De Morgan proven in code ✅</text>
 
-  <!-- Bottom insight -->
   <rect x="60" y="260" width="460" height="40" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
   <text x="290" y="280" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="600">💡 Logic simplification = fewer gates, faster circuits, cleaner code</text>
   <text x="290" y="294" text-anchor="middle" fill="#64748b" font-size="7">In hardware: fewer logic gates = smaller chip, less power, cheaper manufacturing</text>
 </svg>
 </div>
-<div class="svg-caption">চিত্র: De Morgan's Law — truth table প্রমাণ করে ¬(P∧Q) ≡ ¬P∨¬Q। Django QuerySet এ তুমি অজান্তেই এটা ব্যবহার করছ।</div>
+<div class="svg-caption">চিত্র: De Morgan's Law — truth table প্রমাণ করে ¬(P∧Q) ≡ ¬P∨¬Q। Django QuerySet-এ তুমি অজান্তেই এটা ব্যবহার করছ।</div>
 
-<div class="code-block">🐍 Python: De Morgan's Law যাচাই — Truth Table + Django QuerySet তুলনা
+<div class="code-block">— Python: De Morgan-এর নিয়ম যাচাই —
 
-P, Q = True, False
-left  = not (P and Q)      # ¬(P ∧ Q)
-right = (not P) or (not Q) # ¬P ∨ ¬Q
-print(left == right)       # True — De Morgan প্রমাণিত!
+  P, Q = True, False
+  left  = not (P and Q)      # ¬(P ∧ Q)
+  right = (not P) or (not Q) # ¬P ∨ ¬Q
+  print(left == right)       # True — De Morgan প্রমাণিত!
 
-# সব ৪ রাস্তায় যাচাই (exhaustive truth table)
-for P in (True, False):
-    for Q in (True, False):
-        dm = (not (P and Q)) == ((not P) or (not Q))
-        print(f"P={P!s:5} Q={Q!s:5} ¬(P∧Q)={not(P and Q)!s:5} ¬P∨¬Q={(not P) or (not Q)!s:5} → {dm}")
-# P=True Q=False ¬(P∧Q)=True ¬P∨¬Q=True → True  ✅ সব row মিলছে
+  # সব ৪ সম্ভাবনায় যাচাই (exhaustive truth table)
+  for P in (True, False):
+      for Q in (True, False):
+          dm = (not (P and Q)) == ((not P) or (not Q))
+          print(f"P={P!s:5} Q={Q!s:5} → {dm}")
+  # সব row → True ✅
 
-# Django QuerySet: exclude() বনাম filter(Q | Q)
-# User.objects.exclude(is_staff=True, is_active=True)        # NOT(A AND B)
-# User.objects.filter(Q(is_staff=False) | Q(is_active=False))# ¬A ∨ ¬B  ← De Morgan!
-# দুটো QuerySet একই ইউজার রিটার্ন করে — SQL EXCEPT/UNION লজিক।
+  # Django QuerySet-এ De Morgan:
+  # exclude(is_staff=True, is_active=True)       ← NOT(A AND B)
+  # filter(Q(is_staff=False) | Q(is_active=False)) ← NOT A OR NOT B
+  # দুটো QuerySet একই ইউজার রিটার্ন করে!</div>
 
-# Implication P→Q শুধু False যখন P=True, Q=False (vacuous truth)
-def implies(p, q): return (not p) or q
-print(implies(False, True))  # True — false কিছু imply করে যেকোনো কিছুকে
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Implication-এর ফাঁদ:</strong> P → Q (যদি P তবে Q) শুধু তখনই মিথ্যা যখন P সত্য কিন্তু Q মিথ্যা। P মিথ্যা হলে — Q যাই হোক — P → Q সত্য! একে "vacuous truth" বলে। "যদি সূর্য পশ্চিমে ওঠে, তবে আমি রাজা" — সত্য! কারণ সূর্য পশ্চিমে ওঠে না।</div></div>
 
-# XOR / exclusive-or → দুটো ঠিক একটা True হলেই True
-print(P ^ Q, P != Q)         # True True — XOR = অসমতা</div>
+<div class="verse">قُلِ اللَّهُ يُلْقِي الْحَقَّ وَهُوَ الَّذِي يُفْرِعُهُ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"বলো, আল্লাহ সত্য নিক্ষেপ করেন — এবং তিনিই তা প্রতিষ্ঠিত করেন।" — কুরআন ১০:৮২</div>
 
-<div class="dialogue"><strong>অগাস্টাস ডি মরগান:</strong> আমি ১৯শ শতাব্দীতে প্রমাণ করেছিলাম — একটা AND এর negation OR হয়, আর একটা OR এর negation AND হয়। <code>¬(P ∧ Q) = ¬P ∨ ¬Q</code> এবং <code>¬(P ∨ Q) = ¬P ∧ ¬Q</code>। এটা শুধু তত্ত্ব নয় — তোমার Django QuerySet এ প্রতিদিন ঘটছে। <code>exclude(A, B)</code> মানে <code>NOT (A AND B)</code>, যা De Morgan অনুযায়ী <code>NOT A OR NOT B</code>। হার্ডওয়্যারে এটা আরও গুরুত্বপূর্ণ — logic minimize করলে gate কমে, chip ছোট, কম বিদ্যুৎ, সস্তা।</div>`,
-  recall: [
-    { q: "De Morgan's Law কী?", a: "¬(P ∧ Q) = ¬P ∨ ¬Q এবং ¬(P ∨ Q) = ¬P ∧ ¬Q। AND এর negation = OR of negations, vice versa। Django QuerySet exclude/filter এ প্রতিদিন ব্যবহৃত।" },
-    { q: "Implication P → Q কখন false হয়?", a: "শুধুমাত্র যখন P = true এবং Q = false। বাকি সব ক্ষেত্রে true। 'Vacuous truth': P = false হলে P→Q সর্বদা true, তা Q যাই হোক।" },
-  ]
+<p class="scene-setting">সিদ্ক — সত্য। অ্যারিস্টটল যুক্তির ভাষা আবিষ্কার করেছিলেন — কিন্তু সত্য তার আগে থেকেই ছিল। প্রতিটি সত্য সারণি — AND, OR, NOT — একটি প্রতিফলন। De Morgan ১৮৪৭ সালে দেখালেন যে সত্য রূপ বদলায় কিন্তু মান বদলায় না। একই সত্য — দুই রূপে।</p>
+<p class="scene-setting en">Sidq — truthfulness. Aristotle discovered the language of logic — but truth existed before. Every truth table — AND, OR, NOT — is a reflection. De Morgan in 1847 showed that truth changes form but not value. The same truth — in two forms.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৩ (Loom of Reason) Door ১:</strong> মানসিক মডেল শিখেছিলে — সেই মডেলের ভিত্তিই প্রোপোজিশনাল লজিক। Book ৪১ (Clockwork of Thought) Door ১: অটোমেটা — প্রতিটি logic gate একটি finite automaton।</div></div>
+
+<div class="secret-box">⚖️ <strong>লজিক = সত্যের বীজগণিত।</strong> De Morgan: NOT(A AND B) = NOT A OR NOT B। তুমি প্রতিদিন এটা ব্যবহার করছ — Django-তে, if/else-এ, সার্কিটে। কিন্তু সত্য শুধু যুক্তি নয় — একটি জীবন্ত জিনিস। পরের দরজায় — সত্যকে প্রমাণ করার সবচেয়ে শক্তিশালী অস্ত্র: গাণিতিক আরোহ।</div>`,
+  senior: {
+    title: "Propositional Logic এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Aristotle (৩৫০ BCE)</td><td>প্রোপোজিশনাল লজিকের জনক</td></tr>
+<tr><td class="hl">De Morgan (১৮৪৭)</td><td>¬(P∧Q) = ¬P∨¬Q · ¬(P∨Q) = ¬P∧¬Q</td></tr>
+<tr><td class="hl">AND (∧)</td><td>দুটোই সত্য হলেই সত্য</td></tr>
+<tr><td class="hl">OR (∨)</td><td>যেকোনো একটা সত্য হলে সত্য</td></tr>
+<tr><td class="hl">NOT (¬)</td><td>উল্টে দাও</td></tr>
+<tr><td class="hl">IMPLIES (→)</td><td>শুধু P=T, Q=F হলে মিথ্যা</td></tr>
+<tr><td class="hl">Vacuous Truth</td><td>P=F হলে P→Q সর্বদা সত্য</td></tr>
+<tr><td class="hl">Django QuerySet</td><td>exclude(a,b) ≡ filter(¬a | ¬b) — De Morgan!</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 2 — The Domino Effect (Induction)
-// ═══════════════════════════════════════════
 doors.push({
   num: 2,
   icon: "🁢",
-  color: "#fbbf24",
-  tagline: "ডোমিনো প্রভাব — Domino Effect",
-  name: "The Domino Effect",
-  secret: "Induction = ডোমিনো। Base case (প্রথমটা পড়ে) + inductive step (প্রতিটা পরেরটাকে ফেলে) = সব পড়ে।",
-  story: `<p class="scene-setting">Mathematical induction হল ডোমিনোর মতো। দুটো জিনিস প্রমাণ করো: (১) প্রথম ডোমিনো পড়ে (base case), (২) যদি k তম ডোমিনো পড়ে, তবে (k+1) তম ও পড়বে (inductive step)। এই দুটো থেকে গাণিতিকভাবে অনুসরণ করে যে সব ডোমিনো পড়বে। এটাই recursion এর ভিত্তি — base case + recursive call = সব input এ কাজ করবে।</p>
+  color: "#8b5cf6",
+  name: "ডোমিনোর প্রভাব",
+  subtitle: "The Domino Effect",
+  tech: "Mathematical Induction — base case + inductive step, strong vs weak induction, structural induction",
+  spirit: "আমানত — আস্থা, একটি থেকে অনন্ত পর্যন্ত বিশ্বাসের শৃঙ্খল",
+  secret: "ইনডাকশন = ডোমিনো। দুটি প্রমাণ: base case (প্রথমটা পড়ে) + inductive step (প্রতিটি পরেরটাকে ফেলে)। এই দুটো থেকে গাণিতিকভাবে অনুসরণ করে — সব পড়বে।",
+  recall: {
+    q: " গাণিতিক ইনডাকশনের দুটি ধাপ কী?",
+    qen: "What are the two steps of mathematical induction?",
+    a: "১. Base case: P(০) সত্য। ২. Inductive step: যদি P(k) সত্য হয়, তবে P(k+১) সত্য। এই দুটো থেকে P(n) সকল n-এর জন্য সত্য।",
+    aen: "1. Base case: P(0) is true. 2. Inductive step: if P(k) is true, then P(k+1) is true. Together these prove P(n) for all n."
+  },
+  story: `<p class="scene-setting">তুমি একটি ঘরে দাঁড়িয়ে আছো। মেঝেতে হাজার ডোমিনো — একটার পর একটা সারিবদ্ধ। তুমি জানো যে প্রথমটা হালকা ধাক্কা দিলে সব পড়বে। কিন্তু কেন? প্রথমটা পড়ে দ্বিতীয়টাকে ধাক্কা দেয়। দ্বিতীয়টা তৃতীয়টাকে। এভাবে — ধাপে ধাপে। এটাই গাণিতিক ইনডাকশন — সীমিত থেকে অসীমের প্রমাণ।</p>
+<p class="scene-setting en">You stand in a room. A thousand dominoes line the floor. You know the first push will topple them all. But why? The first falls and pushes the second. The second pushes the third. Step by step — this is mathematical induction — proving the infinite from the finite.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <defs><marker id="arrDom" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🁢 Mathematical Induction: The Domino Effect</text>
+<div class="dialogue"><strong>ডোমিনো কারিগর ইউসুফ:</strong> বলো — ১ থেকে n পর্যন্ত যোগ করলে কত? ১+২+৩+...+n। তুমি হয়তো n(n+১)/২ জানো। কিন্তু প্রমাণ কোথায়? ব্রুট ফোর্স চলবে না — n অসীম হতে পারে। ইনডাকশন দাও: base case — n=১ তে ১(২)/২ = ১ ✓। Inductive step — ধরো k পর্যন্ত সূত্র সত্য। তবে k+১ পর্যন্ত? (k+১)(k+২)/২। k পর্যন্ত যোগফলে (k+১) যোগ করো — সূত্র মিলে যায়! দুটি প্রমাণে — অসীম সত্য।</div>
+<div class="dialogue en"><strong>Domino Craftsman Yusuf:</strong> Tell me — what is 1+2+3+...+n? You know the formula n(n+1)/2. But proof? Brute force won't work — n can be infinite. Induction: base case — n=1 gives 1(2)/2 = 1 ✓. Inductive step — assume formula holds for k. Then for k+1? Add (k+1) to the sum — formula matches! Two proofs — infinite truth.</div>
 
-  <!-- Base case -->
-  <rect x="20" y="50" width="200" height="100" rx="10" fill="#450a0a" stroke="#dc2626" stroke-width="2"/>
-  <text x="120" y="72" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">1. BASE CASE</text>
-  <text x="120" y="92" text-anchor="middle" fill="#fca5a5" font-size="8">Knock over first domino</text>
-  <rect x="50" y="105" width="140" height="22" rx="4" fill="#1e293b" stroke="#dc2626" stroke-width="1"/>
-  <text x="120" y="120" text-anchor="middle" fill="#fca5a5" font-size="7" font-family="monospace">P(0) is true</text>
-  <text x="120" y="140" text-anchor="middle" fill="#dc2626" font-size="7">e.g., factorial(0) = 1 ✅</text>
+<div class="callout info"><span class="co-icon">🁢</span><div><strong>গাণিতিক ইনডাকশনের কাঠামো:</strong><br>
+<strong>থিওরেম:</strong> প্রতিটি ধনাত্মক পূর্ণসংখ্যা n-এর জন্য P(n) সত্য।<br>
+<strong>ধাপ ১ — Base Case:</strong> P(১) সত্য প্রমাণ করো।<br>
+<strong>ধাপ ২ — Inductive Step:</strong> ধরো P(k) সত্য (inductive hypothesis)। এ থেকে প্রমাণ করো P(k+১) সত্য।<br>
+<strong>সিদ্ধান্ত:</strong> ∴ সকল n-এর জন্য P(n) সত্য।</div></div>
 
-  <!-- Inductive step -->
-  <rect x="240" y="50" width="200" height="100" rx="10" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="340" y="72" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">2. INDUCTIVE STEP</text>
-  <text x="340" y="92" text-anchor="middle" fill="#86efac" font-size="8">k → k+1</text>
-  <rect x="270" y="105" width="140" height="22" rx="4" fill="#1e293b" stroke="#22c55e" stroke-width="1"/>
-  <text x="340" y="120" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">P(k) → P(k+1)</text>
-  <text x="340" y="140" text-anchor="middle" fill="#22c55e" font-size="7">If k works, k+1 works ✅</text>
+<div class="code-block">— Python: ইনডাকশন যাচাই —
+  # সূত্র: Σi = n(n+1)/2
+  # ব্রুট ফোর্স vs সূত্র:
+  for n in range(1, 20):
+      brute = sum(range(1, n+1))       # ১+২+...+n
+      formula = n * (n+1) // 2          # n(n+1)/2
+      assert brute == formula, f"ব্যর্থ n={n}"
+  print("সব n-এর জন্য মিলেছে ✅")
 
-  <line x1="220" y1="100" x2="240" y2="100" stroke="#475569" stroke-width="2" marker-end="url(#arrDom)"/>
+  # Strong induction: শুধু P(k) নয়, সব P(১)...P(k) ধরে নাও
+  # Fibonacci: F(n) = F(n-1) + F(n-2)
+  # Strong induction দরকার — কারণ দুটো আগের মান লাগে</div>
 
-  <!-- Conclusion -->
-  <rect x="460" y="50" width="100" height="100" rx="10" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
-  <text x="510" y="72" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">∴ ALL TRUE</text>
-  <text x="510" y="92" text-anchor="middle" fill="#d8b4fe" font-size="8">P(n) for all n</text>
-  <text x="510" y="115" text-anchor="middle" fill="#c084fc" font-size="7">Every domino</text>
-  <text x="510" y="130" text-anchor="middle" fill="#c084fc" font-size="7">falls! ✅</text>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফাঁদ — Base Case ভুল:</strong> অনেকে inductive step প্রমাণ করে base case ভুলে যায়। "সকল সংখ্যা সমান" — inductive step কাজ করে কিন্তু base case ভুল! n=১ তে পরীক্ষা না করলে মিথ্যা সত্য হয়ে যায়। Base case = ভিত্তি — ভিত্তি না থাকলে ভবন দাঁড়ায় না।</div></div>
 
-  <line x1="440" y1="100" x2="460" y2="100" stroke="#475569" stroke-width="2" marker-end="url(#arrDom)"/>
+<div class="verse">وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং বলো, তোমরা কাজ করো — আল্লাহ তোমাদের কাজ দেখবেন।" — কুরআন ৯:১০৫</div>
 
-  <!-- Dominoes -->
-  <g transform="translate(40, 170)">
-    <rect x="0" y="0" width="14" height="40" rx="2" fill="#dc2626" stroke="#f87171" stroke-width="1"/>
-    <text x="7" y="52" text-anchor="middle" fill="#fca5a5" font-size="7">0</text>
-    <rect x="20" y="0" width="14" height="40" rx="2" fill="#f97316" stroke="#fb923c" stroke-width="1"/>
-    <text x="27" y="52" text-anchor="middle" fill="#fdba74" font-size="7">1</text>
-    <rect x="40" y="0" width="14" height="40" rx="2" fill="#fbbf24" stroke="#fcd34d" stroke-width="1"/>
-    <text x="47" y="52" text-anchor="middle" fill="#fcd34d" font-size="7">2</text>
-    <rect x="60" y="0" width="14" height="40" rx="2" fill="#22c55e" stroke="#4ade80" stroke-width="1"/>
-    <text x="67" y="52" text-anchor="middle" fill="#4ade80" font-size="7">3</text>
-    <rect x="80" y="0" width="14" height="40" rx="2" fill="#0ea5e9" stroke="#7dd3fc" stroke-width="1"/>
-    <text x="87" y="52" text-anchor="middle" fill="#7dd3fc" font-size="7">4</text>
-    <rect x="100" y="0" width="14" height="40" rx="2" fill="#a855f7" stroke="#c084fc" stroke-width="1"/>
-    <text x="107" y="52" text-anchor="middle" fill="#c084fc" font-size="7">5</text>
-    <text x="130" y="25" fill="#64748b" font-size="10">⋯</text>
-    <rect x="150" y="0" width="14" height="40" rx="2" fill="#64748b" stroke="#94a3b8" stroke-width="1"/>
-    <text x="157" y="52" text-anchor="middle" fill="#94a3b8" font-size="7">k</text>
-    <text x="175" y="25" fill="#64748b" font-size="10">⋯</text>
-    <rect x="195" y="0" width="14" height="40" rx="2" fill="#64748b" stroke="#94a3b8" stroke-width="1"/>
-    <text x="202" y="52" text-anchor="middle" fill="#94a3b8" font-size="7">n</text>
-  </g>
+<p class="scene-setting">"আমাল" — কাজ, ধাপে ধাপে। ইনডাকশনও তেমন — প্রতিটি ধাপ পূর্ববর্তীর উপর নির্মিত। প্রথম ধাপ নিশ্চিত (base case) — তারপর প্রতিটি ধাপ পরেরটিকে বহন করে (inductive step)। একটি থেকে অনন্ত — আস্থার শৃঙ্খল। আমানত।</p>
+<p class="scene-setting en">"Amal" — work, step by step. Induction is the same — each step built on the previous. First step certain (base case) — then each step carries the next (inductive step). One to infinity — a chain of trust. Amanah.</p>
 
-  <text x="290" y="250" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="600">💡 Induction = Recursion in proof form. Same structure!</text>
-  <text x="290" y="265" text-anchor="middle" fill="#64748b" font-size="7">factorial(n) = n * factorial(n-1) — base case(0)=1, inductive step=n*prev</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Induction = ডোমিনো। Base case (P(0) সত্য) + inductive step (P(k)→P(k+1)) = সব P(n) সত্য। Recursion এর সাথে একই গঠন।</div>
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ২ (DSA Bazaar) Door ৩ (Recursion):</strong> প্রতিটি recursive ফাংশন = ইনডাকশন! Base case = termination। Recursive call = inductive step। factorial(0) = 1 (base), factorial(n) = n * factorial(n-1) (step)। সত্য-রক্ষক ইদ্রিস (Door ১) তোমাকে লজিক দিয়েছেন — এখন ইউসুফ দেখাচ্ছেন সেই লজিক কীভাবে অসীমকে ছুঁয়ে যায়।</div></div>
 
-<div class="code-block">🐍 Python: Induction = Recursion — সমষ্টি সূত্র Σ(i) = n(n+1)/2 যাচাই
-
-# Inductive claim: 1 + 2 + ... + n = n(n+1)/2
-# Base case n=1: 1 == 1*2/2 = 1 ✓
-# Inductive step: assume S(k)=k(k+1)/2; then S(k+1) = S(k) + (k+1)
-#                = k(k+1)/2 + (k+1) = (k+1)(k+2)/2  ✓
-
-def sum_recursive(n):
-    # Base case (প্রথম ডোমিনো)
-    if n == 0: return 0
-    # Inductive step: S(n) = n + S(n-1)
-    return n + sum_recursive(n - 1)
-
-def sum_formula(n):
-    return n * (n + 1) // 2   # closed-form, O(1)
-
-for n in [0, 1, 5, 10, 100]:
-    assert sum_recursive(n) == sum_formula(n), f"mismatch at n={n}"
-    print(f"n={n:3} → recursive={sum_recursive(n):6}  formula={sum_formula(n):6}  ✓")
-
-# Inductive step গাণিতিকভাবে verify করি:
-# S(k+1) - S(k) = (k+1)(k+2)/2 - k(k+1)/2 = (k+1)/2 · [(k+2) - k] = (k+1) ✓
-from sympy import symbols, simplify
-k = symbols('k')
-step = simplify((k+1)*(k+2)//2 - k*(k+1)//2)
-print("Inductive step difference:", step)  # k + 1  → ঠিক (k+1) যোগ হচ্ছে
-
-# Factorial — recursion এর আরেকটা উদাহরণ (induction এর ভিত্তিতে কাজ করে)
-def factorial(n):
-    return 1 if n <= 1 else n * factorial(n - 1)
-print("5! =", factorial(5))  # 120 — base(0)=1 থেকে inductive গুণফল</div>
-
-<div class="dialogue"><strong>গণিতজ্ঞ:</strong> Induction circular reasoning নয়! Base case anchor করে। তুমি P(k) assume করছ না — তুমি <code>P(k) → P(k+1)</code> প্রমাণ করছ একটা implication হিসেবে। প্রথম ডোমিনো পড়ে (base case), প্রতিটা পরেরটাকে ফেলে (inductive step) — তাই সব পড়ে। এটাই recursion এর ভিত্তি। <code>factorial(n)</code> — base: <code>factorial(0)=1</code>, step: <code>factorial(n) = n * factorial(n-1)</code>। Induction গ্যারান্টি দেয় যে সব input এ কাজ করবে। Big-O analysis — Master Theorem — সব induction এর উপর দাঁড়িয়ে!</div>`,
-  recall: [
-    { q: "Induction circular reasoning কেন নয়?", a: "Base case anchor করে। তুমি P(k) assume করছ না — তুমি P(k)→P(k+1) প্রমাণ করছ একটা implication হিসেবে। Base + step = সব সত্য।" },
-    { q: "Induction আর recursion এর মধ্যে সম্পর্ক কী?", a: "একই গঠন। Base case = recursion এর base case। Inductive step = recursive call। Induction প্রমাণ করে recursion সব input এ কাজ করবে।" },
-  ]
+<div class="secret-box">🁢 <strong>ইনডাকশন = ডোমিনোর গাণিতিক প্রমাণ।</strong> দুটি ধাপ — ভিত্তি ও ধাপ। এক থেকে অসীম। কিন্তু কী যদি সত্যকে প্রমাণ করার সরাসরি উপায় না থাকে? কী যদি সত্যকে তার বিপরীত থেকে প্রমাণ করতে হয়? সেই যাত্রা — পরের দরজায়।</div>`,
+  senior: {
+    title: "Mathematical Induction এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Base Case</td><td>P(১) সত্য — প্রথম ডোমিনো</td></tr>
+<tr><td class="hl">Inductive Step</td><td>P(k) → P(k+১) — প্রতিটি পরের ডোমিনো</td></tr>
+<tr><td class="hl">Weak Induction</td><td>শুধু P(k) ধরে নাও</td></tr>
+<tr><td class="hl">Strong Induction</td><td>P(১) থেকে P(k) সব ধরে নাও</td></tr>
+<tr><td class="hl">Structural Induction</td><td>গাছ/recursive structure-এ</td></tr>
+<tr><td class="hl">Σi = n(n+১)/২</td><td>ক্লাসিক উদাহরণ</td></tr>
+<tr><td class="hl">Recursion</td><td>base case + recursive call = ইনডাকশন</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 3 — The Impossible Truth (Contradiction)
-// ═══════════════════════════════════════════
 doors.push({
   num: 3,
-  icon: "🔄",
-  color: "#a855f7",
-  tagline: "অসম্ভব সত্য — Impossible Truth",
-  name: "The Impossible Truth",
-  secret: "Proof by contradiction: বিপরীত ধরে নাও, অসম্ভব পর্যন্ত পৌঁছাও → তোমার assumption ভুল!",
-  story: `<p class="scene-setting">Proof by contradiction — সবচেয়ে শক্তিশালী proof technique। তুমি যা প্রমাণ করতে চাও তার বিপরীত ধরে নাও। তারপর logical steps এ এগিয়ে যাও যতক্ষণ না একটা অসম্ভব পরিস্থিতি (contradiction) তৈরি হয়। যেহেতু contradiction অসম্ভব, তোমার initial assumption ভুল হতে হবে। উদাহরণ: √2 অমূলদ (irrational) — ধরে নাও এটা মূলদ (rational = a/b), lowest terms এ। প্রমাণ করো যে দুটোই even — কিন্তু lowest terms এ দুটো even হতে পারে না! Contradiction!</p>
+  icon: "🔍",
+  color: "#8b5cf6",
+  name: "বিপরীত থেকে সত্য",
+  subtitle: "Truth from the Opposite",
+  tech: "Proof by Contradiction — Euclid (√2 irrational, ~300 BCE), contrapositive, proof by exhaustion",
+  spirit: "বুরহান — প্রমাণ, অসম্ভব থেকে সম্ভব প্রমাণ",
+  secret: "অসম্ভব ধরে নাও, তারপর দেখাও যে অসম্ভব। যদি বিপরীত অসম্ভব হয়, তবে মূল সত্য। এটাই কন্ট্রাডিকশন — চিৎ করে সত্যকে ধরা।",
+  recall: {
+    q: " √২ অমূলদ প্রমাণ করো contradiction দিয়ে।",
+    qen: "Prove √2 is irrational using contradiction.",
+    a: "ধরো √২ = p/q (মূলদ, সরল ভগ্নাংশ)। তবে p² = ২q² — p² জোড়, তাই p জোড়। p=২k → ৪k²=২q² → q²=২k² — q জোড়। কিন্তু p ও q উভয় জোড় হলে ভগ্নাংশ সরল নয়! অন্তর্বিরোধ।",
+    aen: "Assume √2 = p/q (simplified). Then p²=2q² — p is even. p=2k → q²=2k² — q is also even. But both even contradicts simplified fraction! ∴ √2 is irrational."
+  },
+  story: `<p class="scene-setting">আলেকজান্দ্রিয়া, ৩০০ খ্রিস্টপূর্ব। একটি সাদা চকের উপর একটি সমীকরণ: √২ = p/q। ইউক্লিড জানতেন এটা ভুল। কিন্তু সরাসরি প্রমাণ কঠিন। তার উপায়? ধরে নাও সত্য — তারপর দেখাও এটা অসম্ভব। যদি বিপরীত অসম্ভব হয়, মূল সত্য হতে বাধ্য। এটাই কন্ট্রাডিকশন — অন্ধকার থেকে আলো বের করা।</p>
+<p class="scene-setting en">Alexandria, 300 BCE. On white chalk: √2 = p/q. Euclid knew this was false. But direct proof is hard. His method? Assume true — then show it is impossible. If the opposite is impossible, the original must be true. This is contradiction — extracting light from darkness.</p>
 
-<div class="code-block">🐍 Python: Proof by Contradiction — √2 কি মূলদ (rational)?
+<div class="dialogue"><strong>প্রমাণ-কারিগর জাইদ:</strong> ইউসুফ (Door ২) তোমাকে ইনডাকশন দিয়েছেন — ধাপে ধাপে। কিন্তু কিছু সত্য ধাপে প্রমাণ করা যায় না। সেগুলোকে উল্টে ধরতে হয়। √২ অমূলদ — এটা সরাসরি বলা কঠিন। কিন্তু ধরে নাও মূলদ। তাহলে p/q = √২, যেখানে p ও q সহমৌলিক। উভয়কে ২ দিয়ে ভাগ যায় না। কিন্তু গাণিতিকভাবে — উভয়কে ২ দিয়ে ভাগ যায়! অন্তর্বিরোধ। সহমৌলিক কিন্তু ভাগ যায়? অসম্ভব! তাই √২ মূলদ হতে পারে না।</div>
+<div class="dialogue en"><strong>Proof Artisan Zaid:</strong> Yusuf (Door 2) gave you induction — step by step. But some truths cannot be proven stepwise. They must be flipped. √2 irrational — hard to say directly. But assume rational: p/q, coprime. Then p²=2q² — p even, q even. Coprime but both even? Impossible! ∴ √2 cannot be rational.</div>
 
-# Proof: √2 irrational। ধরে নাও এটা rational = a/b, lowest terms (gcd(a,b)=1)।
-# তাহলে a² = 2b² → a জোড় (a² জোড় বলে) → a = 2c → 4c² = 2b² → b² = 2c² → b জোড়।
-# কিন্তু a, b দুটোই জোড় হলে gcd ≥ 2 — lowest terms এর সাথে contradiction!
+<div class="code-block">— Python: √২ অমূলদ প্রমাণ যাচাই —
 
-from math import gcd, isqrt
+  # যদি √২ মূলদ হয়, p/q পাওয়া যাবে
+  from math import isqrt
 
-def is_sqrt2_rational(max_denominator=10**6):
-    # a/b ≈ √2 খুঁজছি; যদি সত্যিই rational হতো, a²=2b² সমীকরণ মিলত।
-    target = 2
-    for b in range(1, max_denominator):
-        a = isqrt(target * b * b)        # a² সবচেয়ে কাছের পূর্ণসংখ্যা
-        if a * a == target * b * b:      # a² = 2b² হলে rational পাওয়া গেছে
-            return (a, b, gcd(a, b))
-        # gcd(a,b)=1 (lowest terms) চেক: a জোড় হলে b ও জোড় হবে → gcd≥2 (contradiction)
-        if a % 2 == 0 and b % 2 == 0:
-            return f"both even at a={a}, b={b} → gcd≥2 → contradiction"
-    return None  # কোনো rational নেই — √2 irrational প্রমাণিত (numerical verification)
+  def find_rational_sqrt2(max_q=1000000):
+      for q in range(1, max_q):
+          p = isqrt(2 * q * q)
+          if p * p == 2 * q * q:
+              return p, q   # পাওয়া গেছে!
+      return None             # পাওয়া যায়নি → অমূলদ
 
-print(is_sqrt2_rational(10**5))  # None — কোনো a/b খুঁজে পাওয়া যায়নি
+  result = find_rational_sqrt2()
+  print(result)  # None — কোনো p/q নেই!
 
-# Contrapositive: P→Q ≡ ¬Q→¬P (logically equivalent)
-# "If n² is even, then n is even" — সরাসরি প্রমাণ কঠিন → contrapositive সহজ:
-# "If n is odd, then n² is odd" (n=2k+1 → n²=4k²+4k+1 = 2(2k²+2k)+1, বিজোড়) ✓
-def n_squared_parity(n):
-    return ('even' if n % 2 == 0 else 'odd', 'even' if (n*n) % 2 == 0 else 'odd')
+  # প্রতিটি ভগ্নাংশ চেক:
+  best = min(range(1,1000), key=lambda q:
+      abs(2*q*q - isqrt(2*q*q)**2))
+  print(f"Best: {isqrt(2*best**2)}/{best} = {isqrt(2*best**2)/best}")
+  # 1414/1000 = 1.414 — কাছে, কিন্তু সমান নয়!</div>
 
-for n in [3, 4, 7, 10]:
-    n_par, n2_par = n_squared_parity(n)
-    print(f"n={n} ({n_par}) → n²={n*n} ({n2_par})")  # odd→odd, even→even সবসময়
+<div class="callout info"><span class="co-icon">📐</span><div><strong>কন্ট্রাপোজিটিভ (Contrapositive):</strong> "P → Q" প্রমাণ করতে কঠিন? প্রমাণ করো "¬Q → ¬P"। এগুলো সমতুল্য! "যদি বৃষ্টি হয়, রাস্তা ভেজা" প্রমাণ করতে কঠিন? প্রমাণ করো: "রাস্তা শুকনো হলে বৃষ্টি হয়নি।" এটাই contrapositive — সমান কিন্তু সহজ।</div></div>
 
-# Proof by contradiction: কোনো integer n এর জন্য n²=2 (mod 4) নেই
-def exists_n2_mod4_eq2(limit=1000):
-    residues = {(n * n) % 4 for n in range(limit)}
-    return 2 in residues  # False — কোনো n² এর রেশিডিউ 2 (mod 4) নেই
-print("n²≡2 (mod 4) exists?", exists_n2_mod4_eq2())  # False — contradiction basis</div>
+<div class="verse">بَلْ نَقْذِفُ بِالْحَقِّ عَلَى الْبَاطِلِ فَيَدْمَغُهُ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"বরং আমরা সত্যকে মিথ্যার উপর নিক্ষেপ করি, ফলে তা মিথ্যাকে চূর্ণ করে।" — কুরআন ২১:১৮</div>
 
-<div class="dialogue"><strong>গণিতজ্ঞ:</strong> Contradiction হল debugging এরও ভিত্তি। তুমি বলছ 'এই bug অসম্ভব!' ধরে নাও সেটা সম্ভব — কোথায় নিয়ম ভাঙছে? সেই point টাই bug। √2 অমূলদ প্রমাণ করতে ধরে নাও <code>√2 = a/b</code> (rational, lowest terms)। তাহলে <code>a² = 2b²</code> → a even → <code>a=2c</code> → <code>4c² = 2b²</code> → <code>b² = 2c²</code> → b ও even! কিন্তু lowest terms এ দুটোই even হতে পারে না! Contradiction! তাই √2 মূলদ হতে পারে না। Proof by contrapositive ও কাজ করে — P→Q এর পরিবর্তে ¬Q→¬P প্রমাণ করো। Logically equivalent কিন্তু সহজ হতে পারে।</div>`,
-  recall: [
-    { q: "Proof by contradiction কীভাবে কাজ করে?", a: "বিপরীত ধরে নাও (assume ¬P)। Logical steps এ যাও যতক্ষণ না contradiction (C ∧ ¬C)। যেহেতু contradiction অসম্ভব, assumption ভুল, P সত্য।" },
-    { q: "Contrapositive কী এবং কেন ব্যবহার করবে?", a: "P→Q এর contrapositive হল ¬Q→¬P। Logically equivalent কিন্তু অনেক সময় সহজ প্রমাণ করা যায় — ¬Q থেকে শুরু করে ¬P পর্যন্ত যাও।" },
-  ]
+<p class="scene-setting">"সত্যকে মিথ্যার উপর নিক্ষেপ" — এটাই কন্ট্রাডিকশন! মিথ্যা ধরে নাও, তারপর সত্য দিয়ে তাকে চূর্ণ করো। বুরহান — প্রমাণের শক্তি এখানে। সরাসরি নয়, বরং অন্তর্বিরোধ থেকে। মিথ্যা যে মিথ্যা — তা নিজেই প্রমাণ।</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৩ (Loom of Reason) Door ৫ (Bayesian):</strong> সত্য প্রমাণ করা = belief আপডেট। কন্ট্রাডিকশন একটি শক্তিশালী প্রমাণ কারণ এটা বিশ্বাসকে ১০০%-এ নিয়ে যায়। Book ৪১ Door ৩: টuring machine-এর halting problem-ও contradiction দিয়ে প্রমাণিত!</div></div>
+
+<div class="secret-box">🔍 <strong>কন্ট্রাডিকশন = মিথ্যা থেকে সত্য বের করা।</strong> ধরে নাও বিপরীত → দেখাও অসম্ভব → মূল সত্য। ইউক্লিড এটা √২-এ করেছিলেন, টুরিং halting problem-এ করেছিলেন। এখন তুমি জানো দুটি প্রমাণ — ইনডাকশন ও কন্ট্রাডিকশন। পরের দরজায় — সত্যের সবচেয়ে পরিচিত ভিত্তি: সেট তত্ত্ব।</div>`,
+  senior: {
+    title: "Proof Techniques এক নজরে",
+    body: `<table class="kv-table"><tr><th>কৌশল</th><th>কখন ব্যবহার</th></tr>
+<tr><td class="hl">Direct Proof</td><td>সরাসরি — P থেকে Q</td></tr>
+<tr><td class="hl">Contradiction</td><td>¬P ধরে নাও → অন্তর্বিরোধ</td></tr>
+<tr><td class="hl">Contrapositive</td><td>¬Q → ¬P (সমতুল্য P → Q)</td></tr>
+<tr><td class="hl">Exhaustion</td><td>সব কেস চেক করো (finite)</td></tr>
+<tr><td class="hl">Euclid √২</td><td>p,q সহমৌলিক কিন্তু উভয় জোড় → contradiction</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 4 — The Tower of Infinity (Set Theory)
-// ═══════════════════════════════════════════
 doors.push({
   num: 4,
-  icon: "∞",
-  color: "#f97316",
-  tagline: "অসীমের সিঁড়ি — Tower of Infinity",
-  name: "The Tower of Infinity",
-  secret: "Cantor: ∞ এর চেয়ে বড় ∞ আছে। ℕ (countable) < ℝ (uncountable)। Diagonal argument!",
-  story: `<p class="scene-setting">Georg Cantor প্রমাণ করেছিলেন — কিছু infinity অন্যটার চেয়ে বড়। Integer (ℕ) গুলো countable — তালিকা করা যায়। Real (ℝ) গুলো uncountable — কখনো তালিকা করা যায় না। Diagonal argument: একটা infinite list বানাও যেখানে প্রতিটা real number এর decimal আছে। Diagonal এর প্রতিটা digit flip করে একটা নতুন number বানাও — এই number টা তালিকার কোনো number এর সাথেই match করবে না! তাই তালিকা incomplete। ℝ uncountable। Cantor আরও প্রমাণ করেছেন — power set সবসময় সেট এর চেয়ে বড়: <code>|P(S)| > |S|</code>। অর্থাৎ অসীম সিঁড়ি — ℵ₀ < |P(ℕ)| < |P(P(ℕ))| < ...</p>
+  icon: "⊇",
+  color: "#8b5cf6",
+  name: "সমাহারের জগৎ",
+  subtitle: "The World of Sets",
+  tech: "Set Theory — Cantor (1874), union/intersection/difference, power set, cardinality, Cantor's diagonal argument",
+  spirit: "জামা — সমাবেশ, সবকিছুর একত্র সংগ্রহ",
+  secret: "সেট = একটি সংগ্রহ। Union (∪) যোগ করে, intersection (∩) মিল খুঁজে, difference (∖) বিয়োগ করে। কিন্তু সত্যিকারের বিস্ময় — কিছু অসীম অন্য অসীমের চেয়ে বড়। ক্যান্টর এটা প্রমাণ করেছিলেন।",
+  recall: {
+    q: " পাওয়ার সেট কী? |P(S)| কত?",
+    qen: "What is a power set? What is |P(S)|?",
+    a: "পাওয়ার সেট = সেটের সব উপসেটের সংগ্রহ। |S| = n হলে |P(S)| = ২ⁿ। যেমন {a,b} এর পাওয়ার সেট: ∅, {a}, {b}, {a,b} — ৪টি।",
+    aen: "Power set = collection of all subsets. If |S| = n, then |P(S)| = 2ⁿ. E.g., {a,b} has power set: ∅, {a}, {b}, {a,b} — 4 elements."
+  },
+  story: `<p class="scene-setting">হ্যালে, জার্মানি, ১৮৭৪। Georg Cantor একটি বিপ্লবাত্মক চিন্তা নিয়ে বসে আছেন। অসীম — কি সব অসীম সমান? তার উত্তর: না! প্রাকৃতিক সংখ্যার সেট ℵ₀ (aleph-null) — কিন্তু বাস্তব সংখ্যার সেট ২^ℵ₀ — বড়! একই অসীম কিন্তু ভিন্ন আকার। গণিতজগত এই আবিষ্কারে কাঁপছে।</p>
+<p class="scene-setting en">Halle, Germany, 1874. Georg Cantor contemplates a revolutionary idea. Infinity — are all infinities equal? His answer: No! Natural numbers have cardinality ℵ₀ (aleph-null) — but real numbers have 2^ℵ₀ — larger! Same infinity, different sizes. Mathematics trembles.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">∞ Cantor's Tower of Infinities</text>
+<div class="dialogue"><strong>সমাবেশ কারিগর রিয়াদ:</strong> জাইদ (Door ৩) তোমাকে প্রমাণ দিয়েছেন। এখন দেখো প্রমাণের কাঠামো — সেট। একটি সেট একটি বাক্সের মতো। ভেতরে কিছু জিনিস। A = {১,২,৩}। দুটি বাক্সের মিল দেখতে চাও? Intersection: A ∩ B। সব জিনিস একসাথে? Union: A ∪ B। A-তে আছে কিন্তু B-তে নেই? Difference: A ∖ B। কিন্তু সবচেয়ে বিস্ময়কর — একটি সেটের সব উপসেট: পাওয়ার সেট। ৩টি উপাদানের সেটে ৮টি উপসেট। n উপাদানে ২ⁿ। সর্বদা বড়।</div>
+<div class="dialogue en"><strong>Assembly Artisan Riyad:</strong> Zaid (Door 3) gave you proofs. Now see the structure of proof — sets. A set is like a box. A = {1,2,3}. Common elements? Intersection. All together? Union. In A but not B? Difference. Most surprising — power set: all subsets. 3 elements → 8 subsets. n elements → 2ⁿ. Always larger.</div>
 
-  <!-- Tower -->
-  <rect x="200" y="50" width="180" height="35" rx="5" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
-  <text x="290" y="68" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">|P(P(ℕ))| — power set of power set</text>
-  <text x="290" y="80" text-anchor="middle" fill="#64748b" font-size="7">even bigger infinity...</text>
+<div class="code-block">— Python: সেট অপারেশন —
 
-  <text x="290" y="98" text-anchor="middle" fill="#475569" font-size="10">↑ bigger</text>
+  A = {1, 2, 3, 4}
+  B = {3, 4, 5, 6}
 
-  <rect x="210" y="105" width="160" height="35" rx="5" fill="#7c2d12" stroke="#f97316" stroke-width="2"/>
-  <text x="290" y="123" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="700">|P(ℕ)| — power set of ℕ</text>
-  <text x="290" y="135" text-anchor="middle" fill="#64748b" font-size="7">uncountable (same as |ℝ|)</text>
+  print(A | B)    # Union: {1,2,3,4,5,6}  ← ∪
+  print(A & B)    # Intersection: {3,4}   ← ∩
+  print(A - B)    # Difference: {1,2}     ← ∖
+  print(A ^ B)    # Symmetric diff: {1,2,5,6} ← △
 
-  <text x="290" y="153" text-anchor="middle" fill="#475569" font-size="10">↑ bigger</text>
+  # পাওয়ার সেট:
+  from itertools import chain, combinations
+  def powerset(s):
+      return list(chain.from_iterable(
+          combinations(s, r) for r in range(len(s)+1)))
 
-  <rect x="225" y="160" width="130" height="35" rx="5" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="290" y="178" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="700">|ℝ| — real numbers</text>
-  <text x="290" y="190" text-anchor="middle" fill="#64748b" font-size="7">uncountable (diagonal proof)</text>
+  print(powerset({1, 2}))
+  # [(), (1,), (2,), (1, 2)] — ৪টি = ২²
 
-  <text x="290" y="208" text-anchor="middle" fill="#475569" font-size="10">↑ bigger</text>
+  # ক্যান্টরের বিস্ময়: |P(ℕ)| > |ℕ|
+  # প্রাকৃতিক সংখ্যা: ℵ₀
+  # বাস্তব সংখ্যা: ২^ℵ₀ — বড়!
+  # প্রমাণ: Cantor diagonal argument</div>
 
-  <rect x="240" y="215" width="100" height="35" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="290" y="233" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">ℵ₀ = |ℕ| integers</text>
-  <text x="290" y="245" text-anchor="middle" fill="#64748b" font-size="7">countable infinity (smallest)</text>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>রাসেলের প্যারাডক্স (১৯০১):</strong> "সেট যার ভেতরে এমন সব সেট আছে যারা নিজেদের ধারণ করে না।" এই সেট কি নিজেকে ধারণ করে? হ্যাঁ হলে — না। না হলে — হ্যাঁ। অন্তর্বিরোধ! এটা থেকে জন্ম নিল ZFC সেট তত্ত্ব — কঠোর ভিত্তি।</div></div>
 
-  <!-- Side note -->
-  <rect x="20" y="50" width="160" height="120" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="100" y="72" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">Diagonal Argument</text>
-  <text x="100" y="92" text-anchor="middle" fill="#fcd34d" font-size="7">List all reals as decimals:</text>
-  <text x="100" y="106" text-anchor="middle" fill="#cbd5e1" font-size="6" font-family="monospace">0.1 0 1 1 0...</text>
-  <text x="100" y="118" text-anchor="middle" fill="#cbd5e1" font-size="6" font-family="monospace">0.0 1 1 0 1...</text>
-  <text x="100" y="130" text-anchor="middle" fill="#cbd5e1" font-size="6" font-family="monospace">0.1 1 0 1 0...</text>
-  <text x="100" y="145" text-anchor="middle" fill="#fbbf24" font-size="7" font-weight="700">Flip diagonal!</text>
-  <text x="100" y="158" text-anchor="middle" fill="#22c55e" font-size="6" font-family="monospace">0.0 0 1... NOT on list!</text>
+<div class="verse">وَإِنَّ لَكُمْ فِي الْأَنْعَامِ لَعِبْرَةً ۖ نُّسْقِيكُم مِّمَّا فِي بُطُونِهِ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং তোমাদের জন্য গবাদি পশুতে শিক্ষা রয়েছে — আমরা তাদের পেটে যা আছে তা থেকে তোমাদের পান করাই।" — কুরআন ১৬:৬৬</div>
 
-  <!-- B41 connection -->
-  <rect x="420" y="50" width="140" height="120" rx="8" fill="#0f172a" stroke="#dc2626" stroke-width="1.5"/>
-  <text x="490" y="72" text-anchor="middle" fill="#f87171" font-size="9" font-weight="700">B41 Connection</text>
-  <text x="490" y="92" text-anchor="middle" fill="#fca5a5" font-size="7">Same diagonal argument</text>
-  <text x="490" y="105" text-anchor="middle" fill="#fca5a5" font-size="7">used to prove:</text>
-  <text x="490" y="122" text-anchor="middle" fill="#dc2626" font-size="8" font-weight="700">Halting Problem</text>
-  <text x="490" y="135" text-anchor="middle" fill="#fca5a5" font-size="7">is UNDECIDABLE!</text>
-  <text x="490" y="155" text-anchor="middle" fill="#64748b" font-size="6">Turing used Cantor's</text>
-  <text x="490" y="165" text-anchor="middle" fill="#64748b" font-size="6">exact proof structure</text>
+<p class="scene-setting">জামা — সমাবেশ। প্রতিটি গবাদি পশু একটি সেট — দুধ, মাংস, চামড়ার সমাবেশ। সমাবেশ থেকে নির্যাস। সেট তত্ত্বও তেমন — সংগ্রহ থেকে সত্য বের করা। ক্যান্টর দেখিয়েছিলেন — সংগ্রহের আকার ভিন্ন হতে পারে, এমনকি অসীম হলেও।</p>
 
-  <text x="290" y="275" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="600">💡 |P(S)| = 2^|S| — Power set is ALWAYS strictly bigger than the set</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Cantor এর Tower of Infinities — ℵ₀ (countable) < |ℝ| (uncountable) < |P(ℕ)| < ... Diagonal argument: flip diagonal bits → নতুন number যা list এ নেই।</div>
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩০ (Architect's Compass) Door ২ (Sets):</strong> ভেক্টর ও সেট শিখেছিলে — এখানে সেট-এর গভীর তত্ত্ব। Book ৪১ (Clockwork of Thought) Door ১: ফর্মাল ভাষা = সেট অফ স্ট্রিং। Book ৩৯ (Databases) Door ২: SQL = সেট অপারেশন (UNION, INTERSECT)।</div></div>
 
-<div class="code-block">🐍 Python: Set Theory — Power Set, Cardinality, আর Cantor এর সিঁড়ি
-
-# Python set operations — বাস্তব গাণিতিক সেট
-A = {1, 2, 3, 4}
-B = {3, 4, 5, 6}
-print("A ∪ B =", A | B)   # union: {1,2,3,4,5,6}
-print("A ∩ B =", A & B)   # intersection: {3,4}
-print("A − B =", A - B)   # difference: {1,2}
-print("A △ B =", A ^ B)   # symmetric diff: {1,2,5,6}
-
-# Power set: সব subset এর সেট। |P(S)| = 2^|S| — Cantor এর theorem।
-from itertools import chain, combinations
-def powerset(s):
-    s = list(s)
-    return list(chain.from_iterable(combinations(s, r) for r in range(len(s)+1)))
-
-S = {1, 2, 3}
-P = powerset(S)
-print(f"|S|={len(S)}  |P(S)|={len(P)} = 2^{len(S)} = {2**len(S)}")
-print("P(S) =", P)
-# |S|=3  |P(S)|=8 = 2^3 = 8  — power set সবসময় সেটের চেয়ে বড়!
-
-# Cantor এর সিঁড়ি: ℵ₀ < |P(ℕ)| < |P(P(ℕ))| < ...
-# প্রতিটা স্তরে size দ্বিগুণ: n → 2^n → 2^(2^n) → ...
-for level, n in enumerate([3, 8, 256], start=0):
-    print(f"Level {level}: |S|={n}  →  |P(S)|=2^{n}={2**n}")
-
-# Diagonal argument simulation (Cantor এর মূল প্রমাণ)
-# যেকোনো 'সম্পূর্ণ' list বানাও, diagonal flip করে নতুন element তৈরি করি যা list এ নেই।
-def cantor_diagonal(list_of_sets):
-    """list[i] এর i-th membership flip করে নতুন সেট বানাও।"""
-    n = len(list_of_sets)
-    new_set = set()
-    for i in range(n):
-        if i not in list_of_sets[i]:   # diagonal: i-th element এর i-th bit
-            new_set.add(i)
-    return new_set
-
-my_list = [{0,2}, {1}, {0,1,2}, set()]  # 'সম্পূর্ণ' দাবি করা list
-missing = cantor_diagonal(my_list)
-print("Diagonal flip →", missing, "— এই subset কোনো list entry তে নেই!")
-for i, s in enumerate(my_list):
-    print(f"  list[{i}]={s}  কি {missing} এর সমান? {s == missing}")  # সব False
-
-# Countable vs uncountable: ℤ (integers) countable, [0,1] (reals) uncountable
-# Integer enumerate করা যায়: 0, 1, -1, 2, -2, 3, -3, ...
-def enumerate_integers(n):
-    return [(i//2+1)*(-1)**i for i in range(n)]  # 0,1,-1,2,-2,...
-print("First 10 integers (countable):", enumerate_integers(10))</div>
-
-<div class="dialogue"><strong>গেয়র্গ কান্টর:</strong> আমি ১৮৭৪ সালে প্রমাণ করেছিলাম যে infinity এর ভিন্ন ভিন্ন size আছে। Integer (ℕ) গুলো countable — 1, 2, 3, ... তালিকা করা যায়। Rational (ℚ) ও countable! কিন্তু Real (ℝ) — uncountable! Diagonal argument: যেকোনো list বানাও, আমি diagonal flip করে এমন একটা number বানাব যা তালিকায় নেই। Power set theorem: <code>|P(S)| > |S|</code> সবসময়। অর্থাৎ ℵ₀ < |P(ℕ)| < |P(P(ℕ))| < ... অসীম সিঁড়ি! Turing আমার diagonal argument ব্যবহার করে Halting Problem undecidable প্রমাণ করেছেন — একই গণিত, ভিন্ন domain।</div>`,
-  recall: [
-    { q: "Cantor এর diagonal argument কী?", a: "যেকোনো infinite list বানাও। Diagonal এর প্রতিটা bit flip করে একটা নতুন number বানাও। এই number টা list এর কোনো number এর সাথেই match করবে না — তাই list incomplete। ℝ uncountable।" },
-    { q: "|P(S)| এবং |S| এর সম্পর্ক কী?", a: "|P(S)| = 2^|S|, সবসময় |S| এর চেয়ে বড়। Cantor এর theorem। অর্থাৎ যেকোনো set এর power set আরও বড় infinity।" },
-  ]
+<div class="secret-box">⊇ <strong>সেট = সংগ্রহের গাণিতিক ভিত্তি।</strong> ∪ যোগ, ∩ মিল, ∖ পার্থক্য। পাওয়ার সেট সর্বদা বড় (২ⁿ)। কিন্তু সংগ্রহ বড়তে গিয়ে একটি প্রশ্ন জন্ম নেয় — কতভাবে সাজানো যায়? সেই উত্তর — পরের দরজায়।</div>`,
+  senior: {
+    title: "Set Theory এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Cantor (1874)</td><td>সেট তত্ত্বের জনক</td></tr>
+<tr><td class="hl">Union ∪</td><td>A ও B-এর সব উপাদান</td></tr>
+<tr><td class="hl">Intersection ∩</td><td>শুধু মিল থাকা উপাদান</td></tr>
+<tr><td class="hl">Difference ∖</td><td>A-তে আছে, B-তে নেই</td></tr>
+<tr><td class="hl">Power Set P(S)</td><td>সব উপসেট — |P(S)| = ২ⁿ</td></tr>
+<tr><td class="hl">ℵ₀ < ২^ℵ₀</td><td>অসীমের ভিন্ন আকার</td></tr>
+<tr><td class="hl">Russell Paradox</td><td>সেট যা নিজেকে ধারণ করে না</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 5 — The Counting Codex (Combinatorics)
-// ═══════════════════════════════════════════
 doors.push({
   num: 5,
-  icon: "🔢",
-  color: "#22c55e",
-  tagline: "গণনার দস্তাবেজ — Counting Codex",
-  name: "The Counting Codex",
-  secret: "Permutation = ক্রম গুরুত্বপূর্ণ। Combination = ক্রম গুরুত্বহীন। Pigeonhole = collision গ্যারান্টিড।",
-  story: `<p class="scene-setting">Combinatorics শুধু counting নয় — এটা probability, Big-O, আর cryptography এর ভিত্তি। Permutation: কতভাবে সাজানো যায় (ক্রম গুরুত্বপূর্ণ)। <code>P(n,k) = n!/(n-k)!</code>। Combination: কতভাবে বাছাই করা যায় (ক্রম গুরুত্বহীন)। <code>C(n,k) = n!/(k!(n-k)!)</code>। Pigeonhole Principle: n item, k box, n > k → অন্তত এক box এ একাধিক item। Birthday paradox: ২৩ জনে ৫০% duplicate birthday! Hash collision গ্যারান্টিড।</p>
+  icon: "🎲",
+  color: "#8b5cf6",
+  name: "সাজানোর শিল্প",
+  subtitle: "The Art of Arrangement",
+  tech: "Combinatorics — permutations P(n,k), combinations C(n,k), inclusion-exclusion, birthday paradox, Pascal's triangle",
+  spirit: "তাদবির — ব্যবস্থা, কতভাবে সাজানো যায়",
+  secret: "সাজানোর দুটি প্রশ্ন — ক্রম গুরুত্বপূর্ণ (permutation P) নাকি নয় (combination C)। P(n,k) = n!/(n-k)!। C(n,k) = n!/(k!(n-k)!)। এই সূত্র প্রতিদিন কাজে লাগে — password সম্ভাবনা থেকে hash collision পর্যন্ত।",
+  recall: {
+    q: " P(n,k) এবং C(n,k)-এর সূত্র কী? পার্থক্য কী?",
+    qen: "What are the formulas for P(n,k) and C(n,k)? What is the difference?",
+    a: "P(n,k) = n!/(n-k)! — ক্রম গুরুত্বপূর্ণ। C(n,k) = n!/(k!(n-k)!) — ক্রম গুরুত্বহীন। C = P/k! — কারণ k! ভাবে সাজানো যায়।",
+    aen: "P(n,k) = n!/(n-k)! — order matters. C(n,k) = n!/(k!(n-k)!) — order does not matter. C = P / k! because there are k! orderings."
+  },
+  story: `<p class="scene-setting">তুমি একটি রেস্তোরাঁয়। মেনুতে ৫টি খাবার। তুমি ৩টি বাছছ। কতভাবে? যদি ক্রম গুরুত্বপূর্ণ — P(৫,৩) = ৬০। কিন্তু যদি ক্রম গুরুত্বহীন (শুধু কোন ৩টি বেছেছ) — C(৫,৩) = ১০। একই ৩টি খাবার কতভাবে সাজানো যায়? ৩! = ৬। তাই ৬০ ÷ ৬ = ১০। এটাই কম্বিনেটরিক্স — গোনার শিল্প।</p>
+<p class="scene-setting en">At a restaurant. 5 items on the menu. You choose 3. How many ways? If order matters — P(5,3) = 60. If order does not matter — C(5,3) = 10. Same 3 items can be arranged 3! = 6 ways. So 60 ÷ 6 = 10. This is combinatorics — the art of counting.</p>
 
-<div class="code-block">🐍 Python: Combinatorics — Permutation, Combination, Birthday Paradox
+<div class="dialogue"><strong>ব্যবস্থাপক নাদিয়া:</strong> রিয়াদ (Door ৪) তোমাকে সেট দিয়েছেন। এখন দেখো — সেট থেকে কতভাবে বাছাই করা যায়। জন্মদিনের প্যারাডক্স শুনেছ? ২৩ জন মানুষ এক ঘরে — ৫০% সম্ভাবনা দুজনের জন্মদিন মিলবে! মনে হয় অসম্ভব? C(২৩,২) = ২৫৩ জোড়া — প্রতিটি জোড়ায় ১/৩৬৫ সম্ভাবনা। ২৫৩ জোড়ায় অন্তত একটি মিলবে — ৫০%+। এটাই inclusion-exclusion — সম্ভাবনা যোগ করা।</div>
+<div class="dialogue en"><strong>Arranger Nadia:</strong> Riyad (Door 4) gave you sets. Now see — how many ways to choose from a set. Birthday paradox: 23 people in a room — 50% chance two share a birthday! Seems impossible? C(23,2) = 253 pairs — each pair has 1/365 chance. 253 pairs — at least one match likely. This is inclusion-exclusion.</div>
 
-from math import factorial, comb, perm
-from itertools import permutations, combinations
+<div class="code-block">— Python: কম্বিনেটরিক্স —
 
-# Permutation P(n,k) = n!/(n-k)! — ক্রম গুরুত্বপূর্ণ (URL path, পাসওয়ার্ড)
-n, k = 5, 3
-print(f"P({n},{k}) = {perm(n,k)} = {n}!/({n}-{k})! = {factorial(n)//factorial(n-k)}")
-# P(5,3) = 60 — ৫ জনকে ৩টি আসনে সাজানোর উপায়
+  from math import comb, perm, factorial
 
-# Combination C(n,k) = n!/(k!(n-k)!) — ক্রম গুরুত্বহীন (ট্যাগ, টিম)
-print(f"C({n},{k}) = {comb(n,k)} = {n}!/({k}!·{n-k}!) = {factorial(n)//(factorial(k)*factorial(n-k))}")
-# C(5,3) = 10 — ৫ জন থেকে ৩ জনের কমিটি বাছাই
+  # Permutation: ক্রম গুরুত্বপূর্ণ
+  print(perm(5, 3))   # 60 — ৫টি থেকে ৩টি সাজানো
+  print(perm(5, 5))   # 120 — ৫! = সব পারমুটেশন
 
-# itertools দিয়ে সত্যিকারের enumeration
-print("ABC এর ৩-ক্রম permutation:", [''.join(p) for p in permutations('ABC', 3)])
-print("ABC এর ৩-ক্রম combination:", [list(c) for c in combinations('ABC', 3)])
+  # Combination: ক্রম গুরুত্বহীন
+  print(comb(5, 3))   # 10 — ৫টি থেকে ৩টি বাছাই
+  print(comb(10, 0))  # 1 — শূন্য সেট বাছাই
 
-# Django analogy: ManyToManyField = combination (ক্রম গুরুত্বহীন)
-# [Python, Django] == [Django, Python] — একই ট্যাগ সেট
-tags1, tags2 = {'Python', 'Django'}, {'Django', 'Python'}
-print("Tag order matters?", tags1 != tags2)  # False — combination লজিক
+  # জন্মদিন প্যারাডক্স যাচাই:
+  def birthday_prob(n):
+      p_no_match = 1.0
+      for i in range(n):
+          p_no_match *= (365 - i) / 365
+      return 1 - p_no_match
 
-# Birthday Paradox: n জনে অন্তত ২ জনের birthday একই হওয়ার সম্ভাবনা
-def birthday_probability(n, days=365):
-    # P(সব আলাদা) = 365/365 · 364/365 · ... · (365-n+1)/365
-    p_unique = 1.0
-    for i in range(n):
-        p_unique *= (days - i) / days
-    return 1 - p_unique   # P(অন্তত এক duplicate)
+  print(birthday_prob(23))  # 0.507 — ৫০.৭%!
+  print(birthday_prob(50))  # 0.970 — ৯৭%!
+  print(birthday_prob(70))  # 0.999 — ৯৯.৯%!
 
-for people in [5, 10, 23, 30, 50, 70]:
-    print(f"  {people:2d} জনে duplicate birthday সম্ভাবনা: {birthday_probability(people)*100:5.1f}%")
-# ২৩ জনে ৫০.৭% — Pigeonhole + সম্ভাবনার অবিশ্বাস্য ফলাফল!
+  # hash collision: ৬৪-bit hash, কত কী-তে ৫০% collision?
+  # C(n,2) / 2^64 ≈ 0.5 → n ≈ 2^32 ≈ ৪ বিলিয়ন</div>
 
-# Inclusion-Exclusion: |A∪B| = |A| + |B| - |A∩B|
-A = {1,2,3,4}; B = {3,4,5,6}
-print(f"|A∪B| = |A| + |B| - |A∩B| = {len(A)} + {len(B)} - {len(A&B)} = {len(A|B)}")
+<div class="callout info"><span class="co-icon">📐</span><div><strong>Pascal-এর ত্রিভুজ:</strong> প্রতিটি সংখ্যা উপরের দুটির যোগফল। C(n,k) এর মান সরাসরি পড়ো। ১ ৩ ৩ ১ = C(৩,০), C(৩,১), C(৩,২), C(৩,৩)। এটাই (a+b)ⁿ এর সহগ — binomial theorem!</div></div>
 
-# Hash collision simulation: 32-bit hash space এ কত key এ প্রথম collision?
-import random
-def find_collision(hash_space=2**32):
-    seen = set()
-    for i in range(10**7):
-        h = random.randrange(hash_space)
-        if h in seen: return i
-        seen.add(h)
-print("~32-bit hash এ প্রথম collision (birthday attack):", find_collision(), "keys")</div>
+<div class="verse">كُلَّ يَوْمٍ هُوَ فِي شَأْنٍ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"প্রতিদিন তিনি কোনো না কোনো কাজে আছেন।" — কুরআন ৫৫:২৯</div>
 
-<div class="dialogue"><strong>গণিতজ্ঞ:</strong> Django তে permutation = URL routing (ক্রম গুরুত্বপূর্ণ, <code>/api/users/</code> ≠ <code>/users/api/</code>)। Combination = ManyToManyField (ট্যাগ <code>[Python, Django]</code> = <code>[Django, Python]</code>, ক্রম গুরুত্বহীন)। Pigeonhole: hash collision গ্যারান্টিড — infinite possible URL, finite hash output। Birthday paradox: ৩৬৫ day, ২৩ জন → ~৫০% duplicate। এটাই birthday attack এর ভিত্তি — কম key space এ collision খুঁজে বের করা। Inclusion-exclusion: |A∪B| = |A| + |B| - |A∩B|। Double counting এড়াতে intersection বাদ দাও।</div>`,
-  recall: [
-    { q: "Permutation আর Combination এর পার্থক্য কী?", a: "Permutation = ক্রম গুরুত্বপূর্ণ (P(n,k) = n!/(n-k)!)। Combination = ক্রম গুরুত্বহীন (C(n,k) = n!/k!(n-k)!)। URL path = permutation, ManyToMany tags = combination।" },
-    { q: "Birthday paradox কী?", a: "৩৬৫ দিনে ২৩ জন মানুষ হলে ~৫০% সম্ভাবনা যে দুজনের birthday একই। Pigeonhole Principle এর পরিসংখ্যান। Hash collision এবং birthday attack এর ভিত্তি।" },
-  ]
+<p class="scene-setting">প্রতিদিন অসংখ্য সম্ভাবনা — তাদবির। কতভাবে সাজানো যায়, কতভাবে বাছা যায়। কম্বিনেটরিক্স সেই সম্ভাবনা গোনার ভাষা। প্রতিটি পছন্দ একটি সম্ভাবনা — এবং প্রতিটি সম্ভাবনা গণনায় ধরা যায়।</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৯ (Probability) Door ১:</strong> সম্ভাবনা হিসাবে কম্বিনেটরিক্স ব্যবহৃত! Book ৪৬ (Cryptography) Door ৩: hash collision = birthday paradox। Book ৪৮ Door ৬: pigeonhole — অসংখ্য জিনিস কম বাক্সে।</div></div>
+
+<div class="secret-box">🎲 <strong>কম্বিনেটরিক্স = গোনার শিল্প।</strong> P(n,k) = ক্রম সহ, C(n,k) = ক্রম ছাড়া। জন্মদিন প্যারাডক্স, hash collision, password শক্তি — সব এর উপর নির্ভর। এখন প্রথম ৫টি দরজা শেষ — পরের অধ্যায়ে নতুন জগত।</div>`,
+  senior: {
+    title: "Combinatorics এক নজরে",
+    body: `<table class="kv-table"><tr><th>সূত্র</th><th>বিবরণ</th></tr>
+<tr><td class="hl">P(n,k) = n!/(n-k)!</td><td>Permutation — ক্রম গুরুত্বপূর্ণ</td></tr>
+<tr><td class="hl">C(n,k) = n!/(k!(n-k)!)</td><td>Combination — ক্রম গুরুত্বহীন</td></tr>
+<tr><td class="hl">n!</td><td>n এর ফ্যাক্টরিয়াল</td></tr>
+<tr><td class="hl">Pascal Triangle</td><td>C(n,k) এর মান — binomial coefficients</td></tr>
+<tr><td class="hl">Birthday Paradox</td><td>২৩ জনে ৫০% মিল — C(২৩,২)=২৫৩ জোড়া</td></tr>
+<tr><td class="hl">Inclusion-Exclusion</td><td>|A∪B| = |A|+|B|−|A∩B|</td></tr></table>`
+  }
 });
