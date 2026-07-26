@@ -35,6 +35,50 @@ Body (POST/PUT-এর জন্য): ডেটা</div></div>
 <strong>৪xx:</strong> Client Error — ৪০০ Bad Request, ৪০১ Unauthorized, ৪০৩ Forbidden, ৪০৪ Not Found, ৪২৯ Too Many Requests<br>
 <strong>৫xx:</strong> Server Error — ৫০০ Internal, ৫০২ Bad Gateway, ৫০৩ Service Unavailable</div></div>
 
+<div class="diagram">
+<div class="diag-title">HTTP Request/Response Cycle</div>
+<svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrCyan6" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#3dd6c4"/></marker>
+  <marker id="arrAmber6" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#fbbf24"/></marker>
+</defs>
+<!-- Client -->
+<rect x="20" y="100" width="110" height="55" rx="10" fill="rgba(255,107,53,.15)" stroke="#ff6b35" stroke-width="2"/>
+<text x="75" y="122" fill="#ff6b35" font-size="12" font-weight="700" text-anchor="middle">Browser</text>
+<text x="75" y="140" fill="#9290a8" font-size="9" text-anchor="middle">(Client)</text>
+<!-- Server -->
+<rect x="430" y="100" width="110" height="55" rx="10" fill="rgba(82,196,26,.15)" stroke="#52c41a" stroke-width="2"/>
+<text x="485" y="122" fill="#52c41a" font-size="12" font-weight="700" text-anchor="middle">Server</text>
+<text x="485" y="140" fill="#9290a8" font-size="9" text-anchor="middle">(Backend)</text>
+<!-- Request arrow -->
+<line x1="130" y1="120" x2="425" y2="120" stroke="#3dd6c4" stroke-width="2.5" marker-end="url(#arrCyan6)"/>
+<rect x="170" y="75" width="220" height="35" rx="6" fill="rgba(61,214,196,.08)" stroke="#3dd6c4" stroke-width="1"/>
+<text x="280" y="90" fill="#3dd6c4" font-size="10" font-family="monospace" text-anchor="middle">GET /users/42 HTTP/1.1</text>
+<text x="280" y="103" fill="#9290a8" font-size="8" text-anchor="middle">Host: api.example.com</text>
+<!-- Response arrow -->
+<line x1="430" y1="140" x2="135" y2="140" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber6)"/>
+<rect x="170" y="150" width="220" height="35" rx="6" fill="rgba(251,191,36,.08)" stroke="#fbbf24" stroke-width="1"/>
+<text x="280" y="165" fill="#fbbf24" font-size="10" font-family="monospace" text-anchor="middle">HTTP/1.1 200 OK</text>
+<text x="280" y="178" fill="#9290a8" font-size="8" text-anchor="middle">Content-Type: application/json</text>
+<!-- Status code legend -->
+<text x="280" y="215" fill="#9290a8" font-size="10" font-weight="600" text-anchor="middle">Status Code Map</text>
+<rect x="40" y="230" width="90" height="28" rx="6" fill="rgba(82,196,26,.12)" stroke="#52c41a" stroke-width="1"/>
+<text x="85" y="244" fill="#52c41a" font-size="9" font-weight="700" text-anchor="middle">2xx Success</text>
+<text x="85" y="254" fill="#9290a8" font-size="8" text-anchor="middle">200 · 201</text>
+<rect x="145" y="230" width="90" height="28" rx="6" fill="rgba(251,191,36,.12)" stroke="#fbbf24" stroke-width="1"/>
+<text x="190" y="244" fill="#fbbf24" font-size="9" font-weight="700" text-anchor="middle">3xx Redirect</text>
+<text x="190" y="254" fill="#9290a8" font-size="8" text-anchor="middle">301 · 302</text>
+<rect x="250" y="230" width="90" height="28" rx="6" fill="rgba(255,107,53,.12)" stroke="#ff6b35" stroke-width="1"/>
+<text x="295" y="244" fill="#ff6b35" font-size="9" font-weight="700" text-anchor="middle">4xx Client</text>
+<text x="295" y="254" fill="#9290a8" font-size="8" text-anchor="middle">404 · 403</text>
+<rect x="355" y="230" width="90" height="28" rx="6" fill="rgba(179,127,235,.12)" stroke="#b37feb" stroke-width="1"/>
+<text x="400" y="244" fill="#b37feb" font-size="9" font-weight="700" text-anchor="middle">5xx Server</text>
+<text x="400" y="254" fill="#9290a8" font-size="8" text-anchor="middle">500 · 503</text>
+<text x="450" y="275" fill="#9290a8" font-size="8" text-anchor="middle">প্রতিটি request স্বাধীন (stateless)</text>
+</svg>
+<div class="diag-cap">Request: METHOD + URL + Headers · Response: Status + Headers + Body · প্রতিটি কথোপকথন স্বাধীন</div>
+</div>
+
 <p class="scene-setting">১৯৮৯ সালে Tim Berners-Lee CERN-এ ওয়ার্ল্ড ওয়াইড ওয়েব আবিষ্কার করেছিলেন। HTTP ছিল তার সবচেয়ে সহজ প্রোটোকল — শুধু GET ছিল। কোনো version নম্বর নেই, কোনো header নেই। শুধু — "এই পেজটি দাও।" আজ HTTP/৩ — QUIC protocol, UDP-র উপর নির্মিত, দ্রুত, নিরাপদ।</p>
 <p class="scene-setting en">In 1989, Tim Berners-Lee invented the World Wide Web at CERN. HTTP was its simplest protocol — only GET existed. No version number, no headers. Just — "give me this page." Today HTTP/3 — QUIC protocol, built on UDP, fast, secure.</p>
 
@@ -116,6 +160,55 @@ doors.push({
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Cache Invalidation Problem:</strong> "কম্পিউটার বিজ্ঞানে মাত্র দুটি কঠিন জিনিস — cache invalidation এবং নামকরণ।" — Phil Karlton (Netscape)। ডেটা বদলালে কখন cache মুছবে? খুব আগে মুছলে — অপ্রয়োজনীয় origin কল। খুব দেরিতে মুছলে — পুরোনো ডেটা দেখাবে।</div></div>
 
+<div class="diagram">
+<div class="diag-title">CDN Topology — Global Edge Network</div>
+<svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrTeal7" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L0,7 L6,3.5 z" fill="#3dd6c4"/></marker>
+</defs>
+<!-- Origin server (center) -->
+<circle cx="280" cy="160" r="32" fill="rgba(251,191,36,.15)" stroke="#fbbf24" stroke-width="2.5"/>
+<text x="280" y="155" fill="#fbbf24" font-size="10" font-weight="700" text-anchor="middle">ORIGIN</text>
+<text x="280" y="170" fill="#9290a8" font-size="8" text-anchor="middle">ঢাকা</text>
+<!-- Edge servers -->
+<rect x="40" y="40" width="90" height="40" rx="8" fill="rgba(56,189,248,.1)" stroke="#38bdf8" stroke-width="1.5"/>
+<text x="85" y="55" fill="#38bdf8" font-size="9" font-weight="700" text-anchor="middle">Edge: NYC</text>
+<text x="85" y="68" fill="#9290a8" font-size="8" text-anchor="middle">12ms → user</text>
+<rect x="210" y="25" width="90" height="40" rx="8" fill="rgba(56,189,248,.1)" stroke="#38bdf8" stroke-width="1.5"/>
+<text x="255" y="40" fill="#38bdf8" font-size="9" font-weight="700" text-anchor="middle">Edge: London</text>
+<text x="255" y="53" fill="#9290a8" font-size="8" text-anchor="middle">8ms → user</text>
+<rect x="380" y="40" width="90" height="40" rx="8" fill="rgba(56,189,248,.1)" stroke="#38bdf8" stroke-width="1.5"/>
+<text x="425" y="55" fill="#38bdf8" font-size="9" font-weight="700" text-anchor="middle">Edge: Tokyo</text>
+<text x="425" y="68" fill="#9290a8" font-size="8" text-anchor="middle">15ms → user</text>
+<rect x="40" y="240" width="90" height="40" rx="8" fill="rgba(56,189,248,.1)" stroke="#38bdf8" stroke-width="1.5"/>
+<text x="85" y="255" fill="#38bdf8" font-size="9" font-weight="700" text-anchor="middle">Edge: LA</text>
+<text x="85" y="268" fill="#9290a8" font-size="8" text-anchor="middle">10ms → user</text>
+<rect x="210" y="250" width="90" height="40" rx="8" fill="rgba(56,189,248,.1)" stroke="#38bdf8" stroke-width="1.5"/>
+<text x="255" y="265" fill="#38bdf8" font-size="9" font-weight="700" text-anchor="middle">Edge: SG</text>
+<text x="255" y="278" fill="#9290a8" font-size="8" text-anchor="middle">5ms → user</text>
+<rect x="380" y="240" width="90" height="40" rx="8" fill="rgba(56,189,248,.1)" stroke="#38bdf8" stroke-width="1.5"/>
+<text x="425" y="255" fill="#38bdf8" font-size="9" font-weight="700" text-anchor="middle">Edge: Sydney</text>
+<text x="425" y="268" fill="#9290a8" font-size="8" text-anchor="middle">20ms → user</text>
+<!-- Lines origin→edges (data replication) -->
+<line x1="260" y1="145" x2="125" y2="70" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>
+<line x1="280" y1="130" x2="255" y2="65" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>
+<line x1="300" y1="145" x2="390" y2="70" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>
+<line x1="260" y1="175" x2="125" y2="250" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>
+<line x1="280" y1="190" x2="255" y2="250" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>
+<line x1="300" y1="175" x2="390" y2="250" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>
+<!-- Users -->
+<circle cx="170" cy="140" r="8" fill="#52c41a" opacity=".7"/>
+<text x="170" y="125" fill="#52c41a" font-size="8" text-anchor="middle">User</text>
+<line x1="162" y1="138" x2="130" y2="70" stroke="#3dd6c4" stroke-width="2" marker-end="url(#arrTeal7)"/>
+<circle cx="370" cy="180" r="8" fill="#52c41a" opacity=".7"/>
+<text x="370" y="200" fill="#52c41a" font-size="8" text-anchor="middle">User</text>
+<line x1="362" y1="178" x2="300" y2="250" stroke="#3dd6c4" stroke-width="2" marker-end="url(#arrTeal7)"/>
+<!-- Labels -->
+<text x="280" y="310" fill="#9290a8" font-size="9" text-anchor="middle">Origin → Edge (replicate) · User → Edge (nearest) · ছাড়া CDN: ২০০ms+</text>
+</svg>
+<div class="diag-cap">CDN = বিশ্বজুড়ে edge cache · Origin এক, Edge অনেক · User সবচেয়ে কাছের Edge থেকে সেবা পায়</div>
+</div>
+
 <div class="verse">وَنُنَزِّلُ مِنَ الْقُرْآنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং আমরা কুরআন থেকে যা নাজিল করি তা আরোগ্য ও করুণা।" — কুরআন ১৭:৮২</div>
 
@@ -168,6 +261,52 @@ doors.push({
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ HTTP Polling</div>ক্লায়েন্ট প্রতি ৫ সেকেন্ডে জিজ্ঞেস করে — "কিছু নতুন?" সার্ভার বলে — "না।" বারবার। অপচয়, ধীর।</div>
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ WebSocket</div>একবার সংযোগ। সার্ভার নতুন কিছু থাকলে নিজে থেকে পাঠায়। ক্লায়েন্টও পাঠাতে পারে। দ্রুত, কম অপচয়।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">HTTP Half-Duplex বনাম WebSocket Full-Duplex</div>
+<svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrFire8" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L0,7 L6,3.5 z" fill="#ff6b35"/></marker>
+  <marker id="arrTeal8" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L0,7 L6,3.5 z" fill="#3dd6c4"/></marker>
+</defs>
+<!-- TOP: HTTP pattern -->
+<text x="280" y="20" fill="#ff6b35" font-size="12" font-weight="700" text-anchor="middle">HTTP (Half-Duplex)</text>
+<rect x="30" y="30" width="70" height="30" rx="6" fill="rgba(255,107,53,.1)" stroke="#ff6b35" stroke-width="1.5"/>
+<text x="65" y="49" fill="#ff6b35" font-size="9" font-weight="700" text-anchor="middle">Client</text>
+<rect x="460" y="30" width="70" height="30" rx="6" fill="rgba(255,107,53,.1)" stroke="#ff6b35" stroke-width="1.5"/>
+<text x="495" y="49" fill="#ff6b35" font-size="9" font-weight="700" text-anchor="middle">Server</text>
+<line x1="100" y1="45" x2="460" y2="45" stroke="#ff6b35" stroke-width="1.5" marker-end="url(#arrFire8)"/>
+<text x="280" y="38" fill="#9290a8" font-size="8" text-anchor="middle">Request 1</text>
+<line x1="460" y1="65" x2="100" y2="65" stroke="#9290a8" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrFire8)"/>
+<text x="280" y="78" fill="#9290a8" font-size="8" text-anchor="middle">Response 1</text>
+<line x1="100" y1="90" x2="460" y2="90" stroke="#ff6b35" stroke-width="1.5" marker-end="url(#arrFire8)"/>
+<text x="280" y="85" fill="#9290a8" font-size="8" text-anchor="middle">Request 2 (new connection!)</text>
+<line x1="460" y1="110" x2="100" y2="110" stroke="#9290a8" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrFire8)"/>
+<text x="280" y="123" fill="#9290a8" font-size="8" text-anchor="middle">Response 2</text>
+<!-- Divider -->
+<line x1="20" y1="150" x2="540" y2="150" stroke="#5e5c74" stroke-width="1" stroke-dasharray="5,5"/>
+<!-- BOTTOM: WebSocket pattern -->
+<text x="280" y="172" fill="#3dd6c4" font-size="12" font-weight="700" text-anchor="middle">WebSocket (Full-Duplex)</text>
+<rect x="30" y="185" width="70" height="30" rx="6" fill="rgba(61,214,196,.1)" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="65" y="204" fill="#3dd6c4" font-size="9" font-weight="700" text-anchor="middle">Client</text>
+<rect x="460" y="185" width="70" height="30" rx="6" fill="rgba(61,214,196,.1)" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="495" y="204" fill="#3dd6c4" font-size="9" font-weight="700" text-anchor="middle">Server</text>
+<!-- Upgrade -->
+<line x1="100" y1="200" x2="460" y2="200" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrTeal8)"/>
+<text x="280" y="195" fill="#fbbf24" font-size="8" text-anchor="middle">HTTP Upgrade → 101 Switching</text>
+<!-- Open connection bar -->
+<rect x="100" y="220" width="360" height="80" rx="8" fill="rgba(61,214,196,.05)" stroke="#3dd6c4" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="280" y="235" fill="#3dd6c4" font-size="9" font-weight="700" text-anchor="middle">⟵ খোলা সংযোগ — কোনো পুনরায় সংযোগ নেই ⟶</text>
+<!-- Bidirectional arrows -->
+<line x1="130" y1="255" x2="430" y2="255" stroke="#3dd6c4" stroke-width="2" marker-end="url(#arrTeal8)"/>
+<text x="280" y="248" fill="#3dd6c4" font-size="8" text-anchor="middle">Client → Server (anytime)</text>
+<line x1="430" y1="275" x2="130" y2="275" stroke="#3dd6c4" stroke-width="2" marker-end="url(#arrTeal8)"/>
+<text x="280" y="288" fill="#3dd6c4" font-size="8" text-anchor="middle">Server → Client (anytime)</text>
+<!-- Bottom note -->
+<text x="280" y="325" fill="#9290a8" font-size="9" text-anchor="middle">HTTP: প্রতিটি request নতুন সংযোগ · WebSocket: একটি খোলা সংযোগ, উভয় দিক স্বাধীন</text>
+</svg>
+<div class="diag-cap">HTTP = বারবার নতুন কল · WebSocket = এক কল, খোলা রাখো · রিয়েল-টাইম কথোপকথন</div>
 </div>
 
 <div class="callout info"><span class="co-icon">📡</span><div><strong>রিয়েল-টাইম প্রোটোকল পরিবার:</strong><br>
@@ -234,6 +373,54 @@ doors.push({
 <strong>Symmetric:</strong> একটি key দিয়ে lock ও unlock। দ্রুত কিন্তু key শেয়ার করা কঠিন।<br>
 <strong>Asymmetric:</strong> দুটি key — public (সবাই জানে) ও private (শুধু তুমি)। public দিয়ে lock, private দিয়ে unlock। ধীর কিন্তু নিরাপদ।<br>
 <strong>TLS-এর বুদ্ধি:</strong> handshake-এ asymmetric (নিরাপদ key exchange), তারপর symmetric (দ্রুত ডেটা)। সেরা উভয় জগৎ।</div></div>
+
+<div class="diagram">
+<div class="diag-title">TLS Handshake — নিরাপদ সংযোগ স্থাপন</div>
+<svg viewBox="0 0 560 370" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrCyan9" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L0,7 L6,3.5 z" fill="#3dd6c4"/></marker>
+  <marker id="arrAmber9" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L0,7 L6,3.5 z" fill="#fbbf24"/></marker>
+  <marker id="arrLeaf9" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L0,7 L6,3.5 z" fill="#52c41a"/></marker>
+</defs>
+<!-- Client -->
+<rect x="30" y="15" width="100" height="35" rx="8" fill="rgba(255,107,53,.15)" stroke="#ff6b35" stroke-width="2"/>
+<text x="80" y="33" fill="#ff6b35" font-size="11" font-weight="700" text-anchor="middle">CLIENT</text>
+<text x="80" y="45" fill="#9290a8" font-size="8" text-anchor="middle">Browser</text>
+<line x1="80" y1="50" x2="80" y2="350" stroke="#5e5c74" stroke-width="1" stroke-dasharray="3,4"/>
+<!-- Server -->
+<rect x="430" y="15" width="100" height="35" rx="8" fill="rgba(82,196,26,.15)" stroke="#52c41a" stroke-width="2"/>
+<text x="480" y="33" fill="#52c41a" font-size="11" font-weight="700" text-anchor="middle">SERVER</text>
+<text x="480" y="45" fill="#9290a8" font-size="8" text-anchor="middle">HTTPS</text>
+<line x1="480" y1="50" x2="480" y2="350" stroke="#5e5c74" stroke-width="1" stroke-dasharray="3,4"/>
+<!-- Step 1: Client Hello -->
+<line x1="80" y1="75" x2="425" y2="75" stroke="#3dd6c4" stroke-width="2" marker-end="url(#arrCyan9)"/>
+<text x="250" y="68" fill="#3dd6c4" font-size="10" font-weight="700" text-anchor="middle">① Client Hello</text>
+<text x="250" y="88" fill="#9290a8" font-size="8" text-anchor="middle">"আমি TLS 1.3, AES, ECDHE পারি"</text>
+<!-- Step 2: Server Hello + Certificate -->
+<line x1="480" y1="120" x2="85" y2="120" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber9)"/>
+<text x="250" y="113" fill="#fbbf24" font-size="10" font-weight="700" text-anchor="middle">② Server Hello + Certificate</text>
+<text x="250" y="133" fill="#9290a8" font-size="8" text-anchor="middle">"TLS 1.3 OK · আমার certificate (CA সাইন করা)"</text>
+<!-- Step 3: Key Exchange -->
+<line x1="80" y1="165" x2="425" y2="165" stroke="#3dd6c4" stroke-width="2" marker-end="url(#arrCyan9)"/>
+<text x="250" y="158" fill="#3dd6c4" font-size="10" font-weight="700" text-anchor="middle">③ Key Exchange (ECDHE)</text>
+<text x="250" y="178" fill="#9290a8" font-size="8" text-anchor="middle">Public key দিয়ে shared secret তৈরি</text>
+<!-- Step 4: Finished -->
+<rect x="180" y="195" width="200" height="28" rx="10" fill="rgba(82,196,26,.1)" stroke="#52c41a" stroke-width="1.5"/>
+<text x="280" y="213" fill="#52c41a" font-size="10" font-weight="700" text-anchor="middle">④ Finished — Handshake Complete</text>
+<!-- Transition -->
+<line x1="20" y1="240" x2="540" y2="240" stroke="#5e5c74" stroke-width="1" stroke-dasharray="5,5"/>
+<text x="280" y="258" fill="#9290a8" font-size="10" font-weight="600" text-anchor="middle">▼ এখন symmetric encryption চালু ▼</text>
+<!-- Encrypted data flow -->
+<rect x="120" y="270" width="320" height="75" rx="10" fill="rgba(61,214,196,.05)" stroke="#3dd6c4" stroke-width="1.5" stroke-dasharray="4,3"/>
+<line x1="80" y1="290" x2="425" y2="290" stroke="#3dd6c4" stroke-width="2.5" marker-end="url(#arrLeaf9)"/>
+<text x="250" y="283" fill="#52c41a" font-size="10" font-weight="700" text-anchor="middle">🔐 Encrypted Request</text>
+<line x1="480" y1="315" x2="85" y2="315" stroke="#3dd6c4" stroke-width="2.5" marker-end="url(#arrLeaf9)"/>
+<text x="250" y="308" fill="#52c41a" font-size="10" font-weight="700" text-anchor="middle">🔐 Encrypted Response</text>
+<text x="250" y="335" fill="#9290a8" font-size="8" text-anchor="middle">AES-256 symmetric key দিয়ে সব ডেটা</text>
+<text x="280" y="358" fill="#9290a8" font-size="8" text-anchor="middle">Asymmetric (RSA/ECDHE) → handshake · Symmetric (AES) → ডেটা</text>
+</svg>
+<div class="diag-cap">Handshake: asymmetric দিয়ে key exchange · তারপর: symmetric দিয়ে দ্রুত এনক্রিপশন · MITM অসম্ভব</div>
+</div>
 
 <div class="callout info"><span class="co-icon">🔥</span><div><strong>Firewall:</strong> একটি দরজাদার। আসা যাওয়া প্রতিটি প্যাকেট চেক করে — এটি কি নিয়ম মানে? নিয়ম ভাঙলে বাতিল।<br>
 <strong>Stateful Firewall:</strong> সংযোগের অবস্থা মনে রাখে — এই সংযোগটি আগে থেকে চলছে?<br>
@@ -340,6 +527,61 @@ HTTP response: ২০০ OK + body</div></div>
 
 <div class="callout info"><span class="co-icon">📡</span><div><strong>একটি প্যাকেটের দৃষ্টিকোণ থেকে:</strong><br>
 তুমি (প্যাকেট) তোমার কম্পিউটারের NIC থেকে বের হও → switch → router → ISP → undersea cable → Google-এর data center → load balancer → server। তারপর ফিরে আসো। এই যাত্রায় তুমি ছুঁয়ে যাও: Ethernet frame → IP packet → TCP segment → TLS record → HTTP message। সাত স্তর — এক প্যাকেট।</div></div>
+
+<div class="diagram">
+<div class="diag-title">Encapsulation — এক HTTP Request কীভাবে প্যাকেট হয়</div>
+<svg viewBox="0 0 560 380" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrAmber10" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L0,7 L6,3.5 z" fill="#fbbf24"/></marker>
+</defs>
+<!-- L7: HTTP Data -->
+<rect x="180" y="20" width="200" height="32" rx="5" fill="rgba(82,196,26,.15)" stroke="#52c41a" stroke-width="1.5"/>
+<text x="280" y="40" fill="#52c41a" font-size="11" font-weight="700" text-anchor="middle">HTTP: GET / HTTP/2</text>
+<text x="100" y="40" fill="#9290a8" font-size="9" text-anchor="middle">Layer 7</text>
+<!-- L4: TCP Segment -->
+<rect x="130" y="65" width="300" height="42" rx="5" fill="rgba(56,189,248,.08)" stroke="#38bdf8" stroke-width="1.5"/>
+<rect x="140" y="72" width="60" height="28" rx="3" fill="rgba(56,189,248,.2)" stroke="#38bdf8" stroke-width="1"/>
+<text x="170" y="90" fill="#38bdf8" font-size="8" font-weight="700" text-anchor="middle">TCP Hdr</text>
+<rect x="210" y="72" width="210" height="28" rx="3" fill="rgba(82,196,26,.1)" stroke="#52c41a" stroke-width="1" stroke-dasharray="2,2"/>
+<text x="315" y="90" fill="#52c41a" font-size="8" text-anchor="middle">HTTP Data (from above)</text>
+<text x="90" y="90" fill="#9290a8" font-size="9" text-anchor="middle">Layer 4</text>
+<!-- L3: IP Packet -->
+<rect x="80" y="120" width="400" height="42" rx="5" fill="rgba(61,214,196,.08)" stroke="#3dd6c4" stroke-width="1.5"/>
+<rect x="90" y="127" width="60" height="28" rx="3" fill="rgba(61,214,196,.2)" stroke="#3dd6c4" stroke-width="1"/>
+<text x="120" y="145" fill="#3dd6c4" font-size="8" font-weight="700" text-anchor="middle">IP Hdr</text>
+<rect x="160" y="127" width="60" height="28" rx="3" fill="rgba(56,189,248,.15)" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2,2"/>
+<text x="190" y="145" fill="#38bdf8" font-size="8" text-anchor="middle">TCP</text>
+<rect x="230" y="127" width="240" height="28" rx="3" fill="rgba(82,196,26,.08)" stroke="#52c41a" stroke-width="1" stroke-dasharray="2,2"/>
+<text x="350" y="145" fill="#52c41a" font-size="8" text-anchor="middle">HTTP Data</text>
+<text x="50" y="145" fill="#9290a8" font-size="9" text-anchor="middle">Layer 3</text>
+<!-- L2: Ethernet Frame -->
+<rect x="30" y="175" width="500" height="42" rx="5" fill="rgba(251,191,36,.08)" stroke="#fbbf24" stroke-width="1.5"/>
+<rect x="40" y="182" width="55" height="28" rx="3" fill="rgba(251,191,36,.2)" stroke="#fbbf24" stroke-width="1"/>
+<text x="67" y="200" fill="#fbbf24" font-size="7" font-weight="700" text-anchor="middle">Eth Hdr</text>
+<rect x="105" y="182" width="55" height="28" rx="3" fill="rgba(61,214,196,.15)" stroke="#3dd6c4" stroke-width="1" stroke-dasharray="2,2"/>
+<text x="132" y="200" fill="#3dd6c4" font-size="7" text-anchor="middle">IP</text>
+<rect x="170" y="182" width="55" height="28" rx="3" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2,2"/>
+<text x="197" y="200" fill="#38bdf8" font-size="7" text-anchor="middle">TCP</text>
+<rect x="235" y="182" width="230" height="28" rx="3" fill="rgba(82,196,26,.06)" stroke="#52c41a" stroke-width="1" stroke-dasharray="2,2"/>
+<text x="350" y="200" fill="#52c41a" font-size="7" text-anchor="middle">HTTP Data</text>
+<rect x="475" y="182" width="45" height="28" rx="3" fill="rgba(255,107,53,.15)" stroke="#ff6b35" stroke-width="1"/>
+<text x="497" y="200" fill="#ff6b35" font-size="7" font-weight="700" text-anchor="middle">FCS</text>
+<text x="280" y="240" fill="#9290a8" font-size="9" text-anchor="middle">প্রতিটি স্তর আগের স্তরকে wrap করে (encapsulate)</text>
+<!-- Wire -->
+<rect x="30" y="260" width="500" height="32" rx="5" fill="rgba(255,107,53,.08)" stroke="#ff6b35" stroke-width="1.5"/>
+<text x="280" y="280" fill="#ff6b35" font-size="10" font-weight="700" text-anchor="middle">⚡ Physical Layer — তারের ভেতর বৈদ্যুতিক সংকেত</text>
+<text x="50" y="280" fill="#9290a8" font-size="9" text-anchor="middle">L1</text>
+<!-- Arrow -->
+<line x1="280" y1="54" x2="280" y2="63" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrAmber10)"/>
+<line x1="280" y1="110" x2="280" y2="118" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrAmber10)"/>
+<line x1="280" y1="165" x2="280" y2="173" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrAmber10)"/>
+<!-- Legend -->
+<text x="280" y="320" fill="#9290a8" font-size="9" font-weight="600" text-anchor="middle">↓ প্রতিটি স্তর নিজের header যোগ করে ↓</text>
+<text x="280" y="340" fill="#52c41a" font-size="9" text-anchor="middle">Application (HTTP) → Transport (TCP) → Network (IP) → Data Link (Ethernet) → Physical (bits)</text>
+<text x="280" y="360" fill="#9290a8" font-size="8" text-anchor="middle">গন্তব্যে পৌঁছে প্রতিটি স্তর তার header খোলে (decapsulation) — উল্টো দিকে</text>
+</svg>
+<div class="diag-cap">Encapsulation: প্রতিটি স্তর নিজের header যোগ করে · সার্ভারে উল্টোভাবে খোলে · মূল ডেটা অপরিবর্তিত</div>
+</div>
 
 <div class="verse">اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"আল্লাহ আসমান ও পৃথিবীর আলো।" — কুরআন ২৪:৩৫</div>

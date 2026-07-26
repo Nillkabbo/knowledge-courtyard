@@ -27,6 +27,66 @@ doors.push({
 <strong>২. Data Link:</strong> ফ্রেম, MAC ঠিকানা — Ethernet, Wi-Fi<br>
 <strong>১. Physical:</strong> তার, সংকেত, বিট — কেবল, ফাইবার, রেডিও</div></div>
 
+<div class="diagram">
+<div class="diag-title">OSI vs TCP/IP — স্তর মিলন</div>
+<svg viewBox="0 0 560 360" xmlns="http://www.w3.org/2000/svg">
+<!-- Layer 7: Application -->
+<rect x="20" y="30" width="370" height="38" rx="6" fill="rgba(82,196,26,.12)" stroke="#52c41a" stroke-width="1.5"/>
+<circle cx="42" cy="49" r="12" fill="#52c41a"/>
+<text x="42" y="49" fill="#060d16" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="central">7</text>
+<text x="65" y="49" fill="#e8e6f0" font-size="13" font-weight="600" dominant-baseline="central">Application</text>
+<text x="200" y="49" fill="#9290a8" font-size="11" dominant-baseline="central">HTTP · DNS · SMTP</text>
+<!-- Layer 6: Presentation -->
+<rect x="20" y="72" width="370" height="38" rx="6" fill="rgba(179,127,235,.12)" stroke="#b37feb" stroke-width="1.5"/>
+<circle cx="42" cy="91" r="12" fill="#b37feb"/>
+<text x="42" y="91" fill="#060d16" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="central">6</text>
+<text x="65" y="91" fill="#e8e6f0" font-size="13" font-weight="600" dominant-baseline="central">Presentation</text>
+<text x="200" y="91" fill="#9290a8" font-size="11" dominant-baseline="central">TLS · JPEG · JSON</text>
+<!-- Layer 5: Session -->
+<rect x="20" y="114" width="370" height="38" rx="6" fill="rgba(91,158,255,.12)" stroke="#5b9eff" stroke-width="1.5"/>
+<circle cx="42" cy="133" r="12" fill="#5b9eff"/>
+<text x="42" y="133" fill="#060d16" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="central">5</text>
+<text x="65" y="133" fill="#e8e6f0" font-size="13" font-weight="600" dominant-baseline="central">Session</text>
+<text x="200" y="133" fill="#9290a8" font-size="11" dominant-baseline="central">RPC · NetBIOS</text>
+<!-- Layer 4: Transport -->
+<rect x="20" y="156" width="370" height="38" rx="6" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="1.5"/>
+<circle cx="42" cy="175" r="12" fill="#38bdf8"/>
+<text x="42" y="175" fill="#060d16" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="central">4</text>
+<text x="65" y="175" fill="#e8e6f0" font-size="13" font-weight="600" dominant-baseline="central">Transport</text>
+<text x="200" y="175" fill="#9290a8" font-size="11" dominant-baseline="central">TCP · UDP</text>
+<!-- Layer 3: Network -->
+<rect x="20" y="198" width="370" height="38" rx="6" fill="rgba(61,214,196,.12)" stroke="#3dd6c4" stroke-width="1.5"/>
+<circle cx="42" cy="217" r="12" fill="#3dd6c4"/>
+<text x="42" y="217" fill="#060d16" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="central">3</text>
+<text x="65" y="217" fill="#e8e6f0" font-size="13" font-weight="600" dominant-baseline="central">Network</text>
+<text x="200" y="217" fill="#9290a8" font-size="11" dominant-baseline="central">IP · ICMP · Routing</text>
+<!-- Layer 2: Data Link -->
+<rect x="20" y="240" width="370" height="38" rx="6" fill="rgba(251,191,36,.12)" stroke="#fbbf24" stroke-width="1.5"/>
+<circle cx="42" cy="259" r="12" fill="#fbbf24"/>
+<text x="42" y="259" fill="#060d16" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="central">2</text>
+<text x="65" y="259" fill="#e8e6f0" font-size="13" font-weight="600" dominant-baseline="central">Data Link</text>
+<text x="200" y="259" fill="#9290a8" font-size="11" dominant-baseline="central">Ethernet · MAC · ARP</text>
+<!-- Layer 1: Physical -->
+<rect x="20" y="282" width="370" height="38" rx="6" fill="rgba(255,107,53,.12)" stroke="#ff6b35" stroke-width="1.5"/>
+<circle cx="42" cy="301" r="12" fill="#ff6b35"/>
+<text x="42" y="301" fill="#060d16" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="central">1</text>
+<text x="65" y="301" fill="#e8e6f0" font-size="13" font-weight="600" dominant-baseline="central">Physical</text>
+<text x="200" y="301" fill="#9290a8" font-size="11" dominant-baseline="central">Cable · Fiber · Radio</text>
+<!-- TCP/IP Mapping (right side) -->
+<rect x="410" y="30" width="130" height="122" rx="8" fill="rgba(82,196,26,.06)" stroke="#52c41a" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="475" y="85" fill="#52c41a" font-size="12" font-weight="700" text-anchor="middle" dominant-baseline="central">Application</text>
+<text x="475" y="100" fill="#52c41a" font-size="10" text-anchor="middle" dominant-baseline="central">(TCP/IP L4)</text>
+<rect x="410" y="156" width="130" height="38" rx="8" fill="rgba(56,189,248,.06)" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="475" y="175" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle" dominant-baseline="central">Transport</text>
+<rect x="410" y="198" width="130" height="38" rx="8" fill="rgba(61,214,196,.06)" stroke="#3dd6c4" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="475" y="217" fill="#3dd6c4" font-size="12" font-weight="700" text-anchor="middle" dominant-baseline="central">Internet</text>
+<rect x="410" y="240" width="130" height="80" rx="8" fill="rgba(255,107,53,.06)" stroke="#ff6b35" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="475" y="272" fill="#ff6b35" font-size="12" font-weight="700" text-anchor="middle" dominant-baseline="central">Network</text>
+<text x="475" y="287" fill="#ff6b35" font-size="12" font-weight="700" text-anchor="middle" dominant-baseline="central">Access</text>
+</svg>
+<div class="diag-cap">বামে: OSI ৭-স্তর · ডানে: TCP/IP ৪-স্তর মিলন · বার্তা উপর থেকে নিচে যায় (encapsulation)</div>
+</div>
+
 <div class="dialogue"><strong>তুমি:</strong> এত স্তর কেন? এক স্তরে কাজ শেষ করলেই তো হয়?</div>
 <div class="dialogue"><strong>স্থপতি আদম:</strong> ভাবো তুমি একটি বাড়ি বানাচ্ছো। ভিত্তি, দেয়াল, ছাদ, বৈদ্যুতিক, প্লাম্বিং, রং — সব একসাথে করলে কী হবে? একটি সমস্যা হলে কোনটি ঠিক করবে? স্তর থাকলে প্রতিটি স্তর আলাদাভাবে কাজ করে। Wi-Fi বদলালে HTTP বদলাতে হবে না। এটাই abstraction-এর শক্তি।</div>
 <div class="dialogue en"><strong>You:</strong> Why so many layers? Why not do everything in one layer?<br><strong>Architect Adam:</strong> Imagine building a house. Foundation, walls, roof, electrical, plumbing, paint — do it all at once? If one breaks, which to fix? With layers, each works independently. Change Wi-Fi without changing HTTP. This is the power of abstraction.</div>
@@ -107,6 +167,50 @@ doors.push({
 <strong>Hub:</strong> আসা ফ্রেম সব পোর্টে পাঠায় — সবাই শোনে, ধীর।<br>
 <strong>Switch:</strong> MAC ঠিকানা দেখে শুধু সঠিক পোর্টে পাঠায় — দ্রুত, নিরাপদ। Switch একটি MAC টেবিল রাখে — কোন পোর্টে কোন MAC আছে।</div></div>
 
+<div class="diagram">
+<div class="diag-title">Switch বনাম Hub — ফ্রেম ডেলিভারি</div>
+<svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrFire" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#ff6b35"/></marker>
+  <marker id="arrTeal" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#3dd6c4"/></marker>
+</defs>
+<!-- Source PC -->
+<rect x="20" y="70" width="100" height="50" rx="8" fill="rgba(255,107,53,.15)" stroke="#ff6b35" stroke-width="2"/>
+<text x="70" y="90" fill="#ff6b35" font-size="12" font-weight="700" text-anchor="middle">PC-1</text>
+<text x="70" y="107" fill="#9290a8" font-size="10" text-anchor="middle">SRC: A1:B2</text>
+<!-- Switch -->
+<rect x="180" y="55" width="140" height="80" rx="10" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="2"/>
+<text x="250" y="78" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="middle">SWITCH</text>
+<text x="250" y="95" fill="#9290a8" font-size="10" text-anchor="middle">MAC Table</text>
+<text x="250" y="112" fill="#9290a8" font-size="9" text-anchor="middle">P1→A1 · P2→C3 · P3→B4</text>
+<!-- Lines from source to switch -->
+<line x1="120" y1="95" x2="180" y2="95" stroke="#ff6b35" stroke-width="2.5"/>
+<!-- Target PC-3 -->
+<rect x="370" y="20" width="100" height="45" rx="8" fill="rgba(82,196,26,.12)" stroke="#52c41a" stroke-width="1.5"/>
+<text x="420" y="38" fill="#52c41a" font-size="11" font-weight="700" text-anchor="middle">PC-2</text>
+<text x="420" y="53" fill="#9290a8" font-size="10" text-anchor="middle">C3:44</text>
+<rect x="370" y="95" width="100" height="45" rx="8" fill="rgba(91,158,255,.12)" stroke="#5b9eff" stroke-width="1.5"/>
+<text x="420" y="113" fill="#5b9eff" font-size="11" font-weight="700" text-anchor="middle">PC-3</text>
+<text x="420" y="128" fill="#9290a8" font-size="10" text-anchor="middle">B4:22</text>
+<rect x="370" y="170" width="100" height="45" rx="8" fill="rgba(179,127,235,.1)" stroke="#b37feb" stroke-width="1.5"/>
+<text x="420" y="188" fill="#b37feb" font-size="11" font-weight="700" text-anchor="middle">PC-4</text>
+<text x="420" y="203" fill="#9290a8" font-size="10" text-anchor="middle">D5:66</text>
+<!-- Correct path: Switch → PC-3 only -->
+<line x1="320" y1="95" x2="370" y2="117" stroke="#ff6b35" stroke-width="2.5" marker-end="url(#arrFire)"/>
+<text x="345" y="95" fill="#ff6b35" font-size="9" font-weight="700">→ B4:22</text>
+<!-- Bottom: Hub comparison -->
+<text x="280" y="245" fill="#9290a8" font-size="11" font-weight="600" text-anchor="middle">— HUB (তুলনা) —</text>
+<rect x="180" y="255" width="140" height="50" rx="8" fill="rgba(251,191,36,.08)" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="250" y="275" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle">HUB</text>
+<text x="250" y="290" fill="#9290a8" font-size="9" text-anchor="middle">সব পোর্টে ব্রডকাস্ট</text>
+<line x1="320" y1="270" x2="370" y2="40" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="320" y1="275" x2="370" y2="115" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="320" y1="280" x2="370" y2="190" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="395" y="320" fill="#9290a8" font-size="9" text-anchor="middle">Hub সবাইকে পাঠায় · Switch শুধু গন্তব্যকে</text>
+</svg>
+<div class="diag-cap">Switch: MAC টেবিল দেখে শুধু সঠিক পোর্টে পাঠায় · Hub: সব পোর্টে ব্রডকাস্ট করে</div>
+</div>
+
 <div class="verse">أَلَمْ تَرَوْا أَنَّ اللَّهَ سَخَّرَ لَكُم مَّا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"তোমরা কি দেখো না যে আল্লাহ আসমান ও পৃথিবীতে যা কিছু আছে তা তোমাদের অধীন করেছেন?" — কুরআন ৩১:২০</div>
 
@@ -164,6 +268,49 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔍</span><div><strong>Traceroute:</strong> TTL ব্যবহার করে পথ খুঁজে বের করে। প্রথম প্যাকেট TTL=১ — প্রথম রাউটারে বাতিল, সেই রাউটারের ঠিকানা পাওয়া যায়। দ্বিতীয় TTL=২ — দ্বিতীয় রাউটার। এভাবে পুরো পথ ম্যাপ হয়।</div></div>
 
+<div class="diagram">
+<div class="diag-title">IP Routing — প্যাকেটের যাত্রা (Traceroute)</div>
+<svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrAmber3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#fbbf24"/></marker>
+</defs>
+<!-- Source -->
+<rect x="15" y="120" width="90" height="50" rx="8" fill="rgba(255,107,53,.15)" stroke="#ff6b35" stroke-width="2"/>
+<text x="60" y="140" fill="#ff6b35" font-size="11" font-weight="700" text-anchor="middle">তোমার PC</text>
+<text x="60" y="155" fill="#9290a8" font-size="9" text-anchor="middle">10.0.0.5</text>
+<!-- Routers along the path -->
+<rect x="140" y="120" width="80" height="50" rx="8" fill="rgba(251,191,36,.12)" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="180" y="138" fill="#fbbf24" font-size="10" font-weight="700" text-anchor="middle">Router 1</text>
+<text x="180" y="153" fill="#9290a8" font-size="9" text-anchor="middle">ISP Gateway</text>
+<rect x="255" y="120" width="80" height="50" rx="8" fill="rgba(251,191,36,.12)" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="295" y="138" fill="#fbbf24" font-size="10" font-weight="700" text-anchor="middle">Router 2</text>
+<text x="295" y="153" fill="#9290a8" font-size="9" text-anchor="middle">Regional</text>
+<rect x="370" y="120" width="80" height="50" rx="8" fill="rgba(251,191,36,.12)" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="410" y="138" fill="#fbbf24" font-size="10" font-weight="700" text-anchor="middle">Router 3</text>
+<text x="410" y="153" fill="#9290a8" font-size="9" text-anchor="middle">Backbone</text>
+<!-- Destination -->
+<rect x="480" y="120" width="70" height="50" rx="8" fill="rgba(82,196,26,.15)" stroke="#52c41a" stroke-width="2"/>
+<text x="515" y="138" fill="#52c41a" font-size="10" font-weight="700" text-anchor="middle">Server</text>
+<text x="515" y="153" fill="#9290a8" font-size="9" text-anchor="middle">142.250</text>
+<!-- Path lines -->
+<line x1="105" y1="145" x2="140" y2="145" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber3)"/>
+<line x1="220" y1="145" x2="255" y2="145" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber3)"/>
+<line x1="335" y1="145" x2="370" y2="145" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber3)"/>
+<line x1="450" y1="145" x2="480" y2="145" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber3)"/>
+<!-- TTL labels above -->
+<text x="122" y="110" fill="#ff6b35" font-size="9" font-weight="700" text-anchor="middle">TTL 64→63</text>
+<text x="237" y="110" fill="#ff6b35" font-size="9" font-weight="700" text-anchor="middle">→62</text>
+<text x="352" y="110" fill="#ff6b35" font-size="9" font-weight="700" text-anchor="middle">→61</text>
+<!-- Traceroute output box -->
+<text x="280" y="210" fill="#9290a8" font-size="10" font-weight="600" text-anchor="middle">$ traceroute google.com</text>
+<rect x="60" y="220" width="440" height="65" rx="8" fill="rgba(7,10,15,.6)" stroke="rgba(56,189,248,.2)" stroke-width="1"/>
+<text x="75" y="238" fill="#3dd6c4" font-size="10" font-family="monospace">hop 1  10.0.0.1     1.2ms  ← Router 1 (ISP)</text>
+<text x="75" y="252" fill="#3dd6c4" font-size="10" font-family="monospace">hop 2  24.10.5.1    4.8ms  ← Router 2 (Regional)</text>
+<text x="75" y="266" fill="#3dd6c4" font-size="10" font-family="monospace">hop 3  72.14.210.1  12ms   ← Router 3 (Backbone)</text>
+</svg>
+<div class="diag-cap">প্যাকেট প্রতিটি রাউটারে থামে · TTL ১ কমে · শূন্য হলে বাতিল · এটাই traceroute-এর কৌশল</div>
+</div>
+
 <div class="verse">وَجَعَلْنَا فِي الْأَرْضِ رَوَاسِيَ وَفَجَّرْنَا فِيهَا أَنْهَارًا</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং পৃথিবীতে আমরা স্থাপন করেছি পর্বতমালা এবং সেখানে প্রবাহিত করেছি নদী।" — কুরআন ৫০:৭</div>
 
@@ -211,6 +358,42 @@ doors.push({
 <strong>Retransmission:</strong> রসিদ না পেলে আবার পাঠাও<br>
 <strong>Flow Control:</strong> প্রাপক বলে — "আমি ১০০০ বাইট ধারণ করতে পারি, বেশি পাঠিও না" (sliding window)<br>
 <strong>Congestion Control:</strong> নেটওয়ার্ক ব্যস্ত হলে গতি কমাও (slow start, AIMD)</div></div>
+
+<div class="diagram">
+<div class="diag-title">TCP 3-Way Handshake — সংযোগ স্থাপন</div>
+<svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrCyan4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#3dd6c4"/></marker>
+  <marker id="arrAmber4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#fbbf24"/></marker>
+</defs>
+<!-- Client lifeline -->
+<rect x="40" y="20" width="120" height="40" rx="8" fill="rgba(255,107,53,.15)" stroke="#ff6b35" stroke-width="2"/>
+<text x="100" y="38" fill="#ff6b35" font-size="12" font-weight="700" text-anchor="middle">CLIENT</text>
+<text x="100" y="52" fill="#9290a8" font-size="9" text-anchor="middle">seq=x</text>
+<line x1="100" y1="60" x2="100" y2="260" stroke="#5e5c74" stroke-width="1" stroke-dasharray="3,4"/>
+<!-- Server lifeline -->
+<rect x="400" y="20" width="120" height="40" rx="8" fill="rgba(82,196,26,.15)" stroke="#52c41a" stroke-width="2"/>
+<text x="460" y="38" fill="#52c41a" font-size="12" font-weight="700" text-anchor="middle">SERVER</text>
+<text x="460" y="52" fill="#9290a8" font-size="9" text-anchor="middle">seq=y</text>
+<line x1="460" y1="60" x2="460" y2="260" stroke="#5e5c74" stroke-width="1" stroke-dasharray="3,4"/>
+<!-- Step 1: SYN -->
+<line x1="100" y1="100" x2="395" y2="100" stroke="#3dd6c4" stroke-width="2.5" marker-end="url(#arrCyan4)"/>
+<text x="250" y="92" fill="#3dd6c4" font-size="12" font-weight="700" text-anchor="middle">SYN, seq=x</text>
+<text x="250" y="112" fill="#9290a8" font-size="9" text-anchor="middle">"আমি সংযোগ চাই"</text>
+<!-- Step 2: SYN-ACK -->
+<line x1="460" y1="150" x2="105" y2="150" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber4)"/>
+<text x="250" y="142" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle">SYN-ACK, seq=y, ack=x+1</text>
+<text x="250" y="162" fill="#9290a8" font-size="9" text-anchor="middle">"ঠিক আছে, আমি প্রস্তুত"</text>
+<!-- Step 3: ACK -->
+<line x1="100" y1="200" x2="395" y2="200" stroke="#3dd6c4" stroke-width="2.5" marker-end="url(#arrCyan4)"/>
+<text x="250" y="192" fill="#3dd6c4" font-size="12" font-weight="700" text-anchor="middle">ACK, ack=y+1</text>
+<text x="250" y="212" fill="#9290a8" font-size="9" text-anchor="middle">"নিশ্চিত করলাম, সংযোগ স্থাপিত"</text>
+<!-- Connection established banner -->
+<rect x="120" y="235" width="320" height="30" rx="15" fill="rgba(82,196,26,.1)" stroke="#52c41a" stroke-width="1.5"/>
+<text x="280" y="250" fill="#52c41a" font-size="11" font-weight="700" text-anchor="middle">✓ সংযোগ স্থাপিত — ডেটা আদান-প্রদান শুরু</text>
+</svg>
+<div class="diag-cap">Step ১: SYN (ক্লায়েন্ট অনুরোধ) · Step ২: SYN-ACK (সার্ভার স্বীকার) · Step ৩: ACK (ক্লায়েন্ট নিশ্চিত)</div>
+</div>
 
 <div class="callout info"><span class="co-icon">⚡</span><div><strong>UDP (User Datagram Protocol):</strong><br>
 কোনো সংযোগ নেই। কোনো রসিদ নেই। কোনো ক্রম নেই।<br>
@@ -293,6 +476,54 @@ doors.push({
 <strong>MX:</strong> মেইল সার্ভার ঠিকানা<br>
 <strong>TXT:</strong> যাচাইকৃত টেক্সট (SPF, DKIM)<br>
 <strong>NS:</strong> এই ডোমেইনের Authoritative সার্ভার কোনটি</div></div>
+
+<div class="diagram">
+<div class="diag-title">DNS শ্রেণীক্রম — নাম থেকে ঠিকানা</div>
+<svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrTeal5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#3dd6c4"/></marker>
+</defs>
+<!-- Root -->
+<circle cx="280" cy="35" r="28" fill="rgba(251,191,36,.15)" stroke="#fbbf24" stroke-width="2"/>
+<text x="280" y="32" fill="#fbbf24" font-size="11" font-weight="700" text-anchor="middle">Root</text>
+<text x="280" y="46" fill="#9290a8" font-size="9" text-anchor="middle">(".")</text>
+<!-- TLD level -->
+<circle cx="130" cy="120" r="24" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="1.5"/>
+<text x="130" y="118" fill="#38bdf8" font-size="10" font-weight="700" text-anchor="middle">.com</text>
+<text x="130" y="130" fill="#9290a8" font-size="8" text-anchor="middle">TLD</text>
+<circle cx="280" cy="120" r="24" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="1.5"/>
+<text x="280" y="118" fill="#38bdf8" font-size="10" font-weight="700" text-anchor="middle">.org</text>
+<text x="280" y="130" fill="#9290a8" font-size="8" text-anchor="middle">TLD</text>
+<circle cx="430" cy="120" r="24" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="1.5"/>
+<text x="430" y="118" fill="#38bdf8" font-size="10" font-weight="700" text-anchor="middle">.bn</text>
+<text x="430" y="130" fill="#9290a8" font-size="8" text-anchor="middle">TLD</text>
+<!-- Lines root→TLD -->
+<line x1="265" y1="55" x2="145" y2="100" stroke="#5e5c74" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="280" y1="63" x2="280" y2="96" stroke="#5e5c74" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="295" y1="55" x2="415" y2="100" stroke="#5e5c74" stroke-width="1" stroke-dasharray="3,3"/>
+<!-- Authoritative level -->
+<rect x="75" y="190" width="110" height="40" rx="8" fill="rgba(82,196,26,.12)" stroke="#52c41a" stroke-width="1.5"/>
+<text x="130" y="207" fill="#52c41a" font-size="10" font-weight="700" text-anchor="middle">google.com</text>
+<text x="130" y="220" fill="#9290a8" font-size="9" text-anchor="middle">142.250.190.46</text>
+<rect x="225" y="190" width="110" height="40" rx="8" fill="rgba(82,196,26,.12)" stroke="#52c41a" stroke-width="1.5"/>
+<text x="280" y="207" fill="#52c41a" font-size="10" font-weight="700" text-anchor="middle">wikipedia.org</text>
+<text x="280" y="220" fill="#9290a8" font-size="9" text-anchor="middle">208.80.154.224</text>
+<rect x="375" y="190" width="110" height="40" rx="8" fill="rgba(82,196,26,.12)" stroke="#52c41a" stroke-width="1.5"/>
+<text x="430" y="207" fill="#52c41a" font-size="10" font-weight="700" text-anchor="middle">gov.bd</text>
+<text x="430" y="220" fill="#9290a8" font-size="9" text-anchor="middle">103.108.74.40</text>
+<!-- Lines TLD→Auth -->
+<line x1="130" y1="144" x2="130" y2="190" stroke="#5e5c74" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="280" y1="144" x2="280" y2="190" stroke="#5e5c74" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="430" y1="144" x2="430" y2="190" stroke="#5e5c74" stroke-width="1" stroke-dasharray="3,3"/>
+<!-- Query flow (bottom) -->
+<rect x="30" y="265" width="500" height="45" rx="8" fill="rgba(7,10,15,.6)" stroke="rgba(61,214,196,.2)" stroke-width="1"/>
+<text x="280" y="282" fill="#3dd6c4" font-size="10" font-weight="600" text-anchor="middle">"google.com" টাইপ করো → Resolver Root-এ জিজ্ঞেস করে → ".com TLD" দেখায়</text>
+<text x="280" y="298" fill="#3dd6c4" font-size="10" text-anchor="middle">→ TLD Authoritative দেখায় → "142.250.190.46" ফলাফল</text>
+<!-- Arrows showing query path -->
+<line x1="50" y1="210" x2="130" y2="120" stroke="#3dd6c4" stroke-width="1.5" stroke-dasharray="4,2" opacity=".5"/>
+</svg>
+<div class="diag-cap">Root (১৩টি) → TLD (.com/.org/.bn) → Authoritative (প্রতিটি ডোমেইনের নিজস্ব) · Resolver প্রতিটি স্তরে জিজ্ঞেস করে</div>
+</div>
 
 <div class="verse">وَعَلَّمَ آدَمَ الْأَسْمَاءَ كُلَّهَا</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং তিনি আদমকে শিখিয়েছিলেন সমস্ত নাম।" — কুরআন ২:৩১</div>
