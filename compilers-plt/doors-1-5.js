@@ -66,6 +66,37 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Lexer = DFA। Raw text কে character-by-character পড়ে, state change করে, meaningful tokens তৈরি করে। B41 এর Chomsky Type 3।</div>
 
+<div class="code-block"><div class="code-title">🔗 Door 1 — Real Lexer: Raw Text → Token Stream</div>
+<pre><code># lex.py — A minimal lexer using regex (internally compiled to DFA)
+import re
+
+rules = [('ID', r'[a-zA-Z_]\w*'), ('NUM', r'\d+'),
+         ('EQ', r'='), ('PLUS', r'\+'), ('WS', r'\s+')]
+
+def tokenize(code):
+    tokens, pos = [], 0
+    while pos &lt; len(code):
+        for kind, pat in rules:
+            m = re.match(pat, code[pos:])
+            if m:
+                if kind != 'WS':
+                    tokens.append((kind, m.group()))
+                pos += len(m.group())
+                break
+    return tokens
+
+print(tokenize("x = 3 + 4"))</code></pre>
+<pre><code>$ python lex.py
+[('ID', 'x'), ('EQ', '='), ('NUM', '3'), ('PLUS', '+'), ('NUM', '4')]
+
+# flex (C) does the same via DFA tables:
+$ flex -t lexer.l &gt; lex.yy.c   # generates C DFA code
+$ gcc lex.yy.c -lfl -o lexer
+$ echo "x = 3 + 4" | ./lexer
+ID(x)  EQ(=)  NUM(3)  PLUS(+)  NUM(4)</code></pre>
+<span class="code-note">💡 Python re মডিউল প্রতিটা regex কে DFA তে compile করে। flex/lex একই কাজ C তে করে।</span>
+</div>
+
 <div class="dialogue"><strong>লেক্সার ইঞ্জিনিয়ার:</strong> লেক্সিং হল কম্পাইলারের প্রথম কাজ। র কোড হল শুধু text — একটা সারি character। আমার কাজ হল সেই text কে meaningful chunks এ ভাগ করা। <code>x</code> হল identifier, <code>=</code> হল operator, <code>3</code> হল number। আমি এটা করি finite state machine দিয়ে — ঠিক যেটা B41 Theory of Computation-এ শিখেছ। Regular expression কে DFA তে compile করা হয়, DFA প্রতিটা character পড়ে state change করে, accepting state এ পৌঁছালে token emit করে।</div>`,
   recall: [
     { q: "Lexer আর Parser এর মধ্যে পার্থক্য কী?", a: "Lexer = text কে tokens এ ভাগ করে (DFA দিয়ে)। Parser = tokens গুলো কে hierarchical AST তে সাজায়।" },
@@ -144,6 +175,45 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Parser = flat token list কে hierarchical AST তে রূপান্তর করে। <code>x = 3 + 4</code> → tree যেখানে + আগে evaluate হয়।</div>
 
+<div class="code-block"><div class="code-title">🌳 Door 2 — Real Parser: Token Stream → AST</div>
+<pre><code># parse_demo.py — Python's parser builds an AST from source
+import ast
+
+tree = ast.parse("x = 3 + 4")
+print(ast.dump(tree, indent=2))
+
+# Output — note the hierarchy (Add nested inside Assign):
+#
+# Module(body=[
+#   Assign(
+#     targets=[ Name(id='x', ctx=Store()) ],
+#     value=BinOp(
+#       left=Constant(value=3),
+#       op=Add(),
+#       right=Constant(value=4)
+#     )
+#   )
+# ])
+
+# The tree says: first evaluate 3+4, THEN assign to x.
+# That precedence is encoded in the tree structure!</code></pre>
+<pre><code># Recursive descent parser (hand-written):
+# def parse_assign():
+#     name = expect('ID')
+#     expect('EQ')
+#     expr = parse_expr()        # parse 3 + 4
+#     return Assign(name, expr)
+#
+# def parse_expr():
+#     left = expect('NUM')
+#     while peek() == 'PLUS':    # left-associative
+#         consume('PLUS')
+#         right = expect('NUM')
+#         left = BinOp(left, Add(), right)
+#     return left</code></pre>
+<span class="code-note">💡 AST = flat tokens এর উপর hierarchical গঠন। Operation precedence tree structure এ encode থাকে।</span>
+</div>
+
 <div class="dialogue"><strong>পার্সার ইঞ্জিনিয়ার:</strong> পার্সিং হল বাক্যের গঠন বোঝা। Token list flat — কিন্তু কোডের অর্থ hierarchical। <code>x = 3 + 4</code> মানে প্রথমে ৩ আর ৪ যোগ হবে, তারপর x তে assign হবে। Parser এই hierarchy কে tree তে প্রকাশ করে। একে বলে AST — Abstract Syntax Tree। Recursive descent parser প্রতিটা grammar rule এর জন্য একটা function লেখে। PEG parser ordered choice ব্যবহার করে। LR parser bottom-up চলে। কিন্তু সবার লক্ষ্য এক — tree তৈরি করা।</div>`,
   recall: [
     { q: "AST কী এবং কেন দরকার?", a: "Abstract Syntax Tree — কোডের hierarchical গঠন। Flat tokens এ অর্থ নেই, tree তে operation order স্পষ্ট হয় (precedence, associativity)।" },
@@ -163,6 +233,37 @@ doors.push({
   secret: "Parser শুধু syntax check করে। Semantic analysis meaning check করে — type, scope, existence।",
   story: `<p class="scene-setting">Parser বলল — এই code টা syntactically valid, tree তৈরি হয়েছে। কিন্তু এটা কি অর্থপূর্ণ? <code>int x = "hello" + true;</code> — syntax ঠিক আছে (types match grammar)। কিন্তু অর্থ ভুল — string এর সাথে boolean যোগ করা যায় না। এই "meaning" check করাই semantic analysis। Django তে এটা <code>serializer.is_valid()</code> এর মতো।</p>
 <p class="scene-setting en">Parser validates syntax (grammar). Semantic analysis validates meaning — scope resolution, type checking, variable existence. In Hindley-Milner type systems, Algorithm W solves type constraints via unification.</p>
+
+<div class="code-block"><div class="code-title">🔍 Door 3 — Real Semantic Analysis: Type Checking</div>
+<pre><code>// types.c — syntactically valid, semantically WRONG
+struct Foo { int a; };
+
+int main() {
+    struct Foo f;
+    int x = f + 42;   // struct + int makes no sense!
+    return x;
+}</code></pre>
+<pre><code>// Parser accepts this (grammar is fine).
+// Semantic analyzer REJECTS it:
+
+$ gcc -c types.c
+types.c: In function 'main':
+types.c:5:15: error: invalid operands to binary +
+    (have 'struct Foo' and 'int')
+    5 |     int x = f + 42;
+      |               ^ ~</code></pre>
+<pre><code># Python's type checker (mypy) does the same:
+# types.py
+def add(a: int, b: int) -&gt; int:
+    return a + b
+
+add(3, "hello")   # passing string for int
+
+$ mypy types.py
+types.py:4: error: Argument 2 to "add" has incompatible
+  type "str"; expected "int"</code></pre>
+<span class="code-note">💡 Syntax = grammar ঠিক আছে কিনা। Semantic = অর্থ ঠিক আছে কিনা (type, scope, existence)।</span>
+</div>
 
 <div class="dialogue"><strong>সেমান্টিক ইঞ্জিনিয়ার:</strong> আমার কাজ হল অর্থ যাচাই করা। পার্সার বলল code টা ঠিক আছে grammatically। কিন্তু এটা কি logically correct? Variable টা declare করা আছে কি না? Type গুলো match করে কি না? Function টা exist করে কি না? আমি AST কে walk করে প্রতিটা node যাচাই করি। Hindley-Milner type system এ Algorithm W ব্যবহার করে type inference করি — সমীকরণ সমাধানের মতো। যদি contradiction পাই — type error!</div>`,
   recall: [
@@ -214,6 +315,47 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: SSA — প্রতিটা variable একবারই assign। if/else merge এ φ function বসে যে choose করে কোন version। এটাই LLVM/GCC/V8 এর ভিত্তি।</div>
+
+<div class="code-block"><div class="code-title">🔤 Door 4 — Real SSA: LLVM IR Output</div>
+<pre><code>// ssa.c — simple C code with if/else
+int f(int cond) {
+    int x;
+    if (cond)
+        x = 2;
+    else
+        x = 3;
+    return x;
+}
+
+# Compile to LLVM IR (SSA form) — see the phi node:
+$ clang -S -emit-llvm ssa.c -o ssa.ll</code></pre>
+<pre><code>; ssa.ll — LLVM IR in SSA form. Each value defined ONCE.
+define i32 @f(i32 %cond) {
+entry:
+  %tobool = icmp ne i32 %cond, 0
+  br i1 %tobool, label %if.then, label %if.else
+
+if.then:
+  br label %if.end
+
+if.else:
+  br label %if.end
+
+if.end:
+  ; PHI NODE — picks x_2 or x_3 based on which branch ran:
+  %x.0 = phi i32 [ 2, %if.then ], [ 3, %if.else ]
+  ret i32 %x.0
+}</code></pre>
+<pre><code># Python's bytecode is NOT SSA, but Cython/numba translate to SSA.
+# GCC dumps SSA via -fdump-tree-ssa:
+$ gcc -O1 -fdump-tree-ssa ssa.c -o /dev/null
+$ cat ssa.c.031t.ssa
+  x_4 = 2;
+  x_5 = 3;
+  # x_1 = PHI &lt;x_4(2), x_5(3)&gt;   &lt;-- SSA merge!
+  return x_1;</code></pre>
+<span class="code-note">💡 SSA তে প্রতিটা variable একবারই define হয়। if/else merge এ φ (phi) node বসে — LLVM, GCC সবাই এটা ব্যবহার করে।</span>
+</div>
 
 <div class="dialogue"><strong>এসএসএ ইঞ্জিনিয়ার:</strong> SSA হল modern compiler এর ভিত্তি। কেন? কারণ যখন প্রতিটা variable একবারই assign হয়, optimizer সহজে dead code detect করতে পারে, constant fold করতে পারে, duplicate eliminate করতে পারে। φ function হল জাদুর সেতু — if শাখা থেকে এলে x_2, else শাখা থেকে এলে x_3। এটা শুধু mathematical representation — real machine instruction নয়। Codegen এর সময় move instruction এ convert হয়।</div>`,
   recall: [
@@ -295,6 +437,49 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: ৫টা optimization pass — constant folding, dead code elimination, inlining, strength reduction, loop unrolling। কম্পাইলার তোমার কোড থেকে অদরকারি সরিয়ে দ্রুত করে।</div>
+
+<div class="code-block"><div class="code-title">✨ Door 5 — Real Optimization: Before &amp; After</div>
+<pre><code>// opt.c — C code the compiler will optimize
+int square(int x) { return x * x; }
+
+int demo(int a) {
+    int y = square(a) + 1;   // function call
+    int z = 3 * 4 + 5;       // constant expr
+    int w = a * 8;           // multiply by power of 2
+    return y + z + w;
+}
+
+# Compare -O0 (no opt) vs -O3 (aggressive):
+$ gcc -S -O0 opt.c -o opt_O0.s
+$ gcc -S -O3 opt.c -o opt_O3.s
+$ wc -l opt_O0.s opt_O3.s
+   42 opt_O0.s
+   18 opt_O3.s   &lt;-- less than half the instructions!</code></pre>
+<pre><code># Constant folding: "3 * 4 + 5" becomes "17" at compile time.
+# Strength reduction: "a * 8" becomes "a &lt;&lt; 3" (bit shift).
+# Inlining: square(a) body copied inline — no call overhead.
+
+# GCC dump shows each optimization pass:
+$ gcc -O3 -fdump-tree-all opt.c -o /dev/null
+$ ls *opt*
+opt.c.031t.ssa      # SSA form
+opt.c.034t.einline  # early inlining
+opt.c.043t.vrp1     # value range propagation
+opt.c.061t.cddce1   # dead code elimination
+
+# In opt_O3.s — square() is GONE (inlined), no multiply by 8:
+#     leal    (%rdi,%rdi), %eax   # a*3 via add (strength reduced)
+#     imull   %edi, %edi          # a*a inlined
+#     ...</code></pre>
+<pre><code># Python's peephole optimizer does constant folding too:
+&gt;&gt;&gt; import dis
+&gt;&gt;&gt; dis.dis(compile("x = 3 * 4 + 5", "&lt;str&gt;", "exec"))
+  1           0 LOAD_CONST 0 (17)   # &lt;-- already folded to 17!
+              2 STORE_NAME 0 (x)
+              4 LOAD_CONST 1 (None)
+              6 RETURN_VALUE</code></pre>
+<span class="code-note">💡 তুমি যা লেখো আর কম্পাইলার যা চালায় — দুটো আলাদা! <code>-O0</code> আর <code>-O3</code> compare করে দেখো।</span>
+</div>
 
 <div class="dialogue"><strong>অপটিমাইজার ইঞ্জিনিয়ার:</strong> তুমি যা লেখো আর কম্পাইলার যা চালায় — দুটো আলাদা! Constant folding — <code>3*4+5</code> হয়ে যায় <code>17</code>। Dead code elimination — <code>if False</code> branch পুরোই মুছে যায়। Inlining — function call কে body দিয়ে replace করা হয়, call overhead শূন্য। Strength reduction — multiply কে bit shift দিয়ে replace। Loop unrolling — loop কে সোজা sequence তে লেখা। এগুলো তুমি দেখো না — কম্পাইলার চুপচাপ করে দেয়। Django তে এটা <code>{% cache %}</code> আর feature flag removal এর মতো।</div>`,
   recall: [

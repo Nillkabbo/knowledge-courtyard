@@ -48,6 +48,36 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Query-based = poll করা (ধীর, DELETE মিস)। Log-based = binlog পড়া (দ্রুত, সম্পূর্ণ)। Debezium প্রতিটা event Kafka-তে পাঠায়।</div>
 
+<div class="code-block">
+<div class="code-title">📡 CDC — Debezium MySQL Connector / binlog থেকে Kafka</div>
+<pre># 1. MySQL-এ binlog চালু করো (my.cnf)
+[mysqld]
+server-id         = 1
+log_bin           = mysql-bin
+binlog_format     = ROW
+binlog_row_image  = FULL
+
+# 2. Kafka Connect-এ Debezium connector রেজিস্টার করো (POST)
+curl -X POST http://connect:8083/connectors -H "Content-Type: application/json" -d '{
+  "name": "ledgerpilot-txns",
+  "config": {
+    "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+    "database.hostname": "mysql.ledgerpilot",
+    "database.port": "3306",
+    "database.user": "debezium",
+    "database.password": "secret",
+    "database.server.id": "184054",
+    "database.include.list": "ledgerpilot",
+    "table.include.list": "ledgerpilot.transactions",
+    "database.history.kafka.topic": "schema-changes.ledgerpilot",
+    "database.history.kafka.bootstrap.servers": "kafka:9092"
+  }
+}'
+
+# প্রতিটা row-change এভাবে Kafka-তে যায় (INSERT/UPDATE/DELETE — সবই)
+# {"op":"c","before":null,"after":{"id":42,"amount":5000,"status":"paid"}}</pre>
+</div>
+
 <div class="dialogue"><strong>ডেবেজিয়াম ইঞ্জিনিয়ার:</strong> তুমি LedgerPilot-এ একটা transaction delete করলে। Query-based CDC সেটা কখনো জানতে পারবে না — কারণ row আর নেই! কিন্তু binlog-এ লেখা আছে "DELETE FROM transactions WHERE id=42"। Debezium এই binlog সরাসরি পড়ে — প্রতিটা event মিলিসেকেন্ডে ধরে, Kafka-তে পাঠায়। Sub-second latency, production DB-তে শূন্য load।</div>`,
   recall: [
     { q: "Log-based CDC কেন DELETE ধরতে পারে কিন্তু query-based পারে না?", a: "Log-based binlog/WAL পড়ে যেখানে DELETE event লেখা থাকে। Query-based row poll করে — deleted row আর নেই!" },
@@ -129,6 +159,31 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Kafka Topic = ৩টা partition। Consumer Group = ৩টা consumer। প্রত্যেকে এক partition পড়ে — duplicate নয়। Consumer মরলে rebalance হয়।</div>
+
+<div class="code-block">
+<div class="code-title">🌊 Kafka CLI — Topic, Producer, Consumer / নদী তৈরি ও পড়া</div>
+<pre># Topic তৈরি: ৩টা partition, replication 3 (KRaft mode — কোনো ZooKeeper নেই)
+kafka-topics.sh --bootstrap-server kafka:9092 \
+  --create --topic transactions \
+  --partitions 3 --replication-factor 3
+
+# Producer: নদীতে event ছাড়ো (key একই partition-এ যায় → ordering ঠিক থাকে)
+echo '{"id":42,"amount":5000,"customer_id":7}' | \
+  kafka-console-producer.sh --bootstrap-server kafka:9092 \
+    --topic transactions \
+    --property "parse.key=true" \
+    --property "key.separator=,"
+
+# Consumer Group: প্রতিটা partition ঠিক একজন পড়ে — duplicate নয়
+kafka-console-consumer.sh --bootstrap-server kafka:9092 \
+  --topic transactions \
+  --group ledgerpilot-analytics \
+  --from-beginning \
+  --property print.key=true \
+  --property key.separator=" :: "
+
+# কেউ মরলে rebalance: partition অন্য consumer-কে চলে যায়</pre>
+</div>
 
 <div class="dialogue"><strong>কাফকা ইঞ্জিনিয়ার:</strong> LinkedIn ২০১১ সালে Kafka তৈরি করেছিল — একটা সহজ আইডিয়া দিয়ে। Append-only log। পানি নদীতে কখনো উল্টে ফেরে না — সবসময় সামনে বয়। একইভাবে Kafka-তে event কখনো মুছবে না বা পরিবর্তন করবে না। শুধু append। একটা Topic অনেকগুলো partition-এ ভাগ — প্রতিটায় ordering নিশ্চিত। Consumer Group-এর প্রত্যেক consumer একটা partition পড়ে — duplicate হবে না। কেউ মরলে rebalance হয় — partition অন্যকে দেওয়া হয়।</div>`,
   recall: [
@@ -214,6 +269,29 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: ETL = transform app server-এ (ধীর)। ELT = transform warehouse-এ (দ্রুত)। dbt = modular SQL + Git + testing।</div>
 
+<div class="code-block">
+<div class="code-title">🔧 dbt — SQL-এর জন্য React components / modular models</div>
+<pre>-- models/staging/stg_customers.sql  (Jinja + ref → dependency graph)
+SELECT id,
+       name,
+       region
+FROM   {{ source('raw', 'customers') }}
+WHERE  deleted_at IS NULL
+
+-- models/marts/fct_sales.sql       (dbt বুঝে নেয় stg_* আগে চলবে)
+SELECT c.region,
+       SUM(s.amount) AS revenue
+FROM   {{ ref('stg_customers') }} AS c
+JOIN   {{ ref('stg_orders') }}    AS s
+       ON c.id = s.customer_id
+GROUP  BY c.region</pre>
+<pre># রান করো: DAG অনুযায়ী dependency order-এ তৈরি হয়
+dbt run                 # stg_customers → stg_orders → fct_sales
+dbt test                # not_null, unique, accepted_values যাচাই
+dbt docs generate       # অটো documentation
+dbt build               # run + test + seed একসাথে</pre>
+</div>
+
 <div class="dialogue"><strong>ডিবিটি ইঞ্জিনিয়ার:</strong> dbt = data build tool। তুমি SQL <code>SELECT</code> statement লেখো — Jinja template দিয়ে। dbt স্বয়ংক্রিয়ভাবে dependency graph বুঝে নেয়, কোন model আগে run করতে হবে সেটা ঠিক করে। Version control (Git), testing (not_null, unique), documentation — সব আছে। এটা SQL-এর জন্য React component architecture এর মতো।</div>`,
   recall: [
     { q: "ETL vs ELT — পার্থক্য কী?", a: "ETL = Extract → Transform (app server) → Load। ELT = Extract → Load (raw) → Transform (warehouse-এ)। Modern warehouse-এ compute বেশি তাই ELT সস্তা ও দ্রুত।" },
@@ -284,6 +362,31 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Lakehouse = সস্তা storage (Parquet on S3) + metadata layer (Iceberg/Delta)। একই ডেটা Spark, Trino, Snowflake সবাই পড়ে।</div>
+
+<div class="code-block">
+<div class="code-title">🏠 Apache Iceberg — S3-এ ACID table / lakehouse DDL</div>
+<pre>-- Iceberg টেবিল তৈরি (Spark SQL / Trino — Parquet + metadata layer)
+CREATE TABLE warehouse.fact_sales (
+    transaction_id BIGINT,
+    product_id     BIGINT,
+    customer_id    BIGINT,
+    amount         DECIMAL(18, 2),
+    sale_date      DATE
+) USING iceberg
+PARTITIONED BY (days(sale_date))
+TBLPROPERTIES ('write.format.default'='parquet',
+               'format-version'='2');
+
+-- Time travel: গতকালের snapshot দেখো
+SELECT * FROM warehouse.fact_sales.snapshots;        -- সব version-এর তালিকা
+SELECT * FROM warehouse.fact_sales
+  FOR VERSION AS OF 1234567890;                       -- পুরোনো অবস্থা
+
+-- Schema evolution: নতুন কলাম — কোনো ফাইল rewrite ছাড়াই
+ALTER TABLE warehouse.fact_sales ADD COLUMN currency STRING;
+
+-- একই টেবিল Spark, Trino, DuckDB, Snowflake — সবাই পড়তে পারে (vendor lock-in নেই)</pre>
+</div>
 
 <div class="dialogue"><strong>লেকহাউস আর্কিটেক্ট:</strong> একসময় data lake ছিল "data swamp" — ফাইল আছে কিন্তু ACID নেই, concurrent write নেই, update পারবে না। Iceberg, Delta, Hudi এসে সমাধান করল — metadata layer বসিয়ে। Parquet ফাইল সস্তা storage-এ থাকে, metadata layer ACID আর time travel দেয়। আর সবচেয়ে বড় জিনিস — তুমি একই ডেটা Spark, Trino, Snowflake, DuckDB দিয়ে পড়তে পারো। Vendor lock-in নেই।</div>`,
   recall: [
@@ -356,6 +459,36 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: LedgerPilot Data Engineering Roadmap — Phase 1 (DuckDB+Parquet) → Phase 2 (CDC+Iceberg) → Phase 3 (Full Lakehouse+dbt)।</div>
+
+<div class="code-block">
+<div class="code-title">🏗️ Phase 1 Pipeline — DuckDB + Parquet / $0 cluster ছাড়াই</div>
+<pre># LedgerPilot: Django management command → daily export → DuckDB analytics
+import duckdb
+
+con = duckdb.connect()                      # single process, কোনো server নেই
+
+# MySQL → Parquet (সরাসরি COPY — কোনো Spark লাগে না)
+con.execute("""
+    ATTACH 'mysql://user:pass@host/ledgerpilot' AS mysql (TYPE mysql);
+    COPY (SELECT * FROM mysql.transactions
+          WHERE created_at &gt;= CURRENT_DATE - INTERVAL '1' DAY)
+    TO 's3://ledger-parquet/sales/dt=2026-07-26.parquet'
+    (FORMAT PARQUET, COMPRESSION SNAPPY);
+""")
+
+# Analytics: অনেক Parquet ফাইলের উপর সরাসরি SQL — আলাদা load step নেই
+con.sql("""
+    SELECT category,
+           SUM(amount) AS revenue,
+           COUNT(*)    AS n
+    FROM read_parquet('s3://ledger-parquet/sales/*.parquet')
+    WHERE sale_date &gt;= DATE '2026-01-01'
+    GROUP BY category
+    ORDER BY revenue DESC
+""").show()
+
+# 100GB পর্যন্ত single server-ে চলে — Spark cluster এখনো দরকার নেই</pre>
+</div>
 
 <div class="dialogue"><strong>স্থপতি:</strong> তুমি এখন বোঝো — LedgerPilot-এর জন্য DuckDB যথেষ্ট। কোনো Spark cluster লাগবে না। Django management command দিয়ে daily Parquet export করো, DuckDB দিয়ে SQL analytics চালাও। যখন transactions ১ মিলিয়ন ছাড়বে, তখন Debezium + Iceberg। Spark এখনো দরকার নেই — DuckDB single server-এ ১০০GB পর্যন্ত চালাতে পারে। এটাই practical wisdom — সব সরঞ্জাম নয়, সঠিক সরঞ্জাম।</div>`,
   recall: [

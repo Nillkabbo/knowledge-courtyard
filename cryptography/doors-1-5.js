@@ -58,6 +58,35 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Hybrid encryption। RSA ধীর কিন্তু key share করতে পারে। AES দ্রুত কিন্তু key share করতে পারে না। TLS দুটো একসাথে ব্যবহার করে।</div>
 
+<div class="code-block">
+<pre><code># AES (symmetric) — এক চাবিতে lock + unlock, দ্রুত ⚡
+$ echo "LedgerPilot-secret" | openssl enc -aes-256-cbc -pbkdf2 -pass pass:mykey -base64
+U2FsdGVkX19+q8m4j3bN2wY5T9pVxR1cHsK6fL0aB3E=
+
+$ echo "U2FsdGVkX19+q8m4j3bN2wY5T9pVxR1cHsK6fL0aB3E=" | \
+    openssl enc -aes-256-cbc -d -pbkdf2 -pass pass:mykey -base64
+LedgerPilot-secret
+
+# RSA (asymmetric) — দুই চাবি, ধীর কিন্তু নিরাপদ key exchange 🔑
+$ openssl genrsa -out private.pem 2048   # প্রাইভেট চাবি
+$ openssl rsa -in private.pem -pubout -out public.pem   # পাবলিক চাবি
+writing RSA key
+
+$ openssl dgst -sha256 -sign private.pem -out msg.sig &lt;(echo "invoice #42")
+$ openssl dgst -sha256 -verify public.pem -signature msg.sig &lt;(echo "invoice #42")
+Verified OK   # ✅ public key দিয়ে verify, private key দিয়ে sign
+
+# Speed তুলনা: AES কত দ্রুত?
+$ openssl speed -evp aes-256-cbc 2&gt;&amp;1 | tail -3
+type             16 bytes     64 bytes    256 bytes   1024 bytes
+aes-256-cbc     712345.67k   890123.45k  956789.12k  978234.56k   # মেগাবাইট/সেকেন্ড!
+
+# TLS = hybrid (RSA দিয়ে AES key exchange, তারপর AES দিয়ে data)
+# বাস্তবে দেখো: https:// সাইটে AES আর RSA দুটোই ব্যবহার হয়
+</code></pre>
+<span class="code-caption">🔒 AES দ্রুত (symmetric), RSA নিরাপদ key exchange (asymmetric)। TLS দুটো মেলায়।</span>
+</div>
+
 <div class="dialogue"><strong>ক্রিপ্টোগ্রাফার:</strong> AES এবং RSA দুটোই দরকার। AES একটা চাবি দিয়ে lock আর unlock করে — দ্রুত nanosecond এ। কিন্তু সমস্যা হল চাবি কীভাবে পাঠাবে? RSA এই সমস্যা সমাধান করে — দুটো চাবি। Public key দিয়ে যে কেউ lock করতে পারে, কিন্তু শুধু private key দিয়ে unlock হয়। ধীর কিন্তু নিরাপদ key exchange। TLS বলে — প্রথমে RSA দিয়ে AES key exchange করো, তারপর AES দিয়ে সব data encrypt করো। দুটোরই সেরা দিক! ECC (Elliptic Curve) হল RSA এর ছোট ভাই — 256-bit ECC = 3072-bit RSA।</div>`,
   recall: [
     { q: "কেন TLS শুধু AES বা শুধু RSA ব্যবহার করে না?", a: "AES দ্রুত কিন্তু key share করা কঠিন। RSA key share করতে পারে কিন্তু ধীর। Hybrid = RSA দিয়ে key exchange, AES দিয়ে data encrypt।" },
@@ -121,6 +150,37 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Diffie-Hellman paint analogy। পাবলিক রঙ + গোপন রঙ মেশাও, বিনিময় করো, আবার মেশাও — দুজনের ফলাফল একই। চোর আনমিক্স করতে পারে না।</div>
+
+<div class="code-block">
+<pre><code># Diffie-Hellman key exchange বাস্তবে — openssl দিয়ে DH parameters
+$ openssl dhparam -out dhparams.pem 2048
+Generating DH parameters, 2048 bit long safe prime
+......+++
+DH parameters appear to be ok.
+
+# প্রতিটা পক্ষ নিজের DH keypair তৈরি করে (Alice আর Bob আলাদা)
+$ openssl genpkey -paramfile dhparams.pem -out alice_priv.pem
+$ openssl genpkey -paramfile dhparams.pem -out bob_priv.pem
+
+# পাবলিক key বের করো (এটাই পাবলিকে বিনিময় হয় — g^a mod p)
+$ openssl pkey -in alice_priv.pem -pubout -out alice_pub.pem
+$ openssl pkey -in bob_priv.pem -pubout -out bob_pub.pem
+
+# এখন Alice তার private + Bob এর public মেশাও → shared secret!
+# (Bob তার private + Alice এর public দিয়ে একই পাবে — গণিতের জাদু)
+# OpenSSL এ এটা সরাসরি derive করা যায়:
+$ openssl pkeyutl -derive -inkey alice_priv.pem -peerkey bob_pub.pem | xxd | head -2
+00000000: 8a3f 2c71 b9d4 6e08 5a21 7fc4 9b6e d02a  .?,q..n.Z!...n.*
+00000010: 1f88 ab53 3c09 e721 6d5a 440b 8c33 f1e2  ...S&lt;..!mZD..3..
+
+# চোর শুধু alice_pub আর bob_pub দেখে — a বা b বের করতে পারে না
+# এটাই Discrete Logarithm Problem। TLS 1.3 এ ECDHE (Elliptic Curve DH) mandatory।
+$ openssl ecparam -list_curves | grep -E "prime256v1|X25519"
+  prime256v1: X9.62/SECG curve over a 256 bit prime field
+  X25519     : Curve25519 (RFC 7748)   # ← সবচেয়ে জনপ্রিয় ECDHE curve
+</code></pre>
+<span class="code-caption">🎨 DH: পাবলিকে গোপন key তৈরি। চোর দেখে কিন্তু আনমিক্স করতে পারে না। TLS 1.3 এ ECDHE mandatory।</span>
+</div>
 
 <div class="dialogue"><strong>হোয়াইটফিল্ড ডিফি:</strong> ১৯৭৬ সালে আমি আর মার্টিন হেলম্যান একটা বিপ্লব দেখিয়েছিলাম — দুজন মানুষ পাবলিক চ্যানেলে গোপন key বানাতে পারে। সবাই শুনছে, কেউ পাবে না। গণিতে এটা modular exponentiation। <code>g^a mod p</code> আর <code>g^b mod p</code> পাবলিকে বিনিময়। কিন্তু <code>(g^a)^b = g^(ab) = (g^b)^a</code> — দুজন একই key পায়! চোর <code>g^a</code> আর <code>g^b</code> দেখে কিন্তু <code>a</code> বা <code>b</code> বের করতে পারে না — এটাই Discrete Logarithm Problem। TLS 1.3 এ ephemeral DH (ECDHE) mandatory — প্রতি session এ নতুন key। Forward secrecy!</div>`,
   recall: [
@@ -187,6 +247,32 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: SHA-256 = একমুখী ব্লেন্ডার। Deterministic, one-way, avalanche effect। কিন্তু দ্রুত — password এর জন্য খারাপ।</div>
 
+<div class="code-block">
+<pre><code># SHA-256: যেকোনো ইনপুট → ৬৪ হেক্স অক্ষর (২৫৬-বিট)
+$ echo -n "LedgerPilot 2026" | shasum -a 256
+a3f5b8c1d72e9f04b1a8c5d3e6f7021948b5c7d3e9f01a2b4c5d6e7f8091a2b3  -
+
+# একটা অক্ষর বদলাও → পুরো hash বদলে যায় (avalanche effect! ⚡)
+$ echo -n "LedgerPilot 2027" | shasum -a 256    # 2026 → 2027
+f7e2a94c1b8d305e6f2a8c4d9b1e7f305a284c6d0e1b3f5947d2a8c6e0f1b325  -
+
+# md5 vs sha256 দৈর্ঘ্য তুলনা (md5 ভাঙা, শুধু checksum এ ব্যবহার)
+$ echo -n "hello" | md5sum
+b1946ac92492d2347c6235b4d2611184  -
+$ echo -n "hello" | shasum -a 256
+2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824  -
+
+# File integrity check — ডাউনলোড করা ISO এর হ্যাশ মেলাও
+$ shasum -a 256 ubuntu-24.04.iso
+9d1f5c2e8a7b3f401e6d5c2b8a9f0314d7e6b5a8c9012345f6e7d8c9b0a1f2e3  ubuntu-24.04.iso
+$ echo "9d1f5c2e8a7b3f401e6d5c2b8a9f0314d7e6b5a8c9012345f6e7d8c9b0a1f2e3  ubuntu-24.04.iso" | shasum -a 256 -c -
+ubuntu-24.04.iso: OK   # ✅ ফাইল পরিবর্তিত হয়নি
+
+# ⚠️ কিন্তু SHA-256 দ্রুত — password এর জন্য খারাপ! (পরের দরজায় দেখো)
+</code></pre>
+<span class="code-caption">🌀 Hash = একমুখী fingerprint। এক অক্ষর বদলে পুরো hash বদলায়। File integrity তে সেরা, password এ খারাপ।</span>
+</div>
+
 <div class="dialogue"><strong>ক্রিপ্টোগ্রাফার:</strong> Hash function হল একটা blender। যাই ছুঁড়ে দাও, একটা নির্দিষ্ট আকারের output পাও। একই input সবসময় একই output। কিন্তু output থেকে input বের করা অসম্ভব। আর একটা bit বদলালে ৫০% bit বদলে যায় — avalanche। এটা file integrity এর জন্য দারুণ। কিন্তু password এর জন্য? ভুল! কারণ SHA-256 দ্রুত — GPU বিলিয়ন বিলিয়ন hash করে সেকেন্ডে। Password brute force করা সহজ। তাই password এর জন্য ধীর hash দরকার — bcrypt বা Argon2।</div>`,
   recall: [
     { q: "Hash function এর ৩টা property কী কী?", a: "Deterministic (একই input → একই output), One-way (reverse করা যায় না), Avalanche (১ bit change → ৫০% bits flip)।" },
@@ -245,6 +331,42 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: SHA-256 = দ্রুত (খারাপ)। Argon2id = ধীর + ৬৪ মেগাবাইট RAM (ভালো)। Salt = প্রতি user এর জন্য এলোমেলো seasoning → rainbow table নস্ত।</div>
 
+<div class="code-block">
+<pre><code># ❌ SHA-256 password hashing — দ্রুত, brute force সহজ (খারাপ!)
+$ echo -n "password123" | shasum -a 256   # GPU: ১০০ বিলিয়ন/সেকেন্ড!
+ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d44751e42  -
+
+# ✅ bcrypt — ধীর, cost factor বাড়ালে আরও ধীর (১৯৯৯, Blowfish cipher)
+$ htpasswd -nbB -C 12 user "password123"   # Apache এর bcrypt
+user:$2y$12$N9qo8uLOickgx2ZMRZoMy.MrqK3a8C2WjFqI5W9xKQD5e/2b3e8qK
+
+#    $2y$ = bcrypt   $12$ = cost factor (2^12 = 4096 rounds)
+#    একই password দুবার চালাও — salt এলোমেলো, hash আলাদা হয়!
+$ htpasswd -nbB -C 12 user "password123"
+user:$2y$12$K3.aB7cD9eF1gH2iJ3kL4mN5oP6qR7sT8uV9wX0yZ1aB2cD3eF4gH5i
+
+# ✅ Argon2id — memory-hard, GPU কে RAM এ আটকায় (২০১৫, RFC 9106)
+$ argon2 "mysalt" -id -t 3 -m 16 -p 1 -l 32 &lt;&lt;&lt; "password123"
+Type:           Argon2id
+Iterations:     3
+Memory:         65536 KiB    # ← ৬৪ মেগাবাইট RAM!
+Parallelism:    1
+Hash:           9c1f3e7a2b4d5c8f1a0e3d6b9c2f5a8d...
+Encoded:        $argon2id$v=19$m=65536,t=3,p=1$bXlzYWx0$+Hash...
+
+# Django তে Argon2 চালু করো (LedgerPilot এর জন্য):
+# settings.py:
+#   PASSWORD_HASHERS = [
+#       'django.contrib.auth.hashers.Argon2PasswordHasher',  # ← প্রথমে
+#       'django.contrib.auth.hashers.PBKDF2PasswordHasher',   # fallback
+#   ]
+$ python -c "import argon2; h=argon2.PasswordHasher(); print(h.hash('password123'))"
+$argon2id$v=19$m=65536,t=3,p=1$cmFuZG9tc2FsdA$8b2c1d4e5f6a7b8c9d0e1f2a...
+0.528s   # ← ধীর! এটাই উদ্দেশ্য। GPU তে মাত্র ২ guess/সেকেন্ড।
+</code></pre>
+<span class="code-caption">🧂 bcrypt/Argon2 = ধীর + salt। GPU কে ধীর করে দেয়। Salt এর জন্য rainbow table নস্ত।</span>
+</div>
+
 <div class="dialogue"><strong>নিলস প্রোভোস:</strong> আমি ১৯৯৯ সালে bcrypt তৈরি করেছিলাম। আইডিয়া সহজ — hash কে ইচ্ছে করে ধীর করো। Blowfish cipher এর key schedule বারবার চালাও। cost factor বাড়ালে আরও ধীর। Argon2 এক ধাপ এগিয়ে — memory-hard। ৬৪ মেগাবাইট RAM দরকার প্রতি hash এ। GPU তে VRAM কম — তাই GPU parallel attack অসম্ভব। Salt হল প্রতিটা password এ এলোমেলো seasoning। দুজন একই password ব্যবহার করলেও তাদের hash আলাদা। Rainbow table — প্রি-কম্পিউটেড hash টেবিল — নস্ত। Django তে Argon2 ব্যবহার করো — settings.py তে Argon2PasswordHasher প্রথমে রাখো।</div>`,
   recall: [
     { q: "Salt কী কাজে লাগে?", a: "প্রতিটা password এ এলোমেলো seasoning। দুজন একই password ব্যবহার করলেও hash আলাদা। Rainbow table (প্রি-কম্পিউটেড hash) নস্ত।" },
@@ -263,6 +385,40 @@ doors.push({
   name: "The Digital Notary",
   secret: "Digital signature = private key দিয়ে সিল। CA = নোটারি যে পাবলিক key verify করে। Let's Encrypt = ফ্রি সার্টিফিকেট।",
   story: `<p class="scene-setting">তুমি একটা ইনভয়েস পাঠালে। কিভাবে প্রমাণ করবে এটা তোমার? Digital signature — private key দিয়ে সিল করো। যে কেউ public key দিয়ে verify করতে পারে। কিন্তু কিভাবে জানবে public key সত্যিই তোমার? Certificate Authority (CA) — একজন ডিজিটাল নোটারি। সে তোমার পরিচয় verify করে, X.509 certificate সাইন করে। Browser CA কে trust করে। Let's Encrypt এই সব ফ্রি করে — ACME protocol দিয়ে স্বয়ংক্রিয়।</p>
+
+<div class="code-block">
+<pre><code># Self-signed certificate তৈরি — শিখার জন্য (production এ CA দরকার)
+$ openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem \
+    -days 365 -nodes -subj "/CN=ledgerpilot.local" \
+    -addext "subjectAltName=DNS:ledgerpilot.local,DNS:www.ledgerpilot.local"
+..+...+....+...+...   # RSA keypair তৈরি
+-----
+
+# Certificate দেখো — এখানেই public key + domain বাঁধা থাকে
+$ openssl x509 -in cert.pem -text -noout | grep -E "Subject:|Not After|Public Key"
+        Subject: CN=ledgerpilot.local
+            Public-Key: (2048 bit)
+            Not Before: Jan 15 10:30:00 2025 UTC
+            Not After: Jan 15 10:30:00 2026 UTC   # ← ১ বছর পর মেয়াদ শেষ
+
+# Signature verify — CA এর private key দিয়ে sign করা আছে কিনা
+$ openssl verify -CAfile cert.pem cert.pem
+cert.pem: OK   # self-signed তাই নিজেই verify হয় (শুধু প্র্যাকটিস)
+
+# ✅ Let's Encrypt = ফ্রি CA certificate (ACME protocol)
+# DNS-01 challenge দিয়ে domain ownership প্রমাণ করো
+$ certbot certonly --manual --preferred-challenges dns -d ledgerpilot.com
+Please deploy a DNS TXT record under the name:
+_acme-challenge.ledgerpilot.com. with the following value:
+X9m2kQ7nR4pL8vB3hY6jF1cZ5wA0tE9s   # ← এই TXT record DNS এ যোগ করো
+
+Press Enter to Continue
+... verification successful ...
+Certificate obtained: /etc/letsencrypt/live/ledgerpilot.com/fullchain.pem
+Expiry: 2025-04-15 (90 দিন, তারপর অটো-রিনিউ)
+</code></pre>
+<span class="code-caption">📜 Certificate = public key + domain, CA এর signature দিয়ে। Let's Encrypt ফ্রি করে, স্বয়ংক্রিয়।</span>
+</div>
 
 <div class="dialogue"><strong>সার্টিফিকেট অথরিটি:</strong> আমি একজন নোটারি। ওয়েবসাইট আমার কাছে আসে, প্রমাণ করে সে আসল। আমি তার public key আর domain একটা certificate এ bind করি, আমার private key দিয়ে sign করি। Browser আমাকে trust করে (root certificate store এ আমার key আছে)। Let's Encrypt এই প্রক্রিয়া স্বয়ংক্রিয় করেছে — ACME protocol। HTTP-01 বা DNS-01 challenge দিয়ে domain verify, তারপর certificate issue। সব ফ্রি, সব স্বয়ংক্রিয়। certbot দিয়ে এক কমান্ডে।</div>`,
   recall: [

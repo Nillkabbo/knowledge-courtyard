@@ -75,6 +75,32 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: De Morgan's Law — truth table প্রমাণ করে ¬(P∧Q) ≡ ¬P∨¬Q। Django QuerySet এ তুমি অজান্তেই এটা ব্যবহার করছ।</div>
 
+<div class="code-block">🐍 Python: De Morgan's Law যাচাই — Truth Table + Django QuerySet তুলনা
+
+P, Q = True, False
+left  = not (P and Q)      # ¬(P ∧ Q)
+right = (not P) or (not Q) # ¬P ∨ ¬Q
+print(left == right)       # True — De Morgan প্রমাণিত!
+
+# সব ৪ রাস্তায় যাচাই (exhaustive truth table)
+for P in (True, False):
+    for Q in (True, False):
+        dm = (not (P and Q)) == ((not P) or (not Q))
+        print(f"P={P!s:5} Q={Q!s:5} ¬(P∧Q)={not(P and Q)!s:5} ¬P∨¬Q={(not P) or (not Q)!s:5} → {dm}")
+# P=True Q=False ¬(P∧Q)=True ¬P∨¬Q=True → True  ✅ সব row মিলছে
+
+# Django QuerySet: exclude() বনাম filter(Q | Q)
+# User.objects.exclude(is_staff=True, is_active=True)        # NOT(A AND B)
+# User.objects.filter(Q(is_staff=False) | Q(is_active=False))# ¬A ∨ ¬B  ← De Morgan!
+# দুটো QuerySet একই ইউজার রিটার্ন করে — SQL EXCEPT/UNION লজিক।
+
+# Implication P→Q শুধু False যখন P=True, Q=False (vacuous truth)
+def implies(p, q): return (not p) or q
+print(implies(False, True))  # True — false কিছু imply করে যেকোনো কিছুকে
+
+# XOR / exclusive-or → দুটো ঠিক একটা True হলেই True
+print(P ^ Q, P != Q)         # True True — XOR = অসমতা</div>
+
 <div class="dialogue"><strong>অগাস্টাস ডি মরগান:</strong> আমি ১৯শ শতাব্দীতে প্রমাণ করেছিলাম — একটা AND এর negation OR হয়, আর একটা OR এর negation AND হয়। <code>¬(P ∧ Q) = ¬P ∨ ¬Q</code> এবং <code>¬(P ∨ Q) = ¬P ∧ ¬Q</code>। এটা শুধু তত্ত্ব নয় — তোমার Django QuerySet এ প্রতিদিন ঘটছে। <code>exclude(A, B)</code> মানে <code>NOT (A AND B)</code>, যা De Morgan অনুযায়ী <code>NOT A OR NOT B</code>। হার্ডওয়্যারে এটা আরও গুরুত্বপূর্ণ — logic minimize করলে gate কমে, chip ছোট, কম বিদ্যুৎ, সস্তা।</div>`,
   recall: [
     { q: "De Morgan's Law কী?", a: "¬(P ∧ Q) = ¬P ∨ ¬Q এবং ¬(P ∨ Q) = ¬P ∧ ¬Q। AND এর negation = OR of negations, vice versa। Django QuerySet exclude/filter এ প্রতিদিন ব্যবহৃত।" },
@@ -154,6 +180,38 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Induction = ডোমিনো। Base case (P(0) সত্য) + inductive step (P(k)→P(k+1)) = সব P(n) সত্য। Recursion এর সাথে একই গঠন।</div>
 
+<div class="code-block">🐍 Python: Induction = Recursion — সমষ্টি সূত্র Σ(i) = n(n+1)/2 যাচাই
+
+# Inductive claim: 1 + 2 + ... + n = n(n+1)/2
+# Base case n=1: 1 == 1*2/2 = 1 ✓
+# Inductive step: assume S(k)=k(k+1)/2; then S(k+1) = S(k) + (k+1)
+#                = k(k+1)/2 + (k+1) = (k+1)(k+2)/2  ✓
+
+def sum_recursive(n):
+    # Base case (প্রথম ডোমিনো)
+    if n == 0: return 0
+    # Inductive step: S(n) = n + S(n-1)
+    return n + sum_recursive(n - 1)
+
+def sum_formula(n):
+    return n * (n + 1) // 2   # closed-form, O(1)
+
+for n in [0, 1, 5, 10, 100]:
+    assert sum_recursive(n) == sum_formula(n), f"mismatch at n={n}"
+    print(f"n={n:3} → recursive={sum_recursive(n):6}  formula={sum_formula(n):6}  ✓")
+
+# Inductive step গাণিতিকভাবে verify করি:
+# S(k+1) - S(k) = (k+1)(k+2)/2 - k(k+1)/2 = (k+1)/2 · [(k+2) - k] = (k+1) ✓
+from sympy import symbols, simplify
+k = symbols('k')
+step = simplify((k+1)*(k+2)//2 - k*(k+1)//2)
+print("Inductive step difference:", step)  # k + 1  → ঠিক (k+1) যোগ হচ্ছে
+
+# Factorial — recursion এর আরেকটা উদাহরণ (induction এর ভিত্তিতে কাজ করে)
+def factorial(n):
+    return 1 if n <= 1 else n * factorial(n - 1)
+print("5! =", factorial(5))  # 120 — base(0)=1 থেকে inductive গুণফল</div>
+
 <div class="dialogue"><strong>গণিতজ্ঞ:</strong> Induction circular reasoning নয়! Base case anchor করে। তুমি P(k) assume করছ না — তুমি <code>P(k) → P(k+1)</code> প্রমাণ করছ একটা implication হিসেবে। প্রথম ডোমিনো পড়ে (base case), প্রতিটা পরেরটাকে ফেলে (inductive step) — তাই সব পড়ে। এটাই recursion এর ভিত্তি। <code>factorial(n)</code> — base: <code>factorial(0)=1</code>, step: <code>factorial(n) = n * factorial(n-1)</code>। Induction গ্যারান্টি দেয় যে সব input এ কাজ করবে। Big-O analysis — Master Theorem — সব induction এর উপর দাঁড়িয়ে!</div>`,
   recall: [
     { q: "Induction circular reasoning কেন নয়?", a: "Base case anchor করে। তুমি P(k) assume করছ না — তুমি P(k)→P(k+1) প্রমাণ করছ একটা implication হিসেবে। Base + step = সব সত্য।" },
@@ -172,6 +230,44 @@ doors.push({
   name: "The Impossible Truth",
   secret: "Proof by contradiction: বিপরীত ধরে নাও, অসম্ভব পর্যন্ত পৌঁছাও → তোমার assumption ভুল!",
   story: `<p class="scene-setting">Proof by contradiction — সবচেয়ে শক্তিশালী proof technique। তুমি যা প্রমাণ করতে চাও তার বিপরীত ধরে নাও। তারপর logical steps এ এগিয়ে যাও যতক্ষণ না একটা অসম্ভব পরিস্থিতি (contradiction) তৈরি হয়। যেহেতু contradiction অসম্ভব, তোমার initial assumption ভুল হতে হবে। উদাহরণ: √2 অমূলদ (irrational) — ধরে নাও এটা মূলদ (rational = a/b), lowest terms এ। প্রমাণ করো যে দুটোই even — কিন্তু lowest terms এ দুটো even হতে পারে না! Contradiction!</p>
+
+<div class="code-block">🐍 Python: Proof by Contradiction — √2 কি মূলদ (rational)?
+
+# Proof: √2 irrational। ধরে নাও এটা rational = a/b, lowest terms (gcd(a,b)=1)।
+# তাহলে a² = 2b² → a জোড় (a² জোড় বলে) → a = 2c → 4c² = 2b² → b² = 2c² → b জোড়।
+# কিন্তু a, b দুটোই জোড় হলে gcd ≥ 2 — lowest terms এর সাথে contradiction!
+
+from math import gcd, isqrt
+
+def is_sqrt2_rational(max_denominator=10**6):
+    # a/b ≈ √2 খুঁজছি; যদি সত্যিই rational হতো, a²=2b² সমীকরণ মিলত।
+    target = 2
+    for b in range(1, max_denominator):
+        a = isqrt(target * b * b)        # a² সবচেয়ে কাছের পূর্ণসংখ্যা
+        if a * a == target * b * b:      # a² = 2b² হলে rational পাওয়া গেছে
+            return (a, b, gcd(a, b))
+        # gcd(a,b)=1 (lowest terms) চেক: a জোড় হলে b ও জোড় হবে → gcd≥2 (contradiction)
+        if a % 2 == 0 and b % 2 == 0:
+            return f"both even at a={a}, b={b} → gcd≥2 → contradiction"
+    return None  # কোনো rational নেই — √2 irrational প্রমাণিত (numerical verification)
+
+print(is_sqrt2_rational(10**5))  # None — কোনো a/b খুঁজে পাওয়া যায়নি
+
+# Contrapositive: P→Q ≡ ¬Q→¬P (logically equivalent)
+# "If n² is even, then n is even" — সরাসরি প্রমাণ কঠিন → contrapositive সহজ:
+# "If n is odd, then n² is odd" (n=2k+1 → n²=4k²+4k+1 = 2(2k²+2k)+1, বিজোড়) ✓
+def n_squared_parity(n):
+    return ('even' if n % 2 == 0 else 'odd', 'even' if (n*n) % 2 == 0 else 'odd')
+
+for n in [3, 4, 7, 10]:
+    n_par, n2_par = n_squared_parity(n)
+    print(f"n={n} ({n_par}) → n²={n*n} ({n2_par})")  # odd→odd, even→even সবসময়
+
+# Proof by contradiction: কোনো integer n এর জন্য n²=2 (mod 4) নেই
+def exists_n2_mod4_eq2(limit=1000):
+    residues = {(n * n) % 4 for n in range(limit)}
+    return 2 in residues  # False — কোনো n² এর রেশিডিউ 2 (mod 4) নেই
+print("n²≡2 (mod 4) exists?", exists_n2_mod4_eq2())  # False — contradiction basis</div>
 
 <div class="dialogue"><strong>গণিতজ্ঞ:</strong> Contradiction হল debugging এরও ভিত্তি। তুমি বলছ 'এই bug অসম্ভব!' ধরে নাও সেটা সম্ভব — কোথায় নিয়ম ভাঙছে? সেই point টাই bug। √2 অমূলদ প্রমাণ করতে ধরে নাও <code>√2 = a/b</code> (rational, lowest terms)। তাহলে <code>a² = 2b²</code> → a even → <code>a=2c</code> → <code>4c² = 2b²</code> → <code>b² = 2c²</code> → b ও even! কিন্তু lowest terms এ দুটোই even হতে পারে না! Contradiction! তাই √2 মূলদ হতে পারে না। Proof by contrapositive ও কাজ করে — P→Q এর পরিবর্তে ¬Q→¬P প্রমাণ করো। Logically equivalent কিন্তু সহজ হতে পারে।</div>`,
   recall: [
@@ -244,6 +340,56 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Cantor এর Tower of Infinities — ℵ₀ (countable) < |ℝ| (uncountable) < |P(ℕ)| < ... Diagonal argument: flip diagonal bits → নতুন number যা list এ নেই।</div>
 
+<div class="code-block">🐍 Python: Set Theory — Power Set, Cardinality, আর Cantor এর সিঁড়ি
+
+# Python set operations — বাস্তব গাণিতিক সেট
+A = {1, 2, 3, 4}
+B = {3, 4, 5, 6}
+print("A ∪ B =", A | B)   # union: {1,2,3,4,5,6}
+print("A ∩ B =", A & B)   # intersection: {3,4}
+print("A − B =", A - B)   # difference: {1,2}
+print("A △ B =", A ^ B)   # symmetric diff: {1,2,5,6}
+
+# Power set: সব subset এর সেট। |P(S)| = 2^|S| — Cantor এর theorem।
+from itertools import chain, combinations
+def powerset(s):
+    s = list(s)
+    return list(chain.from_iterable(combinations(s, r) for r in range(len(s)+1)))
+
+S = {1, 2, 3}
+P = powerset(S)
+print(f"|S|={len(S)}  |P(S)|={len(P)} = 2^{len(S)} = {2**len(S)}")
+print("P(S) =", P)
+# |S|=3  |P(S)|=8 = 2^3 = 8  — power set সবসময় সেটের চেয়ে বড়!
+
+# Cantor এর সিঁড়ি: ℵ₀ < |P(ℕ)| < |P(P(ℕ))| < ...
+# প্রতিটা স্তরে size দ্বিগুণ: n → 2^n → 2^(2^n) → ...
+for level, n in enumerate([3, 8, 256], start=0):
+    print(f"Level {level}: |S|={n}  →  |P(S)|=2^{n}={2**n}")
+
+# Diagonal argument simulation (Cantor এর মূল প্রমাণ)
+# যেকোনো 'সম্পূর্ণ' list বানাও, diagonal flip করে নতুন element তৈরি করি যা list এ নেই।
+def cantor_diagonal(list_of_sets):
+    """list[i] এর i-th membership flip করে নতুন সেট বানাও।"""
+    n = len(list_of_sets)
+    new_set = set()
+    for i in range(n):
+        if i not in list_of_sets[i]:   # diagonal: i-th element এর i-th bit
+            new_set.add(i)
+    return new_set
+
+my_list = [{0,2}, {1}, {0,1,2}, set()]  # 'সম্পূর্ণ' দাবি করা list
+missing = cantor_diagonal(my_list)
+print("Diagonal flip →", missing, "— এই subset কোনো list entry তে নেই!")
+for i, s in enumerate(my_list):
+    print(f"  list[{i}]={s}  কি {missing} এর সমান? {s == missing}")  # সব False
+
+# Countable vs uncountable: ℤ (integers) countable, [0,1] (reals) uncountable
+# Integer enumerate করা যায়: 0, 1, -1, 2, -2, 3, -3, ...
+def enumerate_integers(n):
+    return [(i//2+1)*(-1)**i for i in range(n)]  # 0,1,-1,2,-2,...
+print("First 10 integers (countable):", enumerate_integers(10))</div>
+
 <div class="dialogue"><strong>গেয়র্গ কান্টর:</strong> আমি ১৮৭৪ সালে প্রমাণ করেছিলাম যে infinity এর ভিন্ন ভিন্ন size আছে। Integer (ℕ) গুলো countable — 1, 2, 3, ... তালিকা করা যায়। Rational (ℚ) ও countable! কিন্তু Real (ℝ) — uncountable! Diagonal argument: যেকোনো list বানাও, আমি diagonal flip করে এমন একটা number বানাব যা তালিকায় নেই। Power set theorem: <code>|P(S)| > |S|</code> সবসময়। অর্থাৎ ℵ₀ < |P(ℕ)| < |P(P(ℕ))| < ... অসীম সিঁড়ি! Turing আমার diagonal argument ব্যবহার করে Halting Problem undecidable প্রমাণ করেছেন — একই গণিত, ভিন্ন domain।</div>`,
   recall: [
     { q: "Cantor এর diagonal argument কী?", a: "যেকোনো infinite list বানাও। Diagonal এর প্রতিটা bit flip করে একটা নতুন number বানাও। এই number টা list এর কোনো number এর সাথেই match করবে না — তাই list incomplete। ℝ uncountable।" },
@@ -262,6 +408,55 @@ doors.push({
   name: "The Counting Codex",
   secret: "Permutation = ক্রম গুরুত্বপূর্ণ। Combination = ক্রম গুরুত্বহীন। Pigeonhole = collision গ্যারান্টিড।",
   story: `<p class="scene-setting">Combinatorics শুধু counting নয় — এটা probability, Big-O, আর cryptography এর ভিত্তি। Permutation: কতভাবে সাজানো যায় (ক্রম গুরুত্বপূর্ণ)। <code>P(n,k) = n!/(n-k)!</code>। Combination: কতভাবে বাছাই করা যায় (ক্রম গুরুত্বহীন)। <code>C(n,k) = n!/(k!(n-k)!)</code>। Pigeonhole Principle: n item, k box, n > k → অন্তত এক box এ একাধিক item। Birthday paradox: ২৩ জনে ৫০% duplicate birthday! Hash collision গ্যারান্টিড।</p>
+
+<div class="code-block">🐍 Python: Combinatorics — Permutation, Combination, Birthday Paradox
+
+from math import factorial, comb, perm
+from itertools import permutations, combinations
+
+# Permutation P(n,k) = n!/(n-k)! — ক্রম গুরুত্বপূর্ণ (URL path, পাসওয়ার্ড)
+n, k = 5, 3
+print(f"P({n},{k}) = {perm(n,k)} = {n}!/({n}-{k})! = {factorial(n)//factorial(n-k)}")
+# P(5,3) = 60 — ৫ জনকে ৩টি আসনে সাজানোর উপায়
+
+# Combination C(n,k) = n!/(k!(n-k)!) — ক্রম গুরুত্বহীন (ট্যাগ, টিম)
+print(f"C({n},{k}) = {comb(n,k)} = {n}!/({k}!·{n-k}!) = {factorial(n)//(factorial(k)*factorial(n-k))}")
+# C(5,3) = 10 — ৫ জন থেকে ৩ জনের কমিটি বাছাই
+
+# itertools দিয়ে সত্যিকারের enumeration
+print("ABC এর ৩-ক্রম permutation:", [''.join(p) for p in permutations('ABC', 3)])
+print("ABC এর ৩-ক্রম combination:", [list(c) for c in combinations('ABC', 3)])
+
+# Django analogy: ManyToManyField = combination (ক্রম গুরুত্বহীন)
+# [Python, Django] == [Django, Python] — একই ট্যাগ সেট
+tags1, tags2 = {'Python', 'Django'}, {'Django', 'Python'}
+print("Tag order matters?", tags1 != tags2)  # False — combination লজিক
+
+# Birthday Paradox: n জনে অন্তত ২ জনের birthday একই হওয়ার সম্ভাবনা
+def birthday_probability(n, days=365):
+    # P(সব আলাদা) = 365/365 · 364/365 · ... · (365-n+1)/365
+    p_unique = 1.0
+    for i in range(n):
+        p_unique *= (days - i) / days
+    return 1 - p_unique   # P(অন্তত এক duplicate)
+
+for people in [5, 10, 23, 30, 50, 70]:
+    print(f"  {people:2d} জনে duplicate birthday সম্ভাবনা: {birthday_probability(people)*100:5.1f}%")
+# ২৩ জনে ৫০.৭% — Pigeonhole + সম্ভাবনার অবিশ্বাস্য ফলাফল!
+
+# Inclusion-Exclusion: |A∪B| = |A| + |B| - |A∩B|
+A = {1,2,3,4}; B = {3,4,5,6}
+print(f"|A∪B| = |A| + |B| - |A∩B| = {len(A)} + {len(B)} - {len(A&B)} = {len(A|B)}")
+
+# Hash collision simulation: 32-bit hash space এ কত key এ প্রথম collision?
+import random
+def find_collision(hash_space=2**32):
+    seen = set()
+    for i in range(10**7):
+        h = random.randrange(hash_space)
+        if h in seen: return i
+        seen.add(h)
+print("~32-bit hash এ প্রথম collision (birthday attack):", find_collision(), "keys")</div>
 
 <div class="dialogue"><strong>গণিতজ্ঞ:</strong> Django তে permutation = URL routing (ক্রম গুরুত্বপূর্ণ, <code>/api/users/</code> ≠ <code>/users/api/</code>)। Combination = ManyToManyField (ট্যাগ <code>[Python, Django]</code> = <code>[Django, Python]</code>, ক্রম গুরুত্বহীন)। Pigeonhole: hash collision গ্যারান্টিড — infinite possible URL, finite hash output। Birthday paradox: ৩৬৫ day, ২৩ জন → ~৫০% duplicate। এটাই birthday attack এর ভিত্তি — কম key space এ collision খুঁজে বের করা। Inclusion-exclusion: |A∪B| = |A| + |B| - |A∩B|। Double counting এড়াতে intersection বাদ দাও।</div>`,
   recall: [

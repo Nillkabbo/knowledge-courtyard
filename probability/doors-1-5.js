@@ -59,6 +59,35 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Bayes Theorem — Prior (0.01% fraud) + Evidence (99% accurate test) → Posterior (only ~1% real fraud among alerts!)। Base rate fallacy প্রতিটা software engineer কে ধোঁকা দেয়।</div>
 
+<div class="code-block">— Bayes Theorem: Base Rate Fallacy (Python) —
+
+  import numpy as np
+
+  # 99% accurate fraud model, but fraud is very rare (base rate 0.01%)
+  p_fraud            = 0.0001   # P(H)   — prior, পূর্বধারণা
+  p_alert_given_fraud  = 0.99   # P(D|H) — sensitivity
+  p_alert_given_honest = 0.01   # P(D|¬H) — false positive rate
+
+  # Law of total probability → P(D) = P(D|H)P(H) + P(D|¬H)P(¬H)
+  p_alert = (p_alert_given_fraud * p_fraud +
+             p_alert_given_honest * (1 - p_fraud))
+
+  # Bayes: P(H|D) = P(D|H)·P(H) / P(D)
+  posterior = p_alert_given_fraud * p_fraud / p_alert
+  print(f"P(alert)        = {p_alert:.6f}")     # → 0.010098
+  print(f"P(fraud|alert)  = {posterior:.4f}")    # → 0.0098  (~1%!)
+  print(f"NOT 99% — base rate fallacy!")          # ← ডাক্তারও এখানে ভুল করে
+
+  — Sequential updating: প্রতিটা evidence prior কে আপডেট করে —
+  prior = 0.01
+  for evidence_likelihood in [0.8, 0.7, 0.9]:
+      num = evidence_likelihood * prior
+      den = num + (1 - evidence_likelihood) * (1 - prior)
+      prior = num / den                        # posterior → নতুন prior
+      print(f"after evidence: P = {prior:.3f}")  # → 0.288 → 0.544 → 0.914
+
+— scipy.stats দিয়ে একই হিসাব Bayesian confidence intervals-এ কাজে লাগে —</div>
+
 <div class="dialogue"><strong>রেভারেন্ড টমাস বেয়েস:</strong> আমি ১৮শ শতাব্দীতে এই সূত্র আবিষ্কার করেছিলাম। <code>P(H|D) = P(D|H)·P(H)/P(D)</code>। তুমি যখন fraud alert পাও, তোমার মস্তিষ্ক বলে '99% accurate model → 99% সত্যিকার fraud!' কিন্তু এটা ভুল! কারণ fraud এতই বিরল (0.01%) যে healthy transactions থেকে false positive এর সংখ্যা সত্যিকার fraud এর চেয়ে অনেক বেশি। Posterior = 1%, 99% নয়। এটাই base rate fallacy। LedgerPilot-এ fraud model এর threshold এই posterior এর উপর ভিত্তি করে সেট করতে হবে, raw accuracy এর উপর নয়।</div>`,
   recall: [
     { q: "Bayes theorem কী এবং কেন দরকার?", a: "P(H|D) = P(D|H)·P(H)/P(D)। Prior বিশ্বাসকে evidence দিয়ে আপডেট করে। ডাক্তারি পরীক্ষা, fraud detection, debugging — সব জায়গায় ভুল ধারণা ঠিক করে।" },
@@ -77,6 +106,40 @@ doors.push({
   name: "The Average Oracle",
   secret: "Law of Large Numbers: যত বেশি sample, average তত কাছে যায় true expected value এ।",
   story: `<p class="scene-setting">Law of Large Numbers (LLN) — যত বেশি বার experiment করবে, sample average তত বেশি কাছে যাবে true expected value এ। Weak law: convergence in probability। Strong law: almost sure convergence (probability 1)। LedgerPilot: যত বেশি transaction হবে, average fraud rate actual fraud rate এ converge করবে। A/B test: যত বেশি user, তত নির্ভুল comparison। কিন্তু gambler's fallacy ভুল — past outcome future কে affect করে না (memoryless)। ৫ বার head এসেছে বলে ৬ষ্ঠ বার tail আসার সম্ভাবনা বেশি নয় — এখনো 50%!</p>
+
+<div class="code-block">— Law of Large Numbers: গড় converge করে (Python) —
+
+  import numpy as np
+  np.random.seed(2)
+
+  # Biased coin: P(head)=0.7 — true expected value = 0.7
+  p_true = 0.7
+  flips  = np.random.binomial(1, p_true, size=50_000)
+
+  # Running mean — প্রতিটা step-এ sample average
+  running_avg = np.cumsum(flips) / np.arange(1, len(flips) + 1)
+  for n in [10, 100, 1_000, 10_000, 50_000]:
+      print(f"n={n:>6}: sample mean = {running_avg[n-1]:.4f}")  # → 0.7 এর কাছে
+
+  — Gambler's fallacy পরীক্ষা: পাঁচ বার head-এর পরে কী? —
+  five_heads = 0; sixth_head = 0
+  for _ in range(1_000_000):
+      seq = np.random.binomial(1, 0.5, 6)        # fair coin, 6 flips
+      if seq[:5].sum() == 5:                     # প্রথম ৫টাই head?
+          five_heads += 1
+          if seq[5] == 1: sixth_head += 1
+  print(f"P(6th head | 5 heads) = {sixth_head/five_heads:.3f}")  # → ~0.500
+  print("Memoryless! অতীত ভবিষ্যৎকে প্রভাবিত করে না।")
+
+  — A/B test: কত sample লাগবে clear winner বুঝতে? —
+  ctrl = np.random.binomial(1, 0.10, 100)        # control: 10% conversion
+  treat = np.random.binomial(1, 0.13, 100)       # treatment: 13% conversion
+  print(f"100 users: ctrl={ctrl.mean():.3f}, treat={treat.mean():.3f}")  # noise!
+  ctrl = np.random.binomial(1, 0.10, 10_000)
+  treat = np.random.binomial(1, 0.13, 10_000)
+  print(f"10k users: ctrl={ctrl.mean():.3f}, treat={treat.mean():.3f}")   # clear winner
+
+— Weak law (convergence in probability) vs Strong law (almost sure) —</div>
 
 <div class="dialogue"><strong>গণিতজ্ঞ:</strong> LLN-এর দুটো version: Weak (convergence in probability) আর Strong (almost sure convergence, probability 1)। প্রতিটা independent trial-এ average প্রত্যাশিত মানের দিকে যায়। LedgerPilot: প্রতিদিন ১০,০০০ transaction হলে, পরের দিনের fraud rate আজকের গড়ের কাছে থাকবে। A/B test: ১০০ user-এ শুধু noise, ১০,০০০ user-এ clear winner। কিন্তু মনে রাখো — regression to mean মানে "balancing" নয়। এটা শুধু মানে যে extreme events বিরল, তাই পরের event average হওয়ার সম্ভাবনাই বেশি। কোনো cosmic memory নেই!</div>`,
   recall: [
@@ -151,6 +214,40 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: CLT — wild individual deposits (bimodal: whales + tiny) → daily average = perfect Gaussian bell curve। 3-sigma rule: 99.7% দিন average ± 3σ এর ভেতরে। বাইরে = anomaly alert!</div>
 
+<div class="code-block">— Central Limit Theorem: সব কিছু Gaussian হয়ে যায় (Python) —
+
+  import numpy as np
+  from scipy import stats
+  np.random.seed(3)
+
+  # Wild bimodal data: 80% tiny deposits, 20% whales — clearly NOT Gaussian
+  def sample_deposits(n):
+      tiny  = np.random.uniform(1, 50, int(n*0.8))
+      whale = np.random.uniform(5000, 20000, int(n*0.2))
+      return np.concatenate([tiny, whale])
+
+  raw = sample_deposits(100_000)
+  print(f"raw deposits: skew={stats.skew(raw):.2f}, kurtosis={stats.kurtosis(raw):.2f}")
+  # → heavy skew, bimodal — Gaussian নয়
+
+  — CLT জাদু: daily average (n=500 প্রতিদিন) Gaussian হয়ে যায়! —
+  daily_avgs = [sample_deposits(500).mean() for _ in range(2000)]
+  print(f"daily avg:   skew={stats.skew(daily_avgs):.2f}, kurtosis={stats.kurtosis(daily_avgs):.2f}")
+  # → ≈ 0, ≈ 0 → Gaussian!
+
+  — 3-sigma anomaly detection: —
+  mu, sigma = np.mean(daily_avgs), np.std(daily_avgs)
+  lo3, hi3 = mu - 3*sigma, mu + 3*sigma
+  print(f"normal range: [{lo3:.0f}, {hi3:.0f}]")     # 99.7% দিন এই ভেতরে
+  anomalies = [x for x in daily_avgs if x < lo3 or x > hi3]
+  print(f"anomalies: {len(anomalies)/2000:.3%}")     # → ~0.3% (CLT-এর পূর্বাভাস)
+
+  — scipy.stats.norm দিয়ে exact probability: —
+  p_outside_3sigma = 2 * (1 - stats.norm.cdf(3))     # P(|Z|>3)
+  print(f"P(|Z| > 3) = {p_outside_3sigma:.4%}")      # → 0.27%
+
+— finite mean+variance থাকলেই CLT কাজ করে — distribution যেমনই হোক —</div>
+
 <div class="dialogue"><strong>গণিতজ্ঞ:</strong> CLT পরিসংখ্যানের সবচেয়ে জাদুকরী ফলাফল। Individual deposit: কয়েকজন whale (অনেক বড়), বাকি সব tiny। এটা Gaussian নয় — bimodal! কিন্তু যখন তুমি হাজার জনের daily average নাও, সেটা Gaussian হয়ে যায়। এটাই 3-sigma anomaly detection কে কাজ করায়। <code>P(|X - μ| > 3σ) < 0.3%</code>। যদি কোনো দিনের average deposit μ+3σ এর বাইরে যায় — alert! সম্ভবত কিছু ভুল হচ্ছে। CLT শুধু Gaussian-এর জন্য নয় — যেকোনো finite variance distribution-এর sample average-এর জন্য কাজ করে। এটাই এর জাদু।</div>`,
   recall: [
     { q: "Central Limit Theorem কী?", a: "যেকোনো distribution (finite mean+variance) থেকে sample নাও — average সবসময় Gaussian হয়, sample size বাড়ালে। Wild individual data ও average এ Gaussian হয়ে যায়।" },
@@ -169,6 +266,43 @@ doors.push({
   name: "The Memoryless Walker",
   secret: "Markov: next state depends only on current state। PageRank = stationary distribution!",
   story: `<p class="scene-setting">Markov chain — স্মৃতিহীন stochastic process। পরের state শুধু current state এর উপর নির্ভর করে, past এর উপর নয়। Transition matrix P তে প্রতিটা entry হল state transition probability। Stationary distribution π পাওয়া যায় <code>π = πP</code> সমাধান করে। Ergodicity (aperiodic + positive recurrent) থাকলে unique stationary distribution থাকে। Google PageRank = web surfing Markov chain এর stationary distribution। Credit rating (Good→Watch→Default) ও Markov chain। LedgerPilot: user behavior states (active → idle → churn) একটা Markov chain।</p>
+
+<div class="code-block">— Markov Chain: Transition Matrix + Stationary Distribution (Python) —
+
+  import numpy as np
+
+  # Credit rating Markov chain: states = [Good, Watch, Default]
+  #        Good    Watch   Default
+  P = [[0.95,   0.04,   0.01],   # Good  → 95% stay, 4% watch, 1% default
+       [0.30,   0.60,   0.10],   # Watch → 30% recover, 60% stay, 10% default
+       [0.00,   0.00,   1.00]]   # Default (absorbing) — একবার গেলে আর ফেরা নেই
+  P = np.array(P)
+
+  — Step-by-step: একটা portfolio সব Good দিয়ে শুরু —
+  state = np.array([1.0, 0.0, 0.0])               # 100% Good
+  for year in range(1, 21):
+      state = state @ P                            # π_{t+1} = π_t · P
+      if year in [1, 2, 5, 10, 20]:
+          print(f"year {year:2d}: Good={state[0]:.3f}  Watch={state[1]:.3f}  Default={state[2]:.3f}")
+
+  — Stationary distribution: π = πP সমাধান করো (eigenvalue = 1) —
+  eigvals, eigvecs = np.linalg.eig(P.T)            # left eigenvector
+  pi = eigvecs[:, np.isclose(eigvals, 1.0)][:, 0]
+  pi = np.real(pi / pi.sum())                      # normalize
+  print(f"stationary π = {pi}")                    # → [0  0  1]  (absorbing!)
+
+  — PageRank simulation: 4 web pages, random surf (with teleport) —
+  links = {0:[1,2], 1:[2], 2:[0,3], 3:[2]}         # page → outgoing links
+  d = 0.85; visits = np.zeros(4); page = 0
+  for _ in range(100_000):
+      if np.random.random() < d and links[page]:   # follow a link
+          page = np.random.choice(links[page])
+      else:                                          # random teleport
+          page = np.random.randint(4)
+      visits[page] += 1
+  print(f"PageRank ≈ {visits/visits.sum()}")        # stationary distribution
+
+— memoryless property: next state depends only on current state — past এর উপর নয় —</div>
 
 <div class="dialogue"><strong>আন্দ্রেই মার্কভ:</strong> আমি ১৯০৬ সালে এই chain আবিষ্কার করেছিলাম। সবচেয়ে গুরুত্বপূর্ণ ধারণা — memoryless (Markov property)। পরের state শুধু current state এর উপর নির্ভর করে। Past এর কোনো ভূমিকা নেই। <code>π = πP</code> — একটা eigenvalue সমস্যা। সমাধান করলে stationary distribution পাওয়া যায়। Google PageRank এর পুরো ভিত্তি এটাই — web pages = states, links = transitions, stationary distribution = page importance। LedgerPilot-এ credit rating: Good (95% stay, 4% watch, 1% default), Watch (30% recover, 60% stay, 10% default), Default (absorbing)। Stationary distribution বলে দীর্ঘমেয়াদে পুরো portfolio কতটা risky।</div>`,
   recall: [
@@ -230,6 +364,42 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Concentration Inequality Hierarchy — Markov (weakest) → Chebyshev (variance) → Chernoff/Hoeffding (exponential)। শেষেরটা O(log 1/δ) sample লাগে, O(1/δ) নয়। HyperLogLog সম্ভব এটা দিয়ে।</div>
+
+<div class="code-block">— Concentration Inequalities: Markov → Chebyshev → Chernoff (Python) —
+
+  import numpy as np
+  np.random.seed(5)
+
+  # 100 fair coin flips — expected heads = 50
+  n, p = 100, 0.5
+  mu, sigma_sq = n*p, n*p*(1-p)         # μ = 50, σ² = 25
+
+  — ১. Markov inequality (weakest): P(X ≥ a) ≤ E[X]/a —
+  a = 75                                 # deviation of +25
+  markov = mu / a                        # ≤ 50/75 = 0.667
+  print(f"Markov:    P(X≥{a}) ≤ {markov:.3f}")        # → 0.667
+
+  — ২. Chebyshev inequality: P(|X-μ| ≥ a) ≤ σ²/a² —
+  cheb = sigma_sq / a**2                 # ≤ 25/5625 = 0.0044
+  print(f"Chebyshev: P(|X-μ|≥{a}) ≤ {cheb:.4f}")      # → 0.0044
+
+  — ৩. Chernoff / Hoeffding: P(|X-μ| ≥ nε) ≤ 2·exp(-2nε²) —
+  eps = (a - mu) / n                     # ε = 0.25
+  chernoff = 2 * np.exp(-2 * n * eps**2) # ≤ 2·e^{-12.5}
+  print(f"Chernoff:  P(|X-μ|≥{a}) ≤ {chernoff:.6f}")  # → 0.0000074!
+
+  — Empirical verification: 100,000 trials —
+  trials = np.random.binomial(n, p, 100_000)
+  empirical = np.mean(trials >= a)
+  print(f"Empirical: P(X≥{a})  = {empirical:.6f}")    # → ~0.000000 (Chernoff-এর নিচে)
+
+  — Sample complexity comparison (99% confidence, δ=0.01): —
+  delta = 0.01
+  n_cheb = int(np.ceil(1 / delta))                  # Chebyshev: O(1/δ) = 100
+  n_cher = int(np.ceil(np.log(2/delta) / (2*eps**2))) # Chernoff: O(log(1/δ)/ε²)
+  print(f"For 99% confidence: Chebyshev n={n_cheb}, Chernoff n={n_cher}")
+
+— এটাই HyperLogLog, Bloom filter, streaming algorithm কে সম্ভব করে — exponential improvement —</div>
 
 <div class="dialogue"><strong>গণিতজ্ঞ:</strong> চিন্তা করো — তুমি একটা coin flip করছ। ১০০ বার flip করলে কত head? Expected = ৫০। কিন্তু কত deviate করতে পারে? Markov বলে: P(≥১০০) ≤ ৫০/১০০ = ৫০% — খুব দুর্বল! Chebyshev: σ²=২৫, P(|X-৫০|≥২৫) ≤ ২৫/৬২৫ = ৪% — ভালো। Chernoff: P(|X-৫০|≥২৫) ≤ e^{-100·0.25²} ≈ 0.002% — এক্সপোনেনশিয়াল! এটাই streaming algorithm কে সম্ভব করে। HyperLogLog: 10⁹ unique item গণনা 1.5KB তে — concentration inequality গ্যারান্টি দেয় যে estimate সঠিক হবে। প্রতিটা randomized algorithm এর পেছনে এই গণিত আছে।</div>`,
   recall: [

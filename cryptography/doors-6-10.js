@@ -57,6 +57,40 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: TLS 1.3 = 1-RTT। ClientHello এ key share, ServerHello এ সব encrypted। Forward secrecy mandatory। Certificate encrypted — privacy!</div>
 
+<div class="code-block">
+<pre><code># TLS handshake দেখো — বাস্তবে কী হয়? openssl s_client দিয়ে
+$ openssl s_client -connect example.com:443 -tls1_3 2&gt;/dev/null &lt;&lt;&lt; "Q"
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384   # ← AEAD cipher
+Server public key is 2048 bit
+Secure Renegotiation IS NOT supported    # TLS 1.3 এ renegotiation নেই
+---
+Certificate chain
+ 0 s:CN = example.com          # Server certificate (encrypted in TLS 1.3!)
+   i:CN = R3                   # Issuer: Let's Encrypt (intermediate CA)
+ 1 s:CN = R3
+   i:CN = ISRG Root X1         # Root CA — browser root store এ আছে
+---
+SSL handshake has read 4156 bytes and written 412 bytes   # ১ round trip!
+
+# TLS version + cipher শুধু দেখতে চাইলে
+$ echo | openssl s_client -connect github.com:443 2&gt;/dev/null | grep -E "Protocol|Cipher"
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_128_GCM_SHA256       # AEAD — AES + GCM
+
+# ❌ পুরোনো TLS 1.0/1.1/1.2 — ভাঙা, বাদ দাও
+$ echo | openssl s_client -connect old-server.com:443 -tls1_2 2&gt;/dev/null | grep Cipher
+    Cipher    : ECDHE-RSA-AES256-GCM-SHA384  # TLS 1.2 — RSA key transport, ধীর
+
+# ✅ TLS 1.3 এ শুধু ৫টা AEAD cipher suite:
+#   TLS_AES_128_GCM_SHA256
+#   TLS_AES_256_GCM_SHA384
+#   TLS_CHACHA20_POLY1305_SHA256      # ← মোবাইলে সেরা (no AES-NI needed)
+#   TLS_AES_128_CCM_SHA256
+#   TLS_AES_128_CCM_8_SHA256
+</code></pre>
+<span class="code-caption">🤝 TLS 1.3 = 1-RTT, cipher + certificate encrypted। ECDHE → forward secrecy। শুধু AEAD cipher।</span>
+</div>
+
 <div class="dialogue"><strong>টিএলএস ইঞ্জিনিয়ার:</strong> TLS 1.3 একটা বিপ্লব। পুরোনো TLS 1.2 এ ২ রাউন্ড লাগতো, certificate প্লেইন টেক্সটে যেতো, RSA key exchange এ forward secrecy ছিল না। TLS 1.3 সব বদলে দিয়েছে। Client প্রথম message এই key share পাঠিয়ে দেয় — speculative। Server উত্তর দেয় cipher + key + certificate + "done" — সব encrypted। ১ রাউন্ডেই শেষ! Forward secrecy mandatory — প্রতি session এ ephemeral ECDHE key। ভবিষ্যতে private key চুরি হলেও অতীত session সুরক্ষিত। CBC, RC4, SHA-1 — সব বাদ। শুধু AEAD: AES-GCM আর ChaCha20-Poly1305।</div>`,
   recall: [
     { q: "TLS 1.3 কেন TLS 1.2 এর চেয়ে দ্রুত?", a: "TLS 1.3 এ 1-RTT (1 round trip)। Client ClientHello এ key share পাঠায়। TLS 1.2 এ 2-RTT লাগতো।" },
@@ -112,6 +146,45 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Session = coat check (server remembers, instant revoke)। JWT = VIP badge (stateless, mobile)। LedgerPilot = Session, Ipractus = JWT (RS256)।</div>
+
+<div class="code-block">
+<pre><code># JWT কাঠামো: header.payload.signature (base64-encoded, ৩ অংশ)
+$ TOKEN="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjMiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MDAwMDAwMDB9.signature"
+
+# প্রতিটা অংশ আলাদা করে decode করো (base64url)
+$ echo "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9" | base64 -d 2&gt;/dev/null
+{"alg":"RS256","typ":"JWT"}                    # ← HEADER: কোন algorithm?
+
+$ echo "eyJzdWIiOiIxMjMiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MDAwMDAwMDB9" | base64 -d 2&gt;/dev/null
+{"sub":"123","role":"admin","exp":1700000000}  # ← PAYLOAD: user data + exp
+
+# signature = base64(header) + "." + base64(payload), private key দিয়ে সাইন
+$ echo -n "eyJhbGci...J9.eyJzdWIi...MDB9" | openssl dgst -sha256 -sign private.pem | base64
+signature...
+
+# ✅ RS256 (RSA + SHA-256) দিয়ে verify — Ipractus এর জন্য সঠিক
+$ python -c "
+import jwt
+public_key = open('public.pem').read()
+payload = jwt.decode(token, public_key, algorithms=['RS256'])  # ← explicitly RS256
+print(payload)
+"
+{'sub': '123', 'role': 'admin', 'exp': 1700000000}   # ✅ verified
+
+# 🚨 Algorithm Confusion Attack — attacker HS256 দিয়ে forge করে!
+$ python -c "
+import jwt
+# Attacker: header এ alg:HS256 বদলে, public key কে HMAC secret ধরে সাইন করে
+forged = jwt.encode({'role':'admin'}, public_key, algorithm='HS256')
+print(forged)
+"
+eyJhbGciOiJIUzI1NiIs...   # ❌ যদি server 'none' বা HS256 allow করে — হ্যাকড!
+
+# 🛡️ সমাধান: শুধু RS256 allow করো, 'none' বা HS256 বাদ দাও
+#   jwt.decode(token, public_key, algorithms=['RS256'])  # ← শুধু এটা!
+</code></pre>
+<span class="code-caption">🎫 JWT = header.payload.signature। RS256 দিয়ে verify। Algorithm confusion থেকে বাঁচতে শুধু RS256 allow করো।</span>
+</div>
 
 <div class="dialogue"><strong>অথেন্টিকেশন ইঞ্জিনিয়ার:</strong> Session আর JWT দুটোই ভালো — পরিস্থিতি ভেদে। LedgerPilot financial app — session সেরা। কারণ instant revoke দরকার। কেউ অন্য ডিভাইস থেকে লগইন করলে আগের session flush। Ipractus মোবাইল অ্যাপ — JWT সেরা। Mobile-friendly, offline-capable। কিন্তু সাবধান! JWT algorithm confusion attack — attacker RS256 কে HS256 এ বদলে দেয়, public key দিয়ে sign করে। সমাধান: শুধু RS256 ব্যবহার করো, short TTL (15 min access, 7 day refresh)।</div>`,
   recall: [
@@ -184,6 +257,43 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: তিন ধরনের injection — SQLi (database destroy), XSS (cookie theft), CSRF (forged request)। Django ORM + CSRF middleware + CSP header = protection।</div>
 
+<div class="code-block">
+<pre><code># 💉 SQL Injection — untrusted input কে code হিসেবে execute করা
+# ❌ VULNERABLE (raw SQL with f-string — কখনো করো না!)
+User.objects.raw(f"SELECT * FROM users WHERE name = '{user_input}'")
+# user_input = "admin'; DROP TABLE users; --"
+# → SELECT * FROM users WHERE name = 'admin'; DROP TABLE users; --'  💀
+
+# ✅ SAFE: Django ORM (parameterized query, স্বয়ংক্রিয়)
+User.objects.filter(name=user_input)   # Django parameterize করে
+
+# ✅ SAFE: raw() with params — placeholder দিয়ে
+User.objects.raw("SELECT * FROM users WHERE name = %s", [user_input])
+
+# 🕵️ Blind SQLi — time-based: কোনো output নেই, কিন্তু timing দিয়ে leak
+# Attacker: "'; IF (SUBSTRING(password,1,1)='a') WAITFOR DELAY '0:0:5' --"
+# Response ৫s ধীর হলে → password এর প্রথম অক্ষর 'a'! এক এক করে চরিত্র brute force।
+
+# 📝 XSS — Vue এ সুরক্ষা (auto-escape by default)
+&lt;!-- ✅ SAFE: {{ }} auto-escapes HTML --&gt;
+&lt;p&gt;{{ user_input }}&lt;/p&gt;   # &lt;script&gt; → &amp;lt;script&amp;gt;
+
+&lt;!-- ❌ DANGEROUS: v-html raw HTML render করে --&gt;
+&lt;div v-html="user_input"&gt;&lt;/div&gt;   # script চলে! cookie steal 🍪
+
+# 🛡️ CSP Header — শুধু nonce-সহ script চলবে (XSS প্রতিষেধক)
+# Nginx config:
+#   add_header Content-Security-Policy \
+#     "script-src 'self' 'nonce-$request_id'; object-src 'none'";
+
+# 🎭 CSRF — ডায়ের করে forged request। Django সুরক্ষা:
+# settings.py:  MIDDLEWARE += ['django.middleware.csrf.CsrfViewMiddleware']
+# template:     &lt;form method="post"&gt; {% csrf_token %} ...  # token verify
+# Session cookie:  SESSION_COOKIE_SAMESITE = 'Strict'       # ক্রস-সাইট ব্লক
+</code></pre>
+<span class="code-caption">💉 Injection: untrusted input → code। Django ORM + CSP + CSRF token = সুরক্ষা। raw() আর v-html থেকে সাবধান!</span>
+</div>
+
 <div class="dialogue"><strong>ওয়াপ ইঞ্জিনিয়ার:</strong> Injection হল সবচেয়ে সাধারণ attack। মূল কারণ — untrusted input কে code হিসেবে treat করা। SQL injection: search field এ SQL ঢুকিয়ে দেওয়া। Blind SQLi — কোনো output নেই, কিন্তু time-based (WAITFOR) দিয়ে এক এক করে চরিত্র বের করা। XSS — malicious JavaScript inject করা, browser execute করে। CSRF — user এর active session ব্যবহার করে forged request পাঠানো। Django তে সুরক্ষা: ORM parameterized query (SQLi), auto-escaping + CSP (XSS), CSRF middleware + token (CSRF)। কিন্তু raw() বা v-html ব্যবহার করলে সুরক্ষা ভাঙে!</div>`,
   recall: [
     { q: "Blind SQL injection এ data কিভাবে বের করা হয়?", a: "Time-based: IF condition true, WAITFOR DELAY 5s। Response slow হলে true। এক এক করে চরিত্র brute force। Boolean-based: page behavior থেকে true/false অনুমান।" },
@@ -202,6 +312,46 @@ doors.push({
   name: "The Bouncers",
   secret: "CORS = এপিআই সীমান্ত পাহারাদার। CSP = স্ক্রিপ্ট পাহারাদার। Rate limit = আবেগ নিয়ন্ত্রণ।",
   story: `<p class="scene-setting">তোমার LedgerPilot এ তিন ধরনের পাহারাদার দরকার। CORS — এপিআই সীমান্তে দাঁড়িয়ে দেখে কোন domain থেকে request আসছে। অনুমোদিত না হলে ব্লক। CSP — পেজে কোন script চলবে তা নিয়ন্ত্রণ করে। nonce বা hash ছাড়া কোন script চলবে না। Rate limiting — কেউ খুব দ্রুত request পাঠালে ব্লক। Token bucket — ১০টা টোকেন, প্রতি request এ একটা খরচ, সময়ে সময়ে রিফিল।</p>
+
+<div class="code-block">
+<pre><code># 🌐 CORS — কোন domain থেকে API access করা যাবে?
+# Browser প্রথমে preflight OPTIONS request পাঠায় (complex request এ)
+$ curl -X OPTIONS https://api.ledgerpilot.com/transactions \
+    -H "Origin: https://ipractus.com" \
+    -H "Access-Control-Request-Method: POST" -i
+HTTP/2 204
+Access-Control-Allow-Origin: https://ipractus.com     # ✅ allowed
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE
+Access-Control-Max-Age: 86400    # ২৪ ঘণ্টা preflight cache
+
+# Django এ django-cors-headers:
+#   CORS_ALLOWED_ORIGINS = ["https://ipractus.com"]
+#   CORS_ALLOW_CREDENTIALS = True   # cookie সহ allow করো
+
+# 🛡️ CSP (Content-Security-Policy) — XSS প্রতিষেধক
+# Response header দিয়ে শুধু অনুমোদিত script চলবে
+$ curl -sI https://ledgerpilot.com | grep -i content-security
+content-security-policy: default-src 'self'; script-src 'self' 'nonce-a3f5b8';
+
+# nonce ছাড়া কোনো script চলবে না:
+#   &lt;script nonce="a3f5b8"&gt; console.log('allowed') &lt;/script&gt;    ✅ চলবে
+#   &lt;script&gt; alert('XSS') &lt;/script&gt;                              ❌ ব্লকড!
+
+# ⏱️ Rate Limiting — Redis token bucket (Nginx limit_req বা DRF throttling)
+# ধরো: প্রতি IP তে ১০ request/মিনিট। ১১তম → 429 Too Many Requests
+$ for i in $(seq 1 12); do
+    curl -s -o /dev/null -w "%{http_code} " https://api.ledgerpilot.com/login
+  done
+200 200 200 200 200 200 200 200 200 200 429 429    # ← ১১তম থেকে ব্লক!
+
+# Django REST Framework throttling (settings.py):
+#   'DEFAULT_THROTTLE_RATES': {
+#       'user': '1000/day',      # authenticated user
+#       'anon': '10/hour',       # anonymous — brute force prevent
+#   }
+</code></pre>
+<span class="code-caption">🛡️ CORS (domain allow) + CSP (script allow) + Rate limit (flood prevent)। তিন পাহারাদার দরজায়।</span>
+</div>
 
 <div class="dialogue"><strong>সিকিউরিটি ইঞ্জিনিয়ার:</strong> CORS হল browser এর same-origin policy relaxation। Default এ browser cross-origin request ব্লক করে। CORS header দিয়ে specific domain allow করো। Preflight request — browser আগে OPTIONS পাঠায়, সার্ভর কোন method/header allow করে তা বলে। CSP হল XSS এর প্রতিষেধক। Content-Security-Policy header দিয়ে শুধু অনুমোদিত script চলবে। nonce — প্রতি পেজে এলোমেলো স্ট্রিং, script এ একই nonce থাকতে হবে। Rate limiting — Redis token bucket। প্রতি IP এর জন্য ১০ টোকেন, প্রতি request এ ১ টোকেন কমে, প্রতি সেকেন্ডে ১ টোকেন যোগ। টোকেন শূন্য হলে ৪২৯ Too Many Requests।</div>`,
   recall: [
@@ -263,6 +413,51 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Castle & Moat (বাইরে শত্রু, ভেতরে বন্ধু) → Zero Trust (সব verify)। mTLS, container hardening, least privilege, logging। K8s + Istio এ implementation।</div>
+
+<div class="code-block">
+<pre><code># 🏰 Container hardening — attacker যদি ভেতরে ঢুকে, সীমিত ক্ষতি
+# Dockerfile এ least-privilege (নন-root user + read-only fs):
+#   FROM python:3.12-slim
+#   RUN useradd -m appuser
+#   USER appuser                      # ← root এ চলবে না!
+#   COPY --chown=appuser . /app
+
+# docker-compose.yml — হার্ডেনিং চালু করো:
+#   services:
+#     ledgerpilot:
+#       read_only: true               # filesystem read-only (লেখা যায় না!)
+#       cap_drop: [ALL]               # সব Linux capability বাদ
+#       cap_add: [NET_BIND_SERVICE]   # শুধু পোর্ট বাইন্ড (৮০/৪৪৩)
+#       security_opt: [no-new-privileges:true]   # privilege escalation ব্লক
+#       tmpfs: [/tmp]                 # শুধু /tmp লেখার যোগ্য
+#       mem_limit: 512m               # resource limit (DoS prevent)
+
+# 🔑 mTLS — microservice আর microservice এর মধ্যে দুই পক্ষ certificate verify
+# Istio service mesh এ স্বয়ংক্রিয় (K8s):
+$ istioctl verify-install | grep -i mtls
+✔ Istio core certified                                       # mTLS enabled
+
+# Namespace এ strict mTLS চালু করো (PeerAuthentication):
+#   apiVersion: security.istio.io/v1
+#   kind: PeerAuthentication
+#   metadata: { name: default, namespace: production }
+#   spec: { mtls: { mode: STRICT } }     # ← কোনো plaintext traffic নয়!
+
+# Network policy — শুধু অনুমোদিত service এ access
+#   apiVersion: networking.k8s.io/v1
+#   kind: NetworkPolicy
+#   spec:
+#     podSelector: { matchLabels: { app: mysql } }
+#     ingress:
+#       - from: [{ podSelector: { matchLabels: { app: django } } }]
+#     # শুধু django → mysql। অন্য কেউ MySQL access করতে পারবে না!
+
+# 📊 Audit log — প্রতিটা request লগ করো (who, what, when)
+$ kubectl logs -n production django-pod | grep -i "POST.*login"
+2025-01-15T10:30:45Z user=42 POST /login ip=10.0.1.5 status=200 duration=89ms
+</code></pre>
+<span class="code-caption">🏰 Zero trust = verify everything। Container hardening + mTLS + network policy + audit log। ভেতরে ঢুকলেও সীমিত।</span>
+</div>
 
 <div class="dialogue"><strong>সাইবার সিকিউরিটি আর্কিটেক্ট:</strong> Zero trust এর মূল নীতি — "never trust, always verify"। পুরোনো security model এ ভেতরের network কে trust করা হতো। কিন্তু একবার attacker ভেতরে ঢুকলে সব access — lateral movement। Zero trust বলে — প্রতিটা request verify করো, ভেতরে হোক বা বাইরে। mTLS — প্রতিটা microservice তার certificate দেখায়, দুই পক্ষই verify করে। Kubernetes এ Istio service mesh এটা স্বয়ংক্রিয় করে। Container hardening — read-only filesystem (attacker কিছু লিখতে পারে না), cap_drop ALL (সব Linux capability বাদ), non-root user। Least privilege — প্রতিটা service শুধু যতটুকু access দরকার ততটুকু। প্রতিটা request log — audit trail। LedgerPilot এর জন্য: Docker Compose এ read_only + cap_drop, Nginx rate limit, Django CSRF + CSP, MySQL TLS connection, Argo2id password hashing। এটাই full-stack security — প্রতিটা layer এ সুরক্ষা।</div>`,
   recall: [

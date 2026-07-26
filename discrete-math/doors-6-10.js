@@ -72,6 +72,57 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Pigeonhole Principle — ৭ pigeon, ৫ hole → অন্তত এক hole এ ২+ pigeon। Hash collision গ্যারান্টিড। Birthday paradox: ২৩ জনে ৫০% duplicate!</div>
 
+<div class="code-block">🐍 Python: Pigeonhole Principle — Hash Collision ও Birthday Attack
+
+# Pigeonhole: n item, k box; n > k → অন্তত এক box এ একাধিক item
+def min_box_with_two(n_items, k_boxes):
+    # ⌈n/k⌉ — সবচেয়ে ভরা box এ অন্তত এতটা item
+    return -(-n_items // k_boxes)   # ceiling division
+
+print("৭ pigeon, ৫ hole → max ≥", min_box_with_two(7, 5), "per hole")  # 2
+print("৩৬৭ মানুষ, ৩৬৬ day → max ≥", min_box_with_two(367, 366), "share birthday")  # 2
+
+# Hash collision: infinite possible input, finite output → collision গ্যারান্টিড
+import hashlib
+def show_collision(space_bits=8):
+    space = 1 << space_bits   # 2^space_bits possible hashes
+    print(f"  {space_bits}-bit hash: {space} possible outputs")
+    # সবচেয়ে খারাপ ক্ষেত্রে space+1 input → pigeonhole → নিশ্চিত collision
+    print(f"  {space+1} টা input → নিশ্চিত collision (pigeonhole)")
+
+show_collision(8)   # 256 outputs, 257 inputs → collision
+show_collision(16)  # 65536 outputs
+
+# Birthday attack: √N এর কাছাকাছি input এ ~50% collision সম্ভাবনা
+import math
+def birthday_threshold(space_bits):
+    n = 1 << space_bits
+    # আনুমানিক threshold ≈ √(π/2 · n) ≈ 1.1774 · √n
+    return int(math.sqrt(math.pi / 2 * n))
+
+for bits in [16, 32, 64, 128]:
+    t = birthday_threshold(bits)
+    print(f"  {bits:3d}-bit space: ~{t:,} inputs → 50% collision")
+
+# Birthday Paradox সিমুলেশন (Monte Carlo verify)
+import random
+def birthday_sim(n_people, trials=10000, days=365):
+    hits = 0
+    for _ in range(trials):
+        bdays = [random.randrange(days) for _ in range(n_people)]
+        if len(bdays) != len(set(bdays)): hits += 1
+    return hits / trials
+
+print(f"২৩ জনে duplicate birthday (simulated): {birthday_sim(23)*100:.1f}%")  # ~50%
+
+# Django session ID collision ঝুঁকি (32-bit)
+# 2^32 ≈ 4.3 billion; birthday threshold ≈ 77,000 → ৭৭ হাজার session এ ৫০% collision
+print(f"Session ID 32-bit → 50% collision at ~{birthday_threshold(32):,} sessions")
+
+# UUID4: 2^122 random bits → collision ব্যবহারিকভাবে অসম্ভব
+print(f"UUID4 (122 bits) → 50% collision at ~{birthday_threshold(122):,}")
+# এই সংখ্যা মহাবিশ্বের পরমাণুর চেয়ে বড় → UUID নিরাপদ</div>
+
 <div class="dialogue"><strong>গণিতজ্ঞ:</strong> তোমার Django cache key hash করলে — infinite possible URL, finite hash output। Pigeonhole গ্যারান্টি দেয় — collision অনিবার্য! Birthday paradox বলে ২৩ জনে ৫০% duplicate birthday। এটাই birthday attack — hash function এ collision খুঁজে বের করা। UUID4 তে 2^122 possible value — collision প্রায় অসম্ভব। কিন্তু session ID (2^32) — ৭৭,০০০ session এ ৫০% collision! সবসময় বড় key space ব্যবহার করো।</div>`,
   recall: [
     { q: "Pigeonhole Principle কী?", a: "n item কে k box এ রাখলে, n > k হলে অন্তত এক box এ একাধিক item থাকবে। Hash collision এর গাণিতিক ভিত্তি।" },
@@ -154,6 +205,69 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: DAG — LedgerPilot transaction dependency graph। Topological sort দিয়ে valid execution order বের করা। Spark/Airflow তে এটাই pipeline model।</div>
 
+<div class="code-block">🐍 Python: Graph Theory — DAG, Topological Sort (networkx)
+
+import networkx as nx
+
+# DAG তৈরি — LedgerPilot transaction pipeline
+G = nx.DiGraph()
+edges = [
+    ('CreateAccount', 'DepositFunds'),
+    ('CreateAccount', 'VerifyKYC'),
+    ('VerifyKYC',     'CreateTransaction'),
+    ('DepositFunds',  'CreateTransaction'),
+    ('DepositFunds',  'UpdateBalance'),
+    ('CreateTransaction', 'UpdateBalance'),
+    ('UpdateBalance', 'SendReceipt'),
+]
+G.add_edges_from(edges)
+
+print("Is DAG (cycle নেই)?", nx.is_directed_acyclic_graph(G))  # True
+print("Vertices (nodes):", list(G.nodes()))
+print("Edges:", list(G.edges()))
+print("|V| =", G.number_of_nodes(), " |E| =", G.number_of_edges())
+
+# Topological Sort — valid execution order (dependencies আগে)
+topo = list(nx.topological_sort(G))
+print("Topological order:", " → ".join(topo))
+# CreateAccount → VerifyKYC → DepositFunds → CreateTransaction → UpdateBalance → SendReceipt
+
+# Cycle থাকলে topological sort সম্ভব নয় — DependencyError!
+G_bad = nx.DiGraph([('A','B'), ('B','C'), ('C','A')])  # A→B→C→A cycle
+print("Has cycle?", not nx.is_directed_acyclic_graph(G_bad))  # True
+try:
+    list(nx.topological_sort(G_bad))
+except nx.NetworkXUnfeasible as e:
+    print("Cycle detected:", type(e).__name__)  # NetworkXUnfeasible
+
+# In-degree: কতটা dependency এসে পৌঁছাচ্ছে
+print("In-degree UpdateBalance:", G.in_degree('UpdateBalance'))  # 2 (Deposit+Transaction)
+# Out-degree: কতটা নির্ভর করছে এটার উপর
+print("Out-degree CreateAccount:", G.out_degree('CreateAccount'))  # 2
+
+# BFS / DFS traversal — shortest path ও connectivity চেক
+from collections import deque
+def bfs_shortest_path(graph, start, goal):
+    queue = deque([[start]])
+    seen = {start}
+    while queue:
+        path = queue.popleft()
+        if path[-1] == goal: return path
+        for nxt in graph[path[-1]]:
+            if nxt not in seen:
+                seen.add(nxt); queue.append(path + [nxt])
+    return None
+
+adj = {n: list(G.successors(n)) for n in G.nodes()}
+print("Shortest path CreateAccount → SendReceipt:")
+print("  ", " → ".join(bfs_shortest_path(adj, 'CreateAccount', 'SendReceipt')))
+
+# Indegree-0 source nodes (পাইলাইনের শুরু)
+sources = [n for n in G.nodes() if G.in_degree(n) == 0]
+sinks   = [n for n in G.nodes() if G.out_degree(n) == 0]
+print("Sources (in-degree 0):", sources)  # ['CreateAccount']
+print("Sinks (out-degree 0):", sinks)     # ['SendReceipt']</div>
+
 <div class="dialogue"><strong>গণিতজ্ঞ:</strong> Graph = vertices + edges। Directed graph (digraph) = arrows সহ। DAG = directed, no cycles। Topological sort = valid order যেখানে প্রতিটা node তার dependencies এর পরে আসে। LedgerPilot এ: Account তৈরি → KYC verify → Deposit → Transaction → Balance update → Receipt। এই order ভাঙলে error! Spark (B44) আর Airflow (B43) তে DAG হল pipeline model। Compilers (B45) এ DAG = expression evaluation tree।</div>`,
   recall: [
     { q: "DAG কী এবং topological sort কেন দরকার?", a: "DAG = Directed Acyclic Graph (cycle নেই)। Topological sort = valid execution order যেখানে প্রতিটা node তার dependencies এর পরে। Build system, Spark pipeline, Celery task ordering।" },
@@ -232,6 +346,55 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Graph Coloring — Four Color Theorem (মানচিত্র) আর Register Allocation (compiler)। Variables = vertices, overlap = edge, register = color।</div>
 
+<div class="code-block">🐍 Python: Graph Coloring — Map Coloring ও Compiler Register Allocation
+
+import networkx as nx
+
+# Map coloring: adjacency graph থেকে chromatic number বের করা
+# চারটি region A,B,C,D — A ও B পাশাপাশি, ইত্যাদি (conflict edges)
+map_graph = nx.Graph()
+map_graph.add_edges_from([('A','B'), ('A','C'), ('B','D'), ('C','D'), ('B','C')])
+print("Map adjacency:", list(map_graph.edges()))
+
+# Greedy graph coloring — chromatic number এর আসল মানের কাছাকাছি
+coloring = nx.coloring.greedy_color(map_graph, strategy='largest_first')
+print("Coloring:", coloring)  # {'B': 0, 'C': 1, 'A': 2, 'D': 2} → ৩ color
+chromatic = max(coloring.values()) + 1
+print("Chromatic number (greedy):", chromatic)  # ৩ color লাগছে এই map এ
+
+# Four Color Theorem: যেকোনো planar graph ≤ ৪ color এ colorable
+# Planar check + coloring
+print("Is planar?", nx.check_planarity(map_graph)[0])  # True
+
+# Register Allocation (Chaitin 1981): variables = vertices, overlap = edge
+# দুটি variable একই সময়ে live হলে তাদের আলাদা register লাগে
+reg_graph = nx.Graph()
+# x,y,z,w,v — x,y overlap; y,z overlap; z,v overlap; w,v overlap; ইত্যাদি
+reg_graph.add_edges_from([('x','y'), ('y','z'), ('z','v'), ('v','w'), ('x','w')])
+regs = nx.coloring.greedy_color(reg_graph, strategy='largest_first')
+print("\nRegister allocation:")
+for var, color in sorted(regs.items()):
+    print(f"  {var} → R{color}  (register)")
+print("Min registers needed:", max(regs.values()) + 1)
+
+# Akamai deploy wave example — conflict graph coloring দিয়ে batch
+# ৬৫,০০০ সার্ভার, pairwise conflict থাকলে আলাদা wave
+import random
+random.seed(42)
+servers = [f"s{i}" for i in range(20)]   # ছোট উদাহরণ
+deploy_graph = nx.Graph()
+for i in range(len(servers)):
+    for j in range(i+1, len(servers)):
+        if random.random() < 0.15:   # ১৫% conflict
+            deploy_graph.add_edge(servers[i], servers[j])
+waves = nx.coloring.greedy_color(deploy_graph, strategy='largest_first')
+print(f"\n{len(servers)} সার্ভার → {max(waves.values())+1} deploy wave")
+for w in sorted(set(waves.values())):
+    batch = [s for s, c in waves.items() if c == w]
+    print(f"  Wave {w}: {batch}")
+
+# প্রতিটা wave এর সার্ভাররা একে অপরের সাথে conflict করে না → নিরাপদে deploy</div>
+
 <div class="dialogue"><strong>গণিতজ্ঞ:</strong> Four Color Theorem — ১৮৫২ সালে conjecture, ১৯৭৬ সালে প্রমাণ! প্রথম computer-assisted proof — Appel আর Haken। Graph coloring এর সবচেয়ে বড় application হল compiler register allocation (B45)। Chaitin (1981): variables = vertices, overlapping lifetime = edge, register = color। Chromatic number = minimum registers needed। Akamai ৬৫,০০০ সার্ভার conflict graph coloring করে ৮ color → ৮ wave deploy! NP-complete কিন্তু heuristic দ্রুত।</div>`,
   recall: [
     { q: "Four Color Theorem কী?", a: "যেকোনো planar map কে ৪টা রঙে রাঙানো যায় যেন পাশাপাশি region এর রং আলাদা। ১৯৭৬ সালে প্রথম computer-assisted proof।" },
@@ -300,6 +463,74 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Modular arithmetic — clock wrapping (ℤₙ) → sharding (user_id % N) → Euclidean algorithm (GCD/Pulverizer) → RSA encryption। সব সংযুক্ত!</div>
 
+<div class="code-block">🐍 Python: Modular Arithmetic — Clock Math, GCD, ও RSA Encryption
+
+# Modular arithmetic: ℤₙ ring — সব অপারেশন 'wrap around' করে
+print("Clock ℤ₁₂: ৭+৮ =", (7 + 8) % 12)   # 3 — ৭ঘ পরে ৮ঘ = ৩ঘ (পরের দিন)
+print("Django shard: 1032 % 5 =", 1032 % 5) # 2 → shard #2 (round-robin)
+
+# ℤ₅ এর সম্পূর্ণ addition ও multiplication table
+n = 5
+print(f"ℤ_{n} addition table:")
+for a in range(n):
+    print(" ", [(a + b) % n for b in range(n)])
+# ২টা column যোগ করে wrap করে — এটাই 'group' structure
+
+# Euclidean Algorithm (Pulverizer/kuttak) — GCD বের করা
+def gcd(a, b):
+    # ৬ষ্ঠ শতাব্দীর ভারতীয় অ্যালগরিদম, recursion দিয়ে
+    while b:
+        a, b = b, a % b
+    return a
+
+print("gcd(259, 70) =", gcd(259, 70))   # 7
+print("gcd(1071, 462) =", gcd(1071, 462))  # 21
+# প্রতিটা ধাপ: 259 = 3·70 + 49 → 70 = 1·49 + 21 → 49 = 2·21 + 7 → 21 = 3·7 + 0
+
+# Extended Euclidean — multiplicative inverse বের করে (RSA private key!)
+def extended_gcd(a, b):
+    if b == 0: return (a, 1, 0)
+    g, x1, y1 = extended_gcd(b, a % b)
+    return (g, y1, x1 - (a // b) * y1)
+
+def mod_inverse(e, phi):
+    # e⁻¹ mod φ(n) — RSA এর private key d
+    g, x, _ = extended_gcd(e, phi)
+    return x % phi if g == 1 else None
+
+print("3⁻¹ mod 11 =", mod_inverse(3, 11))  # 4 (কারণ 3·4=12≡1 mod 11)
+
+# Fermat's Little Theorem: a^(p-1) ≡ 1 (mod p), p prime
+p = 17
+for a in [2, 3, 5]:
+    print(f"  {a}^{p-1} mod {p} = {pow(a, p-1, p)}")  # সব 1
+# এটাই RSA decryption এর গ্যারান্টি!
+
+# Mini RSA (educational — বাস্তবে বড় prime লাগে)
+def rsa_demo():
+    p, q = 61, 53                    # দুটো prime
+    n = p * q                        # 3233 — public modulus
+    phi = (p-1) * (q-1)              # 3120 — Euler totient
+    e = 17                           # public exponent (coprime to φ)
+    d = mod_inverse(e, phi)          # 2753 — private key
+
+    msg = 42                         # plaintext (একটা সংখ্যা)
+    cipher = pow(msg, e, n)          # encrypt: c = m^e mod n
+    decrypted = pow(cipher, d, n)    # decrypt: m = c^d mod n
+
+    print(f"  p={p}, q={q}, n={n}, φ={phi}")
+    print(f"  public key:  (e={e}, n={n})")
+    print(f"  private key: (d={d}, n={n})")
+    print(f"  message={msg} → cipher={cipher} → decrypted={decrypted}")
+    assert decrypted == msg, "RSA failed!"
+    print("  RSA round-trip ✅")
+
+rsa_demo()
+
+# n কে factor করতে পারলে RSA ভেঙে যায়
+print("Factor 3233 →", [(p, 3233//p) for p in range(2, 60) if 3233 % p == 0][0])
+# (61, 53) — বাস্তবে n হল ~2048-bit → factor করা ব্যবহারিকভাবে অসম্ভব</div>
+
 <div class="dialogue"><strong>গণিতজ্ঞ:</strong> Modular arithmetic শুধু <code>%</code> নয়। ℤₙ একটা সম্পূর্ণ ring — addition, multiplication, inverse সব কাজ করে। Euclidean algorithm — ভারতীয় নাম 'kuttak' (Pulverizer) — GCD বের করে। Extended version multiplicative inverse বের করে → এটাই RSA private key। Fermat এর Little Theorem: <code>a^(p-1) ≡ 1 (mod p)</code>। Euler এর totient: <code>a^φ(n) ≡ 1 (mod n)</code>। এই দুটো গ্যারান্টি দেয় RSA decryption কাজ করবে। HTTPS এর পুরো ভিত্তি!</div>`,
   recall: [
     { q: "Modular arithmetic কেন শুধু % নয়?", a: "ℤₙ একটা সম্পূর্ণ algebraic ring — addition, multiplication, inverse সব কাজ করে। RSA encryption এই ring এর properties এর উপর নির্ভর করে।" },
@@ -359,6 +590,83 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Master Theorem — T(n) = aT(n/b) + f(n) থেকে instant Big-O। Merge Sort = O(n log n), Binary Search = O(log n), Strassen = O(n^2.81)।</div>
+
+<div class="code-block">🐍 Python: Master Theorem — Divide & Conquer Recurrence → Big-O স্বয়ংক্রিয়
+
+import math
+
+# Master Theorem: T(n) = a·T(n/b) + f(n)
+# তিনটি case, তুলনা করে f(n) vs n^(log_b a)
+def master_theorem(a, b, f_exponent, n=1024):
+    # f(n) ≈ n^f_exponent (polynomial assumption)
+    critical = math.log(a) / math.log(b)   # log_b(a) — এটাই সীমারেখা
+    print(f"  T(n) = {a}·T(n/{b}) + O(n^{f_exponent})")
+    print(f"  log_{b}({a}) = {critical:.4f}, সীমা n^{critical:.4f}")
+
+    eps = 0.001
+    if f_exponent < critical - eps:
+        case = 1
+        result = f"Θ(n^{critical:.4f})  ≈  Θ(n^{round(critical,2)})"
+    elif abs(f_exponent - critical) < eps:
+        case = 2
+        result = f"Θ(n^{critical:.4f} · log n)  ≈  Θ(n^{round(critical,2)} · log n)"
+    else:
+        case = 3
+        result = f"Θ(n^{f_exponent})  (f আধিপত্য করে)"
+    print(f"  → Case {case}: {result}\n")
+
+print("=== Classic Algorithms ===")
+master_theorem(a=2, b=2, f_exponent=1)   # Merge Sort
+master_theorem(a=1, b=2, f_exponent=0)   # Binary Search
+master_theorem(a=7, b=2, f_exponent=2)   # Strassen matrix multiply
+master_theorem(a=4, b=2, f_exponent=1)   # কোনো কাল্পনিক D&C
+master_theorem(a=2, b=2, f_exponent=2)   # '过度 work' case 3
+
+# Empirical verification — সত্যিকারের রান টাইম মাপা
+import time
+def merge_sort(arr):
+    if len(arr) <= 1: return arr
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    out, i = [], 0
+    # merge step (O(n) work)
+    while left and right:
+        out.append(left.pop(0) if left[0] < right[0] else right.pop(0))
+    return out + left + right
+
+def binary_search(arr, target):
+    lo, hi = 0, len(arr) - 1
+    steps = 0
+    while lo <= hi:
+        steps += 1
+        mid = (lo + hi) // 2
+        if arr[mid] == target: return steps
+        elif arr[mid] < target: lo = mid + 1
+        else: hi = mid - 1
+    return steps
+
+# Doubling-ratio experiment: n ২x হলে সময় কতগুণ বাড়ে?
+print("=== Empirical Big-O (doubling ratio) ===")
+for size in [1000, 2000, 4000, 8000]:
+    arr = list(range(size))
+    t0 = time.perf_counter()
+    merge_sort(arr.copy())
+    dt = time.perf_counter() - t0
+    bs_steps = binary_search(arr, size - 1)
+    print(f"  n={size:5d}: merge={dt*1000:6.2f}ms, binary_search steps={bs_steps} (~log₂({size})={math.log2(size):.1f})")
+# n ২x → merge_sort সময় ~২x (O(n log n)), binary search steps +১ (O(log n))
+
+# Master Theorem দিয়ে Strassen এর উন্নতি দেখানো
+print("\nStrassen: log₂(7) =", round(math.log2(7), 4), "< 3")
+print("  স্ট্যান্ডার্ড matmul: O(n³) — Strassen: O(n^2.807) → বড় n এ দ্রুত")
+
+# Recurrence tree: প্রতিটা স্তরে a বাচ্চা, গভীরতা log_b(n), মোট নোড n^(log_b a)
+n = 1024
+for name, (a, b) in [("Merge", (2,2)), ("Strassen", (7,2)), ("Karatsuba", (3,2))]:
+    depth = math.log(n, b)
+    leaves = a ** depth
+    print(f"  {name:10s}: depth=log_{b}({n})={depth:.0f}, leaves={a}^{depth:.0f}={leaves:.0e}")</div>
 
 <div class="dialogue"><strong>গণিতজ্ঞ:</strong> Master Theorem হল তোমার সব divide-and-conquer algorithm এর complexity calculator। Merge Sort: <code>2T(n/2) + O(n)</code> → Case 2 → <code>O(n log n)</code>। Binary Search: <code>T(n/2) + O(1)</code> → Case 1 → <code>O(log n)</code>। Strassen এর matrix multiply: <code>7T(n/2) + O(n²)</code> → Case 1 → <code>O(n^2.81)</code> — স্ট্যান্ডার্ড O(n³) এর চেয়ে দ্রুত! B2 (DSA) তে শেখা সব algorithm এর complexity এই theorem থেকে আসে। এটাই discrete math এর সবচেয়ে practical tool — induction + recurrence + logarithm এর সমন্বয়। Generating functions ও recurrence solve করে — polynomial এর coefficient থেকে closed-form solution।</div>
 

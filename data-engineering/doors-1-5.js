@@ -50,6 +50,23 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: OLTP = row-by-row (দ্রুত update), OLAP = column-by-column (দ্রুত aggregation)। একই ডেটা, দুই ভিন্ন layout।</div>
 
+<div class="code-block">
+<div class="code-title">🗄️ OLTP vs OLAP — একই ডেটা, দুই query / same data, two queries</div>
+<pre>-- ▶ OLTP (MySQL / PostgreSQL): row-level, দ্রুত single-row lookup
+SELECT id, amount, status
+FROM transactions
+WHERE id = 42;
+
+-- ▶ OLAP (DuckDB / Parquet): columnar, শুধু amount কলাম পড়ে SUM
+SELECT category,
+       SUM(amount)   AS revenue,
+       COUNT(*)      AS txns
+FROM fact_sales
+WHERE sale_date &gt;= DATE '2026-01-01'
+GROUP BY category
+ORDER BY revenue DESC;</pre>
+</div>
+
 <div class="dialogue"><strong>ডেটা ইঞ্জিনিয়ার:</strong> LedgerPilot-এ তুমি MySQL ব্যবহার করো — কারণ তোমার দরকার দ্রুত transaction। একটা invoice তৈরি করো, payment update করো — সব row-level। কিন্তু যখন তুমি বলবে "গত ত্রৈমাসিকে প্রতিটা ক্যাটাগরির মোট আয় দেখাও" — MySQL কষ্ট করে লাখ লাখ row পড়বে। এখানেই OLAP দরকার। Columnar storage — Parquet — শুধু 'amount' কলাম পড়ে SUM করে। ১০x দ্রুত।</div>
 <div class="dialogue en"><strong>Data Engineer:</strong> LedgerPilot uses MySQL — because you need fast transactions. Create invoice, update payment — all row-level. But when you say "show me total revenue per category last quarter" — MySQL reads millions of rows painfully. This is where OLAP is needed. Columnar storage — Parquet — reads only the 'amount' column. 10x faster.</div>`,
   recall: [
@@ -127,6 +144,31 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Row-based (CSV/MySQL) সব column পড়ে। Parquet শুধু দরকারি column পড়ে। Dictionary + RLE + predicate pushdown = ৯০% ছোট।</div>
 
+<div class="code-block">
+<div class="code-title">📦 Parquet — কলাম-ভিত্তিক লেখা ও পড়া / columnar write &amp; read</div>
+<pre>import pyarrow as pa
+import pyarrow.parquet as pq
+
+# লেখা: row ডেটাকে কলামে সাজিয়ে Parquet-এ লেখো (Snappy compression)
+table = pa.table({
+    "id":      [1, 2, 3, 4],
+    "name":    ["Hasan", "Rakib", "Sadia", "Hasan"],
+    "amount":  [5000, 3200, 8100, 1500],
+    "country": ["BD", "BD", "BD", "BD"],   # Dictionary + RLE → "BD" × 4
+})
+pq.write_table(table, "sales.parquet",
+               compression="snappy",
+               use_dictionary=True)
+
+# পড়া: DuckDB শুধু 'amount' কলাম পড়ে — column pruning + predicate pushdown
+import duckdb
+duckdb.sql("""
+    SELECT SUM(amount) AS total
+    FROM 'sales.parquet'
+    WHERE amount &gt; 2000          -- min/max stats দিয়ে ব্লক skip করে
+""").show()</pre>
+</div>
+
 <div class="dialogue"><strong>প্যাটারসন:</strong> (গল্প শুরু) আমি ডেভিড প্যাটারসন। ২০১৩ সালে Google আর Twitter মিলে Parquet তৈরি করল — সবচেয়ে সহজ আইডিয়া দিয়ে। ডেটাকে আনুভূমিক করে শুইয়ে দাও। প্রতিটা column আলাদা ফাইলে। একটা column-এ সব ডেটা একই টাইপের — তাই Dictionary Encoding দিয়ে বারবার আসা value-কে integer-এ রূপান্তর করা যায়। Run-Length Encoding দিয়ে পুনরাবৃত্তি সংকুচিত করা যায়। ফলাফল? ৯০% ছোট ফাইল।</div>`,
   recall: [
     { q: "Column Pruning কী?", a: "Query যখন শুধু কয়েকটা column চায়, Parquet বাকিগুলো একদম পড়ে না — ৮০-৯৫% I/O বাঁচে।" },
@@ -191,6 +233,25 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Star Schema — কেন্দ্রে Fact table (events), চারপাশে Dimension tables (lookup)। সহজ query, দ্রুত BI।</div>
+
+<div class="code-block">
+<div class="code-title">⭐ Star Schema — Fact + Dimensions এক query-তে / one joined query</div>
+<pre>-- কেন্দ্রে Fact_Sales, চারপাশে ৪টা Dimension। JOIN আগেই simplify করা।
+SELECT d_store.region                AS region,
+       d_prod.category               AS category,
+       d_date.year || '-Q' || d_date.quarter AS period,
+       SUM(f.amount)                 AS revenue,
+       COUNT(*)                      AS num_sales
+FROM   fact_sales    AS f
+JOIN   dim_product   AS d_prod  ON f.product_id  = d_prod.product_id
+JOIN   dim_customer  AS d_cust  ON f.customer_id = d_cust.customer_id
+JOIN   dim_date      AS d_date  ON f.date_id     = d_date.date_id
+JOIN   dim_store     AS d_store ON f.store_id    = d_store.store_id
+WHERE  d_date.year = 2026
+GROUP  BY region, category, period
+ORDER  BY revenue DESC
+LIMIT  20;</pre>
+</div>
 
 <div class="dialogue"><strong>কিম্বল:</strong> আমি রাল্ফ কিম্বল। ১৯৯০-এর দশকে আমি একটা সহজ আইডিয়া নিয়ে এসেছিলাম — analytics ডেটাবেস স্বাভাবিক অ্যাপ ডেটাবেসের মতো নয়। অ্যাপ ডেটাবেসে ৫টা টেবিল JOIN করে একটা সহজ রিপোর্ট বানাতে হয়। কিন্তু analytics-এ? আমরা JOIN গুলো আগেই সমতল করে রাখি। কেন্দ্রে একটা Fact table — কাঁচা ঘটনা (transaction_id, amount, date)। চারপাশে Dimension tables — lookup ক্যাশ (product name, customer region)। এটাই Star Schema। ব্যবহারকারী একটা সহজ ২-টেবিল JOIN করে যে উত্তর চায় তা পায়।</div>`,
   recall: [
@@ -272,6 +333,26 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Spark = Lazy Transformations → Catalyst Optimizer (filter কে join এর আগে push করে) → DAG Stages (shuffle এ stage ভাগ হয়)।</div>
 
+<div class="code-block">
+<div class="code-title">⚡ PySpark — Lazy Transformations + Action / অলস পরিকল্পনা</div>
+<pre>from pyspark.sql import SparkSession
+spark = SparkSession.builder.appName("sales-report").getOrCreate()
+
+# --- Transformations: এখনো কিছু চলেনি! শুধু logical plan তৈরি হয় ---
+raw    = spark.read.parquet("s3://bucket/raw/")          # lazy
+clean  = raw.filter((raw.amount &gt; 0) &amp; raw.status.isin("paid","pending"))
+joined = clean.join(dim_product, "product_id")           # lazy
+report = (joined.groupBy("category")
+                 .agg({"amount": "sum"})
+                 .withColumnRenamed("sum(amount)", "revenue"))
+
+# যতক্ষণ না Action ডাকো — Catalyst পুরো plan optimize করে
+report.explain(True)        # logical → optimized → physical plan দেখাও
+
+# --- Action: এখানেই DAG তৈরি হয়ে সত্যিকার চলে ---
+report.write.mode("overwrite").parquet("s3://bucket/out/revenue/")</pre>
+</div>
+
 <div class="dialogue"><strong>স্পার্ক ইঞ্জিনিয়ার:</strong> ২০০৯ সালে UC Berkeley-তে Matei Zaharia Spark তৈরি করে। মূল আইডিয়া — in-memory computation + lazy evaluation। তুমি <code>filter()</code> আর <code>join()</code> লেখো। Spark সাথে সাথে কিছু করে না! সে শুধু logical plan বানায়। তারপর যখন <code>.write()</code> বা <code>.count()</code> করো — Catalyst Optimizer পুরো plan দেখে। তুমি filter কে join এর পরে লিখলেও Catalyst সেটাকে join এর আগে push করে দেয়! কম ডেটা shuffle হয়। দ্রুত চলে।</div>`,
   recall: [
     { q: "Spark-এ Transformation আর Action-এর পার্থক্য কী?", a: "Transformation (filter, join, map) = lazy — শুধু plan বানায়। Action (count, write, collect) = execution trigger করে।" },
@@ -352,6 +433,30 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Data skew = এক partition-এ সব ডেটা। Broadcast Join = shuffle ছাড়া। Sort-Merge = বড় টেবিলের জন্য।</div>
+
+<div class="code-block">
+<div class="code-title">🔀 Shuffle এড়ানো — Broadcast Join + Salting / skew fix</div>
+<pre>from pyspark.sql.functions import broadcast, col, concat, lit, rand
+
+# ✅ Broadcast Join: ছোট dim table সব executor-কে পাঠাও → ZERO shuffle
+joined = big_facts.join(broadcast(dim_product), "product_id")
+
+# threshold বাড়াও যাতে অটো-broadcast হয়
+spark.conf.set("spark.sql.autoBroadcastJoinThreshold", 104857600)  # 100 MB
+
+# ✅ Salting: একটা গরম key-কে ১০ ভাগে ছড়িয়ে skew ভাঙো
+N = 10
+salted_facts = big_facts.withColumn(
+    "salted_key",
+    concat(col("user_id"), lit("_"), (rand() * N).cast("int"))
+)
+# dim-এর প্রতিটা row-কে N বার ফুলিয়ে দাও, তারপর salted_key-তে join করো
+dim_exploded = dim_users.withColumn(
+    "salted_key",
+    concat(col("user_id"), lit("_"), (col("i") % N).cast("int"))
+)
+joined = salted_facts.join(dim_exploded, "salted_key")</pre>
+</div>
 
 <div class="dialogue"><strong>সিনিয়র স্পার্ক ইঞ্জিনিয়ার:</strong> Spark-এ প্রতিটা performance problem-এর শেকড় একটাই — shuffle। যখন join বা groupBy করো, ডেটা executor-এর মধ্যে চলাচল করে। এতে disk write + network transfer + serialization — কম্পিউটারের সবচেয়ে ধীর তিনটা জিনিস! সমাধান? Broadcast Join। ছোট table (Dimension table) সব executor-কে পাঠিয়ে দাও — কোনো shuffle লাগবে না। <code>spark.sql.autoBroadcastJoinThreshold</code> বাড়াও ১০০-৫০০MB পর্যন্ত। এই একটা setting change বেশি shuffle এড়ায় যেকোনো optimization থেকে।</div>`,
   recall: [

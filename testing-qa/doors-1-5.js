@@ -67,6 +67,49 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Unit (দ্রুত, isolated), Integration (sweet spot, আসল bug ধরে), E2E (সর্বোচ্চ confidence, ধীর)। প্রতিটার নিজস্ব ভূমিকা।</div>
 
+<div class="code-block">Three Watchtowers — Unit vs Integration vs E2E in action:
+
+১. UNIT TEST (⚡ milliseconds, isolated):
+  # tests/test_tax.py
+  def test_calculate_tax():
+      assert calculate_tax(100) == 12.50
+      assert calculate_tax(0) == 0
+
+  $ pytest tests/test_tax.py -q
+  1 passed in 0.02s
+
+২. INTEGRATION TEST (🔄 real DB, sweet spot):
+  # tests/test_transfer_api.py
+  def test_transfer_writes_to_db(db):
+      response = client.post('/api/transfer', json={
+          'from': 1, 'to': 2, 'amount': 500
+      })
+      assert response.status_code == 201
+      assert Account.objects.get(pk=2).balance == 1500
+
+  $ pytest tests/test_transfer_api.py -q
+  1 passed in 1.84s   ← slower, but catches REAL bugs
+
+৩. E2E TEST (🐢 full browser journey):
+  # e2e/transfer.spec.ts
+  test('user transfers money', async ({page}) => {
+    await page.goto('/login')
+    await page.fill('[name=email]', 'rakib@test.com')
+    await page.click('button[type=submit]')
+    await page.click('text=Transfer')
+    await expect(page.locator('.balance')).toHaveText('৳১৫০০')
+  })
+
+  $ npx playwright test e2e/transfer.spec.ts
+  Running 1 test using 1 worker
+    ✓  chromium transfer.spec.ts (3.2s)
+  1 passed (4.1s)   ← slowest, but highest confidence
+
+স্পিড:     Unit (0.02s) < Integration (1.8s) < E2E (4.1s)
+কনফিডেন্স: Unit < Integration < E2E
+🏆 Integration = sweet spot — আসল interaction bug ধরে।
+Guillermo Rauch: "Write tests. Not too many. Mostly integration."</div>
+
 <div class="dialogue"><strong>টেস্ট ইঞ্জিনিয়ার:</strong> প্রতিটা test type এর নিজস্ব ভূমিকা। Unit test — একটা ফাংশন, isolated, মিলিসেকেন্ডে চলে। কিন্তু integration bug ধরে না। Integration test — দুটো জিনিস একসাথে, API→DB, আসল bug ধরে! Guillermo Rauch বলেছেন — 'Mostly integration.' E2E test — পুরো user journey, ব্রাউজারে, সবচেয়ে নির্ভরযোগ্য। কিন্তু ধীর আর flaky। LedgerPilot এ: unit দিয়ে calculate_tax, integration দিয়ে transfer API→MySQL, E2E দিয়ে login→transfer→balance check।</div>`,
   recall: [
     { q: "Integration test কেন 'sweet spot'?", a: "Integration test আসল component interaction test করে — API→DB, দুটো জিনিস একসাথে। Unit এর চেয়ে বেশি bug ধরে, E2E এর চেয়ে দ্রুত আর stable। Guillermo Rauch: 'Mostly integration.'" },
@@ -121,6 +164,32 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Pyramid = unit-heavy (2009)। Trophy = integration-heavy (2018)। Guillermo Rauch: 'Write tests. Not too many. Mostly integration.'</div>
+
+<div class="code-block">Pyramid vs Trophy — তোমার test suite এর আসল অনুপাত:
+
+PYRAMID (Mike Cohn 2009) — unit-heavy:
+  $ pytest --collect-only -q | awk '{print $NF}' | sort | uniq -c
+    142 tests/test_*_unit.py      ← 70% unit
+     41 tests/test_*_integration.py  ← 20% integration
+     18 tests/test_*_e2e.py       ← 10% E2E
+  সমস্যা: unit pass, কিন্তু production এ API→DB integration bug!
+
+TROPHY (Kent C. Dodds 2018) — integration-heavy:
+  $ pytest --collect-only -q | awk '{print $NF}' | sort | uniq -c
+     28 tests/test_*_unit.py
+    156 tests/test_*_integration.py   ← MOSTLY integration!
+      6 tests/test_*_e2e.py
+     42 lint/typecheck (static)       ← base layer
+
+  ESLint + mypy (static, সবচেয়ে দ্রুত):
+  $ npx eslint src/ && mypy backend/ --no-error-summary
+  ✓ No issues.  ← 0ms execution, syntax/type error আগেই ধরা
+
+Guillermo Rauch এর tweet (2017):
+  "Write tests. Not too many. Mostly integration."
+
+টেকওয়ে: integration test আসল bug ধরে — Vue↔Django↔MySQL interaction এ।
+তাই Trophy integration কে সবচেয়ে বড় রাখে।</div>
 
 <div class="dialogue"><strong>কেন্ট সি. ডডস:</strong> আমি 2018 সালে Testing Trophy formalize করেছিলাম। Pyramid এর সমস্যা — unit test খুব isolated, আসল bug ধরে না। আধুনিক app এ Vue/React frontend, Django API, MySQL database — এদের মধ্যে interaction এ বাগ হয়। Integration test এই বাগ ধরে। তাই Trophy তে integration সবচেয়ে বড়। Static analysis (ESLint, mypy) base — syntax error আগেই ধরে। E2E সামান্য — শুধু critical path। 'Write tests. Not too many. Mostly integration.'</div>`,
   recall: [
@@ -185,6 +254,54 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: TDD cycle — Red (failing test) → Green (pass) → Refactor (clean)। আসলে এটা design tool — test আগে লিখলে interface ভাবতে বাধ্য হও।</div>
 
+<div class="code-block">TDD Cycle — Red → Green → Refactor (live terminal session):
+
+🔴 RED — failing test আগে লেখো:
+  # tests/test_atm.py
+  def test_withdraw_over_500_fails():
+      atm = ATM(balance=1000)
+      with pytest.raises(OverLimitError):
+          atm.withdraw(600)   # $500+ should be rejected
+
+  $ pytest tests/test_atm.py::test_withdraw_over_500_fails -q
+  FAILED tests/test_atm.py::test_withdraw_over_500_fails
+  E NameError: name 'OverLimitError' is not defined
+  1 failed in 0.03s   ← ✅ Red! Test fails — code doesn't exist yet.
+
+🟢 GREEN — minimal code লেখো, শুধু test pass করার জন্য:
+  # atm.py
+  class OverLimitError(Exception): pass
+
+  class ATM:
+      def __init__(self, balance):
+          self.balance = balance
+
+      def withdraw(self, amount):
+          if amount > 500:
+              raise OverLimitError("Exceeds $500 limit")
+          self.balance -= amount
+
+  $ pytest tests/test_atm.py::test_withdraw_over_500_fails -q
+  1 passed in 0.02s   ← ✅ Green! Test passes — but code is minimal/ugly.
+
+♻️ REFACTOR — code পরিষ্কার করো, tests আবার চালাও:
+  # ভ্যারিয়েবল নাম বদলাও, magic number কে config এ নাও
+  MAX_WITHDRAWAL = 500   # → settings.py তে move করো
+
+  class ATM:
+      def withdraw(self, amount):
+          self._validate_limit(amount)   # extracted method
+          self.balance -= amount
+
+      def _validate_limit(self, amount):
+          if amount > MAX_WITHDRAWAL:
+              raise OverLimitError(f"Exceeds {MAX_WITHDRAWAL} limit")
+
+  $ pytest tests/test_atm.py -q
+  1 passed in 0.02s   ← ✅ Tests still pass! Code is now clean.
+
+💡 TDD = design tool — test আগে লেখায় interface আগেই ভাবতে হয়।</div>
+
 <div class="dialogue"><strong>টিডিডি প্র্যাকটিশনার:</strong> TDD আসলে testing এর চেয়ে design। Test আগে লেখো — ভাবতে হবে কী interface দরকার, কী behavior expected। 'ATM $500+ reject করবে' — এই test লেখো, Red (fail)। তারপন minimal code, Green (pass)। তারপর refactor। LedgerPilot এ: financial calculation গুলো TDD দিয়ে করো — transfer, tax, balance। UI component গুলো পরে test করো। TDD সব জায়গায় দরকার না — exploratory code এ নয়।</div>`,
   recall: [
     { q: "TDD কেন design tool?", a: "Test আগে লেখলে interface, API, আর dependency ভাবতে বাধ্য হও। Implementation এর আগে behavior define করো। 'Need-driven development' — প্রথমে কী দরকার ভাবো।" },
@@ -241,6 +358,53 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Coverage = line execute হলো (মিথ্যা নিরাপত্তা)। Mutation = bug ঢুকিয়ে দেখো test ধরছে কিনা (সত্য)। Survived mutant = test blind spot।</div>
+
+<div class="code-block">Coverage vs Mutation — মিথ্যা নিরাপত্তা উন্মোচন:
+
+১. CODE COVERAGE (বিভ্রান্তিকর — 100% কিন্তু কোনো assertion নেই):
+  # buggy.py
+  def is_adult(age):
+      return age >= 18
+
+  # tests/test_buggy.py — কোনো assert নেই!
+  def test_is_adult():
+      result = is_adult(20)   # ← line execute হলো, কিন্তু verify করছে না!
+      # assert ভুলে গেছি!
+
+  $ pytest --cov=buggy tests/ --cov-report=term-missing
+  ---------- coverage: platform linux ----------
+  Name       Stmts   Miss  Cover
+  ------------------------------------
+  buggy.py       2      0   100%   ← 💀 100% coverage! কিন্তু bug ধরবে না।
+  ------------------------------------
+  TOTAL          2      0   100%
+
+২. MUTATION TESTING (সত্য — bug ঢুকিয়ে দেখো test ধরছে কিনা):
+  $ mutmut run --paths-to-mutate=buggy.py
+   2. 1. is_adult
+  🧬 Mutants generated: 4
+
+  $ mutmut results
+  To apply a mutant on disk:
+    mutmut show <id>
+
+  Survived mutants (1):
+    buggy.py:2:
+   -     return age >= 18
+   +     return age > 18    ← mutant! >= কে > বদলানো হলো
+
+  $ mutmut show 1
+  --- buggy.py
+  +++ buggy.py
+  @@ -1,2 +1,2 @@
+   def is_adult(age):
+  -    return age >= 18
+  +    return age > 18
+
+  🚨 SURVIVED! Test pass করে গেছে — মানে test এ assert নেই। Blind spot!
+
+mutation score = killed / total = 3/4 = 75%  (target: 80%+)
+→ coverage 100% ছিল, কিন্তু mutation উন্মোচন করল যে test দুর্বল।</div>
 
 <div class="dialogue"><strong>মিউটেশন টেস্টার:</strong> Coverage তোমাকে মিথ্যা নিরাপত্তা দেয়। ১০০% coverage মানে শুধু প্রতিটা line execute হয়েছে — সেটা সঠিক কিনা কেউ চেক করেনি! Mutation testing: কোড ক্লোন করো, একটা ছোট bug ঢুকিয়ে দাও — <code>></code> কে <code>>=</code> বদলাও, <code>+</code> কে <code>-</code> করো। তারপর test চালাও। যদি test fail করে — mutant killed! তোমার test শক্তিশালী। যদি pass করে — mutant survived! তোমার test দুর্বল। LedgerPilot এ: mutmut মাসে একবার financial module এ চালাও। Target: ৮০%+ mutation score।</div>`,
   recall: [
@@ -325,6 +489,76 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: ৫ test doubles — Dummy (placeholder), Stub (canned), Spy (record), Mock (expect), Fake (real impl)। Fake সবচেয়ে ভালো — in-memory DB। Over-mocking = brittle।</div>
+
+<div class="code-block">Five Test Doubles — জীবন্ত উদাহরণ (Martin Fowler):
+
+class PaymentProcessor:
+    def __init__(self, gateway, logger):
+        self.gateway = gateway      # Stripe এর মত
+        self.logger = logger
+
+    def charge(self, user, amount):
+        result = self.gateway.pay(amount)
+        self.logger.log(f"Charged {user}: {result}")
+        return result
+
+১. DUMMY — placeholder, কখনো use হয় না:
+  def test_payment_init():
+      dummy_logger = None   # শুধু param fill করার জন্য
+      proc = PaymentProcessor(RealGateway(), dummy_logger)
+      assert proc is not None   # logger কখনো call হয় না
+
+২. STUB — canned response (state verification):
+  class StripeStub:
+      def pay(self, amount):
+          return {"status": "success", "id": "ch_test_123"}
+
+  def test_charge_succeeds():
+      proc = PaymentProcessor(StripeStub(), RealLogger())
+      result = proc.charge("rakib", 100)
+      assert result["status"] == "success"   # ← fixed answer
+
+৩. SPY — record calls (কতবার call হলো):
+  class LoggerSpy:
+      def __init__(self):
+          self.calls = []
+      def log(self, msg):
+          self.calls.append(msg)
+
+  def test_logger_was_called():
+      spy = LoggerSpy()
+      proc = PaymentProcessor(StripeStub(), spy)
+      proc.charge("rakib", 100)
+      assert len(spy.calls) == 1   # ← কতবার call হলো তা যাচাই
+
+৪. MOCK — strict expectations (behavior verification):
+  from unittest.mock import MagicMock
+  def test_charge_calls_gateway_once():
+      mock_gateway = MagicMock()
+      mock_gateway.pay.return_value = {"status": "success"}
+      proc = PaymentProcessor(mock_gateway, LoggerSpy())
+      proc.charge("rakib", 100)
+      mock_gateway.pay.assert_called_once_with(100)   # ← strict!
+
+৫. FAKE ⭐ — real implementation, simplified (in-memory DB):
+  class InMemoryAccountDB:
+      """Real CRUD behavior, কিন্তু RAM এ — no MySQL needed."""
+      def __init__(self):
+          self.data = {}
+      def save(self, acct):
+          self.data[acct.id] = acct
+      def get(self, id):
+          return self.data.get(id)
+
+  def test_transfer_between_accounts():
+      db = InMemoryAccountDB()   # ← Fake! Real behavior, fast.
+      db.save(Account(id=1, balance=1000))
+      db.save(Account(id=2, balance=500))
+      transfer(db, from_id=1, to_id=2, amount=200)
+      assert db.get(1).balance == 800
+      assert db.get(2).balance == 700
+
+🏆 Best practice: Fake > Spy > Stub > Mock। Mock কমাও, behavior test করো।</div>
 
 <div class="dialogue"><strong>মার্টিন ফাউলার:</strong> আমি 'Mocks Aren't Stubs' লিখেছিলাম কারণ অনেকে mock আর stub মিক্স করে ফেলে। পাঁচ ধরনের test double আছে — প্রতিটার নিজস্ব উদ্দেশ্য। Stub শুধু fixed answer দেয়। Mock behavior verify করে — কতবার call হলো, কী argument দিয়ে। Fake হল সবচেয়ে সুন্দর — একটা real implementation কিন্তু simplified। In-memory database = Fake। সব কিছু mock করলে test brittle হয়ে যায় — refactor করলেই ভাঙে। আমার পরামর্শ: যত বেশি Fake, তত ভালো। যত কম Mock, তত স্থিতিশীল test।</div>`,
   recall: [

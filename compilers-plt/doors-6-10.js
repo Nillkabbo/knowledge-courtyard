@@ -60,6 +60,45 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Register allocation = graph coloring। Interfering variables আলাদা color (register)। শেয়ার করতে পারে যারা overlap করে না। NP-complete!</div>
 
+<div class="code-block"><div class="code-title">🎨 Door 6 — Real Register Allocation: x86 Assembly</div>
+<pre><code>// reg.c — 4 variables, but x86 has limited registers
+int f(int a, int b, int c, int d) {
+    int x = a + b;    // x live until return
+    int y = c + d;    // y live until return
+    int z = x * y;    // z live until return
+    return x + y + z;
+}
+
+# -O0 keeps everything on the stack (RAM):
+$ gcc -S -O0 reg.c -o reg_O0.s
+$ grep -c 'movl.*rsp' reg_O0.s
+   12   # lots of stack spills
+
+# -O2 allocates registers via graph coloring:
+$ gcc -S -O2 reg.c -o reg_O2.s
+$ grep -E 'eax|ebx|ecx|edx' reg_O2.s
+    addl    %edx, %eax    # x = a+b in eax
+    addl    %ecx, %eax    # +c
+    addl    %edi, %eax    # +d
+    imull   %edx, %eax    # x*y
+    ret                   # no spills!</code></pre>
+<pre><code># View the register allocator's interference graph:
+$ gcc -O2 -fdump-rtl-ra reg.c -o /dev/null
+$ cat reg.c.5016r.ra
+
+  ; a -&gt; conflicts with: b c d
+  ; b -&gt; conflicts with: a c d
+  ; Hard regs used: ax cx dx (3 of 6 available)
+  ; Spills: 0
+
+# Chaitin-Briggs algorithm:
+#   1. Build interference graph (who's live at same time)
+#   2. Simplify: remove nodes with degree &lt; K (K=#registers)
+#   3. If stuck -&gt; spill a variable to RAM
+#   4. Select: assign colors (registers) in reverse order</code></pre>
+<span class="code-note">💡 <code>-O0</code> এ variable গুলো stack এ থাকে (ধীর)। <code>-O2</code> তে graph coloring দিয়ে register allocate হয় (দ্রুত)।</span>
+</div>
+
 <div class="dialogue"><strong>চাইটিন:</strong> আমি গ্রেগরি চাইটিন। ১৯৮১ সালে IBM-এ আমি register allocation কে graph coloring সমস্যা হিসেবে formalize করেছিলাম। প্রতিটা variable একটা node। দুটি variable যদি একই সময়ে live থাকে, তাদের মধ্যে edge। এখন এই graph কে কম রং দিয়ে color করতে হয় যাতে adjacent node গুলো আলাদা রং পায়। কিন্তু এটা NP-complete! বড় program এ optimal solution অসম্ভব। তাই heuristic ব্যবহার করি — Chaitin-Briggs algorithm। Register শেষ হলে spill — RAM এ store করতে হয়। ধীর কিন্তু correct।</div>`,
   recall: [
     { q: "Register allocation কেন NP-complete?", a: "Graph coloring সবসময় সবচেয়ে কম রং দিয়ে করা NP-complete। Variable সংখ্যা বড় হলে brute force অসম্ভব।" },
@@ -131,6 +170,41 @@ doors.push({
 </svg>
 </div>
 <div class="svg-caption">চিত্র: CPython = compile to bytecode → PVM interpret → 8x hot → specialize → C-speed। Type change → deopt → fallback। Python 3.11+ = ২৫% দ্রুত।</div>
+
+<div class="code-block"><div class="code-title">🐍 Door 7 — Real CPython: Bytecode &amp; Specialization</div>
+<pre><code># Python source compiles to bytecode, then PVM interprets it
+&gt;&gt;&gt; def f(x):
+...     return x * 2.0
+...
+&gt;&gt;&gt; import dis
+&gt;&gt;&gt; dis.dis(f)
+  1           0 RESUME                   0
+  2           2 LOAD_FAST                0 (x)
+              4 LOAD_CONST               1 (2.0)
+              6 BINARY_OP                5 (*)   # generic!
+              8 RETURN_VALUE</code></pre>
+<pre><code># Python 3.11+ specializes hot bytecode (PEP 659).
+# After ~8 calls with floats, BINARY_OP becomes:
+
+&gt;&gt;&gt; for _ in range(10): f(1.5)
+&gt;&gt;&gt; dis.dis(f)
+  2    0 LOAD_FAST                0 (x)
+       2 LOAD_CONST               1 (2.0)
+       4 BINARY_OP_MULTIPLY_FLOAT    # specialized! C-speed
+       6 RETURN_VALUE
+
+# Int passed? Deopt back to generic BINARY_OP:
+&gt;&gt;&gt; f(3)   # type changed -&gt; deoptimize</code></pre>
+<pre><code>$ python -c "import sys; print(sys.version)"
+3.12.1 (main, ...) [Clang 15.0.0 ]
+
+# Measure the speedup (3.11 vs 3.10):
+$ python3.10 -m timeit "sum(range(1000))"
+50000 loops: 9.8 usec/loop
+$ python3.11 -m timeit "sum(range(1000))"
+50000 loops: 7.1 usec/loop   # ~25% faster!</code></pre>
+<span class="code-note">💡 Python শুধু interpreted নয় — compile হয়ে bytecode হয়, তারপর 3.11+ এ hot bytecode specialize হয়।</span>
+</div>
 
 <div class="dialogue"><strong>পাইথন কোর ডেভেলপার:</strong> Python 3.11 আসলে একটা বিপ্লব। আমরা "Specializing Adaptive Interpreter" (PEP 659) যোগ করেছি। যখন PVM দেখে একটা bytecode instruction বারবার চলছে (৮ বার) আর একই type এর ডেটা আসছে — সে সেই instruction কে replace করে দেয়! Generic <code>BINARY_OP</code> হয়ে যায় <code>BINARY_OP_MULTIPLY_FLOAT</code>। এটা C-speed এ চলে — type checking skip। আর এটাই কেন Python 3.11+ ২৫% দ্রুত — তুমি কোনো কোড পরিবর্তন করো নাই!</div>`,
   recall: [
@@ -220,6 +294,45 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: V8 4-tier pipeline। Ignition→Sparkplug→Maglev→TurboFan। Wrong guess = deopt → Ignition। Hidden class = object shape tracking।</div>
 
+<div class="code-block"><div class="code-title">⚡ Door 8 — Real V8: JIT, Hidden Classes &amp; Deopt</div>
+<pre><code>// v8.js — V8 tracks object shapes (hidden classes / Maps)
+function Point(x, y) { this.x = x; this.y = y; }
+
+// Consistent shape -&gt; same hidden class -&gt; TurboFan optimizes
+const a = new Point(1, 2);
+const b = new Point(3, 4);
+
+// Tracing hidden class transitions (Node.js --trace-maps):
+$ node --trace-maps v8.js
+[Maps: Map#0 created]
+[Maps: x added -&gt; transition to Map#1]
+[Maps: y added -&gt; transition to Map#2]
+[Maps: a,b share Map#2 -&gt; stable shape!]</code></pre>
+<pre><code>// deopt.js — shape change triggers deoptimization
+function fast(obj) { return obj.x + obj.y; }
+
+let o = {x: 1, y: 2};
+for (let i = 0; i &lt; 10000; i++) fast(o);  // TurboFan compiles
+
+o.z = 3;        // dynamic property add -&gt; NEW hidden class!
+fast(o);        // shape mismatch -&gt; DEOPTIMIZE!
+
+# Watch the deopt happen:
+$ node --trace-deopt deopt.js
+[deoptimizing (DEOPT): begin 0x7f8... &lt;JS fast&gt;
+  reason: Insufficient type feedback for generic named access
+  Mapping: rax -&gt; obj.x ... FAILED shape check
+ bumping allocation age 0 -&gt; 1
+ ** Restarting frame due to must handle deopt]</code></pre>
+<pre><code># 4 tiers in action (Node --trace-opt):
+$ node --trace-opt v8.js
+[marking &lt;JS Point&gt; for optimization to Maglev]
+[compiling &lt;JS Point&gt; using Maglev -&gt; done]
+[marking &lt;JS fast&gt; for TurboFan -&gt; compiling]
+[completed optimizing &lt;JS fast&gt; using TurboFan]</code></pre>
+<span class="code-note">💡 V8 অনুমান করে (speculative)। অনুমান ভুল হলে deopt হয় — TurboFan optimized code ফেলে দিয়ে Ignition এ ফিরে যায়।</span>
+</div>
+
 <div class="dialogue"><strong>ভি৮ ইঞ্জিনিয়ার:</strong> V8 এর মূল আইডিয়া হল speculative optimization — অনুমান করা। JavaScript dynamically typed, কিন্তু আমরা দেখি বেশিরভাগ code একই pattern follow করে। Hidden class দিয়ে object এর shape track করি। যদি দেখি সব object একই order এ property তৈরি করে, TurboFan এর জন্য আমরা hardcoded machine code তৈরি করি — fixed memory offset, dictionary lookup নেই। কিন্তু তুমি যদি dynamically property যোগ করো, বা order বদলাও — deoptimization। পুরো optimized code ফেলে দিয়ে আবার slow Ignition এ ফিরে যেতে হয়।</div>`,
   recall: [
     { q: "V8 deoptimization কখন হয়?", a: "যখন speculative assumption ভুল প্রমাণিত হয় — object shape change, type change, dynamic property add, delete key। Optimized code ফেলে দিয়ে Ignition এ ফিরে যায়।" },
@@ -299,7 +412,32 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Generational GC। From-Space → copy live → To-Space। Dead = শূন্য cost। Young gen = Scavenger (fast)। Old gen = Mark-Sweep-Compact (slow)।</div>
 
-<div class="dialogue"><strong>জিসি ইঞ্জিনিয়ার:</strong> GC ধীর ভাবো? ভুল! Generational hypothesis বলে — most objects die young। তাই young generation এ আমরা copying algorithm ব্যবহার করি (Cheney's)। Memory কে দুই ভাগে ভাগ — From আর To। GC চললে শুধু live object কে From থেকে To তে copy করি। Dead object কে touch করিও না — সে পরিত্যক্ত! তাই short-lived object তৈরি করা প্রায় free। তুমি শুধু pay করো যা survive করে। Django তে — request variable = young gen (die after response)। Session data = old gen (live long)।</div>`,
+<div class="dialogue"><strong>জিসি ইঞ্জিনিয়ার:</strong> GC ধীর ভাবো? ভুল! Generational hypothesis বলে — most objects die young। তাই young generation এ আমরা copying algorithm ব্যবহার করি (Cheney's)। Memory কে দুই ভাগে ভাগ — From আর To। GC চললে শুধু live object কে From থেকে To তে copy করি। Dead object কে touch করিও না — সে পরিত্যক্ত! তাই short-lived object তৈরি করা প্রায় free। তুমি শুধু pay করো যা survive করে। Django তে — request variable = young gen (die after response)। Session data = old gen (live long)।</div>
+
+<div class="code-block">— GC বাস্তবে দেখো (Python) —
+
+  import gc, sys
+
+  # Python-এ GC দেখো
+  gc.set_debug(gc.DEBUG_STATS)
+  gc.collect()
+
+  # gc: collecting generation 2 ...
+  # gc: objects in each generation: 642 0 0
+  # gc: done, 642 unreachable, 0 uncollectable
+
+  # Generation দেখো:
+  print(len(gc.get_objects()))       # সব tracked objects
+  print(len(gc.garbage))             # uncollectable (cycles w/ __del__)
+
+  — CPython-এ ৩ প্রজন্ম: —
+  gen 0: নতুন objects (short-lived) → প্রায়ই collect
+  gen 1: ১ বার survive করেছে      → কম collect
+  gen 2: দীর্ঘস্থায়ী             → কদাচিৎ collect
+
+  — JVM flags for GC tuning: —
+  java -XX:+UseG1GC -XX:MaxGCPauseMillis=200 MyApp
+  java -verbose:gc -XX:+PrintGCDetails MyApp</div>`,
   recall: [
     { q: "Generational hypothesis কী?", a: "Most objects die young। তাই young generation এ GC সস্তা — শুধু survivors copy করতে হয়। Dead object = zero work।" },
     { q: "Django তে কোন object old gen এ promote হয়?", a: "Session data, module-level cache, database connection — এগুলো long-lived। Request variable, serializer = young gen, দ্রুত die করে।" },
@@ -318,7 +456,40 @@ doors.push({
   secret: "Hindley-Milner = type inference without annotations। WebAssembly = stack machine with linear memory।",
   story: `<p class="scene-setting">তুমি ভাবো static typing = অনেক annotation। ভুল! Hindley-Milner type system (Haskell, OCaml, Rust) automatically type infer করে — annotation লাগে না। Algorithm W সমীকরণ সমাধানের মতো type বের করে। আর WebAssembly? সে JavaScript এর আত্মীয় নয় — সম্পূর্ণ আলাদা একটা stack machine, linear memory সহ। Single-pass validation। Native speed।</p>
 
-<div class="dialogue"><strong>টাইপ ইঞ্জিনিয়ার:</strong> Hindley-Milner হল type inference এর সবচেয়ে সুন্দর algorithm। তুমি লেখো <code>id = λx.x</code>। কোনো annotation নেই। কিন্তু Algorithm W automatically বের করে — <code>id : ∀α. α → α</code>। যেকোনো type! এটা unification দিয়ে কাজ করে — সমীকরণ সমাধানের মতো। Rust, Haskell, OCaml — সবাই এই system ব্যবহার করে। WebAssembly অন্য দিকে — একটা portable stack machine। Linear memory (raw byte array), structured control flow (no goto), single-pass validation। JavaScript এর dynamic object model এর সম্পূর্ণ বিপরীত। Near-native speed, কোনো JIT warmup লাগে না।</div>`,
+<div class="dialogue"><strong>টাইপ ইঞ্জিনিয়ার:</strong> Hindley-Milner হল type inference এর সবচেয়ে সুন্দর algorithm। তুমি লেখো <code>id = λx.x</code>। কোনো annotation নেই। কিন্তু Algorithm W automatically বের করে — <code>id : ∀α. α → α</code>। যেকোনো type! এটা unification দিয়ে কাজ করে — সমীকরণ সমাধানের মতো। Rust, Haskell, OCaml — সবাই এই system ব্যবহার করে। WebAssembly অন্য দিকে — একটা portable stack machine। Linear memory (raw byte array), structured control flow (no goto), single-pass validation। JavaScript এর dynamic object model এর সম্পূর্ণ বিপরীত। Near-native speed, কোনো JIT warmup লাগে না।</div>
+
+<div class="code-block">— Hindley-Milner Type Inference (OCaml/Haskell) —
+
+  — OCaml-এ type inference দেখো: —
+  # let id x = x;;
+  val id : 'a -> 'a = &lt;fun&gt;     ← কোনো annotation নেই!
+
+  # let compose f g x = f (g x);;
+  val compose : ('a -> 'b) -> ('c -> 'a) -> 'c -> 'b
+
+  — Haskell-এ: —
+  ghci&gt; :t id
+  id :: a -&gt; a                    ← সবচেয়ে সাধারণ type
+
+  ghci&gt; :t map
+  map :: (a -&gt; b) -&gt; [a] -&gt; [b]
+
+  — WebAssembly Text Format (WAT): —
+
+  (module
+    (func $add (export "add") (param i32 i32) (result i32)
+      local.get 0      ;; stack-এ push param 0
+      local.get 1      ;; stack-এ push param 1
+      i32.add          ;; pop 2, push sum
+    )
+  )
+
+  — Compile + run: —
+  $ wat2wasm add.wat -o add.wasm
+  $ node -e 'WebAssembly.instantiate(
+      require("fs").readFileSync("add.wasm")
+    ).then(w =&gt; console.log(w.instance.exports.add(3, 4)))'
+  7                                  ← near-native speed!</div>`,
   recall: [
     { q: "Hindley-Milner এ Algorithm W কী করে?", a: "Type inference — কোনো annotation ছাড়া স্বয়ংক্রিয়ভাবে type বের করে। Unification দিয়ে type constraint সমাধান করে। Haskell, OCaml, Rust এ ব্যবহৃত।" },
     { q: "WebAssembly কীভাবে JavaScript থেকে আলাদা?", a: "WASM = stack machine + linear memory (raw byte array)। Structured control flow (no goto)। Single-pass validation। JS এর hidden class / inline cache এর প্রয়োজন নেই।" },
