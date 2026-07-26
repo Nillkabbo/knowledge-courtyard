@@ -57,6 +57,33 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ৮ (Graph Coloring):</strong> Chaitin-এর অ্যালগরিদম = graph coloring! Four Color Theorem-এর প্রয়োগ। Book ৪১ Door ৫: NP-complete — register allocation কঠিন।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect width="580" height="250" fill="#0f172a"/>
+<defs><marker id="arrCP6" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+<text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">Interference Graph &amp; Coloring</text>
+<circle cx="150" cy="90" r="22" fill="#451a0a" stroke="#22c55e" stroke-width="2.5"/>
+<text x="150" y="94" text-anchor="middle" fill="#4ade80" font-size="10">a</text>
+<circle cx="290" cy="60" r="22" fill="#451a0a" stroke="#fbbf24" stroke-width="2.5"/>
+<text x="290" y="64" text-anchor="middle" fill="#fcd34d" font-size="10">b</text>
+<circle cx="430" cy="90" r="22" fill="#451a0a" stroke="#22d3ee" stroke-width="2.5"/>
+<text x="430" y="94" text-anchor="middle" fill="#7dd3fc" font-size="10">c</text>
+<circle cx="290" cy="180" r="22" fill="#451a0a" stroke="#22c55e" stroke-width="2.5"/>
+<text x="290" y="184" text-anchor="middle" fill="#4ade80" font-size="10">d</text>
+<circle cx="450" cy="180" r="22" fill="#451a0a" stroke="#fbbf24" stroke-width="2.5"/>
+<text x="450" y="184" text-anchor="middle" fill="#fcd34d" font-size="10">e</text>
+<line x1="172" y1="80" x2="268" y2="68" stroke="#fbbf24" stroke-width="1.5"/>
+<line x1="170" y1="96" x2="408" y2="90" stroke="#fbbf24" stroke-width="1.5"/>
+<line x1="312" y1="70" x2="408" y2="82" stroke="#fbbf24" stroke-width="1.5"/>
+<line x1="290" y1="82" x2="290" y2="158" stroke="#fbbf24" stroke-width="1.5"/>
+<line x1="312" y1="73" x2="438" y2="162" stroke="#fbbf24" stroke-width="1.5"/>
+<line x1="448" y1="112" x2="448" y2="158" stroke="#fbbf24" stroke-width="1.5"/>
+<line x1="305" y1="180" x2="428" y2="180" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="290" y="232" text-anchor="middle" fill="#fcd34d" font-size="9">3 colors (a,d = green; b,e = amber; c = cyan) = 3 registers</text>
+</svg>
+</div>
+<div class="svg-caption">Interference graph: adjacent variable আলাদা রঙ। রঙ = রেজিস্টার। এখানে ৩টি রেজিস্টার যথেষ্ট।</div>
+
 <div class="secret-box">🎨 <strong>Register allocation = graph coloring। সীমিত রঙে সঠিক বরাদ্দ।</strong> কিন্তু কিছু কোড বারবার চলে — hot path। সেই কোড যদি runtime-এ optimize করা যায়? সেই জাদু — JIT compilation। পরের দরজায়।</div>`,
   senior: {
     title: "Register Allocation এক নজরে",
@@ -126,6 +153,31 @@ doors.push({
 <p class="scene-setting en">Tajdid — renewal. JIT is the form of that renewal — the program changes itself at runtime, improves itself. "Change your own state" — JIT does exactly this. Detects hot paths, optimizes itself. Not static — dynamic.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৮ (Operating Systems) Door ৩ (Process):</strong> virtual memory ও process isolation। JIT এর জন্য memory protection দরকার। Book ৪৫ Door ৬: register allocation JIT-এও প্রযোজ্য।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect width="580" height="250" fill="#0f172a"/>
+<defs><marker id="arrCP7" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+<text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">JIT Compilation Pipeline</text>
+<rect x="20" y="70" width="120" height="50" rx="8" fill="#451a0a" stroke="#22d3ee" stroke-width="2"/>
+<text x="80" y="92" text-anchor="middle" fill="#7dd3fc" font-size="9">Interpret</text>
+<text x="80" y="106" text-anchor="middle" fill="#7dd3fc" font-size="7">(slow)</text>
+<rect x="190" y="70" width="130" height="50" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+<text x="255" y="92" text-anchor="middle" fill="#fcd34d" font-size="9">Hot Path Detected</text>
+<text x="255" y="106" text-anchor="middle" fill="#fcd34d" font-size="7">(counter &gt; threshold)</text>
+<rect x="370" y="70" width="190" height="50" rx="8" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
+<text x="465" y="92" text-anchor="middle" fill="#4ade80" font-size="9">Optimized Machine Code</text>
+<text x="465" y="106" text-anchor="middle" fill="#4ade80" font-size="7">(TurboFan / C2) - fast</text>
+<line x1="140" y1="95" x2="186" y2="95" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP7)"/>
+<line x1="320" y1="95" x2="366" y2="95" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP7)"/>
+<rect x="190" y="160" width="220" height="40" rx="8" fill="#451a0a" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="300" y="178" text-anchor="middle" fill="#ef4444" font-size="9">Deoptimization</text>
+<text x="300" y="191" text-anchor="middle" fill="#ef4444" font-size="7">(assumption broken &rarr; re-interpret)</text>
+<path d="M 465 120 Q 465 140 300 158" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrCP7)"/>
+<path d="M 190 180 Q 130 150 80 122" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrCP7)"/>
+</svg>
+</div>
+<div class="svg-caption">JIT: প্রথমে interpret, hot path ধরা পড়লে optimize। assumption ভাঙলে deoptimize করে আবার interpret।</div>
 
 <div class="secret-box">⚡ <strong>JIT = runtime-এ নিজেকে উন্নত করা।</strong> তাজদিদ। কিন্তু কোন কোড hot? CPU-কে অনুমান করতে হয় — কোন branch নেওয়া হবে? সেই অনুমানের শিল্প — branch prediction। পরের দরজায়।</div>`,
   senior: {
@@ -203,6 +255,30 @@ doors.push({
 <p class="scene-setting en">Yaqeen — certainty. Branch prediction relies on guessing — but guesses can be wrong. True certainty belongs only to the Knower of the unseen. The CPU must guess — because it doesn't know the future. Spectre shows — the power and weakness of prediction together.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৮ (Operating Systems) Door ৪ (Pipeline):</strong> CPU pipeline ও hazard। Book ৪৬ (Cryptography) Door ৮: Spectre mitigation — branch target injection।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect width="580" height="250" fill="#0f172a"/>
+<defs><marker id="arrCP8a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#22c55e"/></marker></defs>
+<defs><marker id="arrCP8b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#ef4444"/></marker></defs>
+<text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">Branch Prediction</text>
+<polygon points="240,60 360,60 300,110" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+<text x="300" y="82" text-anchor="middle" fill="#fcd34d" font-size="9">if (cond)</text>
+<text x="300" y="96" text-anchor="middle" fill="#fcd34d" font-size="8">?</text>
+<line x1="265" y1="92" x2="120" y2="160" stroke="#22c55e" stroke-width="2.5" marker-end="url(#arrCP8a)"/>
+<text x="150" y="120" fill="#4ade80" font-size="9">predicted</text>
+<text x="150" y="132" fill="#4ade80" font-size="9">(taken)</text>
+<line x1="335" y1="92" x2="480" y2="160" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arrCP8b)"/>
+<text x="430" y="120" fill="#ef4444" font-size="9">not predicted</text>
+<text x="430" y="132" fill="#ef4444" font-size="9">(flush if wrong)</text>
+<rect x="50" y="165" width="140" height="36" rx="6" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
+<text x="120" y="187" text-anchor="middle" fill="#4ade80" font-size="9">speculative exec</text>
+<rect x="410" y="165" width="140" height="36" rx="6" fill="#451a0a" stroke="#ef4444" stroke-width="2"/>
+<text x="480" y="187" text-anchor="middle" fill="#ef4444" font-size="9">pipeline flush</text>
+<text x="290" y="232" text-anchor="middle" fill="#fcd34d" font-size="9">2-bit predictor: 2 mistakes before changing guess</text>
+</svg>
+</div>
+<div class="svg-caption">Branch prediction: CPU if-else-এ অনুমান করে কোন পথ। সঠিক হলে দ্রুত, ভুল হলে pipeline flush penalty।</div>
 
 <div class="secret-box">🎯 <strong>Branch prediction = অনুমানের শিল্প।</strong> সঠিক → দ্রুত, ভুল → penalty। কিন্তু প্রোগ্রামের একটি বড় সমস্যা — মেমরি পরিচালনা। কে বরাদ্দ করবে, কে মুছবে? সেই উত্তর — garbage collection। পরের দরজায়।</div>`,
   senior: {
@@ -282,6 +358,37 @@ doors.push({
 <p class="scene-setting en">Tahara — cleanliness. GC is the automated form of that cleanliness. The programmer doesn't need to clean — GC does it silently. Garbage accumulation makes the system sick — GC prevents that illness. As purity is for the body, GC is for memory.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৮ (Operating Systems) Door ৫ (Memory):</strong> virtual memory, paging, malloc/free। GC সেই malloc/free-এর স্বয়ংক্রিয় রূপ। Book ৪৫ Door ৯: GC debugging।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect width="580" height="250" fill="#0f172a"/>
+<defs><marker id="arrCP9" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+<text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">GC Mark-and-Sweep</text>
+<rect x="30" y="100" width="80" height="40" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+<text x="70" y="116" text-anchor="middle" fill="#fcd34d" font-size="9">Root</text>
+<text x="70" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">(stack/global)</text>
+<circle cx="210" cy="75" r="22" fill="#451a0a" stroke="#22c55e" stroke-width="2.5"/>
+<text x="210" y="72" text-anchor="middle" fill="#4ade80" font-size="8">A</text>
+<text x="210" y="82" text-anchor="middle" fill="#4ade80" font-size="6">mark</text>
+<circle cx="210" cy="165" r="22" fill="#451a0a" stroke="#22c55e" stroke-width="2.5"/>
+<text x="210" y="162" text-anchor="middle" fill="#4ade80" font-size="8">B</text>
+<text x="210" y="172" text-anchor="middle" fill="#4ade80" font-size="6">mark</text>
+<circle cx="350" cy="120" r="22" fill="#451a0a" stroke="#22c55e" stroke-width="2.5"/>
+<text x="350" y="117" text-anchor="middle" fill="#4ade80" font-size="8">C</text>
+<text x="350" y="127" text-anchor="middle" fill="#4ade80" font-size="6">mark</text>
+<circle cx="470" cy="75" r="22" fill="#451a0a" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 2"/>
+<text x="470" y="72" text-anchor="middle" fill="#ef4444" font-size="8">D</text>
+<text x="470" y="82" text-anchor="middle" fill="#ef4444" font-size="6">sweep</text>
+<circle cx="490" cy="175" r="22" fill="#451a0a" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 2"/>
+<text x="490" y="172" text-anchor="middle" fill="#ef4444" font-size="8">E</text>
+<text x="490" y="182" text-anchor="middle" fill="#ef4444" font-size="6">sweep</text>
+<line x1="110" y1="112" x2="188" y2="85" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP9)"/>
+<line x1="110" y1="128" x2="188" y2="155" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP9)"/>
+<line x1="232" y1="80" x2="328" y2="110" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrCP9)"/>
+<text x="290" y="225" text-anchor="middle" fill="#fcd34d" font-size="9">reachable = marked (green), unreachable = swept (red)</text>
+</svg>
+</div>
+<div class="svg-caption">Mark-Sweep: root থেকে reachable object চিহ্নিত (সবুজ), বাকি সব আবর্জনা হিসেবে মুছে ফেলা (লাল)।</div>
 
 <div class="secret-box">🧹 <strong>GC = স্বয়ংক্রিয় মেমরি পরিচ্ছন্নকারী।</strong> Mark → Sweep → Compact। Generational hypothesis। কিন্তু GC শুধু মেমরি পরিষ্কার করে — type যাচাই করে না। কোন variable কোন type? সেই যাচাই — type inference। শেষ দরজায়।</div>`,
   senior: {
@@ -380,6 +487,31 @@ doors.push({
 <li>📖 "Crafting Interpreters" — Robert Nystrom পড়ো</li>
 <li>📖 "Compilers: Principles" — Aho (Dragon Book) পড়ো</li>
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect width="580" height="250" fill="#0f172a"/>
+<defs><marker id="arrCP10" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+<text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">Hindley-Milner Type Inference</text>
+<rect x="30" y="95" width="130" height="44" rx="8" fill="#451a0a" stroke="#22d3ee" stroke-width="2"/>
+<text x="95" y="115" text-anchor="middle" fill="#7dd3fc" font-size="9">id = x =&gt; x</text>
+<text x="95" y="130" text-anchor="middle" fill="#7dd3fc" font-size="7">no annotation</text>
+<rect x="225" y="95" width="130" height="44" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+<text x="290" y="113" text-anchor="middle" fill="#fcd34d" font-size="9">Unify</text>
+<text x="290" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">Algorithm W</text>
+<rect x="420" y="55" width="140" height="38" rx="8" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
+<text x="490" y="73" text-anchor="middle" fill="#4ade80" font-size="9">id : int =&gt; int</text>
+<text x="490" y="86" text-anchor="middle" fill="#4ade80" font-size="7">id(42)</text>
+<rect x="420" y="140" width="140" height="38" rx="8" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
+<text x="490" y="158" text-anchor="middle" fill="#4ade80" font-size="9">id : str =&gt; str</text>
+<text x="490" y="171" text-anchor="middle" fill="#4ade80" font-size="7">id("hi")</text>
+<line x1="160" y1="117" x2="221" y2="117" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP10)"/>
+<path d="M 355 105 Q 390 80 418 74" fill="none" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP10)"/>
+<path d="M 355 130 Q 390 155 418 159" fill="none" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP10)"/>
+<text x="290" y="210" text-anchor="middle" fill="#fcd34d" font-size="9">&alpha; -&gt; &alpha;  (polymorphic — any type T)</text>
+</svg>
+</div>
+<div class="svg-caption">Hindley-Milner: কোনো annotation ছাড়া compiler স্বয়ং type বের করে — id যেকোনো T -&gt; T।</div>
 
 <div class="secret-box">🔮 <strong>কম্পাইলার = ভাষা অনুবাদক।</strong> নয়টি দরজা, নয়জন শিক্ষক, একটি রূপান্তর। মানুষের ভাষা থেকে মেশিনের ভাষা। প্রতিটি <code>gcc</code>, প্রতিটি <code>python</code>, প্রতিটি <code>rustc</code> — এই নয় স্তরের ফল। এখন তুমি জানো — শুধু কীভাবে নয়, কেন। কেন lexer DFA ব্যবহার করে। কেন AST গাছ। কেন SSA প্রতিটি variable একবার। কেন graph coloring register বরাদ্দ করে। কেন JIT runtime-ে optimize করে। কেন GC নীরবে পরিষ্কার করে। এটাই হিকমাহ — কম্পাইলারের প্রয়োগিক জ্ঞান।</div>`,
   senior: {

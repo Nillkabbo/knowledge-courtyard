@@ -57,6 +57,37 @@ MD5 hash (১২৮-bit) → ২¹²৮+১টি input হলে collision অ�
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৬ (Cryptography) Door ৩ (Hash):</strong> hash collision = পিজিওনহোল! ২¹²৮+১টি input হলে MD5 collision অনিবার্য। Book ৪৯ (Probability) Door ৫: birthday paradox — এটাই পিজিওনহোল-এর সম্ভাবনা সংস্করণ।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🕊️ পিজিওনহোল নীতি: বেশি বস্তু, কম বাক্স</text>
+  <rect x="30" y="45" width="70" height="70" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="65" y="62" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">খোঁয়াড় ১</text>
+  <circle cx="50" cy="85" r="9" fill="#22d3ee" stroke="#7dd3fc" stroke-width="1.5"/>
+  <circle cx="80" cy="95" r="9" fill="#f87171" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="65" y="130" text-anchor="middle" fill="#fca5a5" font-size="7">২টি! ≥ ⌈N/k⌉</text>
+  <rect x="120" y="45" width="70" height="70" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="155" y="62" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">খোঁয়াড় ২</text>
+  <circle cx="155" cy="90" r="9" fill="#22c55e" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="155" y="130" text-anchor="middle" fill="#4ade80" font-size="7">১টি</text>
+  <rect x="210" y="45" width="70" height="70" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="245" y="62" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">খোঁয়াড় ৩</text>
+  <circle cx="245" cy="90" r="9" fill="#fbbf24" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="245" y="130" text-anchor="middle" fill="#fcd34d" font-size="7">১টি</text>
+  <rect x="30" y="155" width="430" height="28" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+  <text x="245" y="173" text-anchor="middle" fill="#4ade80" font-size="8">৪টি কবুতর, ৩টি খোঁয়াড় → অন্তত এক খোঁয়াড়ে ২টি (Dirichlet 1834)</text>
+  <rect x="320" y="40" width="245" height="100" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="442" y="60" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">বাস্তব প্রয়োগ</text>
+  <text x="335" y="80" fill="#e2e8f0" font-size="8">• ৩৬৭ জন → ২ জনের জন্মদিন মিলবে</text>
+  <text x="335" y="97" fill="#e2e8f0" font-size="8">• ১৩ জন → ২ জনের জন্ম মাস মিলবে</text>
+  <text x="335" y="114" fill="#e2e8f0" font-size="8">• 2³²+1 keys → hash collision নিশ্চিত</text>
+  <text x="335" y="131" fill="#fca5a5" font-size="8">• Birthday threshold: √N ≈ collision</text>
+  <rect x="30" y="195" width="535" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="297" y="213" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">সাধারণ রূপ: Nটি বস্তু kটি বাক্সে → কোনো বাক্সে অন্তত ⌈N/k⌉টি</text>
+  <text x="297" y="228" text-anchor="middle" fill="#cbd5e1" font-size="7">সহজ নীতি কিন্তু অসম্ভব ফল — hash collision, birthday paradox, এমনকি গাণিতিক উপপাদ্য প্রমাণ</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: পিজিওনহোল নীতি — কবুতরের সংখ্যা খোঁয়াড়ের চেয়ে বেশি হলে অন্তত একটি খোঁয়াড়ে একাধিক কবুতর থাকবে। সহজ নীতি কিন্তু hash collision ও birthday paradox-এর ভিত্তি।</div>
+
 <div class="secret-box">🕊️ <strong>পিজিওনহোল: বেশি বস্তু, কম বাক্স — মিল অনিবার্য।</strong> সহজ নীতি কিন্তু অসম্ভব ফল। hash collision, birthday paradox, এমনকি সনাতন গণিতের উপপাদ্য — সব এর উপর নির্ভর। কিন্তু বস্তু শুধু বাক্সে থাকে না — তারা সংযুক্ত হয়। সেই সংযোগের জগত — পরের দরজায়।</div>`,
   senior: {
     title: "Pigeonhole Principle এক নজরে",
@@ -134,6 +165,49 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ২ (DSA Bazaar) Door ১৪ (Graph BFS/DFS):</strong> গ্রাফ ট্রাভার্সাল শিখেছিলে — এখন দেখো সেই একই কৌশল LedgerPilot-এ প্রতিদিন কাজ করছে! Book ৩৭ (Networks) Door ৩: রাউটিং = shortest path গ্রাফে। Book ৩৫ (Distributed) Door ৫: distributed consensus = গ্রাফ topology।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrDM7" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/>
+    </marker>
+    <marker id="arrDM7b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+  </defs>
+  <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🕸️ গ্রাফ: নোড ও এজের জাল</text>
+  <circle cx="120" cy="80" r="20" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2.5"/>
+  <text x="120" y="84" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">User</text>
+  <circle cx="120" cy="170" r="20" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2.5"/>
+  <text x="120" y="174" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">Account</text>
+  <circle cx="260" cy="125" r="20" fill="#052e16" stroke="#22c55e" stroke-width="2.5"/>
+  <text x="260" y="129" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Transaction</text>
+  <circle cx="400" cy="80" r="20" fill="#fbbf24" fill-opacity="0.15" stroke="#fbbf24" stroke-width="2.5"/>
+  <text x="400" y="84" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Category</text>
+  <circle cx="400" cy="170" r="20" fill="#8b5cf6" fill-opacity="0.15" stroke="#a855f7" stroke-width="2.5"/>
+  <text x="400" y="174" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">Budget</text>
+  <line x1="135" y1="92" x2="245" y2="118" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrDM7)"/>
+  <line x1="135" y1="158" x2="245" y2="132" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrDM7b)"/>
+  <line x1="278" y1="118" x2="382" y2="92" stroke="#4ade80" stroke-width="2" marker-end="url(#arrDM7)"/>
+  <line x1="278" y1="132" x2="382" y2="158" stroke="#4ade80" stroke-width="2" marker-end="url(#arrDM7)"/>
+  <line x1="415" y1="92" x2="415" y2="158" stroke="#c084fc" stroke-width="2" marker-end="url(#arrDM7)"/>
+  <rect x="460" y="45" width="110" height="50" rx="6" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="515" y="63" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">BFS</text>
+  <text x="515" y="78" text-anchor="middle" fill="#cbd5e1" font-size="7">প্রশস্ততা — সব</text>
+  <text x="515" y="90" text-anchor="middle" fill="#cbd5e1" font-size="7">কাছের নোড আগে</text>
+  <rect x="460" y="105" width="110" height="50" rx="6" fill="#0f172a" stroke="#a78bfa" stroke-width="1"/>
+  <text x="515" y="123" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">DFS</text>
+  <text x="515" y="138" text-anchor="middle" fill="#cbd5e1" font-size="7">গভীরতা — এক</text>
+  <text x="515" y="150" text-anchor="middle" fill="#cbd5e1" font-size="7">শাখায় শেষ</text>
+  <rect x="460" y="165" width="110" height="50" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="515" y="183" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">DAG + Topo Sort</text>
+  <text x="515" y="198" text-anchor="middle" fill="#cbd5e1" font-size="7">কোনো চক্র নেই</text>
+  <text x="515" y="210" text-anchor="middle" fill="#cbd5e1" font-size="7">→ ক্রম নির্ধারণ</text>
+  <text x="190" y="225" text-anchor="middle" fill="#fbbf24" font-size="8">LedgerPilot: প্রতিটি foreign key = এজ → এটি একটি গ্রাফ!</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: গ্রাফ তত্ত্ব — নোড (সত্তা) ও এজ (সম্পর্ক) দিয়ে সংযোগের জাল তৈরি। Euler (1736) থেকে PageRank পর্যন্ত। BFS প্রশস্ততায়, DFS গভীরতায় খুঁজে। DAG-এ topological sort সম্ভব।</div>
+
 <div class="secret-box">🕸️ <strong>গ্রাফ = সংযোগের জাল। নোড + এজ।</strong> Euler থেকে PageRank — সব গ্রাফ। কিন্তু গ্রাফে একটি সমস্যা থাকে — কিছু নোড একসাথে থাকতে পারে না। প্রতিবেশী আলাদা রঙ চায়। সেই সমস্যা — পরের দরজায়।</div>`,
   senior: {
     title: "Graph Theory এক নজরে",
@@ -201,6 +275,36 @@ doors.push({
 <p class="scene-setting">বৈচিত্র্য — প্রতিটি সৃষ্টি আলাদা, প্রতিটি রঙ ভিন্ন। গ্রাফ রঙও তেমন — প্রতিটি প্রতিবেশী আলাদা। তাফসিল — পৃথকীকরণ। প্রকৃতিতে বৈচিত্র্য একটি নিদর্শন। গণিতে সেই বৈচিত্র্যের সূত্র — ৪ রঙ যথেষ্ট।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৫ (Compilers) Door ৬ (Register Allocation):</strong> Chaitin-এর অ্যালগরিদম — graph coloring দিয়ে রেজিস্টার বরাদ্দ! এখন তুমি বোঝো সেই গণিত। Book ৪১ Door ৫ (P vs NP): graph coloring NP-complete — সবচেয়ে কম রঙ খুঁজা কঠিন।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎨 গ্রাফ রঙ: প্রতিবেশী আলাদা (৪ রঙ যথেষ্ট)</text>
+  <path d="M 120,60 L 200,50 L 260,90 L 240,160 L 160,170 L 100,130 Z" fill="#8b5cf6" fill-opacity="0.3" stroke="#8b5cf6" stroke-width="2"/>
+  <path d="M 260,90 L 340,70 L 400,110 L 380,170 L 240,160 Z" fill="#22d3ee" fill-opacity="0.3" stroke="#22d3ee" stroke-width="2"/>
+  <path d="M 100,130 L 160,170 L 150,220 L 80,210 L 60,160 Z" fill="#22c55e" fill-opacity="0.3" stroke="#22c55e" stroke-width="2"/>
+  <path d="M 160,170 L 240,160 L 250,220 L 150,220 Z" fill="#fbbf24" fill-opacity="0.3" stroke="#fbbf24" stroke-width="2"/>
+  <path d="M 240,160 L 380,170 L 370,220 L 250,220 Z" fill="#f87171" fill-opacity="0.3" stroke="#f87171" stroke-width="2"/>
+  <text x="170" y="110" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="900">R₁</text>
+  <text x="320" y="120" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="900">R₂</text>
+  <text x="105" y="185" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="900">R₃</text>
+  <text x="200" y="195" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="900">R₄</text>
+  <text x="310" y="195" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="900">R₅</text>
+  <rect x="420" y="40" width="150" height="90" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="495" y="60" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">Four Color Theorem</text>
+  <text x="495" y="78" text-anchor="middle" fill="#e2e8f0" font-size="8">(Appel &amp; Haken 1976)</text>
+  <text x="430" y="98" fill="#cbd5e1" font-size="7">যেকোনো মানচিত্র</text>
+  <text x="430" y="111" fill="#cbd5e1" font-size="7">≤ ৪ রঙে রাঙা যায়</text>
+  <text x="430" y="124" fill="#4ade80" font-size="7">প্রতিটি প্রতিবেশী আলাদা ✓</text>
+  <rect x="420" y="140" width="150" height="90" rx="8" fill="#0c4a6e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="495" y="160" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">কম্পাইলার প্রয়োগ</text>
+  <text x="430" y="180" fill="#cbd5e1" font-size="7">ভেরিয়েবল = নোড</text>
+  <text x="430" y="193" fill="#cbd5e1" font-size="7">একসাথে live = এজ</text>
+  <text x="430" y="206" fill="#7dd3fc" font-size="7">রঙ = রেজিস্টার</text>
+  <text x="430" y="220" fill="#4ade80" font-size="7">Chaitin 1981</text>
+  <text x="200" y="240" text-anchor="middle" fill="#fbbf24" font-size="7">প্রতিটি প্রতিবেশী অঞ্চল আলাদা রঙে — ৪ রঙ সর্বদা যথেষ্ট!</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: গ্রাফ রঙ — প্রতিটি প্রতিবেশী আলাদা রঙে রাঙা। Four Color Theorem (১৯৭৬) বলে যেকোনো মানচিত্র ৪ রঙে সম্ভব। কম্পাইলারে রেজিস্টার বরাদ্দে এটি ব্যবহৃত (Chaitin ১৯৮১)।</div>
 
 <div class="secret-box">🎨 <strong>রঙ করো — প্রতিবেশী আলাদা। ৪ রঙ যথেষ্ট।</strong> কম্পাইলার থেকে মানচিত্র — সব জায়গায় প্রযোজ্য। কিন্তু গ্রাফ শুধু সংযোগ নয় — কিছু সংখ্যা বিশেষ। কিছু সংখ্যা শুধু নিজে ও ১ দিয়ে ভাগ যায়। সেই সংখ্যার জগত — পরের দরজায়।</div>`,
   senior: {
@@ -272,6 +376,39 @@ doors.push({
 <p class="scene-setting">"কদর" — নির্দিষ্ট পরিমাণ। প্রতিটি সংখ্যার একটি অদ্বিতীয় মৌলিক গঠন — সেই কদর। ৬০ = ২²×৩×৫ — অন্যভাবে নয়। সংখ্যার জগতে প্রতিটি জিনিসের একটি নির্দিষ্ট সত্য আছে। আদদ — চিরস্থায়ী। মৌলিক সংখ্যা অসীম, কিন্তু প্রতিটি অদ্বিতীয়।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৬ (Cryptography) Door ১ (RSA):</strong> RSA = মৌলিক সংখ্যার উপর নির্মিত! Fermat-এর সূত্র ছাড়া RSA অসম্ভব। Book ৪১ Door ৪ (P vs NP): মৌলিক যাচাই = P, কিন্তু উৎপাদকে বিভক্ত = অজানা।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔢 Prime Numbers: Building Blocks of Integers</text>
+  <rect x="20" y="55" width="260" height="170" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="150" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">Prime Factorization</text>
+  <rect x="40" y="90" width="100" height="30" rx="5" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="90" y="110" text-anchor="middle" fill="#fcd34d" font-size="9">60</text>
+  <line x1="90" y1="120" x2="60" y2="140" stroke="#fbbf24" stroke-width="1.5"/>
+  <line x1="90" y1="120" x2="120" y2="140" stroke="#fbbf24" stroke-width="1.5"/>
+  <rect x="35" y="140" width="50" height="25" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="60" y="157" text-anchor="middle" fill="#4ade80" font-size="8">2 × 30</text>
+  <rect x="95" y="140" width="50" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="120" y="157" text-anchor="middle" fill="#7dd3fc" font-size="8">3 × 10</text>
+  <line x1="120" y1="165" x2="100" y2="180" stroke="#22d3ee" stroke-width="1"/>
+  <line x1="120" y1="165" x2="140" y2="180" stroke="#22d3ee" stroke-width="1"/>
+  <rect x="80" y="180" width="40" height="20" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="100" y="193" text-anchor="middle" fill="#7dd3fc" font-size="7">2 × 5</text>
+  <text x="150" y="205" text-anchor="middle" fill="#fcd34d" font-size="8">60 = 2²×3×5</text>
+  <text x="150" y="220" text-anchor="middle" fill="#94a3b8" font-size="6">Fundamental Theorem of Arithmetic</text>
+  <rect x="320" y="55" width="240" height="170" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+  <text x="440" y="78" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Why Primes Matter</text>
+  <rect x="340" y="92" width="200" height="20" rx="3" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
+  <text x="440" y="106" text-anchor="middle" fill="#fca5a5" font-size="7">RSA: p × q = n (factoring hard!)</text>
+  <rect x="340" y="120" width="200" height="20" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="440" y="134" text-anchor="middle" fill="#7dd3fc" font-size="7">Hash: prime modulus reduces collision</text>
+  <rect x="340" y="148" width="200" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="440" y="162" text-anchor="middle" fill="#4ade80" font-size="7">Euclid: infinitely many primes</text>
+  <text x="440" y="190" text-anchor="middle" fill="#94a3b8" font-size="6">Largest known: 2^82589933 - 1</text>
+  <text x="440" y="205" text-anchor="middle" fill="#94a3b8" font-size="6">24.8 million digits!</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Prime factorization tree — 60 = 2²×3×5। RSA এই উপর নির্ভর করে।</div>
 
 <div class="secret-box">🔢 <strong>মৌলিক = সংখ্যার পরমাণু। অসীম। অদ্বিতীয় গঠন।</strong> Euclid থেকে Fermat — ২০০০ বছরের গবেষণা। এই সত্য ছাড়া RSA নেই, HTTPS নেই, ইন্টারনেট নেই। এখন নয়টি দরজা পেরিয়েছো — শেষ দরজায় সব মেলাও।</div>`,
   senior: {
@@ -360,6 +497,23 @@ doors.push({
 <li>🔢 প্রথম ১০০টি মৌলিক সংখ্যা বের করো</li>
 <li>📖 "Discrete Mathematics and Its Applications" — Rosen পড়ো</li>
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌟 Discrete Math: 9 Doors Unified</text>
+  <rect x="180" y="50" width="220" height="35" rx="17" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="72" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">D1: Logic</text>
+  <rect x="140" y="95" width="300" height="35" rx="17" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="117" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">D2-D3: Proof (Induction + Contradiction)</text>
+  <rect x="100" y="140" width="380" height="35" rx="17" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="162" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">D4-D5: Sets + Combinatorics</text>
+  <rect x="60" y="185" width="460" height="35" rx="17" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
+  <text x="290" y="207" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">D6-D9: Pigeonhole + Graphs + Coloring + Primes</text>
+  <rect x="120" y="235" width="340" height="35" rx="17" fill="#052e16" stroke="#4ade80" stroke-width="2.5"/>
+  <text x="290" y="257" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">HIKMAH: Applied Wisdom</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: নয়টি দরজা — Logic থেকে Hikmah পর্যন্ত একটি ভবন।</div>
 
 <div class="secret-box">🌟 <strong>ডিসক্রিট গণিত = কম্পিউটিংয়ের আলো।</strong> নয়টি দরজা, নয়জন শিক্ষক, একটি সত্য। প্রতিটি if/else একটি সত্য সারণি। প্রতিটি ডেটাবেস একটি সেট। প্রতিটি নেটওয়ার্ক একটি গ্রাফ। প্রতিটি এনক্রিপশন মৌলিক সংখ্যা। এখন তুমি জানো — শুধু কীভাবে নয়, কেন। কেন if/else কাজ করে। কেন hash collision অনিবার্য। কেন চার রঙ যথেষ্ট। কেন মৌলিক অসীম। এটাই হিকমাহ — সত্যের একত্র দৃষ্টি।</div>`,
   senior: {

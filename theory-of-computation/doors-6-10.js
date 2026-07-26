@@ -65,6 +65,26 @@ F-এর সামঞ্জস্য (consistency) নিজেই F-এর ভ�
 তিনি প্যারানয়ায় ভুগতেন — ১৯৭৮ সালে অনাহারে মৃত্যু, কারণ তিনি বিশ্বাস করতেন কেউ তাকে বিষ দিচ্ছে।
 </div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<text x="290" y="25" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="700">Godel: সত্য প্রমাণের বড়</text>
+<ellipse cx="290" cy="140" rx="240" ry="90" fill="rgba(34,211,238,0.06)" stroke="#22d3ee" stroke-width="2"/>
+<text x="290" y="50" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="700">সত্যের জগৎ (Truth)</text>
+<ellipse cx="290" cy="150" rx="150" ry="60" fill="rgba(34,197,94,0.08)" stroke="#22c55e" stroke-width="2"/>
+<text x="290" y="105" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="700">প্রমাণের জগৎ (Proof)</text>
+<circle cx="450" cy="160" r="8" fill="#fbbf24" stroke="#fcd34d" stroke-width="2"/>
+<text x="450" y="145" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="700">G</text>
+<line x1="430" y1="180" x2="470" y2="180" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="450" y="195" text-anchor="middle" fill="#fcd34d" font-size="9">সত্য কিন্তু</text>
+<text x="450" y="207" text-anchor="middle" fill="#fcd34d" font-size="9">প্রমাণযোগ্য নয়</text>
+<text x="150" y="160" fill="#7dd3fc" font-size="10">Godel Sentence:</text>
+<text x="150" y="175" fill="#7dd3fc" font-size="10">G = &quot;এই বাক্যটি</text>
+<text x="150" y="190" fill="#7dd3fc" font-size="10">প্রমাণযোগ্য নয়&quot;</text>
+<text x="150" y="215" fill="#c084fc" font-size="9">সত্য হলে -&gt; প্রমাণ নেই</text>
+</svg>
+</div>
+<div class="svg-caption">গোডেল: প্রতিটি পর্যাপ্ত শক্তিশালী যুক্তিব্যবস্থায় সত্য আছে যা প্রমাণ করা যায় না। সত্য &gt; প্রমাণ।</div>
+
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> সত্য > প্রমাণ। কিছু সত্য প্রমাণের নাগালের বাইরে।<br>
 <em>Truth > Proof. Some truths are beyond the reach of proof.</em>
@@ -149,6 +169,26 @@ NP-এর সবচেয়ে কঠিন সমস্যা। দুটি 
 ১৯৮২ সালে Turing Award।<br><br>
 Leonid Levin (জন্ম ১৯৪৮, ইউক্রেন) স্বাধীনভাবে একই ফলাফল আবিষ্কার করেন — ১৯৭১ সালে, কিন্তু সোভিয়েত ইউনিয়নে। তার paper ১৯৭৩ সালে প্রকাশিত হয়। তিনি বোস্টন বিশ্ববিদ্যালয়ে অধ্যাপক।
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<text x="290" y="25" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="700">P vs NP: জটিলতার শ্রেণী</text>
+<ellipse cx="290" cy="140" rx="260" ry="95" fill="rgba(168,85,247,0.05)" stroke="#a855f7" stroke-width="2"/>
+<text x="500" y="55" fill="#c084fc" font-size="11" font-weight="700">PSPACE</text>
+<ellipse cx="290" cy="145" rx="190" ry="70" fill="rgba(34,211,238,0.06)" stroke="#22d3ee" stroke-width="2"/>
+<text x="120" y="100" fill="#7dd3fc" font-size="12" font-weight="700">NP</text>
+<ellipse cx="220" cy="145" rx="90" ry="45" fill="rgba(34,197,94,0.08)" stroke="#22c55e" stroke-width="2"/>
+<text x="180" y="120" fill="#4ade80" font-size="13" font-weight="700">P</text>
+<text x="180" y="155" text-anchor="middle" fill="#4ade80" font-size="9">sorting</text>
+<text x="180" y="168" text-anchor="middle" fill="#4ade80" font-size="9">shortest path</text>
+<circle cx="340" cy="145" r="45" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="2"/>
+<text x="340" y="135" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">NP-COMPLETE</text>
+<text x="340" y="152" text-anchor="middle" fill="#fcd34d" font-size="9">SAT, TSP</text>
+<text x="340" y="165" text-anchor="middle" fill="#fcd34d" font-size="9">Clique, VC</text>
+<text x="290" y="230" text-anchor="middle" fill="#f87171" font-size="14" font-weight="700">P = NP ?</text>
+</svg>
+</div>
+<div class="svg-caption">P (দ্রুত সমাধান) NP (দ্রুত যাচাই) এর ভেতরে। NP-complete সবচেয়ে কঠিন। P = NP কি? এক মিলিয়ন ডলারের প্রশ্ন।</div>
 
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> চেনা সহজ — খোঁজা কঠিন। এটাই মহাবিশ্বের অসাম্যতা।<br>
@@ -240,6 +280,36 @@ B NP-complete প্রমাণ করতে:
 Garey ও Johnson: "Computers and Intractability: A Guide to the Theory of NP-Completeness" (১৯৭৯, W.H. Freeman) — এখনও স্ট্যান্ডার্ড রেফারেন্স। দুজনেই Bell Labs-এ কাজ করতেন।
 </div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrTC8" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#fcd34d"/></marker></defs>
+<text x="290" y="25" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="700">Reduction Chain: সব কঠিন সমস্যা এক</text>
+<rect x="20" y="100" width="80" height="35" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+<text x="60" y="122" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="700">SAT</text>
+<rect x="135" y="100" width="80" height="35" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+<text x="175" y="122" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="700">3-SAT</text>
+<rect x="250" y="100" width="90" height="35" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+<text x="295" y="122" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">Vertex Cover</text>
+<rect x="375" y="100" width="90" height="35" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+<text x="420" y="122" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">Indep. Set</text>
+<rect x="490" y="100" width="70" height="35" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+<text x="525" y="122" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="700">Clique</text>
+<path d="M100,117 L135,117" fill="none" stroke="#fcd34d" stroke-width="1.5" marker-end="url(#arrTC8)"/>
+<path d="M215,117 L250,117" fill="none" stroke="#fcd34d" stroke-width="1.5" marker-end="url(#arrTC8)"/>
+<path d="M340,117 L375,117" fill="none" stroke="#fcd34d" stroke-width="1.5" marker-end="url(#arrTC8)"/>
+<path d="M465,117 L490,117" fill="none" stroke="#fcd34d" stroke-width="1.5" marker-end="url(#arrTC8)"/>
+<text x="117" y="95" text-anchor="middle" fill="#7dd3fc" font-size="9">reduce</text>
+<text x="232" y="95" text-anchor="middle" fill="#7dd3fc" font-size="9">reduce</text>
+<text x="357" y="95" text-anchor="middle" fill="#7dd3fc" font-size="9">reduce</text>
+<text x="477" y="95" text-anchor="middle" fill="#7dd3fc" font-size="9">reduce</text>
+<rect x="170" y="165" width="240" height="35" rx="6" fill="rgba(34,197,94,0.1)" stroke="#22c55e" stroke-width="1.5"/>
+<text x="290" y="182" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">যেকোনো একটি দ্রুত সমাধান করলে</text>
+<text x="290" y="194" text-anchor="middle" fill="#4ade80" font-size="10">সব NP সমস্যা সমাধান হয়!</text>
+<text x="290" y="225" text-anchor="middle" fill="#c084fc" font-size="10">A &lt;=p B: A কে B তে polynomial সময়ে রূপান্তর</text>
+</svg>
+</div>
+<div class="svg-caption">Reduction chain: SAT থেকে Clique পর্যন্ত প্রতিটি সমস্যা আগেরটিতে রূপান্তরযোগ্য। একটি চাবি, হাজার তালা।</div>
+
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> সব কঠিন সমস্যা — একই সমস্যার রূপ। একটি চাবি — হাজার তালা।<br>
 <em>All hard problems — one problem in disguise. One key — a thousand locks.</em>
@@ -328,6 +398,30 @@ TSP (সাধারণ ক্ষেত্রে) — কোনো constant appr
 ৩০০+ সমস্যার তালিকা, প্রতিটির complexity status।<br><br>
 Nicos Christofides (১৯৪২-২০১৯) — সাইপ্রাসে জন্ম, Imperial College London-এ কাজ। ১৯৭৬ সালে TSP-এর জন্য ৩/২-approximation প্রকাশ করেন — যা ৪০+ বছর ধরে উন্নত করা যায়নি (২০২০-এ সামান্য উন্নতি এসেছে)।
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<text x="290" y="25" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="700">Approximation: নিখুঁত বনাম কাছাকাছি</text>
+<text x="150" y="55" text-anchor="middle" fill="#f87171" font-size="11" font-weight="700">Exact (Brute Force)</text>
+<rect x="90" y="65" width="120" height="140" fill="rgba(248,113,113,0.1)" stroke="#f87171" stroke-width="2" rx="4"/>
+<text x="150" y="90" text-anchor="middle" fill="#fca5a5" font-size="10">সর্বোত্তম উত্তর</text>
+<text x="150" y="115" text-anchor="middle" fill="#fca5a5" font-size="24" font-weight="700">OPT</text>
+<text x="150" y="145" text-anchor="middle" fill="#fca5a5" font-size="10">সময়: 2^n</text>
+<text x="150" y="165" text-anchor="middle" fill="#fca5a5" font-size="10">২০ শহরে ৬০ লক্ষ কোটি</text>
+<text x="150" y="185" text-anchor="middle" fill="#fca5a5" font-size="10">মহাবিশ্বের বয়সেও নয়!</text>
+<text x="430" y="55" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">2-Approximation</text>
+<rect x="370" y="65" width="120" height="140" fill="rgba(34,197,94,0.1)" stroke="#22c55e" stroke-width="2" rx="4"/>
+<text x="430" y="90" text-anchor="middle" fill="#4ade80" font-size="10">কাছাকাছি উত্তর</text>
+<text x="430" y="115" text-anchor="middle" fill="#4ade80" font-size="24" font-weight="700">2x</text>
+<text x="430" y="145" text-anchor="middle" fill="#4ade80" font-size="10">সময়: O(n^2)</text>
+<text x="430" y="165" text-anchor="middle" fill="#4ade80" font-size="10">মিলিসেকেন্ডে</text>
+<text x="430" y="185" text-anchor="middle" fill="#4ade80" font-size="10">গ্যারান্টিযুক্ত!</text>
+<path d="M210,135 Q290,110 370,135" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="290" y="105" text-anchor="middle" fill="#fcd34d" font-size="10">ratio &lt;= 2</text>
+<text x="290" y="225" text-anchor="middle" fill="#c084fc" font-size="10">নিখুঁত অসম্ভব হলে, গ্যারান্টিযুক্ত কাছাকাছিই বিজয়</text>
+</svg>
+</div>
+<div class="svg-caption">Approximation algorithm: নিখুঁত সমাধান সময়ের বাইরে হলে, গ্যারান্টিযুক্ত কাছাকাছি উত্তর। Vertex Cover ২-approximation।</div>
 
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> নিখুঁত অসম্ভব হলে, সেরা প্রচেষ্টাই বিজয়।<br>

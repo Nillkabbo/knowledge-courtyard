@@ -57,6 +57,44 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৭ (Networks) Door ৯ (TLS):</strong> TLS handshake শিখেছিলে — এখন দেখো সেই handshake-এর পেছনে কোন এনক্রিপশন। Book ৪৮ (Discrete Math) Door ৯: Fermat-এর সূত্র — RSA-এর গাণিতিক ভিত্তি।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#fca5a5" font-size="13" font-weight="bold">Symmetric vs Asymmetric vs Hybrid (TLS)</text>
+  <rect x="25" y="45" width="150" height="150" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="100" y="65" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="bold">AES (Symmetric)</text>
+  <rect x="45" y="80" width="110" height="28" rx="4" fill="#7f1d1d" stroke="#fca5a5" stroke-width="1"/>
+  <text x="100" y="98" text-anchor="middle" fill="#fca5a5" font-size="10">1 key: encrypt+decrypt</text>
+  <text x="100" y="128" text-anchor="middle" fill="#4ade80" font-size="10">~978 GB/s — FAST</text>
+  <text x="100" y="150" text-anchor="middle" fill="#fbbf24" font-size="9">Problem: key sharing</text>
+  <text x="100" y="172" text-anchor="middle" fill="#fca5a5" font-size="9">how to send the key?</text>
+  <text x="100" y="188" text-anchor="middle" fill="#7dd3fc" font-size="8">2001 · Daemen-Rijmen</text>
+  <rect x="215" y="45" width="150" height="150" rx="8" fill="#451a03" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="65" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="bold">RSA (Asymmetric)</text>
+  <rect x="230" y="80" width="55" height="24" rx="4" fill="#78350f" stroke="#fcd34d" stroke-width="1"/>
+  <text x="257" y="96" text-anchor="middle" fill="#fcd34d" font-size="9">Public</text>
+  <rect x="295" y="80" width="55" height="24" rx="4" fill="#78350f" stroke="#fcd34d" stroke-width="1"/>
+  <text x="322" y="96" text-anchor="middle" fill="#fcd34d" font-size="9">Private</text>
+  <text x="290" y="128" text-anchor="middle" fill="#fbbf24" font-size="10">~1000 signs/s — SLOW</text>
+  <text x="290" y="150" text-anchor="middle" fill="#4ade80" font-size="9">Secure key exchange</text>
+  <text x="290" y="172" text-anchor="middle" fill="#fca5a5" font-size="9">p * q = n (math trapdoor)</text>
+  <text x="290" y="188" text-anchor="middle" fill="#7dd3fc" font-size="8">1977 · Rivest-Shamir-Adleman</text>
+  <rect x="405" y="45" width="150" height="150" rx="8" fill="#0c4a6e" stroke="#22d3ee" stroke-width="2"/>
+  <text x="480" y="65" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">TLS (Hybrid)</text>
+  <text x="480" y="92" text-anchor="middle" fill="#7dd3fc" font-size="9">1. RSA exchanges AES key</text>
+  <text x="480" y="112" text-anchor="middle" fill="#7dd3fc" font-size="9">2. AES encrypts all data</text>
+  <text x="480" y="138" text-anchor="middle" fill="#4ade80" font-size="9">Best of both worlds</text>
+  <text x="480" y="160" text-anchor="middle" fill="#c084fc" font-size="9">Speed + Security</text>
+  <text x="480" y="182" text-anchor="middle" fill="#fbbf24" font-size="8">ECC: 256-bit = 3072-bit RSA</text>
+  <path d="M 175 120 L 215 120" stroke="#fca5a5" stroke-width="2" marker-end="url(#arrCr1a)"/>
+  <path d="M 365 120 L 405 120" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrCr1b)"/>
+  <defs>
+    <marker id="arrCr1a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#fca5a5"/></marker>
+    <marker id="arrCr1b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#7dd3fc"/></marker>
+  </defs>
+</svg>
+</div>
+<div class="svg-caption">দুই তালার রহস্য — AES এক চাবিতে দ্রুত, RSA দুই চাবিতে নিরাপদ, TLS দুটোকে মেলায়: RSA দিয়ে চাবি আদান, AES দিয়ে ডেটা এনক্রিপ্ট।</div>
 <div class="secret-box">🔐 <strong>দুই তালা — AES দ্রুত, RSA নিরাপদ।</strong> TLS দুটো মেলায়। কিন্তু চাবি শেয়ার ছাড়াও একটি সমস্যা আছে — দুজন যদি একসাথে চাবি বানাতে চায়? কেউ চাবি পাঠাবে না — দুজন মিলে বানাবে। সেই জাদু — পরের দরজায়।</div>`,
   senior: {
     title: "Symmetric vs Asymmetric এক নজরে",
@@ -136,6 +174,36 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ৯ (Number Theory):</strong> modular arithmetic ও discrete logarithm শিখেছিলে — Diffie-Hellman সেই গাণিতিক ভিত্তির প্রয়োগ! Book ৩৭ Door ৯ (TLS): TLS 1.3-এ DHE বাধ্যতামূলক।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#fca5a5" font-size="13" font-weight="bold">Diffie-Hellman: Secret from Public Channel</text>
+  <rect x="20" y="55" width="120" height="70" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="80" y="75" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="bold">Alice</text>
+  <text x="80" y="95" text-anchor="middle" fill="#fca5a5" font-size="10">private: a</text>
+  <text x="80" y="112" text-anchor="middle" fill="#7dd3fc" font-size="9">sends A = g^a mod p</text>
+  <rect x="440" y="55" width="120" height="70" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="500" y="75" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="bold">Bob</text>
+  <text x="500" y="95" text-anchor="middle" fill="#fca5a5" font-size="10">private: b</text>
+  <text x="500" y="112" text-anchor="middle" fill="#7dd3fc" font-size="9">sends B = g^b mod p</text>
+  <rect x="220" y="160" width="140" height="40" rx="6" fill="#451a03" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4"/>
+  <text x="290" y="178" text-anchor="middle" fill="#fcd34d" font-size="10">Eavesdropper sees:</text>
+  <text x="290" y="192" text-anchor="middle" fill="#fcd34d" font-size="9">p, g, A, B — but NOT a or b</text>
+  <line x1="140" y1="80" x2="440" y2="80" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="74" text-anchor="middle" fill="#7dd3fc" font-size="9">PUBLIC CHANNEL</text>
+  <path d="M 200 80 L 140 80" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCr2a)"/>
+  <path d="M 380 80 L 440 80" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCr2b)"/>
+  <rect x="200" y="105" width="180" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="123" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="bold">Shared Secret = g^(ab)</text>
+  <text x="290" y="138" text-anchor="middle" fill="#4ade80" font-size="9">Alice: B^a · Bob: A^b · SAME!</text>
+  <text x="290" y="222" text-anchor="middle" fill="#c084fc" font-size="10">discrete log: given g^x, finding x is infeasible (one-way)</text>
+  <defs>
+    <marker id="arrCr2a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#7dd3fc"/></marker>
+    <marker id="arrCr2b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#7dd3fc"/></marker>
+  </defs>
+</svg>
+</div>
+<div class="svg-caption">রঙ মেশানোর মতো — Alice ও Bob পাবলিকে A=g^a ও B=g^b পাঠায়, দুজনেই g^(ab) হিসাব করে। চোর A, B দেখে কিন্তু a বা b বের করতে পারে না — discrete logarithm।</div>
 <div class="secret-box">🎨 <strong>Diffie-Hellman = পাবলিকে গোপন চাবি।</strong> রঙ মেশানোর মতো — সহজে মেশাও, আনমিক্স অসম্ভব। কিন্তু চাবি শেয়ার করা ছাড়াও একটি প্রশ্ন — বার্তা পরিবর্তিত হলে কী হবে? কেউ মাঝে বার্তা বদলে দিলে? সেই সুরক্ষা — পরের দরজায়।</div>`,
   senior: {
     title: "Diffie-Hellman এক নজরে",
@@ -205,6 +273,47 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ৫ (Combinatorics):</strong> hash collision = birthday paradox! ২²⁵⁶ আউটপুট — collision প্রায় অসম্ভব। Book ৩৭ Door ৯ (TLS): সার্টিফিকেট fingerprint = SHA-256 hash।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#fca5a5" font-size="13" font-weight="bold">Hash Avalanche: 1 Bit Changes Everything</text>
+  <rect x="20" y="45" width="120" height="35" rx="4" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="80" y="67" text-anchor="middle" fill="#fca5a5" font-size="12" font-family="monospace">"hello"</text>
+  <rect x="20" y="95" width="120" height="35" rx="4" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="80" y="117" text-anchor="middle" fill="#fca5a5" font-size="12" font-family="monospace">"Hello"</text>
+  <text x="80" y="145" text-anchor="middle" fill="#fbbf24" font-size="9">only h changed to H</text>
+  <rect x="190" y="55" width="120" height="70" rx="8" fill="#0c4a6e" stroke="#22d3ee" stroke-width="2"/>
+  <text x="250" y="78" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="bold">SHA-256</text>
+  <text x="250" y="98" text-anchor="middle" fill="#7dd3fc" font-size="9">one-way function</text>
+  <text x="250" y="114" text-anchor="middle" fill="#7dd3fc" font-size="9">fixed 256-bit output</text>
+  <path d="M 140 62 L 190 80" stroke="#fca5a5" stroke-width="1.5" marker-end="url(#arrCr3a)"/>
+  <path d="M 140 112 L 190 100" stroke="#fca5a5" stroke-width="1.5" marker-end="url(#arrCr3a)"/>
+  <rect x="345" y="45" width="215" height="35" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="452" y="67" text-anchor="middle" fill="#4ade80" font-size="9" font-family="monospace">2cf24dba5fb0a30e26e8...</text>
+  <rect x="345" y="95" width="215" height="35" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="452" y="117" text-anchor="middle" fill="#4ade80" font-size="9" font-family="monospace">185f8db32271fe25f561...</text>
+  <path d="M 310 80 L 345 62" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCr3b)"/>
+  <path d="M 310 100 L 345 112" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCr3b)"/>
+  <text x="290" y="160" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="bold">1 input bit change → ~50% output bits change</text>
+  <rect x="40" y="175" width="130" height="55" rx="6" fill="#451a03" stroke="#fbbf24" stroke-width="1"/>
+  <text x="105" y="194" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">Properties:</text>
+  <text x="105" y="210" text-anchor="middle" fill="#fcd34d" font-size="8">fixed length · one-way</text>
+  <text x="105" y="223" text-anchor="middle" fill="#fcd34d" font-size="8">collision-resistant</text>
+  <rect x="190" y="175" width="160" height="55" rx="6" fill="#450a0a" stroke="#fca5a5" stroke-width="1"/>
+  <text x="270" y="194" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="bold">Uses:</text>
+  <text x="270" y="210" text-anchor="middle" fill="#fca5a5" font-size="8">passwords · file integrity</text>
+  <text x="270" y="223" text-anchor="middle" fill="#fca5a5" font-size="8">blockchain · Merkle trees</text>
+  <rect x="370" y="175" width="170" height="55" rx="6" fill="#451a03" stroke="#fbbf24" stroke-width="1"/>
+  <text x="455" y="194" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">Broken (avoid):</text>
+  <text x="455" y="210" text-anchor="middle" fill="#fca5a5" font-size="8">MD5 (2004) · SHA-1 (2017)</text>
+  <text x="455" y="223" text-anchor="middle" fill="#4ade80" font-size="8">use Argon2/bcrypt for passwords</text>
+  <defs>
+    <marker id="arrCr3a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#fca5a5"/></marker>
+    <marker id="arrCr3b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#7dd3fc"/></marker>
+  </defs>
+</svg>
+</div>
+<div class="svg-caption">আঙুরের ছাপ — SHA-256 একমুখী সিলমোহর। "hello" ও "Hello"-র হ্যাশ সম্পূর্ণ ভিন্ন — এক বিট বদলালে অর্ধেক বিট বদলে যায় (avalanche)। পাসওয়ার্ড, ফাইল যাচাই, ব্লকচেইন — সব এর উপর।</div>
 <div class="secret-box">#️⃣ <strong>হ্যাশ = ডিজিটাল সিলমোহর। একমুখী। Avalanche।</strong> পাসওয়ার্ড, ফাইল যাচাই, ব্লকচেইন — সব এর উপর। কিন্তু সিল শুধু অখণ্ডতা দেয়। পরিচয় যাচাই কে দেবে? কেউ দাবি করলে — আমিই পাঠিয়েছি — তা কীভাবে প্রমাণ করবে? সেই উত্তর — পরের দরজায়।</div>`,
   senior: {
     title: "Hash Functions এক নজরে",
@@ -285,6 +394,49 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪০ (Software Engineering) Door ৮ (Security):</strong> OWASP Top 10-এ broken authentication আছে — পাসওয়ার্ড হ্যাশিং ছাড়া। Django auth = PBKDF2 default। এখন তুমি জানো কেন Argon2 সেরা।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#fca5a5" font-size="13" font-weight="bold">Password Hashing: Why Salt + Slow Matters</text>
+  <rect x="20" y="45" width="110" height="35" rx="4" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="75" y="67" text-anchor="middle" fill="#fca5a5" font-size="11" font-family="monospace">"password123"</text>
+  <rect x="20" y="90" width="110" height="28" rx="4" fill="#0c4a6e" stroke="#22d3ee" stroke-width="1"/>
+  <text x="75" y="108" text-anchor="middle" fill="#7dd3fc" font-size="10">+ random salt</text>
+  <path d="M 130 70 L 175 70" stroke="#fca5a5" stroke-width="1.5" marker-end="url(#arrCr4a)"/>
+  <rect x="180" y="40" width="220" height="80" rx="8" fill="#7f1d1d" stroke="#f87171" stroke-width="2"/>
+  <text x="290" y="62" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="bold">Hash Function</text>
+  <text x="290" y="82" text-anchor="middle" fill="#fca5a5" font-size="9">SHA-256: FAST (bad for passwords)</text>
+  <text x="290" y="98" text-anchor="middle" fill="#4ade80" font-size="9">bcrypt: ~100ms (good)</text>
+  <text x="290" y="114" text-anchor="middle" fill="#4ade80" font-size="9">Argon2: memory-hard (best)</text>
+  <rect x="430" y="45" width="130" height="35" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="495" y="60" text-anchor="middle" fill="#4ade80" font-size="8" font-family="monospace">$2b$12$N9qo8uLO</text>
+  <text x="495" y="73" text-anchor="middle" fill="#4ade80" font-size="8" font-family="monospace">ickgxAlCZ2... (stored)</text>
+  <path d="M 400 70 L 430 70" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCr4b)"/>
+  <rect x="20" y="145" width="170" height="85" rx="6" fill="#450a0a" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="105" y="165" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="bold">❌ Without salt</text>
+  <text x="105" y="183" text-anchor="middle" fill="#fca5a5" font-size="8">same password →</text>
+  <text x="105" y="196" text-anchor="middle" fill="#fca5a5" font-size="8">same hash for everyone</text>
+  <text x="105" y="212" text-anchor="middle" fill="#fbbf24" font-size="8">→ rainbow table attack</text>
+  <text x="105" y="225" text-anchor="middle" fill="#fbbf24" font-size="8">  (LinkedIn 2012: 167M leaked)</text>
+  <rect x="210" y="145" width="170" height="85" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="295" y="165" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">✅ With salt + slow</text>
+  <text x="295" y="183" text-anchor="middle" fill="#4ade80" font-size="8">unique salt per password</text>
+  <text x="295" y="196" text-anchor="middle" fill="#4ade80" font-size="8">→ different hash each time</text>
+  <text x="295" y="212" text-anchor="middle" fill="#7dd3fc" font-size="8">slow function wastes</text>
+  <text x="295" y="225" text-anchor="middle" fill="#7dd3fc" font-size="8">attacker's GPU time</text>
+  <rect x="400" y="145" width="160" height="85" rx="6" fill="#451a03" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="480" y="165" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">Speed comparison</text>
+  <text x="480" y="183" text-anchor="middle" fill="#fca5a5" font-size="8">SHA-256: 100M/s</text>
+  <text x="480" y="196" text-anchor="middle" fill="#fbbf24" font-size="8">bcrypt: ~10/s</text>
+  <text x="480" y="209" text-anchor="middle" fill="#4ade80" font-size="8">Argon2: ~5/s (memory)</text>
+  <text x="480" y="225" text-anchor="middle" fill="#c084fc" font-size="8">attacker wants fast ❌</text>
+  <defs>
+    <marker id="arrCr4a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#fca5a5"/></marker>
+    <marker id="arrCr4b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#7dd3fc"/></marker>
+  </defs>
+</svg>
+</div>
+<div class="svg-caption">পাসওয়ার্ডের কারিগর — plaintext বা সাধারণ SHA-256 নয়। Salt দিয়ে প্রতিটি পাসওয়ার্ড অদ্বিতীয় করো, ধীর হ্যাশ (bcrypt/Argon2) দিয়ে আক্রমণকারীর সময় নষ্ট করো।</div>
 <div class="secret-box">🔑 <strong>পাসওয়ার্ড = hash + salt + slow।</strong> Plaintext নয়, SHA-256 নয়। bcrypt বা Argon2। এখন তুমি জানো এনক্রিপশন, চাবি আদান, হ্যাশ, পাসওয়ার্ড। কিন্তু সব মিলিয়ে — একটি সার্ভার কীভাবে প্রমাণ করবে সে যে সে? সেই সত্যতা — পরের দরজায়।</div>`,
   senior: {
     title: "Password Hashing এক নজরে",
@@ -354,6 +506,45 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৭ (Networks) Door ৯ (TLS):</strong> TLS handshake-এ সার্টিফিকেট যাচাই হয়। Book ৪৬ (Cryptography) Door ১: RSA = সার্টিফিকেট স্বাক্ষরের ভিত্তি।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#fca5a5" font-size="13" font-weight="bold">Chain of Trust: Browser → Root CA → Server</text>
+  <rect x="20" y="50" width="110" height="65" rx="8" fill="#0c4a6e" stroke="#22d3ee" stroke-width="2"/>
+  <text x="75" y="70" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Browser</text>
+  <text x="75" y="88" text-anchor="middle" fill="#7dd3fc" font-size="9">100+ root CAs</text>
+  <text x="75" y="103" text-anchor="middle" fill="#7dd3fc" font-size="8">pre-installed</text>
+  <rect x="180" y="50" width="110" height="65" rx="8" fill="#451a03" stroke="#fbbf24" stroke-width="2"/>
+  <text x="235" y="70" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="bold">Root CA</text>
+  <text x="235" y="88" text-anchor="middle" fill="#fcd34d" font-size="9">self-signed</text>
+  <text x="235" y="103" text-anchor="middle" fill="#fcd34d" font-size="8">trust anchor</text>
+  <rect x="340" y="50" width="110" height="65" rx="8" fill="#451a03" stroke="#fbbf24" stroke-width="2"/>
+  <text x="395" y="70" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="bold">Intermediate</text>
+  <text x="395" y="88" text-anchor="middle" fill="#fcd34d" font-size="9">CA (signed by root)</text>
+  <text x="395" y="103" text-anchor="middle" fill="#fcd34d" font-size="8">isolates risk</text>
+  <path d="M 130 75 L 180 75" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrCr5a)"/>
+  <path d="M 290 75 L 340 75" stroke="#fcd34d" stroke-width="2" marker-end="url(#arrCr5b)"/>
+  <path d="M 450 75 L 500 75" stroke="#fcd34d" stroke-width="2" marker-end="url(#arrCr5b)"/>
+  <rect x="500" y="50" width="60" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="530" y="75" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="bold">Server</text>
+  <text x="530" y="93" text-anchor="middle" fill="#fca5a5" font-size="8">domain</text>
+  <text x="530" y="105" text-anchor="middle" fill="#fca5a5" font-size="8">+ pubkey</text>
+  <rect x="20" y="135" width="540" height="50" rx="6" fill="#7f1d1d" stroke="#f87171" stroke-width="1"/>
+  <text x="290" y="155" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="bold">Certificate Contents (X.509)</text>
+  <text x="290" y="172" text-anchor="middle" fill="#fca5a5" font-size="9">domain name · public key · expiry date · CA signature · issuer</text>
+  <rect x="40" y="200" width="220" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="150" y="218" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Let's Encrypt (2015)</text>
+  <text x="150" y="232" text-anchor="middle" fill="#4ade80" font-size="9">free certs · certbot · auto-renew</text>
+  <rect x="320" y="200" width="220" height="40" rx="6" fill="#451a03" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="430" y="218" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">Validity: usually 90 days</text>
+  <text x="430" y="232" text-anchor="middle" fill="#fbbf24" font-size="9">expired → "connection not private"</text>
+  <defs>
+    <marker id="arrCr5a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#7dd3fc"/></marker>
+    <marker id="arrCr5b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#fcd34d"/></marker>
+  </defs>
+</svg>
+</div>
+<div class="svg-caption">পরিচয়ের দলিল — ব্রাউজার → root CA → intermediate CA → সার্ভার। প্রতিটি ধাপে ডিজিটাল স্বাক্ষর। মেয়াদ শেষ হলে HTTPS ভাঙে। Let's Encrypt বিনামূল্যে সার্টিফিকেট দেয়।</div>
 <div class="secret-box">📜 <strong>সার্টিফিকেট = পরিচয়ের দলিল।</strong> CA যাচাই করে। শৃঙ্খলের প্রতিটি ধাপ স্বাক্ষরিত। মেয়াদ শেষে রিনিউ করো। এখন পাঁচটি দরজা পেরিয়েছো — এনক্রিপশন, চাবি আদান, হ্যাশ, পাসওয়ার্ড, সার্টিফিকেট। পরের অধ্যায়ে — TLS handshake, JWT, OWASP, ও জিরো ট্রাস্ট।</div>`,
   senior: {
     title: "PKI & Certificates এক নজরে",

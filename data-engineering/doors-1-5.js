@@ -60,6 +60,45 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৯ (Databases) Door ১ (Relational):</strong> normalization ও 3NF শিখেছিলে — OLTP সেই ভিত্তি। Book ৪৪ (Data Engineering) Door ৩: Star Schema = OLAP-এর denormalized কাঠামো।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs><marker id="arrDE1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#22d3ee"/></marker></defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+  <text x="290" y="26" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="bold">OLTP vs OLAP</text>
+  <rect x="20" y="48" width="170" height="160" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="105" y="70" text-anchor="middle" fill="#22d3ee" font-size="11" font-weight="bold">OLTP (Row-based)</text>
+  <rect x="35" y="82" width="140" height="16" fill="#0f172a" stroke="#475569" stroke-width="0.5"/>
+  <text x="42" y="94" fill="#94a3b8" font-size="8">42 | Hasan | 5000</text>
+  <rect x="35" y="100" width="140" height="16" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.2"/>
+  <text x="42" y="112" fill="#7dd3fc" font-size="8">43 | Rakib | 3200</text>
+  <rect x="35" y="118" width="140" height="16" fill="#0f172a" stroke="#475569" stroke-width="0.5"/>
+  <text x="42" y="130" fill="#94a3b8" font-size="8">44 | Omar  | 7100</text>
+  <text x="105" y="158" text-anchor="middle" fill="#4ade80" font-size="9">WHERE id=42</text>
+  <text x="105" y="174" text-anchor="middle" fill="#4ade80" font-size="9">single row fast</text>
+  <text x="105" y="194" text-anchor="middle" fill="#fbbf24" font-size="9">SUM? read all rows</text>
+  <line x1="200" y1="128" x2="380" y2="128" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrDE1)"/>
+  <text x="290" y="120" text-anchor="middle" fill="#7dd3fc" font-size="9">ETL</text>
+  <rect x="390" y="48" width="170" height="160" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="475" y="70" text-anchor="middle" fill="#22d3ee" font-size="11" font-weight="bold">OLAP (Columnar)</text>
+  <rect x="405" y="82" width="42" height="78" fill="#0f172a" stroke="#475569" stroke-width="0.5"/>
+  <text x="426" y="96" text-anchor="middle" fill="#94a3b8" font-size="8">id</text>
+  <text x="426" y="110" text-anchor="middle" fill="#64748b" font-size="7">42</text>
+  <text x="426" y="122" text-anchor="middle" fill="#64748b" font-size="7">43</text>
+  <rect x="452" y="82" width="60" height="78" fill="#0f172a" stroke="#475569" stroke-width="0.5"/>
+  <text x="482" y="96" text-anchor="middle" fill="#94a3b8" font-size="8">name</text>
+  <text x="482" y="110" text-anchor="middle" fill="#64748b" font-size="7">Hasan</text>
+  <text x="482" y="122" text-anchor="middle" fill="#64748b" font-size="7">Rakib</text>
+  <rect x="517" y="82" width="38" height="78" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="536" y="96" text-anchor="middle" fill="#22d3ee" font-size="7">amt</text>
+  <text x="536" y="110" text-anchor="middle" fill="#7dd3fc" font-size="7">5000</text>
+  <text x="536" y="122" text-anchor="middle" fill="#7dd3fc" font-size="7">3200</text>
+  <text x="536" y="134" text-anchor="middle" fill="#7dd3fc" font-size="7">7100</text>
+  <text x="475" y="182" text-anchor="middle" fill="#4ade80" font-size="9">SUM(amount)?</text>
+  <text x="475" y="198" text-anchor="middle" fill="#4ade80" font-size="9">read 1 column only</text>
+</svg>
+</div>
+<div class="svg-caption">OLTP = row-based (এক row দ্রুত), OLAP = columnar (aggregation দ্রুত)। একই ডেটা, দুই রূপ।</div>
+
 <div class="secret-box">🌍 <strong>OLTP = row (transaction), OLAP = columnar (analysis)।</strong> একই ডেটা, দুই রূপ। কিন্তু OLAP-তে ডেটা কীভাবে সাজাবে? সেই কাঠামো — Parquet। পরের দরজায়।</div>`,
   senior: {
     title: "OLTP vs OLAP এক নজরে",
@@ -136,6 +175,41 @@ doors.push({
 <p class="scene-setting en">Ikhlas — conciseness, keeping only what's needed. Parquet is the form of that conciseness — only needed columns, skip the rest. Compression makes it small, predicate pushdown makes it fast. The most important file format in data engineering.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৯ (Databases) Door ৬ (Indexing):</strong> B-tree index ও columnar storage — ভিন্ন কিন্তু সম্পর্কিত। Book ৪৪ Door ৩: Star Schema = Parquet-এ সাজানো ডেটা।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+  <text x="290" y="26" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="bold">CSV (Row) vs Parquet (Columnar)</text>
+  <rect x="20" y="48" width="230" height="170" rx="8" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="135" y="68" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">CSV — 250 MB</text>
+  <rect x="35" y="80" width="200" height="14" fill="#0f172a" stroke="#475569" stroke-width="0.5"/>
+  <text x="42" y="91" fill="#94a3b8" font-size="7">42,Hasan,5000</text>
+  <rect x="35" y="96" width="200" height="14" fill="#1e3a5f" stroke="#475569" stroke-width="0.5"/>
+  <text x="42" y="107" fill="#94a3b8" font-size="7">43,Rakib,3200</text>
+  <rect x="35" y="112" width="200" height="14" fill="#0f172a" stroke="#475569" stroke-width="0.5"/>
+  <text x="42" y="123" fill="#94a3b8" font-size="7">44,Omar,7100</text>
+  <text x="135" y="150" text-anchor="middle" fill="#fbbf24" font-size="9">read amount?</text>
+  <text x="135" y="166" text-anchor="middle" fill="#fbbf24" font-size="9">ALL columns parsed</text>
+  <text x="135" y="186" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">3.2s</text>
+  <text x="135" y="202" text-anchor="middle" fill="#64748b" font-size="8">10M rows</text>
+  <rect x="330" y="48" width="230" height="170" rx="8" fill="#1e3a5f" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="445" y="68" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="bold">Parquet — 25 MB</text>
+  <rect x="345" y="80" width="55" height="60" fill="#0f172a" stroke="#475569" stroke-width="0.5"/>
+  <text x="372" y="94" text-anchor="middle" fill="#94a3b8" font-size="7">id</text>
+  <rect x="405" y="80" width="70" height="60" fill="#0f172a" stroke="#475569" stroke-width="0.5"/>
+  <text x="440" y="94" text-anchor="middle" fill="#94a3b8" font-size="7">name</text>
+  <rect x="480" y="80" width="65" height="60" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="512" y="94" text-anchor="middle" fill="#22d3ee" font-size="7">amount</text>
+  <text x="512" y="108" text-anchor="middle" fill="#7dd3fc" font-size="7">5000</text>
+  <text x="512" y="120" text-anchor="middle" fill="#7dd3fc" font-size="7">3200</text>
+  <text x="512" y="132" text-anchor="middle" fill="#7dd3fc" font-size="7">7100</text>
+  <text x="445" y="158" text-anchor="middle" fill="#4ade80" font-size="9">read amount?</text>
+  <text x="445" y="174" text-anchor="middle" fill="#4ade80" font-size="9">1 column, skip rest</text>
+  <text x="445" y="194" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="bold">0.3s</text>
+  <text x="445" y="208" text-anchor="middle" fill="#64748b" font-size="8">predicate pushdown</text>
+</svg>
+</div>
+<div class="svg-caption">Parquet = columnar। শুধু প্রয়োজনীয় column পড়ে, বাকি skip — ১০x ছোট, ১০x দ্রুত।</div>
 
 <div class="secret-box">📦 <strong>Parquet = columnar, compressed, fast।</strong> কিন্তু ডেটা কীভাবে সাজাবে যাতে বিশ্লেষণ সহজ হয়? Star Schema — সেই কাঠামো। পরের দরজায়।</div>`,
   senior: {
@@ -229,6 +303,36 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৯ (Databases) Door ২ (SQL):</strong> JOIN ও normalization শিখেছিলে — Star Schema সেই ধারণার বিপরীত (denormalized)। Book ৪৪ Door ১: OLTP normalized, OLAP denormalized।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs><marker id="arrDE3" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#22d3ee"/></marker></defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+  <text x="290" y="24" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="bold">Star Schema (Kimball 1996)</text>
+  <rect x="235" y="100" width="110" height="50" rx="8" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="120" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">FACT</text>
+  <text x="290" y="135" text-anchor="middle" fill="#fcd34d" font-size="8">transactions</text>
+  <text x="290" y="146" text-anchor="middle" fill="#94a3b8" font-size="7">amount, qty</text>
+  <rect x="50" y="50" width="100" height="38" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="100" y="68" text-anchor="middle" fill="#22d3ee" font-size="9" font-weight="bold">dim_user</text>
+  <text x="100" y="80" text-anchor="middle" fill="#7dd3fc" font-size="7">name, city</text>
+  <rect x="430" y="50" width="100" height="38" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="480" y="68" text-anchor="middle" fill="#22d3ee" font-size="9" font-weight="bold">dim_category</text>
+  <text x="480" y="80" text-anchor="middle" fill="#7dd3fc" font-size="7">Food, Transport</text>
+  <rect x="50" y="160" width="100" height="38" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="100" y="178" text-anchor="middle" fill="#22d3ee" font-size="9" font-weight="bold">dim_date</text>
+  <text x="100" y="190" text-anchor="middle" fill="#7dd3fc" font-size="7">month, quarter</text>
+  <rect x="430" y="160" width="100" height="38" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="480" y="178" text-anchor="middle" fill="#22d3ee" font-size="9" font-weight="bold">dim_store</text>
+  <text x="480" y="190" text-anchor="middle" fill="#7dd3fc" font-size="7">location</text>
+  <line x1="150" y1="69" x2="235" y2="110" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#arrDE3)"/>
+  <line x1="430" y1="69" x2="345" y2="110" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#arrDE3)"/>
+  <line x1="150" y1="179" x2="235" y2="140" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#arrDE3)"/>
+  <line x1="430" y1="179" x2="345" y2="140" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#arrDE3)"/>
+  <text x="290" y="230" text-anchor="middle" fill="#64748b" font-size="8">কেন্দ্রে fact (সংখ্যা), চারপাশে dimension (বিবরণ) — denormalized</text>
+</svg>
+</div>
+<div class="svg-caption">Star Schema — কেন্দ্রে fact table, চারপাশে dimension। JOIN কম, analytics দ্রুত।</div>
+
 <div class="secret-box">⭐ <strong>Star Schema = fact কেন্দ্রে, dimension চারপাশে।</strong> কিন্তু ডেটা বিশাল হলে — এক মেশিনে চলবে না। কোটি কোটি row? Distributed processing দরকার। সেই ইঞ্জিন — Spark। পরের দরজায়।</div>`,
   senior: {
     title: "Star Schema এক নজরে",
@@ -307,6 +411,40 @@ doors.push({
 <p class="scene-setting en">Ana — delay, waiting until the last moment. Spark's lazy evaluation is the power of that delay — it gathers all information, then optimizes and runs. Seems lazy but it's the wisest — because it sees the whole picture before deciding. From delay comes speed.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ৭ (Graphs):</strong> DAG = Directed Acyclic Graph! Spark execution plan = DAG। Book ৩৫ (Distributed Systems) Door ৬: MapReduce → Spark বিবর্তন।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs><marker id="arrDE4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#22d3ee"/></marker></defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+  <text x="290" y="26" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="bold">Spark DAG — Lazy Evaluation</text>
+  <rect x="20" y="105" width="80" height="40" rx="6" fill="#1e3a5f" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="60" y="122" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">read</text>
+  <text x="60" y="135" text-anchor="middle" fill="#94a3b8" font-size="7">parquet</text>
+  <rect x="130" y="105" width="80" height="40" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="170" y="122" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">filter</text>
+  <text x="170" y="135" text-anchor="middle" fill="#94a3b8" font-size="7">transform</text>
+  <rect x="240" y="105" width="80" height="40" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="280" y="122" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">join</text>
+  <text x="280" y="135" text-anchor="middle" fill="#94a3b8" font-size="7">transform</text>
+  <rect x="350" y="105" width="80" height="40" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="390" y="122" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">groupBy</text>
+  <text x="390" y="135" text-anchor="middle" fill="#94a3b8" font-size="7">transform</text>
+  <rect x="465" y="100" width="90" height="50" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="510" y="120" text-anchor="middle" fill="#22d3ee" font-size="9" font-weight="bold">collect()</text>
+  <text x="510" y="135" text-anchor="middle" fill="#7dd3fc" font-size="8">ACTION!</text>
+  <line x1="100" y1="125" x2="128" y2="125" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrDE4)"/>
+  <line x1="210" y1="125" x2="238" y2="125" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrDE4)"/>
+  <line x1="320" y1="125" x2="348" y2="125" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrDE4)"/>
+  <line x1="430" y1="125" x2="463" y2="125" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrDE4)"/>
+  <text x="170" y="95" text-anchor="middle" fill="#64748b" font-size="7">DAG node only</text>
+  <text x="390" y="95" text-anchor="middle" fill="#64748b" font-size="7">no work yet</text>
+  <text x="510" y="90" text-anchor="middle" fill="#22d3ee" font-size="8">Catalyst</text>
+  <text x="510" y="170" text-anchor="middle" fill="#7dd3fc" font-size="8">optimizes all</text>
+  <text x="290" y="205" text-anchor="middle" fill="#94a3b8" font-size="9">filter then join then groupBy = শুধু plan তৈরি</text>
+  <text x="290" y="222" text-anchor="middle" fill="#4ade80" font-size="9">collect()/write() হলে সব একসাথে optimize হয়ে চলে</text>
+</svg>
+</div>
+<div class="svg-caption">Spark lazy evaluation — transform শুধু DAG তৈরি করে, action হলে Catalyst সব একসাথে চালায়।</div>
 
 <div class="secret-box">⚡ <strong>Spark = lazy evaluation + DAG + Catalyst।</strong> বিশাল ডেটা দ্রুত। কিন্তু একটি সমস্যা — shuffle। কোটি কোটি row-এর মধ্যে join করতে হলে ডেটা মেশিনে মেশিনে যায়। সেই যাত্রা — shuffle। পরের দরজায়।</div>`,
   senior: {
@@ -388,6 +526,46 @@ doors.push({
 <p class="scene-setting en">Qasra — division. Shuffle and partition are the form of that division — correct amount in correct parts. Skew means excess in one part — illness. Salting equalizes — health. Broadcast join avoids shuffle — efficiency.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৫ (Distributed Systems) Door ৪ (Consistent Hashing):</strong> partitioning strategy। Book ৪৬ (Cryptography) Door ৩ (Hash): partition key = hash function।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs><marker id="arrDE5" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#22d3ee"/></marker></defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+  <text x="290" y="24" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="bold">Shuffle vs Broadcast Join</text>
+  <text x="145" y="48" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">Shuffle Join (expensive)</text>
+  <rect x="30" y="60" width="60" height="55" rx="5" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.2"/>
+  <text x="60" y="78" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">fact</text>
+  <text x="60" y="92" text-anchor="middle" fill="#fcd34d" font-size="7">100 GB</text>
+  <text x="60" y="105" text-anchor="middle" fill="#94a3b8" font-size="7">shuffle!</text>
+  <rect x="200" y="60" width="60" height="55" rx="5" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.2"/>
+  <text x="230" y="78" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">dim</text>
+  <text x="230" y="92" text-anchor="middle" fill="#fcd34d" font-size="7">5 MB</text>
+  <text x="230" y="105" text-anchor="middle" fill="#94a3b8" font-size="7">shuffle!</text>
+  <line x1="90" y1="87" x2="145" y2="87" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrDE5)"/>
+  <line x1="200" y1="87" x2="155" y2="87" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrDE5)"/>
+  <rect x="110" y="130" width="70" height="30" rx="5" fill="#0f172a" stroke="#475569"/>
+  <text x="145" y="150" text-anchor="middle" fill="#94a3b8" font-size="8">network</text>
+  <text x="145" y="178" text-anchor="middle" fill="#fbbf24" font-size="9">slow</text>
+  <text x="445" y="48" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Broadcast Join (no shuffle)</text>
+  <rect x="330" y="60" width="60" height="55" rx="5" fill="#1e3a5f" stroke="#4ade80" stroke-width="1.2"/>
+  <text x="360" y="78" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">fact</text>
+  <text x="360" y="92" text-anchor="middle" fill="#4ade80" font-size="7">100 GB</text>
+  <text x="360" y="105" text-anchor="middle" fill="#22d3ee" font-size="7">no move!</text>
+  <rect x="500" y="60" width="55" height="55" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="527" y="78" text-anchor="middle" fill="#22d3ee" font-size="8" font-weight="bold">dim</text>
+  <text x="527" y="92" text-anchor="middle" fill="#7dd3fc" font-size="7">5 MB</text>
+  <text x="527" y="105" text-anchor="middle" fill="#7dd3fc" font-size="7">broadcast</text>
+  <line x1="500" y1="87" x2="392" y2="87" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrDE5)"/>
+  <rect x="330" y="135" width="60" height="25" rx="4" fill="#0f172a" stroke="#475569"/>
+  <text x="360" y="152" text-anchor="middle" fill="#7dd3fc" font-size="7">executor</text>
+  <rect x="425" y="135" width="60" height="25" rx="4" fill="#0f172a" stroke="#475569"/>
+  <text x="455" y="152" text-anchor="middle" fill="#7dd3fc" font-size="7">executor</text>
+  <text x="445" y="185" text-anchor="middle" fill="#4ade80" font-size="9">dim সব executor-এ</text>
+  <text x="445" y="200" text-anchor="middle" fill="#4ade80" font-size="9">fast, no shuffle</text>
+  <text x="290" y="230" text-anchor="middle" fill="#64748b" font-size="8">Data skew? salting দিয়ে key ভাগ করো (key_0, key_1 ...)</text>
+</svg>
+</div>
+<div class="svg-caption">Shuffle = সবচেয়ে ব্যয়বহুল। Broadcast join ছোট table সব মেশিনে পাঠায় — shuffle লাগে না।</div>
 
 <div class="secret-box">🔀 <strong>Shuffle = সবচেয়ে ব্যয়বহুল। Broadcast join ও salting দিয়ে কমাও।</strong> কিন্তু OLTP থেকে OLAP-এ ডেটা কীভাবে যাবে? প্রতিটি transaction real-time-এ? সেই প্রবাহ — CDC। পরের দরজায়।</div>`,
   senior: {

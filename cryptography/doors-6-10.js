@@ -46,6 +46,28 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৭ (Networks) Door ৯ (TLS):</strong> TLS handshake SVG দেখেছিলে — এখন সেই হ্যান্ডশেকের গাণিতিক ভিত্তি বোঝো। Door ১-৫-এর সব কৌশল এখানে একসাথে।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🤝 TLS 1.3 Handshake: 1-RTT</text>
+  <rect x="20" y="50" width="120" height="220" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="80" y="72" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">CLIENT</text>
+  <rect x="440" y="50" width="120" height="220" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="500" y="72" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">SERVER</text>
+  <line x1="140" y1="100" x2="440" y2="100" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrTLS1)"/>
+  <text x="290" y="95" text-anchor="middle" fill="#fcd34d" font-size="7">ClientHello + KeyShare</text>
+  <line x1="440" y1="130" x2="140" y2="130" stroke="#22c55e" stroke-width="2" marker-end="url(#arrTLS1)"/>
+  <text x="290" y="125" text-anchor="middle" fill="#4ade80" font-size="7">ServerHello + KeyShare + Cert + Finished</text>
+  <line x1="140" y1="160" x2="440" y2="160" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrTLS1)"/>
+  <text x="290" y="155" text-anchor="middle" fill="#4ade80" font-size="7">Client Finished (encrypted)</text>
+  <rect x="160" y="190" width="260" height="30" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="290" y="210" text-anchor="middle" fill="#4ade80" font-size="8">Secure channel established!</text>
+  <text x="290" y="245" text-anchor="middle" fill="#94a3b8" font-size="7">TLS 1.3: 1-RTT (TLS 1.2 needed 2-RTT)</text>
+  <text x="290" y="260" text-anchor="middle" fill="#94a3b8" font-size="7">0-RTT resumption for returning clients</text>
+  <defs><marker id="arrTLS1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: TLS 1.3 handshake — মাত্র ১টি round trip! TLS 1.2-এর চেয়ে দ্রুত।</div>
+
 <div class="secret-box">🤝 <strong>TLS = চার বার্তায় সম্পূর্ণ এনক্রিপ্টেড সংযোগ।</strong> AES + DH + Hash + Certificate — সব মিলে এক handshake। কিন্তু handshake-এর পরে — ক্লায়েন্ট কীভাবে প্রমাণ করবে সে যে সে? সেশন বা JWT — পরের দরজায়।</div>`,
   senior: {
     title: "TLS 1.3 Handshake এক নজরে",
@@ -116,6 +138,35 @@ doors.push({
 <p class="scene-setting en">Bara'ah — permission. JWT is the digital form of that permission. But permission without verification — blind trust is dangerous. "Do not follow what you have no knowledge of" — in JWT this means: verify algorithm, check expiry, test signature.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪০ (Software Engineering) Door ৮ (Security):</strong> OWASP Top 10-এ broken access control #১! JWT ভুল কনফিগারেশন = access control ভাঙা।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎫 JWT: Three Parts Separated by Dots</text>
+  <rect x="20" y="60" width="170" height="80" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="105" y="82" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">HEADER</text>
+  <text x="105" y="100" text-anchor="middle" fill="#86efac" font-size="6">{ "alg": "HS256",</text>
+  <text x="105" y="112" text-anchor="middle" fill="#86efac" font-size="6">"typ": "JWT" }</text>
+  <text x="105" y="130" text-anchor="middle" fill="#94a3b8" font-size="6">base64 encoded</text>
+  <rect x="200" y="60" width="170" height="80" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="285" y="82" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">PAYLOAD</text>
+  <text x="285" y="100" text-anchor="middle" fill="#bae6fd" font-size="6">{ "sub": "1234",</text>
+  <text x="285" y="112" text-anchor="middle" fill="#bae6fd" font-size="6">"role": "admin",</text>
+  <text x="285" y="124" text-anchor="middle" fill="#bae6fd" font-size="6">"exp": 1735689600 }</text>
+  <text x="285" y="135" text-anchor="middle" fill="#94a3b8" font-size="6">NOT encrypted! just b64</text>
+  <rect x="380" y="60" width="180" height="80" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="470" y="82" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">SIGNATURE</text>
+  <text x="470" y="100" text-anchor="middle" fill="#fca5a5" font-size="6">HMAC-SHA256(</text>
+  <text x="470" y="112" text-anchor="middle" fill="#fca5a5" font-size="6">base64(header) + "."</text>
+  <text x="470" y="124" text-anchor="middle" fill="#fca5a5" font-size="6">+ base64(payload),</text>
+  <text x="470" y="136" text-anchor="middle" fill="#f87171" font-size="6">SECRET_KEY )</text>
+  <text x="195" y="105" fill="#94a3b8" font-size="8" font-weight="900">.</text>
+  <text x="375" y="105" fill="#94a3b8" font-size="8" font-weight="900">.</text>
+  <rect x="100" y="170" width="380" height="50" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+  <text x="290" y="190" text-anchor="middle" fill="#e2e8f0" font-size="7">Stateless: server stores NOTHING</text>
+  <text x="290" y="205" text-anchor="middle" fill="#94a3b8" font-size="7">Token validates via signature check only</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: JWT — header.payload.signature। Payload এনক্রিপ্টেড নয়, শুধু signature গোপন।</div>
 
 <div class="secret-box">🎫 <strong>JWT = স্টেটলেস টোকেন। তিন অংশ। signature গোপন।</strong> সার্ভার মনে রাখে না, টোকেন নিজেই পরিচয়। কিন্তু পরিচয় ছাড়াও একটি বিপদ — কেউ ক্ষতিকর ইনপুট পাঠালে? SQL injection, XSS? সেই প্রতিরোধ — পরের দরজায়।</div>`,
   senior: {
@@ -188,6 +239,34 @@ doors.push({
 <p class="scene-setting en">Fitnah — chaos, betrayal. Injection is the digital form of that fitnah. Transforming trusted input into treacherous code. Prevention: verify all input — treat as hostile. Counsel: never accept accusation without verification.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪০ (Software Engineering) Door ৮ (Security):</strong> OWASP Top 10 সম্পূর্ণ তালিকা। Book ৩৯ (Databases) Door ৪ (SQL): parameterized query শিখেছিলে — এখন দেখো কেন।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚔️ Injection: SQL, XSS, CSRF</text>
+  <rect x="20" y="55" width="160" height="80" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="100" y="78" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">SQL Injection</text>
+  <text x="100" y="98" text-anchor="middle" fill="#fca5a5" font-size="6">input: ' OR 1=1 --</text>
+  <text x="100" y="112" text-anchor="middle" fill="#f87171" font-size="6">query: SELECT * WHERE</text>
+  <text x="100" y="122" text-anchor="middle" fill="#f87171" font-size="6">name='' OR 1=1 --</text>
+  <text x="100" y="140" text-anchor="middle" fill="#22c55e" font-size="6">Fix: parameterized query</text>
+  <rect x="210" y="55" width="160" height="80" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">XSS</text>
+  <text x="290" y="98" text-anchor="middle" fill="#fcd34d" font-size="6">input: &lt;script&gt;steal()&lt;/script&gt;</text>
+  <text x="290" y="112" text-anchor="middle" fill="#fbbf24" font-size="6">rendered in browser</text>
+  <text x="290" y="122" text-anchor="middle" fill="#fbbf24" font-size="6">cookie stolen!</text>
+  <text x="290" y="140" text-anchor="middle" fill="#22c55e" font-size="6">Fix: escape output, CSP</text>
+  <rect x="400" y="55" width="160" height="80" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="480" y="78" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="700">CSRF</text>
+  <text x="480" y="98" text-anchor="middle" fill="#7dd3fc" font-size="6">evil site sends POST</text>
+  <text x="480" y="112" text-anchor="middle" fill="#22d3ee" font-size="6">browser adds cookie</text>
+  <text x="480" y="122" text-anchor="middle" fill="#22d3ee" font-size="6">unauthorized action!</text>
+  <text x="480" y="140" text-anchor="middle" fill="#22c55e" font-size="6">Fix: CSRF token</text>
+  <rect x="100" y="160" width="380" height="60" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="185" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Universal Defense</text>
+  <text x="290" y="205" text-anchor="middle" fill="#86efac" font-size="7">Never trust input · Validate · Sanitize · Escape · Parameterize</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: SQL injection, XSS, CSRF — তিন রূপ। Fix: validate, escape, parameterize।</div>
 
 <div class="secret-box">⚔️ <strong>Injection = বিশ্বাসঘাতক ইনপুট।</strong> SQL, XSS, CSRF — তিন রূপ। প্রতিরোধ: parameterized query, escaped output, CSRF token, CSP header। কিন্তু সবচেয়ে শক্তিশালী প্রতিরোধ কী? প্রতিটি অনুরোধকে শত্রু হিসেবে দেখা — সেই দর্শন — পরের দরজায়।</div>`,
   senior: {
@@ -269,6 +348,22 @@ doors.push({
 <p class="scene-setting en">Himayah — protection. Each security header is a guardian. But a wrong guardian won't protect — "do not take as guardians those who cannot protect." Choose correct defense — parameterized queries, CORS whitelist, CSP nonce.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৭ (Networks) Door ৯ (TLS):</strong> HSTS = HTTPS বাধ্যতামূলক। Book ৪৩ (Cloud DevOps) Door ৬: WAF ও Cloudflare। Book ৪০ (Software Engineering) Door ৮: OWASP Top 10।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🛡️ Defense in Depth: Multiple Security Layers</text>
+  <rect x="180" y="50" width="220" height="40" rx="20" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="290" y="75" text-anchor="middle" fill="#fca5a5" font-size="8">WAF (Web Application Firewall)</text>
+  <rect x="160" y="95" width="260" height="40" rx="20" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="120" text-anchor="middle" fill="#fcd34d" font-size="8">Rate Limiting + CORS + CSP</text>
+  <rect x="140" y="140" width="300" height="40" rx="20" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="165" text-anchor="middle" fill="#7dd3fc" font-size="8">Authentication (JWT) + Authorization (RBAC)</text>
+  <rect x="120" y="185" width="340" height="40" rx="20" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="210" text-anchor="middle" fill="#4ade80" font-size="8">Input Validation + Parameterized Queries + Encryption</text>
+  <text x="290" y="240" text-anchor="middle" fill="#94a3b8" font-size="7">Each layer independent — if one breaks, others hold</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Defense in depth — WAF → Rate limit → Auth → Validation। একটি ভাঙলে অন্যটি রক্ষা।</div>
 
 <div class="secret-box">🛡️ <strong>Defense in depth — প্রতিটি স্তরে প্রহরী।</strong> CORS, CSP, rate limit, WAF, HSTS। কোনো একটি ভাঙলে অন্যটি রক্ষা। কিন্তু সবচেয়ে শক্তিশালী দর্শন — কেউ বিশ্বাসযোগ্য নয়। সেই দর্শন — শেষ দরজায়।</div>`,
   senior: {
@@ -371,6 +466,21 @@ doors.push({
 <li>🏰 Docker read-only container চালাও</li>
 <li>📖 "Real-World Cryptography" — David Wong পড়ো</li>
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🏰 Zero Trust: Never Trust, Always Verify</text>
+  <rect x="180" y="60" width="220" height="50" rx="25" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="290" y="82" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">OLD: Castle &amp; Moat</text>
+  <text x="290" y="98" text-anchor="middle" fill="#fca5a5" font-size="7">Inside network = trusted ❌</text>
+  <text x="200" y="140" fill="#94a3b8" font-size="8">↓ Evolution ↓</text>
+  <rect x="120" y="155" width="340" height="70" rx="25" fill="#052e16" stroke="#22c55e" stroke-width="2.5"/>
+  <text x="290" y="180" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">ZERO TRUST</text>
+  <text x="290" y="198" text-anchor="middle" fill="#86efac" font-size="7">Every request verified: Who? What? Where? When?</text>
+  <text x="290" y="212" text-anchor="middle" fill="#86efac" font-size="7">mTLS · Identity per service · Micro-segmentation</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Zero Trust — কেউ বিশ্বাসযোগ্য নয়। প্রতিটি অনুরোধ যাচাই।</div>
 
 <div class="secret-box">🏰 <strong>ক্রিপ্টোগ্রাফি = নিরাপত্তার গণিত।</strong> নয়টি দরজা, নয়জন শিক্ষক, একটি দুর্গ। AES থেকে Zero Trust — ৫০ বছরের গবেষণা প্রতিটি HTTPS সংযোগে বেঁচে আছে। এখন তুমি জানো — শুধু কীভাবে নয়, কেন। কেন TLS দুই চাবি ব্যবহার করে। কেন হ্যাশ একমুখী। কেন salt দরকার। কেন সার্টিফিকেট মেয়াদ শেষ হয়। কেন প্রতিটি ইনপুট শত্রু। কেন কেউ বিশ্বাসযোগ্য নয়। এটাই হিকমাহ — নিরাপত্তার প্রয়োগিক জ্ঞান।</div>`,
   senior: {

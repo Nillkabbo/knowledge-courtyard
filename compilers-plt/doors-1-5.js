@@ -66,6 +66,39 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ১ (Logic):</strong> DFA = সত্য সারণির রূপ! Lexer একটি finite automaton। Book ৪১ (Theory of Computation) Door ১: DFA/NFA formal definition।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect width="580" height="250" fill="#0f172a"/>
+<defs><marker id="arrCP1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+<text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">Lexer DFA — x = 3 + 4</text>
+<circle cx="55" cy="130" r="20" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+<text x="55" y="134" text-anchor="middle" fill="#fcd34d" font-size="9">S0</text>
+<circle cx="235" cy="60" r="24" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
+<circle cx="235" cy="60" r="19" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+<text x="235" y="58" text-anchor="middle" fill="#4ade80" font-size="9">ID</text>
+<text x="235" y="68" text-anchor="middle" fill="#4ade80" font-size="7">accept</text>
+<circle cx="235" cy="200" r="24" fill="#451a0a" stroke="#22d3ee" stroke-width="2"/>
+<circle cx="235" cy="200" r="19" fill="none" stroke="#22d3ee" stroke-width="1.5"/>
+<text x="235" y="198" text-anchor="middle" fill="#7dd3fc" font-size="9">NUM</text>
+<text x="235" y="208" text-anchor="middle" fill="#7dd3fc" font-size="7">accept</text>
+<circle cx="430" cy="130" r="24" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
+<circle cx="430" cy="130" r="19" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+<text x="430" y="128" text-anchor="middle" fill="#4ade80" font-size="9">OP</text>
+<text x="430" y="138" text-anchor="middle" fill="#4ade80" font-size="7">accept</text>
+<line x1="72" y1="118" x2="211" y2="70" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP1)"/>
+<text x="125" y="82" fill="#fcd34d" font-size="8">letter</text>
+<line x1="72" y1="142" x2="211" y2="190" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP1)"/>
+<text x="118" y="180" fill="#fcd34d" font-size="8">digit</text>
+<line x1="75" y1="130" x2="406" y2="130" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP1)"/>
+<text x="220" y="123" text-anchor="middle" fill="#fcd34d" font-size="8">= + -</text>
+<path d="M 218 43 Q 235 14 252 43" fill="none" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrCP1)"/>
+<text x="235" y="13" text-anchor="middle" fill="#4ade80" font-size="7">letter/digit</text>
+<path d="M 218 217 Q 235 245 252 217" fill="none" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCP1)"/>
+<text x="235" y="247" text-anchor="middle" fill="#7dd3fc" font-size="7">digit</text>
+</svg>
+</div>
+<div class="svg-caption">DFA: প্রতিটি অক্ষর পড়ে state বদলায়, token তৈরি হয় — ID (সবুজ), NUM (নীল), OP (সবুজ)।</div>
+
 <div class="secret-box">📝 <strong>Lexer = অক্ষর থেকে token। DFA দিয়ে।</strong> প্রথম ধাপ। কিন্তু token-এর পর — সেগুলো কীভাবে সাজাবে? বাক্য কীভাবে বুঝবে? সেই কাজ — parser। পরের দরজায়।</div>`,
   senior: {
     title: "Lexer এক নজরে",
@@ -141,6 +174,29 @@ doors.push({
 <p class="scene-setting en">Shajarah — tree. AST is the form of that tree — the sentence's structure. Each node an operation, each leaf a value. From the tree you understand — which work first, which later. From Sinai's tree comes life — from AST comes meaning.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ২ (DSA Bazaar) Door ১৩ (Trees):</strong> BST ও tree traversal শিখেছিলে — AST সেই গাছের প্রয়োগ! Book ৪৮ Door ৭ (Graphs): AST = একটি বিশেষ গাছ (acyclic connected)।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect width="580" height="250" fill="#0f172a"/>
+<defs><marker id="arrCP2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+<text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">AST — x = 3 + 4</text>
+<rect x="250" y="45" width="80" height="34" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+<text x="290" y="66" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">Assign</text>
+<rect x="80" y="135" width="70" height="34" rx="6" fill="#451a0a" stroke="#22d3ee" stroke-width="2"/>
+<text x="115" y="156" text-anchor="middle" fill="#7dd3fc" font-size="10">x</text>
+<rect x="410" y="135" width="80" height="34" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+<text x="450" y="156" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">Add</text>
+<rect x="350" y="205" width="50" height="30" rx="6" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
+<text x="375" y="224" text-anchor="middle" fill="#4ade80" font-size="10">3</text>
+<rect x="500" y="205" width="50" height="30" rx="6" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
+<text x="525" y="224" text-anchor="middle" fill="#4ade80" font-size="10">4</text>
+<line x1="270" y1="79" x2="135" y2="135" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP2)"/>
+<line x1="310" y1="79" x2="440" y2="135" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP2)"/>
+<line x1="435" y1="169" x2="385" y2="205" stroke="#fcd34d" stroke-width="1.5" marker-end="url(#arrCP2)"/>
+<line x1="465" y1="169" x2="515" y2="205" stroke="#fcd34d" stroke-width="1.5" marker-end="url(#arrCP2)"/>
+</svg>
+</div>
+<div class="svg-caption">AST গাছ: Assign উপরে, Add নিচে — precedence গভীরতায় লুকানো।</div>
 
 <div class="secret-box">🌲 <strong>Parser = token থেকে AST গাছ।</strong> precedence গভীরতায়। কিন্তু গাছ শুধু কাঠামো দেয় — অর্থ যাচাই করে না। x + "hello" গাঠ্যিকভাবে ঠিক কিন্তু অর্থহীন। সেই যাচাই — পরের দরজায়।</div>`,
   senior: {
@@ -227,6 +283,28 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ১ (Logic):</strong> type checking = যুক্তি যাচাই। int + string → অসঙ্গতি = contradiction! Book ৪৫ Door ১০: type inference — Hindley-Milner।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect width="580" height="250" fill="#0f172a"/>
+<defs><marker id="arrCP3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+<text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">Symbol Table &amp; Scope</text>
+<rect x="30" y="45" width="180" height="160" rx="8" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="120" y="62" text-anchor="middle" fill="#fcd34d" font-size="9">Global Scope</text>
+<rect x="50" y="75" width="140" height="22" rx="4" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
+<text x="120" y="90" text-anchor="middle" fill="#fcd34d" font-size="8">x : int</text>
+<rect x="210" y="95" width="170" height="110" rx="8" fill="none" stroke="#22d3ee" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="295" y="112" text-anchor="middle" fill="#7dd3fc" font-size="9">Function Scope</text>
+<rect x="230" y="125" width="130" height="22" rx="4" fill="#451a0a" stroke="#22d3ee" stroke-width="1"/>
+<text x="295" y="140" text-anchor="middle" fill="#7dd3fc" font-size="8">msg : str</text>
+<rect x="400" y="135" width="150" height="70" rx="8" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="475" y="152" text-anchor="middle" fill="#4ade80" font-size="9">Block Scope</text>
+<rect x="420" y="165" width="110" height="22" rx="4" fill="#451a0a" stroke="#22c55e" stroke-width="1"/>
+<text x="475" y="180" text-anchor="middle" fill="#4ade80" font-size="8">i : int</text>
+<text x="290" y="230" text-anchor="middle" fill="#fbbf24" font-size="9">int + str = Type Error!</text>
+</svg>
+</div>
+<div class="svg-caption">Scope নেস্টেড: Global → Function → Block। প্রতিটি variable-এর type ও scope ট্র্যাক করা হয়।</div>
+
 <div class="secret-box">🔍 <strong>Semantic = অর্থ যাচাই। Type, scope, declaration।</strong> গাঠ্যিকভাবে ঠিক কিন্তু অর্থগতভাবে ভুল ধরে। কিন্তু কোডে একটি সমস্যা আছে — একই variable একাধিক মান ধারণ করতে পারে। সেই সমস্যার সমাধান — SSA। পরের দরজায়।</div>`,
   senior: {
     title: "Semantic Analysis এক নজরে",
@@ -297,6 +375,30 @@ doors.push({
 <p class="scene-setting en">Tawhid — oneness. SSA is the mathematical form of that oneness. Each variable has one definition — one. From oneness comes clarity, from clarity comes optimization. As tawhid is the foundation of everything — SSA is the foundation of all compiler optimization.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ Door ৪ (Sets):</strong> SSA-তে প্রতিটি version একটি সেটের উপাদান — def-use chain। Book ৪৫ Door ৫: dead code elimination SSA-এর উপর নির্ভর করে।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect width="580" height="250" fill="#0f172a"/>
+<defs><marker id="arrCP4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+<text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">SSA — x1, x2, phi merge</text>
+<rect x="40" y="55" width="100" height="36" rx="6" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
+<text x="90" y="72" text-anchor="middle" fill="#4ade80" font-size="9">x1 = 1</text>
+<text x="90" y="84" text-anchor="middle" fill="#4ade80" font-size="7">(then)</text>
+<rect x="40" y="155" width="100" height="36" rx="6" fill="#451a0a" stroke="#22d3ee" stroke-width="2"/>
+<text x="90" y="172" text-anchor="middle" fill="#7dd3fc" font-size="9">x2 = 2</text>
+<text x="90" y="184" text-anchor="middle" fill="#7dd3fc" font-size="7">(else)</text>
+<rect x="240" y="105" width="120" height="40" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+<text x="300" y="121" text-anchor="middle" fill="#fcd34d" font-size="9">x3 = phi(x1,x2)</text>
+<text x="300" y="134" text-anchor="middle" fill="#fcd34d" font-size="7">branch merge</text>
+<rect x="430" y="108" width="120" height="36" rx="6" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
+<text x="490" y="125" text-anchor="middle" fill="#4ade80" font-size="9">print(x3)</text>
+<text x="490" y="137" text-anchor="middle" fill="#4ade80" font-size="7">use</text>
+<path d="M 140 73 Q 190 90 240 115" fill="none" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrCP4)"/>
+<path d="M 140 173 Q 190 155 240 138" fill="none" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCP4)"/>
+<line x1="360" y1="125" x2="426" y2="125" stroke="#fcd34d" stroke-width="1.5" marker-end="url(#arrCP4)"/>
+</svg>
+</div>
+<div class="svg-caption">SSA: প্রতিটি assignment আলাদা version (x1, x2)। phi node branch-এ কোনটা ব্যবহার হবে ঠিক করে।</div>
 
 <div class="secret-box">🔗 <strong>SSA = এক variable, এক assignment। তাওহিদ।</strong> এতে optimization সহজ। কিন্তু কিছু কোড অদরকারি — dead code। সেই পরিষ্কার করার কাজ — পরের দরজায়।</div>`,
   senior: {
@@ -371,6 +473,33 @@ doors.push({
 <p class="scene-setting en">Tahara — cleanliness. Dead code elimination is the work of that cleanliness — removing the unnecessary. As purity keeps the body healthy, optimization keeps code healthy. Remove the unnecessary — what remains is essential.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ Door ৪ (Sets):</strong> def-use chain = সেট অপারেশন। Book ৪৫ Door ৪ (SSA): dead code detection SSA ছাড়া কঠিন।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect width="580" height="250" fill="#0f172a"/>
+<defs><marker id="arrCP5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+<text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">Dead Code Elimination</text>
+<rect x="25" y="45" width="220" height="180" rx="8" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="135" y="62" text-anchor="middle" fill="#fcd34d" font-size="10">Before</text>
+<rect x="45" y="78" width="180" height="26" rx="4" fill="#451a0a" stroke="#22c55e" stroke-width="1.5"/>
+<text x="135" y="95" text-anchor="middle" fill="#4ade80" font-size="9">x = 1</text>
+<rect x="45" y="114" width="180" height="26" rx="4" fill="#451a0a" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 2"/>
+<text x="135" y="131" text-anchor="middle" fill="#ef4444" font-size="9">y = 2  (unused)</text>
+<rect x="45" y="150" width="180" height="26" rx="4" fill="#451a0a" stroke="#22c55e" stroke-width="1.5"/>
+<text x="135" y="167" text-anchor="middle" fill="#4ade80" font-size="9">z = x + 3</text>
+<text x="135" y="200" text-anchor="middle" fill="#ef4444" font-size="9">3 + 4 = 7 (fold)</text>
+<text x="335" y="130" text-anchor="middle" fill="#fcd34d" font-size="20" font-weight="bold">&rarr;</text>
+<rect x="335" y="45" width="220" height="180" rx="8" fill="none" stroke="#22c55e" stroke-width="2"/>
+<text x="445" y="62" text-anchor="middle" fill="#4ade80" font-size="10">After</text>
+<rect x="355" y="92" width="180" height="26" rx="4" fill="#451a0a" stroke="#22c55e" stroke-width="1.5"/>
+<text x="445" y="109" text-anchor="middle" fill="#4ade80" font-size="9">x = 1</text>
+<rect x="355" y="128" width="180" height="26" rx="4" fill="#451a0a" stroke="#22c55e" stroke-width="1.5"/>
+<text x="445" y="145" text-anchor="middle" fill="#4ade80" font-size="9">z = x + 3</text>
+<rect x="355" y="164" width="180" height="26" rx="4" fill="#451a0a" stroke="#22c55e" stroke-width="1.5"/>
+<text x="445" y="181" text-anchor="middle" fill="#4ade80" font-size="9">w = 7</text>
+</svg>
+</div>
+<div class="svg-caption">DCE: অব্যবহৃত y বাদ, 3+4 compile time-এ 7 — কোড ছোট ও দ্রুত।</div>
 
 <div class="secret-box">🧹 <strong>Optimization = অদরকারি দূর, প্রয়োজনীয় রাখ।</strong> কোড ছোট, দ্রুত, efficient। কিন্তু optimization-এর পর একটি সমস্যা — প্রোগ্রামের ভেতরে সীমিত রেজিস্টার। কোন variable কোথায় রাখবে? সেই সমস্যা — graph coloring। পরের দরজায়।</div>`,
   senior: {

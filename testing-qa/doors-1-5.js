@@ -53,6 +53,35 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪০ (Software Engineering) Door ৬ (TDD):</strong> TDD = টেস্ট আগে লেখো। Book ৪৭ (Testing-QA) এই বই — প্রতিটি দরজায় গভীরে।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a"/>
+  <text x="290" y="28" text-anchor="middle" fill="#fcd34d" font-size="13" font-weight="bold">তিন প্রহরী — গতি ও নির্ভরযোগ্যতা</text>
+  <rect x="40" y="70" width="120" height="120" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="100" y="95" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="bold">Unit</text>
+  <text x="100" y="120" text-anchor="middle" fill="#86efac" font-size="9">একটি ফাংশন</text>
+  <text x="100" y="145" text-anchor="middle" fill="#fbbf24" font-size="9">⚡ 0.02s</text>
+  <text x="100" y="170" text-anchor="middle" fill="#fcd34d" font-size="8">দ্রুত, সীমিত</text>
+  <rect x="230" y="60" width="120" height="140" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="85" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="bold">Integration</text>
+  <text x="290" y="110" text-anchor="middle" fill="#86efac" font-size="9">দুটো কম্পোনেন্ট</text>
+  <text x="290" y="135" text-anchor="middle" fill="#fbbf24" font-size="9">⚡ 1.8s</text>
+  <text x="290" y="160" text-anchor="middle" fill="#fcd34d" font-size="8">মাঝারি, বাস্তব</text>
+  <text x="290" y="180" text-anchor="middle" fill="#7dd3fc" font-size="8">★ sweet spot</text>
+  <rect x="420" y="50" width="120" height="160" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="480" y="75" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="bold">E2E</text>
+  <text x="480" y="100" text-anchor="middle" fill="#86efac" font-size="9">পুরো যাত্রা</text>
+  <text x="480" y="125" text-anchor="middle" fill="#fbbf24" font-size="9">⚡ 4.1s</text>
+  <text x="480" y="150" text-anchor="middle" fill="#fcd34d" font-size="8">ধীর, নির্ভরযোগ্য</text>
+  <text x="480" y="170" text-anchor="middle" fill="#fca5a5" font-size="8">⚠ flaky ঝুঁকি</text>
+  <defs><marker id="arrTQ1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7dd3fc"/></marker></defs>
+  <line x1="165" y1="210" x2="225" y2="210" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrTQ1)"/>
+  <line x1="355" y1="210" x2="415" y2="210" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrTQ1)"/>
+  <text x="195" y="225" text-anchor="middle" fill="#7dd3fc" font-size="8">গভীরতা ↑</text>
+  <text x="385" y="225" text-anchor="middle" fill="#7dd3fc" font-size="8">বিশ্বাস ↑</text>
+</svg>
+</div>
+<div class="svg-caption">তিন প্রহরী — গতি (Unit দ্রুত) ও নির্ভরযোগ্যতা (E2E গভীর) এর ভারসাম্য</div>
 <div class="secret-box">🗼 <strong>তিন প্রহরী — গতি ও নির্ভরযোগ্যতার ভারসাম্য।</strong> কিন্তু কতটা টেস্ট লিখবে? কোন অনুপাত? সেই উত্তর — পরের দরজায়।</div>`,
   senior: {
     title: "Test Types এক নজরে",
@@ -116,6 +145,31 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৭ (Testing-QA) Door ১:</strong> তারিক তিন প্রহরী দিয়েছেন — নওফল দেখাচ্ছেন কোন অনুপাতে। Book ৪৩ (Cloud DevOps) Door ৪: CI/CD pipeline-এ এই অনুপাত স্বয়ংক্রিয়।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a"/>
+  <text x="290" y="28" text-anchor="middle" fill="#fcd34d" font-size="13" font-weight="bold">পিরামিড বনাম ট্রফি — অনুপাতের বিবর্তন</text>
+  <text x="135" y="55" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="bold">Pyramid (Cohn ২০০৯)</text>
+  <polygon points="135,75 75,210 195,210" fill="none" stroke="#22c55e" stroke-width="2"/>
+  <text x="135" y="100" text-anchor="middle" fill="#fca5a5" font-size="9">E2E ১০%</text>
+  <text x="135" y="140" text-anchor="middle" fill="#fbbf24" font-size="9">Integration ২০%</text>
+  <text x="135" y="185" text-anchor="middle" fill="#4ade80" font-size="10">Unit ৭০%</text>
+  <text x="435" y="55" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="bold">Trophy (Dodds ২০১৮)</text>
+  <path d="M 370 75 Q 370 70 375 70 L 495 70 Q 500 70 500 75 L 495 130 Q 493 145 480 150 L 435 155 L 390 150 Q 377 145 375 130 Z" fill="none" stroke="#22c55e" stroke-width="2"/>
+  <line x1="435" y1="155" x2="435" y2="185" stroke="#22c55e" stroke-width="2"/>
+  <rect x="405" y="185" width="60" height="12" rx="3" fill="none" stroke="#22c55e" stroke-width="2"/>
+  <rect x="375" y="62" width="120" height="14" rx="3" fill="#052e16" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="435" y="73" text-anchor="middle" fill="#7dd3fc" font-size="8">Static base</text>
+  <text x="435" y="105" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Integration ★</text>
+  <text x="435" y="125" text-anchor="middle" fill="#86efac" font-size="8">সবচেয়ে বড়</text>
+  <text x="455" y="180" text-anchor="middle" fill="#fca5a5" font-size="8">E2E সামান্য</text>
+  <defs><marker id="arrTQ2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+  <line x1="215" y1="140" x2="360" y2="140" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrTQ2)"/>
+  <text x="287" y="132" text-anchor="middle" fill="#fbbf24" font-size="9">২০১৭: Rauch</text>
+  <text x="287" y="155" text-anchor="middle" fill="#fcd34d" font-size="8">"Mostly integration"</text>
+</svg>
+</div>
+<div class="svg-caption">পিরামিডে Unit সবচেয়ে বড়, ট্রফিতে Integration সবচেয়ে বড় — আধুনিক ভারসাম্য</div>
 <div class="secret-box">🏆 <strong>Trophy = integration সবচেয়ে বড়।</strong> ভারসাম্য ঠিক হলে পরের প্রশ্ন — কখন টেস্ট লিখবে? কোডের আগে নাকি পরে? সেই উত্তর — TDD। পরের দরজায়।</div>`,
   senior: {
     title: "Pyramid vs Trophy এক নজরে",
@@ -185,6 +239,30 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪০ (Software Engineering) Door ৬ (TDD):</strong> TDD-র পূর্ণ আলোচনা। Book ৪৭ (Testing-QA) Door ৩: এখানে গভীরে — প্রতিটি ধাপে কোড ও টেস্ট।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a"/>
+  <text x="290" y="28" text-anchor="middle" fill="#fcd34d" font-size="13" font-weight="bold">TDD চক্র — Red → Green → Refactor</text>
+  <defs><marker id="arrTQ3" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7dd3fc"/></marker></defs>
+  <circle cx="150" cy="140" r="42" fill="#450a0a" stroke="#f87171" stroke-width="2.5"/>
+  <text x="150" y="135" text-anchor="middle" fill="#fca5a5" font-size="13" font-weight="bold">🔴 Red</text>
+  <text x="150" y="153" text-anchor="middle" fill="#fca5a5" font-size="8">টেস্ট ব্যর্থ</text>
+  <circle cx="410" cy="100" r="42" fill="#052e16" stroke="#22c55e" stroke-width="2.5"/>
+  <text x="410" y="95" text-anchor="middle" fill="#4ade80" font-size="13" font-weight="bold">🟢 Green</text>
+  <text x="410" y="113" text-anchor="middle" fill="#4ade80" font-size="8">সর্বনিম্ন কোড</text>
+  <circle cx="330" cy="200" r="42" fill="#0c4a6e" stroke="#22d3ee" stroke-width="2.5"/>
+  <text x="330" y="195" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">♻ Refactor</text>
+  <text x="330" y="212" text-anchor="middle" fill="#7dd3fc" font-size="8">উন্নত করো</text>
+  <path d="M 190 115 Q 280 70 368 90" fill="none" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrTQ3)"/>
+  <path d="M 395 140 Q 380 175 358 178" fill="none" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrTQ3)"/>
+  <path d="M 290 200 Q 220 195 185 175" fill="none" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrTQ3)"/>
+  <text x="278" y="68" text-anchor="middle" fill="#fbbf24" font-size="8">কোড লেখো</text>
+  <text x="395" y="165" text-anchor="middle" fill="#fbbf24" font-size="8">সবুজ ✅</text>
+  <text x="225" y="215" text-anchor="middle" fill="#fbbf24" font-size="8">আবার টেস্ট</text>
+  <text x="290" y="240" text-anchor="middle" fill="#86efac" font-size="8" font-style="italic">প্রতিটি চক্রে ভুল থেকে সঠিক, সঠিক থেকে সুন্দর</text>
+</svg>
+</div>
+<div class="svg-caption">TDD চক্র — প্রথমে ব্যর্থ (Red), তারপর সফল (Green), তারপর উন্নত (Refactor)</div>
 <div class="secret-box">🔴 <strong>TDD = Red → Green → Refactor।</strong> ভুল থেকে সঠিক, সঠিক থেকে সুন্দর। কিন্তু কোড কতটা ভালো? ১০০% coverage যথেষ্ট? নাকি আরও কিছু দরকার? সেই উত্তর — পরের দরজায়।</div>`,
   senior: {
     title: "TDD এক নজরে",
@@ -256,6 +334,37 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৪ (Statistics) Door ৬ (Hypothesis):</strong> mutation testing = hypothesis testing! নাল হাইপোথিসিস: কোড সঠিক। মিউট্যান্ট: বিকল্প হাইপোথিসিস। টেস্ট ধরলে = নাল প্রত্যাখ্যান।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a"/>
+  <text x="290" y="28" text-anchor="middle" fill="#fcd34d" font-size="13" font-weight="bold">Coverage বনাম Mutation — গভীরতার পার্থক্য</text>
+  <text x="150" y="60" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="bold">দুর্বল টেস্ট (assert নেই)</text>
+  <rect x="70" y="75" width="160" height="28" rx="4" fill="#1e293b" stroke="#334155"/>
+  <rect x="72" y="77" width="156" height="24" rx="3" fill="#22c55e"/>
+  <text x="150" y="93" text-anchor="middle" fill="#052e16" font-size="10" font-weight="bold">Coverage ১০০% ✅</text>
+  <rect x="70" y="115" width="160" height="28" rx="4" fill="#1e293b" stroke="#334155"/>
+  <rect x="72" y="117" width="2" height="24" rx="1" fill="#ef4444"/>
+  <text x="150" y="133" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="bold">Mutation ০% ❌</text>
+  <text x="150" y="165" text-anchor="middle" fill="#94a3b8" font-size="8">লাইন চলেছে, কিন্তু যাচাই নেই</text>
+  <text x="430" y="60" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="bold">শক্তিশালী টেস্ট</text>
+  <rect x="350" y="75" width="160" height="28" rx="4" fill="#1e293b" stroke="#334155"/>
+  <rect x="352" y="77" width="156" height="24" rx="3" fill="#22c55e"/>
+  <text x="430" y="93" text-anchor="middle" fill="#052e16" font-size="10" font-weight="bold">Coverage ১০০% ✅</text>
+  <rect x="350" y="115" width="160" height="28" rx="4" fill="#1e293b" stroke="#334155"/>
+  <rect x="352" y="117" width="140" height="24" rx="3" fill="#22d3ee"/>
+  <text x="430" y="133" text-anchor="middle" fill="#0c4a6e" font-size="10" font-weight="bold">Mutation ৮৮% ✅</text>
+  <text x="430" y="165" text-anchor="middle" fill="#94a3b8" font-size="8">কোড বদলালে টেস্ট ধরে</text>
+  <defs><marker id="arrTQ4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+  <rect x="150" y="185" width="100" height="22" rx="4" fill="#052e16" stroke="#22c55e"/>
+  <text x="200" y="200" text-anchor="middle" fill="#4ade80" font-size="9">if age &gt;= 18</text>
+  <line x1="255" y1="196" x2="320" y2="196" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrTQ4)"/>
+  <text x="287" y="188" text-anchor="middle" fill="#fbbf24" font-size="8">mutant</text>
+  <rect x="325" y="185" width="100" height="22" rx="4" fill="#450a0a" stroke="#f87171"/>
+  <text x="375" y="200" text-anchor="middle" fill="#fca5a5" font-size="9">if age &gt; 18</text>
+  <text x="490" y="200" text-anchor="middle" fill="#4ade80" font-size="9">→ ধরা! ✅</text>
+</svg>
+</div>
+<div class="svg-caption">Coverage শুধু লাইন চলেছে কিনা দেখে; Mutation কোড বদলালে টেস্ট ধরবে কিনা যাচাই করে</div>
 <div class="secret-box">🧬 <strong>Mutation = কোড বদলাও, টেস্ট ধরবে কি?</strong> coverage-এর চেয়ে গভীর। কিন্তু টেস্ট কাকে কল করবে? সত্যিকারের অবজেক্ট নাকি নকল? সেই প্রশ্ন — পরের দরজায়।</div>`,
   senior: {
     title: "Coverage vs Mutation এক নজরে",
@@ -336,6 +445,46 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪০ (Software Engineering) Door ৬ (TDD):</strong> TDD-তে test double প্রতিদিন ব্যবহৃত। Book ৪৭ Door ৫: এখানে গভীরে — পাঁচটি প্রকার ও কখন কোনটা।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a"/>
+  <text x="290" y="28" text-anchor="middle" fill="#fcd34d" font-size="13" font-weight="bold">পাঁচটি মুখোশ — Test Doubles শ্রেণিবিন্যাস</text>
+  <defs><marker id="arrTQ5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7dd3fc"/></marker></defs>
+  <rect x="20" y="60" width="95" height="110" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <circle cx="67" cy="90" r="16" fill="#0f172a" stroke="#4ade80" stroke-width="2"/>
+  <text x="67" y="95" text-anchor="middle" fill="#4ade80" font-size="14">😶</text>
+  <text x="67" y="125" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Dummy</text>
+  <text x="67" y="142" text-anchor="middle" fill="#86efac" font-size="7">কিছু করে না</text>
+  <text x="67" y="155" text-anchor="middle" fill="#94a3b8" font-size="7">শুধু প্যারামিটার</text>
+  <rect x="130" y="55" width="95" height="120" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <circle cx="177" cy="85" r="16" fill="#0f172a" stroke="#4ade80" stroke-width="2"/>
+  <text x="177" y="90" text-anchor="middle" fill="#4ade80" font-size="14">🎁</text>
+  <text x="177" y="120" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Stub</text>
+  <text x="177" y="137" text-anchor="middle" fill="#86efac" font-size="7">নির্দিষ্ট উত্তর</text>
+  <text x="177" y="150" text-anchor="middle" fill="#94a3b8" font-size="7">get_user → {ali}</text>
+  <rect x="240" y="50" width="95" height="130" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <circle cx="287" cy="80" r="16" fill="#0f172a" stroke="#4ade80" stroke-width="2"/>
+  <text x="287" y="85" text-anchor="middle" fill="#4ade80" font-size="14">👁</text>
+  <text x="287" y="115" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Spy</text>
+  <text x="287" y="132" text-anchor="middle" fill="#86efac" font-size="7">কল রেকর্ড</text>
+  <text x="287" y="145" text-anchor="middle" fill="#94a3b8" font-size="7">কতবার কল?</text>
+  <rect x="350" y="45" width="95" height="140" rx="8" fill="#052e16" stroke="#fbbf24" stroke-width="2"/>
+  <circle cx="397" cy="75" r="16" fill="#0f172a" stroke="#fcd34d" stroke-width="2"/>
+  <text x="397" y="80" text-anchor="middle" fill="#fcd34d" font-size="14">✓</text>
+  <text x="397" y="110" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">Mock</text>
+  <text x="397" y="127" text-anchor="middle" fill="#fde68a" font-size="7">প্রত্যাশা যাচাই</text>
+  <text x="397" y="140" text-anchor="middle" fill="#94a3b8" font-size="7">called_once?</text>
+  <rect x="460" y="40" width="95" height="150" rx="8" fill="#0c4a6e" stroke="#22d3ee" stroke-width="2"/>
+  <circle cx="507" cy="70" r="16" fill="#0f172a" stroke="#7dd3fc" stroke-width="2"/>
+  <text x="507" y="75" text-anchor="middle" fill="#7dd3fc" font-size="14">🏛</text>
+  <text x="507" y="105" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">Fake</text>
+  <text x="507" y="122" text-anchor="middle" fill="#bae6fd" font-size="7">সরল বাস্তবায়ন</text>
+  <text x="507" y="135" text-anchor="middle" fill="#94a3b8" font-size="7">InMemoryDB</text>
+  <line x1="20" y1="210" x2="545" y2="210" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrTQ5)"/>
+  <text x="282" y="225" text-anchor="middle" fill="#7dd3fc" font-size="8">সরল → জটিল (আচরণের গভীরতা বাড়ে)</text>
+</svg>
+</div>
+<div class="svg-caption">পাঁচটি test double — Dummy (কিছু না) থেকে Fake (সরল বাস্তবায়ন) পর্যন্ত আচরণের ক্রম</div>
 <div class="secret-box">🎭 <strong>পাঁচ মুখোশ: Dummy, Stub, Spy, Mock, Fake।</strong> প্রতিটি নিজস্ব উদ্দেশ্য। কিন্তু সব নকল ইনপুট দিয়ে টেস্ট যথেষ্ট নয় — কখনো এলোমেলো ইনপুট দরকার। সেই উপায় — property-based testing। পরের দরজায়।</div>`,
   senior: {
     title: "Test Doubles এক নজরে",

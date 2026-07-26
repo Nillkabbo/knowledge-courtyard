@@ -65,6 +65,36 @@ F = {q₂}
 Rabin ও Scott (১৯৫৯) প্রমাণ করেন — NFA এবং DFA একই ক্ষমতার। প্রতিটি NFA-কে DFA-তে রূপান্তর করা যায় (subset construction)। কিন্তু সবচেয়ে খারাপ ক্ষেত্রে n-অবস্থানের NFA থেকে ২ⁿ অবস্থানের DFA দরকার হতে পারে — exponential blowup।
 </div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrTC1" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#22d3ee"/></marker></defs>
+<text x="290" y="25" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="700">DFA: ab দিয়ে শেষ হওয়া ভাষা</text>
+<line x1="55" y1="135" x2="82" y2="135" stroke="#4ade80" stroke-width="2" marker-end="url(#arrTC1)"/>
+<circle cx="110" cy="135" r="28" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="110" y="140" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="700">q0</text>
+<circle cx="290" cy="135" r="28" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="290" y="140" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="700">q1</text>
+<circle cx="470" cy="135" r="28" fill="#1e3a5f" stroke="#4ade80" stroke-width="2"/>
+<circle cx="470" cy="135" r="22" fill="none" stroke="#4ade80" stroke-width="2"/>
+<text x="470" y="140" text-anchor="middle" fill="#4ade80" font-size="13" font-weight="700">q2</text>
+<path d="M138,125 Q200,85 262,125" fill="none" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrTC1)"/>
+<text x="200" y="80" text-anchor="middle" fill="#fcd34d" font-size="11">a</text>
+<path d="M318,125 Q390,85 442,125" fill="none" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrTC1)"/>
+<text x="380" y="80" text-anchor="middle" fill="#fcd34d" font-size="11">b</text>
+<path d="M95,107 Q72,80 95,107" fill="none" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrTC1)"/>
+<text x="63" y="75" text-anchor="middle" fill="#fcd34d" font-size="10">b</text>
+<path d="M275,107 Q252,80 275,107" fill="none" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrTC1)"/>
+<text x="243" y="75" text-anchor="middle" fill="#fcd34d" font-size="10">a</text>
+<path d="M442,150 Q380,200 318,150" fill="none" stroke="#fca5a5" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrTC1)"/>
+<text x="380" y="210" text-anchor="middle" fill="#fca5a5" font-size="10">a</text>
+<path d="M262,150 Q190,200 138,150" fill="none" stroke="#fca5a5" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrTC1)"/>
+<text x="200" y="210" text-anchor="middle" fill="#fca5a5" font-size="10">b</text>
+<text x="110" y="185" text-anchor="middle" fill="#4ade80" font-size="9">শুরু</text>
+<text x="470" y="185" text-anchor="middle" fill="#4ade80" font-size="9">গ্রহণ</text>
+</svg>
+</div>
+<div class="svg-caption">DFA: তিনটি অবস্থান দিয়ে ab দিয়ে শেষ হওয়া ভাষা চেনা। প্রতিটি অবস্থানে প্রতিটি ইনপুটে ঠিক একটি রূপান্তর।</div>
+
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> সসীম অবস্থান + নির্দিষ্ট নিয়ম = অসীম প্যাটার্ন চেনা।<br>
 <em>Finite states + fixed rules = recognizing infinite patterns.</em>
@@ -145,6 +175,38 @@ NFA দিয়ে ভাবা সহজ — DFA দিয়ে বাস্�
 "Finite Automata and Their Decision Problems" (১৯৫৯, IBM Journal of Research and Development)।<br><br>
 রাবিন ও স্কট যৌথভাবে ১৯৭৬ সালে Turing Award পান — "nondeterministic machines-এর ধারণা প্রবর্তনের জন্য।" দুজনেই ছিলেন Alonzo Church-এর ছাত্র প্রিন্সটনে।
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrTC2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#22d3ee"/></marker></defs>
+<text x="145" y="25" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="700">NFA (অনির্ধারিত)</text>
+<text x="435" y="25" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">DFA (নির্ধারিত)</text>
+<line x1="289" y1="35" x2="289" y2="225" stroke="#475569" stroke-width="1" stroke-dasharray="5,5"/>
+<circle cx="80" cy="100" r="22" fill="#1e3a5f" stroke="#a855f7" stroke-width="2"/>
+<text x="80" y="105" text-anchor="middle" fill="#c084fc" font-size="11">q0</text>
+<circle cx="210" cy="70" r="22" fill="#1e3a5f" stroke="#a855f7" stroke-width="2"/>
+<text x="210" y="75" text-anchor="middle" fill="#c084fc" font-size="11">q1</text>
+<circle cx="210" cy="130" r="22" fill="#1e3a5f" stroke="#a855f7" stroke-width="2"/>
+<text x="210" y="135" text-anchor="middle" fill="#c084fc" font-size="11">q2</text>
+<path d="M100,90 Q150,75 188,70" fill="none" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrTC2)"/>
+<text x="145" y="70" fill="#fcd34d" font-size="9">a</text>
+<path d="M100,110 Q150,125 188,130" fill="none" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrTC2)"/>
+<text x="145" y="140" fill="#fcd34d" font-size="9">a</text>
+<text x="145" y="175" text-anchor="middle" fill="#fca5a5" font-size="9">একই ইনপুটে দুই পথ!</text>
+<rect x="340" y="55" width="60" height="30" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+<text x="370" y="75" text-anchor="middle" fill="#4ade80" font-size="10">{q0}</text>
+<rect x="460" y="50" width="60" height="30" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+<text x="490" y="70" text-anchor="middle" fill="#4ade80" font-size="9">{q0,q1}</text>
+<rect x="460" y="120" width="60" height="30" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+<text x="490" y="140" text-anchor="middle" fill="#4ade80" font-size="9">{q0,q2}</text>
+<path d="M400,65 Q430,55 460,60" fill="none" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrTC2)"/>
+<text x="430" y="48" fill="#fcd34d" font-size="9">a</text>
+<path d="M400,78 Q430,110 460,125" fill="none" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrTC2)"/>
+<text x="410" y="115" fill="#fcd34d" font-size="9">a</text>
+<text x="290" y="230" text-anchor="middle" fill="#7dd3fc" font-size="10">Subset Construction: NFA র অবস্থান-সেট = DFA র একটি অবস্থান</text>
+</svg>
+</div>
+<div class="svg-caption">NFA এক ইনপুটে একাধিক পথ নিতে পারে, DFA ঠিক একটি। Subset construction দিয়ে NFA কে DFA তে রূপান্তর।</div>
 
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> অনির্ধারিততা = সহজ চিন্তা, নির্ধারিততা = দ্রুত কাজ।<br>
@@ -237,6 +299,36 @@ MIT-এ ভাষাবিজ্ঞানের অধ্যাপক। "Three 
 চমস্কি শুধু ভাষাবিদ নন — তিনি রাজনৈতিক ভাষ্যকারও। কিন্তু কম্পিউটার সায়েন্সে তার স্থান অনস্বীকার্য — প্রতিটি কম্পাইলার, প্রতিটি parser, প্রতিটি syntax highlighter তার তত্ত্বের উপর দাঁড়িয়ে আছে।
 </div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<text x="290" y="25" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="700">Parse Tree: S -&gt; aSb -&gt; aaSbb -&gt; aabb</text>
+<circle cx="290" cy="60" r="20" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="290" y="65" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="700">S</text>
+<text x="200" y="100" text-anchor="middle" fill="#fcd34d" font-size="12">a</text>
+<circle cx="250" cy="115" r="18" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="250" y="120" text-anchor="middle" fill="#7dd3fc" font-size="11">S</text>
+<text x="350" y="100" text-anchor="middle" fill="#fcd34d" font-size="12">b</text>
+<line x1="278" y1="72" x2="200" y2="92" stroke="#475569" stroke-width="1"/>
+<line x1="285" y1="78" x2="250" y2="97" stroke="#475569" stroke-width="1"/>
+<line x1="302" y1="72" x2="340" y2="92" stroke="#475569" stroke-width="1"/>
+<text x="165" y="155" text-anchor="middle" fill="#fcd34d" font-size="11">a</text>
+<circle cx="220" cy="170" r="16" fill="#1e3a5f" stroke="#4ade80" stroke-width="2"/>
+<text x="220" y="175" text-anchor="middle" fill="#4ade80" font-size="10">S</text>
+<text x="280" y="155" text-anchor="middle" fill="#fcd34d" font-size="11">b</text>
+<line x1="234" y1="128" x2="165" y2="145" stroke="#475569" stroke-width="1"/>
+<line x1="242" y1="132" x2="220" y2="154" stroke="#475569" stroke-width="1"/>
+<line x1="258" y1="128" x2="275" y2="145" stroke="#475569" stroke-width="1"/>
+<text x="220" y="210" text-anchor="middle" fill="#fca5a5" font-size="10">epsilon</text>
+<line x1="220" y1="186" x2="220" y2="198" stroke="#475569" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="420" y="130" fill="#c084fc" font-size="11">Grammar:</text>
+<text x="420" y="150" fill="#c084fc" font-size="11">S -&gt; aSb | epsilon</text>
+<text x="420" y="175" fill="#7dd3fc" font-size="10">বাইরে থেকে ভেতরে</text>
+<text x="420" y="192" fill="#7dd3fc" font-size="10">গাছের মতো কাঠামো</text>
+<text x="420" y="210" fill="#4ade80" font-size="10">= Context-Free Grammar</text>
+</svg>
+</div>
+<div class="svg-caption">CFG পার্স বৃক্ষ: S -&gt; aSb -&gt; aSbb -&gt; aabb। বাক্যের কাঠামো গাছের মতো বাইরে থেকে ভেতরে।</div>
+
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> স্ট্যাক = স্মৃতি = নতুন প্যাটার্ন।<br>
 <em>Stack = memory = new patterns possible.</em>
@@ -324,6 +416,38 @@ M = (Q, Σ, Γ, δ, q₀, q_accept, q_reject)
 ১৯৬৬ সালে তার সম্মানে Turing Award প্রবর্তন — "কম্পিউটিংয়ের নোবেল"।
 </div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrTC4" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#22d3ee"/></marker></defs>
+<text x="290" y="25" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="700">Turing Machine: টেপ + হেড + নিয়ম</text>
+<rect x="20" y="80" width="50" height="50" fill="#1e3a5f" stroke="#475569" stroke-width="1.5"/>
+<text x="45" y="112" text-anchor="middle" fill="#64748b" font-size="14">...</text>
+<rect x="70" y="80" width="50" height="50" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="95" y="112" text-anchor="middle" fill="#7dd3fc" font-size="16" font-weight="700">1</text>
+<rect x="120" y="80" width="50" height="50" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="145" y="112" text-anchor="middle" fill="#7dd3fc" font-size="16" font-weight="700">0</text>
+<rect x="170" y="80" width="50" height="50" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2.5"/>
+<text x="195" y="112" text-anchor="middle" fill="#fcd34d" font-size="16" font-weight="700">1</text>
+<rect x="220" y="80" width="50" height="50" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="245" y="112" text-anchor="middle" fill="#7dd3fc" font-size="16" font-weight="700">B</text>
+<rect x="270" y="80" width="50" height="50" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="295" y="112" text-anchor="middle" fill="#7dd3fc" font-size="16" font-weight="700">B</text>
+<rect x="320" y="80" width="50" height="50" fill="#1e3a5f" stroke="#475569" stroke-width="1.5"/>
+<text x="345" y="112" text-anchor="middle" fill="#64748b" font-size="14">...</text>
+<path d="M195,60 L195,75" fill="none" stroke="#fbbf24" stroke-width="3" marker-end="url(#arrTC4)"/>
+<text x="195" y="50" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="700">HEAD</text>
+<rect x="120" y="155" width="120" height="40" rx="8" fill="#1e3a5f" stroke="#a855f7" stroke-width="2"/>
+<text x="180" y="172" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="700">state: q_read</text>
+<text x="180" y="187" text-anchor="middle" fill="#c084fc" font-size="9">হেড পড়ছে, লিখছে, সরছে</text>
+<path d="M180,155 L180,140 L195,130" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3,2"/>
+<text x="400" y="100" fill="#7dd3fc" font-size="11">delta(q,a) = (q', b, R)</text>
+<text x="400" y="120" fill="#7dd3fc" font-size="11">পড়ো a, লেখো b, ডানে যাও</text>
+<text x="400" y="150" fill="#4ade80" font-size="11">টেপ = অসীম স্মৃতি</text>
+<text x="400" y="170" fill="#4ade80" font-size="11">সব গণনা সম্ভব!</text>
+</svg>
+</div>
+<div class="svg-caption">টুরিং মেশিন: অসীম টেপ, একটি হেড, রূপান্তর নিয়ম। পড়ো, লেখো, সরো — এটাই সব গণনার ভিত্তি।</div>
+
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> সরলতা + অসীম স্মৃতি = সার্বজনীন গণনা।<br>
 <em>Simplicity + infinite memory = universal computation.</em>
@@ -409,6 +533,34 @@ H(M, w) = "হ্যাঁ (halt)" বা "না (loop forever)"
 • কোনো OS সব deadlock প্রতিরোধ করতে পারে না (Coffman 1971)<br><br>
 এই সীমাগুলো "তুমি যথেষ্ট চেষ্টা করোনি" নয় — এগুলো গণনার আইন, পদার্থবিজ্ঞানের নিয়মের মতো।
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrTC5" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#22d3ee"/></marker>
+<marker id="arrTC5r" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f87171"/></marker></defs>
+<text x="290" y="25" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="700">Halting Problem: Diagonalization</text>
+<rect x="40" y="55" width="100" height="45" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="90" y="73" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="700">H(M, w)</text>
+<text x="90" y="88" text-anchor="middle" fill="#7dd3fc" font-size="9">থামবে কি?</text>
+<rect x="220" y="55" width="100" height="45" rx="8" fill="#1e3a5f" stroke="#a855f7" stroke-width="2"/>
+<text x="270" y="73" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="700">D(M)</text>
+<text x="270" y="88" text-anchor="middle" fill="#c084fc" font-size="9">H এর উল্টো</text>
+<path d="M140,72 L220,72" fill="none" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrTC5)"/>
+<text x="180" y="65" text-anchor="middle" fill="#fcd34d" font-size="9">H(M,M)</text>
+<text x="290" y="130" text-anchor="middle" fill="#fca5a5" font-size="13" font-weight="700">D(D) কী করে?</text>
+<rect x="100" y="155" width="160" height="35" rx="6" fill="#1e3a5f" stroke="#f87171" stroke-width="2"/>
+<text x="180" y="172" text-anchor="middle" fill="#fca5a5" font-size="10">থামলে -&gt; H বলেছিল থামবে</text>
+<text x="180" y="184" text-anchor="middle" fill="#fca5a5" font-size="10">-&gt; D কে loop করতে হবে!</text>
+<rect x="320" y="155" width="160" height="35" rx="6" fill="#1e3a5f" stroke="#f87171" stroke-width="2"/>
+<text x="400" y="172" text-anchor="middle" fill="#fca5a5" font-size="10">Loop করলে -&gt; H বলেছিল লুপ</text>
+<text x="400" y="184" text-anchor="middle" fill="#fca5a5" font-size="10">-&gt; D কে থামতে হবে!</text>
+<path d="M270,110 L200,155" fill="none" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrTC5r)"/>
+<path d="M290,110 L380,155" fill="none" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrTC5r)"/>
+<text x="470" y="60" fill="#fca5a5" font-size="13" font-weight="700">CONTRADICTION!</text>
+<text x="470" y="78" fill="#fca5a5" font-size="10">H অস্তিত্ব রাখতে পারে না</text>
+</svg>
+</div>
+<div class="svg-caption">Halting Problem: D(D) উভয় ক্ষেত্রে অন্তর্বিরোধ। কোনো যন্ত্র সাধারণভাবে বলতে পারে না প্রোগ্রাম থামবে কি না।</div>
 
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> সবচেয়ে গভীর জ্ঞান — নিজের সীমা জানা।<br>

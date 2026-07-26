@@ -65,6 +65,48 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ৫ (Combinatorics):</strong> P(n,k), C(n,k) — এখানে probability-তে প্রয়োগ! Book ৩৩ (Loom of Reason) Door ৫ (Bayesian): conditional probability = Bayes।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎰 দুটি পাশার যোগফল বিতরণ</text>
+  <rect x="20" y="40" width="340" height="170" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+  <line x1="40" y1="190" x2="340" y2="190" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="40" y1="50" x2="40" y2="190" stroke="#64748b" stroke-width="1.5"/>
+  <text x="30" y="55" text-anchor="end" fill="#64748b" font-size="7">6/36</text>
+  <rect x="70" y="100" width="22" height="90" fill="#22c55e" stroke="#4ade80" stroke-width="1"/>
+  <text x="81" y="95" text-anchor="middle" fill="#4ade80" font-size="7">2</text>
+  <rect x="95" y="115" width="22" height="75" fill="#1e3a5f" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="106" y="110" text-anchor="middle" fill="#7dd3fc" font-size="7">3</text>
+  <rect x="120" y="80" width="22" height="110" fill="#1e3a5f" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="131" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7">4</text>
+  <rect x="145" y="55" width="22" height="135" fill="#1e3a5f" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="156" y="50" text-anchor="middle" fill="#7dd3fc" font-size="7">5</text>
+  <rect x="170" y="40" width="22" height="150" fill="#fbbf24" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="181" y="35" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">7</text>
+  <rect x="195" y="55" width="22" height="135" fill="#1e3a5f" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="206" y="50" text-anchor="middle" fill="#7dd3fc" font-size="7">8</text>
+  <rect x="220" y="80" width="22" height="110" fill="#1e3a5f" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="231" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7">9</text>
+  <rect x="245" y="115" width="22" height="75" fill="#1e3a5f" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="256" y="110" text-anchor="middle" fill="#7dd3fc" font-size="7">10</text>
+  <rect x="270" y="100" width="22" height="90" fill="#1e3a5f" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="281" y="95" text-anchor="middle" fill="#7dd3fc" font-size="7">11</text>
+  <rect x="295" y="100" width="22" height="90" fill="#22c55e" stroke="#4ade80" stroke-width="1"/>
+  <text x="306" y="95" text-anchor="middle" fill="#4ade80" font-size="7">12</text>
+  <text x="180" y="208" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">↑ যোগফল ৭ সবচেয়ে সম্ভাব্য (6/36 = 1/6)</text>
+  <rect x="385" y="40" width="180" height="80" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="475" y="60" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">সম্ভাবনার নিয়ম</text>
+  <text x="395" y="78" fill="#e2e8f0" font-size="7">P(E) = favorable / total</text>
+  <text x="395" y="93" fill="#4ade80" font-size="7">P(A∪B)=P(A)+P(B)−P(A∩B)</text>
+  <text x="395" y="108" fill="#7dd3fc" font-size="7">P(A|B) = P(A∩B)/P(B)</text>
+  <rect x="385" y="130" width="180" height="80" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="475" y="150" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Monty Hall</text>
+  <text x="475" y="170" text-anchor="middle" fill="#e2e8f0" font-size="8">switch করো → 2/3 জয়!</text>
+  <text x="475" y="188" text-anchor="middle" fill="#cbd5e1" font-size="7">থাকলে 1/3 জয়</text>
+  <text x="475" y="202" text-anchor="middle" fill="#fcd34d" font-size="7">গোনা প্রমাণ করে!</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: দুটি পাশার যোগফল বিতরণ — যোগফল ৭ সবচেয়ে সম্ভাব্য (৬টি জোড় থেকে: 1+6, 2+5, 3+4, ...)। Probability = favorable/total, inclusion-exclusion ও conditional probability-এর নিয়ম।</div>
+
 <div class="secret-box">🎰 <strong>Probability = favorable/total। Inclusion-exclusion। Conditional।</strong> কিন্তু সব outcomes সসীম নয় — কিছু ঘটনা অসংখ্য। কীভাবে গণনা করবে? সেই উত্তর — Poisson। পরের দরজায়।</div>`,
   senior: {
     title: "Combinatorial Probability এক নজরে",
@@ -143,6 +185,48 @@ doors.push({
 <p class="scene-setting en">Latif — subtle. Poisson is the form of that subtlety — rare events that are regular. Each moment has infinite possibilities, but on average a subtle pattern. East or west — wherever you look, there is order. Even rare events follow that order.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ৬ (Pigeonhole):</strong> counting principle। Book ৪৯ Door ৪ (Memoryless): Poisson process ↔ exponential inter-arrival।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔢 Poisson: বিরল ঘটনার বিতরণ</text>
+  <rect x="30" y="40" width="300" height="180" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+  <line x1="55" y1="195" x2="320" y2="195" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="55" y1="55" x2="55" y2="195" stroke="#64748b" stroke-width="1.5"/>
+  <text x="45" y="60" text-anchor="end" fill="#64748b" font-size="7">0.22</text>
+  <text x="45" y="125" text-anchor="end" fill="#64748b" font-size="7">0.10</text>
+  <rect x="65" y="115" width="30" height="80" fill="#1e3a5f" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="80" y="208" text-anchor="middle" fill="#7dd3fc" font-size="7">0</text>
+  <text x="80" y="110" text-anchor="middle" fill="#7dd3fc" font-size="6">0.05</text>
+  <rect x="100" y="60" width="30" height="135" fill="#fbbf24" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="115" y="208" text-anchor="middle" fill="#fcd34d" font-size="7">1</text>
+  <text x="115" y="55" text-anchor="middle" fill="#fcd34d" font-size="6">0.15</text>
+  <rect x="135" y="50" width="30" height="145" fill="#22c55e" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="150" y="208" text-anchor="middle" fill="#4ade80" font-size="7">2</text>
+  <text x="150" y="45" text-anchor="middle" fill="#4ade80" font-size="6">0.22</text>
+  <rect x="170" y="55" width="30" height="140" fill="#fbbf24" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="185" y="208" text-anchor="middle" fill="#fcd34d" font-size="7">3</text>
+  <text x="185" y="50" text-anchor="middle" fill="#fcd34d" font-size="6">0.20</text>
+  <rect x="205" y="80" width="30" height="115" fill="#22d3ee" fill-opacity="0.7" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="220" y="208" text-anchor="middle" fill="#7dd3fc" font-size="7">4</text>
+  <rect x="240" y="110" width="30" height="85" fill="#8b5cf6" fill-opacity="0.7" stroke="#a78bfa" stroke-width="1"/>
+  <text x="255" y="208" text-anchor="middle" fill="#a78bfa" font-size="7">5</text>
+  <rect x="275" y="140" width="30" height="55" fill="#8b5cf6" fill-opacity="0.5" stroke="#a78bfa" stroke-width="1"/>
+  <text x="290" y="208" text-anchor="middle" fill="#a78bfa" font-size="7">6</text>
+  <text x="175" y="230" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">λ=3 কল/মিনিট — P(X=k)</text>
+  <rect x="355" y="40" width="215" height="180" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="462" y="60" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">Poisson সূত্র</text>
+  <text x="462" y="82" text-anchor="middle" fill="#e2e8f0" font-size="9">P(X=k) = λᵏ · e⁻ᵏ / k!</text>
+  <text x="365" y="105" fill="#7dd3fc" font-size="8">• E[X] = λ (গড়)</text>
+  <text x="365" y="122" fill="#7dd3fc" font-size="8">• Var(X) = λ (একই!)</text>
+  <text x="365" y="142" fill="#fcd34d" font-size="8">বাস্তব উদাহরণ:</text>
+  <text x="365" y="158" fill="#cbd5e1" font-size="7">• কল সেন্টার: ৩ কল/মিনিট</text>
+  <text x="365" y="172" fill="#cbd5e1" font-size="7">• ওয়েবসাইট: ১০ ভিজিটর/সেকেন্ড</text>
+  <text x="365" y="186" fill="#cbd5e1" font-size="7">• মিউটেশন: ০.১/জিন</text>
+  <text x="365" y="200" fill="#cbd5e1" font-size="7">• দুর্ঘটনা: ২/দিন</text>
+  <text x="365" y="215" fill="#4ade80" font-size="7">→ বিরল কিন্তু নিয়মিত!</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Poisson distribution — বিরল কিন্তু নিয়মিত ঘটনার বিতরণ। শুধু একটি প্যারামিটার λ (rate)। গড় ও variance এক (E=Var=λ)। কল সেন্টার, ওয়েব ভিজিটর, মিউটেশন — সব Poisson।</div>
 
 <div class="secret-box">🔢 <strong>Poisson = বিরল ঘটনার বিতরণ। λ। E=Var=λ।</strong> কিন্তু ঘটনা শুধু এক মুহূর্তে নয় — সময়ে সময়ে। সেই প্রবাহ — stochastic process। পরের দরজায়।</div>`,
   senior: {
@@ -227,6 +311,47 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৫ (Distributed Systems) Door ৫ (Consensus):</strong> Markov chain = consensus model। Book ৩০ (Math for ML) Door ৭ (Probability): transition matrix formal definition।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrPB8" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/>
+    </marker>
+    <marker id="arrPB8b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+    <marker id="arrPB8g" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4ade80"/>
+    </marker>
+  </defs>
+  <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⏰ Markov Chain: state থেকে state যাত্রা</text>
+  <circle cx="150" cy="100" r="35" fill="#fbbf24" fill-opacity="0.2" stroke="#fbbf24" stroke-width="2.5"/>
+  <text x="150" y="97" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="900">☀️ Sunny</text>
+  <text x="150" y="112" text-anchor="middle" fill="#fcd34d" font-size="7">0.67 (stationary)</text>
+  <circle cx="400" cy="100" r="35" fill="#22d3ee" fill-opacity="0.2" stroke="#22d3ee" stroke-width="2.5"/>
+  <text x="400" y="97" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="900">🌧️ Rainy</text>
+  <text x="400" y="112" text-anchor="middle" fill="#7dd3fc" font-size="7">0.33 (stationary)</text>
+  <path d="M 180,85 Q 275,55 370,85" fill="none" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrPB8)"/>
+  <text x="275" y="55" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">P(Rainy|Sunny)=0.2</text>
+  <path d="M 370,115 Q 275,145 180,115" fill="none" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrPB8b)"/>
+  <text x="275" y="155" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">P(Sunny|Rainy)=0.4</text>
+  <path d="M 125,75 A 30,30 0 0,1 175,75" fill="none" stroke="#fcd34d" stroke-width="2" marker-end="url(#arrPB8g)"/>
+  <text x="150" y="50" text-anchor="middle" fill="#fcd34d" font-size="7">0.8</text>
+  <path d="M 375,75 A 30,30 0 0,1 425,75" fill="none" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrPB8b)"/>
+  <text x="400" y="50" text-anchor="middle" fill="#7dd3fc" font-size="7">0.6</text>
+  <rect x="30" y="165" width="250" height="65" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="155" y="185" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">Transition Matrix</text>
+  <text x="155" y="205" text-anchor="middle" fill="#e2e8f0" font-size="8" font-family="monospace">  Sunny  Rainy</text>
+  <text x="155" y="222" text-anchor="middle" fill="#cbd5e1" font-size="8" font-family="monospace">S [0.8   0.2]</text>
+  <text x="155" y="225" text-anchor="middle" fill="#cbd5e1" font-size="0">.</text>
+  <rect x="300" y="165" width="255" height="65" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="427" y="185" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Markov Property</text>
+  <text x="427" y="203" text-anchor="middle" fill="#e2e8f0" font-size="8">পরবর্তী state শুধু বর্তমানের উপর</text>
+  <text x="427" y="218" text-anchor="middle" fill="#cbd5e1" font-size="7">অতীত নয়! PageRank = Markov chain</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Markov chain — state থেকে state নির্দিষ্ট সম্ভাবনায় যাত্রা। পরবর্তী state শুধু বর্তমানের উপর নির্ভর করে (অতীত নয়)। দীর্ঘে stationary distributionে পৌঁছায়। PageRank এর উপর নির্মিত।</div>
+
 <div class="secret-box">⏰ <strong>Markov = state → state, অতীতহীন। Stationary = সাম্যাবস্থা।</strong> কিন্তু জটিল distribution থেকে নমুনা কীভাবে নেবে? সেই উপায় — sampling। পরের দরজায়।</div>`,
   senior: {
     title: "Stochastic Processes এক নজরে",
@@ -310,6 +435,34 @@ doors.push({
 <p class="scene-setting en">Talaq — search, exploration. Monte Carlo is the form of that search — exploring truth through random steps. Each sample an attempt. Over the long run, truth emerges. Those who strive are shown the path — even random steps can reach the destination.</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৪ (Statistics) Door ৫ (Estimation):</strong> sampling ও confidence interval। Book ৩৬ (DL Arch) Door ৫ (Diffusion): diffusion model = MCMC variant!</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">💃 Monte Carlo: Estimate Pi by Random Sampling</text>
+  <rect x="100" y="50" width="200" height="200" rx="0" fill="none" stroke="#22d3ee" stroke-width="2"/>
+  <text x="200" y="45" text-anchor="middle" fill="#7dd3fc" font-size="7">Square: 2x2</text>
+  <circle cx="200" cy="150" r="100" fill="none" stroke="#22c55e" stroke-width="2"/>
+  <text x="200" y="260" text-anchor="middle" fill="#4ade80" font-size="7">Circle: r=1</text>
+  <circle cx="150" cy="120" r="1.5" fill="#fbbf24"/>
+  <circle cx="180" cy="180" r="1.5" fill="#fbbf24"/>
+  <circle cx="220" cy="100" r="1.5" fill="#fbbf24"/>
+  <circle cx="240" cy="200" r="1.5" fill="#fbbf24"/>
+  <circle cx="120" cy="80" r="1.5" fill="#fbbf24"/>
+  <circle cx="160" cy="90" r="1.5" fill="#fbbf24"/>
+  <circle cx="280" cy="70" r="1.5" fill="#fbbf24"/>
+  <circle cx="190" cy="210" r="1.5" fill="#fbbf24"/>
+  <rect x="380" y="60" width="180" height="160" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+  <text x="470" y="82" text-anchor="middle" fill="#e2e8f0" font-size="8" font-weight="700">Pi Estimation</text>
+  <text x="400" y="105" fill="#94a3b8" font-size="7">N = 10,000 samples</text>
+  <text x="400" y="120" fill="#4ade80" font-size="7">Inside: 7,854</text>
+  <text x="400" y="135" fill="#fca5a5" font-size="7">Outside: 2,146</text>
+  <text x="400" y="160" fill="#fcd34d" font-size="8">pi ~= 4 * 7854/10000</text>
+  <text x="400" y="175" fill="#fcd34d" font-size="8">   = 3.1416</text>
+  <text x="400" y="200" fill="#c084fc" font-size="6">MCMC: Metropolis-Hastings</text>
+  <text x="400" y="212" fill="#c084fc" font-size="6">Gibbs sampling</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Monte Carlo — এলোমেলো নমুনা দিয়ে Pi অনুমান। যত বেশি নমুনা, তত নিখুঁত।</div>
 
 <div class="secret-box">💃 <strong>Monte Carlo = এলোমেলো নমুনা। MCMC = জটিল distribution থেকে নমুনা।</strong> এখন নয়টি দরজা পেরিয়েছো — শেষ দরজায় সব মেলাও।</div>`,
   senior: {
@@ -411,6 +564,23 @@ doors.push({
 <li>💃 Monte Carlo দিয়া π হিসাও</li>
 <li>📖 "Introduction to Probability" — Blitzstein পড়ো</li>
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌟 Probability: 9 Doors of Uncertainty</text>
+  <rect x="180" y="50" width="220" height="35" rx="17" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="72" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">D1: Bayes (belief update)</text>
+  <rect x="140" y="95" width="300" height="35" rx="17" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="117" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">D2-D3: Expectation + Normal (CLT)</text>
+  <rect x="100" y="140" width="380" height="35" rx="17" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="162" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">D4-D5: Memoryless + Concentration (risk)</text>
+  <rect x="60" y="185" width="460" height="35" rx="17" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
+  <text x="290" y="207" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">D6-D9: Combinatorial + Poisson + Markov + Monte Carlo</text>
+  <rect x="120" y="235" width="340" height="35" rx="17" fill="#052e16" stroke="#4ade80" stroke-width="2.5"/>
+  <text x="290" y="257" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">HIKMAH: Navigating Uncertainty</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: সম্ভাবনার ৯টি দরজা — Bayes থেকে Hikmah পর্যন্ত।</div>
 
 <div class="secret-box">🌟 <strong>সম্ভাবনা = অনিশ্চয়তার ভাষা।</strong> নয়টি দরজা, নয়জন শিক্ষক, একটি দৃষ্টি। Bayes থেকে Markov, ঘণ্টা থেকে নৃত্য। প্রতিটি ML model, প্রতিটি risk analysis, প্রতিটি scientific experiment — সম্ভাবনার উপর নির্মিত। এখন তুমি জানো — শুধু কীভাবে নয়, কেন। কেন Bayes base rate ধরে। কেন ঘণ্টা আকৃতি সর্বব্যাপী। কেন অতীত প্রভাব ফেলে না (memoryless)। কেন বিরল ঘটনা উপেক্ষা করা যায় না। কেন এলোমেলো পদক্ষেপে সত্য পাওয়া যায়। এটাই হিকমাহ — সম্ভাবনার প্রয়োগিক জ্ঞান।</div>`,
   senior: {

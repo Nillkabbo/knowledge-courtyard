@@ -182,6 +182,52 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ২ (DSA Bazaar) Door ৩ (Recursion):</strong> প্রতিটি recursive ফাংশন = ইনডাকশন! Base case = termination। Recursive call = inductive step। factorial(0) = 1 (base), factorial(n) = n * factorial(n-1) (step)। সত্য-রক্ষক ইদ্রিস (Door ১) তোমাকে লজিক দিয়েছেন — এখন ইউসুফ দেখাচ্ছেন সেই লজিক কীভাবে অসীমকে ছুঁয়ে যায়।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrDM2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/>
+    </marker>
+  </defs>
+  <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🁢 গাণিতিক ইনডাকশন: ডোমিনো প্রমাণ</text>
+  <rect x="15" y="42" width="130" height="48" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="80" y="62" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">ধাপ ১: Base Case</text>
+  <text x="80" y="78" text-anchor="middle" fill="#4ade80" font-size="8">P(1) সত্য প্রমাণ করো</text>
+  <line x1="150" y1="66" x2="185" y2="66" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrDM2)"/>
+  <rect x="190" y="42" width="160" height="48" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="270" y="62" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">ধাপ ২: Inductive Step</text>
+  <text x="270" y="78" text-anchor="middle" fill="#a78bfa" font-size="8">P(k) সত্য → P(k+1) সত্য</text>
+  <line x1="355" y1="66" x2="390" y2="66" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrDM2)"/>
+  <rect x="395" y="42" width="170" height="48" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="480" y="62" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">∴ সকল n-এর জন্য</text>
+  <text x="480" y="78" text-anchor="middle" fill="#4ade80" font-size="8">P(n) সত্য ✓</text>
+  <rect x="35" y="120" width="26" height="65" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="2" transform="rotate(12 48 152)"/>
+  <text x="48" y="130" text-anchor="middle" fill="#4ade80" font-size="7" transform="rotate(12 48 130)">P(1)</text>
+  <rect x="78" y="118" width="26" height="65" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="91" y="128" text-anchor="middle" fill="#a78bfa" font-size="7">P(2)</text>
+  <rect x="121" y="118" width="26" height="65" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="134" y="128" text-anchor="middle" fill="#a78bfa" font-size="7">P(3)</text>
+  <rect x="164" y="118" width="26" height="65" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="177" y="128" text-anchor="middle" fill="#a78bfa" font-size="7">P(4)</text>
+  <text x="210" y="155" text-anchor="middle" fill="#64748b" font-size="14">...</text>
+  <rect x="232" y="118" width="26" height="65" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="245" y="128" text-anchor="middle" fill="#a78bfa" font-size="7">P(k)</text>
+  <rect x="275" y="118" width="26" height="65" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="288" y="128" text-anchor="middle" fill="#a78bfa" font-size="6">P(k+1)</text>
+  <text x="318" y="155" text-anchor="middle" fill="#64748b" font-size="14">...</text>
+  <rect x="340" y="118" width="26" height="65" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="353" y="128" text-anchor="middle" fill="#a78bfa" font-size="7">P(n)</text>
+  <rect x="400" y="115" width="165" height="75" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="482" y="135" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">ক্লাসিক উদাহরণ</text>
+  <text x="482" y="153" text-anchor="middle" fill="#e2e8f0" font-size="9">1+2+...+n = n(n+1)/2</text>
+  <text x="482" y="170" text-anchor="middle" fill="#cbd5e1" font-size="7">n=1: 1(2)/2 = 1 ✓</text>
+  <text x="482" y="183" text-anchor="middle" fill="#cbd5e1" font-size="7">k→k+1: সূত্র মেলে ✓</text>
+  <rect x="15" y="208" width="550" height="28" rx="6" fill="#0f172a" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="290" y="226" text-anchor="middle" fill="#a78bfa" font-size="8">💡 দুটি ধাপ প্রমাণ করো — অসীম সত্য গাণিতিকভাবে নিশ্চিত! Recursion = induction in code.</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: গাণিতিক ইনডাকশন — Base Case (প্রথম ডোমিনো পড়ে) ও Inductive Step (প্রতিটি পরের ডোমিনো ফেলে) থেকে সব ডোমিনো পড়ে। দুটি ধাপে অসীম সত্য প্রমাণ।</div>
+
 <div class="secret-box">🁢 <strong>ইনডাকশন = ডোমিনোর গাণিতিক প্রমাণ।</strong> দুটি ধাপ — ভিত্তি ও ধাপ। এক থেকে অসীম। কিন্তু কী যদি সত্যকে প্রমাণ করার সরাসরি উপায় না থাকে? কী যদি সত্যকে তার বিপরীত থেকে প্রমাণ করতে হয়? সেই যাত্রা — পরের দরজায়।</div>`,
   senior: {
     title: "Mathematical Induction এক নজরে",
@@ -246,6 +292,47 @@ doors.push({
 <p class="scene-setting">"সত্যকে মিথ্যার উপর নিক্ষেপ" — এটাই কন্ট্রাডিকশন! মিথ্যা ধরে নাও, তারপর সত্য দিয়ে তাকে চূর্ণ করো। বুরহান — প্রমাণের শক্তি এখানে। সরাসরি নয়, বরং অন্তর্বিরোধ থেকে। মিথ্যা যে মিথ্যা — তা নিজেই প্রমাণ।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৩ (Loom of Reason) Door ৫ (Bayesian):</strong> সত্য প্রমাণ করা = belief আপডেট। কন্ট্রাডিকশন একটি শক্তিশালী প্রমাণ কারণ এটা বিশ্বাসকে ১০০%-এ নিয়ে যায়। Book ৪১ Door ৩: টuring machine-এর halting problem-ও contradiction দিয়ে প্রমাণিত!</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrDM3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/>
+    </marker>
+    <marker id="arrDM3r" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#f87171"/>
+    </marker>
+    <marker id="arrDM3g" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/>
+    </marker>
+  </defs>
+  <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔍 কন্ট্রাডিকশন: বিপরীত থেকে সত্য</text>
+  <rect x="20" y="40" width="150" height="45" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="95" y="58" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">ধরো বিপরীত সত্য</text>
+  <text x="95" y="74" text-anchor="middle" fill="#c084fc" font-size="8">√2 = p/q (মূলদ)</text>
+  <line x1="95" y1="88" x2="95" y2="110" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrDM3)"/>
+  <rect x="20" y="115" width="150" height="45" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="95" y="133" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">গাণিতিক ধাপ</text>
+  <text x="95" y="149" text-anchor="middle" fill="#e2e8f0" font-size="8">p² = 2q²</text>
+  <line x1="95" y1="163" x2="95" y2="185" stroke="#f87171" stroke-width="2" marker-end="url(#arrDM3r)"/>
+  <rect x="15" y="190" width="160" height="45" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="95" y="208" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">⊥ অন্তর্বিরোধ!</text>
+  <text x="95" y="224" text-anchor="middle" fill="#fca5a5" font-size="7">p ও q উভয় জোড় — সহমৌলিক নয়</text>
+  <line x1="175" y1="212" x2="220" y2="115" stroke="#22c55e" stroke-width="2" marker-end="url(#arrDM3g)" stroke-dasharray="4,3"/>
+  <rect x="225" y="90" width="170" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="310" y="110" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">∴ মূল সত্য</text>
+  <text x="310" y="128" text-anchor="middle" fill="#4ade80" font-size="8">√2 অমূলদ ✓</text>
+  <rect x="225" y="155" width="340" height="80" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="395" y="175" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">কন্ট্রাপোজিটিভ: সমতুল্য প্রমাণ</text>
+  <text x="395" y="195" text-anchor="middle" fill="#e2e8f0" font-size="8">P → Q প্রমাণ কঠিন?</text>
+  <text x="395" y="210" text-anchor="middle" fill="#7dd3fc" font-size="8">প্রমাণ করো: ¬Q → ¬P (সমতুল্য!)</text>
+  <text x="395" y="225" text-anchor="middle" fill="#cbd5e1" font-size="7">"রাস্তা শুকনো → বৃষ্টি হয়নি"</text>
+  <rect x="410" y="40" width="155" height="40" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="487" y="58" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">বিখ্যাত প্রয়োগ</text>
+  <text x="487" y="73" text-anchor="middle" fill="#cbd5e1" font-size="7">Turing Halting Problem</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: কন্ট্রাডিকশন পদ্ধতি — বিপরীত ধরে নাও, গাণিতিক ধাপে অন্তর্বিরোধ খুঁজে পাও, তাহলে মূল সত্য প্রমাণিত। √2 অমূলদ প্রমাণ এভাবেই করা হয়।</div>
 
 <div class="secret-box">🔍 <strong>কন্ট্রাডিকশন = মিথ্যা থেকে সত্য বের করা।</strong> ধরে নাও বিপরীত → দেখাও অসম্ভব → মূল সত্য। ইউক্লিড এটা √২-এ করেছিলেন, টুরিং halting problem-এ করেছিলেন। এখন তুমি জানো দুটি প্রমাণ — ইনডাকশন ও কন্ট্রাডিকশন। পরের দরজায় — সত্যের সবচেয়ে পরিচিত ভিত্তি: সেট তত্ত্ব।</div>`,
   senior: {
@@ -312,6 +399,41 @@ doors.push({
 <p class="scene-setting">জামা — সমাবেশ। প্রতিটি গবাদি পশু একটি সেট — দুধ, মাংস, চামড়ার সমাবেশ। সমাবেশ থেকে নির্যাস। সেট তত্ত্বও তেমন — সংগ্রহ থেকে সত্য বের করা। ক্যান্টর দেখিয়েছিলেন — সংগ্রহের আকার ভিন্ন হতে পারে, এমনকি অসীম হলেও।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩০ (Architect's Compass) Door ২ (Sets):</strong> ভেক্টর ও সেট শিখেছিলে — এখানে সেট-এর গভীর তত্ত্ব। Book ৪১ (Clockwork of Thought) Door ১: ফর্মাল ভাষা = সেট অফ স্ট্রিং। Book ৩৯ (Databases) Door ২: SQL = সেট অপারেশন (UNION, INTERSECT)।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⊇ সেট অপারেশন: ভেন ডায়াগ্রাম</text>
+  <circle cx="200" cy="120" r="70" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-width="2.5"/>
+  <circle cx="320" cy="120" r="70" fill="#22d3ee" fill-opacity="0.15" stroke="#22d3ee" stroke-width="2.5"/>
+  <text x="160" y="90" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="900">A</text>
+  <text x="165" y="105" text-anchor="middle" fill="#a78bfa" font-size="8">{1, 2, 3, 4}</text>
+  <text x="360" y="90" text-anchor="middle" fill="#7dd3fc" font-size="14" font-weight="900">B</text>
+  <text x="365" y="105" text-anchor="middle" fill="#7dd3fc" font-size="8">{3, 4, 5, 6}</text>
+  <text x="260" y="125" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">A ∩ B</text>
+  <text x="260" y="140" text-anchor="middle" fill="#fcd34d" font-size="7">{3, 4}</text>
+  <rect x="20" y="205" width="115" height="35" rx="6" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="77" y="220" text-anchor="middle" fill="#a78bfa" font-size="7" font-weight="700">A ∪ B (Union)</text>
+  <text x="77" y="233" text-anchor="middle" fill="#cbd5e1" font-size="7">{1,2,3,4,5,6}</text>
+  <rect x="145" y="205" width="115" height="35" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="202" y="220" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">A ∩ B (Intersection)</text>
+  <text x="202" y="233" text-anchor="middle" fill="#4ade80" font-size="7">{3, 4}</text>
+  <rect x="270" y="205" width="115" height="35" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="327" y="220" text-anchor="middle" fill="#fca5a5" font-size="7" font-weight="700">A ∖ B (Difference)</text>
+  <text x="327" y="233" text-anchor="middle" fill="#fca5a5" font-size="7">{1, 2}</text>
+  <rect x="395" y="205" width="170" height="35" rx="6" fill="#0c4a6e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="480" y="220" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="700">পাওয়ার সেট: |P(S)| = 2ⁿ</text>
+  <text x="480" y="233" text-anchor="middle" fill="#cbd5e1" font-size="7">{a,b} → ∅,{a},{b},{a,b} = 4</text>
+  <rect x="415" y="45" width="150" height="140" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="490" y="65" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">সমীকরণসমূহ</text>
+  <text x="425" y="85" fill="#e2e8f0" font-size="8">|A∪B| = |A|+|B|−|A∩B|</text>
+  <text x="425" y="105" fill="#4ade80" font-size="8">= 4 + 4 − 2 = 6</text>
+  <text x="425" y="130" fill="#7dd3fc" font-size="8">|A△B| = |A∪B|−|A∩B|</text>
+  <text x="425" y="148" fill="#4ade80" font-size="8">= 6 − 2 = 4</text>
+  <text x="425" y="170" fill="#fcd34d" font-size="7">SQL: UNION, INTERSECT,</text>
+  <text x="425" y="182" fill="#fcd34d" font-size="7">EXCEPT = সেট অপারেশন!</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: ভেন ডায়াগ্রামে সেট অপারেশন — Union (যোগ), Intersection (মিল), Difference (পার্থক্য)। পাওয়ার সেট সর্বদা বড়: |P(S)| = 2ⁿ। SQL-এ এগুলো UNION, INTERSECT, EXCEPT।</div>
 
 <div class="secret-box">⊇ <strong>সেট = সংগ্রহের গাণিতিক ভিত্তি।</strong> ∪ যোগ, ∩ মিল, ∖ পার্থক্য। পাওয়ার সেট সর্বদা বড় (২ⁿ)। কিন্তু সংগ্রহ বড়তে গিয়ে একটি প্রশ্ন জন্ম নেয় — কতভাবে সাজানো যায়? সেই উত্তর — পরের দরজায়।</div>`,
   senior: {
@@ -382,6 +504,39 @@ doors.push({
 <p class="scene-setting">প্রতিদিন অসংখ্য সম্ভাবনা — তাদবির। কতভাবে সাজানো যায়, কতভাবে বাছা যায়। কম্বিনেটরিক্স সেই সম্ভাবনা গোনার ভাষা। প্রতিটি পছন্দ একটি সম্ভাবনা — এবং প্রতিটি সম্ভাবনা গণনায় ধরা যায়।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৯ (Probability) Door ১:</strong> সম্ভাবনা হিসাবে কম্বিনেটরিক্স ব্যবহৃত! Book ৪৬ (Cryptography) Door ৩: hash collision = birthday paradox। Book ৪৮ Door ৬: pigeonhole — অসংখ্য জিনিস কম বাক্সে।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎲 Combinatorics: Permutations vs Combinations</text>
+  <rect x="20" y="55" width="250" height="170" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+  <text x="145" y="78" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">PERMUTATION (order matters)</text>
+  <text x="145" y="100" text-anchor="middle" fill="#d8b4fe" font-size="8">ABC, ACB, BAC, BCA, CAB, CBA</text>
+  <text x="145" y="120" text-anchor="middle" fill="#c084fc" font-size="7">P(n,k) = n! / (n-k)!</text>
+  <rect x="35" y="135" width="60" height="25" rx="4" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
+  <text x="65" y="152" text-anchor="middle" fill="#c084fc" font-size="7">A B C</text>
+  <rect x="100" y="135" width="60" height="25" rx="4" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
+  <text x="130" y="152" text-anchor="middle" fill="#c084fc" font-size="7">A C B</text>
+  <rect x="165" y="135" width="60" height="25" rx="4" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
+  <text x="195" y="152" text-anchor="middle" fill="#c084fc" font-size="7">B A C</text>
+  <text x="145" y="180" text-anchor="middle" fill="#d8b4fe" font-size="7">3! = 6 arrangements</text>
+  <text x="145" y="200" text-anchor="middle" fill="#94a3b8" font-size="6">Password strength: 8 chars</text>
+  <text x="145" y="212" text-anchor="middle" fill="#94a3b8" font-size="6">= 62^8 = 218 trillion</text>
+  <rect x="300" y="55" width="260" height="170" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+  <text x="430" y="78" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="700">COMBINATION (order irrelevant)</text>
+  <text x="430" y="100" text-anchor="middle" fill="#bae6fd" font-size="8">{A,B,C} = same as {C,B,A}</text>
+  <text x="430" y="120" text-anchor="middle" fill="#7dd3fc" font-size="7">C(n,k) = n! / (k!(n-k)!)</text>
+  <rect x="320" y="135" width="80" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="360" y="152" text-anchor="middle" fill="#7dd3fc" font-size="7">{A,B}</text>
+  <rect x="410" y="135" width="80" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="450" y="152" text-anchor="middle" fill="#7dd3fc" font-size="7">{A,C}</text>
+  <rect x="500" y="135" width="50" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="525" y="152" text-anchor="middle" fill="#7dd3fc" font-size="7">{B,C}</text>
+  <text x="430" y="180" text-anchor="middle" fill="#bae6fd" font-size="7">C(3,2) = 3 unique pairs</text>
+  <text x="430" y="200" text-anchor="middle" fill="#94a3b8" font-size="6">Birthday paradox: C(23,2)</text>
+  <text x="430" y="212" text-anchor="middle" fill="#94a3b8" font-size="6">= 253 pairs, 50% match</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Permutation (ক্রম গুরুত্বপূর্ণ) vs Combination (ক্রম অগ্রাহ্য)।</div>
 
 <div class="secret-box">🎲 <strong>কম্বিনেটরিক্স = গোনার শিল্প।</strong> P(n,k) = ক্রম সহ, C(n,k) = ক্রম ছাড়া। জন্মদিন প্যারাডক্স, hash collision, password শক্তি — সব এর উপর নির্ভর। এখন প্রথম ৫টি দরজা শেষ — পরের অধ্যায়ে নতুন জগত।</div>`,
   senior: {
