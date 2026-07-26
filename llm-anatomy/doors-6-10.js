@@ -672,5 +672,52 @@ WHY THIS MATTERS:
 
 <div class="verse">"তিনি শিখিয়েছেন কলমের মাধ্যমে। শিখিয়েছেন মানুষকে যা সে জানত না।"<br>— কুরআন ৯৬:৪-৫<br><br>LLM হলো আধুনিক কলম — স্বয়ংক্রিয়, বিশাল, কিন্তু নিয়ন্ত্রিত। যে এটাকে বোঝে, সে জ্ঞান তৈরি করতে পারে। যে বোঝে না, সে কেবল গ্রাহক। তুমি এখন বোঝো — টোকেন থেকে অর্থ, অর্থ থেকে ভাষা, ভাষা থেকে উত্তর। এটাই LLM দর্শন।</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrLLM10" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">The Complete LLM Pipeline — One Unified View</text>
+<!-- Stage 1: Tokenizer -->
+<rect x="15" y="100" width="80" height="55" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="55" y="120" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="bold">১. Tokenizer</text>
+<text x="55" y="134" text-anchor="middle" fill="#94a3b8" font-size="6">text → token IDs</text>
+<text x="55" y="145" text-anchor="middle" fill="#94a3b8" font-size="6">[2440, 318, ...]</text>
+<!-- Stage 2: Embedding -->
+<rect x="120" y="100" width="80" height="55" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="160" y="120" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="bold">২. Embedding</text>
+<text x="160" y="134" text-anchor="middle" fill="#94a3b8" font-size="6">ID → 4096-dim</text>
+<text x="160" y="145" text-anchor="middle" fill="#94a3b8" font-size="6">+ position</text>
+<!-- Stage 3: Attention layers -->
+<rect x="225" y="80" width="90" height="95" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="2"/>
+<text x="270" y="98" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">৩. Attention</text>
+<text x="270" y="112" text-anchor="middle" fill="#94a3b8" font-size="6">× 96 layers</text>
+<rect x="235" y="120" width="70" height="12" rx="3" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
+<text x="270" y="129" text-anchor="middle" fill="#7dd3fc" font-size="5">multi-head</text>
+<rect x="235" y="136" width="70" height="12" rx="3" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
+<text x="270" y="145" text-anchor="middle" fill="#7dd3fc" font-size="5">+ feed-forward</text>
+<rect x="235" y="152" width="70" height="12" rx="3" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
+<text x="270" y="161" text-anchor="middle" fill="#7dd3fc" font-size="5">repeat × N</text>
+<!-- Stage 4: Output projection -->
+<rect x="345" y="100" width="80" height="55" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="385" y="120" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="bold">৪. Output</text>
+<text x="385" y="134" text-anchor="middle" fill="#94a3b8" font-size="6">vector → vocab</text>
+<text x="385" y="145" text-anchor="middle" fill="#94a3b8" font-size="6">P(Paris)=0.99</text>
+<!-- Stage 5: Next token -->
+<rect x="450" y="100" width="80" height="55" rx="6" fill="#1a2744" stroke="#22c55e" stroke-width="2.5"/>
+<text x="490" y="120" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">৫. Next token</text>
+<text x="490" y="134" text-anchor="middle" fill="#4ade80" font-size="6">"Paris"</text>
+<text x="490" y="145" text-anchor="middle" fill="#94a3b8" font-size="6">↻ repeat</text>
+<!-- Arrows -->
+<line x1="95" y1="127" x2="113" y2="127" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM10)"/>
+<line x1="200" y1="127" x2="218" y2="127" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM10)"/>
+<line x1="315" y1="127" x2="338" y2="127" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM10)"/>
+<line x1="425" y1="127" x2="443" y2="127" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM10)"/>
+<!-- Loop back arrow -->
+<path d="M 490 155 Q 490 210 270 210 Q 55 210 55 160" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrLLM10)"/>
+<text x="270" y="225" text-anchor="middle" fill="#4ade80" font-size="6">autoregressive — append &amp; repeat</text>
+</svg>
+</div>
+<div class="svg-caption">সম্পূর্ণ LLM পাইপলাইন: টোকেন → embedding → ৯৬টি attention স্তর → আউটপুট সম্ভাবনা → পরবর্তী টোকেন, বারবার। নয়টি কক্ষের সারমর্ম এক ছবিতে।</div>
+
 <div class="secret-box"><div class="label">দশম কক্ষ — সমন্বয়</div><div class="text">🔮 LLM = টোকেন + embedding + attention + training + generation। বুঝো, নিয়ন্ত্রণ করো।<br><small>শুধু ব্যবহারকারী নও — ইঞ্জিনিয়ার। এটাই LLM দর্শন।</small></div></div>`
 });

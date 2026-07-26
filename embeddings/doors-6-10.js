@@ -541,7 +541,37 @@ THE FUNDAMENTAL LIMIT:
   → combine with BM২৫, cross-encoder, LLM</div>
 
 <div class="dialogue">তাওয়াদু — humility, modesty। নবীজি (সা) বলেছেন — "যার অন্তরে সরিষা পরিমাণ অহংকার আছে, সে জান্নাতে যাবে না।" Embedding-এর সাথেও তাওয়াদু — সীমা জানা। embedding সব পারে না। যে সীমা জানে, সে সতর্ক ইঞ্জিনিয়ার। যে অহংকার করে, সে ভুল করে।</div>
-<div class="dialogue en">"Tawadu — humility, modesty. The Prophet (pbuh) said — 'No one with even a mustard seed of arrogance enters Paradise.' With embeddings too, tawadu — knowing limits. Embeddings can't do everything. One who knows limits, is a cautious engineer. One who is arrogant, errs."</div>`,
+<div class="dialogue en">"Tawadu — humility, modesty. The Prophet (pbuh) said — 'No one with even a mustard seed of arrogance enters Paradise.' With embeddings too, tawadu — knowing limits. Embeddings can't do everything. One who knows limits, is a cautious engineer. One who is arrogant, errs."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">Anisotropy — ভেক্টর সব এক দিকে জমা</text>
+  <line x1="40" y1="200" x2="540" y2="200" stroke="#334155" stroke-width="1.5"/>
+  <line x1="40" y1="200" x2="40" y2="45" stroke="#334155" stroke-width="1.5"/>
+  <circle cx="40" cy="200" r="3" fill="#64748b"/>
+  <line x1="40" y1="200" x2="430" y2="75" stroke="#475569" stroke-width="1" stroke-dasharray="2,3"/>
+  <line x1="40" y1="200" x2="440" y2="80" stroke="#475569" stroke-width="1" stroke-dasharray="2,3"/>
+  <line x1="40" y1="200" x2="420" y2="68" stroke="#475569" stroke-width="1" stroke-dasharray="2,3"/>
+  <line x1="40" y1="200" x2="450" y2="85" stroke="#475569" stroke-width="1" stroke-dasharray="2,3"/>
+  <line x1="40" y1="200" x2="425" y2="72" stroke="#475569" stroke-width="1" stroke-dasharray="2,3"/>
+  <circle cx="430" cy="75" r="5" fill="#ef4444"/>
+  <text x="438" y="70" fill="#fca5a5" font-size="8">"doctor" cos≈০.৮২</text>
+  <circle cx="440" cy="80" r="5" fill="#fbbf24"/>
+  <text x="448" y="92" fill="#fcd34d" font-size="8">"pizza" cos≈০.৭৯</text>
+  <circle cx="420" cy="68" r="5" fill="#22d3ee"/>
+  <text x="345" y="58" fill="#7dd3fc" font-size="8">"river" cos≈০.৮১</text>
+  <circle cx="450" cy="85" r="5" fill="#a855f7"/>
+  <text x="458" y="104" fill="#c084fc" font-size="8">"code" cos≈০.৭৭</text>
+  <circle cx="425" cy="72" r="5" fill="#22c55e"/>
+  <text x="338" y="74" fill="#4ade80" font-size="8">"music" cos≈০.৮০</text>
+  <path d="M 60 150 A 200 200 0 0 1 470 78" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="180" y="145" fill="#fca5a5" font-size="8" font-weight="bold">সংকীর্ণ শঙ্কু</text>
+  <rect x="30" y="218" width="520" height="24" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="290" y="234" text-anchor="middle" fill="#94a3b8" font-size="7">সব ভেক্টর এক দিকে — সব cosine similarity উঁচু (০.৭+)। সম্পর্কিত ও অসম্পর্কিত আলাদা করা কঠিন। সমাধান: normalization, whitening।</text>
+</svg>
+</div>
+<div class="svg-caption">Anisotropy — সব ভেক্টর একটি সংকীর্ণ শঙ্কুতে জমা হয়, ফলে সব cosine similarity উঁচু (০.৭+)। সম্পর্কিত ও অসম্পর্কিত আলাদা করা কঠিন। এটাই embedding-এর একটি লুকানো সীমা — সতর্কতার সাথে ব্যবহার করো।</div>`,
   senior:{
     title:"Challenge Mitigation — Quick Fixes",
     body:`<p><strong>Bias:</strong> Test with WEAT। Debias if needed। Audit search results for demographic fairness।</p><p><strong>Domain gap:</strong> Fine-tune on domain data (Door ৫)। ২০%+ accuracy boost typical।</p><p><strong>Multilingual:</strong> Use BGE-multilingual বা Cohere embed-multilingual। Test per-language quality।</p><p><strong>Anisotropy:</strong> Normalize embeddings। Use whitening transform।</p><p><strong>Temporal:</strong> Retrain embeddings every ৬-১২ months। Track concept drift।</p><p><strong>Evaluation:</strong> Build YOUR domain eval set। Don't trust MTEB alone।</p>`
@@ -657,6 +687,48 @@ THE EMBEDDING MINDSET:
   → RAG, search, classification — all built here</div>
 
 <div class="verse">"তিনি শিখিয়েছেন কলমের মাধ্যমে। শিখিয়েছেন মানুষকে যা সে জানত না।"<br>— কুরআন ৯৬:৪-৫<br><br>Embedding হলো কলমের গাণিতিক রূপ — শব্দকে সংখ্যায়, সংখ্যাকে জ্যামিতিতে, জ্যামিতিকে অর্থে। যে এই জ্যামিতি বোঝে, সে AI-এর ভিত্তি বোঝে। অর্থের জ্যামিতি — সবচেয়ে সুন্দর গাণিতিক ধারণা।</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">সম্পূর্ণ Embedding Architecture — নয়টি স্তর</text>
+  <rect x="30" y="40" width="120" height="32" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="90" y="60" text-anchor="middle" fill="#7dd3fc" font-size="8">১. Model</text>
+  <rect x="30" y="78" width="120" height="32" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="90" y="98" text-anchor="middle" fill="#7dd3fc" font-size="8">২. Encoding</text>
+  <rect x="30" y="116" width="120" height="32" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="90" y="136" text-anchor="middle" fill="#7dd3fc" font-size="8">৩. Dimensions</text>
+  <rect x="30" y="154" width="120" height="32" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="90" y="174" text-anchor="middle" fill="#7dd3fc" font-size="8">৪. Vector DB</text>
+  <line x1="150" y1="56" x2="180" y2="56" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB10a)"/>
+  <line x1="150" y1="94" x2="180" y2="94" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB10a)"/>
+  <line x1="150" y1="132" x2="180" y2="132" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB10a)"/>
+  <line x1="150" y1="170" x2="180" y2="170" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB10a)"/>
+  <rect x="185" y="38" width="110" height="152" rx="6" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="240" y="58" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">৫. Search</text>
+  <text x="240" y="74" text-anchor="middle" fill="#94a3b8" font-size="7">dense + BM২৫</text>
+  <text x="240" y="88" text-anchor="middle" fill="#94a3b8" font-size="7">+ rerank</text>
+  <text x="240" y="110" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">৬. Applications</text>
+  <text x="240" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">RAG · classify</text>
+  <text x="240" y="140" text-anchor="middle" fill="#94a3b8" font-size="7">cluster · dedup</text>
+  <text x="240" y="162" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">৭. Evaluation</text>
+  <text x="240" y="178" text-anchor="middle" fill="#94a3b8" font-size="7">MTEB + domain</text>
+  <line x1="295" y1="114" x2="335" y2="114" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB10a)"/>
+  <defs><marker id="arrEMB10a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#475569"/></marker></defs>
+  <rect x="340" y="55" width="100" height="32" rx="5" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="390" y="75" text-anchor="middle" fill="#c084fc" font-size="8">৮. Fine-tune</text>
+  <rect x="340" y="93" width="100" height="32" rx="5" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="390" y="113" text-anchor="middle" fill="#c084fc" font-size="8">৯. Safety</text>
+  <circle cx="490" cy="114" r="30" fill="none" stroke="#fbbf24" stroke-width="2.5"/>
+  <text x="490" y="110" text-anchor="middle" fill="#fcd34d" font-size="16">🌌</text>
+  <text x="490" y="128" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="bold">অর্থ</text>
+  <text x="490" y="138" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="bold">= জ্যামিতি</text>
+  <rect x="30" y="200" width="520" height="40" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="290" y="216" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">শব্দ → সংখ্যা → অর্থ → জ্ঞান</text>
+  <text x="290" y="232" text-anchor="middle" fill="#64748b" font-size="7">নয়টি স্তর একসাথে = complete embedding mastery। এটাই অর্থের জ্যামিতি — AI-এর সবচেয়ে সুন্দর গাণিতিক ধারণা।</text>
+</svg>
+</div>
+<div class="svg-caption">সম্পূর্ণ embedding architecture — নয়টি স্তর একসাথে। Model, encoding, dimensions, vector DB, search, applications, evaluation, fine-tuning, safety। শব্দ থেকে সংখ্যা, সংখ্যা থেকে অর্থ, অর্থ থেকে জ্ঞান — অর্থের জ্যামিতি।</div>
 
 <div class="secret-box"><div class="label">দশম বিন্দু — সমন্বয়</div><div class="text">🌌 Embeddings = Foundations + Models + Search + Math + Fine-tuning + Dimensions + Evaluation + Applications + Challenges।<br><small>শব্দ → সংখ্যা → অর্থ → জ্ঞান। এটাই অর্থের জ্যামিতি — AI-এর সবচেয়ে সুন্দর ধারণা।</small></div></div>`
 });

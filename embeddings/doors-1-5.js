@@ -725,7 +725,37 @@ BIAS IN EMBEDDINGS:
     → audit for bias before deployment</div>
 
 <div class="dialogue">হিসাব — calculation, computation, reckoning। কুরআনে আল্লাহ বলেন — "তোমাদের কাজের হিসাব হবে।" (৮৪:৮)। হিসাব = প্রতিটা কাজের গণনা। Vector arithmetic-ও হিসাব — অর্থের গণনা। শব্দ দিয়ে যোগ, বিয়োগ — অর্থের জ্যামিতিতে। যে গণনা করে, সে গভীর বোঝে। হিসাব — অর্থের গণনার গুণ।</div>
-<div class="dialogue en">"Hisab — calculation, computation, reckoning. Allah says — 'You will be reckoned for your deeds.' (84:8). Hisab = counting every deed. Vector arithmetic too — calculation of meaning. Addition, subtraction with words — in the geometry of meaning. One who calculates, understands deeply. Hisab — the virtue of calculating meaning."</div>`,
+<div class="dialogue en">"Hisab — calculation, computation, reckoning. Allah says — 'You will be reckoned for your deeds.' (84:8). Hisab = counting every deed. Vector arithmetic too — calculation of meaning. Addition, subtraction with words — in the geometry of meaning. One who calculates, understands deeply. Hisab — the virtue of calculating meaning."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">ভেক্টর পাটিগণিত — king − man + woman = queen</text>
+  <line x1="40" y1="200" x2="540" y2="200" stroke="#334155" stroke-width="1.5"/>
+  <line x1="40" y1="200" x2="40" y2="45" stroke="#334155" stroke-width="1.5"/>
+  <circle cx="40" cy="200" r="3" fill="#64748b"/>
+  <line x1="40" y1="200" x2="160" y2="90" stroke="#22d3ee" stroke-width="2.5" marker-end="url(#arrEMB4a)"/>
+  <text x="70" y="135" fill="#7dd3fc" font-size="9" font-weight="bold">king</text>
+  <line x1="160" y1="90" x2="240" y2="170" stroke="#fbbf24" stroke-width="2" stroke-dasharray="3,2" marker-end="url(#arrEMB4b)"/>
+  <text x="190" y="140" fill="#fcd34d" font-size="8">− man</text>
+  <line x1="240" y1="170" x2="360" y2="80" stroke="#22c55e" stroke-width="2" stroke-dasharray="3,2" marker-end="url(#arrEMB4c)"/>
+  <text x="280" y="140" fill="#4ade80" font-size="8">+ woman</text>
+  <circle cx="360" cy="80" r="6" fill="#a855f7" stroke="#c084fc" stroke-width="2"/>
+  <text x="372" y="78" fill="#c084fc" font-size="9" font-weight="bold">queen ≈</text>
+  <circle cx="430" cy="95" r="6" fill="#a855f7" stroke="#c084fc" stroke-width="2"/>
+  <text x="442" y="93" fill="#c084fc" font-size="9">queen (আসল)</text>
+  <line x1="366" y1="82" x2="424" y2="92" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="2,2"/>
+  <text x="370" y="112" fill="#4ade80" font-size="7">≈ মিল!</text>
+  <defs>
+    <marker id="arrEMB4a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker>
+    <marker id="arrEMB4b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#fbbf24"/></marker>
+    <marker id="arrEMB4c" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22c55e"/></marker>
+  </defs>
+  <rect x="30" y="218" width="520" height="24" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="290" y="234" text-anchor="middle" fill="#94a3b8" font-size="7">ভেক্টর যোগ-বিয়োগে অর্থ ধরা যায় — Paris − France + Italy ≈ Rome। অর্থের জ্যামিতিতে দিক ও দূরত্ব গুণ বহন করে।</text>
+</svg>
+</div>
+<div class="svg-caption">ভেক্টর পাটিগণিতে অর্থ ধরা যায়। king থেকে man বাদ দিলে "রাজকীয়তা" দিক পাওয়া যায়, তাতে woman যোগ করলে queen-এর কাছে পৌঁছানো যায়। শব্দ দিয়ে যোগ-বিয়োগ — অর্থের জ্যামিতি।</div>`,
   senior:{
     title:"Vector Math — Practical Uses",
     body:`<p><strong>Analogies:</strong> king - man + woman = queen। Useful for concept manipulation।</p><p><strong>Clustering:</strong> K-means on embeddings → discover topics in unstructured docs।</p><p><strong>Zero-shot classification:</strong> Embed class labels + input → nearest label = prediction। No training needed!</p><p><strong>Deduplication:</strong> cos_sim > 0.95 = near-duplicate। Fast, language-independent।</p><p><strong>Bias check:</strong> Always test for gender/race bias: "doctor - man + woman = ?"। If biased, debias or use different model।</p>`
@@ -869,7 +899,35 @@ EVALUATION:
   → don't use general benchmark (MTEB) for domain eval</div>
 
 <div class="dialogue">তাযকিয়া — purification, refinement, improvement। কুরআনে আল্লাহ বলেন — "সফল সেই ব্যক্তি যে নিজেকে পরিশুদ্ধ করে।" (৯১:৯)। পরিশুদ্ধি = সাধারণ থেকে বিশেষ। Embedding fine-tuning-ও তাযকিয়া — general থেকে domain-specific। যে পরিশুদ্ধ করে, সে নিখুঁত। তাযকিয়া — embedding পরিশুদ্ধির গুণ।</div>
-<div class="dialogue en">"Tazkiyah — purification, refinement, improvement. Allah says — 'Successful is the one who purifies themselves.' (91:9). Purification = from general to specific. Embedding fine-tuning too — from general to domain-specific. One who purifies, perfects. Tazkiyah — the virtue of embedding refinement."</div>`,
+<div class="dialogue en">"Tazkiyah — purification, refinement, improvement. Allah says — 'Successful is the one who purifies themselves.' (91:9). Purification = from general to specific. Embedding fine-tuning too — from general to domain-specific. One who purifies, perfects. Tazkiyah — the virtue of embedding refinement."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">Contrastive Learning — কাছে টানো, দূরে ঠেলো</text>
+  <circle cx="290" cy="120" r="7" fill="#22d3ee" stroke="#7dd3fc" stroke-width="2"/>
+  <text x="298" y="118" fill="#7dd3fc" font-size="8" font-weight="bold">anchor</text>
+  <text x="298" y="128" fill="#94a3b8" font-size="7">"diabetes treatment"</text>
+  <circle cx="150" cy="70" r="6" fill="#22c55e" stroke="#4ade80" stroke-width="2"/>
+  <text x="90" y="60" fill="#4ade80" font-size="8" font-weight="bold">positive ✓</text>
+  <text x="60" y="72" fill="#94a3b8" font-size="7">"how to treat diabetes"</text>
+  <line x1="155" y1="75" x2="283" y2="117" stroke="#22c55e" stroke-width="2" marker-end="url(#arrEMB5a)"/>
+  <text x="180" y="88" fill="#4ade80" font-size="7">টানো ←</text>
+  <circle cx="460" cy="170" r="6" fill="#ef4444" stroke="#fca5a5" stroke-width="2"/>
+  <text x="470" y="168" fill="#fca5a5" font-size="8" font-weight="bold">negative ✗</text>
+  <text x="470" y="180" fill="#94a3b8" font-size="7">"diabetes symptoms"</text>
+  <line x1="453" y1="165" x2="297" y2="123" stroke="#ef4444" stroke-width="2" marker-end="url(#arrEMB5b)"/>
+  <text x="360" y="155" fill="#fca5a5" font-size="7">→ ঠেলো</text>
+  <defs>
+    <marker id="arrEMB5a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22c55e"/></marker>
+    <marker id="arrEMB5b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ef4444"/></marker>
+  </defs>
+  <rect x="20" y="200" width="540" height="38" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="290" y="216" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">Loss: minimize d(anchor, positive) · maximize d(anchor, negative)</text>
+  <text x="290" y="230" text-anchor="middle" fill="#64748b" font-size="7">Hard negative (সম্পর্কিত কিন্তু ভুল) দিয়ে শিখলে model সূক্ষ্ম পার্থক্য বোঝে — ৫-১৫% উন্নতি।</text>
+</svg>
+</div>
+<div class="svg-caption">Contrastive learning: anchor-এর মতো positive কাছে টানা হয়, negative দূরে ঠেলা হয়। Hard negative (যেমন "diabetes symptoms" — সম্পর্কিত কিন্তু ভুল) দিয়ে শিখলে model সূক্ষ্ম পার্থক্য বোঝে। এটাই fine-tuning-এর মূল।</div>`,
   senior:{
     title:"Fine-tune or Not? — Decision",
     body:`<p><strong>Don't fine-tune if:</strong> General model gives >৮০% Recall@৫। English general domain। Quick prototype।</p><p><strong>Fine-tune if:</strong> Domain-specific (medical/legal/code)। Recall@৫ < ৭০%। Production-critical। Special vocabulary।</p><p><strong>Quick recipe:</strong> ১০K (query, positive, negative) triplets → SentenceTransformers → BGE-large → train ২ hours on A100। ~$৬ cost। Test before/after।</p><p><strong>Hard negatives:</strong> Most important! ৫-১৫% accuracy boost from good hard negatives alone।</p>`
