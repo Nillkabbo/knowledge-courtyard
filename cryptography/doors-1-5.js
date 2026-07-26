@@ -1,428 +1,368 @@
 const doors = [];
 
-// ═══════════════════════════════════════════
-// DOOR 1 — The Twin Locks (Symmetric vs Asymmetric)
-// ═══════════════════════════════════════════
 doors.push({
   num: 1,
   icon: "🔐",
-  color: "#0ea5e9",
-  tagline: "দুই তালা — Two Locks",
-  name: "The Twin Locks",
-  secret: "AES = এক তালার চাবি (দ্রুত)। RSA = দুই চাবি (ধীর)। TLS দুটো একসাথে ব্যবহার করে।",
-  story: `<p class="scene-setting">তোমার একটা গচ্ছিত রশিদ পাঠাতে হবে। কিন্তু রাস্তায় চোর। তুমি একটা বাক্সে ভরে তালা দিলে। কিন্তু সমস্যা — চাবি কীভাবে পাঠাবে? চাবি পাঠালেই চোর নেবে। এটাই symmetric encryption এর সমস্যা — AES দ্রুত কিন্তু চাবি share করা কঠিন। সমাধান? Asymmetric — দুই চাবি! একটা পাবলিক (যে কেউ তালা লাগাতে পারে), একটা প্রাইভেট (শুধু তুমি খুলতে পারো)।</p>
+  color: "#dc2626",
+  name: "দুই তালার রহস্য",
+  subtitle: "The Twin Locks",
+  tech: "Symmetric vs Asymmetric Encryption — AES (Daemen-Rijmen 2001), RSA (Rivest-Shamir-Adleman 1977), TLS hybrid",
+  spirit: "হিফযুল আমান — আমানত রক্ষা, প্রতিটি বার্তার নিরাপত্তা",
+  secret: "AES = এক চাবির তালা (দ্রুত), RSA = দুই চাবি (নিরাপদ)। TLS দুটো মেলায় — RSA দিয়ে চাবি আদান, AES দিয়ে ডেটা এনক্রিপ্ট।",
+  recall: {
+    q: " TLS কেন শুধু AES বা শুধু RSA ব্যবহার করে না?",
+    qen: "Why doesn't TLS use only AES or only RSA?",
+    a: "AES দ্রুত কিন্তু চাবি শেয়ার কঠিন। RSA চাবি শেয়ার পারে কিন্তু ধীর। Hybrid = RSA দিয়ে AES key exchange, তারপর AES দিয়ে data।",
+    aen: "AES is fast but key sharing is hard. RSA can share keys but is slow. Hybrid = RSA for key exchange, AES for data."
+  },
+  story: `<p class="scene-setting">তুমি একটি মূল্যবান রশিদ পাঠাচ্ছো। রাস্তায় চোর। তুমি বাক্সে ভরে তালা দিলে। কিন্তু — চাবি কীভাবে পাঠাবে? চাবি পাঠালেই চোর নেবে। এটাই symmetric encryption-এর সমস্যা। AES দ্রুত — nanosecond-এ এনক্রিপ্ট। কিন্তু চাবি শেয়ার করা দুঃসাধ্য।</p>
+<p class="scene-setting en">You send a valuable receipt. Thieves on the road. You lock the box. But — how to send the key? Send it and thieves steal it. This is the symmetric encryption problem. AES is fast — encrypts in nanoseconds. But key sharing is nearly impossible.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <defs><marker id="arrT1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0ea5e9"/></marker></defs>
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔐 Hybrid Encryption: AES + RSA = TLS</text>
+<div class="dialogue"><strong>তুমি:</strong> তাহলে উপায় কী? চাবি ছাড়া তালা খোলে না!</div>
+<div class="dialogue en"><strong>You:</strong> Then what's the solution? A lock needs a key!</div>
 
-  <!-- Symmetric (left) -->
-  <rect x="20" y="50" width="250" height="130" rx="10" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
-  <text x="145" y="72" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">Symmetric (AES)</text>
-  <text x="145" y="92" text-anchor="middle" fill="#86efac" font-size="9">এক চাবি দিয়ে তালা আর খোলা</text>
-  <rect x="60" y="105" width="60" height="25" rx="4" fill="#1e293b" stroke="#4ade80" stroke-width="1.5"/>
-  <text x="90" y="121" text-anchor="middle" fill="#4ade80" font-size="9">🔑 Key</text>
-  <text x="145" y="121" text-anchor="middle" fill="#4ade80" font-size="11">⇌</text>
-  <rect x="170" y="105" width="60" height="25" rx="4" fill="#1e293b" stroke="#4ade80" stroke-width="1.5"/>
-  <text x="200" y="121" text-anchor="middle" fill="#4ade80" font-size="9">🔒 Lock</text>
-  <text x="145" y="145" text-anchor="middle" fill="#86efac" font-size="8">⚡ Nanoseconds — VERY FAST</text>
-  <text x="145" y="162" text-anchor="middle" fill="#f87171" font-size="8">❌ Key কীভাবে share করবে?</text>
+<div class="dialogue"><strong>দুর্গ-রক্ষক কামরান:</strong> ১৯৭৭ সালে MIT-তে তিনজন — Rivest, Shamir, Adleman — একটি বিপ্লবাত্মক ধারণা দিলেন। দুটো চাবি! একটা পাবলিক — যে কেউ তালা লাগাতে পারে। একটা প্রাইভেট — শুধু তুমি খুলতে পারো। যেমন একটা ডাকবাক্স — যে কেউ চিঠি ফেলতে পারে, কিন্তু শুধু তুমি খুলতে পারো। এটাই RSA — asymmetric encryption। ধীর, কিন্তু চাবি শেয়ারের সমস্যা সমাধান হয়। TLS বলে — প্রথমে RSA দিয়ে AES চাবি আদান, তারপর AES দিয়ে সব ডেটা। দুটোরই সেরা দিক।</div>
+<div class="dialogue en"><strong>Fortress Keeper Kamran:</strong> In 1977, three at MIT — Rivest, Shamir, Adleman — proposed a revolutionary idea. Two keys! One public — anyone can lock. One private — only you can unlock. Like a mailbox — anyone can drop a letter, only you can open it. This is RSA — asymmetric encryption. Slow, but solves key sharing. TLS: RSA for AES key exchange, then AES for all data.</div>
 
-  <!-- Asymmetric (right) -->
-  <rect x="310" y="50" width="250" height="130" rx="10" fill="#0f172a" stroke="#f97316" stroke-width="2"/>
-  <text x="435" y="72" text-anchor="middle" fill="#fb923c" font-size="11" font-weight="700">Asymmetric (RSA/ECC)</text>
-  <text x="435" y="92" text-anchor="middle" fill="#fdba74" font-size="9">পাবলিক চাবি তালা লাগায়, প্রাইভেট খোলে</text>
-  <rect x="335" y="105" width="80" height="25" rx="4" fill="#1e293b" stroke="#fb923c" stroke-width="1.5"/>
-  <text x="375" y="121" text-anchor="middle" fill="#fb923c" font-size="8">🔓 Public</text>
-  <text x="435" y="121" text-anchor="middle" fill="#fb923c" font-size="11">→</text>
-  <rect x="455" y="105" width="80" height="25" rx="4" fill="#1e293b" stroke="#fb923c" stroke-width="1.5"/>
-  <text x="495" y="121" text-anchor="middle" fill="#fb923c" font-size="8">🔑 Private</text>
-  <text x="435" y="145" text-anchor="middle" fill="#fdba74" font-size="8">🐢 Microseconds — SLOW</text>
-  <text x="435" y="162" text-anchor="middle" fill="#4ade80" font-size="8">✅ Key share করার দরকার নেই!</text>
+<div class="callout info"><span class="co-icon">📐</span><div><strong>দুই ধরনের এনক্রিপশন:</strong><br>
+<strong>Symmetric (AES):</strong> এক চাবি দিয়ে lock ও unlock। দ্রুত (~GB/s)। সমস্যা: চাবি শেয়ার কীভাবে?<br>
+<strong>Asymmetric (RSA):</strong> দুই চাবি। Public = lock, Private = unlock। নিরাপদ চাবি আদান। ধীর (~KB/s)।<br>
+<strong>Hybrid (TLS):</strong> RSA দিয়ে AES চাবি পাঠাও → AES দিয়ে ডেটা এনক্রিপ্ট। দুটোরই সেরা!<br>
+<strong>ECC:</strong> ২৫৬-bit ECC = ৩০৭২-bit RSA। ছোট চাবি, একই নিরাপত্তা।</div></div>
 
-  <!-- Hybrid solution -->
-  <rect x="80" y="200" width="420" height="120" rx="10" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="290" y="222" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="700">Hybrid = TLS</text>
-  <text x="290" y="242" text-anchor="middle" fill="#bae6fd" font-size="9">RSA দিয়ে AES key exchange → তারপর AES দিয়ে সব data encrypt</text>
-  <rect x="100" y="255" width="120" height="22" rx="4" fill="#1e293b" stroke="#fb923c" stroke-width="1"/>
-  <text x="160" y="270" text-anchor="middle" fill="#fb923c" font-size="8">1. RSA exchange key</text>
-  <line x1="220" y1="266" x2="250" y2="266" stroke="#0ea5e9" stroke-width="2" marker-end="url(#arrT1)"/>
-  <rect x="255" y="255" width="120" height="22" rx="4" fill="#052e16" stroke="#4ade80" stroke-width="1"/>
-  <text x="315" y="270" text-anchor="middle" fill="#4ade80" font-size="8">2. AES encrypt data</text>
-  <line x1="375" y1="266" x2="405" y2="266" stroke="#0ea5e9" stroke-width="2" marker-end="url(#arrT1)"/>
-  <rect x="410" y="255" width="80" height="22" rx="4" fill="#052e16" stroke="#4ade80" stroke-width="1"/>
-  <text x="450" y="270" text-anchor="middle" fill="#4ade80" font-size="8">3. ⚡ Fast!</text>
-  <text x="290" y="300" text-anchor="middle" fill="#7dd3fc" font-size="8" font-style="italic">Best of both worlds: RSA's security + AES's speed</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Hybrid encryption। RSA ধীর কিন্তু key share করতে পারে। AES দ্রুত কিন্তু key share করতে পারে না। TLS দুটো একসাথে ব্যবহার করে।</div>
+<div class="code-block">— OpenSSL: AES ও RSA বাস্তবে —
+  # AES-256 এনক্রিপ্ট
+  $ openssl enc -aes-256-cbc -salt -in secret.txt -out secret.enc
+  enter aes-256-cbc password: ********
 
-<div class="code-block">
-<pre><code># AES (symmetric) — এক চাবিতে lock + unlock, দ্রুত ⚡
-$ echo "LedgerPilot-secret" | openssl enc -aes-256-cbc -pbkdf2 -pass pass:mykey -base64
-U2FsdGVkX19+q8m4j3bN2wY5T9pVxR1cHsK6fL0aB3E=
+  # RSA keypair তৈরি
+  $ openssl genrsa -out private.pem 2048
+  $ openssl rsa -in private.pem -pubout -out public.pem
 
-$ echo "U2FsdGVkX19+q8m4j3bN2wY5T9pVxR1cHsK6fL0aB3E=" | \
-    openssl enc -aes-256-cbc -d -pbkdf2 -pass pass:mykey -base64
-LedgerPilot-secret
+  # RSA দিয়ে এনক্রিপ্ট (public key দিয়ে)
+  $ openssl rsautl -encrypt -pubin -inkey public.pem \
+      -in aes_key.txt -out aes_key.enc
 
-# RSA (asymmetric) — দুই চাবি, ধীর কিন্তু নিরাপদ key exchange 🔑
-$ openssl genrsa -out private.pem 2048   # প্রাইভেট চাবি
-$ openssl rsa -in private.pem -pubout -out public.pem   # পাবলিক চাবি
-writing RSA key
+  # RSA দিয়ে ডিক্রিপ্ট (private key দিয়ে)
+  $ openssl rsautl -decrypt -inkey private.pem -in aes_key.enc
 
-$ openssl dgst -sha256 -sign private.pem -out msg.sig &lt;(echo "invoice #42")
-$ openssl dgst -sha256 -verify public.pem -signature msg.sig &lt;(echo "invoice #42")
-Verified OK   # ✅ public key দিয়ে verify, private key দিয়ে sign
+  — AES গতি: ~৯৭৮ GB/s · RSA গতি: ~১০০০ signs/s —
+  — TLS: RSA দিয়ে AES চাবি, তারপর AES দিয়ে সব ডেটা —</div>
 
-# Speed তুলনা: AES কত দ্রুত?
-$ openssl speed -evp aes-256-cbc 2&gt;&amp;1 | tail -3
-type             16 bytes     64 bytes    256 bytes   1024 bytes
-aes-256-cbc     712345.67k   890123.45k  956789.12k  978234.56k   # মেগাবাইট/সেকেন্ড!
+<div class="verse">إِنَّ اللَّهَ يَأْمُرُكُمْ أَن تُؤَدُّوا الْأَمَانَاتِ إِلَى أَهْلِهَا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই আল্লাহ তোমাদের নির্দেশ দিচ্ছেন আমানত তার অধিকারীর কাছে পৌঁছাতে।" — কুরআন ৪:৫৮</div>
 
-# TLS = hybrid (RSA দিয়ে AES key exchange, তারপর AES দিয়ে data)
-# বাস্তবে দেখো: https:// সাইটে AES আর RSA দুটোই ব্যবহার হয়
-</code></pre>
-<span class="code-caption">🔒 AES দ্রুত (symmetric), RSA নিরাপদ key exchange (asymmetric)। TLS দুটো মেলায়।</span>
-</div>
+<p class="scene-setting">হিফযুল আমান — আমানত রক্ষা। প্রতিটি এনক্রিপ্টেড বার্তা একটি আমানত। AES সেই আমানতের তালা — দ্রুত, শক্তিশালী। RSA সেই তালার চাবি নিরাপদে পৌঁছানোর উপায়। TLS দুটোকে মেলায় — দ্রুততা ও নিরাপত্তার সমন্বয়। আল্লাহ আমানত রক্ষার নির্দেশ দিয়েছেন — ক্রিপ্টোগ্রাফি সেই নির্দেশের গাণিতিক রূপ।</p>
+<p class="scene-setting en">Hifzul Aman — safeguarding trusts. Every encrypted message is a trust. AES is the lock — fast, strong. RSA is the secure delivery of the key. TLS combines both — speed and security. Allah commands safeguarding trusts — cryptography is the mathematical form of that command.</p>
 
-<div class="dialogue"><strong>ক্রিপ্টোগ্রাফার:</strong> AES এবং RSA দুটোই দরকার। AES একটা চাবি দিয়ে lock আর unlock করে — দ্রুত nanosecond এ। কিন্তু সমস্যা হল চাবি কীভাবে পাঠাবে? RSA এই সমস্যা সমাধান করে — দুটো চাবি। Public key দিয়ে যে কেউ lock করতে পারে, কিন্তু শুধু private key দিয়ে unlock হয়। ধীর কিন্তু নিরাপদ key exchange। TLS বলে — প্রথমে RSA দিয়ে AES key exchange করো, তারপর AES দিয়ে সব data encrypt করো। দুটোরই সেরা দিক! ECC (Elliptic Curve) হল RSA এর ছোট ভাই — 256-bit ECC = 3072-bit RSA।</div>`,
-  recall: [
-    { q: "কেন TLS শুধু AES বা শুধু RSA ব্যবহার করে না?", a: "AES দ্রুত কিন্তু key share করা কঠিন। RSA key share করতে পারে কিন্তু ধীর। Hybrid = RSA দিয়ে key exchange, AES দিয়ে data encrypt।" },
-    { q: "256-bit ECC key = কোন RSA key?", a: "3072-bit RSA। ECC তে Elliptic Curve Discrete Logarithm Problem ধীরে সমাধান করা যায়, তাই ছোট key এ same security।" },
-  ]
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৭ (Networks) Door ৯ (TLS):</strong> TLS handshake শিখেছিলে — এখন দেখো সেই handshake-এর পেছনে কোন এনক্রিপশন। Book ৪৮ (Discrete Math) Door ৯: Fermat-এর সূত্র — RSA-এর গাণিতিক ভিত্তি।</div></div>
+
+<div class="secret-box">🔐 <strong>দুই তালা — AES দ্রুত, RSA নিরাপদ।</strong> TLS দুটো মেলায়। কিন্তু চাবি শেয়ার ছাড়াও একটি সমস্যা আছে — দুজন যদি একসাথে চাবি বানাতে চায়? কেউ চাবি পাঠাবে না — দুজন মিলে বানাবে। সেই জাদু — পরের দরজায়।</div>`,
+  senior: {
+    title: "Symmetric vs Asymmetric এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">AES (2001)</td><td>Symmetric — এক চাবি, দ্রুত</td></tr>
+<tr><td class="hl">RSA (1977)</td><td>Asymmetric — দুই চাবি, নিরাপদ</td></tr>
+<tr><td class="hl">TLS Hybrid</td><td>RSA দিয়ে key exchange, AES দিয়ে data</td></tr>
+<tr><td class="hl">ECC</td><td>২৫৬-bit = ৩০৭২-bit RSA — ছোট চাবি</td></tr>
+<tr><td class="hl">AES গতি</td><td>~৯৭৮ GB/s — hardware accelerated</td></tr>
+<tr><td class="hl">RSA গতি</td><td>~১০০০ signs/s — ধীর কিন্তু নিরাপদ</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 2 — Paint in Public (Diffie-Hellman)
-// ═══════════════════════════════════════════
 doors.push({
   num: 2,
   icon: "🎨",
-  color: "#f97316",
-  tagline: "পাবলিকে রং মেশানো — Paint in Public",
-  name: "Paint in Public",
-  secret: "Diffie-Hellman: দুজন পাবলিক চ্যানেলে গোপন key বানায়। সবাই শুনছে কিন্তু কেউ পাবে না।",
-  story: `<p class="scene-setting">তুমি আর তোমার বন্ধু একটা গোপন রঙ বানাতে চাও। কিন্তু সবাই শুনছে। কীভাবে? প্রথমে দুজন একটা পাবলিক রঙে রাজি হও — হলুদ। তারপর প্রত্যেকে নিজের গোপন রঙ বেছে নাও। হলুদের সাথে মেশাও, পাবলিকে বিনিময় করো। তারপর নিজের গোপন রঙ আবার মেশাও — দুজনের ফলাফল একই! চোর শুধু মধ্যবর্তী রঙ দেখে, আনমিক্স করতে পারে না।</p>
+  color: "#dc2626",
+  name: "পাবলিকে রঙ মেশানো",
+  subtitle: "Paint in Public",
+  tech: "Diffie-Hellman Key Exchange — Diffie-Hellman 1976, discrete logarithm, paint analogy, ECDH, forward secrecy",
+  spirit: "সিরর — গোপন, পাবলিক চোখের সামনে গোপনীয়তা",
+  secret: "Diffie-Hellman: দুজন পাবলিক চ্যানেলে গোপন চাবি বানায়। সবাই শুনছে কিন্তু কেউ পাবে না। রঙ মেশানোর মতো — আনমিক্স করা যায় না।",
+  recall: {
+    q: " Diffie-Hellman কীভাবে কাজ করে? কেন চোর পাবে না?",
+    qen: "How does Diffie-Hellman work? Why can't the eavesdropper get the key?",
+    a: "দুজন পাবলিক সংখ্যা (p, g) রাজি হয়। প্রত্যেকে গোপন সংখ্যা (a, b) বেছে নেয়। পাবলিকে g^a ও g^b পাঠায়। গোপন চাবি = g^(ab)। চোর g^a ও g^b দেখে কিন্তু discrete log সমাধান কঠিন।",
+    aen: "Two agree on public (p, g). Each picks private (a, b). Exchange g^a and g^b publicly. Shared secret = g^(ab). Eavesdropper sees g^a, g^b but discrete log is hard."
+  },
+  story: `<p class="scene-setting">১৯৭৬, স্ট্যানফোর্ড। Whitfield Diffie ও Martin Hellman একটি অসম্ভব কল্পনা করছেন। দুজন মানুষ একটি পাবলিক রেডিওতে কথা বলছে — সবাই শুনছে। কিন্তু তারা একটি গোপন চাবি বানাবে যা কেউ পাবে না। কীভাবে? রঙ মেশানোর মতো। হলুদ পাবলিক। প্রত্যেকে গোপন রঙ মেশায়। বিনিময় করে। আবার মেশায়। দুজনের ফল একই — কিন্তু চোর আনমিক্স করতে পারে না!</p>
+<p class="scene-setting en">1976, Stanford. Whitfield Diffie and Martin Hellman imagine the impossible. Two people on public radio — everyone listens. Yet they create a secret key no one can get. How? Like mixing paint. Yellow is public. Each adds a secret color. Exchange. Mix again. Both get the same result — but the thief cannot un-mix!</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎨 Diffie-Hellman: Shared Secret in Public</text>
+<div class="dialogue"><strong>রঙ-কারিগর জাইনাব:</strong> কামরান (Door ১) তোমাকে AES ও RSA শিখিয়েছেন। কিন্তু একটি সমস্যা — RSA-তে একজন চাবি বানায়, অন্যজন গ্রহণ করে। যদি দুজন একসাথে চাবি বানাতে চায়? কেউ চাবি পাঠাবে না? Diffie-Hellman এর উত্তর: গাণিতিক রঙ। g^a ও g^b পাবলিকে যায়। কিন্তু g^(ab) কেউ হিসাব করতে পারে না — discrete logarithm সমস্যা। একমুখী ফাংশন — সহজে করা যায়, উল্টে কঠিন।</div>
+<div class="dialogue en"><strong>Color Artisan Zainab:</strong> Kamran (Door 1) taught you AES and RSA. But one problem — in RSA, one creates the key, the other receives. What if both want to create together? Diffie-Hellman: mathematical paint. g^a and g^b go public. But g^(ab) cannot be computed — discrete log problem. One-way function — easy to do, hard to reverse.</div>
 
-  <!-- Step 1: Public agreement -->
-  <circle cx="290" cy="60" r="18" fill="#fbbf24" stroke="#fcd34d" stroke-width="2"/>
-  <text x="290" y="64" text-anchor="middle" fill="#451a03" font-size="8" font-weight="700">Public</text>
-  <text x="290" y="92" text-anchor="middle" fill="#fcd34d" font-size="9">Both agree: 🟡 Yellow (public)</text>
+<div class="callout info"><span class="co-icon">🎨</span><div><strong>Diffie-Hellman গাণিতিক প্রক্রিয়া:</strong><br>
+<strong>পাবলিক:</strong> p (বড় মৌলিক সংখ্যা), g (generator)<br>
+<strong>Alice গোপন:</strong> a → পাবলিকে পাঠায় A = g^a mod p<br>
+<strong>Bob গোপন:</strong> b → পাবলিকে পাঠায় B = g^b mod p<br>
+<strong>গোপন চাবি:</strong> Alice হিসাব করে B^a = g^(ba), Bob হিসাব করে A^b = g^(ab)<br>
+<strong>গাণিতিক সত্য:</strong> g^(ba) = g^(ab) — একই! ✅<br>
+<strong>চোরের সমস্যা:</strong> g^a ও g^b জানে, কিন্তু a বা b বের করা = discrete log = অসম্ভব</div></div>
 
-  <!-- Alice side -->
-  <text x="120" y="120" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">Alice</text>
-  <circle cx="120" cy="140" r="15" fill="#dc2626" stroke="#f87171" stroke-width="2"/>
-  <text x="120" y="144" text-anchor="middle" fill="#fee2e2" font-size="7">Secret</text>
-  <text x="120" y="170" text-anchor="middle" fill="#fca5a5" font-size="8">🔴 Red (private)</text>
+<div class="code-block">— Python: Diffie-Hellman সিমুলেশন —
 
-  <text x="120" y="195" text-anchor="middle" fill="#e2e8f0" font-size="9">🟡 + 🔴 = 🟠 Orange-tan</text>
-  <rect x="80" y="205" width="80" height="25" rx="4" fill="#7c2d12" stroke="#fb923c" stroke-width="1.5"/>
-  <text x="120" y="221" text-anchor="middle" fill="#fdba74" font-size="8">→ Send publicly</text>
+  # সহজ উদাহরণ (বাস্তবে p হাজার ডিজিট)
+  p = 23   # public prime (বাস্তবে 2048-bit)
+  g = 5    # public generator
 
-  <!-- Bob side -->
-  <text x="460" y="120" text-anchor="middle" fill="#60a5fa" font-size="10" font-weight="700">Bob</text>
-  <circle cx="460" cy="140" r="15" fill="#2563eb" stroke="#60a5fa" stroke-width="2"/>
-  <text x="460" y="144" text-anchor="middle" fill="#dbeafe" font-size="7">Secret</text>
-  <text x="460" y="170" text-anchor="middle" fill="#93c5fd" font-size="8">🔵 Cyan (private)</text>
+  # Alice-এর গোপন সংখ্যা
+  a = 6                    # private!
+  A = pow(g, a, p)         # public: g^a mod p = 8
 
-  <text x="460" y="195" text-anchor="middle" fill="#e2e8f0" font-size="9">🟡 + 🔵 = 🩵 Light-blue</text>
-  <rect x="420" y="205" width="80" height="25" rx="4" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5"/>
-  <text x="460" y="221" text-anchor="middle" fill="#93c5fd" font-size="8">← Send publicly</text>
+  # Bob-এর গোপন সংখ্যা
+  b = 15                   # private!
+  B = pow(g, b, p)         # public: g^b mod p = 19
 
-  <!-- Exchange arrows -->
-  <line x1="160" y1="217" x2="420" y2="217" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <text x="290" y="235" text-anchor="middle" fill="#64748b" font-size="8" font-style="italic">Eavesdropper sees: Yellow, Orange-tan, Light-blue</text>
+  # Alice ও Bob পাবলিকে A ও B বিনিময় করে
+  # এখন প্রত্যেকে গোপন চাবি হিসাব করে:
+  alice_secret = pow(B, a, p)  # B^a mod p = 2
+  bob_secret   = pow(A, b, p)  # A^b mod p = 2
 
-  <!-- Final result -->
-  <rect x="80" y="255" width="200" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="180" y="275" text-anchor="middle" fill="#4ade80" font-size="9">Alice: 🩵 + 🔴 = 🟤</text>
-  <text x="180" y="292" text-anchor="middle" fill="#86efac" font-size="8">Shared secret!</text>
+  print(alice_secret == bob_secret)  # True! ✅
+  print(alice_secret)                # 2 — shared secret!
 
-  <rect x="300" y="255" width="200" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="400" y="275" text-anchor="middle" fill="#4ade80" font-size="9">Bob: 🟠 + 🔵 = 🟤</text>
-  <text x="400" y="292" text-anchor="middle" fill="#86efac" font-size="8">SAME! ✅</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Diffie-Hellman paint analogy। পাবলিক রঙ + গোপন রঙ মেশাও, বিনিময় করো, আবার মেশাও — দুজনের ফলাফল একই। চোর আনমিক্স করতে পারে না।</div>
+  # চোর p=২৩, g=৫, A=৮, B=১৯ জানে
+  # কিন্তু a বা b বের করতে হলে discrete log:
+  # g^x ≡ 8 (mod 23) — x কত? brute force লাগে
+  # বাস্তব p = ২০৪৮-bit → অসম্ভব!</div>
 
-<div class="code-block">
-<pre><code># Diffie-Hellman key exchange বাস্তবে — openssl দিয়ে DH parameters
-$ openssl dhparam -out dhparams.pem 2048
-Generating DH parameters, 2048 bit long safe prime
-......+++
-DH parameters appear to be ok.
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Forward Secrecy:</strong> যদি পরে কারো private key চুরি হয়, পুরোনো সেশন ডিক্রিপ্ট হয়ে যায় না — যদি Diffie-Hellman ephemeral (DHE) ব্যবহার করা হয়। প্রতিটি সেশনে নতুন a, b। পুরোনো চাবি আলাদা। TLS 1.3-এ DHE বাধ্যতামূলক।</div></div>
 
-# প্রতিটা পক্ষ নিজের DH keypair তৈরি করে (Alice আর Bob আলাদা)
-$ openssl genpkey -paramfile dhparams.pem -out alice_priv.pem
-$ openssl genpkey -paramfile dhparams.pem -out bob_priv.pem
+<div class="verse">وَأَسِرُّوا قَوْلَكُمْ أَوِ اجْهَرُوا بِهِ إِنَّهُ عَلِيمٌ بِذَاتِ الصُّدُورِ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"তোমরা তোমাদের কথা গোপন রাখো বা প্রকাশ করো — নিশ্চয়ই তিনি অন্তরের বিষয় জানেন।" — কুরআন ৬৭:১৩</div>
 
-# পাবলিক key বের করো (এটাই পাবলিকে বিনিময় হয় — g^a mod p)
-$ openssl pkey -in alice_priv.pem -pubout -out alice_pub.pem
-$ openssl pkey -in bob_priv.pem -pubout -out bob_pub.pem
+<p class="scene-setting">সিরর — গোপনীয়তা। Diffie-Hellman প্রকাশ্যে গোপনীয়তা সৃষ্টি করে। সবাই শুনছে, কেউ বুঝতে পারছে না। একমুখী ফাংশন — রঙ মেশানো সহজ, আনমিক্স অসম্ভব। প্রকৃতিতেও — ডিম ভাঙা সহজ, জোড়া লাগানো অসম্ভব। একমুখী গণিত।</p>
+<p class="scene-setting en">Sirr — secrecy. Diffie-Hellman creates secrecy in public. Everyone hears, no one understands. One-way function — mixing paint is easy, un-mixing is impossible. In nature too — breaking an egg is easy, un-breaking is impossible. One-way mathematics.</p>
 
-# এখন Alice তার private + Bob এর public মেশাও → shared secret!
-# (Bob তার private + Alice এর public দিয়ে একই পাবে — গণিতের জাদু)
-# OpenSSL এ এটা সরাসরি derive করা যায়:
-$ openssl pkeyutl -derive -inkey alice_priv.pem -peerkey bob_pub.pem | xxd | head -2
-00000000: 8a3f 2c71 b9d4 6e08 5a21 7fc4 9b6e d02a  .?,q..n.Z!...n.*
-00000010: 1f88 ab53 3c09 e721 6d5a 440b 8c33 f1e2  ...S&lt;..!mZD..3..
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ৯ (Number Theory):</strong> modular arithmetic ও discrete logarithm শিখেছিলে — Diffie-Hellman সেই গাণিতিক ভিত্তির প্রয়োগ! Book ৩৭ Door ৯ (TLS): TLS 1.3-এ DHE বাধ্যতামূলক।</div></div>
 
-# চোর শুধু alice_pub আর bob_pub দেখে — a বা b বের করতে পারে না
-# এটাই Discrete Logarithm Problem। TLS 1.3 এ ECDHE (Elliptic Curve DH) mandatory।
-$ openssl ecparam -list_curves | grep -E "prime256v1|X25519"
-  prime256v1: X9.62/SECG curve over a 256 bit prime field
-  X25519     : Curve25519 (RFC 7748)   # ← সবচেয়ে জনপ্রিয় ECDHE curve
-</code></pre>
-<span class="code-caption">🎨 DH: পাবলিকে গোপন key তৈরি। চোর দেখে কিন্তু আনমিক্স করতে পারে না। TLS 1.3 এ ECDHE mandatory।</span>
-</div>
-
-<div class="dialogue"><strong>হোয়াইটফিল্ড ডিফি:</strong> ১৯৭৬ সালে আমি আর মার্টিন হেলম্যান একটা বিপ্লব দেখিয়েছিলাম — দুজন মানুষ পাবলিক চ্যানেলে গোপন key বানাতে পারে। সবাই শুনছে, কেউ পাবে না। গণিতে এটা modular exponentiation। <code>g^a mod p</code> আর <code>g^b mod p</code> পাবলিকে বিনিময়। কিন্তু <code>(g^a)^b = g^(ab) = (g^b)^a</code> — দুজন একই key পায়! চোর <code>g^a</code> আর <code>g^b</code> দেখে কিন্তু <code>a</code> বা <code>b</code> বের করতে পারে না — এটাই Discrete Logarithm Problem। TLS 1.3 এ ephemeral DH (ECDHE) mandatory — প্রতি session এ নতুন key। Forward secrecy!</div>`,
-  recall: [
-    { q: "Diffie-Hellman এ চোর কেন key পায় না?", a: "কারণ Discrete Logarithm Problem সমাধান করা কঠিন। চোর g^a আর g^b দেখে কিন্তু a বা b বের করতে পারে না। তাই g^(ab) বের করতে পারে না।" },
-    { q: "Forward Secrecy কী?", a: "প্রতি session এ নতুন ephemeral key। ভবিষ্যতে private key চুরি হলেও অতীতের session গুলো ডিক্রিপ্ট করা যায় না। TLS 1.3 এ mandatory।" },
-  ]
+<div class="secret-box">🎨 <strong>Diffie-Hellman = পাবলিকে গোপন চাবি।</strong> রঙ মেশানোর মতো — সহজে মেশাও, আনমিক্স অসম্ভব। কিন্তু চাবি শেয়ার করা ছাড়াও একটি প্রশ্ন — বার্তা পরিবর্তিত হলে কী হবে? কেউ মাঝে বার্তা বদলে দিলে? সেই সুরক্ষা — পরের দরজায়।</div>`,
+  senior: {
+    title: "Diffie-Hellman এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Diffie-Hellman (1976)</td><td>পাবলিক চ্যানেলে গোপন চাবি</td></tr>
+<tr><td class="hl">One-Way Function</td><td>g^x সহজ, x বের করা কঠিন (discrete log)</td></tr>
+<tr><td class="hl">Shared Secret</td><td>g^(ab) — দুজন একই ফল</td></tr>
+<tr><td class="hl">ECDH</td><td>Elliptic Curve DH — ছোট চাবি</td></tr>
+<tr><td class="hl">Forward Secrecy</td><td>Ephemeral keys — পুরোনো সেশন সুরক্ষিত</td></tr>
+<tr><td class="hl">TLS 1.3</td><td>DHE বাধ্যতামূলক</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 3 — The Blender (Hash Functions)
-// ═══════════════════════════════════════════
 doors.push({
   num: 3,
-  icon: "🌀",
-  color: "#a855f7",
-  tagline: "ব্লেন্ডার — The Blender",
-  name: "The Blender",
-  secret: "Hash = একমুখী ব্লেন্ডার। ভেতরে দাও, ফিঙ্গারপ্রিন্ট পাও। উল্টে পাওয়া যায় না।",
-  story: `<p class="scene-setting">তুমি একটা CSV ফাইল SHA-256 ব্লেন্ডারে দাও। সে একটা ২৫৬-বিট fingerprint দেয়। একটা কমা বদলালে পুরো fingerprint বদলে যায় — avalanche effect। কিন্তু এটা একমুখী — fingerprint থেকে CSV ফেরত পাওয়া অসম্ভব। কিন্তু মনে রেখো — দ্রুত হওয়াই এটাকে password এর জন্য খারাপ করে তোলে! GPU বিলিয়ন বিলিয়ন hash করতে পারে।</p>
+  icon: "#️⃣",
+  color: "#dc2626",
+  name: "আঙুরের ছাপ",
+  subtitle: "The Grape Stamp",
+  tech: "Hash Functions — SHA-256, MD5 (deprecated), avalanche effect, file integrity, password hashing, Merkle trees",
+  spirit: "খাতিম — সিলমোহর, প্রতিটি বার্তার অদ্বিতীয় পরিচয়",
+  secret: "হ্যাশ = একমুখী সিলমোহর। যেকোনো ইনপুট → নির্দিষ্ট আউটপুট। এক বাইট বদলালে সম্পূর্ণ হ্যাশ বদলে যায় — avalanche। পাসওয়ার্ড, ফাইল যাচাই, ব্লকচেইন — সব হ্যাশের উপর।",
+  recall: {
+    q: " হ্যাশ ফাংশনের চারটি বৈশিষ্ট্য কী? avalanche effect কী?",
+    qen: "What are the four properties of hash functions? What is the avalanche effect?",
+    a: "১. নির্দিষ্ট দৈর্ঘ্য ২. একমুখী (pre-image) ৩. collision-resistant ৪. avalanche (১ বিট বদল → ৫০% বিট বদল)।",
+    aen: "1. Fixed length 2. One-way (pre-image resistant) 3. Collision-resistant 4. Avalanche (1 bit change → 50% bits change)."
+  },
+  story: `<p class="scene-setting">তুমি একটি দলিল পাঠাচ্ছো। প্রাপক নিশ্চিত হতে চায় — দলিল পরিবর্তিত হয়নি। কীভাবে? তুমি দলিলের একটি সিলমোহর পাঠাও — হ্যাশ। দলিলের প্রতিটি বাইট এই সিলে প্রতিফলিত। একটি বাইট বদলালে সিল সম্পূর্ণ ভিন্ন। এটাই avalanche effect — এক ফোঁটা রঙ পুরো পানি বদলে দেয়।</p>
+<p class="scene-setting en">You send a document. The recipient wants assurance — it hasn't changed. How? You send a seal of the document — a hash. Every byte reflected in this seal. One byte changed — completely different seal. This is the avalanche effect — one drop of color changes all the water.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌀 SHA-256: One-Way Hash Function</text>
+<div class="dialogue"><strong>সিল-কারিগর হামজা:</strong> জাইনাব (Door ২) তোমাকে চাবি শেয়ার শিখিয়েছেন। কিন্তু চাবি ছাড়াও একটি প্রয়োজন — অখণ্ডতা। বার্তা পরিবর্তিত হয়নি কীভাবে নিশ্চিত হবে? SHA-256 — ২৫৬-বিট সিলমোহর। ইনপুট যাই হোক — ১ বাইট বা ১ টেরাবাইট — আউটপুট সর্বদা ৬৪ হেক্স অক্ষর। একমুখী — হ্যাশ থেকে ইনপুট ফেরানো যায় না। Collision-resistant — দুটি ভিন্ন ইনপুটে একই হ্যাশ প্রায় অসম্ভব। এটাই ডিজিটাল আঙুরের ছাপ।</div>
+<div class="dialogue en"><strong>Seal Artisan Hamza:</strong> Zainab (Door 2) taught you key sharing. But beyond keys — integrity. How to ensure a message hasn't changed? SHA-256 — a 256-bit seal. Input can be 1 byte or 1 terabyte — output is always 64 hex characters. One-way — cannot reverse. Collision-resistant — two different inputs giving the same hash is nearly impossible.</div>
 
-  <!-- Input -->
-  <rect x="20" y="50" width="180" height="60" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="110" y="72" text-anchor="middle" fill="#d8b4fe" font-size="10" font-weight="700">Input (any size)</text>
-  <text x="110" y="90" text-anchor="middle" fill="#c084fc" font-size="8" font-family="monospace">"LedgerPilot 2026"</text>
-  <text x="110" y="102" text-anchor="middle" fill="#9333ea" font-size="7">Any length → 256 bits</text>
+<div class="code-block">— Hash বাস্তবে দেখো —
 
-  <!-- Blender -->
-  <line x1="200" y1="80" x2="230" y2="80" stroke="#a855f7" stroke-width="2"/>
-  <text x="215" y="73" text-anchor="middle" fill="#c084fc" font-size="7">SHA-256</text>
-  <rect x="230" y="50" width="120" height="60" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
-  <text x="290" y="78" text-anchor="middle" fill="#d8b4fe" font-size="20">🌀</text>
-  <text x="290" y="98" text-anchor="middle" fill="#c084fc" font-size="7">64 rounds of mixing</text>
+  $ echo -n "hello" | sha256sum
+  2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
 
-  <!-- Output -->
-  <line x1="350" y1="80" x2="380" y2="80" stroke="#a855f7" stroke-width="2"/>
-  <rect x="380" y="50" width="180" height="60" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="470" y="72" text-anchor="middle" fill="#86efac" font-size="10" font-weight="700">Hash (256-bit)</text>
-  <text x="470" y="88" text-anchor="middle" fill="#4ade80" font-size="7" font-family="monospace">a3f5b8c1...e9d2</text>
-  <text x="470" y="102" text-anchor="middle" fill="#16a34a" font-size="7">Fixed size, always 256 bits</text>
+  $ echo -n "Hello" | sha256sum
+  185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
 
-  <!-- Properties -->
-  <rect x="20" y="130" width="540" height="130" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-  <text x="290" y="152" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="700">Properties</text>
+  — একটি অক্ষর বদল (h→H) → সম্পূর্ণ ভিন্ন হ্যাশ! —
+  — এটাই avalanche effect —
 
-  <rect x="35" y="165" width="160" height="35" rx="5" fill="#052e16" stroke="#4ade80" stroke-width="1"/>
-  <text x="115" y="180" text-anchor="middle" fill="#4ade80" font-size="8">✅ Deterministic</text>
-  <text x="115" y="192" text-anchor="middle" fill="#86efac" font-size="7">Same input → same hash</text>
+  # পাসওয়ার্ড হ্যাশ (কখনো plaintext সংরক্ষণ করো না!)
+  $ python3 -c "import hashlib; print(hashlib.sha256(b'password123').hexdigest())"
+  ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4477e59f
 
-  <rect x="205" y="165" width="160" height="35" rx="5" fill="#7c2d12" stroke="#fb923c" stroke-width="1"/>
-  <text x="285" y="180" text-anchor="middle" fill="#fb923c" font-size="8">🚫 One-Way</text>
-  <text x="285" y="192" text-anchor="middle" fill="#fdba74" font-size="7">Cannot reverse hash → input</text>
+  # বাস্তব পাসওয়ার্ড হ্যাশ: Argon2 (salt + memory-hard)
+  $ pip install argon2-cffi
+  $ python3 -c "
+  from argon2 import PasswordHasher
+  ph = PasswordHasher()
+  hash = ph.hash('mypassword')
+  print(hash)  # $argon2id$v=19$m=65536,t=3,p=4$...
+  print(ph.verify(hash, 'mypassword'))  # True
+  "</div>
 
-  <rect x="375" y="165" width="160" height="35" rx="5" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
-  <text x="455" y="180" text-anchor="middle" fill="#c084fc" font-size="8">⚡ Avalanche</text>
-  <text x="455" y="192" text-anchor="middle" fill="#d8b4fe" font-size="7">1 bit change → 50% bits flip</text>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>MD5 ভাঙা হয়েছে!</strong> MD5 collision পাওয়া গেছে (২০০৪, Wang)। SHA-1-ও দুর্বল (২০১৭ SHAttered)। শুধু SHA-256 বা তার উপরের ব্যবহার করো। পাসওয়ার্ডের জন্য SHA সরাসরি ব্যবহার করো না — Argon2 বা bcrypt ব্যবহার করো (salt + slow)।</div></div>
 
-  <text x="290" y="225" text-anchor="middle" fill="#f87171" font-size="9" font-weight="600">⚠️ SHA-256 is FAST → bad for passwords! Use bcrypt/Argon2 instead.</text>
-  <text x="290" y="243" text-anchor="middle" fill="#64748b" font-size="8" font-style="italic">GPU: billions of hashes/sec. Good for integrity, bad for secrets.</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: SHA-256 = একমুখী ব্লেন্ডার। Deterministic, one-way, avalanche effect। কিন্তু দ্রুত — password এর জন্য খারাপ।</div>
+<div class="verse">خَتَمَ اللَّهُ عَلَى قُلُوبِهِمْ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"আল্লাহ তাদের হৃদয়ে মোহর দিয়েছেন।" — কুরআন ২:৭</div>
 
-<div class="code-block">
-<pre><code># SHA-256: যেকোনো ইনপুট → ৬৪ হেক্স অক্ষর (২৫৬-বিট)
-$ echo -n "LedgerPilot 2026" | shasum -a 256
-a3f5b8c1d72e9f04b1a8c5d3e6f7021948b5c7d3e9f01a2b4c5d6e7f8091a2b3  -
+<p class="scene-setting">খাতিম — সিলমোহর। হ্যাশ ফাংশন সেই সিলমোহরের ডিজিটাল রূপ। প্রতিটি বার্তার একটি অদ্বিতীয় সিল। একবার সিল দিলে অপরিবর্তনীয় — এক বাইট বদলালে সিল ভিন্ন। অখণ্ডতার গ্যারান্টি। খাতিম — চিরস্থায়ী পরিচয়।</p>
+<p class="scene-setting en">Khatim — seal. Hash functions are the digital form of that seal. Each message gets a unique seal. Once sealed, unchangeable — one byte changed, the seal differs. Guarantee of integrity. Khatim — eternal identity.</p>
 
-# একটা অক্ষর বদলাও → পুরো hash বদলে যায় (avalanche effect! ⚡)
-$ echo -n "LedgerPilot 2027" | shasum -a 256    # 2026 → 2027
-f7e2a94c1b8d305e6f2a8c4d9b1e7f305a284c6d0e1b3f5947d2a8c6e0f1b325  -
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ৫ (Combinatorics):</strong> hash collision = birthday paradox! ২²⁵⁶ আউটপুট — collision প্রায় অসম্ভব। Book ৩৭ Door ৯ (TLS): সার্টিফিকেট fingerprint = SHA-256 hash।</div></div>
 
-# md5 vs sha256 দৈর্ঘ্য তুলনা (md5 ভাঙা, শুধু checksum এ ব্যবহার)
-$ echo -n "hello" | md5sum
-b1946ac92492d2347c6235b4d2611184  -
-$ echo -n "hello" | shasum -a 256
-2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824  -
-
-# File integrity check — ডাউনলোড করা ISO এর হ্যাশ মেলাও
-$ shasum -a 256 ubuntu-24.04.iso
-9d1f5c2e8a7b3f401e6d5c2b8a9f0314d7e6b5a8c9012345f6e7d8c9b0a1f2e3  ubuntu-24.04.iso
-$ echo "9d1f5c2e8a7b3f401e6d5c2b8a9f0314d7e6b5a8c9012345f6e7d8c9b0a1f2e3  ubuntu-24.04.iso" | shasum -a 256 -c -
-ubuntu-24.04.iso: OK   # ✅ ফাইল পরিবর্তিত হয়নি
-
-# ⚠️ কিন্তু SHA-256 দ্রুত — password এর জন্য খারাপ! (পরের দরজায় দেখো)
-</code></pre>
-<span class="code-caption">🌀 Hash = একমুখী fingerprint। এক অক্ষর বদলে পুরো hash বদলায়। File integrity তে সেরা, password এ খারাপ।</span>
-</div>
-
-<div class="dialogue"><strong>ক্রিপ্টোগ্রাফার:</strong> Hash function হল একটা blender। যাই ছুঁড়ে দাও, একটা নির্দিষ্ট আকারের output পাও। একই input সবসময় একই output। কিন্তু output থেকে input বের করা অসম্ভব। আর একটা bit বদলালে ৫০% bit বদলে যায় — avalanche। এটা file integrity এর জন্য দারুণ। কিন্তু password এর জন্য? ভুল! কারণ SHA-256 দ্রুত — GPU বিলিয়ন বিলিয়ন hash করে সেকেন্ডে। Password brute force করা সহজ। তাই password এর জন্য ধীর hash দরকার — bcrypt বা Argon2।</div>`,
-  recall: [
-    { q: "Hash function এর ৩টা property কী কী?", a: "Deterministic (একই input → একই output), One-way (reverse করা যায় না), Avalanche (১ bit change → ৫০% bits flip)।" },
-    { q: "SHA-256 password এর জন্য কেন খারাপ?", a: "SHA-256 দ্রুত — GPU বিলিয়ন hash/sec করতে পারে। Password brute force করা সহজ। ধীর hash (bcrypt/Argon2) দরকার যা GPU কে ধীর করে দেয়।" },
-  ]
+<div class="secret-box">#️⃣ <strong>হ্যাশ = ডিজিটাল সিলমোহর। একমুখী। Avalanche।</strong> পাসওয়ার্ড, ফাইল যাচাই, ব্লকচেইন — সব এর উপর। কিন্তু সিল শুধু অখণ্ডতা দেয়। পরিচয় যাচাই কে দেবে? কেউ দাবি করলে — আমিই পাঠিয়েছি — তা কীভাবে প্রমাণ করবে? সেই উত্তর — পরের দরজায়।</div>`,
+  senior: {
+    title: "Hash Functions এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">SHA-256</td><td>২৫৬-বিট হ্যাশ — ৬৪ হেক্স অক্ষর</td></tr>
+<tr><td class="hl">Avalanche</td><td>১ বিট বদল → ৫০% বিট বদল</td></tr>
+<tr><td class="hl">Pre-image</td><td>হ্যাশ থেকে ইনপুট ফেরানো অসম্ভব</td></tr>
+<tr><td class="hl">Collision</td><td>দুটি ইনপুটে একই হ্যাশ — প্রায় অসম্ভব</td></tr>
+<tr><td class="hl">MD5/SHA-1</td><td>ভাঙা হয়েছে — ব্যবহার করো না</td></tr>
+<tr><td class="hl">Argon2/bcrypt</td><td>পাসওয়ার্ড হ্যাশ — salt + slow</td></tr>
+<tr><td class="hl">Merkle Tree</td><td>হ্যাশের গাছ — ব্লকচেইনে ব্যবহৃত</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 4 — The Slow Maze (Password Hashing)
-// ═══════════════════════════════════════════
 doors.push({
   num: 4,
-  icon: "🧂",
-  color: "#22c55e",
-  tagline: "ধীর গোলকধাঁধা — The Slow Maze",
-  name: "The Slow Maze",
-  secret: "bcrypt/Argon2 = ধীর + memory-hard। Salt = random seasoning। Rainbow table নস্ট।",
-  story: `<p class="scene-setting">SHA-256 দ্রুত — GPU বিলিয়ন hash করে। Password brute force সহজ। সমাধান? ধীর করো! bcrypt এবং Argon2 ইচ্ছে করে ধীর। bcrypt ১৯৯৯ সালে Blowfish cipher থেকে তৈরি। Argon2 ২০১৫ সালে memory-hard — GPU কে RAM এ আটকায়। আর salt — প্রতিটা password এ এলোমেলো seasoning মেশানো হয়। দুজনের একই password হলেও hash আলাদা। Rainbow table নস্ত!</p>
+  icon: "🔑",
+  color: "#dc2626",
+  name: "পাসওয়ার্ডের কারিগর",
+  subtitle: "The Password Craftsman",
+  tech: "Password Hashing — bcrypt (Provos 1999), Argon2 (Biryukov 2015), salt, rainbow tables, PBKDF2, memory-hard",
+  spirit: "আমান — নিরাপত্তা, দুর্বলকে শক্তিশালী করা",
+  secret: "পাসওয়ার্ড কখনো plaintext সংরক্ষণ করো না। Hash + salt + slow = নিরাপদ। bcrypt/Argon2 = memory-hard — GPU দিয়েও ধীর।",
+  recall: {
+    q: " Salt কেন দরকার? bcrypt ও SHA-256-এর পার্থক্য কী?",
+    qen: "Why is salt needed? What is the difference between bcrypt and SHA-256?",
+    a: "Salt = এলোমেলো মান যা পাসওয়ার্ডে যোগ হয় — rainbow table আক্রমণ প্রতিরোধ। SHA-256 দ্রুত (আক্রমণকারীর জন্য ভালো)। bcrypt ধীর + memory-hard (আক্রমণকারীর জন্য খারাপ)।",
+    aen: "Salt = random value added to password — prevents rainbow table attacks. SHA-256 is fast (good for attacker). bcrypt is slow + memory-hard (bad for attacker)."
+  },
+  story: `<p class="scene-setting">তুমি একটি ওয়েবসাইট বানালে। ইউজার পাসওয়ার্ড দিলো। তুমি কী করবে? যদি plaintext সংরক্ষণ করো — ডেটাবেস চুরি হলে সব পাসওয়ার্ড ফাঁস। LinkedIn ২০১২-এ এটাই করেছিল — ১৬৭ মিলিয়ন পাসওয়ার্ড ফাঁস। সমাধান? Hash করো। কিন্তু সাধারণ hash যথেষ্ট নয় — rainbow table দিয়ে ভাঙা যায়। Salt দরকার — প্রতিটি পাসওয়ার্ডে একটি অদ্বিতীয় এলোমেলো মান।</p>
+<p class="scene-setting en">You build a website. Users enter passwords. What do you do? Store plaintext — database stolen, all passwords leaked. LinkedIn did this in 2012 — 167 million passwords leaked. Solution? Hash. But simple hash is not enough — rainbow tables break them. You need salt — a unique random value per password.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🧂 Password Hashing: Salt + Slow = Safe</text>
+<div class="dialogue"><strong>পাসওয়ার্ড-কারিগর সাফওয়ান:</strong> হামজা (Door ৩) তোমাকে hash শিখিয়েছেন। কিন্তু পাসওয়ার্ডে hash যথেষ্ট নয়। কেন? SHA-256 দ্রুত — আক্রমণকারী সেকেন্ডে বিলিয়ন বিলিয়ন অনুমান করতে পারে। bcrypt ধীর — ইচ্ছাকৃতভাবে। একটি পাসওয়ার্ড হ্যাশে ~১০০ms। আক্রমণকারীর জন্য দুঃসাধ্য। Argon2 আরও শক্তিশালী — memory-hard। GPU-তেও ধীর কারণ মেমরি দরকার।</div>
+<div class="dialogue en"><strong>Password Artisan Safwan:</strong> Hamza (Door 3) taught you hashing. But hashing is not enough for passwords. Why? SHA-256 is fast — an attacker can guess billions per second. bcrypt is slow — intentionally. One password hash takes ~100ms. Hard for attackers. Argon2 is even stronger — memory-hard. Slow even on GPUs because it needs memory.</div>
 
-  <!-- SHA-256 (fast, bad) -->
-  <rect x="20" y="50" width="250" height="120" rx="10" fill="#450a0a" stroke="#dc2626" stroke-width="2"/>
-  <text x="145" y="72" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">❌ SHA-256 (Fast = Bad)</text>
-  <text x="145" y="92" text-anchor="middle" fill="#fca5a5" font-size="8">password → hash in nanoseconds</text>
-  <rect x="40" y="105" width="210" height="22" rx="4" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
-  <text x="145" y="120" text-anchor="middle" fill="#fca5a5" font-size="8" font-family="monospace">GPU: 100 billion guesses/sec</text>
-  <text x="145" y="145" text-anchor="middle" fill="#dc2626" font-size="8">Rainbow table → cracked instantly</text>
-  <text x="145" y="160" text-anchor="middle" fill="#64748b" font-size="7" font-style="italic">Even with salt, too fast to resist</text>
+<div class="code-block">— Python: পাসওয়ার্ড হ্যাশিং —
 
-  <!-- Argon2 (slow, good) -->
-  <rect x="310" y="50" width="250" height="120" rx="10" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="435" y="72" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">✅ Argon2id (Slow = Safe)</text>
-  <text x="435" y="92" text-anchor="middle" fill="#86efac" font-size="8">password → hash in 0.5 seconds</text>
-  <rect x="330" y="105" width="210" height="22" rx="4" fill="#1e293b" stroke="#4ade80" stroke-width="1"/>
-  <text x="435" y="120" text-anchor="middle" fill="#86efac" font-size="8" font-family="monospace">GPU: only 2 guesses/sec (64MB each!)</text>
-  <text x="435" y="145" text-anchor="middle" fill="#22c55e" font-size="8">Memory-hard → GPU VRAM exhausted</text>
-  <text x="435" y="160" text-anchor="middle" fill="#64748b" font-size="7" font-style="italic">RFC 9106: 64MB RAM, 3 iterations</text>
+  # ❌ ভুল উপায় (plaintext বা SHA-256)
+  import hashlib
+  hash = hashlib.sha256(b"password123").hexdigest()
+  # সমস্যা: দ্রুত, সবার জন্য একই, rainbow table আছে
 
-  <!-- Salt explanation -->
-  <rect x="20" y="190" width="540" height="110" rx="10" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="290" y="212" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">🧂 Salt: Unique Random Seasoning Per User</text>
+  # ✅ সঠিক উপায়: bcrypt
+  import bcrypt
+  password = b"password123"
+  salt = bcrypt.gensalt(rounds=12)     # cost factor
+  hashed = bcrypt.hashpw(password, salt)
+  print(hashed)
+  # $2b$12$... (salt ভেতরে, cost=১২)
 
-  <rect x="40" y="225" width="240" height="60" rx="5" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
-  <text x="160" y="242" text-anchor="middle" fill="#fcd34d" font-size="8">User A: "finance123" + salt_a7f3</text>
-  <text x="160" y="258" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace">→ hash = 8b2c...</text>
-  <text x="160" y="275" text-anchor="middle" fill="#86efac" font-size="7">Unique hash ✅</text>
+  # যাচাই:
+  bcrypt.checkpw(b"password123", hashed)  # True
+  bcrypt.checkpw(b"wrong", hashed)        # False
 
-  <rect x="300" y="225" width="240" height="60" rx="5" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
-  <text x="420" y="242" text-anchor="middle" fill="#fcd34d" font-size="8">User B: "finance123" + salt_k9m2</text>
-  <text x="420" y="258" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace">→ hash = 3e7f...</text>
-  <text x="420" y="275" text-anchor="middle" fill="#86efac" font-size="7">Different hash ✅ Rainbow table dead! 💀</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: SHA-256 = দ্রুত (খারাপ)। Argon2id = ধীর + ৬৪ মেগাবাইট RAM (ভালো)। Salt = প্রতি user এর জন্য এলোমেলো seasoning → rainbow table নস্ত।</div>
+  # ✅✅ সেরা: Argon2 (memory-hard)
+  from argon2 import PasswordHasher
+  ph = PasswordHasher(
+      time_cost=3,       # ৩ iterations
+      memory_cost=65536, # ৬৪ MB RAM
+      parallelism=4      # ৪ threads
+  )
+  hash = ph.hash("password123")
+  ph.verify(hash, "password123")  # True
 
-<div class="code-block">
-<pre><code># ❌ SHA-256 password hashing — দ্রুত, brute force সহজ (খারাপ!)
-$ echo -n "password123" | shasum -a 256   # GPU: ১০০ বিলিয়ন/সেকেন্ড!
-ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d44751e42  -
+  — Django settings.py:
+  PASSWORD_HASHERS = [
+      'django.contrib.auth.hashers.Argon2PasswordHasher',
+      'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+  ]</div>
 
-# ✅ bcrypt — ধীর, cost factor বাড়ালে আরও ধীর (১৯৯৯, Blowfish cipher)
-$ htpasswd -nbB -C 12 user "password123"   # Apache এর bcrypt
-user:$2y$12$N9qo8uLOickgx2ZMRZoMy.MrqK3a8C2WjFqI5W9xKQD5e/2b3e8qK
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Rainbow Table আক্রমণ:</strong> আক্রমণকারী পূর্বে লাখ লাখ সাধারণ পাসওয়ার্ডের hash হিসাব করে রাখে। "password123" → hash সবার জন্য একই। Salt এটা ভাঙে — প্রতিটি পাসওয়ার্ডে ভিন্ন salt → ভিন্ন hash → rainbow table কাজ করে না।</div></div>
 
-#    $2y$ = bcrypt   $12$ = cost factor (2^12 = 4096 rounds)
-#    একই password দুবার চালাও — salt এলোমেলো, hash আলাদা হয়!
-$ htpasswd -nbB -C 12 user "password123"
-user:$2y$12$K3.aB7cD9eF1gH2iJ3kL4mN5oP6qR7sT8uV9wX0yZ1aB2cD3eF4gH5i
+<div class="verse">وَخُذُوا حِذْرَكُمْ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং তোমরা তোমাদের সতর্কতা গ্রহণ করো।" — কুরআন ৪:৭১</div>
 
-# ✅ Argon2id — memory-hard, GPU কে RAM এ আটকায় (২০১৫, RFC 9106)
-$ argon2 "mysalt" -id -t 3 -m 16 -p 1 -l 32 &lt;&lt;&lt; "password123"
-Type:           Argon2id
-Iterations:     3
-Memory:         65536 KiB    # ← ৬৪ মেগাবাইট RAM!
-Parallelism:    1
-Hash:           9c1f3e7a2b4d5c8f1a0e3d6b9c2f5a8d...
-Encoded:        $argon2id$v=19$m=65536,t=3,p=1$bXlzYWx0$+Hash...
+<p class="scene-setting">আমান — নিরাপত্তা। পাসওয়ার্ড হ্যাশিং সেই নিরাপত্তার গাণিতিক রূপ। দুর্বল পাসওয়ার্ডকে শক্তিশালী hash-এ রূপান্তর। Salt — অতিরিক্ত সুরক্ষা। ধীর হ্যাশ — আক্রমণকারীর সময় নষ্ট। আল্লাহ সতর্কতার নির্দেশ দিয়েছেন — পাসওয়ার্ড হ্যাশিং সেই সতর্কতার প্রযুক্তিগত রূপ।</p>
+<p class="scene-setting en">Aman — security. Password hashing is the mathematical form of that security. Transforming weak passwords into strong hashes. Salt — additional protection. Slow hash — wasting attacker's time. Allah commands vigilance — password hashing is the technical form of that vigilance.</p>
 
-# Django তে Argon2 চালু করো (LedgerPilot এর জন্য):
-# settings.py:
-#   PASSWORD_HASHERS = [
-#       'django.contrib.auth.hashers.Argon2PasswordHasher',  # ← প্রথমে
-#       'django.contrib.auth.hashers.PBKDF2PasswordHasher',   # fallback
-#   ]
-$ python -c "import argon2; h=argon2.PasswordHasher(); print(h.hash('password123'))"
-$argon2id$v=19$m=65536,t=3,p=1$cmFuZG9tc2FsdA$8b2c1d4e5f6a7b8c9d0e1f2a...
-0.528s   # ← ধীর! এটাই উদ্দেশ্য। GPU তে মাত্র ২ guess/সেকেন্ড।
-</code></pre>
-<span class="code-caption">🧂 bcrypt/Argon2 = ধীর + salt। GPU কে ধীর করে দেয়। Salt এর জন্য rainbow table নস্ত।</span>
-</div>
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪০ (Software Engineering) Door ৮ (Security):</strong> OWASP Top 10-এ broken authentication আছে — পাসওয়ার্ড হ্যাশিং ছাড়া। Django auth = PBKDF2 default। এখন তুমি জানো কেন Argon2 সেরা।</div></div>
 
-<div class="dialogue"><strong>নিলস প্রোভোস:</strong> আমি ১৯৯৯ সালে bcrypt তৈরি করেছিলাম। আইডিয়া সহজ — hash কে ইচ্ছে করে ধীর করো। Blowfish cipher এর key schedule বারবার চালাও। cost factor বাড়ালে আরও ধীর। Argon2 এক ধাপ এগিয়ে — memory-hard। ৬৪ মেগাবাইট RAM দরকার প্রতি hash এ। GPU তে VRAM কম — তাই GPU parallel attack অসম্ভব। Salt হল প্রতিটা password এ এলোমেলো seasoning। দুজন একই password ব্যবহার করলেও তাদের hash আলাদা। Rainbow table — প্রি-কম্পিউটেড hash টেবিল — নস্ত। Django তে Argon2 ব্যবহার করো — settings.py তে Argon2PasswordHasher প্রথমে রাখো।</div>`,
-  recall: [
-    { q: "Salt কী কাজে লাগে?", a: "প্রতিটা password এ এলোমেলো seasoning। দুজন একই password ব্যবহার করলেও hash আলাদা। Rainbow table (প্রি-কম্পিউটেড hash) নস্ত।" },
-    { q: "Argon2 কেন SHA-256 এর চেয়ে ভালো?", a: "Argon2 ধীর (০.৫ সেকেন্ড) আর memory-hard (৬৪ মেগাবাইট RAM)। GPU brute force অসম্ভব। SHA-256 দ্রুত — GPU বিলিয়ন hash/sec।" },
-  ]
+<div class="secret-box">🔑 <strong>পাসওয়ার্ড = hash + salt + slow।</strong> Plaintext নয়, SHA-256 নয়। bcrypt বা Argon2। এখন তুমি জানো এনক্রিপশন, চাবি আদান, হ্যাশ, পাসওয়ার্ড। কিন্তু সব মিলিয়ে — একটি সার্ভার কীভাবে প্রমাণ করবে সে যে সে? সেই সত্যতা — পরের দরজায়।</div>`,
+  senior: {
+    title: "Password Hashing এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">bcrypt (1999)</td><td>ধীর hash — cost factor (rounds)</td></tr>
+<tr><td class="hl">Argon2 (2015)</td><td>Memory-hard — GPU প্রতিরোধ</td></tr>
+<tr><td class="hl">Salt</td><td>এলোমেলো মান — rainbow table প্রতিরোধ</td></tr>
+<tr><td class="hl">PBKDF2</td><td>পুরোনো কিন্তু গ্রহণযোগ্য</td></tr>
+<tr><td class="hl">Rainbow Table</td><td>পূর্ব-হিসাবকৃত hash টেবিল</td></tr>
+<tr><td class="hl">❌ Plaintext</td><td>কখনো নয়!</td></tr>
+<tr><td class="hl">❌ SHA-256</td><td>দ্রুত — আক্রমণকারীর জন্য ভালো</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 5 — The Digital Notary (PKI & Certificates)
-// ═══════════════════════════════════════════
 doors.push({
   num: 5,
   icon: "📜",
-  color: "#fbbf24",
-  tagline: "ডিজিটাল নোটারি — The Digital Notary",
-  name: "The Digital Notary",
-  secret: "Digital signature = private key দিয়ে সিল। CA = নোটারি যে পাবলিক key verify করে। Let's Encrypt = ফ্রি সার্টিফিকেট।",
-  story: `<p class="scene-setting">তুমি একটা ইনভয়েস পাঠালে। কিভাবে প্রমাণ করবে এটা তোমার? Digital signature — private key দিয়ে সিল করো। যে কেউ public key দিয়ে verify করতে পারে। কিন্তু কিভাবে জানবে public key সত্যিই তোমার? Certificate Authority (CA) — একজন ডিজিটাল নোটারি। সে তোমার পরিচয় verify করে, X.509 certificate সাইন করে। Browser CA কে trust করে। Let's Encrypt এই সব ফ্রি করে — ACME protocol দিয়ে স্বয়ংক্রিয়।</p>
+  color: "#dc2626",
+  name: "পরিচয়ের দলিল",
+  subtitle: "The Certificate of Identity",
+  tech: "Public Key Infrastructure (PKI) — Certificates, Certificate Authority (CA), X.509, Let's Encrypt, chain of trust",
+  spirit: "শাহাদাহ — সাক্ষ্য, পরিচয়ের প্রমাণ",
+  secret: "সার্টিফিকেট = পরিচয় পত্র। CA (Certificate Authority) সেই পরিচয় যাচাই করে। ব্রাউজারে ১০০+ CA-এর root সার্টিফিকেট আগে থেকে আছে। Let's Encrypt = বিনামূল্যে সার্টিফিকেট।",
+  recall: {
+    q: " Certificate Authority (CA) কী? Chain of Trust কীভাবে কাজ করে?",
+    qen: "What is a Certificate Authority? How does the chain of trust work?",
+    a: "CA = বিশ্বস্ত তৃতীয় পক্ষ যে সার্ভারের পরিচয় যাচাই করে। ব্রাউজার → root CA → intermediate CA → সার্ভার সার্টিফিকেট। প্রতিটি ধাপে স্বাক্ষর।",
+    aen: "CA = trusted third party that verifies server identity. Browser → root CA → intermediate CA → server certificate. Each step signed."
+  },
+  story: `<p class="scene-setting">তুমি google.com-এ গেলে। কীভাবে জানবে এটি সত্যিই গুগল — কেউ নকল করেনি? উত্তর: সার্টিফিকেট। গুগলের সার্টিফিকেট একটি CA দিয়েছে — যাকে তোমার ব্রাউজার বিশ্বাস করে। CA বলে — হ্যাঁ, এই public key সত্যিই google.com-এর। এটাই শাহাদাহ — পরিচয়ের সাক্ষ্য। ব্রাউজারে ১০০+ CA-এর root সার্টিফিকেট পূর্ব-ইনস্টলড।</p>
+<p class="scene-setting en">You visit google.com. How do you know it's really Google — not a fake? Answer: certificate. Google's certificate is issued by a CA — trusted by your browser. The CA says — yes, this public key belongs to google.com. This is shahadah — testimony of identity. 100+ CA root certificates pre-installed in browsers.</p>
 
-<div class="code-block">
-<pre><code># Self-signed certificate তৈরি — শিখার জন্য (production এ CA দরকার)
-$ openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem \
-    -days 365 -nodes -subj "/CN=ledgerpilot.local" \
-    -addext "subjectAltName=DNS:ledgerpilot.local,DNS:www.ledgerpilot.local"
-..+...+....+...+...   # RSA keypair তৈরি
------
+<div class="dialogue"><strong>দলিল-রক্ষক ইমরান:</strong> সাফওয়ান (Door ৪) তোমাকে পাসওয়ার্ড শিখিয়েছেন। কিন্তু পাসওয়ার্ড শুধু ইউজারের। সার্ভারের পরিচয় কে যাচাই করবে? উত্তর: CA। Let's Encrypt (২০১৫) বিনামূল্যে সার্টিফিকেট দেয় — certbot দিয়ে। সার্টিফিকেটে থাকে: ডোমেইন নাম, public key, মেয়াদ, CA স্বাক্ষর। মেয়াদ শেষ হলে HTTPS ভাঙে — "Your connection is not private"।</div>
+<div class="dialogue en"><strong>Document Keeper Imran:</strong> Safwan (Door 4) taught you passwords. But passwords are for users. Who verifies the server's identity? Answer: CA. Let's Encrypt (2015) gives free certificates — via certbot. Certificate contains: domain name, public key, expiry, CA signature. Expired = HTTPS breaks — "Your connection is not private."</div>
 
-# Certificate দেখো — এখানেই public key + domain বাঁধা থাকে
-$ openssl x509 -in cert.pem -text -noout | grep -E "Subject:|Not After|Public Key"
-        Subject: CN=ledgerpilot.local
-            Public-Key: (2048 bit)
-            Not Before: Jan 15 10:30:00 2025 UTC
-            Not After: Jan 15 10:30:00 2026 UTC   # ← ১ বছর পর মেয়াদ শেষ
+<div class="code-block">— OpenSSL: সার্টিফিকেট পরীক্ষা —
 
-# Signature verify — CA এর private key দিয়ে sign করা আছে কিনা
-$ openssl verify -CAfile cert.pem cert.pem
-cert.pem: OK   # self-signed তাই নিজেই verify হয় (শুধু প্র্যাকটিস)
+  # সার্ভারের সার্টিফিকেট দেখো
+  $ openssl s_client -connect google.com:443 -servername google.com
 
-# ✅ Let's Encrypt = ফ্রি CA certificate (ACME protocol)
-# DNS-01 challenge দিয়ে domain ownership প্রমাণ করো
-$ certbot certonly --manual --preferred-challenges dns -d ledgerpilot.com
-Please deploy a DNS TXT record under the name:
-_acme-challenge.ledgerpilot.com. with the following value:
-X9m2kQ7nR4pL8vB3hY6jF1cZ5wA0tE9s   # ← এই TXT record DNS এ যোগ করো
+  Certificate chain
+   0 s:CN = *.google.com            ← কার সার্টিফিকেট?
+     i:CN = GTS CA 1C3              ← কে দিয়েছে?
+   1 s:CN = GTS CA 1C3              ← intermediate CA
+     i:CN = GTS Root R1             ← root CA
 
-Press Enter to Continue
-... verification successful ...
-Certificate obtained: /etc/letsencrypt/live/ledgerpilot.com/fullchain.pem
-Expiry: 2025-04-15 (90 দিন, তারপর অটো-রিনিউ)
-</code></pre>
-<span class="code-caption">📜 Certificate = public key + domain, CA এর signature দিয়ে। Let's Encrypt ফ্রি করে, স্বয়ংক্রিয়।</span>
-</div>
+  # সার্টিফিকেটের বিস্তারিত:
+  $ openssl x509 -in cert.pem -text -noout
 
-<div class="dialogue"><strong>সার্টিফিকেট অথরিটি:</strong> আমি একজন নোটারি। ওয়েবসাইট আমার কাছে আসে, প্রমাণ করে সে আসল। আমি তার public key আর domain একটা certificate এ bind করি, আমার private key দিয়ে sign করি। Browser আমাকে trust করে (root certificate store এ আমার key আছে)। Let's Encrypt এই প্রক্রিয়া স্বয়ংক্রিয় করেছে — ACME protocol। HTTP-01 বা DNS-01 challenge দিয়ে domain verify, তারপর certificate issue। সব ফ্রি, সব স্বয়ংক্রিয়। certbot দিয়ে এক কমান্ডে।</div>`,
-  recall: [
-    { q: "Digital signature কিভাবে কাজ করে?", a: "Private key দিয়ে data hash করে sign করো। যে কেউ public key দিয়ে verify করতে পারে। Sign থেকে data বদলানো গেলে signature invalid।" },
-    { q: "Let's Encrypt এর ACME protocol কী?", a: "Automatic Certificate Management Environment। domain verify (HTTP-01/DNS-01 challenge), certificate issue, renewal — সব স্বয়ংক্রিয়, ফ্রি।" },
-  ]
+  Subject: CN=*.google.com
+  Issuer:  CN=GTS CA 1C3
+  Not Before: Jul 14, 2026          ← শুরু
+  Not After:  Sep 6, 2026           ← শেষ (৯০ দিন)
+
+  — Let's Encrypt দিয়ে বিনামূল্যে সার্টিফিকেট:
+  $ sudo certbot certonly --nginx -d example.com
+  $ sudo certbot renew              ← স্বয়ংক্রিয় রিনিউ</div>
+
+<div class="callout info"><span class="co-icon">📜</span><div><strong>Chain of Trust:</strong><br>
+তোমার ব্রাউজার → root CA (পূর্ব-ইনস্টলড) → intermediate CA → সার্ভার সার্টিফিকেট। প্রতিটি ধাপে ডিজিটাল স্বাক্ষর। কোনো ধাপ ভাঙলে পুরো শৃঙ্খল অবিশ্বাস্য। এটাই trust — শাহাদাহ-র ডিজিটাল রূপ।</div></div>
+
+<div class="verse">يَا أَيُّهَا الَّذِينَ آمَنُوا إِن جَاءَكُمْ فَاسِقٌ بِنَبَإٍ فَتَبَيَّنُوا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"হে মুমিনরা, যদি তোমাদের কাছে কোনো পাপাচারী সংবাদ নিয়ে আসে, তবে যাচাই করে নাও।" — কুরআন ৪৯:৬</div>
+
+<p class="scene-setting">"তাবাইয়ানু" — যাচাই করো। সার্টিফিকেট সেই যাচাইয়ের ডিজিটাল রূপ। ব্রাউজার যাচাই করে — এই সার্ভার সত্যিই যে বলে তাই কি? CA সেই যাচাইয়ের সাক্ষী। শাহাদাহ — সাক্ষ্য। প্রতিটি HTTPS সংযোগ একটি যাচাইয়ের শৃঙ্খল।</p>
+<p class="scene-setting en">"Tabayyanu" — verify. Certificates are the digital form of that verification. The browser checks — is this server truly what it claims? The CA is the witness to that verification. Shahadah — testimony. Every HTTPS connection is a chain of verification.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৭ (Networks) Door ৯ (TLS):</strong> TLS handshake-এ সার্টিফিকেট যাচাই হয়। Book ৪৬ (Cryptography) Door ১: RSA = সার্টিফিকেট স্বাক্ষরের ভিত্তি।</div></div>
+
+<div class="secret-box">📜 <strong>সার্টিফিকেট = পরিচয়ের দলিল।</strong> CA যাচাই করে। শৃঙ্খলের প্রতিটি ধাপ স্বাক্ষরিত। মেয়াদ শেষে রিনিউ করো। এখন পাঁচটি দরজা পেরিয়েছো — এনক্রিপশন, চাবি আদান, হ্যাশ, পাসওয়ার্ড, সার্টিফিকেট। পরের অধ্যায়ে — TLS handshake, JWT, OWASP, ও জিরো ট্রাস্ট।</div>`,
+  senior: {
+    title: "PKI & Certificates এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">CA</td><td>Certificate Authority — বিশ্বস্ত তৃতীয় পক্ষ</td></tr>
+<tr><td class="hl">X.509</td><td>সার্টিফিকেট ফরম্যাট স্ট্যান্ডার্ড</td></tr>
+<tr><td class="hl">Chain of Trust</td><td>Root → Intermediate → Server</td></tr>
+<tr><td class="hl">Let's Encrypt (2015)</td><td>বিনামূল্যে সার্টিফিকেট — certbot</td></tr>
+<tr><td class="hl">Validity</td><td>সাধারণত ৯০ দিন — রিনিউ দরকার</td></tr>
+<tr><td class="hl">Self-signed</td><td>নিজে নিজেকে স্বাক্ষর — dev only</td></tr></table>`
+  }
 });
