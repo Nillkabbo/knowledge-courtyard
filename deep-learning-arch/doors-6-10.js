@@ -34,6 +34,63 @@ G চায় D কে বোকানো, D চায় G কে ধরা।
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ১৫ (Multimodal AI) Door ৩:</strong> সেখানে তুমি image generation (diffusion) শিখেছিলে। GAN ছিল সেই যাত্রার পূর্বসূরি। দরজা ৭-এ তুমি দেখবে কীভাবে diffusion GAN-কে ছাড়িয়ে গেলো।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎭 GAN: Generator vs Discriminator</text>
+  <rect x="20" y="55" width="100" height="40" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="70" y="80" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">Noise z</text>
+  <line x1="120" y1="75" x2="160" y2="75" stroke="#f87171" stroke-width="2" marker-end="url(#arrG1)"/>
+  <rect x="160" y="50" width="120" height="55" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="220" y="75" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">GENERATOR G</text>
+  <text x="220" y="92" text-anchor="middle" fill="#7dd3fc" font-size="7">fake image</text>
+  <line x1="280" y1="77" x2="340" y2="77" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrG1)"/>
+  <text x="310" y="72" text-anchor="middle" fill="#7dd3fc" font-size="7">fake</text>
+  <rect x="340" y="50" width="120" height="55" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="400" y="75" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">DISCRIMINATOR D</text>
+  <text x="400" y="92" text-anchor="middle" fill="#86efac" font-size="7">real or fake?</text>
+  <line x1="460" y1="77" x2="510" y2="77" stroke="#22c55e" stroke-width="2" marker-end="url(#arrG1)"/>
+  <rect x="510" y="60" width="50" height="35" rx="6" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+  <text x="535" y="82" text-anchor="middle" fill="#94a3b8" font-size="7">0/1</text>
+  <rect x="340" y="130" width="120" height="35" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="400" y="152" text-anchor="middle" fill="#7dd3fc" font-size="7">REAL images</text>
+  <line x1="400" y1="130" x2="400" y2="105" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrG1)"/>
+  <path d="M 400 95 Q 280 170 220 105" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="320" y="190" text-anchor="middle" fill="#fbbf24" font-size="8">← G learns from D feedback ←</text>
+  <path d="M 220 105 Q 180 180 400 165" fill="none" stroke="#f87171" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="150" y="195" text-anchor="middle" fill="#f87171" font-size="8">→ D improves detection →</text>
+  <text x="290" y="225" text-anchor="middle" fill="#94a3b8" font-size="7">minimax: G minimizes, D maximizes — equilibrium = realistic images</text>
+  <defs><marker id="arrG1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: GAN — Generator fake তৈরি করে, Discriminator ধরে। উভয় একে অপরকে উন্নত করে।</div>
+
+<div class="code-block">— PyTorch: GAN Training —
+
+  # Generator: noise → fake image
+  G = Generator()  # z_dim → image
+  # Discriminator: image → real/fake
+  D = Discriminator()  # image → probability
+
+  opt_G = Adam(G.parameters(), lr=0.0002)
+  opt_D = Adam(D.parameters(), lr=0.0002)
+
+  for epoch in range(200):
+      # 1. Train D
+      z = torch.randn(batch_size, z_dim)
+      fake = G(z)
+      real_pred = D(real_images)
+      fake_pred = D(fake.detach())
+      loss_D = -(real_pred.log().mean() +
+                 (1-fake_pred).log().mean())
+
+      # 2. Train G (fool D!)
+      fake_pred = D(fake)
+      loss_G = -fake_pred.log().mean()
+      # G wants D(fake) → 1 (classified as real)
+
+      # Mode collapse: G makes ONE image
+      # Fix: WGAN, spectral norm, minibatch std</div>
+
 <div class="secret-box">🎭 <strong>GAN = প্রতিযোগিতার শিল্প।</strong> দুই নেটওয়ার্ক — একজন তৈরি করে, একজন বিচার করে। উভয়ে একে অপরকে চালাগত করে। এই adversarial প্রক্রিয়া এত শক্তিশালী যে এটি অবিশ্বাস্য ছবি তৈরি করতে পারে। কিন্তু GAN training অস্থিতিশীল। একটি নতুন পদ্ধতি এলো — ধীরে ধীরে শব্দ সরিয়ে ছবি তৈরি করা। সেই পদ্ধতির নাম diffusion। সেই যাত্রা শুরু হবে পরের দরজায়।</div>`,
   senior: {
     title: "GAN এক নজরে",
@@ -90,6 +147,58 @@ doors.push({
 <p class="scene-setting">এই আয়াতে ধাপে ধাপে সৃষ্টির কথা বলা হয়েছে — এক মুহূর্তে নয়, পর্যায়ক্রমে। Diffusion model-ও তেমনই — এক ধাপে ছবি তৈরি করে না। noise থেকে ধীরে ধীরে, ধাপে ধাপে, প্রতিটি ধাপে একটু একটু পরিষ্কার হয়। অস্তিত্বহীন থেকে অস্তিত্ব — স্বপ্ন থেকে বাস্তব।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ১৫ (Multimodal AI) Door ৩:</strong> Image generation-এর overview শিখেছিলে। এখন তুমি বোঝো diffusion-এর actual mechanism — forward/reverse process। Book ১৮ (Embeddings) Door ১-এ latent space শিখেছিলে — Stable Diffusion সেই latent space-এই কাজ করে।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌅 Diffusion: Forward (add noise) &amp; Reverse (denoise)</text>
+  <rect x="20" y="50" width="70" height="60" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="55" y="78" text-anchor="middle" fill="#4ade80" font-size="7">Image</text>
+  <text x="55" y="92" text-anchor="middle" fill="#86efac" font-size="6">(clean)</text>
+  <rect x="110" y="50" width="70" height="60" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="145" y="78" text-anchor="middle" fill="#fcd34d" font-size="7">t=10</text>
+  <text x="145" y="92" text-anchor="middle" fill="#fde68a" font-size="6">some noise</text>
+  <rect x="200" y="50" width="70" height="60" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="235" y="78" text-anchor="middle" fill="#fca5a5" font-size="7">t=50</text>
+  <text x="235" y="92" text-anchor="middle" fill="#fca5a5" font-size="6">more noise</text>
+  <rect x="290" y="50" width="70" height="60" rx="6" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+  <text x="325" y="78" text-anchor="middle" fill="#94a3b8" font-size="7">t=100</text>
+  <text x="325" y="92" text-anchor="middle" fill="#64748b" font-size="6">pure noise</text>
+  <text x="180" y="130" text-anchor="middle" fill="#f87171" font-size="8">→ Forward: add noise (training) →</text>
+  <text x="325" y="155" text-anchor="middle" fill="#4ade80" font-size="8">← Reverse: denoise (generation) ←</text>
+  <text x="470" y="78" fill="#fcd34d" font-size="8">DDPM (Ho 2020):</text>
+  <text x="470" y="95" fill="#fde68a" font-size="7">predict noise at each step</text>
+  <text x="470" y="110" fill="#fde68a" font-size="7">remove → repeat 1000x</text>
+  <text x="470" y="130" fill="#94a3b8" font-size="6">Stable Diffusion: latent space</text>
+  <text x="470" y="145" fill="#94a3b8" font-size="6">U-Net + cross-attention</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Diffusion — ধীরে ধীরে noise যোগ করো (forward), তারপর ধীরে ধীরে noise সরাও (reverse)।</div>
+
+<div class="code-block">— Diffusion: Stable Diffusion Pipeline —
+
+  from diffusers import StableDiffusionPipeline
+
+  # Load model:
+  pipe = StableDiffusionPipeline.from_pretrained(
+      "runwayml/stable-diffusion-v1-5"
+  )
+  pipe = pipe.to("cuda")
+
+  # Generate from text:
+  image = pipe(
+      "a cat sitting on a prayer mat, oil painting"
+  ).images[0]
+  image.save("cat.png")
+
+  # Internal process:
+  # 1. Text → CLIP embeddings
+  # 2. Noise → U-Net denoiser (50-1000 steps)
+  # 3. Cross-attention: text guides image
+  # 4. VAE decode → final image
+
+  # DDPM math:
+  # x_t = sqrt(a_t) * x_0 + sqrt(1-a_t) * noise
+  # Loss: ||noise - predicted_noise||^2</div>
 
 <div class="secret-box">🌅 <strong>Diffusion = ধৈর্যের সাথে সৃষ্টি।</strong> noise থেকে ছবি, এক ধাপে নয় — অনেক ধাপে। প্রতিটি ধাপে একটু পরিষ্কার হয়। এটাই আজকের সেরা generative পদ্ধতি — Midjourney, DALL-E, Stable Diffusion সবাই এই নীতি ব্যবহার করে। কিন্তু এই স্থাপত্য কীভাবে প্রশিক্ষণ পায়? কীভাবে stable থাকে? সেই রহস্য পরের দরজায়।</div>`,
   senior: {
@@ -151,6 +260,56 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩০ (গণিতের কম্পাস) Door ৯:</strong> Calculus এবং chain rule শিখেছিলে — এটাই backpropagation এবং gradient descent-এর ভিত্তি। Book ১৭ (Inference Optimization) Door ২-এ quantization শিখেছিলে — training-এর পরের ধাপ।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚙️ Activation Functions: ReLU vs Sigmoid vs Tanh</text>
+  <path d="M 30 150 Q 50 150 60 100 L 80 50 L 280 50" fill="none" stroke="#22c55e" stroke-width="2.5"/>
+  <text x="200" y="45" fill="#4ade80" font-size="8">ReLU: max(0,x)</text>
+  <path d="M 30 150 Q 80 150 120 120 Q 160 90 200 80 L 280 75" fill="none" stroke="#fbbf24" stroke-width="2"/>
+  <text x="200" y="100" fill="#fcd34d" font-size="8">Sigmoid: 1/(1+e^-x)</text>
+  <path d="M 30 150 Q 80 150 120 110 Q 160 60 200 50 L 280 50" fill="none" stroke="#a855f7" stroke-width="2"/>
+  <text x="250" y="70" fill="#c084fc" font-size="8">Tanh</text>
+  <line x1="30" y1="150" x2="280" y2="150" stroke="#64748b" stroke-width="0.5"/>
+  <line x1="30" y1="50" x2="30" y2="150" stroke="#64748b" stroke-width="0.5"/>
+  <text x="330" y="60" fill="#f87171" font-size="8">ReLU: ✅ no vanishing gradient</text>
+  <text x="330" y="75" fill="#f87171" font-size="7">ReLU: ⚠️ dying ReLU (x&lt;0 → 0)</text>
+  <text x="330" y="100" fill="#fcd34d" font-size="8">Sigmoid: ❌ saturates (→0 or →1)</text>
+  <text x="330" y="125" fill="#4ade80" font-size="8">GELU/SwiGLU: modern (GPT-4)</text>
+  <text x="330" y="150" fill="#94a3b8" font-size="7">BatchNorm + Dropout = stable training</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Activation functions। ReLU (সবচেয়ে জনপ্রিয়) — সহজ, দ্রুত, কোনো vanishing gradient নেই।</div>
+
+<div class="code-block">— PyTorch: Training Components —
+
+  import torch
+  import torch.nn as nn
+
+  # Activation functions:
+  nn.ReLU()      # max(0, x) — default choice
+  nn.GELU()      # smooth ReLU — GPT/BERT
+  nn.SiLU()      # x * sigmoid(x) — modern
+
+  # Batch Normalization:
+  nn.BatchNorm2d(32)  # normalize per batch
+  # stabilizes training, allows higher LR
+
+  # Dropout:
+  nn.Dropout(p=0.1)   # randomly zero 10%
+  # prevents overfitting, ensemble effect
+
+  # Optimizers:
+  torch.optim.SGD(params, lr=0.01, momentum=0.9)
+  torch.optim.Adam(params, lr=0.001)        # default
+  torch.optim.AdamW(params, lr=0.001)       # weight decay
+  torch.optim.AdamW(params, lr=3e-4,        # GPT training!
+      betas=(0.9, 0.95), weight_decay=0.1)
+
+  # Learning rate schedule:
+  scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+      optimizer, T_max=100
+  )</div>
+
 <div class="secret-box">⚙️ <strong>Training = অসংখ্য ছোট সিদ্ধান্তের সমষ্টি।</strong> কোন activation? ReLU। কোন optimizer? Adam। কোন learning rate? ০.০০১। Dropout? ০.১। Batch Norm? হ্যাঁ। প্রতিটি পছন্দ একটি স্থাপত্য সিদ্ধান্ত। কিন্তু training শেষ হওয়া মানেই কাজ শেষ নয়। নেটওয়ার্ক যদি overfit করে? যদি নতুন ডেটায় কাজ না করে? সেই সমাধান আসবে পরের দরজায়।</div>`,
   senior: {
     title: "Training Dynamics এক নজরে",
@@ -208,6 +367,76 @@ doors.push({
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩১ (Classic ML) Door ৪:</strong> Bias-variance tradeoff শিখেছিলে। Regularization variance কমায় — underfitting (high bias) না করে overfitting (high variance) ঠিক করে।</div></div>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ১১ (Fine-tuning):</strong> পুরো বইটাই transfer learning-এর ব্যবহারিক প্রয়োগ। এখন তুমি বোঝো কেন pre-trained model-এর প্রথম স্তর freeze করা হয় — সেগুলো general feature।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎯 Overfitting vs Underfitting vs Just Right</text>
+  <rect x="20" y="50" width="160" height="130" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="100" y="72" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">❌ Overfitting</text>
+  <text x="100" y="90" text-anchor="middle" fill="#fca5a5" font-size="7">memorizes noise</text>
+  <path d="M 35 150 Q 60 120 80 140 Q 100 80 120 150 Q 140 110 165 145" fill="none" stroke="#f87171" stroke-width="2"/>
+  <circle cx="50" cy="155" r="2" fill="#94a3b8"/>
+  <circle cx="75" cy="130" r="2" fill="#94a3b8"/>
+  <circle cx="100" cy="100" r="2" fill="#94a3b8"/>
+  <circle cx="130" cy="155" r="2" fill="#94a3b8"/>
+  <circle cx="155" cy="125" r="2" fill="#94a3b8"/>
+  <text x="100" y="170" text-anchor="middle" fill="#fca5a5" font-size="7">train: 99% · test: 70%</text>
+  <rect x="200" y="50" width="160" height="130" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="280" y="72" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">⚠️ Underfitting</text>
+  <text x="280" y="90" text-anchor="middle" fill="#fcd34d" font-size="7">too simple</text>
+  <line x1="220" y1="150" x2="350" y2="110" stroke="#fbbf24" stroke-width="2"/>
+  <circle cx="230" cy="155" r="2" fill="#94a3b8"/>
+  <circle cx="255" cy="130" r="2" fill="#94a3b8"/>
+  <circle cx="280" cy="100" r="2" fill="#94a3b8"/>
+  <circle cx="310" cy="155" r="2" fill="#94a3b8"/>
+  <circle cx="335" cy="125" r="2" fill="#94a3b8"/>
+  <text x="280" y="170" text-anchor="middle" fill="#fcd34d" font-size="7">train: 65% · test: 60%</text>
+  <rect x="380" y="50" width="180" height="130" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="470" y="72" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">✅ Just Right</text>
+  <text x="470" y="90" text-anchor="middle" fill="#4ade80" font-size="7">generalizes!</text>
+  <path d="M 400 155 Q 440 120 470 100 Q 500 90 540 115" fill="none" stroke="#22c55e" stroke-width="2.5"/>
+  <circle cx="410" cy="155" r="2" fill="#94a3b8"/>
+  <circle cx="435" cy="130" r="2" fill="#94a3b8"/>
+  <circle cx="460" cy="100" r="2" fill="#94a3b8"/>
+  <circle cx="490" cy="155" r="2" fill="#94a3b8"/>
+  <circle cx="515" cy="125" r="2" fill="#94a3b8"/>
+  <text x="470" y="170" text-anchor="middle" fill="#4ade80" font-size="7">train: 92% · test: 90%</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Overfitting (মুখস্থ) vs Underfitting (সরল) vs Just Right (সাধারণীকরণ)।</div>
+
+<div class="code-block">— Regularization Techniques —
+
+  # Dropout (Srivastava 2014):
+  nn.Dropout(p=0.5)  # 50% neurons off
+  # training: random zero / eval: all on
+
+  # L2 Regularization (weight decay):
+  optimizer = AdamW(params, lr=0.001,
+                    weight_decay=0.01)  # L2
+
+  # Early Stopping:
+  from pytorch_lightning import EarlyStopping
+  EarlyStopping(monitor='val_loss', patience=5)
+
+  # Data Augmentation:
+  transforms.Compose([
+      transforms.RandomHorizontalFlip(),
+      transforms.RandomRotation(10),
+      transforms.ColorJitter(0.2, 0.2),
+  ])
+
+  # Transfer Learning (Yosinski 2014):
+  model = torchvision.models.resnet50(pretrained=True)
+  # freeze early layers:
+  for param in model.parameters():
+      param.requires_grad = False
+  # replace final layer:
+  model.fc = nn.Linear(2048, 10)
+  # train only final layer!
+
+  # ResNet Skip Connection (He 2015):
+  # y = F(x) + x  ← gradient flows directly</div>
 
 <div class="secret-box">🎯 <strong>Regularization = স্বাধীনতায় সীমা।</strong> নেটওয়ার্ককে শিখতে দাও, কিন্তু মুখস্থ করতে দিও না। Dropout, L1/L2, early stopping, data augmentation, skip connection — প্রতিটি কৌশল একই লক্ষ্যে: generalization। আর transfer learning দিয়ে তুমি অন্যের শেখা জ্ঞান নিজের কাজে লাগাও। এখন তুমি প্রস্তুত — সব কৌশল জানো। পরের দরজায় দেখবে এই সব কীভাবে একত্রিত হয় আধুনিক স্থাপত্যে।</div>`,
   senior: {
@@ -289,6 +518,61 @@ doors.push({
 <li>🧪 Hugging Face-এ pre-trained model explore করো — transfer learning বাস্তবে</li>
 <li>📖 Book ৮ (LLM Anatomy) পুনরায় পড়ো — এবার প্রতিটি ধারণা স্বচ্ছ হবে</li>
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🏛️ DL Architecture Timeline: 1943 → 2024</text>
+  <line x1="290" y1="50" x2="290" y2="260" stroke="#a855f7" stroke-width="2"/>
+  <circle cx="290" cy="60" r="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="350" y="64" fill="#7dd3fc" font-size="8">1943 McCulloch-Pitts neuron</text>
+  <circle cx="290" cy="85" r="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="350" y="89" fill="#7dd3fc" font-size="8">1958 Rosenblatt Perceptron</text>
+  <circle cx="290" cy="110" r="6" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="350" y="114" fill="#fca5a5" font-size="8">1969 Minsky XOR → AI Winter</text>
+  <circle cx="290" cy="135" r="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="350" y="139" fill="#4ade80" font-size="8">1986 Backpropagation (Rumelhart)</text>
+  <circle cx="290" cy="160" r="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="350" y="164" fill="#4ade80" font-size="8">1997 LSTM (Hochreiter)</text>
+  <circle cx="290" cy="185" r="6" fill="#fbbf24" stroke="#fbbf24" stroke-width="2"/>
+  <text x="350" y="189" fill="#fcd34d" font-size="8">2012 AlexNet (ImageNet win!)</text>
+  <circle cx="290" cy="210" r="6" fill="#a855f7" stroke="#a855f7" stroke-width="2.5"/>
+  <text x="350" y="214" fill="#c084fc" font-size="8">2017 Transformer (Attention!)</text>
+  <circle cx="290" cy="235" r="6" fill="#a855f7" stroke="#a855f7" stroke-width="2.5"/>
+  <text x="350" y="239" fill="#c084fc" font-size="8">2020 Diffusion (DDPM)</text>
+  <circle cx="290" cy="260" r="8" fill="#22c55e" stroke="#4ade80" stroke-width="3"/>
+  <text x="350" y="264" fill="#4ade80" font-size="9" font-weight="700">2024+ GPT-4, Claude, AGI horizon</text>
+  <text x="130" y="60" fill="#94a3b8" font-size="7">80 years of</text>
+  <text x="130" y="72" fill="#94a3b8" font-size="7">continuous</text>
+  <text x="130" y="84" fill="#94a3b8" font-size="7">evolution</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: ৮০ বছরের যাত্রা — একটি নিউরন থেকে ১৭৫ বিলিয়ন parameter পর্যন্ত।</div>
+
+<div class="code-block">— Modern Architectures: HuggingFace —
+
+  # BERT (Devlin 2018) — encoder-only:
+  from transformers import BertModel
+  bert = BertModel.from_pretrained("bert-base-uncased")
+  # 12 layers, 110M params — understanding
+
+  # GPT-2 (Radford 2019) — decoder-only:
+  from transformers import GPT2LMHeadModel
+  gpt2 = GPT2LMHeadModel.from_pretrained("gpt2")
+  # 124M params — generation
+
+  # Vision Transformer (Dosovitskiy 2020):
+  from transformers import ViTModel
+  vit = ViTModel.from_pretrained("google/vit-base-patch16-224")
+  # image as 16x16 patches → Transformer
+
+  # Mixture of Experts (GPT-4 scale):
+  # 8 experts, route token to top-2
+  # 8x parameters but same compute
+
+  # Modern stack:
+  # Attention + ResNet + LayerNorm + GELU
+  # + Dropout + AdamW + Cosine LR
+  # = GPT/Claude/LLaMA</div>
 
 <div class="secret-box">🏛️ <strong>চিন্তার স্থাপত্য = নয়টি দরজার সমষ্টি।</strong> Perceptron (নিউরন) → MLP (স্তর) → CNN (দৃষ্টি) → LSTM (স্মৃতি) → Transformer (মনোযোগ) → GAN (প্রতিযোগিতা) → Diffusion (সৃষ্টি) → Training (প্রশিক্ষণ) → Regularization (সংযম)। নয়টি ইট — একটি ভবন। McCulloch-Pitts ১৯৪৩ সালে একটি নিউরন তৈরি করেছিলেন। আজ আমরা ১৭৫ বিলিয়ন parameter-এর GPT-৪ ব্যবহার করছি। ৮০ বছরের যাত্রা। এবং তুমি এখন প্রতিটি ধাপ বোঝো। এটাই চিন্তার স্থাপত্য — মেশিন কীভাবে দেখে, ভাবে, সিদ্ধান্ত নেয়।</div>`,
   senior: {

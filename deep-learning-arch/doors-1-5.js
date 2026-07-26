@@ -46,6 +46,65 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩১ (অ্যালগরিদমের বাজার) Door ১-এ:</strong> তুমি linear regression শিখেছিলে — w₁x₁ + w₂x₂ + b। Perceptron-এর সূত্রও একই! পার্থক্য শুধু output-এ — regression সংখ্যা দেয়, Perceptron সিদ্ধান্ত দেয় (হ্যাঁ/না)।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">💡 Perceptron: Weighted Vote + Activation</text>
+  <circle cx="80" cy="100" r="12" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="80" y="104" text-anchor="middle" fill="#7dd3fc" font-size="8">x1</text>
+  <circle cx="80" cy="150" r="12" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="80" y="154" text-anchor="middle" fill="#7dd3fc" font-size="8">x2</text>
+  <circle cx="80" cy="200" r="12" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="80" y="204" text-anchor="middle" fill="#7dd3fc" font-size="8">x3</text>
+  <line x1="92" y1="100" x2="250" y2="140" stroke="#22c55e" stroke-width="2"/>
+  <text x="165" y="112" fill="#4ade80" font-size="7">w1=0.5</text>
+  <line x1="92" y1="150" x2="250" y2="150" stroke="#fbbf24" stroke-width="2"/>
+  <text x="165" y="145" fill="#fcd34d" font-size="7">w2=-0.3</text>
+  <line x1="92" y1="200" x2="250" y2="160" stroke="#f87171" stroke-width="2"/>
+  <text x="165" y="190" fill="#fca5a5" font-size="7">w3=0.8</text>
+  <circle cx="280" cy="150" r="25" fill="#2e1065" stroke="#a855f7" stroke-width="2.5"/>
+  <text x="280" y="148" text-anchor="middle" fill="#c084fc" font-size="8">Σ</text>
+  <text x="280" y="160" text-anchor="middle" fill="#d8b4fe" font-size="6">+b</text>
+  <line x1="305" y1="150" x2="370" y2="150" stroke="#a855f7" stroke-width="2"/>
+  <text x="335" y="145" text-anchor="middle" fill="#c084fc" font-size="7">z=Σwx+b</text>
+  <rect x="370" y="130" width="80" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="410" y="148" text-anchor="middle" fill="#4ade80" font-size="7">activation</text>
+  <text x="410" y="160" text-anchor="middle" fill="#86efac" font-size="6">σ(z)</text>
+  <line x1="450" y1="150" x2="510" y2="150" stroke="#22c55e" stroke-width="2"/>
+  <circle cx="530" cy="150" r="15" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="530" y="155" text-anchor="middle" fill="#fca5a5" font-size="9">ŷ</text>
+  <text x="290" y="225" text-anchor="middle" fill="#94a3b8" font-size="7">McCulloch-Pitts 1943 → Rosenblatt 1958 → Minsky XOR 1969</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Perceptron — ইনপুট × ওজন → যোগফল → activation → আউটপুট।</div>
+
+<div class="code-block">— Python: Perceptron from Scratch —
+
+  import numpy as np
+
+  # Perceptron: y = sigmoid(w·x + b)
+  def sigmoid(z):
+      return 1 / (1 + np.exp(-z))
+
+  # ইনপুট ও ওজন:
+  x = np.array([0.5, 0.3, 0.8])  # ৩টি features
+  w = np.array([0.5, -0.3, 0.8]) # ওজন
+  b = 0.1                         # bias
+
+  z = np.dot(w, x) + b   # Σ wx + b
+  y_hat = sigmoid(z)      # activation
+  print(f"z = {z:.4f}")        # 0.85
+  print(f"y_hat = {y_hat:.4f}")  # 0.70
+
+  # PyTorch equivalent:
+  import torch.nn as nn
+  neuron = nn.Linear(3, 1)  # 3 inputs → 1 output
+  # PyTorch automatically manages weights!
+
+  # XOR problem (Minsky 1969):
+  # Single perceptron CANNOT solve XOR!
+  # (0,0)→0, (1,1)→0, (0,1)→1, (1,0)→1
+  # Linear boundary can't separate — need MLP</div>
+
 <div class="secret-box">💡 <strong>একটি নিউরন = একটি ওজনযুক্ত ভোটগ্রহণ।</strong> প্রতিটি ইনপুট ভোট দেয়, ওজন সেই ভোটের শক্তি নির্ধারণ করে, এবং যদি মোট ভোট থ্রেশহোল্ড পার হয় — নিউরন সিদ্ধান্ত নেয়। কিন্তু একটি ভোটগ্রাহক একা জটিল সিদ্ধান্ত নিতে পারে না। দরকার একটি পরিষদ।</div>`,
   senior: {
     title: "Perceptron এক নজরে",
@@ -99,6 +158,83 @@ doors.push({
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং বলো — হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।" — কুরআন ২০:১১৪</div>
 
 <p class="scene-setting">জ্ঞান বৃদ্ধির এই প্রার্থনা — প্রতিটি iteration-এ নিউরন একটু একটু করে শেখে। ভুল থেকে শেখে। Backpropagation হলো শেখার যন্ত্র — ভুলকে সংকেতে রূপান্তর করে, পেছনে পাঠায়, প্রতিটি নিউরন নিজেকে ঠিক করে। সতেরো বছরের অন্ধকার শেষ। নিউরাল নেটওয়ার্ক ফিরে এলো।</p>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🧠 MLP + Backpropagation: Forward &amp; Backward Pass</text>
+  <circle cx="60" cy="80" r="12" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="60" y="84" text-anchor="middle" fill="#7dd3fc" font-size="7">x1</text>
+  <circle cx="60" cy="140" r="12" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="60" y="144" text-anchor="middle" fill="#7dd3fc" font-size="7">x2</text>
+  <circle cx="60" cy="200" r="12" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="60" y="204" text-anchor="middle" fill="#7dd3fc" font-size="7">x3</text>
+  <text x="35" y="155" text-anchor="middle" fill="#67e8f9" font-size="8" font-weight="700" transform="rotate(-90,35,155)">INPUT</text>
+  <circle cx="200" cy="70" r="12" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
+  <circle cx="200" cy="120" r="12" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
+  <circle cx="200" cy="170" r="12" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
+  <circle cx="200" cy="220" r="12" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
+  <text x="200" y="50" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">HIDDEN 1</text>
+  <circle cx="340" cy="90" r="12" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <circle cx="340" cy="150" r="12" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <circle cx="340" cy="210" r="12" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="340" y="70" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">HIDDEN 2</text>
+  <circle cx="480" cy="140" r="15" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="480" y="145" text-anchor="middle" fill="#fca5a5" font-size="8">ŷ</text>
+  <text x="480" y="115" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">OUTPUT</text>
+  <line x1="72" y1="80" x2="188" y2="70" stroke="#475569" stroke-width="0.5"/>
+  <line x1="72" y1="80" x2="188" y2="120" stroke="#475569" stroke-width="0.5"/>
+  <line x1="72" y1="80" x2="188" y2="170" stroke="#475569" stroke-width="0.5"/>
+  <line x1="72" y1="140" x2="188" y2="120" stroke="#475569" stroke-width="0.5"/>
+  <line x1="72" y1="140" x2="188" y2="170" stroke="#475569" stroke-width="0.5"/>
+  <line x1="72" y1="140" x2="188" y2="220" stroke="#475569" stroke-width="0.5"/>
+  <line x1="72" y1="200" x2="188" y2="170" stroke="#475569" stroke-width="0.5"/>
+  <line x1="72" y1="200" x2="188" y2="220" stroke="#475569" stroke-width="0.5"/>
+  <line x1="212" y1="70" x2="328" y2="90" stroke="#475569" stroke-width="0.5"/>
+  <line x1="212" y1="70" x2="328" y2="150" stroke="#475569" stroke-width="0.5"/>
+  <line x1="212" y1="170" x2="328" y2="150" stroke="#475569" stroke-width="0.5"/>
+  <line x1="212" y1="220" x2="328" y2="210" stroke="#475569" stroke-width="0.5"/>
+  <line x1="352" y1="90" x2="468" y2="140" stroke="#475569" stroke-width="0.5"/>
+  <line x1="352" y1="150" x2="468" y2="140" stroke="#475569" stroke-width="0.5"/>
+  <line x1="352" y1="210" x2="468" y2="140" stroke="#475569" stroke-width="0.5"/>
+  <path d="M 480 155 Q 480 260 60 260 Q 60 220 60 212" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="290" y="275" text-anchor="middle" fill="#fbbf24" font-size="8">← BACKPROP: error flows backward (chain rule) ←</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: MLP — forward pass (left to right), backpropagation (right to left via chain rule)।</div>
+
+<div class="code-block">— PyTorch: MLP + Backpropagation —
+
+  import torch
+  import torch.nn as nn
+
+  # MLP architecture:
+  class MLP(nn.Module):
+      def __init__(self):
+          super().__init__()
+          self.fc1 = nn.Linear(3, 4)   # input → hidden1
+          self.fc2 = nn.Linear(4, 3)   # hidden1 → hidden2
+          self.fc3 = nn.Linear(3, 1)   # hidden2 → output
+          self.relu = nn.ReLU()
+
+      def forward(self, x):
+          x = self.relu(self.fc1(x))   # forward pass
+          x = self.relu(self.fc2(x))
+          x = torch.sigmoid(self.fc3(x))
+          return x
+
+  model = MLP()
+  criterion = nn.BCELoss()  # binary cross entropy
+  optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+
+  # Training loop:
+  for epoch in range(100):
+      y_hat = model(X_train)          # forward
+      loss = criterion(y_hat, y_true) # error
+      optimizer.zero_grad()
+      loss.backward()                 # BACKPROP! chain rule
+      optimizer.step()                # update weights
+
+  # XOR solved! (Minsky 1969 vindicated by Rumelhart 1986)</div>
 
 <div class="secret-box">💡 <strong>Backpropagation = ভুলের প্রতিধ্বনি।</strong> শেষ স্তর বলে "আমি ভুল করেছি।" চেইন রুল সেই ভুলকে পেছনে পাঠায় — প্রতিটি স্তর শুনে নিজের অংশ বুঝতে পারে। এভাবে সবাই মিলে শেখে। কিন্তু এই শেখার পদ্ধতি ছবির জন্য খুব ভালো কাজ করে না — কারণ ছবিতে spatial structure থাকে। সেই সমাধান আসবে পরের দরজায়।</div>`,
   senior: {
@@ -160,6 +296,82 @@ doors.push({
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই আসমান ও পৃথিবীর সৃষ্টিতে, রাত ও দিনের পরিবর্তনে, বুদ্ধিমানদের জন্য নিদর্শন রয়েছে।" — কুরআন ৩:১৯০</div>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩০ (গণিতের কম্পাস) Door ৩:</strong> Matrix multiplication শিখেছিলে — A×B। Convolution এক ধরনের matrix operation, কিন্তু weights shared হয়। এটাই parameter কমানোর রহস্য।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">👁️ CNN: Convolution — Sliding Window Feature Detection</text>
+  <rect x="20" y="50" width="160" height="160" rx="6" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+  <text x="100" y="45" text-anchor="middle" fill="#67e8f9" font-size="8" font-weight="700">Input (5x5)</text>
+  <rect x="30" y="60" width="22" height="22" rx="2" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <rect x="55" y="60" width="22" height="22" rx="2" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <rect x="80" y="60" width="22" height="22" rx="2" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <rect x="105" y="60" width="22" height="22" rx="2" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <rect x="130" y="60" width="22" height="22" rx="2" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <rect x="30" y="85" width="22" height="22" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <rect x="55" y="85" width="22" height="22" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <rect x="80" y="85" width="22" height="22" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="66" y="100" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">3x3 filter</text>
+  <text x="100" y="160" text-anchor="middle" fill="#94a3b8" font-size="7">slides across image</text>
+  <text x="100" y="180" text-anchor="middle" fill="#94a8b8" font-size="6">same weights everywhere</text>
+  <text x="100" y="200" text-anchor="middle" fill="#7dd3fc" font-size="7">(parameter sharing!)</text>
+  <rect x="220" y="80" width="70" height="70" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="255" y="105" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="700">Kernel</text>
+  <text x="255" y="118" text-anchor="middle" fill="#fde68a" font-size="7">3x3</text>
+  <text x="255" y="135" text-anchor="middle" fill="#fde68a" font-size="6">w1 w2 w3</text>
+  <text x="255" y="145" text-anchor="middle" fill="#fde68a" font-size="6">w4 w5 w6</text>
+  <line x1="180" y1="100" x2="220" y2="115" stroke="#fbbf24" stroke-width="1.5"/>
+  <rect x="340" y="50" width="100" height="160" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="390" y="45" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Feature Map</text>
+  <rect x="360" y="60" width="25" height="25" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="372" y="77" text-anchor="middle" fill="#4ade80" font-size="7">0.8</text>
+  <rect x="390" y="60" width="25" height="25" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="402" y="77" text-anchor="middle" fill="#4ade80" font-size="7">0.2</text>
+  <rect x="360" y="90" width="25" height="25" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="372" y="107" text-anchor="middle" fill="#4ade80" font-size="7">0.9</text>
+  <rect x="390" y="90" width="25" height="25" rx="3" fill="#1e293b" stroke="#22c55e" stroke-width="1"/>
+  <text x="402" y="107" text-anchor="middle" fill="#64748b" font-size="7">0.1</text>
+  <line x1="290" y1="115" x2="340" y2="95" stroke="#22c55e" stroke-width="1.5"/>
+  <rect x="470" y="50" width="90" height="50" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="515" y="72" text-anchor="middle" fill="#7dd3fc" font-size="7">Pooling</text>
+  <text x="515" y="85" text-anchor="middle" fill="#94a3b8" font-size="6">2x2 max</text>
+  <rect x="470" y="115" width="90" height="50" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="515" y="137" text-anchor="middle" fill="#c084fc" font-size="7">FC Layer</text>
+  <text x="515" y="150" text-anchor="middle" fill="#94a3b8" font-size="6">classification</text>
+  <rect x="470" y="180" width="90" height="35" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="515" y="202" text-anchor="middle" fill="#fca5a5" font-size="7">cat? dog?</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: CNN convolution — 3x3 filter input-এর উপর স্লাইড করে, feature map তৈরি করে।</div>
+
+<div class="code-block">— PyTorch: CNN (LeNet-style) —
+
+  import torch.nn as nn
+
+  class SimpleCNN(nn.Module):
+      def __init__(self):
+          super().__init__()
+          # Conv layers: feature extraction
+          self.conv1 = nn.Conv2d(3, 16, kernel_size=3, padding=1)
+          self.conv2 = nn.Conv2d(16, 32, kernel_size=3, padding=1)
+          self.pool  = nn.MaxPool2d(2, 2)
+          # FC layers: classification
+          self.fc1 = nn.Linear(32 * 8 * 8, 128)
+          self.fc2 = nn.Linear(128, 10)  # 10 classes
+
+      def forward(self, x):
+          x = self.pool(nn.ReLU()(self.conv1(x)))
+          x = self.pool(nn.ReLU()(self.conv2(x)))
+          x = x.view(-1, 32 * 8 * 8)  # flatten
+          x = nn.ReLU()(self.fc1(x))
+          return self.fc2(x)
+
+  # AlexNet (2012): ImageNet breakthrough
+  # 60M parameters, 5 conv + 3 FC
+  # GPU training = first deep learning win
+
+  # ResNet (2015): skip connection
+  # output = F(x) + x  ← skip!
+  # enables 152-layer networks</div>
 
 <div class="secret-box">👁️ <strong>CNN = ইবন আল-হাইসামের জানালা।</strong> ছোট জানালা দিয়ে পুরো দৃশ্য দেখো — প্রতিটি অংশে একই প্রশ্ন। কোথায় edge? কোথায় texture? কোথায় shape? স্তরে স্তরে প্যাটার্ন জটিল হয় — edge → shape → object। কিন্তু ছবি শুধু স্থানিক নয় — সময়ের সাথেও বদলায়। সেই সমাধান আসবে পরের দরজায়।</div>`,
   senior: {
@@ -227,6 +439,71 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৮ (LLM Anatomy) Door ৫:</strong> LSTM শিখেছিলে pre-Transformer era-এ কীভাবে language model তৈরি হতো। Book ৮-এর Transformer architecture ছিল LSTM-এর উত্তরসূরি। এখন তুমি বুঝবে কেন Transformer LSTM-কে ছাড়িয়ে গেলো।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔗 LSTM: Three Gates Control Memory</text>
+  <rect x="20" y="50" width="540" height="180" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+  <text x="60" y="75" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">t-1</text>
+  <text x="60" y="88" text-anchor="middle" fill="#d8b4fe" font-size="7">prev output</text>
+  <text x="60" y="130" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">C_t-1</text>
+  <text x="60" y="143" text-anchor="middle" fill="#d8b4fe" font-size="7">prev cell state</text>
+  <text x="60" y="200" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="700">x_t</text>
+  <text x="60" y="213" text-anchor="middle" fill="#fde68a" font-size="7">current input</text>
+  <rect x="120" y="60" width="100" height="50" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="170" y="80" text-anchor="middle" fill="#fca5a5" font-size="9">FORGET</text>
+  <text x="170" y="95" text-anchor="middle" fill="#fca5a5" font-size="7">f = σ(Wf·[h,x])</text>
+  <text x="170" y="105" text-anchor="middle" fill="#94a3b8" font-size="6">কী ভুলবে</text>
+  <rect x="240" y="60" width="100" height="50" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="290" y="80" text-anchor="middle" fill="#4ade80" font-size="9">INPUT</text>
+  <text x="290" y="95" text-anchor="middle" fill="#4ade80" font-size="7">i = σ(Wi·[h,x])</text>
+  <text x="290" y="105" text-anchor="middle" fill="#94a3b8" font-size="6">কী মনে রাখবে</text>
+  <rect x="360" y="60" width="100" height="50" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="410" y="80" text-anchor="middle" fill="#7dd3fc" font-size="9">OUTPUT</text>
+  <text x="410" y="95" text-anchor="middle" fill="#7dd3fc" font-size="7">o = σ(Wo·[h,x])</text>
+  <text x="410" y="105" text-anchor="middle" fill="#94a3b8" font-size="6">কী প্রকাশ করবে</text>
+  <rect x="120" y="140" width="340" height="30" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="290" y="160" text-anchor="middle" fill="#fcd34d" font-size="8">Cell State: C_t = f*C_{t-1} + i*C_tilde</text>
+  <text x="290" y="173" text-anchor="middle" fill="#fde68a" font-size="7">(highway for gradient flow — solves vanishing!)</text>
+  <rect x="480" y="120" width="60" height="40" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="510" y="138" text-anchor="middle" fill="#c084fc" font-size="7">h_t</text>
+  <text x="510" y="150" text-anchor="middle" fill="#c084fc" font-size="7">output</text>
+  <rect x="480" y="170" width="60" height="30" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="510" y="190" text-anchor="middle" fill="#c084fc" font-size="7">C_t</text>
+  <text x="510" y="200" text-anchor="middle" fill="#c084fc" font-size="6">→ next</text>
+  <line x1="460" y1="140" x2="480" y2="140" stroke="#a855f7" stroke-width="1.5"/>
+  <line x1="80" y1="130" x2="120" y2="155" stroke="#a855f7" stroke-width="1.5"/>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: LSTM — forget/input/output gate। Cell state একটি highway — gradient সহজে প্রবাহিত।</div>
+
+<div class="code-block">— PyTorch: LSTM —
+
+  import torch.nn as nn
+
+  # LSTM layer:
+  lstm = nn.LSTM(
+      input_size=100,    # embedding dim
+      hidden_size=256,   # LSTM units
+      num_layers=2,      # stacked
+      batch_first=True,
+      dropout=0.3
+  )
+
+  # Forward pass:
+  # x: (batch, seq_len, input_size)
+  output, (h_n, c_n) = lstm(x)
+  # output: (batch, seq_len, hidden_size)
+  # h_n: last hidden state
+  # c_n: last cell state
+
+  # Vanishing gradient problem:
+  # RNN: gradient × W repeated → shrinks to 0
+  # LSTM: cell state highway → gradient flows!
+
+  # GRU (2014): simplified LSTM
+  # merge forget + input → update gate
+  # fewer parameters, similar performance</div>
+
 <div class="secret-box">🔗 <strong>LSTM = স্মৃতির রক্ষক।</strong> তিনটি দরজা — ভুলে যাওয়া, মনে রাখা, প্রকাশ করা। প্রতিটি দরজা sigmoid দিয়ে নিয়ন্ত্রিত — ০ থেকে ১। এই গেটিং মেকানিজমই দীর্ঘ স্মৃতির রহস্য। কিন্তু sequence একটার পর একটা প্রক্রিয়া করতে হয় — ধীর। কী হবে যদি সব শব্দ একসাথে দেখে? সেটাই পরের দরজার বিপ্লব।</div>`,
   senior: {
     title: "RNN + LSTM এক নজরে",
@@ -291,6 +568,97 @@ Attention স্কোর = softmax(QKᵀ / √dₖ) × V</div></div>
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৮ (LLM Anatomy):</strong> Door ৪-এ তুমি Transformer architecture দেখেছিলে — encoder + decoder। এখন তুমি বোঝো কেন self-attention কেন্দ্রীয়। Book ১২ (AI Agents) Door ৩-এ ReAct loop দেখেছিলে — সেখানেও attention কাজ করে। এই দরজাটি সেই ভিত্তি।</div></div>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ১৮ (Embeddings) Door ৩:</strong> Q, K, V হলো embedding vectors — তুমি embeddings শিখেছিলে সেখানে। এখন সেই embeddings attention-এ কাজ করছে।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚡ Transformer: Self-Attention (Vaswani 2017)</text>
+  <rect x="20" y="50" width="80" height="200" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="60" y="72" text-anchor="middle" fill="#67e8f9" font-size="7" font-weight="700">INPUT</text>
+  <rect x="30" y="82" width="60" height="18" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="60" y="95" text-anchor="middle" fill="#7dd3fc" font-size="6">"The"</text>
+  <rect x="30" y="105" width="60" height="18" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="60" y="118" text-anchor="middle" fill="#7dd3fc" font-size="6">"cat"</text>
+  <rect x="30" y="128" width="60" height="18" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="60" y="141" text-anchor="middle" fill="#7dd3fc" font-size="6">"sat"</text>
+  <rect x="30" y="151" width="60" height="18" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="60" y="164" text-anchor="middle" fill="#7dd3fc" font-size="6">"on"</text>
+  <rect x="30" y="174" width="60" height="18" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="60" y="187" text-anchor="middle" fill="#7dd3fc" font-size="6">"mat"</text>
+  <text x="60" y="220" text-anchor="middle" fill="#94a3b8" font-size="6">all at once</text>
+  <text x="60" y="235" text-anchor="middle" fill="#4ade80" font-size="6">(parallel!)</text>
+  <rect x="140" y="50" width="80" height="60" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="180" y="72" text-anchor="middle" fill="#4ade80" font-size="8">Q (Query)</text>
+  <text x="180" y="88" text-anchor="middle" fill="#86efac" font-size="7">কী খুঁজছি</text>
+  <rect x="140" y="120" width="80" height="60" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="180" y="142" text-anchor="middle" fill="#fcd34d" font-size="8">K (Key)</text>
+  <text x="180" y="158" text-anchor="middle" fill="#fde68a" font-size="7">আমি কী</text>
+  <rect x="140" y="190" width="80" height="50" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="180" y="210" text-anchor="middle" fill="#c084fc" font-size="8">V (Value)</text>
+  <text x="180" y="225" text-anchor="middle" fill="#d8b4fe" font-size="7">আমার অর্থ</text>
+  <line x1="100" y1="100" x2="140" y2="80" stroke="#22c55e" stroke-width="1"/>
+  <line x1="100" y1="120" x2="140" y2="150" stroke="#fbbf24" stroke-width="1"/>
+  <line x1="100" y1="180" x2="140" y2="210" stroke="#a855f7" stroke-width="1"/>
+  <rect x="260" y="55" width="120" height="180" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2.5"/>
+  <text x="320" y="78" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">ATTENTION</text>
+  <text x="320" y="95" text-anchor="middle" fill="#d8b4fe" font-size="8">softmax(QK^T / √d)</text>
+  <rect x="275" y="105" width="90" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="320" y="122" text-anchor="middle" fill="#7dd3fc" font-size="6">cat←sat: 0.8</text>
+  <rect x="275" y="135" width="90" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="320" y="152" text-anchor="middle" fill="#7dd3fc" font-size="6">sat←cat: 0.7</text>
+  <rect x="275" y="165" width="90" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="320" y="182" text-anchor="middle" fill="#7dd3fc" font-size="6">mat←on: 0.9</text>
+  <text x="320" y="210" text-anchor="middle" fill="#94a3b8" font-size="6">attention weights</text>
+  <text x="320" y="225" text-anchor="middle" fill="#94a3b8" font-size="6">x V = output</text>
+  <line x1="220" y1="80" x2="260" y2="100" stroke="#22c55e" stroke-width="1"/>
+  <line x1="220" y1="150" x2="260" y2="120" stroke="#fbbf24" stroke-width="1"/>
+  <rect x="420" y="100" width="140" height="90" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="490" y="125" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">OUTPUT</text>
+  <text x="490" y="145" text-anchor="middle" fill="#86efac" font-size="7">rich embeddings</text>
+  <text x="490" y="160" text-anchor="middle" fill="#86efac" font-size="7">context-aware</text>
+  <text x="490" y="175" text-anchor="middle" fill="#86efac" font-size="7">→ FFN → next layer</text>
+  <line x1="380" y1="145" x2="420" y2="145" stroke="#22c55e" stroke-width="2"/>
+  <text x="490" y="220" text-anchor="middle" fill="#94a3b8" font-size="7">Multi-head: 8-96 parallel attentions</text>
+  <text x="490" y="235" text-anchor="middle" fill="#fbbf24" font-size="6">GPT-4: ~120 layers</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Self-Attention — প্রতিটি শব্দ সব শব্দের দিকে তাকায়। Q×K = গুরুত্ব, ×V = অর্থ। সমান্তরাল!।</div>
+
+<div class="code-block">— PyTorch: Self-Attention —
+
+  import torch
+  import torch.nn as nn
+  import math
+
+  class SelfAttention(nn.Module):
+      def __init__(self, d_model=512, n_heads=8):
+          super().__init__()
+          self.n_heads = n_heads
+          self.d_k = d_model // n_heads
+          self.W_q = nn.Linear(d_model, d_model)
+          self.W_k = nn.Linear(d_model, d_model)
+          self.W_v = nn.Linear(d_model, d_model)
+
+      def forward(self, x):
+          Q = self.W_q(x)  # (batch, seq, d_model)
+          K = self.W_k(x)
+          V = self.W_v(x)
+
+          # Attention: softmax(QK^T / sqrt(d_k)) * V
+          scores = torch.matmul(Q, K.transpose(-2, -1))
+          scores = scores / math.sqrt(self.d_k)
+          attn = torch.softmax(scores, dim=-1)
+          output = torch.matmul(attn, V)
+          return output
+
+  # HuggingFace GPT-2:
+  from transformers import GPT2Model
+  model = GPT2Model.from_pretrained("gpt2")
+  # 12 layers, 12 heads, 768 d_model
+  # 124M parameters
+
+  # "Attention Is All You Need" (2017)
+  # → BERT, GPT, T5, Claude, ChatGPT
+  # All built on this exact mechanism</div>
 
 <div class="secret-box">⚡ <strong>Transformer = একসাথে দেখার ক্ষমতা।</strong> প্রতিটি শব্দ সব শব্দের দিকে তাকায়, গুরুত্ব নির্ধারণ করে, অর্থ গ্রহণ করে। কোনো অপেক্ষা নেই, কোনো ভুলে যাওয়া নেই। এটাই ২০১৭ সালের বিপ্লব — এবং এটাই সেই যন্ত্র যা GPT, BERT, এবং তুমি যা যা ব্যবহার করছো তার সবকিছুর মূল। কিন্তু এই বিপ্লবের পরে একটি নতুন সমস্যা এলো — কী করবে যখন একই জিনিস তৈরি করতে হবে? সেই যাত্রা শুরু হবে পরের দরজায়।</div>`,
   senior: {
