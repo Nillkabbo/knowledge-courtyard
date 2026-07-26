@@ -39,6 +39,52 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🌤️</span><div><strong>সুসংবাদ — Learned Optimism (1991):</strong> helplessness-এর মতো optimism-ও শেখা যায়। উপায় — explanatory style বদলানো: "আমি বোকা" → "ভালো প্রস্তুতি নিইনি"; "সবসময় fail করে" → "এই নির্দিষ্ট চেষ্টাটা fail করেছে"; "সব ভুল" → "এই একটা জিনিস ভুল"। Optimism বিভ্রম নয় — এটা সঠিক মূল্যায়ন যে setback নির্দিষ্ট, সাময়িক ও বাহ্যিক। ("Pet the dog" — কেউ তোমাকে দেখিয়ে দিলে যে পালানো সম্ভব, তখন তুমি বিশ্বাস করো।)</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arr-d1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect width="580" height="320" fill="#0f172a"/>
+<text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="700">Learned Helplessness — The 3 P's (Seligman)</text>
+<line x1="290" y1="40" x2="290" y2="78" stroke="#64748b" stroke-width="2" marker-end="url(#arr-d1)"/>
+<circle cx="290" cy="50" r="22" fill="#7f1d1d" stroke="#fca5a5" stroke-width="2"/>
+<text x="290" y="55" text-anchor="middle" fill="#fee2e2" font-size="11" font-weight="700">SETBACK</text>
+<g><rect x="40" y="100" width="150" height="80" rx="10" fill="#312e81" stroke="#a5b4fc" stroke-width="1.5"/>
+<text x="115" y="125" text-anchor="middle" fill="#c7d2fe" font-size="13" font-weight="700">Permanent</text>
+<text x="115" y="148" text-anchor="middle" fill="#e0e7ff" font-size="10">"এমনই থাকবে"</text>
+<text x="115" y="165" text-anchor="middle" fill="#a5b4fc" font-size="9">(always)</text></g>
+<g><rect x="215" y="100" width="150" height="80" rx="10" fill="#581c87" stroke="#d8b4fe" stroke-width="1.5"/>
+<text x="290" y="125" text-anchor="middle" fill="#e9d5ff" font-size="13" font-weight="700">Pervasive</text>
+<text x="290" y="148" text-anchor="middle" fill="#f3e8ff" font-size="10">"সব কিছুতে"</text>
+<text x="290" y="165" text-anchor="middle" fill="#d8b4fe" font-size="9">(everything)</text></g>
+<g><rect x="390" y="100" width="150" height="80" rx="10" fill="#7c2d12" stroke="#fdba74" stroke-width="1.5"/>
+<text x="465" y="125" text-anchor="middle" fill="#fed7aa" font-size="13" font-weight="700">Personal</text>
+<text x="465" y="148" text-anchor="middle" fill="#ffedd5" font-size="10">"আমার দোষ"</text>
+<text x="465" y="165" text-anchor="middle" fill="#fdba74" font-size="9">(me)</text></g>
+<line x1="115" y1="180" x2="115" y2="215" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr-d1)"/>
+<line x1="290" y1="180" x2="290" y2="215" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr-d1)"/>
+<line x1="465" y1="180" x2="465" y2="215" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr-d1)"/>
+<rect x="100" y="218" width="380" height="60" rx="10" fill="#052e16" stroke="#86efac" stroke-width="2"/>
+<text x="290" y="242" text-anchor="middle" fill="#bbf7d0" font-size="13" font-weight="700">3 P's একসাথে = Clinical Depression</text>
+<text x="290" y="262" text-anchor="middle" fill="#86efac" font-size="10">প্রতিটা P চ্যালেঞ্জ করো → reversal সম্ভব (Maier 2016)</text>
+<text x="290" y="295" text-anchor="middle" fill="#94a3b8" font-size="9" font-style="italic">Permanence × Pervasiveness × Personal → Helplessness</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Learned Helplessness-এর তিন উপাদান (Seligman). Three P's of helplessness.</div>
+
+<div class="code-block">Seligman Explanatory Style — Self-Test (count your pattern)
+──────────────────────────────────────────────────────────────────────
+When something bad happens, do you say:
+  P  "এটা সবসময়ই হয়"            (Permanent)    → "এই বার হলো"
+  P  "সব কিছুতে এমন"             (Pervasive)    → "শুধু এই কাজে"
+  P  "আমি বোকা/অক্ষম"           (Personal)     → "আমি প্রস্তুতি নিইনি"
+
+Reframing (Learned Optimism, Seligman 1991):
+  Bad event → specific, temporary, external
+  "Math পরীক্ষায় কাটছিল"     ≠  "আমি বোকা"
+  "এই চেষ্টায় প্রস্তুতি কম"   ≠  "আমি কিছুতেই পারি না"
+──────────────────────────────────────────────────────────────────────
+# Reversal proof (Maier 2016): DRN serotonin surge কমালে helplessness
+# উল্টায়। "Pet the dog" — কেউ দেখালে পালানোর রাস্তা, কুকুর উঠে দাঁড়ায়।</div>
+
 <div class="dialogue">নফস আম্মারা — আত্মসমর্পণকারী মন। কুরআনে আল্লাহ বলেন — "নিশ্চয় মানুষের মন খুব কঠোরভাবে খারাপ আদেশ দেয়।" (১২:৫৩)। নফস আম্মারা হলো সেই অবস্থা যেখানে মন বলে — চেষ্টা কোরো না, কিছু হবে না, তুমি পারবে না। Seligman-এর কুকুরের মতো — শুয়ে থাকো। কিন্তু কুরআন আরও বলে — "যারা জিহাদ করে (চেষ্টা করে), আমি তাদের আমার পথ দেখাই।" (২৯:৬৯)। চেষ্টা = শেখানোর শর্ত। নফস আম্মারা থেকে নফস মুতমাইন্না (প্রশান্ত মন) — এটাই যাত্রা। সম্ভব। প্রমাণিত।</div>
 <div class="dialogue en">"Nafs Ammara — the self that commands to surrender. The Quran says — 'The human soul certainly commands evil.' (12:53). Nafs Ammara is the state where the mind says — don't try, nothing will happen, you can't. Like Seligman's dog — lie down. But the Quran also says — 'Those who strive, We show them Our paths.' (29:69). Effort = the condition for learning. From Nafs Ammara to Nafs Mutma'innah (the tranquil self) — this is the journey. Possible. Proven."</div>`,
   senior:{
@@ -77,6 +123,67 @@ doors.push({
 <div class="callout warn"><span class="co-icon">🎭</span><div><strong>Combination attack:</strong> নিয়ন্ত্রকরা নীতিগুলো একসাথে stack করে। Cult recruitment: Unity ("আমরা family") → Reciprocity ("free meal") → Social proof ("সবাই খুশি") → Authority ("নেতা সত্য জানেন") → Commitment ("কেন যোগ দিলে লেখো") → Scarcity ("পৃথিবী শেষ, শুধু আমরা বাঁচাতে পারি") → Liking ("আমরা তোমাকে ভালোবাসি")। প্রতিটা principle চিনতে না পারলে বের হওয়া প্রায় অসম্ভব।</div></div>
 
 <div class="callout info"><span class="co-icon">🧠</span><div><strong>মস্তিষ্ক কেন এতে ধরা দেয়:</strong> এগুলো decision shortcut — প্রতিদিন হাজার সিদ্ধান্ত বিশ্লেষণ করলে মস্তিষ্ক ক্লান্ত হয়, তাই shortcut। authority-র সামনে prefrontal cortex (নৈতিক যুক্তি) কার্যত বন্ধ হয়ে যায়; in-group-এ oxytocin critical thinking কমায়। <strong>নিয়ম: যেকোনো বড় সিদ্ধান্তে ২৪ ঘণ্টা delay — manipulation দিনের আলোয় মরে যায়।</strong></div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arr-d2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect width="580" height="340" fill="#0f172a"/>
+<text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="700">Emotional Intelligence — Recognize Your Body Signal</text>
+<text x="290" y="48" text-anchor="middle" fill="#94a3b8" font-size="10">Goleman's 4 domains — self-awareness is the gateway</text>
+<g><rect x="30" y="70" width="120" height="100" rx="10" fill="#0c4a6e" stroke="#7dd3fc" stroke-width="1.5"/>
+<text x="90" y="95" text-anchor="middle" fill="#bae6fd" font-size="12" font-weight="700">SELF</text>
+<text x="90" y="115" text-anchor="middle" fill="#e0f2fe" font-size="11">AWARENESS</text>
+<text x="90" y="140" text-anchor="middle" fill="#7dd3fc" font-size="9">"কী অনুভব"</text>
+<text x="90" y="155" text-anchor="middle" fill="#7dd3fc" font-size="9">"করছি?"</text></g>
+<g><rect x="165" y="70" width="120" height="100" rx="10" fill="#312e81" stroke="#a5b4fc" stroke-width="1.5"/>
+<text x="225" y="95" text-anchor="middle" fill="#c7d2fe" font-size="12" font-weight="700">SELF</text>
+<text x="225" y="115" text-anchor="middle" fill="#e0e7ff" font-size="11">MANAGE</text>
+<text x="225" y="140" text-anchor="middle" fill="#a5b4fc" font-size="9">gap-এ</text>
+<text x="225" y="155" text-anchor="middle" fill="#a5b4fc" font-size="9">থামো</text></g>
+<g><rect x="300" y="70" width="120" height="100" rx="10" fill="#581c87" stroke="#d8b4fe" stroke-width="1.5"/>
+<text x="360" y="95" text-anchor="middle" fill="#e9d5ff" font-size="12" font-weight="700">SOCIAL</text>
+<text x="360" y="115" text-anchor="middle" fill="#f3e8ff" font-size="11">AWARENESS</text>
+<text x="360" y="140" text-anchor="middle" fill="#d8b4fe" font-size="9">অন্যের</text>
+<text x="360" y="155" text-anchor="middle" fill="#d8b4fe" font-size="9">intent পড়ো</text></g>
+<g><rect x="435" y="70" width="120" height="100" rx="10" fill="#7c2d12" stroke="#fdba74" stroke-width="1.5"/>
+<text x="495" y="95" text-anchor="middle" fill="#fed7aa" font-size="12" font-weight="700">RELATION-</text>
+<text x="495" y="115" text-anchor="middle" fill="#ffedd5" font-size="11">SHIP</text>
+<text x="495" y="140" text-anchor="middle" fill="#fdba74" font-size="9">সীমা</text>
+<text x="495" y="155" text-anchor="middle" fill="#fdba74" font-size="9">টানো</text></g>
+<text x="290" y="200" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700">Manipulation-এর Body Signals (২৪ ঘণ্টা rule)</text>
+<g><rect x="40" y="215" width="250" height="110" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+<text x="165" y="235" text-anchor="middle" fill="#f87171" font-size="11" font-weight="700">⚠️ URGENCY SIGNALS</text>
+<text x="50" y="255" fill="#cbd5e1" font-size="10">• বুকে চাপ / গলা শুকিয়ে যাওয়া</text>
+<text x="50" y="272" fill="#cbd5e1" font-size="10">• পেটে নড়াচড়া (gut punch)</text>
+<text x="50" y="289" fill="#cbd5e1" font-size="10">• হাত ঠান্ডা / ঘাম</text>
+<text x="50" y="306" fill="#fbbf24" font-size="10" font-style="italic">→ চিন → pause → Cialdini check</text></g>
+<g><rect x="300" y="215" width="250" height="110" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+<text x="425" y="235" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">✅ GROUNDED SIGNALS</text>
+<text x="310" y="255" fill="#cbd5e1" font-size="10">• শ্বাস গভীর, মন পরিষ্কার</text>
+<text x="310" y="272" fill="#cbd5e1" font-size="10">• পেশি শিথিল</text>
+<text x="310" y="289" fill="#cbd5e1" font-size="10">• নিজের মূল্যবোধে স্থির</text>
+<text x="310" y="306" fill="#fbbf24" font-size="10" font-style="italic">→ decide সময় নাও</text></g>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: আবেগজ্ঞানের চার স্তর ও ম্যানিপুলেশন-সংকেত। Four EI domains + body cues.</div>
+
+<div class="code-block">Emotional Intelligence — Cialdini Trigger Check (24h Rule)
+──────────────────────────────────────────────────────────────────────
+Feeling pressured? Run this checklist (any YES = pause 24 hours):
+
+  [ ]  ঋণী বোধ?        → Reciprocity trap  (free meal, gift, favor)
+  [ ]  ধারাবাহিকতা চাপ?  → Commitment lock   ("you said last week...")
+  [ ]  "সবাই করছে"?     → Social proof      (popularity != truth)
+  [ ]  title/uniform?   → Authority bias    (Milgram 1961: 65% obeyed)
+  [ ]  ভালোবাসো বলে?    → Liking exploit    (separate person / offer)
+  [ ]  "শেষ সুযোগ"?      → Scarcity fake     (real value doesn't expire)
+  [ ]  "আমরা family"?    → Unity bypass      (identity != shared truth)
+
+Body signal log (nightly, 2 minutes):
+  time | trigger | body cue | which principle | decision (delayed/y/n)
+  09:15 | boss "now" | gut punch | authority | delayed 24h
+──────────────────────────────────────────────────────────────────────
+# Goleman: EQ 4x stronger predictor of success than IQ (1995).</div>
 
 <div class="dialogue">গাসল — covering, concealing, deception। কুরআনে আল্লাহ বলেন — "শয়তান তাদের কাজ সুশোভন করে তোলে।" (১৬:৬৩)। গাসল হলো সত্যকে ঢেকে রেখে মিথ্যা সুন্দর করে দেখানো। Cialdini-র নীতিগুলো গাসলের বিজ্ঞান — প্রতিটা shortcut মানুষের মস্তিষ্কের দুর্বলতা যা নিয়ন্ত্রক ব্যবহার করে। কিন্তু যে জানে, সে দেখে। যে দেখে, সে প্রতিরোধ করে। গাসল থেকে কাশফ (প্রকাশ) — এটাই সচেতনতার পথ।</div>
 <div class="dialogue en">"Ghasl — covering, concealing, deception. Allah says — 'Satan makes their deeds appear fair to them.' (16:63). Ghasl is hiding truth while making falsehood appear beautiful. Cialdini's principles are the science of ghasl — each shortcut is a brain vulnerability that controllers exploit. But one who knows, sees. One who sees, resists. From ghasl to kashf (uncovering) — this is the path of awareness."</div>`,
@@ -121,6 +228,64 @@ doors.push({
 <div class="callout warn"><span class="co-icon">🎯</span><div><strong>মূল আবিষ্কার:</strong> "control-এর অভাবের অনুভূতি" = #১ stressor, প্রকৃত কষ্টের চেয়েও বেশি। control-হীন middle manager বিশাল কাজের CEO-র চেয়ে বেশি stressed। <strong>Workload নয়, control-ই আসল।</strong> (তুলনীয়: Zimbardo Stanford Prison 1971 — random ক্ষমতা ২ দিনে guard-দের sadistic করে; Milgram 1961 — ৬৫% authority-র আদেশে ক্ষতিকর কাজ করে।)</div></div>
 
 <div class="callout tip"><span class="co-icon">🕊️</span><div><strong>প্রতিষেধক — servant leadership:</strong> Keltner-এর গবেষণা বলে ক্ষমতা <em>টেকে</em> শুধু তখনই যখন empathy ধরে রাখা হয় — সচেতনভাবে perspective-taking চর্চা করো, ground truth-এর (user, front line) সাথে যুক্ত থাকো, dissent আমন্ত্রণ করো (yes-men নয়)। যারা টেকে, তারা ক্ষমতার মস্তিষ্ক-পরিবর্তনকে সচেতনভাবে প্রতিরোধ করে — নম্রতা ও শোনাকে বেছে নেয়।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arr-d3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect width="580" height="320" fill="#0f172a"/>
+<text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="700">Power Paradox — What Power Does to the Brain</text>
+<g><rect x="40" y="55" width="240" height="120" rx="12" fill="#052e16" stroke="#86efac" stroke-width="2"/>
+<text x="160" y="80" text-anchor="middle" fill="#bbf7d0" font-size="13" font-weight="700">BEFORE POWER</text>
+<text x="55" y="105" fill="#dcfce7" font-size="11">✓ empathy high (mirror neuron সক্রিয়)</text>
+<text x="55" y="125" fill="#dcfce7" font-size="11">✓ generosity, collaboration</text>
+<text x="55" y="145" fill="#dcfce7" font-size="11">✓ perspective-taking</text>
+<text x="55" y="165" fill="#86efac" font-size="10" font-style="italic">→ মানুষ স্বেচ্ছায় অনুসরণ করে</text></g>
+<g><rect x="310" y="55" width="240" height="120" rx="12" fill="#7f1d1d" stroke="#fca5a5" stroke-width="2"/>
+<text x="430" y="80" text-anchor="middle" fill="#fee2e2" font-size="13" font-weight="700">AFTER POWER</text>
+<text x="325" y="105" fill="#fecaca" font-size="11">✗ empathy কমে (PFC নিষ্ক্রিয়)</text>
+<text x="325" y="125" fill="#fecaca" font-size="11">✗ impulsivity বাড়ে</text>
+<text x="325" y="145" fill="#fecaca" font-size="11">✗ অন্যের ব্যথায় অন্ধ</text>
+<text x="325" y="165" fill="#fca5a5" font-size="10" font-style="italic">→ এমন মানুষ হয় যাকে কেউ ফলো করত না</text></g>
+<line x1="280" y1="115" x2="310" y2="115" stroke="#fbbf24" stroke-width="3" marker-end="url(#arr-d3)"/>
+<text x="290" y="200" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="700">The Sapolsky Hierarchy — Stress by Rank</text>
+<g><rect x="40" y="215" width="170" height="85" rx="8" fill="#312e81" stroke="#a5b4fc" stroke-width="1"/>
+<text x="125" y="238" text-anchor="middle" fill="#c7d2fe" font-size="12" font-weight="700">HIGH RANK (stable)</text>
+<text x="55" y="258" fill="#e0e7ff" font-size="10">কম cortisol, control</text>
+<text x="55" y="275" fill="#e0e7ff" font-size="10">কিন্তু empathy loss risk</text>
+<text x="55" y="290" fill="#a5b4fc" font-size="9" font-style="italic">→ servant-leader থাকো</text></g>
+<g><rect x="220" y="215" width="170" height="85" rx="8" fill="#7c2d12" stroke="#fdba74" stroke-width="1"/>
+<text x="305" y="238" text-anchor="middle" fill="#fed7aa" font-size="12" font-weight="700">MIDDLE (no control)</text>
+<text x="235" y="258" fill="#ffedd5" font-size="10">সবচেয়ে বেশি stressed</text>
+<text x="235" y="275" fill="#ffedd5" font-size="10">Whitehall: ৩x হৃদরোগ</text>
+<text x="235" y="290" fill="#fdba74" font-size="9" font-style="italic">→ control খোঁজো</text></g>
+<g><rect x="400" y="215" width="170" height="85" rx="8" fill="#7f1d1d" stroke="#fca5a5" stroke-width="1"/>
+<text x="485" y="238" text-anchor="middle" fill="#fee2e2" font-size="12" font-weight="700">LOW RANK</text>
+<text x="415" y="258" fill="#fecaca" font-size="10">chronic cortisol spike</text>
+<text x="415" y="275" fill="#fecaca" font-size="10">hippocampus shrink</text>
+<text x="415" y="290" fill="#fca5a5" font-size="9" font-style="italic">→ small wins (Bandura)</text></g>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: ক্ষমতা ও পদমর্যাদার স্নায়বিজ্ঞান (Keltner + Sapolsky). Power & hierarchy neuroscience.</div>
+
+<div class="code-block">Power Dynamics — Stress-by-Control Audit (Sapolsky / Whitehall)
+──────────────────────────────────────────────────────────────────────
+Question                    Low control     High control
+─────────────────────────── ─────────────── ───────────────
+কাজের ধারা কে ঠিক করে?      অন্য কেউ        আমি
+কখন বিরতি নেবে?             নিয়ম করে দেয়    আমি বলি
+কোন task করবে?              assigned        choose
+ভুল হলে কার consequences?   আমার উপর        shared
+─────────────────────────── ─────────────── ───────────────
+Health impact (Marmot Whitehall, 1967+):
+  lowest rank → 3x cardiac mortality (vs highest, same healthcare)
+  "control-হীনতা" = #1 stressor, &gt; workload, &gt; smoking
+
+Self-check: list 5 daily tasks. Mark C (you control) or N (not).
+  N-count &gt; 3  → your cortisol profile resembles a low-rank baboon.
+  Fix: reclaim ONE control-point this week (when/how/what).
+──────────────────────────────────────────────────────────────────────
+# Keltner (2003) "cookie experiment": random "leader" ate more,
+# took the last cookie without asking. Power corrupts even randomly.</div>
 
 <div class="dialogue">সুলতান আন-নাফস — sovereignty over the self। সুফি ঐতিহ্যে সর্বোচ্চ স্তর — নিজের মনের উপর সম্পূর্ণ সার্বভৌমত্ব। কুরআনে আল্লাহ বলেন — "নিশ্চয় আল্লাহ তাদের ভালোবাসেন যারা তাদের মনকে নিয়ন্ত্রণ করে।" Keltner দেখালেন — বাইরের ক্ষমতা যদি চিত্তবিনোদনমূলক হয়, ভেতরের ক্ষমতা ধ্বংস হয়। কিন্তু যে নিজের মনের সুলতান, সে বাইরের ক্ষমতায় অহংকারী হয় না। সুলতান আন-নাফস — আত্মসার্বভৌমত্ব, বাইরের ক্ষমতা নয়।</div>
 <div class="dialogue en">"Sultan an-Nafs — sovereignty over the self. In Sufi tradition, the highest level — complete sovereignty over one's own mind. Allah says — 'Allah loves those who control themselves.' Keltner showed — external power, if intoxicating, destroys internal power. But one who is sultan of their own mind, doesn't become arrogant with external power. Sultan an-Nafs — self-sovereignty, not external power."</div>`,
@@ -167,6 +332,70 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🧭</span><div><strong>বেরোনোর পথ:</strong> ① <strong>লিখে রাখো</strong> — কী ঘটল, কখন, কী বলা হলো; এই record gaslighting-প্রতিরোধী। ② <strong>অন্যদের সাথে reconnect</strong> — "এটা কি স্বাভাবিক শোনায়?" ③ <strong>শরীরকে বিশ্বাস করো</strong> — tension, dread মিথ্যা বলে না। ④ <strong>Professional help</strong> — therapist objective reality-check; CBT self-trust পুনর্গঠন করে। ⑤ <strong>সব document করো।</strong> মনে রেখো — confusion-ই gaslighting-এর <em>উপসর্গ</em>, তোমার অক্ষমতার প্রমাণ নয়।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arr-d4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect width="580" height="340" fill="#0f172a"/>
+<text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="700">Gaslighting — The Anxiety Spiral (Stern, 2007)</text>
+<g><circle cx="120" cy="100" r="42" fill="#7f1d1d" stroke="#fca5a5" stroke-width="2"/>
+<text x="120" y="95" text-anchor="middle" fill="#fee2e2" font-size="10" font-weight="700">STAGE 1</text>
+<text x="120" y="110" text-anchor="middle" fill="#fecaca" font-size="9">Disproof</text>
+<text x="120" y="165" text-anchor="middle" fill="#94a3b8" font-size="8">"সেটা ঘটেনি"</text></g>
+<g><circle cx="290" cy="100" r="42" fill="#581c87" stroke="#d8b4fe" stroke-width="2"/>
+<text x="290" y="95" text-anchor="middle" fill="#e9d5ff" font-size="10" font-weight="700">STAGE 2</text>
+<text x="290" y="110" text-anchor="middle" fill="#f3e8ff" font-size="9">Confusion</text>
+<text x="290" y="165" text-anchor="middle" fill="#94a3b8" font-size="8">"হয়তো ভুল?"</text></g>
+<g><circle cx="460" cy="100" r="42" fill="#7c2d12" stroke="#fdba74" stroke-width="2"/>
+<text x="460" y="95" text-anchor="middle" fill="#fed7aa" font-size="10" font-weight="700">STAGE 3</text>
+<text x="460" y="110" text-anchor="middle" fill="#ffedd5" font-size="9">Dependence</text>
+<text x="460" y="165" text-anchor="middle" fill="#94a3b8" font-size="8">"তারাই ঠিক"</text></g>
+<line x1="162" y1="100" x2="248" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#arr-d4)"/>
+<line x1="332" y1="100" x2="418" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#arr-d4)"/>
+<line x1="460" y1="142" x2="120" y2="142" stroke="#64748b" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-d4)"/>
+<text x="290" y="155" text-anchor="middle" fill="#64748b" font-size="8" font-style="italic">(loop)</text>
+<text x="290" y="200" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700">Anxiety Symptoms — শরীর মিথ্যা বলে না</text>
+<g><rect x="40" y="215" width="250" height="110" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+<text x="165" y="235" text-anchor="middle" fill="#f87171" font-size="11" font-weight="700">⚠️ FEAR / ANXIETY (amygdala)</text>
+<text x="50" y="255" fill="#cbd5e1" font-size="10">• hypervigilance — সব কিছু স্ক্যান</text>
+<text x="50" y="272" fill="#cbd5e1" font-size="10">• chronic dread — কিছু খারাপ হবে</text>
+<text x="50" y="289" fill="#cbd5e1" font-size="10">• ঘুম নষ্ট, ক্লান্তি, tension</text>
+<text x="50" y="310" fill="#fbbf24" font-size="10" font-style="italic">→ body = anchor, mind = corrupted</text></g>
+<g><rect x="300" y="215" width="250" height="110" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+<text x="425" y="235" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">🧭 RECOVERY ANCHORS</text>
+<text x="310" y="255" fill="#cbd5e1" font-size="10">① লিখে রাখো (date, quote, fact)</text>
+<text x="310" y="272" fill="#cbd5e1" font-size="10">② external reality-check (friend)</text>
+<text x="310" y="289" fill="#cbd5e1" font-size="10">③ body signal trust (gut, sleep)</text>
+<text x="310" y="310" fill="#86efac" font-size="10" font-style="italic">④ therapist — CBT rebuilds self-trust</text></g>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: গ্যাসলাইটিং চক্র ও উদ্বেগের লক্ষণ। Gaslighting spiral + anxiety body cues.</div>
+
+<div class="code-block">Gaslighting Recovery — Reality Anchor Journal (Stern 2007)
+──────────────────────────────────────────────────────────────────────
+Template (fill nightly, 3 minutes):
+
+  DATE: ____  EVENT: _____________________________
+  WHAT I SAW/HEARD: ________________________________
+  WHAT THEY SAID LATER: ____________________________
+  DISCREPANCY? (y/n): ___  BODY CUE: _______________
+  OUTSIDE CHECK (did I ask someone?): ______________
+
+Red-flag phrases (Stern's gaslight inventory):
+  "তুমি বড্ড sensitive হয়ে গেছ"      → minimization
+  "সেটা কখনোই ঘটেনি"            → flat denial
+  "তুমি ভুল মনে করছ"             → memory doubt
+  "সবাই তোমাকে এড়িয়ে চলে"      → social isolation
+  "তুমি পাগল হয়ে যাচ্ছ"          → reality theft
+
+Weekly review (Sunday):
+  count discrepancies → pattern or one-off?
+  count body-cue days → chronic anxiety = GT signal
+  one action this week: reconnect / document / boundary
+──────────────────────────────────────────────────────────────────────
+# Stark (2007) coercive control: GT is part of a pattern,
+# not isolated. UK 2015: criminal offense. CBT rebuilds
+# self-trust in 12-16 weeks (Beck Institute).</div>
+
 <div class="dialogue">তাদলিস — deception, fraud, misleading। ইসলামী ফিকহে তাদলিস একটা গুরুতর অপরাধ — কাউকে মিথ্যা বিশ্বাস গ্রহণ করানো। কুরআনে আল্লাহ বলেন — "শয়তান তাদের কাজ সুশোভন করে তোলে।" (১৬:৬৩)। Gaslighting হলো তাদলিসের সবচেয়ে গভীর রূপ — কাউকে তার নিজের বাস্তবতা থেকে বিচ্ছিন্ন করা। কিন্তু কুরআন আরও বলে — "সত্য এসেছে, মিথ্যা বিলুপ্ত।" (১৭:৮১)। সচেতনতা = সত্যের আলো। যে আলো জালে, সে তাদলিস দেখে। যে অন্ধকারে, সে বিভ্রান্ত হয়।</div>
 <div class="dialogue en">"Tadlis — deception, fraud, misleading. In Islamic jurisprudence, tadlis is a serious offense — making someone accept a false belief. Allah says — 'Satan makes their deeds appear fair.' (16:63). Gaslighting is the deepest form of tadlis — disconnecting someone from their own reality. But the Quran also says — 'Truth has come, falsehood has vanished.' (17:81). Awareness = the light of truth. One who has light, sees tadlis. One in darkness, is deceived."</div>`,
   senior:{
@@ -209,6 +438,68 @@ doors.push({
 <tr><td>অভিযোগ করে, উদ্ধারের অপেক্ষা</td><td>কাজ করে, পরিবর্তন তৈরি করে</td></tr></table>
 
 <div class="callout tip"><span class="co-icon">🔄</span><div><strong>Locus বদলানোর উপায় (evidence-based):</strong> ① <strong>Small wins</strong> (Bandura, 1977) — খুব ছোট থেকে শুরু (বিছানা গোছানো), প্রতিটা জয় self-efficacy গড়ে। ② <strong>Circle of control</strong> (Covey/Stoics) — যা নিয়ন্ত্রণ করা যায় তাতেই শক্তি দাও। ③ <strong>Setback reframe</strong> — "সবসময় আমার সাথেই হয়" নয়, "কী শিখলাম, ভিন্নভাবে কী করব?" ④ প্রতিদিন <strong>একটা action</strong> — তুমি বেছে নিয়েছ এমন। ⑤ <strong>Complaint time সীমিত করো</strong> (৫ মিনিট), তারপর — "কোন action নেব?" এটা victim থেকে creator-এ রূপান্তর। (এটাই তাওয়াক্কুল + আকল — যা পারো তাতে চেষ্টা, বাকিটা ভরসা।)</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arr-d5" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect width="580" height="340" fill="#0f172a"/>
+<text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="700">Motivation — Internal vs External Locus (Rotter)</text>
+<g><circle cx="160" cy="120" r="80" fill="#052e16" stroke="#86efac" stroke-width="2"/>
+<text x="160" y="95" text-anchor="middle" fill="#bbf7d0" font-size="14" font-weight="700">INTERNAL</text>
+<text x="160" y="115" text-anchor="middle" fill="#dcfce7" font-size="10">"আমি পারি"</text>
+<text x="160" y="135" text-anchor="middle" fill="#dcfce7" font-size="10">effort = result</text>
+<text x="160" y="155" text-anchor="middle" fill="#86efac" font-size="9" font-style="italic">high achievement</text></g>
+<g><circle cx="420" cy="120" r="80" fill="#7f1d1d" stroke="#fca5a5" stroke-width="2"/>
+<text x="420" y="95" text-anchor="middle" fill="#fee2e2" font-size="14" font-weight="700">EXTERNAL</text>
+<text x="420" y="115" text-anchor="middle" fill="#fecaca" font-size="10">"ভাগ্য ঠিক করে"</text>
+<text x="420" y="135" text-anchor="middle" fill="#fecaca" font-size="10">helpless, passive</text>
+<text x="420" y="155" text-anchor="middle" fill="#fca5a5" font-size="9" font-style="italic">anxiety, low agency</text></g>
+<line x1="240" y1="120" x2="340" y2="120" stroke="#64748b" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arr-d5)"/>
+<text x="290" y="110" text-anchor="middle" fill="#fbbf24" font-size="9">shift via small wins</text>
+<text x="290" y="220" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700">Scarcity Drain — Bandwidth Theft (Mullainathan &amp; Shafir)</text>
+<g><rect x="40" y="235" width="240" height="85" rx="8" fill="#0c4a6e" stroke="#7dd3fc" stroke-width="1"/>
+<text x="160" y="258" text-anchor="middle" fill="#bae6fd" font-size="11" font-weight="700">BEFORE SCARCITY</text>
+<text x="55" y="278" fill="#e0f2fe" font-size="10">IQ 100, bandwidth পূর্ণ</text>
+<text x="55" y="295" fill="#e0f2fe" font-size="10">long-term সিদ্ধান্ত সক্ষম</text>
+<text x="55" y="312" fill="#7dd3fc" font-size="9" font-style="italic">sugarcane farmer (post-harvest)</text></g>
+<g><rect x="300" y="235" width="240" height="85" rx="8" fill="#7c2d12" stroke="#fdba74" stroke-width="1"/>
+<text x="420" y="258" text-anchor="middle" fill="#fed7aa" font-size="11" font-weight="700">DURING SCARCITY</text>
+<text x="315" y="278" fill="#ffedd5" font-size="10">IQ ~87 (−১৩), tunnel vision</text>
+<text x="315" y="295" fill="#ffedd5" font-size="10">short-term সিদ্ধান্ত, ঋণ loop</text>
+<text x="315" y="312" fill="#fdba74" font-size="9" font-style="italic">একই মানুষ, pre-harvest (stressed)</text></g>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: অন্তর্নিহিত বনাম বাহ্যিক নিয়ন্ত্রণ ও দারিদ্র্যের সংজ্ঞানাত্মক প্রভাব। Locus + scarcity bandwidth.</div>
+
+<div class="code-block">Motivation Audit — Circle of Control + Small-Wins Protocol
+──────────────────────────────────────────────────────────────────────
+Step 1: Draw two circles. List 10 daily concerns.
+
+  INNER (you control)          OUTER (you don't)
+  ────────────────────         ────────────────────────
+  effort, attitude             others' opinions
+  when you wake                weather, past
+  what you read                market, boss mood
+  how you respond              outcome of effort
+
+  Rule: 90% energy → INNER. 10% → adapt to OUTER.
+
+Step 2: Small-wins ladder (Bandura self-efficacy, 1977)
+  Day 1-3:  make bed (2 min)           → "I did it"
+  Day 4-7:  10-min walk daily          → body proves agency
+  Day 8-14: one focused work block     → competence evidence
+  Day 15+:  progressively harder       → self-efficacy compounds
+
+Step 3: Reframe script (victim → creator)
+  VICTIM:  "Why does this always happen to me?"
+  CREATOR: "What can I do about this right now?"
+
+Step 4: Scarcity slack (Mullainathan 2013)
+  Create buffer: $50 emergency, 30-min margin, one backup plan.
+  Slack restores ~13 IQ points of bandwidth.
+──────────────────────────────────────────────────────────────────────
+# Rotter (1966): internal locus → +achievement, +health, +longevity
+# across 50 years of replication. Shift is TRAINABLE.</div>
 
 <div class="dialogue">তাওয়াক্কুল + আকল — trust + reason। কুরআনে আল্লাহ বলেন — "তোমরা চেষ্টা করো, তারপর আল্লাহর উপর তাওয়াক্কুল করো।" (৩:১৫৯)। তাওয়াক্কুল অলসতা নয় — চেষ্টার পর ফলাফলে ভরসা। আকল হলো যুক্তি — কী নিয়ন্ত্রণ করা যায়, কী নয়। Internal locus of control = তাওয়াক্কুল + আকল। যা নিয়ন্ত্রণ করা যায়, তা নিয়ে চেষ্টা (আকল)। যা নিয়ন্ত্রণে নেই, তা আল্লাহর উপর ছাড়া (তাওয়াক্কুল)। এটাই সঠিক অবস্থান। External locus = শুধু ভাগ্যের অপেক্ষা — আকল ছাড়া তাওয়াক্কুল, যা অলসতা। Internal locus = আকল সহ তাওয়াক্কুল — যা সঠিক কর্ম।</div>
 <div class="dialogue en">"Tawakkul + Aql — trust + reason. Allah says — 'Strive, then trust in Allah.' (3:159). Tawakkul is not laziness — it's trusting the outcome AFTER effort. Aql is reason — what can be controlled, what can't. Internal locus of control = tawakkul + aql. Control what you can (aql). Trust Allah with what you can't (tawakkul). This is the correct position. External locus = waiting for fate — tawakkul without aql, which is laziness. Internal locus = tawakkul with aql — which is right action."</div>`,

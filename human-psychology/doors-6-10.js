@@ -37,6 +37,65 @@ doors.push({
 
 <div class="callout info"><span class="co-icon">🌿</span><div><strong>Neuroplasticity-ই ভিত্তি:</strong> নতুন কিছু শিখলে neuron নতুন সংযোগ বানায়, myelin ঘন হয় — মস্তিষ্ক শারীরিকভাবে বাড়ে (London taxi driver-দের posterior hippocampus বড় হয়, Maguire 2000)। "আমি শিখতে পারি না" neurologically মিথ্যা। ১০ বছরে growth ও fixed মানুষের ব্যবধান প্রতি বছর বাড়ে — এ কারণেই কেউ আরও মূল্যবান হয়, কেউ obsolete (দ্র. Irreplaceable Craftsman, দ্বার ১)।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arr-d6" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect width="580" height="340" fill="#0f172a"/>
+<text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="700">Personal Growth — Brain on Failure (Moser et al., 2011)</text>
+<g><rect x="40" y="55" width="240" height="130" rx="12" fill="#7f1d1d" stroke="#fca5a5" stroke-width="2"/>
+<text x="160" y="80" text-anchor="middle" fill="#fee2e2" font-size="13" font-weight="700">FIXED MINDSET</text>
+<text x="55" y="105" fill="#fecaca" font-size="11">error → brain "বন্ধ" (Pe signal কম)</text>
+<text x="55" y="125" fill="#fecaca" font-size="11">সঠিক উত্তর থেকে চোখ সরায়</text>
+<text x="55" y="145" fill="#fecaca" font-size="11">"আমি failure" (identity)</text>
+<text x="55" y="170" fill="#fca5a5" font-size="10" font-style="italic">→ avoid challenge, stay safe</text></g>
+<g><rect x="310" y="55" width="240" height="130" rx="12" fill="#052e16" stroke="#86efac" stroke-width="2"/>
+<text x="430" y="80" text-anchor="middle" fill="#bbf7d0" font-size="13" font-weight="700">GROWTH MINDSET</text>
+<text x="325" y="105" fill="#dcfce7" font-size="11">error → brain "জ্বলে ওঠে" (Pe deep)</text>
+<text x="325" y="125" fill="#dcfce7" font-size="11">সঠিক উত্তরে তাকায়, process</text>
+<text x="325" y="145" fill="#dcfce7" font-size="11">"এখনও পারি না — YET" (data)</text>
+<text x="325" y="170" fill="#86efac" font-size="10" font-style="italic">→ seek challenge, extract lesson</text></g>
+<text x="290" y="215" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700">Neuroplasticity — 10-Year Divergence</text>
+<g><rect x="40" y="230" width="510" height="90" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+<line x1="60" y1="320" x2="540" y2="320" stroke="#475569" stroke-width="1.5"/>
+<text x="60" y="312" fill="#94a3b8" font-size="9">Year 0</text>
+<text x="290" y="312" fill="#94a3b8" font-size="9">Year 5</text>
+<text x="525" y="312" fill="#94a3b8" font-size="9">Year 10</text>
+<line x1="60" y1="290" x2="540" y2="260" stroke="#86efac" stroke-width="2.5" marker-end="url(#arr-d6)"/>
+<text x="540" y="250" fill="#86efac" font-size="10" font-weight="700">GROWTH ↑</text>
+<line x1="60" y1="290" x2="540" y2="305" stroke="#fca5a5" stroke-width="2.5" marker-end="url(#arr-d6)"/>
+<text x="540" y="298" fill="#fca5a5" font-size="10" font-weight="700">FIXED →</text>
+<text x="290" y="245" text-anchor="middle" fill="#fbbf24" font-size="9" font-style="italic">compound gap — myelin + synapse density</text></g>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: ব্যর্থতায় মস্তিষ্কের প্রতিক্রিয়া ও দশ বছরের ব্যবধান। Brain on failure + 10-year divergence.</div>
+
+<div class="code-block">Personal Growth — The YET Protocol + Praise Audit (Dweck)
+──────────────────────────────────────────────────────────────────────
+Rule 1: Add YET to every "can't"
+  "I can't code"            → "I can't code YET"
+  "আমি পারি না"              → "আমি এখনও পারি না"
+  "I'm not creative"        → "I'm not creative YET"
+
+Rule 2: Praise EFFORT not IDENTITY (Dweck 1998)
+  ✗ "তুমি বুদ্ধিমান"          → creates fixed mindset
+  ✓ "তুমি ভালো চেষ্টা করেছ"    → creates growth mindset
+  ✗ "you're talented"        → avoids hard tasks
+  ✓ "you worked hard"        → seeks harder tasks
+
+Rule 3: Weekly failure reflection (3 lines)
+  ১. What happened?      ___________________
+  ২. What did I learn?   ___________________
+  ৩. What differently?   ___________________
+
+Rule 4: Neuroplasticity proof points (recite when stuck)
+  - London taxi drivers: posterior hippocampus +grown (Maguire 2000)
+  - Musicians: motor cortex map enlarged (Elbert 1995)
+  - Adult neurogenesis: hippocampus, lifelong (Eriksson 1998)
+  - "I can't learn" = neurologically false.
+──────────────────────────────────────────────────────────────────────
+# Macnamara &amp; Burgoyne (2023): mindset effect smaller than pop
+# framing — pair with DELIBERATE PRACTICE for real growth.</div>
+
 <div class="dialogue">সবর — patience, steadfastness, endurance through hardship। কুরআনে আল্লাহ বলেন — "আল্লাহ সবরকারীদের সাথে আছেন।" (২:১৫৩)। সবর নিষ্ক্রিয় অপেক্ষা নয় — সক্রিয় ধৈর্য। কষ্টে স্থির থেকে চেষ্টা চালিয়ে যাওয়া। Growth mindset-ও সবর — ব্যর্থতায় হাল ছাড়ো না, শেখো। সবর = কষ্টে শেখা চালিয়ে যাওয়া। যে সবর করে, সে শেখে। যে শেখে, সে বাড়ে। যে বাড়ে, সে সফল হয়। এটাই growth mindset-এর আধ্যাত্মিক রূপ।</div>
 <div class="dialogue en">"Sabr — patience, steadfastness, endurance through hardship. Allah says — 'Allah is with those who are patient.' (2:153). Sabr is not passive waiting — it's active patience. Standing firm through difficulty and continuing to try. Growth mindset too is sabr — don't give up at failure, learn. Sabr = continuing to learn through pain. One who has sabr, learns. One who learns, grows. One who grows, succeeds. This is the spiritual form of growth mindset."</div>`,
   senior:{
@@ -75,6 +134,79 @@ doors.push({
 <div class="callout warn"><span class="co-icon">🔎</span><div><strong>Replication caveat:</strong> পরের গবেষণা (Watts, 2018) বলে প্রভাবের একটা অংশ family income দিয়ে ব্যাখ্যা হয় (ধনী পরিবার অপেক্ষা শেখায় + বেশি সম্পদ থাকে)। কিন্তু মূল মস্তিষ্ক-প্রক্রিয়া (prefrontal বনাম limbic) robust। fMRI (Casey, 2011): waiters-দের prefrontal cortex সক্রিয়; non-waiters-দের ventral striatum (reward/craving) সক্রিয়। যুদ্ধটা — যুক্তিবাদী prefrontal বনাম তাৎক্ষণিক limbic।</div></div>
 
 <div class="callout tip"><span class="co-icon">🏋️</span><div><strong>প্রশিক্ষণের উপায়:</strong> ① <strong>Cognitive reframing</strong> — "treat" নয়, "result"-এর কথা ভাবো ("এখন টাকা" নয়, "৫ বছরে স্বাধীনতা")। ② <strong>Physical distance</strong> — প্রলোভন চোখের আড়ালে (app মুছো, snack সরাও)। ③ <strong>If-then planning</strong> (Gollwitzer, 1999) — "ফোন ধরার তাগিদ এলে ৩টা গভীর শ্বাস"। ④ <strong>Temptation bundling</strong> (Milkman, 2014) — কঠিন কাজকে reward-এর সাথে জোড়ো। ⑤ <strong>ধীরে বাড়াও</strong> — ২ মিনিট দিয়ে শুরু; prefrontal পেশির মতো শক্তিশালী হয়। (Buffett: "genius লাগে না, লাগে delay gratification-এর ক্ষমতা।")</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arr-d7" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect width="580" height="340" fill="#0f172a"/>
+<text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="700">Habit Formation — The Brain Battle (Mischel/Casey)</text>
+<g><rect x="40" y="55" width="240" height="120" rx="12" fill="#0c4a6e" stroke="#7dd3fc" stroke-width="2"/>
+<text x="160" y="80" text-anchor="middle" fill="#bae6fd" font-size="13" font-weight="700">PREFRONTAL CORTEX</text>
+<text x="160" y="100" text-anchor="middle" fill="#e0f2fe" font-size="10">(control, planning, future)</text>
+<text x="55" y="125" fill="#dcfce7" font-size="10">• "৫ বছরে স্বাধীনতা"</text>
+<text x="55" y="143" fill="#dcfce7" font-size="10">• ১৫ মিনিট অপেক্ষা → ২টা</text>
+<text x="55" y="161" fill="#7dd3fc" font-size="10" font-style="italic">→ waiters (Casey fMRI 2011)</text></g>
+<g><rect x="310" y="55" width="240" height="120" rx="12" fill="#7c2d12" stroke="#fdba74" stroke-width="2"/>
+<text x="430" y="80" text-anchor="middle" fill="#fed7aa" font-size="13" font-weight="700">LIMBIC / VENTRAL STRIATUM</text>
+<text x="430" y="100" text-anchor="middle" fill="#ffedd5" font-size="10">(craving, now, reward)</text>
+<text x="325" y="125" fill="#ffedd5" font-size="10">• "এখনই চাই"</text>
+<text x="325" y="143" fill="#ffedd5" font-size="10">• marshmallow এখনই খাও</text>
+<text x="325" y="161" fill="#fdba74" font-size="10" font-style="italic">→ non-waiters (craving active)</text></g>
+<text x="290" y="200" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="700">Habit Loop — Cue → Routine → Reward (Duhigg)</text>
+<g><rect x="30" y="215" width="160" height="90" rx="8" fill="#581c87" stroke="#d8b4fe" stroke-width="1.5"/>
+<text x="110" y="240" text-anchor="middle" fill="#e9d5ff" font-size="12" font-weight="700">① CUE</text>
+<text x="110" y="262" text-anchor="middle" fill="#f3e8ff" font-size="9">stress, time, place,</text>
+<text x="110" y="278" text-anchor="middle" fill="#f3e8ff" font-size="9">emotion, prev action</text>
+<text x="110" y="296" text-anchor="middle" fill="#d8b4fe" font-size="9" font-style="italic">trigger</text></g>
+<line x1="190" y1="260" x2="210" y2="260" stroke="#64748b" stroke-width="2" marker-end="url(#arr-d7)"/>
+<g><rect x="210" y="215" width="160" height="90" rx="8" fill="#312e81" stroke="#a5b4fc" stroke-width="1.5"/>
+<text x="290" y="240" text-anchor="middle" fill="#c7d2fe" font-size="12" font-weight="700">② ROUTINE</text>
+<text x="290" y="262" text-anchor="middle" fill="#e0e7ff" font-size="9">পুরোনো: scroll phone</text>
+<text x="290" y="278" text-anchor="middle" fill="#e0e7ff" font-size="9">নতুন: 10-min walk</text>
+<text x="290" y="296" text-anchor="middle" fill="#a5b4fc" font-size="9" font-style="italic">swappable</text></g>
+<line x1="370" y1="260" x2="390" y2="260" stroke="#64748b" stroke-width="2" marker-end="url(#arr-d7)"/>
+<g><rect x="390" y="215" width="160" height="90" rx="8" fill="#052e16" stroke="#86efac" stroke-width="1.5"/>
+<text x="470" y="240" text-anchor="middle" fill="#bbf7d0" font-size="12" font-weight="700">③ REWARD</text>
+<text x="470" y="262" text-anchor="middle" fill="#dcfce7" font-size="9">dopamine hit</text>
+<text x="470" y="278" text-anchor="middle" fill="#dcfce7" font-size="9">celebrate → wire</text>
+<text x="470" y="296" text-anchor="middle" fill="#86efac" font-size="9" font-style="italic">same for old/new</text></g>
+<line x1="470" y1="215" x2="470" y2="195" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="470" y1="195" x2="110" y2="195" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="110" y1="195" x2="110" y2="215" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arr-d7)"/>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: অভ্যাস চক্র ও প্রিফ্রন্টাল-লিম্বিক যুদ্ধ। Habit loop + brain battle.</div>
+
+<div class="code-block">Habit Formation — Delayed Gratification Training Protocol
+──────────────────────────────────────────────────────────────────────
+Huberman 5-step rewiring + Mischel strategies:
+
+1. AWARENESS  — name the habit loop
+     cue: "ফোন ধরার তাগিদ"  routine: scroll  reward: dopamine
+
+2. FOCUS      — when cue hits, mark the synapse (acetylcholine)
+     stop, breathe 3x, notice the urge WITHOUT acting
+
+3. DISRUPT    — choose new routine (if-then plan, Gollwitzer 1999)
+     IF phone urge, THEN 3 deep breaths + 10 squats
+
+4. REWARD     — celebrate the new choice (dopamine marks wire)
+     "I chose differently" → small treat / fist pump
+
+5. SLEEP      — rewiring consolidates in deep sleep only
+
+Mischel distraction strategies (1972, validated):
+  - look AWAY from temptation (physical distance)
+  - imagine it as a PICTURE, not real (cognitive reframing)
+  - sing / count / name objects (engage PFC)
+
+Timeline (Lally et al., 2010):
+  Day 1-21:  conscious effort, feels forced
+  Day 22-66: easier, semi-automatic
+  Day 67+:   automatic — new identity
+──────────────────────────────────────────────────────────────────────
+# Casey (2011) fMRI: waiters show PFC active; non-waiters show
+# ventral striatum (craving). Prefrontal is a MUSCLE — train it.</div>
 
 <div class="dialogue">তাহকিক — verified truth, certain knowledge arrived through patience। কুরআনে আল্লাহ বলেন — "মানুষ তাড়াহুড়ো করে সৃষ্টি হয়েছে। আমি শীঘ্রই তোমাদের আমার নিদর্শন দেখাব।" (২১:৩৭-৩৮)। তাড়াহুড়ো = limbic system — এখনই চাও। তাহকিক = prefrontal cortex — ধৈর্য ধরে যাচাই করো, অপেক্ষা করো। যে তাহকিক করে, সে দীর্ঘমেয়াদে জেতে। যে তাড়াহুড়ো করে, সে স্বল্পমেয়াদে হারায়। মার্শম্যালো — এটাই মানুষের প্রকৃতির সংক্ষিপ্ত রূপ। তাহকিক প্রশিক্ষণযোগ্য — prefrontal cortex প্রতিদিন একটু একটু শক্তিশালী হয়।</div>
 <div class="dialogue en">"Tahqiq — verified truth, certain knowledge arrived through patience. Allah says — 'Man was created hasty. I will soon show you My signs.' (21:37-38). Haste = limbic system — want now. Tahqiq = prefrontal cortex — verify patiently, wait. One who does tahqiq, wins long-term. One who hurries, loses short-term. The marshmallow — this is human nature in miniature. Tahqiq is trainable — the prefrontal cortex gets stronger day by day."</div>`,
@@ -116,6 +248,70 @@ doors.push({
 
 <div class="callout info"><span class="co-icon">🗓️</span><div><strong>নিয়ন্ত্রণ ভাঙতে:</strong> নিয়ন্ত্রিত হলে মস্তিষ্কে submission-pattern wired হয়ে যায় (people-pleasing, conflict-ভয়)। প্রতিবার "না" বললে নতুন circuit তৈরি হয়। Timeline — প্রথমবার ভুল লাগে (পুরোনো wiring চিৎকার করে) → ১ সপ্তাহে সহজ → <strong>~৬৬ দিনে</strong> নতুন অভ্যাস স্বয়ংক্রিয় (Lally et al., 2010) → ৬ মাসে নতুন পরিচয়। মস্তিষ্ক আক্ষরিক অর্থেই ভিন্ন হয়ে যায়।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arr-d8" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect width="580" height="340" fill="#0f172a"/>
+<text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="700">Empathy — The Neural Bridge (Iacoboni, Keltner)</text>
+<g><circle cx="130" cy="130" r="55" fill="#0c4a6e" stroke="#7dd3fc" stroke-width="2"/>
+<text x="130" y="120" text-anchor="middle" fill="#bae6fd" font-size="11" font-weight="700">PERSON A</text>
+<text x="130" y="138" text-anchor="middle" fill="#e0f2fe" font-size="9">feels pain /</text>
+<text x="130" y="152" text-anchor="middle" fill="#e0f2fe" font-size="9">joy / fear</text>
+<text x="130" y="205" text-anchor="middle" fill="#94a3b8" font-size="8">mirror neuron fires</text></g>
+<g><circle cx="450" cy="130" r="55" fill="#312e81" stroke="#a5b4fc" stroke-width="2"/>
+<text x="450" y="120" text-anchor="middle" fill="#c7d2fe" font-size="11" font-weight="700">PERSON B</text>
+<text x="450" y="138" text-anchor="middle" fill="#e0e7ff" font-size="9">SAME neuron</text>
+<text x="450" y="152" text-anchor="middle" fill="#e0e7ff" font-size="9">fires (simulate)</text>
+<text x="450" y="205" text-anchor="middle" fill="#94a3b8" font-size="8">empathy = felt</text></g>
+<line x1="185" y1="130" x2="395" y2="130" stroke="#fbbf24" stroke-width="3" marker-end="url(#arr-d8)"/>
+<text x="290" y="120" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">mirror neuron bridge</text>
+<text x="290" y="230" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700">Power Kills Empathy — Hogeveen fMRI (2014)</text>
+<g><rect x="40" y="245" width="250" height="80" rx="8" fill="#052e16" stroke="#86efac" stroke-width="1"/>
+<text x="165" y="265" text-anchor="middle" fill="#bbf7d0" font-size="11" font-weight="700">LOW POWER</text>
+<text x="55" y="285" fill="#dcfce7" font-size="10">mirror neuron activity HIGH</text>
+<text x="55" y="302" fill="#dcfce7" font-size="10">→ simulates others' feelings</text>
+<text x="55" y="318" fill="#86efac" font-size="9" font-style="italic">empathy intact</text></g>
+<g><rect x="300" y="245" width="250" height="80" rx="8" fill="#7f1d1d" stroke="#fca5a5" stroke-width="1"/>
+<text x="425" y="265" text-anchor="middle" fill="#fee2e2" font-size="11" font-weight="700">HIGH POWER (untrained)</text>
+<text x="315" y="285" fill="#fecaca" font-size="10">mirror neuron activity LOW</text>
+<text x="315" y="302" fill="#fecaca" font-size="10">→ blind to others' distress</text>
+<text x="315" y="318" fill="#fca5a5" font-size="9" font-style="italic">empathy eroded (Keltner paradox)</text></g>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: মিরর নিউরন ও ক্ষমতার প্রভাবে সহানুভূতির ক্ষয়। Mirror neurons + power's empathy cost.</div>
+
+<div class="code-block">Empathy Training — Neuroplasticity Protocol (Riess, 2017)
+──────────────────────────────────────────────────────────────────────
+EMPATHY acronym (Riess E.M.P.A.T.H.Y. framework):
+
+  E - Eye contact     (oxytocin release, 3+ seconds)
+  M - Muscle face     (mirror their expression subtly)
+  P - Posture         (open, lean in, same level)
+  A - Affect          (name their emotion internally)
+  T - Tone            (match pace/volume)
+  H - Hearing         (listen for what's UNSAID)
+  Y - Your response   (reflect, don't fix prematurely)
+
+Daily empathy reps (neuroplasticity, 6 weeks):
+  Rep 1: one conversation, FULLY present (no phone)
+  Rep 2: name 3 emotions you observe in others
+  Rep 3: ask "what must it feel like to be them?"
+
+Power-empathy preservation (Keltner):
+  - weekly: spend time with FRONTLINE (users, junior staff)
+  - invite DISSENT (yes-men erode perspective)
+  - perspective-taking BEFORE responding
+  - track: "whose pain did I ignore this week?"
+
+Measurable rewiring:
+  - compassionate meditation → PFC thickening (Davidson 2004)
+  - 8-week MBSR → amygdala reactivity reduced
+  - empathy is a SKILL, not a trait — it grows with reps
+──────────────────────────────────────────────────────────────────────
+# Iacoboni (2004): mirror neurons fire both when we ACT and
+# when we OBSERVE the same act. Empathy is neurological, not
+# mystical. Power suppresses the bridge — consciously rebuild it.</div>
+
 <div class="dialogue">তাওবা — return, turning back, repentance। কুরআনে আল্লাহ বলেন — "তওবা করো আল্লাহর দিকে, সম্পূর্ণভাবে।" (২৪:৩১)। তাওবা শুধু পাপের ক্ষমা চাওয়া নয় — তাওবা হলো ফিরে আসা, পুনর্নির্মাণ। খারাপ পথ থেকে ভালো পথে। Neuroplasticity-ও তাওবা — মস্তিষ্কে পুরোনো পথ ছেড়ে নতুন পথ তৈরি। প্রতিটা নতুন ভালো কাজ = নতুন neural pathway। প্রতিটা তাওবা = মস্তিষ্কে পুনর্নির্মাণ। তাওবা শুধু আধ্যাত্মিক নয় — এটা শারীরিক। মস্তিষ্ক সত্যিই বদলায়।</div>
 <div class="dialogue en">"Tawbah — return, turning back, repentance. Allah says — 'Turn to Allah in complete repentance.' (24:31). Tawbah is not just asking forgiveness — it's returning, rebuilding. From wrong path to right path. Neuroplasticity too is tawbah — in the brain, leaving old pathways and building new ones. Each new good action = new neural pathway. Each tawbah = brain reconstruction. Tawbah is not just spiritual — it's physical. The brain truly changes."</div>`,
   senior:{
@@ -152,6 +348,80 @@ doors.push({
 <tr><td class="hl">Radical acceptance (Linehan, DBT)</td><td>বাস্তবতাকে যেমন আছে তেমন মানা (হাল ছাড়া নয়)। <strong>Suffering = pain × resistance</strong>; resistance কমাও, suffering কমবে। helplessness-এর বিপরীত — এটা active, action-এর পূর্বশর্ত।</td></tr></table>
 
 <div class="callout tip"><span class="co-icon">🧘</span><div><strong>Gap বাড়ানোর চর্চা:</strong> ① <strong>Pause</strong> — triggered হলে থামো, ৩ বার শ্বাস (৬ সেকেন্ডেই prefrontal engage হয়)। ② <strong>Name the thought</strong> — "আমি worthless" নয়, "আমার worthless হওয়ার <em>ভাবনা</em> আসছে"। ③ <strong>Challenge</strong> — পক্ষে/বিপক্ষে প্রমাণ? বন্ধুকে কি এটা বলতাম? ④ <strong>Choose</strong> — স্বয়ংক্রিয় নয়, values-অনুযায়ী সাড়া। ⑤ <strong>Act</strong> — প্রতিটা সচেতন choice পরের বার gap বড় করে।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arr-d9" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect width="580" height="340" fill="#0f172a"/>
+<text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="700">Decision Under Stress — The GAP (Frankl, Epictetus, Beck)</text>
+<g><rect x="30" y="60" width="160" height="80" rx="10" fill="#7f1d1d" stroke="#fca5a5" stroke-width="2"/>
+<text x="110" y="85" text-anchor="middle" fill="#fee2e2" font-size="13" font-weight="700">STIMULUS</text>
+<text x="110" y="105" text-anchor="middle" fill="#fecaca" font-size="10">insult, crisis,</text>
+<text x="110" y="120" text-anchor="middle" fill="#fecaca" font-size="10">pressure, loss</text>
+<text x="110" y="135" text-anchor="middle" fill="#fca5a5" font-size="9" font-style="italic">amygdala fires</text></g>
+<line x1="190" y1="100" x2="230" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#arr-d9)"/>
+<g><rect x="230" y="55" width="140" height="90" rx="10" fill="#fbbf24" stroke="#fde68a" stroke-width="2" stroke-dasharray="4,3"/>
+<text x="300" y="80" text-anchor="middle" fill="#78350f" font-size="13" font-weight="700">GAP</text>
+<text x="300" y="100" text-anchor="middle" fill="#92400e" font-size="9">৬-সেকেন্ড pause</text>
+<text x="300" y="115" text-anchor="middle" fill="#92400e" font-size="9">name the thought</text>
+<text x="300" y="130" text-anchor="middle" fill="#92400e" font-size="9">challenge it</text>
+<text x="300" y="145" text-anchor="middle" fill="#78350f" font-size="8" font-style="italic">PFC engages (~6s)</text></g>
+<line x1="370" y1="100" x2="410" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#arr-d9)"/>
+<g><rect x="410" y="60" width="160" height="80" rx="10" fill="#052e16" stroke="#86efac" stroke-width="2"/>
+<text x="490" y="85" text-anchor="middle" fill="#bbf7d0" font-size="13" font-weight="700">RESPONSE</text>
+<text x="490" y="105" text-anchor="middle" fill="#dcfce7" font-size="10">chosen, not reflex</text>
+<text x="490" y="120" text-anchor="middle" fill="#dcfce7" font-size="10">values-aligned</text>
+<text x="490" y="135" text-anchor="middle" fill="#86efac" font-size="9" font-style="italic">freedom realized</text></g>
+<text x="290" y="180" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="700">Life Quality = Size of the GAP</text>
+<g><rect x="30" y="200" width="270" height="120" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+<text x="165" y="222" text-anchor="middle" fill="#f87171" font-size="11" font-weight="700">NO GAP (reflexive)</text>
+<text x="45" y="245" fill="#fecaca" font-size="10">stimulus → auto response</text>
+<text x="45" y="265" fill="#fecaca" font-size="10">anger, submission, panic</text>
+<text x="45" y="285" fill="#fecaca" font-size="10">"I had no choice"</text>
+<text x="45" y="305" fill="#fca5a5" font-size="9" font-style="italic">→ controlled, even if "free"</text></g>
+<g><rect x="310" y="200" width="270" height="120" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+<text x="445" y="222" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">WITH GAP (sovereign)</text>
+<text x="325" y="245" fill="#dcfce7" font-size="10">stimulus → thought → choice</text>
+<text x="325" y="265" fill="#dcfce7" font-size="10">CBT: Event → thought → emotion</text>
+<text x="325" y="285" fill="#dcfce7" font-size="10">"what serves my value here?"</text>
+<text x="325" y="305" fill="#86efac" font-size="9" font-style="italic">→ free, even in chains (Frankl)</text></g>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: উদ্দীপক ও প্রতিক্রিয়ার মধ্যে সচেতন বিরতি। The GAP — conscious space between stimulus and response.</div>
+
+<div class="code-block">Decision Under Stress — The GAP Protocol (Frankl / CBT / Stoic)
+──────────────────────────────────────────────────────────────────────
+WHEN TRIGGERED (anger, fear, pressure), run this in 6 seconds:
+
+  1. PAUSE     — stop, 3 deep breaths (box breathing 4-4-4-4)
+                 → 6s is when prefrontal cortex re-engages
+  2. NAME      — "I'm HAVING THE THOUGHT that I'm worthless"
+                 (NOT: "I AM worthless")
+                 → creates observer distance (ACT defusion)
+  3. CHALLENGE — Beck's CBT questions:
+                   - Evidence FOR?  Evidence AGAINST?
+                   - Would I tell a friend this?
+                   - Is this thought helping or harming?
+  4. CHOOSE    — "What response serves my VALUES here?"
+                 (not: what feels good right now)
+  5. ACT       — one small value-aligned action
+
+Stoic pre-filter (Epictetus, ~100 AD):
+  Is this in my control?
+    YES → act decisively
+    NO  → accept radically (suffering = pain × resistance)
+
+Frankl's WHY check (Auschwitz, 1946):
+  "He who has a WHY can bear almost any HOW." (Nietzsche)
+  Before deciding under stress: reconnect to purpose.
+
+Suffering equation (Linehan DBT):
+  suffering = pain × resistance
+  → reduce resistance (accept reality), not deny pain
+──────────────────────────────────────────────────────────────────────
+# CBT recovery rate: 50-60% for depression/anxiety, equals
+# medication WITHOUT side effects (Beck Institute). The gap
+# is trainable — every conscious choice widens it.</div>
 
 <div class="dialogue">হুরিয়্যাহ — freedom, liberty, emancipation। কুরআনে আল্লাহ বলেন — "আমি মানুষকে সম্মান করেছি।" (১৭:৭০)। সম্মানের মূলে হুরিয়্যাহ — পছন্দের স্বাধীনতা। আল্লাহ মানুষকে এমনভাবে সৃষ্টি করেছেন যে তার উপর থেকে সব কেড়ে নেওয়া হলেও — পছন্দ বাকি থাকে। ফ্রাঙ্কল এই সত্য আউশভিটজে আবিষ্কার করেছিলেন। হুরিয়্যাহ হলো — নিয়ন্ত্রক যা চায় তা করা নয়, না বলার স্বাধীনতা। নিজের মনন বেছে নেওয়ার স্বাধীনতা। ঘটনা নয়, প্রতিক্রিয়া নির্ধারণ করার স্বাধীনতা। যে হুরিয়্যাহ ধরে, সে মুক্ত — বন্দী শরীরেও। যে ছাড়ে, সে বন্দী — উন্মুক্ত পৃথিবীতেও।</div>
 <div class="dialogue en">"Hurriyyah — freedom, liberty, emancipation. Allah says — 'We have honored the children of Adam.' (17:70). At the root of honor is hurriyyah — the freedom of choice. Allah created humans such that even if everything is taken — choice remains. Frankl discovered this truth in Auschwitz. Hurriyyah is — not doing what the controller wants, the freedom to say no. The freedom to choose your own mindset. The freedom to determine your response, not just react to events. One who holds hurriyyah, is free — even in an imprisoned body. One who loses it, is imprisoned — even in an open world."</div>`,
@@ -201,6 +471,67 @@ doors.push({
 <div class="callout tip"><span class="co-icon">👑</span><div><strong>অগ্রগতি:</strong> Helpless → Aware → Believing → Growing → Waiting → Rewiring → Choosing → <strong>Sovereign</strong>। এটা তাৎক্ষণিক নয়, সহজ নয় — কিন্তু সম্ভব ও স্থায়ী, কারণ submission-এর জন্য wired মস্তিষ্ক sovereignty-র জন্য rewire করা যায়। যারা নিয়ন্ত্রিত হয়: জানে না তারা নিয়ন্ত্রিত, বিশ্বাস করে বদলাতে পারে না, পথ দেখেনি। যারা মুক্ত: নিয়ন্ত্রণের যন্ত্র জানে, বিশ্বাস করে বদলাতে পারে, মুক্তির হাতিয়ার শিখেছে, রোজ চর্চা করে। পার্থক্য genetics বা ভাগ্য নয় — <strong>জ্ঞান + চর্চা</strong>। এখন তোমার কাছে দুটোই আছে।</div></div>
 
 <div class="verse">"তুমি কি দেখনি আল্লাহ কীভাবে উদাহরণ দিয়েছেন? একটি ভালো কালিমা পবিত্র বৃক্ষের মতো — তার শিকড় গভীর, শাখা আসমানে। সে প্রতিটা অনুমতিতে ফল দেয়।"<br>— কুরআন ১৪:২৪-২৫<br><br>এই বই ছিল মনের যাত্রা — অসহায়তা থেকে সার্বভৌমত্ব। Seligman-এর কুকুর থেকে Frankl-এর সিংহাসন। প্রতিটা দরজায় একজন গবেষক, একটা সত্য, একটা মুক্তির পথ। সব এক দিকে নির্দেশ করে — তোমার মন তোমার। কেউ তোমাকে নিয়ন্ত্রণ করতে পারে না — যদি না তুমি অনুমতি দাও। এটাই মনের সিংহাসন। খিলাফত — নিজের উপর সার্বভৌমত্ব। তুমি এখন সেই বৃক্ষ — শিকড় গভীর, শাখা আসমানে।</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arr-d10" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect width="580" height="380" fill="#0f172a"/>
+<text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="700">Mental Sovereignty — The Synthesis Architecture</text>
+<text x="290" y="46" text-anchor="middle" fill="#94a3b8" font-size="10">9 researchers → 5 layers → 1 throne</text>
+<g><rect x="30" y="65" width="520" height="48" rx="8" fill="#7f1d1d" stroke="#fca5a5" stroke-width="1.5"/>
+<text x="290" y="85" text-anchor="middle" fill="#fee2e2" font-size="12" font-weight="700">LAYER 1 — AWARENESS (Doors 1-4)</text>
+<text x="290" y="103" text-anchor="middle" fill="#fecaca" font-size="9">Seligman helplessness · Cialdini manipulation · Keltner power · Gaslighting detection</text></g>
+<line x1="290" y1="113" x2="290" y2="128" stroke="#64748b" stroke-width="2" marker-end="url(#arr-d10)"/>
+<g><rect x="30" y="130" width="520" height="48" rx="8" fill="#581c87" stroke="#d8b4fe" stroke-width="1.5"/>
+<text x="290" y="150" text-anchor="middle" fill="#e9d5ff" font-size="12" font-weight="700">LAYER 2 — BELIEF (Door 5)</text>
+<text x="290" y="168" text-anchor="middle" fill="#f3e8ff" font-size="9">Internal locus (Rotter) · scarcity-brain understood · circle of control focused</text></g>
+<line x1="290" y1="178" x2="290" y2="193" stroke="#64748b" stroke-width="2" marker-end="url(#arr-d10)"/>
+<g><rect x="30" y="195" width="520" height="48" rx="8" fill="#312e81" stroke="#a5b4fc" stroke-width="1.5"/>
+<text x="290" y="215" text-anchor="middle" fill="#c7d2fe" font-size="12" font-weight="700">LAYER 3 — GROWTH (Doors 6-7)</text>
+<text x="290" y="233" text-anchor="middle" fill="#e0e7ff" font-size="9">Growth mindset — failure = data (Dweck) · Delayed gratification — prefrontal trained (Mischel)</text></g>
+<line x1="290" y1="243" x2="290" y2="258" stroke="#64748b" stroke-width="2" marker-end="url(#arr-d10)"/>
+<g><rect x="30" y="260" width="520" height="48" rx="8" fill="#0c4a6e" stroke="#7dd3fc" stroke-width="1.5"/>
+<text x="290" y="280" text-anchor="middle" fill="#bae6fd" font-size="12" font-weight="700">LAYER 4 — REWIRING (Door 8)</text>
+<text x="290" y="298" text-anchor="middle" fill="#e0f2fe" font-size="9">Neuroplasticity — brain physically changes (Doidge/Huberman) · focus → disrupt → reward → sleep</text></g>
+<line x1="290" y1="308" x2="290" y2="323" stroke="#64748b" stroke-width="2" marker-end="url(#arr-d10)"/>
+<g><rect x="30" y="325" width="520" height="48" rx="8" fill="#fbbf24" stroke="#fde68a" stroke-width="2"/>
+<text x="290" y="345" text-anchor="middle" fill="#78350f" font-size="12" font-weight="700">LAYER 5 — FREEDOM (Door 9) → 👑 SOVEREIGN MIND</text>
+<text x="290" y="363" text-anchor="middle" fill="#92400e" font-size="9">The GAP (Frankl) · CBT (Beck) · radical acceptance (Linehan) · "no one controls you without permission"</text></g>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: মনের সার্বভৌমত্বের পাঁচ স্তরের স্থপতি। Five-layer architecture of mental sovereignty.</div>
+
+<div class="code-block">Mental Sovereignty — Daily Synthesis Protocol (all 9 researchers)
+──────────────────────────────────────────────────────────────────────
+MORNING (5 min):
+  ☐ Name yesterday's setback → reframe (Seligman 3P challenge)
+  ☐ One INTERNAL-locus action today (Rotter): "I will ___"
+  ☐ Add YET to one "can't" (Dweck)
+
+TRIGGERED / UNDER PRESSURE:
+  ☐ 6-second GAP — breathe, name thought, challenge (Frankl/Beck)
+  ☐ Cialdini 7-point check before any big decision (24h delay)
+  ☐ Stoic filter: in my control? act / not? accept (Epictetus)
+
+EVENING (5 min):
+  ☐ Habit loop audit — what cue, what routine, what reward? (Duhigg)
+  ☐ Empathy rep — whose feelings did I ignore? rebuild bridge (Keltner)
+  ☐ One small win logged → self-efficacy grows (Bandura)
+
+WEEKLY:
+  ☐ Reality anchor review (if gaslighting risk) — Stern journal
+  ☐ Power audit — am I losing empathy? spend time w/ frontline
+  ☐ Scarcity slack — create one buffer (time/money/plan B)
+
+IDENTITY TRACK:
+  Day 1-66:  building new neural pathways (Lally 2010)
+  Month 3-6: new identity solidifies
+  Year 1+:   brain physically different — sovereign by default
+──────────────────────────────────────────────────────────────────────
+# THE ONE TRUTH: No one can control you unless you permit it.
+# Your mind is yours. Khilafat — sovereignty over yourself.
+# Helpless → Aware → Believing → Growing → Waiting →
+# Rewiring → Choosing → SOVEREIGN.</div>
 
 <div class="secret-box"><div class="label">দশম দরজা — সমন্বয়</div><div class="text">👑 মনের সার্বভৌমত্ব = Awareness + Internal Locus + Growth Mindset + Delayed Gratification + Neuroplasticity + The Last Freedom।<br><small>কেউ তোমাকে নিয়ন্ত্রণ করতে পারে না — যদি না তুমি অনুমতি দাও। তোমার মন তোমার।</small></div></div>`
 });

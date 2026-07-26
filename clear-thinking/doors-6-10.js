@@ -57,6 +57,101 @@ doors.push({
 <div class=\"dialogue\">তাফাক্কুর। কুরআনে আল্লাহ বারবার বলেছেন — <em>'আল-আফাক' (দিগন্ত) দেখো, <em>'আল-আনফুস' (নিজের অন্তর) দেখো — তোমরা কি চিন্তা করবে না?</em> তাফাক্কুর মানে গভীর, পদ্ধতিগত চিন্তা — প্রতিটা ধাপে থামা, প্রতিটা ফলাফল যাচাই করা। হালিমা যখন সেলাই করেন, তিনি শুধু হাত চালান না — তিনি তাফাক্কুর করেন। এটা কি সঠিক? এটা কি মাপের সাথে মেলে? এটাই তাফাক্কুর — কাজের সাথে সাথে চিন্তা। যে তাফাক্কুর করে না, সে কাজ করে কিন্তু শেখে না।</div>
 <div class=\"dialogue en\">Tafakkur. In the Quran Allah repeatedly says — look at <em>'al-afaq'</em> (the horizons), look at <em>'al-anfus'</em> (your own selves) — will you not think? Tafakkur means deep, systematic thinking — pausing at each step, verifying each result. When Halima sews, she doesn't just move her hands — she tafakkurs. Is this right? Does this match the measure? This is tafakkur — thinking alongside work. One who doesn't tafakkur works but doesn't learn.</div>
 
+<div class=\"svg-diagram\">
+<svg viewBox=\"0 0 580 250\" xmlns=\"http://www.w3.org/2000/svg\" style=\"width:100%;height:auto\">
+  <text x=\"290\" y=\"22\" text-anchor=\"middle\" fill=\"#e2e8f0\" font-size=\"13\" font-weight=\"900\">✂️ Polya Four-Step Problem Solving</text>
+  <!-- Step 1 -->
+  <rect x=\"20\" y=\"45\" width=\"125\" height=\"150\" rx=\"8\" fill=\"#1e3a5f\" stroke=\"#22d3ee\" stroke-width=\"2\"/>
+  <text x=\"82\" y=\"65\" text-anchor=\"middle\" fill=\"#7dd3fc\" font-size=\"10\" font-weight=\"900\">1</text>
+  <text x=\"82\" y=\"80\" text-anchor=\"middle\" fill=\"#7dd3fc\" font-size=\"8\" font-weight=\"700\">UNDERSTAND</text>
+  <text x=\"82\" y=\"100\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">শরীর মাপা</text>
+  <text x=\"82\" y=\"112\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">Read problem</text>
+  <text x=\"82\" y=\"124\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">What is given?</text>
+  <text x=\"82\" y=\"136\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">What is asked?</text>
+  <text x=\"82\" y=\"148\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">What constraints?</text>
+  <text x=\"82\" y=\"168\" text-anchor=\"middle\" fill=\"#22d3ee\" font-size=\"6\" font-weight=\"700\">half the solution</text>
+  <!-- Arrow -->
+  <line x1=\"150\" y1=\"120\" x2=\"165\" y2=\"120\" stroke=\"#fbbf24\" stroke-width=\"2\"/>
+  <polygon points=\"160,115 170,120 160,125\" fill=\"#fbbf24\"/>
+  <!-- Step 2 -->
+  <rect x=\"170\" y=\"45\" width=\"125\" height=\"150\" rx=\"8\" fill=\"#052e16\" stroke=\"#22c55e\" stroke-width=\"2\"/>
+  <text x=\"232\" y=\"65\" text-anchor=\"middle\" fill=\"#4ade80\" font-size=\"10\" font-weight=\"900\">2</text>
+  <text x=\"232\" y=\"80\" text-anchor=\"middle\" fill=\"#4ade80\" font-size=\"8\" font-weight=\"700\">PLAN</text>
+  <text x=\"232\" y=\"100\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">প্যাটার্ন কাটা</text>
+  <text x=\"232\" y=\"112\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">Which algorithm?</text>
+  <text x=\"232\" y=\"124\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">Which structure?</text>
+  <text x=\"232\" y=\"136\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">Small example?</text>
+  <text x=\"232\" y=\"148\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">Work backwards?</text>
+  <text x=\"232\" y=\"168\" text-anchor=\"middle\" fill=\"#22c55e\" font-size=\"6\" font-weight=\"700\">divide and conquer</text>
+  <!-- Arrow -->
+  <line x1=\"300\" y1=\"120\" x2=\"315\" y2=\"120\" stroke=\"#fbbf24\" stroke-width=\"2\"/>
+  <polygon points=\"310,115 320,120 310,125\" fill=\"#fbbf24\"/>
+  <!-- Step 3 -->
+  <rect x=\"320\" y=\"45\" width=\"125\" height=\"150\" rx=\"8\" fill=\"#451a0a\" stroke=\"#fbbf24\" stroke-width=\"2\"/>
+  <text x=\"382\" y=\"65\" text-anchor=\"middle\" fill=\"#fcd34d\" font-size=\"10\" font-weight=\"900\">3</text>
+  <text x=\"382\" y=\"80\" text-anchor=\"middle\" fill=\"#fcd34d\" font-size=\"8\" font-weight=\"700\">EXECUTE</text>
+  <text x=\"382\" y=\"100\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">সেলাই করা</text>
+  <text x=\"382\" y=\"112\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">Write code</text>
+  <text x=\"382\" y=\"124\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">Small steps</text>
+  <text x=\"382\" y=\"136\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">Test each step</text>
+  <text x=\"382\" y=\"148\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">No rush, focus</text>
+  <text x=\"382\" y=\"168\" text-anchor=\"middle\" fill=\"#fbbf24\" font-size=\"6\" font-weight=\"700\">stitch by stitch</text>
+  <!-- Arrow -->
+  <line x1=\"450\" y1=\"120\" x2=\"465\" y2=\"120\" stroke=\"#fbbf24\" stroke-width=\"2\"/>
+  <polygon points=\"460,115 470,120 460,125\" fill=\"#fbbf24\"/>
+  <!-- Step 4 -->
+  <rect x=\"470\" y=\"45\" width=\"95\" height=\"150\" rx=\"8\" fill=\"#2e1065\" stroke=\"#a855f7\" stroke-width=\"2\"/>
+  <text x=\"517\" y=\"65\" text-anchor=\"middle\" fill=\"#c084fc\" font-size=\"10\" font-weight=\"900\">4</text>
+  <text x=\"517\" y=\"80\" text-anchor=\"middle\" fill=\"#c084fc\" font-size=\"7\" font-weight=\"700\">LOOK BACK</text>
+  <text x=\"517\" y=\"100\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">ফিট দেখা</text>
+  <text x=\"517\" y=\"112\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">Read your code</text>
+  <text x=\"517\" y=\"124\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">Refactor?</text>
+  <text x=\"517\" y=\"136\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">Explain simply</text>
+  <text x=\"517\" y=\"168\" text-anchor=\"middle\" fill=\"#a855f7\" font-size=\"6\" font-weight=\"700\">Feynman test</text>
+  <!-- Seam-ripper banner -->
+  <rect x=\"80\" y=\"205\" width=\"420\" height=\"30\" rx=\"8\" fill=\"#450a0a\" stroke=\"#f87171\" stroke-width=\"1.5\"/>
+  <text x=\"290\" y=\"224\" text-anchor=\"middle\" fill=\"#fca5a5\" font-size=\"8\" font-weight=\"700\">🪡 Keep the seam-ripper ready — mistakes are inevitable, correction is the craft</text>
+</svg>
+</div>
+<div class=\"svg-caption\">চিত্র: পলিয়ার চার ধাপ — বুঝো, পরিকল্পনা, বানাও, ফিরে তাকাও। সেম-রিপার সবসময় প্রস্তুত।</div>
+
+<div class=\"code-block\">— Polya Four-Step Solver —
+  problem arrives
+
+  // STEP 1: UNDERSTAND
+  read(problem)          // twice
+  restate(problem)       // in own words
+  identify: given, goal, constraints
+  if cannot restate clearly:
+      → you do not understand yet
+      → do not proceed
+
+  // STEP 2: PLAN
+  try_small_example()    // by hand
+  look_for: similar_problem?
+  consider: work_backwards?
+  choose: algorithm, data structure
+  sketch: the approach on paper
+
+  // STEP 3: EXECUTE
+  write_code(small_piece)
+  test(that_piece)
+  write_code(next_piece)
+  test(next_piece)
+  // never write everything
+  //   at once — bugs hide in bulk
+
+  // STEP 4: LOOK BACK
+  read_own_code()
+  ask: what is ugly?
+  ask: what is repeated?
+  ask: can I explain this
+    to a new apprentice?
+    // Feynman test: if pen
+    //   sticks, understanding
+    //   is incomplete
+  refactor</div>
+
 <div class=\"secret-box\">✂️ পলিয়ার চার ধাপ: বুঝো → পরিকল্পনা → বানাও → ফিরে তাকাও। প্রতিটা সমস্যা একটা পোশাক — মাপ নাও, প্যাটার্ন কাটো, সেলাই করো, ফিট দেখো। ভুল হবেই — সেম-রিপার তৈরি রাখো। কেউ প্রথমবারে নিখুঁত হয় না, কিন্তু পদ্ধতি থাকলে প্রতিবার ভালো হয়।</div>`
 });
 
@@ -116,6 +211,92 @@ doors.push({
 
 <div class=\"dialogue\">জান্ন বিল-গায়িব। আল্লাহ কুরআনে বলেন: <em>"তোমরা জানো না অদৃশ্য (আল-গায়িব)। আল্লাহ জানেন।"</em> (এটি ৬:৫৯ এর প্যারাফ্রেজ।) অদৃশ্যের জ্ঞান আল্লাহর। কিন্তু আল্লাহ আমাদের আকল দিয়েছেন — অদৃশ্যের <em>আন্দাজ</em> করার জন্য। ফার্মি অনুমান হলো জান্ন বিল-গায়িবের কারিগরি — অজানাকে জানা অংশে ভাঙা, গুণ করা, স্যানিটি চেক করা। আবদুল্লাহ যখন আগামীকালের বিক্রি আন্দাজ করেন, তিনি অদৃশ্য দেখতে পান না — কিন্তু তিনি তাঁর যন্ত্র (আকল + আবাকাস) ক্যালিব্রেটেড রাখেন। তাই তাঁর আন্দাজ কাছাকাছি থাকে। যে নিজের যন্ত্র ক্যালিব্রেট করে না, সে অন্ধভাবে আন্দাজ করে — আর ভুল করে।</div>
 <div class=\"dialogue en\">Jann bil-ghayb. Allah says in the Quran (paraphrased): <em>You do not know the unseen (al-ghayb). Allah knows.</em> (Based on 6:59.) Knowledge of the unseen belongs to Allah. But Allah gave us aql — to <em>estimate</em> the unseen. Fermi estimation is the craft of jann bil-ghayb — decomposing the unknown into known parts, multiplying, sanity-checking. When Abdullah estimates tomorrow's sales, he doesn't see the unseen — but he keeps his instrument (aql + abacus) calibrated. So his estimate stays close. One who doesn't calibrate estimates blindly — and errs.</div>
+
+<div class=\"svg-diagram\">
+<svg viewBox=\"0 0 580 250\" xmlns=\"http://www.w3.org/2000/svg\" style=\"width:100%;height:auto\">
+  <text x=\"290\" y=\"22\" text-anchor=\"middle\" fill=\"#e2e8f0\" font-size=\"13\" font-weight=\"900\">⚖️ Fermi Estimation: Decompose Unknown into Known</text>
+  <!-- Big question box -->
+  <rect x=\"180\" y=\"38\" width=\"220\" height=\"40\" rx=\"8\" fill=\"#450a0a\" stroke=\"#f87171\" stroke-width=\"2\"/>
+  <text x=\"290\" y=\"56\" text-anchor=\"middle\" fill=\"#fca5a5\" font-size=\"9\" font-weight=\"700\">How many piano tuners</text>
+  <text x=\"290\" y=\"68\" text-anchor=\"middle\" fill=\"#fca5a5\" font-size=\"9\" font-weight=\"700\">are in Chicago?</text>
+  <!-- Decompose arrow -->
+  <text x=\"290\" y=\"92\" text-anchor=\"middle\" fill=\"#fbbf24\" font-size=\"8\" font-weight=\"700\">↓ DECOMPOSE ↓</text>
+  <!-- 5 factor boxes -->
+  <rect x=\"20\" y=\"100\" width=\"100\" height=\"55\" rx=\"6\" fill=\"#1e3a5f\" stroke=\"#22d3ee\" stroke-width=\"1.5\"/>
+  <text x=\"70\" y=\"116\" text-anchor=\"middle\" fill=\"#7dd3fc\" font-size=\"7\" font-weight=\"700\">Population</text>
+  <text x=\"70\" y=\"132\" text-anchor=\"middle\" fill=\"#e2e8f0\" font-size=\"9\" font-weight=\"900\">~3M</text>
+  <text x=\"70\" y=\"146\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">known-ish</text>
+
+  <rect x=\"130\" y=\"100\" width=\"100\" height=\"55\" rx=\"6\" fill=\"#052e16\" stroke=\"#22c55e\" stroke-width=\"1.5\"/>
+  <text x=\"180\" y=\"116\" text-anchor=\"middle\" fill=\"#4ade80\" font-size=\"7\" font-weight=\"700\">Households</text>
+  <text x=\"180\" y=\"132\" text-anchor=\"middle\" fill=\"#e2e8f0\" font-size=\"9\" font-weight=\"900\">~1M</text>
+  <text x=\"180\" y=\"146\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">~3 per home</text>
+
+  <rect x=\"240\" y=\"100\" width=\"100\" height=\"55\" rx=\"6\" fill=\"#451a0a\" stroke=\"#fbbf24\" stroke-width=\"1.5\"/>
+  <text x=\"290\" y=\"116\" text-anchor=\"middle\" fill=\"#fcd34d\" font-size=\"7\" font-weight=\"700\">Pianos (1/20)</text>
+  <text x=\"290\" y=\"132\" text-anchor=\"middle\" fill=\"#e2e8f0\" font-size=\"9\" font-weight=\"900\">50,000</text>
+  <text x=\"290\" y=\"146\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">estimate</text>
+
+  <rect x=\"350\" y=\"100\" width=\"100\" height=\"55\" rx=\"6\" fill=\"#2e1065\" stroke=\"#a855f7\" stroke-width=\"1.5\"/>
+  <text x=\"400\" y=\"116\" text-anchor=\"middle\" fill=\"#c084fc\" font-size=\"7\" font-weight=\"700\">Tunings/yr</text>
+  <text x=\"400\" y=\"132\" text-anchor=\"middle\" fill=\"#e2e8f0\" font-size=\"9\" font-weight=\"900\">50,000</text>
+  <text x=\"400\" y=\"146\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">once per yr</text>
+
+  <rect x=\"460\" y=\"100\" width=\"100\" height=\"55\" rx=\"6\" fill=\"#1e3a5f\" stroke=\"#22d3ee\" stroke-width=\"1.5\"/>
+  <text x=\"510\" y=\"116\" text-anchor=\"middle\" fill=\"#7dd3fc\" font-size=\"7\" font-weight=\"700\">Per tuner/yr</text>
+  <text x=\"510\" y=\"132\" text-anchor=\"middle\" fill=\"#e2e8f0\" font-size=\"9\" font-weight=\"900\">~1000</text>
+  <text x=\"510\" y=\"146\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">estimate</text>
+  <!-- Multiply -->
+  <text x=\"290\" y=\"172\" text-anchor=\"middle\" fill=\"#fbbf24\" font-size=\"8\" font-weight=\"700\">↓ MULTIPLY &amp; DIVIDE ↓</text>
+  <!-- Result -->
+  <rect x=\"150\" y=\"180\" width=\"280\" height=\"40\" rx=\"8\" fill=\"#052e16\" stroke=\"#22c55e\" stroke-width=\"2\"/>
+  <text x=\"290\" y=\"198\" text-anchor=\"middle\" fill=\"#4ade80\" font-size=\"9\" font-weight=\"700\">Estimate: 50,000 / 1000 = ~50</text>
+  <text x=\"290\" y=\"212\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"7\">Actual was ~60. Right magnitude! Method wins.</text>
+  <!-- Calibration warning -->
+  <rect x=\"20\" y=\"195\" width=\"120\" height=\"40\" rx=\"6\" fill=\"#450a0a\" stroke=\"#f87171\" stroke-width=\"1\"/>
+  <text x=\"80\" y=\"210\" text-anchor=\"middle\" fill=\"#fca5a5\" font-size=\"6.5\" font-weight=\"700\">⚠️ CALIBRATION</text>
+  <text x=\"80\" y=\"221\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6\">you say 90% sure</text>
+  <text x=\"80\" y=\"230\" text-anchor=\"middle\" fill=\"#fca5a5\" font-size=\"6\">but correct only ~45%</text>
+  <rect x=\"440\" y=\"195\" width=\"120\" height=\"40\" rx=\"6\" fill=\"#052e16\" stroke=\"#22c55e\" stroke-width=\"1\"/>
+  <text x=\"500\" y=\"210\" text-anchor=\"middle\" fill=\"#4ade80\" font-size=\"6.5\" font-weight=\"700\">✓ SANITY CHECK</text>
+  <text x=\"500\" y=\"221\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6\">is this number</text>
+  <text x=\"500\" y=\"230\" text-anchor=\"middle\" fill=\"#4ade80\" font-size=\"6\">even possible?</text>
+</svg>
+</div>
+<div class=\"svg-caption\">চিত্র: ফার্মি অনুমান — বড় অজানাকে ছোট জানা অংশে ভাঙো, গুণ করো, স্যানিটি চেক করো।</div>
+
+<div class=\"code-block\">— Fermi Estimation Protocol —
+  big_question arrives
+    // e.g. \"how many X in Y?\"
+
+  // STEP 1: decompose
+  factors = break_down(big_question)
+    // population? households?
+    //   rate? time? per-unit?
+
+  // STEP 2: estimate each factor
+  for each f in factors:
+      f.estimate = round_number_guess(f)
+      f.range = [low, high]  // bound it
+
+  // STEP 3: combine
+  result = multiply_or_divide(factors)
+
+  // STEP 4: sanity check
+  ask: is this number POSSIBLE?
+  ask: is it in a realistic range?
+  compare: does it match
+    any known reference?
+
+  // STEP 5: calibrate yourself
+  keep an estimate journal
+    → write estimate + confidence
+    → after time passes, check
+    → most people are OVERCONFIDENT
+    // \"90% sure\" = actually ~45%
+    //   correct (Tetlock)
+  adjust future estimates
+    based on your track record</div>
 
 <div class=\"secret-box\">⚖️ বড় সংখ্যাকে ভাঙো — ছোট ছোট অংশে। প্রতিটা অংশ আন্দাজ করো, গুণ করো। স্যানিটি চেক — এই সংখ্যাটা কি সম্ভব? আর ক্যালিব্রেশন — নিজের আন্দাজের ভুল মাপো। বেশিরভাগ মানুষ অতি-আত্মবিশ্বাসী — নিজেকে চিনো।</div>`
 });
@@ -178,6 +359,81 @@ doors.push({
 
 <div class=\"dialogue\">ইস্তিখারাহ। নবী সাল্লাল্লাহু আলাইহি ওয়াসাল্লাম শিখিয়েছেন — প্রতিটা গুরুত্বপূর্ণ সিদ্ধান্তে ইস্তিখারার নামাজ পড়ো। ইস্তিখারাহ মানে — 'ভালোটা বেছে নেওয়া'। তুমি চেষ্টা করো, চিন্তা করো, পরামর্শ নাও, সম্ভাবনা হিসাব করো — আর তারপর আল্লাহর কাছে ফয়সালা ছাড়ো। \"হে আল্লাহ, যদি এই বিষয়ে কল্যাণ থাকে, তবে তুমি সহজ করো। যদি অকল্যাণ থাকে, তবে দূর করো।\" ইস্তিখারাহ অলসতা নয় — এটা চেষ্টার পরের সমর্পণ। ইব্রাহিম সব আবহাওয়া পড়েন, সব হিসাব করেন — তারপর বলেন, \"আল্লাহর উপর ভরসা।\" সেটাই ইস্তিখারাহ।</div>
 <div class=\"dialogue en\">Istikhara. The Prophet (peace be upon him) taught — pray istikhara on every important decision. Istikhara means — 'seeking the good.' You try, think, seek counsel, calculate probability — then leave the outcome to Allah. \"O Allah, if there is good in this, make it easy. If harm, turn it away.\" Istikhara is not laziness — it's surrender after effort. Ibrahim reads all weather, does all calculation — then says, \"Trust in Allah.\" That is istikhara.</div>
+
+<div class=\"svg-diagram\">
+<svg viewBox=\"0 0 580 250\" xmlns=\"http://www.w3.org/2000/svg\" style=\"width:100%;height:auto\">
+  <text x=\"290\" y=\"22\" text-anchor=\"middle\" fill=\"#e2e8f0\" font-size=\"13\" font-weight=\"900\">🧭 Decision Types: One-Way vs Two-Way Doors</text>
+  <!-- One-way door -->
+  <rect x=\"20\" y=\"40\" width=\"260\" height=\"170\" rx=\"8\" fill=\"#450a0a\" stroke=\"#f87171\" stroke-width=\"2\"/>
+  <text x=\"150\" y=\"60\" text-anchor=\"middle\" fill=\"#fca5a5\" font-size=\"10\" font-weight=\"900\">TYPE 1: One-Way Door</text>
+  <text x=\"150\" y=\"75\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"7\">irreversible, high stakes</text>
+  <rect x=\"40\" y=\"88\" width=\"220\" height=\"26\" rx=\"5\" fill=\"#1e3a5f\" stroke=\"#64748b\" stroke-width=\"1\"/>
+  <text x=\"150\" y=\"105\" text-anchor=\"middle\" fill=\"#7dd3fc\" font-size=\"7\">e.g. quit job, move city, marriage</text>
+  <text x=\"150\" y=\"128\" text-anchor=\"middle\" fill=\"#fcd34d\" font-size=\"8\" font-weight=\"700\">GO SLOW:</text>
+  <text x=\"150\" y=\"142\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">→ seek counsel</text>
+  <text x=\"150\" y=\"154\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">→ premortem (how to fail?)</text>
+  <text x=\"150\" y=\"166\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">→ expected value calc</text>
+  <text x=\"150\" y=\"178\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">→ regret minimization frame</text>
+  <text x=\"150\" y=\"196\" text-anchor=\"middle\" fill=\"#f87171\" font-size=\"7\" font-weight=\"700\">mistake = large, lasting loss</text>
+  <!-- Two-way door -->
+  <rect x=\"300\" y=\"40\" width=\"260\" height=\"170\" rx=\"8\" fill=\"#052e16\" stroke=\"#22c55e\" stroke-width=\"2\"/>
+  <text x=\"430\" y=\"60\" text-anchor=\"middle\" fill=\"#4ade80\" font-size=\"10\" font-weight=\"900\">TYPE 2: Two-Way Door</text>
+  <text x=\"430\" y=\"75\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"7\">reversible, low stakes</text>
+  <rect x=\"320\" y=\"88\" width=\"220\" height=\"26\" rx=\"5\" fill=\"#1e3a5f\" stroke=\"#64748b\" stroke-width=\"1\"/>
+  <text x=\"430\" y=\"105\" text-anchor=\"middle\" fill=\"#7dd3fc\" font-size=\"7\">e.g. test a tool, try a feature</text>
+  <text x=\"430\" y=\"128\" text-anchor=\"middle\" fill=\"#fcd34d\" font-size=\"8\" font-weight=\"700\">GO FAST:</text>
+  <text x=\"430\" y=\"142\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">→ decide quickly</text>
+  <text x=\"430\" y=\"154\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">→ try it, get feedback</text>
+  <text x=\"430\" y=\"166\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">→ if wrong, reverse</text>
+  <text x=\"430\" y=\"178\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">→ satisfice (good enough)</text>
+  <text x=\"430\" y=\"196\" text-anchor=\"middle\" fill=\"#22c55e\" font-size=\"7\" font-weight=\"700\">mistake = small, fixable</text>
+  <!-- Bottom bar -->
+  <rect x=\"80\" y=\"220\" width=\"420\" height=\"22\" rx=\"6\" fill=\"#0f172a\" stroke=\"#fbbf24\" stroke-width=\"1\"/>
+  <text x=\"290\" y=\"235\" text-anchor=\"middle\" fill=\"#fcd34d\" font-size=\"7\" font-weight=\"700\">Equal time on all decisions = folly. Match speed to reversibility.</text>
+</svg>
+</div>
+<div class=\"svg-caption\">চিত্র: সিদ্ধান্তের দুই ধরন — একমুখী দরজায় ধীরে, দ্বিমুখী দরজায় দ্রুত। সময় মেলাও ফেরার সম্ভাবনার সাথে।</div>
+
+<div class=\"code-block\">— Decision Under Uncertainty —
+
+  decision_arrives
+
+  // STEP 1: classify the door
+  if reversible(decision):
+      type = TWO_WAY
+      speed = FAST
+      // decide, try, feedback,
+      //   reverse if wrong
+  else:
+      type = ONE_WAY
+      speed = SLOW
+      // take time, this matters
+
+  // STEP 2: expected value
+  EV = sum( probability * payoff )
+      for each possible outcome
+  if EV positive → proceed candidate
+  if EV negative → avoid
+
+  // STEP 3: regret minimization
+  imagine: 10 years from now
+  ask: which choice will I
+    regret NOT making more?
+  // regret is an emotion,
+  //   speaks clearly when
+  //   data is incomplete
+
+  // STEP 4: satisfice vs maximize
+  if TWO_WAY:
+      pick \"good enough\" quickly
+      // maximizing wastes time
+  if ONE_WAY:
+      invest in finding best
+      // but know when to stop
+
+  // STEP 5: istikhara
+  //   after all effort,
+  //   surrender outcome to Allah</div>
 
 <div class=\"secret-box\">🧭 সিদ্ধান্ত দুই ধরনের — একমুখী দরজায় ধীরে (সময়, পরামর্শ, প্রিমর্টেম), দ্বিমুখী দরজায় দ্রুত (পরীক্ষা, ফিডব্যাক, সংশোধন)। প্রত্যাশিত মান হিসাব করো, অনুশোচনা ফ্রেম ব্যবহার করো, সবচেয়ে ভালো নয় — যথেষ্ট ভালো নাও। চেষ্টার পর ফল আল্লাহর উপর ছাড়ো — ইস্তিখারাহ।</div>`
 });
@@ -242,6 +498,97 @@ doors.push({
 
 <div class=\"dialogue\">তাদবির। আল্লাহ কুরআনে বলেন: <em>"তোমরা প্রস্তুতি নাও তাদের জন্য যত পারো — শক্তি ও সজ্জিত ঘোড়া। যার দ্বারা আল্লাহর শত্রু ও তোমাদের শত্রুকে ভয় দেখাবে।"</em> (৮:৬০ প্যারাফ্রেজ।) তাদবির মানে দূরদর্শী পরিকল্পনা — আগে থেকে প্রস্তুতি, দীর্ঘমেয়াদী চিন্তা। সালমা যখন বীজ বোনেন, তিনি শুধু এই মরসুমের কথা ভাবেন না — তিনি ভাবেন পাঁচ বছর পরের কথা। মাটি কী হবে? জল থাকবে? রোগ আসবে? এটাই তাদবির — স্তরে স্তরে চিন্তা। আল্লাহ আরও বলেন: <em>"যে মাটি থেকে তোমাদের সৃষ্টি করেছি, তাতেই ফিরিয়ে দেব, আর সেখান থেকেই আবার বের করব।"</em> (২০:৫৫ — আল্লাহ প্রতিটা বিষয়ের ফল নির্ধারণ করেছেন।) — প্রতিটা ফলাফলের জন্য প্রস্তুতি। দ্বিতীয়-স্তরের চিন্তা হলো তাদবিরের কারিগরি।</div>
 <div class=\"dialogue en\">Tadbir. Allah says in the Quran: <em>Prepare against them whatever you can — strength and mounted horses.</em> (8:60 paraphrased.) Tadbir means far-seeing planning — preparation ahead, long-term thinking. When Salma sows seeds, she doesn't think only of this season — she thinks of five years later. What will the soil be? Will water remain? Will disease come? This is tadbir — layer upon layer of thought. Allah also says: <em>From the earth We created you, and to it We will return you, and from it We will bring you out once more.</em> (20:55 — Allah has determined the outcome of every matter.) Second-order thinking is the craft of tadbir.</div>
+
+<div class=\"svg-diagram\">
+<svg viewBox=\"0 0 580 250\" xmlns=\"http://www.w3.org/2000/svg\" style=\"width:100%;height:auto\">
+  <text x=\"290\" y=\"22\" text-anchor=\"middle\" fill=\"#e2e8f0\" font-size=\"13\" font-weight=\"900\">🌾 Second-Order Thinking &amp; the Cobra Effect</text>
+  <!-- First order -->
+  <rect x=\"20\" y=\"42\" width=\"120\" height=\"50\" rx=\"8\" fill=\"#052e16\" stroke=\"#22c55e\" stroke-width=\"2\"/>
+  <text x=\"80\" y=\"60\" text-anchor=\"middle\" fill=\"#4ade80\" font-size=\"8\" font-weight=\"700\">1st ORDER</text>
+  <text x=\"80\" y=\"75\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">bounty for dead</text>
+  <text x=\"80\" y=\"85\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">cobras</text>
+  <line x1=\"140\" y1=\"67\" x2=\"160\" y2=\"67\" stroke=\"#fbbf24\" stroke-width=\"2\"/>
+  <polygon points=\"155,62 165,67 155,72\" fill=\"#fbbf24\"/>
+  <rect x=\"160\" y=\"42\" width=\"120\" height=\"50\" rx=\"8\" fill=\"#052e16\" stroke=\"#22c55e\" stroke-width=\"2\"/>
+  <text x=\"220\" y=\"60\" text-anchor=\"middle\" fill=\"#4ade80\" font-size=\"8\" font-weight=\"700\">RESULT</text>
+  <text x=\"220\" y=\"75\" text-anchor=\"middle\" fill=\"#4ade80\" font-size=\"7\" font-weight=\"700\">cobras decrease ✓</text>
+  <text x=\"220\" y=\"85\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"6\">looks good!</text>
+  <line x1=\"280\" y1=\"67\" x2=\"300\" y2=\"67\" stroke=\"#fbbf24\" stroke-width=\"2\"/>
+  <polygon points=\"295,62 305,67 295,72\" fill=\"#fbbf24\"/>
+  <rect x=\"300\" y=\"42\" width=\"120\" height=\"50\" rx=\"8\" fill=\"#451a0a\" stroke=\"#fbbf24\" stroke-width=\"2\"/>
+  <text x=\"360\" y=\"60\" text-anchor=\"middle\" fill=\"#fcd34d\" font-size=\"8\" font-weight=\"700\">2nd ORDER</text>
+  <text x=\"360\" y=\"75\" text-anchor=\"middle\" fill=\"#fcd34d\" font-size=\"7\" font-weight=\"700\">people BREED</text>
+  <text x=\"360\" y=\"85\" text-anchor=\"middle\" fill=\"#fcd34d\" font-size=\"7\" font-weight=\"700\">cobras ✗</text>
+  <line x1=\"420\" y1=\"67\" x2=\"440\" y2=\"67\" stroke=\"#f87171\" stroke-width=\"2\"/>
+  <polygon points=\"435,62 445,67 435,72\" fill=\"#f87171\"/>
+  <rect x=\"440\" y=\"42\" width=\"120\" height=\"50\" rx=\"8\" fill=\"#450a0a\" stroke=\"#f87171\" stroke-width=\"2\"/>
+  <text x=\"500\" y=\"60\" text-anchor=\"middle\" fill=\"#fca5a5\" font-size=\"8\" font-weight=\"700\">3rd/4th ORDER</text>
+  <text x=\"500\" y=\"75\" text-anchor=\"middle\" fill=\"#fca5a5\" font-size=\"7\" font-weight=\"700\">bounty cancelled</text>
+  <text x=\"500\" y=\"85\" text-anchor=\"middle\" fill=\"#fca5a5\" font-size=\"7\" font-weight=\"700\">MORE cobras ✗✗</text>
+  <!-- Lesson box -->
+  <rect x=\"40\" y=\"110\" width=\"500\" height=\"55\" rx=\"8\" fill=\"#0f172a\" stroke=\"#a855f7\" stroke-width=\"1.5\"/>
+  <text x=\"290\" y=\"130\" text-anchor=\"middle\" fill=\"#c084fc\" font-size=\"9\" font-weight=\"700\">🧠 LESSON: Ask \"And then what?\" at every layer</text>
+  <text x=\"290\" y=\"146\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"7\">1st-order thinking stops at the first result. 2nd-order asks what follows.</text>
+  <text x=\"290\" y=\"158\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"7\">3rd-order asks what follows THAT. Continue until each step is verifiable.</text>
+  <!-- Incentive check -->
+  <rect x=\"40\" y=\"180\" width=\"240\" height=\"50\" rx=\"8\" fill=\"#2e1065\" stroke=\"#a855f7\" stroke-width=\"1.5\"/>
+  <text x=\"160\" y=\"200\" text-anchor=\"middle\" fill=\"#c084fc\" font-size=\"8\" font-weight=\"700\">💰 INCENTIVE CHECK</text>
+  <text x=\"160\" y=\"214\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">who benefits from this decision?</text>
+  <text x=\"160\" y=\"224\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">who is harmed? what do they do?</text>
+  <!-- Feedback loops -->
+  <rect x=\"300\" y=\"180\" width=\"240\" height=\"50\" rx=\"8\" fill=\"#1e3a5f\" stroke=\"#22d3ee\" stroke-width=\"1.5\"/>
+  <text x=\"420\" y=\"200\" text-anchor=\"middle\" fill=\"#7dd3fc\" font-size=\"8\" font-weight=\"700\">🔄 FEEDBACK LOOPS</text>
+  <text x=\"420\" y=\"214\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">reinforcing: result → more result</text>
+  <text x=\"420\" y=\"224\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"6.5\">balancing: result → self-limit</text>
+</svg>
+</div>
+<div class=\"svg-caption\">চিত্র: কোবরা ইফেক্ট — প্রথম ফল ভালো, কিন্তু দ্বিতীয়/তৃতীয় স্তরে উল্টো। প্রতিটা সিদ্ধান্তে জিজ্ঞেস করো — তারপর কী?</div>
+
+<div class=\"code-block\">— Second-Order Thinking —
+
+  action = proposed_decision
+
+  // FIRST ORDER: immediate result
+  order_1 = consequence(action)
+  // this is what most people see
+  //   and stop at
+
+  // SECOND ORDER: then what?
+  order_2 = consequence(order_1)
+  // did the incentive shift?
+  //   did people adapt?
+
+  // THIRD ORDER: and then?
+  order_3 = consequence(order_2)
+  // did new behavior emerge?
+  //   did a loop start?
+
+  // keep going until each
+  //   step is verifiable
+  ask repeatedly:
+    \"AND THEN WHAT?\"
+
+  // INCENTIVE CHECK
+  for each stakeholder:
+      who_gains = benefit(action, s)
+      who_loses = harm(action, s)
+      how_will_they_react?
+  // \"show me the incentive,
+  //   I show you the outcome\"
+  //   — Charlie Munger
+
+  // FEEDBACK LOOP CHECK
+  loop_type = identify_loop(action)
+  if reinforcing:
+      → grows exponentially
+      → can explode or collapse
+  if balancing:
+      → self-corrects
+      → tends to equilibrium
+
+  // Cobra Effect = good intent
+  //   + no 2nd-order thinking
+  //   + perverse incentive</div>
 
 <div class=\"secret-box\">🌾 প্রতিটা কাজের ফল আছে, আর সেই ফলেরও ফল। দ্বিতীয়-স্তরের চিন্তা বলে — 'তারপর কী?' আর তারপর কী? কোবরা ইফেক্ট — ভালো করতে গিয়ে খারাপ, যখন ইনসেনটিভ উল্টো দেয়। প্রতিটা সিদ্ধান্তে তাদবির — দীর্ঘমেয়াদী প্রস্তুতি।</div>`
 });

@@ -68,6 +68,46 @@ doors.push({
 <div class="dialogue">হিকমাহ। কুরআনে আল্লাহ বলেন: <em>"যাকে হিকমাহ দেওয়া হয়েছে, তাকে প্রভুত কল্যাণ দেওয়া হয়েছে।"</em> (২:২৬৯) হিকমাহ শুধু জ্ঞান নয়। হিকমাহ হলো জ্ঞান প্রয়োগ করা — সঠিক সময়ে, সঠিক জায়গায়, সঠিক পরিমাণে। একটা মডেল জানা জ্ঞান। দশটা মডেল জানা আরও জ্ঞান। কিন্তু কোনটা কখন ব্যবহার করতে হবে সেটা জানা — সেটাই হিকমাহ। জাকিরা জানেন কোন সূত্র কোথায় যাবে — তাই তাঁর হাতে হিকমাহ। তোমার লক্ষ্য একটা মডেল নয় — একটা হিকমাহ।</div>
 <div class="dialogue en">Hikmah. In the Quran Allah says: <em>"Whoever is given hikmah has been given much good."</em> (2:269) Hikmah is not just knowledge. Hikmah is applying knowledge — at the right time, in the right place, in the right amount. Knowing one model is knowledge. Knowing ten models is more knowledge. But knowing which to use when — that is hikmah. Zakira knows which thread goes where — so she has hikmah. Your goal is not a model — it is hikmah.</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🪡 Mental Models: Multiple Tools for Multiple Problems</text>
+  <rect x="20" y="55" width="100" height="50" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="70" y="82" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">First Principles</text>
+  <text x="70" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">decompose to truth</text>
+  <rect x="130" y="55" width="100" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="180" y="82" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Inversion</text>
+  <text x="180" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">how to fail?</text>
+  <rect x="240" y="55" width="100" height="50" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="82" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Occam's Razor</text>
+  <text x="290" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">simplest explanation</text>
+  <rect x="350" y="55" width="100" height="50" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
+  <text x="400" y="82" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">Bayesian</text>
+  <text x="400" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">update beliefs</text>
+  <rect x="460" y="55" width="100" height="50" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="510" y="82" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">Second-Order</text>
+  <text x="510" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">consequences of consequences</text>
+  <rect x="100" y="140" width="380" height="50" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+  <text x="290" y="165" text-anchor="middle" fill="#e2e8f0" font-size="8">একটি হাতিয়ার নয় — একটি তাঁত বানাও</text>
+  <text x="290" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">Don't have one tool — build a loom of many tools</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: পাঁচটি মানসিক মডেল — প্রতিটি আলাদা সমস্যার জন্য। একসাথে একটি চিন্তার তাঁত।</div>
+
+<div class="code-block">— Build Your Latticework —
+  tools = []
+  tools.push(opportunity_cost)    // economics
+  tools.push(reactivity)          // psychology
+  tools.push(entropy)             // physics
+  tools.push(feedback_loops)      // systems
+  tools.push(first_principles)    // philosophy
+
+  problem arrives
+    → ask: which model fits this?
+    → pull model, apply
+    → ask: what am I NOT seeing?
+  one tool = hammer-man
+  many tools, wisely used = hikmah</div>
+
 <div class="secret-box">🪡 একটা হাতিয়ার নয়, একটা তাঁত বানাও। মডেল হলো মানচিত্র — ভুল কিন্তু কাজে লাগে। যে জানে কোনটা কখন টানতে হবে, তার কাছে হিকমাহ। আজ থেকে একটা প্রশ্ন করো: <em>"এটা কি আমার একমাত্র হাতিয়ার দিয়ে সমাধান করার চেষ্টা করছি?"</em></div>`
 });
 
@@ -137,6 +177,78 @@ doors.push({
 <div class="dialogue">আদল। আল্লাহ কুরআনে বলেন: <em>"তোমার রবের বাণী সত্য ও ন্যায়ে পূর্ণ।"</em> (৬:১১৫ — সত্য + ন্যায় = আদল।) আদল মানে একটা জিনিসের গঠন যাচাই করা — কাঠের জোড় কি ঠিক? কাঠ কি পচা নয়? ফিট কি ঠিক? যুক্তির আদল নেওয়া মানে — প্রতিটা প্রিমিস ধরে ধরে দেখা, জোড় ধরে ধরে দেখা। ইউসুফ যখন দরজা বানান, তিনি প্রতিটা জোড় ধরে দেখেন — চাপ দেন, নাড়ান। সেটাই আদল। তোমারও প্রতিটা যুক্তি এভাবে যাচাই করতে হবে।</div>
 <div class="dialogue en">Adl. Allah says in the Quran: <em>The word of your Lord has been fulfilled in truth and justice.</em> (6:115 — truth + justice = adl.) Adl means examining a thing's structure — is the wood joint correct? Is the wood not rotten? Is the fit right? Taking the adl of an argument means — examining each premise, examining each joint. When Yusuf makes a door, he checks every joint — pushes, shakes. That is adl. You too must examine every argument this way.</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📐 Argument Structure: Valid vs Invalid vs Sound</text>
+  <!-- VALID column -->
+  <text x="90" y="48" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">VALID</text>
+  <rect x="25" y="55" width="130" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="90" y="73" text-anchor="middle" fill="#7dd3fc" font-size="7.5">P1: All Muslims are human</text>
+  <rect x="25" y="90" width="130" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="90" y="108" text-anchor="middle" fill="#7dd3fc" font-size="7.5">P2: I am Muslim</text>
+  <line x1="90" y1="123" x2="90" y2="138" stroke="#4ade80" stroke-width="2"/>
+  <polygon points="85,135 95,135 90,143" fill="#4ade80"/>
+  <rect x="25" y="145" width="130" height="28" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="90" y="163" text-anchor="middle" fill="#4ade80" font-size="7.5" font-weight="700">C: I am human ✓</text>
+  <!-- INVALID column -->
+  <text x="270" y="48" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">INVALID</text>
+  <rect x="205" y="55" width="130" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="270" y="73" text-anchor="middle" fill="#7dd3fc" font-size="7.5">P1: All Muslims are human</text>
+  <rect x="205" y="90" width="130" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="270" y="108" text-anchor="middle" fill="#7dd3fc" font-size="7.5">P2: I am human</text>
+  <line x1="270" y1="123" x2="270" y2="138" stroke="#f87171" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="265,135 275,135 270,143" fill="#f87171"/>
+  <rect x="205" y="145" width="130" height="28" rx="5" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
+  <text x="270" y="163" text-anchor="middle" fill="#fca5a5" font-size="7.5" font-weight="700">C: I am Muslim ✗</text>
+  <!-- SOUNDNESS box -->
+  <rect x="380" y="50" width="170" height="125" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="465" y="70" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">Soundness Test</text>
+  <text x="395" y="90" fill="#94a3b8" font-size="7">1. Is the structure valid?</text>
+  <text x="395" y="106" fill="#94a3b8" font-size="7">2. Are all premises true?</text>
+  <text x="395" y="122" fill="#94a3b8" font-size="7">3. Any hidden premise?</text>
+  <text x="395" y="143" fill="#4ade80" font-size="7" font-weight="700">All pass = SOUND ✓</text>
+  <text x="395" y="158" fill="#fca5a5" font-size="7" font-weight="700">Any fail = unsound ✗</text>
+  <!-- Types row -->
+  <text x="20" y="200" fill="#7dd3fc" font-size="7" font-weight="700">Deduction</text>
+  <text x="20" y="212" fill="#94a3b8" font-size="6">general→specific, 100%</text>
+  <text x="120" y="200" fill="#4ade80" font-size="7" font-weight="700">Induction</text>
+  <text x="120" y="212" fill="#94a3b8" font-size="6">specific→general, prob.</text>
+  <text x="240" y="200" fill="#c084fc" font-size="7" font-weight="700">Abduction</text>
+  <text x="240" y="212" fill="#94a3b8" font-size="6">symptom→cause, best guess</text>
+  <text x="380" y="200" fill="#fcd34d" font-size="7" font-weight="700">Hidden Premise</text>
+  <text x="380" y="212" fill="#94a3b8" font-size="6">surface it, then check truth</text>
+  <text x="290" y="235" text-anchor="middle" fill="#64748b" font-size="6.5">বৈধ গঠন + সত্য প্রিমিস + কোনো লুকানো প্রিমিস নেই = সাউন্ড যুক্তি</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: যুক্তির গঠন — বামে বৈধ, মাঝে অবৈধ, ডানে সাউন্ডনেস পরীক্ষা। নিচে তিন ধরনের যুক্তি।</div>
+
+<div class="code-block">— Validate Any Argument —
+  premises = [P1, P2, ...]
+
+  // Step 1: check STRUCTURE (is the joint valid?)
+  form = check_logical_form(premises)
+  if form == INVALID:
+      → reject. The joint is broken.
+      // true premises can still give
+      //   a false conclusion
+
+  // Step 2: check each PREMISE (is the wood sound?)
+  for each p in premises:
+      if not is_true(p):
+          → reject. Rotten wood.
+
+  // Step 3: hunt HIDDEN premises
+  implicit = find_unstated_assumptions(arg)
+  // example: "you do not understand
+  //   this code, so discard it"
+  // hidden: "code you do not
+  //   understand should be discarded"
+  if implicit and not is_true(implicit):
+      → reject. Hidden crack.
+
+  // valid form + true premises
+  //   + no hidden flaws = SOUND</div>
+
 <div class="secret-box">📐 যুক্তি হলো কাঠের জোড়। বৈধ গঠন + সত্য প্রিমিস = সাউন্ড যুক্তি। একটা ভুল হলেই সিদ্ধান্ত ধরে না। আজ কারও যুক্তি শুনলে একটা প্রশ্ন করো: <em>"এই গঠনে অন্য প্রিমিস বসালে কী হতে পারে?"</em></div>`
 });
 
@@ -196,6 +308,89 @@ doors.push({
 <div class="dialogue">সিদক। কুরআনে আল্লাহ বলেন: <em>"যারা ঈমান এনেছে এবং সত্যবাদী হয়েছে — তারাই সফলকাম।"</em> (এটি সত্যবাদীদের প্রশংসার প্যারাফ্রেজ।) সিদক শুধু মুখের সততা নয়। সিদক মানে চিন্তার সততা — যখন কেউ দেখছে না, তখনও নিজের সাথে সৎ থাকা। নাফিসা যখন একা গ্যালারিতে মূর্তি টোকা দেন, কেউ দেখছে না — কিন্তু তিনি ফাটল খোঁজেন। সেটাই সিদক। তোমার চিন্তার সিদক হলো — যখন কেউ তোমার যুক্তি শুনছে না, তখনও নিজের যুক্তি যাচাই করা।</div>
 <div class="dialogue en">Sidq. Allah says in the Quran (paraphrased): those who believe and are truthful — they are the successful. Sidq is not just honesty of speech. Sidq is honesty of thought — being honest with yourself even when no one is watching. When Nafisa taps statues alone in the gallery, no one watching — but she finds cracks. That is sidq. The sidq of your thinking is — checking your own argument even when no one is hearing it.</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔨 Six Cracks in Reasoning — The Fallacy Gallery</text>
+  <!-- Row 1 -->
+  <rect x="20" y="40" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="105" y="60" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">1. Ad Hominem</text>
+  <text x="105" y="75" text-anchor="middle" fill="#94a3b8" font-size="6.5">attacks the person,</text>
+  <text x="105" y="85" text-anchor="middle" fill="#94a3b8" font-size="6.5">not the argument</text>
+  <text x="105" y="98" text-anchor="middle" fill="#64748b" font-size="6">"You are junior, what do you know?"</text>
+
+  <rect x="205" y="40" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="290" y="60" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">2. Strawman</text>
+  <text x="290" y="75" text-anchor="middle" fill="#94a3b8" font-size="6.5">builds a weak version,</text>
+  <text x="290" y="85" text-anchor="middle" fill="#94a3b8" font-size="6.5">then attacks that</text>
+  <text x="290" y="98" text-anchor="middle" fill="#64748b" font-size="6">"So you want ONLY tests, no code?"</text>
+
+  <rect x="390" y="40" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="475" y="60" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">3. False Dilemma</text>
+  <text x="475" y="75" text-anchor="middle" fill="#94a3b8" font-size="6.5">only two options,</text>
+  <text x="475" y="85" text-anchor="middle" fill="#94a3b8" font-size="6.5">but more exist</text>
+  <text x="475" y="98" text-anchor="middle" fill="#64748b" font-size="6">"Microservices or monolith?"</text>
+
+  <!-- Row 2 -->
+  <rect x="20" y="120" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="105" y="140" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">4. Slippery Slope</text>
+  <text x="105" y="155" text-anchor="middle" fill="#94a3b8" font-size="6.5">one step = catastrophe,</text>
+  <text x="105" y="165" text-anchor="middle" fill="#94a3b8" font-size="6.5">but no proof per step</text>
+  <text x="105" y="178" text-anchor="middle" fill="#64748b" font-size="6">"Skip comments once → ruin"</text>
+
+  <rect x="205" y="120" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="290" y="140" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">5. Motivated Reasoning</text>
+  <text x="290" y="155" text-anchor="middle" fill="#94a3b8" font-size="6.5">conclusion fixed first,</text>
+  <text x="290" y="165" text-anchor="middle" fill="#94a3b8" font-size="6.5">evidence cherry-picked</text>
+  <text x="290" y="178" text-anchor="middle" fill="#64748b" font-size="6">"I decided, now I justify"</text>
+
+  <rect x="390" y="120" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="475" y="140" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">6. Goodhart Law</text>
+  <text x="475" y="155" text-anchor="middle" fill="#94a3b8" font-size="6.5">metric becomes target →</text>
+  <text x="475" y="165" text-anchor="middle" fill="#94a3b8" font-size="6.5">metric degrades</text>
+  <text x="475" y="178" text-anchor="middle" fill="#64748b" font-size="6">"Pay per line of code → bloat"</text>
+
+  <!-- Steelman banner -->
+  <rect x="80" y="200" width="420" height="32" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="215" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">🛡️ Defense: STEELMAN</text>
+  <text x="290" y="227" text-anchor="middle" fill="#94a3b8" font-size="6.5">Build opponent argument at its strongest, then break THAT</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: ছয়টি ভ্রষ্টাচার — যুক্তির ফাটল চেনার গ্যালারি। প্রতিষেধক: স্টিলম্যান।</div>
+
+<div class="code-block">— Fallacy Checklist —
+  hear_argument(arg)
+
+  scan for cracks:
+    1. ad_hominem?
+       → is the PERSON attacked
+         instead of the POINT?
+    2. strawman?
+       → was the argument weakened
+         before attacking?
+    3. false_dilemma?
+       → are there really only
+         two options?
+    4. slippery_slope?
+       → is each step proven,
+         or just imagined?
+    5. motivated_reasoning?
+       → was the conclusion
+         decided before evidence?
+    6. goodhart_law?
+       → is a metric being
+         optimized, not the goal?
+
+  defense = STEELMAN(opponent)
+    // rebuild their argument
+    //   at its STRONGEST
+    // they say: "yes, that is
+    //   what I mean"
+    // THEN break that version
+
+  final step:
+    tap your OWN favorite
+    argument for cracks → sidq</div>
+
 <div class="secret-box">🔨 ভ্রষ্টাচার হলো যুক্তির ফাটল — অ্যাড হোমিনেম, স্ট্রম্যান, ফলস ডাইলেমা, স্লিপারি স্লোপ, মোটিভেটেড রিজনিং, গুডহার্ট। প্রতিষেধক — স্টিলম্যান: প্রতিপক্ষের যুক্তি শক্ত করে বানিয়ে ভাঙা। সবচেয়ে বিপজ্জনক ফাটল নিজের যুক্তিতে — সিদক দিয়ে ধরতে হয়।</div>`
 });
 
@@ -253,6 +448,88 @@ doors.push({
 <div class="dialogue">ইলম আল-ইয়াকিন। কুরআনে আল্লাহ তিন ধরনের জ্ঞানের কথা বলেছেন — ইলম আল-ইয়াকিন (প্রত্যয়ের জ্ঞান), আইন আল-ইয়াকিন (প্রত্যক্ষ জ্ঞান), হাক্ক আল-ইয়াকিন (সত্যের জ্ঞান)। ইলম আল-ইয়াকিন হলো প্রমাণ থেকে প্রতীয়মান জ্ঞান — তুমি দেখোনি, কিন্তু প্রমাণ থেকে বোঝো। আগুনের ধোঁয়া দেখে তুমি বোঝো — আগুন আছে। দেখোনি, কিন্তু ইলম আল-ইয়াকিন। বেইসিয়ান চিন্তা হলো ইলম আল-ইয়াকিনের কারিগরি — প্রতিটা প্রমাণ দিয়ে তোমার বিশ্বাস তীক্ষ্ণ করা। রুকাইয়া কখনো একটা খাতা দেখে চূড়ান্ত সিদ্ধান্ত নেন না — তিনি প্রতিটা নতুন এন্ট্রি দিয়ে ব্যালেন্স আপডেট করেন। সেটাই ইলম আল-ইয়াকিন।</div>
 <div class="dialogue en">Ilm al-yaqin. In the Quran Allah speaks of three kinds of knowledge — ilm al-yaqin (knowledge of certainty), ain al-yaqin (vision of certainty), haqq al-yaqin (truth of certainty). Ilm al-yaqin is knowledge inferred from evidence — you haven't seen, but you understand from proof. You see smoke and infer — fire exists. You haven't seen, but ilm al-yaqin. Bayesian thinking is the craft of ilm al-yaqin — sharpening belief with each piece of evidence. Rukayya never makes a final decision from one ledger entry — she updates the balance with each new entry. That is ilm al-yaqin.</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📊 Bayesian Update: Prior + Evidence = Posterior</text>
+
+  <!-- Flow boxes -->
+  <rect x="20" y="45" width="130" height="55" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="85" y="65" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="700">PRIOR</text>
+  <text x="85" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">P(disease) = 1%</text>
+  <text x="85" y="92" text-anchor="middle" fill="#64748b" font-size="6">base rate from population</text>
+
+  <!-- Arrow -->
+  <line x1="155" y1="72" x2="195" y2="72" stroke="#fbbf24" stroke-width="2"/>
+  <polygon points="190,67 200,72 190,77" fill="#fbbf24"/>
+  <text x="175" y="62" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="700">test</text>
+
+  <rect x="200" y="45" width="130" height="55" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="265" y="65" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">EVIDENCE</text>
+  <text x="265" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">test = positive</text>
+  <text x="265" y="92" text-anchor="middle" fill="#64748b" font-size="6">99% accurate test</text>
+
+  <line x1="335" y1="72" x2="375" y2="72" stroke="#22c55e" stroke-width="2"/>
+  <polygon points="370,67 380,72 370,77" fill="#22c55e"/>
+  <text x="355" y="62" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">update</text>
+
+  <rect x="380" y="45" width="130" height="55" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="445" y="65" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">POSTERIOR</text>
+  <text x="445" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">P(disease|+) = 50%</text>
+  <text x="445" y="92" text-anchor="middle" fill="#64748b" font-size="6">NOT 99%! base rate matters</text>
+
+  <!-- Calculation breakdown -->
+  <rect x="20" y="120" width="540" height="95" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+  <text x="290" y="140" text-anchor="middle" fill="#e2e8f0" font-size="8" font-weight="700">Of 1000 people (base rate 1%, test 99% accurate):</text>
+
+  <rect x="40" y="150" width="160" height="50" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+  <text x="120" y="167" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">10 truly sick</text>
+  <text x="120" y="180" text-anchor="middle" fill="#94a3b8" font-size="6.5">9.9 test positive (true +)</text>
+  <text x="120" y="192" text-anchor="middle" fill="#64748b" font-size="6">correct detection</text>
+
+  <rect x="210" y="150" width="160" height="50" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
+  <text x="290" y="167" text-anchor="middle" fill="#fca5a5" font-size="7" font-weight="700">990 truly well</text>
+  <text x="290" y="180" text-anchor="middle" fill="#94a3b8" font-size="6.5">9.9 test positive (false +)</text>
+  <text x="290" y="192" text-anchor="middle" fill="#64748b" font-size="6">false alarm!</text>
+
+  <rect x="380" y="150" width="160" height="50" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="460" y="167" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="700">Total positives: 19.8</text>
+  <text x="460" y="180" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="700">Truly sick: 9.9</text>
+  <text x="460" y="193" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="900">9.9/19.8 = 50%</text>
+
+  <text x="290" y="235" text-anchor="middle" fill="#94a3b8" font-size="6.5">একটা পরীক্ষার ফল চূড়ান্ত নয় — বেস রেট মিলিয়ে দেখো, আবার আপডেট করো</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: বেইসিয়ান আপডেট — ১% বেস রেটে ৯৯% নির্ভুল টেস্ট পজিটিভ এলেও মাত্র ৫০% সত্যিই অসুস্থ।</div>
+
+<div class="code-block">— Bayesian Update —
+  // before seeing evidence:
+  prior = P(hypothesis)
+      // e.g. P(sick) = 0.01
+
+  // new data arrives:
+  evidence = test_result
+  likelihood = P(evidence | hypothesis)
+      // e.g. P(positive | sick) = 0.99
+
+  // Bayes formula:
+  posterior = likelihood * prior
+              / P(evidence)
+
+  // the key insight:
+  //   for RARE events, false positives
+  //   can outnumber true positives
+  //
+  //   1% base rate + 99% test
+  //     → positive test = only 50%
+  //       chance of being sick
+
+  // never treat one data point
+  //   as final. take another test.
+  //   update again. repeat.
+
+  // strong opinions, weakly held
+  //   — Paul Saffo</div>
+
 <div class="secret-box">📊 প্রতিটা বিশ্বাসের একটা সম্ভাবনা আছে। নতুন প্রমাণ সেই সম্ভাবনা আপডেট করে — মুছে দেয় না। বেস রেট ভুলো না: একটা পরীক্ষার ফল বা একটা খবর দেখে চূড়ান্ত সিদ্ধান্ত নিও না। আজ একটা প্রশ্ন করো: <em>"এই ফলাফলের পেছনের বেস রেট কত?"</em></div>`
 });
 
@@ -304,6 +581,85 @@ doors.push({
 
 <div class="dialogue">ফাতরাত আল-ফারাগ। আল্লাহ কুরআনে বলেন: <em>"যখন আমি তোমার জন্য স্থান প্রশস্ত করি, তখন তুমি সংকুচিত হয়ো না।"</em> (এটি শারহ আল-সদরের প্যারাফ্রেজ — ৯৪:৫-৬ এর ভিত্তিতে।) ফাতরাত আল-ফারাগ মানে স্থান খালি করা — ভিত্তিতে নামার জন্য, উল্টো চিন্তার জন্য, অপ্রয়োজনীয় সরানোর জন্য। সুলতান যখন চুল্লি খালি করেন, তখনই নতুন লোহা রাখতে পারেন। তোমার মন যখন অ্যানালজিতে ভরা, তখন ফার্স্ট প্রিন্সিপাল জায়গা পায় না। খালি করো — স্থান তৈরি হবে। আল্লাহ বলেন: <em>"আমি তোমার বোঝা খুলে দেব যা তোমার পিঠ ভেঙে দিচ্ছিল।"</em> (৯৪:২-৩ প্যারাফ্রেজ।) অ্যানালজি একটা বোঝা — সেটা খুলে দাও, ফার্স্ট প্রিন্সিপাল হালকা হবে।</div>
 <div class="dialogue en">Fatrat al-faragh. Allah says in the Quran (paraphrased): <em>"When I expand space for you, be not constricted."</em> (Based on 94:5-6.) Fatrat al-faragh means making space — to descend to the foundation, to think inverted, to remove the unnecessary. When Sultan clears the furnace, only then can new iron go in. When your mind is full of analogy, first principles find no place. Clear it — space will open. Allah says: <em>"I will remove your burden that was breaking your back."</em> (94:2-3 paraphrased.) Analogy is a burden — release it, first principles will lighten.</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚙️ Analogy vs First Principles + Inversion</text>
+
+  <!-- Analogy path (left) -->
+  <rect x="20" y="42" width="250" height="175" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="145" y="60" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">❌ BY ANALOGY</text>
+
+  <rect x="40" y="70" width="210" height="28" rx="5" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
+  <text x="145" y="88" text-anchor="middle" fill="#94a3b8" font-size="7">"Others use microservices"</text>
+
+  <line x1="145" y1="103" x2="145" y2="115" stroke="#64748b" stroke-width="1.5"/>
+  <polygon points="140,112 150,112 145,120" fill="#64748b"/>
+
+  <rect x="40" y="122" width="210" height="28" rx="5" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
+  <text x="145" y="140" text-anchor="middle" fill="#94a3b8" font-size="7">"Copy + tweak slightly"</text>
+
+  <line x1="145" y1="155" x2="145" y2="167" stroke="#64748b" stroke-width="1.5"/>
+  <polygon points="140,164 150,164 145,172" fill="#64748b"/>
+
+  <rect x="40" y="174" width="210" height="28" rx="5" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
+  <text x="145" y="192" text-anchor="middle" fill="#fca5a5" font-size="7">Slightly better. Do not know WHY.</text>
+
+  <!-- First Principles path (right) -->
+  <rect x="310" y="42" width="250" height="175" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="435" y="60" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">✅ FIRST PRINCIPLES</text>
+
+  <rect x="330" y="70" width="210" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="435" y="88" text-anchor="middle" fill="#7dd3fc" font-size="7">"What is this MADE of?"</text>
+
+  <line x1="435" y1="103" x2="435" y2="115" stroke="#22c55e" stroke-width="1.5"/>
+  <polygon points="430,112 440,112 435,120" fill="#22c55e"/>
+
+  <rect x="330" y="122" width="210" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
+  <text x="435" y="140" text-anchor="middle" fill="#7dd3fc" font-size="7">Raw materials: Al, Ti, Cu, CF</text>
+
+  <line x1="435" y1="155" x2="435" y2="167" stroke="#22c55e" stroke-width="1.5"/>
+  <polygon points="430,164 440,164 435,172" fill="#22c55e"/>
+
+  <rect x="330" y="174" width="210" height="28" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="435" y="192" text-anchor="middle" fill="#4ade80" font-size="7">Rebuild from scratch. 98% cheaper.</text>
+
+  <!-- Inversion arrow -->
+  <path d="M 435 210 Q 435 230 290 230 Q 145 230 145 210" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="290" y="243" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">⤴ INVERT: "How would this FAIL?" → avoid those</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: অ্যানালজি বনাম ফার্স্ট প্রিন্সিপাল — এবং উল্টো চিন্তা (inversion)।</div>
+
+<div class="code-block">— First Principles + Inversion —
+
+  // METHOD 1: descend to foundation
+  thing = problem_or_product
+  ask: what is this MADE of?
+    → list raw components
+    → find cost of each
+    → compare: raw vs assembled
+  gap = assembled_cost - raw_cost
+    → that gap is the analogy tax
+  rebuild from raw → innovation
+
+  // METHOD 2: invert the question
+  original: "How do I succeed?"
+  inverted: "How would I FAIL?"
+    → list all failure modes
+    → avoid each one
+    → success emerges
+
+  // METHOD 3: via negativa
+  ask: what can I REMOVE
+    to make this simpler?
+    → delete unused features
+    → drop unnecessary deps
+    → clear space for what matters
+
+  // premortem > postmortem
+  //   think of death causes
+  //   BEFORE death occurs</div>
 
 <div class="secret-box">⚙️ অ্যানালজি দিয়ে কপি করো না — ভিত্তিতে নেমে প্রশ্ন করো: 'এটা কেন কাজ করে?' আর সরাসরি সমাধান না পেলে উল্টে দাও: 'কীভাবে এটা ব্যর্থ হবে?' সেই উত্তর এড়াও। প্রিমর্টেম > পোস্টমর্টেম।</div>`
 });
