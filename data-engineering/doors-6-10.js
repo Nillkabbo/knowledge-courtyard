@@ -1,498 +1,452 @@
-// ═══════════════════════════════════════════
-// DOOR 6 — The Secret Diary (CDC)
-// ═══════════════════════════════════════════
 doors.push({
   num: 6,
-  icon: "📡",
-  color: "#a855f7",
-  tagline: "গোপন ডায়েরি — The Secret Diary",
-  name: "The Secret Diary",
-  secret: "Database-এর ভেতরে একটা গোপন ডায়েরি আছে — binlog। সে সব লিখে রাখে। CDC সেটা পড়ে।",
-  story: `<p class="scene-setting">তোমার LedgerPilot MySQL-এর ভেতরে একটা গোপন ডায়েরি আছে — binlog। প্রতিটা INSERT, UPDATE, DELETE এই ডায়েরিতে লেখা হয়। কারণ কোনো কারণে DB crash করলে এই ডায়েরি দিয়ে recovery করা যায়। কিন্তু এই একই ডায়েরি পড়ে তুমি real-time data pipeline বানাতে পারো! এটাই CDC — Change Data Capture।</p>
-<p class="scene-setting en">MySQL's binlog is a secret diary recording every change. CDC tools like Debezium read this diary directly — streaming every INSERT/UPDATE/DELETE to Kafka in real-time. No polling needed.</p>
+  icon: "📖",
+  color: "#0ea5e9",
+  name: "গোপন ডায়েরি",
+  subtitle: "The Secret Diary",
+  tech: "Change Data Capture (CDC) — Debezium, binlog, WAL, log-based replication, Kafka Connect",
+  spirit: "সিজিল — অভিলেখ, প্রতিটি পরিবর্তনের দলিল",
+  secret: "CDC = প্রতিটি INSERT/UPDATE/DELETE real-time ধরা। MySQL binlog বা PostgreSQL WAL পড়ো। প্রতিটি পরিবর্তন একটি event। Debezium এটা স্বয়ংক্রিয় করে — OLTP থেকে OLAP-এ সরাসরি।",
+  recall: {
+    q: " CDC কী? binlog কী? Debezium কীভাবে কাজ করে?",
+    qen: "What is CDC? What is binlog? How does Debezium work?",
+    a: "CDC = Change Data Capture — প্রতিটি row change event হিসেবে। binlog = MySQL-এর transaction log। Debezium = binlog পড়ে → Kafka-তে event পাঠায়।",
+    aen: "CDC = Change Data Capture — each row change as event. binlog = MySQL transaction log. Debezium reads binlog → sends events to Kafka."
+  },
+  story: `<p class="scene-setting">খালিদ (Door ৫) তোমাকে shuffle শিখিয়েছেন। কিন্তু একটি সমস্যা — OLTP থেকে OLAP-এ ডেটা কীভাবে সরাবে? প্রতিদিন রাতে batch? কিন্তু তাহলে real-time থাকে না। CDC এর উত্তর — প্রতিটি INSERT/UPDATE/DELETE সঙ্গে সঙ্গে ধরো। MySQL binlog পড়ে — সেখানে প্রতিটি পরিবর্তন লেখা আছে। Debezium সেটা স্বয়ংক্রিয় করে।</p>
+<p class="scene-setting en">Khalid (Door 5) taught you shuffle. But a problem — how to move data from OLTP to OLAP? Nightly batch? Then it's not real-time. CDC answers — catch every INSERT/UPDATE/DELETE instantly. Read MySQL binlog — every change is recorded there. Debezium automates this.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📡 CDC: Query-Based vs Log-Based</text>
+<div class="dialogue"><strong>ডায়েরি-লেখক ইউসুফ:</strong> MySQL-এ প্রতিটি transaction binlog-এ লেখা হয় — row-level। INSERT: {id:42, amount:500}। UPDATE: {before:{amount:500}, after:{amount:1000}}। DELETE: {id:42}। Debezium এই binlog পড়ে Kafka topic-এ পাঠায়। OLAP সেই topic পড়ে নিজের table-এ apply করে। real-time replication — কোনো batch নেই!</div>
+<div class="dialogue en"><strong>Diary Writer Yusuf:</strong> MySQL writes every transaction to binlog — row-level. INSERT: {id:42, amount:500}. UPDATE: {before:{amount:500}, after:{amount:1000}}. DELETE: {id:42}. Debezium reads this binlog and sends to Kafka topic. OLAP reads that topic and applies to its own table. Real-time replication — no batch!</div>
 
-  <!-- Query-based (left) -->
-  <rect x="10" y="45" width="275" height="280" rx="12" fill="#0f172a" stroke="#f97316" stroke-width="2"/>
-  <text x="147" y="68" text-anchor="middle" fill="#fdba74" font-size="12" font-weight="700">❌ Query-Based CDC</text>
-  <rect x="25" y="85" width="245" height="35" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
-  <text x="147" y="107" text-anchor="middle" fill="#93c5fd" font-size="9">SELECT * WHERE updated_at > X</text>
-  <text x="147" y="138" text-anchor="middle" fill="#fb923c" font-size="9">⏱️ Latency: Minutes</text>
-  <text x="147" y="156" text-anchor="middle" fill="#fb923c" font-size="9">🐌 Heavy load on production</text>
-  <text x="147" y="174" text-anchor="middle" fill="#f87171" font-size="9">❌ Misses DELETE!</text>
-  <text x="147" y="192" text-anchor="middle" fill="#f87171" font-size="9">❌ Misses intermediate changes</text>
-  <text x="147" y="220" text-anchor="middle" fill="#94a3b8" font-size="9">Like checking mailbox</text>
-  <text x="147" y="235" text-anchor="middle" fill="#94a3b8" font-size="9">every 5 minutes</text>
-  <text x="147" y="265" text-anchor="middle" fill="#fcd34d" font-size="9">✅ Simple setup</text>
-  <text x="147" y="280" text-anchor="middle" fill="#fcd34d" font-size="9">✅ Read-only access</text>
-  <text x="147" y="300" text-anchor="middle" fill="#64748b" font-size="8" font-style="italic">Good for: simple batch sync</text>
+<div class="code-block">— CDC with Debezium + Kafka —
 
-  <!-- Log-based (right) -->
-  <rect x="295" y="45" width="275" height="280" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
-  <text x="432" y="68" text-anchor="middle" fill="#86efac" font-size="12" font-weight="700">✅ Log-Based CDC (Debezium)</text>
-  <rect x="310" y="85" width="245" height="35" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="432" y="107" text-anchor="middle" fill="#4ade80" font-size="9">📖 Reads binlog / WAL directly</text>
-  <text x="432" y="138" text-anchor="middle" fill="#4ade80" font-size="9">⚡ Latency: Sub-second</text>
-  <text x="432" y="156" text-anchor="middle" fill="#4ade80" font-size="9">✅ Zero load on production</text>
-  <text x="432" y="174" text-anchor="middle" fill="#4ade80" font-size="9">✅ Captures DELETE</text>
-  <text x="432" y="192" text-anchor="middle" fill="#4ade80" font-size="9">✅ Preserves transaction order</text>
-  <text x="432" y="220" text-anchor="middle" fill="#94a3b8" font-size="9">Like a doorbell — DB</text>
-  <text x="432" y="235" text-anchor="middle" fill="#94a3b8" font-size="9">tells you instantly</text>
-  <text x="432" y="265" text-anchor="middle" fill="#fca5a5" font-size="9">⚠️ Complex setup</text>
-  <text x="432" y="280" text-anchor="middle" fill="#fca5a5" font-size="9">⚠️ Elevated DB privileges</text>
-  <text x="432" y="300" text-anchor="middle" fill="#64748b" font-size="8" font-style="italic">Good for: real-time sync, streaming</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Query-based = poll করা (ধীর, DELETE মিস)। Log-based = binlog পড়া (দ্রুত, সম্পূর্ণ)। Debezium প্রতিটা event Kafka-তে পাঠায়।</div>
+  # MySQL my.cnf — binlog enable:
+  [mysqld]
+  server-id = 1
+  log_bin = mysql-bin
+  binlog_format = ROW           # row-level changes
+  binlog_row_image = FULL       # before + after
 
-<div class="code-block">
-<div class="code-title">📡 CDC — Debezium MySQL Connector / binlog থেকে Kafka</div>
-<pre># 1. MySQL-এ binlog চালু করো (my.cnf)
-[mysqld]
-server-id         = 1
-log_bin           = mysql-bin
-binlog_format     = ROW
-binlog_row_image  = FULL
-
-# 2. Kafka Connect-এ Debezium connector রেজিস্টার করো (POST)
-curl -X POST http://connect:8083/connectors -H "Content-Type: application/json" -d '{
-  "name": "ledgerpilot-txns",
-  "config": {
-    "connector.class": "io.debezium.connector.mysql.MySqlConnector",
-    "database.hostname": "mysql.ledgerpilot",
-    "database.port": "3306",
-    "database.user": "debezium",
-    "database.password": "secret",
-    "database.server.id": "184054",
-    "database.include.list": "ledgerpilot",
-    "table.include.list": "ledgerpilot.transactions",
-    "database.history.kafka.topic": "schema-changes.ledgerpilot",
-    "database.history.kafka.bootstrap.servers": "kafka:9092"
+  # Debezium Kafka Connect config (POST):
+  {
+    "name": "mysql-source",
+    "config": {
+      "connector.class": "io.debezium.
+        connector.mysql.MySqlConnector",
+      "database.hostname": "mysql.ledgerpilot.com",
+      "database.user": "debezium",
+      "database.server.id": "184054",
+      "database.server.name": "ledgerpilot",
+      "database.include.list": "ledger",
+      "table.include.list": "ledger.transactions",
+      "database.history.kafka.topic": "schema-changes",
+      "database.history.kafka.bootstrap.servers": "kafka:9092"
+    }
   }
-}'
 
-# প্রতিটা row-change এভাবে Kafka-তে যায় (INSERT/UPDATE/DELETE — সবই)
-# {"op":"c","before":null,"after":{"id":42,"amount":5000,"status":"paid"}}</pre>
-</div>
+  # Kafka topic: ledgerpilot.ledger.transactions
+  # Event example:
+  {
+    "op": "u",            // update
+    "before": {"amount": 500},
+    "after": {"amount": 1000, "updated_at": "2026-07-26"},
+    "source": {"db": "ledger", "table": "transactions"}
+  }
 
-<div class="dialogue"><strong>ডেবেজিয়াম ইঞ্জিনিয়ার:</strong> তুমি LedgerPilot-এ একটা transaction delete করলে। Query-based CDC সেটা কখনো জানতে পারবে না — কারণ row আর নেই! কিন্তু binlog-এ লেখা আছে "DELETE FROM transactions WHERE id=42"। Debezium এই binlog সরাসরি পড়ে — প্রতিটা event মিলিসেকেন্ডে ধরে, Kafka-তে পাঠায়। Sub-second latency, production DB-তে শূন্য load।</div>`,
-  recall: [
-    { q: "Log-based CDC কেন DELETE ধরতে পারে কিন্তু query-based পারে না?", a: "Log-based binlog/WAL পড়ে যেখানে DELETE event লেখা থাকে। Query-based row poll করে — deleted row আর নেই!" },
-    { q: "LedgerPilot-এ কখন CDC দরকার?", a: "যখন real-time analytics বা fraud detection দরকার। এখন cron-based export যথেষ্ট।" },
-  ]
+  -- OLAP side: consume করে apply করো —
+  -- real-time, no batch! —</div>
+
+<div class="callout info"><span class="co-icon">📖</span><div><strong>CDC methods:</strong><br>
+<strong>Log-based (best):</strong> binlog/WAL পড়ো — zero impact on source<br>
+<strong>Query-based:</strong> SELECT MAX(updated_at) — polling, ধীর<br>
+<strong>Trigger-based:</strong> DB trigger — performance impact<br>
+<strong>Debezium:</strong> log-based CDC for MySQL, PostgreSQL, MongoDB<br>
+<strong>WAL:</strong> PostgreSQL Write-Ahead Log — same concept</div></div>
+
+<div class="verse">إِنَّا نَحْنُ نُزِّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই আমরাই এই স্মারক নাজিল করেছি এবং আমরাই এর রক্ষক।" — কুরআন ১৫:৯</div>
+
+<p class="scene-setting">সিজিল — অভিলেখ। binlog সেই অভিলেখের রূপ — প্রতিটি পরিবর্তনের দলিল। কিছুই হারিয়ে যায় না — সব লেখা আছে। CDC সেই অভিলেখ পড়ে — real-time প্রবাহ। যেমন কুরআন সংরক্ষিত — binlog-ও প্রতিটি transaction সংরক্ষিত।</p>
+<p class="scene-setting en">Sijjil — record. binlog is the form of that record — document of every change. Nothing is lost — everything written. CDC reads that record — real-time flow. As the Quran is preserved — binlog preserves every transaction.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৯ (Databases) Door ৫ (Replication):</strong> master-slave replication ও WAL। Book ৪৪ Door ৭: Kafka = CDC events-এর পাইপলাইন।</div></div>
+
+<div class="secret-box">📖 <strong>CDC = প্রতিটি পরিবর্তন real-time। binlog পড়ো।</strong> কিন্তু events কোথায় যাবে? কে ধরে রাখবে? সেই নদী — Kafka। পরের দরজায়।</div>`,
+  senior: {
+    title: "CDC এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">CDC</td><td>Change Data Capture</td></tr>
+<tr><td class="hl">binlog</td><td>MySQL transaction log (row-level)</td></tr>
+<tr><td class="hl">WAL</td><td>PostgreSQL Write-Ahead Log</td></tr>
+<tr><td class="hl">Debezium</td><td>Open-source log-based CDC</td></tr>
+<tr><td class="hl">Kafka Connect</td><td>CDC → Kafka pipeline</td></tr>
+<tr><td class="hl">Event</td><td>{op, before, after, source}</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 7 — The Flowing River (Kafka)
-// ═══════════════════════════════════════════
 doors.push({
   num: 7,
   icon: "🌊",
   color: "#0ea5e9",
-  tagline: "বহমান নদী — The Flowing River",
-  name: "The Flowing River",
-  secret: "Kafka = append-only log। Topic = নদী, partition = কুলুঙ্গি, consumer group = মাছুয়ারা।",
-  story: `<p class="scene-setting">একটা নদী কল্পনা করো। পানি কখনো উল্টে ফেরে না — সবসময় সামনে বয়। নদীতে অনেকগুলো কুলুঙ্গি (partition) আছে — প্রতিটায় পানি আলাদাভাবে বয়। নদীর ধারে মাছুয়ারা (consumers) দাঁড়িয়ে আছে — প্রত্যেকে একটা কুলুঙ্গিতে মাছ ধরে। দুজন একই কুলুঙ্গিতে নয় — duplicate হবে না। এটাই Kafka।</p>
-<p class="scene-setting en">Kafka is an append-only distributed log. Topics have partitions (lanes). Consumer groups split partitions — each partition read by exactly one consumer. Horizontal scaling without duplicates.</p>
+  name: "বহমান নদী",
+  subtitle: "The Flowing River",
+  tech: "Apache Kafka — LinkedIn 2011, pub/sub, partitions, consumer groups, exactly-once, event streaming",
+  spirit: "নাহর — নদী, অবিরত প্রবাহমান ডেটা",
+  secret: "Kafka = distributed event log। Producer লেখে, Consumer পড়ে। Partition-এ ভাগ, consumer group-এ সমান ভাগ। events দিন সপ্তাহ ধরে থাকে — পুনরায় পড়া যায়।",
+  recall: {
+    q: " Kafka-তে partition ও consumer group কীভাবে কাজ করে?",
+    qen: "How do partitions and consumer groups work in Kafka?",
+    a: "Topic = partition-এ ভাগ। প্রতিটি partition একটি log। Consumer group: প্রতিটি partition-এ এক consumer — সমান ভাগ। কোনো consumer মারা গেলে rebalance।",
+    aen: "Topic = divided into partitions. Each partition is a log. Consumer group: one consumer per partition — even distribution. If consumer dies, rebalance."
+  },
+  story: `<p class="scene-setting">ইউসুফ (Door ৬) তোমাকে CDC শিখিয়েছেন। কিন্তু events কোথায় যাবে? LinkedIn ২০১১ সালে একটি বিশাল নদী তৈরি করলো — Kafka। Producer এক প্রান্তে লেখে, Consumer অন্য প্রান্তে পড়ে। মাঝে বিশাল নদী — events দিন, সপ্তাহ, মাস ধরে থাকে। পুনরায় পড়া যায়। প্রতিটি partition আলাদা — সমান্তরাল প্রক্রিয়া।</p>
+<p class="scene-setting en">Yusuf (Door 6) taught you CDC. But where do events go? LinkedIn in 2011 built a massive river — Kafka. Producer writes at one end, Consumer reads at the other. Between them a vast river — events persist for days, weeks, months. Can be re-read. Each partition separate — parallel processing.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌊 Kafka: Topic → Partitions → Consumer Group</text>
+<div class="dialogue"><strong>নদী-নিয়ন্ত্রক মুসা:</strong> Kafka-তে topic ভাগ হয় partition-এ। প্রতিটি partition একটি append-only log। একটি message লেখা হলে — একটি offset পায়। Consumer সেই offset থেকে পড়ে। Consumer group: ৪টি partition, ৪টি consumer — প্রতিটিতে একটি। কেউ মারা গেলে বাকিরা তার partition নেয়। এটাই rebalance। Exactly-once: transactional — কোনো message দুবার নয়।</div>
+<div class="dialogue en"><strong>River Controller Musa:</strong> In Kafka, topics divide into partitions. Each partition is an append-only log. A message gets an offset when written. Consumer reads from that offset. Consumer group: 4 partitions, 4 consumers — one each. If one dies, others take its partition. This is rebalance. Exactly-once: transactional — no message twice.</div>
 
-  <!-- Producer -->
-  <rect x="20" y="55" width="80" height="40" rx="8" fill="#1e40af" stroke="#60a5fa" stroke-width="1.5"/>
-  <text x="60" y="80" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="700">Producer</text>
+<div class="code-block">— Kafka CLI দেখো —
 
-  <!-- Topic with 3 partitions -->
-  <rect x="130" y="45" width="250" height="200" rx="10" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="255" y="65" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="700">📋 Topic: "transactions"</text>
+  # Topic তৈরি
+  $ kafka-topics --create \\
+      --topic transactions \\
+      --partitions 4 \\
+      --replication-factor 3 \\
+      --bootstrap-server kafka:9092
 
-  <rect x="145" y="75" width="220" height="45" rx="5" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="155" y="92" fill="#bae6fd" font-size="8">Partition 0:</text>
-  <rect x="215" y="82" width="15" height="12" rx="2" fill="#0ea5e9" opacity=".6"/><text x="222" y="92" text-anchor="middle" fill="#e0f2fe" font-size="6">m1</text>
-  <rect x="235" y="82" width="15" height="12" rx="2" fill="#0ea5e9" opacity=".6"/><text x="242" y="92" text-anchor="middle" fill="#e0f2fe" font-size="6">m4</text>
-  <rect x="255" y="82" width="15" height="12" rx="2" fill="#0ea5e9" opacity=".6"/><text x="262" y="92" text-anchor="middle" fill="#e0f2fe" font-size="6">m7</text>
-  <text x="155" y="112" fill="#64748b" font-size="7">offset: 0,1,2...</text>
+  # Producer — message লেখো
+  $ kafka-console-producer \\
+      --topic transactions \\
+      --bootstrap-server kafka:9092
+  > {"user_id": 42, "amount": 500, "type": "credit"}
+  > {"user_id": 17, "amount": 200, "type": "debit"}
 
-  <rect x="145" y="125" width="220" height="45" rx="5" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="155" y="142" fill="#bae6fd" font-size="8">Partition 1:</text>
-  <rect x="215" y="132" width="15" height="12" rx="2" fill="#0ea5e9" opacity=".6"/><text x="222" y="142" text-anchor="middle" fill="#e0f2fe" font-size="6">m2</text>
-  <rect x="235" y="132" width="15" height="12" rx="2" fill="#0ea5e9" opacity=".6"/><text x="242" y="142" text-anchor="middle" fill="#e0f2fe" font-size="6">m5</text>
-  <rect x="255" y="132" width="15" height="12" rx="2" fill="#0ea5e9" opacity=".6"/><text x="262" y="142" text-anchor="middle" fill="#e0f2fe" font-size="6">m8</text>
+  # Consumer — message পড়ো
+  $ kafka-console-consumer \\
+      --topic transactions \\
+      --from-beginning \\
+      --group analytics \\
+      --bootstrap-server kafka:9092
+  {"user_id": 42, "amount": 500, "type": "credit"}
+  {"user_id": 17, "amount": 200, "type": "debit"}
 
-  <rect x="145" y="175" width="220" height="45" rx="5" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="155" y="192" fill="#bae6fd" font-size="8">Partition 2:</text>
-  <rect x="215" y="182" width="15" height="12" rx="2" fill="#0ea5e9" opacity=".6"/><text x="222" y="192" text-anchor="middle" fill="#e0f2fe" font-size="6">m3</text>
-  <rect x="235" y="182" width="15" height="12" rx="2" fill="#0ea5e9" opacity=".6"/><text x="242" y="192" text-anchor="middle" fill="#e0f2fe" font-size="6">m6</text>
-  <rect x="255" y="182" width="15" height="12" rx="2" fill="#0ea5e9" opacity=".6"/><text x="262" y="192" text-anchor="middle" fill="#e0f2fe" font-size="6">m9</text>
+  # Python producer:
+  from kafka import KafkaProducer
+  import json
+  producer = KafkaProducer(
+      bootstrap_servers=['kafka:9092'],
+      value_serializer=lambda v: json.dumps(v).encode()
+  )
+  producer.send('transactions', {'user_id': 42, 'amount': 500})
 
-  <text x="255" y="235" text-anchor="middle" fill="#38bdf8" font-size="8" font-style="italic">Ordering guaranteed WITHIN partition only!</text>
+  — Topic: ৪ partition · ৩ replica · infinite retention —</div>
 
-  <!-- Consumer Group -->
-  <rect x="410" y="55" width="150" height="200" rx="10" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="485" y="75" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Consumer Group</text>
-  <rect x="425" y="85" width="120" height="40" rx="6" fill="#14532d" stroke="#4ade80" stroke-width="1.5"/>
-  <text x="485" y="102" text-anchor="middle" fill="#86efac" font-size="9">Consumer A</text>
-  <text x="485" y="115" text-anchor="middle" fill="#4ade80" font-size="7">← Partition 0</text>
-  <rect x="425" y="130" width="120" height="40" rx="6" fill="#14532d" stroke="#4ade80" stroke-width="1.5"/>
-  <text x="485" y="147" text-anchor="middle" fill="#86efac" font-size="9">Consumer B</text>
-  <text x="485" y="160" text-anchor="middle" fill="#4ade80" font-size="7">← Partition 1</text>
-  <rect x="425" y="175" width="120" height="40" rx="6" fill="#14532d" stroke="#4ade80" stroke-width="1.5"/>
-  <text x="485" y="192" text-anchor="middle" fill="#86efac" font-size="9">Consumer C</text>
-  <text x="485" y="205" text-anchor="middle" fill="#4ade80" font-size="7">← Partition 2</text>
-  <text x="485" y="235" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">No duplicates!</text>
+<div class="callout info"><span class="co-icon">🌊</span><div><strong>Kafka উপাদান:</strong><br>
+<strong>Topic:</strong> message এর বিভাগ (যেমন: transactions)<br>
+<strong>Partition:</strong> topic-এর সমান্তরাল ভাগ<br>
+<strong>Offset:</strong> partition-এ message-এর অবস্থান<br>
+<strong>Consumer Group:</strong> partition সমান ভাগে পড়ে<br>
+<strong>Retention:</strong> message কতদিন থাকবে (default: ৭ দিন)<br>
+<strong>Exactly-Once:</strong> transactional — দুবার নয়</div></div>
 
-  <!-- Arrows -->
-  <line x1="100" y1="75" x2="130" y2="75" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#arrK)"/>
-  <defs><marker id="arrK" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#60a5fa"/></marker></defs>
-  <line x1="365" y1="97" x2="425" y2="105" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrK2)"/>
-  <line x1="365" y1="147" x2="425" y2="150" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrK2)"/>
-  <line x1="365" y1="197" x2="425" y2="195" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrK2)"/>
-  <defs><marker id="arrK2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#4ade80"/></marker></defs>
+<div class="verse">وَجَعَلْنَا مِنَ الْمَاءِ كُلَّ شَيْءٍ حَيٍّ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং আমরা পানি থেকে সব জীবিত কিছু সৃষ্টি করেছি।" — কুরআন ২১:৩০</div>
 
-  <text x="290" y="280" text-anchor="middle" fill="#94a3b8" font-size="9">💡 If Consumer B dies → rebalance: Partition 1 reassigned to A or C. No data loss.</text>
-  <text x="290" y="300" text-anchor="middle" fill="#64748b" font-size="8">Kafka 4.0+ uses KRaft mode (Raft consensus) — no ZooKeeper needed.</text>
-  <text x="290" y="320" text-anchor="middle" fill="#64748b" font-size="8" font-style="italic">Kafka's append-only log = same concept as OS Write-Ahead Log (Book 38)!</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Kafka Topic = ৩টা partition। Consumer Group = ৩টা consumer। প্রত্যেকে এক partition পড়ে — duplicate নয়। Consumer মরলে rebalance হয়।</div>
+<p class="scene-setting">নাহর — নদী। Kafka সেই নদীর রূপ — অবিরত প্রবাহমান ডেটা। প্রতিটি event একটি জীবন্ত কণা — উৎস থেকে গন্তব্য পর্যন্ত। নদী থামে না — Kafka-ও থামে না। যত বেশি consumer, তত বেশি শাখা — কিন্তু মূল প্রবাহ অপরিবর্তিত।</p>
+<p class="scene-setting en">Nahr — river. Kafka is the form of that river — continuously flowing data. Each event a living particle — from source to destination. The river doesn't stop — neither does Kafka. The more consumers, the more branches — but the main flow unchanged.</p>
 
-<div class="code-block">
-<div class="code-title">🌊 Kafka CLI — Topic, Producer, Consumer / নদী তৈরি ও পড়া</div>
-<pre># Topic তৈরি: ৩টা partition, replication 3 (KRaft mode — কোনো ZooKeeper নেই)
-kafka-topics.sh --bootstrap-server kafka:9092 \
-  --create --topic transactions \
-  --partitions 3 --replication-factor 3
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৫ (Distributed Systems) Door ৫ (Consensus):</strong> Kafka replication = Raft-like consensus। Book ৪৪ Door ৬: CDC → Kafka event pipeline।</div></div>
 
-# Producer: নদীতে event ছাড়ো (key একই partition-এ যায় → ordering ঠিক থাকে)
-echo '{"id":42,"amount":5000,"customer_id":7}' | \
-  kafka-console-producer.sh --bootstrap-server kafka:9092 \
-    --topic transactions \
-    --property "parse.key=true" \
-    --property "key.separator=,"
-
-# Consumer Group: প্রতিটা partition ঠিক একজন পড়ে — duplicate নয়
-kafka-console-consumer.sh --bootstrap-server kafka:9092 \
-  --topic transactions \
-  --group ledgerpilot-analytics \
-  --from-beginning \
-  --property print.key=true \
-  --property key.separator=" :: "
-
-# কেউ মরলে rebalance: partition অন্য consumer-কে চলে যায়</pre>
-</div>
-
-<div class="dialogue"><strong>কাফকা ইঞ্জিনিয়ার:</strong> LinkedIn ২০১১ সালে Kafka তৈরি করেছিল — একটা সহজ আইডিয়া দিয়ে। Append-only log। পানি নদীতে কখনো উল্টে ফেরে না — সবসময় সামনে বয়। একইভাবে Kafka-তে event কখনো মুছবে না বা পরিবর্তন করবে না। শুধু append। একটা Topic অনেকগুলো partition-এ ভাগ — প্রতিটায় ordering নিশ্চিত। Consumer Group-এর প্রত্যেক consumer একটা partition পড়ে — duplicate হবে না। কেউ মরলে rebalance হয় — partition অন্যকে দেওয়া হয়।</div>`,
-  recall: [
-    { q: "Kafka-তে ordering কোথায় guaranteed?", a: "শুধু একটা partition-এর ভেতরে। Across partitions নয়। তাই সম্পর্কিত events এক partition-এ রাখো (same key)।" },
-    { q: "Consumer Group কী?", a: "একসাথে এক topic পড়া consumers-এর দল। প্রত্যেক partition ঠিক একজন consumer পড়ে — parallel processing, no duplicates।" },
-  ]
+<div class="secret-box">🌊 <strong>Kafka = distributed event log। partition · consumer group · exactly-once।</strong> কিন্তু events পড়ে কী করবে? Transform করে কোথায় লিখবে? সেই পাইপলাইন — dbt। পরের দরজায়।</div>`,
+  senior: {
+    title: "Apache Kafka এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">LinkedIn (2011)</td><td>Kafka creator</td></tr>
+<tr><td class="hl">Topic</td><td>message বিভাগ</td></tr>
+<tr><td class="hl">Partition</td><td>সমান্তরাল ভাগ</td></tr>
+<tr><td class="hl">Consumer Group</td><td>সমান ভাগে পড়ে</td></tr>
+<tr><td class="hl">Retention</td><td>message কতদিন থাকবে</td></tr>
+<tr><td class="hl">Exactly-Once</td><td>transactional delivery</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 8 — The Assembly Line (dbt + ELT)
-// ═══════════════════════════════════════════
 doors.push({
   num: 8,
-  icon: "🔧",
-  color: "#fbbf24",
-  tagline: "অ্যাসেম্বলি লাইন — The Assembly Line",
-  name: "The Assembly Line",
-  secret: "dbt = SQL-এর জন্য React। Modular, version-controlled, tested। ELT > ETL।",
-  story: `<p class="scene-setting">একসময় transform হতো app server-এ — Python/Java দিয়ে। ETL: Extract → Transform (app) → Load। কিন্তু এখন warehouse-এ অনেক compute আছে। তাই ELT: Extract → Load (raw) → Transform (warehouse-এ)। dbt এই transformation পরিচালনা করে — version-controlled SQL, Jinja templating, testing। React component-এর মতো।</p>
-<p class="scene-setting en">ELT replaced ETL. Load raw data first, transform inside the warehouse. dbt brings software engineering discipline to SQL: modularity, version control, testing, documentation.</p>
+  icon: "🏭",
+  color: "#0ea5e9",
+  name: "অ্যাসেম্বলি লাইন",
+  subtitle: "The Assembly Line",
+  tech: "dbt (data build tool) — ELT, Jinja templates, ref(), tests, models, incremental, materializations",
+  spirit: "তাদবির — ব্যবস্থা, raw ডেটাকে ক্রমে সাজানো",
+  secret: "dbt = SQL-এ transformation লেখো। ref() দিয়ে model সংযোগ। Jinja template দিয়া পুনরায় ব্যবহার। test দিয়ে ডেটা গুণমান যাচাই। ELT: Extract → Load → Transform (warehouse-এই)।",
+  recall: {
+    q: " dbt কী? ELT ও ETL-এর পার্থক্য?",
+    qen: "What is dbt? What is the difference between ELT and ETL?",
+    a: "dbt = data build tool — SQL-এ transformation। ELT: Load আগে, Transform warehouse-এ। ETL: Transform loading-এর আগেই (বাইরে)। dbt = ELT।",
+    aen: "dbt = data build tool — transformation in SQL. ELT: Load first, Transform in warehouse. ETL: Transform before loading (external). dbt = ELT."
+  },
+  story: `<p class="scene-setting">মুসা (Door ৭) তোমাকে Kafka শিখিয়েছেন। কিন্তু events পড়ে কী করবে? Raw ডেটা থেকে analytics-ready ডেটা। এটাই transformation। dbt (data build tool) সেই কাজ করে — SQL-এ। raw_transactions → clean → join → aggregate → final_report। প্রতিটি ধাপ একটি model। ref() দিয়ে সংযুক্ত।</p>
+<p class="scene-setting en">Musa (Door 7) taught you Kafka. But what to do with events? From raw data to analytics-ready data. This is transformation. dbt (data build tool) does this — in SQL. raw_transactions → clean → join → aggregate → final_report. Each step a model. Connected with ref().</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔧 ETL vs ELT: Where Does Transformation Happen?</text>
+<div class="dialogue"><strong>অ্যাসেম্বলি-স্থপতি হুদা:</strong> dbt-তে তুমি SQL লেখো — Jinja template দিয়ে। প্রতিটি model একটি SQL file। ref() দিয়ে এক model অন্যটিকে ডাকে। dbt DAG তৈরি করে — কোনটা আগে, কোনটা পরে। dbt run সব model execute করে ক্রমানুসারে। dbt test ডেটা গুণমান যাচাই করে — not_null, unique, accepted_values। Incremental: শুধু নতুন row প্রক্রিয়া করো।</div>
+<div class="dialogue en"><strong>Assembly Architect Huda:</strong> In dbt you write SQL — with Jinja templates. Each model is a SQL file. ref() connects one model to another. dbt builds a DAG — which first, which later. dbt run executes all models in order. dbt test validates data quality — not_null, unique, accepted_values. Incremental: process only new rows.</div>
 
-  <!-- ETL (old) -->
-  <rect x="10" y="45" width="275" height="130" rx="12" fill="#0f172a" stroke="#f97316" stroke-width="2"/>
-  <text x="147" y="68" text-anchor="middle" fill="#fdba74" font-size="12" font-weight="700">❌ ETL (Old Way)</text>
-  <rect x="25" y="85" width="70" height="35" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
-  <text x="60" y="107" text-anchor="middle" fill="#93c5fd" font-size="9">Extract</text>
-  <line x1="95" y1="102" x2="110" y2="102" stroke="#64748b" stroke-width="1" marker-end="url(#arrE)"/>
-  <defs><marker id="arrE" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
-  <rect x="110" y="85" width="80" height="35" rx="6" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
-  <text x="150" y="100" text-anchor="middle" fill="#fdba74" font-size="9" font-weight="700">Transform</text>
-  <text x="150" y="112" text-anchor="middle" fill="#fb923c" font-size="7">app server</text>
-  <line x1="190" y1="102" x2="205" y2="102" stroke="#64748b" stroke-width="1" marker-end="url(#arrE)"/>
-  <rect x="205" y="85" width="65" height="35" rx="6" fill="#1e40af" stroke="#60a5fa" stroke-width="1"/>
-  <text x="237" y="107" text-anchor="middle" fill="#93c5fd" font-size="9">Load</text>
-  <text x="147" y="140" text-anchor="middle" fill="#f87171" font-size="9">⚠️ Python/Java does transform</text>
-  <text x="147" y="155" text-anchor="middle" fill="#f87171" font-size="9">⚠️ Data leaves warehouse</text>
+<div class="code-block">— dbt: SQL Transformation —
 
-  <!-- ELT (new) -->
-  <rect x="295" y="45" width="275" height="130" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
-  <text x="432" y="68" text-anchor="middle" fill="#86efac" font-size="12" font-weight="700">✅ ELT (Modern Way)</text>
-  <rect x="310" y="85" width="70" height="35" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
-  <text x="345" y="107" text-anchor="middle" fill="#93c5fd" font-size="9">Extract</text>
-  <line x1="380" y1="102" x2="395" y2="102" stroke="#64748b" stroke-width="1" marker-end="url(#arrE)"/>
-  <rect x="395" y="85" width="65" height="35" rx="6" fill="#1e40af" stroke="#60a5fa" stroke-width="1"/>
-  <text x="427" y="107" text-anchor="middle" fill="#93c5fd" font-size="9">Load</text>
-  <line x1="460" y1="102" x2="475" y2="102" stroke="#64748b" stroke-width="1" marker-end="url(#arrE)"/>
-  <rect x="475" y="85" width="80" height="35" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="515" y="100" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Transform</text>
-  <text x="515" y="112" text-anchor="middle" fill="#4ade80" font-size="7">in warehouse!</text>
-  <text x="432" y="140" text-anchor="middle" fill="#4ade80" font-size="9">✅ Warehouse does transform</text>
-  <text x="432" y="155" text-anchor="middle" fill="#4ade80" font-size="9">✅ dbt: SQL + Git + tests</text>
+  -- models/stg_transactions.sql (staging)
+  SELECT
+      transaction_id,
+      user_id,
+      amount::DECIMAL(10,2) AS amount,
+      CAST(created_at AS TIMESTAMP) AS created_at
+  FROM {{ ref('raw_transactions') }}
 
-  <!-- dbt workflow -->
-  <text x="290" y="205" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700">🏗️ dbt = React Components for SQL</text>
-  <rect x="30" y="220" width="120" height="45" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="90" y="240" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="700">stg_customers</text>
-  <text x="90" y="255" text-anchor="middle" fill="#fcd34d" font-size="7">SELECT * FROM raw</text>
+  -- models/int_user_spending.sql (intermediate)
+  SELECT
+      user_id,
+      DATE_TRUNC('month', created_at) AS month,
+      SUM(amount) AS total_spent,
+      COUNT(*) AS transaction_count
+  FROM {{ ref('stg_transactions') }}
+  GROUP BY user_id, month
 
-  <rect x="170" y="220" width="120" height="45" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="230" y="240" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="700">stg_orders</text>
-  <text x="230" y="255" text-anchor="middle" fill="#fcd34d" font-size="7">SELECT * FROM raw</text>
+  -- models/marts/user_summary.sql (final)
+  SELECT
+      u.name,
+      u.city,
+      s.total_spent,
+      s.transaction_count,
+      s.total_spent / s.transaction_count AS avg_transaction
+  FROM {{ ref('int_user_spending') }} s
+  JOIN {{ ref('dim_users') }} u USING (user_id)
 
-  <rect x="230" y="280" width="120" height="45" rx="8" fill="#312e81" stroke="#818cf8" stroke-width="2"/>
-  <text x="290" y="300" text-anchor="middle" fill="#c7d2fe" font-size="9" font-weight="700">fct_sales</text>
-  <text x="290" y="315" text-anchor="middle" fill="#a5b4fc" font-size="7">JOIN + aggregate</text>
+  -- dbt commands:
+  $ dbt run                 # সব model execute
+  $ dbt run --select user_summary  # শুধু একটি
+  $ dbt test               # data quality check
+  $ dbt build              # run + test একসাথে</div>
 
-  <line x1="90" y1="265" x2="250" y2="285" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
-  <line x1="230" y1="265" x2="280" y2="285" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="290" y="275" text-anchor="middle" fill="#64748b" font-size="7" font-style="italic">dbt auto-detects dependency graph</text>
+<div class="callout info"><span class="co-icon">🏭</span><div><strong>dbt concepts:</strong><br>
+<strong>Model:</strong> একটি SQL file — একটি transformation<br>
+<strong>ref():</strong> অন্য model কে ডাকো — DAG তৈরি করে<br>
+<strong>Materialization:</strong> table, view, incremental, ephemeral<br>
+<strong>Test:</strong> not_null, unique, accepted_values, relationships<br>
+<strong>Jinja:</strong> loop, conditional, macro — SQL-এ প্রোগ্রামিং<br>
+<strong>ELT vs ETL:</strong> ELT = warehouse-এই transform (modern)</div></div>
 
-  <rect x="370" y="220" width="180" height="105" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="460" y="240" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">dbt Powers</text>
-  <text x="460" y="258" text-anchor="middle" fill="#86efac" font-size="8">✅ Version control (Git)</text>
-  <text x="460" y="272" text-anchor="middle" fill="#86efac" font-size="8">✅ Testing (not_null, unique)</text>
-  <text x="460" y="286" text-anchor="middle" fill="#86efac" font-size="8">✅ Documentation auto-gen</text>
-  <text x="460" y="300" text-anchor="middle" fill="#86efac" font-size="8">✅ Jinja templating</text>
-  <text x="460" y="314" text-anchor="middle" fill="#86efac" font-size="8">✅ Dependency DAG</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: ETL = transform app server-এ (ধীর)। ELT = transform warehouse-এ (দ্রুত)। dbt = modular SQL + Git + testing।</div>
+<div class="verse">وَكُلَّ شَيْءٍ فَصَّلْنَاهُ تَفْصِيلًا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং প্রতিটি কিছু আমরা বিস্তারিত বর্ণনা করেছি।" — কুরআন ১৭:১২</div>
 
-<div class="code-block">
-<div class="code-title">🔧 dbt — SQL-এর জন্য React components / modular models</div>
-<pre>-- models/staging/stg_customers.sql  (Jinja + ref → dependency graph)
-SELECT id,
-       name,
-       region
-FROM   {{ source('raw', 'customers') }}
-WHERE  deleted_at IS NULL
+<p class="scene-setting">তাদবির — ব্যবস্থা। dbt সেই ব্যবস্থার রূপ — raw ডেটাকে ক্রমে সাজানো। প্রতিটি model একটি ধাপ, ref() দিয়ে সংযুক্ত। DAG-এর শৃঙ্খলে — staging → intermediate → mart। বিশৃঙ্খল ডেটা থেকে সুশৃঙ্খল জ্ঞান।</p>
+<p class="scene-setting en">Tadbir — arrangement. dbt is the form of that arrangement — organizing raw data step by step. Each model a step, connected by ref(). In the chain of DAG — staging → intermediate → mart. From chaotic data to orderly knowledge.</p>
 
--- models/marts/fct_sales.sql       (dbt বুঝে নেয় stg_* আগে চলবে)
-SELECT c.region,
-       SUM(s.amount) AS revenue
-FROM   {{ ref('stg_customers') }} AS c
-JOIN   {{ ref('stg_orders') }}    AS s
-       ON c.id = s.customer_id
-GROUP  BY c.region</pre>
-<pre># রান করো: DAG অনুযায়ী dependency order-এ তৈরি হয়
-dbt run                 # stg_customers → stg_orders → fct_sales
-dbt test                # not_null, unique, accepted_values যাচাই
-dbt docs generate       # অটো documentation
-dbt build               # run + test + seed একসাথে</pre>
-</div>
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৭ (Testing-QA) Door ৯ (Contract):</strong> dbt test = data contract! Book ৪৪ Door ৪: Spark DAG ও dbt DAG — একই ধারণা।</div></div>
 
-<div class="dialogue"><strong>ডিবিটি ইঞ্জিনিয়ার:</strong> dbt = data build tool। তুমি SQL <code>SELECT</code> statement লেখো — Jinja template দিয়ে। dbt স্বয়ংক্রিয়ভাবে dependency graph বুঝে নেয়, কোন model আগে run করতে হবে সেটা ঠিক করে। Version control (Git), testing (not_null, unique), documentation — সব আছে। এটা SQL-এর জন্য React component architecture এর মতো।</div>`,
-  recall: [
-    { q: "ETL vs ELT — পার্থক্য কী?", a: "ETL = Extract → Transform (app server) → Load। ELT = Extract → Load (raw) → Transform (warehouse-এ)। Modern warehouse-এ compute বেশি তাই ELT সস্তা ও দ্রুত।" },
-    { q: "dbt কী করে?", a: "Modular SQL SELECT statement লেখো (Jinja template সহ)। dbt dependency graph বানায়, version control + testing দেয়। React component-এর মতো।" },
-  ]
+<div class="secret-box">🏭 <strong>dbt = SQL transformation, DAG, ref()।</strong> কিন্তু data warehouse-এ কেবল table নয় — এখন একটি নতুন প্যারাডাইম। Lakehouse — warehouse ও data lake একসাথে। পরের দরজায়।</div>`,
+  senior: {
+    title: "dbt এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">dbt</td><td>data build tool — SQL transformation</td></tr>
+<tr><td class="hl">Model</td><td>একটি SQL file</td></tr>
+<tr><td class="hl">ref()</td><td>model সংযোগ — DAG</td></tr>
+<tr><td class="hl">Test</td><td>not_null, unique, relationships</td></tr>
+<tr><td class="hl">Materialization</td><td>table/view/incremental</td></tr>
+<tr><td class="hl">ELT</td><td>Load আগে, Transform warehouse-এ</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 9 — The Lakehouse (Iceberg/Delta/Hudi)
-// ═══════════════════════════════════════════
 doors.push({
   num: 9,
-  icon: "🏠",
-  color: "#22c55e",
-  tagline: "লেকহাউস — The Lakehouse",
-  name: "The Lakehouse",
-  secret: "Lake + House = সস্তা storage + warehouse feature। Iceberg/Delta দিয়ে ACID লেক-এ।",
-  story: `<p class="scene-setting">একসময় দুটো জগত ছিল — Data Warehouse (দামি, fast, structured) আর Data Lake (সস্তা, slow, messy "data swamp")। ২০২০-এর দশকে এরা মিলে Lakehouse তৈরি করেছে। সস্তা object storage (S3/DO Spaces) এর উপর metadata layer (Iceberg/Delta) বসায় — ACID transaction, time travel, schema evolution।</p>
-<p class="scene-setting en">Data Lake + Warehouse = Lakehouse. Cheap object storage + metadata layer (Iceberg/Delta/Hudi) = ACID, time travel, schema evolution without vendor lock-in.</p>
+  icon: "🏛️",
+  color: "#0ea5e9",
+  name: "হ্রদের ঘর",
+  subtitle: "The Lakehouse",
+  tech: "Lakehouse Architecture — Iceberg (Netflix 2017), Delta Lake (Databricks), Hudi, ACID on data lakes, time travel",
+  spirit: "কাওসার — অফুরন্ত ঝরনা, সব ডেটার এক স্থান",
+  secret: "Lakehouse = Data Lake + Data Warehouse। Iceberg/Delta: ACID transaction object storage-এ। Time travel: অতীতে ফেরা। Schema evolution: কলাম যোগ বিনা ঝামেলায়।",
+  recall: {
+    q: " Lakehouse কী? Iceberg/Delta Lake কী করে?",
+    qen: "What is a Lakehouse? What do Iceberg/Delta Lake do?",
+    a: "Lakehouse = lake + warehouse একসাথে। Iceberg/Delta: ACID transaction S3-এ। Time travel: অতীত version পড়ো। Schema evolution: কলাম যোগ বিনা disruption।",
+    aen: "Lakehouse = lake + warehouse together. Iceberg/Delta: ACID transactions on S3. Time travel: read past versions. Schema evolution: add columns without disruption."
+  },
+  story: `<p class="scene-setting">হুদা (Door ৮) তোমাকে dbt শিখিয়েছেন। কিন্তু ডেটা কোথায় থাকে? Data Warehouse (Snowflake) — দামি। Data Lake (S3) — সস্তা কিন্তু ACID নেই। Lakehouse এর উত্তর — দুটো একসাথে! Iceberg (Netflix ২০১৭) ও Delta Lake (Databricks) — S3-তে ACID transaction। Time travel — অতীতে ফেরা। Schema evolution — বিনা ঝামেলায় পরিবর্তন।</p>
+<p class="scene-setting en">Huda (Door 8) taught you dbt. But where does data live? Data Warehouse (Snowflake) — expensive. Data Lake (S3) — cheap but no ACID. Lakehouse answers — both together! Iceberg (Netflix 2017) and Delta Lake (Databricks) — ACID transactions on S3. Time travel — go back in time. Schema evolution — change without disruption.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🏠 Lakehouse: Cheap Storage + Metadata Layer</text>
+<div class="dialogue"><strong>হ্রদ-স্থপতি আদম:</strong> Iceberg table = S3-তে Parquet file + metadata layer। metadata বলে কোন file current, কোনটা deleted। এতে ACID হয় — commit হলে দৃশ্যমান, না হলে নয়। Time travel: SELECT * FROM table FOR VERSION AS OF '2026-01-01' — অতীতে ফেরা! Schema evolution: ALTER TABLE ADD COLUMN — পুরোনো data unaffected। Merge on read বা copy on write।</div>
+<div class="dialogue en"><strong>Lake Architect Adam:</strong> Iceberg table = Parquet files on S3 + metadata layer. Metadata says which file is current, which deleted. This gives ACID — committed becomes visible, uncommitted doesn't. Time travel: SELECT FOR VERSION AS OF past date! Schema evolution: ALTER TABLE ADD COLUMN — old data unaffected. Merge on read or copy on write.</div>
 
-  <!-- Compute Engines (top) -->
-  <rect x="20" y="45" width="100" height="35" rx="6" fill="#1e40af" stroke="#60a5fa" stroke-width="1.5"/>
-  <text x="70" y="67" text-anchor="middle" fill="#93c5fd" font-size="9" font-weight="700">Spark</text>
-  <rect x="130" y="45" width="100" height="35" rx="6" fill="#1e40af" stroke="#60a5fa" stroke-width="1.5"/>
-  <text x="180" y="67" text-anchor="middle" fill="#93c5fd" font-size="9" font-weight="700">Trino</text>
-  <rect x="240" y="45" width="100" height="35" rx="6" fill="#1e40af" stroke="#60a5fa" stroke-width="1.5"/>
-  <text x="290" y="67" text-anchor="middle" fill="#93c5fd" font-size="9" font-weight="700">Snowflake</text>
-  <rect x="350" y="45" width="100" height="35" rx="6" fill="#1e40af" stroke="#60a5fa" stroke-width="1.5"/>
-  <text x="400" y="67" text-anchor="middle" fill="#93c5fd" font-size="9" font-weight="700">DuckDB</text>
-  <rect x="460" y="45" width="100" height="35" rx="6" fill="#1e40af" stroke="#60a5fa" stroke-width="1.5"/>
-  <text x="510" y="67" text-anchor="middle" fill="#93c5fd" font-size="9" font-weight="700">Flink</text>
-  <text x="290" y="95" text-anchor="middle" fill="#64748b" font-size="8">Multiple engines read the SAME data — no vendor lock-in!</text>
+<div class="code-block">— Iceberg / Delta Lake SQL —
 
-  <!-- Metadata Layer -->
-  <rect x="20" y="110" width="540" height="70" rx="10" fill="#312e81" stroke="#818cf8" stroke-width="2"/>
-  <text x="290" y="130" text-anchor="middle" fill="#c7d2fe" font-size="12" font-weight="900">📊 Metadata Layer (Iceberg / Delta / Hudi)</text>
-  <text x="100" y="150" text-anchor="middle" fill="#a5b4fc" font-size="9">✅ ACID</text>
-  <text x="200" y="150" text-anchor="middle" fill="#a5b4fc" font-size="9">✅ Time Travel</text>
-  <text x="300" y="150" text-anchor="middle" fill="#a5b4fc" font-size="9">✅ Schema Evolution</text>
-  <text x="410" y="150" text-anchor="middle" fill="#a5b4fc" font-size="9">✅ Concurrent Writers</text>
-  <text x="510" y="150" text-anchor="middle" fill="#a5b4fc" font-size="9">✅ Predicate Pushdown</text>
-  <text x="290" y="170" text-anchor="middle" fill="#818cf8" font-size="8">COW = rewrite file · MOR = append delta + merge at read</text>
+  -- Iceberg table তৈরি (Spark + Iceberg):
+  CREATE TABLE ledger.transactions (
+      id BIGINT,
+      user_id BIGINT,
+      amount DECIMAL(10,2),
+      created_at TIMESTAMP
+  ) USING iceberg
+  PARTITIONED BY (days(created_at));
 
-  <!-- Storage Layer -->
-  <rect x="20" y="195" width="540" height="60" rx="10" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="290" y="218" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="900">📦 Cheap Object Storage (S3 / DO Spaces / GCS)</text>
-  <text x="290" y="238" text-anchor="middle" fill="#bae6fd" font-size="9">Parquet files · Immutable · $23/TB/month</text>
+  -- ACID transaction:
+  INSERT INTO ledger.transactions
+  VALUES (1, 42, 500.00, '2026-07-26');
 
-  <!-- Format comparison -->
-  <rect x="30" y="270" width="160" height="55" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="110" y="290" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Apache Iceberg</text>
-  <text x="110" y="305" text-anchor="middle" fill="#86efac" font-size="8">Hierarchical metadata</text>
-  <text x="110" y="318" text-anchor="middle" fill="#86efac" font-size="8">Multi-engine ⭐</text>
+  UPDATE ledger.transactions
+  SET amount = 600.00 WHERE id = 1;
 
-  <rect x="210" y="270" width="160" height="55" rx="8" fill="#0f172a" stroke="#f97316" stroke-width="1.5"/>
-  <text x="290" y="290" text-anchor="middle" fill="#fb923c" font-size="10" font-weight="700">Delta Lake</text>
-  <text x="290" y="305" text-anchor="middle" fill="#fdba74" font-size="8">JSON transaction log</text>
-  <text x="290" y="318" text-anchor="middle" fill="#fdba74" font-size="8">Spark-native</text>
+  DELETE FROM ledger.transactions
+  WHERE created_at < '2026-01-01';
 
-  <rect x="390" y="270" width="160" height="55" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="470" y="290" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">Apache Hudi</text>
-  <text x="470" y="305" text-anchor="middle" fill="#d8b4fe" font-size="8">Record-level index</text>
-  <text x="470" y="318" text-anchor="middle" fill="#d8b4fe" font-size="8">CDC / streaming ⭐</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Lakehouse = সস্তা storage (Parquet on S3) + metadata layer (Iceberg/Delta)। একই ডেটা Spark, Trino, Snowflake সবাই পড়ে।</div>
+  -- Time Travel: অতীত version পড়ো!
+  SELECT * FROM ledger.transactions
+  FOR VERSION AS OF '2026-07-01';
 
-<div class="code-block">
-<div class="code-title">🏠 Apache Iceberg — S3-এ ACID table / lakehouse DDL</div>
-<pre>-- Iceberg টেবিল তৈরি (Spark SQL / Trino — Parquet + metadata layer)
-CREATE TABLE warehouse.fact_sales (
-    transaction_id BIGINT,
-    product_id     BIGINT,
-    customer_id    BIGINT,
-    amount         DECIMAL(18, 2),
-    sale_date      DATE
-) USING iceberg
-PARTITIONED BY (days(sale_date))
-TBLPROPERTIES ('write.format.default'='parquet',
-               'format-version'='2');
+  SELECT * FROM ledger.transactions.history;
+  -- made_current_at  | snapshot_id
+  -- 2026-07-26 10:00 | snap_001 (INSERT)
+  -- 2026-07-26 11:00 | snap_002 (UPDATE)
 
--- Time travel: গতকালের snapshot দেখো
-SELECT * FROM warehouse.fact_sales.snapshots;        -- সব version-এর তালিকা
-SELECT * FROM warehouse.fact_sales
-  FOR VERSION AS OF 1234567890;                       -- পুরোনো অবস্থা
+  -- Schema Evolution:
+  ALTER TABLE ledger.transactions
+  ADD COLUMN currency STRING;
+  -- পুরোনো row: currency = NULL (no problem!)
 
--- Schema evolution: নতুন কলাম — কোনো ফাইল rewrite ছাড়াই
-ALTER TABLE warehouse.fact_sales ADD COLUMN currency STRING;
+  -- Delta Lake (Databricks):
+  -- FORMAT DELTA — same ACID + time travel
+  --OPTIMIZE — small file compaction</div>
 
--- একই টেবিল Spark, Trino, DuckDB, Snowflake — সবাই পড়তে পারে (vendor lock-in নেই)</pre>
-</div>
+<div class="callout info"><span class="co-icon">🏛️</span><div><strong>Lakehouse table formats:</strong><br>
+<strong>Iceberg (Netflix 2017):</strong> open, multi-engine (Spark, Flink, Trino)<br>
+<strong>Delta Lake (Databricks):</strong> Spark-native, optimized<br>
+<strong>Hudi (Uber 2016):</strong> upsert/delete focused<br>
+<strong>ACID on S3:</strong> metadata layer = transaction log<br>
+<strong>Time Travel:</strong> SELECT FOR VERSION AS OF<br>
+<strong>Schema Evolution:</strong> add/remove column bina rebuild</div></div>
 
-<div class="dialogue"><strong>লেকহাউস আর্কিটেক্ট:</strong> একসময় data lake ছিল "data swamp" — ফাইল আছে কিন্তু ACID নেই, concurrent write নেই, update পারবে না। Iceberg, Delta, Hudi এসে সমাধান করল — metadata layer বসিয়ে। Parquet ফাইল সস্তা storage-এ থাকে, metadata layer ACID আর time travel দেয়। আর সবচেয়ে বড় জিনিস — তুমি একই ডেটা Spark, Trino, Snowflake, DuckDB দিয়ে পড়তে পারো। Vendor lock-in নেই।</div>`,
-  recall: [
-    { q: "COW vs MOR পার্থক্য?", a: "COW (Copy-on-Write): update হলে পুরো file rewrite — read-fast, write-slow। MOR (Merge-on-Read): delta append করে, read-এ merge — write-fast, read-slow।" },
-    { q: "LedgerPilot-এর জন্য কোন format?", a: "Apache Iceberg — multi-engine support (DuckDB + Spark + Trino সব পড়তে পারে), vendor-neutral।" },
-  ]
+<div class="verse">فِيهَا عُيُونٌ تَجْرِي</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"সেখানে প্রবাহমান ঝরনা আছে।" — কুরআন ৮৮:১২</div>
+
+<p class="scene-setting">কাওসার — অফুরন্ত ঝরনা। Lakehouse সেই ঝরনার রূপ — সব ডেটার এক স্থান। structured (warehouse) ও unstructured (lake) একসাথে। ঝরনা থামে না — ডেটাও থামে না। Time travel দিয়ে অতীত দেখো, schema evolution দিয়ে ভবিষ্যতে প্রস্তুত হও।</p>
+<p class="scene-setting en">Kawthar — inexhaustible spring. Lakehouse is the form of that spring — one place for all data. Structured (warehouse) and unstructured (lake) together. The spring doesn't stop — neither does data. Time travel sees the past, schema evolution prepares for the future.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৯ (Databases) Door ৪ (ACID):</strong> ACID properties। Lakehouse = ACID on object storage! Book ৩৫ (Distributed) Door ৬: distributed transactions।</div></div>
+
+<div class="secret-box">🏛️ <strong>Lakehouse = lake + warehouse। Iceberg/Delta। ACID on S3। Time travel।</strong> এখন নয়টি দরজা পেরিয়েছো — শেষ দরজায় সব মেলাও।</div>`,
+  senior: {
+    title: "Lakehouse এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Lakehouse</td><td>Lake + Warehouse একসাথে</td></tr>
+<tr><td class="hl">Iceberg (Netflix)</td><td>Open table format — multi-engine</td></tr>
+<tr><td class="hl">Delta (Databricks)</td><td>Spark-native ACID</td></tr>
+<tr><td class="hl">Hudi (Uber)</td><td>Upsert/delete focused</td></tr>
+<tr><td class="hl">Time Travel</td><td>অতীত version পড়ো</td></tr>
+<tr><td class="hl">Schema Evolution</td><td>column যোগ বিনা rebuild</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 10 — The Architect's Vision (Full Stack)
-// ═══════════════════════════════════════════
 doors.push({
   num: 10,
-  icon: "🏗️",
-  color: "#e8c547",
-  tagline: "স্থপতির দৃষ্টি — The Architect's Vision",
-  name: "The Architect's Vision",
-  secret: "LedgerPilot-এর জন্য: DuckDB + Parquet। কোনো cluster লাগবে না। সহজ, সস্তা, দ্রুত।",
-  story: `<p class="scene-setting">তুমি এখন ৯টা দরজা পার হয়েছ। OLTP, OLAP, Parquet, Star Schema, Spark, shuffle, CDC, Kafka, dbt, Lakehouse — সব শিখেছ। এখন সব এক জায়গায় — LedgerPilot-এর জন্য কী করবে?</p>
-<p class="scene-setting en">You've passed 9 doors. Now the practical synthesis: what does LedgerPilot actually need?</p>
+  icon: "🌟",
+  color: "#0ea5e9",
+  name: "স্থপতির দৃষ্টি",
+  subtitle: "The Architect's Vision",
+  tech: "Synthesis — OLTP→CDC→Kafka→Spark→dbt→Lakehouse, full data engineering pipeline, DuckDB full-stack demo",
+  spirit: "হিকমাহ — প্রয়োগিক জ্ঞান, সব পর্যায়ের সমন্বয়",
+  secret: "নয়টি দরজা, নয়জন শিক্ষক — একটি সম্পূর্ণ pipeline। OLTP → CDC → Kafka → Spark → dbt → Lakehouse। প্রতিটি transaction থেকে dashboard পর্যন্ত।",
+  recall: {
+    q: " একটি সম্পূর্ণ data pipeline-র ধাপ কী কী?",
+    qen: "What are the stages of a complete data pipeline?",
+    a: "OLTP (MySQL) → CDC (Debezium) → Kafka → Spark (transform) → dbt (model) → Lakehouse (Iceberg) → Dashboard (BI)। প্রতিটি transaction থেকে অন্তর্দৃষ্টি পর্যন্ত।",
+    aen: "OLTP (MySQL) → CDC (Debezium) → Kafka → Spark (transform) → dbt (model) → Lakehouse (Iceberg) → Dashboard (BI). From each transaction to insight."
+  },
+  story: `<p class="scene-setting">তুমি নয়টি দরজা পেরিয়েছো। আব্বাস OLTP/OLAP, তালহা Parquet, আয়েশা Star Schema, জাইদ Spark, খালিদ Shuffle, ইউসুফ CDC, মুসা Kafka, হুদা dbt, আদম Lakehouse। এখন সব মেলাও — একটি সম্পূর্ণ pipeline। একটি transaction থেকে dashboard পর্যন্ত — পুরো যাত্রা।</p>
+<p class="scene-setting en">You have passed nine doors. Abbas OLTP/OLAP, Talha Parquet, Ayesha Star Schema, Zaid Spark, Khalid Shuffle, Yusuf CDC, Musa Kafka, Huda dbt, Adam Lakehouse. Now combine them all — a complete pipeline. From one transaction to dashboard — the full journey.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🏗️ LedgerPilot Data Engineering Roadmap</text>
+<div class="callout info"><span class="co-icon">🌟</span><div><strong>সম্পূর্ণ Data Pipeline — নয় দরজার সমন্বয়:</strong><br>
+<strong>Door ১ — আব্বাস (OLTP/OLAP):</strong> MySQL transaction → analytical query<br>
+<strong>Door ২ — তালহা (Parquet):</strong> columnar file — দ্রুত read<br>
+<strong>Door ৩ — আয়েশা (Star Schema):</strong> fact + dimension<br>
+<strong>Door ৪ — জাইদ (Spark):</strong> distributed processing<br>
+<strong>Door ৫ — খালিদ (Shuffle):</strong> broadcast join, salting<br>
+<strong>Door ৬ — ইউসুফ (CDC):</strong> binlog → real-time event<br>
+<strong>Door ৭ — মুসা (Kafka):</strong> event river — partition, consumer<br>
+<strong>Door ৮ — হুদা (dbt):</strong> SQL transformation DAG<br>
+<strong>Door ৯ — আদম (Lakehouse):</strong> ACID on S3 + time travel</div></div>
 
-  <!-- Phase 1 -->
-  <rect x="20" y="50" width="540" height="90" rx="10" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="290" y="72" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="700">Phase 1: NOW (DuckDB + Parquet)</text>
-  <rect x="40" y="85" width="120" height="40" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-  <text x="100" y="102" text-anchor="middle" fill="#86efac" font-size="9">MySQL</text>
-  <text x="100" y="115" text-anchor="middle" fill="#4ade80" font-size="7">(transactions)</text>
-  <text x="175" y="108" text-anchor="middle" fill="#64748b" font-size="8">Django cmd</text>
-  <line x1="160" y1="105" x2="200" y2="105" stroke="#475569" stroke-width="1" marker-end="url(#arrA)"/>
-  <defs><marker id="arrA" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#475569"/></marker></defs>
-  <rect x="210" y="85" width="120" height="40" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-  <text x="270" y="102" text-anchor="middle" fill="#86efac" font-size="9">Parquet</text>
-  <text x="270" y="115" text-anchor="middle" fill="#4ade80" font-size="7">(DO Spaces)</text>
-  <line x1="330" y1="105" x2="370" y2="105" stroke="#475569" stroke-width="1" marker-end="url(#arrA)"/>
-  <rect x="380" y="85" width="120" height="40" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-  <text x="440" y="102" text-anchor="middle" fill="#86efac" font-size="9">DuckDB</text>
-  <text x="440" y="115" text-anchor="middle" fill="#4ade80" font-size="7">(SQL analytics)</text>
-  <text x="290" y="132" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Cost: $0 extra · No cluster · Single droplet</text>
+<div class="code-block">— Full Pipeline: DuckDB demo (single machine) —
 
-  <!-- Phase 2 -->
-  <rect x="20" y="155" width="540" height="90" rx="10" fill="#451a03" stroke="#f97316" stroke-width="2"/>
-  <text x="290" y="177" text-anchor="middle" fill="#fb923c" font-size="12" font-weight="700">Phase 2: 3-6 Months (CDC + Iceberg)</text>
-  <rect x="40" y="190" width="100" height="40" rx="6" fill="#0f172a" stroke="#f97316" stroke-width="1"/>
-  <text x="90" y="207" text-anchor="middle" fill="#fdba74" font-size="9">MySQL binlog</text>
-  <text x="90" y="220" text-anchor="middle" fill="#fb923c" font-size="7">(CDC source)</text>
-  <line x1="140" y1="210" x2="175" y2="210" stroke="#475569" stroke-width="1" marker-end="url(#arrA)"/>
-  <rect x="185" y="190" width="100" height="40" rx="6" fill="#0f172a" stroke="#f97316" stroke-width="1"/>
-  <text x="235" y="207" text-anchor="middle" fill="#fdba74" font-size="9">Debezium</text>
-  <text x="235" y="220" text-anchor="middle" fill="#fb923c" font-size="7">(capture)</text>
-  <line x1="285" y1="210" x2="320" y2="210" stroke="#475569" stroke-width="1" marker-end="url(#arrA)"/>
-  <rect x="330" y="190" width="100" height="40" rx="6" fill="#0f172a" stroke="#f97316" stroke-width="1"/>
-  <text x="380" y="207" text-anchor="middle" fill="#fdba74" font-size="9">Kafka</text>
-  <text x="380" y="220" text-anchor="middle" fill="#fb923c" font-size="7">(stream)</text>
-  <line x1="430" y1="210" x2="465" y2="210" stroke="#475569" stroke-width="1" marker-end="url(#arrA)"/>
-  <rect x="475" y="190" width="70" height="40" rx="6" fill="#0f172a" stroke="#f97316" stroke-width="1"/>
-  <text x="510" y="207" text-anchor="middle" fill="#fdba74" font-size="9">Iceberg</text>
-  <text x="510" y="220" text-anchor="middle" fill="#fb923c" font-size="7">(lakehouse)</text>
-  <text x="290" y="237" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="700">Cost: +$20-40/mo · Real-time sync · When transactions &gt; 1M</text>
+  -- DuckDB: সব একসাথে (local demo)!
+  INSTALL parquet; LOAD parquet;
 
-  <!-- Phase 3 -->
-  <rect x="20" y="260" width="540" height="80" rx="10" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
-  <text x="290" y="282" text-anchor="middle" fill="#a5b4fc" font-size="12" font-weight="700">Phase 3: 6-12 Months (Full Lakehouse + dbt)</text>
-  <text x="290" y="302" text-anchor="middle" fill="#c7d2fe" font-size="9">Multiple sources → Airbyte → Iceberg → dbt → Star Schema → BI (Metabase)</text>
-  <text x="290" y="318" text-anchor="middle" fill="#818cf8" font-size="9">Cost: +$50-100/mo · Semantic layer · When multi-source analytics needed</text>
-  <text x="290" y="335" text-anchor="middle" fill="#64748b" font-size="8" font-style="italic">⚠️ Spark এখনো দরকার নেই — DuckDB 100GB পর্যন্ত single server-এ চালাতে পারে!</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: LedgerPilot Data Engineering Roadmap — Phase 1 (DuckDB+Parquet) → Phase 2 (CDC+Iceberg) → Phase 3 (Full Lakehouse+dbt)।</div>
+  -- Step 1: MySQL থেকে extract
+  ATTACH 'mysql:user=reader password=xxx
+          host=ledgerpilot.db database=ledger' AS mysql_db;
 
-<div class="code-block">
-<div class="code-title">🏗️ Phase 1 Pipeline — DuckDB + Parquet / $0 cluster ছাড়াই</div>
-<pre># LedgerPilot: Django management command → daily export → DuckDB analytics
-import duckdb
+  -- Step 2: Parquet-এ লেখো (columnar)
+  COPY (SELECT * FROM mysql_db.transactions)
+  TO 'data/transactions.parquet' (FORMAT PARQUET);
 
-con = duckdb.connect()                      # single process, কোনো server নেই
+  -- Step 3: Transform + Aggregate
+  CREATE TABLE monthly_report AS
+  SELECT
+      DATE_TRUNC('month', created_at) AS month,
+      category,
+      COUNT(*) AS num_transactions,
+      SUM(amount) AS total_amount,
+      AVG(amount) AS avg_amount
+  FROM read_parquet('data/transactions.parquet')
+  WHERE created_at >= '2026-01-01'
+  GROUP BY month, category
+  ORDER BY total_amount DESC;
 
-# MySQL → Parquet (সরাসরি COPY — কোনো Spark লাগে না)
-con.execute("""
-    ATTACH 'mysql://user:pass@host/ledgerpilot' AS mysql (TYPE mysql);
-    COPY (SELECT * FROM mysql.transactions
-          WHERE created_at &gt;= CURRENT_DATE - INTERVAL '1' DAY)
-    TO 's3://ledger-parquet/sales/dt=2026-07-26.parquet'
-    (FORMAT PARQUET, COMPRESSION SNAPPY);
-""")
+  -- Step 4: Result দেখো
+  SELECT * FROM monthly_report LIMIT 10;
 
-# Analytics: অনেক Parquet ফাইলের উপর সরাসরি SQL — আলাদা load step নেই
-con.sql("""
-    SELECT category,
-           SUM(amount) AS revenue,
-           COUNT(*)    AS n
-    FROM read_parquet('s3://ledger-parquet/sales/*.parquet')
-    WHERE sale_date &gt;= DATE '2026-01-01'
-    GROUP BY category
-    ORDER BY revenue DESC
-""").show()
+  -- Real production:
+  -- MySQL → Debezium → Kafka → Spark → dbt → Iceberg → BI
+  -- Local demo: DuckDB (সব এক ফাইলে!)</div>
 
-# 100GB পর্যন্ত single server-ে চলে — Spark cluster এখনো দরকার নেই</pre>
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৯</div><div class="sc-label">শিক্ষক</div></div>
+<div class="stat-card"><div class="sc-num">৬০+</div><div class="sc-label">বছরের গবেষণা</div></div>
+<div class="stat-card"><div class="sc-num">PB</div><div class="sc-label">petabyte scale</div></div>
+<div class="stat-card"><div class="sc-num">∞</div><div class="sc-label">pipeline</div></div>
 </div>
 
-<div class="dialogue"><strong>স্থপতি:</strong> তুমি এখন বোঝো — LedgerPilot-এর জন্য DuckDB যথেষ্ট। কোনো Spark cluster লাগবে না। Django management command দিয়ে daily Parquet export করো, DuckDB দিয়ে SQL analytics চালাও। যখন transactions ১ মিলিয়ন ছাড়বে, তখন Debezium + Iceberg। Spark এখনো দরকার নেই — DuckDB single server-এ ১০০GB পর্যন্ত চালাতে পারে। এটাই practical wisdom — সব সরঞ্জাম নয়, সঠিক সরঞ্জাম।</div>`,
-  recall: [
-    { q: "LedgerPilot-এর জন্য Phase 1 কী?", a: "Django management command → daily Parquet export → DuckDB SQL analytics। $0 extra cost, single droplet।" },
-    { q: "কখন Spark দরকার?", a: "যখন DuckDB-এর single-server limit (100GB+) ছাড়বে, বা multi-node cluster দরকার। এখনো না।" },
-  ]
+<div class="verse">اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"আল্লাহ আসমান ও পৃথিবীর আলো।" — কুরআন ২৪:৩৫</div>
+
+<p class="scene-setting">নূর — আলো। Data engineering হলো সেই আলো যা raw ডেটাকে অন্তর্দৃষ্টিতে রূপান্তর করে। বাইরে থেকে একটি dashboard সহজ মনে হয় — কিন্তু ভেতরে নয়টি স্তর কাজ করছে। OLTP-তে transaction লেখা হয়, CDC সেটা ধরে, Kafka-তে পাঠায়, Spark transform করে, dbt model তৈরি করে, Lakehouse-এ সংরক্ষিত হয়, BI dashboard-এ দৃশ্যমান হয়। একটি transaction থেকে অন্তর্দৃষ্টি — পুরো যাত্রা।</p>
+<p class="scene-setting en">Nur — light. Data engineering is the light that transforms raw data into insight. Outside, a dashboard seems simple — but inside, nine layers work. OLTP writes a transaction, CDC catches it, Kafka streams it, Spark transforms it, dbt models it, Lakehouse stores it, BI displays it. From transaction to insight — the full journey.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>সম্পূর্ণ লাইব্রেরি সংযোগ:</strong> Book ৩৯ (Databases) → SQL, indexing, ACID। Book ৩৫ (Distributed Systems) → Kafka, Spark, consensus। Book ৩৭ (Networks) → Kafka protocol। Book ৪৫ (Compilers) → Spark Catalyst = compiler।</div></div>
+
+<div class="checklist">
+<li>🌍 MySQL ও BigQuery একই query চালাও — গতি তুলনা করো</li>
+<li>📦 Python দিয়া Parquet ফাইল বানাও</li>
+<li>⭐ ৫টি table দিয়ে Star Schema ডিজাইন করো</li>
+<li>⚡ PySpark local mode-এ একটি aggregation চালাও</li>
+<li>📖 Debezium docs পড়ো — MySQL → Kafka setup</li>
+<li>🌊 kafka-console-producer/consumer চালাও</li>
+<li>🏭 dbt init করে একটি project বানাও</li>
+<li>🏛️ DuckDB দিয়া একটি Parquet query করো</li>
+<li>📖 "Designing Data-Intensive Applications" — Kleppmann পড়ো</li>
+</div>
+
+<div class="secret-box">🌟 <strong>Data Engineering = raw ডেটাকে অন্তর্দৃষ্টিতে রূপান্তর।</strong> নয়টি দরজা, নয়জন শিক্ষক, একটি pipeline। OLTP থেকে dashboard পর্যন্ত। প্রতিটি transaction একটি কাহিনী — CDC ধরে, Kafka বহন করে, Spark transform করে, dbt সাজায়, Lakehouse সংরক্ষণ করে। এখন তুমি জানো — শুধু কীভাবে নয়, কেন। কেন columnar। কেন lazy evaluation। কেন CDC real-time। কেন Kafka partition। কেন Star Schema। কেন Lakehouse। এটাই হিকমাহ — data engineering-এর প্রয়োগিক জ্ঞান।</div>`,
+  senior: {
+    title: "সম্পূর্ণ Data Engineering এক নজরে",
+    body: `<table class="kv-table"><tr><th>স্তর</th><th>কী</th><th>দরজা</th></tr>
+<tr><td class="hl">OLTP/OLAP</td><td>Row vs columnar</td><td>১</td></tr>
+<tr><td class="hl">Parquet</td><td>Columnar file format</td><td>২</td></tr>
+<tr><td class="hl">Star Schema</td><td>Fact + dimension</td><td>৩</td></tr>
+<tr><td class="hl">Spark</td><td>Distributed processing</td><td>৪</td></tr>
+<tr><td class="hl">Shuffle/Skew</td><td>Broadcast, salting</td><td>৫</td></tr>
+<tr><td class="hl">CDC</td><td>binlog → event</td><td>৬</td></tr>
+<tr><td class="hl">Kafka</td><td>Event streaming river</td><td>৭</td></tr>
+<tr><td class="hl">dbt</td><td>SQL transformation DAG</td><td>৮</td></tr>
+<tr><td class="hl">Lakehouse</td><td>ACID on S3 + time travel</td><td>৯</td></tr>
+<tr><td class="hl">Synthesis</td><td>সব মিলে — pipeline</td><td>১০</td></tr></table>`
+  }
 });

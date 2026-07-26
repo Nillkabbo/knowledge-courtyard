@@ -1,466 +1,403 @@
 const doors = [];
 
-// ═══════════════════════════════════════════
-// DOOR 1 — Two Worlds (OLTP vs OLAP)
-// ═══════════════════════════════════════════
 doors.push({
   num: 1,
   icon: "🌍",
   color: "#0ea5e9",
-  tagline: "দুই জগত — Two Worlds",
-  name: "The Two Worlds",
-  secret: "OLTP খুঁজে বের করে, OLAP যোগ করে। একই ডেটা, দুই ভিন্ন রূপ।",
-  story: `<p class="scene-setting">তুমি একটা বিশাল অফিসে দাঁড়িয়ে আছ। বাঁ দিকে একটা ডেস্ক — সেখানে একজন কেরানি প্রতিটা ফাইল দ্রুত খুঁজে বের করে, আপডেট করে, ফের রাখে। এটাই OLTP — Online Transaction Processing। MySQL, PostgreSQL — তোমার LedgerPilot। ডান দিকে একটা বিশাল হল — সেখানে শত শত কেরানি একসাথে সব ফাইল পড়ে, গড় বের করে, রিপোর্ট তৈরি করে। এটাই OLAP — Online Analytical Processing।</p>
-<p class="scene-setting en">You stand in a vast office. On the left, a clerk fetches, updates, and files single records rapidly — OLTP. On the right, hundreds of clerks read ALL files to calculate averages — OLAP. Same data, two opposite designs.</p>
+  name: "দুই জগতের সীমানা",
+  subtitle: "The Boundary of Two Worlds",
+  tech: "OLTP vs OLAP — transactional (MySQL, PostgreSQL) vs analytical (Snowflake, BigQuery), row vs columnar storage",
+  spirit: "তাফসিল — পৃথকীকরণ, দুই ভিন্ন উদ্দেশ্যের জগত",
+  secret: "OLTP খুঁজে বের করে (WHERE id=42), OLAP যোগ করে (SUM...GROUP BY)। একই ডেটা, দুই ভিন্ন রূপ। Row-based OLTP, columnar OLAP।",
+  recall: {
+    q: " OLTP ও OLAP-এর পার্থক্য কী? Row ও columnar storage-এর পার্থক্য?",
+    qen: "What is the difference between OLTP and OLAP? Between row and columnar storage?",
+    a: "OLTP = transactional (UPDATE, INSERT) — row-based। OLAP = analytical (SUM, GROUP BY) — columnar। LedgerPilot = OLTP, রিপোর্ট = OLAP।",
+    aen: "OLTP = transactional (UPDATE, INSERT) — row-based. OLAP = analytical (SUM, GROUP BY) — columnar. LedgerPilot = OLTP, reports = OLAP."
+  },
+  story: `<p class="scene-setting">তুমি একটি বিশাল অফিসে দাঁড়িয়ে আছ। বাঁ দিকে একটা ডেস্ক — সেখানে একজন কেরানি প্রতিটা ফাইল দ্রুত খুঁজে বের করে, আপডেট করে, ফের রাখে। এটাই OLTP — Online Transaction Processing। MySQL, PostgreSQL — তোমার LedgerPilot। ডান দিকে একটা বিশাল হল — সেখানে শত শত কেরানি একসাথে সব ফাইল পড়ে, গড় বের করে, রিপোর্ট তৈরি করে। এটাই OLAP — Online Analytical Processing।</p>
+<p class="scene-setting en">You stand in a vast office. On the left, a clerk fetches, updates, and files single records rapidly — OLTP. MySQL, PostgreSQL — your LedgerPilot. On the right, hundreds of clerks read ALL files to calculate averages — OLAP. Snowflake, BigQuery.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <rect x="10" y="10" width="275" height="300" rx="12" fill="#0f172a" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="147" y="35" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="900">📝 OLTP (MySQL / PostgreSQL)</text>
-  <rect x="25" y="55" width="120" height="35" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
-  <text x="85" y="77" text-anchor="middle" fill="#93c5fd" font-size="10">Row 1: id,name,amt</text>
-  <rect x="25" y="95" width="120" height="35" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
-  <text x="85" y="117" text-anchor="middle" fill="#93c5fd" font-size="10">Row 2: id,name,amt</text>
-  <rect x="25" y="135" width="120" height="35" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
-  <text x="85" y="157" text-anchor="middle" fill="#93c5fd" font-size="10">Row 3: id,name,amt</text>
-  <text x="147" y="195" text-anchor="middle" fill="#bae6fd" font-size="9">Row-based storage</text>
-  <text x="147" y="215" text-anchor="middle" fill="#7dd3fc" font-size="9">⚡ Fast: WHERE id=42</text>
-  <text x="147" y="232" text-anchor="middle" fill="#7dd3fc" font-size="9">⚡ Fast: UPDATE row</text>
-  <text x="147" y="252" text-anchor="middle" fill="#f87171" font-size="9">🐢 Slow: SUM(all amounts)</text>
-  <text x="147" y="272" text-anchor="middle" fill="#94a3b8" font-size="9">Normalized (3NF)</text>
-  <text x="147" y="292" text-anchor="middle" fill="#60a5fa" font-size="9" font-weight="700">LedgerPilot MySQL</text>
+<div class="dialogue"><strong>দুই-জগত-স্থপতি আব্বাস:</strong> OLTP ও OLAP দুটো ভিন্ন জগত। OLTP-তে তুমি একটি row খুঁজো — WHERE id=42। দ্রুত। Row-based storage — পুরো row একসাথে। কিন্তু SUM(amount) করতে চাইলে প্রতিটি row পড়তে হবে — ধীর! OLAP-তে columnar storage — শুধু amount column পড়ো, বাকি সব স্কিপ। দ্রুত aggregation! এটাই পার্থক্য — row ও columnar।</div>
+<div class="dialogue en"><strong>Two-World Architect Abbas:</strong> OLTP and OLAP are different worlds. In OLTP, you find one row — WHERE id=42. Fast. Row-based storage — entire row together. But SUM(amount) means reading every row — slow! In OLAP, columnar storage — read only the amount column, skip everything else. Fast aggregation! This is the difference — row vs columnar.</div>
 
-  <rect x="295" y="10" width="275" height="300" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
-  <text x="432" y="35" text-anchor="middle" fill="#86efac" font-size="13" font-weight="900">📊 OLAP (Parquet / Warehouse)</text>
-  <rect x="315" y="55" width="70" height="130" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="350" y="75" text-anchor="middle" fill="#4ade80" font-size="9">id col</text>
-  <rect x="390" y="55" width="70" height="130" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="425" y="75" text-anchor="middle" fill="#4ade80" font-size="9">name col</text>
-  <rect x="465" y="55" width="90" height="130" rx="5" fill="#14532d" stroke="#4ade80" stroke-width="2"/>
-  <text x="510" y="75" text-anchor="middle" fill="#86efac" font-size="9" font-weight="700">amount col</text>
-  <text x="510" y="110" text-anchor="middle" fill="#4ade80" font-size="20" font-weight="900">↓</text>
-  <text x="510" y="140" text-anchor="middle" fill="#86efac" font-size="8">SUM()</text>
-  <text x="510" y="160" text-anchor="middle" fill="#86efac" font-size="8">AVG()</text>
-  <text x="432" y="215" text-anchor="middle" fill="#bbf7d0" font-size="9">Columnar storage</text>
-  <text x="432" y="232" text-anchor="middle" fill="#4ade80" font-size="9">⚡ Fast: SUM(amount)</text>
-  <text x="432" y="252" text-anchor="middle" fill="#f87171" font-size="9">🐢 Slow: single row lookup</text>
-  <text x="432" y="272" text-anchor="middle" fill="#94a3b8" font-size="9">Denormalized (Star)</text>
-  <text x="432" y="292" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Analytics Engine</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: OLTP = row-by-row (দ্রুত update), OLAP = column-by-column (দ্রুত aggregation)। একই ডেটা, দুই ভিন্ন layout।</div>
+<div class="code-block">— OLTP vs OLAP দেখো —
 
-<div class="code-block">
-<div class="code-title">🗄️ OLTP vs OLAP — একই ডেটা, দুই query / same data, two queries</div>
-<pre>-- ▶ OLTP (MySQL / PostgreSQL): row-level, দ্রুত single-row lookup
-SELECT id, amount, status
-FROM transactions
-WHERE id = 42;
+  -- OLTP (MySQL / PostgreSQL): Single row
+  SELECT * FROM transactions WHERE id = 42;
+  -- ⚡ Fast — B-tree index lookup
 
--- ▶ OLAP (DuckDB / Parquet): columnar, শুধু amount কলাম পড়ে SUM
-SELECT category,
-       SUM(amount)   AS revenue,
-       COUNT(*)      AS txns
-FROM fact_sales
-WHERE sale_date &gt;= DATE '2026-01-01'
-GROUP BY category
-ORDER BY revenue DESC;</pre>
-</div>
+  UPDATE accounts SET balance = balance - 500
+  WHERE id = 'acc_123';
+  -- ⚡ Fast — single row update
 
-<div class="dialogue"><strong>ডেটা ইঞ্জিনিয়ার:</strong> LedgerPilot-এ তুমি MySQL ব্যবহার করো — কারণ তোমার দরকার দ্রুত transaction। একটা invoice তৈরি করো, payment update করো — সব row-level। কিন্তু যখন তুমি বলবে "গত ত্রৈমাসিকে প্রতিটা ক্যাটাগরির মোট আয় দেখাও" — MySQL কষ্ট করে লাখ লাখ row পড়বে। এখানেই OLAP দরকার। Columnar storage — Parquet — শুধু 'amount' কলাম পড়ে SUM করে। ১০x দ্রুত।</div>
-<div class="dialogue en"><strong>Data Engineer:</strong> LedgerPilot uses MySQL — because you need fast transactions. Create invoice, update payment — all row-level. But when you say "show me total revenue per category last quarter" — MySQL reads millions of rows painfully. This is where OLAP is needed. Columnar storage — Parquet — reads only the 'amount' column. 10x faster.</div>`,
-  recall: [
-    { q: "LedgerPilot MySQL কোন ধরনের workload? (OLTP নাকি OLAP?)", a: "OLTP — কারণ দ্রুত row-level transaction দরকার (INSERT/UPDATE/DELETE)।" },
-    { q: "OLAP কেন columnar storage ব্যবহার করে?", a: "কারণ analytics query সাধারণত কয়েকটা column পড়ে (যেমন SUM(amount))। Columnar layout-এ শুধু সেই column গুলো পড়া হয়, বাকি skip হয়।" },
-  ]
+  -- OLAP (Snowflake / BigQuery): Aggregation
+  SELECT category, SUM(amount), COUNT(*)
+  FROM transactions
+  WHERE date >= '2026-01-01'
+  GROUP BY category
+  ORDER BY sum DESC;
+  -- 🐢 Row-based: প্রতিটি row পড়তে হবে
+  -- ⚡ Columnar: শুধু amount + category column
+
+  -- Columnar storage (Parquet):
+  -- Row 1: id=1, name=Hasan, amount=5000
+  -- Row 2: id=2, name=Rakib, amount=3200
+  -- Columnar: [1,2], [Hasan,Rakib], [5000,3200]
+  -- SUM(amount) = শুধু [5000,3200] পড়ো — বাকি skip!</div>
+
+<div class="callout info"><span class="co-icon">📐</span><div><strong>Row vs Columnar:</strong><br>
+<strong>Row-based (OLTP):</strong> প্রতিটি row একসাথে সংরক্ষিত। UPDATE দ্রুত। SUM ধীর।<br>
+<strong>Columnar (OLAP):</strong> প্রতিটি column আলাদাভাবে। SUM দ্রুত (শুধু সেই column)। UPDATE ধীর।<br>
+<strong>Normalization:</strong> OLTP = 3NF (normalized)। OLAP = Star/Snowflake (denormalized)।<br>
+<strong>ETL:</strong> OLTP → Extract → Transform → Load → OLAP</div></div>
+
+<div class="verse">وَفِي ذَلِكَ فَلْيَتَنَافَسِ الْمُتَنَافِسُونَ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং এটিতে প্রতিযোগীরা প্রতিযোগিতা করুক।" — কুরআন ৮৩:২৬</div>
+
+<p class="scene-setting">তাফসিল — পৃথকীকরণ। OLTP ও OLAP দুটো ভিন্ন উদ্দেশ্য — দুটো আলাদা জগত। একটি লেনদেনের জন্য (fast write), অন্যটি বিশ্লেষণের জন্য (fast read)। উভয়ের নিজস্ব শক্তি। একে অপরের প্রতিযোগী নয় — পরিপূরক।</p>
+<p class="scene-setting en">Tafsil — separation. OLTP and OLAP have different purposes — two separate worlds. One for transactions (fast write), the other for analysis (fast read). Each has its own strength. Not competitors — complements.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৯ (Databases) Door ১ (Relational):</strong> normalization ও 3NF শিখেছিলে — OLTP সেই ভিত্তি। Book ৪৪ (Data Engineering) Door ৩: Star Schema = OLAP-এর denormalized কাঠামো।</div></div>
+
+<div class="secret-box">🌍 <strong>OLTP = row (transaction), OLAP = columnar (analysis)।</strong> একই ডেটা, দুই রূপ। কিন্তু OLAP-তে ডেটা কীভাবে সাজাবে? সেই কাঠামো — Parquet। পরের দরজায়।</div>`,
+  senior: {
+    title: "OLTP vs OLAP এক নজরে",
+    body: `<table class="kv-table"><tr><th>বৈশিষ্ট্য</th><th>OLTP</th><th>OLAP</th></tr>
+<tr><td class="hl">উদ্দেশ্য</td><td>Transaction</td><td>Analysis</td></tr>
+<tr><td class="hl">Storage</td><td>Row-based</td><td>Columnar</td></tr>
+<tr><td class="hl">Query</td><td>SELECT/UPDATE single</td><td>SUM/GROUP BY</td></tr>
+<tr><td class="hl">DB</td><td>MySQL, PostgreSQL</td><td>Snowflake, BigQuery</td></tr>
+<tr><td class="hl">Schema</td><td>3NF normalized</td><td>Star denormalized</td></tr>
+<tr><td class="hl">Volume</td><td>GB</td><td>TB/PB</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 2 — The Horizontal Revolution (Parquet)
-// ═══════════════════════════════════════════
 doors.push({
   num: 2,
-  icon: "📊",
-  color: "#22c55e",
-  tagline: "অনুভূমিক বিপ্লব — Sideways Revolution",
-  name: "The Horizontal Revolution",
-  secret: "Parquet ডেটাকে আনুভূমিক করে শুইয়ে দেয়। একই ডেটা ৯০% ছোট, ১০x দ্রুত।",
-  story: `<p class="scene-setting">ভাবো — একটা বইয়ের তাক। সব বই উল্লম্বভাবে সাজানো (row-based)। একটা নির্দিষ্ট অধ্যায় পড়তে হলে প্রতিটা বই নামিয়ে খুলতে হয়। কিন্তু যদি সব বই আনুভূমিকভাবে সাজানো হয় — প্রতিটা স্তর একটা অধ্যায় — তাহলে শুধু সেই স্তরটা টেনে নিলেই হয়। এটাই Parquet।</p>
-<p class="scene-setting en">Imagine a bookshelf. All books vertical (row-based). To read one chapter from each, you pull every book down. But if books are stacked horizontally — each layer is one chapter — you just slide out that layer. This is Parquet.</p>
+  icon: "📦",
+  color: "#0ea5e9",
+  name: "অনুভূমিক বিপ্লব",
+  subtitle: "The Sideways Revolution",
+  tech: "Columnar Storage — Parquet (Twitter 2013), ORC, predicate pushdown, compression, vectorized execution",
+  spirit: "ইকলাস — সংক্ষিপ্ততা, শুধু প্রয়োজনীয় রাখা",
+  secret: "Parquet = columnar file format। শুধু প্রয়োজনীয় column পড়ে — বাকি skip। Predicate pushdown: WHERE condition file-এই apply। ১০x ছোট, ১০x দ্রুত।",
+  recall: {
+    q: " Parquet কী? Row-based CSV থেকে কেন ভালো?",
+    qen: "What is Parquet? Why is it better than row-based CSV?",
+    a: "Parquet = columnar format। শুধু প্রয়োজনীয় column পড়ে, বাকি skip। CSV সব column পড়ে। Predicate pushdown: WHERE file-এই filter। Compression ভালো।",
+    aen: "Parquet = columnar format. Reads only needed columns, skips rest. CSV reads all columns. Predicate pushdown: filter at file level. Better compression."
+  },
+  story: `<p class="scene-setting">আব্বাস (Door ১) তোমাকে columnar storage-এর ধারণা দিয়েছেন। এখন দেখো সেই columnar storage-এর বাস্তব রূপ — Parquet। Twitter ২০১৩-এ এটা তৈরি করে। CSV ফাইলে প্রতিটি row একসাথে — কিন্তু Parquet-এ প্রতিটি column আলাদা। শুধু amount দরকার? শুধু amount column পড়ো — বাকি সব স্কিপ। ১০০টি column থেকে ৫টি দরকার? ৯৫% ডেটা না পড়েই কাজ হয়ে যায়!</p>
+<p class="scene-setting en">Abbas (Door 1) gave you the concept of columnar storage. Now see its practical form — Parquet. Twitter created it in 2013. In CSV, each row is together — but in Parquet, each column is separate. Only need amount? Read only the amount column — skip everything else. 100 columns, need 5? 95% of data never read!</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📊 Parquet Magic: Column Pruning + Compression</text>
+<div class="dialogue"><strong>বিপ্লব-কারিগর তালহা:</strong> Parquet-এর শক্তি তিনটি: (১) Column pruning — শুধু প্রয়োজনীয় column। (২) Predicate pushdown — WHERE condition file-এই apply হয়, query engine-এ নয়। (৩) Compression — একই column-এ একই ধরনের ডেটা, তাই compression ভালো। dictionary encoding, run-length encoding। CSV-এর তুলনায় ১০x ছোট, ১০x দ্রুত।</div>
+<div class="dialogue en"><strong>Revolution Artisan Talha:</strong> Parquet's power is threefold: (1) Column pruning — only needed columns. (2) Predicate pushdown — WHERE condition applied at file level, not query engine. (3) Compression — same type data in same column, so compression works well. Dictionary encoding, run-length encoding. 10x smaller than CSV, 10x faster.</div>
 
-  <!-- CSV/Row -->
-  <rect x="20" y="50" width="250" height="120" rx="8" fill="#7c2d12" stroke="#f97316" stroke-width="2"/>
-  <text x="145" y="72" text-anchor="middle" fill="#fdba74" font-size="12" font-weight="700">📄 CSV / MySQL (Row-based)</text>
-  <rect x="35" y="85" width="220" height="20" rx="3" fill="#431407" stroke="#f97316" stroke-width="1"/>
-  <text x="145" y="99" text-anchor="middle" fill="#fed7aa" font-size="8">id:1, name:Hasan, amount:5000, date:2026-07</text>
-  <rect x="35" y="108" width="220" height="20" rx="3" fill="#431407" stroke="#f97316" stroke-width="1"/>
-  <text x="145" y="122" text-anchor="middle" fill="#fed7aa" font-size="8">id:2, name:Rakib, amount:3200, date:2026-07</text>
-  <rect x="35" y="131" width="220" height="20" rx="3" fill="#431407" stroke="#f97316" stroke-width="1"/>
-  <text x="145" y="145" text-anchor="middle" fill="#fed7aa" font-size="8">id:3, name:Sadia, amount:8100, date:2026-06</text>
-  <text x="145" y="162" text-anchor="middle" fill="#f87171" font-size="9">❌ SUM(amount)? Read ALL columns!</text>
+<div class="code-block">— Parquet vs CSV গতি তুলনা —
 
-  <!-- Parquet -->
-  <rect x="290" y="50" width="270" height="120" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="425" y="72" text-anchor="middle" fill="#86efac" font-size="12" font-weight="700">📦 Parquet (Columnar)</text>
-  <rect x="305" y="85" width="55" height="70" rx="3" fill="#14532d" stroke="#22c55e" stroke-width="1" opacity=".4"/>
-  <text x="332" y="102" text-anchor="middle" fill="#4ade80" font-size="8">id</text>
-  <rect x="365" y="85" width="65" height="70" rx="3" fill="#14532d" stroke="#22c55e" stroke-width="1" opacity=".4"/>
-  <text x="397" y="102" text-anchor="middle" fill="#4ade80" font-size="8">name</text>
-  <rect x="435" y="85" width="65" height="70" rx="3" fill="#059669" stroke="#4ade80" stroke-width="2.5"/>
-  <text x="467" y="102" text-anchor="middle" fill="#86efac" font-size="8" font-weight="700">amount</text>
-  <text x="467" y="118" text-anchor="middle" fill="#4ade80" font-size="7">5000</text>
-  <text x="467" y="130" text-anchor="middle" fill="#4ade80" font-size="7">3200</text>
-  <text x="467" y="142" text-anchor="middle" fill="#4ade80" font-size="7">8100</text>
-  <text x="467" y="152" text-anchor="middle" fill="#86efac" font-size="6">→ SUM!</text>
-  <rect x="505" y="85" width="45" height="70" rx="3" fill="#14532d" stroke="#22c55e" stroke-width="1" opacity=".4"/>
-  <text x="527" y="102" text-anchor="middle" fill="#4ade80" font-size="8">date</text>
-  <text x="425" y="162" text-anchor="middle" fill="#4ade80" font-size="9">✅ SUM(amount)? Read ONLY amount!</text>
+  import pyarrow.parquet as pq
+  import pandas as pd
 
-  <!-- Compression techniques -->
-  <text x="290" y="200" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700">Compression Arsenal</text>
-  <rect x="30" y="215" width="160" height="65" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="110" y="235" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">Dictionary Encoding</text>
-  <text x="110" y="252" text-anchor="middle" fill="#fcd34d" font-size="9">"US","US","DE","US"</text>
-  <text x="110" y="267" text-anchor="middle" fill="#fcd34d" font-size="9">→ {0,0,1,0}</text>
+  # CSV লেখো (১০ মিলিয়ন row)
+  df = pd.DataFrame({
+      'id': range(10_000_000),
+      'name': ['user_' + str(i) for i in range(10_000_000)],
+      'amount': [i * 1.5 for i in range(10_000_000)],
+  })
+  df.to_csv('data.csv', index=False)        # ~250 MB
 
-  <rect x="210" y="215" width="160" height="65" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="290" y="235" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">Run-Length (RLE)</text>
-  <text x="290" y="252" text-anchor="middle" fill="#fcd34d" font-size="9">"US","US","US","US"</text>
-  <text x="290" y="267" text-anchor="middle" fill="#fcd34d" font-size="9">→ US × 4</text>
+  # Parquet লেখো
+  df.to_parquet('data.parquet')              # ~25 MB! (10x ছোট)
 
-  <rect x="390" y="215" width="160" height="65" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="470" y="235" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">Predicate Pushdown</text>
-  <text x="470" y="252" text-anchor="middle" fill="#fcd34d" font-size="9">min/max per chunk</text>
-  <text x="470" y="267" text-anchor="middle" fill="#fcd34d" font-size="9">→ skip entire blocks!</text>
+  # শুধু amount column পড়ো:
+  csv_read = pd.read_csv('data.csv', usecols=['amount'])
+  # ⏰ ৩.২s — সব row পড়ে, শুধু amount রাখে
 
-  <rect x="80" y="295" width="420" height="45" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="290" y="315" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">ফলাফল: 70-90% smaller files · 10-100x faster analytics</text>
-  <text x="290" y="330" text-anchor="middle" fill="#86efac" font-size="9">⚠️ কিন্তু immutable — update করতে গেলে পুরো file rewrite করতে হয়!</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Row-based (CSV/MySQL) সব column পড়ে। Parquet শুধু দরকারি column পড়ে। Dictionary + RLE + predicate pushdown = ৯০% ছোট।</div>
+  parquet_read = pq.read_table('data.parquet',
+      columns=['amount']).to_pandas()
+  # ⚡ ০.৩s! — শুধু amount column file থেকেই পড়ে
 
-<div class="code-block">
-<div class="code-title">📦 Parquet — কলাম-ভিত্তিক লেখা ও পড়া / columnar write &amp; read</div>
-<pre>import pyarrow as pa
-import pyarrow.parquet as pq
+  # Predicate pushdown (DuckDB):
+  SELECT SUM(amount) FROM 'data.parquet'
+  WHERE amount > 5000000;
+  -- file-এই filter — ৯৯% row skip!</div>
 
-# লেখা: row ডেটাকে কলামে সাজিয়ে Parquet-এ লেখো (Snappy compression)
-table = pa.table({
-    "id":      [1, 2, 3, 4],
-    "name":    ["Hasan", "Rakib", "Sadia", "Hasan"],
-    "amount":  [5000, 3200, 8100, 1500],
-    "country": ["BD", "BD", "BD", "BD"],   # Dictionary + RLE → "BD" × 4
-})
-pq.write_table(table, "sales.parquet",
-               compression="snappy",
-               use_dictionary=True)
+<div class="callout info"><span class="co-icon">📦</span><div><strong>Parquet compression techniques:</strong><br>
+<strong>Dictionary Encoding:</strong> পুনরাবৃত্ত মান → একটি dictionary। "USD" ১০০০ বার? একটি entry।<br>
+<strong>Run-Length Encoding:</strong> একই মান পরপর? ০,০,০,০,০ → RLE: (৫, ০)।<br>
+<strong>Snappy/Zstd:</strong> general compression। Zstd = ভালো ratio + দ্রুত।<br>
+<strong>Predicate Pushdown:</strong> WHERE condition file-এই apply — row না পড়েই filter।</div></div>
 
-# পড়া: DuckDB শুধু 'amount' কলাম পড়ে — column pruning + predicate pushdown
-import duckdb
-duckdb.sql("""
-    SELECT SUM(amount) AS total
-    FROM 'sales.parquet'
-    WHERE amount &gt; 2000          -- min/max stats দিয়ে ব্লক skip করে
-""").show()</pre>
-</div>
+<div class="verse">وَمَا تَفْرُغُ مِن شَيْءٍ إِلَّا بِعِلْمٍ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"তুমি কিছুই শূন্য করো না জ্ঞান ছাড়া।" — কুরআন ৬:৫৯ (প্যারাফ্রেজ)</div>
 
-<div class="dialogue"><strong>প্যাটারসন:</strong> (গল্প শুরু) আমি ডেভিড প্যাটারসন। ২০১৩ সালে Google আর Twitter মিলে Parquet তৈরি করল — সবচেয়ে সহজ আইডিয়া দিয়ে। ডেটাকে আনুভূমিক করে শুইয়ে দাও। প্রতিটা column আলাদা ফাইলে। একটা column-এ সব ডেটা একই টাইপের — তাই Dictionary Encoding দিয়ে বারবার আসা value-কে integer-এ রূপান্তর করা যায়। Run-Length Encoding দিয়ে পুনরাবৃত্তি সংকুচিত করা যায়। ফলাফল? ৯০% ছোট ফাইল।</div>`,
-  recall: [
-    { q: "Column Pruning কী?", a: "Query যখন শুধু কয়েকটা column চায়, Parquet বাকিগুলো একদম পড়ে না — ৮০-৯৫% I/O বাঁচে।" },
-    { q: "Parquet কেন immutable?", a: "কলাম-ভিত্তিক layout এর জন্য একটি row আপডেট করতে গেলে পুরো ফাইল রিরাইট করতে হয়। এটি ডিজাইন অনুযায়ী — এটিই columnar অপ্টিমাইজেশনকে সক্ষম করে।" },
-  ]
+<p class="scene-setting">ইকলাস — সংক্ষিপ্ততা, শুধু প্রয়োজনীয় রাখা। Parquet সেই সংক্ষিপ্ততার রূপ — শুধু প্রয়োজনীয় column, বাকি স্কিপ। Compression দিয়ে ছোট, predicate pushdown দিয়ে দ্রুত। ডেটা ইঞ্জিনিয়ারিং-এ সবচেয়ে গুরুত্বপূর্ণ file format।</p>
+<p class="scene-setting en">Ikhlas — conciseness, keeping only what's needed. Parquet is the form of that conciseness — only needed columns, skip the rest. Compression makes it small, predicate pushdown makes it fast. The most important file format in data engineering.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৯ (Databases) Door ৬ (Indexing):</strong> B-tree index ও columnar storage — ভিন্ন কিন্তু সম্পর্কিত। Book ৪৪ Door ৩: Star Schema = Parquet-এ সাজানো ডেটা।</div></div>
+
+<div class="secret-box">📦 <strong>Parquet = columnar, compressed, fast।</strong> কিন্তু ডেটা কীভাবে সাজাবে যাতে বিশ্লেষণ সহজ হয়? Star Schema — সেই কাঠামো। পরের দরজায়।</div>`,
+  senior: {
+    title: "Columnar Storage এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Parquet (2013)</td><td>Twitter — columnar format</td></tr>
+<tr><td class="hl">Column Pruning</td><td>শুধু প্রয়োজনীয় column পড়ো</td></tr>
+<tr><td class="hl">Predicate Pushdown</td><td>WHERE file-এই filter</td></tr>
+<tr><td class="hl">Dictionary Encoding</td><td>পুনরাবৃত্ত মান → dictionary</td></tr>
+<tr><td class="hl">Compression</td><td>Snappy / Zstd</td></tr>
+<tr><td class="hl">10x</td><td>CSV থেকে ছোট ও দ্রুত</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 3 — The Star Map (Star Schema)
-// ═══════════════════════════════════════════
 doors.push({
   num: 3,
   icon: "⭐",
-  color: "#fbbf24",
-  tagline: "নক্ষত্র মানচিত্র — The Star Map",
-  name: "The Star Map",
-  secret: "Star Schema = ৫-টেবিল JOIN কে আগেই সমতল (flatten) করে রাখা। দ্রুত query, সহজ BI।",
-  story: `<p class="scene-setting">তুমি একটা রেস্তোরাঁয় আছ। মালিক জিজ্ঞেস করে — "গত মাসে কোন এলাকার কোন পণ্য সবচেয়ে বিক্রি হয়েছে?" স্বাভাবিক ডেটাবেসে এর উত্তর খুঁজতে হলে ৫-৬টা টেবিল JOIN করতে হবে। কিন্তু Star Schema-তে উত্তর এক ক্লিকে — কারণ JOIN গুলো আগেই সমতল করা আছে।</p>
-<p class="scene-setting en">Star Schema pre-flattens complex joins at write time. The central fact table holds events. Dimension tables hold lookup data. Simple, fast queries for BI tools.</p>
+  color: "#0ea5e9",
+  name: "নক্ষত্র মানচিত্র",
+  subtitle: "The Star Map",
+  tech: "Star Schema & Snowflake Schema — fact table, dimension tables, Kimball (1996), denormalization for analytics",
+  spirit: "নাজম — নক্ষত্র, কেন্দ্রে সত্য ও চারপাশে বিবরণ",
+  secret: "Star Schema: কেন্দ্রে fact table (লেনদেন), চারপাশে dimension table (বিবরণ)। তারার মতো আকৃতি। Kimball (১৯৯৬) — analytics-এর জন্য denormalized কাঠামো।",
+  recall: {
+    q: " Star Schema কী? Fact ও Dimension table-এর পার্থক্য?",
+    qen: "What is a Star Schema? What is the difference between Fact and Dimension tables?",
+    a: "Fact = সংখ্যাসূচক ডেটা (amount, quantity)। Dimension = বর্ণনামূলক (category, date, user)। Star: fact কেন্দ্রে, dimension চারপাশে।",
+    aen: "Fact = numerical data (amount, quantity). Dimension = descriptive (category, date, user). Star: fact at center, dimensions around."
+  },
+  story: `<p class="scene-setting">তালহা (Door ২) তোমাকে Parquet শিখিয়েছেন। এখন সেই Parquet-এ ডেটা কীভাবে সাজাবে? Ralph Kimball ১৯৯৬ সালে একটি সুন্দর কাঠামো দিলেন — Star Schema। কেন্দ্রে একটি fact table — লেনদেনের সংখ্যা (amount, quantity)। চারপাশে dimension table — বিবরণ (কে, কখন, কোথায়, কী)। তারার আকৃতি। এক দৃষ্টিতে সব বোঝা যায়।</p>
+<p class="scene-setting en">Talha (Door 2) taught you Parquet. Now how to organize data in that Parquet? Ralph Kimball in 1996 gave a beautiful structure — Star Schema. At the center, a fact table — transaction numbers (amount, quantity). Around it, dimension tables — descriptions (who, when, where, what). Star shape. Everything visible at a glance.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⭐ Star Schema — Fact + Dimensions</text>
+<div class="dialogue"><strong>নক্ষত্র-মানচিত্রকার আয়েশা:</strong> Fact table-এ শুধু সংখ্যা ও foreign key। প্রতিটি transaction: amount=৫০০, user_id=৪২, category_id=৭, date_id=৩৬৫। Dimension table-এ বিবরণ: user_id=৪২ → name=Ali, city=Detroit। category_id=৭ → name=Food। date_id=৩৬৫ → ২০২৬-১২-৩১। JOIN করলে সব একসাথে। এটাই Star — কেন্দ্র থেকে শাখা। Snowflake = Star কিন্তু dimension-ও normalized।</div>
+<div class="dialogue en"><strong>Star Cartographer Ayesha:</strong> Fact table has only numbers and foreign keys. Each transaction: amount=500, user_id=42, category_id=7, date_id=365. Dimension tables have descriptions: user_id=42 → name=Ali, city=Detroit. category_id=7 → name=Food. JOIN brings everything together. This is Star — center to branches. Snowflake = Star but dimensions also normalized.</div>
 
-  <!-- Fact Table (center) -->
-  <rect x="200" y="130" width="180" height="100" rx="10" fill="#1e40af" stroke="#60a5fa" stroke-width="2.5"/>
-  <text x="290" y="155" text-anchor="middle" fill="#dbeafe" font-size="13" font-weight="900">📋 Fact_Sales</text>
-  <text x="290" y="173" text-anchor="middle" fill="#93c5fd" font-size="9">transaction_id</text>
-  <text x="290" y="187" text-anchor="middle" fill="#93c5fd" font-size="9">product_id (FK)</text>
-  <text x="290" y="201" text-anchor="middle" fill="#93c5fd" font-size="9">customer_id (FK)</text>
-  <text x="290" y="215" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="700">amount: 5000</text>
+<div class="code-block">— Star Schema SQL —
 
-  <!-- Dimension Tables -->
-  <rect x="20" y="50" width="130" height="65" rx="8" fill="#581c87" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="85" y="72" text-anchor="middle" fill="#d8b4fe" font-size="11" font-weight="700">Dim_Product</text>
-  <text x="85" y="88" text-anchor="middle" fill="#c084fc" font-size="8">product_id</text>
-  <text x="85" y="100" text-anchor="middle" fill="#c084fc" font-size="8">name, category</text>
+  -- Fact table (কেন্দ্র)
+  CREATE TABLE fact_transactions (
+      transaction_id INT,
+      user_key INT,         -- FK → dim_user
+      category_key INT,     -- FK → dim_category
+      date_key INT,         -- FK → dim_date
+      amount DECIMAL(10,2),
+      quantity INT
+  );
 
-  <rect x="430" y="50" width="130" height="65" rx="8" fill="#581c87" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="495" y="72" text-anchor="middle" fill="#d8b4fe" font-size="11" font-weight="700">Dim_Customer</text>
-  <text x="495" y="88" text-anchor="middle" fill="#c084fc" font-size="8">customer_id</text>
-  <text x="495" y="100" text-anchor="middle" fill="#c084fc" font-size="8">name, region</text>
+  -- Dimension tables (চারপাশ)
+  CREATE TABLE dim_user (
+      user_key INT PRIMARY KEY,
+      name VARCHAR,
+      city VARCHAR,
+      signup_date DATE
+  );
 
-  <rect x="20" y="250" width="130" height="65" rx="8" fill="#581c87" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="85" y="272" text-anchor="middle" fill="#d8b4fe" font-size="11" font-weight="700">Dim_Date</text>
-  <text x="85" y="288" text-anchor="middle" fill="#c084fc" font-size="8">date_id</text>
-  <text x="85" y="300" text-anchor="middle" fill="#c084fc" font-size="8">year, month, day</text>
+  CREATE TABLE dim_category (
+      category_key INT PRIMARY KEY,
+      name VARCHAR,         -- 'Food', 'Transport'
+      parent_category VARCHAR
+  );
 
-  <rect x="430" y="250" width="130" height="65" rx="8" fill="#581c87" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="495" y="272" text-anchor="middle" fill="#d8b4fe" font-size="11" font-weight="700">Dim_Store</text>
-  <text x="495" y="288" text-anchor="middle" fill="#c084fc" font-size="8">store_id</text>
-  <text x="495" y="300" text-anchor="middle" fill="#c084fc" font-size="8">location, type</text>
+  CREATE TABLE dim_date (
+      date_key INT PRIMARY KEY,  -- 20261231
+      date_actual DATE,
+      month VARCHAR,             -- 'December'
+      quarter INT,               -- 4
+      is_weekend BOOLEAN
+  );
 
-  <!-- Connection lines -->
-  <line x1="150" y1="82" x2="200" y2="130" stroke="#64748b" stroke-width="1.5"/>
-  <line x1="430" y1="82" x2="380" y2="130" stroke="#64748b" stroke-width="1.5"/>
-  <line x1="150" y1="282" x2="200" y2="230" stroke="#64748b" stroke-width="1.5"/>
-  <line x1="430" y1="282" x2="380" y2="230" stroke="#64748b" stroke-width="1.5"/>
+  -- Star JOIN — সব একসাথে:
+  SELECT u.city, c.name, SUM(f.amount)
+  FROM fact_transactions f
+  JOIN dim_user u ON f.user_key = u.user_key
+  JOIN dim_category c ON f.category_key = c.category_key
+  JOIN dim_date d ON f.date_key = d.date_key
+  WHERE d.quarter = 4
+  GROUP BY u.city, c.name;
+  -- ⚡ Columnar + Star = দ্রুত!</div>
 
-  <text x="290" y="320" text-anchor="middle" fill="#94a3b8" font-size="9" font-style="italic">Fact = raw events (amounts, IDs). Dimensions = lookup caches (names, categories, regions).</text>
-  <text x="290" y="335" text-anchor="middle" fill="#64748b" font-size="8">Kimball: bottom-up, fast time-to-value. Inmon: top-down, enterprise integrity. Modern = Hybrid.</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Star Schema — কেন্দ্রে Fact table (events), চারপাশে Dimension tables (lookup)। সহজ query, দ্রুত BI।</div>
+<div class="callout info"><span class="co-icon">⭐</span><div><strong>Star vs Snowflake:</strong><br>
+<strong>Star:</strong> Fact কেন্দ্রে, dimension চারপাশে — denormalized। JOIN কম, দ্রুত।<br>
+<strong>Snowflake:</strong> Dimension-ও normalized (city → city_key → dim_city)। JOIN বেশি, কিন্তু storage কম।<br>
+<strong>Kimball (1996):</strong> Star prefer করো — analytics-এ JOIN কম = দ্রুত।<br>
+<strong>Slowly Changing Dimension (SCD):</strong> dimension বদলালে? Type 1 (overwrite), Type 2 (new row)।</div></div>
 
-<div class="code-block">
-<div class="code-title">⭐ Star Schema — Fact + Dimensions এক query-তে / one joined query</div>
-<pre>-- কেন্দ্রে Fact_Sales, চারপাশে ৪টা Dimension। JOIN আগেই simplify করা।
-SELECT d_store.region                AS region,
-       d_prod.category               AS category,
-       d_date.year || '-Q' || d_date.quarter AS period,
-       SUM(f.amount)                 AS revenue,
-       COUNT(*)                      AS num_sales
-FROM   fact_sales    AS f
-JOIN   dim_product   AS d_prod  ON f.product_id  = d_prod.product_id
-JOIN   dim_customer  AS d_cust  ON f.customer_id = d_cust.customer_id
-JOIN   dim_date      AS d_date  ON f.date_id     = d_date.date_id
-JOIN   dim_store     AS d_store ON f.store_id    = d_store.store_id
-WHERE  d_date.year = 2026
-GROUP  BY region, category, period
-ORDER  BY revenue DESC
-LIMIT  20;</pre>
-</div>
+<div class="verse">وَالنَّجْمِ إِذَا هَوَى</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"শপথ নক্ষত্রের যখন তা অস্তমিত হয়।" — কুরআন ৫৩:১</div>
 
-<div class="dialogue"><strong>কিম্বল:</strong> আমি রাল্ফ কিম্বল। ১৯৯০-এর দশকে আমি একটা সহজ আইডিয়া নিয়ে এসেছিলাম — analytics ডেটাবেস স্বাভাবিক অ্যাপ ডেটাবেসের মতো নয়। অ্যাপ ডেটাবেসে ৫টা টেবিল JOIN করে একটা সহজ রিপোর্ট বানাতে হয়। কিন্তু analytics-এ? আমরা JOIN গুলো আগেই সমতল করে রাখি। কেন্দ্রে একটা Fact table — কাঁচা ঘটনা (transaction_id, amount, date)। চারপাশে Dimension tables — lookup ক্যাশ (product name, customer region)। এটাই Star Schema। ব্যবহারকারী একটা সহজ ২-টেবিল JOIN করে যে উত্তর চায় তা পায়।</div>`,
-  recall: [
-    { q: "Fact table আর Dimension table-এর পার্থক্য কী?", a: "Fact = কাঁচা ঘটনা/মেট্রিক (amount, quantity)। Dimension = lookup/প্রসঙ্গ (product name, customer region, date)।" },
-    { q: "Kimball vs Inmon — পার্থক্য?", a: "Kimball = bottom-up, star schema data marts, fast time-to-value। Inmon = top-down, normalized enterprise warehouse, high integrity। Modern = Hybrid।" },
-  ]
+<p class="scene-setting">নাজম — নক্ষত্র। Star Schema সেই নক্ষত্রের কাঠামো — কেন্দ্রে fact (সত্য), চারপাশে dimension (বিবরণ)। নক্ষত্রের আকৃতিতে সাজানো — সহজ বোঝা, দ্রুত query। Kimball-এর দৃষ্টি — ডেটাকে তারার মতো সাজাও।</p>
+<p class="scene-setting en">Najm — star. Star Schema is the structure of that star — fact (truth) at center, dimensions (descriptions) around. Arranged in star shape — easy understanding, fast queries. Kimball's vision — organize data like a star.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৯ (Databases) Door ২ (SQL):</strong> JOIN ও normalization শিখেছিলে — Star Schema সেই ধারণার বিপরীত (denormalized)। Book ৪৪ Door ১: OLTP normalized, OLAP denormalized।</div></div>
+
+<div class="secret-box">⭐ <strong>Star Schema = fact কেন্দ্রে, dimension চারপাশে।</strong> কিন্তু ডেটা বিশাল হলে — এক মেশিনে চলবে না। কোটি কোটি row? Distributed processing দরকার। সেই ইঞ্জিন — Spark। পরের দরজায়।</div>`,
+  senior: {
+    title: "Star Schema এক নজরে",
+    body: `<table class="kv-table"><tr><th>উপাদান</th><th>কী</th></tr>
+<tr><td class="hl">Fact Table</td><td>সংখ্যা + foreign key (কেন্দ্র)</td></tr>
+<tr><td class="hl">Dimension</td><td>বর্ণনা (user, category, date)</td></tr>
+<tr><td class="hl">Kimball (1996)</td><td>The Data Warehouse Toolkit</td></tr>
+<tr><td class="hl">Star</td><td>Denormalized — JOIN কম, দ্রুত</td></tr>
+<tr><td class="hl">Snowflake</td><td>Normalized dimension — storage কম</td></tr>
+<tr><td class="hl">SCD</td><td>Slowly Changing Dimension</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 4 — The Lazy Architect (Spark)
-// ═══════════════════════════════════════════
 doors.push({
   num: 4,
   icon: "⚡",
-  color: "#f97316",
-  tagline: "অলস স্থপতি — The Lazy Architect",
-  name: "The Lazy Architect",
-  secret: "Spark অলস — কোড লিখলে সাথে সাথে চালায় না। পুরো plan দেখে, তারপর সেরা রাস্তা বেছে নেয়।",
-  story: `<p class="scene-setting">তুমি Django ORM জানো — <code>.filter()</code>, <code>.annotate()</code> চেইন করলে সাথে সাথে database query হয় না। শুধু logical query তৈরি হয়। <code>.list()</code> বা <code>.first()</code> না করলে কিছু চলে না। Spark ঠিক এভাবেই কাজ করে — কিন্তু হাজার হাজার machine-এ!</p>
-<p class="scene-setting en">Spark works like Django ORM QueryBuilder. Transformations (filter, join, map) are lazy — they just build a logical plan. Only Actions (count, write, collect) trigger execution. Catalyst optimizer rewrites your plan for maximum efficiency.</p>
+  color: "#0ea5e9",
+  name: "অলস স্থপতি",
+  subtitle: "The Lazy Architect",
+  tech: "Apache Spark — RDD, DataFrame, lazy evaluation, DAG, Catalyst optimizer, Zaharia 2010 (UC Berkeley)",
+  spirit: "আনা — বিলম্ব, শেষ মুহূর্ত পর্যন্ত অপেক্ষা",
+  secret: "Spark = lazy evaluation। transform করা হয় না যতক্ষণ action না হয়। filter→join→groupBy শুধু DAG তৈরি করে — কোনো কাজ হয় না! collect() বা write() action হলে সব একসাথে হয়।",
+  recall: {
+    q: " Spark-এর lazy evaluation কী? Transform ও action-এর পার্থক্য?",
+    qen: "What is Spark's lazy evaluation? Difference between transform and action?",
+    a: "Transform (filter, join, groupBy) = DAG তৈরি, কোনো কাজ হয় না। Action (collect, write, count) = সব কাজ একসাথে হয়। Catalyst optimizer পুরো plan optimize করে।",
+    aen: "Transform (filter, join, groupBy) = builds DAG, no work done. Action (collect, write, count) = all work done together. Catalyst optimizer optimizes entire plan."
+  },
+  story: `<p class="scene-setting">আয়েশা (Door ৩) তোমাকে Star Schema শিখিয়েছেন। কিন্তু ডেটা বিশাল — কোটি কোটি row। এক মেশিনে চলবে না। Matei Zaharia ২০১০ সালে UC Berkeley-তে একটি ইঞ্জিন তৈরি করলেন — Spark। এর সবচেয়ে বড় জাদু? Lazy evaluation। transform করা হয় না — শুধু plan তৈরি হয়। action হলে সব একসাথে optimize হয়ে চলে।</p>
+<p class="scene-setting en">Ayesha (Door 3) taught you Star Schema. But data is massive — billions of rows. One machine won't work. Matei Zaharia in 2010 at UC Berkeley built an engine — Spark. Its biggest magic? Lazy evaluation. Transforms don't execute — only a plan is built. When action comes, everything is optimized and runs together.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚡ Spark Pipeline: Lazy → Catalyst → DAG</text>
+<div class="dialogue"><strong>অলস-স্থপতি জাইদ:</strong> আমি অলস — ইচ্ছাকৃতভাবে! filter করলে কোনো কাজ হয় না — শুধু DAG (Directed Acyclic Graph) একটি node যোগ হয়। join করলে আরেকটি node। groupBy আরেকটি। সব শুধু plan। তারপর action হলে — collect() বা write() — Catalyst optimizer পুরো plan দেখে, optimize করে, একসাথে চালায়। কম ডেটা shuffle, কম memory, বেশি দ্রুত।</div>
+<div class="dialogue en"><strong>Lazy Architect Zaid:</strong> I'm lazy — intentionally! filter does nothing — just adds a DAG node. join adds another. groupBy another. All just a plan. Then action — collect() or write() — Catalyst optimizer sees the entire plan, optimizes, runs together. Less data shuffle, less memory, more speed.</div>
 
-  <!-- Transformations (lazy) -->
-  <rect x="30" y="50" width="520" height="70" rx="10" fill="#1e293b" stroke="#f97316" stroke-width="2"/>
-  <text x="290" y="70" text-anchor="middle" fill="#fdba74" font-size="11" font-weight="700">Transformations (LAZY — nothing executes!)</text>
-  <rect x="50" y="80" width="100" height="30" rx="5" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="100" y="99" text-anchor="middle" fill="#7dd3fc" font-size="9">read()</text>
-  <text x="165" y="99" text-anchor="middle" fill="#64748b" font-size="9">→</text>
-  <rect x="180" y="80" width="100" height="30" rx="5" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="230" y="99" text-anchor="middle" fill="#7dd3fc" font-size="9">filter()</text>
-  <text x="295" y="99" text-anchor="middle" fill="#64748b" font-size="9">→</text>
-  <rect x="310" y="80" width="100" height="30" rx="5" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="360" y="99" text-anchor="middle" fill="#7dd3fc" font-size="9">join()</text>
-  <text x="425" y="99" text-anchor="middle" fill="#64748b" font-size="9">→</text>
-  <rect x="440" y="80" width="100" height="30" rx="5" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="490" y="99" text-anchor="middle" fill="#7dd3fc" font-size="9">groupBy()</text>
+<div class="code-block">— PySpark: Lazy Evaluation —
 
-  <!-- Catalyst -->
-  <rect x="150" y="145" width="280" height="80" rx="10" fill="#312e81" stroke="#818cf8" stroke-width="2"/>
-  <text x="290" y="168" text-anchor="middle" fill="#c7d2fe" font-size="12" font-weight="900">🧠 Catalyst Optimizer</text>
-  <text x="290" y="186" text-anchor="middle" fill="#a5b4fc" font-size="9">1. Analysis — resolve columns</text>
-  <text x="290" y="200" text-anchor="middle" fill="#a5b4fc" font-size="9">2. Logical Optimization — push filters!</text>
-  <text x="290" y="214" text-anchor="middle" fill="#a5b4fc" font-size="9">3. Physical Planning — choose join strategy</text>
+  from pyspark.sql import SparkSession
+  spark = SparkSession.builder.appName("demo").getOrCreate()
 
-  <line x1="290" y1="120" x2="290" y2="145" stroke="#818cf8" stroke-width="2" marker-end="url(#arrSpark)"/>
-  <defs><marker id="arrSpark" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#818cf8"/></marker></defs>
+  df = spark.read.parquet("transactions.parquet")
 
-  <text x="310" y="135" fill="#a5b4fc" font-size="8" font-style="italic">.write() triggers action!</text>
+  # TRANSFORMS — কোনো কাজ হয় না! শুধু DAG:
+  filtered = df.filter(df.amount > 100)
+  joined = filtered.join(dim_user, "user_key")
+  grouped = joined.groupBy("city").sum("amount")
+  sorted = grouped.orderBy("sum(amount)", ascending=False)
 
-  <!-- DAG Execution -->
-  <text x="290" y="250" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700">DAG Execution (compiled plan)</text>
+  # এখনও কোনো কাজ হয় নি! শুধু plan:
+  sorted.explain()
+  # == Optimized Logical Plan ==
+  # Aggregate [city], [sum(amount)]
+  #   Join user_key
+  #     Filter amount > 100
+  #       Relation transactions.parquet
 
-  <rect x="30" y="265" width="155" height="55" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="107" y="285" text-anchor="middle" fill="#86efac" font-size="10" font-weight="700">Stage 1: Read + Filter</text>
-  <text x="107" y="300" text-anchor="middle" fill="#4ade80" font-size="8">200 parallel tasks</text>
-  <text x="107" y="312" text-anchor="middle" fill="#4ade80" font-size="8">(no shuffle needed)</text>
+  # ACTION — এখন সব কাজ হয়:
+  result = sorted.collect()    # ⚡ সব একসাথে!
+  # অথবা:
+  sorted.write.parquet("output/")
 
-  <text x="200" y="295" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="700">SHUFFLE</text>
-  <line x1="185" y1="292" x2="220" y2="292" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#arrRed)"/>
-  <defs><marker id="arrRed" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#ef4444"/></marker></defs>
+  — DAG: filter → join → groupBy → sort → action —
+  — Catalyst: পুরো plan optimize করে —</div>
 
-  <rect x="225" y="265" width="155" height="55" rx="8" fill="#451a03" stroke="#f97316" stroke-width="1.5"/>
-  <text x="302" y="285" text-anchor="middle" fill="#fdba74" font-size="10" font-weight="700">Stage 2: Join + GroupBy</text>
-  <text x="302" y="300" text-anchor="middle" fill="#fb923c" font-size="8">200 parallel tasks</text>
-  <text x="302" y="312" text-anchor="middle" fill="#fb923c" font-size="8">(network data move!)</text>
+<div class="callout info"><span class="co-icon">⚡</span><div><strong>Spark উপাদান:</strong><br>
+<strong>RDD:</strong> Resilient Distributed Dataset — fault-tolerant<br>
+<strong>DataFrame:</strong> RDD + schema (SQL-like API)<br>
+<strong>Catalyst Optimizer:</strong> logical → physical plan optimization<br>
+<strong>Tungsten:</strong> memory management + code generation<br>
+<strong>DAG:</strong> Directed Acyclic Graph — execution plan<br>
+<strong>Driver:</strong> task schedule করে, Executor: কাজ করে</div></div>
 
-  <line x1="380" y1="292" x2="415" y2="292" stroke="#475569" stroke-width="1.5" marker-end="url(#arrSpark)"/>
+<div class="verse">إِنَّ مَعَ الْعُسْرِ يُسْرًا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই কষ্টের সাথে রয়েছে স্বস্তি।" — কুরআন ৯৪:৬</div>
 
-  <rect x="420" y="265" width="135" height="55" rx="8" fill="#1e40af" stroke="#60a5fa" stroke-width="1.5"/>
-  <text x="487" y="285" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="700">Stage 3: Write</text>
-  <text x="487" y="300" text-anchor="middle" fill="#60a5fa" font-size="8">Output → Parquet</text>
+<p class="scene-setting">আনা — বিলম্ব, শেষ মুহূর্ত পর্যন্ত অপেক্ষা। Spark-এর lazy evaluation সেই বিলম্বের শক্তি — সব তথ্য জোড়া লাগানোর পর optimize করে চালায়। অলস মনে হয় কিন্তু সবচেয়ে বুদ্ধিমান — কারণ পুরো দৃশ্য দেখে সিদ্ধান্ত নেয়। বিলম্ব থেকে দ্রুততা।</p>
+<p class="scene-setting en">Ana — delay, waiting until the last moment. Spark's lazy evaluation is the power of that delay — it gathers all information, then optimizes and runs. Seems lazy but it's the wisest — because it sees the whole picture before deciding. From delay comes speed.</p>
 
-  <text x="290" y="355" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="700">⚠️ Shuffle = #1 performance killer (disk + network + serialization)</text>
-  <text x="290" y="370" text-anchor="middle" fill="#4ade80" font-size="9">💡 Broadcast Join: ছোট table সবাইকে পাঠিয়ে shuffle এড়াও!</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Spark = Lazy Transformations → Catalyst Optimizer (filter কে join এর আগে push করে) → DAG Stages (shuffle এ stage ভাগ হয়)।</div>
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ৭ (Graphs):</strong> DAG = Directed Acyclic Graph! Spark execution plan = DAG। Book ৩৫ (Distributed Systems) Door ৬: MapReduce → Spark বিবর্তন।</div></div>
 
-<div class="code-block">
-<div class="code-title">⚡ PySpark — Lazy Transformations + Action / অলস পরিকল্পনা</div>
-<pre>from pyspark.sql import SparkSession
-spark = SparkSession.builder.appName("sales-report").getOrCreate()
-
-# --- Transformations: এখনো কিছু চলেনি! শুধু logical plan তৈরি হয় ---
-raw    = spark.read.parquet("s3://bucket/raw/")          # lazy
-clean  = raw.filter((raw.amount &gt; 0) &amp; raw.status.isin("paid","pending"))
-joined = clean.join(dim_product, "product_id")           # lazy
-report = (joined.groupBy("category")
-                 .agg({"amount": "sum"})
-                 .withColumnRenamed("sum(amount)", "revenue"))
-
-# যতক্ষণ না Action ডাকো — Catalyst পুরো plan optimize করে
-report.explain(True)        # logical → optimized → physical plan দেখাও
-
-# --- Action: এখানেই DAG তৈরি হয়ে সত্যিকার চলে ---
-report.write.mode("overwrite").parquet("s3://bucket/out/revenue/")</pre>
-</div>
-
-<div class="dialogue"><strong>স্পার্ক ইঞ্জিনিয়ার:</strong> ২০০৯ সালে UC Berkeley-তে Matei Zaharia Spark তৈরি করে। মূল আইডিয়া — in-memory computation + lazy evaluation। তুমি <code>filter()</code> আর <code>join()</code> লেখো। Spark সাথে সাথে কিছু করে না! সে শুধু logical plan বানায়। তারপর যখন <code>.write()</code> বা <code>.count()</code> করো — Catalyst Optimizer পুরো plan দেখে। তুমি filter কে join এর পরে লিখলেও Catalyst সেটাকে join এর আগে push করে দেয়! কম ডেটা shuffle হয়। দ্রুত চলে।</div>`,
-  recall: [
-    { q: "Spark-এ Transformation আর Action-এর পার্থক্য কী?", a: "Transformation (filter, join, map) = lazy — শুধু plan বানায়। Action (count, write, collect) = execution trigger করে।" },
-    { q: "Catalyst Optimizer কী করে?", a: "পুরো pipeline দেখে optimize করে — filter কে join এর আগে push করে, column pruning করে, সেরা join strategy বেছে নেয়।" },
-  ]
+<div class="secret-box">⚡ <strong>Spark = lazy evaluation + DAG + Catalyst।</strong> বিশাল ডেটা দ্রুত। কিন্তু একটি সমস্যা — shuffle। কোটি কোটি row-এর মধ্যে join করতে হলে ডেটা মেশিনে মেশিনে যায়। সেই যাত্রা — shuffle। পরের দরজায়।</div>`,
+  senior: {
+    title: "Apache Spark এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Zaharia (2010)</td><td>UC Berkeley — Spark</td></tr>
+<tr><td class="hl">Lazy Eval</td><td>transform → DAG, action → execute</td></tr>
+<tr><td class="hl">Catalyst</td><td>logical → physical plan optimization</td></tr>
+<tr><td class="hl">DataFrame</td><td>RDD + schema — SQL API</td></tr>
+<tr><td class="hl">Driver/Executor</td><td>schedule ও execute</td></tr>
+<tr><td class="hl">Tungsten</td><td>memory management + codegen</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 5 — The Great Shuffle (Data Skew + Joins)
-// ═══════════════════════════════════════════
 doors.push({
   num: 5,
   icon: "🔀",
-  color: "#ef4444",
-  tagline: "মহান শাফল — The Great Shuffle",
-  name: "The Great Shuffle",
-  secret: "Spark-এ সব performance problem = shuffle। এটাই #1 killer। জানলে এড়াতে পারবে।",
-  story: `<p class="scene-setting">ভাবো — ২০০ জন কর্মী একটা বিশাল কাজ করছে। ১৯৯ জন ১০ সেকেন্ডে শেষ করে। কিন্তু ১ জন ৩০ মিনিট নেয়! কেন? কারণ তার কাছে সব ডেটা চলে গেছে। এটাই data skew — Spark-এর সবচেয়ে বড় শত্রু।</p>
-<p class="scene-setting en">199 tasks finish in 10 seconds. 1 task takes 30 minutes. Why? Data skew — one partition has vastly more data. The job is only as fast as its slowest task.</p>
+  color: "#0ea5e9",
+  name: "মহান শাফল",
+  subtitle: "The Great Shuffle",
+  tech: "Spark Shuffle & Skew — partitioning, broadcast join, salting, data skew, repartition, coalesce",
+  spirit: "কাসরা — বিভাজন, সঠিক ভাগে সঠিক পরিমাণ",
+  secret: "Shuffle = ডেটা মেশিনে মেশিনে স্থানান্তর। সবচেয়ে ব্যয়বহুল operation! Broadcast join: ছোট table সব মেশিনে পাঠাও। Salting: একটি key-তে কোটি row হলে ভাগ করো।",
+  recall: {
+    q: " Shuffle কী? Broadcast join কীভাবে shuffle কমায়?",
+    qen: "What is shuffle? How does broadcast join reduce shuffle?",
+    a: "Shuffle = ডেটা মেশিনে মেশিনে transfer — সবচেয়ে ব্যয়বহুল। Broadcast join: ছোট table (< ১০MB) সব executor-এ পাঠাও → shuffle লাগে না।",
+    aen: "Shuffle = data transfer between machines — most expensive. Broadcast join: small table (<10MB) sent to all executors → no shuffle needed."
+  },
+  story: `<p class="scene-setting">জাইদ (Door ৪) তোমাকে Spark শিখিয়েছেন। কিন্তু একটি সমস্যা — shuffle। JOIN বা GROUP BY করতে হলে ডেটা মেশিনে মেশিনে যেতে হয়। এটাই shuffle — সবচেয়ে ব্যয়বহুল operation। নেটওয়ার্কে কোটি কোটি row পাঠানো! কিন্তু একটি কৌশল — broadcast join। ছোট table সব মেশিনে আগেই পাঠাও। তাহলে shuffle লাগে না।</p>
+<p class="scene-setting en">Zaid (Door 4) taught you Spark. But a problem — shuffle. JOIN or GROUP BY requires data moving between machines. This is shuffle — the most expensive operation. Sending billions of rows over the network! But a trick — broadcast join. Send the small table to all machines first. Then no shuffle needed.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔀 Data Skew + Join Strategies</text>
+<div class="dialogue"><strong>বিভাজন-কারিগর খালিদ:</strong> Data skew — সবচেয়ে বড় সমস্যা। একটি key-তে কোটি row, অন্যগুলোতে শত। সেই এক executor-এ কোটি row — ধীর! সমাধান: salting। key-তে একটি এলোমেলো সংখ্যা যোগ করো — key_0, key_1, key_2। এখন সমানভাবে ভাগ। আর broadcast join: dim_user table (< ১০MB) সব মেশিনে পাঠাও — fact table shuffle হয় না।</div>
+<div class="dialogue en"><strong>Partitioning Artisan Khalid:</strong> Data skew — the biggest problem. One key has a billion rows, others have hundreds. That one executor gets a billion — slow! Solution: salting. Add a random number to the key — key_0, key_1, key_2. Now evenly distributed. And broadcast join: send dim_user table (<10MB) to all machines — fact table doesn't shuffle.</div>
 
-  <!-- Skew visualization -->
-  <text x="290" y="50" text-anchor="middle" fill="#f87171" font-size="11" font-weight="700">❌ Data Skew — One partition dominates</text>
-  <rect x="30" y="65" width="30" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="45" y="79" text-anchor="middle" fill="#4ade80" font-size="7">10s</text>
-  <rect x="65" y="65" width="30" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="80" y="79" text-anchor="middle" fill="#4ade80" font-size="7">10s</text>
-  <rect x="100" y="65" width="30" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="115" y="79" text-anchor="middle" fill="#4ade80" font-size="7">10s</text>
-  <rect x="135" y="65" width="30" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="150" y="79" text-anchor="middle" fill="#4ade80" font-size="7">10s</text>
-  <rect x="170" y="60" width="60" height="30" rx="3" fill="#7f1d1d" stroke="#ef4444" stroke-width="2.5"/>
-  <text x="200" y="79" text-anchor="middle" fill="#f87171" font-size="9" font-weight="700">30 MIN!</text>
-  <text x="245" y="79" fill="#fca5a5" font-size="9">← skew!</text>
-  <text x="290" y="95" text-anchor="middle" fill="#64748b" font-size="8" font-style="italic">Job runtime = slowest task. 199 done, 1 stuck.</text>
+<div class="code-block">— PySpark: Shuffle ও Skew —
 
-  <!-- Fix: Salting -->
-  <rect x="30" y="115" width="250" height="55" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="155" y="135" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">Fix 1: Salting the join key</text>
-  <text x="155" y="150" text-anchor="middle" fill="#fcd34d" font-size="8">key_1 → key_0, key_1, key_2...</text>
-  <text x="155" y="162" text-anchor="middle" fill="#fcd34d" font-size="8">(split heavy key across partitions)</text>
+  from pyspark.sql.functions import broadcast, col, rand, concat, lit
 
-  <!-- Fix: Broadcast Join -->
-  <rect x="300" y="115" width="250" height="55" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="425" y="135" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">Fix 2: Broadcast Join</text>
-  <text x="425" y="150" text-anchor="middle" fill="#fcd34d" font-size="8">small table → ALL executors</text>
-  <text x="425" y="162" text-anchor="middle" fill="#fcd34d" font-size="8">(zero shuffle! dimension tables)</text>
+  # ❌ BROADCAST JOIN ছাড়া — shuffle হয়!
+  result = big_fact.join(dim_user, "user_key")
+  # fact (১০০ GB) shuffle হয় নেটওয়ার্কে!
 
-  <!-- Join Strategies Comparison -->
-  <text x="290" y="200" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700">Spark Join Strategies</text>
+  # ✅ BROADCAST JOIN — shuffle নেই!
+  result = big_fact.join(broadcast(dim_user), "user_key")
+  # dim_user (৫ MB) সব executor-এ → fact shuffle হয় না!
 
-  <rect x="30" y="215" width="160" height="110" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="110" y="235" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">✅ Broadcast Join</text>
-  <text x="110" y="253" text-anchor="middle" fill="#86efac" font-size="9">Small table (&lt;100MB)</text>
-  <text x="110" y="268" text-anchor="middle" fill="#86efac" font-size="9">→ copy to ALL nodes</text>
-  <text x="110" y="283" text-anchor="middle" fill="#86efac" font-size="9">ZERO shuffle!</text>
-  <text x="110" y="300" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">⭐ Best for Dim tables</text>
-  <text x="110" y="315" text-anchor="middle" fill="#64748b" font-size="7">spark.sql.autoBroadcast</text>
+  # Data Skew — এক key-তে কোটি row:
+  # user_key=42 তে ৯০% row!
 
-  <rect x="210" y="215" width="160" height="110" rx="8" fill="#451a03" stroke="#f97316" stroke-width="2"/>
-  <text x="290" y="235" text-anchor="middle" fill="#fb923c" font-size="11" font-weight="700">🔃 Sort-Merge Join</text>
-  <text x="290" y="253" text-anchor="middle" fill="#fdba74" font-size="9">Both tables large</text>
-  <text x="290" y="268" text-anchor="middle" fill="#fdba74" font-size="9">→ shuffle + sort both</text>
-  <text x="290" y="283" text-anchor="middle" fill="#fdba74" font-size="9">→ merge matching keys</text>
-  <text x="290" y="300" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="700">Default for big joins</text>
-  <text x="290" y="315" text-anchor="middle" fill="#64748b" font-size="7">O(n log n) — expensive</text>
+  # Salting — key ভাগ করো:
+  fact_salted = big_fact.withColumn(
+      "salted_key",
+      concat(col("user_key"),
+             lit("_"),
+             (rand() * 10).cast("int"))
+  )
+  # user_key_42_0 ... user_key_42_9 — ১০ ভাগ!
 
-  <rect x="390" y="215" width="160" height="110" rx="8" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
-  <text x="470" y="235" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="700">🧠 Shuffle Hash Join</text>
-  <text x="470" y="253" text-anchor="middle" fill="#c7d2fe" font-size="9">One side moderate</text>
-  <text x="470" y="268" text-anchor="middle" fill="#c7d2fe" font-size="9">→ shuffle, build hash</text>
-  <text x="470" y="283" text-anchor="middle" fill="#c7d2fe" font-size="9">→ probe with other</text>
-  <text x="470" y="300" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">Faster than sort-merge</text>
-  <text x="470" y="315" text-anchor="middle" fill="#64748b" font-size="7">When one side fits memory</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Data skew = এক partition-এ সব ডেটা। Broadcast Join = shuffle ছাড়া। Sort-Merge = বড় টেবিলের জন্য।</div>
+  dim_exploded = dim_user.withColumn(
+      "salted_key",
+      concat(col("user_key"),
+             lit("_"),
+             lit("0"))  # সব salt version
+  ).crossJoin(spark.range(10))
 
-<div class="code-block">
-<div class="code-title">🔀 Shuffle এড়ানো — Broadcast Join + Salting / skew fix</div>
-<pre>from pyspark.sql.functions import broadcast, col, concat, lit, rand
+  # এখন join — সমানভাবে ভাগ!
+  result = fact_salted.join(dim_exploded, "salted_key")
 
-# ✅ Broadcast Join: ছোট dim table সব executor-কে পাঠাও → ZERO shuffle
-joined = big_facts.join(broadcast(dim_product), "product_id")
+  — Repartition: partition সংখ্যা বদলাও —
+  — Coalesce: partition কমাও (shuffle ছাড়া) —</div>
 
-# threshold বাড়াও যাতে অটো-broadcast হয়
-spark.conf.set("spark.sql.autoBroadcastJoinThreshold", 104857600)  # 100 MB
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Data Skew Detection:</strong> যদি এক executor ৯০% সময় নেয় আর বাকি তাড়াতাড়ি শেষ করে — skew! Spark UI-তে task duration দেখো। এক task অনেক বেশি সময়? সেই partition-এ অতিরিক্ত ডেটা। Salting দিয়ে ভাগ করো।</div></div>
 
-# ✅ Salting: একটা গরম key-কে ১০ ভাগে ছড়িয়ে skew ভাঙো
-N = 10
-salted_facts = big_facts.withColumn(
-    "salted_key",
-    concat(col("user_id"), lit("_"), (rand() * N).cast("int"))
-)
-# dim-এর প্রতিটা row-কে N বার ফুলিয়ে দাও, তারপর salted_key-তে join করো
-dim_exploded = dim_users.withColumn(
-    "salted_key",
-    concat(col("user_id"), lit("_"), (col("i") % N).cast("int"))
-)
-joined = salted_facts.join(dim_exploded, "salted_key")</pre>
-</div>
+<div class="verse">وَقُطُوعٍ مِّنَ اللَّيْلِ فَسَلَّمٍ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং রাতের কিছু অংশে সালাম।" — কুরআন ২৫:৬৪ (প্যারাফ্রেজ: সঠিক বিভাজন)</div>
 
-<div class="dialogue"><strong>সিনিয়র স্পার্ক ইঞ্জিনিয়ার:</strong> Spark-এ প্রতিটা performance problem-এর শেকড় একটাই — shuffle। যখন join বা groupBy করো, ডেটা executor-এর মধ্যে চলাচল করে। এতে disk write + network transfer + serialization — কম্পিউটারের সবচেয়ে ধীর তিনটা জিনিস! সমাধান? Broadcast Join। ছোট table (Dimension table) সব executor-কে পাঠিয়ে দাও — কোনো shuffle লাগবে না। <code>spark.sql.autoBroadcastJoinThreshold</code> বাড়াও ১০০-৫০০MB পর্যন্ত। এই একটা setting change বেশি shuffle এড়ায় যেকোনো optimization থেকে।</div>`,
-  recall: [
-    { q: "Shuffle কেন performance killer?", a: "Shuffle-এ disk I/O + network I/O + serialization লাগে — কম্পিউটারের সবচেয়ে ধীর তিনটা জিনিস। 200×200 task = সম্ভাব্য 40,000 network transfer!" },
-    { q: "Broadcast Join কখন ব্যবহার করবে?", a: "যখন join-এর একপাশের table ছোট (&lt;100MB-1GB)। ছোট table সব executor-কে পাঠিয়ে দেওয়া হয় — shuffle একদম লাগে না।" },
-  ]
+<p class="scene-setting">কাসরা — বিভাজন। Shuffle ও partition সেই বিভাজনের রূপ — সঠিক ভাগে সঠিক পরিমাণ। Skew হলে এক ভাগে অতিরিক্ত — অসুস্থতা। Salting দিয়ে সমান করো — সুস্থতা। Broadcast join দিয়ে shuffle এড়াও — দক্ষতা।</p>
+<p class="scene-setting en">Qasra — division. Shuffle and partition are the form of that division — correct amount in correct parts. Skew means excess in one part — illness. Salting equalizes — health. Broadcast join avoids shuffle — efficiency.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৫ (Distributed Systems) Door ৪ (Consistent Hashing):</strong> partitioning strategy। Book ৪৬ (Cryptography) Door ৩ (Hash): partition key = hash function।</div></div>
+
+<div class="secret-box">🔀 <strong>Shuffle = সবচেয়ে ব্যয়বহুল। Broadcast join ও salting দিয়ে কমাও।</strong> কিন্তু OLTP থেকে OLAP-এ ডেটা কীভাবে যাবে? প্রতিটি transaction real-time-এ? সেই প্রবাহ — CDC। পরের দরজায়।</div>`,
+  senior: {
+    title: "Shuffle & Skew এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Shuffle</td><td>ডেটা মেশিনে মেশিনে transfer — ব্যয়বহুল</td></tr>
+<tr><td class="hl">Broadcast Join</td><td>ছোট table সব executor-এ</td></tr>
+<tr><td class="hl">Salting</td><td>key + random → সমান ভাগ</td></tr>
+<tr><td class="hl">Data Skew</td><td>এক key-তে অতিরিক্ত row</td></tr>
+<tr><td class="hl">Repartition</td><td>partition সংখ্যা বদলাও</td></tr>
+<tr><td class="hl">Coalesce</td><td>partition কমাও (shuffle ছাড়া)</td></tr></table>`
+  }
 });
