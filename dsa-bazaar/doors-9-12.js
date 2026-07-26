@@ -91,6 +91,69 @@ def bfs(graph, start, target):
 # একই কোড stack দিয়ে = DFS।
 # queue (FIFO) → কাছের পথ। stack (LIFO) → গভীরে যাওয়া।</div>
 
+<div class="dialogue">ভাবো — Facebook। তোমার প্রোফাইল একটা node। তোমার বন্ধুরা আরেক node। তোমাদের সম্পর্ক হলো edge। "People You May Know" কীভাবে কাজ করে? BFS দিয়ে! প্রথমে তোমার সরাসরি বন্ধুদের দেখে (level 1), তারপর তাদের বন্ধুদের (level 2), তারপর আরও। স্তরে স্তরে ছড়ায় — পানির ঢেউয়ের মতো। আর এই সম্পর্কগুলো দুই ধরনের — Facebook ফ্রেন্ডশিপ হলো undirected (দুই পক্ষ সম্মত), Twitter/Instagram follow হলো directed (তুমি ফলো করো, সে নাও করে)।</div>
+<div class="dialogue en">"Think — Facebook. Your profile is a node. Your friends are other nodes. Your relationship is an edge. How does 'People You May Know' work? With BFS! First it checks your direct friends (level 1), then friends of friends (level 2), then more. Spreading layer by layer — like water ripples. And these relationships come in two types — Facebook friendship is undirected (mutual), Twitter/Instagram follow is directed (you follow, they may not)."</div>
+
+<div class="diagram">
+  <div class="diag-title">Social Network — Undirected vs Directed Graph</div>
+  <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- LEFT: undirected (Facebook) -->
+    <text class="lbl-sm" x="140" y="20" fill="#36d6e7">Facebook — Undirected (mutual)</text>
+    <circle class="node-hot" cx="80" cy="60" r="18"/><text class="lbl" x="80" y="62">Rafid</text>
+    <circle class="node" cx="200" cy="60" r="18"/><text class="lbl" x="200" y="62">Tanvir</text>
+    <circle class="node" cx="80" cy="140" r="18"/><text class="lbl-sm" x="80" y="142">Sadia</text>
+    <circle class="node" cx="200" cy="140" r="18"/><text class="lbl-sm" x="200" y="142">Karim</text>
+    <!-- undirected edges (no arrows) -->
+    <line class="edge" x1="98" y1="60" x2="182" y2="60"/>
+    <line class="edge" x1="80" y1="78" x2="80" y2="122"/>
+    <line class="edge" x1="200" y1="78" x2="200" y2="122"/>
+    <line class="edge" x1="98" y1="140" x2="182" y2="140"/>
+    <text class="lbl-sm" x="140" y="180" text-anchor="middle">↔ দুই পক্ষই connected (mutual friends)</text>
+
+    <!-- RIGHT: directed (Twitter) -->
+    <text class="lbl-sm" x="420" y="20" fill="#f0c14b">Twitter — Directed (one-way)</text>
+    <circle class="node-hot" cx="360" cy="60" r="18"/><text class="lbl" x="360" y="62">Rafid</text>
+    <circle class="node" cx="480" cy="60" r="18"/><text class="lbl" x="480" y="62">Tanvir</text>
+    <circle class="node" cx="360" cy="140" r="18"/><text class="lbl-sm" x="360" y="142">Sadia</text>
+    <circle class="node" cx="480" cy="140" r="18"/><text class="lbl-sm" x="480" y="142">Karim</text>
+    <!-- directed edges (with arrows) -->
+    <line class="edge-hot" x1="378" y1="55" x2="460" y2="55" marker-end="url(#arrowFire)"/>
+    <line class="edge" x1="360" y1="78" x2="360" y2="122" marker-end="url(#arrowCyan)"/>
+    <line class="edge" x1="480" y1="122" x2="480" y2="78" marker-end="url(#arrowCyan)"/>
+    <text class="lbl-sm" x="420" y="180" text-anchor="middle">→ একমুখী (follow, not necessarily mutual)</text>
+  </svg>
+  <div class="diag-cap">Facebook friends = undirected edge। Twitter follows = directed arrow। Google Maps = weighted edge (distance, time)।</div>
+</div>
+
+<div class="dialogue">আর Google Maps! তুমি ঢাকা থেকে চট্টগ্রাম যাচ্ছ। ঢাকা একটা node, চট্টগ্রাম আরেক node। রাস্তাগুলো edge। কিন্তু শুধু edge নয় — প্রতিটা রাস্তায় একটা weight আছে। ঢাকা→চট্টগ্রাম সরাসরি ২৫০ কিমি, ৫ ঘণ্টা। ঢাকা→কুমিল্লা→চট্টগ্রাম ৩০০ কিমি কিন্তু ৪ ঘণ্টা। কোনটা বেছে নেবে? সবচেয়ে কম সময়ের পথ খুঁজতে — Dijkstra অ্যালগরিদম। এটা এক ধরনের greedy approach — প্রতিটা স্টেশনে গিয়ে সবচেয়ে সস্তা রাস্তা বেছে নেয়।</div>
+<div class="dialogue en">"And Google Maps! You're going from Dhaka to Chittagong. Dhaka is one node, Chittagong another. The roads are edges. But not just edges — each road has a weight. Dhaka→Chittagong direct is 250 km, 5 hours. Dhaka→Comilla→Chittagong is 300 km but 4 hours. Which to choose? To find the shortest time path — Dijkstra's algorithm. It's a greedy approach — at each junction, it picks the cheapest known road."</div>
+
+<div class="diagram">
+  <div class="diag-title">Dijkstra — সবচেয়ে কম খরচের পথ (Relaxation)</div>
+  <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+    <!-- cities -->
+    <circle class="node-hot" cx="80" cy="110" r="22"/><text class="lbl" x="80" y="113">ঢাকা</text>
+    <circle class="node" cx="280" cy="60" r="20"/><text class="lbl-sm" x="280" y="62">নারা</text>
+    <circle class="node" cx="280" cy="160" r="20"/><text class="lbl-sm" x="280" y="162">কুমি</text>
+    <circle class="node-cyan" cx="480" cy="110" r="22"/><text class="lbl" x="480" y="113">চট্ট</text>
+
+    <!-- edges with weights -->
+    <line class="edge-hot" x1="100" y1="100" x2="262" y2="68" marker-end="url(#arrowFire)"/>
+    <text class="lbl-sm" x="170" y="75" fill="#ff6b35">20km</text>
+    <line class="edge" x1="100" y1="120" x2="262" y2="152" marker-end="url(#arrowCyan)"/>
+    <text class="lbl-sm" x="170" y="145" fill="#36d6e7">100km</text>
+    <line class="edge" x1="298" y1="70" x2="462" y2="100" marker-end="url(#arrowCyan)"/>
+    <text class="lbl-sm" x="380" y="75" fill="#36d6e7">130km ❌</text>
+    <line class="edge-good" x1="298" y1="150" x2="462" y2="120" marker-end="url(#arrowCyan)" style="stroke:#52c41a;stroke-width:2.5"/>
+    <text class="lbl-sm" x="380" y="145" fill="#52c41a">50km ✅</text>
+
+    <!-- relaxation note -->
+    <text class="lbl-sm" x="280" y="200" text-anchor="middle">Relaxation: ঢাকা→কুমিল্লা (100km) → চট্টগ্রাম (50km) = 150km ✅</text>
+    <text class="lbl-sm" x="280" y="215" text-anchor="middle" fill="#ff6b35">সরাসরি ঢাকা→নারায়ণগঞ্জ→চট্টগ্রাম (20+130=150km) — একই! কিন্তু সময়ে পার্থক্য।</text>
+  </svg>
+  <div class="diag-cap">Dijkstra প্রতিটা node-এ যে পরিচিত সবচেয়ে কম খরচ আপডেট করে — relaxation। Priority Queue (Min-Heap) দিয়ে পরবর্তী সস্তা নোড বেছে নেয়।</div>
+</div>
+
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার — graph তোমার সবকিছুতে। Knowledge graph: ধারণা আর তাদের সম্পর্ক। Agent workflow: এজেন্ট A → টুল B → এজেন্ট C — একটা DAG (directed acyclic graph)। RAG retrieval: প্রশ্ন থেকে সম্পর্কিত ডকুমেন্টে যাওয়া — graph traversal। সব সম্পর্ক, সব পথ।</div>
 <div class="dialogue en">"You're an AI engineer — graphs are everywhere. Knowledge graphs: concepts and their relationships. Agent workflows: Agent A → Tool B → Agent C — a DAG. RAG retrieval: going from query to related documents — graph traversal. All relationships, all paths."</div>
 
@@ -469,6 +532,75 @@ D&C FAMILY:
 WHY O(n log n):
   প্রতি স্তরে O(n) combine কাজ। log n স্তর (প্রতি বার অর্ধেক)।
   O(n) × O(log n) = O(n log n)। এটাই comparison sort-এর তাত্ত্বিক সীমা।</div>
+
+<div class="dialogue">কিন্তু merge sort আর quick sort — এগুলো advanced। শুরুতে চলো সহজ sorting গুলো দেখি, যেগুলো প্রতিদিনের জীবনে আমরা অজান্তেই করি।</div>
+<div class="dialogue en">"But merge sort and quick sort are advanced. Let's start with the simpler sorts — ones we do unconsciously in daily life."</div>
+
+<div class="code-block">প্রতিদিনের Sorting — Bubble, Selection, Insertion:
+
+১. BUBBLE SORT — জলের বুদবুদ
+   পাশাপাশি দুটো উপাদান তুলনা করো, বড়টা ডানে সরাও।
+   বৃহত্তম সংখ্যাগুলো ধীরে ধীরে উপরে ভেসে ওঠে — বুদবুদের মতো।
+   সবচেয়ে ধীর: O(n²)। শেখার জন্য, production-এ নয়।
+
+   [5, 3, 8, 1] → [3, 5, 8, 1] → [3, 5, 1, 8]
+                              → [3, 1, 5, 8]
+                              → [1, 3, 5, 8] ✓
+
+২. SELECTION SORT — শিক্ষক যেভাবে সারি সাজান
+   ৩০ জন ছাত্রকে উচ্চতা অনুযায়ী সাজাতে হবে।
+   শিক্ষক সবচেয়ে খাটো ছাত্রকে খুঁজে বের করে প্রথমে দাঁড় করান।
+   তারপর বাকি ২৯ জন থেকে সবচেয়ে খাটোকে দ্বিতীয়ে। এভাবে।
+   প্রতিবার সবচেয়ে ছোটটা বেছে নিয়ে সামনে রাখা। O(n²)।
+
+   [5, 3, 8, 1] → [1| 3, 8, 5] → [1, 3| 8, 5] → [1, 3, 5| 8] ✓
+
+৩. INSERTION SORT — হাতে তাস সাজানো
+   তোমার হাতে তাস — ২, ৫, ৯ সাজানো। ডান হাতে ৭ এলো।
+   তুমি ৫ আর ৯-এর মাঝে জায়গা করো, ৭ বসিয়ে দাও।
+   একটা একটা করে নতুন উপাদান নিয়ে সঠিক জায়গায় বসানো।
+   ছোট বা প্রায়-সাজানো ডেটার জন্য দ্রুত — প্রায় O(n)।
+
+   [2, 5, 9] + insert(7) → [2, 5, 7, 9]
+
+কেন এগুলো জানতে হবে?
+  • Timsort (Python sorted()) = Insertion + Merge hybrid
+  • Insertion sort ছোট অ্যারের জন্য দ্রুত (Timsort-এ run-এ ব্যবহৃত)
+  • Selection sort = কম swap (প্রতি পাসে সর্বোচ্চ ১ swap)
+  • Bubble sort = শেখার জন্য সবচেয়ে সহজ, কিন্তু বাস্তবে সবচেয়ে খারাপ</div>
+
+<div class="diagram">
+  <div class="diag-title">তিন Sort — এক পাস করে</div>
+  <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+    <!-- BUBBLE -->
+    <text class="lbl-sm" x="20" y="22" fill="#36d6e7">Bubble: পাশে পাশে তুলনা, বড়→ডানে</text>
+    ${[5,3,8,1].map((v,i)=>`
+    <rect class="${i===0?'cell-hot':'cell'}" x="${30+i*60}" y="30" width="50" height="30" rx="4" style="${i===0?'fill:rgba(255,107,53,.2)':''}"/>
+    <text class="lbl-sm" x="${55+i*60}" y="49">${v}</text>
+    `).join('')}
+    <text class="lbl-sm" x="280" y="75" text-anchor="middle" fill="#36d6e7">↔ swap → [3, 5, 8, 1] → ৮ ও ১ তুলনা → swap → [3, 5, 1, 8]</text>
+
+    <!-- SELECTION -->
+    <text class="lbl-sm" x="20" y="100" fill="#f0c14b">Selection: সবচেয়ে ছোট খুঁজে সামনে রাখো</text>
+    ${[5,3,8,1].map((v,i)=>`
+    <rect class="${v===1?'cell-good':'cell'}" x="${30+i*60}" y="108" width="50" height="30" rx="4" style="${v===1?'fill:rgba(82,196,26,.2)':''}"/>
+    <text class="lbl-sm" x="${55+i*60}" y="127">${v}</text>
+    `).join('')}
+    <text class="lbl-sm" x="280" y="153" text-anchor="middle" fill="#f0c14b">১ সবচেয়ে ছোট → প্রথমে রাখো → [1, 5, 3, 8] → তারপর ৩...</text>
+
+    <!-- INSERTION -->
+    <text class="lbl-sm" x="20" y="178" fill="#52c41a">Insertion: সাজানো অংশে নতুনটা বসাও</text>
+    ${[2,5,9,7].map((v,i)=>`
+    <rect class="${i<3?'cell-good':'cell-hot'}" x="${30+i*60}" y="186" width="50" height="30" rx="4" style="${i<3?'fill:rgba(82,196,26,.15)':'fill:rgba(255,107,53,.2)'}"/>
+    <text class="lbl-sm" x="${55+i*60}" y="205">${v}</text>
+    `).join('')}
+    <text class="lbl-sm" x="280" y="231" text-anchor="middle" fill="#52c41a">[2,5,9] সাজানো → ৭ কোথায়? ৫ আর ৯-এর মাঝে → [2, 5, 7, 9]</text>
+  </svg>
+  <div class="diag-cap">Bubble = swap swap swap। Selection = min খুঁজে সামনে। Insertion = সাজানো অংশে insert। তিনটাই O(n²), কিন্তু ভিন্ন চিন্তা।</div>
+</div>
+
+<div class="dialogue">তিনটাই O(n²)। কিন্তু D&C এলে খেলা বদলে যায় — O(n log n)। Merge sort আর quick sort হলো সেই পরবর্তী স্তর। রোমান সাম্রাজ্যের কৌশল — শত্রুর বিশাল সেনাকে ভাগ করো ছোট ছোট দলে, আলাদা আলাদা পরাস্ত করো, তারপর একত্রিত করো। এটাই divide and conquer।</div>
+<div class="dialogue en">"All three are O(n²). But D&C changes the game — O(n log n). Merge sort and quick sort are that next level. The Roman Empire's strategy — split the enemy's vast army into small groups, defeat each separately, then unite. This is divide and conquer."</div>
 
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। MapReduce — D&C এর বিশাল রূপ: map (ভাগ), reduce (জোড়ো)। Parallel training — ডেটা ভাগ করো GPU-তে, প্রতিটা গ্রেডিয়েন্ট বের করো, combine করো। Parallel merge sort — একাধিক কোরে একসাথে। বড় সমস্যা কখনো এক হাতে হয় না — ভাগ করো, জয় করো।</div>
 <div class="dialogue en">"You're an AI engineer. MapReduce — D&C at vast scale: map (divide), reduce (combine). Parallel training — split data across GPUs, compute gradients each, combine. Parallel merge sort — across many cores. Big problems are never done by one hand — divide, conquer."</div>

@@ -229,6 +229,40 @@ THREE CLASSIC PATTERNS:
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Recursion সবখানে। JSON ট্রি পরিভ্রমণ — nested অবজেক্ট। File system walk — ফোল্ডারের ভেতরে ফোল্ডার। AST (abstract syntax tree) — কোড পার্স করা। Tree search — minimax গেম AI। Backtracking (দোকান ১৬) — recursion + ফেরা। যে recursion বোঝে সে গাছ বোঝে, যে গাছ বোঝে সে অনেক সমস্যা বোঝে।</div>
 <div class="dialogue en">"You're an AI engineer. Recursion is everywhere. JSON tree traversal — nested objects. File system walk — folders in folders. AST (abstract syntax tree) — parsing code. Tree search — minimax game AI. Backtracking (Door 16) — recursion + retreat. Who understands recursion understands trees; who understands trees understands many problems."</div>
 
+<div class="dialogue">আর একটা উদাহরণ দাঁড় করাই — রাশিয়ান পুতুল, Matryoshka। একটা বড় পুতুল, খুললে ভেতরে ছোট একটা, তার ভেতরে আরও ছোট — এভাবে ছোট থেকে ছোট, শেষ পর্যন্ত একটা সবচেয়ে ছোট পুতুল যার ভেতরে আর কিছু নেই। সেটাই base case। বাকিগুলো recursive case — প্রতিটা ভেতরে আরেকটা ধারণ করে।</div>
+<div class="dialogue en">"And here's another example — Russian nesting dolls, Matryoshka. A large doll, opened reveals a smaller one, within that an even smaller — each smaller than the last, until the tiniest doll that contains nothing more. That's the base case. The rest are recursive cases — each containing another within."</div>
+
+<div class="diagram">
+  <div class="diag-title">Matryoshka Dolls — Recursion-এর ছোঁয়া</div>
+  <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- 4 nesting dolls, decreasing in size, nested -->
+    <ellipse class="node-hot" cx="280" cy="105" rx="75" ry="80" fill="rgba(255,107,53,.1)" stroke="#ff6b35" stroke-width="2"/>
+    <text class="lbl" x="280" y="110" fill="#ff6b35">fact(5)</text>
+
+    <ellipse class="node" cx="280" cy="110" rx="55" ry="60" fill="rgba(240,193,75,.1)" stroke="#f0c14b" stroke-width="2"/>
+    <text class="lbl" x="280" y="115" fill="#f0c14b">fact(4)</text>
+
+    <ellipse class="node-cyan" cx="280" cy="115" rx="38" ry="42" fill="rgba(54,214,231,.1)" stroke="#36d6e7" stroke-width="2"/>
+    <text class="lbl-sm" x="280" y="120" fill="#36d6e7">fact(3)</text>
+
+    <ellipse class="node-leaf" cx="280" cy="118" rx="24" ry="26" fill="rgba(82,196,26,.15)" stroke="#52c41a" stroke-width="2"/>
+    <text class="lbl-sm" x="280" y="122" fill="#52c41a">fact(1)</text>
+
+    <text class="lbl-sm" x="280" y="52" text-anchor="middle" fill="#9a93b8">বাইরের পুতুল = বড় সমস্যা</text>
+    <text class="lbl-sm" x="280" y="182" text-anchor="middle" fill="#52c41a">ভেতরের সবচেয়ে ছোট = base case (আর খোলার মতো নেই)</text>
+
+    <!-- side annotations -->
+    <text class="lbl-sm" x="80" y="80" fill="#ff6b35">↔ খোলো → ছোট</text>
+    <text class="lbl-sm" x="80" y="100" fill="#ff6b35">↔ recursive case</text>
+    <text class="lbl-sm" x="440" y="80" fill="#52c41a">↔ থামো</text>
+    <text class="lbl-sm" x="440" y="100" fill="#52c41a">↔ base case</text>
+  </svg>
+  <div class="diag-cap">প্রতিটা পুতুল একই আকৃতি, শুধু ছোট — recursion-এ প্রতিটা কল একই ফাংশন, শুধু ছোট ইনপুট।</div>
+</div>
+
+<div class="dialogue">তবে সাবধান — পুতুলের ভেতরে আর পুতুল থাকতে পারে, কিন্তু এটা অসীমে যেতে পারে না। ঠিক তেমনি recursion-এও base case না থাকলে সমস্যা অসীমভাবে ছোট হতে থাকে, কিন্তু কখনো থামে না — Stack Overflow। দুই আয়নার মাঝে দাঁড়ালে যেমন অসীম প্রতিবিম্ব দেখা যায়, কিন্তু একটা সময় আয়না ফাটে।</div>
+<div class="dialogue en">"But beware — dolls within dolls can exist, but cannot go to infinity. Similarly, recursion without a base case makes the problem infinitely smaller but never stops — Stack Overflow. Like standing between two mirrors seeing endless reflections, until the glass cracks."</div>
+
 <div class="dialogue">আয়াত — নিদর্শন। কুরআনে বারবার বলা হয়েছে — "আকাশ ও পৃথিবীর সৃষ্টিতে, নিজেদের সৃষ্টিতে... চিন্তা করো না?" প্রতিটা নিদর্শনের ভেতরে আরেকটা নিদর্শন — কোষের ভেতরে কোষ, পরমাণুর ভেতরে পরমাণু, সূর্যের চারপাশে গ্রহ, গ্রহের চারপাশে উপগ্রহ। একই কাঠামো — ছোট স্কেলে। আত্তুবুহ — ফিরে দেখা — recursion-এর ফেরার পথের মতো।</div>
 <div class="dialogue en">"Ayah — a sign. The Quran repeats — 'In the creation of the heavens and earth, in your own creation... will you not reflect?' Within each sign, another sign — cell within cell, atom within atom, planets around a sun, moons around a planet. The same structure — at smaller scale. Recursive creation — like the return path of recursion."</div>`,
   senior:{
@@ -343,6 +377,33 @@ Index rules:
   data[-1]     → last element
   data[1:4]    → elements 1,2,3 (exclusive end)
   data[::-1]   → reversed</div>
+
+<div class="dialogue">ভাবো — সিনেমা হলের আসন। প্রতিটা আসনে একটা করে নম্বর — A1, A2, A3। তুমি যদি A5 আসনে বসতে চাও, তুমি A1 বা A2 দেখবে না। সরাসরি A5-এ যাবে। কারণ আসনগুলো সারিবদ্ধ, নম্বর দেওয়া। এটাই array-র শক্তি — O(1) অ্যাক্সেস। কিন্তু সমস্যা? ধরো একজন VIP অতিথিকে A3 আর A4-এর মাঝে বসাতে হবে। তাহলে A4 থেকে শেষ পর্যন্ত সবাইকে এক ঘর করে পিছিয়ে যেতে হবে। এটাই array-তে insert-এর খরচ — O(n)।</div>
+<div class="dialogue en">"Think of cinema hall seats. Each seat has a number — A1, A2, A3. If you want to sit in A5, you don't check A1 or A2. You go straight to A5. Because seats are in a row, numbered. This is array's power — O(1) access. But the problem? If a VIP guest needs to sit between A3 and A4, everyone from A4 onwards must shift back one seat. This is the cost of insert in an array — O(n)."</div>
+
+<div class="diagram">
+  <div class="diag-title">সিনেমা হলের আসন — Insert-এর খরচ</div>
+  <svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg">
+    <!-- before insert -->
+    <text class="lbl-sm" x="280" y="20" text-anchor="middle" fill="#f0c14b">আগে: ৫টা আসন</text>
+    ${[0,1,2,3,4].map(i=>`
+    <rect class="cell" x="${60+i*90}" y="30" width="78" height="36" rx="5"/>
+    <text class="lbl-sm" x="${99+i*90}" y="52">A${i+1}</text>
+    `).join('')}
+    <text class="lbl-sm" x="${99+2*90}" y="22" fill="#ff6b35">↑ এখানে VIP</text>
+
+    <!-- arrow -->
+    <text class="lbl-sm" x="280" y="85" text-anchor="middle" fill="#36d6e7">⬇ VIP ঢোকাও → সবাই সরে যায়</text>
+
+    <!-- after insert -->
+    <text class="lbl-sm" x="280" y="105" text-anchor="middle" fill="#52c41a">পরে: VIP ঢুকেছে, সবাই ডানে সরেছে</text>
+    ${[0,1,2,3,4,5].map((lbl,i)=>`
+    <rect class="${lbl==='VIP'?'cell-hot':'cell'}" x="${30+i*80}" y="115" width="70" height="34" rx="5" style="${lbl==='VIP'?'fill:rgba(255,107,53,.25);stroke:#ff6b35':''}"/>
+    <text class="lbl-sm" x="${65+i*80}" y="135" fill="${lbl==='VIP'?'#ff6b35':'#9a93b8'}">${lbl}</text>
+    `).join('')}
+  </svg>
+  <div class="diag-cap">array-তে মাঝে ঢোকাতে হলে পরের সব উপাদান সরতে হয় — O(n)। Linked list-এ শুধু pointer বদলাও — O(1)।</div>
+</div>
 
 <div class="dialogue">কুরআনে আছে — "আর আমি সৃষ্টি করেছি সব কিছু এক নির্দিষ্ট পরিমাণে।" (৫৪:৪৯)। প্রতিটা জিনিসের একটা জায়গা আছে — একটা ক্রম আছে। Array সেই শৃঙ্খলার ছায়া — প্রতিটা উপাদানের একটা নির্দিষ্ট স্থান। জ্যোতির্বিদ মাপেন — আমি সাজাই।</div>
 <div class="dialogue en">"The Quran says — 'And all things We created with a destined measure.' (54:49). Everything has its place — an order. The array is a shadow of that discipline — each element has a specific position. The astrolabe maker measures — I arrange."</div>`,

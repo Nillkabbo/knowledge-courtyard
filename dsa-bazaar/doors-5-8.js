@@ -96,6 +96,62 @@ THE TWO GREAT ALGORITHMS — DFS ও BFS:
   একই কোড — শুধু stack (LIFO) বদলে queue (FIFO)।
   এটাই DFS ও BFS-এর পার্থক্যের মূল। (বিস্তারিত Door 9 — Graphs)</div>
 
+<div class="dialogue">কিন্তু দুইটা ভাই আরও আছে — Circular Queue আর Deque। কাফেলার সারিতে যদি সামনের জায়গা খালি হয়ে যায়, কিন্তু পেছনে কেউ ঢোকাতে পারে না কারণ array-র শেষ — তখন কী? জায়গা নষ্ট। Circular Queue এই সমস্যার সমাধান — সারির শেষকে আবার সামনের সাথে জোড়ো দাও। গোল হয়ে যাও। নতুন কেউ খালি জায়গায় ঢুকে পড়ে। OS-এ এটা প্রতিদিন ব্যবহার হয় — process scheduling, CPU time-sharing।</div>
+<div class="dialogue en">"But two more siblings exist — Circular Queue and Deque. If the front of the caravan line empties but no one can join the back because the array is full — what then? Wasted space. Circular Queue solves this — connect the end of the line back to the front. Make it circular. New arrivals fill empty spaces. The OS uses this daily — process scheduling, CPU time-sharing."</div>
+
+<div class="diagram">
+  <div class="diag-title">Circular Queue — গোল সারি, জায়গা নষ্ট হয় না</div>
+  <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+    <!-- circular queue as a ring of 6 slots -->
+    ${[0,1,2,3,4,5].map((fill,i)=>{
+      const angle = (i*60 - 90) * Math.PI / 180;
+      const cx = 280 + 80 * Math.cos(angle);
+      const cy = 110 + 80 * Math.sin(angle);
+      const filled = [1,1,0,0,1,0][i];
+      return `<rect class="${filled?'cell-good':'cell'}" x="${cx-26}" y="${cy-20}" width="52" height="40" rx="6" style="${filled?'fill:rgba(82,196,26,.2);stroke:#52c41a':''}" transform="rotate(${i*60} ${cx} ${cy})"/>
+      <text class="lbl-sm" x="${cx}" y="${cy+5}" text-anchor="middle" fill="${filled?'#52c41a':'#9a93b8'}" transform="rotate(${i*60} ${cx} ${cy})">${['A','B','','','C',''][i]}</text>`;
+    }).join('')}
+    <!-- front and rear markers -->
+    <text class="lbl-sm" x="280" y="18" text-anchor="middle" fill="#f0c14b">front → সামনে (dequeue)</text>
+    <line class="edge-hot" x1="280" y1="22" x2="280" y2="10" stroke="#f0c14b"/>
+    <text class="lbl-sm" x="395" y="120" fill="#ff6b35">← rear (enqueue)</text>
+    <line class="edge-cyan" x1="393" y1="118" x2="408" y2="118" stroke="#ff6b35"/>
+    <text class="lbl-sm" x="280" y="200" text-anchor="middle">সারির শেষ সামনের সাথে যুক্ত — খালি জায়গায় নতুন উপাদান ঢোকে। কোনো জায়গা নষ্ট নয়।</text>
+  </svg>
+  <div class="diag-cap">fixed-size array-তে rear শেষে পৌঁছালে front-এর খালি অংশে wrap around করে। O(1) সব কাজে।</div>
+</div>
+
+<div class="dialogue">আর Deque? ডাবল-এন্ডেড কিউ। দুই পাশ দিয়েই ঢোকাও, দুই পাশ দিয়েই বের করো। এত নমনীয় যে একা এটাই stack আর queue — দুটোর কাজ করতে পারে। চাইলে সামনে থেকে বের করো (queue), চাইলে পিছন থেকে বের করো (stack)। Python-এ <code>collections.deque</code> — তুমি এটাই ব্যবহার করো।</div>
+<div class="dialogue en">"And Deque? Double-ended queue. Insert and remove from both ends. So flexible it alone does the job of both stack and queue. Remove from front (queue behavior), remove from back (stack behavior). In Python, <code>collections.deque</code> — use this."</div>
+
+<div class="diagram">
+  <div class="diag-title">Deque — দুই পাশ দিয়েই ঢোকাও ও বের করো</div>
+  <svg viewBox="0 0 560 100" xmlns="http://www.w3.org/2000/svg">
+    ${[0,1,2,3].map(i=>`
+    <rect class="cell-cyan" x="${140+i*70}" y="30" width="60" height="40" rx="6" style="fill:rgba(54,214,231,.1);stroke:#36d6e7"/>
+    <text class="lbl-sm" x="${170+i*70}" y="54">${['A','B','C','D'][i]}</text>
+    `).join('')}
+    <!-- left arrows -->
+    <text class="lbl-sm" x="40" y="40" fill="#ff6b35">appendleft()</text>
+    <line class="edge-hot" x1="120" y1="40" x2="138" y2="40"/>
+    <text class="lbl-sm" x="40" y="70" fill="#52c41a">popleft()</text>
+    <line class="edge-cyan" x1="138" y1="60" x2="120" y2="60"/>
+    <!-- right arrows -->
+    <text class="lbl-sm" x="400" y="40" fill="#ff6b35">append()</text>
+    <line class="edge-hot" x1="400" y1="40" x2="420" y2="40"/>
+    <text class="lbl-sm" x="400" y="70" fill="#52c41a">pop()</text>
+    <line class="edge-cyan" x1="420" y1="60" x2="400" y2="60"/>
+    <text class="lbl-sm" x="280" y="92" text-anchor="middle">দুই পাশ দিয়েই — push/pop, enqueue/dequeue। এটাই সবচেয়ে নমনীয় লিনিয়ার কাঠামো।</text>
+  </svg>
+  <div class="diag-cap">Sliding window (Door 13) এবং monotonic deque — LeetCode-এ প্রিয় প্যাটার্ন।</div>
+</div>
+
+<div class="dialogue">আরও কিছু বাস্তব উদাহরণ দাঁড় করাই। Stack-এর জন্য — ধুয়ে রাখা থালার স্তূপ। সবার উপরে রাখা থালাটা সবার আগে নামবে। ব্রাউজারের Back বাটন — তুমি YouTube → Facebook → Google গিয়েছ, Back চাপলে প্রথমে Facebook এ ফিরবে, তারপর Google এ — উল্টো ক্রমে। আর Ctrl+Z (Undo)? MS Word-এ টাইপ করছ, একটা একটা করে পেছনে ফিরছ — এটাও stack।</div>
+<div class="dialogue en">"More real-world examples. Stack — a pile of washed plates. The last plate placed is picked up first. Browser Back button — you went YouTube → Facebook → Google, pressing Back takes you to Facebook first, then Google — reverse order. And Ctrl+Z (Undo)? Typing in MS Word, undoing step by step — that's a stack too."</div>
+
+<div class="dialogue">Queue-এর জন্য — অফিসের প্রিন্টার। ১০টা ডকুমেন্ট প্রিন্ট করতে দিলে, যেটা আগে দেওয়া হয়েছে সেটা আগে প্রিন্ট হয়। কেউ আসে পরে, সে সারিতে পেছনে দাঁড়ায়। ব্যাংকের লাইন, বাস কাউন্টার — সব FIFO। এমনকি হাসপাতালের সাধারণ সারি — যে আগে এসেছে সে আগে চিকিৎসক দেখবে। (তবে জরুরি রোগী? সে আলাদা — Priority Queue, Door 7।)</div>
+<div class="dialogue en">"Queue — office printer. 10 documents sent to print, the one sent first prints first. Someone arrives later, joins the back of the line. Bank lines, bus counters — all FIFO. Even hospital general queue — first come, first served. (But emergency patients? Different — Priority Queue, Door 7.)"</div>
+
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Stack = autograd backprop chain (reverse-mode auto-diff পিছনে হাঁটে)। Queue = inference batching, training data shuffling, RL replay buffer। যখন PyTorch/TensorFlow <code>loss.backward()</code> কল করো — এটা একটা stack-based traversal। এই দুই সরল কাঠামো পুরো AI ইঞ্জিনিয়ারিং জুড়ে।</div>
 <div class="dialogue en">"You're an AI engineer. Stack = autograd backprop chain (reverse-mode autodiff walks backward). Queue = inference batching, training data shuffling, RL replay buffer. When PyTorch/TensorFlow calls <code>loss.backward()</code> — it's a stack-based traversal. These two simple structures span all of AI engineering."</div>
 
@@ -193,6 +249,38 @@ doors.push({
 
 <div class="dialogue">কিন্তু সমস্যা আছে। দুটো ভিন্ন চাবি কখনো একই বাক্সে যেতে পারে — collision। যেমন "abc" আর "cba" হয়তো একই hash দেয়। সমাধান? বাক্সে একটা ছোট list রাখা — একই বাক্সে একাধিক জিনিস থাকতে পারে। সেটাকে বলে chaining।</div>
 <div class="dialogue en">"But there's a problem. Two different keys may map to the same box — collision. 'abc' and 'cba' might have the same hash. Solution? Keep a small list in the box — multiple items per box. This is called chaining."</div>
+
+<div class="dialogue">আর ভাবো — একটা ফোনবুক। তুমি "রাফিদ" নামটা লিখলেই তার নম্বর সাথে সাথে পেয়ে যাও। ১০০০টা নাম পড়ে খুঁজতে হয় না। কারণ hash function "রাফিদ" নামটাকে একটা সংখ্যায় রূপান্তর করে — সেই সংখ্যাটা বাক্সের ঠিকানা। O(1)-এ তুমি সেই বাক্সে গেলে — নম্বরটা পাও।</div>
+<div class="dialogue en">"And think — a phonebook. You type 'Rafid' and instantly get his number. No scrolling through 1,000 names. Because the hash function converts 'Rafid' into a number — that number is the box's address. O(1) — you go to that box and find the number."</div>
+
+<div class="dialogue">কিন্তু আরেকটা রূপ আছে — Set। ভাবো — একটা VIP ক্লাবের গেস্ট লিস্ট। নিয়ম কঠোর — একই নাম দুইবার থাকতে পারে না। "রাফিদ" একবারই লিস্টে আছে। আবার যদি "রাফিদ" যোগ করতে চাও — নিষেধ। এটাই Set — ডুপ্লিকেট নেই, সব unique। Database-এ একই ইমেইল দুইবার নিবন্ধন? Set দিয়ে যাচাই। ইউজারনেম আগে আছে কি না? Set-এ খুঁজে দেখো — O(1)।</div>
+<div class="dialogue en">"But another form exists — Set. Think — a VIP club guest list. Strict rule — no duplicate names. 'Rafid' appears only once. Try adding 'Rafid' again — denied. This is Set — no duplicates, all unique. Someone registering with the same email in a database? Verify with a Set. Username already taken? Check the Set — O(1)."</div>
+
+<div class="diagram">
+  <div class="diag-title">Set vs Dict — দুই ভাই</div>
+  <svg viewBox="0 0 560 140" xmlns="http://www.w3.org/2000/svg">
+    <!-- DICT -->
+    <text class="lbl-sm" x="140" y="25" fill="#f0c14b">DICT (key → value)</text>
+    ${['name→Rafid','age→25','city→Dhaka'].map((kv,i)=>`
+    <rect class="cell-cyan" x="50" y="${38+i*32}" width="180" height="26" rx="5" style="fill:rgba(54,214,231,.1);stroke:#36d6e7"/>
+    <text class="lbl-sm" x="140" y="${55+i*32}" text-anchor="middle">${kv}</text>
+    `).join('')}
+    <text class="lbl-sm" x="140" y="135" text-anchor="middle">প্রতিটা key → একটা value</text>
+
+    <!-- SET -->
+    <text class="lbl-sm" x="420" y="25" fill="#52c41a">SET (unique values only)</text>
+    ${['Rafid','Tanvir','Sadia'].map((v,i)=>`
+    <rect class="cell-good" x="330" y="${38+i*32}" width="180" height="26" rx="5" style="fill:rgba(82,196,26,.15);stroke:#52c41a"/>
+    <text class="lbl-sm" x="420" y="${55+i*32}" text-anchor="middle">${v}</text>
+    `).join('')}
+    <text class="lbl-sm" x="420" y="135" text-anchor="middle">শুধু value, key নেই — ডুপ্লিকেট নিষিদ্ধ</text>
+
+    <!-- duplicate rejected -->
+    <rect class="cell-hot" x="330" y="105" width="180" height="24" rx="5" style="fill:rgba(255,107,53,.15);stroke:#ff6b35;stroke-dasharray:4,3"/>
+    <text class="lbl-sm" x="420" y="120" text-anchor="middle" fill="#ff6b35">❌ Rafid (already exists!)</text>
+  </svg>
+  <div class="diag-cap">Dict = key-value pair (চাবি → ধন)। Set = শুধু চাবি, value নেই — ডুপ্লিকেট স্বয়ংক্রিয়ভাবে বাদ।</div>
+</div>
 
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার — তুমি dict প্রতিদিন ব্যবহার করো। Caching: API response সেভ করা — key = request, value = response। পরের বার সরাসরি। Deduplication: একই embedding দুইবার সেভ না করা। Feature store: user_id → features। সব O(1) lookup।</div>
 <div class="dialogue en">"You're an AI engineer — you use dicts daily. Caching: save API responses — key = request, value = response. Next time, direct hit. Deduplication: don't save the same embedding twice. Feature store: user_id → features. All O(1) lookup."</div>
@@ -331,6 +419,40 @@ bot3 = heapq.nsmallest(3, scores)
 # RAG-এ: সেরা documents
 docs = [("doc1", 0.95), ("doc2", 0.72), ("doc3", 0.88)]
 best = heapq.nlargest(2, docs, key=lambda x: x[1])</div>
+
+<div class="dialogue">ভাবো — হাসপাতালের ইমার্জেন্সি রুম। সবাই সারিতে দাঁড়িয়ে না। একজন রোগী এলো — হার্ট অ্যাটাক। জ্বর নিয়ে দাঁড়িয়ে থাকা পাঁচজনকে সরিয়ে সে সামনে চলে গেল। কেন? কারণ priority আলাদা। জীবন বাঁচানোর কাজ সবার আগে। এটাই Priority Queue — সাধারণ queue নয়, গুরুত্ব অনুযায়ী সাজানো। আর এই গুরুত্ব রাখার জন্যই Heap — সবসময় সবচেয়ে জরুরি উপাদান উপরে।</div>
+<div class="dialogue en">"Think — a hospital emergency room. Not everyone stands in a line. A patient arrives — heart attack. The five people waiting with fevers step aside, and the heart attack patient goes first. Why? Because priority is different. Saving a life comes before everything. This is a Priority Queue — not a regular queue, but ordered by urgency. And the Heap keeps the most urgent element on top — always."</div>
+
+<div class="diagram">
+  <div class="diag-title">Priority Queue — হাসপাতালের ইমার্জেন্সি</div>
+  <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- patients arriving with different priority -->
+    <text class="lbl-sm" x="60" y="25" fill="#f0c14b">আগমনের ক্রম</text>
+    ${[
+      {label:'জ্বর (সাধারণ)', pri:3, color:'#36d6e7'},
+      {label:'ভাঙা হাত (জরুরি)', pri:2, color:'#f0c14b'},
+      {label:'হার্ট অ্যাটাক (জীবনঘাতী)', pri:1, color:'#ff6b35'},
+      {label:'মাথাব্যথা (সাধারণ)', pri:3, color:'#36d6e7'},
+    ].map((p,i)=>`
+    <rect x="30" y="${38+i*32}" width="160" height="26" rx="5" style="fill:rgba(${p.pri===1?'255,107,53':(p.pri===2?'240,193,75':'54,214,231')},.15);stroke:${p.color}"/>
+    <text class="lbl-sm" x="110" y="${55+i*32}" text-anchor="middle" fill="${p.color}">${p.label}</text>
+    `).join('')}
+
+    <!-- heap processes -->
+    <text class="lbl-sm" x="380" y="25" fill="#ff6b35">চিকিৎসার ক্রম (priority)</text>
+    ${[
+      {label:'১. হার্ট অ্যাটাক', color:'#ff6b35'},
+      {label:'২. ভাঙা হাত', color:'#f0c14b'},
+      {label:'৩. জ্বর', color:'#36d6e7'},
+      {label:'৪. মাথাব্যথা', color:'#36d6e7'},
+    ].map((p,i)=>`
+    <rect class="${i===0?'cell-hot':'cell'}" x="320" y="${38+i*32}" width="200" height="26" rx="5" style="${i===0?'fill:rgba(255,107,53,.2);stroke:#ff6b35':''}"/>
+    <text class="lbl-sm" x="420" y="${55+i*32}" text-anchor="middle" fill="${p.color}">${p.label}</text>
+    `).join('')}
+    <text class="lbl-sm" x="280" y="185" text-anchor="middle">FIFO নয় — priority অনুযায়ী। Heap সবসময় সর্বোচ্চ গুরুত্ব উপরে রাখে।</text>
+  </svg>
+  <div class="diag-cap">OS-ও এটাই করে — মাউস মুভমেন্ট প্রাধান্য পায়, ব্যাকগ্রাউন্ড ডাউনলোড পেছনে। Max-Heap: সর্বোচ্চ প্রাধান্য সবসময় root-এ।</div>
+</div>
 
 <div class="dialogue">আফদাল — শ্রেষ্ঠ। কুরআনে আল্লাহ বলেন — "তোমরা মানুষের জন্য প্রকাশিত সর্বোত্তম জাতি।" (৩:১১০)। শ্রেষ্ঠ হওয়া শুধু ব্যক্তিগত নয় — দায়িত্ব। Heap-ও তেমনি — সবচেয়ে গুরুত্বপূর্ণকে উপরে রাখে, কিন্তু সেটা দায়িত্ব — সেরাটা আগে দিতে হবে। Priority মানে দায়িত্ব।</div>
 <div class="dialogue en">"Afdal — the best. Allah says in the Quran — 'You are the best nation produced for mankind.' (3:110). Being the best isn't just personal — it's responsibility. The heap is the same — it puts the most important on top, but that's a duty — the best must be served first. Priority means responsibility."</div>`,
