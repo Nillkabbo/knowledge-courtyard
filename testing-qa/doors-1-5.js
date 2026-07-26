@@ -1,568 +1,350 @@
 const doors = [];
 
-// ═══════════════════════════════════════════
-// DOOR 1 — Three Watchtowers (Test Types)
-// ═══════════════════════════════════════════
 doors.push({
   num: 1,
   icon: "🗼",
-  color: "#0ea5e9",
-  tagline: "তিন প্রহরী — Three Guards",
-  name: "Three Watchtowers",
-  secret: "Unit = একটা ফাংশন। Integration = দুটো কম্পোনেন্ট। E2E = পুরো ব্যবহারকারীর যাত্রা।",
-  story: `<p class="scene-setting">তোমার LedgerPilot-এ তিনজন প্রহরী দরকার। প্রথম প্রহরী — ইউনিট টেস্ট — শুধু একটা ফাংশন চেক করে। <code>calculate_tax(100)</code> ঠিক আছে কিনা। দ্বিতীয় — ইন্টিগ্রেশন টেস্ট — দুটো জিনিস একসাথে চেক করে। API থেকে ডেটাবেসে লেখা ঠিক আছে কিনা। তৃতীয় — E2E টেস্ট — পুরো ব্যবহারকারীর যাত্রা। ব্রাউজার খুলে লগইন করো, টাকা পাঠাও, ব্যালেন্স দেখো।</p>
+  color: "#22c55e",
+  name: "তিন প্রহরী",
+  subtitle: "The Three Watchtowers",
+  tech: "Test Types — Unit (function isolation), Integration (component interaction), E2E (user journey, Playwright/Selenium)",
+  spirit: "ইয়াকিন — নিশ্চয়তা, প্রতিটি স্তরে বিশ্বাস",
+  secret: "Unit = একটি ফাংশন। Integration = দুটো কম্পোনেন্ট। E2E = পুরো ব্যবহারকারীর যাত্রা। গতি: Unit > Integration > E2E। নির্ভরযোগ্যতা: Unit < Integration < E2E।",
+  recall: {
+    q: " Unit, Integration, ও E2E test-এর পার্থক্য কী?",
+    qen: "What is the difference between Unit, Integration, and E2E tests?",
+    a: "Unit = একটি ফাংশন isolated (ms)। Integration = দুটো কম্পোনেন্ট একসাথে (s)। E2E = পুরো ইউজার যাত্রা ব্রাউজারে (s)। Guillermo Rauch: Mostly integration।",
+    aen: "Unit = one function isolated (ms). Integration = two components together (s). E2E = full user journey in browser (s). Guillermo Rauch: Mostly integration."
+  },
+  story: `<p class="scene-setting">তোমার LedgerPilot-এ তিনজন প্রহরী দরকার। প্রথম প্রহরী — ইউনিট টেস্ট — শুধু একটা ফাংশন চেক করে। calculate_tax(১০০) ঠিক আছে কিনা। দ্রুত, মিলিসেকেন্ডে। দ্বিতীয় — ইন্টিগ্রেশন টেস্ট — দুটো জিনিস একসাথে। API থেকে ডেটাবেসে লেখা ঠিক আছে কিনা। তৃতীয় — E2E টেস্ট — পুরো ব্যবহারকারীর যাত্রা। ব্রাউজার খুলে লগইন করো, টাকা পাঠাও, ব্যালেন্স দেখো।</p>
+<p class="scene-setting en">Your LedgerPilot needs three guards. First — unit test — checks one function. calculate_tax(100) correct? Fast, milliseconds. Second — integration test — two things together. API to database writing correct? Third — E2E test — full user journey. Open browser, login, transfer money, check balance.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🗼 Three Test Types: Speed vs Confidence</text>
+<div class="dialogue"><strong>প্রহরী-প্রধান তারিক:</strong> প্রতিটি প্রহরীর নিজস্ব শক্তি ও দুর্বলতা। Unit দ্রুত কিন্তু integration bug ধরে না। Integration আসল bug ধরে কিন্তু ধীর। E2E সবচেয়ে নির্ভরযোগ্য কিন্তু সবচেয়ে ধীর ও flaky। Guillermo Rauch (Vercel CEO) বলেছেন — Write tests. Not too many. Mostly integration। এটাই sweet spot।</div>
+<div class="dialogue en"><strong>Chief Guard Tariq:</strong> Each guard has its own strength and weakness. Unit is fast but misses integration bugs. Integration catches real bugs but is slower. E2E is most reliable but slowest and flaky. Guillermo Rauch (Vercel CEO) said — Write tests. Not too many. Mostly integration. This is the sweet spot.</div>
 
-  <!-- Unit (left) -->
-  <rect x="20" y="50" width="175" height="270" rx="10" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="107" y="72" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="700">⚡ Unit Test</text>
-  <text x="107" y="90" text-anchor="middle" fill="#bae6fd" font-size="8">One function, isolated</text>
-  <rect x="35" y="105" width="145" height="22" rx="4" fill="#1e293b" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="107" y="120" text-anchor="middle" fill="#7dd3fc" font-size="7" font-family="monospace">calculate_tax(100) == 12.50</text>
-  <text x="107" y="145" text-anchor="middle" fill="#4ade80" font-size="8">✅ Lightning fast (ms)</text>
-  <text x="107" y="160" text-anchor="middle" fill="#4ade80" font-size="8">✅ Easy to write</text>
-  <text x="107" y="180" text-anchor="middle" fill="#f87171" font-size="8">❌ Misses integration bugs</text>
-  <text x="107" y="200" text-anchor="middle" fill="#f87171" font-size="8">❌ Mock-heavy = fragile</text>
-  <rect x="40" y="220" width="135" height="25" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="107" y="237" text-anchor="middle" fill="#4ade80" font-size="7">LedgerPilot: tax calc, validation</text>
-  <text x="107" y="265" text-anchor="middle" fill="#64748b" font-size="7" font-style="italic">Counterfeit pen — checks one thing</text>
-  <text x="107" y="285" text-anchor="middle" fill="#64748b" font-size="7">Speed: ⚡⚡⚡⚡⚡</text>
-  <text x="107" y="300" text-anchor="middle" fill="#64748b" font-size="7">Confidence: 📊📊</text>
+<div class="code-block">— pytest: তিন ধরনের টেস্ট —
 
-  <!-- Integration (center) -->
-  <rect x="205" y="50" width="175" height="270" rx="10" fill="#052e16" stroke="#22c55e" stroke-width="2.5"/>
-  <text x="292" y="72" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">🔄 Integration</text>
-  <text x="292" y="90" text-anchor="middle" fill="#86efac" font-size="8">Components together</text>
-  <rect x="220" y="105" width="145" height="22" rx="4" fill="#1e293b" stroke="#22c55e" stroke-width="1"/>
-  <text x="292" y="120" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">POST /transfer → MySQL write → 201</text>
-  <text x="292" y="145" text-anchor="middle" fill="#4ade80" font-size="8">✅ Catches real bugs!</text>
-  <text x="292" y="160" text-anchor="middle" fill="#4ade80" font-size="8">✅ Tests real interaction</text>
-  <text x="292" y="180" text-anchor="middle" fill="#fbbf24" font-size="8">⚠️ Slower than unit</text>
-  <text x="292" y="200" text-anchor="middle" fill="#f87171" font-size="8">❌ Needs DB setup</text>
-  <rect x="220" y="220" width="145" height="25" rx="5" fill="#052e16" stroke="#4ade80" stroke-width="1"/>
-  <text x="292" y="237" text-anchor="middle" fill="#4ade80" font-size="7">🏆 SWEET SPOT! Most valuable</text>
-  <text x="292" y="265" text-anchor="middle" fill="#64748b" font-size="7" font-style="italic">Deposit slot → vault pipeline</text>
-  <text x="292" y="285" text-anchor="middle" fill="#64748b" font-size="7">Speed: ⚡⚡⚡</text>
-  <text x="292" y="300" text-anchor="middle" fill="#64748b" font-size="7">Confidence: 📊📊📊📊</text>
-
-  <!-- E2E (right) -->
-  <rect x="390" y="50" width="170" height="270" rx="10" fill="#450a0a" stroke="#dc2626" stroke-width="2"/>
-  <text x="475" y="72" text-anchor="middle" fill="#f87171" font-size="11" font-weight="700">🐢 E2E Test</text>
-  <text x="475" y="90" text-anchor="middle" fill="#fca5a5" font-size="8">Full user journey</text>
-  <rect x="405" y="105" width="140" height="22" rx="4" fill="#1e293b" stroke="#dc2626" stroke-width="1"/>
-  <text x="475" y="120" text-anchor="middle" fill="#fca5a5" font-size="6" font-family="monospace">Browser: login → click transfer → assert</text>
-  <text x="475" y="145" text-anchor="middle" fill="#4ade80" font-size="8">✅ Highest confidence</text>
-  <text x="475" y="160" text-anchor="middle" fill="#4ade80" font-size="8">✅ Tests real UX</text>
-  <text x="475" y="180" text-anchor="middle" fill="#f87171" font-size="8">❌ Very slow (minutes)</text>
-  <text x="475" y="200" text-anchor="middle" fill="#f87171" font-size="8">❌ Flaky (timing!)</text>
-  <rect x="405" y="220" width="140" height="25" rx="5" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
-  <text x="475" y="237" text-anchor="middle" fill="#fca5a5" font-size="7">Playwright: login → transfer → balance</text>
-  <text x="475" y="265" text-anchor="middle" fill="#64748b" font-size="7" font-style="italic">Mystery shopper — full experience</text>
-  <text x="475" y="285" text-anchor="middle" fill="#64748b" font-size="7">Speed: ⚡</text>
-  <text x="475" y="300" text-anchor="middle" fill="#64748b" font-size="7">Confidence: 📊📊📊📊📊</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Unit (দ্রুত, isolated), Integration (sweet spot, আসল bug ধরে), E2E (সর্বোচ্চ confidence, ধীর)। প্রতিটার নিজস্ব ভূমিকা।</div>
-
-<div class="code-block">Three Watchtowers — Unit vs Integration vs E2E in action:
-
-১. UNIT TEST (⚡ milliseconds, isolated):
-  # tests/test_tax.py
+  # Unit Test (একটি ফাংশন)
   def test_calculate_tax():
       assert calculate_tax(100) == 12.50
       assert calculate_tax(0) == 0
+  # চলে: 0.02s — দ্রুত!
 
-  $ pytest tests/test_tax.py -q
-  1 passed in 0.02s
-
-২. INTEGRATION TEST (🔄 real DB, sweet spot):
-  # tests/test_transfer_api.py
-  def test_transfer_writes_to_db(db):
-      response = client.post('/api/transfer', json={
-          'from': 1, 'to': 2, 'amount': 500
+  # Integration Test (API → DB)
+  def test_transfer_api(db):
+      response = client.post('/api/transfer/', {
+          'from': 'acc1', 'to': 'acc2', 'amount': 500
       })
       assert response.status_code == 201
-      assert Account.objects.get(pk=2).balance == 1500
+      assert Account.objects.get(id='acc1').balance == 500
+  # চলে: 1.8s
 
-  $ pytest tests/test_transfer_api.py -q
-  1 passed in 1.84s   ← slower, but catches REAL bugs
+  # E2E Test (Playwright — ব্রাউজার)
+  # npx playwright test e2e/transfer.spec.ts
+  # ✓ chromium transfer.spec.ts (3.2s)
 
-৩. E2E TEST (🐢 full browser journey):
-  # e2e/transfer.spec.ts
-  test('user transfers money', async ({page}) => {
-    await page.goto('/login')
-    await page.fill('[name=email]', 'rakib@test.com')
-    await page.click('button[type=submit]')
-    await page.click('text=Transfer')
-    await expect(page.locator('.balance')).toHaveText('৳১৫০০')
-  })
+  — গতি:     Unit (0.02s) < Integration (1.8s) < E2E (4.1s) —
+  — নির্ভরযোগ্যতা: Unit < Integration < E2E —</div>
 
-  $ npx playwright test e2e/transfer.spec.ts
-  Running 1 test using 1 worker
-    ✓  chromium transfer.spec.ts (3.2s)
-  1 passed (4.1s)   ← slowest, but highest confidence
+<div class="verse">كُلَّ يَوْمٍ هُوَ فِي شَأْنٍ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"প্রতিদিন তিনি কোনো না কোনো কাজে আছেন।" — কুরআন ৫৫:২৯</div>
 
-স্পিড:     Unit (0.02s) < Integration (1.8s) < E2E (4.1s)
-কনফিডেন্স: Unit < Integration < E2E
-🏆 Integration = sweet spot — আসল interaction bug ধরে।
-Guillermo Rauch: "Write tests. Not too many. Mostly integration."</div>
+<p class="scene-setting">ইয়াকিন — নিশ্চয়তা। প্রতিটি টেস্ট একটি নিশ্চয়তা — কোড কাজ করছে। Unit দ্রুত নিশ্চয়তা দেয়, Integration গভীর, E2E সম্পূর্ণ। প্রতিটি স্তরে প্রহরী — প্রতিটি পরিবর্তনে বিশ্বাস।</p>
+<p class="scene-setting en">Yaqeen — certainty. Each test is a certainty — code works. Unit gives fast certainty, Integration deep, E2E complete. Guards at every level — trust in every change.</p>
 
-<div class="dialogue"><strong>টেস্ট ইঞ্জিনিয়ার:</strong> প্রতিটা test type এর নিজস্ব ভূমিকা। Unit test — একটা ফাংশন, isolated, মিলিসেকেন্ডে চলে। কিন্তু integration bug ধরে না। Integration test — দুটো জিনিস একসাথে, API→DB, আসল bug ধরে! Guillermo Rauch বলেছেন — 'Mostly integration.' E2E test — পুরো user journey, ব্রাউজারে, সবচেয়ে নির্ভরযোগ্য। কিন্তু ধীর আর flaky। LedgerPilot এ: unit দিয়ে calculate_tax, integration দিয়ে transfer API→MySQL, E2E দিয়ে login→transfer→balance check।</div>`,
-  recall: [
-    { q: "Integration test কেন 'sweet spot'?", a: "Integration test আসল component interaction test করে — API→DB, দুটো জিনিস একসাথে। Unit এর চেয়ে বেশি bug ধরে, E2E এর চেয়ে দ্রুত আর stable। Guillermo Rauch: 'Mostly integration.'" },
-    { q: "E2E test কখন ব্যবহার করবে?", a: "শুধু critical path এর জন্য — login, transaction, balance check। Playwright দিয়ে। অনেক বেশি E2E = ধীর suite + flaky tests।" },
-  ]
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪০ (Software Engineering) Door ৬ (TDD):</strong> TDD = টেস্ট আগে লেখো। Book ৪৭ (Testing-QA) এই বই — প্রতিটি দরজায় গভীরে।</div></div>
+
+<div class="secret-box">🗼 <strong>তিন প্রহরী — গতি ও নির্ভরযোগ্যতার ভারসাম্য।</strong> কিন্তু কতটা টেস্ট লিখবে? কোন অনুপাত? সেই উত্তর — পরের দরজায়।</div>`,
+  senior: {
+    title: "Test Types এক নজরে",
+    body: `<table class="kv-table"><tr><th>প্রকার</th><th>কী</th><th>গতি</th></tr>
+<tr><td class="hl">Unit</td><td>একটি ফাংশন isolated</td><td>~ms</td></tr>
+<tr><td class="hl">Integration</td><td>দুটো কম্পোনেন্ট</td><td>~s</td></tr>
+<tr><td class="hl">E2E</td><td>পুরো ইউজার যাত্রা</td><td>~s</td></tr>
+<tr><td class="hl">Static</td><td>লিন্টার, টাইপ চেকার</td><td>instant</td></tr>
+<tr><td class="hl">Guillermo Rauch</td><td>Mostly integration</td><td>—</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 2 — The Trophy Bearers (Pyramid vs Trophy)
-// ═══════════════════════════════════════════
 doors.push({
   num: 2,
   icon: "🏆",
   color: "#22c55e",
-  tagline: "ট্রফি বাহক — Trophy Bearers",
-  name: "The Trophy Bearers",
-  secret: "Pyramid = অনেক unit। Trophy = integration ই সবচেয়ে বেশি। Trophy আধুনিক।",
-  story: `<p class="scene-setting">২০০৯ সালে Mike Cohn 'Testing Pyramid' প্রস্তাব করেন — অনেক unit test, কম integration, সামান্য E2E। কিন্তু ২০১৭ সালে Guillermo Rauch tweet করেন: 'Write tests. Not too many. Mostly integration.' ২০১৮ সালে Kent C. Dodds এটাকে 'Testing Trophy' হিসেবে formalize করেন — static analysis base, integration সবচেয়ে বড়, E2E সামান্য।</p>
+  name: "ট্রফি বনাম পিরামিড",
+  subtitle: "The Trophy vs The Pyramid",
+  tech: "Testing Pyramid (Cohn 2009) vs Testing Trophy (Dodds 2018), static analysis, Guillermo Rauch principle",
+  spirit: "মিজান — ভারসাম্য, সঠিক অনুপাত",
+  secret: "Pyramid = অনেক unit, কম integration। Trophy = integration সবচেয়ে বড়। Trophy আধুনিক — কারণ integration bug ধরে, unit নয়।",
+  recall: {
+    q: " Testing Pyramid ও Testing Trophy-এর পার্থক্য কী?",
+    qen: "What is the difference between Testing Pyramid and Testing Trophy?",
+    a: "Pyramid (Cohn ২০০৯): অনেক unit, কম integration, সামান্য E2E (৭০/২০/১০)। Trophy (Dodds ২০১৮): static base, integration সবচেয়ে বড়, E2E সামান্য। Trophy আধুনিক।",
+    aen: "Pyramid (Cohn 2009): many unit, few integration, minimal E2E (70/20/10). Trophy (Dodds 2018): static base, integration biggest, minimal E2E. Trophy is modern."
+  },
+  story: `<p class="scene-setting">২০০৯ সালে Mike Cohn 'Testing Pyramid' প্রস্তাব করেন — অনেক unit test, কম integration, সামান্য E2E। কিন্তু ২০১৭ সালে Guillermo Rauch tweet করেন: Write tests. Not too many. Mostly integration। ২০১৮ সালে Kent C. Dodds এটাকে 'Testing Trophy' হিসেবে formalize করেন — static analysis base, integration সবচেয়ে বড়।</p>
+<p class="scene-setting en">In 2009 Mike Cohn proposed the Testing Pyramid — many unit tests, fewer integration, minimal E2E. But in 2017 Guillermo Rauch tweeted: Write tests. Not too many. Mostly integration. In 2018 Kent C. Dodds formalized it as the Testing Trophy — static analysis base, integration largest.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🏆 Testing Pyramid vs Testing Trophy</text>
+<div class="dialogue"><strong>ভারসাম্য-কারিগর নওফল:</strong> তারিক (Door ১) তোমাকে তিন প্রহরী দিয়েছেন। এখন প্রশ্ন — কোন প্রহরীকে কতজন দরকার? Cohn বলেছেন ৭০% unit। কিন্তু Dodds বলেন — integration-ই আসল। কারণ? Unit test শুধু ফাংশন ঠিক আছে কিনা দেখে। কিন্তু ফাংশন একসাথে কাজ করে কিনা — সেটা integration। বাস্তবে সবচেয়ে বেশি bug আসে integration-এ। তাই Trophy-তে integration সবচেয়ে বড়।</div>
+<div class="dialogue en"><strong>Balance Artisan Nawfal:</strong> Tariq (Door 1) gave you three guards. Now the question — how many of each? Cohn said 70% unit. But Dodds says — integration is key. Why? Unit tests only check function correctness. But whether functions work together — that's integration. In practice, most bugs come from integration. So in the Trophy, integration is largest.</div>
 
-  <!-- Pyramid (left) -->
-  <text x="145" y="55" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="700">Pyramid (2009)</text>
-  <polygon points="120,80 170,80 185,130 105,130" fill="#dc2626" stroke="#f87171" stroke-width="1.5" opacity="0.8"/>
-  <text x="145" y="110" text-anchor="middle" fill="#fee2e2" font-size="8">E2E</text>
-  <polygon points="105,130 185,130 205,200 85,200" fill="#fbbf24" stroke="#fcd34d" stroke-width="1.5" opacity="0.8"/>
-  <text x="145" y="170" text-anchor="middle" fill="#451a03" font-size="9">Integration</text>
-  <polygon points="85,200 205,200 230,280 60,280" fill="#22c55e" stroke="#4ade80" stroke-width="1.5" opacity="0.8"/>
-  <text x="145" y="245" text-anchor="middle" fill="#052e16" font-size="10" font-weight="700">Unit (lots!)</text>
-  <text x="145" y="300" text-anchor="middle" fill="#64748b" font-size="8">Mike Cohn: 70/20/10 ratio</text>
+<div class="code-block">— Testing Trophy বাস্তবে —
 
-  <!-- VS -->
-  <text x="290" y="165" text-anchor="middle" fill="#475569" font-size="14" font-weight="900">VS</text>
+  $ pytest --collect-only
+  ==================== test session starts ====================
+ collected 150 items
 
-  <!-- Trophy (right) -->
-  <text x="435" y="55" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">Trophy (2018)</text>
-  <polygon points="410,80 460,80 475,120 395,120" fill="#dc2626" stroke="#f87171" stroke-width="1.5" opacity="0.8"/>
-  <text x="435" y="105" text-anchor="middle" fill="#fee2e2" font-size="8">E2E</text>
-  <!-- Integration (biggest) -->
-  <polygon points="375,120 495,120 510,200 360,200" fill="#22c55e" stroke="#4ade80" stroke-width="2" opacity="0.9"/>
-  <text x="435" y="150" text-anchor="middle" fill="#052e16" font-size="11" font-weight="900">INTEGRATION</text>
-  <text x="435" y="170" text-anchor="middle" fill="#052e16" font-size="8">🏆 MOST IMPORTANT</text>
-  <!-- Unit -->
-  <polygon points="390,200 480,200 490,250 380,250" fill="#a855f7" stroke="#c084fc" stroke-width="1.5" opacity="0.8"/>
-  <text x="435" y="230" text-anchor="middle" fill="#f3e8ff" font-size="9">Unit (less)</text>
-  <!-- Static (base) -->
-  <polygon points="380,250 490,250 500,280 370,280" fill="#64748b" stroke="#94a3b8" stroke-width="1.5" opacity="0.8"/>
-  <text x="435" y="270" text-anchor="middle" fill="#e2e8f0" font-size="8">Static (lint)</text>
-  <text x="435" y="300" text-anchor="middle" fill="#64748b" font-size="8">Dodds: integration-heavy</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Pyramid = unit-heavy (2009)। Trophy = integration-heavy (2018)। Guillermo Rauch: 'Write tests. Not too many. Mostly integration.'</div>
+  # বিভাজন (Trophy model):
+  # ৩০ static  (mypy, eslint — টাইপ ও সিনট্যাক্স)
+  # ৫০ integration (API → DB — সবচেয়ে বেশি!)
+  # ৪০ unit (বিশুদ্ধ ফাংশন — দ্রুত)
+  # ১০ E2E (critical path শুধু)
+  # ৫৫ contract (API চুক্তি)
 
-<div class="code-block">Pyramid vs Trophy — তোমার test suite এর আসল অনুপাত:
+  # Static Analysis (base of trophy):
+  $ mypy backend/          # Python type check
+  $ eslint frontend/       # JS lint
+  $ pip-audit              # dependency vulnerability
 
-PYRAMID (Mike Cohn 2009) — unit-heavy:
-  $ pytest --collect-only -q | awk '{print $NF}' | sort | uniq -c
-    142 tests/test_*_unit.py      ← 70% unit
-     41 tests/test_*_integration.py  ← 20% integration
-     18 tests/test_*_e2e.py       ← 10% E2E
-  সমস্যা: unit pass, কিন্তু production এ API→DB integration bug!
+  # Guillermo Rauch-এর নীতি:
+  # "Write tests. Not too many. Mostly integration."
+  # — Vercel CEO, 2017</div>
 
-TROPHY (Kent C. Dodds 2018) — integration-heavy:
-  $ pytest --collect-only -q | awk '{print $NF}' | sort | uniq -c
-     28 tests/test_*_unit.py
-    156 tests/test_*_integration.py   ← MOSTLY integration!
-      6 tests/test_*_e2e.py
-     42 lint/typecheck (static)       ← base layer
+<div class="verse">وَالسَّمَاءَ رَفَعَهَا وَوَضَعَ الْمِيزَانَ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং আসমানকে উঁচু করেছেন এবং স্থাপন করেছেন মিজান (তুলা)।" — কুরআন ৫৫:৭</div>
 
-  ESLint + mypy (static, সবচেয়ে দ্রুত):
-  $ npx eslint src/ && mypy backend/ --no-error-summary
-  ✓ No issues.  ← 0ms execution, syntax/type error আগেই ধরা
+<p class="scene-setting">মিজান — ভারসাম্য। Testing Trophy সেই ভারসাম্যের রূপ — প্রতিটি স্তরে সঠিক অনুপাত। খুব বেশি unit = integration অবহেলা। খুব বেশি E2E = ধীর ও flaky। ভারসাম্য — integration সবচেয়ে বড়, static base, E2E সামান্য।</p>
+<p class="scene-setting en">Mizan — balance. The Testing Trophy is the form of that balance — correct proportion at each layer. Too many unit tests = neglecting integration. Too many E2E = slow and flaky. Balance — integration largest, static base, minimal E2E.</p>
 
-Guillermo Rauch এর tweet (2017):
-  "Write tests. Not too many. Mostly integration."
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৭ (Testing-QA) Door ১:</strong> তারিক তিন প্রহরী দিয়েছেন — নওফল দেখাচ্ছেন কোন অনুপাতে। Book ৪৩ (Cloud DevOps) Door ৪: CI/CD pipeline-এ এই অনুপাত স্বয়ংক্রিয়।</div></div>
 
-টেকওয়ে: integration test আসল bug ধরে — Vue↔Django↔MySQL interaction এ।
-তাই Trophy integration কে সবচেয়ে বড় রাখে।</div>
-
-<div class="dialogue"><strong>কেন্ট সি. ডডস:</strong> আমি 2018 সালে Testing Trophy formalize করেছিলাম। Pyramid এর সমস্যা — unit test খুব isolated, আসল bug ধরে না। আধুনিক app এ Vue/React frontend, Django API, MySQL database — এদের মধ্যে interaction এ বাগ হয়। Integration test এই বাগ ধরে। তাই Trophy তে integration সবচেয়ে বড়। Static analysis (ESLint, mypy) base — syntax error আগেই ধরে। E2E সামান্য — শুধু critical path। 'Write tests. Not too many. Mostly integration.'</div>`,
-  recall: [
-    { q: "Trophy কেন Pyramid এর চেয়ে ভালো?", a: "Pyramid unit-heavy, কিন্তু unit test আসল interaction bug ধরে না। Trophy integration-heavy — API→DB, component interaction এ বাগ ধরে। আধুনিক app এ integration ই sweet spot।" },
-    { q: "Testing Trophy এর base layer কী?", a: "Static analysis — ESLint, mypy, type checker। কোনো code execute না করে syntax আর type error ধরে। সবচেয়ে দ্রুত।" },
-  ]
+<div class="secret-box">🏆 <strong>Trophy = integration সবচেয়ে বড়।</strong> ভারসাম্য ঠিক হলে পরের প্রশ্ন — কখন টেস্ট লিখবে? কোডের আগে নাকি পরে? সেই উত্তর — TDD। পরের দরজায়।</div>`,
+  senior: {
+    title: "Pyramid vs Trophy এক নজরে",
+    body: `<table class="kv-table"><tr><th>মডেল</th><th>বছর</th><th>অনুপাত</th></tr>
+<tr><td class="hl">Pyramid (Cohn)</td><td>২০০৯</td><td>৭০% unit, ২০% int, ১০% E2E</td></tr>
+<tr><td class="hl">Trophy (Dodds)</td><td>২০১৮</td><td>integration সবচেয়ে বড়</td></tr>
+<tr><td class="hl">Static base</td><td>—</td><td>mypy, eslint — ভিত্তি</td></tr>
+<tr><td class="hl">Rauch principle</td><td>২০১৭</td><td>Mostly integration</td></tr>
+<tr><td class="hl">E2E</td><td>—</td><td>শুধু critical path</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 3 — The Red-Green Forge (TDD)
-// ═══════════════════════════════════════════
 doors.push({
   num: 3,
   icon: "🔴",
-  color: "#fbbf24",
-  tagline: "লাল-সবুজ কারখানা — The Red-Green Forge",
-  name: "The Red-Green Forge",
-  secret: "TDD = design tool। Red (failing test) → Green (pass) → Refactor (clean)। Test আগে, code পরে।",
-  story: `<p class="scene-setting">TDD মানে Test-Driven Development। কিন্তু আসলে এটা design tool। তুমি test আগে লেখো — interface ভাবতে বাধ্য হও। 'ATM $500+ withdraw করবে না' — test লেখো, সে fail করে (Red)। তারপর minimal code লেখো test pass করার জন্য (Green)। তারপর code পরিষ্কার করো (Refactor)। প্রতিটা ধাপে interface design ভাবতে হয়।</p>
+  color: "#22c55e",
+  name: "লাল-সবুজ-নকশা",
+  subtitle: "Red-Green-Refactor",
+  tech: "Test-Driven Development — Beck 2003, Red-Green-Refactor cycle, test first, design emergence",
+  spirit: "সবর — ধৈর্য, ভুল থেকে সঠিকে যাত্রা",
+  secret: "TDD = টেস্ট আগে লেখো। Red (ব্যর্থ) → Green (সফল) → Refactor (উন্নত)। প্রথমে ব্যর্থ দেখো — তারপর সফল করো — তারপর সুন্দর করো।",
+  recall: {
+    q: " TDD-এর তিনটি ধাপ কী? কেন টেস্ট আগে লিখতে হবে?",
+    qen: "What are the three steps of TDD? Why write tests first?",
+    a: "১. Red: টেস্ট লেখো (ব্যর্থ হবে)। ২. Green: সর্বনিম্ন কোড লেখো (সফল)। ৩. Refactor: উন্নত করো। টেস্ট আগে = সঠিক interface ডিজাইন।",
+    aen: "1. Red: write test (fails). 2. Green: minimal code (passes). 3. Refactor: improve. Test first = correct interface design."
+  },
+  story: `<p class="scene-setting">২০০৩, কলোরাডো। Kent Beck একটি বই লিখছেন — Test-Driven Development: By Example। তার দাবি: টেস্ট আগে লেখো, কোড পরে। প্রথমে অদ্ভুত মনে হয় — কোড ছাড়া টেস্ট কীভাবে? কিন্তু উদ্দেশ্য স্পষ্ট: টেস্ট আগে লিখলে তুমি ইউজারের চোখ দিয়ে দেখো — কোন API দরকার, কোন নাম স্পষ্ট, কোন রিটার্ন প্রত্যাশিত। কোড পরে আসে — টেস্টকে সন্তুষ্ট করতে।</p>
+<p class="scene-setting en">2003, Colorado. Kent Beck writes Test-Driven Development: By Example. His claim: write tests first, code later. Seems strange at first — test without code? But the purpose is clear: writing tests first means seeing through the user's eyes — what API is needed, what names are clear, what return is expected. Code comes later — to satisfy the test.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <defs><marker id="arrTDD" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔴 TDD: Red → Green → Refactor Cycle</text>
+<div class="dialogue"><strong>ধৈর্যশীল রাজিব:</strong> নওফল (Door ২) তোমাকে অনুপাত শিখিয়েছেন। এখন প্রশ্ন — কখন টেস্ট লিখবে? TDD বলে — আগে। চক্র: Red (টেস্ট ব্যর্থ) → Green (সর্বনিম্ন কোড) → Refactor (উন্নত)। ATM তোমার LedgerPilot-এ চেষ্টা করো — প্রথমে test_transfer_negative_amount লেখো। ব্যর্থ হবে। তারপর সর্বনিম্ন কোড — if amount < 0: raise। সফল! তারপর refactor — ValueError ব্যবহার করো।</div>
+<div class="dialogue en"><strong>Patient Rajib:</strong> Nawfal (Door 2) taught you proportion. Now the question — when to write tests? TDD says — first. Cycle: Red (test fails) → Green (minimal code) → Refactor (improve). Try it in LedgerPilot — first write test_transfer_negative_amount. It fails. Then minimal code — if amount < 0: raise. Passes! Then refactor — use ValueError.</div>
 
-  <!-- Red -->
-  <rect x="30" y="50" width="160" height="100" rx="10" fill="#450a0a" stroke="#dc2626" stroke-width="2"/>
-  <circle cx="110" cy="75" r="14" fill="#dc2626" stroke="#f87171" stroke-width="2"/>
-  <text x="110" y="79" text-anchor="middle" fill="#fee2e2" font-size="10" font-weight="700">RED</text>
-  <text x="110" y="105" text-anchor="middle" fill="#fca5a5" font-size="8">Write failing test</text>
-  <text x="110" y="122" text-anchor="middle" fill="#fca5a5" font-size="7" font-family="monospace">test_withdraw_over_500_fails()</text>
-  <text x="110" y="140" text-anchor="middle" fill="#dc2626" font-size="8">❌ Test fails — code doesn't exist</text>
+<div class="code-block">— TDD: Red-Green-Refactor চক্র —
 
-  <line x1="190" y1="100" x2="220" y2="100" stroke="#475569" stroke-width="2" marker-end="url(#arrTDD)"/>
+  # Step 1: RED — টেস্ট লেখো (ব্যর্থ হবে)
+  def test_atm_withdraw_insufficient():
+      atm = ATM(balance=100)
+      with pytest.raises(InsufficientFunds):
+          atm.withdraw(150)  # ১০০ আছে, ১৫০ চায়!
+  # $ pytest test_atm.py
+  # FAILED — NameError: ATM not defined  ← RED!
 
-  <!-- Green -->
-  <rect x="220" y="50" width="160" height="100" rx="10" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <circle cx="300" cy="75" r="14" fill="#22c55e" stroke="#4ade80" stroke-width="2"/>
-  <text x="300" y="79" text-anchor="middle" fill="#052e16" font-size="10" font-weight="700">GREEN</text>
-  <text x="300" y="105" text-anchor="middle" fill="#86efac" font-size="8">Write minimal code</text>
-  <text x="300" y="122" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">if amount > 500: raise Error()</text>
-  <text x="300" y="140" text-anchor="middle" fill="#22c55e" font-size="8">✅ Test passes — but code is ugly</text>
-
-  <line x1="380" y1="100" x2="410" y2="100" stroke="#475569" stroke-width="2" marker-end="url(#arrTDD)"/>
-
-  <!-- Refactor -->
-  <rect x="410" y="50" width="160" height="100" rx="10" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
-  <text x="490" y="75" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">♻️ REFACTOR</text>
-  <text x="490" y="95" text-anchor="middle" fill="#d8b4fe" font-size="8">Clean up code</text>
-  <text x="490" y="112" text-anchor="middle" fill="#d8b4fe" font-size="7" font-family="monospace">→ move to config, add validation</text>
-  <text x="490" y="130" text-anchor="middle" fill="#a855f7" font-size="8">✅ Tests still pass — code is clean</text>
-
-  <!-- Loop arrow back -->
-  <path d="M 490 150 Q 300 190 110 150" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrTDD)"/>
-  <text x="300" y="180" text-anchor="middle" fill="#64748b" font-size="8">↻ Repeat for next feature</text>
-
-  <!-- Key insight -->
-  <rect x="60" y="210" width="460" height="50" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="290" y="230" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="700">💡 TDD = Design Tool, not just testing</text>
-  <text x="290" y="248" text-anchor="middle" fill="#fcd34d" font-size="8">Writing test first forces you to design the interface before implementation. "Need-driven development."</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: TDD cycle — Red (failing test) → Green (pass) → Refactor (clean)। আসলে এটা design tool — test আগে লিখলে interface ভাবতে বাধ্য হও।</div>
-
-<div class="code-block">TDD Cycle — Red → Green → Refactor (live terminal session):
-
-🔴 RED — failing test আগে লেখো:
-  # tests/test_atm.py
-  def test_withdraw_over_500_fails():
-      atm = ATM(balance=1000)
-      with pytest.raises(OverLimitError):
-          atm.withdraw(600)   # $500+ should be rejected
-
-  $ pytest tests/test_atm.py::test_withdraw_over_500_fails -q
-  FAILED tests/test_atm.py::test_withdraw_over_500_fails
-  E NameError: name 'OverLimitError' is not defined
-  1 failed in 0.03s   ← ✅ Red! Test fails — code doesn't exist yet.
-
-🟢 GREEN — minimal code লেখো, শুধু test pass করার জন্য:
-  # atm.py
-  class OverLimitError(Exception): pass
-
+  # Step 2: GREEN — সর্বনিম্ন কোড লেখো
   class ATM:
       def __init__(self, balance):
           self.balance = balance
-
       def withdraw(self, amount):
-          if amount > 500:
-              raise OverLimitError("Exceeds $500 limit")
+          if amount > self.balance:
+              raise InsufficientFunds()
           self.balance -= amount
+  # $ pytest test_atm.py
+  # PASSED  ← GREEN!
 
-  $ pytest tests/test_atm.py::test_withdraw_over_500_fails -q
-  1 passed in 0.02s   ← ✅ Green! Test passes — but code is minimal/ugly.
+  # Step 3: REFACTOR — উন্নত করো
+  # (টেস্ট সবুজ রাখো!)
+  # → ValueError ব্যবহার করো
+  # → amount validation আলাদা মেথডে
+  # → log যোগ করো
+  # $ pytest test_atm.py → সবুজ ✅</div>
 
-♻️ REFACTOR — code পরিষ্কার করো, tests আবার চালাও:
-  # ভ্যারিয়েবল নাম বদলাও, magic number কে config এ নাও
-  MAX_WITHDRAWAL = 500   # → settings.py তে move করো
+<div class="verse">إِنَّ مَعَ الْعُسْرِ يُسْرًا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই কষ্টের সাথে রয়েছে স্বস্তি।" — কুরআন ৯৪:৬</div>
 
-  class ATM:
-      def withdraw(self, amount):
-          self._validate_limit(amount)   # extracted method
-          self.balance -= amount
+<p class="scene-setting">সবর — ধৈর্য। TDD ধৈর্যের চর্চা। Red = কষ্ট (ব্যর্থ)। Green = স্বস্তি (সফল)। Refactor = উন্নতি (সৌন্দর্য)। প্রতিটি চক্রে কষ্ট থেকে স্বস্তি — ভুল থেকে সঠিক। এটাই TDD-এর আত্মা — ধৈর্য ধরে সত্য খোঁজা।</p>
+<p class="scene-setting en">Sabr — patience. TDD is the practice of patience. Red = difficulty (failure). Green = relief (success). Refactor = improvement (beauty). In each cycle, from difficulty to relief — from wrong to right. This is the soul of TDD — patiently seeking truth.</p>
 
-      def _validate_limit(self, amount):
-          if amount > MAX_WITHDRAWAL:
-              raise OverLimitError(f"Exceeds {MAX_WITHDRAWAL} limit")
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪০ (Software Engineering) Door ৬ (TDD):</strong> TDD-র পূর্ণ আলোচনা। Book ৪৭ (Testing-QA) Door ৩: এখানে গভীরে — প্রতিটি ধাপে কোড ও টেস্ট।</div></div>
 
-  $ pytest tests/test_atm.py -q
-  1 passed in 0.02s   ← ✅ Tests still pass! Code is now clean.
-
-💡 TDD = design tool — test আগে লেখায় interface আগেই ভাবতে হয়।</div>
-
-<div class="dialogue"><strong>টিডিডি প্র্যাকটিশনার:</strong> TDD আসলে testing এর চেয়ে design। Test আগে লেখো — ভাবতে হবে কী interface দরকার, কী behavior expected। 'ATM $500+ reject করবে' — এই test লেখো, Red (fail)। তারপন minimal code, Green (pass)। তারপর refactor। LedgerPilot এ: financial calculation গুলো TDD দিয়ে করো — transfer, tax, balance। UI component গুলো পরে test করো। TDD সব জায়গায় দরকার না — exploratory code এ নয়।</div>`,
-  recall: [
-    { q: "TDD কেন design tool?", a: "Test আগে লেখলে interface, API, আর dependency ভাবতে বাধ্য হও। Implementation এর আগে behavior define করো। 'Need-driven development' — প্রথমে কী দরকার ভাবো।" },
-    { q: "TDD কখন ব্যবহার করবে?", a: "Critical calculation এ — financial, security, core logic। Exploratory code বা UI তে TDD নয়। LedgerPilot এ transfer/tax/balance এ TDD, Vue component এ নয়।" },
-  ]
+<div class="secret-box">🔴 <strong>TDD = Red → Green → Refactor।</strong> ভুল থেকে সঠিক, সঠিক থেকে সুন্দর। কিন্তু কোড কতটা ভালো? ১০০% coverage যথেষ্ট? নাকি আরও কিছু দরকার? সেই উত্তর — পরের দরজায়।</div>`,
+  senior: {
+    title: "TDD এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধাপ</th><th>কী</th></tr>
+<tr><td class="hl">Red</td><td>টেস্ট লেখো — ব্যর্থ হবে</td></tr>
+<tr><td class="hl">Green</td><td>সর্বনিম্ন কোড — সফল করো</td></tr>
+<tr><td class="hl">Refactor</td><td>উন্নত করো — সবুজ রাখো</td></tr>
+<tr><td class="hl">Kent Beck (2003)</td><td>TDD: By Example</td></tr>
+<tr><td class="hl">Benefit</td><td>সঠিক interface, কম bug, ডিজাইন</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 4 — The Lie Detector (Coverage vs Mutation)
-// ═══════════════════════════════════════════
 doors.push({
   num: 4,
-  icon: "🕵️",
-  color: "#ef4444",
-  tagline: "মিথ্যা সনাক্তকারী — The Lie Detector",
-  name: "The Lie Detector",
-  secret: "100% coverage = মিথ্যা নিরাপত্তা। Mutation testing: কোডে bug ঢুকিয়ে দেখো test ধরছে কিনা।",
-  story: `<p class="scene-setting">তুমি 100% code coverage পেয়েছো। নিরাপদ? না! Coverage শুধু বলে কোন line execute হয়েছে — correctness নয়। একটা test যদি assert না করে, coverage 100% হবে কিন্তু bug ধরা যাবে না। সমাধান? Mutation testing — কোডে ইচ্ছে করে bug ঢুকিয়ে দাও। <code>></code> কে <code>>=</code> পাল্টে দাও, <code>+</code> কে <code>-</code> করে দাও। যদি test pass করে থাকে — mutant survived! তোমার test দুর্বল।</p>
+  icon: "🧬",
+  color: "#22c55e",
+  name: "মিউটেশনের চোখ",
+  subtitle: "The Mutation Eye",
+  tech: "Coverage vs Mutation Testing — line/branch coverage, mutmut, mutation score, surviving mutants",
+  spirit: "বুরহান — প্রমাণ, সত্যিকারের গভীরতা",
+  secret: "১০০% coverage মানে সব লাইন চলে — কিন্তু সব ঠিক আছে না। Mutation testing: কোড এক বিট বদলাও (mutant) — টেস্ট ধরবে কি? যদি না ধরে — টেস্ট দুর্বল।",
+  recall: {
+    q: " Mutation testing কী? Coverage-এর চেয়ে কেন শক্তিশালী?",
+    qen: "What is mutation testing? Why is it stronger than coverage?",
+    a: "Mutation = কোড বদলাও (>= → >) → টেস্ট ধরবে কি? Coverage শুধু লাইন চলে কিনা দেখে। Mutation লাইন সঠিক কিনা যাচাই করে।",
+    aen: "Mutation = change code (>= → >) → does test catch it? Coverage only checks if line ran. Mutation verifies the line is correct."
+  },
+  story: `<p class="scene-setting">রাজিব (Door ৩) তোমাকে TDD শিখিয়েছেন। কিন্তু একটি প্রশ্ন — তোমার টেস্ট কতটা ভালো? ১০০% coverage? ভুল! coverage শুধু দেখে লাইন চলেছে কিনা। assert ছাড়াও coverage হয়। Mutation testing সেই ফাঁক ধরে — কোড বদলাও, টেস্ট ধরবে কি?</p>
+<p class="scene-setting en">Rajib (Door 3) taught you TDD. But one question — how good are your tests? 100% coverage? Wrong! Coverage only checks if lines ran. You get coverage even without asserts. Mutation testing catches that gap — change the code, will the test catch it?</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🕵️ Code Coverage vs Mutation Testing</text>
+<div class="dialogue"><strong>প্রমাণ-কারিগর সুমাইয়া:</strong> তারিক (Door ১) বলেছেন ইউনিট টেস্ট দরকার। কিন্তু কোন টেস্ট ভালো? ধরো তোমার কোড: if amount >= 100। আমি >= কে > করে দিলাম (mutant)। তোমার টেস্ট কি ধরবে? যদি test(amount=100) না থাকে — ধরবে না! টেস্ট দুর্বল। Mutation score = কত mutant ধরা গেলো। ৮০%+ লক্ষ্য।</div>
+<div class="dialogue en"><strong>Proof Artisan Sumayya:</strong> Tariq (Door 1) said unit tests are needed. But which tests are good? Say your code: if amount >= 100. I change >= to > (mutant). Will your test catch it? If test(amount=100) doesn't exist — it won't! Test is weak. Mutation score = how many mutants caught. 80%+ target.</div>
 
-  <!-- Coverage (left) -->
-  <rect x="20" y="50" width="260" height="120" rx="10" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="150" y="72" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="700">📊 Code Coverage (Misleading)</text>
-  <text x="150" y="92" text-anchor="middle" fill="#bae6fd" font-size="8">"Every line executed!"</text>
-  <rect x="40" y="105" width="220" height="22" rx="4" fill="#1e293b" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="150" y="120" text-anchor="middle" fill="#7dd3fc" font-size="7" font-family="monospace">def test_func(): result = calculate()</text>
-  <text x="150" y="140" text-anchor="middle" fill="#f87171" font-size="8">❌ No assert! Line executed but verified nothing</text>
-  <text x="150" y="158" text-anchor="middle" fill="#f87171" font-size="8">❌ 100% coverage, 0% correctness check</text>
+<div class="code-block">— Mutation Testing (mutmut) —
 
-  <!-- Mutation (right) -->
-  <rect x="300" y="50" width="260" height="120" rx="10" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="430" y="72" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">🧬 Mutation Testing (Truth)</text>
-  <text x="430" y="92" text-anchor="middle" fill="#86efac" font-size="8">"Would tests fail if code were wrong?"</text>
-  <rect x="320" y="105" width="220" height="22" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="430" y="120" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">Mutant: > changed to >= → test still passes?</text>
-  <text x="430" y="140" text-anchor="middle" fill="#4ade80" font-size="8">✅ If test FAILS → mutant killed (good!)</text>
-  <text x="430" y="158" text-anchor="middle" fill="#f87171" font-size="8">❌ If test PASSES → mutant survived (blind spot!)</text>
-
-  <!-- Mutation score -->
-  <rect x="60" y="190" width="460" height="110" rx="10" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="290" y="212" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">🧬 Mutation Score = Killed Mutants / Total Mutants</text>
-
-  <rect x="80" y="225" width="200" height="25" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="180" y="242" text-anchor="middle" fill="#4ade80" font-size="8">KILLED: Test caught the injected bug ✅</text>
-
-  <rect x="300" y="225" width="200" height="25" rx="4" fill="#450a0a" stroke="#dc2626" stroke-width="1.5"/>
-  <text x="400" y="242" text-anchor="middle" fill="#f87171" font-size="8">SURVIVED: Test missed the bug! ❌</text>
-
-  <text x="290" y="275" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="600">Target: 80%+ mutation score for financial code</text>
-  <text x="290" y="290" text-anchor="middle" fill="#64748b" font-size="7">Tools: mutmut (Python), Stryker (JS/TS)</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Coverage = line execute হলো (মিথ্যা নিরাপত্তা)। Mutation = bug ঢুকিয়ে দেখো test ধরছে কিনা (সত্য)। Survived mutant = test blind spot।</div>
-
-<div class="code-block">Coverage vs Mutation — মিথ্যা নিরাপত্তা উন্মোচন:
-
-১. CODE COVERAGE (বিভ্রান্তিকর — 100% কিন্তু কোনো assertion নেই):
-  # buggy.py
-  def is_adult(age):
+  # কোড:
+  def is_eligible(age):
       return age >= 18
 
-  # tests/test_buggy.py — কোনো assert নেই!
-  def test_is_adult():
-      result = is_adult(20)   # ← line execute হলো, কিন্তু verify করছে না!
-      # assert ভুলে গেছি!
+  # টেস্ট:
+  def test_eligible():
+      assert is_eligible(18) == True   # catches >= → >
+      assert is_eligible(17) == False
 
-  $ pytest --cov=buggy tests/ --cov-report=term-missing
-  ---------- coverage: platform linux ----------
-  Name       Stmts   Miss  Cover
-  ------------------------------------
-  buggy.py       2      0   100%   ← 💀 100% coverage! কিন্তু bug ধরবে না।
-  ------------------------------------
-  TOTAL          2      0   100%
+  # Mutation: >= → >
+  # Mutant: return age > 18
+  # test(18): is_eligible(18) → False ≠ True → CAUGHT! ✅
 
-২. MUTATION TESTING (সত্য — bug ঢুকিয়ে দেখো test ধরছে কিনা):
-  $ mutmut run --paths-to-mutate=buggy.py
-   2. 1. is_adult
-  🧬 Mutants generated: 4
-
+  $ mutmut run --paths-to-mutate=eligibility.py
   $ mutmut results
-  To apply a mutant on disk:
-    mutmut show <id>
+   2. is_eligible (>= → >):  killed ✅
+   3. is_eligible (18 → 19): killed ✅
+   4. is_eligible (return → continue): killed ✅
 
-  Survived mutants (1):
-    buggy.py:2:
-   -     return age >= 18
-   +     return age > 18    ← mutant! >= কে > বদলানো হলো
+  mutation score: 100% — সব mutant ধরা গেছে!
 
-  $ mutmut show 1
-  --- buggy.py
-  +++ buggy.py
-  @@ -1,2 +1,2 @@
-   def is_adult(age):
-  -    return age >= 18
-  +    return age > 18
+  — Coverage বনাম Mutation:
+  # 100% coverage সহ দুর্বল টেস্ট:
+  def test_bad():
+      is_eligible(25)  # চলে, কিন্তু assert নেই!
+  # coverage: 100% ✅ (ভুল!)
+  # mutation: 0% ❌ (সত্য!)</div>
 
-  🚨 SURVIVED! Test pass করে গেছে — মানে test এ assert নেই। Blind spot!
+<div class="verse">قُلْ هَاتُوا بُرْهَانَكُمْ إِن كُنتُمْ صَادِقِينَ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"বলো, তোমাদের প্রমাণ আনো যদি তোমরা সত্যবাদী হও।" — কুরআন ২:১১১</div>
 
-mutation score = killed / total = 3/4 = 75%  (target: 80%+)
-→ coverage 100% ছিল, কিন্তু mutation উন্মোচন করল যে test দুর্বল।</div>
+<p class="scene-setting">বুরহান — প্রমাণ। Mutation testing সেই প্রমাণের টেস্ট। coverage বলে লাইন চলেছে — কিন্তু সঠিক কিনা নয়। Mutation বলে সত্যিকারের গভীরতা — কোড বদলালে টেস্ট ধরবে কি? প্রমাণ ছাড়া দাবি অর্থহীন।</p>
+<p class="scene-setting en">Burhan — proof. Mutation testing is the test of that proof. Coverage says a line ran — but not whether it's correct. Mutation reveals true depth — if code changes, will tests catch it? Claims without proof are meaningless.</p>
 
-<div class="dialogue"><strong>মিউটেশন টেস্টার:</strong> Coverage তোমাকে মিথ্যা নিরাপত্তা দেয়। ১০০% coverage মানে শুধু প্রতিটা line execute হয়েছে — সেটা সঠিক কিনা কেউ চেক করেনি! Mutation testing: কোড ক্লোন করো, একটা ছোট bug ঢুকিয়ে দাও — <code>></code> কে <code>>=</code> বদলাও, <code>+</code> কে <code>-</code> করো। তারপর test চালাও। যদি test fail করে — mutant killed! তোমার test শক্তিশালী। যদি pass করে — mutant survived! তোমার test দুর্বল। LedgerPilot এ: mutmut মাসে একবার financial module এ চালাও। Target: ৮০%+ mutation score।</div>`,
-  recall: [
-    { q: "100% code coverage কেন মিথ্যা?", a: "Coverage শুধু বলে line execute হয়েছে। Assertion ছাড়া test চালালেও 100% হয়। Mutation testing দরকার — bug ঢুকিয়ে দেখো test ধরছে কিনা।" },
-    { q: "Mutation score কী?", a: "Killed mutants / total mutants। যত বেশি, তত শক্তিশালী test suite। Survived mutant = test blind spot — একটা বাগ যা test ধরতে পারছে না।" },
-  ]
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৪ (Statistics) Door ৬ (Hypothesis):</strong> mutation testing = hypothesis testing! নাল হাইপোথিসিস: কোড সঠিক। মিউট্যান্ট: বিকল্প হাইপোথিসিস। টেস্ট ধরলে = নাল প্রত্যাখ্যান।</div></div>
+
+<div class="secret-box">🧬 <strong>Mutation = কোড বদলাও, টেস্ট ধরবে কি?</strong> coverage-এর চেয়ে গভীর। কিন্তু টেস্ট কাকে কল করবে? সত্যিকারের অবজেক্ট নাকি নকল? সেই প্রশ্ন — পরের দরজায়।</div>`,
+  senior: {
+    title: "Coverage vs Mutation এক নজরে",
+    body: `<table class="kv-table"><tr><th>মেট্রিক</th><th>কী মাপে</th></tr>
+<tr><td class="hl">Line Coverage</td><td>কত লাইন চলেছে</td></tr>
+<tr><td class="hl">Branch Coverage</td><td>কত if/else চলেছে</td></tr>
+<tr><td class="hl">Mutation Score</td><td>কত mutant ধরা গেছে</td></tr>
+<tr><td class="hl">mutmut</td><td>Python mutation testing tool</td></tr>
+<tr><td class="hl">100% coverage</td><td>❌ যথেষ্ট নয়</td></tr>
+<tr><td class="hl">80%+ mutation</td><td>✅ আসল গুণমান</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 5 — The Five Masks (Test Doubles)
-// ═══════════════════════════════════════════
 doors.push({
   num: 5,
   icon: "🎭",
-  color: "#a855f7",
-  tagline: "পাঁচ মুখোশ — Five Masks",
-  name: "The Five Masks",
-  secret: "Dummy, Stub, Spy, Mock, Fake — Martin Fowler এর test doubles taxonomy। ভুল ব্যবহার = brittle test।",
-  story: `<p class="scene-setting">Martin Fowler এর classic article 'Mocks Aren't Stubs' — test doubles এর ৫ ধরনের classific। Dummy = ফাঁকা placeholder (parameter fill)। Stub = canned response (Stripe always success)। Spy = record calls (কতবার call হলো)। Mock = behavior verify (একবারই call হলো কিনা)। Fake = real implementation (in-memory DB)। ভুল double ব্যবহার করলে test fragile হয়ে যায়!</p>
+  color: "#22c55e",
+  name: "পাঁচটি মুখোশ",
+  subtitle: "The Five Masks",
+  tech: "Test Doubles — Dummy, Stub, Spy, Mock, Fake (Meszaros 2007), MagicMock, pytest fixtures",
+  spirit: "মিসবাহ — আলো, নকল দিয়ে সত্য পরীক্ষা",
+  secret: "পাঁচটি test double: Dummy (কিছু করে না), Stub (নির্দিষ্ট উত্তর), Spy (রেকর্ড করে), Mock (প্রত্যাশা যাচাই), Fake (সরল বাস্তবায়ন)। প্রতিটি নিজস্ব উদ্দেশ্য।",
+  recall: {
+    q: " Mock ও Stub-এর পার্থক্য কী? কখন Fake ব্যবহার করবে?",
+    qen: "What is the difference between Mock and Stub? When to use Fake?",
+    a: "Stub = নির্দিষ্ট উত্তর দেয় (get_user → {name: ali})। Mock = কল হয়েছে কিনা যাচাই (send_email called?)। Fake = সরল বাস্তবায়ন (InMemoryDB)।",
+    aen: "Stub = returns fixed answer. Mock = verifies call happened. Fake = simplified implementation (InMemoryDB)."
+  },
+  story: `<p class="scene-setting">সুমাইয়া (Door ৪) তোমাকে mutation শিখিয়েছেন। এখন একটি সমস্যা — তোমার টেস্টে ইমেইল পাঠাতে হবে। কিন্তু সত্যিকারের ইমেল পাঠাবে না! সমাধান? Test double — নকল। পাঁচ ধরনের নকল, প্রতিটি নিজস্ব উদ্দেশ্য। Gerarld Meszaros ২০০৭ সালে এই শ্রেণিবিন্যাস দিয়েছেন।</p>
+<p class="scene-setting en">Sumayya (Door 4) taught you mutation. Now a problem — your test needs to send email. But you won't send a real email! Solution? Test double — a fake. Five types of fakes, each with its own purpose. Gerald Meszaros classified them in 2007.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎭 Test Doubles Taxonomy (Martin Fowler)</text>
+<div class="dialogue"><strong>মুখোশ-কারিগর জাইন:</strong> পাঁচটি মুখোশ মনে রাখো: Dummy — কিছু করে না, শুধু প্যারামিটার লাগে। Stub — নির্দিষ্ট উত্তর দেয়, get_user() সবসময় {name: ali} ফেরত দেয়। Spy — কল রেকর্ড করে, পরে দেখো কতবার কল হয়েছে। Mock — প্রত্যাশা যাচাই, send_email কল হয়েছে কিনা? Fake — সরল বাস্তবায়ন, InMemoryDB যা সত্যিকার DB-এর মতো আচরণ করে কিন্তু সরল।</div>
+<div class="dialogue en"><strong>Mask Artisan Zain:</strong> Remember five masks: Dummy — does nothing, just needed as parameter. Stub — gives fixed answer, get_user() always returns {name: ali}. Spy — records calls, later you check how many times called. Mock — verifies expectations, was send_email called? Fake — simplified implementation, InMemoryDB that behaves like real DB but simpler.</div>
 
-  <!-- Dummy -->
-  <rect x="20" y="50" width="105" height="120" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1.5"/>
-  <text x="72" y="72" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="700">Dummy</text>
-  <text x="72" y="88" text-anchor="middle" fill="#cbd5e1" font-size="7">Placeholder</text>
-  <text x="72" y="105" text-anchor="middle" fill="#94a3b8" font-size="7">Passed but never used</text>
-  <rect x="30" y="118" width="85" height="18" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="72" y="131" text-anchor="middle" fill="#64748b" font-size="6">user=None</text>
-  <text x="72" y="148" text-anchor="middle" fill="#64748b" font-size="6">Just fills param</text>
-  <text x="72" y="162" text-anchor="middle" fill="#64748b" font-size="6">No behavior</text>
+<div class="code-block">— Python: পাঁচটি Test Double —
 
-  <!-- Stub -->
-  <rect x="135" y="50" width="105" height="120" rx="8" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="1.5"/>
-  <text x="187" y="72" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="700">Stub</text>
-  <text x="187" y="88" text-anchor="middle" fill="#bae6fd" font-size="7">Canned answer</text>
-  <text x="187" y="105" text-anchor="middle" fill="#7dd3fc" font-size="7">Pre-programmed response</text>
-  <rect x="145" y="118" width="85" height="18" rx="3" fill="#1e293b" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="187" y="131" text-anchor="middle" fill="#7dd3fc" font-size="6">stripe.charge = success</text>
-  <text x="187" y="148" text-anchor="middle" fill="#7dd3fc" font-size="6">Always same answer</text>
-  <text x="187" y="162" text-anchor="middle" fill="#7dd3fc" font-size="6">State verification</text>
+  from unittest.mock import MagicMock, patch
 
-  <!-- Spy -->
-  <rect x="250" y="50" width="105" height="120" rx="8" fill="#451a03" stroke="#f97316" stroke-width="1.5"/>
-  <text x="302" y="72" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="700">Spy</text>
-  <text x="302" y="88" text-anchor="middle" fill="#fdba74" font-size="7">Records calls</text>
-  <text x="302" y="105" text-anchor="middle" fill="#fb923c" font-size="7">Stub + information</text>
-  <rect x="260" y="118" width="85" height="18" rx="3" fill="#1e293b" stroke="#f97316" stroke-width="1"/>
-  <text x="302" y="131" text-anchor="middle" fill="#fb923c" font-size="6">spy.call_count == 2</text>
-  <text x="302" y="148" text-anchor="middle" fill="#fb923c" font-size="6">How many times called?</text>
-  <text x="302" y="162" text-anchor="middle" fill="#fb923c" font-size="6">Records info</text>
+  # ১. DUMMY — কিছু করে না
+  def test_with_dummy(logger):
+      process(data, logger=None)  # logger দরকার, কিন্তু ব্যবহার হয় না
 
-  <!-- Mock -->
-  <rect x="365" y="50" width="105" height="120" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="417" y="72" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Mock</text>
-  <text x="417" y="88" text-anchor="middle" fill="#d8b4fe" font-size="7">Expects calls</text>
-  <text x="417" y="105" text-anchor="middle" fill="#c084fc" font-size="7">Behavior verification</text>
-  <rect x="375" y="118" width="85" height="18" rx="3" fill="#1e293b" stroke="#a855f7" stroke-width="1"/>
-  <text x="417" y="131" text-anchor="middle" fill="#c084fc" font-size="6">expect().once()</text>
-  <text x="417" y="148" text-anchor="middle" fill="#c084fc" font-size="6">Strict expectations</text>
-  <text x="417" y="162" text-anchor="middle" fill="#c084fc" font-size="6">Fails if wrong</text>
+  # ২. STUB — নির্দিষ্ট উত্তর
+  def test_with_stub():
+      user_repo = MagicMock()
+      user_repo.get_user.return_value = {"name": "ali"}
+      # সবসময় ali ফেরত দেয়
+      result = service.process(user_repo)
+      assert result == "Hello ali"
 
-  <!-- Fake -->
-  <rect x="480" y="50" width="80" height="120" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="520" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Fake</text>
-  <text x="520" y="88" text-anchor="middle" fill="#86efac" font-size="7">Real impl</text>
-  <text x="520" y="105" text-anchor="middle" fill="#4ade80" font-size="7">Working but simplified</text>
-  <rect x="487" y="118" width="66" height="18" rx="3" fill="#1e293b" stroke="#22c55e" stroke-width="1"/>
-  <text x="520" y="131" text-anchor="middle" fill="#4ade80" font-size="6">in-memory DB</text>
-  <text x="520" y="148" text-anchor="middle" fill="#4ade80" font-size="6">Real behavior</text>
-  <text x="520" y="162" text-anchor="middle" fill="#4ade80" font-size="6">⭐ Best choice!</text>
+  # ৩. SPY — কল রেকর্ড
+  def test_with_spy():
+      email_service = MagicMock()
+      service.register(email_service)
+      email_service.send.assert_called_once()
+      # send কল হয়েছে কিনা যাচাই
 
-  <!-- Over-mocking warning -->
-  <rect x="30" y="190" width="520" height="110" rx="8" fill="#0f172a" stroke="#dc2626" stroke-width="1.5"/>
-  <text x="290" y="212" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">⚠️ Over-Mocking = Brittle Tests</text>
-  <text x="290" y="232" text-anchor="middle" fill="#fca5a5" font-size="8">When tests know too much about implementation details:</text>
-  <text x="290" y="250" text-anchor="middle" fill="#fca5a5" font-size="8">• Refactoring (same behavior, different code) → tests break ❌</text>
-  <text x="290" y="265" text-anchor="middle" fill="#fca5a5" font-size="8">• Mocks encode assumptions → real system changes → false positive ❌</text>
-  <text x="290" y="285" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="600">✅ Prefer Fake (in-memory DB) over Mock. Test behavior, not implementation.</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: ৫ test doubles — Dummy (placeholder), Stub (canned), Spy (record), Mock (expect), Fake (real impl)। Fake সবচেয়ে ভালো — in-memory DB। Over-mocking = brittle।</div>
+  # ৪. MOCK — প্রত্যাশা যাচাই
+  def test_with_mock():
+      payment = MagicMock()
+      payment.charge.return_value = True
+      order.complete(payment)
+      payment.charge.assert_called_with(100)
+      # charge(100) কল হয়েছে কিনা
 
-<div class="code-block">Five Test Doubles — জীবন্ত উদাহরণ (Martin Fowler):
+  # ৫. FAKE — সরল বাস্তবায়ন
+  class InMemoryUserDB:
+      def __init__(self): self.users = {}
+      def save(self, u): self.users[u.id] = u
+      def get(self, id): return self.users.get(id)
+  # সত্যিকার DB-এর মতো, কিন্তু মেমরিতে</div>
 
-class PaymentProcessor:
-    def __init__(self, gateway, logger):
-        self.gateway = gateway      # Stripe এর মত
-        self.logger = logger
+<div class="verse">إِنَّا جَعَلْنَا مَا عَلَى الْأَرْضِ زِينَةً لَّهَا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই আমরা পৃথিবীতে যা আছে তা তার জন্য অলংকার করেছি।" — কুরআন ১৮:৭</div>
 
-    def charge(self, user, amount):
-        result = self.gateway.pay(amount)
-        self.logger.log(f"Charged {user}: {result}")
-        return result
+<p class="scene-setting">মিসবাহ — আলো। Test double সেই আলোর নকল রূপ — সত্যিকার অবজেক্ট নয়, কিন্তু সত্যিকারের মতো আচরণ করে। নকল দিয়ে সত্য পরীক্ষা — এটাই test double-এর উদ্দেশ্য। যেমন পৃথিবী এক পরীক্ষাগার — আলংকারিক কিন্তু সত্যিকার।</p>
+<p class="scene-setting en">Misbah — light. Test doubles are the fake form of that light — not real objects, but behaving like real. Testing truth with fakes — this is the purpose of test doubles. Like the world is a testing ground — ornamental but real.</p>
 
-১. DUMMY — placeholder, কখনো use হয় না:
-  def test_payment_init():
-      dummy_logger = None   # শুধু param fill করার জন্য
-      proc = PaymentProcessor(RealGateway(), dummy_logger)
-      assert proc is not None   # logger কখনো call হয় না
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪০ (Software Engineering) Door ৬ (TDD):</strong> TDD-তে test double প্রতিদিন ব্যবহৃত। Book ৪৭ Door ৫: এখানে গভীরে — পাঁচটি প্রকার ও কখন কোনটা।</div></div>
 
-২. STUB — canned response (state verification):
-  class StripeStub:
-      def pay(self, amount):
-          return {"status": "success", "id": "ch_test_123"}
-
-  def test_charge_succeeds():
-      proc = PaymentProcessor(StripeStub(), RealLogger())
-      result = proc.charge("rakib", 100)
-      assert result["status"] == "success"   # ← fixed answer
-
-৩. SPY — record calls (কতবার call হলো):
-  class LoggerSpy:
-      def __init__(self):
-          self.calls = []
-      def log(self, msg):
-          self.calls.append(msg)
-
-  def test_logger_was_called():
-      spy = LoggerSpy()
-      proc = PaymentProcessor(StripeStub(), spy)
-      proc.charge("rakib", 100)
-      assert len(spy.calls) == 1   # ← কতবার call হলো তা যাচাই
-
-৪. MOCK — strict expectations (behavior verification):
-  from unittest.mock import MagicMock
-  def test_charge_calls_gateway_once():
-      mock_gateway = MagicMock()
-      mock_gateway.pay.return_value = {"status": "success"}
-      proc = PaymentProcessor(mock_gateway, LoggerSpy())
-      proc.charge("rakib", 100)
-      mock_gateway.pay.assert_called_once_with(100)   # ← strict!
-
-৫. FAKE ⭐ — real implementation, simplified (in-memory DB):
-  class InMemoryAccountDB:
-      """Real CRUD behavior, কিন্তু RAM এ — no MySQL needed."""
-      def __init__(self):
-          self.data = {}
-      def save(self, acct):
-          self.data[acct.id] = acct
-      def get(self, id):
-          return self.data.get(id)
-
-  def test_transfer_between_accounts():
-      db = InMemoryAccountDB()   # ← Fake! Real behavior, fast.
-      db.save(Account(id=1, balance=1000))
-      db.save(Account(id=2, balance=500))
-      transfer(db, from_id=1, to_id=2, amount=200)
-      assert db.get(1).balance == 800
-      assert db.get(2).balance == 700
-
-🏆 Best practice: Fake > Spy > Stub > Mock। Mock কমাও, behavior test করো।</div>
-
-<div class="dialogue"><strong>মার্টিন ফাউলার:</strong> আমি 'Mocks Aren't Stubs' লিখেছিলাম কারণ অনেকে mock আর stub মিক্স করে ফেলে। পাঁচ ধরনের test double আছে — প্রতিটার নিজস্ব উদ্দেশ্য। Stub শুধু fixed answer দেয়। Mock behavior verify করে — কতবার call হলো, কী argument দিয়ে। Fake হল সবচেয়ে সুন্দর — একটা real implementation কিন্তু simplified। In-memory database = Fake। সব কিছু mock করলে test brittle হয়ে যায় — refactor করলেই ভাঙে। আমার পরামর্শ: যত বেশি Fake, তত ভালো। যত কম Mock, তত স্থিতিশীল test।</div>`,
-  recall: [
-    { q: "Stub আর Mock এর মূল পার্থক্য কী?", a: "Stub = canned response, state verification (কী return করল)। Mock = behavior verification (কতবার call হলো, কী argument দিয়ে)। Mock বেশি strict, বেশি brittle।" },
-    { q: "Fake কেন সবচেয়ে ভালো test double?", a: "Fake = real behavior, simplified implementation। In-memory DB তে সত্যিকারের CRUD কাজ করে। Mock এর মতো assumption কোড করতে হয় না। Refactor-safe।" },
-  ]
+<div class="secret-box">🎭 <strong>পাঁচ মুখোশ: Dummy, Stub, Spy, Mock, Fake।</strong> প্রতিটি নিজস্ব উদ্দেশ্য। কিন্তু সব নকল ইনপুট দিয়ে টেস্ট যথেষ্ট নয় — কখনো এলোমেলো ইনপুট দরকার। সেই উপায় — property-based testing। পরের দরজায়।</div>`,
+  senior: {
+    title: "Test Doubles এক নজরে",
+    body: `<table class="kv-table"><tr><th>প্রকার</th><th>কী করে</th></tr>
+<tr><td class="hl">Dummy</td><td>কিছু করে না — শুধু প্যারামিটার</td></tr>
+<tr><td class="hl">Stub</td><td>নির্দিষ্ট উত্তর দেয়</td></tr>
+<tr><td class="hl">Spy</td><td>কল রেকর্ড করে</td></tr>
+<tr><td class="hl">Mock</td><td>প্রত্যাশা যাচাই করে</td></tr>
+<tr><td class="hl">Fake</td><td>সরল বাস্তবায়ন (InMemoryDB)</td></tr>
+<tr><td class="hl">Meszaros (2007)</td><td>xUnit Test Patterns</td></tr></table>`
+  }
 });
