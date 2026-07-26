@@ -120,6 +120,22 @@ doors.push({
 <div class="dialogue">ফাতহা — খোলা। কুরআনের প্রথম সূরা: আল-ফাতিহা — যে খোলে। গবেষণাও একটা খোলা। তুমি একটা বন্ধ দরজার সামনে দাঁড়াও — অজানা। প্রশ্ন হলো সেই চাবি যেটা দরজা খোলে। কিন্তু ভুল চাবি — দরজা খোলে না, তালা নষ্ট করে। সঠিক চাবি — সহজে খোলে, এবং ভেতরে কী আছে সেটা দেখায়। তোমার প্রশ্ন হলো চাবি। যত তীক্ষ্ণ চাবি, তত গভীর খোলা।</div>
 <div class="dialogue en">Fatha — opening. The first surah of the Quran: Al-Fatihah — the opener. Research too is an opening. You stand before a closed door — the unknown. The question is the key that opens it. But the wrong key — doesn't open, breaks the lock. The right key — opens easily, reveals what's inside. Your question is the key. The sharper the key, the deeper the opening.</div>
 
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="grad-d2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1e1b3a"/><stop offset="100%" stop-color="#0a0814"/></linearGradient></defs>
+<rect width="580" height="250" fill="url(#grad-d2)"/>
+<text x="290" y="24" fill="#c4b5fd" font-size="12" font-weight="700" text-anchor="middle">প্রশ্নের স্তর — ব্লুমের সিঁড়ি</text>
+<polygon points="290,55 240,225 340,225" fill="none" stroke="#2a2547" stroke-width="1"/>
+<rect x="276" y="55" width="28" height="24" fill="#5e5c74" opacity="0.35"/><text x="290" y="72" fill="#9290a8" font-size="9" text-anchor="middle">সৃষ্টি</text>
+<rect x="262" y="84" width="56" height="28" fill="#60a5fa" opacity="0.35"/><text x="290" y="102" fill="#93c5fd" font-size="9" text-anchor="middle">বিশ্লেষণ</text>
+<rect x="248" y="116" width="84" height="32" fill="#fbbf24" opacity="0.30"/><text x="290" y="136" fill="#fcd34d" font-size="9" text-anchor="middle">প্রয়োগ</text>
+<rect x="234" y="152" width="112" height="34" fill="#f472b6" opacity="0.28"/><text x="290" y="173" fill="#f9a8d4" font-size="9" text-anchor="middle">বোঝা</text>
+<rect x="220" y="190" width="140" height="34" fill="#a78bfa" opacity="0.22"/><text x="290" y="211" fill="#c4b5fd" font-size="9" text-anchor="middle">মনে রাখা</text>
+<text x="410" y="72" fill="#3dd6c4" font-size="9">✅ গবেষণা</text>
+<text x="410" y="136" fill="#9290a8" font-size="8">⚠️ engineering</text>
+<text x="410" y="211" fill="#ef4444" font-size="8">❌ লুকআপ</text>
+<text x="290" y="242" fill="#9290a8" font-size="8" text-anchor="middle">উপরে উঠো — গবেষণা সবার ওপরে</text>
+</svg><div class="svg-caption">ভালো প্রশ্ন বানাতে হলে ব্লুমের সিঁড়ি ভাঙতে হবে — নিচের স্তরে আটকে থাকলে গবেষণা হয় না।</div></div>
+
 <div class="secret-box">🎯 ভালো গবেষক ভালো উত্তর খোঁজে না — ভালো প্রশ্ন বানায়। প্রশ্নটা নতুন, গুরুত্বপূর্ণ, এবং সমাধানযোগ্য হতে হবে — তিনই। একটা বাদ দিলেই নষ্ট।</div>`
 });
 
@@ -168,6 +184,22 @@ doors.push({
 <div class="dialogue">তাদবির — গভীরভাবে চিন্তা করা। কুরআনে আল্লাহ বলেন: যারা তাদবির করে — গভীরভাবে চিন্তা করে — তারাই বোঝে। পেপার পড়া তাদবির — দ্রুত চোখ চলানো নয়। গভীরে যাওয়া। প্রতিটা বাক্য থামো, ভাবো, প্রশ্ন করো। একটা পেপার যদি ৩ দিনে পড়ো — সেটা শিকড় হবে। এক ঘণ্টায় পড়লে — ধুলো হবে।</div>
 <div class="dialogue en">Tadabbur — deep reflection. Allah says: those who do tadabbur — reflect deeply — they understand. Reading papers is tadabbur — not skimming. Go deep. Stop at each sentence, think, question. If you read a paper in 3 days — it becomes root. In one hour — it becomes dust.</div>
 
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="grad-d3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e1b3a"/><stop offset="100%" stop-color="#0a0814"/></linearGradient></defs>
+<rect width="580" height="250" fill="url(#grad-d3)"/>
+<text x="290" y="24" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle">থ্রি-পাস পদ্ধতি — পেপার পড়ার স্তর</text>
+<path d="M 90 60 L 490 60 L 410 130 L 170 130 Z" fill="#a78bfa" opacity="0.18" stroke="#a78bfa" stroke-width="1"/>
+<text x="290" y="88" fill="#c4b5fd" font-size="11" text-anchor="middle">পাস ১ · স্কিম</text>
+<text x="290" y="104" fill="#9290a8" font-size="8" text-anchor="middle">৫-১০ মিনিট · title, abstract, figures</text>
+<path d="M 170 140 L 410 140 L 350 200 L 230 200 Z" fill="#fbbf24" opacity="0.18" stroke="#fbbf24" stroke-width="1"/>
+<text x="290" y="162" fill="#fcd34d" font-size="11" text-anchor="middle">পাস ২ · স্ট্রাকচার</text>
+<text x="290" y="178" fill="#9290a8" font-size="8" text-anchor="middle">৩০-৬০ মিনিট · পুরো পেপার, গভীরে নয়</text>
+<path d="M 230 210 L 350 210 L 320 238 L 260 238 Z" fill="#3dd6c4" opacity="0.20" stroke="#3dd6c4" stroke-width="1"/>
+<text x="290" y="230" fill="#3dd6c4" font-size="10" text-anchor="middle">পাস ৩ · গভীর · ২-৪ ঘণ্টা</text>
+<text x="510" y="90" fill="#3dd6c4" font-size="9">চওড়া = দ্রুত</text>
+<text x="510" y="222" fill="#3dd6c4" font-size="9">সরু = গভীর</text>
+</svg><div class="svg-caption">তিন পাস পড়ার পর পেপার শিকড় হয় — এক পাসে শুধু ধুলো।</div></div>
+
 <div class="secret-box">📖 পেপার পড়া বই পড়ার মতো নয়। থ্রি-পাস পদ্ধতি: স্কিম → স্ট্রাকচার → গভীর। প্রতিটা পেপার একটা কথোপকথন — তুমি সেই কথায় যোগ দিচ্ছ।</div>`
 });
 
@@ -214,6 +246,27 @@ doors.push({
 <div class="dialogue">ইতিবাচক সন্দেহ — constructive skepticism। ইসলামে সন্দেহ করা শেখানো হয়েছে — কিন্তু নেতিবাচক নয়। পজিটিভ। হাদিসে আছে: খবর যাচাই করো। কুরআনে আল্লাহ বলেন: যদি কোনো ফাসিক খবর নিয়ে আসে, তবে যাচাই করো। এটা সন্দেহ নয় — এটা সত্যের সম্মান। সত্য এত মূল্যবান যে সেটা যাচাই ছাড়া গ্রহণ করা অসম্মান। গবেষকের সন্দেহ হলো সত্যের প্রতি ভালোবাসার প্রকাশ।</div>
 <div class="dialogue en">Constructive skepticism. Islam teaches questioning — not negative, but positive. Hadith: verify news. Allah says: if a sinner brings news, verify it. This isn't doubt — it's respect for truth. Truth is so valuable that accepting it without verification is disrespect. A researcher's doubt is an expression of love for truth.</div>
 
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="grad-d4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0a0814"/><stop offset="100%" stop-color="#1e1b3a"/></linearGradient></defs>
+<rect width="580" height="250" fill="url(#grad-d4)"/>
+<text x="290" y="24" fill="#60a5fa" font-size="12" font-weight="700" text-anchor="middle">দাবি বনাম প্রমাণ — সন্দেহের কাঁটা</text>
+<line x1="60" y1="160" x2="520" y2="160" stroke="#5e5c74" stroke-width="2"/>
+<polygon points="520,160 510,154 510,166" fill="#5e5c74"/>
+<text x="290" y="178" fill="#9290a8" font-size="9" text-anchor="middle">প্রমাণের পরিমাণ</text>
+<rect x="90" y="100" width="60" height="60" rx="4" fill="#ef4444" opacity="0.30" stroke="#ef4444"/>
+<text x="120" y="135" fill="#fca5a5" font-size="9" text-anchor="middle">বড়</text>
+<text x="120" y="195" fill="#fca5a5" font-size="8" text-anchor="middle">বড় দাবি</text>
+<rect x="260" y="115" width="60" height="45" rx="4" fill="#fbbf24" opacity="0.30" stroke="#fbbf24"/>
+<text x="290" y="142" fill="#fcd34d" font-size="9" text-anchor="middle">মধ্যম</text>
+<text x="290" y="195" fill="#fcd34d" font-size="8" text-anchor="middle">মধ্যম দাবি</text>
+<rect x="430" y="128" width="60" height="32" rx="4" fill="#3dd6c4" opacity="0.30" stroke="#3dd6c4"/>
+<text x="460" y="148" fill="#3dd6c4" font-size="9" text-anchor="middle">ছোট</text>
+<text x="460" y="195" fill="#3dd6c4" font-size="8" text-anchor="middle">ছোট দাবি</text>
+<text x="120" y="80" fill="#ef4444" font-size="20" font-weight="700" text-anchor="middle">!</text>
+<text x="460" y="120" fill="#3dd6c4" font-size="20" font-weight="700" text-anchor="middle">✓</text>
+<text x="290" y="222" fill="#c4b5fd" font-size="9" text-anchor="middle">যত বড় দাবি, তত বড় প্রমাণ দরকার</text>
+</svg><div class="svg-caption">সন্দেহ মানে অবিশ্বাস নয় — দাবির সমপরিমাণ প্রমাণ চাওয়া।</div></div>
+
 <div class="secret-box">🔍 বিশ্বাস করা বন্ধ করো না — কিন্তু অন্ধভাবে বিশ্বাস করো না। প্রতিটা দাবির পিছনে প্রমাণ দাবি করো। যত বড় দাবি, তত বড় প্রমাণ।</div>`
 });
 
@@ -252,6 +305,29 @@ doors.push({
 
 <div class="dialogue">তাফাক্কুর — চিন্তা করা, এক সৃষ্টি থেকে আরেকটায় সম্পর্ক দেখা। কুরআনে আল্লাহ বারবার বলেন: তোমরা কি ভেবে দেখো না? আকাশ কীভাবে বানানো, পাহাড় কীভাবে পুঁতে দেওয়া, মৌমাছি কীভাবে মধু বানায়। আল্লাহ এক সৃষ্টিকে অন্যের সাথে যুক্ত করতে বলেন। কারণ সব সৃষ্টি এক স্রষ্টার — নীতি এক। যে এই সংযোগ দেখে, সে স্রষ্টাকে দেখে। গবেষক তাফাক্কুর করে — আর নতুন সত্য খুঁজে পায়।</div>
 <div class="dialogue en">Tafakkur — reflection, seeing relationships between creations. Allah says again and again: do you not reflect? How the sky is built, how mountains are pegged, how bees make honey. Allah asks us to connect one creation to another. Because all creation is from one Creator — the principles are one. One who sees these connections, sees the Creator. A researcher does tafakkur — and discovers new truths.</div>
+
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="grad-d5" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#1e1b3a"/><stop offset="100%" stop-color="#0a0814"/></radialGradient></defs>
+<rect width="580" height="250" fill="url(#grad-d5)"/>
+<text x="290" y="24" fill="#f472b6" font-size="12" font-weight="700" text-anchor="middle">সংযোগের জাল — ফিল্ডের মাঝে সেতু</text>
+<line x1="120" y1="110" x2="290" y2="125" stroke="#f472b6" stroke-width="1" opacity="0.5"/>
+<line x1="290" y1="125" x2="460" y2="110" stroke="#f472b6" stroke-width="1" opacity="0.5"/>
+<line x1="120" y1="110" x2="460" y2="110" stroke="#a78bfa" stroke-width="1" opacity="0.3" stroke-dasharray="4,3"/>
+<line x1="120" y1="195" x2="290" y2="125" stroke="#3dd6c4" stroke-width="1" opacity="0.4"/>
+<line x1="460" y1="195" x2="290" y2="125" stroke="#fbbf24" stroke-width="1" opacity="0.4"/>
+<circle cx="120" cy="110" r="26" fill="#3dd6c4" opacity="0.20" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="120" y="113" fill="#3dd6c4" font-size="9" text-anchor="middle">জীববিজ্ঞান</text>
+<circle cx="460" cy="110" r="26" fill="#fbbf24" opacity="0.20" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="460" y="113" fill="#fcd34d" font-size="9" text-anchor="middle">পদার্থবিজ্ঞান</text>
+<circle cx="290" cy="125" r="30" fill="#f472b6" opacity="0.22" stroke="#f472b6" stroke-width="1.5"/>
+<text x="290" y="122" fill="#f9a8d4" font-size="9" text-anchor="middle">কম্পিউটার</text>
+<text x="290" y="134" fill="#f9a8d4" font-size="9" text-anchor="middle">সায়েন্স</text>
+<circle cx="120" cy="195" r="24" fill="#a78bfa" opacity="0.20" stroke="#a78bfa" stroke-width="1.5"/>
+<text x="120" y="198" fill="#c4b5fd" font-size="9" text-anchor="middle">ভাষাবিজ্ঞান</text>
+<circle cx="460" cy="195" r="24" fill="#60a5fa" opacity="0.20" stroke="#60a5fa" stroke-width="1.5"/>
+<text x="460" y="198" fill="#93c5fd" font-size="9" text-anchor="middle">মনোবিজ্ঞান</text>
+<text x="290" y="232" fill="#9290a8" font-size="8" text-anchor="middle">প্রতিটা নোড থেকে সংযোগ — নতুন গবেষণা জন্মায়</text>
+</svg><div class="svg-caption">সবচেয়ে বড় আবিষ্কার দুই ফিল্ডের মিলনস্থলে — যেখানে দড়ি এক হয়।</div></div>
 
 <div class="secret-box">🕸️ সবচেয়ে বড় গবেষণা এক ফিল্ডের ভেতরে নয় — দুই ফিল্ডের মাঝে। তুমি যা জানো তার সব আলাদা নয় — সব যুক্ত। সংযোগ খোঁজো।</div>`
 });

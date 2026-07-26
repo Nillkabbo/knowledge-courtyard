@@ -52,6 +52,22 @@ doors.push({
 <div class="dialogue">সবর — ধৈর্য। কুরআনে আল্লাহ বলেন: ধৈর্য ধরো, আল্লাহ ধৈর্যশীলদের সাথে আছেন। গবেষণায় সবর হলো — মাসের পর মাস কাজ করা, বারবার ব্যর্থ হওয়া, তবু থামা না। ইব্রাহিম (আ) যখন কাবা বানালেন — বারবার, ধৈর্য ধরে। নূহ (আ) যখন নৌকা বানালেন — শত শত বছর, মানুষ হাসল, তিনি থামলেন না। গবেষকও তেমনি — বারবার ব্যর্থ, তবু থামে না। কারণ জানে — প্রতিটা ব্যর্থতা একটা ইট। সেই ইট দিয়েই সত্যের বাড়ি বানে।</div>
 <div class="dialogue en">Sabr — patience. Allah says: be patient, Allah is with the patient. In research, sabr means — working month after month, failing again and again, yet not stopping. Ibrahim (AS) built the Kaaba — repeatedly, with patience. Nuh (AS) built the ark — hundreds of years, people laughed, he didn't stop. A researcher too — fails repeatedly, yet doesn't stop. Because they know — each failure is a brick. Those bricks build the house of truth.</div>
 
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="grad-d6" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1e1b3a"/><stop offset="100%" stop-color="#0a0814"/></linearGradient></defs>
+<rect width="580" height="250" fill="url(#grad-d6)"/>
+<text x="290" y="24" fill="#ef4444" font-size="12" font-weight="700" text-anchor="middle">ব্যর্থতার ফানেল — প্রতিটা ইট দিয়ে সত্যের বাড়ি</text>
+<rect x="60" y="60" width="380" height="40" rx="6" fill="#ef4444" opacity="0.30" stroke="#ef4444"/>
+<text x="250" y="85" fill="#fca5a5" font-size="11" text-anchor="middle">১০০% পরীক্ষা শুরু</text>
+<rect x="60" y="110" width="342" height="40" rx="6" fill="#fbbf24" opacity="0.25" stroke="#fbbf24"/>
+<text x="231" y="135" fill="#fcd34d" font-size="11" text-anchor="middle">~৯০% ব্যর্থ → উত্তর: এই পথে নয়</text>
+<rect x="60" y="160" width="152" height="40" rx="6" fill="#3dd6c4" opacity="0.30" stroke="#3dd6c4"/>
+<text x="136" y="185" fill="#3dd6c4" font-size="11" text-anchor="middle">~১০% সফল → সত্য</text>
+<path d="M 440 80 L 510 80 L 510 130 L 480 130" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.6"/>
+<polygon points="480,130 486,124 486,136" fill="#ef4444" opacity="0.6"/>
+<text x="525" y="105" fill="#fca5a5" font-size="8">বাদ দাও</text>
+<text x="290" y="222" fill="#9290a8" font-size="9" text-anchor="middle">প্রতিটা ব্যর্থতা একটা ইট — সেই ইট দিয়েই সত্যের বাড়ি বানে</text>
+</svg><div class="svg-caption">ব্যর্থতা শত্রু নয় — গাইড। যে ব্যর্থতাকে ভালোবাসে, সে সত্য পায়।</div></div>
+
 <div class="secret-box">🔥 রিসার্চ হলো ব্যর্থতার আরেক নাম। ৯০% ব্যর্থ, ১০% সফল। কিন্তু সেই ১০% পৃথিবী বদলায়। ব্যর্থতাকে ভয় পেও না — গাইড হিসেবে নাও।</div>`
 });
 
@@ -135,6 +151,26 @@ doors.push({
 <div class="dialogue">কলম — আল্লাহ বলেন: কলমের মাধ্যমে শিখিয়েছেন। কুরআনের প্রথম পাঁচটা আয়াতে দুটো জিনিস — পড়ো আর কলম। কারণ পড়া আর লেখা — এই দুটো জ্ঞানের ভিত্তি। কলম শুধু লেখার টুল নয় — কলম চিন্তার টুল। যখন তুমি লেখো, তুমি তোমার চিন্তাকে আল্লাহর দেওয়া একটা নিয়মে বাঁধো। সেই নিয়ম তোমাকে সত্য দেখায়। মরিয়মের কলম শুধু কাগজে লেখে না — মরিয়মের কলম তাঁর মনকে পরিষ্কার করে।</div>
 <div class="dialogue en">Qalam — Allah says: He taught by the pen. The Quran's first five verses mention two things — read and pen. Because reading and writing are the foundations of knowledge. The pen is not just a writing tool — it's a thinking tool. When you write, you bind your thoughts to a rule Allah gave. That rule shows you truth. Maryam's pen doesn't just write on paper — it clears her mind.</div>
 
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="grad-d7" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0a0814"/><stop offset="100%" stop-color="#1e1b3a"/></linearGradient></defs>
+<rect width="580" height="250" fill="url(#grad-d7)"/>
+<text x="290" y="24" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle">লেখা চিন্তাকে স্পষ্ট করে — মেঘ থেকে আলো</text>
+<path d="M 80 100 Q 60 100 60 85 Q 60 65 80 65 Q 90 50 115 55 Q 130 40 155 50 Q 180 45 185 70 Q 205 75 200 95 Q 200 110 180 110 L 90 110 Q 80 110 80 100 Z" fill="#5e5c74" opacity="0.40" stroke="#9290a8"/>
+<text x="135" y="88" fill="#9290a8" font-size="9" text-anchor="middle">অস্পষ্ট চিন্তা</text>
+<text x="135" y="130" fill="#ef4444" font-size="8" text-anchor="middle">কঠিন লেখা</text>
+<line x1="240" y1="85" x2="300" y2="85" stroke="#fbbf24" stroke-width="2"/>
+<polygon points="300,85 292,80 292,90" fill="#fbbf24"/>
+<text x="270" y="75" fill="#fbbf24" font-size="8" text-anchor="middle">লেখো</text>
+<rect x="320" y="55" width="200" height="60" rx="8" fill="#fbbf24" opacity="0.12" stroke="#fbbf24" stroke-width="1.5"/>
+<line x1="335" y1="72" x2="500" y2="72" stroke="#fbbf24" opacity="0.4" stroke-width="1"/>
+<line x1="335" y1="84" x2="480" y2="84" stroke="#fbbf24" opacity="0.4" stroke-width="1"/>
+<line x1="335" y1="96" x2="505" y2="96" stroke="#fbbf24" opacity="0.4" stroke-width="1"/>
+<text x="420" y="140" fill="#3dd6c4" font-size="9" text-anchor="middle">স্পষ্ট চিন্তা</text>
+<text x="420" y="155" fill="#3dd6c4" font-size="8" text-anchor="middle">সহজ লেখা</text>
+<text x="290" y="200" fill="#c4b5fd" font-size="9" text-anchor="middle">লেখা = চিন্তার আয়না — যা ফাঁক, দেখা যায়</text>
+<text x="290" y="222" fill="#9290a8" font-size="8" text-anchor="middle">খারাপ লেখা ভালো লেখার চেয়ে ভালো — কারণ বদলানো যায়</text>
+</svg><div class="svg-caption">লেখা শেখায় না — লেখা তোমাকে দেখায় তুমি কী জানো, কী জানো না।</div></div>
+
 <div class="secret-box">✍️ লেখা শেখায় না — লেখা চিন্তা করায়। প্রতিদিন ১৫ মিনিট রিসার্চ ডায়েরি লেখো। যদি লেখা কঠিন লাগে — তোমার চিন্তা অস্পষ্ট। লেখো, পরিষ্কার হবে।</div>`
 });
 
@@ -180,6 +216,30 @@ doors.push({
 
 <div class="dialogue">তাওয়াদু — বিনয়। আল্লাহ বলেন: রহমানের বান্দা হলো যারা পৃথিবীতে বিনয়ে চলে। যখন অজ্ঞরা তাদের সম্বোধন করে, তারা বলে সালাম। গবেষক বিনয়ী — কারণ জানে জ্ঞান কত বিশাল, আর সে নিজে কত ছোট। প্রতিটা নতুন আবিষ্কার তাকে আরও বিনয়ী বানায় — কারণ দেখে কত কিছু সে এখনো জানে না। অহংকার মানে স্থবিরতা। বিনয় মানে প্রবাহ।</div>
 <div class="dialogue en">Tawadu — humility. Allah says: the servants of the Merciful are those who walk on earth with humility. When the ignorant address them, they say peace. A researcher is humble — because they know how vast knowledge is, and how small they are. Each new discovery makes them more humble — because they see how much they still don't know. Arrogance means stagnation. Humility means flow.</div>
+
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="grad-d8" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e1b3a"/><stop offset="100%" stop-color="#0a0814"/></linearGradient></defs>
+<rect width="580" height="250" fill="url(#grad-d8)"/>
+<text x="290" y="24" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">বিনয়ের সিঁড়ি — অস্বীকার থেকে শক্তি</text>
+<polygon points="290,210 210,210 250,160 330,160" fill="none" stroke="#2a2547" stroke-width="1"/>
+<polygon points="250,160 330,160 290,110 250,110" fill="none" stroke="#2a2547" stroke-width="1"/>
+<polygon points="250,110 290,110 270,60 250,60" fill="none" stroke="#2a2547" stroke-width="1"/>
+<rect x="225" y="195" width="90" height="20" fill="#ef4444" opacity="0.25" rx="3"/>
+<text x="270" y="208" fill="#fca5a5" font-size="8" text-anchor="middle">১. অস্বীকার</text>
+<text x="380" y="190" fill="#fca5a5" font-size="8">"আমি সব জানি"</text>
+<rect x="245" y="140" width="90" height="20" fill="#fbbf24" opacity="0.25" rx="3"/>
+<text x="290" y="153" fill="#fcd34d" font-size="8" text-anchor="middle">২. সচেতনতা</text>
+<text x="380" y="150" fill="#fcd34d" font-size="8">"যথেষ্ট জানি"</text>
+<rect x="250" y="90" width="90" height="20" fill="#60a5fa" opacity="0.25" rx="3"/>
+<text x="295" y="103" fill="#93c5fd" font-size="8" text-anchor="middle">৩. স্বীকার</text>
+<text x="380" y="100" fill="#93c5fd" font-size="8">"জানি না, শিখবো"</text>
+<rect x="248" y="40" width="90" height="20" fill="#34d399" opacity="0.30" rx="3"/>
+<text x="293" y="53" fill="#34d399" font-size="8" text-anchor="middle">৪. শক্তি</text>
+<text x="380" y="50" fill="#34d399" font-size="8">"জানি না = শক্তি"</text>
+<path d="M 200 215 Q 195 130 200 50" fill="none" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,3"/>
+<polygon points="200,50 195,60 205,60" fill="#34d399"/>
+<text x="160" y="135" fill="#3dd6c4" font-size="9" text-anchor="middle" transform="rotate(-90 160 135)">খোলা</text>
+</svg><div class="svg-caption">"আমি জানি না" — সবচেয়ে কঠিন, কিন্তু সবচেয়ে শক্তিশালী তিন শব্দ।</div></div>
 
 <div class="secret-box">🤲 গবেষক হলো সে যে বলে — আমি জানি না। এই তিন শব্দ সবচেয়ে কঠিন, কিন্তু সবচেয়ে শক্তিশালী। অজ্ঞতা লজ্জা নয় — গবেষণার শুরু।</div>`
 });
@@ -239,6 +299,29 @@ doors.push({
 <div class="dialogue">ইস্তিকামাহ — অটলতা। আল্লাহ বলেন: যারা বলে আমাদের রব আল্লাহ, তারপর সোজা থাকে — তাদের কাছে ফেরেশতা নামে, ভয় করো না, দুঃখ করো না। ইস্তিকামাহ মানে — শুরু করার পর সোজা থাকা। বাধা এলেও, ব্যর্থতা এলেও, একঘেয়েমি এলেও — থামা না। গবেষকের সবচেয়ে বড় গুণ প্রতিভা নয় — ইস্তিকামাহ। কারণ প্রতিভা দিয়ে শুরু করা যায়, কিন্তু ইস্তিকামাহ ছাড়া শেষ করা যায় না।</div>
 <div class="dialogue en">Istiqamah — steadfastness. Allah says: those who say our Lord is Allah, then remain firm — angels descend on them: fear not, grieve not. Istiqamah means — after starting, staying straight. Obstacles come, failures come, monotony comes — yet not stopping. A researcher's greatest quality is not talent — it's istiqamah. Because talent starts, but without istiqamah, nothing finishes.</div>
 
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="grad-d9" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0814"/><stop offset="100%" stop-color="#1e1b3a"/></linearGradient></defs>
+<rect width="580" height="250" fill="url(#grad-d9)"/>
+<text x="290" y="24" fill="#94a3b8" font-size="12" font-weight="700" text-anchor="middle">গ্রিট বনাম প্রতিভা — বীজ থেকে গাছ</text>
+<line x1="60" y1="200" x2="280" y2="200" stroke="#5e5c74" stroke-width="2"/>
+<text x="170" y="218" fill="#9290a8" font-size="8" text-anchor="middle">সময়</text>
+<path d="M 170 200 Q 168 150 165 100" fill="none" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+<ellipse cx="160" cy="95" rx="35" ry="28" fill="#34d399" opacity="0.35"/>
+<ellipse cx="180" cy="80" rx="30" ry="22" fill="#52c41a" opacity="0.30"/>
+<ellipse cx="150" cy="110" rx="25" ry="18" fill="#34d399" opacity="0.25"/>
+<circle cx="90" cy="200" r="4" fill="#fbbf24"/>
+<text x="90" y="188" fill="#fbbf24" font-size="8" text-anchor="middle">বীজ</text>
+<circle cx="170" cy="200" r="4" fill="#94a3b8"/>
+<text x="170" y="222" fill="#9290a8" font-size="8" text-anchor="middle">চারা</text>
+<text x="200" y="65" fill="#34d399" font-size="9">গাছ (ফল)</text>
+<text x="350" y="80" fill="#c4b5fd" font-size="11" font-weight="700">গ্রিট সূত্র</text>
+<text x="350" y="110" fill="#fbbf24" font-size="10">প্রতিভা × প্রচেষ্টা = দক্ষতা</text>
+<text x="350" y="132" fill="#3dd6c4" font-size="10">দক্ষতা × প্রচেষ্টা = অর্জন</text>
+<rect x="345" y="148" width="225" height="26" rx="6" fill="#f472b6" opacity="0.15" stroke="#f472b6"/>
+<text x="458" y="166" fill="#f9a8d4" font-size="10" text-anchor="middle">প্রতিভা × প্রচেষ্টা² = অর্জন</text>
+<text x="350" y="200" fill="#9290a8" font-size="8">প্রচেষ্টা দুইবার গোনা — প্রতিভার চেয়ে গুরুত্বপূর্ণ</text>
+</svg><div class="svg-caption">গবেষণা গাছের মতো — ধীর, কিন্তু যে থাকে সে ফল পায়।</div></div>
+
 <div class="secret-box">🪨 গবেষণা ম্যারাথন — স্প্রিন্ট নয়। প্রতিদিন এক ঘণ্টা, প্রতি সপ্তাহ এক পেপার, প্রতি মাস এক সামারি। ধীর, কিন্তু অবিরাম। প্রচেষ্টা প্রতিভার চেয়ে ১০ গুণ শক্তিশালী।</div>`
 });
 
@@ -290,6 +373,31 @@ doors.push({
 
 <div class="dialogue">তাওহিদ — একত্ব। সব গুণ আসলে এক। কৌতূহল আর অধ্যবসায় — একই জিনিসের দুই মুখ। একটা জিজ্ঞাসা, একটা আগুন, একটা প্রেম — জ্ঞানের প্রতি। আল্লাহ এক। সত্য এক। জ্ঞান এক। যে জ্ঞান খোঁজে, সে সত্য খোঁজে, সে আল্লাহকে খোঁজে। কুরআনের প্রথম শব্দ — ইকরা, পড়ো। শেষ নির্দেশ — জ্ঞান বৃদ্ধি করো। এই দুইয়ের মাঝে — গবেষকের জীবন। এই জীবন তুমি এখন শুরু করছো। নয়টা দরজা পেরোলে। এখন দশম দরজা — খোলা দরজা। যে দরজা কোনো দেয়ালে নেই — তোমার মনে।</div>
 <div class="dialogue en">Tawhid — oneness. All qualities are one. Curiosity and persistence — two faces of one thing. One inquiry, one fire, one love — for knowledge. Allah is one. Truth is one. Knowledge is one. One who seeks knowledge, seeks truth, seeks Allah. The Quran's first word — Iqra, read. The last command — increase knowledge. Between these two — the researcher's life. This life you now begin. You've passed nine doors. Now the tenth — an open door. A door in no wall — in your mind.</div>
+
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="grad-d10" cx="50%" cy="50%" r="55%"><stop offset="0%" stop-color="#1e1b3a"/><stop offset="100%" stop-color="#0a0814"/></radialGradient></defs>
+<rect width="580" height="250" fill="url(#grad-d10)"/>
+<text x="290" y="24" fill="#a78bfa" font-size="12" font-weight="700" text-anchor="middle">গবেষকের চক্র — নয় গুণ, এক পরিচয়</text>
+<circle cx="290" cy="135" r="78" fill="none" stroke="#a78bfa" stroke-width="1" opacity="0.4" stroke-dasharray="3,3"/>
+<circle cx="290" cy="135" r="14" fill="#a78bfa" opacity="0.35" stroke="#a78bfa"/>
+<text x="290" y="139" fill="#c4b5fd" font-size="8" text-anchor="middle">গবেষক</text>
+<g font-size="8" text-anchor="middle">
+<circle cx="290" cy="57" r="11" fill="#3dd6c4" opacity="0.25" stroke="#3dd6c4"/><text x="290" y="60" fill="#3dd6c4">কৌতূহল</text>
+<circle cx="365" cy="85" r="11" fill="#c4b5fd" opacity="0.25" stroke="#c4b5fd"/><text x="365" y="88" fill="#c4b5fd">প্রশ্ন</text>
+<circle cx="395" cy="135" r="11" fill="#fbbf24" opacity="0.25" stroke="#fbbf24"/><text x="395" y="138" fill="#fcd34d">পাঠ</text>
+<circle cx="365" cy="185" r="11" fill="#60a5fa" opacity="0.25" stroke="#60a5fa"/><text x="365" y="188" fill="#93c5fd">সন্দেহ</text>
+<circle cx="290" cy="213" r="11" fill="#f472b6" opacity="0.25" stroke="#f472b6"/><text x="290" y="216" fill="#f9a8d4">সংযোগ</text>
+<circle cx="215" cy="185" r="11" fill="#ef4444" opacity="0.25" stroke="#ef4444"/><text x="215" y="188" fill="#fca5a5">ব্যর্থতা</text>
+<circle cx="185" cy="135" r="11" fill="#fbbf24" opacity="0.25" stroke="#fbbf24"/><text x="185" y="138" fill="#fcd34d">লেখা</text>
+<circle cx="215" cy="85" r="11" fill="#34d399" opacity="0.25" stroke="#34d399"/><text x="215" y="88" fill="#6ee7b7">বিনয়</text>
+<circle cx="290" cy="135" r="0" opacity="0"/>
+<text x="135" y="105" fill="#94a3b8" font-size="8">অধ্যবসায়</text>
+<circle cx="155" cy="110" r="11" fill="#94a3b8" opacity="0.25" stroke="#94a3b8"/>
+</g>
+<path d="M 290 68 A 78 78 0 0 1 384 135" fill="none" stroke="#a78bfa" stroke-width="1" opacity="0.5" marker-end=""/>
+<path d="M 290 202 A 78 78 0 0 1 196 135" fill="none" stroke="#a78bfa" stroke-width="1" opacity="0.5"/>
+<text x="290" y="240" fill="#9290a8" font-size="8" text-anchor="middle">চক্র থামে না — জীবনভর ঘোরে</text>
+</svg><div class="svg-caption">নয়টা গুণ আলাদা নয় — এক মানুষের নয়টা রূপ, এক চক্রে বাঁধা।</div></div>
 
 <div class="secret-box">🎓 তুমি এখন গবেষক। নয়টা গুণ, নয়জন শিক্ষক, এক পরিচয়। PhD হলো শুধু একটা ফলাফল — গবেষকের মনই আসল সম্পদ। এই মন নিয়ে চলো — জ্ঞানের চক্রে, জীবনভর।</div>`
 });
