@@ -112,6 +112,22 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (সিস্টেম ডিজাইন):</strong> API Gateway, Load Balancer, Microservices — এগুলো Application স্তরের ধারণা। Book ৩৫ (ডিস্ট্রিবিউটেড সিস্টেমস): Consensus, CAP — এগুলো Transport ও Network স্তরের উপর নির্ভর করে।</div></div>
 
+<div class="code-block">— স্তর দেখো বাস্তবে (curl দিয়ে) —
+$ curl -I https://google.com
+
+HTTP/2 200                              ← Layer 7 (Application)
+content-type: text/html                 ← Layer 6 (Presentation — format)
+date: Sun, 26 Jul 2026 14:30:00 GMT     ← Layer 5 (Session — state)
+age: 123                                ← Layer 4 (Transport — TCP port 443)
+alt-svc: h3=":443"                      ← Layer 3 (Network — IP routing)
+server: gws                             ← Layer 2 (Data Link — MAC)
+                                        ← Layer 1 (Physical — তারের সংকেত)
+
+— প্রতিটি header একটি স্তরের ইঙ্গিত দেয় —
+— তুমি curl চালাও, সাতটি স্তর একসাথে কাজ করে —</div>
+
+<div class="callout tip"><span class="co-icon">💡</span><div><strong>বাস্তবে দেখো:</strong> <code>curl -I</code> চালালে তুমি Application স্তরের উত্তর দেখো। কিন্তু ভেতরে ৭টি স্তর কাজ করেছে — DNS lookup (L7), TCP handshake (L4), IP routing (L3), Ethernet frame (L2), তারের সংকেত (L1)। তুমি শুধু শীর্ষ দেখো, ভিত্তি অদৃশ্য।</div></div>
+
 <div class="secret-box">🏗️ <strong>নেটওয়ার্ক = সাত তলার ভবন।</strong> তুমি সপ্তম তল থেকে বার্তা পাঠাও, প্রথম তল থেকে বৈদ্যুতিক সংকেত যায়। প্রতিটি তলের নিজস্ব কাজ, নিজস্ব ভাষা। এটাই abstraction — উপরের তল জানেই না নিচে কী হচ্ছে। কিন্তু এই ভবনের ভিত্তি কী? তার এবং সংকেত। সেই যাত্রা শুরু হবে পরের দরজায়।</div>`,
   senior: {
     title: "OSI + TCP/IP এক নজরে",
@@ -210,6 +226,35 @@ doors.push({
 </svg>
 <div class="diag-cap">Switch: MAC টেবিল দেখে শুধু সঠিক পোর্টে পাঠায় · Hub: সব পোর্টে ব্রডকাস্ট করে</div>
 </div>
+
+<div class="code-block">— তোমার NIC দেখো —
+$ ip addr show eth0    (Linux)
+$ ifconfig en0         (macOS)
+
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP
+    link/ether 3c:5a:b4:0f:12:7d brd ff:ff:ff:ff:ff:ff    ← MAC ঠিকানা
+    inet 192.168.1.42/24 brd 192.168.1.255 scope global eth0  ← IP ঠিকানা
+
+— MAC ঠিকানার গঠন: ৪৮ বিট = ৬ বাইট —
+  3C:5A:B4  |  0F:12:7D
+  ─────────    ─────────
+  OUI (কারখানা)   NIC (পৃথক যন্ত্র)
+  IEEE নির্ধারিত   কারখানায় বরাদ্দ</div>
+
+<div class="code-block">— ARP টেবিল: IP → MAC ম্যাপিং —
+$ arp -a
+
+? (192.168.1.1)    at 00:1a:2b:3c:4d:5e  on eth0   ← রাউটার
+? (192.168.1.100)  at ab:cd:ef:01:23:45  on eth0   ← প্রতিবেশী
+? (192.168.1.255)  at ff:ff:ff:ff:ff:ff  on eth0   ← broadcast
+
+— ARP কীভাবে কাজ করে —
+  ১. "কে 192.168.1.1?" → broadcast (সবাই শোনে)
+  ২. রাউটার বলে "আমি! আমার MAC: 00:1a:2b:3c:4d:5e"
+  ৩. তোমার ARP টেবিলে সংরক্ষণ (cache, ~20 min)
+  ৪. এখন ফ্রেম সরাসরি যায় — প্রতিবার broadcast লাগে না</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ARP Spoofing বিপদ:</strong> কেউ ভুল MAC বললে তোমার ফ্রেম ভুল জায়গায় যায়। এটাকে ARP poisoning বলে — Man-in-the-Middle আক্রমণের ভিত্তি। প্রতিরোধ: Dynamic ARP Inspection (DAI), static ARP entries।</div></div>
 
 <div class="verse">أَلَمْ تَرَوْا أَنَّ اللَّهَ سَخَّرَ لَكُم مَّا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"তোমরা কি দেখো না যে আল্লাহ আসমান ও পৃথিবীতে যা কিছু আছে তা তোমাদের অধীন করেছেন?" — কুরআন ৩১:২০</div>
@@ -311,6 +356,54 @@ doors.push({
 <div class="diag-cap">প্যাকেট প্রতিটি রাউটারে থামে · TTL ১ কমে · শূন্য হলে বাতিল · এটাই traceroute-এর কৌশল</div>
 </div>
 
+<div class="code-block">— ping: গন্তব্য আছে কি না —
+$ ping -c 4 google.com
+
+PING google.com (142.250.190.46): 56 data bytes
+64 bytes from 142.250.190.46: icmp_seq=0 ttl=117 time=12.3 ms
+64 bytes from 142.250.190.46: icmp_seq=1 ttl=117 time=11.8 ms
+64 bytes from 142.250.190.46: icmp_seq=2 ttl=117 time=13.1 ms
+64 bytes from 142.250.190.46: icmp_seq=3 ttl=117 time=12.0 ms
+--- google.com ping statistics ---
+4 packets transmitted, 4 received, 0.0% packet loss
+round-trip min/avg/max = 11.8/12.3/13.1 ms
+
+— পড়ো: 0% loss = সংযোগ সুস্থ · 100% loss = আটকে আছে —</div>
+
+<div class="code-block">— traceroute: পথ দেখো হপ বাই হপ —
+$ traceroute google.com
+
+ 1  192.168.1.1     1.2 ms   ← তোমার রাউটার
+ 2  10.50.12.1      4.5 ms   ← ISP গেটওয়ে
+ 3  72.14.215.1     12.1 ms  ← ISP backbone
+ 4  142.250.190.1   15.3 ms  ← Google-এর নেটওয়ার্ক
+ 5  142.250.190.46  14.8 ms  ← গন্তব্য সার্ভার
+
+— প্রতিটি * * * = সেই হপ রেসপন্স দেয় না (ফায়ারওয়াল ব্লক) —</div>
+
+<div class="callout info"><span class="co-icon">📐</span><div><strong>সাবনেটিং — একটি পূর্ণ উদাহরণ:</strong><br>
+<strong>প্রশ্ন:</strong> ১৯২.১৬৮.১.০/২৪ নেটওয়ার্ককে ৪টি সমান সাবনেটে ভাগ করো।<br>
+<strong>ধাপ ১:</strong> ৪টি সাবনেটের জন্য ২ বিট দরকার (২² = ৪)।<br>
+<strong>ধাপ ২:</strong> নতুন মাস্ক: /২৬ (২৫৫.২৫৫.২৫৫.১৯২)<br>
+<strong>ধাপ ৩:</strong> প্রতিটি সাবনেটে ৬৪ ঠিকানা (৬২ ব্যবহারযোগ্য)।</div></div>
+
+<div class="code-block">— সাবনেট হিসাব —
+নেটওয়ার্ক:   192.168.1.0/24   (মূল — ২৫৪ হোস্ট)
+মাস্ক:       255.255.255.0    (/24)
+
+৪ সাবনেটে ভাগ (/26 — ২ বিট ধার):
+┌─────────────────────────┬───────────────┬───────────────┐
+│ সাবনেট                    │ রেঞ্জ           │ ব্যবহারযোগ্য      │
+├─────────────────────────┼───────────────┼───────────────┤
+│ 192.168.1.0/26          │ .0   → .63    │ .1   → .62    │
+│ 192.168.1.64/26         │ .64  → .127   │ .65  → .126   │
+│ 192.168.1.128/26        │ .128 → .191   │ .129 → .190   │
+│ 192.168.1.192/26        │ .192 → .255   │ .193 → .254   │
+└─────────────────────────┴───────────────┴───────────────┘
+
+— কেন দরকার? ৫০০ জনের অফিসে এক /24 নেটওয়ার্কে —
+— চারটি বিভাগ চারটি সাবনেটে — ব্রডকাস্ট কমে, নিরাপত্তা বাড়ে —</div>
+
 <div class="verse">وَجَعَلْنَا فِي الْأَرْضِ رَوَاسِيَ وَفَجَّرْنَا فِيهَا أَنْهَارًا</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং পৃথিবীতে আমরা স্থাপন করেছি পর্বতমালা এবং সেখানে প্রবাহিত করেছি নদী।" — কুরআন ৫০:৭</div>
 
@@ -394,6 +487,48 @@ doors.push({
 </svg>
 <div class="diag-cap">Step ১: SYN (ক্লায়েন্ট অনুরোধ) · Step ২: SYN-ACK (সার্ভার স্বীকার) · Step ৩: ACK (ক্লায়েন্ট নিশ্চিত)</div>
 </div>
+
+<div class="code-block">— TCP হেডার গঠন (২০ বাইট ন্যূনতম) —
+┌───────────────────────────────────────────────────────────┐
+│  সোর্স পোর্ট (১৬ বিট)    │  গন্তব্য পোর্ট (১৬ বিট)      │
+├───────────────────────────────────────────────────────────┤
+│  সিকোয়েন্স নম্বর (৩২ বিট) — প্রতিটি বাইটের ক্রম         │
+├───────────────────────────────────────────────────────────┤
+│  অ্যাকনলেজমেন্ট নম্বর (৩২ বিট) — "এত পেয়েছি"             │
+├─────────────┬─────────────┬───────────────────────────────┤
+│ Data Offset │  Flags      │  Window Size (রিসিভার ধারণ)   │
+│  (৪ বিট)    │ SYN ACK FIN │  (১৬ বিট)                     │
+├───────────────────────────────────────────────────────────┤
+│  Checksum (১৬ বিট)      │  Urgent Pointer (১৬ বিট)      │
+├───────────────────────────────────────────────────────────┤
+│  Options (ঐচ্ছিক)  ·  ·  ·  Data (তোমার আসল বার্তা)      │
+└───────────────────────────────────────────────────────────┘</div>
+
+<div class="code-block">— সক্রিয় TCP সংযোগ দেখো —
+$ netstat -tn    (Linux/macOS)
+
+Active Internet connections (TCP)
+Proto  Local Address          Foreign Address        State
+tcp    192.168.1.42:52341     142.250.190.46:443     ESTABLISHED
+tcp    192.168.1.42:52342     140.82.112.4:443       TIME_WAIT
+tcp    192.168.1.42:52343     151.101.1.69:80        SYN_SENT   ← সংযোগ চলছে
+
+— State পড়ো: —
+  ESTABLISHED = সংযোগ চালু     LISTEN = সার্ভার অপেক্ষা
+  SYN_SENT   = ক্লায়েন্ট হাতছাড়া  TIME_WAIT = বন্ধ হচ্ছে</div>
+
+<div class="code-block">— tcpdump: TCP handshake ধরো —
+$ sudo tcpdump -i eth0 -n 'tcp port 443' -c 6
+
+11:30:01.123 IP 192.168.1.42.52341 > 142.250.190.46.443: Flags [S],    seq 1234567
+    ← SYN: ক্লায়েন্ট "সংযোগ চাই"
+11:30:01.135 IP 142.250.190.46.443 > 192.168.1.42.52341: Flags [S.],   seq 9876543
+    ← SYN-ACK: সার্ভার "ঠিক আছে"
+11:30:01.136 IP 192.168.1.42.52341 > 142.250.190.46.443: Flags [.],    ack 9876544
+    ← ACK: ক্লায়েন্ট "নিশ্চিত করলাম"
+
+— Flags: [S]=SYN  [.]=ACK  [P]=PUSH  [F]=FIN  [R]=RST —
+— এটাই Wireshark দেখায় — কিন্তু টার্মিনালে বিনামূল্যে —</div>
 
 <div class="callout info"><span class="co-icon">⚡</span><div><strong>UDP (User Datagram Protocol):</strong><br>
 কোনো সংযোগ নেই। কোনো রসিদ নেই। কোনো ক্রম নেই।<br>
@@ -524,6 +659,64 @@ doors.push({
 </svg>
 <div class="diag-cap">Root (১৩টি) → TLD (.com/.org/.bn) → Authoritative (প্রতিটি ডোমেইনের নিজস্ব) · Resolver প্রতিটি স্তরে জিজ্ঞেস করে</div>
 </div>
+
+<div class="code-block">— dig: DNS রেজোলিউশন দেখো —
+$ dig google.com
+
+;; QUESTION SECTION:
+;google.com.            IN  A
+
+;; ANSWER SECTION:
+google.com.     300  IN  A   142.250.190.46   ← TTL: 300s
+
+;; Query time: 12 msec
+;; SERVER: 192.168.1.1#53             ← তোমার resolver
+
+— nslookup (সহজ সংস্করণ) —
+$ nslookup google.com
+Server:     192.168.1.1
+Address:    192.168.1.1#53
+Name:    google.com
+Address: 142.250.190.46
+
+— ভিন্ন রেকর্ড দেখো —
+$ dig MX google.com    → মেইল সার্ভার
+$ dig NS google.com    → কোন authoritative সার্ভার
+$ dig AAAA google.com  → IPv6 ঠিকানা</div>
+
+<div class="code-block">— DNS রেকর্ড টাইপ (বাস্তব উদাহরণ) —
+google.com.    300   IN  A      142.250.190.46
+google.com.    300   IN  AAAA   2607:f8b0:4004:800::200e
+google.com.    3600  IN  MX     10 smtp.google.com
+google.com.    86400 IN  NS     ns1.google.com.
+www.google.com 3600  IN  CNAME  google.com.
+google.com.    3600  IN  TXT    "v=spf1 include:_spf.google.com ~all"
+
+— TTL (উপরের সংখ্যা): —
+  300   = ৫ মিনিট (ঘন ঘন বদলায়)
+  86400 = ১ দিন (স্থিতিশীল)
+  ছোট TTL = দ্রুত আপডেট কিন্তু বেশি ট্রাফিক</div>
+
+<div class="callout info"><span class="co-icon">🔌</span><div><strong>DHCP DORA Process (Missing Topic!):</strong> তুমি যখন Wi-Fi তে যুক্ত হও, তোমাকে একটি IP ঠিকানা দরকার। এটি DHCP প্রোটোকল দেয় — ৪টি ধাপে।<br>
+<strong>D</strong>iscover: ক্লায়েন্ট ব্রডকাস্ট করে — "আমাকে IP দাও!"<br>
+<strong>O</strong>ffer: DHCP সার্ভার বলে — "এই নাও ১৯২.১৬৮.১.৪২"<br>
+<strong>R</strong>equest: ক্লায়েন্ট বলে — "ঠিক আছে, এটাই নিচ্ছি"<br>
+<strong>A</strong>cknowledge: সার্ভার বলে — "নিশ্চিত, এটা তোমার"</div></div>
+
+<div class="code-block">— DHCP DORA প্রক্রিয়া প্যাকেটে —
+  ক্লায়েন্ট                       DHCP সার্ভার
+     │                               │
+     │ ── DISCOVER (broadcast) ────→ │  "আমাকে IP দাও"
+     │                               │
+     │ ←── OFFER (unicast) ────────  │  "এই 192.168.1.42"
+     │                               │
+     │ ── REQUEST (broadcast) ────→  │  "এটাই চাই"
+     │                               │
+     │ ←── ACK (unicast) ──────────  │  "নিশ্চিত, TTL=86400s"
+     │                               │
+
+— Lease time: সাধারণত ২৪ ঘণ্টা — অর্ধেক হলে রিনিউ করে —
+— DNS, gateway, subnet mask সব DHCP দেয় — শুধু IP নয় —</div>
 
 <div class="verse">وَعَلَّمَ آدَمَ الْأَسْمَاءَ كُلَّهَا</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং তিনি আদমকে শিখিয়েছিলেন সমস্ত নাম।" — কুরআন ২:৩১</div>

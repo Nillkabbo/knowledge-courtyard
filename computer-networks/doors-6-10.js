@@ -79,6 +79,38 @@ Body (POST/PUT-এর জন্য): ডেটা</div></div>
 <div class="diag-cap">Request: METHOD + URL + Headers · Response: Status + Headers + Body · প্রতিটি কথোপকথন স্বাধীন</div>
 </div>
 
+<div class="code-block">— একটি HTTP Request দেখো (কাঁচা) —
+GET /users/42 HTTP/1.1              ← Method + URL + Version
+Host: api.example.com               ← কোন সার্ভার
+User-Agent: Mozilla/5.0             ← কে জিজ্ঞেস করছে
+Accept: application/json            ← কী ফরম্যাট চায়
+Authorization: Bearer eyJhb...      ← পরিচয় প্রমাণ
+                                    ← ফাঁকা লাইন = হেডার শেষ
+
+— সার্ভারের উত্তর —
+HTTP/1.1 200 OK                    ← Status line
+Content-Type: application/json      ← বডি কী ফরম্যাট
+Content-Length: 47                  ← বডির সাইজ
+Cache-Control: max-age=3600         ← Cache নির্দেশ
+                                    ← ফাঁকা লাইন
+{"id":42,"name":"Tania","role":"admin"}  ← Body</div>
+
+<div class="code-block">— curl: সবচেয়ে শক্তিশালী HTTP টুল —
+$ curl -v https://api.example.com/users/42
+
+> GET /users/42 HTTP/2             ← তুমি পাঠাও (>)
+> Host: api.example.com
+> User-Agent: curl/8.0
+>
+< HTTP/2 200                       ← সার্ভার উত্তর (<)
+< content-type: application/json
+< content-length: 47
+<
+{"id":42,"name":"Tania","role":"admin"}
+
+— > মানে তোমার request,  < মানে সার্ভারের response —
+— বাস্তবে এটি HTTP/2 বা HTTP/3 — কিন্তু ফরম্যাট একই —</div>
+
 <p class="scene-setting">১৯৮৯ সালে Tim Berners-Lee CERN-এ ওয়ার্ল্ড ওয়াইড ওয়েব আবিষ্কার করেছিলেন। HTTP ছিল তার সবচেয়ে সহজ প্রোটোকল — শুধু GET ছিল। কোনো version নম্বর নেই, কোনো header নেই। শুধু — "এই পেজটি দাও।" আজ HTTP/৩ — QUIC protocol, UDP-র উপর নির্মিত, দ্রুত, নিরাপদ।</p>
 <p class="scene-setting en">In 1989, Tim Berners-Lee invented the World Wide Web at CERN. HTTP was its simplest protocol — only GET existed. No version number, no headers. Just — "give me this page." Today HTTP/3 — QUIC protocol, built on UDP, fast, secure.</p>
 
@@ -209,6 +241,37 @@ doors.push({
 <div class="diag-cap">CDN = বিশ্বজুড়ে edge cache · Origin এক, Edge অনেক · User সবচেয়ে কাছের Edge থেকে সেবা পায়</div>
 </div>
 
+<div class="code-block">— CDN হেডার পড়ো (curl দিয়ে) —
+$ curl -I https://cdn.example.com/image.png
+
+HTTP/2 200
+server: cloudflare                     ← কোন CDN?
+cf-ray: 8a1b2c3d4e5f-LHR               ← কোন edge? (London)
+cf-cache-status: HIT                   ← cache এ আছে?
+age: 3600                              ← কত সেকেন্ড ধরে cache-এ
+cache-control: public, max-age=86400   ← ১ দিন cache করো
+cf-cache-status: HIT                   ← HIT = cache থেকে দিলাম
+                                       ← MISS = origin থেকে আনতে হবে
+
+— cf-cache-status মান: —
+  HIT    = edge-এ cache ছিল, দ্রুত দিলাম
+  MISS   = cache ছিল না, origin থেকে আনলাম
+  EXPIRED = TTL শেষ, আবার origin থেকে আনলাম
+  BYPASS = cache করতে বারণ করা হয়েছে</div>
+
+<div class="code-block">— Cache-Control হেডার সিনট্যাক্স —
+Cache-Control: public, max-age=3600        ← সবাই cache করতে পারে, ১ ঘণ্টা
+Cache-Control: private, max-age=600         ← শুধু browser, CDN নয়
+Cache-Control: no-cache                     ← প্রতিবার যাচাই করো (origin-এ)
+Cache-Control: no-store                     ← কোনোভাবেই cache করো না
+Cache-Control: public, max-age=31536000     ← ১ বছর (static assets)
+
+— বাস্তব নিয়ম: —
+  HTML        → no-cache (সবসময় তাজা)
+  CSS/JS      → max-age=31536000 (১ বছর + fingerprint)
+  Images      → max-age=86400 (১ দিন)
+  API JSON    → no-store (ব্যক্তিগত ডেটা)</div>
+
 <div class="verse">وَنُنَزِّلُ مِنَ الْقُرْآنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং আমরা কুরআন থেকে যা নাজিল করি তা আরোগ্য ও করুণা।" — কুরআন ১৭:৮২</div>
 
@@ -308,6 +371,38 @@ doors.push({
 </svg>
 <div class="diag-cap">HTTP = বারবার নতুন কল · WebSocket = এক কল, খোলা রাখো · রিয়েল-টাইম কথোপকথন</div>
 </div>
+
+<div class="code-block">— WebSocket ক্লায়েন্ট (JavaScript) —
+// ১. সংযোগ খোলো (ws:// বা wss:// encrypted)
+const ws = new WebSocket('wss://chat.example.com/ws');
+
+// ২. সংযোগ স্থাপিত হলে
+ws.onopen = function() {
+  console.log('সংযোগ খোলা!');
+  ws.send(JSON.stringify({type: 'join', room: 'general'}));
+};
+
+// ৩. সার্ভার থেকে বার্তা এলে
+ws.onmessage = function(event) {
+  const msg = JSON.parse(event.data);
+  console.log(msg.user + ': ' + msg.text);
+};
+
+// ৪. বার্তা পাঠাও (যেকোনো সময়!)
+ws.send(JSON.stringify({type: 'msg', text: 'হ্যালো!'}));
+
+// ৫. বন্ধ করো
+ws.close();
+
+— তুলনা: HTTP তে একই কাজ —
+// HTTP polling (খারাপ উপায়)
+setInterval(() => {
+  fetch('/messages?since=' + lastId)  // প্রতি ৫ সেকেন্ডে
+    .then(r => r.json())
+    .then(msgs => console.log(msgs));
+}, 5000);                              // অপচয়, ধীর</div>
+
+<div class="callout tip"><span class="co-icon">💡</span><div><strong>বাস্তবে:</strong> WhatsApp, Slack, Discord — সবাই WebSocket ব্যবহার করে। যখন কেউ টাইপ করছে (typing indicator) — সেটাও WebSocket frame। কোনো polling নেই, কোনো দেরি নেই। সার্ভার push করে, ক্লায়েন্ট সাথে সাথে দেখে।</div></div>
 
 <div class="callout info"><span class="co-icon">📡</span><div><strong>রিয়েল-টাইম প্রোটোকল পরিবার:</strong><br>
 <strong>WebSocket:</strong> দ্বিমুখী (bidirectional) — চ্যাট, গেম, রিয়েল-টাইম ড্যাশবোর্ড<br>
@@ -421,6 +516,48 @@ doors.push({
 </svg>
 <div class="diag-cap">Handshake: asymmetric দিয়ে key exchange · তারপর: symmetric দিয়ে দ্রুত এনক্রিপশন · MITM অসম্ভব</div>
 </div>
+
+<div class="code-block">— OpenSSL: সার্ভারের সার্টিফিকেট পরীক্ষা করো —
+$ openssl s_client -connect google.com:443 -servername google.com
+
+CONNECTED(00000003)
+---
+Certificate chain
+ 0 s:CN = *.google.com            ← Subject (কার সার্টিফিকেট?)
+   i:CN = GTS CA 1C3              ← Issuer (কে সাইন করেছে?)
+---
+Server certificate
+  subject=CN = *.google.com
+  notBefore: Jul 14 00:00:00 2026  ← কবে থেকে চালু
+  notAfter: Sep  6 23:59:59 2026   ← কবে শেষ (expire!)
+---
+SSL handshake has read 4127 bytes
+---
+Protocol  : TLSv1.3              ← কোন TLS version?
+Cipher    : TLS_AES_256_GCM_SHA384  ← কোন এনক্রিপশন?
+
+— দেখো: TLS 1.3 + AES-256 = আধুনিক, নিরাপদ —
+— TLS 1.0/1.1 = পুরোনো, দুর্বল, deprecated —</div>
+
+<div class="code-block">— সার্টিফিকেট পড়ো (মানুষের ভাষায়) —
+$ openssl x509 -in cert.pem -text -noout
+
+Certificate:
+    Subject: CN=*.google.com           ← ডোমেইন
+    Issuer: CN=GTS CA 1C3              ← Certificate Authority
+    Validity:
+      Not Before: Jul 14, 2026         ← শুরু
+      Not After:  Sep 6, 2026          ← শেষ (৯০ দিন)
+    Subject Alternative Names:         ← কোন ডোমেইনগুলো?
+      DNS:*.google.com
+      DNS:google.com
+    Public Key: RSA 2048 bits          ← asymmetric key
+
+— চেইন অফ ট্রাস্ট: —
+  তুমি → Browser CA list → GTS CA → google.com
+  তোমার browser-এ ১০০+ CA-এর root certificate আগে থেকেই আছে</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সার্টিফিকেট শেষ হলে কী হয়?</strong> HTTPS ভেঙে পড়ে। Browser দেখায় "Your connection is not private"। কারণ সার্টিফিকেট expire হলে পরিচয় আর যাচাই করা যায় না। Let's Encrypt ৯০ দিনের সার্টিফিকেট দেয় — স্বয়ংক্রিয় রিনিউ করতে হয় (certbot)।</div></div>
 
 <div class="callout info"><span class="co-icon">🔥</span><div><strong>Firewall:</strong> একটি দরজাদার। আসা যাওয়া প্রতিটি প্যাকেট চেক করে — এটি কি নিয়ম মানে? নিয়ম ভাঙলে বাতিল।<br>
 <strong>Stateful Firewall:</strong> সংযোগের অবস্থা মনে রাখে — এই সংযোগটি আগে থেকে চলছে?<br>
@@ -582,6 +719,43 @@ HTTP response: ২০০ OK + body</div></div>
 </svg>
 <div class="diag-cap">Encapsulation: প্রতিটি স্তর নিজের header যোগ করে · সার্ভারে উল্টোভাবে খোলে · মূল ডেটা অপরিবর্তিত</div>
 </div>
+
+<div class="code-block">— সম্পূর্ণ curl -v: সব স্তর একসাথে দেখো —
+$ curl -v https://google.com
+
+*   Trying 142.250.190.46:443...                      ← DNS (Door 5)
+* Connected to google.com (142.250.190.46) port 443    ← TCP (Door 4)
+* ALPN: offers h2, http/1.1                            ← HTTP/2 negotiation
+* TLSv1.3 (OUT), TLS handshake, Client hello (1)       ← TLS (Door 9)
+* TLSv1.3 (IN), TLS handshake, Server hello (2)
+* SSL certificate verify ok.                            ← সার্টিফিকেট ঠিক
+> GET / HTTP/2                                          ← HTTP (Door 6)
+> Host: google.com
+> User-Agent: curl/8.0
+> Accept: */*
+>
+< HTTP/2 200                                           ← সার্ভার উত্তর
+< content-type: text/html
+< cf-cache-status: HIT                                 ← CDN (Door 7)
+<
+<!doctype html><html>...                               ← বডি (Door 1: L7)
+
+— এই এক কমান্ডে ৭টি স্তর কাজ করেছে —
+— DNS → TCP → TLS → HTTP → CDN → HTML → তোমার স্ক্রিন —</div>
+
+<div class="code-block">— ট্রাবলশুটিং: কোথায় সমস্যা? —
+$ curl -v https://example.com  2>&1 | grep -E 'Trying|Connected|TLS|HTTP'
+
+"Trying 93.184.216.34:443..."  → DNS কাজ করছে        ✓
+"Connected"                    → TCP সংযোগ সফল        ✓
+"TLS handshake"                → TLS সফল               ✓
+"HTTP/2 200"                   → HTTP সফল              ✓
+
+— যদি আটকে যায়: —
+  "Trying..." তে আটক    → DNS সমস্যা → nslookup চালাও
+  "Connected" না         → TCP সমস্যা → ping চালাও
+  "TLS handshake" fail  → সার্টিফিকেট সমস্যা → openssl চালাও
+  "HTTP 4xx/5xx"        → Server সমস্যা → log দেখো</div>
 
 <div class="verse">اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"আল্লাহ আসমান ও পৃথিবীর আলো।" — কুরআন ২৪:৩৫</div>
