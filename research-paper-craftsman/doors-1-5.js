@@ -36,6 +36,76 @@ doors.push({
 <div class="callout info"><span class="co-icon">🔀</span><div><strong>পড়ার ক্রম উদ্দেশ্যভেদে (শুরু-থেকে-শেষ নয়):</strong> Beginner — Title→Abstract→Intro(skim)→Conclusion→Refs (৫ মিনিট)। Engineer — Abstract→Methods→Results(figures)→code link। Scientist — Abstract→Methods(deep)→Results→Discussion→stats। PhD — Abstract→Related Work→Intro→future work→Methods। Reviewer — Abstract→Conclusion→Methods→Results→Intro(শেষে)।</div></div>
 <div class="callout tip"><span class="co-icon">📊</span><div><strong>Figures-first:</strong> বেশিরভাগ পেপারে figure-ই গল্প বলে (Fig 1 overview, Fig 2 "money figure", Fig 3 ablation)। আগে সব figure + caption পড়ো → "এরা কী গল্প বলছে?" → তারপর text। ভালো পেপারের figure text ছাড়াই দাঁড়াতে পারে; না পারলে দুর্বল পেপার।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrRPC1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a5b4fc"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f1428" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">IMRaD — গবেষণাপত্রের শারীরস্থান</text>
+<rect x="20" y="40" width="540" height="28" rx="5" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="290" y="58" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Title + Abstract — পরিচয় ও সারসংক্ষেপ</text>
+<line x1="290" y1="70" x2="290" y2="84" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC1)"/>
+<rect x="20" y="86" width="540" height="32" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="40" y="100" fill="#fcd34d" font-size="8" font-weight="bold">Introduction</text>
+<text x="40" y="112" fill="#94a3b8" font-size="7">কেন? wide&amp;arrow;narrow&amp;arrow;contribution (funnel)</text>
+<line x1="290" y1="120" x2="290" y2="134" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC1)"/>
+<rect x="20" y="136" width="260" height="32" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="40" y="150" fill="#fcd34d" font-size="8" font-weight="bold">Methods</text>
+<text x="40" y="162" fill="#94a3b8" font-size="7">কীভাবে? cookbook — reproduce যায় এমন</text>
+<rect x="300" y="136" width="260" height="32" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="320" y="150" fill="#fcd34d" font-size="8" font-weight="bold">Results</text>
+<text x="320" y="162" fill="#94a3b8" font-size="7">কী পেল? figure আগে, সংখ্যা পরে</text>
+<line x1="150" y1="170" x2="150" y2="184" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC1)"/>
+<line x1="430" y1="170" x2="430" y2="184" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC1)"/>
+<rect x="20" y="186" width="540" height="32" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="40" y="200" fill="#fcd34d" font-size="8" font-weight="bold">Discussion / Conclusion</text>
+<text x="40" y="212" fill="#94a3b8" font-size="7">তা মানে কী? interpretation, limitation, future work</text>
+<rect x="20" y="226" width="540" height="18" rx="5" fill="#0d1526" stroke="#52c41a" stroke-width="1.5" stroke-dasharray="3,2"/>
+<text x="290" y="239" text-anchor="middle" fill="#4ade80" font-size="7">References — জ্ঞানের শৃঙ্খল; প্রতিটা দাবির সংযোগ</text>
+</svg>
+</div>
+<div class="svg-caption">IMRaD কাঠামো — প্রতিটা সেকশনের নির্দিষ্ট কাজ, সঠিক ক্রমে সাজানো</div>
+
+<div class="code-block">Paper Anatomy — IMRaD Section Map:
+
+TITLE (identity)
+  - 10-20 words; descriptive; searchable
+  - আগে পড়ো — relevant কিনা ঠিক করো
+
+ABSTRACT (teaser, 150-250 words)
+  - problem + method + key result + implication
+  - মন দিয়ে পড়ো — পুরো পেপার পড়ার যোগ্য?
+
+INTRODUCTION (why)
+  - Wide context -&gt; Narrow gap -&gt; Contribution
+  - শেষ প্যারা = explicit contribution list
+
+METHODS (how)
+  - cookbook: architecture, hyperparameters, data
+  - একাই পড়ে reproduce করা যাবে এমন detail
+
+RESULTS (what)
+  - figure/table আগে; তারপর সংখ্যা ও মানে
+  - baseline + ablation অবশ্যই
+
+DISCUSSION (so what)
+  - interpretation + limitation + future work
+  - limitation লুকিও না
+
+REFERENCES (chain)
+  - প্রতিটা claim-এর সংযোগ; citation count = প্রভাব
+
+READING ORDER (objective-based, NOT start-to-finish):
+  Beginner : Title -&gt; Abstract -&gt; Intro(skim) -&gt; Conclusion
+  Engineer : Abstract -&gt; Methods -&gt; Results(figures) -&gt; code
+  Scientist: Abstract -&gt; Methods(deep) -&gt; Results -&gt; Discussion
+  PhD      : Abstract -&gt; Related Work -&gt; Intro -&gt; future work
+  Reviewer : Abstract -&gt; Conclusion -&gt; Methods -&gt; Intro(last)
+
+FIGURES-FIRST RULE:
+  পুরো পেপারের figure + caption আগে পড়ো
+  -&gt; "এরা কী গল্প বলছে?"
+  -&gt; ভালো পেপারের figure text ছাড়াই দাঁড়ায়</div>
+
 <div class="dialogue">ফিহরিস্ত — index, catalog, map। কুরআনে আল্লাহ বলেন — "আমি প্রতিটা জিনিস বিস্তারিতভাবে ব্যাখ্যা করেছি।" (১৭:১২)। ব্যাখ্যা = ফিহরিস্ত — প্রতিটা জিনিসের নির্দিষ্ট স্থান। পত্রের শারীরস্থানও ফিহরিস্ত — প্রতিটা অংশের নির্দিষ্ট কাজ। যে ফিহরিস্ত জানে, সে দ্রুত খোঁজে। যে জানে না, সে অন্ধভাবে ঘুরে। ফিহরিস্ত — পত্রের মানচিত্র। মানচিত্র ছাড়া যাত্রা = পথহারা।</div>
 <div class="dialogue en">"Fihrist — index, catalog, map. Allah says — 'We have explained everything in detail.' (17:12). Explanation = fihrist — each thing in its specific place. Paper anatomy too is fihrist — each part with its specific job. One who knows the fihrist, searches quickly. One who doesn't, wanders blindly. Fihrist — the paper's map. Journey without a map = lost."</div>`,
   senior:{
@@ -69,6 +139,58 @@ doors.push({
 <div class="callout info"><span class="co-icon">🔧</span><div><strong>Engineer-এর protocol:</strong> ① আগে code/data খোঁজো (GitHub, Papers With Code, Hugging Face; কোড না থাকলে low priority)। ② Methods পড়ো spec-এর মতো (architecture, hyperparameter, GPU, dataset)। ③ Benchmark check — উন্নতি real না marginal? baseline fair? inference speed? ④ প্রযোজ্য হলে <em>তোমার</em> data-তে চালিয়ে reproduce করো। ⑤ core pattern বের করো — কোন অংশ adapt/combine করতে পারি?</div></div>
 <div class="callout tip"><span class="co-icon">🐙</span><div><strong>Papers With Code (paperswithcode.com)</strong> = engineer-এর best friend: প্রতিটা পেপার + implementation, task-ভিত্তিক leaderboard, SOTA। Workflow: সমস্যা search → benchmark-এ sort → code/license/recency check → পেপার পড়ে method বোঝা → clone→run→adapt। শিল্প এভাবেই academic research ব্যবহার করে (Google BERT পড়ে→বানায়→deploy করে)।</div></div>
 <div class="callout warn"><span class="co-icon">🚫</span><div><strong>কোড না থাকলে:</strong> Papers With Code-এ reproduction খোঁজো · GitHub-এ community implementation · পেপার থেকে নিজে implement (কঠিন কিন্তু মূল্যবান) · লেখককে email (অনেকে privately share করে) · পরের পেপার উন্নত করে কোড ছেড়েছে কিনা দেখো।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect x="0" y="0" width="580" height="250" fill="#0f1428" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">Engineer-এর Extraction Pipeline</text>
+<rect x="20" y="40" width="520" height="30" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="280" y="59" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">① Code / Data খোঁজো — GitHub, Papers With Code, Hugging Face</text>
+<rect x="20" y="82" width="520" height="30" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="280" y="101" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">② Methods = spec — architecture, hyperparameter, GPU, dataset</text>
+<rect x="20" y="124" width="520" height="30" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="280" y="143" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">③ Benchmark check — real নাকি marginal? baseline fair?</text>
+<rect x="20" y="166" width="520" height="30" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="280" y="185" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">④ তোমার data-তে reproduce — run করে verify করো</text>
+<rect x="20" y="208" width="520" height="30" rx="6" fill="#0d1526" stroke="#52c41a" stroke-width="2"/>
+<text x="280" y="227" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">⑤ core pattern — কোন অংশ adapt / combine করবে?</text>
+</svg>
+</div>
+<div class="svg-caption">ইঞ্জিনিয়ারের পাঠপথ — কোড, spec, benchmark, প্রয়োগের চোখ</div>
+
+<div class="code-block">Engineer Paper Note Template:
+
+PAPER: [title, authors, venue, year]
+REPO : [github URL]   LICENSE: [MIT/Apache/none]
+DATA : [dataset name + size + access]
+
+METHOD (as spec):
+  architecture : [e.g., Transformer-XL, 12 layers]
+  inputs       : [what goes in]
+  outputs      : [what comes out]
+  hyperparams  : [lr, batch, epochs, optimizer]
+  hardware     : [GPU type, train time]
+  key trick    : [the ONE idea that matters]
+
+BENCHMARKS:
+  metric        | this paper | prior SOTA | delta
+  --------------|------------|------------|------
+  accuracy      | 94.2       | 92.1       | +2.1
+  latency (ms)  | 12         | 18         | -33%
+
+APPLICABILITY TO MY PROJECT:
+  - problem match? [yes/no/partial]
+  - data match? [same domain? size?]
+  - blockers? [license, compute, deps]
+
+DECISION:
+  [ ] USE — clone &amp; adapt
+  [ ] PARTIAL — borrow idea X only
+  [ ] SKIP — weak / not relevant
+
+2-SENTENCE APPLICATION TEST:
+  "This paper&apos;s [method] applies to my [project]
+   by [specific change], giving me [expected benefit]."</div>
 
 <div class="dialogue">তালাশ — search, seeking। কুরআনে আল্লাহ বলেন — "যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।" ইঞ্জিনিয়ারের পাঠও তালাশ — সমাধানের সন্ধান। কোন method, কোন code, কোন approach আমার সমস্যা সমাধান করবে? যে তালাশ করে, সে খোঁজে। যে অপেক্ষা করে, সে পায় না। ইঞ্জিনিয়ার = সমাধানের তালাশকারী।</div>
 <div class="dialogue en">"Talash — search, seeking. Allah says — 'Those who seek Me, I guide them.' The engineer's read too is talash — seeking a solution. Which method, which code, which approach solves my problem? One who seeks, finds. One who waits, gets nothing. Engineer = solution seeker."</div>`,
@@ -109,6 +231,90 @@ doors.push({
 <tr><td class="hl">"state of the art"</td><td>কীসের সাথে তুলনা? কবে?</td></tr>
 <tr><td class="hl">"real-time"</td><td>কোন hardware-এ?</td></tr></table>
 <div class="callout tip"><span class="co-icon">⭐</span><div><strong>Trust level (১-৫):</strong> ৫ = সম্পূর্ণ বিশ্বাস, cite করব · ৪ = মোটামুটি, ছোট উদ্বেগ · ৩ = mixed, সতর্কতায় ব্যবহার · ২ = গুরুতর উদ্বেগ · ১ = বিশ্বাস কোরো না। শুধু ৪+ পেপারের method <em>ব্যবহার</em> করো — তোমার প্রজেক্ট যে গবেষণার উপর দাঁড়ায় তার মানের উপর নির্ভরশীল।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<rect x="0" y="0" width="580" height="250" fill="#0f1428" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">বৈজ্ঞানিকের যাচাই — ৭ পয়েন্ট</text>
+<rect x="20" y="40" width="170" height="68" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="105" y="58" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">① Sample size</text>
+<text x="105" y="74" text-anchor="middle" fill="#94a3b8" font-size="7">n&amp;lt;10 anecdote</text>
+<text x="105" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">n 100-1000 ok</text>
+<text x="105" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">n&amp;gt;10000 strong</text>
+<rect x="205" y="40" width="170" height="68" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="290" y="58" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">② Methodology</text>
+<text x="290" y="74" text-anchor="middle" fill="#94a3b8" font-size="7">RCT gold standard</text>
+<text x="290" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">train/test split ok?</text>
+<text x="290" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">test leakage = cheat</text>
+<rect x="390" y="40" width="170" height="68" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="475" y="58" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">③ Statistics</text>
+<text x="475" y="74" text-anchor="middle" fill="#94a3b8" font-size="7">p&amp;lt;0.05?</text>
+<text x="475" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">effect size? variance?</text>
+<text x="475" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">how many runs?</text>
+<rect x="20" y="120" width="170" height="68" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="105" y="138" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">④ Baselines</text>
+<text x="105" y="154" text-anchor="middle" fill="#94a3b8" font-size="7">SOTA সাথে তুলনা?</text>
+<text x="105" y="166" text-anchor="middle" fill="#94a3b8" font-size="7">নাকি দুর্বল পুরোনো?</text>
+<text x="105" y="178" text-anchor="middle" fill="#94a3b8" font-size="7">fair comparison?</text>
+<rect x="205" y="120" width="170" height="68" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="290" y="138" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">⑤ Reproducibility</text>
+<text x="290" y="154" text-anchor="middle" fill="#94a3b8" font-size="7">code/data/seed?</text>
+<text x="290" y="166" text-anchor="middle" fill="#94a3b8" font-size="7">দেওয়া আছে?</text>
+<text x="290" y="178" text-anchor="middle" fill="#94a3b8" font-size="7">reproduce করা যায়?</text>
+<rect x="390" y="120" width="170" height="68" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="475" y="138" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">⑥ Limitations</text>
+<text x="475" y="154" text-anchor="middle" fill="#94a3b8" font-size="7">সততার সাথে</text>
+<text x="475" y="166" text-anchor="middle" fill="#94a3b8" font-size="7">স্বীকার করে?</text>
+<text x="475" y="178" text-anchor="middle" fill="#94a3b8" font-size="7">future work?</text>
+<rect x="20" y="200" width="540" height="38" rx="6" fill="#0d1526" stroke="#f06292" stroke-width="2"/>
+<text x="290" y="216" text-anchor="middle" fill="#f06292" font-size="9" font-weight="bold">⑦ Funding / Conflict of interest</text>
+<text x="290" y="230" text-anchor="middle" fill="#94a3b8" font-size="7">স্বাধীন? কোম্পানির টাকা? personal stake?</text>
+</svg>
+</div>
+<div class="svg-caption">তাহকিক — প্রতিটা দাবি সাত মাপকাঠিতে যাচাই</div>
+
+<div class="code-block">Scientist Verification Checklist (Trust 1-5):
+
+PAPER: [title]                  TRUST: [ ] 1  [ ] 2  [ ] 3  [ ] 4  [ ] 5
+
+[ ] SAMPLE SIZE adequate?
+    - n = ___ (statistical power?)
+    - dataset size / benchmark count (ML)
+
+[ ] METHODOLOGY sound?
+    - RCT / cohort / observational / ML benchmark
+    - proper train/test split, NO test-set leakage
+    - no tuning on test set (= cheating)
+
+[ ] STATISTICS reported honestly?
+    - p-value AND effect size AND variance
+    - multiple seeds? mean +/- std?
+    - big-n can make 0.1% "significant" - meaningless
+
+[ ] BASELINES fair?
+    - compared to current SOTA or weak old method?
+    - same data, same hardware, same metric?
+
+[ ] REPRODUCIBLE?
+    - code + data + seeds available?
+    - run on YOUR hardware gives same number?
+
+[ ] LIMITATIONS honest?
+    - do they admit what doesn&apos;t work?
+    - scope clearly bounded?
+
+[ ] FUNDING independent?
+    - company funding the paper about its product?
+
+RED FLAGS:
+  "p&lt;0.05" but no effect size
+  "99% accuracy" without specifying data/split
+  "outperforms baselines" without naming them
+  "real-time" without hardware
+  "Code coming soon" = usually never
+
+DECISION: only USE methods rated 4 or 5.
+  3 or below -&gt; proceed with caution or find better paper.</div>
 
 <div class="dialogue">তাহকিক — verified truth through investigation। কুরআনে আল্লাহ বলেন — "তোমরা যাচাই না করে প্রতিটা খবর বিশ্বাস করো না।" (৪৯:৬)। তাহকিক = যাচাই করে গ্রহণ। বৈজ্ঞানিকের চোখও তাহকিক — প্রতিটা claim যাচাই। sample? method? statistics? replication? যে তাহকিক করে, সে সত্য পায়। যে বিশ্বাস করে, সে প্রতারিত হয়। replication crisis আমাদের শেখায় — published মানে true নয়। তাহকিক করো।</div>
 <div class="dialogue en">"Tahqiq — verified truth through investigation. Allah says — 'Do not accept any news without verification.' (49:6). Tahqiq = verify then accept. The scientist's eye too is tahqiq — verify each claim. Sample? Method? Statistics? Replication? One who does tahqiq, finds truth. One who believes blindly, is deceived. The replication crisis teaches — published does not mean true. Verify."</div>`,

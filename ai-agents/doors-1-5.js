@@ -23,6 +23,38 @@ doors.push({
 <div class="dialogue">Fine-tuning বইয়ে তুমি শিখেছ — মডেলকে নিখুঁত করা। এখন আমি বলি — নিখুঁত মডেলও শুধু কথা বলে। সে কাজ করতে পারে না। কিন্তু যদি সে কাজ করতে পারত? যদি সে সার্চ করত, কোড রান করত, ইমেইল পাঠাত? এটাই agent।</div>
 <div class="dialogue en">"In the fine-tuning book you learned — perfecting the model. Now I say — even a perfect model just talks. It can't act. But what if it could? If it could search, run code, send email? This is an agent."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrA1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+    <marker id="arrA1g" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4ade80"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">এজেন্ট লুপ — Observe · Plan · Act</text>
+  <rect x="30" y="90" width="110" height="60" rx="10" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="85" y="115" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">OBSERVE</text>
+  <text x="85" y="132" text-anchor="middle" fill="#7dd3fc" font-size="9">পর্যবেক্ষণ</text>
+  <text x="85" y="145" text-anchor="middle" fill="#94a3b8" font-size="8">input · result</text>
+  <rect x="235" y="90" width="110" height="60" rx="10" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="115" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="bold">PLAN</text>
+  <text x="290" y="132" text-anchor="middle" fill="#4ade80" font-size="9">চিন্তা</text>
+  <text x="290" y="145" text-anchor="middle" fill="#94a3b8" font-size="8">LLM সিদ্ধান্ত</text>
+  <rect x="440" y="90" width="110" height="60" rx="10" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="495" y="115" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="bold">ACT</text>
+  <text x="495" y="132" text-anchor="middle" fill="#c084fc" font-size="9">কাজ</text>
+  <text x="495" y="145" text-anchor="middle" fill="#94a3b8" font-size="8">tool call</text>
+  <path d="M 140 110 Q 185 70 235 100" fill="none" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrA1)"/>
+  <path d="M 345 110 Q 392 70 440 100" fill="none" stroke="#4ade80" stroke-width="2" marker-end="url(#arrA1g)"/>
+  <path d="M 495 150 Q 290 220 85 150" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrA1)"/>
+  <text x="290" y="208" text-anchor="middle" fill="#fbbf24" font-size="9">↻ ফলাফল দেখো, আবার চিন্তা করো — চক্র</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: এজেন্ট = Observe → Plan → Act চক্র — প্রতিটা ফলাফল পরের চিন্তা নির্ধারণ করে। চ্যাটবট থেমে যায়, এজেন্ট ঘুরে।</div>
+
 <div class="code-block">What Is an Agent? — From Chatbot to Worker:
 
 CHATBOT (যা তুমি জানো):
@@ -122,6 +154,49 @@ doors.push({
 
 <div class="dialogue">জেনেসিস কক্ষ বলেছিলেন — এজেন্ট = কথা + কাজ। কিন্তু আমি বলি — কাজ কীভাবে? LLM তো শুধু টেক্সট দেয়। সে কীভাবে কাজ করবে? Function calling। এটাই tool use-এর ভিত্তি। LLM-কে টুলের নাম ও কাজ বলো — সে সিদ্ধান্ত নেয়।</div>
 <div class="dialogue en">"The genesis chamber said — agent = talk + act. But I say — how to act? The LLM just gives text. How will it act? Function calling. This is the foundation of tool use. Tell the LLM the tool's name and purpose — it decides."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrA2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+    <marker id="arrA2g" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4ade80"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Function Calling — ৫ ধাপ</text>
+  <rect x="20" y="80" width="100" height="56" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="70" y="103" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">১. টুল</text>
+  <text x="70" y="118" text-anchor="middle" fill="#7dd3fc" font-size="8">description</text>
+  <text x="70" y="130" text-anchor="middle" fill="#7dd3fc" font-size="8">দাও</text>
+  <rect x="135" y="80" width="100" height="56" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="185" y="103" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">২. প্রশ্ন</text>
+  <text x="185" y="118" text-anchor="middle" fill="#7dd3fc" font-size="8">user input</text>
+  <rect x="250" y="80" width="100" height="56" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="300" y="103" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">৩. সিদ্ধান্ত</text>
+  <text x="300" y="118" text-anchor="middle" fill="#4ade80" font-size="8">tool_call</text>
+  <text x="300" y="130" text-anchor="middle" fill="#4ade80" font-size="8">+ args</text>
+  <rect x="365" y="80" width="100" height="56" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="415" y="103" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">৪. রান</text>
+  <text x="415" y="118" text-anchor="middle" fill="#4ade80" font-size="8">execute</text>
+  <text x="415" y="130" text-anchor="middle" fill="#4ade80" font-size="8">function</text>
+  <rect x="465" y="80" width="100" height="56" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="515" y="103" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">৫. উত্তর</text>
+  <text x="515" y="118" text-anchor="middle" fill="#7dd3fc" font-size="8">result →</text>
+  <text x="515" y="130" text-anchor="middle" fill="#7dd3fc" font-size="8">natural lang</text>
+  <line x1="120" y1="108" x2="133" y2="108" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrA2)"/>
+  <line x1="235" y1="108" x2="248" y2="108" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrA2)"/>
+  <line x1="350" y1="108" x2="363" y2="108" stroke="#4ade80" stroke-width="2" marker-end="url(#arrA2g)"/>
+  <line x1="465" y1="108" x2="463" y2="108" stroke="#4ade80" stroke-width="2" marker-end="url(#arrA2g)"/>
+  <rect x="160" y="175" width="260" height="44" rx="8" fill="#0c0a1d" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="290" y="194" text-anchor="middle" fill="#fcd34d" font-size="9" font-family="monospace">get_weather(city: "Dhaka")</text>
+  <text x="290" y="210" text-anchor="middle" fill="#94a3b8" font-size="8">→ "32°C, humid, rain expected"</text>
+  <line x1="300" y1="136" x2="290" y2="175" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2"/>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Function Calling — LLM টুলের নাম ও args ঠিক করে, তুমি রান করো, ফল ফেরত দাও। LLM শুধু টেক্সট দেয় না — কল করে।</div>
 
 <div class="code-block">Tool Use — How LLMs Act:
 
@@ -262,6 +337,42 @@ doors.push({
 <div class="dialogue">সরঞ্জাম কক্ষ বলেছিলেন — LLM টুল ব্যবহার করে। কিন্তু আমি বলি — একটা টুল যথেষ্ট নয়। একাধিক ধাপ লাগে। ভাবো, করো, দেখো, আবার ভাবো। এই চক্রই ReAct — Reason + Act। এটাই এজেন্টের হৃদপিণ্ড।</div>
 <div class="dialogue en">"The tool chamber said — LLMs use tools. But I say — one tool isn't enough. Multiple steps are needed. Think, act, observe, think again. This loop is ReAct — Reason + Act. This is the agent's heart."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrA3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+    <marker id="arrA3g" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrA3a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">ReAct লুপ — Reason + Act</text>
+  <rect x="60" y="95" width="120" height="60" rx="10" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="120" y="118" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">THOUGHT</text>
+  <text x="120" y="135" text-anchor="middle" fill="#7dd3fc" font-size="9">ভাবো</text>
+  <text x="120" y="148" text-anchor="middle" fill="#94a3b8" font-size="8">reasoning</text>
+  <rect x="250" y="95" width="120" height="60" rx="10" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="310" y="118" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="bold">ACTION</text>
+  <text x="310" y="135" text-anchor="middle" fill="#4ade80" font-size="9">করো</text>
+  <text x="310" y="148" text-anchor="middle" fill="#94a3b8" font-size="8">tool call</text>
+  <rect x="430" y="95" width="120" height="60" rx="10" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="490" y="118" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="bold">OBSERVATION</text>
+  <text x="490" y="135" text-anchor="middle" fill="#c084fc" font-size="9">দেখো</text>
+  <text x="490" y="148" text-anchor="middle" fill="#94a3b8" font-size="8">result</text>
+  <path d="M 180 110 Q 215 80 250 100" fill="none" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrA3)"/>
+  <path d="M 370 110 Q 400 80 430 100" fill="none" stroke="#4ade80" stroke-width="2" marker-end="url(#arrA3g)"/>
+  <path d="M 490 155 Q 300 215 120 155" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrA3a)"/>
+  <text x="300" y="208" text-anchor="middle" fill="#fbbf24" font-size="9">↻ observation পরের thought নির্ধারণ করে</text>
+  <text x="120" y="78" text-anchor="middle" fill="#22d3ee" font-size="8">প্রতিটা ফল → নতুন চিন্তা</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: ReAct = Thought → Action → Observation চক্র। প্রতিটা observation পরের thought গড়ে — এজেন্টের হৃদপিণ্ড।</div>
+
 <div class="code-block">ReAct Framework — The Agent Loop:
 
 THE PATTERN (Yao et al., 2022):
@@ -401,6 +512,69 @@ doors.push({
 <div class="dialogue">চক্র কক্ষ বলেছিলেন — ReAct চক্রে কাজ করো। কিন্তু আমি বলি — ReAct ছোট কাজে ভালো, বড় কাজে গোলমাল। কারণ প্রতিটা ধাপে ভাবলে সময় লাগে, বিভ্রান্তি হয়। বড় কাজে আগে পুরো পরিকল্পনা বানাও — Plan-and-Execute। তারপর এক এক ধাপ করে।</div>
 <div class="dialogue en">"The loop chamber said — work in ReAct loops. But I say — ReAct is good for small tasks, confusing for big ones. Because thinking at each step takes time, causes confusion. For big tasks, make a full plan first — Plan-and-Execute. Then one step at a time."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrA4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+    <marker id="arrA4g" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrA4a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="26" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">পরিকল্পনা কৌশল — তুলনা</text>
+  <text x="100" y="52" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">ReAct</text>
+  <text x="100" y="65" text-anchor="middle" fill="#94a3b8" font-size="7">ধাপে ধাপে</text>
+  <circle cx="70" cy="100" r="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="70" y="103" text-anchor="middle" fill="#7dd3fc" font-size="7">১</text>
+  <circle cx="100" cy="130" r="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="100" y="133" text-anchor="middle" fill="#7dd3fc" font-size="7">২</text>
+  <circle cx="70" cy="160" r="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="70" y="163" text-anchor="middle" fill="#7dd3fc" font-size="7">৩</text>
+  <circle cx="100" cy="190" r="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="100" y="193" text-anchor="middle" fill="#7dd3fc" font-size="7">৪</text>
+  <path d="M 76 105 Q 90 115 96 124" fill="none" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrA4)"/>
+  <path d="M 96 135 Q 82 148 76 155" fill="none" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrA4)"/>
+  <path d="M 76 165 Q 90 175 96 184" fill="none" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrA4)"/>
+  <text x="290" y="52" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Plan-and-Execute</text>
+  <text x="290" y="65" text-anchor="middle" fill="#94a3b8" font-size="7">আগে পুরো প্ল্যান</text>
+  <rect x="225" y="78" width="130" height="28" rx="5" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="290" y="96" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">PLAN: [১,২,৩,৪,৫]</text>
+  <rect x="225" y="118" width="28" height="28" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="239" y="136" text-anchor="middle" fill="#4ade80" font-size="7">১</text>
+  <rect x="259" y="118" width="28" height="28" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="273" y="136" text-anchor="middle" fill="#4ade80" font-size="7">২</text>
+  <rect x="293" y="118" width="28" height="28" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="307" y="136" text-anchor="middle" fill="#4ade80" font-size="7">৩</text>
+  <rect x="327" y="118" width="28" height="28" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="341" y="136" text-anchor="middle" fill="#4ade80" font-size="7">৪</text>
+  <line x1="290" y1="106" x2="290" y2="116" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrA4g)"/>
+  <text x="290" y="165" text-anchor="middle" fill="#4ade80" font-size="7">একসাথে প্ল্যান → এক এক ধাপ</text>
+  <text x="475" y="52" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">Re-Planning</text>
+  <text x="475" y="65" text-anchor="middle" fill="#94a3b8" font-size="7">ব্যর্থ → নতুন প্ল্যান</text>
+  <rect x="425" y="82" width="26" height="22" rx="4" fill="#3b0764" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="438" y="96" text-anchor="middle" fill="#c084fc" font-size="7">১</text>
+  <rect x="455" y="82" width="26" height="22" rx="4" fill="#7f1d1d" stroke="#f87171" stroke-width="1.5"/>
+  <text x="468" y="96" text-anchor="middle" fill="#fca5a5" font-size="7">২✗</text>
+  <rect x="485" y="82" width="26" height="22" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="498" y="96" text-anchor="middle" fill="#4ade80" font-size="7">২'</text>
+  <rect x="515" y="82" width="26" height="22" rx="4" fill="#3b0764" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="528" y="96" text-anchor="middle" fill="#c084fc" font-size="7">৩</text>
+  <path d="M 481 104 Q 470 115 485 118" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrA4a)"/>
+  <text x="475" y="130" text-anchor="middle" fill="#fbbf24" font-size="7">✗ ধাপ ব্যর্থ</text>
+  <text x="475" y="143" text-anchor="middle" fill="#4ade80" font-size="7">→ নতুন প্ল্যান</text>
+  <rect x="420" y="160" width="110" height="44" rx="6" fill="#0c0a1d" stroke="#fbbf24" stroke-width="1"/>
+  <text x="475" y="178" text-anchor="middle" fill="#fcd34d" font-size="7">কখন কোনটা?</text>
+  <text x="475" y="192" text-anchor="middle" fill="#94a3b8" font-size="6">সহজ→ReAct · বড়→P&amp;E</text>
+  <text x="475" y="201" text-anchor="middle" fill="#94a3b8" font-size="6">অনিশ্চিত→Re-Plan</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: তিন পরিকল্পনা কৌশল — ReAct (ধাপে ধাপে), Plan-and-Execute (পুরো প্ল্যান আগে), Re-Planning (ব্যর্থ হলে নতুন প্ল্যান)।</div>
+
 <div class="code-block">Planning Strategies — From Reactive to Strategic:
 
 ১. ReAct (Reactive)
@@ -519,6 +693,49 @@ doors.push({
 
 <div class="dialogue">পরিকল্পনা কক্ষ বলেছিলেন — আগে পরিকল্পনা করো। কিন্তু আমি বলি — পরিকল্পনা করতে গেলে অতীত মনে রাখতে হয়। গত সপ্তাহে কী হয়েছিল? কোন tool কাজ করেনি? কোন পথ ব্যর্থ হয়েছিল? মেমরি ছাড়া এজেন্ট প্রতিটা কাজে শূন্য থেকে শুরু — একই ভুল আবার।</div>
 <div class="dialogue en">"The planning chamber said — plan first. But I say — planning requires remembering the past. What happened last week? Which tool failed? Which path was a dead end? Without memory, each task starts from scratch — same mistakes repeated."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrA5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">এজেন্ট মেমরি — ৪ ধরন</text>
+  <rect x="20" y="60" width="130" height="80" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="85" y="82" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">SHORT-TERM</text>
+  <text x="85" y="98" text-anchor="middle" fill="#7dd3fc" font-size="8">শেষ N বার্তা</text>
+  <text x="85" y="112" text-anchor="middle" fill="#94a3b8" font-size="7">context window</text>
+  <text x="85" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">সেশন শেষে মুছে যায়</text>
+  <rect x="160" y="60" width="130" height="80" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="225" y="82" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">WORKING</text>
+  <text x="225" y="98" text-anchor="middle" fill="#4ade80" font-size="8">বর্তমান কাজ</text>
+  <text x="225" y="112" text-anchor="middle" fill="#94a3b8" font-size="7">goal · plan · state</text>
+  <text x="225" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">checkpointed</text>
+  <rect x="300" y="60" width="130" height="80" rx="8" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="365" y="82" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="bold">LONG-TERM</text>
+  <text x="365" y="98" text-anchor="middle" fill="#c084fc" font-size="8">অতীত অভিজ্ঞতা</text>
+  <text x="365" y="112" text-anchor="middle" fill="#94a3b8" font-size="7">Vector DB</text>
+  <text x="365" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">স্থায়ী · অসীম</text>
+  <rect x="440" y="60" width="120" height="80" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="500" y="82" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">EPISODIC</text>
+  <text x="500" y="98" text-anchor="middle" fill="#7dd3fc" font-size="8">নির্দিষ্ট ঘটনা</text>
+  <text x="500" y="112" text-anchor="middle" fill="#94a3b8" font-size="7">failure + lesson</text>
+  <text x="500" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">Reflexion স্টাইল</text>
+  <text x="290" y="170" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">স্মৃতি প্রবাহ — কোন মেমরি কখন?</text>
+  <text x="60" y="195" fill="#7dd3fc" font-size="8">↳ এখন</text>
+  <rect x="100" y="186" width="90" height="20" rx="4" fill="none" stroke="#22d3ee" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="145" y="200" text-anchor="middle" fill="#7dd3fc" font-size="7">short → working</text>
+  <line x1="190" y1="196" x2="245" y2="196" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrA5)"/>
+  <rect x="250" y="186" width="100" height="20" rx="4" fill="none" stroke="#22c55e" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="300" y="200" text-anchor="middle" fill="#4ade80" font-size="7">working → long</text>
+  <line x1="350" y1="196" x2="405" y2="196" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrA5)"/>
+  <text x="500" y="200" text-anchor="middle" fill="#c084fc" font-size="7">recall → context</text>
+  <text x="290" y="230" text-anchor="middle" fill="#94a3b8" font-size="7">মেমরি ছাড়া এজেন্ট = প্রতিটা কাজে নতুন, একই ভুল আবার</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: এজেন্ট মেমরির ৪ ধরন — Short-term, Working, Long-term, Episodic। স্মৃতি ছাড়া প্রতিটা কাজ শূন্য থেকে শুরু।</div>
 
 <div class="code-block">Agent Memory Systems — Four Types:
 

@@ -67,6 +67,35 @@ doors.push({
     <li>ঘুমানোর ১ ঘণ্টা আগে স্ক্রিন বন্ধ</li>
     <li>যদি ফজরের নামাজ পড়ো — মসজিদে যাও, সেটাই আলো</li>
   </div>
+  <div class="diagram">
+    <div class="diag-title">সারকেডিয়ান ঘড়ি · Circadian Master Clock</div>
+    <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrowD6" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
+      </defs>
+      <line class="axis" x1="50" y1="190" x2="520" y2="190"/>
+      <line class="axis" x1="50" y1="40" x2="50" y2="190"/>
+      <text class="axis-label" x="285" y="212" text-anchor="middle">দিনের সময়</text>
+      <text class="axis-label" x="32" y="115" text-anchor="middle" transform="rotate(-90,32,115)">হরমোন</text>
+      <path d="M 70 170 Q 130 50 200 70 Q 280 180 380 90 Q 460 60 510 170" fill="none" stroke="#fbbf24" stroke-width="2.5"/>
+      <text class="lbl-sm" x="130" y="44" text-anchor="middle" style="fill:#fbbf24;font-weight:700">কর্টিসল পিক</text>
+      <text class="lbl-sm" x="130" y="56" text-anchor="middle" style="fill:#fbbf24">সকালের আলো</text>
+      <circle class="node-hot" cx="130" cy="58" r="4"/>
+      <text class="lbl-sm" x="380" y="78" text-anchor="middle" style="fill:#5b9eff">মেলাটোনিন রিলিজ</text>
+      <circle class="node-moon" cx="380" cy="90" r="4"/>
+      <text class="lbl-sm" x="130" y="130" text-anchor="middle">এনার্জি শিখর</text>
+      <rect class="cell-hot" x="20" y="45" width="120" height="50" rx="8"/>
+      <text class="lbl-hot" x="80" y="68" text-anchor="middle">☀️ সকাল</text>
+      <text class="lbl-sm" x="80" y="84" text-anchor="middle">~১০,০০০ lux · ৫ মিনিট</text>
+      <rect class="cell-cyan" x="220" y="130" width="120" height="50" rx="8"/>
+      <text class="lbl-cyan" x="280" y="153" text-anchor="middle">🚿 ঠান্ডা পানি</text>
+      <text class="lbl-sm" x="280" y="169" text-anchor="middle">ডোপামিন ২৫০% ↑</text>
+      <rect class="cell-moon" x="400" y="130" width="120" height="50" rx="8"/>
+      <text class="lbl-sm" x="460" y="153" text-anchor="middle" style="fill:#5b9eff;font-weight:700">🌙 সন্ধ্যা</text>
+      <text class="lbl-sm" x="460" y="169" text-anchor="middle">ডিম আলো · স্ক্রিন বন্ধ</text>
+    </svg>
+    <div class="diag-cap">সকালের আলো ঘড়ি সেট করে; রাতের অন্ধকার ঘুম ডাকে।</div>
+  </div>
   <div class="secret-box">
     <div class="secret-icon">☀️</div>
     <div class="secret-line">সকালের আলো ঘড়ি সেট করে, ঠান্ডা পানি ব্যাটারি চার্জ করে।</div>
@@ -141,6 +170,29 @@ doors.push({
     <li>মন সরে গেলে রাগ করবে না — ধরবে, ফিরিয়ে আনবে</li>
     <li>নামাজে খুশু অনুশীলন করো — সেটাই ফোকাস প্রশিক্ষণ</li>
   </div>
+  <div class="diagram">
+    <div class="diag-title">ফোকাস পেশী · The 90-Minute Ultradian Block</div>
+    <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrowD7" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#3dd6c4"/></marker>
+      </defs>
+      <line class="axis" x1="60" y1="160" x2="520" y2="160"/>
+      <text class="axis-label" x="290" y="182" text-anchor="middle">মিনিট</text>
+      <path d="M 70 150 Q 130 50 180 55 Q 230 60 260 110 Q 290 150 330 150 Q 390 150 450 60" fill="none" stroke="#3dd6c4" stroke-width="2.5"/>
+      <text class="lbl-cyan" x="160" y="42" text-anchor="middle">গভীর ফোকাস</text>
+      <text class="lbl-sm" x="160" y="54" text-anchor="middle">~৪৫ মিনিট শিখর</text>
+      <text class="lbl-sm" x="280" y="100" text-anchor="middle">ক্ষয় শুরু</text>
+      <circle cx="160" cy="55" r="4" fill="#3dd6c4"/>
+      <circle cx="260" cy="110" r="4" fill="#ff6b35"/>
+      <rect class="cell-good" x="60" y="20" width="200" height="30" rx="6" opacity="0.3"/>
+      <text class="lbl-sm" x="160" y="38" text-anchor="middle" style="fill:#52c41a">৯০-মিনিট ব্লক</text>
+      <rect class="cell-hot" x="320" y="130" width="120" height="40" rx="6"/>
+      <text class="lbl-hot" x="380" y="148" text-anchor="middle" style="font-size:10px">১৫-২০ মিনিট বিরতি</text>
+      <text class="lbl-sm" x="380" y="162" text-anchor="middle">কোনো স্ক্রিন নয়</text>
+      <text class="lbl-amber" x="290" y="205" text-anchor="middle">মন গেলে ধরো, বিনা রাগে ফিরিয়ে আনো — এটাই পেশীর ব্যায়াম</text>
+    </svg>
+    <div class="diag-cap">ফোকাস মানে মন না যাওয়া নয় — গেলে ফিরিয়ে আনা। প্রতিবার = একটা পুশআপ।</div>
+  </div>
   <div class="secret-box">
     <div class="secret-icon">🛡️</div>
     <div class="secret-line">ফোকাস মানে মন না যাওয়া নয় — মন গেলে ফিরিয়ে আনা।</div>
@@ -214,6 +266,33 @@ doors.push({
     <li>বিকেলের পর ক্যাফেইন নয় (অর্ধেক ৬ ঘণ্টা পরও থাকে)</li>
     <li>৭-৯ ঘণ্টা ঘুম লক্ষ্য করো — এটা ব্যয় নয়, শেখার অংশ</li>
     <li>সকালে ফজরের আজানে উঠো — সারকেডিয়ান শিখর</li>
+  </div>
+  <div class="diagram">
+    <div class="diag-title">ঘুমের স্থাপত্য · Memory Consolidation</div>
+    <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrowD8" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
+      </defs>
+      <rect class="cell-cyan" x="20" y="40" width="100" height="50" rx="8"/>
+      <text class="lbl-cyan" x="70" y="62" text-anchor="middle">জেগে পড়ো</text>
+      <text class="lbl-sm" x="70" y="78" text-anchor="middle">ভেজা কালি</text>
+      <line class="edge" x1="120" y1="65" x2="200" y2="65" marker-end="url(#arrowD8)"/>
+      <rect class="cell-moon" x="200" y="40" width="160" height="50" rx="8"/>
+      <text class="lbl-sm" x="280" y="62" text-anchor="middle" style="fill:#5b9eff;font-weight:700">গভীর ঘুম (SWS)</text>
+      <text class="lbl-sm" x="280" y="78" text-anchor="middle">হিপোক্যাম্পাস → কর্টেক্স</text>
+      <line class="edge" x1="360" y1="65" x2="440" y2="65" marker-end="url(#arrowD8)"/>
+      <rect class="cell-purple" x="440" y="40" width="100" height="50" rx="8"/>
+      <text class="lbl-sm" x="490" y="62" text-anchor="middle" style="fill:#b37feb;font-weight:700">সকাল</text>
+      <text class="lbl-sm" x="490" y="78" text-anchor="middle">স্থায়ী স্মৃতি</text>
+      <rect class="cell-good" x="80" y="130" width="180" height="50" rx="8"/>
+      <text class="lbl-leaf" x="170" y="152" text-anchor="middle">সঠিক: ঘুমানোর আগে পড়ো</text>
+      <text class="lbl-sm" x="170" y="168" text-anchor="middle">৭-৯ ঘণ্টা · ঘর ১৮-২০°C</text>
+      <rect class="cell-hot" x="300" y="130" width="180" height="50" rx="8"/>
+      <text class="lbl-hot" x="390" y="152" text-anchor="middle">ভুল: রাত জাগো</text>
+      <text class="lbl-sm" x="390" y="168" text-anchor="middle">~৪০% তথ্য হারাও</text>
+      <text class="lbl-amber" x="280" y="215" text-anchor="middle">ঘুম হলো সেভ বাটন — না ঘুমালে পড়াই মুছে যায় (Marshall &amp; Born 2006)</text>
+    </svg>
+    <div class="diag-cap">তুমি জেগে শেখো না — ঘুমে শেখো। ঘুম সেভ করে।</div>
   </div>
   <div class="secret-box">
     <div class="secret-icon">😴</div>
@@ -296,6 +375,32 @@ doors.push({
     <li>৬৬ দিন প্রতিদিন করো — মস্তিষ্ক নিজে থেকে চলবে</li>
     <li>২১ দিনের মিথ ভুল — ধৈর্য রাখো, মধ্যমা ৬৬ দিন</li>
   </div>
+  <div class="diagram">
+    <div class="diag-title">অভ্যাস লুপ · Cue → Routine → Reward</div>
+    <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrowD9a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ff6b35"/></marker>
+        <marker id="arrowD9b" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#52c41a"/></marker>
+      </defs>
+      <circle class="node-hot" cx="100" cy="100" r="40"/>
+      <text class="lbl-hot" x="100" y="96" text-anchor="middle">কিউ</text>
+      <text class="lbl-sm" x="100" y="112" text-anchor="middle">Cue</text>
+      <circle class="node" cx="280" cy="100" r="40"/>
+      <text class="lbl" x="280" y="96" text-anchor="middle">রুটিন</text>
+      <text class="lbl-sm" x="280" y="112" text-anchor="middle">Routine</text>
+      <circle class="node-cyan" cx="460" cy="100" r="40"/>
+      <text class="lbl-cyan" x="460" y="96" text-anchor="middle">রিওয়ার্ড</text>
+      <text class="lbl-sm" x="460" y="112" text-anchor="middle">Reward</text>
+      <line class="edge" x1="140" y1="100" x2="235" y2="100" marker-end="url(#arrowD9a)"/>
+      <line class="edge" x1="320" y1="100" x2="415" y2="100" marker-end="url(#arrowD9a)"/>
+      <path d="M 460 60 Q 280 10 100 60" fill="none" stroke="#3dd6c4" stroke-width="2" marker-end="url(#arrowD9b)" stroke-dasharray="4,3"/>
+      <text class="lbl-cyan" x="280" y="28" text-anchor="middle" style="font-size:10px">লুপ সিল · চাঙ্কিং</text>
+      <rect class="cell-good" x="120" y="170" width="320" height="50" rx="8"/>
+      <text class="lbl-leaf" x="280" y="190" text-anchor="middle">নতুন রুটিন বসাও: একই কিউ + একই রিওয়ার্ড</text>
+      <text class="lbl-sm" x="280" y="208" text-anchor="middle">৬৬ দিন (Lally 2010) · বেসাল গ্যাংলিয়া অটোপাইলট</text>
+    </svg>
+    <div class="diag-cap">তিনে মিলে অভ্যাস — একটা বাদ দিলে ভাঙে।</div>
+  </div>
   <div class="secret-box">
     <div class="secret-icon">🔄</div>
     <div class="secret-line">কিউ-রুটিন-রিওয়ার্ড — তিনে মিলে অভ্যাস। একটা বাদ দিলে ভাঙে।</div>
@@ -372,6 +477,29 @@ doors.push({
     <li>লক্ষ্য পূরণ হলে থেকো না — পরিচয় ধরে রাখো</li>
     <li>যখন মন না চাইবে — নিজেকে জিজ্ঞেস করো: 'একজন পাঠক এখন কী করতো?'</li>
     <li>'আমি কে?' — এই প্রশ্নটা প্রতিদিন নিজেকে করো</li>
+  </div>
+  <div class="diagram">
+    <div class="diag-title">পরিচয়ের নোঙর · 3 Levels of Change</div>
+    <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrowD10" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
+      </defs>
+      <polygon points="280,30 460,190 100,190" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5"/>
+      <rect class="cell-hot" x="220" y="40" width="120" height="40" rx="6"/>
+      <text class="lbl-hot" x="280" y="58" text-anchor="middle">পরিচয়</text>
+      <text class="lbl-sm" x="280" y="72" text-anchor="middle">"আমি কে?"</text>
+      <rect class="cell-cyan" x="170" y="100" width="220" height="40" rx="6"/>
+      <text class="lbl-cyan" x="280" y="118" text-anchor="middle">প্রক্রিয়া</text>
+      <text class="lbl-sm" x="280" y="132" text-anchor="middle">"আমি কী করি?"</text>
+      <rect class="cell-good" x="120" y="160" width="320" height="40" rx="6"/>
+      <text class="lbl-leaf" x="280" y="178" text-anchor="middle">লক্ষ্য</text>
+      <text class="lbl-sm" x="280" y="192" text-anchor="middle">"আমি কী চাই?"</text>
+      <text class="lbl-hot" x="455" y="195" text-anchor="middle" style="font-size:10px">গভীর</text>
+      <text class="lbl-sm" x="100" y="195" text-anchor="end">উপরিভাগ</text>
+      <rect class="cell-purple" x="20" y="200" width="0" height="0"/>
+      <text class="lbl-amber" x="280" y="222" text-anchor="middle">পরিচয় আগে, আচরণ পরে · প্রতিটা কাজ একটা ভোট (Bem 1972)</text>
+    </svg>
+    <div class="diag-cap">লক্ষ্য শেষ হয়, পরিচয় শেষ হয় না।</div>
   </div>
   <div class="secret-box">
     <div class="secret-icon">🧭</div>

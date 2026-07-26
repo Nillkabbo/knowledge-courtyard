@@ -63,6 +63,30 @@ doors.push({
     <li>৭ দিন শুধু ছোট সংস্করণটাই করো — বড় করবে না</li>
     <li>প্রতিদিন একটা ক্যালেন্ডারে দাগ দাও (✓)</li>
   </div>
+  <div class="diagram">
+    <div class="diag-title">২-মিনিট নিয়ম · The First Thread</div>
+    <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrowD1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
+      </defs>
+      <text class="lbl-hot" x="50" y="30" text-anchor="middle">ভুল</text>
+      <rect class="cell-hot" x="10" y="40" width="160" height="50" rx="8"/>
+      <text class="lbl-sm" x="90" y="62" text-anchor="middle">পুরো অধ্যায়</text>
+      <text class="lbl-sm" x="90" y="78" text-anchor="middle">৪০ পৃষ্ঠা · ২ ঘণ্টা</text>
+      <text class="lbl-sm" x="90" y="115" text-anchor="middle" style="fill:#ff6b35">মস্তিষ্ক ভয় পায় → বলে "পরে"</text>
+      <text class="lbl-cyan" x="390" y="30" text-anchor="middle">সঠিক</text>
+      <rect class="cell-cyan" x="310" y="40" width="160" height="50" rx="8"/>
+      <text class="lbl-sm" x="390" y="62" text-anchor="middle">১ পৃষ্ঠা</text>
+      <text class="lbl-sm" x="390" y="78" text-anchor="middle">২ মিনিট</text>
+      <text class="lbl-sm" x="390" y="115" text-anchor="middle" style="fill:#3dd6c4">মস্তিষ্ক হাসে → শুরু করে</text>
+      <line class="edge" x1="170" y1="65" x2="305" y2="65" marker-end="url(#arrowD1)" stroke-dasharray="4,4"/>
+      <text class="lbl-amber" x="237" y="58" text-anchor="middle" style="font-size:10px">ছোট করো</text>
+      <rect class="cell-good" x="120" y="150" width="320" height="60" rx="8"/>
+      <text class="lbl" x="280" y="175" text-anchor="middle">আজ ১ সুতো · কাল ১ সুতো</text>
+      <text class="lbl-sm" x="280" y="195" text-anchor="middle">৬৬ দিন = ৬৬ সুতো → কার্পেট (Lally 2010)</text>
+    </svg>
+    <div class="diag-cap">বড় কাজ মস্তিষ্ককে ভয় দেখায়; ছোট কাজ হাসায়। হাসলেই শুরু।</div>
+  </div>
   <div class="secret-box">
     <div class="secret-icon">🧵</div>
     <div class="secret-line">একটা সুতো বোনো — কার্পেট নিজে হয়ে যাবে।</div>
@@ -146,6 +170,38 @@ doors.push({
     <li>ব্যায়ামের জামা রাতে বিছানার পাশে তৈরি রাখো</li>
     <li>অ্যালার্ম ঘড়ি অন্য ঘরে রাখো (ফোন নয়)</li>
   </div>
+  <div class="diagram">
+    <div class="diag-title">ফ্রিকশন ইঞ্জিনিয়ারিং · Choice Architecture</div>
+    <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrowD2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#52c41a"/></marker>
+        <marker id="arrowD2b" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ff6b35"/></marker>
+      </defs>
+      <text class="lbl-leaf" x="140" y="30" text-anchor="middle">ভালো কাজ → ফ্রিকশন কমাও</text>
+      <rect class="cell-good" x="20" y="45" width="100" height="40" rx="6"/>
+      <text class="lbl-sm" x="70" y="70" text-anchor="middle">বই টেবিলে খোলা</text>
+      <line class="edge" x1="120" y1="65" x2="160" y2="65" marker-end="url(#arrowD2)"/>
+      <text class="lbl-sm" x="190" y="60" text-anchor="middle">০ ধাপ</text>
+      <rect class="cell-good" x="20" y="100" width="100" height="40" rx="6"/>
+      <text class="lbl-sm" x="70" y="125" text-anchor="middle">জামা বিছানায় তৈরি</text>
+      <line class="edge" x1="120" y1="120" x2="160" y2="120" marker-end="url(#arrowD2)"/>
+      <text class="lbl-sm" x="190" y="115" text-anchor="middle">০ ধাপ</text>
+      <line class="edge" x1="280" y1="135" x2="280" y2="160" marker-end="url(#arrowD2)"/>
+      <text class="lbl-hot" x="420" y="30" text-anchor="middle">খারাপ কাজ → ফ্রিকশন বাড়াও</text>
+      <rect class="cell-hot" x="440" y="45" width="100" height="40" rx="6"/>
+      <text class="lbl-sm" x="490" y="70" text-anchor="middle">ফোন অন্য ঘরে</text>
+      <line class="edge" x1="440" y1="65" x2="400" y2="65" marker-end="url(#arrowD2b)"/>
+      <text class="lbl-sm" x="370" y="60" text-anchor="middle">২০ সেকেন্ড+</text>
+      <rect class="cell-hot" x="440" y="100" width="100" height="40" rx="6"/>
+      <text class="lbl-sm" x="490" y="125" text-anchor="middle">জাঙ্ক ফুড বের করো</text>
+      <line class="edge" x1="440" y1="120" x2="400" y2="120" marker-end="url(#arrowD2b)"/>
+      <text class="lbl-sm" x="370" y="115" text-anchor="middle">অসম্ভব</text>
+      <rect class="cell-purple" x="120" y="165" width="320" height="70" rx="8"/>
+      <text class="lbl" x="280" y="192" text-anchor="middle">ডিফল্ট অপশন বদলাও</text>
+      <text class="lbl-sm" x="280" y="215" text-anchor="middle">হোম স্ক্রিন খালি · সাবস্ক্রিপশন বন্ধ</text>
+    </svg>
+    <div class="diag-cap">ইচ্ছাশক্তি লড়াই করো না — পথ সাজাও, মস্তিষ্ক নিজে চলে।</div>
+  </div>
   <div class="secret-box">
     <div class="secret-icon">🏠</div>
     <div class="secret-line">পরিবেশ সাজাও — মস্তিষ্ক নিজে থেকে সঠিক পথে চলবে।</div>
@@ -211,6 +267,34 @@ doors.push({
     <li>দুইবার নাকে শ্বাস, একবার লম্বা মুখে ছাড়ো (physiological sigh)</li>
     <li>এই তিনটি সুইচ একসাথে করো — ৯০ সেকেন্ড, সম্পূর্ণ প্রস্তুতি</li>
     <li>মনে রাখো: এটা হরমোন জাদু নয় — শরীর মনকে বলছে 'আমি প্রস্তুত'</li>
+  </div>
+  <div class="diagram">
+    <div class="diag-title">৯০-সেকেন্ড কনফিডেন্স রিচুয়াল · 3 Switches</div>
+    <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrowD3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
+      </defs>
+      <circle class="node-hot" cx="90" cy="60" r="30"/>
+      <text class="lbl-hot" x="90" y="56" text-anchor="middle">০-৩০s</text>
+      <text class="lbl-hot" x="90" y="72" text-anchor="middle" style="font-size:9px">পিঠ সোজা</text>
+      <text class="lbl-sm" x="90" y="110" text-anchor="middle">শরীর বলে</text>
+      <text class="lbl-sm" x="90" y="124" text-anchor="middle">"আমি প্রস্তুত"</text>
+      <circle class="node-cyan" cx="280" cy="60" r="30"/>
+      <text class="lbl-cyan" x="280" y="56" text-anchor="middle">৩০-৬০s</text>
+      <text class="lbl-cyan" x="280" y="72" text-anchor="middle" style="font-size:9px">অতীত জয়</text>
+      <text class="lbl-sm" x="280" y="110" text-anchor="middle">state-dependent</text>
+      <text class="lbl-sm" x="280" y="124" text-anchor="middle">memory</text>
+      <circle class="node-moon" cx="470" cy="60" r="30"/>
+      <text class="lbl-sm" x="470" y="56" text-anchor="middle" style="fill:#5b9eff;font-weight:700">৬০-৯০s</text>
+      <text class="lbl-sm" x="470" y="72" text-anchor="middle" style="fill:#5b9eff">শ্বাস ×৩</text>
+      <text class="lbl-sm" x="470" y="110" text-anchor="middle">ভাগাস নার্ভ চালু</text>
+      <text class="lbl-sm" x="470" y="124" text-anchor="middle">parasympathetic</text>
+      <line class="edge" x1="120" y1="60" x2="250" y2="60" marker-end="url(#arrowD3)"/>
+      <line class="edge" x1="310" y1="60" x2="440" y2="60" marker-end="url(#arrowD3)"/>
+      <rect class="cell-good" x="120" y="160" width="320" height="40" rx="8"/>
+      <text class="lbl-amber" x="280" y="185" text-anchor="middle">হরমোন জাদু নয় — অনুভূতির সত্যতা (Ranehill 2015)</text>
+    </svg>
+    <div class="diag-cap">তিন সুইচ · ৯০ সেকেন্ড · শরীর মনকে বলে কে তুমি।</div>
   </div>
   <div class="secret-box">
     <div class="secret-icon">⚡</div>
@@ -286,6 +370,33 @@ doors.push({
     <li>ছোট পুরস্কার ঘন ঘন দাও (প্রতি ২৫ মিনিটে একটা দাগ)</li>
     <li>'পড়ার পর সিরিজ' বন্ধ করো — সিরিজকে পড়ার সাথে বাঁধো</li>
   </div>
+  <div class="diagram">
+    <div class="diag-title">ডোপামিন কার্ভ · Reward Prediction Error</div>
+    <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrowD4" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
+      </defs>
+      <line class="axis" x1="50" y1="200" x2="520" y2="200"/>
+      <line class="axis" x1="50" y1="40" x2="50" y2="200"/>
+      <text class="axis-label" x="285" y="222" text-anchor="middle">সময়</text>
+      <text class="axis-label" x="30" y="120" text-anchor="end" transform="rotate(-90,30,120)">ডোপামিন</text>
+      <path d="M 80 180 Q 140 180 170 90 Q 200 90 230 150 Q 260 180 320 180" fill="none" stroke="#52c41a" stroke-width="2.5"/>
+      <text class="lbl-leaf" x="170" y="80" text-anchor="middle">প্রত্যাশায় চরম ↑</text>
+      <text class="lbl-sm" x="170" y="68" text-anchor="middle" style="fill:#52c41a">cue আসে</text>
+      <circle cx="170" cy="90" r="4" fill="#52c41a"/>
+      <text class="lbl-sm" x="230" y="142" text-anchor="middle" style="fill:#52c41a">পুরস্কার আসে</text>
+      <circle cx="230" cy="150" r="4" fill="#52c41a"/>
+      <rect class="cell-hot" x="380" y="50" width="140" height="70" rx="8"/>
+      <text class="lbl-hot" x="450" y="72" text-anchor="middle">ভুল বাঁধাই</text>
+      <text class="lbl-sm" x="450" y="90" text-anchor="middle">"পড়ার পর সিরিজ"</text>
+      <text class="lbl-sm" x="450" y="105" text-anchor="middle">→ পড়া = শাস্তি</text>
+      <rect class="cell-good" x="380" y="130" width="140" height="70" rx="8"/>
+      <text class="lbl-leaf" x="450" y="152" text-anchor="middle">সঠিক বাঁধাই</text>
+      <text class="lbl-sm" x="450" y="170" text-anchor="middle">"অডিওবুক শুধু জিমে"</text>
+      <text class="lbl-sm" x="450" y="185" text-anchor="middle">→ ব্যায়াম ৫১% ↑</text>
+    </svg>
+    <div class="diag-cap">ডোপামিন পুরস্কারে আসে না — প্রত্যাশায় আসে (Schultz 1997)।</div>
+  </div>
   <div class="secret-box">
     <div class="secret-icon">🧪</div>
     <div class="secret-line">আনন্দকে কাজের সাথে বাঁধো — মস্তিষ্ক নিজে থেকে কাজ চাইবে।</div>
@@ -360,6 +471,36 @@ doors.push({
     <li>একটা NSDR অডিও খুঁজে নাও (YouTube-এ "NSDR Huberman" লিখো)</li>
     <li>দুপুরে বা ডিপ ওয়ার্কের পর ১০ মিনিট NSDR করো</li>
     <li>ভয়/রাগ/ক্লান্তি আসলে শ্বাস দিয়ে শুরু করো — কথা দিয়ে নয়</li>
+  </div>
+  <div class="diagram">
+    <div class="diag-title">শ্বাস-সুইচ · Physiological Sigh</div>
+    <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrowD5" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#5b9eff"/></marker>
+      </defs>
+      <line class="axis" x1="60" y1="180" x2="520" y2="180"/>
+      <text class="lbl-sm" x="60" y="30" text-anchor="middle" style="fill:#3dd6c4">নাক</text>
+      <text class="lbl-sm" x="160" y="30" text-anchor="middle" style="fill:#3dd6c4">নাক</text>
+      <text class="lbl-sm" x="320" y="30" text-anchor="middle" style="fill:#ff6b35">মুখ (লম্বা)</text>
+      <text class="lbl-sm" x="460" y="30" text-anchor="middle">ফলাফল</text>
+      <circle class="node-cyan" cx="60" cy="90" r="22"/>
+      <text class="lbl-cyan" x="60" y="86" text-anchor="middle" style="font-size:10px">ভরো</text>
+      <text class="lbl-sm" x="60" y="100" text-anchor="middle">পেট</text>
+      <circle class="node-cyan" cx="160" cy="90" r="22"/>
+      <text class="lbl-cyan" x="160" y="86" text-anchor="middle" style="font-size:10px">ভরো</text>
+      <text class="lbl-sm" x="160" y="100" text-anchor="middle">বুক</text>
+      <circle class="node-hot" cx="320" cy="90" r="22"/>
+      <text class="lbl-hot" x="320" y="86" text-anchor="middle" style="font-size:10px">ছাড়ো</text>
+      <text class="lbl-sm" x="320" y="100" text-anchor="middle">ধীরে</text>
+      <line class="edge" x1="82" y1="90" x2="138" y2="90" marker-end="url(#arrowD5)"/>
+      <line class="edge" x1="182" y1="90" x2="298" y2="90" marker-end="url(#arrowD5)"/>
+      <line class="edge" x1="342" y1="90" x2="430" y2="90" marker-end="url(#arrowD5)"/>
+      <rect class="cell-good" x="430" y="65" width="100" height="50" rx="8"/>
+      <text class="lbl-leaf" x="480" y="85" text-anchor="middle" style="font-size:10px">হৃদস্পন্দন ↓</text>
+      <text class="lbl-sm" x="480" y="102" text-anchor="middle">ভাগাস চালু</text>
+      <text class="lbl-amber" x="280" y="160" text-anchor="middle">×৩-৫ চক্র · ৩০ সেকেন্ড · মেডিটেশনের চেয়ে দ্রুত (Balban 2023)</text>
+    </svg>
+    <div class="diag-cap">দুই ভরো, এক ছাড়ো — স্নায়ুতন্ত্র শান্ত মোডে যায়।</div>
   </div>
   <div class="secret-box">
     <div class="secret-icon">🌬️</div>

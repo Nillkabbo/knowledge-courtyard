@@ -33,7 +33,38 @@ doors.push({
 <tr><td class="hl">দ্বার ৫</td><td>Insight (Kounios & Beeman) — দূরবর্তী ধারণা জোড়া লাগা</td></tr></table>
 
 <div class="dialogue">আয়ত — sign, symbol, evidence। কুরআনে আল্লাহ বলেন — "আমি প্রতিটি জিনিসে নিদর্শন রেখেছি যারা চিন্তা করে।" নিদর্শন আলাদা নয় — সংযুক্ত। একটা পাতা একটা নিদর্শন। কিন্তু পাতা + ফুল + ফল + শিকড় = একটা গাছ। গাছ + মাটি + পানি + সূর্য = একটা বাস্তুতন্ত্র। প্রতিটা স্তর আগের স্তরের সাথে সংযুক্ত। আলাদা নিদর্শন দেখা = সংযোগ না দেখা। সংযুক্ত নিদর্শন দেখা = আয়ত বোঝা। এটাই জ্ঞানের জাল।</div>
-<div class="dialogue en">"Ayat — sign, symbol, evidence. Allah says — 'In everything We have placed signs for those who reflect.' Signs aren't separate — they're connected. A leaf is a sign. But leaf + flower + fruit + root = a tree. Tree + soil + water + sun = an ecosystem. Each layer connects to the previous. Seeing signs separately = not seeing connections. Seeing connected signs = understanding ayat. This is the knowledge web."</div>`,
+<div class="dialogue en">"Ayat — sign, symbol, evidence. Allah says — 'In everything We have placed signs for those who reflect.' Signs aren't separate — they're connected. A leaf is a sign. But leaf + flower + fruit + root = a tree. Tree + soil + water + sun = an ecosystem. Each layer connects to the previous. Seeing signs separately = not seeing connections. Seeing connected signs = understanding ayat. This is the knowledge web."</div>
+
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Idea network diagram">
+  <defs>
+    <radialGradient id="d1node" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#67e8f9"/><stop offset="100%" stop-color="#06b6d4"/>
+    </radialGradient>
+  </defs>
+  <line x1="120" y1="70" x2="290" y2="125" stroke="#3dd6c4" stroke-width="1.5" opacity="0.55"/>
+  <line x1="290" y1="125" x2="450" y2="60" stroke="#3dd6c4" stroke-width="1.5" opacity="0.55"/>
+  <line x1="290" y1="125" x2="460" y2="190" stroke="#3dd6c4" stroke-width="1.5" opacity="0.55"/>
+  <line x1="120" y1="70" x2="150" y2="200" stroke="#3dd6c4" stroke-width="1.5" opacity="0.35" stroke-dasharray="4 4"/>
+  <line x1="450" y1="60" x2="460" y2="190" stroke="#3dd6c4" stroke-width="1.5" opacity="0.35" stroke-dasharray="4 4"/>
+  <circle cx="120" cy="70" r="22" fill="url(#d1node)"/>
+  <circle cx="290" cy="125" r="30" fill="url(#d1node)"/>
+  <circle cx="450" cy="60" r="22" fill="url(#d1node)"/>
+  <circle cx="460" cy="190" r="20" fill="url(#d1node)"/>
+  <circle cx="150" cy="200" r="16" fill="url(#d1node)" opacity="0.6"/>
+  <text x="120" y="76" text-anchor="middle" font-size="11" fill="#0a1a1f" font-weight="700">RAG</text>
+  <text x="290" y="131" text-anchor="middle" font-size="12" fill="#0a1a1f" font-weight="700">জ্ঞান</text>
+  <text x="450" y="66" text-anchor="middle" font-size="11" fill="#0a1a1f" font-weight="700">Psy</text>
+  <text x="460" y="196" text-anchor="middle" font-size="10" fill="#0a1a1f" font-weight="700">Sys</text>
+  <text x="150" y="206" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">?</text>
+  <text x="290" y="240" text-anchor="middle" font-size="11" fill="#fbbf24" font-weight="700">নোড = জ্ঞান · রেখা = সংযোগ</text>
+</svg></div><div class="svg-caption">ধারণার জাল — বিচ্ছিন্ন বিন্দু থেকে সংযুক্ত নেটওয়ার্ক</div>
+
+<div class="code-block">— Idea Network Audit —
+  silo_mind  = [RAG, Psychology, Systems]   # আলাদা বিন্দু
+  web_mind   = silo_mind + edges(RAG→Psy, Psy→Sys, RAG→Sys)
+  # যত বেশি edge, তত গভীর বোঝা
+  def connect(a, b): return "কীভাবে " + a + " ও " + b + " সম্পর্কিত?"
+  for pair in pairs(books): ask connect(pair)  # missing edge = gap</div>`,
   senior:{
     title:"তোমার বিচ্ছিন্ন দ্বীপগুলো খুঁজে নাও — Find Your Disconnected Islands",
     body:`<p><strong>এখনই তোমার জ্ঞান যাচাই করো — Audit your knowledge right now:</strong></p><p><em>তোমার ৫টা বই থেকে ৫টা জিনিস লেখো যা তুমি শিখেছ। প্রতিটা জোড়ার জন্য জিজ্ঞেস করো — "X কীভাবে Y-এর সাথে সংযুক্ত?" যদি সংযোগ খুঁজে না পাও — সেটাই gap।</em></p><p>১. List 5 things you learned from different books (e.g., Zettelkasten from Book 26, learned helplessness from Book 24, first principles from Book 23).</p><p>২. For EACH pair, ask: "How does X connect to Y?"</p><p>৩. If you can't find a connection — that's a missing bridge. You have two islands with no road.</p><p><strong>Example connections you should be able to make:</strong></p><p>- Book 24 (helplessness) + Book 26 (Feynman) = "If you have learned helplessness about math, Feynman technique can break it because it forces you to explain simply — revealing that the gap is small."</p><p>- Book 10 (RAG) + Book 23 (systems thinking) = "RAG is a system with feedback loops — the retrieval quality affects generation quality, which affects user trust, which affects usage."</p><p>- Book 5 (spaced repetition) + Book 27 (reading papers) = "Use spaced repetition for key paper findings — review your paper notes at 1 day, 7 days, 30 days."</p><p><strong>If you can make 10+ such connections — you're building a web. If fewer than 5 — you're in silos.</strong></p>`
@@ -73,7 +104,40 @@ doors.push({
 <div class="callout tip"><span class="co-icon">🔁</span><div><strong>দৈনিক analogy exercise:</strong> নতুন কিছু শিখলে — ① "এটা কীসের মতো?" ② কী ম্যাপ হয় (গঠন)? ③ কী ম্যাপ হয় না (সীমা)? ④ analogy থেকে আর কী সত্য হতে পারে? ⑤ test করো। (Einstein: "আলো train-এর মতো হলে? gravity trampoline-এর মতো হলে?" Polya 1945: "এই সমস্যা কি sorting/search/graph-এর মতো?")</div></div>
 
 <div class="dialogue">সিলসিলা — chain, connection, linkage। কুরআনে আল্লাহ বলেন — "তোমরা সবাই আল্লাহর রশি দৃঢ়ভাবে ধরো, একসাথে।" (৩:১০৩)। একসাথে = সিলসিলা। analogy-ও সিলসিলা — এক জ্ঞানের সাথে আরেকটার সংযোগ। সংযোগের মাধ্যমে নতুন ধারণা বোঝা যায়। Gentner দেখালেন — মানুষের মস্তিষ্ক এভাবেই কাজ করে। পুরোনোর সাথে নতুনকে মিলিয়ে। যে সিলসিলা বানায়, সে বোঝে। যে বিচ্ছিন্ন রাখে, সে ভুলে যায়।</div>
-<div class="dialogue en">"Silsila — chain, connection. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Together = silsila. Analogy too — connecting one knowledge to another. Through connection, new concepts become understandable. Gentner showed — this is how the brain works. Mapping the new to the known. One who builds silsila, understands. One who isolates, forgets."</div>`,
+<div class="dialogue en">"Silsila — chain, connection. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Together = silsila. Analogy too — connecting one knowledge to another. Through connection, new concepts become understandable. Gentner showed — this is how the brain works. Mapping the new to the known. One who builds silsila, understands. One who isolates, forgets."</div>
+
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Analogy structure mapping">
+  <rect x="40" y="50" width="200" height="150" rx="10" fill="rgba(6,182,212,0.10)" stroke="#06b6d4" stroke-width="1.5"/>
+  <rect x="340" y="50" width="200" height="150" rx="10" fill="rgba(103,232,249,0.10)" stroke="#67e8f9" stroke-width="1.5"/>
+  <text x="140" y="42" text-anchor="middle" font-size="13" fill="#fbbf24" font-weight="700">Zettelkasten (জানা)</text>
+  <text x="440" y="42" text-anchor="middle" font-size="13" fill="#fbbf24" font-weight="700">Neural Net (নতুন)</text>
+  <circle cx="100" cy="90" r="14" fill="#06b6d4"/><text x="100" y="95" text-anchor="middle" font-size="9" fill="#0a1a1f">নোট</text>
+  <circle cx="180" cy="90" r="14" fill="#06b6d4"/><text x="180" y="95" text-anchor="middle" font-size="9" fill="#0a1a1f">নোট</text>
+  <circle cx="140" cy="160" r="14" fill="#06b6d4"/><text x="140" y="165" text-anchor="middle" font-size="9" fill="#0a1a1f">নোট</text>
+  <line x1="100" y1="90" x2="180" y2="90" stroke="#3dd6c4" stroke-width="1.5"/>
+  <line x1="100" y1="90" x2="140" y2="160" stroke="#3dd6c4" stroke-width="1.5"/>
+  <line x1="180" y1="90" x2="140" y2="160" stroke="#3dd6c4" stroke-width="1.5"/>
+  <circle cx="400" cy="90" r="14" fill="#67e8f9"/><text x="400" y="95" text-anchor="middle" font-size="9" fill="#0a1a1f">n</text>
+  <circle cx="480" cy="90" r="14" fill="#67e8f9"/><text x="480" y="95" text-anchor="middle" font-size="9" fill="#0a1a1f">n</text>
+  <circle cx="440" cy="160" r="14" fill="#67e8f9"/><text x="440" y="165" text-anchor="middle" font-size="9" fill="#0a1a1f">n</text>
+  <line x1="400" y1="90" x2="480" y2="90" stroke="#3dd6c4" stroke-width="1.5"/>
+  <line x1="400" y1="90" x2="440" y2="160" stroke="#3dd6c4" stroke-width="1.5"/>
+  <line x1="480" y1="90" x2="440" y2="160" stroke="#3dd6c4" stroke-width="1.5"/>
+  <path d="M 240 90 Q 290 60 340 90" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5 3"/>
+  <path d="M 240 160 Q 290 200 340 160" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5 3"/>
+  <text x="290" y="135" text-anchor="middle" font-size="11" fill="#fbbf24" font-weight="700">ম্যাপ</text>
+  <text x="290" y="232" text-anchor="middle" font-size="10" fill="#3dd6c4">↔ গঠন মেলে · ⚠ backprop নেই = সীমা</text>
+</svg></div><div class="svg-caption">উপমা — Gentner-এর structure-mapping: জানা → নতুন</div>
+
+<div class="code-block">— Analogy Builder —
+  known = "Zettelkasten"      # nodes + links
+  new   = "Neural Network"    # nodes + links
+  def analogy(known, new):
+      maps    = match_structure(known, new)  # কোথায় মিল
+      breaks  = find_limits(known, new)       # কোথায় অমিল
+      return maps, breaks
+  # Zettelkasten ↔ NeuralNet: দুটোই node+edge জাল
+  # ⚠ সীমা: Zettelkasten-এ backprop নেই</div>`,
   senior:{
     title:"প্রতিদিন analogy বানাও — Build Analogies Daily",
     body:`<p><strong>প্রতিটি নতুন ধারণার জন্য এটা করো — For every new concept:</strong></p><p><em>১. জিজ্ঞেস করো — "এটা কীর মতো?" ২. কাঠামো মিলিয়ে দেখো। ৩. সীমা খুঁজে বের করো — কোথায় analogy ভাঙে।</em></p><p>১. <strong>"What is this LIKE?"</strong> — Find a known concept from a DIFFERENT field that has similar structure.</p><p>২. <strong>Map the structure</strong> — What parts correspond? What relationships correspond?</p><p>৩. <strong>Find the LIMITS</strong> — Where does the analogy break? This is just as important as where it works.</p><p><strong>Examples across your library:</strong></p><p>- "RAG hallucination (Book 10) is like false memory in psychology (Book 24) — both fill gaps with plausible but wrong information."</p><p>- "Zettelkasten (Book 26) is like a neural network — nodes and connections. But Zettelkasten has no learning algorithm."</p><p>- "Growth mindset (Book 24) is like fine-tuning (Book 11) — both update weights based on feedback."</p><p>- "Peer review (Book 27) is like adversarial training (Book 13) — both improve through challenge."</p><p><strong>5+ analogies per day = your brain becomes a connection machine.</strong></p>`
