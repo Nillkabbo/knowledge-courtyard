@@ -355,6 +355,25 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩০ Door ৭ (Linear Algebra):</strong> ম্যাট্রিক্স উল্টানো শিখেছিলে — H⁻¹ সেই কৌশল। Book ৩৬ Door ৪ (Attention): attention matrix — দ্বিতীয়-স্তর তথ্য। এখানে Hessian = loss landscape-এর জ্যামিতি।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔍 Newton vs Gradient Descent: Curvature Matters</text>
+  <path d="M 50 200 Q 100 60 200 120 Q 300 180 400 100 Q 500 40 550 120" fill="none" stroke="#6366f1" stroke-width="2"/>
+  <text x="470" y="55" fill="#a5b4fc" font-size="7">Loss landscape</text>
+  <circle cx="150" cy="140" r="5" fill="#fbbf24"/>
+  <text x="160" y="145" fill="#fcd34d" font-size="7">start</text>
+  <circle cx="290" cy="165" r="5" fill="#22d3ee"/>
+  <text x="300" y="170" fill="#7dd3fc" font-size="7">GD step</text>
+  <circle cx="440" cy="55" r="5" fill="#22c55e"/>
+  <text x="450" y="50" fill="#4ade80" font-size="7">Newton: jumps!</text>
+  <path d="M 150 140 L 290 165" fill="none" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <path d="M 150 140 L 440 55" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="290" y="210" text-anchor="middle" fill="#94a3b8" font-size="7">GD: follows slope step by step (slow)</text>
+  <text x="290" y="225" text-anchor="middle" fill="#94a3b8" font-size="7">Newton: uses curvature H^-1 to jump (fast but expensive)</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Newton-এর পদ্ধতি বক্রতা (Hessian) ব্যবহার করে বড় লাফ দেয়। GD ধীরে ধীরে নামে।</div>
+
 <div class="secret-box">🔍 <strong>Newton = বক্রতার দৃষ্টি।</strong> H⁻¹∇f — ঢাল ও বক্রতা মিলিয়ে আদর্শ পদক্ষেপ। quadratic convergence — কয়েক ধাপে নিচে। কিন্তু H⁻¹ অত্যন্ত ব্যয়বহুল। বাস্তবে quasi-Newton (L-BFGS) approximation করে। কিন্তু এতদিন শুধু unconstrained — কোনো শর্ত ছাড়া। বাস্তব দুনিয়ায় শর্ত আছে — বাজেট, সময়, নিরাপত্তা। সেই সীমাবদ্ধ পৃথিবীতে কী হবে? আসবে পরের দরজায় — Lagrange-এর ভারসাম্য।</div>`,
   senior: {
     title: "Newton's Method এক নজরে",
@@ -427,6 +446,22 @@ doors.push({
 <p class="scene-setting">মিজান — তুলা, ভারসাম্য। Lagrangian-এর λ সেই তুলার দন্ড — উদ্দেশ্য ও শর্তের মধ্যে ভারসাম্য স্থাপন করে। যেখানে দুটি বল সমান — সেই বিন্দুই সমাধান। এটাই সীমাবদ্ধ জগতে সেরা খোঁজার উপায়।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩১ Door ৭ (SVM):</strong> SVM-এর পুরো গণিত Lagrangian dual-এর উপর নির্মিত! Support vectors = Lagrange multiplier যেখানে α > 0। এখন তুমি বোঝো কেন কয়েকটি পয়েন্টই যথেষ্ট।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚖️ Lagrangian: Objective + Constraint = Balance</text>
+  <ellipse cx="290" cy="130" rx="200" ry="80" fill="none" stroke="#6366f1" stroke-width="2"/>
+  <text x="290" y="100" text-anchor="middle" fill="#a5b4fc" font-size="7">Feasible region (constraints satisfied)</text>
+  <circle cx="200" cy="120" r="6" fill="#fbbf24"/>
+  <text x="215" y="118" fill="#fcd34d" font-size="7">min(f)</text>
+  <circle cx="290" cy="130" r="6" fill="#22c55e"/>
+  <text x="305" y="128" fill="#4ade80" font-size="7">optimal: L = f + lambda*g</text>
+  <line x1="100" y1="80" x2="480" y2="180" stroke="#f87171" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="400" y="180" fill="#fca5a5" font-size="7">g(x) = 0 constraint</text>
+  <text x="290" y="220" text-anchor="middle" fill="#94a3b8" font-size="7">KKT: nabla f + lambda * nabla g = 0 (gradient alignment)</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Lagrangian — উদ্দেশ্য ও শর্তের ভারসাম্য। KKT শর্ত সর্বোত্তম বিন্দু খুঁজে দেয়।</div>
 
 <div class="secret-box">⚖️ <strong>Lagrangian = উদ্দেশ্য + λ × শর্ত।</strong> শর্তকে উদ্দেশ্যে মিলিয়ে দাও — সীমাবদ্ধ সমস্যা সীমাহীন হয়ে যায়। λ = শর্তের দাম। এতদিন পর্যন্ত তুমি শিখলে — উতলা বাটি (Door ২), ঢাল অনুসরণ (Door ৩), বক্রতা (Door ৪), ভারসাম্য (Door ৫)। কিন্তু সবই ডেটার পুরো সেট নিয়ে কাজ করে। বাস্তবে ডেটা বিশাল — কোটি কোটি পয়েন্ট। প্রতিটি ধাপে পুরো ডেটা দেখা অসম্ভব। কী করবে? আসবে পরের দরজায় — শব্দ দিয়ে সত্য খোঁজা।</div>`,
   senior: {

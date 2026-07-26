@@ -54,6 +54,20 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩১ Door ৫ (Neural Networks):</strong> নিউরাল নেট প্রশিক্ষণ = SGD। Book ৩৬ Door ৬ (Backprop): backprop + SGD = আধুনিক deep learning। এখন তুমি বোঝো কেন mini-batch = ৩২ বা ২৫৬ — ভারসাম্য।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎲 SGD vs Full Batch: Noisy but Fast</text>
+  <path d="M 30 160 Q 150 40 290 70 Q 430 100 550 60" fill="none" stroke="#6366f1" stroke-width="2"/>
+  <path d="M 30 160 Q 100 100 180 80 Q 250 65 350 72 Q 430 78 550 60" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="400" y="105" fill="#4ade80" font-size="7">Full batch (smooth)</text>
+  <path d="M 30 160 Q 80 130 140 100 L 160 130 L 200 90 L 220 110 Q 280 60 350 80 L 370 100 Q 450 70 550 55" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="200" y="150" fill="#fcd34d" font-size="7">SGD (noisy path)</text>
+  <circle cx="550" cy="60" r="5" fill="#22c55e"/>
+  <text x="540" y="50" fill="#4ade80" font-size="7">min</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: SGD কোলাহলপূর্ণ পথে নামে, Full Batch মসৃণ। কিন্তু SGD দ্রুত।</div>
+
 <div class="secret-box">🎲 <strong>SGD = শব্দযুক্ত কিন্তু বিশ্বস্ত।</strong> একটি নমুনা দিয়ে গ্রেডিয়েন্ট মাপো — ভুল হবে, কিন্তু হাজার ভুল গড়ে সত্য হয়। কিন্তু SGD শুধু ঢাল দেখে — বেগ ধরে না। পাহাড় থেকে নামার সময় যদি তুমি বেগ ধরো, দ্রুত নামতে পারো — momentum। সেই ধারণা আসবে পরের দরজায় — Adam-এর যুগ।</div>`,
   senior: {
     title: "SGD এক নজরে",
@@ -130,6 +144,28 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৬ Door ৭ (Transformer):</strong> GPT, BERT, LLaMA — সবাই AdamW দিয়ে প্রশিক্ষিত। এখন তুমি জানো সেই অপটিমাইজার কী — momentum + adaptation।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚡ Adam: Momentum + Adaptive Learning Rate</text>
+  <rect x="20" y="50" width="120" height="50" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="80" y="80" text-anchor="middle" fill="#7dd3fc" font-size="7">Gradient g_t</text>
+  <rect x="160" y="50" width="120" height="50" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="220" y="72" text-anchor="middle" fill="#fcd34d" font-size="7">Momentum m_t</text>
+  <text x="220" y="85" text-anchor="middle" fill="#fde68a" font-size="6">beta1 * m + (1-beta1)*g</text>
+  <rect x="300" y="50" width="120" height="50" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="360" y="72" text-anchor="middle" fill="#c084fc" font-size="7">Velocity v_t</text>
+  <text x="360" y="85" text-anchor="middle" fill="#d8b4fe" font-size="6">beta2 * v + (1-beta2)*g^2</text>
+  <rect x="440" y="50" width="120" height="50" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="500" y="72" text-anchor="middle" fill="#4ade80" font-size="7">Update theta</text>
+  <text x="500" y="85" text-anchor="middle" fill="#86efac" font-size="6">lr * m / (sqrt(v)+eps)</text>
+  <line x1="140" y1="75" x2="160" y2="75" stroke="#475569" stroke-width="1"/>
+  <line x1="280" y1="75" x2="300" y2="75" stroke="#475569" stroke-width="1"/>
+  <line x1="420" y1="75" x2="440" y2="75" stroke="#475569" stroke-width="1"/>
+  <text x="290" y="130" text-anchor="middle" fill="#94a3b8" font-size="7">Kingma &amp; Ba 2014: default beta1=0.9, beta2=0.999, lr=0.001</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Adam — momentum ও adaptive learning rate একসাথে। ডিফল্ট optimizer।</div>
+
 <div class="secret-box">⚡ <strong>Adam = বেগ + অভিযোজন।</strong> ৫০ বছরের অপটিমাইজেশন গবেষণা একটি সূত্রে। কিন্তু সব পর্যন্ত একটি সমস্যা — আমরা উতলা বাটি ধরে নিচ্ছি। বাস্তব নিউরাল নেট অ-উতলা — হাজার হাজার local minima। সেখানে Adam-ও আটকে যেতে পারে। সেই অ-উতলা পৃথিবীর বাস্তবতা আসবে পরের দরজায়।</div>`,
   senior: {
     title: "Modern Optimizers এক নজরে",
@@ -195,7 +231,24 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৬ Door ৬ (Backpropagation):</strong> vanishing gradient সমস্যা দেখেছিলে — সেটাই plateau। ResNet-এর skip connection = gradient highway। Book ৩৫ Door ৭ (MapReduce): distributed training = একই loss landscape, কিন্তু একাধিক machine।</div></div>
 
-<div class="secret-box">🏔️ <strong>অ-উতলা জগত = saddle points-এর রাজত্ব।</strong> প্রকৃত local minima বিরল — উচ্চ-মাত্রিক স্থানে প্রায় অস্তিত্বহীন। চ্যালেঞ্জ নয়, সুযোগ। কিন্তু এতদিন শুধু ধারাবাহিক (continuous) অপটিমাইজেশন নিয়ে কথা হলো। বাস্তবের অনেক সমস্যা বিচ্ছিন্ন (discrete) — কোন শহরে যাবে, কোন আইটেম বাছবে। সেই জগতে গ্রেডিয়েন্ট নেই। সেই বাস্তবতা আসবে পরের দরজায়।</div>`,
+<div class="svg-diagram">
+<svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🏔️ Non-Convex: Saddle Points &amp; Local Minima</text>
+  <path d="M 30 150 Q 80 80 130 120 Q 180 160 230 100 Q 280 50 330 110 Q 380 170 430 90 Q 480 40 530 100" fill="none" stroke="#6366f1" stroke-width="2"/>
+  <circle cx="130" cy="120" r="4" fill="#fbbf24"/>
+  <text x="130" y="140" text-anchor="middle" fill="#fcd34d" font-size="6">local min</text>
+  <circle cx="280" cy="55" r="4" fill="#22d3ee"/>
+  <text x="280" y="48" text-anchor="middle" fill="#7dd3fc" font-size="6">saddle</text>
+  <circle cx="430" cy="90" r="4" fill="#f87171"/>
+  <text x="430" y="110" text-anchor="middle" fill="#fca5a5" font-size="6">local min</text>
+  <circle cx="530" cy="100" r="5" fill="#22c55e"/>
+  <text x="520" y="90" fill="#4ade80" font-size="6">global</text>
+  <text x="290" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">High dimensions: saddle points dominate, true local minima rare (Dauphin 2014)</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: অ-উতলা landscape — local minima ও saddle points। উচ্চ-মাত্রিক স্থানে saddle বেশি।</div>
+
+<div class="secret-box">🏔️ <strong>অ-উতলা জগত = saddle points-এর রাজত্ব।</strong> প্রকৃত local minima বিরল — উচ্চ-মাত্রিক স্থানে প্রায় অস্তিত্বহীন। চ্যালেঞ্জ নয়, সুযোগ। কিন্তু এতদিন শুধু ধারাবাহিক (continuous) অপটিমাইজেশন নিয়ে কথা হলো। বাস্তবের অনেক সমস্যা বিচ্ছিন্ন (discrete) — কোন শহরে যাবে, কোন আইটেম বাছবে। সেখানে গ্রেডিয়েন্ট নেই। সেই বাস্তবতা আসবে পরের দরজায়।</div>`,
   senior: {
     title: "Non-Convex Optimization এক নজরে",
     body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
@@ -261,6 +314,29 @@ doors.push({
 <p class="scene-setting">"ফাওকা কুল্লি যি ইলমিন আলিম" — প্রতিটি জ্ঞানীর উপরে আরও জ্ঞানী। বিচ্ছিন্ন অপটিমাইজেশন এটাই শেখায় — কিছু সমস্যার নিখুঁত সমাধান জানা নেই। NP-hard মানে — সম্ভবত কেউই দ্রুত সমাধান করতে পারে না। তখন approximation — "যথেষ্ট ভালো" গ্রহণ করা। নিখুঁত নয়, কিন্তু কার্যকর। এটাই প্রকৌশলীর জ্ঞান — আদর্শ নয়, বাস্তব।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ২ (DSA Bazaar) Door ১৫:</strong> Dijkstra-এর shortest path শিখেছিলে — সেটাই বিচ্ছিন্ন অপটিমাইজেশন! Door ১৭: Dynamic Programming — knapsack, TSP। Book ৩৫ Door ৮ (Paxos): consensus = বিচ্ছিন্ন সিদ্ধান্ত।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎯 Combinatorial: TSP &amp; Greedy Heuristic</text>
+  <circle cx="100" cy="80" r="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="100" y="83" text-anchor="middle" fill="#7dd3fc" font-size="7">A</text>
+  <circle cx="250" cy="60" r="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="250" y="63" text-anchor="middle" fill="#7dd3fc" font-size="7">B</text>
+  <circle cx="400" cy="90" r="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="400" y="93" text-anchor="middle" fill="#7dd3fc" font-size="7">C</text>
+  <circle cx="180" cy="160" r="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="180" y="163" text-anchor="middle" fill="#7dd3fc" font-size="7">D</text>
+  <circle cx="350" cy="170" r="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="350" y="173" text-anchor="middle" fill="#7dd3fc" font-size="7">E</text>
+  <line x1="108" y1="82" x2="242" y2="62" stroke="#22c55e" stroke-width="2"/>
+  <line x1="258" y1="62" x2="392" y2="88" stroke="#22c55e" stroke-width="2"/>
+  <line x1="400" y1="98" x2="358" y2="162" stroke="#22c55e" stroke-width="2"/>
+  <line x1="342" y1="165" x2="188" y2="162" stroke="#22c55e" stroke-width="2"/>
+  <line x1="180" y1="152" x2="100" y2="88" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="195" text-anchor="middle" fill="#94a3b8" font-size="7">TSP: visit all cities, min distance. NP-hard! Heuristic: nearest neighbor.</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Traveling Salesman Problem (TSP) — সব শহর ভ্রমণ, সংক্ষিপ্ত পথ। NP-hard।</div>
 
 <div class="secret-box">🎯 <strong>বিচ্ছিন্ন জগতে গ্রেডিয়েন্ট নেই — কৌশল দরকার।</strong> Approximation, heuristic, local search — নিখুঁত নয়, কিন্তু বাস্তব। এখন তুমি পুরো পথ পেরিয়েছো — উতলা বাটি থেকে অ-উতলা পর্বত, ধারাবাহিক থেকে বিচ্ছিন্ন। শেষ দরজায় সব একসাথে মেলাও — একটি ML মডেল প্রশিক্ষণের সম্পূর্ণ যাত্রা।</div>`,
   senior: {
@@ -373,6 +449,23 @@ doors.push({
 <li>📖 "Convex Optimization" — Boyd & Vandenberghe (২০০৪) পড়ো</li>
 <li>📄 Kingma & Ba (2014) — "Adam: A Method for Stochastic Optimization" পড়ো</li>
 </div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌐 Optimization: One Training Loop's Journey</text>
+  <rect x="180" y="50" width="220" height="35" rx="17" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="72" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">D1: What is Optimization?</text>
+  <rect x="140" y="95" width="300" height="35" rx="17" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="117" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">D2-D3: Convex + Gradient Descent</text>
+  <rect x="100" y="140" width="380" height="35" rx="17" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="162" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">D4-D5: Newton + Lagrangian (curvature + constraints)</text>
+  <rect x="60" y="185" width="460" height="35" rx="17" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
+  <text x="290" y="207" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">D6-D9: SGD + Adam + Non-Convex + Combinatorial</text>
+  <rect x="120" y="235" width="340" height="35" rx="17" fill="#052e16" stroke="#4ade80" stroke-width="2.5"/>
+  <text x="290" y="257" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">HIKMAH: optimizer.step()</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: অপটিমাইজেশনের যাত্রা — Al-Khwarizmi থেকে Adam। প্রতিটি optimizer.step() এই জ্ঞান বহন করে।</div>
 
 <div class="secret-box">🌐 <strong>অপটিমাইজেশন = ML-এর হৃদপিণ্ড।</strong> নয়টি দরজা, নয়জন শিক্ষক, একটি training loop। Al-Khwarizmi থেকে Kingma — ১২০০ বছরের গবেষণা প্রতিটি <code>optimizer.step()</code>-এ বেঁচে আছে। এখন তুমি জানো — শুধু কীভাবে নয়, কেন। কেন Adam কাজ করে। কেন SGD শব্দ সহ্য করে। কেন উতলা সহজ। কেন অ-উতলা বাস্তব। এটাই হিকমাহ — প্রয়োগের জ্ঞান। সেরা অপটিমাইজার বেছে নেওয়ার জ্ঞান। পথের সুলতান হওয়ার জ্ঞান।</div>`,
   senior: {
