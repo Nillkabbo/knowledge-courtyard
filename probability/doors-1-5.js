@@ -9,6 +9,8 @@ doors.push({
   color: "#0ea5e9",
   tagline: "বিশ্বাসের আপডেটার — Belief Updater",
   name: "The Belief Updater",
+  subtitle: "Bayes Theorem",
+  tech: "Bayes · Prior · Posterior",
   secret: "Bayes: P(H|D) = P(D|H)·P(H)/P(D)। 99% accurate fraud test → only 1% real fraud! Base rate fallacy।",
   story: `<p class="scene-setting">Bayes theorem হল বিশ্বাস আপডেট করার গাণিতিক সূত্র। তুমি fraud detection model বানালে — 99% accurate! কিন্তু fraud rate 0.01% হলে, positive alert এর সত্যিকার সম্ভাবনা শুধুমাত্র 1%! কারণ healthy transactions এত বেশি যে false positive আধিক্য হয়। এটাই base rate fallacy। Bayes: <code>P(H|D) = P(D|H)·P(H)/P(D)</code>। Prior (পূর্বধারণা) + evidence (প্রমাণ) = posterior (আপডেটেড বিশ্বাস)। ডাক্তার এটা ভুল বুঝে রোগীকে ভুল চিকিৎসা দেয়। Software engineer ভুল বুঝে false positive এ ডুবে যায়।</p>
 
