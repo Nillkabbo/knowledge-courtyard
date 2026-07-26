@@ -29,7 +29,7 @@ class Particle{constructor(){this.reset();this.y=Math.random()*H}reset(){this.x=
 for(let i=0;i<55;i++)particles.push(new Particle());
 (function animateParticles(){ctx.clearRect(0,0,W,H);if(!prefersReducedMotion)particles.forEach(p=>{p.update();p.draw()});else particles.forEach(p=>p.draw());requestAnimationFrame(animateParticles)})();
 // Sound
-let audioCtx=null,soundMuted=false;
+var audioCtx=null,soundMuted=false;
 function getAudio(){if(!audioCtx){try{audioCtx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(audioCtx&&audioCtx.state==='suspended'){audioCtx.resume().catch(()=>{})}return audioCtx}
 function playTone(freq,duration,type='sine',vol=0.09){if(soundMuted)return;const ac=getAudio();if(!ac)return;const osc=ac.createOscillator(),gain=ac.createGain();osc.type=type;osc.frequency.value=freq;gain.gain.setValueAtTime(0,ac.currentTime);gain.gain.linearRampToValueAtTime(vol,ac.currentTime+.02);gain.gain.exponentialRampToValueAtTime(.001,ac.currentTime+duration);osc.connect(gain);gain.connect(ac.destination);osc.start();osc.stop(ac.currentTime+duration)}
 function toggleMute(){soundMuted=!soundMuted;document.getElementById('mute-btn').textContent=soundMuted?'🔇':'🔊'}
