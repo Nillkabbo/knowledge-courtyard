@@ -22,6 +22,30 @@ doors.push({
 <div class="dialogue">প্রশ্ন রূপান্তার বলেছিলেন — ভালো প্রশ্ন দাও। কিন্তু আমি বলি — ভালো প্রশ্ন দিলেও ফল ভালো হলো কি না — মাপতে হয়। RAG বানালেই হবে না। মাপতে হয়। Retrieval ঠিক ছিল? Context প্রাসঙ্গিক ছিল? উত্তর সত্য ছিল? উত্তর প্রশ্নের উত্তর ছিল? চারটি প্রশ্ন, চারটি মাপ।</div>
 <div class="dialogue en">"The query transformer said — give good questions. But I say — even with good questions, did the result turn out good — must measure. Building RAG isn't enough. Must measure. Was retrieval right? Was context relevant? Was the answer true? Did the answer address the question? Four questions, four measures."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="30" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">RAGAS মূল্যায়ন মাপকাঠি</text>
+  <rect x="40" y="55" width="240" height="75" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="160" y="80" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="bold">Context Precision</text>
+  <text x="160" y="100" text-anchor="middle" fill="#4ade80" font-size="9">চাঙ্কগুলো কি প্রাসঙ্গিক?</text>
+  <text x="160" y="118" text-anchor="middle" fill="#fcd34d" font-size="9">লক্ষ্য: &gt; ০.৮০</text>
+  <rect x="300" y="55" width="240" height="75" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="420" y="80" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Context Recall</text>
+  <text x="420" y="100" text-anchor="middle" fill="#7dd3fc" font-size="9">সব তথ্য কি এসেছে?</text>
+  <text x="420" y="118" text-anchor="middle" fill="#fcd34d" font-size="9">লক্ষ্য: &gt; ০.৮৫</text>
+  <rect x="40" y="145" width="240" height="75" rx="8" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="160" y="170" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="bold">Faithfulness</text>
+  <text x="160" y="190" text-anchor="middle" fill="#c084fc" font-size="9">উত্তর কি context থেকে?</text>
+  <text x="160" y="208" text-anchor="middle" fill="#fcd34d" font-size="9">লক্ষ্য: &gt; ০.৯০</text>
+  <rect x="300" y="145" width="240" height="75" rx="8" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+  <text x="420" y="170" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="bold">Answer Relevance</text>
+  <text x="420" y="190" text-anchor="middle" fill="#fcd34d" font-size="9">উত্তর কি প্রশ্নের উত্তর?</text>
+  <text x="420" y="208" text-anchor="middle" fill="#4ade80" font-size="9">লক্ষ্য: &gt; ০.৮৫</text>
+</svg>
+</div>
+<div class="svg-caption">মূল্যায়ন মাপকাঠি — RAGAS-এর চারটি স্কোর ছাড়া উন্নতি অসম্ভব</div>
+
 <div class="code-block">RAG Evaluation — RAGAS Framework:
 
 FOUR METRICS (RAGAS — Es et al., 2023):
@@ -138,6 +162,39 @@ doors.push({
 <div class="dialogue">মাপকাঠির কক্ষ বলেছিলেন — মাপতে হয়। কিন্তু আমি বলি — মাপ শেষে একটা নতুন স্তর আছে। GraphRAG। Vector search ফ্ল্যাট — প্রতিটা টুকরো আলাদা। কিন্তু জ্ঞান আলাদা নয়। রাজা যুক্ত রাজ্যের সাথে, রাজ্য যুক্ত ভূগোলের সাথে। GraphRAG সেই সংযোগ ধরে।</div>
 <div class="dialogue en">"The measurement chamber said — must measure. But I say — after measurement comes a new layer. GraphRAG. Vector search is flat — each piece separate. But knowledge isn't separate. Kings connected to kingdoms, kingdoms to geography. GraphRAG captures those connections."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrRAG7" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="30" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">হাইব্রিড সার্চ — ভেক্টর + গ্রাফ</text>
+  <text x="90" y="70" fill="#7dd3fc" font-size="10">ভেক্টর সার্চ</text>
+  <circle cx="80" cy="120" r="5" fill="#22d3ee"/><circle cx="110" cy="100" r="5" fill="#22d3ee"/>
+  <circle cx="60" cy="150" r="5" fill="#22d3ee"/><circle cx="120" cy="145" r="5" fill="#22d3ee"/>
+  <circle cx="95" cy="170" r="5" fill="#22d3ee"/>
+  <text x="90" y="200" text-anchor="middle" fill="#94a3b8" font-size="8">semantic নিকটতা</text>
+  <text x="490" y="70" text-anchor="end" fill="#c084fc" font-size="10">নলেজ গ্রাফ</text>
+  <circle cx="470" cy="110" r="14" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <circle cx="420" cy="155" r="14" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <circle cx="520" cy="160" r="14" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <line x1="470" y1="110" x2="420" y2="155" stroke="#c084fc" stroke-width="2"/>
+  <line x1="470" y1="110" x2="520" y2="160" stroke="#c084fc" stroke-width="2"/>
+  <line x1="420" y1="155" x2="520" y2="160" stroke="#c084fc" stroke-width="2"/>
+  <text x="470" y="114" text-anchor="middle" fill="#c084fc" font-size="7">E1</text>
+  <text x="490" y="200" text-anchor="middle" fill="#94a3b8" font-size="8">entity সম্পর্ক</text>
+  <line x1="135" y1="125" x2="245" y2="125" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrRAG7)"/>
+  <line x1="405" y1="125" x2="335" y2="125" stroke="#c084fc" stroke-width="2" marker-end="url(#arrRAG7)"/>
+  <rect x="245" y="100" width="90" height="55" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="122" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">RRF ফিউশন</text>
+  <text x="290" y="140" text-anchor="middle" fill="#4ade80" font-size="8">merge → top-k</text>
+  <text x="290" y="225" text-anchor="middle" fill="#fbbf24" font-size="9">multi-hop + semantic → গভীরতর উত্তর</text>
+</svg>
+</div>
+<div class="svg-caption">হাইব্রিড সার্চ — ভেক্টর ও নলেজ গ্রাফ একসাথে সংযুক্ত উত্তর</div>
+
 <div class="code-block">GraphRAG — Knowledge Graphs for RAG:
 
 MICROSOFT GRAPHRAG (2024):
@@ -247,6 +304,36 @@ doors.push({
 
 <div class="dialogue">GraphRAG বলেছিলেন — knowledge graph সংযুক্ত। কিন্তু আমি বলি — সংযোগ গভীরতর উত্তর দেয়, কিন্তু production-এ আরও অনেক কিছু লাগে। Caching, incremental updates, observability, fallback, multi-tenancy। এগুলো ছাড়া RAG production-এ টেকে না।</div>
 <div class="dialogue en">"GraphRAG said — knowledge graphs connect. But I say — connections give deeper answers, but production needs much more. Caching, incremental updates, observability, fallback, multi-tenancy. Without these, RAG doesn't survive production."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrRAG8" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">প্রোডাকশন RAG স্থাপত্য</text>
+  <rect x="190" y="45" width="200" height="22" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="60" text-anchor="middle" fill="#7dd3fc" font-size="9">১. ক্যাশ চেক (semantic)</text>
+  <rect x="190" y="72" width="200" height="22" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="87" text-anchor="middle" fill="#7dd3fc" font-size="9">২. রিট্রিভাল (vector + BM25)</text>
+  <rect x="190" y="99" width="200" height="22" rx="5" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="114" text-anchor="middle" fill="#4ade80" font-size="9">৩. রি-র‍্যাঙ্কিং (top-5)</text>
+  <rect x="190" y="126" width="200" height="22" rx="5" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="290" y="141" text-anchor="middle" fill="#c084fc" font-size="9">৪. LLM জেনারেশন</text>
+  <rect x="190" y="153" width="200" height="22" rx="5" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="168" text-anchor="middle" fill="#fcd34d" font-size="9">৫. গার্ডরেল + সাইটেশন</text>
+  <rect x="190" y="180" width="200" height="22" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="195" text-anchor="middle" fill="#7dd3fc" font-size="9">৬. ট্রেস + ক্যাশ স্টোর</text>
+  <text x="170" y="60" text-anchor="end" fill="#94a3b8" font-size="8">৩০-৬০% সাশ্রয়</text>
+  <line x1="180" y1="118" x2="186" y2="118" stroke="#4ade80" stroke-width="2" marker-end="url(#arrRAG8)"/>
+  <text x="170" y="168" text-anchor="end" fill="#fcd34d" font-size="8">নিরাপত্তা</text>
+  <text x="410" y="195" fill="#94a3b8" font-size="8">Langfuse / LangSmith</text>
+  <text x="290" y="225" text-anchor="middle" fill="#fbbf24" font-size="9">fallback chain: advanced → simple → direct LLM</text>
+</svg>
+</div>
+<div class="svg-caption">প্রোডাকশন স্থাপত্য — ক্যাশ থেকে গার্ডরেল ও ট্রেস পর্যন্ত</div>
 
 <div class="code-block">Production RAG Patterns — From Demo to Real:
 
@@ -373,6 +460,31 @@ doors.push({
 <div class="dialogue">কারখানা বলেছিলেন — production pattern গুরুত্বপূর্ণ। কিন্তু আমি বলি — pattern জানা যথেষ্ট নয়। ভাঙন জানতে হয়। কোথায় RAG ভাঙে? কেন? কীভাবে ঠিক করবে? যে ভাঙন জানে, সে production-এ টেকে। যে শুধু pattern জানে, সে প্রথম ঝড়েই ভাঙে।</div>
 <div class="dialogue en">"The factory said — production patterns matter. But I say — knowing patterns isn't enough. Must know breakage. Where does RAG break? Why? How to fix? One who knows breakage, survives production. One who only knows patterns, breaks in the first storm."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="30" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">কন্টেক্সট উইন্ডো ব্যবস্থাপনা</text>
+  <rect x="30" y="60" width="520" height="70" rx="6" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+  <text x="30" y="55" fill="#94a3b8" font-size="9">টোকেন বাজেট (যেমন ৩২K)</text>
+  <rect x="32" y="62" width="100" height="66" fill="#3b0764" opacity="0.85"/>
+  <text x="82" y="92" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">সিস্টেম</text>
+  <text x="82" y="106" text-anchor="middle" fill="#c084fc" font-size="7">prompt</text>
+  <rect x="132" y="62" width="300" height="66" fill="#14532d" opacity="0.7"/>
+  <text x="282" y="92" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">রিট্রিভ করা চাঙ্ক</text>
+  <text x="282" y="106" text-anchor="middle" fill="#4ade80" font-size="7">সবচেয়ে গুরুত্বপূর্ণ নিচে</text>
+  <rect x="432" y="62" width="116" height="66" fill="#1e3a5f" opacity="0.85"/>
+  <text x="490" y="92" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="bold">ইউজার প্রশ্ন</text>
+  <text x="490" y="106" text-anchor="middle" fill="#7dd3fc" font-size="7">সবার নিচে</text>
+  <rect x="30" y="140" width="520" height="26" rx="6" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="290" y="158" text-anchor="middle" fill="#fcd34d" font-size="9">⚠ overflow অঞ্চল — বেশি চাঙ্ক দিলে কাটা পড়ে</text>
+  <text x="60" y="200" fill="#4ade80" font-size="9">✅ fix: কম কিন্তু প্রাসঙ্গিক চাঙ্ক</text>
+  <text x="60" y="216" fill="#4ade80" font-size="9">✅ fix: রি-র‍্যাঙ্কিং + কম্প্রেশন</text>
+  <text x="340" y="200" fill="#fcd34d" font-size="9">✅ fix: বাজেট চেক (&lt; ৩২K)</text>
+  <text x="340" y="216" fill="#fcd34d" font-size="9">✅ fix: অবস্থান নিয়ন্ত্রণ</text>
+</svg>
+</div>
+<div class="svg-caption">কন্টেক্সট উইন্ডো — টোকেন বাজেট ও অবস্থান ব্যবস্থাপনা</div>
+
 <div class="code-block">RAG Failure Modes — Break to Fix:
 
 TOP ৭ WAYS RAG BREAKS:
@@ -492,6 +604,29 @@ doors.push({
 
 <div class="dialogue">নয়টি স্তর পেরিয়েছ। পাণ্ডুলিপি কক্ষ বলেছিলেন, ডকুমেন্ট ঠিক পড়ো। সূচক নির্মাতা বলেছিলেন, সাজানো গুরুত্বপূর্ণ। সরল কূপ বলেছিলেন, naive RAG-এর সীমা আছে। গভীর কূপ বলেছিলেন, advanced retrieval। প্রশ্ন রূপান্তার বলেছিলেন, প্রশ্ন সংশোধন। মাপকাঠি বলেছিলেন, মাপতে হয়। জাল বলেছিলেন, GraphRAG। কারখানা বলেছিলেন, production pattern। ভাঙন বলেছিলেন, failure mode জানো। এখন — সব একসাথে।</div>
 <div class="dialogue en">"You've passed nine layers. The manuscript chamber said, read documents right. The index builder said, organization matters. The simple well said, naive RAG has limits. The deep well said, advanced retrieval. The query transformer said, refine the question. The measurement said, must measure. The web said, GraphRAG. The factory said, production patterns. The breaking said, know failure modes. Now — all together."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">সম্পূর্ণ RAG স্থাপত্য — সমন্বয়</text>
+  <g font-size="8">
+    <rect x="150" y="45" width="280" height="18" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="290" y="58" text-anchor="middle" fill="#7dd3fc">১. ইনজেশন</text>
+    <rect x="150" y="65" width="280" height="18" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="290" y="78" text-anchor="middle" fill="#7dd3fc">২. ইনডেক্সিং</text>
+    <rect x="150" y="85" width="280" height="18" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/><text x="290" y="98" text-anchor="middle" fill="#4ade80">৩. রিট্রিভাল (top-k)</text>
+    <rect x="150" y="105" width="280" height="18" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/><text x="290" y="118" text-anchor="middle" fill="#4ade80">৪. রি-র‍্যাঙ্কিং</text>
+    <rect x="150" y="125" width="280" height="18" rx="4" fill="#3b0764" stroke="#a855f7" stroke-width="1.5"/><text x="290" y="138" text-anchor="middle" fill="#c084fc">৫. প্রশ্ন রূপান্তার</text>
+    <rect x="150" y="145" width="280" height="18" rx="4" fill="#3b0764" stroke="#a855f7" stroke-width="1.5"/><text x="290" y="158" text-anchor="middle" fill="#c084fc">৬. মূল্যায়ন (RAGAS)</text>
+    <rect x="150" y="165" width="280" height="18" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="290" y="178" text-anchor="middle" fill="#7dd3fc">৭. হাইব্রিড/গ্রাফ</text>
+    <rect x="150" y="185" width="280" height="18" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="290" y="198" text-anchor="middle" fill="#7dd3fc">৮-৯. প্রোডাকশন + ফেইলিওর</text>
+  </g>
+  <text x="60" y="125" text-anchor="middle" fill="#fbbf24" font-size="10">🌊</text>
+  <text x="60" y="142" text-anchor="middle" fill="#fcd34d" font-size="8">অফুরন্ত</text>
+  <text x="520" y="125" text-anchor="middle" fill="#fbbf24" font-size="10">Sir</text>
+  <text x="520" y="142" text-anchor="middle" fill="#fcd34d" font-size="8">কূপ</text>
+  <text x="290" y="230" text-anchor="middle" fill="#fcd34d" font-size="9">একটাও বাদ দিলে কূপ শুকায় — সব মিলে = production-grade</text>
+</svg>
+</div>
+<div class="svg-caption">সম্পূর্ণ RAG স্থাপত্য — দশটি স্তরের সমন্বয়, অফুরন্ত জ্ঞানের কূপ</div>
 
 <div class="code-block">Complete Production RAG Architecture:
 

@@ -22,6 +22,47 @@ doors.push({
 <div class="dialogue">প্রশিক্ষক বলেছিলেন — তিন স্তরে শেখা। কিন্তু আমি বলি — শেখার পরে আসে কথা বলা। LLM কীভাবে কথা বলে? এক টোকেন। তারপর আরেকটা। তারপর আরেকটা। প্রতিটা ধাপে মডেল পুরো প্রসঙ্গ দেখে, একটা সম্ভাবনা ডিস্ট্রিবিউশন তৈরি করে, তারপর একটা টোকেন বাছে। এটাই generation।</div>
 <div class="dialogue en">"The trainer said — learning in three stages. But I say — after learning comes speaking. How does the LLM speak? One token. Then another. Then another. At each step the model sees the full context, creates a probability distribution, then picks one token. This is generation."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrLLM6" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Autoregressive Generation — One Token at a Time</text>
+<!-- Input prompt -->
+<rect x="20" y="40" width="540" height="28" rx="5" fill="#1a2744" stroke="#22d3ee" stroke-width="1.5"/>
+<text x="290" y="58" text-anchor="middle" fill="#7dd3fc" font-size="9">Prompt: "The capital of Bangladesh is"</text>
+<!-- Step 1 -->
+<rect x="20" y="82" width="170" height="68" rx="6" fill="#1a2744" stroke="#a855f7" stroke-width="2"/>
+<text x="105" y="98" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">STEP 1: forward pass</text>
+<text x="105" y="113" text-anchor="middle" fill="#94a3b8" font-size="7">process all context</text>
+<text x="105" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">P(Dhaka)=0.89</text>
+<text x="105" y="140" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">→ pick "Dhaka"</text>
+<!-- Arrow -->
+<line x1="192" y1="116" x2="212" y2="116" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM6)"/>
+<!-- Step 2 -->
+<rect x="205" y="82" width="170" height="68" rx="6" fill="#1a2744" stroke="#a855f7" stroke-width="2"/>
+<text x="290" y="98" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">STEP 2: append + re-run</text>
+<text x="290" y="113" text-anchor="middle" fill="#94a3b8" font-size="7">now process [..., "Dhaka"]</text>
+<text x="290" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">P(".")=0.70</text>
+<text x="290" y="140" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">→ pick "."</text>
+<!-- Arrow -->
+<line x1="377" y1="116" x2="397" y2="116" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM6)"/>
+<!-- Step 3 -->
+<rect x="390" y="82" width="170" height="68" rx="6" fill="#1a2744" stroke="#a855f7" stroke-width="2"/>
+<text x="475" y="98" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">STEP 3: append + re-run</text>
+<text x="475" y="113" text-anchor="middle" fill="#94a3b8" font-size="7">now process [..., "."]</text>
+<text x="475" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">P(&lt;END&gt;)=0.80</text>
+<text x="475" y="140" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">→ STOP</text>
+<!-- Output -->
+<rect x="20" y="165" width="540" height="28" rx="5" fill="#0d1526" stroke="#22c55e" stroke-width="2"/>
+<text x="290" y="183" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Output: "The capital of Bangladesh is Dhaka."</text>
+<!-- Cost insight -->
+<rect x="20" y="205" width="540" height="35" rx="5" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,2"/>
+<text x="290" y="222" text-anchor="middle" fill="#fcd34d" font-size="8">⚡ Each output token = full model forward pass over entire context</text>
+<text x="290" y="234" text-anchor="middle" fill="#94a3b8" font-size="7">1000 output tokens = 1000 passes · KV cache avoids recomputing old tokens</text>
+</svg>
+</div>
+<div class="svg-caption">Autoregressive জেনারেশন — এক সময় এক টোকেন; প্রতিটি ধাপে গোটা context পুনরায় প্রসেস হয়</div>
+
 <div class="code-block">Autoregressive Generation — One Token at a Time:
 
 INPUT: "The capital of Bangladesh is"
@@ -116,6 +157,54 @@ doors.push({
 
 <div class="dialogue">ভাস্কর বলেছিলেন — এক টোকেন এক টোকেন। কিন্তু আমি বলি — প্রতিটা টোকেন একটা অনুমান। কিন্তু অনুমান যখন ভুল? তখন হ্যালুসিনেশন। LLM জেনে বলে না — সে অনুমান করে বলে। সে আত্মবিশ্বাসী ভুল করে। এটাই সবচেয়ে বড় সমস্যা।</div>
 <div class="dialogue en">"The sculptor said — one token at a time. But I say — each token is a guess. But when the guess is wrong? Hallucination. The LLM doesn't speak from knowledge — it speaks from probability. It confidently errs. This is the biggest problem."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrLLM7" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Hallucination — Causes &amp; Defense</text>
+<!-- LEFT: Causes -->
+<text x="140" y="42" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">⚠ 5 Causes</text>
+<rect x="20" y="50" width="240" height="28" rx="5" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="35" y="68" fill="#fcd34d" font-size="8">1.</text>
+<text x="50" y="68" fill="#94a3b8" font-size="8">Training data gap — "I don't know" not learned</text>
+<rect x="20" y="82" width="240" height="28" rx="5" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="35" y="100" fill="#fcd34d" font-size="8">2.</text>
+<text x="50" y="100" fill="#94a3b8" font-size="8">Attention failure — info lost in long context</text>
+<rect x="20" y="114" width="240" height="28" rx="5" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="35" y="132" fill="#fcd34d" font-size="8">3.</text>
+<text x="50" y="132" fill="#94a3b8" font-size="8">Probability ≠ knowledge — guesses confidently</text>
+<rect x="20" y="146" width="240" height="28" rx="5" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="35" y="164" fill="#fcd34d" font-size="8">4.</text>
+<text x="50" y="164" fill="#94a3b8" font-size="8">Sycophancy — agrees with user to please</text>
+<rect x="20" y="178" width="240" height="28" rx="5" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="35" y="196" fill="#fcd34d" font-size="8">5.</text>
+<text x="50" y="196" fill="#94a3b8" font-size="8">High temperature → more randomness</text>
+<!-- Divider arrow -->
+<text x="290" y="120" text-anchor="middle" fill="#22d3ee" font-size="14">→</text>
+<text x="290" y="135" text-anchor="middle" fill="#7dd3fc" font-size="7">prevent</text>
+<!-- RIGHT: Defense layers -->
+<text x="460" y="42" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">🛡 7-Layer Defense</text>
+<rect x="320" y="50" width="240" height="22" rx="4" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
+<text x="440" y="65" text-anchor="middle" fill="#4ade80" font-size="7">1. Grounding (RAG) — give source docs</text>
+<rect x="320" y="75" width="240" height="22" rx="4" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
+<text x="440" y="90" text-anchor="middle" fill="#4ade80" font-size="7">2. Low temperature (0) — deterministic</text>
+<rect x="320" y="100" width="240" height="22" rx="4" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
+<text x="440" y="115" text-anchor="middle" fill="#4ade80" font-size="7">3. Citation required — claim needs source</text>
+<rect x="320" y="125" width="240" height="22" rx="4" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
+<text x="440" y="140" text-anchor="middle" fill="#4ade80" font-size="7">4. Chain-of-verification — self-check</text>
+<rect x="320" y="150" width="240" height="22" rx="4" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
+<text x="440" y="165" text-anchor="middle" fill="#4ade80" font-size="7">5. "Say I don't know" prompting</text>
+<rect x="320" y="175" width="240" height="22" rx="4" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
+<text x="440" y="190" text-anchor="middle" fill="#4ade80" font-size="7">6. Structured output + confidence field</text>
+<rect x="320" y="200" width="240" height="22" rx="4" fill="#0d1526" stroke="#22c55e" stroke-width="2"/>
+<text x="440" y="215" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">7. External verification (2nd model/human)</text>
+<!-- Bottom truth bar -->
+<rect x="20" y="218" width="280" height="22" rx="4" fill="#0d1526" stroke="#a855f7" stroke-width="1.5"/>
+<text x="160" y="233" text-anchor="middle" fill="#c084fc" font-size="7">LLM doesn't lie — it guesses. Verify everything.</text>
+</svg>
+</div>
+<div class="svg-caption">হ্যালুসিনেশন — ৫টি কারণ, ৭টি প্রতিরক্ষা স্তর; যাচাই ছাড়া বিশ্বাস নয়</div>
 
 <div class="code-block">Hallucination — Why LLMs Confidently Lie:
 
@@ -216,6 +305,52 @@ doors.push({
 
 <div class="dialogue">মরীচিকা কক্ষ বলেছিলেন — hallucination ঠেকাও। কিন্তু আমি বলি — একটা সহজ সত্য আছে। বড় মডেল = কম hallucination। বেশি ডেটা = বেশি জ্ঞান। বেশি কম্পিউট = বেশি সূক্ষ্মতা। এটাই scaling law। কিন্তু অনুপাত ঠিক না হলে — অপচয়।</div>
 <div class="dialogue en">"The mirage chamber said — prevent hallucination. But I say — there's a simple truth. Bigger model = less hallucination. More data = more knowledge. More compute = more refinement. This is the scaling law. But without the right ratio — waste."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrLLM8" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Scaling Laws — More is Better (with the right ratio)</text>
+<!-- Left: Power law curve chart -->
+<rect x="20" y="40" width="280" height="195" rx="8" fill="#0d1526" stroke="#22d3ee" stroke-width="1.5"/>
+<text x="160" y="58" text-anchor="middle" fill="#94a3b8" font-size="8">Loss (error) vs Compute — power law</text>
+<!-- Axes -->
+<line x1="50" y1="210" x2="50" y2="70" stroke="#475569" stroke-width="1"/>
+<line x1="50" y1="210" x2="280" y2="210" stroke="#475569" stroke-width="1"/>
+<text x="38" y="145" fill="#94a3b8" font-size="7" transform="rotate(-90 38 145)">Loss ↓</text>
+<text x="165" y="228" text-anchor="middle" fill="#94a3b8" font-size="7">Compute / Parameters / Data →</text>
+<!-- Kaplan curve (dashed, higher) -->
+<path d="M 60 90 Q 120 130 200 165 T 275 185" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="245" y="180" fill="#fcd34d" font-size="7">Kaplan (2020)</text>
+<!-- Chinchilla curve (solid, lower - better) -->
+<path d="M 60 100 Q 110 145 190 175 T 275 195" fill="none" stroke="#22c55e" stroke-width="2.5"/>
+<text x="240" y="200" fill="#4ade80" font-size="7">Chinchilla (2022)</text>
+<!-- Data points -->
+<circle cx="100" cy="110" r="3" fill="#7dd3fc"/>
+<circle cx="150" cy="140" r="3" fill="#7dd3fc"/>
+<circle cx="200" cy="165" r="3" fill="#7dd3fc"/>
+<text x="100" y="125" text-anchor="middle" fill="#7dd3fc" font-size="6">7B</text>
+<text x="150" y="155" text-anchor="middle" fill="#7dd3fc" font-size="6">70B</text>
+<text x="205" y="158" text-anchor="middle" fill="#7dd3fc" font-size="6">175B</text>
+<!-- Right: Comparison boxes -->
+<rect x="320" y="40" width="240" height="60" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="440" y="58" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">Kaplan — wrong ratio</text>
+<text x="440" y="73" text-anchor="middle" fill="#94a3b8" font-size="7">GPT-3: 175B params</text>
+<text x="440" y="84" text-anchor="middle" fill="#94a3b8" font-size="7">but only 300B tokens</text>
+<text x="440" y="95" text-anchor="middle" fill="#94a3b8" font-size="7">→ data-starved</text>
+<rect x="320" y="110" width="240" height="60" rx="6" fill="#1a2744" stroke="#22c55e" stroke-width="2"/>
+<text x="440" y="128" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Chinchilla — correct ratio</text>
+<text x="440" y="143" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">~20 tokens per parameter</text>
+<text x="440" y="154" text-anchor="middle" fill="#94a3b8" font-size="7">70B model → 1.4T tokens</text>
+<text x="440" y="165" text-anchor="middle" fill="#94a3b8" font-size="7">7B model → 140B tokens</text>
+<!-- Result box -->
+<rect x="320" y="180" width="240" height="55" rx="6" fill="#0d1526" stroke="#a855f7" stroke-width="2"/>
+<text x="440" y="198" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">Surprising result:</text>
+<text x="440" y="212" text-anchor="middle" fill="#7dd3fc" font-size="7">Chinchilla 70B beat</text>
+<text x="440" y="223" text-anchor="middle" fill="#7dd3fc" font-size="7">GPT-3 175B — smaller wins!</text>
+</svg>
+</div>
+<div class="svg-caption">Scaling law — বড় মডেল ভালো, কিন্তু অনুপাত ঠিক হতে হবে: প্রতি প্যারামিটারে ~২০ টোকেন</div>
 
 <div class="code-block">Scaling Laws — Bigger is Better (with conditions):
 
@@ -324,7 +459,70 @@ doors.push({
 <div class="dialogue">স্কেল পরিমাপক বলেছিলেন — বড় মডেল ভালো। কিন্তু আমি বলি — বড় মডেল ধীর, ব্যয়বহুল। কিন্তু যদি বড় মডেলের ক্ষমতা চাও — ধীরতা ছাড়া? Mixture of Experts। বিশেষজ্ঞদের দল। শুধু প্রয়োজনীয় জন কাজ করেন।</div>
 <div class="dialogue en">"The scale measurer said — bigger is better. But I say — big models are slow, expensive. But what if you want big model power — without slowness? Mixture of Experts. A team of experts. Only the needed ones work."</div>
 
-<div class="code-block">Mixture of Experts (MoE) & Multimodality:
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrLLM9" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Mixture of Experts — Big Power, Small Speed</text>
+<!-- Token input -->
+<rect x="20" y="95" width="65" height="30" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="52" y="114" text-anchor="middle" fill="#7dd3fc" font-size="9">token</text>
+<!-- Router -->
+<rect x="110" y="95" width="65" height="30" rx="5" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+<text x="142" y="108" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">Router</text>
+<text x="142" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">picks experts</text>
+<line x1="85" y1="110" x2="105" y2="110" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM9)"/>
+<!-- Experts grid - 8 experts -->
+<text x="345" y="45" text-anchor="middle" fill="#94a3b8" font-size="7">8 Expert Networks (e.g., Mixtral 8×7B = 47B total)</text>
+<!-- Active experts (highlighted) -->
+<rect x="200" y="55" width="60" height="40" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="2.5"/>
+<text x="230" y="72" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">Expert 1</text>
+<text x="230" y="85" text-anchor="middle" fill="#4ade80" font-size="6">✓ active</text>
+<rect x="270" y="55" width="60" height="40" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1" opacity="0.4"/>
+<text x="300" y="72" text-anchor="middle" fill="#64748b" font-size="8">Expert 2</text>
+<text x="300" y="85" text-anchor="middle" fill="#64748b" font-size="6">asleep</text>
+<rect x="340" y="55" width="60" height="40" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="2.5"/>
+<text x="370" y="72" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">Expert 3</text>
+<text x="370" y="85" text-anchor="middle" fill="#4ade80" font-size="6">✓ active</text>
+<rect x="410" y="55" width="60" height="40" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1" opacity="0.4"/>
+<text x="440" y="72" text-anchor="middle" fill="#64748b" font-size="8">Expert 4</text>
+<text x="440" y="85" text-anchor="middle" fill="#64748b" font-size="6">asleep</text>
+<!-- Row 2 -->
+<rect x="200" y="105" width="60" height="40" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1" opacity="0.4"/>
+<text x="230" y="122" text-anchor="middle" fill="#64748b" font-size="8">Expert 5</text>
+<text x="230" y="135" text-anchor="middle" fill="#64748b" font-size="6">asleep</text>
+<rect x="270" y="105" width="60" height="40" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="2.5"/>
+<text x="300" y="122" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">Expert 6</text>
+<text x="300" y="135" text-anchor="middle" fill="#4ade80" font-size="6">✓ active</text>
+<rect x="340" y="105" width="60" height="40" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1" opacity="0.4"/>
+<text x="370" y="122" text-anchor="middle" fill="#64748b" font-size="8">Expert 7</text>
+<text x="370" y="135" text-anchor="middle" fill="#64748b" font-size="6">asleep</text>
+<rect x="410" y="105" width="60" height="40" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1" opacity="0.4"/>
+<text x="440" y="122" text-anchor="middle" fill="#64748b" font-size="8">Expert 8</text>
+<text x="440" y="135" text-anchor="middle" fill="#64748b" font-size="6">asleep</text>
+<!-- Router arrows -->
+<line x1="175" y1="105" x2="195" y2="75" stroke="#fbbf24" stroke-width="1.5" opacity="0.8"/>
+<line x1="175" y1="110" x2="335" y2="75" stroke="#fbbf24" stroke-width="1.5" opacity="0.8"/>
+<line x1="175" y1="115" x2="295" y2="105" stroke="#fbbf24" stroke-width="1.5" opacity="0.8"/>
+<!-- Output merge -->
+<rect x="490" y="85" width="70" height="40" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="525" y="102" text-anchor="middle" fill="#7dd3fc" font-size="8">Merge</text>
+<text x="525" y="115" text-anchor="middle" fill="#94a3b8" font-size="6">weighted sum</text>
+<!-- Bottom comparison -->
+<rect x="20" y="165" width="540" height="70" rx="8" fill="#0d1526" stroke="#a855f7" stroke-width="1"/>
+<text x="290" y="183" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">Why MoE? — Emergent Abilities at Scale</text>
+<rect x="40" y="192" width="150" height="35" rx="5" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="115" y="206" text-anchor="middle" fill="#fcd34d" font-size="7">Dense model: 70B</text>
+<text x="115" y="218" text-anchor="middle" fill="#94a3b8" font-size="7">all 70B active → slow</text>
+<text x="290" y="213" text-anchor="middle" fill="#7dd3fc" font-size="10">vs</text>
+<rect x="330" y="192" width="210" height="35" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="2"/>
+<text x="435" y="206" text-anchor="middle" fill="#4ade80" font-size="7">MoE: 47B total, 13B active</text>
+<text x="435" y="218" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">→ same quality, 5× faster</text>
+</svg>
+</div>
+<div class="svg-caption">Mixture of Experts — শুধু প্রয়োজনীয় বিশেষজ্ঞ কাজ করে; বড় মডেলের ক্ষমতা, ছোট মডেলের গতি</div>
+
+<div class="code-block">Mixture of Experts (MoE) &amp; Multimodality:
 
 MIXTURE OF EXPERTS:
 

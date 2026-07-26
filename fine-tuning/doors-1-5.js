@@ -94,7 +94,49 @@ FINE-TUNING USE CASES (যখন সত্যিই দরকার):
      ব্র্যান্ড ভয়েস, কাস্টম পার্সোনালিটি</div>
 
 <div class="dialogue">হিকমাহ — প্রজ্ঞা, সঠিক সিদ্ধান্ত। কুরআনে আল্লাহ বলেন — "যাকে হিকমাহ দিয়েছেন, তাকে প্রচুর কল্যাণ দিয়েছেন।" (২:২৬৯)। হিকমাহ হলো — সঠিক সময়ে সঠিক সরঞ্জাম বেছে নেওয়া। সব সমস্যায় fine-tuning নয়, সব সমস্যায় RAG নয়। প্রতিটা সমস্যা বুঝে সিদ্ধান্ত নাও। এটাই হিকমাহ।</div>
-<div class="dialogue en">"Hikmah — wisdom, right decision. Allah says — 'Whoever is given wisdom, has been given much good.' (2:269). Hikmah is — choosing the right tool at the right time. Not fine-tuning for every problem, not RAG for every problem. Understand each problem, then decide. This is hikmah."</div>`,
+<div class="dialogue en">"Hikmah — wisdom, right decision. Allah says — 'Whoever is given wisdom, has been given much good.' (2:269). Hikmah is — choosing the right tool at the right time. Not fine-tuning for every problem, not RAG for every problem. Understand each problem, then decide. This is hikmah."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" style="background:#0f172a;border-radius:12px">
+  <defs>
+    <linearGradient id="ft1bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e293b"/></linearGradient>
+    <marker id="ft1arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L8,5 L0,10 Z" fill="#7dd3fc"/></marker>
+  </defs>
+  <rect width="800" height="400" fill="url(#ft1bg)" rx="12"/>
+  <text x="400" y="32" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" font-weight="700" fill="#22d3ee">Pre-training vs Fine-tuning</text>
+  <text x="400" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">সাধারণ জ্ঞান থেকে নির্দিষ্ট দক্ষতা</text>
+  <rect x="30" y="70" width="330" height="150" rx="10" fill="none" stroke="#4ade80" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="195" y="94" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#4ade80">&#9312; Pre-training</text>
+  <text x="195" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#a7f3d0">Trillions of tokens</text>
+  <text x="50" y="138" font-family="monospace" font-size="11" fill="#cbd5e1">&#8226; Books, web, code, papers</text>
+  <text x="50" y="156" font-family="monospace" font-size="11" fill="#cbd5e1">&#8226; Next-token prediction</text>
+  <text x="50" y="174" font-family="monospace" font-size="11" fill="#cbd5e1">&#8226; Weeks on GPU clusters</text>
+  <text x="50" y="192" font-family="monospace" font-size="11" fill="#cbd5e1">&#8226; Learns language + world knowledge</text>
+  <text x="50" y="210" font-family="monospace" font-size="11" fill="#fbbf24">Cost: $ millions</text>
+  <rect x="440" y="70" width="330" height="150" rx="10" fill="none" stroke="#22d3ee" stroke-width="2"/>
+  <text x="605" y="94" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#22d3ee">&#9313; Fine-tuning</text>
+  <text x="605" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#7dd3fc">Hundreds to thousands of examples</text>
+  <text x="460" y="138" font-family="monospace" font-size="11" fill="#cbd5e1">&#8226; Medical, legal, code examples</text>
+  <text x="460" y="156" font-family="monospace" font-size="11" fill="#cbd5e1">&#8226; Supervised / preference learning</text>
+  <text x="460" y="174" font-family="monospace" font-size="11" fill="#cbd5e1">&#8226; Hours on single GPU</text>
+  <text x="460" y="192" font-family="monospace" font-size="11" fill="#cbd5e1">&#8226; Learns behavior + skill</text>
+  <text x="460" y="210" font-family="monospace" font-size="11" fill="#fbbf24">Cost: $10 - $5000</text>
+  <line x1="360" y1="145" x2="432" y2="145" stroke="#7dd3fc" stroke-width="2" marker-end="url(#ft1arr)"/>
+  <text x="396" y="137" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#7dd3fc">adapt</text>
+  <rect x="30" y="250" width="740" height="120" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="400" y="274" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#fbbf24">কখন কোন সরঞ্জাম? (হিকমাহ)</text>
+  <line x1="400" y1="284" x2="400" y2="360" stroke="#334155" stroke-width="1"/>
+  <text x="50" y="302" font-family="monospace" font-size="12" fill="#4ade80">&#8594; নতুন তথ্য = RAG</text>
+  <text x="50" y="322" font-family="monospace" font-size="12" fill="#7dd3fc">&#8594; নতুন শৈলী/ফরম্যাট = Prompting</text>
+  <text x="50" y="342" font-family="monospace" font-size="12" fill="#fbbf24">&#8594; নতুন দক্ষতা/আচরণ = Fine-tuning</text>
+  <text x="420" y="302" font-family="monospace" font-size="11" fill="#94a3b8">Pre-train: জ্ঞান যোগ করে</text>
+  <text x="420" y="322" font-family="monospace" font-size="11" fill="#94a3b8">Fine-tune: আচরণ বদলায়</text>
+  <text x="420" y="342" font-family="monospace" font-size="11" fill="#94a3b8">৭B fine-tuned &#8776; বড় general</text>
+  <text x="420" y="362" font-family="monospace" font-size="11" fill="#fcd34d">৯০% সমস্যা: RAG + Prompting</text>
+</svg>
+</div>
+
+`,
   senior:{
     title:"Self-Assessment — Fine-tuning দরকার কি?",
     body:`<p><strong>প্রশ্ন ১:</strong> সমস্যা কি নতুন তথ্য? → RAG</p><p><strong>প্রশ্ন ২:</strong> সমস্যা কি শুধু ফরম্যাট/শৈলী? → Prompting</p><p><strong>প্রশ্ন ৩:</strong> মডেল কি ডোমেইনে দুর্বল, prompting-এ ঠিক হচ্ছে না? → Fine-tuning</p><p><strong>প্রশ্ন ৪:</strong> Latency/cost কমাতে ছোট মডেল দরকার? → Fine-tuning (distillation)</p><p><strong>Rule of thumb:</strong> আগে prompting চেষ্টা করো → RAG চেষ্টা করো → শেষে fine-tuning। ৯০% সমস্যা প্রথম দুটোতে সমাধান হয়।</p>`
@@ -208,7 +250,59 @@ DATASET SIZE GUIDELINE:
   └──────────────────┴────────────────────┘</div>
 
 <div class="dialogue">তাযকিয়া — purification, refinement। কুরআনে আল্লাহ বলেন — "সফল সেই ব্যক্তি যে নিজেকে পরিশুদ্ধ করে।" (৯১:৯)। Fine-tuning-এর ডেটাও পরিশুদ্ধ হতে হয়। প্রতিটি example যাচাই, প্রতিটি response নিখুঁত। অশুদ্ধ ডেটা = অশুদ্ধ মডেল। শুদ্ধ ডেটা = শুদ্ধ মডেল। তাযকিয়া ছাড়া fine-tuning = বিপদ।</div>
-<div class="dialogue en">"Tazkiyah — purification, refinement. Allah says — 'Successful is the one who purifies themselves.' (91:9). Fine-tuning data must be purified too. Every example verified, every response perfect. Impure data = impure model. Pure data = pure model. Without tazkiyah, fine-tuning = danger."</div>`,
+<div class="dialogue en">"Tazkiyah — purification, refinement. Allah says — 'Successful is the one who purifies themselves.' (91:9). Fine-tuning data must be purified too. Every example verified, every response perfect. Impure data = impure model. Pure data = pure model. Without tazkiyah, fine-tuning = danger."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" style="background:#0f172a;border-radius:12px">
+  <defs>
+    <linearGradient id="ft2bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e293b"/></linearGradient>
+    <marker id="ft2arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L8,5 L0,10 Z" fill="#7dd3fc"/></marker>
+  </defs>
+  <rect width="800" height="400" fill="url(#ft2bg)" rx="12"/>
+  <text x="400" y="32" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" font-weight="700" fill="#22d3ee">Dataset Preparation Pipeline</text>
+  <text x="400" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">৮০% সময় ডেটায় — Quality &gt; Quantity</text>
+  <rect x="20" y="70" width="160" height="80" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="100" y="92" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4ade80">Human-authored</text>
+  <text x="100" y="110" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7f3d0">Best quality</text>
+  <text x="100" y="126" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7f3d0">$5-50/example</text>
+  <text x="100" y="142" text-anchor="middle" font-family="monospace" font-size="10" fill="#fbbf24">★★★★★</text>
+  <rect x="20" y="160" width="160" height="80" rx="8" fill="#1e293b" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="100" y="182" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#22d3ee">Distillation</text>
+  <text x="100" y="200" text-anchor="middle" font-family="monospace" font-size="10" fill="#7dd3fc">GPT-4 &#8594; data</text>
+  <text x="100" y="216" text-anchor="middle" font-family="monospace" font-size="10" fill="#7dd3fc">$0.01-0.10/ex</text>
+  <text x="100" y="232" text-anchor="middle" font-family="monospace" font-size="10" fill="#fbbf24">★★★★</text>
+  <rect x="20" y="250" width="160" height="80" rx="8" fill="#1e293b" stroke="#7dd3fc" stroke-width="1.5"/>
+  <text x="100" y="272" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#7dd3fc">Synthetic/Public</text>
+  <text x="100" y="290" text-anchor="middle" font-family="monospace" font-size="10" fill="#bae6fd">Self-instruct</text>
+  <text x="100" y="306" text-anchor="middle" font-family="monospace" font-size="10" fill="#bae6fd">Dolly, OASST</text>
+  <text x="100" y="322" text-anchor="middle" font-family="monospace" font-size="10" fill="#fbbf24">★★★</text>
+  <line x1="180" y1="200" x2="270" y2="200" stroke="#7dd3fc" stroke-width="2" marker-end="url(#ft2arr)"/>
+  <rect x="280" y="120" width="180" height="160" rx="10" fill="none" stroke="#fbbf24" stroke-width="2"/>
+  <text x="370" y="144" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Cleaning &amp; Format</text>
+  <text x="300" y="170" font-family="monospace" font-size="11" fill="#fcd34d">&#9745; Fact check</text>
+  <text x="300" y="188" font-family="monospace" font-size="11" fill="#fcd34d">&#9745; Fluency check</text>
+  <text x="300" y="206" font-family="monospace" font-size="11" fill="#fcd34d">&#9745; Format verify</text>
+  <text x="300" y="224" font-family="monospace" font-size="11" fill="#fcd34d">&#9745; Diversity check</text>
+  <text x="300" y="242" font-family="monospace" font-size="11" fill="#fcd34d">&#9745; Bias filter</text>
+  <text x="300" y="260" font-family="monospace" font-size="11" fill="#fcd34d">&#9745; Deduplicate</text>
+  <line x1="460" y1="200" x2="540" y2="200" stroke="#7dd3fc" stroke-width="2" marker-end="url(#ft2arr)"/>
+  <rect x="550" y="70" width="230" height="110" rx="10" fill="#1e293b" stroke="#4ade80" stroke-width="2"/>
+  <text x="665" y="94" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4ade80">Train Set (৯০%)</text>
+  <text x="570" y="118" font-family="monospace" font-size="11" fill="#a7f3d0">&#8226; Instruction-response pairs</text>
+  <text x="570" y="136" font-family="monospace" font-size="11" fill="#a7f3d0">&#8226; JSONL / conversational</text>
+  <text x="570" y="154" font-family="monospace" font-size="11" fill="#a7f3d0">&#8226; 100 - 50,000 examples</text>
+  <text x="570" y="172" font-family="monospace" font-size="11" fill="#fbbf24">Quality &gt; Quantity!</text>
+  <rect x="550" y="200" width="230" height="110" rx="10" fill="#1e293b" stroke="#22d3ee" stroke-width="2"/>
+  <text x="665" y="224" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#22d3ee">Eval Set (১০%)</text>
+  <text x="570" y="248" font-family="monospace" font-size="11" fill="#7dd3fc">&#8226; Holdout — never train on</text>
+  <text x="570" y="266" font-family="monospace" font-size="11" fill="#7dd3fc">&#8226; Diverse, representative</text>
+  <text x="570" y="284" font-family="monospace" font-size="11" fill="#7dd3fc">&#8226; 100 - 500 examples</text>
+  <text x="570" y="302" font-family="monospace" font-size="11" fill="#fbbf24">Base vs Fine-tuned</text>
+  <text x="400" y="380" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">তাযকিয়া — প্রতিটি example যাচাই, নিখুঁত করো</text>
+</svg>
+</div>
+
+`,
   senior:{
     title:"Dataset Strategy — আজই শুরু",
     body:`<p><strong>Start small:</strong> ১০০টি hand-crafted examples। দেখো fine-tuning কাজ করে কি না।</p><p><strong>Augment:</strong> ভালো হলে → distillation বা augmentation দিয়ে ১০০০-৫০০০-এ বাড়াও।</p><p><strong>Filter:</strong> LLM দিয়ে প্রতিটি example quality score করো। কম স্কোর বাদ দাও।</p><p><strong>Eval set:</strong> সবসময় ১০% আলাদা রাখো — training-এ ব্যবহার করো না।</p>`
@@ -348,7 +442,54 @@ TOOLS:
   LLaMA-Factory → web UI for LoRA</div>
 
 <div class="dialogue">কায়সর — creative addition, skillful craft। কুরআনে আল্লাহ বলেন — "আমি মানুষকে সৃষ্টি করেছি সেরা কাঠামোয়।" (৯৫:৪)। প্রতিটি সৃষ্টি নিখুঁত কাঠামো। LoRA-ও একটি নিখুঁত কাঠামো — সব না বদলে সবচেয়ে গুরুত্বপূর্ণ অংশ বদলানো। কম পরিশ্রম, বেশি ফল। এটাই কায়সর — শিল্পীর সৃজনশীলতা।</div>
-<div class="dialogue en">"Kaysar — creative addition, skillful craft. Allah says — 'We created man in the best stature.' (95:4). Each creation is perfect structure. LoRA too is a perfect structure — changing not everything, but the most important part. Less effort, more result. This is kaysar — the artisan's creativity."</div>`,
+<div class="dialogue en">"Kaysar — creative addition, skillful craft. Allah says — 'We created man in the best stature.' (95:4). Each creation is perfect structure. LoRA too is a perfect structure — changing not everything, but the most important part. Less effort, more result. This is kaysar — the artisan's creativity."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" style="background:#0f172a;border-radius:12px">
+  <defs>
+    <linearGradient id="ft3bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e293b"/></linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#ft3bg)" rx="12"/>
+  <text x="400" y="32" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" font-weight="700" fill="#22d3ee">LoRA — Low-Rank Adaptation</text>
+  <text x="400" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">১% প্যারামিটার, ৯৯% কম মেমরি</text>
+  <text x="400" y="88" text-anchor="middle" font-family="monospace" font-size="15" font-weight="700" fill="#fbbf24">W_effective = W + &#916;W &#160;&#160; where &#160;&#160; &#916;W = A &#215; B</text>
+  <rect x="50" y="110" width="200" height="200" rx="10" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+  <text x="150" y="134" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#94a3b8">W (frozen)</text>
+  <text x="150" y="152" text-anchor="middle" font-family="monospace" font-size="11" fill="#cbd5e1">d &#215; d</text>
+  <rect x="80" y="168" width="140" height="100" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="150" y="205" text-anchor="middle" font-family="monospace" font-size="28" fill="#475569">&#128274;</text>
+  <text x="150" y="232" text-anchor="middle" font-family="monospace" font-size="11" fill="#64748b">4096 &#215; 4096</text>
+  <text x="150" y="250" text-anchor="middle" font-family="monospace" font-size="11" fill="#64748b">16.7M params</text>
+  <text x="150" y="290" text-anchor="middle" font-family="monospace" font-size="11" fill="#4ade80">FROZEN &#10003;</text>
+  <text x="270" y="210" text-anchor="middle" font-family="monospace" font-size="24" fill="#fbbf24">+</text>
+  <rect x="300" y="110" width="180" height="200" rx="10" fill="#1e293b" stroke="#22d3ee" stroke-width="2"/>
+  <text x="390" y="134" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#22d3ee">A &#215; B (trainable)</text>
+  <text x="390" y="152" text-anchor="middle" font-family="monospace" font-size="11" fill="#7dd3fc">d&#215;r &#160; and &#160; r&#215;d</text>
+  <rect x="315" y="168" width="65" height="100" rx="4" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="347" y="195" text-anchor="middle" font-family="monospace" font-size="16" fill="#22d3ee">A</text>
+  <text x="347" y="225" text-anchor="middle" font-family="monospace" font-size="10" fill="#7dd3fc">4096&#215;8</text>
+  <rect x="395" y="168" width="65" height="100" rx="4" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="427" y="195" text-anchor="middle" font-family="monospace" font-size="16" fill="#22d3ee">B</text>
+  <text x="427" y="225" text-anchor="middle" font-family="monospace" font-size="10" fill="#7dd3fc">8&#215;4096</text>
+  <text x="390" y="255" text-anchor="middle" font-family="monospace" font-size="11" fill="#4ade80">r = 8</text>
+  <text x="390" y="275" text-anchor="middle" font-family="monospace" font-size="11" fill="#fbbf24">65K params</text>
+  <text x="390" y="295" text-anchor="middle" font-family="monospace" font-size="11" fill="#4ade80">TRAINABLE &#9889;</text>
+  <text x="500" y="210" text-anchor="middle" font-family="monospace" font-size="20" fill="#fbbf24">=</text>
+  <rect x="530" y="110" width="240" height="200" rx="10" fill="none" stroke="#4ade80" stroke-width="2.5"/>
+  <text x="650" y="134" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4ade80">W_effective</text>
+  <text x="650" y="152" text-anchor="middle" font-family="monospace" font-size="11" fill="#a7f3d0">at inference</text>
+  <text x="650" y="195" text-anchor="middle" font-family="monospace" font-size="22" fill="#4ade80">&#9889;</text>
+  <text x="650" y="222" text-anchor="middle" font-family="monospace" font-size="13" fill="#a7f3d0">99.6% fewer</text>
+  <text x="650" y="242" text-anchor="middle" font-family="monospace" font-size="13" fill="#a7f3d0">parameters!</text>
+  <text x="650" y="270" text-anchor="middle" font-family="monospace" font-size="11" fill="#fbbf24">Adapter = 20 MB</text>
+  <text x="650" y="290" text-anchor="middle" font-family="monospace" font-size="11" fill="#fbbf24">(not 14 GB!)</text>
+  <rect x="30" y="330" width="740" height="55" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="400" y="354" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#fbbf24">rank (r)=8-64 &#160;&#160; alpha=2&#215;r &#160;&#160; target=q_proj,v_proj &#160;&#160; dropout=0.05</text>
+  <text x="400" y="374" text-anchor="middle" font-family="monospace" font-size="11" fill="#94a3b8">Multiple LoRA adapters = multiple personalities on one base model</text>
+</svg>
+</div>
+
+`,
   senior:{
     title:"LoRA Training — প্রথম চেষ্টা",
     body:`<p><strong>Model:</strong> Llama 3.1 8B বা Mistral 7B (open, capable)।</p><p><strong>GPU:</strong> RTX 4090 (24GB) বা A10G (24GB)। Colab Pro-এ ট্রাই করো।</p><p><strong>Library:</strong> Unsloth (fastest) বা PEFT (standard)।</p><p><strong>Config:</strong> rank=16, alpha=32, target=q_proj+v_proj, lr=2e-4, epochs=3, batch_size=4, gradient_accumulation=4।</p><p><strong>Data:</strong> 500-5000 examples, JSONL format।</p><p><strong>Time:</strong> 1-3 hours on single GPU।</p>`
@@ -465,7 +606,69 @@ DEMOCRATIZATION:
   → This changed everything</div>
 
 <div class="dialogue">ইনসাফ — justice, fairness, balance। কুরআনে আল্লাহ বলেন — "ন্যায্যতা কায়েম করো।" (৫:৮)। QLoRA হলো প্রযুক্তির ইনসাফ — fine-tuning এখন সবার জন্য, শুধু বড় কোম্পানির জন্য নয়। যে কেউ consumer GPU দিয়ে fine-tune করতে পারে। এটাই QLoRA-এর ইনসাফ — গণতন্ত্রের প্রসার।</div>
-<div class="dialogue en">"Insaf — justice, fairness, balance. Allah says — 'Establish justice.' (5:8). QLoRA is technology's insaf — fine-tuning is now for everyone, not just big companies. Anyone with a consumer GPU can fine-tune. This is QLoRA's insaf — democratization."</div>`,
+<div class="dialogue en">"Insaf — justice, fairness, balance. Allah says — 'Establish justice.' (5:8). QLoRA is technology's insaf — fine-tuning is now for everyone, not just big companies. Anyone with a consumer GPU can fine-tune. This is QLoRA's insaf — democratization."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" style="background:#0f172a;border-radius:12px">
+  <defs>
+    <linearGradient id="ft4bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e293b"/></linearGradient>
+    <marker id="ft4arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L8,5 L0,10 Z" fill="#7dd3fc"/></marker>
+  </defs>
+  <rect width="800" height="420" fill="url(#ft4bg)" rx="12"/>
+  <text x="400" y="32" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" font-weight="700" fill="#22d3ee">QLoRA — Quantized LoRA (PEFT)</text>
+  <text x="400" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">৭B মডেল ৬ GB RAM-ে — fine-tuning গণতান্ত্রিক</text>
+  <text x="100" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Memory per precision</text>
+  <rect x="30" y="92" width="140" height="34" rx="6" fill="#1e293b" stroke="#64748b"/>
+  <text x="100" y="114" text-anchor="middle" font-family="monospace" font-size="11" fill="#94a3b8">fp32: ২৮ GB</text>
+  <rect x="30" y="130" width="140" height="34" rx="6" fill="#1e293b" stroke="#7dd3fc"/>
+  <text x="100" y="152" text-anchor="middle" font-family="monospace" font-size="11" fill="#7dd3fc">fp16: ১৪ GB</text>
+  <rect x="30" y="168" width="140" height="34" rx="6" fill="#1e293b" stroke="#22d3ee"/>
+  <text x="100" y="190" text-anchor="middle" font-family="monospace" font-size="11" fill="#22d3ee">int8: ৭ GB</text>
+  <rect x="30" y="206" width="140" height="34" rx="6" fill="#1e293b" stroke="#4ade80" stroke-width="2"/>
+  <text x="100" y="228" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#4ade80">nf4: ৩.৫ GB &#9889;</text>
+  <line x1="180" y1="166" x2="260" y2="166" stroke="#7dd3fc" stroke-width="2" marker-end="url(#ft4arr)"/>
+  <rect x="270" y="92" width="280" height="150" rx="10" fill="#1e293b" stroke="#22d3ee" stroke-width="2"/>
+  <text x="410" y="116" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#22d3ee">QLoRA Pipeline</text>
+  <text x="290" y="142" font-family="monospace" font-size="11" fill="#7dd3fc">Step 1: Base model &#8594; 4-bit (nf4)</text>
+  <text x="290" y="160" font-family="monospace" font-size="11" fill="#7dd3fc">Step 2: Add LoRA in 16-bit</text>
+  <text x="290" y="178" font-family="monospace" font-size="11" fill="#7dd3fc">Step 3: Forward &#8594; dequantize</text>
+  <text x="290" y="196" font-family="monospace" font-size="11" fill="#7dd3fc">Step 4: Backward &#8594; LoRA only</text>
+  <text x="290" y="218" font-family="monospace" font-size="11" fill="#fbbf24">Base stays frozen 4-bit</text>
+  <rect x="570" y="92" width="200" height="150" rx="10" fill="#1e293b" stroke="#4ade80" stroke-width="2"/>
+  <text x="670" y="116" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4ade80">QLoRA Innovations</text>
+  <text x="590" y="142" font-family="monospace" font-size="11" fill="#a7f3d0">&#8226; nf4: info-optimal</text>
+  <text x="590" y="160" font-family="monospace" font-size="11" fill="#a7f3d0">&#8226; Double quantization</text>
+  <text x="590" y="178" font-family="monospace" font-size="11" fill="#a7f3d0">&#8226; Paged optimizers</text>
+  <text x="590" y="196" font-family="monospace" font-size="11" fill="#a7f3d0">&#8226; &#8776; ৯৩-৯৮% quality</text>
+  <text x="590" y="218" font-family="monospace" font-size="11" fill="#fbbf24">Colab T4 = ৭B train!</text>
+  <rect x="30" y="270" width="740" height="130" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="400" y="294" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Comparison Table — ৭B Model</text>
+  <text x="60" y="318" font-family="monospace" font-size="11" fill="#94a3b8">Method</text>
+  <text x="200" y="318" font-family="monospace" font-size="11" fill="#94a3b8">GPU RAM</text>
+  <text x="320" y="318" font-family="monospace" font-size="11" fill="#94a3b8">Disk</text>
+  <text x="420" y="318" font-family="monospace" font-size="11" fill="#94a3b8">Quality</text>
+  <text x="540" y="318" font-family="monospace" font-size="11" fill="#94a3b8">GPU Type</text>
+  <line x1="40" y1="326" x2="740" y2="326" stroke="#334155"/>
+  <text x="60" y="344" font-family="monospace" font-size="11" fill="#94a3b8">Full FT</text>
+  <text x="200" y="344" font-family="monospace" font-size="11" fill="#f87171">~৭০ GB</text>
+  <text x="320" y="344" font-family="monospace" font-size="11" fill="#94a3b8">১৪ GB</text>
+  <text x="420" y="344" font-family="monospace" font-size="11" fill="#4ade80">১০০%</text>
+  <text x="540" y="344" font-family="monospace" font-size="11" fill="#94a3b8">A100 &#215;৪</text>
+  <text x="60" y="362" font-family="monospace" font-size="11" fill="#94a3b8">LoRA</text>
+  <text x="200" y="362" font-family="monospace" font-size="11" fill="#fbbf24">~১০ GB</text>
+  <text x="320" y="362" font-family="monospace" font-size="11" fill="#94a3b8">২০ MB</text>
+  <text x="420" y="362" font-family="monospace" font-size="11" fill="#4ade80">৯৫-৯৯%</text>
+  <text x="540" y="362" font-family="monospace" font-size="11" fill="#94a3b8">RTX ৪০৯০</text>
+  <text x="60" y="380" font-family="monospace" font-size="12" font-weight="700" fill="#22d3ee">QLoRA</text>
+  <text x="200" y="380" font-family="monospace" font-size="12" font-weight="700" fill="#4ade80">~৬ GB &#9889;</text>
+  <text x="320" y="380" font-family="monospace" font-size="12" font-weight="700" fill="#4ade80">২০ MB</text>
+  <text x="420" y="380" font-family="monospace" font-size="12" font-weight="700" fill="#4ade80">৯৩-৯৮%</text>
+  <text x="540" y="380" font-family="monospace" font-size="12" font-weight="700" fill="#4ade80">RTX ৩০৯০ &#10003;</text>
+  <text x="400" y="408" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">ইনসাফ — fine-tuning এখন সবার জন্য</text>
+</svg>
+</div>
+
+`,
   senior:{
     title:"QLoRA Setup — সহজ শুরু",
     body:`<p><strong>Colab:</strong> Free T4 (16GB) — 7B model QLoRA training সম্ভব! Colab Pro আরও ভালো।</p><p><strong>Library:</strong> Unsloth — QLoRA-র জন্য 2x faster, less memory।</p><p><strong>Notebook:</strong> Unsloth-এর রেডিমেড Colab notebooks আছে। Copy → run → fine-tune।</p><p><strong>Quantization:</strong> nf4, compute_type=bf16, double_quant=True।</p><p><strong>Caution:</strong> 4-bit model-এ inference করাও যায়, কিন্তু সামান্য quality drop। সেরা ফল: train QLoRA → merge → 16-bit inference।</p>`

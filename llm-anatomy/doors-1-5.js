@@ -23,6 +23,43 @@ doors.push({
 <div class="dialogue">তুমি ভাবো LLM 'শব্দ' বোঝে। ভুল। LLM বোঝে সংখ্যা। প্রতিটি টোকেন একটি সংখ্যা — vocabulary index। 'hello' হয়তো টোকেন #১৫০০০, 'world' টোকেন #৪৪৩। কিন্তু 'জ্ঞান'? সেটা এক সংখ্যা নয় — হয়তো চার। কারণ BPE এটাকে ভেঙেছে।</div>
 <div class="dialogue en">"You think LLMs understand 'words.' Wrong. LLMs understand numbers. Each token is a number — a vocabulary index. 'hello' might be token #15000, 'world' token #443. But 'জ্ঞান'? That's not one number — maybe four. Because BPE broke it."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrLLM1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+<text x="290" y="25" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Tokenization Pipeline</text>
+<rect x="20" y="55" width="120" height="60" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="80" y="80" text-anchor="middle" fill="#7dd3fc" font-size="9">Input Text</text>
+<text x="80" y="98" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">"unhappiness"</text>
+<line x1="145" y1="85" x2="185" y2="85" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM1)"/>
+<rect x="190" y="55" width="120" height="60" rx="8" fill="#1e3a5f" stroke="#a855f7" stroke-width="2"/>
+<text x="250" y="80" text-anchor="middle" fill="#c084fc" font-size="9">BPE Algorithm</text>
+<text x="250" y="98" text-anchor="middle" fill="#fcd34d" font-size="9">Merge common pairs</text>
+<line x1="315" y1="85" x2="355" y2="85" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM1)"/>
+<rect x="360" y="45" width="55" height="30" rx="5" fill="#1e3a5f" stroke="#4ade80" stroke-width="1.5"/>
+<text x="387" y="64" text-anchor="middle" fill="#4ade80" font-size="10">"un"</text>
+<rect x="360" y="80" width="55" height="30" rx="5" fill="#1e3a5f" stroke="#4ade80" stroke-width="1.5"/>
+<text x="387" y="99" text-anchor="middle" fill="#4ade80" font-size="10">"happ"</text>
+<rect x="360" y="115" width="55" height="30" rx="5" fill="#1e3a5f" stroke="#4ade80" stroke-width="1.5"/>
+<text x="387" y="134" text-anchor="middle" fill="#4ade80" font-size="9">"iness"</text>
+<line x1="420" y1="95" x2="460" y2="95" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM1)"/>
+<rect x="465" y="55" width="100" height="60" rx="8" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+<text x="515" y="80" text-anchor="middle" fill="#fcd34d" font-size="9">Token IDs</text>
+<text x="515" y="98" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">[934, 2105, 83]</text>
+<text x="80" y="140" text-anchor="middle" fill="#94a3b8" font-size="8">Human text</text>
+<text x="250" y="140" text-anchor="middle" fill="#94a3b8" font-size="8">Vocabulary lookup</text>
+<text x="387" y="160" text-anchor="middle" fill="#94a3b8" font-size="8">3 tokens</text>
+<text x="515" y="140" text-anchor="middle" fill="#94a3b8" font-size="8">Numbers for GPU</text>
+<rect x="20" y="175" width="260" height="55" rx="8" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,2"/>
+<text x="150" y="195" text-anchor="middle" fill="#fcd34d" font-size="9">Bengali: "জ্ঞান" = 4 tokens</text>
+<text x="150" y="212" text-anchor="middle" fill="#94a3b8" font-size="8">["জ", "্ঞ", "া", "ন"] — rare in BPE</text>
+<rect x="300" y="175" width="260" height="55" rx="8" fill="#1a2744" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,2"/>
+<text x="430" y="195" text-anchor="middle" fill="#4ade80" font-size="9">English: "knowledge" = 1 token</text>
+<text x="430" y="212" text-anchor="middle" fill="#94a3b8" font-size="8">["knowledge"] — common in BPE</text>
+</svg>
+</div>
+<div class="svg-caption">শব্দ থেকে টোকেন — BPE কীভাবে অক্ষরের জোড়া মার্জ করে সংখ্যা তৈরি করে</div>
+
 <div class="code-block">BPE (Byte Pair Encoding) — How It Actually Works:
 
 VOCABULARY CONSTRUCTION:
@@ -114,6 +151,54 @@ doors.push({
 
 <div class="dialogue">হরফ কারিগর বলেছিলেন — শব্দ টোকেনে ভাঙে। কিন্তু আমি বলি — টোকেন শুধু সংখ্যা। সংখ্যা থেকে অর্থ কীভাবে? Embedding। প্রতিটি টোকেন একটা হাজার-ডাইমেনশনের স্থানে একটা বিন্দু। কোথায় বসে — সেটাই অর্থ।</div>
 <div class="dialogue en">"The letter smith said — words break into tokens. But I say — a token is just a number. How does meaning come from numbers? Embeddings. Each token is a point in a thousand-dimensional space. Where it sits — that's meaning."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrLLM2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+<text x="290" y="25" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Embeddings — The Geometry of Meaning</text>
+<!-- Left: Token to Vector -->
+<rect x="20" y="50" width="80" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="60" y="74" text-anchor="middle" fill="#7dd3fc" font-size="10">Token #15000</text>
+<line x1="100" y1="70" x2="125" y2="70" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM2)"/>
+<rect x="130" y="50" width="90" height="40" rx="6" fill="#1e3a5f" stroke="#a855f7" stroke-width="2"/>
+<text x="175" y="68" text-anchor="middle" fill="#c084fc" font-size="8">Embedding Layer</text>
+<text x="175" y="82" text-anchor="middle" fill="#fcd34d" font-size="8">4096-dim vector</text>
+<line x1="220" y1="70" x2="245" y2="70" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM2)"/>
+<text x="260" y="74" fill="#4ade80" font-size="9">[0.23, -0.45, 0.89, ...]</text>
+<!-- Right: 2D vector space -->
+<rect x="270" y="100" width="290" height="135" rx="8" fill="#0d1526" stroke="#22d3ee" stroke-width="1.5"/>
+<text x="415" y="118" text-anchor="middle" fill="#94a3b8" font-size="8">2D projection of 4096-dim space</text>
+<!-- Axes -->
+<line x1="290" y1="225" x2="290" y2="130" stroke="#475569" stroke-width="1"/>
+<line x1="290" y1="225" x2="540" y2="225" stroke="#475569" stroke-width="1"/>
+<!-- Word clusters - royal (top) -->
+<circle cx="400" cy="150" r="6" fill="#4ade80"/>
+<text x="412" y="154" fill="#4ade80" font-size="9">king</text>
+<circle cx="430" cy="160" r="6" fill="#4ade80"/>
+<text x="442" y="164" fill="#4ade80" font-size="9">queen</text>
+<circle cx="385" cy="165" r="6" fill="#4ade80"/>
+<text x="345" y="169" fill="#4ade80" font-size="9">prince</text>
+<!-- Food (bottom right) -->
+<circle cx="480" cy="205" r="6" fill="#fbbf24"/>
+<text x="492" y="209" fill="#fcd34d" font-size="9">banana</text>
+<circle cx="470" cy="195" r="6" fill="#fbbf24"/>
+<text x="432" y="199" fill="#fcd34d" font-size="9">apple</text>
+<!-- Far/abstract (bottom left) -->
+<circle cx="310" cy="210" r="6" fill="#c084fc"/>
+<text x="300" y="225" fill="#c084fc" font-size="9">freedom</text>
+<!-- Vector operation -->
+<line x1="400" y1="150" x2="430" y2="160" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="3,2"/>
+<text x="375" y="190" fill="#7dd3fc" font-size="7">king − man + woman ≈ queen</text>
+<!-- Bottom labels -->
+<text x="60" y="120" text-anchor="middle" fill="#94a3b8" font-size="7">Token ID</text>
+<text x="175" y="120" text-anchor="middle" fill="#94a3b8" font-size="7">Lookup table</text>
+<text x="20" y="160" fill="#22c55e" font-size="8" font-weight="bold">Synonyms → close</text>
+<text x="20" y="175" fill="#fbbf24" font-size="8" font-weight="bold">Unrelated → far</text>
+<text x="20" y="190" fill="#a855f7" font-size="8" font-weight="bold">Antonyms → opposite</text>
+</svg>
+</div>
+<div class="svg-caption">প্রতিটি টোকেন হাজার ডাইমেনশনের স্থানে একটি বিন্দু — সমার্থক শব্দ কাছে, বিপরীত দূরে</div>
 
 <div class="code-block">Embeddings — The Geometry of Meaning:
 
@@ -207,6 +292,60 @@ doors.push({
 <div class="dialogue">চুম্বক নির্মাতা বলেছিলেন — শব্দের অবস্থান থেকে অর্থ। কিন্তু আমি বলি — শুধু অবস্থান যথেষ্ট নয়। প্রতিটি শব্দকে বাকি শব্দগুলোর সাথে সম্পর্ক বুঝতে হবে। এটাই attention — "কোন শব্দটার দিকে তাকাব?"</div>
 <div class="dialogue en">"The magnet maker said — meaning comes from position. But I say — position alone isn't enough. Each word must understand its relationship with other words. This is attention — 'which word should I look at?'"</p>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrLLM3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Self-Attention: "IT" resolves to "animal"</text>
+<!-- The sentence tokens -->
+<text x="290" y="48" text-anchor="middle" fill="#94a3b8" font-size="9">"The animal didn't cross the street because IT was too tired."</text>
+<!-- Token boxes -->
+<rect x="30" y="60" width="55" height="28" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1.5"/>
+<text x="57" y="78" text-anchor="middle" fill="#94a3b8" font-size="9">The</text>
+<rect x="95" y="60" width="65" height="28" rx="5" fill="#1e3a5f" stroke="#4ade80" stroke-width="2.5"/>
+<text x="127" y="78" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">animal</text>
+<rect x="170" y="60" width="75" height="28" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1.5"/>
+<text x="207" y="78" text-anchor="middle" fill="#94a3b8" font-size="8">didn't</text>
+<rect x="255" y="60" width="55" height="28" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1.5"/>
+<text x="282" y="78" text-anchor="middle" fill="#94a3b8" font-size="9">cross</text>
+<rect x="320" y="60" width="50" height="28" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1.5"/>
+<text x="345" y="78" text-anchor="middle" fill="#94a3b8" font-size="9">the</text>
+<rect x="380" y="60" width="60" height="28" rx="5" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="410" y="78" text-anchor="middle" fill="#fcd34d" font-size="9">street</text>
+<rect x="450" y="60" width="55" height="28" rx="5" fill="#1e3a5f" stroke="#a855f7" stroke-width="2.5"/>
+<text x="477" y="78" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="bold">IT</text>
+<!-- Attention weights from IT -->
+<text x="477" y="108" text-anchor="middle" fill="#c084fc" font-size="8">Query: "what is tired?"</text>
+<!-- Strong attention line to animal -->
+<path d="M 477 88 Q 300 130 127 88" fill="none" stroke="#22c55e" stroke-width="3" opacity="0.9"/>
+<text x="300" y="125" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">attention 0.82</text>
+<!-- Weak attention to street -->
+<path d="M 477 88 Q 443 140 410 88" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5"/>
+<text x="450" y="135" text-anchor="middle" fill="#fcd34d" font-size="7">0.05</text>
+<!-- Q K V section -->
+<rect x="20" y="155" width="540" height="80" rx="8" fill="#0d1526" stroke="#22d3ee" stroke-width="1"/>
+<text x="290" y="173" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="bold">Each token generates 3 vectors</text>
+<rect x="40" y="185" width="70" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+<text x="75" y="200" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">Q</text>
+<text x="75" y="213" text-anchor="middle" fill="#94a3b8" font-size="7">Query</text>
+<text x="75" y="222" text-anchor="middle" fill="#94a3b8" font-size="7">"what I seek"</text>
+<rect x="130" y="185" width="70" height="35" rx="5" fill="#1e3a5f" stroke="#a855f7" stroke-width="1.5"/>
+<text x="165" y="200" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="bold">K</text>
+<text x="165" y="213" text-anchor="middle" fill="#94a3b8" font-size="7">Key</text>
+<text x="165" y="222" text-anchor="middle" fill="#94a3b8" font-size="7">"what I offer"</text>
+<rect x="220" y="185" width="70" height="35" rx="5" fill="#1e3a5f" stroke="#22c55e" stroke-width="1.5"/>
+<text x="255" y="200" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">V</text>
+<text x="255" y="213" text-anchor="middle" fill="#94a3b8" font-size="7">Value</text>
+<text x="255" y="222" text-anchor="middle" fill="#94a3b8" font-size="7">"what I know"</text>
+<text x="315" y="195" fill="#fcd34d" font-size="8" font-weight="bold">Score = Q × K / √d</text>
+<text x="315" y="208" fill="#94a3b8" font-size="7">→ softmax → weights</text>
+<text x="315" y="219" fill="#94a3b8" font-size="7">→ weights × V = output</text>
+<text x="460" y="200" fill="#22d3ee" font-size="8">96 heads</text>
+<text x="460" y="212" fill="#94a3b8" font-size="7">= 96 perspectives</text>
+</svg>
+</div>
+<div class="svg-caption">Attention — প্রতিটি শব্দ অন্য শব্দের প্রতি নজর দেয়; "IT" কে? animal-এ সবচেয়ে বেশি নজর</div>
+
 <div class="code-block">Self-Attention — LLM-এর হৃদপিণ্ড:
 
 "Attention Is All You Need" (Vaswani et al., 2017)
@@ -299,6 +438,48 @@ doors.push({
 
 <div class="dialogue">দৃষ্টি নিয়ন্ত্রক বলেছিলেন — attention হলো হৃদপিণ্ড। কিন্তু আমি বলি — attention শুধু একটা অংশ। Transformer একটা সম্পূর্ণ ভবন। সাতটি স্তর। প্রতিটি স্তরের নিজস্ব কাজ। একসাথে এরা টোকেন থেকে ভাষা তৈরি করে।</div>
 <div class="dialogue en">"The focus controller said — attention is the heart. But I say — attention is just one part. Transformer is a complete building. Seven layers. Each with its own job. Together they create language from tokens."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrLLM4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">One Transformer Block (repeated ×96)</text>
+<!-- Input -->
+<rect x="200" y="35" width="180" height="25" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+<text x="290" y="52" text-anchor="middle" fill="#7dd3fc" font-size="9">Input: embeddings + position</text>
+<line x1="290" y1="62" x2="290" y2="70" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM4)"/>
+<!-- Multi-head attention -->
+<rect x="180" y="72" width="220" height="32" rx="6" fill="#1a2744" stroke="#a855f7" stroke-width="2"/>
+<text x="290" y="86" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="bold">① Multi-Head Attention</text>
+<text x="290" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">Each word looks at all others · 96 heads</text>
+<line x1="290" y1="106" x2="290" y2="114" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM4)"/>
+<!-- Add & Norm -->
+<rect x="220" y="116" width="140" height="22" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
+<text x="290" y="131" text-anchor="middle" fill="#4ade80" font-size="8">② Residual + Layer Norm</text>
+<line x1="290" y1="140" x2="290" y2="148" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM4)"/>
+<!-- Feed-forward -->
+<rect x="180" y="150" width="220" height="32" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="2"/>
+<text x="290" y="164" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">③ Feed-Forward Network (MLP)</text>
+<text x="290" y="176" text-anchor="middle" fill="#94a3b8" font-size="7">Where memorized knowledge lives · 2 linear + ReLU</text>
+<line x1="290" y1="184" x2="290" y2="192" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM4)"/>
+<!-- Add & Norm 2 -->
+<rect x="220" y="194" width="140" height="22" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
+<text x="290" y="209" text-anchor="middle" fill="#4ade80" font-size="8">④ Residual + Layer Norm</text>
+<!-- Residual skip arrows -->
+<path d="M 175 67 Q 160 140 175 195" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>
+<text x="148" y="135" fill="#4ade80" font-size="7" transform="rotate(-90 148 135)">skip connection</text>
+<!-- Repeat label -->
+<rect x="425" y="100" width="135" height="60" rx="8" fill="#0d1526" stroke="#22d3ee" stroke-width="1.5"/>
+<text x="492" y="118" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="bold">Repeat block</text>
+<text x="492" y="132" text-anchor="middle" fill="#fcd34d" font-size="9">GPT-3: ×96</text>
+<text x="492" y="145" text-anchor="middle" fill="#fcd34d" font-size="9">GPT-4: ×120</text>
+<text x="492" y="156" text-anchor="middle" fill="#94a3b8" font-size="7">deeper = deeper understanding</text>
+<line x1="400" y1="130" x2="420" y2="130" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM4)"/>
+<!-- Output label -->
+<text x="290" y="232" text-anchor="middle" fill="#4ade80" font-size="8">→ to next block · finally → output head → softmax → token</text>
+</svg>
+</div>
+<div class="svg-caption">Transformer ব্লক — attention + feed-forward + residual; একই ব্লক ৯৬ বার রিপিট হয়</div>
 
 <div class="code-block">Transformer Architecture — ৭টি স্তর:
 
@@ -398,6 +579,55 @@ doors.push({
 
 <div class="dialogue">নির্মাতা বলেছিলেন — Transformer-এর সাতটি স্তর। কিন্তু আমি বলি — স্তরগুলো শূন্য। ভাঙা পাথর। প্রশিক্ষণ ছাড়া কিছুই নয়। তিনটি ধাপের প্রশিক্ষণ ছাড়া LLM শুধু একটা বিশাল autocomplete। এই তিনটি ধাপই LLM-কে LLM বানায়।</div>
 <div class="dialogue en">"The builder said — Transformer has seven layers. But I say — layers are empty. Broken stone. Without training, nothing. Without three-stage training, the LLM is just a giant autocomplete. These three stages make the LLM what it is."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrLLM5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Three-Stage Training Pipeline</text>
+<!-- Stage 1: Pre-training -->
+<rect x="20" y="40" width="165" height="180" rx="8" fill="#1a2744" stroke="#22d3ee" stroke-width="2"/>
+<text x="102" y="60" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="bold">① PRE-TRAINING</text>
+<text x="102" y="75" text-anchor="middle" fill="#94a3b8" font-size="7">"Read the whole internet"</text>
+<rect x="35" y="85" width="135" height="28" rx="4" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
+<text x="102" y="103" text-anchor="middle" fill="#4ade80" font-size="7">Trillions of tokens</text>
+<text x="102" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">Goal: next token predict</text>
+<text x="102" y="140" text-anchor="middle" fill="#94a3b8" font-size="7">"cat sat on the ___"→"mat"</text>
+<text x="102" y="160" text-anchor="middle" fill="#fbbf24" font-size="7">Cost: $1M–$100M+</text>
+<text x="102" y="172" text-anchor="middle" fill="#94a3b8" font-size="7">Weeks–Months · GPUs</text>
+<rect x="35" y="183" width="135" height="28" rx="4" fill="#0d1526" stroke="#a855f7" stroke-width="1.5"/>
+<text x="102" y="201" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="bold">→ BASE MODEL</text>
+<!-- Arrow -->
+<line x1="188" y1="130" x2="208" y2="130" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM5)"/>
+<!-- Stage 2: SFT -->
+<rect x="210" y="40" width="165" height="180" rx="8" fill="#1a2744" stroke="#a855f7" stroke-width="2"/>
+<text x="292" y="60" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="bold">② SFT (Fine-Tuning)</text>
+<text x="292" y="75" text-anchor="middle" fill="#94a3b8" font-size="7">"Talk like a human"</text>
+<rect x="225" y="85" width="135" height="28" rx="4" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
+<text x="292" y="103" text-anchor="middle" fill="#4ade80" font-size="7">Human-written Q&amp;A</text>
+<text x="292" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">Goal: instruction following</text>
+<text x="292" y="140" text-anchor="middle" fill="#94a3b8" font-size="7">Human: "What is AI?"</text>
+<text x="292" y="151" text-anchor="middle" fill="#94a3b8" font-size="7">Assistant: "AI is..."</text>
+<text x="292" y="170" text-anchor="middle" fill="#fbbf24" font-size="7">Cost: $10K–$100K</text>
+<rect x="225" y="183" width="135" height="28" rx="4" fill="#0d1526" stroke="#a855f7" stroke-width="1.5"/>
+<text x="292" y="201" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="bold">→ SFT MODEL</text>
+<!-- Arrow -->
+<line x1="378" y1="130" x2="398" y2="130" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM5)"/>
+<!-- Stage 3: RLHF -->
+<rect x="400" y="40" width="160" height="180" rx="8" fill="#1a2744" stroke="#22c55e" stroke-width="2"/>
+<text x="480" y="60" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">③ RLHF</text>
+<text x="480" y="75" text-anchor="middle" fill="#94a3b8" font-size="7">"Which answer is better?"</text>
+<rect x="415" y="85" width="130" height="28" rx="4" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
+<text x="480" y="103" text-anchor="middle" fill="#4ade80" font-size="7">Human rankings</text>
+<text x="480" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">Goal: alignment</text>
+<text x="480" y="140" text-anchor="middle" fill="#94a3b8" font-size="7">Reward model + RL</text>
+<text x="480" y="151" text-anchor="middle" fill="#94a3b8" font-size="7">Safe · helpful · honest</text>
+<text x="480" y="170" text-anchor="middle" fill="#fbbf24" font-size="7">Refuses harmful requests</text>
+<rect x="415" y="183" width="130" height="28" rx="4" fill="#0d1526" stroke="#22c55e" stroke-width="2"/>
+<text x="480" y="201" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">→ ALIGNED (ChatGPT)</text>
+</svg>
+</div>
+<div class="svg-caption">তিন স্তরে প্রশিক্ষণ — প্রথমে ভাষা শেখা, তারপর কথোকথন, তারপর মানুষের পছন্দ অনুযায়ী নিয়মিতকরণ</div>
 
 <div class="code-block">LLM Training — Three Stages:
 

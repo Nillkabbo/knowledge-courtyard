@@ -23,6 +23,39 @@ doors.push({
 <div class="dialogue">Context Engineering বইয়ে তুমি শিখেছ — context-এ কী রাখবে। কিন্তু আমি বলি — context-এ যা রাখবে, সেটা কোথা থেকে এলো? ডকুমেন্ট থেকে। কিন্তু ডকুমেন্ট নোংরা — PDF টেবিল ভাঙে, HTML ট্যাগ থাকে, ছবিতে টেক্সট লুকানো। Ingestion ছাড়া RAG অসম্ভব।</div>
 <div class="dialogue en">"In the Context Engineering book you learned — what to keep in context. But I say — what you keep, where did it come from? Documents. But documents are messy — PDF tables break, HTML has tags, images hide text. Without ingestion, RAG is impossible."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrRAG1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="30" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">RAG পাইপলাইন প্রবাহ</text>
+  <rect x="20" y="95" width="92" height="58" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="66" y="120" text-anchor="middle" fill="#7dd3fc" font-size="9">ডকুমেন্ট</text>
+  <text x="66" y="135" text-anchor="middle" fill="#7dd3fc" font-size="8">PDF/HTML</text>
+  <rect x="136" y="95" width="92" height="58" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="182" y="120" text-anchor="middle" fill="#7dd3fc" font-size="9">পার্স ও ক্লিন</text>
+  <text x="182" y="135" text-anchor="middle" fill="#7dd3fc" font-size="8">Extract</text>
+  <rect x="252" y="95" width="92" height="58" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="298" y="120" text-anchor="middle" fill="#4ade80" font-size="9">চাঙ্কিং</text>
+  <text x="298" y="135" text-anchor="middle" fill="#4ade80" font-size="8">৫১২ tok</text>
+  <rect x="368" y="95" width="92" height="58" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="414" y="120" text-anchor="middle" fill="#4ade80" font-size="9">এম্বেড</text>
+  <text x="414" y="135" text-anchor="middle" fill="#4ade80" font-size="8">Embedding</text>
+  <rect x="468" y="95" width="92" height="58" rx="8" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="514" y="120" text-anchor="middle" fill="#c084fc" font-size="9">ভেক্টর DB</text>
+  <text x="514" y="135" text-anchor="middle" fill="#c084fc" font-size="8">HNSW</text>
+  <line x1="112" y1="124" x2="134" y2="124" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrRAG1)"/>
+  <line x1="228" y1="124" x2="250" y2="124" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrRAG1)"/>
+  <line x1="344" y1="124" x2="366" y2="124" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrRAG1)"/>
+  <line x1="460" y1="124" x2="466" y2="124" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrRAG1)"/>
+  <text x="290" y="205" text-anchor="middle" fill="#fbbf24" font-size="9">⬓ মেটাডেটা: source · page · section · date — প্রতিটা চাঙ্কের সাথে</text>
+</svg>
+</div>
+<div class="svg-caption">RAG পাইপলাইন — ডকুমেন্ট থেকে ভেক্টর ডেটাবেস পর্যন্ত পাঁচটি ধাপ</div>
+
 <div class="code-block">Document Ingestion — RAG-এর ভিত্তি:
 
 FORMAT-SPECIFIC CHALLENGES:
@@ -128,6 +161,30 @@ doors.push({
 <div class="dialogue">পাণ্ডুলিপি কক্ষ বলেছিলেন — ডকুমেন্ট ঠিকমতো পড়ো। কিন্তু আমি বলি — পড়লেই হবে না, সাজাতে হবে। কোটি ডকুমেন্ট, কোটি embedding। ইউজারের প্রশ্ন এলে — কোনটা প্রাসঙ্গিক? সব চেক করলে মিনিট লাগে। সূচক দিয়ে মিলিসেকেন্ড।</div>
 <div class="dialogue en">"The manuscript chamber said — read documents correctly. But I say — reading isn't enough, must organize. Millions of documents, millions of embeddings. User asks — which is relevant? Checking all takes minutes. With index, milliseconds."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="30" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">ভেক্টর রিট্রিভাল — top-k নিকটতম</text>
+  <circle cx="120" cy="110" r="4" fill="#475569"/><circle cx="160" cy="80" r="4" fill="#475569"/>
+  <circle cx="200" cy="150" r="4" fill="#475569"/><circle cx="90" cy="160" r="4" fill="#475569"/>
+  <circle cx="250" cy="90" r="4" fill="#475569"/><circle cx="300" cy="170" r="4" fill="#475569"/>
+  <circle cx="350" cy="100" r="4" fill="#475569"/><circle cx="400" cy="160" r="4" fill="#475569"/>
+  <circle cx="440" cy="80" r="4" fill="#475569"/><circle cx="470" cy="140" r="4" fill="#475569"/>
+  <text x="270" y="125" text-anchor="middle" fill="#fbbf24" font-size="20">★</text>
+  <text x="270" y="148" text-anchor="middle" fill="#fcd34d" font-size="8">query</text>
+  <circle cx="250" cy="90" r="9" fill="none" stroke="#22c55e" stroke-width="2"/>
+  <circle cx="300" cy="170" r="9" fill="none" stroke="#22c55e" stroke-width="2"/>
+  <circle cx="350" cy="100" r="9" fill="none" stroke="#22c55e" stroke-width="2"/>
+  <line x1="268" y1="115" x2="252" y2="95" stroke="#22c55e" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="272" y1="118" x2="298" y2="162" stroke="#22c55e" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="275" y1="115" x2="346" y2="104" stroke="#22c55e" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="490" y="120" text-anchor="end" fill="#4ade80" font-size="9">top-3 নিকটতম</text>
+  <text x="490" y="135" text-anchor="end" fill="#94a3b8" font-size="8">বাকিগুলো: দূরে</text>
+  <text x="290" y="205" text-anchor="middle" fill="#7dd3fc" font-size="9">cosine similarity → সবচেয়ে কাছের k-টা চাঙ্ক নির্বাচন</text>
+</svg>
+</div>
+<div class="svg-caption">ভেক্টর রিট্রিভাল — কোটি বিন্দুর মধ্যে top-k নিকটতম প্রতিবেশী</div>
+
 <div class="code-block">Vector Indexing — Finding Needles in Haystacks:
 
 THE PROBLEM:
@@ -229,6 +286,34 @@ doors.push({
 <div class="dialogue">সূচক নির্মাতা বলেছিলেন — সাজানো গুরুত্বপূর্ণ। কিন্তু আমি বলি — সাজানো কূপ থেকেও ভুল পানি আসতে পারে। Naive RAG দিয়ে শুরু করো — সহজ, দ্রুত, কিন্তু অসম্পূর্ণ। এর সীমাবদ্ধতা বুঝলেই তুমি জানবে কোথায় উন্নত করতে হবে।</div>
 <div class="dialogue en">"The index builder said — organization matters. But I say — even an organized well can give wrong water. Start with Naive RAG — simple, fast, but incomplete. Understanding its limits tells you where to improve."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="30" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">ডকুমেন্ট চাঙ্কিং কৌশল</text>
+  <text x="40" y="70" fill="#94a3b8" font-size="9">পুরো ডকুমেন্ট</text>
+  <rect x="40" y="80" width="500" height="16" rx="3" fill="#1e293b" stroke="#475569"/>
+  <rect x="40" y="110" width="150" height="26" rx="5" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="115" y="127" text-anchor="middle" fill="#4ade80" font-size="9">চাঙ্ক ১</text>
+  <rect x="170" y="110" width="150" height="26" rx="5" fill="#14532d" stroke="#22c55e" stroke-width="2" opacity="0.85"/>
+  <text x="245" y="127" text-anchor="middle" fill="#4ade80" font-size="9">চাঙ্ক ২</text>
+  <rect x="300" y="110" width="150" height="26" rx="5" fill="#14532d" stroke="#22c55e" stroke-width="2" opacity="0.85"/>
+  <text x="375" y="127" text-anchor="middle" fill="#4ade80" font-size="9">চাঙ্ক ৩</text>
+  <rect x="430" y="110" width="110" height="26" rx="5" fill="#14532d" stroke="#22c55e" stroke-width="2" opacity="0.85"/>
+  <text x="485" y="127" text-anchor="middle" fill="#4ade80" font-size="9">চাঙ্ক ৪</text>
+  <rect x="170" y="110" width="20" height="26" fill="#fbbf24" opacity="0.35"/>
+  <rect x="300" y="110" width="20" height="26" fill="#fbbf24" opacity="0.35"/>
+  <rect x="430" y="110" width="20" height="26" fill="#fbbf24" opacity="0.35"/>
+  <text x="290" y="165" text-anchor="middle" fill="#fcd34d" font-size="9">⬓ হলুদ = ওভারল্যাপ (context ধরে রাখে)</text>
+  <rect x="40" y="185" width="160" height="30" rx="5" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="120" y="204" text-anchor="middle" fill="#c084fc" font-size="9">Parent-Child: ছোট খোঁজো</text>
+  <rect x="210" y="185" width="160" height="30" rx="5" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="290" y="204" text-anchor="middle" fill="#c084fc" font-size="9">বড় টুকরো LLM-কে দাও</text>
+  <rect x="380" y="185" width="160" height="30" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="460" y="204" text-anchor="middle" fill="#7dd3fc" font-size="9">Late Chunking (Jina)</text>
+</svg>
+</div>
+<div class="svg-caption">ডকুমেন্ট চাঙ্কিং — টুকরো ও ওভারল্যাপে সঠিক context সংরক্ষণ</div>
+
 <div class="code-block">Naive RAG — The Baseline:
 
 PIPELINE (৩ ধাপ):
@@ -328,6 +413,40 @@ doors.push({
 
 <div class="dialogue">সরল কূপ বলেছিলেন — naive RAG-এর সীমা আছে। কিন্তু আমি বলি — সীমা ভাঙার উপায় আছে। Advanced retrieval। একটা নয় — একাধিক কৌশল। প্রতিটা গভীরে যাওয়ার একটি পথ। Query transformation, parent-child chunks, HyDE, ensemble retrieval — প্রতিটা এক একটি ফিল্টার স্তর।</div>
 <div class="dialogue en">"The simple well said — naive RAG has limits. But I say — there are ways to break limits. Advanced retrieval. Not one — multiple techniques. Each a path to depth. Query transformation, parent-child chunks, HyDE, ensemble retrieval — each a filter layer."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrRAG4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="30" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">রি-র‍্যাঙ্কিং — ক্রস-এনকোডার</text>
+  <text x="55" y="65" fill="#7dd3fc" font-size="9">top-50</text>
+  <rect x="30" y="75" width="120" height="20" rx="4" fill="#1e3a5f" stroke="#22d3ee"/>
+  <rect x="30" y="100" width="120" height="20" rx="4" fill="#1e3a5f" stroke="#22d3ee"/>
+  <rect x="30" y="125" width="120" height="20" rx="4" fill="#1e3a5f" stroke="#22d3ee"/>
+  <rect x="30" y="150" width="120" height="20" rx="4" fill="#1e3a5f" stroke="#22d3ee"/>
+  <text x="90" y="195" text-anchor="middle" fill="#94a3b8" font-size="8">bi-encoder</text>
+  <text x="90" y="207" text-anchor="middle" fill="#94a3b8" font-size="8">দ্রুত, কম নির্ভুল</text>
+  <line x1="150" y1="122" x2="225" y2="122" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrRAG4)"/>
+  <rect x="225" y="80" width="130" height="85" rx="8" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="290" y="110" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="bold">ক্রস-এনকোডার</text>
+  <text x="290" y="128" text-anchor="middle" fill="#c084fc" font-size="8">query+doc একসাথে</text>
+  <text x="290" y="142" text-anchor="middle" fill="#c084fc" font-size="8">Cohere / BGE</text>
+  <text x="290" y="156" text-anchor="middle" fill="#fcd34d" font-size="8">ধীর, নিখুঁত</text>
+  <line x1="355" y1="122" x2="430" y2="122" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrRAG4)"/>
+  <text x="500" y="65" fill="#4ade80" font-size="9">top-5</text>
+  <rect x="430" y="75" width="120" height="20" rx="4" fill="#14532d" stroke="#22c55e"/>
+  <text x="490" y="89" text-anchor="middle" fill="#4ade80" font-size="8">① সবচেয়ে প্রাসঙ্গিক</text>
+  <rect x="430" y="100" width="120" height="20" rx="4" fill="#14532d" stroke="#22c55e"/>
+  <rect x="430" y="125" width="120" height="20" rx="4" fill="#14532d" stroke="#22c55e"/>
+  <rect x="430" y="150" width="120" height="20" rx="4" fill="#14532d" stroke="#22c55e"/>
+  <text x="290" y="222" text-anchor="middle" fill="#fbbf24" font-size="9">→ ক্রম পরিবর্তন হয়, নির্ভুলতা +৮-১০%</text>
+</svg>
+</div>
+<div class="svg-caption">রি-র‍্যাঙ্কিং — ক্রস-এনকোডার দিয়ে top-k পুনর্বিন্যাস</div>
 
 <div class="code-block">Advanced Retrieval Patterns — Going Deep:
 
@@ -514,6 +633,38 @@ doors.push({
 
 <div class="dialogue">গভীর কূপ বলেছিলেন — advanced retrieval প্রয়োজন। কিন্তু আমি বলি — retrieval এর আগে আসে প্রশ্ন। প্রশ্ন খারাপ হলে retrieval যতই উন্নত হোক — ফল খারাপ। আবর্জনা দাও, আবর্জনা পাবে। সোনা দাও, সোনা পাবে। প্রশ্ন সংশোধন = সোনা দেওয়া।</div>
 <div class="dialogue en">"The deep well said — advanced retrieval needed. But I say — before retrieval comes the query. Bad query, no matter how advanced the retrieval — bad result. Garbage in, garbage out. Gold in, gold out. Query refinement = giving gold."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrRAG5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
+  <text x="290" y="30" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">প্রশ্ন রূপান্তার</text>
+  <rect x="20" y="105" width="130" height="40" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="85" y="125" text-anchor="middle" fill="#7dd3fc" font-size="9">মূল প্রশ্ন</text>
+  <text x="85" y="138" text-anchor="middle" fill="#7dd3fc" font-size="8">"revenue"</text>
+  <line x1="150" y1="115" x2="245" y2="65" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrRAG5)"/>
+  <line x1="150" y1="120" x2="245" y2="110" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrRAG5)"/>
+  <line x1="150" y1="128" x2="245" y2="160" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrRAG5)"/>
+  <line x1="150" y1="135" x2="245" y2="205" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrRAG5)"/>
+  <rect x="250" y="50" width="200" height="30" rx="6" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="350" y="69" text-anchor="middle" fill="#4ade80" font-size="8">পুনর্লিখন: "Q3 2024 মোট আয়"</text>
+  <rect x="250" y="95" width="200" height="30" rx="6" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="350" y="114" text-anchor="middle" fill="#4ade80" font-size="8">সম্প্রসারণ: revenue OR income</text>
+  <rect x="250" y="145" width="200" height="30" rx="6" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
+  <text x="350" y="164" text-anchor="middle" fill="#c084fc" font-size="8">বিভাজন: Q1? Q2? Q3?</text>
+  <rect x="250" y="190" width="200" height="30" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+  <text x="350" y="209" text-anchor="middle" fill="#fcd34d" font-size="8">step-back: "কী কী আয়ের উৎস?"</text>
+  <line x1="450" y1="120" x2="495" y2="120" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrRAG5)"/>
+  <rect x="495" y="105" width="70" height="40" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="530" y="125" text-anchor="middle" fill="#7dd3fc" font-size="9">retrieve</text>
+  <text x="530" y="138" text-anchor="middle" fill="#7dd3fc" font-size="8">+ merge</text>
+</svg>
+</div>
+<div class="svg-caption">প্রশ্ন রূপান্তার — পুনর্লিখন, সম্প্রসারণ, বিভাজন, step-back</div>
 
 <div class="code-block">Query Transformation — Garbage In, Gold Out:
 

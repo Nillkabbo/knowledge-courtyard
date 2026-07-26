@@ -139,7 +139,32 @@ WHY EMBEDDINGS WORK:
   → meaning = context, context = geometry</div>
 
 <div class="dialogue">মাআনি — meaning, semantics, significance। কুরআনে আল্লাহ বলেন — "আমি কুরআনকে সহজ করেছি বোঝার জন্য।" (৫৪:১৭)। বোঝা = অর্থ ধরা। Embedding-ও তেমনি — অর্থ ধরা, কিন্তু সংখ্যায়। ভাষা থেকে জ্যামিতি, জ্যামিতি থেকে অর্থ। মাআনি — অর্থের গুণ। যে অর্থ ধরে, সে বোঝে। যে ধরে না, সে অন্ধ।</div>
-<div class="dialogue en">"Maani — meaning, semantics, significance. Allah says — 'We have made the Quran easy to understand.' (54:17). Understanding = grasping meaning. Embeddings too — grasping meaning, but in numbers. Language to geometry, geometry to meaning. Maani — the virtue of meaning. One who grasps meaning, understands. One who doesn't, is blind."</div>`,
+<div class="dialogue en">"Maani — meaning, semantics, significance. Allah says — 'We have made the Quran easy to understand.' (54:17). Understanding = grasping meaning. Embeddings too — grasping meaning, but in numbers. Language to geometry, geometry to meaning. Maani — the virtue of meaning. One who grasps meaning, understands. One who doesn't, is blind."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <line x1="50" y1="220" x2="540" y2="220" stroke="#334155" stroke-width="1.5"/>
+  <line x1="50" y1="220" x2="50" y2="25" stroke="#334155" stroke-width="1.5"/>
+  <text x="542" y="224" fill="#64748b" font-size="8">dim ১</text>
+  <text x="32" y="22" fill="#64748b" font-size="8">dim ২</text>
+  <circle cx="150" cy="95" r="7" fill="#22d3ee" stroke="#7dd3fc" stroke-width="1.5"/>
+  <text x="162" y="99" fill="#7dd3fc" font-size="9" font-weight="bold">রাজা king</text>
+  <circle cx="185" cy="78" r="7" fill="#22d3ee" stroke="#7dd3fc" stroke-width="1.5"/>
+  <text x="197" y="82" fill="#7dd3fc" font-size="9" font-weight="bold">রানি queen</text>
+  <circle cx="125" cy="115" r="7" fill="#22d3ee" stroke="#7dd3fc" stroke-width="1.5"/>
+  <text x="60" y="130" fill="#7dd3fc" font-size="9">সিংহাসন throne</text>
+  <circle cx="380" cy="165" r="7" fill="#a855f7" stroke="#c084fc" stroke-width="1.5"/>
+  <text x="392" y="169" fill="#c084fc" font-size="9">গরু cow</text>
+  <circle cx="475" cy="55" r="7" fill="#fbbf24" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="438" y="44" fill="#fcd34d" font-size="9">আকাশ sky</text>
+  <line x1="156" y1="92" x2="180" y2="80" stroke="#22c55e" stroke-width="2" marker-end="url(#arrEMB1)"/>
+  <defs><marker id="arrEMB1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22c55e"/></marker></defs>
+  <text x="140" y="65" fill="#4ade80" font-size="8">≈ কাছে</text>
+  <text x="250" y="195" fill="#94a3b8" font-size="8">কাছের বিন্দু = সমার্থক · দূরের বিন্দু = ভিন্ন অর্থ · ৭৬৮-মাত্রিক জগতের দুই-মাত্রিক ঝলক</text>
+</svg>
+</div>
+<div class="svg-caption">প্রতিটা শব্দ একটা বিন্দু — রাজা ও রানি কাছে, গরু দূরে, আকাশ আরও দূরে। বিন্দুর অবস্থানই অর্থ। king - man + woman ≈ queen — ভেক্টর পাটিগণিতে অর্থ ধরা যায়।</div>`,
   senior:{
     title:"Embedding Intuition — The Key Mental Model",
     body:`<p><strong>Mental model:</strong> Every word/sentence/document is a POINT in high-dimensional space. Nearby points = similar meaning. Distance = semantic difference.</p><p><strong>The miracle:</strong> king - man + woman ≈ queen. Vector arithmetic captures semantic relationships.</p><p><strong>Why it works:</strong> Words in similar contexts have similar meanings (distributional hypothesis). Model learns context → learns meaning.</p><p><strong>Practical:</strong> cosine similarity for "how similar". 0.7+ = related, 0.85+ = very similar, 0.95+ = near-duplicate.</p>`
@@ -307,7 +332,39 @@ WHICH MODEL TO CHOOSE:
   └──────────────────────┴──────────────────────┘</div>
 
 <div class="dialogue">খিয়ার — selection, choice। কুরআনে আল্লাহ বলেন — "তোমাদের জন্য জ্ঞান বেছে নেওয়ার ক্ষমতা দিয়েছেন।" প্রতিটা কাজে সঠিক নির্বাচন। Embedding model-ও খিয়ার — কোন model কোন কাজে? OpenAI? BGE? E5? সঠিক নির্বাচন = সঠিক ফল। ভুল নির্বাচন = ভুল ফল। খিয়ার — সঠিক পছন্দের গুণ।</div>
-<div class="dialogue en">"Khiyar — selection, choice. Allah says — 'He gave you the ability to choose knowledge.' Right selection in each task. Embedding model too — which model for which task? OpenAI? BGE? E5? Right selection = right result. Wrong selection = wrong result. Khyar — the virtue of right choice."</div>`,
+<div class="dialogue en">"Khiyar — selection, choice. Allah says — 'He gave you the ability to choose knowledge.' Right selection in each task. Embedding model too — which model for which task? OpenAI? BGE? E5? Right selection = right result. Wrong selection = wrong result. Khyar — the virtue of right choice."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">word২vec Skip-gram — প্রসঙ্গ থেকে শব্দ শেখা</text>
+  <rect x="240" y="55" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="72" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="bold">"throne"</text>
+  <text x="290" y="84" text-anchor="middle" fill="#94a3b8" font-size="7">input word</text>
+  <rect x="240" y="110" width="100" height="30" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="290" y="129" text-anchor="middle" fill="#c084fc" font-size="8">৩০০-dim embedding</text>
+  <line x1="290" y1="95" x2="290" y2="110" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB2)"/>
+  <defs><marker id="arrEMB2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#475569"/></marker></defs>
+  <rect x="40" y="170" width="80" height="28" rx="5" fill="#1e3a5f" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="80" y="188" text-anchor="middle" fill="#4ade80" font-size="8">"king"</text>
+  <rect x="135" y="170" width="80" height="28" rx="5" fill="#1e3a5f" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="175" y="188" text-anchor="middle" fill="#4ade80" font-size="8">"queen"</text>
+  <rect x="230" y="170" width="80" height="28" rx="5" fill="#1e3a5f" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="270" y="188" text-anchor="middle" fill="#4ade80" font-size="8">"crown"</text>
+  <rect x="325" y="170" width="80" height="28" rx="5" fill="#1e3a5f" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="365" y="188" text-anchor="middle" fill="#4ade80" font-size="8">"palace"</text>
+  <rect x="420" y="170" width="80" height="28" rx="5" fill="#1e3a5f" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="460" y="188" text-anchor="middle" fill="#4ade80" font-size="8">"rule"</text>
+  <line x1="265" y1="140" x2="90" y2="170" stroke="#334155" stroke-width="1" marker-end="url(#arrEMB2)"/>
+  <line x1="275" y1="140" x2="185" y2="170" stroke="#334155" stroke-width="1" marker-end="url(#arrEMB2)"/>
+  <line x1="290" y1="140" x2="280" y2="170" stroke="#334155" stroke-width="1" marker-end="url(#arrEMB2)"/>
+  <line x1="305" y1="140" x2="375" y2="170" stroke="#334155" stroke-width="1" marker-end="url(#arrEMB2)"/>
+  <line x1="315" y1="140" x2="470" y2="170" stroke="#334155" stroke-width="1" marker-end="url(#arrEMB2)"/>
+  <text x="290" y="220" text-anchor="middle" fill="#fcd34d" font-size="8">একটি শব্দ থেকে চারপাশের প্রসঙ্গ শব্দ ভবিষ্যদ করো — এটাই skip-gram</text>
+  <text x="290" y="234" text-anchor="middle" fill="#64748b" font-size="7">সমার্থক প্রসঙ্গ → সমার্থক embedding। Distributional hypothesis (Firth ১৯৫৭)</text>
+</svg>
+</div>
+<div class="svg-caption">Skip-gram: কেন্দ্রের শব্দ ("throne") থেকে চারপাশের প্রসঙ্গ শব্দ ভবিষ্যদ করা হয়। একই প্রসঙ্গে থাকা শব্দ কাছাকাছি embedding পায় — king, queen, crown সব "রাজকীয়" দিকে।</div>`,
   senior:{
     title:"Model Selection — Quick Guide",
     body:`<p><strong>Default:</strong> BGE-large-en-v1.5 (open, free, top quality)।</p><p><strong>API (no infra):</strong> OpenAI text-embedding-3-large ($0.02/M tokens)।</p><strong>Multilingual:</strong> BGE-multilingual-v1.5 বা Cohere embed-v3-multilingual।</p><p><strong>Long context:</strong> Jina Embed v2 (8K tokens)।</p><p><strong>Budget:</strong> all-MiniLM-L6-v2 (80x faster, 80% of quality)।</p><p><strong>Always:</strong> Check MTEB leaderboard for latest rankings। সবসময় asymmetric encoding ব্যবহার করো (query vs document prefix)।</p>`
@@ -470,7 +527,43 @@ COMMON SEARCH FAILURES:
     → fix: multilingual model (BGE multilingual)</div>
 
 <div class="dialogue">তালাশ — search, seeking, quest। কুরআনে আল্লাহ বলেন — "যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।" Semantic search-ও তালাশ — অর্থের সন্ধান। শব্দ নয়, অর্থ। যে অর্থ খোঁজে, সে পায়। যে শব্দ খোঁজে, সে পথ হারায়। তালাশ — অর্থের সন্ধানের গুণ।</div>
-<div class="dialogue en">"Talash — search, seeking, quest. Allah says — 'Those who seek Me, I guide them.' Semantic search too — quest for meaning. Not words, meaning. One who seeks meaning, finds. One who seeks words, loses the path. Talash — the virtue of seeking meaning."</div>`,
+<div class="dialogue en">"Talash — search, seeking, quest. Allah says — 'Those who seek Me, I guide them.' Semantic search too — quest for meaning. Not words, meaning. One who seeks meaning, finds. One who seeks words, loses the path. Talash — the virtue of seeking meaning."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">Cosine Similarity — কোণ মাপা, দূরত্ব নয়</text>
+  <line x1="50" y1="210" x2="540" y2="210" stroke="#334155" stroke-width="1.5"/>
+  <line x1="50" y1="210" x2="50" y2="40" stroke="#334155" stroke-width="1.5"/>
+  <circle cx="50" cy="210" r="4" fill="#64748b"/>
+  <text x="30" y="222" fill="#64748b" font-size="8">origin</text>
+  <line x1="50" y1="210" x2="200" y2="70" stroke="#22d3ee" stroke-width="2.5" marker-end="url(#arrEMB3a)"/>
+  <line x1="50" y1="210" x2="215" y2="80" stroke="#22c55e" stroke-width="2.5" marker-end="url(#arrEMB3b)"/>
+  <line x1="50" y1="210" x2="420" y2="180" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrEMB3c)"/>
+  <defs>
+    <marker id="arrEMB3a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker>
+    <marker id="arrEMB3b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22c55e"/></marker>
+    <marker id="arrEMB3c" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#fbbf24"/></marker>
+  </defs>
+  <text x="210" y="62" fill="#7dd3fc" font-size="9" font-weight="bold">A: "cat"</text>
+  <text x="225" y="73" fill="#4ade80" font-size="9" font-weight="bold">B: "kitten"</text>
+  <text x="430" y="178" fill="#fcd34d" font-size="9" font-weight="bold">C: "car"</text>
+  <path d="M 130 160 A 70 70 0 0 1 140 165" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="115" y="150" fill="#4ade80" font-size="8">θ ছোট</text>
+  <text x="108" y="162" fill="#4ade80" font-size="7">cos ≈ ০.৮৯</text>
+  <path d="M 95 188 A 95 95 0 0 1 280 195" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="180" y="198" fill="#fcd34d" font-size="8">θ বড়</text>
+  <text x="175" y="210" fill="#fcd34d" font-size="7">cos ≈ ০.১৫</text>
+  <rect x="345" y="40" width="220" height="95" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="455" y="58" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="bold">cos(θ) = (A · B) / (|A| × |B|)</text>
+  <text x="362" y="78" fill="#7dd3fc" font-size="8">cos = ১.০ → একই দিক (সমার্থক)</text>
+  <text x="362" y="94" fill="#4ade80" font-size="8">cos = ০.৮৫+ → খুব কাছে</text>
+  <text x="362" y="110" fill="#fcd34d" font-size="8">cos = ০.০ → সম্পর্কহীন</text>
+  <text x="362" y="126" fill="#94a3b8" font-size="8">cos = -১.০ → বিপরীত অর্থ</text>
+  <text x="290" y="240" text-anchor="middle" fill="#64748b" font-size="7">magnitude নয়, দিক গুরুত্বপূর্ণ। normalize করলে cosine = dot product (দ্রুত!)</text>
+</svg>
+</div>
+<div class="svg-caption">Cosine similarity দুই ভেক্টরের কোণ মাপে। কোণ ছোট = অর্থ কাছে (cos ≈ ১), কোণ বড় = অর্থ দূরে (cos ≈ ০)। cat ও kitten কাছে, cat ও car দূরে।</div>`,
   senior:{
     title:"Semantic Search Setup — Production",
     body:`<p><strong>Stack:</strong> BGE-large + Qdrant + BGE-Reranker। Hybrid search (dense + BM25)।</p><p><strong>Always hybrid:</strong> Dense alone misses proper nouns/keywords। BM25 alone misses synonyms। Together: 85-95% accuracy।</p><p><strong>Always rerank:</strong> Cross-encoder reranking adds 20%+ precision। Cheap (top-20 only)।</p><p><strong>Always asymmetric:</strong> Query prefix vs document prefix। 10-15% accuracy gain।</p><p><strong>Metrics:</strong> Track Recall@5, Precision@5, NDCG@10। Build 50+ query eval set with ground truth relevant docs।</p>`

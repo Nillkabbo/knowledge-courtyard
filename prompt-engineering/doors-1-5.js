@@ -23,6 +23,26 @@ doors.push({
 <div class="dialogue">তুমি ভাবো "unbelievable" একটা শব্দ। LLM-এর জন্য — তিনটা টোকেন: "un" + "believe" + "able"। তুমি ভাবো "জ্ঞান" একটা শব্দ। LLM-এর জন্য — এটা হয়তো ৩-৪টা টোকেন, কারণ বাংলা অক্ষর একাধিক টোকেনে ভাগ হয়। প্রতিটি টোকেন = খরচ। প্রতিটি টোকেন = সীমার অংশ।</div>
 <div class="dialogue en">"You think 'unbelievable' is one word. For the LLM — three tokens: 'un' + 'believe' + 'able'. You think 'জ্ঞান' is one word. For the LLM — it's maybe 3-4 tokens, because Bengali characters split into multiple tokens. Each token = cost. Each token = part of the limit."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a"/>
+  <rect x="40" y="95" width="160" height="60" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="120" y="131" text-anchor="middle" fill="#7dd3fc" font-size="14" font-family="monospace">"unbelievable"</text>
+  <text x="120" y="178" text-anchor="middle" fill="#94a3b8" font-size="10">১টি শব্দ</text>
+  <line x1="210" y1="125" x2="270" y2="125" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrD1)"/>
+  <text x="240" y="114" text-anchor="middle" fill="#fcd34d" font-size="10">BPE</text>
+  <rect x="285" y="95" width="70" height="60" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+  <text x="320" y="131" text-anchor="middle" fill="#4ade80" font-size="13" font-family="monospace">un</text>
+  <rect x="365" y="95" width="90" height="60" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+  <text x="410" y="131" text-anchor="middle" fill="#4ade80" font-size="13" font-family="monospace">believe</text>
+  <rect x="465" y="95" width="70" height="60" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+  <text x="500" y="131" text-anchor="middle" fill="#4ade80" font-size="13" font-family="monospace">able</text>
+  <text x="410" y="178" text-anchor="middle" fill="#94a3b8" font-size="10">৩টি টোকেন</text>
+  <defs><marker id="arrD1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">শব্দ → টোকেন: LLM প্রতিটি অক্ষর-খণ্ড আলাদা টোকেন হিসেবে দেখে — প্রতিটি টোকেনই খরচ ও সীমার অংশ</div>
+
 <div class="code-block">Token Reality — LLMs Don't See Words:
 
 Tokenization (BPE — Byte Pair Encoding):
@@ -87,6 +107,27 @@ doors.push({
 
 <div class="dialogue">মুদ্রা কারিগর বলেছিলেন — টোকেন গোনো। কিন্তু আমি বলি — গোনা শুরু। চালানোর সময় আসে এর পরে। temperature হলো সেই চালানোর প্রথম নিয়ন্ত্রণ। একই প্রম্পট, একই মডেল — temperature বদলালে ফল সম্পূর্ণ আলাদা। এটা বুঝতে না পারলে তুমি LLM-কে নিয়ন্ত্রণ করছ না — তুমি জুয়া খেলছ।</div>
 <div class="dialogue en">"The coin minter said — count tokens. But I say — counting is the start. Steering comes next. Temperature is the first control. Same prompt, same model — change temperature, completely different result. Without understanding this, you're not steering the LLM — you're gambling."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a"/>
+  <text x="290" y="58" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="bold">Temperature স্কেল</text>
+  <rect x="60" y="110" width="460" height="42" rx="21" fill="#1e3a5f"/>
+  <rect x="60" y="110" width="150" height="42" rx="21" fill="#22c55e" opacity="0.55"/>
+  <rect x="210" y="110" width="150" height="42" fill="#fbbf24" opacity="0.4"/>
+  <rect x="360" y="110" width="160" height="42" rx="21" fill="#22d3ee" opacity="0.4"/>
+  <text x="110" y="137" text-anchor="middle" fill="#4ade80" font-size="13" font-weight="bold">0.0</text>
+  <text x="285" y="137" text-anchor="middle" fill="#fcd34d" font-size="13" font-weight="bold">0.7</text>
+  <text x="450" y="137" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="bold">1.0+</text>
+  <text x="110" y="178" text-anchor="middle" fill="#4ade80" font-size="11">নির্ভুল</text>
+  <text x="285" y="178" text-anchor="middle" fill="#fcd34d" font-size="11">সামঞ্জস্য</text>
+  <text x="450" y="178" text-anchor="middle" fill="#7dd3fc" font-size="11">সৃজনশীল</text>
+  <text x="110" y="198" text-anchor="middle" fill="#94a3b8" font-size="9">কোড, JSON, ফ্যাক্ট</text>
+  <text x="285" y="198" text-anchor="middle" fill="#94a3b8" font-size="9">চ্যাট, প্রশ্নোত্তর</text>
+  <text x="450" y="198" text-anchor="middle" fill="#94a3b8" font-size="9">গল্প, ব্রেইনস্টর্ম</text>
+</svg>
+</div>
+<div class="svg-caption">temperature: ০ = নির্ভুল ও পুনরাবৃত্তিমূলক, ১+ = সৃজনশীল ও অনিশ্চিত — কাজ অনুযায়ী সঠিক মান নির্বাচন করো</div>
 
 <div class="code-block">Sampling Parameters — The Hidden Controls:
 
@@ -165,6 +206,22 @@ doors.push({
 <div class="dialogue">চুল্লির কারিগর বলেছিলেন — temperature নিয়ন্ত্রণ। কিন্তু আমি বলি — temperature আগে, নিয়ম পরে। সিস্টেম প্রম্পট হলো সেই নিয়ম — মডেল কে, কীভাবে কথা বলবে, কী বলবে না, কোন ফরম্যাটে উত্তর দেবে। এটা user প্রম্পটের চেয়ে বেশি ওজন পায়। কারণ প্রোভাইডাররা সিস্টেম প্রম্পটকে বিশেষ ট্রিটমেন্ট দেন — এটাই মডেলের ব্যক্তিত্ব।</div>
 <div class="dialogue en">"The furnace controller said — temperature control. But I say — temperature first, rules second. The system prompt is those rules — who the model is, how it speaks, what it won't say, what format it answers in. This gets more weight than the user prompt. Because providers give system prompts special treatment — it's the model's personality."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a"/>
+  <rect x="100" y="42" width="380" height="52" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="73" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="bold">১. SYSTEM PROMPT — সর্বোচ্চ ওজন</text>
+  <rect x="140" y="104" width="300" height="52" rx="8" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+  <text x="290" y="135" text-anchor="middle" fill="#fcd34d" font-size="13" font-weight="bold">২. ASSISTANT — পূর্ববর্তী উত্তর</text>
+  <rect x="180" y="166" width="220" height="52" rx="8" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="197" text-anchor="middle" fill="#4ade80" font-size="13" font-weight="bold">৩. USER — নিম্নতম ওজন</text>
+  <text x="510" y="68" fill="#7dd3fc" font-size="13">▲</text>
+  <text x="528" y="73" fill="#94a3b8" font-size="9">ওজন</text>
+  <text x="510" y="196" fill="#4ade80" font-size="13">▼</text>
+</svg>
+</div>
+<div class="svg-caption">প্রম্পট স্তরবিন্যাস: সিস্টেম প্রম্পট সবার ওপরে — মডেলের পরিচয়, নিয়ম ও সীমানা এখানে সবচেয়ে বেশি ওজন পায়</div>
+
 <div class="code-block">Prompt Hierarchy — The Hidden Weight:
 
 OpenAI / Anthropic / Google — সবার 
@@ -240,6 +297,30 @@ doors.push({
 <div class="dialogue">নকশা কারিগর বলেছিলেন — সিস্টেম প্রম্পট গুরুত্বপূর্ণ। কিন্তু আমি বলি — সিস্টেম প্রম্পট নিয়ম দেয়, চিন্তার শৃঙ্খল যুক্তি দেয়। একটা গাণিতিক সমস্যা — সরাসরি উত্তর চাইলে LLM ভুল করে। কিন্তু ধাপে ধাপে ভাবতে বললে — নির্ভুল। এটাই Chain-of-Thought।</div>
 <div class="dialogue en">"The blueprint designer said — system prompt is important. But I say — the system prompt gives rules, the thought chain gives reasoning. A math problem — asking for a direct answer, the LLM errs. But asking it to think step by step — it's accurate. This is Chain-of-Thought."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a"/>
+  <text x="290" y="42" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="bold">"Let's think step by step"</text>
+  <circle cx="80" cy="130" r="34" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="80" y="126" text-anchor="middle" fill="#7dd3fc" font-size="10">Step 1</text>
+  <text x="80" y="142" text-anchor="middle" fill="#7dd3fc" font-size="9">চিন্তা</text>
+  <line x1="114" y1="130" x2="156" y2="130" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrD4)"/>
+  <circle cx="190" cy="130" r="34" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="190" y="126" text-anchor="middle" fill="#7dd3fc" font-size="10">Step 2</text>
+  <text x="190" y="142" text-anchor="middle" fill="#7dd3fc" font-size="9">হিসাব</text>
+  <line x1="224" y1="130" x2="266" y2="130" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrD4)"/>
+  <circle cx="300" cy="130" r="34" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="300" y="126" text-anchor="middle" fill="#7dd3fc" font-size="10">Step 3</text>
+  <text x="300" y="142" text-anchor="middle" fill="#7dd3fc" font-size="9">যাচাই</text>
+  <line x1="334" y1="130" x2="396" y2="130" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrD4)"/>
+  <rect x="400" y="92" width="150" height="76" rx="10" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+  <text x="475" y="124" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="bold">উত্তর</text>
+  <text x="475" y="146" text-anchor="middle" fill="#4ade80" font-size="10">নির্ভুল ✓</text>
+  <defs><marker id="arrD4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">চিন্তার শৃঙ্খল: ধাপে ধাপে ভাবলে যুক্তির নির্ভুলতা ৩০-৬০% বাড়ে — সরাসরি উত্তর নয়, যুক্তির ধারাবাহিকতা</div>
+
 <div class="code-block">Chain-of-Thought (CoT) — The 6-Word Revolution:
 
 Research: Wei et al. (2022), Google Research
@@ -309,6 +390,29 @@ doors.push({
 
 <div class="dialogue">শৃঙ্খল নির্মাতা বলেছিলেন — চিন্তার শৃঙ্খল। কিন্তু আমি বলি — চিন্তার চেয়েও শক্তিশালী হলো দেখানো। Few-shot prompting। একটা উদাহরণ দাও — মডেল প্যাটার্ন ধরে। আর persona — ভূমিকা দাও। "তুমি একজন বিশেষজ্ঞ" বললে মডেল বিশেষজ্ঞের মতো উত্তর দেয়।</div>
 <div class="dialogue en">"The chain maker said — thought chain. But I say — stronger than thinking is showing. Few-shot prompting. Give one example — the model catches the pattern. And persona — give a role. Say 'you are an expert' and the model responds like one."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a"/>
+  <rect x="40" y="62" width="120" height="44" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+  <text x="100" y="89" text-anchor="middle" fill="#4ade80" font-size="10">উদাহরণ ১</text>
+  <rect x="40" y="116" width="120" height="44" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+  <text x="100" y="143" text-anchor="middle" fill="#4ade80" font-size="10">উদাহরণ ২</text>
+  <rect x="40" y="170" width="120" height="44" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+  <text x="100" y="197" text-anchor="middle" fill="#4ade80" font-size="10">উদাহরণ ৩</text>
+  <line x1="160" y1="138" x2="232" y2="138" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrD5)"/>
+  <text x="196" y="128" text-anchor="middle" fill="#fcd34d" font-size="9">প্যাটার্ন</text>
+  <circle cx="290" cy="138" r="46" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="290" y="133" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">মডেল</text>
+  <text x="290" y="150" text-anchor="middle" fill="#7dd3fc" font-size="9">শেখে</text>
+  <line x1="336" y1="138" x2="404" y2="138" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrD5)"/>
+  <rect x="408" y="104" width="142" height="68" rx="8" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+  <text x="479" y="134" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="bold">নতুন ইনপুট</text>
+  <text x="479" y="154" text-anchor="middle" fill="#4ade80" font-size="10">→ সঠিক উত্তর</text>
+  <defs><marker id="arrD5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">উদাহরণ = নির্দেশের চেয়ে শক্তিশালী: ৩-৫টি নমুনা দেখালে মডেল প্যাটার্ন ধরে — শূন্য-শটের চেয়ে নির্ভুল</div>
 
 <div class="code-block">Few-Shot Prompting — Power of Examples:
 

@@ -118,7 +118,38 @@ HOW VISION CONNECTS TO LLM:
   Response: "I see a cat sitting on a table"</div>
 
 <div class="dialogue">বাসিরাহ — vision, clear sightedness, perception। কুরআনে আল্লাহ বলেন — "তিনি তোমাকে দৃষ্টি দিয়েছেন।" (৯০:৮-৯)। দৃষ্টি একটি নিয়ামত। Vision encoder-ও তেমনি — AI-কে দৃষ্টি দেওয়া। ছবি থেকে অর্থ, অর্থ থেকে বোঝা। যে দেখে, সে বোঝে। যে দেখে না, সে অন্ধ। বাসিরাহ — দৃষ্টির নিয়ামত।</div>
-<div class="dialogue en">"Basirah — vision, clear sightedness, perception. Allah says — 'He gave you sight.' (90:8-9). Vision is a gift. Vision encoder too — giving AI sight. From image to meaning, meaning to understanding. One who sees, understands. One who doesn't, is blind. Basirah — the gift of sight."</div>`,
+<div class="dialogue en">"Basirah — vision, clear sightedness, perception. Allah says — 'He gave you sight.' (90:8-9). Vision is a gift. Vision encoder too — giving AI sight. From image to meaning, meaning to understanding. One who sees, understands. One who doesn't, is blind. Basirah — the gift of sight."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrMM1" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#22d3ee"/></marker></defs>
+<text x="290" y="24" text-anchor="middle" fill="#a855f7" font-size="13" font-weight="700">CLIP: দ্বৈত এনকোডার — ছবি ও টেক্সট এক জগতে</text>
+<rect x="30" y="60" width="80" height="50" rx="8" fill="#1e1b3a" stroke="#a855f7" stroke-width="2"/>
+<text x="70" y="82" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="600">Image</text>
+<text x="70" y="98" text-anchor="middle" fill="#9290a8" font-size="9">ছবি</text>
+<rect x="470" y="60" width="80" height="50" rx="8" fill="#1e1b3a" stroke="#22d3ee" stroke-width="2"/>
+<text x="510" y="82" text-anchor="middle" fill="#67e8f9" font-size="11" font-weight="600">Text</text>
+<text x="510" y="98" text-anchor="middle" fill="#9290a8" font-size="9">টেক্সট</text>
+<rect x="140" y="55" width="100" height="60" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+<text x="190" y="80" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">ViT</text>
+<text x="190" y="96" text-anchor="middle" fill="#9290a8" font-size="8">Image Encoder</text>
+<rect x="340" y="55" width="100" height="60" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+<text x="390" y="80" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">Transformer</text>
+<text x="390" y="96" text-anchor="middle" fill="#9290a8" font-size="8">Text Encoder</text>
+<line x1="110" y1="85" x2="138" y2="85" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM1)"/>
+<line x1="470" y1="85" x2="442" y2="85" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrMM1)"/>
+<circle cx="190" cy="170" r="22" fill="#1e1b3a" stroke="#a855f7" stroke-width="2"/>
+<text x="190" y="174" text-anchor="middle" fill="#c084fc" font-size="9">emb_I</text>
+<circle cx="390" cy="170" r="22" fill="#1e1b3a" stroke="#22d3ee" stroke-width="2"/>
+<text x="390" y="174" text-anchor="middle" fill="#67e8f9" font-size="9">emb_T</text>
+<line x1="190" y1="115" x2="190" y2="148" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrMM1)"/>
+<line x1="390" y1="115" x2="390" y2="148" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrMM1)"/>
+<line x1="212" y1="170" x2="368" y2="170" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="290" y="162" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">contrastive loss</text>
+<text x="290" y="210" text-anchor="middle" fill="#22c55e" font-size="10">মিলে গেলে কাছে, না মিললে দূরে — same space</text>
+</svg>
+</div>
+<div class="svg-caption">CLIP: ছবি ও টেক্সট আলাদা এনকোডারে একই vector space-এ আসে। মিল থাকলে দূরত্ব কমে।</div>`,
   senior:{
     title:"Vision Models — কোনটা কখন",
     body:`<p><strong>Image classification:</strong> ViT বা CLIP (zero-shot)।</p><p><strong>Image-text matching:</strong> CLIP / SigLIP — cosine similarity।</p><p><strong>Vision features (for downstream):</strong> DINOv2 — self-supervised, সেরা feature quality।</p><p><strong>Image search:</strong> OpenCLIP embeddings + vector DB।</p><p><strong>Zero-shot classification:</strong> CLIP — "is this [concept]?" → similarity score।</p>`

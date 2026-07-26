@@ -106,7 +106,39 @@ WHY NOT JUST USE MAX DIMENSIONS?
   → ৭৬৮-১০২৪ is optimal for most use cases</div>
 
 <div class="dialogue">পরিমাণ — quantity, measure, proportion। কুরআনে আল্লাহ বলেন — "সবকিছু আমরা একটা নির্ধারিত পরিমাণে সৃষ্টি করেছি।" (৫৪:৪৯)। প্রতিটা জিনিসে সঠিক পরিমাণ। Embedding dimension-ও তেমনি — সঠিক পরিমাণ দরকার। বেশি নয়, কম নয়। যে সঠিক পরিমাণ জানে, সে সঠিক ভারসাম্য পায়।</div>
-<div class="dialogue en">"Pariman — quantity, measure, proportion. Allah says — 'We created all things in determined measure.' (54:49). Right amount in everything. Embedding dimension too — right amount needed. Not too much, not too little. One who knows the right amount, finds the right balance."</div>`,
+<div class="dialogue en">"Pariman — quantity, measure, proportion. Allah says — 'We created all things in determined measure.' (54:49). Right amount in everything. Embedding dimension too — right amount needed. Not too much, not too little. One who knows the right amount, finds the right balance."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">Sentence Embeddings — বাক্য থেকে ভেক্টর</text>
+  <rect x="30" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="80" y="68" text-anchor="middle" fill="#7dd3fc" font-size="8">বাক্য</text>
+  <text x="80" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">"আজ মাছ ধরছি"</text>
+  <rect x="160" y="50" width="90" height="40" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="205" y="68" text-anchor="middle" fill="#c084fc" font-size="8">Transformer</text>
+  <text x="205" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">BERT / BGE</text>
+  <rect x="280" y="50" width="90" height="40" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="325" y="68" text-anchor="middle" fill="#4ade80" font-size="8">৭৬৮-dim ভেক্টর</text>
+  <text x="325" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">[০.২, -০.৫, ...]</text>
+  <line x1="130" y1="70" x2="160" y2="70" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB6a)"/>
+  <line x1="250" y1="70" x2="280" y2="70" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB6a)"/>
+  <defs><marker id="arrEMB6a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#475569"/></marker></defs>
+  <text x="410" y="50" fill="#fcd34d" font-size="8" font-weight="bold">ভেক্টর স্পেসে বাক্যের অবস্থান</text>
+  <circle cx="430" cy="140" r="5" fill="#22d3ee"/>
+  <text x="440" y="143" fill="#7dd3fc" font-size="7">মাছ ধরা</text>
+  <circle cx="460" cy="130" r="5" fill="#22d3ee"/>
+  <text x="470" y="133" fill="#7dd3fc" font-size="7">নদীতে মাছ</text>
+  <circle cx="395" cy="155" r="5" fill="#a855f7"/>
+  <text x="345" y="158" fill="#c084fc" font-size="7">রান্না করা</text>
+  <circle cx="520" cy="120" r="5" fill="#fbbf24"/>
+  <text x="490" y="112" fill="#fcd34d" font-size="7">প্রোগ্রামিং</text>
+  <circle cx="450" cy="145" r="5" fill="#22d3ee"/>
+  <text x="408" y="175" fill="#94a3b8" font-size="7">একই অর্থের বাক্য কাছে, ভিন্ন অর্থের দূরে</text>
+  <text x="30" y="225" fill="#64748b" font-size="7">Sentence-BERT: সম্পূর্ণ বাক্য → একটি ভেক্টর। টোকেন-লেভেল নয়, বাক্য-লেভেল উপস্থাপন। সেমান্টিক সার্চের ভিত্তি।</text>
+</svg>
+</div>
+<div class="svg-caption">বাক্য থেকে একটি ভেক্টর — Sentence-BERT পুরো বাক্যকে ৭৬৮-মাত্রিক স্পেসের একটি বিন্দুতে রূপান্তর করে। একই অর্থের বাক্য কাছাকাছি, ভিন্ন অর্থের দূরে।</div>`,
   senior:{
     title:"Dimension Choice — Quick Guide",
     body:`<p><strong>Default:</strong> ৭৬৮-১০২৪ dim — sweet spot for quality/cost।</p><p><strong>High traffic:</strong> ৩৮৪ dim (all-MiniLM) — ৪x faster search, ৮০% of quality।</p><p><strong>Maximum quality:</strong> ১৫৩৬-৩০৭২ dim — diminishing returns above ১০২৪।</p><p><strong>Matryoshka (OpenAI embed-৩):</strong> Start at ২৫৬, upgrade when needed — best of both worlds।</p><p><strong>PQ compression:</strong> For massive corpora (১০M+ docs) — ৪৮x storage savings with ~৩-৫% accuracy loss।</p>`
@@ -217,7 +249,45 @@ COMMON PITFALLS:
   ❌ Not testing with YOUR actual queries</div>
 
 <div class="dialogue">মুহাসাবা — self-examination, evaluation। কুরআনে আল্লাহ বলেন — "তোমরা নিজেদের যাচাই করো।" Embedding evaluation-ও মুহাসাবা — প্রতিটা model যাচাই। সংখ্যা দাও, অনুমান নয়। যে যাচাই করে, সে নিশ্চিত। যে অনুমান করে, সে বিপদে।</div>
-<div class="dialogue en">"Muhasabah — self-examination, evaluation. Allah says — 'Examine yourselves.' Embedding evaluation too — verify each model. Give numbers, not guesses. One who verifies, is certain. One who guesses, is in danger."</div>`,
+<div class="dialogue en">"Muhasabah — self-examination, evaluation. Allah says — 'Examine yourselves.' Embedding evaluation too — verify each model. Give numbers, not guesses. One who verifies, is certain. One who guesses, is in danger."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">CLIP — টেক্সট ও ছবি এক স্পেসে</text>
+  <rect x="30" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="80" y="68" text-anchor="middle" fill="#7dd3fc" font-size="9">🖼️ ছবি</text>
+  <text x="80" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">image input</text>
+  <rect x="30" y="150" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="80" y="168" text-anchor="middle" fill="#4ade80" font-size="9">📝 টেক্সট</text>
+  <text x="80" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">"a cat on a mat"</text>
+  <rect x="160" y="50" width="90" height="40" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="205" y="68" text-anchor="middle" fill="#c084fc" font-size="8">Image Encoder</text>
+  <text x="205" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">ViT</text>
+  <rect x="160" y="150" width="90" height="40" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="205" y="168" text-anchor="middle" fill="#c084fc" font-size="8">Text Encoder</text>
+  <text x="205" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">Transformer</text>
+  <line x1="130" y1="70" x2="160" y2="70" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB7)"/>
+  <line x1="130" y1="170" x2="160" y2="170" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB7)"/>
+  <defs><marker id="arrEMB7" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#475569"/></marker></defs>
+  <circle cx="320" cy="120" r="5" fill="#22d3ee"/>
+  <text x="328" y="115" fill="#7dd3fc" font-size="7">🖼️ cat img</text>
+  <circle cx="345" cy="108" r="5" fill="#22c55e"/>
+  <text x="353" y="103" fill="#4ade80" font-size="7">"cat" text</text>
+  <circle cx="440" cy="160" r="5" fill="#fbbf24"/>
+  <text x="450" y="163" fill="#fcd34d" font-size="7">"car" text</text>
+  <circle cx="465" cy="155" r="5" fill="#a855f7"/>
+  <text x="475" y="158" fill="#c084fc" font-size="7">🖼️ car img</text>
+  <line x1="250" y1="70" x2="318" y2="118" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrEMB7)"/>
+  <line x1="250" y1="170" x2="343" y2="110" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrEMB7)"/>
+  <text x="320" y="88" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">এক ভেক্টর স্পেস</text>
+  <line x1="325" y1="118" x2="343" y2="110" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="2,2"/>
+  <text x="330" y="135" fill="#4ade80" font-size="7">cos ≈ ০.৯২</text>
+  <rect x="30" y="215" width="520" height="28" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="290" y="232" text-anchor="middle" fill="#94a3b8" font-size="8">একই স্পেসে থাকলে — ছবি দিয়ে টেক্সট খোঁজো, টেক্সট দিয়ে ছবি খোঁজো। Cross-modal search!</text>
+</svg>
+</div>
+<div class="svg-caption">CLIP ছবি ও টেক্সটকে একই ভেক্টর স্পেসে রাখে। cat-এর ছবি ও "cat" টেক্সট কাছাকাছি — তাই টেক্সট দিয়ে ছবি, ছবি দিয়ে টেক্সট খোঁজা যায়।</div>`,
   senior:{
     title:"Eval Pipeline — Embedding Models",
     body:`<p><strong>Step ১:</strong> Shortlist ৩-৫ models from MTEB leaderboard (BGE, E5, OpenAI, GTE, Cohere)।</p><p><strong>Step ২:</strong> Build domain eval set: ৫০+ (query, relevant_docs) pairs from YOUR domain।</p><p><strong>Step ৩:</strong> For each model: embed docs → index → query → measure Recall@৫, NDCG@১০।</p><p><strong>Step ৪:</strong> Test asymmetric encoding (query vs doc prefix)।</p><p><strong>Step ৫:</strong> Pick best for YOUR domain — MTEB winner may NOT be best for you!</p>`
@@ -330,7 +400,47 @@ IMPLEMENTATION PATTERNS:
     → best speed/quality balance</div>
 
 <div class="dialogue">তাতবি'আ — application, implementation, putting into practice। কুরআনে আল্লাহ বলেন — "নিশ্চয় আল্লাহ তাদের ভালোবাসেন যারা কাজ করে।" কাজ = প্রয়োগ। Embedding application-ও তাতবি'আ — জ্ঞান থেকে কাজে। যে প্রয়োগ করে, সে শক্তি পায়। যে শুধু জানে, সে দর্শক।</div>
-<div class="dialogue en">"Tatbi'a — application, implementation, putting into practice. Allah says — 'Allah loves those who work.' Work = application. Embedding application too — from knowledge to action. One who applies, gains power. One who only knows, is a spectator."</div>`,
+<div class="dialogue en">"Tatbi'a — application, implementation, putting into practice. Allah says — 'Allah loves those who work.' Work = application. Embedding application too — from knowledge to action. One who applies, gains power. One who only knows, is a spectator."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="8"/>
+  <text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">Vector Database — ভেক্টরের ভাণ্ডার</text>
+  <rect x="30" y="50" width="90" height="35" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="75" y="72" text-anchor="middle" fill="#7dd3fc" font-size="8">ডকুমেন্ট</text>
+  <rect x="140" y="50" width="90" height="35" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="185" y="72" text-anchor="middle" fill="#c084fc" font-size="8">Embed Model</text>
+  <line x1="120" y1="67" x2="140" y2="67" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB8)"/>
+  <defs><marker id="arrEMB8" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#475569"/></marker></defs>
+  <rect x="250" y="40" width="120" height="55" rx="6" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="310" y="60" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Vector DB</text>
+  <text x="310" y="74" text-anchor="middle" fill="#94a3b8" font-size="7">৭৬৮-dim ভেক্টর</text>
+  <text x="310" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">+ metadata</text>
+  <line x1="230" y1="67" x2="250" y2="67" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB8)"/>
+  <rect x="30" y="125" width="75" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="67" y="143" text-anchor="middle" fill="#7dd3fc" font-size="7">Qdrant</text>
+  <rect x="115" y="125" width="75" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="152" y="143" text-anchor="middle" fill="#7dd3fc" font-size="7">Pinecone</text>
+  <rect x="200" y="125" width="75" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="237" y="143" text-anchor="middle" fill="#7dd3fc" font-size="7">Weaviate</text>
+  <rect x="285" y="125" width="75" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="322" y="143" text-anchor="middle" fill="#7dd3fc" font-size="7">Milvus</text>
+  <rect x="370" y="125" width="75" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="407" y="143" text-anchor="middle" fill="#7dd3fc" font-size="7">pgvector</text>
+  <rect x="455" y="125" width="95" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="502" y="143" text-anchor="middle" fill="#7dd3fc" font-size="7">Chroma</text>
+  <rect x="400" y="40" width="150" height="55" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="475" y="60" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">ANN Index</text>
+  <text x="475" y="74" text-anchor="middle" fill="#94a3b8" font-size="7">HNSW · IVF · PQ</text>
+  <text x="475" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">১M docs → ~৫ms</text>
+  <line x1="370" y1="67" x2="400" y2="67" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB8)"/>
+  <rect x="30" y="180" width="520" height="50" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="50" y="200" fill="#fcd34d" font-size="8" font-weight="bold">সার্চ ফ্লো:</text>
+  <text x="50" y="215" fill="#7dd3fc" font-size="7">query → embed → ANN search → cosine sim top-k → rerank → ফলাফল</text>
+  <text x="50" y="227" fill="#64748b" font-size="7">hybrid (dense + BM২৫) সবচেয়ে ভালো। metadata filter দিয়ে সীমাবদ্ধ করো।</text>
+</svg>
+</div>
+<div class="svg-caption">ভেক্টর ডেটাবেস — ডকুমেন্ট ভেক্টর সংরক্ষণ ও দ্রুত সার্চের ভাণ্ডার। Qdrant, Pinecone, Milvus — HNSW ইনডেক্স দিয়ে ১M ডকুমেন্টে ~৫ms-এ সন্ধান। Hybrid search সবচেয়ে কার্যকর।</div>`,
   senior:{
     title:"Pick Your Application — Start Today",
     body:`<p><strong>Easiest:</strong> Semantic search — embed corpus, query by meaning. Immediate value।</p><p><strong>High-ROI:</strong> Zero-shot classification — no training, embed labels, classify by nearest।</p><p><strong>Data quality:</strong> Deduplication — find near-duplicates, clean your dataset।</p><strong>Discovery:</strong> Clustering + UMAP visualization — see your data's structure।</p><p><strong>Pro tip:</strong> Embed corpus ONCE. Power search + classification + dedup + clustering from same vectors. One model, many applications = maximum ROI।</p>`
