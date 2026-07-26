@@ -58,7 +58,8 @@
     { "n": 45, "folder": "compilers-plt",            "title_en": "The Word Smithy",                        "title_bn": "শব্দের কারখানা",             "icon": "🔤", "category": "cs", "color": "game-45", "tag": "Book 45 · Compilers & Programming Language Theory",              "status": "live" },
     { "n": 46, "folder": "cryptography",             "title_en": "The Copper Fortress",                     "title_bn": "তামার দুর্গ",                "icon": "🔐", "category": "cs", "color": "game-46", "tag": "Book 46 · Cryptography & Network Security",                      "status": "live" },
     { "n": 47, "folder": "testing-qa",               "title_en": "The Shields of Craft",                    "title_bn": "কারিগরের ঢাল",               "icon": "🛡️", "category": "cs", "color": "game-47", "tag": "Book 47 · Testing & Quality Assurance",                           "status": "live" },
-    { "n": 48, "folder": "discrete-math",             "title_en": "The Compass of Logic",                      "title_bn": "যুক্তির কম্পাস",               "icon": "🧭", "category": "cs", "color": "game-48", "tag": "Book 48 · Discrete Mathematics",                                  "status": "live" }
+    { "n": 48, "folder": "discrete-math",             "title_en": "The Compass of Logic",                      "title_bn": "যুক্তির কম্পাস",               "icon": "🧭", "category": "cs", "color": "game-48", "tag": "Book 48 · Discrete Mathematics",                                  "status": "live" },
+    { "n": 49, "folder": "probability",                "title_en": "The Dice of Destiny",                       "title_bn": "নিয়তির পাশা",                 "icon": "🎲", "category": "cs", "color": "game-49", "tag": "Book 49 · Probability & Stochastic Processes",                    "status": "live" }
   ],
 
   "roadmap": [
