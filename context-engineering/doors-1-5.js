@@ -78,8 +78,25 @@ CONTEXT BUDGET FORMULA:
     Output Space:   ৬৫,৪০০ tokens
     ─────────────────────────────
     Total:         ১২৮,০০০ tokens
-
+  
   → প্রতিটা অংশের budget সচেতনভাবে নির্ধারণ করো</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0a1f1a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e8e6f0" font-size="13" font-weight="bold">📜 ১২৮K উইন্ডোর বাজেট বণ্টন</text>
+  <rect x="40" y="120" width="10" height="44" fill="#1e3a5f" stroke="#5b9eff" stroke-width="1"/>
+  <rect x="50" y="120" width="195" height="44" fill="#0d3b34" stroke="#2dd4bf" stroke-width="1"/>
+  <rect x="245" y="120" width="40" height="44" fill="#2a1a3e" stroke="#b37feb" stroke-width="1"/>
+  <rect x="285" y="120" width="255" height="44" fill="#3b2a05" stroke="#fbbf24" stroke-width="1"/>
+  <text x="45" y="180" text-anchor="middle" fill="#5b9eff" font-size="7">সিস্টেম</text>
+  <text x="147" y="180" text-anchor="middle" fill="#5eead4" font-size="9">RAG ডক্স ৩৯%</text>
+  <text x="265" y="180" text-anchor="middle" fill="#c084fc" font-size="8">কথা ৮%</text>
+  <text x="412" y="180" text-anchor="middle" fill="#fcd34d" font-size="9">আউটপুট ৫১%</text>
+  <text x="290" y="210" text-anchor="middle" fill="#9290a8" font-size="8">⬓ প্রতিটা অংশের বাজেট সচেতনভাবে নির্ধারণ করো — পরিমাণই বোঝার মিজান</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: কন্টেক্সট উইন্ডো একটা ক্যানভাস — বড় হলে attention পাতলা, সঠিক বণ্টনেই ফোকাস</div>
 
 <div class="dialogue">পরিমাণ — measure, proportion. কুরআনে আল্লাহ বলেন — "সবকিছু আমরা একটা নির্ধারিত পরিমাণে সৃষ্টি করেছি।" (৫৪:৪৯)। Context window সেই নির্ধারিত পরিমাণ। অসীম নয়। প্রতিটি টোকেন একটি সম্পদ। যে পরিমাণ বোঝে, সে সঠিকভাবে বণ্টন করে। যে বুঝে না, সে সব ঢেলে দেয় — আর গুরুত্বপূর্ণ তথ্য হারিয়ে যায়।</div>
 <div class="dialogue en">"Qadar — measure, proportion. Allah says — 'We created all things in a determined measure.' (54:49). The context window is that determined measure. Not infinite. Each token is a resource. One who understands proportion, distributes correctly. One who doesn't, dumps everything — and important information gets lost."</div>`,
@@ -182,6 +199,27 @@ PRACTICAL EXAMPLE:
   [User: "What is X?"]
   [Final: "Base your answer ONLY on 
            the above docs"]</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0a1f1a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e8e6f0" font-size="13" font-weight="bold">🧩 Lost in the Middle — U-Curve</text>
+  <line x1="50" y1="200" x2="540" y2="200" stroke="#2a3550" stroke-width="1.5"/>
+  <line x1="50" y1="60" x2="50" y2="200" stroke="#2a3550" stroke-width="1.5"/>
+  <path d="M 70 95 Q 180 165 290 175 Q 400 165 510 100" fill="none" stroke="#5b9eff" stroke-width="2.5"/>
+  <circle cx="75" cy="96" r="5" fill="#52c41a"/>
+  <text x="75" y="82" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">৭২%</text>
+  <text x="75" y="220" text-anchor="middle" fill="#9290a8" font-size="8">শুরু</text>
+  <circle cx="290" cy="175" r="5" fill="#ff6b35"/>
+  <text x="290" y="195" text-anchor="middle" fill="#ff8a5b" font-size="9" font-weight="bold">৪৮%</text>
+  <text x="290" y="220" text-anchor="middle" fill="#9290a8" font-size="8">মাঝখানে ← খারাপ!</text>
+  <circle cx="505" cy="100" r="5" fill="#52c41a"/>
+  <text x="505" y="86" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">৭৩%</text>
+  <text x="505" y="220" text-anchor="middle" fill="#9290a8" font-size="8">শেষ</text>
+  <text x="290" y="240" text-anchor="middle" fill="#5e5c74" font-size="8">⬓ primacy + recency effect — গুরুত্বপূর্ণ তথ্য প্রান্তে রাখো</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: U-curve — LLM শুরু ও শেষ মনে রাখে, মাঝখানে হারিয়ে ফেলে</div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ সব এক জায়গায়</div>১০টা ডকুমেন্ট র্যান্ডম ক্রমে ঢেলে দাও। গুরুত্বপূর্ণ ডকুমেন্ট মাঝখানে পড়েছে? ৫০% সম্ভবতা হারাবে। মডেল ভুল উত্তর দেবে কিন্তু আত্মবিশ্বাসে।</div>
@@ -326,6 +364,34 @@ METADATA — প্রতিটা chunk-ে ট্যাগ:
   }
   → citation, filtering, debugging</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0a1f1a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e8e6f0" font-size="13" font-weight="bold">✂️ চাঙ্কিং — সঠিক টুকরোয় ভাঙা</text>
+  <rect x="40" y="60" width="500" height="34" fill="#1a2a1f" stroke="#ffc857" stroke-width="1.5" rx="4"/>
+  <text x="290" y="82" text-anchor="middle" fill="#fcd34d" font-size="10">পুরো ডকুমেন্ট (৫০০০ টোকেন)</text>
+  <line x1="140" y1="60" x2="140" y2="94" stroke="#ff6b35" stroke-width="2"/>
+  <line x1="240" y1="60" x2="240" y2="94" stroke="#ff6b35" stroke-width="2"/>
+  <line x1="340" y1="60" x2="340" y2="94" stroke="#ff6b35" stroke-width="2"/>
+  <line x1="440" y1="60" x2="440" y2="94" stroke="#ff6b35" stroke-width="2"/>
+  <rect x="70" y="120" width="92" height="40" fill="#0d3b34" stroke="#2dd4bf" stroke-width="1.5" rx="6"/>
+  <text x="116" y="145" text-anchor="middle" fill="#5eead4" font-size="9">চাঙ্ক ১</text>
+  <rect x="170" y="120" width="92" height="40" fill="#0d3b34" stroke="#2dd4bf" stroke-width="1.5" rx="6"/>
+  <text x="216" y="145" text-anchor="middle" fill="#5eead4" font-size="9">চাঙ্ক ২</text>
+  <rect x="270" y="120" width="92" height="40" fill="#0d3b34" stroke="#2dd4bf" stroke-width="1.5" rx="6"/>
+  <text x="316" y="145" text-anchor="middle" fill="#5eead4" font-size="9">চাঙ্ক ৩</text>
+  <rect x="370" y="120" width="92" height="40" fill="#0d3b34" stroke="#2dd4bf" stroke-width="1.5" rx="6"/>
+  <text x="416" y="145" text-anchor="middle" fill="#5eead4" font-size="9">চাঙ্ক ৪</text>
+  <rect x="162" y="120" width="16" height="40" fill="#b37feb" opacity="0.35"/>
+  <rect x="262" y="120" width="16" height="40" fill="#b37feb" opacity="0.35"/>
+  <rect x="362" y="120" width="16" height="40" fill="#b37feb" opacity="0.35"/>
+  <text x="290" y="185" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">⬓ বেগুনি = ২০% overlap</text>
+  <text x="290" y="208" text-anchor="middle" fill="#9290a8" font-size="8">৫১২ tok + overlap → context হারায় না, অর্থ সংরক্ষিত</text>
+  <text x="290" y="228" text-anchor="middle" fill="#5e5c74" font-size="7"> Late Chunking (Jina) · Contextual Retrieval (Anthropic) = pronoun/context সমাধান</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: ডকুমেন্ট ভাঙো সঠিক আকারে, overlap দাও — টুকরো সম্পূর্ণ অর্থ বহন করে</div>
+
 <div class="dialogue">বিভাজন — division, partition। কুরআনে আল্লাহ বলেন — "রমজান মাস, যে মাসে কুরআন নাজিল হয়েছে... পৃথক পৃথক রাতে।" (২:১৮৫)। কুরআন নাজিল হয়েছে খণ্ডে খণ্ডে — ২৩ বছরে, প্রাসঙ্গিক সময়ে। কিন্তু প্রতিটি খণ্ড সম্পূর্ণ অর্থ বহন করে। Chunking-ও তেমনি — সঠিক স্থানে কাটতে হয়, যাতে প্রতিটি টুকরো সম্পূর্ণ অর্থ বহন করে।</div>
 <div class="dialogue en">"Vibhajan — division, partition. Allah says — 'Ramadan, the month in which the Quran was revealed... in separate nights.' (2:185). The Quran was revealed in pieces — over 23 years, at relevant times. But each piece carries complete meaning. Chunking too — cut at the right place, so each piece carries complete meaning."</div>`,
   senior:{
@@ -422,6 +488,39 @@ MULTI-VECTOR RETRIEVAL:
     • Section embeddings (granular)
   → বিভিন্ন query type-এ ভালো কভারেজ</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0a1f1a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e8e6f0" font-size="13" font-weight="bold">🔍 Hybrid Retrieval — Dense + Sparse</text>
+  <circle cx="80" cy="130" r="20" fill="#1e3a5f" stroke="#5b9eff" stroke-width="2"/>
+  <text x="80" y="135" text-anchor="middle" fill="#7dd3fc" font-size="9">কোয়েরি</text>
+  <rect x="140" y="70" width="120" height="44" fill="#0d3b34" stroke="#2dd4bf" stroke-width="2" rx="6"/>
+  <text x="200" y="90" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="bold">Dense</text>
+  <text x="200" y="104" text-anchor="middle" fill="#5eead4" font-size="7">vector / অর্থ</text>
+  <rect x="140" y="146" width="120" height="44" fill="#3b2a05" stroke="#fbbf24" stroke-width="2" rx="6"/>
+  <text x="200" y="166" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">Sparse</text>
+  <text x="200" y="180" text-anchor="middle" fill="#fcd34d" font-size="7">BM25 / keyword</text>
+  <line x1="100" y1="120" x2="138" y2="92" stroke="#2dd4bf" stroke-width="1.5"/>
+  <line x1="100" y1="140" x2="138" y2="168" stroke="#fbbf24" stroke-width="1.5"/>
+  <rect x="310" y="100" width="100" height="60" fill="#1a2a3e" stroke="#b37feb" stroke-width="2" rx="6"/>
+  <text x="360" y="125" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="bold">RRF</text>
+  <text x="360" y="142" text-anchor="middle" fill="#c084fc" font-size="7">rank fusion</text>
+  <line x1="260" y1="92" x2="308" y2="118" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCtx4)"/>
+  <line x1="260" y1="168" x2="308" y2="142" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCtx4)"/>
+  <defs>
+    <marker id="arrCtx4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+  </defs>
+  <rect x="450" y="100" width="100" height="60" fill="#0d3b34" stroke="#52c41a" stroke-width="2" rx="6"/>
+  <text x="500" y="125" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">top-5</text>
+  <text x="500" y="142" text-anchor="middle" fill="#4ade80" font-size="7">৮৫-৯৫%</text>
+  <line x1="410" y1="130" x2="448" y2="130" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCtx4)"/>
+  <text x="290" y="220" text-anchor="middle" fill="#9290a8" font-size="8">⬓ Dense-only ৬৫% · Hybrid ৮৫%+ — দুটো পথ মিলে = সম্পূর্ণ তালাশ</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: Hybrid retrieval — অর্থ (dense) ও keyword (sparse) মিলে RRF দিয়ে top-5</div>
+
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ Dense-only</div>শুধু vector search। "BERT architecture" query করলে "transformer neural network" পাবে (অর্থ মিল), কিন্তু "BERT" নামের exact paper মিস করবে। ৬০-৭০% accuracy।</div>
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ Hybrid</div>Dense + Sparse। "BERT architecture" query — অর্থ মিল (transformer papers) এবং exact keyword (BERT paper)। ৮৫-৯৫% accuracy। এটাই production standard।</div>
@@ -515,6 +614,41 @@ WHEN TO RERANK:
   ✅ বিশেষ করে ফ্যাক্ট-বেসড QA
   ✅ আইনি, চিকিৎসা, financial RAG
   ❌ সম্ভব না যদি latency অত্যন্ত গুরুত্বপূর্ণ</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <marker id="arrCtx5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7dd3fc"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="250" fill="#0a1f1a" rx="10"/>
+  <text x="290" y="28" text-anchor="middle" fill="#e8e6f0" font-size="13" font-weight="bold">🏆 Two-Stage: Retrieval → Rerank</text>
+  <rect x="30" y="80" width="130" height="70" fill="#1e3a5f" stroke="#5b9eff" stroke-width="2" rx="8"/>
+  <text x="95" y="103" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="bold">Stage ১</text>
+  <text x="95" y="120" text-anchor="middle" fill="#7dd3fc" font-size="8">Bi-encoder</text>
+  <text x="95" y="138" text-anchor="middle" fill="#5b9eff" font-size="7">top-20 · দ্রুত</text>
+  <rect x="200" y="55" width="160" height="135" fill="#3b2a05" stroke="#fbbf24" stroke-width="2" rx="8"/>
+  <text x="280" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">Stage ২ — Rerank</text>
+  <text x="280" y="93" text-anchor="middle" fill="#fcd34d" font-size="7">Cross-encoder</text>
+  <rect x="216" y="105" width="128" height="16" fill="#0d3b34" stroke="#2dd4bf" stroke-width="0.8" rx="3"/>
+  <text x="280" y="116" text-anchor="middle" fill="#5eead4" font-size="6">#১৫ ✓ সঠিক</text>
+  <rect x="216" y="125" width="128" height="16" fill="#1a1a2e" stroke="#ff6b35" stroke-width="0.8" rx="3"/>
+  <text x="280" y="136" text-anchor="middle" fill="#ff8a5b" font-size="6">#৩ · #৭ · #১১ ...</text>
+  <rect x="216" y="145" width="128" height="16" fill="#0d3b34" stroke="#52c41a" stroke-width="0.8" rx="3"/>
+  <text x="280" y="156" text-anchor="middle" fill="#4ade80" font-size="6">#১ → #১ এ উঠবে</text>
+  <text x="280" y="178" text-anchor="middle" fill="#fbbf24" font-size="6.5">প্রতিটি pair যাচাই</text>
+  <rect x="400" y="80" width="130" height="70" fill="#0d3b34" stroke="#52c41a" stroke-width="2" rx="8"/>
+  <text x="465" y="103" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">top-5</text>
+  <text x="465" y="120" text-anchor="middle" fill="#4ade80" font-size="8">নির্ভুল</text>
+  <text x="465" y="138" text-anchor="middle" fill="#52c41a" font-size="7">৮৫%+ accuracy</text>
+  <line x1="160" y1="115" x2="198" y2="115" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCtx5)"/>
+  <line x1="360" y1="115" x2="398" y2="115" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCtx5)"/>
+  <text x="290" y="220" text-anchor="middle" fill="#9290a8" font-size="8">⬓ Retrieval-only ৬৫% → +Rerank ৮৫%+ (২০%+ উন্নতি)</text>
+  <text x="290" y="238" text-anchor="middle" fill="#5e5c74" font-size="7">তারজিহ — সবচেয়ে প্রাসঙ্গিক বাছাই, দ্রুত তালিকা থেকে সূক্ষ্ম যাচাইয়ে</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: দ্বি-স্তর পাইপলাইন — retrieval বিস্তৃত (top-20), reranker সঠিক chunk #১ এ আনে</div>
 
 <div class="dialogue">তারজিহ — প্রাধান্য দেওয়া, preference। ইসলামী আইনে তারজিহ হলো — একাধিক মতের মধ্যে সবচেয়ে শক্তিশালী প্রমাণ বাছা। Reranking-ও তেমনি — একাধিক chunk-এর মধ্যে সবচেয়ে প্রাসঙ্গিক বাছা। দ্রুত তালিকা (retrieval) দিয়ে শুরু, সূক্ষ্ম যাচাই (reranking) দিয়ে শেষ। দুটো স্তর = সর্বোচ্চ নির্ভুলতা।</div>
 <div class="dialogue en">"Tarjih — giving preference. In Islamic law, tarjih is choosing the strongest evidence among multiple opinions. Reranking too — choosing the most relevant among multiple chunks. Start with a fast list (retrieval), end with fine review (reranking). Two stages = maximum accuracy."</div>`,

@@ -740,6 +740,41 @@ ON-CALL ROTATION:
   → PagerDuty / Opsgenie
   → follow-the-sun: regional teams</div>
 
+<div style="text-align:center;margin:1.3rem 0">
+<svg viewBox="0 0 580 250" width="100%" style="max-width:580px;display:block;background:#070a0f;border:1px solid rgba(34,211,238,.18);border-radius:14px" font-family="Noto Sans Bengali,sans-serif" role="img" aria-label="Incident response lifecycle">
+<defs><marker id="m9a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#3dd6c4"/></marker></defs>
+<text x="290" y="28" text-anchor="middle" fill="#67e8f9" font-size="14" font-weight="700">Incident Lifecycle — সংকট থেকে শিক্ষা</text>
+<g font-size="11" fill="#e8e6f0">
+ <rect x="20" y="58" width="90" height="40" rx="8" fill="rgba(255,107,53,.15)" stroke="#ff6b35" stroke-width="1.8"/><text x="65" y="83" text-anchor="middle" fill="#ff6b35">Alert</text>
+ <rect x="130" y="58" width="90" height="40" rx="8" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="175" y="83" text-anchor="middle">Detect</text>
+ <rect x="240" y="58" width="90" height="40" rx="8" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="285" y="83" text-anchor="middle">Contain</text>
+ <rect x="350" y="58" width="90" height="40" rx="8" fill="#0f1822" stroke="#22d3ee" stroke-width="1.5"/><text x="395" y="83" text-anchor="middle">Investigate</text>
+ <rect x="460" y="58" width="100" height="40" rx="8" fill="rgba(82,196,26,.12)" stroke="#52c41a" stroke-width="1.5"/><text x="510" y="83" text-anchor="middle" fill="#52c41a">Fix &amp; Learn</text>
+</g>
+<g stroke="#3dd6c4" stroke-width="1.5" fill="none">
+ <line x1="110" y1="78" x2="124" y2="78" marker-end="url(#m9a)"/>
+ <line x1="220" y1="78" x2="234" y2="78" marker-end="url(#m9a)"/>
+ <line x1="330" y1="78" x2="344" y2="78" marker-end="url(#m9a)"/>
+ <line x1="440" y1="78" x2="454" y2="78" marker-end="url(#m9a)"/>
+</g>
+<text x="20" y="132" fill="#67e8f9" font-size="12" font-weight="700">Severity</text>
+<g font-size="10">
+ <rect x="100" y="116" width="80" height="28" rx="6" fill="rgba(255,107,53,.15)" stroke="#ff6b35" stroke-width="1.5"/><text x="140" y="135" text-anchor="middle" fill="#ff6b35">S1 সর্বোচ্চ</text>
+ <rect x="195" y="116" width="80" height="28" rx="6" fill="rgba(245,158,11,.12)" stroke="#f59e0b" stroke-width="1.5"/><text x="235" y="135" text-anchor="middle" fill="#f59e0b">S2 গুরুতর</text>
+ <rect x="290" y="116" width="80" height="28" rx="6" fill="rgba(34,211,238,.10)" stroke="#22d3ee" stroke-width="1.5"/><text x="330" y="135" text-anchor="middle" fill="#e8e6f0">S3 সাধারণ</text>
+</g>
+<text x="20" y="180" fill="#67e8f9" font-size="12" font-weight="700">Response</text>
+<g font-size="10">
+ <rect x="100" y="164" width="100" height="28" rx="6" fill="#0f1822" stroke="#3dd6c4" stroke-width="1.5"/><text x="150" y="183" text-anchor="middle" fill="#e8e6f0">Kill Switch</text>
+ <rect x="215" y="164" width="100" height="28" rx="6" fill="#0f1822" stroke="#3dd6c4" stroke-width="1.5"/><text x="265" y="183" text-anchor="middle" fill="#e8e6f0">Rollback</text>
+ <rect x="330" y="164" width="100" height="28" rx="6" fill="#0f1822" stroke="#3dd6c4" stroke-width="1.5"/><text x="380" y="183" text-anchor="middle" fill="#e8e6f0">PagerDuty</text>
+ <rect x="445" y="164" width="115" height="28" rx="6" fill="#0f1822" stroke="#3dd6c4" stroke-width="1.5"/><text x="502" y="183" text-anchor="middle" fill="#e8e6f0">Post-Mortem</text>
+</g>
+<text x="290" y="228" text-anchor="middle" fill="#9290a8" font-size="11" font-style="italic">নাযিম — সংকটে দৃঢ়তা, প্রস্তুতি, সমাধান</text>
+</svg>
+<div style="font-size:.78rem;color:#5e5c74;margin-top:.4rem;letter-spacing:.04em">চিত্র ৯ · ইনসিডেন্ট রেসপন্স — শনাক্ত থেকে শিক্ষা পর্যন্ত</div>
+</div>
+
 <div class="dialogue">নাযিম — crisis management, organization during emergency। কুরআনে আল্লাহ বলেন — "তোমরা বিপদে দৃঢ় থাকো।" (৩:১৪৬)। বিপদে দৃঢ়তা = নাযিম। Incident response-ও তেমনি — সংকটে শান্ত, প্রস্তুত, দৃঢ়। যে দৃঢ়, সে সমাধান করে। যে আতঙ্কিত, সে আরও বিপদ বানায়।</div>
 <div class="dialogue en">"Nazim — crisis management, organization during emergency. Allah says — 'Be firm in adversity.' (3:146). Firmness in adversity = nazim. Incident response too — calm, prepared, firm in crisis. One who is firm, solves. One who panics, makes things worse."</div>`,
   senior:{
@@ -894,6 +929,26 @@ FROM PROTOTYPE TO PRODUCTION:
   → ৭ weeks: prototype → production-grade</div>
 
 <div class="verse">"যিনি সৃষ্টি করেছেন এবং নিয়মে বেঁধেছেন। যিনি পরিমাপ করেছেন এবং পথ দেখিয়েছেন।"<br>— কুরআন ৮৭:২-৩<br><br>LLMOps হলো সেই নিয়মে বাঁধা — LLM-কে production-এ নিয়মে বাঁধা। পরিমাপ (monitoring), পথ দেখানো (CI/CD), সঠিক পরিমাণ (cost optimization)। প্রোটোটাইপ থেকে প্রোডাকশন — এটাই নিয়ন্ত্রণ কেন্দ্রের শিল্প।</div>
+
+<div style="text-align:center;margin:1.3rem 0">
+<svg viewBox="0 0 580 250" width="100%" style="max-width:580px;display:block;background:#070a0f;border:1px solid rgba(34,211,238,.18);border-radius:14px" font-family="Noto Sans Bengali,sans-serif" role="img" aria-label="Complete LLMOps architecture">
+<text x="290" y="28" text-anchor="middle" fill="#67e8f9" font-size="14" font-weight="700">LLMOps সম্পূর্ণ স্থাপত্য — দশটি স্তর</text>
+<g font-size="10">
+ <rect x="20" y="48" width="170" height="32" rx="7" fill="rgba(34,211,238,.10)" stroke="#22d3ee" stroke-width="1.5"/><text x="105" y="69" text-anchor="middle" fill="#e8e6f0">১ Serving · vLLM</text>
+ <rect x="200" y="48" width="170" height="32" rx="7" fill="rgba(91,158,255,.10)" stroke="#5b9eff" stroke-width="1.5"/><text x="285" y="69" text-anchor="middle" fill="#e8e6f0">২ Deploy · Kubernetes</text>
+ <rect x="380" y="48" width="180" height="32" rx="7" fill="rgba(82,196,26,.10)" stroke="#52c41a" stroke-width="1.5"/><text x="470" y="69" text-anchor="middle" fill="#e8e6f0">৩ CI/CD · Actions</text>
+ <rect x="20" y="88" width="170" height="32" rx="7" fill="rgba(34,211,238,.10)" stroke="#22d3ee" stroke-width="1.5"/><text x="105" y="109" text-anchor="middle" fill="#e8e6f0">৪ Monitor · Langfuse</text>
+ <rect x="200" y="88" width="170" height="32" rx="7" fill="rgba(34,211,238,.10)" stroke="#22d3ee" stroke-width="1.5"/><text x="285" y="109" text-anchor="middle" fill="#e8e6f0">৫ Cost · Cache + Route</text>
+ <rect x="380" y="88" width="180" height="32" rx="7" fill="rgba(34,211,238,.10)" stroke="#22d3ee" stroke-width="1.5"/><text x="470" y="109" text-anchor="middle" fill="#e8e6f0">৬ Latency · Stream</text>
+ <rect x="20" y="128" width="170" height="32" rx="7" fill="rgba(91,158,255,.10)" stroke="#5b9eff" stroke-width="1.5"/><text x="105" y="149" text-anchor="middle" fill="#e8e6f0">৭ Version · MLflow</text>
+ <rect x="200" y="128" width="170" height="32" rx="7" fill="rgba(34,211,238,.10)" stroke="#22d3ee" stroke-width="1.5"/><text x="285" y="149" text-anchor="middle" fill="#e8e6f0">৮ A/B · LangSmith</text>
+ <rect x="380" y="128" width="180" height="32" rx="7" fill="rgba(255,107,53,.10)" stroke="#ff6b35" stroke-width="1.5"/><text x="470" y="149" text-anchor="middle" fill="#e8e6f0">৯ Incident · Runbook</text>
+</g>
+<rect x="20" y="172" width="540" height="36" rx="8" fill="rgba(103,232,249,.12)" stroke="#67e8f9" stroke-width="2"/><text x="290" y="195" text-anchor="middle" fill="#67e8f9" font-size="13" font-weight="700">১০ Synthesis — সম্পূর্ণ নগরী</text>
+<text x="290" y="232" text-anchor="middle" fill="#9290a8" font-size="11" font-style="italic">মাদানিয়াহ — সুসংগঠিত নগরী · প্রোটোটাইপ থেকে প্রোডাকশন</text>
+</svg>
+<div style="font-size:.78rem;color:#5e5c74;margin-top:.4rem;letter-spacing:.04em">চিত্র ১০ · সম্পূর্ণ LLMOps স্থাপত্য — দশটি স্তরের সমন্বয়</div>
+</div>
 
 <div class="secret-box"><div class="label">দশম কেন্দ্র — সমন্বয়</div><div class="text">🏙️ LLMOps = Serving + Deployment + CI/CD + Monitoring + Cost + Latency + Versioning + A/B + Incidents।<br><small>প্রোটোটাইপ থেকে প্রোডাকশন। একটাও বাদ দিলে শহর অসম্পূর্ণ।</small></div></div>`
 });
