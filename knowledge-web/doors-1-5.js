@@ -173,6 +173,39 @@ doors.push({
 <div class="callout tip"><span class="co-icon">🎯</span><div><strong>একাধিক মডেল একসাথে:</strong> সমস্যায় এক মডেল নয়, ৩-৫টা একসাথে প্রয়োগ করো। "PhD করব?" → opportunity cost + compound interest + sunk cost (MSIS-এ বিনিয়োগ করেছি বলে নয়!) + growth mindset + regression to mean + social proof + entropy। কোনো একটা মডেল উত্তর দেয় না — সিদ্ধান্ত তাদের ছেদবিন্দু থেকে আসে।</div></div>
 <div class="callout info"><span class="co-icon">🔨</span><div><strong>Latticework গড়ার উপায়:</strong> ① প্রতিটা বই থেকে ৩-৫ core model বের করো ("নীতি → উৎস → প্রয়োগ")। ② সাপ্তাহিক — ভিন্ন বইয়ের মডেলের মধ্যে link খোঁজো (growth mindset + fine-tuning = দুটোই feedback-এ weight update)। ③ দৈনিক — সিদ্ধান্তে "কোন ৩+ মডেল খাটে?" ④ মাসিক — কোন মডেল/সংযোগ সবচেয়ে কাজের, prune করো।</div></div>
 
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mental models latticework network">
+  <defs>
+    <radialGradient id="d3node" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#22d3ee"/>
+    </radialGradient>
+    <radialGradient id="d3core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ade80"/><stop offset="100%" stop-color="#22c55e"/>
+    </radialGradient>
+  </defs>
+  <line x1="120" y1="60" x2="220" y2="120" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="220" y1="120" x2="120" y2="190" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="120" y1="60" x2="120" y2="190" stroke="#3dd6c4" stroke-width="1.5" opacity="0.4"/>
+  <line x1="220" y1="120" x2="350" y2="120" stroke="#fbbf24" stroke-width="2" opacity="0.7"/>
+  <line x1="350" y1="120" x2="450" y2="60" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="350" y1="120" x2="450" y2="190" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="450" y1="60" x2="450" y2="190" stroke="#3dd6c4" stroke-width="1.5" opacity="0.4"/>
+  <line x1="120" y1="60" x2="350" y2="120" stroke="#3dd6c4" stroke-width="1" opacity="0.3" stroke-dasharray="3 4"/>
+  <line x1="120" y1="190" x2="350" y2="120" stroke="#3dd6c4" stroke-width="1" opacity="0.3" stroke-dasharray="3 4"/>
+  <circle cx="120" cy="60" r="20" fill="url(#d3node)"/>
+  <circle cx="220" cy="120" r="18" fill="url(#d3node)"/>
+  <circle cx="120" cy="190" r="18" fill="url(#d3node)"/>
+  <circle cx="350" cy="120" r="28" fill="url(#d3core)"/>
+  <circle cx="450" cy="60" r="20" fill="url(#d3node)"/>
+  <circle cx="450" cy="190" r="18" fill="url(#d3node)"/>
+  <text x="120" y="65" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">Physics</text>
+  <text x="220" y="125" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">Bio</text>
+  <text x="120" y="195" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">Psych</text>
+  <text x="350" y="126" text-anchor="middle" font-size="10" fill="#0a1a1f" font-weight="700">জাল</text>
+  <text x="450" y="65" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">Econ</text>
+  <text x="450" y="195" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">Math</text>
+  <text x="290" y="240" text-anchor="middle" font-size="11" fill="#fbbf24" font-weight="700">প্রতিটা মডেল একটা সুতো · একসাথে বুনলে জাল</text>
+</svg></div><div class="svg-caption">মানসিক মডেলের জাল — Munger-এর latticework: বহু ক্ষেত্রের সুতো একসাথে বোনা</div>
+
 <div class="dialogue">হিকমাহ — wisdom, applied knowledge। কুরআনে আল্লাহ বলেন — "যাকে হিকমাহ দেওয়া হয়েছে, তাকে প্রচুর কল্যাণ দেওয়া হয়েছে।" (২:২৬৯)। হিকমাহ শুধু জ্ঞান নয় — প্রয়োগকৃত জ্ঞান। Munger-এর latticework-ও হিকমাহ — জ্ঞান সংগ্রহ নয়, সংযুক্ত জ্ঞান প্রয়োগ। যে একটা মডেল জানে, সে জানে। যে শতটা সংযুক্ত মডেল প্রয়োগ করে, সে হিকমাহ অর্জন করে। হিকমাহ = সংযুক্ত জ্ঞানের প্রয়োগ।</div>
 <div class="dialogue en">"Hikmah — wisdom, applied knowledge. Allah says — 'Whoever is given hikmah has been given much good.' (2:269). Hikmah is not just knowledge — it's APPLIED knowledge. Munger's latticework too is hikmah — not collecting knowledge, but applying connected knowledge. One who knows one model, knows. One who applies 100 connected models, attains hikmah. Hikmah = the application of connected knowledge."</div>`,
   senior:{
@@ -212,6 +245,35 @@ doors.push({
 <tr><td class="hl">Data</td><td>raw facts</td></tr></table>
 <div class="callout tip"><span class="co-icon">🎯</span><div><strong>Practical gap-finding:</strong> ① <strong>Book pair matrix</strong> — ৫ বই নাও, ১০ জোড়ার প্রতিটায় এক বাক্যে সংযোগ; যেখানে পারো না = সবচেয়ে বড় gap। ② <strong>Real-world test</strong> — একটা current সমস্যায় কোন বই ও মডেল খাটে, কীভাবে combine হয়? ③ <strong>"What's missing" scan</strong> — কোন topic (statistics? finance? negotiation?) cover হয়নি? বেশিরভাগ মানুষ Data→Information-এ থামে; আসল gap Information→Knowledge (সংযোগ)।</div></div>
 
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Knowledge gap finding diagram">
+  <defs>
+    <radialGradient id="d4node" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#22d3ee"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="80" r="20" fill="url(#d4node)"/>
+  <circle cx="100" cy="180" r="20" fill="url(#d4node)"/>
+  <circle cx="260" cy="125" r="22" fill="url(#d4node)"/>
+  <circle cx="480" cy="80" r="20" fill="url(#d4node)"/>
+  <circle cx="480" cy="180" r="20" fill="url(#d4node)"/>
+  <line x1="100" y1="80" x2="260" y2="125" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="100" y1="180" x2="260" y2="125" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="480" y1="80" x2="260" y2="125" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="480" y1="180" x2="260" y2="125" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="100" y1="80" x2="100" y2="180" stroke="#3dd6c4" stroke-width="1" opacity="0.3" stroke-dasharray="3 4"/>
+  <line x1="480" y1="80" x2="480" y2="180" stroke="#3dd6c4" stroke-width="1" opacity="0.3" stroke-dasharray="3 4"/>
+  <line x1="100" y1="80" x2="480" y2="80" stroke="#fbbf24" stroke-width="2" opacity="0.8" stroke-dasharray="6 4"/>
+  <line x1="100" y1="180" x2="480" y2="180" stroke="#fbbf24" stroke-width="2" opacity="0.8" stroke-dasharray="6 4"/>
+  <text x="100" y="85" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">RAG</text>
+  <text x="100" y="185" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">Sys</text>
+  <text x="260" y="130" text-anchor="middle" font-size="10" fill="#0a1a1f" font-weight="700">তুমি</text>
+  <text x="480" y="85" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">Psy</text>
+  <text x="480" y="185" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">Prompt</text>
+  <text x="290" y="50" text-anchor="middle" font-size="12" fill="#fbbf24" font-weight="700">⚠ ফাঁকা = gap</text>
+  <text x="290" y="225" text-anchor="middle" font-size="9" fill="#fcd34d">ভাঙা সুতো = missing connection</text>
+  <text x="290" y="240" text-anchor="middle" font-size="11" fill="#fbbf24" font-weight="700">দূরবর্তী বইয়ের মধ্যে missing সংযোগ = gap</text>
+</svg></div><div class="svg-caption">শূন্যস্থান সন্ধান — কোন সংযোগ missing? ভাঙা সুতোই তোমার সবচেয়ে বড় gap</div>
+
 <div class="dialogue">তালাশ — search, seeking। কুরআনে আল্লাহ বলেন — "যারা সৎপথে পরিচালিত হয়, আমি তাদের আরও বৃদ্ধি দেই।" তালাশ শুধু নতুন জ্ঞান খোঁজা নয় — নিজের জ্ঞানের ফাঁক খোঁজা। যে তালাশ করে, সে gap খুঁজে পায়। যে gap খুঁজে পায়, সে পূরণ করে। যে পূরণ করে, সে বাড়ে। সবচেয়ে বিপজ্জনক অবস্থা — ভাবা 'আমি সব জানি'। কারণ তখন তালাশ বন্ধ হয়। gap অদৃশ্য হয়। জ্ঞান স্থবির হয়।</div>
 <div class="dialogue en">"Talash — search, seeking. Allah says — 'Those who are guided, We increase them in guidance.' Talash isn't just seeking new knowledge — it's seeking gaps in your existing knowledge. One who seeks, finds gaps. One who finds gaps, fills them. One who fills, grows. The most dangerous state — thinking 'I know everything.' Because then seeking stops. Gaps become invisible. Knowledge stagnates."</div>`,
   senior:{
@@ -246,6 +308,34 @@ doors.push({
 <div class="callout tip"><span class="co-icon">🧘</span><div><strong>Default Mode Network (Raichle, 2001):</strong> মস্তিষ্কের "resting state" — daydream, গোসল, হাঁটা, ঘুমানোর সময় সক্রিয়; এই সময়েই দূরবর্তী স্মৃতি ও অস্বাভাবিক association জোড়া লাগে। focused thinking বন্ধ করলেই DMN দায়িত্ব নেয় ও সচেতনভাবে যা পারোনি তা <em>insight</em> হিসেবে দেয়। এজন্যই shower/walk-এ idea আসে।</div></div>
 <div class="callout info"><span class="co-icon">🔁</span><div><strong>Insight-এর ৪ ধাপ (Wallas, 1926 — brain imaging-এ নিশ্চিত):</strong> Preparation (গভীরভাবে চিন্তা, raw material লোড) → Incubation (ছেড়ে দাও, অসম্পর্কিত কিছু করো) → Illumination (হঠাৎ aha, সাথে সাথে লিখে রাখো) → Verification (insight নিশ্চিত মনে হয় কিন্তু ভুল হতে পারে — বাস্তবে test করো)।</div></div>
 <div class="callout tip"><span class="co-icon">🕸️</span><div><strong>Insight ও তোমার ২৭ বই:</strong> insight দূরবর্তী ধারণা জোড়ে — তোমার ২৭টা বই-ই সেই "দূরবর্তী" ডোমেইন। বিশ্রামে DMN এদের প্রক্রিয়া করে সচেতন-মন-এর মিস-করা সংযোগ খুঁজে দেয়। যেমন: "RAG hallucination (Book 10) ~ human false memory (Book 24) — দুটোই retrieval-gap plausible-কিন্তু-ভুল তথ্যে ভরাট করে; তাই RAG eval (Book 16)-এ false memory-র মতো test করা উচিত।" এই সংযোগ linear thinking-এ পাওয়া যেত না — এটাই Knowledge Web।</div></div>
+
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Insight aha moment diagram">
+  <defs>
+    <radialGradient id="d5left" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#22d3ee"/>
+    </radialGradient>
+    <radialGradient id="d5right" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ade80"/><stop offset="100%" stop-color="#22c55e"/>
+    </radialGradient>
+    <radialGradient id="d5flash" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fcd34d"/><stop offset="100%" stop-color="#fbbf24"/>
+    </radialGradient>
+  </defs>
+  <circle cx="90" cy="125" r="28" fill="url(#d5left)"/>
+  <circle cx="490" cy="125" r="28" fill="url(#d5right)"/>
+  <text x="90" y="130" text-anchor="middle" font-size="10" fill="#0a1a1f" font-weight="700">RAG</text>
+  <text x="490" y="130" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">Psy</text>
+  <path d="M 118 125 Q 200 60 280 105" fill="none" stroke="#3dd6c4" stroke-width="1.5" opacity="0.4" stroke-dasharray="4 4"/>
+  <path d="M 462 125 Q 380 60 300 105" fill="none" stroke="#3dd6c4" stroke-width="1.5" opacity="0.4" stroke-dasharray="4 4"/>
+  <path d="M 118 125 Q 200 190 280 145" fill="none" stroke="#3dd6c4" stroke-width="1.5" opacity="0.4" stroke-dasharray="4 4"/>
+  <path d="M 462 125 Q 380 190 300 145" fill="none" stroke="#3dd6c4" stroke-width="1.5" opacity="0.4" stroke-dasharray="4 4"/>
+  <polygon points="280,80 295,115 332,115 302,138 314,174 280,152 246,174 258,138 228,115 265,115" fill="url(#d5flash)" opacity="0.9"/>
+  <text x="290" y="128" text-anchor="middle" font-size="14" fill="#0a1a1f" font-weight="900">!</text>
+  <text x="90" y="180" text-anchor="middle" font-size="8" fill="#9290a8">দূরবর্তী ধারণা</text>
+  <text x="490" y="180" text-anchor="middle" font-size="8" fill="#9290a8">দূরবর্তী ধারণা</text>
+  <text x="290" y="210" text-anchor="middle" font-size="9" fill="#fcd34d">gamma wave burst ~৪০Hz · right temporal lobe</text>
+  <text x="290" y="240" text-anchor="middle" font-size="11" fill="#fbbf24" font-weight="700">দুটো দূরবর্তী ধারণা জোড়া লাগলে = insight</text>
+</svg></div><div class="svg-caption">অন্তর্দৃষ্টির কারখানা — দূরবর্তী ধারণার হঠাৎ সংযোগ, aha! মুহূর্ত</div>
 
 <div class="dialogue">ইলহাম — divine inspiration, sudden knowledge। ইসলামী ঐতিহ্যে ইলহাম হলো এমন জ্ঞান যা হঠাৎ আসে — চেষ্টা ছাড়া। নবীগণ ইলহাম পেতেন। কিন্তু সাধারণ মানুষও insight পায় — যখন তারা গভীরভাবে চিন্তা করে, তারপর ছেড়ে দেয়। মস্তিষ্ক বিশ্রামে সংযুক্ত করে। ইলহাম। Kounios ও Beeman দেখালেন — এটা মস্তিষ্কের প্রক্রিয়া। default mode network। gamma waves। ইলহাম এলোমেলো নয় — এটা প্রস্তুতির ফল। যে গভীরভাবে চিন্তা করে, তারপর ছাড়ে — তার মস্তিষ্ক সংযুক্ত করে। ইলহাম।</div>
 <div class="dialogue en">"Ilham — divine inspiration, sudden knowledge. In Islamic tradition, ilham is knowledge that arrives suddenly — without effort. Prophets received ilham. But ordinary people too get insight — when they think deeply, then let go. The brain connects during rest. Ilham. Kounios & Beeman showed — it's a brain process. Default mode network. Gamma waves. Ilham isn't random — it's the fruit of preparation. One who thinks deeply, then releases — their brain connects. Ilham."</div>`,

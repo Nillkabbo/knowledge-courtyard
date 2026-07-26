@@ -39,7 +39,79 @@ doors.push({
 <div class="callout info"><span class="co-icon">🧠</span><div><strong>Feynman test:</strong> non-technical কাউকে সরলভাবে বোঝাতে না পারলে তুমি নিজেই পুরোপুরি বোঝোনি। শেষ প্রজেক্টটা দাদিকে বোঝাও — বুঝলে তুমি বুঝেছ; confused হলে তুমি jargon-এর পেছনে লুকিয়ে আছ।</div></div>
 
 <div class="dialogue">বায়ান — clear speech, expression, manifestation। কুরআনে আল্লাহ বলেন — "তিনি মানুষকে শিখিয়েছেন বায়ান — স্পষ্ট বাক্য।" (৫৫:৩-৪)। বায়ান হলো আল্লাহর নিয়ামত — স্পষ্টভাবে প্রকাশ করার ক্ষমতা। যোগাযোগ-ও বায়ান — জটিল ধারণা স্পষ্টভাবে প্রকাশ। যে বায়ান করে, সে আলো — অন্ধকার দূর করে। যে বায়ান করতে পারে না, সে জ্ঞান ধরে রাখে অন্ধকারে। জ্ঞান + বায়ান = নূর। জ্ঞান - বায়ান = বন্দি জ্ঞান।</div>
-<div class="dialogue en">"Bayan — clear speech, expression, manifestation. Allah says — 'He taught man bayan — clear speech.' (55:3-4). Bayan is Allah's gift — the ability to express clearly. Communication too is bayan — expressing complex ideas clearly. One who has bayan, is light — removes darkness. One who can't express, holds knowledge in darkness. Knowledge + bayan = light. Knowledge - bayan = imprisoned knowledge."</div>`,
+<div class="dialogue en">"Bayan — clear speech, expression, manifestation. Allah says — 'He taught man bayan — clear speech.' (55:3-4). Bayan is Allah's gift — the ability to express clearly. Communication too is bayan — expressing complex ideas clearly. One who has bayan, is light — removes darkness. One who can't express, holds knowledge in darkness. Knowledge + bayan = light. Knowledge - bayan = imprisoned knowledge."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <linearGradient id="d6-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1f17"/><stop offset="1" stop-color="#050f0a"/></linearGradient>
+  </defs>
+  <rect x="0" y="0" width="560" height="340" rx="12" fill="url(#d6-bg)" stroke="rgba(34,197,94,.15)" stroke-width="1"/>
+  <text x="280" y="28" text-anchor="middle" fill="#86efac" font-size="13" font-weight="900" font-family="sans-serif">সিস্টেম চিন্তা — Feedback Loops</text>
+  <circle cx="150" cy="180" r="95" fill="none" stroke="#22c55e" stroke-width="2" opacity=".6"/>
+  <rect x="60" y="95" width="90" height="34" rx="6" fill="rgba(34,197,94,.12)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="105" y="116" text-anchor="middle" fill="#86efac" font-size="9" font-weight="700">ভালো কোড</text>
+  <rect x="155" y="140" width="90" height="34" rx="6" fill="rgba(34,197,94,.12)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="200" y="161" text-anchor="middle" fill="#86efac" font-size="9" font-weight="700">দ্রুত feature</text>
+  <rect x="60" y="185" width="90" height="34" rx="6" fill="rgba(34,197,94,.12)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="105" y="206" text-anchor="middle" fill="#86efac" font-size="9" font-weight="700">খুশি user</text>
+  <rect x="155" y="230" width="90" height="34" rx="6" fill="rgba(34,197,94,.12)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="200" y="251" text-anchor="middle" fill="#86efac" font-size="9" font-weight="700">বেশি revenue</text>
+  <path d="M 150 129 L 155 140" stroke="#22c55e" stroke-width="1.5" marker-end="url(#d6-a1)"/>
+  <path d="M 200 174 L 150 185" stroke="#22c55e" stroke-width="1.5" marker-end="url(#d6-a1)"/>
+  <path d="M 150 219 L 155 230" stroke="#22c55e" stroke-width="1.5" marker-end="url(#d6-a1)"/>
+  <path d="M 200 264 Q 105 280 90 112" stroke="#22c55e" stroke-width="1.5" marker-end="url(#d6-a1)" fill="none"/>
+  <text x="105" y="305" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="700">Reinforcing (+) বৃদ্ধি</text>
+  <defs><marker id="d6-a1" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#22c55e"/></marker></defs>
+  <circle cx="410" cy="180" r="95" fill="none" stroke="#ff6b35" stroke-width="2" opacity=".6"/>
+  <rect x="355" y="95" width="90" height="34" rx="6" fill="rgba(255,107,53,.12)" stroke="#ff6b35" stroke-width="1.5"/>
+  <text x="400" y="116" text-anchor="middle" fill="#fdba74" font-size="9" font-weight="700">bug বাড়ে</text>
+  <rect x="445" y="140" width="90" height="34" rx="6" fill="rgba(255,107,53,.12)" stroke="#ff6b35" stroke-width="1.5"/>
+  <text x="490" y="161" text-anchor="middle" fill="#fdba74" font-size="9" font-weight="700">velocity কমে</text>
+  <rect x="355" y="185" width="90" height="34" rx="6" fill="rgba(255,107,53,.12)" stroke="#ff6b35" stroke-width="1.5"/>
+  <text x="400" y="206" text-anchor="middle" fill="#fdba74" font-size="9" font-weight="700">test skip</text>
+  <rect x="445" y="230" width="90" height="34" rx="6" fill="rgba(255,107,53,.12)" stroke="#ff6b35" stroke-width="1.5"/>
+  <text x="490" y="251" text-anchor="middle" fill="#fdba74" font-size="9" font-weight="700">আরও bug</text>
+  <path d="M 445 129 L 445 140" stroke="#ff6b35" stroke-width="1.5" marker-end="url(#d6-a2)"/>
+  <path d="M 490 174 L 445 185" stroke="#ff6b35" stroke-width="1.5" marker-end="url(#d6-a2)"/>
+  <path d="M 445 219 L 445 230" stroke="#ff6b35" stroke-width="1.5" marker-end="url(#d6-a2)"/>
+  <path d="M 490 264 Q 400 280 370 112" stroke="#ff6b35" stroke-width="1.5" marker-end="url(#d6-a2)" fill="none"/>
+  <text x="410" y="305" text-anchor="middle" fill="#ff6b35" font-size="10" font-weight="700">Balancing (-) death spiral</text>
+  <defs><marker id="d6-a2" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#ff6b35"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: সিস্টেম চিন্তা — reinforcing loop (বৃদ্ধি, সবুজ) ও balancing/death-spiral loop (ক্ষয়, লাল)। প্রতিটা সিদ্ধান্ত কোন লুপে ঢেউ তৈরি করে? কদর — সংযোগ দেখা।</div>
+
+<div class="code-block">— সিস্টেম ম্যাপিং টেমপ্লেট (System Mapping) —
+
+  যেকোনো সিদ্ধান্তের আগে কাগজে আঁকো:
+
+  ── নোড (Components) ──
+    [কোড] --> [feature] --> [user behavior]
+       |                                    |
+       +<------- [revenue] <-----[retention]+
+
+  ── প্রশ্ন ──
+  ১. প্রথম প্রভাব কী? (immediate)
+  ২. তারপর কী? (second-order)
+  ৩. তারপর কী? (third-order)
+  ৪. বাধা (bottleneck) কোথায়?
+  ৫. কোন লুপ তৈরি করছি?
+     reinforcing (+) নাকি death-spiral (-)?
+
+  ── উদাহরণ: Redis যোগ ──
+  Redis → API দ্রুত
+    → user বেশি করে
+      → DB load বাড়ে
+        → consistency issue
+          → race condition
+            → velocity কমে
+              → প্রতিযোগী এগিয়ে যায়
+
+  নিয়ম: "And THEN what?" — সিনিয়রের
+         ডিফল্ট প্রশ্ন। প্রতিটা সমাধান
+         নতুন সমস্যার বীজ বহন করে।
+</div>`,
   senior:{
     title:"Communication Upgrade — This Sprint",
     body:`<p><strong>১.</strong> Write a design doc for your next feature BEFORE coding. ১ page max। Lead with conclusion, then alternatives, then decision।</p><p><strong>২.</strong> Practice the Feynman Test: explain your current project to a non-tech friend in ২ minutes। If they're confused, simplify more।</p><p><strong>৩.</strong> In code reviews: lead with the solution, not the journey। First sentence = the answer।</p><p><strong>৪.</strong> Quantify: replace vague words with numbers। Not faster — ৫x faster। Not many users — ২,৪০০ users।</p><p><strong>৫.</strong> Write more, meet less। A ২-hour doc replaces a ১০-person meeting।</p>`
@@ -89,7 +161,78 @@ doors.push({
 <div class="callout warn"><span class="co-icon">🚫</span><div><strong>Anti-patterns:</strong> building blind ("PM বলল, বানালাম") · feature factory (sprint-এ ১০ feature, ব্যবহার হয় না) · reinventing · perfectionism ("আরও ৬ মাস") · vanity metrics ("১০,০০০ signup!" নয় — "২,০০০ দৈনিক ব্যবহার করে, ৫০০ pay করে")।</div></div>
 
 <div class="dialogue">খলক — creation, making, bringing into existence। কুরআনে আল্লাহ বলেন — "তিনি আসমান ও জমিন সৃষ্টি করেছেন উদ্দেশ্য সহ।" (২১:১৬)। উদ্দেশ্য সহ সৃষ্টি = খলক। পণ্য নির্মাণ-ও খলক — উদ্দেশ্য সহ নির্মাণ। যে উদ্দেশ্য ছাড়া বানায়, সে শিল্পী — সুন্দর, কিন্তু অকেজো। যে উদ্দেশ্য সহ বানায়, সে নির্মাতা — সুন্দর ও কার্যকর। খলক — উদ্দেশ্য সহ সৃষ্টির গুণ।</div>
-<div class="dialogue en">"Khalq — creation, making, bringing into existence. Allah says — 'We created the heavens and earth with purpose.' (21:16). Creation with purpose = khalq. Product building too — building with purpose. One who builds without purpose, is an artist — beautiful, but useless. One who builds with purpose, is a creator — beautiful and effective. Khalq — the virtue of purposeful creation."</div>`,
+<div class="dialogue en">"Khalq — creation, making, bringing into existence. Allah says — 'We created the heavens and earth with purpose.' (21:16). Creation with purpose = khalq. Product building too — building with purpose. One who builds without purpose, is an artist — beautiful, but useless. One who builds with purpose, is a creator — beautiful and effective. Khalq — the virtue of purposeful creation."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <linearGradient id="d7-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1f17"/><stop offset="1" stop-color="#050f0a"/></linearGradient>
+  </defs>
+  <rect x="0" y="0" width="560" height="340" rx="12" fill="url(#d7-bg)" stroke="rgba(34,197,94,.15)" stroke-width="1"/>
+  <text x="280" y="28" text-anchor="middle" fill="#86efac" font-size="13" font-weight="900" font-family="sans-serif">নৈতিক সিদ্ধান্ত বৃক্ষ — Engineering Ethics</text>
+  <rect x="210" y="50" width="140" height="36" rx="8" fill="rgba(34,197,94,.15)" stroke="#22c55e" stroke-width="2"/>
+  <text x="280" y="73" text-anchor="middle" fill="#86efac" font-size="11" font-weight="900">প্রযুক্তিগত সিদ্ধান্ত</text>
+  <line x1="280" y1="86" x2="110" y2="120" stroke="#5e5c74" stroke-width="1.5"/>
+  <line x1="280" y1="86" x2="280" y2="120" stroke="#5e5c74" stroke-width="1.5"/>
+  <line x1="280" y1="86" x2="450" y2="120" stroke="#5e5c74" stroke-width="1.5"/>
+  <rect x="35" y="120" width="150" height="36" rx="8" fill="rgba(96,165,250,.1)" stroke="#5b9eff" stroke-width="1.5"/>
+  <text x="110" y="143" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="700">দায়বদ্ধতা</text>
+  <text x="110" y="172" text-anchor="middle" fill="#9290a8" font-size="8">ভুল হলে কে দায়ী?</text>
+  <text x="110" y="184" text-anchor="middle" fill="#9290a8" font-size="8">AI কি দায়ী হতে পারে?</text>
+  <text x="110" y="196" text-anchor="middle" fill="#9290a8" font-size="8">audit trail আছে?</text>
+  <rect x="205" y="120" width="150" height="36" rx="8" fill="rgba(251,191,36,.1)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="280" y="143" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">স্বচ্ছতা</text>
+  <text x="280" y="172" text-anchor="middle" fill="#9290a8" font-size="8">user কি জানে কী হচ্ছে?</text>
+  <text x="280" y="184" text-anchor="middle" fill="#9290a8" font-size="8">data কোথায় যায়?</text>
+  <text x="280" y="196" text-anchor="middle" fill="#9290a8" font-size="8">black box নাকি explainable?</text>
+  <rect x="375" y="120" width="150" height="36" rx="8" fill="rgba(248,113,113,.1)" stroke="#f87171" stroke-width="1.5"/>
+  <text x="450" y="143" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">ক্ষতি প্রতিরোধ</text>
+  <text x="450" y="172" text-anchor="middle" fill="#9290a8" font-size="8">কার ক্ষতি হতে পারে?</text>
+  <text x="450" y="184" text-anchor="middle" fill="#9290a8" font-size="8">bias, discrimination?</text>
+  <text x="450" y="196" text-anchor="middle" fill="#9290a8" font-size="8">addiction, manipulation?</text>
+  <line x1="110" y1="210" x2="110" y2="245" stroke="#5e5c74" stroke-width="1"/>
+  <line x1="280" y1="210" x2="280" y2="245" stroke="#5e5c74" stroke-width="1"/>
+  <line x1="450" y1="210" x2="450" y2="245" stroke="#5e5c74" stroke-width="1"/>
+  <rect x="55" y="245" width="110" height="28" rx="6" fill="rgba(82,196,26,.1)" stroke="#52c41a" stroke-width="1"/>
+  <text x="110" y="263" text-anchor="middle" fill="#86efac" font-size="9" font-weight="700">ship করো</text>
+  <rect x="225" y="245" width="110" height="28" rx="6" fill="rgba(251,191,36,.1)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="280" y="263" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">শর্তসাপেক্ষ</text>
+  <rect x="395" y="245" width="110" height="28" rx="6" fill="rgba(248,113,113,.1)" stroke="#f87171" stroke-width="1"/>
+  <text x="450" y="263" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">থামো / পুনর্বিবেচনা</text>
+  <text x="280" y="310" text-anchor="middle" fill="#5e5c74" font-size="9" font-style="italic">খলক — উদ্দেশ্য সহ সৃষ্টি; উদ্দেশ্যে মানুষের কল্যাণ থাকবে</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: নৈতিক সিদ্ধান্ত — প্রতিটা প্রযুক্তিগত পছন্তে তিন শাখা: দায়বদ্ধতা, স্বচ্ছতা, ক্ষতি প্রতিরোধ। খলক — উদ্দেশ্য সহ সৃষ্টি।</div>
+
+<div class="code-block">— নৈতিক সিদ্ধান্ত চেকলিস্ট (Ethics Checklist) —
+
+  প্রতিটা ফিচার/সিদ্ধান্তের জন্য:
+
+  ── দায়বদ্ধতা (Accountability) ──
+  [ ] ভুল হলে কে দায়ী? ব্যক্তি নাম আছে?
+  [ ] সিদ্ধান্তের audit trail / log আছে?
+  [ ] AI সিদ্ধান্ত হলে — human override আছে?
+
+  ── স্বচ্ছতা (Transparency) ──
+  [ ] user কি জানে তার data কী হচ্ছে?
+  [ ] privacy policy সরল, লুকানো নয়?
+  [ ] algorithm explainable? black box নয়?
+
+  ── ক্ষতি প্রতিরোধ (Harm Prevention) ──
+  [ ] কার ক্ষতি হতে পারে? দুর্বল গোষ্ঠী?
+  [ ] bias / discrimination পরীক্ষা করেছ?
+  [ ] addiction / manipulation pattern আছে?
+  [ ] "না" বলার উপায় আছে? opt-out?
+
+  ── সিদ্ধান্ত ──
+  সব হ্যাঁ → ship করো।
+  কিছু না → শর্তসাপেক্ষ / পুনর্বিবেচনা।
+  ক্ষতির ঝুঁকি → থামো।
+
+  নিয়ম: AI execute করতে পারে, কিন্তু
+         দায়বদ্ধতা মানুষের। বিচার আর
+         accountability — এটাই irreplaceable।
+</div>`,
   senior:{
     title:"Product Sense — Engineer's Guide",
     body:`<p><strong>Before building ANY feature, ask ৫ questions:</strong> What problem? For whom? How solved today? Simplest version? Success metric?</p><p><strong>Talk to users:</strong> ১ per week. Understand their pain. Not surveys — conversations।</p><p><strong>Ship small, learn fast:</strong> ১-week MVP > ৩-month perfect product। Measure, learn, iterate।</p><p><strong>Track REAL metrics:</strong> Not signups — daily active users. Not features shipped — features used।</p><p><strong>Add delight:</strong> One delightful feature per release. Surprise users. Create loyalty, not just satisfaction।</p>`
@@ -131,7 +274,71 @@ doors.push({
 <div class="callout warn"><span class="co-icon">📉</span><div><strong>Innovator's Dilemma:</strong> ভালো কোম্পানি ব্যর্থ হয় কারণ তারা সবকিছু "ঠিক" করে — বর্তমান customer-দের শোনে (যারা incremental চায়), disruptive innovation উপেক্ষা করে (প্রথমে ছোট মনে হয়)। প্রশ্ন করো: "আমরা আগামীকালের customer-দের সেবা করছি, নাকি গতকালের? পরের curve কোনটা?"</div></div>
 
 <div class="dialogue">তাজদিদ — renewal, revival, restoration। ইসলামী ঐতিহ্যে তাজদিদ হলো পুরোনোকে নতুন রূপে পুনরুজ্জীবিত করা — সারমর্ম ধরে রেখে ফর্ম বদলানো। ইনোভেশন-ও তাজদিদ — পুরোনো ধারণাকে নতুন সংযোগে পুনরুজ্জীবিত করা। যে তাজদিদ করে, সে অতীত থেকে ভবিষ্যৎ বানায়। যে তাজদিদ করে না, সে অতীতে আটকে থাকে বা অতীত ছেড়ে শূন্যে পড়ে।</div>
-<div class="dialogue en">"Tajdid — renewal, revival, restoration. In Islamic tradition, tajdid is reviving the old in new form — keeping essence, changing form. Innovation too — reviving old ideas through new connections. One who does tajdid, builds future from past. One who doesn't, gets stuck in the past or falls into the void."</div>`,
+<div class="dialogue en">"Tajdid — renewal, revival, restoration. In Islamic tradition, tajdid is reviving the old in new form — keeping essence, changing form. Innovation too — reviving old ideas through new connections. One who does tajdid, builds future from past. One who doesn't, gets stuck in the past or falls into the void."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <linearGradient id="d8-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1f17"/><stop offset="1" stop-color="#050f0a"/></linearGradient>
+  </defs>
+  <rect x="0" y="0" width="560" height="340" rx="12" fill="url(#d8-bg)" stroke="rgba(34,197,94,.15)" stroke-width="1"/>
+  <text x="280" y="28" text-anchor="middle" fill="#86efac" font-size="13" font-weight="900" font-family="sans-serif">অভিযোজন — Build-Measure-Learn চক্র</text>
+  <circle cx="280" cy="180" r="110" fill="none" stroke="#3dd6c4" stroke-width="2" opacity=".3" stroke-dasharray="4 4"/>
+  <circle cx="280" cy="80" r="42" fill="rgba(34,197,94,.15)" stroke="#22c55e" stroke-width="2"/>
+  <text x="280" y="76" text-anchor="middle" fill="#86efac" font-size="12" font-weight="900">বানাও</text>
+  <text x="280" y="92" text-anchor="middle" fill="#86efac" font-size="8">(BUILD)</text>
+  <circle cx="390" cy="230" r="42" fill="rgba(96,165,250,.15)" stroke="#5b9eff" stroke-width="2"/>
+  <text x="390" y="226" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="900">মাপো</text>
+  <text x="390" y="240" text-anchor="middle" fill="#93c5fd" font-size="8">(MEASURE)</text>
+  <circle cx="170" cy="230" r="42" fill="rgba(251,191,36,.15)" stroke="#fbbf24" stroke-width="2"/>
+  <text x="170" y="226" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="900">শেখো</text>
+  <text x="170" y="240" text-anchor="middle" fill="#fcd34d" font-size="8">(LEARN)</text>
+  <path d="M 310 105 Q 380 130 385 195" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#d8-a1)"/>
+  <path d="M 345 240 Q 280 270 210 245" stroke="#5b9eff" stroke-width="2" fill="none" marker-end="url(#d8-a1)"/>
+  <path d="M 175 195 Q 180 130 250 105" stroke="#fbbf24" stroke-width="2" fill="none" marker-end="url(#d8-a1)"/>
+  <defs><marker id="d8-a1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#3dd6c4"/></marker></defs>
+  <rect x="235" y="165" width="90" height="30" rx="6" fill="rgba(61,214,196,.08)" stroke="#3dd6c4" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="280" y="184" text-anchor="middle" fill="#3dd6c4" font-size="9" font-style="italic">hypothesis</text>
+  <text x="280" y="300" text-anchor="middle" fill="#52c41a" font-size="9">সবচেয়ে ছোট জিনিস বানাও</text>
+  <text x="455" y="260" text-anchor="middle" fill="#5b9eff" font-size="9">প্রকৃত data মাপো</text>
+  <text x="100" y="260" text-anchor="middle" fill="#fbbf24" font-size="9">ফলাফল থেকে শেখো</text>
+  <text x="280" y="325" text-anchor="middle" fill="#5e5c74" font-size="9" font-style="italic">প্রতিটা চক্রে গল্প বদলায় — ধীরে নয়, সপ্তাহে</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: অভিযোজন — Build-Measure-Learn চক্র। প্রতিটা চক্রে hypothesis পরীক্ষা, ফলাফল থেকে শেখো, আবার বানাও। তাজদিদ — পুরোনোকে নতুন সংযোগে পুনরুজ্জীবিত করা।</div>
+
+<div class="code-block">— অভিযোজন লগ (Adaptation / Iteration Log) —
+
+  ── প্রতিটা চক্রের জন্য ──
+
+  চক্র #: ___   তারিখ: ___
+
+  HYPOTHESIS (অনুমান):
+    "আমরা বিশ্বাস করি ___ কারণ ___"
+
+  BUILD (সবচেয়ে ছোট):
+    কী বানালাম? ___
+    সময়: ___ (লক্ষ্য: ১ সপ্তাহ, ৩ মাস নয়)
+
+  MEASURE (প্রকৃত সংখ্যা):
+    conversion: ___ → ___
+    retention: ___ → ___
+    NPS / feedback: ___
+
+  LEARN (কী শিখলাম):
+    অনুমান সঠিক ছিল? হ্যাঁ / না / আংশিক
+    অপ্রত্যাশিত কী দেখলাম? ___
+
+  NEXT (পরবর্তী):
+    pivot? persevere? kill?
+    পরবর্তী hypothesis: ___
+
+  ── নিয়ম ──
+  জুনিয়র: ৩ মাস বানিয়ে prayer করে।
+  সিনিয়র: ১ সপ্তাহে বানিয়ে test → learn।
+  MVP = অর্ধেক-বানানো নয়, একটা
+  hypothesis টেস্ট করার সবচেয়ে ছোট জিনিস।
+</div>`,
   senior:{
     title:"Innovation Mindset — Practical Steps",
     body:`<p><strong>Read ৩০ min/day outside tech:</strong> Psychology, biology, economics, history. Each field has transferable patterns।</p><p><strong>Analogy hunt:</strong> For every problem, ask: what is this LIKE in another domain? Write ৩ analogies। One will spark innovation।</p><p><strong>Side projects:</strong> Build ONE thing per quarter in a different language/domain. Cross-pollination happens when you work in unfamiliar territory।</p><p><strong>Diverse network:</strong> Talk to ১ person/month outside engineering. Designers, scientists, entrepreneurs। Serendipity happens at intersections।</p><p><strong>Question defaults:</strong> Pick one industry standard this month and ask: what if the opposite were true?</p>`
@@ -179,7 +386,71 @@ doors.push({
 <div class="callout warn"><span class="co-icon">💭</span><div><strong>The great idea myth:</strong> unique idea লাগে না — Google প্রথম search engine নয়, Facebook প্রথম social network নয়, Slack প্রথম chat নয়; সবাই <em>বিদ্যমান জিনিস আরও ভালো</em> করেছে। Idea সস্তা, execution-ই সব। পারফেক্ট idea-র অপেক্ষা কোরো না — real problem খোঁজো, solution বানাও, ship করো। "great idea" বানানোর <em>মধ্য দিয়ে</em> আসে, আগে নয়।</div></div>
 
 <div class="dialogue">তাওয়াক্কুল — trust, reliance, surrender after effort। কুরআনে আল্লাহ বলেন — "যারা আল্লাহর উপর তাওয়াক্কুল করে, তিনি তাদের যথেষ্ট।" (৬৫:৩)। তাওয়াক্কুল অলসতা নয় — প্রস্তুতির পর ফলাফলে ভরসা। দড়ি বাঁধো (চেষ্টা), তারপর লাফ দাও (ঝুঁকি), তারপর ফলাফলে ভরসা (তাওয়াক্কুল)। যে তাওয়াক্কুল করে, সে জানে — চেষ্টা তার, ফল আল্লাহর। এই জ্ঞানে ভয় চলে যায়, সাহস আসে।</div>
-<div class="dialogue en">"Tawakkul — trust, reliance, surrender after effort. Allah says — 'Whoever trusts in Allah, He is sufficient for them.' (65:3). Tawakkul is not laziness — it's trust in the outcome AFTER preparation. Tie the rope (effort), then jump (risk), then trust the result (tawakkul). One who has tawakkul knows — effort is theirs, result is Allah's. In this knowledge, fear departs, courage arrives."</div>`,
+<div class="dialogue en">"Tawakkul — trust, reliance, surrender after effort. Allah says — 'Whoever trusts in Allah, He is sufficient for them.' (65:3). Tawakkul is not laziness — it's trust in the outcome AFTER preparation. Tie the rope (effort), then jump (risk), then trust the result (tawakkul). One who has tawakkul knows — effort is theirs, result is Allah's. In this knowledge, fear departs, courage arrives."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <linearGradient id="d9-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1f17"/><stop offset="1" stop-color="#050f0a"/></linearGradient>
+    <linearGradient id="d9-root" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d2817"/><stop offset="1" stop-color="#1a1208"/></linearGradient>
+  </defs>
+  <rect x="0" y="0" width="560" height="340" rx="12" fill="url(#d9-bg)" stroke="rgba(34,197,94,.15)" stroke-width="1"/>
+  <text x="280" y="28" text-anchor="middle" fill="#86efac" font-size="13" font-weight="900" font-family="sans-serif">ঐতিহ্য — দৃশ্যমান ফল, অদৃশ্য শিকড়</text>
+  <line x1="20" y1="160" x2="540" y2="160" stroke="#5e5c74" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="480" y="155" fill="#5e5c74" font-size="8">মাটির সীমা</text>
+  <ellipse cx="280" cy="70" rx="90" ry="45" fill="rgba(34,197,94,.2)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="280" y="65" text-anchor="middle" fill="#86efac" font-size="10" font-weight="700">ক্যানোপি (দৃশ্যমান)</text>
+  <text x="280" y="80" text-anchor="middle" fill="#9290a8" font-size="8">shipped, salary, title</text>
+  <rect x="265" y="115" width="30" height="45" fill="url(#d9-root)" stroke="#8b6914" stroke-width="1"/>
+  <text x="310" y="140" fill="#fbbf24" font-size="9" font-weight="700">trunk (skill)</text>
+  <path d="M 280 160 Q 250 200 200 250 Q 170 280 150 310" stroke="#8b6914" stroke-width="3" fill="none" opacity=".7"/>
+  <path d="M 280 160 Q 310 200 360 250 Q 390 280 410 310" stroke="#8b6914" stroke-width="3" fill="none" opacity=".7"/>
+  <path d="M 280 160 Q 260 210 230 280 Q 215 300 210 315" stroke="#8b6914" stroke-width="2.5" fill="none" opacity=".6"/>
+  <path d="M 280 160 Q 300 210 330 280 Q 345 300 350 315" stroke="#8b6914" stroke-width="2.5" fill="none" opacity=".6"/>
+  <path d="M 280 160 L 280 250 L 275 310" stroke="#8b6914" stroke-width="3" fill="none" opacity=".8"/>
+  <path d="M 280 160 Q 270 200 245 260" stroke="#8b6914" stroke-width="2" fill="none" opacity=".5"/>
+  <path d="M 280 160 Q 295 200 320 260" stroke="#8b6914" stroke-width="2" fill="none" opacity=".5"/>
+  <text x="110" y="250" fill="#fbbf24" font-size="8" font-style="italic">mentorship</text>
+  <text x="380" y="250" fill="#fbbf24" font-size="8" font-style="italic">culture</text>
+  <text x="250" y="295" fill="#fbbf24" font-size="8" font-style="italic">trust</text>
+  <text x="310" y="295" fill="#fbbf24" font-size="8" font-style="italic">principles</text>
+  <text x="165" y="320" fill="#9290a8" font-size="7">নেতা তৈরি</text>
+  <text x="355" y="320" fill="#9290a8" font-size="7">প্রতিষ্ঠান স্মৃতি</text>
+  <text x="50" y="200" fill="#fbbf24" font-size="9" font-weight="700">শিকড়</text>
+  <text x="50" y="213" fill="#9290a8" font-size="8">(অদৃশ্য)</text>
+  <text x="50" y="226" fill="#9290a8" font-size="8">এটাই</text>
+  <text x="50" y="239" fill="#9290a8" font-size="8">ঐতিহ্য</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: ঐতিহ্য — দৃশ্যমান ফল (shipped, title) নয়, অদৃশ্য শিকড় (mentorship, trust, culture)। যা তুমি রেখে যাও তার চেয়ে যাকে বড় করো তা গুরুত্বপূর্ণ। তাওয়াক্কুল — চেষ্টার পর ফলাফলে ভরসা।</div>
+
+<div class="code-block">— ঐতিহ্য নিরীক্ষা (Legacy Audit) —
+
+  ── দৃশ্যমান (Canopy) — অন্যরা যা দেখে ──
+  shipped features: ___
+  title / salary: ___
+  awards / recognition: ___
+  প্রশ্ন: এগুলো ১০ বছর পর কে মনে রাখবে?
+
+  ── অদৃশ্য (Roots) — যা থাকে ──
+  কতজনকে mentor করেছ? ___
+  কতজন তোমার সিদ্ধান্তে বড় হয়েছে? ___
+  culture / standard কি টিকে আছে? ___
+  trust capital — কতজন তোমায় বিশ্বাস করে? ___
+  institutional knowledge — কেন সিস্টেম এভাবে? ___
+
+  ── প্রশ্ন ──
+  যদি তুমি কাল না থাকো:
+    কোন ফাঁক সবচেয়ে বড় অনুভব হবে?
+    কার জীবনে তুমি পার্থক্য করেছ?
+    কোন নীতি তুমি রেখে গেলে?
+
+  ── নিয়ম ──
+  ফল পড়ে পচে যায়। শিকড় থেকে নতুন
+  গাছ জন্মায়। ঐতিহ্য = তুমি নয়,
+  তুমি যাকে বড় করো সে।
+  তাওয়াক্কুল — চেষ্টা তোমার, ফল আল্লাহর।
+</div>`,
   senior:{
     title:"The Entrepreneur's Preparation",
     body:`<p><strong>Before leaping, tie ৪ ropes:</strong></p><p>১. <strong>Financial:</strong> ৬-১২ months runway saved। Without this, you'll make desperate decisions।</p><p>২. <strong>Skill:</strong> Can you build it AND sell it? If not, find a co-founder who complements you।</p><p>৩. <strong>Validation:</strong> Real users who want it, not just friends saying cool idea। Waitlist, beta signups, pre-orders।</p><p>৪. <strong>Network:</strong> Mentors who've done it, peers on the same journey। You can't do this alone।</p><p><strong>The great idea myth:</strong> Don't wait for a unique idea. Find a real problem. Build a solution. Ship. The idea emerges from building, not before।</p>`
@@ -223,6 +494,79 @@ doors.push({
 <div class="callout tip"><span class="co-icon">🌳</span><div><strong>The timeless truth:</strong> Tools বদলায়, framework মরে, language বিবর্তিত হয় — কিন্তু problem-solving, systems thinking, communication, curiosity, integrity, business understanding কখনো বদলায় না। <strong>যা কখনো বদলায় না, তাতে বিনিয়োগ করো</strong> — প্রতি বছর আরও মূল্যবান হবে, বেশি tool জানার জন্য নয়, বেশি সত্য বোঝার জন্য। ফানা থেকে বাকা — পাতা থেকে শিকড়।</div></div>
 
 <div class="verse">"তুমি কি দেখনি আল্লাহ কীভাবে উদাহরণ দিয়েছেন? একটি ভালো কালিমা পবিত্র বৃক্ষের মতো — তার শিকড় গভীর, শাখা আসমানে।"<br>— কুরআন ১৪:২৪<br><br>"Have you not seen how Allah presents an example? A good word is like a good tree — its root is firm, its branches in the sky." অবিচ্ছেয্য কারিগর সেই বৃক্ষ — শিকড় গভীর, ডাল উঁচু। ঝড় আসে, বৃক্ষ থাকে। সময় যায়, মূল্য বাড়ে। ফানা থেকে বাকা — অস্থায়ী থেকে চিরস্থায়ী। এটাই অবিচ্ছেয্যতার সারমর্ম।</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 560 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <defs>
+    <linearGradient id="d10-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1f17"/><stop offset="1" stop-color="#050f0a"/></linearGradient>
+    <linearGradient id="d10-canopy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(34,197,94,.3)"/><stop offset="1" stop-color="rgba(34,197,94,.05)"/></linearGradient>
+  </defs>
+  <rect x="0" y="0" width="560" height="380" rx="12" fill="url(#d10-bg)" stroke="rgba(34,197,94,.15)" stroke-width="1"/>
+  <text x="280" y="26" text-anchor="middle" fill="#86efac" font-size="13" font-weight="900" font-family="sans-serif">সমন্বয় — অবিচ্ছেয্যতার স্থাপত্য</text>
+  <line x1="20" y1="200" x2="540" y2="200" stroke="#5e5c74" stroke-width="1" stroke-dasharray="3 3"/>
+  <ellipse cx="280" cy="80" rx="120" ry="55" fill="url(#d10-canopy)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="280" y="72" text-anchor="middle" fill="#86efac" font-size="10" font-weight="700">🌿 Canopy — দৃশ্যমান</text>
+  <text x="280" y="88" text-anchor="middle" fill="#9290a8" font-size="8">title · salary · recognition</text>
+  <rect x="270" y="135" width="20" height="65" fill="#3d2817" stroke="#8b6914" stroke-width="1"/>
+  <path d="M 280 200 Q 200 230 130 290 L 100 340" stroke="#a3e635" stroke-width="2.5" fill="none" opacity=".7"/>
+  <circle cx="100" cy="340" r="6" fill="#a3e635" opacity=".8"/>
+  <text x="100" y="358" text-anchor="middle" fill="#a3e635" font-size="8" font-weight="700">মূল নীতি</text>
+  <text x="100" y="370" text-anchor="middle" fill="#9290a8" font-size="7">দ্বার ২ · আকল</text>
+  <path d="M 280 200 Q 230 250 190 320 L 175 355" stroke="#22d3ee" stroke-width="2.5" fill="none" opacity=".7"/>
+  <circle cx="175" cy="355" r="6" fill="#22d3ee" opacity=".8"/>
+  <text x="175" y="372" text-anchor="middle" fill="#22d3ee" font-size="8" font-weight="700">সিস্টেম চিন্তা</text>
+  <path d="M 280 200 Q 250 260 230 330 L 225 355" stroke="#fbbf24" stroke-width="2.5" fill="none" opacity=".7"/>
+  <circle cx="225" cy="355" r="6" fill="#fbbf24" opacity=".8"/>
+  <text x="265" y="372" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="700">ব্যবসায়িক মস্তিষ্ক</text>
+  <path d="M 280 200 L 280 280 L 280 350" stroke="#fb923c" stroke-width="2.5" fill="none" opacity=".7"/>
+  <circle cx="280" cy="350" r="6" fill="#fb923c" opacity=".8"/>
+  <text x="305" y="370" text-anchor="start" fill="#fb923c" font-size="8" font-weight="700">যোগাযোগ</text>
+  <path d="M 280 200 Q 310 260 335 330 L 340 355" stroke="#fde047" stroke-width="2.5" fill="none" opacity=".7"/>
+  <circle cx="340" cy="355" r="6" fill="#fde047" opacity=".8"/>
+  <text x="380" y="372" text-anchor="middle" fill="#fde047" font-size="8" font-weight="700">ইনোভেশন</text>
+  <path d="M 280 200 Q 360 230 430 290 L 460 340" stroke="#c084fc" stroke-width="2.5" fill="none" opacity=".7"/>
+  <circle cx="460" cy="340" r="6" fill="#c084fc" opacity=".8"/>
+  <text x="460" y="358" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">উদ্যোক্তা</text>
+  <text x="460" y="370" text-anchor="middle" fill="#9290a8" font-size="7">দ্বার ৯ · তাওয়াক্কুল</text>
+  <text x="40" y="320" fill="#5e5c74" font-size="8" font-style="italic">শিকড়</text>
+  <text x="40" y="332" fill="#5e5c74" font-size="8" font-style="italic">(অদৃশ্য)</text>
+  <text x="280" y="195" text-anchor="middle" fill="#86efac" font-size="8" font-weight="700">সমন্বয়</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র: সমন্বয় — নয়টি দরজার সত্য এক বৃক্ষে একত্রিত। উপরে দৃশ্যমান ফল, নিচে অদৃশ্য শিকড়। বাকা — যা থাকে। ফানা থেকে বাকা।</div>
+
+<div class="code-block">— অবিচ্ছেয্যতা স্ব-মূল্যায়ন (Irreplaceability Self-Assessment) —
+
+  প্রতিটা স্তরে ০-৫ পয়েন্ট দাও:
+
+  ── শিকড় (Roots · অদৃশ্য · সবচেয়ে গুরুত্বপূর্ণ) ──
+  মূল নীতি (আকল) ............ ___ / ৫
+  সিস্টেম চিন্তা (কদর) ....... ___ / ৫
+  সমস্যা সন্ধান (তালাশ) ...... ___ / ৫
+  ইনোভেশন (তাজদিদ) ......... ___ / ৫
+
+  ── কাণ্ড (Trunk · skill) ──
+  যোগাযোগ (বায়ান) .......... ___ / ৫
+  ব্যবসায়িক মস্তিষ্ক (রিযিক) . ___ / ৫
+  পণ্য নির্মাণ (খলক) ......... ___ / ৫
+
+  ── ক্যানোপি (Canopy · দৃশ্যমান) ──
+  উদ্যোক্তা (তাওয়াক্কুল) ..... ___ / ৫
+  কারিগরি দক্ষতা ............. ___ / ৫
+
+  ── মাটি (Soil · foundation) ──
+  কৌতূহল · বিনয় · সততা ..... ___ / ৫
+
+  ── ফলাফল ──
+  মোট: ___ / ৫০
+  ৪০+ = গভীর শিকড়ের বৃক্ষ
+  ২৫-৩৯ = কাণ্ড মজবুত, শিকড় গভীর করো
+  ২৫- = পাতা, এখনো শিকড় দিচ্ছ
+
+  নিয়ম: যে গভীরে শিকড় দেয়, ঝড় তাকে
+         উপড়ে ফেলতে পারে না।
+         ফানা থেকে বাকা। তুমি সেই বৃক্ষ।
+</div>
 
 <div class="secret-box"><div class="label">দশম দরজা — সমন্বয়</div><div class="text">🌳 অবিচ্ছেয্যতা = Permanent Knowledge + First Principles + Systems Thinking + Business Brain + Problem Finding + Communication + Product Sense + Innovation + Entrepreneurship।<br><small>ফানা থেকে বাকা — পচনশীল থেকে চিরস্থায়ী। গভীরে শিকড় দাও। তুমি সেই বৃক্ষ।</small></div></div>`
 });

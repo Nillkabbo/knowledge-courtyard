@@ -358,6 +358,29 @@ doors.push({
 <tr><td class="hl">scite.ai</td><td>citation context — supporting/contradicting/mentioning</td></tr></table>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Hybrid workflow:</strong> AI করে first-pass summary, claim extraction, related/contradicting work খোঁজা (Keshav Pass ১ ৫ সেকেন্ডে)। <em>তুমি করো</em> verification, deep reading (Pass ২-৩), credibility বিচার, hallucination ধরা। সবসময় source PDF যাচাই করো — AI ভুল বা অস্তিত্বহীন citation বানাতে পারে। এটাই Door 3-এর scientist's eye-এর আধুনিক রূপ।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrRPC4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a5b4fc"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f1428" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">PhD পাঠক — Gap সন্ধানের যাত্রা (সাফর)</text>
+<rect x="20" y="38" width="540" height="30" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="290" y="57" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Step ১ — Survey দিয়ে শুরু: পুরো field-এর ম্যাপ</text>
+<line x1="290" y1="70" x2="290" y2="84" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC4)"/>
+<rect x="20" y="86" width="540" height="30" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="290" y="105" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">Step ২ — Citation tracing: Backward (refs) + Forward (Cited by)</text>
+<line x1="290" y1="118" x2="290" y2="132" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC4)"/>
+<rect x="20" y="134" width="540" height="30" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="290" y="153" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">Step ৩ — Cluster চেনো: approach অনুযায়ী দল বাঁধা</text>
+<line x1="290" y1="166" x2="290" y2="180" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC4)"/>
+<rect x="20" y="182" width="540" height="34" rx="6" fill="#0d1526" stroke="#52c41a" stroke-width="2"/>
+<text x="290" y="198" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Step ৪ — GAP: ৩+ পেপার একই future work বললে = আসল gap</text>
+<text x="290" y="211" text-anchor="middle" fill="#94a3b8" font-size="7">এখানেই তোমার contribution</text>
+<rect x="20" y="222" width="540" height="20" rx="5" fill="#0d1526" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="290" y="235" text-anchor="middle" fill="#fbbf24" font-size="7">Andrew Ng (Stanford): ৫-২০ paper = current · ৫০-১০০ = গভীর</text>
+</svg>
+</div>
+<div class="svg-caption">PhD পাঠকের যাত্রা — survey থেকে gap পর্যন্ত, জ্ঞানের landscape ম্যাপ করা</div>
+
 <div class="dialogue">সাফর — journey, travel, passage। কুরআনে আল্লাহ বলেন — "তোমরা পৃথিবীতে ভ্রমণ করো এবং দেখো।" (৩০:৪২)। সাফর = জ্ঞানের যাত্রা। PhD ছাত্রের পাঠও সাফর — একটা paper থেকে আরেকটায়, একটা ধারণা থেকে আরেকটায়। যাত্রার শেষে সে দেখে — পুরো landscape। কোথায় পথ গেছে, কোথায় থেমেছে, কোথায় নতুন পথ তৈরি করা যায়। সাফর — জ্ঞানের যাত্রায় নিজের স্থান খোঁজা।</div>
 <div class="dialogue en">"Safar — journey, travel, passage. Allah says — 'Travel through the earth and observe.' (30:42). Safar = journey of knowledge. The PhD reader's read too is safar — from one paper to another, one idea to another. At journey's end they see — the whole landscape. Where the path went, where it stopped, where a new path can be made. Safar — finding your place in the journey of knowledge."</div>`,
   senior:{
@@ -380,6 +403,46 @@ doors.push({
   },
   story:`<p class="scene-setting">PhD পাঠক বলেছিলেন — gap খোঁজো। কিন্তু কারিগর ফারহান বললেন — gap খুঁজে পাওয়া শুরু। এখন — সেই gap থেকে প্রশ্ন ছাঁচো। ভালো প্রশ্ন। কারণ গবেষণা = প্রশ্নের উত্তর খোঁজা। কিন্তু ভুল প্রশ্ন = ভুল গবেষণা। সঠিক প্রশ্ন = সঠিক গবেষণা। এটাই সবচেয়ে কঠিন — উত্তর খোঁজা নয়, প্রশ্ন করা।</p>
 <p class="scene-setting en">The PhD reader said — find gaps. But Craftsman Farhan said — finding the gap is the beginning. Now — from that gap, form a question. A good question. Because research = seeking answers to questions. But wrong question = wrong research. Right question = right research. This is the hardest part — not finding answers, but asking questions.</p>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrRPC5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a5b4fc"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f1428" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">গবেষণার প্রশ্ন — Gap থেকে প্রশ্ন (নিয়্যাত)</text>
+<rect x="190" y="36" width="200" height="28" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="290" y="54" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">GAP (কী missing?)</text>
+<line x1="290" y1="66" x2="290" y2="80" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC5)"/>
+<text x="290" y="76" text-anchor="middle" fill="#94a3b8" font-size="7">প্রশ্ন ছাঁচো</text>
+<text x="290" y="96" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">FINER যাচাই</text>
+<rect x="20" y="104" width="104" height="50" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="72" y="122" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">F</text>
+<text x="72" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">Feasible</text>
+<text x="72" y="148" text-anchor="middle" fill="#94a3b8" font-size="6">সম্ভব?</text>
+<rect x="134" y="104" width="104" height="50" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="186" y="122" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">I</text>
+<text x="186" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">Interesting</text>
+<text x="186" y="148" text-anchor="middle" fill="#94a3b8" font-size="6">আগ্রহজনক?</text>
+<rect x="248" y="104" width="104" height="50" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="300" y="122" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">N</text>
+<text x="300" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">Novel</text>
+<text x="300" y="148" text-anchor="middle" fill="#94a3b8" font-size="6">নতুন?</text>
+<rect x="362" y="104" width="104" height="50" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="414" y="122" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">E</text>
+<text x="414" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">Ethical</text>
+<text x="414" y="148" text-anchor="middle" fill="#94a3b8" font-size="6">নৈতিক?</text>
+<rect x="476" y="104" width="84" height="50" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="518" y="122" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">R</text>
+<text x="518" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">Relevant</text>
+<text x="518" y="148" text-anchor="middle" fill="#94a3b8" font-size="6">প্রাসঙ্গিক?</text>
+<line x1="290" y1="156" x2="290" y2="170" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC5)"/>
+<rect x="120" y="172" width="340" height="34" rx="6" fill="#0d1526" stroke="#52c41a" stroke-width="2"/>
+<text x="290" y="188" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">গবেষণার প্রশ্ন</text>
+<text x="290" y="200" text-anchor="middle" fill="#94a3b8" font-size="7">সঠিক প্রশ্ন = সঠিক গবেষণা</text>
+<rect x="60" y="214" width="460" height="24" rx="5" fill="#0d1526" stroke="#f06292" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="290" y="229" text-anchor="middle" fill="#f06292" font-size="7">ভুল প্রশ্ন = ৬ মাস ভুল দিকে · সঠিক প্রশ্ন = ৬ মাস সঠিক দিকে</text>
+</svg>
+</div>
+<div class="svg-caption">নিয়্যাত — gap থেকে সঠিক প্রশ্ন, FINER যাচাইয়ে ছাঁচা</div>
 
 <div class="dialogue">PhD পাঠক বলেছিলেন — gap খোঁজো। কিন্তু আমি বলি — gap খুঁজে পাওয়া সাফরের মাঝপথ। বাকি অর্ধেক — gap থেকে প্রশ্ন ছাঁচো। ভালো প্রশ্ন। কারণ গবেষণা = প্রশ্নের উত্তর। ভুল প্রশ্ন = ভুল দিকে ৬ মাস। সঠিক প্রশ্ন = সঠিক দিকে ৬ মাস। পার্থক্য = সময়, শক্তি, মূল্য। নিয়্যাত — উদ্দেশ্য। যে সঠিক উদ্দেশ্য নিয়ে প্রশ্ন করে, সে সঠিক উত্তর পায়।</div>
 <div class="dialogue en">"The PhD reader said — find gaps. But I say — finding the gap is halfway. The other half — form a question from the gap. A good question. Because research = answering questions. Wrong question = 6 months in wrong direction. Right question = 6 months in right direction. The difference = time, energy, value. Niyyah — intention. One who asks with right intention, gets right answers."</div>`,

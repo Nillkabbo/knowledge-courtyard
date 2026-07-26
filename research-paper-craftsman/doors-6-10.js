@@ -30,6 +30,37 @@ doors.push({
 <tr><td class="hl">Discussion (maturity)</td><td>"X-এ ভালো, Y-তে fail" — limitation লুকিও না; নিজে ধরলে thoughtful, reviewer ধরলে careless</td></tr></table>
 <div class="callout tip"><span class="co-icon">🔀</span><div><strong>লেখার ক্রম (শুরু-থেকে-শেষ নয়):</strong> Figures → Methods (তুমি এটাই ভালো জানো) → Results → Discussion → Introduction (এখন পুরো গল্প জানো) → Abstract → Conclusion → Related Work → Title।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrRPC6" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a5b4fc"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f1428" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">পত্রের নকশা — IMRaD লেখার ক্রম (বিনা)</text>
+<text x="290" y="40" text-anchor="middle" fill="#94a3b8" font-size="8">শুরু-থেকে-শেষ নয় — সহজ থেকে কঠিন</text>
+<rect x="20" y="50" width="540" height="24" rx="5" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="40" y="66" fill="#a5b4fc" font-size="8" font-weight="bold">① Figures</text>
+<text x="300" y="66" fill="#94a3b8" font-size="7">গল্প বলা চিত্র — reviewer আগে দেখে</text>
+<line x1="290" y1="76" x2="290" y2="86" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC6)"/>
+<rect x="20" y="88" width="540" height="24" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="40" y="104" fill="#fcd34d" font-size="8" font-weight="bold">② Methods</text>
+<text x="300" y="104" fill="#94a3b8" font-size="7">তুমি এটাই ভালো জানো — recipe, spec</text>
+<line x1="290" y1="114" x2="290" y2="124" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC6)"/>
+<rect x="20" y="126" width="540" height="24" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="40" y="142" fill="#fcd34d" font-size="8" font-weight="bold">③ Results</text>
+<text x="300" y="142" fill="#94a3b8" font-size="7">evidence — figure আগে, সংখ্যা পরে</text>
+<line x1="290" y1="152" x2="290" y2="162" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC6)"/>
+<rect x="20" y="164" width="540" height="24" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="40" y="180" fill="#fcd34d" font-size="8" font-weight="bold">④ Discussion</text>
+<text x="300" y="180" fill="#94a3b8" font-size="7">so what? limitation লুকিও না</text>
+<line x1="290" y1="190" x2="290" y2="198" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC6)"/>
+<rect x="20" y="200" width="540" height="24" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="40" y="216" fill="#fcd34d" font-size="8" font-weight="bold">⑤ Introduction</text>
+<text x="300" y="216" fill="#94a3b8" font-size="7">এখন পুরো গল্প জানো — funnel</text>
+<rect x="20" y="228" width="540" height="16" rx="4" fill="#0d1526" stroke="#52c41a" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="290" y="239" text-anchor="middle" fill="#4ade80" font-size="7">Abstract → Conclusion → Related Work → Title (শেষে)</text>
+</svg>
+</div>
+<div class="svg-caption">বিনা — লেখার ক্রম: figures থেকে title পর্যন্ত, স্থপতির নকশা</div>
+
 <div class="dialogue">বিনা — building, construction, architecture। কুরআনে আল্লাহ বলেন — "যিনি সৃষ্টি করেছেন এবং নিয়মে বেঁধেছেন।" (৮৭:২)। নিয়মে বাঁধা = বিনা। পত্র নির্মাণও বিনা — নিয়মে বাঁধা। প্রতিটা সেকশনের নির্দিষ্ট কাজ। প্রতিটা প্যারাগ্রাফের নির্দিষ্ট স্থান। যে বিনা করে, সে নিখুঁত। যে অগোছালো লেখে, সে বিভ্রান্ত করে। Simon Peyton Jones বলেন — writing IS research। কারণ লেখার সময় তুমি বোঝো — কোথায় তোমার গবেষণার ঘাটতি। বিনা — স্থাপত্যের শিল্প।</div>
 <div class="dialogue en">"Bina — building, construction, architecture. Allah says — 'Who created and proportioned.' (87:2). Proportioning = bina. Paper construction too — proportioned. Each section with its specific job. Each paragraph in its specific place. One who builds with bina, perfects. One who writes messily, confuses. Simon Peyton Jones says — writing IS research. Because while writing, you discover — where your research falls short. Bina — the art of architecture."</div>`,
   senior:{
@@ -70,6 +101,54 @@ doors.push({
 <div class="callout warn"><span class="co-icon">🤖</span><div><strong>LLM-assisted writing (2024+):</strong> ✅ outline brainstorm, grammar polish, বাক্য সরল করা। ❌ গোটা পেপার LLM দিয়ে লেখা (hallucinated citation!), সংখ্যা/reference verify না করা। ⚠️ Nature/Science/IEEE-তে AI disclosure লাগে; LLM author হতে পারে না (ICMJE/Nature)। নিরাপদ — LLM শুধু polish/brainstorm-এ, সব content ও citation নিজে যাচাই করো।</div></div>
 <div class="callout tip"><span class="co-icon">📊</span><div><strong>Figures = সবচেয়ে গুরুত্বপূর্ণ:</strong> reviewer আগে figure দেখে। architecture diagram (text ছাড়াই বোঝা যাবে), main results (best number bold), ablation, qualitative examples। vector graphics, font ≥৮pt, caption পুরো গল্প বলবে।</div></div>
 <div class="callout info"><span class="co-icon">🔗</span><div><strong>Citations ও blank page:</strong> মূল source cite করো (textbook নয়), ৮-পাতায় ~৩০-৬০ ref, self-citation ১-৩ max। সহজতম section (Methods/Results) দিয়ে শুরু করো, Introduction দিয়ে নয়। "খারাপ করে লেখো — খারাপ লেখা ঠিক করা যায়, খালি পাতা যায় না।"</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrRPC7" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a5b4fc"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f1428" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">প্রথম খসড়া — চারটি ড্রাফট (কলম)</text>
+<rect x="20" y="38" width="125" height="58" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="82" y="56" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Draft ১</text>
+<text x="82" y="70" text-anchor="middle" fill="#94a3b8" font-size="7">১-২ সপ্তাহ</text>
+<text x="82" y="84" text-anchor="middle" fill="#f06292" font-size="7">💩 shitty</text>
+<text x="82" y="94" text-anchor="middle" fill="#94a3b8" font-size="6">outline ভরাট</text>
+<rect x="155" y="38" width="125" height="58" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="217" y="56" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Draft ২</text>
+<text x="217" y="70" text-anchor="middle" fill="#94a3b8" font-size="7">১ সপ্তাহ</text>
+<text x="217" y="84" text-anchor="middle" fill="#fcd34d" font-size="7">🧱 structural</text>
+<text x="217" y="94" text-anchor="middle" fill="#94a3b8" font-size="6">flow, claim</text>
+<rect x="290" y="38" width="125" height="58" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="352" y="56" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Draft ৩</text>
+<text x="352" y="70" text-anchor="middle" fill="#94a3b8" font-size="7">৩-৫ দিন</text>
+<text x="352" y="84" text-anchor="middle" fill="#3dd6c4" font-size="7">✂️ line edit</text>
+<text x="352" y="94" text-anchor="middle" fill="#94a3b8" font-size="6">প্রতি বাক্য</text>
+<rect x="425" y="38" width="135" height="58" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="492" y="56" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Draft ৪</text>
+<text x="492" y="70" text-anchor="middle" fill="#94a3b8" font-size="7">২-৩ দিন</text>
+<text x="492" y="84" text-anchor="middle" fill="#4ade80" font-size="7">✨ polish</text>
+<text x="492" y="94" text-anchor="middle" fill="#94a3b8" font-size="6">জোরে পড়ো</text>
+<line x1="82" y1="98" x2="82" y2="112" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC7)"/>
+<line x1="217" y1="98" x2="217" y2="112" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC7)"/>
+<line x1="352" y1="98" x2="352" y2="112" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC7)"/>
+<line x1="492" y1="98" x2="492" y2="112" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC7)"/>
+<rect x="20" y="114" width="540" height="34" rx="6" fill="#0d1526" stroke="#52c41a" stroke-width="2"/>
+<text x="290" y="130" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Anne Lamott: "shitty first drafts"</text>
+<text x="290" y="142" text-anchor="middle" fill="#94a3b8" font-size="7">খারাপ খসড়া = সম্পাদনার উপাদান · খালি পাতা = কিছু নয়</text>
+<text x="290" y="168" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">টুল</text>
+<rect x="40" y="176" width="125" height="28" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="102" y="194" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">Overleaf (LaTeX)</text>
+<rect x="175" y="176" width="125" height="28" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="237" y="194" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">Zotero (refs)</text>
+<rect x="310" y="176" width="125" height="28" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="372" y="194" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">matplotlib</text>
+<rect x="445" y="176" width="115" height="28" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="502" y="194" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">draw.io</text>
+<rect x="20" y="212" width="540" height="28" rx="5" fill="#0d1526" stroke="#f06292" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="290" y="227" text-anchor="middle" fill="#f06292" font-size="7">Methods দিয়ে শুরু করো, Introduction দিয়ে নয় — সহজ অংশ আগে</text>
+<text x="290" y="236" text-anchor="middle" fill="#94a3b8" font-size="6">LLM ✅ polish/brainstorm · ❌ গোটা পেপার (hallucinated citation!)</text>
+</svg>
+</div>
+<div class="svg-caption">কলম — চারটি ড্রাফট: shitty → structural → line edit → polish</div>
 
 <div class="dialogue">কলম — pen, the instrument of knowledge। কুরআনে আল্লাহ বলেন — "যিনি কলমের মাধ্যমে শিখিয়েছেন।" (৯৬:৪)। কলম জ্ঞানের হাতিয়ার। জ্ঞানের কারিগর (Book ২৬) বলেছিলেন — লেখা = চিন্তা। এখন আমি বলি — গবেষণাপত্র লেখা = গবেষণা। লেখার সময় তুমি বোঝো — কোথায় গবেষণার ঘাটতি। কলম চালাও। ভুল হলে হবে। খালি পাতা রাখো না। কলম — জ্ঞানের স্থায়ী হাতিয়ার।</div>
 <div class="dialogue en">"Qalam — pen, the instrument of knowledge. Allah says — 'Who taught by the pen.' (96:4). The pen is the tool of knowledge. The Knowledge Craftsman (Book 26) said — writing = thinking. Now I say — writing a research paper = research. While writing, you discover gaps. Move the pen. Mistakes are fine. Don't leave the page blank. Qalam — the permanent tool of knowledge."</div>`,
@@ -112,6 +191,53 @@ doors.push({
 <tr><td class="hl">arXiv (preprint)</td><td>১০০% (no review)</td></tr></table>
 <div class="callout tip"><span class="co-icon">🗡️</span><div><strong>Rejection = ব্যর্থতা নয়:</strong> প্রথম পেপারের কৌশল — arXiv preprint → workshop → mid venue → top venue। (অনেক গুরুত্বপূর্ণ কাজ প্রথমে প্রত্যাখ্যাত হয়েছিল — সান্ত্বনা হিসেবে নাও, তথ্য হিসেবে নয়।) "পেপার তলোয়ারের মতো — reviewer-এর হাতুড়ির প্রতিটা আঘাতে ধারালো হয়।"</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrRPC8" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a5b4fc"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f1428" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">Peer Review — প্রকাশনার চক্র (মুহাসাবা)</text>
+<rect x="20" y="36" width="100" height="26" rx="5" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="70" y="53" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Submit</text>
+<line x1="120" y1="49" x2="134" y2="49" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC8)"/>
+<rect x="136" y="36" width="100" height="26" rx="5" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="186" y="53" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Editor desk</text>
+<line x1="236" y1="49" x2="250" y2="49" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC8)"/>
+<rect x="252" y="36" width="100" height="26" rx="5" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="302" y="53" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Reviewers</text>
+<line x1="352" y1="49" x2="366" y2="49" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC8)"/>
+<rect x="368" y="36" width="100" height="26" rx="5" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="418" y="53" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Wait ১-৬ মা</text>
+<line x1="468" y1="49" x2="482" y2="49" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC8)"/>
+<rect x="484" y="36" width="76" height="26" rx="5" fill="#0d1526" stroke="#52c41a" stroke-width="2"/>
+<text x="522" y="53" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">Decision</text>
+<text x="290" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">সিদ্ধান্ত বিভাজন (~৯০% প্রথমবার নয়)</text>
+<rect x="20" y="88" width="135" height="50" rx="6" fill="#1a2744" stroke="#52c41a" stroke-width="1.5"/>
+<text x="87" y="104" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">Accept</text>
+<text x="87" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">~৫% অলৌকিক</text>
+<text x="87" y="130" text-anchor="middle" fill="#94a3b8" font-size="6">উদযাপন করো</text>
+<rect x="165" y="88" width="135" height="50" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="232" y="104" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">Minor rev</text>
+<text x="232" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">~২০%</text>
+<text x="232" y="130" text-anchor="middle" fill="#94a3b8" font-size="6">১-২ সপ্তাহ</text>
+<rect x="310" y="88" width="135" height="50" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="377" y="104" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">Major rev</text>
+<text x="377" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">~৪০% খুব ভালো</text>
+<text x="377" y="130" text-anchor="middle" fill="#94a3b8" font-size="6">১-৩ মাস</text>
+<rect x="455" y="88" width="105" height="50" rx="6" fill="#1a2744" stroke="#f06292" stroke-width="1.5"/>
+<text x="507" y="104" text-anchor="middle" fill="#f06292" font-size="8" font-weight="bold">Reject</text>
+<text x="507" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">~৩৫%</text>
+<text x="507" y="130" text-anchor="middle" fill="#94a3b8" font-size="6">অন্য venue</text>
+<line x1="377" y1="140" x2="377" y2="152" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC8)"/>
+<rect x="120" y="154" width="340" height="30" rx="6" fill="#0d1526" stroke="#52c41a" stroke-width="2"/>
+<text x="290" y="172" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Revise → Response letter → Resubmit</text>
+<text x="290" y="195" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">Response letter সূত্র</text>
+<rect x="40" y="202" width="500" height="34" rx="5" fill="#0d1526" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="290" y="217" text-anchor="middle" fill="#fcd34d" font-size="7">ধন্যবাদ → comment quote → উত্তর → কী বদলালে (page/line)</text>
+<text x="290" y="229" text-anchor="middle" fill="#94a3b8" font-size="6">Tone সবসময় সম্মানজনক — "We appreciate this concern; however..."</text>
+</svg>
+</div>
+<div class="svg-caption">মুহাসাবা — submit থেকে accept পর্যন্ত, reviewer শত্রু নয় মুহাসাবাকারী</div>
+
 <div class="dialogue">মুহাসাবা — self-examination, accountability, taking stock। ইসলামী ঐতিহ্যে মুহাসাবা হলো — নিজেকে যাচাই করা, আগে বিচার করা যাতে পরে বিচারিত না হতে হয়। Peer review-ও মুহাসাবা — তোমার কাজ যাচাই। যে মুহাসাবা গ্রহণ করে, সে উন্নতি করে। যে প্রতিরোধ করে, সে আটকে যায়। Reviewer = শত্রু নয়, মুহাসাবাকারী। প্রতিটা comment = উন্নতির সুযোগ। মুহাসাবা — সমালোচনা গ্রহণ ও উত্তরের গুণ।</div>
 <div class="dialogue en">"Muhasabah — self-examination, accountability, taking stock. In Islamic tradition, muhasabah is examining yourself, judging yourself before being judged. Peer review too — verification of your work. One who accepts muhasabah, improves. One who resists, gets stuck. Reviewers = not enemies, accountants. Each comment = opportunity for improvement. Muhasabah — the virtue of accepting and responding to criticism."</div>`,
   senior:{
@@ -144,6 +270,51 @@ doors.push({
 <tr><td class="hl">৩. Reproduction (যাচাই)</td><td>সর্বোচ্চ সম্মান — তাদের কোড/data-তে run করে মেলানো। error ধরে, trust গড়ে, expert বানায়; reproduction পেপারও প্রকাশযোগ্য।</td></tr></table>
 <div class="callout info"><span class="co-icon">🔗</span><div><strong>জ্ঞানের শৃঙ্খল:</strong> [Paper A] → [Paper B] → [Paper C] → <strong>[তুমি]</strong> → ভবিষ্যতের কাজ তোমার উপর গড়ে। তুমি একই সাথে prior work-এর উপর দাঁড়িয়ে (cite) আর ভবিষ্যতের জন্য জমি ছেড়ে (contribute)।</div></div>
 <div class="callout tip"><span class="co-icon">🌉</span><div><strong>একটা পেপার → একটা পেপার:</strong> Methods পড়ো → কোড clone/run → তোমার data-তে test → limitation → fix propose → implement → original বনাম তোমার তুলনা → পেপার ("We improve X by Y")। চক্র চলতে থাকে।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrRPC9" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a5b4fc"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f1428" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">সেতু নির্মাতা — জ্ঞানের শৃঙ্খল (সিলসিলা)</text>
+<rect x="20" y="40" width="110" height="40" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="75" y="58" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Paper A</text>
+<text x="75" y="72" text-anchor="middle" fill="#94a3b8" font-size="6">foundational</text>
+<line x1="130" y1="60" x2="164" y2="60" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC9)"/>
+<rect x="166" y="40" width="110" height="40" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="221" y="58" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Paper B</text>
+<text x="221" y="72" text-anchor="middle" fill="#94a3b8" font-size="6">extends A</text>
+<line x1="276" y1="60" x2="310" y2="60" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC9)"/>
+<rect x="312" y="40" width="110" height="40" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="367" y="58" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Paper C</text>
+<text x="367" y="72" text-anchor="middle" fill="#94a3b8" font-size="6">extends B</text>
+<line x1="422" y1="60" x2="456" y2="60" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC9)"/>
+<rect x="458" y="40" width="102" height="40" rx="6" fill="#0d1526" stroke="#52c41a" stroke-width="2.5"/>
+<text x="509" y="58" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">তুমি</text>
+<text x="509" y="72" text-anchor="middle" fill="#4ade80" font-size="6">new link</text>
+<text x="290" y="102" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">৩ সংযোগ — তুমি কোনটা করছ?</text>
+<rect x="20" y="110" width="175" height="58" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="107" y="128" text-anchor="middle" fill="#3dd6c4" font-size="9" font-weight="bold">① Cite</text>
+<text x="107" y="142" text-anchor="middle" fill="#94a3b8" font-size="7">স্বীকার</text>
+<text x="107" y="154" text-anchor="middle" fill="#94a3b8" font-size="6">method/idea ব্যবহার</text>
+<text x="107" y="164" text-anchor="middle" fill="#f06292" font-size="6">না করলে = plagiarism</text>
+<rect x="205" y="110" width="175" height="58" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="292" y="128" text-anchor="middle" fill="#3dd6c4" font-size="9" font-weight="bold">② Extend</text>
+<text x="292" y="142" text-anchor="middle" fill="#94a3b8" font-size="7">প্রসার</text>
+<text x="292" y="154" text-anchor="middle" fill="#94a3b8" font-size="6">domain transfer</text>
+<text x="292" y="164" text-anchor="middle" fill="#94a3b8" font-size="6">method improve · A+B</text>
+<rect x="390" y="110" width="170" height="58" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
+<text x="475" y="128" text-anchor="middle" fill="#3dd6c4" font-size="9" font-weight="bold">③ Reproduce</text>
+<text x="475" y="142" text-anchor="middle" fill="#94a3b8" font-size="7">যাচাই</text>
+<text x="475" y="154" text-anchor="middle" fill="#94a3b8" font-size="6">কোড/data run করে</text>
+<text x="475" y="164" text-anchor="middle" fill="#94a3b8" font-size="6">সর্বোচ্চ সম্মান</text>
+<rect x="20" y="180" width="540" height="34" rx="6" fill="#0d1526" stroke="#52c41a" stroke-width="2"/>
+<text x="290" y="196" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">চক্র: পড়ো → বোঝো → সংযুক্ত করো → সৃষ্টি করো → পরের জন্য ছেড়ে যাও</text>
+<text x="290" y="208" text-anchor="middle" fill="#94a3b8" font-size="7">ভবিষ্যতের কাজ তোমার উপর গড়ে — তুমি শৃঙ্খলের অংশ</text>
+<rect x="20" y="220" width="540" height="20" rx="4" fill="#0d1526" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="290" y="234" text-anchor="middle" fill="#fbbf24" font-size="7">কুরআন ৩:১০৩ — "আল্লাহর রশি দৃঢ়ভাবে ধরো, একসাথে" = সিলসিলা</text>
+</svg>
+</div>
+<div class="svg-caption">সিলসিলা — cite, extend, reproduce: জ্ঞানের শৃঙ্খলে নিজের যোগ</div>
 
 <div class="dialogue">সিলসিলা — chain, connection, linkage। কুরআনে আল্লাহ বলেন — "তোমরা সবাই আল্লাহর রশি দৃঢ়ভাবে ধরো, একসাথে।" (৩:১০৩)। একসাথে = সিলসিলা। research-ও সিলসিলা — জ্ঞানের শৃঙ্খল। প্রতিটা paper আগের paper-এর সাথে সংযুক্ত। তুমি নতুন লিঙ্ক — পুরোনো সংযুক্ত, নতুন সৃষ্টি, ভবিষ্যতের জন্য ছেড়ে যাও। যে সিলসিলা ভাঙে (plagiarism), সে বিচ্ছিন্ন হয়। যে সিলসিলা মানে (cite), সে সম্মানিত হয়। যে সিলসিলা বাড়ায় (extend), সে সৃষ্টি করে। সিলসিলা — জ্ঞানের শৃঙ্খলে নিজের যোগ।</div>
 <div class="dialogue en">"Silsila — chain, connection, linkage. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Together = silsila. Research too — a chain of knowledge. Each paper connected to prior papers. You are a new link — connecting the old, creating the new, leaving for the future. One who breaks the chain (plagiarism) is disconnected. One who honors the chain (cite) is respected. One who extends the chain (build on) creates. Silsila — joining the chain of knowledge."</div>`,
@@ -186,6 +357,51 @@ doors.push({
 <tr><td class="hl">নোট / stats</td><td>Obsidian, Python (scipy)</td></tr></table>
 <div class="callout info"><span class="co-icon">🗓️</span><div><strong>প্রথম পেপার — ৯০ দিনের প্ল্যান:</strong> সপ্তাহ ১-২ ৫-২০ পেপার, ৩ gap → সপ্তাহ ৩ research question (FINER) → সপ্তাহ ৪-৬ implement + experiment + ablation + figure → সপ্তাহ ৭-৮ first draft (Methods আগে, Intro/Abstract শেষে), feedback → সপ্তাহ ৯ revise → সপ্তাহ ১০ arXiv + submit → সপ্তাহ ১১-১৩ review-ভিত্তিক revise → প্রকাশিত।</div></div>
 <div class="callout tip"><span class="co-icon">🚀</span><div><strong>অগ্রগতি:</strong> Consumer → Reader → Analyzer → Writer → Builder → <strong>Architect</strong>। পড়া <em>informed</em>, বিশ্লেষণ <em>critical</em>, লেখা <em>contributor</em>, নির্মাণ <em>researcher</em>। শুরু করেছিলে consumer হিসেবে, শেষ করছ architect হিসেবে। হিকমাহ — শুধু জানা নয়, DOING; শুধু consuming নয়, CONTRIBUTING।</div></div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrRPC10" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a5b4fc"/></marker></defs>
+<rect x="0" y="0" width="580" height="250" fill="#0f1428" rx="12"/>
+<text x="290" y="22" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">গবেষণার স্থপতি — সম্পূর্ণ প্রবাহ (হিকমাহ)</text>
+<rect x="20" y="36" width="100" height="44" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="70" y="52" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Phase ১</text>
+<text x="70" y="64" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="bold">📖 READ</text>
+<text x="70" y="75" text-anchor="middle" fill="#94a3b8" font-size="6">দ্বার ১-৪</text>
+<line x1="120" y1="58" x2="134" y2="58" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC10)"/>
+<rect x="136" y="36" width="100" height="44" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="186" y="52" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Phase ২</text>
+<text x="186" y="64" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="bold">💡 DISCOVER</text>
+<text x="186" y="75" text-anchor="middle" fill="#94a3b8" font-size="6">দ্বার ৫</text>
+<line x1="236" y1="58" x2="250" y2="58" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC10)"/>
+<rect x="252" y="36" width="100" height="44" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="302" y="52" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Phase ৩</text>
+<text x="302" y="64" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="bold">🏗️ BUILD</text>
+<text x="302" y="75" text-anchor="middle" fill="#94a3b8" font-size="6">দ্বার ৬-৭</text>
+<line x1="352" y1="58" x2="366" y2="58" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC10)"/>
+<rect x="368" y="36" width="100" height="44" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="418" y="52" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Phase ৪</text>
+<text x="418" y="64" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="bold">📤 PUBLISH</text>
+<text x="418" y="75" text-anchor="middle" fill="#94a3b8" font-size="6">দ্বার ৮</text>
+<line x1="468" y1="58" x2="482" y2="58" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC10)"/>
+<rect x="484" y="36" width="76" height="44" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
+<text x="522" y="52" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Phase ৫</text>
+<text x="522" y="64" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="bold">🔗 CONNECT</text>
+<text x="522" y="75" text-anchor="middle" fill="#94a3b8" font-size="6">দ্বার ৯</text>
+<text x="290" y="98" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">অগ্রগতির সিঁড়ি</text>
+<rect x="30" y="108" width="520" height="20" rx="4" fill="#1a2744" stroke="#f06292" stroke-width="1"/>
+<text x="290" y="121" text-anchor="middle" fill="#f06292" font-size="7">Consumer — শুধু পড়ে</text>
+<rect x="60" y="130" width="460" height="20" rx="4" fill="#1a2744" stroke="#fbbf24" stroke-width="1"/>
+<text x="290" y="143" text-anchor="middle" fill="#fcd34d" font-size="7">Reader → Analyzer — পড়ে, বিশ্লেষণ করে</text>
+<rect x="90" y="152" width="400" height="20" rx="4" fill="#1a2744" stroke="#3dd6c4" stroke-width="1"/>
+<text x="290" y="165" text-anchor="middle" fill="#3dd6c4" font-size="7">Writer → Builder — লেখে, নির্মাণ করে</text>
+<rect x="120" y="174" width="340" height="24" rx="5" fill="#0d1526" stroke="#52c41a" stroke-width="2.5"/>
+<text x="290" y="190" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">🚀 Architect — contributor, স্রষ্টা</text>
+<rect x="20" y="204" width="540" height="34" rx="6" fill="#0d1526" stroke="#52c41a" stroke-width="2" stroke-dasharray="3,2"/>
+<text x="290" y="219" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">হিকমাহ — প্রয়োগকৃত জ্ঞান: শুধু জানা নয়, DOING</text>
+<text x="290" y="231" text-anchor="middle" fill="#94a3b8" font-size="7">শুধু consuming নয়, CONTRIBUTING — জ্ঞানের শৃঙ্খলে নিজের লিঙ্ক</text>
+</svg>
+</div>
+<div class="svg-caption">হিকমাহ — দশটি দরজার সমন্বয়: Read → Discover → Build → Publish → Connect</div>
 
 <div class="verse">"তিনি মানুষকে শিখিয়েছেন কলমের মাধ্যমে। মানুষকে শিখিয়েছেন যা সে জানত না।"<br>— কুরআন ৯৬:৪-৫<br><br>গবেষণাপত্র = জ্ঞানের সম্প্রসারণ। তুমি পড়ো, বোঝো, যাচাই করো, প্রশ্ন করো, গবেষণা করো, লেখো, প্রকাশ করো। তোমার পত্র পরে কেউ পড়বে, সংযুক্ত করবে, প্রসারিত করবে। এটাই জ্ঞানের শৃঙ্খল — প্রতিটা প্রজন্ম আগের কাঁধে দাঁড়ায়। তুমি এখন সেই শৃঙ্খলে একটি লিঙ্ক। হিকমাহ — প্রয়োগকৃত জ্ঞান। যে প্রয়োগ করে, সে জানে। যে জানে, সে সৃষ্টি করে। যে সৃষ্টি করে, সে অবিচ্ছেয্য।</div>
 

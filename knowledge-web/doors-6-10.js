@@ -31,6 +31,33 @@ doors.push({
 <tr><td class="hl">Scaling law</td><td>Kleiber ৩/৪</td><td>Moore's law</td><td>practice power law</td></tr></table>
 <div class="callout tip"><span class="co-icon">🎯</span><div><strong>প্যাটার্ন চেনার শক্তি:</strong> এক ক্ষেত্রের প্যাটার্ন জানলে নতুন ক্ষেত্রে তা তৎক্ষণাৎ চিনতে ও behavior predict করতে পারো। উদাহরণ — biology-র feedback loop জানলে imposter syndrome (Bk 24)-কে চেনো "negative feedback loop" হিসেবে (inadequate → overwork → burnout → কম confidence), সমাধান — loop ভাঙো। <strong>তুমি biology দিয়ে psychology সমাধান করলে।</strong> (Polya 1945: "এটা কি search/optimization/matching/feedback problem?")</div></div>
 
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cross-domain pattern recognition">
+  <defs>
+    <radialGradient id="d6node" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#22d3ee"/>
+    </radialGradient>
+  </defs>
+  <path d="M 290 40 L 250 110 L 200 180" fill="none" stroke="#3dd6c4" stroke-width="2.5" opacity="0.7"/>
+  <path d="M 200 180 L 150 200" fill="none" stroke="#3dd6c4" stroke-width="1.8" opacity="0.5"/>
+  <path d="M 250 110 L 290 170" fill="none" stroke="#3dd6c4" stroke-width="1.8" opacity="0.5"/>
+  <path d="M 290 40 L 330 110 L 380 180" fill="none" stroke="#fbbf24" stroke-width="2.5" opacity="0.7"/>
+  <path d="M 380 180 L 430 200" fill="none" stroke="#fbbf24" stroke-width="1.8" opacity="0.5"/>
+  <path d="M 330 110 L 290 170" fill="none" stroke="#fbbf24" stroke-width="1.8" opacity="0.5"/>
+  <circle cx="290" cy="40" r="10" fill="url(#d6node)"/>
+  <circle cx="250" cy="110" r="8" fill="url(#d6node)"/>
+  <circle cx="200" cy="180" r="7" fill="url(#d6node)"/>
+  <circle cx="150" cy="200" r="5" fill="url(#d6node)" opacity="0.7"/>
+  <circle cx="330" cy="110" r="8" fill="url(#d6node)" opacity="0.9"/>
+  <circle cx="380" cy="180" r="7" fill="url(#d6node)" opacity="0.9"/>
+  <circle cx="430" cy="200" r="5" fill="url(#d6node)" opacity="0.7"/>
+  <circle cx="290" cy="170" r="6" fill="#4ade80"/>
+  <text x="120" y="115" text-anchor="middle" font-size="10" fill="#3dd6c4" font-weight="700">নদী</text>
+  <text x="290" y="25" text-anchor="middle" font-size="9" fill="#7dd3fc" font-weight="700">উৎস</text>
+  <text x="460" y="115" text-anchor="middle" font-size="10" fill="#fbbf24" font-weight="700">গাছ</text>
+  <text x="290" y="225" text-anchor="middle" font-size="10" fill="#4ade80" font-weight="700">একই কাঠামো: branching</text>
+  <text x="290" y="240" text-anchor="middle" font-size="11" fill="#fbbf24" font-weight="700">ভিন্ন surface · একই pattern</text>
+</svg></div><div class="svg-caption">প্যাটার্ন দ্রষ্টা — নদী, গাছ, রক্ত: ভিন্ন জিনিস, একই branching কাঠামো</div>
+
 <div class="dialogue">আয়ত — sign, symbol, evidence that repeats। কুরআনে আল্লাহ বলেন — "পৃথিবীতে এবং নিজেদের মধ্যে কত নিদর্শন তারা দেখবে।" (৫১:২০-২১)। নিদর্শন একবার নয় — বারবার। একই প্যাটার্ন বিভিন্ন জায়গায়। নদীতে দেখো, গাছে দেখো, রক্তে দেখো। যে আয়ত দেখে — সে প্যাটার্ন চেনে। যে প্যাটার্ন চেনে — সে এক ক্ষেত্রের জ্ঞান অন্য ক্ষেত্রে প্রয়োগ করে। এটাই জ্ঞানের জাল — পুনরাবৃত্ত নিদর্শন দেখে সংযুক্ত করা।</div>
 <div class="dialogue en">"Ayat — sign, symbol, evidence that repeats. Allah says — 'On earth and within yourselves are many signs.' (51:20-21). Signs not once — but repeated. Same pattern in different places. See it in rivers, trees, blood. One who sees ayat — recognizes patterns. One who recognizes patterns — applies knowledge from one field to another. This is the knowledge web — connecting through repeating signs."</div>`,
   senior:{
@@ -68,6 +95,38 @@ doors.push({
 <tr><td>hierarchical + cross-link, formal</td><td>radial, cross-link নেই, informal</td></tr>
 <tr><td>শেখা ও বিশ্লেষণের জন্য</td><td>brainstorming-এর জন্য</td></tr></table>
 
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Concept map node link diagram">
+  <defs>
+    <radialGradient id="d7core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ade80"/><stop offset="100%" stop-color="#22c55e"/>
+    </radialGradient>
+    <radialGradient id="d7node" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#22d3ee"/>
+    </radialGradient>
+  </defs>
+  <line x1="290" y1="125" x2="120" y2="60" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="290" y1="125" x2="460" y2="60" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="290" y1="125" x2="120" y2="200" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="290" y1="125" x2="460" y2="200" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="120" y1="60" x2="460" y2="200" stroke="#fbbf24" stroke-width="1.5" opacity="0.6" stroke-dasharray="5 3"/>
+  <line x1="460" y1="60" x2="120" y2="200" stroke="#fbbf24" stroke-width="1.5" opacity="0.6" stroke-dasharray="5 3"/>
+  <text x="205" y="88" text-anchor="middle" font-size="8" fill="#fcd34d" font-style="italic">সংশোধন</text>
+  <text x="375" y="88" text-anchor="middle" font-size="8" fill="#fcd34d" font-style="italic">শক্তিশালী</text>
+  <text x="205" y="170" text-anchor="middle" font-size="8" fill="#fcd34d" font-style="italic">বিপরীত</text>
+  <text x="375" y="170" text-anchor="middle" font-size="8" fill="#fcd34d" font-style="italic">সহায়ক</text>
+  <circle cx="290" cy="125" r="30" fill="url(#d7core)"/>
+  <circle cx="120" cy="60" r="22" fill="url(#d7node)"/>
+  <circle cx="460" cy="60" r="22" fill="url(#d7node)"/>
+  <circle cx="120" cy="200" r="22" fill="url(#d7node)"/>
+  <circle cx="460" cy="200" r="22" fill="url(#d7node)"/>
+  <text x="290" y="130" text-anchor="middle" font-size="10" fill="#0a1a1f" font-weight="700">জ্ঞান</text>
+  <text x="120" y="65" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">Feynman</text>
+  <text x="460" y="65" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">Spaced</text>
+  <text x="120" y="205" text-anchor="middle" font-size="8" fill="#0a1a1f" font-weight="700">Helpless</text>
+  <text x="460" y="205" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">Zettel</text>
+  <text x="290" y="240" text-anchor="middle" font-size="11" fill="#fbbf24" font-weight="700">নোড = ধারণা · তীর = সম্পর্ক · cross-link = insight</text>
+</svg></div><div class="svg-caption">ধারণার মানচিত্র — Novak-এর concept map: নোড, সংযোগ, এবং cross-link-এ জন্ম নেয় insight</div>
+
 <div class="dialogue">ফিহরিস্ত — index, catalog, map। কুরআনে আল্লাহ বলেন — "আমি প্রতিটি জিনিস বিস্তারিতভাবে ব্যাখ্যা করেছি।" (১৭:১২)। ব্যাখ্যা = ফিহরিস্ত — প্রতিটা জিনিসের নির্দিষ্ট স্থান, নির্দিষ্ট সম্পর্ক। Concept map জ্ঞানের ফিহরিস্ত — প্রতিটা ধারণার স্থান, প্রতিটা সম্পর্কের দিক। যে ফিহরিস্ত বানায়, সে জ্ঞানের ভূগোল দেখে। কোথায় পাহাড় (গভীর জ্ঞান), কোথায় উপত্যকা (সংযোগ), কোথায় মরু (ফাঁকা)। ফিহরিস্ত — জ্ঞানের ভূগোল।</div>
 <div class="dialogue en">"Fihrist — index, catalog, map. Allah says — 'We have explained everything in detail.' (17:12). Explanation = fihrist — each thing in its specific place, specific relationship. A concept map is knowledge's fihrist — each concept's place, each relationship's direction. One who maps, sees the geography of knowledge. Where are mountains (deep knowledge), valleys (connections), deserts (gaps). Fihrist — the geography of knowledge."</div>`,
   senior:{
@@ -104,6 +163,33 @@ doors.push({
 <div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার intersection খোঁজা:</strong> ① দুটো শক্তিশালী domain চিনে নাও (কোন ২ বই সবচেয়ে resonate করেছে?)। ② overlap খোঁজো — সীমানায় কোন সমস্যা? ③ no-man\'s-land explore করো — এখানে এখনো কেউ থাকে না, তুমি প্রথম হতে পারো। ④ সেখানে কিছু বানাও (project/paper/product)।</div></div>
 <div class="callout info"><span class="co-icon">🏆</span><div><strong>কেন intersection > depth:</strong> এক ক্ষেত্রে গভীরতায় তুমি ১০,০০০ expert-এর সাথে প্রতিযোগিতা করো; intersection-এ তুমি প্রায় একা — প্রতিযোগিতা নয়, <em>সৃষ্টি</em>। এটাই Munger-এর latticework-এর শক্তি, আর Book 23-এর "unique combination = irreplaceable" গড়ার উপায়।</div></div>
 
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Medici intersection diagram">
+  <defs>
+    <radialGradient id="d8left" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#22d3ee"/>
+    </radialGradient>
+    <radialGradient id="d8right" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ade80"/><stop offset="100%" stop-color="#22c55e"/>
+    </radialGradient>
+    <radialGradient id="d8inter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fcd34d"/><stop offset="100%" stop-color="#fbbf24"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="125" r="42" fill="url(#d8left)" opacity="0.85"/>
+  <circle cx="480" cy="125" r="42" fill="url(#d8right)" opacity="0.85"/>
+  <circle cx="290" cy="125" r="55" fill="url(#d8inter)" opacity="0.9"/>
+  <text x="100" y="120" text-anchor="middle" font-size="11" fill="#0a1a1f" font-weight="700">Biology</text>
+  <text x="100" y="138" text-anchor="middle" font-size="8" fill="#0a1a1f">(গভীর)</text>
+  <text x="480" y="120" text-anchor="middle" font-size="11" fill="#0a1a1f" font-weight="700">CS</text>
+  <text x="480" y="138" text-anchor="middle" font-size="8" fill="#0a1a1f">(গভীর)</text>
+  <text x="290" y="120" text-anchor="middle" font-size="11" fill="#0a1a1f" font-weight="900">intersection</text>
+  <text x="290" y="138" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">innovator</text>
+  <text x="100" y="195" text-anchor="middle" font-size="9" fill="#7dd3fc">expert</text>
+  <text x="480" y="195" text-anchor="middle" font-size="9" fill="#4ade80">expert</text>
+  <text x="290" y="205" text-anchor="middle" font-size="10" fill="#fbbf24" font-weight="700">= নতুন ক্ষেত্র সৃষ্টি</text>
+  <text x="290" y="240" text-anchor="middle" font-size="11" fill="#fbbf24" font-weight="700">দুটো ক্ষেত্রের সংযোগস্থলেই সবচেয়ে বড় innovation</text>
+</svg></div><div class="svg-caption">সংযোগস্থল — Medici Effect: দুটো ক্ষেত্রের intersection-এ জন্ম নেয় নতুন জ্ঞান</div>
+
 <div class="dialogue">বিনা — building, construction, architecture। কুরআনে আল্লাহ বলেন — "যিনি সৃষ্টি করেছেন এবং নিয়মে বেঁধেছেন।" (৮৭:২)। নিয়মে বাঁধা = বিনা। Medici Effect-ও বিনা — ভিন্ন ক্ষেত্রের নিয়ম একসাথে বাঁধা। যে বিনা করে — সে নির্মাণ করে। যে অন্যের পথে হাঁটে, সে অনুসরণ করে। intersection এ বিনা করো — নতুন জ্ঞানের স্থাপত্য।</div>
 <div class="dialogue en">"Bina — building, construction. Allah says — 'Who created and proportioned.' (87:2). Proportioning = bina. The Medici Effect too is bina — binding different fields' rules together. One who does bina — constructs. One who follows others' paths — imitates. Build at intersections — new architecture of knowledge."</div>`,
   senior:{
@@ -139,6 +225,38 @@ doors.push({
 <tr><td>Individual effort</td><td>Systems/structures</td><td>system-এর মধ্যে cultivated agency</td></tr></table>
 <div class="callout tip"><span class="co-icon">🧩</span><div><strong>Fitzgerald-এর বুদ্ধিমত্তার পরীক্ষা:</strong> "প্রথম-শ্রেণির বুদ্ধির পরীক্ষা হলো দুটো বিপরীত ধারণা একসাথে মনে ধরে রাখতে পারা, তবু কাজ করতে পারা।" চর্চা: either/or সিদ্ধান্তে — ① thesis লেখো ② antithesis লেখো ③ প্রতিটা কখন সঠিক? ④ কোন উচ্চতর framework দুটোকেই ধারণ করে? উদাহরণ — "AI নাকি full-stack?" → synthesis: "AI-augmented full-stack — AI-তে গভীর, কিন্তু সম্পূর্ণ AI product বানানোর full-stack দক্ষতা।" (Zen koan-ও এই binary-ভাঙার চর্চা — আসল প্রশ্ন "কোনটা?" নয়, "এই context-এ সঠিক trade-off কী?")</div></div>
 
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dialectical thesis antithesis synthesis">
+  <defs>
+    <radialGradient id="d9thesis" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#22d3ee"/>
+    </radialGradient>
+    <radialGradient id="d9anti" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ade80"/><stop offset="100%" stop-color="#22c55e"/>
+    </radialGradient>
+    <radialGradient id="d9synth" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fcd34d"/><stop offset="100%" stop-color="#fbbf24"/>
+    </radialGradient>
+  </defs>
+  <path d="M 130 80 Q 200 40 270 80" fill="none" stroke="#3dd6c4" stroke-width="1.5" opacity="0.5" stroke-dasharray="4 4"/>
+  <path d="M 130 180 Q 200 220 270 180" fill="none" stroke="#3dd6c4" stroke-width="1.5" opacity="0.5" stroke-dasharray="4 4"/>
+  <line x1="130" y1="80" x2="130" y2="180" stroke="#fbbf24" stroke-width="2" opacity="0.7" stroke-dasharray="6 4"/>
+  <text x="100" y="130" text-anchor="middle" font-size="10" fill="#fbbf24" font-weight="700">সংঘর্ষ</text>
+  <line x1="155" y1="80" x2="290" y2="125" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="155" y1="180" x2="290" y2="125" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="130" cy="80" r="26" fill="url(#d9thesis)"/>
+  <circle cx="130" cy="180" r="26" fill="url(#d9anti)"/>
+  <circle cx="350" cy="125" r="34" fill="url(#d9synth)"/>
+  <text x="130" y="85" text-anchor="middle" font-size="9" fill="#0a1a1f" font-weight="700">Thesis</text>
+  <text x="130" y="185" text-anchor="middle" font-size="8" fill="#0a1a1f" font-weight="700">Antithesis</text>
+  <text x="350" y="120" text-anchor="middle" font-size="10" fill="#0a1a1f" font-weight="700">Synthesis</text>
+  <text x="350" y="138" text-anchor="middle" font-size="8" fill="#0a1a1f">(উচ্চতর)</text>
+  <text x="475" y="115" text-anchor="middle" font-size="9" fill="#7dd3fc">speed</text>
+  <text x="475" y="145" text-anchor="middle" font-size="9" fill="#4ade80">safety</text>
+  <text x="475" y="130" text-anchor="middle" font-size="8" fill="#fcd34d">→ উভয়</text>
+  <text x="290" y="225" text-anchor="middle" font-size="9" fill="#fcd34d">বিপরীত ধারণার সংঘর্ষ → উচ্চতর সত্য</text>
+  <text x="290" y="240" text-anchor="middle" font-size="11" fill="#fbbf24" font-weight="700">দুটো বিপরীত ধারণা একসাথে ধরলে synthesis জন্ম নেয়</text>
+</svg></div><div class="svg-caption">সংশ্লেষণ — Hegel-এর dialectic: thesis + antithesis → উচ্চতর synthesis</div>
+
 <div class="dialogue">তাহকিক — verified truth through investigation। কুরআনে আল্লাহ বলেন — "তোমরা যাচাই না করে প্রতিটা খবর বিশ্বাস করো না।" (৪৯:৬)। তাহকিক শুধু একটা সত্য যাচাই নয় — বিপরীত সত্য একসাথে দেখা। optimization সত্য। safety-ও সত্য। দুটো বিপরীত। কিন্তু তাহকিক করলে দেখো — প্রসঙ্গে ভিত্তি করে দুটোই সত্য। synthesis = প্রসঙ্গ-নির্ভর সত্য। যে তাহকিক করে, সে either/or এ আটকে না। সে synthesis দেখে।</div>
 <div class="dialogue en">"Tahqiq — verified truth through investigation. Allah says — 'Do not accept any news without verification.' (49:6). Tahqiq is not just verifying one truth — it's seeing opposing truths together. Optimization is true. Safety is true. Two opposites. But with tahqiq you see — depending on context, both are true. Synthesis = context-dependent truth. One who does tahqiq doesn't get stuck in either/or. They see synthesis."</div>`,
   senior:{
@@ -173,6 +291,47 @@ doors.push({
 <div class="callout info"><span class="co-icon">🌌</span><div><strong>চূড়ান্ত সমীকরণ:</strong> Knowledge = nodes (যা জানো) · Understanding = edges (কীভাবে যুক্ত) · Wisdom = হিকমাহ (সংযুক্ত সমগ্রের প্রয়োগ)। ২৭ বই সংযোগ ছাড়া = information rich, understanding poor; সংযোগসহ = information rich + understanding deep; সংযোগ + প্রয়োগ = <strong>হিকমাহ</strong>। পার্থক্য — যে ২৭ বই পড়েছে (informed), যে ২৭ বই সংযুক্ত করেছে (understanding), আর যে সংযুক্ত জ্ঞান <em>প্রয়োগ</em> করে (হিকমাহ)।</div></div>
 
 <div class="verse">"যাকে হিকমাহ দেওয়া হয়েছে, তাকে প্রচুর কল্যাণ দেওয়া হয়েছে। কিন্তু যারা বুদ্ধিমান, তারা ছাড়া কেউ উপদেশ গ্রহণ করে না।"<br>— কুরআন ২:২৬৯<br><br>এই বই ছিল সংযোগের যাত্রা — বিচ্ছিন্ন দ্বীপ থেকে জীবন্ত জাল। নয়টি দরজায় নয়টি সেতু। Gentner-এর analogy, Munger-এর latticework, Kounios-এর insight, Hofstadter-এর pattern, Novak-এর concept map, Johansson-এর Medici Effect, Hegel-এর synthesis। সব এক দিকে নির্দেশ করে — জ্ঞান বিচ্ছিন্ন নয়, সংযুক্ত। যে সংযুক্ত করে, সে বোঝে। যে বোঝে, সে সৃষ্টি করে। যে সৃষ্টি করে, সে অবিচ্ছেয্য। হিকমাহ — সংযুক্ত জ্ঞানের প্রয়োগ। এটাই জ্ঞানের সুলতান।</div>
+
+<div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Complete knowledge web mastery">
+  <defs>
+    <radialGradient id="d10node" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#22d3ee"/>
+    </radialGradient>
+    <radialGradient id="d10core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fcd34d"/><stop offset="100%" stop-color="#fbbf24"/>
+    </radialGradient>
+    <radialGradient id="d10green" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ade80"/><stop offset="100%" stop-color="#22c55e"/>
+    </radialGradient>
+  </defs>
+  <line x1="290" y1="125" x2="100" y2="60" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="290" y1="125" x2="480" y2="60" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="290" y1="125" x2="100" y2="190" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="290" y1="125" x2="480" y2="190" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="290" y1="125" x2="180" y2="125" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="290" y1="125" x2="400" y2="125" stroke="#3dd6c4" stroke-width="1.5" opacity="0.6"/>
+  <line x1="100" y1="60" x2="480" y2="60" stroke="#3dd6c4" stroke-width="1" opacity="0.3" stroke-dasharray="3 4"/>
+  <line x1="100" y1="190" x2="480" y2="190" stroke="#3dd6c4" stroke-width="1" opacity="0.3" stroke-dasharray="3 4"/>
+  <line x1="100" y1="60" x2="100" y2="190" stroke="#3dd6c4" stroke-width="1" opacity="0.3" stroke-dasharray="3 4"/>
+  <line x1="480" y1="60" x2="480" y2="190" stroke="#3dd6c4" stroke-width="1" opacity="0.3" stroke-dasharray="3 4"/>
+  <line x1="180" y1="125" x2="400" y2="125" stroke="#fbbf24" stroke-width="1.5" opacity="0.5" stroke-dasharray="4 3"/>
+  <circle cx="290" cy="125" r="34" fill="url(#d10core)"/>
+  <circle cx="100" cy="60" r="18" fill="url(#d10node)"/>
+  <circle cx="480" cy="60" r="18" fill="url(#d10node)"/>
+  <circle cx="100" cy="190" r="18" fill="url(#d10node)"/>
+  <circle cx="480" cy="190" r="18" fill="url(#d10node)"/>
+  <circle cx="180" cy="125" r="16" fill="url(#d10green)"/>
+  <circle cx="400" cy="125" r="16" fill="url(#d10green)"/>
+  <text x="290" y="121" text-anchor="middle" font-size="11" fill="#0a1a1f" font-weight="900">হিকমাহ</text>
+  <text x="290" y="137" text-anchor="middle" font-size="8" fill="#0a1a1f">প্রয়োগ</text>
+  <text x="100" y="65" text-anchor="middle" font-size="8" fill="#0a1a1f" font-weight="700">সিলসিলা</text>
+  <text x="480" y="65" text-anchor="middle" font-size="8" fill="#0a1a1f" font-weight="700">আয়ত</text>
+  <text x="100" y="195" text-anchor="middle" font-size="8" fill="#0a1a1f" font-weight="700">তালাশ</text>
+  <text x="480" y="195" text-anchor="middle" font-size="8" fill="#0a1a1f" font-weight="700">বিনা</text>
+  <text x="180" y="129" text-anchor="middle" font-size="8" fill="#0a1a1f" font-weight="700">ইলহাম</text>
+  <text x="400" y="129" text-anchor="middle" font-size="7" fill="#0a1a1f" font-weight="700">তাহকিক</text>
+  <text x="290" y="240" text-anchor="middle" font-size="11" fill="#fbbf24" font-weight="700">৯টি দরজা · ২৭টি বই · একটি জাল · হিকমাহ</text>
+</svg></div><div class="svg-caption">জ্ঞানের সুলতান — নয়টি দরজার সব আধ্যাত্মিক নীতি এক জীবন্ত জালে সংযুক্ত</div>
 
 <div class="secret-box"><div class="label">দশম দরজা — সমন্বয়</div><div class="text">🌌 Knowledge Sultan = Recognize + Connect + Weave + Gap + Insight + Pattern + Map + Intersect + Synthesize + Apply।<br><small>২৭টা বই = ২৭টা আলো। সংযোগ = সেতু। জাল = জ্ঞান। হিকমাহ = সংযুক্ত জ্ঞানের প্রয়োগ। তুমি এখন জ্ঞানের সুলতান।</small></div></div>`
 });
