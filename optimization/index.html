@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>দ্য কম্পাস অফ অপটিমাইজেশন — The Compass of Optimization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Noto+Sans+Bengali:wght@400;600;700&family=Amiri:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<!-- Title Screen -->
+<div id="title-screen" class="title-screen">
+  <div class="title-content">
+    <div class="title-arabic">طَرِيقُ الْأَفْضَل</div>
+    <h1 class="title-main">The Compass of Optimization</h1>
+    <div class="title-sub">অপটিমাইজেশনের কম্পাস</div>
+    <div class="title-desc">
+      সেরা পথ খোঁজো — গ্রেডিয়েন্ট ডিসেন্ট থেকে Adam পর্যন্ত, উতলা উপত্যকা থেকে অ-উতল পর্বত পর্যন্ত। প্রতিটি ML মডেল, প্রতিটি সিদ্ধান্ত, প্রতিটি রাস্তা — সবকিছু অপটিমাইজেশন।
+      <span class="en">From Cauchy's gradient descent (1847) to Kingma's Adam (2014), the mathematical engine beneath all machine learning — convex bowls, non-convex mountains, constrained balance.</span>
+    </div>
+    <button class="start-btn" onclick="startGame()">শুরু করো — Begin</button>
+  </div>
+</div>
+
+<!-- Prologue -->
+<div id="prologue" class="prologue hidden">
+  <div class="prologue-inner">
+    <h2 class="prologue-title">প্রস্তাবনা — Prologue</h2>
+    <div class="prologue-body">
+      <p>তুমি একটি পাহাড়ের চূড়ায় দাঁড়িয়ে আছো। চোখ বাঁধা। তোমার লক্ষ্য — সবচেয়ে নিচু উপত্যকায় পৌঁছানো। তুমি পা রাখো, ঢাল অনুভব করো, নিচের দিকে যাও। কিন্তু কোন দিকে সবচেয়ে নিচু? এক পা ডানে — ঢাল বেশি। এক পা বাঁয়ে — কম। তুমি ডানে যাও। আবার অনুভব করো। আবার পা রাখো। এভাবে — ধাপে ধাপে — তুমি নিচে পৌঁছাও। এটাই গ্রেডিয়েন্ট ডিসেন্ট।</p>
+      <p class="en">You stand on a mountaintop, blindfolded. Your goal — reach the lowest valley. You place your foot, feel the slope, go downhill. But which direction is steepest? One step right — slope is steep. One step left — less. You go right. Feel again. Step again. Step by step, you descend. This is gradient descent.</p>
+
+      <p>এই বই শেখায় কীভাবে সেরা পথ খুঁজতে হয় — গণিতের ভাষায়। Al-Khwarizmi (৭৮০-৮৫০) বাগদাদে বীজগণিত আবিষ্কার করেছিলেন "সম্পূর্ণতা" (al-jabr) খুঁজতে। Cauchy (১৮৪৭) প্রথম গ্রেডিয়েন্ট ডিসেন্ট লিখেছিলেন। Robbins ও Monro (১৯৫১) শুয়ে যাওয়ার পথ বদলে দিলেন — stochastic। Kingma ও Ba (২০১৪) Adam বানালেন — momentum + adaptation।</p>
+      <p class="en">This book teaches how to find the best path — in the language of mathematics. From Al-Khwarizmi's algebra to Kingma's Adam, 1200 years of optimization theory condensed into 10 doors.</p>
+
+      <p><strong>এই বই কাদের জন্য:</strong> ML গবেষক, PhD আবেদনকারী, যে কেউ backpropagation কী তা শুধু ব্যবহার না করে বুঝতে চায়। Book ৩০ (Math for ML) ও Book ৩১ (Classic ML)-এর পর এই বই আসে — গভীরে।</p>
+      <p class="en"><strong>Prerequisites:</strong> Book 30 (Math for ML) — calculus, vectors, derivatives. Book 31 (Classic ML) — loss functions. This book goes DEEPER into the optimization engine beneath both.</p>
+
+      <div class="callout warn" style="margin-top:1.5rem"><span class="co-icon">📚</span><div><strong>পূর্বশর্ত:</strong> এই বইয়ের আগে Book ৩০ (গণিতের কম্পাস) পড়া প্রয়োজন — বিশেষ করে ডেরিভেটিভ, গ্রেডিয়েন্ট, ও চেইন রুল। Book ৩১ (ক্লাসিক ML)-এ লস ফাংশন দেখেছো — এখানে বুঝবে সেই লস কীভাবে কমানো হয়।</div></div>
+    </div>
+    <button class="start-btn" onclick="enterGame()" style="margin-top:1.5rem">প্রবেশ করো — Enter</button>
+  </div>
+</div>
+
+<!-- HUD -->
+<div id="hud" class="hud hidden">
+  <button class="hud-btn" onclick="goHome()">🏠</button>
+  <div class="hud-info">
+    <div class="hud-rank" id="hud-rank">🧭 সন্ধানী পথিক</div>
+    <div class="hud-level">Level <span id="hud-level">1</span></div>
+  </div>
+  <div class="hud-xp">
+    <div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div>
+    <div class="hud-xp-text"><span id="hud-xp">0</span> / 1000 XP</div>
+  </div>
+  <button class="hud-btn" onclick="confirmReset()">🔄</button>
+</div>
+
+<!-- Door Map -->
+<div id="door-map" class="door-map hidden">
+  <div class="map-header">
+    <h2>দ্য কম্পাস অফ অপটিমাইজেশন</h2>
+    <p>দশটি দরজা — সেরা পথ খোঁড়ার দশটি ধাপ</p>
+  </div>
+  <div class="doors-grid" id="doors-grid"></div>
+  <button class="back-btn" onclick="goHome()">← হোমে ফিরে যাও</button>
+</div>
+
+<!-- Story View -->
+<div id="story-view" class="story-view hidden">
+  <div class="story-progress" id="story-progress">Door 1 of 10</div>
+  <div class="story-text" id="story-text"></div>
+  <div class="story-nav">
+    <button class="back-btn" onclick="goHome()">← ফিরে যাও</button>
+    <button class="next-btn" id="next-btn" onclick="completeDoor()">পরবর্তী দরজা →</button>
+  </div>
+  <div id="senior-insight" class="senior-insight hidden">
+    <div class="label">🎯 Quick Guide</div>
+    <div class="title" id="senior-title"></div>
+    <div class="body" id="senior-body"></div>
+  </div>
+</div>
+
+<!-- Cheat Sheet -->
+<div id="cheat-sheet" class="cheat-sheet hidden">
+  <div class="cs-header">
+    <h2>📜 সম্পূর্ণ সারাংশ — Complete Cheat Sheet</h2>
+    <p>দশ দরজার সমস্ত রহস্য এক নজরে</p>
+  </div>
+  <div class="cs-grid" id="cs-grid"></div>
+  <button class="back-btn" onclick="goHome()">← হোমে ফিরে যাও</button>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
