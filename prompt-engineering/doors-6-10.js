@@ -368,6 +368,31 @@ doors.push({
 <div class="dialogue">ঢাল নির্মাতা বলেছিলেন — সুরক্ষা দাও। কিন্তু আমি বলি — সুরক্ষিত মডেলকে একটা লুপে চালাও। ReAct — Reason + Act। মডেল একবার উত্তর দিয়ে থেমে যায় না। সে ভাবে, টুল ব্যবহার করে, ফলাফল দেখে, আবার ভাবে। এই লুপে সে নিজে নিজে কাজ করে — একটা এজেন্ট।</div>
 <div class="dialogue en">"The shield smith said — give defense. But I say — run the defended model in a loop. ReAct — Reason + Act. The model doesn't answer once and stop. It thinks, uses tools, sees results, thinks again. In this loop it works autonomously — an agent."</div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a"/>
+  <text x="290" y="38" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="bold">ReAct লুপ — Reason + Act</text>
+  <circle cx="120" cy="125" r="42" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="120" y="120" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Thought</text>
+  <text x="120" y="138" text-anchor="middle" fill="#7dd3fc" font-size="9">ভাবো</text>
+  <line x1="162" y1="125" x2="218" y2="125" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrD9)"/>
+  <circle cx="260" cy="125" r="42" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
+  <text x="260" y="120" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="bold">Action</text>
+  <text x="260" y="138" text-anchor="middle" fill="#fcd34d" font-size="9">টুল চালাও</text>
+  <line x1="302" y1="125" x2="358" y2="125" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrD9)"/>
+  <circle cx="400" cy="125" r="42" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
+  <text x="400" y="120" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">Observe</text>
+  <text x="400" y="138" text-anchor="middle" fill="#7dd3fc" font-size="9">ফলাফল দেখো</text>
+  <path d="M 400 83 Q 260 30 120 83" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrD9b)"/>
+  <text x="260" y="58" text-anchor="middle" fill="#4ade80" font-size="9">পুনরায় ভাবো (লুপ)</text>
+  <rect x="470" y="100" width="90" height="50" rx="8" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+  <text x="515" y="122" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">চূড়ান্ত</text>
+  <text x="515" y="138" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">উত্তর</text>
+  <defs><marker id="arrD9" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fbbf24"/></marker><marker id="arrD9b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#22c55e"/></marker></defs>
+</svg>
+</div>
+<div class="svg-caption">এজেন্ট লুপ: ভাবো → কাজ করো → দেখো → আবার ভাবো — এই চক্রে LLM নিজে টুল ব্যবহার করে স্বয়ংক্রিয়ভাবে কাজ করে</div>
+
 <div class="code-block">Agent Loops — From Chatbot to Autonomous Agent:
 
 TRADITIONAL (Single-Turn):
@@ -457,6 +482,36 @@ doors.push({
 
 <div class="dialogue">নয়টি কারিগরি পেরিয়েছ। মুদ্রা কারিগর বলেছিলেন, টোকেন গোনো। চুল্লির কারিগর বলেছিলেন, তাপ নিয়ন্ত্রণ। নকশা কারিগর বলেছিলেন, সিস্টেম প্রম্পট। শৃঙ্খল নির্মাতা বলেছিলেন, চিন্তার শৃঙ্খল। মুখোশ কারিগর বলেছিলেন, উদাহরণ দেখাও। পাত্র নির্মাতা বলেছিলেন, কাঠামো দাও। স্থপতি বলেছিলেন, স্থান পরিচালনা করো। ঢাল নির্মাতা বলেছিলেন, সুরক্ষা দাও। স্বয়ংক্রিয় কারিগর বলেছিলেন, লুপে চালাও। কিন্তু এখন — গোপন কথা।</div>
 <div class="dialogue en">"You've passed nine stations. The coin minter said, count tokens. The furnace controller said, control temperature. The blueprint designer said, system prompt. The chain maker said, thought chain. The mask maker said, show examples. The container maker said, give structure. The architect said, manage space. The shield smith said, give defense. The automaton maker said, run in loops. But now — the secrets."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <rect x="0" y="0" width="580" height="250" fill="#0f172a"/>
+  <text x="290" y="34" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="bold">১০টি কারিগরি — সর্বমোট সংশ্লেষণ</text>
+  <circle cx="290" cy="135" r="44" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
+  <text x="290" y="131" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="bold">মাস্টার</text>
+  <text x="290" y="148" text-anchor="middle" fill="#4ade80" font-size="9">সির</text>
+  <g font-size="9" fill="#7dd3fc" text-anchor="middle">
+    <circle cx="80" cy="60" r="18" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="80" y="64">টোকেন</text>
+    <circle cx="200" cy="48" r="18" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="200" y="52">তাপ</text>
+    <circle cx="380" cy="48" r="18" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="380" y="52">সিস্টেম</text>
+    <circle cx="500" cy="60" r="18" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="500" y="64">CoT</text>
+    <circle cx="60" cy="135" r="18" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="60" y="139">উদাহরণ</text>
+    <circle cx="520" cy="135" r="18" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="520" y="139">JSON</text>
+    <circle cx="80" cy="210" r="18" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="80" y="214">RAG</text>
+    <circle cx="200" cy="222" r="18" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="200" y="226">সুরক্ষা</text>
+    <circle cx="380" cy="222" r="18" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="380" y="226">এজেন্ট</text>
+    <circle cx="500" cy="210" r="18" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/><text x="500" y="214">ফ্রন্টিয়ার</text>
+  </g>
+  <g stroke="#fbbf24" stroke-width="1" opacity="0.5" fill="none">
+    <line x1="96" y1="72" x2="252" y2="115"/><line x1="214" y1="62" x2="258" y2="105"/>
+    <line x1="366" y1="62" x2="322" y2="105"/><line x1="484" y1="72" x2="328" y2="115"/>
+    <line x1="78" y1="135" x2="246" y2="135"/><line x1="502" y1="135" x2="334" y2="135"/>
+    <line x1="96" y1="198" x2="252" y2="155"/><line x1="214" y1="208" x2="258" y2="165"/>
+    <line x1="366" y1="208" x2="322" y2="165"/><line x1="484" y1="198" x2="328" y2="155"/>
+  </g>
+</svg>
+</div>
+<div class="svg-caption">সংশ্লেষণ: দশটি দক্ষতা একত্রে — টোকেন, তাপ, সিস্টেম, চিন্তা, উদাহরণ, কাঠামো, প্রসঙ্গ, সুরক্ষা, এজেন্ট, ফ্রন্টিয়ার সিক্রেট মিলে গভীর দক্ষতা তৈরি করে</div>
 
 <div class="code-block">FRONTIER SECRETS — What Providers Won't Tell You:
 

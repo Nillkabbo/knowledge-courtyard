@@ -816,7 +816,72 @@ COMPARISON:
   └────────┴────────┴────────┴────────┴────────┘
 
 <div class="dialogue">তরবিয়ত — systematic education, training method। কুরআনে আল্লাহ বলেন — "পবিত্র করো তাদের, শিক্ষা দাও তাদের কিতাব ও প্রজ্ঞা।" (৬২:২)। শিক্ষার পদ্ধতি আলাদা — কেউ নকল করে শেখে, কেউ তুলনায়, কেউ পুরস্কারে। Fine-tuning-এও তেমনি — কাজ অনুযায়ী পদ্ধতি বেছে নাও। সঠিক পদ্ধতি = সঠিক ফল।</div>
-<div class="dialogue en">"Tarbiyat — systematic education, training method. Allah says — 'Purify them, teach them the Book and wisdom.' (62:2). Education methods differ — some learn by imitation, some by comparison, some by reward. In fine-tuning too — choose method per task. Right method = right result."</div>`,
+<div class="dialogue en">"Tarbiyat — systematic education, training method. Allah says — 'Purify them, teach them the Book and wisdom.' (62:2). Education methods differ — some learn by imitation, some by comparison, some by reward. In fine-tuning too — choose method per task. Right method = right result."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" style="background:#0f172a;border-radius:12px">
+  <defs>
+    <linearGradient id="ft5bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e293b"/></linearGradient>
+    <marker id="ft5arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L8,5 L0,10 Z" fill="#7dd3fc"/></marker>
+  </defs>
+  <rect width="800" height="450" fill="url(#ft5bg)" rx="12"/>
+  <text x="400" y="32" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" font-weight="700" fill="#22d3ee">RLHF Pipeline — Instruction Tuning &#8594; Alignment</text>
+  <text x="400" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">তরবিয়ত — পদ্ধতিগত শিক্ষা</text>
+  <rect x="30" y="75" width="160" height="110" rx="10" fill="#1e293b" stroke="#4ade80" stroke-width="2"/>
+  <text x="110" y="98" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#4ade80">Base LLM</text>
+  <text x="110" y="118" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7f3d0">Pre-trained</text>
+  <text x="110" y="136" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7f3d0">General purpose</text>
+  <text x="110" y="158" text-anchor="middle" font-family="monospace" font-size="10" fill="#fbbf24">Llama, GPT base</text>
+  <text x="110" y="176" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">(no alignment)</text>
+  <line x1="190" y1="130" x2="240" y2="130" stroke="#7dd3fc" stroke-width="2" marker-end="url(#ft5arr)"/>
+  <rect x="250" y="75" width="170" height="110" rx="10" fill="#1e293b" stroke="#22d3ee" stroke-width="2"/>
+  <text x="335" y="98" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#22d3ee">Step 1: SFT</text>
+  <text x="335" y="118" text-anchor="middle" font-family="monospace" font-size="10" fill="#7dd3fc">Instruction tuning</text>
+  <text x="335" y="138" text-anchor="middle" font-family="monospace" font-size="10" fill="#7dd3fc">{Q &#8594; correct A}</text>
+  <text x="335" y="158" text-anchor="middle" font-family="monospace" font-size="10" fill="#fbbf24">CrossEntropy loss</text>
+  <text x="335" y="176" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">৯০% use cases</text>
+  <line x1="420" y1="130" x2="470" y2="130" stroke="#7dd3fc" stroke-width="2" marker-end="url(#ft5arr)"/>
+  <rect x="480" y="75" width="170" height="110" rx="10" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+  <text x="565" y="98" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Step 2: DPO</text>
+  <text x="565" y="118" text-anchor="middle" font-family="monospace" font-size="10" fill="#fcd34d">Preference learning</text>
+  <text x="565" y="138" text-anchor="middle" font-family="monospace" font-size="10" fill="#fcd34d">{Q, chosen, rejected}</text>
+  <text x="565" y="158" text-anchor="middle" font-family="monospace" font-size="10" fill="#fbbf24">Contrastive loss</text>
+  <text x="565" y="176" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">No reward model</text>
+  <line x1="650" y1="130" x2="700" y2="130" stroke="#7dd3fc" stroke-width="2" marker-end="url(#ft5arr)"/>
+  <rect x="710" y="75" width="60" height="110" rx="10" fill="#1e293b" stroke="#4ade80" stroke-width="2.5"/>
+  <text x="740" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#4ade80">Aligned</text>
+  <text x="740" y="128" text-anchor="middle" font-family="monospace" font-size="16" fill="#4ade80">&#9889;</text>
+  <text x="740" y="150" text-anchor="middle" font-family="monospace" font-size="9" fill="#a7f3d0">ChatGPT-</text>
+  <text x="740" y="164" text-anchor="middle" font-family="monospace" font-size="9" fill="#a7f3d0">style</text>
+  <text x="400" y="215" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Alternative: Full RLHF (PPO/GRPO)</text>
+  <rect x="100" y="230" width="150" height="70" rx="8" fill="#1e293b" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="175" y="252" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#22d3ee">SFT Model</text>
+  <text x="175" y="272" text-anchor="middle" font-family="monospace" font-size="10" fill="#7dd3fc">from Step 1</text>
+  <text x="175" y="290" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">(policy)</text>
+  <line x1="250" y1="265" x2="290" y2="265" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#ft5arr)"/>
+  <rect x="300" y="230" width="150" height="70" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="375" y="252" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Reward Model</text>
+  <text x="375" y="272" text-anchor="middle" font-family="monospace" font-size="10" fill="#fcd34d">trained on rankings</text>
+  <text x="375" y="290" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">scores outputs</text>
+  <line x1="450" y1="265" x2="490" y2="265" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#ft5arr)"/>
+  <rect x="500" y="230" width="150" height="70" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="575" y="252" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4ade80">PPO / GRPO</text>
+  <text x="575" y="272" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7f3d0">optimize policy</text>
+  <text x="575" y="290" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">maximize reward</text>
+  <line x1="650" y1="265" x2="690" y2="265" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#ft5arr)"/>
+  <rect x="700" y="230" width="70" height="70" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="2.5"/>
+  <text x="735" y="260" text-anchor="middle" font-family="monospace" font-size="14" fill="#4ade80">&#9889;</text>
+  <text x="735" y="280" text-anchor="middle" font-family="monospace" font-size="9" fill="#a7f3d0">RLHF</text>
+  <rect x="30" y="325" width="740" height="105" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="400" y="348" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Comparison</text>
+  <text x="50" y="370" font-family="monospace" font-size="11" fill="#4ade80">SFT: সহজ, $, stable &#8594; ভালো (৯০% ক্ষেত্রে যথেষ্ট)</text>
+  <text x="50" y="388" font-family="monospace" font-size="11" fill="#fbbf24">DPO: মাঝারি, $$, stable &#8594; উন্নত (preference refinement)</text>
+  <text x="50" y="406" font-family="monospace" font-size="11" fill="#22d3ee">PPO: জটিল, $$$$, tricky &#8594; সেরা (ChatGPT পদ্ধতি)</text>
+  <text x="50" y="424" font-family="monospace" font-size="11" fill="#7dd3fc">GRPO: নতুন, $$$, stable &#8594; সেরা (DeepSeek-R1, reasoning 2025)</text>
+</svg>
+</div>
+
+`,
   senior:{
     title:"Method Selection — তোমার প্রজেক্টে",
     body:`<p><strong>প্রথম fine-tuning?</strong> → SFT। সহজ, well-documented, ৯০% ক্ষেত্রে যথেষ্ট।</p><p><strong>SFT ভালো কিন্তু আরও ভালো চাও?</strong> → DPO। SFT model-কে preference data দিয়ে refine করো।</p><p><strong>Production alignment?</strong> → PPO বা RLHF। কিন্তু জটিল, সম্পদ চায়। একা ট্রাই করবে না।</p><p><strong>Reasoning model বানাতে চাও (2025)?</strong> → GRPO (DeepSeek-R1 এর পদ্ধতি)। PPO-এর চেয়ে সহজ, value model লাগে না।</p><p><strong>2024-2025 trend:</strong> DPO SFT-এর পরে স্ট্যান্ডার্ড। GRPO reasoning model-এ standard (DeepSeek-R1, o1-style)।</p>`
