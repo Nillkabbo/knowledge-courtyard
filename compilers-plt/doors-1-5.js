@@ -1,489 +1,386 @@
 const doors = [];
 
-// ═══════════════════════════════════════════
-// DOOR 1 — The Word Breaker (Lexer/Tokenizer)
-// ═══════════════════════════════════════════
 doors.push({
   num: 1,
   icon: "📝",
-  color: "#0ea5e9",
-  tagline: "শব্দ ভাঙা — Breaking Words",
-  name: "The Word Breaker",
-  secret: "Lexer = একটা DFA। প্রতিটা character পড়ে, state change করে, token তৈরি করে।",
-  story: `<p class="scene-setting">তুমি একটা বিদেশি ভাষা পড়ছ। প্রথমে তোমাকে শব্দ চেনো — কোথায় একটা শব্দ শেষ, কোথায় শুরু। একটা sentence: <code>x = 3 + 4</code>। কম্পিউটার এটাকে character হিসেবে দেখে — <code>x</code>, <code> </code>, <code>=</code>, <code> </code>, <code>3</code>... Lexer এই character stream কে meaningful tokens এ ভাগ করে।</p>
-<p class="scene-setting en">A lexer (tokenizer) reads raw source code character-by-character and converts it into a stream of categorized tokens using a Deterministic Finite Automaton (DFA). Regular expressions define token patterns.</p>
+  color: "#f97316",
+  name: "শব্দ ভাঙার শিল্প",
+  subtitle: "The Art of Breaking Words",
+  tech: "Lexical Analysis (Lexer/Tokenizer) — regular expressions, DFA, token types, flex/lexer generators",
+  spirit: "কালাম — কলম, অক্ষর থেকে অর্থের সৃষ্টি",
+  secret: "Lexer = একটি DFA। প্রতিটি character পড়ে, state change করে, token তৈরি করে। x = 3 + 4 হয়ে যায়: ID(x) ASSIGN NUM(3) PLUS NUM(4)। অক্ষর থেকে শব্দ।",
+  recall: {
+    q: " Lexer ও Parser-এর পার্থক্য কী? Token কী?",
+    qen: "What is the difference between a lexer and a parser? What is a token?",
+    a: "Lexer = অক্ষর থেকে token (ID, NUM, OP)। Parser = token থেকে AST (গাছ)। Token = শ্রেণীবদ্ধ অক্ষর গোষ্ঠী।",
+    aen: "Lexer = characters to tokens (ID, NUM, OP). Parser = tokens to AST (tree). Token = categorized group of characters."
+  },
+  story: `<p class="scene-setting">তুমি একটি বিদেশি ভাষা পড়ছ। প্রথমে তোমাকে শব্দ চেনো — কোথায় একটা শব্দ শেষ, কোথায় শুরু। <code>x = 3 + 4</code> — কম্পিউটার এটাকে দেখে অক্ষর হিসেবে: x, স্পেস, =, স্পেস, 3... Lexer এই অক্ষর stream-কে meaningful token-এ ভাগ করে। এটাই compilation-এর প্রথম ধাপ — শব্দ ভাঙা।</p>
+<p class="scene-setting en">You read a foreign language. First you recognize words — where one ends, another begins. <code>x = 3 + 4</code> — the computer sees characters: x, space, =, space, 3... The lexer divides this character stream into meaningful tokens. This is compilation's first step — breaking words.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <defs><marker id="arrL" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📝 Lexer: Raw Text → Tokens via DFA</text>
+<div class="dialogue"><strong>শব্দ-ভাঙন-কারিগর দাউদ:</strong> আমি প্রতিটি অক্ষর পড়ি। একটি Deterministic Finite Automaton — DFA — আমার মস্তিষ্ক। x দেখলাম → identifier শুরু। = দেখলাম → assign operator। ৩ দেখলাম → number। প্রতিটি token-এর একটি type ও value আছে: {type: ID, value: "x"}। এই token-গুলো পরের দরজার কাছে যাবে — parser-এর কাছে। আমি শুধু শব্দ চিনি — বাক্য বুঝি না।</div>
+<div class="dialogue en"><strong>Word-Breaking Artisan Dawud:</strong> I read each character. A Deterministic Finite Automaton — DFA — is my brain. x → identifier starts. = → assign operator. 3 → number. Each token has a type and value: {type: ID, value: "x"}. These tokens go to the next door — the parser. I only recognize words — I don't understand sentences.</div>
 
-  <rect x="20" y="45" width="180" height="50" rx="8" fill="#0f172a" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="110" y="68" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Source Code (raw text)</text>
-  <text x="110" y="83" text-anchor="middle" fill="#38bdf8" font-size="9" font-family="monospace">x = 3 + 4</text>
+<div class="code-block">— Python: সহজ Lexer —
 
-  <line x1="200" y1="70" x2="230" y2="70" stroke="#0ea5e9" stroke-width="2" marker-end="url(#arrL)"/>
-  <text x="215" y="63" text-anchor="middle" fill="#7dd3fc" font-size="7">DFA</text>
+  import re
 
-  <!-- DFA States -->
-  <rect x="230" y="45" width="150" height="120" rx="8" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="305" y="62" text-anchor="middle" fill="#bae6fd" font-size="8">Finite State Machine</text>
-  <circle cx="270" cy="85" r="12" fill="#1e3a5f" stroke="#0ea5e9" stroke-width="1.5"/>
-  <text x="270" y="89" text-anchor="middle" fill="#7dd3fc" font-size="7">S0</text>
-  <circle cx="330" cy="85" r="12" fill="#1e3a5f" stroke="#0ea5e9" stroke-width="1.5"/>
-  <text x="330" y="89" text-anchor="middle" fill="#7dd3fc" font-size="7">S1</text>
-  <line x1="282" y1="85" x2="318" y2="85" stroke="#0ea5e9" stroke-width="1" marker-end="url(#arrL)"/>
-  <text x="300" y="78" text-anchor="middle" fill="#7dd3fc" font-size="6">letter</text>
-  <circle cx="270" cy="120" r="12" fill="#1e3a5f" stroke="#0ea5e9" stroke-width="1.5"/>
-  <text x="270" y="124" text-anchor="middle" fill="#7dd3fc" font-size="7">S2</text>
-  <circle cx="330" cy="120" r="12" fill="#1e3a5f" stroke="#0ea5e9" stroke-width="1.5"/>
-  <text x="330" y="124" text-anchor="middle" fill="#7dd3fc" font-size="7">S3</text>
-  <line x1="282" y1="120" x2="318" y2="120" stroke="#0ea5e9" stroke-width="1" marker-end="url(#arrL)"/>
-  <text x="300" y="113" text-anchor="middle" fill="#7dd3fc" font-size="6">digit</text>
-  <text x="305" y="152" text-anchor="middle" fill="#64748b" font-size="7">Each state = matching a token pattern</text>
-
-  <line x1="380" y1="70" x2="410" y2="70" stroke="#0ea5e9" stroke-width="2" marker-end="url(#arrL)"/>
-
-  <!-- Tokens -->
-  <rect x="410" y="45" width="150" height="120" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="485" y="62" text-anchor="middle" fill="#86efac" font-size="10" font-weight="700">Token Stream</text>
-  <rect x="425" y="72" width="120" height="18" rx="3" fill="#14532d" stroke="#4ade80" stroke-width="1"/>
-  <text x="485" y="85" text-anchor="middle" fill="#4ade80" font-size="8" font-family="monospace">ID("x")</text>
-  <rect x="425" y="93" width="120" height="18" rx="3" fill="#14532d" stroke="#4ade80" stroke-width="1"/>
-  <text x="485" y="106" text-anchor="middle" fill="#4ade80" font-size="8" font-family="monospace">EQ("=")</text>
-  <rect x="425" y="114" width="120" height="18" rx="3" fill="#14532d" stroke="#4ade80" stroke-width="1"/>
-  <text x="485" y="127" text-anchor="middle" fill="#4ade80" font-size="8" font-family="monospace">NUM(3)</text>
-  <rect x="425" y="135" width="120" height="18" rx="3" fill="#14532d" stroke="#4ade80" stroke-width="1"/>
-  <text x="485" y="148" text-anchor="middle" fill="#4ade80" font-size="8" font-family="monospace">PLUS("+") NUM(4)</text>
-
-  <text x="290" y="200" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="700">Django Analogy: WSGI/ASGI splitting raw HTTP into Method/Path/Headers</text>
-  <text x="290" y="220" text-anchor="middle" fill="#64748b" font-size="9" font-style="italic">Regular expressions compile to DFAs. DFA = Type 3 (regular) in Chomsky hierarchy (B41).</text>
-  <text x="290" y="240" text-anchor="middle" fill="#64748b" font-size="8">Hopcroft's algorithm minimizes DFA states → faster lexing.</text>
-
-  <rect x="80" y="260" width="420" height="30" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-  <text x="290" y="280" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="600">💡 Regex → DFA → Lexer. Same mechanism that matches URLs in Django urls.py!</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Lexer = DFA। Raw text কে character-by-character পড়ে, state change করে, meaningful tokens তৈরি করে। B41 এর Chomsky Type 3।</div>
-
-<div class="code-block"><div class="code-title">🔗 Door 1 — Real Lexer: Raw Text → Token Stream</div>
-<pre><code># lex.py — A minimal lexer using regex (internally compiled to DFA)
-import re
-
-rules = [('ID', r'[a-zA-Z_]\w*'), ('NUM', r'\d+'),
-         ('EQ', r'='), ('PLUS', r'\+'), ('WS', r'\s+')]
-
-def tokenize(code):
-    tokens, pos = [], 0
-    while pos &lt; len(code):
-        for kind, pat in rules:
-            m = re.match(pat, code[pos:])
-            if m:
-                if kind != 'WS':
-                    tokens.append((kind, m.group()))
-                pos += len(m.group())
-                break
-    return tokens
-
-print(tokenize("x = 3 + 4"))</code></pre>
-<pre><code>$ python lex.py
-[('ID', 'x'), ('EQ', '='), ('NUM', '3'), ('PLUS', '+'), ('NUM', '4')]
-
-# flex (C) does the same via DFA tables:
-$ flex -t lexer.l &gt; lex.yy.c   # generates C DFA code
-$ gcc lex.yy.c -lfl -o lexer
-$ echo "x = 3 + 4" | ./lexer
-ID(x)  EQ(=)  NUM(3)  PLUS(+)  NUM(4)</code></pre>
-<span class="code-note">💡 Python re মডিউল প্রতিটা regex কে DFA তে compile করে। flex/lex একই কাজ C তে করে।</span>
-</div>
-
-<div class="dialogue"><strong>লেক্সার ইঞ্জিনিয়ার:</strong> লেক্সিং হল কম্পাইলারের প্রথম কাজ। র কোড হল শুধু text — একটা সারি character। আমার কাজ হল সেই text কে meaningful chunks এ ভাগ করা। <code>x</code> হল identifier, <code>=</code> হল operator, <code>3</code> হল number। আমি এটা করি finite state machine দিয়ে — ঠিক যেটা B41 Theory of Computation-এ শিখেছ। Regular expression কে DFA তে compile করা হয়, DFA প্রতিটা character পড়ে state change করে, accepting state এ পৌঁছালে token emit করে।</div>`,
-  recall: [
-    { q: "Lexer আর Parser এর মধ্যে পার্থক্য কী?", a: "Lexer = text কে tokens এ ভাগ করে (DFA দিয়ে)। Parser = tokens গুলো কে hierarchical AST তে সাজায়।" },
-    { q: "Django এর কোন অংশ lexer এর মতো কাজ করে?", a: "Django url dispatcher — raw URL কে meaningful parts এ ভাগ করে। আর WSGI/ASGI — raw HTTP request কে Method, Path, Headers এ ভাগ করে।" },
+  TOKEN_SPEC = [
+      ('NUMBER',   r'\\d+'),          # ০-৯
+      ('ASSIGN',   r'='),             # =
+      ('PLUS',     r'\\+'),           # +
+      ('MINUS',    r'-'),             # -
+      ('ID',       r'[a-zA-Z_]\\w*'), # variable name
+      ('WS',       r'\\s+'),          # whitespace (skip)
   ]
+
+  def lexer(code):
+      tokens = []
+      for mo in re.finditer('|'.join(f'(?P<{n}>{p})' for n,p in TOKEN_SPEC), code):
+          kind = mo.lastgroup
+          value = mo.group()
+          if kind != 'WS':  # whitespace বাদ
+              tokens.append((kind, value))
+      return tokens
+
+  print(lexer("x = 3 + 4"))
+  # [('ID', 'x'), ('ASSIGN', '='), ('NUMBER', '3'),
+  #  ('PLUS', '+'), ('NUMBER', '4')]
+
+  — অক্ষর stream → token stream —
+  — এটাই lexer-এর কাজ —</div>
+
+<div class="callout info"><span class="co-icon">📐</span><div><strong>Token প্রকার:</strong><br>
+<strong>ID</strong> — identifier (variable/function name)<br>
+<strong>NUM</strong> — number (integer/float)<br>
+<strong>KEYWORD</strong> — if, while, return, def<br>
+<strong>OP</strong> — operator (+, -, *, =, ==)<br>
+<strong>STRING</strong> — "hello world"<br>
+<strong>COMMENT</strong> — # মন্তব্য (lexer বাদ দেয়)</div></div>
+
+<div class="verse">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"পড়ো তোমার প্রতিপালকের নামে যিনি সৃষ্টি করেছেন।" — কুরআন ৯৬:১</div>
+
+<p class="scene-setting">কালাম — কলম। আল্লাহ প্রথম নির্দেশ দিলেন "পড়ো"। Lexer-ও সেটাই করে — পড়ে। প্রতিটি অক্ষর পড়ে, শ্রেণীবদ্ধ করে। অক্ষর থেকে শব্দ, শব্দ থেকে অর্থের যাত্রা শুরু। কলম থেকে সৃষ্টি — কোড থেকে প্রোগ্রাম।</p>
+<p class="scene-setting en">Qalam — pen. Allah's first command was "Read." The lexer does the same — reads. Every character read, categorized. From characters to words, the journey of meaning begins. From pen to creation — from code to program.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ১ (Logic):</strong> DFA = সত্য সারণির রূপ! Lexer একটি finite automaton। Book ৪১ (Theory of Computation) Door ১: DFA/NFA formal definition।</div></div>
+
+<div class="secret-box">📝 <strong>Lexer = অক্ষর থেকে token। DFA দিয়ে।</strong> প্রথম ধাপ। কিন্তু token-এর পর — সেগুলো কীভাবে সাজাবে? বাক্য কীভাবে বুঝবে? সেই কাজ — parser। পরের দরজায়।</div>`,
+  senior: {
+    title: "Lexer এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Token</td><td>শ্রেণীবদ্ধ অক্ষর গোষ্ঠী</td></tr>
+<tr><td class="hl">DFA</td><td>Deterministic Finite Automaton</td></tr>
+<tr><td class="hl">Regex</td><td>Token pattern definition</td></tr>
+<tr><td class="hl">flex</td><td>C lexer generator</td></tr>
+<tr><td class="hl">Whitespace</td><td>Skip — বাদ দেওয়া হয়</td></tr>
+<tr><td class="hl">Maximal Munch</td><td>সবচেয়ে লম্বা match নাও</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 2 — The Tree Builder (Parser → AST)
-// ═══════════════════════════════════════════
 doors.push({
   num: 2,
-  icon: "🌳",
-  color: "#22c55e",
-  tagline: "গাছ নির্মাণ — Building the Tree",
-  name: "The Tree Builder",
-  secret: "Parser tokens কে tree (AST) তে সাজায়। Flat list → hierarchical structure।",
-  story: `<p class="scene-setting">লেক্সার tokens দিয়ে দিল। এখন সেগুলো কী ক্রমে থাকবে? <code>ID EQ NUM PLUS NUM</code> — এটা flat list। কিন্তু কোডের অর্থ hierarchical। <code>x = (3 + 4)</code> — এখানে প্রথম যোগ হবে, তারপর assignment। Parser এই flat list কে একটা tree তে সাজায় — Abstract Syntax Tree বা AST।</p>
-<p class="scene-setting en">A parser groups the flat token stream into a hierarchical Abstract Syntax Tree (AST). Recursive descent, LR/LALR, and PEG parsers each build this tree differently. The AST represents grammatical structure.</p>
+  icon: "🌲",
+  color: "#f97316",
+  name: "গাছ নির্মাণের কারিগর",
+  subtitle: "The Tree Builder",
+  tech: "Parsing — recursive descent, AST (Abstract Syntax Tree), grammar rules, precedence, yacc/bison, PEG",
+  spirit: "শাজারাহ — গাছ, বাক্যের কাঠামো",
+  secret: "Parser = token থেকে গাছ। AST (Abstract Syntax Tree)। x = 3 + 4 → Assign(x, Add(3,4))। গাছ দেখে তুমি বুঝো — কোনটা আগে, কোনটা পরে। precedence গাছের আকৃতিতে লুকানো।",
+  recall: {
+    q: " AST কী? Parser কীভাবে কাজ করে?",
+    qen: "What is an AST? How does a parser work?",
+    a: "AST = Abstract Syntax Tree — কোডের গাছ কাঠামো। Parser: token stream পড়ে, grammar rule মেনে গাছ তৈরি করে। x=3+4 → Assign(x, Add(3,4))।",
+    aen: "AST = Abstract Syntax Tree — code's tree structure. Parser reads token stream, follows grammar rules to build tree. x=3+4 → Assign(x, Add(3,4))."
+  },
+  story: `<p class="scene-setting">দাউদ (Door ১) তোমাকে token দিয়েছেন। এখন সেই token থেকে বাক্য বুঝতে হবে। <code>x = 3 + 4</code> — এর অর্থ কী? x এর মান ৩, তার সাথে ৪ যোগ? নাকি x এর মান (৩+৪)? অর্থাৎ ৭? Operator precedence বলে — যোগ আগে, assign পরে। এই কাঠামো গাছে লুকানো — Add নিচে, Assign উপরে।</p>
+<p class="scene-setting en">Dawud (Door 1) gave you tokens. Now from those tokens, understand the sentence. <code>x = 3 + 4</code> — what does it mean? x's value is 3, then add 4? Or x's value is (3+4)? That is 7? Operator precedence says — addition first, assignment after. This structure is hidden in the tree — Add at bottom, Assign at top.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌳 Parser: Flat Tokens → Hierarchical AST</text>
+<div class="dialogue"><strong>গাছ-নির্মাতা বেলাল:</strong> আমি token পাই, গাছ বানাই। পদ্ধতি: recursive descent। প্রতিটি grammar rule একটি ফাংশন। expr() → term() + term()। term() → factor() * factor()। factor() → NUMBER বা ID বা (expr)। এই নিয়মে গাছ স্বয়ংক্রিয়ভাবে তৈরি। Add নিচে — কারণ যোগ আগে হয়। Assign উপরে — কারণ assign শেষে।</div>
+<div class="dialogue en"><strong>Tree Builder Bilal:</strong> I receive tokens, build a tree. Method: recursive descent. Each grammar rule is a function. expr() → term() + term(). term() → factor() * factor(). factor() → NUMBER or ID or (expr). The tree forms automatically following these rules. Add at bottom — because addition happens first. Assign at top — because assignment is last.</div>
 
-  <!-- Token stream (left) -->
-  <rect x="20" y="50" width="200" height="200" rx="8" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="120" y="72" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Flat Token Stream</text>
-  <rect x="35" y="85" width="170" height="22" rx="4" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="120" y="100" text-anchor="middle" fill="#bae6fd" font-size="9" font-family="monospace">ID("x")</text>
-  <rect x="35" y="110" width="170" height="22" rx="4" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="120" y="125" text-anchor="middle" fill="#bae6fd" font-size="9" font-family="monospace">EQ("=")</text>
-  <rect x="35" y="135" width="170" height="22" rx="4" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="120" y="150" text-anchor="middle" fill="#bae6fd" font-size="9" font-family="monospace">NUM(3)</text>
-  <rect x="35" y="160" width="170" height="22" rx="4" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="120" y="175" text-anchor="middle" fill="#bae6fd" font-size="9" font-family="monospace">PLUS("+")</text>
-  <rect x="35" y="185" width="170" height="22" rx="4" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
-  <text x="120" y="200" text-anchor="middle" fill="#bae6fd" font-size="9" font-family="monospace">NUM(4)</text>
-  <text x="120" y="230" text-anchor="middle" fill="#64748b" font-size="8">Flat — no hierarchy</text>
+<div class="code-block">— Python: Recursive Descent Parser —
 
-  <!-- Arrow -->
-  <line x1="220" y1="150" x2="260" y2="150" stroke="#22c55e" stroke-width="2" marker-end="url(#arrP2)"/>
-  <defs><marker id="arrP2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>
-  <text x="240" y="143" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">PARSE</text>
+  import ast as py_ast
 
-  <!-- AST (right) -->
-  <rect x="260" y="50" width="300" height="250" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="410" y="72" text-anchor="middle" fill="#86efac" font-size="10" font-weight="700">Abstract Syntax Tree (AST)</text>
+  # Python-এর নিজস্ব AST দেখো:
+  code = "x = 3 + 4"
+  tree = py_ast.parse(code)
+  print(py_ast.dump(tree))
+  # Module(body=[
+  #   Assign(targets=[Name('x')], value=BinOp(
+  #     left=Num(3), op=Add(), right=Num(4)
+  #   ))
+  # ])
+  #    Assign (root)
+  #     /    \\
+  #   x     Add
+  #        /   \\
+  #       3     4
 
-  <!-- Root: Assignment -->
-  <rect x="370" y="90" width="80" height="30" rx="6" fill="#14532d" stroke="#4ade80" stroke-width="2"/>
-  <text x="410" y="109" text-anchor="middle" fill="#86efac" font-size="9" font-weight="700">= (Assign)</text>
+  # সহজ recursive descent:
+  def parse_expr(tokens):
+      left = parse_term(tokens)       # প্রথম term
+      while peek(tokens) == 'PLUS':
+          consume(tokens)             '+' খাও
+          right = parse_term(tokens)  # দ্বিতীয় term
+          left = ('Add', left, right) # গাছের node
+      return left
 
-  <!-- Left child: x -->
-  <rect x="295" y="145" width="50" height="25" rx="5" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
-  <text x="320" y="162" text-anchor="middle" fill="#cbd5e1" font-size="9">x</text>
-  <line x1="385" y1="120" x2="320" y2="145" stroke="#475569" stroke-width="1"/>
+  # Grammar:
+  # expr   → term (('+' | '-') term)*
+  # term   → factor (('*' | '/') factor)*
+  # factor → NUMBER | ID | '(' expr ')'
+  — precedence গাছের গভীরতায় লুকানো —</div>
 
-  <!-- Right child: + -->
-  <rect x="385" y="145" width="60" height="25" rx="5" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
-  <text x="415" y="162" text-anchor="middle" fill="#c7d2fe" font-size="9" font-weight="700">+ (Add)</text>
-  <line x1="415" y1="120" x2="415" y2="145" stroke="#475569" stroke-width="1"/>
+<div class="verse">وَشَجَرَةً تَخْرُجُ مِن طُورِ سَيْنَاءَ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং একটি গাছ যা বের হয় সিনাই পাহাড় থেকে।" — কুরআন ২৩:২০</div>
 
-  <!-- 3 and 4 -->
-  <rect x="360" y="195" width="45" height="25" rx="5" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
-  <text x="382" y="212" text-anchor="middle" fill="#cbd5e1" font-size="9">3</text>
-  <line x1="400" y1="170" x2="382" y2="195" stroke="#475569" stroke-width="1"/>
+<p class="scene-setting">শাজারাহ — গাছ। AST সেই গাছের রূপ — বাক্যের কাঠামো। প্রতিটি node একটি অপারেশন, প্রতিটি leaf একটি মান। গাছ দেখে তুমি বুঝো — কোন কাজ আগে, কোনটা পরে। সিনাইয়ের গাছ থেকে জীবন — AST থেকে অর্থ।</p>
+<p class="scene-setting en">Shajarah — tree. AST is the form of that tree — the sentence's structure. Each node an operation, each leaf a value. From the tree you understand — which work first, which later. From Sinai's tree comes life — from AST comes meaning.</p>
 
-  <rect x="425" y="195" width="45" height="25" rx="5" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
-  <text x="447" y="212" text-anchor="middle" fill="#cbd5e1" font-size="9">4</text>
-  <line x1="425" y1="170" x2="447" y2="195" stroke="#475569" stroke-width="1"/>
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ২ (DSA Bazaar) Door ১৩ (Trees):</strong> BST ও tree traversal শিখেছিলে — AST সেই গাছের প্রয়োগ! Book ৪৮ Door ৭ (Graphs): AST = একটি বিশেষ গাছ (acyclic connected)।</div></div>
 
-  <text x="410" y="250" text-anchor="middle" fill="#86efac" font-size="8">Evaluation: first 3+4=7, then x=7</text>
-  <text x="410" y="265" text-anchor="middle" fill="#4ade80" font-size="8">Tree structure = operation precedence!</text>
-  <text x="410" y="285" text-anchor="middle" fill="#64748b" font-size="7" font-style="italic">Recursive descent / PEG / LR parsers all build this tree</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Parser = flat token list কে hierarchical AST তে রূপান্তর করে। <code>x = 3 + 4</code> → tree যেখানে + আগে evaluate হয়।</div>
-
-<div class="code-block"><div class="code-title">🌳 Door 2 — Real Parser: Token Stream → AST</div>
-<pre><code># parse_demo.py — Python's parser builds an AST from source
-import ast
-
-tree = ast.parse("x = 3 + 4")
-print(ast.dump(tree, indent=2))
-
-# Output — note the hierarchy (Add nested inside Assign):
-#
-# Module(body=[
-#   Assign(
-#     targets=[ Name(id='x', ctx=Store()) ],
-#     value=BinOp(
-#       left=Constant(value=3),
-#       op=Add(),
-#       right=Constant(value=4)
-#     )
-#   )
-# ])
-
-# The tree says: first evaluate 3+4, THEN assign to x.
-# That precedence is encoded in the tree structure!</code></pre>
-<pre><code># Recursive descent parser (hand-written):
-# def parse_assign():
-#     name = expect('ID')
-#     expect('EQ')
-#     expr = parse_expr()        # parse 3 + 4
-#     return Assign(name, expr)
-#
-# def parse_expr():
-#     left = expect('NUM')
-#     while peek() == 'PLUS':    # left-associative
-#         consume('PLUS')
-#         right = expect('NUM')
-#         left = BinOp(left, Add(), right)
-#     return left</code></pre>
-<span class="code-note">💡 AST = flat tokens এর উপর hierarchical গঠন। Operation precedence tree structure এ encode থাকে।</span>
-</div>
-
-<div class="dialogue"><strong>পার্সার ইঞ্জিনিয়ার:</strong> পার্সিং হল বাক্যের গঠন বোঝা। Token list flat — কিন্তু কোডের অর্থ hierarchical। <code>x = 3 + 4</code> মানে প্রথমে ৩ আর ৪ যোগ হবে, তারপর x তে assign হবে। Parser এই hierarchy কে tree তে প্রকাশ করে। একে বলে AST — Abstract Syntax Tree। Recursive descent parser প্রতিটা grammar rule এর জন্য একটা function লেখে। PEG parser ordered choice ব্যবহার করে। LR parser bottom-up চলে। কিন্তু সবার লক্ষ্য এক — tree তৈরি করা।</div>`,
-  recall: [
-    { q: "AST কী এবং কেন দরকার?", a: "Abstract Syntax Tree — কোডের hierarchical গঠন। Flat tokens এ অর্থ নেই, tree তে operation order স্পষ্ট হয় (precedence, associativity)।" },
-    { q: "Recursive descent আর LR parser এর পার্থক্য?", a: "Recursive descent = top-down, প্রতিটা rule এর জন্য function, simple কিন্তু backtracking পারে। LR = bottom-up, table-driven, powerful কিন্তু complex।" },
-  ]
+<div class="secret-box">🌲 <strong>Parser = token থেকে AST গাছ।</strong> precedence গভীরতায়। কিন্তু গাছ শুধু কাঠামো দেয় — অর্থ যাচাই করে না। x + "hello" গাঠ্যিকভাবে ঠিক কিন্তু অর্থহীন। সেই যাচাই — পরের দরজায়।</div>`,
+  senior: {
+    title: "Parser এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">AST</td><td>Abstract Syntax Tree</td></tr>
+<tr><td class="hl">Recursive Descent</td><td>প্রতিটি rule একটি ফাংশন</td></tr>
+<tr><td class="hl">Precedence</td><td>গাছের গভীরতায় লুকানো</td></tr>
+<tr><td class="hl">Grammar</td><td>BNF — ভাষার নিয়ম</td></tr>
+<tr><td class="hl">yacc/bison</td><td>C parser generator</td></tr>
+<tr><td class="hl">PEG</td><td>Parsing Expression Grammar</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 3 — The Meaning Checker (Semantic Analysis)
-// ═══════════════════════════════════════════
 doors.push({
   num: 3,
   icon: "🔍",
-  color: "#a855f7",
-  tagline: "অর্থ যাচাই — Checking Meaning",
-  name: "The Meaning Checker",
-  secret: "Parser শুধু syntax check করে। Semantic analysis meaning check করে — type, scope, existence।",
-  story: `<p class="scene-setting">Parser বলল — এই code টা syntactically valid, tree তৈরি হয়েছে। কিন্তু এটা কি অর্থপূর্ণ? <code>int x = "hello" + true;</code> — syntax ঠিক আছে (types match grammar)। কিন্তু অর্থ ভুল — string এর সাথে boolean যোগ করা যায় না। এই "meaning" check করাই semantic analysis। Django তে এটা <code>serializer.is_valid()</code> এর মতো।</p>
-<p class="scene-setting en">Parser validates syntax (grammar). Semantic analysis validates meaning — scope resolution, type checking, variable existence. In Hindley-Milner type systems, Algorithm W solves type constraints via unification.</p>
+  color: "#f97316",
+  name: "অর্থের যাচাইকারী",
+  subtitle: "The Meaning Checker",
+  tech: "Semantic Analysis — type checking, scope resolution, symbol table, variable declaration, type errors",
+  spirit: "ফাহম — বোঝা, কাঠামোর পর অর্থের যাচাই",
+  secret: "Parser কাঠামো দেয়, semantic analysis অর্থ যাচাই করে। x + টেক্সট — গাঠ্যিকভাবে ঠিক কিন্তু type error। Semantic analysis ধরে: int + string অনুমোদিত নয়। প্রতিটি variable declared কিনা, scope ঠিক কিনা — সব যাচাই।",
+  recall: {
+    q: " Semantic analysis কী যাচাই করে? Type checker কী?",
+    qen: "What does semantic analysis verify? What is a type checker?",
+    a: "Semantic: variable declared কিনা, scope ঠিক কিনা, type মেলে কিনা। Type checker: int + string → error। Symbol table দিয়ে প্রতিটি variable-এর type ট্র্যাক করে।",
+    aen: "Semantic: variable declared, scope correct, types match. Type checker: int + string → error. Symbol table tracks each variable's type."
+  },
+  story: `<p class="scene-setting">বেলাল (Door ২) তোমাকে AST দিয়েছেন। কিন্তু AST শুধু কাঠামো — অর্থ নয়। <code>x + "hello"</code> — গাছ তৈরি হবে ঠিকঠাক। কিন্তু এর অর্থ কী? সংখ্যা আর টেক্সট যোগ হয় না! এটাই semantic analysis ধরে — অর্থের যাচাই। প্রতিটি variable declared কিনা, type মেলে কিনা, function সঠিক argument পায় কিনা।</p>
+<p class="scene-setting en">Bilal (Door 2) gave you AST. But AST is only structure — not meaning. <code>x + "hello"</code> — the tree forms correctly. But what does it mean? You can't add a number and text! Semantic analysis catches this — meaning verification. Is every variable declared? Do types match? Does the function receive correct arguments?</p>
 
-<div class="code-block"><div class="code-title">🔍 Door 3 — Real Semantic Analysis: Type Checking</div>
-<pre><code>// types.c — syntactically valid, semantically WRONG
-struct Foo { int a; };
+<div class="dialogue"><strong>অর্থ-যাচাইকারী সালমান:</strong> আমার কাছে একটি symbol table আছে — প্রতিটি variable-এর নাম, type, scope লেখা। x কি declared? কোথায়? কোন type? দেখি: x = int। "hello" = string। int + string? আমার নিয়ম বলে — অনুমোদিত নয়! Type error। এটাই আমার কাজ — অর্থ যাচাই। গাঠ্যিকভাবে সব ঠিক হতে পারে, কিন্তু অর্থগতভাবে ভুল থাকতে পারে।</div>
+<div class="dialogue en"><strong>Meaning Verifier Salman:</strong> I have a symbol table — each variable's name, type, scope recorded. Is x declared? Where? What type? I check: x = int. "hello" = string. int + string? My rules say — not allowed! Type error. This is my job — meaning verification. Syntactically everything may be fine, but semantically there may be errors.</div>
 
-int main() {
-    struct Foo f;
-    int x = f + 42;   // struct + int makes no sense!
-    return x;
-}</code></pre>
-<pre><code>// Parser accepts this (grammar is fine).
-// Semantic analyzer REJECTS it:
+<div class="code-block">— Python: Semantic Analysis —
 
-$ gcc -c types.c
-types.c: In function 'main':
-types.c:5:15: error: invalid operands to binary +
-    (have 'struct Foo' and 'int')
-    5 |     int x = f + 42;
-      |               ^ ~</code></pre>
-<pre><code># Python's type checker (mypy) does the same:
-# types.py
-def add(a: int, b: int) -&gt; int:
-    return a + b
+  # Symbol Table
+  class SymbolTable:
+      def __init__(self):
+          self.symbols = {}  # name → {type, scope}
 
-add(3, "hello")   # passing string for int
+      def declare(self, name, var_type, scope):
+          if name in self.symbols:
+              raise Error(f"'{name}' already declared!")
+          self.symbols[name] = {'type': var_type, 'scope': scope}
 
-$ mypy types.py
-types.py:4: error: Argument 2 to "add" has incompatible
-  type "str"; expected "int"</code></pre>
-<span class="code-note">💡 Syntax = grammar ঠিক আছে কিনা। Semantic = অর্থ ঠিক আছে কিনা (type, scope, existence)।</span>
-</div>
+      def lookup(self, name):
+          if name not in self.symbols:
+              raise Error(f"'{name}' not declared!")
+          return self.symbols[name]
 
-<div class="dialogue"><strong>সেমান্টিক ইঞ্জিনিয়ার:</strong> আমার কাজ হল অর্থ যাচাই করা। পার্সার বলল code টা ঠিক আছে grammatically। কিন্তু এটা কি logically correct? Variable টা declare করা আছে কি না? Type গুলো match করে কি না? Function টা exist করে কি না? আমি AST কে walk করে প্রতিটা node যাচাই করি। Hindley-Milner type system এ Algorithm W ব্যবহার করে type inference করি — সমীকরণ সমাধানের মতো। যদি contradiction পাই — type error!</div>`,
-  recall: [
-    { q: "Syntax error আর Semantic error এর পার্থক্য?", a: "Syntax = grammar ভুল (missing semicolon)। Semantic = meaning ভুল (type mismatch, undeclared variable)। Parser ধরে syntax, semantic analyzer ধরে meaning।" },
-    { q: "Hindley-Milner Algorithm W কী করে?", a: "Type inference — expression থেকে type স্বয়ংক্রিয়ভাবে বের করে। Unification দিয়ে type constraint সমাধান করে। Haskell, OCaml, Rust এ ব্যবহৃত।" },
-  ]
+  # Type Checking:
+  def check_binop(left_type, op, right_type):
+      if op in ('+',):
+          if left_type == 'int' and right_type == 'int':
+              return 'int'
+          if left_type == 'str' and right_type == 'str':
+              return 'str'  # string concatenation
+          raise TypeMismatch(
+              f"Cannot {op} {left_type} and {right_type}")
+      # int + string → TypeMismatch!
+
+  table = SymbolTable()
+  table.declare('x', 'int', 'global')
+  table.declare('msg', 'str', 'global')
+
+  check_binop('int', '+', 'int')   # OK → int
+  check_binop('str', '+', 'str')   # OK → str
+  check_binop('int', '+', 'str')   # ❌ TypeMismatch!</div>
+
+<div class="callout info"><span class="co-icon">🔍</span><div><strong>Semantic Analysis যাচাই করে:</strong><br>
+<strong>Variable Declaration:</strong> প্রতিটি variable declared কিনা<br>
+<strong>Type Matching:</strong> int + int ঠিক, int + string ভুল<br>
+<strong>Scope:</strong> local variable কোথায় দেখা যায়<br>
+<strong>Function Signature:</strong> সঠিক argument সংখ্যা ও type<br>
+<strong>Return Type:</strong> function সঠিক type return করে কিনা</div></div>
+
+<div class="verse">أَفَلَا يَتَدَبَّرُونَ الْقُرْآنَ ۚ وَلَوْ كَانَ مِنْ عِندِ غَيْرِ اللَّهِ لَوَجَدُوا فِيهِ اخْتِلَافًا كَثِيرًا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"তবে কি তারা কুরআন নিয়ে গভীরভাবে চিন্তা করে না? যদি এটি আল্লাহর কাছ থেকে না হতো, তবে তাতে অনেক অসঙ্গতি পেত।" — কুরআন ৪:৮২</div>
+
+<p class="scene-setting">ফাহম — গভীর বোঝা। Semantic analysis সেই গভীর বোঝার রূপ — কাঠামোর পর অর্থের যাচাই। "তাদব্বুর" — গভীর চিন্তা। কুরআনে যেমন অসঙ্গতি খুঁজে পাওয়া যায় না, semantic analysis-ও কোডে অসঙ্গতি খুঁজে বের করে — type mismatch, undeclared variable, scope violation।</p>
+<p class="scene-setting en">Fahm — deep understanding. Semantic analysis is the form of that deep understanding — verifying meaning after structure. "Tadabbur" — deep reflection. Just as the Quran has no inconsistency, semantic analysis finds inconsistencies in code — type mismatch, undeclared variable, scope violation.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ১ (Logic):</strong> type checking = যুক্তি যাচাই। int + string → অসঙ্গতি = contradiction! Book ৪৫ Door ১০: type inference — Hindley-Milner।</div></div>
+
+<div class="secret-box">🔍 <strong>Semantic = অর্থ যাচাই। Type, scope, declaration।</strong> গাঠ্যিকভাবে ঠিক কিন্তু অর্থগতভাবে ভুল ধরে। কিন্তু কোডে একটি সমস্যা আছে — একই variable একাধিক মান ধারণ করতে পারে। সেই সমস্যার সমাধান — SSA। পরের দরজায়।</div>`,
+  senior: {
+    title: "Semantic Analysis এক নজরে",
+    body: `<table class="kv-table"><tr><th>যাচাই</th><th>কী</th></tr>
+<tr><td class="hl">Type Check</td><td>int + string → error</td></tr>
+<tr><td class="hl">Scope</td><td>variable কোথায় visible</td></tr>
+<tr><td class="hl">Declaration</td><td>প্রতিটি var declared কিনা</td></tr>
+<tr><td class="hl">Symbol Table</td><td>name → type/scope mapping</td></tr>
+<tr><td class="hl">Function Sig</td><td>সঠিক argument সংখ্যা/type</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 4 — The Single Version (SSA)
-// ═══════════════════════════════════════════
 doors.push({
   num: 4,
-  icon: "🔤",
-  color: "#fbbf24",
-  tagline: "একক সংস্করণ — The Single Version",
-  name: "The Single Version",
-  secret: "SSA: প্রতিটা variable ঠিক একবারই assign হয়। if/else merge এ φ function বসে।",
-  story: `<p class="scene-setting">তুমি Python এ লেখো <code>x = 1; x = 2</code>। স্বাভাবিক। কিন্তু LLVM, GCC, V8 — কেউই এভাবে রাখে না। তারা SSA (Static Single Assignment) ব্যবহার করে। প্রতিটা variable ঠিক একবারই assign হয়। <code>x_1 = 1; x_2 = 2</code>। if/else এর শেষে একটা জাদুর function বসে — φ (phi)। সে ঠিক করে কোন version ব্যবহার হবে।</p>
+  icon: "🔗",
+  color: "#f97316",
+  name: "একক সংস্করণ",
+  subtitle: "The Single Version",
+  tech: "SSA (Static Single Assignment) — Cytron 1991, phi nodes, def-use chains, compiler optimization foundation",
+  spirit: "তাওহিদ — একত্ব, প্রতিটি variable-এর একটি মাত্র সংজ্ঞা",
+  secret: "SSA: প্রতিটি variable ঠিক একবারই assign হয়। x=1; x=2 হয় x1=1; x2=2। এতে optimization সহজ — প্রতিটি মান আলাদা, কোনো ambiguity নেই। phi node দিয়ে branch merge।",
+  recall: {
+    q: " SSA কী? কেন দরকার? phi node কী?",
+    qen: "What is SSA? Why is it needed? What is a phi node?",
+    a: "SSA = Static Single Assignment — প্রতিটি variable একবারই assign। x=1;x=2 → x1=1;x2=2। phi node: branch merge-এ কোন version বেছে নেবে।",
+    aen: "SSA = Static Single Assignment — each variable assigned once. x=1;x=2 → x1=1;x2=2. Phi node: at branch merge, chooses which version."
+  },
+  story: `<p class="scene-setting">সালমান (Door ৩) তোমাকে type checking শিখিয়েছেন। এখন একটি সমস্যা — একই variable একাধিক মান ধারণ করে। <code>x = 1; if (...) { x = 2 }; use(x)</code> — x এর মান কত? ১ নাকি ২? compiler এতে confused। SSA (Cytron ১৯৯১) সমাধান দিল — প্রতিটি assignment আলাদা version। x1=1, x2=2। কোনটা use করবে? phi node বলে দেবে।</p>
+<p class="scene-setting en">Salman (Door 3) taught you type checking. Now a problem — the same variable holds multiple values. <code>x = 1; if (...) { x = 2 }; use(x)</code> — what is x's value? 1 or 2? The compiler is confused. SSA (Cytron 1991) solved it — each assignment gets a separate version. x1=1, x2=2. Which to use? Phi node decides.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔤 SSA: Every Variable Assigned Exactly Once</text>
+<div class="dialogue"><strong>একত্ব-কারিগর ইলিয়াস:</strong> SSA-তে প্রতিটি variable ঠিক একবারই assign হয়। এর মানে — প্রতিটি মান অদ্বিতীয়। কোনো ambiguity নেই। এতে optimization সহজ হয়: constant propagation (x1=1 সর্বদা ১), dead code elimination (x2 কেউ use করে না? বাদ দাও)। phi node: if-else merge-এ দুটি version থাকলে, phi(x1, x2) বলে কোনটা বেছে নেবে।</div>
+<div class="dialogue en"><strong>Unity Artisan Ilyas:</strong> In SSA, each variable is assigned exactly once. Meaning — each value is unique. No ambiguity. This makes optimization easy: constant propagation (x1=1 is always 1), dead code elimination (nobody uses x2? remove it). Phi node: at if-else merge with two versions, phi(x1, x2) decides which to choose.</div>
 
-  <!-- Original (left) -->
-  <rect x="20" y="50" width="250" height="250" rx="10" fill="#0f172a" stroke="#f97316" stroke-width="2"/>
-  <text x="145" y="72" text-anchor="middle" fill="#fdba74" font-size="11" font-weight="700">Original Code</text>
-  <text x="145" y="100" text-anchor="middle" fill="#fed7aa" font-size="10" font-family="monospace">x = 1</text>
-  <text x="145" y="125" text-anchor="middle" fill="#fed7aa" font-size="10" font-family="monospace">if (cond):</text>
-  <text x="145" y="145" text-anchor="middle" fill="#4ade80" font-size="10" font-family="monospace">  x = 2</text>
-  <text x="145" y="165" text-anchor="middle" fill="#fed7aa" font-size="10" font-family="monospace">else:</text>
-  <text x="145" y="185" text-anchor="middle" fill="#fbbf24" font-size="10" font-family="monospace">  x = 3</text>
-  <text x="145" y="210" text-anchor="middle" fill="#fed7aa" font-size="10" font-family="monospace">print(x)</text>
-  <text x="145" y="240" text-anchor="middle" fill="#f87171" font-size="9">❌ x এর অনেক version! কোনটা print হবে?</text>
-  <text x="145" y="258" text-anchor="middle" fill="#64748b" font-size="8" font-style="italic">Optimizer বিভ্রান্ত</text>
+<div class="code-block">— SSA: Before vs After —
 
-  <!-- SSA (right) -->
-  <rect x="310" y="50" width="250" height="250" rx="10" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
-  <text x="435" y="72" text-anchor="middle" fill="#86efac" font-size="11" font-weight="700">SSA Form</text>
-  <text x="435" y="100" text-anchor="middle" fill="#bbf7d0" font-size="10" font-family="monospace">x_1 = 1</text>
-  <text x="435" y="125" text-anchor="middle" fill="#bbf7d0" font-size="10" font-family="monospace">if (cond):</text>
-  <text x="435" y="145" text-anchor="middle" fill="#4ade80" font-size="10" font-family="monospace">  x_2 = 2</text>
-  <text x="435" y="165" text-anchor="middle" fill="#bbf7d0" font-size="10" font-family="monospace">else:</text>
-  <text x="435" y="185" text-anchor="middle" fill="#fbbf24" font-size="10" font-family="monospace">  x_3 = 3</text>
-  <text x="435" y="210" text-anchor="middle" fill="#818cf8" font-size="10" font-family="monospace" font-weight="700">x_4 = φ(x_2, x_3)</text>
-  <text x="435" y="230" text-anchor="middle" fill="#bbf7d0" font-size="10" font-family="monospace">print(x_4)</text>
-  <text x="435" y="260" text-anchor="middle" fill="#4ade80" font-size="9">✅ প্রতিটা x unique! φ choose করে।</text>
-  <text x="435" y="278" text-anchor="middle" fill="#64748b" font-size="8" font-style="italic">Optimizer পরিষ্কার পথ পায়</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: SSA — প্রতিটা variable একবারই assign। if/else merge এ φ function বসে যে choose করে কোন version। এটাই LLVM/GCC/V8 এর ভিত্তি।</div>
+  # Original code:
+  x = 1
+  if condition:
+      x = 2
+  print(x)  # x এর মান কত? ১ নাকি ২?
 
-<div class="code-block"><div class="code-title">🔤 Door 4 — Real SSA: LLVM IR Output</div>
-<pre><code>// ssa.c — simple C code with if/else
-int f(int cond) {
-    int x;
-    if (cond)
-        x = 2;
-    else
-        x = 3;
-    return x;
-}
+  # SSA form:
+  x1 = 1                    # প্রথম assignment
+  if condition:
+      x2 = 2                # দ্বিতীয় assignment
+  x3 = phi(x1, x2)         # branch merge — কোনটা?
+  print(x3)                 # x3 = x1 বা x2, condition উপর নির্ভর
 
-# Compile to LLVM IR (SSA form) — see the phi node:
-$ clang -S -emit-llvm ssa.c -o ssa.ll</code></pre>
-<pre><code>; ssa.ll — LLVM IR in SSA form. Each value defined ONCE.
-define i32 @f(i32 %cond) {
-entry:
-  %tobool = icmp ne i32 %cond, 0
-  br i1 %tobool, label %if.then, label %if.else
+  # SSA optimization: Constant Propagation
+  # x1 = 1 (সর্বদা ১) → x1 কোথাও use হলে ১ বসাও
+  # Dead Code: x2 কেউ use করে না? বাদ দাও!
 
-if.then:
-  br label %if.end
+  # LLVM IR দেখো (Python dis module):
+  # $ python3 -c "import dis; dis.dis(lambda: x=1; x=2; print(x))"
+  # প্রতিটি instruction আলাদা — SSA এর প্রভাব</div>
 
-if.else:
-  br label %if.end
+<div class="callout info"><span class="co-icon">🔗</span><div><strong>SSA এর শক্তি:</strong><br>
+<strong>Constant Propagation:</strong> x1=1 সর্বদা ১ — সরাসরি বসাও<br>
+<strong>Dead Code Elimination:</strong> কেউ use করে না → বাদ দাও<br>
+<strong>Common Subexpression:</strong> a+b দুইবার → একবার হিসাব<br>
+<strong>Phi Node:</strong> branch merge-এ version নির্বাচন<br>
+<strong>LLVM IR:</strong> সব modern compiler SSA ব্যবহার করে</div></div>
 
-if.end:
-  ; PHI NODE — picks x_2 or x_3 based on which branch ran:
-  %x.0 = phi i32 [ 2, %if.then ], [ 3, %if.else ]
-  ret i32 %x.0
-}</code></pre>
-<pre><code># Python's bytecode is NOT SSA, but Cython/numba translate to SSA.
-# GCC dumps SSA via -fdump-tree-ssa:
-$ gcc -O1 -fdump-tree-ssa ssa.c -o /dev/null
-$ cat ssa.c.031t.ssa
-  x_4 = 2;
-  x_5 = 3;
-  # x_1 = PHI &lt;x_4(2), x_5(3)&gt;   &lt;-- SSA merge!
-  return x_1;</code></pre>
-<span class="code-note">💡 SSA তে প্রতিটা variable একবারই define হয়। if/else merge এ φ (phi) node বসে — LLVM, GCC সবাই এটা ব্যবহার করে।</span>
-</div>
+<div class="verse">قُلْ هُوَ اللَّهُ أَحَدٌ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"বলো, তিনি আল্লাহ, এক।" — কুরআন ১১২:১</div>
 
-<div class="dialogue"><strong>এসএসএ ইঞ্জিনিয়ার:</strong> SSA হল modern compiler এর ভিত্তি। কেন? কারণ যখন প্রতিটা variable একবারই assign হয়, optimizer সহজে dead code detect করতে পারে, constant fold করতে পারে, duplicate eliminate করতে পারে। φ function হল জাদুর সেতু — if শাখা থেকে এলে x_2, else শাখা থেকে এলে x_3। এটা শুধু mathematical representation — real machine instruction নয়। Codegen এর সময় move instruction এ convert হয়।</div>`,
-  recall: [
-    { q: "φ (phi) function কী করে?", a: "Control flow merge point এ বসে। if থেকে এলে একটা version, else থেকে এলে আরেকটা — φ choose করে কোনটা use হবে।" },
-    { q: "কেন SSA optimization সহজ করে?", a: "প্রতিটা variable একটা unique definition থাকে। Dead code, constant, duplicate — সব detect করা সহজ কারণ কোন aliasing confusion নেই।" },
-  ]
+<p class="scene-setting">তাওহিদ — একত্ব। SSA সেই একত্বের গাণিতিক রূপ। প্রতিটি variable-এর একটি মাত্র সংজ্ঞা — এক। একত্ব থেকে স্পষ্টতা, স্পষ্টতা থেকে optimization। যেমন তাওহিদ সবকিছুর ভিত্তি — SSA সব compiler optimization-এর ভিত্তি।</p>
+<p class="scene-setting en">Tawhid — oneness. SSA is the mathematical form of that oneness. Each variable has one definition — one. From oneness comes clarity, from clarity comes optimization. As tawhid is the foundation of everything — SSA is the foundation of all compiler optimization.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ Door ৪ (Sets):</strong> SSA-তে প্রতিটি version একটি সেটের উপাদান — def-use chain। Book ৪৫ Door ৫: dead code elimination SSA-এর উপর নির্ভর করে।</div></div>
+
+<div class="secret-box">🔗 <strong>SSA = এক variable, এক assignment। তাওহিদ।</strong> এতে optimization সহজ। কিন্তু কিছু কোড অদরকারি — dead code। সেই পরিষ্কার করার কাজ — পরের দরজায়।</div>`,
+  senior: {
+    title: "SSA এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">SSA (Cytron 1991)</td><td>প্রতিটি var একবার assign</td></tr>
+<tr><td class="hl">Phi Node</td><td>branch merge-এ version নির্বাচন</td></tr>
+<tr><td class="hl">Constant Propagation</td><td>x1=1 সর্বদা ১</td></tr>
+<tr><td class="hl">Dead Code Elimination</td><td>অব্যবহৃত assignment বাদ</td></tr>
+<tr><td class="hl">LLVM IR</td><td>সব modern compiler SSA ব্যবহার</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 5 — The Invisible Cleaner (Optimization)
-// ═══════════════════════════════════════════
 doors.push({
   num: 5,
-  icon: "✨",
+  icon: "🧹",
   color: "#f97316",
-  tagline: "অদৃশ্য পরিচ্ছন্নতা — Invisible Cleaning",
-  name: "The Invisible Cleaner",
-  secret: "Constant folding, dead code elimination, inlining — কম্পাইলার তোমার কোড থেকে অদরকারি সরিয়ে দ্রুত করে।",
-  story: `<p class="scene-setting">তুমি লেখো <code>x = 3 * 4 + 5;</code>। কম্পাইলার এটাকে দেখে হাসে — কেন রানটাইমে ৩*৪ করবে? সে আগেই বের করে — <code>x = 17;</code>। এটা constant folding। আর যে code কখনো চলবে না (<code>if False: ...</code>), সেটা পুরোই মুছে ফেলে — dead code elimination। তুমি জানোও না তোমার কোড ছোট হয়ে গেছে!</p>
+  name: "অদৃশ্য পরিচ্ছন্নকারী",
+  subtitle: "The Invisible Cleaner",
+  tech: "Dead Code Elimination (DCE), constant folding, common subexpression elimination, loop optimization, peephole",
+  spirit: "তাহারা — পরিচ্ছন্নতা, অদরকারি দূর করা",
+  secret: "Dead code elimination: কেউ use করে না → বাদ দাও। Constant folding: 3+4 → 7 compile time-এ। Common subexpression: a+b দুইবার → একবার। প্রতিটি optimization কোড ছোট ও দ্রুত করে।",
+  recall: {
+    q: " Dead code elimination কী? Constant folding কী?",
+    qen: "What is dead code elimination? What is constant folding?",
+    a: "DCE: কেউ use করে না এমন code বাদ দাও। Constant folding: ৩+৪ কম্পাইল সময়ে ৭ করে দাও। CSE: একই হিসাব দুইবার → একবার।",
+    aen: "DCE: remove code nobody uses. Constant folding: compute 3+4=7 at compile time. CSE: same calculation twice → once."
+  },
+  story: `<p class="scene-setting">ইলিয়াস (Door ৪) তোমাকে SSA শিখিয়েছেন। এখন সেই SSA ব্যবহার করে optimization। তোমার কোডে অদরকারি জিনিস আছে — dead code (কেউ call করে না), constant (৩+৪ সর্বদা ৭), redundant (একই হিসাব দুইবার)। এই সব পরিষ্কার করলে কোড ছোট, দ্রুত, efficient।</p>
+<p class="scene-setting en">Ilyas (Door 4) taught you SSA. Now use that SSA for optimization. Your code has unnecessary things — dead code (nobody calls), constants (3+4 is always 7), redundant (same calc twice). Cleaning all this makes code smaller, faster, more efficient.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">✨ Optimization Passes: Smaller + Faster</text>
+<div class="dialogue"><strong>পরিচ্ছন্নকারী রাহিম:</strong> SSA-এর উপর আমি অনেক optimization করি। Dead code elimination: x1=1 কিন্তু কেউ use করে না? বাদ! Constant folding: ৩*৪ → ১২ compile time-এই হিসাব। Common subexpression: (a+b)*(a+b) → t=a+b; t*t। Loop invariant: if লুপের ভেতরে কিছু পরিবর্তন হয় না, লুপের বাইরে নাও। প্রতিটি optimization কোডকে আরও efficient করে।</div>
+<div class="dialogue en"><strong>Cleaner Rahim:</strong> I do many optimizations on SSA. Dead code elimination: x1=1 but nobody uses it? Remove! Constant folding: 3*4 → 12 computed at compile time. Common subexpression: (a+b)*(a+b) → t=a+b; t*t. Loop invariant: if something inside a loop doesn't change, move it outside. Each optimization makes code more efficient.</div>
 
-  <!-- Constant Folding -->
-  <rect x="20" y="50" width="170" height="130" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="105" y="72" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">Constant Folding</text>
-  <text x="105" y="95" text-anchor="middle" fill="#fcd34d" font-size="8">Before:</text>
-  <rect x="35" y="100" width="140" height="18" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="105" y="113" text-anchor="middle" fill="#cbd5e1" font-size="8" font-family="monospace">x = 3 * 4 + 5</text>
-  <text x="105" y="133" text-anchor="middle" fill="#fcd34d" font-size="8">After:</text>
-  <rect x="35" y="138" width="140" height="18" rx="3" fill="#052e16" stroke="#4ade80" stroke-width="1"/>
-  <text x="105" y="151" text-anchor="middle" fill="#4ade80" font-size="8" font-family="monospace">x = 17</text>
-  <text x="105" y="170" text-anchor="middle" fill="#64748b" font-size="7">Compute at compile time</text>
+<div class="code-block">— Compiler Optimizations —
 
-  <!-- Dead Code Elimination -->
-  <rect x="205" y="50" width="170" height="130" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="290" y="72" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">Dead Code Elimination</text>
-  <text x="290" y="95" text-anchor="middle" fill="#fcd34d" font-size="8">Before:</text>
-  <rect x="220" y="100" width="140" height="18" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="290" y="113" text-anchor="middle" fill="#cbd5e1" font-size="7" font-family="monospace">if False: heavy_calc()</text>
-  <text x="290" y="133" text-anchor="middle" fill="#fcd34d" font-size="8">After:</text>
-  <rect x="220" y="138" width="140" height="18" rx="3" fill="#052e16" stroke="#4ade80" stroke-width="1"/>
-  <text x="290" y="151" text-anchor="middle" fill="#4ade80" font-size="8" font-family="monospace">(removed entirely)</text>
-  <text x="290" y="170" text-anchor="middle" fill="#64748b" font-size="7">Unreachable code → gone</text>
+  # Dead Code Elimination (DCE)
+  # Before:
+  x = 1
+  y = 2      # y কেউ use করে না!
+  z = x + 3
+  # After DCE:
+  x = 1
+  z = x + 3  # y বাদ!
 
-  <!-- Inlining -->
-  <rect x="390" y="50" width="170" height="130" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="475" y="72" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">Function Inlining</text>
-  <text x="475" y="95" text-anchor="middle" fill="#fcd34d" font-size="8">Before:</text>
-  <rect x="405" y="100" width="140" height="18" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="475" y="113" text-anchor="middle" fill="#cbd5e1" font-size="7" font-family="monospace">y = square(x) + 1</text>
-  <text x="475" y="133" text-anchor="middle" fill="#fcd34d" font-size="8">After:</text>
-  <rect x="405" y="138" width="140" height="18" rx="3" fill="#052e16" stroke="#4ade80" stroke-width="1"/>
-  <text x="475" y="151" text-anchor="middle" fill="#4ade80" font-size="7" font-family="monospace">y = (x * x) + 1</text>
-  <text x="475" y="170" text-anchor="middle" fill="#64748b" font-size="7">No function call overhead</text>
+  # Constant Folding
+  # Before: x = 3 * 4 + 2
+  # After:  x = 14           # compile time!
 
-  <!-- Strength Reduction -->
-  <rect x="105" y="200" width="170" height="130" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="190" y="222" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">Strength Reduction</text>
-  <text x="190" y="245" text-anchor="middle" fill="#fcd34d" font-size="8">Before:</text>
-  <rect x="120" y="250" width="140" height="18" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="190" y="263" text-anchor="middle" fill="#cbd5e1" font-size="8" font-family="monospace">x = y * 8</text>
-  <text x="190" y="283" text-anchor="middle" fill="#fcd34d" font-size="8">After:</text>
-  <rect x="120" y="288" width="140" height="18" rx="3" fill="#052e16" stroke="#4ade80" stroke-width="1"/>
-  <text x="190" y="301" text-anchor="middle" fill="#4ade80" font-size="8" font-family="monospace">x = y &lt;&lt; 3</text>
-  <text x="190" y="320" text-anchor="middle" fill="#64748b" font-size="7">Multiply → bit shift</text>
+  # Common Subexpression Elimination (CSE)
+  # Before: a = x + y; b = x + y
+  # After:  t = x + y; a = t; b = t
 
-  <!-- Loop Unrolling -->
-  <rect x="305" y="200" width="170" height="130" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="390" y="222" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">Loop Unrolling</text>
-  <text x="390" y="245" text-anchor="middle" fill="#fcd34d" font-size="8">Before:</text>
-  <rect x="320" y="250" width="140" height="18" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <text x="390" y="263" text-anchor="middle" fill="#cbd5e1" font-size="7" font-family="monospace">for i in range(3): a[i]=0</text>
-  <text x="390" y="283" text-anchor="middle" fill="#fcd34d" font-size="8">After:</text>
-  <rect x="320" y="288" width="140" height="18" rx="3" fill="#052e16" stroke="#4ade80" stroke-width="1"/>
-  <text x="390" y="301" text-anchor="middle" fill="#4ade80" font-size="6" font-family="monospace">a[0]=0;a[1]=0;a[2]=0</text>
-  <text x="390" y="320" text-anchor="middle" fill="#64748b" font-size="7">No loop overhead</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: ৫টা optimization pass — constant folding, dead code elimination, inlining, strength reduction, loop unrolling। কম্পাইলার তোমার কোড থেকে অদরকারি সরিয়ে দ্রুত করে।</div>
+  # Loop Invariant Code Motion
+  # Before:
+  for i in range(n):
+      c = a * b       # a,b লুপে পরিবর্তন হয় না!
+      arr[i] = c + i
+  # After:
+  c = a * b           # লুপের বাইরে!
+  for i in range(n):
+      arr[i] = c + i
 
-<div class="code-block"><div class="code-title">✨ Door 5 — Real Optimization: Before &amp; After</div>
-<pre><code>// opt.c — C code the compiler will optimize
-int square(int x) { return x * x; }
+  — gcc optimization levels:
+  $ gcc -O0 (no opt) -O1 (basic) -O2 (standard) -O3 (aggressive)
+  — -O2: DCE + CSE + constant folding + loop opt</div>
 
-int demo(int a) {
-    int y = square(a) + 1;   // function call
-    int z = 3 * 4 + 5;       // constant expr
-    int w = a * 8;           // multiply by power of 2
-    return y + z + w;
-}
+<div class="verse">إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ وَيُحِبُّ الْمُتَطَهِّرِينَ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই আল্লাহ তওবাকারীদের ভালোবাসেন এবং পবিত্রকারীদের ভালোবাসেন।" — কুরআন ২:২২২</div>
 
-# Compare -O0 (no opt) vs -O3 (aggressive):
-$ gcc -S -O0 opt.c -o opt_O0.s
-$ gcc -S -O3 opt.c -o opt_O3.s
-$ wc -l opt_O0.s opt_O3.s
-   42 opt_O0.s
-   18 opt_O3.s   &lt;-- less than half the instructions!</code></pre>
-<pre><code># Constant folding: "3 * 4 + 5" becomes "17" at compile time.
-# Strength reduction: "a * 8" becomes "a &lt;&lt; 3" (bit shift).
-# Inlining: square(a) body copied inline — no call overhead.
+<p class="scene-setting">তাহারা — পরিচ্ছন্নতা। Dead code elimination সেই পরিচ্ছন্নতার কাজ — অদরকারি দূর করা। যেমন পবিত্রতা শরীরকে সুস্থ রাখে, optimization কোডকে healthy রাখে। অদরকারি দূর করো — যা অবশিষ্ট থাকে, তাই সার।</p>
+<p class="scene-setting en">Tahara — cleanliness. Dead code elimination is the work of that cleanliness — removing the unnecessary. As purity keeps the body healthy, optimization keeps code healthy. Remove the unnecessary — what remains is essential.</p>
 
-# GCC dump shows each optimization pass:
-$ gcc -O3 -fdump-tree-all opt.c -o /dev/null
-$ ls *opt*
-opt.c.031t.ssa      # SSA form
-opt.c.034t.einline  # early inlining
-opt.c.043t.vrp1     # value range propagation
-opt.c.061t.cddce1   # dead code elimination
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ Door ৪ (Sets):</strong> def-use chain = সেট অপারেশন। Book ৪৫ Door ৪ (SSA): dead code detection SSA ছাড়া কঠিন।</div></div>
 
-# In opt_O3.s — square() is GONE (inlined), no multiply by 8:
-#     leal    (%rdi,%rdi), %eax   # a*3 via add (strength reduced)
-#     imull   %edi, %edi          # a*a inlined
-#     ...</code></pre>
-<pre><code># Python's peephole optimizer does constant folding too:
-&gt;&gt;&gt; import dis
-&gt;&gt;&gt; dis.dis(compile("x = 3 * 4 + 5", "&lt;str&gt;", "exec"))
-  1           0 LOAD_CONST 0 (17)   # &lt;-- already folded to 17!
-              2 STORE_NAME 0 (x)
-              4 LOAD_CONST 1 (None)
-              6 RETURN_VALUE</code></pre>
-<span class="code-note">💡 তুমি যা লেখো আর কম্পাইলার যা চালায় — দুটো আলাদা! <code>-O0</code> আর <code>-O3</code> compare করে দেখো।</span>
-</div>
-
-<div class="dialogue"><strong>অপটিমাইজার ইঞ্জিনিয়ার:</strong> তুমি যা লেখো আর কম্পাইলার যা চালায় — দুটো আলাদা! Constant folding — <code>3*4+5</code> হয়ে যায় <code>17</code>। Dead code elimination — <code>if False</code> branch পুরোই মুছে যায়। Inlining — function call কে body দিয়ে replace করা হয়, call overhead শূন্য। Strength reduction — multiply কে bit shift দিয়ে replace। Loop unrolling — loop কে সোজা sequence তে লেখা। এগুলো তুমি দেখো না — কম্পাইলার চুপচাপ করে দেয়। Django তে এটা <code>{% cache %}</code> আর feature flag removal এর মতো।</div>`,
-  recall: [
-    { q: "Constant folding উদাহরণ দাও।", a: "<code>x = 3 * 4 + 5</code> হয়ে যায় <code>x = 17</code> — কম্পাইলার compile-time এই হিসাব করে ফেলে, runtime এ করতে হয় না।" },
-    { q: "Dead code elimination কখন হয়?", a: "যখন code এর ফলাফল কেউ use করে না, বা branch কখনো reach হবে না (if False)। কম্পাইলার সেটা মুছে দেয়।" },
-  ]
+<div class="secret-box">🧹 <strong>Optimization = অদরকারি দূর, প্রয়োজনীয় রাখ।</strong> কোড ছোট, দ্রুত, efficient। কিন্তু optimization-এর পর একটি সমস্যা — প্রোগ্রামের ভেতরে সীমিত রেজিস্টার। কোন variable কোথায় রাখবে? সেই সমস্যা — graph coloring। পরের দরজায়।</div>`,
+  senior: {
+    title: "Optimizations এক নজরে",
+    body: `<table class="kv-table"><tr><th>Optimization</th><th>কী করে</th></tr>
+<tr><td class="hl">Dead Code Elim</td><td>অব্যবহৃত কোড বাদ</td></tr>
+<tr><td class="hl">Constant Folding</td><td>৩+৪ → ৭ compile time-এ</td></tr>
+<tr><td class="hl">CSE</td><td>একই হিসাব দুইবার → একবার</td></tr>
+<tr><td class="hl">Loop Invariant</td><td>লুপের বাইরে সরাও</td></tr>
+<tr><td class="hl">Inlining</td><td>function body সরাসরি বসাও</td></tr>
+<tr><td class="hl">-O2 / -O3</td><td>gcc optimization levels</td></tr></table>`
+  }
 });

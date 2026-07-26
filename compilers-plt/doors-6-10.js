@@ -1,497 +1,399 @@
-// ═══════════════════════════════════════════
-// DOOR 6 — The Map Colorist (Register Allocation)
-// ═══════════════════════════════════════════
 doors.push({
   num: 6,
   icon: "🎨",
-  color: "#ef4444",
-  tagline: "মানচিত্র রং করা — Map Coloring",
-  name: "The Map Colorist",
-  secret: "Register allocation = graph coloring। NP-complete! Chaitin-Briggs heuristic approximate করে।",
-  story: `<p class="scene-setting">তোমার CPU তে মাত্র ৩২টা register। কিন্তু তোমার কোডে শত শত variable। কম্পাইলার কীভাবে ঠিক করে কে কোন register পাবে? এটা একটা বিখ্যাত সমস্যা — graph coloring! দুটি variable যদি একই সময়ে live থাকে (interfere), তারা আলাদা register পাবে — ঠিক যেমন পাশাপাশি দুটি দেশ আলাদা রং পায়। আর এটা NP-complete!</p>
+  color: "#f97316",
+  name: "রঙের মানচিত্র",
+  subtitle: "The Map of Colors",
+  tech: "Register Allocation — Chaitin (1981), graph coloring, interference graph, spilling, live ranges",
+  spirit: "তাফসিল — পৃথকীকরণ, সীমিত স্থানে সঠিক বরাদ্দ",
+  secret: "১৬টি CPU রেজিস্টার, ১০০টি variable। কোনটা কোথায়? Graph coloring! একসাথে live থাকলে আলাদা রেজিস্টার। Chaitin (১৯৮১) দেখিয়েছেন — এটাই graph coloring সমস্যা।",
+  recall: {
+    q: " Register allocation কীভাবে কাজ করে? Chaitin-এর অ্যালগরিদম কী?",
+    qen: "How does register allocation work? What is Chaitin's algorithm?",
+    a: "Interference graph বানাও — একসাথে live variable-এ এজ। Graph coloring করো — adjacent আলাদা রঙ। রঙ = রেজিস্টার। রঙ কম হলে spill (memory)। Chaitin ১৯৮১।",
+    aen: "Build interference graph — edge between simultaneously live variables. Graph color — adjacent different colors. Color = register. If too few colors, spill to memory. Chaitin 1981."
+  },
+  story: `<p class="scene-setting">রাহিম (Door ৫) তোমাকে optimization শিখিয়েছেন। কিন্তু optimization-এর পর একটি সমস্যা — CPU-তে মাত্র ১৬টি রেজিস্টার। কিন্তু তোমার প্রোগ্রামে ১০০টি variable! কোন variable কোন রেজিস্টারে? দুটো variable একসাথে live হলে আলাদা রেজিস্টার দরকার। এটাই graph coloring সমস্যা — সীমিত রঙে গাছ রাঙা।</p>
+<p class="scene-setting en">Rahim (Door 5) taught you optimization. But after optimization, a problem — the CPU has only 16 registers. But your program has 100 variables! Which variable goes where? If two variables are live simultaneously, they need separate registers. This is the graph coloring problem — coloring a graph with limited colors.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎨 Register Allocation = Graph Coloring (NP-Complete!)</text>
+<div class="dialogue"><strong>রঙ-কারিগর ইউসুফ:</strong> আমি Chaitin-এর অ্যালগরিতম ব্যবহার করি (১৯৮১)। প্রথমে interference graph বানাই — দুটি variable একসাথে live? এজ আছে। তারপর graph coloring — adjacent নোড আলাদা রঙ। রঙের সংখ্যা = রেজিস্টার সংখ্যা। যদি ১৬ রঙে না হয় — spill! কিছু variable memory-তে পাঠাও। এটাই register allocation — সবচেয়ে কঠিণ NP-complete সমস্যা।</div>
+<div class="dialogue en"><strong>Color Artisan Yusuf:</strong> I use Chaitin's algorithm (1981). First build interference graph — two variables live together? Edge exists. Then graph coloring — adjacent nodes different colors. Number of colors = number of registers. If 16 colors not enough — spill! Send some variables to memory. This is register allocation — the hardest NP-complete problem.</div>
 
-  <!-- Interference Graph -->
-  <text x="290" y="50" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="600">Interference Graph: connected = simultaneously live</text>
+<div class="code-block">— Register Allocation (Python simulation) —
 
-  <!-- Node a (red) -->
-  <circle cx="150" cy="120" r="22" fill="#dc2626" stroke="#f87171" stroke-width="2"/>
-  <text x="150" y="116" text-anchor="middle" fill="#fee2e2" font-size="10" font-weight="700">a</text>
-  <text x="150" y="128" text-anchor="middle" fill="#fca5a5" font-size="7">R1</text>
+  import networkx as nx
 
-  <!-- Node b (blue) -->
-  <circle cx="250" cy="90" r="22" fill="#2563eb" stroke="#60a5fa" stroke-width="2"/>
-  <text x="250" y="86" text-anchor="middle" fill="#dbeafe" font-size="10" font-weight="700">b</text>
-  <text x="250" y="98" text-anchor="middle" fill="#93c5fd" font-size="7">R2</text>
+  # Interference graph: যে variable-গুলো একসাথে live
+  G = nx.Graph()
+  G.add_edges_from([
+      ("a", "b"), ("a", "c"),  # a ও b, a ও c একসাথে live
+      ("b", "c"), ("b", "d"),
+      ("c", "d"), ("c", "e"),
+      ("d", "e"),
+  ])
 
-  <!-- Node c (green) -->
-  <circle cx="350" cy="120" r="22" fill="#16a34a" stroke="#4ade80" stroke-width="2"/>
-  <text x="350" y="116" text-anchor="middle" fill="#dcfce7" font-size="10" font-weight="700">c</text>
-  <text x="350" y="128" text-anchor="middle" fill="#86efac" font-size="7">R1</text>
+  # Graph coloring (greedy):
+  coloring = nx.coloring.greedy_color(G, strategy="largest_first")
+  print(coloring)
+  # {'c': 0, 'b': 1, 'a': 2, 'd': 0, 'e': 1}
+  # ৩টি রঙ লাগলো → ৩টি রেজিস্টার যথেষ্ট!
 
-  <!-- Node d (purple) -->
-  <circle cx="200" cy="200" r="22" fill="#9333ea" stroke="#a855f7" stroke-width="2"/>
-  <text x="200" y="196" text-anchor="middle" fill="#f3e8ff" font-size="10" font-weight="700">d</text>
-  <text x="200" y="208" text-anchor="middle" fill="#c084fc" font-size="7">R3</text>
+  num_registers = max(coloring.values()) + 1
+  print(f"রেজিস্টার দরকার: {num_registers}")  # 3
 
-  <!-- Node e (red, shares with a? no, different) -->
-  <circle cx="300" cy="200" r="22" fill="#dc2626" stroke="#f87171" stroke-width="2"/>
-  <text x="300" y="196" text-anchor="middle" fill="#fee2e2" font-size="10" font-weight="700">e</text>
-  <text x="300" y="208" text-anchor="middle" fill="#fca5a5" font-size="7">R1</text>
+  # Spilling: যদি রেজিস্টার কম হয়
+  if num_registers > 16:  # x86-64 এ ১৬টি
+      # কিছু variable memory-তে পাঠাও
+      spill = max(coloring, key=lambda v: coloring[v])
+      print(f"Spill to memory: {spill}")
 
-  <!-- Edges (interference) -->
-  <line x1="170" y1="115" x2="230" y2="95" stroke="#475569" stroke-width="2"/>
-  <line x1="270" y1="95" x2="330" y2="115" stroke="#475569" stroke-width="2"/>
-  <line x1="170" y1="135" x2="185" y2="180" stroke="#475569" stroke-width="2"/>
-  <line x1="330" y1="135" x2="315" y2="180" stroke="#475569" stroke-width="2"/>
-  <line x1="220" y1="200" x2="280" y2="200" stroke="#475569" stroke-width="2"/>
-  <line x1="240" y1="105" x2="290" y2="180" stroke="#475569" stroke-width="1.5" stroke-dasharray="3,2"/>
+  — এটাই Book ৪৮ Door ৮ (Graph Coloring)-এর প্রয়োগ! —</div>
 
-  <text x="290" y="250" text-anchor="middle" fill="#e2e8f0" font-size="9">a-b interfere (different colors: R1≠R2)</text>
-  <text x="290" y="265" text-anchor="middle" fill="#e2e8f0" font-size="9">a-c DON'T interfere → share R1! ✅</text>
-  <text x="290" y="280" text-anchor="middle" fill="#e2e8f0" font-size="9">d-e interfere → different colors</text>
+<div class="verse">وَفِي خَلْقِكُمْ وَمَا يَبُثُّ مِن دَابَّةٍ آيَاتٌ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং তোমাদের সৃষ্টিতে নিদর্শন রয়েছে।" — কুরআন ৪৫:৪</div>
 
-  <rect x="80" y="295" width="420" height="35" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-  <text x="290" y="315" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="600">⚠️ Optimal coloring = NP-complete! Chaitin-Briggs heuristic approximates. Spill = RAM-এ store।</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Register allocation = graph coloring। Interfering variables আলাদা color (register)। শেয়ার করতে পারে যারা overlap করে না। NP-complete!</div>
+<p class="scene-setting">তাফসিল — পৃথকীকরণ। Register allocation সেই পৃথকীকরণের রূপ — সীমিত রেজিস্টারে সঠিক বরাদ্দ। প্রতিটি variable আলাদা, প্রতিটি রেজিস্টার নির্দিষ্ট। বৈচিত্র্য একটি নিদর্শন — গাণিতিক বৈচিত্র্যও তেমন।</p>
+<p class="scene-setting en">Tafsil — separation. Register allocation is the form of that separation — correct allocation in limited registers. Each variable separate, each register specific. Diversity is a sign — mathematical diversity too.</p>
 
-<div class="code-block"><div class="code-title">🎨 Door 6 — Real Register Allocation: x86 Assembly</div>
-<pre><code>// reg.c — 4 variables, but x86 has limited registers
-int f(int a, int b, int c, int d) {
-    int x = a + b;    // x live until return
-    int y = c + d;    // y live until return
-    int z = x * y;    // z live until return
-    return x + y + z;
-}
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৮ (Discrete Math) Door ৮ (Graph Coloring):</strong> Chaitin-এর অ্যালগরিদম = graph coloring! Four Color Theorem-এর প্রয়োগ। Book ৪১ Door ৫: NP-complete — register allocation কঠিন।</div></div>
 
-# -O0 keeps everything on the stack (RAM):
-$ gcc -S -O0 reg.c -o reg_O0.s
-$ grep -c 'movl.*rsp' reg_O0.s
-   12   # lots of stack spills
-
-# -O2 allocates registers via graph coloring:
-$ gcc -S -O2 reg.c -o reg_O2.s
-$ grep -E 'eax|ebx|ecx|edx' reg_O2.s
-    addl    %edx, %eax    # x = a+b in eax
-    addl    %ecx, %eax    # +c
-    addl    %edi, %eax    # +d
-    imull   %edx, %eax    # x*y
-    ret                   # no spills!</code></pre>
-<pre><code># View the register allocator's interference graph:
-$ gcc -O2 -fdump-rtl-ra reg.c -o /dev/null
-$ cat reg.c.5016r.ra
-
-  ; a -&gt; conflicts with: b c d
-  ; b -&gt; conflicts with: a c d
-  ; Hard regs used: ax cx dx (3 of 6 available)
-  ; Spills: 0
-
-# Chaitin-Briggs algorithm:
-#   1. Build interference graph (who's live at same time)
-#   2. Simplify: remove nodes with degree &lt; K (K=#registers)
-#   3. If stuck -&gt; spill a variable to RAM
-#   4. Select: assign colors (registers) in reverse order</code></pre>
-<span class="code-note">💡 <code>-O0</code> এ variable গুলো stack এ থাকে (ধীর)। <code>-O2</code> তে graph coloring দিয়ে register allocate হয় (দ্রুত)।</span>
-</div>
-
-<div class="dialogue"><strong>চাইটিন:</strong> আমি গ্রেগরি চাইটিন। ১৯৮১ সালে IBM-এ আমি register allocation কে graph coloring সমস্যা হিসেবে formalize করেছিলাম। প্রতিটা variable একটা node। দুটি variable যদি একই সময়ে live থাকে, তাদের মধ্যে edge। এখন এই graph কে কম রং দিয়ে color করতে হয় যাতে adjacent node গুলো আলাদা রং পায়। কিন্তু এটা NP-complete! বড় program এ optimal solution অসম্ভব। তাই heuristic ব্যবহার করি — Chaitin-Briggs algorithm। Register শেষ হলে spill — RAM এ store করতে হয়। ধীর কিন্তু correct।</div>`,
-  recall: [
-    { q: "Register allocation কেন NP-complete?", a: "Graph coloring সবসময় সবচেয়ে কম রং দিয়ে করা NP-complete। Variable সংখ্যা বড় হলে brute force অসম্ভব।" },
-    { q: "Spilling কী?", a: "যখন register শেষ হয়ে যায়, কিছু variable কে RAM-এ store করা হয়। ধীর কিন্তু correct। Chaitin-Briggs কোন variable spill করবে সেটা heuristic দিয়ে ঠিক করে।" },
-  ]
+<div class="secret-box">🎨 <strong>Register allocation = graph coloring। সীমিত রঙে সঠিক বরাদ্দ।</strong> কিন্তু কিছু কোড বারবার চলে — hot path। সেই কোড যদি runtime-এ optimize করা যায়? সেই জাদু — JIT compilation। পরের দরজায়।</div>`,
+  senior: {
+    title: "Register Allocation এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">Chaitin (1981)</td><td>Register allocation = graph coloring</td></tr>
+<tr><td class="hl">Interference Graph</td><td>একসাথে live → edge</td></tr>
+<tr><td class="hl">Color = Register</td><td>adjacent আলাদা রঙ</td></tr>
+<tr><td class="hl">Spilling</td><td>রেজিস্টার কম → memory</td></tr>
+<tr><td class="hl">NP-complete</td><td>সবচেয়ে কম রঙ খুঁজা কঠিন</td></tr>
+<tr><td class="hl">x86-64</td><td>১৬টি general purpose register</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 7 — The Self-Rewriter (CPython)
-// ═══════════════════════════════════════════
 doors.push({
   num: 7,
-  icon: "🐍",
-  color: "#fbbf24",
-  tagline: "নিজেকে পরিবর্তন — Self-Rewriting",
-  name: "The Self-Rewriter",
-  secret: "Python 3.11+ নিজের bytecode পরিবর্তন করে! Hot code কে specialize করে — C-speed এ চলে।",
-  story: `<p class="scene-setting">তুমি ভাবো Python "just interpreted" — source code সরাসরি চলে। ভুল! CPython আসলে compiler আর interpreter দুটোই। প্রথমে source কে bytecode এ compile করে (<code>__pycache__</code>)। তারপর bytecode কে interpret করে। কিন্তু Python 3.11+ এ আরও জাদু আছে — adaptive specialization। Hot code দেখে, bytecode পরিবর্তন করে, C-speed এ চালায়!</p>
-
-<div class="svg-diagram">
-<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <defs><marker id="arrPy" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#fbbf24"/></marker></defs>
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🐍 CPython Pipeline: Source → Bytecode → Adaptive → Execute</text>
-
-  <rect x="20" y="50" width="120" height="45" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="80" y="72" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">Source Code</text>
-  <text x="80" y="86" text-anchor="middle" fill="#fcd34d" font-size="7" font-family="monospace">def f(x): return x*2.0</text>
-
-  <line x1="140" y1="72" x2="165" y2="72" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrPy)"/>
-
-  <rect x="170" y="50" width="120" height="45" rx="8" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="1.5"/>
-  <text x="230" y="72" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Compile</text>
-  <text x="230" y="86" text-anchor="middle" fill="#bae6fd" font-size="7">→ .pyc bytecode</text>
-
-  <line x1="290" y1="72" x2="315" y2="72" stroke="#0ea5e9" stroke-width="1.5" marker-end="url(#arrPy)"/>
-
-  <rect x="320" y="50" width="120" height="45" rx="8" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
-  <text x="380" y="72" text-anchor="middle" fill="#fdba74" font-size="10" font-weight="700">PVM Execute</text>
-  <text x="380" y="86" text-anchor="middle" fill="#fb923c" font-size="7">BINARY_OP × 8</text>
-
-  <line x1="440" y1="72" x2="465" y2="72" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrPy)"/>
-
-  <!-- Adaptive Specialization -->
-  <rect x="470" y="50" width="90" height="45" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="515" y="68" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">🔥 HOT!</text>
-  <text x="515" y="82" text-anchor="middle" fill="#86efac" font-size="7">Specialize</text>
-
-  <!-- Specialization detail -->
-  <rect x="20" y="120" width="540" height="90" rx="10" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="290" y="142" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">PEP 659: Adaptive Specialization (Python 3.11+)</text>
-
-  <rect x="40" y="155" width="220" height="22" rx="4" fill="#7c2d12" stroke="#f97316" stroke-width="1"/>
-  <text x="150" y="170" text-anchor="middle" fill="#fdba74" font-size="8" font-family="monospace">Generic: BINARY_OP(*, x, 2.0)</text>
-
-  <text x="290" y="170" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">→ specialize →</text>
-
-  <rect x="320" y="155" width="220" height="22" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="430" y="170" text-anchor="middle" fill="#4ade80" font-size="8" font-family="monospace">Specialized: BINARY_OP_MUL_FLOAT</text>
-
-  <text x="290" y="195" text-anchor="middle" fill="#86efac" font-size="9">✅ C-speed execution! No type checking at runtime. 25% faster than 3.10.</text>
-
-  <!-- Deopt -->
-  <rect x="80" y="230" width="420" height="40" rx="8" fill="#450a0a" stroke="#dc2626" stroke-width="1.5"/>
-  <text x="290" y="248" text-anchor="middle" fill="#fca5a5" font-size="9">⚠️ Type change? (int instead of float) → De-optimize → fallback to generic bytecode</text>
-  <text x="290" y="262" text-anchor="middle" fill="#64748b" font-size="8" font-style="italic">Python is ALWAYS correct first, fast second</text>
-
-  <text x="290" y="295" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="600">💡 Tip: লুপে একই type রাখলে specialize হয় — 32 কে 32.0 করলে দ্রুত!</text>
-  <text x="290" y="312" text-anchor="middle" fill="#64748b" font-size="8" font-style="italic">CPython 3.13+ adds Tier 2 uop interpreter. 3.15+ experimental Copy-and-Patch JIT.</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: CPython = compile to bytecode → PVM interpret → 8x hot → specialize → C-speed। Type change → deopt → fallback। Python 3.11+ = ২৫% দ্রুত।</div>
-
-<div class="code-block"><div class="code-title">🐍 Door 7 — Real CPython: Bytecode &amp; Specialization</div>
-<pre><code># Python source compiles to bytecode, then PVM interprets it
-&gt;&gt;&gt; def f(x):
-...     return x * 2.0
-...
-&gt;&gt;&gt; import dis
-&gt;&gt;&gt; dis.dis(f)
-  1           0 RESUME                   0
-  2           2 LOAD_FAST                0 (x)
-              4 LOAD_CONST               1 (2.0)
-              6 BINARY_OP                5 (*)   # generic!
-              8 RETURN_VALUE</code></pre>
-<pre><code># Python 3.11+ specializes hot bytecode (PEP 659).
-# After ~8 calls with floats, BINARY_OP becomes:
-
-&gt;&gt;&gt; for _ in range(10): f(1.5)
-&gt;&gt;&gt; dis.dis(f)
-  2    0 LOAD_FAST                0 (x)
-       2 LOAD_CONST               1 (2.0)
-       4 BINARY_OP_MULTIPLY_FLOAT    # specialized! C-speed
-       6 RETURN_VALUE
-
-# Int passed? Deopt back to generic BINARY_OP:
-&gt;&gt;&gt; f(3)   # type changed -&gt; deoptimize</code></pre>
-<pre><code>$ python -c "import sys; print(sys.version)"
-3.12.1 (main, ...) [Clang 15.0.0 ]
-
-# Measure the speedup (3.11 vs 3.10):
-$ python3.10 -m timeit "sum(range(1000))"
-50000 loops: 9.8 usec/loop
-$ python3.11 -m timeit "sum(range(1000))"
-50000 loops: 7.1 usec/loop   # ~25% faster!</code></pre>
-<span class="code-note">💡 Python শুধু interpreted নয় — compile হয়ে bytecode হয়, তারপর 3.11+ এ hot bytecode specialize হয়।</span>
-</div>
-
-<div class="dialogue"><strong>পাইথন কোর ডেভেলপার:</strong> Python 3.11 আসলে একটা বিপ্লব। আমরা "Specializing Adaptive Interpreter" (PEP 659) যোগ করেছি। যখন PVM দেখে একটা bytecode instruction বারবার চলছে (৮ বার) আর একই type এর ডেটা আসছে — সে সেই instruction কে replace করে দেয়! Generic <code>BINARY_OP</code> হয়ে যায় <code>BINARY_OP_MULTIPLY_FLOAT</code>। এটা C-speed এ চলে — type checking skip। আর এটাই কেন Python 3.11+ ২৫% দ্রুত — তুমি কোনো কোড পরিবর্তন করো নাই!</div>`,
-  recall: [
-    { q: "Python কি শুধু interpreted?", a: "না! CPython আসলে compiler + interpreter। Source → bytecode compile করে, তারপর bytecode interpret করে। 3.11+ এ bytecode নিজে পরিবর্তন হয় (specialization)।" },
-    { q: "Python 3.11 কেন ২৫% দ্রুত?", a: "Adaptive specialization (PEP 659)। Hot bytecode instruction কে type-specific version দিয়ে replace করে — C-speed এ চলে।" },
-  ]
-});
-
-// ═══════════════════════════════════════════
-// DOOR 8 — The Guesser (V8 JIT)
-// ═══════════════════════════════════════════
-doors.push({
-  num: 8,
   icon: "⚡",
   color: "#f97316",
-  tagline: "অনুমানকারী — The Guesser",
-  name: "The Guesser",
-  secret: "V8 = ৪-tier JIT। TurboFan guess করে, wrong হলে deopt। Hidden class = shape tracking।",
-  story: `<p class="scene-setting">JavaScript dynamically typed। কিন্তু V8 একে প্রায় native speed এ চালায়! কীভাবে? Speculative optimization — অনুমান করে। Object গুলোর shape track করে (hidden class)। যদি দেখে সব object একই shape, TurboFan hardcoded machine code তৈরি করে। কিন্তু ভুল অনুমান হলে — deoptimization। Optimized code ফেলে দিয়ে interpreter এ ফিরে যায়।</p>
+  name: "নিজেকে পুনর্লিখন",
+  subtitle: "The Self-Rewriter",
+  tech: "JIT Compilation — HotSpot JVM, V8 (JavaScript), PyPy, profile-guided optimization, deoptimization",
+  spirit: "তাজদিদ — নবীকরণ, runtime-এ নিজেকে উন্নত করা",
+  secret: "JIT = runtime-এ compilation। প্রথমে interpret (ধীর), তারপর hot path detect → compile → optimize। V8, JVM HotSpot, PyPy — সব JIT ব্যবহার করে। প্রোগ্রাম চলাকালীন নিজেকে উন্নত করে।",
+  recall: {
+    q: " JIT ও AOT compilation-এর পার্থক্য কী?",
+    qen: "What is the difference between JIT and AOT compilation?",
+    a: "AOT = compile আগেই (gcc, rustc)। JIT = compile runtime-এ (JVM, V8)। JIT hot path detect করে optimize — প্রোগ্রাম যত চলে তত দ্রুত।",
+    aen: "AOT = compile ahead of time (gcc, rustc). JIT = compile at runtime (JVM, V8). JIT detects hot paths and optimizes — program gets faster as it runs."
+  },
+  story: `<p class="scene-setting">ইউসুফ (Door ৬) তোমাকে register allocation শিখিয়েছেন। কিন্তু একটি সমস্যা — static compilation সব কোড সমানভাবে দেখে। কোনটা বারবার চলে (hot), কোনটা একবার (cold) — সেটা জানে না। JIT (Just-In-Time) compilation এর উত্তর — runtime-এ দেখো কোন কোড hot, তাহলে compile করো ও optimize করো। V8 এভাবে JavaScript দ্রুত করে।</p>
+<p class="scene-setting en">Yusuf (Door 6) taught you register allocation. But a problem — static compilation treats all code equally. Which code runs often (hot), which runs once (cold) — it doesn't know. JIT (Just-In-Time) compilation answers — at runtime, see which code is hot, then compile and optimize. V8 does this to make JavaScript fast.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <defs><marker id="arrV8" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#f97316"/></marker>
-  <marker id="arrDeopt" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#dc2626"/></marker></defs>
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚡ V8 4-Tier Pipeline: Ignition → TurboFan → Deopt</text>
+<div class="dialogue"><strong>নবীকরণ-কারিগর জাকারিয়া:</strong> JIT দুই phase-এ কাজ কর। প্রথম phase: interpret — প্রতিটি লাইন ধীরে পড়ো। একই কোড বারবার চললে? Hot path! দ্বিতীয় phase: compile করো optimized machine code। V8-এ Ignition (interpreter) আর TurboFan (optimizer)। JVM-এ C1 (fast compile) আর C2 (aggressive optimize)। PyPy-তে tracing JIT — hot loop trace করে optimize।</div>
+<div class="dialogue en"><strong>Renewal Artisan Zakariya:</strong> JIT works in two phases. First: interpret — read each line slowly. Same code runs repeatedly? Hot path! Second: compile to optimized machine code. V8 has Ignition (interpreter) and TurboFan (optimizer). JVM has C1 (fast compile) and C2 (aggressive). PyPy has tracing JIT — traces hot loops and optimizes.</div>
 
-  <!-- 4 Tiers -->
-  <rect x="20" y="50" width="110" height="80" rx="8" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
-  <text x="75" y="72" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Ignition</text>
-  <text x="75" y="88" text-anchor="middle" fill="#38bdf8" font-size="7">Interpreter</text>
-  <text x="75" y="103" text-anchor="middle" fill="#bae6fd" font-size="7">~100x slower</text>
-  <text x="75" y="118" text-anchor="middle" fill="#64748b" font-size="6">Always runs first</text>
+<div class="code-block">— JIT in Action (Python dis) —
 
-  <line x1="130" y1="90" x2="150" y2="90" stroke="#f97316" stroke-width="2" marker-end="url(#arrV8)"/>
-  <text x="140" y="83" text-anchor="middle" fill="#fb923c" font-size="6">~8 calls</text>
+  # Python: interpreter (বেশিরভাগ)
+  # PyPy: JIT compiler
+  # $ pypy3 script.py — CPython এর ৫-১০x দ্রুত!
 
-  <rect x="155" y="50" width="110" height="80" rx="8" fill="#7c2d12" stroke="#f97316" stroke-width="2"/>
-  <text x="210" y="72" text-anchor="middle" fill="#fdba74" font-size="10" font-weight="700">Sparkplug</text>
-  <text x="210" y="88" text-anchor="middle" fill="#fb923c" font-size="7">Baseline JIT</text>
-  <text x="210" y="103" text-anchor="middle" fill="#fdba74" font-size="7">No optimization</text>
-  <text x="210" y="118" text-anchor="middle" fill="#64748b" font-size="6">Just removes dispatch</text>
+  # V8 (JavaScript) এর JIT:
+  # function sum(n) {
+  #     let s = 0;
+  #     for (let i = 0; i < n; i++) s += i;
+  #     return s;
+  # }
+  # প্রথম call: interpret (ধীর)
+  # ১০০০ বার call হলে: TurboFan compile (দ্রুত!)
 
-  <line x1="265" y1="90" x2="285" y2="90" stroke="#f97316" stroke-width="2" marker-end="url(#arrV8)"/>
-  <text x="275" y="83" text-anchor="middle" fill="#fb923c" font-size="6">~500 calls</text>
+  # JVM HotSpot:
+  # -XX:+PrintCompilation দেখায় কোন method JIT-হয়েছে
+  $ java -XX:+PrintCompilation MyApp
+  #    42  b   java.lang.String::hashCode (5 bytes)
+  #    58  %   MyApp::hotLoop @ 18 (30 bytes)
 
-  <rect x="290" y="50" width="110" height="80" rx="8" fill="#581c87" stroke="#a855f7" stroke-width="2"/>
-  <text x="345" y="72" text-anchor="middle" fill="#d8b4fe" font-size="10" font-weight="700">Maglev</text>
-  <text x="345" y="88" text-anchor="middle" fill="#c084fc" font-size="7">Mid-tier JIT</text>
-  <text x="345" y="103" text-anchor="middle" fill="#d8b4fe" font-size="7">Some optimization</text>
-  <text x="345" y="118" text-anchor="middle" fill="#64748b" font-size="6">Builds CFG, inlining</text>
+  # Deoptimization:
+  # যদি assumption ভাঙে (type change), JIT code বাদ দাও
+  # → আবার interpret → আবার JIT
+  — AOT vs JIT:
+  — AOT: শুরু থেকে দ্রুত, কিন্তু profile ছাড়া
+  — JIT: শুরুতে ধীর, কিন্তু যত চলে তত দ্রুত</div>
 
-  <line x1="400" y1="90" x2="420" y2="90" stroke="#f97316" stroke-width="2" marker-end="url(#arrV8)"/>
-  <text x="410" y="83" text-anchor="middle" fill="#fb923c" font-size="6">~6000 calls</text>
+<div class="verse">إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّى يُغَيِّرُوا مَا بِأَنفُسِهِمْ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই আল্লাহ কোনো সম্প্রদায়ের অবস্থা পরিবর্তন করেন না যতক্ষণ না তারা নিজেদের অবস্থা পরিবর্তন করে।" — কুরআন ১৩:১১</div>
 
-  <rect x="425" y="50" width="135" height="80" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="492" y="72" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">TurboFan</text>
-  <text x="492" y="88" text-anchor="middle" fill="#86efac" font-size="7">Top optimizer</text>
-  <text x="492" y="103" text-anchor="middle" fill="#4ade80" font-size="7">Near-native!</text>
-  <text x="492" y="118" text-anchor="middle" fill="#64748b" font-size="6">Aggressive speculation</text>
+<p class="scene-setting">তাজদিদ — নবীকরণ। JIT সেই নবীকরণের রূপ — প্রোগ্রাম runtime-এ নিজেকে পরিবর্তন করে, উন্নত করে। "নিজেদের অবস্থা পরিবর্তন করো" — JIT এটাই করে। hot path detect করে, নিজেকে optimize করে। স্থির নয় — গতিশীল।</p>
+<p class="scene-setting en">Tajdid — renewal. JIT is the form of that renewal — the program changes itself at runtime, improves itself. "Change your own state" — JIT does exactly this. Detects hot paths, optimizes itself. Not static — dynamic.</p>
 
-  <!-- Deopt arrow -->
-  <path d="M 492 130 Q 300 200 75 130" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrDeopt)"/>
-  <text x="290" y="175" text-anchor="middle" fill="#f87171" font-size="9" font-weight="700">DEOPTIMIZATION (wrong guess → back to Ignition)</text>
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৮ (Operating Systems) Door ৩ (Process):</strong> virtual memory ও process isolation। JIT এর জন্য memory protection দরকার। Book ৪৫ Door ৬: register allocation JIT-এও প্রযোজ্য।</div></div>
 
-  <!-- Hidden Classes -->
-  <rect x="20" y="200" width="540" height="120" rx="10" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="290" y="222" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">Hidden Classes (Maps): How V8 Tracks Object Shapes</text>
-
-  <rect x="40" y="240" width="160" height="60" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="120" y="260" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">✅ Consistent</text>
-  <text x="120" y="275" text-anchor="middle" fill="#86efac" font-size="8">a = {x:1, y:2}</text>
-  <text x="120" y="290" text-anchor="middle" fill="#86efac" font-size="8">b = {x:1, y:2}</text>
-  <text x="120" y="300" text-anchor="middle" fill="#4ade80" font-size="7">Same Map M0! ✅</text>
-
-  <rect x="210" y="240" width="160" height="60" rx="6" fill="#450a0a" stroke="#dc2626" stroke-width="1.5"/>
-  <text x="290" y="260" text-anchor="middle" fill="#f87171" font-size="9" font-weight="700">❌ Inconsistent</text>
-  <text x="290" y="275" text-anchor="middle" fill="#fca5a5" font-size="8">a = {x:1, y:2}</text>
-  <text x="290" y="290" text-anchor="middle" fill="#fca5a5" font-size="8">b = {y:2, x:1} ← order!</text>
-  <text x="290" y="300" text-anchor="middle" fill="#f87171" font-size="7">Different Maps! Deopt!</text>
-
-  <rect x="380" y="240" width="160" height="60" rx="6" fill="#450a0a" stroke="#dc2626" stroke-width="1.5"/>
-  <text x="460" y="260" text-anchor="middle" fill="#f87171" font-size="9" font-weight="700">❌ Dynamic add</text>
-  <text x="460" y="275" text-anchor="middle" fill="#fca5a5" font-size="8">c = {x:1}</text>
-  <text x="460" y="290" text-anchor="middle" fill="#fca5a5" font-size="8">c.y = 2 ← add later</text>
-  <text x="460" y="300" text-anchor="middle" fill="#f87171" font-size="7">Map transition! Deopt!</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: V8 4-tier pipeline। Ignition→Sparkplug→Maglev→TurboFan। Wrong guess = deopt → Ignition। Hidden class = object shape tracking।</div>
-
-<div class="code-block"><div class="code-title">⚡ Door 8 — Real V8: JIT, Hidden Classes &amp; Deopt</div>
-<pre><code>// v8.js — V8 tracks object shapes (hidden classes / Maps)
-function Point(x, y) { this.x = x; this.y = y; }
-
-// Consistent shape -&gt; same hidden class -&gt; TurboFan optimizes
-const a = new Point(1, 2);
-const b = new Point(3, 4);
-
-// Tracing hidden class transitions (Node.js --trace-maps):
-$ node --trace-maps v8.js
-[Maps: Map#0 created]
-[Maps: x added -&gt; transition to Map#1]
-[Maps: y added -&gt; transition to Map#2]
-[Maps: a,b share Map#2 -&gt; stable shape!]</code></pre>
-<pre><code>// deopt.js — shape change triggers deoptimization
-function fast(obj) { return obj.x + obj.y; }
-
-let o = {x: 1, y: 2};
-for (let i = 0; i &lt; 10000; i++) fast(o);  // TurboFan compiles
-
-o.z = 3;        // dynamic property add -&gt; NEW hidden class!
-fast(o);        // shape mismatch -&gt; DEOPTIMIZE!
-
-# Watch the deopt happen:
-$ node --trace-deopt deopt.js
-[deoptimizing (DEOPT): begin 0x7f8... &lt;JS fast&gt;
-  reason: Insufficient type feedback for generic named access
-  Mapping: rax -&gt; obj.x ... FAILED shape check
- bumping allocation age 0 -&gt; 1
- ** Restarting frame due to must handle deopt]</code></pre>
-<pre><code># 4 tiers in action (Node --trace-opt):
-$ node --trace-opt v8.js
-[marking &lt;JS Point&gt; for optimization to Maglev]
-[compiling &lt;JS Point&gt; using Maglev -&gt; done]
-[marking &lt;JS fast&gt; for TurboFan -&gt; compiling]
-[completed optimizing &lt;JS fast&gt; using TurboFan]</code></pre>
-<span class="code-note">💡 V8 অনুমান করে (speculative)। অনুমান ভুল হলে deopt হয় — TurboFan optimized code ফেলে দিয়ে Ignition এ ফিরে যায়।</span>
-</div>
-
-<div class="dialogue"><strong>ভি৮ ইঞ্জিনিয়ার:</strong> V8 এর মূল আইডিয়া হল speculative optimization — অনুমান করা। JavaScript dynamically typed, কিন্তু আমরা দেখি বেশিরভাগ code একই pattern follow করে। Hidden class দিয়ে object এর shape track করি। যদি দেখি সব object একই order এ property তৈরি করে, TurboFan এর জন্য আমরা hardcoded machine code তৈরি করি — fixed memory offset, dictionary lookup নেই। কিন্তু তুমি যদি dynamically property যোগ করো, বা order বদলাও — deoptimization। পুরো optimized code ফেলে দিয়ে আবার slow Ignition এ ফিরে যেতে হয়।</div>`,
-  recall: [
-    { q: "V8 deoptimization কখন হয়?", a: "যখন speculative assumption ভুল প্রমাণিত হয় — object shape change, type change, dynamic property add, delete key। Optimized code ফেলে দিয়ে Ignition এ ফিরে যায়।" },
-    { q: "Hidden class কী?", a: "V8 এর internal object shape tracker। Property গুলোর order আর name track করে। একই shape এর object share করে — fast property access। Shape change = new Map = deopt।" },
-  ]
+<div class="secret-box">⚡ <strong>JIT = runtime-এ নিজেকে উন্নত করা।</strong> তাজদিদ। কিন্তু কোন কোড hot? CPU-কে অনুমান করতে হয় — কোন branch নেওয়া হবে? সেই অনুমানের শিল্প — branch prediction। পরের দরজায়।</div>`,
+  senior: {
+    title: "JIT Compilation এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">JIT</td><td>Just-In-Time — runtime compilation</td></tr>
+<tr><td class="hl">AOT</td><td>Ahead-Of-Time — compile আগেই</td></tr>
+<tr><td class="hl">V8</td><td>Ignition + TurboFan</td></tr>
+<tr><td class="hl">JVM HotSpot</td><td>C1 (fast) + C2 (aggressive)</td></tr>
+<tr><td class="hl">PyPy</td><td>Tracing JIT — hot loop trace</td></tr>
+<tr><td class="hl">Deoptimization</td><td>assumption ভাঙলে fallback</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 9 — The Silent Sweeper (Garbage Collection)
-// ═══════════════════════════════════════════
+doors.push({
+  num: 8,
+  icon: "🎯",
+  color: "#f97316",
+  name: "অনুমানের শিল্প",
+  subtitle: "The Art of Guessing",
+  tech: "Branch Prediction — 1-bit/2-bit predictors, branch target buffer, speculative execution, Spectre vulnerability",
+  spirit: "যাকিন — নিশ্চয়তা, অনুমান থেকে দ্রুততা",
+  secret: "CPU শাখা অনুমান করে — if-else-এ কোন পথ? সঠিক অনুমানে দ্রুততা, ভুলে penalty। 2-bit predictor: দুইবার ভুল হলে বদলাও। Speculative execution — অনুমানের উপর কাজ শুরু।",
+  recall: {
+    q: " Branch prediction কী? Speculative execution কী?",
+    qen: "What is branch prediction? What is speculative execution?",
+    a: "CPU if-else-এ অনুমান করে কোন branch নেবে। সঠিক → দ্রুত। ভুল → pipeline flush penalty। Speculative: অনুমানের উপর কাজ শুরু করে।",
+    aen: "CPU guesses which branch in if-else. Correct → fast. Wrong → pipeline flush penalty. Speculative: starts work based on prediction."
+  },
+  story: `<p class="scene-setting">জাকারিয়া (Door ৭) তোমাকে JIT শিখিয়েছেন। কিন্তু CPU-তে একটি গভীর সমস্যা — pipeline। একটি instruction চলাকালীন পরেরটা শুরু হয়। কিন্তু if-else-এ কোন শাখা? CPU অপেক্ষা করতে পারে না — অনুমান করে! সঠিক হলে দ্রুততা, ভুল হলে pipeline flush — penalty। এটাই branch prediction।</p>
+<p class="scene-setting en">Zakariya (Door 7) taught you JIT. But the CPU has a deeper problem — pipeline. One instruction starts before the previous finishes. But in if-else, which branch? The CPU can't wait — it guesses! Correct means speed, wrong means pipeline flush — penalty. This is branch prediction.</p>
+
+<div class="dialogue"><strong>অনুমান-কারিগর লুতফি:</strong> ১-bit predictor: গতবার যা হয়েছিল, এবারও তাই হবে। সহজ কিন্তু ভুল হয়। ২-bit predictor: দুইবার ভুল হলে বদলাও — বেশি স্থিতিশীল। Branch target buffer: কোন address-এ যাবে তাও মনে রাখে। Speculative execution: অনুমানের উপর কাজ শুরু করে — সঠিক হলে ফল ব্যবহার, ভুল হলে বাদ। Spectre (২০১৮) — এই speculative execution-এর দুর্বলতা থেকে!</div>
+<div class="dialogue en"><strong>Guessing Artisan Lutfi:</strong> 1-bit predictor: last time's result repeats. Simple but error-prone. 2-bit predictor: change only after two wrong — more stable. Branch target buffer: remembers which address. Speculative execution: starts work on prediction — correct means use results, wrong means discard. Spectre (2018) — exploited this speculative execution!</div>
+
+<div class="code-block">— Branch Prediction প্রভাব দেখো —
+
+  # Sorted array (predictable branch)
+  arr = list(range(1000000))
+  sum = 0
+  for x in arr:
+      if x > 500000:
+          sum += x
+  # দ্রুত — branch predictor সঠিক অনুমান!
+
+  # Random array (unpredictable branch)
+  import random
+  arr2 = arr[:]
+  random.shuffle(arr2)
+  sum = 0
+  for x in arr2:
+      if x > 500000:
+          sum += x
+  # ধীর! branch predictor ভুল অনুমান
+
+  # Branchless (সবচেয়ে দ্রুত):
+  sum = 0
+  for x in arr2:
+      sum += (x > 500000) * x  # no branch!
+
+  — gcc branch prediction hints:
+  __builtin_expect((condition), 1)  // likely true
+  — C++20: [[likely]] / [[unlikely]]
+
+  — Spectre attack (2018):
+  — speculative execution leaks memory
+  — kernel patches: retpoline, KPTI</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Spectre/Meltdown (২০১৮):</strong> Speculative execution-এর দুর্বলতা! CPU অনুমানে ভুল শাখায় memory পড়ে — তারপর বাদ দেয়। কিন্তু cache-এ থেকে যায়। আক্রমণকারী cache timing দিয়ে গোপন ডেটা পড়ে! এটাই Spectre — branch prediction-এর dark side।</div></div>
+
+<div class="verse">عَالِمُ الْغَيْبِ فَلَا يُظْهِرُ عَلَى غَيْبِهِ أَحَدًا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"অগোচর বিষয়ে জ্ঞাতী — তিনি তাঁর গায়েবের জ্ঞান কারো কাছে প্রকাশ করেন না।" — কুরআন ৭২:২৬</div>
+
+<p class="scene-setting">যাকিন — নিশ্চয়তা। Branch prediction অনুমানের উপর নির্ভর — কিন্তু অনুমান ভুল হতে পারে। সত্যিকারের নিশ্চয়তা শুধু গায়েব জানার কাছে। CPU-কে অনুমান করতে হয় — কারণ সে গায়েব জানে না। Spectre দেখায় — অনুমানের শক্তি ও দুর্বলতা একসাথে।</p>
+<p class="scene-setting en">Yaqeen — certainty. Branch prediction relies on guessing — but guesses can be wrong. True certainty belongs only to the Knower of the unseen. The CPU must guess — because it doesn't know the future. Spectre shows — the power and weakness of prediction together.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৮ (Operating Systems) Door ৪ (Pipeline):</strong> CPU pipeline ও hazard। Book ৪৬ (Cryptography) Door ৮: Spectre mitigation — branch target injection।</div></div>
+
+<div class="secret-box">🎯 <strong>Branch prediction = অনুমানের শিল্প।</strong> সঠিক → দ্রুত, ভুল → penalty। কিন্তু প্রোগ্রামের একটি বড় সমস্যা — মেমরি পরিচালনা। কে বরাদ্দ করবে, কে মুছবে? সেই উত্তর — garbage collection। পরের দরজায়।</div>`,
+  senior: {
+    title: "Branch Prediction এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">1-bit Predictor</td><td>গত ফল পুনরাবৃত্তি</td></tr>
+<tr><td class="hl">2-bit Predictor</td><td>২ ভুল পরে পরিবর্তন</td></tr>
+<tr><td class="hl">Speculative Exec</td><td>অনুমানে কাজ শুরু</td></tr>
+<tr><td class="hl">Pipeline Flush</td><td>ভুল অনুমান → penalty</td></tr>
+<tr><td class="hl">Spectre (2018)</td><td>speculative exec vulnerability</td></tr>
+<tr><td class="hl">Branchless</td><td>if এড়িয়ে গাণিতিক সমাধান</td></tr></table>`
+  }
+});
+
 doors.push({
   num: 9,
-  icon: "🗑️",
-  color: "#22c55e",
-  tagline: "নীরব পরিচ্ছন্নকারী — Silent Sweeper",
-  name: "The Silent Sweeper",
-  secret: "Generational GC: most objects die young। Short-lived object = free। You only pay for survivors।",
-  story: `<p class="scene-setting">তুমি লুপে হাজার হাজার temporary object তৈরি করো। ভাবো — এত memory waste! কিন্তু modern GC তে এটা প্রায় free। কারণ generational hypothesis — most objects die young। Young generation এ GC শুধু live object কে copy করে। Dead object = শূন্য cost।</p>
+  icon: "🧹",
+  color: "#f97316",
+  name: "নীরব পরিচ্ছন্নকারী",
+  subtitle: "The Silent Sweeper",
+  tech: "Garbage Collection — McCarthy 1960 (Lisp), tracing GC, generational hypothesis, mark-and-sweep, copying, GC pauses",
+  spirit: "তাহারা — পরিচ্ছন্নতা, স্বয়ংক্রিয়ভাবে অদরকারি দূর",
+  secret: "GC = স্বয়ংক্রিয় memory পরিচ্ছন্নকারী। ব্যবহার না হওয়া object খুঁজে বের করে মুছে। Mark-and-sweep: চিহ্ন দাও → বাকি সব মুছো। Generational: young object বেশি মারা যায়।",
+  recall: {
+    q: " Mark-and-sweep GC কীভাবে কাজ করে? Generational hypothesis কী?",
+    qen: "How does mark-and-sweep GC work? What is the generational hypothesis?",
+    a: "Mark: root থেকে reachable object চিহ্ন দাও। Sweep: চিহ্নহীন সব মুছো। Generational: বেশিরভাগ object তরুণ মারা যায় — young generation আলাদাভাবে collect।",
+    aen: "Mark: mark reachable objects from roots. Sweep: delete unmarked. Generational: most objects die young — collect young generation separately."
+  },
+  story: `<p class="scene-setting">লুতফি (Door ৮) তোমাকে branch prediction শিখিয়েছেন। কিন্তু প্রোগ্রামে একটি বড় সমস্যা — মেমরি। C-তে তুমি malloc/free করো — ভুল করলে leak বা crash। Java, Python, Go — সব GC ব্যবহার করে। GC স্বয়ংক্রিয়ভাবে অদরকারি object খুঁজে মুছে। McCarthy ১৯৬০ সালে Lisp-এর জন্য এটা আবিষ্কার করেন।</p>
+<p class="scene-setting en">Lutfi (Door 8) taught you branch prediction. But programs have a big problem — memory. In C you malloc/free — mistakes cause leaks or crashes. Java, Python, Go — all use GC. GC automatically finds unnecessary objects and deletes them. McCarthy invented this in 1960 for Lisp.</p>
 
-<div class="svg-diagram">
-<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-  <defs><marker id="arrGC" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
-  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🗑️ Generational GC: From-Space → To-Space (Copying)</text>
+<div class="dialogue"><strong>নীরব-পরিচ্ছন্নকারী আমিন:</strong> GC তিন ধাপে কাজ করে। Mark: root (stack, global) থেকে reachable সব object চিহ্ন দাও। Sweep: চিহ্নহীন সব আবর্জনা — মুছো। Compact: বাকি object গুছিয়ে বসাও। Generational hypothesis: বেশিরভাগ object তরুণ মারা যায়। তাই young generation বেশি বার পরিষ্কার করো, old generation কম। G1, ZGC, Shenandoah — modern GC যা pause কমায়।</div>
+<div class="dialogue en"><strong>Silent Cleaner Amin:</strong> GC works in three steps. Mark: mark all reachable objects from roots (stack, global). Sweep: delete unmarked garbage. Compact: arrange remaining objects. Generational hypothesis: most objects die young. So clean young generation more often, old less. G1, ZGC, Shenandoah — modern GCs that reduce pause time.</div>
 
-  <!-- Before GC -->
-  <text x="145" y="55" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">Before GC: From-Space</text>
-  <rect x="30" y="65" width="230" height="120" rx="8" fill="#450a0a" stroke="#dc2626" stroke-width="2"/>
-  <rect x="45" y="80" width="40" height="25" rx="4" fill="#dc2626" stroke="#f87171" stroke-width="1"/>
-  <text x="65" y="96" text-anchor="middle" fill="#fee2e2" font-size="8">dead</text>
-  <rect x="90" y="80" width="40" height="25" rx="4" fill="#16a34a" stroke="#4ade80" stroke-width="2"/>
-  <text x="110" y="96" text-anchor="middle" fill="#dcfce7" font-size="8">LIVE</text>
-  <rect x="135" y="80" width="40" height="25" rx="4" fill="#dc2626" stroke="#f87171" stroke-width="1"/>
-  <text x="155" y="96" text-anchor="middle" fill="#fee2e2" font-size="8">dead</text>
-  <rect x="180" y="80" width="40" height="25" rx="4" fill="#dc2626" stroke="#f87171" stroke-width="1"/>
-  <text x="200" y="96" text-anchor="middle" fill="#fee2e2" font-size="8">dead</text>
-  <rect x="45" y="110" width="40" height="25" rx="4" fill="#16a34a" stroke="#4ade80" stroke-width="2"/>
-  <text x="65" y="126" text-anchor="middle" fill="#dcfce7" font-size="8">LIVE</text>
-  <rect x="90" y="110" width="40" height="25" rx="4" fill="#dc2626" stroke="#f87171" stroke-width="1"/>
-  <text x="110" y="126" text-anchor="middle" fill="#fee2e2" font-size="8">dead</text>
-  <rect x="135" y="110" width="40" height="25" rx="4" fill="#dc2626" stroke="#f87171" stroke-width="1"/>
-  <text x="155" y="126" text-anchor="middle" fill="#fee2e2" font-size="8">dead</text>
-  <rect x="180" y="110" width="40" height="25" rx="4" fill="#dc2626" stroke="#f87171" stroke-width="1"/>
-  <text x="200" y="126" text-anchor="middle" fill="#fee2e2" font-size="8">dead</text>
-  <text x="145" y="160" text-anchor="middle" fill="#fca5a5" font-size="8">8 objects: 2 live, 6 dead</text>
-  <text x="145" y="175" text-anchor="middle" fill="#64748b" font-size="7">GC only touches the 2 live ones!</text>
+<div class="code-block">— Garbage Collection দেখো —
 
-  <!-- Arrow -->
-  <line x1="260" y1="125" x2="300" y2="125" stroke="#22c55e" stroke-width="2" marker-end="url(#arrGC)"/>
-  <text x="280" y="118" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Copy live</text>
+  # Python GC দেখো:
+  import gc
 
-  <!-- After GC -->
-  <text x="435" y="55" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">After GC: To-Space</text>
-  <rect x="320" y="65" width="230" height="120" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <rect x="335" y="80" width="40" height="25" rx="4" fill="#16a34a" stroke="#4ade80" stroke-width="2"/>
-  <text x="355" y="96" text-anchor="middle" fill="#dcfce7" font-size="8">LIVE</text>
-  <rect x="380" y="80" width="40" height="25" rx="4" fill="#16a34a" stroke="#4ade80" stroke-width="2"/>
-  <text x="400" y="96" text-anchor="middle" fill="#dcfce7" font-size="8">LIVE</text>
-  <rect x="425" y="80" width="120" height="25" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="485" y="96" text-anchor="middle" fill="#64748b" font-size="7">free space!</text>
-  <text x="435" y="130" text-anchor="middle" fill="#86efac" font-size="8">Compacted! No fragmentation.</text>
-  <text x="435" y="148" text-anchor="middle" fill="#4ade80" font-size="8">Dead objects = zero work 💀</text>
-  <text x="435" y="165" text-anchor="middle" fill="#64748b" font-size="7" font-style="italic">Cost ∝ survivors, NOT total objects</text>
+  gc.enable()          # স্বয়ংক্রিয় GC
+  gc.collect()         # manual collect
+  print(gc.get_stats())
+  # [{'collected': 42, 'uncollectable': 0}]
 
-  <!-- Generations -->
-  <rect x="30" y="210" width="250" height="90" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="155" y="230" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Young Generation</text>
-  <text x="155" y="248" text-anchor="middle" fill="#86efac" font-size="8">Scavenger (copying)</text>
-  <text x="155" y="265" text-anchor="middle" fill="#86efac" font-size="8">Every few ms</text>
-  <text x="155" y="282" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">🔥 Short-lived = FREE!</text>
+  # Reference counting (Python primary):
+  import sys
+  a = [1, 2, 3]
+  print(sys.getrefcount(a))  # ২ (a + getrefcount arg)
 
-  <rect x="300" y="210" width="250" height="90" rx="8" fill="#451a03" stroke="#f97316" stroke-width="1.5"/>
-  <text x="425" y="230" text-anchor="middle" fill="#fb923c" font-size="10" font-weight="700">Old Generation</text>
-  <text x="425" y="248" text-anchor="middle" fill="#fdba74" font-size="8">Mark-Sweep-Compact</text>
-  <text x="425" y="265" text-anchor="middle" fill="#fdba74" font-size="8">Every few seconds</text>
-  <text x="425" y="282" text-anchor="middle" fill="#fb923c" font-size="8" font-weight="700">🐌 Long-lived = expensive</text>
-</svg>
-</div>
-<div class="svg-caption">চিত্র: Generational GC। From-Space → copy live → To-Space। Dead = শূন্য cost। Young gen = Scavenger (fast)। Old gen = Mark-Sweep-Compact (slow)।</div>
+  # JVM GC flags:
+  $ java -XX:+UseG1GC -Xmx4g MyApp
+  $ java -XX:+PrintGCDetails MyApp
+  # [GC (Allocation Failure)
+  #  [PSYoungGen: 76288K->10720K(87040K)]
 
-<div class="dialogue"><strong>জিসি ইঞ্জিনিয়ার:</strong> GC ধীর ভাবো? ভুল! Generational hypothesis বলে — most objects die young। তাই young generation এ আমরা copying algorithm ব্যবহার করি (Cheney's)। Memory কে দুই ভাগে ভাগ — From আর To। GC চললে শুধু live object কে From থেকে To তে copy করি। Dead object কে touch করিও না — সে পরিত্যক্ত! তাই short-lived object তৈরি করা প্রায় free। তুমি শুধু pay করো যা survive করে। Django তে — request variable = young gen (die after response)। Session data = old gen (live long)।</div>
+  # Go GC:
+  $ GODEBUG=gctrace=1 ./myapp
+  # gc 1 @0.012s: 0%+0.0% ms clock, ...
 
-<div class="code-block">— GC বাস্তবে দেখো (Python) —
+  — GC algorithms:
+  — Mark-Sweep: mark reachable, delete rest
+  — Copying: copy live to new space
+  — Generational: young (frequent) / old (rare)
+  — ZGC: sub-millisecond pause (Java 11+)</div>
 
-  import gc, sys
+<div class="callout info"><span class="co-icon">🧹</span><div><strong>GC algorithms:</strong><br>
+<strong>Mark-and-Sweep (McCarthy 1960):</strong> root থেকে reachable চিহ্ন → বাকি মুছো<br>
+<strong>Copying (Cheney 1970):</strong> live object নতুন space-এ copy → পুরোনো সব মুছে যায়<br>
+<strong>Generational:</strong> Young ( Eden, Survivor) → Old (Tenured)। বেশিরভাগ object young-এ মারা যায়<br>
+<strong>ZGC/Shenandoah:</strong> sub-millisecond pause — concurrent GC</div></div>
 
-  # Python-এ GC দেখো
-  gc.set_debug(gc.DEBUG_STATS)
-  gc.collect()
+<div class="verse">وَاللَّهُ يُحِبُّ الْمُطَّهِّرِينَ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং আল্লাহ পবিত্রকারীদের ভালোবাসেন।" — কুরআন ৯:১০৮</div>
 
-  # gc: collecting generation 2 ...
-  # gc: objects in each generation: 642 0 0
-  # gc: done, 642 unreachable, 0 uncollectable
+<p class="scene-setting">তাহারা — পরিচ্ছন্নতা। GC সেই পরিচ্ছন্নতার স্বয়ংক্রিয় রূপ। প্রোগ্রামারকে মুছতে হয় না — GC নীরবে পরিষ্কার করে। আবর্জনা জমলে সিস্টেম অসুস্থ — GC সেই অসুস্থতা প্রতিরোধ করে। পবিত্রতা শরীরের জন্য যেমন, GC মেমরির জন্য তেমন।</p>
+<p class="scene-setting en">Tahara — cleanliness. GC is the automated form of that cleanliness. The programmer doesn't need to clean — GC does it silently. Garbage accumulation makes the system sick — GC prevents that illness. As purity is for the body, GC is for memory.</p>
 
-  # Generation দেখো:
-  print(len(gc.get_objects()))       # সব tracked objects
-  print(len(gc.garbage))             # uncollectable (cycles w/ __del__)
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩৮ (Operating Systems) Door ৫ (Memory):</strong> virtual memory, paging, malloc/free। GC সেই malloc/free-এর স্বয়ংক্রিয় রূপ। Book ৪৫ Door ৯: GC debugging।</div></div>
 
-  — CPython-এ ৩ প্রজন্ম: —
-  gen 0: নতুন objects (short-lived) → প্রায়ই collect
-  gen 1: ১ বার survive করেছে      → কম collect
-  gen 2: দীর্ঘস্থায়ী             → কদাচিৎ collect
-
-  — JVM flags for GC tuning: —
-  java -XX:+UseG1GC -XX:MaxGCPauseMillis=200 MyApp
-  java -verbose:gc -XX:+PrintGCDetails MyApp</div>`,
-  recall: [
-    { q: "Generational hypothesis কী?", a: "Most objects die young। তাই young generation এ GC সস্তা — শুধু survivors copy করতে হয়। Dead object = zero work।" },
-    { q: "Django তে কোন object old gen এ promote হয়?", a: "Session data, module-level cache, database connection — এগুলো long-lived। Request variable, serializer = young gen, দ্রুত die করে।" },
-  ]
+<div class="secret-box">🧹 <strong>GC = স্বয়ংক্রিয় মেমরি পরিচ্ছন্নকারী।</strong> Mark → Sweep → Compact। Generational hypothesis। কিন্তু GC শুধু মেমরি পরিষ্কার করে — type যাচাই করে না। কোন variable কোন type? সেই যাচাই — type inference। শেষ দরজায়।</div>`,
+  senior: {
+    title: "Garbage Collection এক নজরে",
+    body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
+<tr><td class="hl">McCarthy (1960)</td><td>Lisp GC-র জনক</td></tr>
+<tr><td class="hl">Mark-and-Sweep</td><td>reachable চিহ্ন → বাকি মুছো</td></tr>
+<tr><td class="hl">Copying</td><td>live object copy → পুরোনো মুছে যায়</td></tr>
+<tr><td class="hl">Generational</td><td>young (frequent) / old (rare)</td></tr>
+<tr><td class="hl">ZGC</td><td>sub-ms pause — Java 11+</td></tr>
+<tr><td class="hl">Root</td><td>stack + global = GC root</td></tr></table>`
+  }
 });
 
-// ═══════════════════════════════════════════
-// DOOR 10 — The Type Oracle (Hindley-Milner + WebAssembly)
-// ═══════════════════════════════════════════
 doors.push({
   num: 10,
   icon: "🔮",
-  color: "#e8c547",
-  tagline: "টাইপ অধীকারী — The Type Oracle",
-  name: "The Type Oracle",
-  secret: "Hindley-Milner = type inference without annotations। WebAssembly = stack machine with linear memory।",
-  story: `<p class="scene-setting">তুমি ভাবো static typing = অনেক annotation। ভুল! Hindley-Milner type system (Haskell, OCaml, Rust) automatically type infer করে — annotation লাগে না। Algorithm W সমীকরণ সমাধানের মতো type বের করে। আর WebAssembly? সে JavaScript এর আত্মীয় নয় — সম্পূর্ণ আলাদা একটা stack machine, linear memory সহ। Single-pass validation। Native speed।</p>
+  color: "#f97316",
+  name: "টাইপের ওরাকল",
+  subtitle: "The Type Oracle",
+  tech: "Type Inference — Hindley-Milner (1978), Algorithm W, Rust traits, TypeScript, ML, synthesis of all compiler concepts",
+  spirit: "হিকমাহ — প্রয়োগিক জ্ঞান, সব পর্যায়ের সমন্বয়",
+  secret: "নয়টি দরজা, নয়জন শিক্ষক — lexer থেকে type inference। কম্পাইলার = ভাষা অনুবাদক। মানুষের ভাষা (কোড) থেকে মেশিনের ভাষা (binary)। প্রতিটি ধাপ একটি অনুবাদ।",
+  recall: {
+    q: " Hindley-Milner type inference কী? কম্পাইলারের প্রধান ধাপ কী কী?",
+    qen: "What is Hindley-Milner type inference? What are the main stages of a compiler?",
+    a: "HM: কোনো type annotation ছাড়া compiler স্বয়ং type বের করে (ML, Haskell, Rust)। কম্পাইলার ধাপ: lex → parse → semantic → optimize → codegen।",
+    aen: "HM: without type annotations, the compiler infers types (ML, Haskell, Rust). Compiler stages: lex → parse → semantic → optimize → codegen."
+  },
+  story: `<p class="scene-setting">তুমি নয়টি দরজা পেরিয়েছো। দাউদ lexer, বেলাল parser, সালমান semantic, ইলিয়াস SSA, রাহিম optimization, ইউসুফ register, জাকারিয়া JIT, লুতফি branch prediction, আমিন GC। এখন শেষ শিক্ষক — type inference। তুমি লেখো <code>id = lambda x: x</code>। কোনো annotation নেই। কিন্তু compiler জানে — id: int → int বা str → str। কীভাবে? Hindley-Milner Algorithm W।</p>
+<p class="scene-setting en">You have passed nine doors. Dawud lexer, Bilal parser, Salman semantic, Ilyas SSA, Rahim optimization, Yusuf register, Zakariya JIT, Lutfi branch prediction, Amin GC. Now the last teacher — type inference. You write <code>id = lambda x: x</code>. No annotation. But the compiler knows — id: int → int or str → str. How? Hindley-Milner Algorithm W.</p>
 
-<div class="dialogue"><strong>টাইপ ইঞ্জিনিয়ার:</strong> Hindley-Milner হল type inference এর সবচেয়ে সুন্দর algorithm। তুমি লেখো <code>id = λx.x</code>। কোনো annotation নেই। কিন্তু Algorithm W automatically বের করে — <code>id : ∀α. α → α</code>। যেকোনো type! এটা unification দিয়ে কাজ করে — সমীকরণ সমাধানের মতো। Rust, Haskell, OCaml — সবাই এই system ব্যবহার করে। WebAssembly অন্য দিকে — একটা portable stack machine। Linear memory (raw byte array), structured control flow (no goto), single-pass validation। JavaScript এর dynamic object model এর সম্পূর্ণ বিপরীত। Near-native speed, কোনো JIT warmup লাগে না।</div>
+<div class="callout info"><span class="co-icon">🔮</span><div><strong>সম্পূর্ণ কম্পাইলার — নয় দরজার সমন্বয়:</strong><br>
+<strong>Door ১ — দাউদ (Lexer):</strong> অক্ষর → token<br>
+<strong>Door ২ — বেলাল (Parser):</strong> token → AST গাছ<br>
+<strong>Door ৩ — সালমান (Semantic):</strong> অর্থ যাচাই, type check<br>
+<strong>Door ৪ — ইলিয়াস (SSA):</strong> এক variable, এক assignment<br>
+<strong>Door ৫ — রাহিম (Optimization):</strong> dead code বাদ, constant fold<br>
+<strong>Door ৬ — ইউসুফ (Register):</strong> graph coloring দিয়ে রেজিস্টার বরাদ্দ<br>
+<strong>Door ৭ — জাকারিয়া (JIT):</strong> runtime-এ নিজেকে উন্নত<br>
+<strong>Door ৮ — লুতফি (Branch):</strong> CPU অনুমান শিল্প<br>
+<strong>Door ৯ — আমিন (GC):</strong> স্বয়ংক্রিয় মেমরি পরিষ্কার</div></div>
 
-<div class="code-block">— Hindley-Milner Type Inference (OCaml/Haskell) —
+<div class="code-block">— সম্পূর্ণ compilation pipeline দেখো —
 
-  — OCaml-এ type inference দেখো: —
-  # let id x = x;;
-  val id : 'a -> 'a = &lt;fun&gt;     ← কোনো annotation নেই!
+  # Python bytecode (dis module):
+  $ python3 -c "
+  import dis
+  dis.dis(lambda x: x + 1)
+  "
+  #   0 LOAD_FAST     0 (x)
+  #   2 LOAD_CONST    1 (1)
+  #   4 BINARY_ADD
+  #   6 RETURN_VALUE
 
-  # let compose f g x = f (g x);;
-  val compose : ('a -> 'b) -> ('c -> 'a) -> 'c -> 'b
+  # C compilation stages:
+  $ gcc -O2 hello.c -o hello
+  # 1. Preprocessor:  cpp  → hello.i
+  # 2. Compiler:      cc1  → hello.s (assembly)
+  # 3. Assembler:     as   → hello.o (object)
+  # 4. Linker:        ld   → hello (executable)
 
-  — Haskell-এ: —
-  ghci&gt; :t id
-  id :: a -&gt; a                    ← সবচেয়ে সাধারণ type
+  # Rust type inference:
+  fn id<T>(x: T) -> T { x }  // generic — যেকোনো type
+  let s = id("hello");        // s: &str (inferred!)
+  let n = id(42);             // n: i32 (inferred!)
 
-  ghci&gt; :t map
-  map :: (a -&gt; b) -&gt; [a] -&gt; [b]
+  # TypeScript:
+  function greet(name = "World") {
+      return "Hello, " + name;  // string inferred
+  }</div>
 
-  — WebAssembly Text Format (WAT): —
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৯</div><div class="sc-label">শিক্ষক</div></div>
+<div class="stat-card"><div class="sc-num">৬০+</div><div class="sc-label">বছরের গবেষণা</div></div>
+<div class="stat-card"><div class="sc-num">∞</div><div class="sc-label">প্রোগ্রাম</div></div>
+<div class="stat-card"><div class="sc-num">১</div><div class="sc-label">কম্পাইলার</div></div>
+</div>
 
-  (module
-    (func $add (export "add") (param i32 i32) (result i32)
-      local.get 0      ;; stack-এ push param 0
-      local.get 1      ;; stack-এ push param 1
-      i32.add          ;; pop 2, push sum
-    )
-  )
+<div class="verse">اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"আল্লাহ আসমান ও পৃথিবীর আলো।" — কুরআন ২৪:৩৫</div>
 
-  — Compile + run: —
-  $ wat2wasm add.wat -o add.wasm
-  $ node -e 'WebAssembly.instantiate(
-      require("fs").readFileSync("add.wasm")
-    ).then(w =&gt; console.log(w.instance.exports.add(3, 4)))'
-  7                                  ← near-native speed!</div>`,
-  recall: [
-    { q: "Hindley-Milner এ Algorithm W কী করে?", a: "Type inference — কোনো annotation ছাড়া স্বয়ংক্রিয়ভাবে type বের করে। Unification দিয়ে type constraint সমাধান করে। Haskell, OCaml, Rust এ ব্যবহৃত।" },
-    { q: "WebAssembly কীভাবে JavaScript থেকে আলাদা?", a: "WASM = stack machine + linear memory (raw byte array)। Structured control flow (no goto)। Single-pass validation। JS এর hidden class / inline cache এর প্রয়োজন নেই।" },
-  ]
+<p class="scene-setting">নূর — আলো। কম্পাইলার হলো সেই আলো যা মানুষের ভাষাকে মেশিনের ভাষায় রূপান্তর করে। বাইরে থেকে <code>gcc hello.c</code> সহজ মনে হয় — কিন্তু ভেতরে নয়টি স্তর কাজ করছে। দাউদের lexer, বেলালের parser, সালমানের semantic, ইলিয়াসের SSA, রাহিমের optimization, ইউসুফের register, জাকারিয়ার JIT, লুতফির branch prediction, আমিনের GC — সব মিলে একটি অনুবাদ। মানুষের চিন্তা থেকে মেশিনের ক্রিয়া।</p>
+<p class="scene-setting en">Nur — light. The compiler is the light that transforms human language into machine language. Outside, <code>gcc hello.c</code> seems simple — but inside, nine layers work. Dawud's lexer, Bilal's parser, Salman's semantic, Ilyas's SSA, Rahim's optimization, Yusuf's register, Zakariya's JIT, Lutfi's branch prediction, Amin's GC — together one translation. From human thought to machine action.</p>
+
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>সম্পূর্ণ লাইব্রেরি সংযোগ:</strong> Book ৪৮ (Discrete Math) → DFA, graph coloring। Book ৪১ (Theory of Computation) → automata, Turing machine। Book ৩৮ (OS) → memory, pipeline। Book ৪০ (Software Engineering) → compilation tools। এই বই সবার সংযোগ।</div></div>
+
+<div class="checklist">
+<li>📝 Python regex দিয়ে একটি simple lexer বানাও</li>
+<li>🌲 <code>ast.dump(ast.parse('x=1+2'))</code> দিয়ে AST দেখো</li>
+<li>🔍 Symbol table বানাও একটি simple language-এর জন্য</li>
+<li>🔗 SSA form একটি if-else code-এ লেখো</li>
+<li>🎨 networkx দিয়ে interference graph বানাও</li>
+<li>⚡ PyPy দিয়ে Python code চালাও — গতি তুলনা করো</li>
+<li>🧹 Python gc module দিয়ে GC stats দেখো</li>
+<li>📖 "Crafting Interpreters" — Robert Nystrom পড়ো</li>
+<li>📖 "Compilers: Principles" — Aho (Dragon Book) পড়ো</li>
+</div>
+
+<div class="secret-box">🔮 <strong>কম্পাইলার = ভাষা অনুবাদক।</strong> নয়টি দরজা, নয়জন শিক্ষক, একটি রূপান্তর। মানুষের ভাষা থেকে মেশিনের ভাষা। প্রতিটি <code>gcc</code>, প্রতিটি <code>python</code>, প্রতিটি <code>rustc</code> — এই নয় স্তরের ফল। এখন তুমি জানো — শুধু কীভাবে নয়, কেন। কেন lexer DFA ব্যবহার করে। কেন AST গাছ। কেন SSA প্রতিটি variable একবার। কেন graph coloring register বরাদ্দ করে। কেন JIT runtime-ে optimize করে। কেন GC নীরবে পরিষ্কার করে। এটাই হিকমাহ — কম্পাইলারের প্রয়োগিক জ্ঞান।</div>`,
+  senior: {
+    title: "সম্পূর্ণ কম্পাইলার এক নজরে",
+    body: `<table class="kv-table"><tr><th>স্তর</th><th>কী</th><th>দরজা</th></tr>
+<tr><td class="hl">Lexer</td><td>অক্ষর → token (DFA)</td><td>১</td></tr>
+<tr><td class="hl">Parser</td><td>token → AST গাছ</td><td>২</td></tr>
+<tr><td class="hl">Semantic</td><td>type ও scope যাচাই</td><td>৩</td></tr>
+<tr><td class="hl">SSA</td><td>এক variable, এক assignment</td><td>৪</td></tr>
+<tr><td class="hl">Optimize</td><td>dead code, constant fold, CSE</td><td>৫</td></tr>
+<tr><td class="hl">Register</td><td>graph coloring, spill</td><td>৬</td></tr>
+<tr><td class="hl">JIT</td><td>runtime optimization</td><td>৭</td></tr>
+<tr><td class="hl">Branch</td><td>prediction, speculative</td><td>৮</td></tr>
+<tr><td class="hl">GC</td><td>mark-sweep, generational</td><td>৯</td></tr>
+<tr><td class="hl">Type Inference</td><td>Hindley-Milner, Algorithm W</td><td>১০</td></tr></table>`
+  }
 });
