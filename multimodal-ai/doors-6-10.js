@@ -103,7 +103,40 @@ TRAINING DATA FOR ALIGNMENT:
   → quality > quantity: clean pairs matter</div>
 
 <div class="dialogue">আল্লামাহ — connector, unifier, teacher। কুরআনে আল্লাহ বলেন — "তিনি মানুষকে শিখিয়েছেন।" (৯৬:৫)। শেখানো = সংযোগ করা — ভিন্ন জিনিস একসাথে। Cross-modal alignment-ও তেমনি — ছবি ও শব্দ, এক জগতে। যে সংযোগ করে, সে গভীর বোঝে। আল্লামাহ — সংযোগের গুণ।</div>
-<div class="dialogue en">"Allamah — connector, unifier, teacher. Allah says — 'He taught man.' (96:5). Teaching = connecting — different things together. Cross-modal alignment too — image and word, one world. One who connects, understands deeply. Allamah — the attribute of connection."</div>`,
+<div class="dialogue en">"Allamah — connector, unifier, teacher. Allah says — 'He taught man.' (96:5). Teaching = connecting — different things together. Cross-modal alignment too — image and word, one world. One who connects, understands deeply. Allamah — the attribute of connection."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrMM6" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#22d3ee"/></marker></defs>
+<text x="290" y="24" text-anchor="middle" fill="#a855f7" font-size="13" font-weight="700">Cross-modal Alignment — ভিন্ন ইন্দ্রিয় এক জগতে</text>
+<text x="100" y="55" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="600">ছবির জগত</text>
+<text x="480" y="55" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="600">টেক্সটের জগত</text>
+<circle cx="70" cy="110" r="15" fill="#1e1b3a" stroke="#a855f7" stroke-width="2"/>
+<text x="70" y="114" text-anchor="middle" fill="#c084fc" font-size="8">🐱</text>
+<circle cx="130" cy="110" r="15" fill="#1e1b3a" stroke="#a855f7" stroke-width="2"/>
+<text x="130" y="114" text-anchor="middle" fill="#c084fc" font-size="8">🐶</text>
+<circle cx="450" cy="110" r="15" fill="#1e1b3a" stroke="#22d3ee" stroke-width="2"/>
+<text x="450" y="114" text-anchor="middle" fill="#67e8f9" font-size="8">"cat"</text>
+<circle cx="510" cy="110" r="15" fill="#1e1b3a" stroke="#22d3ee" stroke-width="2"/>
+<text x="510" y="114" text-anchor="middle" fill="#67e8f9" font-size="8">"dog"</text>
+<rect x="220" y="70" width="140" height="90" rx="10" fill="#0f172a" stroke="#22c55e" stroke-width="2" stroke-dasharray="4,3"/>
+<text x="290" y="95" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">Shared Space</text>
+<text x="290" y="115" text-anchor="middle" fill="#9290a8" font-size="9">একই vector জগত</text>
+<circle cx="265" cy="135" r="6" fill="#a855f7"/>
+<circle cx="285" cy="140" r="6" fill="#22d3ee"/>
+<circle cx="305" cy="135" r="6" fill="#22c55e"/>
+<text x="290" y="160" text-anchor="middle" fill="#9290a8" font-size="7">এক বিন্দুতে মিল</text>
+<line x1="85" y1="110" x2="240" y2="120" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrMM6)"/>
+<line x1="145" y1="110" x2="250" y2="135" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrMM6)"/>
+<line x1="435" y1="110" x2="340" y2="120" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrMM6)"/>
+<line x1="495" y1="110" x2="330" y2="135" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrMM6)"/>
+<text x="170" y="100" text-anchor="middle" fill="#c084fc" font-size="8">encode</text>
+<text x="410" y="100" text-anchor="middle" fill="#67e8f9" font-size="8">encode</text>
+<text x="290" y="195" text-anchor="middle" fill="#9290a8" font-size="9">🐱 ও "cat" একই বিন্দুতে — cosine similarity বেশি</text>
+<text x="290" y="215" text-anchor="middle" fill="#22c55e" font-size="9">ছবি দিয়ে টেক্সট খোঁজো, টেক্সট দিয়ে ছবি — দুই দিকেই যায়</text>
+</svg>
+</div>
+<div class="svg-caption">Alignment: ছবি ও টেক্সট একই embedding space-এ। মিল থাকলে কাছে, না থাকলে দূরে।</div>`,
   senior:{
     title:"Alignment in Practice",
     body:`<p><strong>Image-text search:</strong> OpenCLIP embeddings → vector DB (Qdrant) → text query retrieves images।</p><p><strong>VLM training:</strong> Projection layer (MLP) aligns ViT embeddings to LLM space। LLaVA approach।</p><p><strong>Domain-specific:</strong> Fine-tune CLIP on your domain (medical, fashion, product) → better alignment।</p><p><strong>Multimodal RAG:</strong> Store image+text embeddings together → retrieve by either modality।</p>`
@@ -237,7 +270,53 @@ IMPLEMENTATION:
   results = retriever.retrieve("a diagram of attention")</div>
 
 <div class="dialogue">হাফিয — preserver of all, memorizer। কুরআনে আল্লাহ বলেন — "নিশ্চয় আমরা কুরআন নাজিল করেছি এবং নিশ্চয় আমরাই এর সংরক্ষক।" (১৫:৯)। সংরক্ষণ শুধু টেক্সট নয় — সব মোডালিটি। Multimodal RAG-ও তেমনি — সব মোডালিটি সংরক্ষণ ও retrieval। হাফিয — সব ইন্দ্রিয়ের স্মৃতি রক্ষক।</div>
-<div class="dialogue en">"Hafi — preserver of all, memorizer. Allah says — 'We sent down the Quran and We are its preserver.' (15:9). Preservation isn't just text — all modalities. Multimodal RAG too — all modality storage and retrieval. Hafi — memory keeper of all senses."</div>`,
+<div class="dialogue en">"Hafi — preserver of all, memorizer. Allah says — 'We sent down the Quran and We are its preserver.' (15:9). Preservation isn't just text — all modalities. Multimodal RAG too — all modality storage and retrieval. Hafi — memory keeper of all senses."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrMM7" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#22d3ee"/></marker></defs>
+<text x="290" y="24" text-anchor="middle" fill="#a855f7" font-size="13" font-weight="700">Multimodal Fusion — সব মোডালিটি এক DB-তে</text>
+<rect x="20" y="50" width="55" height="35" rx="6" fill="#1e1b3a" stroke="#a855f7" stroke-width="2"/>
+<text x="47" y="72" text-anchor="middle" fill="#c084fc" font-size="9">ছবি</text>
+<rect x="20" y="95" width="55" height="35" rx="6" fill="#1e1b3a" stroke="#22d3ee" stroke-width="2"/>
+<text x="47" y="117" text-anchor="middle" fill="#67e8f9" font-size="9">টেক্সট</text>
+<rect x="20" y="140" width="55" height="35" rx="6" fill="#1e1b3a" stroke="#22c55e" stroke-width="2"/>
+<text x="47" y="162" text-anchor="middle" fill="#4ade80" font-size="9">অডিও</text>
+<rect x="100" y="55" width="70" height="115" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+<text x="135" y="80" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Embed</text>
+<text x="135" y="98" text-anchor="middle" fill="#9290a8" font-size="7">CLIP</text>
+<text x="135" y="112" text-anchor="middle" fill="#9290a8" font-size="7">CLAP</text>
+<text x="135" y="126" text-anchor="middle" fill="#9290a8" font-size="7">Whisper</text>
+<text x="135" y="150" text-anchor="middle" fill="#9290a8" font-size="6">→ vector</text>
+<rect x="195" y="60" width="110" height="110" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+<text x="250" y="85" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">Vector DB</text>
+<text x="250" y="103" text-anchor="middle" fill="#9290a8" font-size="8">Qdrant /</text>
+<text x="250" y="116" text-anchor="middle" fill="#9290a8" font-size="8">Weaviate</text>
+<circle cx="230" cy="135" r="4" fill="#a855f7"/>
+<circle cx="245" cy="142" r="4" fill="#22d3ee"/>
+<circle cx="260" cy="135" r="4" fill="#22c55e"/>
+<circle cx="275" cy="148" r="4" fill="#a855f7"/>
+<text x="250" y="165" text-anchor="middle" fill="#9290a8" font-size="7">সব একসাথে</text>
+<rect x="330" y="55" width="80" height="115" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+<text x="370" y="80" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Retrieve</text>
+<text x="370" y="98" text-anchor="middle" fill="#9290a8" font-size="7">cosine</text>
+<text x="370" y="112" text-anchor="middle" fill="#9290a8" font-size="7">similarity</text>
+<text x="370" y="130" text-anchor="middle" fill="#9290a8" font-size="7">top-k</text>
+<text x="370" y="155" text-anchor="middle" fill="#9290a8" font-size="6">mix result</text>
+<rect x="435" y="95" width="125" height="40" rx="8" fill="#1e1b3a" stroke="#22c55e" stroke-width="2"/>
+<text x="497" y="113" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">VLM synthesizes</text>
+<text x="497" y="127" text-anchor="middle" fill="#9290a8" font-size="8">ছবি+টেক্সট+অডিও → উত্তর</text>
+<line x1="75" y1="67" x2="98" y2="80" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrMM7)"/>
+<line x1="75" y1="112" x2="98" y2="112" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrMM7)"/>
+<line x1="75" y1="157" x2="98" y2="145" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrMM7)"/>
+<line x1="170" y1="112" x2="193" y2="112" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM7)"/>
+<line x1="305" y1="112" x2="328" y2="112" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrMM7)"/>
+<line x1="410" y1="112" x2="433" y2="112" stroke="#22c55e" stroke-width="2" marker-end="url(#arrMM7)"/>
+<text x="290" y="200" text-anchor="middle" fill="#9290a8" font-size="9">টেক্সট দাও → ছবি পাও। ছবি দাও → অডিও পাও। সব মোডালিটি cross-search।</text>
+<text x="290" y="220" text-anchor="middle" fill="#22c55e" font-size="9">এক DB, সব ইন্দ্রিয় — এটাই multimodal RAG</text>
+</svg>
+</div>
+<div class="svg-caption">Fusion: ছবি, টেক্সট, অডিও — সব embedding এক DB-তে। যেকোনো মোডালিটি দিয়ে খোঁজো।</div>`,
   senior:{
     title:"Multimodal RAG Setup",
     body:`<p><strong>DB:</strong> Qdrant বা Weaviate — multimodal vector search support।</p><p><strong>Embeddings:</strong> CLIP (text+image), CLAP (audio), Whisper transcription for audio text।</p><p><strong>Framework:</strong> LlamaIndex MultiModalVectorStoreIndex — built-in multimodal RAG।</p><p><strong>Ingest:</strong> Each document → text chunks + images → embed each → store with metadata (modality type)।</p><p><strong>Query:</strong> Text query → embed → search across all modalities → return mixed results → VLM synthesizes।</p>`
@@ -375,7 +454,48 @@ BUILDING MULTIMODAL APPS:
     → fallback (if VLM fails, text-only)</div>
 
 <div class="dialogue">খলিফাতুল আরদ — steward of the earth। কুরআনে আল্লাহ বলেন — "আমি পৃথিবীতে খলিফা স্থাপন করব।" (২:৩০)। খলিফা = পৃথিবীর কর্মী, নির্মাতা। Multimodal AI application = সেই নির্মাণের টুল। যে বানায়, সে খলিফা। যে শুধু দেখে, সে দর্শক। খলিফাতুল আরদ — পৃথিবীর কর্মী হও।</div>
-<div class="dialogue en">"Khalifatul Ard — steward of the earth. Allah says — 'I will place a khalifa on earth.' (2:30). Khalifa = earth's worker, builder. Multimodal AI applications = tools of that building. One who builds, is a khalifa. One who only watches, is a spectator. Khalifatul Ard — be a steward of earth."</div>`,
+<div class="dialogue en">"Khalifatul Ard — steward of the earth. Allah says — 'I will place a khalifa on earth.' (2:30). Khalifa = earth's worker, builder. Multimodal AI applications = tools of that building. One who builds, is a khalifa. One who only watches, is a spectator. Khalifatul Ard — be a steward of earth."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrMM8" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#22d3ee"/></marker></defs>
+<text x="290" y="24" text-anchor="middle" fill="#a855f7" font-size="13" font-weight="700">Grounding — ছবিতে কোথায় কী আছে</text>
+<rect x="30" y="50" width="160" height="120" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+<text x="110" y="70" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="600">Input Image</text>
+<rect x="50" y="80" width="40" height="30" rx="4" fill="none" stroke="#22d3ee" stroke-width="2"/>
+<text x="70" y="98" text-anchor="middle" fill="#67e8f9" font-size="8">cat</text>
+<rect x="110" y="95" width="50" height="35" rx="4" fill="none" stroke="#22c55e" stroke-width="2"/>
+<text x="135" y="115" text-anchor="middle" fill="#4ade80" font-size="8">table</text>
+<rect x="75" y="130" width="35" height="25" rx="4" fill="none" stroke="#a855f7" stroke-width="2"/>
+<text x="92" y="146" text-anchor="middle" fill="#c084fc" font-size="7">cup</text>
+<text x="110" y="170" text-anchor="middle" fill="#9290a8" font-size="8">bbox + label</text>
+<line x1="190" y1="110" x2="218" y2="110" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM8)"/>
+<rect x="220" y="60" width="95" height="100" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+<text x="267" y="82" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">Detector</text>
+<text x="267" y="100" text-anchor="middle" fill="#9290a8" font-size="7">region</text>
+<text x="267" y="113" text-anchor="middle" fill="#9290a8" font-size="7">proposal</text>
+<text x="267" y="130" text-anchor="middle" fill="#9290a8" font-size="7">+ VLM</text>
+<text x="267" y="148" text-anchor="middle" fill="#9290a8" font-size="6">each box</text>
+<line x1="315" y1="110" x2="343" y2="110" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrMM8)"/>
+<rect x="345" y="60" width="95" height="100" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+<text x="392" y="82" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Grounding</text>
+<text x="392" y="100" text-anchor="middle" fill="#9290a8" font-size="7">প্রতিটা region</text>
+<text x="392" y="113" text-anchor="middle" fill="#9290a8" font-size="7">→ label</text>
+<text x="392" y="130" text-anchor="middle" fill="#9290a8" font-size="7">→ অবস্থান</text>
+<text x="392" y="148" text-anchor="middle" fill="#9290a8" font-size="6">where + what</text>
+<line x1="440" y1="110" x2="463" y2="110" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM8)"/>
+<rect x="465" y="50" width="95" height="120" rx="8" fill="#1e1b3a" stroke="#22c55e" stroke-width="2"/>
+<text x="512" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Applications</text>
+<text x="512" y="92" text-anchor="middle" fill="#9290a8" font-size="7">🏥 চিকিৎসা</text>
+<text x="512" y="108" text-anchor="middle" fill="#9290a8" font-size="7">🏫 শিক্ষা</text>
+<text x="512" y="124" text-anchor="middle" fill="#9290a8" font-size="7">🖥️ UI→কোড</text>
+<text x="512" y="140" text-anchor="middle" fill="#9290a8" font-size="7">🚗 স্বয়ংচালিত</text>
+<text x="512" y="158" text-anchor="middle" fill="#9290a8" font-size="7">🔍 সার্চ</text>
+<text x="290" y="200" text-anchor="middle" fill="#9290a8" font-size="9">Grounding = শুধু "কী" নয়, "কোথায়" বলে — bounding box দিয়ে</text>
+<text x="290" y="220" text-anchor="middle" fill="#22c55e" font-size="9">চিকিৎসা, শিক্ষা, ডিজাইন — প্রতিটা ক্ষেত্রে grounding দরকার</text>
+</svg>
+</div>
+<div class="svg-caption">Grounding: AI শুধু বলে না "বিড়াল আছে", বলে "বিড়াল টেবিলের উপর"। অবস্থান সহ উত্তর।</div>`,
   senior:{
     title:"Build Your First Multimodal App",
     body:`<p><strong>Easiest:</strong> GPT-5 vision API + Streamlit — image upload + Q&A। ৩০ lines of Python।</p><p><strong>Meeting summarizer:</strong> Whisper (audio) + GPT-5 (reasoning) + text summary। FastAPI backend।</p><p><strong>Screenshot to code:</strong> GPT-5 vision → "Build this as HTML/CSS" → working code।</p><p><strong>Multimodal RAG:</strong> LlamaIndex MultiModalVectorStoreIndex + CLIP + Qdrant।</p><p><strong>Production:</strong> Start with API (GPT-5/Claude Sonnet 4)। Switch to open (LLaVA/Whisper) when cost matters।</p>`
@@ -508,7 +628,49 @@ WHEN MULTIMODAL FAILS:
   → VLM = general understanding, not precision</div>
 
 <div class="dialogue">তাওয়াদু — humility, modesty, knowing one's place। নবীজি (সা) বলেছেন — "যার অন্তরে সরিষা পরিমাণ অহংকার আছে, সে জান্নাতে যাবে না।" প্রযুক্তির সাথেও তাওয়াদু — সীমা জানা। VLM সব পারে না। যে সীমা জানে, সে ভালো ইঞ্জিনিয়ার। যে অহংকার করে, সে ভুল করে। তাওয়াদু — বিনয়ের গুণ।</div>
-<div class="dialogue en">"Tawadu — humility, modesty, knowing one's place. The Prophet (pbuh) said — 'No one with even a mustard seed of arrogance enters Paradise.' With technology too, tawadu — knowing limits. VLMs can't do everything. One who knows limits, is a good engineer. One who is arrogant, errs. Tawadu — the virtue of humility."</div>`,
+<div class="dialogue en">"Tawadu — humility, modesty, knowing one's place. The Prophet (pbuh) said — 'No one with even a mustard seed of arrogance enters Paradise.' With technology too, tawadu — knowing limits. VLMs can't do everything. One who knows limits, is a good engineer. One who is arrogant, errs. Tawadu — the virtue of humility."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrMM9" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#ff6b35"/></marker></defs>
+<text x="290" y="24" text-anchor="middle" fill="#a855f7" font-size="13" font-weight="700">Multimodal চ্যালেঞ্জ — সীমাবদ্ধতার মানচিত্র</text>
+<rect x="25" y="50" width="120" height="55" rx="8" fill="#0f172a" stroke="#ff6b35" stroke-width="2"/>
+<text x="85" y="72" text-anchor="middle" fill="#ff8c5a" font-size="10" font-weight="700">Hallucination</text>
+<text x="85" y="88" text-anchor="middle" fill="#9290a8" font-size="8">নেই এমন কিছু</text>
+<text x="85" y="99" text-anchor="middle" fill="#9290a8" font-size="8">দেখে বলে</text>
+<rect x="160" y="50" width="120" height="55" rx="8" fill="#0f172a" stroke="#ff6b35" stroke-width="2"/>
+<text x="220" y="72" text-anchor="middle" fill="#ff8c5a" font-size="10" font-weight="700">Bias</text>
+<text x="220" y="88" text-anchor="middle" fill="#9290a8" font-size="8">ত্বক, লিঙ্গ,</text>
+<text x="220" y="99" text-anchor="middle" fill="#9290a8" font-size="8">ভাষা bias</text>
+<rect x="295" y="50" width="120" height="55" rx="8" fill="#0f172a" stroke="#ff6b35" stroke-width="2"/>
+<text x="355" y="72" text-anchor="middle" fill="#ff8c5a" font-size="10" font-weight="700">Cost</text>
+<text x="355" y="88" text-anchor="middle" fill="#9290a8" font-size="8">image tokens</text>
+<text x="355" y="99" text-anchor="middle" fill="#9290a8" font-size="8">বেশি খরচ</text>
+<rect x="430" y="50" width="120" height="55" rx="8" fill="#0f172a" stroke="#ff6b35" stroke-width="2"/>
+<text x="490" y="72" text-anchor="middle" fill="#ff8c5a" font-size="10" font-weight="700">Latency</text>
+<text x="490" y="88" text-anchor="middle" fill="#9290a8" font-size="8">ভিডিও/অডিও</text>
+<text x="490" y="99" text-anchor="middle" fill="#9290a8" font-size="8">ধীর</text>
+<rect x="25" y="125" width="120" height="55" rx="8" fill="#0f172a" stroke="#ff6b35" stroke-width="2"/>
+<text x="85" y="147" text-anchor="middle" fill="#ff8c5a" font-size="10" font-weight="700">Counting</text>
+<text x="85" y="163" text-anchor="middle" fill="#9290a8" font-size="8">অনেক বস্তু</text>
+<text x="85" y="174" text-anchor="middle" fill="#9290a8" font-size="8">ভুল গণনা</text>
+<rect x="160" y="125" width="120" height="55" rx="8" fill="#0f172a" stroke="#ff6b35" stroke-width="2"/>
+<text x="220" y="147" text-anchor="middle" fill="#ff8c5a" font-size="10" font-weight="700">Spatial</text>
+<text x="220" y="163" text-anchor="middle" fill="#9290a8" font-size="8">বাম/ডান</text>
+<text x="220" y="174" text-anchor="middle" fill="#9290a8" font-size="8">ভুল বলে</text>
+<rect x="295" y="125" width="120" height="55" rx="8" fill="#0f172a" stroke="#ff6b35" stroke-width="2"/>
+<text x="355" y="147" text-anchor="middle" fill="#ff8c5a" font-size="10" font-weight="700">Evaluation</text>
+<text x="355" y="163" text-anchor="middle" fill="#9290a8" font-size="8">কীভাবে মাপব</text>
+<text x="355" y="174" text-anchor="middle" fill="#9290a8" font-size="8">কঠিন</text>
+<rect x="430" y="125" width="120" height="55" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+<text x="490" y="147" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Mitigation</text>
+<text x="490" y="163" text-anchor="middle" fill="#9290a8" font-size="8">test, fallback,</text>
+<text x="490" y="174" text-anchor="middle" fill="#9290a8" font-size="8">human review</text>
+<text x="290" y="210" text-anchor="middle" fill="#9290a8" font-size="9">প্রতিটা মোডালিটির নিজস্ব সীমা — hallucination, bias, cost, latency, counting, eval</text>
+<text x="290" y="228" text-anchor="middle" fill="#22c55e" font-size="9">সীমা জানা = বিনয় — তাওয়াদু। তারপরই সমাধান।</text>
+</svg>
+</div>
+<div class="svg-caption">চ্যালেঞ্জ: hallucination, bias, cost — প্রতিটার সমাধান আছে, কিন্তু আগে সীমা জানতে হবে।</div>`,
   senior:{
     title:"Multimodal Checklist — Before Deploy",
     body:`<p>☐ Hallucination: tested with adversarial images ("what do you NOT see?")</p><p>☐ Cost: image tokens budgeted, compression enabled</p><p>☐ Latency: image resize, frame sampling for video</p><p>☐ Bias: tested across demographics (skin tone, language)</p><p>☐ Safety: content filter on images (NSFW, violence)</p><p>☐ Fallback: VLM fails → text-only fallback</p><p>☐ Grounding: spatial/counting tasks verified</p><p>☐ Eval: at least ৫০ multimodal test cases</p>`

@@ -300,7 +300,41 @@ VLM LIMITATIONS:
   ❌ Cost: image tokens বেশি (১ image = ~১K tokens)</div>
 
 <div class="dialogue">কিতাবা — writing, description, expression। কুরআনে আল্লাহ বলেন — "পবিত্র সেই সত্তা যিনি তাঁর বান্দার কাছে রাত্রিতে নিয়ে গেছেন।" (১৭:১)। মিরাজের রাতে নবীজি (সা) দেখলেন ও বর্ণনা করলেন। VLM-ও তেমনি — দেখে ও বর্ণনা করে। কিতাবা — দৃষ্টিকে শব্দে রূপান্তর। ছবি থেকে ভাষা। দেখা থেকে বলা।</div>
-<div class="dialogue en">"Kitabah — writing, description, expression. Allah says — 'Glory to Him who took His servant by night.' (17:1). On the night journey, the Prophet (pbuh) saw and described. VLMs too — see and describe. Kitabah — transforming vision into words. Image to language. Seeing to speaking."</div>`,
+<div class="dialogue en">"Kitabah — writing, description, expression. Allah says — 'Glory to Him who took His servant by night.' (17:1). On the night journey, the Prophet (pbuh) saw and described. VLMs too — see and describe. Kitabah — transforming vision into words. Image to language. Seeing to speaking."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrMM2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#22d3ee"/></marker></defs>
+<text x="290" y="24" text-anchor="middle" fill="#a855f7" font-size="13" font-weight="700">VLM আর্কিটেকচার — ছবি থেকে কথা</text>
+<rect x="25" y="105" width="70" height="45" rx="8" fill="#1e1b3a" stroke="#a855f7" stroke-width="2"/>
+<text x="60" y="123" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="600">Image</text>
+<text x="60" y="138" text-anchor="middle" fill="#9290a8" font-size="8">ছবি</text>
+<rect x="115" y="95" width="85" height="65" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+<text x="157" y="118" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">ViT</text>
+<text x="157" y="134" text-anchor="middle" fill="#9290a8" font-size="8">Vision</text>
+<text x="157" y="146" text-anchor="middle" fill="#9290a8" font-size="8">Encoder</text>
+<rect x="220" y="105" width="85" height="45" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+<text x="262" y="123" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">Projection</text>
+<text x="262" y="138" text-anchor="middle" fill="#9290a8" font-size="8">MLP adapter</text>
+<rect x="325" y="95" width="95" height="65" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+<text x="372" y="118" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">LLM</text>
+<text x="372" y="134" text-anchor="middle" fill="#9290a8" font-size="8">Language</text>
+<text x="372" y="146" text-anchor="middle" fill="#9290a8" font-size="8">Model</text>
+<rect x="440" y="105" width="115" height="45" rx="8" fill="#1e1b3a" stroke="#22c55e" stroke-width="2"/>
+<text x="497" y="123" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Text Output</text>
+<text x="497" y="138" text-anchor="middle" fill="#9290a8" font-size="8">"বিড়াল টেবিলে"</text>
+<line x1="95" y1="127" x2="113" y2="127" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM2)"/>
+<line x1="200" y1="127" x2="218" y2="127" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM2)"/>
+<line x1="305" y1="127" x2="323" y2="127" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrMM2)"/>
+<line x1="420" y1="127" x2="438" y2="127" stroke="#22c55e" stroke-width="2" marker-end="url(#arrMM2)"/>
+<text x="157" y="190" text-anchor="middle" fill="#c084fc" font-size="9">দেখে</text>
+<text x="262" y="190" text-anchor="middle" fill="#67e8f9" font-size="9">সংযোগ</text>
+<text x="372" y="190" text-anchor="middle" fill="#4ade80" font-size="9">চিন্তা</text>
+<text x="497" y="190" text-anchor="middle" fill="#4ade80" font-size="9">বলে</text>
+<text x="290" y="220" text-anchor="middle" fill="#9290a8" font-size="9">চোখ (ViT) → সেতু (Projection) → মুখ (LLM) = VLM</text>
+</svg>
+</div>
+<div class="svg-caption">VLM: Vision encoder দেখে, projection সেতু বানায়, LLM কথা বলে। চোখ + মুখ।</div>`,
   senior:{
     title:"VLM Usage — API Call",
     body:`<p><strong>OpenAI (GPT-5):</strong> image_url in messages — base64 বা URL। "What is in this image?"</p><p><strong>Anthropic (Claude Sonnet 4):</strong> image block in messages — base64। "Analyze this chart."</p><p><strong>Cost:</strong> ১ image ≈ ৭৬৫-১৫০০ tokens (resolution dependent)। High-res = more tokens = more cost।</p><p><strong>Tips:</strong> Low-detail mode (৫১২ tokens) যদি fine detail দরকার না। High-detail যদি টেক্সট/সংখ্যা পড়তে হয়।</p><p><strong>Best practice:</strong> সবসময় নির্দিষ্ট প্রশ্ন করো — "How many people?" ভালো, "Tell me about this" খারাপ।</p>`
@@ -453,7 +487,46 @@ PRODUCTION CONSIDERATIONS:
     → use LoRA বা seed control</div>
 
 <div class="dialogue">খলিক — creator, maker। কুরআনে আল্লাহ বলেন — "তিনিই আল্লাহ, তোমাদের স্রষ্টা।" (৬:১০২)। আল্লাহ স্রষ্টা — "কুন" (হও) বললেন, হয়ে গেল। Diffusion model-ও একটা ছোট্ট স্রষ্টা — শব্দ দাও, ছবি তৈরি। অবশ্যই আল্লাহর সৃষ্টির সাথে তুলনা নয়, কিন্তু একটা ঝলক — শব্দ থেকে রূপ। খলিক — স্রষ্টার গুণ।</div>
-<div class="dialogue en">"Khaliq — creator, maker. Allah says — 'He is Allah, your Creator.' (6:102). Allah is the Creator — 'Be' and it is. Diffusion models are a tiny creator — give words, create image. Not comparable to Allah's creation of course, but a glimpse — words to form. Khaliq — the attribute of creating."</div>`,
+<div class="dialogue en">"Khaliq — creator, maker. Allah says — 'He is Allah, your Creator.' (6:102). Allah is the Creator — 'Be' and it is. Diffusion models are a tiny creator — give words, create image. Not comparable to Allah's creation of course, but a glimpse — words to form. Khaliq — the attribute of creating."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrMM3" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#22d3ee"/></marker></defs>
+<text x="290" y="24" text-anchor="middle" fill="#a855f7" font-size="13" font-weight="700">Diffusion: শব্দ থেকে ছবি — ধাপে ধাপে denoise</text>
+<rect x="20" y="70" width="75" height="40" rx="8" fill="#1e1b3a" stroke="#22d3ee" stroke-width="2"/>
+<text x="57" y="87" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="600">Prompt</text>
+<text x="57" y="100" text-anchor="middle" fill="#9290a8" font-size="8">"সূর্যাস্ত"</text>
+<rect x="115" y="70" width="75" height="40" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+<text x="152" y="87" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Text Enc</text>
+<text x="152" y="100" text-anchor="middle" fill="#9290a8" font-size="8">CLIP</text>
+<rect x="210" y="60" width="70" height="60" rx="8" fill="#1e1b3a" stroke="#22c55e" stroke-width="2"/>
+<text x="245" y="85" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Noise</text>
+<text x="245" y="100" text-anchor="middle" fill="#9290a8" font-size="14">█▓░</text>
+<rect x="305" y="55" width="80" height="70" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+<text x="345" y="78" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">UNet</text>
+<text x="345" y="92" text-anchor="middle" fill="#9290a8" font-size="7">denoise</text>
+<text x="345" y="104" text-anchor="middle" fill="#9290a8" font-size="7">step 1</text>
+<text x="345" y="116" text-anchor="middle" fill="#9290a8" font-size="7">→ 2 → 3...</text>
+<rect x="410" y="60" width="65" height="60" rx="8" fill="#1e1b3a" stroke="#22c55e" stroke-width="2"/>
+<text x="442" y="85" text-anchor="middle" fill="#4ade80" font-size="9"> Emerging</text>
+<text x="442" y="100" text-anchor="middle" fill="#9290a8" font-size="11">▒▓█</text>
+<rect x="500" y="70" width="60" height="40" rx="8" fill="#1e1b3a" stroke="#22c55e" stroke-width="2"/>
+<text x="530" y="87" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="600">Image</text>
+<text x="530" y="100" text-anchor="middle" fill="#9290a8" font-size="8">🌊</text>
+<line x1="95" y1="90" x2="113" y2="90" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrMM3)"/>
+<line x1="190" y1="90" x2="208" y2="90" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM3)"/>
+<line x1="280" y1="90" x2="303" y2="90" stroke="#22c55e" stroke-width="2" marker-end="url(#arrMM3)"/>
+<line x1="385" y1="90" x2="408" y2="90" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM3)"/>
+<line x1="475" y1="90" x2="498" y2="90" stroke="#22c55e" stroke-width="2" marker-end="url(#arrMM3)"/>
+<path d="M345,125 Q345,155 345,140" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrMM3)"/>
+<text x="370" y="155" fill="#c084fc" font-size="8">পুনরাবৃত্তি</text>
+<text x="152" y="180" text-anchor="middle" fill="#67e8f9" font-size="9">শব্দ বোঝে</text>
+<text x="345" y="180" text-anchor="middle" fill="#c084fc" font-size="9">noise সরায়</text>
+<text x="530" y="180" text-anchor="middle" fill="#4ade80" font-size="9">ছবি হয়</text>
+<text x="290" y="215" text-anchor="middle" fill="#9290a8" font-size="9">শব্দ → noise → ধাপে ধাপে denoise → ছবি</text>
+</svg>
+</div>
+<div class="svg-caption">Diffusion: টেক্সট বোঝে, noise থেকে ধাপে ধাপে ছবি বের হয়। DALL-E, Midjourney এই প্রক্রিয়ায়।</div>`,
   senior:{
     title:"Image Generation — Which Tool?",
     body:`<p><strong>Quick/API:</strong> DALL-E 3 — API easy, prompt adherence excellent।</p><p><strong>Artistic/Quality:</strong> Midjourney — best aesthetics, photorealism।</p><p><strong>Open/Control:</strong> Stable Diffusion 3 / FLUX — local, free, ControlNet for precision।</p><strong>Text in image:</strong> Ideogram বা DALL-E 3 — logos, posters with text।</p><p><strong>Custom style:</strong> Train LoRA on your images → apply to any generation।</p><p><strong>Production:</strong> SDXL + ComfyUI pipeline → automated generation at scale।</p>`
@@ -602,7 +675,45 @@ AUDIO SAFETY:
   → Accessibility: captions for deaf users</div>
 
 <div class="dialogue">সামি' — hearing, the all-hearing। কুরআনে আল্লাহ বলেন — "তিনি সবকিছু শোনেন।" (২:১২৭)। আল্লাহ সামি' — সব শোনেন। AI-ও একটু শোনে — Whisper, GPT-5। অবশ্যই আল্লাহর সামিয়্যাতের সাথে তুলনা নয়, কিন্তু একটা ঝলক — শোনা ও বোঝা। সামি' — শ্রবণের গুণ।</div>
-<div class="dialogue en">"Sami' — hearing, the all-hearing. Allah says — 'He hears all things.' (2:127). Allah is Sami' — hears everything. AI hears a little too — Whisper, GPT-5. Not comparable to Allah's Sami'yyat of course, but a glimpse — hearing and understanding. Sami' — the attribute of hearing."</div>`,
+<div class="dialogue en">"Sami' — hearing, the all-hearing. Allah says — 'He hears all things.' (2:127). Allah is Sami' — hears everything. AI hears a little too — Whisper, GPT-5. Not comparable to Allah's Sami'yyat of course, but a glimpse — hearing and understanding. Sami' — the attribute of hearing."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrMM4" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#22d3ee"/></marker></defs>
+<text x="290" y="24" text-anchor="middle" fill="#a855f7" font-size="13" font-weight="700">অডিও প্রক্রিয়াজাতকরণ — শব্দ থেকে বোঝা</text>
+<rect x="20" y="105" width="70" height="45" rx="8" fill="#1e1b3a" stroke="#22d3ee" stroke-width="2"/>
+<text x="55" y="123" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="600">Audio</text>
+<text x="55" y="138" text-anchor="middle" fill="#9290a8" font-size="8">🔊波浪</text>
+<rect x="110" y="100" width="85" height="55" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+<text x="152" y="120" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Spectrogram</text>
+<text x="152" y="135" text-anchor="middle" fill="#9290a8" font-size="7">STFT — freq×time</text>
+<text x="152" y="146" text-anchor="middle" fill="#9290a8" font-size="8">▓▒░▒▓░▒</text>
+<rect x="215" y="105" width="80" height="45" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+<text x="255" y="123" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Encoder</text>
+<text x="255" y="138" text-anchor="middle" fill="#9290a8" font-size="8">Whisper</text>
+<rect x="315" y="100" width="85" height="55" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+<text x="357" y="120" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Embedding</text>
+<text x="357" y="135" text-anchor="middle" fill="#9290a8" font-size="7">vector</text>
+<text x="357" y="146" text-anchor="middle" fill="#9290a8" font-size="7">[0.2, 0.8...]</text>
+<rect x="420" y="105" width="70" height="45" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+<text x="455" y="123" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Decoder</text>
+<text x="455" y="138" text-anchor="middle" fill="#9290a8" font-size="8">LLM</text>
+<rect x="510" y="105" width="55" height="45" rx="8" fill="#1e1b3a" stroke="#22c55e" stroke-width="2"/>
+<text x="537" y="123" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="600">Text</text>
+<text x="537" y="138" text-anchor="middle" fill="#9290a8" font-size="8">"নাম"</text>
+<line x1="90" y1="127" x2="108" y2="127" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrMM4)"/>
+<line x1="195" y1="127" x2="213" y2="127" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM4)"/>
+<line x1="295" y1="127" x2="313" y2="127" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM4)"/>
+<line x1="400" y1="127" x2="418" y2="127" stroke="#22c55e" stroke-width="2" marker-end="url(#arrMM4)"/>
+<line x1="490" y1="127" x2="508" y2="127" stroke="#22c55e" stroke-width="2" marker-end="url(#arrMM4)"/>
+<text x="152" y="185" text-anchor="middle" fill="#c084fc" font-size="9">শব্দ → সুর</text>
+<text x="255" y="185" text-anchor="middle" fill="#c084fc" font-size="9">সুর → সংখ্যা</text>
+<text x="357" y="185" text-anchor="middle" fill="#4ade80" font-size="9">সংখ্যা → অর্থ</text>
+<text x="537" y="185" text-anchor="middle" fill="#4ade80" font-size="9">অর্থ → শব্দ</text>
+<text x="290" y="215" text-anchor="middle" fill="#9290a8" font-size="9">STT (Whisper) ও native audio (GPT-5) — দুই পথেই শোনা যায়</text>
+</svg>
+</div>
+<div class="svg-caption">অডিও: spectrogram হয়, embedding বানে, তারপর টেক্সট বা উত্তর। শোনা = বোঝার দরজা।</div>`,
   senior:{
     title:"Audio Stack — Production",
     body:`<p><strong>STT:</strong> Whisper large-v3 (self-host) বা Deepgram (API, fastest)।</p><p><strong>TTS:</strong> OpenAI TTS (simple) বা ElevenLabs (best quality, voice cloning)।</p><p><strong>Native audio:</strong> GPT-5 audio API — end-to-end speech, real-time।</p><p><strong>Music:</strong> Suno API বা MusicGen (open) — text to music।</p><p><strong>Cost:</strong> Whisper self-hosted = free (GPU cost)। Deepgram = $০.০০৪৩/min। ElevenLabs = $০.৩০/১K chars।</p>`
@@ -779,7 +890,52 @@ CHALLENGES:
   → Privacy: faces, locations in video</div>
 
 <div class="dialogue">যাওয়া — motion, going, change over time। কুরআনে আল্লাহ বলেন — "তিনি প্রতিটি জিনিসকে সৃষ্টি করেছেন তারপর পরিমাপ করেছেন।" পরিমাপের মধ্যে সময় আছে — কখন কী ঘটে। ভিডিও সেই সময় ধরে। যাওয়া — স্থির থেকে চলমান, মুহূর্ত থেকে সময়। যে সময় বোঝে, সে গভীর বোঝে।</div>
-<div class="dialogue en">"Yawa — motion, going, change over time. Allah says — 'He created all things and measured them.' Measurement includes time — what happens when. Video captures that time. Yawa — from still to moving, moment to time. One who understands time, understands deeply."</div>`,
+<div class="dialogue en">"Yawa — motion, going, change over time. Allah says — 'He created all things and measured them.' Measurement includes time — what happens when. Video captures that time. Yawa — from still to moving, moment to time. One who understands time, understands deeply."</div>
+
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs><marker id="arrMM5" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#22d3ee"/></marker></defs>
+<text x="290" y="24" text-anchor="middle" fill="#a855f7" font-size="13" font-weight="700">ভিডিও বোঝা — ছবি + সময়</text>
+<rect x="20" y="55" width="45" height="50" rx="6" fill="#1e1b3a" stroke="#a855f7" stroke-width="2"/>
+<text x="42" y="75" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="600">t=0</text>
+<text x="42" y="90" text-anchor="middle" fill="#9290a8" font-size="8">frame</text>
+<rect x="75" y="55" width="45" height="50" rx="6" fill="#1e1b3a" stroke="#a855f7" stroke-width="2"/>
+<text x="97" y="75" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="600">t=1</text>
+<text x="97" y="90" text-anchor="middle" fill="#9290a8" font-size="8">frame</text>
+<rect x="130" y="55" width="45" height="50" rx="6" fill="#1e1b3a" stroke="#a855f7" stroke-width="2"/>
+<text x="152" y="75" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="600">t=2</text>
+<text x="152" y="90" text-anchor="middle" fill="#9290a8" font-size="8">frame</text>
+<text x="97" y="125" text-anchor="middle" fill="#9290a8" font-size="8">. . .</text>
+<rect x="190" y="55" width="45" height="50" rx="6" fill="#1e1b3a" stroke="#a855f7" stroke-width="2"/>
+<text x="212" y="75" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="600">t=n</text>
+<text x="212" y="90" text-anchor="middle" fill="#9290a8" font-size="8">frame</text>
+<line x1="65" y1="80" x2="73" y2="80" stroke="#475569" stroke-width="1.5" marker-end="url(#arrMM5)"/>
+<line x1="120" y1="80" x2="128" y2="80" stroke="#475569" stroke-width="1.5" marker-end="url(#arrMM5)"/>
+<line x1="175" y1="80" x2="188" y2="80" stroke="#475569" stroke-width="1.5" marker-end="url(#arrMM5)"/>
+<rect x="260" y="50" width="100" height="60" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+<text x="310" y="73" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">Spatial Enc</text>
+<text x="310" y="88" text-anchor="middle" fill="#9290a8" font-size="8">প্রতি frame</text>
+<text x="310" y="100" text-anchor="middle" fill="#9290a8" font-size="8">দেখে</text>
+<rect x="385" y="50" width="105" height="60" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
+<text x="437" y="73" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">Temporal</text>
+<text x="437" y="88" text-anchor="middle" fill="#9290a8" font-size="8">frame-এর মধ্যে</text>
+<text x="437" y="100" text-anchor="middle" fill="#9290a8" font-size="8">attention</text>
+<rect x="515" y="55" width="50" height="50" rx="8" fill="#1e1b3a" stroke="#22c55e" stroke-width="2"/>
+<text x="540" y="75" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="600">সময়</text>
+<text x="540" y="90" text-anchor="middle" fill="#9290a8" font-size="8">বোঝা</text>
+<line x1="235" y1="80" x2="258" y2="80" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM5)"/>
+<line x1="360" y1="80" x2="383" y2="80" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrMM5)"/>
+<line x1="490" y1="80" x2="513" y2="80" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM5)"/>
+<path d="M437,110 Q437,140 437,125" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrMM5)"/>
+<text x="97" y="160" text-anchor="middle" fill="#c084fc" font-size="9">ছবি</text>
+<text x="310" y="160" text-anchor="middle" fill="#67e8f9" font-size="9">প্রতিটা frame</text>
+<text x="437" y="160" text-anchor="middle" fill="#c084fc" font-size="9">frame-এর মধ্যে</text>
+<text x="540" y="160" text-anchor="middle" fill="#4ade80" font-size="9">সময়ের গতি</text>
+<text x="290" y="195" text-anchor="middle" fill="#9290a8" font-size="9">ভিডিও = ছবি + সময়। Spatial দেখে, temporal মনে রাখে।</text>
+<text x="290" y="215" text-anchor="middle" fill="#9290a8" font-size="8">Gemini 2.5 native — সরাসরি ভিডিও বোঝে, frame sample করতে হয় না।</text>
+</svg>
+</div>
+<div class="svg-caption">ভিডিও: প্রতিটি frame spatial encoder দেখে, temporal attention frame-এর মধ্যে সম্পর্ক ধরে। সময় = গতি।</div>`,
   senior:{
     title:"Video AI — Which Approach?",
     body:`<p><strong>Quick/cheap:</strong> Frame sampling (১০-২০ keyframes) + GPT-5/Claude VLM। Good for basic "what happens"।</p><p><strong>Best understanding:</strong> Gemini 2.5 Pro — native video, ১hr capacity, timestamp queries।</p><p><strong>Video generation:</strong> Sora 2 (OpenAI, ২০২৫+) বা Runway Gen-৪ / Veo 3 (Google) for professional quality।</p><p><strong>Open-source:</strong> LLaVA-Video + Whisper for understanding। Stable Video Diffusion / Wan 2.1 for generation।</p><p><strong>Production tip:</strong> ভিডিও = সবচেয়ে expensive modality। শুধু দরকার হলে use করো। Frame sampling > native যদি cost matter করে।</p>`
