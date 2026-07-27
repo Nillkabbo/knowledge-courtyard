@@ -58,6 +58,39 @@ for size in [100, 1000, 10000]:
 #  10,000 docs → 0.4502s   ← HALF A SECOND for 10k docs!
 # 100,000 docs → 45.0000s  ← 45 seconds. User already left.</div>
 
+<div class="diagram">
+  <div class="diag-title">Big-O স্কেলিং তুলনা — The Scaling Disaster</div>
+  <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowG" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#6b6588"/></marker>
+    </defs>
+    <!-- Axes -->
+    <line x1="50" y1="240" x2="540" y2="240" stroke="#6b6588" stroke-width="1.5" marker-end="url(#arrowG)"/>
+    <line x1="50" y1="240" x2="50" y2="20" stroke="#6b6588" stroke-width="1.5" marker-end="url(#arrowG)"/>
+    <text x="535" y="258" fill="#9a93b8" font-size="11" font-family="monospace">docs (n)</text>
+    <text x="15" y="25" fill="#9a93b8" font-size="11" font-family="monospace" transform="rotate(-90 15 25)">time</text>
+    <!-- O(n²) curve — exponential disaster -->
+    <path d="M 50 240 Q 200 235 300 200 Q 380 160 420 100 Q 450 50 460 20" fill="none" stroke="#ef4444" stroke-width="2.5"/>
+    <text x="460" y="35" fill="#ef4444" font-size="11" font-weight="bold">O(n²) ☠️</text>
+    <!-- O(n log n) curve -->
+    <path d="M 50 240 Q 180 220 300 170 Q 380 140 440 120" fill="none" stroke="#fbbf24" stroke-width="2"/>
+    <text x="430" y="135" fill="#fbbf24" font-size="11" font-weight="bold">O(n log n)</text>
+    <!-- O(n) line -->
+    <line x1="50" y1="240" x2="440" y2="80" stroke="#22d3ee" stroke-width="2"/>
+    <text x="420" y="75" fill="#22d3ee" font-size="11" font-weight="bold">O(n)</text>
+    <!-- O(log n) — nearly flat -->
+    <path d="M 50 240 Q 100 200 200 175 Q 300 162 440 155" fill="none" stroke="#52c41a" stroke-width="2.5"/>
+    <text x="420" y="150" fill="#52c41a" font-size="11" font-weight="bold">O(log n) ✅</text>
+    <!-- O(1) flat -->
+    <line x1="50" y1="225" x2="480" y2="225" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4,3"/>
+    <text x="440" y="220" fill="#a78bfa" font-size="11" font-weight="bold">O(1)</text>
+    <!-- Budget threshold -->
+    <line x1="50" y1="180" x2="540" y2="180" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+    <text x="400" y="175" fill="#ef4444" font-size="9" opacity="0.7">200ms budget limit</text>
+  </svg>
+  <div class="diag-cap">O(n²) মানে একটা সীমায় বিস্ফোরণ। O(log n) মানে প্রায় flat — ১০ গুণ ডেটায় সামান্য বাড়ে।</div>
+</div>
+
 <div class="dialogue">"দেখলে?" রাহিলা খাতা বন্ধ করলেন। "O(n²) মানে শুধু 'ধীর' নয়। এর মানে — যন্ত্রটা একটা সীমা পার হলেই মরে। আমাদের লক্ষ্য: প্রতিটা অপারেশন O(log n) বা O(1) এ আনা। সেই জন্যই আমাদের ইনডেক্স দরকার, হিস্ট দরকার, ট্রি দরকার। প্রতিটা ডেটা স্ট্রাকচার একটা কারণে।"</div>
 <div class="dialogue en">"See?" Rahila closed the ledger. "O(n²) does not mean 'slow.' It means the engine has a kill threshold — pass it, and the engine dies. Our goal: bring every operation to O(log n) or O(1). That is why we need an index, a heap, a tree. Every data structure exists for a reason."</div>
 
@@ -153,6 +186,47 @@ for p in all_pages:
 # ✅ Discovered 7 pages</div>
 
 <div class="dialogue">"Book ২-এর আরবেস্ক খোদাইকারী (Door ২) recursion শিখিয়েছিলেন — base case + recursive case। এখন দেখলে? Base case ছাড়া crawler একটা infinite loop। কিন্তু সঠিক base case দিলে — সে পুরো ইন্টারনেট ম্যাপ করতে পারে। recursion শুধু ফাংশন নিজেকে ডাকে না — recursion হলো বিশ্বকে আবিষ্কার করার উপায়।"</div>
+
+<div class="diagram">
+  <div class="diag-title">Crawler Recursion Tree — DFS প্রতিটা Page-এ নামে</div>
+  <svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
+    <!-- Root -->
+    <circle cx="280" cy="30" r="22" fill="rgba(249,115,22,0.15)" stroke="#f97316" stroke-width="2"/>
+    <text x="280" y="35" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">home</text>
+    <!-- Level 1 -->
+    <line x1="280" y1="52" x2="130" y2="100" stroke="#f97316" stroke-width="1.5" opacity="0.6"/>
+    <line x1="280" y1="52" x2="280" y2="100" stroke="#f97316" stroke-width="1.5" opacity="0.6"/>
+    <line x1="280" y1="52" x2="430" y2="100" stroke="#f97316" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="130" cy="115" r="20" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="130" y="119" text-anchor="middle" fill="#fbbf24" font-size="9">about</text>
+    <circle cx="280" cy="115" r="20" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="280" y="119" text-anchor="middle" fill="#fbbf24" font-size="9">blog</text>
+    <circle cx="430" cy="115" r="20" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="430" y="119" text-anchor="middle" fill="#fbbf24" font-size="9">contact</text>
+    <!-- Level 2 -->
+    <line x1="130" y1="135" x2="80" y2="185" stroke="#f97316" stroke-width="1" opacity="0.4"/>
+    <line x1="130" y1="135" x2="180" y2="185" stroke="#f97316" stroke-width="1" opacity="0.4"/>
+    <line x1="280" y1="135" x2="230" y2="185" stroke="#f97316" stroke-width="1" opacity="0.4"/>
+    <line x1="280" y1="135" x2="330" y2="185" stroke="#f97316" stroke-width="1" opacity="0.4"/>
+    <circle cx="80" cy="200" r="18" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/>
+    <text x="80" y="204" text-anchor="middle" fill="#9a93b8" font-size="8">team</text>
+    <circle cx="180" cy="200" r="18" fill="rgba(239,68,68,0.08)" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="180" y="204" text-anchor="middle" fill="#ef4444" font-size="8">home 🔒</text>
+    <circle cx="230" cy="200" r="18" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/>
+    <text x="230" y="204" text-anchor="middle" fill="#9a93b8" font-size="8">post1</text>
+    <circle cx="330" cy="200" r="18" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/>
+    <text x="330" y="204" text-anchor="middle" fill="#9a93b8" font-size="8">post2</text>
+    <!-- Visited annotation -->
+    <rect x="15" y="245" width="250" height="35" rx="8" fill="rgba(239,68,68,0.06)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
+    <text x="25" y="262" fill="#ef4444" font-size="10" font-weight="bold">🔒 home = visited</text>
+    <text x="25" y="275" fill="#9a93b8" font-size="9">Base case: url in visited → return []</text>
+    <!-- Path annotation -->
+    <rect x="290" y="245" width="250" height="35" rx="8" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
+    <text x="300" y="262" fill="#52c41a" font-size="10" font-weight="bold">✅ 7 pages discovered</text>
+    <text x="300" y="275" fill="#9a93b8" font-size="9">Depth limit: 3 levels max</text>
+  </svg>
+  <div class="diag-cap">Crawler home → about → team (dead end) → blog → post1, post2 → contact। 🔒 = ইতিমধ্যে visited, base case।</div>
+</div>
 <div class="dialogue en">"Book 2's arabesque carver (Door 2) taught you recursion — base case + recursive case. Now see? Without a base case, the crawler is an infinite loop. But with the right base case — it can map the entire internet. Recursion is not just a function calling itself. It is how you discover the world."</div>
 
 <div class="secret-box">🕷️ Crawler = recursion: fetch → extract → recurse. Base case = visited set. ছাড়া এটা চলতেই থাকবে।</div>
@@ -237,6 +311,43 @@ print(f"Doc 2: {corpus.get_document(2)['title']}")  # O(1) access!
 # Doc 2: Blog</div>
 
 <div class="dialogue">Book ২-এর টালি নির্মাতা (Door ৩) অ্যারে শিখিয়েছিলেন — ধারাবাহিক স্থান, O(1) access। এখন দেখলে কেন সার্চ ইঞ্জিনে অ্যারে দরকার? কারণ প্রতিটা doc একটা ID পায় — সেই ID দিয়ে সরাসরি access। কিন্তু insertion মাঝে নয় — শেষে। এটাই append-only corpus।</div>
+
+<div class="diagram">
+  <div class="diag-title">Array Memory Layout — O(1) Access vs O(n) Insert</div>
+  <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+    <!-- Array cells -->
+    <rect x="40" y="30" width="80" height="55" rx="6" fill="rgba(249,115,22,0.12)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="80" y="55" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">Home</text>
+    <text x="80" y="72" text-anchor="middle" fill="#9a93b8" font-size="9">id=0</text>
+    <rect x="125" y="30" width="80" height="55" rx="6" fill="rgba(249,115,22,0.12)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="165" y="55" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">About</text>
+    <text x="165" y="72" text-anchor="middle" fill="#9a93b8" font-size="9">id=1</text>
+    <rect x="210" y="30" width="80" height="55" rx="6" fill="rgba(249,115,22,0.12)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="250" y="55" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">Blog</text>
+    <text x="250" y="72" text-anchor="middle" fill="#9a93b8" font-size="9">id=2</text>
+    <rect x="295" y="30" width="80" height="55" rx="6" fill="rgba(82,196,26,0.1)" stroke="#52c41a" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="335" y="55" text-anchor="middle" fill="#52c41a" font-size="11" font-weight="bold">+ New</text>
+    <text x="335" y="72" text-anchor="middle" fill="#52c41a" font-size="9">append O(1)</text>
+    <!-- Access arrow -->
+    <line x1="165" y1="100" x2="165" y2="125" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrowTeal)"/>
+    <defs><marker id="arrowTeal" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#22d3ee"/></marker></defs>
+    <text x="200" y="120" fill="#22d3ee" font-size="10" font-weight="bold">get_document(1) → O(1)</text>
+    <!-- Memory addresses -->
+    <text x="80" y="150" text-anchor="middle" fill="#6b6588" font-size="8" font-family="monospace">0x100</text>
+    <text x="165" y="150" text-anchor="middle" fill="#6b6588" font-size="8" font-family="monospace">0x180</text>
+    <text x="250" y="150" text-anchor="middle" fill="#6b6588" font-size="8" font-family="monospace">0x200</text>
+    <text x="335" y="150" text-anchor="middle" fill="#6b6588" font-size="8" font-family="monospace">0x280</text>
+    <!-- Contiguous memory bar -->
+    <rect x="40" y="160" width="335" height="8" rx="3" fill="url(#memGrad)"/>
+    <defs><linearGradient id="memGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f97316"/><stop offset="100%" stop-color="#52c41a"/></linearGradient></defs>
+    <text x="207" y="185" text-anchor="middle" fill="#9a93b8" font-size="9">ধারাবাহিক মেমোরি — contiguous</text>
+    <!-- Middle insert warning -->
+    <rect x="40" y="210" width="490" height="40" rx="8" fill="rgba(239,68,68,0.06)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
+    <text x="55" y="228" fill="#ef4444" font-size="10" font-weight="bold">⚠️ Middle Insert = O(n)</text>
+    <text x="55" y="242" fill="#9a93b8" font-size="9">মাঝে ঢুকালে পরের সব element ডানে সরাতে হয় — append-only হও</text>
+  </svg>
+  <div class="diag-cap">Array: index জানলে সরাসরি মেমোরি address (base + id × size)। O(1) read, O(1) append, O(n) insert।</div>
+</div>
 <div class="dialogue en">Book 2 tile maker (Door 3) taught you arrays — contiguous space, O(1) access. Now you see why search engines need arrays? Each doc gets an ID — direct access by ID. But never insert in the middle — always at the end. This is an append-only corpus.</div>
 
 <div class="secret-box">📚 Corpus = append-only array। doc_id = array index। O(1) access, O(1) append, O(n) middle insert।</div>
@@ -329,6 +440,48 @@ print(f"'algorithm' appears in {pl_algorithm.size} docs")
 # 'algorithm' appears in 3 docs</div>
 
 <div class="dialogue">Book ২-এর মুক্তোর মালা কারিগর (Door ৪) linked list শিখিয়েছিলেন — প্রতিটা node পরেরটার ঠিকানা জানে। এখন দেখলে কেন? কারণ সার্চ ইঞ্জিনে প্রতিটা শব্দের জন্য একটা চেইন — কোন কোন page-এ এই শব্দ আছে। এটাই inverted index-এর মূল উপাদান। Door ১২-এ আমরা এটাকে hash map-এ বসাবো।</div>
+
+<div class="diagram">
+  <div class="diag-title">Linked List Posting List — প্রতিটা Node-এ Pointer</div>
+  <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="arrowOrange" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#f97316"/></marker></defs>
+    <!-- Term label -->
+    <rect x="10" y="80" width="100" height="40" rx="8" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="60" y="105" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="bold">algorithm</text>
+    <!-- Arrow to first node -->
+    <line x1="110" y1="100" x2="145" y2="100" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+    <!-- Node 1 -->
+    <rect x="150" y="75" width="70" height="50" rx="6" fill="rgba(249,115,22,0.12)" stroke="#f97316" stroke-width="1.5"/>
+    <line x1="185" y1="75" x2="185" y2="125" stroke="#f97316" stroke-width="1" opacity="0.4"/>
+    <text x="167" y="95" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">doc 0</text>
+    <text x="205" y="95" text-anchor="middle" fill="#f97316" font-size="14">→</text>
+    <text x="167" y="115" text-anchor="middle" fill="#9a93b8" font-size="8">data</text>
+    <text x="205" y="115" text-anchor="middle" fill="#9a93b8" font-size="8">next</text>
+    <!-- Arrow -->
+    <line x1="225" y1="100" x2="260" y2="100" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+    <!-- Node 2 -->
+    <rect x="265" y="75" width="70" height="50" rx="6" fill="rgba(249,115,22,0.12)" stroke="#f97316" stroke-width="1.5"/>
+    <line x1="300" y1="75" x2="300" y2="125" stroke="#f97316" stroke-width="1" opacity="0.4"/>
+    <text x="282" y="95" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">doc 1</text>
+    <text x="320" y="95" text-anchor="middle" fill="#f97316" font-size="14">→</text>
+    <text x="282" y="115" text-anchor="middle" fill="#9a93b8" font-size="8">data</text>
+    <text x="320" y="115" text-anchor="middle" fill="#9a93b8" font-size="8">next</text>
+    <!-- Arrow -->
+    <line x1="340" y1="100" x2="375" y2="100" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+    <!-- Node 3 -->
+    <rect x="380" y="75" width="70" height="50" rx="6" fill="rgba(249,115,22,0.12)" stroke="#f97316" stroke-width="1.5"/>
+    <line x1="415" y1="75" x2="415" y2="125" stroke="#f97316" stroke-width="1" opacity="0.4"/>
+    <text x="397" y="95" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">doc 2</text>
+    <text x="435" y="95" text-anchor="middle" fill="#9a93b8" font-size="12">∅</text>
+    <text x="397" y="115" text-anchor="middle" fill="#9a93b8" font-size="8">data</text>
+    <text x="435" y="115" text-anchor="middle" fill="#9a93b8" font-size="8">null</text>
+    <!-- Append annotation -->
+    <rect x="150" y="155" width="300" height="40" rx="8" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
+    <text x="300" y="172" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">Append doc 3 = O(1): tail.next → new node</text>
+    <text x="300" y="186" text-anchor="middle" fill="#9a93b8" font-size="9">কোনো shift লাগে না — শেষ node-এর pointer আডজাস্ট করো</text>
+  </svg>
+  <div class="diag-cap">Posting list: term → [doc 0] → [doc 1] → [doc 2] → null। প্রতিটা node পরেরটার pointer ধরে। O(1) append।</div>
+</div>
 <div class="dialogue en">Book 2 pearl necklace maker (Door 4) taught you linked lists — each node knows the next address. Now you see why? Because in a search engine, each word has a chain — which pages contain it. This is the core element of the inverted index. In Door 12 we will put this into a hash map.</div>
 
 <div class="secret-box">🔗 Posting list = linked list। term → node → node → node। প্রতিটা node-এ doc_id। O(1) append।</div>
@@ -419,6 +572,52 @@ print(f"algorithm AND python -> docs: {results}")
 # With 10k docs each: O(20,000) vs O(100,000,000) — 5000x faster!</div>
 
 <div class="dialogue">Book ২-এর ক্যালিগ্রাফারের মাপকাঠি (Door ১৩) two pointers শিখিয়েছিলেন। এখন দেখলে কেন সার্চ ইঞ্জিনে এটা জীবন বাঁচায়? AND query হলো সবচেয়ে কমন সার্চ — ইউজার দুটো শব্দ লেখে। প্রতিটা AND query O(n+m)-এ চলে — nested loop নয়।</div>
+
+<div class="diagram">
+  <div class="diag-title">Two-Pointer AND Query Walk — O(n+m) Intersection</div>
+  <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+    <!-- List A header -->
+    <text x="30" y="30" fill="#fbbf24" font-size="11" font-weight="bold">'algorithm' → [0, 1, 2, 5, 7]</text>
+    <!-- List A cells -->
+    <rect x="30" y="40" width="45" height="35" rx="5" fill="rgba(249,115,22,0.12)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="52" y="62" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">0</text>
+    <rect x="80" y="40" width="45" height="35" rx="5" fill="rgba(249,115,22,0.12)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="102" y="62" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">1</text>
+    <rect x="130" y="40" width="45" height="35" rx="5" fill="rgba(249,115,22,0.12)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="152" y="62" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">2</text>
+    <rect x="180" y="40" width="45" height="35" rx="5" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.5"/>
+    <text x="202" y="62" text-anchor="middle" fill="#9a93b8" font-size="12">5</text>
+    <rect x="230" y="40" width="45" height="35" rx="5" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.5"/>
+    <text x="252" y="62" text-anchor="middle" fill="#9a93b8" font-size="12">7</text>
+    <!-- Pointer i -->
+    <text x="52" y="92" text-anchor="middle" fill="#22d3ee" font-size="11" font-weight="bold">↑ i</text>
+    <!-- List B header -->
+    <text x="30" y="120" fill="#22d3ee" font-size="11" font-weight="bold">'python' → [0, 2, 3, 5, 8]</text>
+    <!-- List B cells -->
+    <rect x="30" y="130" width="45" height="35" rx="5" fill="rgba(34,211,238,0.1)" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="52" y="152" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold">0</text>
+    <rect x="80" y="130" width="45" height="35" rx="5" fill="rgba(34,211,238,0.06)" stroke="#22d3ee" stroke-width="1" opacity="0.5"/>
+    <text x="102" y="152" text-anchor="middle" fill="#9a93b8" font-size="12">2</text>
+    <rect x="130" y="130" width="45" height="35" rx="5" fill="rgba(34,211,238,0.06)" stroke="#22d3ee" stroke-width="1" opacity="0.5"/>
+    <text x="152" y="152" text-anchor="middle" fill="#9a93b8" font-size="12">3</text>
+    <rect x="180" y="130" width="45" height="35" rx="5" fill="rgba(34,211,238,0.06)" stroke="#22d3ee" stroke-width="1" opacity="0.5"/>
+    <text x="202" y="152" text-anchor="middle" fill="#9a93b8" font-size="12">5</text>
+    <rect x="230" y="130" width="45" height="35" rx="5" fill="rgba(34,211,238,0.06)" stroke="#22d3ee" stroke-width="1" opacity="0.5"/>
+    <text x="252" y="152" text-anchor="middle" fill="#9a93b8" font-size="12">8</text>
+    <!-- Pointer j -->
+    <text x="52" y="182" text-anchor="middle" fill="#22d3ee" font-size="11" font-weight="bold">↑ j</text>
+    <!-- Match highlight -->
+    <rect x="25" y="35" width="55" height="135" rx="8" fill="none" stroke="#52c41a" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="280" y="80" fill="#52c41a" font-size="11" font-weight="bold">← MATCH!</text>
+    <text x="280" y="95" fill="#52c41a" font-size="9">a[0]==b[0] → save, advance both</text>
+    <!-- Result -->
+    <rect x="30" y="210" width="500" height="55" rx="8" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
+    <text x="45" y="230" fill="#52c41a" font-size="10" font-weight="bold">Result: [0, 2, 5]</text>
+    <text x="45" y="247" fill="#9a93b8" font-size="9">Step 1: 0==0 ✓ → Step 2: 1&lt;2 → i++ → Step 3: 2==2 ✓ → Step 4: 5&lt;5→skip → Step 5: 5==5 ✓</text>
+    <text x="45" y="259" fill="#9a93b8" font-size="9">O(n+m) = 5+5 = 10 steps — vs O(n×m) = 25 steps</text>
+  </svg>
+  <div class="diag-cap">দুটো pointer একসাথে হাঁটে — ছোটটা এগোয়, match হলে save। O(n+m) — nested loop O(n×m) নয়।</div>
+</div>
 <div class="dialogue en">Book 2 calligrapher ruler (Door 13) taught you two pointers. Now you see why this saves lives in a search engine? AND query is the most common search — users type two words. Each AND query runs in O(n+m) — not nested loops.</div>
 
 <div class="secret-box">🔀 AND query = two-pointer intersection। Sorted lists, দুটো pointer, O(n+m)। ছোটটা এগোয়, match হলে save।</div>
