@@ -98,6 +98,60 @@ for page, score in sorted(scores.items(), key=lambda x: -x[1]):
 # AND about.html links to it. Quality links matter!</div>
 
 <div class="dialogue">দাউদ মানচিত্র গুটিয়ে নিলেন। PageRank শুধু link count নয় — link quality। একটা page গুরুত্বপূর্ণ কারণ গুরুত্বপূর্ণ page তাকে link করে। এটাই Google-কে Google বানিয়েছে। Book ৩৫ (Distributed Systems) Door ৭-এ consensus algorithm দেখবে — একই নীতি: কে তোমাকে support করছে তা গুরুত্বপূর্ণ।</div>
+
+<div class="diagram">
+  <div class="diag-title">PageRank — Score প্রবাহ: গুরুত্বপূর্ণ Page থেকে Link = বেশি দাম</div>
+  <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrPR" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#f97316"/></marker>
+      <marker id="arrPR2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#22d3ee"/></marker>
+    </defs>
+    <!-- Nodes -->
+    <!-- Home (high score) -->
+    <circle cx="100" cy="80" r="35" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="2.5"/>
+    <text x="100" y="78" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">home</text>
+    <text x="100" y="92" text-anchor="middle" fill="#fbbf24" font-size="9">PR=0.35</text>
+    <!-- Blog (medium) -->
+    <circle cx="280" cy="50" r="30" fill="rgba(249,115,22,0.12)" stroke="#f97316" stroke-width="2"/>
+    <text x="280" y="48" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">blog</text>
+    <text x="280" y="60" text-anchor="middle" fill="#9a93b8" font-size="8">PR=0.29</text>
+    <!-- About -->
+    <circle cx="100" cy="200" r="28" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="100" y="198" text-anchor="middle" fill="#fbbf24" font-size="10">about</text>
+    <text x="100" y="210" text-anchor="middle" fill="#9a93b8" font-size="8">PR=0.22</text>
+    <!-- Post (low) -->
+    <circle cx="280" cy="200" r="24" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1"/>
+    <text x="280" y="198" text-anchor="middle" fill="#9a93b8" font-size="9">post</text>
+    <text x="280" y="210" text-anchor="middle" fill="#6b6588" font-size="8">PR=0.14</text>
+    <!-- Spam (dashed, low score) -->
+    <circle cx="460" cy="200" r="24" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <text x="460" y="198" text-anchor="middle" fill="#ef4444" font-size="9">spam</text>
+    <text x="460" y="210" text-anchor="middle" fill="#ef4444" font-size="8">PR=0.01</text>
+    <!-- Edges (links) -->
+    <!-- blog → home (important link!) -->
+    <path d="M 255 55 Q 180 30 135 70" fill="none" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrPR)"/>
+    <text x="170" y="25" fill="#fbbf24" font-size="9" font-weight="bold">worth 0.29</text>
+    <!-- about → home -->
+    <line x1="100" y1="172" x2="100" y2="115" stroke="#f97316" stroke-width="2" marker-end="url(#arrPR)"/>
+    <!-- home → blog -->
+    <line x1="135" y1="70" x2="250" y2="52" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrPR)"/>
+    <!-- home → about -->
+    <line x1="100" y1="115" x2="100" y2="172" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrPR)"/>
+    <!-- blog → post -->
+    <line x1="280" y1="80" x2="280" y2="176" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrPR)"/>
+    <!-- spam → home (cheap link) -->
+    <path d="M 450 175 Q 300 120 135 85" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arrPR2)" opacity="0.4"/>
+    <text x="350" y="130" fill="#ef4444" font-size="8">worth 0.01 only</text>
+    <!-- Legend -->
+    <rect x="20" y="235" width="250" height="35" rx="6" fill="rgba(251,191,36,0.06)" stroke="rgba(251,191,36,0.2)" stroke-width="1"/>
+    <text x="30" y="252" fill="#fbbf24" font-size="9" font-weight="bold">home PR=0.35 = highest</text>
+    <text x="30" y="265" fill="#9a93b8" font-size="8">because blog (0.29) + about (0.22) link to it</text>
+    <rect x="290" y="235" width="250" height="35" rx="6" fill="rgba(239,68,68,0.06)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
+    <text x="300" y="252" fill="#ef4444" font-size="9" font-weight="bold">spam PR=0.01 = lowest</text>
+    <text x="300" y="265" fill="#9a93b8" font-size="8">low-quality links = low score transfer</text>
+  </svg>
+  <div class="diag-cap">PageRank flows through links। blog (PR=0.29) → home = বেশি দামি link। spam (PR=0.01) → home = সস্তা।</div>
+</div>
 <div class="dialogue en">Dawud rolled up the map. PageRank is not just link count — it is link quality. A page is important because important pages link to it. This is what made Google Google. Book 35 (Distributed Systems) Door 7 shows consensus algorithms — same principle: who supports you matters.</div>
 
 <div class="secret-box">🌐 PageRank = graph power iteration। গুরুত্ব = কার থেকে link পেলে, কতটা। শুধু count নয় — quality।</div>

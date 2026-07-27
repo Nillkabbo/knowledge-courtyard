@@ -85,6 +85,39 @@ print(f"  \"{snippet}...\"")
 #     has TWO matches + proximity = highest score</div>
 
 <div class="dialogue">Book ২-এর রেশম ব্যবসায়ীর ক্যারাভান (Door ১৪) greedy শিখিয়েছিলেন — প্রতিটা ধাপে সেরা স্থানীয় পছন্দ। এখন দেখলে কেন? সার্চ ইঞ্জিনে প্রতিটা ফলাফলের জন্য একটা snippet দরকার — দ্রুত। DP করলে পারফেক্ট হবে কিন্তু ধীর। Greedy যথেষ্ট — কারণ sentence-গুলো স্বাধীন। তবে মনে রাখবে: greedy score function-টাই সব। ভুল score = ভুল snippet।</div>
+
+<div class="diagram">
+  <div class="diag-title">Greedy Snippet Scoring — সেরা Sentence বাছাই</div>
+  <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+    <!-- Sentences as bars -->
+    <text x="20" y="25" fill="#fbbf24" font-size="10" font-weight="bold">Sentence Score</text>
+    <!-- S1 -->
+    <rect x="20" y="35" width="300" height="30" rx="5" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1"/>
+    <text x="25" y="54" fill="#9a93b8" font-size="9">Welcome to our search engine tutorial about algorithms</text>
+    <rect x="330" y="35" width="120" height="30" rx="4" fill="rgba(249,115,22,0.2)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="390" y="54" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">score: 6</text>
+    <!-- S2 - winner -->
+    <rect x="20" y="75" width="340" height="30" rx="5" fill="rgba(82,196,26,0.12)" stroke="#52c41a" stroke-width="2"/>
+    <text x="25" y="94" fill="#52c41a" font-size="9" font-weight="bold">We cover sorting algorithms, graph algorithms, and DP</text>
+    <rect x="370" y="75" width="150" height="30" rx="4" fill="rgba(82,196,26,0.25)" stroke="#52c41a" stroke-width="2"/>
+    <text x="445" y="94" text-anchor="middle" fill="#52c41a" font-size="11" font-weight="bold">score: 9 ✅</text>
+    <!-- S3 -->
+    <rect x="20" y="115" width="280" height="30" rx="5" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1"/>
+    <text x="25" y="134" fill="#9a93b8" font-size="9">Python code examples are provided</text>
+    <rect x="310" y="115" width="80" height="30" rx="4" fill="rgba(249,115,22,0.15)" stroke="#f97316" stroke-width="1"/>
+    <text x="350" y="134" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">score: 3</text>
+    <!-- S4 -->
+    <rect x="20" y="155" width="250" height="30" rx="5" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/>
+    <text x="25" y="174" fill="#6b6588" font-size="9">Start with Big-O analysis</text>
+    <rect x="280" y="155" width="60" height="30" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1" opacity="0.5"/>
+    <text x="310" y="174" text-anchor="middle" fill="#9a93b8" font-size="11">score: 0</text>
+    <!-- Winner annotation -->
+    <rect x="20" y="205" width="500" height="40" rx="8" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
+    <text x="35" y="222" fill="#52c41a" font-size="10" font-weight="bold">✅ Winner: sentence 2 (score 9)</text>
+    <text x="35" y="236" fill="#9a93b8" font-size="9">3 query terms × 3 points + proximity bonus = highest score → shown as snippet</text>
+  </svg>
+  <div class="diag-cap">Greedy: প্রতিটা sentence-কে আলাদাভাবে score করো, সর্বোচ্চ বাছো। দ্রুত — কারণ sentence-গুলো স্বাধীন।</div>
+</div>
 <div class="dialogue en">Book 2 silk merchant caravan (Door 14) taught you greedy — best local choice at each step. Now you see why? A search engine needs a snippet for every result — fast. DP would be perfect but slow. Greedy is enough — because sentences are independent. But remember: the greedy score function IS everything. Wrong score = wrong snippet.</div>
 
 <div class="secret-box">✂️ Snippet = greedy। প্রতিটা sentence-কে score করো, সর্বোচ্চ বাছো। দ্রুত, যথেষ্ট — কিন্তু score function-টাই সব।</div>
@@ -204,6 +237,83 @@ print(f"Did you mean: '{correction}'? (distance: {dist})")
 # Did you mean: 'algorithm'? (distance: 2)</div>
 
 <div class="dialogue">Book ২-এর মালির ধাপ (Door ১৫) DP শিখিয়েছিলেন — overlapping subproblems + optimal substructure। Levenshtein-এ দুটো শব্দের প্রতিটা prefix pair একটা সাবপ্রবলেম। সেই সাবপ্রবলেম-এর উত্তর আমরা table-এ রাখি — আর কখনো পুনরায় হিসাব করি না। এটাই memoization। Brute force O(3^n) থেকে DP O(n×m)-এ — কোটি গুণ দ্রুত।</div>
+
+<div class="diagram">
+  <div class="diag-title">DP Table — Levenshtein 'algortim' vs 'algorithm'</div>
+  <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+    <!-- Grid headers -->
+    <text x="120" y="25" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold">∅</text>
+    <text x="170" y="25" text-anchor="middle" fill="#a78bfa" font-size="10">a</text>
+    <text x="220" y="25" text-anchor="middle" fill="#a78bfa" font-size="10">l</text>
+    <text x="270" y="25" text-anchor="middle" fill="#a78bfa" font-size="10">g</text>
+    <text x="320" y="25" text-anchor="middle" fill="#a78bfa" font-size="10">o</text>
+    <text x="370" y="25" text-anchor="middle" fill="#a78bfa" font-size="10">r</text>
+    <text x="420" y="25" text-anchor="middle" fill="#a78bfa" font-size="10">i</text>
+    <text x="470" y="25" text-anchor="middle" fill="#a78bfa" font-size="10">t</text>
+    <text x="520" y="25" text-anchor="middle" fill="#a78bfa" font-size="10">h</text>
+    <text x="40" y="50" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="bold">∅</text>
+    <text x="40" y="75" text-anchor="middle" fill="#22d3ee" font-size="10">a</text>
+    <text x="40" y="100" text-anchor="middle" fill="#22d3ee" font-size="10">l</text>
+    <text x="40" y="125" text-anchor="middle" fill="#22d3ee" font-size="10">g</text>
+    <text x="40" y="150" text-anchor="middle" fill="#22d3ee" font-size="10">o</text>
+    <text x="40" y="175" text-anchor="middle" fill="#22d3ee" font-size="10">r</text>
+    <text x="40" y="200" text-anchor="middle" fill="#22d3ee" font-size="10">t</text>
+    <text x="40" y="225" text-anchor="middle" fill="#22d3ee" font-size="10">i</text>
+    <!-- Row 0 -->
+    <rect x="95" y="38" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="120" y="54" text-anchor="middle" fill="#9a93b8" font-size="10">0</text>
+    <rect x="145" y="38" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="170" y="54" text-anchor="middle" fill="#9a93b8" font-size="10">1</text>
+    <rect x="195" y="38" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="220" y="54" text-anchor="middle" fill="#9a93b8" font-size="10">2</text>
+    <rect x="245" y="38" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="270" y="54" text-anchor="middle" fill="#9a93b8" font-size="10">3</text>
+    <rect x="295" y="38" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="320" y="54" text-anchor="middle" fill="#9a93b8" font-size="10">4</text>
+    <rect x="345" y="38" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="370" y="54" text-anchor="middle" fill="#9a93b8" font-size="10">5</text>
+    <rect x="395" y="38" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="420" y="54" text-anchor="middle" fill="#9a93b8" font-size="10">6</text>
+    <rect x="445" y="38" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="470" y="54" text-anchor="middle" fill="#9a93b8" font-size="10">7</text>
+    <rect x="495" y="38" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="520" y="54" text-anchor="middle" fill="#9a93b8" font-size="10">8</text>
+    <!-- Row 1 (a) -->
+    <rect x="95" y="63" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="120" y="79" text-anchor="middle" fill="#9a93b8" font-size="10">1</text>
+    <rect x="145" y="63" width="50" height="24" rx="3" fill="rgba(82,196,26,0.12)" stroke="#52c41a" stroke-width="1"/><text x="170" y="79" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">0</text>
+    <rect x="195" y="63" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="220" y="79" text-anchor="middle" fill="#9a93b8" font-size="10">1</text>
+    <rect x="245" y="63" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="270" y="79" text-anchor="middle" fill="#9a93b8" font-size="10">2</text>
+    <rect x="295" y="63" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="320" y="79" text-anchor="middle" fill="#9a93b8" font-size="10">3</text>
+    <rect x="345" y="63" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="370" y="79" text-anchor="middle" fill="#9a93b8" font-size="10">4</text>
+    <rect x="395" y="63" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="420" y="79" text-anchor="middle" fill="#9a93b8" font-size="10">5</text>
+    <rect x="445" y="63" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="470" y="79" text-anchor="middle" fill="#9a93b8" font-size="10">6</text>
+    <rect x="495" y="63" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="520" y="79" text-anchor="middle" fill="#9a93b8" font-size="10">7</text>
+    <!-- Row 2 (l) -->
+    <rect x="95" y="88" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="120" y="104" text-anchor="middle" fill="#9a93b8" font-size="10">2</text>
+    <rect x="145" y="88" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="170" y="104" text-anchor="middle" fill="#9a93b8" font-size="10">1</text>
+    <rect x="195" y="88" width="50" height="24" rx="3" fill="rgba(82,196,26,0.12)" stroke="#52c41a" stroke-width="1"/><text x="220" y="104" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">0</text>
+    <rect x="245" y="88" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="270" y="104" text-anchor="middle" fill="#9a93b8" font-size="10">1</text>
+    <rect x="295" y="88" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="320" y="104" text-anchor="middle" fill="#9a93b8" font-size="10">2</text>
+    <rect x="345" y="88" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="370" y="104" text-anchor="middle" fill="#9a93b8" font-size="10">3</text>
+    <rect x="395" y="88" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="420" y="104" text-anchor="middle" fill="#9a93b8" font-size="10">4</text>
+    <rect x="445" y="88" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="470" y="104" text-anchor="middle" fill="#9a93b8" font-size="10">5</text>
+    <rect x="495" y="88" width="50" height="24" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/><text x="520" y="104" text-anchor="middle" fill="#9a93b8" font-size="10">6</text>
+    <!-- Row 3-5 condensed -->
+    <rect x="95" y="113" width="50" height="24" rx="3" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="0.5" opacity="0.5"/><text x="120" y="129" text-anchor="middle" fill="#6b6588" font-size="10">3</text>
+    <rect x="145" y="113" width="50" height="24" rx="3" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="0.5" opacity="0.5"/><text x="170" y="129" text-anchor="middle" fill="#6b6588" font-size="10">2</text>
+    <rect x="195" y="113" width="50" height="24" rx="3" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="0.5" opacity="0.5"/><text x="220" y="129" text-anchor="middle" fill="#6b6588" font-size="10">1</text>
+    <rect x="245" y="113" width="50" height="24" rx="3" fill="rgba(82,196,26,0.12)" stroke="#52c41a" stroke-width="1"/><text x="270" y="129" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">0</text>
+    <rect x="295" y="113" width="50" height="24" rx="3" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="0.5" opacity="0.5"/><text x="320" y="129" text-anchor="middle" fill="#6b6588" font-size="10">1</text>
+    <rect x="345" y="113" width="50" height="24" rx="3" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="0.5" opacity="0.5"/><text x="370" y="129" text-anchor="middle" fill="#6b6588" font-size="10">2</text>
+    <rect x="395" y="113" width="50" height="24" rx="3" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="0.5" opacity="0.5"/><text x="420" y="129" text-anchor="middle" fill="#6b6588" font-size="10">3</text>
+    <rect x="445" y="113" width="50" height="24" rx="3" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="0.5" opacity="0.5"/><text x="470" y="129" text-anchor="middle" fill="#6b6588" font-size="10">4</text>
+    <rect x="495" y="113" width="50" height="24" rx="3" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="0.5" opacity="0.5"/><text x="520" y="129" text-anchor="middle" fill="#6b6588" font-size="10">5</text>
+    <!-- Diagonal arrows showing fill direction -->
+    <defs><marker id="arrSm" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#fbbf24"/></marker></defs>
+    <line x1="170" y1="87" x2="195" y2="88" stroke="#fbbf24" stroke-width="1" opacity="0.5" marker-end="url(#arrSm)"/>
+    <line x1="220" y1="87" x2="245" y2="88" stroke="#fbbf24" stroke-width="1" opacity="0.5" marker-end="url(#arrSm)"/>
+    <line x1="270" y1="87" x2="295" y2="88" stroke="#fbbf24" stroke-width="1" opacity="0.5" marker-end="url(#arrSm)"/>
+    <!-- Legend -->
+    <rect x="20" y="160" width="250" height="35" rx="6" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
+    <text x="30" y="175" fill="#52c41a" font-size="9" font-weight="bold">🟩 = match (cost 0)</text>
+    <text x="30" y="188" fill="#9a93b8" font-size="9">cell[i][j] from min(left, up, diagonal) + 1</text>
+    <rect x="290" y="160" width="250" height="35" rx="6" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
+    <text x="300" y="175" fill="#a78bfa" font-size="9" font-weight="bold">O(n × m) = O(7 × 9) = 63 cells</text>
+    <text x="300" y="188" fill="#9a93b8" font-size="9">Brute force: O(3^9) = 19,683 paths</text>
+  </svg>
+  <div class="diag-cap">প্রতিটা cell = একটা সাবপ্রবলেম। match হলে diagonal copy, mismatch হলে ৩ neighbor-এর min+1।</div>
+</div>
 <div class="dialogue en">Book 2 gardener terraces (Door 15) taught you DP — overlapping subproblems + optimal substructure. In Levenshtein, each prefix pair of two words is a subproblem. We store the answer in a table — and never recompute. This is memoization. From brute force O(3^n) to DP O(n*m) — millions of times faster.</div>
 
 <div class="secret-box">🔤 Spell check = DP। cell[i][j] = word1[0:i] ও word2[0:j]-এর distance। ৩ neighbor থেকে min+1। O(n×m)।</div>
@@ -539,6 +649,56 @@ for url in test_urls:
 # This uses 1/8th the memory of a Python list of 0s and 1s.</div>
 
 <div class="dialogue">Book ২-এর পরচুলা-নকশা তাঁতি (Door ১৮) bit manipulation শিখিয়েছিলেন — AND, OR, XOR, shift। এখন দেখলে কেন? Bloom filter হলো bit array — প্রতিটা bit একটা স্লট। OR দিয়ে set করো, AND দিয়ে check করো। এটাই crawler-এর সবচেয়ে গুরুত্বপূর্ণ optimization — কারণ URL dedup ছাড়া crawler একই page বারবার fetch করবে।</div>
+
+<div class="diagram">
+  <div class="diag-title">Bloom Filter — Bit Array + k Hash Functions</div>
+  <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+    <!-- Input URL -->
+    <rect x="30" y="15" width="160" height="32" rx="6" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="110" y="35" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="bold">home.html</text>
+    <!-- Hash functions -->
+    <text x="230" y="28" fill="#fbbf24" font-size="10" font-weight="bold">h1 → bit 3</text>
+    <text x="230" y="42" fill="#22d3ee" font-size="10" font-weight="bold">h2 → bit 7</text>
+    <text x="230" y="56" fill="#52c41a" font-size="10" font-weight="bold">h3 → bit 11</text>
+    <!-- Arrows from URL to hashes -->
+    <line x1="190" y1="31" x2="220" y2="25" stroke="#fbbf24" stroke-width="1" opacity="0.6"/>
+    <line x1="190" y1="31" x2="220" y2="39" stroke="#22d3ee" stroke-width="1" opacity="0.6"/>
+    <line x1="190" y1="31" x2="220" y2="53" stroke="#52c41a" stroke-width="1" opacity="0.6"/>
+    <!-- Bit array -->
+    <text x="30" y="90" fill="#fbbf24" font-size="10" font-weight="bold">Bit Array (size=16)</text>
+    <!-- 16 bits -->
+    <rect x="30" y="100" width="28" height="35" rx="4" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/><text x="44" y="122" text-anchor="middle" fill="#6b6588" font-size="12">0</text>
+    <rect x="60" y="100" width="28" height="35" rx="4" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/><text x="74" y="122" text-anchor="middle" fill="#6b6588" font-size="12">0</text>
+    <rect x="90" y="100" width="28" height="35" rx="4" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/><text x="104" y="122" text-anchor="middle" fill="#6b6588" font-size="12">0</text>
+    <rect x="120" y="100" width="28" height="35" rx="4" fill="rgba(251,191,36,0.25)" stroke="#fbbf24" stroke-width="2"/><text x="134" y="122" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="bold">1</text>
+    <rect x="150" y="100" width="28" height="35" rx="4" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/><text x="164" y="122" text-anchor="middle" fill="#6b6588" font-size="12">0</text>
+    <rect x="180" y="100" width="28" height="35" rx="4" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/><text x="194" y="122" text-anchor="middle" fill="#6b6588" font-size="12">0</text>
+    <rect x="210" y="100" width="28" height="35" rx="4" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/><text x="224" y="122" text-anchor="middle" fill="#6b6588" font-size="12">0</text>
+    <rect x="240" y="100" width="28" height="35" rx="4" fill="rgba(34,211,238,0.25)" stroke="#22d3ee" stroke-width="2"/><text x="254" y="122" text-anchor="middle" fill="#22d3ee" font-size="14" font-weight="bold">1</text>
+    <rect x="270" y="100" width="28" height="35" rx="4" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/><text x="284" y="122" text-anchor="middle" fill="#6b6588" font-size="12">0</text>
+    <rect x="300" y="100" width="28" height="35" rx="4" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/><text x="314" y="122" text-anchor="middle" fill="#6b6588" font-size="12">0</text>
+    <rect x="330" y="100" width="28" height="35" rx="4" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/><text x="344" y="122" text-anchor="middle" fill="#6b6588" font-size="12">0</text>
+    <rect x="360" y="100" width="28" height="35" rx="4" fill="rgba(82,196,26,0.25)" stroke="#52c41a" stroke-width="2"/><text x="374" y="122" text-anchor="middle" fill="#52c41a" font-size="14" font-weight="bold">1</text>
+    <rect x="390" y="100" width="28" height="35" rx="4" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/><text x="404" y="122" text-anchor="middle" fill="#6b6588" font-size="12">0</text>
+    <rect x="420" y="100" width="28" height="35" rx="4" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/><text x="434" y="122" text-anchor="middle" fill="#6b6588" font-size="12">0</text>
+    <rect x="450" y="100" width="28" height="35" rx="4" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/><text x="464" y="122" text-anchor="middle" fill="#6b6588" font-size="12">0</text>
+    <rect x="480" y="100" width="28" height="35" rx="4" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1" opacity="0.5"/><text x="494" y="122" text-anchor="middle" fill="#6b6588" font-size="12">0</text>
+    <!-- Bit positions -->
+    <text x="44" y="150" text-anchor="middle" fill="#6b6588" font-size="8">0</text>
+    <text x="74" y="150" text-anchor="middle" fill="#6b6588" font-size="8">1</text>
+    <text x="104" y="150" text-anchor="middle" fill="#6b6588" font-size="8">2</text>
+    <text x="134" y="150" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">3</text>
+    <text x="254" y="150" text-anchor="middle" fill="#22d3ee" font-size="8" font-weight="bold">7</text>
+    <text x="374" y="150" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">11</text>
+    <!-- Check result -->
+    <rect x="30" y="170" width="480" height="65" rx="8" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
+    <text x="45" y="190" fill="#52c41a" font-size="10" font-weight="bold">might_contain('home.html') → True</text>
+    <text x="45" y="205" fill="#9a93b8" font-size="9">h1=3 ✓, h2=7 ✓, h3=11 ✓ → সব bit 1 → হয়তো visited</text>
+    <text x="45" y="220" fill="#ef4444" font-size="9">⚠️ False positive সম্ভব — অন্য URL-ও bit 3,7,11 set করতে পারে</text>
+    <text x="45" y="232" fill="#9a93b8" font-size="9">❌ False negative অসম্ভব — যদি কোনো bit 0 হতো, নিশ্চিত 'not seen'</text>
+  </svg>
+  <div class="diag-cap">3 hash → 3 bits set। সব 1 = হয়তো আছে (false positive সম্ভব)। কোনো 0 = নিশ্চিত নতুন।</div>
+</div>
 <div class="dialogue en">Book 2 pattern-card weaver (Door 18) taught you bit manipulation — AND, OR, XOR, shift. Now you see why? A Bloom filter IS a bit array — each bit is a slot. OR to set, AND to check. This is the crawler most important optimization — without URL dedup, the crawler fetches the same page forever.</div>
 
 <div class="secret-box">🃏 Bloom filter = bit array + k hashes। All 1? হয়তো আছে। Any 0? নিশ্চিত নেই। False positive সম্ভব, false negative কখনো নয়।</div>
