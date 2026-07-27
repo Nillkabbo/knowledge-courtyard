@@ -355,7 +355,7 @@ def linear_search(items, target):
 
 <div class="diagram">
   <div class="diag-title">Binary Search — প্রতি ধাপে অর্ধেক বাদ দাও, O(log n)</div>
-  <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 660 240" xmlns="http://www.w3.org/2000/svg">
     <!-- Sorted array -->
     <text x="20" y="20" fill="#fbbf24" font-size="10" font-weight="bold">Sorted terms (find 'index'):</text>
     <!-- Step 1: full range -->
@@ -380,8 +380,8 @@ def linear_search(items, target):
     <rect x="436" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="448" y="65" text-anchor="middle" fill="#6b6588" font-size="8">src</text>
     <rect x="462" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="474" y="65" text-anchor="middle" fill="#6b6588" font-size="8">tri</text>
     <rect x="488" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="500" y="65" text-anchor="middle" fill="#6b6588" font-size="8">upd</text>
-    <text x="530" y="55" fill="#ef4444" font-size="9" font-weight="bold">'key' > 'index'</text>
-    <text x="530" y="67" fill="#9a93b8" font-size="8">→ discard right!</text>
+    <text x="570" y="55" fill="#ef4444" font-size="8" font-weight="bold">'key'>'index'</text>
+    <text x="570" y="67" fill="#9a93b8" font-size="7">discard right</text>
     <!-- Step 2 -->
     <text x="20" y="100" fill="#9a93b8" font-size="9">Step 2: lo=0, hi=8, mid=4 → 'dat' &lt; 'index' → discard left!</text>
     <rect x="20" y="108" width="25" height="25" rx="3" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,1" opacity="0.3"/>
@@ -528,7 +528,7 @@ for term in sorted(final_index.keys())[:5]:
 
 <div class="diagram">
   <div class="diag-title">MapReduce Pipeline — Split → Parallel Map → Merge</div>
-  <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg">
     <defs><marker id="arrMR" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#f97316"/></marker></defs>
     <!-- Input corpus -->
     <rect x="20" y="115" width="80" height="50" rx="8" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5"/>
@@ -570,8 +570,8 @@ for term in sorted(final_index.keys())[:5]:
     <text x="195" y="30" text-anchor="middle" fill="#f97316" font-size="10" font-weight="bold">MAP (divide)</text>
     <text x="360" y="100" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">REDUCE (combine)</text>
     <!-- Timing -->
-    <rect x="20" y="245" width="530" height="30" rx="6" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
-    <text x="35" y="263" fill="#a78bfa" font-size="9" font-weight="bold">1 machine: 40 hours → 4 machines: 10 hours → 40 machines: 1 hour → 1000 machines: minutes</text>
+    <rect x="20" y="245" width="550" height="30" rx="6" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
+    <text x="35" y="263" fill="#a78bfa" font-size="8" font-weight="bold">1 machine: 40h → 4 machines: 10h → 40 machines: 1h → 1000: minutes</text>
   </svg>
   <div class="diag-cap">MapReduce: corpus → split → parallel workers → merge। O(n/p), p = machines।</div>
 </div>

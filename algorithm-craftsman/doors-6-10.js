@@ -429,7 +429,7 @@ print(f"Matching docs: {results}")  # [0, 1]
 
 <div class="diagram">
   <div class="diag-title">Backtracking Wildcard — 'algorithm * sorting' পথ অন্বেষণ</div>
-  <svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 640 290" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <marker id="arrBT" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6" fill="#f97316"/></marker>
       <marker id="arrBack" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6" fill="#ef4444"/></marker>
@@ -474,9 +474,9 @@ print(f"Matching docs: {results}")  # [0, 1]
     <path d="M 260 138 Q 190 115 165 102" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,2" opacity="0.5" marker-end="url(#arrBack)"/>
     <path d="M 260 193 Q 190 145 165 105" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,2" opacity="0.5" marker-end="url(#arrBack)"/>
     <!-- Result -->
-    <rect x="360" y="245" width="180" height="35" rx="6" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
-    <text x="450" y="262" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">3 dead ends tried, then MATCH</text>
-    <text x="450" y="274" text-anchor="middle" fill="#9a93b8" font-size="8">Pruning: skip paths early if no hope</text>
+    <rect x="360" y="245" width="200" height="35" rx="6" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
+    <text x="460" y="262" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">3 dead ends → MATCH</text>
+    <text x="460" y="274" text-anchor="middle" fill="#9a93b8" font-size="7">Pruning cuts hopeless paths</text>
   </svg>
   <div class="diag-cap">Wildcards = try 0, 1, 2, 3... skip words। মৃত প্রান্তে ফিরো, নতুন path চেষ্টা করো।</div>
 </div>
@@ -600,7 +600,7 @@ print(f"Found at positions: {matches}")
 
 <div class="diagram">
   <div class="diag-title">KMP vs Naive — Failure Function কীভাবে ফিরে না গিয়ে চালায়</div>
-  <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg">
     <!-- Naive search -->
     <text x="20" y="25" fill="#ef4444" font-size="11" font-weight="bold">❌ Naive: O(n×m) — mismatch হলে শূন্যে ফেরা</text>
     <rect x="20" y="35" width="520" height="24" rx="4" fill="rgba(239,68,68,0.04)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>

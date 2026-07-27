@@ -462,7 +462,7 @@ for rank, (score, doc_id) in enumerate(top10, 1):
 
 <div class="diagram">
   <div class="diag-title">Min-Heap Top-K Ranking — Keep Best 3 Results</div>
-  <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg">
     <!-- Heap tree (min-heap, K=3) -->
     <text x="280" y="20" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">Min-Heap (K=3) — root = weakest score</text>
     <!-- Root = smallest score (will be evicted first) -->
@@ -486,11 +486,11 @@ for rank, (score, doc_id) in enumerate(top10, 1):
     <text x="190" y="120" fill="#52c41a" font-size="9" font-weight="bold">88 > 42</text>
     <text x="190" y="132" fill="#52c41a" font-size="8">replace root!</text>
     <!-- After replacement -->
-    <rect x="420" y="170" width="130" height="70" rx="8" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
-    <text x="485" y="188" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">After heapreplace:</text>
-    <text x="485" y="202" text-anchor="middle" fill="#9a93b8" font-size="9">Heap = {78, 88, 95}</text>
-    <text x="485" y="216" text-anchor="middle" fill="#9a93b8" font-size="9">42 evicted (too weak)</text>
-    <text x="485" y="230" text-anchor="middle" fill="#fbbf24" font-size="9">O(n log k), not O(n log n)</text>
+    <rect x="420" y="170" width="150" height="70" rx="8" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
+    <text x="495" y="188" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">After heapreplace:</text>
+    <text x="495" y="202" text-anchor="middle" fill="#9a93b8" font-size="8">Heap = {78, 88, 95}</text>
+    <text x="495" y="216" text-anchor="middle" fill="#9a93b8" font-size="8">42 evicted</text>
+    <text x="495" y="230" text-anchor="middle" fill="#fbbf24" font-size="8">O(n log k)</text>
   </svg>
   <div class="diag-cap">Min-heap root = সবচেয়ে কম score। নতুন score > root হলে replace। শেষে heap-এ সেরা Kটা।</div>
 </div>
@@ -784,7 +784,7 @@ for suggestion in trie.autocomplete('py'):
 
 <div class="diagram">
   <div class="diag-title">Trie Autocomplete — 'algo' টাইপ করলে সব Suggestion</div>
-  <svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 640 290" xmlns="http://www.w3.org/2000/svg">
     <!-- Root -->
     <circle cx="80" cy="145" r="20" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="2"/>
     <text x="80" y="150" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="bold">root</text>
@@ -816,17 +816,17 @@ for suggestion in trie.autocomplete('py'):
     <circle cx="485" cy="22" r="14" fill="rgba(82,196,26,0.1)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="485" y="26" text-anchor="middle" fill="#52c41a" font-size="10">i</text>
     <line x1="499" y1="22" x2="515" y2="22" stroke="#52c41a" stroke-width="1" opacity="0.5"/>
-    <text x="535" y="26" fill="#52c41a" font-size="9" font-weight="bold">→ algorithm ✓</text>
+    <text x="510" y="26" fill="#52c41a" font-size="7" font-weight="bold">→ algorithm ✓</text>
     <!-- s (algorithms) -->
     <line x1="395" y1="42" x2="430" y2="55" stroke="#22d3ee" stroke-width="1.5"/>
     <circle cx="440" cy="58" r="14" fill="rgba(34,211,238,0.1)" stroke="#22d3ee" stroke-width="1.5"/>
     <text x="440" y="62" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="bold">s</text>
-    <text x="535" y="62" fill="#22d3ee" font-size="9" font-weight="bold">→ algorithms ✓</text>
+    <text x="510" y="62" fill="#22d3ee" font-size="7" font-weight="bold">→ algorithms ✓</text>
     <!-- r-i-t-h-m-i-c (algorithmic) -->
     <line x1="395" y1="48" x2="430" y2="90" stroke="#a78bfa" stroke-width="1.5"/>
     <circle cx="440" cy="95" r="14" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1.5"/>
     <text x="440" y="99" text-anchor="middle" fill="#a78bfa" font-size="10">r</text>
-    <text x="535" y="99" fill="#a78bfa" font-size="9" font-weight="bold">→ algorithmic ✓</text>
+    <text x="510" y="99" fill="#a78bfa" font-size="7" font-weight="bold">→ algorithmic ✓</text>
     <!-- Other branches from root -->
     <line x1="100" y1="150" x2="150" y2="190" stroke="#f97316" stroke-width="1" opacity="0.3"/>
     <circle cx="165" cy="195" r="14" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/>

@@ -443,7 +443,7 @@ print(f"'algorithm' appears in {pl_algorithm.size} docs")
 
 <div class="diagram">
   <div class="diag-title">Linked List Posting List — প্রতিটা Node-এ Pointer</div>
-  <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 580 220" xmlns="http://www.w3.org/2000/svg">
     <defs><marker id="arrowOrange" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#f97316"/></marker></defs>
     <!-- Term label -->
     <rect x="10" y="80" width="100" height="40" rx="8" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5"/>
@@ -477,8 +477,8 @@ print(f"'algorithm' appears in {pl_algorithm.size} docs")
     <text x="435" y="115" text-anchor="middle" fill="#9a93b8" font-size="8">null</text>
     <!-- Append annotation -->
     <rect x="150" y="155" width="300" height="40" rx="8" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
-    <text x="300" y="172" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">Append doc 3 = O(1): tail.next → new node</text>
-    <text x="300" y="186" text-anchor="middle" fill="#9a93b8" font-size="9">কোনো shift লাগে না — শেষ node-এর pointer আডজাস্ট করো</text>
+    <text x="300" y="172" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">Append doc 3 = O(1)</text>
+    <text x="300" y="186" text-anchor="middle" fill="#9a93b8" font-size="8">শেষ node-এর pointer আডজাস্ট</text>
   </svg>
   <div class="diag-cap">Posting list: term → [doc 0] → [doc 1] → [doc 2] → null। প্রতিটা node পরেরটার pointer ধরে। O(1) append।</div>
 </div>
@@ -575,7 +575,7 @@ print(f"algorithm AND python -> docs: {results}")
 
 <div class="diagram">
   <div class="diag-title">Two-Pointer AND Query Walk — O(n+m) Intersection</div>
-  <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg">
     <!-- List A header -->
     <text x="30" y="30" fill="#fbbf24" font-size="11" font-weight="bold">'algorithm' → [0, 1, 2, 5, 7]</text>
     <!-- List A cells -->
@@ -613,8 +613,8 @@ print(f"algorithm AND python -> docs: {results}")
     <!-- Result -->
     <rect x="30" y="210" width="500" height="55" rx="8" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
     <text x="45" y="230" fill="#52c41a" font-size="10" font-weight="bold">Result: [0, 2, 5]</text>
-    <text x="45" y="247" fill="#9a93b8" font-size="9">Step 1: 0==0 ✓ → Step 2: 1&lt;2 → i++ → Step 3: 2==2 ✓ → Step 4: 5&lt;5→skip → Step 5: 5==5 ✓</text>
-    <text x="45" y="259" fill="#9a93b8" font-size="9">O(n+m) = 5+5 = 10 steps — vs O(n×m) = 25 steps</text>
+    <text x="45" y="247" fill="#9a93b8" font-size="8">Step1: 0==0 ✓ → Step2: 1&lt;2 i++ → Step3: 2==2 ✓</text>
+    <text x="45" y="259" fill="#9a93b8" font-size="8">O(n+m) = 10 steps — vs O(n×m) = 25 steps</text>
   </svg>
   <div class="diag-cap">দুটো pointer একসাথে হাঁটে — ছোটটা এগোয়, match হলে save। O(n+m) — nested loop O(n×m) নয়।</div>
 </div>
