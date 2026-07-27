@@ -426,6 +426,60 @@ print(f"Matching docs: {results}")  # [0, 1]
 # Matching docs: [0, 1]</div>
 
 <div class="dialogue">Book ২-এর অলিগলির পথিক (Door ১৬) backtracking শিখিয়েছিলেন — একটা পথ বেছো, শেষ পর্যন্ত যাও, মৃত প্রান্তে ফিরে এসো। এখন দেখলে সার্চ ইঞ্জিনে wildcard query-তে এটা কেন দরকার? কারণ '*'-এর অর্থ অস্পষ্ট — কতগুলো শব্দ? সব সম্ভাবনা চেষ্টা করতে হয়। কিন্তু প্রতিটা ধাপে pruning — যদি বর্তমান পথে কোনো আশা না থাকে, ফিরে এসো।</div>
+
+<div class="diagram">
+  <div class="diag-title">Backtracking Wildcard — 'algorithm * sorting' পথ অন্বেষণ</div>
+  <svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrBT" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6" fill="#f97316"/></marker>
+      <marker id="arrBack" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6" fill="#ef4444"/></marker>
+    </defs>
+    <!-- Level labels -->
+    <text x="15" y="45" fill="#6b6588" font-size="9">pattern:</text>
+    <text x="15" y="65" fill="#fbbf24" font-size="10" font-weight="bold">algorithm</text>
+    <text x="15" y="100" fill="#a78bfa" font-size="10" font-weight="bold">*</text>
+    <text x="15" y="135" fill="#fbbf24" font-size="10" font-weight="bold">sorting</text>
+    <!-- Pattern positions -->
+    <rect x="70" y="48" width="90" height="30" rx="6" fill="rgba(251,191,36,0.12)" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="115" y="67" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">'algorithm'</text>
+    <rect x="70" y="83" width="90" height="30" rx="6" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <text x="115" y="102" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold">'*' wildcard</text>
+    <rect x="70" y="118" width="90" height="30" rx="6" fill="rgba(251,191,36,0.12)" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="115" y="137" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">'sorting'</text>
+    <!-- Decision tree from wildcard -->
+    <!-- * matches 0 words -->
+    <line x1="160" y1="98" x2="200" y2="55" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrBT)"/>
+    <rect x="205" y="40" width="110" height="30" rx="5" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="260" y="59" text-anchor="middle" fill="#ef4444" font-size="9">skip 0 words</text>
+    <text x="260" y="83" fill="#ef4444" font-size="8">→ 'is' ≠ 'sorting' ✗ backtrack</text>
+    <!-- * matches 1 word -->
+    <line x1="160" y1="98" x2="200" y2="110" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrBT)"/>
+    <rect x="205" y="95" width="110" height="30" rx="5" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="260" y="114" text-anchor="middle" fill="#ef4444" font-size="9">skip 1: 'is'</text>
+    <text x="260" y="138" fill="#ef4444" font-size="8">→ 'used' ≠ 'sorting' ✗</text>
+    <!-- * matches 2 words -->
+    <line x1="160" y1="98" x2="200" y2="165" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrBT)"/>
+    <rect x="205" y="150" width="110" height="30" rx="5" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="260" y="169" text-anchor="middle" fill="#ef4444" font-size="9">skip 2: 'is used'</text>
+    <text x="260" y="193" fill="#ef4444" font-size="8">→ 'for' ≠ 'sorting' ✗</text>
+    <!-- * matches 3 words -->
+    <line x1="160" y1="98" x2="200" y2="220" stroke="#52c41a" stroke-width="2" marker-end="url(#arrBT)"/>
+    <rect x="205" y="205" width="110" height="30" rx="5" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="2"/>
+    <text x="260" y="224" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">skip 3: 'is used for'</text>
+    <line x1="315" y1="220" x2="355" y2="220" stroke="#52c41a" stroke-width="2" marker-end="url(#arrBT)"/>
+    <rect x="360" y="205" width="120" height="30" rx="5" fill="rgba(82,196,26,0.2)" stroke="#52c41a" stroke-width="2.5"/>
+    <text x="420" y="224" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">→ 'sorting' ✓ MATCH!</text>
+    <!-- Backtrack arrows -->
+    <path d="M 260 83 Q 190 85 165 100" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,2" opacity="0.5" marker-end="url(#arrBack)"/>
+    <path d="M 260 138 Q 190 115 165 102" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,2" opacity="0.5" marker-end="url(#arrBack)"/>
+    <path d="M 260 193 Q 190 145 165 105" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,2" opacity="0.5" marker-end="url(#arrBack)"/>
+    <!-- Result -->
+    <rect x="360" y="245" width="180" height="35" rx="6" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
+    <text x="450" y="262" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">3 dead ends tried, then MATCH</text>
+    <text x="450" y="274" text-anchor="middle" fill="#9a93b8" font-size="8">Pruning: skip paths early if no hope</text>
+  </svg>
+  <div class="diag-cap">Wildcards = try 0, 1, 2, 3... skip words। মৃত প্রান্তে ফিরো, নতুন path চেষ্টা করো।</div>
+</div>
 <div class="dialogue en">Book 2 alley explorer (Door 16) taught you backtracking — choose a path, go to the end, return from dead ends. Now you see why search engines need it for wildcard queries? Because '*' is ambiguous — how many words? All possibilities must be tried. But pruning at each step — if the current path has no hope, return.</div>
 
 <div class="secret-box">🧭 Wildcard query = backtracking। একটা পথ চেষ্টা করো, মৃত প্রান্তে ফিরো, অন্য পথ চেষ্টা করো। Pruning ছাড়া এটা O(2^n)।</div>
@@ -543,6 +597,37 @@ print(f"Found at positions: {matches}")
 # Found at positions: [0, 47]</div>
 
 <div class="dialogue">Book ২-এর নকল-নির্দেশকের গ্রন্থাগার (Door ১৭) KMP ও Rabin-Karp শিখিয়েছিলেন। এখন দেখলে সার্চ ইঞ্জিনে phrase match-এ কেন এটা জরুরি? ইউজার যখন quotation দেয় — "machine learning" — তখন তার মানে exact phrase। Naive search O(n×m) — ধীর। KMP: failure function দিয়ে জানো কোথায় ফিরতে হবে, শূন্যে নয়। O(n+m)।</div>
+
+<div class="diagram">
+  <div class="diag-title">KMP vs Naive — Failure Function কীভাবে ফিরে না গিয়ে চালায়</div>
+  <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+    <!-- Naive search -->
+    <text x="20" y="25" fill="#ef4444" font-size="11" font-weight="bold">❌ Naive: O(n×m) — mismatch হলে শূন্যে ফেরা</text>
+    <rect x="20" y="35" width="520" height="24" rx="4" fill="rgba(239,68,68,0.04)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
+    <text x="30" y="52" fill="#9a93b8" font-size="9" font-family="monospace">text:  a a a a a b c d e f</text>
+    <rect x="20" y="63" width="520" height="20" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1"/>
+    <text x="30" y="77" fill="#ef4444" font-size="9" font-family="monospace">try1: a a a b ← mismatch at pos 3! → restart from pos 1</text>
+    <rect x="20" y="87" width="520" height="20" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1"/>
+    <text x="30" y="101" fill="#ef4444" font-size="9" font-family="monospace">try2:   a a a b ← mismatch again! → restart from pos 2</text>
+    <text x="30" y="118" fill="#ef4444" font-size="9">... প্রতিবার শূন্য থেকে শুরু — আগের match তথ্য নষ্ট!</text>
+    <!-- KMP -->
+    <text x="20" y="150" fill="#52c41a" font-size="11" font-weight="bold">✅ KMP: O(n+m) — failure function দিয়ে smart backtrack</text>
+    <!-- LPS array -->
+    <text x="20" y="170" fill="#fbbf24" font-size="9" font-weight="bold">LPS (failure function) for 'aaab':</text>
+    <rect x="200" y="158" width="35" height="22" rx="3" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1"/><text x="217" y="173" text-anchor="middle" fill="#fbbf24" font-size="10" font-family="monospace">a:0</text>
+    <rect x="238" y="158" width="35" height="22" rx="3" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1"/><text x="255" y="173" text-anchor="middle" fill="#fbbf24" font-size="10" font-family="monospace">a:1</text>
+    <rect x="276" y="158" width="35" height="22" rx="3" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1"/><text x="293" y="173" text-anchor="middle" fill="#fbbf24" font-size="10" font-family="monospace">a:2</text>
+    <rect x="314" y="158" width="35" height="22" rx="3" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1"/><text x="331" y="173" text-anchor="middle" fill="#fbbf24" font-size="10" font-family="monospace">b:0</text>
+    <text x="360" y="170" fill="#9a93b8" font-size="8">↑ mismatch at 'b': jump to lps[2]=2, not 0</text>
+    <!-- KMP walk -->
+    <rect x="20" y="190" width="520" height="20" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
+    <text x="30" y="204" fill="#52c41a" font-size="9" font-family="monospace">match a,a,a → mismatch 'b'≠'a' → lps says: keep 2 matched, try from j=2</text>
+    <rect x="20" y="214" width="520" height="20" rx="4" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1"/>
+    <text x="30" y="228" fill="#52c41a" font-size="9" font-family="monospace">text pointer stays! pattern jumps smart — no character re-checked</text>
+    <text x="30" y="245" fill="#52c41a" font-size="9" font-weight="bold">Total: O(n+m) = O(10+4) = 14 steps — vs naive O(10×4) = 40</text>
+  </svg>
+  <div class="diag-cap">KMP: mismatch হলে শূন্যে ফিরো না। LPS বলে কতটা match হয়েছে — সেখান থেকে শুরু করো।</div>
+</div>
 <div class="dialogue en">Book 2 concord maker library (Door 17) taught you KMP and Rabin-Karp. Now you see why phrase matching matters in search? When users use quotation marks — "machine learning" — they want the exact phrase. Naive search is O(n*m) — slow. KMP: the failure function tells you where to resume, not zero. O(n+m).</div>
 
 <div class="secret-box">📏 Phrase match = KMP। Failure function বলে কতটা match হয়েছে — সেখান থেকে শুরু করো, শূন্য থেকে নয়। O(n+m)।</div>

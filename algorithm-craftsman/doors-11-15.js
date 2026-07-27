@@ -129,6 +129,59 @@ crawl_bfs('home', web)
 #   📄 home, about, blog, contact, team, post1, post2</div>
 
 <div class="dialogue">Book ২-এর কাফেলার সারি (Door ৫) stack ও queue শিখিয়েছিলেন — LIFO ও FIFO। এখন দেখলে সার্চ ইঞ্জিনে দুটোই দরকার: stack দিয়ে query validate করো, queue দিয়ে crawler BFS-এ চালাও। DFS (recursion, Door ২) গভীরে যায়, BFS (queue) প্রশস্ত হয়। সার্চ ইঞ্জিনে দুটোই ব্যবহৃত হয়।</div>
+
+<div class="diagram">
+  <div class="diag-title">Stack (LIFO) vs Queue (FIFO) — দুটো ভিন্ন নিয়ম</div>
+  <svg viewBox="0 0 560 270" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="arrSQ" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6" fill="#f97316"/></marker></defs>
+    <!-- Stack (left) -->
+    <text x="120" y="25" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">Stack (LIFO)</text>
+    <text x="120" y="40" text-anchor="middle" fill="#9a93b8" font-size="9">শেষে রাখা প্রথম বেরোয়</text>
+    <!-- Stack base -->
+    <rect x="60" y="200" width="120" height="25" rx="4" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1"/>
+    <text x="120" y="217" text-anchor="middle" fill="#9a93b8" font-size="9">(</text>
+    <rect x="60" y="170" width="120" height="25" rx="4" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="120" y="187" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">( algorithm</text>
+    <rect x="60" y="140" width="120" height="25" rx="4" fill="rgba(249,115,22,0.15)" stroke="#f97316" stroke-width="2"/>
+    <text x="120" y="157" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">( python AND</text>
+    <!-- Push/pop arrows -->
+    <line x1="200" y1="50" x2="185" y2="140" stroke="#52c41a" stroke-width="2" marker-end="url(#arrSQ)"/>
+    <text x="210" y="60" fill="#52c41a" font-size="9" font-weight="bold">push (</text>
+    <line x1="185" y1="140" x2="200" y2="50" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrSQ)" opacity="0.6"/>
+    <text x="210" y="110" fill="#ef4444" font-size="9" font-weight="bold">pop → )</text>
+    <!-- Queue (right) -->
+    <text x="400" y="25" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold">Queue (FIFO)</text>
+    <text x="400" y="40" text-anchor="middle" fill="#9a93b8" font-size="9">যে আগে এসেছে সে আগে যায়</text>
+    <!-- Queue cells -->
+    <rect x="320" y="120" width="50" height="30" rx="4" fill="rgba(34,211,238,0.15)" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="345" y="140" text-anchor="middle" fill="#22d3ee" font-size="9" font-weight="bold">home</text>
+    <rect x="370" y="120" width="50" height="30" rx="4" fill="rgba(34,211,238,0.1)" stroke="#22d3ee" stroke-width="1"/>
+    <text x="395" y="140" text-anchor="middle" fill="#22d3ee" font-size="9">about</text>
+    <rect x="420" y="120" width="50" height="30" rx="4" fill="rgba(34,211,238,0.08)" stroke="#22d3ee" stroke-width="1" opacity="0.7"/>
+    <text x="445" y="140" text-anchor="middle" fill="#22d3ee" font-size="9">blog</text>
+    <rect x="470" y="120" width="50" height="30" rx="4" fill="rgba(34,211,238,0.06)" stroke="#22d3ee" stroke-width="1" opacity="0.5"/>
+    <text x="495" y="140" text-anchor="middle" fill="#9a93b8" font-size="9">+new</text>
+    <!-- Enqueue (back) -->
+    <line x1="520" y1="90" x2="500" y2="120" stroke="#52c41a" stroke-width="2" marker-end="url(#arrSQ)"/>
+    <text x="510" y="85" fill="#52c41a" font-size="8" font-weight="bold">enqueue</text>
+    <!-- Dequeue (front) -->
+    <line x1="320" y1="150" x2="305" y2="175" stroke="#ef4444" stroke-width="2" marker-end="url(#arrSQ)"/>
+    <text x="270" y="185" fill="#ef4444" font-size="8" font-weight="bold">dequeue</text>
+    <!-- Labels -->
+    <text x="345" y="165" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="bold">FRONT</text>
+    <text x="495" y="110" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">BACK</text>
+    <!-- Use cases -->
+    <rect x="20" y="210" width="250" height="50" rx="6" fill="rgba(251,191,36,0.06)" stroke="rgba(251,191,36,0.2)" stroke-width="1"/>
+    <text x="30" y="227" fill="#fbbf24" font-size="9" font-weight="bold">Stack: query bracket matching</text>
+    <text x="30" y="240" fill="#9a93b8" font-size="8">( → push, ) → pop → check balance</text>
+    <text x="30" y="252" fill="#9a93b8" font-size="8">LIFO: সবচেয়ে ভেতরের bracket আগে বন্ধ</text>
+    <rect x="290" y="210" width="250" height="50" rx="6" fill="rgba(34,211,238,0.06)" stroke="rgba(34,211,238,0.2)" stroke-width="1"/>
+    <text x="300" y="227" fill="#22d3ee" font-size="9" font-weight="bold">Queue: crawler BFS frontier</text>
+    <text x="300" y="240" fill="#9a93b8" font-size="8">home → about → blog → (fair order)</text>
+    <text x="300" y="252" fill="#9a93b8" font-size="8">FIFO: সব page সমান সুযোগ পায়</text>
+  </svg>
+  <div class="diag-cap">Stack = থালার স্তূপ (LIFO), Queue = লাইন (FIFO)। সার্চ ইঞ্জিনে দুটোই জরুরি।</div>
+</div>
 <div class="dialogue en">Book 2 caravan line (Door 5) taught you stacks and queues — LIFO and FIFO. Now you see a search engine needs both: stack to validate queries, queue to run the crawler in BFS. DFS (recursion, Door 2) goes deep, BFS (queue) goes broad. Both are used in real search engines.</div>
 
 <div class="secret-box">📂 Stack = query parser (bracket matching, LIFO)। Queue = crawler frontier (BFS, FIFO)। সার্চ ইঞ্জিনে দুটোই মৌলিক।</div>
@@ -563,6 +616,48 @@ for t in td.in_order():
 #   algorithm, binary, data, heap, python, queue, search, sort, stack, tree</div>
 
 <div class="dialogue">Book ২-এর বংশবিদের স্ক্রল (Door ৮) BST শিখিয়েছিলেন — বাঁয়া ছোট, ডানা বড়। এখন দেখলে সার্চ ইঞ্জিনে কেন? Hash map O(1) কিন্তু sorted iteration পারে না। BST O(log n) কিন্তু alphabetical সাজানো দেয়। এটা autocomplete ও range query-র জন্য জরুরি।</div>
+
+<div class="diagram">
+  <div class="diag-title">BST Term Dictionary — বাঁয়া ছোট, ডানা বড়, O(log n) Lookup</div>
+  <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="arrBST" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#f97316"/></marker></defs>
+    <!-- Root: heap -->
+    <circle cx="280" cy="30" r="22" fill="rgba(251,191,36,0.12)" stroke="#fbbf24" stroke-width="2"/>
+    <text x="280" y="35" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">heap</text>
+    <!-- Left: binary -->
+    <line x1="265" y1="48" x2="150" y2="90" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrBST)"/>
+    <circle cx="140" cy="100" r="20" fill="rgba(34,211,238,0.1)" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="140" y="105" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="bold">binary</text>
+    <!-- Right: queue -->
+    <line x1="295" y1="48" x2="410" y2="90" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrBST)"/>
+    <circle cx="420" cy="100" r="20" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="420" y="105" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">queue</text>
+    <!-- binary's children -->
+    <line x1="125" y1="115" x2="80" y2="160" stroke="#f97316" stroke-width="1" opacity="0.6"/>
+    <circle cx="70" cy="170" r="16" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1"/>
+    <text x="70" y="174" text-anchor="middle" fill="#a78bfa" font-size="9">algo</text>
+    <line x1="155" y1="115" x2="190" y2="160" stroke="#f97316" stroke-width="1" opacity="0.6"/>
+    <circle cx="200" cy="170" r="16" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1"/>
+    <text x="200" y="174" text-anchor="middle" fill="#a78bfa" font-size="9">data</text>
+    <!-- queue's children -->
+    <line x1="410" y1="115" x2="370" y2="160" stroke="#f97316" stroke-width="1" opacity="0.6"/>
+    <circle cx="360" cy="170" r="16" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1"/>
+    <text x="360" y="174" text-anchor="middle" fill="#a78bfa" font-size="9">node</text>
+    <line x1="435" y1="115" x2="470" y2="160" stroke="#f97316" stroke-width="1" opacity="0.6"/>
+    <circle cx="480" cy="170" r="16" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1"/>
+    <text x="480" y="174" text-anchor="middle" fill="#a78bfa" font-size="9">tree</text>
+    <!-- Search path -->
+    <rect x="20" y="210" width="250" height="55" rx="6" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
+    <text x="30" y="228" fill="#52c41a" font-size="9" font-weight="bold">search('binary'):</text>
+    <text x="30" y="242" fill="#9a93b8" font-size="8">heap → binary &lt; heap → go left</text>
+    <text x="30" y="255" fill="#9a93b8" font-size="8">found! 2 comparisons (O(log n))</text>
+    <rect x="290" y="210" width="250" height="55" rx="6" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
+    <text x="300" y="228" fill="#a78bfa" font-size="9" font-weight="bold">in-order traversal:</text>
+    <text x="300" y="242" fill="#9a93b8" font-size="8">algo → binary → data → heap → node</text>
+    <text x="300" y="255" fill="#9a93b8" font-size="8">→ queue → tree (alphabetical!)</text>
+  </svg>
+  <div class="diag-cap">BST: বাঁয়া ছোট, ডানা বড়। In-order traversal = alphabetical। O(log n) search।</div>
+</div>
 <div class="dialogue en">Book 2 genealogist scroll (Door 8) taught you BST — left smaller, right larger. Now you see why? Hash map is O(1) but cannot iterate in order. BST is O(log n) but gives alphabetical arrangement. Essential for autocomplete and range queries.</div>
 
 <div class="secret-box">🌳 Term dictionary = BST। O(log n) lookup + sorted iteration + prefix search। Hash map-এর পূরক।</div>

@@ -352,6 +352,56 @@ def linear_search(items, target):
 # 1,000,000,000 terms → would take ~30 comparisons</div>
 
 <div class="dialogue">Book ২-এর গ্রন্থাগারিকের তালিকা (Door ১১) sorting ও binary search শিখিয়েছিলেন। এখন দেখলে সার্চ ইঞ্জিনে কেন এটা সবচেয়ে বেশি ব্যবহৃত algorithm? প্রতিটা সার্চে term dictionary-তে lookup করতে হয়। Sorted array + binary search = O(log n)। এক বিলিয়ন term-এ ৩০ তুলনা। সাজানো = ক্ষমতা।</div>
+
+<div class="diagram">
+  <div class="diag-title">Binary Search — প্রতি ধাপে অর্ধেক বাদ দাও, O(log n)</div>
+  <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+    <!-- Sorted array -->
+    <text x="20" y="20" fill="#fbbf24" font-size="10" font-weight="bold">Sorted terms (find 'index'):</text>
+    <!-- Step 1: full range -->
+    <text x="20" y="40" fill="#9a93b8" font-size="9">Step 1: lo=0, hi=19, mid=9</text>
+    <rect x="20" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="32" y="65" text-anchor="middle" fill="#6b6588" font-size="8">algo</text>
+    <rect x="46" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="58" y="65" text-anchor="middle" fill="#6b6588" font-size="8">bin</text>
+    <rect x="72" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="84" y="65" text-anchor="middle" fill="#6b6588" font-size="8">blo</text>
+    <rect x="98" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="110" y="65" text-anchor="middle" fill="#6b6588" font-size="8">cac</text>
+    <rect x="124" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="136" y="65" text-anchor="middle" fill="#6b6588" font-size="8">dat</text>
+    <rect x="150" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="162" y="65" text-anchor="middle" fill="#6b6588" font-size="8">grp</text>
+    <rect x="176" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="188" y="65" text-anchor="middle" fill="#6b6588" font-size="8">has</text>
+    <rect x="202" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="214" y="65" text-anchor="middle" fill="#6b6588" font-size="8">ind</text>
+    <rect x="228" y="48" width="25" height="25" rx="3" fill="rgba(251,191,36,0.2)" stroke="#fbbf24" stroke-width="2.5"/><text x="240" y="65" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">key</text>
+    <text x="240" y="42" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">↓ mid</text>
+    <rect x="254" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="266" y="65" text-anchor="middle" fill="#6b6588" font-size="8">lef</text>
+    <rect x="280" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="292" y="65" text-anchor="middle" fill="#6b6588" font-size="8">mer</text>
+    <rect x="306" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="318" y="65" text-anchor="middle" fill="#6b6588" font-size="8">nod</text>
+    <rect x="332" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="344" y="65" text-anchor="middle" fill="#6b6588" font-size="8">off</text>
+    <rect x="358" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="370" y="65" text-anchor="middle" fill="#6b6588" font-size="8">pag</text>
+    <rect x="384" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="396" y="65" text-anchor="middle" fill="#6b6588" font-size="8">que</text>
+    <rect x="410" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="422" y="65" text-anchor="middle" fill="#6b6588" font-size="8">rnk</text>
+    <rect x="436" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="448" y="65" text-anchor="middle" fill="#6b6588" font-size="8">src</text>
+    <rect x="462" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="474" y="65" text-anchor="middle" fill="#6b6588" font-size="8">tri</text>
+    <rect x="488" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="500" y="65" text-anchor="middle" fill="#6b6588" font-size="8">upd</text>
+    <text x="530" y="55" fill="#ef4444" font-size="9" font-weight="bold">'key' > 'index'</text>
+    <text x="530" y="67" fill="#9a93b8" font-size="8">→ discard right!</text>
+    <!-- Step 2 -->
+    <text x="20" y="100" fill="#9a93b8" font-size="9">Step 2: lo=0, hi=8, mid=4 → 'dat' &lt; 'index' → discard left!</text>
+    <rect x="20" y="108" width="25" height="25" rx="3" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,1" opacity="0.3"/>
+    <rect x="46" y="108" width="25" height="25" rx="3" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,1" opacity="0.3"/>
+    <rect x="72" y="108" width="25" height="25" rx="3" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,1" opacity="0.3"/>
+    <rect x="98" y="108" width="25" height="25" rx="3" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,1" opacity="0.3"/>
+    <rect x="124" y="108" width="25" height="25" rx="3" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1.5"/><text x="136" y="125" text-anchor="middle" fill="#fbbf24" font-size="8">dat</text>
+    <text x="136" y="102" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">mid</text>
+    <rect x="150" y="108" width="25" height="25" rx="3" fill="rgba(82,196,26,0.1)" stroke="#52c41a" stroke-width="1"/><text x="162" y="125" text-anchor="middle" fill="#52c41a" font-size="8">grp</text>
+    <rect x="176" y="108" width="25" height="25" rx="3" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="188" y="125" text-anchor="middle" fill="#52c41a" font-size="8">has</text>
+    <rect x="202" y="108" width="25" height="25" rx="3" fill="rgba(82,196,26,0.12)" stroke="#52c41a" stroke-width="2"/><text x="214" y="125" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">ind</text>
+    <!-- Result -->
+    <rect x="20" y="155" width="520" height="75" rx="8" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
+    <text x="35" y="175" fill="#52c41a" font-size="10" font-weight="bold">Result: found 'index' at position 7 in 4 steps</text>
+    <text x="35" y="190" fill="#9a93b8" font-size="9">Step 3: lo=5, hi=8, mid=6 → 'has' &lt; 'index' → go right</text>
+    <text x="35" y="205" fill="#9a93b8" font-size="9">Step 4: lo=7, hi=8, mid=7 → 'index' == 'index' ✓ FOUND!</text>
+    <text x="35" y="220" fill="#fbbf24" font-size="9" font-weight="bold">20 terms → 4 comparisons | 1M terms → 20 | 1B terms → 30</text>
+  </svg>
+  <div class="diag-cap">প্রতি ধাপে অর্ধেক বাদ। log₂(1,000,000) ≈ 20 ধাপে এক মিলিয়ন term-এ খুঁজে বের করা।</div>
+</div>
 <div class="dialogue en">Book 2 librarian catalog (Door 11) taught you sorting and binary search. Now you see why this is the most used algorithm in a search engine? Every search needs a term dictionary lookup. Sorted array + binary search = O(log n). One billion terms in 30 comparisons. Sorted = power.</div>
 
 <div class="secret-box">📚 Sorted index + binary search = O(log n) lookup। Sort once (O(n log n)), search forever (O(log n))। সাজানো = ক্ষমতা।</div>
@@ -474,7 +524,57 @@ for term in sorted(final_index.keys())[:5]:
 #         40 machines, 100M docs → 1 hour
 #         1000 machines (Google scale) → minutes</div>
 
-<div class="dialogue">Book ২-এর পাথর বিভাজকের পাহাড় (Door ১২) D&C শিখিয়েছিলেন — বড় সমস্যা ভাগ করো, আলাদা সমাধান করো, জোড়ো। এখন দেখলে সার্চ ইঞ্জিনে কেন? Google প্রতিদিন ট্রিলিয়ন page index করে — এক machine-এ অসম্ভব। MapReduce: হাজার machine-এ ভাগ করো, প্রতিটা partial index বানায় (map), তারপর merge করো (reduce)।</div>
+<div class="dialogue">Book ২-এর পাথর বিভাজকের পাহাড় (Door ১২) D&C শিখিয়েছিলেন — বড় সমস্যা ভাগ করো, আলাদা সমাধান করো, জোড়ো। এখন দেখলে সার্চ ইঞ্জিনে কেন? Google প্রতিদিন ট্রিলিয়ন page index করে — এক machine-এ অসম্ভব। MapReduce: হাজার machine-ে ভাগ করো, প্রতিটা partial index বানায় (map), তারপর merge করো (reduce)।</div>
+
+<div class="diagram">
+  <div class="diag-title">MapReduce Pipeline — Split → Parallel Map → Merge</div>
+  <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="arrMR" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#f97316"/></marker></defs>
+    <!-- Input corpus -->
+    <rect x="20" y="115" width="80" height="50" rx="8" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="60" y="135" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold">Corpus</text>
+    <text x="60" y="150" text-anchor="middle" fill="#9a93b8" font-size="8">8M docs</text>
+    <!-- Split arrows -->
+    <line x1="100" y1="130" x2="140" y2="60" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrMR)"/>
+    <line x1="100" y1="140" x2="140" y2="110" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrMR)"/>
+    <line x1="100" y1="150" x2="140" y2="160" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrMR)"/>
+    <line x1="100" y1="160" x2="140" y2="210" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrMR)"/>
+    <!-- Map workers -->
+    <rect x="145" y="45" width="100" height="35" rx="6" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="195" y="60" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">Worker 1</text>
+    <text x="195" y="73" text-anchor="middle" fill="#9a93b8" font-size="8">docs 0-1 → index₁</text>
+    <rect x="145" y="95" width="100" height="35" rx="6" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="195" y="110" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">Worker 2</text>
+    <text x="195" y="123" text-anchor="middle" fill="#9a93b8" font-size="8">docs 2-3 → index₂</text>
+    <rect x="145" y="145" width="100" height="35" rx="6" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="195" y="160" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">Worker 3</text>
+    <text x="195" y="173" text-anchor="middle" fill="#9a93b8" font-size="8">docs 4-5 → index₃</text>
+    <rect x="145" y="195" width="100" height="35" rx="6" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="195" y="210" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">Worker 4</text>
+    <text x="195" y="223" text-anchor="middle" fill="#9a93b8" font-size="8">docs 6-7 → index₄</text>
+    <!-- Reduce arrows -->
+    <line x1="245" y1="62" x2="300" y2="130" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrMR)"/>
+    <line x1="245" y1="112" x2="300" y2="135" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrMR)"/>
+    <line x1="245" y1="162" x2="300" y2="145" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrMR)"/>
+    <line x1="245" y1="212" x2="300" y2="150" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrMR)"/>
+    <!-- Reduce -->
+    <rect x="305" y="115" width="110" height="50" rx="8" fill="rgba(82,196,26,0.12)" stroke="#52c41a" stroke-width="2"/>
+    <text x="360" y="135" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">REDUCE</text>
+    <text x="360" y="150" text-anchor="middle" fill="#9a93b8" font-size="8">merge sorted lists</text>
+    <!-- Final output -->
+    <line x1="415" y1="140" x2="450" y2="140" stroke="#52c41a" stroke-width="2" marker-end="url(#arrMR)"/>
+    <rect x="455" y="115" width="90" height="50" rx="8" fill="rgba(251,191,36,0.12)" stroke="#fbbf24" stroke-width="2"/>
+    <text x="500" y="135" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">Final Index</text>
+    <text x="500" y="150" text-anchor="middle" fill="#9a93b8" font-size="8">18 terms</text>
+    <!-- Labels -->
+    <text x="195" y="30" text-anchor="middle" fill="#f97316" font-size="10" font-weight="bold">MAP (divide)</text>
+    <text x="360" y="100" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">REDUCE (combine)</text>
+    <!-- Timing -->
+    <rect x="20" y="245" width="530" height="30" rx="6" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
+    <text x="35" y="263" fill="#a78bfa" font-size="9" font-weight="bold">1 machine: 40 hours → 4 machines: 10 hours → 40 machines: 1 hour → 1000 machines: minutes</text>
+  </svg>
+  <div class="diag-cap">MapReduce: corpus → split → parallel workers → merge। O(n/p), p = machines।</div>
+</div>
 <div class="dialogue en">Book 2 stone splitter mountain (Door 12) taught you D&C — divide the big problem, solve separately, combine. Now you see why in search engines? Google indexes trillions of pages daily — impossible on one machine. MapReduce: divide across thousands of machines, each builds a partial index (map), then merge (reduce).</div>
 
 <div class="secret-box">⛏️ MapReduce = D&C at scale। Map: partial index per machine। Reduce: merge sorted posting lists। O(n/p), p = machines।</div>
