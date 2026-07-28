@@ -123,9 +123,9 @@ RAG combines retrieval and generation for accurate answers.
 """.strip()
 
 chunks = chunk_text(sample_text, chunk_size=6, overlap=2)
-print(f"মোট {len(chunks)} chunk:\n")
+print(f"মোট {len(chunks)} chunk:")
 for i, chunk in enumerate(chunks):
-    print(f"Chunk {i+1}: \\"{chunk}\\"")
+    print(f"Chunk {i+1}: \"{chunk}\"")
     print()
 
 # BONUS: Two pointer — sorted array-তে target sum
@@ -383,7 +383,7 @@ print(f"Fibonacci({n}) = {r1}")
 print(f"Naive:       {tn:.4f}s  (O(2^n))")
 print(f"Memoized:    {tm:.6f}s  (O(n))")
 print(f"Bottom-up:   {tb:.6f}s  (O(n))")
-print(f"\\nMemoized কত গুণ দ্রুত? {tn/tm:.0f}x!")
+print(f"\nMemoized কত গুণ দ্রুত? {tn/tm:.0f}x!")
 
 # BONUS: n=40 চেষ্টা করো — naive কত সময় নেয় দেখো!
 `
@@ -532,7 +532,7 @@ def n_queens(n):
     solutions = []
     def is_safe(board, row, col):
         for r in range(row):
-            if board[r] == col or \\
+            if board[r] == col or \
                abs(board[r] - col) == row - r:
                 return False
         return True
@@ -549,7 +549,7 @@ def n_queens(n):
     return solutions
 
 sols = n_queens(4)
-print(f"\\n৪-Queens: {len(sols)} সমাধান")
+print(f"\n৪-Queens: {len(sols)} সমাধান")
 for s in sols:
     print(f"  রানির কলাম: {s}")
 `

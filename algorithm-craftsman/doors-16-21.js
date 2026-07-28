@@ -81,7 +81,7 @@ scores = pagerank(web_graph)
 print("\\nFinal PageRank scores (sorted):")
 for page, score in sorted(scores.items(), key=lambda x: -x[1]):
     bar = '#' * int(score * 100)
-    print(f"  {page:<15} {score:.4f} {bar}")
+    print(f"  {page:&lt;15} {score:.4f} {bar}")
 
 # Output:
 #   Iter 5:  top = home.html (0.3502)
@@ -209,9 +209,9 @@ class UnionFind:
             return  # already same group
 
         # Union by rank: attach shorter tree under taller
-        if self.rank[root_x] < self.rank[root_y]:
+        if self.rank[root_x] &lt; self.rank[root_y]:
             self.parent[root_x] = root_y
-        elif self.rank[root_x] > self.rank[root_y]:
+        elif self.rank[root_x] &gt; self.rank[root_y]:
             self.parent[root_y] = root_x
         else:
             self.parent[root_y] = root_x
@@ -223,7 +223,7 @@ class UnionFind:
 
 # Simulate: detect near-duplicate pages
 # Each page has a simhash (similarity hash)
-# If simhash difference < 3 bits, they are near-duplicates
+# If simhash difference &lt; 3 bits, they are near-duplicates
 
 pages = {
     0: 'home_copy1',  # same content as page 1
@@ -235,7 +235,7 @@ pages = {
 
 uf = UnionFind(5)
 
-# Detected near-duplicate pairs (simhash distance < 3)
+# Detected near-duplicate pairs (simhash distance &lt; 3)
 uf.union(0, 1)  # home_copy1 ≈ home_copy2
 uf.union(2, 3)  # blog_original ≈ blog_copy
 
@@ -243,7 +243,7 @@ uf.union(2, 3)  # blog_original ≈ blog_copy
 print("Duplicate groups:")
 for i in range(5):
     group = uf.find(i)
-    print(f"  Page {i} ({pages[i]:<15}) → group {group}")
+    print(f"  Page {i} ({pages[i]:&lt;15}) → group {group}")
 
 # Are 0 and 1 duplicates?
 print(f"\\nPage 0 and 1 same? {uf.connected(0, 1)}")  # True
@@ -356,13 +356,13 @@ def binary_search(sorted_terms, target):
     lo, hi = 0, len(sorted_terms) - 1
     steps = 0
 
-    while lo <= hi:
+    while lo &lt;= hi:
         steps += 1
         mid = (lo + hi) // 2
 
         if sorted_terms[mid] == target:
             return mid, steps
-        elif sorted_terms[mid] < target:
+        elif sorted_terms[mid] &lt; target:
             lo = mid + 1   # discard left half
         else:
             hi = mid - 1   # discard right half
@@ -380,9 +380,9 @@ idx, steps = binary_search(terms, 'index')
 print(f"Found 'index' at position {idx} in {steps} steps")
 
 # Trace:
-# Step 1: lo=0, hi=19, mid=9 → 'key' > 'index' → hi=8
-# Step 2: lo=0, hi=8,  mid=4 → 'data' < 'index' → lo=5
-# Step 3: lo=5, hi=8,  mid=6 → 'hash' < 'index' → lo=7
+# Step 1: lo=0, hi=19, mid=9 → 'key' &gt; 'index' → hi=8
+# Step 2: lo=0, hi=8,  mid=4 → 'data' &lt; 'index' → lo=5
+# Step 3: lo=5, hi=8,  mid=6 → 'hash' &lt; 'index' → lo=7
 # Step 4: lo=7, hi=8,  mid=7 → 'index' == 'index' → FOUND!
 
 print(f"\\n20 terms → found in {steps} comparisons")

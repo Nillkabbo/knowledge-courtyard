@@ -77,7 +77,7 @@ def crawl_bfs(start_url, web_graph, max_pages=10):
     visited = set()
     order = []
 
-    while queue and len(visited) < max_pages:
+    while queue and len(visited) &lt; max_pages:
         url = queue.popleft()   # FIFO — front of queue
         if url in visited:
             continue
@@ -273,11 +273,11 @@ class InvertedIndex:
     def _intersect(self, list_a, list_b):
         """Two-pointer intersection from Door 5."""
         result, i, j = [], 0, 0
-        while i < len(list_a) and j < len(list_b):
+        while i &lt; len(list_a) and j &lt; len(list_b):
             if list_a[i] == list_b[j]:
                 result.append(list_a[i])
                 i += 1; j += 1
-            elif list_a[i] < list_b[j]:
+            elif list_a[i] &lt; list_b[j]:
                 i += 1
             else:
                 j += 1
@@ -420,16 +420,16 @@ def top_k_results(scored_docs, k=10):
     scored_docs: list of (score, doc_id)
     k: number of top results to keep
     """
-    if k <= 0:
+    if k &lt;= 0:
         return []
 
     min_heap = []
 
     for score, doc_id in scored_docs:
-        if len(min_heap) < k:
+        if len(min_heap) &lt; k:
             # Heap not full yet — just add
             heapq.heappush(min_heap, (score, doc_id))
-        elif score > min_heap[0][0]:
+        elif score &gt; min_heap[0][0]:
             # New score beats the smallest in heap — replace
             heapq.heapreplace(min_heap, (score, doc_id))
 
@@ -555,12 +555,12 @@ class TermDictionary:
         self._insert(self.root, term, posting_ptr)
 
     def _insert(self, node, term, posting_ptr):
-        if term < node.term:
+        if term &lt; node.term:
             if node.left:
                 self._insert(node.left, term, posting_ptr)
             else:
                 node.left = TermNode(term, posting_ptr)
-        elif term > node.term:
+        elif term &gt; node.term:
             if node.right:
                 self._insert(node.right, term, posting_ptr)
             else:
@@ -576,7 +576,7 @@ class TermDictionary:
             return None
         if term == node.term:
             return node.posting_ptr
-        elif term < node.term:
+        elif term &lt; node.term:
             return self._search(node.left, term)
         else:
             return self._search(node.right, term)

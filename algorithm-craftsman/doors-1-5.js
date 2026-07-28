@@ -50,7 +50,7 @@ for size in [100, 1000, 10000]:
     start = time.time()
     search_slow(docs, query)
     elapsed = time.time() - start
-    print(f"  {size:>6} docs → {elapsed:.4f}s")
+    print(f"  {size:&gt;6} docs → {elapsed:.4f}s")
 
 # Output:
 #     100 docs → 0.0001s   ← instant
@@ -139,7 +139,7 @@ def crawl(url, depth=0):
     # ── BASE CASES ──
     if url in visited:
         return []           # already seen — stop
-    if depth > 3:            # depth limit — prevent infinite recursion
+    if depth &gt; 3:            # depth limit — prevent infinite recursion
         return []
 
     visited.add(url)
@@ -524,28 +524,28 @@ doors.push({
 <div class="dialogue en">Wrong way, Zainul said, holding one scroll. For each doc, search the other scroll — nested loop. Works, but O(n*m). 10,000 × 10,000 = 100 million comparisons. He shook his head. My way: two fingers. Left on algorithm list, right on python list. Both sorted. Walk together.</div>
 
 <div class="code-block"># query_and.py — Day 5: Two-Pointer AND Query Intersection
-# User searches "algorithm python" -> find docs containing BOTH terms.
-# Both posting lists are sorted -> two pointers merge in O(n+m).
+# User searches "algorithm python" -&gt; find docs containing BOTH terms.
+# Both posting lists are sorted -&gt; two pointers merge in O(n+m).
 
 def intersect(list_a, list_b):
     """
     Find documents in BOTH posting lists.
     Two-pointer walk: O(n + m), not O(n * m).
 
-    list_a: [0, 1, 2, 5, 7]      <- 'algorithm' docs
-    list_b: [0, 2, 3, 5, 8]      <- 'python' docs
-    result: [0, 2, 5]             <- docs with BOTH
+    list_a: [0, 1, 2, 5, 7]      &lt;- 'algorithm' docs
+    list_b: [0, 2, 3, 5, 8]      &lt;- 'python' docs
+    result: [0, 2, 5]             &lt;- docs with BOTH
     """
     result = []
     i, j = 0, 0  # two pointers
 
-    while i < len(list_a) and j < len(list_b):
+    while i &lt; len(list_a) and j &lt; len(list_b):
         if list_a[i] == list_b[j]:
             # MATCH — both lists have this doc
             result.append(list_a[i])
             i += 1
             j += 1
-        elif list_a[i] < list_b[j]:
+        elif list_a[i] &lt; list_b[j]:
             # list_a is behind — advance it
             i += 1
         else:
@@ -560,16 +560,16 @@ docs_python   = [0, 2]        # 'python' appears in docs 0,2
 
 # User searches: "algorithm python" (AND query)
 results = intersect(docs_algorithm, docs_python)
-print(f"algorithm AND python -> docs: {results}")
+print(f"algorithm AND python -&gt; docs: {results}")
 
 # Trace the two-pointer walk:
-# Step 1: i=0,j=0 -> a[0]=0 == b[0]=0 -> MATCH! result=[0], i=1,j=1
-# Step 2: i=1,j=1 -> a[1]=1 <  b[1]=2 -> advance i -> i=2
-# Step 3: i=2,j=1 -> a[2]=2 == b[1]=2 -> MATCH! result=[0,2], i=3,j=2
-# Step 4: i=3 -> out of bounds -> done. result = [0, 2]
+# Step 1: i=0,j=0 -&gt; a[0]=0 == b[0]=0 -&gt; MATCH! result=[0], i=1,j=1
+# Step 2: i=1,j=1 -&gt; a[1]=1 &lt;  b[1]=2 -&gt; advance i -&gt; i=2
+# Step 3: i=2,j=1 -&gt; a[2]=2 == b[1]=2 -&gt; MATCH! result=[0,2], i=3,j=2
+# Step 4: i=3 -&gt; out of bounds -&gt; done. result = [0, 2]
 
 # Output:
-# algorithm AND python -> docs: [0, 2]
+# algorithm AND python -&gt; docs: [0, 2]
 
 # Complexity: O(n + m) = O(3 + 2) = 5 comparisons
 # vs nested loop: O(n * m) = O(3 * 2) = 6 comparisons

@@ -40,7 +40,7 @@ def score_sentence(sentence, query_terms):
 
     # Proximity bonus: query terms close together = better
     positions = [i for i, w in enumerate(words) if w in query_terms]
-    if len(positions) >= 2:
+    if len(positions) &gt;= 2:
         gap = positions[-1] - positions[0]
         proximity_bonus = max(0, 5 - gap)  # closer = more bonus
         score += proximity_bonus
@@ -57,7 +57,7 @@ def select_snippet(text, query_terms, max_length=160):
 
     for sentence in sentences:
         s = score_sentence(sentence, query_terms)
-        if s > best_score:
+        if s &gt; best_score:
             best_score = s
             best_sentence = sentence[:max_length]
 
@@ -200,7 +200,7 @@ def spell_check(query, dictionary):
 
     for word in dictionary:
         dist = levenshtein(query, word)
-        if dist < best_dist:
+        if dist &lt; best_dist:
             best_dist = dist
             best_word = word
 
@@ -534,7 +534,7 @@ def build_lps(pattern):
     length = 0  # length of previous longest prefix-suffix
     i = 1
 
-    while i < m:
+    while i &lt; m:
         if pattern[i] == pattern[length]:
             length += 1
             lps[i] = length
@@ -559,7 +559,7 @@ def kmp_search(text, pattern):
     i = 0  # index for text
     j = 0  # index for pattern
 
-    while i < n:
+    while i &lt; n:
         if text[i] == pattern[j]:
             i += 1
             j += 1
@@ -569,7 +569,7 @@ def kmp_search(text, pattern):
             matches.append(i - j)
             # Use failure function to find next starting point
             j = lps[j - 1]
-        elif i < n and text[i] != pattern[j]:
+        elif i &lt; n and text[i] != pattern[j]:
             if j != 0:
                 # Mismatch — use failure function, do NOT go to zero
                 j = lps[j - 1]
@@ -731,9 +731,9 @@ for url in test_urls:
 # Instead of [0,0,1,0,1,1,...] (1 byte per bit), use integer bit manipulation:
 #
 #   byte = 0b00000000
-#   byte |= (1 << 3)   # set bit 3: 0b00001000
-#   byte &= ~(1 << 3)  # clear bit 3: 0b00000000
-#   byte & (1 << 3)    # check bit 3: 0 or nonzero
+#   byte |= (1 &lt;&lt; 3)   # set bit 3: 0b00001000
+#   byte &= ~(1 &lt;&lt; 3)  # clear bit 3: 0b00000000
+#   byte & (1 &lt;&lt; 3)    # check bit 3: 0 or nonzero
 #
 # This uses 1/8th the memory of a Python list of 0s and 1s.</div>
 
