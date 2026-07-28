@@ -22,6 +22,8 @@ doors.push({
 <p class="scene-setting">ত্রয়োদশ দোকান। ক্যালিগ্রাফারের কামরা। কালির গন্ধ, নরম কাগজ, জানালার আলো। উস্তাদ নুর কাজ করছেন — হাতে বাঁশের কলম, সামনে একটা বিশাল কাগজে আরবি ক্যালিগ্রাফি। কিন্তু তিনি একটানা লেখেন না। একটা মাপকাঠি রাখেন, তার মধ্যে লেখেন, তারপর মাপকাঠি সরান — পরের অংশ। উইন্ডো সরে যায়, লেখা এগোয়।</p>
 <p class="scene-setting en">The thirteenth shop. The Calligrapher's chamber. Smell of ink, soft paper, window light. Ustad Noor works — bamboo pen in hand, a vast sheet of Arabic calligraphy before him. But he doesn't write continuously. He places a ruler, writes within it, then slides the ruler — the next section. The window moves, the writing advances.</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> নুর nested loop দিয়ে ১ লাখ উপাদানের sorted array-তে two-sum খুঁজতে গেলেন — O(n²) = ১০ বিলিয়ন তুলনা। ৮৯ সেকেন্ড। তারপর two-pointer technique — বাঁ ও ডান pointer, O(n) = মাত্র ১ লাখ ধাপ। ০.০১ সেকেন্ড। ৯,০০০ গুণ দ্রুত।</div></div>
+
 <div class="dialogue">পাথর বিভাজক শিখিয়েছিলেন — ভাগ করো, জোড়ো। কিন্তু আমি বলি — কখনো ভাগ করতে হয় না। কখনো শুধু দুটো হাত লাগে — একটা শুরুতে, একটা শেষে। দুটো একসাথে চলে — O(n)-এ পুরো কাজ শেষ। কোনো recursion নেই, কোনো sort নেই — শুধু দুটো pointer।</div>
 <div class="dialogue en">"The stone splitter taught — divide, combine. But I say — sometimes no division is needed. Sometimes just two hands — one at the start, one at the end. Both move together — the whole work done in O(n). No recursion, no sort — just two pointers."</div>
 
@@ -85,7 +87,9 @@ def two_sum_sorted(arr, target):
     return None   # O(n), প্রতিটা উপাদান একবার ছুঁয়ে</div>
 
 <div class="dialogue">তাদাব্বুর — গভীর চিন্তা। কুরআনে আল্লাহ বারবার বলেছেন — "চিন্তা করো না?" (৪৭:২৪)। তাদাব্বুর মানে একটা অংশে থামা, গভীরে যাওয়া, তারপর পরের অংশে। Sliding window-এর মতো — একটা অংশ দেখো, বুঝো, তারপর সরাও। পুরো কুরআন একবারে নয় — অংশে অংশে। প্রতিটা অংশে থামো, চিন্তা করো, তারপর এগোও।</div>
-<div class="dialogue en">"Tadabbur — deep contemplation. Allah repeatedly says in the Quran — 'Will you not reflect?' (47:24). Tadabbur means pausing at a portion, going deep, then moving to the next. Like a sliding window — see a section, understand, then slide. Not the whole Quran at once — portion by portion. Pause at each, reflect, then advance."</div>`,
+<div class="dialogue en">"Tadabbur — deep contemplation. Allah repeatedly says in the Quran — 'Will you not reflect?' (47:24). Tadabbur means pausing at a portion, going deep, then moving to the next. Like a sliding window — see a section, understand, then slide. Not the whole Quran at once — portion by portion. Pause at each, reflect, then advance."</div>
+
+<div class="secret-box">📏 দুটো pointer দিয়ে এক চলনে O(n)। Nested loop নয় — স্লাইডিং উইন্ডো।</div>`,
   senior:{
     title:"Two Pointers চেনার উপায়",
     body:`
@@ -156,7 +160,9 @@ doors.push({
   },
   story:`
 <p class="scene-setting">চতুর্দশ দোকান। রেশম ব্যবসায়ীর ক্যারাভান। রেশমের চকচকে গাঁথুনি, দূর শহরের সুবাস, উটের ঘণ্টা। হাজি করিম দাঁড়িয়ে আছেন — পাশে মানচিত্র, সামনে পাঁচটা শহরের চুক্তির খাতা। তিনি পুরো যাত্রা পরিকল্পনা করেন না। প্রতিটা শহরে যা সেরা মনে হয়, তাই করেন। "কিছু বাজারে," তিনি বলেন, "প্রতিটা স্থানীয় সেরা পুরো যাত্রাকে সেরা বানায়। কিন্তু সব বাজারে নয়। সেই পার্থক্য জানাই কারিগরি।"</p>
-<p class="scene-setting en">The fourteenth shop. The silk merchant's caravan. Shimmer of silk, scent of distant cities, bells of camels. Haji Karim stands — a map beside him, ledger of deals with five cities. He doesn't plan the whole journey. At each city, he does what seems best. 'In some markets,' he says, 'the best local choice makes the whole journey best. But not all markets. Knowing that difference is the craft.'"</p>
+<p class="scene-setting en">The fourteenth shop. The silk merchant's caravan. Shimmer of silk, scent of distant cities, bells of camels. Haji Karim stands — a map beside him, ledger of deals with five cities. He doesn't plan the whole journey. At each city, he does what seems best. 'In some markets,' he says, 'the best local choice makes the whole journey best. But not all markets. Knowing that difference is the craft.'</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> করিম প্রথমে greedy দিয়ে coin change সমাধান করতে গেলেন — coins [1, 3, 4], target 6। Greedy: 4+1+1 = ৩ coins। কিন্তু optimal: 3+3 = ২ coins! Greedy ভুল। করিম শিখলেন — greedy সবসময় optimal নয়। কখন DP দরকার — সেই চেনা দরকার।</div></div>
 
 <div class="dialogue">ক্যালিগ্রাফার শিখিয়েছিলেন — দুটো হাতে এক চলনে। কিন্তু আমি বলি — কখনো এক হাতেই সিদ্ধান্ত। প্রতিটা ধাপে যা এখন সেরা, তাই বেছো। পেছনের দিকে না ভাবো, সামনের পুরো পথ না ভাবো — শুধু এই মুহূর্তের সেরা। একে greedy বলে। সহজ, দ্রুত, স্থানীয়।</div>
 <div class="dialogue en">"The calligrapher taught — two hands in one pass. But I say — sometimes one hand decides. At each step, choose what's best right now. Don't think back, don't think of the whole path ahead — just this moment's best. This is greedy. Simple, fast, local."</div>
@@ -209,7 +215,9 @@ GREEDY vs DP — কোনটা?
 <div class="dialogue en">"You're an AI engineer. Greedy hides everywhere. LLM token generation uses greedy decoding — pick the most probable next token at each step (argmax of logits). Fast, but a local optimum — the best full-sentence probability can be missed. So beam search — keep several candidate paths in parallel, pick the best at the end. Beam search is really 'multi-path greedy' — a middle ground between pure greedy and brute-force search. Huffman — embedding or token compression. Dijkstra — most related path in knowledge graphs. Top-k greedy — pick the best k docs in RAG. Clustering seeding — at each step pick the farthest point. Simple, fast, and often 'good enough'."</div>
 
 <div class="dialogue">সাʿআহ — মুহূর্ত, সুযোগ। কুরআনে আল্লাহ বলেন — "তোমাদের কাছে যা আছে তা শেষ হয়ে যাবে, আর আল্লাহর কাছে যা আছে তা স্থায়ী।" (১৬:৯৬)। কিন্তু সাথে সাথে সতর্কতা — আল্লাহ তাড়াহুড়ো পছন্দ করেন না (৮৭:১৯ এর প্রেক্ষিতে, "তাড়াহুড়ো শয়তানের কাজ")। Greedy হলো সাʿআহ-এর ছায়া — মুহূর্তের সেরা ধরো। কিন্তু অন্ধ তাড়া নয় — প্রথমে জানো, এই সমস্যায় কি স্থানীয় সেরা সার্বজনীন সেরা দেয়?</div>
-<div class="dialogue en">"Saʿah — moment, opportunity. Allah says — 'What you have runs out, what is with Allah remains.' (16:96). But also caution — haste is not loved (the saying goes, 'haste is from Satan'). Greedy is the shadow of saʿah — seize the moment's best. But not blind haste — first know, does this problem reward local best with global best?"</div>`,
+<div class="dialogue en">"Saʿah — moment, opportunity. Allah says — 'What you have runs out, what is with Allah remains.' (16:96). But also caution — haste is not loved (the saying goes, 'haste is from Satan'). Greedy is the shadow of saʿah — seize the moment's best. But not blind haste — first know, does this problem reward local best with global best?"</div>
+
+<div class="secret-box">🧣 Greedy = প্রতিটা ধাপে সেরা স্থানীয় পছন্দ। সহজ, দ্রুত — কিন্তু সবসময় সর্বোত্তম নয়।</div>`,
   senior:{
     title:"Greedy চেনার দুটো প্রমাণযোগ্য শর্ত",
     body:`
@@ -278,6 +286,8 @@ doors.push({
 <p class="scene-setting">পঞ্চদশ দোকান। পাহাড়ের ঢালে ধাপে ধাপে বাগান — terrace farming। মাটির গন্ধ, সেচের শব্দ, সবুজের স্তর। মালি বশির কাজ করছেন — বয়স্ক, পিঠ বাঁকা, কিন্তু প্রতিটা ধাপে নিখুঁত। তাঁর বাগান একটা সিঁড়ির মতো — প্রতিটা ধাপ আগের ধাপের উপর ভর করে দাঁড়িয়ে। উপরের ফসল নিচের ফসলের উপর নির্ভরশীল।</p>
 <p class="scene-setting en">The fifteenth shop. Terraced gardens on a hillside — terrace farming. Smell of soil, sound of irrigation, layers of green. Mali Bashir works — elderly, back bent, but precise at every step. His garden is like a staircase — each terrace rests on the one below. The upper harvest depends on the lower.</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> বশির প্রথমে naive recursion দিয়ে Fibonacci(35) গণনা করতে গেলেন। ২৯ মিলিয়ন কল! ৫৮ সেকেন্ড। তারপর memoization যোগ করলেন — প্রতিটা সংখ্যা একবারই গণনা। ৩৫ কল। ০.০০১ সেকেন্ড। ৫৮,০০০ গুণ দ্রুত। এটাই DP-র ক্ষমতা।</div></div>
+
 <div class="dialogue">রেশম ব্যবসায়ী শিখিয়েছিলেন — প্রতিটা ধাপে সেরা বেছো। কিন্তু আমি বলি — কখনো সেরা বেছে যথেষ্ট নয়। কখনো একই ছোট সমস্যা বারবার আসে। আর প্রতিটা ধাপের উত্তর আগের ধাপের উপর দাঁড়ায়। তখন মনে রাখা দরকার — নাহলে বারবার একই কাজ। এটাই Dynamic Programming।</div>
 <div class="dialogue en">"The silk merchant taught — pick the best at each step. But I say — sometimes picking the best isn't enough. Sometimes the same small problem recurs. And each step's answer stands on the previous. Then memory is needed — or the same work repeats. This is Dynamic Programming."</div>
 
@@ -328,7 +338,9 @@ edit_distance("cat", "cut")  # → 1 (replace a→u)
 edit_distance("sunday", "saturday")  # → 3</div>
 
 <div class="dialogue">দারাজাত — স্তর। কুরআনে আল্লাহ বলেন — "তাদের জন্য রয়েছে স্তরসমূহ।" (৬:১৩২)। প্রতিটা স্তর আগের স্তরের চেয়ে উঁচু। কেউ এক লাফে শীর্ষে যায় না — ধাপে ধাপে। DP-ও তেমনি — বড় উত্তর ছোট উত্তরের স্তরে স্তরে গঠন। ধৈর্য আর স্মৃতি দিয়ে।</div>
-<div class="dialogue en">"Darajat — degrees/levels. Allah says — 'For them are degrees.' (6:132). Each level higher than the last. No one leaps to the summit in one jump — step by step. DP is the same — the big answer built from small answers, level by level. With patience and memory."</div>`,
+<div class="dialogue en">"Darajat — degrees/levels. Allah says — 'For them are degrees.' (6:132). Each level higher than the last. No one leaps to the summit in one jump — step by step. DP is the same — the big answer built from small answers, level by level. With patience and memory."</div>
+
+<div class="secret-box">🌱 DP = overlapping subproblems + optimal substructure। ছোট সমস্যা সমাধান করো, মনে রাখো, বড়টা বানাও।</div>`,
   senior:{
     title:"DP চেনার দুটো লক্ষণ (আর Greedy থেকে পার্থক্য)",
     body:`
@@ -392,7 +404,9 @@ doors.push({
   },
   story:`
 <p class="scene-setting">ষোড়শ দোকান। অলিগলির পথিকের সুতো। পুরনো শহরের গোলকধাঁধা — সরু অলিগলি, কয়েকটা মৃত প্রান্তে শেষ। রহিম দাঁড়িয়ে আছেন — হাতে এক গোছা সুতো, প্রবেশদ্বারে এক প্রান্ত বাঁধা। তিনি এগোন, প্রতিটা মোড়ে সুতো ছাড়েন। মৃত প্রান্ত? সুতো ধরে ফিরে আসেন — শেষ মোড়ে, অন্য শাখা চেষ্টা করেন। এভাবে তিনি পুরো গোলকধাঁধা ম্যাপ করেন।</p>
-<p class="scene-setting en">The sixteenth shop. The alley explorer's thread. A maze of the old city — narrow alleys, some ending in dead ends. Rahim stands — a ball of thread in hand, one end tied at the entrance. He walks forward, releasing thread at each turn. Dead end? He follows the thread back — to the last turn, tries another branch. Thus he maps the whole maze.</p>
+<p class="scene-setting en">The sixteenth shop. The alley explorer's thread. A maze of the old city — narrow alleys, some ending in dead ends. Rahim stands — a ball of thread, one end tied at the entrance. He walks forward, releasing thread at each turn. Dead end? He follows the thread back — to the last turn, tries another branch. Thus he maps the whole maze.</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> রহিম প্রথমে pruning ছাড়াই N-Queens সমাধান করতে গেলেন। N=8 হলে ৮! = ৪০,৩২০ permutation। কিন্তু প্রতিটা পথ শেষ পর্যন্ত যাচাই। প্রুনিং ছাড়া অনেক ধীর। তারপর constraint যোগ করলেন — প্রতিটা ধাপে যাচাই করো, আক্রমণে আছে কিনা। ভুল শাখা কেটে ফেলো। সময় ৪০,৩২০ থেকে মাত্র ৯২টা valid solution।</div></div>
 
 <div class="dialogue">মালি শিখিয়েছিলেন — ধাপে ধাপে উত্তর বানাও, মনে রাখো। কিন্তু আমি বলি — কখনো উত্তর নেই, শুধু পছন্দ। অনেক পছন্দ। প্রতিটা চেষ্টা করতে হয়। কিন্তু অন্ধভাবে নয় — পছন্দ করো, এগোও, মৃত প্রান্তে ফিরে এসো, অন্য চেষ্টা করো। এটাই backtracking। recursion যা মনে রাখে কীভাবে ফিরে আসতে হয়।</div>
 <div class="dialogue en">"The gardener taught — build the answer step by step, remember. But I say — sometimes there's no answer, only choices. Many choices. Each must be tried. But not blindly — choose, advance, retreat at dead ends, try another. This is backtracking. Recursion that remembers how to return."</div>
@@ -475,7 +489,9 @@ WHEN TO REACH FOR BACKTRACKING:
 <div class="dialogue en">"You're an AI engineer. Backtracking hides in many places. Constraint satisfaction — scheduling, resource allocation. Hyperparameter search — try combinations with smart pruning. Combinatorial optimization — feature selection, architecture search. Game tree search — minimax with backtracking. Prompt combinatorics — which tool sequence works? Not all — smart pruning."</div>
 
 <div class="dialogue">রুজুʿ — ফিরে আসা, প্রত্যাবর্তন। কুরআনে বারবার আল্লাহ বলেছেন — "তওবা করো, ফিরে এসো।" (২:২২২ এবং অন্যান্য)। তওবা মানে শুধু অনুশোচনা নয় — পথ থেকে ফিরে আসা, নতুন পথে যাওয়া। backtracking সেই রুজুʿ-এর ছায়া — ভুল পছন্দ থেকে ফিরে আসা, সঠিক শাখায় যাওয়া। যে ফিরে আসতে পারে সে গোলকধাঁধা জয় করে।</div>
-<div class="dialogue en">"Rujuʿ — returning, retreating. Allah repeatedly says in the Quran — 'repent, return.' (2:222 and elsewhere). Tawbah is not just regret — it's returning from a path, taking a new one. Backtracking is the shadow of rujuʿ — returning from a wrong choice, going to the right branch. Who can return can conquer the maze."</div>`,
+<div class="dialogue en">"Rujuʿ — returning, retreating. Allah repeatedly says in the Quran — 'repent, return.' (2:222 and elsewhere). Tawbah is not just regret — it's returning from a path, taking a new one. Backtracking is the shadow of rujuʿ — returning from a wrong choice, going to the right branch. Who can return can conquer the maze."</div>
+
+<div class="secret-box">🧭 Backtracking = recursion + ফেরা। একটা পথ বেছো, মৃত প্রান্তে ফিরো, অন্য পথ চেষ্টা করো।</div>`,
   senior:{
     title:"Backtracking — দ্রুত করার কৌশল (Pruning)",
     body:`

@@ -20,6 +20,8 @@ doors.push({
 <p class="scene-setting">সপ্তদশ দোকান। নকল-নির্দেশকের গ্রন্থাগার। হাতে লেখা পুরনো পাণ্ডুলিপি, কালির সুবাস, পাতার খসখস। শায়খ তাহির দাঁড়িয়ে আছেন — সামনে হাজার পাতার কুরআনের অনুলিপি। তাঁর কাজ একটা — প্রতিটা শব্দ কোন পাতায় কোথায় আছে, তার একটা সূচি (concordance) বানানো। "একটা শব্দ খুঁজছি," তিনি বলেন, "অথচ হাজার পাতা। অক্ষরে অক্ষরে খুঁজলে আজীবন লাগবে। বুদ্ধি লাগে — প্যাটার্ন খোঁজার বুদ্ধি।"</p>
 <p class="scene-setting en">The seventeenth shop. The Concord Maker's library. Handwritten old manuscripts, scent of ink, rustle of pages. Shaykh Tahir stands — before him, copies of the Quran across thousands of pages. His task — to build a concordance of where each word appears. 'I seek one word,' he says, 'yet there are thousands of pages. Letter by letter would take a lifetime. Wit is needed — the wit of pattern-finding.'"</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> তাহির প্রথমে naive search দিয়ে ১ লাখ অক্ষরের টেক্সটে প্যাটার্ন খুঁজতেন। প্রতিটা mismatch-এ শূন্য থেকে শুরু। O(n×m)। ১ লাখ × ১০০ = ১ কোটি তুলনা। ১২ সেকেন্ড। তারপর KMP — failure function দিয়ে smart backtrack। O(n+m) = ১ লাখ + ১০০। ০.০১ সেকেন্ড। ১,২০০ গুণ দ্রুত।</div></div></p>
+
 <div class="dialogue">অলিগলির পথিক শিখিয়েছিলেন — পছন্দ করো, এগোও, মৃত প্রান্তে ফিরো। কিন্তু আমি বলি — স্ট্রিং-এ মিল না হলে ফিরে আসতে হয়, কিন্তু কোথায় ফিরবে? শুরুতে নয় — যতটা দরকার, ততটাই। সেই 'কোথায় ফিরবে' আগেই জানলে কাজ অর্ধেক।</div>
 <div class="dialogue en">"The alley explorer taught — choose, advance, retreat at dead ends. But I say — on a string mismatch you must retreat, but to where? Not to the start — only as far as needed. Knowing 'where to retreat' in advance halves the work."</div>
 
@@ -97,7 +99,9 @@ kmp_search("ABABDABACDABACDABAC", "ABAC")  # → 5</div>
 <div class="dialogue en">"You're an AI engineer. Pattern matching is everywhere. Tokenization — BPE merges, Aho-Corasick multi-pattern (KMP's multi-pattern form). Fuzzy search — user types 'recieve', find 'receive' (DP edit distance — Door 15). Plagiarism / dedup — rolling hash for document fingerprints. Regex engines — NFA/DFA all rest on pattern matching."</div>
 
 <div class="dialogue">নকল — হস্তান্তর, বর্ণনা। ইসলামী ঐতিত্যে নকল একটা গভীর ধারণা — জ্ঞানের হস্তান্তর, হাদিসের সনদ (chain of transmission)। প্রতিটা শব্দ যেখানে আছে তার সঠিক অবস্থান — concordance — সেই নকলের ভিত্তি। ভুল অবস্থান ভুল নকল। KMP ও Rabin-Karp সেই নকলকে নিখুঁত করে — দ্রুত, সঠিক, নির্ভরযোগ্য অনুসন্ধান।</div>
-<div class="dialogue en">"Naql — transmission, narration. In the Islamic tradition, naql is a deep concept — the transmission of knowledge, the chain (isnad) of hadith. The precise location of each word — the concordance — is the foundation of that transmission. A wrong location is a wrong transmission. KMP and Rabin-Karp make that transmission precise — fast, accurate, reliable search."</div>`,
+<div class="dialogue en">"Naql — transmission, narration. In the Islamic tradition, naql is a deep concept — the transmission of knowledge, the chain (isnad) of hadith. The precise location of each word — the concordance — is the foundation of that transmission. A wrong location is a wrong transmission. KMP and Rabin-Karp make that transmission precise — fast, accurate, reliable search."</div>
+
+<div class="secret-box">📖 Naive O(n·m), KMP O(n+m) — failure function দিয়ে পেছনে ফেরা কমায়। স্ট্রিং প্যাটার্ন ম্যাচিংয়ের ভিত্তি।</div>`,
   senior:{
     title:"কোন অ্যালগরিদম কখন — Senior Choice",
     body:`
@@ -186,7 +190,9 @@ doors.push({
   },
   story:`
 <p class="scene-setting">অষ্টাদশ দোকান। শেষ দোকান। পরচুলা-নকশা তাঁতির কারখানা। একটা অদ্ভুত তাঁত — প্রতিটা সুতোর উপর দিয়ে ছিদ্রান্ত কাঠের কার্ড চলে। প্রতিটা কার্ডে গর্ত আছে কোথাও কোথাও — গর্ত পড়লে সুতো উপরে, না হলে নিচে। এই কার্ডগুলো নকশা বহন করে — বাইনারিতে। বেগম আয়িশা কাজ করছেন — "প্রতিটা সুতোর দুটো অবস্থা," তিনি বলেন। "উপরে বা নিচে। এটাই Jacquard তাঁত — বাইনারি কম্পিউটিং-এর পূর্বপুরুষ। প্রতিটা কার্ড একটা বিট নকশা।"</p>
-<p class="scene-setting en">The eighteenth shop. The last shop. The pattern-card weaver's loom. A strange loom — punched wooden cards pass over each thread. Each card has holes here and there — at a hole the thread rises, otherwise it stays low. These cards carry a pattern — in binary. Begum Aisha works — 'Each thread has two states,' she says. 'Up or down. This is the Jacquard loom — ancestor of binary computing. Each card is a bit-pattern.'"</p>
+<p class="scene-setting en">The eighteenth shop. The last shop. The pattern-card weaver's loom. A strange loom — punched wooden cards pass over each thread. Each card has holes here and there — at a hole the thread rises, otherwise it stays low. These cards carry a pattern — in binary. Begum Aisha works — 'Each thread has two states,' she says. 'Up or down. This is the Jacquard loom — ancestor of binary computing. Each card is a bit-pattern.'</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> আয়িশা প্রথমে permission চেক করতেন ৮টা boolean variable দিয়ে — read, write, execute, delete ইত্যাদি। ৮ বাইট। তারপর একটা int-এর ৮ বিট দিয়ে encode করলেন — মাত্র ১ বাইট। ৮ গুণ কম মেমোরি। বেশ দ্রুত — bit AND এক সাইকেলে। Bloom filter-এ একই — ১০০ কোটি URL মাত্র ১২০ মেগাবাইট বিটে।</div></div>
 
 <div class="dialogue">নকল-নির্দেশক শিখিয়েছিলেন — অক্ষরে অক্ষরে প্যাটার্ন খুঁজি। কিন্তু আমি বলি — সবচেয়ে গভীরে, প্রতিটা সংখ্যা একটা বিট নকশা। ০ আর ১। দুটো অবস্থা — উপরে বা নিচে, সত্য বা মিথ্যা, খোলা বা বন্ধ। এই দুই থেকে সব গঠিত — সংখ্যা, টেক্সট, ছবি, মডেল। বিট নিয়ে কাজ করাই bit manipulation।</div>
 <div class="dialogue en">"The concord maker taught — find patterns letter by letter. But I say — at the deepest level, every number is a bit-pattern. 0 and 1. Two states — up or down, true or false, open or closed. From these two, everything is built — numbers, text, images, models. Working with bits is bit manipulation."</div>
@@ -275,7 +281,9 @@ XOR ম্যাজিক — দুটো বৈশিষ্ট্য:
 <div class="dialogue en">"Eighteen shops you've passed. The astrolabe maker taught to measure, the arabesque carver to call on smaller. The tile maker arranged in rows, the pearl maker strung, the caravan master gave order. The locksmith taught to search by key, the spice merchant kept the best on top, the genealogist searched through branches. The weaver wove the web, the clan elder built clans, the librarian sorted and searched fast. The stone splitter divided and conquered, the calligrapher advanced with two hands, the silk merchant seized the moment's best. The gardener built step by step, the alley explorer returned, the concord maker found patterns. And I — I built the vast from the smallest. Eighteen techniques — eighteen perspectives. A senior engineer is one who knows which perspective each problem needs."</div>
 
 <div class="dialogue">বেগম আয়িশা তাঁতের দিকে তাকিয়ে শেষ কার্ডটা বসান। "নকশা শেষ হলে তাঁতি থামে না — নতুন সুতো টানে, নতুন কার্ড কাটে। তুমিও তাই। আঠারো দোকান শেষ, কিন্তু শেখা এইমাত্র শুরু হলো। প্রতিটা প্রোডাকশন bug, প্রতিটা নতুন মডেল, প্রতিটা স্কেলিং সমস্যা — নতুন কার্ড, নতুন নকশা। বাজার বন্ধ হয় না, শুধু দরজা খোলে। যাও এখন — বাজারের বাইরে তোমার নিজের কারখানা গড়ো।"</div>
-<div class="dialogue en">Begum Aisha looks at the loom and sets the last card. "When one pattern ends, the weaver doesn't stop — she draws a new thread, cuts a new card. So it is with you. Eighteen shops are done, but the learning has only just begun. Every production bug, every new model, every scaling problem — a new card, a new pattern. The bazaar never closes; it only opens new doors. Go now — build your own workshop beyond the bazaar."</div>`,
+<div class="dialogue en">Begum Aisha looks at the loom and sets the last card. "When one pattern ends, the weaver doesn't stop — she draws a new thread, cuts a new card. So it is with you. Eighteen shops are done, but the learning has only just begun. Every production bug, every new model, every scaling problem — a new card, a new pattern. The bazaar never closes; it only opens new doors. Go now — build your own workshop beyond the bazaar."</div>
+
+<div class="secret-box">🃏 বিট = সবচেয়ে ছোট সত্য — ০ বা ১। AND/OR/XOR/shift দিয়ে দ্রুত গণনা, মেমোরি সাশ্রয়। Bloom filter-এর ভিত্তি।</div>`,
   senior:{
     title:"Bit Manipulation — Production Patterns",
     body:`

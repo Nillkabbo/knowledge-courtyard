@@ -21,6 +21,8 @@ doors.push({
 <p class="scene-setting en">The fifth shop. The caravan line. Outside, a camel caravan — single file, one after another. Inside, a pile of goods — one on another, the last placed on top. Caravan-master Omar said — "Two things. The line — who came first goes first. The pile — what was placed last is taken first."</p>
 
 <div class="dialogue">মুক্তোর মালা বলেছিলেন — এক সারি, pointer দিয়ে গাঁথা। কিন্তু আমি বলি — কখনো ক্রম গুরুত্বপূর্ণ। কে আগে? কে পরে? Stack আর queue — দুটোই ক্রমের নিয়ম। সহজ, কিন্তু এগুলো ছাড়া DFS/BFS বোঝা যায় না।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> ওমর Python list-এ <code>pop(0)</code> দিয়ে queue বানিয়ে ১,০০,০০০ inference request প্রসেস করতে গিয়েছিলেন। প্রতিটা <code>pop(0)</code> পুরো list এক ঘর সরিয়ে দেয় — O(n)। মোট O(n²), ৩৮ সেকেন্ড ধরে ঝুলে রইল। তারপর <code>collections.deque</code> ব্যবহার করলেন — দুই পাশেই O(1), একই কাজ ০.০৪ সেকেন্ডে। ভুল ডেটা স্ট্রাকচার শতগুণ ধীর করে দেয়।</div></div>
 <div class="dialogue en">"The pearl necklace maker said — a chain, threaded by pointers. But I say — sometimes order matters. Who's first? Who's last? Stack and queue — two rules of order. Simple, but without them, DFS and BFS cannot be understood."</div>
 
 <div class="diagram">
@@ -157,7 +159,9 @@ THE TWO GREAT ALGORITHMS — DFS ও BFS:
 <div class="dialogue en">"You're an AI engineer. Stack = autograd backprop chain (reverse-mode autodiff walks backward). Queue = inference batching, training data shuffling, RL replay buffer. When PyTorch/TensorFlow calls <code>loss.backward()</code> — it's a stack-based traversal. These two simple structures span all of AI engineering."</div>
 
 <div class="dialogue">সাফ — সারি, পংক্তি। কুরআনে আল্লাহ বলেন — "নিশ্চয়ই আল্লাহ তাদের ভালোবাসেন যারা সারিবদ্ধ হয়ে লড়ে, যেন ঢালাই করা দেয়াল।" (৬১:৪)। সারি — শৃঙ্খলা। কে আগে, কে পরে — এই শৃঙ্খলা ছাড়া কাফেলা ছড়িয়ে যায়। Stack ও queue — ক্রমের দুই রূপ, দুই নিয়ম। সঠিক নিয়ম বেছে নাও।</div>
-<div class="dialogue en">"Saff — row, line. Allah says — 'Allah loves those who fight in ranks, as if a cemented wall.' (61:4). The line — discipline. Who's first, who's next — without this discipline, the caravan scatters. Stack and queue — two forms of order, two rules. Choose the right one."</div>`,
+<div class="dialogue en">"Saff — row, line. Allah says — 'Allah loves those who fight in ranks, as if a cemented wall.' (61:4). The line — discipline. Who's first, who's next — without this discipline, the caravan scatters. Stack and queue — two forms of order, two rules. Choose the right one."</div>
+
+<div class="secret-box">🐪 Stack = শেষে রাখা প্রথম বেরোয় (LIFO)। Queue = আগে এসেছে আগে যায় (FIFO)। এই দুই সরল নিয়মই DFS/BFS-এর মূল।</div>`,
   senior:{
     title:"Stack & Queue — Production Patterns",
     body:`
@@ -218,6 +222,8 @@ doors.push({
 <p class="scene-setting en">The sixth shop. The Locksmith's Vault. Clink of iron keys, smell of oil, rows of metal boxes. Ustad Idris stands — keys in hand, hundreds of boxes before him. Each key opens one specific box. No searching — direct access.</p>
 
 <div class="dialogue">টালি নির্মাতা বলেছিলেন — সারিতে থাকলে সরাসরি পাওয়া যায়, index দিয়ে। কিন্তু আমি বলি — index মনে রাখা কঠিন। আমি চাই নাম দিয়ে খুঁজি। "ইদ্রিসের ধন" বললেই — সরাসরি সেই বাক্সে যাই। কীভাবে? Hash।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> ইদ্রিস linear search দিয়ে ৫ লাখ user-এর মধ্যে email খুঁজতে গিয়েছিলেন। প্রতিটা খোঁজায় গড়ে ২.৫ লাখ তুলনা, ৩ সেকেন্ড। প্রতিদিন হাজার খোঁজা — সার্ভার ক্র্যাশ। তারপর hash map (dict) ব্যবহার করলেন — key থেকে সরাসরি ঠিকানা। O(1) lookup, ০.০০০১ সেকেন্ড। ৩০,০০০ গুণ দ্রুত। একই ডেটা, ভিন্ন পদ্ধতি — আসমান-জমিন পার্থক্য।</div></div>
 <div class="dialogue en">"The tile maker said — in a row, you find directly by index. But I say — indices are hard to remember. I want to search by name. Say 'Idris's treasure' — go directly to that box. How? Hashing."</div>
 
 <div class="diagram">
@@ -308,7 +314,9 @@ from collections import defaultdict
 graph = defaultdict(list)</div>
 
 <div class="dialogue">মিযান — দাঁড়িপাল্লা। আল্লাহ বলেছেন — "আমরা কায়িম করেছি মিযান।" (৫৫:৭)। প্রতিটা কিছুর একটা নিভুল মান আছে। Hash function সেই মিযানের মতো — প্রতিটা key-কে তার সঠিক স্থানে রাখে। ভুল নেই — যদি hash ভালো হয়।</div>
-<div class="dialogue en">"Mizan — the scale. Allah said — 'We established the balance.' (55:7). Everything has a precise measure. The hash function is like that scale — placing each key in its correct position. No error — if the hash is good."</div>`,
+<div class="dialogue en">"Mizan — the scale. Allah said — 'We established the balance.' (55:7). Everything has a precise measure. The hash function is like that scale — placing each key in its correct position. No error — if the hash is good."</div>
+
+<div class="secret-box">🔑 Hash map = চাবি → ঠিকানা → ধন। O(1) lookup। Caching-এর ভিত্তি।</div>`,
   senior:{
     title:"Dict Internals — Senior Engineer কী জানে",
     body:`
@@ -367,6 +375,8 @@ doors.push({
 <p class="scene-setting en">The seventh shop. The Spice Merchant's stall. The bite of dried chili, warmth of nutmeg, sharpness of mace. Haji Mukhtar stands — wooden shelves before him, spices on each, but not fully sorted. One rule only — the sharpest spice always on top. The rest wherever. But the top is always the best.</p>
 
 <div class="dialogue">তালা নির্মাতা বলেছিলেন — নাম দিয়ে খোঁজা যায়, O(1)-এ। কিন্তু আমি বলি — কখনো নাম লাগে না। কখনো লাগে শুধু সেরাটা। সবচেয়ে ঝাঁঝালো মসলা কোনটা? সব নাম মনে রাখার দরকার নেই — শুধু উপরেরটা নাও।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> মুহতার RAG সিস্টেমে ৫০,০০০ document থেকে সেরা ৫টা খোঁজার জন্য পুরো list sort করতে গিয়েছিলেন — O(n log n) = ৭.৮ লাখ অপারেশন। প্রতিটা query-তে ১.২ সেকেন্ড। তারপর size-5 heap ব্যবহার করলেন — O(n log k) = মাত্র ৮,৫০০ অপারেশন। একই ফলাফল ০.০৩ সেকেন্ডে। সব সাজানো দরকার নেই — শুধু শীর্ষ কয়টা ধরে রাখলেই হয়।</div></div>
 <div class="dialogue en">"The locksmith said — find by name in O(1). But I say — sometimes you don't need names. Sometimes you need only the best. Which spice is sharpest? No need to remember all names — just take the top."</div>
 
 <div class="diagram">
@@ -458,7 +468,9 @@ best = heapq.nlargest(2, docs, key=lambda x: x[1])</div>
 </div>
 
 <div class="dialogue">আফদাল — শ্রেষ্ঠ। কুরআনে আল্লাহ বলেন — "তোমরা মানুষের জন্য প্রকাশিত সর্বোত্তম জাতি।" (৩:১১০)। শ্রেষ্ঠ হওয়া শুধু ব্যক্তিগত নয় — দায়িত্ব। Heap-ও তেমনি — সবচেয়ে গুরুত্বপূর্ণকে উপরে রাখে, কিন্তু সেটা দায়িত্ব — সেরাটা আগে দিতে হবে। Priority মানে দায়িত্ব।</div>
-<div class="dialogue en">"Afdal — the best. Allah says in the Quran — 'You are the best nation produced for mankind.' (3:110). Being the best isn't just personal — it's responsibility. The heap is the same — it puts the most important on top, but that's a duty — the best must be served first. Priority means responsibility."</div>`,
+<div class="dialogue en">"Afdal — the best. Allah says in the Quran — 'You are the best nation produced for mankind.' (3:110). Being the best isn't just personal — it's responsibility. The heap is the same — it puts the most important on top, but that's a duty — the best must be served first. Priority means responsibility."</div>
+
+<div class="secret-box">🌶️ Heap = সবসময় সবচেয়ে গুরুত্বপূর্ণ উপরে। Top-K retrieval-এর ভিত্তি।</div>`,
   senior:{
     title:"heapq vs sorted — কখন কোনটা? (complexity স্পষ্ট করে)",
     body:`
@@ -525,6 +537,8 @@ doors.push({
 <p class="scene-setting en">The eighth shop. The Genealogist's chamber. Smell of old paper, ink stains, a vast family tree on the wall — root to branch, branch to limb, limb to twig. Shaykh Abdur Rahman sits — spectacles on nose, pen in hand, the lineage spread before him. Each person is a node, parent to child — like branches.</p>
 
 <div class="dialogue">কাফেলা প্রধান বলেছিলেন — ক্রম গুরুত্বপূর্ণ, কে আগে কে পরে। কিন্তু আমি বলি — কখনো সম্পর্ক শৃঙ্খল নয়, বৃক্ষ। একটা মূল থেকে শাখা বেরোয়, প্রতিটা শাখা থেকে আরও। কোনো শাখা বৃত্তে ফিরে যায় না — উপরে উঠে বা নিচে নামে। এটাই tree — cycle নেই।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> আব্দুর রহমান সাজানো ডেটা (১, ২, ৩, ৪...১০০০) ক্রমানুসারে BST-তে insert করেছিলেন। ফলাফল? প্রতিটা node শুধু ডানে গেছে — একটা linked list হয়ে গেছে। search(1000) এখন O(n) = ১০০০ ধাপ। তারপর self-balancing tree (AVL) ব্যবহার করলেন — প্রতিটা insert-এ স্বয়ংক্রিয় ভারসাম্য, O(log n) থাকে। সাজানো ইনপুট সাধারণ BST-কে ধ্বংস করে — ভারসাম্য বাঁচায়।</div></div>
 <div class="dialogue en">"The caravan master said — order matters, who's first who's next. But I say — sometimes relationships aren't a chain, but a tree. From one root, branches grow, each branch splitting further. No branch loops back — it only goes up or down. This is a tree — no cycles."</div>
 
 <div class="diagram">
@@ -566,7 +580,9 @@ doors.push({
 <div class="dialogue en">"You're an AI engineer. Tokenization speaks trie — BPE (Byte Pair Encoding) inference walks a trie/prefix-match structure over merge rules. Decision trees, random forests — all trees. Database indexes are children of the same idea — though production databases (Postgres, MySQL) usually don't use a pure BST but a B-tree/B+-tree, which packs many keys per node instead of two, cutting disk I/O. Family trees aren't just on paper — in code too."</div>
 
 <div class="dialogue">নসল — বংশধর। কুরআনে বংশের গুরুত্ব বারবার এসেছে — প্রতিটা প্রজন্ম আগের প্রজন্মের ধারক। Tree-ও তেমনি — প্রতিটা child তার parent-এর উত্তরাধিকারী। Root থেকে ডাল — একটাই উৎস, কিন্তু অসংখ্য শাখা।</div>
-<div class="dialogue en">"Nasl — descendants. The Quran repeatedly emphasizes lineage — each generation carries the previous. The tree is the same — each child inherits from its parent. From root to branch — one source, but countless branches."</div>`,
+<div class="dialogue en">"Nasl — descendants. The Quran repeatedly emphasizes lineage — each generation carries the previous. The tree is the same — each child inherits from its parent. From root to branch — one source, but countless branches."</div>
+
+<div class="secret-box">📜 Tree = শাখাবিহীন সম্পর্ক। BST = বাঁয়া ছোট, ডানা বড়। Trie = অক্ষর ধরে ধরে শাখা। O(log n) সন্ধান।</div>`,
   senior:{
     title:"Recursive vs Iterative Tree Traversal",
     body:`

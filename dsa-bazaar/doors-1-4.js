@@ -158,6 +158,8 @@ doors.push({
 <p class="scene-setting en">The second shop. The Arabesque Carver's wall. Geometric patterns rising from the plaster — a star, within it another, within it more — seemingly to infinity, but stopping at a point. Ustad Bilal works with a chisel. "One pattern," he says. "Repeated. Each smaller layer. There's an end — until then, the same form."</p>
 
 <div class="dialogue">জ্যোতির্বিদ শিখিয়েছিলেন — মাপো, স্কেল ভাবো। আমি বলি — স্কেল ছোট হতে থাকলে একই সমস্যা বারবার আসে। একটা গাছের ডাল — ডাল থেকে ছোট ডাল, তার থেকে আরও ছোট। একই আকৃতি, ছোট স্কেল। একে recursion বলে — নিজের অনুলিপি, ছোট করে।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> বিলাল naive recursion দিয়ে fib(35) বের করতে গিয়েছিলেন। ২৯ মিলিয়ন+ কল, ৬ সেকেন্ড ধরে ঝুলে রইল। কারণ একই সমস্যা বারবার হিসাব হচ্ছিল। তারপর memoization (DP, দোকান ১৫) যোগ করলেন — মাত্র ৩৫টা কলে ০.০০১ সেকেন্ডে শেষ। হাজার গুণ দ্রুত। কারণ প্রতিটা উত্তর মনে রাখা হলো, পুনরায় হিসাব হলো না।</div></div>
 <div class="dialogue en">"The astrolabe maker taught — measure, think of scale. I say — as scale shrinks, the same problem repeats. A tree's branch — from it a smaller branch, from that a smaller one. Same shape, smaller scale. This is recursion — a copy of itself, made smaller."</div>
 
 <div class="dialogue">প্রতিটা recursion-এ দুটো অংশ থাকে। Base case — যেখানে থামো। ছোট থেকে ছোট, শেষ পর্যন্ত এসে থামতে হয়। Recursive case — নিজেকে ছোট ইনপুটে ডাকো। Factorial: 5! = 5 × 4!, আর 4! = 4 × 3!, ... 1! = 1 (base case)। প্রতিটা ধাপে সমস্যা ছোট হয় — একদিন base case-এ পৌঁছায়।</div>
@@ -270,7 +272,9 @@ THREE CLASSIC PATTERNS:
 <div class="dialogue en">"But beware — dolls within dolls can exist, but cannot go to infinity. Similarly, recursion without a base case makes the problem infinitely smaller but never stops — Stack Overflow. Like standing between two mirrors seeing endless reflections, until the glass cracks."</div>
 
 <div class="dialogue">আয়াত — নিদর্শন। কুরআনে বারবার বলা হয়েছে — "আকাশ ও পৃথিবীর সৃষ্টিতে, নিজেদের সৃষ্টিতে... চিন্তা করো না?" প্রতিটা নিদর্শনের ভেতরে আরেকটা নিদর্শন — কোষের ভেতরে কোষ, পরমাণুর ভেতরে পরমাণু, সূর্যের চারপাশে গ্রহ, গ্রহের চারপাশে উপগ্রহ। একই কাঠামো — ছোট স্কেলে। আত্তুবুহ — ফিরে দেখা — recursion-এর ফেরার পথের মতো।</div>
-<div class="dialogue en">"Ayah — a sign. The Quran repeats — 'In the creation of the heavens and earth, in your own creation... will you not reflect?' Within each sign, another sign — cell within cell, atom within atom, planets around a sun, moons around a planet. The same structure — at smaller scale. Recursive creation — like the return path of recursion."</div>`,
+<div class="dialogue en">"Ayah — a sign. The Quran repeats — 'In the creation of the heavens and earth, in your own creation... will you not reflect?' Within each sign, another sign — cell within cell, atom within atom, planets around a sun, moons around a planet. The same structure — at smaller scale. Recursive creation — like the return path of recursion."</div>
+
+<div class="secret-box">🌿 Recursion = ফাংশন নিজেকে ডাকে, ছোট সমস্যায়। দুটো অংশ: base case (থামো) + recursive case (নিজেকে ডাকো, ছোট করে)।</div>`,
   senior:{
     title:"Recursion বনাম Iteration — Senior Choice",
     body:`
@@ -341,6 +345,8 @@ doors.push({
 <p class="scene-setting en">The third shop. The Tile Maker's Workshop. Smell of clay, heat from the kiln, the clink of arranged tiles. Ustad Kasem works — laying tiles in rows. Each has an index — 0, 1, 2, 3. He says: "In a row, any tile is found directly. Scattered, you must search."</p>
 
 <div class="dialogue">আরবেস্ক খোদাইকারী শিখিয়েছিলেন — ছোট করে নিজেকে ডাকো। কিন্তু আমি বলি — সবচেয়ে সহজ কাঠামো আগে। এক সারি। ধারাবাহিক মেমোরিতে। প্রতিটা উপাদানের একটা ক্রম — index। "তৃতীয় টালি" বললেই সরাসরি সেই ঠিকানায় — এক ধাপে। একে বলে O(1) — ধ্রুবক সময়।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> কাসেম Python list দিয়ে ১ লাখ embedding নিয়ে matrix multiply করতে গিয়েছিলেন — ৪৭ সেকেন্ড। কারণ প্রতিটা উপাদান আলাদা Python object, মেমোরিতে ছড়িয়ে ছিটিয়ে। তারপর NumPy array দিয়ে একই কাজ — ধারাবাহিক মেমোরি, C-লেভেল vectorization — ০.১২ সেকেন্ড। ৪০০ গুণ দ্রুত। ধারাবাহিক মেমোরি শুধু সুবিধা নয়, কর্মক্ষমতার চাবি।</div></div>
 <div class="dialogue en">"The arabesque carver taught — call yourself on smaller input. But I say — the simplest structure first. One row. Contiguous in memory. Each element has an index. Say 'third tile' — go directly to that address, one step. This is O(1) — constant time."</div>
 
 <div class="diagram">
@@ -413,7 +419,9 @@ Index rules:
 </div>
 
 <div class="dialogue">কুরআনে আছে — "আর আমি সৃষ্টি করেছি সব কিছু এক নির্দিষ্ট পরিমাণে।" (৫৪:৪৯)। প্রতিটা জিনিসের একটা জায়গা আছে — একটা ক্রম আছে। Array সেই শৃঙ্খলার ছায়া — প্রতিটা উপাদানের একটা নির্দিষ্ট স্থান। জ্যোতির্বিদ মাপেন — আমি সাজাই।</div>
-<div class="dialogue en">"The Quran says — 'And all things We created with a destined measure.' (54:49). Everything has its place — an order. The array is a shadow of that discipline — each element has a specific position. The astrolabe maker measures — I arrange."</div>`,
+<div class="dialogue en">"The Quran says — 'And all things We created with a destined measure.' (54:49). Everything has its place — an order. The array is a shadow of that discipline — each element has a specific position. The astrolabe maker measures — I arrange."</div>
+
+<div class="secret-box">🧱 Array = ধারাবাহিক স্থান। O(1) অ্যাক্সেস। সব AI ডেটা শেষে টেনসর।</div>`,
   senior:{
     title:"Python List vs NumPy Array — কখন কোনটা?",
     body:`
@@ -470,6 +478,8 @@ doors.push({
 <p class="scene-setting en">The fourth shop. The pearl necklace workshop. Soft sounds — threading, stringing pearls. Craftswoman Nusrat holds a long necklace — each pearl separate, but joined by thread. "The tile maker arranges in a row," she said. "I string — one by one, each looking to the next."</p>
 
 <div class="dialogue">টালি নির্মাতা বলেছিলেন — array, সব একসাথে মেমরিতে। কিন্তু আমি বলি — সব কি একসাথে থাকে? মাঝে ঢোকাতে হলে পুরো সারি সরাতে হয়। আমার মালায়? একটা pointer বদলাও — নতুন মুক্তো বসে গেছে। ঢোকাতে O(1), বাদ দিতে O(1)।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> নুসরাত array দিয়ে ৫০,০০০ উপাদানের chat history ম্যানেজ করতে গিয়েছিলেন। মাঝে প্রতিটা message insert করতে গিয়ে গড়ে ২৫,০০০ উপাদান সরাতে হচ্ছিল — O(n) per insert। ব্যবহারকারীর জন্য অসহনীয় lag। তারপর doubly linked list ব্যবহার করলেন — শুধু pointer বদলে O(1)-এ insert। ৫০,০০০-এ যা ৮ সেকেন্ড নিত, এখন ০.০০২ সেকেন্ড।</div></div>
 <div class="dialogue en">"The tile maker said — array, all together in memory. But I say — must everything sit together? To insert in the middle, the whole row shifts. In my necklace? Change one pointer — the new pearl sits in place. Insert O(1), delete O(1)."</div>
 
 <div class="diagram">
@@ -554,7 +564,9 @@ WHERE AI/ML USES LINKED LISTS:
   • Tensor padding / variable-length sequences (RNN time steps)</div>
 
 <div class="dialogue">সিলসিলা — শৃঙ্খল, সংযোগ। কুরআনে আল্লাহ বলেন — "তোমরা আল্লাহর রশি দৃঢ়ভাবে ধরো, সবাই একসাথে।" (৩:১০৩)। রশি না থাকলে মুক্তো ছড়িয়ে যায় — কিন্তু সংযুক্ত থাকলে এক মালা। Linked list-ও তেমনি — প্রতিটা node একটা pointer দিয়ে যুক্ত, ভাঙলে পুরো শৃঙ্খল ছিন্ন।</div>
-<div class="dialogue en">"Silsila — chain, connection. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Without the thread, pearls scatter — but joined, they form one necklace. The linked list too — each node connected by a pointer; break one, the whole chain severs."</div>`,
+<div class="dialogue en">"Silsila — chain, connection. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Without the thread, pearls scatter — but joined, they form one necklace. The linked list too — each node connected by a pointer; break one, the whole chain severs."</div>
+
+<div class="secret-box">📿 Array = একসাথে সাজানো বাক্স। Linked list = এক একটা node, প্রতিটা পরেরটার ঠিকানা জানে। ঢোকাতে/বাদ দিতে O(1) — কিন্তু খুঁজতে O(n)।</div>`,
   senior:{
     title:"When to ACTUALLY Use a Linked List",
     body:`

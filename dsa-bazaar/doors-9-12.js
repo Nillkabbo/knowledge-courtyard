@@ -21,6 +21,8 @@ doors.push({
 <p class="scene-setting en">The ninth shop. The Weaver's workshop. Rustle of thread, buckets of dye, rhythm of the loom. Begum Zainab works — thousands of threads together, but each thread goes from one node to another. Some threads go to one destination, some branch into tributaries. The cloth on the loom is actually a graph — a web of nodes and edges.</p>
 
 <div class="dialogue">বংশবিদ বলেছিলেন — সম্পর্ক বৃক্ষের মতো, cycle নেই। কিন্তু আমি বলি — কখনো সম্পর্ক বৃক্ষ নয়, জাল। এক নোড থেকে অনেক শাখা, কোনোটা আবার ফিরে আসে। কোন সুতো ধরে যাবে? কোন পথ সবচেয়ে ছোট? এটাই graph-এর প্রশ্ন — সম্পর্ক আর পথ।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> জাইনাব BFS-এ <code>visited</code> set ভুলে গিয়েছিলেন। ফলাফল? একই নোড বারবার ভিজিট — infinite loop। ১০,০০০ নোডের graph-এ প্রোগ্রাম ক্র্যাশ। তারপর <code>visited</code> যোগ করলেন — প্রতিটা নোড একবারই দেখা হয়, O(V+E)। সমস্যা অ্যালগরিদমে নয় ছিল — একটা ছোট ভুলে পুরো সিস্টেম ক্র্যাশ। visited set ছাড়া graph traversal = আত্মহত্যা।</div></div>
 <div class="dialogue en">"The genealogist said — relationships are a tree, no cycles. But I say — sometimes relationships aren't a tree, but a web. From one node, many branches, some returning. Which thread to follow? Which path is shortest? This is the graph's question — relationships and paths."</div>
 
 <div class="diagram">
@@ -159,7 +161,9 @@ def bfs(graph, start, target):
 <div class="dialogue en">"You're an AI engineer — graphs are everywhere. Knowledge graphs: concepts and their relationships. Agent workflows: Agent A → Tool B → Agent C — a DAG. RAG retrieval: going from query to related documents — graph traversal. All relationships, all paths."</div>
 
 <div class="dialogue">উম্মাহ — সম্প্রদায়। কুরআনে আল্লাহ বলেন — "নিশ্চয় এই তোমাদের উম্মাহ, একই উম্মাহ, আর আমি তোমাদের প্রতিপালক।" (২১:৯২)। প্রতিটা মানুষ একটা নোড, সম্পর্ক হলো edge। কেউ একা নয় — সবাই সংযুক্ত। Graph হলো সেই সংযোগের গাণিতিক রূপ — সম্পর্কের জাল।</div>
-<div class="dialogue en">"Ummah — community. Allah says in the Quran — 'Indeed this, your religion [ummah], is one religion, and I am your Lord.' (21:92). Each person is a node, relationships are edges. No one is alone — all connected. The graph is the mathematical form of that connection — the web of relationships."</div>`,
+<div class="dialogue en">"Ummah — community. Allah says in the Quran — 'Indeed this, your religion [ummah], is one religion, and I am your Lord.' (21:92). Each person is a node, relationships are edges. No one is alone — all connected. The graph is the mathematical form of that connection — the web of relationships."</div>
+
+<div class="secret-box">🧵 Graph = সম্পর্কের জাল। Adjacency list = প্রতিটা node তার প্রতিবেশী জানে। BFS = সবচেয়ে কাছের পথ।</div>`,
   senior:{
     title:"Adjacency List vs Matrix — কখন কোনটা?",
     body:`
@@ -225,6 +229,8 @@ doors.push({
 <p class="scene-setting en">The tenth shop. The clan elder's council. A large round table, senior elders around it. On the wall, clan diagrams — small circles, several joined into one, some separate. "Not a web," Elder Shafiq said, "not a tree either. A clan. Each clan is a set — no one belongs to two, once joined they don't separate."</p>
 
 <div class="dialogue">তাঁতি বলেছিলেন — জাল, যেখানে পথ আছে। কিন্তু আমি বলি — কখনো পথ লাগে না। শুধু প্রশ্ন — দুজন কি একই গোত্রের? হ্যাঁ বা না। পথ খুঁজতে হয় না — শুধু গোত্রপতির নাম মেলাও। দ্রুত, সরল। এটাই গোত্রের কাঠামো — disjoint set।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> শাফিক path compression ছাড়া naive union-find ব্যবহার করেছিলেন। ১ লাখ উপাদানে প্রতিটা <code>find()</code> O(n) — লম্বা শৃঙ্খল ধরে শেষ পর্যন্ত হাঁটা। ৫০,০০০ query-তে ১২ সেকেন্ড। তারপর path compression যোগ করলেন — প্রতিটা <code>find()</code> প্রায় O(1), amortized O(α(n))। একই কাজ ০.০৮ সেকেন্ডে। ১৫০ গুণ দ্রুত। একটা ছোট optimization কত বড় পার্থক্য আনে।</div></div>
 <div class="dialogue en">"The weaver said — a web, where paths matter. But I say — sometimes you don't need a path. Just the question — are two people of the same clan? Yes or no. No path-finding — just match the elder's name. Fast, simple. This is the clan's structure — the disjoint set."</div>
 
 <div class="diagram">
@@ -295,7 +301,9 @@ WHY "NO SPLIT":
 <div class="dialogue en">"You're an AI engineer — union-find hides inside your data pipelines too. Entity resolution: are two records the same person? If they match, union them — the surviving roots are the unique entities. Embedding clustering: if two vectors' similarity crosses a threshold, union them — the connected components become the clusters (the fastest way to implement single-linkage clustering). The same trick works for streaming deduplication — when a new record arrives, just union it in, no need to rescan the whole dataset."</div>
 
 <div class="dialogue">জামাত — দল, সম্প্রদায়। ইসলামে জামাতের গুরুত্ব অপরিসীম — "একজন আরেকজনের ভাই," "এক জামাতে থাকো।" গোত্র একবার যুক্ত হলে আলাদা হয় না — সম্প্রদায়ের বাঁধন শক্ত। Union-Find-এর সৌন্দর্য — একবার union, চিরস্থায়ী। find শুধু জিজ্ঞেস করে — তুমি কার সাথে যুক্ত?</div>
-<div class="dialogue en">"Jamaat — group, community. In Islam, the community's importance is boundless — 'one is brother to another,' 'stay in the group.' Once clans join, they don't separate — the bond of community is strong. The beauty of union-find — once unioned, forever. Find only asks — who are you connected to?"</div>`,
+<div class="dialogue en">"Jamaat — group, community. In Islam, the community's importance is boundless — 'one is brother to another,' 'stay in the group.' Once clans join, they don't separate — the bond of community is strong. The beauty of union-find — once unioned, forever. Find only asks — who are you connected to?"</div>
+
+<div class="secret-box">🏛️ হাজার উপাদান — কে কোন গোত্রে? Union-Find: union ও find, দুটোই প্রায় O(1) (path compression + union by rank)।</div>`,
   senior:{
     title:"Union-Find in Practice",
     body:`
@@ -359,6 +367,8 @@ doors.push({
 <p class="scene-setting en">The eleventh shop. An ancient library. Scent of paper, leather bindings, ordered shelves. Katib Yusuf stands — tall, lean, patience in his eyes. Before him: thousands of books — but all sorted. Alphabetically. None scattered. Each shelf a specific letter.</p>
 
 <div class="dialogue">বংশবিদ বলেছিলেন — বৃক্ষে খোঁজা যায়, O(log n)-এ। কিন্তু আমি বলি — বৃক্ষ লাগে না যদি তালিকা সাজানো থাকে। Binary search — মাঝে দেখো, অর্ধেক বাদ দাও, আবার মাঝে। প্রতি ধাপে অর্ধেক কমে। হাজার বইয়ের মধ্যে ১০ ধাপে। মিলিয়নে ২০ ধাপে। (জ্যোতির্বিদের O(log n) কথা মনে আছে?)</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> ইউসুফ অসাজানো ডেটায় binary search চালিয়েছিলেন। মাঝের value দেখে অর্ধেক বাদ দিচ্ছিলেন — কিন্তু ডেটা সাজানো নয়, তাই সঠিক উত্তর বাদ পড়ে গেছে। ভুল ফলাফল, কোনো error নয় — চুপচাপ ভুল। তারপর আগে <code>sorted()</code> দিয়ে সাজালেন, তারপর binary search। সাজানো না থাকলে binary search কাজ করে না — শুধু ভুল দেয়। সাজানো প্রথম, খোঁজা পরে।</div></div>
 <div class="dialogue en">"The genealogist said — trees give O(log n) search. But I say — no tree needed if the list is sorted. Binary search — check the middle, discard half, check again. Halves each step. A thousand books in 10 steps. A million in 20. (Remember the astrolabe maker's O(log n)?)"</div>
 
 <div class="diagram">
@@ -400,7 +410,9 @@ idx = bisect.bisect_left(sorted_list, 7)  # → 3
 # Found in O(log n)!</div>
 
 <div class="dialogue">কিস্ত — ন্যায়বিচার। আল্লাহ বলেন — "হে ঈমানদারগণ, তোমরা আল্লাহর জন্য ন্যায়ের সাক্ষী হয়ে দৃঢ়ভাবে দাঁড়াও।" (৫:৮)। ন্যায়বিচার মানে প্রতিটা জিনিসকে তার সঠিক স্থানে রাখা। Sorting হলো সেই কিস্তের ছায়া — প্রতিটা উপাদানকে তার স্থানে। Binary search তখনই কাজ করে যখন কিস্ত প্রতিষ্ঠিত — যখন সবকিছু তার জায়গায়।</div>
-<div class="dialogue en">"Qist — justice. Allah says — 'O you who have believed, be persistently standing firm for Allah, witnesses in justice.' (5:8). Justice means placing each thing in its correct position. Sorting is the shadow of qist — each element in its place. Binary search works only when qist is established — when everything is where it belongs."</div>`,
+<div class="dialogue en">"Qist — justice. Allah says — 'O you who have believed, be persistently standing firm for Allah, witnesses in justice.' (5:8). Justice means placing each thing in its correct position. Sorting is the shadow of qist — each element in its place. Binary search works only when qist is established — when everything is where it belongs."</div>
+
+<div class="secret-box">📚 সাজানো তালিকায় খোঁজ = O(log n)। অসাজানো = O(n)। সাজানো = ক্ষমতা।</div>`,
   senior:{
     title:"Python Sorting — Senior Patterns",
     body:`
@@ -464,6 +476,8 @@ doors.push({
 <p class="scene-setting en">The twelfth shop. The stone splitter's mountain. Outside, a vast pile of stone — like a small mountain. Sound of hammers, dust haze, sweaty bodies. Haji Tariq stands — huge hammer in hand, a giant stone before him. He doesn't move it at once. He breaks it — into two. Then each half again. Until small enough to move easily.</p>
 
 <div class="dialogue">গ্রন্থাগারিক শিখিয়েছিলেন — সাজাও, তারপর দ্রুত খোঁজো। কিন্তু আমি বলি — সাজানোর নিজে একটা বড় কাজ। বিশাল তালিকা সাজাতে হলে? একবারে নয়। ভাগ করো। অর্ধেক। তারপর অর্ধেক। যতক্ষণ না প্রতিটা টুকরো এত ছোট যে সাজানো সহজ। তারপর জোড়ো।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> তারিক bubble sort দিয়ে ৫০,০০০ log entry সাজাতে গিয়েছিলেন — O(n²) = ২.৫ বিলিয়ন অপারেশন। ৪৭ সেকেন্ড, সার্ভার timeout। তারপর merge sort ব্যবহার করলেন — O(n log n) = মাত্র ৮ লাখ অপারেশন। একই ডেটা ০.৩ সেকেন্ডে। ১৫০ গুণ দ্রুত। বড় সমস্যায় O(n²) মৃত্যুদণ্ড — D&C জীবনদান।</div></div>
 <div class="dialogue en">"The librarian taught — sort, then search fast. But I say — sorting itself is big work. To sort a vast list? Not all at once. Divide it. Halve it. Then halve again. Until each piece is so small that sorting is easy. Then merge."</div>
 
 <div class="diagram">
@@ -610,7 +624,9 @@ WHY O(n log n):
 <div class="dialogue en">"You're an AI engineer. MapReduce — D&C at vast scale: map (divide), reduce (combine). Parallel training — split data across GPUs, compute gradients each, combine. Parallel merge sort — across many cores. Big problems are never done by one hand — divide, conquer."</div>
 
 <div class="dialogue">ফুরকান — যে বিভাজক, যে সত্যকে মিথ্যা থেকে আলাদা করে। আল্লাহ কুরআনকে ফুরকান বলেছেন — কারণ এটি আলাদা করে। পাথর বিভাজকও ফুরকানের ছায়া — বড়কে ছোট টুকরোয় বিভাজন, যাতে প্রতিটা সহজ হয়। সমস্যা বড় হলে ভয় নয় — ভাগ করো। প্রতিটা অংশ পরিষ্কার হয়।</div>
-<div class="dialogue en">"Furqan — the divider, that which separates truth from falsehood. Allah called the Quran Furqan — because it separates. The stone splitter is the shadow of furqan — dividing the large into small pieces, so each becomes easy. A big problem is no fear — divide it. Each piece becomes clear."</div>`,
+<div class="dialogue en">"Furqan — the divider, that which separates truth from falsehood. Allah called the Quran Furqan — because it separates. The stone splitter is the shadow of furqan — dividing the large into small pieces, so each becomes easy. A big problem is no fear — divide it. Each piece becomes clear."</div>
+
+<div class="secret-box">⛏️ বড় সমস্যা ভাগ করো, আলাদে সমাধান করো, জোড়ো। তিন ধাপ: divide → conquer → combine। O(n log n)।</div>`,
   senior:{
     title:"Merge Sort বনাম Quick Sort — Senior Choice",
     body:`
