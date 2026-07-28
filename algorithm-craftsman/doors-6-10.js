@@ -427,6 +427,8 @@ print(f"Matching docs: {results}")  # [0, 1]
 
 <div class="dialogue">Book ২-এর অলিগলির পথিক (Door ১৬) backtracking শিখিয়েছিলেন — একটা পথ বেছো, শেষ পর্যন্ত যাও, মৃত প্রান্তে ফিরে এসো। এখন দেখলে সার্চ ইঞ্জিনে wildcard query-তে এটা কেন দরকার? কারণ '*'-এর অর্থ অস্পষ্ট — কতগুলো শব্দ? সব সম্ভাবনা চেষ্টা করতে হয়। কিন্তু প্রতিটা ধাপে pruning — যদি বর্তমান পথে কোনো আশা না থাকে, ফিরে এসো।</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> ইউসুফ প্রথমে wildcard ছাড়াই query parser বানিয়েছিলেন। কিন্তু ইউজার algorithm * sorting লিখলো — '*' এর অর্থ কী? ইউসুফ regex দিয়ে সব ম্যাচ করতে গেলেন — O(2^n) সম্ভাবনা। ১০ শব্দে ১০২৪ path। ২০ শব্দে ১০ লক্ষ। Server আটকে গেলো। তারপর pruning যোগ করলেন — পথে কোনো আশা না থাকলে ফিরে এসো, সেই path explore করো না। সময় কমে O(2^n) থেকে O(2^k) — যেখানে k অনেক ছোট।</div></div>
+
 <div class="diagram">
   <div class="diag-title">Backtracking Wildcard — 'algorithm * sorting' পথ অন্বেষণ</div>
   <svg viewBox="0 0 640 290" xmlns="http://www.w3.org/2000/svg">
@@ -660,6 +662,8 @@ doors.push({
 <p class="scene-setting en">Day ten. Guard Hamza arrives. In his hand: a massive sieve — thousands of tiny slots, each with a lamp. A lit lamp means something was caught in that slot. Hamza takes each URL from the crawler (Door 2) — has this been seen before? Drop it through the sieve. The lamps will tell. His eyes hold vigilance — a false positive means a page gets skipped. But false negative never — the sieve never forgets.</p>
 
 <div class="dialogue">হামজা বললেন, ছাঁকনিটা টেবিলে রেখে। ক্রলার প্রতিদিন লক্ষ লক্ষ URL আনে। কিন্তু অনেক URL ডুপ্লিকেট — একই page বারবার। আমরা কি প্রতিটা URL একটা set-এ রাখবো? ১০০ কোটি URL = কয়েক গিগাবাইট। অসম্ভব। আমার ছাঁকনি দরকার মাত্র কয়েক মেগাবাইট — bit array। প্রতিটা URL-কে k টা hash function দিয়ে ছাঁকো। k টা bit set করো। সব 1? হয়তো দেখা হয়েছে। কোনো 0? নিশ্চিত নতুন।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> হামজা প্রথমে একটা Python set বানিয়েছিলেন — প্রতিটা URL string হিসেবে রাখা। ১০০ কোটি URL = ৫ গিগাবাইট RAM। Server ক্র্যাশ। তারপর তিনি bit array ব্যবহার করলেন — প্রতিটা URL-এর জন্য মাত্র ৩টা bit। ১০০ কোটি URL-এ মাত্র ১২০ মেগাবাইট। ৪০ গুণ কম মেমোরি।</div></div>
 <div class="dialogue en">Hamza said, placing the sieve on the table. The crawler brings millions of URLs daily. But many are duplicates — same page again and again. Should we store every URL in a set? 100 million URLs = several gigabytes. Impossible. My sieve needs only a few megabytes — a bit array. Hash each URL with k hash functions. Set k bits. All 1? Maybe seen. Any 0? Definitely new.</div>
 
 <div class="code-block"># bloom_filter.py — Day 10: Bloom Filter for URL Deduplication

@@ -262,6 +262,8 @@ print(f"Page 0 and 4 same? {uf.connected(0, 4)}")    # False
 
 <div class="dialogue">Book ২-এর গোত্রপতির পরিষদ (Door ১০) Union-Find শিখিয়েছিলেন। এখন দেখলে সার্চ ইঞ্জিনে কেন? ডুপ্লিকেট page গুলো এক গোত্রে — union(a,b) এক কলে। সার্চে শুধু প্রতিটা গোত্রের সেরা page দেখাও। ব্যবহারকারী একই content বারবার দেখবে না।</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> হাশিম প্রথমে প্রতিটা page-এর hash একটা set-এ রাখতেন। কিন্তু near-duplicate (ছোট পরিবর্তন) ধরা পড়তো না — hash আলাদা। ফলাফলে একই আর্টিকেল ৫ বার। ইউজার বিরক্ত। তারপর simhash + union-find ব্যবহার করলেন — ৮০% similar page গুলো এক group-এ। প্রতিটা group-থেকে সেরা version দেখাও।</div></div>
+
 <div class="diagram">
   <div class="diag-title">Union-Find: Path Compression — Tree সমান করো, Find O(α(n)) ≈ O(1)</div>
   <svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
@@ -400,7 +402,9 @@ def linear_search(items, target):
 # 1,000,000 terms → would take ~20 comparisons
 # 1,000,000,000 terms → would take ~30 comparisons</div>
 
-<div class="dialogue">Book ২-এর গ্রন্থাগারিকের তালিকা (Door ১১) sorting ও binary search শিখিয়েছিলেন। এখন দেখলে সার্চ ইঞ্জিনে কেন এটা সবচেয়ে বেশি ব্যবহৃত algorithm? প্রতিটা সার্চে term dictionary-তে lookup করতে হয়। Sorted array + binary search = O(log n)। এক বিলিয়ন term-এ ৩০ তুলনা। সাজানো = ক্ষমতা।</div>
+<div class="dialogue">Book ২-এর গ্রন্থাগারিকের তালিকা (Door ১১) sorting ও binary search শিখিয়েছিলেন। এখন দেখলে সার্চ ইঞ্জিনে কেন এটা সবচেয়ে বেশি ব্যবহৃত algorithm? প্রতিটা সার্চে term dictionary-তে lookup করতে হয়। Sorted array + binary search = O(log n)। এক বিলিয়ন term-ে ৩০ তুলনা। সাজানো = ক্ষমতা।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> আমিনা প্রথমে unsorted term list ব্যবহার করতেন। প্রতিটা সার্চে linear scan — O(n). ১০ লক্ষ term-ে ১০ লক্ষ তুলনা। ৫০ms প্রতি কোয়েরি। তারপর sorted array + binary search — O(log n) = ২০ তুলনা। ৫০,০০০ গুণ দ্রুত। সাজানোর খরচ O(n log n) একবার, সার্চ চলে অনন্তকাল O(log n)।</div></div>
 
 <div class="diagram">
   <div class="diag-title">Binary Search — প্রতি ধাপে অর্ধেক বাদ দাও, O(log n)</div>
@@ -573,7 +577,9 @@ for term in sorted(final_index.keys())[:5]:
 #         40 machines, 100M docs → 1 hour
 #         1000 machines (Google scale) → minutes</div>
 
-<div class="dialogue">Book ২-এর পাথর বিভাজকের পাহাড় (Door ১২) D&C শিখিয়েছিলেন — বড় সমস্যা ভাগ করো, আলাদা সমাধান করো, জোড়ো। এখন দেখলে সার্চ ইঞ্জিনে কেন? Google প্রতিদিন ট্রিলিয়ন page index করে — এক machine-এ অসম্ভব। MapReduce: হাজার machine-ে ভাগ করো, প্রতিটা partial index বানায় (map), তারপর merge করো (reduce)।</div>
+<div class="dialogue">Book ২-এর পাথর বিভাজকের পাহাড় (Door ১২) D&C শিখিয়েছিলেন — বড় সমস্যা ভাগ করো, আলাদা সমাধান করো, জোড়ো। এখন দেখলে সার্চ ইঞ্জিনে কেন? Google প্রতিদিন ট্রিলিয়ন page index করে — এক machine-ে অসম্ভব। MapReduce: হাজার machine-ে ভাগ করো, প্রতিটা partial index বানায় (map), তারপর merge করো (reduce)।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> ইব্রাহিম প্রথমে একটা machine-এ ১০ কোটি ডকুমেন্ট index করতে গিয়েছিলেন। ৪০ ঘণ্টা পরেও শেষ হয়নি। তারপর MapReduce দিয়ে ৪০টা machine-ে ভাগ করলেন — প্রতিটা ২৫ লক্ষ doc index করলো (parallel), তারপর merge। ১ ঘণ্টায় শেষ। ৪০ গুণ দ্রুত। এটাই Google-এর MapReduce paper-এর মূল ভাবনা।</div></div>
 
 <div class="diagram">
   <div class="diag-title">MapReduce Pipeline — Split → Parallel Map → Merge</div>
@@ -659,6 +665,8 @@ doors.push({
 <p class="scene-setting en">Day twenty. The final day. Ustad Rahila returns — she who came on day one with a budget (Door 1). Now the workshop is transformed. Twenty days of work, assembled. No glasses, no sweat mark. Calm pride. She knows — the engine is complete. She looks at you. Now you will see — 19 craftsmen, 19 algorithms, working together as one search engine.</p>
 
 <div class="dialogue">রাহিলা বললেন, কারখানার মেঝেতে দাঁড়িয়ে। উনিশ জন কারিগর এসেছিলেন — প্রতিজন একটা করে দরজা নিয়ে। এখন দেখো, সবগুলো একসাথে কাজ করে কেমন:</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> রাহিলা প্রথমে প্রতিটা algorithm আলাদা বানিয়েছিলেন — Big-O, Recursion, Hash Map। কিন্তু একসাথে জোড়া লাগাননি। প্রতিটা module আলাদা কাজ করতো কিন্তু pipeline হিসেবে চলতো না। Crawler আর indexer আলাদা। সার্চ করতে গেলে — data format mismatch। শেষ দিনে তিনি সব এক search() function-এ যোগ করলেন। Pipeline। তখনই সার্চ ইঞ্জিন চালু হলো।</div></div>
 
 <div class="diagram">
   <div class="diag-title">সম্পূর্ণ সার্চ ইঞ্জিন আর্কিটেকচার — ১৯ Algorithm, ১ Pipeline</div>
@@ -851,6 +859,8 @@ doors.push({
 <p class="scene-setting en">Day twenty-one. The last day — but a new beginning. Ustad Rahila stands at the door. In her hand: a list of five new project ideas. She said — you built a search engine. But these algorithms are not limited to search. Every software stands on these algorithms. Look at these five projects — then go build.</p>
 
 <div class="dialogue">রাহিলা তালিকাটা তোমার হাতে দিলেন। প্রতিটা project-এ লেখা কোন কোন algorithm লাগবে। তুমি দেখবে — এই বইয়ে শেখা প্রতিটা algorithm একাধিক জায়গায় ব্যবহৃত হয়। কারিগর বলেন — একটা হাতুড়ি দিয়ে শুধু পেরেক ঠোকা যায় না, দেয়াল ভাঙাও যায়, ভাস্কর্যও বানানো যায়। প্রতিটা algorithm একটা হাতুড়ি — কী বানাবে সেটা তোমার উপর।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> অনেক শিক্ষার্থী algorithm শেখে, কিন্তু বানায় না। তারা হাতুড়ি চেনে, কিন্তু ঘর বানাতে পারে না। কারণ তারা আলাদা algorithm চেনে, কিন্তু কোন algorithm কোথায় বসে — সেই সিদ্ধান্ত নিতে পারে না। এই বই সেটাই শিখিয়েছে — প্রতিটা algorithm একটা কারিগরের হাতে একটা tool। সঠিক tool সঠিক জায়গায়।</div></div>
 
 <div class="diagram">
   <div class="diag-title">৫টা Project — কোন Algorithm কোথায় ব্যবহৃত</div>

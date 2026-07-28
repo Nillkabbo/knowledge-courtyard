@@ -381,6 +381,8 @@ doors.push({
 <p class="scene-setting en">Day four. Jeweler Mahmud arrives. In his hand: a pearl necklace — each pearl like a small key, strung on thread. Each pearl is a document, he said. This necklace is the posting list for the word algorithm — which documents contain this word. He held the necklace — one pearl, then the next, then the next. Each pearl points to the one after it.</p>
 
 <div class="dialogue">গ্রন্থাগারিক ফাতেমা (Door ৩) ডকুমেন্ট সাজিয়ে রেখেছেন। কিন্তু এখন সমস্যা — ইউজার algorithm লিখে সার্চ করলে কোন কোন ডকুমেন্টে এই শব্দ আছে, সেটা কীভাবে জানবো? মাহমুদ একটা মুক্তা ধরলেন। প্রতিটা শব্দের জন্য একটা মালা — চেইন। প্রতিটা node-এ doc_id। এটাই posting list।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> মাহমুদ প্রথমে অ্যারে দিয়ে চেষ্টা করেছিলেন — ১০০টা স্লট। নতুন doc আসলে মাঝে insert করতে হয়। কিন্তু অ্যারে resize = O(n) copy। ১ লক্ষ doc হলে প্রতিবার ১ লক্ষ copy। Server আটকে গেলো। সমাধান: linked list। শেষে append — O(1)। কোনো copy নেই।</div></div>
 <div class="dialogue en">Librarian Fatima (Door 3) arranged the documents. But now the problem — when a user searches algorithm, how do we know which documents contain this word? Mahmud held up a pearl. For each word, a necklace — a chain. Each node holds a doc_id. This is the posting list.</div>
 
 <div class="code-block"># posting_list.py — Day 4: Linked List Posting Lists
@@ -517,6 +519,8 @@ doors.push({
 <p class="scene-setting en">Day five. Calligrapher Zainul arrives. In his hands: two paper scrolls — one lists the posting list for algorithm, the other for python. Each scroll has doc IDs sorted smallest to largest. He places one finger on each scroll. The user typed algorithm python — two words. AND query. Show documents that contain BOTH words.</p>
 
 <div class="dialogue">ভুল উপায়, জয়নুল বললেন, একটা স্ক্রল ধরে। প্রতিটা doc-এর জন্য অন্য স্ক্রলে খুঁজো — nested loop। কাজ করবে, কিন্তু O(n×m)। ১০,০০০ × ১০,০০০ = ১০ কোটি তুলনা। তিনি মাথা নাড়লেন। আমার উপায়: দুটো আঙুল। বাঁ আঙুল algorithm লিস্টে, ডান আঙুল python লিস্টে। দুটোই sorted। একসাথে হাঁটো।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> জয়নুল প্রথমে nested loop দিয়ে AND query বানিয়েছিলেন। ১০,০০০ docs × ১০,০০০ docs = ১০ কোটি তুলনা। প্রতিটা সার্চে ৪৫ সেকেন্ড। ইউজার ২০০ms পরে চলে যায়। তারপর তিনি বুঝলেন — দুটো list-ই sorted। দুটো pointer একসাথে হাঁটালে O(n+m) হয়। ১০,০০০ + ১০,০০০ = ২০,০০০ তুলনা। ৫,০০০ গুণ দ্রুত।</div></div>
 <div class="dialogue en">Wrong way, Zainul said, holding one scroll. For each doc, search the other scroll — nested loop. Works, but O(n*m). 10,000 × 10,000 = 100 million comparisons. He shook his head. My way: two fingers. Left on algorithm list, right on python list. Both sorted. Walk together.</div>
 
 <div class="code-block"># query_and.py — Day 5: Two-Pointer AND Query Intersection

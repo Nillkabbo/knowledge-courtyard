@@ -130,6 +130,8 @@ crawl_bfs('home', web)
 
 <div class="dialogue">Book ২-এর কাফেলার সারি (Door ৫) stack ও queue শিখিয়েছিলেন — LIFO ও FIFO। এখন দেখলে সার্চ ইঞ্জিনে দুটোই দরকার: stack দিয়ে query validate করো, queue দিয়ে crawler BFS-এ চালাও। DFS (recursion, Door ২) গভীরে যায়, BFS (queue) প্রশস্ত হয়। সার্চ ইঞ্জিনে দুটোই ব্যবহৃত হয়।</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> রুকুন প্রথমে query validation ছাড়াই সার্চ চালাতেন। ইউজার লিখলো (algorithm python — বন্ধনী খোলা, বন্ধ নয়। Parser crash। তারপর তিনি stack যোগ করলেন — ( দেখলে push, ) দেখলে pop। শেষে stack খালি? Valid। নয়? Error। একই নিয়ম HTML tag matching-এ কাজ করে।</div></div>
+
 <div class="diagram">
   <div class="diag-title">Stack (LIFO) vs Queue (FIFO) — দুটো ভিন্ন নিয়ম</div>
   <svg viewBox="0 0 560 270" xmlns="http://www.w3.org/2000/svg">
@@ -460,6 +462,8 @@ for rank, (score, doc_id) in enumerate(top10, 1):
 
 <div class="dialogue">Book ২-এর মসলা ব্যবসায়ীর তাক (Door ৭) heap শিখিয়েছিলেন — সবচেয়ে গুরুত্বপূর্ণ উপরে। এখন দেখলে সার্চ ইঞ্জিনে কেন? প্রতিটা সার্চে হাজার ফলাফল আসে — কিন্তু ইউজার শুধু প্রথম পাতাটা দেখে। top-10। Full sort করলে ধীর। Heap দিয়ে O(n log k) — শুধু K-সাইজের heap রাখো। সস্তা গুলো বের করো, দামি গুলো রাখো।</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> সালেহ প্রথমে full sort করতেন — সব ফলাফল sort করো, প্রথম ১০টা দেখাও। ১ লক্ষ ফলাফল = O(n log n) = ১.৭ মিলিয়ন তুলনা। ২০০ms সীমা পার হয়ে গেলো। তারপর min-heap of size 10 ব্যবহার করলেন। O(n log 10) = O(n)। ১০ গুণ দ্রুত। কারণ শুধু ১০টা slot আপডেট করতে হয়, বাকি সব উপেক্ষা।</div></div>
+
 <div class="diagram">
   <div class="diag-title">Min-Heap Top-K Ranking — Keep Best 3 Results</div>
   <svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg">
@@ -615,7 +619,9 @@ for t in td.in_order():
 # All terms (sorted):
 #   algorithm, binary, data, heap, python, queue, search, sort, stack, tree</div>
 
-<div class="dialogue">Book ২-এর বংশবিদের স্ক্রল (Door ৮) BST শিখিয়েছিলেন — বাঁয়া ছোট, ডানা বড়। এখন দেখলে সার্চ ইঞ্জিনে কেন? Hash map O(1) কিন্তু sorted iteration পারে না। BST O(log n) কিন্তু alphabetical সাজানো দেয়। এটা autocomplete ও range query-র জন্য জরুরি।</div>
+<div class="dialogue">Book ২-ের বংশবিদের স্ক্রল (Door ৮) BST শিখিয়েছিলেন — বাঁয়া ছোট, ডানা বড়। এখন দেখলে সার্চ ইঞ্জিনে কেন? Hash map O(1) কিন্তু sorted iteration পারে না। BST O(log n) কিন্তু alphabetical সাজানো দেয়। এটা autocomplete ও range query-র জন্য জরুরি।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> আব্দুল্লাহ প্রথমে unsorted list-এ term খুঁজতেন — linear scan। ১০ লক্ষ term-এ প্রতিটা সার্চে ১০ লক্ষ তুলনা। ৫০ms প্রতি কোয়েরি। তারপর BST বানালেন — O(log n) = মাত্র ২০ তুলনা। ৫০,০০০ গুণ দ্রুত। কিন্তু BST balanced না হলে worst case O(n) — তাই production-এ Red-Black tree বা B+ tree ব্যবহার হয়।</div></div>
 
 <div class="diagram">
   <div class="diag-title">BST Term Dictionary — বাঁয়া ছোট, ডানা বড়, O(log n) Lookup</div>
@@ -780,7 +786,9 @@ for suggestion in trie.autocomplete('py'):
 #   BST prefix search:      O(n) — must scan all terms
 #   Hash map prefix search: IMPOSSIBLE — no way to find partial keys</div>
 
-<div class="dialogue">Book ২-এর বংশবিদের স্ক্রল (Door ৮) Trie শিখিয়েছিলেন — অক্ষর ধরে ধরে শাখা। এখন দেখলে সার্চ ইঞ্জিনে এটা কেন? Google-এ টাইপ করো — suggestion আসে। সেটাই Trie। ইউজার প্রতিটা অক্ষর টাইপ করে, Trie-তে O(m)-এ prefix খুঁজো, বাকি শাখা গুলো suggestion। তারপর frequency দিয়ে rank করো — সবচেয়ে জনপ্রিয় suggestion আগে।</div>
+<div class="dialogue">Book ২-এর বংশবিদের স্ক্রল (Door ৮) Trie শিখিয়েছিলেন — অক্ষর ধরে ধরে শাখা। এখন দেখলে সার্চ ইঞ্জিনে এটা কেন? Google-ে টাইপ করো — suggestion আসে। সেটাই Trie। ইউজার প্রতিটা অক্ষর টাইপ করে, Trie-তে O(m)-এ prefix খুঁজো, বাকি শাখা গুলো suggestion। তারপর frequency দিয়ে rank করো — সবচেয়ে জনপ্রিয় suggestion আগে।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> রাবিয়া প্রথমে hash map দিয়ে autocomplete বানিয়েছিলেন। ইউজার 'algo' টাইপ করলো? সব possible word চেক করো — 'algorithm', 'algorithms', 'algorithmic'... কোনটা prefix ম্যাচ করে? প্রতিটা word-এ শুরু থেকে তুলনা। O(n × m)। ১ লক্ষ word-ে ৫০ms latency। Trie দিলে prefix থেকে শুরু — O(m)। ৫ms। ১০ গুণ দ্রুত।</div></div>
 
 <div class="diagram">
   <div class="diag-title">Trie Autocomplete — 'algo' টাইপ করলে সব Suggestion</div>
