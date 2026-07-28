@@ -8,6 +8,7 @@
 doors.push({
   num:17, icon:"📖", color:"#00bcd4", name:"নকল-নির্দেশকের গ্রন্থাগার",
   subtitle:"The Concord Maker's Library", tech:"Strings & Pattern Matching (KMP, Rabin-Karp)",
+  spirit:"ফিহরিস্ত — index/catalog, from the tradition of cataloging sacred knowledge",
   secret:"স্ট্রিং হলো অক্ষরের অ্যারে, কিন্তু প্যাটার্ন খোঁজা আলাদা শিল্প। Naive O(n·m), KMP O(n+m) — failure function দিয়ে পেছনে ফেরা কমায়।",
   recall:{
     q:"নকল-নির্দেশক হাজার পাতায় একটা শব্দ কীভাবে দ্রুত খুঁজে পান — প্রতিটা অক্ষর ধরে নয়?",
@@ -175,6 +176,7 @@ print(f"  KMP:   {kmp_search(text2, 'ABAC')}, comparisons: {comparisons_kmp}")
 doors.push({
   num:18, icon:"🃏", color:"#607d8b", name:"পরচুলা-নকশা তাঁতির কারখানা",
   subtitle:"The Pattern-Card Weaver's Loom", tech:"Bit Manipulation (AND, OR, XOR, shifts)",
+  spirit:"ইখতিসার — compression/brevity, from Quran 22:34 (simplification preserving essence)",
   secret:"বিট = সবচেয়ে ছোট সত্য — ০ বা ১। AND/OR/XOR/shift দিয়ে দ্রুত গণনা, মেমোরি সাশ্রয়, ফ্ল্যাগ ব্যবস্থাপনা। Bloom filter-এর ভিত্তি।",
   recall:{
     q:"পরচুলা-নকশা তাঁতি কেন প্রতিটা সুতোর জন্য আলাদা কার্ড ব্যবহার করেন, রঙের বই নয়?",

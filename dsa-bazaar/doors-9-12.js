@@ -8,6 +8,7 @@
 doors.push({
   num:9, icon:"🧵", color:"#36d6e7", name:"তাঁতির তাঁত",
   subtitle:"The Weaver's Loom", tech:"Graphs (BFS / DFS)",
+  spirit:"সিলসিলা — interconnected threads, from Quran 2:136 (the chain of prophets)",
   secret:"Graph = সম্পর্কের জাল। Adjacency list = প্রতিটা node তার প্রতিবেশী জানে। BFS = সবচেয়ে কাছের পথ।",
   recall:{
     q:"তাঁতি কেন পুরো কাপড় একসাথে দেখেন না, একটা সুতো ধরে হাঁটেন?",
@@ -211,6 +212,7 @@ else:
 doors.push({
   num:10, icon:"🏛️", color:"#fb923c", name:"গোত্রপতির পরিষদ",
   subtitle:"The Clan Elder's Council", tech:"Union-Find (Disjoint Set Union)",
+  spirit:"জামা — joining/gathering, from Quran 3:103 (hold fast together as one bond)",
   secret:"হাজার উপাদান — কে কোন গোত্রে? গোত্র এক হলে (union) আবার ভাঙতে পারবে না। Union-Find — union ও find, দুটোই প্রায় O(1) (path compression + union by rank একসাথে থাকলে — আসলে amortized O(α(n)))।",
   recall:{
     q:"গোত্রপতি কীভাবে হাজার মানুষের মধ্যে দুজন একই গোত্রের কি না সাথে সাথে বলেন?",
@@ -344,6 +346,7 @@ print(has_cycle(3, [(0,1), (1,2)]))           # False (tree)
 doors.push({
   num:11, icon:"📚", color:"#4a9eff", name:"গ্রন্থাগারিকের তালিকা",
   subtitle:"The Librarian's Catalog", tech:"Sorting & Binary Search",
+  spirit:"তরতীব — arrangement/order, from the concept of divine cosmic ordering",
   secret:"সাজানো তালিকায় খোঁজ = O(log n)। অসাজানো = O(n)। সাজানো = ক্ষমতা।",
   recall:{
     q:"গ্রন্থাগারিক হাজার বইয়ের মধ্যে কীভাবে এক সেকেন্ডে খুঁজে পান?",
@@ -448,6 +451,7 @@ print(f"\\n১০০০-এর তালিকায় ৫০০ খুঁজ�
 doors.push({
   num:12, icon:"⛏️", color:"#8d6e63", name:"পাথর বিভাজকের পাহাড়",
   subtitle:"The Stone Splitter's Mountain", tech:"Divide & Conquer (Merge / Quick Sort)",
+  spirit:"ফার্ক — splitting/dividing, from the concept of dividing a great task into parts",
   secret:"বড় সমস্যা ভাগ করো, আলাদা সমাধান করো, জোড়ো। তিন ধাপ: divide → conquer → combine। O(n log n)।",
   recall:{
     q:"পাথর বিভাজক বিশাল পাহাড় কীভাবে সরান — এক হাতে নাকি টুকরো টুকরো করে?",

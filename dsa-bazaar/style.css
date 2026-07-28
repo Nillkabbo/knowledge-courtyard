@@ -95,6 +95,14 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
 /* ── RECALL ── */
 .recall-box{background:rgba(74,158,255,.05);border:1px solid rgba(74,158,255,.2);border-radius:16px;padding:1.1rem 1.3rem;margin:1.2rem 0}
+
+/* ── CALLOUT ── */
+.story-text .callout{display:flex;gap:.8rem;align-items:flex-start;border-radius:12px;padding:.9rem 1rem;margin:1rem 0}
+.story-text .callout .co-icon{font-size:1.2rem;flex-shrink:0;line-height:1.5}
+.story-text .callout.warn{background:rgba(239,68,68,.06);border-left:3px solid #ef4444}
+.story-text .callout.tip{background:rgba(82,196,26,.06);border-left:3px solid #52c41a}
+.story-text .callout.info{background:rgba(74,158,255,.06);border-left:3px solid #4a9eff}
+.story-text .verse-trans{text-align:center;font-size:.85rem;color:var(--ink-mute);margin:-.5rem 0 1rem;padding:0 .9rem;font-style:italic}
 .recall-title{font-weight:700;color:var(--moon);margin-bottom:.5rem;font-size:.85rem}
 .recall-q{font-size:.95rem;color:var(--ink);margin-bottom:.7rem;line-height:1.7}
 .recall-q.en{font-size:0.875rem;color:var(--ink-mute);font-style:italic}

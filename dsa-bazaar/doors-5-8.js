@@ -8,6 +8,7 @@
 doors.push({
   num:5, icon:"🐪", color:"#f0c75e", name:"কাফেলার সারি",
   subtitle:"The Caravan Line", tech:"Stacks & Queues (LIFO / FIFO)",
+  spirit:"সাফ — order/queue, from Quran 37:102 (the orderly caravan of Ibrahim)",
   secret:"Stack = স্তূপ পাত্র — শেষে রাখা প্রথম বেরোয় (LIFO)। Queue = কাফেলার সারি — যে আগে এসেছে সে আগে যায় (FIFO)। দুটোই সাধারণ, কিন্তু DFS/BFS-এর মূল।",
   recall:{
     q:"কাফেলার সারিতে কে আগে বেরোয় — যে আগে এসেছে, নাকি যে পরে?",
@@ -204,6 +205,7 @@ print(is_balanced(")("))                         # False
 doors.push({
   num:6, icon:"🔑", color:"#52c41a", name:"তালা নির্মাতার ভাণ্ডার",
   subtitle:"The Locksmith's Vault", tech:"Hash Maps / Dictionaries",
+  spirit:"মিফতাহ — key, from Quran 39:63 (to Him belong the keys)",
   secret:"Hash map = চাবি → ঠিকানা → ধন। O(1) lookup। Caching-এর ভিত্তি।",
   recall:{
     q:"তালা নির্মাতা কীভাবে এক সেকেন্ডে সঠিক ধন খুঁজে পান?",
@@ -352,6 +354,7 @@ print(f"\\nCache size: {len(cache)} আইটেম")
 doors.push({
   num:7, icon:"🌶️", color:"#faad14", name:"মসলা ব্যবসায়ীর তাক",
   subtitle:"The Spice Merchant's Shelves", tech:"Heaps & Priority Queues",
+  spirit:"আওলা — foremost/higher, from Quran 56:10-11 (the foremost are brought near)",
   secret:"Heap = সবসময় সবচেয়ে গুরুত্বপূর্ণ উপরে। Top-K retrieval-এর ভিত্তি।",
   recall:{
     q:"মসলা ব্যবসায়ী কেন সব বাক্স সাজান না, শুধু শীর্ষটা রাখেন?",
@@ -509,6 +512,7 @@ while pq:
 doors.push({
   num:8, icon:"📜", color:"#b37feb", name:"বংশবিদের স্ক্রল",
   subtitle:"The Genealogist's Scroll", tech:"Trees (BST, Trie)",
+  spirit:"শাজারা — tree/genealogy, from Quran 14:24-25 (a good word like a good tree)",
   secret:"Tree = শাখাবিহীন সম্পর্ক। BST = বাঁয়া ছোট, ডানা বড়। Trie = অক্ষর ধরে ধরে শাখা। O(log n) সন্ধান।",
   recall:{
     q:"বংশবিদ হাজার নামের মধ্যে কীভাবে দ্রুত একজনকে খুঁজে পান?",

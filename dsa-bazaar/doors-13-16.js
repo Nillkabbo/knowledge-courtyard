@@ -10,6 +10,7 @@
 doors.push({
   num:13, icon:"📏", color:"#f06292", name:"ক্যালিগ্রাফারের মাপকাঠি",
   subtitle:"The Calligrapher's Ruler", tech:"Two Pointers & Sliding Window",
+  spirit:"ইজতিমা — meeting/convergence, from Quran 62:9 (gather together)",
   secret:"দুটো pointer দিয়ে এক চলনে O(n)। Nested loop নয় — স্লাইডিং উইন্ডো।",
   recall:{
     q:"ক্যালিগ্রাফার কেন একটানা লেখেন না, একটা মাপকাঠি সরিয়ে সরিয়ে?",
@@ -145,6 +146,7 @@ print(f"two_sum_sorted([1,3,5,7,9,11,13], 16) = {two_sum_sorted([1,3,5,7,9,11,13
 doors.push({
   num:14, icon:"🧣", color:"#e91e63", name:"রেশম ব্যবসায়ীর ক্যারাভান",
   subtitle:"The Silk Merchant's Caravan", tech:"Greedy Algorithms",
+  spirit:"খায়রান — choosing the best, from Quran 33:6 (preferring what is higher)",
   secret:"Greedy = প্রতিটা ধাপে সেরা স্থানীয় পছন্দ। সহজ, দ্রুত — কিন্তু সবসময় সর্বোত্তম নয়। কখন কাজ করে? optimal substructure + greedy choice property।",
   recall:{
     q:"রেশম ব্যবসায়ী কেন প্রতিটা শহরে সেরা চুক্তিই করেন, পুরো যাত্রার পরিকল্পনা নয়?",
@@ -264,6 +266,7 @@ print("\nActivity selection:", activity_selection(acts))
 doors.push({
   num:15, icon:"🌱", color:"#52c41a", name:"মালির ধাপ",
   subtitle:"The Gardener's Terraces", tech:"Dynamic Programming",
+  spirit:"লাইফ — layered building, from Quran 24:29 (layers of understanding unfold)",
   secret:"DP = overlapping subproblems + optimal substructure। ছোট সমস্যা সমাধান করো, মনে রাখো, বড়টা বানাও। Greedy-র যমজ — কিন্তু মনে রাখে।",
   recall:{
     q:"মালি কেন প্রতিটা ধাপে নতুন করে বীজ বোনেন না, আগের ফসল ব্যবহার করেন?",
@@ -379,6 +382,7 @@ print(f"\\nMemoized কত গুণ দ্রুত? {tn/tm:.0f}x!")
 doors.push({
   num:16, icon:"🧭", color:"#9c27b0", name:"অলিগলির পথিকের সুতো",
   subtitle:"The Alley Explorer's Thread", tech:"Backtracking",
+  spirit:"সা'য় — striving/effort, from Quran 53:39 (man has only what he strives for)",
   secret:"Backtracking = recursion + ফেরা। একটা পথ বেছো, শেষ পর্যন্ত যাও, মৃত প্রান্তে পৌঁছালে ফিরে এসে অন্য পথ চেষ্টা করো। সব সমাধান খুঁজতে শক্তিশালী।",
   recall:{
     q:"অলিগলির পথিক কেন সুতো ব্যবহার করেন — শুধু স্মৃতি নয়?",

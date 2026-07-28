@@ -9,6 +9,7 @@ const doors = [];
 doors.push({
   num:1, icon:"🧭", color:"#f0c14b", name:"জ্যোতির্বিদের কক্ষ",
   subtitle:"The Astrolabe Maker's Chamber", tech:"Big-O & Complexity Analysis",
+  spirit:"কদর — measure/proportion, from Quran 15:21 (We send it down in a known measure)",
   secret:"Big-O = ইনপুট বাড়লে কাজ কত দ্রুত বাড়ে। দ্রুততার সিঁড়ি: O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ)।",
   recall:{
     q:"জ্যোতির্বিদ কেন শুধু 'দ্রুত' বলেন না, বরং 'কীভাবে স্কেল করে' বলেন?",
@@ -20,7 +21,9 @@ doors.push({
 <p class="scene-setting">প্রথম দোকান। জ্যোতির্বিদের কক্ষ। পিতলের অ্যাস্ট্রোলেব, নক্ষত্র মানচিত্র, দেয়ালে ঘূর্ণায়মান গিয়ার। উস্তাদ ফাহিম দাঁড়িয়ে আছেন — হাতে একটা পিতলের যন্ত্র, চোখে তীক্ষ্ণতা। তিনি মাপেন। নক্ষত্রের দূরত্ব, গ্রহের কক্ষপথ, সময়ের গতি। "সবকিছু মাপা যায়," তিনি বলেন। "এমনকি চিন্তাও। তোমার অ্যালগরিদম কত দ্রুত? তবে সবচেয়ে গুরুত্বপূর্ণ — ইনপুট বাড়লে কত দ্রুত ধীর হয়?"</p>
 <p class="scene-setting en">The first shop. The Astrolabe Maker's chamber. Brass astrolabes, star charts, rotating gears on the walls. Ustad Fahim stands — a brass instrument in hand, sharp eyes. He measures. Distance of stars, planetary orbits, the flow of time. "Everything can be measured," he says. "Even thought. How fast is your algorithm? But most important — as input grows, how fast does it slow?"</p>
 
-<div class="dialogue">তুমি প্রোগ্রামার। কিন্তু একজন কারিগর আর একজন মাস্টার কারিগরের পার্থক্য কী? কারিগর বলে "এটা কাজ করে।" মাস্টার বলে "এটা কাজ করে — এবং ইনপুট দশ গুণ হলে এটা এত গুণ ধীর হবে।" এই মাপই Big-O। চিন্তার মাপ।</div>
+<div class="dialogue">তুমি প্রোগ্রামার। কিন্তু একজন কারিগর আর একজন মাস্টার কারিগরের পার্থক্য কী? কারিগর বলে এটা কাজ করে। মাস্টার বলে এটা কাজ করে এবং ইনপুট দশ গুণ হলে এটা এত গুণ ধীর হবে। এই মাপই Big-O। চিন্তার মাপ।</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> ফাহিম প্রথমে O(n²) sorting দিয়ে ১০,০০০ ডেটা সাজিয়েছিলেন। ১০০ ডেটায় চমৎকার। ১০,০০০-তে ৪৫ সেকেন্ড। ইউজার চলে গেলো। তারপর O(n log n) merge sort — একই ১০,০০০-তে ০.০৩ সেকেন্ড। ১,৫০০ গুণ দ্রুত। Big-O শুধু তত্ত্ব নয় — এটা বাজেট।</div></div>
 <div class="dialogue en">"You're a programmer. But what separates a craftsman from a master craftsman? The craftsman says 'it works.' The master says 'it works — and if input grows tenfold, it slows by this much.' This measurement is Big-O. The measure of thought."</div>
 
 <div class="dialogue">Big-O বলে শুধু দুটো কথা — সবচেয়ে খারাপ ক্ষেত্রে, ইনপুট বড় হলে, কাজ কীভাবে বাড়ে। স্থির অংশ বাদ দাও, ধ্রুবক গুণনীয়ক বাদ দাও — শুধু মূল আকৃতি রাখো। <code>3n² + 5n + 100</code> হলে শুধু <code>n²</code> দেখো। কারণ n বড় হলে বাকিগুলো তুচ্ছ। আকৃতিই গুরুত্বপূর্ণ, সঠিক সংখ্যা নয়।</div>
@@ -89,7 +92,9 @@ doors.push({
 <div class="dialogue en">"You're an AI engineer. Think Big-O at every choice. Vector search — O(n) brute or O(log n) HNSW? RAG retrieval — how many docs, how many steps? LLM inference — O(n²) attention (n = token count) — that's why long contexts slow fast. Sorting embeddings — O(n log n), not O(n²). Senior engineers think at scale, not just 'now'."</div>
 
 <div class="dialogue">কদর — মাপ, পরিমাণ, মর্যাদা। কুরআনে আল্লাহ বলেন — "আর কোনো কিছুই নেই যার ভাণ্ডার আমার কাছে নেই, আর আমি তা কদর অনুযায়ী নামিয়ে দিই না।" (১৫:২১)। কদর — নিখুঁত মাপ। Big-O সেই কদরের ছায়া — কাজের সঠিক মাপ। যিনি মাপেন তিনিই রক্ষা করেন — অমাপা কাজ ধ্বংস ডেকে আনে।</div>
-<div class="dialogue en">"Qadr — measure, proportion, worth. Allah says — 'There is nothing whose treasures are not with Us, and We send it down but in a known measure.' (15:21). Qadr — precise measure. Big-O is the shadow of qadr — the true measure of work. Whoever measures, preserves — unmeasured work invites ruin."</div>`,
+<div class="dialogue en">"Qadr — measure, proportion, worth. Allah says — 'There is nothing whose treasures are not with Us, and We send it down but in a known measure.' (15:21). Qadr — precise measure. Big-O is the shadow of qadr — the true measure of work. Whoever measures, preserves — unmeasured work invites ruin."</div>
+
+<div class="secret-box">🧭 Big-O = চিন্তার কদর। ইনপুট বাড়লে কাজ কত দ্রুত বাড়ে — সেই মাপ। O(1) থেকে O(2ⁿ) — সিঁড়ির উপর থেকে নিচে।</div>`,
   senior:{
     title:"Big-O পড়ার চার নিয়ম — Senior Eye",
     body:`
@@ -140,6 +145,7 @@ for n in [1_000, 2_000, 4_000]:
 doors.push({
   num:2, icon:"🌿", color:"#52c41a", name:"আরবেস্ক খোদাইকারীর দেয়াল",
   subtitle:"The Arabesque Carver's Wall", tech:"Recursion & Recursive Thinking",
+  spirit:"তাওয়াক্কুল — trust in the process, from Quran 65:3 (whoever trusts, Allah is sufficient)",
   secret:"Recursion = ফাংশন নিজেকে ডাকে, ছোট সমস্যায়। দুটো অংশ: base case (থামো) + recursive case (নিজেকে ডাকো, ছোট করে)।",
   recall:{
     q:"আরবেস্ক খোদাইকারী কীভাবে একটা ছোট প্যাটার্ন থেকে বিশাল নকশা বানান?",
@@ -322,6 +328,7 @@ def recursive_sum(lst):
 doors.push({
   num:3, icon:"🧱", color:"#ff6b35", name:"টালি নির্মাতার কারখানা",
   subtitle:"The Tile Maker's Workshop", tech:"Arrays & Tensors",
+  spirit:"নিজাম — order/arrangement, from Quran 73:20 (regular arrangement)",
   secret:"Array = ধারাবাহিক স্থান। O(1) অ্যাক্সেস। সব AI ডেটা শেষে টেনসর।",
   recall:{
     q:"টালি নির্মাতা কেন এক সারিতে সাজান, ছড়িয়ে নয়?",
@@ -450,6 +457,7 @@ print("Grid center:", grid[1][1])
 doors.push({
   num:4, icon:"📿", color:"#36d6e7", name:"মুক্তোর মালার কারখানা",
   subtitle:"The Pearl Necklace Maker", tech:"Linked Lists (Singly, Doubly)",
+  spirit:"সিলসিলা — chain, from Quran 3:103 (hold fast to the rope together)",
   secret:"Array = একসাথে সাজানো বাক্স। Linked list = এক একটা node, প্রতিটা পরেরটার ঠিকানা জানে। ঢোকাতে/বাদ দিতে O(1) — কিন্তু খুঁজতে O(n)।",
   recall:{
     q:"মুক্তোর মালা কেন মাঝখানে একটা মুক্তো ঢোকাতে পুরো মালা ভাঙতে হয় না?",
