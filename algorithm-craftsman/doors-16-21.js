@@ -261,6 +261,55 @@ print(f"Page 0 and 4 same? {uf.connected(0, 4)}")    # False
 # Page 0 and 4 same? False</div>
 
 <div class="dialogue">Book ২-এর গোত্রপতির পরিষদ (Door ১০) Union-Find শিখিয়েছিলেন। এখন দেখলে সার্চ ইঞ্জিনে কেন? ডুপ্লিকেট page গুলো এক গোত্রে — union(a,b) এক কলে। সার্চে শুধু প্রতিটা গোত্রের সেরা page দেখাও। ব্যবহারকারী একই content বারবার দেখবে না।</div>
+
+<div class="diagram">
+  <div class="diag-title">Union-Find: Path Compression — Tree সমান করো, Find O(α(n)) ≈ O(1)</div>
+  <svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="arrUF" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6" fill="#f97316"/></marker></defs>
+    <text x="100" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Before: deep tree</text>
+    <circle cx="100" cy="45" r="18" fill="rgba(251,191,36,0.12)" stroke="#fbbf24" stroke-width="2"/>
+    <text x="100" y="49" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">A</text>
+    <line x1="100" y1="63" x2="80" y2="90" stroke="#f97316" stroke-width="1"/>
+    <circle cx="75" cy="100" r="16" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="75" y="104" text-anchor="middle" fill="#fbbf24" font-size="10">B</text>
+    <line x1="75" y1="116" x2="65" y2="140" stroke="#f97316" stroke-width="1"/>
+    <circle cx="60" cy="150" r="14" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/>
+    <text x="60" y="154" text-anchor="middle" fill="#9a93b8" font-size="9">C</text>
+    <line x1="60" y1="164" x2="50" y2="185" stroke="#f97316" stroke-width="1"/>
+    <circle cx="45" cy="195" r="14" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1"/>
+    <text x="45" y="199" text-anchor="middle" fill="#9a93b8" font-size="9">D</text>
+    <line x1="45" y1="209" x2="35" y2="225" stroke="#f97316" stroke-width="1"/>
+    <circle cx="30" cy="235" r="14" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="30" y="239" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="bold">E</text>
+    <text x="30" y="265" text-anchor="middle" fill="#ef4444" font-size="8">find(E) = 4 hops</text>
+    <text x="30" y="277" text-anchor="middle" fill="#9a93b8" font-size="7">E→D→C→B→A</text>
+    <text x="180" y="150" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">→ compress →</text>
+    <line x1="135" y1="150" x2="225" y2="150" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrUF)"/>
+    <text x="400" y="20" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">✅ After: flat tree</text>
+    <circle cx="380" cy="55" r="20" fill="rgba(251,191,36,0.12)" stroke="#fbbf24" stroke-width="2"/>
+    <text x="380" y="59" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">A</text>
+    <line x1="380" y1="75" x2="310" y2="120" stroke="#52c41a" stroke-width="1.5"/>
+    <line x1="380" y1="75" x2="360" y2="120" stroke="#52c41a" stroke-width="1.5"/>
+    <line x1="380" y1="75" x2="410" y2="120" stroke="#52c41a" stroke-width="1.5"/>
+    <line x1="380" y1="75" x2="460" y2="120" stroke="#52c41a" stroke-width="1.5"/>
+    <circle cx="305" cy="130" r="14" fill="rgba(82,196,26,0.1)" stroke="#52c41a" stroke-width="1.5"/>
+    <text x="305" y="134" text-anchor="middle" fill="#52c41a" font-size="9">B</text>
+    <circle cx="355" cy="130" r="14" fill="rgba(82,196,26,0.1)" stroke="#52c41a" stroke-width="1.5"/>
+    <text x="355" y="134" text-anchor="middle" fill="#52c41a" font-size="9">C</text>
+    <circle cx="410" cy="130" r="14" fill="rgba(82,196,26,0.1)" stroke="#52c41a" stroke-width="1.5"/>
+    <text x="410" y="134" text-anchor="middle" fill="#52c41a" font-size="9">D</text>
+    <circle cx="460" cy="130" r="14" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="2"/>
+    <text x="460" y="134" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">E</text>
+    <text x="380" y="165" text-anchor="middle" fill="#52c41a" font-size="8">find(E) = 1 hop: E→A</text>
+    <rect x="250" y="195" width="300" height="80" rx="8" fill="rgba(251,191,36,0.06)" stroke="rgba(251,191,36,0.2)" stroke-width="1"/>
+    <text x="265" y="215" fill="#fbbf24" font-size="9" font-weight="bold">union(B,E): same group?</text>
+    <text x="265" y="230" fill="#9a93b8" font-size="8">1. find(B) → root A</text>
+    <text x="265" y="243" fill="#9a93b8" font-size="8">2. find(E) → root A (same!)</text>
+    <text x="265" y="256" fill="#52c41a" font-size="8" font-weight="bold">→ near-duplicate detected!</text>
+    <text x="265" y="269" fill="#9a93b8" font-size="7">Path compression: E→D→C→B→A becomes E→A</text>
+  </svg>
+  <div class="diag-cap">Path compression: প্রতিটা node সরাসরি root-এ যুক্ত। পরের find = O(1)।</div>
+</div>
 <div class="dialogue en">Book 2 clan elder council (Door 10) taught you Union-Find. Now you see why in search engines? Duplicate pages go into one clan — union(a,b) in one call. In search, show only the best page from each clan. Users do not see the same content repeatedly.</div>
 
 <div class="secret-box">🔗 Union-Find = duplicate grouping। Path compression + union by rank = O(α(n)) ≈ O(1)।</div>
@@ -610,6 +659,66 @@ doors.push({
 <p class="scene-setting en">Day twenty. The final day. Ustad Rahila returns — she who came on day one with a budget (Door 1). Now the workshop is transformed. Twenty days of work, assembled. No glasses, no sweat mark. Calm pride. She knows — the engine is complete. She looks at you. Now you will see — 19 craftsmen, 19 algorithms, working together as one search engine.</p>
 
 <div class="dialogue">রাহিলা বললেন, কারখানার মেঝেতে দাঁড়িয়ে। উনিশ জন কারিগর এসেছিলেন — প্রতিজন একটা করে দরজা নিয়ে। এখন দেখো, সবগুলো একসাথে কাজ করে কেমন:</div>
+
+<div class="diagram">
+  <div class="diag-title">সম্পূর্ণ সার্চ ইঞ্জিন আর্কিটেকচার — ১৯ Algorithm, ১ Pipeline</div>
+  <svg viewBox="0 0 580 400" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrArch" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6" fill="#f97316"/></marker>
+      <marker id="arrArchG" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6" fill="#52c41a"/></marker>
+    </defs>
+    <!-- Layer 1: CRAWL -->
+    <rect x="10" y="15" width="540" height="55" rx="8" fill="rgba(167,139,250,0.06)" stroke="#a78bfa" stroke-width="1"/>
+    <text x="30" y="33" fill="#a78bfa" font-size="9" font-weight="bold">📡 CRAWL</text>
+    <rect x="30" y="40" width="120" height="22" rx="4" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1"/><text x="90" y="55" text-anchor="middle" fill="#a78bfa" font-size="8">Door 2: Recursion</text>
+    <rect x="160" y="40" width="120" height="22" rx="4" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1"/><text x="220" y="55" text-anchor="middle" fill="#a78bfa" font-size="8">Door 10: Bloom</text>
+    <rect x="290" y="40" width="120" height="22" rx="4" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1"/><text x="350" y="55" text-anchor="middle" fill="#a78bfa" font-size="8">Door 11: Queue</text>
+    <line x1="280" y1="70" x2="280" y2="85" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrArch)"/>
+    <!-- Layer 2: STORE -->
+    <rect x="10" y="85" width="540" height="50" rx="8" fill="rgba(34,211,238,0.04)" stroke="#22d3ee" stroke-width="1"/>
+    <text x="30" y="103" fill="#22d3ee" font-size="9" font-weight="bold">💾 STORE</text>
+    <rect x="140" y="100" width="120" height="22" rx="4" fill="rgba(34,211,238,0.08)" stroke="#22d3ee" stroke-width="1"/><text x="200" y="115" text-anchor="middle" fill="#22d3ee" font-size="8">Door 3: Arrays</text>
+    <rect x="280" y="100" width="120" height="22" rx="4" fill="rgba(34,211,238,0.08)" stroke="#22d3ee" stroke-width="1"/><text x="340" y="115" text-anchor="middle" fill="#22d3ee" font-size="8">Door 4: Linked List</text>
+    <line x1="280" y1="135" x2="280" y2="150" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrArch)"/>
+    <!-- Layer 3: INDEX -->
+    <rect x="10" y="150" width="540" height="50" rx="8" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1"/>
+    <text x="30" y="168" fill="#fbbf24" font-size="9" font-weight="bold">📇 INDEX</text>
+    <rect x="90" y="165" width="100" height="22" rx="4" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1"/><text x="140" y="180" text-anchor="middle" fill="#fbbf24" font-size="8">Door 12: HashMap</text>
+    <rect x="200" y="165" width="100" height="22" rx="4" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1"/><text x="250" y="180" text-anchor="middle" fill="#fbbf24" font-size="8">Door 14: BST</text>
+    <rect x="310" y="165" width="100" height="22" rx="4" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1"/><text x="360" y="180" text-anchor="middle" fill="#fbbf24" font-size="8">Door 18: Sort+BS</text>
+    <rect x="420" y="165" width="100" height="22" rx="4" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1"/><text x="470" y="180" text-anchor="middle" fill="#fbbf24" font-size="8">Door 19: D&amp;C</text>
+    <line x1="280" y1="200" x2="280" y2="215" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrArch)"/>
+    <!-- Layer 4: QUERY PIPELINE -->
+    <rect x="10" y="215" width="540" height="85" rx="8" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1"/>
+    <text x="30" y="233" fill="#fbbf24" font-size="9" font-weight="bold">🔍 QUERY</text>
+    <rect x="20" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="60" y="254" text-anchor="middle" fill="#9a93b8" font-size="7">D7: Spell</text>
+    <rect x="110" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="150" y="254" text-anchor="middle" fill="#9a93b8" font-size="7">D15: Trie</text>
+    <rect x="200" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="240" y="254" text-anchor="middle" fill="#9a93b8" font-size="7">D11: Stack</text>
+    <rect x="290" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="330" y="254" text-anchor="middle" fill="#9a93b8" font-size="7">D8: Backtrack</text>
+    <rect x="380" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="420" y="254" text-anchor="middle" fill="#9a93b8" font-size="7">D5: TwoPtr</text>
+    <rect x="470" y="240" width="65" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="502" y="254" text-anchor="middle" fill="#9a93b8" font-size="7">D9: KMP</text>
+    <text x="60" y="278" text-anchor="middle" fill="#9a93b8" font-size="7">↓</text>
+    <text x="150" y="278" text-anchor="middle" fill="#9a93b8" font-size="7">↓</text>
+    <text x="240" y="278" text-anchor="middle" fill="#9a93b8" font-size="7">↓</text>
+    <text x="330" y="278" text-anchor="middle" fill="#9a93b8" font-size="7">↓</text>
+    <text x="420" y="278" text-anchor="middle" fill="#9a93b8" font-size="7">↓</text>
+    <text x="502" y="278" text-anchor="middle" fill="#9a93b8" font-size="7">↓</text>
+    <text x="280" y="293" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">→ doc IDs + phrases matched</text>
+    <line x1="280" y1="300" x2="280" y2="315" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrArch)"/>
+    <!-- Layer 5: RANK -->
+    <rect x="10" y="315" width="540" height="50" rx="8" fill="rgba(82,196,26,0.04)" stroke="#52c41a" stroke-width="1"/>
+    <text x="30" y="333" fill="#52c41a" font-size="9" font-weight="bold">🏆 RANK</text>
+    <rect x="80" y="330" width="90" height="20" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="125" y="344" text-anchor="middle" fill="#9a93b8" font-size="7">D6: Snippet</text>
+    <rect x="180" y="330" width="90" height="20" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="225" y="344" text-anchor="middle" fill="#9a93b8" font-size="7">D13: Heap</text>
+    <rect x="280" y="330" width="90" height="20" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="325" y="344" text-anchor="middle" fill="#9a93b8" font-size="7">D16: PageRank</text>
+    <rect x="380" y="330" width="90" height="20" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="425" y="344" text-anchor="middle" fill="#9a93b8" font-size="7">D17: UnionFind</text>
+    <line x1="280" y1="365" x2="280" y2="380" stroke="#52c41a" stroke-width="2" marker-end="url(#arrArchG)"/>
+    <!-- Result -->
+    <rect x="180" y="380" width="200" height="18" rx="9" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="2"/>
+    <text x="280" y="393" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">✨ TOP 10 RESULTS ✨</text>
+  </svg>
+  <div class="diag-cap">৫টা Layer: Crawl → Store → Index → Query → Rank। প্রতিটা সার্চে ১৯টা algorithm একসাথে কাজ করে।</div>
+</div>
 <div class="dialogue en">Rahila said, standing on the workshop floor. Nineteen craftsmen came — each brought one door. Now see how they all work together:</div>
 
 <div class="code-block"># search_engine.py — Day 20: THE COMPLETE SEARCH ENGINE
@@ -742,6 +851,68 @@ doors.push({
 <p class="scene-setting en">Day twenty-one. The last day — but a new beginning. Ustad Rahila stands at the door. In her hand: a list of five new project ideas. She said — you built a search engine. But these algorithms are not limited to search. Every software stands on these algorithms. Look at these five projects — then go build.</p>
 
 <div class="dialogue">রাহিলা তালিকাটা তোমার হাতে দিলেন। প্রতিটা project-এ লেখা কোন কোন algorithm লাগবে। তুমি দেখবে — এই বইয়ে শেখা প্রতিটা algorithm একাধিক জায়গায় ব্যবহৃত হয়। কারিগর বলেন — একটা হাতুড়ি দিয়ে শুধু পেরেক ঠোকা যায় না, দেয়াল ভাঙাও যায়, ভাস্কর্যও বানানো যায়। প্রতিটা algorithm একটা হাতুড়ি — কী বানাবে সেটা তোমার উপর।</div>
+
+<div class="diagram">
+  <div class="diag-title">৫টা Project — কোন Algorithm কোথায় ব্যবহৃত</div>
+  <svg viewBox="0 0 560 350" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="arrProj" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#f97316"/></marker></defs>
+    <!-- Algorithm pool (left) -->
+    <text x="100" y="18" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">Algorithms</text>
+    <rect x="20" y="25" width="160" height="130" rx="8" fill="rgba(251,191,36,0.04)" stroke="rgba(251,191,36,0.2)" stroke-width="1"/>
+    <circle cx="55" cy="45" r="12" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1"/><text x="55" y="49" text-anchor="middle" fill="#fbbf24" font-size="8">📊</text>
+    <text x="75" y="49" fill="#9a93b8" font-size="8">Heap</text>
+    <circle cx="55" cy="68" r="12" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1"/><text x="55" y="72" text-anchor="middle" fill="#a78bfa" font-size="8">🌐</text>
+    <text x="75" y="72" fill="#9a93b8" font-size="8">Graph</text>
+    <circle cx="55" cy="91" r="12" fill="rgba(82,196,26,0.1)" stroke="#52c41a" stroke-width="1"/><text x="55" y="95" text-anchor="middle" fill="#52c41a" font-size="8">🌳</text>
+    <text x="75" y="95" fill="#9a93b8" font-size="8">Tree</text>
+    <circle cx="55" cy="114" r="12" fill="rgba(34,211,238,0.1)" stroke="#22d3ee" stroke-width="1"/><text x="55" y="118" text-anchor="middle" fill="#22d3ee" font-size="8">🔑</text>
+    <text x="75" y="118" fill="#9a93b8" font-size="8">HashMap</text>
+    <circle cx="145" cy="45" r="12" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1"/><text x="145" y="49" text-anchor="middle" fill="#fbbf24" font-size="7">⚡</text>
+    <text x="130" y="49" text-anchor="end" fill="#9a93b8" font-size="7">Bit</text>
+    <circle cx="145" cy="68" r="12" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1"/><text x="145" y="72" text-anchor="middle" fill="#a78bfa" font-size="7">🔀</text>
+    <text x="130" y="72" text-anchor="end" fill="#9a93b8" font-size="7">DP</text>
+    <circle cx="145" cy="91" r="12" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="145" y="95" text-anchor="middle" fill="#52c41a" font-size="7">🔤</text>
+    <text x="130" y="95" text-anchor="end" fill="#9a93b8" font-size="7">Trie</text>
+    <circle cx="145" cy="114" r="12" fill="rgba(34,211,238,0.08)" stroke="#22d3ee" stroke-width="1"/><text x="145" y="118" text-anchor="middle" fill="#22d3ee" font-size="7">📁</text>
+    <text x="130" y="118" text-anchor="end" fill="#9a93b8" font-size="7">Stack</text>
+    <!-- Projects (right) -->
+    <text x="380" y="18" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">Projects</text>
+    <!-- GPS -->
+    <rect x="220" y="25" width="180" height="35" rx="6" fill="rgba(82,196,26,0.1)" stroke="#52c41a" stroke-width="1.5"/>
+    <text x="230" y="40" fill="#52c41a" font-size="9" font-weight="bold">🗺️ GPS Navigator</text>
+    <text x="230" y="52" fill="#9a93b8" font-size="7">Graph + Heap + Trie + HashMap</text>
+    <line x1="180" y1="45" x2="220" y2="38" stroke="#f97316" stroke-width="1" opacity="0.4" marker-end="url(#arrProj)"/>
+    <line x1="180" y1="45" x2="220" y2="42" stroke="#f97316" stroke-width="1" opacity="0.4" marker-end="url(#arrProj)"/>
+    <!-- Spell Check -->
+    <rect x="220" y="65" width="180" height="35" rx="6" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="230" y="80" fill="#a78bfa" font-size="9" font-weight="bold">📝 Spell Checker</text>
+    <text x="230" y="92" fill="#9a93b8" font-size="7">DP + Trie + HashMap + Bit</text>
+    <line x1="180" y1="68" x2="220" y2="78" stroke="#a78bfa" stroke-width="1" opacity="0.4" marker-end="url(#arrProj)"/>
+    <!-- Recommender -->
+    <rect x="220" y="105" width="180" height="35" rx="6" fill="rgba(34,211,238,0.08)" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="230" y="120" fill="#22d3ee" font-size="9" font-weight="bold">🎵 Recommender</text>
+    <text x="230" y="132" fill="#9a93b8" font-size="7">HashMap + Heap + Graph + Bit</text>
+    <line x1="180" y1="68" x2="220" y2="118" stroke="#22d3ee" stroke-width="1" opacity="0.3" marker-end="url(#arrProj)"/>
+    <!-- Compressor -->
+    <rect x="220" y="145" width="180" height="35" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="230" y="160" fill="#fbbf24" font-size="9" font-weight="bold">🗜️ Compressor</text>
+    <text x="230" y="172" fill="#9a93b8" font-size="7">Bit + Tree + D&amp;C + HashMap</text>
+    <!-- Scheduler -->
+    <rect x="220" y="185" width="180" height="35" rx="6" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1.5"/>
+    <text x="230" y="200" fill="#fbbf24" font-size="9" font-weight="bold">⚙️ Scheduler</text>
+    <text x="230" y="212" fill="#9a93b8" font-size="7">Heap + Stack + UnionFind</text>
+    <line x1="180" y1="114" x2="220" y2="198" stroke="#f97316" stroke-width="1" opacity="0.3" marker-end="url(#arrProj)"/>
+    <!-- Insight -->
+    <rect x="20" y="245" width="520" height="95" rx="8" fill="rgba(251,191,36,0.06)" stroke="rgba(251,191,36,0.2)" stroke-width="1"/>
+    <text x="280" y="265" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">💡 এক algorithm — একাধিক project</text>
+    <text x="280" y="280" text-anchor="middle" fill="#9a93b8" font-size="7">Heap: GPS + Recommender + Scheduler</text>
+    <text x="280" y="293" text-anchor="middle" fill="#9a93b8" font-size="7">Graph: GPS + Recommender + PageRank</text>
+    <text x="280" y="306" text-anchor="middle" fill="#9a93b8" font-size="7">HashMap: universal — প্রতিটা project-এ</text>
+    <text x="280" y="324" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">কারিগর: হাতুড়ি দিয়ে বানাও</text>
+    <text x="280" y="336" text-anchor="middle" fill="#9a93b8" font-size="7" font-style="italic">Build with it, not just learn it</text>
+  </svg>
+  <div class="diag-cap">একই algorithm একাধিক project-এ ব্যবহৃত। কারিগর = কোন tool কোথায় ব্যবহার করবে জানেন।</div>
+</div>
 <div class="dialogue en">Rahila handed you the list. Each project shows which algorithms it needs. You will see — every algorithm from this book is used in multiple places. The craftsman says — a hammer does not just drive nails. It can break walls, shape sculpture. Every algorithm is a hammer — what you build is up to you.</div>
 
 <div class="code-block"># ─────────────────────────────────────────────
