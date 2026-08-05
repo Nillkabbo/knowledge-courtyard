@@ -4,7 +4,7 @@
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
 const SAVE_KEY = 'codeCraftsman_v1';
-const MAX_XP = 1700;
+const MAX_XP = 2000;
 const RANKS = [
   {min:0,    name:'শিক্ষানবিশ কোডার',     icon:'🛖'},
   {min:100,  name:'নাম দাতা',               icon:'✏️'},
@@ -15,7 +15,7 @@ const RANKS = [
   {min:1100, name:'টেস্ট যোদ্ধা',            icon:'🧪'},
   {min:1300, name:'ডোমেইন স্থপতি',           icon:'🏛️'},
   {min:1500, name:'কোড কারিগর',             icon:'💎'},
-  {min:1700, name:'প্রকৌশলী',               icon:'👑'}
+  {min:1800, name:'প্রকৌশলী',               icon:'👑'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}
 function loadState(){try{const r=localStorage.getItem(SAVE_KEY);if(!r)return;const s=JSON.parse(r);state.xp=s.xp||0;state.completedDoors=s.completedDoors||[];state.prologueSeen=s.prologueSeen||false}catch(e){}}

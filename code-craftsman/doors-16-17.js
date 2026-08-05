@@ -157,21 +157,21 @@ def complete_task(task_id: int) -&gt; Result:
   }
 });
 
-// ── DOOR 17: SYNTHESIS — THE COMPLETE CRAFTSMAN ──
+// ── DOOR 20: SYNTHESIS — THE COMPLETE CRAFTSMAN ──
 doors.push({
-  num:17, icon:"💎", color:"#a5b4fc", name:"সম্পূর্ণ কারিগর",
+  num:20, icon:"💎", color:"#a5b4fc", name:"সম্পূর্ণ কারিগর",
   subtitle:"The Complete Craftsman", tech:"Synthesis — All 10 Books United",
   spirit:"ইহসান — excellence, from the Hadith: 'To worship Allah as if you see Him'",
   secret:"১৭ দরজা, ১০টি বই, ১টি প্রজেক্ট। প্রতিটা দরজায় এক গুণ যোগ হয়েছে। এখন পুরো কোড এক দৃষ্টিতে — সত্য নাম (Clean Code), ছোট ফাংশন, DRY (Pragmatic), রিফ্যাক্টরড (Fowler), Strategy+Observer (GoF), defensive (Code Complete), ubiquitous (DDD), tested (TDD), seam (Legacy), layered (SICP), ঐক্যপূর্ণ (Brooks)। এটাই কারিগর।",
   recall:{
-    q:"একজন কারিগরের কোডে কোন ১০টি গুণ থাকে?",
-    qen:"What 10 qualities are in a craftsman's code?",
-    a:"১) সত্য নাম, ২) ছোট ফাংশন, ৩) পরিচ্ছন্ন কমেন্ট, ৪) DRY, ৫) রিফ্যাক্টরড, ৬) pattern-driven, ৭) defensive, ৮) domain-driven, ৯) tested, ১০) layered + ঐক্যপূর্ণ।",
-    aen:"1) Truthful names, 2) Small functions, 3) Clean comments, 4) DRY, 5) Refactored, 6) Pattern-driven, 7) Defensive, 8) Domain-driven, 9) Tested, 10) Layered + unified."
+    q:"একজন কারিগরের কোডে কোন ১৩টি গুণ থাকে?",
+    qen:"What 13 qualities are in a craftsman's code?",
+    a:"১) সত্য নাম, ২) ছোট ফাংশন, ৩) পরিচ্ছন্ন কমেন্ট, ৪) DRY, ৫) রিফ্যাক্টরড, ৬) pattern-driven, ৭) defensive, ৮) domain-driven, ৯) tested, ১০) ভালো error handling, ১১) decorator, ১২) higher-order functions, ১৩) layered + ঐক্যপূর্ণ।",
+    aen:"1) Truthful names, 2) Small functions, 3) Clean comments, 4) DRY, 5) Refactored, 6) Pattern-driven, 7) Defensive, 8) Domain-driven, 9) Tested, 10) Error handling, 11) Decorators, 12) Higher-order functions, 13) Layered + unified."
   },
   story:`
-<p class="scene-setting">সপ্তদশ দিন। শেষ দিন। উস্তাদ রাহিলা আবার ফিরে এলেন — এবার একা নয়, ষোলো জন কারিগর সঙ্গে নিয়ে। ইমরান (নাম), সালমান (DRY), নাফিসা (রিফ্যাক্টর), রিয়াদ (প্যাটার্ন), আদম (defensive), সাকিনা (DDD), বেলাল (TDD), তারিক (legacy), ইউনুস (SICP)। সবাই এক কারখানায় দাঁড়িয়ে। রাহিলা বললেন — এখন দেখো। প্রতিটা দরজায় একটা গুণ যোগ হয়েছে। এখন পুরো কোড এক দৃষ্টিতে। এটাই সম্পূর্ণ কারিগর।</p>
-<p class="scene-setting en">Day seventeen. The final day. Master Rahila returned again — this time not alone, bringing all sixteen craftsmen. Imran (naming), Salman (DRY), Nafisa (refactoring), Riyad (patterns), Adam (defensive), Sakina (DDD), Belal (TDD), Tariq (legacy), Yunus (SICP). All standing in one workshop. Rahila said — now look. Each door added one quality. Now the entire code is one vision. This is the complete craftsman.</p>
+<p class="scene-setting">বিংশ দিন। শেষ দিন। উস্তাদ রাহিলা আবার ফিরে এলেন — এবার একা নয়, উনিশ জন কারিগর সঙ্গে নিয়ে। ইমরান (নাম), সালমান (DRY), নাফিসা (রিফ্যাক্টর), রিয়াদ (প্যাটার্ন), আদম (defensive), সাকিনা (DDD), বেলাল (TDD), তারিক (legacy), ইউনুস (SICP) — এবং নতুন তিনজন: জাকির (error handling), নাদিম (decorator), কামরান (higher-order)। সবাই এক কারখানায় দাঁড়িয়ে। রাহিলা বললেন — এখন দেখো। বিশটি দরজায় এক একটা গুণ যোগ হয়েছে। এখন পুরো কোড এক দৃষ্টিতে। এটাই সম্পূর্ণ কারিগর।</p>
+<p class="scene-setting en">Day twenty. The final day. Master Rahila returned again — this time not alone, bringing all nineteen craftsmen. Imran (naming), Salman (DRY), Nafisa (refactoring), Riyad (patterns), Adam (defensive), Sakina (DDD), Belal (TDD), Tariq (legacy), Yunus (SICP) — and three new ones: Zakir (error handling), Nadim (decorator), Kamran (higher-order). All standing in one workshop. Rahila said — now look. Twenty doors, each adding one quality. Now the entire code is one vision. This is the complete craftsman.</p>
 
 <div class="dialogue">রাহিলা বললেন — তুমি এখন একজন কোড কারিগর। তোমার কোডে আছে: সিদক (সত্য নাম), কিসম (ছোট ফাংশন), তাওহীদ (DRY), তাদবির (রিফ্যাক্টর), হিকমাহ (প্যাটার্ন), আমানত (defensive + tested), বায়ান (domain language), ইসলাহ (legacy seam), জালাল (abstraction), ওয়াহদানিয়্যাহ (conceptual integrity)। দশটি গুণ, এক কোড। এটাই ইহসান।</div>
 <div class="dialogue en">Rahila said — you are now a code craftsman. Your code has: sidq (truthful names), qism (small functions), tawhid (DRY), tadbir (refactoring), hikmah (patterns), amanah (defensive + tested), bayan (domain language), islah (legacy seam), jalal (abstraction), wahdaniyyah (conceptual integrity). Ten qualities, one code. This is ihsan.</div>
@@ -448,6 +448,10 @@ if __name__ == "__main__":
 <tr><td class="hl">14</td><td>Legacy Code</td><td>Seam identification</td></tr>
 <tr><td class="hl">15</td><td>SICP</td><td>Abstraction barriers</td></tr>
 <tr><td class="hl">16</td><td>Mythical Man-Month</td><td>Conceptual integrity</td></tr>
+<tr><td class="hl">17</td><td>Clean Code</td><td>Error handling done right</td></tr>
+<tr><td class="hl">18</td><td>Design Patterns</td><td>Decorator pattern</td></tr>
+<tr><td class="hl">19</td><td>SICP</td><td>Higher-order functions</td></tr>
+<tr><td class="hl">20</td><td>Synthesis</td><td>All 13 books united</td></tr>
 </table>
 <p><strong>পরবর্তী যাত্রা: </strong> এই গুণগুলো প্রতিদিন প্রয়োগ করো। প্রতিটা commit-এ দশটি প্রশ্ন করো। Clean code always looks like it was written by someone who cares. তুমি এখন সেই কারিগর।</p>
 <p><strong>Cross-ref: </strong> Book 40 (Software Engineering) পুরো বই। Book 47 (Testing & QA)। Book 23 (Irreplaceable Craftsman)। Book 3 (Grand Muhandis)। পুরো Knowledge Courtyard তোমার সহায়।</p>`
