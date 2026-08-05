@@ -96,6 +96,10 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .senior-insight .title{font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
 .senior-insight p{font-size:0.875rem;color:var(--ink-dim);line-height:1.65;margin-bottom:.35rem}
 .recall-box{background:rgba(91,158,255,.05);border:1px solid rgba(91,158,255,.2);border-radius:16px;padding:1rem 1.2rem;margin:1rem 0}
+.story-text .callout{display:flex;gap:.6rem;border-radius:12px;padding:.7rem .9rem;margin:.9rem 0;font-size:0.9rem;line-height:1.6}
+.story-text .callout .co-icon{font-size:1.05rem;flex-shrink:0;line-height:1.5}
+.story-text .callout.warn{background:rgba(240,98,146,.08);border:1px solid rgba(240,98,146,.24)}
+.story-text .secret-box{background:linear-gradient(135deg,rgba(91,158,255,.08),rgba(82,196,26,.05));border:1px solid var(--gold,#ffc857);border-radius:16px;padding:1rem;margin:1rem 0;text-align:center;font-weight:600}
 .recall-title{font-weight:700;color:var(--moon);margin-bottom:.4rem;font-size:.82rem}
 .recall-q{font-size:.92rem;color:var(--ink);margin-bottom:.6rem;line-height:1.65}
 .recall-q.en{font-size:0.875rem;color:var(--ink-mute);font-style:italic}
