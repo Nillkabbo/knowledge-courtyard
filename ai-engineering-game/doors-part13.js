@@ -88,6 +88,8 @@ AI-এ সেটাই API গেটওয়ে:
 <div class="dialogue">সফর — ইসলামে যাত্রার গুরুত্ব। নবীজি (সা) হিজরত করেছেন — মক্কা থেকে মদিনা। কিন্তু তিনি যাত্রা শুরু করার আগে প্রস্তুতি নিয়েছেন। রসদ সংগ্রহ করেছেন, রাস্তা নির্বাচন করেছেন, সঙ্গী বেছেছেন। আমি জাহাজ ছাড়ার আগে প্রস্তুতি নেই — কন্টেইনার ঠিক কিনা, GPU যথেষ্ট কিনা, গেটওয়ে প্রস্তুত কিনা। সফরের আগে প্রস্তুতি — এটাই ইসলামি নীতি। এটাই deployment।</div>
 <div class="dialogue en">"Safar — the importance of journeying in Islam. The Prophet (peace be upon him) made hijrah — from Mecca to Medina. But before starting, he prepared. Gathered provisions, chose the route, selected companions. Before I release a ship, I prepare — is the container right, is the GPU sufficient, is the gateway ready. Preparation before the journey — this is the Islamic principle. This is deployment."</div>
 
+<div class="callout warn" data-door="23"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা টিম single GPU-তে সব ইউজার। Traffic বাড়লে OOM crash। No load balancing, no auto-scaling।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ২৩ — রহস্য</div><div class="text">🚢 মডেল ভালো কিন্তু কোথায় বসবে?<br><small>কন্টেইনার (Docker), সার্ভিং (vLLM/TGI), GPU। API গেটওয়ে হলো বন্দরের ফটক। ডক ছাড়া জাহাজ ভেসে থাকে, গন্তব্যে পৌঁছায় না।</small></div></div>`
 });
 
@@ -169,6 +171,8 @@ doors.push({
 
 <div class="dialogue">তুমি চব্বিশটি দরজা পার করেছ। গল্পবলিয়ে শিখিয়েছেন মেশিন কী। বিচারপতি শিখিয়েছেন সাক্ষ্য কী। সেতু নির্মাতা শিখিয়েছেন টিকে থাকা কী। বাজপালক শিখিয়েছেন সঠিক খোঁজা কী। জাহাজ নির্মাতা শিখিয়েছেন বসানো কী। আর আমি শিখালাম — নিশ্চিত করা কী। কারণ জ্ঞানের চূড়ান্ত পরীক্ষা শুধু বোঝা নয়, শুধু বানানো নয়, শুধু টিকিয়ে রাখা নয় — নিশ্চিত করা যে তুমি যা বানিয়েছ তা সত্যিকারের। কিন্তু নিখুঁত করার পরেও যাত্রা শেষ নয়। এখন শেখো — সমন্বয় করা, সংযোগ দেওয়া, সুরক্ষা দেওয়া। সীমানার বাইরে যাও।</div>
 <div class="dialogue en">"You've passed twenty-four doors. The storyteller taught — what the machine is. The judge taught — what evidence is. The bridge builder taught — what survival is. The falconer taught — what finding accurately is. The shipwright taught — what deployment is. And I teach — what certainty is. Because knowledge's ultimate test isn't just understanding, isn't just building, isn't just surviving — it's ensuring that what you've built is genuine. But perfecting isn't the end either. Now learn — to coordinate, to connect, to protect. Go beyond the frontier."</div>
+
+<div class="callout warn" data-door="24"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা টিম prompt বদলালো, deploy করলো, কোনো test ছাড়া। ২০% case ভাঙলো। Prompt regression test = golden set রাখো।</div></div>
 
 <div class="secret-box"><div class="label">দরজা ২৪ — রহস্য</div><div class="text">⚖️ একবার ঠিক মানে সবসময় ঠিক নয়।<br><small>গোল্ডেন সেট বানাও (১০০ জ্ঞাত উত্তর), প্রতিটা পরিবর্তনে যাচাই করো (regression), CI/CD স্বয়ংক্রিয়। পরখ পাথরের মতো।</small></div></div>`
 });

@@ -97,6 +97,11 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .dialogue.en::before{content:'↳';color:var(--ink-mute)}
 
 .recall-box{background:rgba(74,158,255,.05);border:1px solid rgba(74,158,255,.2);border-radius:16px;padding:1.2rem 1.4rem;margin:1.5rem 0}
+
+/* ── CALLOUT ── */
+.story-text .callout{display:flex;gap:.6rem;border-radius:12px;padding:.7rem .9rem;margin:.9rem 0;font-size:0.9rem;line-height:1.6}
+.story-text .callout .co-icon{font-size:1.05rem;flex-shrink:0;line-height:1.5}
+.story-text .callout.warn{background:rgba(240,98,146,.08);border:1px solid rgba(240,98,146,.24)}
 .recall-title{font-weight:700;color:var(--moon);margin-bottom:.6rem;font-size:.85rem;letter-spacing:.05em}
 .recall-q{font-size:.95rem;color:var(--ink);margin-bottom:.8rem;line-height:1.7}
 .recall-q.en{font-size:0.875rem;color:var(--ink-mute);font-style:italic;margin-top:-.4rem;margin-bottom:.8rem}

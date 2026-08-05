@@ -98,5 +98,7 @@ doors.push({
 <div class="dialogue">তুমি একুশটি দরজা পার করেছ। গল্পবলিয়ে শিখিয়েছেন মেশিন কী। স্থপতি শিখিয়েছেন কাঠামো কী। বন্দরনায়ক শিখিয়েছেন নজরদারি কী। আর আমি শিখালাম — টিকে থাকা কী। কারণ জ্ঞান শুধু বোঝা নয়, শুধু বানানো নয় — জ্ঞান হলো বানানো জিনিসকে ঝড়ে টিকিয়ে রাখা। কিন্তু টিকে থাকার পরেও যাত্রা শেষ নয়। এখন শেখো — নিখুঁত করা, সমন্বয় করা, সংযোগ দেওয়া, সুরক্ষা দেওয়া। নগরে প্রবেশ করো।</div>
 <div class="dialogue en">"You've passed twenty-one doors. The storyteller taught — what the machine is. The architect taught — what structure is. The harbor master taught — what monitoring is. And I teach — what survival is. Because knowledge isn't just understanding, isn't just building — knowledge is keeping what you've built standing through the storm. But surviving isn't the end of the journey either. Now learn — to perfect, to coordinate, to connect, to protect. Enter the city."</div>
 
+<div class="callout warn" data-door="21"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা API timeout-এ পুরো app crash। Retry, fallback, circuit breaker — কিছুই ছিল না। ৫ মিনিট downtime = $১০K ক্ষতি।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ২১ — রহস্য</div><div class="text">🌉 API ভাঙবে। রেট লিমিট আসবে। টাইমআউট হবে।<br><small>প্রশ্ন নয় — কখন। প্রস্তুত থাকো: পুনঃপ্রচেষ্টা (backoff+jitter), বিকল্প মডেল, সার্কিট ব্রেকার। উট বাঁধো, তারপর ভরসা।</small></div></div>`
 });

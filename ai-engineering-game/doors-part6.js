@@ -72,5 +72,7 @@ Arabic:   "العلم نور"           → ৫ টোকেন</div>
 <div class="dialogue">তাজবীদ — কুরআন তেলাওয়াতের নিয়ম। প্রতিটা অক্ষর কীভাবে উচ্চারিত হবে, কোথায় দীর্ঘ হবে, কোথায় গুনগুন করবে — সব নির্ধারিত। একটা হরফ ভুল উচ্চারণ মানে অর্থ বদলে যায়। Tokenization-ও তেমনি — একটা ভুল কাট মানে অর্থ বদলে যায়। আমি রত্ন কাটি তাজবীদের নিয়মে — প্রতিটা কাট নিখুঁত, প্রতিটা টুকরো সঠিক।</div>
 <div class="dialogue en">"Tajweed — the science of Quranic recitation. How each letter is pronounced, where to elongate, where to nasalize — all determined. One mispronounced letter changes the meaning. Tokenization is the same — one wrong cut changes the meaning. I cut gems with the discipline of tajweed — every cut precise, every piece correct."</div>
 
+<div class="callout warn" data-door="13"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা LLM বাংলা ভাষায় token efficiency ৩-৫ গুণ খারাপ। 'আমি' এক token, কিন্তু অন্য ভাষায় তিন token। খরচ বাড়ে, গতি কমে।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ১৩ — রহস্য</div><div class="text">🔤 Token ≠ শব্দ। প্রতিটা ভাষা আলাদা ভাবে কাটা যায়।<br><small>Temperature নিয়ন্ত্রণ করে নিশ্চয়তা — ০ = নির্ধারিত, ১ = ঝুঁকি। Transformer attention প্রতিটা টোকেনের সম্পর্ক বোঝে।</small></div></div>`
 });

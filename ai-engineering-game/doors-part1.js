@@ -57,6 +57,8 @@ doors.push({
 
 <div class="verse">"যে ব্যক্তি আমার নামে মিথ্যা কথা বলে, সে নিজের জায়গা জাহান্নামে বানিয়ে নেয়।"<br>— নবীজি (সা)<br><br>কারণ শব্দের শক্তি সত্যে নয়, উৎসে। LLM-এর আত্মবিশ্বাস সত্য থেকে আসে না — প্যাটার্ন থেকে। মালিক দাদা জানেন — এই পার্থক্যই জীবন আর মৃত্যুর।</div>
 
+<div class="callout warn" data-door="1"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> ২০২৩ সালে একজন আইনজীবী ChatGPT দিয়ে case citation বানালেন। LLM সম্পূর্ণ বানানো case দিলো — বিখ্যাত নাম, বাস্তব দেখতে মনে হয়। কিন্তু কোনোটাই সত্যি ছিল না। বিচারক ধরলেন। $৫,০০০ জরিমানা। কারণ LLM ডাটাবেস নয় — সে বানায়।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ১ — রহস্য</div><div class="text">🗣️ LLM জেনারেটর, ডাটাবেস নয়। সে মুখস্থ বলে না — বানায়।<br><small>আত্মবিশ্বাস ≠ সত্য। Hallucination হলো ফিচার, বাগ নয় — এটাই জেনারেশনের প্রকৃতি।</small></div></div>`
 });
 
@@ -122,6 +124,8 @@ doors.push({
 <div class="dialogue">আর একটা কথা — দু'আর নিয়মও একই। 'হে আল্লাহ, কিছু দাও' — এটা দু'আ নয়, ইচ্ছা। নবীজি (সা) কখনো এমন করেননি। তাঁর প্রতিটা দু'আয় ছিল তিনটা: কে দাতা (আল্লাহর প্রশংসা), কী চাইছ (সুনির্দিষ্ট), কীভাবে (বিনয়ের সাথে)। Role, Task, Format — দু'আর আদবেও। Prompt-ও দু'আর মতো — যত স্পষ্ট, তত কার্যকর।</div>
 <div class="dialogue en">"And one more thing — the etiquette of du'a follows the same structure. 'O God, give me something' — that's not du'a, that's a wish. The Prophet (peace be upon him) never did this. Every du'a had three things: who the giver is (praise of Allah), what you seek (specific), how you ask (with humility). Role, Task, Format — even in the etiquette of prayer. A prompt is like du'a — the more specific, the more effective."</div>
 
+<div class="callout warn" data-door="2"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা startup-এ টিম 'তাকে ইমেইল লেখো' prompt দিয়ে ৫০০ বার call করলো। প্রতিটা আলাদা — কোনোটা formal, কোনোটা casual। $২,০০০ API খরচ নষ্ট। Role + Task + Format দিলে একই কাজ $৫০-এ।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ২ — রহস্য</div><div class="text">✍️ Prompt = Role + Task + Format<br><small>অস্পষ্টতা = অনুমান = ভুল। তিনটা দাও, অনুমান বন্ধ করো।</small></div></div>`
 });
 
@@ -171,6 +175,8 @@ doors.push({
 
 <div class="dialogue">কুরআনের আয়াতগুলো কেন 'আসবাবুন নুজুল' সহ নাজিল হতো? কারণ উৎস প্রসঙ্গ ছাড়া আয়াতের অর্থ ভুল বোঝা যায়। একই বাক্য — মক্কার প্রসঙ্গে এক অর্থ, মদিনার প্রসঙ্গে অন্য অর্থ। Context ছাড়া ব্যাখ্যা বিপজ্জনক। LLM-ও তেমনি — context ছাড়া উত্তর বিপজ্জনক। তুমি একজন নাগরিক হয়ে থাকতে পারো — নাহলে দরবারি হতে পারো। পছন্দ তোমার।</div>
 <div class="dialogue en">"Why were Quranic verses revealed with their 'asbab al-nuzul' — circumstances of revelation? Because without source context, the meaning is misread. The same sentence — in Meccan context one meaning, in Medinan context another. Explanation without context is dangerous. The LLM is the same — answers without context are dangerous. You can remain a citizen — or become a courtier. The choice is yours."</div>
+
+<div class="callout warn" data-door="3"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা আইনি chatbot পুরো মামলার নথি context-এ দিলো — ১০০ পৃষ্ঠা। কিন্তু context window ৮K token। সব কাটা পড়লো। প্রথম ৩ পৃষ্ঠা পড়ে উত্তর দিলো — বাকি ৯৭ পৃষ্ঠা অদৃশ্য। ভুল পরামর্শ।</div></div>
 
 <div class="secret-box"><div class="label">দরজা ৩ — রহস্য</div><div class="text">🎒 Context = অর্থ। যা দাও না, তা LLM জানে না।<br><small>Window নির্দিষ্ট মাপের — সবচেয়ে গুরুত্বপূর্ণ প্রসঙ্গটা ভরো, বাকি সব বাদ দাও।</small></div></div>`
 });

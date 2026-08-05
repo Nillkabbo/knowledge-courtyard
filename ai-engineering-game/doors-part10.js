@@ -80,6 +80,8 @@ TPS (Tokens Per Second):
 <div class="dialogue">তাদরিজ — কুরআন কুরআন একবারে নাজিল হয়নি। ২৩ বছর ধরে, ক্রমে ক্রমে, পরিস্থিতি অনুযায়ী। হাদিসে আছে: আয়িশা (রা) বলেছেন — কুরআন যদি একবারে নাজিল হতো, তবে কেউ তা মানত না। ক্রমিক অবতরণ সহজ ছিল — মানুষ হজম করতে পেরেছে। আমার নলও তেমনি — একবারে নয়, ক্রমে ক্রমে। ব্যবহারকারী হজম করে, বোঝে, স্বস্তি পায়।</div>
 <div class="dialogue en">"Tadrij — the Quran wasn't revealed all at once. Over 23 years, gradually, according to circumstances. A hadith: Aisha (RA) said — if the Quran had been revealed all at once, no one would have accepted it. Gradual revelation was easier — people could digest it. My spout is the same — not all at once, but gradually. The user digests, understands, finds relief."</div>
 
+<div class="callout warn" data-door="19"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা app streaming ছাড়া পুরো উত্তর দেখালো। ইউজার ৩০ সেকেন্ড অপেক্ষা করে চলে গেলো। Streaming দিলে UX ভালো।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ১৯ — রহস্য</div><div class="text">💧 ব্যবহারকারী অপেক্ষা করে না — দেখতে চায়।<br><small>টোকেনে টোকেনে পৌঁছে দাও। Time-to-first-token সবচেয়ে গুরুত্বপূর্ণ। SSE দিয়ে স্ট্রিমিং। ৪০% বেশি দ্রুত মনে হয়।</small></div></div>`
 });
 
@@ -144,6 +146,8 @@ doors.push({
 
 <div class="dialogue">মুখতাসার — ইসলামি জ্ঞানে সংক্ষেপের ঐতিহ্য। ইমাম বুখারি হাজার হাজার হাদিস সংগ্রহ করেছেন। কিন্তু সবাই কি পুরো বই বহন করে? না। মুখতাসার আছে — সংক্ষিপ্ত সংস্করণ। মূল বিষয় সংরক্ষিত, বিস্তারিত সংকুচিত। যাতে জ্ঞান টিকে থাকে, কিন্তু বহন করা সম্ভব। আমার তাঁতিগিরিও মুখতাসার — পুরনো কথা সংক্ষিপ্ত করে রাখা, যাতে নতুন কথা বোনা যায়।</div>
 <div class="dialogue en">"Mukhtasar — the tradition of abridgment in Islamic knowledge. Imam Bukhari collected thousands of hadith. But does everyone carry the full book? No. There's the mukhtasar — the abridged version. Core meaning preserved, details compressed. So knowledge survives, but is portable. My weaving is mukhtasar too — compressing old conversation so new conversation can be woven."</div>
+
+<div class="callout warn" data-door="20"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা chatbot পুরো conversation history context-এ রাখলো। ৫০ turn পরে overflow। পুরোনো কথা কাটা পড়লো। Memory management = সারাংশ রাখো।</div></div>
 
 <div class="secret-box"><div class="label">দরজা ২০ — রহস্য</div><div class="text">🧵 Context window ভরে গেলে পুরনো কথা হারায়।<br><small>সারাংশ বানাও, পুরনো টুকরো চেপে রাখো, নতুন জায়গা করো। স্মৃতি ছাড়া কথোপকথন অর্থহীন।</small></div></div>`
 });

@@ -112,5 +112,7 @@ Overlap সহ:
 <div class="dialogue">যাকাতুল ফিতর — ঈদের আগে প্রতিটা মুসলিম পরিমিত শস্য দান করেন। কাঁচা নয় — পরিমাপ করা, পরিষ্কার, নির্দিষ্ট পরিমাণ। এক সা' গম, বা এক সা' খেজুর। পরিমিত। কাঁচা শস্য দিলে গ্রহণ হয় না। আমার কাজও তেমনি — কাঁচা ডেটা নয়, পরিমিত chunk। পরিষ্কার, মাপমতো, অর্থপূর্ণ। এটাই RAG-এর ভিত্তি।</div>
 <div class="dialogue en">"Zakat al-Fitr — before Eid, every Muslim gives measured grain. Not raw — measured, clean, specific quantity. One sa' of wheat, or one sa' of dates. Proportioned. Raw grain isn't accepted. My work is the same — not raw data, but measured chunks. Clean, sized, meaningful. This is the foundation of RAG."</div>
 
+<div class="callout warn" data-door="18"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা টিম web scrape করে ১০০K page দিয়ে training করলো। ৩০% spam/duplicate। Model spam শিখলো। Data quality > quantity।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ১৮ — রহস্য</div><div class="text">🌾 কাঁচা শস্য সরাসরি নয়। পরিষ্কার করো, মাপমতো কাটো।<br><small>বড় chunk প্রসঙ্গ হারায়, ছোট chunk অর্থ হারায়। Overlap রাখো। Metadata যোগ করো। এটাই RAG-এর ভিত্তি।</small></div></div>`
 });

@@ -98,6 +98,8 @@ doors.push({
 <div class="dialogue">মিযান — সমতা, ভারসাম্য। কুরআনে আছে: "আর আকাশকে তিনি স্থাপন করেছেন এবং স্থাপন করেছেন মিযান — যাতে তোমরা ওজনে সীমালঙ্ঘন না কর।" (৫৫:৭-৮)। সোনা যেখানে দরকার নেই, সেখানে তামা। সীমালঙ্ঘন নয় — পরিমিতি। এটাই কোষাধ্যক্ষের নিয়ম। এটাই AI-এর অর্থনীতি।</div>
 <div class="dialogue en">"Mizan — balance, proportion. The Quran says: 'And the sky He has raised, and He has set the Balance — that you not transgress in the balance.' (55:7-8). Where gold isn't needed, use copper. Not excess — proportion. This is the treasurer's law. This is the economics of AI."</div>
 
+<div class="callout warn" data-door="14"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা ফ্রি tier app ছাড়া দিলো। ইউজার ১০K token context পাঠাতে লাগলো প্রতি message-এ। এক মাসে $২০,০০০ বিল। Token economics না ভাবলে — ফ্রি = দেউলিয়া।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ১৪ — রহস্য</div><div class="text">💰 প্রতিটা টোকেনে দাম। বড় মডেল = সোনা, ছোট = তামা।<br><small>৬৫% কাজে ছোট মডেল যথেষ্ট। ক্যাশ করো, ব্যাচ করো, সংক্ষেপ করো। ভুল মডেল = ১০০ গুণ অপচয়।</small></div></div>`
 });
 
@@ -191,6 +193,8 @@ LLM ফেরত দেয়:
 
 <div class="dialogue">কাবা — নির্ধারিত মাপে তৈরি। উচ্চতা, প্রস্থ, কোণা — সব নির্দিষ্ট। কেউ বলে না — আমি গোলাকার কাবা বানাব। কেউ বলে না — আমি ছাদ বাদ দেব। কাঠামোই পবিত্রতা। ইসলামি স্থাপত্যে girih — জ্যামিতিক নকশা — কাঠামোর মধ্যেই সৌন্দর্য। মুক্তি নয়, নিয়ম। নিয়মেই শান্তি। Structured Output-ও তেমনি — মুক্তি নয়, কাঠামো। কাঠামোতেই নির্ভরযোগ্যতা।</div>
 <div class="dialogue en">"The Kaaba — built to precise dimensions. Height, width, corners — all fixed. No one says — I'll build a round Kaaba. No one says — I'll skip the roof. Structure IS sanctity. In Islamic architecture, girih — geometric patterns — beauty lives within structure. Not freedom, but rule. In rule, peace. Structured Output is the same — not freedom, but structure. In structure, reliability."</div>
+
+<div class="callout warn" data-door="15"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা API LLM থেকে JSON expect করলো। কিন্তু LLM মাঝে markdown দিলো। Parser crash। Structured output ছাড়া — integration অসম্ভব।</div></div>
 
 <div class="secret-box"><div class="label">দরজা ১৫ — রহস্য</div><div class="text">📐 LLM কথা বলে টেক্সটে, মেশিন চায় কাঠামো।<br><small>JSON schema = নকশা। যাচাই করো (Pydantic), ভাঙলে পুনঃপ্রচেষ্টা করো। মুক্ত টেক্সট নয় — নির্ধারিত কাঠামো।</small></div></div>`
 });

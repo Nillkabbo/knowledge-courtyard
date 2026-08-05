@@ -49,6 +49,8 @@ doors.push({
 <div class="dialogue">মুস্তালাহ আল-হাদিস — হাদিস যাচাইয়ের বিজ্ঞান — ঠিক এটাই। একটা হাদিস কখনো একটা মাপে গ্রহণ করা হয় না। সনদ (chain), রাবির নির্ভরযোগ্যতা, মতন (content) — একাধিক মাত্রায় যাচাই। সহিহ, হাসান, দাইফ — স্তরভিত্তিক শ্রেণি। আমি সুগন্ধি যাচাই করি পাঁচটায়। মুহাদ্দিস হাদিস যাচাই করেন তিনটায়। AI evals-ও তেমনি — একাধিক মাত্রায়, স্তরভিত্তিক।</div>
 <div class="dialogue en">"Mustalah al-Hadith — the science of hadith verification — is exactly this. A hadith is never accepted on a single measure. Chain (sanad), narrator reliability, content (matn) — verification across multiple dimensions. Sahih, hasan, daif — graded levels. I verify perfume on five. The muhaddith verifies hadith on three. AI evals are the same — multi-dimensional, graded."</div>
 
+<div class="callout warn" data-door="6"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা টিম LLM app বানালো, কোনো eval ছাড়া deploy করলো। প্রথম সপ্তাহে ৩০% উত্তর ভুল বের হলো। কেউ জানতো না — কারণ measure করছিল না। Eval ছাড়া deploy = অন্ধ পাইলট।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ৬ — রহস্য</div><div class="text">👃 পাঁচটা মাত্রায় মাপো, একটা স্কোরে নয়।<br><small>"মনে হয় ঠিক" = মাপ নয়। Accuracy, Relevance, Safety — প্রতিটা আলাদা।</small></div></div>`
 });
 
@@ -106,6 +108,8 @@ doors.push({
 <div class="dialogue en">"The word Shariah means — 'the path to water.' As a river brings water to dry land, gives life — Shariah is that path. Rules, system, structure — that keep life flowing. Without rules, water is wild — sometimes flood, sometimes drought. With a system — every day, reliable, for all. AI system design is Shariah — building the water's path. But building the path isn't enough — you must ask: water for whom?"</div>
 
 <div class="verse">"জেনে রাখো, আল্লাহর স্মরণেই হৃদয় প্রশান্তি পায়।"<br>— কুরআন ১৩:২৮<br><br>যন্ত্র প্রশান্তি দেয় না। দক্ষতা প্রশান্তি দেয় না। উদ্দেশ্য দেয়। ভালোবাসা দেয়। আল্লাহর স্মরণ — সেই উদ্দেশ্যের স্মরণ — সেটাই প্রশান্তি।<br>সাতটা দরজা শেখায় কীভাবে বানাতে হয়। কিন্তু কেন বানাতে হয় — সেটা শুধু হৃদয় জানে।</div>
+
+<div class="callout warn" data-door="7"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা API rate limit ছাড়া ছাড়া দিলো। একজন ইউজার loop চালালো — ১ ঘণ্টায় $৫০,০০০ বিল। কারণ limit = ০। System design-এ reliability শুরুই হয় rate limit দিয়ে।</div></div>
 
 <div class="secret-box"><div class="label">দরজা ৭ — রহস্য</div><div class="text">🏛️ ডেমো নয়, ব্যবস্থা। Cache, Fallback, Monitor — নির্ভরযোগ্যতা।<br><small>এবং — ছয়টা যন্ত্রই ব্যর্থ উদ্দেশ্য ছাড়া। কেন বানাচ্ছ, তাই প্রথম প্রশ্ন।</small></div></div>`
 });

@@ -103,5 +103,7 @@ doors.push({
 <div class="dialogue">শূরা — পরামর্শ। কুরআনে আছে: যারা তাদের কাজ পরস্পর পরামর্শে সম্পন্ন করে (৪২:৩৮)। একজন মত দিলেন — হয়তো ভুল। দুজন মত দিলেন — সম্ভাবনা বাড়ল। তিনজন মিলে সিদ্ধান্ত নিলেন — সবচেয়ে নির্ভরযোগ্য। আমার তিন বাজ হলো শূরা — তিন উৎস, তিন মত, এক সিদ্ধান্ত। Hybrid search + re-ranking হলো ডিজিটাল শূরা।</div>
 <div class="dialogue en">"Shura — consultation. The Quran says: those who conduct their affairs by mutual consultation (42:38). One opinion — possibly wrong. Two — chances improve. Three deciding together — most reliable. My three falcons are shura — three sources, three opinions, one decision. Hybrid search + re-ranking is digital shura."</div>
 
+<div class="callout warn" data-door="22"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা RAG system wrong chunk size ব্যবহার করলো। সংশ্লিষ্ট তথ্য দুই chunk-এ ভাগ হয়ে গেলো। retrieval মিস।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ২২ — রহস্য</div><div class="text">🦅 একটা উৎস একটা উত্তর। একাধিক উৎস, পুনর্বিন্যাস, প্রশ্ন বদল — নিখুঁত উত্তর।<br><small>Hybrid search (ভেক্টর+কিওয়ার্ড), query rewriting, cross-encoder re-ranking। মৌলিক RAG ~৬০%, উন্নত RAG ৯০%+।</small></div></div>`
 });

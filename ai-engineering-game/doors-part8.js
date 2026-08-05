@@ -82,6 +82,8 @@ doors.push({
 <div class="dialogue">মুরাকাবা — সূফি চর্চায় নিরন্তর সচেতনতা। বিশ্বাস যে আল্লাহ সবকিছু দেখেন, সব সময়। "তিনি তোমার সাথে আছেন তুমি যেখানেই থাকো" (৫৭:৪)। এই সচেতনতা বদলে দেয়। যে জানে দেখা হচ্ছে — সে সচেতন থাকে। প্রোডাকশন AI-ও তেমনি। তুমি জানো সবকিছু লেখা হচ্ছে, মাপা হচ্ছে। তাই তুমি সচেতন। আমি এই চূড়ায় দাঁড়িয়ে মুরাকাবা করি — নিরন্তর নজরদারি। নিরন্তর সচেতনতা।</div>
 <div class="dialogue en">"Muraqabah — in Sufi practice, constant watchfulness. The awareness that Allah sees everything, always. 'He is with you wherever you are' (57:4). This awareness transforms. One who knows he is watched — stays alert. Production AI is the same. You know everything is logged, measured. So you stay alert. I stand on this tower in muraqabah — constant vigilance. Constant awareness."</div>
 
+<div class="callout warn" data-door="16"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা LLM prod-এ ছাড়া দিলো, কোনো monitoring ছাড়া। ৩ দিন latency 10x বাড়লো। কেউ জানতো না। Monitoring ছাড়া prod = অন্ধ চালক।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ১৬ — রহস্য</div><div class="text">⚓ একবার বানালে চলে না। প্রতিদিন দেখো।<br><small>গতি, খরচ, গুণমান, পরিবর্তন — চারটে দিক। না দেখলে নীরব ক্ষয়। LLMOps = নিরন্তর নজরদারি।</small></div></div>`
 });
 
@@ -170,6 +172,8 @@ doors.push({
 
 <div class="dialogue">তুমি সতেরোটি দরজা পার করেছ। গল্পবলিয়ে শিখিয়েছেন — মেশিন কী। ক্যালিগ্রাফার শিখিয়েছেন — কীভাবে জিজ্ঞেস করতে হয়। আর আমি শিখালাম — কীভাবে টিকে থাকতে হয়। কারণ জ্ঞান শুধু বোঝা নয় — জ্ঞান হলো সেই বোঝাকে কাজে লাগানো, কম খরচে, দীর্ঘকাল। কিন্তু বোঝা আর টিকিয়ে রাখা — এই দুটোই যথেষ্ট নয়। এখন শেখো কীভাবে বানাতে হয়। স্রোতের গভীর থেকে তীরে ফেরো — নির্মাতার ঘাটে।</div>
 <div class="dialogue en">"You've passed seventeen doors. The storyteller taught — what the machine is. The calligrapher taught — how to ask. And I teach — how to endure. Because knowledge isn't just understanding — knowledge is putting that understanding to work, at less cost, for longer. But understanding and surviving — these two aren't enough either. Now learn how to build. Return from the deep currents to shore — to the Builder's Quay."</div>
+
+<div class="callout warn" data-door="17"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা startup fp16 model চালালো — quantization ছাড়া। GPU খরচ মাসে $১০K। INT8 দিলে মান একই, খরচ $৩K। কম দিয়ে বেশি।</div></div>
 
 <div class="secret-box"><div class="label">দরজা ১৭ — রহস্য</div><div class="text">🌬️ একই মডেল, কম জ্বালানি।<br><small>Quantize (৪-বিট), Distill (ছোট মডেল), Batch (একসাথে), KV Cache (পুরনো হিসাব)। প্রোডাকশন ইনফারেন্স মেমরিতে আটকে — গণনায় নয়।</small></div></div>`
 });

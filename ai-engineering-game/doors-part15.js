@@ -71,6 +71,8 @@ doors.push({
 <div class="dialogue">মিযান — সমতা, ভারসাম্য, ন্যায়বিচার। কুরআনে আছে: তোমরা ওজনে পূর্ণতা দিও (১৭:৩৫)। প্রতিটা কারিগর যদি নিজস্ব মাপ ব্যবহার করে — বাজারে অন্যায়। কিন্তু এক মাপ সবার জন্য — ন্যায়। MCP হলো সেই মাপ — এক স্ট্যান্ডার্ড সব টুলের জন্য। বড় টুল, ছোট টুল, জটিল টুল — সব এক সংযোগে। এটাই ন্যায়। এটাই দক্ষতা।</div>
 <div class="dialogue en">"Mizan — balance, proportion, justice. The Quran says: give full measure in weight (17:35). If each craftsman uses his own measure — injustice in the market. But one measure for all — justice. MCP is that measure — one standard for all tools. Big tool, small tool, complex tool — all one connection. This is justice. This is efficiency."</div>
 
+<div class="callout warn" data-door="26"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা টিম প্রতিটা tool-ের জন্য আলাদা integration। ১০০ tool = ১০০ integration। MCP দিলে: এক protocol, সব tool।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ২৬ — রহস্য</div><div class="text">🔌 প্রতিটা টুলের জন্য আলাদা সংযোগ নয়। এক স্ট্যান্ডার্ড, সব টুল।<br><small>MCP = AI-এর USB-C। এক Server বানাও, সব Client চেনে। Tools, Resources, Prompts — তিন ক্ষমতা।</small></div></div>`
 });
 
@@ -153,6 +155,8 @@ PII = Personally Identifiable Information
 
 <div class="dialogue">তুমি সাতাশটি দরজা পার করেছ। গল্পবলিয়ে শিখিয়েছেন মেশিন কী। বিচারপতি শিখিয়েছেন সত্য কী। স্বর্ণকার শিখিয়েছেন যাচাই কী। পরিষদের নায়ক শিখিয়েছেন সমন্বয় কী। আর আমি শিখালাম — সুরক্ষা কী। কারণ জ্ঞানের চূড়ান্ত পরীক্ষা শুধু বোঝা নয়, শুধু বানানো নয়, শুধু টিকিয়ে রাখা নয়, শুধু নিখুঁত করা নয় — নিশ্চিত করা যে তুমি যা বানিয়েছ তা নিরাপদ। ভেতরে ও বাইরে। এটাই শেষ পাঠ। এটাই প্রকৌশলীর চূড়ান্ত ফটক।</div>
 <div class="dialogue en">"You've passed twenty-seven doors. The storyteller taught — what the machine is. The judge taught — what truth is. The goldsmith taught — what verification is. The council leader taught — what coordination is. And I teach — what safety is. Because knowledge's ultimate test isn't just understanding, building, surviving, perfecting — it's ensuring that what you've built is safe. Inside and out. This is the final lesson. This is the engineer's ultimate gate."</div>
+
+<div class="callout warn" data-door="27"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা ফ্রি chatbot ছাড়া দিলো, কোনো guardrail ছাড়া। ইউজার harmful content বানাতে ব্যবহার করলো। Guardrail = input filter + output filter।</div></div>
 
 <div class="secret-box"><div class="label">দরজা ২৭ — রহস্য</div><div class="text">🛡️ প্রতিটা শব্দ ভেতরে আসে, প্রতিটা শব্দ বাইরে যায়।<br><small>উভয় দিকে পরিদর্শন চাই। Injection, PII, toxicity, policy — আটকাও। NeMo, Llama Guard। হিসবা — জবাবদিহিতা।</small></div></div>`
 });

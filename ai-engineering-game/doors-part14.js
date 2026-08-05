@@ -96,5 +96,7 @@ doors.push({
 <div class="dialogue">ওয়াকালা — ইসলামি আইনে প্রতিনিধিত্ব। তুমি কাউকে তোমার হয়ে কাজ করতে পাঠাতে পারো — কিন্তু দায়িত্ব তোমার। নবীজি (সা) গভর্নর নিযুক্ত করতেন, বিচারপতি নিযুক্ত করতেন, দূত পাঠাতেন — প্রতিটা প্রতিনিধি নির্দিষ্ট ক্ষমতায়। কিন্তু চূড়ান্ত দায়িত্ব নবীজির। মাল্টি-এজেন্ট সিস্টেমও তেমনি — প্রতিটা এজেন্ট একটা গিল্ড, কিন্তু সমন্বয় ও দায়িত্ব সংগঠকের। ওয়াকালা ছাড়া অরাজকতা। সমন্বয় ছাড়া পাঁচ এজেন্ট = পাঁচটা ভিন্ন ভুল।</div>
 <div class="dialogue en">"Wakalah — agency in Islamic law. You can send someone to act on your behalf — but the responsibility is yours. The Prophet (peace be upon him) appointed governors, judges, envoys — each delegate with specific authority. But ultimate responsibility was his. Multi-agent systems too — each agent is one guild, but coordination and responsibility belong to the orchestrator. Without wakalah, chaos. Without coordination, five agents = five different mistakes."</div>
 
+<div class="callout warn" data-door="25"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা multi-agent system-ে দুই agent একই কাজ করতে গেলো — conflict। Orchestration pattern ছাড়া = chaos।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ২৫ — রহস্য</div><div class="text">🏛️ এক এজেন্ট এক কাজ। কঠিন কাজে অনেক এজেন্ট।<br><small>৫ প্যাটার্ন: চেইন, রাউটিং, সমান্তরাল, সংগঠক-কর্মী, মূল্যায়ক-সংশোধক। সমন্বয় চাই — ওয়াকালা।</small></div></div>`
 });

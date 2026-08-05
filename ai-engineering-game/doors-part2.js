@@ -49,6 +49,8 @@ doors.push({
 <div class="dialogue">ইসলামে মুফতি যখন ফতোয়া দেন — তিনি নিজের মত দেন না। তিনি কুরআন, সুন্নাহ, ইজমা, কিয়াস থেকে দলিল আনেন। ইস্তিফতা — সঠিক সাক্ষ্য সংগ্রহ — ছাড়া ফতোয়া বৈধ নয়। আমি এই বেঞ্চে বসে যা করি — তা মুফতির কাজের মতো। সাক্ষ্য ছাড়া কোনো রায় নয়।</div>
 <div class="dialogue en">"In Islam, when a mufti gives a fatwa — he doesn't give his own opinion. He brings evidence from the Quran, Sunnah, consensus, analogy. Istifta — collecting proper evidence — without it, a fatwa is invalid. What I do on this bench — it's the mufti's work. No judgment without evidence."</div>
 
+<div class="callout warn" data-door="4"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা কোম্পানি RAG ছাড়া LLM দিয়ে নিজেদের policy জিজ্ঞেস করলো। LLM সাধারণ উত্তর দিলো — তাদের নির্দিষ্ট policy নয়। কর্মীরা ভুল নিয়ম অনুসরণ করলো।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ৪ — রহস্য</div><div class="text">⚖️ প্রশ্ন → সাক্ষ্য খোঁজো → সাক্ষ্য দাও → উত্তর নাও।<br><small>RAG = স্মৃতি থেকে নয়, গোডাউন থেকে। Hallucination কমে, সঠিকতা বাড়ে।</small></div></div>`
 });
 
@@ -99,6 +101,8 @@ doors.push({
 
 <div class="dialogue">ইসলামে 'ওয়াকাফ' আছে — একটা সম্পত্তি নির্দিষ্ট কাজের জন্য আলাদা করা। মসজিদের জমি শুধু ইবাদতে, স্কুলের জমি শুধু শিক্ষায়। প্রতিটা টুল একটা ওয়াকফ — নির্দিষ্ট কাজের জন্য। ক্যালকুলেটর শুধু গণনায়, সার্চ শুধু তথ্যে। সব এক জায়গায় রাখলে বিভ্রান্তি — আলাদা রাখলে নির্ভুলতা। আমি যদি নিজে গুণ করতাম — রোগী মারা যেত।</div>
 <div class="dialogue en">"In Islam there's 'waqf' — a property dedicated for a specific purpose. Mosque land only for worship, school land only for education. Each tool is a waqf — dedicated for a specific task. Calculator only for math, search only for information. Mix everything together and you get confusion — separate them and you get precision. If I multiplied myself — a patient could die."</div>
+
+<div class="callout warn" data-door="5"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা booking agent function calling-এ JSON ফরম্যাট ভুল পাঠালো। airline API rejected। কিন্তু LLM 'booking confirmed' বলে দিলো। গ্রাহক airport-এ গিয়ে দেখলেন — কোনো ticket নেই।</div></div>
 
 <div class="secret-box"><div class="label">দরজা ৫ — রহস্য</div><div class="text">🔧 LLM সিদ্ধান্ত দেয়, টুল কাজ করে।<br><small>ভাষা মডেলের কাজ নির্ণয় — গণনা, কুয়েরি, API নয়। সঠিক কাজ সঠিক টুলে।</small></div></div>`
 });

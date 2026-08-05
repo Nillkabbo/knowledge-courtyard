@@ -47,6 +47,8 @@ doors.push({
 <div class="dialogue">কুরআনে আছে — "আর আমি সৃষ্টি করেছি সব কিছু এক নির্দিষ্ট পরিমাণে।" সব কিছুর স্থান আছে। নিয়ম আছে। গোলকের গাঁথুনিতে কিছুই এলোমেলো নয় — প্রতিটা বিন্দুর স্থান তার অর্থে। আমার মানচিত্রও তেমনি — অর্থের স্থানাঙ্ক, সৃষ্টির ছায়া।</div>
 <div class="dialogue en">"The Quran says — 'And We created all things in due measure.' Everything has its place. Its order. In the constellation of the globe, nothing is random — each point's position reflects its meaning. My maps are the same — coordinates of meaning, shadows of creation."</div>
 
+<div class="callout warn" data-door="8"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা search engine wrong embedding model ব্যবহার করলো। 'apple' (ফল) ও 'Apple' (কোম্পানি) একই vector-এ গেলো। ফলের জন্য search করলে iPhone এলো। Embedding model = অর্থের মান।</div></div>
+
 <div class="secret-box"><div class="label">দরজা ৮ — রহস্য</div><div class="text">🧲 Embedding = অর্থ → স্থানাঙ্ক। কাছের অর্থ কাছাকাছি।<br><small>Vector search মাপে দূরত্ব। RAG-এর নিচে embedding — এটাই গোডাউনের কাঠামো।</small></div></div>`
 });
 
@@ -95,6 +97,8 @@ Fine-tuning যখন:
 
 <div class="dialogue">তাযকিয়াহ — আত্মশুদ্ধি, আত্মশোধন। ইসলামে নফসকে পরিশীলিত করা হয় — নতুন নফস তৈরি করা হয় না। একই নফস, কিন্তু পুনরায় গড়া। সওয়ালের উপর সওয়াল। অভ্যাসের উপর অভ্যাস। একদিনে নয় — ধীরে, ধৈর্য ধরে। ফাইন-টিউনিংও তেমনি — একই মডেল, কিন্তু পুনরায় গড়া। নতুন মডেল নয় — পুরনোর পরিশীলন।</div>
 <div class="dialogue en">"Tazkiyah — purification, refinement. In Islam, the nafs (self) is refined — not replaced. The same self, but reforged. Layer upon layer of discipline. Habit upon habit. Not in one day — slowly, patiently. Fine-tuning is the same — the same model, but reforged. Not new — but refined."</div>
+
+<div class="callout warn" data-door="9"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা টিম fine-tuning করলো ৫০০টা labeled example দিয়ে। কিন্তু label-এ ২০% ভুল ছিল। model ২০% ভুল শিখলো। base model-এর চেয়ে খারাপ।</div></div>
 
 <div class="secret-box"><div class="label">দরজা ৯ — রহস্য</div><div class="text">🏋️ RAG জ্ঞান যোগ করে, Fine-tuning স্বভাব বদলায়।<br><small>বহির্গামী vs অন্তর্গামী। ভুল ঢাললে মডেল ভাঙে — LoRA/QLoRA হলো সূক্ষ্ম হাতুড়ি।</small></div></div>`
 });
