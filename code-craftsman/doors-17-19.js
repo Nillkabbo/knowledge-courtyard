@@ -100,7 +100,7 @@ def create_task(request):
 
 <div class="diagram">
   <div class="diag-title">Error Handling — Giant Catch vs Specific Catches</div>
-  <svg viewBox="0 0 560 270" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 270" xmlns="http://www.w3.org/2000/svg">
     <!-- Giant catch -->
     <text x="120" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Giant try-except</text>
     <rect x="20" y="30" width="200" height="180" rx="8" fill="rgba(239,68,68,0.04)" stroke="#ef4444" stroke-width="1.5"/>
@@ -132,9 +132,9 @@ def create_task(request):
     <text x="410" y="180" text-anchor="middle" fill="#a5b4fc" font-size="7">৫ ধরনের error → ৫ নির্দিষ্ট catch</text>
     <text x="410" y="195" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">Each error is visible</text>
     <!-- Bottom rules -->
-    <rect x="20" y="225" width="520" height="38" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="242" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Martin's Rules: Small try · Specific catch · Custom exceptions</text>
-    <text x="280" y="255" text-anchor="middle" fill="#9a93b8" font-size="7">Exception শুধু অস্বাভাবিক অবস্থায় — flow control নয়</text>
+    <rect x="20" y="225" width="680" height="38" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="360" y="242" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Martin's Rules: Small try · Specific catch · Custom exceptions</text>
+    <text x="360" y="255" text-anchor="middle" fill="#9a93b8" font-size="7">Exception শুধু অস্বাভাবিক অবস্থায় — flow control নয়</text>
   </svg>
   <div class="diag-cap">বিশাল try-except → নির্দিষ্ট catch। প্রতিটা error দৃশ্যমান। Silent failure = নীরব মৃত্যু।</div>
 </div>
@@ -303,30 +303,30 @@ def process_task(task_id):
 
 <div class="diagram">
   <div class="diag-title">Decorator — মোড়কে মোড়কে behavior যোগ</div>
-  <svg viewBox="0 0 560 270" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 270" xmlns="http://www.w3.org/2000/svg">
     <defs><marker id="arrDec" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#a5b4fc"/></marker></defs>
     <!-- Core function -->
     <rect x="190" y="20" width="180" height="35" rx="6" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="2"/>
-    <text x="280" y="38" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">process_task()</text>
-    <text x="280" y="50" text-anchor="middle" fill="#9a93b8" font-size="7">Core function — just logic</text>
+    <text x="360" y="38" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">process_task()</text>
+    <text x="360" y="50" text-anchor="middle" fill="#9a93b8" font-size="7">Core function — just logic</text>
     <!-- Layer 1: retry -->
     <rect x="140" y="65" width="280" height="35" rx="6" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3,2"/>
-    <text x="280" y="83" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="bold">@retry(max_attempts=3)</text>
-    <text x="280" y="95" text-anchor="middle" fill="#9a93b8" font-size="7">+ retries on failure</text>
+    <text x="360" y="83" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="bold">@retry(max_attempts=3)</text>
+    <text x="360" y="95" text-anchor="middle" fill="#9a93b8" font-size="7">+ retries on failure</text>
     <!-- Layer 2: timer -->
     <rect x="90" y="110" width="380" height="35" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5" stroke-dasharray="3,2"/>
-    <text x="280" y="128" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">@timer</text>
-    <text x="280" y="140" text-anchor="middle" fill="#9a93b8" font-size="7">+ measures execution time</text>
+    <text x="360" y="128" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">@timer</text>
+    <text x="360" y="140" text-anchor="middle" fill="#9a93b8" font-size="7">+ measures execution time</text>
     <!-- Layer 3: log -->
     <rect x="40" y="155" width="480" height="35" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2"/>
-    <text x="280" y="173" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">@log</text>
-    <text x="280" y="185" text-anchor="middle" fill="#9a93b8" font-size="7">+ logs entry/exit</text>
+    <text x="360" y="173" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">@log</text>
+    <text x="360" y="185" text-anchor="middle" fill="#9a93b8" font-size="7">+ logs entry/exit</text>
     <!-- Result -->
     <rect x="40" y="200" width="480" height="30" rx="6" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="2"/>
-    <text x="280" y="219" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">1 function, 4 behaviors — no subclassing!</text>
+    <text x="360" y="219" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">1 function, 4 behaviors — no subclassing!</text>
     <!-- Bottom -->
     <rect x="40" y="240" width="480" height="22" rx="4" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="255" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">GoF: "Favor composition over inheritance"</text>
+    <text x="360" y="255" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">GoF: "Favor composition over inheritance"</text>
   </svg>
   <div class="diag-cap">@log + @timer + @retry — ৩টা behavior যোগ, মূল ফাংশন বদলায়নি। প্রতিটা মোড়ক একটা গুণ।</div>
 </div>
@@ -486,7 +486,7 @@ urgent_titles = sorted(
 
 <div class="diagram">
   <div class="diag-title">Higher-Order Functions — map · filter · reduce</div>
-  <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
     <defs><marker id="arrHOF" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#a5b4fc"/></marker></defs>
     <!-- map -->
     <rect x="20" y="20" width="160" height="85" rx="8" fill="rgba(99,102,241,0.06)" stroke="#6366f1" stroke-width="1.5"/>
@@ -497,11 +497,11 @@ urgent_titles = sorted(
     <text x="100" y="100" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">[2, 4, 6]</text>
     <!-- filter -->
     <rect x="200" y="20" width="160" height="85" rx="8" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1.5"/>
-    <text x="280" y="38" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">filter(f, list)</text>
-    <text x="280" y="55" text-anchor="middle" fill="#9a93b8" font-size="7">শর্ত মেলে এমন রাখো</text>
-    <text x="280" y="75" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">[1, 2, 3, 4]</text>
-    <text x="280" y="87" text-anchor="middle" fill="#9a93b8" font-size="7">↓ even?</text>
-    <text x="280" y="100" text-anchor="middle" fill="#52c41a" font-size="8" font-family="monospace">[2, 4]</text>
+    <text x="360" y="38" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">filter(f, list)</text>
+    <text x="360" y="55" text-anchor="middle" fill="#9a93b8" font-size="7">শর্ত মেলে এমন রাখো</text>
+    <text x="360" y="75" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">[1, 2, 3, 4]</text>
+    <text x="360" y="87" text-anchor="middle" fill="#9a93b8" font-size="7">↓ even?</text>
+    <text x="360" y="100" text-anchor="middle" fill="#52c41a" font-size="8" font-family="monospace">[2, 4]</text>
     <!-- reduce -->
     <rect x="380" y="20" width="160" height="85" rx="8" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="460" y="38" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">reduce(f, list)</text>
@@ -510,7 +510,7 @@ urgent_titles = sorted(
     <text x="460" y="87" text-anchor="middle" fill="#9a93b8" font-size="7">↓ sum</text>
     <text x="460" y="100" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace">10</text>
     <!-- Pipeline -->
-    <text x="280" y="135" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">Composition Pipeline</text>
+    <text x="360" y="135" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">Composition Pipeline</text>
     <rect x="20" y="145" width="120" height="25" rx="4" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1"/>
     <text x="80" y="162" text-anchor="middle" fill="#52c41a" font-size="8" font-family="monospace">filter: pending</text>
     <line x1="145" y1="158" x2="165" y2="158" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrHOF)"/>
@@ -521,11 +521,11 @@ urgent_titles = sorted(
     <text x="380" y="162" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace">sort: by length</text>
     <text x="470" y="162" fill="#a5b4fc" font-size="7">→ result</text>
     <!-- Rule -->
-    <rect x="20" y="190" width="520" height="80" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="210" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">SICP: "Think in transformations, not instructions"</text>
-    <text x="280" y="227" text-anchor="middle" fill="#9a93b8" font-size="8">for-loop = "কীভাবে করবে" (how)</text>
-    <text x="280" y="242" text-anchor="middle" fill="#9a93b8" font-size="8">map/filter/reduce = "কী করবে" (what)</text>
-    <text x="280" y="257" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Declarative &gt; Imperative</text>
+    <rect x="20" y="190" width="600" height="80" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="360" y="210" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">SICP: "Think in transformations, not instructions"</text>
+    <text x="360" y="227" text-anchor="middle" fill="#9a93b8" font-size="8">for-loop = "কীভাবে করবে" (how)</text>
+    <text x="360" y="242" text-anchor="middle" fill="#9a93b8" font-size="8">map/filter/reduce = "কী করবে" (what)</text>
+    <text x="360" y="257" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Declarative &gt; Imperative</text>
   </svg>
   <div class="diag-cap">map (প্রতিটায়) · filter (শর্ত মেলে) · reduce (একত্রিত)। এই তিনটি দিয়ে ৯০% loop বদলানো যায়।</div>
 </div>

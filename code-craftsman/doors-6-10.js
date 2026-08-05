@@ -95,8 +95,8 @@ task.status = TaskStatus.PENDING  # type-safe</div>
 
 <div class="diagram">
   <div class="diag-title">৪ প্রধান Code Smell — লক্ষণ ও নিরাময়</div>
-  <svg viewBox="0 0 560 270" xmlns="http://www.w3.org/2000/svg">
-    <text x="280" y="20" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">Fowler's 22 Smells — শীর্ষ ৪টি (Refactoring Ch.6)</text>
+  <svg viewBox="0 0 720 270" xmlns="http://www.w3.org/2000/svg">
+    <text x="360" y="20" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">Fowler's 22 Smells — শীর্ষ ৪টি (Refactoring Ch.6)</text>
     <!-- Long Method -->
     <rect x="20" y="35" width="250" height="50" rx="6" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1.5"/>
     <text x="35" y="53" fill="#ef4444" font-size="10" font-weight="bold">👃 Long Method</text>
@@ -123,9 +123,9 @@ task.status = TaskStatus.PENDING  # type-safe</div>
     <text x="30" y="193" fill="#9a93b8" font-size="8">Long Parameter List · Divergent Change · Shotgun Surgery</text>
     <text x="30" y="205" fill="#9a93b8" font-size="8">Data Clumps · Speculative Generality · Temporary Field · Message Chains</text>
     <!-- Rule -->
-    <rect x="20" y="220" width="520" height="40" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="238" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Fowler: "Smells are heuristic, not rules."</text>
-    <text x="280" y="252" text-anchor="middle" fill="#9a93b8" font-size="8">অনুভব করো → নাম দাও → নিরাময় প্রয়োগ করো</text>
+    <rect x="20" y="220" width="680" height="40" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="360" y="238" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Fowler: "Smells are heuristic, not rules."</text>
+    <text x="360" y="252" text-anchor="middle" fill="#9a93b8" font-size="8">অনুভব করো → নাম দাও → নিরাময় প্রয়োগ করো</text>
   </svg>
   <div class="diag-cap">Code smell = রোগের লক্ষণ। ৪ প্রধান: Long Method, Large Class, Feature Envy, Primitive Obsession। প্রতিটার নিরাময় আছে।</div>
 </div>
@@ -241,7 +241,7 @@ def get_overdue_penalty(created_at, deadline):
 
 <div class="diagram">
   <div class="diag-title">Extract Method — বড় ফাংশন নামযুক্ত ছোট টুকরোতে</div>
-  <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg">
     <defs><marker id="arrE" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#a5b4fc"/></marker></defs>
     <!-- Before -->
     <text x="100" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Before: 40 lines</text>
@@ -410,7 +410,7 @@ service.register('teams', TeamsNotification())
 
 <div class="diagram">
   <div class="diag-title">Strategy Pattern — if/elif চেইন → Polymorphic Dispatch</div>
-  <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
     <!-- Before: if chain -->
     <text x="100" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Before: if/elif chain</text>
     <rect x="20" y="28" width="180" height="160" rx="8" fill="rgba(239,68,68,0.04)" stroke="#ef4444" stroke-width="1.5"/>
@@ -454,7 +454,7 @@ service.register('teams', TeamsNotification())
     <text x="400" y="237" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Closed for modification ✅</text>
     <!-- Bottom -->
     <rect x="20" y="250" width="530" height="22" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="265" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">GoF (1994): "Encapsulate what varies. Favor composition over inheritance."</text>
+    <text x="360" y="265" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">GoF: "Encapsulate what varies. Favor composition."</text>
   </svg>
   <div class="diag-cap">if/elif চেইন → Strategy class পরিবার। নতুন channel = নতুন class, কোনো পুরোনো কোড স্পর্শ নয়। Open/Closed Principle।</div>
 </div>
@@ -571,30 +571,30 @@ task = TaskFactory.create('bug', 'Fix crash', user)
 
 <div class="diagram">
   <div class="diag-title">Observer — এক থেকে অনেকে, স্বয়ংক্রিয়</div>
-  <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg">
     <defs><marker id="arrO" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#a5b4fc"/></marker></defs>
     <rect x="200" y="20" width="160" height="50" rx="8" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="2"/>
-    <text x="280" y="42" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">Task (Subject)</text>
-    <text x="280" y="58" text-anchor="middle" fill="#9a93b8" font-size="8">complete() → notify()</text>
+    <text x="360" y="42" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">Task (Subject)</text>
+    <text x="360" y="58" text-anchor="middle" fill="#9a93b8" font-size="8">complete() → notify()</text>
     <line x1="250" y1="70" x2="100" y2="120" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrO)"/>
     <line x1="280" y1="70" x2="280" y2="120" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrO)"/>
     <line x1="310" y1="70" x2="460" y2="120" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrO)"/>
     <text x="160" y="95" text-anchor="middle" fill="#9a93b8" font-size="7">notify()</text>
-    <text x="280" y="95" text-anchor="middle" fill="#9a93b8" font-size="7">notify()</text>
+    <text x="360" y="95" text-anchor="middle" fill="#9a93b8" font-size="7">notify()</text>
     <text x="400" y="95" text-anchor="middle" fill="#9a93b8" font-size="7">notify()</text>
     <rect x="30" y="125" width="140" height="40" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="100" y="145" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">EmailObserver</text>
     <text x="100" y="158" text-anchor="middle" fill="#9a93b8" font-size="7">send_email()</text>
     <rect x="210" y="125" width="140" height="40" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
-    <text x="280" y="145" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">AnalyticsObserver</text>
-    <text x="280" y="158" text-anchor="middle" fill="#9a93b8" font-size="7">track_event()</text>
+    <text x="360" y="145" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">AnalyticsObserver</text>
+    <text x="360" y="158" text-anchor="middle" fill="#9a93b8" font-size="7">track_event()</text>
     <rect x="390" y="125" width="140" height="40" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="460" y="145" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">AuditLogObserver</text>
     <text x="460" y="158" text-anchor="middle" fill="#9a93b8" font-size="7">log_audit()</text>
-    <rect x="20" y="180" width="520" height="55" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="200" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Loose Coupling: Task doesn't know WHO receives</text>
-    <text x="280" y="215" text-anchor="middle" fill="#9a93b8" font-size="8">নতুন observer? add_observer() — Task class ছোঁয়ো না</text>
-    <text x="280" y="228" text-anchor="middle" fill="#9a93b8" font-size="8">এক observer crash → অন্যের ক্ষতি নেই</text>
+    <rect x="20" y="180" width="680" height="55" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="360" y="200" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Loose Coupling: Task doesn't know WHO receives</text>
+    <text x="360" y="215" text-anchor="middle" fill="#9a93b8" font-size="8">নতুন observer? add_observer() — Task class ছোঁয়ো না</text>
+    <text x="360" y="228" text-anchor="middle" fill="#9a93b8" font-size="8">এক observer crash → অন্যের ক্ষতি নেই</text>
   </svg>
   <div class="diag-cap">Observer: Task complete() → সব observer স্বয়ংক্রিয় জানে। Task কাউকে জানে না। Loose coupling।</div>
 </div>
@@ -689,25 +689,25 @@ def process_task(task):
 
 <div class="diagram">
   <div class="diag-title">Defensive Programming — তিন স্তরের দেয়াল</div>
-  <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
-    <rect x="30" y="20" width="500" height="55" rx="8" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1.5"/>
+  <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg">
+    <rect x="30" y="20" width="660" height="55" rx="8" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="50" y="40" fill="#52c41a" font-size="10" font-weight="bold">Layer 1: Assertions</text>
     <text x="50" y="56" fill="#9a93b8" font-size="8">verify YOUR assumptions — assert x &gt; 0</text>
     <text x="50" y="68" fill="#9a93b8" font-size="8">internal function-এ — ভুল দ্রুত ধরা যায়</text>
-    <text x="500" y="45" fill="#52c41a" font-size="9" font-family="monospace" text-anchor="end">assert x &gt; 0</text>
+    <text x="690" y="45" fill="#52c41a" font-size="9" font-family="monospace" text-anchor="end">assert x &gt; 0</text>
     <rect x="30" y="85" width="500" height="55" rx="8" fill="rgba(99,102,241,0.06)" stroke="#6366f1" stroke-width="1.5"/>
     <text x="50" y="105" fill="#a5b4fc" font-size="10" font-weight="bold">Layer 2: Input Validation</text>
     <text x="50" y="121" fill="#9a93b8" font-size="8">never trust external data — validate title, priority</text>
     <text x="50" y="133" fill="#9a93b8" font-size="8">public API-তে — বাইরের input সবসময় সন্দেহজনক</text>
-    <text x="500" y="110" fill="#a5b4fc" font-size="9" font-family="monospace" text-anchor="end">if not title: raise</text>
+    <text x="690" y="110" fill="#a5b4fc" font-size="9" font-family="monospace" text-anchor="end">if not title: raise</text>
     <rect x="30" y="150" width="500" height="55" rx="8" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="50" y="170" fill="#fbbf24" font-size="10" font-weight="bold">Layer 3: Guard Clauses</text>
     <text x="50" y="186" fill="#9a93b8" font-size="8">bad cases first — return early, rest clean</text>
     <text x="50" y="198" fill="#9a93b8" font-size="8">if task is None: return — মূল লজিক সরল</text>
-    <text x="500" y="175" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="end">if None: return</text>
+    <text x="690" y="175" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="end">if None: return</text>
     <rect x="30" y="215" width="500" height="35" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="232" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">McConnell: "Fail fast, fail clearly"</text>
-    <text x="280" y="244" text-anchor="middle" fill="#9a93b8" font-size="8">error যত দ্রুত ধরা — debug তত সহজ</text>
+    <text x="360" y="232" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">McConnell: "Fail fast, fail clearly"</text>
+    <text x="360" y="244" text-anchor="middle" fill="#9a93b8" font-size="8">error যত দ্রুত ধরা — debug তত সহজ</text>
   </svg>
   <div class="diag-cap">৩ স্তর: Assertion (internal), Validation (external), Guard clause (flow)। সব input সন্দেহ করো।</div>
 </div>

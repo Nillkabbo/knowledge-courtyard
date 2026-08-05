@@ -102,7 +102,7 @@ def complete_task(task_id: int) -&gt; Result:
 
 <div class="diagram">
   <div class="diag-title">Conceptual Integrity — ৫ স্টাইল vs ১ দৃষ্টি</div>
-  <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg">
     <!-- Chaos -->
     <text x="120" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ No Integrity: 5 styles</text>
     <rect x="30" y="30" width="180" height="30" rx="5" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1"/>
@@ -130,9 +130,9 @@ def complete_task(task_id: int) -&gt; Result:
     <text x="420" y="185" text-anchor="middle" fill="#a5b4fc" font-size="8">৫ জন, ১ স্টাইল = ঐক্য</text>
     <text x="420" y="200" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Predictable ✅</text>
     <!-- Brooks' Law -->
-    <rect x="20" y="215" width="520" height="35" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="232" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Brooks' Law: "Adding people to a late project makes it later"</text>
-    <text x="280" y="244" text-anchor="middle" fill="#9a93b8" font-size="8">Nine women can't make a baby in one month</text>
+    <rect x="20" y="215" width="680" height="35" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="360" y="232" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Brooks' Law: "Adding people to a late project makes it later"</text>
+    <text x="360" y="244" text-anchor="middle" fill="#9a93b8" font-size="8">Nine women can't make a baby in one month</text>
   </svg>
   <div class="diag-cap">৫ স্টাইল = বিশৃঙ্খলা। ১ স্টাইল = ঐক্য। Conceptual integrity — সবচেয়ে গুরুত্বপূর্ণ।</div>
 </div>
@@ -370,13 +370,13 @@ if __name__ == "__main__":
 
 <div class="diagram">
   <div class="diag-title">The Complete Craftsman — ১০টি বই, ১টি কোড</div>
-  <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg">
     <!-- Center diamond -->
     <polygon points="280,40 340,100 280,160 220,100" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="2.5"/>
-    <text x="280" y="95" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">💎 Craftsman</text>
-    <text x="280" y="110" text-anchor="middle" fill="#a5b4fc" font-size="9">Code</text>
-    <text x="280" y="125" text-anchor="middle" fill="#9a93b8" font-size="7">10 books</text>
-    <text x="280" y="138" text-anchor="middle" fill="#9a93b8" font-size="7">united</text>
+    <text x="360" y="95" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">💎 Craftsman</text>
+    <text x="360" y="110" text-anchor="middle" fill="#a5b4fc" font-size="9">Code</text>
+    <text x="360" y="125" text-anchor="middle" fill="#9a93b8" font-size="7">10 books</text>
+    <text x="360" y="138" text-anchor="middle" fill="#9a93b8" font-size="7">united</text>
     <!-- 10 books radiating -->
     <!-- Book 1: Clean Code -->
     <line x1="250" y1="55" x2="150" y2="20" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
@@ -401,7 +401,7 @@ if __name__ == "__main__":
     <!-- Book 6: DDD -->
     <line x1="280" y1="160" x2="280" y2="200" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
     <rect x="225" y="200" width="110" height="22" rx="4" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1"/>
-    <text x="280" y="215" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">DDD — Language</text>
+    <text x="360" y="215" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">DDD — Language</text>
     <!-- Book 7: TDD -->
     <line x1="250" y1="145" x2="150" y2="175" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
     <rect x="80" y="163" width="110" height="22" rx="4" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1"/>
@@ -417,10 +417,10 @@ if __name__ == "__main__":
     <!-- Book 10: Brooks -->
     <line x1="280" y1="40" x2="280" y2="10" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
     <rect x="225" y="-5" width="110" height="22" rx="4" fill="rgba(99,102,241,0.06)" stroke="#6366f1" stroke-width="1"/>
-    <text x="280" y="10" text-anchor="middle" fill="#a5b4fc" font-size="7" font-weight="bold">Brooks — Integrity</text>
+    <text x="360" y="10" text-anchor="middle" fill="#a5b4fc" font-size="7" font-weight="bold">Brooks — Integrity</text>
     <!-- Qualities list -->
-    <rect x="20" y="240" width="520" height="65" rx="8" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="258" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">১০টি গুণ (10 Qualities of a Craftsman's Code):</text>
+    <rect x="20" y="240" width="680" height="65" rx="8" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="360" y="258" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">১০টি গুণ (10 Qualities of a Craftsman's Code):</text>
     <text x="35" y="275" fill="#9a93b8" font-size="7">সিদক (truthful names) · কিসম (small functions) · তাওহীদ (DRY) · তাদবির (refactored)</text>
     <text x="35" y="288" fill="#9a93b8" font-size="7">হিকমাহ (patterns) · আমানত (defensive+tested) · বায়ান (domain language)</text>
     <text x="35" y="301" fill="#9a93b8" font-size="7">ইসলাহ (seams) · জালাল (abstraction) · ওয়াহদানিয়্যাহ (conceptual integrity)</text>

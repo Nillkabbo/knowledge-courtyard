@@ -65,7 +65,7 @@ pending_tasks = get_pending_tasks(tasks)
 
 <div class="diagram">
   <div class="diag-title">নামের সত্য স্কেল — Bad Name vs Good Name</div>
-  <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg">
     <defs><marker id="arrN" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6" fill="#6366f1"/></marker></defs>
     <!-- Bad names -->
     <text x="20" y="25" fill="#ef4444" font-size="11" font-weight="bold">❌ খারাপ নাম (Lying Names)</text>
@@ -96,8 +96,8 @@ pending_tasks = get_pending_tasks(tasks)
     <text x="330" y="195" fill="#a5b4fc" font-size="9">পড়লে ইংরেজির মতো মনে হয়।</text>
     <!-- Bottom rule -->
     <rect x="20" y="210" width="530" height="40" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="228" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Martin's Rule: "A name should tell you WHY it exists"</text>
-    <text x="280" y="242" text-anchor="middle" fill="#9a93b8" font-size="8">Clean Code Ch.2: নাম বলবে কেন, কী, কীভাবে</text>
+    <text x="360" y="228" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Martin's Rule: "A name should tell you WHY it exists"</text>
+    <text x="360" y="242" text-anchor="middle" fill="#9a93b8" font-size="8">Clean Code Ch.2: নাম বলবে কেন, কী, কীভাবে</text>
   </svg>
   <div class="diag-cap">খারাপ নাম = মিথ্যা। ভালো নাম = সত্য। কোড পড়া যায় ইংরেজির মতো — proc(d) নয়, get_pending_tasks(tasks)।</div>
 </div>
@@ -237,7 +237,7 @@ def notify_assignee(task):
 
 <div class="diagram">
   <div class="diag-title">Function Decomposition — বড় ফাংশন ছোট ছোট টুকরো</div>
-  <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg">
     <defs><marker id="arrD2" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#6366f1"/></marker></defs>
     <!-- Giant function -->
     <rect x="20" y="20" width="200" height="180" rx="8" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="2"/>
@@ -267,11 +267,11 @@ def notify_assignee(task):
     <text x="355" y="195" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">4 small functions, 1 job each</text>
     <!-- Rule -->
     <rect x="440" y="65" width="100" height="100" rx="8" fill="rgba(99,102,241,0.04)" stroke="rgba(99,102,241,0.15)" stroke-width="1"/>
-    <text x="490" y="85" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Martin's Rule</text>
-    <text x="490" y="105" text-anchor="middle" fill="#9a93b8" font-size="8">≤ 20 lines</text>
-    <text x="490" y="122" text-anchor="middle" fill="#9a93b8" font-size="8">1 job</text>
-    <text x="490" y="139" text-anchor="middle" fill="#9a93b8" font-size="8">1 level</text>
-    <text x="490" y="156" text-anchor="middle" fill="#9a93b8" font-size="8">of abstraction</text>
+    <text x="570" y="85" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Martin's Rule</text>
+    <text x="570" y="105" text-anchor="middle" fill="#9a93b8" font-size="8">≤ 20 lines</text>
+    <text x="570" y="122" text-anchor="middle" fill="#9a93b8" font-size="8">1 job</text>
+    <text x="570" y="139" text-anchor="middle" fill="#9a93b8" font-size="8">1 level</text>
+    <text x="570" y="156" text-anchor="middle" fill="#9a93b8" font-size="8">of abstraction</text>
   </svg>
   <div class="diag-cap">১৫০-লাইন মনস্টার → ৪টা ছোট ফাংশন। প্রতিটা এক কাজ। পড়লে বোঝা যায়। Bug খুঁজতে সেকেন্ড লাগে।</div>
 </div>
@@ -357,7 +357,7 @@ class TaskManager:
 
 <div class="diagram">
   <div class="diag-title">Comment Quality Matrix — কখন বলবে, কখন চুপ থাকবে</div>
-  <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg">
     <text x="20" y="25" fill="#ef4444" font-size="11" font-weight="bold">❌ খারাপ কমেন্ট (lies &amp; noise)</text>
     <rect x="20" y="35" width="250" height="30" rx="5" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1"/>
     <text x="30" y="54" fill="#ef4444" font-size="9" font-family="monospace"># This returns the list</text>
@@ -371,17 +371,17 @@ class TaskManager:
     <text x="20" y="205" fill="#ef4444" font-size="8">কোড বদলেছে, কমেন্ট পুরোনো — lie।</text>
     <text x="310" y="25" fill="#a5b4fc" font-size="11" font-weight="bold">✅ ভালো কমেন্ট (only when needed)</text>
     <rect x="310" y="35" width="230" height="30" rx="5" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
-    <text x="320" y="54" fill="#a5b4fc" font-size="9" font-family="monospace"># TODO: recurring tasks next sprint</text>
+    <text x="360" y="54" fill="#a5b4fc" font-size="9" font-family="monospace"># TODO: recurring tasks next sprint</text>
     <rect x="310" y="70" width="230" height="30" rx="5" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
-    <text x="320" y="89" fill="#a5b4fc" font-size="9" font-family="monospace"># WARNING: breaks mobile sync</text>
+    <text x="360" y="89" fill="#a5b4fc" font-size="9" font-family="monospace"># WARNING: breaks mobile sync</text>
     <rect x="310" y="105" width="230" height="30" rx="5" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
-    <text x="320" y="124" fill="#a5b4fc" font-size="9" font-family="monospace"># HACK: Python 3.9 bug #12345</text>
+    <text x="360" y="124" fill="#a5b4fc" font-size="9" font-family="monospace"># HACK: Python 3.9 bug #12345</text>
     <rect x="310" y="140" width="230" height="30" rx="5" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
-    <text x="320" y="159" fill="#a5b4fc" font-size="9" font-family="monospace">"""Factory: creates Task."""</text>
+    <text x="360" y="159" fill="#a5b4fc" font-size="9" font-family="monospace">"""Factory: creates Task."""</text>
     <text x="310" y="190" fill="#9a93b8" font-size="8">কোড বলতে না পারলে কমেন্ট।</text>
     <text x="310" y="205" fill="#a5b4fc" font-size="8">সতর্কতা, TODO, আইনি — মাত্র এই ৩ ধরন।</text>
     <rect x="20" y="220" width="530" height="25" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="237" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Martin: Before writing a comment, try to express in code.</text>
+    <text x="360" y="237" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Martin: Before writing a comment, try to express in code.</text>
   </svg>
   <div class="diag-cap">খারাপ কমেন্ট = noise + lies। ভালো কমেন্ট = শুধু TODO, WARNING, HACK, docstring।</div>
 </div>
@@ -478,7 +478,7 @@ def import_tasks(csv_data):
 
 <div class="diagram">
   <div class="diag-title">DRY: এক সত্য — তিন মিথ্যার বিরুদ্ধে</div>
-  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg">
     <text x="20" y="20" fill="#ef4444" font-size="10" font-weight="bold">❌ WET — Knowledge in 3 places</text>
     <rect x="20" y="28" width="150" height="30" rx="5" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1"/>
     <text x="95" y="47" text-anchor="middle" fill="#ef4444" font-size="9" font-family="monospace">create: len &gt; 200</text>
@@ -501,8 +501,8 @@ def import_tasks(csv_data):
     <text x="435" y="95" text-anchor="middle" fill="#52c41a" font-size="8">import</text>
     <text x="360" y="120" text-anchor="middle" fill="#a5b4fc" font-size="8">১টা সত্য — ৩ জায়গায় ব্যবহার</text>
     <rect x="20" y="160" width="530" height="60" rx="6" fill="rgba(99,102,241,0.04)" stroke="rgba(99,102,241,0.15)" stroke-width="1"/>
-    <text x="280" y="180" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Orthogonality (Hunt &amp; Thomas)</text>
-    <text x="280" y="197" text-anchor="middle" fill="#9a93b8" font-size="8">Database ≠ Business logic ≠ UI — একটা বদলাও, অন্যটা ভাঙবে না</text>
+    <text x="360" y="180" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Orthogonality (Hunt &amp; Thomas)</text>
+    <text x="360" y="197" text-anchor="middle" fill="#9a93b8" font-size="8">Database ≠ Business logic ≠ UI — একটা বদলাও, অন্যটা ভাঙবে না</text>
   </svg>
   <div class="diag-cap">WET = ৩ কপি, ১ ভুল। DRY = ১ সত্য, ৩ ব্যবহার। Change once → all update।</div>
 </div>
@@ -610,9 +610,9 @@ print(response)  # {'id': 1}, 201
 
 <div class="diagram">
   <div class="diag-title">Tracer Bullet — পাতলা কিন্তু সম্পূর্ণ সংযোগ</div>
-  <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg">
     <defs><marker id="arrT" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#a5b4fc"/></marker></defs>
-    <text x="280" y="20" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">Tracer Bullet: One feature, all layers</text>
+    <text x="360" y="20" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">Tracer Bullet: One feature, all layers</text>
     <rect x="30" y="35" width="140" height="35" rx="6" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="2"/>
     <text x="100" y="57" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">API Layer</text>
     <line x1="100" y1="70" x2="100" y2="90" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrT)"/>
@@ -626,12 +626,12 @@ print(response)  # {'id': 1}, 201
     <text x="215" y="103" text-anchor="middle" fill="#6b6588" font-size="8">vs</text>
     <text x="380" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Isolated: Hope they connect</text>
     <rect x="250" y="35" width="140" height="30" rx="5" fill="rgba(239,68,68,0.04)" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
-    <text x="320" y="54" text-anchor="middle" fill="#ef4444" font-size="9">DB (3 weeks)</text>
+    <text x="360" y="54" text-anchor="middle" fill="#ef4444" font-size="9">DB (3 weeks)</text>
     <rect x="250" y="75" width="140" height="30" rx="5" fill="rgba(239,68,68,0.04)" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
-    <text x="320" y="94" text-anchor="middle" fill="#ef4444" font-size="9">Logic (3 weeks)</text>
+    <text x="360" y="94" text-anchor="middle" fill="#ef4444" font-size="9">Logic (3 weeks)</text>
     <rect x="250" y="115" width="140" height="30" rx="5" fill="rgba(239,68,68,0.04)" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
-    <text x="320" y="134" text-anchor="middle" fill="#ef4444" font-size="9">UI → mismatch!</text>
-    <text x="320" y="155" text-anchor="middle" fill="#ef4444" font-size="8">৫ মাস পরে: দিক ভুল</text>
+    <text x="360" y="134" text-anchor="middle" fill="#ef4444" font-size="9">UI → mismatch!</text>
+    <text x="360" y="155" text-anchor="middle" fill="#ef4444" font-size="8">৫ মাস পরে: দিক ভুল</text>
     <rect x="420" y="35" width="120" height="120" rx="8" fill="rgba(82,196,26,0.04)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
     <text x="480" y="55" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">ETC Principle</text>
     <text x="480" y="75" text-anchor="middle" fill="#9a93b8" font-size="8">Easy to</text>
@@ -640,8 +640,8 @@ print(response)  # {'id': 1}, 201
     <text x="480" y="130" text-anchor="middle" fill="#9a93b8" font-size="7">DRY</text>
     <text x="480" y="145" text-anchor="middle" fill="#9a93b8" font-size="7">Orthogonal</text>
     <rect x="20" y="195" width="530" height="35" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="213" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Tracer Bullet = prove architecture before investing in features</text>
-    <text x="280" y="225" text-anchor="middle" fill="#9a93b8" font-size="8">Thin slice → test → thicken → iterate</text>
+    <text x="360" y="213" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Tracer Bullet = prove architecture before investing in features</text>
+    <text x="360" y="225" text-anchor="middle" fill="#9a93b8" font-size="8">Thin slice → test → thicken → iterate</text>
   </svg>
   <div class="diag-cap">Tracer bullet: এক feature, সব layer, পাতলা। কাজ করলে architecture ঠিক। তারপর মোটা করো।</div>
 </div>

@@ -94,7 +94,7 @@ def check_row_against_matrix(i, row, matrix):
 
 <div class="diagram">
   <div class="diag-title">Control Flow — Deep Nesting vs Guard Clauses</div>
-  <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg">
     <!-- Before: nesting pyramid -->
     <text x="120" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Deep Nesting (5 levels)</text>
     <rect x="30" y="30" width="180" height="25" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
@@ -126,8 +126,8 @@ def check_row_against_matrix(i, row, matrix):
     <text x="410" y="175" text-anchor="middle" fill="#a5b4fc" font-size="8">১ স্তর — সবাই বোঝে</text>
     <text x="410" y="190" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Bug? সরাসরি দেখা যায়</text>
     <!-- Bottom -->
-    <rect x="20" y="210" width="520" height="30" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="228" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">McConnell: "Max 3 levels. Use guard clauses, named booleans."</text>
+    <rect x="20" y="210" width="680" height="30" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="360" y="228" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">McConnell: "Max 3 levels. Use guard clauses, named booleans."</text>
   </svg>
   <div class="diag-cap">৫-স্তর nesting → guard clause দিয়ে flat। মস্তিষ্কে বোঝা কমে, bug ধরা সহজ হয়।</div>
 </div>
@@ -249,7 +249,7 @@ class TaskList:
 
 <div class="diagram">
   <div class="diag-title">Ubiquitous Language — অনুবাদ স্তর মুছো</div>
-  <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg">
     <!-- Before: translation -->
     <text x="120" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Translation Layer</text>
     <rect x="30" y="30" width="180" height="35" rx="6" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1.5"/>
@@ -278,8 +278,8 @@ class TaskList:
     <text x="410" y="175" text-anchor="middle" fill="#a5b4fc" font-size="8">এক ভাষা, এক অর্থ</text>
     <text x="410" y="190" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">No bugs from mismatch</text>
     <!-- Bottom -->
-    <rect x="20" y="205" width="520" height="25" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="222" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Evans: "The code IS the model. The model IS the language."</text>
+    <rect x="20" y="205" width="680" height="25" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="360" y="222" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Evans: "The code IS the model. The model IS the language."</text>
   </svg>
   <div class="diag-cap">অনুবাদ স্তর মুছো। Business ও code এক ভাষায় কথা বলবে। task.complete() — সবাই বোঝে।</div>
 </div>
@@ -422,7 +422,7 @@ class TaskManager:
 
 <div class="diagram">
   <div class="diag-title">TDD Cycle — Red → Green → Refactor</div>
-  <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg">
     <defs><marker id="arrR" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#a5b4fc"/></marker></defs>
     <!-- Red -->
     <circle cx="100" cy="120" r="50" fill="rgba(239,68,68,0.08)" stroke="#ef4444" stroke-width="2.5"/>
@@ -435,11 +435,11 @@ class TaskManager:
     <path d="M 155 110 Q 195 90, 230 120" fill="none" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrR)"/>
     <!-- Green -->
     <circle cx="280" cy="120" r="50" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="2.5"/>
-    <text x="280" y="115" text-anchor="middle" fill="#52c41a" font-size="14" font-weight="bold">🟢 GREEN</text>
-    <text x="280" y="132" text-anchor="middle" fill="#9a93b8" font-size="8">Minimal code</text>
-    <text x="280" y="144" text-anchor="middle" fill="#9a93b8" font-size="8">MUST pass</text>
-    <text x="280" y="185" text-anchor="middle" fill="#52c41a" font-size="7">create_task()</text>
-    <text x="280" y="197" text-anchor="middle" fill="#52c41a" font-size="7">→ PASS ✅</text>
+    <text x="360" y="115" text-anchor="middle" fill="#52c41a" font-size="14" font-weight="bold">🟢 GREEN</text>
+    <text x="360" y="132" text-anchor="middle" fill="#9a93b8" font-size="8">Minimal code</text>
+    <text x="360" y="144" text-anchor="middle" fill="#9a93b8" font-size="8">MUST pass</text>
+    <text x="360" y="185" text-anchor="middle" fill="#52c41a" font-size="7">create_task()</text>
+    <text x="360" y="197" text-anchor="middle" fill="#52c41a" font-size="7">→ PASS ✅</text>
     <!-- Arrow Green→Refactor -->
     <path d="M 335 110 Q 375 90, 410 120" fill="none" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrR)"/>
     <!-- Refactor -->
@@ -451,10 +451,10 @@ class TaskManager:
     <text x="460" y="197" text-anchor="middle" fill="#a5b4fc" font-size="7">→ still PASS ✅</text>
     <!-- Loop arrow -->
     <path d="M 460 70 Q 280 20, 100 70" fill="none" stroke="#a5b4fc" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrR)"/>
-    <text x="280" y="35" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">REPEAT</text>
+    <text x="360" y="35" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">REPEAT</text>
     <!-- Bottom -->
-    <rect x="20" y="215" width="520" height="25" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="232" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Beck: "Test drives design. Easy to test = good API."</text>
+    <rect x="20" y="215" width="680" height="25" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="360" y="232" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Beck: "Test drives design. Easy to test = good API."</text>
   </svg>
   <div class="diag-cap">Red (test fail) → Green (code pass) → Refactor (clean) → repeat। Test আগে — design আগে।</div>
 </div>
@@ -551,7 +551,7 @@ assert manager.is_overdue(task) is True  # ← predictable!</div>
 
 <div class="diagram">
   <div class="diag-title">Seam — Legacy কোডে Test-Point তৈরি</div>
-  <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg">
     <text x="120" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Legacy: Hardcoded</text>
     <rect x="30" y="30" width="180" height="40" rx="6" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1.5"/>
     <text x="120" y="48" text-anchor="middle" fill="#ef4444" font-size="9" font-family="monospace">TaskManager</text>
@@ -574,9 +574,9 @@ assert manager.is_overdue(task) is True  # ← predictable!</div>
     <text x="465" y="140" text-anchor="middle" fill="#9a93b8" font-size="7">test</text>
     <text x="420" y="170" text-anchor="middle" fill="#a5b4fc" font-size="8">test সম্ভব — now নিয়ন্ত্রণে</text>
     <text x="420" y="185" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Predictable ✅</text>
-    <rect x="20" y="205" width="520" height="35" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="222" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Feathers: "Seam = alter behavior without editing in that place."</text>
-    <text x="280" y="234" text-anchor="middle" fill="#9a93b8" font-size="8">Inject dependency → create test point → add test → refactor</text>
+    <rect x="20" y="205" width="680" height="35" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="360" y="222" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Feathers: "Seam = alter behavior without editing in that place."</text>
+    <text x="360" y="234" text-anchor="middle" fill="#9a93b8" font-size="8">Inject dependency → create test point → add test → refactor</text>
   </svg>
   <div class="diag-cap">Hardcoded datetime.now() → Clock seam inject করো। test সম্ভব — now তোমার নিয়ন্ত্রণে।</div>
 </div>
@@ -673,26 +673,26 @@ class TaskAPI:
 
 <div class="diagram">
   <div class="diag-title">Abstraction Barriers — তিন স্তরের দেয়াল</div>
-  <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
-    <rect x="30" y="20" width="500" height="45" rx="8" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="2"/>
+  <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg">
+    <rect x="30" y="20" width="660" height="45" rx="8" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="2"/>
     <text x="50" y="40" fill="#a5b4fc" font-size="10" font-weight="bold">Presentation Layer (TaskAPI)</text>
     <text x="50" y="56" fill="#9a93b8" font-size="8">handle_create() → JSON — SQL জানে না, business জানে না</text>
-    <text x="510" y="40" fill="#a5b4fc" font-size="8" text-anchor="end">HTTP / API</text>
+    <text x="690" y="40" fill="#a5b4fc" font-size="8" text-anchor="end">HTTP / API</text>
     <rect x="30" y="68" width="500" height="15" fill="rgba(167,139,250,0.12)"/>
-    <text x="280" y="79" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">⚡ ABSTRACTION BARRIER</text>
+    <text x="360" y="79" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">⚡ ABSTRACTION BARRIER</text>
     <rect x="30" y="86" width="500" height="45" rx="8" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="2"/>
     <text x="50" y="106" fill="#52c41a" font-size="10" font-weight="bold">Service Layer (TaskService)</text>
     <text x="50" y="122" fill="#9a93b8" font-size="8">create_task() → business rules — SQL জানে না, HTTP জানে না</text>
-    <text x="510" y="106" fill="#52c41a" font-size="8" text-anchor="end">Business Logic</text>
+    <text x="690" y="106" fill="#52c41a" font-size="8" text-anchor="end">Business Logic</text>
     <rect x="30" y="134" width="500" height="15" fill="rgba(167,139,250,0.12)"/>
-    <text x="280" y="145" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">⚡ ABSTRACTION BARRIER</text>
+    <text x="360" y="145" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">⚡ ABSTRACTION BARRIER</text>
     <rect x="30" y="152" width="500" height="45" rx="8" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="2"/>
     <text x="50" y="172" fill="#fbbf24" font-size="10" font-weight="bold">Repository Layer (TaskRepository)</text>
     <text x="50" y="188" fill="#9a93b8" font-size="8">save() → SQL — business জানে না, API জানে না</text>
-    <text x="510" y="172" fill="#fbbf24" font-size="8" text-anchor="end">Database / SQL</text>
+    <text x="690" y="172" fill="#fbbf24" font-size="8" text-anchor="end">Database / SQL</text>
     <rect x="30" y="210" width="500" height="40" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="280" y="228" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Each barrier protects the others</text>
-    <text x="280" y="242" text-anchor="middle" fill="#9a93b8" font-size="8">Change DB? Only repository। Change UI? Only API।</text>
+    <text x="360" y="228" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Each barrier protects the others</text>
+    <text x="360" y="242" text-anchor="middle" fill="#9a93b8" font-size="8">Change DB? Only repository। Change UI? Only API।</text>
   </svg>
   <div class="diag-cap">৩ স্তর: API → Service → Repository। প্রতিটা barrier নিচের implementation লুকায়।</div>
 </div>
