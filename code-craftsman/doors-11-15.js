@@ -37,13 +37,14 @@ def process_tasks(tasks, user, settings):
             if task.status == 'pending':
                 if settings.auto_assign:
                     if task.priority &gt; 3:
-                        if task.created_at &gt; yesterday:
+                        if task.created_at &gt; datetime.now() - timedelta(days=1):
                             assign_task(task, user)
                             notify(task)
     # 5 levels of nesting. Nobody can read this.
 
 # ── ✅ GOOD: Guard clauses flatten the pyramid ──
 def process_tasks(tasks, user, settings):
+    now = datetime.now()
     for task in tasks:
         # Guard: skip cases that don't apply — flat, not nested
         if task.assignee != user:
@@ -54,12 +55,13 @@ def process_tasks(tasks, user, settings):
             continue
 
         # Main logic — only 1 level of nesting
-        if is_high_priority_and_recent(task):
+        if is_high_priority_and_recent(task, now):
             assign_task(task, user)
             notify(task)
 
-def is_high_priority_and_recent(task):
+def is_high_priority_and_recent(task, now):
     """Named boolean — reads like English."""
+    yesterday = now - timedelta(days=1)
     return (task.priority &gt; 3
             and task.created_at &gt; yesterday)
 

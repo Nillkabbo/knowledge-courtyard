@@ -175,6 +175,21 @@ def handle_task(request):
     return {'id': task.id}, 201
 
 # ── ✅ GOOD: Small functions, one job each ──
+
+class Result:
+    """Simple result wrapper — carries data OR error, not both."""
+    def __init__(self, data=None, error=None):
+        self.data = data
+        self.error = error
+    @property
+    def is_success(self):
+        return self.error is None
+    @property
+    def error_response(self):
+        """Returns HTTP-style error tuple: ({'error': msg}, status)."""
+        msg, status = self.error if self.error else ("Unknown", 500)
+        return {'error': msg}, status
+
 def handle_task(request):
     """Entry point — orchestrates the workflow."""
     validated = validate_task_data(request.json)

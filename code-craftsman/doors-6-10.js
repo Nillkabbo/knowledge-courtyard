@@ -393,15 +393,19 @@ class NotificationService:
         log(result)
         return result
 
+    def register(self, channel_name, strategy):
+        """Register a new channel — public API, no private access."""
+        self._strategies[channel_name] = strategy
+
 # New channel? Just add a class + register. No if/elif!
 class TeamsNotification(NotificationStrategy):
     def send(self, recipient, message):
         teams.send(recipient.teams_id, message)
         return f"Teams to {recipient.teams_id}"
 
-# Register:
+# Register via public method:
 service = NotificationService()
-service._strategies['teams'] = TeamsNotification()
+service.register('teams', TeamsNotification())
 # Done. No existing code changed. Open/Closed!</div>
 
 <div class="diagram">

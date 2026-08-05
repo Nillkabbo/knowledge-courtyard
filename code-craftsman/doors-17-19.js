@@ -29,6 +29,8 @@ doors.push({
 # Martin: "Error handling is important, but it should not
 #  obscure the logic of the code."
 
+import json
+
 # ── ❌ BAD: One giant try-except — swallows everything ──
 def create_task(request):
     try:
@@ -236,8 +238,8 @@ def find_pending_tasks():
 # DECORATOR 3: @retry — retries on failure
 # ══════════════════════════════════════
 
-def retry(max_attempts=3):
-    """Factory decorator — retries failing calls."""
+def retry(max_attempts=3, base_delay=1.0):
+    """Factory decorator — retries failing calls with exponential backoff."""
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
@@ -247,9 +249,10 @@ def retry(max_attempts=3):
                 except Exception as e:
                     if attempt == max_attempts - 1:
                         raise
+                    delay = base_delay * (2 ** attempt)  # exponential
                     print(f"[RETRY] {func.__name__} "
                           f"attempt {attempt+1} failed: {e}")
-                    time.sleep(1)
+                    time.sleep(delay)
         return wrapper
     return decorator
 
@@ -267,10 +270,12 @@ def cache(func):
     _cache = {}
 
     @functools.wraps(func)
-    def wrapper(*args):
-        if args not in _cache:
-            _cache[args] = func(*args)
-        return _cache[args]
+    def wrapper(*args, **kwargs):
+        # Create a hashable key from both args and kwargs
+        key = (args, tuple(sorted(kwargs.items())))
+        if key not in _cache:
+            _cache[key] = func(*args, **kwargs)
+        return _cache[key]
     return wrapper
 
 @cache
