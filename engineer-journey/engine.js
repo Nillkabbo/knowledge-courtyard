@@ -213,6 +213,7 @@ function renderStory(idx){
         :`<button class="continue-btn" onclick="goToMap()">← প্রাঙ্গণে ফিরে যাও</button>`}
     </div>`;
 }
+function highlightCode(){const blocks=document.querySelectorAll('.code-block');blocks.forEach(block=>{const text=block.textContent;if(!block.querySelector('code')){const pre=document.createElement('pre');const code=document.createElement('code');code.className='language-python';code.textContent=text;pre.appendChild(code);block.innerHTML='';block.appendChild(pre)}if(window.Prism)Prism.highlightAllUnder(block)})}
 function revealRecall(btn){btn.nextElementSibling.style.display='block';btn.style.display='none'}
 function completeDoor(idx){
   if(!state.completedDoors.includes(idx)){

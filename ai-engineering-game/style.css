@@ -89,6 +89,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .secret-box .label{font-size:0.75rem;color:var(--cyan);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem;font-weight:700}
 .story-text .secret-box .text{font-size:1rem;font-weight:600;color:var(--ink)}
 .story-text .code-block{background:rgba(0,0,0,.4);border:1px solid rgba(54,214,231,.15);border-radius:12px;padding:1rem 1.2rem;margin:1rem 0;font-family:'Courier New',monospace;font-size:0.875rem;color:var(--cyan);overflow-x:auto;line-height:1.6;white-space:pre-wrap;overflow-wrap:break-word}
+.story-text .code-block pre{margin:0;background:transparent!important;padding:0!important;white-space:pre-wrap;overflow-wrap:break-word}
+.story-text .code-block code{font-family:inherit!important;font-size:inherit!important;background:transparent!important;text-shadow:none!important;white-space:pre-wrap!important}
 .story-text .code-block table,.story-text .code-block th,.story-text .code-block td{white-space:normal;overflow-wrap:anywhere}
 .story-text p.en,.story-text .scene-setting.en{color:var(--ink-mute);font-style:italic;font-size:.875rem;line-height:1.7;margin-top:-0.6rem;margin-bottom:1.5rem;padding-left:1rem;border-left:2px solid rgba(54,214,231,.08)}
 .story-text .dialogue.en{background:rgba(240,193,75,.02);border-color:rgba(240,193,75,.06);color:var(--ink-mute);font-style:italic;font-size:.875rem;margin-top:-0.4rem}
