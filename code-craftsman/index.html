@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>কোড কারিগরের কোড · The Code Craftsman's Code</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Amiri:wght@400;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+  <h1 class="title-main">কোড কারিগরের কোড</h1>
+  <div class="title-sub">The Code Craftsman's Code</div>
+  <div class="title-desc">
+    ১০টি প্রোগ্রামিং বইয়ের জ্ঞান — একটি Python প্রজেক্টে।<br>
+    Clean Code, Pragmatic Programmer, Refactoring, Design Patterns, Code Complete, DDD, TDD, Legacy Code, SICP, Mythical Man-Month।<br>
+    প্রতিটা দরজায় একই কোড আরও পরিচ্ছন্ন হয় — শিক্ষানবিশ থেকে কারিগর।<br><br>
+    <em>Ten programming books distilled into one Python project. Each door makes the same code cleaner — from apprentice to craftsman.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">💎 শুরু করো · Begin</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">📜 প্রস্তাবনা — কোডের কসবা</div>
+    <p>তুমি প্রোগ্রাম লিখতে পারো। কিন্তু একটা প্রশ্ন তোমাকে তাড়া করে — <strong>আমার কোড কি ভালো?</strong> কীভাবে সিনিয়র ইঞ্জিনিয়াররা কোড লেখেন? কেন Google, Stripe, GitHub-এর কোড এত পরিচ্ছন্ন? এই বই সেই উত্তর দেবে।</p>
+    <p class="en">You can write programs. But one question haunts you — <strong>is my code good?</strong> How do senior engineers write code? Why is code at Google, Stripe, GitHub so clean? This book answers that.</p>
+    <p>এখানে তুমি একটা Task Manager বানাবে — Python দিয়ে, শূন্য থেকে। প্রতিটা দরজায় একজন কারিগর আসবেন — একটি বইয়ের জ্ঞান নিয়ে। দরজা ১-এ নাম ঠিক করো (Clean Code)। দরজা ৪-এ ডুপ্লিকেশন দূর করো (Pragmatic Programmer)। দরজা ৮-এ if/else চেইন ভাঙো (Design Patterns)। দরজা ১৩-এ টেস্ট আগে লেখো (TDD)। দরজা ১৭-এ পুরো কোড এক দৃষ্টিতে।</p>
+    <hr class="p-divider">
+    <p><strong>💎 যাত্রার মানচিত্র:</strong> ১৭টি দরজা, ৪টি ধাপে। ধাপ ১ (দরজা ১-৫): পরিচ্ছন্নতা — নাম, ফাংশন, কমেন্ট, DRY। ধাপ ২ (দরজা ৬-১০): কাঠামো — রিফ্যাক্টর, প্যাটার্ন, ডিফেন্সিভ। ধাপ ৩ (দরজা ১১-১৫): গভীরতা — ডোমেইন, টেস্ট, লেগেসি, অ্যাবস্ট্রাকশন। ধাপ ৪ (দরজা ১৬-১৭): দৃষ্টি — কনসেপ্টচুয়াল ইন্টিগ্রিটি ও সম্পূর্ণ কোড।</p>
+    <p class="en">17 doors across 4 phases. Phase 1 (1-5): Cleanliness — names, functions, comments, DRY. Phase 2 (6-10): Structure — refactoring, patterns, defensive. Phase 3 (11-15): Depth — domain, tests, legacy, abstraction. Phase 4 (16-17): Vision — conceptual integrity and complete code.</p>
+    <hr class="p-divider">
+    <p><strong>📖 উৎস গ্রন্থ:</strong> Clean Code (Martin, 2008), The Pragmatic Programmer (Hunt &amp; Thomas, 1999/2019), Refactoring (Fowler, 1999/2018), Design Patterns (GoF, 1994), Code Complete (McConnell, 2004), Domain-Driven Design (Evans, 2003), TDD (Beck, 2002), Working Effectively with Legacy Code (Feathers, 2004), SICP (Abelson &amp; Sussman, 1985), The Mythical Man-Month (Brooks, 1975/1995)।</p>
+    <div style="text-align:center;margin-top:1.6rem;font-family:'Amiri',serif;font-size:1.05rem;color:var(--amber-bright)">"যিনি সুন্দর কোড লেখেন, তিনি সুন্দর চিন্তেন।" — প্রোগ্রামিং প্রবাদ</div>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 কারখানায় ঢোকো · Enter the Workshop</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🛖</span><span id="hud-rank-name">শিক্ষানবিশ কোডার</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1700 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>💎 কোডের কারখানা</h2><p>The Code Craftsman Workshop · ১৭টি দিন</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← মানচিত্র</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">💎</div>
+  <h1 class="complete-title">তুমি একজন কোড কারিগর</h1>
+  <p class="complete-text">১৭টি দরজা পেরিয়েছ। ১০টি বইয়ের জ্ঞান এক প্রজেক্টে প্রয়োগ করেছ। এখন তোমার কোড শুধু চলে না — সে পড়া যায়, সে টেস্টেড, সে ডোমেইন-চালিত, সে সুন্দর।<br><br><em>You are now a Code Craftsman. Your code doesn't just run — it reads well, it's tested, it's domain-driven, it's beautiful.</em></p>
+  <button class="start-btn" onclick="resetGame()">↻ আবার নির্মাণ শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 সম্পূর্ণ সারাংশ — Cheat Sheet</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 চিট শিট — Cheat Sheet</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="doors-11-15.js"></script>
+<script src="doors-16-17.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
