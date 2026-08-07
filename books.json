@@ -62,7 +62,8 @@
     { "n": 49, "folder": "probability",                "title_en": "The Dice of Destiny",                       "title_bn": "নিয়তির পাশা",                 "icon": "🎲", "category": "cs", "color": "game-49", "tag": "Book 49 · Probability & Stochastic Processes",                    "status": "live" },
     { "n": 50, "folder": "optimization",              "title_en": "The Compass of Optimization",               "title_bn": "অপটিমাইজেশনের কম্পাস",        "icon": "🎯", "category": "cs", "color": "game-50", "tag": "Book 50 · Mathematical Optimization",                              "status": "live" },
     { "n": 51, "folder": "algorithm-craftsman",      "title_en": "The Algorithm Craftsman",                    "title_bn": "অ্যালগরিদমের কারিগর",          "icon": "🔨", "category": "cs", "color": "game-51", "tag": "Book 51 · Practical Algorithms (Build a Search Engine)",           "status": "live" },
-    { "n": 52, "folder": "code-craftsman",          "title_en": "The Code Craftsman's Code",                  "title_bn": "কোড কারিগরের কোড",              "icon": "💎", "category": "cs", "color": "game-52", "tag": "Book 52 · Writing Expert Code (10 SE Books Distilled)",            "status": "live" }
+    { "n": 52, "folder": "code-craftsman",          "title_en": "The Code Craftsman's Code",                  "title_bn": "কোড কারিগরের কোড",              "icon": "💎", "category": "cs", "color": "game-52", "tag": "Book 52 · Writing Expert Code (10 SE Books Distilled)",            "status": "live" },
+    { "n": 53, "folder": "python-city",             "title_en": "The Python City",                             "title_bn": "পাইথন নগরী",                     "icon": "🐍", "category": "cs", "color": "game-53", "tag": "Book 53 · Python A to Z (20 Guilds, Problem-First Teaching)",      "status": "live" }
   ],
 
   "roadmap": [
