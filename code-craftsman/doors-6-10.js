@@ -475,7 +475,8 @@ service.register('teams', TeamsNotification())
 <tr><td class="hl">Decorator</td><td>behavior যোগ করা, subclass ছাড়া</td><td>inheritance চেইন</td></tr>
 </table>
 <p><strong>Strategy এর ৩টি উপাদান:</strong> ১) Strategy interface (send), ২) Concrete strategies (Email, SMS), ৩) Context (NotificationService)। GoF: "Favor composition over inheritance" — ফাংশন বা object বিনিময় করো, subclass বানাবে না।</p>
-<p><strong>Cross-ref:</strong> Book 40 (Software Engineering) Door 6-এ SOLID দেখবে — Strategy = Open/Closed Principle। Book 8 (LLM Anatomy)-এ different decoding strategies দেখবে — একই pattern।</p>`
+<div class="callout warn"><span class="co-icon">⚖️</span><div><strong>কখন Strategy ব্যবহার কোরো না:</strong> ২-৩টা branch হলে সাধারণ if/elif যথেষ্ট — Strategy = overengineering। ১০০ লাইনের function-এ প্যাটার্ন বসালে complexity বাড়ে, পড়তে কঠর। <strong>নিয়ম:</strong> ৪+ branch + নতুন branch প্রত্যাশিত = Strategy। ২-৩ branch = if/elif। Python-এ dict dispatch আরও সহজ: <code>{'email': send_email, 'sms': send_sms}[channel]()</code> — class ছাড়াই।</div></div>
+<p><strong>Cross-ref:</strong> Book 40 (Software Engineering) Door 6, Book 8 (LLM Anatomy).</p>`
   }
 });
 
@@ -613,7 +614,8 @@ task = TaskFactory.create('bug', 'Fix crash', user)
 <tr><td class="hl">Factory</td><td>object তৈরির লজিক ছড়িয়ে আছে</td><td>Centralize in Factory class</td></tr>
 <tr><td class="hl">Decorator</td><td>behavior যোগ, subclass ছাড়া</td><td>Wrap object at runtime</td></tr>
 </table>
-<p><strong>Real-world: </strong> Django signals, addEventListener, React useEffect — সব Observer pattern।</p>`
+<p><strong>Real-world: </strong> Django signals, addEventListener, React useEffect — সব Observer pattern।</p>
+<div class="callout warn"><span class="co-icon">⚖️</span><div><strong>Observer-এর মূল্য:</strong> প্রতিটা observer একটা indirection — debug করা কঠিন। Event A ঘটলে কোথায় কী হবে ট্র্যাক করতে হয় stack trace ঘেঁটে। ৫+ observer হলে "spaghetti events" — কে কাকে notify করছে বোঝা যায় না। <strong>নিয়ম:</strong> ২-৩ observer = ভালো। ১০+ = event bus বা message queue বিবেচনা করো। Observer-এর exception ধরো — এক observer crash করলে বাকিরা ক্ষতিগ্রস্ত হবে।</div></div>`
   }
 });
 

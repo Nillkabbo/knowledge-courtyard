@@ -1,7 +1,7 @@
 // ════════════════════════════════════════════════════════════
 // THE CODE CRAFTSMAN'S CODE — DOORS 17-19
 // 17. Clean Code: Error Handling    18. Design Patterns: Decorator
-// 19. SICP: Higher-Order Functions
+// 19. SICP: Higher-Order Functions  21. SOLID Principles
 // ════════════════════════════════════════════════════════════
 
 // ── DOOR 17: CLEAN CODE — ERROR HANDLING ──
@@ -347,6 +347,7 @@ def process_task(task_id):
 </table>
 <p><strong>Python built-in decorators:</strong> @property (getter/setter), @staticmethod, @classmethod, @dataclass, @functools.wraps — Python-এ decorator সর্বব্যাপী।</p>
 <p><strong>Real-world:</strong> Flask: @app.route('/'), Django: @login_required, pytest: @pytest.mark.parametrize — সব decorator pattern।</p>
+<div class="callout warn"><span class="co-icon">⚖️</span><div><strong>Decorator-এর মূল্য:</strong> প্রতিটা decorator একটা function call wrapper — stack trace দীর্ঘ হয়। ৫টা decorator stack করলে debug করা কঠিন — কোন decorator কোন behavior যোগ করছে বোঝা যায় না। <strong>নিয়ম:</strong> ১-৩ decorator = ভালো। @functools.wraps বাধ্যতামূলক — নাহলে function-এর __name__, __doc__ হারিয়ে যায়। Side effect বিপজ্জনক — decorator যদি বাইরের state বদলায়, পরীক্ষা করা কঠিন।</div></div>
 <p><strong>Cross-ref:</strong> Book 40 (Software Engineering) Door 6-এ SOLID-এর Open/Closed দেখবে। Book 45 (Compilers) Door 3-এ AST transformation দেখবে — decorator-এর compiler-level সংস্করণ।</p>`
   }
 });
@@ -548,5 +549,211 @@ urgent_titles = sorted(
 <p><strong>Declarative vs Imperative: </strong> Imperative = "কীভাবে" (for loop, step-by-step)। Declarative = "কী" (map, filter, reduce)। SICP বলেন: declarative বেশি powerful কারণ এটা abstraction-এ কথা বলে।</p>
 <p><strong>Real-world:</strong> Spark RDD (map/filter/reduce), React (map rendering), pandas (apply/filter/agg) — সব higher-order function।</p>
 <p><strong>Cross-ref:</strong> Book 30 (Math for ML) Door 4-এ function composition দেখবে। Book 8 (LLM Anatomy)-এ tensor operations (map-এর batch version) দেখবে। Book 2 (DSA Bazaar) Door ৩-এ array operations দেখবে।</p>`
+  }
+});
+
+// ── DOOR 21: SOLID PRINCIPLES ──
+doors.push({
+  num:21, icon:"🏛️", color:"#6366f1", name:"পাঁচ স্তম্ভের নিয়ম",
+  subtitle:"The Five Pillars", tech:"SOLID Principles (Martin, 2000) — S·O·L·I·D",
+  spirit:"মিযান — balance/measure, from Quran 55:7-9 (establish balance with justice, do not exceed)",
+  secret:"SOLID = ৫টি নীতি যা ভালো OOP কোডের ভিত্তি। Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion। প্রতিটা প্রশ্ন করো: এক class কি এক কারণে বদলায়?",
+  recall:{
+    q:"SOLID-এর ৫টি অক্ষর কী কী? প্রতিটার এক লাইনে অর্থ বলো।",
+    qen:"What are the 5 letters of SOLID? Explain each in one line.",
+    a:"S = Single Responsibility (এক class, এক কারণ বদলায়)। O = Open/Closed (সম্প্রসারণে খোলা, পরিবর্তনে বন্ধ)। L = Liskov Substitution (subclass বসালে কোড ভাঙবে না)। I = Interface Segregation (অনেক ছোট interface, এক বড় নয়)। D = Dependency Inversion (high-level module low-level-এর উপর নির্ভর নয়, abstraction-এ নির্ভর)।",
+    aen:"S = Single Responsibility (one class, one reason to change). O = Open/Closed (open for extension, closed for modification). L = Liskov Substitution (subclass should work wherever parent works). I = Interface Segregation (many small interfaces, not one big). D = Dependency Inversion (depend on abstractions, not concretions)."
+  },
+  story:`
+<p class="scene-setting">একবিংশ দিন। রাহিলা ফিরে এলেন — এবার হাতে একটা স্কেল ও পাঁচটা স্তম্ভের মডেল। তিনি বললেন — কারিগরের কোডের পাঁচটা স্তম্ভ আছে। এগুলো না থাকলে কোড দাঁড়ায় না — পড়ে যায়। এই পাঁচটাকে একসাথে বলে SOLID। Robert C. Martin (Uncle Bob) ২০০০ সালে এই নীতিগুলো সংগঠিত করেন — কিন্তু ধারণাগুলো পুরোনো।</p>
+<p class="scene-setting en">Day twenty-one. Rahila returned — with a scale and a model of five pillars. She said — a craftsman's code rests on five pillars. Without them, code does not stand — it falls. Together these are called SOLID. Robert C. Martin (Uncle Bob) organized these principles in 2000 — but the ideas are older.</p>
+
+<div class="dialogue">SOLID মানে পাঁচটা নীতি — প্রতিটা একটা অক্ষর। S, O, L, I, D। প্রতিটা নীতি একটা প্রশ্ন। সেই প্রশ্ন কোড পর্যালোচনায় বারবার করবে। এগুলো শিখলে তোমার কোড শুধু চলবে না — সে স্থায়ী হবে। বদলানো সহজ হবে। পরীক্ষা করা সহজ হবে।</div>
+<div class="dialogue en">SOLID means five principles — each a letter. S, O, L, I, D. Each principle is a question. That question you will ask again and again in code review. Learn these and your code will not just run — it will last. It will be easy to change. Easy to test.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> রাহিলা বললেন — একটা God Class ছিল ২০০০ লাইনের। UserManager — login, registration, email, password reset, profile, avatar upload, friends list, privacy settings। SOLID-এর S লঙ্ঘন: এক class, অনেক কারণে বদলায়। প্রতিটা feature যোগ করতে গেলে ৫ জন ডেভেলপার conflict। ৩ মাসে codebase নশ্বর। সমাধান: ভাঙো — AuthManager, ProfileManager, SocialManager, PrivacyManager। প্রতিটা এক কাজ।</div></div>
+
+<div class="code-block"># task_manager.py — Day 21: SOLID Principles (Martin, 2000)
+# Each principle = one question to ask in every code review.
+
+# ══════════════════════════════════════
+# S — SINGLE RESPONSIBILITY (SRP)
+# "A class should have one, and only one, reason to change."
+# ══════════════════════════════════════
+
+# ❌ BAD: TaskManager does EVERYTHING
+class TaskManager:
+    def create_task(self, title): ...      # business logic
+    def validate_title(self, title): ...   # validation
+    def send_email(self, to, subject): ... # notification
+    def save_to_db(self, task): ...        # persistence
+    def format_json(self, task): ...       # serialization
+    # 5 reasons to change → violates SRP
+
+# ✅ GOOD: Each class has ONE responsibility
+class TaskService:          # business logic only
+    def create_task(self, title): ...
+class TaskValidator:        # validation only
+    def validate_title(self, title): ...
+class EmailNotifier:        # notification only
+    def send_email(self, to, subject): ...
+class TaskRepository:       # persistence only
+    def save(self, task): ...
+
+# ══════════════════════════════════════
+# O — OPEN/CLOSED (OCP)
+# "Open for extension, closed for modification."
+# ══════════════════════════════════════
+# Already covered in Door 8 (Strategy) — adding
+# new behavior WITHOUT modifying existing code.
+
+# ══════════════════════════════════════
+# L — LISKOV SUBSTITUTION (LSP)
+# "Subtypes must be substitutable for base types."
+# ══════════════════════════════════════
+
+class Bird:
+    def fly(self): pass
+
+class Penguin(Bird):
+    def fly(self):
+        raise Exception("Penguins can't fly!")
+        # ❌ LSP violation: Penguin can't replace Bird
+        # Code that expects Bird.fly() will break.
+
+# ✅ FIX: Separate hierarchy
+class FlyingBird(Bird):
+    def fly(self): pass
+class FlightlessBird(Bird):
+    pass  # no fly() — honest
+
+# ══════════════════════════════════════
+# I — INTERFACE SEGREGATION (ISP)
+# "Clients shouldn't depend on methods they don't use."
+# ══════════════════════════════════════
+
+# ❌ BAD: One fat interface
+class WorkerInterface(ABC):
+    @abstractmethod
+    def work(self): ...
+    @abstractmethod
+    def eat(self): ...     # Robot doesn't eat!
+    @abstractmethod
+    def sleep(self): ...   # Robot doesn't sleep!
+
+# ✅ GOOD: Split into small interfaces
+class Workable(ABC):
+    @abstractmethod
+    def work(self): ...
+class Eatable(ABC):
+    @abstractmethod
+    def eat(self): ...
+class Sleepable(ABC):
+    @abstractmethod
+    def sleep(self): ...
+
+class Human(Workable, Eatable, Sleepable): ...
+class Robot(Workable): ...  # only work — honest
+
+# ══════════════════════════════════════
+# D — DEPENDENCY INVERSION (DIP)
+# "Depend on abstractions, not concretions."
+# ══════════════════════════════════════
+
+# ❌ BAD: High-level depends on low-level
+class TaskService:
+    def __init__(self):
+        self.db = MySQLDatabase()  # ← hard dependency
+        # Switching to PostgreSQL = rewrite TaskService
+
+# ✅ GOOD: Both depend on abstraction
+class Database(ABC):
+    @abstractmethod
+    def save(self, task): ...
+class MySQLDatabase(Database): ...
+class TaskService:
+    def __init__(self, db: Database):  # ← abstraction
+        self.db = db
+    # Swap MySQL → PostgreSQL → MongoDB — no change here!</div>
+
+<div class="diagram">
+  <div class="diag-title">SOLID — ৫ স্তম্ভের ভিত্তি</div>
+  <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+    <text x="280" y="20" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">SOLID — The Five Pillars of Clean Code</text>
+    <!-- S -->
+    <rect x="20" y="40" width="100" height="110" rx="6" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="70" y="60" text-anchor="middle" fill="#a5b4fc" font-size="20" font-weight="bold">S</text>
+    <text x="70" y="78" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Single</text>
+    <text x="70" y="88" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Responsibility</text>
+    <text x="70" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">এক class</text>
+    <text x="70" y="115" text-anchor="middle" fill="#9a93b8" font-size="6">এক কারণ</text>
+    <text x="70" y="130" text-anchor="middle" fill="#9a93b8" font-size="6">বদলায়</text>
+    <text x="70" y="143" text-anchor="middle" fill="#a5b4fc" font-size="6" font-weight="bold">SRP</text>
+    <!-- O -->
+    <rect x="130" y="40" width="100" height="110" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
+    <text x="180" y="60" text-anchor="middle" fill="#52c41a" font-size="20" font-weight="bold">O</text>
+    <text x="180" y="78" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Open/Closed</text>
+    <text x="180" y="98" text-anchor="middle" fill="#9a93b8" font-size="6">সম্প্রসারণে খোলা</text>
+    <text x="180" y="108" text-anchor="middle" fill="#9a93b8" font-size="6">পরিবর্তনে বন্ধ</text>
+    <text x="180" y="125" text-anchor="middle" fill="#9a93b8" font-size="6">(Door 8: Strategy)</text>
+    <text x="180" y="143" text-anchor="middle" fill="#52c41a" font-size="6" font-weight="bold">OCP</text>
+    <!-- L -->
+    <rect x="240" y="40" width="100" height="110" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="290" y="60" text-anchor="middle" fill="#fbbf24" font-size="20" font-weight="bold">L</text>
+    <text x="290" y="78" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Liskov</text>
+    <text x="290" y="88" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Substitution</text>
+    <text x="290" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">subclass বসালে</text>
+    <text x="290" y="115" text-anchor="middle" fill="#9a93b8" font-size="6">কোড ভাঙবে না</text>
+    <text x="290" y="130" text-anchor="middle" fill="#9a93b8" font-size="6">Penguin ✗</text>
+    <text x="290" y="143" text-anchor="middle" fill="#fbbf24" font-size="6" font-weight="bold">LSP</text>
+    <!-- I -->
+    <rect x="350" y="40" width="100" height="110" rx="6" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="400" y="60" text-anchor="middle" fill="#a78bfa" font-size="20" font-weight="bold">I</text>
+    <text x="400" y="78" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Interface</text>
+    <text x="400" y="88" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Segregation</text>
+    <text x="400" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">অনেক ছোট</text>
+    <text x="400" y="115" text-anchor="middle" fill="#9a93b8" font-size="6">interface</text>
+    <text x="400" y="130" text-anchor="middle" fill="#9a93b8" font-size="6">এক বড় নয়</text>
+    <text x="400" y="143" text-anchor="middle" fill="#a78bfa" font-size="6" font-weight="bold">ISP</text>
+    <!-- D -->
+    <rect x="460" y="40" width="100" height="110" rx="6" fill="rgba(240,98,146,0.08)" stroke="#f06292" stroke-width="1.5"/>
+    <text x="510" y="60" text-anchor="middle" fill="#f06292" font-size="20" font-weight="bold">D</text>
+    <text x="510" y="78" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Dependency</text>
+    <text x="510" y="88" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Inversion</text>
+    <text x="510" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">abstraction-এ</text>
+    <text x="510" y="115" text-anchor="middle" fill="#9a93b8" font-size="6">নির্ভর করো</text>
+    <text x="510" y="130" text-anchor="middle" fill="#9a93b8" font-size="6">concrete নয়</text>
+    <text x="510" y="143" text-anchor="middle" fill="#f06292" font-size="6" font-weight="bold">DIP</text>
+    <!-- Question -->
+    <rect x="20" y="165" width="540" height="50" rx="8" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="280" y="185" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Code Review-এ পাঁচটা প্রশ্ন:</text>
+    <text x="280" y="200" text-anchor="middle" fill="#9a93b8" font-size="7">এক class কি এক কারণে বদলায়? · সম্প্রসারণে খোলা? · subclass বসানো যায়?</text>
+    <text x="280" y="210" text-anchor="middle" fill="#9a93b8" font-size="7">unused method কি আছে? · high-level abstraction-এ নির্ভর?</text>
+    <!-- Bottom -->
+    <rect x="20" y="230" width="540" height="40" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="280" y="248" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Martin: "SOLID is not a destination. It is a direction."</text>
+    <text x="280" y="262" text-anchor="middle" fill="#9a93b8" font-size="7">১০০% SOLID অসম্ভব — কিন্তু প্রতিটা প্রশ্ন কোড উন্নত করে</text>
+  </svg>
+  <div class="diag-cap">SOLID = ৫ প্রশ্ন: এক কারণ? খোলা/বন্ধ? বদলানো যায়? ছোট interface? abstraction? প্রতিটা প্রশ্ন কোড উন্নত করে।</div>
+</div>
+
+<div class="dialogue">মিযান — ভারসাম্য, ন্যায়বিচার। কুরআনে আল্লাহ বলেন — তোমরা ন্যায়ের সাথে ওজন প্রতিষ্ঠা করো, ওজনে কম দিও না (৫৫:৭-৯)। SOLID হলো মিযান — কোডের ভারসাম্য। এক দিকে ঝুঁকলে কোড পড়ে। Single responsibility বেশি ঝুঁকলে over-engineering, কম ঝুঁকলে God Class। Balance হলো কারিগরের লক্ষ্য।</div>
+<div class="dialogue en">Mizan — balance, justice. Allah says — establish weight with justice, do not fall short in the balance (55:7-9). SOLID is mizan — the balance of code. Lean too far and code falls. Too much single responsibility → over-engineering. Too little → God Class. Balance is the craftsman's goal.</div>
+
+<div class="secret-box">🏛️ SOLID = ৫ প্রশ্ন: S (এক কারণ), O (খোলা/বন্ধ), L (বদলানো যায়), I (ছোট interface), D (abstraction)। কোড review-এ প্রতিটা প্রশ্ন করো।</div>
+`,
+  senior:{
+    title:"SOLID — Quick Reference (Martin, 2000)",
+    body:`<p><strong>Robert C. Martin-এর ৫ নীতি:</strong></p>
+<table class="kv-table">
+<tr><th>অক্ষর</th><th>নীতি</th><th>প্রশ্ন</th><th>লঙ্ঘনের লক্ষণ</th></tr>
+<tr><td class="hl"><strong>S</strong></td><td>Single Responsibility</td><td>এক class কি এক কারণে বদলায়?</td><td>God Class (২০০০+ লাইন)</td></tr>
+<tr><td class="hl"><strong>O</strong></td><td>Open/Closed</td><td>নতুন feature যোগ করতে পুরোনো কোড ছোঁয়?</td><td>if/elif চেইন (Door 8)</td></tr>
+<tr><td class="hl"><strong>L</strong></td><td>Liskov Substitution</td><td>subclass বসালে কোড ভাঙবে না?</td><td>Penguin.fly() raises</td></tr>
+<tr><td class="hl"><strong>I</strong></td><td>Interface Segregation</td><td>client কি unused method-এ নির্ভর করছে?</td><td>Robot কে eat() দাও</td></tr>
+<tr><td class="hl"><strong>D</strong></td><td>Dependency Inversion</td><td>high-level কি low-level-এ নির্ভর?</td><td>hardcoded MySQLDatabase</td></tr>
+</table>
+<div class="callout warn"><span class="co-icon">⚖️</span><div><strong>SOLID-এর সত্য:</strong> ১০০% SOLID অসম্ভব। Martin নিজে বলেন — "SOLID is a direction, not a destination।" কোড review-এ এই ৫ প্রশ্ন বারবার করো। কিছু প্রশ্নের উত্তর "না" হবে — সেটাই জীবন। কিন্তু প্রশ্ন না করলেই বিপদ। <strong>Over-engineering সতর্কতা:</strong> ৫০ লাইনের script-এ SOLID করলে = অযথা complexity। কোড বড় হলে (৫০০+ লাইন) SOLID প্রাসঙ্গিক। ছোট কোডে YAGNI (You Aren't Gonna Need It) বেশি গুরুত্বপূর্ণ।</div></div>
+<p><strong>Cross-ref:</strong> Door 8 (Strategy = O), Door 9 (Observer = D), Door 14 (Seam = D), Door 15 (Abstraction = D), Door 20 (Synthesis)। Book 40 (Software Engineering) পুরো বই SOLID নিয়ে।</p>`
   }
 });

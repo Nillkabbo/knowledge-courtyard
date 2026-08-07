@@ -451,9 +451,11 @@ if __name__ == "__main__":
 <tr><td class="hl">17</td><td>Clean Code</td><td>Error handling done right</td></tr>
 <tr><td class="hl">18</td><td>Design Patterns</td><td>Decorator pattern</td></tr>
 <tr><td class="hl">19</td><td>SICP</td><td>Higher-order functions</td></tr>
-<tr><td class="hl">20</td><td>Synthesis</td><td>All 13 books united</td></tr>
+<tr><td class="hl">20</td><td>Synthesis</td><td>All books united</td></tr>
+<tr><td class="hl">21</td><td>Martin (SOLID)</td><td>S·O·L·I·D — 5 pillars</td></tr>
 </table>
-<p><strong>পরবর্তী যাত্রা: </strong> এই গুণগুলো প্রতিদিন প্রয়োগ করো। প্রতিটা commit-এ দশটি প্রশ্ন করো। Clean code always looks like it was written by someone who cares. তুমি এখন সেই কারিগর।</p>
+<p><strong>পরবর্তী যাত্রা: </strong> এই গুণগুলো প্রতিদিন প্রয়োগ করো। প্রতিটা commit-এ দশটি প্রশ্ন করো। Clean code always looks like it was written by someone who cares। তুমি এখন সেই কারিগর।</p>
+<div class="callout warn"><span class="co-icon">⚖️</span><div><strong>কখন নিয়ম ভাঙবে:</strong> Clean Code বলে ছোট ফাংশন — কিন্তু একটা সরল algorithm ২০ লাইনে চলে, ভাঙলে ৫টা এক-লাইন ফাংশন = ঝামেলা। SOLID বলে abstraction — কিন্তু ৫০ লাইনের script-এ SOLID = over-engineering। TDD বলে test আগে — কিন্তু exploratory prototype-এ test পরে। <strong>নিয়ম:</strong> নিয়ম শেখো, তারপর কখন ভাঙবে শেখো। ভাঙা = অজ্ঞতা নয়, প্রজ্ঞা। Uncle Bob বলেন: "The rules are the training wheels. Once you can ride, you'll know when to remove them।"</div></div>
 <p><strong>Cross-ref: </strong> Book 40 (Software Engineering) পুরো বই। Book 47 (Testing & QA)। Book 23 (Irreplaceable Craftsman)। Book 3 (Grand Muhandis)। পুরো Knowledge Courtyard তোমার সহায়।</p>`
   }
 });
