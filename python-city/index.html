@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>পাইথন নগরী · The Python City</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Amiri:wght@400;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+  <h1 class="title-main">পাইথন নগরী</h1>
+  <div class="title-sub">The Python City</div>
+  <div class="title-desc">
+    শুরু হয় মাটির স্তূপে — শেষ হয় মাস্টার বিল্ডার হিসেবে।<br>
+    ২০টি গিল্ড, ২০টি আসল সমস্যা, একটি ভাষা — Python।<br>
+    শেখো না Python — শেখো <strong>ভাবতে</strong> Python দিয়ে।<br><br>
+    <em>Starts with clay — ends as a Master Builder. 20 guilds, 20 real problems, one language. Don't learn Python — learn to <strong>think</strong> with Python.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🐍 শুরু করো · Enter the City</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">📜 প্রস্তাবনা — নগরীর দরজায়</div>
+    <p>তুমি পাইথন নগরীর ফটকে দাঁড়িয়ে আছো। ভেতরে ২০টি গিল্ড — প্রতিটি গিল্ডে একজন মাস্টার, একটা আসল সমস্যা, এবং Python-এর একটা শক্তি। তুমি শিক্ষানবিশ হিসেবে ঢুকবে, মাস্টার বিল্ডার হিসেবে বেরোবে।</p>
+    <p class="en">You stand at the gates of Python City. Inside: 20 guilds — each with a master, a real problem, and one power of Python. You enter as apprentice, leave as Master Builder.</p>
+    <p><strong>এই বই আলাদা কেন?</strong> কারণ এটা Python শেখায় না। এটা <strong>সমস্যা সমাধান</strong> শেখায় — Python দিয়ে। প্রতিটা গিল্ডে একটা আসল সমস্যা আছে। তুমি ভাববে, হাত গুটোবে, ভুল করবে, তারপর Python-এর শক্তি দিয়ে সমাধান করবে। Syntax মুখস্থ নয় — প্যাটার্ন বুঝবে।</p>
+    <p class="en"><strong>Why this book is different:</strong> It doesn't teach Python. It teaches <strong>problem-solving</strong> with Python. Each guild has a real problem. You think, struggle, fail, then solve it using Python's power. Not syntax memorization — pattern understanding.</p>
+    <hr class="p-divider">
+    <p><strong>🐍 নগরীর মানচিত্র:</strong> ৪টি ধাপ, ২০টি গিল্ড। ধাপ ১ (গিল্ড ১-৫): ভিত্তি — variables, control flow, functions, data structures, strings। ধাপ ২ (গিল্ড ৬-১০): নির্মাণ — file I/O, error handling, modules, OOP, comprehensions। ধাপ ৩ (গিল্ড ১১-১৫): দক্ষতা — decorators, context managers, generators, functional, concurrency। ধাপ ৪ (গিল্ড ১৬-২০): বাস্তব জগৎ — data analysis, web scraping, APIs, automation, synthesis।</p>
+    <p class="en">4 phases, 20 guilds. Phase 1 (1-5): Foundation. Phase 2 (6-10): Building. Phase 3 (11-15): Mastery. Phase 4 (16-20): Real World — data analysis, scraping, APIs, automation, and how to build ANYTHING.</p>
+    <hr class="p-divider">
+    <p><strong>🤖 AI যুগে কেন প্রোগ্রামিং?</strong> AI কোড লিখতে পারে। কিন্তু AI ভাবতে পারে না <em>কী</em> বানাতে হবে, <em>কেন</em> বানাতে হবে, <em>কীভাবে</em> সমস্যা ভাঙবে। প্রোগ্রামিং শেখো না কোড লেখার জন্য — শেখো <strong>চিন্তা করার</strong> জন্য। AI তোমার হাতিয়ার, তুমি কারিগর।</p>
+    <div style="text-align:center;margin-top:1.6rem;font-family:'Amiri',serif;font-size:1.05rem;color:var(--amber-bright)">"কোড লেখা সহজ — সঠিক প্রশ্ন করা কঠিন।" — প্রোগ্রামিং প্রবাদ</div>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 নগরীতে ঢোকো · Enter</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🛖</span><span id="hud-rank-name">নতুন শিক্ষানবিশ</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 2000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>🐍 পাইথন নগরী</h2><p>The Python City · ২০টি গিল্ড</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← নগরীর মানচিত্র</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">👑</div>
+  <h1 class="complete-title">তুমি একজন মাস্টার বিল্ডার</h1>
+  <p class="complete-text">২০টি গিল্ড পেরিয়েছ। Python শিখেছ — কিন্তু তার চেয়ে বেশি: তুমি শিখেছ কীভাবে ভাবতে হয়, সমস্যা ভাঙতে হয়, সমাধান বানাতে হয়। এখন তুমি যেকোনো কিছু বানাতে পারবে — AI তোমার হাতিয়ার, তুমি কারিগর।<br><br><em>You are now a Master Builder. You learned Python — but more: you learned how to think, break problems, build solutions. Now you can build anything — AI is your tool, you are the craftsman.</em></p>
+  <button class="start-btn" onclick="resetGame()">↻ আবার নগরীতে ঢোকো</button>
+  <div class="cheat-section-end"><h3>📋 সম্পূর্ণ সারাংশ — Cheat Sheet</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">গিল্ড সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 চিট শিট — Quick Reference</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="doors-11-15.js"></script>
+<script src="doors-16-20.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
