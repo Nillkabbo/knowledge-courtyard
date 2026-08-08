@@ -100,7 +100,7 @@ df["date"] = pd.to_datetime(df["date"])
 df = df.set_index("date")
 
 # Monthly revenue
-monthly_revenue = df.resample("M")["amount"].sum()
+monthly_revenue = df.resample("ME")["amount"].sum()  # ME = month end
 # Rolling average (7-day window)
 df["7day_avg"] = df["amount"].rolling(7).mean()
 
@@ -507,7 +507,7 @@ def get_tasks():
 @app.post("/tasks", status_code=201)
 def create_task(task: TaskCreate):
     # FastAPI validates automatically — no manual checks!
-    new_task = {"id": len(tasks) + 1, **task.dict()}
+    new_task = {"id": len(tasks) + 1, **task.model_dump()}  # Pydantic v2
     tasks.append(new_task)
     return new_task
 

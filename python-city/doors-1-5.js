@@ -208,6 +208,31 @@ for task in tasks:
         break  # stop searching
     print(f"Checking: {task['name']}")
 
+# ── WALRUS OPERATOR := (Python 3.8+) — assign while checking ──
+# Instead of: line = input(); while line != "quit": ...; line = input()
+# Use walrus: while (line := input()) != "quit": ...
+numbers = [1, 2, 3, 4, 5]
+# Filter and capture in one expression
+big = [n for n in numbers if (squared := n ** 2) &gt; 5]
+print(big)  # [3, 4, 5] (squared &gt; 5 only)
+
+# ── match/case (Python 3.10+) — modern switch statement ──
+def handle_status(status: str) -&gt; str:
+    """Pattern matching — cleaner than long if/elif chains."""
+    match status:
+        case "pending":
+            return "⏳ Waiting..."
+        case "in_progress":
+            return "🔧 Working..."
+        case "completed":
+            return "✅ Done!"
+        case "failed" | "cancelled":  # multiple values
+            return "❌ Error"
+        case _:  # default (like else)
+            return "❓ Unknown"
+
+print(handle_status("completed"))  # ✅ Done!
+
 # ── REAL SCENARIO: Sort all tasks by priority ──
 sorted_tasks = sorted(tasks, key=lambda t: t["priority"])
 print("\nSorted by priority:")
@@ -339,12 +364,24 @@ print(greet("Fatima"))              # Hello, Fatima!
 print(greet("Fatima", greeting="Hi"))  # Hi, Fatima!
 
 # ── *args and **kwargs: Flexible parameters ──
-def calculate_total(*prices):
-    """Accept any number of prices."""
+def calculate_total(*prices: float) -> float:
+    """Accept any number of prices. Returns total."""
     return sum(prices)
 
 print(calculate_total(10, 20, 30))    # 60
 print(calculate_total(10, 20, 30, 40, 50))  # 150
+
+# ── TYPE HINTS: Modern Python (3.5+) — makes code self-documenting ──
+def greet(name: str, greeting: str = "Hello") -> str:
+    """Type hints: name is str, greeting is str (default Hello), returns str."""
+    return f"{greeting}, {name}!"
+
+def calculate_tax(price: float, rate: float = 0.20) -> float:
+    """Python doesn't enforce types, but hints help IDE + docs + AI."""
+    return price * rate
+
+# Modern Python uses type hints everywhere — FastAPI, dataclasses, pydantic
+# all rely on them. Start the habit now.
 
 def create_user(**details):
     """Accept any named details."""

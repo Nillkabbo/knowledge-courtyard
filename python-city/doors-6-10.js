@@ -402,6 +402,19 @@ if __name__ == "__main__":
     print("Running database tests...")
     test_database()
 
+# ── VIRTUAL ENVIRONMENTS: Isolated Python per project ──
+# Each project needs different packages. Don't pollute system Python.
+#
+# Create:    python -m venv .venv
+# Activate:  source .venv/bin/activate  (Linux/Mac)
+#            .venv\Scripts\activate      (Windows)
+# Install:   pip install requests pandas
+# Freeze:    pip freeze &gt; requirements.txt
+# Deactivate: deactivate
+#
+# WHY? Project A needs Django 4, Project B needs Django 5.
+# Without venv — conflict. With venv — each isolated. Always use venv!
+
 # ── THE GOLDEN RULES ──
 # 1. One file = one responsibility (database.py for DB only)
 # 2. from X import Y (specific) — not import *
