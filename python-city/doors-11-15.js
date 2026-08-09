@@ -632,7 +632,7 @@ with database_transaction(conn) as db:
 # Sara's insert is ROLLED BACK — database unchanged
 # This is called ATOMICITY — all or nothing.</div>
 
-<div class "code-block"># ── STEP 7: File lock context manager ──
+<div class="code-block"># ── STEP 7: File lock context manager ──
 # Prevent two processes from accessing the same file at once.
 
 from contextlib import contextmanager
