@@ -775,111 +775,327 @@ doors.push({
     aen:"module = .py file. package = folder with __init__.py containing modules. Import: import X, from X import Y, import X as alias."
   },
   story:`
-<p class="scene-setting">অষ্টম গিল্ড। গিল্ড পরিষদের কক্ষ। বড় টেবিল, চারপাশে চেয়ার, দেয়ালে প্রতিটা গিল্ডের পতাকা। পরিষদের প্রধান ইউসুফ বললেন — "একা এক গিল্ডে সব কাজ করা যায় না। প্রতিটা গিল্ডের নিজস্ব দক্ষতা। এক গিল্ড অন্যের কাজ ব্যবহার করে। Python-এ এটাই module — এক file-এর কোড, অন্য file থেকে import করো।"</p>
-<p class="scene-setting en">Eighth guild. The Council Chamber. Large table, chairs around it, each guild's banner on the walls. Council head Yusuf said — "One guild cannot do all work alone. Each guild has its own skill. One guild uses another's work. In Python, this is a module — code in one file, imported from another."</p>
+<p class="scene-setting">অষ্টম গিল্ড। গিল্ড পরিষদের কক্ষ। বড় টেবিল, চারপাশে চেয়ার, দেয়ালে প্রতিটা গিল্ডের পতাকা। পরিষদের প্রধান ইউসুফ বললেন — "একা এক গিল্ডে সব কাজ করা যায় না। প্রতিটা গিল্ডের নিজস্ব দক্ষতা। এক গিল্ড অন্যের কাজ ব্যবহার করে। Python-ে এটাই module — এক file-এর কোড, অন্য file থেকে import করো। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Eighth guild. The Council Chamber. Large table, chairs around it, each guild's banner on the walls. Council head Yusuf said — "One guild cannot do all work alone. Each guild has its own skill. One guild uses another's work. In Python, this is a module — code in one file, imported from another. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তোমার project ৫০০০ লাইনের এক file-এ। একটা bug খুঁজতে পুরো file পড়তে হয়। নতুন feature যোগ করতে গেলে conflict। সমাধান: ভাগ করো — database.py, auth.py, api.py, utils.py। প্রতিটা এক module। import করে ব্যবহার করো।</div>
-<div class="dialogue en">Problem: Your project is 5,000 lines in one file. Finding a bug means reading everything. Adding a feature causes conflicts. Solution: split — database.py, auth.py, api.py, utils.py. Each a module. Import and use.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তুমি ১০০০ লাইন কোড এক file-এ লিখেছ। একটা function খুঁজতে পুরো file scroll করতে হয়। কষ্ট? সমাধান: ভাগ করো। প্রতিটা বিষয় আলাদা file-এ। database.py, auth.py, utils.py। import দিয়ে যুক্ত করো। এটাই module।</div>
+<div class="dialogue en">First question: you wrote 1000 lines of code in one file. Finding a function means scrolling the whole file. Painful? Solution: split it. Each topic in its own file. database.py, auth.py, utils.py. Connect with import. This is a module.</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> ইউসুফ বললেন — এক টিম from utils import * দিলো। সব function একসাথে এলো। নাম দ্বন্দ্ব — utils-এর clean() ও অন্য clean() একই নামে। কোনটা কোনটা বোঝা গেলো না। import * নিষিদ্ধ — নির্দিষ্ট import করো: from utils import clean_email।</div></div>
+<div class="code-block"># ── STEP 1: What is a module? ──
+# A module is just a .py FILE.
+# Any Python file can be imported by another file.
+# This lets you REUSE code across files.
 
-<div class="code-block"># guild8_modules.py — Guild Council
-# Council Head Yusuf: "Each guild has its skill. Import what you need."
+# If you have a file called math_helpers.py:
+# ================================
+# math_helpers.py
+# ================================
+# def add(a, b):
+#     return a + b
+#
+# def multiply(a, b):
+#     return a * b
+#
+# PI = 3.14159
 
-# ── THE PROBLEM: 5000 lines in one file → split into modules ──
+# You can use it from ANOTHER file (main.py):
+# ================================
+# main.py (in the same folder)
+# ================================
+import math_helpers    # import the whole module
 
-# ── PROJECT STRUCTURE ──
-# my_project/
-#   main.py           ← entry point
-#   database.py       ← DB operations
-#   auth.py           ← authentication
-#   api.py            ← HTTP endpoints
-#   utils/
-#     __init__.py     ← marks folder as package
-#     strings.py      ← string helpers
-#     dates.py        ← date helpers
-#     validators.py   ← validation helpers
+result = math_helpers.add(5, 3)       # use module.function_name
+area = math_helpers.PI * 5 * 5        # use module.variable
+print(result)  # 8
+print(area)    # 78.54...
 
-# ── database.py ──
-# def save(task):
-#     db.session.add(task)
-#     db.session.commit()
+# That's it! import + module_name.function()</div>
 
-# def find_by_id(task_id):
-#     return db.query(Task).get(task_id)
+<div class="code-block"># ── STEP 2: Three ways to import ──
+# Python gives you flexibility. Know all three.
 
-# ── IMPORTING: 3 ways ──
+# Way 1: import the WHOLE module:
+import math
+print(math.sqrt(16))    # 4.0 (module.function)
+print(math.pi)          # 3.14159... (module.variable)
 
-# Way 1: import whole module
-import database
-task = database.find_by_id(42)
-database.save(task)
+# Way 2: import SPECIFIC things (PREFERRED for clarity):
+from math import sqrt, pi
+print(sqrt(16))         # 4.0 (no module prefix needed)
+print(pi)               # 3.14159...
 
-# Way 2: import specific functions (PREFERRED)
-from database import save, find_by_id
-task = find_by_id(42)
-save(task)
+# Way 3: import with ALIAS (for long module names):
+import numpy as np      # everyone uses 'np' for numpy
+import pandas as pd     # everyone uses 'pd' for pandas
+arr = np.array([1, 2, 3])
 
-# Way 3: import with alias (for long names)
-import database as db
-task = db.find_by_id(42)
+# Which to use?
+# - import X       → when you need many things from the module
+# - from X import Y → when you need just 1-2 specific things
+# - import X as Y   → when the name is long (numpy → np)</div>
 
-# ❌ BAD: import * (star import — pollutes namespace)
-# from database import *  # brings ALL names — collision risk!
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> ইউসুফ বললেন — এক টিম <code>from utils import *</code> দিলো। সব function একসাথে এলো। নাম দ্বন্দ্র — utils-এর clean() ও অন্য clean() একই নামে। কোনটা কোনটা বোঝা গেলো না। import * নিষিদ্ধ — নির্দিষ্ট import করো: from utils import clean_email।</div></div>
 
-# ── PACKAGES: Folder of modules ──
-# utils/ is a package (folder with __init__.py)
+<div class="code-block"># ── STEP 3: Python's Standard Library — free tools ──
+# Python comes with HUNDREDS of built-in modules. No install needed!
+
+import math          # math functions
+print(math.sqrt(16))    # 4.0
+print(math.ceil(3.2))   # 4 (round up)
+print(math.floor(3.8))  # 3 (round down)
+
+import random        # random numbers
+print(random.randint(1, 100))   # random integer 1-100
+print(random.choice(["a", "b", "c"]))  # random item from list
+
+import datetime      # dates and times
+now = datetime.datetime.now()
+print(now)               # 2024-01-15 14:30:25.123456
+print(now.strftime("%Y-%m-%d"))  # 2024-01-15
+
+import os            # operating system (files, paths)
+print(os.getcwd())       # current working directory
+print(os.listdir("."))   # list files in current folder
+
+import json          # JSON (we saw this in Door 6)
+import csv           # CSV files
+import re            # regular expressions (we saw this in Door 5)
+import pathlib       # modern file paths
+
+# You don't need to memorize all — just know they exist!
+# When you need something, search "python [topic] module".</div>
+
+<div class="code-block"># ── STEP 4: Third-party packages with pip ──
+# Python has a HUGE ecosystem of external packages.
+# Install them with pip (Python's package manager).
+
+# In your terminal (NOT in Python):
+# pip install requests        # HTTP client (for APIs)
+# pip install pandas           # data analysis
+# pip install numpy            # numerical computing
+# pip install flask            # web framework
+# pip install pytest           # testing
+
+# Then import in your code:
+import requests      # for making HTTP requests
+import pandas as pd  # for data analysis
+import numpy as np   # for math on arrays
+
+# Check what's installed:
+# pip list          → shows all installed packages
+# pip show requests → details about a specific package
+
+# ── requirements.txt: sharing dependencies ──
+# When you share your project, others need the same packages.
+# Save the list:
+# pip freeze > requirements.txt    → saves all package versions
+# pip install -r requirements.txt  → installs everything from file
+
+# A requirements.txt looks like:
+# requests==2.31.0
+# pandas==2.1.4
+# numpy==1.26.2
+# flask==3.0.0</div>
+
+<div class="code-block"># ── STEP 5: Creating your own module ──
+# Let's build a real project with multiple files.
+
+# ===================================
+# File 1: utils.py (our custom module)
+# ===================================
+def clean_email(raw: str) -> str:
+    """Clean a messy email address."""
+    return raw.strip().lower()
+
+def format_name(name: str) -> str:
+    """Capitalize each word in a name."""
+    return name.strip().title()
+
+def is_valid_email(email: str) -> bool:
+    """Check if email has @ and a domain."""
+    return "@" in email and "." in email.split("@")[-1]
+
+# ===================================
+# File 2: main.py (uses the module)
+# ===================================
+# from utils import clean_email, format_name, is_valid_email
+
+raw = "  FATIMA@MAIL.COM  "
+email = clean_email(raw)
+print(email)              # fatima@mail.com
+print(is_valid_email(email))  # True
+
+name = format_name("ahmed rahman")
+print(name)               # Ahmed Rahman</div>
+
+<div class="code-block"># ── STEP 6: Packages — folders of modules ──
+# When your project grows, group related modules into PACKAGES.
+# A package is just a FOLDER with an __init__.py file.
+
+# Project structure:
+# my_app/
+#   main.py               ← entry point
+#   utils/                 ← a PACKAGE (folder)
+#     __init__.py          ← marks this folder as a package (can be empty)
+#     strings.py           ← string helpers
+#     dates.py             ← date helpers
+#     validators.py        ← validation helpers
+#   database/
+#     __init__.py
+#     models.py            ← data models
+#     queries.py           ← database queries
+
+# Import from a package:
 from utils.strings import clean_email, format_name
-from utils.dates import format_date, days_until
 from utils.validators import is_valid_email
+from database.models import User
 
-email = clean_email("  Fatima@Mail.COM  ")
-valid = is_valid_email(email)
-print(f"Email: {email}, Valid: {valid}")
+# The dot (.) shows the folder hierarchy:
+# utils.strings = utils folder → strings.py file
 
-# ── STANDARD LIBRARY: Python's built-in toolbox ──
-import os           # operating system (files, paths)
-import sys          # system (exit, argv)
-import json         # JSON read/write
-import datetime     # dates and times
-import collections  # specialized containers
-import itertools    # iteration tools
-import functools    # higher-order functions
-import pathlib      # modern path handling
+# __init__.py can be EMPTY — it just tells Python
+# "this folder is a package, you can import from it."
 
-# ── THIRD-PARTY PACKAGES: pip install ──
-# pip install requests pandas numpy flask
-import requests     # HTTP client
-import pandas as pd # data analysis
-import numpy as np  # numerical computing
+# In modern Python (3.3+), __init__.py is optional,
+# but it's still a good practice to include it.</div>
 
-# ── __name__ == "__main__": Module vs script ──
-# In database.py:
+<div class="code-block"># ── STEP 7: __name__ == "__main__" ──
+# This pattern controls what runs when a file is imported vs run directly.
+
+# In my_module.py:
+def greet(name):
+    return f"Hello, {name}!"
+
+def test_greet():
+    """Test function — only for development."""
+    assert greet("Fatima") == "Hello, Fatima!"
+    print("All tests passed!")
+
+# This line makes tests run ONLY when you run the file directly:
 if __name__ == "__main__":
-    # Only runs when executed directly: python database.py
-    # Does NOT run when imported by another file
-    print("Running database tests...")
-    test_database()
+    # This runs when you type: python my_module.py
+    # But does NOT run when another file does: import my_module
+    test_greet()
 
-# ── VIRTUAL ENVIRONMENTS: Isolated Python per project ──
-# Each project needs different packages. Don't pollute system Python.
-#
-# Create:    python -m venv .venv
-# Activate:  source .venv/bin/activate  (Linux/Mac)
-#            .venv\Scripts\activate      (Windows)
-# Install:   pip install requests pandas
-# Freeze:    pip freeze &gt; requirements.txt
-# Deactivate: deactivate
-#
-# WHY? Project A needs Django 4, Project B needs Django 5.
-# Without venv — conflict. With venv — each isolated. Always use venv!
+# How it works:
+# When you run 'python my_module.py' directly:
+#   __name__ is set to "__main__" → the if block runs
+# When another file does 'import my_module':
+#   __name__ is set to "my_module" → the if block is skipped
 
-# ── THE GOLDEN RULES ──
-# 1. One file = one responsibility (database.py for DB only)
-# 2. from X import Y (specific) — not import *
-# 3. Use __name__ guard for test code
-# 4. pip install for third-party, import for built-in
-# 5. __init__.py marks a folder as a package</div>
+# This lets you:
+# 1. Put tests in the same file as your code
+# 2. Run tests directly without polluting imports
+# 3. Have a module that's also a standalone script</div>
+
+<div class="code-block"># ── STEP 8: Virtual environments (venv) ──
+# PROBLEM: Project A needs Django 4. Project B needs Django 5.
+# If both install globally — CONFLICT!
+
+# SOLUTION: Virtual environments — isolated Python per project.
+# Each project has its own packages. No conflicts.
+
+# ── Creating a virtual environment ──
+# In your terminal (NOT in Python):
+
+# Step 1: Create the venv (one-time):
+# python -m venv .venv
+
+# Step 2: Activate it (every time you work on the project):
+# Linux/Mac:   source .venv/bin/activate
+# Windows:     .venv\Scripts\activate
+
+# Step 3: Install packages (they go INTO the venv, not globally):
+# pip install requests pandas flask
+
+# Step 4: Save dependencies:
+# pip freeze > requirements.txt
+
+# Step 5: Deactivate when done:
+# deactivate
+
+# ── New machine setup ──
+# When someone downloads your project:
+# python -m venv .venv              # create venv
+# source .venv/bin/activate         # activate
+# pip install -r requirements.txt   # install all dependencies
+# Ready to run!
+
+# ⚠️ Always add .venv/ to .gitignore — don't commit the venv folder!</div>
+
+<div class="code-block"># ── STEP 9: Real project structure ──
+# Here's how a real Python project looks:
+
+# my_project/
+# ├── .venv/                    ← virtual environment (gitignored)
+# ├── .gitignore                ← files to exclude from git
+# ├── requirements.txt          ← package dependencies
+# ├── README.md                 ← project documentation
+# ├── main.py                   ← entry point
+# ├── config.py                 ← configuration
+# ├── utils/                    ← utility package
+# │   ├── __init__.py
+# │   ├── strings.py
+# │   └── validators.py
+# ├── database/                 ← database package
+# │   ├── __init__.py
+# │   ├── models.py
+# │   └── queries.py
+# └── tests/                    ← test package
+#     ├── __init__.py
+#     ├── test_strings.py
+#     └── test_validators.py
+
+# main.py imports from packages:
+# from utils.strings import clean_email
+# from database.models import User
+# from database.queries import find_user
+
+# .gitignore content:
+# .venv/
+# __pycache__/
+# *.pyc
+# .env
+
+# This structure scales from 100 lines to 100,000 lines.</div>
+
+<div class="code-block"># ── STEP 10: The golden rules of modules ──
+# Follow these and your code stays organized.
+
+# RULE 1: One file = one RESPONSIBILITY
+# ❌ Don't put database, email, and API code in one file
+# ✅ database.py (DB only), emailer.py (email only), api.py (routes)
+
+# RULE 2: Use SPECIFIC imports
+# ❌ from utils import *        (namespace pollution)
+# ✅ from utils import clean_email, format_name  (clear)
+
+# RULE 3: Use __name__ guard for test code
+if __name__ == "__main__":
+    run_tests()  # only runs when file is executed directly
+
+# RULE 4: ALWAYS use virtual environments
+# Each project gets its own isolated packages
+
+# RULE 5: Save dependencies to requirements.txt
+# pip freeze > requirements.txt
+# Others can reproduce your exact setup
+
+# RULE 6: Group related modules into packages (folders)
+# utils/ for helpers, database/ for DB, tests/ for tests
+
+# Summary:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Term             │ Meaning                          │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Module           │ A .py file                       │
+# │ Package          │ A folder of modules              │
+# │ import X         │ Use module X                     │
+# │ from X import Y  │ Use specific Y from module X     │
+# │ import X as Y    │ Use X with a shorter name Y      │
+# │ pip install X    │ Download a third-party package   │
+# │ venv             │ Isolated environment per project │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="diagram">
   <div class="diag-title">Project Structure — এক file থেকে অনেক module</div>
