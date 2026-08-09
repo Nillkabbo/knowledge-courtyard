@@ -22,6 +22,9 @@ doors.push({
 <div class="dialogue">ভিডিও কক্ষ বলেছিলেন — ভিডিও বোঝো। কিন্তু আমি বলি — ভিন্ন মোডালিটি একসাথে কীভাবে? ছবি ও টেক্সট কীভাবে এক জগতে? Cross-modal alignment। এটাই multimodal AI-এর গভীরতম রহস্য — কীভাবে ভিন্ন ইন্দ্রিয় সংযুক্ত হয়।</div>
 <div class="dialogue en">"The video chamber said — understand video. But I say — how do different modalities work together? How do image and text live in one world? Cross-modal alignment. This is multimodal AI's deepest mystery — how different senses connect."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Resolution Mismatch:</strong> Model trained on 224x224, deployed on 4K photos — performance collapsed. Fix: consistent preprocessing.</div></div>
+
+
 <div class="code-block">Cross-Modal Alignment — One World, Many Senses:
 
 THE PROBLEM:
@@ -161,6 +164,9 @@ doors.push({
 
 <div class="dialogue">সংযোগ কক্ষ বলেছিলেন — alignment দাও। কিন্তু আমি বলি — alignment দিলেই শেষ নয়। সেই aligned embeddings দিয়ে RAG বানাও। ছবি, অডিও, ভিডিও — সব retrieve করো। টেক্সট দিয়ে ছবি, ছবি দিয়ে টেক্সট। এটাই multimodal RAG — সব ইন্দ্রিয় দিয়ে তল্লাশ।</div>
 <div class="dialogue en">"The alignment chamber said — give alignment. But I say — alignment isn't the end. Use those aligned embeddings to build RAG. Images, audio, video — retrieve everything. Text for images, images for text. This is multimodal RAG — searching with all senses."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Audio Noise Sensitivity:</strong> Model worked in lab but failed in real-world noisy audio. Fix: train with data augmentation.</div></div>
+
 
 <div class="code-block">Multimodal Embeddings & RAG — All Senses Search:
 
@@ -345,6 +351,9 @@ doors.push({
 <p class="scene-setting">The eighth sense. Building chamber. Multiple workstations — each showing a different multimodal application. Medical imaging, code generation, education, design, content creation. Craftsman Adnan moved between them. "Each application combines senses," he said. "Vision + language for medical. Sketch + code for design. Audio + text for education. One sense alone is limited. All senses together = powerful."</p>
 <p class="scene-setting en">The eighth sense. Building chamber. Multiple workstations — each showing a different multimodal application. Medical imaging, code generation, education, design, content creation. Craftsman Adnan moved between them. "Each application combines senses," he said. "Vision + language for medical. Sketch + code for design. Audio + text for education. One sense alone is limited. All senses together = powerful."</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Frame Sampling Too Sparse:</strong> Video model sampled 1 frame/second — missed fast actions. Fix: adaptive sampling.</div></div>
+
+
 <div class="code-block">Multimodal Applications — Real-World Impact:
 
 APPLICATION CATEGORIES:
@@ -521,6 +530,9 @@ doors.push({
 <div class="dialogue">নির্মাণের কক্ষ বলেছিলেন — application বানাও। কিন্তু আমি বলি — বানানোর আগে সীমা জানো। VLM hallucinate করে — না থাকা জিনিস বলে। ভিডিও ব্যয়বহুল। Bias আছে। Evaluation কঠিন। যে সীমা জানে, সে ভালো বানায়। যে অজ্ঞ, সে খারাপ বানায়।</div>
 <div class="dialogue en">"The building chamber said — build applications. But I say — before building, know the limits. VLMs hallucinate — say things that aren't there. Video is expensive. Bias exists. Evaluation is hard. One who knows limits, builds well. One who is ignorant, builds poorly."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Modality Drop During Training:</strong> Training dropped audio 50% — model learned to ignore it. Fix: balanced modality dropout.</div></div>
+
+
 <div class="code-block">Multimodal Challenges — Know Your Limits:
 
 TOP ৭ CHALLENGES:
@@ -695,6 +707,9 @@ doors.push({
 
 <div class="dialogue">নয়টি ইন্দ্রিয় পেরিয়েছ। দৃষ্টি বলেছিলেন, ViT ও CLIP। চিত্রকর বলেছিলেন, VLM। সৃষ্টি বলেছিলেন, diffusion। শ্রুতি বলেছিলেন, Whisper ও TTS। গতি বলেছিলেন, ভিডিও। সংযোগ বলেছিলেন, alignment। স্মৃতি বলেছিলেন, multimodal RAG। নির্মাণ বলেছিলেন, applications। সীমা বলেছিলেন, challenges। এখন — সব একসাথে।</div>
 <div class="dialogue en">"You've passed nine senses. Vision said, ViT and CLIP. Painter said, VLM. Creation said, diffusion. Hearing said, Whisper and TTS. Motion said, video. Connection said, alignment. Memory said, multimodal RAG. Building said, applications. Limits said, challenges. Now — all together."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Bounding Box Drift:</strong> Object detection drifted across frames — lost tracking. Fix: temporal smoothing, Kalman filters.</div></div>
+
 
 <div class="code-block">Complete Multimodal AI Architecture:
 

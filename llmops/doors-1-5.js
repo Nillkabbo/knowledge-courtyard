@@ -23,6 +23,9 @@ doors.push({
 <div class="dialogue">LLM Security বইয়ে তুমি শিখেছ সুরক্ষা। কিন্তু আমি বলি — সুরক্ষিত মডেলও যদি প্রোডাকশনে না চলে? সে কেবল ডিস্কে পড়ে থাকে। প্রথম প্রশ্ন — কীভাবে serve করবে? Notebook-এ চালালে এক কোয়েরিতে কাজ করে। কিন্তু হাজার কোয়েরি? দরকার serving engine।</div>
 <div class="dialogue en">"In the LLM Security book you learned protection. But I say — even a protected model, if it doesn't run in production? It just sits on disk. First question — how to serve? Running in notebook works for one query. But thousands of queries? You need a serving engine."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Rate Limiting:</strong> API had no rate limit — one user sent 10K requests, crashed the GPU. Fix: rate limiting + queue.</div></div>
+
+
 <div class="code-block">Model Serving — From Notebook to Production:
 
 THE NOTEBOOK PROBLEM:
@@ -184,6 +187,9 @@ doors.push({
 
 <div class="dialogue">উৎক্ষেপণ প্যাড বলেছিলেন — serving engine দাও। কিন্তু আমি বলি — serving engine এক সার্ভারে। প্রোডাকশনে কি এক সার্ভার যথেষ্ট? না। লাখ ইউজার এলে এক সার্ভার ক্র্যাশ করে। দরকার — Docker, Kubernetes, auto-scaling। এক থেকে হাজার।</div>
 <div class="dialogue en">"The launch pad said — give a serving engine. But I say — serving engine on one server. Is one server enough for production? No. When hundreds of thousands of users come, one server crashes. Need — Docker, Kubernetes, auto-scaling. From one to thousands."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Cold Start Timeout:</strong> Model took 40 seconds to load on first request — user got timeout. Fix: warm pools, pre-compute KV cache.</div></div>
+
 
 <div class="code-block">Deployment — Containers to Clusters:
 
@@ -363,6 +369,9 @@ doors.push({
 
 <div class="dialogue">প্যাকেজিং কক্ষ বলেছিলেন — Docker, Kubernetes। কিন্তু আমি বলি — প্যাকেজ বানালেই হবে না। প্রতিটা change পরীক্ষা করতে হয়। Code test, eval test, security test। ম্যানুয়ালি? ভুল হবে। স্বয়ংক্রিয়? CI/CD pipeline। Code push → বাকি সব স্বয়ংক্রিয়।</div>
 <div class="dialogue en">"The packaging chamber said — Docker, Kubernetes. But I say — packaging isn't enough. Every change must be tested. Code test, eval test, security test. Manually? Errors. Automatically? CI/CD pipeline. Code push → everything else automated."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Memory Leak in Inference:</strong> KV cache wasn't freed — GPU OOM after 1000 requests. Fix: explicit memory management.</div></div>
+
 
 <div class="code-block">CI/CD for LLMs — Automated Everything:
 
@@ -552,6 +561,9 @@ doors.push({
 
 <div class="dialogue">CI/CD কক্ষ বলেছিলেন — স্বয়ংক্রিয় deploy করো। কিন্তু আমি বলি — deploy করে শেষ নয়। প্রোডাকশনে কী হচ্ছে? Latency কত? Error rate কত? কোন কোয়েরি ধীর? কোন ইউজার অসন্তুষ্ট? দেখতে হয়। Monitoring ছাড়া production = অন্ধ চালক।</div>
 <div class="dialogue en">"The CI/CD chamber said — automate deployment. But I say — deploying isn't the end. What's happening in production? What's the latency? Error rate? Which query is slow? Which user is unhappy? Must watch. Without monitoring, production = a blind driver."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Model Versioning:</strong> Updated model in production — broke outputs. Fix: blue-green deployment, rollback plan.</div></div>
+
 
 <div class="code-block">Monitoring & Observability — Eyes on Everything:
 
@@ -745,6 +757,9 @@ doors.push({
 
 <div class="dialogue">পর্যবেক্ষণ কক্ষ বলেছিলেন — সব দেখো। কিন্তু আমি বলি — সবচেয়ে গুরুত্বপূর্ণ যা দেখতে হয় তা হলো খরচ। LLM প্রোডাকশনে খরচ সবচেয়ে বড় বিপদ। একটা জনপ্রিয় অ্যাপ = হাজার কোয়েরি = হাজার ডলার প্রতিদিন। সদ্ব্যয় ছাড়া টিকবে না।</div>
 <div class="dialogue en">"The observation chamber said — watch everything. But I say — the most important thing to watch is cost. LLM production cost is the biggest danger. A popular app = thousands of queries = thousands of dollars daily. Without wise spending, it won't survive."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Batching Gone Wrong:</strong> Dynamic batching mixed long and short sequences — 80% compute wasted on padding. Fix: sort by length.</div></div>
+
 
 <div class="code-block">Cost Optimization — Every Token Counts:
 

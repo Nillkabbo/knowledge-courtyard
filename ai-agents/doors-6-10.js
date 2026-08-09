@@ -22,6 +22,9 @@ doors.push({
 <div class="dialogue">স্মৃতি কক্ষ বলেছিলেন — মেমরি দাও। কিন্তু আমি বলি — মেমরি যথেষ্ট নয়। কাজ জটিল হলে একজন এজেন্ট সব পারে না। দরকার দল — একাধিক এজেন্ট, প্রত্যেকে বিশেষজ্ঞ। গবেষক এজেন্ট, কোডার এজেন্ট, পর্যালোচক এজেন্ট। একসাথে কাজ। এটাই multi-agent।</div>
 <div class="dialogue en">"The memory chamber said — give memory. But I say — memory isn't enough. Complex tasks can't be done by one agent. You need a team — multiple agents, each specialized. Researcher agent, coder agent, reviewer agent. Working together. This is multi-agent."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Error Recovery:</strong> Agent hit a 500 error from API — stopped completely instead of retrying. Fix: implement retry with exponential backoff.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <defs>
@@ -211,6 +214,9 @@ doors.push({
 <div class="dialogue">পরিষদ কক্ষ বলেছিলেন — দল বানাও। কিন্তু আমি বলি — দল যতই ভালো হোক, সম্পূর্ণ স্বায়ত্তশাসন বিপজ্জনক। এজেন্ট ভুল করতে পারে। ইমেইল পাঠাতে পারে ভুল ব্যক্তিকে। টাকা স্থানান্তর করতে পারে ভুল পরিমাণ। এসব ক্ষেত্রে মানুষের অনুমোদন দরকার। Human-in-the-loop।</div>
 <div class="dialogue en">"The council chamber said — build teams. But I say — however good the team, full autonomy is dangerous. Agents can err. Can send email to the wrong person. Transfer the wrong amount. In these cases, human approval is needed. Human-in-the-loop."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Tool Permission Bypass:</strong> Agent was given file write access — it overwrote critical config. Fix: sandbox all tool execution, least-privilege permissions.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <defs>
@@ -387,6 +393,9 @@ doors.push({
 
 <div class="dialogue">অনুমোদন কক্ষ বলেছিলেন — human approval দাও। কিন্তু আমি বলি — approval দেওয়ার কাঠামো কী? হাতে বানাতে পারো, কিন্তু প্রোডাকশনে framework দরকার। LangGraph, CrewAI, AutoGen — প্রতিটা আলাদা। সঠিক framework বেছে নাও।</div>
 <div class="dialogue en">"The approval chamber said — give human approval. But I say — what's the structure for approval? You can build by hand, but production needs a framework. LangGraph, CrewAI, AutoGen — each different. Choose the right framework."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Cost Explosion from Loop:</strong> ReAct loop without termination condition ran 500 iterations — $800 bill. Fix: always cap iterations and token usage.</div></div>
+
 
 <div class="code-block">Agent Frameworks — 2024-2025 Landscape:
 
@@ -609,6 +618,9 @@ doors.push({
 <div class="dialogue">কাঠামো কক্ষ বলেছিলেন — framework বেছে নাও। কিন্তু আমি বলি — framework ভালো, কিন্তু এজেন্ট ভাঙে। লুপে আটকে যায়। অসীম টাকা খরচ করে। ভুল tool ব্যবহার করে। এসব failure mode জানতে হয়। না জানলে production-এ বিপদ। সতর্কতা ছাড়া স্বাধীনতা = বিপর্যয়।</div>
 <div class="dialogue en">"The framework chamber said — choose a framework. But I say — frameworks are good, but agents break. Get stuck in loops. Spend infinite money. Use wrong tools. Must know these failure modes. Without knowing, production danger. Freedom without caution = disaster."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — State Loss Between Steps:</strong> Agent forgot what it already did — repeated the same API call 20 times. Fix: maintain explicit state/memory between steps.</div></div>
+
+
 <div class="code-block">Agent Failure Modes — What Goes Wrong:
 
 TOP ৭ WAYS AGENTS FAIL:
@@ -809,6 +821,9 @@ doors.push({
 
 <div class="dialogue">নয়টি কেন্দ্র পেরিয়েছ। জেনেসিস বলেছিলেন, এজেন্ট = কথা + কাজ। সরঞ্জাম বলেছিলেন, tool use। চক্র বলেছিলেন, ReAct লুপ। পরিকল্পনা বলেছিলেন, plan-and-execute। স্মৃতি বলেছিলেন, memory systems। পরিষদ বলেছিলেন, multi-agent। অনুমোদন বলেছিলেন, human-in-the-loop। কাঠামো বলেছিলেন, frameworks। পতন বলেছিলেন, failure modes। এখন — সব একসাথে।</div>
 <div class="dialogue en">"You've passed nine centers. Genesis said, agent = talk + act. Tool said, tool use. Loop said, ReAct. Planning said, plan-and-execute. Memory said, memory systems. Council said, multi-agent. Approval said, human-in-the-loop. Framework said, frameworks. Fall said, failure modes. Now — all together."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Unvalidated User Input:</strong> Agent executed user-provided code directly — security nightmare. Fix: never eval() user input, use sandboxed execution.</div></div>
+
 
 <div class="code-block">Complete Production Agent Architecture:
 

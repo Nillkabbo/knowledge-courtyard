@@ -44,6 +44,9 @@ doors.push({
 <div class="dialogue">একে বলে 5 Whys। প্রতিটা উত্তরে আবার কেন জিজ্ঞেস করো। পাঁচবার করলে তুমি মৌলিক সত্যে পৌঁছাবে। "কেন এই feature দরকার?" → "ইউজার দ্রুত প্রোডাক্ট খুঁজতে চায়।" → "কেন দ্রুত?" → "কারণ ধীর হলে চলে যায়।" → "কেন চলে যায়?" → "কারণ প্রতিযোগী দ্রুত।" → এখন বুঝলে — সমস্যা search নয়, সমস্যা retention। আর সমাধান হয়তো search নয়, হয়তো personalization।</div>
 <div class="dialogue en">"This is called the 5 Whys. Ask 'why' at each answer. Five times and you reach fundamental truth. 'Why this feature?' → 'User wants to find products fast.' → 'Why fast?' → 'Because slow means they leave.' → 'Why leave?' → 'Because competitors are faster.' → Now you understand — the problem isn't search, it's retention. And the solution might not be search — maybe personalization."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Burnout from Overwork:</strong> Junior dev worked 80-hour weeks for 3 months — hit complete burnout, quit. Fix: sustainable pace beats hero crunch.</div></div>
+
+
 <div class="diagram">
 <div class="diag-title">৫ কেন — খুঁড়ে বেডরকে পৌঁছানো / The 5 Whys — Digging to Bedrock</div>
 <svg viewBox="0 0 560 256" xmlns="http://www.w3.org/2000/svg">
@@ -139,6 +142,9 @@ doors.push({
 
 <p>তুমি একটা সমস্যা পেলে — "ই-কমার্স সাইট বানাও।" পুরোটা একসাথে করতে গেলে পাগল হয়ে যাবে। কিন্তু ভাঙলে:</p>
 <p class="en">You get a problem — "Build an e-commerce site." Doing it all at once drives you mad. But break it:</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Imposter Syndrome Spiral:</strong> Dev compared self to seniors, felt fake, stopped asking questions, fell behind. Fix: seniors were juniors once. Ask early and often.</div></div>
+
 
 <div class="code-block">Decomposition — E-commerce:
 
@@ -249,6 +255,9 @@ doors.push({
 <div class="dialogue">একে বলে abstraction। তুমি একটা API কল করো — <code>user.send_email("hello")</code>। ভেতরে কী হয়? SMTP কানেকশন, TLS হ্যান্ডশেক, DNS রেজল্যুশন, রিট্রাই লজিক, এরর হ্যান্ডলিং — কিন্তু তুমি শুধু এক লাইন লেখো। এটাই ভালো abstraction।</div>
 <div class="dialogue en">"This is called abstraction. You call an API — <code>user.send_email("hello")</code>. What happens inside? SMTP connection, TLS handshake, DNS resolution, retry logic, error handling — but you write one line. That's good abstraction."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Tutorial Hell Trap:</strong> Dev watched 200 tutorials, built nothing, couldn't pass interviews. Fix: tutorials teach syntax, projects teach thinking.</div></div>
+
+
 <div class="diagram">
 <div class="diag-title">জাহির ও বাতিন — Visible Interface, Hidden Machinery</div>
 <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
@@ -351,6 +360,9 @@ doors.push({
 
 <div class="dialogue">পর্দা নির্মাতা বলেছিলেন — জটিলতা লুকাও। কিন্তু আমি বলি — সব লুকানো যায় না। কিছু বিসর্জন দিতে হয়। প্রতিটা সিদ্ধান্তে তুমি একটা পাও, একটা হারাও। যে বলে "আমার সমাধান সব দিক থেকে সেরা" — সে মিথ্যা বলছে, বা সে শিক্ষানবিশ।</div>
 <div class="dialogue en">"The veil maker said — hide complexity. But I say — not everything can be hidden. Something must be sacrificed. In every decision you gain one thing, lose another. Whoever says 'my solution is best in every way' — is lying, or is a junior."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Skipped Fundamentals:</strong> Dev jumped to React without learning JavaScript — everything was a struggle. Fix: master fundamentals first.</div></div>
+
 
 <div class="code-block">Software Engineering Trade-offs:
 
@@ -464,6 +476,9 @@ doors.push({
 "এই কোড একদিন ভাঙবে। প্রশ্ন — ভাঙার পর কী হবে?" → fallback, circuit breaker, retry, graceful degradation। ইউজার বুঝতেও পারে না যে কিছু ভেঙেছিল।
 </div>
 </div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Not Reading Error Messages:</strong> Dev spent 2 hours debugging — error message said the exact fix. Fix: READ the error. 90% of debugging is reading.</div></div>
+
 
 <div class="code-block">Resilience Patterns — Production Code:
 

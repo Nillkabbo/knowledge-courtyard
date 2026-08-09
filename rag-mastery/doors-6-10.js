@@ -22,6 +22,9 @@ doors.push({
 <div class="dialogue">প্রশ্ন রূপান্তার বলেছিলেন — ভালো প্রশ্ন দাও। কিন্তু আমি বলি — ভালো প্রশ্ন দিলেও ফল ভালো হলো কি না — মাপতে হয়। RAG বানালেই হবে না। মাপতে হয়। Retrieval ঠিক ছিল? Context প্রাসঙ্গিক ছিল? উত্তর সত্য ছিল? উত্তর প্রশ্নের উত্তর ছিল? চারটি প্রশ্ন, চারটি মাপ।</div>
 <div class="dialogue en">"The query transformer said — give good questions. But I say — even with good questions, did the result turn out good — must measure. Building RAG isn't enough. Must measure. Was retrieval right? Was context relevant? Was the answer true? Did the answer address the question? Four questions, four measures."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Stale Vector Index:</strong> Source docs updated but vector index wasn't refreshed. Fix: implement incremental indexing.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
@@ -161,6 +164,9 @@ doors.push({
 
 <div class="dialogue">মাপকাঠির কক্ষ বলেছিলেন — মাপতে হয়। কিন্তু আমি বলি — মাপ শেষে একটা নতুন স্তর আছে। GraphRAG। Vector search ফ্ল্যাট — প্রতিটা টুকরো আলাদা। কিন্তু জ্ঞান আলাদা নয়। রাজা যুক্ত রাজ্যের সাথে, রাজ্য যুক্ত ভূগোলের সাথে। GraphRAG সেই সংযোগ ধরে।</div>
 <div class="dialogue en">"The measurement chamber said — must measure. But I say — after measurement comes a new layer. GraphRAG. Vector search is flat — each piece separate. But knowledge isn't separate. Kings connected to kingdoms, kingdoms to geography. GraphRAG captures those connections."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Reranking:</strong> Top-k retrieved docs had noise. Fix: add a cross-encoder reranker.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -304,6 +310,9 @@ doors.push({
 
 <div class="dialogue">GraphRAG বলেছিলেন — knowledge graph সংযুক্ত। কিন্তু আমি বলি — সংযোগ গভীরতর উত্তর দেয়, কিন্তু production-এ আরও অনেক কিছু লাগে। Caching, incremental updates, observability, fallback, multi-tenancy। এগুলো ছাড়া RAG production-এ টেকে না।</div>
 <div class="dialogue en">"GraphRAG said — knowledge graphs connect. But I say — connections give deeper answers, but production needs much more. Caching, incremental updates, observability, fallback, multi-tenancy. Without these, RAG doesn't survive production."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Eval Blindspot:</strong> Team deployed RAG without evaluation — users complained for weeks. Fix: always build eval pipeline first.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -460,6 +469,9 @@ doors.push({
 <div class="dialogue">কারখানা বলেছিলেন — production pattern গুরুত্বপূর্ণ। কিন্তু আমি বলি — pattern জানা যথেষ্ট নয়। ভাঙন জানতে হয়। কোথায় RAG ভাঙে? কেন? কীভাবে ঠিক করবে? যে ভাঙন জানে, সে production-এ টেকে। যে শুধু pattern জানে, সে প্রথম ঝড়েই ভাঙে।</div>
 <div class="dialogue en">"The factory said — production patterns matter. But I say — knowing patterns isn't enough. Must know breakage. Where does RAG break? Why? How to fix? One who knows breakage, survives production. One who only knows patterns, breaks in the first storm."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Query Expansion Failure:</strong> User asked 'How to fix it?' — too vague, retrieved nothing. Fix: expand queries with HyDE.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
@@ -604,6 +616,9 @@ doors.push({
 
 <div class="dialogue">নয়টি স্তর পেরিয়েছ। পাণ্ডুলিপি কক্ষ বলেছিলেন, ডকুমেন্ট ঠিক পড়ো। সূচক নির্মাতা বলেছিলেন, সাজানো গুরুত্বপূর্ণ। সরল কূপ বলেছিলেন, naive RAG-এর সীমা আছে। গভীর কূপ বলেছিলেন, advanced retrieval। প্রশ্ন রূপান্তার বলেছিলেন, প্রশ্ন সংশোধন। মাপকাঠি বলেছিলেন, মাপতে হয়। জাল বলেছিলেন, GraphRAG। কারখানা বলেছিলেন, production pattern। ভাঙন বলেছিলেন, failure mode জানো। এখন — সব একসাথে।</div>
 <div class="dialogue en">"You've passed nine layers. The manuscript chamber said, read documents right. The index builder said, organization matters. The simple well said, naive RAG has limits. The deep well said, advanced retrieval. The query transformer said, refine the question. The measurement said, must measure. The web said, GraphRAG. The factory said, production patterns. The breaking said, know failure modes. Now — all together."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Privacy Leak in Index:</strong> RAG returned confidential documents to unauthorized users. Fix: document-level access control.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">

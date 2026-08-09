@@ -22,6 +22,9 @@ doors.push({
 <div class="dialogue">প্রশিক্ষণ পদ্ধতি বলেছিলেন — SFT, DPO, PPO। কিন্তু আমি বলি — train করার পরে মাপতে হয়। Fine-tuning ভালো হয়েছে কি না — কীভাবে জানবে? অনুমান নয়, পরিমাপ। Base বনাম fine-tuned — প্রতিটা মাপে তুলনা। হয়তো এক জায়গায় ভালো, আরেক জায়গায় খারাপ।</div>
 <div class="dialogue en">"The training method said — SFT, DPO, PPO. But I say — after training, must measure. Has fine-tuning improved — how to know? Not guessing, measuring. Base vs fine-tuned — compare on each metric. Maybe better in one area, worse in another."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — LoRA Rank Too Low:</strong> r=4 couldn't capture complex patterns — underfitting. Fix: experiment with r=8, 16, 32.</div></div>
+
+
 <div class="code-block">Fine-tuning Evaluation — Measure Everything:
 
 FOUR EVALUATION TYPES:
@@ -198,6 +201,9 @@ doors.push({
 <div class="dialogue">মূল্যায়ন কক্ষ বলেছিলেন — মাপতে হয়। কিন্তু আমি বলি — মাপলে যদি দেখো পুরোনো ক্ষমতা হারিয়েছে? Catastrophic forgetting। Fine-tuning-এর সবচেয়ে বড় ঝুঁকি। মডেল তোমার ডোমেইনে ভালো, কিন্তু সাধারণ প্রশ্নে খারাপ। এটা ঠেকাতে হয়।</div>
 <div class="dialogue en">"The evaluation chamber said — must measure. But I say — what if measuring shows old capability lost? Catastrophic forgetting. Fine-tuning's biggest risk. The model is good in your domain, but bad at general questions. Must prevent this."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Tokenization Mismatch:</strong> Fine-tuning data tokenized differently from pretraining. Fix: EXACT tokenizer from base model.</div></div>
+
+
 <div class="code-block">Catastrophic Forgetting — The Dark Side:
 
 WHAT IT IS:
@@ -346,6 +352,9 @@ doors.push({
 
 <div class="dialogue">স্মৃতিহানি কক্ষ বলেছিলেন — forgetting এড়াও। কিন্তু আমি বলি — forgetting ঠেকালেও deploy করতে হয়। Fine-tuned মডেল ডিস্কে পড়ে থাকলে কেউ ব্যবহার করবে না। Deploy করো — API, serving, monitoring। Production = training-এর চেয়ে ভিন্ন চ্যালেঞ্জ।</div>
 <div class="dialogue en">"The amnesia chamber said — avoid forgetting. But I say — even after preventing forgetting, must deploy. A fine-tuned model sitting on disk serves no one. Deploy — API, serving, monitoring. Production = a different challenge than training."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Instruction Format Mismatch:</strong> Training used Alpaca format, inference used ChatML. Fix: match formats.</div></div>
+
 
 <div class="code-block">Deployment — From Disk to Production:
 
@@ -533,6 +542,9 @@ doors.push({
 <div class="dialogue">Deployment কক্ষ বলেছিলেন — deploy করো। কিন্তু আমি বলি — deploy করার আগে একটা প্রশ্ন। এটা কি টাকা দেবে? Fine-tuning সস্তা নয়। কিন্তু সঠিক হলে — বিনিয়োগের ১০x ফল। ভুল হলে — সব নষ্ট। হিসাব করো আগে।</div>
 <div class="dialogue en">"The deployment chamber said — deploy. But I say — before deploying, a question. Will this pay off? Fine-tuning isn't cheap. But done right — 10x return on investment. Done wrong — all wasted. Calculate first."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Gradient Accumulation Bug:</strong> Forgot to scale loss — effective LR was 8x too high. Fix: scale loss by accumulation steps.</div></div>
+
+
 <div class="code-block">Cost-Benefit Analysis — Is Fine-tuning Worth It?
 
 COSTS (একাধিক স্তরে):
@@ -701,6 +713,9 @@ doors.push({
 
 <div class="dialogue">নয়টি ক্ষেত্র পেরিয়েছ। নির্বাচন বলেছিলেন — কখন fine-tune। উপাদান বলেছিলেন — ডেটা গুরুত্বপূর্ণ। LoRA বলেছিলেন — ১% প্যারামিটার। QLoRA বলেছিলেন — ৪-bit compress। প্রশিক্ষণ পদ্ধতি বলেছিলেন — SFT/DPO/PPO। মূল্যায়ন বলেছিলেন — মাপতে হয়। স্মৃতিহানি বলেছিলেন — forgetting এড়াও। মোক্ষম বলেছিলেন — deploy করো। মূল্যায়ন বলেছিলেন — খরচ বনাম উপকার। এখন — সব একসাথে।</div>
 <div class="dialogue en">"You've passed nine chambers. Choice said — when to fine-tune. Materials said — data matters. LoRA said — 1% parameters. QLoRA said — 4-bit compress. Training method said — SFT/DPO/PPO. Evaluation said — must measure. Amnesia said — avoid forgetting. Deployment said — deploy. Valuation said — cost vs benefit. Now — all together."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Eval During Training Missing:</strong> No eval during training — didn't know which checkpoint was best. Fix: evaluate every N steps.</div></div>
+
 
 <div class="code-block">Complete Fine-tuning Pipeline — One View:
 

@@ -23,6 +23,9 @@ doors.push({
 <div class="dialogue">RAG Mastery বইয়ে তুমি শিখেছ — retrieval দিয়ে জ্ঞান যোগ করো। Prompt Engineering-এ শিখেছ — শব্দ দিয়ে মডেল চালাও। কিন্তু এখন একটা নতুন প্রশ্ন। কখন এগুলো যথেষ্ট নয়? কখন মডেলকে নিজে বদলাতে হয়? এটাই fine-tuning। কিন্তু সব সমস্যার সমাধান নয়।</div>
 <div class="dialogue en">"In the RAG Mastery book you learned — add knowledge through retrieval. In Prompt Engineering — steer the model with words. But now a new question. When are these insufficient? When must the model itself change? This is fine-tuning. But not the solution to every problem."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Catastrophic Forgetting:</strong> Fine-tuned on medical data — model forgot general knowledge. Fix: use LoRA, mix in general data.</div></div>
+
+
 <div class="code-block">Three Tools — Three Problems:
 
 ┌──────────────────────────────────────────────┐
@@ -161,6 +164,9 @@ doors.push({
 
 <div class="dialogue">নির্বাচনের কক্ষ বলেছিলেন — সঠিক সরঞ্জাম বেছে নাও। কিন্তু আমি বলি — fine-tuning বেছে নিলেই শেষ নয়। উপাদান দরকার — ডেটা। আর ডেটা হলো fine-tuning-এর সবচেয়ে গুরুত্বপূর্ণ অংশ। ৮০% সময় ডেটায়। খারাপ ডেটা = খারাপ মডেল। প্রতিটা example যাচাই করো।</div>
 <div class="dialogue en">"The choice chamber said — choose the right tool. But I say — choosing fine-tuning isn't the end. You need material — data. And data is the most important part of fine-tuning. 80% of time on data. Bad data = bad model. Verify every example."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Overfitting on Small Dataset:</strong> 1000 examples, 10 epochs — model memorized. Fix: early stopping, regularization, more data.</div></div>
+
 
 <div class="code-block">Dataset Curation — Quality > Quantity:
 
@@ -327,6 +333,9 @@ doors.push({
 
 <div class="dialogue">উপাদান কক্ষ বলেছিলেন — ডেটা গুরুত্বপূর্ণ। কিন্তু আমি বলি — ডেটা থাকলে কীভাবে fine-tune করবে? Full fine-tuning সব প্যারামিটার বদলায় — ৭B মডেলে ৭B গ্রেডিয়েন্ট। বিশাল GPU দরকার। কিন্তু LoRA? ১% প্যারামিটার। একটা consumer GPU-তে চলে।</div>
 <div class="dialogue en">"The materials chamber said — data is important. But I say — with data, how do you fine-tune? Full fine-tuning changes all parameters — 7B model needs 7B gradients. Huge GPU needed. But LoRA? 1% of parameters. Runs on a consumer GPU."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Learning Rate Too High:</strong> LR=1e-3 destroyed pretrained weights — gibberish output. Fix: start with 1e-5 to 2e-5.</div></div>
+
 
 <div class="code-block">LoRA — Low-Rank Adaptation:
 
@@ -515,6 +524,9 @@ doors.push({
 <div class="dialogue">LoRA কক্ষ বলেছিলেন — ১% প্যারামিটার train করো। কিন্তু আমি বলি — LoRA-তেও বেস মডেল 16-bit-এ দরকার। ৭B মডেল = ১৪ GB। এখনো বড় GPU দরকার। QLoRA সেটাও কমিয়ে দেয় — 4-bit-এ compress করে। ৬ GB। consumer GPU-তে।</div>
 <div class="dialogue en">"The LoRA chamber said — train 1% of parameters. But I say — LoRA still needs the base model in 16-bit. 7B model = 14 GB. Still a big GPU. QLoRA reduces even that — compressing to 4-bit. 6 GB. Consumer GPU."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Data Quality Disaster:</strong> Training data had wrong labels — model learned wrong patterns. Fix: manually inspect samples.</div></div>
+
+
 <div class="code-block">QLoRA — Fine-tuning for Everyone:
 
 QUANTIZATION BASICS:
@@ -693,6 +705,9 @@ doors.push({
 
 <div class="dialogue">QLoRA কক্ষ বলেছিলেন — কম মেমরিতে train করো। কিন্তু আমি বলি — train কীভাবে? শুধু একটা পদ্ধতি নয়। তিনটি। SFT — সবচেয়ে সাধারণ, সহজ। DPO — পছন্দ-ভিত্তিক, আধুনিক। PPO — RL-ভিত্তিক, জটিল। প্রতিটা পদ্ধতির ডেটা ও ফল আলাদা।</div>
 <div class="dialogue en">"The QLoRA chamber said — train in less memory. But I say — how to train? Not just one method. Three. SFT — most common, simple. DPO — preference-based, modern. PPO — RL-based, complex. Each has different data and results."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Validation Set:</strong> Trained without validation — couldn't detect overfitting. Fix: hold out 10-20% for validation.</div></div>
+
 
 <div class="code-block">Training Methods — Three Paths:
 

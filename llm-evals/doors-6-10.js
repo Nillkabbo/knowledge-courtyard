@@ -22,6 +22,9 @@ doors.push({
 <div class="dialogue">কাজের কক্ষ বলেছিলেন — প্রতিটা task-এর আলাদা eval। কিন্তু আমি বলি — কিছু standard benchmark আছে যা সবাই ব্যবহার করে। MMLU, HumanEval, GSM8K। এগুলো তুলনার ভিত্তি। কিন্তু সচেতন থাকো — contamination, narrow scope, Goodhart's Law। Standard benchmark = শুরু, গন্তব্য নয়।</div>
 <div class="dialogue en">"The task chamber said — separate eval per task. But I say — some standard benchmarks exist that everyone uses. MMLU, HumanEval, GSM8K. These are the basis for comparison. But be aware — contamination, narrow scope, Goodhart's Law. Standard benchmarks = start, not destination."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Prompt Sensitivity in Eval:</strong> Eval used one prompt — production used another. Fix: eval with multiple prompt variants.</div></div>
+
+
 <div class="code-block">Standard Benchmarks — The Measuring Sticks:
 
 MAJOR BENCHMARKS (2024-2025):
@@ -202,6 +205,9 @@ doors.push({
 <div class="dialogue">Benchmark কক্ষ বলেছিলেন — standard benchmark ব্যবহার করো। কিন্তু আমি বলি — standard benchmark শুধু একবার। প্রতিটা change-এ তোমার নিজের eval set চালাও। স্কোর পড়েছে? Regression। নতুন prompt বা model কিছু ভাঙলে ধরতে হবে — ইউজারের আগে।</div>
 <div class="dialogue en">"The benchmark chamber said — use standard benchmarks. But I say — standard benchmarks are one-time. Run YOUR eval set on every change. Score dropped? Regression. New prompt or model broke something — catch it before users do."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Data Contamination:</strong> Eval questions leaked into training set. Fix: keep eval set private, regenerate periodically.</div></div>
+
+
 <div class="code-block">Regression Detection — Catch It Before Users Do:
 
 WHAT IS REGRESSION?
@@ -362,6 +368,9 @@ doors.push({
 
 <div class="dialogue">Regression কক্ষ বলেছিলেন — পতন ধরো। কিন্তু আমি বলি — regression শুধু deploy-এ নয়। Production-এও। Data drift, user behavior change, model degradation। Continuous production eval ছাড়া তুমি অন্ধ। প্রতিদিন নমুনা, প্রতিদিন মাপো।</div>
 <div class="dialogue en">"The regression chamber said — catch falls. But I say — regression isn't just at deploy. In production too. Data drift, user behavior change, model degradation. Without continuous production eval, you're blind. Daily sampling, daily measuring."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Metric Gaming:</strong> Model optimized for BLEU — grammatically perfect but factually wrong. Fix: multi-metric eval.</div></div>
+
 
 <div class="code-block">Production Evaluation — Continuous Real-World Testing:
 
@@ -527,6 +536,9 @@ doors.push({
 
 <div class="dialogue">Production eval কক্ষ বলেছিলেন — continuous মাপো। কিন্তু আমি বলি — মাপা যদি ভুল হয়? Continuous ভুল = continuous বিভ্রান্তি। Eval-এ ফাঁদ আছে। Overfitting, contamination, Goodhart's Law। প্রতিটা ফাঁদ জানো — নাহলে ভুল মাপবে, ভুল সিদ্ধান্ত নেবে।</div>
 <div class="dialogue en">"The production eval chamber said — measure continuously. But I say — what if measuring is wrong? Continuous wrong = continuous delusion. Eval has traps. Overfitting, contamination, Goodhart's Law. Know each trap — or measure wrong, decide wrong."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Statistical Significance:</strong> 100-sample eval showed 2% improvement — within noise. Fix: proper sample sizes, confidence intervals.</div></div>
+
 
 <div class="code-block">Evaluation Pitfalls — Traps to Avoid:
 
@@ -700,6 +712,9 @@ doors.push({
 
 <div class="dialogue">নয়টি মাপ পেরিয়েছ। মাপন বলেছিলেন, মাপো। সূচক বলেছিলেন, metric বেছে নাও। বিচারক বলেছিলেন, LLM-as-judge। মানুষ বলেছিলেন, human eval। কাজ বলেছিলেন, task-specific। মানদণ্ড বলেছিলেন, benchmarks। পতন বলেছিলেন, regression। উৎপাদন বলেছিলেন, continuous eval। ফাঁদ বলেছিলেন, pitfalls। এখন — সব একসাথে।</div>
 <div class="dialogue en">"You've passed nine measures. Measurement said, measure. Metrics said, choose metrics. Judge said, LLM-as-judge. Human said, human eval. Task said, task-specific. Benchmark said, standards. Regression said, catch drops. Production said, continuous. Pitfalls said, avoid traps. Now — all together."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Stale Eval Suite:</strong> Eval suite was 1 year old. Fix: continuously update with new test cases.</div></div>
+
 
 <div class="code-block">Complete LLM Evaluation Architecture:
 

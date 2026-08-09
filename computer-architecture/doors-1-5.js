@@ -30,6 +30,9 @@ doors.push({
 <div class="dialogue"><strong>শকলি:</strong> (হাসেন) একটা সুইচ দিয়ে না। কিন্তু দুটো সুইচ একসাথে কী করতে পারে — সেটা ভাবো। ধরো দুটো সুইচ সিরিজে যুক্ত — পানি বইতে পারে শুধু যদি <strong>দুটোই</strong> খোলা থাকে। এটাই <strong>AND gate</strong>। এখন ধরো দুটো সুইচ সমান্তরালে — পানি বইতে পারে যদি <strong>যেকোনো একটা</strong> খোলা থাকে। এটাই <strong>OR gate</strong>। আর যদি একটা সুইচ উল্টে দাও — চালু হলে বন্ধ, বন্ধ হলে চালু — সেটাই <strong>NOT gate</strong>। এই তিনটে গেট দিয়ে সব যন্ত্র বানানো যায়।</div>
 <div class="dialogue en"><strong>Shockley:</strong> (laughs) Not from one switch. But think — what can two switches do together? Two switches in series — water flows only if <strong>both</strong> are open. That's an <strong>AND gate</strong>. Two switches in parallel — water flows if <strong>either</strong> is open. That's an <strong>OR gate</strong>. Flip one — on becomes off, off becomes on — that's a <strong>NOT gate</strong>. From these three, everything can be built.</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Cache Thrashing:</strong> Access pattern evicted cache lines constantly — 10x slower. Fix: optimize access patterns.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <!-- Transistor -->
@@ -207,6 +210,9 @@ doors.push({
 
 <div class="dialogue"><strong>হেনেসি:</strong> আমি জন হেনেসি। স্ট্যানফোর্ড। ১৯৮০-এ আমি আর ডেভিড প্যাটারসন একটা সহজ আইডিয়া নিয়ে এসেছিলাম — CPU ডিজাইনকে সরল করো। প্রতিটা instruction একই পাঁচটা স্টেজে যাবে। কোনো বাড়তি জটিলতা নেই। প্রতিটা স্টেজ এক সাইকেলে শেষ। এর নাম আমরা দিলাম — RISC। Reduced Instruction Set Computer।</div>
 <div class="dialogue en"><strong>Hennessy:</strong> I'm John Hennessy. Stanford. In 1980, David Patterson and I brought a simple idea — simplify CPU design. Every instruction goes through the same five stages. No extra complexity. Each stage takes one cycle. We called it — RISC. Reduced Instruction Set Computer.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Branch Prediction Failure:</strong> Random branches caused pipeline stalls — 30% loss. Fix: branchless programming.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -387,6 +393,9 @@ doors.push({
 <div class="dialogue"><strong>হেনেসি:</strong> সমস্যা ছিল — CISC instructions বিভিন্ন দৈর্ঘ্যের। কোনোটা ১ বাইট, কোনোটা ১৫ বাইট। কোনোটা ১ cycle, কোনোটা ২০ cycle। Pipeline-এ এটা বিপর্যয় — কারণ প্রতিটা instruction ভিন্ন সময় নেয়। আমরা বললাম — সরল করো। প্রতিটা instruction একই দৈর্ঘ্যের। প্রতিটা এক cycle-এ শেষ। মেমোরি শুধু Load/Store দিয়ে ছোঁও — বাকি সব কাজ register-এ। এটাই RISC।</div>
 <div class="dialogue en"><strong>Hennessy:</strong> The problem was — CISC instructions varied in length. Some 1 byte, some 15 bytes. Some 1 cycle, some 20 cycles. In a pipeline, this is a disaster — every instruction takes different time. We said — simplify. Every instruction same length. Every one finishes in one cycle. Touch memory only with Load/Store — everything else in registers. That's RISC.</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Memory Alignment Bug:</strong> Unaligned access crashed on ARM — worked on x86. Fix: align data structures.</div></div>
+
+
 <div class="code-block">
 <strong>RISC vs CISC তুলনা (Gate 2017 MCQ):</strong>
 
@@ -509,6 +518,9 @@ doors.push({
 
 <div class="dialogue"><strong>স্মিথ:</strong> আমি জেমস স্মিথ। ১৯৮১ সালে আমি একটা পাগল আইডিয়া নিয়ে এসেছিলাম। pipeline stall করার বদলে — <strong>অনুমান করো</strong>। CPU অনুমান করবে branch নেওয়া হবে নাকি নেওয়া হবে না — তারপর সেই রাস্তায় instruction পাঠিয়ে দাও। ভুল হলে — pipeline flush করো, সঠিক রাস্তায় ফিরে যাও। এটাই <strong>branch prediction</strong>।</div>
 <div class="dialogue en"><strong>Smith:</strong> I'm James Smith. In 1981, I brought a crazy idea. Instead of stalling the pipeline — <strong>guess</strong>. The CPU predicts whether a branch will be taken or not — then sends instructions down that path. If wrong — flush the pipeline, go to the correct path. This is <strong>branch prediction</strong>.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — False Sharing:</strong> Two threads on same cache line — locks thrashed. Fix: pad to cache line boundaries.</div></div>
+
 
 <div class="code-block">
 <strong>Branch Prediction প্রকারভেদ:</strong>
@@ -637,6 +649,9 @@ doors.push({
 
 <div class="dialogue"><strong>প্যাটারসন:</strong> মেমোরি hierarchy-এর কারণ একটাই — <strong>trade-off</strong>। দ্রুত মেমোরি = দামি ছোট। ধীর মেমোরি = সস্তা বড়। কোনো একটা দিয়ে সব কাজ চলবে না। তাই hierarchy। ছোট দ্রুত মেমোরি (L1) সবচেয়ে ব্যবহৃত ডেটা রাখে। বড় ধীর মেমোরি (RAM) সব ডেটা রাখে। hierarchy-এর মাধ্যমে আমরা সেরা দুটো জগত পাই — দ্রুতি আর ধারণক্ষমতা।</div>
 <div class="dialogue en"><strong>Patterson:</strong> Memory hierarchy exists for one reason — <strong>trade-off</strong>. Fast memory = expensive, small. Slow memory = cheap, large. You can't use just one. So hierarchy. Small fast memory (L1) holds most-used data. Large slow memory (RAM) holds everything. Through hierarchy, we get the best of both — speed and capacity.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Instruction Cache Miss:</strong> Large function — I-cache thrashed. Fix: split hot paths.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">

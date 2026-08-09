@@ -22,6 +22,9 @@ doors.push({
 <div class="dialogue"><strong>এসআরই ইঞ্জিনিয়ার:</strong> Google ২০০৩ সালে SRE team তৈরি করেছিল — একটা সহজ আইডিয়া দিয়ে। "১০০% uptime অসম্ভব, আর চেষ্টা করলে innovation মরে যায়।" তাই একটা contract — SLO (Service Level Objective)। ৯৯.৯% মানে ০.১% error budget। এই budget শেষ হলে — dev team feature development বন্ধ করে, reliability কাজ শুরু করে। mathematically enforced সততা।</div>
 <div class="dialogue en"><strong>SRE Engineer:</strong> Google created the SRE team in 2003 — with a simple idea. "100% uptime is impossible, and trying kills innovation." So a contract — SLO (Service Level Objective). 99.9% means 0.1% error budget. When this budget runs out — dev team stops feature development, starts reliability work. Mathematically enforced honesty.</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Dangling Volumes:</strong> Old volumes never deleted — $2000/month wasted. Fix: automated cleanup.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <!-- SLO Gauge -->
@@ -150,6 +153,9 @@ doors.push({
   story: `<p class="scene-setting">তুমি একটা গাড়ির কারখানায় আছ। Assembly line চলছে — কনভেয়র বেল্টে গাড়ি এগিয়ে যায়। প্রতিটা স্টেশনে একটা পরীক্ষা — engine test, brake test, security scan। কোনো স্টেশনে fail করলে? পুরো belt থেমে যায়। ভাঙা গাড়ি কখনো showroom-এ যায় না। এটাই CI/CD pipeline। প্রতিটা <code>git push</code> = একটা নতুন গাড়ি assembly line-এ।</p>
 <p class="scene-setting en">You're in a car factory. The assembly line runs — cars move on the conveyor belt. Each station tests — engine, brakes, security scan. Any station fails? The entire belt stops. No broken car reaches the showroom. This is a CI/CD pipeline. Every <code>git push</code> = a new car enters the assembly line.</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Log Aggregation:</strong> Logs lost when container died. Fix: central log aggregation.</div></div>
+
+
 <div class="code-block">
 <strong>CI/CD Pipeline Stages:</strong>
 <pre style="background:var(--bg);padding:.5rem;border-radius:.3rem">
@@ -270,6 +276,9 @@ doors.push({
   },
   story: `<p class="scene-setting">বিমানবন্দরে নিরাপত্তা। পুরোনো পদ্ধতি — প্রতিটা গাড়িতে একজন নিরাপত্তা রক্ষক বসানো। সব গাড়ি চেক হয় — কিন্তু কত লোক লাগে! হাজার গাড়ি = হাজার রক্ষক। নতুন পদ্ধতি — রাস্তার পিচেই scanner বসানো। গাড়ি যেমন চলবে তেমনই চলবে — scanner automatic ভাবে সব চেক করবে। কোনো অতিরিক্ত লোক লাগবে না। এটাই sidecar বনাম eBPF।</p>
 <p class="scene-setting en">Airport security. Old approach — put a security guard in every car. Every car checked — but how many guards! A thousand cars = a thousand guards. New approach — embed scanners in the road itself. Cars drive normally — the scanner checks everything automatically. No extra guards needed. This is sidecar vs eBPF.</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Firewall Misconfiguration:</strong> 0.0.0.0/0 on port 22 — cryptomining within hours. Fix: least-privilege networking.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -409,6 +418,9 @@ doors.push({
   },
   story: `<p class="scene-setting">তুমি একটা নতুন রেস্তোরাঁ খুলছ। দুটো পথ। প্রথম — Blue-Green: পুরোনো রেস্তোরাঁর পাশে একটা identical নতুন শাখা তৈরি করো। সব প্রস্তুত হলে — পুরোনোটার দরজা বন্ধ, নতুনটার দরজা খোলা। ১০০% গ্রাহক instant switch। সমস্যা হলে instant revert। দ্বিতীয় — Canary: soft opening। মাত্র ৫% গ্রাহককে নতুন শাখায় পাঠাও। মেট্রিক দেখো — খাবার ঠিক আছে? সন্তুষ্ট? তাহলে ২৫%, তারপর ৫০%, শেষে ১০০%।</p>
 <p class="scene-setting en">You're opening a new restaurant. Two paths. First — Blue-Green: build an identical new branch next to the old one. When ready — close old doors, open new. 100% of customers switch instantly. Problem? Instant revert. Second — Canary: soft opening. Send only 5% of customers to the new branch. Watch metrics — food good? Satisfied? Then 25%, then 50%, finally 100%.</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Kubernetes Pod Eviction:</strong> Node ran out of disk — pods evicted. Fix: set resource limits.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -553,6 +565,9 @@ doors.push({
   },
   story: `<p class="scene-setting">শেষ ঘর। একটা কাচের জানালা — পুরো দুর্গ দৃশ্যমান। তুমি দেখতে পাও — container (Door 1) → control plane (Door 2) → worker nodes (Door 3) → Terraform state (Door 4) → observability (Door 5) → error budgets (Door 6) → CI/CD (Door 7) → service mesh (Door 8) → deployment strategies (Door 9)। সব একসাথে। এটাই architect-এর দৃষ্টি — পুরো stack এক নজরে।</p>
 <p class="scene-setting en">The final room. A glass window — the entire fortress visible. You see containers (Door 1) → control plane (Door 2) → worker nodes (Door 3) → Terraform state (Door 4) → observability (Door 5) → error budgets (Door 6) → CI/CD (Door 7) → service mesh (Door 8) → deployment strategies (Door 9). All together. This is the architect's vision — the full stack at a glance.</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — CI/CD Pipeline Broke Silently:</strong> Test failed but pipeline continued. Fix: fail-fast pipeline.</div></div>
+
 
 <div class="code-block">
 <strong>Cloud Provider Comparison (2026):</strong>

@@ -23,6 +23,9 @@ doors.push({
 <div class="dialogue">Context Engineering বইয়ে তুমি শিখেছ — context-এ কী রাখবে। কিন্তু আমি বলি — context-এ যা রাখবে, সেটা কোথা থেকে এলো? ডকুমেন্ট থেকে। কিন্তু ডকুমেন্ট নোংরা — PDF টেবিল ভাঙে, HTML ট্যাগ থাকে, ছবিতে টেক্সট লুকানো। Ingestion ছাড়া RAG অসম্ভব।</div>
 <div class="dialogue en">"In the Context Engineering book you learned — what to keep in context. But I say — what you keep, where did it come from? Documents. But documents are messy — PDF tables break, HTML has tags, images hide text. Without ingestion, RAG is impossible."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Chunking Destroyed Context:</strong> Naive chunking split a table mid-row — retrieval got half a table. Fix: use semantic chunking, respect document structure.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <defs>
@@ -161,6 +164,9 @@ doors.push({
 <div class="dialogue">পাণ্ডুলিপি কক্ষ বলেছিলেন — ডকুমেন্ট ঠিকমতো পড়ো। কিন্তু আমি বলি — পড়লেই হবে না, সাজাতে হবে। কোটি ডকুমেন্ট, কোটি embedding। ইউজারের প্রশ্ন এলে — কোনটা প্রাসঙ্গিক? সব চেক করলে মিনিট লাগে। সূচক দিয়ে মিলিসেকেন্ড।</div>
 <div class="dialogue en">"The manuscript chamber said — read documents correctly. But I say — reading isn't enough, must organize. Millions of documents, millions of embeddings. User asks — which is relevant? Checking all takes minutes. With index, milliseconds."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Embedding Model Mismatch:</strong> Query used OpenAI embeddings, docs used local model — similarity was meaningless. Fix: SAME embedding model for queries and docs.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
@@ -285,6 +291,9 @@ doors.push({
 
 <div class="dialogue">সূচক নির্মাতা বলেছিলেন — সাজানো গুরুত্বপূর্ণ। কিন্তু আমি বলি — সাজানো কূপ থেকেও ভুল পানি আসতে পারে। Naive RAG দিয়ে শুরু করো — সহজ, দ্রুত, কিন্তু অসম্পূর্ণ। এর সীমাবদ্ধতা বুঝলেই তুমি জানবে কোথায় উন্নত করতে হবে।</div>
 <div class="dialogue en">"The index builder said — organization matters. But I say — even an organized well can give wrong water. Start with Naive RAG — simple, fast, but incomplete. Understanding its limits tells you where to improve."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Retrieved Wrong Documents:</strong> Top-5 docs were irrelevant — question about 'bank' (finance) got 'bank' (river). Fix: use hybrid search.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -413,6 +422,9 @@ doors.push({
 
 <div class="dialogue">সরল কূপ বলেছিলেন — naive RAG-এর সীমা আছে। কিন্তু আমি বলি — সীমা ভাঙার উপায় আছে। Advanced retrieval। একটা নয় — একাধিক কৌশল। প্রতিটা গভীরে যাওয়ার একটি পথ। Query transformation, parent-child chunks, HyDE, ensemble retrieval — প্রতিটা এক একটি ফিল্টার স্তর।</div>
 <div class="dialogue en">"The simple well said — naive RAG has limits. But I say — there are ways to break limits. Advanced retrieval. Not one — multiple techniques. Each a path to depth. Query transformation, parent-child chunks, HyDE, ensemble retrieval — each a filter layer."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Context Window Overflow:</strong> RAG retrieved 50 documents — 200K tokens — didn't fit. Fix: limit retrieved chunks, use reranking.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -633,6 +645,9 @@ doors.push({
 
 <div class="dialogue">গভীর কূপ বলেছিলেন — advanced retrieval প্রয়োজন। কিন্তু আমি বলি — retrieval এর আগে আসে প্রশ্ন। প্রশ্ন খারাপ হলে retrieval যতই উন্নত হোক — ফল খারাপ। আবর্জনা দাও, আবর্জনা পাবে। সোনা দাও, সোনা পাবে। প্রশ্ন সংশোধন = সোনা দেওয়া।</div>
 <div class="dialogue en">"The deep well said — advanced retrieval needed. But I say — before retrieval comes the query. Bad query, no matter how advanced the retrieval — bad result. Garbage in, garbage out. Gold in, gold out. Query refinement = giving gold."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Hallucination Despite RAG:</strong> Model ignored retrieved context and hallucinated. Fix: prompt explicitly: 'Answer ONLY from provided context.'</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">

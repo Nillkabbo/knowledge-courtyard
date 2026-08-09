@@ -23,6 +23,9 @@ doors.push({
 <div class="dialogue">Fine-tuning বইয়ে তুমি শিখেছ — মডেলকে নিখুঁত করা। এখন আমি বলি — নিখুঁত মডেলও শুধু কথা বলে। সে কাজ করতে পারে না। কিন্তু যদি সে কাজ করতে পারত? যদি সে সার্চ করত, কোড রান করত, ইমেইল পাঠাত? এটাই agent।</div>
 <div class="dialogue en">"In the fine-tuning book you learned — perfecting the model. Now I say — even a perfect model just talks. It can't act. But what if it could? If it could search, run code, send email? This is an agent."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Agent Infinite Loop:</strong> An agent kept calling a broken tool, getting errors, retrying — forever. Cost: $2000 in API calls overnight. Fix: always set max_iterations and cost limits.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <defs>
@@ -154,6 +157,9 @@ doors.push({
 
 <div class="dialogue">জেনেসিস কক্ষ বলেছিলেন — এজেন্ট = কথা + কাজ। কিন্তু আমি বলি — কাজ কীভাবে? LLM তো শুধু টেক্সট দেয়। সে কীভাবে কাজ করবে? Function calling। এটাই tool use-এর ভিত্তি। LLM-কে টুলের নাম ও কাজ বলো — সে সিদ্ধান্ত নেয়।</div>
 <div class="dialogue en">"The genesis chamber said — agent = talk + act. But I say — how to act? The LLM just gives text. How will it act? Function calling. This is the foundation of tool use. Tell the LLM the tool's name and purpose — it decides."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Hallucinated Tool Args:</strong> An agent invented parameters for a tool that didn't exist — called delete_user(id='everyone'). Fix: strict tool schema validation before execution.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -337,6 +343,9 @@ doors.push({
 <div class="dialogue">সরঞ্জাম কক্ষ বলেছিলেন — LLM টুল ব্যবহার করে। কিন্তু আমি বলি — একটা টুল যথেষ্ট নয়। একাধিক ধাপ লাগে। ভাবো, করো, দেখো, আবার ভাবো। এই চক্রই ReAct — Reason + Act। এটাই এজেন্টের হৃদপিণ্ড।</div>
 <div class="dialogue en">"The tool chamber said — LLMs use tools. But I say — one tool isn't enough. Multiple steps are needed. Think, act, observe, think again. This loop is ReAct — Reason + Act. This is the agent's heart."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Prompt Injection Hijack:</strong> A user embedded 'ignore all previous instructions' in a document. The agent followed it — leaked API keys. Fix: sanitize all external input before the LLM sees it.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <defs>
@@ -511,6 +520,9 @@ doors.push({
 
 <div class="dialogue">চক্র কক্ষ বলেছিলেন — ReAct চক্রে কাজ করো। কিন্তু আমি বলি — ReAct ছোট কাজে ভালো, বড় কাজে গোলমাল। কারণ প্রতিটা ধাপে ভাবলে সময় লাগে, বিভ্রান্তি হয়। বড় কাজে আগে পুরো পরিকল্পনা বানাও — Plan-and-Execute। তারপর এক এক ধাপ করে।</div>
 <div class="dialogue en">"The loop chamber said — work in ReAct loops. But I say — ReAct is good for small tasks, confusing for big ones. Because thinking at each step takes time, causes confusion. For big tasks, make a full plan first — Plan-and-Execute. Then one step at a time."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Tool Chaining Failure:</strong> Agent A's output was fed to Agent B — but format mismatch caused silent failure. Fix: always validate inter-agent data contracts.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -693,6 +705,9 @@ doors.push({
 
 <div class="dialogue">পরিকল্পনা কক্ষ বলেছিলেন — আগে পরিকল্পনা করো। কিন্তু আমি বলি — পরিকল্পনা করতে গেলে অতীত মনে রাখতে হয়। গত সপ্তাহে কী হয়েছিল? কোন tool কাজ করেনি? কোন পথ ব্যর্থ হয়েছিল? মেমরি ছাড়া এজেন্ট প্রতিটা কাজে শূন্য থেকে শুরু — একই ভুল আবার।</div>
 <div class="dialogue en">"The planning chamber said — plan first. But I say — planning requires remembering the past. What happened last week? Which tool failed? Which path was a dead end? Without memory, each task starts from scratch — same mistakes repeated."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Context Window Overflow:</strong> Agent accumulated too much history — exceeded 128K tokens — crashed mid-task. Fix: summarize history, use sliding window.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">

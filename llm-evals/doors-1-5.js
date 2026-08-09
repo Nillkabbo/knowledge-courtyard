@@ -23,6 +23,9 @@ doors.push({
 <div class="dialogue">Multimodal AI বইয়ে তুমি শিখেছ সব ইন্দ্রিয়। কিন্তু এখন একটা গুরুত্বপূর্ণ প্রশ্ন — সব বানালে, কিন্তু ভালো কি না কীভাবে জানবে? মাপ ছাড়া? অনুমান? না। পরিমাপ। এটাই সবচেয়ে গুরুত্বপূর্ণ ও সবচেয়ে অবহেলিত বিষয় — evaluation। যে মাপে না, সে production-এ অন্ধ ছুটছে।</div>
 <div class="dialogue en">"In the Multimodal AI book you learned all senses. But now an important question — you build everything, but how do you know if it's good? Without measuring? Guessing? No. Measuring. This is the most important and most neglected topic — evaluation. One who doesn't measure, runs blind in production."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Eval on Training Data:</strong> Eval set overlapped with training data — scores inflated 30%. Fix: strictly deduplicate.</div></div>
+
+
 <div class="code-block">Why Evaluate — The Foundation of AI Engineering:
 
 THE EVALUATION CRISIS:
@@ -143,6 +146,9 @@ doors.push({
 
 <div class="dialogue">মাপনের কক্ষ বলেছিলেন — মাপো। কিন্তু আমি বলি — কী দিয়ে মাপবে? Metric। কোন metric? Accuracy? Faithfulness? প্রতিটা আলাদা। একটা আছে সঠিক মাপে, অন্যটা সত্য মাপে। আবার কিছু আছে প্রাঞ্জলতা মাপে। সব আলাদা। সঠিক metric বেছে নাও — নাহলে ভুল মাপবে।</div>
 <div class="dialogue en">"The measurement chamber said — measure. But I say — measure with what? Metrics. Which metric? Accuracy? Faithfulness? Each different. One measures correctness, another truthfulness. Others measure fluency. All different. Choose the right metric — or measure wrong."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Single Metric Blindspot:</strong> Only measured accuracy — model was accurate but toxic. Fix: multi-dimensional eval.</div></div>
+
 
 <div class="code-block">LLM Evaluation Metrics — The Right Yardstick:
 
@@ -311,6 +317,9 @@ doors.push({
 
 <div class="dialogue">সূচকের কক্ষ বলেছিলেন — metric বেছে নাও। কিন্তু আমি বলি — কিছু metric স্বয়ংক্রিয়ভাবে চালাতে পারে না। Relevance? Coherence? এগুলো বিচার দরকার। কে বিচার করবে? মানুষ? ধীর, ব্যয়বহুল। LLM? দ্রুত, সস্তা। কিন্তু সীমা আছে। LLM-as-judge — শক্তিশালী কিন্তু সতর্কতার সাথে ব্যবহার করতে হয়।</div>
 <div class="dialogue en">"The metrics chamber said — choose metrics. But I say — some metrics can't run automatically. Relevance? Coherence? These need judgment. Who judges? Humans? Slow, expensive. LLM? Fast, cheap. But has limits. LLM-as-judge — powerful but must be used carefully."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Human Eval Too Slow:</strong> Manual eval took 3 months — model was outdated. Fix: LLM-as-judge for fast iteration.</div></div>
+
 
 <div class="code-block">LLM-as-Judge — AI Evaluating AI:
 
@@ -483,6 +492,9 @@ doors.push({
 
 <div class="dialogue">LLM-as-judge কক্ষ বলেছিলেন — GPT-4 দিয়ে বিচার করো। কিন্তু আমি বলি — GPT-4 ভালো, কিন্তু সীমিত। কিছু জিনিস শুধু মানুষ বোঝে। Creativity, সাংস্কৃতিক প্রেক্ষাপট, subtle reasoning। মানুষের সাক্ষ্য = সোনার মানদণ্ড। কিন্তু ধীর, ব্যয়বহুল। কৌশল — মানুষ ও মেশিন মিলিয়ে। গুরুত্বপূর্ণ জায়গায় মানুষ, বাকিতে মেশিন।</div>
 <div class="dialogue en">"The LLM-judge chamber said — judge with GPT-4. But I say — GPT-4 is good, but limited. Some things only humans understand. Creativity, cultural context, subtle reasoning. Human testimony = gold standard. But slow, expensive. Strategy — combine human and machine. Humans where it matters, machines for the rest."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Eval Not Representative:</strong> Tested on clean text — deployed on messy real-world input, failed. Fix: eval on production-like data.</div></div>
+
 
 <div class="code-block">Human Evaluation — The Gold Standard:
 
@@ -659,6 +671,9 @@ doors.push({
 
 <div class="dialogue">মানুষের কক্ষ বলেছিলেন — মানুষের সাক্ষ্য দাও। কিন্তু আমি বলি — সাক্ষ্য দিলেও কী জিজ্ঞেস করবে? QA-এর জন্য EM, RAG-এর জন্য faithfulness, কোডের জন্য pass@k। প্রতিটা task আলাদা। ভুল eval দিলে সঠিক মডেলও ভুল বিবেচিত হবে।</div>
 <div class="dialogue en">"The human chamber said — give human testimony. But I say — even with testimony, what do you ask? EM for QA, faithfulness for RAG, pass@k for code. Each task different. Wrong eval = correct model judged wrong."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Regression Testing:</strong> New model improved on some tasks, regressed on others. Fix: eval across ALL tasks before deployment.</div></div>
+
 
 <div class="code-block">Task-Specific Evaluation — Right Tool per Task:
 

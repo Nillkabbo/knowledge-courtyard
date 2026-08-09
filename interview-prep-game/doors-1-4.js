@@ -28,6 +28,9 @@ doors.push({
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ প্রভাব লেখা</div>"API রেসপন্স টাইম ৪০% কমিয়েছি — ২০০ms থেকে ১২০ms।" "৩০০০+ ব্যবহারকারীর জন্য ক্যাশিং সিস্টেম ডিজাইন করেছি।" — সংখ্যা, প্রভাব, গল্প।</div>
 </div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Whiteboard Practice:</strong> Knew the algorithm but froze at whiteboard. Fix: practice talking out loud while coding.</div></div>
+
+
 <div class="code-block">Resume Formula — Impact > Responsibility:
 
 ভালো bullet point = Action + Context + Result
@@ -72,6 +75,9 @@ doors.push({
 
 <div class="dialogue">নথিপত্রকার বলেছিলেন — রিজিউমি একটা গল্প। কিন্তু আমি বলি — মুখে বলা গল্প আলাদা। রিজিউমি পড়া যায় — কিন্তু "নিজে সম্পর্কে বলো" শোনা হয়। ৯০ সেকেন্ডে তুমি নির্ধারণ করো — ইন্টারভিউয়ার আগ্রহী হবেন না ক্লান্ত।</div>
 <div class="dialogue en">"The scribe said — a resume is a story. But I say — a spoken story is different. A resume is read — but 'tell me about yourself' is heard. In 90 seconds you determine — will the interviewer be interested or tired."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Memorized Solutions:</strong> Memorized 200 LeetCode answers — got a variation and panicked. Fix: understand patterns.</div></div>
+
 
 <div class="code-block">"Tell Me About Yourself" — Present-Past-Future:
 
@@ -131,6 +137,9 @@ doors.push({
 <div class="dialogue">ঘোষক বলেছিলেন — নিজের গল্প সুসজ্জিতভাবে বলো। কিন্তু আমি বলি — গল্প কেবল সুসজ্জিত হলে হয় না। গল্প সত্য হতে হবে, এবং কাঠামো থাকতে হবে। ইন্টারভিউয়ার "টিম প্লেয়ার?" জিজ্ঞেস করলে — "হ্যাঁ" বললে হবে না। প্রমাণ দাও।</div>
 <div class="dialogue en">"The herald said — tell your story well. But I say — a story isn't just well-organized. It must be true, and it must have structure. If the interviewer asks 'Team player?' — saying 'yes' isn't enough. Give evidence."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Didn't Ask Clarifying Questions:</strong> Started coding immediately — solved wrong problem. Fix: clarify requirements first.</div></div>
+
+
 <div class="code-block">STAR Method — প্রতিটা আচরণগত প্রশ্নে:
 
 S — Situation (পরিস্থিতি)
@@ -183,6 +192,9 @@ doors.push({
 
 <div class="dialogue">বিচারক বলেছিলেন — প্রমাণ দাও। কিন্তু আমি বলি — কোডিং ইন্টারভিউতে প্রমাণ হলো সমাধান। কিন্তু সমাধান মুখস্থ নয় — প্যাটার্ন চেনা। ৫০০টা LeetCode সমস্যা মুখস্থ করলে কী হবে? ৫০১তম আলাদা। কিন্তু ১৫টা প্যাটার্ন বুঝলে — ৫০০তমও সমাধানযোগ্য।</div>
 <div class="dialogue en">"The judge said — give evidence. But I say — in coding interviews, evidence is the solution. But solution isn't memorization — it's pattern recognition. What good is memorizing 500 LeetCode problems? The 501st is different. But understand 15 patterns — and even the 500th is solvable."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Complexity Analysis:</strong> Solved it but couldn't state Big-O. Fix: always analyze time/space complexity.</div></div>
+
 
 <div class="code-block">Top Coding Interview Patterns (Blind 75 থেকে):
 

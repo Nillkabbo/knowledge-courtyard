@@ -23,6 +23,9 @@ doors.push({
 <div class="dialogue">LLM Anatomy বইয়ে তুমি শিখেছ — attention কীভাবে কাজ করে। এখন আমি বলি — attention কোথায় কাজ করে? Context window-তে। এটাই তোমার ক্যানভাস। বড় হলে ভালো? সবসময় নয়। বড় ক্যানভাসে ছোট ছবি হারিয়ে যায়। বড় context-এ গুরুত্বপূর্ণ তথ্য হারিয়ে যায়।</div>
 <div class="dialogue en">"In the LLM Anatomy book you learned how attention works. Now I say — where does attention work? In the context window. This is your canvas. Bigger is better? Not always. Small pictures get lost on big canvases. Important information gets lost in big contexts."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Context Window Wasted:</strong> Filled 100K context with irrelevant history — model ignored the question. Fix: curate aggressively.</div></div>
+
+
 <div class="code-block">Context Window Economics — The Canvas:
 
 WINDOW SIZES (2024-2025):
@@ -124,6 +127,9 @@ doors.push({
 
 <div class="dialogue">ক্যানভাস ব্যবস্থাপক বলেছিলেন — পরিমাণ গুরুত্বপূর্ণ। কিন্তু আমি বলি — পরিমাণের চেয়েও গুরুত্বপূর্ণ হলো অবস্থান। কোথায় বসাও। কারণ LLM শুরু আর শেষ দেখে, মাঝখানে হারায়। এটা শুধু তত্ত্ব নয় — গবেষণায় প্রমাণিত।</div>
 <div class="dialogue en">"The canvas manager said — proportion matters. But I say — more important than proportion is position. Where you place. Because the LLM sees beginning and end, loses middle. This isn't just theory — proven in research."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Lost in the Middle:</strong> Key info in middle of 50K tokens — model missed it. Fix: critical info at START and END.</div></div>
+
 
 <div class="code-block">Lost in the Middle — The U-Curve:
 
@@ -252,6 +258,9 @@ doors.push({
 
 <div class="dialogue">মাঝখানের কক্ষ বলেছিলেন — অবস্থান গুরুত্বপূর্ণ। কিন্তু আমি বলি — অবস্থানের আগে আসে বিভাজন। কীভাবে ভাঙবে? একটা ৫০০-পৃষ্ঠার ডকুমেন্ট সরাসরি LLM-কে দিলে — হারিয়ে যাবে। ভাঙতে হবে। কিন্তু সঠিকভাবে।</div>
 <div class="dialogue en">"The middle chamber said — position matters. But I say — before position comes division. How to break? Give a 500-page doc to the LLM — it'll get lost. Must break it. But correctly."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Stale Context:</strong> Context had data from 3 days ago — model answered with outdated info. Fix: timestamp all context.</div></div>
+
 
 <div class="code-block">Chunking Strategies — How to Cut:
 
@@ -419,6 +428,9 @@ doors.push({
 <div class="dialogue">কাঁটার বলেছিলেন — সঠিক টুকরোয় ভাঙো। কিন্তু আমি বলি — ভাঙলে কী হবে যদি সঠিক টুকরো খুঁজে না পাও? Retrieval। এটাই RAG-এর হৃদপিণ্ড। ভুল টুকরো পেলে মডেল ভুল উত্তর দেবে — আত্মবিশ্বাসে।</div>
 <div class="dialogue en">"The cutter said — break into right pieces. But I say — what good are pieces if you can't find the right one? Retrieval. This is RAG's heart. Wrong piece found, model gives wrong answer — confidently."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Context Bloat from Tools:</strong> Each tool call added 2K tokens — context grew to 200K. Fix: summarize tool outputs.</div></div>
+
+
 <div class="code-block">Retrieval Methods — Finding the Right Piece:
 
 ৩ ধরনের Search:
@@ -552,6 +564,9 @@ doors.push({
 
 <div class="dialogue">অনুসন্ধানী বলেছিলেন — hybrid retrieval সঠিক। কিন্তু আমি বলি — retrieval শুধু শুরু। top-২০ retrieved-এ সঠিক chunk আছে, কিন্তু সম্ভবত #১৫ নম্বরে। আমার কাজ সেটাকে #১ এ আনা। এটাই reranking। দ্বি-স্তর প্রক্রিয়া — retrieval বিস্তৃত, reranking সূক্ষ্ম।</div>
 <div class="dialogue en">"The searcher said — hybrid retrieval is right. But I say — retrieval is just the start. The correct chunk is in top-20, but maybe at #15. My job is to bring it to #1. This is reranking. Two-stage process — retrieval broad, reranking precise."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Context Priority:</strong> All context treated equally — trivial info crowded out critical. Fix: implement context ranking.</div></div>
+
 
 <div class="code-block">Reranking — Two-Stage Retrieval:
 

@@ -21,6 +21,9 @@ doors.push({
 <div class="dialogue">Fine-tuning বলেছিলেন — domain-specific করো। কিন্তু আমি বলি — domain-specific হলেও dimension গুরুত্বপূর্ণ। বেশি dim = বেশি স্টোরেজ, ধীর সার্চ। কম dim = কম নির্ভুল। সঠিক ভারসাম্য? Matryoshka embeddings — এক model থেকে যেকোনো dim কেটে নাও।</div>
 <div class="dialogue en">"Fine-tuning said — make domain-specific. But I say — even domain-specific, dimension matters. More dim = more storage, slower search. Less dim = less accurate. Right balance? Matryoshka embeddings — cut any dimension from one model."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Deduplication:</strong> Near-identical docs all retrieved — wasted context. Fix: deduplicate with similarity threshold.</div></div>
+
+
 <div class="code-block">Dimensionality — The Size-Quality Tradeoff:
 
 DIMENSION COMPARISON:
@@ -162,6 +165,9 @@ doors.push({
 
 <div class="dialogue">Dimension কক্ষ বলেছিলেন — সঠিক মাত্রা বেছে নাও। কিন্তু আমি বলি — মাত্রা বেছে নিলেও embedding ভালো কি না যাচাই করো। MTEB benchmark, domain eval, STS correlation। সংখ্যা ছাড়া সব অনুমান। মুহাসাবা — প্রতিটা embedding মূল্যায়ন।</div>
 <div class="dialogue en">"The dimension chamber said — choose right dimensions. But I say — even after choosing, verify if embedding is good. MTEB benchmark, domain eval, STS correlation. Without numbers, everything is guessing. Muhasabah — evaluate every embedding."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Wrong Domain Model:</strong> General embedding model on legal text — 40% worse. Fix: fine-tune on domain data.</div></div>
+
 
 <div class="code-block">Embedding Evaluation — Measuring Quality:
 
@@ -317,6 +323,9 @@ doors.push({
 
 <p class="scene-setting en">The eighth point. Application chamber. Worktables each showing a different application — a search box, a recommendation panel, a deduplication tool, a clustering visualization. "One embedding model powers all of these," Craftsman Hasib said. "Search, recommendations, duplicate detection, topic discovery, classification — all from the same vectors. That's why embeddings are the Swiss army knife of AI."</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Batch Size Causing OOM:</strong> Embedded 10K documents in one batch — GPU OOM. Fix: batch in groups of 32-256.</div></div>
+
+
 <div class="code-block">Embedding Applications — Beyond RAG:
 
 TOP ১০ EMBEDDING APPLICATIONS:
@@ -470,6 +479,9 @@ doors.push({
 
 <p class="scene-setting en">The ninth point. Limits chamber. On each wall: a different limitation — Bias, Domain Gap, Anisotropy, Temporal Drift, Multilingual Issues, Out-of-Domain. "Embeddings are powerful," Observer Amina said, "but not perfect. Each limitation is a boundary you must respect. Knowing limits is not weakness — it's wisdom."</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Mixed Precision Error:</strong> Embeddings in FP16, stored in FP32 — index mismatch. Fix: consistent precision.</div></div>
+
+
 <div class="code-block">Embedding Challenges — Know Your Limits:
 
 TOP ৭ CHALLENGES:
@@ -595,6 +607,9 @@ doors.push({
 
 <div class="dialogue">নয়টি বিন্দু পেরিয়েছ। জ্যামিতি বলেছিলেন, অর্থের জ্যামিতি। মডেল বলেছিলেন, model নির্বাচন। অনুসন্ধান বলেছিলেন, semantic search। সংখ্যা বলেছিলেন, vector math। পরিশীলন বলেছিলেন, fine-tuning। মাত্রিক বলেছিলেন, dimensionality। মূল্যায়ন বলেছিলেন, evaluation। প্রয়োগ বলেছিলেন, applications। সীমা বলেছিলেন, challenges। এখন — সব একসাথে।</div>
 <div class="dialogue en">"You've passed nine points. Geometry said, geometry of meaning. Model said, model selection. Search said, semantic search. Arithmetic said, vector math. Refinement said, fine-tuning. Dimension said, dimensionality. Evaluation said, evaluation. Application said, applications. Limits said, challenges. Now — all together."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Query-Document Asymmetry:</strong> Used document embeddings for queries — poor retrieval. Fix: use instruction-tuned embeddings.</div></div>
+
 
 <div class="code-block">Complete Embedding Architecture:
 

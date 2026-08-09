@@ -35,6 +35,9 @@ doors.push({
 </div>
 </div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Fear of Breaking Things:</strong> Dev was afraid to push code — paralyzed by fear of bugs. Fix: you have tests, git, staging. Break, learn, fix.</div></div>
+
+
 <div class="code-block">The Scientific Debugging Method:
 
 ১. Reproduce — সমস্যা নির্ভরযোগ্যভাবে তৈরি করো
@@ -132,6 +135,9 @@ doors.push({
 </div>
 </div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Not Using Version Control:</strong> Dev lost 3 days of work — no git, laptop crashed. Fix: commit early, commit often, push to remote.</div></div>
+
+
 <div class="code-block">How to Read Code (Effectively):
 
 ১. High-level first — পুরো কাঠামো বুঝো
@@ -222,6 +228,9 @@ doors.push({
 </div>
 </div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Ignoring Code Reviews:</strong> Dev treated code review as criticism — got defensive. Fix: code review is a gift.</div></div>
+
+
 <div class="diagram">
 <div class="diag-title">Feynman Ladder — সরলতার দিকে নেমে যাওয়া</div>
 <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
@@ -297,6 +306,9 @@ doors.push({
 "এই feature-টা কেন দরকার? কোন ইউজারের কোন সমস্যা সমাধান হবে? আমরা কি এটা দিয়ে পরিমাপ করবো?" প্রশ্ন করে, বোঝে, তারপর কোড। কারণ উদ্দেশ্য ছাড়া কোড = বেকার শ্রম।
 </div>
 </div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Premature Optimization:</strong> Dev optimized before measuring — a week on 0.01% improvement. Fix: profile first, optimize hot paths only.</div></div>
+
 
 <div class="diagram">
 <div class="diag-title">Traceability Chain — কোড থেকে ব্যবসায়িক ফলাফল</div>
@@ -383,6 +395,9 @@ doors.push({
 জানেন — core logic-এ নিখুঁত দরকার। UI prototype-এ "যথেষ্ট" যথেষ্ট। Technical debt সচেতনভাবে নেন — টিমের সাথে আলোচনা করেন, track করেন, পরিকল্পিতভাবে শোধ করেন। "নিখুঁত" নয় — "সঠিক মাত্রায় ভালো।"
 </div>
 </div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Never Asking for Help:</strong> Dev spent 3 days on a problem a senior could solve in 10 minutes. Fix: 30-minute rule — if stuck, ask.</div></div>
+
 
 <div class="code-block">Technical Debt — The Senior's Framework:
 

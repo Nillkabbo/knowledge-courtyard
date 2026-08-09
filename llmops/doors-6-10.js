@@ -22,6 +22,9 @@ doors.push({
 <div class="dialogue">বাজেট কক্ষ বলেছিলেন — খরচ কমাও। কিন্তু আমি বলি — খরচ কমানো শুধু একটা দিক। আরেকটা দিক — latency। ইউজার ধৈর্য ধরে না। ৩ সেকেন্ড পরে চলে যায়। Latency কমানো = ইউজার ধরে রাখা। এটাই প্রোডাকশনে টিকে থাকার চাবি।</div>
 <div class="dialogue en">"The budget chamber said — reduce cost. But I say — reducing cost is one side. The other — latency. Users aren't patient. They leave after 3 seconds. Reducing latency = retaining users. This is the key to surviving in production."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Monitoring Blindspot:</strong> No latency monitoring — model degraded slowly over weeks. Fix: track p50/p95/p99, set alerts.</div></div>
+
+
 <div class="code-block">Latency Optimization — Every Millisecond Counts:
 
 LLM LATENCY ANATOMY:
@@ -196,6 +199,9 @@ doors.push({
 
 <div class="dialogue">বেগ কক্ষ বলেছিলেন — দ্রুত হও। কিন্তু আমি বলি — দ্রুত পরিবর্তনের সাথে versioning দরকার। প্রতিটা change — code, model, data, prompt — সংস্করণ ছাড়া নিয়ন্ত্রণ অসম্ভব। কোন version প্রোডাকশনে? কোন dataset ট্রেইনড? কোন prompt বেস্ট? সব version দরকার।</div>
 <div class="dialogue en">"The speed chamber said — be fast. But I say — with fast changes, versioning is needed. Every change — code, model, data, prompt — without versions, control is impossible. Which version is in production? Which dataset trained? Which prompt is best? All need versions."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Token Count Explosion:</strong> User sent 100K token prompt — inference took 60 seconds, cost $5. Fix: max input tokens.</div></div>
+
 
 <div class="code-block">Versioning — Everything Tracked:
 
@@ -386,6 +392,9 @@ doors.push({
 <div class="dialogue">সংস্করণ কক্ষ বলেছিলেন — version সংরক্ষণ করো। কিন্তু আমি বলি — version সংরক্ষণ শুরু। কোন version ভালো? কীভাবে জানবে? A/B testing। দুটি version পাশাপাশি। Traffic ভাগ করো। তুলনা করো। বিজয়ী নির্বাচন করো। অনুমান নয় — প্রমাণ।</div>
 <div class="dialogue en">"The versioning chamber said — preserve versions. But I say — version preservation is the start. Which version is better? How to know? A/B testing. Two versions side by side. Split traffic. Compare. Select winner. Not guessing — proof."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Fallback Model:</strong> Primary model crashed — entire service down. Fix: always have a fallback model.</div></div>
+
+
 <div class="code-block">A/B Testing for LLMs — Data-Driven Decisions:
 
 WHAT TO A/B TEST:
@@ -575,6 +584,9 @@ doors.push({
 
 <div class="dialogue">A/B পরীক্ষা কক্ষ বলেছিলেন — পরীক্ষা করো। কিন্তু আমি বলি — পরীক্ষা করলেও ভাঙে। প্রোডাকশনে কিছু ভাঙবেই। সার্ভার ক্র্যাশ, model regression, cost spike, security breach। প্রশ্ন কখন নয় — কী করবে। Incident response — প্রস্তুতি ও প্রতিক্রিয়া।</div>
 <div class="dialogue en">"The A/B chamber said — test. But I say — even with testing, things break. In production, something will break. Server crash, model regression, cost spike, security breach. Not when — but what to do. Incident response — preparation and reaction."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — GPU Underutilization:</strong> Model used 10% of GPU — 90% wasted. Fix: optimize batching, use tensor parallelism.</div></div>
+
 
 <div class="code-block">Incident Response — When Things Break:
 
@@ -801,6 +813,9 @@ doors.push({
 
 <div class="dialogue">নয়টি কেন্দ্র পেরিয়েছ। উৎক্ষেপণ বলেছিলেন, serving engine। প্যাকেজিং বলেছিলেন, Docker + Kubernetes। স্বয়ংক্রিয় বলেছিলেন, CI/CD pipeline। পর্যবেক্ষণ বলেছিলেন, monitoring। বাজেট বলেছিলেন, cost optimization। বেগ বলেছিলেন, latency tuning। সংস্করণ বলেছিলেন, versioning। পরীক্ষা বলেছিলেন, A/B testing। জরুরি বলেছিলেন, incident response। এখন — সব একসাথে।</div>
 <div class="dialogue en">"You've passed nine centers. Launch said, serving engine. Packaging said, Docker + Kubernetes. Automation said, CI/CD pipeline. Observation said, monitoring. Budget said, cost optimization. Speed said, latency tuning. Versioning said, versioning. Experiment said, A/B testing. Emergency said, incident response. Now — all together."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Deployment Without Eval:</strong> Pushed new model without testing — hallucination rate tripled. Fix: always run eval suite first.</div></div>
+
 
 <div class="code-block">Complete Production LLMOps Architecture:
 

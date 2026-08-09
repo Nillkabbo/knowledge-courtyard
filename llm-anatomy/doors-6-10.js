@@ -22,6 +22,9 @@ doors.push({
 <div class="dialogue">প্রশিক্ষক বলেছিলেন — তিন স্তরে শেখা। কিন্তু আমি বলি — শেখার পরে আসে কথা বলা। LLM কীভাবে কথা বলে? এক টোকেন। তারপর আরেকটা। তারপর আরেকটা। প্রতিটা ধাপে মডেল পুরো প্রসঙ্গ দেখে, একটা সম্ভাবনা ডিস্ট্রিবিউশন তৈরি করে, তারপর একটা টোকেন বাছে। এটাই generation।</div>
 <div class="dialogue en">"The trainer said — learning in three stages. But I say — after learning comes speaking. How does the LLM speak? One token. Then another. Then another. At each step the model sees the full context, creates a probability distribution, then picks one token. This is generation."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — KV Cache Invalidation:</strong> Small prompt change invalidated entire KV cache. Fix: prefix caching for shared prompts.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
 <defs><marker id="arrLLM6" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
@@ -157,6 +160,9 @@ doors.push({
 
 <div class="dialogue">ভাস্কর বলেছিলেন — এক টোকেন এক টোকেন। কিন্তু আমি বলি — প্রতিটা টোকেন একটা অনুমান। কিন্তু অনুমান যখন ভুল? তখন হ্যালুসিনেশন। LLM জেনে বলে না — সে অনুমান করে বলে। সে আত্মবিশ্বাসী ভুল করে। এটাই সবচেয়ে বড় সমস্যা।</div>
 <div class="dialogue en">"The sculptor said — one token at a time. But I say — each token is a guess. But when the guess is wrong? Hallucination. The LLM doesn't speak from knowledge — it speaks from probability. It confidently errs. This is the biggest problem."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Layer Skipping Side Effect:</strong> Skipped layers for speed — model lost critical reasoning. Fix: only skip for simple tasks.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -305,6 +311,9 @@ doors.push({
 
 <div class="dialogue">মরীচিকা কক্ষ বলেছিলেন — hallucination ঠেকাও। কিন্তু আমি বলি — একটা সহজ সত্য আছে। বড় মডেল = কম hallucination। বেশি ডেটা = বেশি জ্ঞান। বেশি কম্পিউট = বেশি সূক্ষ্মতা। এটাই scaling law। কিন্তু অনুপাত ঠিক না হলে — অপচয়।</div>
 <div class="dialogue en">"The mirage chamber said — prevent hallucination. But I say — there's a simple truth. Bigger model = less hallucination. More data = more knowledge. More compute = more refinement. This is the scaling law. But without the right ratio — waste."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Embedding Dimension Too Small:</strong> 256-dim embeddings couldn't capture nuance. Fix: experiment with 768+ dims.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -458,6 +467,9 @@ doors.push({
 
 <div class="dialogue">স্কেল পরিমাপক বলেছিলেন — বড় মডেল ভালো। কিন্তু আমি বলি — বড় মডেল ধীর, ব্যয়বহুল। কিন্তু যদি বড় মডেলের ক্ষমতা চাও — ধীরতা ছাড়া? Mixture of Experts। বিশেষজ্ঞদের দল। শুধু প্রয়োজনীয় জন কাজ করেন।</div>
 <div class="dialogue en">"The scale measurer said — bigger is better. But I say — big models are slow, expensive. But what if you want big model power — without slowness? Mixture of Experts. A team of experts. Only the needed ones work."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Activation Outliers:</strong> Outlier activations destabilized quantization — INT8 lost 15% accuracy. Fix: outlier-aware quantization.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -613,6 +625,9 @@ doors.push({
 
 <div class="dialogue">নয়টি কক্ষ পেরিয়েছ। হরফ কারিগর বলেছিলেন — টোকেন বুঝো। চুম্বক নির্মাতা বলেছিলেন — embedding হলো অর্থের জ্যামিতি। দৃষ্টি নিয়ন্ত্রক বলেছিলেন — attention হলো সম্পর্ক বোঝা। নির্মাতা বলেছিলেন — Transformer হলো সাতটি স্তরের ভবন। প্রশিক্ষক বলেছিলেন — তিন স্তরে শেখা। ভাস্কর বলেছিলেন — এক টোকেন এক ধাপে। মরীচিকা কক্ষ বলেছিলেন — হ্যালুসিনেশন আসলে ভ্রম। স্কেল পরিমাপক বলেছিলেন — অনুপাত গুরুত্বপূর্ণ। মাল্টিপাথ কক্ষ বলেছিলেন — বৈচিত্র্যে শক্তি। কিন্তু এখন — সব এক করে দেখো।</div>
 <div class="dialogue en">"You've passed nine chambers. The letter smith said — understand tokens. The magnet maker said — embeddings are the geometry of meaning. The focus controller said — attention is understanding relationships. The builder said — Transformer is a seven-layer building. The trainer said — learning in three stages. The sculptor said — one token at a time. The mirage chamber said — hallucination is illusion. The scale measurer said — proportion matters. The multi-path chamber said — diversity is strength. But now — see it all together."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Residual Connection Degradation:</strong> 100+ layer model — residual signal faded. Fix: scaled residuals, layer normalization.</div></div>
+
 
 <div class="code-block">The Complete LLM Pipeline — One Unified View:
 

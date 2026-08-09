@@ -22,6 +22,9 @@ doors.push({
 <div class="dialogue">বিচারক বলেছিলেন — reranking দিয়ে precision বাড়াও। কিন্তু আমি বলি — precision এক জিনিস, context management আরেক জিনিস। কথোপকথন দীর্ঘ হলে context window পূর্ণ হয়। পুরোনো কথা কী করবে? মুছবে? না — সংক্ষেপ করবে। কম টোকেনে মূল তথ্য রাখবে।</div>
 <div class="dialogue en">"The judge said — increase precision with reranking. But I say — precision is one thing, context management another. Long conversations fill the context window. What to do with old messages? Delete? No — compress. Keep core info in fewer tokens."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Conflicting Sources:</strong> Two documents contradicted each other. Fix: add source authority scoring.</div></div>
+
+
 <div class="code-block">Context Compression — Less Tokens, More Meaning:
 
 ৩টি COMPRESSION STRATEGY:
@@ -156,6 +159,9 @@ doors.push({
 <div class="dialogue">সংক্ষেপকারী বলেছিলেন — compression দিয়ে context কমাও। কিন্তু আমি বলি — আরেকটা প্রশ্ন আছে। কখন context-এ সব রাখব, কখন RAG দিয়ে শুধু প্রয়োজনীয় আনব? Gemini ১M context দিচ্ছে — পুরো বই দাও। কিন্তু ভালো? সস্তা? নির্ভুল? সিদ্ধান্ত নিতে হয়।</div>
 <div class="dialogue en">"The compressor said — reduce context with compression. But I say — there's another question. When to keep everything in context, when to use RAG for only what's needed? Gemini offers 1M context — give the whole book. But is it better? Cheaper? More accurate? Must decide."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Token Budget Exceeded:</strong> Context was 130K, model supported 128K — silent truncation. Fix: count tokens before sending.</div></div>
+
+
 <div class="code-block">Long Context vs RAG — The Decision Matrix:
 
               LONG CONTEXT         RAG
@@ -279,6 +285,9 @@ doors.push({
 
 <div class="dialogue">তুলনার কক্ষ বলেছিলেন — long context নাকি RAG। কিন্তু আমি বলি — কথোপকথনে আরেকটা সমস্যা আছে। স্মৃতি। "আগে কী বলেছিলেন?" — এটা মনে রাখতে হয়। কিন্তু কীভাবে? পুরো কথোপকথন? অসম্ভব। কিছু বাছাই করতে হয়। এটাই conversation memory।</div>
 <div class="dialogue en">"The comparison chamber said — long context or RAG. But I say — conversations have another problem. Memory. 'What did we discuss earlier?' — must remember. But how? Whole conversation? Impossible. Must select. This is conversation memory."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Context Compression:</strong> Full conversation history sent every time — cost explosion. Fix: summarize past turns.</div></div>
+
 
 <div class="code-block">Conversation Memory — ৫ ধরন:
 
@@ -417,6 +426,9 @@ doors.push({
 
 <div class="dialogue">স্মৃতির সুতো বলেছিলেন — conversation memory পরিচালনা করো। কিন্তু আমি বলি — কিছু প্রশ্ন এত জটিল যে এক retrieval-এ উত্তর আসে না। ধাপে ধাপে যেতে হয়। "X কে?" → ডকুমেন্ট বলে Y। "Y কী করেছে?" → আরেক retrieval। "কেন?" → আরেকটা। এটাই multi-hop।</div>
 <div class="dialogue en">"The thread of memory said — manage conversation memory. But I say — some questions are so complex that one retrieval can't answer. Must go step by step. 'Who is X?' → doc says Y. 'What did Y do?' → another retrieval. 'Why?' → another. This is multi-hop."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Prompt Injection via Context:</strong> Malicious document in context contained instructions. Fix: mark context as untrusted.</div></div>
+
 
 <div class="code-block">Multi-Hop Retrieval — Step by Step:
 
@@ -576,6 +588,9 @@ doors.push({
 
 <div class="dialogue">নয়টি দৃষ্টি পেরিয়েছ। ক্যানভাস ব্যবস্থাপক বলেছিলেন, পরিমাণ গুরুত্বপূর্ণ। মাঝখানের কক্ষ বলেছিলেন, অবস্থান গুরুত্বপূর্ণ। কাঁটার বলেছিলেন, সঠিক টুকরোয় ভাঙো। অনুসন্ধানী বলেছিলেন, hybrid retrieval। বিচারক বলেছিলেন, reranking। সংক্ষেপকারী বলেছিলেন, compression। তুলনার কক্ষ বলেছিলেন, long context নাকি RAG। স্মৃতির সুতো বলেছিলেন, conversation memory। সিঁড়ির কক্ষ বলেছিলেন, multi-hop। এখন — সব একসাথে।</div>
 <div class="dialogue en">"You've passed nine sights. The canvas manager said, proportion matters. The middle chamber said, position matters. The cutter said, break into right pieces. The searcher said, hybrid retrieval. The judge said, reranking. The compressor said, compression. The comparison chamber said, long context or RAG. The thread of memory said, conversation memory. The stairway said, multi-hop. Now — all together."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Entity Resolution Failure:</strong> 'John' and 'J. Smith' treated as different people. Fix: entity linking before injection.</div></div>
+
 
 <div class="code-block">Production Context Architecture — Complete Pipeline:
 

@@ -23,6 +23,9 @@ doors.push({
 <div class="dialogue">Inference Optimization বইয়ে তুমি শিখেছ দ্রুত করতে। এখন আমি বলি — দ্রুত করার আগে বুঝো, কম্পিউটার শব্দ কীভাবে বোঝে? শব্দ = সংখ্যা? কিন্তু "রাজা" = ৫, "রানি" = ৬ — এটা অর্থহীন। দরকার এমন সংখ্যা যা অর্থ বহন করে। Embedding — শব্দকে একটা ভেক্টরে রূপান্তর, যেখানে ভেক্টরের অবস্থান ও দিক অর্থ বহন করে।</div>
 <div class="dialogue en">"In the Inference Optimization book you learned to speed things up. Now I say — before speeding up, understand: how does the computer understand words? Word = number? But king = 5, queen = 6 — meaningless. Need numbers that carry meaning. Embedding — transforming a word into a vector, where position and direction carry meaning."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Embedding Dimension Mismatch:</strong> Stored 768-dim, queried with 384-dim — crash. Fix: lock embedding dimension, version models.</div></div>
+
+
 <div class="code-block">What Are Embeddings — Language as Geometry:
 
 THE FUNDAMENTAL IDEA:
@@ -189,6 +192,9 @@ doors.push({
 
 <div class="dialogue">জ্যামিতির কক্ষ বলেছিলেন — embedding = অর্থের জ্যামিতি। কিন্তু আমি বলি — কোন model দিয়ে সেই জ্যামিতি বানাবে? word2vec? BGE? OpenAI? প্রতিটা model আলাদা জ্যামিতি বানায়। সঠিক model ছাড়া অর্থ ভুল হবে। খিয়ার — সঠিক নির্বাচন।</div>
 <div class="dialogue en">"The geometry chamber said — embedding = geometry of meaning. But I say — which model builds that geometry? word2vec? BGE? OpenAI? Each model builds different geometry. Without the right model, meaning will be wrong. Khiyar — right selection."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Stale Embeddings After Update:</strong> Updated model but didn't re-index — search returned garbage. Fix: re-index all documents.</div></div>
+
 
 <div class="code-block">Embedding Model Landscape — 2024-2025:
 
@@ -395,6 +401,9 @@ doors.push({
 
 <p class="scene-setting en">The third point. Search chamber. A vast library — but organized not by title, by meaning. Nearby "machine learning": "AI", "neural networks", "deep learning". Far away: "cooking", "sports". Librarian Raisha said — "I don't search by word. I search by meaning. You say 'ML', I find 'deep learning'. Because in meaning-space, they're neighbors."</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Normalization Forgotten:</strong> Forgot to normalize — dot product dominated by magnitude. Fix: L2-normalize before search.</div></div>
+
+
 <div class="code-block">Semantic Search — Finding by Meaning:
 
 KEYWORD vs SEMANTIC SEARCH:
@@ -594,6 +603,9 @@ doors.push({
 
 <p class="scene-setting en">The fourth point. Arithmetic chamber. A craftsman performs a strange task — arithmetic with words. "King minus man, add woman." Result? "Queen." "Paris minus France, add Italy." Result? "Rome." "This is vector arithmetic," he said. "Calculation with words. Geometry of meaning."</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Wrong Distance Metric:</strong> Used cosine for L2-optimized index — wrong results. Fix: match metric to index type.</div></div>
+
+
 <div class="code-block">Vector Arithmetic — Math with Meaning:
 
 VECTOR OPERATIONS:
@@ -785,6 +797,9 @@ doors.push({
 <p class="scene-setting">The fifth point. Fine-tuning chamber. A craftsman takes a general-purpose lens and polishes it for a specific wavelength. "The general lens sees everything," she said, "but nothing perfectly. Fine-tune it for your domain — medical, legal, technical — and suddenly everything becomes crystal clear." On the wall: training curves showing accuracy improvements from domain fine-tuning.</p>
 
 <p class="scene-setting en">The fifth point. Fine-tuning chamber. A craftsman takes a general-purpose lens and polishes it for a specific wavelength. "The general lens sees everything," she said, "but nothing perfectly. Fine-tune it for your domain — medical, legal, technical — and suddenly everything becomes crystal clear." On the wall: training curves showing accuracy improvements from domain fine-tuning.</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Chunk Size Too Large:</strong> Embedded entire documents as single vectors — missed specific passages. Fix: chunk into 200-500 tokens.</div></div>
+
 
 <div class="code-block">Embedding Fine-tuning — Domain Specialization:
 

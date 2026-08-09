@@ -27,6 +27,9 @@ doors.push({
 
 <p class="scene-setting en">The sixth step. Memory management chamber. A room filled with shelves — each labeled: "weights", "KV cache", "activations", "optimizer state". Craftsman Farhan moved between them, rearranging. "GPU memory is like this room," he said. "Limited space. Must fit model weights, KV cache for all concurrent requests, activation memory, and framework overhead. Every byte matters."</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — FlashAttention Version Conflict:</strong> FlashAttention v2 needed PyTorch 2.0, deployed on 1.13. Fix: verify version compatibility.</div></div>
+
+
 <div class="code-block">Memory Optimization — Fitting More in Less:
 
 GPU MEMORY BUDGET (A100 80GB):
@@ -206,6 +209,9 @@ doors.push({
 <p class="scene-setting">The seventh step. Refinement chamber. A sculptor chips away excess marble — slowly, carefully. "The statue is already inside," he said. "I just remove what's unnecessary." Before him: a massive block becoming a graceful figure. "Models are the same. Pruning removes unnecessary weights. Distillation compresses a big model's knowledge into a small one. Both make the model permanently smaller and faster."</p>
 
 <p class="scene-setting en">The seventh step. Refinement chamber. A sculptor chips away excess marble — slowly, carefully. "The statue is already inside," he said. "I just remove what's unnecessary." Before him: a massive block becoming a graceful figure. "Models are the same. Pruning removes unnecessary weights. Distillation compresses a big model's knowledge into a small one. Both make the model permanently smaller and faster."</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Dynamic Padding Waste:</strong> Variable-length padded to max — 70% compute on padding. Fix: sort by length, dynamic batching.</div></div>
+
 
 <div class="code-block">Pruning & Distillation — Smaller Models, Same Knowledge:
 
@@ -423,6 +429,9 @@ doors.push({
 
 <p class="scene-setting en">The eighth step. Kernel chamber. Workbenches with different tools — one labeled "PyTorch (general)", another "CUDA (specific)", another "TensorRT (extreme)". Craftsman Rashid worked at the CUDA bench. "General tools work for everything," he said, "but they're not optimal for anything. Custom kernels — built for one specific GPU — squeeze out every bit of performance. 2-5x faster than generic PyTorch."</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — CPU-GPU Transfer Bottleneck:</strong> Tensors moved to GPU one-by-one — PCIe bottleneck. Fix: batch transfers, pinned memory.</div></div>
+
+
 <div class="code-block">Kernel Optimization — Hardware-Level Speed:
 
 WHY CUSTOM KERNELS:
@@ -638,6 +647,9 @@ doors.push({
 
 <p class="scene-setting en">The ninth step. Hardware chamber. Multiple GPUs on display — each with specifications. Craftsman Adnan studied each. "A100 — powerful but expensive. H100 — next-gen, fastest. T4 — budget option. Consumer RTX — accessible but limited VRAM. Right GPU per task. Wrong choice = waste. The hardware determines what's possible."</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Continuous Batching:</strong> Static batching waited for all sequences — GPU idle 50%. Fix: continuous batching (vLLM).</div></div>
+
+
 <div class="code-block">Hardware Choice — Right GPU per Task:
 
 GPU COMPARISON (2024-2025):
@@ -846,6 +858,9 @@ doors.push({
 
 <div class="dialogue">নয়টি ধাপ পেরিয়েছ। স্মৃতি বলেছিলেন, KV cache। সংকোচন বলেছিলেন, quantization। দল বলেছিলেন, batching। দৃষ্টি বলেছিলেন, attention optimization। ভবিষ্যৎ বলেছিলেন, speculative decoding। মেমরি বলেছিলেন, memory management। পরিশীলন বলেছিলেন, pruning/distillation। যন্ত্রাংশ বলেছিলেন, kernels। হার্ডওয়্যার বলেছিলেন, GPU selection। এখন — সব একসাথে।</div>
 <div class="dialogue en">"You've passed nine steps. Memory said, KV cache. Compression said, quantization. Group said, batching. Attention said, attention optimization. Prediction said, speculative decoding. Memory said, memory management. Refinement said, pruning/distillation. Kernel said, custom kernels. Hardware said, GPU selection. Now — all together."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Compilation Overhead:</strong> torch.compile took 10 minutes. Fix: compile offline, save artifacts.</div></div>
+
 
 <div class="code-block">Complete Inference Optimization Stack:
 

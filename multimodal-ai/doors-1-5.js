@@ -23,6 +23,9 @@ doors.push({
 <div class="dialogue">LLMOps বইয়ে তুমি শিখেছ প্রোডাকশন চালানো। এখন আমি বলি — প্রোডাকশন চালালেও মডেল শুধু টেক্সট বোঝে। কিন্তু ইউজার ছবি পাঠায়। স্ক্রিনশট দেয়। ছবি থেকে কথা বলতে চায়। কীভাবে? Vision encoder। এটাই multimodal AI-এর প্রথম ধাপ — মডেলকে দৃষ্টি দেওয়া।</div>
 <div class="dialogue en">"In the LLMOps book you learned running production. Now I say — even in production, the model only understands text. But users send images. Screenshots. Want to talk about images. How? Vision encoder. This is multimodal AI's first step — giving the model vision."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Image+Text Misalignment:</strong> Model described the wrong image — encoder and decoder were mismatched. Fix: use pretrained aligned vision-language models.</div></div>
+
+
 <div class="code-block">Vision Encoders — How AI Sees:
 
 THE IMAGE PROBLEM:
@@ -174,6 +177,9 @@ doors.push({
 
 <div class="dialogue">দৃষ্টি কক্ষ বলেছিলেন — ViT দৃষ্টি দেয়। কিন্তু আমি বলি — দৃষ্টি একা অর্থহীন। দরকার মুখ — যা দেখে তা বলবে। VLM = vision encoder + LLM। একসাথে দেখে ও বলে। GPT-5 কেন শক্তিশালী? কারণ সে VLM — ছবি ও টেক্সট একসাথে বোঝে।</div>
 <div class="dialogue en">"The vision chamber said — ViT gives sight. But I say — sight alone is meaningless. Need a mouth — to speak what it sees. VLM = vision encoder + LLM. Together see and speak. Why is GPT-5 powerful? Because it's a VLM — understands image and text together."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Audio Hallucination:</strong> ASR model transcribed silence as words — invented a conversation. Fix: add silence detection, confidence thresholds.</div></div>
+
 
 <div class="code-block">Vision-Language Models (VLMs) — AI That Sees and Speaks:
 
@@ -359,6 +365,9 @@ doors.push({
 
 <div class="dialogue">VLM কক্ষ বলেছিলেন — ছবি দেখে কথা বলো। কিন্তু আমি বলি — উল্টো ও সম্ভব। কথা থেকে ছবি বানাও। Image generation। DALL-E 3, Midjourney, Stable Diffusion — শব্দ দাও, ছবি পাও। এটাই AI-এর সবচেয়ে জাদুকরী ক্ষমতা। কিন্তু কীভাবে? Diffusion।</div>
 <div class="dialogue en">"The VLM chamber said — see image, speak. But I say — the reverse is possible too. Create image from words. Image generation. DALL-E 3, Midjourney, Stable Diffusion — give words, get image. This is AI's most magical power. But how? Diffusion."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Video Context Loss:</strong> Model processed each frame independently — missed temporal context. Fix: use temporal attention.</div></div>
+
 
 <div class="code-block">Image Generation — Words to Pixels:
 
@@ -552,6 +561,9 @@ doors.push({
 <div class="dialogue">সৃষ্টির কক্ষ বলেছিলেন — শব্দ থেকে ছবি। কিন্তু আমি বলি — শুধু চোখ নয়, কানও দরকার। ইউজার কথা বলে — টেক্সট লেখে না। স্পিচ দেয়। অডিও পাঠায়। AI কী শুনবে না? হ্যাঁ শুনবে। Whisper, TTS, GPT-5 native audio। এটাই চতুর্থ ইন্দ্রিয় — শ্রবণ।</div>
 <div class="dialogue en">"The creation chamber said — words to images. But I say — not just eyes, ears too. Users speak — don't write text. Give speech. Send audio. Shouldn't AI hear? Yes, it should. Whisper, TTS, GPT-5 native audio. This is the fourth sense — hearing."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — OCR Failure on Handwriting:</strong> Text extraction failed on handwritten notes — 40% error rate. Fix: fine-tune on domain-specific handwriting.</div></div>
+
+
 <div class="code-block">Audio Processing — AI That Hears:
 
 AUDIO REPRESENTATION:
@@ -738,6 +750,9 @@ doors.push({
 
 <div class="dialogue">শ্রুতি কক্ষ বলেছিলেন — AI শোনে। কিন্তু আমি বলি — শোনা ও দেখা একসাথে দরকার। ভিডিও = ছবি + সময় + অডিও। সব একসাথে। কিন্তু ভিডিও প্রক্রিয়া করা কঠিন — কোটি frames, কোটি audio samples। Gemini 2.5 সরাসরি ভিডিও বোঝে। এটাই multimodal-এর সবচেয়ে জটিল স্তর।</div>
 <div class="dialogue en">"The listening chamber said — AI hears. But I say — hearing and seeing together are needed. Video = image + time + audio. All together. But processing video is hard — millions of frames, millions of audio samples. Gemini 2.5 understands video directly. This is multimodal's most complex layer."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Cross-Modal Prompt Injection:</strong> Malicious text embedded in image — model followed hidden instructions. Fix: sanitize all modalities.</div></div>
+
 
 <div class="code-block">Video Understanding — AI That Watches:
 

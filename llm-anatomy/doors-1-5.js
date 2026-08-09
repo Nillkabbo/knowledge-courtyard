@@ -23,6 +23,9 @@ doors.push({
 <div class="dialogue">তুমি ভাবো LLM 'শব্দ' বোঝে। ভুল। LLM বোঝে সংখ্যা। প্রতিটি টোকেন একটি সংখ্যা — vocabulary index। 'hello' হয়তো টোকেন #১৫০০০, 'world' টোকেন #৪৪৩। কিন্তু 'জ্ঞান'? সেটা এক সংখ্যা নয় — হয়তো চার। কারণ BPE এটাকে ভেঙেছে।</div>
 <div class="dialogue en">"You think LLMs understand 'words.' Wrong. LLMs understand numbers. Each token is a number — a vocabulary index. 'hello' might be token #15000, 'world' token #443. But 'জ্ঞান'? That's not one number — maybe four. Because BPE broke it."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Attention Collapse:</strong> All attention heads attended to the same token — lost diversity. Fix: attention diversity regularization.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
 <defs><marker id="arrLLM1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
@@ -151,6 +154,9 @@ doors.push({
 
 <div class="dialogue">হরফ কারিগর বলেছিলেন — শব্দ টোকেনে ভাঙে। কিন্তু আমি বলি — টোকেন শুধু সংখ্যা। সংখ্যা থেকে অর্থ কীভাবে? Embedding। প্রতিটি টোকেন একটা হাজার-ডাইমেনশনের স্থানে একটা বিন্দু। কোথায় বসে — সেটাই অর্থ।</div>
 <div class="dialogue en">"The letter smith said — words break into tokens. But I say — a token is just a number. How does meaning come from numbers? Embeddings. Each token is a point in a thousand-dimensional space. Where it sits — that's meaning."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Dead Neurons:</strong> 20% of neurons never activated — wasted capacity. Fix: monitor activation, proper initialization.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -291,6 +297,9 @@ doors.push({
 
 <div class="dialogue">চুম্বক নির্মাতা বলেছিলেন — শব্দের অবস্থান থেকে অর্থ। কিন্তু আমি বলি — শুধু অবস্থান যথেষ্ট নয়। প্রতিটি শব্দকে বাকি শব্দগুলোর সাথে সম্পর্ক বুঝতে হবে। এটাই attention — "কোন শব্দটার দিকে তাকাব?"</div>
 <div class="dialogue en">"The magnet maker said — meaning comes from position. But I say — position alone isn't enough. Each word must understand its relationship with other words. This is attention — 'which word should I look at?'"</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Gradient Explosion:</strong> Deep model gradients exploded — weights became NaN. Fix: gradient clipping, layer normalization.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -439,6 +448,9 @@ doors.push({
 <div class="dialogue">দৃষ্টি নিয়ন্ত্রক বলেছিলেন — attention হলো হৃদপিণ্ড। কিন্তু আমি বলি — attention শুধু একটা অংশ। Transformer একটা সম্পূর্ণ ভবন। সাতটি স্তর। প্রতিটি স্তরের নিজস্ব কাজ। একসাথে এরা টোকেন থেকে ভাষা তৈরি করে।</div>
 <div class="dialogue en">"The focus controller said — attention is the heart. But I say — attention is just one part. Transformer is a complete building. Seven layers. Each with its own job. Together they create language from tokens."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Positional Encoding Mismatch:</strong> Trained with absolute PE, fine-tuned with relative PE — performance collapsed. Fix: consistent PE.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
 <defs><marker id="arrLLM4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
@@ -579,6 +591,9 @@ doors.push({
 
 <div class="dialogue">নির্মাতা বলেছিলেন — Transformer-এর সাতটি স্তর। কিন্তু আমি বলি — স্তরগুলো শূন্য। ভাঙা পাথর। প্রশিক্ষণ ছাড়া কিছুই নয়। তিনটি ধাপের প্রশিক্ষণ ছাড়া LLM শুধু একটা বিশাল autocomplete। এই তিনটি ধাপই LLM-কে LLM বানায়।</div>
 <div class="dialogue en">"The builder said — Transformer has seven layers. But I say — layers are empty. Broken stone. Without training, nothing. Without three-stage training, the LLM is just a giant autocomplete. These three stages make the LLM what it is."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Tokenizer Boundary Bug:</strong> 'don't' tokenized differently in train vs inference — quality drop. Fix: identical tokenizer, version-lock.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">

@@ -22,6 +22,9 @@ doors.push({
 <div class="dialogue">চুরির কক্ষ বলেছিলেন — extraction প্রতিরক্ষা দাও। কিন্তু আমি বলি — প্রতিটা আক্রমণের জন্য আলাদা প্রতিরক্ষা নয়। সব আক্রমণের জন্য একটা সমন্বিত প্রতিরক্ষা। একাধিক স্তর। এক ভাঙলে পরের আছে। এটাই defense in depth — নিরাপত্তার স্থাপত্য।</div>
 <div class="dialogue en">"The theft chamber said — give extraction defense. But I say — not separate defense for each attack. An integrated defense for all attacks. Multiple layers. One breaks, the next remains. This is defense in depth — the architecture of security."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Model Stealing via Queries:</strong> Attacker sent 10K queries, distilled the model. Fix: rate limiting, query pattern detection.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <rect x="0" y="0" width="580" height="280" fill="#0f172a"/>
@@ -155,6 +158,9 @@ doors.push({
 
 <div class="dialogue">স্তর কক্ষ বলেছিলেন — একাধিক স্তর দাও। কিন্তু আমি বলি — স্তর বানানোর টুল কী? Guardrails। নির্দিষ্ট framework যা input/output ফিল্টার করে, topic restrict করে, format enforce করে। NeMo Guardrails, Guardrails AI — প্রোডাকশন-গ্রেড guardrail ফ্রেমওয়ার্ক।</div>
 <div class="dialogue en">"The layer chamber said — give multiple layers. But I say — what tool to build them? Guardrails. Specific frameworks that filter input/output, restrict topics, enforce format. NeMo Guardrails, Guardrails AI — production-grade guardrail frameworks."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Indirect Prompt Injection:</strong> Model read a web page with hidden instructions — followed them. Fix: separate trusted vs untrusted context.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -333,6 +339,9 @@ doors.push({
 <div class="dialogue">রেল কক্ষ বলেছিলেন — guardrails দাও। কিন্তু আমি বলি — guardrails কাজ করছে কি না, কীভাবে জানবে? পরীক্ষা করে। Red teaming — নিজে শত্রু হয়ে সিস্টেম আক্রমণ। দুর্বলতা খোঁজো। ঠিক করো। শত্রুর আগে নিজে পরীক্ষা করো।</div>
 <div class="dialogue en">"The rail chamber said — give guardrails. But I say — how do you know guardrails are working? Test. Red teaming — become the enemy, attack your system. Find weaknesses. Fix them. Test before the enemy does."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Membership Inference:</strong> Attacker determined if specific data was in training set. Fix: differential privacy.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <rect x="0" y="0" width="580" height="280" fill="#0f172a"/>
@@ -504,6 +513,9 @@ doors.push({
 
 <div class="dialogue">লাল দল বলেছিলেন — পরীক্ষা করো। কিন্তু আমি বলি — পরীক্ষা শেষ নয়। প্রোডাকশন security একটা চলমান প্রক্রিয়া। Monitoring, incident response, compliance। প্রতিদিন নতুন আক্রমণ, প্রতিদিন নতুন প্রতিরক্ষা। দুর্গের প্রহরী কখনো ঘুমায় না — প্রোডাকশন security-ও নয়।</div>
 <div class="dialogue en">"The red team said — test. But I say — testing isn't the end. Production security is an ongoing process. Monitoring, incident response, compliance. Every day new attacks, every day new defense. The fortress guard never sleeps — production security doesn't either."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Toxic Output Despite Filters:</strong> Filter caught slurs but missed coded hate speech. Fix: multi-layer filtering.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -687,6 +699,9 @@ doors.push({
 
 <div class="dialogue">নয়টি দুর্গ পেরিয়েছ। মানচিত্র বলেছিলেন, হুমকি জানো। অনুপ্রবেশ বলেছিলেন, injection এড়াও। শৃঙ্খল বলেছিলেন, jailbreak প্রতিরক্ষা। বিষ বলেছিলেন, poisoning প্রতিরক্ষা। চুরি বলেছিলেন, extraction প্রতিরক্ষা। স্তর বলেছিলেন, defense in depth। রেল বলেছিলেন, guardrails। লাল দল বলেছিলেন, red teaming। প্রহরী বলেছিলেন, production ops। এখন — সব একসাথে।</div>
 <div class="dialogue en">"You've passed nine gates. Map said, know threats. Breach said, avoid injection. Unchaining said, defend jailbreaks. Poison said, defend poisoning. Theft said, defend extraction. Layer said, defense in depth. Rail said, guardrails. Red team said, red teaming. Guard said, production ops. Now — all together."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Supply Chain Attack:</strong> Poisoned pre-trained weights on HuggingFace — backdoor. Fix: scan weights, use trusted registries.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">

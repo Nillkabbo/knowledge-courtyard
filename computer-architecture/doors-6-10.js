@@ -25,6 +25,9 @@ doors.push({
 <div class="dialogue"><strong>প্যাটারসন:</strong> খুব সহজ। core 0 এ x পড়ে — cache-এ x=5 আসে। core 1 ও x পড়ে — তার cache-এও x=5 আসে। এখন core 0 লেখে x=10। তার cache-এ এখন x=10। কিন্তু core 1-এর cache-এ এখনও x=5! main memory-তেও হয়ত x=5 বা 10 — depends on write policy। core 1 যদি এখন x পড়ে — সে পুরোনো মান পায়। একে বলে <strong>incoherence</strong> — cache গুলো不一致 (inconsistent)।</div>
 <div class="dialogue en"><strong>Patterson:</strong> Simple. Core 0 reads x — cache loads x=5. Core 1 also reads x — its cache also loads x=5. Now core 0 writes x=10. Its cache now has x=10. But core 1's cache still has x=5! Main memory might have 5 or 10 — depends on write policy. If core 1 reads x now — it gets the stale value. This is <strong>incoherence</strong> — caches are inconsistent.</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Power Over Budget:</strong> Design drew 150W — cooling couldn't handle it. Fix: power-aware design.</div></div>
+
+
 <div class="code-block">
 <strong>MESI Protocol — ৪টি State (Stanford CS149, Wikipedia):</strong>
 
@@ -181,6 +184,9 @@ doors.push({
 <div class="dialogue"><strong>তোমাসুলো:</strong> আমি রবার্ট তোমাসুলো। ১৯৬৭। IBM। আমি একটা সমস্যা খুঁজে পেয়েছিলাম — CPU pipeline stall করছে কারণ instruction-গুলো অপেক্ষা করছে register-এর জন্য। কিন্তু অনেক সময় এই অপেক্ষা অর্থহীন — register নাম একই, কিন্তু আসল dependency নেই। আমি বললাম — যে instruction-এর ডেটা প্রস্তুত, সে আগেই চলে যাক। ক্রম পাল্টাও। কিন্তু ফলাফল সঠিক ক্রমে দেখাও।</div>
 <div class="dialogue en"><strong>Tomasulo:</strong> I'm Robert Tomasulo. 1967. IBM. I found a problem — CPU pipelines stalling because instructions were waiting for registers. But often this wait was pointless — same register name, but no real dependency. I said — any instruction whose data is ready, let it go first. Reorder them. But show results in correct order.</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Pipeline Hazard:</strong> Data dependency — pipeline stalled. Fix: instruction scheduling.</div></div>
+
+
 <div class="code-block">
 <strong>Hazard প্রকার (CMU 18-447):</strong>
 
@@ -318,6 +324,9 @@ doors.push({
 
 <div class="dialogue"><strong>এনভিডিয়া ইঞ্জিনিয়ার:</strong> ২০০৬ সালে আমরা CUDA বাজারে আনলাম। GPU-তে আমরা একটা নতুন মডেল ব্যবহার করি — SIMT (Single Instruction Multiple Threads)। এটা SIMD এর মতো — কিন্তু thread-ভিত্তিক। প্রতি ৩২টা thread একটা warp তৈরি করে। এক warp-এর সবাই একই instruction একই সময়ে execute করে — কিন্তু প্রত্যেক thread নিজের ডেটায় কাজ করে। Programmer thread লেখে — hardware warp বানায়।</div>
 <div class="dialogue en"><strong>NVIDIA Engineer:</strong> In 2006, we launched CUDA. GPUs use a new model — SIMT (Single Instruction Multiple Threads). It's like SIMD — but thread-based. Every 32 threads form a warp. All threads in a warp execute the same instruction simultaneously — but each works on its own data. The programmer writes threads — hardware forms warps.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — NUMA Performance Trap:</strong> Thread on CPU 0 accessed remote memory — 3x latency. Fix: NUMA-aware allocation.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -472,6 +481,9 @@ doors.push({
 
 <div class="dialogue"><strong>কুং:</strong> আমি এইচ. টি. কুং। ১৯৮২। CMU। আমি একটা সমস্যা ভাবছিলাম — Von Neumann architecture-এ প্রতিটা calculation এ memory access লাগে। operand আনো, কম্পিউট করো, ফলাফল ফের মেমোরিতে লেখো। এই memory access-ই বাধা। কিন্তু যদি ডেটা এক PE থেকে সরাসরি পরের PE-তে যায়? কোনো memory access না? তাহলে — দ্রুততম। এই ধারণার নাম দিলাম <strong>systolic array</strong> — হৃদপিণ্ডের স্পন্দন (systole) থেকে, কারণ ডেটা pulse করে পাম্প হয়।</div>
 <div class="dialogue en"><strong>Kung:</strong> I'm H.T. Kung. 1982. CMU. I was thinking about a problem — Von Neumann architecture requires memory access for every calculation. Fetch operands, compute, write result back. This memory access is the bottleneck. But what if data flows directly from one PE to the next? No memory access? Then — fastest. I named it <strong>systolic array</strong> — from the heartbeat (systole), because data pumps in pulses.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Spectre Vulnerability:</strong> Speculative execution leaked data. Fix: barriers.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -672,6 +684,9 @@ doors.push({
 
 <div class="dialogue"><strong>প্যাটারসন:</strong> এখন তুমি <strong>full-stack engineer</strong> — সত্যিকারের। শুধু software নয় — hardware ও। তুমি জানো কেন তোমার code slow, কেন database query cache-friendly না, কেন GPU তে batch size গুরুত্বপূর্ণ, কেন multi-threaded code random ভাবে fail করে। তুমি এখন bugs debug করতে পারবে যা অন্য engineers দেখতেই পায় না।</div>
 <div class="dialogue en"><strong>Patterson:</strong> Now you're a <strong>full-stack engineer</strong> — truly. Not just software — hardware too. You know why your code is slow, why database queries aren't cache-friendly, why batch size matters on GPUs, why multi-threaded code randomly fails. You can debug bugs that other engineers can't even see.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Thermal Throttling:</strong> CPU hit 95°C — throttled to 50%. Fix: proper cooling.</div></div>
+
 
 <div class="code-block">
 <strong>The Full-Stack Hardware Decision Framework:</strong>

@@ -21,6 +21,9 @@ doors.push({
   story: `<p class="scene-setting">তুমি একটা বিশাল অফিস বিল্ডিংয়ে দাঁড়িয়ে আছ। শত শত কর্মী — কিন্তু প্রত্যেকে নিজের কিউবিকলে। দেয়ালগুলো শব্দপ্রতিরোধক — কেউ অন্যের কথা শুনতে পায় না। প্রতিটা কিউবিকলে একজন কর্মী নিজেকে একা ভাবে — সারা বিল্ডিং তার মনে হয়। কিন্তু বাইরে থেকে তুমি দেখো — শত শত কিউবিকল, সব এক ছাদের নিচে। এটাই container। একটা kernel, শত শত isolated process।</p>
 <p class="scene-setting en">You stand in a vast office building. Hundreds of workers — but each in their own cubicle. The walls are soundproof — no one hears another. Each worker believes they're alone — the entire building feels like theirs. But from outside, you see hundreds of cubicles under one roof. This is a container. One kernel, hundreds of isolated processes.</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Health Check:</strong> Deployed without health check — LB sent traffic to dead container. Fix: /health endpoint.</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <defs>
@@ -167,6 +170,9 @@ doors.push({
 <div class="dialogue"><strong>কে-এস ইঞ্জিনিয়ার:</strong> Google ২০১৪ সালে Kubernetes উন্মুক্ত করে — তাদের ভেতরের Borg system থেকে অনুপ্রাণিত। মূল ধারণা সহজ — তুমি বলো কী চাও (desired state), K8s নিশ্চিত করে সেটা হয়। তুমি বলো "৩টা replica।" K8s দেখে ২টা চলছে — ১টা বেশি চালু করে। একটা মরে গেলে — আরেকটা তৈরি করে। node মরে গেলে — pods অন্যত্র সরিয়ে নেয়। এটাই reconciliation loop — চিরকাল চলে।</div>
 <div class="dialogue en"><strong>K8s Engineer:</strong> Google open-sourced Kubernetes in 2014 — inspired by their internal Borg system. The core idea is simple — you say what you want (desired state), K8s makes it happen. You say "3 replicas." K8s sees 2 running — starts 1 more. One dies — creates another. Node dies — moves pods elsewhere. This is the reconciliation loop — runs forever.</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Secret in Docker Image:</strong> API key baked into image, pushed to public registry. Fix: runtime secrets (Vault).</div></div>
+
+
 <div class="svg-diagram">
 <svg viewBox="0 0 580 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <defs>
@@ -306,6 +312,9 @@ doors.push({
 <div class="dialogue"><strong>কিউবলেট:</strong> আমি প্রতিটা worker node-এ থাকি। আমার কাজ সহজ — API server থেকে pod spec নাও, container runtime কে বলো কী করতে হবে। Container চালু করো, বন্ধ করো, health check করো। আর সব status API server-কে রিপোর্ট করো। আমি একটা agent — কোনো decision নিই না, শুধু নির্দেশ পালন করি।</div>
 <div class="dialogue en"><strong>Kubelet:</strong> I live on every worker node. My job is simple — receive pod specs from the API server, tell the container runtime what to do. Start containers, stop them, health-check them. Report all status back to the API server. I'm an agent — I make no decisions, I just follow orders.</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Configuration Drift:</strong> Manual changes to prod — couldn't reproduce bug in staging. Fix: infrastructure as code.</div></div>
+
+
 <div class="code-block">
 <strong>Worker Node Components:</strong>
 
@@ -413,6 +422,9 @@ doors.push({
 
 <div class="dialogue"><strong>হ্যাশিকর্প ইঞ্জিনিয়ার:</strong> ২০১৪ সালে Terraform আবিষ্কার হয়েছিল। মূল ধারণা — infrastructure কে কোড দিয়ে বর্ণনা করো। তুমি বলো "আমি একটা DO droplet চাই, 2GB RAM।" Terraform দেখে তার state — এরকম আছে কি না। না থাকলে তৈরি করে। থাকলে কিছু করে না। এটাই declarative model — WHAT বলো, HOW নয়।</div>
 <div class="dialogue en"><strong>HashiCorp Engineer:</strong> Terraform was created in 2014. The core idea — describe infrastructure as code. You say "I want a DO droplet, 2GB RAM." Terraform checks its state — does this exist? If not, creates it. If yes, does nothing. This is the declarative model — you say WHAT, not HOW.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Rollback Plan:</strong> Deployed broken code — 4-hour downtime. Fix: blue-green deployment.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -562,6 +574,9 @@ doors.push({
 
 <div class="dialogue"><strong>অবজারভাবিলিটি ইঞ্জিনিয়ার:</strong> Monitoring আর observability এক নয়। Prometheus দিয়ে তুমি metric scrape করো — "checkout service-এ error rate ৫%!" কিন্তু কেন? কোথায়? তোমাকে Jaeger এ গিয়ে trace খুঁজতে হবে, Loki তে গিয়ে log খুঁজতে হবে — সব manual correlation। Observability এই তিনটাকে এক shared context দিয়ে যুক্ত করে। OpenTelemetry এই context propagate করে — W3C Trace Context header দিয়ে।</div>
 <div class="dialogue en"><strong>Observability engineer:</strong> Monitoring and observability aren't the same. With Prometheus you scrape metrics — "checkout service has 5% error rate!" But why? Where? You need to go to Jaeger for traces, Loki for logs — all manual correlation. Observability links these three with a shared context. OpenTelemetry propagates this context — via W3C Trace Context header.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Container OOM Killed:</strong> No memory limit — OOM killed. Fix: set memory limits in K8s.</div></div>
+
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">

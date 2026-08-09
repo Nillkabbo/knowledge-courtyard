@@ -23,6 +23,9 @@ doors.push({
 <div class="dialogue">LLM Evals বইয়ে তুমি শিখেছ মাপতে। এখন আমি বলি — মাপলে দেখবে LLM ধীর। কেন? কারণ প্রতিটা token তৈরি করতে গোটা context প্রসেস করে। ১০০০ token context? প্রতিটা নতুন token-এ ১০০০ পুরোনো token আবার প্রসেস? এটা ধীর। সমাধান — KV cache। পুরোনো ফল সংরক্ষণ, পুনরাবৃত্তি এড়াও।</div>
 <div class="dialogue en">"In the LLM Evals book you learned to measure. Now I say — measuring shows the LLM is slow. Why? Because each token processes the entire context. 1000 token context? Each new token reprocesses 1000 old tokens? That's slow. Solution — KV cache. Store old results, avoid repetition."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Quantization Quality Crash:</strong> INT4 reduced size 4x but accuracy dropped 20%. Fix: use QLoRA or GPTQ with calibration.</div></div>
+
+
 <div class="code-block">KV Cache — The Heart of Fast Inference:
 
 THE PROBLEM (without cache):
@@ -204,6 +207,9 @@ doors.push({
 
 <div class="dialogue">KV cache কক্ষ বলেছিলেন — মেমরি সংরক্ষণ করো। কিন্তু আমি বলি — মেমরি সংরক্ষণ ছাড়াও মেমরি কমানো যায়। Quantization। মডেলের প্রতিটি weight একটি সংখ্যা। সেই সংখ্যার precision কমাও — ১৬ bit থেকে ৪ bit-এ। ৪ গুণ কম মেমরি। প্রায় একই গুণমান। এটাই inference optimization-এর সবচেয়ে শক্তিশালী অস্ত্র।</div>
 <div class="dialogue en">"The KV cache chamber said — preserve memory. But I say — beyond preserving, memory can be reduced. Quantization. Each model weight is a number. Reduce that number's precision — 16 bit to 4 bit. 4 times less memory. Nearly same quality. This is inference optimization's most powerful weapon."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — KV Cache Memory Explosion:</strong> Long context (128K) — KV cache used 40GB VRAM. Fix: PagedAttention, KV cache quantization.</div></div>
+
 
 <div class="code-block">Quantization — Smaller, Faster, Cheaper:
 
@@ -398,6 +404,9 @@ doors.push({
 
 <div class="dialogue">Quantization কক্ষ বলেছিলেন — precision কমাও। কিন্তু আমি বলি — precision কমানো এক দিক। আরেক দিক — GPU ভালো ব্যবহার। এক request-এ GPU অর্ধেক খালি থাকে। কিন্তু একাধিক request একসাথে? GPU পূর্ণ। Batching। এটাই throughput বাড়ানোর মূল কৌশল।</div>
 <div class="dialogue en">"The quantization chamber said — reduce precision. But I say — reducing precision is one side. The other — using GPU well. One request leaves GPU half empty. But multiple together? GPU full. Batching. This is the key technique for increasing throughput."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Speculative Decoding Failure:</strong> Draft model too different — 10% acceptance rate, slower than baseline. Fix: same model family for draft.</div></div>
+
 
 <div class="code-block">Batching — GPU Utilization Mastery:
 
@@ -613,6 +622,9 @@ doors.push({
 
 <div class="dialogue">Batching কক্ষ বলেছিলেন — একসাথে কাজ করো। কিন্তু আমি বলি — একসাথে কাজ করলেও প্রতিটা কাজ ধীর হতে পারে। Attention O(N²) — দীর্ঘ context ধীর। FlashAttention, sparse attention — প্রতিটা কৌশল attention নিজে দ্রুত করে। এটাই গভীরতম optimization — algorithm নিজে উন্নত করা।</div>
 <div class="dialogue en">"The batching chamber said — work together. But I say — even working together, each task can be slow. Attention is O(N²) — long context is slow. FlashAttention, sparse attention — each technique speeds up attention itself. This is the deepest optimization — improving the algorithm itself."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Batch Size Too Large:</strong> Batch 64 on 24GB GPU — OOM. Fix: gradient checkpointing, reduce batch.</div></div>
+
 
 <div class="code-block">Attention Optimization — Making the Core Faster:
 
@@ -843,6 +855,9 @@ doors.push({
 
 <div class="dialogue">Attention কক্ষ বলেছিলেন — attention দ্রুত করো। কিন্তু আমি বলি — attention দ্রুত করা ছাড়াও আরেকটা কৌশল আছে। Speculative decoding। বড় মডেল ধীর, কিন্তু ছোট মডেল দ্রুত। ছোট মডেল অনুমান করে, বড় মডেল যাচাই করে। সঠিক অনুমান = দ্রুত উত্তর। একই গুণমান, দ্রুত গতি।</div>
 <div class="dialogue en">"The attention chamber said — speed up attention. But I say — beyond speeding up attention, another technique exists. Speculative decoding. Big model is slow, but small model is fast. Small model guesses, big model verifies. Correct guesses = faster answers. Same quality, faster speed."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Warmup Not Done:</strong> First inference was 10x slower — CUDA not compiled. Fix: warm up with dummy input.</div></div>
+
 
 <div class="code-block">Speculative Decoding — Fast Guesses, Big Verification:
 

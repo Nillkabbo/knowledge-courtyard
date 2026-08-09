@@ -22,6 +22,9 @@ doors.push({
 <div class="dialogue">ধাঁধা নিপুণ বলেছিলেন — প্যাটার্ন শেখো। কিন্তু আমি বলি — সিস্টেম ডিজাইন আলাদা। এখানে কোড লেখা নয় — বড় ছবি আঁকা। একটা সম্পূর্ণ সিস্টেম — কীভাবে টুকরোগুলো যুক্ত। সঠিক উত্তর নেই — সঠিক প্রশ্ন আছে।</div>
 <div class="dialogue en">"The puzzle master said — learn patterns. But I say — system design is different. Here you don't write code — you draw the big picture. A complete system — how pieces connect. There's no right answer — there are right questions."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Silence During Coding:</strong> Coded in silence for 10 minutes — no signal to interviewer. Fix: narrate thought process.</div></div>
+
+
 <div class="code-block">System Design Interview — ৫ ধাপ:
 
 ১. CLARIFY (৫ মিনিট)
@@ -85,6 +88,9 @@ doors.push({
 <div class="dialogue">স্থপতি বলেছিলেন — নীলনকশা আঁকো। কিন্তু আমি বলি — আঁকার সময় মুখে ব্যাখ্যা করো। কারণ ইন্টারভিউয়ার তোমার মাথার ভেতর দেখতে পান না। তুমি চুপ থাকলে — তাঁরা ভাবেন তুমি আটকে গেছ। তুমি বললে — তাঁরা সাহায্য করতে পারেন।</div>
 <div class="dialogue en">"The architect said — draw the blueprint. But I say — explain while drawing. Because interviewers can't see inside your head. If you're silent — they think you're stuck. If you speak — they can help."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Gave Up on Hard Problem:</strong> Hit a wall and stopped. Fix: start with brute force, then optimize.</div></div>
+
+
 <div class="code-block">Thinking Out Loud — What to Say:
 
 সমস্যা পড়ার সময়:
@@ -138,6 +144,9 @@ doors.push({
 
 <div class="dialogue">পণ্ডিত বলেছিলেন — চিন্তা প্রকাশ করো। কিন্তু আমি বলি — চুপ থাকাও শক্তি। যখন অফার আসে — উত্তেজিত হয়ো না। "ধন্যবাদ, আমি ভাবছি।" তারপর দরদাম। প্রথম অফার সবসময় কম। সবসময়।</div>
 <div class="dialogue en">"The scholar said — express your thinking. But I say — silence is also power. When the offer comes — don't get excited. 'Thank you, let me think.' Then negotiate. The first offer is always low. Always."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Edge Cases:</strong> Solved happy path — forgot empty, null, negative. Fix: handle edge cases explicitly.</div></div>
+
 
 <div class="code-block">Salary Negotiation — Step by Step:
 
@@ -232,6 +241,9 @@ doors.push({
 
 <div class="dialogue">বণিক বলেছিলেন — নিজের মূল্য জানো। কিন্তু আমি বলি — কোম্পানির মূল্যও জানো। এই দরজা শুধু তোমার জন্য নয় — তাদের জন্যও। তুমি কোথায় যাচ্ছ, কাদের সাথে, কী করবে — জানো। ভালো প্রশ্ন = তুমি গবেষণা করেছ।</div>
 <div class="dialogue en">"The merchant said — know your value. But I say — know the company's value too. This gate isn't just for you — for them too. Where you're going, with whom, what you'll do — know. Good questions = you researched."</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Over-Engineered Solution:</strong> 5 design patterns for a simple function. Fix: solve simply first.</div></div>
+
 
 <div class="code-block">Questions to Ask — ৩ ক্যাটেগরি:
 
