@@ -947,77 +947,303 @@ doors.push({
     aen:"list = need order and duplicates. dict = need key-value pairs. set = need unique items, no order. tuple = immutable list — like coordinates."
   },
   story:`
-<p class="scene-setting">চতুর্থ গিল্ড। ভাণ্ডার ঘর। শুকনো ঘাসের গন্ধ, বস্তার স্তূপ, কাঠের তাক। ভাণ্ডার রক্ষক করিম তার তাক দেখাচ্ছেন — প্রতিটা তাকে ভিন্ন ধরনের মাল। "এক তাকে চাল, এক তাকে ডাল, এক তাকে মসলা," তিনি বলেন। "প্রতিটা তাকে সঠিক জিনিস। Python-এ ৪ ধরনের তাক — list, tuple, dict, set। সঠিক তাকে সঠিক মাল।"</p>
-<p class="scene-setting en">Fourth guild. The storehouse. Smell of dry hay, sacks piled, wooden shelves. Storekeeper Karim shows his shelves — each holding different goods. "One shelf rice, one lentils, one spices," he says. "Each shelf for the right thing. In Python, 4 types of shelves — list, tuple, dict, set. Right shelf for right goods."</p>
+<p class="scene-setting">চতুর্থ গিল্ড। ভাণ্ডার ঘর। শুকনো ঘাসের গন্ধ, বস্তার স্তূপ, কাঠের তাক। ভাণ্ডার রক্ষক করিম তার তাক দেখাচ্ছেন — প্রতিটা তাকে ভিন্ন ধরনের মাল। "এক তাকে চাল, এক তাকে ডাল, এক তাকে মসলা," তিনি বলেন। "প্রতিটা তাকে সঠিক জিনিস। Python-এ ৪ ধরনের তাক — list, tuple, dict, set। সঠিক তাকে সঠিক মাল। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Fourth guild. The storehouse. Smell of dry hay, sacks piled, wooden shelves. Storekeeper Karim shows his shelves — each holding different goods. "One shelf rice, one lentils, one spices," he says. "Each shelf for the right thing. In Python, 4 types of shelves — list, tuple, dict, set. Right shelf for right goods. Let's learn one at a time."</p>
 
-<div class="dialogue">সমস্যা: তোমার ১০,০০০ গ্রাহকের তথ্য — নাম, ইমেইল, ফোন, কেনাকাটার ইতিহাস। কোথায় রাখবে? list-এ? ১০,০০০ গ্রাহক খুঁজতে ১০,০০০ বার চেক। dict-এ? নাম দাও, সেকেন্ডে পাও। সঠিক data structure = সঠিক সমাধান।</div>
-<div class="dialogue en">Problem: 10,000 customer records — name, email, phone, history. Where to store? List? Search takes 10,000 checks. Dict? Name in, get instantly. Right data structure = right solution.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তুমি ৫টা সংখ্যা একসাথে রাখতে চাও। ৫টা variable? কষ্ট। কিন্তু ১০,০০০টা? অসম্ভব। দরকার একটা container — অনেক মান একসাথে রাখার পাত্র। Python-এ ৪ ধরনের container আছে।</div>
+<div class="dialogue en">First question: you want to store 5 numbers together. 5 variables? Painful. But 10,000? Impossible. You need a container — a vessel for many values. Python has 4 types.</div>
+
+<div class="code-block"># ── STEP 1: list — the everyday container ──
+# A list holds MANY values in ORDER. You can change it anytime.
+# Created with square brackets [].
+
+# Create a list:
+fruits = ["apple", "banana", "cherry"]
+numbers = [10, 20, 30, 40, 50]
+mixed = ["hello", 42, True, 3.14]  # can hold any type!
+
+# Access by INDEX (position — starts at 0!):
+print(fruits[0])     # apple  (first item, index 0)
+print(fruits[1])     # banana (second item, index 1)
+print(fruits[-1])    # cherry (last item, negative = from end)
+
+# How many items?
+print(len(fruits))   # 3
+
+# Check if something is in the list:
+print("apple" in fruits)     # True
+print("grape" in fruits)     # False</div>
+
+<div class="code-block"># ── STEP 2: list methods — add, remove, change ──
+# Lists are MUTABLE — you can change them after creation.
+
+fruits = ["apple", "banana", "cherry"]
+
+# ADD items:
+fruits.append("orange")       # add to end
+print(fruits)                 # ['apple', 'banana', 'cherry', 'orange']
+
+fruits.insert(0, "mango")     # insert at position 0
+print(fruits)                 # ['mango', 'apple', 'banana', 'cherry', 'orange']
+
+# REMOVE items:
+fruits.remove("banana")       # remove by value
+print(fruits)                 # ['mango', 'apple', 'cherry', 'orange']
+
+popped = fruits.pop()         # remove last item, return it
+print(popped)                 # orange
+print(fruits)                 # ['mango', 'apple', 'cherry']
+
+# CHANGE an item:
+fruits[0] = "grape"           # replace index 0
+print(fruits)                 # ['grape', 'apple', 'cherry']
+
+# SLICING — take a portion:
+print(fruits[0:2])            # ['grape', 'apple'] (index 0 and 1, not 2)
+print(fruits[:2])             # same — from start to index 1
+print(fruits[1:])             # from index 1 to end</div>
+
+<div class="code-block"># ── STEP 3: list operations and built-in functions ──
+prices = [50, 100, 25, 200, 75]
+
+# Useful built-in functions:
+print(f"Count: {len(prices)}")       # 5 (how many items)
+print(f"Max: {max(prices)}")         # 200 (largest)
+print(f"Min: {min(prices)}")         # 25 (smallest)
+print(f"Sum: {sum(prices)}")         # 450 (total)
+print(f"Average: {sum(prices) / len(prices)}")  # 90.0
+
+# Sorting (returns a NEW list — original unchanged):
+sorted_prices = sorted(prices)
+print(f"Original: {prices}")          # [50, 100, 25, 200, 75]
+print(f"Sorted: {sorted_prices}")     # [25, 50, 75, 100, 200]
+print(f"Reverse: {sorted(prices, reverse=True)}")  # [200, 100, 75, 50, 25]
+
+# Add two lists together:
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+combined = list1 + list2     # [1, 2, 3, 4, 5, 6]
+
+# Repeat a list:
+zeros = [0] * 5              # [0, 0, 0, 0, 0]</div>
+
+<div class="code-block"># ── STEP 4: tuple — like list, but LOCKED ──
+# A tuple is like a list BUT you CANNOT change it after creation.
+# Created with parentheses ().
+
+# Create a tuple:
+coordinates = (23.8103, 90.4125)  # Dhaka latitude/longitude
+rgb_color = (255, 128, 0)         # orange color (R, G, B)
+birth_date = (1998, 7, 15)        # year, month, day
+
+# Access by index (same as list):
+print(coordinates[0])    # 23.8103 (latitude)
+print(rgb_color[2])      # 0 (blue component)
+
+# BUT you CANNOT change it:
+# coordinates[0] = 24.0  # ERROR! tuples are immutable.
+
+# Why use tuples?
+# 1. Safety — some data should NEVER change (coordinates, dates)
+# 2. Keys — tuples can be dict keys, lists cannot
+# 3. Speed — slightly faster than lists
+
+# Tuple unpacking — assign to multiple variables:
+lat, lon = coordinates         # lat=23.8103, lon=90.4125
+r, g, b = rgb_color            # r=255, g=128, b=0
+year, month, day = birth_date  # year=1998, month=7, day=15
+
+# Swap two values using tuple unpacking:
+a, b = 10, 20
+a, b = b, a    # now a=20, b=10 — magic!</div>
+
+<div class="dialogue">এখন সবচেয়ে গুরুত্বপূর্ণ container — dict। এটাই বাস্তব জগতে সবচেয়ে ব্যবহৃত data structure।</div>
+<div class="dialogue en">Now the most important container — dict. This is the most used data structure in real-world code.</div>
+
+<div class="code-block"># ── STEP 5: dict — key-value pairs ──
+# A dict stores data as NAME: VALUE pairs.
+# Like a real dictionary — you look up a word, get a definition.
+# Created with curly braces {}.
+
+# Create a dict:
+person = {
+    "name": "Fatima",
+    "age": 25,
+    "city": "Dhaka",
+    "is_student": True,
+}
+
+# Access by KEY (not by index!):
+print(person["name"])         # Fatima
+print(person["age"])          # 25
+
+# If key doesn't exist — ERROR. Use .get() for safety:
+print(person.get("phone"))         # None (no error!)
+print(person.get("phone", "N/A"))  # N/A (default value)
+
+# Add or update:
+person["email"] = "fatima@mail.com"    # add new key
+person["age"] = 26                      # update existing
+print(person)</div>
+
+<div class="code-block"># ── STEP 6: dict methods — loop, add, remove ──
+person = {"name": "Fatima", "age": 25, "city": "Dhaka"}
+
+# Loop through keys:
+for key in person.keys():
+    print(key)          # name, age, city
+
+# Loop through values:
+for value in person.values():
+    print(value)        # Fatima, 25, Dhaka
+
+# Loop through BOTH (most common!):
+for key, value in person.items():
+    print(f"  {key}: {value}")
+# name: Fatima
+# age: 25
+# city: Dhaka
+
+# Check if key exists:
+if "name" in person:
+    print("Name exists!")
+
+# Remove a key:
+del person["city"]
+print(person)  # {'name': 'Fatima', 'age': 25}
+
+# Nested dicts — dict inside dict (very common in real data):
+customers = {
+    "fatima": {"email": "fatima@mail.com", "orders": 15},
+    "ahmed": {"email": "ahmed@mail.com", "orders": 8},
+}
+print(customers["fatima"]["email"])     # fatima@mail.com
+print(customers["ahmed"]["orders"])     # 8</div>
+
+<div class="code-block"># ── STEP 7: set — unique items only ──
+# A set is like a list BUT:
+#   - No duplicates (automatically removes them)
+#   - No order (items are not in sequence)
+# Created with curly braces {} (like dict, but no colons).
+
+# Create a set:
+unique_numbers = {1, 2, 3, 3, 3, 4, 4}
+print(unique_numbers)     # {1, 2, 3, 4} — duplicates removed!
+
+# Convert a list (with duplicates) to a set:
+all_tags = ["python", "code", "python", "ai", "code", "ml"]
+unique_tags = set(all_tags)
+print(unique_tags)        # {'python', 'code', 'ai', 'ml'}
+
+# Add and remove:
+unique_tags.add("django")
+unique_tags.remove("ml")   # remove item (error if not found)
+unique_tags.discard("xyz") # remove if exists, no error if not
+
+# Why use sets?
+# 1. Remove duplicates from a list
+# 2. Check membership FAST (faster than list for "in" check)
+# 3. Set operations (union, intersection, difference)
+
+# Set operations:
+python_devs = {"Alice", "Bob", "Charlie"}
+ai_devs = {"Bob", "Charlie", "David"}
+
+both = python_devs &amp; ai_devs         # intersection: {'Bob', 'Charlie'}
+either = python_devs | ai_devs        # union: {'Alice', 'Bob', 'Charlie', 'David'}
+only_python = python_devs - ai_devs   # difference: {'Alice'}
+print(f"Both: {both}")
+print(f"Either: {either}")
+print(f"Only Python: {only_python}")</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> করিম বললেন — এক শিক্ষানবিশ ১০,০০০ গ্রাহক list-এ রাখলো। গ্রাহক খুঁজতে if দিয়ে পুরো list ঘাঁটলো — ৫০ সেকেন্ড। dict দিলে একই কাজ ০.০০১ সেকেন্ড। ৫০,০০০ গুণ দ্রুত। সঠিক পাত্র ছাড়া কোড চলে, কিন্তু ধীর। সঠিক structure = গতি।</div></div>
 
-<div class="code-block"># guild4_data.py — Storehouse Problem
-# Master Karim: "Right shelf for right goods."
+<div class="code-block"># ── STEP 8: When to use which? (decision guide) ──
+# Choosing the right data structure is CRITICAL.
+# Wrong choice = slow code. Right choice = fast code.
 
-# ── THE PROBLEM: Store 10,000 customers efficiently ──
+# ┌──────────────────────┬──────────────────────┐
+# │ Need...              │ Use...               │
+# ├──────────────────────┼──────────────────────┤
+# │ Ordered + changeable │ list []              │
+# │ Ordered + locked     │ tuple ()             │
+# │ Lookup by name       │ dict {"key": value}  │
+# │ Unique items only    │ set {}               │
+# └──────────────────────┴──────────────────────┘
 
-# ── LIST: Ordered, mutable, allows duplicates ──
-# Use when: order matters, items can repeat
-task_queue = ["fix bug", "write docs", "deploy"]
-task_queue.append("review PR")    # add to end
-task_queue.insert(0, "urgent!")   # insert at position
-task_queue.remove("write docs")   # remove by value
-print(task_queue)  # ['urgent!', 'fix bug', 'deploy', 'review PR']
+# REAL EXAMPLES:
+# Shopping cart (order matters, can add/remove) → list
+shopping_cart = ["rice", "oil", "salt"]
+shopping_cart.append("sugar")
 
-# List operations
-prices = [50, 100, 25, 200, 75]
-print(f"Count: {len(prices)}")       # 5
-print(f"Max: {max(prices)}")         # 200
-print(f"Sorted: {sorted(prices)}")   # [25, 50, 75, 100, 200]
-print(f"Sum: {sum(prices)}")         # 450
+# GPS coordinates (should never change) → tuple
+dhaka_location = (23.8103, 90.4125)
 
-# ── TUPLE: Ordered, IMMUTABLE (cannot change) ──
-# Use when: data should not change — coordinates, config
-coordinates = (23.8103, 90.4125)  # Dhaka lat/lon
-# coordinates[0] = 24.0  # ERROR — can't modify tuple!
-rgb_color = (255, 128, 0)  # orange — won't change
-
-# ── DICT: Key-value pairs, fast lookup ──
-# Use when: need to look up by name/key
-customers = {
-    "fatima": {"email": "fatima@mail.com", "phone": "0171..."},
-    "ahmed": {"email": "ahmed@mail.com", "phone": "0181..."},
-    "sara": {"email": "sara@mail.com", "phone": "0191..."},
+# User database (look up by username) → dict
+users = {
+    "fatima99": {"name": "Fatima", "age": 25},
+    "ahmed_21": {"name": "Ahmed", "age": 30},
 }
 
-# Lookup by key — INSTANT (O(1)), no scanning
-customer = customers["fatima"]  # direct access!
-print(f"Fatima's email: {customer['email']}")
+# Unique email list (no duplicates) → set
+subscriber_emails = {"a@mail.com", "b@mail.com", "a@mail.com"}
+# Result: {'a@mail.com', 'b@mail.com'} — duplicate removed!</div>
 
-# Add/update
-customers["bob"] = {"email": "bob@mail.com", "phone": "0161..."}
+<div class="code-block"># ── STEP 9: Iterating through data structures ──
+# You'll loop through these ALL the time. Know the patterns.
 
-# Iterate
-for name, info in customers.items():
-    print(f"  {name}: {info['email']}")
+# List:
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
 
-# ── SET: Unique items only, no order ──
-# Use when: need uniqueness, remove duplicates
-all_tags = ["python", "code", "python", "ai", "code", "ml"]
-unique_tags = set(all_tags)
-print(unique_tags)  # {'python', 'code', 'ai', 'ml'}
+# With index:
+for i, fruit in enumerate(fruits):
+    print(f"{i}: {fruit}")
 
-# Set operations — powerful!
-python_devs = {"Alice", "Bob", "Charlie"}
-ai_devs = {"Bob", "Charlie", "David"}
-both = python_devs &amp; ai_devs      # intersection: {'Bob', 'Charlie'}
-either = python_devs | ai_devs    # union: all 4
-only_python = python_devs - ai_devs  # difference: {'Alice'}
+# Dict (iterate key-value pairs):
+prices = {"apple": 50, "banana": 30, "cherry": 80}
+for fruit, price in prices.items():
+    print(f"{fruit}: {price} taka")
 
-# ── DECISION GUIDE ──
-# Order + mutable?      → list
-# Order + immutable?    → tuple
-# Key-value lookup?     → dict
-# Unique + no order?    → set</div>
+# Set:
+tags = {"python", "ai", "web"}
+for tag in sorted(tags):  # sorted() gives predictable order
+    print(tag)
+
+# Nested structure (list of dicts — very common!):
+students = [
+    {"name": "Fatima", "grade": "A"},
+    {"name": "Ahmed", "grade": "B"},
+    {"name": "Sara", "grade": "A"},
+]
+for student in students:
+    print(f"{student['name']}: {student['grade']}")</div>
+
+<div class="code-block"># ── STEP 10: Practical — customer database ──
+# Combine everything: dict for fast lookup, list for order.
+
+# A customer database using dict (fast lookup by name):
+customers = {
+    "fatima": {"email": "fatima@mail.com", "phone": "0171...", "orders": 15},
+    "ahmed": {"email": "ahmed@mail.com", "phone": "0181...", "orders": 3},
+    "sara": {"email": "sara@mail.com", "phone": "0191...", "orders": 25},
+}
+
+# Fast lookup — INSTANT (O(1)):
+customer = customers["fatima"]
+print(f"Fatima has {customer['orders']} orders")
+
+# Add new customer:
+customers["bob"] = {"email": "bob@mail.com", "phone": "0161...", "orders": 0}
+
+# Find VIP customers (10+ orders):
+vip = [name for name, info in customers.items() if info["orders"] &gt;= 10]
+print(f"VIP customers: {vip}")  # ['fatima', 'sara']
+
+# All unique email domains:
+domains = {info["email"].split("@")[1] for info in customers.values()}
+print(f"Email domains: {domains}")  # {'mail.com'}</div>
 
 <div class="diagram">
   <div class="diag-title">৪ পাত্র — list · tuple · dict · set</div>
