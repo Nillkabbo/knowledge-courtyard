@@ -18,99 +18,312 @@ doors.push({
     aen:"@decorator = a function that takes another function, returns a new one. @cache = cache(func). @functools.wraps preserves name/docstring."
   },
   story:`
-<p class="scene-setting">একাদশ গিল্ড। খোদাইয়ের কারখানা। ধাতব গন্ধ, হাতুড়ির শব্দ, মুদ্রার ঝনঝন। খোদাইকারী তামিম একটা সিল দেখালেন — উপরে নকশা খোদাই করা। "এই সিল যেকোনো কাগজে চাপলে একই নকশা বসে," তিনি বলেন। "Decorator ঠিক তেমনি — এক pattern, যেকোনো function-এ চাপলে একই আচরণ যোগ হয়। Logging, caching, authentication — এক সিল, অনেক function।"</p>
-<p class="scene-setting en">Eleventh guild. The Engraver's workshop. Smell of metal, sound of hammers, clinking of coins. Engraver Tamim shows a seal — a design carved on top. "Press this seal on any paper — same design appears," he says. "A decorator is the same — one pattern, pressed on any function, adds the same behavior. Logging, caching, authentication — one seal, many functions."</p>
+<p class="scene-setting">একাদশ গিল্ড। খোদাইয়ের কারখানা। ধাতব গন্ধ, হাতুড়ির শব্দ, মুদ্রার ঝনঝন। খোদাইকারী তামিম একটা সিল দেখালেন — উপরে নকশা খোদাই করা। "এই সিল যেকোনো কাগজে চাপলে একই নকশা বসে," তিনি বলেন। "Decorator ঠিক তেমনি — এক pattern, যেকোনো function-এ চাপলে একই আচরণ যোগ হয়। Logging, caching, authentication — এক সিল, অনেক function। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Eleventh guild. The Engraver's workshop. Smell of metal, sound of hammers, clinking of coins. Engraver Tamim shows a seal — a design carved on top. "Press this seal on any paper — same design appears," he says. "A decorator is the same — one pattern, pressed on any function, adds the same behavior. Logging, caching, authentication — one seal, many functions. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তোমার ৩০টা function — প্রতিটায় logging দরকার (কখন শুরু, কখন শেষ, কত সময় লাগলো)। ৩০ বার একই কোড কপি? না — একটা @log decorator বানাও। যেকোনো function-এ @log চাপো। একই আচরণ সবার জন্য।</div>
-<div class="dialogue en">Problem: 30 functions — each needs logging (when started, ended, duration). Copy same code 30 times? No — make a @log decorator. Press @log on any function. Same behavior for all.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তুমি ৩০টা function লিখেছ। প্রতিটায় logging দরকার — কখন শুরু, কখন শেষ, কত সময় লাগলো। ৩০ বার একই কোড কপি? না। Decorator একবার লেখো, যেকোনো function-এ @ দিয়ে লাগাও। এটাই decorator-এর শক্তি।</div>
+<div class="dialogue en">First question: you wrote 30 functions. Each needs logging. Copy the same code 30 times? No. Write a decorator once, apply it to any function with @. This is the power of decorators.</div>
+
+<div class="code-block"># ── STEP 1: Functions are objects ──
+# In Python, functions are OBJECTS. You can pass them around.
+
+def greet():
+    return "Hello!"
+
+# A function is just a value — store it in a variable:
+say_hello = greet
+print(say_hello())  # Hello!
+
+# Pass a function as an argument to another function:
+def call_twice(func):
+    """Call any function twice."""
+    func()
+    func()
+
+call_twice(print)  # prints nothing twice (print returns None)
+
+# Return a function from another function:
+def make_greeter(name):
+    """Create and return a NEW function."""
+    def greeter():
+        return f"Hello, {name}!"
+    return greeter
+
+greet_fatima = make_greeter("Fatima")
+print(greet_fatima())  # Hello, Fatima!
+
+# This is the foundation of decorators:
+# functions that take functions and return functions.</div>
+
+<div class="code-block"># ── STEP 2: Your first decorator (without @) ──
+# A decorator is a function that TAKES a function and RETURNS
+# a new function that adds behavior.
+
+def shout(func):
+    """Decorator: makes the result UPPERCASE."""
+    def wrapper():
+        result = func()
+        return result.upper()
+    return wrapper
+
+def greet():
+    return "hello world"
+
+# Apply the decorator MANUALLY:
+greet = shout(greet)    # greet is now the WRAPPER
+print(greet())          # HELLO WORLD
+
+# Step by step:
+# 1. shout() takes greet as argument
+# 2. shout() creates wrapper() that calls greet() and uppercases result
+# 3. shout() returns wrapper
+# 4. Now greet() actually calls wrapper() → "HELLO WORLD"</div>
+
+<div class="code-block"># ── STEP 3: The @ syntax — cleaner way ──
+# @decorator above a function = same as func = decorator(func)
+
+# These two are IDENTICAL:
+
+# Way 1 (manual):
+def greet():
+    return "hello"
+greet = shout(greet)
+
+# Way 2 (@ syntax — cleaner):
+@shout
+def greet():
+    return "hello"
+
+print(greet())  # HELLO WORLD
+
+# @ just means: "apply this decorator to the function below"
+# @shout = greet = shout(greet)
+
+# You can stack multiple decorators:
+@shout
+@shout    # double uppercase (no visible effect, but shows stacking)
+def greet():
+    return "hi"
+
+# Order matters! Applied bottom-to-top.</div>
+
+<div class="code-block"># ── STEP 4: Decorators with arguments ──
+# Real functions take arguments. The wrapper must pass them through.
+
+# WITHOUT arguments (simple):
+def emphasize(func):
+    def wrapper():
+        result = func()
+        return result + "!!!"
+    return wrapper
+
+@emphasize
+def greet():
+    return "Hello"
+
+print(greet())  # Hello!!!
+
+# WITH arguments — use *args and **kwargs:
+def log(func):
+    """Decorator that logs function calls."""
+    def wrapper(*args, **kwargs):
+        print(f"Calling {func.__name__}({args})")
+        result = func(*args, **kwargs)    # pass args to original
+        print(f"Result: {result}")
+        return result
+    return wrapper
+
+@log
+def add(a, b):
+    return a + b
+
+@log
+def greet(name, greeting="Hello"):
+    return f"{greeting}, {name}!"
+
+print(add(3, 5))
+# Calling add((3, 5))
+# Result: 8
+# 8
+
+print(greet("Fatima", greeting="Hi"))
+# Calling greet(('Fatima',), {'greeting': 'Hi'})
+# Result: Hi, Fatima!
+# Hi, Fatima!</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> তামিম বললেন — এক শিক্ষানবিশ decorator বানালো functools.wraps ছাড়া। ফলে function-এর __name__ হয়ে গেলো "wrapper" — সব function-এর নাম একই! Stack trace পড়ে কোন function-এ error হয়েছে বোঝা গেলো না। ৩ ঘণ্টা debug। @functools.wraps = নাম সংরক্ষণ, বাধ্যতামূলক।</div></div>
 
-<div class="code-block"># guild11_decorators.py — Engraver's Seal
-# Engraver Tamim: "One seal. Press anywhere. Same pattern."
+<div class="code-block"># ── STEP 5: @functools.wraps — why you NEED it ──
+# Without @wraps, the decorated function loses its identity.
+
+import functools
+
+# ❌ BAD — without @wraps:
+def bad_log(func):
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+    return wrapper
+
+@bad_log
+def my_function():
+    """My awesome function."""
+    return "result"
+
+print(my_function.__name__)    # wrapper (!!! not my_function)
+print(my_function.__doc__)     # None (!!! lost the docstring)
+
+# ✅ GOOD — with @functools.wraps:
+def good_log(func):
+    @functools.wraps(func)     # preserves __name__, __doc__, etc.
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+    return wrapper
+
+@good_log
+def my_function():
+    """My awesome function."""
+    return "result"
+
+print(my_function.__name__)    # my_function ✓
+print(my_function.__doc__)     # My awesome function. ✓
+
+# RULE: ALWAYS use @functools.wraps in your decorators!</div>
+
+<div class="code-block"># ── STEP 6: A real decorator — timer ──
+# Measure how long any function takes to run.
 
 import functools
 import time
 
-# ── THE PROBLEM: Add logging to 30 functions ──
-
-# ❌ BAD: Copy logging code into every function
-def fetch_user(uid):
-    print(f"Calling fetch_user...")
-    start = time.time()
-    result = db.get_user(uid)
-    print(f"Done in {time.time()-start:.2f}s")
-    return result
-
-def fetch_orders(uid):
-    print(f"Calling fetch_orders...")
-    # ... same logging code copied again!
-
-# ✅ GOOD: One decorator — press anywhere
-def log(func):
-    """Logging decorator — wraps any function."""
-    @functools.wraps(func)  # CRITICAL: preserve name + docstring
+def timer(func):
+    """Measure execution time of any function."""
+    @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        name = func.__name__
-        print(f"[LOG] Calling {name}({args})")
         start = time.time()
-        try:
-            result = func(*args, **kwargs)
-            elapsed = time.time() - start
-            print(f"[LOG] {name} returned in {elapsed:.3f}s")
-            return result
-        except Exception as e:
-            print(f"[LOG] {name} FAILED: {e}")
-            raise
+        result = func(*args, **kwargs)
+        elapsed = time.time() - start
+        print(f"[TIMER] {func.__name__} took {elapsed:.4f}s")
+        return result
     return wrapper
 
-# Apply with @ syntax — clean!
-@log
-def fetch_user(uid):
-    return {"id": uid, "name": "Fatima"}
+@timer
+def slow_function():
+    time.sleep(1)
+    return "Done"
+
+@timer
+def calculate_sum(n):
+    return sum(range(n))
+
+print(slow_function())
+# [TIMER] slow_function took 1.0012s
+# Done
+
+print(calculate_sum(1000000))
+# [TIMER] calculate_sum took 0.0523s
+# 499999500000
+
+# One decorator, ANY function. That's the power!</div>
+
+<div class="code-block"># ── STEP 7: Logging decorator ──
+# Log every function call — who called what with what arguments.
+
+import functools
+
+def log(func):
+    """Log all calls to this function."""
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        # Format the arguments nicely:
+        all_args = []
+        if args:
+            all_args.extend(str(a) for a in args)
+        if kwargs:
+            all_args.extend(f"{k}={v}" for k, v in kwargs.items())
+        arg_str = ", ".join(all_args)
+
+        print(f"[LOG] {func.__name__}({arg_str})")
+        try:
+            result = func(*args, **kwargs)
+            print(f"[LOG] {func.__name__} -> {result}")
+            return result
+        except Exception as e:
+            print(f"[LOG] {func.__name__} FAILED: {e}")
+            raise
+
+    return wrapper
 
 @log
-def fetch_orders(uid):
-    return [{"id": 1, "total": 500}]
+def add(a, b):
+    return a + b
 
-# Now both functions auto-log without any boilerplate
-user = fetch_user(42)
-# [LOG] Calling fetch_user((42,))
-# [LOG] fetch_user returned in 0.001s
+@log
+def divide(a, b):
+    return a / b
 
-# ── CACHE DECORATOR: Memoization ──
+add(3, 5)
+# [LOG] add(3, 5)
+# [LOG] add -> 8
+
+divide(10, 0)
+# [LOG] divide(10, 0)
+# [LOG] divide FAILED: division by zero</div>
+
+<div class="code-block"># ── STEP 8: Cache decorator — memoization ──
+# Store results so you don't recompute. HUGE speedup.
+
+import functools
+
 def memoize(func):
-    """Cache results — skip recomputation."""
+    """Cache results — never compute the same input twice."""
     _cache = {}
 
     @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        key = (args, tuple(sorted(kwargs.items())))
-        if key not in _cache:
-            _cache[key] = func(*args, **kwargs)
-        return _cache[key]
+    def wrapper(*args):
+        if args not in _cache:
+            _cache[args] = func(*args)
+        return _cache[args]
 
     return wrapper
 
-@memoize
-def fibonacci(n):
-    if n &lt;= 1:
+# Fibonacci WITHOUT cache — incredibly slow for large n:
+def fib_slow(n):
+    if n <= 1:
         return n
-    return fibonacci(n - 1) + fibonacci(n - 2)
+    return fib_slow(n - 1) + fib_slow(n - 2)
+# fib_slow(35) takes ~5 seconds!
 
-print(fibonacci(50))  # Instant! Without cache: minutes.
+# Fibonacci WITH cache — instant:
+@memoize
+def fib(n):
+    if n <= 1:
+        return n
+    return fib(n - 1) + fib(n - 2)
 
-# Python has built-in: functools.lru_cache
+print(fib(100))  # Instant! 354224848179261915075
+
+# Python has a BUILT-IN cache decorator:
 from functools import lru_cache
 
 @lru_cache(maxsize=128)
 def expensive_calc(n):
-    time.sleep(1)
+    # imagine this takes 1 second each call
     return n ** 2
 
-# ── DECORATOR WITH ARGUMENTS ──
+# First call computes, second call returns cached:
+print(expensive_calc(10))  # computed
+print(expensive_calc(10))  # cached (instant)
+print(expensive_calc.cache_info())  # hits, misses, size</div>
+
+<div class="code-block"># ── STEP 9: Decorator with arguments ──
+# Sometimes the decorator itself needs arguments.
+# Example: @retry(max_attempts=5)
+
+import functools
+import time
+
 def retry(max_attempts=3, delay=1.0):
-    """Factory: retry decorator with custom attempts."""
+    """Factory that creates a retry decorator."""
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
@@ -119,22 +332,63 @@ def retry(max_attempts=3, delay=1.0):
                     return func(*args, **kwargs)
                 except Exception as e:
                     if attempt == max_attempts - 1:
-                        raise
-                    time.sleep(delay * (2 ** attempt))
+                        raise   # last attempt — let it fail
+                    wait = delay * (2 ** attempt)  # exponential backoff
+                    print(f"Attempt {attempt+1} failed. Retrying in {wait}s...")
+                    time.sleep(wait)
         return wrapper
     return decorator
 
 @retry(max_attempts=5, delay=0.5)
-def unreliable_api():
-    return requests.get("https://api.example.com/data")
+def unreliable_api_call():
+    # This might fail a few times before succeeding
+    import random
+    if random.random() < 0.5:
+        raise ConnectionError("Network error")
+    return "Success!"
 
-# ── REAL-WORLD DECORATORS YOU'LL SEE ──
-# Flask:      @app.route("/users")
-# Django:     @login_required
-# pytest:     @pytest.mark.parametrize
-# property:   @property, @x.setter
-# dataclass:  @dataclass
-# functools:  @lru_cache, @wraps</div>
+# Why three levels?
+# retry(max_attempts=5) → returns a decorator
+# decorator(func)       → returns a wrapper
+# wrapper(*args)        → runs the actual function with retry logic</div>
+
+<div class="code-block"># ── STEP 10: Real-world decorators you will see ──
+# You've been using decorators without knowing it!
+
+# Flask web framework:
+# @app.route("/users")        ← registers URL route
+# def get_users(): ...
+
+# Django:
+# @login_required             ← only logged-in users can access
+# def dashboard(request): ...
+
+# pytest:
+# @pytest.mark.parametrize("input,expected", [(1,1), (2,4)])
+# def test_square(input, expected): ...
+
+# Python built-ins:
+# @property                   ← method acts like an attribute
+# @staticmethod               ← method doesn't need self
+# @classmethod                ← method gets class, not instance
+# @dataclass                  ← auto-generates __init__, __repr__
+# @functools.lru_cache        ← auto-memoization
+# @functools.wraps            ← preserves function identity
+
+# SUMMARY:
+# ┌──────────────────────────┬──────────────────────────────┐
+# │ Decorator                │ What it does                 │
+# ├──────────────────────────┼──────────────────────────────┤
+# │ @timer (custom)          │ measures execution time      │
+# │ @log (custom)            │ logs all calls               │
+# │ @memoize/@lru_cache      │ caches results              │
+# │ @retry (custom)          │ retries on failure           │
+# │ @property                │ method → attribute           │
+# │ @dataclass               │ auto __init__/__repr__       │
+# │ @app.route (Flask)       │ registers URL route          │
+# └──────────────────────────┴──────────────────────────────┘
+
+# Golden rule: ALWAYS use @functools.wraps in custom decorators!</div>
 
 <div class="diagram">
   <div class="diag-title">Decorator = সিল — function-এ আচরণ চাপো</div>
