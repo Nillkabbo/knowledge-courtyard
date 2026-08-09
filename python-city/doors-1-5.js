@@ -19,101 +19,261 @@ doors.push({
     aen:"int = integer (42), float = decimal (3.14), str = text ('hello'), bool = true/false. Python determines type by value, not by the variable."
   },
   story:`
-<p class="scene-setting">প্রথম গিল্ড। কুমারের ঘর। মাটির গন্ধ, চাকার আওয়াজ, ভেজা মাটির স্পর্শ। উস্তাদ ফাতেমা বসে আছেন — হাতে কাদামাটি, চোখে ধৈর্য। তার সামনে অগুনতি পাত্র — কোনোটা পানি ধরে, কোনোটা ভাত, কোনোটা শুধু শোভা। "প্রতিটা পাত্র একটা কাজের জন্য," তিনি বলেন। "Python-এ এটাকে বলে variable।"</p>
-<p class="scene-setting en">First guild. The Potter's house. Smell of clay, sound of the wheel, touch of wet earth. Master Fatima sits — clay in hands, patience in eyes. Before her, countless vessels — some hold water, some rice, some just beauty. "Each vessel is for a purpose," she says. "In Python, we call this a variable."</p>
+<p class="scene-setting">প্রথম গিল্ড। কুমারের ঘর। মাটির গন্ধ, চাকার আওয়াজ, ভেজা মাটির স্পর্শ। উস্তাদ ফাতেমা বসে আছেন — হাতে কাদামাটি, চোখে ধৈর্য। তার সামনে অগুনতি পাত্র — কোনোটা পানি ধরে, কোনোটা ভাত, কোনোটা শুধু শোভা। "প্রতিটা পাত্র একটা কাজের জন্য," তিনি বলেন। "Python-এ এটাকে বলে variable। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">First guild. The Potter's house. Smell of clay, sound of the wheel, touch of wet earth. Master Fatima sits — clay in hands, patience in eyes. Before her, countless vessels — some hold water, some rice, some just beauty. "Each vessel is for a purpose," she says. "In Python, we call this a variable. Let's learn one step at a time."</p>
 
-<div class="dialogue">সমস্যা: তোমার একটা দোকান আছে। প্রতিটা পণ্যের নাম, দাম, স্টক — সব মনে রাখতে হবে। খাতায় লিখবে? ১০০টা পণ্যে? মাথা ফেটে যাবে। Python variable দিয়ে প্রতিটা পণ্যের তথ্য একটা নামে রাখো। দাম = ৫০, নাম = "চিনি", স্টক = True।</div>
-<div class="dialogue en">Problem: You have a shop. Each product's name, price, stock — all must be remembered. Write in a ledger? 100 products? Head will explode. Python variables store each piece of data under a name.</div>
+<div class="dialogue">আগে একটা প্রশ্ন: কম্পিউটার কীভাবে কথা বলে? উত্তর: print() দিয়ে। এটাই Python-এর সবচেয়ে প্রথম জিনিস — স্ক্রিনে কিছু দেখানো।</div>
+<div class="dialogue en">First question: how does a computer "speak"? Answer: with print(). This is the very first thing in Python — showing something on screen.</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> ফাতেমা বললেন — এক শিক্ষানবিশ পাত্রে পানি রাখলো, তারপর ভাত ঢাললো — পাত্র নষ্ট। Python-এ: তুমি x = 42 দিলে, তারপর x = "hello" দিলে — ভুল নয়! Python বাক্সের ধরন বদলায়। এটাই dynamic typing। কিন্তু সতর্ক না হলে — একই variable এ সংখ্যা ও লেখা — bug খুঁজে পাওয়া কঠিন।</div></div>
+<div class="code-block"># ── STEP 1: Your first Python program ──
+# print() shows text on screen. Quotes "" mean "this is text".
+# The # symbol makes a COMMENT — Python ignores it. For humans only.
 
-<div class="code-block"># guild1_inventory.py — Potter's Problem
-# Master Fatima: "Each vessel has a purpose. Each variable has a type."
+print("Hello, World!")     # shows: Hello, World!
+print("Python City!")       # shows: Python City!
 
-# ── THE PROBLEM: Track shop inventory ──
-# Product: name, price, in_stock
+# You can print numbers too (no quotes needed for numbers)
+print(42)                   # shows: 42
+print(3.14)                 # shows: 3.14</div>
 
-# ❌ BAD: No variables — everything hardcoded
-print("Product: Sugar")
-print("Price: 50 taka")
-print("In stock: Yes")
-# Change price? Find every print statement. Nightmare.
+<div class="dialogue">এখন সমস্যা: ফাতেমা বললেন — তোমার একটা দোকান আছে। চিনির দাম ৫০ টাকা। স্টক আছে। এই তথ্য কম্পিউটারে কীভাবে রাখবে? print("50") লিখলে শুধু স্ক্রিনে দেখায় — কম্পিউটার মনে রাখে না। মনে রাখার জন্য দরকার variable — একটা নামযুক্ত বাক্স।</div>
+<div class="dialogue en">Now the problem: Fatima says — you have a shop. Sugar costs 50 taka. In stock. How to store this in the computer? print("50") just shows it — the computer doesn't remember. To remember, you need a variable — a named box.</div>
 
-# ✅ GOOD: Variables — change once, updates everywhere
-product_name = "Sugar"    # str (text)
-product_price = 50        # int (whole number)
-weight_kg = 1.5           # float (decimal)
-in_stock = True           # bool (True/False)
-stock_count = 200         # int
+<div class="code-block"># ── STEP 2: What is a variable? ──
+# A variable is a NAMED BOX that stores a value.
+# You give it a name, put something inside, use it later.
 
-print(f"Product: {product_name}")
-print(f"Price: {product_price} taka")
-print(f"Weight: {weight_kg} kg")
-print(f"In stock: {in_stock}")
-print(f"Count: {stock_count} units")
+# Create a variable: name = value
+# The = sign means "put this value into this box"
 
-# Python is dynamically typed — box changes type!
+product_name = "Sugar"     # box named "product_name", holds "Sugar"
+price = 50                 # box named "price", holds 50
+in_stock = True            # box named "in_stock", holds True
+
+# Now Python REMEMBERS these. Use the name to get the value:
+print(product_name)        # shows: Sugar
+print(price)               # shows: 50
+print(in_stock)            # shows: True
+
+# The magic: change the variable ONCE, it updates EVERYWHERE
+price = 55                 # price changed from 50 to 55
+print(f"New price: {price}")  # shows: New price: 55</div>
+
+<div class="dialogue">ফাতেমা বললেন — লক্ষ্য করো। <code>=</code> চিহ্ন মানে "সমান" নয়। এর মানে "বাক্সে রাখো"। price = 50 মানে: price নামের বাক্সে 50 রাখো। বাংলায়: price-এর মান 50 করো। এটাই assignment।</div>
+<div class="dialogue en">Fatima says — notice. The = sign does not mean "equals." It means "put into the box." price = 50 means: put 50 into the box named price. This is called assignment.</div>
+
+<div class="code-block"># ── STEP 3: f-string — putting variables inside text ──
+# f"..." is a "format string". Put variable names inside { }.
+# Python replaces {name} with the variable's value.
+
+name = "Fatima"
+age = 25
+city = "Dhaka"
+
+# WITHOUT f-string (hard to read):
+print("Name: " + name + ", Age: " + str(age) + ", City: " + city)
+
+# WITH f-string (clean, readable):
+print(f"Name: {name}, Age: {age}, City: {city}")
+# Shows: Name: Fatima, Age: 25, City: Dhaka
+
+# f-string with math inside:
+print(f"Next year: {age + 1}")  # Shows: Next year: 26
+print(f"Double price: {price * 2}")  # Shows: Double price: 110</div>
+
+<div class="dialogue">এখন ৪ ধরনের বাক্স আছে — int, float, str, bool। প্রতিটার নির্দিষ্ট কাজ। ভুল বাক্সে ভুল জিনিস রাখলে সমস্যা।</div>
+<div class="dialogue en">Now there are 4 types of boxes — int, float, str, bool. Each has a specific purpose. Wrong box, wrong item = problem.</div>
+
+<div class="code-block"># ── STEP 4: The 4 data types ──
+# Python has 4 basic types. The TYPE is decided by the VALUE.
+
+# 1. int = whole number (পূর্ণসংখ্যা)
+count = 200              # int — counting items
+temperature = -5         # int — can be negative
+zero = 0                 # int — zero is int
+
+# 2. float = decimal number (দশমিক)
+pi = 3.14159             # float — precise math
+weight = 1.5             # float — half kilo
+price_usd = 0.85         # float — currency
+
+# 3. str = text string (লেখা)
+greeting = "Hello"       # str — use double quotes
+name = 'Fatima'          # str — or single quotes
+sentence = 'She said "hi"'    # str — use outer single quotes to include double
+
+# 4. bool = True or False (সত্য/মিথ্যা)
+is_open = True           # bool — shop is open
+has_stock = False        # bool — no stock
+is_admin = True          # bool — user is admin
+
+# ── How to know what type a variable is? ──
+print(type(count))       # <class 'int'>
+print(type(pi))          # <class 'float'>
+print(type(name))        # <class 'str'>
+print(type(is_open))     # <class 'bool'</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> ফাতেমা বললেন — এক শিক্ষানবিশ <code>"50"</code> (string) ও <code>50</code> (int) একই ভাবলো। কিন্তু Python-এ এরা আলাদা! <code>"50" + 10</code> = ERROR (str ও int যোগ হয় না)। <code>50 + 10</code> = 60 (int যোগ হয়)। Quotes মানে লেখা, quotes ছাড়া মানে সংখ্যা। এই পার্থক্য না বুঝলে পুরো জীবন bug।</div></div>
+
+<div class="code-block"># ── STEP 5: Type conversion — changing one type to another ──
+# Sometimes data comes as the wrong type. Convert it.
+
+# User input is ALWAYS a string (even if they type a number):
+user_input = "150"           # came from input() — it's str!
+# print(user_input + 10)     # ERROR: can't add str + int
+
+# Convert str to int:
+price = int(user_input)      # "150" → 150 (now it's int)
+print(price + 10)            # 160 — works!
+
+# Convert int to str:
+age = 25
+age_text = str(age)          # 25 → "25" (now it's str)
+print("Age: " + age_text)    # Age: 25
+
+# Convert str to float:
+weight_text = "65.5"
+weight = float(weight_text)  # "65.5" → 65.5
+print(weight * 2)            # 131.0
+
+# Convert to bool (0/empty = False, everything else = True):
+print(bool(0))    # False
+print(bool(42))   # True
+print(bool(""))   # False (empty string)
+print(bool("hi")) # True</div>
+
+<div class="code-block"># ── STEP 6: Variable naming rules ──
+# Python has rules for variable names. Break them = error.
+
+# ✅ GOOD names (clear, descriptive, snake_case):
+student_name = "Fatima"     # words separated by underscore
+total_price = 1500          # descriptive
+is_logged_in = True         # boolean starts with is_/has_
+API_KEY = "abc123"          # constants in UPPER_CASE
+
+# ❌ BAD names (will cause errors or confusion):
+# 2name = "Bob"      # ERROR: can't start with number
+# my-name = "Bob"    # ERROR: hyphen not allowed
+# my name = "Bob"    # ERROR: space not allowed
+# class = "Math"     # ERROR: 'class' is a Python keyword
+
+# ── Python keywords you CANNOT use as variable names ──
+# False, True, None, and, as, assert, break, class, continue,
+# def, del, elif, else, except, finally, for, from, global,
+# if, import, in, is, lambda, not, or, pass, raise, return,
+# try, while, with, yield
+
+# ── Case sensitivity: age ≠ Age ≠ AGE ──
+age = 25          # lowercase
+Age = 30          # different variable!
+AGE = 40          # yet another!
+print(age, Age, AGE)  # 25 30 40 — three different boxes</div>
+
+<div class="code-block"># ── STEP 7: Taking user input ──
+# input() pauses the program, waits for user to type, returns str.
+
+# Ask the user for their name:
+# name = input("What is your name? ")
+# If user types "Fatima", name = "Fatima"
+# print(f"Hello, {name}!")  # Hello, Fatima!
+
+# Ask for a number (must convert from str!):
+# age_text = input("How old are you? ")
+# age = int(age_text)  # convert to int
+# print(f"Next year you'll be {age + 1}")
+
+# A complete mini-program — shop calculator:
+# product = input("Product name: ")
+# price_text = input("Price per unit: ")
+# qty_text = input("Quantity: ")
+#
+# price = float(price_text)
+# qty = int(qty_text)
+# total = price * qty
+#
+# print(f"--- Receipt ---")
+# print(f"{product}: {qty} x {price} = {total} taka")</div>
+
+<div class="code-block"># ── STEP 8: Reassignment — changing the value ──
+# Variables are NOT permanent. Change them anytime.
+
+score = 0                    # start at 0
+print(f"Score: {score}")     # Score: 0
+
+score = 10                   # change to 10
+print(f"Score: {score}")     # Score: 10
+
+# You can use the OLD value to calculate the NEW value:
+score = score + 5            # old score (10) + 5 = 15
+print(f"Score: {score}")     # Score: 15
+
+# Shortcut operators:
+score += 10                  # same as score = score + 10
+score -= 5                   # same as score = score - 5
+score *= 2                   # same as score = score * 2
+print(f"Final score: {score}")
+
+# ── Multiple assignment: assign several at once ──
+name, price, stock = "Salt", 30, True
+print(f"{name}: {price} taka, in stock: {stock}")
+
+# Swap two variables (Python makes this easy!):
+a, b = 10, 20
+print(f"Before: a={a}, b={b}")   # Before: a=10, b=20
+a, b = b, a                      # swap!
+print(f"After: a={a}, b={b}")    # After: a=20, b=10
+
+# ── Dynamic typing: Python boxes change type ──
 x = 42          # x is int
+print(type(x))  # <class 'int'>
 x = "hello"     # now x is str — Python allows this!
+print(type(x))  # <class 'str'>
 x = [1, 2, 3]   # now x is list
-# Flexible, but be careful — this causes bugs if misused.
-
-# ── TYPE CHECKING: Know what you're working with ──
-price = 50
-name = "Sugar"
-print(type(price))  # <class 'int'>
-print(type(name))   # <class 'str'>
-
-# ── TYPE CONVERSION: Sometimes you need to change type ──
-price_str = "50"         # user input is always str
-price_int = int(price_str)  # convert to int for math
-print(price_int + 10)    # 60 — works!
-# print(price_str + 10)  # ERROR — can't add str + int
-
-# ── MULTIPLE ASSIGNMENT: Python's elegant way ──
-name, price, stock = "Salt", 30, True  # assign 3 at once
-print(f"{name}: {price} taka, stock={stock}")</div>
+print(type(x))  # <class 'list'>
+# Flexible! But be careful — mixing types in one variable causes bugs.</div>
 
 <div class="diagram">
   <div class="diag-title">Variable = পাত্র — প্রতিটায় একটা মান</div>
-  <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
     <text x="280" y="20" text-anchor="middle" fill="#34d399" font-size="11" font-weight="bold">Python Variables — Named Containers</text>
     <!-- int -->
     <ellipse cx="100" cy="90" rx="45" ry="40" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="2"/>
     <text x="100" y="80" text-anchor="middle" fill="#2dd4bf" font-size="14" font-weight="bold">42</text>
     <text x="100" y="100" text-anchor="middle" fill="#9a93b8" font-size="8">int</text>
     <text x="100" y="150" text-anchor="middle" fill="#34d399" font-size="9" font-family="monospace">age = 42</text>
-    <text x="100" y="165" text-anchor="middle" fill="#9a93b8" font-size="7">পূর্ণসংখ্যা</text>
+    <text x="100" y="165" text-anchor="middle" fill="#9a93b8" font-size="7">পূর্ণসংখ্যা (whole)</text>
     <!-- float -->
     <ellipse cx="220" cy="90" rx="45" ry="40" fill="rgba(52,211,153,0.08)" stroke="#34d399" stroke-width="2"/>
     <text x="220" y="80" text-anchor="middle" fill="#34d399" font-size="14" font-weight="bold">3.14</text>
     <text x="220" y="100" text-anchor="middle" fill="#9a93b8" font-size="8">float</text>
     <text x="220" y="150" text-anchor="middle" fill="#34d399" font-size="9" font-family="monospace">pi = 3.14</text>
-    <text x="220" y="165" text-anchor="middle" fill="#9a93b8" font-size="7">দশমিক</text>
+    <text x="220" y="165" text-anchor="middle" fill="#9a93b8" font-size="7">দশমিক (decimal)</text>
     <!-- str -->
     <ellipse cx="340" cy="90" rx="45" ry="40" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="2"/>
     <text x="340" y="80" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">"hi"</text>
     <text x="340" y="100" text-anchor="middle" fill="#9a93b8" font-size="8">str</text>
     <text x="340" y="150" text-anchor="middle" fill="#34d399" font-size="9" font-family="monospace">name = "Bob"</text>
-    <text x="340" y="165" text-anchor="middle" fill="#9a93b8" font-size="7">লেখা</text>
+    <text x="340" y="165" text-anchor="middle" fill="#9a93b8" font-size="7">লেখা (text)</text>
     <!-- bool -->
     <ellipse cx="460" cy="90" rx="45" ry="40" fill="rgba(240,98,146,0.08)" stroke="#f06292" stroke-width="2"/>
     <text x="460" y="80" text-anchor="middle" fill="#f06292" font-size="12" font-weight="bold">True</text>
     <text x="460" y="100" text-anchor="middle" fill="#9a93b8" font-size="8">bool</text>
     <text x="460" y="150" text-anchor="middle" fill="#34d399" font-size="9" font-family="monospace">active = True</text>
     <text x="460" y="165" text-anchor="middle" fill="#9a93b8" font-size="7">সত্য/মিথ্যা</text>
+    <!-- assignment -->
+    <rect x="40" y="185" width="480" height="30" rx="6" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1"/>
+    <text x="280" y="203" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">name = value → "বাক্সে মান রাখো" (= means assign, NOT equals)</text>
     <!-- Dynamic typing -->
-    <rect x="40" y="195" width="480" height="35" rx="6" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
-    <text x="280" y="213" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">Dynamic Typing: x = 42 → x = "hi" → x = [1,2] — বাক্সের ধরন বদলায়</text>
-    <text x="280" y="225" text-anchor="middle" fill="#9a93b8" font-size="7">flexible, but type(x) দিয়ে যাচাই করো</text>
+    <rect x="40" y="225" width="480" height="30" rx="6" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
+    <text x="280" y="243" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">Dynamic Typing: x = 42 → x = "hi" → x = [1,2] — বাক্সের ধরন বদলায়</text>
   </svg>
-  <div class="diag-cap">Variable = নামযুক্ত পাত্র। int (সংখ্যা), float (দশমিক), str (লেখা), bool (সত্য/মিথ্যা)। Python-এ ধরন বদলায় — dynamic typing।</div>
+  <div class="diag-cap">Variable = নামযুক্ত পাত্র। int (সংখ্যা), float (দশমিক), str (লেখা), bool (সত্য/মিথ্যা)। = মানে "রাখো", সমান নয়।</div>
 </div>
 
 <div class="dialogue">মিসকাহ — মাটি, কাদা। কুরআনে আল্লাহ বলেন — আমরা মানুষকে সৃষ্টি করেছি মাটি থেকে (২৩:১২)। মাটি নমনীয় — যেকোনো আকার নেয়। Python variable-ও নমনীয় — যেকোনো ধরন নেয়। কিন্তু কুমারের হাত দরকার — মাটি একা পাত্র হয় না। তোমার হাত দরকার — variable একা প্রোগ্রাম হয় না।</div>
 <div class="dialogue en">Miskah — clay, mud. Allah says — We created man from clay (23:12). Clay is flexible — takes any shape. Python variables are flexible — take any type. But clay needs a potter's hands — alone it is not a vessel. You need hands — a variable alone is not a program.</div>
 
-<div class="secret-box">🏺 Variable = নামযুক্ত পাত্র। int, float, str, bool। Dynamic typing = নমনীয়, কিন্তু type() দিয়ে যাচাই করো।</div>
+<div class="secret-box">🏺 Variable = নামযুক্ত বাক্স। name = value (= মানে "রাখো")। ৪ ধরন: int, float, str, bool। type() দিয়ে যাচাই করো। int("50") দিয়ে রূপান্তর করো।</div>
 `,
   senior:{
     title:"Variables & Types — Senior Notes",
