@@ -1840,140 +1840,353 @@ doors.push({
     aen:"1) Understand. 2) Break down. 3) Pseudocode. 4) Code incrementally. 5) Test edge cases."
   },
   story:`
-<p class="scene-setting">বিংশ গিল্ড। শেষ গিল্ড। মাস্টার বিল্ডারের কক্ষ। সব গিল্ডের পতাকা, সব মাস্টারের উপস্থিতি। ফাতেমা (মাটি), ইদ্রিস (নহর), রহিম (রান্না), করিম (ভাণ্ডার), জয়নুল (ক্যালিগ্রাফি) — সবাই এসেছেন। মাস্টার বিল্ডার রাহিলা দাঁড়িয়ে — উনিশ জন কারিগরের সামনে। "তোমরা ১৯টি গিল্ড পেরিয়েছ," তিনি বলেন। "এখন শেষ শিক্ষা — সবচেয়ে গুরুত্বপূর্ণ। কীভাবে ভাবতে হয়।"</p>
-<p class="scene-setting en">Twentieth guild. The final guild. Master Builder's chamber. Banners of all guilds, all masters present. Fatima (clay), Idris (canal), Rahim (kitchen), Karim (storehouse), Zainul (calligraphy) — all have come. Master Builder Rahila stands before nineteen craftsmen. "You have passed 19 guilds," she says. "Now the final lesson — the most important. How to think."</p>
+<p class="scene-setting">বিংশ গিল্ড। শেষ গিল্ড। মাস্টার বিল্ডারের কক্ষ। সব গিল্ডের পতাকা, সব মাস্টারের উপস্থিতি। ফাতেমা (মাটি), ইদ্রিস (নহর), রহিম (রান্না), করিম (ভাণ্ডার), জয়নুল (ক্যালিগ্রাফি) — সবাই এসেছেন। মাস্টার বিল্ডার রাহিলা দাঁড়িয়ে — উনিশ জন কারিগরের সামনে। "তোমরা ১৯টি গিল্ড পেরিয়েছ," তিনি বলেন। "এখন শেষ শিক্ষা — সবচেয়ে গুরুত্বপূর্ণ। কীভাবে ভাবতে হয়। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Twentieth guild. The final guild. Master Builder's chamber. Banners of all guilds, all masters present. Fatima (clay), Idris (canal), Rahim (kitchen), Karim (storehouse), Zainul (calligraphy) — all have come. Master Builder Rahila stands before nineteen craftsmen. "You have passed 19 guilds," she says. "Now the final lesson — the most important. How to think. Let's learn step by step."</p>
 
-<div class="dialogue">তুমি ১৯টি গিল্ডে Python শিখেছ — variables থেকে concurrency পর্যন্ত। কিন্তু সবচেয়ে গুরুত্বপূর্ণ দক্ষতা এখনো বাকি। AI যুগে কোড লেখা সহজ — ChatGPT পারে। কিন্তু কী বানাতে হবে, কেন বানাতে হবে, কীভাবে সমস্যা ভাঙবে — এটা AI পারে না। তুমি কারিগর, AI তোমার হাতিয়ার।</div>
-<div class="dialogue en">You learned Python in 19 guilds — from variables to concurrency. But the most important skill remains. In the AI era, writing code is easy — ChatGPT can do it. But what to build, why to build it, how to break down a problem — AI cannot do this. You are the craftsman, AI is your tool.</div>
+<div class="dialogue">তুমি ১৯টি গিল্ডে Python শিখেছ — variables থেকে concurrency পর্যন্ত। কিন্তু সবচেয়ে গুরুত্বপূর্ণ দক্ষতা এখনো বাকি। AI যুগে কোড লেখা সহজ — ChatGPT পারে। কিন্তু কী বানাতে হবে, সমস্যা কীভাবে ভাঙবে — এটা AI পারে না। তুমি কারিগর, AI তোমার হাতিয়ার।</div>
+<div class="dialogue en">You learned Python in 19 guilds — from variables to concurrency. But the most important skill remains. In the AI era, writing code is easy — ChatGPT can do it. But what to build, how to break down a problem — AI cannot do this. You are the craftsman, AI is your tool.</div>
+
+<div class="code-block"># ── STEP 1: The problem-solving framework ──
+# Every programmer follows the SAME 5-step process:
+
+# 1. UNDERSTAND — What exactly is the problem?
+#    - What is the input? What is the output?
+#    - What are the constraints?
+#    - What are the edge cases?
+
+# 2. BREAK DOWN — Divide into smaller sub-problems
+#    - Each sub-problem should be solvable independently
+#    - Solve one at a time
+
+# 3. PSEUDOCODE — Write logic in plain English/Bengali
+#    - No syntax, just steps
+#    - If you can't write pseudocode, you don't understand the problem
+
+# 4. CODE — Implement one piece at a time
+#    - Write one function → test it → write the next
+#    - Don't write 100 lines without testing
+
+# 5. TEST — Verify with edge cases
+#    - Empty input, None, negative numbers, huge data
+#    - Does it actually solve the ORIGINAL problem?
+
+# Example problem: "Count word frequencies in a text file"
+# We'll work through all 5 steps.</div>
+
+<div class="code-block"># ── STEP 2: UNDERSTAND the problem ──
+# Before writing ANY code, answer these questions:
+
+# PROBLEM: Count word frequencies in a text file
+
+# What is the input?
+#   → A text file (e.g., "article.txt")
+
+# What is the expected output?
+#   → A dictionary: {"word": count}, sorted by frequency
+
+# What are the constraints?
+#   → Case-insensitive ("The" and "the" are the same)
+#   → Ignore punctuation ("word." and "word" are the same)
+#   → Should handle large files efficiently
+
+# What are the edge cases?
+#   → Empty file → should return {}
+#   → Single word → {"word": 1}
+#   → Numbers mixed in → should they count as words?
+#   → File doesn't exist → should handle gracefully
+
+# If you can't answer these questions, you're not ready to code.
+# This step prevents 80% of bugs.</div>
+
+<div class="code-block"># ── STEP 3: BREAK DOWN and PSEUDOCODE ──
+# Divide the problem into small, solvable pieces.
+
+# BREAK DOWN:
+# Sub-problem 1: Read a text file
+# Sub-problem 2: Clean the text (lowercase, remove punctuation)
+# Sub-problem 3: Split into words
+# Sub-problem 4: Count each word
+# Sub-problem 5: Sort by frequency
+
+# PSEUDOCODE (plain language, no Python syntax):
+#
+# function word_frequency(filepath):
+#     text = read the file
+#     text = convert to lowercase
+#     text = remove punctuation
+#     words = split text by spaces
+#     counts = empty dictionary
+#     for each word in words:
+#         if word in counts:
+#             counts[word] = counts[word] + 1
+#         else:
+#             counts[word] = 1
+#     sort counts by value (descending)
+#     return the top 10
+
+# Notice: NO Python syntax here. Just logic.
+# If this pseudocode makes sense, you understand the problem.
+# Now translate each line to Python.</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>AI যুগের সত্য:</strong> যে শুধু AI-কে কোড লেখায়, সে কারিগর নয় — অপারেটর। AI ভুল করে — তুমি না বুঝলে ধরতে পারবে না। AI সাহায্য করে, কিন্তু চিন্তা তোমার। প্রশ্ন করতে শেখো — সঠিক প্রশ্নই সঠিক উত্তরের জন্ম দেয়।</div></div>
 
-<div class="code-block"># guild20_thinking.py — Master Builder
-# Master Builder Rahila: "Code is easy. Thinking is hard."
-
-# ══════════════════════════════════════
-# THE 5-STEP PROBLEM-SOLVING FRAMEWORK
-# ══════════════════════════════════════
-
-# ── STEP 1: UNDERSTAND THE PROBLEM ──
-# Don't write a single line of code until you can answer:
-#   - What is the input?
-#   - What is the expected output?
-#   - What are the constraints?
-#   - What are the edge cases?
-#
-# Example problem: "Count word frequencies in a text file"
-# Input: a text file (string)
-# Output: dict {word: count}
-# Constraints: handle punctuation, case-insensitive
-# Edge cases: empty file, single word, numbers
-
-# ── STEP 2: BREAK IT DOWN ──
-# Divide into small, solvable sub-problems:
-#   2a. Read file → get text
-#   2b. Clean text → lowercase, remove punctuation
-#   2c. Split into words
-#   2d. Count each word
-#   2e. Sort by frequency
-
-# ── STEP 3: PSEUDOCODE ──
-# Write logic in plain language before code:
-#
-#   function word_frequency(filepath):
-#       text = read_file(filepath)
-#       text = text.lowercase()
-#       text = remove_punctuation(text)
-#       words = text.split()
-#       counts = empty_dict
-#       for each word in words:
-#           counts[word] += 1
-#       return sort_by_value(counts)
-
-# ── STEP 4: CODE INCREMENTALLY ──
-# Implement ONE sub-problem at a time, test, then next.
+<div class="code-block"># ── STEP 4: CODE incrementally ──
+# Implement ONE sub-problem at a time, test it, then move on.
 
 import re
 from collections import Counter
 
 def word_frequency(filepath):
     """Count word frequencies in a text file."""
-    # 2a. Read file
+    # Sub-problem 1: Read file
     with open(filepath) as f:
         text = f.read()
 
-    # 2b. Clean: lowercase + remove punctuation
+    # Sub-problem 2: Clean text
     text = text.lower()
-    text = re.sub(r'[^a-z\\s]', '', text)  # keep only letters+spaces
+    text = re.sub(r"[^a-z\s]", "", text)  # keep only letters + spaces
 
-    # 2c. Split into words
+    # Sub-problem 3: Split into words
     words = text.split()
 
-    # 2d+2e. Count + sort (Counter does both)
+    # Sub-problems 4+5: Count + sort (Counter does both!)
     return Counter(words).most_common(10)
 
-# ── STEP 5: TEST EDGE CASES ──
-# Write tests for:
-#   - Normal input (typical text file)
-#   - Empty file → should return {}
-#   - Single word → {word: 1}
-#   - Numbers mixed in → numbers ignored
-#   - Very large file → should still work
+# Test it:
+with open("sample.txt", "w") as f:
+    f.write("the cat sat on the mat. the cat was happy.")
 
-def test_word_frequency():
-    # Create test file
-    with open("test.txt", "w") as f:
-        f.write("the cat sat on the mat. the cat was happy.")
+result = word_frequency("sample.txt")
+print(result)
+# [('the', 3), ('cat', 2), ('sat', 1), ('on', 1), ...]
 
-    result = word_frequency("test.txt")
-    assert result[0] == ("the", 3)  # 'the' appears 3 times
-    assert len(result) &lt;= 10
-    print("All tests passed!")
+# Notice: we didn't write everything at once.
+# We solved sub-problem 1, then 2, then 3...
+# Each step tested before moving to the next.
+# This is INCREMENTAL development.</div>
 
-test_word_frequency()
+<div class="code-block"># ── STEP 5: TEST edge cases ──
+# Testing is not optional. It's how you know your code actually works.
 
-# ══════════════════════════════════════
-# HOW TO THINK IN THE AI ERA
-# ══════════════════════════════════════
+import re
+from collections import Counter
 
-# AI is your pair programmer — but YOU are the architect.
-# Use AI for:
-#   ✓ Syntax reminder ("how do I sort a dict by value?")
-#   ✓ Boilerplate ("generate a Flask CRUD template")
-#   ✓ Debugging help ("why is this None?")
-#   ✓ Learning ("explain what a decorator does")
-#
-# DON'T use AI for:
-#   ✗ Understanding the problem (that's YOUR job)
-#   ✗ Architecture decisions (that's YOUR judgment)
-#   ✗ Accepting code you don't understand (read every line)
+def word_frequency(filepath):
+    """Count word frequencies in a text file."""
+    try:
+        with open(filepath) as f:
+            text = f.read()
+    except FileNotFoundError:
+        return []
 
-# ── THE CRAFTSMAN'S CHECKLIST ──
-# Before showing your code to anyone, ask:
-checklist = [
-    "Does it solve the actual problem? (not what you assumed)",
-    "Is every variable name clear? (Would a stranger understand?)",
-    "Are edge cases handled? (empty, None, negative, huge)",
-    "Is there error handling? (what if file doesn't exist?)",
-    "Are there tests? (does it actually work?)",
-    "Is it DRY? (any copy-pasted logic?)",
-    "Is it readable? (will I understand it in 6 months?)",
+    text = text.lower()
+    text = re.sub(r"[^a-z\s]", "", text)
+    words = text.split()
+
+    if not words:  # empty file
+        return []
+
+    return Counter(words).most_common(10)
+
+# Test 1: Normal input
+with open("test1.txt", "w") as f:
+    f.write("the cat sat on the mat")
+assert word_frequency("test1.txt")[0] == ("the", 2)
+print("Test 1 passed: normal input")
+
+# Test 2: Empty file
+with open("test2.txt", "w") as f:
+    f.write("")
+assert word_frequency("test2.txt") == []
+print("Test 2 passed: empty file")
+
+# Test 3: File doesn't exist
+assert word_frequency("nonexistent.txt") == []
+print("Test 3 passed: missing file")
+
+# Test 4: Punctuation
+with open("test4.txt", "w") as f:
+    f.write("Hello! Hello? HELLO.")
+result = word_frequency("test4.txt")
+assert result[0] == ("hello", 3)  # case + punctuation handled
+print("Test 4 passed: punctuation and case")
+
+print("All tests passed!")</div>
+
+<div class="code-block"># ── STEP 6: How to use AI as a programmer ──
+# AI (ChatGPT, Claude, Copilot) is your PAIR PROGRAMMER.
+# But YOU are the ARCHITECT. Know when to use it and when not to.
+
+# ✅ USE AI FOR:
+# - Syntax reminder: "How do I sort a dict by value in Python?"
+# - Boilerplate: "Generate a Flask CRUD template"
+# - Debugging help: "Why am I getting None from this function?"
+# - Learning: "Explain what a decorator does with an example"
+# - Code review: "What's wrong with this code?"
+# - Exploring options: "What's the best way to read a large CSV?"
+
+# ❌ DON'T USE AI FOR:
+# - Understanding the problem (that's YOUR job)
+# - Architecture decisions (that's YOUR judgment)
+# - Accepting code you don't understand (READ every line)
+# - Replacing fundamental knowledge (you must know the basics)
+
+# GOOD prompt (specific, shows understanding):
+#   "I need to parse a CSV with 50 columns. Using pandas,
+#    how do I select only columns containing 'price' and
+#    filter rows where price > 1000?"
+
+# BAD prompt (lazy, no understanding):
+#   "Write a program to analyze data"
+
+# THE RULE: If you can't explain what the AI wrote, don't use it.
+# You are RESPONSIBLE for every line of code in your project.</div>
+
+<div class="code-block"># ── STEP 7: The craftsman's checklist ──
+# Before showing your code to anyone, run through this checklist.
+
+craftsman_checklist = [
+    # Correctness:
+    "1. Does it solve the actual problem? (not what you assumed)",
+    "2. Are edge cases handled? (empty, None, negative, huge input)",
+    "3. Is there error handling? (what if file doesn't exist?)",
+    "4. Are there tests? (does it actually work?)",
+
+    # Readability:
+    "5. Is every variable name clear? (would a stranger understand?)",
+    "6. Are functions small and focused? (one function, one job)",
+    "7. Are there comments for complex logic?",
+    "8. Will I understand this in 6 months?",
+
+    # Quality:
+    "9. Is it DRY? (any copy-pasted logic?)",
+    "10. Is it Pythonic? (using Python's strengths?)",
+    "11. Are types clear? (type hints where needed?)",
+    "12. Is it documented? (docstrings on public functions?)",
 ]
 
-# ══════════════════════════════════════
-# THE COMPLETE JOURNEY: 20 GUILDS UNITED
-# ══════════════════════════════════════
-#
+# Print the checklist:
+for item in craftsman_checklist:
+    print(f"  ✅ {item}")
+
+# Rate your code:
+# 12/12 = production-ready
+# 8-11  = good, minor improvements needed
+# 5-7   = needs work before sharing
+# 0-4   = rewrite needed</div>
+
+<div class="code-block"># ── STEP 8: How to learn any new technology ──
+# The approach you used in this book works for ANY new tool.
+
+# THE LEARNING CYCLE:
+# 1. UNDERSTAND — What problem does this tool solve?
+#    Example: "Django solves web development for large apps."
+
+# 2. TRY — Build something tiny with it
+#    Example: Make a 1-page website with Django in 30 minutes.
+
+# 3. BUILD — Create a small project (not a tutorial, your OWN idea)
+#    Example: A personal blog with Django.
+
+# 4. DEEPEN — Read the documentation, learn advanced features
+#    Example: Learn Django's ORM, middleware, signals.
+
+# 5. TEACH — Explain it to someone else (or write a blog post)
+#    Teaching reveals gaps in your understanding.
+
+# HOW TO CHOOSE WHAT TO LEARN NEXT:
+# What problem do you want to solve?
+#   - Web apps?      → Django, Flask, FastAPI
+#   - Data science?  → pandas, numpy, scikit-learn
+#   - AI/ML?         → PyTorch, TensorFlow, HuggingFace
+#   - Automation?    → Selenium, BeautifulSoup, schedule
+#   - Mobile?        → Kivy, BeeWare
+#   - Games?         → Pygame, Arcade
+#   - DevOps?        → Docker, CI/CD, bash scripting
+
+# Don't learn tools randomly. Learn what you NEED for a project.
+# Project-driven learning beats tutorial-driven learning every time.</div>
+
+<div class="code-block"># ── STEP 9: Project ideas to practice everything ──
+# The best way to learn is by building. Here are project ideas
+# that use skills from MULTIPLE guilds:
+
+# BEGINNER PROJECTS (Guilds 1-5):
+# 1. Calculator — functions, control flow, user input
+# 2. Guess the number game — random, loops, conditionals
+# 3. Todo list (CLI) — lists, file I/O, functions
+# 4. Word counter — strings, dictionaries, file reading
+# 5. Mad libs generator — string formatting, user input
+
+# INTERMEDIATE PROJECTS (Guilds 6-10):
+# 6. Expense tracker — OOP, file I/O (JSON), error handling
+# 7. Weather app — API calls (requests), JSON parsing
+# 8. Password manager — encryption, file I/O, classes
+# 9. File organizer — os module, automation
+# 10. Quiz app — classes, data structures, file I/O
+
+# ADVANCED PROJECTS (Guilds 11-20):
+# 11. Web scraper dashboard — scraping, pandas, Flask API
+# 12. Blog API — FastAPI, database, authentication
+# 13. Data analysis pipeline — pandas, visualization, automation
+# 14. Chat bot — APIs, string processing, comprehensions
+# 15. Automated backup system — scheduling, logging, email
+
+# CAPSTONE IDEAS (combine everything):
+# 16. E-commerce API (OOP + database + API + auth + tests)
+# 17. Stock price analyzer (scraping + pandas + visualization + API)
+# 18. Personal finance dashboard (data analysis + automation + web)
+
+# Pick ONE project. Build it. Struggle. Learn. Ship it.</div>
+
+<div class="code-block"># ── STEP 10: The complete journey — 20 guilds united ──
 # You started with clay (variables) and reached the stars (concurrency).
 # Here's everything you learned, in one view:
+
+# ═══════════════════════════════════════════════════════
+# FOUNDATION (Guilds 1-5):
+#   1. Variables    — naming, types, f-strings, input
+#   2. Control Flow — if/elif/else, for, while, match/case
+#   3. Functions    — def, parameters, return, scope, type hints
+#   4. Data Structures — list, tuple, dict, set
+#   5. Strings      — slicing, methods, f-strings, regex
 #
-# Foundation:     variables → control flow → functions → data structures → strings
-# Building:       file I/O → errors → modules → OOP → comprehensions
-# Mastery:        decorators → context managers → generators → functional → concurrency
-# Real World:     data analysis → web scraping → APIs → automation → thinking
+# BUILDING (Guilds 6-10):
+#   6. File I/O     — read/write, JSON, CSV, pathlib
+#   7. Errors       — try/except, raise, custom exceptions
+#   8. Modules      — import, packages, pip, venv
+#   9. OOP          — class, inheritance, polymorphism, dataclass
+#   10. Comprehensions — list/dict/set/generator expressions
 #
+# MASTERY (Guilds 11-15):
+#   11. Decorators     — @syntax, functools.wraps, @timer, @cache
+#   12. Context Managers — with, __enter__/__exit__, @contextmanager
+#   13. Generators      — yield, lazy evaluation, pipelines
+#   14. Functional      — map, filter, reduce, lambda, closures
+#   15. Concurrency     — threading, asyncio, multiprocessing
+#
+# REAL WORLD (Guilds 16-20):
+#   16. Data Analysis   — pandas, groupby, visualization
+#   17. Web Scraping    — requests, BeautifulSoup, APIs
+#   18. Building APIs   — Flask, FastAPI, REST, CRUD
+#   19. Automation      — schedule, cron, argparse, logging
+#   20. Thinking        — problem-solving, AI usage, craftsmanship
+# ═══════════════════════════════════════════════════════
+
+# You now know more Python than 90% of people who call themselves
+# "programmers." But knowledge is not skill. Skill comes from BUILDING.
+
 # Now go build something.
 # Not because someone told you to.
-# Because you have a problem to solve and the tools to solve it.</div>
+# Because you have a problem to solve and the tools to solve it.
+
+# AI কোড লেখে, তুমি ভাবো।
+# কারিগর তুমি, হাতিয়ার AI।
+# এখন যাও — কিছু বানাও।
+
+# "AI writes code. You think.
+#  You are the craftsman. AI is your tool.
+#  Now go — build something."</div>
 
 <div class="diagram">
   <div class="diag-title">How to Think Like a Programmer — 5 Steps</div>
