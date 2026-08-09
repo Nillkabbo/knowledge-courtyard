@@ -643,14 +643,17 @@ def backup_database():
     backup_path = f"backups/db_{timestamp}.sql"
 
     try:
+        backup_file = open(backup_path, "w")
         subprocess.run(
             ["mysqldump", "-u", "root", "mydb"],
-            stdout=open(backup_path, "w"),
+            stdout=backup_file,
             check=True
         )
+        backup_file.close()  # explicitly close
         logger.info(f"Backup created: {backup_path}")
         return True
     except subprocess.CalledProcessError as e:
+        backup_file.close()
         logger.error(f"Backup FAILED: {e}")
         return False
 
