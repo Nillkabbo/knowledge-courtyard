@@ -892,87 +892,216 @@ doors.push({
     aen:"GET = read data. POST = send data. Flask: @app.route('/path'). Each URL maps to a function."
   },
   story:`
-<p class="scene-setting">অষ্টাদশ গিল্ড। দূতাবাস। আনুষ্ঠানিক গন্ধ, সিলের ছাপ, নিয়মের শৃঙ্খলা। রাষ্ট্রদূত ফাহিম প্রতিটা দরজায় একটা নিয়ম স্থাপন করেছেন — কোন দরজায় কী চাইলে কী পাওয়া যায়। "এটাই API," তিনি বলেন। "তোমার প্রোগ্রামের দরজা — বাইরের জগত নির্দিষ্ট নিয়মে তোমার সাথে যোগাযোগ করে। প্রতিটা URL একটা দরজা।"</p>
-<p class="scene-setting en">Eighteenth guild. The Embassy. Formal atmosphere, seal stamps, orderly rules. Ambassador Fahim has established a rule at each door — what to request, what to receive. "This is an API," he says. "Your program's doors — the outside world communicates with you by specific rules. Each URL is a door."</p>
+<p class="scene-setting">অষ্টাদশ গিল্ড। দূতাবাস। আনুষ্ঠানিক গন্ধ, সিলের ছাপ, নিয়মের শৃঙ্খলা। রাষ্ট্রদূত ফাহিম প্রতিটা দরজায় একটা নিয়ম স্থাপন করেছেন — কোন দরজায় কী চাইলে কী পাওয়া যায়। "এটাই API," তিনি বলেন। "তোমার প্রোগ্রামের দরজা — বাইরের জগত নির্দিষ্ট নিয়মে তোমার সাথে যোগাযোগ করে। প্রতিটা URL একটা দরজা। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Eighteenth guild. The Embassy. Formal atmosphere, seal stamps, orderly rules. Ambassador Fahim has established a rule at each door — what to request, what to receive. "This is an API," he says. "Your program's doors — the outside world communicates with you by specific rules. Each URL is a door. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তুমি একটা task manager বানিয়েছ। এখন মোবাইল app থেকে task দেখতে, যোগ করতে, মুছতে চাও। কীভাবে? API বানাও — প্রতিটা কাজের জন্য একটা URL। GET /tasks (সব দেখো), POST /tasks (নতুন যোগ), DELETE /tasks/5 (মুছো)।</div>
-<div class="dialogue en">Problem: You built a task manager. Now you want a mobile app to view, add, delete tasks. How? Build an API — one URL per action. GET /tasks, POST /tasks, DELETE /tasks/5.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তুমি একটা task manager বানিয়েছ। এখন মোবাইল app থেকে task দেখতে, যোগ করতে, মুছতে চাও। কীভাবে? API বানাও — প্রতিটা কাজের জন্য একটা URL। GET /tasks, POST /tasks, DELETE /tasks/5। এটাই REST।</div>
+<div class="dialogue en">First question: you built a task manager. Now a mobile app wants to view, add, delete tasks. How? Build an API — one URL per action. GET /tasks, POST /tasks, DELETE /tasks/5. This is REST.</div>
+
+<div class="code-block"># ── STEP 1: What is an API? ──
+# API = Application Programming Interface.
+# It's a set of URLs that let OTHER programs talk to YOUR program.
+
+# Think of a restaurant:
+# - You (client) look at the MENU and order
+# - The WAITER (API) takes your order to the kitchen
+# - The KITCHEN (your code) prepares the food
+# - The waiter brings the food back to you
+
+# In web terms:
+# - Client (browser, mobile app) sends a REQUEST to a URL
+# - Your API receives it, does something, returns a RESPONSE
+# - The response is usually JSON (structured data)
+
+# Example API request and response:
+# REQUEST:  GET https://api.example.com/tasks
+# RESPONSE: [
+#   {"id": 1, "title": "Learn Python", "done": false},
+#   {"id": 2, "title": "Build API", "done": false}
+# ]
+
+# The client doesn't need to know HOW your code works.
+# It just needs to know the URL and what to expect back.
+
+# Two popular Python frameworks for building APIs:
+# - Flask: simple, classic, great for learning
+# - FastAPI: modern, fast, auto-documentation, type validation</div>
+
+<div class="code-block"># ── STEP 2: HTTP methods — the 4 verbs ──
+# Every API request uses an HTTP method (verb).
+
+# GET    — READ data (fetch a page, list tasks)
+# POST   — CREATE data (add a new task)
+# PUT    — UPDATE data (edit an existing task)
+# DELETE — REMOVE data (delete a task)
+
+# The 4 operations map to CRUD:
+# C - Create → POST
+# R - Read   → GET
+# U - Update → PUT
+# D - Delete → DELETE
+
+# REST conventions for a Task API:
+# GET    /tasks       → get ALL tasks
+# GET    /tasks/5     → get task with ID 5
+# POST   /tasks       → create a new task
+# PUT    /tasks/5     → update task with ID 5
+# DELETE /tasks/5     → delete task with ID 5
+#               ↑ resource name  ↑ specific ID
+
+# Status codes (the API's way of saying what happened):
+# 200 = OK (success)
+# 201 = Created (new resource made)
+# 400 = Bad Request (client sent bad data)
+# 404 = Not Found
+# 500 = Server Error (your code broke)</div>
+
+<div class="code-block"># ── STEP 3: Your first Flask app ──
+# Flask is the simplest way to build a Python web API.
+
+# Install (in terminal):
+# pip install flask
+
+from flask import Flask, jsonify
+
+# Create the app:
+app = Flask(__name__)
+
+# Define a route (URL → function):
+@app.route("/")
+def home():
+    return jsonify({"message": "Welcome to my API!"})
+
+@app.route("/hello")
+def hello():
+    return jsonify({"greeting": "Hello, World!"})
+
+# Run the server:
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
+
+# Now visit in your browser:
+# http://localhost:5000/       → {"message": "Welcome to my API!"}
+# http://localhost:5000/hello  → {"greeting": "Hello, World!"}
+
+# How it works:
+# 1. @app.route("/hello") maps the URL "/hello" to the function
+# 2. When someone visits /hello, Flask calls hello()
+# 3. jsonify() converts the dict to JSON
+# 4. The browser receives the JSON response</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> ফাহিম বললেন — এক ডেভেলপার API বানালো কোনো validation ছাড়া। ইউজার negative price পাঠালো — database corrupt। কোনো auth ছাড়া — যে কেউ যে কারো ডেটা মুছলো। API = ফটক — validation ও auth বাধ্যতামূলক। ভেতরে ঢুকলেই সব চলবে না।</div></div>
 
-<div class="code-block"># guild18_api.py — Embassy
-# Ambassador Fahim: "Each door has a rule. Follow it."
+<div class="code-block"># ── STEP 4: Building a Task API (GET routes) ──
+# Let's build a complete task management API.
 
-# ══════════════════════════════════════
-# FLASK: Simple, classic, great for learning
-# ══════════════════════════════════════
-# pip install flask
-
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-# In-memory "database" (use a real DB in production)
+# In-memory "database" (use real DB in production):
 tasks = [
     {"id": 1, "title": "Learn Python", "done": False},
     {"id": 2, "title": "Build API", "done": False},
 ]
 
-# ── GET: Read all tasks ──
+# GET /tasks — return ALL tasks:
 @app.route("/tasks", methods=["GET"])
 def get_tasks():
-    return jsonify(tasks)  # JSON response
+    return jsonify(tasks)
 
-# ── GET: Read one task ──
+# GET /tasks/&lt;id&gt; — return ONE task:
 @app.route("/tasks/&lt;int:task_id&gt;", methods=["GET"])
 def get_task(task_id):
+    # Find the task by ID:
     task = next((t for t in tasks if t["id"] == task_id), None)
+
     if task is None:
-        return jsonify({"error": "Not found"}), 404
+        return jsonify({"error": "Task not found"}), 404
+
     return jsonify(task)
 
-# ── POST: Create a new task ──
+# Visit:
+# http://localhost:5000/tasks     → all tasks
+# http://localhost:5000/tasks/1   → {"id": 1, "title": "Learn Python", ...}
+# http://localhost:5000/tasks/99  → {"error": "Task not found"} (404)
+
+# Note: &lt;int:task_id&gt; in the URL extracts the number as an integer.
+# The value is passed to the function as task_id.</div>
+
+<div class="code-block"># ── STEP 5: POST — creating new tasks ──
+# POST receives data from the client and creates something new.
+
 @app.route("/tasks", methods=["POST"])
 def create_task():
+    # Get JSON data from the request body:
     data = request.get_json()
 
     # VALIDATION — always validate input!
     if not data or "title" not in data:
-        return jsonify({"error": "Title required"}), 400
+        return jsonify({"error": "Title is required"}), 400
 
+    # Create the new task:
     new_task = {
         "id": len(tasks) + 1,
         "title": data["title"],
-        "done": False
+        "done": False,
     }
     tasks.append(new_task)
-    return jsonify(new_task), 201  # 201 Created
 
-# ── PUT: Update a task ──
+    # Return the new task with 201 Created status:
+    return jsonify(new_task), 201
+
+# How to test a POST request:
+# Using curl (in terminal):
+# curl -X POST http://localhost:5000/tasks \
+#      -H "Content-Type: application/json" \
+#      -d '{"title": "Learn Flask"}'
+
+# Using Python (requests library):
+# import requests
+# r = requests.post("http://localhost:5000/tasks",
+#                   json={"title": "Learn Flask"})
+# print(r.json())  # {"id": 3, "title": "Learn Flask", "done": false}
+
+# The client sends JSON → your API validates → creates → responds</div>
+
+<div class="code-block"># ── STEP 6: PUT and DELETE — update and remove ──
+# PUT updates an existing resource. DELETE removes it.
+
+# PUT /tasks/&lt;id&gt; — update a task:
 @app.route("/tasks/&lt;int:task_id&gt;", methods=["PUT"])
 def update_task(task_id):
     task = next((t for t in tasks if t["id"] == task_id), None)
     if task is None:
-        return jsonify({"error": "Not found"}), 404
+        return jsonify({"error": "Task not found"}), 404
 
     data = request.get_json()
+    # Update only the fields the client sent:
     task["title"] = data.get("title", task["title"])
     task["done"] = data.get("done", task["done"])
+
     return jsonify(task)
 
-# ── DELETE: Remove a task ──
+# DELETE /tasks/&lt;id&gt; — delete a task:
 @app.route("/tasks/&lt;int:task_id&gt;", methods=["DELETE"])
 def delete_task(task_id):
     global tasks
+    # Filter out the task with this ID:
     tasks = [t for t in tasks if t["id"] != task_id]
-    return jsonify({"message": "Deleted"}), 200
+    return jsonify({"message": f"Task {task_id} deleted"}), 200
 
-if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+# Now you have a COMPLETE CRUD API:
+# GET    /tasks       → list all
+# POST   /tasks       → create new
+# GET    /tasks/&lt;id&gt;  → get one
+# PUT    /tasks/&lt;id&gt;  → update one
+# DELETE /tasks/&lt;id&gt;  → delete one</div>
 
-# ══════════════════════════════════════
-# FASTAPI: Modern, async, auto-docs, type hints
-# ══════════════════════════════════════
+<div class="code-block"># ── STEP 7: FastAPI — the modern alternative ──
+# FastAPI is newer, faster, and has built-in validation + docs.
+
+# Install (in terminal):
 # pip install fastapi uvicorn
 
 from fastapi import FastAPI, HTTPException
@@ -980,41 +1109,163 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-# Pydantic model — automatic validation!
+# Pydantic model — AUTOMATIC validation:
 class TaskCreate(BaseModel):
     title: str
     done: bool = False
 
+class TaskResponse(BaseModel):
+    id: int
+    title: str
+    done: bool
+
+# GET — no decorator methods needed, just type hints:
 @app.get("/tasks")
 def get_tasks():
     return tasks
 
+# POST — FastAPI validates the body automatically!
 @app.post("/tasks", status_code=201)
 def create_task(task: TaskCreate):
-    # FastAPI validates automatically — no manual checks!
-    new_task = {"id": len(tasks) + 1, **task.model_dump()}  # Pydantic v2
+    # No manual validation needed — Pydantic does it!
+    # If title is missing or wrong type → auto 422 error
+    new_task = {"id": len(tasks) + 1, **task.model_dump()}
     tasks.append(new_task)
     return new_task
 
-# Auto-generated docs at /docs and /redoc
+# GET one — with HTTPException for errors:
+@app.get("/tasks/{task_id}")
+def get_task(task_id: int):
+    task = next((t for t in tasks if t["id"] == task_id), None)
+    if task is None:
+        raise HTTPException(status_code=404, detail="Task not found")
+    return task
+
 # Run: uvicorn main:app --reload
+# Auto-docs at: http://localhost:8000/docs (Swagger UI)
+#              http://localhost:8000/redoc (ReDoc)</div>
 
-# ══════════════════════════════════════
-# HTTP METHODS (the 4 verbs of the web)
-# ══════════════════════════════════════
-# GET    /tasks        → list all
-# GET    /tasks/1      → get one
-# POST   /tasks        → create new
-# PUT    /tasks/1      → update one
-# DELETE /tasks/1      → delete one
-#              ↑ resource + ID
+<div class="code-block"># ── STEP 8: FastAPI vs Flask ──
+# When to use which?
 
-# ── STATUS CODES ──
-# 200 = OK (success)
-# 201 = Created
-# 400 = Bad Request (client error)
-# 404 = Not Found
-# 500 = Server Error</div>
+# FLASK:
+# ✅ Simple and classic
+# ✅ Great for learning
+# ✅ Huge ecosystem of extensions
+# ✅ Flexible (do things your way)
+# ❌ Manual validation (you write all the checks)
+# ❌ No auto-documentation
+# ❌ Synchronous by default
+
+# FASTAPI:
+# ✅ Automatic validation (Pydantic)
+# ✅ Auto-generated API docs (/docs)
+# ✅ Async support (high performance)
+# ✅ Type hints throughout
+# ✅ Modern Python (3.7+)
+# ❌ Newer (smaller community than Flask)
+# ❌ More concepts to learn upfront
+
+# ┌──────────────┬─────────────────────┬─────────────────────────┐
+# │ Feature      │ Flask               │ FastAPI                 │
+# ├──────────────┼─────────────────────┼─────────────────────────┤
+# │ Validation   │ Manual              │ Automatic (Pydantic)    │
+# │ API docs     │ Need extension      │ Built-in (/docs)        │
+# │ Async        │ Needs extension     │ Built-in                │
+# │ Speed        │ Good                │ Excellent               │
+# │ Learning     │ Easier              │ Slightly more           │
+# │ Best for     │ Learning, simple    │ Production, modern apps │
+# └──────────────┴─────────────────────┴─────────────────────────┘</div>
+
+<div class="code-block"># ── STEP 9: Query parameters and path parameters ──
+# APIs accept data in three ways: path, query, and body.
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+# PATH parameter — part of the URL:
+@app.get("/tasks/{task_id}")
+def get_task(task_id: int):  # task_id comes from the URL
+    return {"task_id": task_id}
+# GET /tasks/5 → {"task_id": 5}
+
+# QUERY parameter — after ? in the URL:
+@app.get("/tasks")
+def list_tasks(skip: int = 0, limit: int = 10):
+    # /tasks?skip=0&amp;limit=5
+    return tasks[skip : skip + limit]
+# GET /tasks?skip=10&amp;limit=5 → tasks 11-15
+
+# BODY — JSON data sent with POST/PUT:
+@app.post("/tasks")
+def create_task(task: TaskCreate):  # Pydantic validates the body
+    return task
+# POST /tasks with JSON body: {"title": "Learn", "done": false}
+
+# Practical example — search + filter:
+@app.get("/tasks/search")
+def search_tasks(
+    status: str = None,      # ?status=done
+    priority: int = None,    # ?priority=3
+):
+    results = tasks
+    if status:
+        results = [t for t in results if t.get("status") == status]
+    if priority:
+        results = [t for t in results if t.get("priority") == priority]
+    return results
+# GET /tasks/search?status=done&amp;priority=3</div>
+
+<div class="code-block"># ── STEP 10: Complete production-ready API structure ──
+# A real API has more than just routes. Here's the full picture.
+
+# ┌─────────────────────────────────────────────────────┐
+# │ Production API Checklist                            │
+# ├─────────────────────────────────────────────────────┤
+# │ ✅ Input validation (Pydantic / manual)             │
+# │ ✅ Error handling (try/except, HTTPException)       │
+# │ ✅ Authentication (API keys, JWT tokens)            │
+# │ ✅ Rate limiting (prevent abuse)                    │
+# │ ✅ CORS (allow browser apps to call your API)       │
+# │ ✅ Database (not in-memory list!)                   │
+# │ ✅ Logging (track requests and errors)              │
+# │ ✅ Tests (pytest)                                   │
+# │ ✅ API documentation (/docs)                        │
+# └─────────────────────────────────────────────────────┘
+
+# Example: adding error handling and CORS to FastAPI:
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI(title="Task API", version="1.0")
+
+# Allow browser apps (React, Vue) to call this API:
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # frontend URL
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Error handling:
+@app.exception_handler(ValueError)
+async def value_error_handler(request, exc):
+    return {"error": str(exc)}, 400
+
+# SUMMARY:
+# ┌──────────────┬───────────────────────────────────┐
+# │ Method       │ Purpose                          │
+# ├──────────────┼───────────────────────────────────┤
+# │ GET          │ Read data (no side effects)       │
+# │ POST         │ Create new data                   │
+# │ PUT          │ Update existing data              │
+# │ DELETE       │ Remove data                       │
+# │ Flask        │ Simple, classic framework         │
+# │ FastAPI      │ Modern, validated, documented     │
+# │ Pydantic     │ Automatic input validation        │
+# │ /docs        │ Auto-generated API documentation  │
+# └──────────────┴───────────────────────────────────┘</div>
 
 <div class="diagram">
   <div class="diag-title">REST API — ৪টি দরজা: GET · POST · PUT · DELETE</div>
