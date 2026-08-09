@@ -18,82 +18,306 @@ doors.push({
     aen:"with open() = auto-closes file even on error. Bare open() = must call close(), if forgotten = file lock, memory leak."
   },
   story:`
-<p class="scene-setting">ষষ্ঠ গিল্ড। আর্কাইভের কক্ষ। পুরোনো পাপিরাসের গন্ধ, ধুলোর কণা, কাঠের তাকে হাজার স্ক্রল। আর্কাইভিস্ট আমিনা একটা খোলা স্ক্রল গুটিয়ে রাখছেন। "প্রতিটা স্ক্রল খোলো, পড়ো, তারপর গুটিয়ে রাখো," তিনি বলেন। "খোলা রাখলে ধুলো পড়বে, পানি লাগবে, নষ্ট হবে। Python-এ file-ও তেমনি — খোলো, পড়ো, বন্ধ করো। with statement দিয়ে স্বয়ংক্রিয়ভাবে।"</p>
-<p class="scene-setting en">Sixth guild. The Archive. Smell of old papyrus, dust motes, a thousand scrolls on wooden shelves. Archivist Amina is rolling up an open scroll. "Each scroll: open it, read it, then close it," she says. "Leave it open — dust falls, water spills, it's ruined. Python files are the same — open, read, close. With the 'with' statement, automatic."</p>
+<p class="scene-setting">ষষ্ঠ গিল্ড। আর্কাইভের কক্ষ। পুরোনো পাপিরাসের গন্ধ, ধুলোর কণা, কাঠের তাকে হাজার স্ক্রল। আর্কাইভিস্ট আমিনা একটা খোলা স্ক্রল গুটিয়ে রাখছেন। "প্রতিটা স্ক্রল খোলো, পড়ো, তারপর গুটিয়ে রাখো," তিনি বলেন। "খোলা রাখলে ধুলো পড়বে, পানি লাগবে, নষ্ট হবে। Python-এ file-ও তেমনি — খোলো, পড়ো, বন্ধ করো। with statement দিয়ে স্বয়ংক্রিয়ভাবে। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Sixth guild. The Archive. Smell of old papyrus, dust motes, a thousand scrolls on wooden shelves. Archivist Amina is rolling up an open scroll. "Each scroll: open it, read it, then close it," she says. "Leave it open — dust falls, water spills, it's ruined. Python files are the same — open, read, close. With the 'with' statement, automatic. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তোমার ৫০০ গ্রাহকের তথ্য dict-এ আছে। প্রোগ্রাম বন্ধ হলে সব মুছে যাবে। কোথাও সংরক্ষণ করতে হবে — file-এ। JSON file-এ লেখো, পরে পড়ো। এটাই file I/O — তথ্যকে স্থায়ী করা।</div>
-<div class="dialogue en">Problem: 500 customer records in a dict. Program closes — everything vanishes. Must persist somewhere — a file. Write to JSON, read it back. This is file I/O — making data permanent.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তোমার প্রোগ্রামে তথ্য আছে — variables, lists, dicts। কিন্তু প্রোগ্রাম বন্ধ হলে কী হয়? সব মুছে যায়। মেমরি পরিষ্কার হয়ে যায়। তথ্য স্থায়ী করতে হলে — file-এ লিখতে হবে। এটাই file I/O।</div>
+<div class="dialogue en">First question: your program has data — variables, lists, dicts. But when the program closes, what happens? Everything vanishes. Memory is cleared. To make data permanent, you must write it to a file. This is file I/O.</div>
+
+<div class="code-block"># ── STEP 1: Writing your first file ──
+# open() opens a file. write() puts text inside. close() saves it.
+# If the file doesn't exist, Python creates it.
+
+# ❌ The OLD way (DON'T do this):
+f = open("hello.txt", "w")    # "w" = write mode
+f.write("Hello, World!")
+f.write("\\nThis is line 2.")
+f.close()                      # MUST remember to close!
+
+# The problem: if your program crashes before close(),
+# the file stays open and locked. Data may be lost.
+
+# ✅ The SAFE way — with statement (ALWAYS use this!):
+with open("hello.txt", "w") as f:
+    f.write("Hello, World!")
+    f.write("\\nThis is line 2.")
+# When the 'with' block ends, Python closes the file AUTOMATICALLY.
+# Even if an error happens — the file still closes. Safe!</div>
+
+<div class="code-block"># ── STEP 2: File modes ──
+# The mode tells Python WHAT you want to do with the file.
+
+# "w" = WRITE (create new or OVERWRITE existing):
+with open("data.txt", "w") as f:
+    f.write("This overwrites everything.")
+    # ⚠️ If data.txt had content, it's GONE now!
+
+# "a" = APPEND (add to end, keep existing):
+with open("log.txt", "a") as f:
+    f.write("\\nNew log entry.")   # adds to end, old content safe
+
+# "r" = READ (file must exist):
+with open("data.txt", "r") as f:
+    content = f.read()
+    print(content)   # shows everything in the file
+
+# "r" is the DEFAULT, so you can skip it:
+with open("data.txt") as f:
+    content = f.read()
+
+# "b" = BINARY (for images, PDFs, non-text files):
+# with open("photo.jpg", "rb") as f:    # "rb" = read binary
+#     data = f.read()
+
+# ┌────────┬──────────────────────────────────┐
+# │ Mode   │ What it does                      │
+# ├────────┼──────────────────────────────────┤
+# │ "r"    │ Read (file must exist)            │
+# │ "w"    │ Write (OVERWRITES! creates if new)│
+# │ "a"    │ Append (adds to end)              │
+# │ "r+"   │ Read AND write                    │
+# │ "b"    │ Binary (add to any mode: rb, wb)  │
+# └────────┴──────────────────────────────────┘</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> আমিনা বললেন — এক শিক্ষানবিশ file খুললো, পড়লো, কিন্তু close() করলো না। প্রোগ্রাম crash করে গেলো। file "locked" — অন্য কেউ খুলতে পারলো না। সারাদিন ধরে locked। with open() দিলে — crash হলেও Python স্বয়ংক্রিয়ভাবে বন্ধ করে। with = নিরাপত্তা।</div></div>
 
-<div class="code-block"># guild6_files.py — Archive Problem
-# Archivist Amina: "Open, read, close. Always close."
+<div class="code-block"># ── STEP 3: Reading files ──
+# Three ways to read. Each is useful in different situations.
+
+# 1. .read() — read the ENTIRE file as one string:
+with open("data.txt") as f:
+    everything = f.read()
+    print(everything)
+
+# 2. .readlines() — read into a LIST of lines:
+with open("data.txt") as f:
+    lines = f.readlines()
+    print(lines)  # ['line1\\n', 'line2\\n', 'line3']
+    # Each line includes the \\n at the end
+
+# 3. Iterate line by line (BEST for big files!):
+with open("data.txt") as f:
+    for line in f:
+        clean_line = line.strip()  # remove \\n
+        print(clean_line)
+
+# Why is line-by-line best? If your file is 10GB,
+# .read() loads ALL 10GB into RAM. The for loop
+# loads ONE line at a time — uses almost no memory!</div>
+
+<div class="code-block"># ── STEP 4: Writing multiple lines ──
+# How to write many lines to a file.
+
+# Method 1: multiple .write() calls:
+with open("report.txt", "w") as f:
+    f.write("=== REPORT ===\\n")
+    f.write("Date: 2024-01-15\\n")
+    f.write("Status: Complete\\n")
+
+# Method 2: write a LIST of lines with writelines():
+lines = [
+    "=== REPORT ===\\n",
+    "Date: 2024-01-15\\n",
+    "Status: Complete\\n",
+]
+with open("report.txt", "w") as f:
+    f.writelines(lines)   # writes each item (must add \\n yourself)
+
+# Method 3: write from a loop (log file example):
+with open("app.log", "w") as f:
+    for i in range(5):
+        f.write(f"[{i}] Processing item {i}...\\n")
+
+# ⚠️ Don't forget \\n! Without it, everything is on ONE line.</div>
+
+<div class="code-block"># ── STEP 5: JSON — the most common data format ──
+# JSON = JavaScript Object Notation.
+# It's the STANDARD way to save Python dicts/lists to a file.
+# Used EVERYWHERE: APIs, config files, databases, NoSQL.
 
 import json
 
-# ── THE PROBLEM: Save 500 customers permanently ──
+# Our data (a list of dicts — very common structure):
 customers = [
     {"name": "Fatima", "email": "fatima@mail.com", "age": 25},
     {"name": "Ahmed", "email": "ahmed@mail.com", "age": 30},
     {"name": "Sara", "email": "sara@mail.com", "age": 28},
 ]
 
-# ❌ BAD: Bare open — file stays open if error occurs
-f = open("customers.json", "w")
-f.write(json.dumps(customers))
-# f.close()  ← forgotten? file locked forever!
-
-# ✅ GOOD: with statement — auto-close even on error
-# "w" = write, "r" = read (default), "a" = append
+# SAVE to JSON file:
 with open("customers.json", "w") as f:
-    json.dump(customers, f, indent=2)
-# file auto-closed here — even if error occurred!
+    json.dump(customers, f, indent=2)   # indent=2 makes it pretty
 
-# ── READING: Load data back ──
-with open("customers.json", "r") as f:
+# LOAD from JSON file:
+with open("customers.json") as f:
     loaded = json.load(f)
 
 print(f"Loaded {len(loaded)} customers")
 for c in loaded:
     print(f"  {c['name']}: {c['email']}")
 
-# ── CSV FILES: Very common in data science ──
+# The JSON file looks like this (human-readable!):
+# [
+#   {
+#     "name": "Fatima",
+#     "email": "fatima@mail.com",
+#     "age": 25
+#   },
+#   ...
+# ]</div>
+
+<div class="code-block"># ── STEP 6: CSV — spreadsheet data ──
+# CSV = Comma-Separated Values. Each row is a line, columns split by commas.
+# Used for: data export, Excel, databases, data science.
+
 import csv
 
-# Write CSV
+# WRITE a CSV file:
 with open("tasks.csv", "w", newline="") as f:
     writer = csv.writer(f)
-    writer.writerow(["Task", "Priority", "Status"])
-    writer.writerow(["Fix bug", 1, "pending"])
+    writer.writerow(["Task", "Priority", "Status"])  # header row
+    writer.writerow(["Fix login bug", 1, "pending"])
     writer.writerow(["Write docs", 3, "done"])
+    writer.writerow(["Deploy app", 2, "pending"])
 
-# Read CSV
-with open("tasks.csv", "r") as f:
-    reader = csv.DictReader(f)
+# READ a CSV file (as dictionaries — each row = one dict):
+with open("tasks.csv") as f:
+    reader = csv.DictReader(f)  # uses first row as column names
     for row in reader:
-        print(f"  {row['Task']} (P:{row['Priority']}) — {row['Status']}")
+        print(f"  {row['Task']} (Priority: {row['Priority']}) - {row['Status']}")
 
-# ── TEXT FILES: Line by line ──
-# Write
-with open("notes.txt", "w") as f:
-    f.write("Day 1: Learned Python\\n")
-    f.write("Day 2: Built first program\\n")
+# The CSV file looks like:
+# Task,Priority,Status
+# Fix login bug,1,pending
+# Write docs,3,done
+# Deploy app,2,pending</div>
 
-# Read line by line (memory efficient for big files)
-with open("notes.txt", "r") as f:
-    for line in f:
-        print(line.strip())  # strip removes \\n
+<div class="code-block"># ── STEP 7: Check if file exists ──
+# Before reading a file, check if it exists (avoid FileNotFoundError).
 
-# ── APPEND: Add without overwriting ──
-with open("notes.txt", "a") as f:  # "a" = append
-    f.write("Day 3: Mastered file I/O\\n")
+import os
+from pathlib import Path
 
-# ── FILE MODES ──
-# "r"  = read (file must exist)
-# "w"  = write (overwrites! file created if missing)
-# "a"  = append (adds to end)
-# "r+" = read and write
-# "b"  = binary mode (e.g., "rb" for images)</div>
+# Method 1: os.path.exists()
+if os.path.exists("data.txt"):
+    with open("data.txt") as f:
+        print(f.read())
+else:
+    print("File does not exist!")
+
+# Method 2: pathlib (modern, preferred)
+filepath = Path("data.txt")
+if filepath.exists():
+    content = filepath.read_text()   # one-liner read!
+    print(content)
+else:
+    print("File does not exist!")
+
+# pathlib shortcuts (very clean):
+# Path("f.txt").read_text()      — read entire file as string
+# Path("f.txt").write_text("x")  — write string to file
+# Path("f.txt").exists()         — True if file exists
+# Path("data/").mkdir()          — create directory</div>
+
+<div class="code-block"># ── STEP 8: A real app — note taker ──
+# Combine everything: write, read, append.
+
+from pathlib import Path
+from datetime import datetime
+
+NOTES_FILE = Path("mynotes.txt")
+
+def add_note(text):
+    """Add a timestamped note to the file."""
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+    with open(NOTES_FILE, "a") as f:   # "a" = append (don't overwrite!)
+        f.write(f"[{timestamp}] {text}\\n")
+    print(f"Note added.")
+
+def read_notes():
+    """Read all notes."""
+    if not NOTES_FILE.exists():
+        print("No notes yet!")
+        return
+    print("--- Your Notes ---")
+    with open(NOTES_FILE) as f:
+        for line in f:
+            print(line.rstrip())   # rstrip removes trailing \\n
+
+# Use it:
+add_note("Learned Python file I/O")
+add_note("Built my first app!")
+read_notes()
+# --- Your Notes ---
+# [2024-01-15 14:30] Learned Python file I/O
+# [2024-01-15 14:31] Built my first app!</div>
+
+<div class="code-block"># ── STEP 9: Working with directories ──
+# Sometimes you need to work with FOLDERS, not just files.
+
+import os
+from pathlib import Path
+
+# List files in a directory:
+files = os.listdir(".")   # "." = current directory
+print(files)  # ['data.txt', 'notes.txt', 'app.py', ...]
+
+# Modern way with pathlib:
+for item in Path(".").iterdir():
+    if item.is_file():
+        print(f"  File: {item.name}")
+    elif item.is_dir():
+        print(f"  Folder: {item.name}/")
+
+# Create a directory:
+Path("backups").mkdir(exist_ok=True)  # exist_ok = no error if exists
+
+# Find all .txt files:
+for txt_file in Path(".").glob("*.txt"):
+    print(f"Found: {txt_file}")
+
+# Find all .py files recursively (in subfolders too):
+for py_file in Path(".").rglob("*.py"):
+    print(f"Python file: {py_file}")
+
+# Join paths (cross-platform — works on Windows, Mac, Linux):
+config_path = Path("config") / "settings.json"
+# On Windows: config\\settings.json
+# On Mac/Linux: config/settings.json</div>
+
+<div class="code-block"># ── STEP 10: File format summary ──
+# Different formats for different jobs:
+
+# .txt  → plain text (logs, notes, simple data)
+# .json → structured data (dicts, lists) — MOST COMMON
+# .csv  → tabular data (spreadsheet-like)
+# .yaml → config files (cleaner than JSON for humans)
+# .pkl  → Python objects (pickle — save any Python object)
+# .xml  → legacy structured data (used in old systems)
+
+# The pickle module saves ANY Python object:
+import pickle
+
+my_data = {"scores": [90, 85, 95], "name": "Fatima"}
+
+# Save:
+with open("data.pkl", "wb") as f:     # "wb" = write binary
+    pickle.dump(my_data, f)
+
+# Load:
+with open("data.pkl", "rb") as f:     # "rb" = read binary
+    loaded = pickle.load(f)
+    print(loaded)  # {'scores': [90, 85, 95], 'name': 'Fatima'}
+
+# ⚠️ WARNING: Only unpickle files YOU created.
+# Malicious pickle files can execute arbitrary code!
+
+# ── THE GOLDEN RULES OF FILE I/O ──
+# 1. ALWAYS use 'with open()' — never bare open()
+# 2. Check if file exists before reading
+# 3. Use JSON for structured data, CSV for tables
+# 4. Process big files line-by-line (not .read() all at once)
+# 5. Use pathlib for modern path handling</div>
 
 <div class="diagram">
   <div class="diag-title">File I/O — খোলো, পড়ো/লেখো, বন্ধ করো</div>
