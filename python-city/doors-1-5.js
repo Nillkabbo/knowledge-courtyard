@@ -303,18 +303,238 @@ doors.push({
     aen:"if/elif/else = one-time decision. for = loop fixed times. while = loop while condition is true."
   },
   story:`
-<p class="scene-setting">দ্বিতীয় গিল্ড। নহরের কাছে। পানির শব্দ, ভেজা ঘাসের গন্ধ, শীতল বাতাস। নহরের রক্ষক ইদ্রিস দাঁড়িয়ে — হাতে কাঠের দরজা, যা পানির স্রোত বন্ধ করে বা ছাড়ে। "পানি সবসময় এক দিকে যায় না," তিনি বলেন। "কখনো ডানে, কখনো বামে, কখনো আটকে যায়। কোডও তেমনি — control flow দিয়ে দিক নির্ধারণ করো।"</p>
-<p class="scene-setting en">Second guild. By the canal. Sound of water, smell of wet grass, cool breeze. Canal keeper Idris stands — a wooden gate in hand, stopping or releasing the water's flow. "Water doesn't always go one way," he says. "Sometimes right, sometimes left, sometimes blocked. Code is the same — use control flow to direct it."</p>
+<p class="scene-setting">দ্বিতীয় গিল্ড। নহরের কাছে। পানির শব্দ, ভেজা ঘাসের গন্ধ, শীতল বাতাস। নহরের রক্ষক ইদ্রিস দাঁড়িয়ে — হাতে কাঠের দরজা, যা পানির স্রোত বন্ধ করে বা ছাড়ে। "পানি সবসময় এক দিকে যায় না," তিনি বলেন। "কখনো ডানে, কখনো বামে, কখনো আটকে যায়। কোডও তেমনি — control flow দিয়ে দিক নির্ধারণ করো। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Second guild. By the canal. Sound of water, smell of wet grass, cool breeze. Canal keeper Idris stands — a wooden gate in hand, stopping or releasing the water's flow. "Water doesn't always go one way," he says. "Sometimes right, sometimes left, sometimes blocked. Code is the same — use control flow to direct it. Let's learn one step at a time."</p>
 
-<div class="dialogue">সমস্যা: তোমার ৫০০টা কাজের তালিকা। প্রতিটা কাজের priority — ১ (জরুরি) থেকে ৫ (পরে)। এখন কাজগুলো গুরুত্ব অনুযায়ী সাজাতে হবে। হাতে করবে? ৫০০টা? মাস লাগবে। Python-এ control flow দিয়ে — if/elif/else ও for loop — সেকেন্ডে সাজাও।</div>
-<div class="dialogue en">Problem: You have 500 tasks. Each has priority 1 (urgent) to 5 (later). Sort by importance. By hand? 500? Takes a month. Python control flow — if/elif/else and for loop — sorts in seconds.</div>
+<div class="dialogue">প্রথম প্রশ্ন: প্রোগ্রাম কি সবসময় উপর থেকে নিচে এক লাইনে চলে? উত্তর: হ্যাঁ — unless তুমি control flow ব্যবহার করো। control flow = স্রোতের দিক নিয়ন্ত্রণ। দুটো হাতিয়ার: শর্ত (if) ও চক্র (loop)।</div>
+<div class="dialogue en">First question: does a program always run top-to-bottom in one line? Answer: yes — unless you use control flow. Control flow = directing the stream. Two tools: conditions (if) and loops.</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> ইদ্রিস বললেন — এক শিক্ষানবিশ while True: লিখলো — infinite loop। কখনো বন্ধ হবে না। কম্পিউটার hang করে ফেললো। কারণ exit condition ছিল না। while লেখার আগে ভাবো — কখন থামবে? নাহলে চিরকাল চলবে।</div></div>
+<div class="code-block"># ── STEP 1: The simplest decision — if ──
+# if checks a condition. If True → run the indented code.
+# If False → skip it.
 
-<div class="code-block"># guild2_tasks.py — Canal Problem
-# Master Idris: "Direct the flow. if = branch, for = cycle, while = until."
+age = 20
 
-# ── THE PROBLEM: Sort 500 tasks by priority ──
+if age &gt;= 18:
+    print("You are an adult.")    # runs because 20 >= 18 is True
+
+if age &gt;= 65:
+    print("You are a senior.")    # skipped because 20 >= 65 is False
+
+# CRITICAL: the colon : after the condition
+# CRITICAL: the INDENTATION (4 spaces or tab) shows what's inside the if
+# Python uses indentation, NOT braces like other languages</div>
+
+<div class="dialogue">ইদ্রিস বললেন — লক্ষ্য করো দুটো জিনিস। প্রথম: <code>:</code> কোলন — শর্তের শেষে। দ্বিতীয়: indent — ৪ স্পেস ডানে। Python এই indent দিয়ে বোঝে কোন কোড if-এর ভেতরে আছে। C/Java-তে {} ব্যবহার হয়, Python-ে indent।</div>
+<div class="dialogue en">Idris says — notice two things. First: the colon : at the end of the condition. Second: the indent — 4 spaces right. Python uses indentation to know what code is inside the if. C/Java use {}, Python uses indent.</div>
+
+<div class="code-block"># ── STEP 2: Two paths — if / else ──
+# Sometimes you want BOTH paths: do this OR do that.
+
+temperature = 15  # degrees Celsius
+
+if temperature &gt; 30:
+    print("It's hot! Wear shorts.")
+else:
+    print("It's not hot. Wear a jacket.")
+
+# temperature is 15, so: "It's not hot. Wear a jacket."
+
+# Try changing temperature to 35:
+temperature = 35
+if temperature &gt; 30:
+    print("It's hot! Wear shorts.")  # runs now!
+else:
+    print("It's not hot. Wear a jacket.")  # skipped</div>
+
+<div class="code-block"># ── STEP 3: Multiple paths — if / elif / else ──
+# elif = "else if" — check another condition.
+# Python checks each one top-to-bottom. First match wins.
+
+score = 85
+
+if score &gt;= 90:
+    grade = "A"
+elif score &gt;= 80:
+    grade = "B"        # runs! 85 >= 80 is True
+elif score &gt;= 70:
+    grade = "C"        # skipped (already matched)
+elif score &gt;= 60:
+    grade = "D"        # skipped
+else:
+    grade = "F"        # skipped
+
+print(f"Score {score} = Grade {grade}")  # Score 85 = Grade B
+
+# IMPORTANT: order matters! Most specific/highest first.
+# If you wrote score >= 60 first, it would match 85 and stop.</div>
+
+<div class="code-block"># ── STEP 4: Comparison operators ──
+# These are the tools for building conditions.
+
+a = 10
+b = 20
+
+# ==  equal to (NOT = which is assignment!)
+print(a == b)     # False
+print(a == 10)    # True
+
+# !=  not equal
+print(a != b)     # True
+
+# &gt;  greater than, &lt;  less than
+print(a &gt; b)      # False
+print(a &lt; b)      # True
+
+# &gt;= greater or equal, &lt;= less or equal
+print(a &gt;= 10)   # True
+print(b &lt;= 20)   # True
+
+# CRITICAL MISTAKE: = vs ==
+# = is assignment:  x = 5  (put 5 in x)
+# == is comparison: x == 5 (is x equal to 5?)
+# if x = 5:    # ERROR — this is assignment, not comparison
+# if x == 5:   # CORRECT — this checks if x is 5</div>
+
+<div class="code-block"># ── STEP 5: Combining conditions — and, or, not ──
+# Sometimes you need multiple conditions together.
+
+age = 25
+has_license = True
+
+# AND: both must be True
+if age &gt;= 18 and has_license:
+    print("You can drive.")  # both True — runs!
+
+# OR: at least one must be True
+is_raining = False
+is_snowing = True
+if is_raining or is_snowing:
+    print("Bad weather — stay in.")  # is_snowing is True — runs
+
+# NOT: reverses the condition
+is_logged_in = False
+if not is_logged_in:
+    print("Please log in.")  # not False = True — runs!
+
+# Real example: shop discount rules
+is_member = True
+purchase = 150
+if is_member and purchase &gt; 100:
+    print("15% discount applied!")
+elif is_member:
+    print("5% member discount.")
+else:
+    print("No discount.")</div>
+
+<div class="dialogue">এখন দ্বিতীয় হাতিয়ার — loops। একই কাজ বারবার করতে হলে।</div>
+<div class="dialogue en">Now the second tool — loops. When you need to repeat the same work.</div>
+
+<div class="code-block"># ── STEP 6: for loop — go through a list ──
+# for = "for each item in this collection, do something"
+
+fruits = ["apple", "banana", "cherry"]
+
+# Basic: loop through each item
+for fruit in fruits:
+    print(f"I like {fruit}")
+# Output:
+#   I like apple
+#   I like banana
+#   I like cherry
+
+# Loop through characters in a string:
+for letter in "Hello":
+    print(letter)  # H, e, l, l, o (one per line)
+
+# Loop through numbers with range():
+for i in range(5):       # 0, 1, 2, 3, 4 (NOT 5!)
+    print(f"Number: {i}")
+
+for i in range(2, 6):    # 2, 3, 4, 5 (start, stop)
+    print(i)
+
+for i in range(0, 10, 2):  # 0, 2, 4, 6, 8 (start, stop, step)
+    print(i)</div>
+
+<div class="code-block"># ── STEP 7: Useful loop tricks — enumerate and zip ──
+# enumerate: get both INDEX and VALUE
+fruits = ["apple", "banana", "cherry"]
+for index, fruit in enumerate(fruits):
+    print(f"{index}: {fruit}")
+# 0: apple
+# 1: banana
+# 2: cherry
+
+# zip: loop through TWO lists at once
+names = ["Fatima", "Ahmed", "Sara"]
+ages = [25, 30, 28]
+for name, age in zip(names, ages):
+    print(f"{name} is {age} years old")
+
+# Nested loops (loop inside loop):
+for i in range(3):        # outer loop
+    for j in range(3):    # inner loop
+        print(f"({i},{j})", end=" ")
+    print()  # new line after each row
+# (0,0) (0,1) (0,2)
+# (1,0) (1,1) (1,2)
+# (2,0) (2,1) (2,2)</div>
+
+<div class="code-block"># ── STEP 8: while loop — repeat UNTIL a condition ──
+# while = "keep going as long as this condition is True"
+
+# Countdown:
+count = 3
+while count &gt; 0:
+    print(f"Countdown: {count}")
+    count -= 1          # CRITICAL: must change the condition!
+print("Go!")
+
+# Countdown: 3
+# Countdown: 2
+# Countdown: 1
+# Go!
+
+# ⚠️ WARNING: if you forget to change the condition → INFINITE LOOP!
+# count = 3
+# while count > 0:
+#     print(count)   # count never changes → runs FOREVER!
+
+# while is best when you DON'T know how many times to loop.
+# for is best when you DO know (or have a list).</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> ইদ্রিস বললেন — এক শিক্ষানবিশ <code>while True:</code> লিখলো — infinite loop। কখনো বন্ধ হবে না। কম্পিউটার hang করে ফেললো। কারণ exit condition ছিল না। while লেখার আগে ভাবো — কখন থামবে? নাহলে চিরকাল চলবে।</div></div>
+
+<div class="code-block"># ── STEP 9: break and continue — controlling loops ──
+# break = STOP the loop immediately (exit)
+# continue = SKIP this item, go to next one
+
+# break: find the first error in a log, then stop
+logs = ["OK", "OK", "ERROR", "OK", "ERROR"]
+for log in logs:
+    if log == "ERROR":
+        print(f"Found error! Stopping.")
+        break     # exits the loop right now
+    print(f"Checked: {log}")
+# Checked: OK
+# Checked: OK
+# Found error! Stopping.
+
+# continue: skip even numbers, only print odd
+for i in range(10):
+    if i % 2 == 0:     # if even
+        continue       # skip to next iteration
+    print(f"Odd: {i}")
+# Odd: 1
+# Odd: 3
+# Odd: 5
+# Odd: 7
+# Odd: 9</div>
+
+<div class="code-block"># ── STEP 10: Real scenario — task priority labels ──
+# Combine everything: list + for loop + if/elif/else
+
 tasks = [
     {"name": "Fix login bug", "priority": 1},
     {"name": "Update docs", "priority": 3},
@@ -323,7 +543,6 @@ tasks = [
     {"name": "Buy coffee", "priority": 5},
 ]
 
-# ── if/elif/else: Branch decisions ──
 def priority_label(priority):
     """Returns urgency label based on priority number."""
     if priority == 1:
@@ -337,67 +556,36 @@ def priority_label(priority):
     else:
         return "🐌 LATER"
 
-# ── for loop: Cycle through each task ──
+# Process each task
 for task in tasks:
     label = priority_label(task["priority"])
     print(f"{label}: {task['name']}")
 
-# Output:
-#   🔥 URGENT: Fix login bug
-#   📋 MEDIUM: Update docs
-#   🔥 URGENT: Security patch
-#   📅 LOW: Refactor API
-#   🐌 LATER: Buy coffee
+# Sort by priority (using sorted + lambda)
+sorted_tasks = sorted(tasks, key=lambda t: t["priority"])
+print("\\nSorted by priority:")
+for task in sorted_tasks:
+    print(f"  P{task['priority']}: {task['name']}")</div>
 
-# ── while loop: Repeat UNTIL condition changes ──
-# Use when you don't know how many iterations
-attempts = 0
-while attempts &lt; 3:
-    print(f"Attempt {attempts + 1}")
-    attempts += 1  # CRITICAL: must change condition!
-# Output: Attempt 1, 2, 3
+<div class="code-block"># ── BONUS: match/case (Python 3.10+) — modern switch ──
+# Cleaner alternative to long if/elif chains.
+# Think of it as a switchboard.
 
-# ── break and continue: Flow control within loops ──
-# break = exit loop immediately
-# continue = skip this iteration, go to next
-for task in tasks:
-    if task["priority"] == 5:
-        continue  # skip low-priority tasks
-    if task["name"] == "Security patch":
-        print(f"🚨 Found critical: {task['name']}")
-        break  # stop searching
-    print(f"Checking: {task['name']}")
-
-# ── WALRUS OPERATOR := (Python 3.8+) — assign while checking ──
-# Instead of: line = input(); while line != "quit": ...; line = input()
-# Use walrus: while (line := input()) != "quit": ...
-numbers = [1, 2, 3, 4, 5]
-# Filter and capture in one expression
-big = [n for n in numbers if (squared := n ** 2) &gt; 5]
-print(big)  # [3, 4, 5] (squared &gt; 5 only)
-
-# ── match/case (Python 3.10+) — modern switch statement ──
 def handle_status(status: str) -&gt; str:
     """Pattern matching — cleaner than long if/elif chains."""
     match status:
         case "pending":
-            return "⏳ Waiting..."
+            return "Waiting..."
         case "in_progress":
-            return "🔧 Working..."
+            return "Working..."
         case "completed":
-            return "✅ Done!"
-        case "failed" | "cancelled":  # multiple values
-            return "❌ Error"
-        case _:  # default (like else)
-            return "❓ Unknown"
+            return "Done!"
+        case "failed" | "cancelled":  # match multiple values
+            return "Error"
+        case _:                        # _ = default (like else)
+            return "Unknown"
 
-print(handle_status("completed"))  # ✅ Done!
-
-# ── REAL SCENARIO: Sort all tasks by priority ──
-sorted_tasks = sorted(tasks, key=lambda t: t["priority"])
-print("\nSorted by priority:")
-for task in sorted_tasks:
-    print(f"  {task['priority']}: {task['name']}")</div>
+print(handle_status("completed"))  # Done!</div>
 
 <div class="diagram">
   <div class="diag-title">Control Flow — স্রোতের শাখা ও চক্র</div>
