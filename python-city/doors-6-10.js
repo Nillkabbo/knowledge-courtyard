@@ -1171,98 +1171,361 @@ doors.push({
     aen:"class = blueprint. object = instance from blueprint. __init__ = constructor — sets attributes when object is created."
   },
   story:`
-<p class="scene-setting">নবম গিল্ড। স্থপতির স্টুডিও। নকশার কাগজ, মাপকাঠি, কাঠের মডেল। স্থপতি রিয়াদ একটা বাড়ির নকশা দেখাচ্ছেন। "এটা নকশা — একটা কাগজ," তিনি বলেন। "এই নকশা থেকে আমি ১০০টা বাড়ি বানাতে পারি। প্রতিটা বাড়ি আলাদা — কিন্তু নকশা এক। Python-এ এটাই class — একটা নকশা থেকে অনেক object।"</p>
-<p class="scene-setting en">Ninth guild. Architect's Studio. Blueprint paper, measuring tools, wooden models. Architect Riyad shows a house blueprint. "This is the blueprint — a piece of paper," he says. "From this blueprint I can build 100 houses. Each house is different — but the blueprint is one. In Python, this is a class — one blueprint, many objects."</p>
+<p class="scene-setting">নবম গিল্ড। স্থপতির স্টুডিও। নকশার কাগজ, মাপকাঠি, কাঠের মডেল। স্থপতি রিয়াদ একটা বাড়ির নকশা দেখাচ্ছেন। "এটা নকশা — একটা কাগজ," তিনি বলেন। "এই নকশা থেকে আমি ১০০টা বাড়ি বানাতে পারি। প্রতিটা বাড়ি আলাদা — কিন্তু নকশা এক। Python-এ এটাই class — একটা নকশা থেকে অনেক object। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Ninth guild. Architect's Studio. Blueprint paper, measuring tools, wooden models. Architect Riyad shows a house blueprint. "This is the blueprint — a piece of paper," he says. "From this blueprint I can build 100 houses. Each house is different — but the blueprint is one. In Python, this is a class — one blueprint, many objects. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তোমার ১০০ জন কর্মী — প্রতিটার নাম, বেতন, পদবি। প্রতিটার জন্য আলাদা dict? কোনো method (bonus হিসাব) সবার জন্য কপি? না — একটা Employee class বানাও। ১০০টা object, একই method। OOP = বাস্তব জগতকে কোডে মডেল।</div>
-<div class="dialogue en">Problem: 100 employees — each with name, salary, title. Separate dict for each? Copy the same method? No — make an Employee class. 100 objects, same method. OOP = modeling the real world in code.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তুমি ১০০ জন কর্মীর তথ্য dict-এ রেখেছ। প্রতিটার bonus হিসাব আলাদা আলাদা function দিয়ে করছ। ১০০টা dict + ১০০ বার function call। কষ্ট? সমাধান: Employee class। এক নকশা, ১০০ object, একই method।</div>
+<div class="dialogue en">First question: you stored 100 employees in dicts. Calculating bonus with separate functions. 100 dicts + 100 function calls. Painful? Solution: Employee class. One blueprint, 100 objects, one method.</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> রিয়াদ বললেন — এক শিক্ষানবিশ সবকিছু class বানালো — এমনকি একটা সাধারণ function-ও। এটাই over-engineering। class দরকার যখন: data + behavior একসাথে থাকবে। শুধু function হলে class নয়। "সব কিছু class নয় — যেখানে দরকার সেখানে।"</div></div>
+<div class="code-block"># ── STEP 1: The problem — why classes exist ──
+# Without classes: you use dicts for everything.
 
-<div class="code-block"># guild9_oop.py — Architect's Studio
-# Architect Riyad: "Blueprint once. Build many."
-
-# ── THE PROBLEM: Model 100 employees ──
-
-# ❌ BAD: Dict for each employee — no shared behavior
+# Two employees as dicts:
 emp1 = {"name": "Fatima", "salary": 50000, "title": "Engineer"}
 emp2 = {"name": "Ahmed", "salary": 60000, "title": "Manager"}
-# Bonus calculation? Copy-paste for each? Nightmare.
 
-# ✅ GOOD: Class — blueprint for all employees
+# Calculate bonus? Need a SEPARATE function:
+def calculate_bonus(employee, rate=0.10):
+    return employee["salary"] * rate
+
+print(calculate_bonus(emp1))  # 5000.0
+print(calculate_bonus(emp2))  # 6000.0
+
+# Problem: the DATA (dict) and BEHAVIOR (function) are SEPARATE.
+# If you add a new field, you must update every function.
+# Class solves this: DATA + BEHAVIOR together in one unit.</div>
+
+<div class="code-block"># ── STEP 2: Your first class ──
+# A class is a BLUEPRINT. It defines:
+#   - What data an object holds (attributes)
+#   - What an object can DO (methods)
+
+# Define the simplest class:
+class Dog:
+    """A simple dog class."""
+
+# Create objects (instances) from the blueprint:
+dog1 = Dog()
+dog2 = Dog()
+
+print(type(dog1))  # <class '__main__.Dog'>
+print(dog1 == dog2)  # False (different objects)
+
+# Right now, all dogs are empty. Let's add data.</div>
+
+<div class="code-block"># ── STEP 3: __init__ — the constructor ──
+# __init__ is a SPECIAL method that runs when you create an object.
+# It sets up the object's initial data (attributes).
+
+class Dog:
+    """A dog with a name and age."""
+
+    def __init__(self, name, age):    # self = the object being created
+        self.name = name              # set attribute 'name'
+        self.age = age                # set attribute 'age'
+
+# Create dogs — pass values to __init__:
+dog1 = Dog("Rex", 3)     # __init__ runs with name="Rex", age=3
+dog2 = Dog("Buddy", 5)   # __init__ runs with name="Buddy", age=5
+
+# Access attributes with dot notation:
+print(dog1.name)    # Rex
+print(dog1.age)     # 3
+print(dog2.name)    # Buddy
+
+# What is 'self'?
+# self = the SPECIFIC object being created/used.
+# dog1.name means: "the 'name' attribute of dog1"
+# Think of it as: "THIS object's name"
+
+# You can change attributes:
+dog1.age = 4    # Rex had a birthday
+print(dog1.age)  # 4</div>
+
+<div class="code-block"># ── STEP 4: Methods — what objects DO ──
+# Methods are functions INSIDE a class.
+# They always have 'self' as the first parameter.
+
+class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.tricks = []    # each dog starts with no tricks
+
+    def bark(self):
+        """The dog barks."""
+        return f"{self.name} says: Woof!"
+
+    def learn_trick(self, trick):
+        """Add a trick to this dog's repertoire."""
+        self.tricks.append(trick)
+        return f"{self.name} learned {trick}!"
+
+    def show_tricks(self):
+        """Show all tricks this dog knows."""
+        if self.tricks:
+            return f"{self.name} knows: {', '.join(self.tricks)}"
+        return f"{self.name} doesn't know any tricks yet."
+
+# Use it:
+rex = Dog("Rex", 3)
+print(rex.bark())              # Rex says: Woof!
+print(rex.learn_trick("sit"))  # Rex learned sit!
+print(rex.learn_trick("roll")) # Rex learned roll!
+print(rex.show_tricks())       # Rex knows: sit, roll</div>
+
+<div class="code-block"># ── STEP 5: Employee class — the real example ──
+# Now let's solve the original problem: 100 employees.
+
 class Employee:
-    """Blueprint: one design, many instances."""
+    """Blueprint for employees. Data + behavior together."""
 
-    # Class attribute — shared by ALL instances
+    # Class attribute — shared by ALL employees:
     company = "Python City Inc."
 
-    # Constructor — sets up each new object
-    def __init__(self, name, salary, title):
-        self.name = name        # instance attribute
+    def __init__(self, name: str, salary: float, title: str):
+        # Instance attributes — each employee has their own:
+        self.name = name
         self.salary = salary
         self.title = title
         self.email = name.lower().replace(" ", ".") + "@pycity.com"
 
-    # Instance method — behavior
-    def calculate_bonus(self, percentage=0.10):
-        """Each employee gets a bonus."""
-        return self.salary * percentage
+    def calculate_bonus(self, rate: float = 0.10) -> float:
+        """How much bonus does this employee get?"""
+        return self.salary * rate
 
-    def promote(self, new_title, raise_amount):
-        """Promote this employee."""
+    def promote(self, new_title: str, raise_amount: float):
+        """Give this employee a promotion."""
         self.title = new_title
         self.salary += raise_amount
-        return f"{self.name} promoted to {self.title}"
 
-    # String representation — how object looks when printed
     def __str__(self):
-        return f"{self.name} ({self.title}) — {self.salary:,} taka"
+        """How the object looks when printed."""
+        return f"{self.name} ({self.title}) - {self.salary:,} taka"
 
-# Create objects from the blueprint (instantiate)
+# Create employees — each is independent:
 emp1 = Employee("Fatima", 50000, "Engineer")
 emp2 = Employee("Ahmed", 60000, "Manager")
+emp3 = Employee("Sara", 80000, "Director")
 
-print(emp1)              # Fatima (Engineer) — 50,000 taka
-print(emp1.email)        # fatima@pycity.com
-print(emp1.calculate_bonus())  # 5000.0
-print(emp1.promote("Senior Engineer", 10000))  # Fatima promoted
+print(emp1)                     # Fatima (Engineer) - 50,000 taka
+print(emp1.email)               # fatima@pycity.com
+print(emp1.calculate_bonus())   # 5000.0
+emp1.promote("Senior Engineer", 10000)
+print(emp1)                     # Fatima (Senior Engineer) - 60,000 taka
 
-# ── INHERITANCE: Specialized classes ──
+# Class attribute (shared):
+print(emp1.company)  # Python City Inc.
+print(emp2.company)  # Python City Inc. (same for all)</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> রিয়াদ বললেন — এক শিক্ষানবিশ সবকিছু class বানালো — এমনকি একটা সাধারণ function-ও। এটাই over-engineering। class দরকার যখন: data + behavior একসাথে থাকবে। শুধু function হলে class নয়। "সব কিছু class নয় — যেখানে দরকার সেখানে।"</div></div>
+
+<div class="code-block"># ── STEP 6: Special methods (dunder methods) ──
+# Methods with __ __ are "special" — Python calls them automatically.
+# The most common ones:
+
+class Product:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def __str__(self):
+        """Called by print() and str(). Human-readable."""
+        return f"{self.name}: {self.price} taka"
+
+    def __repr__(self):
+        """Called by repr() and in lists. Developer-readable."""
+        return f"Product(name='{self.name}', price={self.price})"
+
+    def __eq__(self, other):
+        """Called by ==. Compare two products."""
+        return self.name == other.name and self.price == other.price
+
+p1 = Product("Pen", 20)
+p2 = Product("Pen", 20)
+p3 = Product("Notebook", 50)
+
+print(p1)           # Pen: 20 taka (uses __str__)
+print(repr(p1))     # Product(name='Pen', price=20) (uses __repr__)
+print(p1 == p2)     # True (uses __eq__)
+print(p1 == p3)     # False
+
+# Other dunder methods:
+# __len__()  → called by len(obj)
+# __lt__()   → called by obj1 < obj2
+# __add__()  → called by obj1 + obj2
+# __getitem__() → called by obj[key]</div>
+
+<div class="code-block"># ── STEP 7: Inheritance — extending a class ──
+# Inheritance = a NEW class gets everything from an EXISTING class.
+# Parent (base) → Child (derived). Child gets parent's attributes + methods.
+
+# Parent class:
+class Animal:
+    def __init__(self, name, sound):
+        self.name = name
+        self.sound = sound
+
+    def speak(self):
+        return f"{self.name} says {self.sound}!"
+
+# Child class — inherits from Animal:
+class Cat(Animal):                    # Cat IS an Animal
+    def __init__(self, name):
+        super().__init__(name, "Meow")   # call parent's __init__
+        self.lives = 9                    # cats have 9 lives!
+
+    def be_grumpy(self):
+        return f"{self.name} ignores you."
+
+# Child class 2:
+class Dog(Animal):
+    def __init__(self, name):
+        super().__init__(name, "Woof")
+        self.tricks = []
+
+    def learn_trick(self, trick):
+        self.tricks.append(trick)
+
+# Use them:
+cat = Cat("Whiskers")
+dog = Dog("Rex")
+
+print(cat.speak())      # Whiskers says Meow! (inherited from Animal)
+print(cat.lives)        # 9 (Cat-specific)
+print(cat.be_grumpy())  # Whiskers ignores you.
+
+print(dog.speak())      # Rex says Woof! (inherited)
+dog.learn_trick("sit")  # Dog-specific method
+print(dog.tricks)       # ['sit']
+
+# 'super()' = call the parent class's method.
+# In Cat.__init__, super().__init__(name, "Meow")
+# calls Animal.__init__ with name and sound="Meow".</div>
+
+<div class="code-block"># ── STEP 8: Overriding and polymorphism ──
+# A child class can CHANGE a parent's method — this is "overriding".
+# Different objects can respond to the same method differently — "polymorphism".
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        return "Some generic sound"
+
+class Dog(Animal):
+    def speak(self):           # override parent's speak()
+        return f"{self.name}: Woof!"
+
+class Cat(Animal):
+    def speak(self):           # override parent's speak()
+        return f"{self.name}: Meow!"
+
+class Duck(Animal):
+    def speak(self):           # override parent's speak()
+        return f"{self.name}: Quack!"
+
+# Polymorphism — same method name, different behavior:
+animals = [Dog("Rex"), Cat("Whiskers"), Duck("Donald")]
+for animal in animals:
+    print(animal.speak())
+# Rex: Woof!
+# Whiskers: Meow!
+# Donald: Quack!
+
+# The SAME method (speak) behaves DIFFERENTLY for each animal.
+# This is polymorphism — "many forms" of the same method.
+
+# Employee example — override calculate_bonus:
 class Manager(Employee):
-    """Manager IS an Employee, with extra powers."""
+    """Managers get 20% bonus instead of 10%."""
+    def calculate_bonus(self, rate=0.20):   # override!
+        return self.salary * rate</div>
 
-    def __init__(self, name, salary, department):
-        super().__init__(name, salary, "Manager")  # call parent
-        self.department = department
-        self.team = []
+<div class="code-block"># ── STEP 9: @dataclass — the modern shortcut ──
+# If your class ONLY holds data (no complex methods),
+# use @dataclass. It auto-generates __init__, __str__, __repr__.
 
-    def add_team_member(self, employee):
-        self.team.append(employee)
-        return f"{employee.name} added to {self.department}"
-
-    # Override parent method — polymorphism
-    def calculate_bonus(self, percentage=0.20):
-        """Managers get 20% bonus, not 10%."""
-        return self.salary * percentage
-
-mgr = Manager("Sara", 80000, "Engineering")
-eng = Employee("Bob", 50000, "Engineer")
-mgr.add_team_member(eng)
-print(mgr.calculate_bonus())  # 16000 (20% of 80000)
-
-# ── @dataclass: Modern shortcut (Python 3.7+) ──
 from dataclasses import dataclass
 
-@dataclass
+# WITHOUT @dataclass (6 lines):
 class Task:
-    """Auto-generates __init__, __str__, __repr__."""
-    id: int
-    title: str
-    status: str = "pending"
-    priority: int = 3
+    def __init__(self, id, title, status="pending", priority=3):
+        self.id = id
+        self.title = title
+        self.status = status
+        self.priority = priority
 
-task = Task(1, "Learn OOP")
-print(task)  # Task(id=1, title='Learn OOP', status='pending', priority=3)</div>
+# WITH @dataclass (4 lines, same result!):
+@dataclass
+class TaskDC:
+    """Auto-generates __init__, __str__, __repr__, __eq__."""
+    id: int                    # type hint required
+    title: str
+    status: str = "pending"    # default value
+    priority: int = 3          # default value
+
+task = TaskDC(1, "Learn OOP")
+print(task)
+# TaskDC(id=1, title='Learn OOP', status='pending', priority=3)
+
+task2 = TaskDC(2, "Build app", priority=1)
+print(task2)
+# TaskDC(id=2, title='Build app', status='pending', priority=1)
+
+# @dataclass is perfect for:
+# - Data containers (configs, records, DTOs)
+# - When you don't need complex methods
+# - Fast, clean, readable code</div>
+
+<div class="code-block"># ── STEP 10: When to use classes vs functions ──
+# OOP is powerful but NOT always needed. Choose wisely.
+
+# USE A CLASS when:
+# ✅ Data + behavior go together (Employee has salary + calculate_bonus)
+# ✅ You need many instances of the same thing (100 employees)
+# ✅ You need inheritance (Manager is-a Employee)
+# ✅ State needs to be maintained (bank account balance over time)
+
+# USE A FUNCTION when:
+# ✅ Simple operations (add, sort, format)
+# ✅ No state needed (pure input → output)
+# ✅ One-off calculations
+
+# Example — use FUNCTION for simple math:
+def circle_area(radius):
+    return 3.14159 * radius ** 2
+# No need for a Circle class just for this.
+
+# Example — use CLASS for a bank account:
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+        self.transactions = []
+
+    def deposit(self, amount):
+        self.balance += amount
+        self.transactions.append(f"+{amount}")
+
+    def withdraw(self, amount):
+        if amount &gt; self.balance:
+            raise ValueError("Insufficient funds")
+        self.balance -= amount
+        self.transactions.append(f"-{amount}")
+
+    def statement(self):
+        return f"{self.owner}: {self.balance} taka"
+
+# Use:
+account = BankAccount("Fatima", 1000)
+account.deposit(500)
+account.withdraw(200)
+print(account.statement())  # Fatima: 1300 taka
+
+# OOP = modeling the REAL WORLD in code.
+# Think: "What THINGS exist in my problem? What do they DO?"</div>
 
 <div class="diagram">
   <div class="diag-title">Class → Object — নকশা থেকে সৃষ্টি</div>
