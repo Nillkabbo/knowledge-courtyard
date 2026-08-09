@@ -18,6 +18,9 @@ doors.push({
 <p class="scene-setting">ষষ্ঠ অধ্যায়। তুমি গাড়িতে বসে আছো। পাশে instructor — হাতে stopwatch, চোখে সড়ক। সামনে একটা গাড়ি চলছে। "দেখো," instructor বললেন, "ওই গাড়ি ওই পোলের পাশে পৌঁছাল। এখন গোনো — one-thousand-one, one-thousand-two, one-thousand-three। তুমি আগে পৌঁছালে তুমি খুব কাছে।"</p>
 <p class="scene-setting en">The sixth chapter. You sit in a car. Beside you: instructor — stopwatch in hand, eyes on road. Ahead: a car driving. "Look," the instructor said, "that car reached that pole. Now count — one-thousand-one, one-thousand-two, one-thousand-three. If you reach it earlier, you're too close."</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Winter Black Ice:</strong> Hit black ice on US-23 — spun into oncoming traffic. Fix: assume invisible ice below 32F.</div></div>
+
+
 <div class="code-block">SAFE DRIVING TECHNIQUES — COMPLETE
 — — — — — — — — — — — — — — — — — — — — — —
 
@@ -399,6 +402,9 @@ doors.push({
 <p class="scene-setting">সপ্তম অধ্যায়। তুমি একটা ব্যস্ত রাস্তায়। পাশ দিয়ে যাচ্ছে — pedestrian, bicycle, motorcycle, truck, bus। প্রত্যেকে আলাদা। Instructor বললেন — "প্রতিটার সাথে আলাদা নিয়ম। একই রাস্তায় সবাই আলাদা। তুমি সবাইকে মানতে হবে।" গাড়ির শব্দ, বাতাস, সাইরেন দূরে।</p>
 <p class="scene-setting en">The seventh chapter. You're on a busy road. Passing: pedestrian, bicycle, motorcycle, truck, bus. Each different. The instructor said — "Each has different rules. Same road, everyone different. You must respect all." Vehicle sounds, air, distant siren.</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Left Turn Accident:</strong> Turned left on solid green — hit oncoming motorcycle. Fault: left-turn driver. Fix: solid green = yield.</div></div>
+
+
 <div class="code-block">SHARING THE ROAD — COMPLETE GUIDE
 — — — — — — — — — — — — — — — — — — — — — —
 
@@ -745,6 +751,9 @@ doors.push({
   story:`
 <p class="scene-setting">অষ্টম অধ্যায়। জানুয়ারির এক সকাল — Lake Michigan থেকে আসা lake-effect snow-এ রাস্তা সাদা। তুমি একটা বরফে ঢাকা রাস্তায়। গাড়ি একটু পিছলে যাচ্ছে। Instructor বললেন — "ভয় পেও না। brake চাপো না। Steering ঘুরাও যেদিকে যেতে চাও। Michigan-এ শীত পাঁচ মাস — এটা শিখতেই হবে।" বরফের কড়া ঠান্ডা, গাড়ির চাকার শব্দ, হালকা wind।</p>
 <p class="scene-setting en">The eighth chapter. A January morning — roads white with lake-effect snow off Lake Michigan. You're on an icy road. The car slips slightly. The instructor said — "Don't panic. Don't hit the brake. Steer where you want to go. Winter lasts five months in Michigan — you must learn this." Bitter cold, tire sounds, light wind.</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Tailgating on I-75:</strong> Tailgated at 70mph — car ahead braked. 3-car pileup. Fix: 3-second rule at highway speeds.</div></div>
+
 
 <div class="code-block">HAZARDS & EMERGENCIES — COMPLETE
 — — — — — — — — — — — — — — — — — — — — — —
@@ -1104,6 +1113,9 @@ doors.push({
 <p class="scene-setting">নবম অধ্যায়। তুমি একটা police checkpoint-এ। Police officer — গম্ভীর, badge ঝকমক। তিনি বললেন — "নেশা করে গাড়ি চালানো শুধু অপরাধ নয় — খুন। তোমার এবং অন্যের জীবনের সাথে খেলা। Michigan-এ এর শাস্তি কঠোর।"</p>
 <p class="scene-setting en">The ninth chapter. You're at a police checkpoint. A police officer — stern, badge gleaming. He said — "Driving intoxicated isn't just a crime — it's killing. Gambling with your life and others'. Michigan's penalties are severe."</p>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Drowsy Driving:</strong> Fell asleep after 12-hour shift — crossed center line. Fix: pull over if you can't remember last mile.</div></div>
+
+
 <div class="code-block">MICHIGAN OWI LAWS — COMPLETE
 — — — — — — — — — — — — — — — — — — — — — —
 
@@ -1450,6 +1462,9 @@ doors.push({
   story:`
 <p class="scene-setting">দশম অধ্যায়। একটা third-party driver testing business-এর parking lot — কমলা cone সাজানো closed course। তুমি গাড়িতে বসে আছো, dashboard-এ insurance-এর কাগজ। পাশে road test examiner — ক্লিপবোর্ড, pen, গম্ভীর মুখ। "প্রথমে closed course, তারপর রাস্তায়। প্রস্তুত?" তিনি জিজ্ঞেস করলেন। গাড়ির ইঞ্জিন idle, হালকা বাতাস। এই মুহূর্তটা — তোমার সব প্রস্তুতির পরীক্ষা।</p>
 <p class="scene-setting en">The tenth chapter. A third-party driver testing business's parking lot — a closed course lined with orange cones. You sit in the car, insurance papers on the dashboard. Beside you: the road test examiner — clipboard, pen, serious face. "Closed course first, then the road. Ready?" he asks. Engine idling, light breeze. This moment — the test of all your preparation.</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Unregistered Vehicle:</strong> Forgot registration renewal — $150 ticket. Fix: set annual calendar reminder.</div></div>
+
 
 <div class="code-block">🏢 ROAD TEST REALITY — কোথায়, কীভাবে, কত টাকা
 — — — — — — — — — — — — — — — — — — — — — —
@@ -2775,6 +2790,9 @@ doors.push({
 </svg>
 <div class="rt-caption">সিদ্ধান্তের হিসাব সবসময় এক: গাড়ির নিয়ন্ত্রণ হারানো &gt; প্রাণীর সাথে সংঘর্ষ। আকার দেখে সিদ্ধান্ত — ছোট হলে হold course, windshield-উচ্চতার হলে full brake</div>
 </div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Backup Collision:</strong> Reversed without checking — ran over bicycle. Fix: always check behind car before backing up.</div></div>
+
 
 <div class="code-block">🔗 কোন দৃশ্য কোন অধ্যায়ের জ্ঞান?
 

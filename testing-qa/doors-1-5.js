@@ -21,6 +21,9 @@ doors.push({
 <div class="dialogue"><strong>প্রহরী-প্রধান তারিক:</strong> প্রতিটি প্রহরীর নিজস্ব শক্তি ও দুর্বলতা। Unit দ্রুত কিন্তু integration bug ধরে না। Integration আসল bug ধরে কিন্তু ধীর। E2E সবচেয়ে নির্ভরযোগ্য কিন্তু সবচেয়ে ধীর ও flaky। Guillermo Rauch (Vercel CEO) বলেছেন — Write tests. Not too many. Mostly integration। এটাই sweet spot।</div>
 <div class="dialogue en"><strong>Chief Guard Tariq:</strong> Each guard has its own strength and weakness. Unit is fast but misses integration bugs. Integration catches real bugs but is slower. E2E is most reliable but slowest and flaky. Guillermo Rauch (Vercel CEO) said — Write tests. Not too many. Mostly integration. This is the sweet spot.</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Test That Tested Nothing:</strong> Test had assert True at the end — always passed, caught zero bugs. Fix: every assert must check MEANINGFUL state.</div></div>
+
+
 <div class="code-block">— pytest: তিন ধরনের টেস্ট —
 
   # Unit Test (একটি ফাংশন)
@@ -115,6 +118,9 @@ doors.push({
 <div class="dialogue"><strong>ভারসাম্য-কারিগর নওফল:</strong> তারিক (Door ১) তোমাকে তিন প্রহরী দিয়েছেন। এখন প্রশ্ন — কোন প্রহরীকে কতজন দরকার? Cohn বলেছেন ৭০% unit। কিন্তু Dodds বলেন — integration-ই আসল। কারণ? Unit test শুধু ফাংশন ঠিক আছে কিনা দেখে। কিন্তু ফাংশন একসাথে কাজ করে কিনা — সেটা integration। বাস্তবে সবচেয়ে বেশি bug আসে integration-এ। তাই Trophy-তে integration সবচেয়ে বড়।</div>
 <div class="dialogue en"><strong>Balance Artisan Nawfal:</strong> Tariq (Door 1) gave you three guards. Now the question — how many of each? Cohn said 70% unit. But Dodds says — integration is key. Why? Unit tests only check function correctness. But whether functions work together — that's integration. In practice, most bugs come from integration. So in the Trophy, integration is largest.</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Flaky Test Erosion:</strong> Test passed 80% of the time — team started ignoring failures. Real bugs slipped through. Fix: flaky tests must be fixed or quarantined immediately.</div></div>
+
+
 <div class="code-block">— Testing Trophy বাস্তবে —
 
   $ pytest --collect-only
@@ -202,6 +208,9 @@ doors.push({
 
 <div class="dialogue"><strong>ধৈর্যশীল রাজিব:</strong> নওফল (Door ২) তোমাকে অনুপাত শিখিয়েছেন। এখন প্রশ্ন — কখন টেস্ট লিখবে? TDD বলে — আগে। চক্র: Red (টেস্ট ব্যর্থ) → Green (সর্বনিম্ন কোড) → Refactor (উন্নত)। ATM তোমার LedgerPilot-এ চেষ্টা করো — প্রথমে test_transfer_negative_amount লেখো। ব্যর্থ হবে। তারপর সর্বনিম্ন কোড — if amount < 0: raise। সফল! তারপর refactor — ValueError ব্যবহার করো।</div>
 <div class="dialogue en"><strong>Patient Rajib:</strong> Nawfal (Door 2) taught you proportion. Now the question — when to write tests? TDD says — first. Cycle: Red (test fails) → Green (minimal code) → Refactor (improve). Try it in LedgerPilot — first write test_transfer_negative_amount. It fails. Then minimal code — if amount < 0: raise. Passes! Then refactor — use ValueError.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Integration Tests:</strong> All unit tests passed — production crashed because API + DB interaction was never tested. Fix: always test the seams between components.</div></div>
+
 
 <div class="code-block">— TDD: Red-Green-Refactor চক্র —
 
@@ -295,6 +304,9 @@ doors.push({
 
 <div class="dialogue"><strong>প্রমাণ-কারিগর সুমাইয়া:</strong> তারিক (Door ১) বলেছেন ইউনিট টেস্ট দরকার। কিন্তু কোন টেস্ট ভালো? ধরো তোমার কোড: if amount >= 100। আমি >= কে > করে দিলাম (mutant)। তোমার টেস্ট কি ধরবে? যদি test(amount=100) না থাকে — ধরবে না! টেস্ট দুর্বল। Mutation score = কত mutant ধরা গেলো। ৮০%+ লক্ষ্য।</div>
 <div class="dialogue en"><strong>Proof Artisan Sumayya:</strong> Tariq (Door 1) said unit tests are needed. But which tests are good? Say your code: if amount >= 100. I change >= to > (mutant). Will your test catch it? If test(amount=100) doesn't exist — it won't! Test is weak. Mutation score = how many mutants caught. 80%+ target.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Testing Implementation, Not Behavior:</strong> Test checked internal variable names — refactor broke all tests. Fix: test the PUBLIC interface, not private implementation.</div></div>
+
 
 <div class="code-block">— Mutation Testing (mutmut) —
 
@@ -398,6 +410,9 @@ doors.push({
 
 <div class="dialogue"><strong>মুখোশ-কারিগর জাইন:</strong> পাঁচটি মুখোশ মনে রাখো: Dummy — কিছু করে না, শুধু প্যারামিটার লাগে। Stub — নির্দিষ্ট উত্তর দেয়, get_user() সবসময় {name: ali} ফেরত দেয়। Spy — কল রেকর্ড করে, পরে দেখো কতবার কল হয়েছে। Mock — প্রত্যাশা যাচাই, send_email কল হয়েছে কিনা? Fake — সরল বাস্তবায়ন, InMemoryDB যা সত্যিকার DB-এর মতো আচরণ করে কিন্তু সরল।</div>
 <div class="dialogue en"><strong>Mask Artisan Zain:</strong> Remember five masks: Dummy — does nothing, just needed as parameter. Stub — gives fixed answer, get_user() always returns {name: ali}. Spy — records calls, later you check how many times called. Mock — verifies expectations, was send_email called? Fake — simplified implementation, InMemoryDB that behaves like real DB but simpler.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Mock Everything:</strong> Every dependency mocked — test passed but real API returned different format. Fix: don't mock what you don't own, use contract tests.</div></div>
+
 
 <div class="code-block">— Python: পাঁচটি Test Double —
 

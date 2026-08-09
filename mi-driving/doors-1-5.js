@@ -22,6 +22,9 @@ doors.push({
 <div class="dialogue">"Michigan-এ লাইসেন্স পাওয়া একটা সিঁড়ির মতো," কর্মকর্তা বললেন। "তিনটা ধাপ। প্রতিটা ধাপে তুমি আরও একটু বড় হও — একজন চালক হিসেবে। চলো, আমি তোমাকে পুরো সিঁড়ি দেখাই।"</div>
 <div class="dialogue en">"Getting a license in Michigan is like a staircase," the officer said. "Three steps. At each step, you grow a little more — as a driver. Let me show you the whole staircase."</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Speeding in School Zone:</strong> Driver did 35mph in a 25mph school zone — $200 ticket + 3 points. Fix: always slow down near schools.</div></div>
+
+
 <div class="code-block">MICHIGAN GRADUATED DRIVER LICENSING (GDL) — ৩ ধাপ:
 
 — — — — — — — — — — — — — — — — — — — — — —
@@ -349,6 +352,9 @@ doors.push({
 <div class="sign-item"><svg viewBox="0 0 110 45" width="84" height="34"><rect x="2" y="2" width="106" height="41" rx="3" fill="#1a1a1a" stroke="#fff" stroke-width="2"/><polygon points="10,22 34,8 34,17 100,17 100,27 34,27 34,36" fill="#fff"/></svg><div class="sign-label">⬛ <strong>ONE WAY</strong><br>শুধু তীরের দিকে</div></div>
 </div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Texting While Driving:</strong> Driver texted 'omw' — rear-ended a stopped car at 45mph. Totaled both cars. Fix: phone on Do Not Disturb.</div></div>
+
+
 <div class="code-block">উপরের SVG সাইনগুলো মুখস্থ করো — আকার আর রঙ।
 
 🔴 REGULATORY (আইনি):
@@ -578,6 +584,9 @@ doors.push({
 
 <div class="sign-item"><svg viewBox="0 0 70 170" width="52" height="126"><rect x="8" y="4" width="54" height="162" rx="12" fill="#1a1a1a" stroke="#444" stroke-width="2"/><circle cx="35" cy="35" r="22" fill="#333"/><circle cx="35" cy="85" r="22" fill="#333"/><circle cx="35" cy="135" r="22" fill="url(#grnglow)"/><defs><radialGradient id="grnglow" cx="40%" cy="35%"><stop offset="0%" stop-color="#55efc4"/><stop offset="100%" stop-color="#27ae60"/></radialGradient></defs><text x="35" y="142" text-anchor="middle" fill="#004d00" font-size="10" font-weight="900">GO</text></svg><div class="sign-label">🟢 <strong>GREEN</strong><br>যাও — নিরাপদ হলে</div></div>
 </div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Running a Red Light:</strong> Driver tried to beat yellow — T-boned pedestrian in crosswalk. Fix: yellow = prepare to stop.</div></div>
+
 
 <div class="code-block">TRAFFIC SIGNALS — COMPLETE GUIDE
 — — — — — — — — — — — — — — — — — — — — — —
@@ -942,6 +951,9 @@ doors.push({
   story:`
 <p class="scene-setting">চতুর্থ অধ্যায়। তুমি একটা ৪-মুখী intersection-এ। চার দিকে STOP sign। চারটা গাড়ি — প্রতিটা দিক থেকে একটা। সবাই থামলো। এখন কে আগে যাবে? পাশে আছেন driving instructor — শান্ত কণ্ঠ, পরিষ্কার নির্দেশ। গাড়ির ইঞ্জিন idle, হালকা বাতাস, দূরে কারো রেডিও।</p>
 <p class="scene-setting en">The fourth chapter. You're at a 4-way intersection. STOP signs on all sides. Four cars — one from each direction. All stopped. Who goes first? Beside you is the driving instructor — calm voice, clear directions. Engine idle, light breeze, distant radio.</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Driving Without Insurance:</strong> Pulled over, no proof of insurance. Car impounded, $500 fine. Fix: keep insurance card in car.</div></div>
+
 
 <div class="code-block">RIGHT-OF-WAY — COMPLETE RULES
 — — — — — — — — — — — — — — — — — — — — — —
@@ -1349,6 +1361,9 @@ doors.push({
   story:`
 <p class="scene-setting">পঞ্চম অধ্যায়। তুমি একটা স্কুল জোনের পাশে দাঁড়িয়ে। সাইনে লেখা: "SPEED LIMIT 25 — SCHOOL DAYS"। পাশে আছেন instructor — ক্লিপবোর্ড, শান্ত কণ্ঠ। বাচ্চাদের হাসাহাসির শব্দ, গাড়ির ইঞ্জিন, শীতের ঠান্ডা বাতাস।</p>
 <p class="scene-setting en">The fifth chapter. You stand near a school zone. Sign reads: "SPEED LIMIT 25 — SCHOOL DAYS." Beside you is the instructor — clipboard, calm voice. Children's laughter, car engines, winter cold air.</p>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — DUI Checkpoint:</strong> 2 beers, thought fine — BAC 0.09. License suspended 6 months. Fix: one drink = wait one hour.</div></div>
+
 
 <div class="code-block">MICHIGAN SPEED LIMITS — সম্পূর্ণ তালিকা
 — — — — — — — — — — — — — — — — — — — — — —

@@ -19,6 +19,9 @@ doors.push({
 <div class="dialogue"><strong>অফুরন্ত-পরীক্ষক হাসান:</strong> ধরো তোমার addition ফাংশন: add(a,b)। Example-based: assert add(২,৩)==৫। কিন্তু add(১০০০, ০.১)? Property-based: for all a,b: add(a,b)==add(b,a) (commutative)। Hypothesis হাজার সংখ্যা চেষ্টা করে। ভাঙলে shrinking — সবচেয়ে ছোট ব্যর্থ ইনপুট। "add(0.1, 0.2) ভেঙেছে — এটা floating point!" এই সমস্যা example-based ধরতো না।</div>
 <div class="dialogue en"><strong>Inexhaustible Tester Hasan:</strong> Say your addition function: add(a,b). Example-based: assert add(2,3)==5. But add(1000, 0.1)? Property-based: for all a,b: add(a,b)==add(b,a) (commutative). Hypothesis tries thousands of numbers. On failure — shrinking — smallest failing input. "add(0.1, 0.2) broke — it's floating point!" Example-based wouldn't catch this.</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Test Data Management:</strong> Tests shared mutable data — random failures depending on execution order. Fix: each test gets isolated, fresh data.</div></div>
+
+
 <div class="code-block">— Hypothesis: Property-Based Testing —
 
   from hypothesis import given, strategies as st
@@ -124,6 +127,9 @@ doors.push({
 
 <div class="dialogue"><strong>পাইপলাইন-স্থপতি ফাহিম:</strong> GitHub Actions হল সবচেয়ে জনপ্রিয় CI/CD টুল। প্রতিটি PR-এ: lint → unit → integration → E2E → mutation → build → deploy। কোনো ধাপ ব্যর্থ হলে deploy বন্ধ। এটাই deploy gate — টেস্ট পাশ না করলে প্রোডাকশনে যাবে না। LedgerPilot-এ: pytest → mypy → bandit → docker build → deploy to server। সব স্বয়ংক্রিয়।</div>
 <div class="dialogue en"><strong>Pipeline Architect Fahim:</strong> GitHub Actions is the most popular CI/CD tool. On every PR: lint → unit → integration → E2E → mutation → build → deploy. Any step fails — deploy blocked. This is the deploy gate — tests must pass before production. LedgerPilot: pytest → mypy → bandit → docker build → deploy. All automated.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Slow Test Suite:</strong> Test suite took 45 minutes — devs stopped running it before commits. Fix: split into fast unit suite (seconds) and slow integration suite.</div></div>
+
 
 <div class="code-block">— GitHub Actions: CI/CD Pipeline —
 
@@ -247,6 +253,9 @@ doors.push({
 
 <div class="dialogue"><strong>ধৈর্যশীল মুনতাহা:</strong> ফাহিম বলেছেন — CI/CD স্বয়ংক্রিয়। কিন্তু flaky test স্বয়ংক্রিয় বিশ্বাস ভাঙে। সমাধান: (১) sleep বাদ দাও — polling ব্যবহার করো (retry until ready)। (২) প্রতিটি টেস্ট আলাদা — কোনো shared state নয়। (৩) Deterministic ডেটা — factory দিয়ে, এলোমেলো নয়। (৪) Flaky quarantine — flaky টেস্ট আলাদা করো, ঠিক না হওয়া পর্যন্ত।</div>
 <div class="dialogue en"><strong>Patient Muntaha:</strong> Fahim said — CI/CD is automated. But flaky tests break automated trust. Fix: (1) Drop sleep — use polling (retry until ready). (2) Each test isolated — no shared state. (3) Deterministic data — via factory, not random. (4) Flaky quarantine — separate flaky tests until fixed.</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Production-Only Bug:</strong> Bug only appeared in production — test env had different data. Fix: test with production-like data (anonymized).</div></div>
+
 
 <div class="code-block">— Flaky Test সমাধান —
 
@@ -378,6 +387,9 @@ doors.push({
 <div class="dialogue"><strong>চুক্তি-কারিগর ইয়াসমিন:</strong> Pact (২০১৩) হল contract testing টুল। প্রক্রিয়া: (১) Frontend টেস্ট লেখে — এই response চাই। (২) Pact সেই টেস্ট থেকে contract ফাইল তৈরি করে। (৩) Backend সেই contract verify করে — আমার API এই response দেয় কি? (৪) কেউ API বদলালে contract ভাঙে। can-i-deploy বলে — না, আগে contract ঠিক করো। এটাই consumer-driven — consumer নিয়ন্ত্রণ করে।</div>
 <div class="dialogue en"><strong>Contract Artisan Yasmin:</strong> Pact (2013) is the contract testing tool. Process: (1) Frontend writes test — I expect this response. (2) Pact generates contract file from test. (3) Backend verifies contract — does my API give this response? (4) If API changes — contract breaks. can-i-deploy says — no, fix contract first. This is consumer-driven — consumer controls.</div>
 
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — E2E Test Maintenance Nightmare:</strong> 100 E2E tests broke on every UI change. Fix: E2E tests should cover critical paths only — keep them few.</div></div>
+
+
 <div class="code-block">— Pact: Contract Testing —
 
   # Consumer (frontend) — চুক্তি লেখো
@@ -489,6 +501,9 @@ doors.push({
 <strong>Door ৭ — ফাহিম (CI/CD):</strong> প্রতি পুশে স্বয়ংক্রিয়<br>
 <strong>Door ৮ — মুনতাহা (Flaky):</strong> স্থিতিশীল — polling, isolation<br>
 <strong>Door ৯ — ইয়াসমিন (Contract):</strong> দুই পক্ষের চুক্তি</div></div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Forgot to Test Error Paths:</strong> All tests tested happy path — error handling was never tested, crashed in production. Fix: test edge cases: empty, null, error, timeout.</div></div>
+
 
 <div class="code-block">— LedgerPilot: সম্পূর্ণ Testing Stack —
 
