@@ -1611,81 +1611,201 @@ doors.push({
     aen:"Comprehension: [x**2 for x in [1,2,3,4]] → 1 line. For loop: 4 lines."
   },
   story:`
-<p class="scene-setting">দশম গিল্ড। কাঁচ গলানোর কারখানা। উত্তপ্ত চুল্লির গন্ধ, গলিত কাঁচের উজ্জ্বলতা, হাতুড়ির শব্দ। কাঁচ নির্মাতা সালমা একটা সাধারণ কাঁচের গোলক ধরে আছেন। এক নিঃশ্বাসে সেটাকে সুন্দর ফুলদানিতে পরিণত করেন। "৫ ধাপে নয়," তিনি বলেন, "এক নিঃশ্বাসে। Python comprehension ঠিক তেমনি — ৫ লাইনের কাজ এক লাইনে।"</p>
-<p class="scene-setting en">Tenth guild. The Glass Blower's workshop. Smell of hot furnace, brightness of molten glass, sound of hammers. Glassmaker Salma holds a simple glass sphere. One breath transforms it into a beautiful vase. "Not in 5 steps," she says, "in one breath. Python comprehensions are the same — 5 lines of work in one line."</p>
+<p class="scene-setting">দশম গিল্ড। কাঁচ গলানোর কারখানা। উত্তপ্ত চুল্লির গন্ধ, গলিত কাঁচের উজ্জ্বলতা, হাতুড়ির শব্দ। কাঁচ নির্মাতা সালমা একটা সাধারণ কাঁচের গোলক ধরে আছেন। এক নিঃশ্বাসে সেটাকে সুন্দর ফুলদানিতে পরিণত করেন। "৫ ধাপে নয়," তিনি বলেন, "এক নিঃশ্বাসে। Python comprehension ঠিক তেমনি — ৫ লাইনের কাজ এক লাইনে। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Tenth guild. The Glass Blower's workshop. Smell of hot furnace, brightness of molten glass, sound of hammers. Glassmaker Salma holds a simple glass sphere. One breath transforms it into a beautiful vase. "Not in 5 steps," she says, "in one breath. Python comprehensions are the same — 5 lines of work in one line. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তোমার ১০০০টা সংখ্যা আছে। শুধু জোড় সংখ্যাগুলো বেছো, প্রতিটাকে বর্গ করো, একটা নতুন তালিকায় রাখো। for loop দিলে ৫ লাইন। Comprehension দিলে: [x**2 for x in numbers if x % 2 == 0]। এক লাইন। দ্রুত, সুন্দর, Pythonic।</div>
-<div class="dialogue en">Problem: 1,000 numbers. Select only even, square each, store in a new list. For loop: 5 lines. Comprehension: [x**2 for x in numbers if x % 2 == 0]. One line. Fast, beautiful, Pythonic.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তুমি ১০০০টা সংখ্যা থেকে জোড়গুলো বেছে তাদের বর্গ করছ। for loop দিলে ৫ লাইন। কিন্তু Python-এ একটা সংক্ষিপ্ত উপায় আছে — comprehension। এক লাইনে একই কাজ। সুন্দর, দ্রুত, Pythonic।</div>
+<div class="dialogue en">First question: you have 1000 numbers and you want to filter even ones and square them. For loop takes 5 lines. But Python has a shortcut — comprehension. Same work in one line. Beautiful, fast, Pythonic.</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> সালমা বললেন — এক শিক্ষানবিশ nested comprehension লিখলো — [[x*y for x in range(10)] for y in range(10)]। কাজ করলো, কিন্তু কেউ পড়তে পারলো না। Comprehension সুন্দর, কিন্তু nested = বিপজ্জনক। নিয়ম: ১-২ level comprehension ঠিক, ৩+ = for loop-এ ফিরে যাও। পঠনযোগ্যতা &gt; সংক্ষিপ্ততা।</div></div>
+<div class="code-block"># ── STEP 1: The problem — 5 lines that can be 1 ──
+# Task: take a list, transform each item, create a new list.
 
-<div class="code-block"># guild10_comprehensions.py — Glass Blower
-# Glassmaker Salma: "One breath. One line. Beauty."
+numbers = [1, 2, 3, 4, 5]
 
-# ── THE PROBLEM: Transform 1000 numbers ──
-import random
-numbers = [random.randint(1, 100) for _ in range(1000)]
+# The LONG way (for loop):
+doubles = []                    # Step 1: create empty list
+for n in numbers:               # Step 2: loop through each
+    doubles.append(n * 2)       # Step 3: transform + append
+print(doubles)                  # [2, 4, 6, 8, 10]
 
-# ❌ BAD: 5 lines of for loop
-squares = []
-for n in numbers:
-    if n % 2 == 0:
-        squares.append(n ** 2)
-# Works, but verbose.
+# The SHORT way (list comprehension):
+doubles = [n * 2 for n in numbers]
+print(doubles)                  # [2, 4, 6, 8, 10]
 
-# ✅ GOOD: List comprehension — 1 line
-even_squares = [n ** 2 for n in numbers if n % 2 == 0]
-# transform: n**2, source: numbers, filter: if even
+# Same result! But 3 lines became 1. Cleaner and faster.</div>
 
-# ── ANATOMY OF A COMPREHENSION ──
-# [TRANSFORM for ITEM in SOURCE if CONDITION]
-#   ^^^^^^^^^  ^^^^  ^^^^^^  ^^  ^^^^^^^^^
-#   what to do  each  where  and  what to keep
+<div class="code-block"># ── STEP 2: Anatomy of a comprehension ──
+# Learn the PARTS so you can read any comprehension.
 
-# ── LIST COMPREHENSION ──
-# Doubles of 1-5
-doubles = [x * 2 for x in range(1, 6)]
-print(doubles)  # [2, 4, 6, 8, 10]
+result = [n * 2 for n in numbers if n > 2]
+#         ^^^^^   ^  ^  ^^^^^^^    ^^^^^^
+#         |       |  |  |          |
+#         |       |  |  source     condition (optional)
+#         |       |  item variable
+#         transform (what to do)
 
-# Words to uppercase
+# Read it as English:
+# "Put (n * 2) in the list, for each n in numbers, if n > 2"
+
+# Without condition (simple transform):
+squares = [x ** 2 for x in range(1, 6)]
+print(squares)  # [1, 4, 9, 16, 25]
+
+# Without transform (just filter):
+evens = [x for x in range(10) if x % 2 == 0]
+print(evens)  # [0, 2, 4, 6, 8]
+
+# Both transform AND filter:
+even_squares = [x ** 2 for x in range(10) if x % 2 == 0]
+print(even_squares)  # [0, 4, 16, 36, 64]</div>
+
+<div class="code-block"># ── STEP 3: List comprehension examples ──
+# Practice with different transforms.
+
+# Uppercase all words:
 words = ["hello", "world", "python"]
 upper = [w.upper() for w in words]
 print(upper)  # ['HELLO', 'WORLD', 'PYTHON']
 
-# ── DICT COMPREHENSION ──
-# Word lengths
-word_lengths = {word: len(word) for word in words}
-print(word_lengths)  # {'hello': 5, 'world': 5, 'python': 6}
+# Get lengths of words:
+lengths = [len(w) for w in words]
+print(lengths)  # [5, 5, 6]
 
-# Reverse a dictionary
+# Add 1 to each number:
+nums = [10, 20, 30]
+plus_one = [n + 1 for n in nums]
+print(plus_one)  # [11, 21, 31]
+
+# Only positive numbers:
+mixed = [-3, 5, -1, 8, -2, 0, 4]
+positives = [n for n in mixed if n > 0]
+print(positives)  # [5, 8, 4]
+
+# Strings longer than 3 characters:
+words = ["hi", "cat", "hello", "ok", "world"]
+long_words = [w for w in words if len(w) > 3]
+print(long_words)  # ['hello', 'world']</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> সালমা বললেন — এক শিক্ষানবিশ nested comprehension লিখলো — [[x*y for x in range(10)] for y in range(10)]। কাজ করলো, কিন্তু কেউ পড়তে পারলো না। Comprehension সুন্দর, কিন্তু nested = বিপজ্জনক। নিয়ম: ১-২ level comprehension ঠিক, ৩+ = for loop-এ ফিরে যাও। পঠনযোগ্যতা > সংক্ষিপ্ততা।</div></div>
+
+<div class="code-block"># ── STEP 4: Dict comprehension ──
+# Same idea, but creates a DICT instead of a list.
+# Use {key: value for item in source}
+
+# Word → length mapping:
+words = ["apple", "banana", "cherry"]
+word_lengths = {word: len(word) for word in words}
+print(word_lengths)
+# {'apple': 5, 'banana': 6, 'cherry': 6}
+
+# Reverse a dictionary:
 original = {"a": 1, "b": 2, "c": 3}
 reversed_dict = {v: k for k, v in original.items()}
-print(reversed_dict)  # {1: 'a', 2: 'b', 3: 'c'}
+print(reversed_dict)
+# {1: 'a', 2: 'b', 3: 'c'}
 
-# ── SET COMPREHENSION ──
-# Unique first letters
+# Prices with 20% tax added:
+prices = {"apple": 50, "banana": 30, "cherry": 80}
+with_tax = {item: round(price * 1.2) for item, price in prices.items()}
+print(with_tax)
+# {'apple': 60, 'banana': 36, 'cherry': 96}
+
+# Filter: only items above 40:
+expensive = {k: v for k, v in prices.items() if v > 40}
+print(expensive)
+# {'apple': 50, 'cherry': 80}</div>
+
+<div class="code-block"># ── STEP 5: Set comprehension ──
+# Creates a SET (unique items only).
+# Use {item for item in source} — no colon!
+
+# Unique first letters of names:
 names = ["Alice", "Bob", "Charlie", "Anna", "Brian"]
 first_letters = {name[0] for name in names}
-print(first_letters)  # {'A', 'B', 'C'}
+print(first_letters)  # {'A', 'B', 'C'} (unique!)
 
-# ── CONDITIONAL TRANSFORM ──
-# Even → "even", Odd → "odd"
+# Remove duplicates from a list:
+numbers = [1, 2, 2, 3, 3, 3, 4, 4, 5]
+unique = {n for n in numbers}
+print(unique)  # {1, 2, 3, 4, 5}
+
+# Word lengths (unique):
+sentence = "the cat sat on the mat"
+word_lengths = {len(word) for word in sentence.split()}
+print(word_lengths)  # {3, 2, 5} (unique lengths)</div>
+
+<div class="code-block"># ── STEP 6: Conditional expression — transform differently ──
+# Sometimes you want DIFFERENT transforms for different conditions.
+# Use: value_if_true if condition else value_if_false
+
+# Label even/odd:
 labels = ["even" if x % 2 == 0 else "odd" for x in range(5)]
 print(labels)  # ['even', 'odd', 'even', 'odd', 'even']
 
-# ── NESTED COMPREHENSION (use sparingly!) ──
-# Multiplication table (OK — only 2 levels)
+# Pass/Fail based on score:
+scores = [45, 80, 92, 55, 30]
+results = ["Pass" if s >= 60 else "Fail" for s in scores]
+print(results)  # ['Fail', 'Pass', 'Pass', 'Fail', 'Fail']
+
+# Positive/Negative/Zero:
+nums = [-3, 5, 0, -1, 8]
+signs = ["positive" if n > 0 else "negative" if n < 0 else "zero" for n in nums]
+print(signs)  # ['negative', 'positive', 'zero', 'negative', 'positive']
+# Note: nested ternary gets ugly. Use for loop if complex.</div>
+
+<div class="code-block"># ── STEP 7: Nested comprehension (use carefully) ──
+# You CAN nest comprehensions, but readability drops fast.
+
+# 2D — multiplication table (OK, readable):
 table = [[x * y for y in range(1, 4)] for x in range(1, 4)]
-print(table)  # [[1,2,3], [2,4,6], [3,6,9]]
-# 3+ levels? Use for loops. Readability > brevity.
+print(table)
+# [[1, 2, 3], [2, 4, 6], [3, 6, 9]]
 
-# ── GENERATOR EXPRESSION: Lazy comprehension ──
-# () instead of [] — doesn't create list, saves memory
+# Flatten a 2D list:
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+flat = [num for row in matrix for num in row]
+print(flat)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# RULE OF THUMB:
+# - 1 level comprehension: ALWAYS use it
+# - 2 levels: SOMETIMES (if simple)
+# - 3+ levels: NEVER — use a for loop instead
+# Readability > Brevity
+
+# This is UNREADABLE — don't do it:
+# result = [[x*y+z for z in range(3) if z>x] for y in range(3) for x in range(3)]
+# Use a regular for loop for complex logic.</div>
+
+<div class="code-block"># ── STEP 8: Generator expression — memory-efficient ──
+# A generator expression looks like a comprehension but uses ()
+# instead of []. It does NOT create a list — it's LAZY.
+
+# List comprehension — creates full list in memory:
+squares_list = [x ** 2 for x in range(1000000)]
+# This uses ~8MB of memory!
+
+# Generator expression — computes one at a time:
+squares_gen = (x ** 2 for x in range(1000000))
+# This uses ~200 bytes! 40000x less memory.
+
+# You can't index a generator, but you can iterate:
+for sq in squares_gen:
+    if sq > 100:
+        break
+    print(sq)  # 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
+
+# BEST USE: pass to functions like sum(), max(), min():
 total = sum(x ** 2 for x in range(1000000))
-print(f"Sum of squares: {total:,}")
-# No list created in memory — computed lazily
+print(f"Sum of first million squares: {total:,}")
 
-# ── REAL SCENARIO: Process customer data ──
+# Comparison:
+# sum([x**2 for x in range(1000000)])  → creates list (8MB)
+# sum(x**2 for x in range(1000000))    → no list (200 bytes)
+# Always use () inside sum/max/min!</div>
+
+<div class="code-block"># ── STEP 9: Real scenario — process customer data ──
+# Comprehensions shine with real data structures.
+
 customers = [
     {"name": "Fatima", "orders": 15, "city": "Dhaka"},
     {"name": "Ahmed", "orders": 3, "city": "Chittagong"},
@@ -1693,19 +1813,72 @@ customers = [
     {"name": "Bob", "orders": 0, "city": "Sylhet"},
 ]
 
-# VIP customers: Dhaka + 10+ orders
-vip_customers = [
-    c["name"] for c in customers
-    if c["city"] == "Dhaka" and c["orders"] &gt;= 10
-]
-print(f"VIP: {vip_customers}")  # ['Fatima', 'Sara']
+# 1. VIP customers (Dhaka + 10+ orders):
+vip = [c["name"] for c in customers
+       if c["city"] == "Dhaka" and c["orders"] >= 10]
+print(f"VIP: {vip}")  # ['Fatima', 'Sara']
 
-# Order count by city
-orders_by_city = {
-    c["city"]: sum(c["orders"] for c in customers if c["city"] == city)
-    for city in {c["city"] for c in customers}
-}
-print(orders_by_city)  # {'Dhaka': 40, 'Chittagong': 3, 'Sylhet': 0}</div>
+# 2. All customer names:
+names = [c["name"] for c in customers]
+print(names)  # ['Fatima', 'Ahmed', 'Sara', 'Bob']
+
+# 3. Name → orders mapping:
+orders_map = {c["name"]: c["orders"] for c in customers}
+print(orders_map)
+# {'Fatima': 15, 'Ahmed': 3, 'Sara': 25, 'Bob': 0}
+
+# 4. Unique cities:
+cities = {c["city"] for c in customers}
+print(cities)  # {'Dhaka', 'Chittagong', 'Sylhet'}
+
+# 5. Total orders:
+total_orders = sum(c["orders"] for c in customers)
+print(f"Total orders: {total_orders}")  # 43
+
+# 6. Customers with no orders:
+inactive = [c["name"] for c in customers if c["orders"] == 0]
+print(f"Inactive: {inactive}")  # ['Bob']</div>
+
+<div class="code-block"># ── STEP 10: When to use comprehension vs for loop ──
+# Comprehensions are powerful but NOT always the right choice.
+
+# USE COMPREHENSION when:
+# - Simple transform or filter (1-2 conditions)
+# - Creating a new list/dict/set from existing data
+# - The logic fits in one readable line
+
+# USE FOR LOOP when:
+# - Multiple statements per iteration
+# - Complex logic with many conditions
+# - Side effects (printing, modifying external state)
+# - The comprehension would be unreadable
+
+# GOOD comprehension:
+squares = [x ** 2 for x in range(10)]
+# Clear, one line, obvious.
+
+# BAD comprehension (too complex — use for loop):
+# result = [{"name": c["name"], "status": "VIP" if c["orders"]>10 else "regular"}
+#           for c in customers if c["city"] in TARGET_CITIES]
+
+# SAME code as for loop (clearer):
+result = []
+for c in customers:
+    if c["city"] in TARGET_CITIES:
+        status = "VIP" if c["orders"] > 10 else "regular"
+        result.append({"name": c["name"], "status": status})
+
+# RULE: If a beginner can't read it in 5 seconds, use a for loop.
+
+# Summary:
+# ┌──────────────────────┬────────────────────────────────┐
+# │ Type                 │ Syntax                         │
+# ├──────────────────────┼────────────────────────────────┤
+# │ List comprehension   │ [x for x in items]             │
+# │ Dict comprehension   │ {k: v for k, v in items}       │
+# │ Set comprehension    │ {x for x in items}             │
+# │ Generator expression │ (x for x in items)             │
+# └──────────────────────┴────────────────────────────────┘</div>
 
 <div class="diagram">
   <div class="diag-title">Comprehension — ৫ লাইন → ১ লাইন</div>
