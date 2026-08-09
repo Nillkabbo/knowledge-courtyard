@@ -658,85 +658,230 @@ doors.push({
     aen:"Parameter = name in definition. Argument = value when calling. return = give result back — without it, function returns None."
   },
   story:`
-<p class="scene-setting">তৃতীয় গিল্ড। রান্নাঘর। মসলার গন্ধ, হাঁড়ির ভাপ, ছুরির শব্দ। রন্ধনশিল্পী রহিম একটা রেসিপি বই খুলে বসেছেন। "প্রতিটা পদের একটা রেসিপি আছে," তিনি বলেন। "উপকরণ দাও, প্রক্রিয়া হবে, পদ পাবে। একই রেসিপি ১০০ বার — একই ফল। Python-এ এটাই function।"</p>
-<p class="scene-setting en">Third guild. The kitchen. Smell of spices, steam from pots, sound of knives. Chef Rahim sits with a recipe book. "Each dish has a recipe," he says. "Give ingredients, process happens, dish comes out. Same recipe 100 times — same result. In Python, this is a function."</p>
+<p class="scene-setting">তৃতীয় গিল্ড। রান্নাঘর। মসলার গন্ধ, হাঁড়ির ভাপ, ছুরির শব্দ। রন্ধনশিল্পী রহিম একটা রেসিপি বই খুলে বসেছেন। "প্রতিটা পদের একটা রেসিপি আছে," তিনি বলেন। "উপকরণ দাও, প্রক্রিয়া হবে, পদ পাবে। একই রেসিপি ১০০ বার — একই ফল। Python-এ এটাই function। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Third guild. The kitchen. Smell of spices, steam from pots, sound of knives. Chef Rahim sits with a recipe book. "Each dish has a recipe," he says. "Give ingredients, process happens, dish comes out. Same recipe 100 times — same result. In Python, this is a function. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তোমার ৫০টা পণ্যের উপর ২০% কর যোগ করতে হবে। প্রতিটার জন্য আলাদা কোড? ৫০ বার একই হিসাব? না — একটা function বানাও: add_tax(price)। ৫০ বার কল করো। একই কোড, এক জায়গায়। ভুল হলে এক জায়গায় ঠিক করো।</div>
-<div class="dialogue en">Problem: Add 20% tax to 50 products. Separate code for each? Same calculation 50 times? No — make one function: add_tax(price). Call it 50 times. Same code, one place. Fix once if wrong.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তুমি একই কোড ৫ জায়গায় কপি করেছ। এখন একটা ভুল ধরলে — ৫ জায়গায় ঠিক করতে হবে। কষ্ট? সমাধান: function। একবার লেখো, অনেক জায়গায় ব্যবহার করো। ভুল এক জায়গায় ঠিক করো।</div>
+<div class="dialogue en">First question: you copied the same code in 5 places. Now one bug means fixing all 5. Painful? Solution: function. Write once, use anywhere. Fix once.</div>
+
+<div class="code-block"># ── STEP 1: What is a function? ──
+# A function = a named block of code you can REUSE.
+# Like a recipe: define once, cook many times.
+
+# Define a function:
+def greet():
+    """This function says hello."""
+    print("Hello, World!")
+
+# Call it (run it) — use parentheses ():
+greet()     # shows: Hello, World!
+greet()     # shows: Hello, World! again
+greet()     # shows: Hello, World! again
+
+# Structure:
+# def name():     ← def keyword, name, parentheses, colon
+#     """doc"""   ← optional documentation (docstring)
+#     code        ← indented body (4 spaces)</div>
+
+<div class="code-block"># ── STEP 2: Parameters — giving input to a function ──
+# Parameters let a function accept DIFFERENT values each time.
+# Like a recipe that takes different ingredients.
+
+# name is a PARAMETER (a placeholder for the actual value)
+def greet(name):
+    """Greet someone by name."""
+    print(f"Hello, {name}!")
+
+# Now call it with different ARGUMENTS (actual values):
+greet("Fatima")     # Hello, Fatima!   ("Fatima" is the argument)
+greet("Ahmed")      # Hello, Ahmed!
+greet("Sara")       # Hello, Sara!
+
+# Parameter vs Argument:
+# def greet(name):    ← name is a PARAMETER (placeholder)
+# greet("Fatima")     ← "Fatima" is an ARGUMENT (actual value)</div>
+
+<div class="code-block"># ── STEP 3: return — getting a result BACK ──
+# print() shows on screen. return gives the value BACK to the caller.
+# The difference is CRITICAL.
+
+# ❌ BAD: print instead of return
+def add_bad(a, b):
+    print(a + b)         # shows on screen, but caller gets nothing
+
+result = add_bad(3, 5)   # shows: 8
+print(result)            # shows: None! (function gave nothing back)
+
+# ✅ GOOD: return gives the value back
+def add(a, b):
+    return a + b          # gives the result back to the caller
+
+result = add(3, 5)       # result = 8 (the returned value)
+print(result)            # shows: 8
+print(add(10, 20))       # shows: 30 (use return value directly)
+
+# Use the return value in calculations:
+total = add(5, 5) + add(2, 3)
+print(f"Total: {total}")  # Total: 15</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> রহিম বললেন — এক শিক্ষানবিশ ভাত রান্না করলেন কিন্তু পরিবেশন করলেন না — হাঁড়িতেই রেখে দিলেন। function-এও এটা হয় — হিসাব করলেন কিন্তু return দিলেন না। ফলাফল function-এর ভেতরেই পড়ে থাকলো। return ছাড়া function = হাঁড়িতে রান্না, পাতিলে পরিবেশন নয়।</div></div>
 
-<div class="code-block"># guild3_functions.py — Recipe Kitchen
-# Chef Rahim: "Write the recipe once. Cook many times."
+<div class="code-block"># ── STEP 4: Multiple parameters ──
+# A function can take multiple inputs, separated by commas.
 
-# ── THE PROBLEM: Add 20% tax to 50 products ──
+def introduce(name, age, city):
+    """Introduce yourself."""
+    return f"My name is {name}, I'm {age}, from {city}."
+
+message = introduce("Fatima", 25, "Dhaka")
+print(message)  # My name is Fatima, I'm 25, from Dhaka.
+
+# Order matters! Arguments match parameters position-by-position:
+introduce("Bob", 30, "Chittagong")  # name="Bob", age=30, city="Chittagong"
+
+# ── Default parameters: optional arguments ──
+# Give a parameter a DEFAULT value. Caller can skip it.
+def greet(name, greeting="Hello"):
+    """greeting has a default — caller can skip it."""
+    return f"{greeting}, {name}!"
+
+print(greet("Fatima"))              # Hello, Fatima! (default greeting)
+print(greet("Fatima", greeting="Hi"))  # Hi, Fatima! (override)
+print(greet("Ahmed", "Welcome"))    # Welcome, Ahmed! (positional override)</div>
+
+<div class="code-block"># ── STEP 5: The tax problem — DRY in action ──
+# THE PROBLEM: Add 20% tax to 50 products.
+# Without function: copy-paste the same code 50 times.
+
 prices = [50, 100, 25, 200, 75, 150, 30, 80, 90, 60]
 
 # ❌ BAD: Copy the same logic everywhere
 total1 = prices[0] * 1.2
 total2 = prices[1] * 1.2
 total3 = prices[2] * 1.2
-# ... 50 times. Change tax rate? Find all 50 lines.
+# ... 50 times. Change tax rate? Find all 50 lines. Nightmare.
 
 # ✅ GOOD: Function — write once, use anywhere
-def add_tax(price, tax_rate=0.20):
+def add_tax(price: float, tax_rate: float = 0.20) -> float:
     """Add tax to a price. Returns the total."""
     return price * (1 + tax_rate)
-#        ^^^^^^ CRITICAL: return gives result back
 
-# Call it 50 times — one line each
+# Call it for ALL prices — one line each:
 for price in prices:
-    print(f"  {price} → {add_tax(price):.0f} taka (with tax)")
+    print(f"  {price} -> {add_tax(price):.0f} taka (with tax)")
 
-# ── PARAMETERS vs ARGUMENTS ──
-# Parameter = name in definition (price, tax_rate)
-# Argument = value when calling (50, 0.20)
-expensive = add_tax(500)         # uses default tax_rate=0.20
-cheap = add_tax(10, tax_rate=0.10)  # override tax_rate
-print(f"Expensive: {expensive}, Cheap: {cheap}")
+# Change tax rate for one call:
+print(f"Luxury item: {add_tax(500, tax_rate=0.50)}")  # 50% tax!</div>
 
-# ── MULTIPLE RETURNS ──
-def analyze_prices(prices):
-    """Returns min, max, and average."""
-    return min(prices), max(prices), sum(prices) / len(prices)
+<div class="code-block"># ── STEP 6: Multiple return values ──
+# Python can return MULTIPLE values (as a tuple).
 
-lowest, highest, average = analyze_prices(prices)
-print(f"Low: {lowest}, High: {highest}, Avg: {average:.1f}")
+def analyze_scores(scores):
+    """Return min, max, and average at once."""
+    return min(scores), max(scores), sum(scores) / len(scores)
 
-# ── DEFAULT ARGUMENTS ──
-def greet(name, greeting="Hello"):
-    """greeting has a default — caller can skip it."""
-    return f"{greeting}, {name}!"
+scores = [75, 90, 60, 85, 100]
+lowest, highest, average = analyze_scores(scores)
+# Python "unpacks" the three return values into three variables
 
-print(greet("Fatima"))              # Hello, Fatima!
-print(greet("Fatima", greeting="Hi"))  # Hi, Fatima!
+print(f"Low: {lowest}, High: {highest}, Average: {average:.1f}")
+# Low: 60, High: 100, Average: 82.0
 
-# ── *args and **kwargs: Flexible parameters ──
-def calculate_total(*prices: float) -> float:
-    """Accept any number of prices. Returns total."""
+# This is called "tuple unpacking" — very Pythonic!</div>
+
+<div class="code-block"># ── STEP 7: Variable arguments — *args ──
+# Sometimes you don't know how many arguments will come.
+# *args collects them into a tuple.
+
+def calculate_total(*prices):
+    """Accept ANY number of prices. Returns total."""
     return sum(prices)
 
-print(calculate_total(10, 20, 30))    # 60
-print(calculate_total(10, 20, 30, 40, 50))  # 150
+print(calculate_total(10, 20, 30))           # 60
+print(calculate_total(10, 20, 30, 40, 50))   # 150
+print(calculate_total(5))                     # 5
+print(calculate_total())                      # 0
 
-# ── TYPE HINTS: Modern Python (3.5+) — makes code self-documenting ──
-def greet(name: str, greeting: str = "Hello") -> str:
-    """Type hints: name is str, greeting is str (default Hello), returns str."""
-    return f"{greeting}, {name}!"
+# *args is useful for building flexible APIs:
+def make_sentence(*words):
+    return " ".join(words)
 
-def calculate_tax(price: float, rate: float = 0.20) -> float:
-    """Python doesn't enforce types, but hints help IDE + docs + AI."""
-    return price * rate
+print(make_sentence("Python", "is", "awesome"))  # Python is awesome</div>
 
-# Modern Python uses type hints everywhere — FastAPI, dataclasses, pydantic
-# all rely on them. Start the habit now.
+<div class="code-block"># ── STEP 8: Keyword arguments — **kwargs ──
+# **kwargs collects named arguments into a dictionary.
+# Useful when you don't know what fields the user will provide.
 
 def create_user(**details):
-    """Accept any named details."""
+    """Accept any named details about a user."""
     return details
 
 user = create_user(name="Bob", age=25, city="Dhaka")
-print(user)  # {'name': 'Bob', 'age': 25, 'city': 'Dhaka'}</div>
+print(user)
+# {'name': 'Bob', 'age': 25, 'city': 'Dhaka'}
+
+user2 = create_user(name="Fatima", role="admin", active=True)
+print(user2)
+# {'name': 'Fatima', 'role': 'admin', 'active': True}
+
+# *args and **kwargs together:
+def log_call(*args, **kwargs):
+    print(f"  Positional: {args}")
+    print(f"  Keyword: {kwargs}")
+
+log_call(1, 2, 3, name="test", debug=True)
+# Positional: (1, 2, 3)
+# Keyword: {'name': 'test', 'debug': True}</div>
+
+<div class="code-block"># ── STEP 9: Scope — where variables live ──
+# Variables created INSIDE a function are LOCAL — they die when
+# the function ends. Variables OUTSIDE are GLOBAL.
+
+message = "I am global"  # GLOBAL — visible everywhere
+
+def my_function():
+    message = "I am local"   # LOCAL — only exists inside this function
+    print(f"Inside: {message}")  # Inside: I am local
+
+my_function()
+print(f"Outside: {message}")  # Outside: I am global (unchanged!)
+
+# ⚠️ Beginners often confuse this:
+def add_one(num):
+    result = num + 1    # result is LOCAL — only exists inside add_one
+    return result
+
+answer = add_one(5)     # answer = 6
+# print(result)         # ERROR! result doesn't exist outside the function</div>
+
+<div class="code-block"># ── STEP 10: Type hints (Python 3.5+) ──
+# Type hints document WHAT type goes in and comes out.
+# Python doesn't enforce them, but they help:
+#   - Your IDE shows better autocomplete
+#   - Other developers understand your code faster
+#   - Tools like mypy can check for type errors
+
+# WITHOUT type hints:
+def greet(name):
+    return f"Hello, {name}"
+
+# WITH type hints:
+def greet(name: str) -> str:
+    """name is a string, returns a string."""
+    return f"Hello, {name}"
+
+def add_tax(price: float, tax_rate: float = 0.20) -> float:
+    """Both inputs are floats, returns a float."""
+    return price * (1 + tax_rate)
+
+def find_user(user_id: int) -> dict | None:
+    """Returns a dict OR None (if not found)."""
+    if user_id in database:
+        return database[user_id]
+    return None
+
+# Modern Python uses type hints everywhere — FastAPI, dataclasses,
+# pydantic all rely on them. Start the habit now!</div>
 
 <div class="diagram">
   <div class="diag-title">Function = রেসিপি — Input → Process → Output</div>
