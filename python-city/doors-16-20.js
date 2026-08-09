@@ -458,138 +458,376 @@ doors.push({
     aen:"requests.get(url) → get HTML. BeautifulSoup(html) → parse. soup.find_all() → extract elements. Respect robots.txt."
   },
   story:`
-<p class="scene-setting">সপ্তদশ গিল্ড। মসলা পথ। শুকনো মসলার গন্ধ, বস্তার স্তূপ, ব্যবসায়ীদের কোলাহল। ব্যবসায়ী জাকির দূর দেশ থেকে মসলা এনে সাজাচ্ছেন। "তথ্যও মসলার মতো," তিনি বলেন। "ইন্টারনেটে ছড়িয়ে আছে — price, news, weather, review। সেগুলো সংগ্রহ করতে হবে। requests দিয়ে আনো, BeautifulSoup দিয়ে ছাঁকো।"</p>
-<p class="scene-setting en">Seventeenth guild. The Spice Route. Smell of dried spices, piles of sacks, noise of merchants. Merchant Zakir arranges spices brought from distant lands. "Data is like spices," he says. "Scattered across the internet — prices, news, weather, reviews. Collect them. Fetch with requests, filter with BeautifulSoup."</p>
+<p class="scene-setting">সপ্তদশ গিল্ড। মসলা পথ। শুকনো মসলার গন্ধ, বস্তার স্তূপ, ব্যবসায়ীদের কোলাহল। ব্যবসায়ী জাকির দূর দেশ থেকে মসলা এনে সাজাচ্ছেন। "তথ্যও মসলার মতো," তিনি বলেন। "ইন্টারনেটে ছড়িয়ে আছে — price, news, weather, review। সেগুলো সংগ্রহ করতে হবে। requests দিয়ে আনো, BeautifulSoup দিয়ে ছাঁকো। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Seventeenth guild. The Spice Route. Smell of dried spices, piles of sacks, noise of merchants. Merchant Zakir arranges spices brought from distant lands. "Data is like spices," he says. "Scattered across the internet — prices, news, weather, reviews. Collect them. Fetch with requests, filter with BeautifulSoup. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তুমি ১০টা e-commerce সাইট থেকে একটা পণ্যের দাম সংগ্রহ করতে চাও। প্রতিদিন। হাতে? অসম্ভব। Web scraping দিয়ে — requests দিয়ে page আনো, BeautifulSoup দিয়ে price extract করো। অথবা API থাকলে — structured JSON সরাসরি।</div>
-<div class="dialogue en">Problem: Collect a product's price from 10 e-commerce sites. Daily. By hand? Impossible. Web scraping — fetch page with requests, extract price with BeautifulSoup. Or if an API exists — structured JSON directly.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তুমি ১০টা কম্পিউটারের দাম জানতে চাও। এক এক করে সাইট খুলবে? Web scraping দিলে কোড স্বয়ং সব সাইট থেকে দাম সংগ্রহ করবে। অথবা API থাকলে আরও সহজ — structured JSON সরাসরি।</div>
+<div class="dialogue en">First question: you want prices from 10 stores. Open each manually? Web scraping lets your code collect prices from all sites automatically. Or if an API exists — even easier, structured JSON directly.</div>
+
+<div class="code-block"># ── STEP 1: What is web scraping? ──
+# Websites show data (prices, news, weather) in your browser.
+# Web scraping = programmatically collecting that data.
+
+# Two ways to get data from the web:
+
+# 1. API (PREFERRED) — the website GIVES you structured data (JSON)
+#    Example: weather API returns {"temp": 25, "city": "Dhaka"}
+
+# 2. SCRAPING (FALLBACK) — you download the HTML page and parse it
+#    Example: download a product page, extract the price from HTML
+
+# Install the tools (in terminal):
+# pip install requests beautifulsoup4
+
+# requests — fetch web pages (sends HTTP requests)
+# BeautifulSoup — parse HTML (extract data from it)
+
+import requests
+from bs4 import BeautifulSoup
+
+# The basic scraping workflow:
+# 1. Fetch the page with requests.get()
+# 2. Parse the HTML with BeautifulSoup()
+# 3. Extract data with .find() / .find_all() / .select()
+# 4. Save the data</div>
+
+<div class="code-block"># ── STEP 2: Fetching a web page ──
+# requests.get() downloads a web page — like your browser does.
+
+import requests
+
+# Simple GET request:
+response = requests.get("https://httpbin.org/get")
+print(response.status_code)  # 200 (OK)
+print(response.text[:200])   # first 200 characters of the response
+
+# Always check the status code:
+if response.status_code == 200:
+    print("Success!")
+elif response.status_code == 404:
+    print("Page not found")
+elif response.status_code == 500:
+    print("Server error")
+
+# Set a User-Agent — some sites block requests without one:
+headers = {
+    "User-Agent": "Mozilla/5.0 (educational scraper; contact@example.com)"
+}
+response = requests.get("https://example.com", headers=headers)
+
+# Get the raw HTML:
+html = response.text
+print(html[:500])  # see the HTML structure</div>
+
+<div class="code-block"># ── STEP 3: Parsing HTML with BeautifulSoup ──
+# BeautifulSoup turns raw HTML into a searchable tree.
+
+from bs4 import BeautifulSoup
+
+# Sample HTML:
+html = """
+&lt;html&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to the Shop&lt;/h1&gt;
+    &lt;div class="product"&gt;
+        &lt;h3 class="title"&gt;Laptop X&lt;/h3&gt;
+        &lt;span class="price"&gt;50,000 taka&lt;/span&gt;
+        &lt;a href="/laptop-x"&gt;Details&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="product"&gt;
+        &lt;h3 class="title"&gt;Phone Y&lt;/h3&gt;
+        &lt;span class="price"&gt;25,000 taka&lt;/span&gt;
+        &lt;a href="/phone-y"&gt;Details&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"""
+
+# Parse the HTML:
+soup = BeautifulSoup(html, "html.parser")
+
+# Find the page title:
+title = soup.find("h1").text
+print(title)  # Welcome to the Shop
+
+# Find ALL products:
+products = soup.find_all("div", class_="product")
+print(f"Found {len(products)} products")  # Found 2 products</div>
+
+<div class="code-block"># ── STEP 4: Extracting data — find and find_all ──
+# BeautifulSoup gives you powerful search tools.
+
+soup = BeautifulSoup(html, "html.parser")
+
+# find() — returns the FIRST matching element:
+first_title = soup.find("h3", class_="title")
+print(first_title.text)  # Laptop X
+
+# find_all() — returns ALL matching elements (a list):
+all_titles = soup.find_all("h3", class_="title")
+for title in all_titles:
+    print(title.text)
+# Laptop X
+# Phone Y
+
+# Get text from an element:
+price = soup.find("span", class_="price").text
+print(price.strip())  # 50,000 taka
+
+# Get an attribute (href, src, etc.):
+link = soup.find("a")["href"]
+print(link)  # /laptop-x
+
+# Extract ALL products into a list of dicts:
+products = []
+for product in soup.find_all("div", class_="product"):
+    products.append({
+        "name": product.find("h3", class_="title").text,
+        "price": product.find("span", class_="price").text.strip(),
+        "link": product.find("a")["href"],
+    })
+
+print(products)
+# [{'name': 'Laptop X', 'price': '50,000 taka', 'link': '/laptop-x'},
+#  {'name': 'Phone Y', 'price': '25,000 taka', 'link': '/phone-y'}]</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> জাকির বললেন — এক শিক্ষানবিশ একটা সাইটে ১০,০০০ request পাঠালো সেকেন্ডে। সাইট crash — IP ban। সবসময়: ১) robots.txt পড়ো ২) rate limit রাখো (time.sleep) ৩) User-Agent দাও ৪) ToS মেনে চলো। API থাকলে সেটাই best — scraping শেষ উপায়।</div></div>
 
-<div class="code-block"># guild17_scraping.py — Spice Route
-# Merchant Zakir: "Data is everywhere. Collect wisely."
+<div class="code-block"># ── STEP 5: CSS selectors — more powerful extraction ──
+# CSS selectors let you target elements precisely.
+
+soup = BeautifulSoup(html, "html.parser")
+
+# select_one() — first match using CSS selector:
+price = soup.select_one(".product .price").text
+print(price)  # 50,000 taka
+
+# select() — all matches:
+all_links = soup.select("div.product a")
+for link in all_links:
+    print(link["href"])
+
+# CSS selector examples:
+# "div"             → all &lt;div&gt; elements
+# ".product"        → all elements with class="product"
+# "#main-title"     → element with id="main-title"
+# "div.product a"   → &lt;a&gt; inside &lt;div class="product"&gt;
+# "h3.title"        → &lt;h3 class="title"&gt;
+# "div &gt; p"          → &lt;p&gt; directly inside &lt;div&gt;
+# "input[type=text]" → &lt;input type="text"&gt;
+
+# Find by ID:
+title = soup.find(id="main-title")
+# Equivalent CSS:
+title = soup.select_one("#main-title")
+
+# Find by attribute:
+links = soup.find_all("a", href=True)  # only &lt;a&gt; tags that have href</div>
+
+<div class="code-block"># ── STEP 6: Real website scraping ──
+# A complete scraping example on a real page.
 
 import requests
 from bs4 import BeautifulSoup
 import time
-import json
 
-# ── THE PROBLEM: Collect product prices from websites ──
-
-# ══════════════════════════════════════
-# WAY 1: API (PREFERRED — always check first!)
-# ══════════════════════════════════════
-# If a website offers an API, use it. It's legal, stable, structured.
-
-response = requests.get(
-    "https://api.example.com/products",
-    params={"category": "electronics", "limit": 50},
-    headers={"Authorization": "Bearer YOUR_KEY"}
-)
-data = response.json()  # structured data — no parsing needed!
-for product in data["products"]:
-    print(f"  {product['name']}: {product['price']}")
-
-# ── Pagination: Get ALL pages ──
-all_products = []
-page = 1
-while True:
-    resp = requests.get(
-        "https://api.example.com/products",
-        params={"page": page}
-    )
-    data = resp.json()
-    if not data["products"]:  # no more pages
-        break
-    all_products.extend(data["products"])
-    page += 1
-    time.sleep(0.5)  # BE POLITE — don't hammer the server
-
-# ══════════════════════════════════════
-# WAY 2: Web Scraping (when no API exists)
-# ══════════════════════════════════════
-
-# Step 1: Fetch the page
+# Always set a polite User-Agent:
 headers = {
     "User-Agent": "Mozilla/5.0 (educational scraper; contact@example.com)"
 }
-response = requests.get("https://shop.example.com/products", headers=headers)
-html = response.text
 
-# Step 2: Parse with BeautifulSoup
-soup = BeautifulSoup(html, "html.parser")
+def scrape_products(url):
+    """Scrape product names and prices from a page."""
+    # 1. Fetch the page:
+    response = requests.get(url, headers=headers)
 
-# Step 3: Extract data using CSS selectors
-# Find all product cards
-products = soup.find_all("div", class_="product-card")
-for product in products:
-    name = product.find("h3", class_="title").text.strip()
-    price = product.find("span", class_="price").text.strip()
-    link = product.find("a")["href"]
-    print(f"  {name}: {price}")
+    if response.status_code != 200:
+        print(f"Error: {response.status_code}")
+        return []
 
-# ── More extraction techniques ──
-# Find by ID
-title = soup.find(id="main-title").text
+    # 2. Parse the HTML:
+    soup = BeautifulSoup(response.text, "html.parser")
 
-# Find by CSS selector
-articles = soup.select("div.article-list &gt; article")
+    # 3. Extract products:
+    products = []
+    for item in soup.select(".product-card"):
+        name_el = item.select_one(".product-title")
+        price_el = item.select_one(".product-price")
 
-# Find by attribute
-links = soup.find_all("a", href=True)  # only &lt;a&gt; with href
+        if name_el and price_el:
+            products.append({
+                "name": name_el.text.strip(),
+                "price": price_el.text.strip(),
+            })
 
-# Get attributes
-img_url = soup.find("img", class_="hero")["src"]
+    return products
 
-# Navigate the tree
-first_article = soup.find("article")
-headline = first_article.find("h2").text
-paragraphs = first_article.find_all("p")
+# 4. Use the function:
+url = "https://shop.example.com/products"
+products = scrape_products(url)
+for p in products:
+    print(f"  {p['name']}: {p['price']}")
 
-# ── REAL SCENARIO: Price comparison ──
-def scrape_price(url, selector):
-    """Scrape a product price from a URL."""
-    resp = requests.get(url, headers=headers)
-    soup = BeautifulSoup(resp.text, "html.parser")
-    element = soup.select_one(selector)
-    if element:
-        return element.text.strip()
-    return None
+# NOTE: Every website has different HTML structure.
+# You MUST inspect the page (right-click → Inspect in browser)
+# to find the right CSS selectors.</div>
 
-stores = [
-    {"name": "Store A", "url": "https://a.com/product/123", "selector": ".price"},
-    {"name": "Store B", "url": "https://b.com/item/123", "selector": "#price-tag"},
-    {"name": "Store C", "url": "https://c.com/p/123", "selector": ".product-price"},
+<div class="code-block"># ── STEP 7: Using APIs — the better way ──
+# If a website offers an API, USE IT. No HTML parsing needed.
+
+import requests
+
+# Many sites offer free APIs:
+# Weather:    openweathermap.org/api
+# News:       newsapi.org
+# GitHub:     api.github.com
+# JSONPlaceholder: jsonplaceholder.typicode.com (for practice)
+
+# Simple API call:
+response = requests.get("https://api.github.com/users/torvalds")
+data = response.json()  # structured data — no parsing!
+
+print(data["name"])        # Linus Torvalds
+print(data["followers"])   # 200000+
+print(data["public_repos"])  # 10+
+
+# API with parameters:
+response = requests.get(
+    "https://api.github.com/users/torvalds/repos",
+    params={
+        "sort": "updated",
+        "per_page": 5,
+    }
+)
+repos = response.json()
+for repo in repos:
+    print(f"  {repo['name']}: {repo['description']}")
+
+# API with authentication:
+# headers = {"Authorization": "Bearer YOUR_API_KEY"}
+# response = requests.get(url, headers=headers)
+
+# Why APIs are better than scraping:
+# 1. Structured JSON (no HTML parsing)
+# 2. Stable (won't break when site redesigns)
+# 3. Legal (officially provided)
+# 4. Faster (less data to transfer)</div>
+
+<div class="code-block"># ── STEP 8: Pagination — getting ALL pages ──
+# Most APIs and websites split data across multiple pages.
+
+import requests
+import time
+
+all_products = []
+page = 1
+
+while True:
+    # Fetch one page:
+    response = requests.get(
+        "https://api.example.com/products",
+        params={"page": page, "limit": 50},
+    )
+    data = response.json()
+
+    # Check if there are no more results:
+    if not data["products"]:
+        break  # no more pages
+
+    # Add this page's products:
+    all_products.extend(data["products"])
+    print(f"Page {page}: got {len(data['products'])} products")
+
+    # Go to next page:
+    page += 1
+
+    # BE POLITE — wait between requests:
+    time.sleep(0.5)
+
+print(f"Total collected: {len(all_products)} products")
+
+# For web scraping pagination:
+# Look for "Next" button link and follow it until no more pages.</div>
+
+<div class="code-block"># ── STEP 9: Saving scraped data ──
+# Once you've collected data, save it for later use.
+
+import csv
+import json
+from datetime import datetime
+
+products = [
+    {"name": "Laptop", "price": "50,000", "store": "A"},
+    {"name": "Phone", "price": "25,000", "store": "B"},
 ]
 
-print("Price comparison:")
-for store in stores:
-    price = scrape_price(store["url"], store["selector"])
-    print(f"  {store['name']}: {price}")
-    time.sleep(1)  # BE POLITE — 1 second between requests
-
-# ── SAVING COLLECTED DATA ──
-import csv
-
-with open("prices.csv", "w", newline="") as f:
-    writer = csv.DictWriter(f, fieldnames=["store", "product", "price", "date"])
+# Save to CSV:
+with open("products.csv", "w", newline="") as f:
+    writer = csv.DictWriter(f, fieldnames=["name", "price", "store"])
     writer.writeheader()
-    for store in stores:
-        writer.writerow({
-            "store": store["name"],
-            "product": "Widget X",
-            "price": price,
-            "date": time.strftime("%Y-%m-%d")
-        })
+    writer.writerows(products)
 
-# ── THE GOLDEN RULES OF SCRAPING ──
-# 1. Check for API first — always preferred
-# 2. Read robots.txt — respect what's allowed
-# 3. Rate limit: time.sleep(1) between requests
-# 4. Set User-Agent — identify yourself
-# 5. Cache locally — don't re-scrape the same page
-# 6. Check ToS (Terms of Service) — legal matters
-# 7. Handle errors gracefully — sites change structure</div>
+# Save to JSON:
+with open("products.json", "w") as f:
+    json.dump(products, f, indent=2)
+
+# Save to pandas DataFrame:
+import pandas as pd
+df = pd.DataFrame(products)
+df.to_csv("products_pandas.csv", index=False)
+df.to_excel("products.xlsx", index=False)
+
+# Add timestamp for tracking:
+timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+for p in products:
+    p["scraped_at"] = timestamp</div>
+
+<div class="code-block"># ── STEP 10: The golden rules of scraping ──
+# Follow these rules or risk getting banned (or sued).
+
+# RULE 1: Check for an API FIRST
+# If the site has an API, use it. Always preferred.
+# Look for: "developer.mozilla.org", "/api", documentation pages
+
+# RULE 2: Read robots.txt
+# tells you what you're allowed to scrape:
+# example.com/robots.txt
+# User-agent: *
+# Disallow: /private/
+# Respect it — it's the site's rules.
+
+# RULE 3: Rate limit your requests
+import time
+time.sleep(1)  # wait 1 second between requests
+# NEVER send thousands of requests per second — that's a DDoS attack.
+
+# RULE 4: Set a User-Agent
+headers = {"User-Agent": "MyApp/1.0 (contact@example.com)"}
+# Don't pretend to be a browser — identify yourself.
+
+# RULE 5: Cache results — don't re-scrape the same page
+# Save scraped data to a file. Next time, read from file.
+
+# RULE 6: Handle errors gracefully
+try:
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+except requests.RequestException as e:
+    print(f"Failed: {e}")
+
+# RULE 7: Check Terms of Service
+# Some sites prohibit scraping. Respect it.
+
+# SUMMARY:
+# ┌────────────────────┬───────────────────────────────────┐
+# │ Tool               │ Purpose                           │
+# ├────────────────────┼───────────────────────────────────┤
+# │ requests           │ fetch web pages / API calls       │
+# │ BeautifulSoup      │ parse and extract from HTML       │
+# │ .json()            │ parse API response                │
+# │ time.sleep(1)      │ be polite — don't hammer servers  │
+# │ pandas             │ save and analyze scraped data     │
+# └────────────────────┴───────────────────────────────────┘</div>
 
 <div class="diagram">
   <div class="diag-title">Web Data Collection — API (best) ও Scraping (fallback)</div>
