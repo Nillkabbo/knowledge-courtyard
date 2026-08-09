@@ -162,6 +162,11 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .kv-table th{color:var(--teal);font-weight:700;font-size:0.875rem;text-transform:uppercase;letter-spacing:.04em}
 .story-text .kv-table td.hl{color:var(--amber-bright);font-weight:600}
 .story-text .kv-table tr:last-child td{border-bottom:none}
+.senior-insight .kv-table{width:100%;border-collapse:collapse;table-layout:fixed;margin:.6rem 0;font-size:.8rem}
+.senior-insight .kv-table th,.senior-insight .kv-table td{text-align:left;padding:.5rem .55rem;border-bottom:1px solid var(--panel-border);vertical-align:top;word-break:break-word;overflow-wrap:anywhere}
+.senior-insight .kv-table th{color:var(--purple);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:.04em}
+.senior-insight .kv-table td.hl{color:var(--amber-bright);font-weight:600}
+.senior-insight .kv-table tr:last-child td{border-bottom:none}
 /* ── DIAGRAMS (inline SVG) ── */
 .story-text .diagram{background:linear-gradient(135deg,rgba(19,26,43,.6),rgba(7,10,15,.8));border:1px solid var(--panel-border);border-radius:14px;padding:1rem;margin:1.2rem 0;overflow:hidden}
 .story-text .diagram svg{display:block;width:100%;height:auto;max-width:720px;margin:0 auto;font-family:'Courier New',monospace}
