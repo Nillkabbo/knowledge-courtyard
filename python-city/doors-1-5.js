@@ -1320,18 +1320,199 @@ doors.push({
     aen:"Slicing = cutting part of a string. 'Hello'[1:4] = 'ell' (index 1 to 3, excluding 4). Python: [start:stop:step]."
   },
   story:`
-<p class="scene-setting">পঞ্চম গিল্ড। ক্যালিগ্রাফারের কক্ষ। কালির গন্ধ, কাগজের শব্দ, নিখুঁত হরফ। ক্যালিগ্রাফার জয়নুল একটা মেসি পান্ডুলিপি ধরে আছেন — পাতায় কালি ছড়ানো, শব্দ ভাঙা, অক্ষর উল্টো। "এটা পড়া যায় না," তিনি বলেন। "কিন্তু আমি পরিষ্কার করতে পারি।" Python-এ string processing দিয়ে আসল বিশ্বের মেসি text পরিষ্কার করো।</p>
-<p class="scene-setting en">Fifth guild. Calligrapher's studio. Smell of ink, sound of paper, perfect letterforms. Calligrapher Zainul holds a messy manuscript — ink spilled, words broken, letters reversed. "This is unreadable," he says. "But I can clean it." Python string processing cleans messy real-world text.</p>
+<p class="scene-setting">পঞ্চম গিল্ড। ক্যালিগ্রাফারের কক্ষ। কালির গন্ধ, কাগজের শব্দ, নিখুঁত হরফ। ক্যালিগ্রাফার জয়নুল একটা মেসি পান্ডুলিপি ধরে আছেন — পাতায় কালি ছড়ানো, শব্দ ভাঙা, অক্ষর উল্টো। "এটা পড়া যায় না," তিনি বলেন। "কিন্তু আমি পরিষ্কার করতে পারি। চলো একটা একটা করে শিখি।" Python-এ string processing দিয়ে আসল বিশ্বের মেসি text পরিষ্কার করো।</p>
+<p class="scene-setting en">Fifth guild. Calligrapher's studio. Smell of ink, sound of paper, perfect letterforms. Calligrapher Zainul holds a messy manuscript — ink spilled, words broken, letters reversed. "This is unreadable," he says. "But I can clean it. Let's learn step by step." Python string processing cleans messy real-world text.</p>
 
-<div class="dialogue">সমস্যা: তুমি ১০০০টা ইমেইল ঠিকানা সংগ্রহ করেছো — কোনোটা বড় হাতে, কোনোটা ছোট, কোনোটায় স্পেস, কোনোটা ভুল। এগুলো পরিষ্কার করতে হবে। হাতে? মাস। Python string methods দিয়ে সেকেন্ডে — lower(), strip(), split(), regex।</div>
-<div class="dialogue en">Problem: You collected 1,000 email addresses — some uppercase, some lowercase, some with spaces, some invalid. Clean them. By hand? Months. Python string methods — lower(), strip(), split(), regex — in seconds.</div>
+<div class="dialogue">প্রথম প্রশ্ন: বাস্তব জগতের ডেটা কেমন? উত্তর: মেসি। ইমেইলে স্পেস, ফোনে ড্যাশ, নামে বড়/ছোট হরফ মিশ্র। ৯০% real-world data আসে text হিসেবে — তাও মেসি। Python string methods দিয়ে পরিষ্কার করো।</div>
+<div class="dialogue en">First question: what does real-world data look like? Answer: messy. Emails with spaces, phones with dashes, names with mixed case. 90% of real-world data is text — and messy. Python string methods clean it.</div>
+
+<div class="code-block"># ── STEP 1: What is a string? ──
+# A string is TEXT — a sequence of characters.
+# Created with quotes (single ' or double "):
+
+name = "Fatima"
+greeting = 'Hello'
+sentence = "She said 'hi'"   # double outside, single inside
+sentence2 = 'He said "bye"'  # single outside, double inside
+
+# Multi-line string with triple quotes:
+message = """Dear Student,
+Welcome to Python City!
+Let's learn together."""
+
+# How long is a string?
+print(len(name))     # 6 (F-a-t-i-m-a)
+
+# Strings are IMMUTABLE — you cannot change a character:
+# name[0] = "S"  # ERROR! Strings cannot be modified.
+# But you can create a NEW string:
+new_name = "S" + name[1:]   # "Satima" — new string</div>
+
+<div class="code-block"># ── STEP 2: String indexing and slicing ──
+# Access individual characters by index (starts at 0):
+text = "Hello, World!"
+
+print(text[0])     # 'H' (first character)
+print(text[7])     # 'W' (8th character)
+print(text[-1])    # '!' (last character)
+print(text[-2])    # 'd' (second-to-last)
+
+# SLICING — take a portion [start:stop] (stop is EXCLUDED):
+print(text[0:5])   # 'Hello' (index 0,1,2,3,4 — NOT 5)
+print(text[7:])    # 'World!' (from 7 to end)
+print(text[:5])    # 'Hello' (from start to 4)
+print(text[:])     # 'Hello, World!' (entire string — a copy!)
+
+# SLICING with STEP [start:stop:step]:
+print(text[::2])   # 'HloWrd' (every 2nd character)
+print(text[::-1])  # '!dlroW ,olleH' (REVERSED — common trick!)
+
+# Slicing works on lists too (remember Door 4):</div>
+
+<div class="code-block"># ── STEP 3: Cleaning text — strip, lower, upper ──
+# These are the MOST USED string methods in real code.
+
+# .strip() — remove leading/trailing spaces:
+raw = "   hello world   "
+clean = raw.strip()
+print(f"'{clean}'")    # 'hello world' (spaces gone)
+
+# .lower() — convert to lowercase:
+email = "Fatima@Mail.COM"
+print(email.lower())    # fatima@mail.com
+
+# .upper() — convert to uppercase:
+print(email.upper())    # FATIMA@MAIL.COM
+
+# .title() — capitalize each word:
+name = "fatima rahman"
+print(name.title())     # Fatima Rahman
+
+# .capitalize() — capitalize first letter only:
+sentence = "hello world"
+print(sentence.capitalize())  # Hello world
+
+# Chaining methods (call one after another):
+raw_email = "  Fatima@Mail.COM  "
+clean_email = raw_email.strip().lower()
+print(clean_email)  # fatima@mail.com</div>
+
+<div class="code-block"># ── STEP 4: Searching inside strings ──
+# Check if something is IN a string:
+email = "fatima@mail.com"
+
+# 'in' operator — True/False:
+print("@" in email)            # True
+print(".com" in email)         # True
+print("gmail" in email)        # False
+
+# .startswith() and .endswith():
+filename = "report.pdf"
+print(filename.endswith(".pdf"))    # True
+print(filename.endswith(".docx"))   # False
+print(filename.startswith("report")) # True
+
+# .find() — get position (index) of substring:
+text = "Hello, World!"
+pos = text.find("World")
+print(pos)  # 7 (starts at index 7)
+print(text.find("Python"))  # -1 (not found)
+
+# .count() — how many times something appears:
+sentence = "the cat sat on the mat"
+print(sentence.count("the"))  # 2
+print(sentence.count("a"))    # 3</div>
+
+<div class="code-block"># ── STEP 5: Split and Join ──
+# .split() — break a string INTO a list:
+csv_line = "Fatima,25,Dhaka,Engineer"
+fields = csv_line.split(",")
+print(fields)  # ['Fatima', '25', 'Dhaka', 'Engineer']
+
+name, age, city, job = fields   # unpack into variables
+print(f"{name} is {age}, lives in {city}, works as {job}")
+
+# Split by whitespace (default):
+sentence = "Python is awesome"
+words = sentence.split()
+print(words)  # ['Python', 'is', 'awesome']
+
+# .join() — combine a list INTO a string:
+words = ["Python", "is", "awesome"]
+sentence = " ".join(words)     # join with space between
+print(sentence)  # Python is awesome
+
+tags = ["python", "ai", "web"]
+hashtags = "#".join(tags)
+print(hashtags)  # python#ai#web
+
+# Split + Join = powerful text processing pipeline:
+csv_data = "apple,banana,cherry"
+pipe_separated = "|".join(csv_data.split(","))
+print(pipe_separated)  # apple|banana|cherry</div>
+
+<div class="code-block"># ── STEP 6: Replace ──
+# .replace(old, new) — substitute text:
+text = "I love Java"
+new_text = text.replace("Java", "Python")
+print(new_text)  # I love Python
+
+# Replace all occurrences:
+sentence = "cats and dogs and cats"
+print(sentence.replace("cats", "birds"))  # birds and dogs and birds
+
+# Replace spaces with underscores (for filenames):
+filename = "My Report Final.pdf"
+safe_name = filename.replace(" ", "_")
+print(safe_name)  # My_Report_Final.pdf
+
+# Remove something by replacing with empty string:
+phone = "+880-171-234-5678"
+digits_only = phone.replace("-", "")
+print(digits_only)  # +8801712345678</div>
+
+<div class="code-block"># ── STEP 7: f-string formatting ──
+# f"..." lets you put variables directly inside a string.
+# This is the MOST PYTHONIC way to format strings (Python 3.6+).
+
+name = "Fatima"
+age = 25
+price = 49.99
+items = 3
+
+# WITHOUT f-string (concatenation — ugly and error-prone):
+msg1 = "Name: " + name + ", Age: " + str(age)
+print(msg1)
+
+# WITH f-string (clean and readable):
+msg2 = f"Name: {name}, Age: {age}"
+print(msg2)  # Name: Fatima, Age: 25
+
+# f-string with EXPRESSIONS inside {}:
+print(f"Total: {price * items}")       # Total: 149.97
+print(f"Next year: {age + 1}")          # Next year: 26
+print(f"Name upper: {name.upper()}")    # Name upper: FATIMA
+
+# f-string with FORMAT SPECIFIERS:
+print(f"Price: {price:.2f}")            # Price: 49.99 (2 decimals)
+print(f"Price: {price:,.2f}")           # Price: 1,234.56 (with commas)
+print(f"Age: {age:05d}")                # Age: 00025 (pad with zeros)
+print(f"Percent: {0.85:.1%}")           # Percent: 85.0%
+print(f"Binary: {42:08b}")              # Binary: 00101010
+
+# Multi-line f-string:
+report = f"""
+--- Report ---
+Name: {name}
+Age: {age}
+Total: {price * items:.2f} taka
+"""</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> জয়নুল বললেন — এক শিক্ষানবিশ + দিয়ে string জোড়ার চেষ্টা করলো। "Hello" + " " + "World" + " " + str(42)। কাজ করলো, কিন্তু ugly। f-string দিলে: f"Hello World {42}"। পরিষ্কার, পঠনযোগ্য, দ্রুত। Python 3.6+ f-string = সবচেয়ে Pythonic।</div></div>
 
-<div class="code-block"># guild5_strings.py — Calligrapher Problem
-# Master Zainul: "Clean the messy text. String is your chisel."
+<div class="code-block"># ── STEP 8: Real scenario — clean 1,000 messy emails ──
+# Combine everything: strip, lower, split, replace
 
-# ── THE PROBLEM: Clean 1,000 messy email addresses ──
 messy_emails = [
     "  Fatima@Mail.COM  ",
     "ahmed@@gmail.com",
@@ -1340,74 +1521,74 @@ messy_emails = [
     "nadia@gmail.com (personal)",
 ]
 
-# ── CLEANING: strip, lower, split ──
 def clean_email(raw):
     """Clean a messy email address."""
-    email = raw.strip()        # remove leading/trailing spaces
-    email = email.lower()      # normalize to lowercase
-    # Remove parenthetical notes
-    if "(" in email:
+    email = raw.strip()           # remove spaces
+    email = email.lower()         # lowercase
+    if "(" in email:              # remove notes like "(personal)"
         email = email.split("(")[0].strip()
-    # Fix double @
-    email = email.replace("@@", "@")
+    email = email.replace("@@", "@")  # fix double @
     return email
 
 cleaned = [clean_email(e) for e in messy_emails]
-for e in cleaned:
-    print(f"  {e}")
-# fatima@mail.com, ahmed@gmail.com, sara@yahoo.com, etc.
+for original, clean in zip(messy_emails, cleaned):
+    print(f"  '{original.strip()}' -> '{clean}'")
+# 'Fatima@Mail.COM' -> 'fatima@mail.com'
+# 'ahmed@@gmail.com' -> 'ahmed@gmail.com'
+# etc.</div>
 
-# ── SLICING: Cut parts of a string ──
-text = "Hello, World!"
-print(text[0:5])    # 'Hello' (index 0-4)
-print(text[7:])     # 'World!' (index 7 to end)
-print(text[:5])     # 'Hello' (start to index 4)
-print(text[-1])     # '!' (last character)
-print(text[::-1])   # '!dlroW ,olleH' (reversed!)
+<div class="code-block"># ── STEP 9: Useful string methods cheat sheet ──
+# Here are the methods you'll use 90% of the time:
 
-# ── SPLIT and JOIN ──
-csv_line = "Fatima,25,Dhaka,Engineer"
-fields = csv_line.split(",")    # ['Fatima', '25', 'Dhaka', 'Engineer']
-name, age, city, job = fields
+text = "  Hello World  "
 
-# Join list back into string
-tags = ["python", "ai", "ml"]
-hashtags = "#".join([""] + tags)  # #python#ai#ml
-print(hashtags)
+# Cleaning:
+text.strip()        # "Hello World" (remove spaces both sides)
+text.lstrip()       # "Hello World  " (left only)
+text.rstrip()       # "  Hello World" (right only)
 
-# ── f-STRING: Modern formatting ──
-name = "Fatima"
-age = 25
-price = 49.99
+# Case:
+text.lower()        # "  hello world  "
+text.upper()        # "  HELLO WORLD  "
+text.title()        # "  Hello World  "
+text.swapcase()     # "  hELLO wORLD  "
 
-# Old way (ugly)
-msg1 = "Name: " + name + ", Age: " + str(age)
+# Testing (returns True/False):
+"hello".isalpha()   # True (only letters)
+"12345".isdigit()   # True (only digits)
+"hello123".isalnum() # True (letters + digits)
+"   ".isspace()     # True (only whitespace)
+"Hello".istitle()   # True (each word capitalized)
 
-# f-string (Pythonic)
-msg2 = f"Name: {name}, Age: {age}"
-msg3 = f"Price: {price:.2f} taka"  # Price: 49.99 taka
-msg4 = f"{name.upper()} is {age} years old"
+# These are great for validation:
+user_input = "abc123"
+if user_input.isalnum():
+    print("Valid username (letters + numbers only)")</div>
 
-# ── SEARCHING and CHECKING ──
-email = "fatima@mail.com"
-print(email.endswith(".com"))      # True
-print(email.startswith("fatima"))  # True
-print("@" in email)                # True
-print(email.find("@"))             # 6 (position of @)
+<div class="code-block"># ── STEP 10: Regex (advanced pattern matching) ──
+# Regular expressions find PATTERNS in text.
+# Powerful but complex — use for hard jobs, not simple ones.
 
-# ── REGEX (advanced pattern matching) ──
 import re
 
-# Extract all emails from a messy text
-text = "Contact: fatima@mail.com or ahmed@gmail.com"
+# Extract all email addresses from a block of text:
+text = "Contact fatima@mail.com or ahmed@gmail.com for info."
 emails = re.findall(r'[\w.]+@[\w.]+', text)
 print(emails)  # ['fatima@mail.com', 'ahmed@gmail.com']
 
-# Validate phone number format
+# Check if a string matches a pattern:
 phone = "+8801712345678"
-pattern = r'^\+880\d{11}$'
-if re.match(pattern, phone):
-    print("Valid Bangladesh phone")</div>
+if re.match(r'^\+880\d{11}$', phone):
+    print("Valid Bangladesh phone number")
+
+# Replace all digits with X:
+masked = re.sub(r'\d', 'X', "My card is 4532-1234-5678-9012")
+print(masked)  # My card is XXXX-XXXX-XXXX-XXXX
+
+# When to use regex vs string methods?
+# Simple search: use 'in', .find(), .replace()
+# Complex pattern (email, phone, URL): use regex
+# Rule: if string methods can do it, use them. Regex for hard patterns.</div>
 
 <div class="diagram">
   <div class="diag-title">String Processing — মেসি text পরিষ্কার</div>
