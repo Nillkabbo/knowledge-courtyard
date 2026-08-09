@@ -1267,20 +1267,175 @@ doors.push({
     aen:"map = transform each. filter = select matching. reduce = combine all into one. lambda = small one-time function."
   },
   story:`
-<p class="scene-setting">চতুর্দশ গিল্ড। কীমিয়াগারের কক্ষ। রাসায়নিকের গন্ধ, কাঁচের পাত্র, রঙ বদলানো তরল। কীমিয়াবিদ ইমরান একটা সিরিজ পরীক্ষা করছেন — কাঁচের পাত্রে তরল ঢালেন, ছাঁকনি দিয়ে বেছে নেন, গরম করে ঘনীভূত করেন। "তিনটা ধাপ," তিনি বলেন। "বদলাও (map), বেছো (filter), ঘন করো (reduce)। Functional programming ঠিক তেমনি — data pipeline।"</p>
-<p class="scene-setting en">Fourteenth guild. The Alchemist's chamber. Smell of chemicals, glass vessels, color-changing liquid. Alchemist Imran runs a series of experiments — pours liquid through vessels, filters select substances, heats to concentrate. "Three steps," he says. "Transform (map), select (filter), concentrate (reduce). Functional programming is the same — a data pipeline."</p>
+<p class="scene-setting">চতুর্দশ গিল্ড। কীমিয়াগারের কক্ষ। রাসায়নিকের গন্ধ, কাঁচের পাত্র, রঙ বদলানো তরল। কীমিয়াবিদ ইমরান একটা সিরিজ পরীক্ষা করছেন — কাঁচের পাত্রে তরল ঢালেন, ছাঁকনি দিয়ে বেছে নেন, গরম করে ঘনীভূত করেন। "তিনটা ধাপ," তিনি বলেন। "বদলাও (map), বেছো (filter), ঘন করো (reduce)। Functional programming ঠিক তেমনি — data pipeline। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Fourteenth guild. The Alchemist's chamber. Smell of chemicals, glass vessels, color-changing liquid. Alchemist Imran runs a series of experiments — pours liquid through vessels, filters select substances, heats to concentrate. "Three steps," he says. "Transform (map), select (filter), concentrate (reduce). Functional programming is the same — a data pipeline. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তোমার ১০,০০০ লেনদেনের তালিকা। শুধু সম্পূর্ণ লেনদেনগুলো বেছো (filter), প্রতিটার ট্যাক্স যোগ করো (map), মোট আয় বের করো (reduce)। ৩ ধাপে pipeline — প্রতিটা ধাপে ডেটা বদলায়। for loop দিলে ৩০ লাইন, functional দিলে ৩ লাইন।</div>
-<div class="dialogue en">Problem: 10,000 transactions. Select only completed (filter), add tax to each (map), calculate total revenue (reduce). 3-step pipeline. For loop: 30 lines. Functional: 3 lines.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তুমি ১০,০০০ লেনদেন নিয়ে কাজ করছ। সম্পূর্ণগুলো বেছো, প্রতিটায় ট্যাক্স যোগ করো, মোট আয় বের করো। for loop দিলে ৩০ লাইন। Functional দিলে: filter → map → reduce। ৩ ধাপ, প্রতিটা এক লাইন। Data pipeline।</div>
+<div class="dialogue en">First question: you have 10,000 transactions. Select completed ones, add tax, calculate total. For loop: 30 lines. Functional: filter → map → reduce. 3 steps, each one line. Data pipeline.</div>
+
+<div class="code-block"># ── STEP 1: lambda — the anonymous function ──
+# A lambda is a TINY function with NO NAME.
+# Use it when you need a simple function ONCE.
+
+# Normal function:
+def double(x):
+    return x * 2
+
+# Same thing as lambda:
+double_lambda = lambda x: x * 2
+
+print(double(5))         # 10
+print(double_lambda(5))  # 10
+
+# Lambda syntax:
+# lambda parameters: expression
+# (no def, no return — just one expression)
+
+# Multiple parameters:
+add = lambda a, b: a + b
+print(add(3, 5))  # 8
+
+# Default parameters:
+greet = lambda name, greeting="Hello": f"{greeting}, {name}!"
+print(greet("Fatima"))  # Hello, Fatima!
+
+# WHEN to use lambda:
+# - Short, one-line functions
+# - Passed as argument to sorted(), map(), filter()
+# - You don't need to reuse the function
+
+# WHEN NOT to use lambda:
+# - Complex logic (use def — it's readable)
+# - Multiple statements (lambda only allows ONE expression)
+# - You need to call it multiple times (give it a name with def)</div>
+
+<div class="code-block"># ── STEP 2: The most common lambda use — sorted() ──
+# sorted() takes a 'key' function. lambda is perfect for this.
+
+students = [
+    {"name": "Fatima", "grade": 85},
+    {"name": "Ahmed", "grade": 92},
+    {"name": "Sara", "grade": 78},
+    {"name": "Bob", "grade": 95},
+]
+
+# Sort by grade (ascending):
+by_grade = sorted(students, key=lambda s: s["grade"])
+print([s["name"] for s in by_grade])
+# ['Sara', 'Fatima', 'Ahmed', 'Bob']
+
+# Sort by grade (descending):
+by_grade_desc = sorted(students, key=lambda s: s["grade"], reverse=True)
+print([s["name"] for s in by_grade_desc])
+# ['Bob', 'Ahmed', 'Fatima', 'Sara']
+
+# Sort by name length:
+by_name_len = sorted(students, key=lambda s: len(s["name"]))
+print([s["name"] for s in by_name_len])
+# ['Bob', 'Sara', 'Ahmed', 'Fatima']
+
+# Complex sort? Use a named function instead:
+def grade_then_name(student):
+    return (-student["grade"], student["name"])  # grade desc, name asc
+
+sorted(students, key=grade_then_name)
+# Clear, testable, reusable. Better than a complex lambda.</div>
+
+<div class="code-block"># ── STEP 3: map — transform every item ──
+# map(function, iterable) applies a function to EACH item.
+
+numbers = [1, 2, 3, 4, 5]
+
+# Double each number with map:
+doubles = list(map(lambda x: x * 2, numbers))
+print(doubles)  # [2, 4, 6, 8, 10]
+
+# Convert strings to uppercase:
+words = ["hello", "world"]
+upper = list(map(str.upper, words))
+print(upper)  # ['HELLO', 'WORLD']
+
+# Get lengths:
+lengths = list(map(len, words))
+print(lengths)  # [5, 5]
+
+# map with multiple iterables:
+list1 = [1, 2, 3]
+list2 = [10, 20, 30]
+sums = list(map(lambda a, b: a + b, list1, list2))
+print(sums)  # [11, 22, 33]
+
+# BUT: list comprehension is usually MORE PYTHONIC:
+doubles_comp = [x * 2 for x in numbers]
+# Same result, more readable. Python community prefers this.</div>
+
+<div class="code-block"># ── STEP 4: filter — select matching items ──
+# filter(function, iterable) keeps only items where function returns True.
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Keep only even numbers:
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+print(evens)  # [2, 4, 6, 8, 10]
+
+# Keep strings longer than 3:
+words = ["hi", "cat", "hello", "ok", "world"]
+long_words = list(filter(lambda w: len(w) > 3, words))
+print(long_words)  # ['hello', 'world']
+
+# Remove None values:
+data = [1, None, 2, None, 3, None]
+clean = list(filter(None, data))  # None removes falsy values
+print(clean)  # [1, 2, 3]
+
+# BUT: list comprehension is usually MORE PYTHONIC:
+evens_comp = [x for x in numbers if x % 2 == 0]
+# Same result, more readable.</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> ইমরান বললেন — এক শিক্ষানবিশ সব reduce দিয়ে করতে চাইলো — এমনকি সাধারণ যোগেও। কিন্তু reduce জটিল — পড়তে কঠিন। Python-এ sum(), min(), max() built-in আছে — reduce শুধু জটিল aggregation-এ। সহজ কাজে comprehension বা built-in, কঠিন aggregation-এ reduce।</div></div>
 
-<div class="code-block"># guild14_functional.py — Alchemist
-# Alchemist Imran: "Transform, filter, concentrate."
+<div class="code-block"># ── STEP 5: reduce — combine all into ONE value ──
+# reduce(function, iterable) accumulates all items into a single result.
+# Import from functools (not built-in in Python 3).
 
 from functools import reduce
 
-# ── THE PROBLEM: Process 10,000 transactions ──
+numbers = [1, 2, 3, 4, 5]
+
+# Sum all numbers:
+total = reduce(lambda acc, n: acc + n, numbers, 0)
+# acc starts at 0 (initial value)
+# Step 1: acc=0, n=1 → acc=1
+# Step 2: acc=1, n=2 → acc=3
+# Step 3: acc=3, n=3 → acc=6
+# Step 4: acc=6, n=4 → acc=10
+# Step 5: acc=10, n=5 → acc=15
+print(total)  # 15
+
+# BUT: for sum, just use sum() — much simpler!
+print(sum(numbers))  # 15
+
+# Product of all numbers:
+product = reduce(lambda acc, n: acc * n, numbers, 1)
+print(product)  # 120
+
+# Find maximum (but max() is simpler!):
+maximum = reduce(lambda a, b: a if a > b else b, numbers)
+print(maximum)  # 5
+
+# When is reduce actually useful?
+# Complex aggregations that don't have a built-in:
+def count_words(freq, word):
+    freq[word] = freq.get(word, 0) + 1
+    return freq
+
+word_freq = reduce(count_words, "the cat sat on the mat".split(), {})
+print(word_freq)
+# {'the': 2, 'cat': 1, 'sat': 1, 'on': 1, 'mat': 1}</div>
+
+<div class="code-block"># ── STEP 6: The full pipeline — filter → map → reduce ──
+# Combine all three to process data step by step.
+
 transactions = [
     {"id": 1, "amount": 500, "status": "completed"},
     {"id": 2, "amount": 200, "status": "failed"},
@@ -1289,103 +1444,176 @@ transactions = [
     {"id": 5, "amount": 300, "status": "refunded"},
 ]
 
-# ── MAP: Transform each item ──
-# Double each amount (add 100% tax)
-amounts = [t["amount"] for t in transactions]
-# List comp equivalent (often more Pythonic)
-amounts_with_tax = [a * 2 for a in amounts]
-# Functional equivalent:
-amounts_with_tax_fn = list(map(lambda a: a * 2, amounts))
-print(amounts_with_tax)  # [1000, 400, 1600, 300, 600]
+# GOAL: Total revenue from completed transactions, with 100% tax.
 
-# ── FILTER: Select matching items ──
-completed = [t for t in transactions if t["status"] == "completed"]
-# Functional equivalent:
-completed_fn = list(filter(lambda t: t["status"] == "completed", transactions))
-print(len(completed))  # 3
+# Step 1: FILTER — keep only completed:
+completed = filter(lambda t: t["status"] == "completed", transactions)
 
-# ── REDUCE: Combine all into one value ──
-total = reduce(
-    lambda acc, t: acc + t["amount"],
-    completed,
-    0  # initial value
-)
-print(f"Total revenue: {total}")  # 1450
+# Step 2: MAP — extract amount and double it:
+amounts_doubled = map(lambda t: t["amount"] * 2, completed)
 
-# ── THE FULL PIPELINE: filter → map → reduce ──
-total_revenue = reduce(
-    lambda acc, amount: acc + amount,
-    map(
-        lambda t: t["amount"] * 2,  # add 100% tax
-        filter(
-            lambda t: t["status"] == "completed",
-            transactions
-        )
-    ),
+# Step 3: REDUCE — sum them all:
+total = reduce(lambda acc, amt: acc + amt, amounts_doubled, 0)
+
+print(f"Total revenue: {total}")
+# (500 + 800 + 150) * 2 = 2900
+
+# All in ONE LINE (but harder to read):
+total_inline = reduce(
+    lambda acc, amt: acc + amt,
+    map(lambda t: t["amount"] * 2,
+        filter(lambda t: t["status"] == "completed", transactions)),
     0
 )
-print(f"Total with tax: {total_revenue}")  # 2900
 
-# ── LAMBDA: Anonymous function ──
-# Use when: short, one-time, passed as argument
-sort_key = lambda t: t["amount"]  # sort by amount
-sorted_txns = sorted(transactions, key=sort_key, reverse=True)
+# SAME thing with list comprehension (more Pythonic):
+total_comp = sum(t["amount"] * 2 for t in transactions
+                 if t["status"] == "completed")
+# Much more readable! Python community prefers this.</div>
 
-# ❌ BAD: Complex lambda — unreadable
-# sorted(items, key=lambda x: x.a * x.b - x.c / (x.d + 1))
+<div class="code-block"># ── STEP 7: Closures — functions that remember ──
+# A closure is a function that "remembers" variables from where it was created.
 
-# ✅ GOOD: Named function for complex logic
-def priority_score(task):
-    """Clear, testable, documented."""
-    return task["urgency"] * task["impact"] - task["effort"]
-
-sorted_tasks = sorted(tasks, key=priority_score)
-
-# ── CLOSURES: Functions that remember ──
 def make_multiplier(factor):
-    """Returns a function that remembers 'factor'."""
+    """Create a function that multiplies by 'factor'."""
     def multiply(x):
-        return x * factor
+        return x * factor  # 'factor' is remembered from outer function
     return multiply
 
-double = make_multiplier(2)
-triple = make_multiplier(3)
-print(double(5))  # 10
-print(triple(5))  # 15
+# Create different multipliers:
+double = make_multiplier(2)    # remembers factor=2
+triple = make_multiplier(3)    # remembers factor=3
 
-# ── PARTIAL APPLICATION: Fix some arguments ──
+print(double(5))  # 10 (5 * 2)
+print(triple(5))  # 15 (5 * 3)
+
+# double and triple are CLOSURES — they "close over" the factor variable.
+# Each remembers its OWN factor.
+
+# Practical example — create logging functions:
+def make_logger(prefix):
+    """Create a logger with a fixed prefix."""
+    def log(message):
+        print(f"[{prefix}] {message}")
+    return log
+
+info = make_logger("INFO")
+error = make_logger("ERROR")
+
+info("Server started")    # [INFO] Server started
+error("Database failed")  # [ERROR] Database failed
+
+# The prefix is "remembered" by each closure.</div>
+
+<div class="code-block"># ── STEP 8: partial — fix some arguments ──
+# partial() creates a new function with some arguments pre-filled.
+
 from functools import partial
 
 def log_message(level, message):
     print(f"[{level}] {message}")
 
+# Create specialized versions:
 info = partial(log_message, "INFO")
+warning = partial(log_message, "WARNING")
 error = partial(log_message, "ERROR")
 
-info("Server started")    # [INFO] Server started
-error("Database failed")  # [ERROR] Database failed
+info("Server started")     # [INFO] Server started
+warning("High memory")     # [WARNING] High memory
+error("Database failed")   # [ERROR] Database failed
 
-# ── ANY/ALL: Functional checks ──
-all_completed = all(t["status"] == "completed" for t in transactions)
-any_failed = any(t["status"] == "failed" for t in transactions)
+# Another example — create specific math functions:
+def power(base, exponent):
+    return base ** exponent
 
-# ── FUNCTIONAL VS COMPREHENSION ──
-# These are equivalent — use whichever is more readable:
-# Functional:  list(map(lambda x: x*2, filter(lambda x: x>0, nums)))
-# Comprehension: [x*2 for x in nums if x > 0]
-# Python community prefers comprehension for simple cases
+square = partial(power, exponent=2)
+cube = partial(power, exponent=3)
 
-# ── IMMUTABILITY: Functional core principle ──
+print(square(5))  # 25
+print(cube(3))    # 27
+
+# partial is useful when you have a general function
+# and need a specialized version with fixed arguments.</div>
+
+<div class="code-block"># ── STEP 9: any() and all() — functional checks ──
+# Check conditions across an entire collection.
+
+scores = [85, 90, 78, 92, 88]
+
+# all() — True if EVERY item is True:
+all_pass = all(score >= 60 for score in scores)
+print(all_pass)  # True (everyone passed)
+
+# any() — True if AT LEAST ONE item is True:
+any_perfect = any(score == 100 for score in scores)
+print(any_perfect)  # False (no one got 100)
+
+# Practical use cases:
+emails = ["a@mail.com", "b@mail.com", "invalid"]
+all_valid = all("@" in e for e in emails)
+print(all_valid)  # False (one is invalid)
+
+has_admin = any(user["role"] == "admin" for user in users)
+print(has_admin)  # True if any user is admin
+
+# any() and all() are LAZY — they short-circuit:
+# any() stops at the first True
+# all() stops at the first False
+# So they're efficient even on large data.</div>
+
+<div class="code-block"># ── STEP 10: Functional vs comprehension — which to use? ──
+# Python offers BOTH styles. Here's when to use each.
+
+# MAP vs list comprehension:
+# map(lambda x: x*2, items)         ← functional style
+# [x*2 for x in items]              ← Pythonic (PREFERRED)
+
+# FILTER vs list comprehension:
+# filter(lambda x: x>0, items)      ← functional style
+# [x for x in items if x > 0]       ← Pythonic (PREFERRED)
+
+# REDUCE vs built-ins:
+# reduce(lambda a,b: a+b, items)    ← functional style
+# sum(items)                        ← built-in (PREFERRED)
+
+# USE FUNCTIONAL when:
+# - Passing to higher-order functions (sorted key=)
+# - Building data pipelines (chain of transformations)
+# - Working with functools (lru_cache, partial, reduce)
+# - Functional is clearer than comprehension (rare)
+
+# USE COMPREHENSION when:
+# - Simple transform or filter
+# - Readability matters (most cases)
+# - One-step operations
+
+# USE BUILT-INS when:
+# - sum(), min(), max(), any(), all()
+# - These are ALWAYS preferred over reduce
+
+# IMMUTABILITY — functional core principle:
 from dataclasses import dataclass
 
-@dataclass(frozen=True)  # frozen = immutable
+@dataclass(frozen=True)  # frozen = cannot modify after creation
 class Point:
     x: float
     y: float
 
 p1 = Point(1.0, 2.0)
-# p1.x = 5.0  # ERROR — frozen dataclass can't be modified
-p2 = Point(p1.x + 1, p1.y)  # create new instead of modifying</div>
+# p1.x = 5.0  # ERROR! frozen dataclass can't be modified.
+p2 = Point(p1.x + 1, p1.y)  # create NEW instead of modifying
+
+# SUMMARY:
+# ┌──────────────┬──────────────────────┬─────────────────────────┐
+# │ Tool         │ What it does         │ Pythonic alternative    │
+# ├──────────────┼──────────────────────┼─────────────────────────┤
+# │ lambda       │ inline function      │ def (for complex logic) │
+# │ map(f, items)│ transform each      │ [f(x) for x in items]   │
+# │ filter(f, it)│ select matching      │ [x for x in it if f(x)] │
+# │ reduce(f, it)│ combine to one      │ sum/min/max (usually)   │
+# │ sorted key=  │ sort by function    │ lambda or def           │
+# │ partial      │ pre-fill arguments   │ closure                 │
+# └──────────────┴──────────────────────┴─────────────────────────┘</div>
 
 <div class="diagram">
   <div class="diag-title">Functional Pipeline — map → filter → reduce</div>
