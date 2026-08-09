@@ -18,123 +18,370 @@ doors.push({
     aen:"DataFrame = 2D table (like spreadsheet). groupby = group by a column, then aggregate (sum/mean/count)."
   },
   story:`
-<p class="scene-setting">ষোড়শ গিল্ড। আদমশুমারি দপ্তর। কাগজের স্তূপ, হিসাবের শব্দ, বড় বড় টেবিল। পরিসংখ্যানবিদ সাবিনা একটা বিশাল স্প্রেডশিট দেখালেন — হাজার হাজার row, কয়েক ডজন column। "এই তথ্য থেকে insight বের করতে হবে," তিনি বলেন। "কোন শহরে সবচেয়ে বেশি বিক্রি? কোন মাসে চাহিদা বেশি? pandas দিয়ে সেকেন্ডে উত্তর।"</p>
-<p class="scene-setting en">Sixteenth guild. The Census Bureau. Piles of paper, sound of calculations, large tables. Statistician Sabina shows a massive spreadsheet — thousands of rows, dozens of columns. "We must extract insight from this data," she says. "Which city has the most sales? Which month has highest demand? With pandas, answers in seconds."</p>
+<p class="scene-setting">ষোড়শ গিল্ড। আদমশুমারি দপ্তর। কাগজের স্তূপ, হিসাবের শব্দ, বড় বড় টেবিল। পরিসংখ্যানবিদ সাবিনা একটা বিশাল স্প্রেডশিট দেখালেন — হাজার হাজার row, কয়েক ডজন column। "এই তথ্য থেকে insight বের করতে হবে," তিনি বলেন। "কোন শহরে সবচেয়ে বেশি বিক্রি? কোন মাসে চাহিদা বেশি? pandas দিয়ে সেকেন্ডে উত্তর। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Sixteenth guild. The Census Bureau. Piles of paper, sound of calculations, large tables. Statistician Sabina shows a massive spreadsheet — thousands of rows, dozens of columns. "We must extract insight from this data," she says. "Which city has the most sales? Which month has highest demand? With pandas, answers in seconds. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তোমার ৫০,০০০ লেনদেনের CSV। প্রশ্ন: কোন শহরে সবচেয়ে বেশি বিক্রি? কোন মাসে চাহিদা বেশি? কোন পণ্য সবচেয়ে লাভজনক? Excel-এ pivot table বানাবে? pandas দিলে — ৫ লাইনে উত্তর। এটাই data analysis।</div>
-<div class="dialogue en">Problem: 50,000 transactions in CSV. Questions: Best-selling city? Highest-demand month? Most profitable product? Build pivot tables in Excel? With pandas — answers in 5 lines. This is data analysis.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তোমার ৫০,০০০ লেনদেনের CSV। Excel-এ খুললে hang হয়ে যায়। pandas দিলে সেকেন্ডে লোড, সেকেন্ডে analyze। DataFrame = স্প্রেডশিট কোডে। read → filter → group → visualize।</div>
+<div class="dialogue en">First question: 50,000 transaction CSV. Excel hangs trying to open it. pandas loads it in seconds, analyzes in seconds. DataFrame = spreadsheet in code. read → filter → group → visualize.</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> সাবিনা বললেন — এক বিশ্লেষক ৫০,০০০ row Excel-এ খুললেন। Excel hang — কম্পিউটার ফ্রিজ। pandas দিলে ৫০,০০০ row সেকেন্ডের মধ্যে। ৫০ লাখ row? Excel অসম্ভব, pandas সেকেন্ডে। সঠিক tool ছাড়া data = বোঝা, সঠিক tool দিলে = সম্পদ।</div></div>
+<div class="code-block"># ── STEP 1: What is pandas? ──
+# pandas is Python's data analysis library.
+# Think of it as Excel, but in code — much faster and more powerful.
 
-<div class="code-block"># guild16_pandas.py — Census Bureau
-# Statistician Sabina: "Data holds secrets. Pandas finds them."
+# Install (run in terminal):
+# pip install pandas matplotlib
+
+# Import:
+import pandas as pd
+
+# The core object is a DataFrame — a 2D table (like a spreadsheet).
+# Each column has a name, each row has an index.
+
+# Create a DataFrame from a dictionary:
+data = {
+    "name": ["Fatima", "Ahmed", "Sara", "Bob"],
+    "age": [25, 30, 28, 35],
+    "city": ["Dhaka", "Chittagong", "Dhaka", "Sylhet"],
+    "salary": [50000, 60000, 55000, 70000],
+}
+
+df = pd.DataFrame(data)
+print(df)
+#      name  age       city  salary
+# 0  Fatima   25     Dhaka   50000
+# 1   Ahmed   30  Chittagong 60000
+# 2    Sara   28     Dhaka   55000
+# 3     Bob   35    Sylhet   70000
+
+# Each COLUMN is a "Series" (like a list with an index):
+print(df["name"])      # the name column
+print(type(df))        # <class 'pandas.DataFrame'>
+print(type(df["name"]))  # <class 'pandas.Series'></div>
+
+<div class="code-block"># ── STEP 2: Loading data from files ──
+# In the real world, you load data from CSV, Excel, or databases.
 
 import pandas as pd
-import numpy as np
 
-# ── THE PROBLEM: Analyze 50,000 transactions ──
-
-# Load CSV — instantly (Excel would choke)
+# From CSV (most common):
 df = pd.read_csv("transactions.csv")
-print(df.head())  # first 5 rows
-print(df.shape)   # (50000, 6) — 50K rows, 6 columns
-print(df.dtypes)  # column types
 
-# ── BASIC EXPLORATION ──
-print(df.describe())  # statistics: mean, std, min, max
-print(df.info())      # data types + non-null counts
+# From Excel:
+# df = pd.read_excel("data.xlsx", sheet_name="Sheet1")
 
-# ── FILTERING: Select rows ──
-# Completed transactions over 1000 taka
+# From JSON:
+# df = pd.read_json("data.json")
+
+# See what you loaded:
+print(df.head())      # first 5 rows
+print(df.tail())      # last 5 rows
+print(df.shape)       # (50000, 6) — rows, columns
+print(df.columns)     # column names
+print(df.dtypes)      # data types of each column
+print(df.info())      # summary: types, non-null counts, memory
+
+# Quick statistics:
+print(df.describe())
+#        amount       tax
+# count  50000   50000
+# mean    1250    250
+# std      850    170
+# min      50     10
+# 25%     500    100
+# 50%    1000    200
+# 75%    1800    360
+# max   15000   3000</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> সাবিনা বললেন — এক বিশ্লেষক ৫০,০০০ row Excel-ে খুললেন। Excel hang — কম্পিউটার ফ্রিজ। pandas দিলে ৫০,০০০ row সেকেন্ডের মধ্যে। ৫০ লাখ row? Excel অসম্ভব, pandas সেকেন্ডে। সঠিক tool ছাড়া data = বোঝা, সঠিক tool দিলে = সম্পদ।</div></div>
+
+<div class="code-block"># ── STEP 3: Selecting and filtering ──
+# Select columns, filter rows — like SQL WHERE.
+
+import pandas as pd
+
+df = pd.read_csv("transactions.csv")
+
+# SELECT specific columns:
+amounts = df["amount"]               # one column
+subset = df[["city", "amount"]]      # multiple columns
+
+# FILTER rows with conditions:
+# Completed transactions over 1000:
 big_orders = df[(df["status"] == "completed") &amp; (df["amount"] &gt; 1000)]
 
-# Dhaka orders
-dhaka_orders = df[df["city"] == "Dhaka"]
+# Only Dhaka orders:
+dhaka = df[df["city"] == "Dhaka"]
 
-# ── GROUPBY: Aggregate by category ──
-# Total sales per city
+# Multiple conditions (AND):
+result = df[(df["city"] == "Dhaka") &amp; (df["amount"] &gt; 500)]
+
+# Multiple conditions (OR):
+result = df[(df["city"] == "Dhaka") | (df["city"] == "Sylhet")]
+
+# isin — check if value is in a list:
+big_cities = df[df["city"].isin(["Dhaka", "Chittagong", "Sylhet"])]
+
+# String contains:
+emails = df[df["email"].str.contains("@gmail")]
+
+# Sort by a column:
+sorted_df = df.sort_values("amount", ascending=False)  # highest first
+
+# Select first N rows:
+top_10 = df.nlargest(10, "amount")   # 10 biggest amounts
+bottom_5 = df.nsmallest(5, "amount")  # 5 smallest</div>
+
+<div class="code-block"># ── STEP 4: groupby — aggregate by category ──
+# groupby splits data into groups, applies a function, combines results.
+# Like SQL GROUP BY or Excel pivot table.
+
+import pandas as pd
+
+df = pd.read_csv("transactions.csv")
+
+# Total sales per city:
 sales_by_city = df.groupby("city")["amount"].sum()
-print(sales_by_city.sort_values(ascending=False).head())
-# Dhaka     2,500,000
-# Chittagong  1,200,000
-# Sylhet        800,000
+print(sales_by_city.sort_values(ascending=False))
+# city
+# Dhaka         2500000
+# Chittagong    1200000
+# Sylhet         800000
 
-# Average order per month
+# Average order per month:
 monthly_avg = df.groupby("month")["amount"].mean()
 
-# Count orders per product
+# Count orders per product:
 product_counts = df["product"].value_counts()
 
-# ── PIVOT TABLE: 2D aggregation ──
-pivot = df.pivot_table(
-    values="amount",
-    index="city",
-    columns="month",
-    aggfunc="sum",
-    fill_value=0
-)
-# City × Month → revenue matrix
+# Multiple aggregations at once:
+summary = df.groupby("city")["amount"].agg(["sum", "mean", "count"])
+print(summary)
+#              sum    mean  count
+# city
+# Dhaka    2500000  1250.0   2000
+# Sylhet    800000  1000.0    800
 
-# ── CREATING NEW COLUMNS ──
-# Tax column
-df["tax"] = df["amount"] * 0.20
-df["total"] = df["amount"] + df["tax"]
+# groupby multiple columns:
+city_product = df.groupby(["city", "product"])["amount"].sum()
+# Sales for each product in each city</div>
 
-# Category from amount
+<div class="code-block"># ── STEP 5: Creating new columns ──
+# Add calculated columns — like Excel formulas.
+
+import pandas as pd
+
+df = pd.read_csv("transactions.csv")
+
+# Simple math:
+df["tax"] = df["amount"] * 0.20           # 20% tax
+df["total"] = df["amount"] + df["tax"]    # amount + tax
+
+# Conditional column with np.where:
+import numpy as np
+df["category"] = np.where(df["amount"] &gt; 1000, "large", "small")
+
+# Bin values into categories:
 df["size"] = pd.cut(
     df["amount"],
     bins=[0, 100, 1000, float("inf")],
     labels=["small", "medium", "large"]
 )
+# 0-100 → small, 100-1000 → medium, 1000+ → large
 
-# ── MERGING: Join two tables ──
-orders = pd.read_csv("orders.csv")
-customers = pd.read_csv("customers.csv")
-
-# SQL-like JOIN
-merged = orders.merge(customers, on="customer_id")
-# Now each order has customer info attached
-
-# ── TIME SERIES ──
+# Date column operations:
 df["date"] = pd.to_datetime(df["date"])
+df["month"] = df["date"].dt.month        # extract month number
+df["day_of_week"] = df["date"].dt.day_name()  # Monday, Tuesday...
+df["year_month"] = df["date"].dt.to_period("M")  # 2024-01
+
+# String operations:
+df["email_domain"] = df["email"].str.split("@").str[-1]
+df["name_upper"] = df["name"].str.upper()</div>
+
+<div class="code-block"># ── STEP 6: Merging DataFrames (SQL JOIN) ──
+# Combine data from multiple tables — like SQL JOIN.
+
+import pandas as pd
+
+orders = pd.DataFrame({
+    "order_id": [1, 2, 3],
+    "customer_id": [101, 102, 101],
+    "amount": [500, 300, 800],
+})
+
+customers = pd.DataFrame({
+    "customer_id": [101, 102, 103],
+    "name": ["Fatima", "Ahmed", "Sara"],
+    "city": ["Dhaka", "Chittagong", "Sylhet"],
+})
+
+# INNER JOIN (most common — only matching rows):
+merged = orders.merge(customers, on="customer_id")
+print(merged)
+#    order_id  customer_id  amount    name       city
+# 0         1          101     500  Fatima      Dhaka
+# 1         2          102     300   Ahmed  Chittagong
+# 2         3          101     800  Fatima      Dhaka
+
+# LEFT JOIN (keep all left rows, fill missing right):
+left = orders.merge(customers, on="customer_id", how="left")
+
+# RIGHT JOIN (keep all right rows):
+right = orders.merge(customers, on="customer_id", how="right")
+
+# OUTER JOIN (keep everything):
+outer = orders.merge(customers, on="customer_id", how="outer")
+
+# When column names differ:
+# merged = df1.merge(df2, left_on="id", right_on="user_id")</div>
+
+<div class="code-block"># ── STEP 7: Time series analysis ──
+# pandas excels at date/time data.
+
+import pandas as pd
+
+df = pd.read_csv("sales.csv")
+df["date"] = pd.to_datetime(df["date"])
+
+# Set date as index (essential for time series):
 df = df.set_index("date")
 
-# Monthly revenue
-monthly_revenue = df.resample("ME")["amount"].sum()  # ME = month end
-# Rolling average (7-day window)
-df["7day_avg"] = df["amount"].rolling(7).mean()
+# Resample — group by time period:
+monthly = df.resample("ME")["amount"].sum()    # ME = month end
+weekly = df.resample("W")["amount"].mean()     # weekly average
+yearly = df.resample("YE")["amount"].sum()     # yearly total
 
-# ── VISUALIZATION ──
+# Rolling average — smooth out fluctuations:
+df["7day_avg"] = df["amount"].rolling(7).mean()    # 7-day average
+df["30day_avg"] = df["amount"].rolling(30).mean()  # 30-day average
+
+# Percentage change:
+df["pct_change"] = df["amount"].pct_change() * 100  # % change
+
+# Shift — compare to previous period:
+df["prev_month"] = df["amount"].shift(1)  # previous row's value
+df["growth"] = df["amount"] - df["prev_month"]
+
+# Date range — generate dates:
+dates = pd.date_range("2024-01-01", "2024-12-31", freq="D")  # daily</div>
+
+<div class="code-block"># ── STEP 8: Visualization ──
+# pandas + matplotlib = quick charts.
+
+import pandas as pd
 import matplotlib.pyplot as plt
 
-# Bar chart: sales by city
-sales_by_city.plot(kind="bar", color="#2dd4bf")
-plt.title("Sales by City")
+df = pd.read_csv("transactions.csv")
+
+# Bar chart — sales by city:
+sales_by_city = df.groupby("city")["amount"].sum()
+sales_by_city.plot(kind="bar", color="#2dd4bf", figsize=(8, 5))
+plt.title("Total Sales by City")
+plt.ylabel("Revenue (taka)")
+plt.tight_layout()
 plt.savefig("sales_by_city.png")
+plt.close()
 
-# Line chart: monthly trend
-monthly_revenue.plot(kind="line", color="#34d399", linewidth=2)
+# Line chart — monthly trend:
+df["date"] = pd.to_datetime(df["date"])
+monthly = df.set_index("date").resample("ME")["amount"].sum()
+monthly.plot(kind="line", color="#34d399", linewidth=2, marker="o")
 plt.title("Monthly Revenue Trend")
+plt.ylabel("Revenue")
 plt.savefig("monthly_trend.png")
+plt.close()
 
-# ── EXPORT: Save results ──
-# Top customers to CSV
-top_customers = df.groupby("customer")["amount"].sum().nlargest(100)
-top_customers.to_csv("top_customers.csv")
+# Histogram — distribution of order amounts:
+df["amount"].plot(kind="hist", bins=50, color="#2dd4bf", edgecolor="white")
+plt.title("Distribution of Order Amounts")
+plt.xlabel("Amount")
+plt.savefig("amount_distribution.png")
+plt.close()
 
-# Summary to Excel (multiple sheets)
-with pd.ExcelWriter("report.xlsx") as writer:
-    sales_by_city.to_excel(writer, sheet_name="By City")
-    monthly_avg.to_excel(writer, sheet_name="Monthly")
-    pivot.to_excel(writer, sheet_name="Pivot")
+# Scatter plot — relationship between two variables:
+df.plot(kind="scatter", x="quantity", y="amount", color="#34d399")
+plt.title("Quantity vs Amount")
+plt.savefig("scatter.png")
+plt.close()</div>
 
-# ── THE POWER: 5 lines that replace 500 in Excel ──
+<div class="code-block"># ── STEP 9: Pivot tables ──
+# 2D aggregation — rows × columns, like Excel pivot table.
+
+import pandas as pd
+
+df = pd.read_csv("transactions.csv")
+
+# City × Month revenue matrix:
+pivot = df.pivot_table(
+    values="amount",       # what to aggregate
+    index="city",          # rows
+    columns="month",       # columns
+    aggfunc="sum",         # how to aggregate
+    fill_value=0,          # replace NaN with 0
+)
+print(pivot)
+# month       Jan   Feb   Mar
+# city
+# Dhaka     200K  250K  180K
+# Chittagong 100K  120K   90K
+# Sylhet     80K   70K   60K
+
+# Multiple aggregations:
+pivot2 = df.pivot_table(
+    values="amount",
+    index="city",
+    columns="product",
+    aggfunc=["sum", "mean"],
+)
+
+# Cross-tab — count combinations:
+cross = pd.crosstab(df["city"], df["product"])
+# How many of each product sold in each city</div>
+
+<div class="code-block"># ── STEP 10: Full analysis pipeline ──
+# A complete real-world data analysis in one pipeline.
+
+import pandas as pd
+
+df = pd.read_csv("transactions.csv")
+
+# THE POWER: 5 lines that replace 500 in Excel:
 insight = (
-    df[df["status"] == "completed"]
-    .groupby("city")["amount"]
-    .agg(["sum", "mean", "count"])
-    .sort_values("sum", ascending=False)
-)</div>
+    df[df["status"] == "completed"]          # filter
+    .groupby("city")["amount"]               # group
+    .agg(["sum", "mean", "count"])           # aggregate
+    .sort_values("sum", ascending=False)     # sort
+)
+print(insight)
+#               sum    mean  count
+# city
+# Dhaka     2500000  1250.0   2000
+# Sylhet     800000  1000.0    800
+
+# Export results:
+insight.to_csv("sales_summary.csv")
+
+# To Excel with multiple sheets:
+with pd.ExcelWriter("report.xlsx") as writer:
+    insight.to_excel(writer, sheet_name="Summary")
+    df.describe().to_excel(writer, sheet_name="Statistics")
+
+# QUICK REFERENCE:
+# ┌──────────────────────┬────────────────────────────────┐
+# │ Task                 │ Code                           │
+# ├──────────────────────┼────────────────────────────────┤
+# │ Load CSV             │ pd.read_csv("f.csv")           │
+# │ See first rows       │ df.head()                      │
+# │ Filter rows          │ df[df["x"] > 0]                │
+# │ Select columns       │ df[["col1", "col2"]]           │
+# │ Group + aggregate    │ df.groupby("x")["y"].sum()     │
+# │ Create column        │ df["new"] = df["x"] * 2        │
+# │ Sort                 │ df.sort_values("x")            │
+# │ Merge two tables     │ df1.merge(df2, on="id")        │
+# │ Pivot table          │ df.pivot_table(...)            │
+# │ Export to CSV        │ df.to_csv("out.csv")           │
+# │ Chart                │ df.plot(kind="bar")            │
+# └──────────────────────┴────────────────────────────────┘</div>
 
 <div class="diagram">
   <div class="diag-title">pandas Pipeline — CSV → Insight</div>
