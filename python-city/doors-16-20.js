@@ -390,36 +390,36 @@ with pd.ExcelWriter("report.xlsx") as writer:
     <!-- CSV -->
     <rect x="10" y="20" width="100" height="50" rx="6" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="60" y="38" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">CSV/Excel</text>
-    <text x="60" y="52" text-anchor="middle" fill="#9a93b8" font-size="6">50K rows</text>
-    <text x="60" y="62" text-anchor="middle" fill="#9a93b8" font-size="6">raw data</text>
+    <text x="60" y="52" text-anchor="middle" fill="#9a93b8" font-size="10">50K rows</text>
+    <text x="60" y="62" text-anchor="middle" fill="#9a93b8" font-size="10">raw data</text>
     <line x1="110" y1="45" x2="140" y2="45" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrPD)"/>
     <!-- DataFrame -->
     <rect x="145" y="20" width="100" height="50" rx="6" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="2"/>
     <text x="195" y="38" text-anchor="middle" fill="#2dd4bf" font-size="8" font-weight="bold">DataFrame</text>
-    <text x="195" y="52" text-anchor="middle" fill="#9a93b8" font-size="6">read_csv()</text>
-    <text x="195" y="62" text-anchor="middle" fill="#9a93b8" font-size="6">in-memory table</text>
+    <text x="195" y="52" text-anchor="middle" fill="#9a93b8" font-size="10">read_csv()</text>
+    <text x="195" y="62" text-anchor="middle" fill="#9a93b8" font-size="10">in-memory table</text>
     <line x1="245" y1="45" x2="275" y2="45" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrPD)"/>
     <!-- Transform -->
     <rect x="280" y="20" width="100" height="50" rx="6" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="330" y="38" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Transform</text>
-    <text x="330" y="52" text-anchor="middle" fill="#9a93b8" font-size="6">filter/group</text>
-    <text x="330" y="62" text-anchor="middle" fill="#9a93b8" font-size="6">pivot/merge</text>
+    <text x="330" y="52" text-anchor="middle" fill="#9a93b8" font-size="10">filter/group</text>
+    <text x="330" y="62" text-anchor="middle" fill="#9a93b8" font-size="10">pivot/merge</text>
     <line x1="380" y1="45" x2="410" y2="45" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrPD)"/>
     <!-- Insight -->
     <rect x="415" y="20" width="135" height="50" rx="6" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="2"/>
     <text x="482" y="38" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">Insight + Chart</text>
-    <text x="482" y="52" text-anchor="middle" fill="#9a93b8" font-size="6">plot / export</text>
-    <text x="482" y="62" text-anchor="middle" fill="#9a93b8" font-size="6">decision</text>
+    <text x="482" y="52" text-anchor="middle" fill="#9a93b8" font-size="10">plot / export</text>
+    <text x="482" y="62" text-anchor="middle" fill="#9a93b8" font-size="10">decision</text>
     <!-- Operations -->
     <rect x="10" y="90" width="540" height="60" rx="6" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
     <text x="280" y="108" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">Key Operations</text>
-    <text x="280" y="124" text-anchor="middle" fill="#9a93b8" font-size="7">read_csv · filter · groupby · pivot_table · merge · resample</text>
-    <text x="280" y="138" text-anchor="middle" fill="#9a93b8" font-size="7">agg(sum/mean/count) · sort_values · cut/bins · rolling</text>
+    <text x="280" y="124" text-anchor="middle" fill="#9a93b8" font-size="10">read_csv · filter · groupby · pivot_table · merge · resample</text>
+    <text x="280" y="138" text-anchor="middle" fill="#9a93b8" font-size="10">agg(sum/mean/count) · sort_values · cut/bins · rolling</text>
     <!-- numpy -->
     <rect x="10" y="165" width="540" height="50" rx="6" fill="rgba(251,191,36,0.04)" stroke="rgba(251,191,36,0.15)" stroke-width="1"/>
     <text x="280" y="183" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">numpy = numerical engine (pandas-এর নিচে)</text>
-    <text x="280" y="198" text-anchor="middle" fill="#9a93b8" font-size="7">np.array · np.mean/std · vectorized ops (100x faster than loops)</text>
-    <text x="280" y="210" text-anchor="middle" fill="#9a93b8" font-size="7">matplotlib: df.plot(kind="bar/line") → chart সেকেন্ডে</text>
+    <text x="280" y="198" text-anchor="middle" fill="#9a93b8" font-size="10">np.array · np.mean/std · vectorized ops (100x faster than loops)</text>
+    <text x="280" y="210" text-anchor="middle" fill="#9a93b8" font-size="10">matplotlib: df.plot(kind="bar/line") → chart সেকেন্ডে</text>
   </svg>
   <div class="diag-cap">pandas = data pipeline। read_csv → filter → groupby → pivot → plot → insight। Excel-এর শতগুণ শক্তি।</div>
 </div>
@@ -835,26 +835,26 @@ except requests.RequestException as e:
     <!-- API -->
     <rect x="20" y="20" width="250" height="100" rx="8" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="2"/>
     <text x="145" y="40" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">API ⭐ (preferred)</text>
-    <text x="145" y="58" text-anchor="middle" fill="#9a93b8" font-size="7">structured JSON</text>
-    <text x="145" y="72" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">requests.get(url).json()</text>
-    <text x="145" y="90" text-anchor="middle" fill="#9a93b8" font-size="7">✓ legal · stable · fast</text>
-    <text x="145" y="102" text-anchor="middle" fill="#9a93b8" font-size="7">✓ no HTML parsing</text>
-    <text x="145" y="114" text-anchor="middle" fill="#52c41a" font-size="7">always check API first!</text>
+    <text x="145" y="58" text-anchor="middle" fill="#9a93b8" font-size="10">structured JSON</text>
+    <text x="145" y="72" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">requests.get(url).json()</text>
+    <text x="145" y="90" text-anchor="middle" fill="#9a93b8" font-size="10">✓ legal · stable · fast</text>
+    <text x="145" y="102" text-anchor="middle" fill="#9a93b8" font-size="10">✓ no HTML parsing</text>
+    <text x="145" y="114" text-anchor="middle" fill="#52c41a" font-size="10">always check API first!</text>
     <!-- Scraping -->
     <rect x="290" y="20" width="250" height="100" rx="8" fill="rgba(240,98,146,0.06)" stroke="#f06292" stroke-width="1.5"/>
     <text x="415" y="40" text-anchor="middle" fill="#f06292" font-size="10" font-weight="bold">Scraping (fallback)</text>
-    <text x="415" y="58" text-anchor="middle" fill="#9a93b8" font-size="7">parse HTML</text>
-    <text x="415" y="72" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">requests + BeautifulSoup</text>
-    <text x="415" y="90" text-anchor="middle" fill="#9a93b8" font-size="7">⚠ fragile (site changes)</text>
-    <text x="415" y="102" text-anchor="middle" fill="#9a93b8" font-size="7">⚠ check robots.txt + ToS</text>
-    <text x="415" y="114" text-anchor="middle" fill="#f06292" font-size="7">use only when no API</text>
+    <text x="415" y="58" text-anchor="middle" fill="#9a93b8" font-size="10">parse HTML</text>
+    <text x="415" y="72" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">requests + BeautifulSoup</text>
+    <text x="415" y="90" text-anchor="middle" fill="#9a93b8" font-size="10">⚠ fragile (site changes)</text>
+    <text x="415" y="102" text-anchor="middle" fill="#9a93b8" font-size="10">⚠ check robots.txt + ToS</text>
+    <text x="415" y="114" text-anchor="middle" fill="#f06292" font-size="10">use only when no API</text>
     <!-- Pipeline -->
     <rect x="20" y="140" width="520" height="85" rx="6" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
     <text x="280" y="158" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">Collection Pipeline</text>
-    <text x="280" y="175" text-anchor="middle" fill="#9a93b8" font-size="7">1. Fetch (requests.get) → 2. Parse (BeautifulSoup / JSON)</text>
-    <text x="280" y="190" text-anchor="middle" fill="#9a93b8" font-size="7">3. Extract (find_all / dict keys) → 4. Clean (strip/parse)</text>
-    <text x="280" y="205" text-anchor="middle" fill="#9a93b8" font-size="7">5. Save (CSV/JSON/DB) → 6. Schedule (cron/celery)</text>
-    <text x="280" y="218" text-anchor="middle" fill="#f06292" font-size="7">⚠️ BE POLITE: time.sleep(1), User-Agent, robots.txt</text>
+    <text x="280" y="175" text-anchor="middle" fill="#9a93b8" font-size="10">1. Fetch (requests.get) → 2. Parse (BeautifulSoup / JSON)</text>
+    <text x="280" y="190" text-anchor="middle" fill="#9a93b8" font-size="10">3. Extract (find_all / dict keys) → 4. Clean (strip/parse)</text>
+    <text x="280" y="205" text-anchor="middle" fill="#9a93b8" font-size="10">5. Save (CSV/JSON/DB) → 6. Schedule (cron/celery)</text>
+    <text x="280" y="218" text-anchor="middle" fill="#f06292" font-size="10">⚠️ BE POLITE: time.sleep(1), User-Agent, robots.txt</text>
   </svg>
   <div class="diag-cap">API first (structured)। না থাকলে scraping (BeautifulSoup)। robots.txt মেনে চলো, rate limit রাখো।</div>
 </div>
@@ -1273,35 +1273,35 @@ async def value_error_handler(request, exc):
     <!-- Client -->
     <rect x="10" y="20" width="120" height="50" rx="6" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="1.5"/>
     <text x="70" y="38" text-anchor="middle" fill="#2dd4bf" font-size="8" font-weight="bold">Client</text>
-    <text x="70" y="52" text-anchor="middle" fill="#9a93b8" font-size="6">browser/app</text>
+    <text x="70" y="52" text-anchor="middle" fill="#9a93b8" font-size="10">browser/app</text>
     <line x1="130" y1="45" x2="170" y2="45" stroke="#34d399" stroke-width="2"/>
-    <text x="150" y="38" text-anchor="middle" fill="#34d399" font-size="6">HTTP</text>
+    <text x="150" y="38" text-anchor="middle" fill="#34d399" font-size="10">HTTP</text>
     <!-- API doors -->
     <rect x="175" y="15" width="375" height="65" rx="8" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="2"/>
     <text x="362" y="32" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">REST API (Flask / FastAPI)</text>
     <rect x="185" y="42" width="80" height="30" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
-    <text x="225" y="56" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">GET</text>
-    <text x="225" y="66" text-anchor="middle" fill="#9a93b8" font-size="5">read</text>
+    <text x="225" y="56" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">GET</text>
+    <text x="225" y="66" text-anchor="middle" fill="#9a93b8" font-size="9">read</text>
     <rect x="270" y="42" width="80" height="30" rx="4" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1"/>
-    <text x="310" y="56" text-anchor="middle" fill="#fbbf24" font-size="7" font-weight="bold">POST</text>
-    <text x="310" y="66" text-anchor="middle" fill="#9a93b8" font-size="5">create</text>
+    <text x="310" y="56" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">POST</text>
+    <text x="310" y="66" text-anchor="middle" fill="#9a93b8" font-size="9">create</text>
     <rect x="355" y="42" width="80" height="30" rx="4" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="1"/>
-    <text x="395" y="56" text-anchor="middle" fill="#2dd4bf" font-size="7" font-weight="bold">PUT</text>
-    <text x="395" y="66" text-anchor="middle" fill="#9a93b8" font-size="5">update</text>
+    <text x="395" y="56" text-anchor="middle" fill="#2dd4bf" font-size="10" font-weight="bold">PUT</text>
+    <text x="395" y="66" text-anchor="middle" fill="#9a93b8" font-size="9">update</text>
     <rect x="440" y="42" width="100" height="30" rx="4" fill="rgba(240,98,146,0.08)" stroke="#f06292" stroke-width="1"/>
-    <text x="490" y="56" text-anchor="middle" fill="#f06292" font-size="7" font-weight="bold">DELETE</text>
-    <text x="490" y="66" text-anchor="middle" fill="#9a93b8" font-size="5">remove</text>
+    <text x="490" y="56" text-anchor="middle" fill="#f06292" font-size="10" font-weight="bold">DELETE</text>
+    <text x="490" y="66" text-anchor="middle" fill="#9a93b8" font-size="9">remove</text>
     <!-- Server -->
     <rect x="195" y="95" width="335" height="40" rx="6" fill="rgba(52,211,153,0.04)" stroke="rgba(52,211,153,0.15)" stroke-width="1"/>
-    <text x="362" y="113" text-anchor="middle" fill="#34d399" font-size="7">Flask: @app.route("/tasks") · FastAPI: @app.get("/tasks")</text>
-    <text x="362" y="126" text-anchor="middle" fill="#9a93b8" font-size="6">each URL = one function → returns JSON</text>
+    <text x="362" y="113" text-anchor="middle" fill="#34d399" font-size="10">Flask: @app.route("/tasks") · FastAPI: @app.get("/tasks")</text>
+    <text x="362" y="126" text-anchor="middle" fill="#9a93b8" font-size="10">each URL = one function → returns JSON</text>
     <!-- Rules -->
     <rect x="10" y="150" width="540" height="85" rx="6" fill="rgba(240,98,146,0.04)" stroke="rgba(240,98,146,0.15)" stroke-width="1"/>
     <text x="280" y="168" text-anchor="middle" fill="#f06292" font-size="8" font-weight="bold">⚠️ API = ফটক — Validation ও Auth বাধ্যতামূলক</text>
-    <text x="280" y="184" text-anchor="middle" fill="#9a93b8" font-size="7">1. Validate input (Pydantic / manual)</text>
-    <text x="280" y="197" text-anchor="middle" fill="#9a93b8" font-size="7">2. Authentication (JWT token / API key)</text>
-    <text x="280" y="210" text-anchor="middle" fill="#9a93b8" font-size="7">3. Rate limiting (prevent abuse)</text>
-    <text x="280" y="223" text-anchor="middle" fill="#9a93b8" font-size="7">4. Proper status codes (200/201/400/404/500)</text>
+    <text x="280" y="184" text-anchor="middle" fill="#9a93b8" font-size="10">1. Validate input (Pydantic / manual)</text>
+    <text x="280" y="197" text-anchor="middle" fill="#9a93b8" font-size="10">2. Authentication (JWT token / API key)</text>
+    <text x="280" y="210" text-anchor="middle" fill="#9a93b8" font-size="10">3. Rate limiting (prevent abuse)</text>
+    <text x="280" y="223" text-anchor="middle" fill="#9a93b8" font-size="10">4. Proper status codes (200/201/400/404/500)</text>
   </svg>
   <div class="diag-cap">API = URL দরজা। GET (পড়ো), POST (তৈরি), PUT (বদলাও), DELETE (মুছো)। JSON দিয়ে যোগাযোগ। validation + auth বাধ্যতামূলক।</div>
 </div>
@@ -1776,32 +1776,32 @@ if __name__ == "__main__":
     <!-- Trigger -->
     <rect x="10" y="20" width="120" height="50" rx="6" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="70" y="38" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">Trigger</text>
-    <text x="70" y="52" text-anchor="middle" fill="#9a93b8" font-size="6">cron / schedule</text>
-    <text x="70" y="62" text-anchor="middle" fill="#9a93b8" font-size="6">manual CLI</text>
+    <text x="70" y="52" text-anchor="middle" fill="#9a93b8" font-size="10">cron / schedule</text>
+    <text x="70" y="62" text-anchor="middle" fill="#9a93b8" font-size="10">manual CLI</text>
     <line x1="130" y1="45" x2="155" y2="45" stroke="#34d399" stroke-width="2"/>
     <!-- Script -->
     <rect x="160" y="15" width="170" height="65" rx="6" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="2"/>
     <text x="245" y="33" text-anchor="middle" fill="#2dd4bf" font-size="8" font-weight="bold">Python Script</text>
-    <text x="245" y="48" text-anchor="middle" fill="#9a93b8" font-size="6">backup() + report()</text>
-    <text x="245" y="60" text-anchor="middle" fill="#9a93b8" font-size="6">+ cleanup() + email()</text>
-    <text x="245" y="72" text-anchor="middle" fill="#9a93b8" font-size="6">logging at every step</text>
+    <text x="245" y="48" text-anchor="middle" fill="#9a93b8" font-size="10">backup() + report()</text>
+    <text x="245" y="60" text-anchor="middle" fill="#9a93b8" font-size="10">+ cleanup() + email()</text>
+    <text x="245" y="72" text-anchor="middle" fill="#9a93b8" font-size="10">logging at every step</text>
     <line x1="330" y1="45" x2="355" y2="45" stroke="#34d399" stroke-width="2"/>
     <!-- Result -->
     <rect x="360" y="20" width="190" height="50" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="455" y="38" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Result + Notify</text>
-    <text x="455" y="52" text-anchor="middle" fill="#9a93b8" font-size="6">backup created</text>
-    <text x="455" y="62" text-anchor="middle" fill="#9a93b8" font-size="6">email sent / alert on fail</text>
+    <text x="455" y="52" text-anchor="middle" fill="#9a93b8" font-size="10">backup created</text>
+    <text x="455" y="62" text-anchor="middle" fill="#9a93b8" font-size="10">email sent / alert on fail</text>
     <!-- Tools -->
     <rect x="10" y="90" width="540" height="55" rx="6" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
     <text x="280" y="108" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">Automation Tools</text>
-    <text x="280" y="124" text-anchor="middle" fill="#9a93b8" font-size="7">schedule (Python) · cron (Linux) · Task Scheduler (Windows) · argparse (CLI)</text>
-    <text x="280" y="138" text-anchor="middle" fill="#9a93b8" font-size="7">subprocess (run other programs) · smtplib (email) · logging (track results)</text>
+    <text x="280" y="124" text-anchor="middle" fill="#9a93b8" font-size="10">schedule (Python) · cron (Linux) · Task Scheduler (Windows) · argparse (CLI)</text>
+    <text x="280" y="138" text-anchor="middle" fill="#9a93b8" font-size="10">subprocess (run other programs) · smtplib (email) · logging (track results)</text>
     <!-- Rules -->
     <rect x="10" y="155" width="540" height="65" rx="6" fill="rgba(240,98,146,0.04)" stroke="rgba(240,98,146,0.15)" stroke-width="1"/>
     <text x="280" y="173" text-anchor="middle" fill="#f06292" font-size="8" font-weight="bold">⚠️ Automation Golden Rules</text>
-    <text x="280" y="188" text-anchor="middle" fill="#9a93b8" font-size="7">1. Logging — সব ধাপ log করো · 2. Error handling — fail হলে alert</text>
-    <text x="280" y="201" text-anchor="middle" fill="#9a93b8" font-size="7">3. Dry-run mode — পরীক্ষা করো আগে · 4. Idempotent — দুইবার চালু হলেও নিরাপদ</text>
-    <text x="280" y="214" text-anchor="middle" fill="#9a93b8" font-size="7">5. Monitoring — চলছে কি না দেখো</text>
+    <text x="280" y="188" text-anchor="middle" fill="#9a93b8" font-size="10">1. Logging — সব ধাপ log করো · 2. Error handling — fail হলে alert</text>
+    <text x="280" y="201" text-anchor="middle" fill="#9a93b8" font-size="10">3. Dry-run mode — পরীক্ষা করো আগে · 4. Idempotent — দুইবার চালু হলেও নিরাপদ</text>
+    <text x="280" y="214" text-anchor="middle" fill="#9a93b8" font-size="10">5. Monitoring — চলছে কি না দেখো</text>
   </svg>
   <div class="diag-cap">automation = বিরক্তিকর কাজ স্বয়ংক্রিয়। schedule + script + logging + alert। একবার লেখো, চিরকাল চলে।</div>
 </div>
@@ -2197,28 +2197,28 @@ for item in craftsman_checklist:
     <text x="40" y="35" fill="#2dd4bf" font-size="10" font-weight="bold">1.</text>
     <text x="60" y="35" fill="#34d399" font-size="9" font-weight="bold">UNDERSTAND</text>
     <text x="170" y="35" fill="#9a93b8" font-size="8">input কী? output কী? edge case কী?</text>
-    <text x="60" y="48" fill="#9a93b8" font-size="7">এক লাইন কোড লেখার আগে সমস্যা বুঝো</text>
+    <text x="60" y="48" fill="#9a93b8" font-size="10">এক লাইন কোড লেখার আগে সমস্যা বুঝো</text>
     <line x1="280" y1="55" x2="280" y2="65" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrMT)"/>
     <!-- Step 2 -->
     <rect x="20" y="70" width="520" height="40" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="2"/>
     <text x="40" y="90" fill="#fbbf24" font-size="10" font-weight="bold">2.</text>
     <text x="60" y="90" fill="#34d399" font-size="9" font-weight="bold">BREAK DOWN</text>
     <text x="170" y="90" fill="#9a93b8" font-size="8">বড় সমস্যা → ছোট ছোট অংশ</text>
-    <text x="60" y="103" fill="#9a93b8" font-size="7">প্রতিটা অংশ আলাদাভাবে সমাধানযোগ্য</text>
+    <text x="60" y="103" fill="#9a93b8" font-size="10">প্রতিটা অংশ আলাদাভাবে সমাধানযোগ্য</text>
     <line x1="280" y1="110" x2="280" y2="120" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrMT)"/>
     <!-- Step 3 -->
     <rect x="20" y="125" width="520" height="40" rx="6" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="2"/>
     <text x="40" y="145" fill="#a78bfa" font-size="10" font-weight="bold">3.</text>
     <text x="60" y="145" fill="#34d399" font-size="9" font-weight="bold">PSEUDOCODE</text>
     <text x="190" y="145" fill="#9a93b8" font-size="8">মানুষের ভাষায় logic লেখো</text>
-    <text x="60" y="158" fill="#9a93b8" font-size="7">code নয়, ধারণা — প্রথমে logic clear করো</text>
+    <text x="60" y="158" fill="#9a93b8" font-size="10">code নয়, ধারণা — প্রথমে logic clear করো</text>
     <line x1="280" y1="165" x2="280" y2="175" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrMT)"/>
     <!-- Step 4 -->
     <rect x="20" y="180" width="520" height="40" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="2"/>
     <text x="40" y="200" fill="#52c41a" font-size="10" font-weight="bold">4.</text>
     <text x="60" y="200" fill="#34d399" font-size="9" font-weight="bold">CODE INCREMENTALLY</text>
     <text x="230" y="200" fill="#9a93b8" font-size="8">এক অংশ, test, পরের অংশ</text>
-    <text x="60" y="213" fill="#9a93b8" font-size="7">সব একসাথে নয় — একটা একটা করে</text>
+    <text x="60" y="213" fill="#9a93b8" font-size="10">সব একসাথে নয় — একটা একটা করে</text>
     <line x1="280" y1="220" x2="280" y2="230" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrMT)"/>
     <!-- Step 5 -->
     <rect x="20" y="235" width="520" height="35" rx="6" fill="rgba(240,98,146,0.08)" stroke="#f06292" stroke-width="2"/>

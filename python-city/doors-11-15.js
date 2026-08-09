@@ -396,27 +396,27 @@ def unreliable_api_call():
     <!-- Original function -->
     <rect x="20" y="20" width="180" height="70" rx="8" fill="rgba(52,211,153,0.06)" stroke="#34d399" stroke-width="2"/>
     <text x="110" y="40" text-anchor="middle" fill="#34d399" font-size="9" font-weight="bold">Original Function</text>
-    <text x="110" y="58" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">def fetch(uid):</text>
-    <text x="110" y="72" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">    return db.get(uid)</text>
+    <text x="110" y="58" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">def fetch(uid):</text>
+    <text x="110" y="72" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">    return db.get(uid)</text>
     <!-- Arrow -->
     <line x1="200" y1="55" x2="240" y2="55" stroke="#fbbf24" stroke-width="2"/>
     <text x="220" y="48" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">@log</text>
-    <text x="220" y="75" text-anchor="middle" fill="#9a93b8" font-size="6">(wrap)</text>
+    <text x="220" y="75" text-anchor="middle" fill="#9a93b8" font-size="10">(wrap)</text>
     <!-- Decorated -->
     <rect x="250" y="15" width="290" height="80" rx="8" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="2"/>
     <text x="395" y="35" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">Decorated (wrapped) Function</text>
-    <text x="395" y="52" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">[LOG] Calling fetch((42,))</text>
-    <text x="395" y="66" text-anchor="middle" fill="#34d399" font-size="7" font-family="monospace">→ original fetch(uid) runs</text>
-    <text x="395" y="80" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">[LOG] fetch returned in 0.001s</text>
+    <text x="395" y="52" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">[LOG] Calling fetch((42,))</text>
+    <text x="395" y="66" text-anchor="middle" fill="#34d399" font-size="10" font-family="monospace">→ original fetch(uid) runs</text>
+    <text x="395" y="80" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">[LOG] fetch returned in 0.001s</text>
     <!-- Common decorators -->
     <rect x="20" y="115" width="520" height="50" rx="6" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
     <text x="280" y="133" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">Common Decorators</text>
-    <text x="280" y="148" text-anchor="middle" fill="#9a93b8" font-size="7">@log · @cache/@lru_cache · @retry · @auth · @app.route · @property · @dataclass</text>
-    <text x="280" y="158" text-anchor="middle" fill="#9a93b8" font-size="7">এক pattern → অনেক function → একই আচরণ</text>
+    <text x="280" y="148" text-anchor="middle" fill="#9a93b8" font-size="10">@log · @cache/@lru_cache · @retry · @auth · @app.route · @property · @dataclass</text>
+    <text x="280" y="158" text-anchor="middle" fill="#9a93b8" font-size="10">এক pattern → অনেক function → একই আচরণ</text>
     <!-- functools.wraps -->
     <rect x="20" y="180" width="520" height="45" rx="6" fill="rgba(240,98,146,0.04)" stroke="rgba(240,98,146,0.15)" stroke-width="1"/>
     <text x="280" y="198" text-anchor="middle" fill="#f06292" font-size="8" font-weight="bold">⚠️ @functools.wraps(func) = বাধ্যতামূলক!</text>
-    <text x="280" y="213" text-anchor="middle" fill="#9a93b8" font-size="7">নাহলে __name__ = "wrapper" — debug নরক</text>
+    <text x="280" y="213" text-anchor="middle" fill="#9a93b8" font-size="10">নাহলে __name__ = "wrapper" — debug নরক</text>
   </svg>
   <div class="diag-cap">@decorator = function wrap। @log/@cache/@retry এক pattern, অনেক function। @functools.wraps বাধ্যতামূলক।</div>
 </div>
@@ -788,28 +788,28 @@ with closing(open("data.txt")) as f:
     <!-- enter -->
     <rect x="20" y="20" width="150" height="50" rx="6" fill="rgba(45,212,191,0.1)" stroke="#2dd4bf" stroke-width="2"/>
     <text x="95" y="38" text-anchor="middle" fill="#2dd4bf" font-size="9" font-weight="bold">__enter__</text>
-    <text x="95" y="52" text-anchor="middle" fill="#9a93b8" font-size="7">setup: open/lock</text>
+    <text x="95" y="52" text-anchor="middle" fill="#9a93b8" font-size="10">setup: open/lock</text>
     <line x1="170" y1="45" x2="210" y2="45" stroke="#34d399" stroke-width="2" marker-end="url(#arrCM)"/>
     <!-- code block -->
     <rect x="215" y="15" width="150" height="60" rx="6" fill="rgba(52,211,153,0.08)" stroke="#34d399" stroke-width="2"/>
     <text x="290" y="33" text-anchor="middle" fill="#34d399" font-size="9" font-weight="bold">with block</text>
-    <text x="290" y="48" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">f.write(data)</text>
-    <text x="290" y="60" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">db.execute(sql)</text>
+    <text x="290" y="48" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">f.write(data)</text>
+    <text x="290" y="60" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">db.execute(sql)</text>
     <line x1="365" y1="45" x2="405" y2="45" stroke="#34d399" stroke-width="2" marker-end="url(#arrCM)"/>
     <!-- exit -->
     <rect x="410" y="20" width="130" height="50" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="2"/>
     <text x="475" y="38" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">__exit__</text>
-    <text x="475" y="52" text-anchor="middle" fill="#9a93b8" font-size="7">teardown: close</text>
+    <text x="475" y="52" text-anchor="middle" fill="#9a93b8" font-size="10">teardown: close</text>
     <!-- Error path -->
     <rect x="215" y="90" width="150" height="30" rx="5" fill="rgba(240,98,146,0.06)" stroke="#f06292" stroke-width="1"/>
-    <text x="290" y="108" text-anchor="middle" fill="#f06292" font-size="7">⚠️ error? __exit__ STILL runs</text>
+    <text x="290" y="108" text-anchor="middle" fill="#f06292" font-size="10">⚠️ error? __exit__ STILL runs</text>
     <line x1="365" y1="100" x2="405" y2="55" stroke="#f06292" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrCM)"/>
     <!-- Tools -->
     <rect x="20" y="140" width="520" height="65" rx="6" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
     <text x="280" y="158" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">তোমার নিজের Context Manager</text>
-    <text x="280" y="173" text-anchor="middle" fill="#9a93b8" font-size="7">class: __enter__ + __exit__ দাও</text>
-    <text x="280" y="186" text-anchor="middle" fill="#9a93b8" font-size="7">@contextmanager + yield: সহজ উপায়</text>
-    <text x="280" y="198" text-anchor="middle" fill="#9a93b8" font-size="7">with X as y: → y পাও, শেষে স্বয়ংক্রিয় cleanup</text>
+    <text x="280" y="173" text-anchor="middle" fill="#9a93b8" font-size="10">class: __enter__ + __exit__ দাও</text>
+    <text x="280" y="186" text-anchor="middle" fill="#9a93b8" font-size="10">@contextmanager + yield: সহজ উপায়</text>
+    <text x="280" y="198" text-anchor="middle" fill="#9a93b8" font-size="10">with X as y: → y পাও, শেষে স্বয়ংক্রিয় cleanup</text>
   </svg>
   <div class="diag-cap">with = __enter__ → code → __exit__ (error হলেও)। File, DB, lock — সব রিসোর্স নিরাপদ।</div>
 </div>
@@ -1206,30 +1206,30 @@ print(lst)  # [0, 1, 2, 3, 4] — still there
     <!-- List: all at once -->
     <rect x="20" y="15" width="250" height="100" rx="8" fill="rgba(240,98,146,0.04)" stroke="#f06292" stroke-width="1.5"/>
     <text x="145" y="33" text-anchor="middle" fill="#f06292" font-size="9" font-weight="bold">list: সব একসাথে</text>
-    <text x="145" y="50" text-anchor="middle" fill="#9a93b8" font-size="7">return — সব মান একসাথে</text>
+    <text x="145" y="50" text-anchor="middle" fill="#9a93b8" font-size="10">return — সব মান একসাথে</text>
     <rect x="35" y="60" width="20" height="15" fill="rgba(240,98,146,0.15)" stroke="#f06292" stroke-width="1"/>
     <rect x="58" y="60" width="20" height="15" fill="rgba(240,98,146,0.15)" stroke="#f06292" stroke-width="1"/>
     <rect x="81" y="60" width="20" height="15" fill="rgba(240,98,146,0.15)" stroke="#f06292" stroke-width="1"/>
     <rect x="104" y="60" width="20" height="15" fill="rgba(240,98,146,0.15)" stroke="#f06292" stroke-width="1"/>
-    <text x="145" y="92" text-anchor="middle" fill="#f06292" font-size="7">১০ লাখ মান = ৮ MB RAM</text>
-    <text x="145" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">OOM risk for big data</text>
+    <text x="145" y="92" text-anchor="middle" fill="#f06292" font-size="10">১০ লাখ মান = ৮ MB RAM</text>
+    <text x="145" y="105" text-anchor="middle" fill="#9a93b8" font-size="10">OOM risk for big data</text>
     <!-- Generator: one at a time -->
     <rect x="290" y="15" width="250" height="100" rx="8" fill="rgba(45,212,191,0.06)" stroke="#2dd4bf" stroke-width="2"/>
     <text x="415" y="33" text-anchor="middle" fill="#2dd4bf" font-size="9" font-weight="bold">generator: একটা একটা</text>
-    <text x="415" y="50" text-anchor="middle" fill="#9a93b8" font-size="7">yield — এক সময়ে একটা</text>
+    <text x="415" y="50" text-anchor="middle" fill="#9a93b8" font-size="10">yield — এক সময়ে একটা</text>
     <rect x="380" y="60" width="20" height="15" fill="rgba(45,212,191,0.15)" stroke="#2dd4bf" stroke-width="1"/>
     <text x="405" y="72" fill="#9a93b8" font-size="10">→</text>
-    <text x="425" y="72" fill="#9a93b8" font-size="7">next value</text>
-    <text x="415" y="92" text-anchor="middle" fill="#2dd4bf" font-size="7">১০ লাখ মান = ২০০ bytes RAM!</text>
-    <text x="415" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">10GB file in O(1) memory</text>
+    <text x="425" y="72" fill="#9a93b8" font-size="10">next value</text>
+    <text x="415" y="92" text-anchor="middle" fill="#2dd4bf" font-size="10">১০ লাখ মান = ২০০ bytes RAM!</text>
+    <text x="415" y="105" text-anchor="middle" fill="#9a93b8" font-size="10">10GB file in O(1) memory</text>
     <!-- yield flow -->
     <rect x="20" y="130" width="520" height="50" rx="6" fill="rgba(52,211,153,0.04)" stroke="rgba(52,211,153,0.15)" stroke-width="1"/>
     <text x="280" y="148" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">yield = থামো → মান দাও → পরে আবার শুরু</text>
-    <text x="280" y="163" text-anchor="middle" fill="#9a93b8" font-size="7">def gen(): yield 1; yield 2; yield 3 → next() দিয়ে একটা একটা</text>
+    <text x="280" y="163" text-anchor="middle" fill="#9a93b8" font-size="10">def gen(): yield 1; yield 2; yield 3 → next() দিয়ে একটা একটা</text>
     <!-- Use cases -->
     <rect x="20" y="190" width="520" height="40" rx="6" fill="rgba(251,191,36,0.04)" stroke="rgba(251,191,36,0.15)" stroke-width="1"/>
     <text x="280" y="208" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">Use cases: 10GB file · infinite sequence · streaming API · pipeline</text>
-    <text x="280" y="220" text-anchor="middle" fill="#9a93b8" font-size="7">10GB ফাইল ১GB RAM-এ। list = OOM, generator = magic</text>
+    <text x="280" y="220" text-anchor="middle" fill="#9a93b8" font-size="10">10GB ফাইল ১GB RAM-এ। list = OOM, generator = magic</text>
   </svg>
   <div class="diag-cap">yield = lazy evaluation। এক সময়ে একটা মান। ১০GB ফাইল O(1) RAM-এ। infinite sequence সম্ভব।</div>
 </div>
@@ -1622,43 +1622,43 @@ p2 = Point(p1.x + 1, p1.y)  # create NEW instead of modifying
     <!-- Input -->
     <rect x="10" y="20" width="100" height="50" rx="6" fill="rgba(45,212,191,0.06)" stroke="#2dd4bf" stroke-width="1.5"/>
     <text x="60" y="38" text-anchor="middle" fill="#2dd4bf" font-size="8" font-weight="bold">Input</text>
-    <text x="60" y="52" text-anchor="middle" fill="#9a93b8" font-size="6">[1,-2,3,-4,5]</text>
-    <text x="60" y="62" text-anchor="middle" fill="#9a93b8" font-size="6">5 items</text>
+    <text x="60" y="52" text-anchor="middle" fill="#9a93b8" font-size="10">[1,-2,3,-4,5]</text>
+    <text x="60" y="62" text-anchor="middle" fill="#9a93b8" font-size="10">5 items</text>
     <line x1="110" y1="45" x2="140" y2="45" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrFP)"/>
     <!-- filter -->
     <rect x="145" y="20" width="110" height="50" rx="6" fill="rgba(240,98,146,0.06)" stroke="#f06292" stroke-width="1.5"/>
     <text x="200" y="38" text-anchor="middle" fill="#f06292" font-size="8" font-weight="bold">filter</text>
-    <text x="200" y="52" text-anchor="middle" fill="#9a93b8" font-size="6">x &gt; 0</text>
-    <text x="200" y="62" text-anchor="middle" fill="#9a93b8" font-size="6">→ [1,3,5]</text>
+    <text x="200" y="52" text-anchor="middle" fill="#9a93b8" font-size="10">x &gt; 0</text>
+    <text x="200" y="62" text-anchor="middle" fill="#9a93b8" font-size="10">→ [1,3,5]</text>
     <line x1="255" y1="45" x2="285" y2="45" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrFP)"/>
     <!-- map -->
     <rect x="290" y="20" width="110" height="50" rx="6" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="345" y="38" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">map</text>
-    <text x="345" y="52" text-anchor="middle" fill="#9a93b8" font-size="6">x * 2</text>
-    <text x="345" y="62" text-anchor="middle" fill="#9a93b8" font-size="6">→ [2,6,10]</text>
+    <text x="345" y="52" text-anchor="middle" fill="#9a93b8" font-size="10">x * 2</text>
+    <text x="345" y="62" text-anchor="middle" fill="#9a93b8" font-size="10">→ [2,6,10]</text>
     <line x1="400" y1="45" x2="430" y2="45" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrFP)"/>
     <!-- reduce -->
     <rect x="435" y="20" width="115" height="50" rx="6" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="492" y="38" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">reduce</text>
-    <text x="492" y="52" text-anchor="middle" fill="#9a93b8" font-size="6">acc + x</text>
-    <text x="492" y="62" text-anchor="middle" fill="#9a93b8" font-size="6">→ 18</text>
+    <text x="492" y="52" text-anchor="middle" fill="#9a93b8" font-size="10">acc + x</text>
+    <text x="492" y="62" text-anchor="middle" fill="#9a93b8" font-size="10">→ 18</text>
     <!-- lambda -->
     <rect x="20" y="100" width="520" height="40" rx="6" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
     <text x="280" y="118" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">lambda = anonymous function (ছোট, একবার ব্যবহার)</text>
-    <text x="280" y="132" text-anchor="middle" fill="#9a93b8" font-size="7">lambda x: x * 2  ←→  def f(x): return x * 2</text>
+    <text x="280" y="132" text-anchor="middle" fill="#9a93b8" font-size="10">lambda x: x * 2  ←→  def f(x): return x * 2</text>
     <!-- Tools -->
     <rect x="20" y="155" width="250" height="90" rx="6" fill="rgba(45,212,191,0.04)" stroke="rgba(45,212,191,0.15)" stroke-width="1"/>
     <text x="145" y="173" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">Built-in</text>
-    <text x="35" y="190" fill="#9a93b8" font-size="7">sum(), min(), max(), len()</text>
-    <text x="35" y="205" fill="#9a93b8" font-size="7">sorted(key=fn)</text>
-    <text x="35" y="220" fill="#9a93b8" font-size="7">any(), all()</text>
-    <text x="35" y="235" fill="#9a93b8" font-size="7">enumerate(), zip()</text>
+    <text x="35" y="190" fill="#9a93b8" font-size="10">sum(), min(), max(), len()</text>
+    <text x="35" y="205" fill="#9a93b8" font-size="10">sorted(key=fn)</text>
+    <text x="35" y="220" fill="#9a93b8" font-size="10">any(), all()</text>
+    <text x="35" y="235" fill="#9a93b8" font-size="10">enumerate(), zip()</text>
     <rect x="290" y="155" width="250" height="90" rx="6" fill="rgba(167,139,250,0.04)" stroke="rgba(167,139,250,0.15)" stroke-width="1"/>
     <text x="415" y="173" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">functools</text>
-    <text x="305" y="190" fill="#9a93b8" font-size="7">reduce(fn, items)</text>
-    <text x="305" y="205" fill="#9a93b8" font-size="7">partial(fn, *args)</text>
-    <text x="305" y="220" fill="#9a93b8" font-size="7">lru_cache(maxsize=N)</text>
-    <text x="305" y="235" fill="#9a93b8" font-size="7">wraps(fn)</text>
+    <text x="305" y="190" fill="#9a93b8" font-size="10">reduce(fn, items)</text>
+    <text x="305" y="205" fill="#9a93b8" font-size="10">partial(fn, *args)</text>
+    <text x="305" y="220" fill="#9a93b8" font-size="10">lru_cache(maxsize=N)</text>
+    <text x="305" y="235" fill="#9a93b8" font-size="10">wraps(fn)</text>
   </svg>
   <div class="diag-cap">filter (বেছো) → map (বদলাও) → reduce (একত্র)। lambda = ছোট function। comprehension ও map/filter — একই শক্তি।</div>
 </div>
@@ -2063,33 +2063,33 @@ print(f"Total words scraped: {total_words:,}")
     <!-- Sequential -->
     <rect x="20" y="15" width="150" height="70" rx="6" fill="rgba(240,98,146,0.04)" stroke="#f06292" stroke-width="1.5"/>
     <text x="95" y="32" text-anchor="middle" fill="#f06292" font-size="8" font-weight="bold">Sequential</text>
-    <text x="95" y="48" text-anchor="middle" fill="#9a93b8" font-size="6">task1 → task2 → task3</text>
-    <text x="95" y="62" text-anchor="middle" fill="#9a93b8" font-size="6">একটা একটা করে</text>
-    <text x="95" y="76" text-anchor="middle" fill="#f06292" font-size="6">100s for 100 tasks</text>
+    <text x="95" y="48" text-anchor="middle" fill="#9a93b8" font-size="10">task1 → task2 → task3</text>
+    <text x="95" y="62" text-anchor="middle" fill="#9a93b8" font-size="10">একটা একটা করে</text>
+    <text x="95" y="76" text-anchor="middle" fill="#f06292" font-size="10">100s for 100 tasks</text>
     <!-- Threading -->
     <rect x="190" y="15" width="150" height="70" rx="6" fill="rgba(45,212,191,0.06)" stroke="#2dd4bf" stroke-width="1.5"/>
     <text x="265" y="32" text-anchor="middle" fill="#2dd4bf" font-size="8" font-weight="bold">threading</text>
-    <text x="265" y="48" text-anchor="middle" fill="#9a93b8" font-size="6">I/O bound (network)</text>
-    <text x="265" y="62" text-anchor="middle" fill="#9a93b8" font-size="6">GIL releases on I/O</text>
-    <text x="265" y="76" text-anchor="middle" fill="#2dd4bf" font-size="6">10s (10x faster)</text>
+    <text x="265" y="48" text-anchor="middle" fill="#9a93b8" font-size="10">I/O bound (network)</text>
+    <text x="265" y="62" text-anchor="middle" fill="#9a93b8" font-size="10">GIL releases on I/O</text>
+    <text x="265" y="76" text-anchor="middle" fill="#2dd4bf" font-size="10">10s (10x faster)</text>
     <!-- asyncio -->
     <rect x="360" y="15" width="180" height="70" rx="6" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="2"/>
     <text x="450" y="32" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">asyncio ⭐</text>
-    <text x="450" y="48" text-anchor="middle" fill="#9a93b8" font-size="6">I/O bound (thousands)</text>
-    <text x="450" y="62" text-anchor="middle" fill="#9a93b8" font-size="6">single-thread async</text>
-    <text x="450" y="76" text-anchor="middle" fill="#52c41a" font-size="6">2s (most efficient)</text>
+    <text x="450" y="48" text-anchor="middle" fill="#9a93b8" font-size="10">I/O bound (thousands)</text>
+    <text x="450" y="62" text-anchor="middle" fill="#9a93b8" font-size="10">single-thread async</text>
+    <text x="450" y="76" text-anchor="middle" fill="#52c41a" font-size="10">2s (most efficient)</text>
     <!-- multiprocessing -->
     <rect x="120" y="100" width="320" height="70" rx="6" fill="rgba(167,139,250,0.06)" stroke="#a78bfa" stroke-width="1.5"/>
     <text x="280" y="117" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">multiprocessing</text>
-    <text x="280" y="133" text-anchor="middle" fill="#9a93b8" font-size="6">CPU bound (heavy math)</text>
-    <text x="280" y="147" text-anchor="middle" fill="#9a93b8" font-size="6">separate process, bypasses GIL</text>
-    <text x="280" y="161" text-anchor="middle" fill="#a78bfa" font-size="6">real parallel — 4 cores = 4x speed</text>
+    <text x="280" y="133" text-anchor="middle" fill="#9a93b8" font-size="10">CPU bound (heavy math)</text>
+    <text x="280" y="147" text-anchor="middle" fill="#9a93b8" font-size="10">separate process, bypasses GIL</text>
+    <text x="280" y="161" text-anchor="middle" fill="#a78bfa" font-size="10">real parallel — 4 cores = 4x speed</text>
     <!-- Decision -->
     <rect x="20" y="185" width="520" height="70" rx="6" fill="rgba(251,191,36,0.04)" stroke="rgba(251,191,36,0.15)" stroke-width="1"/>
     <text x="280" y="203" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">সিদ্ধান্ত গাইড</text>
-    <text x="280" y="220" text-anchor="middle" fill="#9a93b8" font-size="7">🌐 Network/file I/O → asyncio (best) or threading (ok)</text>
-    <text x="280" y="235" text-anchor="middle" fill="#9a93b8" font-size="7">🔢 CPU math → multiprocessing (bypasses GIL)</text>
-    <text x="280" y="250" text-anchor="middle" fill="#f06292" font-size="7">⚠️ threading দিয়ে CPU math = GIL block, কোনো লাভ নেই</text>
+    <text x="280" y="220" text-anchor="middle" fill="#9a93b8" font-size="10">🌐 Network/file I/O → asyncio (best) or threading (ok)</text>
+    <text x="280" y="235" text-anchor="middle" fill="#9a93b8" font-size="10">🔢 CPU math → multiprocessing (bypasses GIL)</text>
+    <text x="280" y="250" text-anchor="middle" fill="#f06292" font-size="10">⚠️ threading দিয়ে CPU math = GIL block, কোনো লাভ নেই</text>
   </svg>
   <div class="diag-cap">I/O → asyncio/threading। CPU → multiprocessing। ভুল পদ্ধতি = ধীর। GIL = Python-এর সীমা, multiprocessing bypass।</div>
 </div>

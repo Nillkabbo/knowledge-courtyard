@@ -326,27 +326,27 @@ with open("data.pkl", "rb") as f:     # "rb" = read binary
     <!-- Open -->
     <rect x="20" y="20" width="140" height="40" rx="6" fill="rgba(45,212,191,0.1)" stroke="#2dd4bf" stroke-width="2"/>
     <text x="90" y="38" text-anchor="middle" fill="#2dd4bf" font-size="9" font-weight="bold">1. Open</text>
-    <text x="90" y="52" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">with open("f.json","w")</text>
+    <text x="90" y="52" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">with open("f.json","w")</text>
     <line x1="160" y1="40" x2="200" y2="40" stroke="#34d399" stroke-width="2" marker-end="url(#arrFA)"/>
     <!-- Process -->
     <rect x="205" y="15" width="150" height="55" rx="6" fill="rgba(52,211,153,0.08)" stroke="#34d399" stroke-width="2"/>
     <text x="280" y="33" text-anchor="middle" fill="#34d399" font-size="9" font-weight="bold">2. Read / Write</text>
-    <text x="280" y="48" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">f.write(data)</text>
-    <text x="280" y="60" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">json.dump(obj, f)</text>
+    <text x="280" y="48" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">f.write(data)</text>
+    <text x="280" y="60" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">json.dump(obj, f)</text>
     <line x1="355" y1="40" x2="395" y2="40" stroke="#34d399" stroke-width="2" marker-end="url(#arrFA)"/>
     <!-- Close -->
     <rect x="400" y="20" width="140" height="40" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="2"/>
     <text x="470" y="38" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">3. Close (auto)</text>
-    <text x="470" y="52" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace"># with block ends</text>
+    <text x="470" y="52" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace"># with block ends</text>
     <!-- Formats -->
     <rect x="20" y="90" width="520" height="40" rx="6" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
     <text x="280" y="108" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">File Formats</text>
-    <text x="280" y="122" text-anchor="middle" fill="#9a93b8" font-size="7">.json (structured data) · .csv (tabular) · .txt (text) · .yaml (config) · .pkl (Python objects)</text>
+    <text x="280" y="122" text-anchor="middle" fill="#9a93b8" font-size="10">.json (structured data) · .csv (tabular) · .txt (text) · .yaml (config) · .pkl (Python objects)</text>
     <!-- Modes -->
     <rect x="20" y="145" width="520" height="60" rx="6" fill="rgba(240,98,146,0.04)" stroke="rgba(240,98,146,0.15)" stroke-width="1"/>
     <text x="280" y="163" text-anchor="middle" fill="#f06292" font-size="8" font-weight="bold">Modes: r (read) · w (write, overwrites!) · a (append) · b (binary)</text>
-    <text x="280" y="178" text-anchor="middle" fill="#9a93b8" font-size="7">with open() = auto-close। bare open() = file lock risk</text>
-    <text x="280" y="192" text-anchor="middle" fill="#9a93b8" font-size="7">json.dump/load = JSON। csv.writer/DictReader = CSV। file.read()/write() = text</text>
+    <text x="280" y="178" text-anchor="middle" fill="#9a93b8" font-size="10">with open() = auto-close। bare open() = file lock risk</text>
+    <text x="280" y="192" text-anchor="middle" fill="#9a93b8" font-size="10">json.dump/load = JSON। csv.writer/DictReader = CSV। file.read()/write() = text</text>
   </svg>
   <div class="diag-cap">File I/O = তথ্য স্থায়ী করা। with open() → read/write → auto-close। JSON, CSV, text — সব format।</div>
 </div>
@@ -717,28 +717,28 @@ finally:
     <!-- try -->
     <rect x="200" y="20" width="160" height="35" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="2"/>
     <text x="280" y="38" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">try: (ঝুঁকিপূর্ণ কোড)</text>
-    <text x="280" y="50" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">data = api.get(url)</text>
+    <text x="280" y="50" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">data = api.get(url)</text>
     <!-- excepts -->
     <text x="280" y="75" text-anchor="middle" fill="#f06292" font-size="8" font-weight="bold">Error হলে ↓</text>
     <rect x="20" y="85" width="160" height="30" rx="5" fill="rgba(240,98,146,0.06)" stroke="#f06292" stroke-width="1"/>
-    <text x="100" y="104" text-anchor="middle" fill="#f06292" font-size="7" font-family="monospace">except JSONDecodeError</text>
+    <text x="100" y="104" text-anchor="middle" fill="#f06292" font-size="10" font-family="monospace">except JSONDecodeError</text>
     <rect x="190" y="85" width="160" height="30" rx="5" fill="rgba(240,98,146,0.06)" stroke="#f06292" stroke-width="1"/>
-    <text x="270" y="104" text-anchor="middle" fill="#f06292" font-size="7" font-family="monospace">except ConnectionError</text>
+    <text x="270" y="104" text-anchor="middle" fill="#f06292" font-size="10" font-family="monospace">except ConnectionError</text>
     <rect x="360" y="85" width="180" height="30" rx="5" fill="rgba(240,98,146,0.06)" stroke="#f06292" stroke-width="1"/>
-    <text x="450" y="104" text-anchor="middle" fill="#f06292" font-size="7" font-family="monospace">except TimeoutError</text>
+    <text x="450" y="104" text-anchor="middle" fill="#f06292" font-size="10" font-family="monospace">except TimeoutError</text>
     <!-- specific handling -->
-    <text x="100" y="130" text-anchor="middle" fill="#9a93b8" font-size="6">log + raise</text>
-    <text x="270" y="130" text-anchor="middle" fill="#9a93b8" font-size="6">retry 3x</text>
-    <text x="450" y="130" text-anchor="middle" fill="#9a93b8" font-size="6">use cache</text>
+    <text x="100" y="130" text-anchor="middle" fill="#9a93b8" font-size="10">log + raise</text>
+    <text x="270" y="130" text-anchor="middle" fill="#9a93b8" font-size="10">retry 3x</text>
+    <text x="450" y="130" text-anchor="middle" fill="#9a93b8" font-size="10">use cache</text>
     <!-- finally -->
     <rect x="200" y="150" width="160" height="30" rx="6" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="2"/>
     <text x="280" y="168" text-anchor="middle" fill="#2dd4bf" font-size="9" font-weight="bold">finally: (সবসময় চলে)</text>
-    <text x="280" y="178" text-anchor="middle" fill="#9a93b8" font-size="6">cleanup — close files, connections</text>
+    <text x="280" y="178" text-anchor="middle" fill="#9a93b8" font-size="10">cleanup — close files, connections</text>
     <!-- Rules -->
     <rect x="20" y="195" width="520" height="50" rx="6" fill="rgba(240,98,146,0.04)" stroke="rgba(240,98,146,0.15)" stroke-width="1"/>
     <text x="280" y="213" text-anchor="middle" fill="#f06292" font-size="8" font-weight="bold">⚠️ bare except = silent death। নির্দিষ্ট exception ধরো।</text>
-    <text x="280" y="227" text-anchor="middle" fill="#9a93b8" font-size="7">except ValueError / except JSONDecodeError / except ConnectionError</text>
-    <text x="280" y="239" text-anchor="middle" fill="#9a93b8" font-size="7">handle করতে পারলে handle করো, না পারলে raise করো — swallow কোরো না</text>
+    <text x="280" y="227" text-anchor="middle" fill="#9a93b8" font-size="10">except ValueError / except JSONDecodeError / except ConnectionError</text>
+    <text x="280" y="239" text-anchor="middle" fill="#9a93b8" font-size="10">handle করতে পারলে handle করো, না পারলে raise করো — swallow কোরো না</text>
   </svg>
   <div class="diag-cap">try (ঝুঁকি) → except (নির্দিষ্ট error ধরো) → finally (cleanup)। bare except = silent death।</div>
 </div>
@@ -1104,9 +1104,9 @@ if __name__ == "__main__":
     <rect x="20" y="20" width="160" height="80" rx="8" fill="rgba(240,98,146,0.06)" stroke="#f06292" stroke-width="2"/>
     <text x="100" y="40" text-anchor="middle" fill="#f06292" font-size="9" font-weight="bold">❌ Monolith</text>
     <text x="100" y="58" text-anchor="middle" fill="#9a93b8" font-size="8" font-family="monospace">main.py</text>
-    <text x="100" y="72" text-anchor="middle" fill="#9a93b8" font-size="7">5000 lines</text>
-    <text x="100" y="86" text-anchor="middle" fill="#9a93b8" font-size="7">Everything in one file</text>
-    <text x="100" y="100" text-anchor="middle" fill="#f06292" font-size="6">bug খুঁজতে দিন যায়</text>
+    <text x="100" y="72" text-anchor="middle" fill="#9a93b8" font-size="10">5000 lines</text>
+    <text x="100" y="86" text-anchor="middle" fill="#9a93b8" font-size="10">Everything in one file</text>
+    <text x="100" y="100" text-anchor="middle" fill="#f06292" font-size="10">bug খুঁজতে দিন যায়</text>
     <!-- Arrow -->
     <line x1="190" y1="60" x2="240" y2="60" stroke="#34d399" stroke-width="2"/>
     <text x="215" y="53" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">split</text>
@@ -1114,26 +1114,26 @@ if __name__ == "__main__":
     <rect x="250" y="20" width="290" height="80" rx="8" fill="rgba(45,212,191,0.06)" stroke="#2dd4bf" stroke-width="2"/>
     <text x="395" y="38" text-anchor="middle" fill="#2dd4bf" font-size="9" font-weight="bold">✅ Modular</text>
     <rect x="260" y="48" width="80" height="20" rx="4" fill="rgba(52,211,153,0.06)" stroke="#34d399" stroke-width="1"/>
-    <text x="300" y="62" text-anchor="middle" fill="#34d399" font-size="7" font-family="monospace">main.py</text>
+    <text x="300" y="62" text-anchor="middle" fill="#34d399" font-size="10" font-family="monospace">main.py</text>
     <rect x="345" y="48" width="80" height="20" rx="4" fill="rgba(52,211,153,0.06)" stroke="#34d399" stroke-width="1"/>
-    <text x="385" y="62" text-anchor="middle" fill="#34d399" font-size="7" font-family="monospace">database.py</text>
+    <text x="385" y="62" text-anchor="middle" fill="#34d399" font-size="10" font-family="monospace">database.py</text>
     <rect x="430" y="48" width="80" height="20" rx="4" fill="rgba(52,211,153,0.06)" stroke="#34d399" stroke-width="1"/>
-    <text x="470" y="62" text-anchor="middle" fill="#34d399" font-size="7" font-family="monospace">auth.py</text>
+    <text x="470" y="62" text-anchor="middle" fill="#34d399" font-size="10" font-family="monospace">auth.py</text>
     <rect x="260" y="73" width="80" height="20" rx="4" fill="rgba(52,211,153,0.06)" stroke="#34d399" stroke-width="1"/>
-    <text x="300" y="87" text-anchor="middle" fill="#34d399" font-size="7" font-family="monospace">api.py</text>
+    <text x="300" y="87" text-anchor="middle" fill="#34d399" font-size="10" font-family="monospace">api.py</text>
     <rect x="345" y="73" width="80" height="20" rx="4" fill="rgba(52,211,153,0.06)" stroke="#34d399" stroke-width="1"/>
-    <text x="385" y="87" text-anchor="middle" fill="#34d399" font-size="7" font-family="monospace">utils/</text>
-    <text x="470" y="87" text-anchor="middle" fill="#9a93b8" font-size="6">each ~200 lines</text>
+    <text x="385" y="87" text-anchor="middle" fill="#34d399" font-size="10" font-family="monospace">utils/</text>
+    <text x="470" y="87" text-anchor="middle" fill="#9a93b8" font-size="10">each ~200 lines</text>
     <!-- import -->
     <rect x="20" y="120" width="520" height="50" rx="6" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
     <text x="280" y="138" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">import: অন্য module-এর কোড ব্যবহার করো</text>
-    <text x="280" y="153" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">import database · from database import save · import numpy as np</text>
-    <text x="280" y="163" text-anchor="middle" fill="#f06292" font-size="6">❌ from X import * — namespace pollution</text>
+    <text x="280" y="153" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">import database · from database import save · import numpy as np</text>
+    <text x="280" y="163" text-anchor="middle" fill="#f06292" font-size="10">❌ from X import * — namespace pollution</text>
     <!-- pip -->
     <rect x="20" y="185" width="520" height="50" rx="6" fill="rgba(251,191,36,0.04)" stroke="rgba(251,191,36,0.15)" stroke-width="1"/>
     <text x="280" y="203" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">pip: Third-party packages</text>
-    <text x="280" y="218" text-anchor="middle" fill="#9a93b8" font-size="7">pip install requests pandas numpy flask django fastapi</text>
-    <text x="280" y="228" text-anchor="middle" fill="#9a93b8" font-size="7">requirements.txt-এ লেখো → নতুন মেশিনে pip install -r requirements.txt</text>
+    <text x="280" y="218" text-anchor="middle" fill="#9a93b8" font-size="10">pip install requests pandas numpy flask django fastapi</text>
+    <text x="280" y="228" text-anchor="middle" fill="#9a93b8" font-size="10">requirements.txt-এ লেখো → নতুন মেশিনে pip install -r requirements.txt</text>
   </svg>
   <div class="diag-cap">Monolith → modules। এক file = এক দায়িত্ব। from X import Y (specific)। import * নিষিদ্ধ।</div>
 </div>
@@ -1533,13 +1533,13 @@ print(account.statement())  # Fatima: 1300 taka
     <!-- Blueprint -->
     <rect x="20" y="20" width="180" height="120" rx="8" fill="rgba(45,212,191,0.1)" stroke="#2dd4bf" stroke-width="2.5"/>
     <text x="110" y="40" text-anchor="middle" fill="#2dd4bf" font-size="11" font-weight="bold">CLASS</text>
-    <text x="110" y="55" text-anchor="middle" fill="#9a93b8" font-size="7">(নকশা / Blueprint)</text>
-    <text x="35" y="75" fill="#34d399" font-size="7" font-family="monospace">class Employee:</text>
-    <text x="35" y="90" fill="#9a93b8" font-size="7" font-family="monospace">  name</text>
-    <text x="35" y="102" fill="#9a93b8" font-size="7" font-family="monospace">  salary</text>
-    <text x="35" y="114" fill="#9a93b8" font-size="7" font-family="monospace">  title</text>
-    <text x="35" y="126" fill="#9a93b8" font-size="7" font-family="monospace">  bonus()</text>
-    <text x="35" y="138" fill="#9a93b8" font-size="7" font-family="monospace">  promote()</text>
+    <text x="110" y="55" text-anchor="middle" fill="#9a93b8" font-size="10">(নকশা / Blueprint)</text>
+    <text x="35" y="75" fill="#34d399" font-size="10" font-family="monospace">class Employee:</text>
+    <text x="35" y="90" fill="#9a93b8" font-size="10" font-family="monospace">  name</text>
+    <text x="35" y="102" fill="#9a93b8" font-size="10" font-family="monospace">  salary</text>
+    <text x="35" y="114" fill="#9a93b8" font-size="10" font-family="monospace">  title</text>
+    <text x="35" y="126" fill="#9a93b8" font-size="10" font-family="monospace">  bonus()</text>
+    <text x="35" y="138" fill="#9a93b8" font-size="10" font-family="monospace">  promote()</text>
     <!-- Arrows -->
     <line x1="200" y1="50" x2="260" y2="30" stroke="#34d399" stroke-width="1.5"/>
     <line x1="200" y1="80" x2="260" y2="80" stroke="#34d399" stroke-width="1.5"/>
@@ -1547,33 +1547,33 @@ print(account.statement())  # Fatima: 1300 taka
     <!-- Objects -->
     <rect x="260" y="15" width="130" height="40" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="325" y="30" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">OBJECT 1</text>
-    <text x="325" y="44" text-anchor="middle" fill="#9a93b8" font-size="7">Fatima, 50k, Engineer</text>
+    <text x="325" y="44" text-anchor="middle" fill="#9a93b8" font-size="10">Fatima, 50k, Engineer</text>
     <rect x="260" y="65" width="130" height="40" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="325" y="80" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">OBJECT 2</text>
-    <text x="325" y="94" text-anchor="middle" fill="#9a93b8" font-size="7">Ahmed, 60k, Manager</text>
+    <text x="325" y="94" text-anchor="middle" fill="#9a93b8" font-size="10">Ahmed, 60k, Manager</text>
     <rect x="260" y="115" width="130" height="40" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="325" y="130" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">OBJECT 3</text>
-    <text x="325" y="144" text-anchor="middle" fill="#9a93b8" font-size="7">Sara, 80k, Director</text>
+    <text x="325" y="144" text-anchor="middle" fill="#9a93b8" font-size="10">Sara, 80k, Director</text>
     <!-- Inheritance -->
     <rect x="410" y="40" width="130" height="100" rx="8" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="2"/>
     <text x="475" y="58" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="bold">INHERITANCE</text>
-    <text x="475" y="75" text-anchor="middle" fill="#9a93b8" font-size="7">Manager(Employee)</text>
-    <text x="475" y="90" text-anchor="middle" fill="#9a93b8" font-size="6">inherit: name, salary</text>
-    <text x="475" y="103" text-anchor="middle" fill="#9a93b8" font-size="6">add: department, team</text>
-    <text x="475" y="116" text-anchor="middle" fill="#9a93b8" font-size="6">override: bonus()</text>
-    <text x="475" y="132" text-anchor="middle" fill="#a78bfa" font-size="6" font-weight="bold">= Specialized version</text>
+    <text x="475" y="75" text-anchor="middle" fill="#9a93b8" font-size="10">Manager(Employee)</text>
+    <text x="475" y="90" text-anchor="middle" fill="#9a93b8" font-size="10">inherit: name, salary</text>
+    <text x="475" y="103" text-anchor="middle" fill="#9a93b8" font-size="10">add: department, team</text>
+    <text x="475" y="116" text-anchor="middle" fill="#9a93b8" font-size="10">override: bonus()</text>
+    <text x="475" y="132" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold">= Specialized version</text>
     <!-- Bottom -->
     <rect x="20" y="165" width="520" height="80" rx="6" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
     <text x="280" y="183" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">OOP এর ৪ স্তম্ভ</text>
-    <text x="120" y="203" text-anchor="middle" fill="#9a93b8" font-size="7">Encapsulation</text>
-    <text x="120" y="215" text-anchor="middle" fill="#9a93b8" font-size="6">data লুকাও</text>
-    <text x="260" y="203" text-anchor="middle" fill="#9a93b8" font-size="7">Inheritance</text>
-    <text x="260" y="215" text-anchor="middle" fill="#9a93b8" font-size="6">গুণ উত্তরাধিকার</text>
-    <text x="400" y="203" text-anchor="middle" fill="#9a93b8" font-size="7">Polymorphism</text>
-    <text x="400" y="215" text-anchor="middle" fill="#9a93b8" font-size="6">বহুরূপ</text>
-    <text x="480" y="203" text-anchor="middle" fill="#9a93b8" font-size="7">Abstraction</text>
-    <text x="480" y="215" text-anchor="middle" fill="#9a93b8" font-size="6">interface</text>
-    <text x="280" y="235" text-anchor="middle" fill="#fbbf24" font-size="7">@dataclass = shortcut (Python 3.7+)</text>
+    <text x="120" y="203" text-anchor="middle" fill="#9a93b8" font-size="10">Encapsulation</text>
+    <text x="120" y="215" text-anchor="middle" fill="#9a93b8" font-size="10">data লুকাও</text>
+    <text x="260" y="203" text-anchor="middle" fill="#9a93b8" font-size="10">Inheritance</text>
+    <text x="260" y="215" text-anchor="middle" fill="#9a93b8" font-size="10">গুণ উত্তরাধিকার</text>
+    <text x="400" y="203" text-anchor="middle" fill="#9a93b8" font-size="10">Polymorphism</text>
+    <text x="400" y="215" text-anchor="middle" fill="#9a93b8" font-size="10">বহুরূপ</text>
+    <text x="480" y="203" text-anchor="middle" fill="#9a93b8" font-size="10">Abstraction</text>
+    <text x="480" y="215" text-anchor="middle" fill="#9a93b8" font-size="10">interface</text>
+    <text x="280" y="235" text-anchor="middle" fill="#fbbf24" font-size="10">@dataclass = shortcut (Python 3.7+)</text>
   </svg>
   <div class="diag-cap">Class = নকশা, Object = সৃষ্টি। Inheritance = বিশেষায়িত সংস্করণ। @dataclass = shortcut।</div>
 </div>
@@ -1886,10 +1886,10 @@ for c in customers:
     <!-- Before: for loop -->
     <rect x="20" y="20" width="250" height="100" rx="8" fill="rgba(240,98,146,0.04)" stroke="#f06292" stroke-width="1.5"/>
     <text x="145" y="38" text-anchor="middle" fill="#f06292" font-size="9" font-weight="bold">❌ For loop (৫ লাইন)</text>
-    <text x="35" y="58" fill="#9a93b8" font-size="7" font-family="monospace">result = []</text>
-    <text x="35" y="73" fill="#9a93b8" font-size="7" font-family="monospace">for n in numbers:</text>
-    <text x="35" y="88" fill="#9a93b8" font-size="7" font-family="monospace">    if n % 2 == 0:</text>
-    <text x="35" y="103" fill="#9a93b8" font-size="7" font-family="monospace">        result.append(n**2)</text>
+    <text x="35" y="58" fill="#9a93b8" font-size="10" font-family="monospace">result = []</text>
+    <text x="35" y="73" fill="#9a93b8" font-size="10" font-family="monospace">for n in numbers:</text>
+    <text x="35" y="88" fill="#9a93b8" font-size="10" font-family="monospace">    if n % 2 == 0:</text>
+    <text x="35" y="103" fill="#9a93b8" font-size="10" font-family="monospace">        result.append(n**2)</text>
     <!-- Arrow -->
     <line x1="275" y1="70" x2="325" y2="70" stroke="#34d399" stroke-width="2"/>
     <text x="300" y="63" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">→</text>
@@ -1903,11 +1903,11 @@ for c in customers:
     <!-- Anatomy -->
     <rect x="20" y="135" width="520" height="70" rx="6" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
     <text x="280" y="153" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">[TRANSFORM for ITEM in SOURCE if CONDITION]</text>
-    <text x="110" y="173" text-anchor="middle" fill="#fbbf24" font-size="7">n**2 = what to do</text>
-    <text x="280" y="173" text-anchor="middle" fill="#2dd4bf" font-size="7">for n in numbers = source</text>
-    <text x="450" y="173" text-anchor="middle" fill="#f06292" font-size="7">if even = filter</text>
-    <text x="280" y="192" text-anchor="middle" fill="#9a93b8" font-size="7">list [] · dict {} · set {} · generator ()</text>
-    <text x="280" y="202" text-anchor="middle" fill="#9a93b8" font-size="7">nested ৩+ = for loop ব্যবহার করো (readability)</text>
+    <text x="110" y="173" text-anchor="middle" fill="#fbbf24" font-size="10">n**2 = what to do</text>
+    <text x="280" y="173" text-anchor="middle" fill="#2dd4bf" font-size="10">for n in numbers = source</text>
+    <text x="450" y="173" text-anchor="middle" fill="#f06292" font-size="10">if even = filter</text>
+    <text x="280" y="192" text-anchor="middle" fill="#9a93b8" font-size="10">list [] · dict {} · set {} · generator ()</text>
+    <text x="280" y="202" text-anchor="middle" fill="#9a93b8" font-size="10">nested ৩+ = for loop ব্যবহার করো (readability)</text>
   </svg>
   <div class="diag-cap">[transform for item in source if condition]। ৫ লাইন → ১ লাইন। list, dict, set, generator।</div>
 </div>

@@ -241,25 +241,25 @@ print(type(x))  # <class 'list'>
     <text x="100" y="80" text-anchor="middle" fill="#2dd4bf" font-size="14" font-weight="bold">42</text>
     <text x="100" y="100" text-anchor="middle" fill="#9a93b8" font-size="8">int</text>
     <text x="100" y="150" text-anchor="middle" fill="#34d399" font-size="9" font-family="monospace">age = 42</text>
-    <text x="100" y="165" text-anchor="middle" fill="#9a93b8" font-size="7">পূর্ণসংখ্যা (whole)</text>
+    <text x="100" y="165" text-anchor="middle" fill="#9a93b8" font-size="10">পূর্ণসংখ্যা (whole)</text>
     <!-- float -->
     <ellipse cx="220" cy="90" rx="45" ry="40" fill="rgba(52,211,153,0.08)" stroke="#34d399" stroke-width="2"/>
     <text x="220" y="80" text-anchor="middle" fill="#34d399" font-size="14" font-weight="bold">3.14</text>
     <text x="220" y="100" text-anchor="middle" fill="#9a93b8" font-size="8">float</text>
     <text x="220" y="150" text-anchor="middle" fill="#34d399" font-size="9" font-family="monospace">pi = 3.14</text>
-    <text x="220" y="165" text-anchor="middle" fill="#9a93b8" font-size="7">দশমিক (decimal)</text>
+    <text x="220" y="165" text-anchor="middle" fill="#9a93b8" font-size="10">দশমিক (decimal)</text>
     <!-- str -->
     <ellipse cx="340" cy="90" rx="45" ry="40" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="2"/>
     <text x="340" y="80" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">"hi"</text>
     <text x="340" y="100" text-anchor="middle" fill="#9a93b8" font-size="8">str</text>
     <text x="340" y="150" text-anchor="middle" fill="#34d399" font-size="9" font-family="monospace">name = "Bob"</text>
-    <text x="340" y="165" text-anchor="middle" fill="#9a93b8" font-size="7">লেখা (text)</text>
+    <text x="340" y="165" text-anchor="middle" fill="#9a93b8" font-size="10">লেখা (text)</text>
     <!-- bool -->
     <ellipse cx="460" cy="90" rx="45" ry="40" fill="rgba(240,98,146,0.08)" stroke="#f06292" stroke-width="2"/>
     <text x="460" y="80" text-anchor="middle" fill="#f06292" font-size="12" font-weight="bold">True</text>
     <text x="460" y="100" text-anchor="middle" fill="#9a93b8" font-size="8">bool</text>
     <text x="460" y="150" text-anchor="middle" fill="#34d399" font-size="9" font-family="monospace">active = True</text>
-    <text x="460" y="165" text-anchor="middle" fill="#9a93b8" font-size="7">সত্য/মিথ্যা</text>
+    <text x="460" y="165" text-anchor="middle" fill="#9a93b8" font-size="10">সত্য/মিথ্যা</text>
     <!-- assignment -->
     <rect x="40" y="185" width="480" height="30" rx="6" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1"/>
     <text x="280" y="203" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">name = value → "বাক্সে মান রাখো" (= means assign, NOT equals)</text>
@@ -598,7 +598,7 @@ print(handle_status("completed"))  # Done!</div>
     <!-- if diamond -->
     <polygon points="280,65 350,100 280,135 210,100" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="2"/>
     <text x="280" y="98" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">if priority == 1?</text>
-    <text x="280" y="112" text-anchor="middle" fill="#9a93b8" font-size="7">branch</text>
+    <text x="280" y="112" text-anchor="middle" fill="#9a93b8" font-size="10">branch</text>
     <!-- Yes branch -->
     <line x1="210" y1="100" x2="140" y2="100" stroke="#52c41a" stroke-width="1.5" marker-end="url(#arrC)"/>
     <text x="175" y="93" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Yes</text>
@@ -613,12 +613,12 @@ print(handle_status("completed"))  # Done!</div>
     <text x="280" y="160" text-anchor="middle" fill="#34d399" font-size="9" font-weight="bold">Loops (চক্র)</text>
     <rect x="40" y="175" width="220" height="50" rx="8" fill="rgba(45,212,191,0.06)" stroke="#2dd4bf" stroke-width="1.5"/>
     <text x="150" y="193" text-anchor="middle" fill="#2dd4bf" font-size="9" font-weight="bold">for item in list:</text>
-    <text x="150" y="208" text-anchor="middle" fill="#9a93b8" font-size="7">নির্দিষ্ট সংখ্যক — তালিকা আছে</text>
-    <text x="150" y="220" text-anchor="middle" fill="#9a93b8" font-size="7">for i in range(10):</text>
+    <text x="150" y="208" text-anchor="middle" fill="#9a93b8" font-size="10">নির্দিষ্ট সংখ্যক — তালিকা আছে</text>
+    <text x="150" y="220" text-anchor="middle" fill="#9a93b8" font-size="10">for i in range(10):</text>
     <rect x="300" y="175" width="220" height="50" rx="8" fill="rgba(167,139,250,0.06)" stroke="#a78bfa" stroke-width="1.5"/>
     <text x="410" y="193" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="bold">while condition:</text>
-    <text x="410" y="208" text-anchor="middle" fill="#9a93b8" font-size="7">শর্ত সত্য থাকলে — শর্ত আছে</text>
-    <text x="410" y="220" text-anchor="middle" fill="#9a93b8" font-size="7">while attempts &lt; 3:</text>
+    <text x="410" y="208" text-anchor="middle" fill="#9a93b8" font-size="10">শর্ত সত্য থাকলে — শর্ত আছে</text>
+    <text x="410" y="220" text-anchor="middle" fill="#9a93b8" font-size="10">while attempts &lt; 3:</text>
     <!-- Warning -->
     <rect x="40" y="240" width="480" height="30" rx="6" fill="rgba(240,98,146,0.06)" stroke="rgba(240,98,146,0.2)" stroke-width="1"/>
     <text x="280" y="258" text-anchor="middle" fill="#f06292" font-size="8" font-weight="bold">⚠️ while-এ exit condition আবশ্যক — নাহলে infinite loop!</text>
@@ -890,26 +890,26 @@ def find_user(user_id: int) -> dict | None:
     <!-- Input -->
     <rect x="20" y="60" width="120" height="60" rx="8" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="2"/>
     <text x="80" y="82" text-anchor="middle" fill="#2dd4bf" font-size="10" font-weight="bold">INPUT</text>
-    <text x="80" y="97" text-anchor="middle" fill="#9a93b8" font-size="7">arguments</text>
-    <text x="80" y="110" text-anchor="middle" fill="#9a93b8" font-size="7">price=50</text>
+    <text x="80" y="97" text-anchor="middle" fill="#9a93b8" font-size="10">arguments</text>
+    <text x="80" y="110" text-anchor="middle" fill="#9a93b8" font-size="10">price=50</text>
     <line x1="140" y1="90" x2="190" y2="90" stroke="#34d399" stroke-width="2" marker-end="url(#arrF)"/>
     <!-- Process -->
     <rect x="195" y="40" width="170" height="100" rx="8" fill="rgba(52,211,153,0.08)" stroke="#34d399" stroke-width="2"/>
     <text x="280" y="62" text-anchor="middle" fill="#34d399" font-size="10" font-weight="bold">FUNCTION (রেসিপি)</text>
-    <text x="280" y="80" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">def add_tax(price):</text>
-    <text x="280" y="94" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">    return price * 1.2</text>
-    <text x="280" y="115" text-anchor="middle" fill="#9a93b8" font-size="7">process: হিসাব</text>
-    <text x="280" y="128" text-anchor="middle" fill="#9a93b8" font-size="7">এক জায়গায়, বারবার ব্যবহার</text>
+    <text x="280" y="80" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">def add_tax(price):</text>
+    <text x="280" y="94" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">    return price * 1.2</text>
+    <text x="280" y="115" text-anchor="middle" fill="#9a93b8" font-size="10">process: হিসাব</text>
+    <text x="280" y="128" text-anchor="middle" fill="#9a93b8" font-size="10">এক জায়গায়, বারবার ব্যবহার</text>
     <line x1="365" y1="90" x2="415" y2="90" stroke="#34d399" stroke-width="2" marker-end="url(#arrF)"/>
     <!-- Output -->
     <rect x="420" y="60" width="120" height="60" rx="8" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="2"/>
     <text x="480" y="82" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">OUTPUT</text>
-    <text x="480" y="97" text-anchor="middle" fill="#9a93b8" font-size="7">return value</text>
-    <text x="480" y="110" text-anchor="middle" fill="#9a93b8" font-size="7">60</text>
+    <text x="480" y="97" text-anchor="middle" fill="#9a93b8" font-size="10">return value</text>
+    <text x="480" y="110" text-anchor="middle" fill="#9a93b8" font-size="10">60</text>
     <!-- Bottom -->
     <rect x="20" y="165" width="520" height="40" rx="6" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
     <text x="280" y="183" text-anchor="middle" fill="#34d399" font-size="8" font-weight="bold">DRY: Don't Repeat Yourself — একই কোড কপি নয়, function বানাও</text>
-    <text x="280" y="195" text-anchor="middle" fill="#9a93b8" font-size="7">parameter = নাম, argument = মান, return = ফলাফল ফেরত</text>
+    <text x="280" y="195" text-anchor="middle" fill="#9a93b8" font-size="10">parameter = নাম, argument = মান, return = ফলাফল ফেরত</text>
   </svg>
   <div class="diag-cap">Function = input → process → output। একবার লেখো, বারবার ব্যবহার করো। return ছাড়া ফলাফল হারায়।</div>
 </div>
@@ -1251,31 +1251,31 @@ print(f"Email domains: {domains}")  # {'mail.com'}</div>
     <!-- list -->
     <rect x="20" y="20" width="120" height="100" rx="8" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="2"/>
     <text x="80" y="40" text-anchor="middle" fill="#2dd4bf" font-size="10" font-weight="bold">list</text>
-    <text x="80" y="55" text-anchor="middle" fill="#9a93b8" font-size="7">[1, 2, 3]</text>
-    <text x="80" y="75" text-anchor="middle" fill="#9a93b8" font-size="7">ক্রম ✓ ডুপ্লিকেট ✓</text>
-    <text x="80" y="88" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">পরিবর্তনযোগ্য</text>
-    <text x="80" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">task_queue, prices</text>
+    <text x="80" y="55" text-anchor="middle" fill="#9a93b8" font-size="10">[1, 2, 3]</text>
+    <text x="80" y="75" text-anchor="middle" fill="#9a93b8" font-size="10">ক্রম ✓ ডুপ্লিকেট ✓</text>
+    <text x="80" y="88" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">পরিবর্তনযোগ্য</text>
+    <text x="80" y="105" text-anchor="middle" fill="#9a93b8" font-size="10">task_queue, prices</text>
     <!-- tuple -->
     <rect x="150" y="20" width="120" height="100" rx="8" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="2"/>
     <text x="210" y="40" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold">tuple</text>
-    <text x="210" y="55" text-anchor="middle" fill="#9a93b8" font-size="7">(1, 2, 3)</text>
-    <text x="210" y="75" text-anchor="middle" fill="#9a93b8" font-size="7">ক্রম ✓ ডুপ্লিকেট ✓</text>
-    <text x="210" y="88" text-anchor="middle" fill="#f06292" font-size="7" font-weight="bold">অপরিবর্তনীয়</text>
-    <text x="210" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">coordinates, RGB</text>
+    <text x="210" y="55" text-anchor="middle" fill="#9a93b8" font-size="10">(1, 2, 3)</text>
+    <text x="210" y="75" text-anchor="middle" fill="#9a93b8" font-size="10">ক্রম ✓ ডুপ্লিকেট ✓</text>
+    <text x="210" y="88" text-anchor="middle" fill="#f06292" font-size="10" font-weight="bold">অপরিবর্তনীয়</text>
+    <text x="210" y="105" text-anchor="middle" fill="#9a93b8" font-size="10">coordinates, RGB</text>
     <!-- dict -->
     <rect x="280" y="20" width="140" height="100" rx="8" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="2"/>
     <text x="350" y="40" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">dict</text>
-    <text x="350" y="55" text-anchor="middle" fill="#9a93b8" font-size="7">{"key": "value"}</text>
-    <text x="350" y="75" text-anchor="middle" fill="#9a93b8" font-size="7">নাম-মান জোড়া</text>
-    <text x="350" y="88" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">দ্রুত খোঁজ O(1)</text>
-    <text x="350" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">customers, config</text>
+    <text x="350" y="55" text-anchor="middle" fill="#9a93b8" font-size="10">{"key": "value"}</text>
+    <text x="350" y="75" text-anchor="middle" fill="#9a93b8" font-size="10">নাম-মান জোড়া</text>
+    <text x="350" y="88" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">দ্রুত খোঁজ O(1)</text>
+    <text x="350" y="105" text-anchor="middle" fill="#9a93b8" font-size="10">customers, config</text>
     <!-- set -->
     <rect x="430" y="20" width="120" height="100" rx="8" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="2"/>
     <text x="490" y="40" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">set</text>
-    <text x="490" y="55" text-anchor="middle" fill="#9a93b8" font-size="7">{1, 2, 3}</text>
-    <text x="490" y="75" text-anchor="middle" fill="#9a93b8" font-size="7">ইউনিক only</text>
-    <text x="490" y="88" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">ডুপ্লিকেট নয়</text>
-    <text x="490" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">tags, categories</text>
+    <text x="490" y="55" text-anchor="middle" fill="#9a93b8" font-size="10">{1, 2, 3}</text>
+    <text x="490" y="75" text-anchor="middle" fill="#9a93b8" font-size="10">ইউনিক only</text>
+    <text x="490" y="88" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">ডুপ্লিকেট নয়</text>
+    <text x="490" y="105" text-anchor="middle" fill="#9a93b8" font-size="10">tags, categories</text>
     <!-- Decision -->
     <rect x="20" y="140" width="530" height="100" rx="8" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
     <text x="280" y="160" text-anchor="middle" fill="#34d399" font-size="9" font-weight="bold">সঠিক পাত্র কীভাবে বেছবে?</text>
@@ -1596,31 +1596,31 @@ print(masked)  # My card is XXXX-XXXX-XXXX-XXXX
     <!-- Messy input -->
     <rect x="20" y="20" width="220" height="50" rx="6" fill="rgba(240,98,146,0.06)" stroke="#f06292" stroke-width="1.5"/>
     <text x="130" y="38" text-anchor="middle" fill="#f06292" font-size="9" font-weight="bold">মেসি input</text>
-    <text x="130" y="55" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">"  Fatima@Mail.COM  "</text>
+    <text x="130" y="55" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">"  Fatima@Mail.COM  "</text>
     <!-- Arrow -->
     <text x="290" y="42" text-anchor="middle" fill="#34d399" font-size="9" font-weight="bold">clean_email()</text>
     <line x1="245" y1="45" x2="325" y2="45" stroke="#34d399" stroke-width="2"/>
     <!-- Clean output -->
     <rect x="330" y="20" width="210" height="50" rx="6" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="435" y="38" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">পরিষ্কার output</text>
-    <text x="435" y="55" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">"fatima@mail.com"</text>
+    <text x="435" y="55" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">"fatima@mail.com"</text>
     <!-- Tools -->
     <text x="280" y="100" text-anchor="middle" fill="#34d399" font-size="9" font-weight="bold">String Tools</text>
     <rect x="20" y="115" width="100" height="30" rx="5" fill="rgba(45,212,191,0.06)" stroke="#2dd4bf" stroke-width="1"/>
-    <text x="70" y="134" text-anchor="middle" fill="#2dd4bf" font-size="7" font-family="monospace">.strip() .lower()</text>
+    <text x="70" y="134" text-anchor="middle" fill="#2dd4bf" font-size="10" font-family="monospace">.strip() .lower()</text>
     <rect x="130" y="115" width="100" height="30" rx="5" fill="rgba(45,212,191,0.06)" stroke="#2dd4bf" stroke-width="1"/>
-    <text x="180" y="134" text-anchor="middle" fill="#2dd4bf" font-size="7" font-family="monospace">[0:5] [::-1]</text>
+    <text x="180" y="134" text-anchor="middle" fill="#2dd4bf" font-size="10" font-family="monospace">[0:5] [::-1]</text>
     <rect x="240" y="115" width="100" height="30" rx="5" fill="rgba(45,212,191,0.06)" stroke="#2dd4bf" stroke-width="1"/>
-    <text x="290" y="134" text-anchor="middle" fill="#2dd4bf" font-size="7" font-family="monospace">.split() .join()</text>
+    <text x="290" y="134" text-anchor="middle" fill="#2dd4bf" font-size="10" font-family="monospace">.split() .join()</text>
     <rect x="350" y="115" width="100" height="30" rx="5" fill="rgba(45,212,191,0.06)" stroke="#2dd4bf" stroke-width="1"/>
-    <text x="400" y="134" text-anchor="middle" fill="#2dd4bf" font-size="7" font-family="monospace">f"{name}"</text>
+    <text x="400" y="134" text-anchor="middle" fill="#2dd4bf" font-size="10" font-family="monospace">f"{name}"</text>
     <rect x="460" y="115" width="80" height="30" rx="5" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1"/>
-    <text x="500" y="134" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">re.match()</text>
+    <text x="500" y="134" text-anchor="middle" fill="#fbbf24" font-size="10" font-family="monospace">re.match()</text>
     <!-- Real world -->
     <rect x="20" y="165" width="520" height="60" rx="8" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
     <text x="280" y="185" text-anchor="middle" fill="#34d399" font-size="9" font-weight="bold">বাস্তব জগতে string processing</text>
-    <text x="280" y="200" text-anchor="middle" fill="#9a93b8" font-size="7">ইমেইল পরিষ্কার · CSV parse · log file analyze · phone validate · NLP preprocessing</text>
-    <text x="280" y="215" text-anchor="middle" fill="#9a93b8" font-size="7">৯০% real-world data আসে text হিসেবে — string skills = survival skill</text>
+    <text x="280" y="200" text-anchor="middle" fill="#9a93b8" font-size="10">ইমেইল পরিষ্কার · CSV parse · log file analyze · phone validate · NLP preprocessing</text>
+    <text x="280" y="215" text-anchor="middle" fill="#9a93b8" font-size="10">৯০% real-world data আসে text হিসেবে — string skills = survival skill</text>
   </svg>
   <div class="diag-cap">strip/lower/split/join/slice/regex — মেসি text পরিষ্কার করার হাতিয়ার। বাস্তব জগতে ৯০% তথ্য মেসি text।</div>
 </div>

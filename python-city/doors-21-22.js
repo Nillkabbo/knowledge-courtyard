@@ -239,19 +239,19 @@ if __name__ == "__main__":
     <rect x="20" y="20" width="520" height="55" rx="8" fill="rgba(45,212,191,0.1)" stroke="#2dd4bf" stroke-width="2.5"/>
     <text x="280" y="40" text-anchor="middle" fill="#2dd4bf" font-size="10" font-weight="bold">Layer 1: MODEL — models.py</text>
     <text x="280" y="55" text-anchor="middle" fill="#9a93b8" font-size="8">Expense class (dataclass) — amount, category, description, date</text>
-    <text x="280" y="67" text-anchor="middle" fill="#9a93b8" font-size="7">OOP (Guild 9) + Validation + Serialization</text>
+    <text x="280" y="67" text-anchor="middle" fill="#9a93b8" font-size="10">OOP (Guild 9) + Validation + Serialization</text>
     <line x1="280" y1="75" x2="280" y2="90" stroke="#34d399" stroke-width="2" marker-end="url(#arrPA)"/>
     <!-- Layer 2: Storage -->
     <rect x="20" y="95" width="520" height="55" rx="8" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="2.5"/>
     <text x="280" y="115" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold">Layer 2: STORAGE — storage.py</text>
     <text x="280" y="130" text-anchor="middle" fill="#9a93b8" font-size="8">ExpenseStorage class — JSON file read/write, ID generation</text>
-    <text x="280" y="142" text-anchor="middle" fill="#9a93b8" font-size="7">File I/O (Guild 6) + Error Handling (Guild 7)</text>
+    <text x="280" y="142" text-anchor="middle" fill="#9a93b8" font-size="10">File I/O (Guild 6) + Error Handling (Guild 7)</text>
     <line x1="280" y1="150" x2="280" y2="165" stroke="#34d399" stroke-width="2" marker-end="url(#arrPA)"/>
     <!-- Layer 3: Service -->
     <rect x="20" y="170" width="520" height="55" rx="8" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="2.5"/>
     <text x="280" y="190" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">Layer 3: SERVICE — service.py</text>
     <text x="280" y="205" text-anchor="middle" fill="#9a93b8" font-size="8">ExpenseService class — add, view, delete, analyze</text>
-    <text x="280" y="217" text-anchor="middle" fill="#9a93b8" font-size="7">Functions (Guild 3) + Comprehensions (Guild 10) + Counter (Guild 4)</text>
+    <text x="280" y="217" text-anchor="middle" fill="#9a93b8" font-size="10">Functions (Guild 3) + Comprehensions (Guild 10) + Counter (Guild 4)</text>
     <!-- Bottom: Why -->
     <rect x="20" y="240" width="520" height="30" rx="6" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1"/>
     <text x="280" y="258" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">কেন আলাদা? এক অংশ বদলালে অন্যটা না ছুঁয়ে — Separation of Concerns</text>
@@ -597,33 +597,33 @@ if __name__ == "__main__":
     <!-- Center: Service -->
     <rect x="180" y="110" width="200" height="60" rx="10" fill="rgba(45,212,191,0.15)" stroke="#2dd4bf" stroke-width="3"/>
     <text x="280" y="132" text-anchor="middle" fill="#2dd4bf" font-size="11" font-weight="bold">ExpenseService</text>
-    <text x="280" y="148" text-anchor="middle" fill="#9a93b8" font-size="7">ONE source of truth</text>
-    <text x="280" y="160" text-anchor="middle" fill="#9a93b8" font-size="7">add, view, delete, analyze</text>
+    <text x="280" y="148" text-anchor="middle" fill="#9a93b8" font-size="10">ONE source of truth</text>
+    <text x="280" y="160" text-anchor="middle" fill="#9a93b8" font-size="10">add, view, delete, analyze</text>
     <!-- 4 interfaces -->
     <line x1="280" y1="110" x2="280" y2="75" stroke="#34d399" stroke-width="2"/>
     <rect x="210" y="35" width="140" height="40" rx="8" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="2"/>
     <text x="280" y="52" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="bold">REST API</text>
-    <text x="280" y="65" text-anchor="middle" fill="#9a93b8" font-size="6">FastAPI — web/mobile</text>
+    <text x="280" y="65" text-anchor="middle" fill="#9a93b8" font-size="10">FastAPI — web/mobile</text>
     <!-- Analytics -->
     <line x1="180" y1="140" x2="120" y2="140" stroke="#34d399" stroke-width="2"/>
     <rect x="10" y="115" width="110" height="50" rx="8" fill="rgba(82,196,26,0.1)" stroke="#52c41a" stroke-width="2"/>
     <text x="65" y="135" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">Analytics</text>
-    <text x="65" y="148" text-anchor="middle" fill="#9a93b8" font-size="6">pandas — report</text>
-    <text x="65" y="158" text-anchor="middle" fill="#9a93b8" font-size="6">matplotlib — chart</text>
+    <text x="65" y="148" text-anchor="middle" fill="#9a93b8" font-size="10">pandas — report</text>
+    <text x="65" y="158" text-anchor="middle" fill="#9a93b8" font-size="10">matplotlib — chart</text>
     <!-- CLI -->
     <line x1="380" y1="140" x2="440" y2="140" stroke="#34d399" stroke-width="2"/>
     <rect x="440" y="115" width="110" height="50" rx="8" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="2"/>
     <text x="495" y="135" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">CLI</text>
-    <text x="495" y="148" text-anchor="middle" fill="#9a93b8" font-size="6">argparse</text>
-    <text x="495" y="158" text-anchor="middle" fill="#9a93b8" font-size="6">terminal</text>
+    <text x="495" y="148" text-anchor="middle" fill="#9a93b8" font-size="10">argparse</text>
+    <text x="495" y="158" text-anchor="middle" fill="#9a93b8" font-size="10">terminal</text>
     <!-- Automation -->
     <line x1="280" y1="170" x2="280" y2="205" stroke="#34d399" stroke-width="2"/>
     <rect x="210" y="205" width="140" height="40" rx="8" fill="rgba(240,98,146,0.08)" stroke="#f06292" stroke-width="2"/>
     <text x="280" y="222" text-anchor="middle" fill="#f06292" font-size="9" font-weight="bold">Automation</text>
-    <text x="280" y="235" text-anchor="middle" fill="#9a93b8" font-size="6">backup + report</text>
+    <text x="280" y="235" text-anchor="middle" fill="#9a93b8" font-size="10">backup + report</text>
     <!-- Bottom -->
     <rect x="10" y="260" width="540" height="20" rx="4" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
-    <text x="280" y="274" text-anchor="middle" fill="#34d399" font-size="7" font-weight="bold">One logic, many interfaces — এটাই real software architecture</text>
+    <text x="280" y="274" text-anchor="middle" fill="#34d399" font-size="10" font-weight="bold">One logic, many interfaces — এটাই real software architecture</text>
   </svg>
   <div class="diag-cap">এক ExpenseService — ৪ interface: API, Analytics, CLI, Automation। এক source of truth, অনেক ব্যবহার।</div>
 </div>
