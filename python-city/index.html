@@ -34,8 +34,8 @@
     <p><strong>এই বই আলাদা কেন?</strong> কারণ এটা Python শেখায় না। এটা <strong>সমস্যা সমাধান</strong> শেখায় — Python দিয়ে। প্রতিটা গিল্ডে একটা আসল সমস্যা আছে। তুমি ভাববে, হাত গুটোবে, ভুল করবে, তারপর Python-এর শক্তি দিয়ে সমাধান করবে। Syntax মুখস্থ নয় — প্যাটার্ন বুঝবে।</p>
     <p class="en"><strong>Why this book is different:</strong> It doesn't teach Python. It teaches <strong>problem-solving</strong> with Python. Each guild has a real problem. You think, struggle, fail, then solve it using Python's power. Not syntax memorization — pattern understanding.</p>
     <hr class="p-divider">
-    <p><strong>🐍 নগরীর মানচিত্র:</strong> ৪টি ধাপ, ২০টি গিল্ড। ধাপ ১ (গিল্ড ১-৫): ভিত্তি — variables, control flow, functions, data structures, strings। ধাপ ২ (গিল্ড ৬-১০): নির্মাণ — file I/O, error handling, modules, OOP, comprehensions। ধাপ ৩ (গিল্ড ১১-১৫): দক্ষতা — decorators, context managers, generators, functional, concurrency। ধাপ ৪ (গিল্ড ১৬-২০): বাস্তব জগৎ — data analysis, web scraping, APIs, automation, synthesis।</p>
-    <p class="en">4 phases, 20 guilds. Phase 1 (1-5): Foundation. Phase 2 (6-10): Building. Phase 3 (11-15): Mastery. Phase 4 (16-20): Real World — data analysis, scraping, APIs, automation, and how to build ANYTHING.</p>
+    <p><strong>🐍 নগরীর মানচিত্র:</strong> ৪টি ধাপ + ক্যাপস্টোন, ২২টি গিল্ড। ধাপ ১ (গিল্ড ১-৫): ভিত্তি — variables, control flow, functions, data structures, strings। ধাপ ২ (গিল্ড ৬-১০): নির্মাণ — file I/O, error handling, modules, OOP, comprehensions। ধাপ ৩ (গিল্ড ১১-১৫): দক্ষতা — decorators, context managers, generators, functional, concurrency। ধাপ ৪ (গিল্ড ১৬-২০): বাস্তব জগৎ — data analysis, web scraping, APIs, automation, synthesis। ক্যাপস্টোন (গিল্ড ২১-২২): সম্পূর্ণ প্রোজেক্ট — Expense Tracker (Core + Full App with API/Analytics/Automation/CLI)।</p>
+    <p class="en">4 phases + capstone, 22 guilds. Phase 1 (1-5): Foundation. Phase 2 (6-10): Building. Phase 3 (11-15): Mastery. Phase 4 (16-20): Real World. Capstone (21-22): Complete project — Expense Tracker with API, analytics, automation, and CLI.</p>
     <hr class="p-divider">
     <p><strong>🤖 AI যুগে কেন প্রোগ্রামিং?</strong> AI কোড লিখতে পারে। কিন্তু AI ভাবতে পারে না <em>কী</em> বানাতে হবে, <em>কেন</em> বানাতে হবে, <em>কীভাবে</em> সমস্যা ভাঙবে। প্রোগ্রামিং শেখো না কোড লেখার জন্য — শেখো <strong>চিন্তা করার</strong> জন্য। AI তোমার হাতিয়ার, তুমি কারিগর।</p>
     <div style="text-align:center;margin-top:1.6rem;font-family:'Amiri',serif;font-size:1.05rem;color:var(--amber-bright)">"কোড লেখা সহজ — সঠিক প্রশ্ন করা কঠিন।" — প্রোগ্রামিং প্রবাদ</div>
@@ -47,12 +47,12 @@
   <div id="hud">
     <div class="hud-rank"><span id="hud-rank-icon">🛖</span><span id="hud-rank-name">নতুন শিক্ষানবিশ</span></div>
     <div class="hud-level" id="hud-level">স্তর ১</div>
-    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 2000 XP</div></div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 2200 XP</div></div>
     <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
     <button class="hud-btn" onclick="openCheatModal()">📋</button>
     <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
   </div>
-  <div class="map-header"><h2>🐍 পাইথন নগরী</h2><p>The Python City · ২০টি গিল্ড</p></div>
+  <div class="map-header"><h2>🐍 পাইথন নগরী</h2><p>The Python City · ২২টি গিল্ড</p></div>
   <div class="doors-grid" id="doors-grid"></div>
 </div>
 
@@ -79,6 +79,7 @@
 <script src="doors-6-10.js"></script>
 <script src="doors-11-15.js"></script>
 <script src="doors-16-20.js"></script>
+<script src="doors-21-22.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 <script src="engine.js"></script>

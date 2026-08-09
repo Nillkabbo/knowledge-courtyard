@@ -4,7 +4,7 @@
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
 const SAVE_KEY = 'pythonCity_v1';
-const MAX_XP = 2000;
+const MAX_XP = 2200;
 const RANKS = [
   {min:0,    name:'নতুন শিক্ষানবিশ',     icon:'🛖'},
   {min:100,  name:'মাটি সঞ্চালক',         icon:'🏺'},
