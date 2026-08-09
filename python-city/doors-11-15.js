@@ -453,111 +453,333 @@ doors.push({
     aen:"with = guaranteed setup + teardown. __enter__ → code → __exit__, even on error. Safe resource management."
   },
   story:`
-<p class="scene-setting">দ্বাদশ গিল্ড। দরোয়ানের ফটক। শৃঙ্খলার গন্ধ, লোহার শব্দ, পাহারাদারের দৃষ্টি। দরোয়ান আদম ফটকে দাঁড়িয়ে — প্রতিটা প্রবেশকারীকে নিবন্ধন করেন, বের হওয়ার সময় নাম কাটেন। "একজনও ভেতরে থাকে না বন্ধ হওয়ার পর," তিনি বলেন। "with statement তেমনি — কোড ভেতরে ঢোকে, কাজ হয়, বের হয়। error হলেও সব বন্ধ হয়।"</p>
-<p class="scene-setting en">Twelfth guild. The Gatekeeper's gate. Smell of discipline, sound of iron, watchman's gaze. Gatekeeper Adam stands at the gate — each visitor registered on entry, name crossed on exit. "No one stays inside after closing," he says. "The with statement is the same — code enters, works, exits. Even on error, everything closes."</p>
+<p class="scene-setting">দ্বাদশ গিল্ড। দরোয়ানের ফটক। শৃঙ্খলার গন্ধ, লোহার শব্দ, পাহারাদারের দৃষ্টি। দরোয়ান আদম ফটকে দাঁড়িয়ে — প্রতিটা প্রবেশকারীকে নিবন্ধন করেন, বের হওয়ার সময় নাম কাটেন। "একজনও ভেতরে থাকে না বন্ধ হওয়ার পর," তিনি বলেন। "with statement তেমনি — কোড ভেতরে ঢোকে, কাজ হয়, বের হয়। error হলেও সব বন্ধ হয়। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Twelfth guild. The Gatekeeper's gate. Smell of discipline, sound of iron, watchman's gaze. Gatekeeper Adam stands at the gate — each visitor registered on entry, name crossed on exit. "No one stays inside after closing," he says. "The with statement is the same — code enters, works, exits. Even on error, everything closes. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তুমি একটা database connection খুললে। কাজ শেষ হলে বন্ধ করতে হবে। কিন্তু কোড error দিলে? connection খোলা থাকে — memory leak, lock। with statement দিলে: connection খোলো → কাজ → স্বয়ংক্রিয়ভাবে বন্ধ, error হলেও।</div>
-<div class="dialogue en">Problem: Open a database connection. Must close when done. But code errors? Connection stays open — memory leak, lock. with statement: open → work → auto-close, even on error.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তুমি একটা file খুললে। কাজ শেষে বন্ধ করতে হবে। কিন্তু ভুলে গেলে? বা error হলে? File খোলা থাকে — মেমরি নষ্ট। with statement দিলে: খোলো → কাজ → স্বয়ংক্রিয়ভাবে বন্ধ, error হলেও। এটাই context manager।</div>
+<div class="dialogue en">First question: you open a file. Must close when done. But what if you forget? Or an error happens? The file stays open — memory wasted. The with statement: open → work → auto-close, even on error. This is a context manager.</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> আদম বললেন — একটা production app-এ connection pool ১০০-এ সেট করা ছিল। কিন্তু কোড close() কল করতো না — error হলে। ৩ দিনে সব ১০০ connection খোলা হয়ে গেলো। App আটকে গেলো। with statement দিলে — প্রতিটা connection স্বয়ংক্রিয়ভাবে ফিরতো। context manager = নিরাপত্তা গ্যারান্টি।</div></div>
+<div class="code-block"># ── STEP 1: The problem — resources must be closed ──
+# Files, database connections, network sockets, locks —
+# all are RESOURCES that must be opened AND closed.
 
-<div class="code-block"># guild12_context.py — Gatekeeper
-# Gatekeeper Adam: "Enter, work, exit. Always exit."
+# ❌ BAD: Manual open/close — dangerous!
+f = open("data.txt", "w")
+f.write("Hello")
+# What if an error happens here? f never closes!
+f.close()  # MUST remember this!
 
-# ── THE PROBLEM: Manage resources safely ──
+# The problem: if write() raises an error, close() never runs.
+# The file stays "locked" — memory leak, corrupted data.
 
-# We already know: with open() for files
+# ✅ GOOD: with statement — auto-close GUARANTEED
 with open("data.txt", "w") as f:
     f.write("Hello")
-# f is closed here — GUARANTEED, even if write() fails
+# f is closed HERE — guaranteed, even if write() fails!
 
-# ── DATABASE CONNECTION with context manager ──
+# The 'with' statement guarantees:
+# 1. The file IS opened (setup)
+# 2. Your code runs (the block)
+# 3. The file IS closed (teardown) — ALWAYS, error or not</div>
+
+<div class="code-block"># ── STEP 2: How 'with' works internally ──
+# 'with' calls two special methods behind the scenes:
+
+# 1. __enter__() — called when entering the 'with' block (setup)
+# 2. __exit__() — called when leaving the 'with' block (teardown)
+
+# This code:
+with open("data.txt") as f:
+    content = f.read()
+
+# Is equivalent to this:
+f = open("data.txt")
+f.__enter__()           # setup (open the file)
+try:
+    content = f.read()  # your code
+finally:
+    f.__exit__(None, None, None)  # teardown (close the file)
+
+# The 'finally' ensures __exit__ ALWAYS runs — even on error.
+# That's the magic of 'with'.</div>
+
+<div class="code-block"># ── STEP 3: You've already used context managers ──
+# Many Python objects already support 'with':
+
+# Files (Door 6):
+with open("data.txt") as f:
+    content = f.read()
+
+# Database connections:
 import sqlite3
-
-# Built-in context managers (these already work)
 with sqlite3.connect("app.db") as conn:
     cursor = conn.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS users (name TEXT)")
     conn.commit()
-# Connection closed here — guaranteed
+# Connection automatically closed/committed
 
-# ── BUILDING YOUR OWN: class-based ──
+# Locks (for threading):
+import threading
+lock = threading.Lock()
+with lock:
+    # Only one thread can run this code at a time
+    shared_data.append(42)
+# Lock automatically released
+
+# The pattern is always the same:
+# with resource as variable:
+#     use resource
+# resource automatically cleaned up</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> আদম বললেন — একটা production app-এ connection pool ১০০-এ সেট করা ছিল। কিন্তু কোড close() কল করতো না — error হলে। ৩ দিনে সব ১০০ connection খোলা হয়ে গেলো। App আটকে গেলো। with statement দিলে — প্রতিটা connection স্বয়ংক্রিয়ভাবে ফিরতো। context manager = নিরাপত্তা গ্যারান্টি।</div></div>
+
+<div class="code-block"># ── STEP 4: Build your own — class-based context manager ──
+# Create a class with __enter__ and __exit__ methods.
+
 class Timer:
     """Context manager that measures execution time."""
 
     def __enter__(self):
+        """Setup — called when entering 'with' block."""
         import time
         self.start = time.time()
-        return self  # what 'as' receives
+        return self  # this is what 'as variable' receives
 
     def __exit__(self, exc_type, exc_value, traceback):
+        """Teardown — called when leaving 'with' block."""
         import time
         self.elapsed = time.time() - self.start
-        if exc_type:  # an error occurred
+        if exc_type:  # an error occurred (exc_type is not None)
             print(f"Timer: FAILED in {self.elapsed:.3f}s")
         else:
             print(f"Timer: completed in {self.elapsed:.3f}s")
         return False  # don't suppress the error
 
-# Usage:
+# Usage — just like 'with open()':
 with Timer() as t:
     total = sum(range(1000000))
 # Prints: Timer: completed in 0.045s
 
-# ── BUILDING YOUR OWN: contextlib (simpler) ──
+print(f"Elapsed: {t.elapsed:.3f}s")  # can access data after
+
+# The 'as t' receives whatever __enter__ returns.
+# __exit__ parameters:
+#   exc_type — the exception class (None if no error)
+#   exc_value — the exception instance (None if no error)
+#   traceback — the traceback object (None if no error)
+# Return False from __exit__ = don't suppress errors
+# Return True = suppress the error (dangerous!)</div>
+
+<div class="code-block"># ── STEP 5: Build your own — @contextmanager (simpler) ──
+# Writing a class with __enter__/__exit__ is verbose.
+# Python provides a simpler way: @contextmanager decorator.
+
 from contextlib import contextmanager
 import time
 
 @contextmanager
-def database_transaction(conn):
-    """Auto-commit or rollback a database transaction."""
-    try:
-        yield conn  # give the connection to the 'with' block
-        conn.commit()   # success → commit
-        print("Transaction committed")
-    except Exception:
-        conn.rollback()  # error → rollback
-        print("Transaction rolled back")
-        raise
+def timer(label="Code"):
+    """Measure time — simpler than a class."""
+    start = time.time()    # SETUP (before yield)
+    print(f"[{label}] starting...")
+    yield                   # your code runs here (the 'with' block)
+    elapsed = time.time() - start  # TEARDOWN (after yield)
+    print(f"[{label}] took {elapsed:.3f}s")
 
 # Usage:
+with timer("My calculation"):
+    total = sum(range(1000000))
+# [My calculation] starting...
+# [My calculation] took 0.045s
+
+# How it works:
+# 1. Code BEFORE yield = setup (__enter__)
+# 2. yield = your 'with' block runs
+# 3. Code AFTER yield = teardown (__exit__)
+# Much simpler than writing a full class!</div>
+
+<div class="code-block"># ── STEP 6: Database transaction context manager ──
+# A real-world use case: auto-commit or rollback.
+
+from contextlib import contextmanager
+
+@contextmanager
+def database_transaction(conn):
+    """Auto-commit on success, auto-rollback on error."""
+    try:
+        yield conn        # give connection to the 'with' block
+        conn.commit()     # success → commit all changes
+        print("Transaction committed")
+    except Exception:
+        conn.rollback()   # error → undo all changes
+        print("Transaction rolled back")
+        raise             # re-raise the error
+
+# Usage:
+import sqlite3
+conn = sqlite3.connect("app.db")
+
 with database_transaction(conn) as db:
     db.execute("INSERT INTO users VALUES ('Fatima')")
     db.execute("INSERT INTO users VALUES ('Ahmed')")
-# Both inserts committed together — or both rolled back
+# Both inserts committed together — atomic!
 
-# ── FILE LOCK: Prevent concurrent access ──
+# If an error happens between the two inserts:
+with database_transaction(conn) as db:
+    db.execute("INSERT INTO users VALUES ('Sara')")
+    raise ValueError("Something went wrong!")  # simulate error
+    db.execute("INSERT INTO users VALUES ('Bob')")  # never runs
+# Sara's insert is ROLLED BACK — database unchanged
+# This is called ATOMICITY — all or nothing.</div>
+
+<div class "code-block"># ── STEP 7: File lock context manager ──
+# Prevent two processes from accessing the same file at once.
+
+from contextlib import contextmanager
+import os
+import time
+
 @contextmanager
-def file_lock(lockfile):
-    """Prevent other processes from accessing simultaneously."""
-    import os
+def file_lock(lockfile="/tmp/app.lock"):
+    """Ensure only one process runs at a time."""
+    # Wait until the lock is free:
     while os.path.exists(lockfile):
-        time.sleep(0.1)  # wait for lock
+        print("Waiting for lock...")
+        time.sleep(0.1)
+
+    # Acquire lock:
     open(lockfile, "w").write("locked")
+    print("Lock acquired")
 
     try:
-        yield
+        yield  # your code runs here
     finally:
-        os.remove(lockfile)  # release lock
+        # Release lock — ALWAYS, even on error:
+        os.remove(lockfile)
+        print("Lock released")
 
 # Usage:
-with file_lock("/tmp/process.lock"):
-    # Only one process runs this at a time
-    process_data()
+with file_lock():
+    # Only ONE process can run this at a time
+    print("Processing critical section...")
+    time.sleep(2)
+# Lock released — other processes can proceed
 
-# ── NESTED CONTEXT MANAGERS ──
+# Note: finally ensures the lock is ALWAYS released,
+# even if your code crashes.</div>
+
+<div class="code-block"># ── STEP 8: Error handling in context managers ──
+# __exit__ can optionally SUPPRESS errors (return True).
+# Use this carefully!
+
+from contextlib import contextmanager
+
+@contextmanager
+def suppress_errors(*exceptions):
+    """Silently ignore specified exceptions."""
+    try:
+        yield
+    except exceptions as e:
+        print(f"Suppressed: {e}")
+        # no raise — error is swallowed
+
+# Usage:
+with suppress_errors(FileNotFoundError):
+    with open("nonexistent.txt") as f:
+        content = f.read()
+# Prints: Suppressed: [Errno 2] No such file or directory...
+# Program continues — error was suppressed
+
+# Python has a built-in for this:
+from contextlib import suppress
+
+with suppress(FileNotFoundError):
+    open("nonexistent.txt")
+# Silently ignored — no error raised
+
+# ⚠️ Be careful: suppressing errors can hide bugs!
+# Only suppress errors you EXPECT and can handle.</div>
+
+<div class="code-block"># ── STEP 9: Nested and multiple context managers ──
+# You can use multiple resources in one 'with' statement.
+
+# Multiple files:
 with open("input.txt") as infile, open("output.txt", "w") as outfile:
     for line in infile:
         outfile.write(line.upper())
 # Both files closed — guaranteed
 
-# ── REAL-WORLD USE CASES ──
+# For more than 2, use parentheses for readability:
+with (
+    open("data1.txt") as f1,
+    open("data2.txt") as f2,
+    open("output.txt", "w") as out,
+):
+    out.write(f1.read() + f2.read())
+
+# Nested with blocks:
+with open("config.json") as config_file:
+    config = json.load(config_file)
+    with open("data.csv") as data_file:
+        for line in data_file:
+            process(line, config)
+# Both files properly closed
+
+# Class-based with try/finally (for comparison):
+class SafeFile:
+    def __init__(self, filename, mode="r"):
+        self.filename = filename
+        self.mode = mode
+
+    def __enter__(self):
+        self.file = open(self.filename, self.mode)
+        return self.file
+
+    def __exit__(self, *args):
+        self.file.close()
+        return False</div>
+
+<div class="code-block"># ── STEP 10: Real-world context managers ──
+# You'll see context managers everywhere in Python.
+
+# contextlib utilities:
+from contextlib import suppress, redirect_stdout, closing
+
+# 1. suppress — ignore specific exceptions:
+with suppress(FileNotFoundError):
+    os.remove("temp.txt")  # no error if file doesn't exist
+
+# 2. redirect_stdout — capture print output:
+import io
+buffer = io.StringIO()
+with redirect_stdout(buffer):
+    print("This goes to buffer, not screen")
+captured = buffer.getvalue()  # "This goes to buffer, not screen\n"
+
+# 3. closing — auto-close things with .close() method:
+with closing(open("data.txt")) as f:
+    data = f.read()
+
+# Common patterns you'll see:
 # with open(path) as f:           → file auto-close
-# with conn:                       → DB transaction
-# with lock:                       → thread safety
-# with mock.patch(...):            → testing (unittest.mock)
-# with cd(path):                   → change directory temporarily
-# with suppress(Exception):        → silently ignore specific errors</div>
+# with conn:                       → DB transaction (commit/rollback)
+# with lock:                       → thread-safe section
+# with suppress(Exc):              → ignore expected errors
+# with mock.patch(...):            → testing (replace functions)
+# with Timer():                    → measure performance
+# with cd(path):                   → temporarily change directory
+
+# SUMMARY:
+# ┌──────────────────────┬────────────────────────────────┐
+# │ Pattern              │ When to use                    │
+# ├──────────────────────┼────────────────────────────────┤
+# │ with open()          │ always — for files             │
+# │ with conn:           │ database transactions          │
+# │ with lock:           │ thread safety                  │
+# │ @contextmanager      │ build your own (simple)        │
+# │ __enter__/__exit__   │ build your own (class)         │
+# │ suppress(E)          │ ignore expected errors         │
+# └──────────────────────┴────────────────────────────────┘</div>
 
 <div class="diagram">
   <div class="diag-title">Context Manager — Setup → Code → Teardown (guaranteed)</div>
