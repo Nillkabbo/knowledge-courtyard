@@ -1696,132 +1696,366 @@ doors.push({
     aen:"threading = I/O bound (GIL releases on network/file). asyncio = single-thread async I/O. multiprocessing = CPU bound (separate processes, no GIL)."
   },
   story:`
-<p class="scene-setting">পঞ্চদশ গিল্ড। কাফেলার পথ। উটের শব্দ, ধুলোর কুয়াশা, বাণিজ্যের গন্ধ। কাফেলা নেতা হাসান দশটা উটের দিকে তাকালেন — প্রতিটা আলাদা শহরে যাচ্ছে। "একটা একটা করে পাঠালে ১০ সপ্তাহ," তিনি বলেন। "একসাথে পাঠালে — ১ সপ্তাহ। এটাই concurrency — একসাথে একাধিক কাজ। Python-এ threading, asyncio, multiprocessing — তিন রাস্তা।"</p>
-<p class="scene-setting en">Fifteenth guild. The Caravan Route. Sound of camels, dust haze, smell of trade. Caravan leader Hasan looks at ten camels — each heading to a different city. "Send one at a time — 10 weeks," he says. "Send together — 1 week. This is concurrency — multiple tasks at once. In Python: threading, asyncio, multiprocessing — three roads."</p>
+<p class="scene-setting">পঞ্চদশ গিল্ড। কাফেলার পথ। উটের শব্দ, ধুলোর কুয়াশা, বাণিজ্যের গন্ধ। কাফেলা নেতা হাসান দশটা উটের দিকে তাকালেন — প্রতিটা আলাদা শহরে যাচ্ছে। "একটা একটা করে পাঠালে ১০ সপ্তাহ," তিনি বলেন। "একসাথে পাঠালে — ১ সপ্তাহ। এটাই concurrency — একসাথে একাধিক কাজ। Python-ে threading, asyncio, multiprocessing — তিন রাস্তা। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Fifteenth guild. The Caravan Route. Sound of camels, dust haze, smell of trade. Caravan leader Hasan looks at ten camels — each heading to a different city. "Send one at a time — 10 weeks," he says. "Send together — 1 week. This is concurrency — multiple tasks at once. In Python: threading, asyncio, multiprocessing — three roads. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তুমি ১০০টা ওয়েবসাইট থেকে ডেটা download করছো। একটা একটা করে (sequential) — ১০০ সেকেন্ড (প্রতিটা ১ সেকেন্ড)। একসাথে ১০টা করে (concurrent) — ১০ সেকেন্ড। কিন্তু কোন পদ্ধতি? I/O (download) = threading/asyncio। CPU (math) = multiprocessing।</div>
-<div class="dialogue en">Problem: Download data from 100 websites. Sequential — 100 seconds. Concurrent — 10 seconds. But which method? I/O (download) = threading/asyncio. CPU (math) = multiprocessing.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তুমি ১০০টা ওয়েবসাইট থেকে ডেটা নামাচ্ছ। একটা একটা করে — ১০০ সেকেন্ড। একসাথে ১০টা — ১০ সেকেন্ড। কিন্তু কীভাবে? এটাই concurrency। Python-এ ৩টা উপায় — কখন কোনটা ব্যবহার করবে, চলো শিখি।</div>
+<div class="dialogue en">First question: you're downloading data from 100 websites. One at a time — 100 seconds. Ten at once — 10 seconds. But how? This is concurrency. Python has 3 ways — when to use which, let's learn.</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> হাসান বললেন — একটা টিম CPU-heavy কাজে threading ব্যবহার করলো। কিন্তু Python GIL (Global Interpreter Lock) — এক সময়ে এক thread-ই CPU ব্যবহার করে। threading দিয়ে CPU math = কোনো লাভ নেই, উল্টে overhead। CPU-heavy = multiprocessing (আলাদা process, GIL bypass)। ভুল পদ্ধতি = ধীর ও বিপজ্জনক।</div></div>
-
-<div class="code-block"># guild15_concurrency.py — Caravan Route
-# Caravan Leader Hasan: "Send all at once. Wait together."
+<div class="code-block"># ── STEP 1: What is concurrency? ──
+# Normally, Python runs ONE thing at a time (sequential).
 
 import time
+
+def download(url):
+    """Simulate downloading (takes 1 second)."""
+    time.sleep(1)
+    return f"Data from {url}"
+
+# Sequential — one at a time:
+start = time.time()
+results = []
+for url in ["url1", "url2", "url3"]:
+    results.append(download(url))
+elapsed = time.time() - start
+print(f"Sequential: {elapsed:.1f}s")  # ~3.0s (1+1+1)
+
+# Problem: while download() "sleeps" (waiting for network),
+# the CPU does NOTHING. Wasted time!
+# Solution: while one task waits, start another. = CONCURRENCY.
+
+# Concurrency means: making progress on multiple tasks at once.
+# Not the same as parallelism (doing things simultaneously).
+# It's about NOT WAITING when you could be doing something else.</div>
+
+<div class="code-block"># ── STEP 2: Three types of concurrency ──
+# Python offers 3 tools. Each is best for different tasks.
+
+# 1. THREADING — multiple threads share one process
+#    Best for: I/O tasks (network, files, database)
+#    Why: GIL releases during I/O wait, so threads truly run together
+
+# 2. ASYNCIO — single-thread, event-loop based
+#    Best for: thousands of I/O tasks (web scraping, APIs)
+#    Why: most efficient — no thread overhead, cooperative multitasking
+
+# 3. MULTIPROCESSING — separate Python processes
+#    Best for: CPU-heavy tasks (math, image processing)
+#    Why: each process has its own GIL, so they run truly in parallel
+
+# KEY CONCEPT — the GIL (Global Interpreter Lock):
+# Python has a lock that allows only ONE thread to execute Python code
+# at a time. This means threading does NOT help with CPU tasks.
+# But the GIL is RELEASED during I/O (network, file) — so threading
+# DOES help with I/O tasks.
+# Multiprocessing creates separate processes, each with its own GIL,
+# so they bypass this limitation entirely.
+
+# ┌──────────────────┬────────────────┬─────────────────────┐
+# │ Task type        │ Example        │ Best method          │
+# ├──────────────────┼────────────────┼─────────────────────┤
+# │ Network I/O      │ download 100   │ asyncio or threading │
+# │ File I/O         │ read 50 files  │ threading            │
+# │ Database I/O     │ 100 queries    │ threading            │
+# │ CPU math         │ heavy compute  │ multiprocessing      │
+# │ Mixed            │ API + process  │ asyncio + ProcessPool│
+# └──────────────────┴────────────────┴─────────────────────┘</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> হাসান বললেন — একটা টিম CPU-heavy কাজে threading ব্যবহার করলো। কিন্তু Python GIL — এক সময়ে এক thread-ই CPU ব্যবহার করে। threading দিয়ে CPU math = কোনো লাভ নেই, উল্টে overhead। CPU-heavy = multiprocessing (আলাদা process, GIL bypass)। ভুল পদ্ধতি = ধীর ও বিপজ্জনক।</div></div>
+
+<div class="code-block"># ── STEP 3: Threading — the easy way (ThreadPoolExecutor) ──
+# Best for I/O tasks: network, files, database.
+
+import time
+from concurrent.futures import ThreadPoolExecutor
+
+def download(url):
+    """Simulate downloading (1 second)."""
+    time.sleep(1)  # simulate network delay
+    return f"Data from {url}"
+
+urls = [f"url{i}" for i in range(10)]
+
+# Sequential — 10 seconds:
+start = time.time()
+results = []
+for url in urls:
+    results.append(download(url))
+print(f"Sequential: {time.time() - start:.1f}s")  # ~10s
+
+# Threaded — ~1 second (10 at once):
+start = time.time()
+with ThreadPoolExecutor(max_workers=10) as executor:
+    results = list(executor.map(download, urls))
+print(f"Threaded: {time.time() - start:.1f}s")  # ~1s (10x faster!)
+
+# How it works:
+# 1. ThreadPoolExecutor creates 10 threads
+# 2. Each thread runs download() on a different URL
+# 3. While one thread waits (sleep), another runs
+# 4. All 10 finish in ~1 second instead of ~10
+
+# executor.map(download, urls) runs download() on each URL
+# and returns results in the same order.</div>
+
+<div class="code-block"># ── STEP 4: Manual threading (when you need control) ──
+# ThreadPoolExecutor is easiest, but sometimes you need fine control.
+
 import threading
-import asyncio
-from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 
-# ── THE PROBLEM: Download 100 URLs ──
-import requests
-
-urls = [f"https://api.example.com/page{i}" for i in range(100)]
-
-# ── ❌ SEQUENTIAL: One at a time — 100s ──
-def fetch_sequential(urls):
-    results = []
-    for url in urls:
-        resp = requests.get(url)
-        results.append(resp.json())
-    return results
-# Time: 100 * 1s = 100 seconds
-
-# ══════════════════════════════════════
-# THREADING: I/O bound (network, file)
-# GIL releases during I/O — real concurrency
-# ══════════════════════════════════════
-def fetch_one(url):
-    return requests.get(url).json()
-
-def fetch_threaded(urls, max_workers=10):
-    """10 threads — 10 downloads at once."""
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        results = list(executor.map(fetch_one, urls))
-    return results
-# Time: 100 / 10 = ~10 seconds (10x faster!)
-
-# ── Manual threading (when you need control) ──
-import threading
-
+# Shared data — threads need protection:
 results = {}
-lock = threading.Lock()  # protect shared state
+lock = threading.Lock()  # prevents race conditions
 
 def worker(url):
-    data = requests.get(url).json()
-    with lock:  # thread-safe access
+    """Each thread downloads and stores result."""
+    data = download(url)  # download (thread-safe)
+    with lock:            # protect shared dict
         results[url] = data
 
-threads = [threading.Thread(target=worker, args=(url,)) for url in urls]
-for t in threads:
+# Create and start threads:
+urls = [f"url{i}" for i in range(5)]
+threads = []
+for url in urls:
+    t = threading.Thread(target=worker, args=(url,))
+    threads.append(t)
     t.start()
+
+# Wait for ALL threads to finish:
 for t in threads:
-    t.join()  # wait for all
+    t.join()  # blocks until this thread is done
 
-# ══════════════════════════════════════
-# ASYNCIO: Single-thread async I/O
-# Most efficient for thousands of I/O tasks
-# ══════════════════════════════════════
-import aiohttp
+print(f"Downloaded {len(results)} URLs")
 
-async def fetch_async(session, url):
-    async with session.get(url) as resp:
-        return await resp.json()
+# The Lock is CRITICAL:
+# Without lock, two threads might write to 'results' at the same
+# time → corrupted data. Lock ensures only one writes at a time.
 
-async def fetch_all_async(urls):
-    """Single thread, thousands of concurrent requests."""
-    async with aiohttp.ClientSession() as session:
-        tasks = [fetch_async(session, url) for url in urls]
-        return await asyncio.gather(*tasks)
+# Why use manual threading instead of ThreadPoolExecutor?
+# - Need to pass different arguments to each thread
+# - Need to control thread lifecycle
+# - Need thread-local data
+# Otherwise, ThreadPoolExecutor is simpler and preferred.</div>
 
-# Run the async event loop
-# results = asyncio.run(fetch_all_async(urls))
-# Time: ~2 seconds for 100 URLs (most efficient!)
+<div class="code-block"># ── STEP 5: asyncio — async/await ──
+# asyncio is the most efficient way to handle thousands of I/O tasks.
+# It uses a SINGLE thread with an event loop.
 
-# ── async/await syntax ──
-async def greet_after(delay, name):
-    await asyncio.sleep(delay)  # non-blocking!
-    return f"Hello {name}"
+import asyncio
+import time
+
+# async def defines a coroutine:
+async def fetch_data(url):
+    """Simulate async download."""
+    await asyncio.sleep(1)  # NON-blocking sleep
+    return f"Data from {url}"
+
+# async def main():
+async def main():
+    start = time.time()
+
+    # Run all fetches CONCURRENTLY (not sequentially!):
+    results = await asyncio.gather(
+        fetch_data("url1"),
+        fetch_data("url2"),
+        fetch_data("url3"),
+    )
+
+    print(f"Results: {results}")
+    print(f"Time: {time.time() - start:.1f}s")  # ~1s, not ~3s!
+
+# Run the async event loop:
+asyncio.run(main())
+
+# KEY: await asyncio.sleep(1) does NOT block the thread.
+# While one fetch "sleeps", another runs. All finish in ~1 second.
+# This is COOPERATIVE multitasking — coroutines yield control with await.</div>
+
+<div class="code-block"># ── STEP 6: asyncio with many tasks ──
+# asyncio shines with hundreds/thousands of tasks.
+
+import asyncio
+
+async def fetch(url):
+    await asyncio.sleep(1)
+    return f"Data from {url}"
+
+async def fetch_all(urls):
+    """Fetch ALL URLs concurrently."""
+    # Create tasks for each URL:
+    tasks = [fetch(url) for url in urls]
+    # Run all at once:
+    return await asyncio.gather(*tasks)
 
 async def main():
-    # These run concurrently — not sequential
-    results = await asyncio.gather(
-        greet_after(1, "Fatima"),
-        greet_after(1, "Ahmed"),
-        greet_after(1, "Sara"),
-    )
-    print(results)  # all at ~1s, not ~3s
+    urls = [f"url{i}" for i in range(100)]
+
+    start = time.time()
+    results = await fetch_all(urls)
+    elapsed = time.time() - start
+
+    print(f"Fetched {len(results)} URLs in {elapsed:.1f}s")
+    # ~1 second! Not 100 seconds.
 
 asyncio.run(main())
 
-# ══════════════════════════════════════
-# MULTIPROCESSING: CPU bound (heavy math)
-# Separate processes — bypasses GIL
-# ══════════════════════════════════════
+# asyncio.gather(*tasks) runs all coroutines concurrently.
+# The * unpacks the list: gather(task1, task2, task3, ...)
+
+# When is asyncio better than threading?
+# - Thousands of I/O tasks (threading has overhead per thread)
+# - Web scraping hundreds of pages
+# - Real-time applications (chat servers, websockets)
+# - When you need maximum efficiency</div>
+
+<div class="code-block"># ── STEP 7: async/await in depth ──
+# async/await is Python's modern concurrency syntax.
+
+import asyncio
+
+# 1. async def creates a COROUTINE (not a regular function):
+async def greet(name):
+    await asyncio.sleep(1)  # simulate async work
+    return f"Hello, {name}!"
+
+# 2. await PAUSES the coroutine until the awaited task finishes:
+async def main():
+    # These run SEQUENTIALLY (await blocks):
+    r1 = await greet("Fatima")  # waits 1s
+    r2 = await greet("Ahmed")   # waits 1s more
+    print(r1, r2)  # total: ~2s
+
+    # These run CONCURRENTLY (gather doesn't block):
+    r3, r4 = await asyncio.gather(
+        greet("Sara"),    # all at once
+        greet("Bob"),
+    )
+    print(r3, r4)  # total: ~1s
+
+asyncio.run(main())
+
+# RULES:
+# - async def functions must be awaited (or run with asyncio.run)
+# - You can only use 'await' inside 'async def'
+# - Regular functions can't use await
+# - asyncio.run(main()) starts the event loop
+
+# Common async patterns:
+# await asyncio.sleep(1)           → non-blocking delay
+# await asyncio.gather(*tasks)     → run many concurrently
+# await asyncio.wait_for(coro, 5)  → with timeout
+# async with session.get(url)      → async context manager</div>
+
+<div class="code-block"># ── STEP 8: Multiprocessing — CPU-heavy tasks ──
+# For CPU-bound work (math, image processing), use multiprocessing.
+# Each process has its own GIL → true parallelism.
+
+import time
 from multiprocessing import Pool
 
 def heavy_computation(n):
-    """CPU-intensive: sum of squares."""
+    """CPU-intensive: sum of squares up to n."""
     return sum(i ** 2 for i in range(n))
 
-def parallel_compute(numbers, processes=4):
-    """4 processes — real parallel CPU work."""
-    with Pool(processes) as pool:
-        results = pool.map(heavy_computation, numbers)
+# Sequential — one process:
+start = time.time()
+results_seq = [heavy_computation(10**7) for _ in range(4)]
+print(f"Sequential: {time.time() - start:.1f}s")  # ~8s (4 * 2s)
+
+# Parallel — 4 processes:
+start = time.time()
+with Pool(4) as pool:  # 4 separate processes
+    results_par = pool.map(heavy_computation, [10**7] * 4)
+print(f"Parallel: {time.time() - start:.1f}s")  # ~2s (4x faster!)
+
+# How multiprocessing works:
+# 1. Pool(4) creates 4 separate Python processes
+# 2. Each process has its OWN memory and GIL
+# 3. Work is distributed across 4 CPU cores
+# 4. Results are collected back
+
+# When to use multiprocessing:
+# - Math computation (matrix multiplication)
+# - Image/video processing
+# - Machine learning preprocessing
+# - Cryptography / hashing
+# Any task where the CPU is the bottleneck, not I/O.</div>
+
+<div class="code-block"># ── STEP 9: Real-world example — concurrent web scraper ──
+# A practical example combining what we learned.
+
+from concurrent.futures import ThreadPoolExecutor
+import time
+
+def scrape_page(url):
+    """Scrape a single page (simulated)."""
+    time.sleep(0.5)  # simulate network delay
+    return {"url": url, "title": f"Page at {url}", "words": 500}
+
+def scrape_all(urls, max_workers=10):
+    """Scrape all URLs concurrently."""
+    start = time.time()
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        results = list(executor.map(scrape_page, urls))
+
+    elapsed = time.time() - start
+    print(f"Scraped {len(results)} pages in {elapsed:.1f}s")
     return results
 
-numbers = [10**7, 10**7, 10**7, 10**7]
-# Sequential: ~8 seconds (4 * 2s)
-# Parallel: ~2 seconds (4 processes, 4 cores)
+# Scrape 50 pages:
+urls = [f"https://example.com/page{i}" for i in range(50)]
+data = scrape_all(urls)
+# With 10 workers: ~2.5s instead of ~25s
 
-# ── DECISION GUIDE ──
-# ┌─────────────────┬──────────────────┐
-# │ Task type       │ Best method       │
-# ├─────────────────┼──────────────────┤
-# │ Network / file  │ asyncio (best)    │
-# │ I/O             │ threading (ok)    │
-# │ CPU math        │ multiprocessing   │
-# │ Mixed           │ asyncio + ProcessPool │
-# └─────────────────┴──────────────────┘</div>
+# Process results:
+total_words = sum(page["words"] for page in data)
+print(f"Total words scraped: {total_words:,}")
+
+# Why ThreadPoolExecutor here (not asyncio or multiprocessing)?
+# - I/O task (network) → threading is great
+# - Simpler than asyncio (no async/await needed)
+# - Not CPU-heavy → multiprocessing is overkill</div>
+
+<div class="code-block"># ── STEP 10: Decision guide — which to use? ──
+# Choose the right tool based on your task type.
+
+# ┌────────────────────┬───────────────────────────────────┐
+# │ Task               │ Best method                       │
+# ├────────────────────┼───────────────────────────────────┤
+# │ Download 100 URLs  │ asyncio (best) or threading (ok)  │
+# │ Read 50 files      │ threading                         │
+# │ Database queries   │ threading                         │
+# │ Heavy math/CPU     │ multiprocessing                   │
+# │ Image processing   │ multiprocessing                   │
+# │ Web server         │ asyncio (FastAPI, aiohttp)        │
+# │ Background tasks   │ threading or Celery               │
+# └────────────────────┴───────────────────────────────────┘
+
+# QUICK RULES:
+# 1. Waiting for NETWORK or FILES? → threading or asyncio
+# 2. Heavy CPU computation? → multiprocessing
+# 3. Thousands of I/O tasks? → asyncio (most efficient)
+# 4. Simple I/O parallelism? → ThreadPoolExecutor (easiest)
+# 5. Mixed I/O + CPU? → asyncio + ProcessPoolExecutor
+
+# START SIMPLE:
+# - Use ThreadPoolExecutor for I/O (easiest, big speedup)
+# - Use multiprocessing.Pool for CPU tasks
+# - Learn asyncio last (most powerful but most complex)
+
+# COMMON PITFALLS:
+# - Threading for CPU work → no speedup (GIL blocks)
+# - Forgetting Lock with shared data → race conditions
+# - Calling asyncio.run() multiple times → errors
+# - Too many processes → overhead > benefit (don't use more than CPU cores)
+
+# THE GIL REMINDER:
+# GIL = Global Interpreter Lock
+# Only ONE thread can run Python code at a time.
+# BUT: GIL releases during I/O (network, file, sleep).
+# So threading helps for I/O, NOT for CPU.
+# Multiprocessing bypasses GIL entirely (separate processes).</div>
 
 <div class="diagram">
   <div class="diag-title">Concurrency — তিন রাস্তা: threading · asyncio · multiprocessing</div>
