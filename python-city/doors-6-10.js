@@ -384,72 +384,222 @@ doors.push({
     aen:"try = risky code. except = catch and handle. finally = always runs (cleanup). Bare except = swallows everything — debug impossible."
   },
   story:`
-<p class="scene-setting">সপ্তম গিল্ড। চিকিৎসকের ক্লিনিক। ভেষজের গন্ধ, পরিষ্কার বিছানা, নীরবতা। চিকিৎসক লায়লা একজন রোগী দেখছেন। "প্রথমে রোগ চিনো," তিনি বলেন। "তারপর ওষুধ দাও। কিন্তু যদি রোগ না চিনো — সব রোগে একই ওষুধ? রোগী মারা যাবে। except-ও তেমনি — নির্দিষ্ট error ধরো, bare except নয়।"</p>
-<p class="scene-setting en">Seventh guild. The Healer's clinic. Smell of herbs, clean sheets, silence. Doctor Layla examines a patient. "First identify the disease," she says. "Then give medicine. But if you can't identify — same medicine for everything? The patient dies. Except is the same — catch specific errors, not bare except."</p>
+<p class="scene-setting">সপ্তম গিল্ড। চিকিৎসকের ক্লিনিক। ভেষজের গন্ধ, পরিষ্কার বিছানা, নীরবতা। চিকিৎসক লায়লা একজন রোগী দেখছেন। "প্রথমে রোগ চিনো," তিনি বলেন। "তারপর ওষুধ দাও। কিন্তু যদি রোগ না চিনো — সব রোগে একই ওষুধ? রোগী মারা যাবে। except-ও তেমনি — নির্দিষ্ট error ধরো, bare except নয়। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Seventh guild. The Healer's clinic. Smell of herbs, clean sheets, silence. Doctor Layla examines a patient. "First identify the disease," she says. "Then give medicine. But if you can't identify — same medicine for everything? The patient dies. Except is the same — catch specific errors, not bare except. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তুমি একটা API থেকে ডেটা আনছো। কিন্তু — network down, JSON ভুল, server 500, timeout। প্রতিটা error-এ আলাদা মোকাবিলা দরকার। bare except দিলে সব গিলে যাবে — কোনটা ঘটেছে বোঝা যাবে না। নির্দিষ্ট except দিলে — প্রতিটা error-এ সঠিক প্রতিক্রিয়া।</div>
-<div class="dialogue en">Problem: Fetching data from an API. But — network down, JSON invalid, server 500, timeout. Each error needs different handling. Bare except swallows all — you can't tell what happened. Specific except — correct response per error.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তোমার প্রোগ্রাম crash হলে কী হয়? পুরো প্রোগ্রাম থেমে যায়। ব্যবহারকারী error দেখে। কিন্তু এটা এড়ানো যায় — try/except দিয়ে। ভুল ধরো, মোকাবিলা করো, চালিয়ে যাও।</div>
+<div class="dialogue en">First question: when your program crashes, what happens? The whole program stops. The user sees an error. But this can be avoided — with try/except. Catch the error, handle it, continue.</div>
+
+<div class="code-block"># ── STEP 1: Without error handling — programs CRASH ──
+# What happens when something goes wrong?
+
+# Division by zero:
+result = 10 / 0
+# Traceback (most recent call last):
+#   File "<stdin>", line 1, in <module>
+# ZeroDivisionError: division by zero
+# Program STOPS. User sees ugly error. Bad experience.
+
+# Reading a file that doesn't exist:
+# with open("missing.txt") as f:
+#     print(f.read())
+# FileNotFoundError: [Errno 2] No such file or directory
+# Program STOPS again.
+
+# Converting invalid input:
+number = int("hello")
+# ValueError: invalid literal for int() with base 10: 'hello'
+# Program STOPS.
+
+# The solution: try/except — catch errors BEFORE they crash.</div>
+
+<div class="code-block"># ── STEP 2: try/except — the basics ──
+# try: = "try to do this"
+# except: = "if it fails, do this instead"
+
+# WITHOUT try/except (program crashes):
+# result = 10 / 0   # CRASH!
+
+# WITH try/except (program survives):
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("You can't divide by zero!")
+    result = None
+
+print(f"Result: {result}")  # Result: None (program continues!)
+
+# How it works:
+# 1. Python tries the code in 'try:'
+# 2. If an error occurs, Python checks 'except:'
+# 3. If the error type matches, the except block runs
+# 4. Program continues normally after the try/except
+
+# Another example:
+try:
+    number = int("hello")
+except ValueError:
+    print("That's not a valid number!")
+    number = 0
+
+print(f"Number: {number}")  # Number: 0</div>
+
+<div class="code-block"># ── STEP 3: Common error types ──
+# Python has many built-in error types. Know the common ones.
+
+# ValueError — wrong VALUE type:
+int("abc")      # ValueError (can't convert)
+int("42")       # OK (valid)
+
+# ZeroDivisionError — dividing by zero:
+10 / 0          # ZeroDivisionError
+
+# TypeError — wrong TYPE of operation:
+"hello" + 5     # TypeError (can't add str + int)
+
+# IndexError — list index out of range:
+[1, 2, 3][10]   # IndexError (only 3 items, index 10 doesn't exist)
+
+# KeyError — dict key doesn't exist:
+{"a": 1}["b"]   # KeyError ("b" not in dict)
+
+# FileNotFoundError — file doesn't exist:
+open("missing.txt")  # FileNotFoundError
+
+# AttributeError — method doesn't exist:
+"hello".fake_method()  # AttributeError
+
+# Each error type tells you WHAT went wrong.
+# Catch the SPECIFIC type, not all errors!</div>
+
+<div class="code-block"># ── STEP 4: Catching the error message ──
+# Use 'as e' to get the error object with details.
+
+try:
+    number = int("hello")
+except ValueError as e:
+    print(f"Error type: {type(e).__name__}")  # ValueError
+    print(f"Error message: {e}")               # invalid literal...
+    print(f"Handling: setting to default")
+    number = 0
+
+# This is very useful for logging:
+try:
+    with open("data.txt") as f:
+        content = f.read()
+except FileNotFoundError as e:
+    print(f"[ERROR] Could not open file: {e}")
+    content = ""  # fallback to empty
+
+# Catching MULTIPLE error types:
+try:
+    value = int(input("Enter a number: "))
+    result = 10 / value
+except ValueError:
+    print("Please enter a valid number!")
+except ZeroDivisionError:
+    print("Can't divide by zero!")</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> লায়লা বললেন — একটা production system-ে bare except ছিল। ৩ দিন ধরে database connection fail করছিল, কিন্তু except সেটা গিলে ফেললো। কেউ জানতো না। ৩ দিনের ডেটা হারালো। নির্দিষ্ট except ConnectionError দিলে — সঙ্গে alert আসতো। bare except = নীরব মৃত্যু।</div></div>
 
-<div class="code-block"># guild7_errors.py — Healer's Clinic
-# Doctor Layla: "Identify the disease. Then prescribe."
+<div class="code-block"># ── STEP 5: bare except vs specific except ──
+# ❌ BAD: bare except catches EVERYTHING (even KeyboardInterrupt!)
 
-# ── THE PROBLEM: Handle API errors gracefully ──
-import json
+try:
+    risky_operation()
+except:
+    print("Something went wrong.")  # What went wrong? Nobody knows!
+    # This also catches Ctrl+C (KeyboardInterrupt) — you can't
+    # even stop your program with Ctrl+C!
 
-# ❌ BAD: Bare except — swallows ALL errors
-def fetch_data_bad(url):
-    try:
-        response = make_request(url)
-        return json.loads(response)
-    except:
-        return None  # What error? Network? JSON? Permission? Nobody knows.
+# ✅ GOOD: catch SPECIFIC errors
+try:
+    risky_operation()
+except ValueError as e:
+    print(f"Value error: {e}")      # handle value issues
+except FileNotFoundError as e:
+    print(f"File missing: {e}")     # handle missing files
+except Exception as e:
+    # Catch-all for UNEXPECTED errors — but LOG it!
+    print(f"Unexpected error: {type(e).__name__}: {e}")
+    raise  # re-raise — don't swallow silently!
 
-# ✅ GOOD: Specific exceptions — each disease, each cure
-def fetch_data_good(url):
-    try:
-        response = make_request(url)
-        data = json.loads(response)
-        return data
+# Rule: catch what you CAN handle. Let the rest propagate.</div>
 
-    except json.JSONDecodeError as e:
-        # JSON was invalid — log and re-raise
-        print(f"Bad JSON from {url}: {e}")
-        raise ValueError(f"Invalid JSON: {e}")
+<div class="code-block"># ── STEP 6: else and finally ──
+# else: runs ONLY if NO error occurred (success path)
+# finally: runs ALWAYS — error or no error (cleanup)
 
-    except ConnectionError:
-        # Network down — retry with backoff
-        print("Network error — retrying...")
-        return retry_request(url, max_attempts=3)
+try:
+    number = int("42")  # this will succeed
+except ValueError:
+    print("Invalid number!")
+else:
+    # Only runs if try succeeded (no error)
+    print(f"Success! Number is {number}")
+finally:
+    # ALWAYS runs — error or success
+    print("Cleanup complete.")
 
-    except TimeoutError:
-        # Server too slow — use cached data
-        print("Timeout — using cache")
-        return load_from_cache(url)
+# Output:
+# Success! Number is 42
+# Cleanup complete.
 
-    except Exception as e:
-        # Unknown error — DON'T swallow, log and raise
-        print(f"Unexpected error: {type(e).__name__}: {e}")
-        raise  # re-raise — caller must know
+# When error DOES happen:
+try:
+    number = int("hello")  # this will fail
+except ValueError:
+    print("Invalid number!")
+else:
+    print(f"Success! Number is {number}")  # skipped
+finally:
+    print("Cleanup complete.")  # still runs!
 
-    finally:
-        # ALWAYS runs — cleanup (close connections, etc.)
-        print("Cleanup: closing resources")
+# Output:
+# Invalid number!
+# Cleanup complete.
 
-# ── RAISING EXCEPTIONS: Report problems ──
-def withdraw(account, amount):
-    """Raise specific errors for specific problems."""
+# finally is perfect for closing files, connections, etc.
+try:
+    f = open("data.txt")
+    content = f.read()
+except FileNotFoundError:
+    content = ""
+finally:
+    f.close()  # ALWAYS close, even on error</div>
+
+<div class="code-block"># ── STEP 7: raise — creating your own errors ──
+# Sometimes YOU need to report an error to the caller.
+
+def withdraw(balance: float, amount: float) -> float:
+    """Withdraw money. Raises error if invalid."""
     if amount &lt;= 0:
         raise ValueError(f"Amount must be positive, got {amount}")
-    if amount &gt; account.balance:
-        raise ValueError(f"Insufficient funds: {account.balance}")
-    account.balance -= amount
-    return account.balance
+    if amount &gt; balance:
+        raise ValueError(f"Insufficient funds: balance={balance}, tried={amount}")
+    return balance - amount
 
-# ── CUSTOM EXCEPTIONS: Self-documenting ──
+# The caller must handle the error:
+try:
+    new_balance = withdraw(100, 150)
+except ValueError as e:
+    print(f"Withdrawal failed: {e}")
+    # Output: Withdrawal failed: Insufficient funds: balance=100, tried=150
+
+# raise without argument — re-raise the current error:
+try:
+    risky_code()
+except Exception as e:
+    log_error(e)
+    raise  # re-raise — let the caller decide what to do</div>
+
+<div class="code-block"># ── STEP 8: Custom exceptions ──
+# Create YOUR OWN error types for your application.
+# This makes error handling clear and self-documenting.
+
+# Step 1: Define custom exceptions (inherit from Exception):
 class TaskError(Exception):
-    """Base error for task operations."""
+    """Base error for all task-related problems."""
     pass
 
 class TaskNotFoundError(TaskError):
@@ -457,11 +607,11 @@ class TaskNotFoundError(TaskError):
     pass
 
 class TaskAlreadyDoneError(TaskError):
-    """Raised when completing an already-done task."""
+    """Raised when trying to complete an already-done task."""
     pass
 
-# Usage:
-def complete_task(task_id):
+# Step 2: Raise them in your code:
+def complete_task(task_id: int):
     task = find_task(task_id)
     if task is None:
         raise TaskNotFoundError(f"No task with ID {task_id}")
@@ -469,12 +619,97 @@ def complete_task(task_id):
         raise TaskAlreadyDoneError(f"Task {task_id} already done")
     task.status = "done"
 
-# ── THE GOLDEN RULES ──
-# 1. Be specific: except ValueError, NOT except:
-# 2. Don't swallow: log and re-raise if you can't handle
-# 3. Use finally for cleanup (always runs)
-# 4. Create custom exceptions for your domain
-# 5. Fail fast — better to crash loudly than silently corrupt</div>
+# Step 3: Catch them specifically:
+try:
+    complete_task(42)
+except TaskNotFoundError:
+    print("Task doesn't exist — create it first.")
+except TaskAlreadyDoneError:
+    print("Already done — nothing to do.")
+except TaskError as e:
+    # Catch-all for unexpected task errors
+    print(f"Task error: {e}")</div>
+
+<div class="code-block"># ── STEP 9: Real scenario — safe file reader ──
+# A function that reads a file, handling ALL possible errors.
+
+def safe_read_file(filepath: str) -&gt; str:
+    """Read a file safely. Returns content or empty string."""
+    try:
+        with open(filepath) as f:
+            return f.read()
+    except FileNotFoundError:
+        print(f"[WARN] File not found: {filepath}")
+        return ""
+    except PermissionError:
+        print(f"[ERROR] No permission to read: {filepath}")
+        return ""
+    except Exception as e:
+        # Unexpected error — log it, don't swallow
+        print(f"[ERROR] Unexpected: {type(e).__name__}: {e}")
+        return ""
+
+# This function NEVER crashes. The caller always gets a string.
+content = safe_read_file("config.json")
+if content:
+    print("Config loaded successfully!")
+
+# Another pattern — retry on failure:
+import time
+
+def fetch_with_retry(url: str, max_attempts: int = 3) -&gt; dict:
+    """Fetch URL with automatic retries."""
+    for attempt in range(max_attempts):
+        try:
+            response = requests.get(url)
+            response.raise_for_status()  # raises on 4xx/5xx
+            return response.json()
+        except Exception as e:
+            if attempt &lt; max_attempts - 1:
+                wait = 2 ** attempt  # exponential backoff
+                print(f"Attempt {attempt+1} failed. Retrying in {wait}s...")
+                time.sleep(wait)
+            else:
+                raise  # all attempts failed — let caller know</div>
+
+<div class="code-block"># ── STEP 10: The golden rules of error handling ──
+# Follow these rules and your code will be robust.
+
+# RULE 1: Be SPECIFIC — catch the error type you expect:
+# ❌ except:
+# ✅ except ValueError:
+# ✅ except FileNotFoundError:
+
+# RULE 2: Don't SILENTLY swallow errors:
+# ❌ except Exception: pass   (hides bugs!)
+# ✅ except Exception as e: log(e); raise  (log and propagate)
+
+# RULE 3: Use finally for CLEANUP:
+try:
+    f = open("data.txt")
+    # ... process ...
+finally:
+    f.close()  # always runs
+
+# RULE 4: Create CUSTOM exceptions for your domain:
+# class MyError(Exception): pass
+# Makes error handling clear and self-documenting.
+
+# RULE 5: FAIL FAST — better to crash loudly than silently corrupt data.
+# If you can't handle an error, let it propagate (raise).
+
+# RULE 6: Handle errors at the RIGHT level:
+# - Low level (functions): raise errors
+# - High level (main/UI): catch and show user-friendly message
+
+# Summary of the try/except pattern:
+# ┌─────────────────────────────────────────┐
+# │  try:        risky code                  │
+# │  except E1:  handle error type 1         │
+# │  except E2:  handle error type 2         │
+# │  else:       runs if NO error (success)  │
+# │  finally:    ALWAYS runs (cleanup)       │
+# └─────────────────────────────────────────┘</div>
 
 <div class="diagram">
   <div class="diag-title">try/except/finally — রোগ চিনো, ওষুধ দাও</div>
