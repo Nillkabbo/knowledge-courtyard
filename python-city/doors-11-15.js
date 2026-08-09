@@ -847,125 +847,358 @@ doors.push({
     aen:"return = end, one value. yield = pause, give value, resume later. Generator is lazy — one value at a time. 10GB file: list = 10GB RAM, generator = O(1) RAM."
   },
   story:`
-<p class="scene-setting">ত্রয়োদশ গিল্ড। অনন্ত তাঁত। সুতোর শব্দ, কাপড়ের গন্ধ, ছাঁচের নকশা। তাঁতি নুসরাত একটা বিশাল তাঁতে বসে — সুতো আসছে, কাপড় তৈরি হচ্ছে। কিন্তু সুতোর স্তূপ নেই — সুতো একটা একটা করে আসে। "আমি সব সুতো একসাথে চাই না," তিনি বলেন। "একটা সুতো, তারপর আরেকটা। এটাই generator — lazy, এক সময়ে একটা মান।"</p>
-<p class="scene-setting en">Thirteenth guild. The Infinite Loom. Sound of threads, smell of fabric, pattern on the loom. Weaver Nusrat sits at a massive loom — thread comes in, fabric is made. But no pile of thread — it comes one at a time. "I don't want all threads at once," she says. "One thread, then another. This is a generator — lazy, one value at a time."</p>
+<p class="scene-setting">ত্রয়োদশ গিল্ড। অনন্ত তাঁত। সুতোর শব্দ, কাপড়ের গন্ধ, ছাঁচের নকশা। তাঁতি নুসরাত একটা বিশাল তাঁতে বসে — সুতো আসছে, কাপড় তৈরি হচ্ছে। কিন্তু সুতোর স্তূপ নেই — সুতো একটা একটা করে আসে। "আমি সব সুতো একসাথে চাই না," তিনি বলেন। "একটা সুতো, তারপর আরেকটা। এটাই generator — lazy, এক সময়ে একটা মান। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Thirteenth guild. The Infinite Loom. Sound of threads, smell of fabric, pattern on the loom. Weaver Nusrat sits at a massive loom — thread comes in, fabric is made. But no pile of thread — it comes one at a time. "I don't want all threads at once," she says. "One thread, then another. This is a generator — lazy, one value at a time. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: তোমার ১০ গিগাবাইটের লগ ফাইল। প্রতিটা লাইন পড়তে হবে। list-এ লোড করলে ১০GB RAM দরকার — বেশির ভাগ কম্পিউটারে নেই। Generator দিলে: এক লাইন পড়ো, process করো, পরের লাইন। ১ কিলোবাইট RAM-এ ১০GB ফাইল। yield = মেমরির যাদু।</div>
-<div class="dialogue en">Problem: 10GB log file. Must read each line. Load into list: needs 10GB RAM — most computers don't have it. Generator: read one line, process, next line. 10GB file in 1KB RAM. yield = memory magic.</div>
+<div class="dialogue">প্রথম প্রশ্ন: তুমি ১০ লাখ সংখ্যা নিয়ে কাজ করছ। list দিলে সব একসাথে RAM-এ রাখে — ৮ MB। Generator দিলে একটা একটা করে দেয় — ২০০ bytes। ৪০,০০০ গুণ কম মেমরি। yield হলো সেই জাদু।</div>
+<div class="dialogue en">First question: you're working with 1 million numbers. A list stores all at once — 8MB. A generator gives them one at a time — 200 bytes. 40,000x less memory. yield is the magic.</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> নুসরাত বললেন — একটা data pipeline সব তথ্য list-এ লোড করলো — ৫০ মিলিয়ন রেকর্ড। OOM (Out of Memory) — server crash। Generator দিলে এক রেকর্ড এক সময় — ৫০ মিলিয়ন রেকর্ড ৮GB RAM-এ। list = সব একসাথে, generator = একটা একটা। memory = প্রাণ।</div></div>
+<div class="code-block"># ── STEP 1: return vs yield — the key difference ──
+# return: give the result and STOP. Function is done.
+# yield: give a result and PAUSE. Function can resume later.
 
-<div class="code-block"># guild13_generators.py — Infinite Loom
-# Weaver Nusrat: "One thread at a time. yield = pause + give."
+# A normal function with return:
+def get_three_numbers():
+    print("Starting...")
+    return [1, 2, 3]    # ALL values at once, then function ends
+
+result = get_three_numbers()
+print(result)  # [1, 2, 3]
+
+# A generator function with yield:
+def generate_three_numbers():
+    print("Starting...")
+    yield 1             # give 1, PAUSE here
+    print("After 1...")
+    yield 2             # give 2, PAUSE here
+    print("After 2...")
+    yield 3             # give 3, PAUSE here
+    print("Done!")
+
+# Create the generator (nothing runs yet!):
+gen = generate_three_numbers()
+print(type(gen))  # <class 'generator'>
+
+# Get values ONE AT A TIME with next():
+print(next(gen))  # Starting... → 1
+print(next(gen))  # After 1... → 2
+print(next(gen))  # After 2... → 3
+
+# Each next() resumes from where it left off!
+# The function PAUSES at each yield, waiting for the next call.</div>
+
+<div class="code-block"># ── STEP 2: What happens at the end? ──
+# When the generator function finishes (no more yield), it raises StopIteration.
+
+def count_up_to_3():
+    yield 1
+    yield 2
+    yield 3
+
+gen = count_up_to_3()
+
+print(next(gen))  # 1
+print(next(gen))  # 2
+print(next(gen))  # 3
+# print(next(gen))  # StopIteration! No more values.
+
+# But you DON'T need to call next() manually.
+# A for loop does it AUTOMATICALLY (and handles StopIteration):
+
+for num in count_up_to_3():
+    print(num)
+# 1
+# 2
+# 3
+# (loop ends automatically when generator is exhausted)
+
+# 99% of the time, you'll use for loops with generators,
+# not next(). But knowing next() helps you understand how they work.</div>
+
+<div class="code-block"># ── STEP 3: Why generators save memory ──
+# A list stores ALL values in memory at once.
+# A generator produces ONE value at a time — almost no memory.
 
 import sys
 
-# ── THE PROBLEM: Process 10GB file with 1GB RAM ──
+# List: ALL values stored in RAM:
+big_list = [x ** 2 for x in range(1000000)]
+print(f"List size: {sys.getsizeof(big_list):,} bytes")
+# ~8,447,624 bytes (about 8 MB!)
 
-# ❌ BAD: Load everything into a list — OOM risk
-# all_lines = open("10gb.log").readlines()  # 10GB in RAM!
-# for line in all_lines:
+# Generator: ONE value at a time:
+big_gen = (x ** 2 for x in range(1000000))
+print(f"Generator size: {sys.getsizeof(big_gen):,} bytes")
+# ~200 bytes!
+
+# 8,000,000 vs 200 — generator uses 40,000x less memory!
+# Because it doesn't STORE anything — it COMPUTES on demand.
+
+# When you iterate, the generator produces values one by one:
+total = sum(big_gen)  # computes each value, adds it, discards it
+print(f"Sum: {total:,}")
+# No 8MB list was ever created in memory!</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> নুসরাত বললেন — একটা data pipeline সব তথ্য list-এ লোড করলো — ৫০ মিলিয়ন রেকর্ড। OOM (Out of Memory) — server crash। Generator দিলে এক রেকর্ড এক সময় — ৫০ মিলিয়ন রেকর্ড ৮GB RAM-এ। list = সব একসাথে, generator = একটা একটা। memory = প্রাণ।</div></div>
+
+<div class="code-block"># ── STEP 4: Writing your own generator function ──
+# Any function with 'yield' is a generator function.
+
+def count_up_to(max_val):
+    """Generate numbers from 1 to max_val."""
+    current = 1
+    while current <= max_val:
+        yield current
+        current += 1
+
+# Use it in a for loop:
+for num in count_up_to(5):
+    print(num)
+# 1, 2, 3, 4, 5
+
+# Or convert to a list (uses memory, but sometimes you need it):
+numbers = list(count_up_to(5))
+print(numbers)  # [1, 2, 3, 4, 5]
+
+# Another example — generate squares:
+def squares(n):
+    """Generate squares from 0 to n-1."""
+    for i in range(n):
+        yield i ** 2
+
+for sq in squares(5):
+    print(sq)
+# 0, 1, 4, 9, 16
+
+# The key pattern:
+# def generator_function():
+#     setup code
+#     for item in something:
+#         yield transformed_item</div>
+
+<div class="code-block"># ── STEP 5: Reading large files with generators ──
+# THE killer use case: process huge files without loading them.
+
+# ❌ BAD: Read entire file into memory
+# lines = open("10gb.log").readlines()  # 10GB in RAM!
+# for line in lines:
 #     process(line)
 
-# ✅ GOOD: Generator — one line at a time, O(1) memory
+# ✅ GOOD: Generator reads one line at a time
 def read_large_file(path):
     """Yield one line at a time — never loads whole file."""
     with open(path) as f:
         for line in f:
             yield line.strip()
 
-# Process 10GB file with ~0 extra memory
-for line in read_large_file("10gb.log"):
+# Process 10GB file with almost no memory:
+error_count = 0
+for line in read_large_file("app.log"):
     if "ERROR" in line:
-        print(line)
+        error_count += 1
 
-# ── yield vs return ──
-def get_squares_list(n):
-    """return: all values at once."""
-    result = []
-    for i in range(n):
-        result.append(i ** 2)
-    return result
+print(f"Found {error_count} errors")
 
-def get_squares_gen(n):
-    """yield: one value at a time — lazy."""
-    for i in range(n):
-        yield i ** 2
+# BONUS: Python files are ALREADY generators!
+# This does the same thing — no custom generator needed:
+for line in open("app.log"):
+    if "ERROR" in line.strip():
+        print(line.strip())
+# 'for line in open(f)' yields lines one at a time!</div>
 
-# Compare memory usage
-squares_list = get_squares_list(1000000)
-squares_gen = get_squares_gen(1000000)
+<div class="code-block"># ── STEP 6: Generator expressions — comprehension's lazy cousin ──
+# We saw these in Door 10. Let's revisit with understanding.
 
-print(f"List size: {sys.getsizeof(squares_list):,} bytes")   # ~8MB
-print(f"Generator size: {sys.getsizeof(squares_gen):,} bytes")  # ~200 bytes!
+# List comprehension — creates full list (eager):
+squares_list = [x ** 2 for x in range(5)]
+print(squares_list)  # [0, 1, 4, 9, 16]
+print(type(squares_list))  # <class 'list'>
 
-# ── GENERATOR EXPRESSIONS (we saw these in Guild 10) ──
-# Lazy version of list comprehension
-squares = (x ** 2 for x in range(1000000))
-# Uses ~200 bytes, not ~8MB
+# Generator expression — creates generator (lazy):
+squares_gen = (x ** 2 for x in range(5))
+print(type(squares_gen))  # <class 'generator'>
 
-# ── INFINITE SEQUENCES: Only possible with generators ──
+# Can't index a generator:
+# print(squares_gen[0])  # ERROR! Not subscriptable.
+
+# But can iterate:
+for sq in squares_gen:
+    print(sq)  # 0, 1, 4, 9, 16
+
+# BEST PRACTICE: use generators inside sum(), max(), min():
+total = sum(x ** 2 for x in range(1000000))
+# No list created — computed lazily. Memory efficient!
+
+# Compare:
+# sum([x**2 for x in range(1000000)])   ← creates 8MB list
+# sum(x**2 for x in range(1000000))     ← creates 200-byte generator</div>
+
+<div class="code-block"># ── STEP 7: Infinite sequences ──
+# Only generators can produce INFINITE sequences.
+# A list would run out of memory. A generator never stores.
+
 def fibonacci():
-    """Infinite Fibonacci sequence."""
+    """Generate Fibonacci numbers forever."""
     a, b = 0, 1
-    while True:
-        yield a
+    while True:       # infinite loop!
+        yield a       # but yield pauses, so no crash
         a, b = b, a + b
 
-# Take first 10 — never computes all infinity
+# Create the generator:
 fib = fibonacci()
-first_10 = [next(fib) for _ in range(10)]
-print(first_10)  # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 
-# ── PIPELINE: Chain generators like Unix pipes ──
+# Get first 10 values (don't try to get ALL — it's infinite!):
+first_10 = []
+for i in range(10):
+    first_10.append(next(fib))
+print(first_10)
+# [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+# Or use itertools.islice to take N values:
+from itertools import islice
+fib2 = fibonacci()
+first_5 = list(islice(fib2, 5))
+print(first_5)  # [0, 1, 1, 2, 3]
+
+# Other infinite generators:
+def natural_numbers():
+    """1, 2, 3, 4, ... forever."""
+    n = 1
+    while True:
+        yield n
+        n += 1
+
+def random_forever():
+    """Random numbers forever."""
+    import random
+    while True:
+        yield random.randint(1, 100)
+
+# Take only what you need — never the whole infinite sequence!</div>
+
+<div class="code-block"># ── STEP 8: Generator pipelines — chain like Unix pipes ──
+# Generators can CHAIN together — each processing one value at a time.
+# Like Unix pipes: cat file | grep ERROR | wc -l
+
 def numbers():
+    """Source: generate 0-99."""
     for i in range(100):
         yield i
 
-def evens(source):
+def only_evens(source):
+    """Filter: keep only even numbers."""
     for n in source:
         if n % 2 == 0:
             yield n
 
 def squared(source):
+    """Transform: square each number."""
     for n in source:
         yield n ** 2
 
-# Chain: numbers → evens → squared
-# Each generator processes one value at a time
-pipeline = squared(evens(numbers()))
+# Chain them together:
+pipeline = squared(only_evens(numbers()))
+# Each value flows through: numbers → only_evens → squared
+
 result = list(pipeline)
-print(result)  # [0, 4, 16, 36, 64, ...]
+print(result)  # [0, 4, 16, 36, 64, 100, ...]
 
-# ── REAL-WORLD: Streaming API responses ──
-def stream_api_pages(url):
-    """Yield data page by page — never load all pages."""
-    page = 1
-    while True:
-        response = requests.get(url, params={"page": page})
-        data = response.json()
-        if not data:
-            break
-        for item in data:
-            yield item
-        page += 1
+# Memory: at any moment, only ONE number is in memory.
+# Even if the source had 1 billion numbers!
 
-# Process 100,000 records from API — one at a time
-for record in stream_api_pages("https://api.example.com/records"):
-    save_to_db(record)
+# Real-world example — process log file:
+def read_lines(path):
+    with open(path) as f:
+        for line in f:
+            yield line.strip()
 
-# ── yield from: Delegate to another generator ──
-def flatten(nested):
+def only_errors(lines):
+    for line in lines:
+        if "ERROR" in line:
+            yield line
+
+def extract_timestamp(line):
+    return line.split()[0]
+
+# Chain: read → filter → extract
+timestamps = (extract_timestamp(line)
+              for line in only_errors(read_lines("app.log")))
+for ts in timestamps:
+    print(ts)</div>
+
+<div class="code-block"># ── STEP 9: yield from — delegate to another generator ──
+# 'yield from' lets one generator DELEGATE to another.
+
+def inner():
+    yield 1
+    yield 2
+    yield 3
+
+def outer():
+    yield "start"
+    yield from inner()     # delegate to inner generator
+    yield "end"
+
+for val in outer():
+    print(val)
+# start, 1, 2, 3, end
+
+# Great for flattening nested structures:
+def flatten(nested_list):
     """Flatten arbitrarily nested lists."""
-    for item in nested:
+    for item in nested_list:
         if isinstance(item, (list, tuple)):
-            yield from flatten(item)  # delegate
+            yield from flatten(item)  # recursively flatten
         else:
             yield item
 
-nested = [1, [2, 3, [4, 5]], 6, [7]]
+nested = [1, [2, 3, [4, 5]], 6, [7, [8, 9]]]
 flat = list(flatten(nested))
-print(flat)  # [1, 2, 3, 4, 5, 6, 7]</div>
+print(flat)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# yield from is equivalent to:
+# for item in inner():
+#     yield item
+# But cleaner and slightly faster.</div>
+
+<div class="code-block"># ── STEP 10: When to use generators ──
+# Generators are powerful but not always the right choice.
+
+# USE A GENERATOR when:
+# ✅ Processing large files (log files, CSV, JSON)
+# ✅ Infinite or very large sequences
+# ✅ Streaming data (API responses, sensor data)
+# ✅ Chaining transformations (pipelines)
+# ✅ Memory efficiency matters
+
+# USE A LIST when:
+# ✅ You need to access items by index (list[5])
+# ✅ You need to iterate MULTIPLE times
+# ✅ You need the COUNT (len())
+# ✅ The data is small (memory doesn't matter)
+# ✅ You need to sort or reverse
+
+# Generators are EXHAUSTED after one use:
+gen = (x for x in range(5))
+print(list(gen))  # [0, 1, 2, 3, 4]
+print(list(gen))  # [] — empty! Already exhausted.
+
+# Lists can be reused:
+lst = [x for x in range(5)]
+print(lst)  # [0, 1, 2, 3, 4]
+print(lst)  # [0, 1, 2, 3, 4] — still there
+
+# SUMMARY:
+# ┌─────────────────┬──────────────────────────────────┐
+# │ Feature         │ Generator                        │
+# ├─────────────────┼──────────────────────────────────┤
+# │ Memory          │ O(1) — one value at a time       │
+# │ Created with    │ yield, (expr for x in items)     │
+# │ Iterate         │ for x in generator               │
+# │ Access by index │ ❌ Not possible                  │
+# │ Reusable        │ ❌ Exhausted after one use        │
+# │ Infinite        │ ✅ Possible (while True + yield)  │
+# └─────────────────┴──────────────────────────────────┘</div>
 
 <div class="diagram">
   <div class="diag-title">Generator = Lazy Loom — এক সুতো এক সময়</div>
