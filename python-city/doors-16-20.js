@@ -1338,117 +1338,305 @@ doors.push({
     aen:"cron = schedule scripts. argparse = build CLI tools. Automate boring repetitive tasks."
   },
   story:`
-<p class="scene-setting">ঊনবিংশ গিল্ড। ঘড়ি নির্মাতার কক্ষ। যন্ত্রের টিকটিক শব্দ, পিতলের গন্ধ, ছোট ছোট গিয়ার। ঘড়ি নির্মাতা নাদিয়া একটা জটিল ঘড়ি সাজাচ্ছেন — প্রতিটা গিয়ার নির্দিষ্ট সময়ে নির্দিষ্ট কাজ করে। "একবার সেট করলে," তিনি বলেন, "এই ঘড়ি বছরের পর বছর একই কাজ করবে। Automation তেমনি — একবার script লেখো, তারপর স্বয়ংক্রিয়। প্রতিদিন, প্রতি সপ্তাহে, প্রতি মাসে।"</p>
-<p class="scene-setting en">Nineteenth guild. The Clockmaker's room. Tick-tick of mechanisms, smell of brass, tiny gears. Clockmaker Nadia assembles a complex clock — each gear does a specific task at a specific time. "Set it once," she says, "and this clock runs for years doing the same thing. Automation is the same — write a script once, then it runs automatically. Daily, weekly, monthly."</p>
+<p class="scene-setting">ঊনবিংশ গিল্ড। ঘড়ি নির্মাতার কক্ষ। যন্ত্রের টিকটিক শব্দ, পিতলের গন্ধ, ছোট ছোট গিয়ার। ঘড়ি নির্মাতা নাদিয়া একটা জটিল ঘড়ি সাজাচ্ছেন — প্রতিটা গিয়ার নির্দিষ্ট সময়ে নির্দিষ্ট কাজ করে। "একবার সেট করলে," তিনি বলেন, "এই ঘড়ি বছরের পর বছর একই কাজ করবে। Automation তেমনি — একবার script লেখো, তারপর স্বয়ংক্রিয়। প্রতিদিন, প্রতি সপ্তাহে, প্রতি মাসে। চলো একটা একটা করে শিখি।"</p>
+<p class="scene-setting en">Nineteenth guild. The Clockmaker's room. Tick-tick of mechanisms, smell of brass, tiny gears. Clockmaker Nadia assembles a complex clock — each gear does a specific task at a specific time. "Set it once," she says, "and this clock runs for years doing the same thing. Automation is the same — write a script once, then it runs automatically. Daily, weekly, monthly. Let's learn step by step."</p>
 
-<div class="dialogue">সমস্যা: প্রতিদিন সকালে তোমার: ১) database backup ২) report জেনারেট ৩) email পাঠানো ৪) log cleanup। হাতে? ৩০ মিনিট প্রতিদিন। Automation দিলে — একবার script লেখো, প্রতিদিন ৬টায় স্বয়ংক্রিয়। তুমি ঘুমাও, কাজ হয়।</div>
-<div class="dialogue en">Problem: Every morning you: 1) backup database 2) generate report 3) send email 4) clean logs. By hand? 30 minutes daily. With automation — write script once, runs at 6 AM automatically. You sleep, work gets done.</div>
+<div class="dialogue">প্রথম প্রশ্ন: প্রতিদিন সকালে তোমার — database backup, report জেনারেট, email পাঠানো, log cleanup। হাতে ৩০ মিনিট। Automation দিলে একবার script লেখো, প্রতিদিন ৬টায় স্বয়ংক্রিয়। তুমি ঘুমাও, কাজ হয়।</div>
+<div class="dialogue en">First question: every morning — database backup, report, email, cleanup. 30 minutes by hand. With automation — write script once, runs at 6 AM daily. You sleep, work gets done.</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> নাদিয়া বললেন — এক শিক্ষানবিশ automation script বানালো কোনো logging ছাড়া। ৩ দিন কাজ করে থামলো — কেউ জানতো না। automation = নিঃশব্দ কর্মী, কিন্তু logging দাও — সফল হলে log, ব্যর্থ হলে alert। নাহলে নীরব ব্যর্থতা = বিপদ।</div></div>
+<div class="code-block"># ── STEP 1: What is automation? ──
+# Automation = making the computer do boring, repetitive tasks for you.
 
-<div class="code-block"># guild19_automation.py — Clockmaker
-# Clockmaker Nadia: "Set it once. Runs forever."
+# Examples of tasks you can automate:
+# - Rename 1000 files following a pattern
+# - Download weather data every morning
+# - Backup your database every night
+# - Send a daily summary email
+# - Check a website for changes and notify you
+# - Resize all images in a folder
+# - Clean up old log files
+
+# The pattern is always the same:
+# 1. Identify a repetitive task
+# 2. Write a Python script that does it
+# 3. Schedule it to run automatically
+
+# A simple automation script:
+import os
+
+def rename_files(folder, prefix):
+    """Rename all files in a folder with a prefix + number."""
+    files = sorted(os.listdir(folder))
+    for i, filename in enumerate(files, 1):
+        old_path = os.path.join(folder, filename)
+        ext = os.path.splitext(filename)[1]  # keep extension
+        new_name = f"{prefix}_{i:03d}{ext}"
+        new_path = os.path.join(folder, new_name)
+        os.rename(old_path, new_path)
+        print(f"  {filename} → {new_name}")
+
+rename_files("photos", "vacation")
+# photo1.jpg → vacation_001.jpg
+# photo2.jpg → vacation_002.jpg
+# ... 1000 files renamed in 2 seconds!</div>
+
+<div class="code-block"># ── STEP 2: File automation ──
+# Python can manipulate files — rename, move, copy, delete.
 
 import os
 import shutil
-import subprocess
-import schedule
+from pathlib import Path
+
+# List all files in a folder:
+files = os.listdir("downloads")
+print(files)
+
+# Find files by extension:
+pdfs = [f for f in files if f.endswith(".pdf")]
+images = [f for f in files if f.endswith((".jpg", ".png", ".gif"))]
+
+# Move files to organized folders:
+for img in images:
+    src = os.path.join("downloads", img)
+    dst = os.path.join("downloads/images", img)
+    shutil.move(src, dst)
+
+# Copy a file:
+shutil.copy("template.docx", "new_document.docx")
+
+# Delete old files (older than 30 days):
 import time
-import argparse
-import smtplib
-from email.mime.text import MIMEText
-from datetime import datetime
+cutoff = time.time() - (30 * 86400)  # 30 days ago in seconds
+
+for filename in os.listdir("temp"):
+    filepath = os.path.join("temp", filename)
+    if os.path.getmtime(filepath) &lt; cutoff:
+        os.remove(filepath)
+        print(f"Deleted: {filename}")
+
+# Using pathlib (modern, cleaner):
+for file in Path("data").glob("*.csv"):
+    print(file.name, file.stat().st_size)</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> নাদিয়া বললেন — এক শিক্ষানবিশ automation script বানালো কোনো logging ছাড়া। ৩ দিন কাজ করে থামলো — কেউ জানতো না। automation = নিঃশব্দ কর্মী, কিন্তু logging দাও — সফল হলে log, ব্যর্থ হলে alert। নাহলে নীরব ব্যর্থতা = বিপদ।</div></div>
+
+<div class="code-block"># ── STEP 3: Running external programs ──
+# subprocess lets you run other programs from Python.
+
+import subprocess
+
+# Run a shell command:
+result = subprocess.run(["ls", "-la"], capture_output=True, text=True)
+print(result.stdout)  # the output of ls -la
+
+# Run with error checking:
+result = subprocess.run(
+    ["git", "status"],
+    capture_output=True,
+    text=True,
+    check=True  # raises CalledProcessError on failure
+)
+
+# Practical: backup a MySQL database:
+def backup_database(db_name, output_file):
+    """Backup MySQL database using mysqldump."""
+    backup_file = open(output_file, "w")
+    try:
+        subprocess.run(
+            ["mysqldump", "-u", "root", db_name],
+            stdout=backup_file,
+            check=True
+        )
+        print(f"Backup saved: {output_file}")
+    except subprocess.CalledProcessError as e:
+        print(f"Backup FAILED: {e}")
+    finally:
+        backup_file.close()
+
+backup_database("myapp", "backup.sql")
+
+# Run a Python script from another script:
+subprocess.run(["python", "other_script.py", "--arg", "value"])</div>
+
+<div class="code-block"># ── STEP 4: Logging — critical for automation ──
+# When scripts run automatically, you NEED to know what happened.
+
 import logging
 
-# ── SETUP LOGGING (critical for automation!) ──
+# Set up logging (do this once at the start of your script):
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler("automation.log"),
-        logging.StreamHandler()
+        logging.FileHandler("automation.log"),  # save to file
+        logging.StreamHandler(),                 # also print to console
     ]
 )
 logger = logging.getLogger(__name__)
 
-# ── THE PROBLEM: Automate daily morning routine ──
+# Use logging instead of print:
+logger.info("Backup started")
+logger.info("Backup completed: 500MB saved")
+logger.warning("Disk space low: 10% remaining")
+logger.error("Backup FAILED: connection refused")
 
-def backup_database():
-    """Backup the database — runs daily."""
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    backup_path = f"backups/db_{timestamp}.sql"
+# The log file looks like:
+# 2024-01-15 06:00:01 [INFO] Backup started
+# 2024-01-15 06:00:15 [INFO] Backup completed: 500MB saved
+# 2024-01-15 06:05:00 [INFO] Email sent
+# 2024-01-15 06:10:00 [WARNING] Disk space low: 10% remaining
 
-    try:
-        backup_file = open(backup_path, "w")
-        subprocess.run(
-            ["mysqldump", "-u", "root", "mydb"],
-            stdout=backup_file,
-            check=True
-        )
-        backup_file.close()  # explicitly close
-        logger.info(f"Backup created: {backup_path}")
-        return True
-    except subprocess.CalledProcessError as e:
-        backup_file.close()
-        logger.error(f"Backup FAILED: {e}")
-        return False
+# LOG LEVELS (from least to most severe):
+# DEBUG    → detailed info (for debugging)
+# INFO     → general info (script started, task done)
+# WARNING  → something unexpected (but not fatal)
+# ERROR    → something failed
+# CRITICAL → something broke badly</div>
 
-def clean_old_backups(keep_days=7):
-    """Delete backups older than 7 days."""
-    cutoff = time.time() - (keep_days * 86400)
-    backups_dir = "backups"
+<div class="code-block"># ── STEP 5: Sending emails ──
+# Automate email sending — daily reports, alerts, notifications.
 
-    for filename in os.listdir(backups_dir):
-        filepath = os.path.join(backups_dir, filename)
-        if os.path.getmtime(filepath) &lt; cutoff:
-            os.remove(filepath)
-            logger.info(f"Deleted old backup: {filename}")
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
-def send_report_email():
-    """Send daily summary email."""
-    # Generate report (would call your analysis code)
-    report = generate_daily_report()
+def send_email(subject, body, to_email):
+    """Send an email notification."""
+    # Create the message:
+    msg = MIMEMultipart()
+    msg["From"] = "bot@myapp.com"
+    msg["To"] = to_email
+    msg["Subject"] = subject
+    msg.attach(MIMEText(body, "plain"))
 
-    msg = MIMEText(report)
-    msg["Subject"] = f"Daily Report — {datetime.now().strftime('%Y-%m-%d')}"
-    msg["From"] = "bot@pycity.com"
-    msg["To"] = "team@pycity.com"
-
+    # Connect and send:
     with smtplib.SMTP("smtp.gmail.com", 587) as server:
-        server.starttls()
-        server.login("bot@pycity.com", "password")
+        server.starttls()  # encrypt connection
+        server.login("bot@myapp.com", "app_password")
         server.send_message(msg)
 
-    logger.info("Report email sent")
+    print(f"Email sent: {subject}")
 
-# ── SCHEDULING: Run at specific times ──
-schedule.every().day.at("06:00").do(backup_database)
-schedule.every().day.at("06:05").do(send_report_email)
-schedule.every().monday.do(clean_old_backups)
+# Send a daily report:
+def send_daily_report():
+    """Generate and email the daily summary."""
+    report = f"""
+    Daily Report — {time.strftime('%Y-%m-%d')}
+    ===============================
 
-# Keep the script running
-logger.info("Automation started — waiting for schedule...")
+    Total sales:    50,000 taka
+    New users:      12
+    Active users:   342
+    Errors:         0
+
+    Have a great day!
+    """
+    send_email("Daily Report", report, "team@myapp.com")
+
+# NOTE: Use "app passwords" for Gmail, not your real password.
+# Gmail → Settings → Security → 2-Step Verification → App Passwords</div>
+
+<div class="code-block"># ── STEP 6: Scheduling with the schedule library ──
+# The schedule library lets you run tasks at specific times.
+
+# pip install schedule
+
+import schedule
+import time
+
+# Define tasks:
+def backup_job():
+    print("Running backup...")
+    # backup code here
+
+def report_job():
+    print("Sending report...")
+    # send report code here
+
+# Schedule tasks:
+schedule.every().day.at("06:00").do(backup_job)       # daily at 6 AM
+schedule.every().day.at("18:00").do(report_job)       # daily at 6 PM
+schedule.every().monday.do(backup_job)                 # every Monday
+schedule.every().hour.do(report_job)                   # every hour
+schedule.every(10).minutes.do(backup_job)              # every 10 minutes
+
+# Keep the script running:
+print("Scheduler started...")
 while True:
-    schedule.run_pending()
-    time.sleep(60)  # check every minute
+    schedule.run_pending()    # check if any job is due
+    time.sleep(60)            # wait 1 minute, check again
 
-# ── CLI TOOL: Make your script reusable ──
+# schedule is great for:
+# - Python-based scheduling (cross-platform)
+# - Simple time-based tasks
+# - Scripts that need to run within Python
+# For production, use cron (Linux) or Celery (distributed).</div>
+
+<div class="code-block"># ── STEP 7: Scheduling with cron (Linux/macOS) ──
+# cron is the OS-level scheduler — runs even if Python isn't running.
+
+# Edit your crontab (in terminal):
+# crontab -e
+
+# Add lines like:
+#   0 6 * * * /usr/bin/python3 /opt/scripts/backup.py
+#   30 8 * * 1 /usr/bin/python3 /opt/scripts/report.py
+#   */15 * * * * /usr/bin/python3 /opt/scripts/check.py
+
+# CRON FORMAT:
+#   minute  hour  day  month  weekday  command
+#   0       6     *    *      *        python3 backup.py
+#   ↑       ↑     ↑    ↑      ↑
+#   minute  hour  day  month  Mon=1
+
+# Examples:
+#   0 6 * * *        → every day at 6:00 AM
+#   30 8 * * 1       → every Monday at 8:30 AM
+#   */15 * * * *     → every 15 minutes
+#   0 0 1 * *        → first day of every month at midnight
+#   0 */6 * * *      → every 6 hours
+
+# View your scheduled jobs:
+# crontab -l
+
+# On Windows: use Task Scheduler instead of cron.
+# On macOS: you can use cron or launchd.</div>
+
+<div class="code-block"># ── STEP 8: Building CLI tools with argparse ──
+# Make your scripts reusable with command-line arguments.
+
+import argparse
+
 def main():
     """Command-line interface for the automation tool."""
     parser = argparse.ArgumentParser(
         description="Python City Automation Suite"
     )
+
+    # Required argument:
     parser.add_argument(
         "--task",
         choices=["backup", "report", "cleanup", "all"],
         required=True,
         help="Which task to run"
     )
+
+    # Optional flag (boolean):
     parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Show what would happen without executing"
     )
+
+    # Optional with value:
+    parser.add_argument(
+        "--keep-days",
+        type=int,
+        default=7,
+        help="Days of backups to keep (default: 7)"
+    )
+
+    # Short form:
     parser.add_argument(
         "--verbose", "-v",
         action="store_true",
@@ -1463,10 +1651,8 @@ def main():
 
     if args.task in ("backup", "all"):
         backup_database()
-    if args.task in ("report", "all"):
-        send_report_email()
     if args.task in ("cleanup", "all"):
-        clean_old_backups()
+        clean_old_backups(keep_days=args.keep_days)
 
 if __name__ == "__main__":
     main()
@@ -1474,23 +1660,115 @@ if __name__ == "__main__":
 # Usage:
 #   python automate.py --task backup
 #   python automate.py --task all --verbose
-#   python automate.py --task report --dry-run
+#   python automate.py --task cleanup --keep-days 30
+#   python automate.py --task report --dry-run</div>
 
-# ── CRON (Linux): Schedule at OS level ──
-# Add to crontab (crontab -e):
-#   0 6 * * * /usr/bin/python3 /opt/scripts/automate.py --task all
-#   # Runs every day at 6:00 AM
-# Format: minute hour day month weekday command
+<div class="code-block"># ── STEP 9: A complete automation script ──
+# Putting it all together: a production-quality automation script.
 
-# ── REAL AUTOMATION IDEAS ──
-# - Rename 1000 files by pattern
-# - Download daily weather data
-# - Check website for changes → notify
-# - Resize/compress all images in folder
-# - Sync local folder to cloud
+import os
+import subprocess
+import time
+import logging
+import argparse
+from datetime import datetime
+
+# Setup logging:
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler("automation.log"),
+        logging.StreamHandler(),
+    ]
+)
+logger = logging.getLogger(__name__)
+
+def backup_database():
+    """Daily database backup."""
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    backup_path = f"backups/db_{timestamp}.sql"
+
+    try:
+        backup_file = open(backup_path, "w")
+        subprocess.run(
+            ["mysqldump", "-u", "root", "mydb"],
+            stdout=backup_file,
+            check=True
+        )
+        backup_file.close()
+        logger.info(f"Backup created: {backup_path}")
+    except subprocess.CalledProcessError as e:
+        backup_file.close()
+        logger.error(f"Backup FAILED: {e}")
+
+def clean_old_backups(keep_days=7):
+    """Delete backups older than keep_days."""
+    cutoff = time.time() - (keep_days * 86400)
+    for filename in os.listdir("backups"):
+        filepath = os.path.join("backups", filename)
+        if os.path.getmtime(filepath) &lt; cutoff:
+            os.remove(filepath)
+            logger.info(f"Deleted old backup: {filename}")
+
+# Run with: python automate.py --task all
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Automation Suite")
+    parser.add_argument("--task", choices=["backup", "cleanup", "all"],
+                        required=True)
+    args = parser.parse_args()
+
+    logger.info(f"Starting: {args.task}")
+    if args.task in ("backup", "all"):
+        backup_database()
+    if args.task in ("cleanup", "all"):
+        clean_old_backups()</div>
+
+<div class="code-block"># ── STEP 10: Automation ideas and golden rules ──
+# Real-world automation ideas you can build:
+
+# FILE MANAGEMENT:
+# - Rename photos by date taken (EXIF data)
+# - Organize downloads folder (sort by extension)
+# - Sync local folder to cloud storage
+# - Compress old log files
+
+# DATA TASKS:
+# - Scrape competitor prices daily → save to CSV
+# - Download stock prices → update dashboard
 # - Generate monthly invoice PDFs
-# - Scrape competitor prices daily
-# - Clean temp files older than X days</div>
+# - Backup database nightly
+
+# COMMUNICATION:
+# - Send daily summary email at 8 AM
+# - Post to Slack when deploy is done
+# - Send SMS alert when server is down
+
+# QUALITY OF LIFE:
+# - Track work hours automatically
+# - Generate weekly progress reports
+# - Check for broken links on your website
+
+# GOLDEN RULES:
+# 1. LOG EVERYTHING — you must know what happened
+# 2. HANDLE ERRORS — fail gracefully, alert on failure
+# 3. DRY-RUN MODE — test before running for real
+# 4. IDEMPOTENT — running twice should be safe
+# 5. MONITOR — check that it's still running
+
+# SUMMARY:
+# ┌──────────────────┬─────────────────────────────────────┐
+# │ Tool             │ Purpose                            │
+# ├──────────────────┼─────────────────────────────────────┤
+# │ os / shutil      │ file operations                    │
+# │ subprocess       │ run external programs              │
+# │ logging          │ track what happened                │
+# │ smtplib          │ send email notifications           │
+# │ schedule         │ Python-based scheduler             │
+# │ cron             │ OS-level scheduler (Linux/Mac)     │
+# │ argparse         │ build CLI tools                    │
+# │ pathlib          │ modern file path handling          │
+# └──────────────────┴─────────────────────────────────────┘</div>
 
 <div class="diagram">
   <div class="diag-title">Automation Pipeline — একবার লেখো, চিরকাল চলে</div>
