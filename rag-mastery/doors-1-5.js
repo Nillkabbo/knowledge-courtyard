@@ -59,76 +59,452 @@ doors.push({
 </div>
 <div class="svg-caption">RAG পাইপলাইন — ডকুমেন্ট থেকে ভেক্টর ডেটাবেস পর্যন্ত পাঁচটি ধাপ</div>
 
-<div class="code-block">Document Ingestion — RAG-এর ভিত্তি:
+<div class="code-block"># ── STEP 1: What is document ingestion? ──
+# RAG starts with getting documents INTO the system.
+# This is harder than it sounds — every format has quirks.
 
-FORMAT-SPECIFIC CHALLENGES:
+# THE INGESTION PIPELINE:
+pipeline = """
+1. LOAD:    Read file (PDF, HTML, DOCX, image, audio)
+2. EXTRACT: Get text using format-specific parser
+3. CLEAN:   Remove boilerplate, fix encoding, normalize whitespace
+4. STRUCTURE: Identify headers, sections, lists, tables
+5. METADATA: Tag with source, page, date, author
+6. CHUNK:   Split into retrieval-sized pieces
+7. EMBED:   Convert each chunk to vector embedding
+8. STORE:   Save to vector database (pgvector, Pinecone)
+"""
 
-  PDF:
-    ✅ সবচেয়ে সাধারণ — রিপোর্ট, paper, contract
-    ❌ টেবিল ভাঙে — column alignment হারায়
-    ❌ Multi-column layout — পড়ার ক্রম গোলমাল
-    ❌ ছবির টেক্সট — OCR লাগে
-    Tools: PyMuPDF, pdfplumber, unstructured.io, LlamaParse
+print(pipeline)
 
-  HTML:
-    ✅ স্ট্রাকচার্ড — tags, headings, links
-    ❌ Boilerplate — nav, footer, ads মিশে যায়
-    ❌ Dynamic content — JS-rendered টেক্সট মিস
-    Tools: BeautifulSoup, Trafilatura, readability-lxml
+# FORMAT CHALLENGES:
+formats = {
+    "PDF": {
+        "common": "Reports, papers, contracts (most common)",
+        "problems": "Tables break, multi-column layout confused, images need OCR",
+        "tools": "PyMuPDF, pdfplumber, unstructured.io, LlamaParse",
+    },
+    "HTML": {
+        "common": "Web pages, blog posts",
+        "problems": "Boilerplate (nav, footer, ads), JS-rendered content missed",
+        "tools": "BeautifulSoup, Trafilatura, readability-lxml",
+    },
+    "DOCX": {
+        "common": "Word documents, reports",
+        "problems": "Tracked changes, embedded objects",
+        "tools": "python-docx, mammoth, unstructured",
+    },
+    "Scanned images": {
+        "common": "Old documents, handwritten notes",
+        "problems": "No text layer, need OCR, quality issues",
+        "tools": "Tesseract, AWS Textract, Google Document AI",
+    },
+    "Code": {
+        "common": "Source files, documentation",
+        "problems": "Syntax noise if not parsed correctly",
+        "tools": "tree-sitter, AST-based parsing",
+    },
+}
 
-  DOCX:
-    ✅ স্ট্রাকচার্ড — headings, styles, tables
-    ❌ Tracked changes কনফিউজিং
-    ❌ Embedded objects — ছবি, charts
-    Tools: python-docx, mammoth, unstructured
+print("FORMAT CHALLENGES:")
+for fmt, info in formats.items():
+    print(f"\n  {fmt}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
 
-  SCANNED IMAGES:
-    ❌ টেক্সট ছবিতে — OCR লাগে
-    ❌ হাতের লেখা কঠিন
-    ❌ গুণমান কম — noise, skew
-    Tools: Tesseract, AWS Textract, Google Document AI
+<div class="code-block"># ── STEP 2: PDF extraction (the hardest format) ──
+# PDFs are the most common AND most difficult format.
 
-  CODE:
-    ✅ স্ট্রাকচার্ড — functions, classes
-    ❌ Syntax = noise যদি ভুল parse
-    Tools: tree-sitter, AST-based parsing
+# PYTHON PDF EXTRACTION:
+pdf_code = """
+import fitz  # PyMuPDF
 
-  AUDIO/VIDEO (advanced):
-    → Whisper (OpenAI) speech-to-text
-    → তারপর text RAG pipeline
+def extract_pdf(path):
+    doc = fitz.open(path)
+    chunks = []
 
-UNIVERSAL INGESTION PIPELINE:
+    for page_num in range(len(doc)):
+        page = doc[page_num]
 
-  # ────────────────────────────────────────# 
-  #  ১. LOAD — ফাইল পডো                     # 
-  #    PDF, HTML, DOCX, image → raw bytes   # 
-  # ────────────────────────────────────────# 
-  #  ২. EXTRACT — টেক্সট বের করো             # 
-  #    Format-specific parser               # 
-  #    টেবিল, ছবি, সূত্র আলাদা               # 
-  # ────────────────────────────────────────# 
-  #  ৩. CLEAN — গোলমাল দূর করো               # 
-  #    Boilerplate সরাও                      # 
-  #    Encoding fix (UTF-8)                 # 
-  #    Whitespace normalize                 # 
-  # ────────────────────────────────────────# 
-  #  ৪. STRUCTURE — কাঠামো চিনো              # 
-  #    Headers, sections, lists, tables     # 
-  #    H1/H2/H3 → hierarchy                 # 
-  # ────────────────────────────────────────# 
-  #  ৫. METADATA — ট্যাগ দাও                  # 
-  #    source, page, section, date, author  # 
-  #    → citation ও filtering-এ লাগবে       # 
-  # ────────────────────────────────────────# 
-  #  ৬. CHUNK — টুকরোয় ভাঙো                  # 
-  #    (Context Engineering Door 3)          # 
-  # ────────────────────────────────────────# 
-  #  ৭. EMBED — ভেক্টর বানাও                  # 
-  #    প্রতিটি chunk → embedding model       # 
-  # ────────────────────────────────────────# 
-  #  ৮. STORE — vector DB-তে রাখো            # 
-  #    Pinecone, Qdrant, Weaviate            # 
-  # ────────────────────────────────────────# 
+        # Extract text:
+        text = page.get_text("text")  # plain text
+        # OR: structured extraction:
+        blocks = page.get_text("dict")  # layout-aware
+
+        # Extract tables (harder):
+        tables = page.find_tables()
+
+        # Extract images (need OCR or vision model):
+        images = page.get_images()
+
+        # Create chunk with metadata:
+        chunks.append({
+            "content": text,
+            "metadata": {
+                "source": path,
+                "page": page_num + 1,
+                "section": detect_section(text),
+            }
+        })
+
+    return chunks
+"""
+
+print(pdf_code)
+
+# PDF EXTRACTION TOOLS COMPARISON:
+tools = {
+    "PyMuPDF (fitz)": "Fast, good text extraction, free",
+    "pdfplumber": "Better table extraction, slower",
+    "unstructured.io": "Handles ALL formats, API + local, great quality",
+    "LlamaParse": "Cloud API, best quality, understands layout",
+    "AWS Textract": "Cloud, great for scanned docs, OCR + layout",
+    "Google Document AI": "Cloud, enterprise-grade, handles forms",
+    "Marker (marker-pdf)": "PDF → Markdown, preserves structure",
+}
+
+print("PDF EXTRACTION TOOLS:")
+for tool, desc in tools.items():
+    print(f"  {tool}: {desc}")
+
+# COMMON PDF PROBLEMS:
+problems = """
+1. MULTI-COLUMN LAYOUT:
+   Text extraction reads across columns (wrong order)
+   → Solution: use layout-aware tools (unstructured, LlamaParse)
+
+2. TABLES:
+   Columns get merged or split incorrectly
+   → Solution: use pdfplumber.find_tables() or Camelot
+
+3. IMAGES WITH TEXT:
+   No text layer, need OCR
+   → Solution: Tesseract, or GPT-4o vision API
+
+4. ENCODING:
+   Special characters (accented, CJK) garbled
+   → Solution: explicit UTF-8 encoding, detect_encoding()
+
+5. FORMS:
+   Form fields vs labels confused
+   → Solution: AWS Textract Forms feature
+"""
+
+print(problems)</div>
+
+<div class="code-block"># ── STEP 3: Document cleaning and structuring ──
+# Raw extraction is messy. You need to CLEAN and STRUCTURE.
+
+# CLEANING STEPS:
+cleaning_code = """
+import re
+
+def clean_text(text):
+    # 1. Fix encoding:
+    text = text.encode('utf-8', errors='ignore').decode('utf-8')
+
+    # 2. Remove excessive whitespace:
+    text = re.sub(r'\\s+', ' ', text)  # multiple spaces → one
+    text = re.sub(r'\\n{3,}', '\\n\\n', text)  # max 2 newlines
+
+    # 3. Remove common boilerplate:
+    boilerplate = [
+        r'Copyright \\d{4}.*',  # copyright notices
+        r'Page \\d+ of \\d+',   # page numbers
+        r'Table of Contents',   # TOC
+    ]
+    for pattern in boilerplate:
+        text = re.sub(pattern, '', text, flags=re.IGNORECASE)
+
+    # 4. Normalize unicode:
+    import unicodedata
+    text = unicodedata.normalize('NFKC', text)
+
+    return text.strip()
+"""
+
+print(cleaning_code)
+
+# STRUCTURE DETECTION:
+structure_detection = """
+IDENTIFY DOCUMENT STRUCTURE:
+  → Headers (H1, H2, H3) for hierarchy
+  → Lists (bullet, numbered) for items
+  → Tables for structured data
+  → Code blocks for technical content
+  → Images/figures for visual content
+
+PYTHON STRUCTURE DETECTION:
+  from unstructured.partition.auto import partition
+
+  elements = partition("document.pdf")
+  for element in elements:
+      print(f"Type: {element.category}")  # Title, NarrativeText, Table, etc.
+      print(f"Text: {element.text[:100]}")
+      print(f"Metadata: {element.metadata.to_dict()}")
+"""
+
+print(structure_detection)
+
+# METADATA EXTRACTION:
+metadata_fields = {
+    "source": "File path or URL (for citations)",
+    "page": "Page number (for citations)",
+    "section": "Section heading (for context)",
+    "author": "Document author",
+    "date": "Publication date",
+    "language": "Detected language",
+    "document_type": "pdf, html, docx, etc.",
+    "chunk_index": "Position in document",
+}
+
+print("ESSENTIAL METADATA FIELDS:")
+for field, desc in metadata_fields.items():
+    print(f"  {field}: {desc}")</div>
+
+<div class="code-block"># ── STEP 4: Chunking strategies ──
+# Chunking is THE most important RAG decision.
+# Bad chunking = bad retrieval = bad answers.
+
+# CHUNKING APPROACHES:
+approaches = {
+    "Fixed-size": {
+        "how": "Split every N characters/words",
+        "pro": "Simple, fast, predictable",
+        "con": "Can split mid-sentence, mid-thought",
+        "best_for": "Quick prototyping, uniform documents",
+    },
+    "Sentence-based": {
+        "how": "Split on sentence boundaries (. ! ?)",
+        "pro": "Natural boundaries, preserves meaning",
+        "con": "Variable chunk sizes",
+        "best_for": "Articles, narratives",
+    },
+    "Paragraph-based": {
+        "how": "Split on paragraph breaks (\\n\\n)",
+        "pro": "Preserves topic coherence",
+        "con": "Some paragraphs too long/short",
+        "best_for": "Blog posts, documentation",
+    },
+    "Recursive (LangChain)": {
+        "how": "Try paragraph → sentence → word until chunk_size",
+        "pro": "Adaptive, preserves structure",
+        "con": "Slightly more complex",
+        "best_for": "General purpose (RECOMMENDED)",
+    },
+    "Semantic": {
+        "how": "Split where meaning changes (using embeddings)",
+        "pro": "Best quality chunks",
+        "con": "Expensive (needs embedding for each chunk)",
+        "best_for": "High-quality production RAG",
+    },
+    "Document-structure-aware": {
+        "how": "Split on headers (H1, H2, H3) + markdown",
+        "pro": "Preserves document hierarchy",
+        "con": "Needs structured documents",
+        "best_for": "Technical docs, manuals",
+    },
+}
+
+print("CHUNKING APPROACHES:")
+for approach, info in approaches.items():
+    print(f"\n  {approach}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# CHUNK SIZE GUIDELINES:
+chunk_sizes = """
+SMALL chunks (100-200 words):
+  ✅ Better embedding quality (focused content)
+  ✅ More precise retrieval (find exact passage)
+  ❌ Less context per chunk (might miss connections)
+  ❌ More chunks to search through
+
+LARGE chunks (500-1000 words):
+  ✅ More context per chunk (better understanding)
+  ✅ Fewer chunks (faster search)
+  ❌ Diluted embedding (less precise match)
+  ❌ Might exceed LLM context window
+
+SWEET SPOT: 200-500 words with 50-100 word overlap
+  → Overlap preserves context at boundaries
+  → Most production RAG systems use this range
+"""
+
+print(chunk_sizes)</div>
+
+<div class="code-block"># ── STEP 5: LangChain chunking implementation ──
+# The most common production chunking approach:
+
+chunking_code = """
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+# RECOMMENDED: Recursive character text splitter
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=500,       # target: 500 characters per chunk
+    chunk_overlap=50,     # overlap 50 chars between chunks
+    separators=[
+        "\\n\\n",          # split on paragraphs first
+        "\\n",             # then on lines
+        ". ",              # then on sentences
+        " ",               # then on words
+        "",                # finally on characters
+    ],
+    length_function=len,
+)
+
+# Split a document:
+document = open("handbook.pdf").read()
+chunks = splitter.split_text(document)
+print(f"Split into {len(chunks)} chunks")
+
+# Each chunk:
+for i, chunk in enumerate(chunks[:3]):
+    print(f"\\nChunk {i}: {len(chunk)} chars")
+    print(chunk[:100] + "...")
+"""
+
+print(chunking_code)
+
+# ADVANCED: DOCUMENT-STRUCTURE-AWARE SPLITTING:
+structure_split = """
+from langchain.text_splitter import MarkdownHeaderTextSplitter
+
+# Split markdown by headers (preserves hierarchy):
+header_splitter = MarkdownHeaderTextSplitter(
+    headers_to_split_on=[
+        ("#", "Header 1"),
+        ("##", "Header 2"),
+        ("###", "Header 3"),
+    ]
+)
+
+# Each chunk includes its header context:
+# Chunk content + "Section: Installation > Prerequisites"
+# → embedding includes section context
+# → better retrieval accuracy
+"""
+
+print(structure_split)
+
+# METADATA-AWARE CHUNKING:
+metadata_chunking = """
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+# Each chunk keeps document metadata:
+splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+
+documents = [{"content": text, "metadata": {"source": "file.pdf", "page": 1}}]
+chunks = splitter.split_documents(documents)
+
+for chunk in chunks:
+    # chunk.metadata preserved through splitting
+    print(f"{chunk.metadata['source']} p.{chunk.metadata['page']}: {chunk.page_content[:50]}...")
+"""
+
+print(metadata_chunking)
+
+# CHUNK SIZE TUNING:
+# Start with 500 chars, measure retrieval quality
+# If too many irrelevant results → smaller chunks
+# If missing context → larger chunks or more overlap</div>
+
+<div class="code-block"># ── STEP 6: Embedding and storing ──
+# After chunking, embed and store in vector database.
+
+# PYTHON IMPLEMENTATION (Django + pgvector):
+store_code = """
+from openai import OpenAI
+from pgvector.django import VectorField
+from django.db import models
+
+client = OpenAI()
+
+class Document(models.Model):
+    content = models.TextField()
+    embedding = VectorField(dimensions=1536)
+    metadata = models.JSONField(default=dict)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    @classmethod
+    def ingest(cls, file_path):
+        # 1. Extract text:
+        text = extract_text(file_path)
+
+        # 2. Clean:
+        text = clean_text(text)
+
+        # 3. Chunk:
+        chunks = chunk_text(text, size=500, overlap=50)
+
+        # 4. Embed all chunks (batch for efficiency):
+        embeddings = client.embeddings.create(
+            model="text-embedding-3-small",
+            input=chunks  # batch (cheaper than one-by-one)
+        ).data
+
+        # 5. Store in database:
+        documents = []
+        for chunk, emb in zip(chunks, embeddings):
+            doc = cls.objects.create(
+                content=chunk,
+                embedding=emb.embedding,
+                metadata={"source": file_path, "chunk_size": len(chunk)},
+            )
+            documents.append(doc)
+
+        return documents
+"""
+
+print(store_code)
+
+# BATCH EMBEDDING (cost optimization):
+batch_code = """
+# Embedding API charges per token.
+# Batch requests are MUCH cheaper than individual:
+
+chunks = ["chunk1", "chunk2", "chunk3", ...]  # 100+ chunks
+
+# ❌ EXPENSIVE (one API call per chunk):
+for chunk in chunks:
+    embedding = client.embeddings.create(input=chunk)  # 100 API calls!
+
+# ✅ CHEAP (one API call for all):
+response = client.embeddings.create(
+    model="text-embedding-3-small",
+    input=chunks  # 1 API call, batch pricing
+)
+
+# OpenAI allows up to 2048 inputs per batch request.
+# This is 10-100x cheaper and faster!
+"""
+
+print(batch_code)
+
+# INGESTION CHECKLIST:
+checklist = [
+    "Extract text from source format (PDF/HTML/DOCX)",
+    "Clean text (remove boilerplate, fix encoding)",
+    "Detect document structure (headers, sections)",
+    "Add metadata (source, page, date, author)",
+    "Chunk with appropriate strategy (200-500 words)",
+    "Use overlap (50-100 words) for context continuity",
+    "Batch embed all chunks (cheaper, faster)",
+    "Store in vector database with metadata",
+    "Create HNSW index for fast search",
+    "Test retrieval quality on sample queries",
+    "Monitor and re-ingest when documents change",
+]
+
+print("INGESTION CHECKLIST:")
+for item in checklist:
+    print(f"  ☐ {item}")
+
+# THE BIG PICTURE:
+# Good ingestion = good RAG.
+# The quality of your RAG system is limited by the quality of your data pipeline.
+# "Garbage in, garbage out" — invest in ingestion quality.
+# The ingestion pipeline is the FOUNDATION of every RAG system.</div>
 
 PRODUCTION TOOLS (2024-2025):
   Unstructured.io → universal parser, ২৫+ formats
