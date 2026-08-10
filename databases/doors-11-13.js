@@ -25,35 +25,331 @@ doors.push({
 <div class="dialogue"><strong>গুরু:</strong> (হাসেন) রাখতে পারো। কিন্তু খোঁজবে কীভাবে? ধরো তোমার কাছে ১০ লক্ষ ডকুমেন্ট আছে, প্রতিটির একটি ১৫৩৬-মাত্রিক ভেক্টর (OpenAI ada-002)। তুমি একটি প্রশ্ন করলে — "machine learning for healthcare" — সেও একটি ১৫৩৬-মাত্রিক ভেক্টর হয়ে যায়। এখন তোমাকে ১০ লক্ষ ভেক্টরের মধ্যে সবচেয়ে কাছেরগুলো খুঁজতে হবে। সাধারণ টেবিলে এটা O(n) — প্রতিটি ভেক্টরের সাথে তুলনা। ১০ লক্ষ * ১৫৩৬ গুণ = ১৫ কোটি অপারেশন। প্রতি কোয়েরিতে! এটা অচল।</div>
 <div class="dialogue en"><strong>Guru:</strong> (laughs) You can store them. But how will you search? Say you have 1 million documents, each with a 1536-dimensional vector (OpenAI ada-002). A query — "machine learning for healthcare" — also becomes a 1536-dimensional vector. Now find the nearest among 1 million. In a regular table, that's O(n) — compare against every vector. 1 million * 1536 = 150 million operations per query! Unworkable.</div>
 
-<div class="code-block">
-<strong>ভেক্টর ডাটাবেস — কী করে ভিন্ন?</strong>
+<div class="code-block"># ── STEP 1: What is a vector database? ──
+# A VECTOR DATABASE stores and searches HIGH-DIMENSIONAL VECTORS.
+# These vectors represent the MEANING of text, images, or audio.
 
-<strong>১. সংরক্ষণ (Storage):</strong>
-প্রতিটি ডকুমেন্ট = (id, vector, metadata)
-vector = [0.023, -0.114, 0.891, ...] (১৫৩৬টি float)
-metadata = {source: "pdf", date: "2025-01-15", author: "..."}
+# Each document/item is stored as:
+# (id, vector, metadata)
+# vector = [0.023, -0.114, 0.891, ...] (e.g., 1536 dimensions from OpenAI embeddings)
+# metadata = {"source": "pdf", "date": "2025-01-15", "author": "..."}
 
-<strong>২. অনুসন্ধান (Search):</strong>
-কোয়েরি ভেক্টর q দেওয়া হলে:
-- সবচেয়ে কাছের k-টি ভেক্টর ফেরত দাও
-- কাছের = cosine similarity বা L2 distance দ্বারা
+# VECTOR SEARCH = find the K NEAREST vectors to a query vector.
+# This is SEMANTIC SEARCH — find by MEANING, not exact words.
 
-cosine_similarity(a, b) = (a · b) / (|a| * |b|)
-মান ১.০ = অভিন্ন দিক, ০.০ = লম্ব, -১.০ = বিপরীত দিক
+# Example:
+# Query: "bank account hacked"
+# Vector DB finds: "financial breach", "cyber heist", "unauthorized transfer"
+# Even though exact words differ, the MEANING is similar.
 
-<strong>৩. কেন সাধারণ DB যথেষ্ট নয়:</strong>
-B-tree index = exact match বা range-এর জন্য
-ভেক্টর similarity = ১৫৩৬-মাত্রিক স্থানে nearest neighbor
-এর জন্য দরকার বিশেষ index structure (পরের দরজায়)
+import numpy as np
 
-<strong>জনপ্রিয় ভেক্টর ডাটাবেস:</strong>
-• Pinecone — managed, production-ready, serverless
-• Chroma — open-source, local-first, Python
-• Milvus — open-source, বড় স্কেল (Zilliz = managed)
-• Weaviate — open-source, GraphQL + REST
-• pgvector — PostgreSQL extension (SQL + vector!)
-• Qdrant — Rust-based, দ্রুত, ফিল্টারিং সমর্থন
-</div>
+# Each item is a point in high-dimensional space:
+item_vectors = {
+    "Python tutorial":  np.array([0.9, 0.1, 0.8, 0.2]),
+    "Java tutorial":    np.array([0.8, 0.2, 0.7, 0.3]),
+    "Cooking recipe":   np.array([0.1, 0.9, 0.2, 0.8]),
+    "Travel guide":     np.array([0.2, 0.8, 0.3, 0.9]),
+}
+
+# Query: "programming"
+query = np.array([0.85, 0.15, 0.75, 0.25])
+
+# Find most similar (cosine similarity):
+def cosine_sim(a, b):
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+results = []
+for item, vec in item_vectors.items():
+    sim = cosine_sim(query, vec)
+    results.append((item, sim))
+
+results.sort(key=lambda x: -x[1])
+print("Semantic search for 'programming':")
+for item, sim in results:
+    print(f"  {item}: {sim:.3f}")
+# Python tutorial: 0.998 ← most similar
+# Java tutorial: 0.974 ← also similar
+# Cooking recipe: 0.374 ← different</div>
+
+<div class="code-block"># ── STEP 2: Similarity metrics ──
+# How do we measure "closeness" of two vectors?
+
+import numpy as np
+
+# THREE COMMON METRICS:
+
+# 1. COSINE SIMILARITY (most common for text):
+# Measures ANGLE between vectors (ignores magnitude).
+# Range: -1 to 1 (1 = same direction, 0 = perpendicular, -1 = opposite)
+def cosine_similarity(a, b):
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+# 2. EUCLIDEAN DISTANCE (L2):
+# Straight-line distance between points.
+# Range: 0 to infinity (0 = identical)
+def euclidean_distance(a, b):
+    return np.sqrt(np.sum((a - b) ** 2))
+
+# 3. DOT PRODUCT (inner product):
+# Simple but affected by vector magnitude.
+def dot_product(a, b):
+    return np.dot(a, b)
+
+# Comparison:
+a = np.array([1, 2, 3])
+b = np.array([2, 4, 6])  # same direction, double magnitude
+
+print(f"Cosine similarity: {cosine_similarity(a, b):.3f}")  # 1.0 (same direction!)
+print(f"Euclidean distance: {euclidean_distance(a, b):.3f}")  # 3.74 (far apart)
+print(f"Dot product: {dot_product(a, b):.3f}")  # 28.0 (affected by magnitude)
+
+# WHEN TO USE WHICH:
+# Cosine: text/embeddings (meaning comparison, magnitude doesn't matter)
+# Euclidean: spatial data (physical distance matters)
+# Dot product: when magnitude is meaningful (importance/weight)</div>
+
+<div class="code-block"># ── STEP 3: The nearest neighbor problem ──
+# Given a query vector, find the K CLOSEST vectors in the database.
+
+# BRUTE FORCE: compare query to EVERY vector. O(n) per query.
+# For 1 million vectors × 1536 dimensions = 1.5 billion operations.
+# This is SLOW for real-time search.
+
+# APPROXIMATE NEAREST NEIGHBOR (ANN):
+# Trade a little accuracy for MASSIVE speed.
+# Instead of exact results, get "close enough" results 100-1000x faster.
+
+# POPULAR ANN ALGORITHMS:
+ann_algorithms = {
+    "HNSW (Hierarchical Navigable Small World)": {
+        "how": "Graph-based. Builds layers of connections.",
+        "speed": "Very fast, high recall",
+        "memory": "High (stores graph)",
+        "used_by": "Pinecone, Chroma, pgvector",
+    },
+    "IVF (Inverted File Index)": {
+        "how": "K-means clustering. Search only relevant clusters.",
+        "speed": "Fast, moderate recall",
+        "memory": "Moderate",
+        "used_by": "FAISS, Milvus",
+    },
+    "PQ (Product Quantization)": {
+        "how": "Compress vectors into short codes.",
+        "speed": "Very fast, lower recall",
+        "memory": "Low (compressed)",
+        "used_by": "FAISS",
+    },
+    "ScaNN": {
+        "how": "Google's approach. Anisotropic quantization.",
+        "speed": "Very fast",
+        "memory": "Moderate",
+        "used_by": "Google",
+    },
+}
+
+print("ANN ALGORITHMS:")
+for algo, info in ann_algorithms.items():
+    print(f"\n  {algo}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 4: Vector databases comparison ──
+# POPULAR VECTOR DATABASES:
+
+vector_dbs = {
+    "pgvector (PostgreSQL)": {
+        "type": "SQL extension",
+        "pro": "Use SQL + vectors together! No new infrastructure.",
+        "con": "Not as fast as dedicated vector DBs at huge scale",
+        "best_for": "Small-medium apps, already using PostgreSQL",
+    },
+    "Pinecone": {
+        "type": "Managed SaaS",
+        "pro": "Fully managed, auto-scaling, production-ready",
+        "con": "Vendor lock-in, cost at scale",
+        "best_for": "Production apps, teams that don't want to manage infra",
+    },
+    "Chroma": {
+        "type": "Open source, Python-native",
+        "pro": "Easy setup, great DX, runs locally",
+        "con": "Not production-hardened at scale",
+        "best_for": "Prototyping, development, small projects",
+    },
+    "Milvus / Zilliz": {
+        "type": "Open source / managed",
+        "pro": "Extremely scalable (billions of vectors)",
+        "con": "Complex deployment (open source version)",
+        "best_for": "Large-scale production, enterprise",
+    },
+    "Qdrant": {
+        "type": "Open source (Rust)",
+        "pro": "Fast, rich filtering, good API",
+        "con": "Newer ecosystem",
+        "best_for": "Performance-critical apps with filtering",
+    },
+    "Weaviate": {
+        "type": "Open source",
+        "pro": "GraphQL API, built-in modules (auto-embedding)",
+        "con": "Complex configuration",
+        "best_for": "Apps needing auto-embedding + GraphQL",
+    },
+}
+
+print("VECTOR DATABASE COMPARISON:")
+for db, info in vector_dbs.items():
+    print(f"\n  {db}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# RECOMMENDATION FOR YOUR PROJECTS:
+# Start with: pgvector (if already using PostgreSQL) or Chroma (for prototyping)
+# Scale to: Pinecone or Milvus when you have millions of vectors</div>
+
+<div class="code-block"># ── STEP 5: Using pgvector (PostgreSQL + vectors) ──
+# pgvector adds vector operations to PostgreSQL. No new infrastructure needed!
+
+# SQL setup:
+sql_pgvector = """
+-- Install extension:
+CREATE EXTENSION vector;
+
+-- Create table with vector column:
+CREATE TABLE documents (
+    id SERIAL PRIMARY KEY,
+    content TEXT,
+    embedding VECTOR(1536),  -- OpenAI embedding dimensions
+    metadata JSONB
+);
+
+-- Create HNSW index for fast similarity search:
+CREATE INDEX ON documents USING hnsw (embedding vector_cosine_ops);
+
+-- Similarity search (find 5 most similar documents):
+SELECT content, 1 - (embedding <=> $1) as similarity
+FROM documents
+ORDER BY embedding <=> $1
+LIMIT 5;
+-- The <=> operator is cosine distance
+"""
+
+print(sql_pgvector)
+
+# PYTHON (Django + pgvector):
+python_pgvector = """
+# settings.py:
+# Install: pip install pgvector django-pgvector
+
+# models.py:
+from pgvector.django import VectorField
+
+class Document(models.Model):
+    content = models.TextField()
+    embedding = VectorField(dimensions=1536)
+    metadata = models.JSONField(default=dict)
+
+# Query (find similar documents):
+from pgvector.django import CosineDistance
+
+def search_similar(query_embedding, limit=5):
+    return Document.objects.annotate(
+        distance=CosineDistance('embedding', query_embedding)
+    ).filter(
+        distance__lt=0.5  # only similar enough
+    ).order_by('distance')[:limit]
+"""
+
+print(python_pgvector)
+
+# WHY pgvector IS GREAT:
+# - No new infrastructure (use existing PostgreSQL)
+# - SQL queries work with vectors
+# - Combine vector search with regular WHERE/GROUP BY
+# - ACID transactions on vector data
+# - Full text search + vector search in one query</div>
+
+<div class="code-block"># ── STEP 6: Vector DB use cases and RAG ──
+# The #1 use case: RAG (Retrieval Augmented Generation)
+
+# HOW RAG WORKS:
+rag_pipeline = """
+1. INGEST: Documents → embedding model → vector database
+   "Python is great" → [0.9, 0.1, 0.8, ...] → store in vector DB
+
+2. QUERY: User question → embedding model → vector search
+   "What programming language?" → [0.85, 0.15, 0.75, ...]
+   → Find nearest vectors → retrieve relevant documents
+
+3. AUGMENT: Retrieved documents + user question → LLM
+   "Context: [relevant docs]. Question: [user question]"
+
+4. GENERATE: LLM generates answer using retrieved context
+   "Based on the documents, Python is recommended because..."
+"""
+
+print(rag_pipeline)
+
+# PYTHON RAG IMPLEMENTATION (simplified):
+rag_code = """
+from openai import OpenAI
+import numpy as np
+
+client = OpenAI()
+
+def embed(text):
+    response = client.embeddings.create(
+        model="text-embedding-3-small",
+        input=text
+    )
+    return response.data[0].embedding
+
+# Step 1: Store documents (already done at ingestion)
+# db.insert(document_text, embed(document_text))
+
+# Step 2: User asks a question
+question = "How do I create a Django model?"
+
+# Step 3: Find relevant documents
+query_embedding = embed(question)
+relevant_docs = Document.objects.annotate(
+    distance=CosineDistance('embedding', query_embedding)
+).order_by('distance')[:5]  # top 5 most similar
+
+# Step 4: Feed to LLM with context
+context = "\\n\\n".join([doc.content for doc in relevant_docs])
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[
+        {"role": "system", "content": f"Answer based on this context: {context}"},
+        {"role": "user", "content": question}
+    ]
+)
+print(response.choices[0].message.content)
+"""
+
+print(rag_code)
+
+# VECTOR DB USE CASES:
+use_cases = {
+    "RAG": "LLM + retrieved context for accurate Q&A",
+    "Semantic Search": "Search by meaning, not keywords",
+    "Recommendation": "Find similar items (products, articles, music)",
+    "Deduplication": "Find near-duplicate content",
+    "Image Search": "Find similar images using CLIP embeddings",
+    "Anomaly Detection": "Find outliers (far from all clusters)",
+    "Clustering": "Group similar items together",
+    "Classification": "KNN classification on embeddings",
+}
+
+print("VECTOR DB USE CASES:")
+for use_case, desc in use_cases.items():
+    print(f"  {use_case}: {desc}")
+
+# THE FUTURE:
+# Vector databases are the BACKBONE of modern AI applications.
+# Every RAG system, every semantic search, every recommendation engine
+# uses vector databases under the hood.
+# Understanding them = understanding modern AI infrastructure.</div>
 
 <div class="callout info"><span class="co-icon">🎯</span><div><strong>বাস্তব ব্যবহার (AI Pipeline):</strong><br>
 ১. <strong>RAG (Book ১০):</strong> ইউজার প্রশ্ন → embedding → ভেক্টর DB থেকে প্রাসঙ্গিক ডকুমেন্ট → LLM কে দাও<br>
