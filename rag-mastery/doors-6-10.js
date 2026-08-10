@@ -490,88 +490,395 @@ doors.push({
 </div>
 <div class="svg-caption">হাইব্রিড সার্চ — ভেক্টর ও নলেজ গ্রাফ একসাথে সংযুক্ত উত্তর</div>
 
-<div class="code-block">GraphRAG — Knowledge Graphs for RAG:
+<div class="code-block"># ── STEP 1: What is GraphRAG? ──
+# GraphRAG combines KNOWLEDGE GRAPHS with vector RAG.
+# Traditional RAG: flat chunks. GraphRAG: connected entities.
 
-MICROSOFT GRAPHRAG (2024):
-  Traditional RAG:
-    Documents → chunks → embeddings → vector DB
-    → flat, isolated pieces
-  
-  GraphRAG:
-    Documents → entities + relationships → 
-    knowledge graph → community summaries →
-    graph-aware retrieval
+comparison = """
+TRADITIONAL RAG:
+  Documents → chunks → embeddings → vector database
+  → Flat, isolated pieces (no relationships)
 
-PIPELINE:
+GRAPHRAG (Microsoft, 2024):
+  Documents → entities + relationships → knowledge graph
+  → community summaries → graph-aware retrieval
+  → Connected, multi-hop reasoning
 
-  # ─────────────────────────────────────# 
-  #  ১. ENTITY EXTRACTION                 # 
-  #  প্রতিটা chunk → LLM → entities       # 
-  #  "Apple was founded by Steve Jobs"   # 
-  #  → Entity: Apple, Steve Jobs          # 
-  #  → Relation: founded_by               # 
-  # ──────────────# ──────────────────────# 
-                 ↓
-  # ─────────────────────────────────────# 
-  #  ২. KNOWLEDGE GRAPH CONSTRUCTION      # 
-  #  Nodes: entities (Apple, Steve Jobs)  # 
-  #  Edges: relations (founded_by)        # 
-  #  Properties: types, attributes        # 
-  #  → Neo4j, NetworkX, বা custom        # 
-  # ──────────────# ──────────────────────# 
-                 ↓
-  # ─────────────────────────────────────# 
-  #  ৩. COMMUNITY DETECTION               # 
-  #  Graph → clusters of related entities # 
-  #  → Leiden algorithm                   # 
-  #  → "Tech companies" community         # 
-  #  → "AI researchers" community         # 
-  #  → প্রতিটা community-র summary        # 
-  # ──────────────# ──────────────────────# 
-                 ↓
-  # ─────────────────────────────────────# 
-  #  ৪. RETRIEVAL                         # 
-  #  Query → identify relevant entities   # 
-  #  → traverse graph (multi-hop)         # 
-  #  → community summaries               # 
-  #  → combine with vector search        # 
-  # ──────────────# ──────────────────────# 
-                 ↓
-  # ─────────────────────────────────────# 
-  #  ৫. ANSWER GENERATION                 # 
-  #  Graph context + vector context → LLM # 
-  #  → synthesized, connected answer      # 
-  # ─────────────────────────────────────# 
+GraphRAG captures RELATIONSHIPS between entities.
+Traditional RAG finds RELATED TEXT.
+GraphRAG finds RELATED CONCEPTS and their CONNECTIONS.
+"""
 
-WHEN GRAPH RAG WINS:
+print(comparison)
 
-  ✅ "How are X and Y related?"
-  ✅ "What are all the impacts of X?"
-  ✅ "Who are the key people in domain Z?"
-  ✅ Multi-entity reasoning
-  
-  → vector RAG struggles, GraphRAG excels
+# WHEN GRAPHRAG WINS:
+when_graphrag = {
+    "Relationship questions": "'How are X and Y related?'",
+    "Impact analysis": "'What are all the impacts of X?'",
+    "Entity networks": "'Who are the key people in domain Z?'",
+    "Multi-hop reasoning": "'A → B → C → what is the connection?'",
+    "Complex analysis": "'Summarize the entire domain of X'",
+}
 
-WHEN VECTOR RAG WINS:
+print("WHEN GRAPHRAG WINS:")
+for case, example in when_graphrag.items():
+    print(f"  {case}: {example}")
 
-  ✅ "What does the document say about X?"
-  ✅ Specific fact lookup
-  ✅ Semantic similarity queries
+# WHEN VECTOR RAG WINS:
+when_vector = {
+    "Factoid lookup": "'What is X?' (single fact)",
+    "Specific passage": "'What does the document say about X?'",
+    "Semantic similarity": "Find text similar to query",
+}
 
-HYBRID: Vector + Graph (best of both)
-  → vector for specific facts
-  → graph for relationships + multi-hop
+print("\nWHEN VECTOR RAG WINS:")
+for case, example in when_vector.items():
+    print(f"  {case}: {example}")
 
-LIGHTWEIGHT GRAPH RAG:
-  LightRAG (2024) → simpler, faster than Microsoft
-  Nano-GraphRAG → minimal implementation
-  → ছোট dataset-এ ট্রাই করো
+# BEST: HYBRID (both)
+print("\nBEST: HYBRID (vector + graph)")
+print("  Vector for specific facts, graph for relationships")</div>
 
-TOOLS:
-  Neo4j → graph database, Cypher query
-  LlamaIndex KnowledgeGraphIndex
-  LangChain GraphCypherQAChain
-  Microsoft GraphRAG → open source</div>
+<div class="code-block"># ── STEP 2: GraphRAG pipeline ──
+# How GraphRAG works (Microsoft implementation).
+
+pipeline = """
+MICROSOFT GRAPHRAG PIPELINE:
+
+1. ENTITY EXTRACTION:
+   Each chunk → LLM extracts entities + relationships
+   "Apple was founded by Steve Jobs in 1976"
+   → Entity: Apple (Company)
+   → Entity: Steve Jobs (Person)
+   → Relationship: founded_by (Apple → Steve Jobs)
+   → Relationship: founded_in (Apple → 1976)
+
+2. KNOWLEDGE GRAPH CONSTRUCTION:
+   Nodes: entities (Apple, Steve Jobs, 1976)
+   Edges: relationships (founded_by, founded_in)
+   Properties: types, attributes, source references
+
+3. COMMUNITY DETECTION:
+   Graph → clusters of related entities (Leiden algorithm)
+   → "Tech companies" community
+   → "AI researchers" community
+   → Each community gets an LLM-generated SUMMARY
+
+4. RETRIEVAL:
+   Query → identify relevant entities
+   → Traverse graph (multi-hop)
+   → Retrieve community summaries
+   → Combine with vector search results
+
+5. ANSWER GENERATION:
+   Graph context + vector context → LLM
+   → Synthesized, connected answer
+"""
+
+print(pipeline)
+
+# ENTITY EXTRACTION EXAMPLE:
+extraction_code = """
+def extract_entities(text):
+    \"\"\"Use LLM to extract entities and relationships from text.\"\"\"
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "Extract entities and relationships from the text. "
+                    "Format: (entity1, relationship, entity2) per line."
+                )
+            },
+            {"role": "user", "content": text}
+        ],
+        temperature=0,
+    )
+    return response.choices[0].message.content
+
+# Example:
+text = "Django is a Python web framework created by Adrian Holovaty in 2003."
+triples = extract_entities(text)
+# (Django, is_a, Web Framework)
+# (Django, created_by, Adrian Holovaty)
+# (Django, created_in, 2003)
+# (Django, language, Python)
+"""
+
+print(extraction_code)</div>
+
+<div class="code-block"># ── STEP 3: Community detection and summarization ──
+# GraphRAG groups related entities into COMMUNITIES.
+
+communities = """
+COMMUNITY DETECTION:
+
+Knowledge graph may have thousands of entities.
+Group them into CLUSTERS of related entities:
+
+Leiden Algorithm:
+  → Finds groups with dense internal connections
+  → "Tech Companies": Apple, Google, Microsoft, Meta
+  → "AI Researchers": Hinton, LeCun, Bengio, Schmidhuber
+  → "Web Frameworks": Django, Flask, FastAPI, Rails
+
+For each community:
+  → LLM generates a SUMMARY
+  → "This community covers major technology companies
+     founded in the late 20th century, focused on
+     software, hardware, and AI."
+
+RETRIEVAL:
+  When user asks about "tech companies":
+  → Find relevant community
+  → Return community summary (broad overview)
+  → Plus specific entity details from graph traversal
+"""
+
+print(communities)
+
+# COMMUNITY SUMMARY GENERATION:
+summary_code = """
+def generate_community_summary(community_entities, community_edges):
+    \"\"\"Generate a summary for a community of related entities.\"\"\"
+    prompt = f\"\"\"Summarize this group of related entities:
+
+    Entities: {community_entities}
+    Relationships: {community_edges}
+
+    Provide a concise summary of what this community represents.\"\"\"
+
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.3,
+    )
+    return response.choices[0].message.content
+"""
+
+print(summary_code)
+
+# BENEFITS OF COMMUNITY SUMMARIES:
+benefits = [
+    "Global view (not just local chunks)",
+    "Multi-hop reasoning (connections across entities)",
+    "Scalable (summarize once, reuse for many queries)",
+    "Better for 'big picture' questions",
+]
+
+print("COMMUNITY SUMMARY BENEFITS:")
+for benefit in benefits:
+    print(f"  ✅ {benefit}")</div>
+
+<div class="code-block"># ── STEP 4: GraphRAG vs traditional RAG comparison ──
+# When to use each approach.
+
+comparison_table = {
+    "Feature": {
+        "Traditional RAG": "Flat chunk retrieval",
+        "GraphRAG": "Connected entity retrieval",
+    },
+    "Best for": {
+        "Traditional RAG": "Factoid Q&A, document search",
+        "GraphRAG": "Relationships, multi-hop, analysis",
+    },
+    "Setup cost": {
+        "Traditional RAG": "Low (embed + store)",
+        "GraphRAG": "High (extract entities, build graph)",
+    },
+    "Query speed": {
+        "Traditional RAG": "Fast (~100ms)",
+        "GraphRAG": "Slower (~500ms, graph traversal)",
+    },
+    "Cost per query": {
+        "Traditional RAG": "$0.001-0.01",
+        "GraphRAG": "$0.01-0.05 (more LLM calls)",
+    },
+    "Indexing cost": {
+        "Traditional RAG": "Embed all chunks (cheap)",
+        "GraphRAG": "LLM extraction + community detection (expensive)",
+    },
+    "Accuracy (simple Q&A)": {
+        "Traditional RAG": "75-85%",
+        "GraphRAG": "70-80% (overkill for simple questions)",
+    },
+    "Accuracy (complex Q&A)": {
+        "Traditional RAG": "30-50%",
+        "GraphRAG": "75-90% (excels at relationships)",
+    },
+}
+
+print("GRAPHRAG vs TRADITIONAL RAG:")
+for feature, values in comparison_table.items():
+    print(f"\n  {feature}:")
+    for approach, value in values.items():
+        print(f"    {approach}: {value}")
+
+# DECISION GUIDE:
+decision = """
+WHEN TO USE TRADITIONAL RAG:
+  → Simple Q&A (factoid questions)
+  → Document search
+  → Small knowledge base (< 1000 docs)
+  → Tight latency budget
+  → Limited budget for indexing
+
+WHEN TO USE GRAPHRAG:
+  → Complex relationship questions
+  → Multi-hop reasoning
+  → Large, interconnected knowledge base
+  → "Big picture" / domain summary questions
+  → When accuracy on complex queries is critical
+
+WHEN TO USE HYBRID:
+  → Most production systems
+  → Vector RAG for simple queries
+  → GraphRAG for complex queries
+  → Route based on query type
+"""
+
+print(decision)</div>
+
+<div class="code-block"># ── STEP 5: Lightweight GraphRAG implementations ──
+# Microsoft GraphRAG is powerful but expensive. Lighter alternatives exist.
+
+tools = {
+    "Microsoft GraphRAG": {
+        "complexity": "High",
+        "cost": "Expensive indexing (many LLM calls)",
+        "quality": "Best",
+        "best_for": "Enterprise, large knowledge bases",
+        "github": "microsoft/graphrag",
+    },
+    "LightRAG": {
+        "complexity": "Medium",
+        "cost": "Moderate",
+        "quality": "Good",
+        "best_for": "Startups, medium datasets",
+        "github": "HKUDS/LightRAG",
+    },
+    "Nano-GraphRAG": {
+        "complexity": "Low",
+        "cost": "Low",
+        "quality": "Decent",
+        "best_for": "Prototyping, small datasets",
+        "github": "gusye1234/nano-graphrag",
+    },
+    "LlamaIndex KnowledgeGraphIndex": {
+        "complexity": "Medium",
+        "cost": "Moderate",
+        "quality": "Good",
+        "best_for": "LlamaIndex-based projects",
+        "github": "run-llama/llama_index",
+    },
+    "Neo4j + LangChain": {
+        "complexity": "Medium",
+        "cost": "Neo4j hosting + LLM calls",
+        "quality": "Good",
+        "best_for": "Graph database users",
+        "github": "neo4j + langchain",
+    },
+}
+
+print("GRAPHRAG TOOLS:")
+for tool, info in tools.items():
+    print(f"\n  {tool}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# NEO4J + LANGCHAIN EXAMPLE:
+neo4j_code = """
+from langchain.graphs import Neo4jGraph
+from langchain.chains import GraphCypherQAChain
+
+# Connect to Neo4j:
+graph = Neo4jGraph(
+    url="bolt://localhost:7687",
+    username="neo4j",
+    password="password"
+)
+
+# Ask questions using Cypher (graph query language):
+chain = GraphCypherQAChain.from_llm(
+    llm=ChatOpenAI(temperature=0),
+    graph=graph,
+)
+
+result = chain.run("Who founded Apple?")
+# → "Apple was founded by Steve Jobs, Steve Wozniak, and Ronald Wayne."
+
+# Cypher query (auto-generated by LLM):
+# MATCH (c:Company {name: 'Apple'})-[:FOUNDED_BY]->(p:Person)
+# RETURN p.name
+"""
+
+print(neo4j_code)</div>
+
+<div class="code-block"># ── STEP 6: GraphRAG in production ──
+# How to deploy GraphRAG for real applications.
+
+production = """
+PRODUCTION GRAPHRAG ARCHITECTURE:
+
+1. INDEXING (offline, batch):
+   Documents → LLM entity extraction → Knowledge graph
+   → Community detection (Leiden)
+   → Community summaries (LLM)
+   → Store in Neo4j + vector database
+   → Run weekly/monthly (when documents change)
+
+2. QUERY ROUTING (real-time):
+   Classify query type:
+   → Simple factoid? → Use traditional vector RAG
+   → Relationship/complex? → Use GraphRAG
+   → "Big picture"? → Use community summaries
+
+3. RETRIEVAL (real-time):
+   GraphRAG path:
+   → Extract entities from query
+   → Traverse graph (multi-hop)
+   → Retrieve relevant community summaries
+   → Combine with vector search results
+
+4. ANSWER GENERATION:
+   Graph context + vector context → LLM
+   → Synthesized, connected answer with citations
+
+COST OPTIMIZATION:
+  → Index entity extraction with cheaper model (GPT-4o-mini)
+  → Cache community summaries (don't recompute)
+  → Only use GraphRAG for complex queries (route simple ones)
+  → Incremental updates (don't rebuild entire graph)
+"""
+
+print(production)
+
+# GRAPHRAG CHECKLIST:
+checklist = [
+    "Start with traditional RAG (simpler, cheaper)",
+    "Add GraphRAG only if relationship questions fail",
+    "Use LightRAG or Nano-GraphRAG for prototyping",
+    "Consider Neo4j for production graph storage",
+    "Route queries: simple → vector, complex → graph",
+    "Cache community summaries (expensive to compute)",
+    "Use cheaper models for entity extraction",
+    "Incremental graph updates (not full rebuild)",
+    "Evaluate with RAGAS (adapted for graph queries)",
+    "Monitor cost (GraphRAG is 5-10x more expensive)",
+]
+
+print("GRAPHRAG CHECKLIST:")
+for item in checklist:
+    print(f"  ☐ {item}")
+
+# THE BIG PICTURE:
+# GraphRAG is the CUTTING EDGE of RAG (2024).
+# It solves the multi-hop reasoning problem that traditional RAG can't.
+# But it's expensive and complex.
+# Start simple, add graph when you NEED it.
+# The future of RAG is HYBRID: vector + graph + other modalities.
+# "The best tool for the job" — sometimes vector, sometimes graph, sometimes both.</div>
 
 <div class="dialogue">সংযোগ — connection, linkage। কুরআনে আল্লাহ বলেন — "মানুষ এক জাতি ছিল।" সব সংযুক্ত। প্রকৃতিতে সব কিছু এক জালে — কোষ, টিস্যু, অঙ্গ, দেহ। Knowledge graph-ও তেমনি — জ্ঞান বিচ্ছিন্ন নয়, সংযুক্ত। GraphRAG সেই সংযোগ ধরে। যে সংযোগ দেখে, সে গভীর বোঝে।</div>
 <div class="dialogue en">"Sambandh — connection, linkage. Allah says — 'Mankind was one community.' Everything connected. In nature, all in one web — cells, tissues, organs, body. Knowledge graphs too — knowledge isn't isolated, it's connected. GraphRAG captures those connections. One who sees connections, understands deeply."</div>`,
