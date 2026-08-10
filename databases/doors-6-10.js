@@ -1653,31 +1653,209 @@ result-এ প্রতিটি column সঠিক type? constraint মান�
 </div>
 <div class="svg-caption">চিত্র: একটি query ৬টি স্তর অতিক্রম করে — Parse → Optimize → Index → MVCC → Storage → Result।</div>
 
-<div class="code-block">— Trace: SELECT এর সম্পূর্ণ যাত্রা —
+<div class="code-block"># ── STEP 1: The journey begins — SQL text ──
+# When you type a SQL query, here's what happens INSIDE the database:
 
-  -- ব্যবহারকারীর query:
-  SELECT name FROM users WHERE id = 42;
+# User query:
+# SELECT name FROM users WHERE id = 42;
 
-  -- ১. Parser: SQL → parse tree
-  --    {SelectStmt: cols=[name], from=users, where=(id=42)}
+# STEP 1: PARSER
+# SQL text → abstract syntax tree (AST)
+parser_output = {
+    "type": "SelectStmt",
+    "columns": ["name"],
+    "from": "users",
+    "where": {"op": "=", "left": "id", "right": 42},
+}
 
-  -- ২. Optimizer: cost comparison
-  --    Plan A: Seq Scan (cost=145)
-  --    Plan B: Index Scan (cost=8.3) ← নির্বাচিত
+print("Step 1 — Parser output (AST):")
+for key, value in parser_output.items():
+    print(f"  {key}: {value}")
 
-  -- ৩. Index Engine: B-tree traverse
-  --    root[50] → left[30] → right[42] → tuple pointer
+# The parser checks SYNTAX (is the SQL valid?).
+# If syntax is wrong → ERROR immediately.
+# If valid → passes AST to the rewriter/optimizer.</div>
 
-  -- ৪. Transaction Manager (MVCC):
-  --    xmin/xmax check — এই tuple কি দৃশ্যমান?
+<div class="code-block"># ── STEP 2: The optimizer chooses a plan ──
+# The optimizer considers MULTIPLE ways to execute the query.
 
-  -- ৫. Storage Engine: page → buffer pool
-  --    page #42 মেমরিতে আনো → row পড়ো
+# For: SELECT name FROM users WHERE id = 42;
 
-  -- ৬. Result: "Karim" ব্যবহারকারীকে ফেরত দাও
+plans = {
+    "Plan A: Sequential Scan": {
+        "how": "Read every row in users table, check if id=42",
+        "cost": 145,  # cost units (I/O + CPU)
+        "note": "Bad for large tables",
+    },
+    "Plan B: Index Scan": {
+        "how": "Use primary key index to find id=42 directly",
+        "cost": 8.3,
+        "note": "Fast! B-tree lookup O(log n)",
+    },
+    "Plan C: Index-Only Scan": {
+        "how": "If 'name' is in the index, don't even read the table",
+        "cost": 4.1,
+        "note": "Fastest (covering index)",
+    },
+}
 
-  -- ⏱️ মোট সময়: 0.034 ms
-  -- ৫৫ বছরের গবেষণা — এক মুহূর্তে</div>
+print("Step 2 — Optimizer evaluates plans:")
+for plan, info in plans.items():
+    print(f"\n  {plan} (cost={info['cost']}):")
+    print(f"    How: {info['how']}")
+    print(f"    Note: {info['note']}")
+
+# WINNER: Plan B (Index Scan, cost=8.3)
+# The optimizer picks the LOWEST cost plan.</div>
+
+<div class="code-block"># ── STEP 3: Index traversal (B-tree) ──
+# The chosen plan uses the primary key index (B-tree).
+
+# B-TREE TRAVERSAL for id=42:
+btree_traversal = """
+Root node: [10 | 50 | 100]
+  → 42 is between 10 and 50 → go LEFT
+
+Left child: [20 | 30 | 40]
+  → 42 is greater than 40 → go RIGHT
+
+Right child: [42 | 45]
+  → Found! id=42 is here → get tuple pointer
+
+Tuple pointer → physical location of the row on disk
+"""
+
+print("Step 3 — B-tree traversal:")
+print(btree_traversal)
+
+# B-tree properties:
+# - BALANCED: all leaves at same depth (guaranteed O(log n))
+# - SORTED: keys in order (range queries work)
+# - Each node has multiple keys (minimize disk reads)
+# - Root is usually cached in memory</div>
+
+<div class="code-block"># ── STEP 4: Transaction visibility (MVCC) ──
+# Before returning the row, check transaction visibility.
+
+# MVCC VISIBILITY CHECK:
+# Each row has xmin (created by) and xmax (deleted by) transaction IDs.
+
+mvcc_check = """
+For row with id=42:
+  xmin = 1000  (created by transaction 1000)
+  xmax = NULL  (not deleted)
+
+Check: Is transaction 1000 visible to me?
+  - Was it committed before my transaction started? → YES
+  - Is xmax NULL (not deleted)? → YES
+
+Result: row is VISIBLE → can return it!
+
+If xmax was set (row was updated/deleted):
+  Check if the deleting transaction is visible to me.
+  If yes → row is gone, skip it.
+  If no → row is still visible (deletion not committed yet).
+"""
+
+print("Step 4 — MVCC visibility check:")
+print(mvcc_check)
+
+# WHY THIS MATTERS:
+# Without MVCC, readers would need to lock rows (blocking writers).
+# With MVCC, each transaction sees a consistent SNAPSHOT.
+# Readers never block writers. Writers never block readers.</div>
+
+<div class="code-block"># ── STEP 5: Storage engine — reading from disk ──
+# The actual data lives on disk in PAGES (typically 8KB blocks).
+
+storage_journey = """
+1. Buffer Pool Check:
+   Is page #42 already in memory (RAM)?
+   → YES: use it directly (cache hit!) ← fast
+   → NO: read from disk (cache miss) ← slow
+
+2. Disk Read (on cache miss):
+   Seek to the right position on disk
+   Read the 8KB page into buffer pool
+   This is the SLOWEST operation (~10ms for HDD, ~0.1ms for SSD)
+
+3. Extract Row:
+   From the 8KB page, find the specific row (id=42)
+   Extract the 'name' column value
+
+4. Return Result:
+   Send "Karim" back to the client
+"""
+
+print("Step 5 — Storage engine:")
+print(storage_journey)
+
+# BUFFER POOL: the most important performance optimization.
+# Frequently accessed pages stay in RAM (buffer pool).
+# If buffer pool is too small → constant disk reads → SLOW.
+# Typical buffer pool: 25-75% of total RAM.
+
+# POSTGRESQL: shared_buffers (default 128MB, should be 25% of RAM)
+# MySQL: innodb_buffer_pool_size (should be 50-70% of RAM)</div>
+
+<div class="code-block"># ── STEP 6: The complete picture ──
+# You now understand the FULL journey of a SQL query.
+
+journey_summary = """
+SELECT name FROM users WHERE id = 42;
+    ↓
+1. NETWORK:      Client sends SQL to server (~0.5ms)
+2. PARSE:        SQL text → AST (~0.001ms)
+3. OPTIMIZE:     Choose best plan (~0.1ms)
+4. EXECUTE:
+   4a. INDEX:    B-tree lookup for id=42 (~0.01ms)
+   4b. MVCC:     Check visibility (~0.001ms)
+   4c. STORAGE:  Read page from buffer pool/disk (~0.01ms in RAM, ~10ms on disk)
+5. RETURN:       Send result back to client (~0.5ms)
+
+Total: ~1ms (cache hit) to ~12ms (cache miss, HDD)
+"""
+
+print(journey_summary)
+
+# THE COMPLETE DATABASE STACK (what you now know):
+stack = {
+    "Door 1": "Relational Model — tables, rows, columns, keys",
+    "Door 2": "SQL — the language to query databases",
+    "Door 3": "Indexing — B-trees, EXPLAIN, query speed",
+    "Door 4": "ACID — transactions, isolation, MVCC",
+    "Door 5": "Normalization — reducing redundancy, 1NF-3NF",
+    "Door 6": "NoSQL — Redis, MongoDB, Neo4j, CAP theorem",
+    "Door 7": "Distributed — replication, sharding, consistency",
+    "Door 8": "Optimization — query plans, N+1, Django ORM",
+    "Door 9": "Data Warehousing — OLAP, star schema, columnar",
+    "Door 10": "Complete Journey — from SQL text to disk read",
+}
+
+print("THE COMPLETE DATABASE STACK:")
+for door, topic in stack.items():
+    print(f"  {door}: {topic}")
+
+# FROM 1970 TO 2025:
+# 1970: Codd's relational model
+# 1974: SQL created (IBM)
+# 1979: Selinger's query optimizer (IBM System R)
+# 1996: PostgreSQL 1.0, MySQL
+# 2009: MongoDB (NoSQL revolution)
+# 2012: Redis mainstream adoption
+# 2015: Cloud data warehouses (BigQuery, Redshift)
+# 2020: Vector databases (pgvector, Pinecone)
+# 2025: AI-powered databases
+
+# 55 YEARS OF INNOVATION.
+# And you now understand every layer.
+# LedgerPilot (MySQL), Ipractus (PostgreSQL) — you know
+# exactly what happens inside when you write a query.
+# That knowledge makes you a better engineer.
+
+# "Data is the new oil." — Clive Humby (2006)
+# But oil needs REFINING (data engineering) to be useful.
+# You now know how the refinery works.</div>
 
 <div class="secret-box">🏛️ <strong>উপাত্তের ভল্ট = নয়টি দরজার সমষ্টি।</strong> Relational Model (দরজা ১) → SQL (দরজা ২) → Indexing (দরজা ৩) → ACID (দরজা ৪) → Normalization (দরজা ৫) → NoSQL (দরজা ৬) → Distributed (দরজা ৭) → Optimization (দরজা ৮) → Data Warehouse (দরজা ৯)। Codd-এর ১৯৭০ সালের relational model থেকে আজকের distributed, NoSQL, columnar warehouse — ৫৫ বছরের যাত্রা। এবং তুমি এখন প্রতিটি স্তর বোঝো। LedgerPilot MySQL, Ipractus PostgreSQL — এখন তুমি জানো সেগুলোর ভেতরে কী চলছে। এটাই উপাত্তের ভল্ট — সারি থেকে অর্থ, query থেকে জ্ঞান।</div>`,
   senior: {
