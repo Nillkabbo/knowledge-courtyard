@@ -26,63 +26,382 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Context Window Wasted:</strong> Filled 100K context with irrelevant history — model ignored the question. Fix: curate aggressively.</div></div>
 
 
-<div class="code-block">Context Window Economics — The Canvas:
+<div class="code-block"># ── STEP 1: What is a context window? ──
+# The context window is the MAXIMUM text an LLM can process at once.
 
-WINDOW SIZES (2024-2025):
-  GPT-4o:        ১২৮,০০০ tokens  (~৯৬,০০০ words)
-  Claude 3.5:    ২০০,০০০ tokens  (~১৫০,০০০ words)
-  Gemini 1.5:    ১,০০০,০০০ tokens (~৭৫০,০০০ words)
-  Llama 3.1:     ১২৮,০০০ tokens
+window_sizes = {
+    "GPT-4o": {"tokens": 128_000, "words": "~96,000", "cost": "$2.50/M in, $10/M out"},
+    "Claude 3.5 Sonnet": {"tokens": 200_000, "words": "~150,000", "cost": "$3/M in, $15/M out"},
+    "Gemini 1.5 Pro": {"tokens": 1_000_000, "words": "~750,000", "cost": "$1.25/M in, $5/M out"},
+    "Llama 3.1 405B": {"tokens": 128_000, "words": "~96,000", "cost": "self-hosted"},
+}
 
-ECONOMICS — প্রতি টোকেন খরচ:
-  Input:  $১-১০ / million tokens
-  Output: $৩-৩০ / million tokens
-  
-  Context full হলে:
-  128K input tokens * $৫/M = $০.৬৪ per call
-  → হাজার call = $৬৪০
-  → লাখ call = $৬৪,০০০
+print("CONTEXT WINDOW SIZES:")
+for model, info in window_sizes.items():
+    print(f"\n  {model}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
 
+# WHAT FITS IN 128K TOKENS?
+examples = """
+128K tokens = approximately:
+  → 300 pages of text
+  → 1 full novel (like "Pride and Prejudice")
+  → 500 typical web pages
+  → 100 research papers (abstracts)
+  → 10,000 lines of code
+  → 2 hours of conversation transcript
+"""
+print(examples)
+
+# WHAT DOESN'T FIT?
+limitations = """
+Still NOT enough for:
+  → Entire codebase (millions of lines)
+  → Entire book library
+  → Every document in your company
+  → All of Wikipedia (4B+ words)
+
+That's why we need RAG (retrieve relevant parts, not everything).
+"""
+print(limitations)</div>
+
+<div class="code-block"># ── STEP 2: Context window economics ──
+# Every token costs money. Bigger context = more cost.
+
+economics = """
+TOKEN COSTS (2024-2025):
+
+GPT-4o:
+  Input:  $2.50 / million tokens
+  Output: $10.00 / million tokens
+
+Claude 3.5 Sonnet:
+  Input:  $3.00 / million tokens
+  Output: $15.00 / million tokens
+
+Gemini 1.5 Pro:
+  Input:  $1.25 / million tokens
+  Output: $5.00 / million tokens
+
+COST OF FULL CONTEXT WINDOW:
+  128K tokens * $2.50/M input = $0.32 per call
+  → 1,000 calls = $320
+  → 100,000 calls = $32,000/month (!)
+
+WHY CONTEXT MANAGEMENT MATTERS:
+  → Fewer tokens = lower cost
+  → Smaller context = faster response
+  → Relevant context = better answers
+  → Irrelevant context = wasted money + worse answers
+
+COST OPTIMIZATION:
+  → Don't send full documents (use RAG)
+  → Compress conversation history
+  → Cache system prompts (prompt caching)
+  → Use smaller models for simple tasks
+"""
+
+print(economics)
+
+# PYTHON: Counting tokens and estimating cost:
+python_cost = """
+import tiktoken
+
+def count_tokens(text, model="gpt-4o"):
+    encoder = tiktoken.encoding_for_model(model)
+    return len(encoder.encode(text))
+
+def estimate_cost(input_tokens, output_tokens, model="gpt-4o"):
+    rates = {
+        "gpt-4o": {"in": 2.50, "out": 10.00},
+        "claude-3.5": {"in": 3.00, "out": 15.00},
+        "gemini-1.5": {"in": 1.25, "out": 5.00},
+    }
+    r = rates.get(model, rates["gpt-4o"])
+    cost = (input_tokens * r["in"] + output_tokens * r["out"]) / 1_000_000
+    return cost
+
+# Example: 50K token document + 500 token question:
+text = "Your long document here..."
+input_tokens = count_tokens(text) + 500  # doc + question
+output_tokens = 1000  # expected response
+
+cost = estimate_cost(input_tokens, output_tokens)
+print(f"Tokens in: {input_tokens}, out: {output_tokens}")
+print(f"Cost per call: " + str(round(cost, 4)))
+print(f"Cost per 1000 calls: " + str(round(cost * 1000, 2)))
+"""
+
+print(python_cost)</div>
+
+<div class="code-block"># ── STEP 3: Attention dilution and "lost in the middle" ──
+# More context doesn't always mean better answers.
+
+attention = """
 THE ATTENTION DILUTION PROBLEM:
 
-  ১০০ tokens → attention তীক্ষ্ণ
-    প্রতিটি token প্রতিটি token-কে ভালো দেখে
-  
-  ১০,০০০ tokens → attention মাঝারি  
-    কিছু token হারিয়ে যায়
-  
-  ১০০,০০০ tokens → attention পাতলা
-    "Lost in the middle" — মাঝখানের 
-    তথ্য হারিয়ে যায়
+100 tokens → attention is SHARP
+  → Every token gets full attention
+  → High accuracy
 
-EMPIRICAL FINDING (Liu et al., 2023):
-  # ──────────────────────────────────# 
-  #  Position in Context              # 
-  #                                   # 
-  #  শুরু  ████████████████  ৯০% সঠিক # 
-  #  মাঝে  ████░░░░░░░░░░██  ৫০% সঠিক #   
-  #  শেষ  ████████████████  ৮৫% সঠিক # 
-  #                                   # 
-  #  → U-shaped performance curve     # 
-  #  → মাঝখানের তথ্য হারায়!           # 
-  # ──────────────────────────────────# 
+10,000 tokens → attention is MODERATE
+  → Some tokens get less attention
+  → Slight degradation
 
+100,000 tokens → attention is THIN
+  → "Lost in the middle" effect
+  → Middle tokens get overlooked
+  → Information retrieval degrades
+
+THE U-CURVE (Liu et al., 2023):
+
+Position in context → accuracy:
+  Beginning:  ████████████████  90% correct
+  Middle:     ████░░░░░░░░░░██  50% correct
+  End:        ████████████████  85% correct
+
+→ LLMs remember the START and END well
+→ They FORGET information in the MIDDLE
+
+IMPLICATIONS:
+  → Put critical info at START or END of context
+  → Don't bury important facts in the middle
+  → Shorter, focused context often outperforms long context
+  → "Less is more" for LLM accuracy
+"""
+
+print(attention)
+
+# WHERE TO PLACE INFORMATION:
+placement = """
+CONTEXT STRUCTURE (optimal):
+
+1. SYSTEM PROMPT (start) — most attention
+   → Rules, instructions, role definition
+   → "You are a coding assistant. Answer only from context."
+
+2. RETRIEVED DOCUMENTS (middle) — least attention
+   → Supporting evidence, background
+   → OK if partially ignored
+
+3. CRITICAL INSTRUCTIONS (near end) — high attention
+   → "Answer based ONLY on the documents above"
+   → Re-emphasize the most important rule
+
+4. USER QUESTION (very end) — most attention
+   → The actual question to answer
+
+STRUCTURE:
+  [System: You are a RAG assistant]
+  [Context: Retrieved documents...]
+  [Instructions: Answer ONLY from context above]
+  [Question: What is X?]
+"""
+
+print(placement)</div>
+
+<div class="code-block"># ── STEP 4: Context budget allocation ──
+# Allocate your context window strategically.
+
+budget = """
 CONTEXT BUDGET FORMULA:
-  Total Window = System Prompt + Few-Shot 
-               + Retrieved Docs + Conversation 
-               + User Query + Output Space
-  
-  উদাহরণ (128K window):
-    System Prompt:    ৫০০ tokens
-    Few-Shot:       ২,০০০ tokens  
-    Retrieved Docs: ৫০,০০০ tokens
-    Conversation:   ১০,০০০ tokens
-    User Query:       ১০০ tokens
-    Output Space:   ৬৫,৪০০ tokens
-    ─────────────────────────────
-    Total:         ১২৮,০০০ tokens
-  
-  → প্রতিটা অংশের budget সচেতনভাবে নির্ধারণ করো</div>
+  Total Window = System Prompt
+               + Few-Shot Examples
+               + Retrieved Documents
+               + Conversation History
+               + User Query
+               + Output Space (reserved for response)
+
+EXAMPLE (128K window):
+  System Prompt:      500 tokens
+  Few-Shot Examples:  2,000 tokens
+  Retrieved Docs:    50,000 tokens
+  Conversation:      10,000 tokens
+  User Query:          100 tokens
+  Output Space:    163,400 tokens (wait, that's too much)
+
+CORRECTED (reserve output space):
+  Output Space:     65,400 tokens
+  ─────────────────────────────
+  Total:           128,000 tokens
+
+BUDGET RULES:
+  → System Prompt: <1K tokens (keep concise)
+  → Few-Shot: 0-3K tokens (only if needed)
+  → Retrieved Docs: 10-50K tokens (the main payload)
+  → Conversation: 5-20K (compress old messages)
+  → User Query: <1K (just the question)
+  → Output Space: 20-50K (reserve for response)
+
+NEVER fill the entire window with input.
+ALWAYS reserve 20-30% for output.
+"""
+
+print(budget)
+
+# PYTHON: Context budget calculator:
+budget_code = """
+class ContextBudget:
+    def __init__(self, model="gpt-4o"):
+        self.limits = {"gpt-4o": 128_000, "claude-3.5": 200_000, "gemini": 1_000_000}
+        self.max = self.limits.get(model, 128_000)
+
+    def allocate(self, system, fewshot, docs, conversation, query, output_ratio=0.3):
+        used = system + fewshot + docs + conversation + query
+        output_space = int(self.max * output_ratio)
+        available = self.max - output_space
+
+        if used > available:
+            # Need to compress:
+            overflow = used - available
+            print(f"⚠️  Over budget by {overflow} tokens!")
+            print(f"  Compress docs or conversation by {overflow} tokens")
+            return False
+
+        print(f"✅ Budget OK:")
+        print(f"  Used: {used}/{available} input tokens ({used/available*100:.1f}%)")
+        print(f"  Output: {output_space} tokens reserved")
+        print(f"  Free: {available - used} tokens")
+        return True
+
+# Usage:
+budget = ContextBudget("gpt-4o")
+budget.allocate(
+    system=500,
+    fewshot=2000,
+    docs=50000,
+    conversation=10000,
+    query=100,
+)
+"""
+
+print(budget_code)</div>
+
+<div class="code-block"># ── STEP 5: Prompt caching (cost optimization) ──
+# Cache repeated parts of context to save money and time.
+
+prompt_caching = """
+PROMPT CACHING (Anthropic, OpenAI, Google):
+
+If you send the SAME system prompt + context every time:
+  → API caches it (stores the processed tokens)
+  → Subsequent calls with same prefix are CHEAPER
+  → 50-90% cost reduction for repeated context
+
+HOW IT WORKS:
+  Call 1: [System prompt 10K tokens] + [Question]
+    → Processes all 10K tokens
+    → Caches the result
+    → Cost: full price ($0.03)
+
+  Call 2: [Same system prompt 10K] + [Different question]
+    → Uses cached processing
+    → Only processes the new question
+    → Cost: 10% of full price ($0.003)
+
+USE CASES:
+  → RAG: same system prompt, different questions
+  → Chatbots: same persona, different conversations
+  → Code analysis: same codebase, different queries
+  → Document Q&A: same document, multiple questions
+
+CLAUDE PROMPT CACHING:
+  response = client.messages.create(
+      model="claude-3-5-sonnet-20241022",
+      system=[
+          {
+              "type": "text",
+              "text": "You are a RAG assistant. " + large_context,
+              "cache_control": {"type": "ephemeral"}  # ← CACHE THIS
+          }
+      ],
+      messages=[{"role": "user", "content": question}]
+  )
+
+  # First call: full price
+  # Subsequent calls (within 5 min): 10% price for cached part
+"""
+
+print(prompt_caching)
+
+# WHEN TO USE PROMPT CACHING:
+use_caching = {
+    "Same system prompt repeatedly": "Save 50-90% on system prompt cost",
+    "Large static context (codebase, manual)": "Cache the reference, vary the question",
+    "Multi-turn conversations": "Cache conversation prefix, add new message",
+    "Batch processing same document": "Cache doc, ask many questions",
+}
+
+print("WHEN TO USE PROMPT CACHING:")
+for case, benefit in use_caching.items():
+    print(f"  {case}: {benefit}")</div>
+
+<div class="code-block"># ── STEP 6: Context window best practices ──
+# Maximize accuracy while minimizing cost.
+
+best_practices = [
+    "Don't send entire documents — use RAG to retrieve relevant parts",
+    "Put critical instructions at START (system prompt) and END (before question)",
+    "Reserve 20-30% of context window for output",
+    "Use prompt caching for repeated system prompts (50-90% savings)",
+    "Compress conversation history (summarize old messages)",
+    "Fewer high-quality examples beat many mediocre ones",
+    "Monitor token usage and costs per request",
+    "Use smaller models (GPT-4o-mini) for simple tasks within context",
+    "Remove irrelevant retrieved docs (re-rank and filter)",
+    "Structure context: System → Context → Instructions → Question",
+    "Test different context sizes (more context ≠ better accuracy)",
+    "Use the U-curve to your advantage (important info at edges)",
+    "Set max_tokens to prevent output overflow",
+    "Log token counts to identify cost-heavy requests",
+    "Consider model switching: small model for short context, large for long",
+]
+
+print("CONTEXT WINDOW BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# CONTEXT WINDOW DECISION GUIDE:
+decision = """
+DECISION: "Should I use long context or RAG?"
+
+Long context (just dump everything):
+  ✅ Simpler (no retrieval pipeline)
+  ✅ Good for <100K tokens
+  ✅ No "missed retrieval" problem
+  ❌ Expensive (pay for every token)
+  ❌ Attention dilution on large context
+  ❌ Rate limits (128K tokens per call)
+
+RAG (retrieve relevant parts):
+  ✅ Cheaper (only send relevant tokens)
+  ✅ Scales to millions of documents
+  ✅ Better accuracy (focused context)
+  ❌ More complex (embedding, retrieval, re-ranking)
+  ❌ Can miss relevant documents
+
+RULE OF THUMB:
+  < 50K tokens → Long context (simpler)
+  50K-500K → Depends (test both)
+  > 500K → RAG (long context too expensive/diluted)
+"""
+
+print(decision)
+
+# SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Context window   │ Max tokens LLM can process      │
+# │ Token cost       │ $1-15 per million tokens        │
+# │ Attention dilute │ More context = less focus       │
+# │ U-curve          │ Start+End > Middle              │
+# │ Budget           │ Reserve 30% for output          │
+# │ Prompt caching   │ Save 50-90% on repeated context │
+# │ Placement        │ Critical info at edges          │
+# │ Long vs RAG      │ <50K long, >500K RAG           │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
