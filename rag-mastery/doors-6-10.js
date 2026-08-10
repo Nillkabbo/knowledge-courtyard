@@ -1868,140 +1868,398 @@ doors.push({
 </div>
 <div class="svg-caption">সম্পূর্ণ RAG স্থাপত্য — দশটি স্তরের সমন্বয়, অফুরন্ত জ্ঞানের কূপ</div>
 
-<div class="code-block">Complete Production RAG Architecture:
+<div class="code-block"># ── STEP 1: The complete production RAG system ──
+# All 9 doors synthesized into ONE architecture.
 
-DOCUMENT INGESTION (Door 1 + 3):
-# ─────────────────────────────────────────────# 
-#  Documents → Parse (PDF/HTML/DOCX)            # 
-#  → Clean → Structure → Metadata               # 
-#  → Chunk (semantic, ৫১২ tok, ২০% overlap)    # 
-#  → Parent-child (২০০ child, ১০০০ parent)      # 
-# ─────────────────# ───────────────────────────# 
-                  ↓
-INDEXING (Door 2):
-# ─────────────────────────────────────────────# 
-#  Chunks → Embed (BGE-large, ১০২৪ dim)        # 
-#  → Store in Qdrant (HNSW index)               # 
-#  → Metadata: source, page, section, date     # 
-#  → BM25 index parallel (Elasticsearch)        # 
-# ─────────────────# ───────────────────────────# 
-                  ↓
-QUERY TIME:
-# ─────────────────────────────────────────────# 
-#  User Query                                   # 
-#  ↓                                            # 
-#  Cache Check (semantic, > ০.৯৫ similarity)   #  → Hit: return cached
-#  ↓ miss                                       # 
-#  Query Transform (Door 5):                    # 
-#    → Context resolution (conversation)        # 
-#    → Rewriting (specific, clear)              # 
-#    → Decomposition (if complex)               # 
-#  ↓                                            # 
-#  Retrieval (Door 4):                          # 
-#    → Dense (vector) top-50                    # 
-#    → Sparse (BM25) top-50                     # 
-#    → RRF fusion → top-20                      # 
-#  ↓                                            # 
-#  Reranking (Context Eng Door 5):              # 
-#    → Cross-encoder (Cohere/BGE-Reranker)      # 
-#    → top-20 → top-5                           # 
-#  ↓                                            # 
-#  Context Assembly (Context Eng Door 2):       # 
-#    → System prompt (top)                      # 
-#    → Less relevant docs (middle)              # 
-#    → Most relevant docs (bottom)              # 
-#    → User query (very bottom)                 # 
-#    → Budget check (< ৩২K tokens)              # 
-#  ↓                                            # 
-#  LLM Generation (Prompt Eng Door 3):          # 
-#    → temperature=0 (factual)                  # 
-#    → Structured output with citations         # 
-#    → System: "Answer ONLY from context"       # 
-#    → Streaming (SSE)                          # 
-#  ↓                                            # 
-#  Post-Processing:                             # 
-#    → Guardrails check                         # 
-#    → Citation verification                    # 
-#    → Faithfulness check (RAGAS)               # 
-#    → Cache store                              # 
-#    → Trace + log (LangSmith)                  # 
-# ─────────────────# ───────────────────────────# 
-                  ↓
-            ANSWER TO USER
+architecture = """
+COMPLETE PRODUCTION RAG SYSTEM:
 
-EVALUATION LOOP (Door 6):
-  Daily: ৫০ query eval → RAGAS → regression check
-  Weekly: full eval → A/B test configs
-  Monthly: failure analysis → fix patterns
+INGESTION PIPELINE (offline, batch):
+  Documents → Parse (PDF/HTML/DOCX)
+  → Clean → Structure → Metadata
+  → Chunk (semantic, 500 chars, 20% overlap)
+  → Parent-child (200 child, 1000 parent)
+  → Embed (text-embedding-3-small)
+  → Store in pgvector (HNSW index)
+  → BM25 full-text index (PostgreSQL built-in)
+  → Contextual prefix (Anthropic technique)
 
-OBSERVABILITY (Door 8):
-  Every query → trace
-  → query transform time
-  → retrieval time  
-  → reranking time
-  → LLM generation time
-  → total latency, token cost
-  → retrieved chunks (for debugging)
-  → answer quality (user feedback)
+QUERY PIPELINE (real-time):
+  User Query
+  → Semantic cache check (>0.95 similarity?)
+    → Hit: return cached answer
+    → Miss: continue
+  → Query transformation:
+    → Conversational resolution
+    → Query rewriting
+    → (Decomposition if complex)
+  → Retrieval:
+    → Dense (vector) top-50
+    → Sparse (BM25) top-50
+    → RRF fusion → top-20
+  → Re-ranking:
+    → Cross-encoder → top-5
+  → Context assembly:
+    → System prompt (top)
+    → Less relevant docs (middle)
+    → Most relevant docs (bottom)
+    → User query (very bottom)
+  → LLM generation:
+    → temperature=0
+    → "Answer ONLY from context"
+    → Streaming (SSE)
+  → Post-processing:
+    → Guardrails check
+    → Faithfulness check
+    → Cache store
+    → Trace + log
+  → ANSWER TO USER
+"""
 
-FAILURE HANDLING (Door 9):
-  Primary: full advanced pipeline
-    ↓ timeout
-  Fallback: simple vector search
-    ↓ timeout
-  Fallback: direct LLM (no retrieval)
-    ↓ timeout
-  Safe: "I cannot answer right now"
+print(architecture)</div>
 
-TECH STACK (recommended):
-  Framework: LangChain বা LlamaIndex
-  Vector DB: Qdrant (hybrid support)
-  Embedding: BGE-large-en-v1.5 / voyage-3
-  Reranker: BGE-Reranker-v2 (open) / Cohere
-  LLM: GPT-5 / Claude 4 Sonnet / Gemini 2 (models change; patterns don't)
-  Eval: RAGAS
-  Observability: Langfuse (open)
-  Guardrails: Guardrails AI
-  Orchestration: FastAPI + Celery
-  Prompt caching: ON (cuts cost ~90% for repeated system prompts)
+<div class="code-block"># ── STEP 2: The complete Python implementation ──
+# Production-ready RAG in one function.
 
-THE 2025 EVOLUTION — AGENTIC RAG:
+production_rag = """
+import time
+import numpy as np
+from openai import OpenAI
+from pgvector.django import CosineDistance
+from django.core.cache import cache
 
-  Classic RAG (এই বইয়ের পুরো ফোকাস):
-    User query → retrieve → generate → answer
-    → এক ধাপ retrieval, এক ধাপ generation
+client = OpenAI()
 
-  Agentic RAG (2025+):
-    User query → Agent decides:
-      → কী retrieve করতে হবে?
-      → একাধিক source দরকান?
-      → প্রতিটি source থেকে কী প্রশ্ন?
-      → retrieved info যথেষ্ট না? → retrieve আবার
-      → একাধিক round, iterative refinement
+class ProductionRAG:
+    def __init__(self):
+        self.cache = SemanticCache(threshold=0.95)
+        self.embedding_model = "text-embedding-3-small"
+        self.llm_model = "gpt-4o"
+        self.top_k = 5
 
-    Example: "Compare Q3 earnings of Apple and Microsoft"
-      Round 1: agent → retrieve Apple Q3
-      Round 2: agent → retrieve Microsoft Q3
-      Round 3: agent → both retrieved → synthesize
-      → agent decides when "enough" to answer
+    def query(self, question, chat_history=None, user=None):
+        trace = {"question": question, "user": user}
+        start = time.time()
 
-  Trade-offs:
-    ✅ complex, multi-hop questions — far better
-    ✅ self-correcting (retrieves again if first attempt weak)
-    ❌ slower (multiple LLM calls + retrievals)
-    ❌ costlier (3-5x classic RAG)
-    ❌ harder to evaluate (non-deterministic path)
+        # 1. Semantic cache check:
+        q_emb = self._embed(question)
+        cached = self.cache.get(q_emb)
+        if cached:
+            trace["cache_hit"] = True
+            return cached
 
-  When to use:
-    → simple lookup? Classic RAG (Door 4 stack)
-    → multi-source synthesis? Agentic RAG
-    → research questions? Agentic RAG
-    → high-volume simple Q&A? Classic RAG
+        # 2. Query transformation:
+        query = self._resolve_context(question, chat_history)
+        query = self._rewrite_query(query)
+        trace["transformed_query"] = query
 
-BUDGET:
-  Per query: ~$০.০৩-০.০৮
-  ১০K queries/day: ~$৩০০-৮০০/month
-  ১০০K queries/day: ~$৩K-৮K/month</div>
+        # 3. Hybrid retrieval:
+        t1 = time.time()
+        dense = self._dense_search(q_emb, top_k=20)
+        sparse = self._keyword_search(query, top_k=20)
+        docs = self._rrf_merge([dense, sparse])[:10]
+        trace["retrieval_time"] = time.time() - t1
+
+        # 4. Re-ranking:
+        t2 = time.time()
+        docs = self._rerank(query, docs)[:self.top_k]
+        trace["reranking_time"] = time.time() - t2
+
+        # 5. Context assembly:
+        context = self._assemble_context(docs)
+
+        # 6. Generation:
+        t3 = time.time()
+        answer = self._generate(query, context)
+        trace["generation_time"] = time.time() - t3
+
+        # 7. Post-processing:
+        answer = self._check_guardrails(answer)
+        result = {"answer": answer, "sources": docs, "trace": trace}
+
+        # 8. Cache store:
+        self.cache.set(q_emb, question, result)
+
+        trace["total_time"] = time.time() - start
+        self._log_trace(trace)
+
+        return result
+
+    def _embed(self, text):
+        response = client.embeddings.create(
+            model=self.embedding_model, input=text
+        )
+        return response.data[0].embedding
+
+    def _dense_search(self, q_emb, top_k=20):
+        return list(Document.objects.annotate(
+            distance=CosineDistance('embedding', q_emb)
+        ).filter(distance__lt=0.3).order_by('distance')[:top_k])
+
+    def _generate(self, query, context):
+        response = client.chat.completions.create(
+            model=self.llm_model,
+            messages=[
+                {"role": "system", "content": (
+                    "Answer based ONLY on the context below. "
+                    "If not in context, say 'I don't have that information.' "
+                    "Cite sources using [Doc N] format."
+                )},
+                {"role": "user", "content": (
+                    f"Context:\\n{context}\\n\\nQuestion: {query}"
+                )}
+            ],
+            temperature=0,
+            stream=True,
+        )
+        return response
+
+# Usage:
+rag = ProductionRAG()
+result = rag.query("What is the refund policy?")
+"""
+
+print(production_rag)</div>
+
+<div class="code-block"># ── STEP 3: Recommended tech stack ──
+# The tools that make up a production RAG system.
+
+tech_stack = {
+    "Framework": {
+        "options": ["LangChain", "LlamaIndex", "Custom (Django/FastAPI)"],
+        "recommendation": "Start with LangChain, move to custom for production",
+    },
+    "Vector Database": {
+        "options": ["pgvector (PostgreSQL)", "Qdrant", "Pinecone", "Weaviate"],
+        "recommendation": "pgvector (if already using PostgreSQL) or Qdrant",
+    },
+    "Embedding Model": {
+        "options": ["text-embedding-3-small (OpenAI)", "BGE-large (local)", "Cohere"],
+        "recommendation": "text-embedding-3-small (cheap, good quality)",
+    },
+    "Reranker": {
+        "options": ["Cohere Rerank", "BGE-Reranker (local)", "Cross-encoder"],
+        "recommendation": "BGE-Reranker (free) or Cohere (API)",
+    },
+    "LLM": {
+        "options": ["GPT-4o", "Claude Sonnet 4", "Llama 3.1", "Gemini 2.5"],
+        "recommendation": "GPT-4o (general), Claude (coding), Llama (privacy/cost)",
+    },
+    "Evaluation": {
+        "options": ["RAGAS", "TruLens", "DeepEval"],
+        "recommendation": "RAGAS (standard, 4 metrics)",
+    },
+    "Observability": {
+        "options": ["LangSmith", "Langfuse (OSS)", "Phoenix"],
+        "recommendation": "Langfuse (open source, self-hosted)",
+    },
+    "Guardrails": {
+        "options": ["NeMo Guardrails", "Guardrails AI", "OpenAI Moderation"],
+        "recommendation": "Guardrails AI + custom rules",
+    },
+    "Orchestration": {
+        "options": ["FastAPI", "Django REST Framework", "Celery"],
+        "recommendation": "Django/DRF + Celery for async tasks",
+    },
+}
+
+print("RECOMMENDED TECH STACK:")
+for category, info in tech_stack.items():
+    print(f"\n  {category}")
+    print(f"    Options: {', '.join(info['options'])}")
+    print(f"    Recommendation: {info['recommendation']}")</div>
+
+<div class="code-block"># ── STEP 4: Agentic RAG (the future, 2025+) ──
+# Classic RAG does ONE retrieval. Agentic RAG does MULTIPLE.
+
+agentic_rag = """
+CLASSIC RAG (this book's focus):
+  User query → retrieve → generate → answer
+  → One retrieval, one generation
+  → Fast, cheap, predictable
+  → Limited to simple questions
+
+AGENTIC RAG (2025+):
+  User query → Agent decides:
+    → What to retrieve?
+    → Multiple sources needed?
+    → What question for each source?
+    → Retrieved info insufficient? → retrieve again
+    → Multiple rounds, iterative refinement
+
+  Example: "Compare Q3 earnings of Apple and Microsoft"
+    Round 1: agent → retrieve Apple Q3
+    Round 2: agent → retrieve Microsoft Q3
+    Round 3: agent → both retrieved → synthesize
+    → agent decides when "enough" to answer
+
+TRADE-OFFS:
+  ✅ Complex, multi-hop questions: far better
+  ✅ Self-correcting (retrieves again if first attempt weak)
+  ✅ Can use tools (calculator, web search, database)
+  ❌ Slower (multiple LLM calls + retrievals)
+  ❌ Costlier (3-5x classic RAG)
+  ❌ Harder to evaluate (non-deterministic path)
+
+WHEN TO USE:
+  Simple lookup? → Classic RAG (this book)
+  Multi-source synthesis? → Agentic RAG
+  Research questions? → Agentic RAG
+  High-volume simple Q&A? → Classic RAG
+"""
+
+print(agentic_rag)
+
+# AGENTIC RAG FRAMEWORKS:
+frameworks = {
+    "LangGraph": "LangChain's agent framework (state machines)",
+    "LlamaIndex Agents": "LlamaIndex's agentic RAG",
+    "CrewAI": "Multi-agent RAG systems",
+    "AutoGen": "Microsoft's multi-agent framework",
+    "OpenAI Assistants API": "Built-in tool calling + retrieval",
+}
+
+print("AGENTIC RAG FRAMEWORKS:")
+for framework, desc in frameworks.items():
+    print(f"  {framework}: {desc}")</div>
+
+<div class="code-block"># ── STEP 5: Cost estimation ──
+# How much does production RAG cost?
+
+costs = """
+COST BREAKDOWN PER QUERY:
+
+Embedding (query):     $0.00001 (text-embedding-3-small)
+Retrieval (vector DB): $0.0001 (pgvector, self-hosted)
+Query transform (LLM): $0.001 (GPT-4o-mini)
+Re-ranking:            $0.0005 (BGE-Reranker local)
+LLM generation:        $0.02-0.05 (GPT-4o)
+────────────────────────────────────────────
+Total per query:       $0.02-0.06
+
+WITH CACHING (30-50% hit rate):
+  Effective cost:      $0.01-0.04 per query
+
+MONTHLY COSTS BY SCALE:
+  1K queries/day:      $300-1,200/month
+  10K queries/day:     $3K-12K/month
+  100K queries/day:    $30K-120K/month
+  1M queries/day:      $300K-1.2M/month
+
+COST OPTIMIZATION:
+  → Semantic caching (30-50% savings)
+  → Use GPT-4o-mini for query transformation
+  → Local embedding model (BGE-large, free)
+  → Local reranker (BGE-Reranker, free)
+  → Batch embedding requests
+  → Prompt caching (OpenAI auto-caches system prompts)
+  → Use Llama 3.1 (free, self-hosted) for non-critical queries
+"""
+
+print(costs)
+
+# COST VS QUALITY MATRIX:
+matrix = {
+    "Budget (GPT-4o-mini + local models)": {
+        "cost": "$0.005/query",
+        "quality": "Good (75-80% accuracy)",
+        "best_for": "High-volume, simple Q&A",
+    },
+    "Standard (GPT-4o + commercial reranker)": {
+        "cost": "$0.03/query",
+        "quality": "Very good (85-90% accuracy)",
+        "best_for": "Most production systems",
+    },
+    "Premium (GPT-4o + all advanced techniques)": {
+        "cost": "$0.08/query",
+        "quality": "Excellent (90-95% accuracy)",
+        "best_for": "Enterprise, high-stakes",
+    },
+    "Agentic (multi-round, GPT-4o + tools)": {
+        "cost": "$0.15/query",
+        "quality": "Best for complex (95%+ on multi-hop)",
+        "best_for": "Research, complex analysis",
+    },
+}
+
+print("COST VS QUALITY MATRIX:")
+for tier, info in matrix.items():
+    print(f"\n  {tier}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 6: The 10 doors summary and journey ──
+# Everything you've learned, in one view.
+
+doors = {
+    "Door 1": "Document Ingestion — parse, clean, chunk, embed, store",
+    "Door 2": "Vector Indexing — HNSW, hybrid search, re-ranking",
+    "Door 3": "Naive RAG — the 3-step baseline (54% accuracy)",
+    "Door 4": "Advanced Retrieval — parent-child, HyDE, ensemble, late chunking",
+    "Door 5": "Query Transformation — rewriting, decomposition, step-back",
+    "Door 6": "Evaluation — RAGAS (precision, recall, faithfulness, relevance)",
+    "Door 7": "GraphRAG — knowledge graphs for multi-hop reasoning",
+    "Door 8": "Production Patterns — caching, monitoring, fallback, guardrails",
+    "Door 9": "Failure Modes — 7 ways RAG breaks + debugging methodology",
+    "Door 10": "Complete Architecture — all doors synthesized",
+}
+
+print("THE 10 DOORS OF RAG MASTERY:")
+for door, topic in doors.items():
+    print(f"  {door}: {topic}")
+
+# YOUR JOURNEY:
+journey = """
+You started this book knowing RAG as a CONCEPT.
+You finish as an ENGINEER who can build production RAG systems.
+
+WHAT YOU CAN NOW DO:
+  ✅ Design a RAG pipeline from scratch
+  ✅ Choose the right tools for each component
+  ✅ Implement advanced retrieval (HyDE, parent-child, contextual)
+  ✅ Evaluate with RAGAS and iterate
+  ✅ Debug failure modes systematically
+  ✅ Deploy production RAG (caching, fallback, monitoring)
+  ✅ Choose between classic and agentic RAG
+  ✅ Estimate costs and optimize
+
+WHAT TO DO NEXT:
+  1. Build a RAG system for YOUR domain (LedgerPilot docs?)
+  2. Create an evaluation dataset (50 questions)
+  3. Run RAGAS baseline
+  4. Add techniques ONE AT A TIME
+  5. Measure improvement
+  6. Deploy to production
+  7. Monitor, evaluate, iterate
+
+"RAG is not a product. It's a PROCESS of continuous improvement."
+Start simple. Measure everything. Iterate relentlessly.
+That's the path from 54% to 95% accuracy.
+
+This book gave you the MAP. Now walk the PATH.
+
+Welcome to RAG Mastery.
+"""
+
+print(journey)
+
+# CONGRATULATIONS!
+# You've completed the RAG Mastery book.
+# From naive 3-step RAG to production-grade agentic systems.
+# You now understand EVERY component, EVERY failure mode, EVERY optimization.
+# This knowledge is INVALUABLE in the AI era.
+# Every company needs RAG engineers. You ARE one now.
+
+# THE FUTURE OF RAG:
+# 2024: Classic RAG → GraphRAG → Contextual Retrieval
+# 2025: Agentic RAG → Multi-agent systems
+# 2026+: ???
+# The field evolves FAST. Keep learning. Keep building.
+# But the FUNDAMENTALS (this book) don't change.
+# Master the fundamentals, and you can adapt to anything.
+
+# "The best way to predict the future is to build it."
+# Go build amazing RAG systems.</div>
 
 <div class="verse">"তিনি শিখিয়েছেন কলমের মাধ্যমে। শিখিয়েছেন মানুষকে যা সে জানত না।"<br>— কুরআন ৯৬:৪-৫<br><br>RAG হলো জ্ঞানের কুয়ো — সঠিকভাবে খনন করলে অফুরন্ত পানি। ভুল খনন করলে বিষ। দশটি স্তর পার হলে তুমি কূপ স্থপতি — যে জানে কোথায় খনন, কতটা গভীরে, কীভাবে পরিশুদ্ধ করতে হয়।</div>
 
