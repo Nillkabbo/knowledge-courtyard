@@ -940,103 +940,457 @@ doors.push({
 </div>
 <div class="svg-caption">প্রোডাকশন স্থাপত্য — ক্যাশ থেকে গার্ডরেল ও ট্রেস পর্যন্ত</div>
 
-<div class="code-block">Production RAG Patterns — From Demo to Real:
+<div class="code-block"># ── STEP 1: Semantic caching ──
+# Cache SIMILAR queries (not just identical ones).
 
-১. SEMANTIC CACHING
-  একই বা সমার্থক query বারবার? 
-  → cache করো!
-  
-  Query embedding → cache check (similarity > ০.৯৫)
-  → hit? return cached answer
-  → miss? full pipeline → cache result
-  
-  Tools: Redis + embedding, GPTCache
-  → ৩০-৬০% cost reduction (frequent queries)
+# HOW SEMANTIC CACHING WORKS:
+semantic_cache = """
+QUERY → embed → check cache (similarity > 0.95?)
+  → HIT: return cached answer (0ms, $0)
+  → MISS: full RAG pipeline → store in cache
 
-২. INCREMENTAL INDEXING
-  নতুন ডকুমেন্ট এলে সব re-embed করো না।
-  → শুধু নতুনটা embed → add to index
-  → HNSW supports incremental add
-  
-  ডকুমেন্ট মুছে ফেললে?
-  → soft delete (metadata flag) বা 
-    hard delete (rebuild)
-  → Qdrant, Weaviate support delete
+Example:
+  Cached query: "What is Python?"
+  New query: "What is Python programming language?"
+  → Similarity: 0.96 → CACHE HIT!
+  → Return cached answer (no LLM call)
 
-৩. MULTI-TENANCY
-  একাধিক user/org-এর জন্য এক RAG:
-  
-  Option A: প্রতিটা tenant-এর আলাদা index
-    → সম্পূর্ণ isolated, কিন্তু বেশি resource
-  
-  Option B: এক index, tenant_id metadata filter
-    → কম resource, কিন্তু filter always লাগে
-  
-  Option C: Hybrid — বড় tenant আলাদা, 
-    ছোট shared
+BENEFITS:
+  → 30-60% cost reduction (frequent queries)
+  → Near-instant responses for cached queries
+  → Reduces load on LLM API
 
-৪. OBSERVABILITY
-  Production-এ জানতে হয় — কী হচ্ছে।
-  
-  Trace প্রতিটা step:
-    query → transformed? → retrieved? 
-    → reranked? → generated? → latency?
-  
-  Tools:
-    LangSmith → LangChain tracing
-    Langfuse → open-source observability  
-    Phoenix → Arize, LLM tracing
-    OpenTelemetry → standard tracing
-  
-  Metrics to track:
-    • Retrieval precision (daily eval)
-    • Latency p50, p95, p99
-    • Token cost per query
-    • User feedback (thumbs up/down)
-    • Cache hit rate
+TOOLS:
+  → Redis + embedding similarity
+  → GPTCache (purpose-built semantic cache)
+  → Pinecone (use as semantic cache layer)
+"""
 
-৫. FALLBACK CHAIN
-  Primary fails → fallback → fallback → safe default
-  
-  Primary: Advanced RAG (multi-hop, reranking)
-    ↓ timeout/error
-  Fallback 1: Simple RAG (vector search only)
-    ↓ timeout/error  
-  Fallback 2: Direct LLM (no retrieval)
-    ↓ timeout/error
-  Safe Default: "I can't answer right now"
-  
-  → user কখনো খালি হাতে যায় না
+print(semantic_cache)
 
-৬. A/B TESTING  
-  দুটি RAG config → কোনটা ভালো?
-  
-  Config A: naive RAG + reranking
-  Config B: advanced + HyDE + reranking
-  
-  → ৫০/৫০ traffic split
-  → user feedback + eval scores
-  → winner deploys
+# IMPLEMENTATION:
+cache_code = """
+import numpy as np
 
-৭. GUARDRAILS
-  Input: prompt injection? Personal data?
-  Output: hallucination? Toxic content?
-  
-  Tools: NeMo Guardrails, Guardrails AI
-  → RAG system-এ defense in depth
+class SemanticCache:
+    def __init__(self, threshold=0.95):
+        self.cache = {}  # {embedding: (query, answer)}
+        self.threshold = threshold
 
-PRODUCTION ARCHITECTURE:
-  
-  User → API Gateway → Rate Limiter
-    → Query Transform (LLM)
-    → Cache Check → hit? return
-    → Retrieval (Vector + BM25)
-    → Reranking
-    → Context Assembly  
-    → LLM Generation
-    → Guardrails Check
-    → Response + Trace
-    → Cache Store</div>
+    def get(self, query_embedding):
+        for cached_emb, (query, answer) in self.cache.items():
+            sim = cosine_similarity(query_embedding, cached_emb)
+            if sim > self.threshold:
+                return answer  # cache hit!
+        return None  # cache miss
+
+    def set(self, query_embedding, query, answer):
+        self.cache[query_embedding.tobytes()] = (query, answer)
+
+# Usage:
+cache = SemanticCache(threshold=0.95)
+query_emb = embed(query)
+
+# Check cache first:
+cached = cache.get(query_emb)
+if cached:
+    return cached  # instant response!
+
+# Cache miss → full RAG pipeline:
+answer = rag_pipeline(query)
+cache.set(query_emb, query, answer)
+return answer
+"""
+
+print(cache_code)</div>
+
+<div class="code-block"># ── STEP 2: Incremental indexing and multi-tenancy ──
+# Managing a growing, multi-user RAG system.
+
+# INCREMENTAL INDEXING:
+incremental = """
+NEW DOCUMENTS:
+  → Don't re-embed everything!
+  → Embed ONLY new documents
+  → Add to existing HNSW index (supported natively)
+  → Batch add for efficiency
+
+DOCUMENT DELETION:
+  → Soft delete: set metadata {"deleted": true} → filter at query
+  → Hard delete: remove from index (may need rebuild)
+  → Most vector DBs support deletion (Qdrant, Weaviate, Pinecone)
+
+DOCUMENT UPDATES:
+  → Delete old embedding → insert new embedding
+  → Or: version-based (metadata "v2" filters out "v1")
+"""
+
+print(incremental)
+
+# MULTI-TENANCY (multiple users/organizations):
+multi_tenancy = """
+APPROACH A: Separate index per tenant
+  → Complete isolation
+  → Best security
+  → More resources (one index per tenant)
+
+APPROACH B: Shared index + tenant_id metadata filter
+  → Less resources
+  → Always filter by tenant_id (security critical!)
+  → Works well for most cases
+
+APPROACH C: Hybrid (large tenants separate, small shared)
+  → Best of both worlds
+  → Large orgs get dedicated index
+  → Small orgs share with filtering
+
+IMPLEMENTATION (Django):
+  class Document(models.Model):
+      content = models.TextField()
+      embedding = VectorField(dimensions=1536)
+      tenant_id = models.CharField(max_length=100, db_index=True)
+
+  # ALWAYS filter by tenant:
+  docs = Document.objects.filter(
+      tenant_id=request.user.tenant_id
+  ).annotate(
+      distance=CosineDistance('embedding', query_embedding)
+  ).order_by('distance')[:5]
+"""
+
+print(multi_tenancy)</div>
+
+<div class="code-block"># ── STEP 3: Observability and monitoring ──
+# Production RAG needs FULL observability.
+
+observability = """
+TRACE EVERY STEP:
+  Query → Transform → Retrieve → Re-rank → Generate → Response
+
+  For EACH request, log:
+  → Original query
+  → Transformed query (if any)
+  → Retrieved chunks (and similarity scores)
+  → Re-ranked chunks
+  → Context sent to LLM
+  → LLM response
+  → Total latency (per step)
+  → Token cost
+  → User feedback (thumbs up/down)
+
+METRICS TO TRACK:
+  → Retrieval precision (RAGAS, daily)
+  → Latency: p50, p95, p99
+  → Token cost per query
+  → Cache hit rate
+  → Error rate
+  → User satisfaction (thumbs)
+  → Faithfulness (RAGAS, daily)
+"""
+
+print(observability)
+
+# TOOLS:
+tools = {
+    "LangSmith": "LangChain's tracing + eval (subscription)",
+    "Langfuse": "Open-source LLM observability (self-hosted)",
+    "Phoenix (Arize)": "Tracing + eval + monitoring (OSS + cloud)",
+    "OpenTelemetry": "Standard tracing (vendor-neutral)",
+    "Datadog": "General monitoring + LLM observability",
+    "Weights & Biases": "ML experiment tracking + LLM monitoring",
+}
+
+print("OBSERVABILITY TOOLS:")
+for tool, desc in tools.items():
+    print(f"  {tool}: {desc}")
+
+# DJANGO MONITORING IMPLEMENTATION:
+monitoring_code = """
+import time
+from django.core.cache import cache
+
+def rag_with_monitoring(query, user):
+    start_time = time.time()
+    trace = {"query": query, "user": user.id}
+
+    # Step 1: Query transformation:
+    t1 = time.time()
+    transformed = transform_query(query)
+    trace["transform_time"] = time.time() - t1
+
+    # Step 2: Retrieval:
+    t2 = time.time()
+    docs = retrieve(transformed)
+    trace["retrieval_time"] = time.time() - t2
+    trace["num_docs_retrieved"] = len(docs)
+
+    # Step 3: Generation:
+    t3 = time.time()
+    answer = generate(query, docs)
+    trace["generation_time"] = time.time() - t3
+
+    # Step 4: Total:
+    trace["total_time"] = time.time() - start_time
+    trace["answer"] = answer
+
+    # Log trace:
+    RagTrace.objects.create(**trace)
+
+    # Check latency threshold:
+    if trace["total_time"] > 5.0:
+        alert_slack(f"Slow RAG query: {trace['total_time']:.2f}s")
+
+    return answer
+"""
+
+print(monitoring_code)</div>
+
+<div class="code-block"># ── STEP 4: Fallback chain and resilience ──
+# What happens when things BREAK? Fallback chain.
+
+# FALLBACK CHAIN:
+fallback = """
+PRIMARY: Advanced RAG (multi-hop, reranking, HyDE)
+  ↓ timeout/error
+FALLBACK 1: Simple RAG (vector search only, no transforms)
+  ↓ timeout/error
+FALLBACK 2: Direct LLM (no retrieval, "I don't know context")
+  ↓ timeout/error
+SAFE DEFAULT: "I'm having trouble right now. Please try again."
+
+User NEVER gets empty hands.
+Each fallback is SIMPLER but still returns SOMETHING.
+"""
+
+print(fallback)
+
+# IMPLEMENTATION:
+fallback_code = """
+import asyncio
+
+async def rag_with_fallback(query, timeout=10):
+    try:
+        # Try advanced RAG (best quality, may be slow):
+        return await asyncio.wait_for(
+            advanced_rag(query), timeout=timeout
+        )
+    except asyncio.TimeoutError:
+        pass
+
+    try:
+        # Fallback: simple RAG (faster):
+        return await asyncio.wait_for(
+            simple_rag(query), timeout=timeout // 2
+        )
+    except asyncio.TimeoutError:
+        pass
+
+    try:
+        # Fallback: direct LLM (no retrieval):
+        return await direct_llm(query)
+    except Exception:
+        pass
+
+    # Ultimate fallback:
+    return {
+        "answer": "I'm having trouble right now. Please try again.",
+        "error": "all_methods_failed",
+    }
+"""
+
+print(fallback_code)
+
+# OTHER RESILIENCE PATTERNS:
+resilience = {
+    "Retry with backoff": "Retry failed API calls (3x with exponential backoff)",
+    "Circuit breaker": "Stop calling failing service, return fallback",
+    "Rate limiting": "Prevent abuse (100 queries/user/hour)",
+    "Queue processing": "Async processing for heavy queries (Celery)",
+    "Health checks": "Monitor vector DB, LLM API, Redis health",
+    "Graceful degradation": "Disable features (re-ranking) when overloaded",
+}
+
+print("RESILIENCE PATTERNS:")
+for pattern, desc in resilience.items():
+    print(f"  {pattern}: {desc}")</div>
+
+<div class="code-block"># ── STEP 5: Guardrails and safety ──
+# Protect against malicious inputs and harmful outputs.
+
+guardrails = """
+INPUT GUARDRAILS (before processing):
+  → Prompt injection detection (malicious instructions)
+  → PII detection (social security numbers, emails)
+  → Content filtering (harmful, illegal requests)
+  → Length limiting (prevent token budget abuse)
+
+OUTPUT GUARDRAILS (after generation):
+  → Hallucination detection (check if grounded in context)
+  → Toxic content filtering
+  → PII redaction (remove personal data from responses)
+  → Fact-checking (verify critical claims)
+
+TOOLS:
+  → NeMo Guardrails (NVIDIA, open source)
+  → Guardrails AI (validation framework)
+  → OpenAI Moderation API (content filtering)
+  → Custom rules (regex, keyword filters)
+"""
+
+print(guardrails)
+
+# GUARDRAILS IMPLEMENTATION:
+guardrails_code = """
+def rag_with_guardrails(query):
+    # INPUT GUARDRAILS:
+    if is_prompt_injection(query):
+        return {"error": "Potential prompt injection detected"}
+
+    if contains_pii(query):
+        query = redact_pii(query)
+
+    if is_harmful(query):
+        return {"error": "I can't help with that request"}
+
+    if len(query) > 10000:
+        return {"error": "Query too long (max 10K characters)"}
+
+    # RAG PIPELINE:
+    answer = rag_pipeline(query)
+
+    # OUTPUT GUARDRAILS:
+    if not is_grounded(answer, retrieved_context):
+        answer = add_disclaimer(answer)
+
+    answer = redact_pii(answer)
+    answer = filter_toxic_content(answer)
+
+    return {"answer": answer}
+"""
+
+print(guardrails_code)
+
+# A/B TESTING:
+ab_testing = """
+A/B TESTING RAG CONFIGURATIONS:
+
+Config A: Naive RAG + re-ranking
+Config B: Advanced RAG + HyDE + re-ranking
+
+Split 50/50 traffic:
+  → Half users get Config A
+  → Half users get Config B
+  → Track: user satisfaction, accuracy, cost, latency
+  → Winner deploys to all users
+
+METRICS TO COMPARE:
+  → RAGAS scores (faithfulness, relevance)
+  → User feedback (thumbs up/down)
+  → Latency (p50, p95)
+  → Cost per query
+  → Error rate
+
+Run for 1-2 weeks for statistical significance.
+"""
+
+print(ab_testing)</div>
+
+<div class="code-block"># ── STEP 6: Complete production architecture ──
+# The FULL production RAG system architecture:
+
+architecture = """
+COMPLETE PRODUCTION RAG ARCHITECTURE:
+
+USER
+  ↓
+API GATEWAY (Django/FASTAPI)
+  → Authentication (JWT)
+  → Rate limiting (per user)
+  ↓
+INPUT GUARDRAILS
+  → Prompt injection check
+  → PII detection
+  → Content filter
+  ↓
+SEMANTIC CACHE CHECK
+  → Hit? Return cached answer (instant)
+  → Miss? Continue pipeline
+  ↓
+QUERY TRANSFORMATION
+  → Conversational resolution
+  → Query rewriting
+  → (Decomposition if needed)
+  ↓
+RETRIEVAL
+  → Vector search (pgvector/HNSW)
+  → Keyword search (BM25/full-text)
+  → Hybrid merge (RRF)
+  ↓
+RE-RANKING
+  → Cross-encoder (top 20 → top 5)
+  ↓
+CONTEXT ASSEMBLY
+  → Combine chunks with citations
+  → Compress if too long
+  ↓
+LLM GENERATION
+  → GPT-4o / Claude / Llama
+  → Temperature=0 for factual
+  → Streaming (SSE)
+  ↓
+OUTPUT GUARDRAILS
+  → Hallucination check
+  → PII redaction
+  → Toxic filter
+  ↓
+RESPONSE
+  → Answer + sources + confidence
+  → Trace logged
+  → Cache stored
+  ↓
+USER (with streaming)
+
+MONITORING (parallel):
+  → LangSmith/Langfuse tracing
+  → RAGAS daily evaluation
+  → Cost tracking
+  → User feedback collection
+"""
+
+print(architecture)
+
+# PRODUCTION CHECKLIST:
+checklist = [
+    "Caching (semantic, 30-60% cost save)",
+    "Observability (LangSmith/Langfuse tracing)",
+    "Evaluation pipeline (RAGAS daily regression)",
+    "Fallback chain (advanced → simple → direct → safe default)",
+    "Guardrails (input + output safety)",
+    "Rate limiting (prevent abuse)",
+    "Incremental indexing (new docs auto-add)",
+    "A/B framework (config comparison)",
+    "User feedback loop (thumbs, rating)",
+    "Monitoring alerts (latency, error, cost spikes)",
+    "Multi-tenancy (tenant isolation/filtering)",
+    "Health checks (DB, API, Redis)",
+    "Graceful degradation (disable features when overloaded)",
+    "Documentation (runbook for incidents)",
+    "Backup plan (what if vector DB goes down?)",
+]
+
+print("PRODUCTION RAG CHECKLIST:")
+for item in checklist:
+    print(f"  ☐ {item}")
+
+# THE BIG PICTURE:
+# Production RAG is ENGINEERING, not just AI.
+# The RAG algorithm is 20% of the work.
+# The other 80% is: caching, monitoring, fallback, guardrails,
+# multi-tenancy, observability, evaluation, A/B testing, rate limiting.
+# A demo RAG works in 1 hour. Production RAG takes months.
+# But when done right, it's the backbone of modern AI applications.
+# Every successful AI company (OpenAI, Anthropic, Google) runs production RAG at scale.
+# Now you know how to build one too.</div>
 
 <div class="dialogue">ইহসান — excellence, perfection in work। নবীজি (সা) বলেছেন — "নিশ্চয় আল্লাহ তোমাদের কাজে ইহসান ভালোবাসেন।" কারখানা বনাম হাতে বানানো = ইহসানের পার্থক্য। Production RAG = ইহসান। প্রতিটা পণ্য নিখুঁত। প্রতিটা কল reliable। প্রতিটা fallback ready। এটাই production engineering।</div>
 <div class="dialogue en">"Ihsan — excellence, perfection in work. The Prophet (pbuh) said — 'Allah loves excellence in your work.' Factory vs handmade = the difference of ihsan. Production RAG = ihsan. Every output perfect. Every call reliable. Every fallback ready. This is production engineering."</div>`,
