@@ -554,77 +554,332 @@ doors.push({
 <div class="svg-caption">হ্যালুসিনেশন — ৫টি কারণ, ৭টি প্রতিরক্ষা স্তর; যাচাই ছাড়া বিশ্বাস নয়</div>
 
 <div class="code-block">Hallucination — Why LLMs Confidently Lie:
+<div class="code-block"># ── STEP 1: What is hallucination? ──
+# HALLUCINATION = the LLM states FALSE information with HIGH CONFIDENCE.
+# It's not lying (no intent) — it genuinely "believes" the wrong answer.
 
-WHAT IT IS:
-  LLM যখন সত্য নয় এমন তথ্য আত্মবিশ্বাসে বলে।
-  
-  উদাহরণ:
-  "Who wrote 'To Kill a Mockingbird'?"
-  → "Harper Lee" ✓ (সঠিক)
-  
-  "Who wrote 'The Shadow of the Wind'?"
-  → "Carlos Ruiz Zafón" ✓ (সঠিক)
-  
-  "Who wrote 'The Silent Patient'?"  
-  → "Alex Michaelides" — wait, is it?
-  → LLM হয়তো বলে "Stephen King" (ভুল!)
-  → কিন্তু আত্মবিশ্বাসের সাথে!
+# EXAMPLES:
+examples = """
+CORRECT (LLM knows):
+  "Who wrote 'To Kill a Mockingbird'?" → "Harper Lee" ✅
 
-WHY IT HAPPENS (৫টি কারণ):
+HALLUCINATION (LLM doesn't know but guesses):
+  "Who wrote 'The Silent Patient'?" → "Stephen King" ❌ (actually: Alex Michaelides)
+  → But stated with same confidence as correct answers!
 
-১. TRAINING DATA GAP
-  যা training-এ ছিল না, সে জানে না।
-  কিন্তু "I don't know" না বলে অনুমান করে।
-  → RLHF এই আচরণ বাড়ায় (sycophancy)
+HALLUCINATION (fabricated details):
+  "Tell me about the 1923 Treaty of New York"
+  → LLM invents a plausible-sounding treaty that never existed
+  → Includes fake dates, signatories, outcomes
+"""
 
-২. ATTENTION FAILURE
-  দীর্ঘ কন্টেক্সটে attention দুর্বল হয়।
-  গুরুত্বপূর্ণ তথ্য "lost in the middle"।
-  → মডেল ভুল অংশ থেকে উত্তর দেয়
+print(examples)
 
-৩. PROBABILITY, NOT KNOWLEDGE
-  LLM "জানে" না — সে probability হিসাব করে।
-  " সবচেয়ে probable" ≠ "সঠিক"
-  → high probability hallucination
+# WHY HALLUCINATION IS DANGEROUS:
+danger = """
+1. CONFIDENT WRONGNESS: Model sounds equally sure whether right or wrong
+2. PLAUSIBLE FICTION: Hallucinated content sounds real (smooth, coherent)
+3. CASCADING ERRORS: One hallucination leads to more (model builds on false premise)
+4. TRUST EXPLOITATION: Users trust confident-sounding answers
+5. SCALE: Millions of users × daily use = massive misinformation potential
+"""
 
-৪. SYCOPHANCY (RLHF artifact)
-  মডেল ইউজারকে খুশি করতে চায়।
-  ইউজার যা বলছে, তার সাথে একমত হয়।
-  → "আমি ভালো" → "হ্যাঁ, আপনি খুব ভালো!"
+print(danger)</div>
 
-৫. TEMPERATURE EFFECT
-  উচ্চ temperature = বেশি randomness
-  = বেশি hallucination সুযোগ
+<div class="code-block"># ── STEP 2: Why hallucination happens ──
+# Five root causes of LLM hallucination:
 
-PREVENTION — ৭ LAYER DEFENSE:
+causes = {
+    "1. TRAINING DATA GAPS": {
+        "what": "Model can't know what wasn't in training data",
+        "effect": "Guesses instead of saying 'I don't know'",
+        "fix": "Provide context (RAG), let model say 'I don't know'",
+    },
+    "2. PROBABILITY, NOT KNOWLEDGE": {
+        "what": "LLMs compute probabilities, not facts",
+        "effect": "'Most probable' ≠ 'correct'",
+        "fix": "Use low temperature, verify critical claims",
+    },
+    "3. ATTENTION FAILURES": {
+        "what": "Long contexts cause 'lost in the middle'",
+        "effect": "Model ignores key information in the middle",
+        "fix": "Keep prompts short, put key info first/last",
+    },
+    "4. SYCOPHANCY (RLHF artifact)": {
+        "what": "RLHF teaches model to please the user",
+        "effect": "Agrees with user even when user is wrong",
+        "fix": "Prompt: 'Correct me if I'm wrong'",
+    },
+    "5. TEMPERATURE EFFECT": {
+        "what": "High temperature increases randomness",
+        "effect": "More random = more hallucination risk",
+        "fix": "Use temperature=0 for factual queries",
+    },
+}
 
-Layer 1: GROUNDING (RAG)
-  মডেলকে উৎস দাও — "শুধু এই ডকুমেন্ট 
-  থেকে উত্তর দাও"। RAG = fact-based।
+print("WHY HALLUCINATION HAPPENS:")
+for cause, info in causes.items():
+    print(f"\n  {cause}")
+    print(f"    What: {info['what']}")
+    print(f"    Effect: {info['effect']}")
+    print(f"    Fix: {info['fix']}")
 
-Layer 2: LOW TEMPERATURE
-  temperature=0 → deterministic, কম hallucination
+# KEY INSIGHT:
+# LLMs are AUTOCOMPLETE on steroids.
+# They predict the most likely next token — they don't "know" facts.
+# When the most likely continuation happens to be false → hallucination.
+# The model has NO CONCEPT of truth vs fiction.</div>
 
-Layer 3: CITATION REQUIREMENT
-  "প্রতিটা দাবির উৎস দাও" → মডেল উৎস খুঁজে 
-  না পেলে দাবি ছাড়ে না
+<div class="code-block"># ── STEP 3: Types of hallucination ──
+# Not all hallucinations are the same:
 
-Layer 4: CHAIN-OF-VERIFICATION
-  উত্তর দিক → তারপর "উপরের প্রতিটা 
-  দাবি verify করো" → self-check
+hallucination_types = {
+    "Factuality Hallucination": {
+        "what": "Stating verifiably false facts",
+        "example": "'Einstein was born in 1950' (actually 1879)",
+        "severity": "High (factually wrong)",
+    },
+    "Faithfulness Hallucination": {
+        "what": "Contradicts the source/context",
+        "example": "Summarizes a document but invents points not in it",
+        "severity": "Medium (unfaithful to source)",
+    },
+    "Logical Hallucination": {
+        "what": "Reasoning errors, invalid logic",
+        "example": "'All cats are mammals → all mammals are cats'",
+        "severity": "Medium (bad reasoning)",
+    },
+    "Source Hallucination": {
+        "what": "Cites non-existent papers/URLs",
+        "example": "'According to Smith et al. (2023)...' — no such paper",
+        "severity": "High (fake citations are dangerous)",
+    },
+    "Context Hallucination": {
+        "what": "Contradicts earlier in the same response",
+        "example": "Says 'Python is compiled' then 'Python is interpreted'",
+        "severity": "Low-Medium (self-contradiction)",
+    },
+    "Format Hallucination": {
+        "what": "Wrong format, incomplete output",
+        "example": "Promised JSON, delivered prose",
+        "severity": "Low (format issue, not factual)",
+    },
+}
 
-Layer 5: UNCERTAINTY PROMPTING
-  "যদি নিশ্চিত না হও, 'আমি জানি না' বলো"
-  → explicit uncertainty handling
+print("TYPES OF HALLUCINATION:")
+for htype, info in hallucination_types.items():
+    print(f"\n  {htype}")
+    print(f"    What: {info['what']}")
+    print(f"    Example: {info['example']}")
+    print(f"    Severity: {info['severity']}")</div>
 
-Layer 6: STRUCTURED OUTPUT
-  JSON schema দাও — confidence field সহ
-  {answer: "...", confidence: 0.6, 
-   source: "doc.pdf, p.3"}
+<div class="code-block"># ── STEP 4: Preventing hallucination (RAG) ──
+# The #1 defense: RAG (Retrieval Augmented Generation)
 
-Layer 7: EXTERNAL VERIFICATION
-  একটা দ্বিতীয় model বা human reviewer 
-  উত্তর যাচাই করে</div>
+# WITHOUT RAG:
+# User asks → LLM answers from MEMORY (may hallucinate)
+
+# WITH RAG:
+# User asks → Retrieve relevant documents → LLM answers FROM DOCUMENTS
+
+rag_defense = """
+RAG ANTI-HALLUCINATION PROMPT:
+
+System: "Answer the question based ONLY on the provided context.
+If the context doesn't contain the answer, say 'I don't know
+based on the provided information.' Do NOT use your own knowledge."
+
+Context: [retrieved documents]
+
+Question: [user question]
+
+→ Model is FORCED to use only the provided context
+→ If answer isn't in context → "I don't know"
+→ Hallucination dramatically reduced
+"""
+
+print(rag_defense)
+
+# PYTHON RAG WITH ANTI-HALLUCINATION:
+rag_code = """
+def rag_answer_safe(question):
+    # Step 1: Retrieve relevant documents:
+    docs = vector_search(question, top_k=5)
+    context = "\\n\\n".join([d.content for d in docs])
+
+    # Step 2: Ask LLM with strict instructions:
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "Answer based ONLY on the context below. "
+                    "If the answer is not in the context, say "
+                    "'I don't have that information.' "
+                    "Cite sources using [Doc N] format."
+                )
+            },
+            {
+                "role": "user",
+                "content": f"Context:\\n{context}\\n\\nQuestion: {question}"
+            }
+        ],
+        temperature=0,  # deterministic for factual answers
+    )
+    return response.choices[0].message.content
+"""
+
+print(rag_code)</div>
+
+<div class="code-block"># ── STEP 5: Advanced anti-hallucination techniques ──
+# Beyond RAG — more sophisticated defenses:
+
+techniques = {
+    "Chain-of-Verification (CoVe)": {
+        "how": "Generate answer → ask model to verify each claim → correct errors",
+        "pro": "Self-catches many hallucinations",
+        "con": "2-3x more API calls (expensive)",
+    },
+    "Self-Consistency": {
+        "how": "Generate 5 answers → pick the majority answer",
+        "pro": "Reduces random hallucinations",
+        "con": "5x cost",
+    },
+    "External Fact-Checking": {
+        "how": "Use a second model or API to verify claims",
+        "pro": "Independent verification",
+        "con": "Additional latency and cost",
+    },
+    "Grounding with Citations": {
+        "how": "Require model to cite source for every claim",
+        "pro": "Forces model to find evidence",
+        "con": "Model may hallucinate citations too",
+    },
+    "Constrained Generation": {
+        "how": "Restrict output to specific facts/schema",
+        "pro": "Prevents fabricated details",
+        "con": "Limits flexibility",
+    },
+    "Confidence Calibration": {
+        "how": "Ask model to rate its own confidence",
+        "pro": "Flag uncertain answers",
+        "con": "Model's confidence is often miscalibrated",
+    },
+}
+
+print("ADVANCED ANTI-HALLUCINATION TECHNIQUES:")
+for technique, info in techniques.items():
+    print(f"\n  {technique}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# CHAIN-OF-VERIFICATION EXAMPLE:
+cove_example = """
+Step 1: Generate initial answer:
+  Q: "What year did Bangladesh gain independence?"
+  A: "Bangladesh gained independence in 1971."
+
+Step 2: Ask model to verify:
+  "Verify this claim: 'Bangladesh gained independence in 1971.'
+   Is this correct? Check the date."
+
+Step 3: Model self-corrects:
+  "Yes, Bangladesh gained independence on March 26, 1971,
+   after the Liberation War. This is correct."
+
+Step 4: Final verified answer.
+"""
+
+print(cove_example)</div>
+
+<div class="code-block"># ── STEP 6: Detecting and measuring hallucination ──
+# How to know if your LLM application is hallucinating:
+
+# HALLUCINATION DETECTION METHODS:
+detection = {
+    "Human evaluation": {
+        "how": "Humans check a sample of outputs for accuracy",
+        "pro": "Most reliable",
+        "con": "Expensive, slow, not scalable",
+    },
+    "LLM-as-judge": {
+        "how": "Use GPT-4 to evaluate another model's outputs",
+        "pro": "Automated, scalable",
+        "con": "Judge model can also hallucinate",
+    },
+    "Fact-checking APIs": {
+        "how": "Use Google Fact Check API, Snopes, etc.",
+        "pro": "Independent verification",
+        "con": "Limited coverage (not all facts are checkable)",
+    },
+    "Reference comparison": {
+        "how": "Compare LLM output to known-correct reference",
+        "pro": "Objective metric",
+        "con": "Need reference answers (not always available)",
+    },
+    "Faithfulness metrics": {
+        "how": "Check if summary contradicts source (NLI models)",
+        "pro": "Good for summarization",
+        "con": "Doesn't check factual accuracy of source",
+    },
+    "RAGAS (RAG Assessment)": {
+        "how": "Evaluate RAG pipeline: retrieval quality + faithfulness",
+        "pro": "Specifically for RAG applications",
+        "con": "Newer framework, evolving metrics",
+    },
+}
+
+print("HALLUCINATION DETECTION:")
+for method, info in detection.items():
+    print(f"\n  {method}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# PRODUCTION ANTI-HALLUCINATION CHECKLIST:
+checklist = """
+ANTI-HALLUCINATION PRODUCTION CHECKLIST:
+
+PROMPT DESIGN:
+  ☐ Use RAG for factual questions (provide context)
+  ☐ Set temperature=0 for factual/code/math tasks
+  ☐ Include "say 'I don't know' if unsure" in system prompt
+  ☐ Ask for citations/sources
+  ☐ Use structured output (JSON with confidence scores)
+
+VERIFICATION:
+  ☐ Implement chain-of-verification for critical claims
+  ☐ Use self-consistency for important decisions
+  ☐ External fact-check for high-stakes information
+  ☐ Log all LLM outputs for audit
+
+USER EXPERIENCE:
+  ☐ Show sources/citations to users
+  ☐ Add "AI-generated, verify important information" disclaimer
+  ☐ Allow user feedback (thumbs up/down)
+  ☐ Flag low-confidence answers
+
+MONITORING:
+  ☐ Track hallucination rate over time
+  ☐ Monitor user corrections/complaints
+  ☐ Regular evaluation on test sets
+  ☐ A/B test prompt changes
+
+RULE OF THUMB:
+  Never trust LLM output for critical decisions without verification.
+  Medical, legal, financial, safety information → ALWAYS verify.
+  "Trust but verify" — or better: "Verify, then trust."
+"""
+
+print(checklist)
+
+# THE BOTTOM LINE:
+# Hallucination is INHERENT to how LLMs work.
+# They predict likely text — they don't verify truth.
+# You can REDUCE it (RAG, temperature, verification)
+# but you can never ELIMINATE it completely.
+# Always design your systems assuming hallucination will happen.
+# Plan for it, detect it, mitigate it. Never trust blindly.</div>
 
 <div class="dialogue">সত্য ও ভ্রম। কুরআনে আল্লাহ বলেন — "মিথ্যা তো সত্যের বিপরীত।" (১৩:১)। LLM-এর হ্যালুসিনেশন মিথ্যা নয় — ভ্রম। সে ভুল বোঝে, ভুল বলে। কিন্তু ইচ্ছা করে নয়। তবু বিপজ্জনক — কারণ আত্মবিশ্বাসী। সত্য যাচাই করা প্রতিটা মানুষের দায়িত্ব। কুরআন বলে — "যারা সত্য যাচাই করে না, তাদের কথা বিশ্বাস করো না।" (৪৯:৬)। LLM-ও তেমনি — যাচাই ছাড়া বিশ্বাস নয়।</div>
 <div class="dialogue en">"Truth and illusion. Allah says — 'Falsehood is the opposite of truth.' (13:1). LLM hallucination isn't lying — it's illusion. It misunderstands, misspeaks. But not intentionally. Still dangerous — because it's confident. Verifying truth is every person's duty. The Quran says — 'Don't believe those who don't verify.' (49:6). The LLM too — no belief without verification."</div>`,
