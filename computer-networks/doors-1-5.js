@@ -1976,42 +1976,394 @@ doors.push({
 <div class="diag-cap">Root (১৩টি) → TLD (.com/.org/.bn) → Authoritative (প্রতিটি ডোমেইনের নিজস্ব) · Resolver প্রতিটি স্তরে জিজ্ঞেস করে</div>
 </div>
 
-<div class="code-block">— dig: DNS রেজোলিউশন দেখো —
+<div class="code-block"># ── STEP 1: What is DNS? ──
+# DNS (Domain Name System) translates domain names to IP addresses.
+
+dns = """
+DNS = Phone book of the internet.
+
+  google.com → 142.250.190.46
+
+Without DNS, you'd need to memorize IP addresses.
+With DNS, you type a name, DNS finds the IP.
+
+HIERARCHY:
+  Root DNS servers:     .          (13 logical, globally distributed)
+  TLD servers:          .com .org .net .bd (Top Level Domains)
+  Authoritative servers: google.com, example.com (per-domain)
+
+RESOLUTION PROCESS (recursive query):
+  1. Browser: "What's google.com?" → Local DNS resolver
+  2. Resolver asks Root: "Where's .com?" → Root says "ask TLD"
+  3. Resolver asks .com TLD: "Where's google.com?" → "ask Google's NS"
+  4. Resolver asks Google's NS: "google.com?" → "142.250.190.46"
+  5. Resolver caches and returns the IP to browser
+
+This happens in ~10-50ms (with caching).
+"""
+
+print(dns)
+
+# DNS RESOLVERS:
+resolvers = """
+DNS RESOLVERS (who does the lookup for you):
+
+  ISP resolver: Your ISP's DNS (often slow, may track you)
+  Google DNS:   8.8.8.8, 8.8.4.4 (fast, free, logs queries)
+  Cloudflare:   1.1.1.1 (fast, privacy-focused)
+  Quad9:        9.9.9.9 (security, blocks malware)
+
+Set your DNS:
+  /etc/resolv.conf:
+    nameserver 1.1.1.1
+    nameserver 8.8.8.8
+"""
+
+print(resolvers)</div>
+
+<div class="code-block"># ── STEP 2: DNS record types ──
+# Different record types serve different purposes.
+
+record_types = {
+    "A (Address)": {
+        "purpose": "Domain → IPv4 address",
+        "example": "google.com. 300 IN A 142.250.190.46",
+        "use": "Main website address",
+    },
+    "AAAA (IPv6 Address)": {
+        "purpose": "Domain → IPv6 address",
+        "example": "google.com. 300 IN AAAA 2607:f8b0:4004:800::200e",
+        "use": "IPv6 support",
+    },
+    "CNAME (Canonical Name)": {
+        "purpose": "Domain alias → another domain",
+        "example": "www.google.com → google.com",
+        "use": "Point subdomain to main domain",
+    },
+    "MX (Mail Exchange)": {
+        "purpose": "Where to send email for this domain",
+        "example": "google.com. 3600 IN MX 10 smtp.google.com",
+        "use": "Email delivery",
+    },
+    "NS (Name Server)": {
+        "purpose": "Which DNS server is authoritative",
+        "example": "google.com. 86400 IN NS ns1.google.com",
+        "use": "DNS delegation",
+    },
+    "TXT (Text)": {
+        "purpose": "Arbitrary text records",
+        "example": 'google.com. 3600 IN TXT "v=spf1 include:_spf.google.com ~all"',
+        "use": "SPF (email auth), domain verification",
+    },
+    "SOA (Start of Authority)": {
+        "purpose": "DNS zone metadata",
+        "example": "google.com. 86400 IN SOA ns1.google.com. admin.google.com.",
+        "use": "Zone configuration",
+    },
+    "SRV (Service)": {
+        "purpose": "Service location (host + port)",
+        "example": "_sip._tcp.example.com. SRV 10 60 5060 sip.example.com.",
+        "use": "VoIP, XMPP, Active Directory",
+    },
+}
+
+print("DNS RECORD TYPES:")
+for rtype, info in record_types.items():
+    print(f"\n  {rtype}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 3: DNS tools (dig, nslookup) ──
+# How to inspect DNS records.
+
+dig_examples = """
+# Basic lookup:
 $ dig google.com
 
 ;; QUESTION SECTION:
 ;google.com.            IN  A
 
 ;; ANSWER SECTION:
-google.com.     300  IN  A   142.250.190.46   ← TTL: 300s
+google.com.     300  IN  A   142.250.190.46    ← TTL: 300 seconds
 
 ;; Query time: 12 msec
-;; SERVER: 192.168.1.1#53             ← তোমার resolver
+;; SERVER: 192.168.1.1#53
 
-— nslookup (সহজ সংস্করণ) —
+# Look up specific record types:
+$ dig MX google.com      # Mail servers
+$ dig NS google.com      # Name servers
+$ dig AAAA google.com    # IPv6 address
+$ dig TXT google.com     # Text records (SPF, etc.)
+$ dig CNAME www.google.com  # Alias
+
+# Simple lookup:
 $ nslookup google.com
 Server:     192.168.1.1
-Address:    192.168.1.1#53
-Name:    google.com
-Address: 142.250.190.46
+Name:       google.com
+Address:    142.250.190.46
 
-— ভিন্ন রেকর্ড দেখো —
-$ dig MX google.com    → মেইল সার্ভার
-$ dig NS google.com    → কোন authoritative সার্ভার
-$ dig AAAA google.com  → IPv6 ঠিকানা</div>
+# Use specific DNS server:
+$ dig @8.8.8.8 google.com    # Ask Google DNS directly
+$ dig @1.1.1.1 google.com    # Ask Cloudflare DNS
 
-<div class="code-block">— DNS রেকর্ড টাইপ (বাস্তব উদাহরণ) —
-google.com.    300   IN  A      142.250.190.46
-google.com.    300   IN  AAAA   2607:f8b0:4004:800::200e
-google.com.    3600  IN  MX     10 smtp.google.com
-google.com.    86400 IN  NS     ns1.google.com.
-www.google.com 3600  IN  CNAME  google.com.
-google.com.    3600  IN  TXT    "v=spf1 include:_spf.google.com ~all"
+# Check DNS propagation:
+$ dig +short google.com      # Just the IP, no details
+142.250.190.46
+"""
 
-— TTL (উপরের সংখ্যা): —
-  300   = ৫ মিনিট (ঘন ঘন বদলায়)
-  86400 = ১ দিন (স্থিতিশীল)
-  ছোট TTL = দ্রুত আপডেট কিন্তু বেশি ট্রাফিক</div>
+print(dig_examples)
+
+# PYTHON DNS LOOKUP:
+python_dns = """
+import socket
+
+# Simple lookup:
+ip = socket.gethostbyname('google.com')
+print(f"google.com → {ip}")
+
+# Full DNS info with dnspython:
+import dns.resolver
+
+# A record:
+answers = dns.resolver.resolve('google.com', 'A')
+for rdata in answers:
+    print(f"A: {rdata.address}")
+
+# MX record:
+mx_records = dns.resolver.resolve('google.com', 'MX')
+for rdata in mx_records:
+    print(f"MX: {rdata.exchange} (priority {rdata.preference})")
+
+# TXT record:
+txt_records = dns.resolver.resolve('google.com', 'TXT')
+for rdata in txt_records:
+    print(f"TXT: {rdata.strings}")
+"""
+
+print(python_dns)</div>
+
+<div class="code-block"># ── STEP 4: DNS caching and TTL ──
+# DNS results are CACHED at multiple levels for speed.
+
+caching = """
+DNS CACHING LEVELS:
+
+1. BROWSER CACHE (Chrome, Firefox)
+   → Caches DNS for ~60 seconds
+   → Speeds up revisits to same domain
+
+2. OS CACHE (systemd-resolved, dnsmasq)
+   → Caches DNS at OS level
+   → All apps share the cache
+   → TTL: follows DNS record's TTL
+
+3. RESOLVER CACHE (ISP/Google/Cloudflare)
+   → Your DNS resolver caches results
+   → TTL: follows DNS record's TTL (300s to 86400s)
+
+4. HIERARCHICAL CACHING (Root, TLD)
+   → Each level caches
+   → Reduces load on root servers
+
+TTL (Time To Live):
+  300 (5 min):    Frequently changing (load balancing, failover)
+  3600 (1 hour):  Moderate changes
+  86400 (1 day):  Stable, rarely changes (NS records)
+  604800 (1 week): Very stable
+
+TRADE-OFF:
+  Short TTL = fast updates, more DNS queries (slower first lookup)
+  Long TTL = fewer queries, but changes take longer to propagate
+
+FLUSH YOUR DNS CACHE:
+  macOS:   sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+  Linux:   sudo systemd-resolve --flush-caches
+  Chrome:  chrome://net-internals/#dns → "Clear host cache"
+"""
+
+print(caching)
+
+# DNS TROUBLESHOOTING:
+troubleshooting = """
+DNS PROBLEMS (most common networking issue):
+
+SYMPTOM: "I can ping 8.8.8.8 but not google.com"
+  → DNS is broken (can reach internet, can't resolve names)
+
+DIAGNOSE:
+  1. Is DNS configured?
+     $ cat /etc/resolv.conf
+     nameserver 192.168.1.1
+
+  2. Can we reach the DNS server?
+     $ ping 192.168.1.1
+
+  3. Can we resolve?
+     $ dig google.com
+     → If no answer, DNS server is broken
+     → Try: $ dig @8.8.8.8 google.com (different DNS)
+
+  4. Flush cache:
+     $ sudo systemd-resolve --flush-caches
+
+FIXES:
+  → Change DNS to 8.8.8.8 or 1.1.1.1
+  → Check /etc/resolv.conf
+  → Restart network manager
+  → Check firewall isn't blocking port 53
+"""
+
+print(troubleshooting)</div>
+
+<div class="code-block"># ── STEP 5: DHCP — getting an IP automatically ──
+# DHCP assigns IP addresses automatically.
+
+dhcp = """
+DHCP (Dynamic Host Configuration Protocol):
+
+When you connect to Wi-Fi, you need an IP address.
+DHCP gives you one automatically — no manual configuration.
+
+DORA PROCESS:
+  D - Discover: Client broadcasts "I need an IP!"
+  O - Offer:    DHCP server offers "Take 192.168.1.42"
+  R - Request:  Client says "OK, I'll take that one"
+  A - Ack:      Server confirms "It's yours for 24 hours"
+
+WHAT DHCP PROVIDES:
+  → IP address (192.168.1.42)
+  → Subnet mask (255.255.255.0)
+  → Default gateway (192.168.1.1)
+  → DNS servers (8.8.8.8, 1.1.1.1)
+  → Lease time (24 hours)
+
+LEASE MANAGEMENT:
+  → DHCP leases IP for a fixed time (usually 24h)
+  → At 50% lease time, client tries to renew
+  → At 87.5%, client broadcasts renewal request
+  → If no renewal → IP released back to pool
+"""
+
+print(dhcp)
+
+# VIEW DHCP INFO:
+dhcp_view = """
+# Linux: View DHCP lease info:
+$ cat /var/lib/dhcp/dhclient.leases
+
+lease {
+  interface "eth0";
+  fixed-address 192.168.1.42;
+  option subnet-mask 255.255.255.0;
+  option routers 192.168.1.1;
+  option domain-name-servers 8.8.8.8, 1.1.1.1;
+  lease-time 86400;  # 24 hours
+}
+
+# Renew DHCP lease:
+$ sudo dhclient -r eth0    # Release IP
+$ sudo dhclient eth0       # Get new IP
+
+# macOS: Renew DHCP:
+$ sudo ipconfig set en0 BOOTP
+$ sudo ipconfig set en0 DHCP
+
+# Static IP (bypass DHCP):
+# /etc/netplan/01-network.yaml:
+network:
+  ethernets:
+    eth0:
+      addresses: [192.168.1.100/24]  # static IP
+      gateway4: 192.168.1.1
+      nameservers: [8.8.8.8, 1.1.1.1]
+"""
+
+print(dhcp_view)</div>
+
+<div class="code-block"># ── STEP 6: DNS in production (Django) ──
+# How DNS works for YOUR web applications.
+
+production_dns = """
+DNS FOR YOUR DJANGO APP:
+
+1. REGISTER A DOMAIN:
+   → Buy from registrar (Namecheap, GoDaddy, Cloudflare)
+   → e.g., ledgerpilot.com
+
+2. CONFIGURE DNS RECORDS:
+   A record:     ledgerpilot.com → 174.138.110.50 (server IP)
+   A record:     api.ledgerpilot.com → 174.138.110.50
+   CNAME:        www.ledgerpilot.com → ledgerpilot.com
+   MX record:    ledgerpilot.com → mail.protonmail.com (email)
+   TXT (SPF):    "v=spf1 include:_spf.protonmail.com ~all"
+   TXT (verify): "google-site-verification=..."
+
+3. PROPAGATION:
+   → DNS changes take time to propagate (TTL-based)
+   → Short TTL (300s) before migration = faster propagation
+   → Check propagation: whatsmydns.net (global check)
+
+4. CLOUDFLARE (common setup):
+   → Nameservers: ns1.cloudflare.com, ns2.cloudflare.com
+   → Cloudflare proxies traffic (CDN + DDoS protection)
+   → SSL termination at Cloudflare edge
+
+PYTHON: Check your DNS programmatically:
+  import dns.resolver
+
+  def check_dns_setup(domain):
+      checks = {
+          "A": f"Points to server IP",
+          "MX": f"Email configured",
+          "TXT (SPF)": f"Email authentication",
+          "NS": f"Nameservers configured",
+      }
+
+      for record_type, desc in checks.items():
+          try:
+              answers = dns.resolver.resolve(domain, record_type)
+              print(f"  ✅ {record_type}: {len(answers)} records")
+          except:
+              print(f"  ❌ {record_type}: NOT FOUND")
+"""
+
+print(production_dns)
+
+# DNS CHECKLIST FOR DEPLOYMENT:
+checklist = [
+    "Register domain name",
+    "Configure A record (domain → server IP)",
+    "Configure CNAME (www → domain)",
+    "Set up MX records (email)",
+    "Set up TXT (SPF for email authentication)",
+    "Use short TTL before migration (300s)",
+    "Verify propagation with whatsmydns.net",
+    "Set up Cloudflare (CDN + security)",
+    "Configure reverse DNS (PTR record) with ISP",
+    "Test with dig/nslookup from multiple locations",
+    "Monitor DNS uptime (alert if DNS fails)",
+    "Set DNS TTL to 3600 (1hr) for stability after setup",
+]
+
+print("DNS DEPLOYMENT CHECKLIST:")
+for item in checklist:
+    print(f"  ☐ {item}")
+
+# DNS + DHCP SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ DNS              │ Domain name → IP address         │
+# │ DNS hierarchy    │ Root → TLD → Authoritative      │
+# │ A record         │ Domain → IPv4                   │
+# │ CNAME            │ Domain alias                    │
+# │ MX record        │ Email server                    │
+# │ TTL              │ Cache duration (300-86400s)    │
+# │ DNS resolvers    │ 8.8.8.8 (Google), 1.1.1.1 (CF) │
+# │ DHCP             │ Auto-assign IP addresses        │
+# │ DHCP DORA        │ Discover→Offer→Request→Ack      │
+# │ DHCP provides    │ IP, mask, gateway, DNS          │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">🔌</span><div><strong>DHCP DORA Process (Missing Topic!):</strong> তুমি যখন Wi-Fi তে যুক্ত হও, তোমাকে একটি IP ঠিকানা দরকার। এটি DHCP প্রোটোকল দেয় — ৪টি ধাপে।<br>
 <strong>D</strong>iscover: ক্লায়েন্ট ব্রডকাস্ট করে — "আমাকে IP দাও!"<br>
