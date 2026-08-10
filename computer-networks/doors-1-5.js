@@ -1451,47 +1451,400 @@ doors.push({
 <div class="diag-cap">Step ১: SYN (ক্লায়েন্ট অনুরোধ) · Step ২: SYN-ACK (সার্ভার স্বীকার) · Step ৩: ACK (ক্লায়েন্ট নিশ্চিত)</div>
 </div>
 
-<div class="code-block">— TCP হেডার গঠন (২০ বাইট ন্যূনতম) —
-# ───────────────────────────────────────────────────────────# 
-#   সোর্স পোর্ট (১৬ বিট)    #   গন্তব্য পোর্ট (১৬ বিট)      # 
-# ───────────────────────────────────────────────────────────# 
-#   সিকোয়েন্স নম্বর (৩২ বিট) — প্রতিটি বাইটের ক্রম         # 
-# ───────────────────────────────────────────────────────────# 
-#   অ্যাকনলেজমেন্ট নম্বর (৩২ বিট) — "এত পেয়েছি"             # 
-# ─────────────# ─────────────# ───────────────────────────────# 
-#  Data Offset #   Flags      #   Window Size (রিসিভার ধারণ)   # 
-#   (৪ বিট)    #  SYN ACK FIN #   (১৬ বিট)                     # 
-# ───────────────────────────────────────────────────────────# 
-#   Checksum (১৬ বিট)      #   Urgent Pointer (১৬ বিট)      # 
-# ───────────────────────────────────────────────────────────# 
-#   Options (ঐচ্ছিক)  ·  ·  ·  Data (তোমার আসল বার্তা)      # 
-# ───────────────────────────────────────────────────────────# </div>
+<div class="code-block"># ── STEP 1: TCP — reliable, connection-oriented ──
+# TCP guarantees data delivery with the 3-way handshake.
 
-<div class="code-block">— সক্রিয় TCP সংযোগ দেখো —
-$ netstat -tn    (Linux/macOS)
+tcp_overview = """
+TCP (Transmission Control Protocol):
 
-Active Internet connections (TCP)
+CHARACTERISTICS:
+  → Reliable: guarantees delivery (retransmits lost packets)
+  → Ordered: packets arrive in correct sequence
+  → Connection-oriented: handshake before data
+  → Flow control: adjusts speed to receiver capacity
+  → Congestion control: backs off on network congestion
+
+3-WAY HANDSHAKE (connection setup):
+  1. Client → Server: SYN (synchronize)
+     "I want to connect, my sequence number is X"
+  2. Server → Client: SYN-ACK
+     "OK, my sequence number is Y, I acknowledge X"
+  3. Client → Server: ACK
+     "Confirmed, I acknowledge Y. Connection established!"
+
+CONNECTION TEARDOWN (4-way):
+  1. Client → Server: FIN (I'm done sending)
+  2. Server → Client: ACK (I heard you)
+  3. Server → Client: FIN (I'm done too)
+  4. Client → Server: ACK (confirmed, closing)
+
+This reliability has COST: overhead, latency, complexity.
+"""
+
+print(tcp_overview)
+
+# TCP HEADER STRUCTURE (20 bytes minimum):
+tcp_header = """
+TCP HEADER (20 bytes minimum):
+
+| Source Port (16 bit)      | Dest Port (16 bit)      |
+| Sequence Number (32 bit)                            |  ← byte ordering
+| Acknowledgment Number (32 bit)                      |  ← "received up to here"
+| Data Offset | Flags | Window Size                   |  ← SYN ACK FIN RST PSH
+| Checksum    | Urgent Pointer                        |
+| Options (optional)                                  |
+
+KEY FIELDS:
+  Sequence Number: position of first byte in this segment
+  ACK Number: next byte expected from the other side
+  Flags: SYN (connect), ACK (acknowledge), FIN (close), RST (reset)
+  Window Size: how much buffer the receiver has (flow control)
+"""
+
+print(tcp_header)</div>
+
+<div class="code-block"># ── STEP 2: TCP ports and connections ──
+# Ports identify WHICH application gets the data.
+
+ports = """
+PORTS (0-65535):
+  0-1023:     Well-known ports (HTTP=80, HTTPS=443, SSH=22, DNS=53)
+  1024-49151: Registered ports (PostgreSQL=5432, Redis=6379, Django=8000)
+  49152-65535: Ephemeral ports (client-side, temporary)
+
+COMMON PORTS YOU SHOULD KNOW:
+  20/21  FTP      (file transfer)
+  22     SSH      (secure shell)
+  25     SMTP     (email sending)
+  53     DNS      (domain resolution)
+  80     HTTP     (web)
+  443    HTTPS    (secure web)
+  3306   MySQL    (MySQL database)
+  5432   PostgreSQL (PostgreSQL database)
+  6379   Redis    (cache)
+  8000   Django   (development server)
+  8080   Alt HTTP (alternative web/proxy)
+
+A TCP CONNECTION = (source IP, source port, dest IP, dest port)
+  → This 4-tuple uniquely identifies a connection
+  → Server can handle thousands of connections on same port (443)
+"""
+
+print(ports)
+
+# VIEW ACTIVE CONNECTIONS:
+connections = """
+# View active TCP connections:
+$ ss -tnp                          # modern (recommended)
+$ netstat -tnp                     # legacy
+
 Proto  Local Address          Foreign Address        State
 tcp    192.168.1.42:52341     142.250.190.46:443     ESTABLISHED
 tcp    192.168.1.42:52342     140.82.112.4:443       TIME_WAIT
-tcp    192.168.1.42:52343     151.101.1.69:80        SYN_SENT   ← সংযোগ চলছে
+tcp    192.168.1.42:52343     151.101.1.69:80        SYN_SENT
 
-— State পড়ো: —
-  ESTABLISHED = সংযোগ চালু     LISTEN = সার্ভার অপেক্ষা
-  SYN_SENT   = ক্লায়েন্ট হাতছাড়া  TIME_WAIT = বন্ধ হচ্ছে</div>
+TCP STATES:
+  LISTEN      → Server waiting for connections
+  SYN_SENT    → Client sent SYN, waiting for response
+  SYN_RECV    → Server received SYN, sent SYN-ACK
+  ESTABLISHED → Connection active, data flowing
+  FIN_WAIT    → One side started closing
+  TIME_WAIT   → Waiting before final close (2*MSL)
+  CLOSE_WAIT  → Other side closed, waiting for local close
+"""
 
-<div class="code-block">— tcpdump: TCP handshake ধরো —
+print(connections)</div>
+
+<div class="code-block"># ── STEP 3: TCP reliability mechanisms ──
+# HOW TCP achieves reliability.
+
+mechanisms = """
+1. SEQUENCE NUMBERS:
+   Every byte gets a sequence number.
+   Receiver can detect: missing, duplicate, or reordered packets.
+   → "I received bytes 1-1000, send me 1001 next."
+
+2. ACKNOWLEDGMENTS (ACKs):
+   Receiver confirms: "I got bytes up to 5000."
+   If sender doesn't get ACK in time → retransmit.
+
+3. RETRANSMISSION:
+   If ACK doesn't arrive within timeout → resend the packet.
+   Timeout is dynamic (based on network conditions).
+
+4. FLOW CONTROL (sliding window):
+   Receiver tells sender: "I can handle N more bytes."
+   Sender sends N bytes, then waits for ACK.
+   Prevents fast sender from overwhelming slow receiver.
+
+5. CONGESTION CONTROL:
+   Start slow, increase speed until packets drop.
+   Slow Start → Congestion Avoidance → Fast Retransmit.
+   Prevents overwhelming the network.
+
+6. CHECKSUM:
+   Every segment has a checksum.
+   If data corrupted in transit → receiver detects → discards.
+   → Sender doesn't get ACK → retransmits.
+"""
+
+print(mechanisms)
+
+# PYTHON SOCKET PROGRAMMING (TCP):
+socket_code = """
+import socket
+
+# TCP SERVER:
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(('0.0.0.0', 8000))
+server.listen(5)  # max 5 queued connections
+print("Server listening on port 8000...")
+
+while True:
+    client, addr = server.accept()  # accept connection
+    print(f"Connection from {addr}")
+    data = client.recv(1024)        # receive data
+    client.send(b"Hello from server!")
+    client.close()
+
+# TCP CLIENT:
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(('127.0.0.1', 8000))
+client.send(b"Hello from client!")
+response = client.recv(1024)
+print(f"Server says: {response.decode()}")
+client.close()
+"""
+
+print(socket_code)</div>
+
+<div class="code-block"># ── STEP 4: UDP — fast, unreliable ──
+# UDP skips reliability for SPEED.
+
+udp = """
+UDP (User Datagram Protocol):
+
+CHARACTERISTICS:
+  → Unreliable: no guarantee of delivery (fire and forget)
+  → Unordered: packets may arrive out of order
+  → Connectionless: no handshake (just send!)
+  → No flow control: sender sends as fast as it wants
+  → Lightweight: minimal header (8 bytes vs TCP's 20+)
+
+UDP HEADER (only 8 bytes!):
+  | Source Port (16) | Dest Port (16) |
+  | Length (16)      | Checksum (16)  |
+  That's it! No sequence, no ACK, no window.
+
+WHY UDP IS FASTER:
+  → No handshake (just start sending)
+  → No ACKs (don't wait for confirmation)
+  → No retransmission (lost packets stay lost)
+  → No flow control (send as fast as possible)
+
+WHEN TO USE UDP:
+  → Video/audio streaming (a few dropped frames are OK)
+  → Online gaming (latest position matters, old positions don't)
+  → VoIP (WhatsApp/Discord calls — speed > perfect delivery)
+  → DNS (small query/response — fast, retry if needed)
+  → IoT sensors (continuous data, occasional loss OK)
+
+WHEN TO USE TCP:
+  → Web browsing (need every byte of the page)
+  → Email (can't lose any content)
+  → File transfer (every byte must arrive)
+  → Database connections (data integrity critical)
+  → API calls (request-response reliability needed)
+"""
+
+print(udp)
+
+# PYTHON UDP SOCKET:
+udp_code = """
+import socket
+
+# UDP SERVER:
+server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # DGRAM = UDP
+server.bind(('0.0.0.0', 8000))
+print("UDP server listening...")
+
+while True:
+    data, addr = server.recvfrom(1024)  # receive datagram
+    print(f"From {addr}: {data.decode()}")
+
+# UDP CLIENT:
+client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+client.sendto(b"Hello UDP!", ('127.0.0.1', 8000))
+# No connect(), no handshake — just send!
+"""
+
+print(udp_code)</div>
+
+<div class="code-block"># ── STEP 5: TCP in web applications (Django) ──
+# How TCP connects your Django app to users.
+
+web_tcp = """
+DJANGO/GUNICORN TCP CONNECTIONS:
+
+1. User's browser opens TCP connection to server
+   SYN → SYN-ACK → ACK (handshake)
+   Connection: (client_ip:random_port → server_ip:443)
+
+2. TLS handshake (within the TCP connection)
+   → Certificate exchange
+   → Key agreement
+   → Encryption starts
+
+3. HTTP request/response (within TLS, within TCP)
+   → GET /api/users/ HTTP/2
+   → Response: 200 OK + JSON data
+
+4. Connection keeps alive (HTTP/2 multiplexing)
+   → Multiple requests on ONE TCP connection
+   → No new handshake for each request
+
+5. Connection closes (when idle too long)
+   FIN → ACK → FIN → ACK (teardown)
+
+KEEP-ALIVE:
+  → Keep TCP connection open for multiple requests
+  → Saves handshake time (200ms per new connection)
+  → HTTP/2: connections stay open until page closed
+"""
+
+print(web_tcp)
+
+# GUNICORN WORKER CONNECTIONS:
+gunicorn = """
+# Gunicorn handles multiple TCP connections:
+# Each worker process handles N connections concurrently
+
+$ gunicorn myproject.wsgi:application \\
+    --workers 4 \\
+    --worker-class uvicorn.workers.UvicornWorker \\
+    --bind 0.0.0.0:8000
+
+# Connection limits:
+# OS max file descriptors (each connection = 1 fd):
+$ ulimit -n
+65536  ← can handle 65K connections
+
+# NGINX reverse proxy:
+# Nginx maintains connection to browser
+# Opens separate connection to Gunicorn
+# This is called "proxy_pass"
+"""
+
+print(gunicorn)
+
+# WEBSOCKETS (persistent TCP connections):
+websockets = """
+WEBSOCKETS: Full-duplex TCP connection that stays open.
+
+Unlike HTTP (request → response → close):
+  WebSocket: connect → stay open → send/receive anytime
+
+Use cases:
+  → Chat applications (real-time messages)
+  → Live notifications (push to browser)
+  → Multiplayer games (real-time state)
+  → Collaborative editing (Google Docs)
+
+Django Channels (WebSocket support):
+  # consumer.py:
+  class ChatConsumer(AsyncWebsocketConsumer):
+      async def connect(self):
+          await self.accept()  # accept WebSocket
+      async def receive(self, text_data):
+          await self.send(text_data="Echo: " + text_data)
+"""
+
+print(websockets)</div>
+
+<div class="code-block"># ── STEP 6: TCP debugging and troubleshooting ──
+# Tools for diagnosing TCP connection issues.
+
+debugging = """
+TCP DEBUGGING TOOLS:
+
+# 1. View connections:
+$ ss -tnp                    # Active TCP connections
+$ ss -tlnp                   # Listening TCP ports
+
+# 2. Capture packets (tcpdump):
 $ sudo tcpdump -i eth0 -n 'tcp port 443' -c 6
 
-11:30:01.123 IP 192.168.1.42.52341 > 142.250.190.46.443: Flags [S],    seq 1234567
-    ← SYN: ক্লায়েন্ট "সংযোগ চাই"
-11:30:01.135 IP 142.250.190.46.443 > 192.168.1.42.52341: Flags [S.],   seq 9876543
-    ← SYN-ACK: সার্ভার "ঠিক আছে"
-11:30:01.136 IP 192.168.1.42.52341 > 142.250.190.46.443: Flags [.],    ack 9876544
-    ← ACK: ক্লায়েন্ট "নিশ্চিত করলাম"
+11:30:01 IP 192.168.1.42.52341 > 142.250.190.46.443: Flags [S],    seq 1234567
+11:30:01 IP 142.250.190.46.443 > 192.168.1.42.52341: Flags [S.],   seq 9876543
+11:30:01 IP 192.168.1.42.52341 > 142.250.190.46.443: Flags [.],    ack 9876544
 
-— Flags: [S]=SYN  [.]=ACK  [P]=PUSH  [F]=FIN  [R]=RST —
-— এটাই Wireshark দেখায় — কিন্তু টার্মিনালে বিনামূল্যে —</div>
+# [S]=SYN  [.]=ACK  [P]=PUSH  [F]=FIN  [R]=RST (reset)
+
+# 3. Wireshark (GUI packet analyzer):
+# → Deep inspection of every packet
+# → Filter by protocol, port, IP
+# → Color-coded for easy reading
+
+# 4. Test specific port:
+$ nc -zv example.com 443     # Test if port is open
+  Connection to example.com 443 port [tcp/https] succeeded!
+
+# 5. Curl verbose (shows TCP + TLS):
+$ curl -v https://example.com
+  * Connected to example.com (93.184.216.34) port 443
+  * TLS handshake
+  > GET / HTTP/2
+"""
+
+print(debugging)
+
+# COMMON TCP PROBLEMS:
+problems = {
+    "Connection refused": {
+        "meaning": "Server not listening on that port",
+        "fix": "Start the service or check port number",
+    },
+    "Connection timeout": {
+        "meaning": "Server unreachable or firewall blocking",
+        "fix": "Check firewall, routing, server is running",
+    },
+    "Connection reset (RST)": {
+        "meaning": "Server forcibly closed connection",
+        "fix": "Check server logs, application crash",
+    },
+    "Too many connections": {
+        "meaning": "Server at connection limit (backlog full)",
+        "fix": "Increase worker count, add load balancer",
+    },
+    "Slow transfers": {
+        "meaning": "Network congestion or packet loss",
+        "fix": "Check bandwidth, use CDN, optimize payload",
+    },
+    "TIME_WAIT exhaustion": {
+        "meaning": "Too many closing connections",
+        "fix": "Increase port range, enable SO_REUSEADDR",
+    },
+}
+
+print("COMMON TCP PROBLEMS:")
+for problem, info in problems.items():
+    print(f"\n  {problem}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# LAYER 4 SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ TCP              │ Reliable, ordered, handshake    │
+# │ UDP              │ Fast, unreliable, no handshake  │
+# │ Ports            │ Identify application (80, 443)  │
+# │ 3-way handshake  │ SYN → SYN-ACK → ACK             │
+# │ Sequence numbers │ Track byte ordering             │
+# │ Flow control     │ Receiver limits sender speed    │
+# │ Congestion ctrl  │ Back off on packet loss         │
+# │ WebSockets       │ Persistent full-duplex TCP      │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">⚡</span><div><strong>UDP (User Datagram Protocol):</strong><br>
 কোনো সংযোগ নেই। কোনো রসিদ নেই। কোনো ক্রম নেই।<br>
