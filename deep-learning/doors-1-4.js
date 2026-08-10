@@ -53,18 +53,207 @@ doors.push({
   <div class="diag-cap">বাতিকর সব জাহাজের ডাকে সাড়া দেন না — ঘোরে আলো, থাকে নির্বাচন। তোমার attention-ও তেমন: নির্বাচন করো কোথায় আলো দেবে, বাকি অন্ধকারে থাকুক।</div>
 </div>
 
-<div class="code-block">Attention as Currency — তিন ফিল্টার:
+<div class="code-block"># ── STEP 1: Attention as currency ──
+# In the information age, ATTENTION is your most valuable resource.
+# Not money. Not time. ATTENTION — because where attention goes,
+# learning follows.
 
-  শেখার আগে ৩ প্রশ্ন:
-    ১. SOURCE  — কে বলছে? কেন? প্রমাণ কী?
-    ২. RELEVANCE — আমার লক্ষ্যের সাথে সম্পর্কিত?
-    ৩. DEPTH   — পৃষ্ঠতল, নাকি গভীর?
+# The problem: ~74,000 Google searches per second.
+# Your brain can only deeply process a TINY fraction.
+# Most information is NOISE. Your job: FILTER.
 
-  নিয়ম: "এটা কি আমার সময়ের যোগ্য?"
-    হ্যাঁ → যাও।  না → উপেক্ষা করো।  নীরবতাও দক্ষতা।
+# THREE FILTERS before consuming any content:
 
-  ⚠️ ফাঁদ: অ্যালগরিদম বেছে দিলে তুমি নির্বাচক নও —
-     consumer. নিজে বেছে নাও — তবেই বাতিকর।</div>
+filter_questions = {
+    "SOURCE": "Who is saying this? Why? What evidence?",
+    "RELEVANCE": "Is this related to MY goals right now?",
+    "DEPTH": "Is this surface-level, or does it go deep?",
+}
+
+for filter_name, question in filter_questions.items():
+    print(f"  {filter_name}: {question}")
+
+# THE RULE:
+# Before reading/watching anything, ask:
+# "Is this worth my attention?"
+#   YES → go deep
+#   NO → ignore it
+
+# SILENCE IS A SKILL.
+# Choosing what to IGNORE is as important as choosing what to learn.</div>
+
+<div class="code-block"># ── STEP 2: Algorithm vs intentional selection ──
+# WHO decides what you learn?
+
+# ❌ ALGORITHM-DRIVEN (passive consumer):
+# - Social media feed decides what you see
+# - YouTube autoplay decides what's next
+# - Recommendations decide your path
+# → You're a passenger, not a driver
+
+# ✅ INTENTIONAL SELECTION (active learner):
+# - YOU choose what to study
+# - YOU decide the curriculum
+# - YOU set the goals
+# → You're the driver
+
+# SELF-CHECK: Are you consuming or learning?
+indicators = {
+    "CONSUMER": [
+        "Scrolling without purpose",
+        "Watching whatever appears",
+        "Saving bookmarks but never reading",
+        "Following trends, not goals",
+        "Feeling informed but can't apply",
+    ],
+    "LEARNER": [
+        "Searching for specific answers",
+        "Following a planned curriculum",
+        "Taking notes and reviewing",
+        "Connecting new info to existing knowledge",
+        "Can explain what you learned",
+    ],
+}
+
+print("CONSUMER signs:")
+for sign in indicators["CONSUMER"]:
+    print(f"  ❌ {sign}")
+
+print("\nLEARNER signs:")
+for sign in indicators["LEARNER"]:
+    print(f"  ✅ {sign}")
+
+# Ask yourself: which list describes me RIGHT NOW?</div>
+
+<div class="code-block"># ── STEP 3: The deep work environment ──
+# To learn deeply, you need an environment that SUPPORTS focus.
+
+# THE FOCUS PROTOCOL:
+focus_protocol = {
+    "before": [
+        "Phone in another room (not silent — ABSENT)",
+        "Close unnecessary tabs",
+        "Clear your desk",
+        "Set ONE specific goal for this session",
+    ],
+    "during": [
+        "Single-task (no switching)",
+        "25-minute Pomodoro sessions",
+        "Note-taking by hand (better retention)",
+        "If distracted, write the thought down, return",
+    ],
+    "after": [
+        "Review what you learned (2 min summary)",
+        "Note questions that came up",
+        "Plan the next session",
+        "Reward yourself (dopamine helps memory)",
+    ],
+}
+
+for phase, actions in focus_protocol.items():
+    print(f"\n{phase.upper()}:")
+    for action in actions:
+        print(f"  ☐ {action}")
+
+# THE 23-MINUTE RULE:
+# Research shows it takes ~23 minutes to fully refocus
+# after a phone notification. Every interruption costs
+# 23 minutes of deep learning.
+# This is why a SINGLE notification can ruin a study session.</div>
+
+<div class="code-block"># ── STEP 4: Quality over quantity ──
+# LESS but DEEPER beats MORE but SHALLOW.
+
+# THE LEARNING ECONOMY:
+# Reading 1 book deeply &gt; skimming 10 books
+# Building 1 project &gt; watching 100 tutorials
+# Teaching 1 concept &gt; passively learning 10
+
+# DEPTH INDICATORS — signs you're going deep:
+depth_indicators = [
+    "Can explain it in simple words",
+    "Can give an original example",
+    "Can identify edge cases",
+    "Can connect it to other concepts",
+    "Can critique its limitations",
+    "Can apply it to a new problem",
+]
+
+print("DEPTH CHECK — can you:")
+for indicator in depth_indicators:
+    print(f"  ❓ {indicator}?")
+
+# If you can't answer these → you're at surface level.
+# Go DEEPER. Read the original source. Build something. Teach it.</div>
+
+<div class="code-block"># ── STEP 5: The information diet ──
+# Just as you are what you eat, you THINK what you consume.
+
+# LOW-QUALITY information (junk food for the brain):
+# - Social media scrolling
+# - Clickbait articles
+# - Shallow video summaries
+# - Gossip, drama, outrage
+# → Makes you feel busy, but you learn nothing
+
+# HIGH-QUALITY information (nutritious for the brain):
+# - Books (deep, structured knowledge)
+# - Research papers (primary sources)
+# - Long-form articles (depth)
+# - Building projects (active learning)
+# - Teaching others (deepest learning)
+
+# YOUR INFORMATION AUDIT:
+audit_questions = [
+    "What did I learn yesterday that I can apply today?",
+    "Did I choose what to read, or did an algorithm choose?",
+    "Was I a consumer or a creator this week?",
+    "Can I explain the last thing I 'learned' to someone?",
+    "Am I reading at my level, or below it?",
+]
+
+print("WEEKLY INFORMATION AUDIT:")
+for q in audit_questions:
+    print(f"  ❓ {q}")
+
+# Apply this: spend 1 hour on a BOOK instead of 1 hour scrolling.
+# The ROI is 100x.</div>
+
+<div class="code-block"># ── STEP 6: Building the selection habit ──
+# Attention management is a SKILL you can practice.
+
+# DAILY PRACTICE:
+daily_practice = {
+    "morning": "Set ONE learning goal for the day",
+    "before_content": "Ask: 'Is this worth my attention?'",
+    "during_learning": "Take notes in your own words",
+    "evening": "Review: What did I actually learn?",
+    "weekly": "Audit: Where did my attention go?",
+}
+
+# THE ATTENTION ECONOMY:
+# Your attention is being FOUGHT OVER by:
+# - Social media companies (engagement algorithms)
+# - News outlets (clickbait)
+# - Advertisers (interruption)
+# - Notifications (dopamine hijacking)
+
+# YOUR DEFENSE:
+# 1. Turn off ALL non-essential notifications
+# 2. Use website blockers during study time
+# 3. Read BOOKS, not feeds
+# 4. Choose your curriculum BEFORE opening a device
+# 5. Practice saying "not now" to interruptions
+
+# THE ULTIMATE QUESTION:
+# "Twenty years from now, will this hour of scrolling matter?"
+# If no → close the tab. Open a book.
+
+# REMEMBER:
+# Nur — light — is FOCUSED, not scattered.
+# Your attention should be the same.
+# Focus on what matters. Ignore the rest.
+# This is the lighthouse keeper's art.</div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">~৭৪,০০০</div><div class="sc-label">Google query/সেকেন্ড — তথ্যের আধিক্য</div></div>
@@ -143,7 +332,180 @@ doors.push({
   <div class="diag-cap">প্রতিটি স্তম্ভ আলাদা লক্ষ্যের জন্য। ২০ ঘণ্টা = শূন্য থেকে functional। ১,০০০ = পেশাদার। ১০,০০০ = deliberate practice দিয়ে বিশ্বসেরা। একটাকে অন্যটার জায়গায় বসিও না।</div>
 </div>
 
-<div class="code-block">Three Milestones — লক্ষ্য অনুযায়ী সময় ও পদ্ধতি:
+<div class="code-block"># ── STEP 1: What are the three milestones? ──
+# Learning any skill has THREE distinct phases.
+# Each phase has different methods and timeframes.
+
+milestones = {
+    "KNOW": {
+        "timeframe": "Hours to days",
+        "goal": "Understand the concept",
+        "method": "Read, watch, listen",
+        "danger": "Stopping here = illusion of knowledge",
+    },
+    "DO": {
+        "timeframe": "Weeks to months",
+        "goal": "Apply the concept",
+        "method": "Build, code, practice",
+        "danger": "Skipping practice = shallow understanding",
+    },
+    "TEACH": {
+        "timeframe": "Months to years",
+        "goal": "Explain to others",
+        "method": "Write, mentor, present",
+        "danger": "Teaching too early = confusion",
+    },
+}
+
+for phase, info in milestones.items():
+    print(f"\n{phase}:")
+    for key, value in info.items():
+        print(f"  {key}: {value}")
+
+# MOST PEOPLE stop at KNOW. They watch a video and think they've learned.
+# True learning requires DO (practice) and ideally TEACH (explain).</div>
+
+<div class="code-block"># ── STEP 2: Phase 1 — KNOW (understand) ──
+# The fastest phase. Goal: build a MENTAL MODEL.
+
+know_methods = [
+    "Watch ONE good tutorial (not ten average ones)",
+    "Read the documentation (official, not blog summaries)",
+    "Understand the WHY before the HOW",
+    "Write key concepts in YOUR OWN WORDS",
+    "Identify what you DON'T understand (questions)",
+]
+
+print("KNOW phase — how to build understanding:")
+for method in know_methods:
+    print(f"  ☐ {method}")
+
+# TIME: Hours to days
+# OUTPUT: A mental model + list of questions
+# TRAP: Thinking understanding = mastery (it doesn't!)
+
+# Example learning "decorators" in Python:
+# KNOW phase:
+# - Watch ONE tutorial on Python decorators
+# - Read the official Python docs on decorators
+# - Write: "A decorator is a function that wraps another function..."
+# - Question: "Why do we need @functools.wraps?"
+# → Now you're ready for DO phase</div>
+
+<div class="code-block"># ── STEP 3: Phase 2 — DO (apply) ──
+# The longest phase. Goal: BUILD MUSCLE MEMORY.
+
+do_methods = [
+    "Build a project using the concept",
+    "Solve practice problems (LeetCode, HackerRank)",
+    "Make MISTAKES and fix them (most valuable!)",
+    "Modify existing code (don't just copy tutorials)",
+    "Try to break things (edge cases, errors)",
+]
+
+print("\nDO phase — how to build skill:")
+for method in do_methods:
+    print(f"  ☐ {method}")
+
+# TIME: Weeks to months
+# OUTPUT: Working projects + muscle memory
+# TRAP: Tutorial hell (watching without building)
+
+# Example — practicing decorators:
+# DO phase:
+# - Write a @timer decorator from scratch
+# - Write a @log decorator that logs to a file
+# - Write a @retry decorator that retries on failure
+# - Use decorators in a real project (LedgerPilot!)
+# - Break it: what happens if you decorate a class method?</div>
+
+<div class="code-block"># ── STEP 4: Phase 3 — TEACH (master) ──
+# The deepest phase. Goal: DEEP MASTERY.
+
+teach_methods = [
+    "Write a blog post explaining the concept",
+    "Explain it to a friend or colleague",
+    "Create a tutorial or documentation",
+    "Answer questions on StackOverflow/forums",
+    "Present at a meetup or team meeting",
+]
+
+print("\nTEACH phase — how to achieve mastery:")
+for method in teach_methods:
+    print(f"  ☐ {method}")
+
+# TIME: Months to years
+# OUTPUT: Deep understanding + communication skill
+# TRAP: Teaching too early (before DO phase)
+
+# THE TEACHING TEST:
+# If you can't explain it simply, you don't understand it well enough.
+# — Einstein (attributed)
+
+# Teaching reveals GAPS in your understanding.
+# Every question from a student makes you think deeper.
+# This is why professors know their field BEST.</div>
+
+<div class="code-block"># ── STEP 5: Time expectations by skill ──
+# Realistic timelines for different skills:
+
+skill_timelines = {
+    "Python basics": {"KNOW": "1 week", "DO": "1-3 months", "TEACH": "6 months"},
+    "Web framework (Django/Flask)": {"KNOW": "2 weeks", "DO": "3-6 months", "TEACH": "1 year"},
+    "Machine Learning basics": {"KNOW": "1 month", "DO": "6 months", "TEACH": "2 years"},
+    "Deep Learning / Transformers": {"KNOW": "2 months", "DO": "1 year", "TEACH": "3+ years"},
+    "System Design": {"KNOW": "1 month", "DO": "2 years", "TEACH": "5+ years"},
+}
+
+print("REALISTIC LEARNING TIMELINES:")
+print(f"{'Skill':<35} {'KNOW':<12} {'DO':<15} {'TEACH':<12}")
+print("-" * 74)
+for skill, times in skill_timelines.items():
+    print(f"{skill:<35} {times['KNOW']:<12} {times['DO']:<15} {times['TEACH']:<12}")
+
+# KEY INSIGHT:
+# KNOW is fast (you feel productive quickly)
+# DO is slow (you feel like you're struggling)
+# TEACH takes years (but gives deepest reward)
+
+# The DIP:
+# After KNOW, there's a "dip" — progress slows, frustration peaks.
+# Most people quit here. Push through the dip. DO phase is where
+# real learning happens.</div>
+
+<div class="code-block"># ── STEP 6: Which phase are you in? ──
+# Self-assessment for your current skills:
+
+self_assessment = """
+SKILL: Python (Django)
+  KNOW: ✅ (I understand MVC, ORM, views, templates)
+  DO:   ✅ (LedgerPilot uses Django — daily practice)
+  TEACH: ⬜ (Never taught Django to others)
+  → NEXT: Write a blog post about Django patterns I use
+
+SKILL: Vue.js
+  KNOW: ✅ (Understand components, props, reactivity)
+  DO:   ✅ (Ipractus uses Vue — daily practice)
+  TEACH: ⬜
+  → NEXT: Create a reusable component library documentation
+
+SKILL: Machine Learning
+  KNOW: ✅ (Read books, watched courses)
+  DO:   ⬜ (Built a few projects, not consistent)
+  TEACH: ⬜
+  → NEXT: Build 5 ML projects, then write about them
+"""
+
+print(self_assessment)
+
+# YOUR TURN: Pick 3 skills. Rate yourself on each phase.
+# Identify your NEXT step for each.
+
+# THE MILESTONE FORMULA:
+# mastery = KNOW (understand) + DO (practice) + TEACH (explain)
+# Each phase multiplies, not adds.
+# KNOW × DO × TEACH = true expertise
+# If any phase is zero, mastery is zero.</div>
 
   ২০ ঘণ্টা (Josh Kaufman):
     ৪৫ মিনিট/দিন * ৩০ দিন। শূন্য → "কাজ চলবে"।
