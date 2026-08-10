@@ -1628,86 +1628,347 @@ doors.push({
 </div>
 <div class="svg-caption">তিন স্তরে প্রশিক্ষণ — প্রথমে ভাষা শেখা, তারপর কথোকথন, তারপর মানুষের পছন্দ অনুযায়ী নিয়মিতকরণ</div>
 
-<div class="code-block">LLM Training — Three Stages:
+<div class="code-block"># ── STEP 1: LLM training overview ──
+# Building an LLM takes THREE stages, each building on the last.
 
-╔════════════════════════════════════════╗
-║ STAGE 1: PRE-TRAINING                  ║
-║ "ইন্টারনেটের সব পড়ো"                  ║
-╠════════════════════════════════════════╣
-║                                        ║
-║ ডেটা: ট্রিলিয়ন টোকেন টেক্সট           ║
-║   Common Crawl, Wikipedia, books,      ║
-║   code, scientific papers              ║
-║                                        ║
-║ উদ্দেশ্য: next token prediction       ║
-║   "The cat sat on the ___"             ║
-║   → "mat" (সঠিক)                       ║
-║   → সম্ভাবনা ডিস্ট্রিবিউশন তৈরি        ║
-║                                        ║
-║ সময়: সপ্তাহ থেকে মাস                  ║
-║   GPU: হাজার হাজার A100/H100           ║
-║   খরচ: $১M-$১০০M+                      ║
-║                                        ║
-║ ফলাফল: BASE MODEL                      ║
-║   → ভাষা বোঝে, কিন্তু কথোকথন পারে না   ║
-║   → কোনো নিরাপত্তা নেই                 ║
-║   → "Tell me a joke" → সম্ভবত           ║
-║     একটা জোক লিস্ট দেয় (autocomplete) ║
-╚════════════════════════════════════════╝
+training_stages = {
+    "Stage 1: PRE-TRAINING": {
+        "goal": "Learn language, facts, reasoning from internet text",
+        "data": "Trillions of tokens (Common Crawl, Wikipedia, books, code)",
+        "method": "Next token prediction",
+        "time": "Weeks to months on thousands of GPUs",
+        "cost": "$1M - $100M+",
+        "result": "Base model (can autocomplete, but can't converse)",
+    },
+    "Stage 2: SFT (Supervised Fine-Tuning)": {
+        "goal": "Learn to follow instructions and converse",
+        "data": "Thousands of human-written Q&A examples",
+        "method": "Supervised learning on instruction-response pairs",
+        "time": "Days on fewer GPUs",
+        "cost": "$10K - $100K",
+        "result": "Chat model (can converse, but not aligned/safe)",
+    },
+    "Stage 3: RLHF/DPO (Alignment)": {
+        "goal": "Make model helpful, harmless, honest",
+        "data": "Human rankings of model responses",
+        "method": "Reinforcement learning or direct preference optimization",
+        "time": "Days to weeks",
+        "cost": "$10K - $500K",
+        "result": "Production-ready model (ChatGPT, Claude, etc.)",
+    },
+}
 
-╔══════════════════════════════════════╗
-║ STAGE 2: SFT (Supervised Fine-Tuning) ║
-║ "মানুষের মতো কথা বলো"                 ║
-╠══════════════════════════════════════╣
-║                                        ║
-║ ডেটা: হাজার হাজার উদাহরণ              ║
-║   Human: "What is AI?"                 ║
-║   Assistant: "AI is..."                ║
-║   → মানুষের হাতে লেখা উত্তর            ║
-║                                        ║
-║ উদ্দেশ্য: instruction following        ║
-║   → মানুষের মতো কাঠামোয় উত্তর দাও     ║
-║   → কথোকথন ফরম্যাট শেখো                ║
-║                                        ║
-║ সময়: কয়েক দিন                        ║
-║   খরচ: $১০K-$১০০K                     ║
-║                                        ║
-║ ফলাফল: SFT MODEL                       ║
-║   → কথোকথন পারে কিন্তু অনিরাপদ         ║
-║   → ক্ষতিকর কন্টেন্ট তৈরি করতে পারে     ║
-║   → সাহায্যকারী কিন্তু সীমানাহীন        ║
-╚══════════════════════════════════════╝
+print("LLM TRAINING PIPELINE:")
+for stage, info in training_stages.items():
+    print(f"\n  {stage}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
 
-╔══════════════════════════════════════╗
-║ STAGE 3: RLHF (Reinforcement Learning ║
-║ from Human Feedback)                  ║
-║ "কোন উত্তর ভালো, কোনটা খারাপ"         ║
-╠══════════════════════════════════════╣
-║                                        ║
-║ ডেটা: মানুষের ranking                  ║
-║   একই প্রশ্নে ২+ উত্তর → মানুষ র‍্যাঙ্ক ║
-║   করেন: "A ভালো, B খারাপ"              ║
-║   → reward model ট্রেইন                ║
-║   → তারপর RL দিয়ে SFT মডেলকে টিউন     ║
-║                                        ║
-║ উদ্দেশ্য: alignment                    ║
-║   → সাহায্যকারী, নিরাপদ, সত্যবাদী      ║
-║   → "As an AI..." behavior             ║
-║   → refusal of harmful requests        ║
-║                                        ║
-║ সময়: কয়েক দিন থেকে সপ্তাহ             ║
-║                                        ║
-║ ফলাফল: ALIGNED MODEL (ChatGPT!)        ║
-║   → প্রোডাকশন-রেডি                     ║
-║   → কিন্তু: alignment tax               ║
-║     (কিছু ক্ষমতা হ্রাস)                 ║
-╚══════════════════════════════════════╝
+<div class="code-block"># ── STEP 2: Pre-training (next token prediction) ──
+# The model learns by predicting the NEXT TOKEN in text.
 
-ALTERNATIVE: DPO (Direct Preference Optimization)
-  → RLHF-এর সরল বিকল্প
-  → reward model লাগে না, সরাসরি
-  → দ্রুত, কম খরচ
-  → Llama 3, Mistral DPO ব্যবহার করে</div>
+# THE TRAINING TASK:
+task = """
+Given: "The cat sat on the"
+Predict: "mat" (most likely next token)
+
+The model outputs a PROBABILITY DISTRIBUTION over all tokens:
+  "mat"    → 0.45 (45% likely)
+  "floor"  → 0.20
+  "couch"  → 0.15
+  "roof"   → 0.02
+  ... (128,000 other tokens)
+
+LOSS FUNCTION: Cross-Entropy Loss
+  If actual next token is "mat":
+    loss = -log(0.45) = 0.80 (moderate loss)
+  If model predicted "mat" with 0.01 probability:
+    loss = -log(0.01) = 4.60 (high loss)
+
+The model adjusts its parameters to REDUCE this loss.
+Over trillions of examples, it learns language.
+"""
+
+print(task)
+
+# TRAINING DATA (what models read):
+data_sources = {
+    "Common Crawl": "Web pages (filtered for quality)",
+    "Wikipedia": "Encyclopedia articles (high quality)",
+    "Books": "Published books (long-form reasoning)",
+    "Code": "GitHub repositories (programming)",
+    "Scientific Papers": "arXiv, PubMed (technical knowledge)",
+    "Reddit": "Forum discussions (diverse opinions)",
+    "News": "News articles (current events)",
+}
+
+print("TRAINING DATA SOURCES:")
+for source, desc in data_sources.items():
+    print(f"  {source}: {desc}")
+
+# DATA SIZES:
+data_sizes = {
+    "GPT-3": "~500 billion tokens",
+    "GPT-4": "~13 trillion tokens (estimated)",
+    "Llama 3 405B": "~15 trillion tokens",
+    "Claude 3": "~3-5 trillion tokens (estimated)",
+}
+
+print("TRAINING DATA SIZES:")
+for model, size in data_sizes.items():
+    print(f"  {model}: {size}")</div>
+
+<div class="code-block"># ── STEP 3: Supervised Fine-Tuning (SFT) ──
+# After pre-training, the model can autocomplete but can't CONVERSE.
+# SFT teaches it to follow instructions.
+
+# SFT DATA FORMAT (instruction-response pairs):
+sft_data = """
+Each training example is:
+
+INSTRUCTION: "Explain what a database index is."
+RESPONSE: "A database index is a data structure that improves
+query speed. Think of it like a book's index..."
+
+The model learns:
+  - When asked a question → give a helpful answer (not autocomplete)
+  - Format responses properly (not just continue text)
+  - Follow instructions (summarize, translate, code, etc.)
+
+Typical SFT dataset: 10,000 - 1,000,000 examples
+"""
+
+print(sft_data)
+
+# SFT DATASETS:
+sft_datasets = {
+    "Alpaca": "52K instruction-response pairs (Stanford, self-instruct)",
+    "Dolly": "15K human-written examples (Databricks)",
+    "OpenAssistant": "161K conversations (community-created)",
+    "ShareGPT": "Real ChatGPT conversations (user-contributed)",
+    "UltraChat": "200K multi-turn conversations (Zhi et al.)",
+}
+
+print("POPULAR SFT DATASETS:")
+for dataset, desc in sft_datasets.items():
+    print(f"  {dataset}: {desc}")
+
+# FINE-TUNING IN PRACTICE (LoRA):
+lora_code = """
+# LoRA (Low-Rank Adaptation) — efficient fine-tuning:
+# Instead of updating ALL parameters (expensive), update a SMALL set.
+
+from peft import LoraConfig, get_peft_model
+from transformers import AutoModelForCausalLM
+
+model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-3-8B")
+
+# Add LoRA adapters (only train ~1% of parameters):
+lora_config = LoraConfig(
+    r=16,  # rank of adaptation
+    lora_alpha=32,
+    target_modules=["q_proj", "v_proj", "k_proj", "o_proj"],
+    task_type="CAUSAL_LM",
+)
+model = get_peft_model(model, lora_config)
+
+# Now fine-tune on your data:
+trainer.train(dataset)  # much cheaper than full fine-tuning!
+"""
+
+print("LoRA (efficient fine-tuning):")
+print(lora_code)
+
+# LoRA reduces GPU requirements from 8x A100 to 1x A100.
+# Full fine-tuning: update all 8B parameters
+# LoRA: update ~80M parameters (1%) — 10x cheaper!</div>
+
+<div class="code-block"># ── STEP 4: RLHF (Reinforcement Learning from Human Feedback) ──
+# RLHF makes the model SAFE and ALIGNED.
+
+# THE PROBLEM WITH SFT:
+problem = """
+After SFT, the model can answer questions, but:
+  - It might give dangerous advice ("How to make a bomb?")
+  - It might hallucinate confidently
+  - It might be biased
+  - It might not know when to say "I don't know"
+
+We need ALIGNMENT: make it helpful, harmless, honest.
+"""
+
+print(problem)
+
+# HOW RLHF WORKS (3 steps):
+rlhf_process = """
+STEP 1: Train a REWARD MODEL
+  - Show humans 2+ responses to the same prompt
+  - Humans rank them: "A is better than B"
+  - Train a model to predict human preferences
+  
+STEP 2: Collect prompts
+  - Gather diverse prompts from users
+  - Ensure variety (coding, writing, math, safety, etc.)
+
+STEP 3: Optimize with RL (PPO)
+  - Generate responses with current model
+  - Score them with the reward model
+  - Use PPO (Proximal Policy Optimization) to improve
+  - Model learns to generate HIGH-REWARD responses
+  
+Result: Model generates responses humans RATE as better.
+"""
+
+print(rlhf_process)
+
+# CHATGPT'S RLHF BREAKTHROUGH (2022):
+chatgpt = """
+Before RLHF: GPT-3 could answer questions, but responses were
+often unhelpful, rambling, or ignored instructions.
+
+After RLHF: ChatGPT gives concise, helpful, safe responses.
+The model learned what humans PREFER.
+
+This is why ChatGPT felt revolutionary — not the base model
+(which was GPT-3.5), but the RLHF alignment.
+"""
+
+print(chatgpt)</div>
+
+<div class="code-block"># ── STEP 5: DPO (modern alternative to RLHF) ──
+# DPO (Direct Preference Optimization) is simpler than RLHF.
+
+dpo_comparison = """
+RLHF (Traditional):
+  1. Train reward model (separate step)
+  2. Train LLM with PPO (complex RL, unstable)
+  3. Requires careful hyperparameter tuning
+  4. Can be unstable (reward hacking)
+
+DPO (Modern, simpler):
+  1. Skip the reward model entirely
+  2. Directly optimize on preference data
+  3. More stable, simpler to implement
+  4. Used by Llama 3, Mistral, Zephyr
+
+DPO Loss = -log(σ(β * (logπ(y_w|x)/π_ref(y_w|x) - logπ(y_l|x)/π_ref(y_l|x))))
+
+Where:
+  y_w = winning response (preferred)
+  y_l = losing response (not preferred)
+  π = current model policy
+  π_ref = reference (SFT) model
+  β = temperature parameter
+"""
+
+print(dpo_comparison)
+
+# DPO IN CODE:
+dpo_code = """
+# Using TRL (Transformer Reinforcement Learning) library:
+from trl import DPOTrainer, DPOConfig
+
+# DPO dataset: prompts with chosen/rejected pairs:
+dataset = [
+    {
+        "prompt": "What is Python?",
+        "chosen": "Python is a high-level programming language...",
+        "rejected": "Python is a snake that lives in forests.",
+    },
+    # ... thousands more
+]
+
+# Train:
+trainer = DPOTrainer(
+    model=sft_model,           # start from SFT model
+    ref_model=sft_model,       # reference for KL penalty
+    args=DPOConfig(beta=0.1),  # temperature
+    train_dataset=dataset,
+)
+trainer.train()
+"""
+
+print(dpo_code)
+
+# MODERN ALIGNMENT TECHNIQUES:
+modern_techniques = {
+    "RLHF (PPO)": "Traditional, complex, used by OpenAI/Anthropic",
+    "DPO": "Simpler, stable, used by Llama 3/Mistral",
+    "IPO": "Identity Preference Optimization (DPO variant)",
+    "KTO": "Kahneman-Tversky Optimization (unpaired)",
+    "Constitutional AI": "AI gives feedback to itself (Anthropic)",
+    "GRPO": "Group Relative Policy Optimization (DeepSeek)",
+}
+
+print("MODERN ALIGNMENT TECHNIQUES:")
+for tech, desc in modern_techniques.items():
+    print(f"  {tech}: {desc}")</div>
+
+<div class="code-block"># ── STEP 6: Training infrastructure and costs ──
+# Training an LLM is one of the most expensive computations in history.
+
+# GPU REQUIREMENTS:
+gpu_reqs = {
+    "Llama 3 8B": "16,380 H100 GPU-hours (~$200K)",
+    "Llama 3 70B": "6.4M H100 GPU-hours (~$50M)",
+    "Llama 3 405B": "30M H100 GPU-hours (~$500M+)",
+    "GPT-4 (est.)": "25,000 A100 GPUs for 3 months (~$100M)",
+    "GPT-5 (est.)": "50,000+ H100 GPUs (~$1B+)",
+}
+
+print("TRAINING COSTS:")
+for model, cost in gpu_reqs.items():
+    print(f"  {model}: {cost}")
+
+# WHY IT'S SO EXPENSIVE:
+why_expensive = """
+1. MODEL SIZE: 175B parameters = 700GB memory (in fp32)
+2. DATA SIZE: 15 trillion tokens = weeks of processing
+3. PARALLELISM: Need thousands of GPUs working together
+4. COMMUNICATION: GPUs must synchronize frequently
+5. FAULT TOLERANCE: GPUs fail; need checkpointing
+6. POWER: 25,000 GPUs = ~25 MW of electricity
+"""
+
+print(why_expensive)
+
+# DISTRIBUTED TRAINING TECHNIQUES:
+distributed = {
+    "Data Parallel": "Split batches across GPUs (each GPU has full model)",
+    "Tensor Parallel": "Split each layer across GPUs (Megatron-LM)",
+    "Pipeline Parallel": "Split layers across GPUs (each GPU handles some layers)",
+    "FSDP (Fully Sharded)": "Shard parameters, gradients, optimizer states",
+    "ZeRO (DeepSpeed)": "Optimized sharding strategy (stages 1-3)",
+}
+
+print("DISTRIBUTED TRAINING:")
+for technique, desc in distributed.items():
+    print(f"  {technique}: {desc}")
+
+# SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Stage            │ What It Does                    │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Pre-training     │ Learn language from internet     │
+# │ SFT              │ Learn to follow instructions     │
+# │ RLHF/DPO         │ Learn human preferences (align)  │
+# │ Evaluation       │ Benchmark before release         │
+# │ Red-teaming      │ Test for safety vulnerabilities  │
+# └──────────────────┴──────────────────────────────────┘
+
+# THE COST OF INTELLIGENCE:
+# Training GPT-4 cost ~$100M.
+# Training GPT-5 might cost $1B+.
+# This is why only a few companies can build frontier LLMs.
+# But open-source (Llama, Mistral) is democratizing access.
+
+# FOR YOUR PROJECTS:
+# You won't pre-train an LLM (too expensive).
+# But you CAN fine-tune existing models:
+#   - LoRA fine-tuning: $50-500 (1 GPU, hours)
+#   - Full SFT: $1,000-10,000 (few GPUs, days)
+#   - DPO alignment: $500-5,000 (few GPUs, days)
+# This is how you build CUSTOM LLMs for your domain.</div>
 
 <div class="dialogue">তরবিয়ত — শিক্ষা, প্রশিক্ষণ। কুরআনে আল্লাহ বলেন — "পবিত্র করো তাদের, শিক্ষা দাও তাদের কিতাব ও প্রজ্ঞা।" (৬২:২)। তিনটি ধাপ — পবিত্রকরণ (pre-training ভিত্তি), শিক্ষা (SFT instruction), প্রজ্ঞা (RLHF নির্বাচন)। LLM-ও তেমনি — ভিত্তি শেখে, তারপর নির্দেশ, তারপর মানুষের পছন্দ। তিনটি ছাড়া LLM অসম্পূর্ণ।</div>
 <div class="dialogue en">"Tarbiyat — education, training. Allah says — 'Purify them, teach them the Book and wisdom.' (62:2). Three stages — purification (pre-training foundation), teaching (SFT instruction), wisdom (RLHF preference). The LLM too — learns foundation, then instruction, then human preference. Without all three, the LLM is incomplete."</div>`,
