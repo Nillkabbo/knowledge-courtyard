@@ -189,3 +189,6 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   .complete-crown{animation:none!important}
   .complete-title{animation:none!important}
 }
+
+/* Diagram SVGs */
+.diagram{background:linear-gradient(135deg,rgba(19,26,43,.6),rgba(7,10,15,.8));border:1px solid rgba(45,212,191,.15);border-radius:14px;padding:1rem;margin:1.2rem 0;overflow:hidden}.diagram svg{display:block;width:100%;height:auto;max-width:800px;margin:0 auto;font-family:sans-serif}
