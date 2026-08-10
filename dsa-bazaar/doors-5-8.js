@@ -55,49 +55,233 @@ doors.push({
 <div class="dialogue">Queue — FIFO। First In, First Out। কাফেলার সারিতে যে আগে এসেছে, সে আগে যায়। টিকিটের লাইন, প্রিন্টারের কাজ, মেসেজ কিউ — সব FIFO। AI-এ? task queue — একাধিক inference request সারিতে, এক এক করে প্রসেস।</div>
 <div class="dialogue en">"Queue — FIFO. First In, First Out. Whoever came first to the caravan line goes first. Ticket lines, printer jobs, message queues — all FIFO. In AI? Task queues — many inference requests in line, processed one by one."</div>
 
-<div class="code-block">Stacks & Queues — The Two Orders:
+<div class="code-block"># ── STEP 1: What is a stack? (LIFO) ──
+# A stack is like a pile of plates.
+# You add (push) on TOP, you remove (pop) from TOP.
+# Last item IN = first item OUT (LIFO).
 
-STACK (LIFO — Last In, First Out):
+# Python list IS a stack — use append() and pop():
+stack = []
+stack.append("plate1")   # push
+stack.append("plate2")
+stack.append("plate3")
 
-  Operations (all O(1)):
-    push(x)  — top-এ যোগ
-    pop()    — top থেকে সরাও
-    peek()   — top দেখো (সরাও না)
-    is_empty()
+print(stack)             # ['plate1', 'plate2', 'plate3']
+print(stack.pop())       # plate3 — LAST in, FIRST out
+print(stack.pop())       # plate2
+print(stack)             # ['plate1']
 
-  Python: list দিয়ে — append() + pop()
+# All stack operations are O(1):
+# push (append)    → O(1)
+# pop              → O(1)
+# peek (stack[-1]) → O(1)
+# is_empty         → O(1)
+
+# Where stacks appear in real life:
+# - Browser BACK button (current page on top)
+# - Undo/Redo in text editors
+# - Function call stack (recursion!)
+# - Balancing parentheses ({[()]} checker)</div>
+
+<div class="code-block"># ── STEP 2: Practical stack — valid parentheses ──
+# Classic interview problem: check if brackets are balanced.
+
+def is_valid_parentheses(s):
+    """Check if ()[]{} are properly matched."""
     stack = []
-    stack.append(1); stack.append(2)
-    stack.pop()  # → 2
+    matching = {")": "(", "]": "[", "}": "{"}
 
-QUEUE (FIFO — First In, First Out):
+    for char in s:
+        if char in "([{":
+            stack.append(char)        # push opening bracket
+        elif char in ")]}":
+            if not stack:              # closing with nothing open
+                return False
+            if stack.pop() != matching[char]:  # wrong match
+                return False
 
-  Operations (all O(1) with right structure):
-    enqueue(x) — back-এ যোগ
-    dequeue()  — front থেকে সরাও
-    peek()     — front দেখো
+    return len(stack) == 0  # all opened must be closed
 
-  Python: collections.deque — দুই পাশে O(1)
+print(is_valid_parentheses("()"))        # True
+print(is_valid_parentheses("()[]{}"))    # True
+print(is_valid_parentheses("(]"))        # False
+print(is_valid_parentheses("([)]"))      # False
+print(is_valid_parentheses("{[]}"))      # True
+
+# The stack tracks what needs to close.
+# Each closing bracket must match the MOST RECENT opening.</div>
+
+<div class="code-block"># ── STEP 3: What is a queue? (FIFO) ──
+# A queue is like a line at a store.
+# First person IN = first person OUT (FIFO).
+# Add at BACK (enqueue), remove from FRONT (dequeue).
+
+# ❌ BAD: Using list as queue — O(n) for front removal!
+queue_list = [1, 2, 3]
+queue_list.pop(0)  # O(n) — everyone shifts left!
+
+# ✅ GOOD: Use collections.deque — O(1) at both ends:
+from collections import deque
+
+queue = deque()
+queue.append("customer1")   # enqueue at back
+queue.append("customer2")
+queue.append("customer3")
+
+print(queue)                # deque(['customer1', 'customer2', 'customer3'])
+print(queue.popleft())      # customer1 — FIRST in, FIRST out
+print(queue.popleft())      # customer2
+print(queue)                # deque(['customer3'])
+
+# All queue operations with deque are O(1):
+# enqueue (append)     → O(1)
+# dequeue (popleft)    → O(1)
+# peek (queue[0])      → O(1)
+
+# Where queues appear:
+# - Print queue (first document submitted = first printed)
+# - BFS (breadth-first search in graphs)
+# - Task scheduling (process queue)
+# - Message queues (RabbitMQ, Celery)</div>
+
+<div class="code-block"># ── STEP 4: Stack = DFS, Queue = BFS ──
+# The two great graph algorithms differ ONLY in data structure:
+# Stack → Depth-First Search (go deep, then backtrack)
+# Queue → Breadth-First Search (explore level by level)
+
+# DFS using a stack (go DEEP first):
+def dfs(graph, start):
+    """Depth-first search — explore as deep as possible."""
+    visited = set()
+    stack = [start]
+
+    while stack:
+        node = stack.pop()        # LIFO — take from top
+        if node not in visited:
+            visited.add(node)
+            print(node, end=" ")
+            # Add neighbors (reversed for left-to-right order)
+            stack.extend(reversed(graph[node]))
+
+graph = {
+    "A": ["B", "C"],
+    "B": ["D", "E"],
+    "C": ["F"],
+    "D": [], "E": [], "F": []
+}
+
+dfs(graph, "A")  # A C F B E D (deep first)
+
+# BFS using a queue (explore LEVEL by LEVEL):
+def bfs(graph, start):
+    """Breadth-first search — explore level by level."""
     from collections import deque
-    q = deque()
-    q.append(1); q.append(2)   # enqueue
-    q.popleft()                # dequeue → 1
+    visited = set()
+    queue = deque([start])
 
-  ❌ list.pop(0) → O(n)! পুরো list shift করে
-  ✅ deque.popleft() → O(1)
+    while queue:
+        node = queue.popleft()   # FIFO — take from front
+        if node not in visited:
+            visited.add(node)
+            print(node, end=" ")
+            queue.extend(graph[node])
 
-THE TWO GREAT ALGORITHMS — DFS ও BFS:
+bfs(graph, "A")  # A B C D E F (level by level)
 
-  DFS (Depth-First Search) — STACK দিয়ে:
-    যতটা সম্ভব গভীরে যাও, তারপর ফিরো।
-    → maze solving, topological sort, cycle detect
+# Same algorithm structure — only Stack↔Queue changes!</div>
 
-  BFS (Breadth-First Search) — QUEUE দিয়ে:
-    প্রতিটা neighbor আগে দেখো, তারপর গভীরে।
-    → shortest path (unweighted), level-order, peer discovery
+<div class="code-block"># ── STEP 5: Deque — the Swiss Army knife ──
+# deque (double-ended queue) does BOTH stack and queue operations.
 
-  একই কোড — শুধু stack (LIFO) বদলে queue (FIFO)।
-  এটাই DFS ও BFS-এর পার্থক্যের মূল। (বিস্তারিত Door 9 — Graphs)</div>
+from collections import deque
+
+d = deque([1, 2, 3])
+
+# As a STACK (LIFO):
+d.append(4)        # [1, 2, 3, 4]
+d.pop()            # 4 (from RIGHT)
+
+# As a QUEUE (FIFO):
+d.append(5)        # [1, 2, 3, 5]
+d.popleft()        # 1 (from LEFT)
+
+# DOUBLE-ENDED (both sides):
+d.appendleft(0)    # [0, 2, 3, 5]
+d.extend([6, 7])   # [0, 2, 3, 5, 6, 7]
+d.extendleft([-1]) # [-1, 0, 2, 3, 5, 6, 7]
+d.rotate(1)        # rotate right: [7, -1, 0, 2, 3, 5, 6]
+d.rotate(-1)       # rotate left: back to [-1, 0, 2, 3, 5, 6, 7]
+
+# All operations are O(1):
+# append, appendleft, pop, popleft — all instant
+
+# WHEN TO USE deque vs list:
+# ┌─────────────────────┬───────────┬──────────────┐
+# │ Need                │ Use       │ Why          │
+# ├─────────────────────┼───────────┼──────────────┤
+# │ Random access arr[i]│ list      │ deque is O(n)│
+# │ Push/pop from end   │ list      │ both O(1)    │
+# │ Push/pop from front │ deque     │ deque O(1)   │
+# │ Queue operations    │ deque     │ popleft O(1) │
+# │ Iteration           │ list      │ slightly fast│
+# └─────────────────────┴───────────┴──────────────┘</div>
+
+<div class="code-block"># ── STEP 6: Real-world stack/queue problems ──
+# Problem 1: Reverse a string using a stack:
+def reverse_string(text):
+    stack = list(text)
+    result = ""
+    while stack:
+        result += stack.pop()
+    return result
+
+print(reverse_string("hello"))  # olleh
+
+# Problem 2: Check balanced HTML tags:
+def valid_html_tags(html):
+    """Check if HTML tags are properly nested."""
+    import re
+    stack = []
+    tags = re.findall(r'<(/?)(\w+)>', html)
+
+    for is_closing, tag in tags:
+        if not is_closing:
+            stack.append(tag)
+        else:
+            if not stack or stack.pop() != tag:
+                return False
+    return len(stack) == 0
+
+print(valid_html_tags("<div><p>hello</p></div>"))  # True
+print(valid_html_tags("<div><p>hello</div></p>"))  # False
+
+# Problem 3: Implement a queue using two stacks:
+class QueueFromStacks:
+    """Queue (FIFO) built from two stacks (LIFO)."""
+    def __init__(self):
+        self.stack_in = []   # for enqueue
+        self.stack_out = []  # for dequeue
+
+    def enqueue(self, x):
+        self.stack_in.append(x)
+
+    def dequeue(self):
+        if not self.stack_out:
+            # Transfer all from in to out (reverses order)
+            while self.stack_in:
+                self.stack_out.append(self.stack_in.pop())
+        return self.stack_out.pop() if self.stack_out else None
+
+q = QueueFromStacks()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+print(q.dequeue())  # 1 (FIFO!)
+
+# SUMMARY:
+# Stack (LIFO): list append/pop → DFS, undo, parentheses
+# Queue (FIFO): deque append/popleft → BFS, scheduling
+# Deque: both ends O(1) → stacks + queues combined</div>
 
 <div class="dialogue">কিন্তু দুইটা ভাই আরও আছে — Circular Queue আর Deque। কাফেলার সারিতে যদি সামনের জায়গা খালি হয়ে যায়, কিন্তু পেছনে কেউ ঢোকাতে পারে না কারণ array-র শেষ — তখন কী? জায়গা নষ্ট। Circular Queue এই সমস্যার সমাধান — সারির শেষকে আবার সামনের সাথে জোড়ো দাও। গোল হয়ে যাও। নতুন কেউ খালি জায়গায় ঢুকে পড়ে। OS-এ এটা প্রতিদিন ব্যবহার হয় — process scheduling, CPU time-sharing।</div>
 <div class="dialogue en">"But two more siblings exist — Circular Queue and Deque. If the front of the caravan line empties but no one can join the back because the array is full — what then? Wasted space. Circular Queue solves this — connect the end of the line back to the front. Make it circular. New arrivals fill empty spaces. The OS uses this daily — process scheduling, CPU time-sharing."</div>
@@ -293,25 +477,246 @@ doors.push({
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার — তুমি dict প্রতিদিন ব্যবহার করো। Caching: API response সেভ করা — key = request, value = response। পরের বার সরাসরি। Deduplication: একই embedding দুইবার সেভ না করা। Feature store: user_id → features। সব O(1) lookup।</div>
 <div class="dialogue en">"You're an AI engineer — you use dicts daily. Caching: save API responses — key = request, value = response. Next time, direct hit. Deduplication: don't save the same embedding twice. Feature store: user_id → features. All O(1) lookup."</div>
 
-<div class="code-block">Python Dict Patterns for AI:
+<div class="code-block"># ── STEP 1: What is a hash map? ──
+# A hash map (dict in Python) stores key-value pairs.
+# It provides O(1) lookup — INSTANT access by key.
 
-# Basic cache
+# The secret: a HASH FUNCTION converts the key to a number (index).
+# key → hash function → index → direct memory access
+
+# Python dict basics:
+ages = {"Fatima": 25, "Ahmed": 30, "Sara": 28}
+
+# O(1) operations:
+print(ages["Fatima"])     # 25 — direct access
+ages["Bob"] = 35          # O(1) insert
+del ages["Ahmed"]         # O(1) delete
+print("Sara" in ages)     # True — O(1) check
+
+# Compare with list (O(n) search):
+names = ["Fatima", "Ahmed", "Sara"]
+"Sara" in names  # O(n) — must scan all
+
+# dict: O(1) — hash function jumps directly!
+# This is why dicts are the backbone of caching.</div>
+
+<div class="code-block"># ── STEP 2: Hash map patterns ──
+# Pattern 1: CACHING (save expensive results)
 cache = {}
+
 def get_embedding(text):
-    if text in cache:          # O(1) check!
+    """Cache embeddings — avoid recomputation."""
+    if text in cache:           # O(1) check
         return cache[text]
-    emb = model.encode(text)   # expensive
-    cache[text] = emb          # save
+    emb = model.encode(text)    # expensive!
+    cache[text] = emb           # save for next time
     return emb
 
-# Counter (word frequency)
+# Pattern 2: COUNTING (frequency analysis)
 from collections import Counter
-words = ["AI", "ML", "AI", "DL", "AI"]
-freq = Counter(words)  # {"AI": 3, "ML": 1, "DL": 1}
 
-# defaultdict (no KeyError)
+words = "the cat sat on the mat the cat ran".split()
+freq = Counter(words)
+print(freq.most_common(2))  # [('the', 3), ('cat', 2)]
+
+# Pattern 3: GROUPING (cluster by key)
 from collections import defaultdict
-graph = defaultdict(list)</div>
+
+employees = [
+    {"name": "Fatima", "dept": "Eng"},
+    {"name": "Ahmed", "dept": "Sales"},
+    {"name": "Sara", "dept": "Eng"},
+]
+
+by_dept = defaultdict(list)
+for emp in employees:
+    by_dept[emp["dept"]].append(emp["name"])
+
+print(dict(by_dept))
+# {'Eng': ['Fatima', 'Sara'], 'Sales': ['Ahmed']}
+
+# Pattern 4: TWO SUM (classic interview)
+def two_sum(nums, target):
+    """Find indices of two numbers that add to target."""
+    seen = {}  # value → index
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    return None
+
+print(two_sum([2, 7, 11, 15], 9))  # [0, 1] (2+7=9)
+# O(n) time with hash map vs O(n²) brute force!</div>
+
+<div class="code-block"># ── STEP 3: defaultdict and Counter ──
+# Specialized dicts that solve common problems.
+
+# defaultdict — no more KeyError:
+from collections import defaultdict
+
+# Count letters without checking if key exists:
+letter_count = defaultdict(int)  # default value = 0
+for char in "hello world":
+    letter_count[char] += 1       # no KeyError if new!
+print(dict(letter_count))  # {'h': 1, 'e': 1, 'l': 3, ...}
+
+# Group items by key:
+groups = defaultdict(list)
+words = ["apple", "ant", "banana", "berry", "cat"]
+for word in words:
+    groups[word[0]].append(word)  # group by first letter
+print(dict(groups))  # {'a': ['apple', 'ant'], 'b': ['banana', 'berry'], ...}
+
+# Counter — frequency counting made easy:
+from collections import Counter
+
+sales = Counter()
+sales["apple"] += 1
+sales["apple"] += 1
+sales["banana"] += 3
+
+print(sales.most_common())     # [('banana', 3), ('apple', 2)]
+print(sales.most_common(1))    # [('banana', 3)]
+print(sum(sales.values()))     # 5 (total)
+
+# Counter operations:
+c1 = Counter(a=3, b=1)
+c2 = Counter(a=1, b=2)
+print(c1 + c2)  # Counter({'a': 4, 'b': 3})
+print(c1 - c2)  # Counter({'a': 2})  (keeps only positive)</div>
+
+<div class="code-block"># ── STEP 4: Set — the hash map's sibling ──
+# A set is a hash map with only keys (no values).
+# O(1) add, remove, check — same as dict.
+
+# Deduplication — the #1 use case:
+numbers = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
+unique = list(set(numbers))
+print(unique)  # [1, 2, 3, 4]
+
+# Fast membership test:
+valid_users = {"fatima", "ahmed", "sara"}
+print("fatima" in valid_users)  # O(1) — instant!
+
+# vs list membership:
+users_list = ["fatima", "ahmed", "sara"]
+print("fatima" in users_list)   # O(n) — must scan
+
+# Set operations:
+a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+
+print(a & b)   # {3, 4} — intersection
+print(a | b)   # {1, 2, 3, 4, 5, 6} — union
+print(a - b)   # {1, 2} — difference
+print(a ^ b)   # {1, 2, 5, 6} — symmetric difference
+
+# WHEN TO USE set vs list:
+# - Need unique items? → set
+# - Need to check membership frequently? → set
+# - Need to preserve order? → list
+# - Need to access by index? → list</div>
+
+<div class="code-block"># ── STEP 5: How hash maps work internally ──
+# Understanding the internals makes you a better engineer.
+
+# A hash map has an internal ARRAY of "buckets".
+# When you do dict["key"] = value:
+# 1. Python computes hash("key") → a number
+# 2. hash % array_size → bucket index
+# 3. Store (key, value) at that bucket
+
+# When you do dict["key"]:
+# 1. Same hash → same bucket index
+# 2. Check if key matches → return value
+# All in O(1)!
+
+# COLLISIONS — when two keys hash to the same bucket:
+# Python handles this with "open addressing":
+# If bucket is taken, try next bucket, then next...
+
+# RESIZING — when dict gets too full:
+# Python doubles the internal array and rehashes everything.
+# This is why building a dict one item at a time is slower
+# than dict.fromkeys() or comprehension for large dicts.
+
+# RULES FOR KEYS:
+# - Keys must be HASHABLE (immutable)
+# - str, int, float, tuple → OK
+# - list, dict, set → NOT hashable (mutable)
+
+# This works:
+d = {("x", 1): "point"}  # tuple key is OK
+
+# This FAILS:
+# d = {["x", 1]: "point"}  # TypeError: unhashable type: 'list'
+
+# Use frozenset if you need a set as a key:
+s = {frozenset({1, 2, 3}): "triple"}</div>
+
+<div class="code-block"># ── STEP 6: OrderedDict and practical patterns ──
+# Python 3.7+ dicts maintain insertion order automatically.
+# But OrderedDict has extra features.
+
+from collections import OrderedDict
+
+# LRU Cache using OrderedDict:
+class LRUCache:
+    """Least Recently Used cache — O(1) operations."""
+    def __init__(self, capacity):
+        self.cache = OrderedDict()
+        self.capacity = capacity
+
+    def get(self, key):
+        if key not in self.cache:
+            return None
+        # Move to end (most recently used)
+        self.cache.move_to_end(key)
+        return self.cache[key]
+
+    def put(self, key, value):
+        if key in self.cache:
+            self.cache.move_to_end(key)
+        self.cache[key] = value
+        if len(self.cache) > self.capacity:
+            # Remove first (least recently used)
+            self.cache.popitem(last=False)
+
+cache = LRUCache(3)
+cache.put("a", 1)
+cache.put("b", 2)
+cache.put("c", 3)
+cache.put("d", 4)  # "a" evicted (LRU)
+print(cache.get("b"))  # 2
+
+# Or just use functools.lru_cache:
+from functools import lru_cache
+
+@lru_cache(maxsize=128)
+def expensive_function(x):
+    return x ** 2  # results cached automatically
+
+# DICT COMPREHENSION — build dicts concisely:
+squares = {x: x**2 for x in range(5)}
+print(squares)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+
+# MERGING dicts:
+d1 = {"a": 1, "b": 2}
+d2 = {"b": 3, "c": 4}
+merged = {**d1, **d2}  # {'a': 1, 'b': 3, 'c': 4} (d2 wins on conflict)
+
+# SUMMARY:
+# ┌────────────────┬────────────────────────────────┐
+# │ Tool           │ Best for                      │
+# ├────────────────┼────────────────────────────────┤
+# │ dict           │ key-value lookup, caching     │
+# │ defaultdict    │ avoid KeyError, grouping      │
+# │ Counter        │ frequency counting            │
+# │ set            │ uniqueness, membership test   │
+# │ OrderedDict    │ LRU cache, order matters      │
+# │ @lru_cache     │ automatic function caching    │
+# └────────────────┴────────────────────────────────┘</div>
 
 <div class="dialogue">মিযান — দাঁড়িপাল্লা। আল্লাহ বলেছেন — "আমরা কায়িম করেছি মিযান।" (৫৫:৭)। প্রতিটা কিছুর একটা নিভুল মান আছে। Hash function সেই মিযানের মতো — প্রতিটা key-কে তার সঠিক স্থানে রাখে। ভুল নেই — যদি hash ভালো হয়।</div>
 <div class="dialogue en">"Mizan — the scale. Allah said — 'We established the balance.' (55:7). Everything has a precise measure. The hash function is like that scale — placing each key in its correct position. No error — if the hash is good."</div>
@@ -416,22 +821,204 @@ doors.push({
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার — এটা তোমার রোজকার। Vector search-এ তুমি হাজার হাজার embedding থেকে সেরা ৫টা চাও। সব সাজালে O(n log n)। কিন্তু heap দিয়ে — ছোট k-র জন্য শুধু সেই k-টা ধরে রাখো, প্রতিটা O(log k)। মোট O(n log k)। আবার beam search-এ LLM যখন পরবর্তী k টোকেন বিবেচনা করে — heap।</div>
 <div class="dialogue en">"You're an AI engineer — this is your daily bread. In vector search, you want the best 5 from thousands of embeddings. Full sort is O(n log n). But with a heap — for small k, keep just those k, each at O(log k). Total O(n log k). And in beam search, when an LLM considers the next k tokens — heap."</div>
 
-<div class="code-block">Python heapq — Top-K Retrieval:
+<div class="code-block"># ── STEP 1: What is a heap? ──
+# A heap is a special tree where the PARENT is always smaller (min-heap)
+# or larger (max-heap) than its children.
+# The MINIMUM (or MAXIMUM) is always at the ROOT.
+
+# Python's heapq is a MIN-HEAP (smallest on top):
+import heapq
+
+# Create a heap from a list:
+scores = [0.45, 0.92, 0.15, 0.78, 0.99, 0.33]
+heapq.heapify(scores)  # turns list into a heap — O(n)
+print(scores)  # [0.15, 0.45, 0.33, 0.78, 0.99, 0.92]
+# 0.15 is at root (smallest)
+
+# Always get the smallest — O(log n):
+print(heapq.heappop(scores))  # 0.15
+print(heapq.heappop(scores))  # 0.33
+
+# Push new item — O(log n):
+heapq.heappush(scores, 0.05)  # now 0.05 is smallest
+
+# Key operations:
+# heappush(heap, item)  → O(log n)
+# heappop(heap)         → O(log n)
+# heap[0] (peek)        → O(1)
+# heapify(list)         → O(n)</div>
+
+<div class="code-block"># ── STEP 2: Top-K retrieval (the killer use case) ──
+# "Find the top 3 most relevant documents"
+# This is EVERYWHERE in AI (RAG, search, recommendations).
 
 import heapq
 
+# Top-K largest (best scores):
 scores = [0.92, 0.15, 0.78, 0.45, 0.99, 0.33, 0.67]
-# সেরা ৩টা
 top3 = heapq.nlargest(3, scores)
-# → [0.99, 0.92, 0.78]
+print(top3)  # [0.99, 0.92, 0.78]
 
-# সবচেয়ে কম ৩টা
+# Top-K smallest (worst scores):
 bot3 = heapq.nsmallest(3, scores)
-# → [0.15, 0.33, 0.45]
+print(bot3)  # [0.15, 0.33, 0.45]
 
-# RAG-এ: সেরা documents
-docs = [("doc1", 0.95), ("doc2", 0.72), ("doc3", 0.88)]
-best = heapq.nlargest(2, docs, key=lambda x: x[1])</div>
+# With custom key (RAG document retrieval):
+docs = [
+    ("doc1", 0.95),
+    ("doc2", 0.72),
+    ("doc3", 0.88),
+    ("doc4", 0.45),
+]
+best_docs = heapq.nlargest(2, docs, key=lambda x: x[1])
+print(best_docs)  # [('doc1', 0.95), ('doc3', 0.88)]
+
+# WHY THIS IS EFFICIENT:
+# nlargest(k, n_items) uses a heap of size k.
+# Time: O(n log k) — much better than sorting O(n log n)
+# when k is small (e.g., top 5 from 1 million).</div>
+
+<div class="code-block"># ── STEP 3: Priority queue — process by importance ──
+# A priority queue processes items by PRIORITY, not arrival order.
+# heapq gives us this for free.
+
+import heapq
+
+# (priority, task) tuples — lower number = higher priority
+tasks = []
+heapq.heappush(tasks, (3, "write documentation"))
+heapq.heappush(tasks, (1, "fix critical bug"))      # highest priority
+heapq.heappush(tasks, (2, "review pull request"))
+heapq.heappush(tasks, (1, "fix security issue"))     # also urgent
+
+# Process in priority order:
+while tasks:
+    priority, task = heapq.heappop(tasks)
+    print(f"[P{priority}] {task}")
+
+# [P1] fix critical bug
+# [P1] fix security issue
+# [P2] review pull request
+# [P3] write documentation
+
+# Real-world uses:
+# - Task schedulers (OS process scheduling)
+# - Dijkstra's shortest path algorithm
+# - AI: beam search, A* pathfinding
+# - Event simulation systems</div>
+
+<div class="code-block"># ── STEP 4: Heap vs sort — when to use which ──
+import heapq
+
+# SCENARIO: Stream of numbers, need top-3 at any time.
+
+# ❌ BAD: Sort every time — O(n log n) per query
+def top3_sort(stream):
+    return sorted(stream, reverse=True)[:3]
+
+# ✅ GOOD: Keep a heap of size 3 — O(log 3) per insert
+class TopKTracker:
+    """Track top-K items efficiently in a stream."""
+    def __init__(self, k):
+        self.k = k
+        self.heap = []  # min-heap of size k
+
+    def add(self, item):
+        if len(self.heap) &lt; self.k:
+            heapq.heappush(self.heap, item)
+        elif item &gt; self.heap[0]:
+            heapq.heapreplace(self.heap, item)  # replace smallest
+
+    def get_top(self):
+        return sorted(self.heap, reverse=True)
+
+tracker = TopKTracker(3)
+for score in [0.5, 0.9, 0.3, 0.8, 0.95, 0.1, 0.7]:
+    tracker.add(score)
+
+print(tracker.get_top())  # [0.95, 0.9, 0.8]
+
+# TopKTracker only keeps 3 items — O(1) space
+# vs storing all items and sorting — O(n) space
+
+# WHEN TO USE HEAP vs SORT:
+# ┌────────────────────────┬──────────────┬──────────────┐
+# │ Need                   │ Use          │ Why          │
+# ├────────────────────────┼──────────────┼──────────────┤
+# │ Top-K from N items     │ heapq        │ O(n log k)   │
+# │ Sort all items once    │ sorted()     │ O(n log n)   │
+# │ Streaming top-K        │ heap tracker │ O(log k) add │
+# │ Repeated min/max       │ heap         │ O(1) peek    │
+# └────────────────────────┴──────────────┴──────────────┘</div>
+
+<div class="code-block"># ── STEP 5: Max-heap trick ──
+# Python's heapq is a MIN-heap.
+# For a MAX-heap, negate the values:
+
+import heapq
+
+# Max-heap using negation:
+max_heap = []
+for val in [5, 3, 8, 1, 9, 2]:
+    heapq.heappush(max_heap, -val)  # store negated
+
+# Pop largest:
+print(-heapq.heappop(max_heap))  # 9 (largest)
+print(-heapq.heappop(max_heap))  # 8
+
+# Or use nlargest (simpler for one-time queries):
+nums = [5, 3, 8, 1, 9, 2]
+print(heapq.nlargest(3, nums))  # [9, 8, 5]</div>
+
+<div class="code-block"># ── STEP 6: Real-world heap applications ──
+import heapq
+
+# 1. MERGE K SORTED LISTS (interview classic):
+list1 = [1, 3, 5]
+list2 = [2, 4, 6]
+list3 = [0, 7, 8]
+merged = list(heapq.merge(list1, list2, list3))
+print(merged)  # [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+# 2. DIJKSTRA SHORTEST PATH (simplified):
+def dijkstra(graph, start):
+    """Find shortest paths using a priority queue."""
+    distances = {start: 0}
+    pq = [(0, start)]  # (distance, node)
+
+    while pq:
+        dist, node = heapq.heappop(pq)
+        for neighbor, weight in graph.get(node, []):
+            new_dist = dist + weight
+            if neighbor not in distances or new_dist &lt; distances[neighbor]:
+                distances[neighbor] = new_dist
+                heapq.heappush(pq, (new_dist, neighbor))
+
+    return distances
+
+# 3. MEDIAN OF STREAM (two heaps):
+class MedianFinder:
+    """Find median of a number stream using two heaps."""
+    def __init__(self):
+        self.small = []  # max-heap (negated) for lower half
+        self.large = []  # min-heap for upper half
+
+    def add(self, num):
+        heapq.heappush(self.small, -num)
+        heapq.heappush(self.large, -heapq.heappop(self.small))
+        if len(self.large) &gt; len(self.small):
+            heapq.heappush(self.small, -heapq.heappop(self.large))
+
+    def median(self):
+        if len(self.small) &gt; len(self.large):
+            return -self.small[0]
+        return (-self.small[0] + self.large[0]) / 2
+
+# SUMMARY:
+# heapq = min-heap, root is always smallest
+# nlargest/nsmallest = efficient top-K retrieval
+# Priority queue = process by importance, not order
+# Heap: O(log n) insert/extract, O(1) peek min/max</div>
 
 <div class="dialogue">ভাবো — হাসপাতালের ইমার্জেন্সি রুম। সবাই সারিতে দাঁড়িয়ে না। একজন রোগী এলো — হার্ট অ্যাটাক। জ্বর নিয়ে দাঁড়িয়ে থাকা পাঁচজনকে সরিয়ে সে সামনে চলে গেল। কেন? কারণ priority আলাদা। জীবন বাঁচানোর কাজ সবার আগে। এটাই Priority Queue — সাধারণ queue নয়, গুরুত্ব অনুযায়ী সাজানো। আর এই গুরুত্ব রাখার জন্যই Heap — সবসময় সবচেয়ে জরুরি উপাদান উপরে।</div>
 <div class="dialogue en">"Think — a hospital emergency room. Not everyone stands in a line. A patient arrives — heart attack. The five people waiting with fevers step aside, and the heart attack patient goes first. Why? Because priority is different. Saving a life comes before everything. This is a Priority Queue — not a regular queue, but ordered by urgency. And the Heap keeps the most urgent element on top — always."</div>
@@ -572,6 +1159,261 @@ doors.push({
 
 <div class="dialogue">BST — Binary Search Tree। একটা নিয়ম: বাঁয়া child সবসময় parent-এর চেয়ে ছোট, ডানা child সবসময় বড়। এই নিয়মে যেকোনো নাম খুঁজতে প্রতিটা ধাপে অর্ধেক বাদ যায় — O(log n)। হাজার নামের মধ্যে মাত্র ১০ ধাপে পাওয়া যায়। (জ্যোতির্বিদের কথা মনে আছে — O(log n) দ্রুততার সিঁড়ির দ্বিতীয় ধাপ।)</div>
 <div class="dialogue en">"BST — Binary Search Tree. One rule: left child is always smaller than parent, right child always larger. With this rule, searching eliminates half at each step — O(log n). Among a thousand names, found in just 10 steps. (Remember the astrolabe maker — O(log n) is the second rung of the ladder.)"</div>
+
+<div class="code-block"># ── STEP 1: What is a tree? ──
+# A tree is a hierarchy of nodes — one ROOT, branches downward.
+# Unlike linked lists (linear), trees branch out.
+
+# Key terms:
+#   root    — top node (no parent)
+#   child   — node below a parent
+#   leaf    — node with no children (bottom)
+#   height  — longest path from root to leaf
+
+# A BINARY TREE: each node has at most 2 children (left, right)
+#
+#         50          ← root
+#        /  \
+#      30    70       ← children of root
+#     / \   / \
+#   20  40 60  80     ← leaves
+
+class TreeNode:
+    """A node in a binary tree."""
+    def __init__(self, val):
+        self.val = val
+        self.left = None    # left child
+        self.right = None   # right child
+
+# Build a simple tree:
+root = TreeNode(50)
+root.left = TreeNode(30)
+root.right = TreeNode(70)
+root.left.left = TreeNode(20)
+root.left.right = TreeNode(40)</div>
+
+<div class="code-block"># ── STEP 2: Binary Search Tree (BST) ──
+# BST RULE: left child &lt; parent &lt; right child
+# This rule enables O(log n) search — eliminate half each step.
+
+class BST:
+    """Binary Search Tree with insert and search."""
+    def __init__(self):
+        self.root = None
+
+    def insert(self, val):
+        if not self.root:
+            self.root = TreeNode(val)
+        else:
+            self._insert(self.root, val)
+
+    def _insert(self, node, val):
+        if val &lt; node.val:
+            if node.left:
+                self._insert(node.left, val)
+            else:
+                node.left = TreeNode(val)
+        else:
+            if node.right:
+                self._insert(node.right, val)
+            else:
+                node.right = TreeNode(val)
+
+    def search(self, target):
+        """O(log n) if balanced, O(n) if skewed."""
+        return self._search(self.root, target)
+
+    def _search(self, node, target):
+        if not node:
+            return False
+        if node.val == target:
+            return True
+        if target &lt; node.val:
+            return self._search(node.left, target)
+        return self._search(node.right, target)
+
+# Usage:
+bst = BST()
+for val in [50, 30, 70, 20, 40, 60, 80]:
+    bst.insert(val)
+
+print(bst.search(40))   # True — found in 2 steps
+print(bst.search(100))  # False — not in tree</div>
+
+<div class="code-block"># ── STEP 3: Tree traversals ──
+# Three ways to visit every node in a tree:
+
+# 1. IN-ORDER: left → root → right (gives SORTED order in BST)
+def inorder(node):
+    if node:
+        inorder(node.left)
+        print(node.val, end=" ")
+        inorder(node.right)
+
+# 2. PRE-ORDER: root → left → right (copy tree, serialize)
+def preorder(node):
+    if node:
+        print(node.val, end=" ")
+        preorder(node.left)
+        preorder(node.right)
+
+# 3. POST-ORDER: left → right → root (delete tree, evaluate expression)
+def postorder(node):
+    if node:
+        postorder(node.left)
+        postorder(node.right)
+        print(node.val, end=" ")
+
+# Using our BST from above:
+#         50
+#        /  \
+#      30    70
+#     / \   / \
+#   20  40 60  80
+
+inorder(root)    # 20 30 40 50 60 70 80 (sorted!)
+preorder(root)   # 50 30 20 40 70 60 80 (root first)
+postorder(root)  # 20 40 30 60 80 70 50 (root last)
+
+# BFS (level by level) using a queue:
+from collections import deque
+def level_order(root):
+    if not root:
+        return
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        print(node.val, end=" ")
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+
+level_order(root)  # 50 30 70 20 40 60 80 (level by level)</div>
+
+<div class="code-block"># ── STEP 4: BST pitfalls and balancing ──
+# THE BIG PROBLEM: if you insert SORTED data, BST becomes a LINKED LIST!
+
+# Insert 1, 2, 3, 4, 5 in order:
+# 1 → 2 → 3 → 4 → 5  (all right children — O(n) search!)
+
+# This is called a SKEWED tree — worst case.
+# Fix: SELF-BALANCING trees (AVL, Red-Black)
+
+# Python's sortedcontainers or bisect module gives sorted functionality:
+import bisect
+
+sorted_list = []
+for val in [50, 30, 70, 20, 40]:
+    bisect.insort(sorted_list, val)  # insert maintaining sorted order
+
+print(sorted_list)  # [20, 30, 40, 50, 70]
+
+# Search with bisect — O(log n):
+idx = bisect.bisect_left(sorted_list, 40)
+print(f"40 found at index {idx}")  # 2
+
+# WHEN TO USE BST vs SORTED LIST vs HASH MAP:
+# BST (or bisect): need sorted order + range queries
+# Hash map (dict): need O(1) exact lookup
+# Sorted list: simple, but insertion is O(n)
+# Balanced tree: O(log n) everything, but Python doesn't have built-in</div>
+
+<div class="code-block"># ── STEP 5: Trie (prefix tree) ──
+# A trie stores STRINGS by breaking them into characters.
+# Each path from root = a word.
+# PERFECT for autocomplete, spell-check, prefix matching.
+
+class TrieNode:
+    def __init__(self):
+        self.children = {}  # char → TrieNode
+        self.is_end = False  # marks complete word
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word):
+        """Insert a word — O(m) where m = word length."""
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.is_end = True
+
+    def search(self, word):
+        """Check if exact word exists — O(m)."""
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return node.is_end
+
+    def starts_with(self, prefix):
+        """Check if any word starts with prefix — O(m)."""
+        node = self.root
+        for char in prefix:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return True
+
+# Usage:
+trie = Trie()
+trie.insert("cat")
+trie.insert("car")
+trie.insert("card")
+trie.insert("care")
+
+print(trie.search("cat"))       # True
+print(trie.search("can"))       # False
+print(trie.starts_with("ca"))   # True (cat, car, card, care)
+print(trie.starts_with("do"))   # False</div>
+
+<div class="code-block"># ── STEP 6: Trees in the real world ──
+# Trees are EVERYWHERE in computer science:
+
+# 1. FILE SYSTEM:
+#   / (root) → home/ → documents/ → resume.pdf
+#   This is a tree! os.walk() traverses it.
+
+# 2. JSON / HTML / XML:
+#   Nested objects are trees. Parsing = tree traversal.
+
+# 3. DATABASE INDEX (B-Tree):
+#   PostgreSQL/MySQL use B-Trees for indexes.
+#   SELECT * WHERE id = 5 → O(log n) via B-Tree index
+
+# 4. DECISION TREES (ML):
+#   Random Forest, XGBoost — literally tree-based models.
+#   Each split = a tree node.
+
+# 5. SYNTAX TREES (compilers):
+#   Code is parsed into an AST (Abstract Syntax Tree).
+#   Python's ast module gives you the tree.
+
+# 6. AUTO-COMPLETE (Trie):
+#   Search engines, IDE autocomplete, spell check.
+
+# 7. NETWORK ROUTING:
+#   Spanning Tree Protocol prevents loops in networks.
+
+# PYTHON-SPECIFIC TREE TOOLS:
+# - os.walk() — traverse file system tree
+# - ast.parse() — get Python code's AST
+# - xml.etree.ElementTree — parse XML trees
+# - anytree library — general tree implementation
+# - sklearn.tree — decision tree models
+
+# INTERVIEW TIPS — know these tree problems:
+# - Maximum depth of binary tree
+# - Invert a binary tree
+# - Lowest common ancestor
+# - Level order traversal (BFS)
+# - Validate BST
+# - Serialize/deserialize tree</div>
 
 <div class="dialogue">Trie — আরেক ধরনের বৃক্ষ। কিন্তু এখানে শাখা হলো অক্ষর। "cat" → 'c' → 'a' → 't'। প্রতিটা অক্ষর একটা শাখা। এটা autocomplete-এ অপ্রতিদ্বন্দ্বী। ইউজার টাইপ করছে "ca" — trie বলে দেয় cat, car, card সব সম্ভায় শাখা আছে। Tokenizer-এও — LLM কীভাবে শব্দ ভাঙে? Trie-এর মতো করে।</div>
 <div class="dialogue en">"Trie — another kind of tree. But here, branches are letters. 'cat' → 'c' → 'a' → 't'. Each letter is a branch. This is unmatched for autocomplete. User types 'ca' — the trie says cat, car, card — all branches that exist. In tokenizers too — how does an LLM break words? Like a trie."</div>
