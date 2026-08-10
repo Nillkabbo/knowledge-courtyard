@@ -1052,42 +1052,299 @@ doors.push({
 <p class="scene-setting en">You build a website. Users enter passwords. What do you do? Store plaintext — database stolen, all passwords leaked. LinkedIn did this in 2012 — 167 million passwords leaked. Solution? Hash. But simple hash is not enough — rainbow tables break them. You need salt — a unique random value per password.</p>
 
 <div class="dialogue"><strong>পাসওয়ার্ড-কারিগর সাফওয়ান:</strong> হামজা (Door ৩) তোমাকে hash শিখিয়েছেন। কিন্তু পাসওয়ার্ডে hash যথেষ্ট নয়। কেন? SHA-256 দ্রুত — আক্রমণকারী সেকেন্ডে বিলিয়ন বিলিয়ন অনুমান করতে পারে। bcrypt ধীর — ইচ্ছাকৃতভাবে। একটি পাসওয়ার্ড হ্যাশে ~১০০ms। আক্রমণকারীর জন্য দুঃসাধ্য। Argon2 আরও শক্তিশালী — memory-hard। GPU-তেও ধীর কারণ মেমরি দরকার।</div>
-<div class="dialogue en"><strong>Password Artisan Safwan:</strong> Hamza (Door 3) taught you hashing. But hashing is not enough for passwords. Why? SHA-256 is fast — an attacker can guess billions per second. bcrypt is slow — intentionally. One password hash takes ~100ms. Hard for attackers. Argon2 is even stronger — memory-hard. Slow even on GPUs because it needs memory.</div>
+<div class="code-block"># ── STEP 1: Why password hashing matters ──
+# If your database is breached, passwords in plaintext = instant disaster.
+# If passwords are HASHED, the attacker gets useless hashes.
 
-<div class="code-block"># — Python: পাসওয়ার্ড হ্যাশিং —
+# THE PASSWORD STORAGE HIERARCHY (from bad to good):
 
-  # ❌ ভুল উপায় (plaintext বা SHA-256)
-  import hashlib
-  hash = hashlib.sha256(b"password123").hexdigest()
-  # সমস্যা: দ্রুত, সবার জন্য একই, rainbow table আছে
+hierarchy = {
+    "❌ Plaintext": {
+        "security": "ZERO — anyone with DB access sees all passwords",
+        "example": "password = 'password123'",
+    },
+    "❌ Encrypted (reversible)": {
+        "security": "LOW — if encryption key leaks, all passwords exposed",
+        "example": "encrypt('password123', key) → ciphertext",
+    },
+    "⚠️ SHA-256 (fast hash)": {
+        "security": "POOR — attacker can try billions/sec",
+        "example": "sha256('password123') → hash",
+    },
+    "✅ bcrypt (slow hash)": {
+        "security": "GOOD — attacker can try thousands/sec",
+        "example": "bcrypt('password123', salt, cost=12)",
+    },
+    "✅✅ Argon2 (memory-hard)": {
+        "security": "BEST — requires 64MB per attempt (GPU-prohibitve)",
+        "example": "argon2id('password123', salt, 64MB, 3 iters)",
+    },
+}
 
-  # ✅ সঠিক উপায়: bcrypt
-  import bcrypt
-  password = b"password123"
-  salt = bcrypt.gensalt(rounds=12)     # cost factor
-  hashed = bcrypt.hashpw(password, salt)
-  print(hashed)
-  # $2b$12$... (salt ভেতরে, cost=১২)
+print("PASSWORD STORAGE HIERARCHY:")
+for method, info in hierarchy.items():
+    print(f"\n  {method}")
+    print(f"    Security: {info['security']}")
+    print(f"    Example: {info['example']}")</div>
 
-  # যাচাই:
-  bcrypt.checkpw(b"password123", hashed)  # True
-  bcrypt.checkpw(b"wrong", hashed)        # False
+<div class="code-block"># ── STEP 2: bcrypt in practice ──
+# bcrypt: the industry-standard password hash (since 1999).
 
-  # ✅✅ সেরা: Argon2 (memory-hard)
-  from argon2 import PasswordHasher
-  ph = PasswordHasher(
-      time_cost=3,       # ৩ iterations
-      memory_cost=65536, # ৬৪ MB RAM
-      parallelism=4      # ৪ threads
-  )
-  hash = ph.hash("password123")
-  ph.verify(hash, "password123")  # True
+import bcrypt
 
-  — Django settings.py:
-  PASSWORD_HASHERS = [
-      'django.contrib.auth.hashers.Argon2PasswordHasher',
-      'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
-  ]</div>
+# Hash a password:
+password = b"password123"
+salt = bcrypt.gensalt(rounds=12)    # cost factor (2^12 = 4096 iterations)
+hashed = bcrypt.hashpw(password, salt)
+print(f"Hashed: {hashed}")
+# b'$2b$12$someSalt...someHash...'
+
+# The hash CONTAINS everything needed to verify:
+# $2b$ = bcrypt algorithm
+# $12$ = cost factor (2^12 iterations)
+# next 22 chars = base64-encoded salt
+# remaining chars = hash
+
+# Verify password:
+is_correct = bcrypt.checkpw(b"password123", hashed)  # True
+is_wrong = bcrypt.checkpw(b"wrongpass", hashed)      # False
+
+print(f"Correct password: {is_correct}")
+print(f"Wrong password: {is_wrong}")
+
+# COST FACTOR (rounds):
+# rounds=10: ~100ms per hash (attacker: ~10/sec)
+# rounds=12: ~400ms per hash (attacker: ~2/sec)
+# rounds=14: ~1.6s per hash (attacker: ~0.6/sec)
+# Increase rounds as hardware gets faster.
+# Rule of thumb: hashing should take ~250ms for users.</div>
+
+<div class="code-block"># ── STEP 3: Argon2 — the modern champion ──
+# Argon2 won the 2015 Password Hashing Competition.
+# It's MEMORY-HARD — requires RAM, not just CPU.
+
+from argon2 import PasswordHasher
+
+# Create hasher with parameters:
+ph = PasswordHasher(
+    time_cost=3,        # 3 iterations
+    memory_cost=65536,  # 64MB RAM per hash
+    parallelism=4,      # use 4 CPU threads
+)
+
+# Hash a password:
+hash = ph.hash("password123")
+print(f"Argon2 hash: {hash}")
+# $argon2id$v=19$m=65536,t=3,p=4$<salt>$<hash>
+
+# Verify:
+try:
+    ph.verify(hash, "password123")  # True (correct)
+    print("Password correct!")
+except:
+    print("Password wrong!")
+
+# WHY ARGON2 IS BETTER THAN bcrypt:
+better_reasons = {
+    "Memory-hard": "Requires 64MB RAM per hash. GPUs have limited memory.",
+    "Side-channel resistant": "Argon2id variant resists timing attacks",
+    "Tunable": "Adjust time, memory, and parallelism independently",
+    "Modern": "Designed in 2015 (bcrypt is from 1999)",
+}
+
+print("WHY ARGON2 IS BETTER:")
+for reason, desc in better_reasons.items():
+    print(f"  {reason}: {desc}")
+
+# DJANGO CONFIGURATION:
+django_config = """
+# settings.py:
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.Argon2PasswordHasher',     # best
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher', # fallback
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',     # default (OK)
+]
+
+# Install: pip install argon2-cffi bcrypt
+# Django auto-detects and uses the first available hasher.
+"""
+
+print(django_config)</div>
+
+<div class="code-block"># ── STEP 4: Password attacks and defense ──
+# HOW ATTACKERS CRACK PASSWORDS:
+
+attack_methods = {
+    "Brute Force": {
+        "how": "Try every possible password: aaaa, aaab, aaac...",
+        "speed": "Very slow (especially with Argon2)",
+        "defense": "Long passwords (12+ chars), slow hash (Argon2)",
+    },
+    "Dictionary Attack": {
+        "how": "Try common words: password, 123456, qwerty...",
+        "speed": "Fast for weak passwords",
+        "defense": "Don't use common passwords, check against HaveIBeenPwned",
+    },
+    "Rainbow Tables": {
+        "how": "Pre-computed hash table for common passwords",
+        "speed": "Instant (if no salt)",
+        "defense": "ALWAYS use salt (unique per password)",
+    },
+    "Credential Stuffing": {
+        "how": "Use leaked passwords from other sites",
+        "speed": "Very effective (people reuse passwords)",
+        "defense": "Never reuse passwords, use password manager",
+    },
+}
+
+print("PASSWORD ATTACK METHODS:")
+for method, info in attack_methods.items():
+    print(f"\n  {method}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# PASSWORD STRENGTH:
+# Length matters more than complexity!
+# "correct-horse-battery-staple" >> "P@ssw0rd123!"
+# Use passphrases: 4+ random words = ~44 bits of entropy
+
+# PASSWORD POLICY (modern NIST guidelines):
+nist_guidelines = [
+    "Minimum 8 characters (recommend 12+)",
+    "NO complexity rules (no forced special chars)",
+    "NO mandatory rotation (only rotate if compromised)",
+    "Check against breach databases (HaveIBeenPwned)",
+    "Allow paste (password managers)",
+    "Rate limiting on login attempts",
+    "MFA/2FA for sensitive accounts",
+]
+
+print("\nMODERN PASSWORD GUIDELINES (NIST):")
+for guideline in nist_guidelines:
+    print(f"  ☐ {guideline}")</div>
+
+<div class="code-block"># ── STEP 5: Rate limiting and account lockout ──
+# Even with good hashing, brute force is possible if no rate limiting.
+
+# DJANGO RATE LIMITING:
+django_rate_limit = """
+# settings.py:
+LOGIN_RATE_LIMIT = 5  # max 5 attempts per 5 minutes
+
+# Using django-axes:
+INSTALLED_APPS += ['axes']
+MIDDLEWARE += ['axes.middleware.AxesMiddleware']
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesBackend',         # rate limiting
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+# settings:
+AXES_FAILURE_LIMIT = 5  # max failed attempts
+AXES_COOLOFF_TIME = 1   # hours to cool down
+AXES_LOCKOUT_PARAMETERS = ['ip_address', 'username']
+"""
+
+print(django_rate_limit)
+
+# CUSTOM RATE LIMITING IN DJANGO:
+custom_limit = """
+from django.core.cache import cache
+from django.contrib.auth import authenticate
+
+def login_with_rate_limit(username, password, ip):
+    cache_key = f"login_attempts:{ip}:{username}"
+    attempts = cache.get(cache_key, 0)
+
+    if attempts >= 5:
+        return {"error": "Too many attempts. Try again in 15 minutes."}
+
+    user = authenticate(username=username, password=password)
+    if user is None:
+        cache.set(cache_key, attempts + 1, timeout=900)  # 15 min
+        return {"error": f"Invalid credentials. {5 - attempts - 1} attempts left."}
+
+    cache.delete(cache_key)  # reset on success
+    return {"user": user}
+"""
+
+print(custom_limit)
+
+# PROGRESSIVE DELAY:
+# 1st fail: 0s delay
+# 2nd fail: 1s delay
+# 3rd fail: 2s delay
+# 4th fail: 4s delay
+# 5th fail: lockout 15 minutes</div>
+
+<div class="code-block"># ── STEP 6: Multi-factor authentication (MFA) ──
+# Passwords alone are NOT enough. Add a SECOND factor.
+
+# THREE FACTORS OF AUTHENTICATION:
+factors = {
+    "Something you KNOW": "Password, PIN, security question",
+    "Something you HAVE": "Phone (SMS/OTP), hardware key (YubiKey), app (Authenticator)",
+    "Something you ARE": "Fingerprint, face, voice (biometrics)",
+}
+
+print("AUTHENTICATION FACTORS:")
+for factor, examples in factors.items():
+    print(f"  {factor}: {examples}")
+
+# TOTP (Time-based One-Time Password):
+# Used by Google Authenticator, Authy
+# 6-digit code that changes every 30 seconds
+# Based on shared secret + current time
+
+# PYTHON TOTP (pyotp):
+totp_code = """
+import pyotp
+
+# Generate secret (shared between user and server):
+secret = pyotp.random_base32()
+print(f"Secret: {secret}")  # user adds to authenticator app
+
+# Generate current code:
+totp = pyotp.TOTP(secret)
+current_code = totp.now()
+print(f"Current code: {current_code}")  # e.g., "123456"
+
+# Verify user-entered code:
+if totp.verify(current_code):
+    print("✅ Valid code")
+else:
+    print("❌ Invalid or expired code")
+
+# For QR code (to add to authenticator):
+uri = totp.provisioning_uri(name="user@example.com", issuer_name="MyApp")
+# Generate QR from this URI
+"""
+
+print("TOTP CODE:")
+print(totp_code)
+
+# AUTHENTICATION BEST PRACTICES:
+best_practices = [
+    "Store passwords with Argon2 (never plaintext, never SHA-256)",
+    "Use unique salt per password",
+    "Enforce rate limiting on login",
+    "Offer/require MFA for sensitive accounts",
+    "Check passwords against breach databases",
+    "Use secure session management (Django does this)",
+    "HTTPS Everywhere (never send passwords over HTTP)",
+    "Don't log passwords (even in error messages!)",
+    "Use password managers (don't force password rotation)",
+    "Educate users about phishing",
+]
+
+print("AUTHENTICATION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# THE BOTTOM LINE:
+# Password security = hashing + salting + rate limiting + MFA.
+# Each layer adds defense. No single layer is sufficient.
+# Defense in depth — assume each layer will be breached eventually.</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Rainbow Table আক্রমণ:</strong> আক্রমণকারী পূর্বে লাখ লাখ সাধারণ পাসওয়ার্ডের hash হিসাব করে রাখে। "password123" → hash সবার জন্য একই। Salt এটা ভাঙে — প্রতিটি পাসওয়ার্ডে ভিন্ন salt → ভিন্ন hash → rainbow table কাজ করে না।</div></div>
 
