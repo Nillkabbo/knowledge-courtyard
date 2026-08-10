@@ -51,49 +51,242 @@ doors.push({
 <div class="dialogue">Rabin-Karp — আরেক পথ। প্যাটার্নের একটা hash বানাও (Door 6 — তালা নির্মাতার কথা মনে আছে?)। তারপর টেক্সটের উপর একটা window সরাও (Door 13 — sliding window)। প্রতিটা window-এর hash গণনা করো — কিন্তু পুরো নয়, শুধু পুরোনো অক্ষর বাদ, নতুন অক্ষর যোগ। rolling hash। মিল হলে অক্ষরে অক্ষরে যাচাই। গড়ে O(n+m), worst O(n·m) (collision হলে)।</div>
 <div class="dialogue en">"Rabin-Karp — another path. Build a hash of the pattern (Door 6 — remember the locksmith?). Then slide a window over the text (Door 13 — sliding window). Compute each window's hash — but not from scratch: drop the old char, add the new. Rolling hash. On hash match, verify char by char. Average O(n+m), worst O(n·m) (if collisions)."</div>
 
-<div class="code-block">Naive বনাম KMP — পাশাপাশি:
+<div class="code-block"># ── STEP 1: Naive string search ──
+# The simplest approach: try every starting position.
 
-# NAIVE — O(n·m) worst case
 def naive_search(text, pattern):
+    """Check every position — O(n*m) worst case."""
     n, m = len(text), len(pattern)
+
     for i in range(n - m + 1):
         match = True
         for j in range(m):
-            if text[i+j] != pattern[j]:
-                match = False; break
+            if text[i + j] != pattern[j]:
+                match = False
+                break
         if match:
-            return i
-    return -1
+            return i  # found at position i
 
-# KMP — O(n+m) guaranteed
-def kmp_search(text, pattern):
-    lps = build_lps(pattern)   # failure function
-    i = j = 0
-    while i < len(text):
-        if text[i] == pattern[j]:
-            i += 1; j += 1
-            if j == len(pattern):
-                return i - j       # found!
-        else:
-            if j > 0:
-                j = lps[j-1]       # ← smart retreat
-            else:
-                i += 1
-    return -1
+    return -1  # not found
 
-def build_lps(p):
-    """Longest Prefix-Suffix table"""
-    lps = [0] * len(p)
-    length = 0
-    for i in range(1, len(p)):
-        while length > 0 and p[i] != p[length]:
-            length = lps[length-1]
-        if p[i] == p[length]:
+print(naive_search("hello world", "world"))  # 6
+print(naive_search("ABABDABACDABACDABAC", "ABAC"))  # 5
+
+# WHY IT'S SLOW:
+# text = "AAAAAAAAB", pattern = "AAAAB"
+# At each position, we compare 5 chars, fail at the last one.
+# Then advance by 1 and repeat. O(n*m).
+
+# Python's built-in is fast enough for most cases:
+print("hello world".find("world"))  # 6
+print("world" in "hello world")     # True</div>
+
+<div class="code-block"># ── STEP 2: KMP algorithm — O(n+m) ──
+# KMP avoids re-checking characters by using a "failure function".
+# It precomputes where to jump when a mismatch occurs.
+
+def build_lps(pattern):
+    """
+    Build Longest Prefix-Suffix table.
+    lps[i] = length of longest proper prefix of pattern[0..i]
+             that is also a suffix.
+    """
+    lps = [0] * len(pattern)
+    length = 0  # length of previous longest prefix-suffix
+
+    for i in range(1, len(pattern)):
+        while length &gt; 0 and pattern[i] != pattern[length]:
+            length = lps[length - 1]
+        if pattern[i] == pattern[length]:
             length += 1
             lps[i] = length
+
     return lps
 
-kmp_search("ABABDABACDABACDABAC", "ABAC")  # → 5</div>
+def kmp_search(text, pattern):
+    """KMP string search — O(n+m) guaranteed."""
+    if not pattern:
+        return 0
+
+    lps = build_lps(pattern)
+    i = j = 0  # i for text, j for pattern
+
+    while i &lt; len(text):
+        if text[i] == pattern[j]:
+            i += 1
+            j += 1
+            if j == len(pattern):
+                return i - j  # found!
+        else:
+            if j &gt; 0:
+                j = lps[j - 1]  # smart retreat (don't move i!)
+            else:
+                i += 1
+
+    return -1
+
+print(kmp_search("ABABDABACDABACDABAC", "ABAC"))  # 5
+
+# The LPS table for "ABAC":
+# lps = [0, 0, 1, 0]
+# When mismatch at position 3, jump to lps[2]=1, not back to 0.</div>
+
+<div class="code-block"># ── STEP 3: Rabin-Karp — rolling hash ──
+# Uses hashing to compare. Great for multiple pattern search.
+
+def rabin_karp(text, pattern):
+    """Search using rolling hash — O(n+m) average."""
+    n, m = len(text), len(pattern)
+    if m &gt; n:
+        return -1
+
+    base = 256  # number of characters
+    mod = 10**9 + 7  # large prime to avoid overflow
+
+    # Compute hash of pattern and first window
+    pattern_hash = 0
+    text_hash = 0
+    h = pow(base, m - 1, mod)  # base^(m-1) mod prime
+
+    for i in range(m):
+        pattern_hash = (base * pattern_hash + ord(pattern[i])) % mod
+        text_hash = (base * text_hash + ord(text[i])) % mod
+
+    # Slide the window
+    for i in range(n - m + 1):
+        if pattern_hash == text_hash:
+            # Verify character by character (avoid hash collision)
+            if text[i:i + m] == pattern:
+                return i
+
+        if i &lt; n - m:
+            # Rolling hash: remove leading, add trailing
+            text_hash = (base * (text_hash - ord(text[i]) * h)
+                         + ord(text[i + m])) % mod
+
+    return -1
+
+print(rabin_karp("hello world", "world"))  # 6
+
+# ROLLING HASH is the key insight:
+# Instead of recomputing hash from scratch (O(m)),
+# update it in O(1) by removing old char and adding new char.</div>
+
+<div class="code-block"># ── STEP 4: Python's string methods ──
+# Python has powerful built-in string search tools.
+
+# Basic search:
+text = "The quick brown fox jumps over the lazy dog"
+print(text.find("fox"))       # 16 (index)
+print(text.index("fox"))      # 16 (raises ValueError if not found)
+print("fox" in text)          # True
+
+# Count occurrences:
+print("The cat sat on the mat".count("at"))  # 2
+
+# Find all occurrences:
+import re
+positions = [m.start() for m in re.finditer("a", "banana")]
+print(positions)  # [1, 3, 5]
+
+# Regular expressions — the Swiss Army knife:
+import re
+
+# Find all words:
+words = re.findall(r'\w+', "Hello, world! 123")
+print(words)  # ['Hello', 'world', '123']
+
+# Pattern matching:
+emails = re.findall(r'[\w.]+@[\w.]+', "Contact: alice@x.com, bob@y.com")
+print(emails)  # ['alice@x.com', 'bob@y.com']
+
+# Replace:
+cleaned = re.sub(r'\s+', ' ', "too    much   space")
+print(cleaned)  # "too much space"</div>
+
+<div class="code-block"># ── STEP 5: Fuzzy string matching ──
+# When exact match isn't enough, use edit distance.
+
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def edit_distance(s1, s2):
+    """Levenshtein distance — minimum edits to transform s1→s2."""
+    if not s1:
+        return len(s2)
+    if not s2:
+        return len(s1)
+    if s1[0] == s2[0]:
+        return edit_distance(s1[1:], s2[1:])
+    return 1 + min(
+        edit_distance(s1[1:], s2),      # delete
+        edit_distance(s1, s2[1:]),      # insert
+        edit_distance(s1[1:], s2[1:])   # replace
+    )
+
+# Spell correction:
+def suggest(word, dictionary, max_distance=2):
+    """Find closest words in dictionary."""
+    suggestions = []
+    for candidate in dictionary:
+        dist = edit_distance(word, candidate)
+        if dist &lt;= max_distance:
+            suggestions.append((candidate, dist))
+    return sorted(suggestions, key=lambda x: x[1])
+
+dictionary = ["receive", "believe", "achieve", "relief"]
+print(suggest("recieve", dictionary))
+# [('receive', 2)] — suggests "receive" for "recieve"
+
+# Python's difflib for fuzzy matching:
+import difflib
+matches = difflib.get_close_matches("recieve", ["receive", "believe", "achieve"])
+print(matches)  # ['receive']</div>
+
+<div class="code-block"># ── STEP 6: Real-world pattern matching ──
+# Pattern matching is used everywhere:
+
+# 1. SEARCH ENGINES:
+#   Google finds pages containing your keywords
+#   (inverted index + pattern matching)
+
+# 2. REGEX (validation, extraction):
+import re
+
+# Validate email:
+def is_valid_email(email):
+    return bool(re.match(r'^[\w.]+@[\w.]+\.\w+$', email))
+
+# Extract phone numbers:
+phones = re.findall(r'\d{3}-\d{3}-\d{4}', "Call 555-123-4567 or 555-987-6543")
+
+# 3. LOG ANALYSIS:
+#   Find ERROR lines in logs:
+#   grep "ERROR" application.log
+
+# 4. BIOINFORMATICS:
+#   DNA sequence matching (ACTG patterns)
+#   KMP/Aho-Corasick for genome search
+
+# 5. TOKENIZATION (NLP/LLM):
+#   BPE (Byte Pair Encoding) uses pattern matching
+#   to merge frequent character pairs into tokens
+
+# 6. PLAGIARISM DETECTION:
+#   Rolling hash (Rabin-Karp) for document fingerprinting
+#   Compare fingerprints to find copied sections
+
+# ALGORITHM COMPARISON:
+# ┌──────────────┬───────────────┬──────────────────────┐
+# │ Algorithm    │ Complexity    │ Best for             │
+# ├──────────────┼───────────────┼──────────────────────┤
+# │ Naive        │ O(n*m)        │ simple, short strings│
+# │ KMP          │ O(n+m)        │ single pattern       │
+# │ Rabin-Karp   │ O(n+m) avg    │ multiple patterns    │
+# │ Aho-Corasick │ O(n+k)        │ many patterns at once│
+# │ Regex        │ varies        │ complex patterns     │
+# │ Python find()│ O(n*m) worst  │ built-in, good enough│
+# └──────────────┴───────────────┴──────────────────────┘</div>
 
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Pattern matching সবখানে। Tokenization — BPE (Byte Pair Encoding) merges, Aho-Corasick multi-pattern (KMP-এর বহু-প্যাটার্ন রূপ)। Fuzzy search — ইউজার "recieve" লিখলে "receive" খুঁজি (DP edit distance — Door 15)। Plagiarism / dedup — rolling hash দিয়ে ডকুমেন্ট ফিঙ্গারপ্রিন্ট। Regex engine — NFA/DFA সব pattern matching-এর উপর দাঁড়িয়ে।</div>
 <div class="dialogue en">"You're an AI engineer. Pattern matching is everywhere. Tokenization — BPE merges, Aho-Corasick multi-pattern (KMP's multi-pattern form). Fuzzy search — user types 'recieve', find 'receive' (DP edit distance — Door 15). Plagiarism / dedup — rolling hash for document fingerprints. Regex engines — NFA/DFA all rest on pattern matching."</div>
@@ -221,52 +414,211 @@ doors.push({
   </svg>
 </div>
 
-<div class="code-block">বিট অপারেশন — দ্রুততার হাতিয়ার:
+<div class="code-block"># ── STEP 1: Binary numbers ──
+# Computers store everything as 0s and 1s — bits.
+# Each bit position represents a power of 2.
 
-  AND  &    উভয় ১ হলে ১        flags চেক, mask
-  OR   |    যেকোনো ১ হলে ১       flags সেট
-  XOR  ^    ভিন্ন হলে ১          toggle, swap, dedup
-  NOT  ~    উল্টাও                 বিপরীত
-  <<   n    বামে সরাও (*2ⁿ)       দ্রুত গুণ
-  >>   n    ডানে সরাও (÷2ⁿ)       দ্রুত ভাগ
+# Binary to decimal:
+# 1101 = 1×8 + 1×4 + 0×2 + 1×1 = 13
 
-PYTHON — শক্তিশালী বিট টুল:
-  bin(13)              # → '0b1101'
-  13 & 6               # → 4   (AND)
-  13 | 6               # → 15  (OR)
-  13 ^ 6               # → 11  (XOR)
-  1 << 4               # → 16  (2⁴)
-  13 >> 2              # → 3   (13 ÷ 4)
-  13 & 1               # → 1   (বিজোড়?)
-  (13).bit_count()     # → 3   (কতগুলো 1-bit; 13. বলে লিখলে SyntaxError হবে!)
+# Python binary representation:
+print(bin(13))    # '0b1101'
+print(bin(255))   # '0b11111111'
+print(int('1101', 2))  # 13 (binary string → int)
 
-XOR ম্যাজিক — দুটো বৈশিষ্ট্য:
-  • a ^ a = 0   (কোনোটার সাথে নিজেকে XOR = ০)
-  • a ^ 0 = a   (শূন্যের সাথে XOR = নিজেই)
+# Each hex digit = 4 bits:
+print(hex(255))   # '0xff'
+print(hex(16))    # '0x10'
 
-# ১. Swap বিনা temp — এর:
-  a ^= b; b ^= a; a ^= b
+# Bit positions (0-indexed from right):
+# Bit 0: 2^0 = 1   (least significant bit)
+# Bit 1: 2^1 = 2
+# Bit 2: 2^2 = 4
+# Bit 3: 2^3 = 8
+# 13 = 1101 → bits 0, 2, 3 are set</div>
 
-# ২. একটা সংখ্যা খুঁজো যা একবারই আছে (বাকি দুবার):
-  def single_number(nums):
-      result = 0
-      for n in nums:
-          result ^= n      # জোড়া বাতিল, একটা বেঁচে যায়
-      return result
-  single_number([4, 1, 2, 1, 2])  # → 4
+<div class="code-block"># ── STEP 2: Bit operations ──
+# Python's bitwise operators:
 
-# ৩. ক্ষমতা দুটো কি?
-  def is_power_of_two(n):
-      return n > 0 and (n & (n-1)) == 0
-  # n=8 (1000), n-1=7 (0111) → AND = 0 ✓
+# AND (&): both bits must be 1
+print(13 & 6)    # 5  (1101 & 0110 = 0100)
+# Use: check if a bit is set, mask specific bits
 
-# ৪. বিট গণনা (popcount):
-  def count_bits(n):
-      count = 0
-      while n:
-          count += n & 1
-          n >>= 1
-      return count</div>
+# OR (|): either bit is 1
+print(13 | 6)    # 15 (1101 | 0110 = 1111)
+# Use: set specific bits, combine flags
+
+# XOR (^): bits must be DIFFERENT
+print(13 ^ 6)    # 11 (1101 ^ 0110 = 1011)
+# Use: toggle bits, find unique values
+
+# NOT (~): flip all bits
+print(~13)       # -14 (Python uses two's complement)
+
+# Left shift (<<): multiply by 2^n
+print(1 &lt;&lt; 4)     # 16  (2^4)
+print(5 &lt;&lt; 2)     # 20  (5 × 4)
+
+# Right shift (>>): divide by 2^n (integer division)
+print(13 &gt;&gt; 2)    # 3   (13 ÷ 4 = 3.25 → 3)
+print(256 &gt;&gt; 3)   # 32  (256 ÷ 8)</div>
+
+<div class="code-block"># ── STEP 3: Practical bit tricks ──
+# Check if odd or even:
+print(13 & 1)    # 1 (odd)
+print(12 & 1)    # 0 (even)
+
+# Check if a specific bit is set:
+def is_bit_set(n, position):
+    """Check if bit at 'position' is 1."""
+    return (n &gt;&gt; position) & 1 == 1
+
+print(is_bit_set(13, 0))  # True  (bit 0 = 1)
+print(is_bit_set(13, 1))  # False (bit 1 = 0)
+print(is_bit_set(13, 2))  # True  (bit 2 = 1)
+
+# Set a bit:
+def set_bit(n, position):
+    return n | (1 &lt;&lt; position)
+
+print(set_bit(12, 0))  # 13 (set bit 0: 1100 → 1101)
+
+# Clear a bit:
+def clear_bit(n, position):
+    return n & ~(1 &lt;&lt; position)
+
+print(clear_bit(13, 0))  # 12 (clear bit 0: 1101 → 1100)
+
+# Toggle a bit:
+def toggle_bit(n, position):
+    return n ^ (1 &lt;&lt; position)
+
+print(toggle_bit(13, 1))  # 15 (toggle bit 1: 1101 → 1111)
+
+# Count set bits (popcount):
+n = 13
+print(bin(n).count('1'))  # 3
+# Python 3.10+:
+print(n.bit_count())       # 3</div>
+
+<div class="code-block"># ── STEP 4: XOR magic ──
+# XOR has two powerful properties:
+# a ^ a = 0  (anything XOR itself = 0)
+# a ^ 0 = a  (anything XOR 0 = itself)
+
+# Trick 1: Find the single number (all others appear twice):
+def single_number(nums):
+    """Find the number that appears once (all others twice)."""
+    result = 0
+    for n in nums:
+        result ^= n  # pairs cancel out!
+    return result
+
+print(single_number([4, 1, 2, 1, 2]))  # 4
+
+# Trick 2: Swap without temp variable:
+a, b = 5, 3
+a ^= b  # a = a ^ b
+b ^= a  # b = b ^ (a ^ b) = original a
+a ^= b  # a = (a ^ b) ^ a = original b
+print(a, b)  # 3 5
+
+# Trick 3: Check if power of 2:
+def is_power_of_two(n):
+    """True if n is 1, 2, 4, 8, 16, ..."""
+    return n &gt; 0 and (n & (n - 1)) == 0
+
+# Why it works:
+# 8 = 1000, 7 = 0111 → 8 & 7 = 0000 ✓
+# 6 = 0110, 5 = 0101 → 6 & 5 = 0100 ✗
+
+print(is_power_of_two(8))   # True
+print(is_power_of_two(6))   # False
+print(is_power_of_two(1))   # True</div>
+
+<div class="code-block"># ── STEP 5: Bitmasking — flags and permissions ──
+# Store multiple boolean values in ONE integer.
+# Each bit = one permission/flag.
+
+# Define permission flags:
+READ = 1 &lt;&lt; 0     # 1   (0001)
+WRITE = 1 &lt;&lt; 1    # 2   (0010)
+DELETE = 1 &lt;&lt; 2   # 4   (0100)
+ADMIN = 1 &lt;&lt; 3    # 8   (1000)
+
+# Combine permissions with OR:
+user_perms = READ | WRITE      # 3 (0011)
+admin_perms = READ | WRITE | DELETE | ADMIN  # 15 (1111)
+
+# Check permission with AND:
+def can(permissions, action):
+    return bool(permissions & action)
+
+print(can(user_perms, READ))    # True
+print(can(user_perms, DELETE))  # False
+print(can(admin_perms, ADMIN))  # True
+
+# Add permission:
+user_perms |= DELETE  # now has READ, WRITE, DELETE
+
+# Remove permission:
+user_perms &= ~WRITE  # removes WRITE
+
+# This is how Unix file permissions work:
+# rwx = 111 = 7
+# rw- = 110 = 6
+# r-- = 100 = 4
+# chmod 755 = rwxr-xr-x</div>
+
+<div class="code-block"># ── STEP 6: Real-world bit manipulation ──
+# Bits power many performance-critical systems:
+
+# 1. BLOOM FILTER (probabilistic membership test):
+#   Bit array + hash functions → "probably in set" / "definitely not"
+#   Used in: RAG dedup, URL seen-check, database lookups
+
+# 2. MODEL QUANTIZATION (AI/ML):
+#   Compress 32-bit floats → 8-bit or 4-bit integers
+#   4x-8x memory reduction with minimal quality loss
+#   Used in: vLLM, llama.cpp, on-device inference
+
+# 3. BITMAP INDEX (databases):
+#   Each bit = one row, 1 = matches condition
+#   Very fast for low-cardinality columns
+
+# 4. NETWORK PROTOCOLS:
+#   TCP flags, IP headers, subnet masks
+#   All packed into bits for efficiency
+
+# 5. GRAPH ADJACENCY (dense graphs):
+#   Each row = bit array of neighbors
+#   Saves memory, fast intersection operations
+
+# 6. CRYPTOGRAPHY:
+#   XOR ciphers, hash functions, PRNG
+
+# SUMMARY TABLE:
+# ┌──────────────────┬────────────────────────────────┐
+# │ Operation        │ Use case                      │
+# ├──────────────────┼───────────────────────────────┤
+# │ & AND            │ check bit, mask, permission   │
+# │ | OR             │ set bit, combine flags        │
+# │ ^ XOR            │ toggle, dedup, encrypt        │
+# │ ~ NOT            │ clear bit, complement         │
+# │ &lt;&lt; left shift    │ multiply by 2^n              │
+# │ &gt;&gt; right shift   │ divide by 2^n                 │
+# │ n & (n-1)        │ check power of 2, clear lowest │
+# │ n & 1            │ check odd/even                │
+# │ bit_count()      │ count set bits (popcount)     │
+# └──────────────────┴───────────────────────────────┘
+
+# INTERVIEW CLASSICS:
+# - Single number (XOR all)
+# - Count set bits
+# - Reverse bits
+# - Missing number (XOR 0..n)
+# - Power of two check
+# - Subsets using bit manipulation</div>
 
 <div class="dialogue">Bloom filter — বিট দিয়ে তৈরি একটা অদ্ভুত কাঠামো। একটা বড় বিট-অ্যারে। প্রতিটা উপাদানে কয়েকটা hash (Door 6!) বানাও, সেই অবস্থানগুলো ১ করে দাও। খুঁজতে? আবার hash বানাও, সব অবস্থান ১ কি না দেখো। সব ১ হলে "সম্ভবত আছে"। কোনোটা ০ হলে "নিশ্চিত নেই"। কখনো মিথ্যা হ্যাঁ বলতে পারে, মিথ্যা না বলে না। দ্রুত, সস্তা, probabilistic।</div>
 <div class="dialogue en">"Bloom filter — a strange structure made of bits. A large bit-array. For each element, make a few hashes (Door 6!), set those positions to 1. To look up? Hash again, check if all positions are 1. All 1 → 'probably present'. Any 0 → 'definitely absent'. May say yes falsely, never says no falsely. Fast, cheap, probabilistic."</div>

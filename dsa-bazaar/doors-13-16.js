@@ -54,37 +54,232 @@ doors.push({
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Token chunking — বড় টেক্সটকে ছোট ছোট অংশে ভাগ করা। প্রতিটা chunk-এ overlap দেওয়া — sliding window। Streaming data — real-time আসা ডেটা প্রক্রিয়া করা। কোনো সময় পুরো ডেটা মেমোরিতে রাখা যায় না — window দিয়ে অংশে অংশে। LLM inference-এও এই ধারণা — context window সীমিত (৮k, ১২৮k টোকেন), তাই পুরোনো টোকেন "truncate" করতে হয়। কিছু model (Mistral, Longformer) সরাসরি sliding-window attention ব্যবহার করে — প্রতিটা টোকেন শুধু কাছাকাছি একটা fixed window-এর টোকেন দেখে, পুরো sequence নয় — এতে attention-এর O(n²) খরচ কমে O(n·w)-তে।</div>
 <div class="dialogue en">"You're an AI engineer. Token chunking — dividing large text into smaller pieces. Overlap between chunks — sliding window. Streaming data — processing data arriving in real-time. Sometimes the whole dataset can't fit in memory — process by windows. This shows up in LLM inference too — the context window is finite (8k, 128k tokens), so old tokens must be 'truncated'. Some models (Mistral, Longformer) use sliding-window attention directly — each token attends only to a fixed nearby window, not the whole sequence — cutting attention cost from O(n²) to O(n·w)."</div>
 
-<div class="code-block">Sliding Window — Token Chunking:
+<div class="code-block"># ── STEP 1: Two-pointer technique ──
+# Two pointers move through an array from different directions.
+# Reduces O(n²) brute force to O(n).
 
-def chunk_text(text, chunk_size=100, overlap=20):
-    """টেক্সটকে overlapping chunks-এ ভাগ করি"""
-    words = text.split()
-    chunks = []
-    start = 0
-    while start < len(words):
-        end = start + chunk_size
-        chunk = words[start:end]
-        chunks.append(' '.join(chunk))
-        start += chunk_size - overlap  # overlap!
-    return chunks
-
-# RAG-এ ব্যবহার:
-# বড় ডকুমেন্ট → ছোট overlapping chunks →
-# প্রতিটা chunk embedding → vector DB
-
-TWO POINTERS — Two Sum (sorted array):
-
+# PATTERN 1: Opposite directions (start + end)
 def two_sum_sorted(arr, target):
+    """Find pair that sums to target. Sorted array only."""
     left, right = 0, len(arr) - 1
-    while left < right:
+    while left &lt; right:
         current = arr[left] + arr[right]
         if current == target:
             return (left, right)
-        elif current < target:
-            left += 1
+        elif current &lt; target:
+            left += 1    # need bigger → move right
         else:
-            right -= 1
-    return None   # O(n), প্রতিটা উপাদান একবার ছুঁয়ে</div>
+            right -= 1   # need smaller → move left
+    return None
+
+arr = [1, 3, 5, 7, 9, 11]
+print(two_sum_sorted(arr, 14))  # (1, 5) → 3 + 11 = 14
+# O(n) instead of O(n²) brute force!
+
+# PATTERN 2: Same direction (fast + slow)
+def remove_duplicates(arr):
+    """Remove duplicates in-place using two pointers."""
+    if not arr:
+        return 0
+    slow = 0  # position for next unique element
+    for fast in range(1, len(arr)):
+        if arr[fast] != arr[slow]:
+            slow += 1
+            arr[slow] = arr[fast]
+    return slow + 1
+
+arr = [1, 1, 2, 2, 3, 4, 4, 5]
+length = remove_duplicates(arr)
+print(arr[:length])  # [1, 2, 3, 4, 5]</div>
+
+<div class="code-block"># ── STEP 2: Sliding window — fixed size ──
+# A "window" of fixed size slides across the array.
+# Don't recompute from scratch — update incrementally.
+
+# Maximum sum of k consecutive elements:
+def max_subarray_sum(arr, k):
+    """Find max sum of any k consecutive elements — O(n)."""
+    # Initial window:
+    window_sum = sum(arr[:k])
+    max_sum = window_sum
+
+    # Slide the window:
+    for i in range(k, len(arr)):
+        # Add new element, remove old element
+        window_sum += arr[i] - arr[i - k]
+        max_sum = max(max_sum, window_sum)
+
+    return max_sum
+
+arr = [2, 1, 5, 1, 3, 2]
+print(max_subarray_sum(arr, 3))  # 9 (5+1+3)
+
+# Without sliding window: O(n*k) — recalculate each time
+# With sliding window: O(n) — each element visited twice max
+
+# Moving average using sliding window:
+def moving_average(arr, k):
+    """Calculate moving average with window k."""
+    result = []
+    window_sum = sum(arr[:k])
+    result.append(window_sum / k)
+
+    for i in range(k, len(arr)):
+        window_sum += arr[i] - arr[i - k]
+        result.append(window_sum / k)
+
+    return result
+
+print(moving_average([1, 2, 3, 4, 5], 3))
+# [2.0, 3.0, 4.0]</div>
+
+<div class="code-block"># ── STEP 3: Sliding window — variable size ──
+# Window grows/shrinks based on conditions.
+
+# Longest substring without repeating characters:
+def longest_unique_substring(s):
+    """Find length of longest substring with all unique chars."""
+    seen = {}  # char → last index
+    left = 0
+    max_len = 0
+
+    for right, char in enumerate(s):
+        if char in seen and seen[char] &gt;= left:
+            left = seen[char] + 1  # shrink from left
+        seen[char] = right
+        max_len = max(max_len, right - left + 1)
+
+    return max_len
+
+print(longest_unique_substring("abcabcbb"))  # 3 ("abc")
+print(longest_unique_substring("bbbbb"))     # 1 ("b")
+
+# Minimum window substring (harder):
+def min_window(s, t):
+    """Find smallest substring of s containing all chars of t."""
+    from collections import Counter
+    need = Counter(t)
+    missing = len(t)
+    left = start = end = 0
+
+    for right, char in enumerate(s, 1):
+        if need[char] &gt; 0:
+            missing -= 1
+        need[char] -= 1
+
+        if missing == 0:  # found valid window
+            while left &lt; right and need[s[left]] &lt; 0:
+                need[s[left]] += 1
+                left += 1
+            if end == 0 or right - left &lt; end - start:
+                start, end = left, right
+            need[s[left]] += 1
+            missing += 1
+            left += 1
+
+    return s[start:end]
+
+print(min_window("ADOBECODEBANC", "ABC"))  # "BANC"</div>
+
+<div class="code-block"># ── STEP 4: Real-world sliding window — text chunking ──
+# In RAG (Retrieval Augmented Generation), we chunk text
+# with OVERLAP so context isn't lost at boundaries.
+
+def chunk_text(text, chunk_size=100, overlap=20):
+    """Split text into overlapping chunks for RAG."""
+    words = text.split()
+    chunks = []
+
+    start = 0
+    while start &lt; len(words):
+        end = start + chunk_size
+        chunk = " ".join(words[start:end])
+        chunks.append(chunk)
+        start += chunk_size - overlap  # overlap by 20 words
+
+    return chunks
+
+text = " ".join(["word"] * 250)  # 250 words
+chunks = chunk_text(text, chunk_size=100, overlap=20)
+print(f"Chunks: {len(chunks)}")  # 3 chunks
+# Chunk 1: words 0-99
+# Chunk 2: words 80-179 (20 word overlap with chunk 1)
+# Chunk 3: words 160-249 (20 word overlap with chunk 2)
+
+# The overlap ensures that a sentence spanning a chunk boundary
+# appears in BOTH chunks — the embedding captures it fully.</div>
+
+<div class="code-block"># ── STEP 5: Three pointers and fast/slow ──
+# Floyd's cycle detection (tortoise and hare):
+def has_cycle(head):
+    """Detect cycle in linked list using fast/slow pointers."""
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next          # moves 1 step
+        fast = fast.next.next     # moves 2 steps
+        if slow == fast:
+            return True           # they meet = cycle!
+    return False
+
+# Three-way partition (Dutch national flag):
+def sort_colors(nums):
+    """Sort 0s, 1s, 2s in-place — three pointers."""
+    low, mid, high = 0, 0, len(nums) - 1
+    while mid &lt;= high:
+        if nums[mid] == 0:
+            nums[low], nums[mid] = nums[mid], nums[low]
+            low += 1
+            mid += 1
+        elif nums[mid] == 1:
+            mid += 1
+        else:
+            nums[mid], nums[high] = nums[high], nums[mid]
+            high -= 1
+
+nums = [2, 0, 1, 2, 0, 1]
+sort_colors(nums)
+print(nums)  # [0, 0, 1, 1, 2, 2]</div>
+
+<div class="code-block"># ── STEP 6: Pattern recognition guide ──
+# How to spot when to use two pointers or sliding window:
+
+# TWO POINTERS (opposite ends):
+# ✅ Sorted array + find pair/triplet
+# ✅ Palindrome check
+# ✅ Container with most water
+# Signal: "sorted" + "pair" → think two pointers
+
+# TWO POINTERS (same direction):
+# ✅ Remove duplicates
+# ✅ Remove element
+# ✅ Move zeros to end
+# Signal: "in-place" + "modify array" → think fast/slow
+
+# SLIDING WINDOW (fixed):
+# ✅ Max/min sum of k consecutive
+# ✅ Moving average
+# ✅ Contains specific pattern of length k
+# Signal: "consecutive" + "k elements" → fixed window
+
+# SLIDING WINDOW (variable):
+# ✅ Longest substring without repeat
+# ✅ Minimum window substring
+# ✅ Longest subarray with sum ≤ K
+# Signal: "longest/shortest" + "contiguous" + "condition"
+
+# TEMPLATE for sliding window:
+# def sliding_window(s):
+#     left = 0
+#     for right in range(len(s)):
+#         # expand: add s[right]
+#         while window_invalid:
+#             # shrink: remove s[left]
+#             left += 1
+#         # update answer
+
+# COMPLEXITY:
+# Two pointers: O(n) time, O(1) space
+# Sliding window: O(n) time (each element visited 2x max)</div>
 
 <div class="dialogue">তাদাব্বুর — গভীর চিন্তা। কুরআনে আল্লাহ বারবার বলেছেন — "চিন্তা করো না?" (৪৭:২৪)। তাদাব্বুর মানে একটা অংশে থামা, গভীরে যাওয়া, তারপর পরের অংশে। Sliding window-এর মতো — একটা অংশ দেখো, বুঝো, তারপর সরাও। পুরো কুরআন একবারে নয় — অংশে অংশে। প্রতিটা অংশে থামো, চিন্তা করো, তারপর এগোও।</div>
 <div class="dialogue en">"Tadabbur — deep contemplation. Allah repeatedly says in the Quran — 'Will you not reflect?' (47:24). Tadabbur means pausing at a portion, going deep, then moving to the next. Like a sliding window — see a section, understand, then slide. Not the whole Quran at once — portion by portion. Pause at each, reflect, then advance."</div>
@@ -188,28 +383,210 @@ doors.push({
 <div class="dialogue">কিন্তু সাবধান — greedy সবসময় কাজ করে না। মুদ্রা সমস্যা ভাবো। তুমি ৪০ টাকা দিতে চাও, মুদ্রা [২৫, ১০, ৫, ১]। Greedy: ২৫ + ১০ + ৫ ✓। কিন্তু মুদ্রা যদি [২৫, ২৪, ১] হয়, আর তুমি ৪৮ দিতে চাও? Greedy: ২৫ + ২৩টা ১ = ২৪টা মুদ্রা। সর্বোত্তম: ২টা ২৪ = ২টা মুদ্রা। Greedy হেরে গেছে। কবে কাজ করে কবে নয় — সেটাই জ্ঞান।</div>
 <div class="dialogue en">"But beware — greedy doesn't always work. Consider the coin problem. You want to make 40, coins [25,10,5,1]. Greedy: 25+10+5 ✓. But if coins are [25,24,1], and you want 48? Greedy: 25 + 23 ones = 24 coins. Optimal: 2 twenty-fours = 2 coins. Greedy lost. When it works and when it doesn't — that's the knowledge."</div>
 
-<div class="code-block">Greedy — যেখানে কাজ করে (Proven Optimal):
+<div class="code-block"># ── STEP 1: What is greedy? ──
+# Greedy = at each step, pick the LOCALLY BEST option.
+# No backtracking, no reconsidering. Fast, but not always optimal.
 
-  ১. Activity selection — সবচেয়ে কম কক্ষে সবচেয়ে বেশি কাজ।
-     "যেটা আগে শেষ হয়" বেছো। প্রমাণিত সর্বোত্তম।
+# COIN CHANGE (greedy approach):
+def greedy_coin_change(amount, coins):
+    """Pick largest coin first. Works for standard coin sets."""
+    coins = sorted(coins, reverse=True)
+    result = []
+    for coin in coins:
+        while amount &gt;= coin:
+            result.append(coin)
+            amount -= coin
+    return result if amount == 0 else None
 
-  ২. Huffman coding — কম ফ্রিকোয়েন্সির অক্ষর দীর্ঘ কোড।
-     compression-এর ভিত্তি (gzip, JPEG)।
+# US coins: 25, 10, 5, 1
+print(greedy_coin_change(67, [25, 10, 5, 1]))
+# [25, 25, 10, 5, 1, 1] — optimal!
 
-  ৩. Dijkstra (ভরযুক্ত graph shortest path) — Door 9 এর সম্প্রসারণ।
-     প্রতিটা ধাপে সবচেয়ে কাছের unvisited node বেছো।
-     (শর্ত: সব edge-এর ওজন অ-ঋণাত্মক হতে হবে — ঋণাত্মক ওজন থাকলে greedy choice ভেঙে পড়ে, তখন Bellman-Ford লাগে।)
+# BUT greedy CAN FAIL with weird coin sets:
+# coins = [1, 3, 4], amount = 6
+# Greedy: 4 + 1 + 1 = 3 coins
+# Optimal: 3 + 3 = 2 coins!
+# This is when you need Dynamic Programming instead.</div>
 
-  ৪. Kruskal/Prim MST — সবচেয়ে ছোট edge বেছো, cycle না হয় পর্যন্ত।
-     (Union-Find লাগে — Door 10।)
+<div class="code-block"># ── STEP 2: Activity selection ──
+# Classic greedy: schedule maximum non-overlapping activities.
 
-  ৫. Fractional knapsack — আংশিকভাবে নেওয়া যায়। Greedy optimal।
-     (0/1 knapsack হলে DP লাগে — Door 15!)
+def activity_selection(activities):
+    """
+    Select max non-overlapping activities.
+    activities = [(start, end), ...]
+    Greedy: pick activity that ENDS earliest.
+    """
+    # Sort by end time
+    activities.sort(key=lambda x: x[1])
 
-GREEDY vs DP — কোনটা?
-  • যদি "প্রতিটা স্থানীয় সেরা = সার্বজনীন সেরা" প্রমাণ করা যায় → Greedy (দ্রুত)
-  • যদি সাব-সমস্যার সমাধান মনে রাখতে হয় → DP (Door 15)
-  • সন্দেহ হলে: brute force দিয়ে ছোট ইনপুটে যাচাই করো।</div>
+    selected = [activities[0]]
+    for start, end in activities[1:]:
+        if start &gt;= selected[-1][1]:  # starts after last selected ends
+            selected.append((start, end))
+
+    return selected
+
+activities = [(1, 3), (2, 5), (3, 6), (6, 7), (5, 8)]
+result = activity_selection(activities)
+print(result)  # [(1, 3), (3, 6), (6, 7)] — 3 activities
+# PROVEN OPTIMAL — greedy works here!</div>
+
+<div class="code-block"># ── STEP 3: Huffman coding ──
+# Compress data by giving frequent chars SHORT codes.
+# This is how gzip, JPEG, MP3 compression work.
+
+import heapq
+from collections import Counter
+
+class HuffmanNode:
+    def __init__(self, char=None, freq=0):
+        self.char = char
+        self.freq = freq
+        self.left = self.right = None
+
+def build_huffman_tree(text):
+    """Build Huffman tree for compression."""
+    freq = Counter(text)
+    heap = []
+    for char, count in freq.items():
+        heapq.heappush(heap, (count, id(HuffmanNode(char, count)), HuffmanNode(char, count)))
+
+    while len(heap) &gt; 1:
+        f1, _, left = heapq.heappop(heap)
+        f2, _, right = heapq.heappop(heap)
+        merged = HuffmanNode(freq=f1 + f2)
+        merged.left = left
+        merged.right = right
+        heapq.heappush(heap, (merged.freq, id(merged), merged))
+
+    return heap[0][2] if heap else None
+
+# Build codes from tree:
+def build_codes(root, prefix="", codes=None):
+    if codes is None:
+        codes = {}
+    if root:
+        if root.char:
+            codes[root.char] = prefix
+        build_codes(root.left, prefix + "0", codes)
+        build_codes(root.right, prefix + "1", codes)
+    return codes
+
+# Usage:
+text = "aaabbc"
+tree = build_huffman_tree(text)
+codes = build_codes(tree)
+print(codes)
+# {'a': '0', 'b': '10', 'c': '110'} (frequent chars get shorter codes)</div>
+
+<div class="code-block"># ── STEP 4: Greedy vs DP — the key difference ──
+# GREEDY: make ONE choice, never reconsider
+# DP: try ALL choices, remember the best
+
+# Fractional Knapsack (greedy works):
+def fractional_knapsack(capacity, items):
+    """Can take FRACTIONS of items. Greedy = optimal."""
+    # items = [(value, weight), ...]
+    items.sort(key=lambda x: x[0]/x[1], reverse=True)
+    total_value = 0
+    for value, weight in items:
+        if capacity &gt;= weight:
+            total_value += value
+            capacity -= weight
+        else:
+            total_value += value * (capacity / weight)
+            break
+    return total_value
+
+print(fractional_knapsack(50, [(60, 10), (100, 20), (120, 30)]))
+# 240.0 — take all of item 1+2, and 2/3 of item 3
+
+# 0/1 Knapsack (greedy FAILS, need DP):
+def knapsack_01(capacity, weights, values, n):
+    """Cannot take fractions. Must use DP."""
+    if n == 0 or capacity == 0:
+        return 0
+    if weights[n-1] &gt; capacity:
+        return knapsack_01(capacity, weights, values, n-1)
+    else:
+        take = values[n-1] + knapsack_01(capacity - weights[n-1], weights, values, n-1)
+        skip = knapsack_01(capacity, weights, values, n-1)
+        return max(take, skip)
+
+print(knapsack_01(50, [10, 20, 30], [60, 100, 120], 3))
+# 220 — take items 2+3 (DP finds the optimal)</div>
+
+<div class="code-block"># ── STEP 5: When greedy is proven optimal ──
+# Greedy works when these two properties hold:
+
+# 1. GREEDY CHOICE PROPERTY:
+#    A locally optimal choice is part of the globally optimal solution.
+
+# 2. OPTIMAL SUBSTRUCTURE:
+#    The optimal solution to the problem contains
+#    optimal solutions to sub-problems.
+
+# PROVEN GREEDY ALGORITHMS:
+# ✅ Activity selection (earliest finish time)
+# ✅ Huffman coding (merge least frequent)
+# ✅ Dijkstra (shortest path, non-negative weights)
+# ✅ Kruskal/Prim MST (cheapest edge first)
+# ✅ Fractional knapsack (best value/weight ratio)
+
+# GREEDY FAILS ON:
+# ❌ 0/1 knapsack (can't take fractions)
+# ❌ Coin change with weird denominations
+# ❌ Traveling salesman (local ≠ global optimum)
+# ❌ Longest path (local choices can mislead)
+
+# HOW TO TEST: brute force small inputs, compare with greedy:
+def test_greedy():
+    """Verify greedy gives same result as brute force."""
+    for amount in range(1, 20):
+        greedy_result = greedy_coin_change(amount, [1, 3, 4])
+        # Compare with DP optimal...
+        if greedy_result and len(greedy_result) != optimal:
+            print(f"Greedy fails at {amount}!")</div>
+
+<div class="code-block"># ── STEP 6: Greedy in real systems ──
+# Greedy algorithms power many production systems:
+
+# 1. LLM TOKEN GENERATION (greedy decoding):
+#   At each step, pick the token with highest probability.
+#   Fast but may miss globally better sequences.
+#   (Beam search improves this by keeping k candidates)
+
+# 2. CPU SCHEDULING:
+#   Shortest Job First (SJF) — greedy, minimizes average wait time
+
+# 3. NETWORK ROUTING:
+#   Dijkstra/BGP — shortest path by picking nearest unvisited
+
+# 4. DATA COMPRESSION:
+#   Huffman coding — merge least frequent nodes first
+
+# 5. RAG (Retrieval):
+#   Top-k retrieval — pick the k most similar documents
+#   (greedy selection by relevance score)
+
+# 6. CLUSTERING SEEDING:
+#   K-means++ — greedily pick farthest points as initial centroids
+
+# DECISION GUIDE:
+# ┌─────────────────────┬──────────────┬────────────────┐
+# │ If...               │ Use          │ Example        │
+# ├─────────────────────┼──────────────┼────────────────┤
+# │ Local best = global │ Greedy       │ Activity sel.  │
+# │ Need to try all     │ DP           │ 0/1 knapsack   │
+# │ Can take fractions  │ Greedy       │ Frac. knapsack │
+# │ Need exact sequence │ Backtracking │ Permutations   │
+# └─────────────────────┴──────────────┴────────────────┘
+
+# SUMMARY:
+# Greedy: O(n log n) — sort + one pass
+# DP: O(n²) or O(n*W) — remember all sub-problems
+# When in doubt: brute force small cases, compare!</div>
 
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Greedy লুকিয়ে আছে সবখানে। LLM token generation-এ greedy decoding — প্রতিটা ধাপে সবচেয়ে সম্ভাব্য পরবর্তী টোকেন বেছো (logits-এর argmax)। দ্রুত, কিন্তু local optimum — পুরো বাক্যের সেরা সম্ভাবনা মিস হতে পারে। তাই beam search — একসাথে কয়েকটা candidate path সমান্তরাল রাখো, শেষে সেরাটা বেছো। Beam search আসলে "বহু-পথ greedy" — pure greedy আর brute-force search-এর মাঝামাঝি। Huffman — embedding বা টোকেন compression। Dijkstra — knowledge graph-এ সবচেয়ে সম্পর্কিত পথ। Top-k greedy — RAG-এ সেরা k doc বেছো। Clustering seeding — প্রতিটা ধাপে সবচেয়ে দূরের point বেছো। সহজ, দ্রুত, এবং প্রায়ই "যথেষ্ট ভালো"।</div>
 <div class="dialogue en">"You're an AI engineer. Greedy hides everywhere. LLM token generation uses greedy decoding — pick the most probable next token at each step (argmax of logits). Fast, but a local optimum — the best full-sentence probability can be missed. So beam search — keep several candidate paths in parallel, pick the best at the end. Beam search is really 'multi-path greedy' — a middle ground between pure greedy and brute-force search. Huffman — embedding or token compression. Dijkstra — most related path in knowledge graphs. Top-k greedy — pick the best k docs in RAG. Clustering seeding — at each step pick the farthest point. Simple, fast, and often 'good enough'."</div>
@@ -311,31 +688,244 @@ doors.push({
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Edit distance — দুটো শব্দ কতটা আলাদা? DP দিয়ে গণনা। এটা fuzzy matching-এ লাগে — ইউজার "recieve" লিখলে "receive" সাজেস্ট করো। Viterbi algorithm — HMM-এ সবচেয়ে সম্ভাব্য অনুক্রম খোঁজা, DP-ই। Reinforcement learning-এ value iteration — DP। Agent memoization — আগের সিদ্ধান্ত মনে রেখে নতুন সিদ্ধান্ত।</div>
 <div class="dialogue en">"You're an AI engineer. Edit distance — how different are two words? Computed with DP. This is used in fuzzy matching — user types 'recieve', suggest 'receive'. Viterbi algorithm — finding the most likely sequence in HMMs, that's DP. Value iteration in RL — DP. Agent memoization — remembering past decisions for new ones."</div>
 
-<div class="code-block">Edit Distance (Levenshtein) — DP Classic:
+<div class="code-block"># ── STEP 1: What is Dynamic Programming? ──
+# DP = solve each sub-problem ONCE, remember the answer.
+# Two requirements:
+# 1. Overlapping sub-problems (same sub-problem repeats)
+# 2. Optimal substructure (big answer = combination of small answers)
+
+# FIBONACCI — the classic DP example:
+
+# Naive recursion: O(2^n) — same values recalculated!
+def fib_naive(n):
+    if n &lt;= 1:
+        return n
+    return fib_naive(n - 1) + fib_naive(n - 2)
+
+# fib_naive(35) takes ~3 seconds. fib_naive(50) = impossible.
+# Why? fib(5) calls fib(4)+fib(3), fib(4) calls fib(3)+fib(2)...
+# fib(3) is calculated REPEATEDLY!
+
+# MEMOIZATION (top-down): O(n) — cache results!
+def fib_memo(n, cache=None):
+    if cache is None:
+        cache = {}
+    if n in cache:
+        return cache[n]
+    if n &lt;= 1:
+        return n
+    cache[n] = fib_memo(n - 1, cache) + fib_memo(n - 2, cache)
+    return cache[n]
+
+print(fib_memo(100))  # 354224848179261915075 — instant!
+
+# Or use functools.lru_cache:
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fib_cached(n):
+    if n &lt;= 1:
+        return n
+    return fib_cached(n - 1) + fib_cached(n - 2)
+
+print(fib_cached(100))  # instant!</div>
+
+<div class="code-block"># ── STEP 2: Bottom-up DP (tabulation) ──
+# Instead of recursion + cache, build UP from base cases.
+
+# Bottom-up Fibonacci: O(n) time, O(n) space
+def fib_bottom_up(n):
+    """Build from 0 upward."""
+    if n &lt;= 1:
+        return n
+    dp = [0] * (n + 1)
+    dp[1] = 1
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]
+    return dp[n]
+
+print(fib_bottom_up(10))  # 55
+
+# Space-optimized: O(1) space
+def fib_optimized(n):
+    """Only keep last two values."""
+    if n &lt;= 1:
+        return n
+    prev, curr = 0, 1
+    for _ in range(2, n + 1):
+        prev, curr = curr, prev + curr
+    return curr
+
+print(fib_optimized(100))  # 354224848179261915075
+
+# TOP-DOWN vs BOTTOM-UP:
+# ┌──────────────┬──────────────────┬──────────────────┐
+# │ Aspect       │ Memoization      │ Tabulation       │
+# ├──────────────┼──────────────────┼──────────────────┤
+# │ Direction    │ Top-down         │ Bottom-up        │
+# │ Approach     │ Recursive        │ Iterative        │
+# │ Space        │ O(n) stack+cache │ O(n) table       │
+# │ Readability  │ More natural     │ More structured  │
+# │ Speed        │ Slightly slower  │ Faster           │
+# └──────────────┴──────────────────┴──────────────────┘</div>
+
+<div class="code-block"># ── STEP 3: Coin change (DP) ──
+# When greedy fails, DP finds the optimal solution.
+
+def coin_change(amount, coins):
+    """
+    Minimum coins needed to make amount.
+    DP approach — works for ANY coin set.
+    """
+    # dp[i] = min coins to make amount i
+    dp = [float('inf')] * (amount + 1)
+    dp[0] = 0  # 0 coins to make amount 0
+
+    for i in range(1, amount + 1):
+        for coin in coins:
+            if coin &lt;= i:
+                dp[i] = min(dp[i], dp[i - coin] + 1)
+
+    return dp[amount] if dp[amount] != float('inf') else -1
+
+# Standard coins — greedy also works here:
+print(coin_change(67, [25, 10, 5, 1]))  # 6 coins
+
+# Weird coins — greedy FAILS, DP finds optimal:
+print(coin_change(6, [1, 3, 4]))  # 2 (3+3, not 4+1+1)
+
+# HOW IT WORKS:
+# dp[0] = 0  (base case)
+# dp[1] = dp[1-1] + 1 = 1     (use 1)
+# dp[2] = dp[2-1] + 1 = 2     (1+1)
+# dp[3] = dp[3-3] + 1 = 1     (use 3!)
+# dp[4] = min(dp[4-1]+1, dp[4-3]+1, dp[4-4]+1) = 1
+# dp[5] = min(dp[5-1]+1, dp[5-3]+1, dp[5-4]+1) = 2
+# dp[6] = min(dp[6-1]+1, dp[6-3]+1, dp[6-4]+1) = 2 (3+3)</div>
+
+<div class="code-block"># ── STEP 4: 0/1 Knapsack ──
+# Classic DP problem. Can't take fractions — must use DP.
+
+def knapsack(capacity, weights, values):
+    """
+    0/1 Knapsack — take or leave each item.
+    dp[i][w] = max value using first i items, capacity w.
+    """
+    n = len(weights)
+    dp = [[0] * (capacity + 1) for _ in range(n + 1)]
+
+    for i in range(1, n + 1):
+        for w in range(1, capacity + 1):
+            if weights[i - 1] &lt;= w:
+                # Choice: take or skip this item
+                take = values[i - 1] + dp[i - 1][w - weights[i - 1]]
+                skip = dp[i - 1][w]
+                dp[i][w] = max(take, skip)
+            else:
+                dp[i][w] = dp[i - 1][w]  # can't take, skip
+
+    return dp[n][capacity]
+
+values = [60, 100, 120]
+weights = [10, 20, 30]
+capacity = 50
+
+print(knapsack(capacity, weights, values))  # 220 (items 2+3)
+
+# THE DP TABLE:
+#       w=0  w=10  w=20  w=30  w=40  w=50
+# i=0    0     0     0     0     0     0
+# i=1    0    60    60    60    60    60   (item1: val=60, wt=10)
+# i=2    0    60   100   160   160   160   (item2: val=100, wt=20)
+# i=3    0    60   100   160   180   220   (item3: val=120, wt=30)
+# Answer: dp[3][50] = 220</div>
+
+<div class="code-block"># ── STEP 5: Edit distance (Levenshtein) ──
+# How many operations to transform s1 into s2?
+# Operations: insert, delete, replace
 
 def edit_distance(s1, s2):
+    """
+    Minimum edits to transform s1 into s2.
+    Used in: spell check, DNA alignment, fuzzy matching.
+    """
     m, n = len(s1), len(s2)
-    # dp[i][j] = s1-এর প্রথম i অক্ষরকে
-    #            s2-এর প্রথম j অক্ষরে রূপান্তরের খরচ
-    dp = [[0]*(n+1) for _ in range(m+1)]
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
 
-    for i in range(m+1): dp[i][0] = i  # delete all
-    for j in range(n+1): dp[0][j] = j  # insert all
+    # Base cases
+    for i in range(m + 1):
+        dp[i][0] = i  # delete all chars from s1
+    for j in range(n + 1):
+        dp[0][j] = j  # insert all chars of s2
 
-    for i in range(1, m+1):
-        for j in range(1, n+1):
-            if s1[i-1] == s2[j-1]:
-                dp[i][j] = dp[i-1][j-1]  # no cost
+    # Fill the table
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if s1[i - 1] == s2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1]  # match, no cost
             else:
                 dp[i][j] = 1 + min(
-                    dp[i-1][j],    # delete
-                    dp[i][j-1],    # insert
-                    dp[i-1][j-1]   # replace
+                    dp[i - 1][j],      # delete from s1
+                    dp[i][j - 1],      # insert into s1
+                    dp[i - 1][j - 1]   # replace
                 )
+
     return dp[m][n]
 
-edit_distance("cat", "cut")  # → 1 (replace a→u)
-edit_distance("sunday", "saturday")  # → 3</div>
+print(edit_distance("cat", "cut"))        # 1 (replace a→u)
+print(edit_distance("sunday", "saturday"))  # 3
+print(edit_distance("kitten", "sitting"))   # 3
+
+# Used in:
+# - Spell checkers (suggest corrections)
+# - DNA sequence alignment
+# - Fuzzy string matching in search
+# - Plagiarism detection</div>
+
+<div class="code-block"># ── STEP 6: DP patterns and when to use ──
+# COMMON DP PATTERNS:
+
+# 1. FIBONACCI-LIKE (1D DP):
+# - Climbing stairs: dp[i] = dp[i-1] + dp[i-2]
+# - House robber: max(dp[i-1], dp[i-2] + nums[i])
+
+# 2. GRID PATHS (2D DP):
+# - Unique paths in grid
+# - Minimum path sum
+
+# 3. KNAPSACK-LIKE:
+# - 0/1 knapsack, subset sum, partition equal subset sum
+
+# 4. STRING DP:
+# - Edit distance, longest common subsequence
+# - Longest palindromic substring
+
+# 5. INTERVAL DP:
+# - Matrix chain multiplication
+# - Burst balloons
+
+# DP TEMPLATE:
+# 1. Define dp[i] or dp[i][j] — what does it represent?
+# 2. Base cases — smallest sub-problems
+# 3. Recurrence — how to build bigger from smaller
+# 4. Order of computation — small to big
+# 5. Answer — where is the final result?
+
+# ┌──────────────────────┬───────────┬────────────────────┐
+# │ Problem              │ Pattern   │ Complexity         │
+# ├──────────────────────┼───────────┼────────────────────┤
+# │ Fibonacci            │ 1D DP     │ O(n)               │
+# │ Coin change          │ 1D DP     │ O(amount × coins)  │
+# │ 0/1 Knapsack         │ 2D DP     │ O(n × capacity)    │
+# │ Edit distance        │ 2D DP     │ O(m × n)           │
+# │ Longest common subseq│ 2D DP     │ O(m × n)           │
+# │ Longest increasing   │ 1D DP     │ O(n²) or O(n log n)│
+# └──────────────────────┴───────────┴────────────────────┘
+#
+# DP vs GREEDY vs BACKTRACKING:
+# DP: overlapping subproblems + optimal substructure
+# Greedy: local best = global best (no reconsidering)
+# Backtracking: try all options, undo if stuck</div>
 
 <div class="dialogue">দারাজাত — স্তর। কুরআনে আল্লাহ বলেন — "তাদের জন্য রয়েছে স্তরসমূহ।" (৬:১৩২)। প্রতিটা স্তর আগের স্তরের চেয়ে উঁচু। কেউ এক লাফে শীর্ষে যায় না — ধাপে ধাপে। DP-ও তেমনি — বড় উত্তর ছোট উত্তরের স্তরে স্তরে গঠন। ধৈর্য আর স্মৃতি দিয়ে।</div>
 <div class="dialogue en">"Darajat — degrees/levels. Allah says — 'For them are degrees.' (6:132). Each level higher than the last. No one leaps to the summit in one jump — step by step. DP is the same — the big answer built from small answers, level by level. With patience and memory."</div>
@@ -443,47 +1033,238 @@ doors.push({
 <div class="dialogue">তিন ধাপ। Choose — একটা পছন্দ করো। Explore — সেই পছন্দ নিয়ে এগোও (recursion)। Un-choose — যদি মৃত প্রান্তে পৌঁছাও, পছন্দটা বাতিল করো, ফিরে এসো। এই তিন ধাপেই N-Queens, Sudoku, permutations, combinations — সব। গোলকধাঁধা সমাধান, সমাধান গণনা, সব সমাধান খুঁজি।</div>
 <div class="dialogue en">"Three steps. Choose — make a choice. Explore — advance with that choice (recursion). Un-choose — if you hit a dead end, undo the choice, return. In these three steps: N-Queens, Sudoku, permutations, combinations — all. Solve mazes, count solutions, find all solutions."</div>
 
-<div class="code-block">Backtracking Template — Choose, Explore, Un-choose:
+<div class="code-block"># ── STEP 1: What is backtracking? ──
+# Backtracking = try a choice, explore, if stuck UNDO and try another.
+# It's systematic trial-and-error with pruning.
 
-def backtrack(path, choices):
-    if is_goal(path):           # লক্ষ্য পৌঁছেছে?
-        solutions.append(path[:])   # একটা অনুলিপি রাখো
-        return
-    for choice in choices:
-        if is_valid(choice):        # এই পছন্দ বৈধ?
-            path.append(choice)     # CHOOSE
-            backtrack(path, new_choices)  # EXPLORE
-            path.pop()              # UN-CHOOSE (ফিরে আসো)
+# The three-step template:
+# 1. CHOOSE: make a choice
+# 2. EXPLORE: recurse with that choice
+# 3. UN-CHOOSE: undo the choice (backtrack!)
 
-# ক্লাসিক উদাহরণ — Permutations:
+# Simplest example — generate all permutations:
 def permutations(nums):
+    """Generate all orderings of nums."""
     result = []
-    def bt(path, remaining):
+
+    def backtrack(path, remaining):
+        # BASE CASE: no more choices → we have a full permutation
         if not remaining:
-            result.append(path[:])
+            result.append(path[:])  # save a COPY
             return
+
+        # Try each remaining number
         for i in range(len(remaining)):
-            path.append(remaining[i])              # choose
-            bt(path, remaining[:i] + remaining[i+1:])  # explore
-            path.pop()                              # un-choose
-    bt([], nums)
+            path.append(remaining[i])                      # 1. CHOOSE
+            backtrack(path, remaining[:i] + remaining[i+1:])  # 2. EXPLORE
+            path.pop()                                      # 3. UN-CHOOSE
+
+    backtrack([], nums)
     return result
 
-permutations([1,2,3])
-# → [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+print(permutations([1, 2, 3]))
+# [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
+# 3! = 6 permutations</div>
 
-CLASSIC PROBLEMS:
-  • N-Queens — NxN বোর্ডে N রানি, একে অপরকে আক্রমণ করে না
-  • Sudoku solver — খালি কক্ষে সংখ্যা বসাও
-  • Permutations / Combinations / Subsets
-  • Word search — গ্রিডে শব্দ খোঁজো
-  • Maze / pathfinding সব পথ খুঁজে
-  • Graph coloring
+<div class="code-block"># ── STEP 2: Combinations and subsets ──
+# Subsets — all possible selections:
+def subsets(nums):
+    """Generate all subsets (the power set)."""
+    result = []
 
-WHEN TO REACH FOR BACKTRACKING:
-  • "সব সমাধান গণনা করো" বা "যেকোনো একটা সমাধান"
-  • constraints সহ পছন্দের গাছ
-  • brute force কিন্তু বুদ্ধিমানের সাথে (প্রুনিং = dead branch কেটে ফেলা)</div>
+    def backtrack(start, path):
+        result.append(path[:])  # every path is a valid subset
+        for i in range(start, len(nums)):
+            path.append(nums[i])       # CHOOSE
+            backtrack(i + 1, path)     # EXPLORE (i+1: no reuse)
+            path.pop()                 # UN-CHOOSE
+
+    backtrack(0, [])
+    return result
+
+print(subsets([1, 2, 3]))
+# [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
+# 2³ = 8 subsets
+
+# Combinations — choose k from n:
+def combine(n, k):
+    """Generate all ways to choose k items from 1..n."""
+    result = []
+
+    def backtrack(start, path):
+        if len(path) == k:     # BASE CASE: chosen k items
+            result.append(path[:])
+            return
+        for i in range(start, n + 1):
+            path.append(i)        # CHOOSE
+            backtrack(i + 1, path)  # EXPLORE
+            path.pop()            # UN-CHOOSE
+
+    backtrack(1, [])
+    return result
+
+print(combine(4, 2))
+# [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]
+# C(4,2) = 6 combinations</div>
+
+<div class="code-block"># ── STEP 3: N-Queens ──
+# Place N queens on an NxN board so none attack each other.
+
+def solve_n_queens(n):
+    """Place N queens so none can attack each other."""
+    result = []
+
+    def is_safe(board, row, col):
+        # Check column and both diagonals
+        for prev_row in range(row):
+            if board[prev_row] == col:
+                return False
+            if abs(board[prev_row] - col) == row - prev_row:
+                return False
+        return True
+
+    def backtrack(row, board):
+        if row == n:  # all queens placed!
+            result.append(board[:])
+            return
+        for col in range(n):
+            if is_safe(board, row, col):
+                board[row] = col     # CHOOSE
+                backtrack(row + 1, board)  # EXPLORE
+                board[row] = -1      # UN-CHOOSE (implicit)
+
+    backtrack(0, [-1] * n)
+    return result
+
+solutions = solve_n_queens(4)
+print(f"4-Queens: {len(solutions)} solutions")  # 2 solutions
+# 8-Queens has 92 solutions!</div>
+
+<div class="code-block"># ── STEP 4: Word search in grid ──
+# Find a word in a 2D grid by moving to adjacent cells.
+
+def exist(board, word):
+    """Check if word exists in the grid (adjacent moves only)."""
+    rows, cols = len(board), len(board[0])
+
+    def backtrack(r, c, index):
+        if index == len(word):  # found the whole word!
+            return True
+
+        if (r &lt; 0 or r &gt;= rows or c &lt; 0 or c &gt;= cols
+                or board[r][c] != word[index]):
+            return False
+
+        # Mark as visited (CHOOSE)
+        temp, board[r][c] = board[r][c], "#"
+
+        # Try all 4 directions (EXPLORE)
+        found = (backtrack(r + 1, c, index + 1) or
+                 backtrack(r - 1, c, index + 1) or
+                 backtrack(r, c + 1, index + 1) or
+                 backtrack(r, c - 1, index + 1))
+
+        # UN-CHOOSE (restore)
+        board[r][c] = temp
+        return found
+
+    for r in range(rows):
+        for c in range(cols):
+            if board[r][c] == word[0] and backtrack(r, c, 0):
+                return True
+    return False
+
+board = [
+    ["A", "B", "C", "E"],
+    ["S", "F", "C", "S"],
+    ["A", "D", "E", "E"],
+]
+print(exist(board, "ABCCED"))  # True
+print(exist(board, "SEE"))     # True
+print(exist(board, "ABCB"))    # False</div>
+
+<div class="code-block"># ── STEP 5: Pruning — the key to efficiency ──
+# Pruning = cutting off branches that can't lead to a solution.
+# This is what makes backtracking feasible (vs pure brute force).
+
+# Sudoku solver with pruning:
+def solve_sudoku(board):
+    """Solve Sudoku using backtracking with constraint pruning."""
+    def is_valid(board, row, col, num):
+        # Check row, column, and 3x3 box
+        for i in range(9):
+            if board[row][i] == num or board[i][col] == num:
+                return False
+        box_r, box_c = 3 * (row // 3), 3 * (col // 3)
+        for r in range(box_r, box_r + 3):
+            for c in range(box_c, box_c + 3):
+                if board[r][c] == num:
+                    return False
+        return True
+
+    def solve():
+        for r in range(9):
+            for c in range(9):
+                if board[r][c] == 0:  # empty cell
+                    for num in range(1, 10):
+                        if is_valid(board, r, c, num):
+                            board[r][c] = num    # CHOOSE
+                            if solve():           # EXPLORE
+                                return True
+                            board[r][c] = 0       # UN-CHOOSE
+                    return False  # no valid number → backtrack
+        return True  # all cells filled!
+
+    solve()
+    return board
+
+# PRUNING saves massive time:
+# Without pruning: 9^81 possibilities (astronomical!)
+# With pruning: most branches cut early → solves in milliseconds</div>
+
+<div class="code-block"># ── STEP 6: When to use backtracking ──
+# Backtracking is for EXHAUSTIVE SEARCH with constraints.
+
+# USE BACKTRACKING WHEN:
+# ✅ "Find ALL solutions" (permutations, combinations)
+# ✅ Constraint satisfaction (Sudoku, N-Queens)
+# ✅ Need to search a decision tree
+# ✅ Optimization with small search space
+
+# DON'T USE BACKTRACKING WHEN:
+# ❌ Search space is too large (use DP or greedy instead)
+# ❌ Only need one optimal solution (use greedy/DP)
+# ❌ Problem has optimal substructure (use DP)
+
+# BACKTRACKING vs DP vs GREEDY:
+# ┌──────────────┬──────────────────────────────────┐
+# │ Approach     │ When to use                      │
+# ├──────────────┼──────────────────────────────────┤
+# │ Greedy       │ Local best = global best         │
+# │ DP           │ Overlapping subproblems          │
+# │ Backtracking │ All solutions / constraint search│
+# │ Brute force  │ Nothing else works               │
+# └──────────────┴──────────────────────────────────┘
+
+# COMPLEXITY:
+# Permutations: O(n!)
+# Combinations: O(C(n,k) × k)
+# N-Queens: O(n!) with pruning
+# Sudoku: O(9^empty_cells) worst, much less with pruning
+
+# THE BACKTRACKING TEMPLATE:
+# def backtrack(path, choices):
+#     if is_goal(path):
+#         result.append(path[:])
+#         return
+#     for choice in choices:
+#         if is_valid(choice):     # PRUNE: skip invalid
+#             path.append(choice)  # CHOOSE
+#             backtrack(path, next_choices)  # EXPLORE
+#             path.pop()           # UN-CHOOSE
+
+# Real-world: constraint solving, puzzle games,
+# scheduling, resource allocation, NAS (neural architecture search)</div>
 
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Backtracking লুকিয়ে আছে অনেক জায়গায়। Constraint satisfaction — scheduling, resource allocation। Hyperparameter search — প্রতিটা সংমিশ্রণ চেষ্টা (বুদ্ধিমান প্রুনিং সহ)। Combinatorial optimization — feature selection, model architecture search। Game tree search — minimax সহ backtrack। Prompt combinatorics — কোন tool sequence কাজ করবে? সব চেষ্টা নয় — বুদ্ধিমান প্রুনিং।</div>
 <div class="dialogue en">"You're an AI engineer. Backtracking hides in many places. Constraint satisfaction — scheduling, resource allocation. Hyperparameter search — try combinations with smart pruning. Combinatorial optimization — feature selection, architecture search. Game tree search — minimax with backtracking. Prompt combinatorics — which tool sequence works? Not all — smart pruning."</div>
