@@ -1190,30 +1190,280 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Transaction BEGIN থেকে COMMIT/ROLLBACK — MVCC ও WAL দ্বারা নিরাপত্তা।</div>
 
-<div class="code-block"># — SQL + Python: ACID Transaction —
+<div class="code-block"># ── STEP 1: What is ACID? ──
+# ACID = four guarantees for database transactions.
 
-  -- PostgreSQL: দুই ধাপের স্থানান্তর
-  BEGIN;
-    UPDATE accounts SET balance = balance - 100
-        WHERE user_id = 1;
-    UPDATE accounts SET balance = balance + 100
-        WHERE user_id = 2;
-    INSERT INTO transfers (from_id, to_id, amount)
-        VALUES (1, 2, 100);
-  COMMIT;  -- সব সফল হলে স্থায়ী
-  -- ত্রুটি হলে: ROLLBACK;
+acid_properties = {
+    "A - Atomicity": "All or nothing. If any step fails, the ENTIRE transaction rolls back.",
+    "C - Consistency": "Database moves from one valid state to another. Constraints always hold.",
+    "I - Isolation": "Concurrent transactions don't interfere with each other.",
+    "D - Durability": "Once committed, data survives crashes, power outages, everything.",
+}
 
-  # Django ORM (LedgerPilot উদাহরণ):
-  from django.db import transaction
+print("ACID PROPERTIES:")
+for prop, desc in acid_properties.items():
+    print(f"  {prop}: {desc}")
 
-  @transaction.atomic          # ACID wrapper
-  def transfer_money(from_id, to_id, amt):
-      src = Account.objects.get(id=from_id)
-      dst = Account.objects.get(id=to_id)
-      src.balance -= amt
-      dst.balance += amt
-      src.save()
-      dst.save()  # exception হলে সব rollback</div>
+# EXAMPLE: Bank transfer (needs ALL four ACID properties):
+# 1. Subtract $100 from Alice (atomic: if step 2 fails, undo step 1)
+# 2. Add $100 to Bob
+# 3. Log the transfer (durable: survives crash after commit)
+# 4. No negative balances (consistent: constraint enforced)
+# 5. Two simultaneous transfers don't corrupt (isolated)</div>
+
+<div class="code-block"># ── STEP 2: Atomicity — all or nothing ──
+# A transaction groups multiple operations into ONE unit.
+# Either ALL succeed (COMMIT) or ALL are undone (ROLLBACK).
+
+sql_transaction = """
+-- Raw SQL transaction:
+BEGIN;
+    UPDATE accounts SET balance = balance - 100 WHERE user_id = 1;
+    UPDATE accounts SET balance = balance + 100 WHERE user_id = 2;
+    INSERT INTO transfers (from_id, to_id, amount) VALUES (1, 2, 100);
+COMMIT;  -- all three operations become permanent
+
+-- If ANY step fails:
+ROLLBACK;  -- all changes are undone, as if nothing happened
+"""
+
+print(sql_transaction)
+
+# Django ORM (LedgerPilot example):
+django_transaction = """
+from django.db import transaction
+
+# Method 1: decorator
+@transaction.atomic
+def transfer_money(from_id, to_id, amount):
+    src = Account.objects.get(id=from_id)
+    dst = Account.objects.get(id=to_id)
+    src.balance -= amount
+    dst.balance += amount
+    src.save()
+    dst.save()
+    Transfer.objects.create(from_account=src, to_account=dst, amount=amount)
+    # If any save() throws exception → ALL changes rolled back
+
+# Method 2: context manager
+def transfer_safe(from_id, to_id, amount):
+    try:
+        with transaction.atomic():
+            # do multiple DB operations
+            pass
+    except Exception as e:
+        # automatically rolled back
+        logger.error(f"Transfer failed: {e}")
+        raise
+"""
+
+print("Django ORM (LedgerPilot):")
+print(django_transaction)</div>
+
+<div class="code-block"># ── STEP 3: Isolation levels ──
+# When multiple transactions run concurrently, ISOLATION controls
+# how much they can "see" each other's uncommitted changes.
+
+isolation_levels = {
+    "READ UNCOMMITTED": {
+        "level": "Lowest",
+        "problem": "Dirty reads (see uncommitted data from other transactions)",
+        "use": "Almost never (too dangerous)",
+    },
+    "READ COMMITTED": {
+        "level": "Default (PostgreSQL, SQL Server)",
+        "problem": "Non-repeatable reads (same query gives different results)",
+        "use": "Most web applications",
+    },
+    "REPEATABLE READ": {
+        "level": "Default (MySQL)",
+        "problem": "Phantom reads (new rows appear in range queries)",
+        "use": "When you need stable reads within a transaction",
+    },
+    "SERIALIZABLE": {
+        "level": "Highest",
+        "problem": "Slowest (transactions executed as if one-at-a-time)",
+        "use": "Financial systems, when correctness is critical",
+    },
+}
+
+print("ISOLATION LEVELS:")
+for level, info in isolation_levels.items():
+    print(f"\n  {level} ({info['level']}):")
+    print(f"    Problem: {info['problem']}")
+    print(f"    Use: {info['use']}")
+
+# CONCURRENCY ANOMALIES:
+anomalies = {
+    "Dirty Read": "Reading uncommitted data (transaction might rollback)",
+    "Non-Repeatable Read": "Same row gives different value on re-read",
+    "Phantom Read": "Same query returns different number of rows",
+    "Lost Update": "Two transactions overwrite each other",
+}
+
+print("\nCONCURRENCY ANOMALIES:")
+for anomaly, desc in anomalies.items():
+    print(f"  {anomaly}: {desc}")</div>
+
+<div class="code-block"># ── STEP 4: Optimistic vs pessimistic locking ──
+# How to handle concurrent edits to the same row?
+
+# PESSIMISTIC LOCKING: "I'll lock it now, nobody else can touch it"
+sql_pessimistic = """
+-- Lock the row (other transactions WAIT):
+BEGIN;
+    SELECT * FROM accounts WHERE id = 1 FOR UPDATE;
+    -- NOW safe to modify — no other transaction can change this row
+    UPDATE accounts SET balance = balance - 100 WHERE id = 1;
+COMMIT;
+"""
+
+print(sql_pessimistic)
+
+# Django pessimistic locking:
+django_pessimistic = """
+from django.db import transaction
+
+with transaction.atomic():
+    # SELECT ... FOR UPDATE — locks the row
+    account = Account.objects.select_for_update().get(id=1)
+    account.balance -= 100
+    account.save()
+"""
+
+print(django_pessimistic)
+
+# OPTIMISTIC LOCKING: "I'll check if it changed before committing"
+# Uses a version number. If version changed → conflict, retry.
+
+django_optimistic = """
+class Product(models.Model):
+    name = models.CharField(max_length=200)
+    price = models.DecimalField(...)
+    version = models.IntegerField(default=0)  # optimistic lock
+
+def update_price(product_id, new_price):
+    try:
+        with transaction.atomic():
+            product = Product.objects.get(id=product_id)
+            old_version = product.version
+            product.price = new_price
+            product.version += 1
+            # Only update if version hasn't changed:
+            rows = Product.objects.filter(
+                id=product_id, version=old_version
+            ).update(price=new_price, version=old_version + 1)
+
+            if rows == 0:
+                raise ConcurrentModificationError("Someone else modified this!")
+    except ConcurrentModificationError:
+        # Retry or inform user
+        pass
+"""
+
+print(django_optimistic)
+
+# WHEN TO USE WHICH:
+# Pessimistic: high contention (many transactions fight for same rows)
+# Optimistic: low contention (conflicts are rare)</div>
+
+<div class="code-block"># ── STEP 5: MVCC (Multi-Version Concurrency Control) ──
+# Modern databases (PostgreSQL, MySQL InnoDB) use MVCC.
+
+# MVCC: each transaction sees a SNAPSHOT of the data.
+# Writers don't block readers. Readers don't block writers.
+
+# HOW MVCC WORKS:
+mvcc_explanation = """
+1. When you UPDATE a row, the database creates a NEW version
+   (doesn't overwrite the old one immediately).
+
+2. Each transaction sees the version that was current when it started.
+
+3. Old versions are cleaned up by VACUUM (PostgreSQL) or purge (MySQL).
+
+4. This means: readers never wait for writers, writers never wait for readers.
+   Only writers wait for other writers (on the same row).
+"""
+
+print(mvcc_explanation)
+
+# BENEFITS OF MVCC:
+# - High concurrency (many simultaneous readers + writers)
+# - No read locks (readers don't block anyone)
+# - Consistent snapshots (each transaction sees stable data)
+
+# COST OF MVCC:
+# - More storage (old versions kept until VACUUM)
+# - Need periodic VACUUM/ANALYZE (PostgreSQL)
+# - Transaction ID wraparound (needs maintenance)
+
+# POSTGRESQL VACUUM:
+# VACUUM reclaims space from deleted/updated rows.
+# VACUUM ANALYZE also updates statistics for query planner.
+# AUTOVACUUM runs automatically (usually correctly configured).</div>
+
+<div class="code-block"># ── STEP 6: Distributed transactions and real-world patterns ──
+# ACID works perfectly in ONE database.
+# But what if you have MULTIPLE databases or services?
+
+# DISTRIBUTED TRANSACTIONS (harder):
+# - Two-Phase Commit (2PC): coordinator asks all nodes to prepare, then commit
+# - Saga Pattern: break into local transactions with compensation
+# - Eventual Consistency: accept temporary inconsistency
+
+patterns = {
+    "Two-Phase Commit": {
+        "pro": "Strong consistency (ACID across nodes)",
+        "con": "Slow, blocking, fragile (coordinator failure blocks everything)",
+    },
+    "Saga Pattern": {
+        "pro": "No distributed locks, each service has local transactions",
+        "con": "Eventual consistency, compensation logic is complex",
+    },
+    "Outbox Pattern": {
+        "pro": "Reliable event publishing with DB transaction",
+        "con": "Need a poller or CDC (Change Data Capture)",
+    },
+}
+
+print("DISTRIBUTED TRANSACTION PATTERNS:")
+for pattern, info in patterns.items():
+    print(f"\n  {pattern}:")
+    print(f"    Pro: {info['pro']}")
+    print(f"    Con: {info['con']}")
+
+# DJANGO TRANSACTION BEST PRACTICES:
+best_practices = [
+    "Keep transactions SHORT (long transactions hold locks)",
+    "Use @transaction.atomic for multi-step operations",
+    "Use select_for_update() when concurrent updates are possible",
+    "Don't put external API calls inside transactions (they can't roll back)",
+    "Handle deadlocks: catch OperationalError, retry with backoff",
+    "Set appropriate isolation level per use case",
+    "Monitor long-running transactions (they cause problems)",
+    "Use savepoints for partial rollback within a transaction",
+]
+
+print("\nTRANSACTION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# REAL-WORLD EXAMPLE (LedgerPilot):
+# When transferring money between accounts:
+# 1. Use @transaction.atomic (all or nothing)
+# 2. Use select_for_update() on both accounts (prevent concurrent modifications)
+# 3. Check balance > amount INSIDE the transaction (consistent)
+# 4. Log the transfer (auditable)
+# 5. If anything fails → automatic rollback (atomic)
+
+# THE CAP THEOREM (for distributed databases):
+# C - Consistency  (all nodes see same data)
+# A - Availability (every request gets a response)
+# P - Partition tolerance (system works despite network failures)
+# You can have at most 2 of 3.
+# Most NoSQL databases choose AP (available + partition-tolerant).
+# SQL databases choose CP (consistent + partition-tolerant).</div>
 
 <div class="secret-box">🔐 <strong>ACID = লেনদেনের চার প্রতিশ্রুতি।</strong> Atomicity (সব বা কিছু না), Consistency (বৈধ অবস্থা), Isolation (স্বাধীন), Durability (চিরস্থায়ী)। MVCC দিয়ে concurrent transactions নিরাপদে চলে। কিন্তু ACID শুধু একটি মেশিনে। একাধিক মেশিনে ACID কঠিন — সেটা distributed transaction। সেই যাত্রা শুরু হবে পরের দরজায়।</div>`,
   senior: {
@@ -1318,31 +1568,266 @@ enrollments (student_id, course_id) — junction table<br>
 </div>
 <div class="svg-caption">চিত্র: অসংগঠিত ডেটা থেকে ৩টি স্বাভাবিক টেবিলে রূপান্তর — redundancy দূর।</div>
 
-<div class="code-block"># — SQL: Normalization ধাপে ধাপে —
+<div class="code-block"># ── STEP 1: What is normalization? ──
+# NORMALIZATION = organizing data to reduce redundancy and improve integrity.
 
-  -- ❌ অস্বাভাবিক (0NF): এক কলামে একাধিক মান
-  CREATE TABLE bad_orders (
-      id INT, customer_name TEXT,
-      items TEXT  -- "pen, paper, stapler"
-  );
+# The GOAL: each fact stored in ONE place only.
+# This prevents anomalies when data changes.
 
-  -- ✅ 1NF: প্রতিটি কলাম atomic
-  CREATE TABLE orders_1nf (
-      order_id INT, item_name TEXT, qty INT
-  );
+# THREE TYPES OF ANOMALIES (problems with bad design):
+anomalies = {
+    "Update Anomaly": "Change one fact → must update MULTIPLE rows. Miss one → inconsistency.",
+    "Insertion Anomaly": "Can't add new data without unrelated data existing first.",
+    "Deletion Anomaly": "Deleting one fact accidentally deletes other facts.",
+}
 
-  -- ✅ 3NF: আলাদা টেবিল, FK দিয়ে সম্পর্ক
-  CREATE TABLE customers (
-      id SERIAL PRIMARY KEY,
-      name TEXT NOT NULL,
-      dept_id INT REFERENCES departments(id)
-  );
-  CREATE TABLE orders (
-      id SERIAL PRIMARY KEY,
-      customer_id INT REFERENCES customers(id),
-      total DECIMAL(10,2)
-  );
-  -- redundancy দূর, consistency নিশ্চিত</div>
+print("DATABASE ANOMALIES (what normalization prevents):")
+for anomaly, desc in anomalies.items():
+    print(f"  {anomaly}: {desc}")
+
+# EXAMPLE (unnormalized):
+# Table: orders
+# | order_id | customer_name | customer_city | item_name | item_price |
+# | 1        | Rakib         | Detroit       | Pen       | 2.50       |
+# | 2        | Rakib         | Detroit       | Paper     | 5.00       |
+
+# PROBLEMS:
+# - customer_name and customer_city repeated (redundancy)
+# - If Rakib moves to NYC, must update MULTIPLE rows (update anomaly)
+# - If order 2 is deleted, we lose that Rakib lives in Detroit (deletion anomaly)</div>
+
+<div class="code-block"># ── STEP 2: First Normal Form (1NF) ──
+# RULE: Every cell contains ONE value (atomic). No repeating groups.
+
+# ❌ NOT 1NF (multiple values in one cell):
+bad_table = """
+CREATE TABLE bad_orders (
+    id INT,
+    customer_name TEXT,
+    items TEXT  -- "pen, paper, stapler" ← MULTIPLE values in one cell!
+);
+"""
+
+print("❌ NOT 1NF:")
+print(bad_table)
+
+# ✅ 1NF (each item on its own row):
+good_1nf = """
+CREATE TABLE orders_1nf (
+    order_id INT,
+    item_name TEXT,
+    quantity INT
+);
+-- Row 1: (1, 'pen', 2)
+-- Row 2: (1, 'paper', 1)
+-- Row 3: (1, 'stapler', 1)
+"""
+
+print("✅ 1NF (atomic values):")
+print(good_1nf)
+
+# 1NF RULES:
+# 1. Each column has a single value (no lists/arrays)
+# 2. Each row is unique (needs a primary key)
+# 3. No repeating groups (no item1, item2, item3 columns)
+# 4. All entries in a column are the same type</div>
+
+<div class="code-block"># ── STEP 3: Second Normal Form (2NF) ──
+# RULE: 1NF + no partial dependencies.
+# Every non-key column must depend on the ENTIRE primary key.
+
+# Partial dependency: a column depends on PART of a composite key.
+
+# ❌ NOT 2NF (partial dependency):
+not_2nf = """
+-- Composite key: (order_id, product_id)
+CREATE TABLE order_items (
+    order_id INT,          -- part of key
+    product_id INT,        -- part of key
+    quantity INT,          -- depends on BOTH order_id AND product_id ✅
+    product_name TEXT,     -- depends ONLY on product_id ❌ (partial!)
+    product_price DECIMAL  -- depends ONLY on product_id ❌ (partial!)
+);
+"""
+
+print("❌ NOT 2NF (partial dependency):")
+print(not_2nf)
+
+# ✅ 2NF (split into two tables):
+good_2nf = """
+CREATE TABLE order_items (
+    order_id INT,
+    product_id INT,
+    quantity INT,              -- depends on full key ✅
+    PRIMARY KEY (order_id, product_id)
+);
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY,
+    product_name TEXT,         -- moved here ✅
+    product_price DECIMAL      -- moved here ✅
+);
+"""
+
+print("✅ 2NF (no partial dependencies):")
+print(good_2nf)
+
+# In practice: 2NF only matters with composite keys.
+# If your table has a single-column PK, it's already 2NF (if it's 1NF).</div>
+
+<div class="code-block"># ── STEP 4: Third Normal Form (3NF) ──
+# RULE: 2NF + no transitive dependencies.
+# Non-key columns must not depend on OTHER non-key columns.
+
+# ❌ NOT 3NF (transitive dependency):
+not_3nf = """
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name TEXT,
+    dept_id INT,        -- department ID
+    dept_name TEXT,     -- depends on dept_id, NOT on employee id ❌
+    dept_location TEXT  -- depends on dept_id, NOT on employee id ❌
+);
+-- dept_name depends on dept_id (transitive dependency)
+"""
+
+print("❌ NOT 3NF (transitive dependency):")
+print(not_3nf)
+
+# ✅ 3NF (split department info into its own table):
+good_3nf = """
+CREATE TABLE departments (
+    dept_id INT PRIMARY KEY,
+    dept_name TEXT,
+    dept_location TEXT
+);
+
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name TEXT,
+    dept_id INT REFERENCES departments(dept_id)  -- just the FK
+);
+-- Now: every non-key column depends ONLY on the primary key
+"""
+
+print("✅ 3NF (no transitive dependencies):")
+print(good_3nf)
+
+# THE MANTRA: "The key, the whole key, and nothing but the key, so help me Codd."
+# - 1NF: The key (every table has a primary key)
+# - 2NF: The WHOLE key (no partial dependencies)
+# - 3NF: And NOTHING BUT the key (no transitive dependencies)</div>
+
+<div class="code-block"># ── STEP 5: When to denormalize ──
+# Normalization reduces redundancy but increases JOINs.
+# Sometimes JOINs are too slow — deliberately DENORMALIZE.
+
+# NORMALIZATION vs DENORMALIZATION:
+comparison = {
+    "Normalized (3NF)": {
+        "pro": "No redundancy, easy updates, consistent",
+        "con": "Many JOINs (slower reads)",
+        "best_for": "OLTP (transaction processing, frequent updates)",
+    },
+    "Denormalized": {
+        "pro": "Fewer JOINs (faster reads), simpler queries",
+        "con": "Redundant data (update anomalies risk)",
+        "best_for": "OLAP (analytics, reporting, dashboards)",
+    },
+}
+
+print("NORMALIZATION vs DENORMALIZATION:")
+for approach, info in comparison.items():
+    print(f"\n  {approach}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# COMMON DENORMALIZATION PATTERNS:
+patterns = {
+    "Materialized View": "Pre-computed JOIN result, refreshed periodically",
+    "Cache Table": "Store computed/aggregated results for fast reads",
+    "Counter Cache": "Store count on parent (avoid COUNT(*) on each load)",
+    "JSON Column": "Store semi-structured data in JSONB (PostgreSQL)",
+    "Star Schema": "Data warehouse pattern (fact + dimension tables)",
+}
+
+print("\nDENORMALIZATION PATTERNS:")
+for pattern, desc in patterns.items():
+    print(f"  {pattern}: {desc}")</div>
+
+<div class="code-block"># ── STEP 6: Django models and normalization ──
+# Django models typically follow 3NF by default.
+
+# EXAMPLE: LedgerPilot models (normalized):
+django_models = """
+# Department table (no redundancy):
+class Department(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+
+# Employee table (FK to department):
+class Employee(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    # department name/location accessed via FK, not duplicated
+
+# Account table (FK to user):
+class Account(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    balance = models.DecimalField(max_digits=15, decimal_places=2)
+    account_type = models.CharField(max_length=20)
+
+# Transaction table (FK to two accounts):
+class Transaction(models.Model):
+    from_account = models.ForeignKey(Account, related_name='debits')
+    to_account = models.ForeignKey(Account, related_name='credits')
+    amount = models.DecimalField(max_digits=15, decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+"""
+
+print(django_models)
+
+# COUNTER CACHE EXAMPLE (denormalization for performance):
+counter_cache = """
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    product_count = models.IntegerField(default=0)  # denormalized!
+
+class Product(models.Model):
+    name = models.CharField(max_length=200)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:  # new product
+            self.category.product_count += 1
+            self.category.save()
+        super().save(*args, **kwargs)
+
+# Now: category.product_count is instant (no COUNT(*) query)
+# Cost: must keep it in sync (risk of inconsistency)
+"""
+
+print("COUNTER CACHE (denormalization for reads):")
+print(counter_cache)
+
+# NORMALIZATION DECISION TREE:
+# ┌──────────────────────────┬──────────────────────────────────┐
+# │ Situation                │ Approach                        │
+# ├──────────────────────────┼──────────────────────────────────┤
+# │ Transactional (OLTP)     │ Normalize to 3NF               │
+# │ Analytics (OLAP)         │ Denormalize (star schema)       │
+# │ Mixed workload           │ Normalize + materialized views  │
+# │ Read-heavy               │ Some denormalization OK         │
+# │ Write-heavy              │ Normalize strictly              │
+# │ Small data               │ Normalize (JOINs are cheap)     │
+# │ Huge data (TB+)          │ Denormalize + partition         │
+# └──────────────────────────┴──────────────────────────────────┘
+
+# THE GOLDEN RULE:
+# "Normalize until it hurts, denormalize until it works."
+# Start normalized (3NF). Only denormalize when you have PROOF
+# that a specific query is too slow. Measure first, optimize second.</div>
 
 <div class="secret-box">📐 <strong>Normalization = উপাত্তের পরিশুদ্ধি।</strong> 1NF → 2NF → 3NF → BCNF। প্রতিটি ধাপে redundancy কমে, consistency বাড়ে। কিন্তু কখনো খুব বেশি normalization = খুব বেশি JOIN = slow query। সেখানে আসে denormalization। কিন্তু relational database সব সমস্যার সমাধান নয়। কিছু ডেটা relational নয় — documents, graphs, key-value। সেই বিকল্প আসবে পরের দরজায় — NoSQL।</div>`,
   senior: {
