@@ -49,94 +49,383 @@ doors.push({
 </div>
 <div class="svg-caption">মূল্যায়ন মাপকাঠি — RAGAS-এর চারটি স্কোর ছাড়া উন্নতি অসম্ভব</div>
 
-<div class="code-block">RAG Evaluation — RAGAS Framework:
+<div class="code-block"># ── STEP 1: Why RAG evaluation matters ──
+# Without evaluation, you're GUESSING whether your RAG is good.
 
-FOUR METRICS (RAGAS — Es et al., 2023):
+# THE PROBLEM:
+problem = """
+You built a RAG system. Users ask questions. How do you know:
+  - Is retrieval finding the right documents?
+  - Are answers factually correct?
+  - Are answers actually answering the question?
+  - Has the latest change improved or broken things?
 
-# ────────────────────────────────────────────# 
-#  ১. CONTEXT PRECISION                       # 
-#  "Retrieved chunks কি প্রাসঙ্গিক?"          # 
-#                                             # 
-#  Query → retrieved top-k                    # 
-#  → প্রতিটা chunk relevant কি না?             # 
-#  → relevant / total = precision             # 
-#                                             # 
-#  Score: ০.০ (সব irrelevant) — ১.০ (সব relevant) # 
-# ────────────────────────────────────────────# 
-#  ২. CONTEXT RECALL                          # 
-#  "সব প্রয়োজনীয় তথ্য retrieve হয়েছে?"      # 
-#                                             # 
-#  Ground truth answer থেকে প্রতিটা claim     # 
-#  → retrieved context-এ আছে কি না?           # 
-#  → claims_found / total_claims = recall     # 
-#                                             # 
-#  Score: ০.০ (কিছুই নেই) — ১.০ (সব আছে)      # 
-# ────────────────────────────────────────────# 
-#  ৩. FAITHFULNESS                            # 
-#  "উত্তর কি context থেকে এসেছে, নাকি hallucinated?" # 
-#                                             # 
-#  Answer → প্রতিটা claim                      # 
-#  → context-এ supported কি না?               # 
-#  → supported_claims / total = faithfulness  # 
-#                                             # 
-#  Score: ০.০ (সব fabricated) — ১.০ (সব grounded) # 
-# ────────────────────────────────────────────# 
-#  ৪. ANSWER RELEVANCE                        # 
-#  "উত্তর কি প্রশ্নের উত্তর?"                  # 
-#                                             # 
-#  Answer → LLM generates possible questions   # 
-#  → original question এর সাথে match?          # 
-#  → similarity = relevance                   # 
-#                                             # 
-#  Score: ০.০ (off-topic) — ১.০ (perfect)     # 
-# ────────────────────────────────────────────# 
+WITHOUT evaluation: "It seems to work okay, I guess."
+WITH evaluation: "Context precision: 0.82, faithfulness: 0.91"
 
-EVALUATION DATASET:
-  তোমার RAG-এর জন্য একটা eval set দরকার:
-  
-  {
-    question: "What is RAG?",
-    ground_truth: "RAG is a technique that 
-      combines retrieval with generation...",
-    answer: "[RAG system's answer]",
-    contexts: ["retrieved chunk 1", ...]
-  }
+Numbers drive improvement. You can't improve what you don't measure.
+"""
 
-  → ৫০-২০০টা এমন example
-  → RAGAS দিয়ে score করো
+print(problem)
 
-RAGAS CODE:
-  from ragas import evaluate
-  from ragas.metrics import (
-    context_precision, context_recall,
-    faithfulness, answer_relevancy
-  )
-  
-  result = evaluate(
-    dataset, metrics=[
-      context_precision, context_recall,
-      faithfulness, answer_relevancy
-    ]
-  )
-  # → scores per metric
+# THE RAGAS FRAMEWORK (4 metrics):
+ragas = """
+RAGAS (RAG Assessment) measures 4 things:
 
-BASELINE TARGETS:
-  Context Precision: > ০.৮০
-  Context Recall:    > ০.৮৫
-  Faithfulness:      > ০.৯০
-  Answer Relevance:  > ০.৮৫
+1. CONTEXT PRECISION: Are retrieved chunks relevant?
+   Score: 0.0 (all irrelevant) → 1.0 (all relevant)
 
-ALTERNATIVE FRAMEWORKS:
-  TruLens → tracing + evaluation
-  DeepEval → pytest-style assertions
-  LangSmith → LangChain's evaluation suite
-  Phoenix → Arize, observability + eval
+2. CONTEXT RECALL: Did we retrieve ALL needed info?
+   Score: 0.0 (missed everything) → 1.0 (found everything)
 
-CONTINUOUS EVALUATION:
-  Production-এ প্রতিদিন N queries eval
-  → regression detection
-  → "পুরোনো প্রশ্ন এখন কি ভালো উত্তর দেয়?"
-  → metric drop = alert!</div>
+3. FAITHFULNESS: Is the answer grounded in the context?
+   Score: 0.0 (all hallucinated) → 1.0 (all grounded)
+
+4. ANSWER RELEVANCE: Does the answer address the question?
+   Score: 0.0 (off-topic) → 1.0 (perfect answer)
+
+Each metric catches DIFFERENT problems.
+Together, they give a complete picture.
+"""
+
+print(ragas)</div>
+
+<div class="code-block"># ── STEP 2: The four RAGAS metrics in detail ──
+# Understanding each metric helps you diagnose problems.
+
+metrics = {
+    "1. CONTEXT PRECISION": {
+        "measures": "Retrieval quality — are chunks relevant?",
+        "how": "For each retrieved chunk: is it relevant to the question?",
+        "score": "relevant_chunks / total_chunks",
+        "bad_score": "Low → bad retrieval (wrong chunks)",
+        "fix": "Better embedding model, re-ranking, filtering",
+    },
+    "2. CONTEXT RECALL": {
+        "measures": "Retrieval completeness — did we find everything needed?",
+        "how": "From ground truth: is each claim supported by retrieved context?",
+        "score": "supported_claims / total_claims",
+        "bad_score": "Low → incomplete retrieval (missing info)",
+        "fix": "Increase top_k, multi-query, larger chunks",
+    },
+    "3. FAITHFULNESS": {
+        "measures": "Generation quality — is the answer grounded?",
+        "how": "From answer: is each claim supported by retrieved context?",
+        "score": "supported_claims / total_answer_claims",
+        "bad_score": "Low → hallucination (making things up)",
+        "fix": "Better prompt ('answer only from context'), temperature=0",
+    },
+    "4. ANSWER RELEVANCE": {
+        "measures": "Answer quality — does it answer the question?",
+        "how": "Generate questions from answer, compare to original question",
+        "score": "similarity(generated_questions, original_question)",
+        "bad_score": "Low → off-topic or unhelpful answer",
+        "fix": "Better prompt, query transformation",
+    },
+}
+
+print("THE FOUR RAGAS METRICS:")
+for metric, info in metrics.items():
+    print(f"\n  {metric}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 3: Building an evaluation dataset ──
+# You need a GROUND TRUTH dataset to evaluate against.
+
+# EVALUATION DATASET STRUCTURE:
+dataset_format = """
+Each evaluation example needs:
+
+{
+    "question": "What is RAG?",
+    "ground_truth": "RAG combines retrieval with generation to ground LLM answers in factual documents.",
+    "answer": "[Your RAG system's answer]",
+    "contexts": ["[retrieved chunk 1]", "[retrieved chunk 2]", ...]
+}
+
+You need 50-200 such examples covering:
+  - Easy questions (simple factoid)
+  - Medium questions (requires context)
+  - Hard questions (multi-hop, comparison)
+  - Edge cases (ambiguous, out-of-scope)
+  - Different domains/topics in your knowledge base
+"""
+
+print(dataset_format)
+
+# CREATING EVAL DATASETS:
+creating = """
+OPTION 1: Manual (best quality)
+  → Write 50-100 questions and answers by hand
+  → Most accurate but time-consuming
+
+OPTION 2: LLM-generated (fast)
+  → Feed documents to LLM
+  → "Generate 10 diverse questions answerable from this document"
+  → Good for scale, but quality varies
+
+OPTION 3: Real user queries (best for production)
+  → Log actual user questions
+  → Manually write ground truth answers
+  → Most representative of real usage
+
+BEST APPROACH: Mix all three
+  → 30% manual, 40% LLM-generated, 30% real user queries
+"""
+
+print(creating)
+
+# PYTHON EVAL DATASET:
+eval_code = """
+# Create evaluation dataset:
+eval_dataset = [
+    {
+        "question": "What is Python's GIL?",
+        "ground_truth": "The GIL (Global Interpreter Lock) is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecodes at once.",
+        # answer and contexts filled by your RAG system at eval time
+    },
+    {
+        "question": "Compare PostgreSQL and MySQL for Django",
+        "ground_truth": "PostgreSQL offers better features (JSONB, full-text search) while MySQL is simpler and more widely supported. Django works well with both.",
+    },
+    # ... 50-200 total examples
+]
+
+# Run your RAG system on each question:
+for example in eval_dataset:
+    result = rag_system.query(example["question"])
+    example["answer"] = result["answer"]
+    example["contexts"] = [d.content for d in result["sources"]]
+"""
+
+print(eval_code)</div>
+
+<div class="code-block"># ── STEP 4: Running RAGAS evaluation ──
+# Use the RAGAS library to score your system.
+
+# INSTALLATION AND USAGE:
+ragas_code = """
+# Install:
+# pip install ragas
+
+from ragas import evaluate
+from ragas.metrics import (
+    context_precision,
+    context_recall,
+    faithfulness,
+    answer_relevancy,
+)
+from datasets import Dataset
+
+# Prepare dataset:
+eval_data = Dataset.from_list([
+    {
+        "question": ex["question"],
+        "ground_truth": ex["ground_truth"],
+        "answer": ex["answer"],
+        "contexts": ex["contexts"],
+    }
+    for ex in eval_dataset
+])
+
+# Run evaluation:
+results = evaluate(
+    eval_data,
+    metrics=[
+        context_precision,
+        context_recall,
+        faithfulness,
+        answer_relevancy,
+    ],
+)
+
+print(f"Context Precision: {results['context_precision']:.3f}")
+print(f"Context Recall:    {results['context_recall']:.3f}")
+print(f"Faithfulness:      {results['faithfulness']:.3f}")
+print(f"Answer Relevance:  {results['answer_relevancy']:.3f}")
+"""
+
+print(ragas_code)
+
+# TARGET SCORES:
+targets = {
+    "Context Precision": {"minimum": 0.80, "good": 0.90, "excellent": 0.95},
+    "Context Recall":    {"minimum": 0.85, "good": 0.90, "excellent": 0.95},
+    "Faithfulness":      {"minimum": 0.90, "good": 0.95, "excellent": 0.98},
+    "Answer Relevance":  {"minimum": 0.85, "good": 0.90, "excellent": 0.95},
+}
+
+print("TARGET SCORES:")
+for metric, levels in targets.items():
+    print(f"\n  {metric}")
+    for level, score in levels.items():
+        print(f"    {level}: {score}")</div>
+
+<div class="code-block"># ── STEP 5: Diagnosing problems from metrics ──
+# Each low metric points to a specific problem.
+
+diagnosis = """
+DIAGNOSING FROM METRICS:
+
+LOW CONTEXT PRECISION (< 0.80):
+  Problem: Retrieving too many IRRELEVANT chunks
+  Fixes:
+    → Better embedding model (text-embedding-3-large)
+    → Add similarity threshold
+    → Re-ranking (cross-encoder)
+    → Better chunking (smaller, more focused chunks)
+
+LOW CONTEXT RECALL (< 0.85):
+  Problem: MISSING relevant information
+  Fixes:
+    → Increase top_k (retrieve more chunks)
+    → Multi-query retrieval (different phrasings)
+    → Better chunking (larger chunks or parent-child)
+    → Hybrid search (vector + keyword)
+
+LOW FAITHFULNESS (< 0.90):
+  Problem: LLM is HALLUCINATING (not grounding in context)
+  Fixes:
+    → Better prompt ("Answer ONLY from context")
+    → Temperature=0 (deterministic)
+    → Reduce context (too much = model confused)
+    → "If not in context, say 'I don't know'"
+
+LOW ANSWER RELEVANCE (< 0.85):
+  Problem: Answer doesn't ADDRESS the question
+  Fixes:
+    → Query transformation (rewrite ambiguous queries)
+    → Better system prompt (explicit instructions)
+    → Decomposition (break complex questions)
+    → Few-shot examples (show desired answer format)
+"""
+
+print(diagnosis)
+
+# METRIC CORRELATIONS:
+correlations = """
+METRIC RELATIONSHIPS:
+
+Precision ↑ + Recall ↑ = Great retrieval
+  → But often a trade-off (more chunks = lower precision)
+
+Faithfulness ↑ = Less hallucination
+  → But might reduce answer completeness
+
+Relevance ↑ = Better answers
+  → But might sacrifice detail
+
+BALANCING ACT:
+  Don't optimize ONE metric at the expense of others.
+  Track ALL four and find the sweet spot.
+  Example: increasing top_k improves recall but hurts precision.
+  Find the top_k where both are acceptable.
+"""
+
+print(correlations)</div>
+
+<div class="code-block"># ── STEP 6: Continuous evaluation and monitoring ──
+# Evaluation isn't one-time. It's CONTINUOUS.
+
+# CONTINUOUS EVAL PIPELINE:
+continuous = """
+PRODUCTION EVAL PIPELINE:
+
+1. DAILY EVALUATION:
+   Run 50-100 eval queries against production system
+   → Compare scores to baseline
+   → Alert if any metric drops below threshold
+
+2. REGRESSION DETECTION:
+   "Did the latest change break something?"
+   → Run eval BEFORE and AFTER each change
+   → If scores drop → rollback or investigate
+
+3. CI/CD GATE:
+   Deploy only if eval scores pass:
+   if faithfulness < 0.90:
+       block_deploy()
+   if context_precision < 0.80:
+       block_deploy()
+
+4. USER FEEDBACK LOOP:
+   Collect thumbs up/down from users
+   → Correlate with RAGAS scores
+   → Add new eval examples from real queries
+
+5. A/B TESTING:
+   Compare RAG configurations:
+   → Version A (current) vs Version B (new)
+   → Run same eval set on both
+   → Deploy winner
+"""
+
+print(continuous)
+
+# EVALUATION FRAMEWORKS:
+frameworks = {
+    "RAGAS": {
+        "focus": "4 core RAG metrics (precision, recall, faithfulness, relevance)",
+        "best_for": "Standard RAG evaluation",
+        "cost": "Uses LLM for evaluation (API cost)",
+    },
+    "TruLens": {
+        "focus": "Tracing + evaluation + monitoring",
+        "best_for": "Production monitoring",
+        "cost": "LLM-based + dashboard",
+    },
+    "DeepEval": {
+        "focus": "pytest-style assertions for LLM apps",
+        "best_for": "Developer testing (CI/CD integration)",
+        "cost": "LLM-based",
+    },
+    "LangSmith": {
+        "focus": "LangChain's evaluation + observability suite",
+        "best_for": "LangChain-based projects",
+        "cost": "LangSmith subscription",
+    },
+    "Phoenix (Arize)": {
+        "focus": "Observability + tracing + eval",
+        "best_for": "Production monitoring at scale",
+        "cost": "Open source + paid cloud",
+    },
+}
+
+print("EVALUATION FRAMEWORKS:")
+for framework, info in frameworks.items():
+    print(f"\n  {framework}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# EVALUATION CHECKLIST:
+checklist = [
+    "Create 50-200 evaluation examples with ground truth",
+    "Run RAGAS metrics on baseline system",
+    "Set minimum acceptable scores for each metric",
+    "Add evaluation to CI/CD pipeline (block deploy on regression)",
+    "Run daily evaluation on production system",
+    "Collect user feedback (thumbs up/down, corrections)",
+    "Add new eval examples from real user queries",
+    "A/B test configuration changes",
+    "Monitor for drift (scores changing over time)",
+    "Document what each metric means for your team",
+]
+
+print("\nEVALUATION CHECKLIST:")
+for item in checklist:
+    print(f"  ☐ {item}")
+
+# THE BIG PICTURE:
+# "What gets measured gets managed." — Peter Drucker
+# Without evaluation, you're flying blind.
+# With evaluation, you can:
+#   → Know if changes help or hurt
+#   → Catch regressions before users do
+#   → Prove your RAG system works
+#   → Find specific areas to improve
+# Evaluation is the COMPASS that guides RAG development.
+# Start with 50 examples today. You'll thank yourself later.</div>
 
 <div class="dialogue">মিযান — measure, balance, scale। কুরআনে আল্লাহ বলেন — "আমরা সত্যের সাথে মিযান স্থাপন করেছি।" (২১:৪৭)। প্রতিটা কাজের মূল্যায়ন আছে। RAG-ও তেমনি — মূল্যায়ন ছাড়া উন্নতি অসম্ভব। মাপ ছাড়া তুমি জানো না — তোমার retrieval ভালো না খারাপ, তোমার উত্তর সত্য না ভ্রম। মিযানই প্রকৌশলের ভিত্তি।</div>
 <div class="dialogue en">"Mizan — measure, balance, scale. Allah says — 'We established the scale with truth.' (21:47). Every deed has evaluation. RAG too — without evaluation, improvement is impossible. Without measurement, you don't know — is your retrieval good or bad, is your answer true or illusion. Mizan is engineering's foundation."</div>`,
