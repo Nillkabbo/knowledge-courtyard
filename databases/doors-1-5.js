@@ -435,25 +435,285 @@ SELECT name FROM users WHERE id IN (SELECT user_id FROM orders WHERE total > ১
 </div>
 <div class="svg-caption">চিত্র: SQL JOIN দুই টেবিলকে যুক্ত করে, GROUP BY সারাংশ তৈরি করে।</div>
 
-<div class="code-block"># — SQL: SELECT + JOIN + GROUP BY —
+<div class="code-block"># ── STEP 1: SQL query anatomy ──
+# Every SELECT query has a specific execution order:
 
-  -- টেবিল যোগ + গোষ্ঠীভুক্ত সারাংশ
-  SELECT u.dept,
-         COUNT(o.id) AS order_count,
-         SUM(o.amount) AS total_sales
-  FROM users u
-  LEFT JOIN orders o ON u.id = o.uid
-  WHERE o.created_at >= '2025-01-01'
-  GROUP BY u.dept
-  HAVING SUM(o.amount) > 100
-  ORDER BY total_sales DESC;
+# SQL EXECUTION ORDER (not the order you write it!):
+# 1. FROM/JOIN — get the data
+# 2. WHERE — filter rows
+# 3. GROUP BY — group rows
+# 4. HAVING — filter groups
+# 5. SELECT — pick columns
+# 6. ORDER BY — sort results
+# 7. LIMIT — restrict count
 
-  -- Subquery উদাহরণ:
-  SELECT name FROM users
-  WHERE id IN (
-      SELECT uid FROM orders
-      WHERE amount > (SELECT AVG(amount) FROM orders)
-  );</div>
+sql_order = """
+SELECT u.dept, COUNT(o.id) AS order_count, SUM(o.amount) AS total_sales  -- 5
+FROM users u                                                              -- 1
+LEFT JOIN orders o ON u.id = o.uid                                        -- 1
+WHERE o.created_at >= '2025-01-01'                                        -- 2
+GROUP BY u.dept                                                           -- 3
+HAVING SUM(o.amount) > 100                                                -- 4
+ORDER BY total_sales DESC                                                 -- 6
+LIMIT 10;                                                                 -- 7
+"""
+
+print("SQL EXECUTION ORDER:")
+print(sql_order)
+
+# Understanding this order is CRUCIAL:
+# - You can't use SELECT aliases in WHERE (WHERE runs first)
+# - You CAN use them in ORDER BY (ORDER BY runs after SELECT)
+# - HAVING is for groups, WHERE is for rows</div>
+
+<div class="code-block"># ── STEP 2: GROUP BY and aggregates ──
+# GROUP BY summarizes data by category.
+
+sql_groupby = """
+-- Sales by department:
+SELECT dept, COUNT(*) as order_count, SUM(amount) as total
+FROM orders
+GROUP BY dept;
+
+-- Monthly revenue:
+SELECT DATE_TRUNC('month', created_at) as month,
+       SUM(amount) as revenue,
+       COUNT(*) as orders
+FROM orders
+GROUP BY month
+ORDER BY month DESC;
+
+-- Top 5 customers by total spending:
+SELECT user_id, SUM(amount) as total_spent
+FROM orders
+GROUP BY user_id
+ORDER BY total_spent DESC
+LIMIT 5;
+"""
+
+print(sql_groupby)
+
+# AGGREGATE FUNCTIONS:
+aggregates = {
+    "COUNT(*)": "Number of rows",
+    "COUNT(column)": "Number of non-null values",
+    "SUM(column)": "Total sum of numeric values",
+    "AVG(column)": "Average of numeric values",
+    "MIN(column)": "Minimum value",
+    "MAX(column)": "Maximum value",
+    "STRING_AGG(col, ',')": "Concatenate strings (PostgreSQL)",
+}
+
+print("AGGREGATE FUNCTIONS:")
+for func, desc in aggregates.items():
+    print(f"  {func}: {desc}")
+
+# Django ORM equivalent:
+# from django.db.models import Sum, Count, Avg
+# Order.objects.values('dept').annotate(
+#     order_count=Count('id'),
+#     total=Sum('amount')
+# )</div>
+
+<div class="code-block"># ── STEP 3: Subqueries ──
+# A subquery is a query INSIDE another query.
+
+sql_subqueries = """
+-- Subquery in WHERE (find users with above-average orders):
+SELECT name FROM users
+WHERE id IN (
+    SELECT user_id FROM orders
+    WHERE amount > (SELECT AVG(amount) FROM orders)
+);
+
+-- Subquery in SELECT (add a calculated column):
+SELECT name,
+       (SELECT COUNT(*) FROM orders WHERE user_id = users.id) as order_count
+FROM users;
+
+-- EXISTS (check if related data exists):
+SELECT name FROM users u
+WHERE EXISTS (
+    SELECT 1 FROM orders o WHERE o.user_id = u.id AND o.amount > 100
+);
+
+-- CTE (Common Table Expression) — cleaner subqueries:
+WITH big_orders AS (
+    SELECT user_id, COUNT(*) as cnt
+    FROM orders
+    WHERE amount > 100
+    GROUP BY user_id
+)
+SELECT u.name, b.cnt
+FROM users u
+JOIN big_orders b ON u.id = b.user_id;
+"""
+
+print(sql_subqueries)
+
+# SUBQUERY vs JOIN vs CTE:
+# - Subquery: good for one-off calculations
+# - JOIN: better performance for large datasets
+# - CTE: best readability for complex queries
+# Most query optimizers optimize subqueries to joins internally.</div>
+
+<div class="code-block"># ── STEP 4: Window functions ──
+# Window functions perform calculations across RELATED rows
+# without collapsing them (unlike GROUP BY).
+
+sql_window = """
+-- Row number (rank each order by date within each user):
+SELECT user_id, amount, created_at,
+       ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY created_at) as rn
+FROM orders;
+
+-- Running total (cumulative sum):
+SELECT user_id, amount, created_at,
+       SUM(amount) OVER (PARTITION BY user_id ORDER BY created_at) as running_total
+FROM orders;
+
+-- Rank (find top 3 orders per user):
+SELECT user_id, amount,
+       RANK() OVER (PARTITION BY user_id ORDER BY amount DESC) as rank
+FROM orders
+WHERE rank <= 3;
+
+-- Lag (compare with previous row):
+SELECT date, revenue,
+       revenue - LAG(revenue) OVER (ORDER BY date) as daily_change
+FROM daily_sales;
+"""
+
+print(sql_window)
+
+# WINDOW vs GROUP BY:
+# GROUP BY: collapses N rows into 1 per group
+# Window: keeps all N rows, adds calculated column
+
+# Common window functions:
+# ROW_NUMBER(): sequential number (1, 2, 3...)
+# RANK(): rank with gaps (1, 2, 2, 4)
+# DENSE_RANK(): rank without gaps (1, 2, 2, 3)
+# LAG(): previous row's value
+# LEAD(): next row's value
+# SUM/AVG OVER: running totals</div>
+
+<div class="code-block"># ── STEP 5: Advanced SQL patterns ──
+sql_advanced = """
+-- CASE (if/else in SQL):
+SELECT name,
+       CASE
+           WHEN age < 18 THEN 'minor'
+           WHEN age < 65 THEN 'adult'
+           ELSE 'senior'
+       END as age_group
+FROM users;
+
+-- DISTINCT (remove duplicates):
+SELECT DISTINCT category FROM products;
+
+-- UNION (combine results):
+SELECT name, email FROM customers
+UNION
+SELECT name, email FROM suppliers;
+
+-- COALESCE (first non-null value):
+SELECT name, COALESCE(phone, email, 'no contact') as contact
+FROM users;
+
+-- DATE operations:
+SELECT * FROM orders
+WHERE created_at >= NOW() - INTERVAL '30 days';
+
+-- Pattern matching:
+SELECT * FROM users WHERE email LIKE '%@gmail.com';
+SELECT * FROM users WHERE name ILIKE '%rakib%';  -- case insensitive
+"""
+
+print(sql_advanced)
+
+# DJANGO ORM ADVANCED:
+django_advanced = """
+# Case/When:
+from django.db.models import Case, When, Value, CharField
+User.objects.annotate(
+    age_group=Case(
+        When(age__lt=18, then=Value('minor')),
+        When(age__lt=65, then=Value('adult')),
+        default=Value('senior'),
+        output_field=CharField(),
+    )
+)
+
+# Distinct:
+Product.objects.values_list('category', flat=True).distinct()
+
+# Date filtering:
+Order.objects.filter(created_at__gte=timezone.now() - timedelta(days=30))
+
+# Q objects (complex OR/AND):
+from django.db.models import Q
+User.objects.filter(Q(name__icontains='rakib') | Q(email__icontains='rakib'))
+"""
+
+print("Django ORM advanced:")
+print(django_advanced)</div>
+
+<div class="code-block"># ── STEP 6: Query optimization basics ──
+# HOW TO MAKE QUERIES FASTER:
+
+# 1. Use EXPLAIN to see the query plan:
+# EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'rakib@example.com';
+# Shows: sequential scan (slow) vs index scan (fast)
+
+optimization_tips = [
+    "Add indexes on WHERE/JOIN/GROUP BY columns",
+    "Avoid SELECT * — only select needed columns",
+    "Use LIMIT for large result sets",
+    "Add FOREIGN KEY constraints (optimizer uses them)",
+    "Avoid functions on indexed columns (WHERE LOWER(name) = ... breaks index)",
+    "Use EXISTS instead of IN for subqueries",
+    "Batch INSERT statements (INSERT INTO ... VALUES (...), (...), (...))",
+    "Use EXPLAIN ANALYZE to find slow queries",
+    "Normalize to reduce data duplication",
+    "Consider materialized views for expensive aggregations",
+    "Use connection pooling (pgbouncer for PostgreSQL)",
+    "Partition large tables by date or hash",
+]
+
+print("QUERY OPTIMIZATION TIPS:")
+for tip in optimization_tips:
+    print(f"  ☐ {tip}")
+
+# THE N+1 PROBLEM (common Django issue):
+# ❌ BAD: 100 queries (1 + N):
+# for user in User.objects.all():        # 1 query
+#     print(user.orders.count())         # N queries (one per user!)
+
+# ✅ GOOD: 1 query with JOIN:
+# from django.db.models import Count
+# users = User.objects.annotate(order_count=Count('orders'))  # 1 query
+# for user in users:
+#     print(user.order_count)
+
+# ALWAYS check for N+1 queries in your Django apps.
+# Use django-debug-toolbar to spot them.
+
+# SQL SUMMARY:
+# ┌──────────────┬──────────────────────────────────┐
+# │ Command      │ Purpose                         │
+# ├──────────────┼──────────────────────────────────┤
+# │ SELECT       │ Read data                       │
+# │ INSERT       │ Add data                        │
+# │ UPDATE       │ Modify data                     │
+# │ DELETE       │ Remove data                     │
+# │ JOIN         │ Connect tables                  │
+# │ GROUP BY     │ Summarize by category           │
+# │ HAVING       │ Filter groups                   │
+# │ ORDER BY     │ Sort results                    │
+# │ LIMIT        │ Restrict count                  │
+# │ INDEX        │ Speed up queries                │
+# └──────────────┴──────────────────────────────────┘</div>
 
 <div class="secret-box">💻 <strong>SQL = ডাটাবেসের ভাষা।</strong> SELECT পড়ো, INSERT লেখো, UPDATE বদলাও, DELETE মুছো। JOIN দিয়ে টেবিল যোগ করো, GROUP BY দিয়ে সারাংশ তৈরি করো। কিন্তু যখন মিলিয়ন মিলিয়ন সারি থাকে — SELECT * কতটা ধীর? সেই সমাধান আসবে পরের দরজায় — indexing।</div>`,
   senior: {
