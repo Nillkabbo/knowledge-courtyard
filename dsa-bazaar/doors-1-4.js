@@ -667,17 +667,192 @@ doors.push({
 <div class="dialogue">এখন শোনো — তুমি AI ইঞ্জিনিয়ার। তোমার প্রতিটা মডেলের ইনপুট কী? একটা ছবি — কিন্তু মেশিনের কাছে সেটা সংখ্যার একটা গ্রিড। 224*224 pixel, প্রতিটায় 3 রঙ (RGB)। সেটা একটা 3D array — tensor। একটা sentence — প্রতিটা টোকেন একটা embedding vector (শত শত সংখ্যা)। সব শেষে array।</div>
 <div class="dialogue en">"Now listen — you're an AI engineer. What's every model's input? An image — but to the machine, it's a grid of numbers. 224*224 pixels, each with 3 colors (RGB). That's a 3D array — a tensor. A sentence — each token is an embedding vector (hundreds of numbers). Everything ends as arrays."</div>
 
-<div class="code-block">Tensor Shapes in AI:
+<div class="code-block"># ── STEP 1: What is an array? ──
+# An array is a collection of items stored CONTIGUOUSLY in memory.
+# Each item has an INDEX (position) starting from 0.
 
-ছবি (Image):  [224, 224, 3]     → 3D tensor
-বাক্য (Text):  [10, 768]         → 2D (10 tokens * 768 dims)
-ব্যাচ (Batch): [32, 224, 224, 3] → 4D (32 images)
+# Python lists are dynamic arrays:
+fruits = ["apple", "banana", "cherry", "date"]
 
-Index rules:
-  data[0]      → 1st element (Python 0-indexed!)
-  data[-1]     → last element
-  data[1:4]    → elements 1,2,3 (exclusive end)
-  data[::-1]   → reversed</div>
+# Access by index — O(1):
+print(fruits[0])    # apple
+print(fruits[2])    # cherry
+print(fruits[-1])   # date (negative = from end)
+
+# The KEY advantage of arrays: INSTANT access by index.
+# arr[5] takes the same time regardless of array size.
+# This is O(1) — the fastest possible.
+
+# Think of it like cinema seats:
+# You know seat A5? Go directly to it. Don't check A1, A2, A3, A4.
+# That's what array index access does.</div>
+
+<div class="code-block"># ── STEP 2: Array operations and their Big-O ──
+arr = [10, 20, 30, 40, 50]
+
+# ACCESS by index — O(1):
+print(arr[2])       # 30 — instant
+
+# SEARCH (find a value) — O(n):
+print(30 in arr)    # True — must scan until found
+print(arr.index(30))  # 2
+
+# INSERT at end — O(1) amortized:
+arr.append(60)      # [10, 20, 30, 40, 50, 60]
+
+# INSERT in middle — O(n):
+arr.insert(2, 25)   # [10, 20, 25, 30, 40, 50, 60]
+# Everyone after position 2 had to shift right!
+
+# DELETE from end — O(1):
+arr.pop()           # removes 60
+
+# DELETE from middle — O(n):
+del arr[2]          # removes 25, everyone shifts left
+
+# UPDATE by index — O(1):
+arr[0] = 99         # instant
+
+# SUMMARY OF COSTS:
+# ┌──────────────────┬────────┬──────────────────────┐
+# │ Operation        │ Big-O  │ Why                  │
+# ├──────────────────┼────────┼──────────────────────┤
+# │ arr[i] (access)  │ O(1)   │ direct memory jump   │
+# │ arr.append(x)    │ O(1)   │ add to end           │
+# │ arr.insert(i,x)  │ O(n)   │ shift everything     │
+# │ x in arr (find)  │ O(n)   │ scan one by one      │
+# │ arr.pop()        │ O(1)   │ remove from end      │
+# │ del arr[i]       │ O(n)   │ shift everything     │
+# │ len(arr)         │ O(1)   │ stored internally     │
+# └──────────────────┴────────┴──────────────────────┘</div>
+
+<div class="code-block"># ── STEP 3: Slicing — Python's array superpower ──
+# Slicing extracts a portion of an array: arr[start:end:step]
+
+arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# Basic slice [start:end] (end is EXCLUSIVE):
+print(arr[2:5])     # [2, 3, 4]
+
+# From start:
+print(arr[:4])      # [0, 1, 2, 3]
+
+# To end:
+print(arr[6:])      # [6, 7, 8, 9]
+
+# Negative indexing:
+print(arr[-3:])     # [7, 8, 9] — last 3
+
+# Step [start:end:step]:
+print(arr[::2])     # [0, 2, 4, 6, 8] — every other
+print(arr[1::2])    # [1, 3, 5, 7, 9] — odd indices
+
+# Reverse:
+print(arr[::-1])    # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+
+# Slicing creates a NEW list (copy):
+copy_arr = arr[:]   # full copy
+
+# Slicing is O(k) where k = slice length</div>
+
+<div class="code-block"># ── STEP 4: Two-pointer technique ──
+# A common array pattern: two pointers moving through the array.
+
+# Example: Reverse an array in-place:
+def reverse_array(arr):
+    left, right = 0, len(arr) - 1
+    while left &lt; right:
+        arr[left], arr[right] = arr[right], arr[left]
+        left += 1
+        right -= 1
+    return arr
+
+print(reverse_array([1, 2, 3, 4, 5]))  # [5, 4, 3, 2, 1]
+
+# Example: Find pair that sums to target (sorted array):
+def two_sum_sorted(arr, target):
+    left, right = 0, len(arr) - 1
+    while left &lt; right:
+        current = arr[left] + arr[right]
+        if current == target:
+            return [left, right]
+        elif current &lt; target:
+            left += 1   # need bigger sum
+        else:
+            right -= 1  # need smaller sum
+    return None
+
+print(two_sum_sorted([1, 3, 5, 7, 9], 12))  # [1, 4] (3+9=12)
+
+# Two-pointer: O(n) time, O(1) space
+# vs brute force nested loop: O(n²) time</div>
+
+<div class="code-block"># ── STEP 5: Sliding window technique ──
+# Another key pattern: a "window" that slides across the array.
+
+# Find maximum sum of k consecutive elements:
+def max_subarray_sum(arr, k):
+    """Find max sum of any k consecutive elements."""
+    # Initial window sum:
+    window_sum = sum(arr[:k])
+    max_sum = window_sum
+
+    # Slide the window:
+    for i in range(k, len(arr)):
+        # Add new element, remove oldest:
+        window_sum += arr[i] - arr[i - k]
+        max_sum = max(max_sum, window_sum)
+
+    return max_sum
+
+arr = [2, 1, 5, 1, 3, 2]
+print(max_subarray_sum(arr, 3))  # 9 (5+1+3)
+
+# Without sliding window: O(n*k) — recalculate sum each time
+# With sliding window: O(n) — each element visited twice max
+
+# Sliding window is used for:
+# - Moving averages
+# - Longest substring without repeating chars
+# - Maximum in each window</div>
+
+<div class="code-block"># ── STEP 6: Arrays vs linked lists vs Python lists ──
+# Different array-like structures have different trade-offs.
+
+# Python LIST (dynamic array):
+# - O(1) access by index
+# - O(1) append at end
+# - O(n) insert/delete in middle
+# - Grows automatically (resizes when full)
+items = [1, 2, 3]
+
+# Python ARRAY (typed, from array module):
+import array
+nums = array.array('i', [1, 2, 3])  # 'i' = integer type
+# More memory efficient for large data of same type
+
+# NUMPY ARRAY (for math/science):
+import numpy as np
+matrix = np.array([[1, 2, 3], [4, 5, 6]])
+# Vectorized operations: matrix * 2 multiplies ALL elements at once
+# Used everywhere in AI/ML
+
+# LINKED LIST (custom):
+# - O(n) access by index (must walk from head)
+# - O(1) insert/delete if you have the node
+# - No random access
+# Better for frequent middle insertions
+
+# WHEN TO USE WHAT:
+# ┌──────────────┬──────────────────────────────────┐
+# │ Structure    │ Best for                         │
+# ├──────────────┼──────────────────────────────────┤
+# │ Python list  │ general purpose, random access   │
+# │ array.array  │ large same-type data, less memory│
+# │ numpy array  │ math, ML, matrix operations       │
+# │ deque        │ fast insert/remove at BOTH ends   │
+# │ linked list  │ frequent middle insertions        │
+# └──────────────┴──────────────────────────────────┘</div>
 
 <div class="dialogue">ভাবো — সিনেমা হলের আসন। প্রতিটা আসনে একটা করে নম্বর — A1, A2, A3। তুমি যদি A5 আসনে বসতে চাও, তুমি A1 বা A2 দেখবে না। সরাসরি A5-এ যাবে। কারণ আসনগুলো সারিবদ্ধ, নম্বর দেওয়া। এটাই array-র শক্তি — O(1) অ্যাক্সেস। কিন্তু সমস্যা? ধরো একজন VIP অতিথিকে A3 আর A4-এর মাঝে বসাতে হবে। তাহলে A4 থেকে শেষ পর্যন্ত সবাইকে এক ঘর করে পিছিয়ে যেতে হবে। এটাই array-তে insert-এর খরচ — O(n)।</div>
 <div class="dialogue en">"Think of cinema hall seats. Each seat has a number — A1, A2, A3. If you want to sit in A5, you don't check A1 or A2. You go straight to A5. Because seats are in a row, numbered. This is array's power — O(1) access. But the problem? If a VIP guest needs to sit between A3 and A4, everyone from A4 onwards must shift back one seat. This is the cost of insert in an array — O(n)."</div>
@@ -796,60 +971,219 @@ doors.push({
 <div class="dialogue">কিন্তু দাম আছে। টালি নির্মাতা যেকোনো বাক্সে সরাসরি যেতে পারেন — index দিলেই, O(1)। আমি? প্রথম মুক্তো থেকে শুরু, এক এক করে পরেরটায় যেতে হয় — শততম মুক্তো চাইলে ১০০ ধাপ। O(n)। সবকিছুরই দাম আছে।</div>
 <div class="dialogue en">"But there's a price. The tile maker jumps to any box directly — give an index, O(1). Me? Start from the first pearl, step to the next one by one — the 100th pearl costs 100 steps. O(n). Everything has a price."</div>
 
-<div class="code-block">Linked List — Three Variants:
+<div class="code-block"># ── STEP 1: What is a linked list? ──
+# A linked list is a chain of NODES.
+# Each node holds: DATA + a POINTER to the next node.
 
-১. SINGLY LINKED LIST
-   প্রতিটা node শুধু পরেরটার pointer ধরে।
+# Unlike arrays (contiguous memory), linked list nodes are SCATTERED.
+# They're connected by pointers — like a treasure hunt.
 
-   [A] → [B] → [C] → [D] → None
-    head                    tail
+# Visual:
+# [data|next] → [data|next] → [data|next] → None
+#   head                              tail
 
-   • insert at head: O(1) — নতুন node, তার next = পুরোনো head
-   • delete at head: O(1) — head = head.next
-   • search/access: O(n) — শুরু থেকে হাঁটো
-   • insert at tail: O(1) যদি tail pointer রাখো, নাহলে O(n)
+# Building a linked list node in Python:
+class Node:
+    """A single node in a linked list."""
+    def __init__(self, data):
+        self.data = data
+        self.next = None  # pointer to next node (None = end)
 
-২. DOUBLY LINKED LIST
-   প্রতিটা node দুই pointer ধরে — prev ও next।
+# Create nodes:
+node1 = Node("apple")
+node2 = Node("banana")
+node3 = Node("cherry")
 
-   None ← [A] ⇄ [B] ⇄ [C] ⇄ [D] → None
+# Link them:
+node1.next = node2    # apple → banana
+node2.next = node3    # banana → cherry
 
-   • backward traversal পাবে (সিঙ্গলিতে নেই)
-   • delete কোনো node: O(1) যদি node-এর reference থাকো
-   • বেশি মেমরি (প্রতিটায় ২টা pointer)
-   → LRU cache, browser history, text editor undo
+# The HEAD is the entry point:
+head = node1
 
-৩. CIRCULAR LINKED LIST
-   শেষ node প্রথম node-এ ফিরে যায়।
-   → round-robin scheduling, music playlist repeat
+# Walking the list:
+current = head
+while current:
+    print(current.data)
+    current = current.next
+# apple
+# banana
+# cherry</div>
 
-ARRAY vs LINKED LIST — কখন কোনটা?
+<div class="code-block"># ── STEP 2: Linked list class ──
+# A proper linked list implementation:
 
-  # ──────────────────# ─────────────# ─────────────# 
-  #  Operation        #  Array       #  Linked List # 
-  # ──────────────────# ─────────────# ─────────────# 
-  #  access (index)   #  O(1) ✅     #  O(n) ❌     # 
-  #  insert head      #  O(n) ❌     #  O(1) ✅     # 
-  #  insert tail      #  O(1)* ✅    #  O(1)* ✅    # 
-  #  insert middle    #  O(n)        #  O(1)**      # 
-  #  search           #  O(n)        #  O(n)        # 
-  #  memory overhead  #  low         #  high (ptr)  # 
-  #  cache locality   #  ভালো ✅     #  খারাপ ❌    # 
-  # ──────────────────# ─────────────# ─────────────# 
-  * amortized / tail pointer সহ  ** node-এর reference থাকলে
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.size = 0
 
-WHY CACHE LOCALITY MATTERS (the hidden cost):
-  Array: সব পাশাপাশি মেমরিতে → CPU cache একসাথে এক block load করে
-  Linked list: node গুলো ছড়ানো → প্রতিটা cache miss → 100x ধীরে
-  → তাত্ত্বিকভাবে একই complexity, বাস্তবে array প্রায় সবসময় দ্রুত
-  → আধুনিক truth: array (বা Python list) দিয়ে শুরু করো।
-    linked list শুধু যখন সত্যিই head/tail insert প্রধান কাজ।
+    def prepend(self, data):
+        """Add to the FRONT — O(1)."""
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+        self.size += 1
 
-WHERE AI/ML USES LINKED LISTS:
-  • LRU cache (doubly linked list + hash map = O(1) eviction)
-  • Deque implementation (Python collections.deque)
-  • Symbolic computation graphs (chain rule-এর জন্য পিছনে হাঁটা লাগে)
-  • Tensor padding / variable-length sequences (RNN time steps)</div>
+    def append(self, data):
+        """Add to the END — O(n) without tail pointer."""
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:         # walk to end
+                current = current.next
+            current.next = new_node
+        self.size += 1
+
+    def search(self, target):
+        """Find a value — O(n)."""
+        current = self.head
+        while current:
+            if current.data == target:
+                return True
+            current = current.next
+        return False
+
+    def delete(self, target):
+        """Delete first occurrence — O(n)."""
+        if not self.head:
+            return
+        if self.head.data == target:
+            self.head = self.head.next
+            return
+        current = self.head
+        while current.next:
+            if current.next.data == target:
+                current.next = current.next.next  # skip the node
+                return
+            current = current.next
+
+# Usage:
+ll = LinkedList()
+ll.append("A")
+ll.append("B")
+ll.append("C")
+ll.prepend("Z")       # Z → A → B → C
+print(ll.search("B"))  # True
+ll.delete("B")        # Z → A → C</div>
+
+<div class="code-block"># ── STEP 3: Insert at head — why it's O(1) ──
+# This is the KEY advantage of linked lists.
+
+# ARRAY insert at head: O(n) — everyone shifts right
+# [A, B, C, D] → insert X → [X, A, B, C, D] (4 shifts!)
+
+# LINKED LIST insert at head: O(1) — just change 2 pointers
+# X → A → B → C → D → None
+# ↑ new head
+
+def insert_at_head(head, data):
+    """Insert in O(1) — no shifting needed."""
+    new_node = Node(data)
+    new_node.next = head    # point new node to old head
+    return new_node         # new node becomes head
+
+# This is why linked lists are used for:
+# - Stacks (push/pop at one end)
+# - Undo/redo (add/remove at front)
+# - Hash table buckets (chaining for collisions)</div>
+
+<div class="code-block"># ── STEP 4: Doubly linked list ──
+# Each node has TWO pointers: prev and next.
+# This allows BACKWARD traversal.
+
+class DoublyNode:
+    def __init__(self, data):
+        self.data = data
+        self.prev = None
+        self.next = None
+
+# None ← [A] ⇄ [B] ⇄ [C] → None
+
+# Advantages:
+# - Can traverse backward (singly can't)
+# - Delete in O(1) if you have the node reference
+# - Used in: LRU cache, browser history, text editor undo
+
+# Python's collections.deque IS a doubly linked list:
+from collections import deque
+
+d = deque([1, 2, 3])
+d.appendleft(0)    # O(1) — deque([0, 1, 2, 3])
+d.append(4)        # O(1) — deque([0, 1, 2, 3, 4])
+d.popleft()        # O(1) — removes 0
+d.pop()            # O(1) — removes 4
+
+# deque is faster than list for front operations:
+# list.insert(0, x)  → O(n)
+# deque.appendleft(x) → O(1)</div>
+
+<div class="code-block"># ── STEP 5: Array vs linked list ──
+# The eternal question — which to use?
+
+# ┌──────────────────┬───────────┬────────────┐
+# │ Operation        │ Array     │ Linked List│
+# ├──────────────────┼───────────┼────────────┤
+# │ access by index  │ O(1) ✅   │ O(n) ❌    │
+# │ insert at head   │ O(n) ❌   │ O(1) ✅    │
+# │ insert at tail   │ O(1) ✅   │ O(1)*      │
+# │ delete at head   │ O(n) ❌   │ O(1) ✅    │
+# │ search           │ O(n)      │ O(n)       │
+# │ memory per item  │ low ✅    │ high (ptr) │
+# │ cache locality   │ good ✅   │ bad ❌     │
+# └──────────────────┴───────────┴────────────┘
+
+# THE HIDDEN COST — CACHE LOCALITY:
+# Array: all items are NEXT TO EACH OTHER in memory.
+#   CPU loads a whole cache line at once — accessing arr[0]
+#   also loads arr[1], arr[2]... into cache. Super fast.
+
+# Linked list: nodes are SCATTERED in memory.
+#   Each node access is a cache miss — 100x slower.
+#   Even if Big-O is the same, array is usually faster in practice.
+
+# MODERN REALITY:
+# - Start with Python list (array) for everything
+# - Only use linked list when you need O(1) head insertions
+# - Use deque for queue/stack operations</div>
+
+<div class="code-block"># ── STEP 6: When linked lists matter in practice ──
+# Linked lists appear in specific real-world scenarios:
+
+# 1. LRU CACHE (Least Recently Used):
+#   Doubly linked list + hash map = O(1) cache eviction
+#   Most recently used → move to front
+#   Least recently used → remove from back
+
+# 2. HASH TABLE COLLISION CHAINING:
+#   When two keys hash to the same bucket,
+#   store them as a linked list in that bucket
+
+# 3. QUEUE / STACK:
+#   Use deque (doubly linked list) for O(1) operations at both ends
+
+# 4. SYMBOLIC COMPUTATION (PyTorch/TF):
+#   Neural network computation graph uses linked structure
+#   for backpropagation (chain rule traversal)
+
+# 5. MUSIC PLAYLIST (circular linked list):
+#   Last song → first song → repeat
+
+# PRACTICAL ADVICE:
+# In Python, you almost NEVER need to implement a linked list yourself.
+# Use:
+# - list for general purpose
+# - deque for queues/stacks
+# - OrderedDict for LRU cache (or functools.lru_cache)
+# Only implement your own for INTERVIEW PREPARATION.
+
+# Interview tip: Know how to:
+# - Reverse a linked list
+# - Detect a cycle (Floyd's algorithm)
+# - Merge two sorted lists
+# - Find the middle node</div>
 
 <div class="dialogue">সিলসিলা — শৃঙ্খল, সংযোগ। কুরআনে আল্লাহ বলেন — "তোমরা আল্লাহর রশি দৃঢ়ভাবে ধরো, সবাই একসাথে।" (৩:১০৩)। রশি না থাকলে মুক্তো ছড়িয়ে যায় — কিন্তু সংযুক্ত থাকলে এক মালা। Linked list-ও তেমনি — প্রতিটা node একটা pointer দিয়ে যুক্ত, ভাঙলে পুরো শৃঙ্খল ছিন্ন।</div>
 <div class="dialogue en">"Silsila — chain, connection. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Without the thread, pearls scatter — but joined, they form one necklace. The linked list too — each node connected by a pointer; break one, the whole chain severs."</div>
