@@ -974,7 +974,228 @@ doors.push({
 <div class="diag-cap">প্যাকেট প্রতিটি রাউটারে থামে · TTL ১ কমে · শূন্য হলে বাতিল · এটাই traceroute-এর কৌশল</div>
 </div>
 
-<div class="code-block">— ping: গন্তব্য আছে কি না —
+<div class="code-block"># ── STEP 1: IP addresses (Layer 3) ──
+# IP addresses route packets BETWEEN networks (global scope).
+
+# IPv4 ADDRESSES:
+ipv4 = """
+IPv4: 32-bit address (4 bytes)
+  Example: 192.168.1.42
+
+  Each number: 0-255 (1 byte)
+  Total addresses: ~4.3 billion (running out!)
+
+IP CLASSES (legacy, now CIDR):
+  Class A: 10.0.0.0/8     (16M addresses, private)
+  Class B: 172.16.0.0/12   (1M addresses, private)
+  Class C: 192.168.0.0/16  (65K addresses, private)
+
+PRIVATE IPs (not routable on internet):
+  10.0.0.0/8       (large networks)
+  172.16.0.0/12    (medium networks)
+  192.168.0.0/16   (home/small office) ← YOUR HOME NETWORK
+
+SPECIAL IPs:
+  127.0.0.1        (localhost / loopback)
+  0.0.0.0          (all interfaces)
+  255.255.255.255  (broadcast)
+
+PUBLIC vs PRIVATE:
+  Public: 142.250.80.46 (Google, routable on internet)
+  Private: 192.168.1.42 (your laptop, NOT routable)
+  → NAT (Network Address Translation) converts private → public
+"""
+
+print(ipv4)
+
+# IPv6 (the future):
+ipv6 = """
+IPv6: 128-bit address (16 bytes)
+  Example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+
+  Total addresses: 340 undecillion (3.4 × 10^38)
+  → Enough for every atom on Earth to have billions of IPs!
+
+  No NAT needed (every device can have public IP)
+  Built-in security (IPSec)
+  Simplified header (faster routing)
+
+  Adoption: ~40% of internet traffic (2024)
+"""
+
+print(ipv6)</div>
+
+<div class="code-block"># ── STEP 2: Subnetting and CIDR ──
+# Subnetting divides a network into smaller networks.
+
+# SUBNET MASK:
+subnet = """
+CIDR NOTATION: 192.168.1.0/24
+  /24 means first 24 bits are network, last 8 bits are host
+  Subnet mask: 255.255.255.0
+
+  /24 = 256 addresses (254 usable)
+  /25 = 128 addresses (126 usable)
+  /26 =  64 addresses ( 62 usable)
+  /27 =  32 addresses ( 30 usable)
+  /28 =  16 addresses ( 14 usable)
+  /30 =   4 addresses (  2 usable, point-to-point)
+
+SUBNET CALCULATION:
+  Network:   192.168.1.0/24 (256 total addresses)
+  Usable:    .1 to .254 (254 hosts)
+  Network:   .0 (network address, can't assign)
+  Broadcast: .255 (broadcast address, can't assign)
+"""
+
+print(subnet)
+
+# SUBNETTING EXAMPLE:
+subnetting = """
+DIVIDE 192.168.1.0/24 INTO 4 SUBNETS:
+
+Need 2 extra bits (2^2 = 4 subnets)
+New mask: /26 (255.255.255.192)
+
+Subnet 1: 192.168.1.0/26    range .0-.63    usable .1-.62
+Subnet 2: 192.168.1.64/26   range .64-.127  usable .65-.126
+Subnet 3: 192.168.1.128/26  range .128-.191 usable .129-.190
+Subnet 4: 192.168.1.192/26  range .192-.255 usable .193-.254
+
+Each subnet: 62 usable hosts
+Use case: separate departments, VLANs, DMZ
+"""
+
+print(subnetting)
+
+# PYTHON SUBNET CALCULATION:
+python_subnet = """
+import ipaddress
+
+# Create network:
+net = ipaddress.IPv4Network('192.168.1.0/24')
+print(f"Network: {net.network_address}")
+print(f"Broadcast: {net.broadcast_address}")
+print(f"Mask: {net.netmask}")
+print(f"Hosts: {list(net.hosts())[:5]}...")  # first 5 hosts
+
+# Divide into subnets:
+for subnet in net.subnets(prefixlen_diff=2):
+    print(f"Subnet: {subnet} ({subnet.num_addresses} addresses)")
+
+# Check if IP is in network:
+print( ipaddress.ip_address('192.168.1.42') in net )  # True
+print( ipaddress.ip_address('10.0.0.1') in net )      # False
+"""
+
+print(python_subnet)</div>
+
+<div class="code-block"># ── STEP 3: IP routing (how packets travel) ──
+# Routing = deciding which path packets take to reach destination.
+
+routing = """
+HOW IP ROUTING WORKS:
+
+1. Your laptop sends packet to 142.250.80.46 (Google)
+2. Laptop checks: is this on my local network (192.168.1.0/24)?
+   → No (142.250 is different network)
+3. Send to DEFAULT GATEWAY (192.168.1.1 = your router)
+4. Router checks routing table:
+   → Do I know this network? Forward to next hop.
+5. Each router repeats: check table → forward → check → forward
+6. Final router delivers to Google's server
+
+ROUTING TABLE (on your laptop):
+$ ip route show
+  default via 192.168.1.1 dev eth0         ← send unknown to router
+  192.168.1.0/24 dev eth0 proto kernel     ← local network (direct)
+
+  → Default route = "I don't know where this goes, send to gateway"
+  → Local route = "This is on my network, deliver directly"
+"""
+
+print(routing)
+
+# TRACEROUTE (see the path):
+traceroute = """
+$ traceroute google.com
+
+ 1  192.168.1.1     1.2 ms   ← your router (home)
+ 2  10.50.12.1      4.5 ms   ← ISP gateway
+ 3  72.14.215.1     12.1 ms  ← ISP backbone
+ 4  142.250.190.1   15.3 ms  ← Google's network
+ 5  142.250.190.46  14.8 ms  ← destination server
+
+HOW TRACEROUTE WORKS:
+  Uses TTL (Time To Live) field in IP header:
+  Packet 1: TTL=1 → first router decrements to 0 → sends back "time exceeded"
+  Packet 2: TTL=2 → second router sends "time exceeded"
+  ...revealing each hop along the way
+
+TTL prevents packets from circulating forever.
+Each router decrements TTL by 1.
+TTL=0 → packet dropped, "time exceeded" sent back.
+"""
+
+print(traceroute)</div>
+
+<div class="code-block"># ── STEP 4: NAT (Network Address Translation) ──
+# NAT allows private IPs to access the internet.
+
+nat = """
+WHY NAT EXISTS:
+  → Private IPs (192.168.x.x) can't go on the internet
+  → But we only have ONE public IP from ISP
+  → NAT translates many private → one public
+
+HOW NAT WORKS:
+  1. Laptop (192.168.1.42) sends to Google (142.250.80.46)
+  2. Router receives, changes source to PUBLIC IP (203.0.113.5)
+  3. Router remembers: "192.168.1.42 sent this"
+  4. Google responds to 203.0.113.5
+  5. Router translates back: "203.0.113.5 → 192.168.1.42"
+  6. Laptop receives response
+
+NAT TABLE (on router):
+  Internal IP        Internal Port    External Port    External IP
+  192.168.1.42       54321            54321            203.0.113.5
+  192.168.1.100      54322            54322            203.0.113.5
+
+PORT FORWARDING (reverse NAT):
+  External traffic → specific internal device
+  "Port 80 → 192.168.1.50" (web server)
+  "Port 22 → 192.168.1.100" (SSH)
+"""
+
+print(nat)
+
+# NAT TYPES:
+nat_types = {
+    "SNAT (Source NAT)": {
+        "what": "Change source IP (outgoing traffic)",
+        "use": "Masquerade (many private IPs → one public)",
+    },
+    "DNAT (Destination NAT)": {
+        "what": "Change destination IP (incoming traffic)",
+        "use": "Port forwarding (external → internal server)",
+    },
+    "PAT (Port Address Translation)": {
+        "what": "SNAT + port numbers (many IPs → one IP, different ports)",
+        "use": "Home routers (default behavior)",
+    },
+}
+
+print("NAT TYPES:")
+for nat_type, info in nat_types.items():
+    print(f"\n  {nat_type}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 5: Ping and connectivity testing ──
+# Use ping and traceroute to diagnose network issues.
+
+ping_code = """
+# PING: Test if host is reachable
 $ ping -c 4 google.com
 
 PING google.com (142.250.190.46): 56 data bytes
@@ -986,18 +1207,142 @@ PING google.com (142.250.190.46): 56 data bytes
 4 packets transmitted, 4 received, 0.0% packet loss
 round-trip min/avg/max = 11.8/12.3/13.1 ms
 
-— পড়ো: 0% loss = সংযোগ সুস্থ · 100% loss = আটকে আছে —</div>
+READING PING RESULTS:
+  0% loss = healthy connection
+  100% loss = no connectivity (firewall? DNS? cable?)
+  High latency = slow connection
+  Variable latency = unstable connection (jitter)
+"""
 
-<div class="code-block">— traceroute: পথ দেখো হপ বাই হপ —
-$ traceroute google.com
+print(ping_code)
 
- 1  192.168.1.1     1.2 ms   ← তোমার রাউটার
- 2  10.50.12.1      4.5 ms   ← ISP গেটওয়ে
- 3  72.14.215.1     12.1 ms  ← ISP backbone
- 4  142.250.190.1   15.3 ms  ← Google-এর নেটওয়ার্ক
- 5  142.250.190.46  14.8 ms  ← গন্তব্য সার্ভার
+# DIAGNOSTIC FLOW:
+diagnostic = """
+NETWORK DIAGNOSTIC FLOW:
 
-— প্রতিটি * * * = সেই হপ রেসপন্স দেয় না (ফায়ারওয়াল ব্লক) —</div>
+1. ping 127.0.0.1
+   → Tests TCP/IP stack on your machine
+   → Fail = OS networking broken
+
+2. ping 192.168.1.42 (your own IP)
+   → Tests NIC driver
+   → Fail = NIC not configured
+
+3. ping 192.168.1.1 (gateway)
+   → Tests local network connectivity
+   → Fail = cable, switch, or router issue
+
+4. ping 8.8.8.8 (Google DNS)
+   → Tests internet connectivity
+   → Fail = ISP or router issue
+
+5. ping google.com
+   → Tests DNS resolution + internet
+   → Fail = DNS problem (try: ping 8.8.8.8)
+
+6. traceroute google.com
+   → Shows WHERE the path breaks
+   → Each hop reveals which router drops packets
+"""
+
+print(diagnostic)
+
+# PYTHON NETWORK TESTING:
+python_test = """
+import subprocess
+import socket
+
+# DNS lookup:
+ip = socket.gethostbyname('google.com')
+print(f"google.com → {ip}")  # 142.250.190.46
+
+# Socket connection test:
+def test_port(host, port, timeout=5):
+    try:
+        socket.setdefaulttimeout(timeout)
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((host, port))
+        s.close()
+        return True
+    except:
+        return False
+
+# Test common ports:
+for port, service in [(80, 'HTTP'), (443, 'HTTPS'), (22, 'SSH'), (3306, 'MySQL')]:
+    result = test_port('example.com', port)
+    print(f"  {service:6} (port {port:4}): {'✅ OPEN' if result else '❌ CLOSED'}")
+"""
+
+print(python_test)</div>
+
+<div class="code-block"># ── STEP 6: Firewalls and security ──
+# Firewalls control what traffic can enter/leave your network.
+
+firewall = """
+FIREWALL RULES (stateful packet filtering):
+
+ALLOW rules:
+  → Port 80 (HTTP) from anywhere
+  → Port 443 (HTTPS) from anywhere
+  → Port 22 (SSH) from specific IPs only
+
+DENY rules (default):
+  → Everything else
+
+LINUX: UFW (Uncomplicated Firewall):
+  $ ufw default deny incoming        # Block all incoming
+  $ ufw default allow outgoing       # Allow all outgoing
+  $ ufw allow 80/tcp                 # Allow HTTP
+  $ ufw allow 443/tcp                # Allow HTTPS
+  $ ufw allow from 203.0.113.5 to any port 22  # SSH from specific IP
+  $ ufw enable                       # Activate
+
+DOCKER FIREWALL WARNING:
+  Docker BYPASSES UFW!
+  → Docker writes iptables rules directly
+  → Published ports are accessible even if UFW blocks them
+  → Fix: use iptables -A DOCKER-USER (not UFW)
+
+CLOUD SECURITY GROUPS (AWS/GCP/Azure):
+  → Cloud-level firewall (outside the VM)
+  → More reliable than OS firewall
+  → Configure: inbound rules (what can enter)
+  → Example: allow 443 from 0.0.0.0/0 (HTTPS from anywhere)
+"""
+
+print(firewall)
+
+# FIREWALL BEST PRACTICES:
+best_practices = [
+    "Default DENY (block everything, allow specific)",
+    "Allow only needed ports (principle of least privilege)",
+    "Restrict SSH to specific IPs (not open to internet)",
+    "Use cloud security groups in addition to OS firewall",
+    "Docker: use DOCKER-USER chain, not UFW",
+    "Monitor firewall logs for attacks",
+    "Rate-limit connections (prevent brute force)",
+    "Use fail2ban for repeated failed attempts",
+    "Close unused ports (scan with nmap)",
+    "Document all firewall rules for the team",
+]
+
+print("FIREWALL BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# LAYER 3 SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ IP address       │ Global address (Layer 3)        │
+# │ Private IPs      │ 10.x, 172.16-31.x, 192.168.x   │
+# │ CIDR /24         │ Subnet notation                 │
+# │ Routing          │ Finding path between networks   │
+# │ Default gateway  │ Where to send unknown traffic   │
+# │ NAT              │ Private → public IP translation │
+# │ TTL              │ Prevents infinite loops         │
+# │ Firewall         │ Controls allowed traffic        │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">📐</span><div><strong>সাবনেটিং — একটি পূর্ণ উদাহরণ:</strong><br>
 <strong>প্রশ্ন:</strong> ১৯২.১৬৮.১.০/২৪ নেটওয়ার্ককে ৪টি সমান সাবনেটে ভাগ করো।<br>
