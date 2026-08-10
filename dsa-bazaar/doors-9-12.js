@@ -69,30 +69,269 @@ doors.push({
 <div class="dialogue">পথ খোঁজার দুটো উপায় — কাফেলা প্রধানের দুই নিয়ম (Door 5)। BFS — প্রথমে সব কাছের প্রতিবেশী দেখো, তারপর এক ধাপ দূরে, তারপর আরও। স্তরে স্তরে। queue দিয়ে। এটা সবচেয়ে কম ধাপের পথ দেয়। DFS — এক সুতো ধরে শেষ পর্যন্ত যাও, তারপর ফিরে এসে আরেকটা। stack দিয়ে। গভীরে যাওয়া।</div>
 <div class="dialogue en">"Two ways to find paths — the caravan master's two rules (Door 5). BFS — first check all nearest neighbors, then one step further, then more. Layer by layer, with a queue. This gives the path with fewest steps. DFS — follow one thread to the end, then come back and try another, with a stack. Going deep."</div>
 
-<div class="code-block">BFS — Shortest Path (unweighted graph):
+<div class="code-block"># ── STEP 1: What is a graph? ──
+# A graph is nodes (vertices) connected by edges.
+# Unlike trees, graphs can have CYCLES and any connection pattern.
 
-from collections import deque, defaultdict
+# Types of graphs:
+# - Undirected: A-B means both connected (Facebook friends)
+# - Directed: A→B means A points to B (Twitter follow)
+# - Weighted: edges have costs (road distances, latency)
+# - Unweighted: all edges equal
 
-graph = defaultdict(list)
-graph['A'] = ['B', 'C']
-graph['B'] = ['A', 'D', 'E']
-graph['C'] = ['A', 'F']
+# Representing a graph in Python (adjacency list):
+graph = {
+    "A": ["B", "C"],
+    "B": ["A", "D", "E"],
+    "C": ["A", "F"],
+    "D": ["B"],
+    "E": ["B"],
+    "F": ["C"],
+}
 
-def bfs(graph, start, target):
+# A connects to B and C
+# B connects to A, D, E
+# etc.
+
+# Using defaultdict for easy building:
+from collections import defaultdict
+
+graph2 = defaultdict(list)
+graph2["A"].append("B")
+graph2["A"].append("C")
+graph2["B"].append("D")</div>
+
+<div class="code-block"># ── STEP 2: BFS — Breadth-First Search ──
+# BFS explores LEVEL by LEVEL (like ripples in water).
+# Uses a QUEUE (FIFO).
+# Finds SHORTEST PATH in unweighted graphs.
+
+from collections import deque
+
+def bfs(graph, start):
+    """Visit all nodes level by level."""
     visited = set()
-    queue = deque([(start, [start])])
+    queue = deque([start])
+    order = []
+
     while queue:
-        node, path = queue.popleft()    # FIFO
+        node = queue.popleft()      # FIFO — take from front
+        if node not in visited:
+            visited.add(node)
+            order.append(node)
+            queue.extend(graph[node])  # add neighbors
+
+    return order
+
+graph = {"A": ["B", "C"], "B": ["D", "E"], "C": ["F"],
+         "D": [], "E": [], "F": []}
+
+print(bfs(graph, "A"))  # ['A', 'B', 'C', 'D', 'E', 'F']
+
+# BFS explores in layers:
+# Layer 0: A (start)
+# Layer 1: B, C (A's neighbors)
+# Layer 2: D, E, F (B and C's neighbors)
+
+# SHORTEST PATH with BFS:
+def bfs_shortest_path(graph, start, target):
+    """Find shortest path using BFS."""
+    visited = set()
+    queue = deque([(start, [start])])  # (node, path_so_far)
+
+    while queue:
+        node, path = queue.popleft()
         if node == target:
-            return path                  # shortest path!
+            return path  # shortest path found!
         if node not in visited:
             visited.add(node)
             for neighbor in graph[node]:
                 queue.append((neighbor, path + [neighbor]))
-    return None
+    return None  # no path
 
-# একই কোড stack দিয়ে = DFS।
-# queue (FIFO) → কাছের পথ। stack (LIFO) → গভীরে যাওয়া।</div>
+print(bfs_shortest_path(graph, "A", "F"))
+# ['A', 'C', 'F'] — shortest path!</div>
+
+<div class="code-block"># ── STEP 3: DFS — Depth-First Search ──
+# DFS goes DEEP first, then backtracks.
+# Uses a STACK (LIFO) or recursion.
+
+# Iterative DFS (using stack):
+def dfs(graph, start):
+    """Visit all nodes going deep first."""
+    visited = set()
+    stack = [start]
+    order = []
+
+    while stack:
+        node = stack.pop()          # LIFO — take from top
+        if node not in visited:
+            visited.add(node)
+            order.append(node)
+            stack.extend(reversed(graph[node]))  # add neighbors
+
+    return order
+
+print(dfs(graph, "A"))  # ['A', 'C', 'F', 'B', 'E', 'D']
+
+# Recursive DFS (cleaner):
+def dfs_recursive(graph, node, visited=None):
+    """DFS using recursion."""
+    if visited is None:
+        visited = set()
+    visited.add(node)
+    print(node, end=" ")
+    for neighbor in graph[node]:
+        if neighbor not in visited:
+            dfs_recursive(graph, neighbor, visited)
+
+dfs_recursive(graph, "A")  # A B D E C F
+
+# DFS is used for:
+# - Cycle detection
+# - Topological sorting
+# - Finding connected components
+# - Maze solving
+# - Path finding (not necessarily shortest)</div>
+
+<div class="code-block"># ── STEP 4: BFS vs DFS — when to use which ──
+# Both visit every node, but in different ORDER.
+
+# ┌─────────────────┬──────────────────┬──────────────────────┐
+# │ Characteristic  │ BFS              │ DFS                  │
+# ├─────────────────┼──────────────────┼──────────────────────┤
+# │ Data structure  │ Queue (FIFO)     │ Stack (LIFO)         │
+# │ Exploration     │ Level by level   │ Deep, then backtrack │
+# │ Shortest path   │ Yes (unweighted) │ No                   │
+# │ Memory          │ O(width) — wide  │ O(depth) — deep      │
+# │ Cycle detect    │ Possible         │ Easier with DFS      │
+# │ Topological sort│ No               │ Yes                  │
+# │ Best for        │ Shortest path    │ Exhaustive search    │
+# └─────────────────┴──────────────────┴──────────────────────┘
+
+# Real-world examples:
+# BFS: "People you may know" (LinkedIn), shortest route (Google Maps)
+# DFS: Dependency resolution, cycle detection, backtracking
+
+# Cycle detection with DFS:
+def has_cycle(graph):
+    """Detect if directed graph has a cycle."""
+    visited = set()
+    rec_stack = set()
+
+    def dfs(node):
+        visited.add(node)
+        rec_stack.add(node)
+        for neighbor in graph.get(node, []):
+            if neighbor not in visited:
+                if dfs(neighbor):
+                    return True
+            elif neighbor in rec_stack:
+                return True  # back edge = cycle!
+        rec_stack.remove(node)
+        return False
+
+    for node in graph:
+        if node not in visited:
+            if dfs(node):
+                return True
+    return False</div>
+
+<div class="code-block"># ── STEP 5: Weighted graphs and Dijkstra ──
+# When edges have COSTS (distances, time, money),
+# use Dijkstra's algorithm for shortest path.
+
+import heapq
+
+def dijkstra(graph, start):
+    """
+    Find shortest distances from start to all nodes.
+    graph = {node: [(neighbor, weight), ...]}
+    """
+    distances = {start: 0}
+    pq = [(0, start)]  # (distance, node)
+
+    while pq:
+        dist, node = heapq.heappop(pq)
+
+        for neighbor, weight in graph.get(node, []):
+            new_dist = dist + weight
+            if neighbor not in distances or new_dist &lt; distances[neighbor]:
+                distances[neighbor] = new_dist
+                heapq.heappush(pq, (new_dist, neighbor))
+
+    return distances
+
+# City distances:
+cities = {
+    "Dhaka": [("Chittagong", 250), ("Sylhet", 200)],
+    "Chittagong": [("Dhaka", 250), ("CoxBazar", 150)],
+    "Sylhet": [("Dhaka", 200)],
+    "CoxBazar": [("Chittagong", 150)],
+}
+
+print(dijkstra(cities, "Dhaka"))
+# {'Dhaka': 0, 'Chittagong': 250, 'Sylhet': 200, 'CoxBazar': 400}
+
+# Dijkstra uses a HEAP (priority queue) to always process
+# the closest unvisited node first.</div>
+
+<div class="code-block"># ── STEP 6: Graph problems in interviews ──
+# Common graph problems and their solutions:
+
+# 1. NUMBER OF ISLANDS (grid as graph):
+def num_islands(grid):
+    """Count islands in a 2D grid (1=land, 0=water)."""
+    if not grid:
+        return 0
+    rows, cols = len(grid), len(grid[0])
+    count = 0
+
+    def dfs(r, c):
+        if r &lt; 0 or r &gt;= rows or c &lt; 0 or c &gt;= cols or grid[r][c] == "0":
+            return
+        grid[r][c] = "0"  # mark visited
+        dfs(r+1, c)  # down
+        dfs(r-1, c)  # up
+        dfs(r, c+1)  # right
+        dfs(r, c-1)  # left
+
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] == "1":
+                count += 1
+                dfs(r, c)  # flood fill the island
+    return count
+
+# 2. CLONE A GRAPH:
+def clone_graph(node):
+    """Deep copy a graph."""
+    if not node:
+        return None
+    visited = {}
+    def dfs(original):
+        if original in visited:
+            return visited[original]
+        clone = Node(original.val)
+        visited[original] = clone
+        for neighbor in original.neighbors:
+            clone.neighbors.append(dfs(neighbor))
+        return clone
+    return dfs(node)
+
+# 3. COURSE SCHEDULE (topological sort):
+def can_finish(num_courses, prerequisites):
+    """Can you finish all courses? (cycle detection)"""
+    graph = defaultdict(list)
+    for course, prereq in prerequisites:
+        graph[course].append(prereq)
+    return not has_cycle(graph)
+
+# SUMMARY:
+# BFS → shortest path, level traversal (queue)
+# DFS → deep search, cycle detect, topo sort (stack/recursion)
+# Dijkstra → weighted shortest path (heap)
+# Grid problems → treat each cell as a graph node</div>
 
 <div class="dialogue">ভাবো — Facebook। তোমার প্রোফাইল একটা node। তোমার বন্ধুরা আরেক node। তোমাদের সম্পর্ক হলো edge। "People You May Know" কীভাবে কাজ করে? BFS দিয়ে! প্রথমে তোমার সরাসরি বন্ধুদের দেখে (level 1), তারপর তাদের বন্ধুদের (level 2), তারপর আরও। স্তরে স্তরে ছড়ায় — পানির ঢেউয়ের মতো। আর এই সম্পর্কগুলো দুই ধরনের — Facebook ফ্রেন্ডশিপ হলো undirected (দুই পক্ষ সম্মত), Twitter/Instagram follow হলো directed (তুমি ফলো করো, সে নাও করে)।</div>
 <div class="dialogue en">"Think — Facebook. Your profile is a node. Your friends are other nodes. Your relationship is an edge. How does 'People You May Know' work? With BFS! First it checks your direct friends (level 1), then friends of friends (level 2), then more. Spreading layer by layer — like water ripples. And these relationships come in two types — Facebook friendship is undirected (mutual), Twitter/Instagram follow is directed (you follow, they may not)."</div>
@@ -258,44 +497,193 @@ doors.push({
   </svg>
 </div>
 
-<div class="code-block">Union-Find — Python Implementation:
+<div class="code-block"># ── STEP 1: What is Union-Find? ──
+# Union-Find (Disjoint Set Union) tracks CONNECTED GROUPS.
+# Two operations:
+# - find(x): which group does x belong to?
+# - union(x, y): merge x's group with y's group
 
-  class UnionFind:
-      def __init__(self, n):
-          self.parent = list(range(n))
-          self.rank = [0] * n
+# Think of it like tribes merging:
+# - Initially, each person is their own tribe
+# - When two people connect, their tribes MERGE
+# - find() tells you which tribe someone belongs to
 
-      def find(self, x):
-          if self.parent[x] != x:
-              self.parent[x] = self.find(self.parent[x])  # path compression
-          return self.parent[x]
+# Simple implementation:
+class UnionFind:
+    """Track connected groups efficiently."""
+    def __init__(self, n):
+        # Each element starts as its own parent (own group)
+        self.parent = list(range(n))
 
-      def union(self, x, y):
-          px, py = self.find(x), self.find(y)
-          if px == py:
-              return False          # একই সেটে ছিল — cycle!
-          if self.rank[px] < self.rank[py]:
-              px, py = py, px
-          self.parent[py] = px      # union by rank
-          if self.rank[px] == self.rank[py]:
-              self.rank[px] += 1
-          return True               # নতুন union হলো
+    def find(self, x):
+        """Find which group x belongs to."""
+        # Follow the chain to the root (group leader)
+        while self.parent[x] != x:
+            x = self.parent[x]
+        return x
 
-  দুটো optimization একসাথে → amortized O(α(n)) ~= O(1)
-  (α = inverse Ackermann; α < 4 যতদিন n < 10^600)
+    def union(self, x, y):
+        """Merge x's group with y's group."""
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x != root_y:
+            self.parent[root_y] = root_x  # merge under root_x
+            return True  # new connection
+        return False  # already in same group
 
-WHEN TO USE UNION-FIND:
-  ✅ Connected components (graph-এ কয়টা দ্বীপ?)
-  ✅ Cycle detection (undirected graph-এ সাইকেল আছে?)
-  ✅ Kruskal's MST (Minimum Spanning Tree)
-  ✅ Dynamic connectivity (edge যোগ হচ্ছে ধীরে ধীরে)
-  ✅ Image segmentation (পিক্সেল গোত্রে ভাগ)
-  ✅ Clustering (HAC-এর single-linkage variant)
+# Usage:
+uf = UnionFind(5)  # 5 elements: 0,1,2,3,4 — each their own group
+uf.union(0, 1)     # 0 and 1 are now connected
+uf.union(2, 3)     # 2 and 3 are now connected
+print(uf.find(0) == uf.find(1))  # True (same group)
+print(uf.find(0) == uf.find(2))  # False (different groups)
+uf.union(1, 2)     # now 0-1-2-3 are all connected
+print(uf.find(0) == uf.find(3))  # True (same group now!)</div>
 
-WHY "NO SPLIT":
-  Union-Find শুধু জোড়ে — বিচ্ছেদ করতে পারে না।
-  যদি edge মুছতে হয় → offline reverse trick
-  (সব operation পেছন থেকে প্রশ্ন সাজাও — delete → union হয়ে যায়)।</div>
+<div class="code-block"># ── STEP 2: Path compression optimization ──
+# The naive find() follows a long chain. Path compression
+# FLATTENS the tree — makes future queries O(1).
+
+class UnionFind:
+    def __init__(self, n):
+        self.parent = list(range(n))
+        self.rank = [0] * n  # for union by rank
+
+    def find(self, x):
+        """Find with PATH COMPRESSION — flatten the tree."""
+        if self.parent[x] != x:
+            # Recursively find root AND update parent to root
+            self.parent[x] = self.find(self.parent[x])  # compress!
+        return self.parent[x]
+
+    def union(self, x, y):
+        """Union by RANK — attach shorter tree under taller."""
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x == root_y:
+            return False  # already same group (cycle in undirected graph)
+
+        # Attach smaller rank tree under larger
+        if self.rank[root_x] &lt; self.rank[root_y]:
+            root_x, root_y = root_y, root_x
+        self.parent[root_y] = root_x
+        if self.rank[root_x] == self.rank[root_y]:
+            self.rank[root_x] += 1
+        return True
+
+# With BOTH optimizations:
+# find and union are amortized O(α(n)) ≈ O(1)
+# α = inverse Ackermann function (never exceeds 4 for any practical n)</div>
+
+<div class="code-block"># ── STEP 3: Cycle detection in undirected graphs ──
+# Union-Find detects cycles: if union returns False, there's a cycle!
+
+def has_cycle_undirected(n, edges):
+    """Check if undirected graph has a cycle."""
+    uf = UnionFind(n)
+    for u, v in edges:
+        if not uf.union(u, v):  # already connected = cycle!
+            return True
+    return False
+
+# Graph: 0-1-2-0 (triangle = cycle)
+edges = [(0, 1), (1, 2), (2, 0)]
+print(has_cycle_undirected(3, edges))  # True
+
+# Graph: 0-1-2 (no cycle)
+edges2 = [(0, 1), (1, 2)]
+print(has_cycle_undirected(3, edges2))  # False</div>
+
+<div class="code-block"># ── STEP 4: Number of connected components ──
+# "How many separate islands are there?"
+
+def count_components(n, edges):
+    """Count connected groups in a graph."""
+    uf = UnionFind(n)
+    for u, v in edges:
+        uf.union(u, v)
+
+    # Count unique roots (each root = one component)
+    roots = set()
+    for i in range(n):
+        roots.add(uf.find(i))
+    return len(roots)
+
+# 5 nodes, edges connecting some:
+# 0-1-2 (component 1), 3-4 (component 2)
+edges = [(0, 1), (1, 2), (3, 4)]
+print(count_components(5, edges))  # 2</div>
+
+<div class="code-block"># ── STEP 5: Kruskal's Minimum Spanning Tree ──
+# MST = connect all nodes with minimum total edge weight.
+# Kruskal: sort edges by weight, add if no cycle (Union-Find!).
+
+def kruskal_mst(n, edges):
+    """
+    Find Minimum Spanning Tree using Kruskal's algorithm.
+    edges = [(weight, u, v), ...]
+    Returns list of edges in the MST.
+    """
+    # Sort edges by weight (cheapest first)
+    edges.sort()
+    uf = UnionFind(n)
+    mst = []
+
+    for weight, u, v in edges:
+        if uf.union(u, v):  # connects two different groups
+            mst.append((weight, u, v))
+            if len(mst) == n - 1:  # MST has n-1 edges
+                break
+
+    return mst
+
+# Connect 4 cities with minimum road cost:
+roads = [
+    (10, 0, 1),  # road 0-1 costs 10
+    (30, 0, 2),  # road 0-2 costs 30
+    (20, 1, 2),  # road 1-2 costs 20
+    (50, 2, 3),  # road 2-3 costs 50
+    (40, 1, 3),  # road 1-3 costs 40
+]
+
+mst = kruskal_mst(4, roads)
+print(mst)  # [(10,0,1), (20,1,2), (40,1,3)] — total cost 70
+# Cheapest way to connect all 4 cities</div>
+
+<div class="code-block"># ── STEP 6: Real-world Union-Find applications ──
+# Union-Find appears in many real systems:
+
+# 1. NETWORK CONNECTIVITY:
+#   "Can node A reach node B?" → same component check
+
+# 2. IMAGE SEGMENTATION:
+#   Group similar pixels together → each group = one segment
+
+# 3. ENTITY RESOLUTION (data engineering):
+#   Are "J. Smith" and "John Smith" the same person?
+#   If yes, union them → unique entities at the end
+
+# 4. CLUSTERING:
+#   Merge similar items → clusters emerge as connected components
+
+# 5. DYNAMIC CONNECTIVITY:
+#   Edges added over time, need to answer "are A and B connected?"
+
+# 6. LEETCODE CLASSICS:
+#   - Number of provinces (connected components)
+#   - Accounts merge (entity resolution)
+#   - Redundant connection (cycle detection)
+#   - Min cost to connect all points (MST)
+
+# WHEN NOT TO USE UNION-FIND:
+# ❌ Need to SPLIT groups (Union-Find only merges)
+# ❌ Need shortest PATH (use BFS/Dijkstra instead)
+# ❌ Need the actual connections (use adjacency list)
+
+# SUMMARY:
+# find(x) → O(1) amortized — which group is x in?
+# union(x,y) → O(1) amortized — merge two groups
+# Perfect for: components, cycles, connectivity, MST</div>
 
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার — Union-Find তোমার ডেটা পাইপলাইনেও লুকিয়ে থাকে। Entity resolution: দুই রেকর্ড কি একই ব্যক্তি? মিললে union করো — শেষে যে root গুলো বাঁচে, সেগুলোই আসল unique entity। Embedding clustering: দুই ভেক্টরের similarity থ্রেশহোল্ডের বেশি হলে union করো — connected components-ই হয়ে যায় cluster (single-linkage-এর দ্রুততম বাস্তবায়ন)। Streaming deduplication-এও একই কৌশল — নতুন রেকর্ড এলে শুধু union করো, পুরো ডেটাসেট আবার স্ক্যান করতে হয় না।</div>
 <div class="dialogue en">"You're an AI engineer — union-find hides inside your data pipelines too. Entity resolution: are two records the same person? If they match, union them — the surviving roots are the unique entities. Embedding clustering: if two vectors' similarity crosses a threshold, union them — the connected components become the clusters (the fastest way to implement single-linkage clustering). The same trick works for streaming deduplication — when a new record arrives, just union it in, no need to rescan the whole dataset."</div>
@@ -392,22 +780,246 @@ doors.push({
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। RAG-এ retrieved documents rank করতে হয় — relevance score অনুযায়ী sort। Hyperparameter tuning-এ range-এ binary search করা যায়। Log analysis — timestamp অনুযায়ী sort করে specific সময়ের event খুঁজি। Sorted data হলো ক্ষমতার ভিত্তি।</div>
 <div class="dialogue en">"You're an AI engineer. In RAG, retrieved documents must be ranked — sorted by relevance score. In hyperparameter tuning, binary search across a range. In log analysis — sort by timestamp, then find specific events. Sorted data is the foundation of power."</div>
 
-<div class="code-block">Python Sorting & Binary Search:
+<div class="code-block"># ── STEP 1: Python's sorting ──
+# Python's sorted() uses Timsort — O(n log n), very fast.
+# It's a STABLE sort (equal elements keep their original order).
 
-# Python's sorted() uses Timsort — O(n log n)
+# Sort a list:
 scores = [0.3, 0.9, 0.1, 0.7, 0.5]
-sorted_scores = sorted(scores, reverse=True)
-# → [0.9, 0.7, 0.5, 0.3, 0.1]
+sorted_scores = sorted(scores)                    # ascending
+sorted_desc = sorted(scores, reverse=True)        # descending
+print(sorted_scores)  # [0.1, 0.3, 0.5, 0.7, 0.9]
+print(sorted_desc)    # [0.9, 0.7, 0.5, 0.3, 0.1]
 
-# Sort by key (RAG ranking)
-docs = [("doc1", 0.45), ("doc2", 0.92), ("doc3", 0.78)]
-ranked = sorted(docs, key=lambda x: x[1], reverse=True)
+# sorted() returns a NEW list (original unchanged):
+print(scores)  # [0.3, 0.9, 0.1, 0.7, 0.5] — unchanged!
 
-# Binary Search (bisect module)
+# .sort() modifies in-place (faster, no extra memory):
+scores.sort()  # scores is now sorted in-place
+
+# Sort with a KEY function (very common):
+students = [
+    {"name": "Fatima", "grade": 85},
+    {"name": "Ahmed", "grade": 92},
+    {"name": "Sara", "grade": 78},
+]
+
+# Sort by grade:
+by_grade = sorted(students, key=lambda s: s["grade"])
+print([s["name"] for s in by_grade])  # ['Sara', 'Fatima', 'Ahmed']
+
+# Sort by name length:
+by_name = sorted(students, key=lambda s: len(s["name"]))
+print([s["name"] for s in by_name])  # ['Sara', 'Ahmed', 'Fatima']</div>
+
+<div class="code-block"># ── STEP 2: Multi-criteria sorting ──
+# Sort by multiple fields: (primary, secondary)
+
+# Sort by grade DESC, then name ASC:
+students = [
+    {"name": "Fatima", "grade": 85},
+    {"name": "Ahmed", "grade": 92},
+    {"name": "Bob", "grade": 85},     # same grade as Fatima
+    {"name": "Sara", "grade": 92},    # same grade as Ahmed
+]
+
+result = sorted(students, key=lambda s: (-s["grade"], s["name"]))
+for s in result:
+    print(f"  {s['name']}: {s['grade']}")
+# Ahmed: 92      (grade desc, name asc)
+# Sara: 92
+# Bob: 85
+# Fatima: 85
+
+# Using operator.itemgetter (faster than lambda):
+from operator import itemgetter
+ranked = sorted(students, key=itemgetter("grade"))
+
+# RAG example — sort documents by relevance score:
+docs = [
+    ("doc1", 0.45, "Python tutorial"),
+    ("doc2", 0.92, "Python advanced"),
+    ("doc3", 0.78, "Python basics"),
+]
+ranked_docs = sorted(docs, key=lambda d: d[1], reverse=True)
+for doc in ranked_docs:
+    print(f"  {doc[0]}: {doc[1]:.2f} - {doc[2]}")
+# doc2: 0.92 - Python advanced
+# doc3: 0.78 - Python basics
+# doc1: 0.45 - Python tutorial</div>
+
+<div class="code-block"># ── STEP 3: Binary search — the power of sorted data ──
+# Binary search: find an item in a SORTED list in O(log n).
+# Each step eliminates HALF the remaining items.
+
+# Manual binary search:
+def binary_search(arr, target):
+    """Find target in sorted array — O(log n)."""
+    left, right = 0, len(arr) - 1
+
+    while left &lt;= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid        # found!
+        elif arr[mid] &lt; target:
+            left = mid + 1    # search right half
+        else:
+            right = mid - 1   # search left half
+
+    return -1  # not found
+
+sorted_list = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+print(binary_search(sorted_list, 7))   # 3 (index)
+print(binary_search(sorted_list, 10))  # -1 (not found)
+
+# WHY BINARY SEARCH IS FAST:
+# 1000 items → 10 steps (log₂1000 ≈ 10)
+# 1 million items → 20 steps
+# 1 billion items → 30 steps!
+# Compare with linear search: 1 billion items = 1 billion steps
+
+# Python's bisect module (don't write your own!):
 import bisect
+
 sorted_list = [1, 3, 5, 7, 9, 11, 13]
-idx = bisect.bisect_left(sorted_list, 7)  # → 3
-# Found in O(log n)!</div>
+
+# Find where to INSERT (maintaining sorted order):
+idx = bisect.bisect_left(sorted_list, 7)
+print(idx)  # 3 — 7 is at index 3
+
+# Insert maintaining sort:
+bisect.insort(sorted_list, 8)
+print(sorted_list)  # [1, 3, 5, 7, 8, 9, 11, 13]</div>
+
+<div class="code-block"># ── STEP 4: Sorting algorithms (for interviews) ──
+# Know these for interviews — even though Python's sorted() is faster.
+
+# BUBBLE SORT — O(n²), simple but slow:
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] &gt; arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+print(bubble_sort([5, 2, 8, 1, 9]))  # [1, 2, 5, 8, 9]
+
+# MERGE SORT — O(n log n), stable, divide &amp; conquer:
+def merge_sort(arr):
+    if len(arr) &lt;= 1:
+        return arr
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    return merge(left, right)
+
+def merge(left, right):
+    result = []
+    i = j = 0
+    while i &lt; len(left) and j &lt; len(right):
+        if left[i] &lt;= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+
+print(merge_sort([5, 2, 8, 1, 9]))  # [1, 2, 5, 8, 9]
+
+# QUICK SORT — O(n log n) average, O(n²) worst:
+def quick_sort(arr):
+    if len(arr) &lt;= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x &lt; pivot]
+    mid = [x for x in arr if x == pivot]
+    right = [x for x in arr if x &gt; pivot]
+    return quick_sort(left) + mid + quick_sort(right)
+
+# ALGORITHM COMPARISON:
+# ┌─────────────┬───────────┬──────────┬────────────┐
+# │ Algorithm   │ Average   │ Worst    │ Stable?    │
+# ├─────────────┼───────────┼──────────┼────────────┤
+# │ Bubble      │ O(n²)     │ O(n²)    │ Yes        │
+# │ Merge       │ O(n log n)│ O(n log n)│ Yes       │
+# │ Quick       │ O(n log n)│ O(n²)    │ No         │
+# │ Timsort     │ O(n log n)│ O(n log n)│ Yes       │
+# └─────────────┴───────────┴──────────┴────────────┘
+# Python uses Timsort — the best of merge sort + insertion sort</div>
+
+<div class="code-block"># ── STEP 5: Binary search variations ──
+# Binary search isn't just for finding exact values.
+# It can find BOUNDARIES in sorted data.
+
+import bisect
+
+sorted_list = [1, 2, 2, 2, 3, 4, 5, 5, 6]
+
+# bisect_left: leftmost position to insert (first 2):
+print(bisect.bisect_left(sorted_list, 2))   # 1
+
+# bisect_right: rightmost position (after last 2):
+print(bisect.bisect_right(sorted_list, 2))  # 4
+
+# Count occurrences of a value:
+def count_occurrences(arr, target):
+    """Count how many times target appears in sorted array."""
+    left = bisect.bisect_left(arr, target)
+    right = bisect.bisect_right(arr, target)
+    return right - left
+
+print(count_occurrences(sorted_list, 2))  # 3 (three 2's)
+print(count_occurrences(sorted_list, 5))  # 2 (two 5's)
+
+# BINARY SEARCH ON ANSWER (advanced pattern):
+# "Find the minimum capacity such that..."
+def binary_search_answer(low, high, check_fn):
+    """Binary search on a range of possible answers."""
+    while low &lt; high:
+        mid = (low + high) // 2
+        if check_fn(mid):
+            high = mid
+        else:
+            low = mid + 1
+    return low
+
+# Example: min ship capacity to ship packages in D days
+# check_fn(capacity) = can we ship all in D days with this capacity?</div>
+
+<div class="code-block"># ── STEP 6: When to sort vs not ──
+# Sorting costs O(n log n) — don't sort unnecessarily.
+
+# SORT when:
+# - Need to find items by value (binary search)
+# - Need ranked/ordered output
+# - Need median, percentiles
+# - Preprocessing for repeated searches
+
+# DON'T SORT when:
+# - Only need min/max (use min()/max() — O(n))
+# - Only need to check membership (use set/dict — O(1))
+# - Only need one search (linear scan O(n) is fine)
+# - Data is constantly changing (maintaining sort is expensive)
+
+# Python sorting tricks:
+# Reverse sort: sorted(arr, reverse=True)
+# Sort tuples naturally: sorted([(3, 'b'), (1, 'a'), (2, 'c')])
+#   → [(1, 'a'), (2, 'c'), (3, 'b')] — by first element
+
+# Sort dictionary by value:
+d = {"apple": 50, "banana": 20, "cherry": 70}
+sorted_d = dict(sorted(d.items(), key=lambda x: x[1], reverse=True))
+print(sorted_d)  # {'cherry': 70, 'apple': 50, 'banana': 20}
+
+# PRACTICAL: Top-K with sorting:
+scores = [("A", 85), ("B", 92), ("C", 78), ("D", 95), ("E", 65)]
+top3 = sorted(scores, key=lambda x: x[1], reverse=True)[:3]
+print(top3)  # [('D', 95), ('B', 92), ('A', 85)]
+# Note: for large data, use heapq.nlargest instead</div>
 
 <div class="dialogue">কিস্ত — ন্যায়বিচার। আল্লাহ বলেন — "হে ঈমানদারগণ, তোমরা আল্লাহর জন্য ন্যায়ের সাক্ষী হয়ে দৃঢ়ভাবে দাঁড়াও।" (৫:৮)। ন্যায়বিচার মানে প্রতিটা জিনিসকে তার সঠিক স্থানে রাখা। Sorting হলো সেই কিস্তের ছায়া — প্রতিটা উপাদানকে তার স্থানে। Binary search তখনই কাজ করে যখন কিস্ত প্রতিষ্ঠিত — যখন সবকিছু তার জায়গায়।</div>
 <div class="dialogue en">"Qist — justice. Allah says — 'O you who have believed, be persistently standing firm for Allah, witnesses in justice.' (5:8). Justice means placing each thing in its correct position. Sorting is the shadow of qist — each element in its place. Binary search works only when qist is established — when everything is where it belongs."</div>
@@ -515,77 +1127,213 @@ doors.push({
 <div class="dialogue">তিন ধাপ। Divide — সমস্যা ভাগ করো ছোট টুকরোয়। Conquer — প্রতিটা টুকরো আলাদা সমাধান করো (সাধারণত recursion — Door 2)। Combine — সমাধানগুলো জোড়ো। এই তিন ধাপেই merge sort, quick sort, binary search, FFT — সব।</div>
 <div class="dialogue en">"Three steps. Divide — split the problem into smaller pieces. Conquer — solve each piece separately (usually recursion — Door 2). Combine — join the solutions. In these three steps: merge sort, quick sort, binary search, FFT — all."</div>
 
-<div class="code-block">Merge Sort — The D&C Classic:
+<div class="code-block"># ── STEP 1: What is Divide and Conquer? ──
+# D&amp;C is a three-step strategy:
+# 1. DIVIDE: break the problem into smaller sub-problems
+# 2. CONQUER: solve each sub-problem recursively
+# 3. COMBINE: merge the solutions
+
+# Merge Sort is the classic D&amp;C example:
 
 def merge_sort(arr):
-    if len(arr) <= 1:           # base case
+    """Sort by dividing in half, sorting each, merging."""
+    if len(arr) &lt;= 1:              # BASE CASE
         return arr
-    mid = len(arr) // 2          # DIVIDE
-    left = merge_sort(arr[:mid]) # CONQUER (recursion)
+    mid = len(arr) // 2             # 1. DIVIDE
+    left = merge_sort(arr[:mid])    # 2. CONQUER (recurse)
     right = merge_sort(arr[mid:])
-    return merge(left, right)    # COMBINE
+    return merge(left, right)       # 3. COMBINE
 
 def merge(a, b):
-    """দুই সাজানো list জোড়ো — O(n)"""
+    """Merge two sorted lists into one — O(n)."""
     result = []
     i = j = 0
-    while i < len(a) and j < len(b):
-        if a[i] <= b[j]:
+    while i &lt; len(a) and j &lt; len(b):
+        if a[i] &lt;= b[j]:
             result.append(a[i]); i += 1
         else:
             result.append(b[j]); j += 1
-    result.extend(a[i:])
+    result.extend(a[i:])   # remaining items
     result.extend(b[j:])
     return result
 
-merge_sort([38, 27, 43, 3, 9, 82, 10])
-# → [3, 9, 10, 27, 38, 43, 82]
+print(merge_sort([38, 27, 43, 3, 9, 82, 10]))
+# [3, 9, 10, 27, 38, 43, 82]
 
-D&C FAMILY:
-  • Merge sort — ভাগ করো, sort করো, merge করো। stable, O(n log n) সবসময়।
-  • Quick sort — pivot বেছো, ছোট/বড় ভাগ করো, recursion। গড়ে O(n log n), worst O(n²)।
-  • Binary search — অর্ধেক বাদ দাও। (Door 11 — আসলে এটাও D&C!)
-  • Closest pair, Strassen matrix mult, FFT — সব D&C।
+# Visual breakdown:
+# [38, 27, 43, 3, 9, 82, 10]
+# → [38, 27, 43] and [3, 9, 82, 10]      DIVIDE
+# → [38] [27, 43]  [3, 9] [82, 10]       DIVIDE more
+# → [38] [27] [43]  [3] [9] [82] [10]    BASE CASE
+# → [27, 38] [43]   [3, 9] [10, 82]      MERGE
+# → [27, 38, 43]    [3, 9, 10, 82]       MERGE
+# → [3, 9, 10, 27, 38, 43, 82]           FINAL MERGE</div>
 
-WHY O(n log n):
-  প্রতি স্তরে O(n) combine কাজ। log n স্তর (প্রতি বার অর্ধেক)।
-  O(n) * O(log n) = O(n log n)। এটাই comparison sort-এর তাত্ত্বিক সীমা।</div>
+<div class="code-block"># ── STEP 2: Why D&C gives O(n log n) ──
+# At each level, merging costs O(n).
+# There are O(log n) levels (we divide by 2 each time).
+# Total: O(n) × O(log n) = O(n log n).
+
+# This is the THEORETICAL LIMIT for comparison-based sorting.
+# You can't sort faster than O(n log n) using only comparisons.
+
+# Levels in merge sort for n=8:
+# Level 0: 8 elements, merge cost = 8
+# Level 1: two 4-element merges, cost = 4+4 = 8
+# Level 2: four 2-element merges, cost = 2+2+2+2 = 8
+# Level 3: base case (1 element each)
+# Total: 8 × 3 = 24 operations = O(8 × log 8) = O(8 × 3)
+
+# Compare:
+# O(n²) for n=1,000,000: 1,000,000,000,000 operations
+# O(n log n) for n=1,000,000: 20,000,000 operations
+# That's 50,000x faster!</div>
+
+<div class="code-block"># ── STEP 3: Quick Sort — D&C with partitioning ──
+# Quick Sort divides differently: pick a PIVOT, split into less/greater.
+
+def quick_sort(arr):
+    """Sort by partitioning around a pivot."""
+    if len(arr) &lt;= 1:
+        return arr
+
+    pivot = arr[len(arr) // 2]
+
+    left = [x for x in arr if x &lt; pivot]    # smaller
+    mid = [x for x in arr if x == pivot]      # equal
+    right = [x for x in arr if x &gt; pivot]    # larger
+
+    return quick_sort(left) + mid + quick_sort(right)
+
+print(quick_sort([3, 6, 8, 10, 1, 2, 1]))
+# [1, 1, 2, 3, 6, 8, 10]
+
+# MERGE SORT vs QUICK SORT:
+# ┌────────────┬────────────┬───────────┬────────┐
+# │ Aspect     │ Merge Sort │ Quick Sort│        │
+# ├────────────┼────────────┼───────────┼────────┤
+# │ Divide by  │ splitting  │ pivot     │        │
+# │ Worst case │ O(n log n) │ O(n²)     │        │
+# │ Average    │ O(n log n) │ O(n log n)│        │
+# │ In-place?  │ No (extra) │ Yes       │        │
+# │ Stable?    │ Yes        │ No        │        │
+# │ Best for   │ linked list│ arrays    │        │
+# └────────────┴────────────┴───────────┴────────┘</div>
+
+<div class="code-block"># ── STEP 4: Binary Search as D&C ──
+# Binary search IS divide and conquer!
+# DIVIDE: split the search space in half
+# CONQUER: search only the relevant half
+# COMBINE: trivial (just return the result)
+
+def binary_search(arr, target):
+    """D&C search: eliminate half each step."""
+    left, right = 0, len(arr) - 1
+
+    while left &lt;= right:
+        mid = (left + right) // 2       # DIVIDE
+        if arr[mid] == target:
+            return mid                   # FOUND
+        elif arr[mid] &lt; target:
+            left = mid + 1              # CONQUER right half
+        else:
+            right = mid - 1             # CONQUER left half
+
+    return -1
+
+# Binary search on 1 billion items: only 30 comparisons!
+# That's the power of dividing the problem.</div>
+
+<div class="code-block"># ── STEP 5: D&C beyond sorting ──
+# Divide and Conquer isn't just for sorting.
+# Many problems benefit from this strategy.
+
+# 1. MAXIMUM SUBARRAY (Kadane's alternative):
+def max_subarray_dc(arr, low, high):
+    """Find max subarray sum using D&C."""
+    if low == high:
+        return arr[low]
+
+    mid = (low + high) // 2
+
+    # Max in left half, right half, or crossing mid:
+    left_max = max_subarray_dc(arr, low, mid)
+    right_max = max_subarray_dc(arr, mid + 1, high)
+
+    # Crossing sum:
+    cross_left = float('-inf')
+    total = 0
+    for i in range(mid, low - 1, -1):
+        total += arr[i]
+        cross_left = max(cross_left, total)
+
+    cross_right = float('-inf')
+    total = 0
+    for i in range(mid + 1, high + 1):
+        total += arr[i]
+        cross_right = max(cross_right, total)
+
+    return max(left_max, right_max, cross_left + cross_right)
+
+# 2. CLOSEST PAIR OF POINTS:
+# Divide points by x-coordinate, find closest in each half,
+# then check pairs straddling the dividing line.
+
+# 3. MATRIX MULTIPLICATION (Strassen's):
+# Standard: O(n³). Strassen's D&C: O(n^2.81).
+
+# 4. FFT (Fast Fourier Transform):
+# D&C enables O(n log n) Fourier transform.
+# Used in signal processing, polynomial multiplication.</div>
+
+<div class="code-block"># ── STEP 6: Simple sorting algorithms (for learning) ──
+# These are O(n²) — too slow for production, but good for learning.
+
+# BUBBLE SORT — swap adjacent pairs:
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] &gt; arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+# SELECTION SORT — find min, put at front:
+def selection_sort(arr):
+    for i in range(len(arr)):
+        min_idx = i
+        for j in range(i + 1, len(arr)):
+            if arr[j] &lt; arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+    return arr
+
+# INSERTION SORT — insert each element in correct position:
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j &gt;= 0 and arr[j] &gt; key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+    return arr
+
+# When to use each:
+# ┌─────────────────┬───────────┬──────────────────────────┐
+# │ Algorithm       │ Time      │ When to use              │
+# ├─────────────────┼───────────┼──────────────────────────┤
+# │ Insertion sort  │ O(n²)     │ small/nearly sorted data │
+# │ Bubble sort     │ O(n²)     │ learning only            │
+# │ Selection sort  │ O(n²)     │ learning only            │
+# │ Merge sort      │ O(n log n)│ stable sort needed       │
+# │ Quick sort      │ O(n log n)│ general purpose          │
+# │ Python sorted() │ O(n log n)│ ALWAYS — Timsort         │
+# └─────────────────┴───────────┴──────────────────────────┘
+# REALITY: In Python, just use sorted() or .sort(). Always.</div>
 
 <div class="dialogue">কিন্তু merge sort আর quick sort — এগুলো advanced। শুরুতে চলো সহজ sorting গুলো দেখি, যেগুলো প্রতিদিনের জীবনে আমরা অজান্তেই করি।</div>
 <div class="dialogue en">"But merge sort and quick sort are advanced. Let's start with the simpler sorts — ones we do unconsciously in daily life."</div>
-
-<div class="code-block">প্রতিদিনের Sorting — Bubble, Selection, Insertion:
-
-১. BUBBLE SORT — জলের বুদবুদ
-   পাশাপাশি দুটো উপাদান তুলনা করো, বড়টা ডানে সরাও।
-   বৃহত্তম সংখ্যাগুলো ধীরে ধীরে উপরে ভেসে ওঠে — বুদবুদের মতো।
-   সবচেয়ে ধীর: O(n²)। শেখার জন্য, production-এ নয়।
-
-   [5, 3, 8, 1] → [3, 5, 8, 1] → [3, 5, 1, 8]
-                              → [3, 1, 5, 8]
-                              → [1, 3, 5, 8] ✓
-
-২. SELECTION SORT — শিক্ষক যেভাবে সারি সাজান
-   ৩০ জন ছাত্রকে উচ্চতা অনুযায়ী সাজাতে হবে।
-   শিক্ষক সবচেয়ে খাটো ছাত্রকে খুঁজে বের করে প্রথমে দাঁড় করান।
-   তারপর বাকি ২৯ জন থেকে সবচেয়ে খাটোকে দ্বিতীয়ে। এভাবে।
-   প্রতিবার সবচেয়ে ছোটটা বেছে নিয়ে সামনে রাখা। O(n²)।
-
-   [5, 3, 8, 1] → [1| 3, 8, 5] → [1, 3| 8, 5] → [1, 3, 5| 8] ✓
-
-৩. INSERTION SORT — হাতে তাস সাজানো
-   তোমার হাতে তাস — ২, ৫, ৯ সাজানো। ডান হাতে ৭ এলো।
-   তুমি ৫ আর ৯-এর মাঝে জায়গা করো, ৭ বসিয়ে দাও।
-   একটা একটা করে নতুন উপাদান নিয়ে সঠিক জায়গায় বসানো।
-   ছোট বা প্রায়-সাজানো ডেটার জন্য দ্রুত — প্রায় O(n)।
-
-   [2, 5, 9] + insert(7) → [2, 5, 7, 9]
-
-কেন এগুলো জানতে হবে?
-  • Timsort (Python sorted()) = Insertion + Merge hybrid
-  • Insertion sort ছোট অ্যারের জন্য দ্রুত (Timsort-এ run-এ ব্যবহৃত)
-  • Selection sort = কম swap (প্রতি পাসে সর্বোচ্চ ১ swap)
-  • Bubble sort = শেখার জন্য সবচেয়ে সহজ, কিন্তু বাস্তবে সবচেয়ে খারাপ</div>
 
 <div class="diagram">
   <div class="diag-title">তিন Sort — এক পাস করে</div>
