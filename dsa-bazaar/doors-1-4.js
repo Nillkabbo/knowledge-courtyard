@@ -72,21 +72,138 @@ doors.push({
   </div>
 </div>
 
-<div class="code-block">দ্রুততার সিঁড়ি — The Ladder (slow → fast, read top-down):
+<div class="code-block"># ── STEP 1: What is Big-O? ──
+# Big-O measures HOW WORK GROWS as input grows.
+# It answers: "if input doubles, does work double? quadruple? explode?"
 
-  O(1)        ধ্রুবক       array[5] অ্যাক্সেস
-  O(log n)    লগারিদমিক    binary search, balanced tree
-  O(n)        রৈখিক        একবার চলা, স্ক্যান
-  O(n log n)  লিনিয়ারিদমিক ভালো sorting (merge, quick, Timsort)
-  O(n²)       দ্বিঘাত       nested loop, naive pair
-  O(2ⁿ)       সূচকীয়      naive recursion (Fibonacci)
-  O(n!)       ফ্যাক্টোরিয়াল সব permutation (brute traveling-salesman)
+# Example: searching a list of n items
+# - Check each one by one → n operations → O(n)
+# - Binary search (sorted) → log(n) operations → O(log n)
 
-স্মরণে রাখার কৌশল:
-  • ধ্রুবক গুণনীয়ক বাদ:  O(2n) = O(n)
-  • নিম্ন পদ বাদ:        O(n² + n) = O(n²)
-  • সাধারণত worst case:  Big-O প্রায়ই worst-case বর্ণনা করে, তবে best/average-ও সম্ভব
-  • log এর ভিত্তি অপ্রাসঙ্গিক: O(log₂ n) = O(log₁₀ n) = O(log n)</div>
+# Big-O focuses on the SHAPE, not exact numbers:
+#   3n² + 5n + 100  →  O(n²)    (drop constants, keep dominant term)
+#   2n + 50         →  O(n)
+#   10              →  O(1)     (constant, doesn't grow with input)</div>
+
+<div class="code-block"># ── STEP 2: The ladder of growth rates ──
+# From fastest (best) to slowest (worst):
+
+# O(1)        — constant:      array[5] access (same time regardless of size)
+# O(log n)    — logarithmic:   binary search (halves each step)
+# O(n)        — linear:        scanning a list once
+# O(n log n)  — linearithmic:  good sorting (merge sort, quick sort)
+# O(n²)       — quadratic:     nested loops (bubble sort, pair checking)
+# O(2ⁿ)       — exponential:   naive Fibonacci recursion
+# O(n!)       — factorial:     all permutations (brute traveling salesman)
+
+# The KEY insight: O(n²) is 100x slower than O(n) when n=10
+# But it's 10,000x slower when n=100. The gap GROWS.</div>
+
+<div class="code-block"># ── STEP 3: Counting loops — the quick method ──
+# How to estimate Big-O by looking at code:
+
+# Single loop → O(n):
+def sum_all(items):
+    total = 0
+    for item in items:      # one loop = n iterations
+        total += item
+    return total
+# Big-O: O(n)
+
+# Nested loops → O(n²):
+def print_pairs(items):
+    for i in items:          # n iterations
+        for j in items:      # n iterations inside = n * n
+            print(i, j)
+# Big-O: O(n²)
+
+# Halving loop → O(log n):
+def binary_search(sorted_list, target):
+    lo, hi = 0, len(sorted_list) - 1
+    while lo &lt;= hi:          # halves each time
+        mid = (lo + hi) // 2
+        if sorted_list[mid] == target:
+            return mid
+        elif sorted_list[mid] &lt; target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1
+# Big-O: O(log n)</div>
+
+<div class="code-block"># ── STEP 4: Feel the difference — O(n) vs O(n²) ──
+import time
+
+def sum_fast(n):
+    """O(n) — single loop."""
+    total = 0
+    for i in range(n):
+        total += i
+    return total
+
+def sum_slow(n):
+    """O(n²) — nested loop doing the same work."""
+    total = 0
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                total += i
+    return total
+
+# Compare timing:
+for n in [1000, 2000, 4000]:
+    t1 = time.time(); sum_fast(n); fast = time.time() - t1
+    t2 = time.time(); sum_slow(n); slow = time.time() - t2
+    print(f"n={n:>5}:  O(n)={fast:.5f}s   O(n²)={slow:.5f}s   ratio={slow/fast:.0f}x")
+
+# n= 1000:  O(n)=0.00003s   O(n²)=0.02000s   ratio=667x
+# n= 2000:  O(n)=0.00006s   O(n²)=0.08000s   ratio=1333x
+# n= 4000:  O(n)=0.00012s   O(n²)=0.32000s   ratio=2667x
+# When n doubles: O(n) doubles, O(n²) quadruples!</div>
+
+<div class="code-block"># ── STEP 5: Space complexity ──
+# Big-O measures TIME. Space complexity measures MEMORY.
+
+def reverse_in_place(arr):
+    """O(1) space — no extra memory used."""
+    left, right = 0, len(arr) - 1
+    while left &lt; right:
+        arr[left], arr[right] = arr[right], arr[left]
+        left += 1
+        right -= 1
+    return arr
+# Time: O(n), Space: O(1) — done in-place
+
+def reverse_copy(arr):
+    """O(n) space — creates a new array."""
+    return arr[::-1]  # creates new list of size n
+# Time: O(n), Space: O(n) — extra memory
+
+# Recursion uses stack space:
+def factorial(n):
+    if n &lt;= 1: return 1
+    return n * factorial(n - 1)
+# Time: O(n), Space: O(n) — n stack frames</div>
+
+<div class="code-block"># ── STEP 6: Rules for simplifying ──
+# Rule 1: Drop constants — O(2n) = O(n), O(500) = O(1)
+# Rule 2: Drop lower terms — O(n² + n + 100) = O(n²)
+# Rule 3: Different inputs = different variables:
+#         O(a + b) for two arrays of different sizes
+# Rule 4: Log base doesn't matter — O(log₂ n) = O(log₁₀ n) = O(log n)
+
+# Worst case vs average vs best:
+# Big-O usually means WORST CASE
+#   - Binary search: worst O(log n), best O(1) (lucky middle)
+#   - Quick sort: worst O(n²), average O(n log n)
+
+# Python-specific amortized costs:
+# list.append() → amortized O(1) (usually instant, occasionally resize)
+# list[0] → O(1) (direct access)
+# x in list → O(n) (must scan)
+# x in set → O(1) (hash lookup)
+# dict[key] → O(1) (hash lookup)
+# list.sort() → O(n log n) (Timsort)</div>
 
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। প্রতিটা পছন্দে Big-O ভাবো। Vector search — O(n) brute নাকি O(log n) HNSW? RAG retrieval — কত docs, কত ধাপ? LLM inference — O(n²) attention (n = token count) — তাই দীর্ঘ context দ্রুত ধীর। Sorting embeddings — O(n log n) কেন, O(n²) কেন নয়। সিনিয়র ইঞ্জিনিয়ার চিন্তেন স্কেলে, শুধু "এখন" নয়।</div>
 <div class="dialogue en">"You're an AI engineer. Think Big-O at every choice. Vector search — O(n) brute or O(log n) HNSW? RAG retrieval — how many docs, how many steps? LLM inference — O(n²) attention (n = token count) — that's why long contexts slow fast. Sorting embeddings — O(n log n), not O(n²). Senior engineers think at scale, not just 'now'."</div>
