@@ -86,39 +86,225 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: প্রসেসের ৫টি অবস্থা ও PCB। OS প্রতিটি প্রসেসের জন্য একটি PCB রাখে — পরিচয়, অবস্থা, সম্পদ।</div>
 
-<div class="code-block">— Terminal: Process দেখো ও নিয়ন্ত্রণ করো —
+<div class="code-block"># ── STEP 1: What is a process? ──
+# A PROGRAM is a file on disk (lifeless code).
+# A PROCESS is a running program (alive in memory).
 
-  # সব চলমান প্রসেস দেখো
-  $ ps aux | head -10
-  USER  PID  %CPU %MEM   VSZ   RSS TTY STAT START COMMAND
-  root    1   0.0  0.1 169372 13424 ?   Ss   Jul25 /sbin/init
-  user  1234  2.5  1.3 245678 52340 ?   Sl   09:15 python manage.py runserver
-  user  1235  0.1  0.2 189234 42100 ?   S    09:15 celery worker
+# Analogy:
+# Program = recipe in a cookbook (just text)
+# Process = someone actually cooking from that recipe (alive)
+# OS = the kitchen manager (assigns stoves, ingredients, time)
 
-  # real-time process monitor
-  $ top -o %CPU
-    PID USER  PR  NI  VIRT  RES  SHR S %CPU %MEM COMMAND
-    1234 user  20   0 245m  52m  8m S  2.5  1.3 python
+# Every process has:
+# - PID (Process ID): unique number
+# - Memory: code, data, stack, heap
+# - CPU state: registers, program counter
+# - Open files, network connections
+# - Parent process (who created it)
 
-  # একটি প্রসেস kill করো
-  $ kill 1234              # SIGTERM (ভদ্রে থামো)
-  $ kill -9 1234           # SIGKILL (জোরে থামাও)
+import os
 
-  # /proc filesystem — kernel-এর ভেতর দেখো
-  $ cat /proc/1234/status
-  Name: python
-  State: S (sleeping)
-  Pid: 1234
-  VmRSS: 52340 kB        # ব্যবহৃত মেমোরি
+# See your own process:
+print(f"My PID: {os.getpid()}")
+print(f"My parent PID: {os.getppid()}")
+print(f"User ID: {os.getuid()}")
 
-  # fork() in C — একটি প্রসেস থেকে আরেকটি জন্ম
-  pid_t pid = fork();
-  if (pid == 0) {
-      // child process — নতুন জীবন!
-      exec("/bin/ls");
-  } else {
-      wait(NULL);  // parent অপেক্ষা করে
-  }</div>
+# In Python, you can see process info:
+# psutil is a great library for process management:
+# import psutil
+# print(f"CPU percent: {psutil.cpu_percent()}")
+# print(f"Memory: {psutil.virtual_memory().percent}%")</div>
+
+<div class="code-block"># ── STEP 2: Process lifecycle ──
+# Every process goes through states:
+
+# NEW → READY → RUNNING → WAITING → READY → ... → TERMINATED
+
+states = {
+    "NEW": "Process being created (just forked)",
+    "READY": "Waiting for CPU (in the ready queue)",
+    "RUNNING": "Executing on CPU right now",
+    "WAITING": "Blocked on I/O (disk, network, sleep)",
+    "TERMINATED": "Finished execution (exited)",
+}
+
+print("PROCESS STATES:")
+for state, desc in states.items():
+    print(f"  {state}: {desc}")
+
+# Only ONE process can be RUNNING per CPU core at a time.
+# The OS rapidly switches between processes (context switching)
+# so fast that it LOOKS like they're all running simultaneously.
+
+# Context switch = save current process state, load next process state.
+# This happens thousands of times per second.</div>
+
+<div class="code-block"># ── STEP 3: Creating processes ──
+# How do processes come into existence?
+
+import subprocess
+import os
+
+# METHOD 1: subprocess (run another program):
+result = subprocess.run(["echo", "Hello from child"], capture_output=True, text=True)
+print(result.stdout.strip())  # Hello from child
+
+# METHOD 2: os.fork() (Unix only — create a copy of yourself):
+# Note: fork() doesn't work on Windows, only Unix/Linux/macOS
+
+# METHOD 3: multiprocessing (Python library):
+from multiprocessing import Process
+import time
+
+def worker(name, delay):
+    """A function that runs in a separate process."""
+    print(f"  Worker {name} starting (PID={os.getpid()})")
+    time.sleep(delay)
+    print(f"  Worker {name} done")
+
+# Create and start processes:
+processes = []
+for i in range(3):
+    p = Process(target=worker, args=(f"P{i}", i + 1))
+    p.start()
+    processes.append(p)
+
+# Wait for all to finish:
+for p in processes:
+    p.join()
+
+print("All workers done!")</div>
+
+<div class="code-block"># ── STEP 4: fork() and exec() ──
+# The Unix way to create processes: fork() then exec()
+
+# fork(): creates an EXACT COPY of the current process
+# - Parent gets the child's PID
+# - Child gets 0
+# - Both run the same code after fork()
+
+# exec(): replaces the current process with a new program
+# - PID stays the same, but the code changes completely
+
+# Classic fork() pattern (C/Unix):
+fork_code = """
+# C code (Python's os.fork works similarly):
+pid_t pid = fork();
+
+if (pid == 0) {
+    // CHILD process (pid == 0)
+    exec("/bin/ls");  // replace self with ls program
+} else if (pid > 0) {
+    // PARENT process (pid = child's PID)
+    wait(NULL);       // wait for child to finish
+} else {
+    // fork() failed
+    perror("fork");
+}
+"""
+
+# Python equivalent:
+# import os
+# pid = os.fork()
+# if pid == 0:
+#     os.execvp("ls", ["ls", "-la"])
+# else:
+#     os.waitpid(pid, 0)
+
+# HOW SHELLS WORK:
+# When you type "ls" in terminal:
+# 1. Shell forks itself (creates a copy)
+# 2. Child execs "ls" (becomes ls)
+# 3. Parent (shell) waits
+# 4. ls runs, prints output, exits
+# 5. Shell continues
+
+print("Every command you run = fork() + exec()")</div>
+
+<div class="code-block"># ── STEP 5: Signals — process communication ──
+# Signals are how the OS and other processes talk to YOUR process.
+
+import signal
+import os
+import time
+
+# Common signals:
+signals = {
+    "SIGTERM (15)": "Polite: 'please stop' (can be caught/ignored)",
+    "SIGKILL (9)":  "Forced: 'die now' (cannot be caught)",
+    "SIGINT (2)":   "Ctrl+C: user pressed Ctrl+C",
+    "SIGSTOP (19)": "Pause process (cannot be caught)",
+    "SIGCONT (18)": "Resume paused process",
+    "SIGHUP (1)":   "Terminal closed (hang up)",
+}
+
+print("COMMON SIGNALS:")
+for sig, desc in signals.items():
+    print(f"  {sig}: {desc}")
+
+# In Python, you can handle signals:
+def handle_sigterm(signum, frame):
+    """Graceful shutdown on SIGTERM."""
+    print("\nReceived SIGTERM — cleaning up...")
+    # Save state, close files, release resources
+    exit(0)
+
+# Register signal handler:
+# signal.signal(signal.SIGTERM, handle_sigterm)
+
+# Example: Django handles SIGTERM to shut down gracefully.
+# When you do docker stop, Docker sends SIGTERM, waits 10s,
+# then sends SIGKILL if the process hasn't exited.
+
+# Signal priority:
+# SIGTERM → give process time to clean up (graceful)
+# SIGKILL → no time, force kill (last resort)</div>
+
+<div class="code-block"># ── STEP 6: Process management commands ──
+# Essential terminal commands for process management:
+
+commands = {
+    "ps aux": "List all running processes",
+    "top": "Real-time process monitor (CPU, memory)",
+    "htop": "Better version of top (install separately)",
+    "kill PID": "Send SIGTERM to process (graceful)",
+    "kill -9 PID": "Send SIGKILL (force kill)",
+    "killall name": "Kill all processes by name",
+    "jobs": "List background jobs in current shell",
+    "bg": "Resume a job in background",
+    "fg": "Bring a background job to foreground",
+    "nohup cmd &": "Run command immune to hangups",
+    "nice -n 10 cmd": "Run with lower priority",
+    "pidof name": "Get PID of a named process",
+    "lsof -i :8080": "What process is using port 8080?",
+    "cat /proc/PID/status": "Detailed process info from kernel",
+}
+
+print("PROCESS MANAGEMENT COMMANDS:")
+for cmd, desc in commands.items():
+    print(f"  $ {cmd:25} → {desc}")
+
+# KEY CONCEPTS SUMMARY:
+# ┌────────────────┬──────────────────────────────────┐
+# │ Concept        │ Meaning                         │
+# ├────────────────┼──────────────────────────────────┤
+# │ Process        │ Running program in memory       │
+# │ PID            │ Unique process identifier       │
+# │ fork()         │ Create a copy of yourself       │
+# │ exec()         │ Replace self with new program   │
+# │ Signal         │ Message to a process            │
+# │ Context switch │ OS switches between processes   │
+# │ Zombie         │ Finished but parent hasn't seen │
+# │ Orphan         │ Parent died, adopted by init    │
+# │ Daemon         │ Background process (no terminal)│
+# └────────────────┴──────────────────────────────────┘
+
+# WHY THIS MATTERS FOR DEVELOPERS:
+# - Django/Gunicorn = multiple worker processes
+# - Celery = background process for async tasks
+# - Docker = isolated process namespaces
+# - Systemd = process supervisor (restart on crash)
+# Understanding processes = understanding how your apps run.</div>
 
 <div class="secret-box">💾 <strong>Program = রেসিপি, Process = রান্না, OS = রাঁধুনি।</strong> একটি প্রোগ্রাম নিষ্প্রাণ — কিন্তু OS এতে প্রাণ দেয়। PID, মেমোরি, CPU সময় — এই তিনটি দিয়ে একটি প্রসেস জীবন্ত হয়। কিন্তু একটি CPU একসাথে একটি জিনিসই করতে পারে। তাহলে শত শত প্রসেস কীভাবে একসাথে চলে? সেই রহস্য আসবে পরের দরজায়।</div>`,
   senior: {
@@ -210,42 +396,242 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Process = সব আলাদা (ভারী)। Thread = মেমোরি ভাগ (হালকা)। দ্রুত কিন্তু race condition ঝুঁকি।</div>
 
-<div class="code-block"># — Python: Threads ও GIL —
+<div class="code-block"># ── STEP 1: What is a thread? ──
+# A PROCESS has its own memory space (heavy, isolated).
+# A THREAD shares memory with other threads in the same process (light).
 
-  import threading
+# Analogy:
+# Process = a house with its own kitchen, bathroom, everything
+# Thread = people living in the same house, sharing the kitchen
 
-  # ❌ Race condition!
-  counter = 0
-  def increment():
-      global counter
-      for _ in range(1000000):
-          counter += 1   # NOT atomic!
+# Multiple threads in one process:
+# - Share the SAME memory (heap, global variables)
+# - Have their OWN stack (local variables)
+# - Can communicate through shared memory
+# - Much lighter than processes (faster to create/switch)
 
-  t1 = threading.Thread(target=increment)
-  t2 = threading.Thread(target=increment)
-  t1.start(); t2.start()
-  t1.join();  t2.join()
-  print(counter)  # ~= 1.4M (not 2M!) — race!
+# WHY THREADS?
+# - I/O-bound work (network requests, file operations)
+# - Keep UI responsive while doing work in background
+# - Parallel processing within shared memory
 
-  # ✅ Lock দিয়ে fix:
-  lock = threading.Lock()
-  def safe_increment():
-      global counter
-      for _ in range(1000000):
-          with lock:        # এক সময় এক thread
-              counter += 1
+# PROCESS vs THREAD:
+comparison = {
+    "Memory": "Process: isolated | Thread: shared",
+    "Creation": "Process: slow (~ms) | Thread: fast (~μs)",
+    "Communication": "Process: pipes/sockets | Thread: shared vars",
+    "Safety": "Process: crash isolated | Thread: crash kills all",
+    "Context switch": "Process: slow | Thread: fast",
+}
 
-  # Python GIL: এক সময় এক thread CPU-তে
-  # CPU-bound কাজে threading ধীর! → multiprocessing
-  # I/O-bound কাজে (network, disk) → threading ভালো
+print("PROCESS vs THREAD:")
+for aspect, comp in comparison.items():
+    print(f"  {aspect}: {comp}")</div>
 
-  # ps/thread দেখো:
-  $ ps -eLf | grep python
-  # LWP = Lightweight Process = thread ID
+<div class="code-block"># ── STEP 2: Race conditions ──
+# When multiple threads access SHARED data simultaneously,
+# the result depends on timing. This is a RACE CONDITION.
 
-  # thread info:
-  $ cat /proc/1234/status | grep Threads
-  # Threads: 4    ← এই process-এ ৪ threads</div>
+import threading
+
+# ❌ RACE CONDITION:
+counter = 0
+
+def increment():
+    """Increment counter 1 million times."""
+    global counter
+    for _ in range(1000000):
+        counter += 1  # NOT ATOMIC! Read → Add → Write
+
+# counter += 1 looks like one operation, but it's THREE:
+# 1. READ counter value
+# 2. ADD 1 to it
+# 3. WRITE new value back
+
+# If two threads interleave: both read 5, both add 1, both write 6.
+# Lost an increment!
+
+t1 = threading.Thread(target=increment)
+t2 = threading.Thread(target=increment)
+t1.start(); t2.start()
+t1.join();  t2.join()
+
+# Expected: 2000000, Actual: ~1400000 (depends on timing)
+print(f"Expected: 2000000, Got: {counter}")
+print("Race condition! 600000 increments were lost.")</div>
+
+<div class="code-block"># ── STEP 3: Locks — preventing race conditions ──
+# A LOCK ensures only ONE thread accesses shared data at a time.
+
+import threading
+
+counter = 0
+lock = threading.Lock()
+
+def safe_increment():
+    """Thread-safe increment using a lock."""
+    global counter
+    for _ in range(1000000):
+        with lock:  # only one thread at a time
+            counter += 1
+
+t1 = threading.Thread(target=safe_increment)
+t2 = threading.Thread(target=safe_increment)
+t1.start(); t2.start()
+t1.join();  t2.join()
+
+print(f"Expected: 2000000, Got: {counter}")  # 2000000 (correct!)
+
+# The LOCK ensures the read-add-write is ATOMIC (uninterruptible).
+# BUT: locks have a cost — they serialize access (slower).
+# Trade-off: correctness vs speed.
+
+# LOCK PITFALLS:
+# 1. Deadlock: Thread A holds Lock1, waits for Lock2.
+#              Thread B holds Lock2, waits for Lock1.
+#              Both wait forever.
+#
+# 2. Priority inversion: High-priority thread waits for low-priority.
+#
+# 3. Too many locks = no parallelism (everything serialized).
+
+# BEST PRACTICE:
+# - Hold locks for the SHORTEST time possible
+# - Acquire locks in CONSISTENT order (prevent deadlock)
+# - Prefer lock-free data structures when possible</div>
+
+<div class="code-block"># ── STEP 4: The Python GIL ──
+# Python has a GLOBAL INTERPRETER LOCK (GIL).
+# Only ONE thread can execute Python bytecode at a time.
+
+# This means:
+# - CPU-bound threading in Python = NO speedup (GIL blocks)
+# - I/O-bound threading in Python = YES speedup (GIL released during I/O)
+
+# CPU-BOUND (math, computation):
+# Threading doesn't help → use multiprocessing instead
+# Each process has its own GIL → true parallelism
+
+# I/O-BOUND (network, disk, database):
+# Threading DOES help → GIL released during I/O wait
+# One thread waits for network, another thread runs
+
+from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+import time
+import requests
+
+# ✅ I/O-bound: ThreadPoolExecutor (threads work!):
+def fetch_url(url):
+    return requests.get(url).status_code
+
+urls = ["https://example.com"] * 10
+with ThreadPoolExecutor(max_workers=5) as executor:
+    results = list(executor.map(fetch_url, urls))
+    print(f"Fetched {len(results)} URLs")
+
+# ✅ CPU-bound: ProcessPoolExecutor (processes needed!):
+def compute(n):
+    """CPU-intensive computation."""
+    return sum(i * i for i in range(n))
+
+with ProcessPoolExecutor(max_workers=4) as executor:
+    results = list(executor.map(compute, [1000000] * 4))
+    print(f"Computed {len(results)} results")
+
+# RULE OF THUMB:
+# I/O-bound (network, disk) → threading or asyncio
+# CPU-bound (math, processing) → multiprocessing</div>
+
+<div class="code-block"># ── STEP 5: Thread synchronization primitives ──
+# Beyond locks, there are other synchronization tools:
+
+import threading
+
+# 1. LOCK: basic mutual exclusion
+lock = threading.Lock()
+
+# 2. RLOCK (Reentrant Lock): same thread can acquire multiple times
+rlock = threading.RLock()
+
+# 3. SEMAPHORE: allows N threads (not just 1)
+semaphore = threading.Semaphore(3)  # max 3 threads
+
+# 4. EVENT: signal between threads
+event = threading.Event()
+
+def waiter():
+    print("Waiting for signal...")
+    event.wait()  # blocks until set
+    print("Signal received!")
+
+def setter():
+    import time; time.sleep(1)
+    event.set()  # signal the waiter
+
+# 5. CONDITION: wait for a condition to be true
+condition = threading.Condition()
+
+# 6. BARRIER: wait for N threads to reach a point
+barrier = threading.Barrier(3)  # 3 threads must arrive
+
+# Example: database connection pool with semaphore:
+class ConnectionPool:
+    def __init__(self, max_connections=5):
+        self.semaphore = threading.Semaphore(max_connections)
+        self.connections = []
+
+    def get_connection(self):
+        self.semaphore.acquire()  # blocks if pool full
+        # return a connection...
+        return f"Connection-{threading.current_thread().name}"
+
+    def release_connection(self, conn):
+        self.connections.append(conn)
+        self.semaphore.release()  # free a slot</div>
+
+<div class="code-block"># ── STEP 6: Modern alternatives to threading ──
+# Python has better options for many use cases:
+
+# 1. ASYNCIO (best for I/O-bound, high concurrency):
+# import asyncio
+# async def fetch_all(urls):
+#     async with aiohttp.ClientSession() as session:
+#         tasks = [session.get(url) for url in urls]
+#         return await asyncio.gather(*tasks)
+# → Single thread, thousands of concurrent connections
+
+# 2. MULTIPROCESSING (best for CPU-bound):
+# from multiprocessing import Pool
+# with Pool(4) as pool:
+#     results = pool.map(compute, data)
+# → True parallelism (each process has own GIL)
+
+# 3. CONCURRENT.FUTURES (unified API):
+# from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+# → Same API for threads and processes
+
+# WHEN TO USE WHAT:
+# ┌──────────────────────┬──────────────────────────────────┐
+# │ Situation            │ Best Tool                       │
+# ├──────────────────────┼──────────────────────────────────┤
+# │ 1000s of I/O tasks  │ asyncio (single thread)          │
+# │ CPU-heavy parallel   │ multiprocessing                  │
+# │ Few I/O tasks        │ threading                        │
+# │ Mixed I/O + CPU      │ asyncio + ProcessPoolExecutor    │
+# │ Need shared memory   │ multiprocessing.SharedMemory     │
+# └──────────────────────┴──────────────────────────────────┘
+
+# THE FUTURE:
+# Python 3.13+ has a "free-threaded" mode (no GIL!)
+# This will eventually make threading useful for CPU-bound work too.
+# But for now (2024-2026), assume GIL exists.
+
+# REAL-WORLD EXAMPLES:
+# - Gunicorn: uses multiprocessing (one process per worker)
+# - Celery: uses multiprocessing (task queue)
+# - Django async views: uses asyncio
+# - aiohttp: uses asyncio (high-concurrency HTTP)
+# - Redis: single-threaded, event loop (like asyncio)</div>
 
 <div class="secret-box">🧵 <strong>Thread = এক ছাদের নিচে একাধিক কর্মী।</strong> মেমোরি ভাগ করে, দ্রুত কাজ করে। কিন্তু সম্পদ ভাগ করার ঝুঁকি — race condition। দুটি থ্রেড একসাথে একই সম্পদ ধরতে গেলে কী হবে? কে আগে পাবে? কে অপেক্ষা করবে? এই নিয়ন্ত্রণের যন্ত্র আসবে পরের দরজায়।</div>`,
   senior: {
@@ -346,27 +732,231 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Round Robin সবাইকে সমান সময় দেয়। FCFS-এ প্রথম প্রসেস দীর্ঘ হলে বাকিরা অপেক্ষা করে।</div>
 
-<div class="code-block">— Terminal: Scheduling দেখো —
+<div class="code-block"># ── STEP 1: What is CPU scheduling? ──
+# The OS has 100+ processes but only a few CPU cores.
+# SCHEDULING = deciding WHO runs WHEN and for HOW LONG.
 
-  # CPU scheduling policy দেখো
-  $ cat /proc/sys/kernel/sched_child_runs_first
-  0    # parent আগে
+# The scheduler makes these decisions EVERY MILLISECOND.
+# Goal: fair + efficient + responsive.
 
-  # nice value: priority (-20 থেকে +19)
-  $ nice -n -10 python heavy_compute.py   # high priority
-  $ renice +5 -p 1234                      # lower priority
+# Key concepts:
+# - CPU BURST: process runs on CPU
+# - I/O BURST: process waits for I/O (disk, network)
+# - PREEMPTION: OS forcefully takes CPU back from a process
+# - QUANTUM: how long a process runs before preemption
 
-  # প্রতিটি CPU-র load:
-  $ cat /proc/loadavg
-  0.52 0.48 0.45 2/134 12345
+# PROCESS TYPES:
+process_types = {
+    "I/O-bound": "Spends most time waiting (network, disk). Needs short, frequent CPU bursts.",
+    "CPU-bound": "Spends most time computing. Needs long CPU bursts.",
+    "Interactive": "Needs fast response (UI, editors). Low latency matters.",
+    "Batch": "Background processing. Throughput matters, not latency.",
+}
 
-  # SCHED_FIFO (real-time) vs SCHED_OTHER (normal)
-  $ chrt -f 80 python realtime_task.py
-  # SCHED_FIFO = strict priority, no preemption by normal
+print("PROCESS TYPES:")
+for ptype, desc in process_types.items():
+    print(f"  {ptype}: {desc}")
 
-  # taskset: কোন CPU-তে চলবে
-  $ taskset -c 0,1 python parallel_task.py
-  # শুধু CPU 0 ও 1-এ</div>
+# The scheduler must balance ALL of these simultaneously.</div>
+
+<div class="code-block"># ── STEP 2: Scheduling algorithms ──
+# Different algorithms for different goals:
+
+algorithms = {
+    "FCFS (First Come First Served)": {
+        "how": "Whoever arrives first, runs first",
+        "pro": "Simple, fair",
+        "con": "Convoy effect (one slow process blocks everyone)",
+    },
+    "SJF (Shortest Job First)": {
+        "how": "Shortest job runs first",
+        "pro": "Optimal average wait time",
+        "con": "Can't predict job length, starvation of long jobs",
+    },
+    "Round Robin": {
+        "how": "Each process gets a time slice (quantum), then next",
+        "pro": "Fair, responsive",
+        "con": "Too many context switches if quantum too small",
+    },
+    "Priority": {
+        "how": "Highest priority runs first",
+        "pro": "Important tasks get CPU",
+        "con": "Low priority tasks may never run (starvation)",
+    },
+    "MLFQ (Multi-Level Feedback Queue)": {
+        "how": "Multiple queues, processes move between levels",
+        "pro": "Adapts to process behavior",
+        "con": "Complex to configure",
+    },
+}
+
+print("SCHEDULING ALGORITHMS:")
+for algo, info in algorithms.items():
+    print(f"\n  {algo}:")
+    print(f"    How: {info['how']}")
+    print(f"    Pro: {info['pro']}")
+    print(f"    Con: {info['con']}")
+
+# LINUX USES: CFS (Completely Fair Scheduler)
+# Goal: give each process a FAIR share of CPU time.
+# Uses a red-black tree sorted by virtual runtime.
+# The process that has run the LEAST gets the CPU next.</div>
+
+<div class="code-block"># ── STEP 3: Round Robin simulation ──
+# Let's simulate Round Robin scheduling in Python:
+
+def round_robin(processes, quantum):
+    """Simulate Round Robin CPU scheduling."""
+    from collections import deque
+
+    # Each process: [name, remaining_time]
+    queue = deque([[name, time] for name, time in processes])
+    timeline = []
+    current_time = 0
+
+    while queue:
+        process = queue.popleft()
+        name, remaining = process
+
+        # Run for quantum or remaining time (whichever is smaller):
+        run_time = min(quantum, remaining)
+        timeline.append(f"{name}({run_time}ms)")
+        current_time += run_time
+        remaining -= run_time
+
+        # If not done, add back to queue:
+        if remaining > 0:
+            queue.append([name, remaining])
+
+    return " → ".join(timeline)
+
+# Example: 3 processes, 4ms quantum
+processes = [("P1", 24), ("P2", 3), ("P3", 3)]
+result = round_robin(processes, quantum=4)
+print(f"Round Robin (quantum=4ms): {result}")
+# P1(4ms) → P2(3ms) → P3(3ms) → P1(4ms) → P1(4ms) → P1(4ms) → P1(4ms) → P1(4ms)
+
+# QUANTUM SIZE MATTERS:
+# Too large → acts like FCFS (unfair)
+# Too small → too many context switches (overhead)
+# Typical: 1-10ms (Linux default: ~1-10ms depending on HZ)</div>
+
+<div class="code-block"># ── STEP 4: Process priority (nice values) ──
+# In Linux/Unix, every process has a PRIORITY (nice value).
+
+# Nice range: -20 (highest priority) to +19 (lowest priority)
+# Default: 0
+# Only root can set negative (higher priority)
+
+import os
+
+# Check your process priority:
+print(f"Current nice value: {os.nice(0)}")  # 0 (read current)
+
+# Lower priority (higher nice value):
+# os.nice(10)  # be nice to others, run at lower priority
+
+# TERMINAL COMMANDS:
+commands = """
+$ nice -n 10 python heavy_script.py     # start at nice 10
+$ renice +5 -p 1234                     # change PID 1234 to nice 5
+$ renice -10 -p 1234                    # higher priority (root only)
+
+# Real-time priority (SCHED_FIFO):
+$ chrt -f 80 python realtime.py         # RT priority 80 (very high)
+# Real-time processes ALWAYS run before normal processes!
+
+# Pin process to specific CPU cores:
+$ taskset -c 0,1 python parallel.py     # only run on cores 0 and 1
+"""
+
+print(commands)
+
+# WHEN TO ADJUST PRIORITY:
+# - Lower priority: background batch jobs, backups, indexing
+# - Higher priority: real-time audio/video, latency-critical apps
+# - CPU affinity: avoid cache misses, isolate workloads</div>
+
+<div class="code-block"># ── STEP 5: Real-time scheduling ──
+# Some systems need GUARANTEED response times (real-time).
+
+# HARD REAL-TIME: missing deadline = catastrophe
+# - Airbag deployment, pacemaker, nuclear reactor control
+# - RTOS (Real-Time OS): VxWorks, FreeRTOS, QNX
+
+# SOFT REAL-TIME: missing deadline = degraded quality
+# - Video streaming, audio processing, game physics
+# - Linux with PREEMPT_RT patch
+
+# RATE MONOTONIC SCHEDULING (RMS):
+# - Shorter period = higher priority
+# - Provably optimal for fixed-priority scheduling
+# - Can use at most ~69% of CPU (mathematical limit)
+
+def is_schedulable(tasks):
+    """Check if tasks are schedulable (utilization test)."""
+    n = len(tasks)
+    utilization = sum(t["wcet"] / t["period"] for t in tasks)
+    limit = n * (2 ** (1/n) - 1)  # Liu & Layland bound
+    print(f"Tasks: {n}")
+    print(f"Total utilization: {utilization:.3f}")
+    print(f"RMS limit: {limit:.3f}")
+    print(f"Schedulable: {'YES' if utilization <= limit else 'MAYBE'}")
+
+# Example:
+tasks = [
+    {"name": "Sensor", "wcet": 1, "period": 5},   # reads sensor every 5ms
+    {"name": "Control", "wcet": 2, "period": 10},  # control loop every 10ms
+    {"name": "Display", "wcet": 3, "period": 20},  # update display every 20ms
+]
+is_schedulable(tasks)</div>
+
+<div class="code-block"># ── STEP 6: Monitoring scheduling on your system ──
+# Commands to see scheduling in action:
+
+monitoring = """
+# CPU load averages (1min, 5min, 15min):
+$ cat /proc/loadavg
+0.52 0.48 0.45 2/134 12345
+# load > #cores = processes waiting for CPU
+
+# Per-CPU usage:
+$ mpstat -P ALL 1
+# Shows each CPU core's usage every 1 second
+
+# Process scheduling details:
+$ ps -eo pid,cls,pri,ni,comm --sort=-pri
+# CLS = scheduling class (TS=normal, FF=FIFO, RR=Round Robin)
+
+# See scheduler decisions (requires kernel tracing):
+$ perf sched record sleep 10
+$ perf sched latency
+
+# Real-time monitoring:
+$ top -H    # show individual threads
+$ htop      # interactive, color-coded
+"""
+
+print(monitoring)
+
+# SCHEDULING SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Algorithm        │ Used In                         │
+# ├──────────────────┼──────────────────────────────────┤
+# │ CFS              │ Linux (default, fair)           │
+# │ Round Robin      │ Many OSes (fair, simple)        │
+# │ Rate Monotonic   │ RTOS (real-time)                │
+# │ EDF              │ RTOS (optimal if feasible)      │
+# │ MLFQ             │ Windows, some Unix              │
+# │ FIFO             │ RTOS, embedded                  │
+# └──────────────────┴──────────────────────────────────┘
+
+# WHY DEVELOPERS CARE:
+# - Choose the right concurrency model (process vs thread vs async)
+# - Set priorities for background vs foreground work
+# - Understand why your app is slow (CPU contention?)
+# - Debug performance issues (context switches, scheduling delays)
+# - Design for the scheduler, not against it</div>
 
 <div class="secret-box">⏱️ <strong>Scheduling = সময়ের ন্যায়বিচার।</strong> কে আগে চলবে, কে অপেক্ষা করবে, কতক্ষণ চলবে — প্রতিটি সিদ্ধান্ত performance ও fairness-কে প্রভাবিত করে। কিন্তু scheduling ঠিক করলেও একটি বড় সমস্যা থেকে যায় — দুটি প্রসেস যদি একই সম্পদ চায়? কে lock করবে, কে অপেক্ষা করবে? সেই সমাধান আসবে পরের দরজায়।</div>`,
   senior: {
