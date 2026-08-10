@@ -422,36 +422,293 @@ pgvector (২০২১) — PostgreSQL extension, Andrew Kane (ankane) তৈর
 </div>
 <div class="svg-caption">চিত্র: Query ভেক্টর সবচেয়ে কাছের ডকুমেন্ট ভেক্টর খুঁজে বের করে — cosine similarity দিয়ে।</div>
 
-<div class="code-block"># — Python: Vector Search with pgvector —
+<div class="code-block"># ── STEP 1: Vector search with pgvector ──
+# pgvector adds vector operations to PostgreSQL.
 
-  # pgvector — PostgreSQL-এ ভেক্টর search
-  import psycopg2
+import psycopg2
 
-  conn = psycopg2.connect("dbname=myapp")
+# Connect to PostgreSQL:
+conn = psycopg2.connect("dbname=myapp")
 
-  # টেবিল তৈরি (১৫৩৬-মাত্রিক)
-  conn.execute('''
-      CREATE TABLE documents (
-          id SERIAL PRIMARY KEY,
-          content TEXT,
-          embedding vector(1536)  -- pgvector type
-      );
-  ''')
+# Create table with vector column:
+conn.execute("""
+    CREATE TABLE documents (
+        id SERIAL PRIMARY KEY,
+        content TEXT,
+        embedding vector(1536),  -- pgvector type (1536 = OpenAI dims)
+        metadata JSONB
+    );
+""")
 
-  # HNSW index (পরের দরজায় বিস্তারিত)
-  conn.execute('''
-      CREATE INDEX ON documents
-      USING hnsw (embedding vector_cosine_ops);
-  ''')
+# Create HNSW index for fast similarity search:
+conn.execute("""
+    CREATE INDEX idx_documents_embedding
+    ON documents USING hnsw (embedding vector_cosine_ops);
+""")
 
-  # similarity search — k=5 nearest
-  results = conn.execute('''
-      SELECT content, 1 - (embedding <=> %s) AS similarity
-      FROM documents
-      ORDER BY embedding <=> %s      -- cosine distance
-      LIMIT 5;
-  ''', (query_vec, query_vec))
-  # <=> = cosine distance operator (pgvector)</div>
+# Insert documents with embeddings:
+conn.execute("""
+    INSERT INTO documents (content, embedding, metadata)
+    VALUES (%s, %s, %s);
+""", ("Python is great for data science", embedding_vector, {"source": "blog"}))
+
+# SIMILARITY SEARCH: find 5 most similar documents:
+query_embedding = [0.1, 0.2, 0.3, ...]  # from embedding model
+results = conn.execute("""
+    SELECT content, 1 - (embedding <=> %s) AS similarity
+    FROM documents
+    ORDER BY embedding <=> %s
+    LIMIT 5;
+""", (query_embedding, query_embedding))
+
+# pgvector operators:
+# <=> = cosine distance (0=identical, 2=opposite)
+# <-> = L2 distance (Euclidean)
+# <#> = negative inner product
+# 1 - (embedding <=> query) = cosine SIMILARITY (0-1 range)</div>
+
+<div class="code-block"># ── STEP 2: HNSW index explained ──
+# HNSW = Hierarchical Navigable Small World
+# The BEST general-purpose vector index (used by pgvector, Pinecone, Chroma).
+
+# HOW HNSW WORKS:
+hnsw_explanation = """
+Imagine a MULTI-LAYER GRAPH:
+- Top layer: few nodes, long-distance connections (fast navigation)
+- Middle layers: more nodes, medium connections
+- Bottom layer: ALL nodes, short connections (precise search)
+
+SEARCH:
+1. Start at top layer (sparse, fast)
+2. Navigate toward query (greedy: move to closer node)
+3. Drop to next layer (more detail)
+4. Repeat until bottom layer
+5. Return K nearest neighbors
+
+Like zooming in on Google Maps: start at country view,
+zoom to state, city, street.
+"""
+
+print(hnsw_explanation)
+
+# HNSW PARAMETERS:
+hnsw_params = {
+    "m": "Max connections per node (default 16). Higher = more recall, more memory.",
+    "ef_construction": "Build-time search width (default 64). Higher = better index, slower build.",
+    "ef_search": "Query-time search width (default 40). Higher = more recall, slower query.",
+}
+
+print("HNSW PARAMETERS:")
+for param, desc in hnsw_params.items():
+    print(f"  {param}: {desc}")
+
+# TRADE-OFFS:
+# Higher m/ef → better recall (accuracy) but more memory and slower build
+# Lower m/ef → faster but might miss some neighbors (lower recall)
+
+# CREATE HNSW INDEX in pgvector:
+sql_hnsw = """
+CREATE INDEX ON documents USING hnsw (embedding vector_cosine_ops)
+WITH (m = 16, ef_construction = 64);
+
+-- For better recall (at cost of speed/memory):
+CREATE INDEX ON documents USING hnsw (embedding vector_cosine_ops)
+WITH (m = 32, ef_construction = 128);
+
+-- Set search-time ef (per query):
+SET hnsw.ef_search = 100;  -- higher = more recall
+"""
+
+print(sql_hnsw)</div>
+
+<div class="code-block"># ── STEP 3: IVF index explained ──
+# IVF = Inverted File Index (clustering-based)
+# Used by FAISS, Milvus, Qdrant.
+
+# HOW IVF WORKS:
+ivf_explanation = """
+1. CLUSTERING: K-means groups all vectors into N clusters.
+   Each cluster has a CENTROID (average vector).
+
+2. INDEX: store which cluster each vector belongs to.
+
+3. SEARCH:
+   a. Compare query to all CENTROIDS (fast, only N comparisons)
+   b. Find nearest few clusters (nprobe parameter)
+   c. Search ONLY within those clusters (skip the rest)
+
+Like a library: don't search every book.
+Find the right SECTION (fiction, science), then search within it.
+"""
+
+print(ivf_explanation)
+
+# IVF vs HNSW:
+ivf_vs_hnsw = {
+    "HNSW": {
+        "recall": "Higher (95-99%)",
+        "speed": "Faster queries",
+        "memory": "Higher (graph structure)",
+        "build_time": "Slower to build",
+        "best_for": "Most use cases, production",
+    },
+    "IVF": {
+        "recall": "Moderate (85-95%)",
+        "speed": "Fast (depends on nprobe)",
+        "memory": "Lower",
+        "build_time": "Faster to build",
+        "best_for": "Very large datasets, memory-constrained",
+    },
+}
+
+print("IVF vs HNSW:")
+for algo, info in ivf_vs_hnsw.items():
+    print(f"\n  {algo}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 4: Choosing the right index ──
+# When to use HNSW, IVF, or brute force?
+
+index_choice = {
+    "Brute Force (Exact)": {
+        "when": "Small dataset (< 10K vectors) or need 100% accuracy",
+        "speed": "Slow (O(n))",
+        "accuracy": "100% exact",
+        "pgvector": "No index needed (just ORDER BY embedding <=> query)",
+    },
+    "HNSW": {
+        "when": "Medium-large dataset (10K - 10M vectors), need high recall",
+        "speed": "Very fast (O(log n))",
+        "accuracy": "95-99%",
+        "pgvector": "CREATE INDEX USING hnsw (embedding vector_cosine_ops)",
+    },
+    "IVF": {
+        "when": "Very large dataset (10M+ vectors), memory constrained",
+        "speed": "Fast (depends on nprobe)",
+        "accuracy": "85-95%",
+        "pgvector": "CREATE INDEX USING ivfflat (embedding vector_cosine_ops)",
+    },
+}
+
+print("CHOOSING THE RIGHT INDEX:")
+for index_type, info in index_choice.items():
+    print(f"\n  {index_type}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# RULE OF THUMB:
+# < 10K vectors → brute force (exact, simple)
+# 10K - 10M → HNSW (fast, high recall)
+# 10M+ → IVF with PQ (scales better, lower memory)
+# Always benchmark with YOUR data!</div>
+
+<div class="code-block"># ── STEP 5: Production vector search with filtering ──
+# Real-world: you need vector search + METADATA FILTERING.
+# "Find documents about Python, published after 2024, from 'blog' source"
+
+sql_filtered = """
+-- Hybrid: vector similarity + metadata filtering:
+SELECT content, 1 - (embedding <=> %s) AS similarity
+FROM documents
+WHERE metadata->>'source' = 'blog'        -- metadata filter
+  AND metadata->>'date' >= '2024-01-01'   -- date filter
+  AND content ILIKE '%python%'            -- keyword filter
+ORDER BY embedding <=> %s                  -- vector similarity sort
+LIMIT 5;
+
+-- Combined GIN index for metadata + HNSW for vectors:
+CREATE INDEX idx_documents_metadata ON documents USING gin (metadata);
+CREATE INDEX idx_documents_embedding ON documents USING hnsw (embedding vector_cosine_ops);
+"""
+
+print(sql_filtered)
+
+# PYTHON IMPLEMENTATION (Django + pgvector):
+python_filtered = """
+from pgvector.django import CosineDistance
+
+def hybrid_search(query_embedding, source=None, min_date=None, limit=5):
+    qs = Document.objects.annotate(
+        distance=CosineDistance('embedding', query_embedding)
+    )
+
+    # Apply metadata filters:
+    if source:
+        qs = qs.filter(metadata__source=source)
+    if min_date:
+        qs = qs.filter(metadata__date__gte=min_date)
+
+    return qs.order_by('distance')[:limit]
+"""
+
+print(python_filtered)
+
+# PRE-FILTERING vs POST-FILTERING:
+# Pre-filtering: filter BEFORE vector search (fewer vectors to search)
+# Post-filtering: search ALL vectors, then filter results (may get too few)
+# pgvector with WHERE clause = pre-filtering (more efficient)</div>
+
+<div class="code-block"># ── STEP 6: Performance tuning for vector search ──
+# HOW TO MAKE VECTOR SEARCH FAST:
+
+# 1. Choose the right embedding model:
+embedding_models = {
+    "text-embedding-3-small (OpenAI)": "1536 dims, cheap, good quality",
+    "text-embedding-3-large (OpenAI)": "3072 dims, expensive, best quality",
+    "all-MiniLM-L6-v2 (local)": "384 dims, free, fast, decent quality",
+    "BGE-large (local)": "1024 dims, free, very good quality",
+    "Cohere embed-v3": "1024 dims, good quality, reasonable price",
+}
+
+print("EMBEDDING MODELS:")
+for model, desc in embedding_models.items():
+    print(f"  {model}: {desc}")
+
+# 2. Dimension reduction:
+# Higher dimensions = better accuracy but slower search + more memory.
+# Consider reducing dimensions (PCA, Matryoshka embeddings).
+
+# 3. Quantization:
+# Compress vectors from float32 → int8 → saves 4x memory at small accuracy cost.
+
+# 4. Caching:
+# Cache common queries in Redis (avoid recomputing embeddings).
+
+# 5. Batching:
+# Batch embedding requests (API calls are cheaper in bulk).
+
+# PERFORMANCE BENCHMARK (100K vectors, 1536 dims):
+benchmark = """
+Brute Force:     ~500ms per query
+HNSW (m=16):     ~2ms per query (250x faster!)
+IVF (nlist=100): ~5ms per query (100x faster)
+
+Memory:
+Raw vectors:     100K × 1536 × 4 bytes = ~600MB
+HNSW index:      ~800MB (graph overhead)
+IVF + PQ:        ~150MB (compressed)
+"""
+
+print(benchmark)
+
+# PRODUCTION CHECKLIST:
+checklist = [
+    "Choose appropriate embedding model for your use case",
+    "Create HNSW index (or IVF for very large datasets)",
+    "Set ef_search / nprobe appropriately",
+    "Add metadata filtering for relevant queries",
+    "Monitor query latency and recall",
+    "Cache common queries in Redis",
+    "Batch embedding API calls",
+    "Consider dimension reduction for scale",
+    "Use connection pooling",
+    "Benchmark with YOUR data (not synthetic)",
+]
+
+print("PRODUCTION VECTOR SEARCH CHECKLIST:")
+for item in checklist:
+    print(f"  ☐ {item}")</div>
 
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> সম্পর্কিত DB মজুত রাখে "কী," ভেক্টর DB মজুত রাখে "অর্থ।" AI প্রয়োজন উভয়।<br>
