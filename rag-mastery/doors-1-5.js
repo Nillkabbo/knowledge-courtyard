@@ -1085,78 +1085,371 @@ doors.push({
 </div>
 <div class="svg-caption">ডকুমেন্ট চাঙ্কিং — টুকরো ও ওভারল্যাপে সঠিক context সংরক্ষণ</div>
 
-<div class="code-block">Naive RAG — The Baseline:
+<div class="code-block"># ── STEP 1: What is naive RAG? ──
+# The SIMPLEST possible RAG pipeline. 3 steps.
 
-PIPELINE (৩ ধাপ):
-  ১. Embed all documents → store in vector DB
-  ২. Query → embed → search top-k chunks  
-  ৩. Chunks + query → LLM → answer
+# NAIVE RAG PIPELINE:
+pipeline = """
+1. INGEST: Embed all documents → store in vector database
+2. RETRIEVE: Embed query → search top-K chunks
+3. GENERATE: Chunks + query → LLM → answer
 
-PYTHON (সরল implementation):
+That's it. No fancy techniques. Just embed → search → answer.
+"""
 
-  # Step 1: Ingest
-  docs = ["doc1 text", "doc2 text", ...]
-  embeddings = [embed(d) for d in docs]
-  db.insert(embeddings, docs)
+print(pipeline)
 
-  # Step 2: Retrieve  
-  query = "What is RAG?"
-  q_emb = embed(query)
-  results = db.search(q_emb, top_k=5)
+# PYTHON IMPLEMENTATION:
+naive_rag = """
+from openai import OpenAI
 
-  # Step 3: Generate
-  context = "\\n\\n".join(results)
-  answer = llm.generate(
-    f"Context: {context}\\nQuestion: {query}\\nAnswer:"
-  )
+client = OpenAI()
 
-THE 40% PROBLEM — WHERE NAIVE RAG FAILS:
+def naive_rag(question, top_k=5):
+    # Step 1: Embed the question
+    query_embedding = client.embeddings.create(
+        model="text-embedding-3-small",
+        input=question
+    ).data[0].embedding
 
-১. WRONG CHUNKS RETRIEVED (২৫% of failures)
-  Query: "What is the revenue for Q3?"
-  Retrieved: Q2 revenue (wrong quarter)
-  → keyword overlap misleads dense search
-  → no filtering by date/section
+    # Step 2: Vector search
+    from pgvector.django import CosineDistance
+    docs = Document.objects.annotate(
+        distance=CosineDistance('embedding', query_embedding)
+    ).order_by('distance')[:top_k]
 
-২. INCOMPLETE CONTEXT (১০% of failures)  
-  Query: "Compare A and B"
-  Retrieved: only A's info (B missing)
-  → single retrieval doesn't find both
-  → multi-hop needed
+    # Step 3: Build context and generate answer
+    context = "\\n\\n".join([d.content for d in docs])
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": f"Answer based on: {context}"},
+            {"role": "user", "content": question}
+        ]
+    )
+    return response.choices[0].message.content
+"""
 
-৩. CHUNKS OUT OF CONTEXT (৫% of failures)
-  Query: "What did the author conclude?"
-  Retrieved: a sentence mid-paragraph
-  → sentence loses paragraph context
-  → chunking too small
+print(naive_rag)
 
-NAIVE RAG ACCURACY BENCHMARK:
-  
-  # ──────────────────────# ──────────# 
-  #  Task Type            #  Accuracy # 
-  # ──────────────────────# ──────────# 
-  #  Factoid (who/what)   #  ৭৫%      # 
-  #  Definition           #  ৮০%      # 
-  #  Comparison           #  ৪৫%      #  ← খারাপ
-  #  Multi-hop            #  ৩০%      #  ← খুব খারাপ
-  #  Temporal (when)      #  ৫০%      # 
-  #  Numerical            #  ৪০%      #  ← খারাপ
-  #  Summary              #  ৫৫%      # 
-  # ──────────────────────# ──────────# 
+# WHEN NAIVE RAG IS ENOUGH:
+when_enough = {
+    "Small knowledge base": "< 100 documents",
+    "Simple factoid questions": "Who/what/when queries",
+    "Prototyping": "Demo or proof of concept",
+    "Low-stakes": "60% accuracy is acceptable",
+}
 
-WHEN NAIVE RAG IS ENOUGH:
-  ✅ ছোট knowledge base (< ১০০ docs)
-  ✅ সরল factoid questions
-  ✅ Prototyping বা demo
-  ✅ যেখানে ৬০% accuracy acceptable
+print("WHEN NAIVE RAG IS ENOUGH:")
+for case, desc in when_enough.items():
+    print(f"  {case}: {desc}")</div>
 
-WHEN YOU NEED MORE:
-  ❌ Production customer-facing system
-  ❌ Complex multi-hop questions
-  ❌ Comparison/analysis questions
-  ❌ High-stakes (আইনি, চিকিৎসা)
-  
-  → Next doors: Advanced techniques</div>
+<div class="code-block"># ── STEP 2: Where naive RAG fails ──
+# Naive RAG gets ~60% accuracy. Here's what goes wrong:
+
+failure_modes = {
+    "1. WRONG CHUNKS (25% of failures)": {
+        "problem": "Retrieves semantically similar but WRONG chunks",
+        "example": "Query: 'Q3 revenue?' → Retrieved: Q2 revenue",
+        "cause": "Keyword overlap misleads dense search",
+        "fix": "Metadata filtering (filter by quarter)",
+    },
+    "2. INCOMPLETE CONTEXT (10% of failures)": {
+        "problem": "Comparison questions need BOTH entities",
+        "example": "Query: 'Compare A vs B' → Retrieved: only A",
+        "cause": "Single retrieval can't find both",
+        "fix": "Multi-query retrieval (search for A and B separately)",
+    },
+    "3. CHUNKS OUT OF CONTEXT (5% of failures)": {
+        "problem": "Retrieved chunk loses surrounding context",
+        "example": "Query: 'What did the author conclude?' → mid-paragraph sentence",
+        "cause": "Chunking too small, context lost",
+        "fix": "Parent-child retrieval (retrieve small, return large)",
+    },
+    "4. STALE INFORMATION": {
+        "problem": "Old documents mixed with new ones",
+        "example": "Query: 'current API' → Retrieved: 2022 API docs",
+        "cause": "No time-based filtering",
+        "fix": "Date metadata + recency filtering",
+    },
+    "5. IRRELEVANT NOISE": {
+        "problem": "Too many chunks, some irrelevant",
+        "example": "Query: 'Python list sort' → Retrieved: sorting + threading + networking",
+        "cause": "Top-K too large, no relevance threshold",
+        "fix": "Similarity threshold + re-ranking",
+    },
+}
+
+print("NAIVE RAG FAILURE MODES:")
+for mode, info in failure_modes.items():
+    print(f"\n  {mode}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 3: Accuracy benchmarks ──
+# How well does naive RAG do on different question types?
+
+benchmarks = {
+    "Factoid (who/what)": {"accuracy": "75%", "note": "Good for simple lookups"},
+    "Definition": {"accuracy": "80%", "note": "Best case (single chunk answers)"},
+    "Comparison (A vs B)": {"accuracy": "45%", "note": "Needs both entities"},
+    "Multi-hop reasoning": {"accuracy": "30%", "note": "Needs chain of retrievals"},
+    "Temporal (when)": {"accuracy": "50%", "note": "Needs date filtering"},
+    "Numerical": {"accuracy": "40%", "note": "Numbers fragment in chunks"},
+    "Summary": {"accuracy": "55%", "note": "Needs multiple chunks"},
+    "Overall average": {"accuracy": "54%", "note": "Not production-ready"},
+}
+
+print("NAIVE RAG ACCURACY BY QUESTION TYPE:")
+for qtype, data in benchmarks.items():
+    print(f"  {qtype}: {data['accuracy']} ({data['note']})")
+
+# KEY INSIGHT:
+insight = """
+Naive RAG works for SIMPLE questions (75-80%)
+but FAILS on COMPLEX questions (30-45%).
+
+Production RAG needs:
+  → Query transformation (rewrite ambiguous queries)
+  → Advanced retrieval (multi-query, parent-child)
+  → Re-ranking (improve precision)
+  → Filtering (metadata, date, source)
+  → Evaluation (measure and improve)
+
+Each advanced technique adds 5-15% accuracy.
+Combined, they can reach 85-95% accuracy.
+"""
+
+print(insight)
+
+# THE RAG ACCURACY LADDER:
+ladder = """
+ACCURACY LADDER (what each technique adds):
+
+Naive RAG (embed → search → answer):           54%
++ Query transformation (rewrite queries):      62%
++ Hybrid search (vector + keyword):            68%
++ Re-ranking (cross-encoder):                  75%
++ Metadata filtering:                          80%
++ Multi-query retrieval:                       85%
++ Parent-child chunking:                       88%
++ Evaluation + optimization:                  90-95%
+
+Each door in this book adds a technique that improves accuracy.
+"""
+
+print(ladder)</div>
+
+<div class="code-block"># ── STEP 4: Improving on naive RAG ──
+# Quick fixes that dramatically improve naive RAG:
+
+# FIX 1: ADD A SIMILARITY THRESHOLD:
+fix1 = """
+# Don't just return top-K — FILTER by similarity:
+docs = Document.objects.annotate(
+    distance=CosineDistance('embedding', query_embedding)
+).filter(
+    distance__lt=0.3  # only relevant enough (similarity > 0.7)
+).order_by('distance')[:5]
+
+# If no chunks pass threshold → "I don't have information about that."
+if not docs:
+    return "I don't have information about that topic."
+"""
+
+print("FIX 1: Similarity threshold:")
+print(fix1)
+
+# FIX 2: IMPROVE THE PROMPT:
+fix2 = """
+# Better system prompt = better answers:
+system_prompt = \"\"\"You are a helpful assistant. Answer the question
+based ONLY on the provided context. Rules:
+1. If the answer is not in the context, say "I don't know."
+2. Cite sources using [Source N] format.
+3. Be concise and factual.
+4. Do not make up information.\"\"\"
+"""
+
+print("FIX 2: Better system prompt:")
+print(fix2)
+
+# FIX 3: ADD CITATIONS:
+fix3 = """
+# Tag each chunk with its source:
+context_parts = []
+for i, doc in enumerate(docs, 1):
+    context_parts.append(f"[Source {i}] ({doc.metadata['source']}, p.{doc.metadata['page']}): {doc.content}")
+context = "\\n\\n".join(context_parts)
+
+# LLM can now cite: "According to [Source 2]..."
+"""
+
+print("FIX 3: Citations:")
+print(fix3)
+
+# FIX 4: USE LOW TEMPERATURE:
+fix4 = """
+# For factual RAG, use temperature=0:
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=messages,
+    temperature=0,  # deterministic, factual
+)
+# Higher temperature = more hallucination risk
+"""
+
+print("FIX 4: Low temperature:")
+print(fix4)</div>
+
+<div class="code-block"># ── STEP 5: Naive RAG with anti-hallucination ──
+# The MOST IMPORTANT improvement: prevent hallucination.
+
+# PRODUCTION-GRADE NAIVE RAG:
+production_naive = """
+def safe_rag(question, top_k=5):
+    # 1. Embed query
+    query_embedding = embed(question)
+
+    # 2. Retrieve with threshold
+    docs = Document.objects.annotate(
+        distance=CosineDistance('embedding', query_embedding)
+    ).filter(
+        distance__lt=0.3  # similarity threshold
+    ).order_by('distance')[:top_k]
+
+    # 3. Handle no results
+    if not docs:
+        return {
+            "answer": "I don't have information about that topic.",
+            "sources": [],
+            "confidence": 0.0,
+        }
+
+    # 4. Build context with citations
+    context_parts = []
+    sources = []
+    for i, doc in enumerate(docs, 1):
+        context_parts.append(f"[Doc {i}] {doc.content}")
+        sources.append({
+            "doc_id": doc.id,
+            "source": doc.metadata.get('source', 'unknown'),
+            "page": doc.metadata.get('page', 0),
+            "similarity": 1 - doc.distance,
+        })
+    context = "\\n\\n".join(context_parts)
+
+    # 5. Generate with strict anti-hallucination prompt
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "Answer the question based ONLY on the context below. "
+                    "If the answer is not in the context, say "
+                    "'I don't have that information.' "
+                    "Cite sources using [Doc N] format. "
+                    "Be concise and factual."
+                )
+            },
+            {
+                "role": "user",
+                "content": f"Context:\\n{context}\\n\\nQuestion: {question}"
+            }
+        ],
+        temperature=0,
+    )
+
+    return {
+        "answer": response.choices[0].message.content,
+        "sources": sources,
+        "confidence": min(d.similarity for d in docs),  # lowest similarity
+    }
+"""
+
+print(production_naive)
+
+# WHAT THIS ADDS OVER BASIC NAIVE RAG:
+improvements = [
+    "Similarity threshold (filters irrelevant chunks)",
+    "No-results handling ('I don't have information')",
+    "Source citations (traceability)",
+    "Strict anti-hallucination prompt",
+    "Temperature=0 (deterministic)",
+    "Confidence score (lowest similarity)",
+    "Structured output (answer + sources + confidence)",
+]
+
+print("IMPROVEMENTS OVER BASIC NAIVE RAG:")
+for imp in improvements:
+    print(f"  ✅ {imp}")</div>
+
+<div class="code-block"># ── STEP 6: When to upgrade from naive RAG ──
+# Signals that you need advanced RAG techniques:
+
+upgrade_signals = {
+    "Users complain about wrong answers": "Retrieval quality issues → re-ranking",
+    "Comparison questions fail": "Need multi-query retrieval",
+    "Stale information returned": "Need date-based filtering",
+    "Long documents poorly handled": "Need parent-child chunking",
+    "Multilingual queries fail": "Need multilingual embedding model",
+    "Too many irrelevant results": "Need similarity threshold + re-ranking",
+    "Questions need multiple steps": "Need multi-hop reasoning",
+    "Users need exact citations": "Need source tracking + metadata",
+    "Accuracy < 70%": "Need query transformation + hybrid search",
+    "Production deployment": "Need evaluation framework (RAGAS)",
+}
+
+print("WHEN TO UPGRADE FROM NAIVE RAG:")
+for signal, solution in upgrade_signals.items():
+    print(f"  {signal}")
+    print(f"    → {solution}")
+
+# UPGRADE PATH:
+upgrade_path = """
+FROM NAIVE TO ADVANCED RAG:
+
+Level 1 (Naive): embed → search → generate
+  Accuracy: ~54%
+
+Level 2 (Basic improvements):
+  + Similarity threshold
+  + Anti-hallucination prompt
+  + Citations
+  + Low temperature
+  Accuracy: ~65%
+
+Level 3 (Query transformation):
+  + Rewrite ambiguous queries
+  + Multi-query generation
+  + Query expansion
+  Accuracy: ~75%
+
+Level 4 (Advanced retrieval):
+  + Hybrid search (vector + keyword)
+  + Re-ranking (cross-encoder)
+  + Parent-child chunking
+  + Metadata filtering
+  Accuracy: ~85%
+
+Level 5 (Production RAG):
+  + RAGAS evaluation
+  + A/B testing
+  + Monitoring + alerting
+  + Continuous improvement
+  Accuracy: ~90-95%
+
+Each door in this book moves you one level up.
+"""
+
+print(upgrade_path)
+
+# THE BIG PICTURE:
+# Start with naive RAG. Ship it. Get user feedback.
+# Then add techniques ONE AT A TIME, measuring accuracy at each step.
+# Don't over-engineer — naive RAG + good prompts can be enough for simple use cases.
+# Add complexity ONLY when you can measure its impact.</div>
 
 <div class="dialogue">বেসিক — basic, foundation। কুরআনে আল্লাহ বলেন — "যে আল্লাহকে ভালোবাসে, আল্লাহ তাকে পরীক্ষা করেন।" পরীক্ষা শুরু সহজ, তারপর কঠিন। RAG-ও তেমনি — naive RAG সহজ শুরু। কিন্তু সীমা আছে। সীমা জানাই উন্নতির পথ। যে naive RAG-এর সীমা জানে, সে পরের স্তরে যেতে পারে।</div>
 <div class="dialogue en">"Basic — foundation. Allah tests those He loves. Tests start easy, then hard. RAG too — naive RAG is the easy start. But it has limits. Knowing limits is the path to improvement. One who knows naive RAG's limits, can go to the next level."</div>`,
