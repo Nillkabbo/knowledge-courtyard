@@ -79,38 +79,396 @@ Body (POST/PUT-এর জন্য): ডেটা</div></div>
 <div class="diag-cap">Request: METHOD + URL + Headers · Response: Status + Headers + Body · প্রতিটি কথোপকথন স্বাধীন</div>
 </div>
 
-<div class="code-block">— একটি HTTP Request দেখো (কাঁচা) —
-GET /users/42 HTTP/1.1              ← Method + URL + Version
-Host: api.example.com               ← কোন সার্ভার
-User-Agent: Mozilla/5.0             ← কে জিজ্ঞেস করছে
-Accept: application/json            ← কী ফরম্যাট চায়
-Authorization: Bearer eyJhb...      ← পরিচয় প্রমাণ
-                                    ← ফাঁকা লাইন = হেডার শেষ
+<div class="code-block"># ── STEP 1: HTTP protocol basics ──
+# HTTP (HyperText Transfer Protocol) is how web apps communicate.
 
-— সার্ভারের উত্তর —
-HTTP/1.1 200 OK                    ← Status line
-Content-Type: application/json      ← বডি কী ফরম্যাট
-Content-Length: 47                  ← বডির সাইজ
-Cache-Control: max-age=3600         ← Cache নির্দেশ
-                                    ← ফাঁকা লাইন
-{"id":42,"name":"Tania","role":"admin"}  ← Body</div>
+http_basics = """
+HTTP REQUEST STRUCTURE:
+  GET /users/42 HTTP/1.1              ← Method + URL + Version
+  Host: api.example.com               ← Which server
+  User-Agent: Mozilla/5.0             ← Who's asking
+  Accept: application/json            ← What format wanted
+  Authorization: Bearer ***           ← Auth proof
+                                      ← Empty line = end of headers
+  (optional body for POST/PUT)
 
-<div class="code-block">— curl: সবচেয়ে শক্তিশালী HTTP টুল —
+HTTP RESPONSE STRUCTURE:
+  HTTP/1.1 200 OK                     ← Status line
+  Content-Type: application/json      ← Body format
+  Content-Length: 47                  ← Body size
+  Cache-Control: max-age=3600         ← Cache instruction
+                                      ← Empty line = end of headers
+  {"id":42,"name":"Tania","role":"admin"}  ← Body
+"""
+
+print(http_basics)
+
+# HTTP METHODS:
+methods = {
+    "GET":    "Read data (fetch user, list products)",
+    "POST":   "Create data (new user, submit form)",
+    "PUT":    "Replace entire resource (update full user)",
+    "PATCH":  "Partial update (change just the name)",
+    "DELETE": "Remove resource (delete user)",
+    "HEAD":   "Like GET but no body (check if exists)",
+    "OPTIONS": "What methods are allowed?",
+}
+
+print("HTTP METHODS:")
+for method, desc in methods.items():
+    print(f"  {method:8}: {desc}")</div>
+
+<div class="code-block"># ── STEP 2: HTTP status codes ──
+# Status codes tell you what happened with the request.
+
+status_codes = {
+    "2xx (Success)": {
+        "200 OK": "Request succeeded",
+        "201 Created": "Resource created (POST)",
+        "204 No Content": "Success, no body (DELETE)",
+        "206 Partial Content": "Partial response (range request)",
+    },
+    "3xx (Redirect)": {
+        "301 Moved Permanently": "URL changed permanently",
+        "302 Found": "Temporary redirect",
+        "304 Not Modified": "Use cached version",
+    },
+    "4xx (Client Error)": {
+        "400 Bad Request": "Malformed request",
+        "401 Unauthorized": "Not authenticated (no login)",
+        "403 Forbidden": "Authenticated but not allowed",
+        "404 Not Found": "Resource doesn't exist",
+        "405 Method Not Allowed": "Wrong HTTP method",
+        "429 Too Many Requests": "Rate limited",
+    },
+    "5xx (Server Error)": {
+        "500 Internal Server Error": "Server crashed/bug",
+        "502 Bad Gateway": "Upstream server failed",
+        "503 Service Unavailable": "Server overloaded/down",
+        "504 Gateway Timeout": "Upstream didn't respond in time",
+    },
+}
+
+print("HTTP STATUS CODES:")
+for category, codes in status_codes.items():
+    print(f"\n  {category}")
+    for code, desc in codes.items():
+        print(f"    {code}: {desc}")
+
+# DJANGO/DRF STATUS CODE USAGE:
+django_codes = """
+# Django REST Framework status codes:
+from rest_framework import status
+
+response = Response(
+    {"error": "Not found"},
+    status=status.HTTP_404_NOT_FOUND
+)
+
+# Common patterns:
+#   GET returns 200 (or 404 if not found)
+#   POST returns 201 (created) or 400 (validation error)
+#   PUT/PATCH returns 200 (updated) or 400/404
+#   DELETE returns 204 (no content) or 404
+"""
+
+print(django_codes)</div>
+
+<div class="code-block"># ── STEP 3: HTTP headers and content negotiation ──
+# Headers carry metadata about the request/response.
+
+headers = {
+    "Request Headers": {
+        "Host": "Which server (api.example.com)",
+        "User-Agent": "Client app info (browser, curl, Postman)",
+        "Accept": "What format the client wants (application/json)",
+        "Authorization": "Auth token (Bearer JWT)",
+        "Content-Type": "Body format (application/json for POST)",
+        "Cookie": "Session cookies",
+        "Accept-Language": "Preferred language (en-US)",
+        "Accept-Encoding": "Compression (gzip, br)",
+    },
+    "Response Headers": {
+        "Content-Type": "Body format (application/json; charset=utf-8)",
+        "Content-Length": "Body size in bytes",
+        "Cache-Control": "Caching instructions (max-age=3600)",
+        "Set-Cookie": "Set cookies in browser",
+        "Location": "Redirect URL (for 301/302)",
+        "Access-Control-Allow-Origin": "CORS (which origins allowed)",
+        "Strict-Transport-Security": "Force HTTPS (HSTS)",
+        "X-Request-Id": "Request tracking ID",
+    },
+}
+
+print("HTTP HEADERS:")
+for category, hdrs in headers.items():
+    print(f"\n  {category}")
+    for header, desc in hdrs.items():
+        print(f"    {header}: {desc}")
+
+# CONTENT NEGOTIATION:
+content_negotiation = """
+CLIENT sends: Accept: application/json
+SERVER responds: Content-Type: application/json
+
+Other formats:
+  Accept: text/html         → HTML page
+  Accept: application/xml    → XML
+  Accept: application/pdf    → PDF document
+  Accept: image/png          → PNG image
+
+Django DRF does content negotiation automatically:
+  → Client sends Accept header
+  → DRF matches renderer
+  → Returns correct format
+"""
+
+print(content_negotiation)</div>
+
+<div class="code-block"># ── STEP 4: HTTP/2 and HTTP/3 ──
+# HTTP evolved for performance.
+
+evolution = """
+HTTP VERSIONS:
+
+HTTP/0.9 (1991):
+  → Only GET method
+  → No headers, no status codes
+  → Just "GET /page" → HTML document
+
+HTTP/1.0 (1996):
+  → Headers added
+  → Status codes added
+  → Multiple methods (POST, HEAD)
+  → One connection per request (slow!)
+
+HTTP/1.1 (1997):
+  → Keep-Alive (reuse connections)
+  → Pipelining (send next before response)
+  → Host header (virtual hosting)
+  → Still widely used today
+
+HTTP/2 (2015):
+  → Multiplexing (multiple requests on ONE connection)
+  → Server push (server sends resources proactively)
+  → Binary protocol (faster parsing)
+  → Header compression (HPACK)
+  → Used by most modern websites
+
+HTTP/3 (2022):
+  → Built on QUIC (UDP-based, not TCP!)
+  → No head-of-line blocking
+  → Faster connection setup (0-RTT)
+  → Better on mobile (network switching)
+  → Growing adoption (~25% of websites)
+"""
+
+print(evolution)
+
+# HTTP/2 vs HTTP/1.1:
+comparison = """
+HTTP/1.1 PROBLEM (head-of-line blocking):
+  Request 1 → Response 1 → Request 2 → Response 2
+  If Response 1 is slow, Request 2 waits.
+  Solution: open 6 connections (browser limit)
+
+HTTP/2 SOLUTION (multiplexing):
+  One connection, multiple streams:
+  Stream 1: Request → ... Response
+  Stream 2: Request → ... Response
+  Stream 3: Request → ... Response
+  All on ONE TCP connection.
+  No head-of-line blocking.
+
+HTTP/3 (QUIC on UDP):
+  No TCP handshake + TLS handshake separately.
+  Combined into ONE round trip.
+  If packet lost, only that stream waits.
+"""
+
+print(comparison)</div>
+
+<div class="code-block"># ── STEP 5: curl and Python requests ──
+# How to make HTTP requests programmatically.
+
+curl_examples = """
+# BASIC REQUESTS:
+$ curl https://api.example.com/users        # GET
+$ curl -X POST https://api.example.com/users  # POST
+
+# WITH HEADERS:
+$ curl -H "Authorization: Bearer TOKEN" \\
+       -H "Accept: application/json" \\
+       https://api.example.com/users/42
+
+# POST DATA:
+$ curl -X POST \\
+       -H "Content-Type: application/json" \\
+       -d '{"name":"Tania","role":"admin"}' \\
+       https://api.example.com/users
+
+# VERBOSE (see full request/response):
 $ curl -v https://api.example.com/users/42
-
-> GET /users/42 HTTP/2             ← তুমি পাঠাও (>)
+> GET /users/42 HTTP/2              ← your request
 > Host: api.example.com
-> User-Agent: curl/8.0
 >
-< HTTP/2 200                       ← সার্ভার উত্তর (<)
+< HTTP/2 200                        ← server response
 < content-type: application/json
-< content-length: 47
 <
-{"id":42,"name":"Tania","role":"admin"}
+{"id":42,"name":"Tania"}
 
-— > মানে তোমার request,  < মানে সার্ভারের response —
-— বাস্তবে এটি HTTP/2 বা HTTP/3 — কিন্তু ফরম্যাট একই —</div>
+# DOWNLOAD FILE:
+$ curl -o file.pdf https://example.com/doc.pdf
 
+# FOLLOW REDIRECTS:
+$ curl -L https://example.com/redirect
+
+# SET TIMEOUT:
+$ curl --max-time 10 https://api.example.com
+"""
+
+print(curl_examples)
+
+# PYTHON REQUESTS:
+python_requests = """
+import requests
+
+# GET request:
+response = requests.get('https://api.example.com/users/42')
+print(response.status_code)  # 200
+print(response.json())        # {"id": 42, "name": "Tania"}
+
+# POST request:
+response = requests.post(
+    'https://api.example.com/users',
+    json={'name': 'Tania', 'role': 'admin'},
+    headers={'Authorization': 'Bearer TOKEN'}
+)
+
+# Django test client:
+from django.test import Client
+client = Client()
+response = client.get('/api/users/42')
+self.assertEqual(response.status_code, 200)
+
+# Error handling:
+try:
+    response = requests.get('https://api.example.com/users/42', timeout=10)
+    response.raise_for_status()  # raise exception for 4xx/5xx
+except requests.exceptions.Timeout:
+    print("Request timed out")
+except requests.exceptions.HTTPError as e:
+    print(f"HTTP error: {e}")
+"""
+
+print(python_requests)</div>
+
+<div class="code-block"># ── STEP 6: REST APIs and Django REST Framework ──
+# How to build HTTP APIs in Django.
+
+rest = """
+REST (Representational State Transfer):
+  → Roy Fielding's PhD thesis (2000)
+  → 5 principles:
+    1. Client-Server (separate concerns)
+    2. Stateless (each request independent)
+    3. Cacheable (responses can be cached)
+    4. Uniform Interface (standard format)
+    5. Layered System (middleware, proxy)
+
+RESTful URL DESIGN:
+  GET    /api/users/         → List all users
+  POST   /api/users/         → Create user
+  GET    /api/users/42/      → Get specific user
+  PUT    /api/users/42/      → Update entire user
+  PATCH  /api/users/42/      → Partial update
+  DELETE /api/users/42/      → Delete user
+
+  GET    /api/users/42/orders/  → Nested resource (user's orders)
+"""
+
+print(rest)
+
+# DJANGO REST FRAMEWORK VIEWSET:
+drf_code = """
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
+from rest_framework.response import Response
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    # Custom endpoint: /api/users/42/promote/
+    @action(detail=True, methods=['post'])
+    def promote(self, request, pk=None):
+        user = self.get_object()
+        user.role = 'admin'
+        user.save()
+        return Response({'status': 'promoted'})
+
+    # Custom endpoint: /api/users/active/
+    @action(detail=False, methods=['get'])
+    def active(self, request):
+        active_users = self.get_queryset().filter(is_active=True)
+        serializer = self.get_serializer(active_users, many=True)
+        return Response(serializer.data)
+
+# URL routing (automatic):
+# /api/users/         → list, create
+# /api/users/42/      → retrieve, update, delete
+# /api/users/42/promote/  → custom action
+"""
+
+print(drf_code)
+
+# HTTP IN PRODUCTION:
+production = """
+PRODUCTION HTTP STACK:
+
+Browser → Cloudflare (CDN + DDoS)
+  → Nginx (reverse proxy, TLS, static files)
+    → Gunicorn (Django app server)
+      → Django REST Framework
+        → PostgreSQL
+
+NGINX CONFIG (HTTP):
+  server {
+      listen 80;
+      server_name api.example.com;
+      return 301 https://$server_name$request_uri;  # Force HTTPS
+  }
+
+  server {
+      listen 443 ssl http2;  # HTTP/2 enabled
+      server_name api.example.com;
+
+      ssl_certificate /etc/letsencrypt/live/api.example.com/fullchain.pem;
+      ssl_certificate_key /etc/letsencrypt/live/api.example.com/privkey.pem;
+
+      location / {
+          proxy_pass http://127.0.0.1:8000;  # Gunicorn
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+      }
+  }
+"""
+
+print(production)
+
+# LAYER 7 SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ HTTP methods     │ GET/POST/PUT/PATCH/DELETE       │
+# │ Status codes     │ 2xx ok, 4xx client, 5xx server  │
+# │ Headers          │ Metadata (Content-Type, Auth)   │
+# │ HTTP/2           │ Multiplexing on one connection  │
+# │ HTTP/3           │ QUIC on UDP, faster             │
+# │ REST             │ Stateless API design pattern    │
+# │ DRF ViewSets     │ CRUD operations auto-generated  │
+# │ Nginx proxy      │ TLS + reverse proxy to Gunicorn │
+# └──────────────────┴──────────────────────────────────┘</div>
 <p class="scene-setting">১৯৮৯ সালে Tim Berners-Lee CERN-এ ওয়ার্ল্ড ওয়াইড ওয়েব আবিষ্কার করেছিলেন। HTTP ছিল তার সবচেয়ে সহজ প্রোটোকল — শুধু GET ছিল। কোনো version নম্বর নেই, কোনো header নেই। শুধু — "এই পেজটি দাও।" আজ HTTP/৩ — QUIC protocol, UDP-র উপর নির্মিত, দ্রুত, নিরাপদ।</p>
 <p class="scene-setting en">In 1989, Tim Berners-Lee invented the World Wide Web at CERN. HTTP was its simplest protocol — only GET existed. No version number, no headers. Just — "give me this page." Today HTTP/3 — QUIC protocol, built on UDP, fast, secure.</p>
 
