@@ -1071,35 +1071,444 @@ doors.push({
 <div class="diag-cap">HTTP = বারবার নতুন কল · WebSocket = এক কল, খোলা রাখো · রিয়েল-টাইম কথোপকথন</div>
 </div>
 
-<div class="code-block">— WebSocket ক্লায়েন্ট (JavaScript) —
-// ১. সংযোগ খোলো (ws:// বা wss:// encrypted)
+<div class="code-block"># ── STEP 1: What are WebSockets? ──
+# WebSockets enable REAL-TIME bidirectional communication.
+
+websocket = """
+HTTP vs WEBSOCKET:
+
+HTTP (request-response):
+  Client → Server (request)
+  Server → Client (response)
+  → Connection closes
+  → Repeat for each request
+  → Server can't push to client
+
+WEBSOCKET (full-duplex):
+  Client ↔ Server (persistent connection)
+  → Connection stays OPEN
+  → EITHER side can send anytime
+  → No need to re-establish connection
+  → Real-time, low latency
+
+HOW WEBSOCKET STARTS (handshake):
+  1. Client sends HTTP Upgrade request:
+     GET /ws HTTP/1.1
+     Connection: Upgrade
+     Upgrade: websocket
+
+  2. Server responds:
+     HTTP/1.1 101 Switching Protocols
+     Upgrade: websocket
+
+  3. Now TCP connection is "upgraded" to WebSocket
+  4. Both sides can send frames anytime
+"""
+
+print(websocket)
+
+# WHEN TO USE WEBSOCKETS:
+use_cases = {
+    "Chat applications": "WhatsApp, Slack, Discord (real-time messages)",
+    "Live notifications": "Push updates without polling",
+    "Multiplayer games": "Real-time game state sync",
+    "Collaborative editing": "Google Docs (see others type)",
+    "Live dashboards": "Stock prices, analytics, monitoring",
+    "Typing indicators": "Show when someone is typing",
+    "Live presence": "Show who's online/offline",
+    "Real-time data feeds": "Crypto prices, sports scores",
+}
+
+print("WEBSOCKET USE CASES:")
+for use_case, example in use_cases.items():
+    print(f"  {use_case}: {example}")</div>
+
+<div class="code-block"># ── STEP 2: WebSocket client (JavaScript) ──
+# Browser-side WebSocket code.
+
+js_client = """
+// 1. Open connection:
 const ws = new WebSocket('wss://chat.example.com/ws');
 
-// ২. সংযোগ স্থাপিত হলে
+// 2. Connection established:
 ws.onopen = function() {
-  console.log('সংযোগ খোলা!');
-  ws.send(JSON.stringify({type: 'join', room: 'general'}));
+    console.log('Connected!');
+    ws.send(JSON.stringify({type: 'join', room: 'general'}));
 };
 
-// ৩. সার্ভার থেকে বার্তা এলে
+// 3. Message received from server:
 ws.onmessage = function(event) {
-  const msg = JSON.parse(event.data);
-  console.log(msg.user + ': ' + msg.text);
+    const msg = JSON.parse(event.data);
+    console.log(msg.user + ': ' + msg.text);
 };
 
-// ৪. বার্তা পাঠাও (যেকোনো সময়!)
-ws.send(JSON.stringify({type: 'msg', text: 'হ্যালো!'}));
+// 4. Send message (anytime!):
+ws.send(JSON.stringify({type: 'msg', text: 'Hello!'}));
 
-// ৫. বন্ধ করো
+// 5. Connection closed:
+ws.onclose = function() {
+    console.log('Disconnected, reconnecting...');
+    setTimeout(connect, 3000);  // auto-reconnect
+};
+
+// 6. Close explicitly:
 ws.close();
+"""
 
-— তুলনা: HTTP তে একই কাজ —
-// HTTP polling (খারাপ উপায়)
-setInterval(() => {
-  fetch('/messages?since=' + lastId)  // প্রতি ৫ সেকেন্ডে
-    .then(r => r.json())
-    .then(msgs => console.log(msgs));
-}, 5000);                              // অপচয়, ধীর</div>
+print(js_client)
+
+# COMPARISON: HTTP POLLING vs WEBSOCKET:
+comparison = """
+HTTP POLLING (the BAD way):
+  Client asks every 5 seconds: "Any new messages?"
+  → 99% of polls return nothing (wasted bandwidth)
+  → Up to 5-second delay for new messages
+  → High server load (many useless requests)
+
+WEBSOCKET (the GOOD way):
+  Server pushes instantly: "Here's a new message!"
+  → Zero wasted bandwidth (no empty responses)
+  → Instant delivery (< 50ms latency)
+  → Low server load (one persistent connection per client)
+
+LIVEKIT (for Ipractus video calls):
+  Uses WebRTC (built on UDP) for video/audio
+  Uses WebSockets for signaling (connection setup)
+  → Real-time, peer-to-peer media
+"""
+
+print(comparison)</div>
+
+<div class="code-block"># ── STEP 3: Django Channels (WebSocket backend) ──
+# Django supports WebSockets via Django Channels.
+
+django_channels = """
+DJANGO CHANNELS (WebSocket support):
+
+Standard Django = HTTP only (synchronous)
+Django Channels = HTTP + WebSocket + async
+
+INSTALL:
+  pip install channels channels-redis daphne
+
+SETTINGS:
+  # settings.py:
+  ASGI_APPLICATION = 'myproject.asgi.application'
+  CHANNEL_LAYERS = {
+      'default': {
+          'BACKEND': 'channels_redis.core.RedisChannelLayer',
+          'CONFIG': {"hosts": [('127.0.0.1', 6379)]},
+      }
+  }
+
+WEBSOCKET CONSUMER (like a view, but for WebSocket):
+  # consumers.py:
+  import json
+  from channels.generic.websocket import AsyncWebsocketConsumer
+
+  class ChatConsumer(AsyncWebsocketConsumer):
+      async def connect(self):
+          self.room_name = self.scope['url_route']['kwargs']['room_name']
+          self.room_group = 'chat_' + self.room_name
+
+          # Join room group:
+          await self.channel_layer.group_add(
+              self.room_group,
+              self.channel_name
+          )
+          await self.accept()  # Accept WebSocket connection
+
+      async def disconnect(self, close_code):
+          await self.channel_layer.group_discard(
+              self.room_group,
+              self.channel_name
+          )
+
+      async def receive(self, text_data):
+          # Receive message from WebSocket:
+          text_data_json = json.loads(text_data)
+          message = text_data_json['message']
+
+          # Broadcast to room group:
+          await self.channel_layer.group_send(
+              self.room_group,
+              {
+                  'type': 'chat_message',
+                  'message': message,
+                  'user': self.scope['user'].username,
+              }
+          )
+
+      async def chat_message(self, event):
+          # Receive message from room group, send to WebSocket:
+          await self.send(text_data=json.dumps({
+              'message': event['message'],
+              'user': event['user'],
+          }))
+"""
+
+print(django_channels)</div>
+
+<div class="code-block"># ── STEP 4: Real-time protocols comparison ──
+# WebSockets vs SSE vs WebRTC vs Long Polling.
+
+protocols = {
+    "WebSocket": {
+        "direction": "Bidirectional (both ways)",
+        "transport": "TCP (persistent connection)",
+        "best_for": "Chat, games, real-time dashboards",
+        "pros": "Full-duplex, low latency",
+        "cons": "More complex than HTTP",
+    },
+    "SSE (Server-Sent Events)": {
+        "direction": "One-way (server → client)",
+        "transport": "HTTP (persistent stream)",
+        "best_for": "Live feeds, notifications, stock prices",
+        "pros": "Simpler than WebSocket, auto-reconnect",
+        "cons": "Can't send from client to server",
+    },
+    "WebRTC": {
+        "direction": "Peer-to-peer (direct browser to browser)",
+        "transport": "UDP (SRTP, STUN/TURN)",
+        "best_for": "Video/voice calls (WhatsApp, LiveKit)",
+        "pros": "P2P = low latency, no server bandwidth",
+        "cons": "Complex setup, needs STUN/TURN servers",
+    },
+    "Long Polling": {
+        "direction": "Simulated bidirectional",
+        "transport": "HTTP (held-open requests)",
+        "best_for": "Legacy fallback (when WebSocket not available)",
+        "pros": "Works everywhere (even old browsers)",
+        "cons": "High overhead, not real real-time",
+    },
+}
+
+print("REAL-TIME PROTOCOLS:")
+for protocol, info in protocols.items():
+    print(f"\n  {protocol}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# WHEN TO USE EACH:
+when_to_use = """
+DECISION GUIDE:
+
+Need server → client only?
+  → SSE (simplest, auto-reconnect)
+
+Need bidirectional (client ↔ server)?
+  → WebSocket (chat, games, collaboration)
+
+Need video/voice?
+  → WebRTC (LiveKit wraps this for you)
+
+Need to support old browsers?
+  → Long polling (fallback)
+
+MOST APPS: WebSocket (or Socket.io which auto-selects best method)
+VOICE/VIDEO: WebRTC (LiveKit, Twilio, Daily.co)
+LIVE FEEDS: SSE (simplest for one-way data)
+"""
+
+print(when_to_use)</div>
+
+<div class="code-block"># ── STEP 5: Socket.io and production WebSocket ──
+# Socket.io is the most popular WebSocket library.
+
+socket_io = """
+SOCKET.IO (Node.js, most popular):
+
+  // Server (Node.js):
+  const io = require('socket.io')(server);
+
+  io.on('connection', (socket) => {
+      console.log('User connected:', socket.id);
+
+      socket.on('join', (room) => {
+          socket.join(room);
+      });
+
+      socket.on('message', (data) => {
+          io.to(data.room).emit('message', data);
+      });
+
+      socket.on('disconnect', () => {
+          console.log('User disconnected:', socket.id);
+      });
+  });
+
+  // Client (browser):
+  const socket = io();
+
+  socket.on('connect', () => {
+      socket.emit('join', 'general');
+  });
+
+  socket.on('message', (data) => {
+      console.log(data.user + ': ' + data.text);
+  });
+
+SOCKET.IO vs RAW WEBSOCKET:
+  → Socket.io auto-reconnects (raw WebSocket doesn't)
+  → Socket.io falls back to long polling if WebSocket fails
+  → Socket.io has rooms, namespaces, broadcasting
+  → Socket.io has binary support (files, images)
+  → But: Socket.io is NOT compatible with raw WebSocket clients
+"""
+
+print(socket_io)
+
+# PRODUCTION WEBSOCKET ARCHITECTURE:
+production = """
+PRODUCTION WEBSOCKET SCALING:
+
+Challenge: WebSockets are stateful (persistent connection)
+  → Each connection uses memory on the server
+  → Can't load balance with simple round-robin (sticky sessions needed)
+  → Need WebSocket-aware load balancer
+
+ARCHITECTURE:
+  Browser
+    → Nginx (WebSocket proxy)
+      → Multiple Daphne/Uvicorn workers
+        → Redis (channel layer, message broker)
+          → Broadcasts to all workers
+
+NGINX WEBSOCKET PROXY:
+  location /ws/ {
+      proxy_pass http://127.0.0.1:8000;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "upgrade";
+      proxy_read_timeout 86400;  # Keep alive for 24 hours
+  }
+
+SCALING:
+  → Use Redis pub/sub to broadcast across multiple workers
+  → Use channels-redis for Django Channels
+  → Use Socket.io + Redis adapter for Socket.io
+  → Consider managed services (Pusher, Ably, AWS API Gateway WebSocket)
+"""
+
+print(production)</div>
+
+<div class="code-block"># ── STEP 6: WebSocket security and best practices ──
+# Securing WebSocket connections.
+
+security = """
+WEBSOCKET SECURITY:
+
+1. ALWAYS USE WSS:// (not ws://):
+   wss:// = WebSocket over TLS (encrypted)
+   ws://  = Plain text (ANYONE can read!)
+   → Same as HTTPS vs HTTP
+
+2. AUTHENTICATE ON CONNECT:
+   → Send JWT token in query string or header
+   → Verify before accepting connection
+   → Reject if invalid
+
+3. ORIGIN CHECKING:
+   → Only accept connections from your domain
+   → Prevents CSRF-like attacks
+
+4. RATE LIMITING:
+   → Limit messages per user per second
+   → Prevent spam/flooding
+
+5. INPUT VALIDATION:
+   → Validate all incoming messages
+   → JSON schema validation
+   → Max message size
+
+6. HEARTBEAT/PING:
+   → Periodically ping clients
+   → Detect dead connections
+   → Clean up resources
+"""
+
+print(security)
+
+# DJANGO CHANNELS AUTHENTICATION:
+auth_code = """
+# WebSocket authentication in Django Channels:
+
+class ChatConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        # Authenticate user:
+        user = self.scope.get('user')
+        if not user or not user.is_authenticated:
+            await self.close()  # Reject connection
+            return
+
+        # Check origin:
+        origin = self.scope.get('headers', {}).get('origin', '')
+        if origin not in ALLOWED_ORIGINS:
+            await self.close(code=4003)
+            return
+
+        # Check room access:
+        room_name = self.scope['url_route']['kwargs']['room_name']
+        if not user.has_room_access(room_name):
+            await self.close(code=4003)
+            return
+
+        await self.accept()
+
+    async def receive(self, text_data):
+        # Rate limit:
+        if self.is_rate_limited():
+            await self.send(json.dumps({'error': 'Rate limited'}))
+            return
+
+        # Validate input:
+        try:
+            data = json.loads(text_data)
+            if len(data.get('message', '')) > 1000:
+                raise ValueError('Message too long')
+        except (json.JSONDecodeError, ValueError) as e:
+            await self.send(json.dumps({'error': str(e)}))
+            return
+
+        # Process valid message:
+        ...
+"""
+
+print(auth_code)
+
+# WEBSOCKET CHECKLIST:
+checklist = [
+    "Always use wss:// (TLS encryption)",
+    "Authenticate users before accepting connection",
+    "Check Origin header (prevent CSRF)",
+    "Implement rate limiting (prevent spam)",
+    "Validate all input (JSON schema)",
+    "Set max message size",
+    "Use heartbeat/ping to detect dead connections",
+    "Auto-reconnect on client side (with backoff)",
+    "Scale with Redis pub/sub or managed service",
+    "Monitor connection count (alert if too many)",
+    "Clean up resources on disconnect",
+    "Use sticky sessions or channel layer for load balancing",
+]
+
+print("WEBSOCKET PRODUCTION CHECKLIST:")
+for item in checklist:
+    print(f"  ☐ {item}")
+
+# WEBSOCKET SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ WebSocket        │ Persistent, bidirectional TCP   │
+# │ vs HTTP          │ HTTP = one request. WS = stay   │
+# │ wss://           │ WebSocket over TLS (encrypted)  │
+# │ Django Channels  │ WebSocket support for Django   │
+# │ Socket.io        │ Popular Node.js WS library     │
+# │ SSE              │ One-way alternative (simpler)   │
+# │ WebRTC           │ P2P for video/voice (LiveKit)   │
+# │ Redis            │ Channel layer for scaling WS    │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout tip"><span class="co-icon">💡</span><div><strong>বাস্তবে:</strong> WhatsApp, Slack, Discord — সবাই WebSocket ব্যবহার করে। যখন কেউ টাইপ করছে (typing indicator) — সেটাও WebSocket frame। কোনো polling নেই, কোনো দেরি নেই। সার্ভার push করে, ক্লায়েন্ট সাথে সাথে দেখে।</div></div>
 
