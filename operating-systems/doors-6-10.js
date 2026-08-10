@@ -1134,40 +1134,287 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Container = kernel share (হালকা)। VM = full OS copy (ভারী কিন্তু বেশি isolated)।</div>
 
-<div class="code-block">— Docker: Container তৈরি ও নিয়ন্ত্রণ —
+<div class="code-block"># ── STEP 1: What are containers? ──
+# A CONTAINER is an isolated environment that shares the HOST kernel.
+# It looks like a VM but is much lighter (no separate OS).
 
-  # Docker image pull ও run
-  $ docker pull python:3.12-slim
-  $ docker run -d --name api \\
-      --memory=512m \\
-      --cpus=1.5 \\
-      -p 8000:8000 \\
-      python:3.12-slim gunicorn api.wsgi:application
+# CONTAINER vs VIRTUAL MACHINE:
+comparison = {
+    "Container": {
+        "Kernel": "Shares host kernel",
+        "Startup": "Seconds",
+        "Size": "MB (small)",
+        "Isolation": "Process-level (namespaces)",
+        "Overhead": "Minimal (~0%)",
+        "Density": "100s per host",
+    },
+    "Virtual Machine": {
+        "Kernel": "Own kernel (full OS)",
+        "Startup": "Minutes",
+        "Size": "GB (large)",
+        "Isolation": "Hardware-level (hypervisor)",
+        "Overhead": "Significant (~15-20%)",
+        "Density": "10s per host",
+    },
+}
 
-  # চলমান container দেখো:
-  $ docker ps
-  CONTAINER ID  IMAGE     STATUS     NAMES
-  a1b2c3d4      python    Up 2 min   api
+for env, props in comparison.items():
+    print(f"\n{env}:")
+    for key, value in props.items():
+        print(f"  {key}: {value}")
 
-  # container-এ ঢুকো:
-  $ docker exec -it api bash
+# HOW CONTAINERS WORK (Linux primitives):
+# 1. NAMESPACES: isolation (each container sees its own PID, network, etc.)
+# 2. CGROUPS: resource limits (CPU, memory, I/O per container)
+# 3. UNIONFS: layered filesystem (shared base image + container changes)
+# Docker is just a convenient wrapper around these kernel features.</div>
 
-  # resource usage দেখো:
-  $ docker stats
-  NAME  CPU%   MEM USAGE / LIMIT
-  api   12.5%  156MiB / 512MiB
+<div class="code-block"># ── STEP 2: Docker basics ──
+# Docker is the most popular container runtime.
 
-  # namespace দেখো (container-এর ভেতর থেকে):
-  $ ls -la /proc/self/ns/
-  ipc net pid user uts → প্রতিটি container-এ আলাদা!
+# DOCKERFILE: recipe for building a container image
+dockerfile_example = """
+# Base image (Python with slim Linux):
+FROM python:3.12-slim
 
-  # cgroup memory limit:
-  $ cat /sys/fs/cgroup/memory/memory.limit_in_bytes
-  536870912  # 512MB
+# Set working directory:
+WORKDIR /app
 
-  # Kubernetes deployment:
-  kubectl create deployment api \\
-    --image=python:3.12-slim --replicas=3</div>
+# Copy requirements and install:
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code:
+COPY . .
+
+# Expose port:
+EXPOSE 8000
+
+# Run the application:
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "api.wsgi:application"]
+"""
+
+print("DOCKERFILE EXAMPLE:")
+print(dockerfile_example)
+
+# BUILD an image:
+# $ docker build -t myapi:latest .
+
+# RUN a container:
+# $ docker run -d --name api -p 8000:8000 myapi:latest
+
+# The -d flag runs in background (detached).
+# The -p flag maps host port to container port.</div>
+
+<div class="code-block"># ── STEP 3: Docker commands ──
+# Essential Docker commands:
+
+commands = {
+    "docker build -t name .": "Build image from Dockerfile",
+    "docker run -d --name X image": "Run container in background",
+    "docker ps": "List running containers",
+    "docker ps -a": "List ALL containers (including stopped)",
+    "docker images": "List downloaded/built images",
+    "docker stop X": "Stop container gracefully",
+    "docker kill X": "Force kill container",
+    "docker rm X": "Remove stopped container",
+    "docker rmi image": "Remove image",
+    "docker exec -it X bash": "Enter running container",
+    "docker logs X": "View container logs",
+    "docker stats": "Real-time resource usage",
+    "docker compose up": "Start multi-container app",
+    "docker system prune": "Clean up unused resources",
+}
+
+print("DOCKER COMMANDS:")
+for cmd, desc in commands.items():
+    print(f"  $ {cmd:40} → {desc}")
+
+# DOCKER COMPOSE: multi-container orchestration
+# docker-compose.yml defines multiple containers:
+compose_example = """
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=mydb
+      - POSTGRES_PASSWORD=secret
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+"""
+
+print("\nDOCKER COMPOSE (docker-compose.yml):")
+print(compose_example)</div>
+
+<div class="code-block"># ── STEP 4: Resource limits with cgroups ──
+# Docker uses cgroups to limit container resources.
+
+import subprocess
+
+# Run with resource limits:
+docker_run = """
+$ docker run -d \\
+    --name api \\
+    --memory=512m \\           # max 512MB RAM
+    --memory-swap=1g \\        # max 1GB RAM+swap
+    --cpus=1.5 \\              # max 1.5 CPU cores
+    --pids-limit=100 \\        # max 100 processes
+    --restart=unless-stopped \\ # auto-restart
+    -p 8000:8000 \\
+    myapi:latest
+"""
+
+print(docker_run)
+
+# WHY LIMIT RESOURCES:
+# - Prevent one container from starving others
+# - Predictable performance
+# - Cost control (cloud billing)
+# - Prevent runaway processes (memory leaks)
+
+# CGROUPS (Control Groups):
+# Linux kernel feature that limits and isolates resource usage.
+# Docker uses cgroups v1 or v2.
+
+# NAMESPACE ISOLATION:
+namespaces = {
+    "PID": "Container sees only its own processes",
+    "Network": "Container has own IP, ports, routing",
+    "Mount": "Container has own filesystem view",
+    "UTS": "Container has own hostname",
+    "IPC": "Container has own inter-process communication",
+    "User": "Container UID maps to different host UID",
+}
+
+print("NAMESPACE ISOLATION:")
+for ns, desc in namespaces.items():
+    print(f"  {ns}: {desc}")</div>
+
+<div class="code-block"># ── STEP 5: Container orchestration (Kubernetes) ──
+# Docker is great for one host. KUBERNETES orchestrates containers
+# across many hosts.
+
+# KUBERNETES CONCEPTS:
+k8s_concepts = {
+    "Pod": "Smallest unit — one or more containers sharing network",
+    "Deployment": "Manages replicas of pods (scaling)",
+    "Service": "Network endpoint for pods (load balancing)",
+    "Ingress": "HTTP/HTTPS routing from outside",
+    "ConfigMap": "Configuration data (non-secret)",
+    "Secret": "Sensitive data (passwords, keys)",
+    "Volume": "Persistent storage",
+    "Namespace": "Logical cluster partition",
+}
+
+print("KUBERNETES CONCEPTS:")
+for concept, desc in k8s_concepts.items():
+    print(f"  {concept}: {desc}")
+
+# KUBERNETES DEPLOYMENT YAML:
+k8s_yaml = """
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  replicas: 3                    # run 3 copies
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api
+        image: myapi:latest
+        resources:
+          requests:              # guaranteed minimum
+            memory: "256Mi"
+            cpu: "250m"
+          limits:                # maximum allowed
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:           # health check
+          httpGet:
+            path: /health
+            port: 8000
+"""
+
+print("KUBERNETES DEPLOYMENT YAML:")
+print(k8s_yaml)</div>
+
+<div class="code-block"># ── STEP 6: Container security and best practices ──
+# Containers are NOT automatically secure. Follow these practices:
+
+security_tips = {
+    "1. Use minimal base images": "python:3.12-slim not python:3.12 (less attack surface)",
+    "2. Never run as root": "Add USER directive in Dockerfile",
+    "3. Scan for vulnerabilities": "docker scout, trivy, snyk",
+    "4. Use .dockerignore": "Don't copy .git, .env, node_modules into image",
+    "5. Multi-stage builds": "Build in one image, copy binary to minimal image",
+    "6. Pin versions": "python:3.12.1-slim not python:latest (reproducible)",
+    "7. Don't bake secrets": "Use environment variables or secrets manager",
+    "8. Read-only filesystem": "--read-only flag when possible",
+    "9. Resource limits": "Always set memory and CPU limits",
+    "10. Network policies": "Restrict container-to-container communication",
+}
+
+print("CONTAINER SECURITY BEST PRACTICES:")
+for tip, desc in security_tips.items():
+    print(f"  {tip}: {desc}")
+
+# MULTI-STAGE BUILD (smaller, more secure):
+multi_stage = """
+# Stage 1: Build
+FROM python:3.12 AS builder
+WORKDIR /app
+COPY . .
+RUN pip install --user -r requirements.txt
+
+# Stage 2: Runtime (much smaller!)
+FROM python:3.12-slim
+WORKDIR /app
+COPY --from=builder /root/.local /root/.local
+COPY --from=builder /app .
+USER 1000  # non-root
+CMD ["python", "main.py"]
+"""
+
+print("\nMULTI-STAGE BUILD:")
+print(multi_stage)
+
+# WHEN TO USE CONTAINERS vs VMs:
+# ┌────────────────────┬──────────────────────────────────┐
+# │ Use Containers     │ Use VMs                          │
+# ├────────────────────┼──────────────────────────────────┤
+# │ Microservices      │ Different OS needed             │
+# │ CI/CD pipelines    │ Strong isolation required       │
+# │ Dev environments   │ Security-sensitive workloads    │
+# │ Scaling web apps   │ Legacy applications             │
+# │ Kubernetes         │ Full kernel access needed       │
+# └────────────────────┴──────────────────────────────────┘
+
+# CONTAINER ECOSYSTEM:
+# Runtime: Docker, containerd, CRI-O, Podman
+# Orchestration: Kubernetes, Docker Swarm, Nomad
+# Registry: Docker Hub, ECR, GCR, Harbor
+# Service Mesh: Istio, Linkerd
+# Monitoring: Prometheus, Grafana, Datadog</div>
 
 <div class="secret-box">🐳 <strong>Container = এক ছাদের নিচে বিচ্ছিন্ন জগত।</strong> Namespace পরিচয় বিচ্ছিন্ন রাখে, cgroup সম্পদ সীমিত রাখে, UnionFS layer করে। VM আরও বেশি বিচ্ছিন্ন কিন্তু ভারী। Kubernetes হাজার container পরিচালনা করে। এখন তুমি সব স্তর জানো — প্রসেস থেকে container পর্যন্ত। সময় এসেছে সব একত্রিত করার।</div>`,
   senior: {
@@ -1297,33 +1544,238 @@ python "hello.py" খোলে — open() syscall। filesystem inode খুঁ�
 </div>
 <div class="svg-caption">চিত্র: একটি fork() call নয়টি OS subsystem-কে স্পর্শ করে। প্রতিটি দরজা এই যাত্রায় অংশ নেয়।</div>
 
-<div class="code-block">— Full fork() Journey: strace দিয়ে দেখো —
+<div class="code-block"># ── STEP 1: Tracing system calls ──
+# strace shows every system call a program makes.
+# This is the BEST way to understand what the OS is doing.
 
-  # fork() system call trace:
-  $ strace -f bash -c 'ls'
+# Trace all system calls from running 'ls':
+# $ strace -f bash -c 'ls'
+# (the -f flag follows child processes)
 
-  # প্রতিটি syscall দেখো:
-  clone(flags=CLONE_CHILD_CLEARTID|SIGCHLD) = 1235
-  #                    ↑ Door 1-2: process+thread created
-  mmap(NULL, 4096, PROT_READ|PROT_WRITE) = 0x7f...
-  #                    ↑ Door 6: virtual memory allocated
-  openat(AT_FDCWD, ".", O_RDONLY|O_DIRECTORY) = 3
-  #                    ↑ Door 7: file system
-  getdents64(3, ...)  = 512
-  #                    ↑ Door 8: I/O (directory read)
-  write(1, "file1.txt\nfile2.py\n...", 42) = 42
-  #                    ↑ Door 8: I/O (stdout write)
-  close(3)             = 0
-  exit_group(0)        = ?
-  #                    ↑ Door 1: terminated
+# Output shows each syscall:
+syscalls = """
+execve("/bin/ls", ["ls"], ...)   = 0    # load program
+brk(NULL)                        = 0x5555569bc000  # heap setup
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS) = 0x7f1234567000
+openat(AT_FDCWD, ".", O_RDONLY|O_DIRECTORY) = 3    # open directory
+getdents64(3, /* 5 entries */, 32768) = 144        # read directory
+write(1, "file1.txt\\nfile2.py\\n...", 42) = 42     # write to stdout
+close(3)                         = 0    # close directory
+exit_group(0)                    = ?    # terminate
+"""
 
-  # Docker-এ fork:
-  $ docker run --rm python python -c "import os; print(os.getpid())"
-  1  # container-এ PID 1! (Door 9: namespace isolation)
+print("SYSTEM CALLS FOR 'ls':")
+print(syscalls)
 
-  # সব একসাথে:
-  # fork → PCB → thread → schedule → memory
-  #      → file → I/O → container → ALIVE</div>
+# Each syscall crosses the USER→KERNEL boundary.
+# Your Python code is in USER SPACE.
+# When it needs OS services (files, network, memory), it makes
+# a SYSTEM CALL → switches to KERNEL SPACE → does the work → returns.
+
+# Common system calls:
+# Process: fork(), exec(), exit(), wait(), kill()
+# Memory: mmap(), brk(), mprotect(), munmap()
+# File: open(), read(), write(), close(), stat()
+# Network: socket(), bind(), listen(), accept(), connect()
+# IPC: pipe(), shmget(), semget()</div>
+
+<div class="code-block"># ── STEP 2: fork() journey — step by step ──
+# What happens when a shell runs your Python program?
+
+steps = [
+    ("1. Shell forks itself", "clone() creates a child process (identical copy)"),
+    ("2. Child execs Python", "execve() replaces child with python interpreter"),
+    ("3. Python starts", "New process gets PID, memory space, file descriptors"),
+    ("4. Scheduler assigns CPU", "OS scheduler gives the new process CPU time"),
+    ("5. Memory allocated", "mmap/brk allocates heap for Python objects"),
+    ("6. Opens files", "open() opens .py files, libraries, /proc, etc."),
+    ("7. Reads code", "read() loads Python source code from disk"),
+    ("8. Compiles to bytecode", "Python compiles .py to .pyc (cached)"),
+    ("9. Executes bytecode", "Python VM interprets bytecode instructions"),
+    ("10. Does I/O", "read/write for files, sockets for network"),
+    ("11. Signals handled", "SIGTERM, SIGINT caught by Python handlers"),
+    ("12. Exit", "exit_group() terminates process, OS cleans up"),
+]
+
+print("LIFE OF A PYTHON PROCESS:")
+for step, description in steps:
+    print(f"  {step}")
+    print(f"    → {description}")
+
+# THE KEY INSIGHT:
+# Everything your program does goes through the OS via system calls.
+# Understanding system calls = understanding what really happens.</div>
+
+<div class="code-block"># ── STEP 3: System call performance ──
+# System calls are EXPENSIVE because they cross the user/kernel boundary.
+
+import time
+import os
+
+# MEASURE: how fast are system calls?
+
+# 1. Measure getpid() — simplest syscall:
+start = time.perf_counter()
+for _ in range(100000):
+    os.getpid()  # system call
+elapsed = time.perf_counter() - start
+print(f"100K getpid() calls: {elapsed:.3f}s ({elapsed/100000*1e6:.1f} μs each)")
+
+# 2. Measure pure Python (no syscall):
+start = time.perf_counter()
+for _ in range(100000):
+    pass  # no system call
+elapsed = time.perf_counter() - start
+print(f"100K no-op loops: {elapsed:.6f}s ({elapsed/100000*1e9:.0f} ns each)")
+
+# System calls take ~1-10 microseconds each.
+# That's 1000x slower than a normal instruction.
+
+# OPTIMIZATION: minimize system calls.
+# - Buffer I/O (write 4KB once, not 4096 bytes one at a time)
+# - Use sendfile() instead of read()+write()
+# - Batch operations (io_uring, epoll)
+# - Memory-map files (mmap) instead of read/write</div>
+
+<div class="code-block"># ── STEP 4: System calls in Python ──
+# Python wraps system calls in its standard library:
+
+import os
+import socket
+import select
+
+# Process system calls:
+pid = os.fork()          # fork() — create child process
+os.execvp("ls", ["ls"])  # exec() — replace with new program
+os.waitpid(pid, 0)       # wait() — wait for child
+os.kill(pid, 15)         # kill() — send signal
+os._exit(0)              # exit() — terminate immediately
+
+# File system calls:
+fd = os.open("file.txt", os.O_RDONLY)  # open()
+data = os.read(fd, 1024)               # read()
+os.write(fd, b"data")                  # write()
+os.close(fd)                           # close()
+
+# Memory system calls:
+# os.mmap() — memory-map a file
+# os.mlock() — lock memory (prevent swapping)
+
+# Network system calls:
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # socket()
+sock.bind(("0.0.0.0", 8000))                               # bind()
+sock.listen(128)                                            # listen()
+conn, addr = sock.accept()                                  # accept()
+data = conn.recv(1024)                                      # recv()
+conn.send(b"response")                                      # send()
+
+# I/O multiplexing:
+readable, _, _ = select.select([sock], [], [], 1.0)  # select/poll/epoll
+
+# EVERY Python I/O operation is ultimately a system call.
+# Understanding this helps you write efficient code.</div>
+
+<div class="code-block"># ── STEP 5: Tracing your Django application ──
+# Use strace to see what your web app is actually doing.
+
+tracing_commands = """
+# Trace Django development server:
+$ strace -f -e trace=network,read,write python manage.py runserver
+
+# Trace a specific PID:
+$ strace -p 1234
+
+# Count system calls (performance profiling):
+$ strace -c python manage.py runserver
+# Shows which syscalls are called most
+
+# Trace only file operations:
+$ strace -e trace=file python script.py
+
+# Time each system call:
+$ strace -T python script.py
+# Shows duration of each syscall
+
+# Trace with timing (find slow operations):
+$ strace -tt -T python script.py
+# 14:23:01.123456 open("file.txt") = 3 <0.000012>
+#                                duration ^^^^^^^^
+"""
+
+print(tracing_commands)
+
+# COMMON PERFORMANCE ISSUES FOUND VIA STRACE:
+issues = [
+    "Too many open() calls → cache file handles",
+    "Slow read() → use buffered I/O or mmap",
+    "Excessive stat() calls → cache file metadata",
+    "Many small write() calls → buffer/batch writes",
+    "connect() taking long → connection pooling",
+    "futex() contention → lock contention (threading issues)",
+]
+
+print("PERFORMANCE ISSUES strace REVEALS:")
+for issue in issues:
+    print(f"  🔍 {issue")</div>
+
+<div class="code-block"># ── STEP 6: The complete picture ──
+# You now understand the ENTIRE stack from code to hardware.
+
+# THE JOURNEY OF A PYTHON PROGRAM:
+journey = """
+1. You write: print("Hello")
+2. Python interpreter reads your .py file (open + read syscalls)
+3. Python compiles to bytecode (.pyc)
+4. Python VM executes bytecode
+5. print() calls write(1, "Hello\\n", 6) — system call!
+6. OS kernel receives write() syscall
+7. Kernel routes to terminal device driver
+8. Device driver sends to GPU/display controller
+9. Pixels appear on your screen
+
+Your simple print() touched:
+- Process management (PID, permissions)
+- Memory management (allocate string)
+- File system (open .py file)
+- I/O system (write to device)
+- Device drivers (display output)
+"""
+
+print(journey)
+
+# THE OS LAYERS (top to bottom):
+layers = {
+    "Application": "Your Python/Django/Vue code",
+    "Standard Library": "os, socket, threading, pathlib",
+    "System Call Interface": "open, read, write, fork, mmap",
+    "Kernel": "Process scheduler, memory manager, VFS, drivers",
+    "Hardware Drivers": "Disk, network, USB, GPU drivers",
+    "Hardware": "CPU, RAM, SSD, NIC, GPU",
+}
+
+print("THE OS STACK:")
+for layer, desc in layers.items():
+    print(f"  {layer}: {desc}")
+
+# WHY THIS MATTERS FOR YOUR CAREER:
+# - Debug performance issues (know WHERE time is spent)
+# - Understand Docker/Kubernetes (containers are OS features)
+# - Write efficient code (minimize system calls)
+# - Ace system design interviews (understand the full stack)
+# - Debug crashes (strace, core dumps, signals)
+# - Understand security (permissions, isolation, namespaces)
+
+# THE BIG PICTURE:
+# "Any sufficiently advanced technology is indistinguishable from magic."
+# — Arthur C. Clarke
+#
+# The OS is NOT magic. It's layers of abstraction.
+# Each layer hides complexity from the one above.
+# Understanding these layers makes you a better engineer.
+#
+# From Dijkstra's semaphores (1965) to Docker containers (2013):
+# 60 years of OS innovation, and you now understand the foundations.
+# Use this knowledge to build better, faster, safer systems.</div>
 
 <div class="secret-box">🖥️ <strong>যন্ত্রের আত্মা = নয়টি দরজার সমষ্টি।</strong> প্রসেস (দরজা ১) → থ্রেড (দরজা ২) → শিডিউলিং (দরজা ৩) → সিঙ্ক্রোনাইজেশন (দরজা ৪) → ডেডলক (দরজা ৫) → মেমোরি (দরজা ৬) → ফাইল সিস্টেম (দরজা ৭) → I/O (দরজা ৮) → কন্টেইনার (দরজা ৯)। তুমি এখন জানো কম্পিউটারের ভেতরে কী ঘটে — একটি প্রোগ্রাম থেকে একটি চলমান প্রসেস পর্যন্ত। Dijkstra-এর semaphore থেকে Docker-এর container — ৬০ বছরের যাত্রা। এবং তুমি এখন প্রতিটি ধাপ বোঝো। এটাই যন্ত্রের আত্মা — একটি নিষ্প্রাণ যন্ত্রে প্রাণ দানের শিল্প।</div>`,
   senior: {
