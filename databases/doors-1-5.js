@@ -826,27 +826,268 @@ EXPLAIN SELECT * FROM users WHERE email = 'test@example.com'<br>
 </div>
 <div class="svg-caption">চিত্র: B-tree ব্যাল্যান্সড কাঠামো — O(log n)-এ অনুসন্ধান। Hash সরাসরি মিল।</div>
 
-<div class="code-block"># — SQL: CREATE INDEX + EXPLAIN ANALYZE —
+<div class="code-block"># ── STEP 1: What is an index? ──
+# An INDEX is like a book's index — it helps find data FAST.
 
-  -- B-tree index (ডিফল্ট)
-  CREATE INDEX idx_user_email ON users(email);
+# Without index: scan every row (Sequential Scan) — O(n), slow
+# With index: jump directly to the row (Index Scan) — O(log n), fast
 
-  -- Composite index (বহু-কলাম)
-  CREATE INDEX idx_orders_user_date
-      ON orders(user_id, created_at DESC);
+# EXAMPLE:
+# Table with 10 million users.
+# SELECT * FROM users WHERE email = 'rakib@example.com';
 
-  -- Hash index (শুধু exact match)
-  CREATE INDEX idx_session_hash
-      ON sessions(token) USING hash;
+# WITHOUT index: scan all 10M rows → ~5 seconds
+# WITH index: jump directly → ~1 millisecond
+# That's a 5000x speedup!
 
-  -- Execution plan দেখো:
-  EXPLAIN ANALYZE
-  SELECT * FROM users WHERE email = 'r@x.com';
+index_types = {
+    "B-Tree": "Balanced tree. Default. Supports range queries (>, <, BETWEEN).",
+    "Hash": "Hash table. Only exact matches (=). Faster but limited.",
+    "GIN": "Generalized Inverted Index. Full-text search, arrays, JSON.",
+    "GiST": "Generalized Search Tree. Geographic/spatial data (PostGIS).",
+    "BRIN": "Block Range Index. Very large tables, naturally ordered data.",
+}
 
-  -- আউটপুট:
-  -- Index Scan using idx_user_email
-  --   (cost=0.29..8.31 rows=1 width=...)
-  -- Execution Time: 0.034 ms  # সূচি ছাড়া হতো Seq Scan</div>
+print("INDEX TYPES:")
+for itype, desc in index_types.items():
+    print(f"  {itype}: {desc}")</div>
+
+<div class="code-block"># ── STEP 2: Creating indexes ──
+sql_indexes = """
+-- Single column index (most common):
+CREATE INDEX idx_user_email ON users(email);
+
+-- Composite index (multiple columns):
+CREATE INDEX idx_orders_user_date ON orders(user_id, created_at DESC);
+
+-- Unique index (prevents duplicates):
+CREATE UNIQUE INDEX idx_unique_email ON users(email);
+
+-- Partial index (only some rows):
+CREATE INDEX idx_active_users ON users(last_login)
+WHERE active = true;
+
+-- Expression index (index on a function):
+CREATE INDEX idx_lower_email ON users(LOWER(email));
+"""
+
+print(sql_indexes)
+
+# Django ORM: add indexes in model definition:
+django_indexes = """
+class User(models.Model):
+    email = models.EmailField(unique=True)  # auto-creates unique index
+    name = models.CharField(max_length=100, db_index=True)  # B-tree index
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['name', 'created_at']),  # composite
+            models.Index(fields=['-last_login']),          # descending
+        ]
+"""
+
+print("Django ORM:")
+print(django_indexes)
+
+# WHEN TO INDEX:
+# ✅ Columns used in WHERE clauses
+# ✅ Columns used in JOIN conditions
+# ✅ Columns used in ORDER BY
+# ✅ Foreign key columns (often joined)
+# ✅ Columns with high selectivity (many unique values)
+
+# WHEN NOT TO INDEX:
+# ❌ Small tables (scan is fine)
+# ❌ Columns rarely queried
+# ❌ Tables with heavy writes (every INSERT/UPDATE updates indexes)
+# ❌ Low selectivity (boolean: true/false — index doesn't help)</div>
+
+<div class="code-block"># ── STEP 3: EXPLAIN — see how queries run ──
+# EXPLAIN shows the query execution plan.
+# EXPLAIN ANALYZE also executes and shows actual timing.
+
+sql_explain = """
+-- See the plan WITHOUT executing:
+EXPLAIN SELECT * FROM users WHERE email = 'rakib@example.com';
+
+-- Execute and show timing:
+EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'rakib@example.com';
+
+-- Output (WITH index):
+-- Index Scan using idx_user_email on users  (cost=0.29..8.31 rows=1)
+--   Index Cond: (email = 'rakib@example.com')
+--   Execution Time: 0.034 ms
+
+-- Output (WITHOUT index):
+-- Seq Scan on users  (cost=0.00..15432.50 rows=1)
+--   Filter: (email = 'rakib@example.com')
+--   Execution Time: 5234.891 ms  ← 100,000x slower!
+"""
+
+print(sql_explain)
+
+# WHAT TO LOOK FOR IN EXPLAIN:
+# - Seq Scan (bad for large tables) vs Index Scan (good)
+# - Rows examined vs Rows returned (high ratio = inefficient)
+# - Execution Time (the ground truth)
+# - Join type (Nested Loop vs Hash Join vs Merge Join)
+
+# COMMON EXPLAIN FINDINGS:
+explain_issues = {
+    "Seq Scan on large table": "Add an index",
+    "Filesort": "Add index on ORDER BY columns",
+    "Temporary table created": "Rewrite query to avoid subquery",
+    "Nested loop with many rows": "Add index on join column",
+    "Rows examined >> rows returned": "Query needs optimization",
+}
+
+print("EXPLAIN RED FLAGS:")
+for issue, fix in explain_issues.items():
+    print(f"  {issue}: → {fix}")</div>
+
+<div class="code-block"># ── STEP 4: Index strategies ──
+# COMPOSITE INDEX ORDER MATTERS:
+# Index on (a, b, c) can be used for:
+# ✅ WHERE a = ?           (leftmost prefix)
+# ✅ WHERE a = ? AND b = ? (two leftmost)
+# ✅ WHERE a = ? AND b = ? AND c = ? (all three)
+# ❌ WHERE b = ?           (skips 'a' — can't use index efficiently)
+# ❌ WHERE c = ?           (skips 'a' and 'b' — can't use index)
+
+# RULE: Put most selective (filtering) column FIRST in composite index.
+
+# COVERING INDEX: index contains ALL columns the query needs.
+# The database doesn't even need to read the table!
+sql_covering = """
+-- If query is: SELECT email, name FROM users WHERE email = ?
+-- This covering index satisfies it WITHOUT touching the table:
+CREATE INDEX idx_covering ON users(email) INCLUDE (name);
+
+-- Now the database reads ONLY the index, not the table.
+-- This is called "Index-Only Scan" — fastest possible.
+"""
+
+print(sql_covering)
+
+# INDEX TRADEOFFS:
+tradeoffs = {
+    "Read speed": "Indexes make reads MUCH faster",
+    "Write speed": "Indexes make writes SLOWER (must update index too)",
+    "Storage": "Each index takes disk space",
+    "Memory": "Indexes consume RAM (buffer pool)",
+    "Maintenance": "Indexes can become fragmented, need periodic REINDEX",
+}
+
+print("INDEX TRADEOFFS:")
+for aspect, desc in tradeoffs.items():
+    print(f"  {aspect}: {desc}")</div>
+
+<div class="code-block"># ── STEP 5: Django ORM and indexes ──
+# Django makes indexing easy, but you need to understand it.
+
+from django.db import models
+
+class Product(models.Model):
+    name = models.CharField(max_length=200, db_index=True)  # single index
+    sku = models.CharField(max_length=50, unique=True)       # unique index
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    category = models.CharField(max_length=50)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        indexes = [
+            # Composite: for queries filtering category + sorting by date
+            models.Index(fields=['category', '-created_at']),
+            # Partial: only index active products (PostgreSQL)
+            models.Index(
+                fields=['price'],
+                condition=models.Q(price__gt=100),
+                name='expensive_products_idx',
+            ),
+        ]
+
+# DJANGO QUERY OPTIMIZATION TECHNIQUES:
+techniques = [
+    "select_related() — JOIN foreign keys in one query (avoids N+1)",
+    "prefetch_related() — batch fetch many-to-many/reverse FK",
+    "only() — load only specified fields (less data)",
+    "defer() — skip specified fields (lazy load)",
+    "values() — return dicts instead of objects (lighter)",
+    "values_list() — return tuples (lightest)",
+    "bulk_create() — insert many rows in one query",
+    "bulk_update() — update many rows in one query",
+]
+
+print("DJANGO QUERY OPTIMIZATION:")
+for technique in techniques:
+    print(f"  ☐ {technique}")
+
+# select_related vs prefetch_related:
+# select_related: ForeignKey / OneToOne (SQL JOIN, one query)
+# prefetch_related: ManyToMany / reverse FK (separate query, batched)</div>
+
+<div class="code-block"># ── STEP 6: Index maintenance and monitoring ──
+# Indexes need maintenance to stay fast.
+
+maintenance = """
+-- Find unused indexes (candidates for removal):
+SELECT schemaname, tablename, indexname, idx_scan
+FROM pg_stat_user_indexes
+WHERE idx_scan = 0;  -- never used since last reset
+
+-- Find duplicate indexes (wasted space):
+SELECT pg_size_pretty(sum(pg_relation_size(idx))::bigint) as size,
+       (array_agg(idx))[1] as idx1, (array_agg(idx))[2] as idx2
+FROM (
+    SELECT indexrelid::regclass as idx, indkey
+    FROM pg_index
+    GROUP BY indkey
+    HAVING count(*) > 1
+) t;
+
+-- Rebuild fragmented indexes:
+REINDEX INDEX idx_user_email;
+REINDEX TABLE users;  -- all indexes on table
+
+-- Analyze table (update statistics for query planner):
+ANALYZE users;
+"""
+
+print(maintenance)
+
+# MONITORING QUERY PERFORMANCE:
+monitoring_tips = [
+    "Enable slow query log (queries > 100ms)",
+    "Use pg_stat_statements to find most expensive queries",
+    "Use Django Debug Toolbar to see queries per page",
+    "Use EXPLAIN ANALYZE on slow queries",
+    "Monitor index usage (remove unused indexes)",
+    "Check for table bloat (VACUUM ANALYZE)",
+    "Set up alerts for query latency spikes",
+]
+
+print("MONITORING TIPS:")
+for tip in monitoring_tips:
+    print(f"  ☐ {tip}")
+
+# INDEXING SUMMARY:
+# ┌─────────────────┬──────────────────────────────────┐
+# │ Best Practice   │ Why                              │
+# ├─────────────────┼──────────────────────────────────┤
+# │ Index FKs       │ JOIN performance                │
+# │ Index WHERE     │ Filter performance              │
+# │ Index ORDER BY  │ Sort performance                │
+# │ Composite       │ Multi-column queries            │
+# │ Don't overindex │ Write performance, storage      │
+# │ EXPLAIN ANALYZE │ Always verify index usage       │
+# │ Remove unused   │ Save space + write speed        │
+# └─────────────────┴──────────────────────────────────┘
+
+# THE GOLDEN RULE OF INDEXING:
+# "Index for reads, but don't forget about writes."
+# Every index makes reads faster but writes slower.
+# Find the right balance for YOUR workload.
+# Use EXPLAIN ANALYZE to verify your decisions.</div>
 
 <div class="secret-box">🗂️ <strong>Index = সূচিপত্র।</strong> B-tree (range), Hash (exact), Composite (multi-column)। EXPLAIN দিয়ে দেখো ডাটাবেস কীভাবে query execute করছে। কিন্তু index শুধু read দ্রুত করে। যখন একাধিক ব্যবহারকারী একসাথে লেখে? যখন half-complete transaction থাকে? সেই সমাধান আসবে পরের দরজায় — ACID transactions।</div>`,
   senior: {
