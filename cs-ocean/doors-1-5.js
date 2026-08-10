@@ -597,33 +597,198 @@ doors.push({
   <div class="diag-cap">RL = trial-and-error লুপ। agent কাজ করে, পরিবেশ ফল দেয়, agent নীতি বদলায়। এটাই কীভাবে AlphaGo, ChatGPT (RLHF), রোবট শেখে।</div>
 </div>
 
-<div class="code-block">Reinforcement Learning — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: What is reinforcement learning? ──
+# RL = an AGENT learns by TRIAL AND ERROR.
+# It takes ACTIONS in an ENVIRONMENT, gets REWARDS, learns what works.
 
-১. CORE RL ALGORITHMS
-   - Model-free: Q-learning, DQN, SAC, PPO (শিল্পে standard)
-   - Model-based: world models, MuZero, planning (Dreamer)
-   - Offline RL: logged data থেকে শেখা (production-safe)
+# Key terms:
+# - Agent: the learner (robot, game AI, LLM)
+# - Environment: the world (game board, physics sim, text)
+# - State (S): current situation
+# - Action (A): what the agent does
+# - Reward (R): feedback (positive = good, negative = bad)
+# - Policy (π): the agent's strategy (state → action)
 
-২. RL FOR LLMs (🔥 সবচেয়ে বড় crossover)
-   - RLHF (InstructGPT, ChatGPT), RLAIF, DPO (offline simplification)
-   - GRPO (DeepSeek-R1, ২০২৪-২৫) — value-function-ফ্রি, শস্তা
-   - Reasoning via RL: o1/o3, test-time compute
+# Simple example — grid world:
+# Agent must reach the GOAL while avoiding TRAPS.
+#
+#   .  .  .  T   (T = trap, -10 reward)
+#   .  .  .  .
+#   S  .  .  G   (S = start, G = goal, +10 reward)
 
-৩. ROBOTICS & CONTROL (Door 19 এর সাথে সংযোগ)
-   - Manipulation, locomotion, dexterous, sim-to-real
-   - LfD (learning from demonstration), RL+diffusion policies
+# The agent learns by trying moves and seeing what happens.
+# Over many episodes, it learns the OPTIMAL PATH.</div>
 
-৪. MULTI-AGENT & GAME THEORY
-   - Self-play (AlphaGo, AlphaStar, Diplomacy,麻将)
-   - MARL, emergent behavior, strategic interaction
+<div class="code-block"># ── STEP 2: Q-Learning — the classic algorithm ──
+# Q-learning learns a table of state-action values.
+# Q(s, a) = expected total reward from state s, taking action a.
 
-৫. SCIENCE & OPTIMIZATION (🔥 emerging)
-   - RL for chip design, drug discovery, math (AlphaProof)
-   - Combinatorial optimization, neural architecture search
+import numpy as np
 
-৬. THEORY
-   - Sample complexity, exploration (curiosity, count-based)
-   - Offline RL identifiability, representation learning</div>
+class QLearningAgent:
+    """Simple Q-learning for grid world."""
+    def __init__(self, n_states, n_actions, lr=0.1, gamma=0.9, epsilon=0.2):
+        self.q_table = np.zeros((n_states, n_actions))
+        self.lr = lr        # learning rate
+        self.gamma = gamma   # discount factor (future rewards)
+        self.epsilon = epsilon  # exploration rate
+
+    def choose_action(self, state):
+        """Epsilon-greedy: explore sometimes, exploit usually."""
+        if np.random.random() &lt; self.epsilon:
+            return np.random.randint(self.q_table.shape[1])  # explore
+        return np.argmax(self.q_table[state])  # exploit (best known)
+
+    def learn(self, state, action, reward, next_state):
+        """Update Q-value using the Bellman equation."""
+        best_next = np.max(self.q_table[next_state])
+        td_target = reward + self.gamma * best_next
+        td_error = td_target - self.q_table[state, action]
+        self.q_table[state, action] += self.lr * td_error
+
+# The Bellman equation:
+# Q(s,a) ← Q(s,a) + α[r + γ·max Q(s',a') - Q(s,a)]
+# "Update my estimate using reward + best future estimate"
+
+# gamma (discount factor): how much to value future rewards
+# gamma=0: only care about immediate reward (greedy)
+# gamma=0.9: care about near future
+# gamma=0.99: care about long-term rewards</div>
+
+<div class="code-block"># ── STEP 3: Deep Q-Network (DQN) ──
+# When states are too many for a table (like pixels in a game),
+# use a NEURAL NETWORK to approximate Q-values.
+
+import torch
+import torch.nn as nn
+
+class DQN(nn.Module):
+    """Deep Q-Network — neural net for Q-values."""
+    def __init__(self, state_dim, n_actions):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(state_dim, 128),
+            nn.ReLU(),
+            nn.Linear(128, 128),
+            nn.ReLU(),
+            nn.Linear(128, n_actions)
+        )
+
+    def forward(self, state):
+        return self.net(state)  # outputs Q-value for each action
+
+# Training loop (simplified):
+# 1. Observe state → choose action (epsilon-greedy)
+# 2. Execute action → get reward + new state
+# 3. Store experience in replay buffer
+# 4. Sample batch from buffer → update network
+# 5. Repeat
+
+# This is how DeepMind's DQN learned to play Atari games (2013).
+# It went from random play to SUPERHUMAN performance on many games.</div>
+
+<div class="code-block"># ── STEP 4: RL for LLMs (RLHF) ──
+# The biggest application of RL today: aligning LLMs with human preferences.
+
+# RLHF (Reinforcement Learning from Human Feedback):
+# Step 1: Train a REWARD MODEL on human preferences
+#   - Show two responses, human picks the better one
+#   - Train a model to predict human preference score
+
+# Step 2: Optimize the LLM using the reward model
+#   - LLM generates response → reward model scores it
+#   - PPO (Proximal Policy Optimization) updates the LLM
+
+# Using trl (Transformers Reinforcement Learning) library:
+# from trl import PPOTrainer, PPOConfig, AutoModelForCausalLMWithValueHead
+#
+# config = PPOConfig(batch_size=1, learning_rate=1e-5)
+# model = AutoModelForCausalLMWithValueHead.from_pretrained("gpt2")
+# ppo_trainer = PPOTrainer(config, model)
+#
+# # Train on prompts with reward model feedback:
+# for prompt in training_prompts:
+#     response = model.generate(prompt)
+#     reward = reward_model(prompt, response)
+#     ppo_trainer.step(prompt, response, reward)
+
+# SIMPLER — DPO (Direct Preference Optimization):
+# No separate reward model needed. Directly optimize on preferences.
+# from trl import DPOTrainer
+# dpo_trainer = DPOTrainer(model, ref_model, beta=0.1)
+# dpo_trainer.train(preferred_data, rejected_data)</div>
+
+<div class="code-block"># ── STEP 5: RL with Gymnasium ──
+# Practice RL with OpenAI Gym (now Gymnasium):
+
+# import gymnasium as gym
+# env = gym.make("CartPole-v1")
+#
+# observation, info = env.reset()
+#
+# for episode in range(100):
+#     total_reward = 0
+#     for step in range(500):
+#         # Agent chooses action:
+#         action = agent.choose_action(observation)
+#
+#         # Environment responds:
+#         observation, reward, terminated, truncated, info = env.step(action)
+#         total_reward += reward
+#
+#         # Agent learns:
+#         agent.learn(prev_obs, action, reward, observation)
+#
+#         if terminated:
+#             break
+#
+#     print(f"Episode {episode}: total reward = {total_reward}")
+
+# Popular environments:
+# CartPole-v1     — balance a pole (classic beginner RL)
+# MountainCar     — drive up a hill
+# Atari Breakout  — play the classic game
+# ProcGen         — procedurally generated levels
+# MuJoCo          — physics-based robotics
+
+# This is how you LEARN RL — start with Gym, build up to DQN/PPO.</div>
+
+<div class="code-block"># ── STEP 6: RL research areas and careers ──
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Area                │ What you study                     │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ RL for LLMs (RLHF)  │ Align language models with humans │
+# │ Deep RL             │ DQN, PPO, SAC algorithms          │
+# │ Robotics            │ Manipulation, locomotion, sim2real│
+# │ Multi-agent         │ Self-play, AlphaGo, Diplomacy     │
+# │ RL4Science          │ Chip design, drug discovery, math │
+# │ Offline RL          │ Learn from logged data safely     │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# CONFERENCES:
+# NeurIPS, ICML, ICLR  — general ML + RL
+# CoRL, ICRA, RSS       — robotics
+# AAMAS                  — multi-agent
+
+# KEY ALGORITHMS TO KNOW:
+# Q-Learning  — table-based, foundational
+# DQN         — neural network Q-learning
+# PPO         — industry standard (OpenAI uses this)
+# SAC         — continuous control, soft actor-critic
+# AlphaZero   — self-play + MCTS
+# GRPO        — cheap RL for LLMs (DeepSeek-R1)
+
+# CAREER PATHS:
+# Research: PhD → NeurIPS/ICML papers → DeepMind/OpenAI/FAIR
+# Industry: Game AI, robotics, recommendation systems
+# Startup: RL-based optimization, trading, robotics
+
+# WHAT MAKES RL HARD:
+# 1. Sparse rewards (only win/lose at the end)
+# 2. Exploration vs exploitation tradeoff
+# 3. Sim-to-real gap (works in simulation, fails in reality)
+# 4. Sample inefficiency (needs millions of episodes)
+# 5. Credit assignment (which action caused the win?)</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">🔥 RL for LLMs</td><td>RLHF, GRPO, DPO, reasoning RL</td><td>NeurIPS, ICML, ICLR, COLM</td></tr>
@@ -698,34 +863,188 @@ doors.push({
   <div class="diag-cap">AI Safety = চারটি risk-এর সংমিশ্রণ পরিচালনা। Alignment-এর মূল সত্য: আমরা যা চাই তা নির্ভুলভাবে specify করা প্রায় অসম্ভব।</div>
 </div>
 
-<div class="code-block">ML Theory & AI Safety — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: What is ML theory? ──
+# ML theory asks: WHY does machine learning work?
+# When will it fail? How much data do we need?
 
-১. ML THEORY (গণিতের গভীরে)
-   - Generalization: over-parameterized কেন generalize করে? (double descent)
-   - Optimization: SGD dynamics, loss landscape, implicit bias
-   - Learning theory: PAC, Rademacher, sample complexity
+# Key questions:
+# - Generalization: why does a model work on NEW data it never saw?
+# - Optimization: why does gradient descent find good solutions?
+# - Sample complexity: how many examples are enough?
 
-২. INTERPRETABILITY (🔥 সবচেয়ে সক্রিয়)
-   - Mechanistic: circuits, sparse autoencoders (Anthropic), dictionary learning
-   - Probing, causal tracing, activation analysis
-   - Monitor: real-time inspection of frontier models
+# Generalization gap = training accuracy - test accuracy:
+from sklearn.metrics import accuracy_score
 
-৩. ALIGNMENT (🔥 frontier labs-এ বড়)
-   - Scalable oversight (debate, recursive reward)
-   - Constitutional AI, RLHF/RLAIF improvements
-   - Value learning, preference modeling, deceptive alignment
+train_acc = accuracy_score(y_train, model.predict(X_train))  # 0.99
+test_acc = accuracy_score(y_test, model.predict(X_test))     # 0.85
+gap = train_acc - test_acc  # 0.14 — significant gap = overfitting!
 
-৪. ROBUSTNESS
-   - Distribution shift, OOD detection, adversarial (Door 9)
-   - Certified robustness, conformal prediction
-   - Hallucination mitigation, factuality
+# PAC Learning (Probably Approximately Correct):
+# "How many samples do I need to be 95% confident the model is
+# within 5% of optimal?"
+# Answer depends on model complexity (VC dimension).
 
-৫. EVALUATION & FORENSICS
-   - Frontier evals (dangerous capabilities), red-teaming
-   - Model organism research, detection (watermarking, fingerprints)
+# Double descent — modern deep learning's surprising finding:
+# Traditional view: too many parameters → overfit (U-shaped error)
+# Reality: go PAST the overfitting peak → error drops again!
+# This is why huge models (GPT-4, etc.) work despite being over-parameterized.</div>
 
-৬. GOVERNANCE ADJACENT (সাথে)
-   - Compute governance, AI policy, responsible scaling</div>
+<div class="code-block"># ── STEP 2: Interpretability — understanding models ──
+# Why did the model make this prediction?
+
+# METHOD 1: Feature importance (which features mattered most?):
+from sklearn.ensemble import RandomForestClassifier
+import numpy as np
+
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+importances = model.feature_importances_
+for name, imp in sorted(zip(feature_names, importances), key=lambda x: -x[1])[:5]:
+    print(f"  {name}: {imp:.3f}")
+
+# METHOD 2: SHAP values (how much each feature pushed the prediction):
+# import shap
+# explainer = shap.TreeExplainer(model)
+# shap_values = explainer.shap_values(X_test)
+# shap.summary_plot(shap_values, X_test)
+
+# METHOD 3: Attention visualization (for transformers):
+# Extract attention weights to see what tokens the model focuses on:
+# from transformers import AutoModel, AutoTokenizer
+# model = AutoModel.from_pretrained("bert-base-uncased", output_attentions=True)
+# outputs = model(**inputs)
+# attention_weights = outputs.attentions  # 12 layers × 12 heads × seq × seq
+
+# METHOD 4: Mechanistic interpretability (Anthropic's approach):
+# Use sparse autoencoders to find individual "features" inside the model.
+# Goal: understand EXACTLY what each neuron does.</div>
+
+<div class="code-block"># ── STEP 3: Adversarial robustness ──
+# Models can be FOOLED by tiny changes humans can't see.
+
+# An adversarial example:
+# Original image: correctly classified as "panda" (99% confidence)
+# Add imperceptible noise → classified as "gibbon" (99.3% confidence!)
+# The human eye sees no difference.
+
+# FGSM (Fast Gradient Sign Method) — generate adversarial examples:
+import torch
+
+def fgsm_attack(image, epsilon, gradient):
+    """Create adversarial example by perturbing in gradient direction."""
+    perturbation = epsilon * gradient.sign()
+    adversarial_image = image + perturbation
+    return torch.clamp(adversarial_image, 0, 1)
+
+# The model's own GRADIENT reveals its weaknesses.
+# We use the gradient to craft inputs that fool it.
+
+# Defense strategies:
+# 1. Adversarial training: train on adversarial examples
+# 2. Randomized smoothing: add noise during inference
+# 3. Certified robustness: prove no perturbation can change output
+
+# Real-world impact:
+# - Self-driving cars misreading stop signs with stickers
+# - Medical AI giving wrong diagnosis from tiny noise
+# - Spam filters bypassed with invisible characters</div>
+
+<div class="code-block"># ── STEP 4: AI alignment — making models safe ──
+# Alignment = ensuring AI systems do what we WANT, not just what we SAY.
+
+# THE ALIGNMENT PROBLEM:
+# We specify "maximize engagement" → AI creates addictive content
+# We specify "be helpful" → AI helps with dangerous things
+# We specify "don't lie" → AI finds loopholes
+
+# RLHF (Reinforcement Learning from Human Feedback):
+# 1. Collect human preferences (response A better than B?)
+# 2. Train reward model to predict preferences
+# 3. Optimize model to maximize reward
+
+# Problems with RLHF:
+# - Reward hacking: model finds ways to game the reward
+# - Sycophancy: model agrees with user instead of being correct
+# - Deceptive alignment: model appears aligned during training, isn't
+
+# Constitutional AI (Anthropic's approach):
+# Instead of human preferences, use PRINCIPLES:
+# "Is this response helpful? Harmless? Honest?"
+# The model evaluates its own outputs against principles.
+
+# Red-teaming: deliberately try to make the model do bad things,
+# then fix the vulnerabilities found.</div>
+
+<div class="code-block"># ── STEP 5: Hallucination and factuality ──
+# LLMs sometimes make things up — this is called HALLUCINATION.
+
+# Types of hallucination:
+# 1. Factually wrong: "The Eiffel Tower is in London"
+# 2. Fabricated sources: fake citations, non-existent papers
+# 3. Contradictory: says X in one sentence, not-X in next
+# 4. Unfaithful: misrepresents the source document
+
+# Detection strategies:
+
+# Strategy 1: Cross-check with search
+def verify_claim(claim):
+    """Check if a claim appears in reliable sources."""
+    # search_results = web_search(claim)
+    # for result in search_results:
+    #     if claim_matches_source(claim, result):
+    #         return True
+    return "verified"  # or "unverified"
+
+# Strategy 2: Self-consistency (ask multiple times)
+# response_variations = [generate(prompt) for _ in range(5)]
+# if all_similar(response_variations):
+#     confident = True
+
+# Strategy 3: RAG (Retrieval-Augmented Generation)
+# Ground the model in real documents:
+# 1. Retrieve relevant documents from a database
+# 2. Feed them to the LLM as context
+# 3. Model generates answer based on retrieved docs
+
+# Strategy 4: Confidence calibration
+# Train the model to say "I don't know" when uncertain.</div>
+
+<div class="code-block"># ── STEP 6: ML theory & safety research areas ──
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Area                │ What you study                     │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ ML Theory           │ Generalization, optimization, PAC │
+# │ Interpretability    │ Circuits, sparse autoencoders     │
+# │ Alignment           │ RLHF, Constitutional AI, safety   │
+# │ Robustness          │ Adversarial, OOD, certified       │
+# │ Evaluation          │ Benchmarks, red-teaming, forensics│
+# │ Governance          │ AI policy, compute governance     │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# CONFERENCES:
+# COLT          — learning theory
+# NeurIPS, ICLR — broad ML + theory
+# SaTML         — Safe/Secure ML
+# AIES, FaccT   — AI ethics and fairness
+
+# KEY PAPERS TO READ:
+# - "Understanding deep learning requires rethinking generalization" (2017)
+# - "Attention is All You Need" (2017) — Transformer architecture
+# - "Constitutional AI" (Anthropic, 2022)
+# - "Direct Preference Optimization" (2023)
+# - "Sparse Autoencoders Find interpretable features" (Anthropic, 2024)
+
+# CAREER PATHS:
+# Safety research: Anthropic, OpenAI, DeepMind alignment teams
+# Interpretability: Understanding what's inside frontier models
+# Theory: Academic positions, math-heavy research
+# Policy: AI governance, regulation, safety standards
+
+# WHY THIS MATTERS:
+# As AI systems become more powerful, ensuring they are
+# safe, honest, and aligned becomes CRITICAL.
+# This is one of the most important research areas of our time.</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">🔥 Mech Interp</td><td>Circuits, sparse autoencoders, dictionary learning</td><td>ICLR, NeurIPS, BlackboxNLP</td></tr>
@@ -808,34 +1127,237 @@ doors.push({
   <div class="diag-cap">fault tolerance-এর মূল: এক অংশ ভাঙলেও পুরো সিস্টেম থামে না। এটাই Google/Amazon-কে ২৪/৭ চালায়।</div>
 </div>
 
-<div class="code-block">Distributed Systems — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: What is a distributed system? ──
+# A distributed system = multiple computers working together
+# as ONE system. They share work, data, and coordination.
 
-১. CONSENSUS & REPLICATION (হৃদয়)
-   - Raft (understandable Paxos), Paxos variants, EPaxos
-   - CRDTs (conflict-free replicated data types)
-   - State machine replication, chain replication
+# Why distributed?
+# - Scale: one machine can't handle millions of users
+# - Reliability: if one machine fails, others continue
+# - Geography: serve users from nearby locations
 
-২. FAULT TOLERANCE & RELIABILITY
-   - Failure models (crash, Byzantine, split-brain)
-   - Quorum systems, erasure coding, checkpointing
-   - Chaos engineering, recovery, exactly-once semantics
+# Example architectures:
+#
+# SINGLE MACHINE (simple, doesn't scale):
+#   User → Your Server → Database
+#
+# DISTRIBUTED (scales):
+#   Users → Load Balancer → [Server1, Server2, Server3] → Database Cluster
 
-৩. CLOUD & DATA CENTER (🔥 scale)
-   - Resource scheduling (Borg/Kubernetes), serverless
-   - Microservices, service mesh, CDN/edge
-   - Cloud-native: disaggregated storage, composable infra
+# Python example — simple HTTP server:
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
-৪. DATA INFRASTRUCTURE (Door 10/11 সাথে)
-   - Distributed queues (Kafka), stream processing (Flink)
-   - Distributed transactions, HTAP, NewSQL (Spanner, CockroachDB)
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"Hello from server!")
 
-৫. CONSENSUS-FREE & EVENTUAL
-   - Dynamo-style (eventual consistency), gossip protocols
-   - CAP/PACELC trade-offs, consistency models
+# Run multiple instances on different ports:
+# server1: python app.py (port 8000)
+# server2: python app.py (port 8001)
+# Load balancer distributes traffic between them</div>
 
-৬. TIME, ORDER & PROOF
-   - Logical/vector clocks, TrueTime (Spanner)
-   - Byzantine fault tolerance (Door 8 সাথে — blockchain)</div>
+<div class="code-block"># ── STEP 2: CAP theorem — the fundamental tradeoff ──
+# CAP: you can have at most 2 of these 3 properties:
+# C - Consistency: all nodes see the same data
+# A - Availability: every request gets a response
+# P - Partition tolerance: works despite network failures
+
+# Since network failures (P) are inevitable, you really choose:
+# CP: Consistency + Partition tolerance (sacrifice availability during partitions)
+# AP: Availability + Partition tolerance (allow temporary inconsistency)
+
+# CP systems (strong consistency):
+# - Traditional SQL databases (PostgreSQL, MySQL)
+# - When data MUST be correct (banking, inventory)
+
+# AP systems (high availability):
+# - Dynamo, Cassandra, Riak
+# - When uptime is more important than perfect consistency
+# - Eventually consistent (data converges over time)
+
+# Python example — consistent vs eventual:
+# Consistent (CP): Every read returns the latest write
+# Eventual (AP): Reads might see stale data, but it converges
+
+# PACELC (extended CAP):
+# If Partition (P): choose Availability or Consistency
+# Else (E): choose Latency or Consistency
+# This is more realistic — there's always a tradeoff!</div>
+
+<div class="code-block"># ── STEP 3: Consensus — Raft algorithm ──
+# How do distributed machines AGREE on a decision?
+# This is the CONSENSUS problem.
+
+# Raft: the understandable consensus algorithm.
+# Used by: etcd (Kubernetes), Consul, CockroachDB.
+
+# Raft concepts:
+# - LEADER: one node handles all writes
+# - FOLLOWERS: replicate the leader's log
+# - ELECTION: if leader dies, followers vote for a new one
+# - TERM: a period with one leader (numbered sequentially)
+
+# Simplified Raft in Python:
+class RaftNode:
+    """Simplified Raft node."""
+    def __init__(self, node_id, peers):
+        self.node_id = node_id
+        self.peers = peers
+        self.current_term = 0
+        self.voted_for = None
+        self.log = []
+        self.state = "follower"  # follower, candidate, or leader
+        self.commit_index = 0
+
+    def start_election(self):
+        """Become candidate and request votes."""
+        self.state = "candidate"
+        self.current_term += 1
+        self.voted_for = self.node_id
+        votes = 1  # vote for self
+
+        # Request votes from all peers:
+        for peer in self.peers:
+            if peer.request_vote(self.current_term, self.node_id):
+                votes += 1
+
+        # Win election if majority:
+        if votes &gt; len(self.peers) // 2:
+            self.state = "leader"
+            print(f"Node {self.node_id} is now leader for term {self.current_term}")
+
+    def append_entry(self, command):
+        """Leader appends command and replicates."""
+        if self.state != "leader":
+            return False  # only leaders can write
+        self.log.append(command)
+        # Replicate to followers...
+        return True</div>
+
+<div class="code-block"># ── STEP 4: Practical distributed systems in Python ──
+# Tools for building distributed systems:
+
+# 1. REDIS — distributed cache/queue:
+import redis
+
+r = redis.Redis(host='localhost', port=6379)
+r.set('user:1', 'Fatima')          # set value
+name = r.get('user:1')              # get value → b'Fatima'
+r.lpush('task_queue', 'send_email')  # queue task
+r.brpop('task_queue', timeout=30)   # pop task (blocking)
+
+# 2. CELERY — distributed task queue:
+# from celery import Celery
+# app = Celery('tasks', broker='redis://localhost')
+#
+# @app.task
+# def process_document(doc_id):
+#     """This runs on a WORKER, not the web server."""
+#     doc = load_document(doc_id)
+#     result = expensive_analysis(doc)
+#     return result
+#
+# # Call asynchronously:
+# result = process_document.delay(42)
+# # Check status later:
+# if result.ready():
+#     print(result.get())
+
+# 3. KAFKA — distributed event streaming:
+# from kafka import KafkaProducer, KafkaConsumer
+#
+# producer = KafkaProducer(bootstrap_servers='localhost:9092')
+# producer.send('events', b'{"user": "fatima", "action": "login"}')
+#
+# consumer = KafkaConsumer('events', bootstrap_servers='localhost:9092')
+# for message in consumer:
+#     process_event(message.value)</div>
+
+<div class="code-block"># ── STEP 5: Microservices in Python ──
+# Break a monolith into small, independent services.
+
+# MONOLITH (one big app):
+# - All code in one process
+# - Simple to build, hard to scale independently
+# - One failure takes down everything
+
+# MICROSERVICES (many small apps):
+# - Each service has its own job
+# - Independent deployment and scaling
+# - Communicate via HTTP or message queue
+
+# FastAPI microservice example:
+# from fastapi import FastAPI
+# import httpx
+#
+# app = FastAPI()
+#
+# @app.get("/health")
+# async def health():
+#     return {"status": "ok"}
+#
+# @app.get("/user/{user_id}/recommendations")
+# async def get_recommendations(user_id: int):
+#     # Call other microservices:
+#     async with httpx.AsyncClient() as client:
+#         profile = await client.get(f"http://user-service/users/{user_id}")
+#         history = await client.get(f"http://history-service/users/{user_id}")
+#
+#     # Generate recommendations:
+#     recs = model.recommend(profile.json(), history.json())
+#     return {"recommendations": recs}
+
+# DOCKER for packaging:
+# Each microservice runs in its own container
+# docker build -t user-service .
+# docker run -p 8000:8000 user-service
+
+# KUBERNETES for orchestration:
+# Manages hundreds of containers
+# Auto-scales, restarts failed containers, load balances</div>
+
+<div class="code-block"># ── STEP 6: Distributed systems patterns ──
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Pattern             │ Purpose                            │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ Load balancer       │ Distribute traffic across servers  │
+# │ Consensus (Raft)    │ Agree on decisions despite failures│
+# │ Replication         │ Copy data for reliability          │
+# │ Sharding            │ Split data across machines         │
+# │ Caching             │ Reduce latency, offload DB         │
+# │ Message queue       │ Async communication between parts  │
+# │ Circuit breaker     │ Prevent cascading failures         │
+# │ Service mesh        │ Manage service-to-service comms    │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# THE EIGHT FALLACIES OF DISTRIBUTED COMPUTING
+# (things people assume but are WRONG):
+# 1. The network is reliable
+# 2. Latency is zero
+# 3. Bandwidth is infinite
+# 4. The network is secure
+# 5. Topology doesn't change
+# 6. There is one administrator
+# 7. Transport cost is zero
+# 8. The network is homogeneous
+
+# TOOLS TO LEARN:
+# Docker / Kubernetes  — containerization + orchestration
+# Redis / Memcached    — distributed caching
+# Kafka / RabbitMQ     — message queues
+# gRPC / Protocol Buffers — efficient service communication
+# Prometheus / Grafana — distributed monitoring
+
+# RESEARCH AREAS:
+# Serverless computing, edge computing
+# Privacy-preserving distributed ML (federated learning)
+# Distributed training for large models (Megatron, FSDP)
+# Blockchains and Byzantine fault tolerance
+
+# CAREER: DevOps, SRE, distributed systems engineer
+# Every major tech company NEEDS these skills</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">🏗️ Consensus</td><td>Raft, Paxos, BFT, CRDTs</td><td>SOSP, OSDI, PODC, OPODIS</td></tr>
