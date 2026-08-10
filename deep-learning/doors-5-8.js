@@ -53,18 +53,216 @@ doors.push({
   <div class="diag-cap">জ্ঞান * কর্ম = শক্তি। এটি ক্ষেত্রফল (area) — গুণফল। যেকোনো একটি শূন্য হলে পুরোটাই শূন্য। ১০০ জ্ঞান + ০ কর্ম = ০। ৫০*৫০ = ২৫০০। ১০০*১০০ = সর্বোচ্চ।</div>
 </div>
 
-<div class="code-block">Knowledge * Action — প্রয়োগের নিয়ম:
+<div class="code-block"># ── STEP 1: Knowledge × Action = Power ──
+# Francis Bacon said "Knowledge is power" (1597).
+# He was WRONG. Knowledge ALONE is not power.
 
-  ২৪-ঘণ্টা নিয়ম:
-    যা শিখছ, ২৪ ঘণ্টার মধ্যে প্রয়োগ না করলে
-    declarative → procedural রূপান্তর হয় না। পড়া মুছে যায়।
+# The real formula: Power = Knowledge × Action
 
-  কোড শিখছ?   → সাথে সাথে একটা ফাংশন লেখো
-  কনসেপ্ট?     → নিজের প্রজেক্টে কোথায় লাগবে ভাবো
-  ডিজাইন প্যাটার্ন? → আজকের কোডে প্রয়োগ করো
+# If knowledge = 100 but action = 0:
+#   Power = 100 × 0 = 0  (you know a lot, do nothing)
 
-  ⚠️ ফাঁদ: "আরও পড়ি, তারপর করব" — এটা কখনো করবে না।
-     ১ টিউটোরিয়াল → সাথে সাথে প্রজেক্ট। এটাই নিয়ম।</div>
+# If knowledge = 10 but action = 10:
+#   Power = 10 × 10 = 100  (you know a little, do a lot)
+
+# The MULTIPLICATION matters. Either factor being zero kills the result.
+
+knowledge = 100  # reading tutorials
+action = 0       # never building
+power = knowledge * action
+print(f"100 tutorials, 0 projects: power = {power}")  # 0
+
+knowledge = 10   # one tutorial
+action = 10      # one project
+power = knowledge * action
+print(f"1 tutorial, 1 project: power = {power}")  # 100
+
+# THE LESSON: A little knowledge + a lot of action
+# beats a lot of knowledge + no action. Every time.</div>
+
+<div class="code-block"># ── STEP 2: The 24-hour rule ──
+# If you don't APPLY what you learned within 24 hours,
+# it stays as DECLARATIVE memory (facts you can recite).
+# It never becomes PROCEDURAL memory (skills you can DO).
+
+# DECLARATIVE: "I know Python decorators use @ syntax"
+# PROCEDURAL: You can write a @timer decorator from scratch
+
+# The transformation from declarative to procedural
+# happens ONLY through ACTION — typing the code, making
+# mistakes, fixing them.
+
+# THE 24-HOUR APPLICATION RULES:
+rules = {
+    "Learned a CODE concept?": "Write a function using it WITHIN 24 hours",
+    "Learned a DESIGN PATTERN?": "Apply it in your current project TODAY",
+    "Learned a DEBUGGING technique?": "Use it on your next bug",
+    "Learned a TOOL (Git, Docker)?": "Use it in your workflow immediately",
+    "Learned a CONCEPT (ML, DS)?": "Implement it in a small script",
+    "Read a BOOK chapter?": "Write a 3-sentence summary + apply one idea",
+}
+
+print("THE 24-HOUR APPLICATION RULE:")
+for trigger, action in rules.items():
+    print(f"  {trigger}")
+    print(f"    → {action}\n")
+
+# THE TRAP: "I'll read more, THEN I'll start building."
+# No. You won't. The reading becomes procrastination.
+# 1 tutorial → immediately build. That's the rule.</div>
+
+<div class="code-block"># ── STEP 3: Tutorial hell and how to escape ──
+# TUTORIAL HELL: watching endless tutorials without ever building.
+
+signs_of_tutorial_hell = [
+    "You've watched 50+ tutorials but have 0 projects",
+    "You feel 'ready' after one more tutorial (always one more)",
+    "You can't code without following step-by-step instructions",
+    "You switch languages/frameworks before finishing one project",
+    "Your GitHub has forks but no original repositories",
+    "You know syntax but can't solve open-ended problems",
+]
+
+print("SIGNS YOU'RE IN TUTORIAL HELL:")
+for i, sign in enumerate(signs_of_tutorial_hell, 1):
+    print(f"  {i}. {sign}")
+
+# THE ESCAPE PLAN:
+escape_plan = [
+    "STOP watching tutorials for 30 days",
+    "Pick ONE project you actually want to build",
+    "Build it WITHOUT a step-by-step tutorial",
+    "Google specific problems as they arise",
+    "Ship it (even if ugly) — deploy or publish",
+    "Repeat with a harder project",
+]
+
+print("\nESCAPE PLAN:")
+for step in escape_plan:
+    print(f"  ☐ {step}")
+
+# The key: SPECIFIC problems → Google.
+# NOT: "How to build a web app" (that's a tutorial).
+# YES: "Django ForeignKey on_delete cascade" (that's a specific problem).</div>
+
+<div class="code-block"># ── STEP 4: Project-based learning ──
+# The most effective learning method: BUILD PROJECTS.
+
+# WHY PROJECTS WORK:
+# 1. Forces you to integrate multiple concepts
+# 2. Reveals what you DON'T know (gaps)
+# 3. Creates a PORTFOLIO (proof of skill)
+# 4. Gives you something to TALK ABOUT in interviews
+# 5. Builds procedural memory (muscle memory for code)
+
+# PROJECT DIFFICULTY LADDER (start at your level):
+project_ladder = {
+    "BEGINNER": [
+        "CLI calculator",
+        "File organizer script",
+        "Number guessing game",
+        "Simple CRUD app (Django admin)",
+    ],
+    "INTERMEDIATE": [
+        "REST API with authentication",
+        "Real-time chat (WebSocket)",
+        "Data visualization dashboard",
+        "Expense tracker (full stack)",
+    ],
+    "ADVANCED": [
+        "Distributed system (microservices)",
+        "ML pipeline (train + deploy)",
+        "Chrome extension",
+        "Mobile app (React Native/Expo)",
+    ],
+}
+
+print("PROJECT LADDER (climb one rung at a time):")
+for level, projects in project_ladder.items():
+    print(f"\n{level}:")
+    for project in projects:
+        print(f"  ☐ {project}")
+
+# RULE: Each project should be slightly HARDER than the last.
+# Too easy = no growth. Too hard = frustration.
+# The sweet spot = "I can figure this out with some effort."</div>
+
+<div class="code-block"># ── STEP 5: The build-learn-build cycle ──
+# The most effective learning cycle:
+
+# 1. BUILD something (encounter problems)
+# 2. LEARN what you need to solve those problems
+# 3. BUILD again (with new knowledge)
+# 4. Repeat
+
+# This is the OPPOSITE of "learn everything, then build."
+# You learn IN CONTEXT, which is 10x more effective.
+
+# EXAMPLE: Building a Django expense tracker:
+cycle_example = [
+    ("BUILD", "Create a basic Django project, try to add an Expense model"),
+    ("LEARN", "How do Django models work? → Read docs on models"),
+    ("BUILD", "Add the model, create views, try to display expenses"),
+    ("LEARN", "How do templates work? → Read docs on templates"),
+    ("BUILD", "Add template, try to add a form for new expenses"),
+    ("LEARN", "How do Django forms work? → Read docs on forms"),
+    ("BUILD", "Add form, try to add user authentication"),
+    ("LEARN", "How does Django auth work? → Read docs on auth"),
+    ("BUILD", "Add login/logout, deploy to production"),
+]
+
+print("BUILD-LEARN-BUILD CYCLE (Django example):")
+for phase, task in cycle_example:
+    emoji = "🔨" if phase == "BUILD" else "📖"
+    print(f"  {emoji} {phase}: {task}")
+
+# Notice: you learn ONLY what you need, WHEN you need it.
+# This is called JUST-IN-TIME LEARNING.
+# It's more efficient than just-in-case learning (reading everything upfront).</div>
+
+<div class="code-block"># ── STEP 6: Knowledge without action is just information ──
+# THE ISLAMIC PARALLEL:
+# The Quran repeatedly says: "Those who believed AND did righteous deeds."
+# Not just belief (knowledge). Not just action. BOTH.
+
+# iman (faith) × amal (action) = true religion
+# knowledge × action = true power
+
+# Faith without action = leaves without roots (blows away)
+# Action without faith = roots without leaves (no growth)
+# Both together = a complete tree
+
+# YOUR WEEKLY ACTION AUDIT:
+weekly_audit = [
+    "How many hours did I LEARN this week?",
+    "How many hours did I BUILD this week?",
+    "Ratio: learn:build should be 1:2 (more building than learning)",
+    "Did I apply what I learned within 24 hours?",
+    "Did I ship anything? (deploy, publish, share)",
+    "What will I BUILD next week?",
+]
+
+print("WEEKLY ACTION AUDIT:")
+for question in weekly_audit:
+    print(f"  ❓ {question}")
+
+# THE FORMULA FOR GROWTH:
+# growth = (knowledge × action) ^ consistency
+#
+# - Knowledge: what you learn (books, tutorials, docs)
+# - Action: what you build (projects, code, contributions)
+# - Consistency: how often you do both (daily, not weekly)
+#
+# All three are needed. Skip any one → growth stops.
+
+# REMEMBER:
+# "Knowing is not enough; we must apply.
+#  Willing is not enough; we must do."
+#  — Goethe
+
+# The world doesn't reward what you KNOW.
+# It rewards what you BUILD with what you know.
+# So go build something. Today. Right now.</div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">১৫৯৭</div><div class="sc-label">"Knowledge is power" — Francis Bacon</div></div>

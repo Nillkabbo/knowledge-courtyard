@@ -596,15 +596,204 @@ doors.push({
   <div class="diag-cap">~২০ ঘণ্টায় আত্মবিশ্বাস চূড়ায়, কিন্তু প্রকৃত দক্ষতা এখনও কম। গভীরে গেলে আত্মবিশ্বাস পড়ে (Valley) — সেখানেই আসল শেখা শুরু। বিনয়ই চাবি।</div>
 </div>
 
-<div class="code-block">Illusion of Competence — ৩ লক্ষণ ও ৩ প্রতিকার:
+<div class="code-block"># ── STEP 1: The illusion of competence ──
+# You've felt it: reading a tutorial and thinking "I know this!"
+# Then trying to code it from scratch... blank.
 
-  লক্ষণ (তুমি বিভ্রমে আছ):
-    • পড়ে মনে হয় "জানি" (আসলে মুখস্থ)
-    • কোর্স শেষে "পারি" (কিন্তু প্রয়োগ?)
-    • পরীক্ষায় ভালো = "বিশেষজ্ঞ" (কিন্তু বাস্তবে?)
+# This is the ILLUSION OF COMPETENCE.
+# Your brain confuses RECOGNITION with UNDERSTANDING.
 
-  প্রতিকার (বিভ্রম ভাঙো):
-    ১. Active recall — বই বন্ধ করে মনে করো / খালি পাতায় লেখো
+# Recognition: "Oh yes, I've seen this before" (passive)
+# Understanding: "I can build this from scratch" (active)
+
+# THREE SYMPTOMS you're in the illusion:
+symptoms = [
+    "Reading code and thinking 'makes sense' (but can't write it)",
+    "Finishing a course and feeling like an expert (but no portfolio)",
+    "Getting good grades but unable to apply in real projects",
+]
+
+print("ILLUSION OF COMPETENCE — symptoms:")
+for i, symptom in enumerate(symptoms, 1):
+    print(f"  {i}. {symptom}")
+
+# THE CAUSE: Dunning-Kruger Effect
+# Beginners overestimate their ability the MOST.
+# At ~20 hours of practice, confidence peaks — but skill is lowest.
+# This is "Mount Stupid" on the Dunning-Kruger curve.
+
+# As you learn more, confidence DROPS (you realize how much you don't know).
+# This "Valley of Despair" is where REAL learning begins.
+# Eventually, confidence rises again — but based on ACTUAL skill.</div>
+
+<div class="code-block"># ── STEP 2: The Dunning-Kruger curve ──
+# The relationship between confidence and actual knowledge:
+
+# ┌──────────────────────────────────────────────┐
+# │ Confidence                                    │
+# │  High ─┐                    ┌──(real experts) │
+# │        │ "Mount Stupid"     │                 │
+# │        └──●                 │                 │
+# │           ╲                 │                 │
+# │            ╲ "Valley of     │                 │
+# │             ● Despair"     ●                  │
+# │              ╲          ╱                     │
+# │               ╲      ╱                        │
+# │  Low ──────────╲──╱─────────────────────────── │
+# │           20hr    100hr    1000hr    10000hr   │
+# └──────────────────────────────────────────────┘
+
+# At 20 hours: HIGH confidence, LOW skill (dangerous!)
+# At 100 hours: LOW confidence, MEDIUM skill (humble)
+# At 1000 hours: MEDIUM confidence, HIGH skill (competent)
+# At 10000 hours: HIGH confidence, HIGH skill (mastery)
+
+# THE DANGER:
+# If you stop at 20 hours, you'll THINK you're good but BE bad.
+# This is why so many "tutorial developers" fail interviews.</div>
+
+<div class="code-block"># ── STEP 3: Breaking the illusion — active recall ──
+# The #1 cure: ACTIVE RECALL.
+# Close the book. Close the video. Try to REMEMBER.
+
+# Instead of re-reading notes (passive):
+# Write everything you remember on a BLANK PAGE (active).
+
+# ACTIVE RECALL techniques:
+recall_techniques = {
+    "blank_page": "Write everything you know about X on a blank page",
+    "flashcards": "Question on front, answer on back (Anki)",
+    "explain_aloud": "Explain the concept aloud as if teaching",
+    "whiteboard": "Draw diagrams from memory on a whiteboard",
+    "practice_test": "Take a test WITHOUT looking at answers first",
+}
+
+print("ACTIVE RECALL TECHNIQUES:")
+for technique, description in recall_techniques.items():
+    print(f"  ☐ {technique}: {description}")
+
+# THE RULE:
+# If you can't recall it WITHOUT looking, you don't KNOW it.
+# You just RECOGNIZE it. Recognition ≠ Knowledge.
+
+# Example:
+# ❌ PASSIVE: Read the Python decorator tutorial again
+# ✅ ACTIVE: Close the tutorial. Write a decorator from scratch.
+#   If you get stuck → that's where your real knowledge gap is.</div>
+
+<div class="code-block"># ── STEP 4: Breaking the illusion — build projects ──
+# The #2 cure: BUILD SOMETHING without a tutorial.
+
+# PROJECT-BASED LEARNING:
+# Don't follow step-by-step tutorials. Instead:
+# 1. Pick a PROJECT you want to build
+# 2. Try to build it (struggle is good!)
+# 3. Look up specific things when stuck
+# 4. Build it YOUR way (not the tutorial's way)
+
+project_ideas = {
+    "Python beginner": [
+        "Build a CLI todo app (no framework)",
+        "Build a number guessing game",
+        "Build a calculator with history",
+        "Build a file organizer script",
+    ],
+    "Web development": [
+        "Build a personal blog (Django/Flask)",
+        "Build a weather app (API consumption)",
+        "Build a expense tracker (CRUD + database)",
+        "Build a chat app (WebSocket)",
+    ],
+    "Machine Learning": [
+        "Predict house prices (regression)",
+        "Classify Iris flowers (classification)",
+        "Cluster customer data (unsupervised)",
+        "Build a simple recommendation system",
+    ],
+}
+
+print("PROJECT IDEAS (build WITHOUT following a tutorial):")
+for category, projects in project_ideas.items():
+    print(f"\n{category}:")
+    for project in projects:
+        print(f"  ☐ {project}")
+
+# The project WILL be ugly. The code WILL be bad.
+# That's OK. The struggle is where learning happens.
+# Refactor later. Just BUILD.</div>
+
+<div class="code-block"># ── STEP 5: Breaking the illusion — teach others ──
+# The #3 cure: TEACH. (Feynman Technique)
+
+# THE FEYNMAN TECHNIQUE:
+# 1. Pick a concept you "know"
+# 2. Explain it in SIMPLE words (as if to a 12-year-old)
+# 3. Identify where you get stuck or use jargon
+# 4. Go back and learn those gaps
+# 5. Simplify and repeat
+
+def feynman_test(concept):
+    """Test if you truly understand a concept."""
+    print(f"CONCEPT: {concept}")
+    print("1. Explain in one sentence (no jargon):")
+    print("   → ____________________________________")
+    print("2. Give an ORIGINAL example (not from tutorial):")
+    print("   → ____________________________________")
+    print("3. What's a COMMON MISCONCEPTION about this?")
+    print("   → ____________________________________")
+    print("4. Where does this concept BREAK or fail?")
+    print("   → ____________________________________")
+    print("5. How does this connect to OTHER concepts?")
+    print("   → ____________________________________")
+    print("\nIf you can't answer all 5 → go back and learn more.")
+
+# Try it:
+feynman_test("Python Decorators")
+
+# TEACHING METHODS:
+# - Write a blog post
+# - Make a YouTube video
+# - Explain to a colleague
+# - Answer StackOverflow questions
+# - Create documentation
+# - Give a lightning talk
+
+# "The best way to learn is to teach." — Frank Oppenheimer</div>
+
+<div class="code-block"># ── STEP 6: The humility principle ──
+# The most important learning trait: HUMILITY.
+
+# THE GROWTH MINDSET (Carol Dweck):
+# Fixed mindset: "I'm not good at math" (you think ability is fixed)
+# Growth mindset: "I can't do this YET" (you think ability grows)
+
+# HUMILITY IN LEARNING:
+# - "I don't know" is the start of learning
+# - "I was wrong" means you've grown
+# - "Show me a better way" opens doors
+# - "I'm still learning" keeps you growing
+
+# THE ISLAMIC PERSPECTIVE:
+# "He created you from dust, then from a drop, then from a clot."
+# — Quran, describing stages of human creation.
+# Learning is also staged — at each level, you discover
+# how little you knew before.
+
+# THE THREE SIGNS OF TRUE EXPERTISE:
+# 1. They can explain complex things SIMPLY
+# 2. They acknowledge what they DON'T know
+# 3. They're still LEARNING (not "arrived")
+
+# YOUR DAILY CHECK:
+# After each study session, ask:
+# "Can I explain what I just learned to a 12-year-old?"
+# If not → you're in the illusion. Go deeper.
+
+# THE RULE THAT CHANGES EVERYTHING:
+# Recognition feels like knowledge. It ISN'T.
+# Only RECALL, BUILDING, and TEACHING prove knowledge.
+# Test yourself daily. Be honest. Be humble.
+# That's the path to real expertise.</div>
     ২. Apply — প্রজেক্ট বানাও, প্রয়োগ করো
     ৩. Teach — অন্যকে শেখাও (Feynman) — gap ধরা পড়বে
 
@@ -677,20 +866,218 @@ doors.push({
   <div class="diag-cap">প্রতিটা practice session-এ এই চক্র ঘুরতে হবে। শুধু practice নয় — ভুল ধরা, কারণ বোঝা, ঠিক করা, আবার practice। ছাড়া এটা অন্ধ পুনরাবৃত্তি।</div>
 </div>
 
-<div class="code-block">Feedback Loop — ৫ম ধাপ যা ভিডিও মিস করেছে:
+<div class="code-block"># ── STEP 1: Why feedback is the missing step ──
+# The famous "20-hour learning" video has 4 steps:
+# 1. Set a goal
+# 2. Break it into parts
+# 3. Remove distractions
+# 4. Practice 20 hours
 
-  ভিডিওর ৪ ধাপ (অসম্পূর্ণ):
-    ① লক্ষ্য নির্ধারণ  ② অংশে ভাগ
-    ③ distraction দূর   ④ ২০ ঘণ্টা practice
-    ❌ ৫ম ধাপ মিসিং: FEEDBACK LOOP
+# But it MISSES the most important step: FEEDBACK.
 
-  সঠিক চক্র (প্রতিটা session-এ):
-    practice → ভুল খোঁজো → কেন বুঝো → ঠিক করো → আবার practice
-    ⚠️ ছাড়া এটা: ভুল পদ্ধতি ২০ ঘণ্টা মজবুত করা = শূন্য।
+# Without feedback, 20 hours of practice = 20 hours of
+# reinforcing the SAME mistakes. You get BETTER at being BAD.
 
-  Feedback-এর ৪ উৎস:
-    স্বয়ংক্রিয় (test/linter) · AI (Claude/ChatGPT, verify করো)
-    মানুষ (mentor/peer) · স্বয়ং (২৪ ঘণ্টা পর নিজের কাজ দেখো)</div>
+# THE CORRECT LEARNING LOOP:
+# practice → find mistakes → understand why → fix → practice again
+
+# This is called DELIBERATE PRACTICE.
+# It's not about HOW LONG you practice — it's about
+# HOW QUICKLY you get feedback and correct.</div>
+
+<div class="code-block"># ── STEP 2: Blind practice vs deliberate practice ──
+# BLIND PRACTICE (no feedback):
+# - Play guitar for 1 hour (same mistakes, uncorrected)
+# - Code for 3 hours (no tests, no code review)
+# - Write for 2 hours (no editor, no feedback)
+# Result: You feel productive. But you're not improving.
+
+# DELIBERATE PRACTICE (with feedback):
+# - Play guitar → record → listen → fix weak spots
+# - Code → run tests → fix failures → review code
+# - Write → get editor feedback → revise → repeat
+# Result: Every minute makes you BETTER.
+
+practice_comparison = {
+    "BLIND": {
+        "activity": "Code for 3 hours",
+        "feedback": "None",
+        "improvement": "Minimal (reinforcing mistakes)",
+        "feeling": "Productive (but isn't)",
+    },
+    "DELIBERATE": {
+        "activity": "Code → test → fix → review",
+        "feedback": "Every 10 minutes",
+        "improvement": "Maximum (correcting mistakes)",
+        "feeling": "Frustrating (but effective)",
+    },
+}
+
+for practice_type, info in practice_comparison.items():
+    print(f"\n{practice_type} PRACTICE:")
+    for key, value in info.items():
+        print(f"  {key}: {value}")
+
+# Deliberate practice is UNCOMFORTABLE. It should be.
+# If it feels easy, you're not pushing your limits.
+# The discomfort is where growth happens.</div>
+
+<div class="code-block"># ── STEP 3: Four sources of feedback ──
+# You need MULTIPLE feedback sources for balanced improvement.
+
+feedback_sources = {
+    "AUTOMATIC": {
+        "examples": ["unit tests", "linter", "compiler errors", "CI/CD"],
+        "speed": "Instant",
+        "quality": "Objective but narrow (syntax, not design)",
+        "best_for": "Catching technical errors",
+    },
+    "AI": {
+        "examples": ["Claude", "ChatGPT", "Copilot", "code review bots"],
+        "speed": "Seconds to minutes",
+        "quality": "Broad but verify (AI can be wrong)",
+        "best_for": "Quick feedback, alternatives, explanations",
+    },
+    "HUMAN": {
+        "examples": ["mentor", "senior dev", "peer review", "study group"],
+        "speed": "Hours to days",
+        "quality": "Deep, contextual, experienced",
+        "best_for": "Design decisions, best practices, career advice",
+    },
+    "SELF": {
+        "examples": ["review own code after 24 hours", "rubber duck debugging"],
+        "quality": "Requires honesty and distance",
+        "best_for": "Catching your own blind spots",
+        "best_for_2": "Developing self-awareness",
+    },
+}
+
+print("FOUR FEEDBACK SOURCES:")
+for source, info in feedback_sources.items():
+    print(f"\n{source}:")
+    for key, value in info.items():
+        print(f"  {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 4: Creating your own feedback systems ──
+# Don't wait for feedback — BUILD IT INTO your workflow.
+
+# FOR CODERS:
+code_feedback_systems = [
+    "# 1. Unit tests (write BEFORE the code):",
+    "#    def test_add(): assert add(2, 3) == 5",
+    "",
+    "# 2. Linter (run after every save):",
+    "#    flake8, pylint, ruff — catch style + errors",
+    "",
+    "# 3. Pre-commit hooks:",
+    "#    Auto-format + lint BEFORE you can commit",
+    "",
+    "# 4. CI/CD pipeline:",
+    "#    Run all tests on every push",
+    "",
+    "# 5. Code review:",
+    "#    PR → at least one reviewer approves",
+    "",
+    "# 6. Rubber duck debugging:",
+    "#    Explain your code to a duck (or AI). Bugs become obvious.",
+]
+
+for line in code_feedback_systems:
+    print(line)
+
+# FOR LEARNERS:
+learner_feedback = {
+    "daily": "Take a 5-question quiz on today's learning",
+    "weekly": "Build a mini-project without tutorials",
+    "monthly": "Review old code — critique yourself",
+    "quarterly": "Get feedback from a senior developer",
+}
+
+print("\nLEARNER FEEDBACK SCHEDULE:")
+for period, activity in learner_feedback.items():
+    print(f"  {period}: {activity}")</div>
+
+<div class="code-block"># ── STEP 5: The self-feedback technique ──
+# The most reliable feedback source: YOURSELF, after time has passed.
+
+# THE 24-HOUR RULE:
+# Write code today. Review it TOMORROW.
+# Fresh eyes catch mistakes that tired eyes miss.
+
+# How to do self-review:
+def self_review_checklist():
+    """Run this on your own code 24 hours after writing it."""
+    checks = [
+        ("Does this code do what I intended?", "Logic check"),
+        ("Are there edge cases I missed?", "Robustness"),
+        ("Is the code readable?", "Maintainability"),
+        ("Could I simplify this?", "Simplicity"),
+        ("Are there magic numbers?", "Clarity"),
+        ("Is error handling adequate?", "Safety"),
+        ("Are names clear and consistent?", "Readability"),
+        ("Would a newcomer understand this?", "Accessibility"),
+        ("Are there potential bugs?", "Correctness"),
+        ("Is this the RIGHT approach, not just A approach?", "Design"),
+    ]
+
+    print("SELF-REVIEW CHECKLIST (24 hours later):")
+    for question, category in checks:
+        print(f"  ❓ {question} [{category}]")
+    print("\nScore each 1-5. If any is below 3 → refactor.")
+
+self_review_checklist()
+
+# THE RUBBER DUCK TECHNIQUE:
+# Explain your problem aloud to a rubber duck (or any object).
+# The act of explaining forces you to think clearly.
+# 80% of the time, you find the bug while explaining.
+# This works because teaching reveals gaps in understanding.</div>
+
+<div class="code-block"># ── STEP 6: Building the feedback habit ──
+# Make feedback AUTOMATIC and FREQUENT.
+
+# THE FEEDBACK-FIRST WORKFLOW:
+# 1. Before coding: write the test
+# 2. While coding: run tests constantly
+# 3. After coding: lint + type check
+# 4. Before committing: self-review (the checklist)
+# 5. Before merging: get human review
+# 6. After merging: monitor in production
+
+# THE ISLAMIC ROOT: MUHASABAH
+# Umar ibn al-Khattab (RA) said:
+# "Judge yourselves before you are judged."
+# This is self-feedback — auditing your own work before others do.
+
+# DAILY LEARNING FEEDBACK:
+daily_questions = [
+    "What did I learn today? (be specific)",
+    "What was the BIGGEST mistake I made?",
+    "What feedback did I get? (from tests, AI, humans)",
+    "What will I do DIFFERENTLY tomorrow?",
+    "Did I practice DELIBERATELY or BLINDLY?",
+]
+
+print("END-OF-DAY FEEDBACK REFLECTION:")
+for q in daily_questions:
+    print(f"  ❓ {q}")
+
+# THE COMPOUND EFFECT:
+# Small feedback, applied daily, compounds over months.
+# 1% better every day = 37x better in a year.
+# 1% worse every day = 0.03x (essentially zero) in a year.
+
+# THE FORMULA FOR MASTERY:
+# mastery = (deliberate_practice + rapid_feedback) ^ consistency
+# Practice without feedback = wasted time.
+# Feedback without practice = wasted knowledge.
+# Both together, consistently = mastery.
+
+# REMEMBER:
+# Practice without feedback is like running on a treadmill —
+# lots of effort, zero distance.
+# Add feedback (a map, a coach, a test) and suddenly
+# every step moves you forward.</div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ অন্ধ প্র্যাকটিস</div>২০ ঘণ্টা practice — কিন্তু কোন feedback নেই। একই ভুল বারবার, সেটাই মজবুত হয়। মনে হয় "অনেক কাজ করেছি" — কিন্তু উন্নতি নেই। ঘণ্টা গোনা, পদ্ধতি নয়।</div>
