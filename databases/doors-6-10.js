@@ -84,35 +84,338 @@ Partition হলে (এবং হবে) — C বা A বেছে নাও�
 </div>
 <div class="svg-caption">চিত্র: NoSQL-এর চার ধরন — Key-Value, Document, Column, Graph। CAP tradeoff।</div>
 
-<div class="code-block"># — NoSQL: চার ধরনের উদাহরণ —
+<div class="code-block"># ── STEP 1: What is NoSQL? ──
+# NoSQL = "Not Only SQL" — databases that don't use the relational model.
 
-  # Redis (Key-Value) — অত্যন্ত দ্রুত cache
-  SET user:1:name "Rakib"
-  GET user:1:name        # → "Rakib"
-  INR visit_count        # → atomic counter
+# WHY NoSQL EXISTS:
+# - SQL is great for structured data with relationships
+# - NoSQL handles: massive scale, unstructured data, flexible schemas
+# - Different NoSQL types for different problems
 
-  # MongoDB (Document) — JSON-এর মতো
-  db.users.insertOne({
-      name: "Sara",
-      email: "s@x.com",
-      orders: [
-          {item: "book", price: 25},
-          {item: "pen", price: 5}
-      ]
-  });
-  db.users.find({"orders.price": {$gt: 20}});
+# FOUR TYPES OF NoSQL:
+nosql_types = {
+    "Key-Value": {
+        "examples": "Redis, DynamoDB, memcached",
+        "data_model": "Simple: key → value (like a Python dict)",
+        "best_for": "Caching, sessions, counters, real-time",
+        "speed": "Extremely fast (in-memory)",
+    },
+    "Document": {
+        "examples": "MongoDB, CouchDB, Firestore",
+        "data_model": "JSON-like documents (flexible schema)",
+        "best_for": "User profiles, content management, catalogs",
+        "speed": "Fast (flexible queries)",
+    },
+    "Column-Family": {
+        "examples": "Cassandra, HBase, ScyllaDB",
+        "data_model": "Rows with dynamic columns (optimized for writes)",
+        "best_for": "Time-series, IoT, write-heavy, massive scale",
+        "speed": "Very fast writes, linear scalability",
+    },
+    "Graph": {
+        "examples": "Neo4j, Amazon Neptune, ArangoDB",
+        "data_model": "Nodes and edges (relationships are first-class)",
+        "best_for": "Social networks, recommendations, fraud detection",
+        "speed": "Fast relationship traversals",
+    },
+}
 
-  # Neo4j (Graph) — Cypher query
-  CREATE (a:Person {name: "Karim"})
-  CREATE (b:Person {name: "Rita"})
-  CREATE (a)-[:KNOWS {since: 2020}]->(b);
-  MATCH (a)-[:KNOWS]-(b) RETURN a, b;
+print("NoSQL DATABASE TYPES:")
+for ntype, info in nosql_types.items():
+    print(f"\n  {ntype}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
 
-  # Cassandra (Column) — CQL
-  CREATE TABLE events (
-      user_id UUID, ts TIMESTAMP,
-      event TEXT, PRIMARY KEY (user_id, ts)
-  );</div>
+<div class="code-block"># ── STEP 2: Key-Value stores (Redis) ──
+# REDIS: in-memory key-value store. EXTREMELY fast (microseconds).
+
+redis_examples = """
+# Redis commands (also available via Python redis library):
+
+# Basic key-value:
+SET user:1:name "Rakib"        # store
+GET user:1:name                 # → "Rakib"
+DEL user:1:name                 # delete
+EXPIRE session:abc 3600         # auto-delete after 1 hour
+TTL session:abc                 # time until expiry (seconds)
+
+# Atomic counter (great for view counts, likes):
+INCR page_views                 # → 1
+INCR page_views                 # → 2
+INCRBY score 10                 # → 12
+
+# Lists (queues):
+LPUSH tasks "email_user_1"      # push to front
+RPOP tasks                      # pop from back
+LRANGE tasks 0 -1               # get all
+
+# Hashes (like Python dicts):
+HSET user:1 name "Rakib" age 25 email "r@x.com"
+HGET user:1 name                # → "Rakib"
+HGETALL user:1                  # → all fields
+
+# Sets (unique collections):
+SADD online_users "user1" "user2" "user3"
+SISMEMBER online_users "user1"  # → true
+SCARD online_users              # → 3
+
+# Sorted sets (leaderboards):
+ZADD leaderboard 100 "Alice" 85 "Bob" 92 "Carol"
+ZREVRANGE leaderboard 0 2      # top 3: Alice, Carol, Bob
+"""
+
+print(redis_examples)
+
+# PYTHON REDIS USAGE:
+python_redis = """
+import redis
+
+r = redis.Redis(host='localhost', port=6379, decode_responses=True)
+
+# Cache a value:
+r.set('user:1:name', 'Rakib', ex=3600)  # expires in 1 hour
+name = r.get('user:1:name')  # → 'Rakib'
+
+# Atomic counter:
+r.incr('page_views')
+
+# Cache pattern (cache-aside):
+def get_user(user_id):
+    cache_key = f"user:{user_id}"
+    cached = r.get(cache_key)
+    if cached:
+        return json.loads(cached)  # cache hit!
+
+    user = User.objects.get(id=user_id)  # DB query
+    r.setex(cache_key, 3600, json.dumps(user.to_dict()))  # cache for 1hr
+    return user
+"""
+
+print("Python Redis:")
+print(python_redis)</div>
+
+<div class="code-block"># ── STEP 3: Document stores (MongoDB) ──
+# MongoDB stores JSON-like documents. Flexible schema.
+
+mongo_examples = """
+// MongoDB (JavaScript-style queries):
+
+// Insert a document (no predefined schema!):
+db.users.insertOne({
+    name: "Sara",
+    email: "sara@example.com",
+    age: 23,
+    orders: [
+        {item: "book", price: 25, date: "2025-01-15"},
+        {item: "pen", price: 5, date: "2025-01-20"}
+    ],
+    preferences: {
+        theme: "dark",
+        notifications: true
+    }
+});
+
+// Query (similar to SQL WHERE):
+db.users.find({age: {$gte: 20}});               // age >= 20
+db.users.find({"orders.price": {$gt: 20}});     // has order > $20
+db.users.find({"preferences.theme": "dark"});   // nested field
+
+// Update:
+db.users.updateOne(
+    {name: "Sara"},
+    {$set: {age: 24}, $push: {orders: {item: "laptop", price: 999}}}
+);
+
+// Aggregation (like SQL GROUP BY):
+db.orders.aggregate([
+    {$group: {_id: "$user_id", total: {$sum: "$amount"}}},
+    {$sort: {total: -1}},
+    {$limit: 10}
+]);
+"""
+
+print(mongo_examples)
+
+# PYTHON (PyMongo):
+python_mongo = """
+from pymongo import MongoClient
+
+client = MongoClient('mongodb://localhost:27017/')
+db = client['myapp']
+
+# Insert:
+db.users.insert_one({'name': 'Rakib', 'age': 25})
+
+# Query:
+users = db.users.find({'age': {'$gte': 20}})
+for user in users:
+    print(user)
+
+# Create index:
+db.users.create_index('email', unique=True)
+"""
+
+print("Python PyMongo:")
+print(python_mongo)
+
+# WHEN TO USE MONGODB:
+# ✅ Flexible/changing schema
+# ✅ Nested data (JSON-like)
+# ✅ Read-heavy workloads
+# ✅ Rapid prototyping
+
+# WHEN NOT TO USE MONGODB:
+# ❌ Complex JOINs (relational is better)
+# ❌ Transactions across collections (limited)
+# ❌ Strict data integrity requirements</div>
+
+<div class="code-block"># ── STEP 4: SQL vs NoSQL — when to use which ──
+comparison = {
+    "SQL (PostgreSQL, MySQL)": {
+        "data_type": "Structured, relational, tabular",
+        "schema": "Fixed (must define columns upfront)",
+        "scaling": "Vertical (bigger server)",
+        "consistency": "Strong (ACID)",
+        "joins": "Excellent (relational)",
+        "best_for": "Transactions, financial, e-commerce, complex queries",
+    },
+    "NoSQL (MongoDB, Redis)": {
+        "data_type": "Flexible, document, key-value, graph",
+        "schema": "Dynamic (add fields anytime)",
+        "scaling": "Horizontal (more servers)",
+        "consistency": "Eventual (BASE)",
+        "joins": "Limited (denormalize instead)",
+        "best_for": "Caching, big data, real-time, flexible schemas",
+    },
+}
+
+print("SQL vs NoSQL:")
+for db_type, props in comparison.items():
+    print(f"\n  {db_type}:")
+    for key, value in props.items():
+        print(f"    {key}: {value}")
+
+# THE REAL ANSWER: USE BOTH (polyglot persistence)
+# - PostgreSQL for transactions (LedgerPilot: accounts, transactions)
+# - Redis for caching (session data, rate limiting)
+# - Elasticsearch for search (full-text search)
+# - MongoDB for logs/events (flexible schema)
+
+# Many modern apps use 3-4 different databases,
+# each optimized for its specific workload.</div>
+
+<div class="code-block"># ── STEP 5: Graph databases (Neo4j) ──
+# Graph databases treat RELATIONSHIPS as first-class citizens.
+# In SQL, relationships are expensive JOINs. In graph DB, they're instant.
+
+# NEO4J CYPHER QUERY LANGUAGE:
+cypher_examples = """
+// Create nodes (entities):
+CREATE (alice:Person {name: "Alice", age: 30})
+CREATE (bob:Person {name: "Bob", age: 25})
+
+// Create relationships (edges):
+CREATE (alice)-[:KNOWS {since: 2020}]->(bob)
+CREATE (alice)-[:WORKS_AT]->(company:Company {name: "Google"})
+
+// Query: find all friends of Alice:
+MATCH (alice:Person {name: "Alice"})-[:KNOWS]-(friend)
+RETURN friend.name;
+
+// Query: find friends of friends (2 hops):
+MATCH (me:Person {name: "Alice"})-[:KNOWS*2]-(fof)
+RETURN fof.name;
+
+// Query: shortest path between two people:
+MATCH path = shortestPath(
+    (a:Person {name: "Alice"})-[*]-(b:Person {name: "Dave"})
+)
+RETURN path;
+"""
+
+print(cypher_examples)
+
+# USE CASES FOR GRAPH DATABASES:
+graph_use_cases = {
+    "Social networks": "Find mutual friends, friend recommendations",
+    "Recommendation engines": "Users who bought X also bought Y",
+    "Fraud detection": "Find suspicious patterns in transactions",
+    "Knowledge graphs": "Entity relationships (Google Knowledge Graph)",
+    "Network/IT infrastructure": "Dependencies between services",
+    "Route planning": "Shortest path, least cost route",
+}
+
+print("GRAPH DATABASE USE CASES:")
+for use_case, desc in graph_use_cases.items():
+    print(f"  {use_case}: {desc}")
+
+# WHY GRAPHS ARE FAST FOR RELATIONSHIPS:
+# SQL: find friends of friends = 2 expensive JOINs (O(n²) or worse)
+# Graph: follow edges directly = O(1) per hop, O(depth) total</div>
+
+<div class="code-block"># ── STEP 6: CAP theorem and BASE consistency ──
+# THE CAP THEOREM (Brewer's Theorem):
+# In a distributed system, you can have at most 2 of 3:
+
+cap = {
+    "C - Consistency": "All nodes see the same data simultaneously",
+    "A - Availability": "Every request gets a response (not error)",
+    "P - Partition tolerance": "System works despite network failures",
+}
+
+print("CAP THEOREM:")
+for prop, desc in cap.items():
+    print(f"  {prop}: {desc}")
+
+# THE REALITY: you MUST have P (network partitions WILL happen).
+# So the real choice is: CP or AP.
+
+# CP (Consistency + Partition tolerance):
+# - Prioritize correct data over availability
+# - During partition: refuse requests (unavailable)
+# - Examples: PostgreSQL (with sync replication), MongoDB, HBase
+
+# AP (Availability + Partition tolerance):
+# - Prioritize responding over consistency
+# - During partition: respond with possibly stale data
+# - Examples: Cassandra, DynamoDB, CouchDB
+
+# BASE (NoSQL consistency model — opposite of ACID):
+base = {
+    "BA - Basically Available": "System remains operational (might be slow)",
+    "S - Soft State": "State changes without explicit input (eventual)",
+    "E - Eventually Consistent": "Given enough time, all nodes converge",
+}
+
+print("\nBASE (NoSQL alternative to ACID):")
+for prop, desc in base.items():
+    print(f"  {prop}: {desc}")
+
+# EVENTUAL CONSISTENCY EXAMPLES:
+# - DNS: when you change IP, it takes hours to propagate
+# - Social media likes: your like might not show immediately to others
+# - Shopping cart: might be slightly different on app vs web temporarily
+# - Email: not instant (but eventually arrives)
+
+# NoSQL SUMMARY:
+# ┌───────────────┬────────────────┬──────────────────────────┐
+# │ Type          │ Examples       │ Best For                 │
+# ├───────────────┼────────────────┼──────────────────────────┤
+# │ Key-Value     │ Redis, DynamoDB│ Cache, sessions          │
+# │ Document      │ MongoDB        │ Flexible schema, content │
+# │ Column        │ Cassandra      │ Write-heavy, time-series │
+# │ Graph         │ Neo4j          │ Relationships, paths     │
+# │ Search        │ Elasticsearch  │ Full-text search, logs   │
+# │ Time-series   │ InfluxDB       │ Metrics, monitoring      │
+# └───────────────┴────────────────┴──────────────────────────┘
+
+# POLYGLOT PERSISTENCE:
+# Modern applications use MULTIPLE databases:
+# - LedgerPilot: PostgreSQL (transactions) + Redis (cache)
+# - Ipractus: PostgreSQL + Redis + S3 (file storage)
+# - Social app: PostgreSQL (users) + Neo4j (friendships) +
+#               Redis (feed cache) + Elasticsearch (search)
+# Choose the RIGHT tool for each job.</div>
 
 <div class="secret-box">🌐 <strong>NoSQL = বিকল্প টুলবক্স।</strong> Key-value (দ্রুত), Document (নমনীয়), Column (বিশাল), Graph (সম্পর্ক)। BASE দর্শন, CAP tradeoff। কিন্তু একটি মেশিনে থাকলে সব সীমাবদ্ধ। যখন মিলিয়ন ব্যবহারকারী, হাজার সার্ভার — ডেটা বিভক্ত করতে হয়। সেই যাত্রা আসবে পরের দরজায় — distributed databases।</div>`,
   senior: {
