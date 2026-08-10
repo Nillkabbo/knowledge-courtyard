@@ -40,36 +40,226 @@ doors.push({
   <div class="diag-cap">big data = ৫-স্তর pipeline। প্রতিটা স্তরে depth। causal inference (কেন কিছু ঘটে) এখন সবচেয়ে হট — correlation নয়, causation।</div>
 </div>
 
-<div class="code-block">Data Mining & Big Data — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: What is data mining? ──
+# Data mining = finding PATTERNS and INSIGHTS from large datasets.
 
-১. DATA MINING (classic + active)
-   - Pattern/frequent itemset, clustering, classification
-   - Anomaly detection (fraud, fault, outlier)
-   - Graph mining (social, web, biological)
+# Python data science stack:
+import pandas as pd
+import numpy as np
 
-২. RECOMMENDATION SYSTEMS (🔥 billion-dollar)
-   - Collaborative filtering, deep recsys, two-tower
-   - Sequential, session-based, LLM-based recsys
-   - Bandits, RL for recsys (Door 3 crossover)
+# Load data:
+df = pd.read_csv("sales.csv")
 
-৩. CAUSAL INFERENCE (🔥🔥 সবচেয়ে হট)
-   - "কেন" বোঝা — A কি B-র কারণ?
-   - Do-calculus, IV, synthetic control, double ML
-   - Causal discovery, counterfactual
+# Explore:
+print(df.head())         # first 5 rows
+print(df.describe())     # statistics (mean, std, min, max)
+print(df.info())         # data types, missing values
 
-৪. BIG DATA SYSTEMS (Door 10 crossover)
-   - Spark, Flink, Beam — distributed processing
-   - Stream processing, exactly-once, stateful
-   - Lakehouse (Iceberg, Delta — Door 10)
+# Handle missing data:
+df = df.dropna()         # remove rows with missing values
+# OR:
+df["price"] = df["price"].fillna(df["price"].mean())  # fill with mean
 
-৫. TIME SERIES & SPATIAL
-   - Forecasting, change-point, seasonality
-   - Spatial mining, geo, mobility data
+# Filter and transform:
+expensive = df[df["price"] > 1000]
+df["discounted"] = df["price"] * 0.9  # new column
 
-৬. FAIRNESS & RESPONSIBLE MINING
-   - Bias in data, fairness-aware mining
-   - Privacy-preserving mining (Door 9 crossover)
-   - Explainable patterns</div>
+# Group and aggregate:
+summary = df.groupby("category")["price"].agg(["mean", "count", "sum"])
+print(summary)
+#            mean  count     sum
+# category
+# Books    25.50    100   2550.0
+# Phones  500.00     50  25000.0</div>
+
+<div class="code-block"># ── STEP 2: Clustering — finding groups ──
+# Group similar items without labels (unsupervised).
+
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
+# Customer segmentation:
+customers = pd.DataFrame({
+    "age": [25, 30, 35, 45, 50, 55, 22, 28],
+    "spending": [100, 200, 150, 500, 600, 550, 50, 80]
+})
+
+# Normalize data (important for K-means!):
+scaler = StandardScaler()
+scaled = scaler.fit_transform(customers)
+
+# Cluster into 3 groups:
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+customers["cluster"] = kmeans.fit_predict(scaled)
+
+print(customers)
+#    age  spending  cluster
+# 0   25       100        2   (young, low spending)
+# 3   45       500        0   (middle-aged, high spending)
+# ...
+
+# Choosing K (number of clusters):
+# Use the elbow method or silhouette score:
+from sklearn.metrics import silhouette_score
+
+for k in range(2, 8):
+    labels = KMeans(n_clusters=k, random_state=42, n_init=10).fit_predict(scaled)
+    score = silhouette_score(scaled, labels)
+    print(f"  k={k}: silhouette={score:.3f}")
+# Pick k with highest silhouette score</div>
+
+<div class="code-block"># ── STEP 3: Anomaly detection ──
+# Find unusual data points — fraud, errors, intrusions.
+
+from sklearn.ensemble import IsolationForest
+
+# Detect fraudulent transactions:
+transactions = pd.DataFrame({
+    "amount": [10, 20, 15, 5000, 25, 30, 9999, 12, 18, 8000],
+    "frequency": [5, 3, 4, 1, 6, 3, 1, 5, 4, 1]
+})
+
+# Isolation Forest — isolates anomalies:
+detector = IsolationForest(contamination=0.2, random_state=42)
+transactions["is_anomaly"] = detector.fit_predict(transactions)
+
+print(transactions)
+#    amount  frequency  is_anomaly
+# 0      10          5           1  (normal)
+# 3    5000          1          -1  (ANOMALY!)
+# 6    9999          1          -1  (ANOMALY!)
+
+# Other methods:
+# - Z-score: |value - mean| / std > 3 → anomaly
+# - IQR: outside [Q1-1.5*IQR, Q3+1.5*IQR] → anomaly
+# - DBSCAN: points in low-density regions = anomalies
+
+# Real-world uses:
+# - Credit card fraud detection
+# - Network intrusion detection
+# - Manufacturing defect detection
+# - Medical anomaly detection</div>
+
+<div class="code-block"># ── STEP 4: Recommendation systems ──
+# The billion-dollar algorithm — Netflix, Amazon, YouTube.
+
+# Simple collaborative filtering:
+# "Users who bought X also bought Y"
+
+# Using surprise library:
+# from surprise import Dataset, KNNBasic
+# from surprise.model_selection import train_test_split
+#
+# # Load movie ratings dataset:
+# data = Dataset.load_builtin("ml-100k")
+# trainset, testset = train_test_split(data, test_size=0.2)
+#
+# # User-based collaborative filtering:
+# algo = KNNBasic(sim_options={"name": "cosine", "user_based": True})
+# algo.fit(trainset)
+#
+# # Predict rating:
+# prediction = algo.predict(user_id=1, item_id=10)
+# print(f"Predicted rating: {prediction.est:.2f}")
+
+# Content-based filtering:
+# "If you liked action movies, recommend more action movies"
+
+# Matrix factorization (SVD):
+# Factor user-item matrix into user-factors × item-factors
+# This is what won the Netflix Prize!
+
+# Modern approaches (deep learning):
+# - Two-tower models (user embedding × item embedding)
+# - Sequential models (based on browsing history)
+# - LLM-based recommendations ("describe what you want")
+
+# Simple popularity-based fallback:
+def recommend_popular(items, interactions, top_k=5):
+    """Recommend the most popular items."""
+    popular = interactions.groupby("item_id").size()
+    return popular.nlargest(top_k).index.tolist()</div>
+
+<div class="code-block"># ── STEP 5: Big data with Spark ──
+# When data is too large for one machine, use distributed processing.
+
+# Using PySpark:
+# from pyspark.sql import SparkSession
+# from pyspark.sql.functions import col, avg, count
+#
+# spark = SparkSession.builder.appName("Analysis").getOrCreate()
+#
+# # Load large dataset (terabytes!):
+# df = spark.read.parquet("s3://bucket/data/")
+#
+# # Process distributed across cluster:
+# result = (df
+#     .filter(col("year") == 2024)
+#     .groupBy("category")
+#     .agg(avg("price"), count("*"))
+#     .orderBy("avg(price)", ascending=False)
+# )
+#
+# result.show()  # collect results
+
+# Pandas vs Spark:
+# ┌──────────┬────────────────────────────────────┐
+# │ Pandas   │ Single machine, data fits in RAM  │
+# │ Spark    │ Cluster, distributed, terabytes   │
+# │ Dask     │ Like Pandas but parallel          │
+# │ Polars   │ Fast single-machine (10x pandas)  │
+# │ DuckDB   │ SQL queries on large files        │
+# └──────────┴────────────────────────────────────┘
+
+# When to use Spark:
+# ✅ Data > 100GB
+# ✅ Need distributed processing
+# ✅ Stream processing (real-time)
+# When NOT to use Spark:
+# ❌ Data &lt; 10GB (use Pandas/Polars)
+# ❌ Single-machine analysis
+# ❌ Simple aggregations</div>
+
+<div class="code-block"># ── STEP 6: Data mining pipeline ──
+# Complete data analysis workflow:
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report
+
+# Step 1: LOAD
+df = pd.read_csv("customer_churn.csv")
+
+# Step 2: CLEAN
+df = df.dropna()
+df = pd.get_dummies(df, columns=["contract_type"])  # encode categoricals
+
+# Step 3: EXPLORE
+print(df.describe())
+print(df["churn"].value_counts(normalize=True))
+
+# Step 4: FEATURE ENGINEERING
+df["tenure_years"] = df["tenure_months"] / 12
+df["avg_monthly_charge"] = df["total_charges"] / df["tenure_months"]
+
+# Step 5: SPLIT
+X = df.drop("churn", axis=1)
+y = df["churn"]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Step 6: MODEL
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Step 7: EVALUATE
+predictions = model.predict(X_test)
+print(classification_report(y_test, predictions))
+
+# Step 8: FEATURE IMPORTANCE
+importance = pd.Series(model.feature_importances_, index=X.columns)
+print(importance.nlargest(5))
+# Shows which features drive customer churn!</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">🔥🔥 Causal</td><td>Do-calculus, IV, double ML, counterfactual</td><td>KDD, AISTATS, NeurIPS</td></tr>
@@ -151,38 +341,254 @@ doors.push({
   <div class="diag-cap">HCI একা quantitative নয়, একা qualitative নয় — দুটো মিলে। সংখ্যা বলে 'কত মানুষ ভুল করল', interview বলে 'কেন ভুল করল'। accessibility = এই গবেষণা সব মানুষের জন্য খোলা রাখা।</div>
 </div>
 
-<div class="code-block">Interaction & Accessibility — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: What is HCI? ──
+# HCI (Human-Computer Interaction) = designing interfaces that
+# work WELL for humans.
 
-১. INTERACTION TECHNIQUES
-   - Touch, gesture, voice, gaze, haptic
-   - AR/VR interaction (Door 13)
-   - Tangible, mid-air, brain-computer (Door 13)
+# Key principle: the interface should be INVISIBLE.
+# Good design → user focuses on their task, not the tool.
+# Bad design → user fights the interface.
 
-২. ACCESSIBILITY (🔥 সবচেয়ে প্রভাবশালী)
-   - Screen readers, magnification, switch access
-   - Motor impairment (keyboard, voice control)
-   - Cognitive (reading, attention, autism)
-   - Aging — older adults, dementia
+# Usability principles (Nielsen's heuristics):
+# 1. Visibility of system status (show progress bars)
+# 2. Match real world (use familiar terms)
+# 3. User control and freedom (undo, cancel)
+# 4. Consistency (same button = same action everywhere)
+# 5. Error prevention (confirm destructive actions)
+# 6. Recognition over recall (show options, don't make user remember)
+# 7. Flexibility (shortcuts for experts)
+# 8. Aesthetic and minimalist design
+# 9. Help users recover from errors
+# 10. Help and documentation
 
-৩. CSCW (Computer-Supported Cooperative Work)
-   - Collaboration tools, remote work, Figma/Docs
-   - Social computing, online communities
-   - Hybrid/remote work (post-COVID)
+# In code — building accessible interfaces:
+# HTML with accessibility (ARIA labels):
+html_template = """
+&lt;button aria-label="Close dialog" onclick="close()"&gt;
+  &lt;span aria-hidden="true"&gt;✕&lt;/span&gt;
+&lt;/button&gt;
 
-৪. UBIQUITOUS & MOBILE
-   - IoT interaction, wearables, smart home
-   - Context-aware, location-based
-   - Mobile UX, cross-device
+&lt;form&gt;
+  &lt;label for="email"&gt;Email address&lt;/label&gt;
+  &lt;input type="email" id="email" required
+         aria-describedby="email-hint" /&gt;
+  &lt;small id="email-hint"&gt;We'll never share your email.&lt;/small&gt;
+&lt;/form&gt;
+"""</div>
 
-৫. ACCESSIBLE AI (🔥 crossover)
-   - AI for accessibility (auto-caption, sign language)
-   - Accessibility of AI (screen-reader + LLM)
-   - Inclusive design with LLMs
+<div class="code-block"># ── STEP 2: Accessibility in practice ──
+# Accessibility = making technology usable for EVERYONE.
+# Including: blind, low vision, motor impaired, deaf, cognitive.
 
-৬. HCI METHODS & THEORY
-   - Design methods, participatory design
-   - Human performance modeling
-   - Critical HCI, post-colonial, feminist HCI</div>
+# Screen reader testing:
+# A blind user navigates with a screen reader (VoiceOver, NVDA).
+# Everything must work with KEYBOARD ONLY (no mouse).
+
+# Semantic HTML is the foundation:
+semantic_html = """
+&lt;nav&gt;           &lt;!-- navigation --&gt;
+&lt;main&gt;          &lt;!-- main content --&gt;
+&lt;article&gt;       &lt;!-- standalone content --&gt;
+&lt;button&gt;        &lt;!-- actionable (not &lt;div onclick&gt;) --&gt;
+&lt;label&gt;         &lt;!-- form labels --&gt;
+&lt;fieldset&gt;      &lt;!-- group related form fields --&gt;
+"""
+
+# WCAG guidelines (Web Content Accessibility Guidelines):
+# 1. Perceivable: can be seen/heard (alt text, captions)
+# 2. Operable: can be used (keyboard, no seizure triggers)
+# 3. Understandable: readable and predictable
+# 4. Robust: works with assistive technologies
+
+# Color contrast check:
+def check_contrast(r1, g1, b1, r2, g2, b2):
+    """Check WCAG color contrast ratio."""
+    def luminance(r, g, b):
+        rs, gs, bs = r/255, g/255, b/255
+        def adjust(c):
+            return c/12.92 if c &lt;= 0.03928 else ((c+0.055)/1.055)**2.4
+        return 0.2126*adjust(rs) + 0.7152*adjust(gs) + 0.0722*adjust(bs)
+
+    l1 = luminance(r1, g1, b1)
+    l2 = luminance(r2, g2, b2)
+    lighter = max(l1, l2)
+    darker = min(l1, l2)
+    ratio = (lighter + 0.05) / (darker + 0.05)
+
+    return f"Contrast: {ratio:.1f}:1 ({'PASS' if ratio >= 4.5 else 'FAIL'})"
+
+print(check_contrast(0, 0, 0, 255, 255, 255))  # Contrast: 21.0:1 (PASS)
+print(check_contrast(150, 150, 150, 200, 200, 200))  # Contrast: 1.8:1 (FAIL)</div>
+
+<div class="code-block"># ── STEP 3: Usability testing ──
+# Don't guess what users want — TEST with real users.
+
+# Methods:
+# 1. THINK ALOUD: user narrates their thought process
+# 2. TASK-BASED: give specific tasks, measure time + errors
+# 3. EYE TRACKING: where do users look?
+# 4. A/B TESTING: compare two designs
+
+# Simple usability test script:
+test_tasks = [
+    "Find and buy a red laptop",
+    "Change your shipping address",
+    "Cancel your last order",
+    "Find the return policy",
+]
+
+# Metrics to track:
+# - Task completion rate (% who succeed)
+# - Time on task
+# - Error rate
+# - User satisfaction (1-10)
+
+# System Usability Scale (SUS) — 10 question survey:
+sus_questions = [
+    "I think that I would like to use this system frequently",
+    "I found the system unnecessarily complex",
+    "I thought the system was easy to use",
+    "I think that I would need support to use this system",
+    "I found the various functions well integrated",
+    "I thought there was too much inconsistency",
+    "I would imagine most people would learn quickly",
+    "I found the system very cumbersome to use",
+    "I felt very confident using the system",
+    "I needed to learn a lot of things before using this system",
+]
+# Score: 0-100. Above 68 = above average. Above 80 = excellent.
+
+# In practice, run 5 users — they find 85% of usability problems.
+# (Nielsen's research: 5 users is the sweet spot for ROI)</div>
+
+<div class="code-block"># ── STEP 4: UI/UX design principles ──
+# UI (User Interface) = how it looks
+# UX (User Experience) = how it feels
+
+# DESIGN THINKING process:
+# 1. EMPATHIZE: interview users, understand needs
+# 2. DEFINE: identify the core problem
+# 3. IDEATE: brainstorm solutions
+# 4. PROTOTYPE: build quick mockups
+# 5. TEST: validate with real users
+
+# Building a prototype with Python (Streamlit):
+# import streamlit as st
+#
+# st.title("Task Manager")
+#
+# # Simple UI:
+# task = st.text_input("New task:")
+# priority = st.select_slider("Priority", ["Low", "Medium", "High"])
+# if st.button("Add"):
+#     st.session_state.tasks.append({"task": task, "priority": priority})
+#
+# for t in st.session_state.tasks:
+#     col1, col2 = st.columns([4, 1])
+#     col1.write(f"{'🔴' if t['priority']=='High' else '🟢'} {t['task']}")
+#     if col2.button("Done", key=t['task']):
+#         st.session_state.tasks.remove(t)
+
+# KEY UX PRINCIPLES:
+# - Progressive disclosure (don't overwhelm; reveal complexity gradually)
+# - Jakob's Law: users spend most time on OTHER sites
+#   → follow conventions (logo top-left, search top-right)
+# - Fitts's Law: bigger + closer targets are faster to click
+# - Hick's Law: more choices = slower decisions
+#   → limit options (Miller's 7±2 rule)
+
+# DARK PATTERNS (avoid these!):
+# - Roach motel: easy to sign up, hard to cancel
+# - Forced continuity: "free trial" requires credit card
+# - Confirmshaming: "No thanks, I hate saving money"
+# - Sneak into basket: adds items without consent</div>
+
+<div class="code-block"># ── STEP 5: Voice and gesture interfaces ──
+# Interaction beyond mouse and keyboard.
+
+# Voice interface with Python:
+# import speech_recognition as sr
+# import pyttsx3
+#
+# recognizer = sr.Recognizer()
+# engine = pyttsx3.init()
+#
+# with sr.Microphone() as source:
+#     print("Listening...")
+#     audio = recognizer.listen(source)
+#     text = recognizer.recognize_google(audio)
+#     print(f"You said: {text}")
+#
+#     engine.say(f"You said {text}")
+#     engine.runAndWait()
+
+# GESTURE recognition with MediaPipe:
+# import cv2
+# import mediapipe as mp
+#
+# mp_hands = mp.solutions.hands
+# hands = mp_hands.Hands()
+#
+# cap = cv2.VideoCapture(0)
+# while True:
+#     ret, frame = cap.read()
+#     results = hands.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+#     if results.multi_hand_landmarks:
+#         for hand_landmarks in results.multi_hand_landmarks:
+#             # 21 landmarks per hand
+#             # Detect gestures (thumbs up, peace, fist, etc.)
+#             pass
+
+# GAZE tracking (eye tracking):
+# - Determine where user is looking
+# - Used for: accessibility, gaming, marketing research
+# - Tools: Tobii eye trackers, webcam-based solutions
+
+# The future of interaction:
+# - Voice-first (Alexa, Siri)
+# - Gesture (Vision Pro, Leap Motion)
+# - Brain-computer interfaces (Neuralink)
+# - AR/VR spatial computing (Apple Vision Pro)</div>
+
+<div class="code-block"># ── STEP 6: HCI research areas ──
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Area                │ What you study                     │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ Accessibility       │ Screen readers, motor, cognitive  │
+# │ Interaction         │ Touch, gesture, voice, gaze       │
+# │ CSCW                │ Collaboration tools, remote work  │
+# │ Ubiquitous          │ IoT, wearables, smart home        │
+# │ Accessible AI       │ AI for accessibility + vice versa │
+# │ Methods/Theory      │ Design methods, human performance │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# CONFERENCES:
+# CHI         — THE HCI conference (largest)
+# UIST        — user interface software & technology
+# CSCW        — collaborative work
+# ASSETS      — accessibility
+# DIS         — designing interactive systems
+# TEI         — tangible, embedded, embodied interaction
+
+# HOT TOPICS:
+# - AI-assisted interfaces (LLM as UI builder)
+# - Accessibility for AI (make LLMs usable by everyone)
+# - AR/VR interfaces (spatial computing)
+# - Brain-computer interfaces
+# - Remote collaboration (post-COVID)
+# - Inclusive design for diverse populations
+
+# CAREER PATHS:
+# - UX Researcher (study user behavior)
+# - Interaction Designer (design interfaces)
+# - Accessibility Engineer (ensure inclusion)
+# - Product Designer (end-to-end design)
+# - HCI Researcher (academia or industry labs)
+
+# KEY INSIGHT:
+# You can have the best algorithm in the world,
+# but if the interface is bad, nobody will use it.
+# HCI is where technology meets HUMANITY.</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">♿ Accessibility</td><td>Screen reader, motor, cognitive, aging</td><td>ASSETS, CHI, W4A, TACCESS</td></tr>
@@ -260,39 +666,273 @@ doors.push({
   <div class="diag-cap">BCI → AR → MR → VR: একটা spectrum, বাস্তব থেকে কল্পনা পর্যন্ত। প্রতিটা নিজস্ব চ্যালেঞ্জ। spatial computing হলো পরবর্তী computing platform — smartphone-এর পর।</div>
 </div>
 
-<div class="code-block">AR/VR & BCI — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: AR vs VR vs MR ──
+# VR (Virtual Reality): fully immersive, can't see real world
+# AR (Augmented Reality): overlay digital on real world
+# MR (Mixed Reality): digital objects interact with real world
 
-১. VIRTUAL REALITY (VR)
-   - Immersive rendering, foveated, varifocal
-   - Locomotion, motion sickness, presence
-   - Social VR, collaborative VR
+# Python AR/VR libraries:
+# - Open3D: 3D processing
+# - ARToolKit: marker tracking
+# - Unity + Python: game engine scripting
 
-২. AUGMENTED/MIXED REALITY (AR/MR)
-   - SLAM, depth sensing, scene understanding
-   - Optical see-through displays, occlusion
-   - Hand tracking, gaze interaction
-   - Vision Pro, HoloLens, Meta glasses (২০২৪-২৫)
+# Reading sensor data from VR headset:
+# import openvr  # SteamVR
+#
+# vr_system = openvr.init(openvr.VRApplication_Scene)
+#
+# # Get headset pose (position + rotation):
+# pose = vr_system.getDeviceToAbsoluteTrackingPose(
+#     openvr.TrackingUniverseStanding, 0, 1
+# )
+# headset_pose = pose[0].mDeviceToAbsoluteTracking
+# # Extract position (x, y, z) and rotation matrix
 
-৩. HAPTICS & EMBODIMENT
-   - Force feedback, tactile, mid-air haptics
-   - Avatars, embodiment, self-presence
-   - Full-body tracking
+# AR with camera (overlay on video):
+import cv2
+import numpy as np
 
-৪. BRAIN-COMPUTER INTERFACES (BCI) 🔥
-   - Non-invasive: EEG, fNIRS, MEG
-   - Invasive: Neuralink, Utah array, neuropixels
-   - Motor imagery, speech decoding, spelling
-   - Neural prosthetics, restoration (paralysis)
+# Load camera feed:
+# cap = cv2.VideoCapture(0)
+# while True:
+#     ret, frame = cap.read()
+#
+#     # Detect ArUco markers (AR markers):
+#     dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
+#     corners, ids, _ = cv2.aruco.detectMarkers(frame, dictionary)
+#
+#     if ids is not None:
+#         # Draw 3D object on top of marker
+#         cv2.aruco.drawDetectedMarkers(frame, corners, ids)
+#
+#     cv2.imshow("AR", frame)
 
-৫. SPATIAL COMPUTING SYSTEMS
-   - Real-time 3D rendering pipeline, runtime
-   - Latency optimization (Door 6 crossover)
-   - Cross-device, cloud rendering
+# XR spectrum:
+# Reality ← → Augmented → Mixed → Virtual
+# Real world only  |  Real + digital  |  Full digital</div>
 
-৬. XR APPLICATIONS
-   - Training (medical, military, industrial)
-   - Therapy (phobia, PTSD, rehab)
-   - Education, collaboration, accessibility</div>
+<div class="code-block"># ── STEP 2: 3D rendering basics ──
+# XR requires rendering 3D scenes at 90+ FPS (to prevent motion sickness).
+
+# 3D coordinate system:
+# X = left/right
+# Y = up/down
+# Z = forward/backward
+
+# Transformation matrices (position, rotation, scale):
+import numpy as np
+
+def translation_matrix(x, y, z):
+    """Create a translation matrix."""
+    return np.array([
+        [1, 0, 0, x],
+        [0, 1, 0, y],
+        [0, 0, 1, z],
+        [0, 0, 0, 1]
+    ])
+
+def rotation_y_matrix(angle_degrees):
+    """Rotate around Y axis."""
+    angle = np.radians(angle_degrees)
+    c, s = np.cos(angle), np.sin(angle)
+    return np.array([
+        [c, 0, s, 0],
+        [0, 1, 0, 0],
+        [-s, 0, c, 0],
+        [0, 0, 0, 1]
+    ])
+
+# Combine transformations:
+position = translation_matrix(0, 1.5, -3)  # 1.5m up, 3m forward
+rotation = rotation_y_matrix(45)  # 45 degrees
+model_matrix = position @ rotation  # matrix multiplication
+
+# PERFORMANCE REQUIREMENTS:
+# VR: 90 FPS minimum (11ms per frame)
+# AR: 60 FPS minimum
+# If frame drops below → MOTION SICKNESS
+# This is why XR is so performance-critical!
+
+# Techniques to maintain FPS:
+# - Foveated rendering (render center of view in high detail)
+# - Level of detail (reduce detail for distant objects)
+# - Occlusion culling (don't render hidden objects)
+# - Asynchronous timewarp (reproject previous frame)</div>
+
+<div class="code-block"># ── STEP 3: Hand tracking and gesture ──
+# Natural interaction in XR — use your hands!
+
+# Using MediaPipe for hand tracking:
+# import mediapipe as mp
+# import cv2
+#
+# mp_hands = mp.solutions.hands
+# mp_drawing = mp.solutions.drawing_utils
+#
+# hands = mp_hands.Hands(
+#     max_num_hands=2,
+#     min_detection_confidence=0.7
+# )
+#
+# cap = cv2.VideoCapture(0)
+# while True:
+#     ret, frame = cap.read()
+#     rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+#     results = hands.process(rgb)
+#
+#     if results.multi_hand_landmarks:
+#         for landmarks in results.multi_hand_landmarks:
+#             # 21 landmarks per hand:
+#             # - 4 per finger (tip, pip, mcp)
+#             # - 1 wrist
+#             mp_drawing.draw_landmarks(frame, landmarks, mp_hands.HAND_CONNECTIONS)
+#
+#             # Detect pinch gesture:
+#             thumb_tip = landmarks.landmark[4]
+#             index_tip = landmarks.landmark[8]
+#             distance = ((thumb_tip.x - index_tip.x)**2 +
+#                         (thumb_tip.y - index_tip.y)**2)**0.5
+#             if distance < 0.05:
+#                 print("PINCH detected!")
+#
+#     cv2.imshow("Hand Tracking", frame)
+
+# GESTURES TO RECOGNIZE:
+# - Pinch: select/grab
+# - Point: ray cast / aim
+# - Open palm: stop / release
+# - Fist: grab
+# - Swipe: navigation
+# - Two-hand: scale (pinch zoom)</div>
+
+<div class="code-block"># ── STEP 4: Brain-Computer Interfaces (BCI) ──
+# Read brain signals to control computers — without muscles!
+
+# Non-invasive BCI with EEG (electroencephalography):
+# - Electrodes on scalp measure brain activity
+# - Machine learning decodes intent from signals
+# - Used for: communication (paralyzed users), gaming, research
+
+# Processing EEG data with Python:
+# import mne  # MNE-Python for EEG analysis
+# import numpy as np
+#
+# # Load EEG data:
+# raw = mne.io.read_raw_eeglab("subject1.set", preload=True)
+#
+# # Filter (remove noise):
+# raw.filter(l_freq=1, h_freq=40)  # bandpass 1-40 Hz
+#
+# # Extract epochs (time windows around events):
+# events = mne.find_events(raw)
+# epochs = mne.Epochs(raw, events, tmin=-0.2, tmax=0.8)
+#
+# # Feature extraction:
+# features = epochs.get_data()  # (n_epochs, n_channels, n_times)
+#
+# # Classify mental states (e.g., left vs right hand imagery):
+# from sklearn.linear_model import LogisticRegression
+# X = features.reshape(len(features), -1)  # flatten
+# clf = LogisticRegression()
+# clf.fit(X_train, y_train)
+
+# BCI paradigms:
+# 1. Motor imagery: imagine moving → control cursor
+# 2. P300: detect surprise → spell by highlighting letters
+# 3. SSVEP: flashing lights → select by looking
+# 4. Speech decoding: Neuralink decodes imagined speech
+
+# INVASIVE BCI (Neuralink, Utah array):
+# - Electrodes implanted IN the brain
+# - Much higher resolution than EEG
+# - Neuralink: 1024 electrodes, wireless
+# -猴子 playing Pong with mind (2021 demo)
+# - First human patient plays chess (2024)</div>
+
+<div class="code-block"># ── STEP 5: SLAM for AR ──
+# SLAM (Simultaneous Localization and Mapping):
+# Build a map of the environment AND track position in it.
+
+# This is how AR headsets know where they are:
+# 1. Cameras/sensors detect features in the environment
+# 2. Track how features move as headset moves
+# 3. Build a 3D map
+# 4. Locate headset within the map
+
+# Using ORB-SLAM (popular open-source SLAM):
+# Stereo cameras or RGB-D sensors → 3D map → position tracking
+
+# Depth sensing technologies:
+# - Structured light (Kinect v1, Face ID)
+# - Time of flight (LiDAR, Kinect v2)
+# - Stereo vision (two cameras, triangulation)
+# - LiDAR (iPad Pro, iPhone Pro, Vision Pro)
+
+# Point cloud processing (3D sensor data):
+# import open3d as o3d
+#
+# # Load point cloud from depth sensor:
+# pcd = o3d.io.read_point_cloud("scan.ply")
+# print(f"Points: {len(pcd.points)}")
+#
+# # Downsample (reduce points for speed):
+# pcd = pcd.voxel_down_sample(voxel_size=0.01)
+#
+# # Estimate normals (surface direction):
+# pcd.estimate_normals()
+#
+# # Segment plane (find floor/tables):
+# plane_model, inliers = pcd.segment_plane(
+#     distance_threshold=0.01, ransac_n=3, num_iterations=1000
+# )
+# # Now you know where the floor is → place virtual objects on it</div>
+
+<div class="code-block"># ── STEP 6: XR research and careers ──
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Area                │ What you study                     │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ VR                  │ Rendering, presence, motion sickness│
+# │ AR/MR               │ SLAM, displays, hand tracking      │
+# │ Haptics             │ Force feedback, tactile sensing    │
+# │ BCI                 │ EEG, Neuralink, neural decoding    │
+# │ Spatial Computing   │ 3D pipelines, latency, cloud XR   │
+# │ XR Applications     │ Medical, education, therapy        │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# CONFERENCES:
+# IEEE VR, ISMAR      — VR/AR specific
+# CHI, UIST           — interaction in XR
+# NeurIPS, ICLR       — neural decoding for BCI
+# SIGGRAPH            — graphics + XR
+
+# HOT TOPICS (2024-2026):
+# - Apple Vision Pro (spatial computing mainstream)
+# - Neuralink human trials (invasive BCI)
+# - Foveated rendering (eye-tracked rendering)
+# - Gaussian Splatting (fast 3D scene capture)
+# - Neural speech decoding (think → type)
+# - Haptic gloves and suits
+
+# TOOLS TO LEARN:
+# Unity / Unreal Engine  — XR development platforms
+# OpenXR                 — cross-platform XR standard
+# MediaPipe              — hand/body tracking
+# Open3D                 — 3D processing
+# MNE-Python             — EEG analysis
+# ARKit / ARCore         — mobile AR
+
+# CAREER PATHS:
+# - XR Developer (Meta, Apple, Microsoft)
+# - BCI Researcher (Neuralink, Synchron, academia)
+# - Graphics Engineer (game engines, rendering)
+# - Spatial Computing Designer
+# - Medical VR Developer (surgical training, therapy)
+
+# THE VISION:
+# AR glasses will replace phones.
+# BCI will replace keyboards.
+# Spatial computing is the next platform shift.
+# This is where the FUTURE of computing is being built.</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">🥽 VR</td><td>Rendering, locomotion, presence, social VR</td><td>CHI, UIST, IEEE VR, ISMAR</td></tr>
@@ -371,37 +1011,279 @@ doors.push({
   <div class="diag-cap">SE research code এর পুরো lifecycle কভার করে — write থেকে deploy পর্যন্ত। সব কিছুর উপর feedback loop। AI4SE (Door 15) এখন সবচেয়ে হট। সব গবেষণা empirical — real data।</div>
 </div>
 
-<div class="code-block">Software Engineering — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: Software engineering principles ──
+# SE = building software that is correct, maintainable, and scalable.
 
-১. TESTING & VERIFICATION
-   - Test generation, mutation testing, fuzz testing
-   - Regression test selection, flaky test detection
-   - Formal verification, model checking, program proof
+# SOLID principles:
+# S - Single Responsibility: each class does ONE thing
+# O - Open/Closed: open for extension, closed for modification
+# L - Liskov Substitution: subclasses must work where parent works
+# I - Interface Segregation: many small interfaces, not one big
+# D - Dependency Inversion: depend on abstractions, not concretions
 
-২. PROGRAM ANALYSIS
-   - Static (dataflow, pointer, taint), dynamic analysis
-   - Symbolic execution, abstract interpretation
-   - LLM-based analysis (bug prediction, code comprehension)
+# Example — BAD code:
+class BadUserManager:
+    def create_user(self, name, email):
+        # Validates, saves to DB, sends email, logs — ALL in one method
+        pass
 
-৩. EMPIRICAL SE (🔥 সব গবেষণার ভিত্তি)
-   - Mining software repositories (GitHub-scale)
-   - Developer studies, replication, open science
-   - OSS ecosystems, supply chain
+# GOOD code — separated concerns:
+class UserValidator:
+    def validate(self, name, email):
+        return "@" in email and len(name) > 0
 
-৪. DEVOPS & RELEASE
-   - CI/CD, continuous deployment, canary
-   - Incident analysis, postmortem, SRE
-   - Feature flags, A/B, gradual rollout
+class UserRepository:
+    def save(self, user):
+        database.insert(user)
 
-৫. REQUIREMENTS & DESIGN
-   - Software architecture, microservices (Door 4)
-   - Self-adaptive systems, technical debt
-   - Domain-specific languages
+class EmailService:
+    def send_welcome(self, email):
+        smtp.send(to=email, subject="Welcome!")
 
-৬. AI4SE (🔥🔥 crossover — Door 15)
-   - Code completion, generation, repair
-   - Automated bug finding, code review
-   - Developer productivity, Copilot impact</div>
+class UserManager:
+    """Coordinator — delegates to specialized services."""
+    def __init__(self, validator, repo, email):
+        self.validator = validator
+        self.repo = repo
+        self.email = email
+
+    def create_user(self, name, email):
+        if not self.validator.validate(name, email):
+            raise ValueError("Invalid user")
+        user = {"name": name, "email": email}
+        self.repo.save(user)
+        self.email.send_welcome(email)
+        return user</div>
+
+<div class="code-block"># ── STEP 2: Testing ──
+# Tests ensure your code WORKS and keeps working.
+
+# Unit test with pytest:
+# def test_add():
+#     assert add(2, 3) == 5
+#     assert add(-1, 1) == 0
+#     assert add(0, 0) == 0
+
+# Run: pytest test_math.py -v
+
+# Test types (the pyramid):
+# ┌─────────────────┐
+# │   E2E (few)     │  ← slow, test full user flow
+# ├─────────────────┤
+# │ Integration      │  ← test components together
+# ├─────────────────┤
+# │  Unit (many)     │  ← fast, test individual functions
+# └─────────────────┘
+
+# Test-Driven Development (TDD):
+# 1. RED: write a failing test
+# 2. GREEN: write minimum code to pass
+# 3. REFACTOR: improve the code
+
+# Example TDD cycle:
+def test_is_palindrome():
+    # RED — no function yet
+    assert is_palindrome("racecar") == True
+    assert is_palindrome("hello") == False
+    assert is_palindrome("a") == True
+    assert is_palindrome("") == True
+
+# Now implement (GREEN):
+def is_palindrome(s):
+    return s == s[::-1]
+
+# REFACTOR: already clean!
+
+# Mocking — replace external dependencies in tests:
+from unittest.mock import Mock
+
+# Don't call real API in tests:
+api_client = Mock()
+api_client.get_user.return_value = {"name": "Test User"}
+result = api_client.get_user(1)
+assert result["name"] == "Test User"</div>
+
+<div class="code-block"># ── STEP 3: CI/CD pipeline ──
+# CI (Continuous Integration): merge code frequently, test automatically
+# CD (Continuous Deployment): deploy automatically after tests pass
+
+# GitHub Actions workflow (.github/workflows/test.yml):
+yaml_example = """
+name: CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - run: pytest --cov=src --cov-report=html
+      - run: flake8 src/
+      - run: mypy src/
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying to production..."
+"""
+
+# Every push triggers:
+# 1. Run tests (unit + integration)
+# 2. Check code style (flake8/black)
+# 3. Type checking (mypy)
+# 4. Security scan (bandit)
+# 5. If all pass AND on main branch → deploy
+
+# DEPLOYMENT STRATEGIES:
+# - Blue-Green: two environments, switch instantly
+# - Canary: release to 5% → 25% → 100%
+# - Feature flags: enable features per-user
+# - Rolling: replace servers one by one
+
+# Monitoring after deploy:
+# - Sentry: error tracking
+# - Prometheus + Grafana: metrics
+# - ELK stack: log analysis</div>
+
+<div class="code-block"># ── STEP 4: Code quality tools ──
+# Automated tools that catch problems before humans review.
+
+# Formatting (black):
+# pip install black
+# black .  # auto-formats all Python files
+
+# Linting (flake8/ruff):
+# pip install ruff
+# ruff check .  # finds style issues, unused imports, bugs
+
+# Type checking (mypy):
+# pip install mypy
+# mypy src/  # catches type errors
+
+# Example — type hints catch bugs:
+def calculate_total(items: list[dict]) -&gt; float:
+    """Type hints help catch errors before runtime."""
+    return sum(item["price"] for item in items)
+
+# mypy will warn if you pass the wrong type!
+
+# Pre-commit hooks (run checks before commit):
+# .pre-commit-config.yaml:
+# repos:
+#   - repo: https://github.com/psf/black
+#     rev: 24.1.0
+#     hooks:
+#       - id: black
+#   - repo: https://github.com/astral-sh/ruff-pre-commit
+#     rev: v0.1.0
+#     hooks:
+#       - id: ruff
+
+# Code review checklist:
+# ✅ Does it work correctly?
+# ✅ Is it readable?
+# ✅ Are there tests?
+# ✅ No security issues?
+# ✅ Performance OK?
+# ✅ No breaking changes?
+# ✅ Documentation updated?</div>
+
+<div class="code-block"># ── STEP 5: Software architecture patterns ──
+# How to structure large applications.
+
+# 1. MONOLITHIC (simple):
+# All code in one deployment. Good for starting.
+
+# 2. MICROSERVICES (scalable):
+# Each service is independent:
+# - User service (auth, profiles)
+# - Order service (cart, checkout)
+# - Notification service (email, push)
+# Communication via HTTP or message queue.
+
+# 3. EVENT-DRIVEN:
+# Services communicate by publishing events:
+# Order created → event → Payment processes → event → Shipping
+
+# 4. HEXAGONAL (ports and adapters):
+# Core business logic isolated from external concerns.
+# Easy to swap databases, APIs, UIs.
+
+# Clean Architecture (layered):
+# ┌──────────────────────┐
+# │   UI / Controllers    │  ← Frameworks, Delivery
+# ├──────────────────────┤
+# │   Use Cases           │  ← Application logic
+# ├──────────────────────┤
+# │   Entities/Domain     │  ← Business rules
+# ├──────────────────────┤
+# │   Infrastructure      │  ← Database, External APIs
+# └──────────────────────┘
+# Dependencies point INWARD (UI depends on domain, not vice versa).
+
+# DESIGN PATTERNS:
+# - Factory: create objects without specifying exact class
+# - Observer: notify when state changes (pub/sub)
+# - Strategy: interchangeable algorithms
+# - Decorator: add behavior without modifying
+# - Singleton: one instance only (use sparingly!)
+
+# THE GOLDEN RULE:
+# "Simplicity is the soul of efficiency." — Austin Freeman
+# Don't over-engineer. Start simple, add complexity only when needed.</div>
+
+<div class="code-block"># ── STEP 6: SE research areas ──
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Area                │ What you study                     │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ Testing             │ Test gen, mutation, fuzzing        │
+# │ Program Analysis    │ Static/dynamic, symbolic execution │
+# │ AI4SE               │ Copilot, code gen, bug finding     │
+# │ Empirical SE        │ Mining repos, developer studies    │
+# │ DevOps              │ CI/CD, SRE, incident analysis      │
+# │ Architecture        │ Microservices, self-adaptive       │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# CONFERENCES:
+# ICSE, FSE, ASE, ISSTA  — top SE conferences
+# OOPSLA, PLDI            — programming languages
+# NeurIPS (SE workshop)   — AI for SE
+
+# HOT TOPICS (2024-2026):
+# - LLM-based code generation (Copilot, Cursor, Devin)
+# - Automated bug fixing (AI suggests fixes)
+# - Test generation with LLMs
+# - Supply chain security (dependency vulnerabilities)
+# - Empirical studies of AI coding tools
+# - Developer productivity measurement
+
+# TOOLS TO MASTER:
+# Git                    — version control
+# Docker                 — containerization
+# CI/CD (GitHub Actions) — automated testing/deployment
+# Testing (pytest)       — test your code
+# Static analysis (ruff) — catch bugs early
+# Type hints (mypy)      — prevent type errors
+
+# CAREER:
+# Every developer needs SE skills.
+# SE researcher: study how software is built, improve tools.
+# DevOps/SRE: automate deployment, ensure reliability.
+# Software Architect: design system structure.
+
+# THE INSIGHT:
+# The best code is code that is:
+# 1. CORRECT (does what it should)
+# 2. READABLE (others can understand)
+# 3. TESTABLE (can verify it works)
+# 4. MAINTAINABLE (easy to change)
+# 5. SIMPLE (no unnecessary complexity)</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">🧪 Test/Verify</td><td>Gen, mutation, fuzz, formal verification</td><td>ICSE, FSE, ASE, ISSTA</td></tr>
@@ -483,38 +1365,253 @@ doors.push({
   <div class="diag-cap">PL = ভাষা নিরাপদ করে (compile-ই হয় না ভুল), AI4SE = LLM কোড লেখে। দুইয়ের মিলন = AI agent যা নিরাপদ কোড লেখে। এটাই পরবর্তী frontier — verified autonomous coding।</div>
 </div>
 
-<div class="code-block">Programming Languages & AI4SE — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: What is a programming language? ──
+# A PL is a bridge between human thought and machine execution.
 
-১. TYPE SYSTEMS & SAFETY (PL core)
-   - Static types, dependent types, refinement types
-   - Ownership/borrowing (Rust), linear types
-   - Effect systems, session types
+# Language paradigms:
+# - Imperative: step-by-step instructions (C, Python)
+# - Functional: pure functions, no side effects (Haskell, Elixir)
+# - Object-oriented: objects and classes (Java, Python)
+# - Logic: rules and facts (Prolog)
 
-২. COMPILERS & RUNTIME
-   - IR, SSA, intermediate representations (MLIR, Cranelift)
-   - Optimization, JIT, specialization
-   - WASM, LLVM, GPU compilers
+# Python AST (Abstract Syntax Tree) — how Python sees your code:
+import ast
 
-৩. FORMAL METHODS (গভীরতম PL)
-   - Theorem proving (Coq, Lean, Isabelle)
-   - Model checking, program verification (Dafny, Frama-C)
-   - Program synthesis, refinement
+code = """
+x = 5
+y = x + 3
+print(y)
+"""
 
-৪. LANGUAGE DESIGN
-   - New languages (Rust, Zig, Mojo, Roc)
-   - DSLs, metaprogramming, macros
-   - Concurrent/parallel languages
+tree = ast.parse(code)
+print(ast.dump(tree, indent=2))
+# Shows the structure: Assign, BinOp, Name, Constant, Call...
 
-৫. AI4SE — LLM FOR CODE (🔥🔥🔥)
-   - Code generation (Copilot, Cursor, Claude Code)
-   - Bug detection/repair (SWE-bench, ২০২৪-২৫)
-   - Automated code review, refactoring
-   - Code agents (Devin, autonomous SWE)
+# Compilers translate human code to machine code:
+# Source code → Lexer → Parser → AST → Optimizer → Machine code
 
-৬. AI + PL (🔥 crossover)
-   - LLM-guided synthesis, neurosymbolic
-   - Verified AI codegen (Lean + LLM — AlphaProof)
-   - Type-aware LLM, formal-proof generation</div>
+# LEXER: breaks code into tokens
+# Parser: builds tree from tokens
+# Optimizer: makes code faster
+# Code generator: writes machine code</div>
+
+<div class="code-block"># ── STEP 2: Type systems ──
+# Types prevent bugs by catching errors at COMPILE TIME.
+
+# Static typing (Java, Rust, TypeScript):
+# Types checked BEFORE running. Errors caught early.
+# int x = "hello";  // ERROR at compile time
+
+# Dynamic typing (Python, JavaScript):
+# Types checked at RUNTIME. More flexible but errors at runtime.
+x = 5          # x is int
+x = "hello"    # now x is string — OK in Python
+
+# Python type hints (gradual typing):
+from typing import List, Dict, Optional
+
+def process_users(users: List[Dict[str, str]]) -&gt; Optional[str]:
+    """Type hints help tools catch bugs."""
+    if not users:
+        return None
+    return users[0]["name"]
+
+# Rust ownership system (zero-cost safety):
+rust_example = """
+fn main() {
+    let s1 = String::from("hello");
+    let s2 = s1;  // s1 is MOVED to s2
+    // println!("{}", s1);  // ERROR: s1 no longer valid!
+    println!("{}", s2);     // OK
+}
+"""
+# Rust prevents memory bugs (use-after-free, data races) at compile time
+# without a garbage collector. This is why it's called "fearless concurrency."
+
+# Type system trade-offs:
+# ┌─────────────┬──────────────────┬──────────────────┐
+# │ Feature     │ Static types     │ Dynamic types   │
+# ├─────────────┼──────────────────┼──────────────────┤
+# │ Bug catching│ Compile time     │ Runtime         │
+# │ Flexibility │ Less             │ More            │
+# │ Performance │ Faster (optimized)│ Slower         │
+# │ Refactoring │ Easier (safe)    │ Harder          │
+# │ Examples    │ Rust, Java, TS   │ Python, JS, Ruby│
+# └─────────────┴──────────────────┴──────────────────┘</div>
+
+<div class="code-block"># ── STEP 3: How compilers work ──
+# A compiler translates high-level code to machine code.
+
+# Python's compilation pipeline:
+# source.py → tokens → AST → bytecode (.pyc) → interpreter
+
+# View Python bytecode:
+import dis
+
+def add(a, b):
+    return a + b
+
+dis.dis(add)
+# Shows instructions:
+# LOAD_FAST (a), LOAD_FAST (b), BINARY_ADD, RETURN_VALUE
+
+# JIT (Just-In-Time) compilation:
+# PyPy compiles Python at runtime → 3-5x faster
+# PyTorch 2.0's torch.compile() JIT-compiles models → 1.3-2x faster
+
+# LLVM — the compiler infrastructure:
+# Used by: Clang (C/C++), Rust, Swift, Julia
+# Frontend (parse) → LLVM IR → Optimize → Backend (machine code)
+
+# WASM (WebAssembly):
+# Run fast code in the browser
+# C/C++/Rust → WASM → runs at near-native speed in browser
+# Python via Pyodide: runs Python in browser!
+
+# Optimization techniques:
+# - Constant folding: 2 + 3 → 5 (at compile time)
+# - Dead code elimination: remove unreachable code
+# - Inlining: replace function call with function body
+# - Loop unrolling: repeat loop body to reduce overhead</div>
+
+<div class="code-block"># ── STEP 4: Formal methods ──
+# Proving code is correct with MATHEMATICAL certainty.
+
+# Example — proving a sorting function:
+# Property: for all inputs, output is sorted AND contains same elements
+
+# Using Python's hypothesis library (property-based testing):
+# from hypothesis import given, strategies as st
+#
+# @given(st.lists(st.integers()))
+# def test_sort_preserves_length(lst):
+#     assert len(sorted(lst)) == len(lst)
+#
+# @given(st.lists(st.integers()))
+# def test_sort_is_ordered(lst):
+#     result = sorted(lst)
+#     for i in range(len(result) - 1):
+#         assert result[i] &lt;= result[i + 1]
+#
+# hypothesis runs HUNDREDS of random inputs automatically!
+
+# Theorem proving (Coq, Lean):
+# Mathematical proof that code is correct.
+# Lean is used by mathematicians AND AI (AlphaProof):
+
+lean_example = """
+theorem add_comm (n m : Nat) : n + m = m + n := by
+  induction n with
+  | zero => simp
+  | succ n ih => simp [Nat.add_succ, Nat.succ_add]; exact ih
+"""
+
+# Why formal methods matter:
+# - Cryptography: prove no vulnerability exists
+# - Aerospace: prove flight control won't crash
+# - Kernel: prove memory safety
+# - Smart contracts: prove no funds can be stolen
+
+# The tradeoff:
+# Formal verification is EXPENSIVE (weeks per function)
+# But for critical systems, it's worth it
+# AI (AlphaProof) is making this faster</div>
+
+<div class="code-block"># ── STEP 5: AI for Software Engineering (AI4SE) ──
+# LLMs are transforming how code is written.
+
+# 1. CODE GENERATION (Copilot, Cursor, Claude Code):
+# Type a comment → AI generates the code
+# "Write a function to validate email addresses"
+# → AI generates the function
+
+# Using GitHub Copilot API:
+# from openai import OpenAI
+# client = OpenAI()
+# response = client.chat.completions.create(
+#     model="gpt-4",
+#     messages=[
+#         {"role": "system", "content": "You are a Python expert."},
+#         {"role": "user", "content": "Write a binary search function"},
+#     ]
+# )
+# print(response.choices[0].message.content)
+
+# 2. BUG DETECTION:
+# AI reads code and finds potential bugs
+# "This function can return None — add a check"
+
+# 3. CODE REVIEW:
+# AI reviews pull requests automatically
+# Checks for: security, style, performance, correctness
+
+# 4. AUTOMATED REPAIR:
+# AI finds the bug AND suggests a fix
+# SWE-bench: benchmark for autonomous bug fixing
+
+# 5. CODE AGENTS (Devin, Claude Code):
+# Autonomous software engineer
+# - Reads the codebase
+# - Understands the task
+# - Writes code
+# - Runs tests
+# - Fixes errors
+# - Creates pull request
+
+# Research challenges:
+# - Hallucination (AI invents non-existent APIs)
+# - Large codebase context (how to fit millions of lines?)
+# - Correctness verification (AI code may be subtly wrong)
+# - Security (AI might introduce vulnerabilities)
+
+# IMPACT:
+# Copilot users complete tasks 55% faster (GitHub study)
+# This is the biggest change in programming since IDEs</div>
+
+<div class="code-block"># ── STEP 6: PL & AI4SE research areas ──
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Area                │ What you study                     │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ Type Systems        │ Static, dependent, ownership       │
+# │ Compilers           │ IR, optimization, LLVM, WASM       │
+# │ Formal Methods      │ Theorem proving, verification      │
+# │ Language Design     │ Rust, Zig, Mojo, DSLs             │
+# │ AI4SE               │ Code gen, bug fix, Copilot         │
+# │ AI + PL             │ Neurosymbolic, verified AI codegen │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# CONFERENCES:
+# POPL, OOPSLA, PLDI      — top PL conferences
+# ICFP                     — functional programming
+# ICSE, FSE, ASE           — software engineering
+# NeurIPS (AI4SE workshop) — AI for code
+
+# HOT TOPICS (2024-2026):
+# - LLM code generation (Copilot, Claude Code, Devin)
+# - SWE-bench (autonomous bug fixing benchmark)
+# - AlphaProof (AI + Lean theorem proving)
+# - Rust adoption (Linux kernel, Windows)
+# - Mojo (Python syntax, C speed, for AI)
+# - Verified AI code generation (AI writes provably correct code)
+
+# LANGUAGE LEARNING GUIDE:
+# Python  — start here (easy, versatile)
+# Rust    — for systems (memory safety, performance)
+# Haskell — for PL understanding (pure functional)
+# C       — for understanding how computers really work
+# Lean    — for theorem proving + AI math
+
+# CAREER PATHS:
+# - Compiler Engineer (GCC, LLVM, language teams)
+# - PL Researcher (design new languages)
+# - AI4SE Researcher (make coding tools smarter)
+# - Formal Verification Engineer (prove code correct)
+# - Developer Tools Engineer (Copilot, Cursor)
+
+# THE FUTURE:
+# AI won't replace programmers.
+# But programmers who USE AI will replace those who don't.
+# Understanding PL helps you build the AI tools that write code.</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">📐 Type/Safety</td><td>Static, dependent, ownership, effect</td><td>POPL, OOPSLA, ICFP</td></tr>
