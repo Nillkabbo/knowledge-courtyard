@@ -46,20 +46,20 @@ doors.push({
   <rect x="40" y="135" width="130" height="58" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="105" y="157" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">RESEARCHER</text>
   <text x="105" y="173" text-anchor="middle" fill="#7dd3fc" font-size="8">তথ্য খোঁজে</text>
-  <text x="105" y="186" text-anchor="middle" fill="#94a3b8" font-size="7">search · read</text>
+  <text x="105" y="186" text-anchor="middle" fill="#94a3b8" font-size="10">search · read</text>
   <rect x="225" y="135" width="130" height="58" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
   <text x="290" y="157" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">CODER</text>
   <text x="290" y="173" text-anchor="middle" fill="#4ade80" font-size="8">কোড লেখে</text>
-  <text x="290" y="186" text-anchor="middle" fill="#94a3b8" font-size="7">write · run</text>
+  <text x="290" y="186" text-anchor="middle" fill="#94a3b8" font-size="10">write · run</text>
   <rect x="410" y="135" width="130" height="58" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="475" y="157" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">REVIEWER</text>
   <text x="475" y="173" text-anchor="middle" fill="#7dd3fc" font-size="8">যাচাই করে</text>
-  <text x="475" y="186" text-anchor="middle" fill="#94a3b8" font-size="7">validate · test</text>
+  <text x="475" y="186" text-anchor="middle" fill="#94a3b8" font-size="10">validate · test</text>
   <path d="M 175 165 Q 200 175 225 165" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrA6g)"/>
   <path d="M 355 165 Q 380 175 410 165" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrA6g)"/>
-  <text x="105" y="215" text-anchor="middle" fill="#7dd3fc" font-size="7">↳ ফলাফল</text>
-  <text x="290" y="215" text-anchor="middle" fill="#4ade80" font-size="7">↳ কোড</text>
-  <text x="475" y="215" text-anchor="middle" fill="#7dd3fc" font-size="7">↳ যাচাই</text>
+  <text x="105" y="215" text-anchor="middle" fill="#7dd3fc" font-size="10">↳ ফলাফল</text>
+  <text x="290" y="215" text-anchor="middle" fill="#4ade80" font-size="10">↳ কোড</text>
+  <text x="475" y="215" text-anchor="middle" fill="#7dd3fc" font-size="10">↳ যাচাই</text>
   <text x="290" y="238" text-anchor="middle" fill="#fbbf24" font-size="8">প্রতিটা agent নিজের কাজে নিখুঁত — একসাথে সম্পূর্ণ</text>
 </svg>
 </div>
@@ -239,19 +239,19 @@ doors.push({
   <rect x="185" y="80" width="120" height="70" rx="10" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
   <text x="245" y="105" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="bold">⚠️ APPROVE?</text>
   <text x="245" y="122" text-anchor="middle" fill="#c084fc" font-size="8">মানুষ দেখে</text>
-  <text x="245" y="138" text-anchor="middle" fill="#94a3b8" font-size="7">pause · wait</text>
+  <text x="245" y="138" text-anchor="middle" fill="#94a3b8" font-size="10">pause · wait</text>
   <line x1="130" y1="115" x2="183" y2="115" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrA7)"/>
   <rect x="350" y="60" width="100" height="40" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
   <text x="400" y="78" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">✓ হ্যাঁ</text>
-  <text x="400" y="92" text-anchor="middle" fill="#4ade80" font-size="7">execute</text>
+  <text x="400" y="92" text-anchor="middle" fill="#4ade80" font-size="10">execute</text>
   <rect x="350" y="130" width="100" height="40" rx="8" fill="#7f1d1d" stroke="#f87171" stroke-width="2"/>
   <text x="400" y="148" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="bold">✗ না</text>
-  <text x="400" y="162" text-anchor="middle" fill="#fca5a5" font-size="7">revise</text>
+  <text x="400" y="162" text-anchor="middle" fill="#fca5a5" font-size="10">revise</text>
   <line x1="305" y1="100" x2="348" y2="80" stroke="#4ade80" stroke-width="2" marker-end="url(#arrA7g)"/>
   <line x1="305" y1="130" x2="348" y2="150" stroke="#f87171" stroke-width="2" marker-end="url(#arrA7r)"/>
   <rect x="475" y="60" width="90" height="40" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
   <text x="520" y="78" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">DONE</text>
-  <text x="520" y="92" text-anchor="middle" fill="#4ade80" font-size="7">✓ পাঠানো</text>
+  <text x="520" y="92" text-anchor="middle" fill="#4ade80" font-size="10">✓ পাঠানো</text>
   <line x1="450" y1="80" x2="473" y2="80" stroke="#4ade80" stroke-width="2" marker-end="url(#arrA7g)"/>
   <path d="M 400 170 Q 250 210 80 140" fill="none" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrA7r)"/>
   <text x="230" y="225" text-anchor="middle" fill="#fbbf24" font-size="8">প্রত্যাখ্যান → এজেন্ট আবার চেষ্টা করে</text>
@@ -765,28 +765,28 @@ PRODUCTION CHECKLIST:
   <text x="290" y="26" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Failure Mode ও সতর্কতা স্তর</text>
   <rect x="20" y="55" width="125" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
   <text x="82" y="72" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">১. Infinite Loop</text>
-  <text x="82" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">→ max iterations</text>
+  <text x="82" y="86" text-anchor="middle" fill="#94a3b8" font-size="10">→ max iterations</text>
   <rect x="155" y="55" width="125" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
   <text x="217" y="72" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">২. Cost Explosion</text>
-  <text x="217" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">→ cost limit</text>
+  <text x="217" y="86" text-anchor="middle" fill="#94a3b8" font-size="10">→ cost limit</text>
   <rect x="290" y="55" width="125" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
   <text x="352" y="72" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">৩. Wrong Tool</text>
-  <text x="352" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">→ clear description</text>
+  <text x="352" y="86" text-anchor="middle" fill="#94a3b8" font-size="10">→ clear description</text>
   <rect x="425" y="55" width="135" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
   <text x="492" y="72" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">৪. Hallucination</text>
-  <text x="492" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">→ output validation</text>
+  <text x="492" y="86" text-anchor="middle" fill="#94a3b8" font-size="10">→ output validation</text>
   <rect x="20" y="105" width="125" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
   <text x="82" y="122" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">৫. Context Pollution</text>
-  <text x="82" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">→ summarize old</text>
+  <text x="82" y="136" text-anchor="middle" fill="#94a3b8" font-size="10">→ summarize old</text>
   <rect x="155" y="105" width="125" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
   <text x="217" y="122" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">৬. Cascade Error</text>
-  <text x="217" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">→ validation gate</text>
+  <text x="217" y="136" text-anchor="middle" fill="#94a3b8" font-size="10">→ validation gate</text>
   <rect x="290" y="105" width="125" height="40" rx="8" fill="#3b0764" stroke="#ff6b35" stroke-width="2"/>
   <text x="352" y="122" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="bold">৭. Unauthorized</text>
-  <text x="352" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">→ action whitelist</text>
+  <text x="352" y="136" text-anchor="middle" fill="#94a3b8" font-size="10">→ action whitelist</text>
   <rect x="425" y="105" width="135" height="40" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
   <text x="492" y="122" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">✓ ৫ Safety Layers</text>
-  <text x="492" y="136" text-anchor="middle" fill="#86efac" font-size="7">input → output</text>
+  <text x="492" y="136" text-anchor="middle" fill="#86efac" font-size="10">input → output</text>
   <line x1="352" y1="145" x2="425" y2="125" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrA9g)"/>
   <rect x="60" y="170" width="460" height="44" rx="8" fill="#0c0a1d" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="290" y="188" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">সতর্কতা = নিরাপত্তা — Freedom without caution = disaster</text>

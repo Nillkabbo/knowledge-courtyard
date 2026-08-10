@@ -54,15 +54,15 @@ doors.push({
   <rect x="440" y="50" width="120" height="220" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="500" y="72" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">SERVER</text>
   <line x1="140" y1="100" x2="440" y2="100" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrTLS1)"/>
-  <text x="290" y="95" text-anchor="middle" fill="#fcd34d" font-size="7">ClientHello + KeyShare</text>
+  <text x="290" y="95" text-anchor="middle" fill="#fcd34d" font-size="10">ClientHello + KeyShare</text>
   <line x1="440" y1="130" x2="140" y2="130" stroke="#22c55e" stroke-width="2" marker-end="url(#arrTLS1)"/>
-  <text x="290" y="125" text-anchor="middle" fill="#4ade80" font-size="7">ServerHello + KeyShare + Cert + Finished</text>
+  <text x="290" y="125" text-anchor="middle" fill="#4ade80" font-size="10">ServerHello + KeyShare + Cert + Finished</text>
   <line x1="140" y1="160" x2="440" y2="160" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrTLS1)"/>
-  <text x="290" y="155" text-anchor="middle" fill="#4ade80" font-size="7">Client Finished (encrypted)</text>
+  <text x="290" y="155" text-anchor="middle" fill="#4ade80" font-size="10">Client Finished (encrypted)</text>
   <rect x="160" y="190" width="260" height="30" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="290" y="210" text-anchor="middle" fill="#4ade80" font-size="8">Secure channel established!</text>
-  <text x="290" y="245" text-anchor="middle" fill="#94a3b8" font-size="7">TLS 1.3: 1-RTT (TLS 1.2 needed 2-RTT)</text>
-  <text x="290" y="260" text-anchor="middle" fill="#94a3b8" font-size="7">0-RTT resumption for returning clients</text>
+  <text x="290" y="245" text-anchor="middle" fill="#94a3b8" font-size="10">TLS 1.3: 1-RTT (TLS 1.2 needed 2-RTT)</text>
+  <text x="290" y="260" text-anchor="middle" fill="#94a3b8" font-size="10">0-RTT resumption for returning clients</text>
   <defs><marker id="arrTLS1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
 </svg>
 </div>
@@ -144,26 +144,26 @@ doors.push({
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎫 JWT: Three Parts Separated by Dots</text>
   <rect x="20" y="60" width="170" height="80" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="105" y="82" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">HEADER</text>
-  <text x="105" y="100" text-anchor="middle" fill="#86efac" font-size="6">{ "alg": "HS256",</text>
-  <text x="105" y="112" text-anchor="middle" fill="#86efac" font-size="6">"typ": "JWT" }</text>
-  <text x="105" y="130" text-anchor="middle" fill="#94a3b8" font-size="6">base64 encoded</text>
+  <text x="105" y="100" text-anchor="middle" fill="#86efac" font-size="10">{ "alg": "HS256",</text>
+  <text x="105" y="112" text-anchor="middle" fill="#86efac" font-size="10">"typ": "JWT" }</text>
+  <text x="105" y="130" text-anchor="middle" fill="#94a3b8" font-size="10">base64 encoded</text>
   <rect x="200" y="60" width="170" height="80" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="285" y="82" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">PAYLOAD</text>
-  <text x="285" y="100" text-anchor="middle" fill="#bae6fd" font-size="6">{ "sub": "1234",</text>
-  <text x="285" y="112" text-anchor="middle" fill="#bae6fd" font-size="6">"role": "admin",</text>
-  <text x="285" y="124" text-anchor="middle" fill="#bae6fd" font-size="6">"exp": 1735689600 }</text>
-  <text x="285" y="135" text-anchor="middle" fill="#94a3b8" font-size="6">NOT encrypted! just b64</text>
+  <text x="285" y="100" text-anchor="middle" fill="#bae6fd" font-size="10">{ "sub": "1234",</text>
+  <text x="285" y="112" text-anchor="middle" fill="#bae6fd" font-size="10">"role": "admin",</text>
+  <text x="285" y="124" text-anchor="middle" fill="#bae6fd" font-size="10">"exp": 1735689600 }</text>
+  <text x="285" y="135" text-anchor="middle" fill="#94a3b8" font-size="10">NOT encrypted! just b64</text>
   <rect x="380" y="60" width="180" height="80" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="470" y="82" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">SIGNATURE</text>
-  <text x="470" y="100" text-anchor="middle" fill="#fca5a5" font-size="6">HMAC-SHA256(</text>
-  <text x="470" y="112" text-anchor="middle" fill="#fca5a5" font-size="6">base64(header) + "."</text>
-  <text x="470" y="124" text-anchor="middle" fill="#fca5a5" font-size="6">+ base64(payload),</text>
-  <text x="470" y="136" text-anchor="middle" fill="#f87171" font-size="6">SECRET_KEY )</text>
+  <text x="470" y="100" text-anchor="middle" fill="#fca5a5" font-size="10">HMAC-SHA256(</text>
+  <text x="470" y="112" text-anchor="middle" fill="#fca5a5" font-size="10">base64(header) + "."</text>
+  <text x="470" y="124" text-anchor="middle" fill="#fca5a5" font-size="10">+ base64(payload),</text>
+  <text x="470" y="136" text-anchor="middle" fill="#f87171" font-size="10">SECRET_KEY )</text>
   <text x="195" y="105" fill="#94a3b8" font-size="8" font-weight="900">.</text>
   <text x="375" y="105" fill="#94a3b8" font-size="8" font-weight="900">.</text>
   <rect x="100" y="170" width="380" height="50" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
-  <text x="290" y="190" text-anchor="middle" fill="#e2e8f0" font-size="7">Stateless: server stores NOTHING</text>
-  <text x="290" y="205" text-anchor="middle" fill="#94a3b8" font-size="7">Token validates via signature check only</text>
+  <text x="290" y="190" text-anchor="middle" fill="#e2e8f0" font-size="10">Stateless: server stores NOTHING</text>
+  <text x="290" y="205" text-anchor="middle" fill="#94a3b8" font-size="10">Token validates via signature check only</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: JWT — header.payload.signature। Payload এনক্রিপ্টেড নয়, শুধু signature গোপন।</div>
@@ -245,25 +245,25 @@ doors.push({
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚔️ Injection: SQL, XSS, CSRF</text>
   <rect x="20" y="55" width="160" height="80" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="100" y="78" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">SQL Injection</text>
-  <text x="100" y="98" text-anchor="middle" fill="#fca5a5" font-size="6">input: ' OR 1=1 --</text>
-  <text x="100" y="112" text-anchor="middle" fill="#f87171" font-size="6">query: SELECT * WHERE</text>
-  <text x="100" y="122" text-anchor="middle" fill="#f87171" font-size="6">name='' OR 1=1 --</text>
-  <text x="100" y="140" text-anchor="middle" fill="#22c55e" font-size="6">Fix: parameterized query</text>
+  <text x="100" y="98" text-anchor="middle" fill="#fca5a5" font-size="10">input: ' OR 1=1 --</text>
+  <text x="100" y="112" text-anchor="middle" fill="#f87171" font-size="10">query: SELECT * WHERE</text>
+  <text x="100" y="122" text-anchor="middle" fill="#f87171" font-size="10">name='' OR 1=1 --</text>
+  <text x="100" y="140" text-anchor="middle" fill="#22c55e" font-size="10">Fix: parameterized query</text>
   <rect x="210" y="55" width="160" height="80" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
   <text x="290" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">XSS</text>
-  <text x="290" y="98" text-anchor="middle" fill="#fcd34d" font-size="6">input: &lt;script&gt;steal()&lt;/script&gt;</text>
-  <text x="290" y="112" text-anchor="middle" fill="#fbbf24" font-size="6">rendered in browser</text>
-  <text x="290" y="122" text-anchor="middle" fill="#fbbf24" font-size="6">cookie stolen!</text>
-  <text x="290" y="140" text-anchor="middle" fill="#22c55e" font-size="6">Fix: escape output, CSP</text>
+  <text x="290" y="98" text-anchor="middle" fill="#fcd34d" font-size="10">input: &lt;script&gt;steal()&lt;/script&gt;</text>
+  <text x="290" y="112" text-anchor="middle" fill="#fbbf24" font-size="10">rendered in browser</text>
+  <text x="290" y="122" text-anchor="middle" fill="#fbbf24" font-size="10">cookie stolen!</text>
+  <text x="290" y="140" text-anchor="middle" fill="#22c55e" font-size="10">Fix: escape output, CSP</text>
   <rect x="400" y="55" width="160" height="80" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="480" y="78" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="700">CSRF</text>
-  <text x="480" y="98" text-anchor="middle" fill="#7dd3fc" font-size="6">evil site sends POST</text>
-  <text x="480" y="112" text-anchor="middle" fill="#22d3ee" font-size="6">browser adds cookie</text>
-  <text x="480" y="122" text-anchor="middle" fill="#22d3ee" font-size="6">unauthorized action!</text>
-  <text x="480" y="140" text-anchor="middle" fill="#22c55e" font-size="6">Fix: CSRF token</text>
+  <text x="480" y="98" text-anchor="middle" fill="#7dd3fc" font-size="10">evil site sends POST</text>
+  <text x="480" y="112" text-anchor="middle" fill="#22d3ee" font-size="10">browser adds cookie</text>
+  <text x="480" y="122" text-anchor="middle" fill="#22d3ee" font-size="10">unauthorized action!</text>
+  <text x="480" y="140" text-anchor="middle" fill="#22c55e" font-size="10">Fix: CSRF token</text>
   <rect x="100" y="160" width="380" height="60" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="290" y="185" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Universal Defense</text>
-  <text x="290" y="205" text-anchor="middle" fill="#86efac" font-size="7">Never trust input · Validate · Sanitize · Escape · Parameterize</text>
+  <text x="290" y="205" text-anchor="middle" fill="#86efac" font-size="10">Never trust input · Validate · Sanitize · Escape · Parameterize</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: SQL injection, XSS, CSRF — তিন রূপ। Fix: validate, escape, parameterize।</div>
@@ -360,7 +360,7 @@ doors.push({
   <text x="290" y="165" text-anchor="middle" fill="#7dd3fc" font-size="8">Authentication (JWT) + Authorization (RBAC)</text>
   <rect x="120" y="185" width="340" height="40" rx="20" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="290" y="210" text-anchor="middle" fill="#4ade80" font-size="8">Input Validation + Parameterized Queries + Encryption</text>
-  <text x="290" y="240" text-anchor="middle" fill="#94a3b8" font-size="7">Each layer independent — if one breaks, others hold</text>
+  <text x="290" y="240" text-anchor="middle" fill="#94a3b8" font-size="10">Each layer independent — if one breaks, others hold</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Defense in depth — WAF → Rate limit → Auth → Validation। একটি ভাঙলে অন্যটি রক্ষা।</div>
@@ -472,12 +472,12 @@ doors.push({
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🏰 Zero Trust: Never Trust, Always Verify</text>
   <rect x="180" y="60" width="220" height="50" rx="25" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="290" y="82" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">OLD: Castle &amp; Moat</text>
-  <text x="290" y="98" text-anchor="middle" fill="#fca5a5" font-size="7">Inside network = trusted ❌</text>
+  <text x="290" y="98" text-anchor="middle" fill="#fca5a5" font-size="10">Inside network = trusted ❌</text>
   <text x="200" y="140" fill="#94a3b8" font-size="8">↓ Evolution ↓</text>
   <rect x="120" y="155" width="340" height="70" rx="25" fill="#052e16" stroke="#22c55e" stroke-width="2.5"/>
   <text x="290" y="180" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">ZERO TRUST</text>
-  <text x="290" y="198" text-anchor="middle" fill="#86efac" font-size="7">Every request verified: Who? What? Where? When?</text>
-  <text x="290" y="212" text-anchor="middle" fill="#86efac" font-size="7">mTLS · Identity per service · Micro-segmentation</text>
+  <text x="290" y="198" text-anchor="middle" fill="#86efac" font-size="10">Every request verified: Who? What? Where? When?</text>
+  <text x="290" y="212" text-anchor="middle" fill="#86efac" font-size="10">mTLS · Identity per service · Micro-segmentation</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Zero Trust — কেউ বিশ্বাসযোগ্য নয়। প্রতিটি অনুরোধ যাচাই।</div>

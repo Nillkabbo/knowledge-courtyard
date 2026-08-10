@@ -49,39 +49,39 @@ doors.push({
   <rect x="20" y="50" width="200" height="170" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
   <text x="120" y="72" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">users (table)</text>
   <rect x="30" y="82" width="180" height="20" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="40" y="96" fill="#7dd3fc" font-size="7">id (PK) 🔑</text>
-  <text x="100" y="96" fill="#94a3b8" font-size="7">| name</text>
-  <text x="170" y="96" fill="#94a3b8" font-size="7">| email</text>
+  <text x="40" y="96" fill="#7dd3fc" font-size="10">id (PK) 🔑</text>
+  <text x="100" y="96" fill="#94a3b8" font-size="10">| name</text>
+  <text x="170" y="96" fill="#94a3b8" font-size="10">| email</text>
   <rect x="30" y="105" width="180" height="16" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="40" y="116" fill="#4ade80" font-size="7">1</text>
-  <text x="100" y="116" fill="#86efac" font-size="7">| Rakib</text>
-  <text x="170" y="116" fill="#86efac" font-size="7">| r@x.com</text>
+  <text x="40" y="116" fill="#4ade80" font-size="10">1</text>
+  <text x="100" y="116" fill="#86efac" font-size="10">| Rakib</text>
+  <text x="170" y="116" fill="#86efac" font-size="10">| r@x.com</text>
   <rect x="30" y="122" width="180" height="16" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="40" y="133" fill="#4ade80" font-size="7">2</text>
-  <text x="100" y="133" fill="#86efac" font-size="7">| Sara</text>
-  <text x="170" y="133" fill="#86efac" font-size="7">| s@x.com</text>
-  <text x="120" y="160" text-anchor="middle" fill="#94a3b8" font-size="7">Primary Key: unique per row</text>
-  <text x="120" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">Each column = attribute</text>
-  <text x="120" y="200" text-anchor="middle" fill="#94a3b8" font-size="7">Each row = tuple (record)</text>
+  <text x="40" y="133" fill="#4ade80" font-size="10">2</text>
+  <text x="100" y="133" fill="#86efac" font-size="10">| Sara</text>
+  <text x="170" y="133" fill="#86efac" font-size="10">| s@x.com</text>
+  <text x="120" y="160" text-anchor="middle" fill="#94a3b8" font-size="10">Primary Key: unique per row</text>
+  <text x="120" y="180" text-anchor="middle" fill="#94a3b8" font-size="10">Each column = attribute</text>
+  <text x="120" y="200" text-anchor="middle" fill="#94a3b8" font-size="10">Each row = tuple (record)</text>
   <rect x="350" y="50" width="210" height="170" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
   <text x="455" y="72" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">orders (table)</text>
   <rect x="360" y="82" width="190" height="20" rx="3" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="370" y="96" fill="#fde68a" font-size="7">id (PK) 🔑</text>
-  <text x="420" y="96" fill="#fde68a" font-size="7">| user_id (FK) 🔗</text>
-  <text x="520" y="96" fill="#94a3b8" font-size="7">| amt</text>
+  <text x="370" y="96" fill="#fde68a" font-size="10">id (PK) 🔑</text>
+  <text x="420" y="96" fill="#fde68a" font-size="10">| user_id (FK) 🔗</text>
+  <text x="520" y="96" fill="#94a3b8" font-size="10">| amt</text>
   <rect x="360" y="105" width="190" height="16" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="370" y="116" fill="#4ade80" font-size="7">101</text>
-  <text x="420" y="116" fill="#4ade80" font-size="7">| 1 (→Rakib)</text>
-  <text x="520" y="116" fill="#86efac" font-size="7">| $50</text>
+  <text x="370" y="116" fill="#4ade80" font-size="10">101</text>
+  <text x="420" y="116" fill="#4ade80" font-size="10">| 1 (→Rakib)</text>
+  <text x="520" y="116" fill="#86efac" font-size="10">| $50</text>
   <rect x="360" y="122" width="190" height="16" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="370" y="133" fill="#4ade80" font-size="7">102</text>
-  <text x="420" y="133" fill="#4ade80" font-size="7">| 2 (→Sara)</text>
-  <text x="520" y="133" fill="#86efac" font-size="7">| $30</text>
-  <text x="455" y="160" text-anchor="middle" fill="#94a3b8" font-size="7">Foreign Key: links to users.id</text>
-  <text x="455" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">Referential integrity</text>
-  <text x="455" y="200" text-anchor="middle" fill="#fcd34d" font-size="7">Codd 1970: relational algebra</text>
+  <text x="370" y="133" fill="#4ade80" font-size="10">102</text>
+  <text x="420" y="133" fill="#4ade80" font-size="10">| 2 (→Sara)</text>
+  <text x="520" y="133" fill="#86efac" font-size="10">| $30</text>
+  <text x="455" y="160" text-anchor="middle" fill="#94a3b8" font-size="10">Foreign Key: links to users.id</text>
+  <text x="455" y="180" text-anchor="middle" fill="#94a3b8" font-size="10">Referential integrity</text>
+  <text x="455" y="200" text-anchor="middle" fill="#fcd34d" font-size="10">Codd 1970: relational algebra</text>
   <path d="M 120 105 Q 235 60 350 105" fill="none" stroke="#a855f7" stroke-width="2" stroke-dasharray="4,3"/>
-  <text x="235" y="55" text-anchor="middle" fill="#c084fc" font-size="7">FK relationship</text>
+  <text x="235" y="55" text-anchor="middle" fill="#c084fc" font-size="10">FK relationship</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Relational model — users ও orders টেবিল PK/FK দিয়ে যুক্ত।</div>
@@ -186,25 +186,25 @@ SELECT name FROM users WHERE id IN (SELECT user_id FROM orders WHERE total > ১
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">💻 SQL Query: JOIN + GROUP BY প্রবাহ</text>
   <rect x="20" y="55" width="160" height="80" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
   <text x="100" y="78" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">users</text>
-  <text x="100" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">id | name | dept</text>
-  <text x="100" y="115" text-anchor="middle" fill="#86efac" font-size="7">1 | Rakib | Eng</text>
-  <text x="100" y="128" text-anchor="middle" fill="#86efac" font-size="7">2 | Sara | Sales</text>
+  <text x="100" y="98" text-anchor="middle" fill="#94a3b8" font-size="10">id | name | dept</text>
+  <text x="100" y="115" text-anchor="middle" fill="#86efac" font-size="10">1 | Rakib | Eng</text>
+  <text x="100" y="128" text-anchor="middle" fill="#86efac" font-size="10">2 | Sara | Sales</text>
   <rect x="220" y="55" width="160" height="80" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
   <text x="300" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">orders</text>
-  <text x="300" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">id | uid | amount</text>
-  <text x="300" y="115" text-anchor="middle" fill="#fde68a" font-size="7">10 | 1 | $50</text>
-  <text x="300" y="128" text-anchor="middle" fill="#fde68a" font-size="7">11 | 2 | $30</text>
+  <text x="300" y="98" text-anchor="middle" fill="#94a3b8" font-size="10">id | uid | amount</text>
+  <text x="300" y="115" text-anchor="middle" fill="#fde68a" font-size="10">10 | 1 | $50</text>
+  <text x="300" y="128" text-anchor="middle" fill="#fde68a" font-size="10">11 | 2 | $30</text>
   <defs><marker id="arrD2a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
   <line x1="180" y1="95" x2="218" y2="95" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD2a)"/>
-  <text x="199" y="88" text-anchor="middle" fill="#c084fc" font-size="7">JOIN</text>
+  <text x="199" y="88" text-anchor="middle" fill="#c084fc" font-size="10">JOIN</text>
   <rect x="200" y="165" width="180" height="70" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
   <text x="290" y="185" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">GROUP BY dept</text>
-  <text x="290" y="205" text-anchor="middle" fill="#86efac" font-size="7">Eng | SUM=$50</text>
-  <text x="290" y="220" text-anchor="middle" fill="#86efac" font-size="7">Sales | SUM=$30</text>
+  <text x="290" y="205" text-anchor="middle" fill="#86efac" font-size="10">Eng | SUM=$50</text>
+  <text x="290" y="220" text-anchor="middle" fill="#86efac" font-size="10">Sales | SUM=$30</text>
   <defs><marker id="arrD2b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#f87171"/></marker></defs>
   <line x1="300" y1="135" x2="290" y2="163" stroke="#f87171" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrD2b)"/>
-  <text x="400" y="100" fill="#94a3b8" font-size="7">SELECT কোথা থেকে</text>
-  <text x="400" y="115" fill="#94a3b8" font-size="7">কী আনবে নির্দিষ্ট করে</text>
+  <text x="400" y="100" fill="#94a3b8" font-size="10">SELECT কোথা থেকে</text>
+  <text x="400" y="115" fill="#94a3b8" font-size="10">কী আনবে নির্দিষ্ট করে</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: SQL JOIN দুই টেবিলকে যুক্ত করে, GROUP BY সারাংশ তৈরি করে।</div>
@@ -319,23 +319,23 @@ EXPLAIN SELECT * FROM users WHERE email = 'test@example.com'<br>
   <line x1="380" y1="140" x2="360" y2="165" stroke="#475569" stroke-width="1.5"/>
   <line x1="380" y1="140" x2="400" y2="165" stroke="#475569" stroke-width="1.5"/>
   <rect x="150" y="165" width="55" height="28" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="177" y="183" text-anchor="middle" fill="#86efac" font-size="7">20 → row</text>
+  <text x="177" y="183" text-anchor="middle" fill="#86efac" font-size="10">20 → row</text>
   <rect x="210" y="165" width="55" height="28" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="237" y="183" text-anchor="middle" fill="#86efac" font-size="7">30 → row</text>
+  <text x="237" y="183" text-anchor="middle" fill="#86efac" font-size="10">30 → row</text>
   <rect x="245" y="165" width="55" height="28" rx="4" fill="#052e16" stroke="#fbbf24" stroke-width="1"/>
-  <text x="272" y="183" text-anchor="middle" fill="#fde68a" font-size="7">40 → row</text>
+  <text x="272" y="183" text-anchor="middle" fill="#fde68a" font-size="10">40 → row</text>
   <rect x="305" y="165" width="55" height="28" rx="4" fill="#052e16" stroke="#fbbf24" stroke-width="1"/>
-  <text x="332" y="183" text-anchor="middle" fill="#fde68a" font-size="7">50 → row</text>
+  <text x="332" y="183" text-anchor="middle" fill="#fde68a" font-size="10">50 → row</text>
   <rect x="340" y="165" width="55" height="28" rx="4" fill="#052e16" stroke="#a855f7" stroke-width="1"/>
-  <text x="367" y="183" text-anchor="middle" fill="#c084fc" font-size="7">60 → row</text>
+  <text x="367" y="183" text-anchor="middle" fill="#c084fc" font-size="10">60 → row</text>
   <rect x="400" y="165" width="55" height="28" rx="4" fill="#052e16" stroke="#a855f7" stroke-width="1"/>
-  <text x="427" y="183" text-anchor="middle" fill="#c084fc" font-size="7">70 → row</text>
+  <text x="427" y="183" text-anchor="middle" fill="#c084fc" font-size="10">70 → row</text>
   <text x="290" y="215" text-anchor="middle" fill="#94a3b8" font-size="8">Root → Internal → Leaf (pointer to table row)</text>
   <text x="60" y="60" fill="#f87171" font-size="8" font-weight="700">Hash Index</text>
   <rect x="30" y="70" width="100" height="20" rx="4" fill="#1e3a5f" stroke="#f87171" stroke-width="1.5"/>
-  <text x="80" y="84" text-anchor="middle" fill="#fca5a5" font-size="7">hash(key) → bucket</text>
-  <text x="80" y="105" text-anchor="middle" fill="#94a3b8" font-size="7">O(1) exact match</text>
-  <text x="80" y="118" text-anchor="middle" fill="#f87171" font-size="7">কোনো range নয়</text>
+  <text x="80" y="84" text-anchor="middle" fill="#fca5a5" font-size="10">hash(key) → bucket</text>
+  <text x="80" y="105" text-anchor="middle" fill="#94a3b8" font-size="10">O(1) exact match</text>
+  <text x="80" y="118" text-anchor="middle" fill="#f87171" font-size="10">কোনো range নয়</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: B-tree ব্যাল্যান্সড কাঠামো — O(log n)-এ অনুসন্ধান। Hash সরাসরি মিল।</div>
@@ -428,37 +428,37 @@ doors.push({
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔐 ACID: Transaction Lifecycle</text>
   <rect x="30" y="55" width="90" height="50" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="75" y="78" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">BEGIN</text>
-  <text x="75" y="95" text-anchor="middle" fill="#94a3b8" font-size="7">লেনদেন শুরু</text>
+  <text x="75" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">লেনদেন শুরু</text>
   <defs><marker id="arrD4a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
   <line x1="120" y1="80" x2="148" y2="80" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD4a)"/>
   <rect x="150" y="55" width="90" height="50" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
   <text x="195" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">UPDATE</text>
-  <text x="195" y="95" text-anchor="middle" fill="#94a3b8" font-size="7">balance -= 100</text>
+  <text x="195" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">balance -= 100</text>
   <defs><marker id="arrD4b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
   <line x1="240" y1="80" x2="268" y2="80" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD4b)"/>
   <rect x="270" y="55" width="90" height="50" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
   <text x="315" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">INSERT</text>
-  <text x="315" y="95" text-anchor="middle" fill="#94a3b8" font-size="7">log entry</text>
+  <text x="315" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">log entry</text>
   <defs><marker id="arrD4c" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
   <line x1="360" y1="80" x2="388" y2="80" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD4c)"/>
   <rect x="390" y="40" width="85" height="40" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="432" y="58" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">COMMIT ✓</text>
-  <text x="432" y="72" text-anchor="middle" fill="#86efac" font-size="7">স্থায়ী</text>
+  <text x="432" y="72" text-anchor="middle" fill="#86efac" font-size="10">স্থায়ী</text>
   <rect x="390" y="90" width="85" height="40" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="432" y="108" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">ROLLBACK ✗</text>
-  <text x="432" y="122" text-anchor="middle" fill="#fca5a5" font-size="7">বাতিল</text>
+  <text x="432" y="122" text-anchor="middle" fill="#fca5a5" font-size="10">বাতিল</text>
   <defs><marker id="arrD4d" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#f87171"/></marker></defs>
   <line x1="360" y1="95" x2="388" y2="105" stroke="#f87171" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrD4d)"/>
   <rect x="50" y="150" width="240" height="80" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
   <text x="170" y="172" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">MVCC (Multi-Version Concurrency)</text>
-  <text x="170" y="192" text-anchor="middle" fill="#94a3b8" font-size="7">T1 reads old version, T2 writes new version</text>
-  <text x="170" y="207" text-anchor="middle" fill="#94a3b8" font-size="7">কেউ block হয় না — snapshot isolation</text>
-  <text x="170" y="222" text-anchor="middle" fill="#c084fc" font-size="7">PostgreSQL: xmin/xmax tuples</text>
+  <text x="170" y="192" text-anchor="middle" fill="#94a3b8" font-size="10">T1 reads old version, T2 writes new version</text>
+  <text x="170" y="207" text-anchor="middle" fill="#94a3b8" font-size="10">কেউ block হয় না — snapshot isolation</text>
+  <text x="170" y="222" text-anchor="middle" fill="#c084fc" font-size="10">PostgreSQL: xmin/xmax tuples</text>
   <rect x="320" y="150" width="230" height="80" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
   <text x="435" y="172" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">WAL (Write-Ahead Log)</text>
-  <text x="435" y="192" text-anchor="middle" fill="#94a3b8" font-size="7">প্রথমে log লেখো, তারপর data</text>
-  <text x="435" y="207" text-anchor="middle" fill="#94a3b8" font-size="7">crash হলে log থেকে পুনরুদ্ধার</text>
-  <text x="435" y="222" text-anchor="middle" fill="#4ade80" font-size="7">Durability নিশ্চিত</text>
+  <text x="435" y="192" text-anchor="middle" fill="#94a3b8" font-size="10">প্রথমে log লেখো, তারপর data</text>
+  <text x="435" y="207" text-anchor="middle" fill="#94a3b8" font-size="10">crash হলে log থেকে পুনরুদ্ধার</text>
+  <text x="435" y="222" text-anchor="middle" fill="#4ade80" font-size="10">Durability নিশ্চিত</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Transaction BEGIN থেকে COMMIT/ROLLBACK — MVCC ও WAL দ্বারা নিরাপত্তা।</div>
@@ -554,39 +554,39 @@ enrollments (student_id, course_id) — junction table<br>
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📐 Normalization: Redundancy → Purity</text>
   <rect x="20" y="50" width="160" height="170" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="100" y="72" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">Unnormalized</text>
-  <text x="100" y="92" text-anchor="middle" fill="#94a3b8" font-size="7">id | name | orders</text>
-  <text x="100" y="108" text-anchor="middle" fill="#fca5a5" font-size="7">1 | Rakib | 50,30,90</text>
-  <text x="100" y="122" text-anchor="middle" fill="#fca5a5" font-size="7">2 | Sara | 20</text>
-  <text x="100" y="148" text-anchor="middle" fill="#f87171" font-size="7">⚠ repeating group</text>
-  <text x="100" y="163" text-anchor="middle" fill="#f87171" font-size="7">⚠ এক কলামে একাধিক মান</text>
-  <text x="100" y="183" text-anchor="middle" fill="#94a3b8" font-size="7">dept: Eng, Eng, Eng</text>
-  <text x="100" y="198" text-anchor="middle" fill="#f87171" font-size="7">⚠ redundancy</text>
+  <text x="100" y="92" text-anchor="middle" fill="#94a3b8" font-size="10">id | name | orders</text>
+  <text x="100" y="108" text-anchor="middle" fill="#fca5a5" font-size="10">1 | Rakib | 50,30,90</text>
+  <text x="100" y="122" text-anchor="middle" fill="#fca5a5" font-size="10">2 | Sara | 20</text>
+  <text x="100" y="148" text-anchor="middle" fill="#f87171" font-size="10">⚠ repeating group</text>
+  <text x="100" y="163" text-anchor="middle" fill="#f87171" font-size="10">⚠ এক কলামে একাধিক মান</text>
+  <text x="100" y="183" text-anchor="middle" fill="#94a3b8" font-size="10">dept: Eng, Eng, Eng</text>
+  <text x="100" y="198" text-anchor="middle" fill="#f87171" font-size="10">⚠ redundancy</text>
   <defs><marker id="arrD5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
   <line x1="180" y1="135" x2="228" y2="135" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD5)"/>
-  <text x="204" y="128" text-anchor="middle" fill="#c084fc" font-size="7">1NF</text>
+  <text x="204" y="128" text-anchor="middle" fill="#c084fc" font-size="10">1NF</text>
   <rect x="230" y="50" width="150" height="170" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="305" y="72" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">3NF (Normalized)</text>
-  <text x="305" y="92" text-anchor="middle" fill="#7dd3fc" font-size="7">users (table)</text>
-  <text x="305" y="108" text-anchor="middle" fill="#86efac" font-size="7">id | name | dept_id</text>
-  <text x="305" y="122" text-anchor="middle" fill="#86efac" font-size="7">1 | Rakib | 10</text>
-  <text x="305" y="136" text-anchor="middle" fill="#86efac" font-size="7">2 | Sara | 20</text>
-  <text x="305" y="158" text-anchor="middle" fill="#7dd3fc" font-size="7">orders (table)</text>
-  <text x="305" y="174" text-anchor="middle" fill="#fde68a" font-size="7">id | uid | amt</text>
-  <text x="305" y="188" text-anchor="middle" fill="#fde68a" font-size="7">10 | 1 | $50</text>
-  <text x="305" y="202" text-anchor="middle" fill="#fde68a" font-size="7">11 | 1 | $30</text>
+  <text x="305" y="92" text-anchor="middle" fill="#7dd3fc" font-size="10">users (table)</text>
+  <text x="305" y="108" text-anchor="middle" fill="#86efac" font-size="10">id | name | dept_id</text>
+  <text x="305" y="122" text-anchor="middle" fill="#86efac" font-size="10">1 | Rakib | 10</text>
+  <text x="305" y="136" text-anchor="middle" fill="#86efac" font-size="10">2 | Sara | 20</text>
+  <text x="305" y="158" text-anchor="middle" fill="#7dd3fc" font-size="10">orders (table)</text>
+  <text x="305" y="174" text-anchor="middle" fill="#fde68a" font-size="10">id | uid | amt</text>
+  <text x="305" y="188" text-anchor="middle" fill="#fde68a" font-size="10">10 | 1 | $50</text>
+  <text x="305" y="202" text-anchor="middle" fill="#fde68a" font-size="10">11 | 1 | $30</text>
   <defs><marker id="arrD5b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>
   <line x1="380" y1="135" x2="428" y2="135" stroke="#22c55e" stroke-width="2" marker-end="url(#arrD5b)"/>
-  <text x="404" y="128" text-anchor="middle" fill="#4ade80" font-size="7">FK</text>
+  <text x="404" y="128" text-anchor="middle" fill="#4ade80" font-size="10">FK</text>
   <rect x="430" y="50" width="130" height="80" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="495" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">departments</text>
-  <text x="495" y="92" text-anchor="middle" fill="#86efac" font-size="7">id | name</text>
-  <text x="495" y="108" text-anchor="middle" fill="#86efac" font-size="7">10 | Eng</text>
-  <text x="495" y="122" text-anchor="middle" fill="#86efac" font-size="7">20 | Sales</text>
+  <text x="495" y="92" text-anchor="middle" fill="#86efac" font-size="10">id | name</text>
+  <text x="495" y="108" text-anchor="middle" fill="#86efac" font-size="10">10 | Eng</text>
+  <text x="495" y="122" text-anchor="middle" fill="#86efac" font-size="10">20 | Sales</text>
   <rect x="430" y="150" width="130" height="70" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
   <text x="495" y="170" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Normal Forms</text>
-  <text x="495" y="186" text-anchor="middle" fill="#fde68a" font-size="7">1NF: atomic values</text>
-  <text x="495" y="199" text-anchor="middle" fill="#fde68a" font-size="7">2NF: no partial dep</text>
-  <text x="495" y="212" text-anchor="middle" fill="#fde68a" font-size="7">3NF: no transitive</text>
+  <text x="495" y="186" text-anchor="middle" fill="#fde68a" font-size="10">1NF: atomic values</text>
+  <text x="495" y="199" text-anchor="middle" fill="#fde68a" font-size="10">2NF: no partial dep</text>
+  <text x="495" y="212" text-anchor="middle" fill="#fde68a" font-size="10">3NF: no transitive</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: অসংগঠিত ডেটা থেকে ৩টি স্বাভাবিক টেবিলে রূপান্তর — redundancy দূর।</div>

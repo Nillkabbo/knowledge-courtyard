@@ -64,15 +64,15 @@ MD5 hash (১২৮-bit) → ২¹²৮+১টি input হলে collision অ�
   <text x="65" y="62" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">খোঁয়াড় ১</text>
   <circle cx="50" cy="85" r="9" fill="#22d3ee" stroke="#7dd3fc" stroke-width="1.5"/>
   <circle cx="80" cy="95" r="9" fill="#f87171" stroke="#fca5a5" stroke-width="1.5"/>
-  <text x="65" y="130" text-anchor="middle" fill="#fca5a5" font-size="7">২টি! ≥ ⌈N/k⌉</text>
+  <text x="65" y="130" text-anchor="middle" fill="#fca5a5" font-size="10">২টি! ≥ ⌈N/k⌉</text>
   <rect x="120" y="45" width="70" height="70" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
   <text x="155" y="62" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">খোঁয়াড় ২</text>
   <circle cx="155" cy="90" r="9" fill="#22c55e" stroke="#4ade80" stroke-width="1.5"/>
-  <text x="155" y="130" text-anchor="middle" fill="#4ade80" font-size="7">১টি</text>
+  <text x="155" y="130" text-anchor="middle" fill="#4ade80" font-size="10">১টি</text>
   <rect x="210" y="45" width="70" height="70" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
   <text x="245" y="62" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">খোঁয়াড় ৩</text>
   <circle cx="245" cy="90" r="9" fill="#fbbf24" stroke="#fcd34d" stroke-width="1.5"/>
-  <text x="245" y="130" text-anchor="middle" fill="#fcd34d" font-size="7">১টি</text>
+  <text x="245" y="130" text-anchor="middle" fill="#fcd34d" font-size="10">১টি</text>
   <rect x="30" y="155" width="430" height="28" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
   <text x="245" y="173" text-anchor="middle" fill="#4ade80" font-size="8">৪টি কবুতর, ৩টি খোঁয়াড় → অন্তত এক খোঁয়াড়ে ২টি (Dirichlet 1834)</text>
   <rect x="320" y="40" width="245" height="100" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
@@ -83,7 +83,7 @@ MD5 hash (১২৮-bit) → ২¹²৮+১টি input হলে collision অ�
   <text x="335" y="131" fill="#fca5a5" font-size="8">• Birthday threshold: √N ≈ collision</text>
   <rect x="30" y="195" width="535" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
   <text x="297" y="213" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">সাধারণ রূপ: Nটি বস্তু kটি বাক্সে → কোনো বাক্সে অন্তত ⌈N/k⌉টি</text>
-  <text x="297" y="228" text-anchor="middle" fill="#cbd5e1" font-size="7">সহজ নীতি কিন্তু অসম্ভব ফল — hash collision, birthday paradox, এমনকি গাণিতিক উপপাদ্য প্রমাণ</text>
+  <text x="297" y="228" text-anchor="middle" fill="#cbd5e1" font-size="10">সহজ নীতি কিন্তু অসম্ভব ফল — hash collision, birthday paradox, এমনকি গাণিতিক উপপাদ্য প্রমাণ</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: পিজিওনহোল নীতি — কবুতরের সংখ্যা খোঁয়াড়ের চেয়ে বেশি হলে অন্তত একটি খোঁয়াড়ে একাধিক কবুতর থাকবে। সহজ নীতি কিন্তু hash collision ও birthday paradox-এর ভিত্তি।</div>
@@ -181,7 +181,7 @@ doors.push({
   <circle cx="120" cy="170" r="20" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2.5"/>
   <text x="120" y="174" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">Account</text>
   <circle cx="260" cy="125" r="20" fill="#052e16" stroke="#22c55e" stroke-width="2.5"/>
-  <text x="260" y="129" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Transaction</text>
+  <text x="260" y="129" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Transaction</text>
   <circle cx="400" cy="80" r="20" fill="#fbbf24" fill-opacity="0.15" stroke="#fbbf24" stroke-width="2.5"/>
   <text x="400" y="84" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Category</text>
   <circle cx="400" cy="170" r="20" fill="#8b5cf6" fill-opacity="0.15" stroke="#a855f7" stroke-width="2.5"/>
@@ -193,16 +193,16 @@ doors.push({
   <line x1="415" y1="92" x2="415" y2="158" stroke="#c084fc" stroke-width="2" marker-end="url(#arrDM7)"/>
   <rect x="460" y="45" width="110" height="50" rx="6" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
   <text x="515" y="63" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">BFS</text>
-  <text x="515" y="78" text-anchor="middle" fill="#cbd5e1" font-size="7">প্রশস্ততা — সব</text>
-  <text x="515" y="90" text-anchor="middle" fill="#cbd5e1" font-size="7">কাছের নোড আগে</text>
+  <text x="515" y="78" text-anchor="middle" fill="#cbd5e1" font-size="10">প্রশস্ততা — সব</text>
+  <text x="515" y="90" text-anchor="middle" fill="#cbd5e1" font-size="10">কাছের নোড আগে</text>
   <rect x="460" y="105" width="110" height="50" rx="6" fill="#0f172a" stroke="#a78bfa" stroke-width="1"/>
   <text x="515" y="123" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">DFS</text>
-  <text x="515" y="138" text-anchor="middle" fill="#cbd5e1" font-size="7">গভীরতা — এক</text>
-  <text x="515" y="150" text-anchor="middle" fill="#cbd5e1" font-size="7">শাখায় শেষ</text>
+  <text x="515" y="138" text-anchor="middle" fill="#cbd5e1" font-size="10">গভীরতা — এক</text>
+  <text x="515" y="150" text-anchor="middle" fill="#cbd5e1" font-size="10">শাখায় শেষ</text>
   <rect x="460" y="165" width="110" height="50" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="515" y="183" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">DAG + Topo Sort</text>
-  <text x="515" y="198" text-anchor="middle" fill="#cbd5e1" font-size="7">কোনো চক্র নেই</text>
-  <text x="515" y="210" text-anchor="middle" fill="#cbd5e1" font-size="7">→ ক্রম নির্ধারণ</text>
+  <text x="515" y="183" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">DAG + Topo Sort</text>
+  <text x="515" y="198" text-anchor="middle" fill="#cbd5e1" font-size="10">কোনো চক্র নেই</text>
+  <text x="515" y="210" text-anchor="middle" fill="#cbd5e1" font-size="10">→ ক্রম নির্ধারণ</text>
   <text x="190" y="225" text-anchor="middle" fill="#fbbf24" font-size="8">LedgerPilot: প্রতিটি foreign key = এজ → এটি একটি গ্রাফ!</text>
 </svg>
 </div>
@@ -292,16 +292,16 @@ doors.push({
   <rect x="420" y="40" width="150" height="90" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1.5"/>
   <text x="495" y="60" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">Four Color Theorem</text>
   <text x="495" y="78" text-anchor="middle" fill="#e2e8f0" font-size="8">(Appel &amp; Haken 1976)</text>
-  <text x="430" y="98" fill="#cbd5e1" font-size="7">যেকোনো মানচিত্র</text>
-  <text x="430" y="111" fill="#cbd5e1" font-size="7">≤ ৪ রঙে রাঙা যায়</text>
-  <text x="430" y="124" fill="#4ade80" font-size="7">প্রতিটি প্রতিবেশী আলাদা ✓</text>
+  <text x="430" y="98" fill="#cbd5e1" font-size="10">যেকোনো মানচিত্র</text>
+  <text x="430" y="111" fill="#cbd5e1" font-size="10">≤ ৪ রঙে রাঙা যায়</text>
+  <text x="430" y="124" fill="#4ade80" font-size="10">প্রতিটি প্রতিবেশী আলাদা ✓</text>
   <rect x="420" y="140" width="150" height="90" rx="8" fill="#0c4a6e" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="495" y="160" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">কম্পাইলার প্রয়োগ</text>
-  <text x="430" y="180" fill="#cbd5e1" font-size="7">ভেরিয়েবল = নোড</text>
-  <text x="430" y="193" fill="#cbd5e1" font-size="7">একসাথে live = এজ</text>
-  <text x="430" y="206" fill="#7dd3fc" font-size="7">রঙ = রেজিস্টার</text>
-  <text x="430" y="220" fill="#4ade80" font-size="7">Chaitin 1981</text>
-  <text x="200" y="240" text-anchor="middle" fill="#fbbf24" font-size="7">প্রতিটি প্রতিবেশী অঞ্চল আলাদা রঙে — ৪ রঙ সর্বদা যথেষ্ট!</text>
+  <text x="430" y="180" fill="#cbd5e1" font-size="10">ভেরিয়েবল = নোড</text>
+  <text x="430" y="193" fill="#cbd5e1" font-size="10">একসাথে live = এজ</text>
+  <text x="430" y="206" fill="#7dd3fc" font-size="10">রঙ = রেজিস্টার</text>
+  <text x="430" y="220" fill="#4ade80" font-size="10">Chaitin 1981</text>
+  <text x="200" y="240" text-anchor="middle" fill="#fbbf24" font-size="10">প্রতিটি প্রতিবেশী অঞ্চল আলাদা রঙে — ৪ রঙ সর্বদা যথেষ্ট!</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: গ্রাফ রঙ — প্রতিটি প্রতিবেশী আলাদা রঙে রাঙা। Four Color Theorem (১৯৭৬) বলে যেকোনো মানচিত্র ৪ রঙে সম্ভব। কম্পাইলারে রেজিস্টার বরাদ্দে এটি ব্যবহৃত (Chaitin ১৯৮১)।</div>
@@ -393,19 +393,19 @@ doors.push({
   <line x1="120" y1="165" x2="100" y2="180" stroke="#22d3ee" stroke-width="1"/>
   <line x1="120" y1="165" x2="140" y2="180" stroke="#22d3ee" stroke-width="1"/>
   <rect x="80" y="180" width="40" height="20" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="100" y="193" text-anchor="middle" fill="#7dd3fc" font-size="7">2 × 5</text>
+  <text x="100" y="193" text-anchor="middle" fill="#7dd3fc" font-size="10">2 × 5</text>
   <text x="150" y="205" text-anchor="middle" fill="#fcd34d" font-size="8">60 = 2²×3×5</text>
-  <text x="150" y="220" text-anchor="middle" fill="#94a3b8" font-size="6">Fundamental Theorem of Arithmetic</text>
+  <text x="150" y="220" text-anchor="middle" fill="#94a3b8" font-size="10">Fundamental Theorem of Arithmetic</text>
   <rect x="320" y="55" width="240" height="170" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
   <text x="440" y="78" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Why Primes Matter</text>
   <rect x="340" y="92" width="200" height="20" rx="3" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
-  <text x="440" y="106" text-anchor="middle" fill="#fca5a5" font-size="7">RSA: p × q = n (factoring hard!)</text>
+  <text x="440" y="106" text-anchor="middle" fill="#fca5a5" font-size="10">RSA: p × q = n (factoring hard!)</text>
   <rect x="340" y="120" width="200" height="20" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="440" y="134" text-anchor="middle" fill="#7dd3fc" font-size="7">Hash: prime modulus reduces collision</text>
+  <text x="440" y="134" text-anchor="middle" fill="#7dd3fc" font-size="10">Hash: prime modulus reduces collision</text>
   <rect x="340" y="148" width="200" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="440" y="162" text-anchor="middle" fill="#4ade80" font-size="7">Euclid: infinitely many primes</text>
-  <text x="440" y="190" text-anchor="middle" fill="#94a3b8" font-size="6">Largest known: 2^82589933 - 1</text>
-  <text x="440" y="205" text-anchor="middle" fill="#94a3b8" font-size="6">24.8 million digits!</text>
+  <text x="440" y="162" text-anchor="middle" fill="#4ade80" font-size="10">Euclid: infinitely many primes</text>
+  <text x="440" y="190" text-anchor="middle" fill="#94a3b8" font-size="10">Largest known: 2^82589933 - 1</text>
+  <text x="440" y="205" text-anchor="middle" fill="#94a3b8" font-size="10">24.8 million digits!</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Prime factorization tree — 60 = 2²×3×5। RSA এই উপর নির্ভর করে।</div>

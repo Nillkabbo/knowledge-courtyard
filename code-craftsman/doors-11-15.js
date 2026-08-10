@@ -261,7 +261,7 @@ class TaskList:
     <text x="120" y="133" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="bold">Code says:</text>
     <text x="120" y="145" text-anchor="middle" fill="#9a93b8" font-size="8" font-family="monospace">set_status_to_2(id)</text>
     <text x="120" y="175" text-anchor="middle" fill="#ef4444" font-size="8">ভুল অনুবাদ = bug</text>
-    <text x="120" y="190" text-anchor="middle" fill="#9a93b8" font-size="7">EntityModel.field1 ← ??</text>
+    <text x="120" y="190" text-anchor="middle" fill="#9a93b8" font-size="10">EntityModel.field1 ← ??</text>
     <!-- Arrow -->
     <line x1="220" y1="90" x2="280" y2="90" stroke="#a5b4fc" stroke-width="2"/>
     <text x="250" y="83" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">DDD</text>
@@ -276,7 +276,7 @@ class TaskList:
     <text x="410" y="133" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">Business reads code:</text>
     <text x="410" y="145" text-anchor="middle" fill="#9a93b8" font-size="8">"Yes, that's what I meant!"</text>
     <text x="410" y="175" text-anchor="middle" fill="#a5b4fc" font-size="8">এক ভাষা, এক অর্থ</text>
-    <text x="410" y="190" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">No bugs from mismatch</text>
+    <text x="410" y="190" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">No bugs from mismatch</text>
     <!-- Bottom -->
     <rect x="20" y="205" width="680" height="25" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="222" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Evans: "The code IS the model. The model IS the language."</text>
@@ -429,8 +429,8 @@ class TaskManager:
     <text x="100" y="115" text-anchor="middle" fill="#ef4444" font-size="14" font-weight="bold">🔴 RED</text>
     <text x="100" y="132" text-anchor="middle" fill="#9a93b8" font-size="8">Write test</text>
     <text x="100" y="144" text-anchor="middle" fill="#9a93b8" font-size="8">MUST fail</text>
-    <text x="100" y="185" text-anchor="middle" fill="#ef4444" font-size="7">test_create()</text>
-    <text x="100" y="197" text-anchor="middle" fill="#ef4444" font-size="7">→ FAIL (no code)</text>
+    <text x="100" y="185" text-anchor="middle" fill="#ef4444" font-size="10">test_create()</text>
+    <text x="100" y="197" text-anchor="middle" fill="#ef4444" font-size="10">→ FAIL (no code)</text>
     <!-- Arrow Red→Green -->
     <path d="M 155 110 Q 195 90, 230 120" fill="none" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrR)"/>
     <!-- Green -->
@@ -438,8 +438,8 @@ class TaskManager:
     <text x="360" y="115" text-anchor="middle" fill="#52c41a" font-size="14" font-weight="bold">🟢 GREEN</text>
     <text x="360" y="132" text-anchor="middle" fill="#9a93b8" font-size="8">Minimal code</text>
     <text x="360" y="144" text-anchor="middle" fill="#9a93b8" font-size="8">MUST pass</text>
-    <text x="360" y="185" text-anchor="middle" fill="#52c41a" font-size="7">create_task()</text>
-    <text x="360" y="197" text-anchor="middle" fill="#52c41a" font-size="7">→ PASS ✅</text>
+    <text x="360" y="185" text-anchor="middle" fill="#52c41a" font-size="10">create_task()</text>
+    <text x="360" y="197" text-anchor="middle" fill="#52c41a" font-size="10">→ PASS ✅</text>
     <!-- Arrow Green→Refactor -->
     <path d="M 335 110 Q 375 90, 410 120" fill="none" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrR)"/>
     <!-- Refactor -->
@@ -447,8 +447,8 @@ class TaskManager:
     <text x="460" y="115" text-anchor="middle" fill="#a5b4fc" font-size="14" font-weight="bold">♻️ REFACTOR</text>
     <text x="460" y="132" text-anchor="middle" fill="#9a93b8" font-size="8">Clean up</text>
     <text x="460" y="144" text-anchor="middle" fill="#9a93b8" font-size="8">Stay GREEN</text>
-    <text x="460" y="185" text-anchor="middle" fill="#a5b4fc" font-size="7">rename, extract</text>
-    <text x="460" y="197" text-anchor="middle" fill="#a5b4fc" font-size="7">→ still PASS ✅</text>
+    <text x="460" y="185" text-anchor="middle" fill="#a5b4fc" font-size="10">rename, extract</text>
+    <text x="460" y="197" text-anchor="middle" fill="#a5b4fc" font-size="10">→ still PASS ✅</text>
     <!-- Loop arrow -->
     <path d="M 460 70 Q 280 20, 100 70" fill="none" stroke="#a5b4fc" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrR)"/>
     <text x="360" y="35" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">REPEAT</text>
@@ -565,13 +565,13 @@ assert manager.is_overdue(task) is True  # ← predictable!</div>
     <rect x="310" y="30" width="220" height="40" rx="6" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
     <text x="420" y="48" text-anchor="middle" fill="#a5b4fc" font-size="9" font-family="monospace">TaskManager(clock)</text>
     <text x="420" y="62" text-anchor="middle" fill="#9a93b8" font-size="8" font-family="monospace">is_overdue(task)</text>
-    <text x="420" y="85" text-anchor="middle" fill="#9a93b8" font-size="7">↓ inject ↓</text>
+    <text x="420" y="85" text-anchor="middle" fill="#9a93b8" font-size="10">↓ inject ↓</text>
     <rect x="320" y="95" width="90" height="30" rx="5" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
     <text x="365" y="114" text-anchor="middle" fill="#52c41a" font-size="8">SystemClock</text>
     <rect x="420" y="95" width="90" height="30" rx="5" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1"/>
     <text x="465" y="114" text-anchor="middle" fill="#a78bfa" font-size="8">FakeClock</text>
-    <text x="365" y="140" text-anchor="middle" fill="#9a93b8" font-size="7">production</text>
-    <text x="465" y="140" text-anchor="middle" fill="#9a93b8" font-size="7">test</text>
+    <text x="365" y="140" text-anchor="middle" fill="#9a93b8" font-size="10">production</text>
+    <text x="465" y="140" text-anchor="middle" fill="#9a93b8" font-size="10">test</text>
     <text x="420" y="170" text-anchor="middle" fill="#a5b4fc" font-size="8">test সম্ভব — now নিয়ন্ত্রণে</text>
     <text x="420" y="185" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Predictable ✅</text>
     <rect x="20" y="205" width="680" height="35" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>

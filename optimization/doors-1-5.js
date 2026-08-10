@@ -359,17 +359,17 @@ doors.push({
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔍 Newton vs Gradient Descent: Curvature Matters</text>
   <path d="M 50 200 Q 100 60 200 120 Q 300 180 400 100 Q 500 40 550 120" fill="none" stroke="#6366f1" stroke-width="2"/>
-  <text x="470" y="55" fill="#a5b4fc" font-size="7">Loss landscape</text>
+  <text x="470" y="55" fill="#a5b4fc" font-size="10">Loss landscape</text>
   <circle cx="150" cy="140" r="5" fill="#fbbf24"/>
-  <text x="160" y="145" fill="#fcd34d" font-size="7">start</text>
+  <text x="160" y="145" fill="#fcd34d" font-size="10">start</text>
   <circle cx="290" cy="165" r="5" fill="#22d3ee"/>
-  <text x="300" y="170" fill="#7dd3fc" font-size="7">GD step</text>
+  <text x="300" y="170" fill="#7dd3fc" font-size="10">GD step</text>
   <circle cx="440" cy="55" r="5" fill="#22c55e"/>
-  <text x="450" y="50" fill="#4ade80" font-size="7">Newton: jumps!</text>
+  <text x="450" y="50" fill="#4ade80" font-size="10">Newton: jumps!</text>
   <path d="M 150 140 L 290 165" fill="none" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="3,2"/>
   <path d="M 150 140 L 440 55" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="290" y="210" text-anchor="middle" fill="#94a3b8" font-size="7">GD: follows slope step by step (slow)</text>
-  <text x="290" y="225" text-anchor="middle" fill="#94a3b8" font-size="7">Newton: uses curvature H^-1 to jump (fast but expensive)</text>
+  <text x="290" y="210" text-anchor="middle" fill="#94a3b8" font-size="10">GD: follows slope step by step (slow)</text>
+  <text x="290" y="225" text-anchor="middle" fill="#94a3b8" font-size="10">Newton: uses curvature H^-1 to jump (fast but expensive)</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Newton-এর পদ্ধতি বক্রতা (Hessian) ব্যবহার করে বড় লাফ দেয়। GD ধীরে ধীরে নামে।</div>
@@ -451,14 +451,14 @@ doors.push({
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚖️ Lagrangian: Objective + Constraint = Balance</text>
   <ellipse cx="290" cy="130" rx="200" ry="80" fill="none" stroke="#6366f1" stroke-width="2"/>
-  <text x="290" y="100" text-anchor="middle" fill="#a5b4fc" font-size="7">Feasible region (constraints satisfied)</text>
+  <text x="290" y="100" text-anchor="middle" fill="#a5b4fc" font-size="10">Feasible region (constraints satisfied)</text>
   <circle cx="200" cy="120" r="6" fill="#fbbf24"/>
-  <text x="215" y="118" fill="#fcd34d" font-size="7">min(f)</text>
+  <text x="215" y="118" fill="#fcd34d" font-size="10">min(f)</text>
   <circle cx="290" cy="130" r="6" fill="#22c55e"/>
-  <text x="305" y="128" fill="#4ade80" font-size="7">optimal: L = f + lambda*g</text>
+  <text x="305" y="128" fill="#4ade80" font-size="10">optimal: L = f + lambda*g</text>
   <line x1="100" y1="80" x2="480" y2="180" stroke="#f87171" stroke-width="2" stroke-dasharray="5,3"/>
-  <text x="400" y="180" fill="#fca5a5" font-size="7">g(x) = 0 constraint</text>
-  <text x="290" y="220" text-anchor="middle" fill="#94a3b8" font-size="7">KKT: nabla f + lambda * nabla g = 0 (gradient alignment)</text>
+  <text x="400" y="180" fill="#fca5a5" font-size="10">g(x) = 0 constraint</text>
+  <text x="290" y="220" text-anchor="middle" fill="#94a3b8" font-size="10">KKT: nabla f + lambda * nabla g = 0 (gradient alignment)</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Lagrangian — উদ্দেশ্য ও শর্তের ভারসাম্য। KKT শর্ত সর্বোত্তম বিন্দু খুঁজে দেয়।</div>

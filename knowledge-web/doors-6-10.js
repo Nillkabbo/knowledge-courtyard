@@ -329,7 +329,7 @@ doors.push({
   <text x="100" y="195" text-anchor="middle" font-size="8" fill="#0a1a1f" font-weight="700">তালাশ</text>
   <text x="480" y="195" text-anchor="middle" font-size="8" fill="#0a1a1f" font-weight="700">বিনা</text>
   <text x="180" y="129" text-anchor="middle" font-size="8" fill="#0a1a1f" font-weight="700">ইলহাম</text>
-  <text x="400" y="129" text-anchor="middle" font-size="7" fill="#0a1a1f" font-weight="700">তাহকিক</text>
+  <text x="400" y="129" text-anchor="middle" font-size="10" fill="#0a1a1f" font-weight="700">তাহকিক</text>
   <text x="290" y="240" text-anchor="middle" font-size="11" fill="#fbbf24" font-weight="700">৯টি দরজা · ২৭টি বই · একটি জাল · হিকমাহ</text>
 </svg></div><div class="svg-caption">জ্ঞানের সুলতান — নয়টি দরজার সব আধ্যাত্মিক নীতি এক জীবন্ত জালে সংযুক্ত</div>
 

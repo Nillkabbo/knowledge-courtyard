@@ -636,9 +636,9 @@ print(response)  # {'id': 1}, 201
     <text x="480" y="55" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">ETC Principle</text>
     <text x="480" y="75" text-anchor="middle" fill="#9a93b8" font-size="8">Easy to</text>
     <text x="480" y="90" text-anchor="middle" fill="#9a93b8" font-size="8">Change</text>
-    <text x="480" y="115" text-anchor="middle" fill="#9a93b8" font-size="7">Decoupled</text>
-    <text x="480" y="130" text-anchor="middle" fill="#9a93b8" font-size="7">DRY</text>
-    <text x="480" y="145" text-anchor="middle" fill="#9a93b8" font-size="7">Orthogonal</text>
+    <text x="480" y="115" text-anchor="middle" fill="#9a93b8" font-size="10">Decoupled</text>
+    <text x="480" y="130" text-anchor="middle" fill="#9a93b8" font-size="10">DRY</text>
+    <text x="480" y="145" text-anchor="middle" fill="#9a93b8" font-size="10">Orthogonal</text>
     <rect x="20" y="195" width="530" height="35" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="213" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Tracer Bullet = prove architecture before investing in features</text>
     <text x="360" y="225" text-anchor="middle" fill="#9a93b8" font-size="8">Thin slice → test → thicken → iterate</text>

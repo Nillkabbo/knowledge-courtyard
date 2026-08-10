@@ -199,9 +199,9 @@ doors.push({
 
       <!-- Data items (small dots) -->
       <circle cx="250" cy="55" r="3" fill="#9290a8"/>
-      <text x="240" y="44" text-anchor="middle" font-size="7" fill="#5e5c74">D₁</text>
+      <text x="240" y="44" text-anchor="middle" font-size="10" fill="#5e5c74">D₁</text>
       <circle cx="320" cy="70" r="3" fill="#9290a8"/>
-      <text x="330" y="62" font-size="7" fill="#5e5c74">D₂</text>
+      <text x="330" y="62" font-size="10" fill="#5e5c74">D₂</text>
 
       <!-- Explanation -->
       <rect x="40" y="225" width="480" height="30" rx="6" fill="rgba(249,115,22,0.05)" stroke="#f97316" stroke-width="0.5"/>
@@ -209,10 +209,10 @@ doors.push({
 
       <!-- Right side notes -->
       <text x="450" y="55" font-size="8" font-weight="700" fill="#fbbf24">সুবিধা:</text>
-      <text x="450" y="70" font-size="7" fill="#9290a8">নোড যোগ → শুধু</text>
-      <text x="450" y="80" font-size="7" fill="#9290a8">প্রতিবেশী প্রভাবিত</text>
-      <text x="450" y="95" font-size="7" fill="#9290a8">নোড বিদায় → ডেটা</text>
-      <text x="450" y="105" font-size="7" fill="#9290a8">পরবর্তীতে চলে যায়</text>
+      <text x="450" y="70" font-size="10" fill="#9290a8">নোড যোগ → শুধু</text>
+      <text x="450" y="80" font-size="10" fill="#9290a8">প্রতিবেশী প্রভাবিত</text>
+      <text x="450" y="95" font-size="10" fill="#9290a8">নোড বিদায় → ডেটা</text>
+      <text x="450" y="105" font-size="10" fill="#9290a8">পরবর্তীতে চলে যায়</text>
     </svg>
     <div class="diag-cap">Consistent hashing: ডেটা ও নোড উভয়ই একটা রিং-এ স্থাপিত। প্রতিটা ডেটা ঘড়ির দিকে পরবর্তী নোডে যায়। নোড যোগ/বিদায় হলে শুধু প্রতিবেশী প্রভাবিত হয়।</div>
   </div>
@@ -309,26 +309,26 @@ doors.push({
       <!-- Honest generals -->
       <circle cx="120" cy="120" r="16" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="2"/>
       <text x="120" y="123" text-anchor="middle" font-size="8" font-weight="700" fill="#52c41a">G₁</text>
-      <text x="120" y="146" text-anchor="middle" font-size="7" fill="#52c41a">সৎ ✓</text>
+      <text x="120" y="146" text-anchor="middle" font-size="10" fill="#52c41a">সৎ ✓</text>
 
       <circle cx="440" cy="120" r="16" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="2"/>
       <text x="440" y="123" text-anchor="middle" font-size="8" font-weight="700" fill="#52c41a">G₂</text>
-      <text x="440" y="146" text-anchor="middle" font-size="7" fill="#52c41a">সৎ ✓</text>
+      <text x="440" y="146" text-anchor="middle" font-size="10" fill="#52c41a">সৎ ✓</text>
 
       <!-- Traitor general -->
       <circle cx="280" cy="150" r="16" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2"/>
       <text x="280" y="153" text-anchor="middle" font-size="8" font-weight="700" fill="#ef4444">G₃</text>
-      <text x="280" y="176" text-anchor="middle" font-size="7" fill="#ef4444">বিশ্বাসঘাতক ✗</text>
+      <text x="280" y="176" text-anchor="middle" font-size="10" fill="#ef4444">বিশ্বাসঘাতক ✗</text>
 
       <!-- Messages from commander -->
       <path d="M 255 63 L 130 105" fill="none" stroke="#52c41a" stroke-width="1.5" marker-end="url(#arrOrange8)"/>
-      <text x="175" y="78" text-anchor="middle" font-size="7" fill="#52c41a">"আক্রমণ"</text>
+      <text x="175" y="78" text-anchor="middle" font-size="10" fill="#52c41a">"আক্রমণ"</text>
 
       <path d="M 280 63 L 280 134" fill="none" stroke="#ef4444" stroke-width="1" marker-end="url(#arrRed8)" stroke-dasharray="3,2"/>
-      <text x="298" y="98" font-size="7" fill="#ef4444">"পিছাও"</text>
+      <text x="298" y="98" font-size="10" fill="#ef4444">"পিছাও"</text>
 
       <path d="M 305 63 L 430 105" fill="none" stroke="#52c41a" stroke-width="1.5" marker-end="url(#arrOrange8)"/>
-      <text x="385" y="78" text-anchor="middle" font-size="7" fill="#52c41a">"আক্রমণ"</text>
+      <text x="385" y="78" text-anchor="middle" font-size="10" fill="#52c41a">"আক্রমণ"</text>
 
       <!-- G₃ sends conflicting messages -->
       <path d="M 268 162 L 140 130" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arrRed8)"/>
@@ -500,43 +500,43 @@ doors.push({
       <!-- Load Balancer -->
       <rect x="200" y="100" width="160" height="30" rx="6" fill="rgba(61,214,196,0.12)" stroke="#3dd6c4" stroke-width="1.5"/>
       <text x="280" y="120" text-anchor="middle" font-size="9" font-weight="700" fill="#3dd6c4">Load Balancer</text>
-      <text x="380" y="120" font-size="7" fill="#5e5c74">D৭: Hashing</text>
+      <text x="380" y="120" font-size="10" fill="#5e5c74">D৭: Hashing</text>
 
       <line x1="280" y1="135" x2="280" y2="145" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrOrange10)"/>
 
       <!-- Service (3 nodes) -->
       <circle cx="180" cy="165" r="12" fill="rgba(249,115,22,0.15)" stroke="#f97316" stroke-width="1.5"/>
-      <text x="180" y="168" text-anchor="middle" font-size="7" fill="#f97316">S₁</text>
+      <text x="180" y="168" text-anchor="middle" font-size="10" fill="#f97316">S₁</text>
       <circle cx="280" cy="165" r="12" fill="rgba(249,115,22,0.15)" stroke="#f97316" stroke-width="1.5"/>
-      <text x="280" y="168" text-anchor="middle" font-size="7" fill="#f97316">S₂</text>
+      <text x="280" y="168" text-anchor="middle" font-size="10" fill="#f97316">S₂</text>
       <circle cx="380" cy="165" r="12" fill="rgba(249,115,22,0.15)" stroke="#f97316" stroke-width="1.5"/>
-      <text x="380" y="168" text-anchor="middle" font-size="7" fill="#f97316">S₃</text>
-      <text x="440" y="168" font-size="7" fill="#5e5c74">D২: Locking</text>
+      <text x="380" y="168" text-anchor="middle" font-size="10" fill="#f97316">S₃</text>
+      <text x="440" y="168" font-size="10" fill="#5e5c74">D২: Locking</text>
 
       <line x1="280" y1="180" x2="280" y2="190" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrOrange10)"/>
 
       <!-- Cache -->
       <rect x="200" y="195" width="160" height="26" rx="6" fill="rgba(179,127,235,0.12)" stroke="#b37feb" stroke-width="1.5"/>
       <text x="280" y="213" text-anchor="middle" font-size="9" font-weight="700" fill="#b37feb">Cache (Redis)</text>
-      <text x="380" y="213" font-size="7" fill="#5e5c74">D৩: CAP-AP</text>
+      <text x="380" y="213" font-size="10" fill="#5e5c74">D৩: CAP-AP</text>
 
       <line x1="280" y1="225" x2="280" y2="235" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrOrange10)"/>
 
       <!-- Database (Raft cluster) -->
       <circle cx="200" cy="255" r="12" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="1.5"/>
-      <text x="200" y="258" text-anchor="middle" font-size="7" fill="#52c41a">DB₁</text>
+      <text x="200" y="258" text-anchor="middle" font-size="10" fill="#52c41a">DB₁</text>
       <circle cx="280" cy="255" r="12" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="1.5"/>
-      <text x="280" y="258" text-anchor="middle" font-size="7" fill="#52c41a">DB₂</text>
+      <text x="280" y="258" text-anchor="middle" font-size="10" fill="#52c41a">DB₂</text>
       <circle cx="360" cy="255" r="12" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="1.5"/>
-      <text x="360" y="258" text-anchor="middle" font-size="7" fill="#52c41a">DB₃</text>
-      <text x="440" y="258" font-size="7" fill="#5e5c74">D৪: Raft</text>
+      <text x="360" y="258" text-anchor="middle" font-size="10" fill="#52c41a">DB₃</text>
+      <text x="440" y="258" font-size="10" fill="#5e5c74">D৪: Raft</text>
 
       <line x1="280" y1="270" x2="280" y2="280" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrOrange10)"/>
 
       <!-- Message Queue -->
       <rect x="160" y="285" width="240" height="26" rx="6" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1"/>
       <text x="280" y="303" text-anchor="middle" font-size="9" font-weight="700" fill="#fbbf24">Message Queue (Kafka)</text>
-      <text x="420" y="303" font-size="7" fill="#5e5c74">D৫/৬</text>
+      <text x="420" y="303" font-size="10" fill="#5e5c74">D৫/৬</text>
     </svg>
     <div class="diag-cap">একটা রিকোয়েস্ট: ব্যবহারকারী → লোড ব্যালেন্সার (D৭) → সার্ভিস (D২) → ক্যাশ (D৩) → ডেটাবেস Raft (D৪) → কিউ (D৫/৬)। প্রতিটা স্তরে একটা দরজার জ্ঞান কাজ করে।</div>
   </div>

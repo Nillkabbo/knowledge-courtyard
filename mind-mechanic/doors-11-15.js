@@ -65,12 +65,12 @@ doors.push({
   <path d="M 30 180 Q 80 60 140 100 Q 200 140 280 100 Q 360 60 420 120 Q 480 160 530 130" fill="none" stroke="#a855f7" stroke-width="2.5"/>
   <circle cx="140" cy="100" r="6" fill="#fbbf24"/>
   <text x="150" y="95" fill="#fcd34d" font-size="8">peak</text>
-  <text x="60" y="200" fill="#94a3b8" font-size="7">rise</text>
-  <text x="140" y="125" text-anchor="middle" fill="#fcd34d" font-size="7">surf here</text>
-  <text x="280" y="200" text-anchor="middle" fill="#94a3b8" font-size="7">falls naturally</text>
+  <text x="60" y="200" fill="#94a3b8" font-size="10">rise</text>
+  <text x="140" y="125" text-anchor="middle" fill="#fcd34d" font-size="10">surf here</text>
+  <text x="280" y="200" text-anchor="middle" fill="#94a3b8" font-size="10">falls naturally</text>
   <rect x="380" y="170" width="150" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="455" y="188" text-anchor="middle" fill="#4ade80" font-size="7">name it then watch it</text>
-  <text x="455" y="200" text-anchor="middle" fill="#4ade80" font-size="7">then it passes</text>
+  <text x="455" y="188" text-anchor="middle" fill="#4ade80" font-size="10">name it then watch it</text>
+  <text x="455" y="200" text-anchor="middle" fill="#4ade80" font-size="10">then it passes</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: আকাঙ্ক্ষার ঢেউ — লড়াই করলে ডুব, সার্ফ করলে বাঁচ।</div>
@@ -158,7 +158,7 @@ doors.push({
   <path d="M 30 200 Q 200 200 300 210 Q 400 220 530 225" fill="none" stroke="#f87171" stroke-width="2"/>
   <text x="420" y="235" fill="#fca5a5" font-size="8">-1% daily = ~0/year</text>
   <line x1="30" y1="200" x2="530" y2="200" stroke="#64748b" stroke-width="0.5"/>
-  <text x="280" y="215" text-anchor="middle" fill="#94a3b8" font-size="7">Day 0 (baseline)</text>
+  <text x="280" y="215" text-anchor="middle" fill="#94a3b8" font-size="10">Day 0 (baseline)</text>
   <text x="280" y="140" text-anchor="middle" fill="#fbbf24" font-size="8">差距 widens daily</text>
 </svg>
 </div>
@@ -254,20 +254,20 @@ doors.push({
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="280" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🏗️ Deep Work: Architecture Required</text>
   <rect x="20" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="70" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7">Where?</text>
+  <text x="70" y="75" text-anchor="middle" fill="#7dd3fc" font-size="10">Where?</text>
   <rect x="130" y="50" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="180" y="75" text-anchor="middle" fill="#4ade80" font-size="7">When?</text>
+  <text x="180" y="75" text-anchor="middle" fill="#4ade80" font-size="10">When?</text>
   <rect x="240" y="50" width="100" height="40" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="290" y="75" text-anchor="middle" fill="#fcd34d" font-size="7">How long?</text>
+  <text x="290" y="75" text-anchor="middle" fill="#fcd34d" font-size="10">How long?</text>
   <rect x="350" y="50" width="100" height="40" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="400" y="75" text-anchor="middle" fill="#c084fc" font-size="7">What?</text>
+  <text x="400" y="75" text-anchor="middle" fill="#c084fc" font-size="10">What?</text>
   <rect x="460" y="50" width="80" height="40" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
-  <text x="500" y="75" text-anchor="middle" fill="#fca5a5" font-size="7">Shutdown</text>
+  <text x="500" y="75" text-anchor="middle" fill="#fca5a5" font-size="10">Shutdown</text>
   <rect x="100" y="110" width="360" height="30" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
   <text x="280" y="130" text-anchor="middle" fill="#4ade80" font-size="8">90-min deep work blocks</text>
-  <text x="280" y="165" text-anchor="middle" fill="#94a3b8" font-size="7">Ritual triggers brain: this is deep mode</text>
-  <text x="280" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">Shutdown lets diffuse mode work</text>
-  <text x="280" y="210" text-anchor="middle" fill="#fbbf24" font-size="7">Newport: Deep Work = 21st century superpower</text>
+  <text x="280" y="165" text-anchor="middle" fill="#94a3b8" font-size="10">Ritual triggers brain: this is deep mode</text>
+  <text x="280" y="180" text-anchor="middle" fill="#94a3b8" font-size="10">Shutdown lets diffuse mode work</text>
+  <text x="280" y="210" text-anchor="middle" fill="#fbbf24" font-size="10">Newport: Deep Work = 21st century superpower</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: ডিপ ওয়ার্ক — চার সিদ্ধান্ত + রিচুয়াল + শাটডাউন।</div>
@@ -353,14 +353,14 @@ doors.push({
   <text x="400" y="115" text-anchor="middle" fill="#fcd34d" font-size="8">C</text>
   <line x1="115" y1="95" x2="235" y2="82" stroke="#64748b" stroke-width="1"/>
   <line x1="265" y1="85" x2="385" y2="107" stroke="#64748b" stroke-width="1"/>
-  <text x="175" y="80" fill="#94a3b8" font-size="6">weak</text>
-  <text x="330" y="85" fill="#94a3b8" font-size="6">weak</text>
+  <text x="175" y="80" fill="#94a3b8" font-size="10">weak</text>
+  <text x="330" y="85" fill="#94a3b8" font-size="10">weak</text>
   <rect x="30" y="150" width="200" height="25" rx="4" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
-  <text x="130" y="167" text-anchor="middle" fill="#fca5a5" font-size="7">Before: thin connection, slow signal</text>
+  <text x="130" y="167" text-anchor="middle" fill="#fca5a5" font-size="10">Before: thin connection, slow signal</text>
   <rect x="330" y="150" width="200" height="25" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="430" y="167" text-anchor="middle" fill="#4ade80" font-size="7">After: myelin coat, 100x faster</text>
+  <text x="430" y="167" text-anchor="middle" fill="#4ade80" font-size="10">After: myelin coat, 100x faster</text>
   <text x="280" y="200" text-anchor="middle" fill="#fbbf24" font-size="8">Hebb: fire together = wire together</text>
-  <text x="280" y="215" text-anchor="middle" fill="#94a3b8" font-size="7">Flow = challenge matches skill</text>
+  <text x="280" y="215" text-anchor="middle" fill="#94a3b8" font-size="10">Flow = challenge matches skill</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: নিউরোপ্লাস্টিসিটি — বারবার অনুশীলন করলে সংযোগ শক্ত ও দ্রুত হয়।</div>

@@ -43,9 +43,9 @@ doors.push({
   <rect x="72" y="82" width="40" height="20" rx="3" fill="#1e3a5f" stroke="#8b5cf6" stroke-width="1"/>
   <text x="92" y="96" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="700">Q</text>
   <rect x="114" y="82" width="70" height="20" rx="3" fill="#1e3a5f" stroke="#8b5cf6" stroke-width="1"/>
-  <text x="149" y="96" text-anchor="middle" fill="#a78bfa" font-size="7">¬(P∧Q)</text>
+  <text x="149" y="96" text-anchor="middle" fill="#a78bfa" font-size="10">¬(P∧Q)</text>
   <rect x="186" y="82" width="70" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="221" y="96" text-anchor="middle" fill="#4ade80" font-size="7">¬P∨¬Q</text>
+  <text x="221" y="96" text-anchor="middle" fill="#4ade80" font-size="10">¬P∨¬Q</text>
 
   <text x="50" y="115" text-anchor="middle" fill="#cbd5e1" font-size="8">T</text>
   <text x="92" y="115" text-anchor="middle" fill="#cbd5e1" font-size="8">T</text>
@@ -65,25 +65,25 @@ doors.push({
   <text x="221" y="175" text-anchor="middle" fill="#4ade80" font-size="8">T ✓</text>
 
   <text x="145" y="205" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Columns match → Equivalent! ✅</text>
-  <text x="145" y="225" text-anchor="middle" fill="#64748b" font-size="7" font-style="italic">All 4 rows: ¬(P∧Q) = ¬P∨¬Q</text>
+  <text x="145" y="225" text-anchor="middle" fill="#64748b" font-size="10" font-style="italic">All 4 rows: ¬(P∧Q) = ¬P∨¬Q</text>
 
   <!-- Django Example -->
   <rect x="290" y="50" width="270" height="190" rx="10" fill="#0c4a6e" stroke="#fbbf24" stroke-width="2"/>
   <text x="425" y="72" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="700">🐍 Django Example</text>
   <rect x="305" y="85" width="240" height="28" rx="4" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
-  <text x="425" y="103" text-anchor="middle" fill="#fcd34d" font-size="7" font-family="monospace">User.objects.exclude(is_staff=True,</text>
+  <text x="425" y="103" text-anchor="middle" fill="#fcd34d" font-size="10" font-family="monospace">User.objects.exclude(is_staff=True,</text>
   <rect x="305" y="116" width="240" height="22" rx="4" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
-  <text x="425" y="131" text-anchor="middle" fill="#fcd34d" font-size="7" font-family="monospace">    is_active=True)</text>
+  <text x="425" y="131" text-anchor="middle" fill="#fcd34d" font-size="10" font-family="monospace">    is_active=True)</text>
   <text x="425" y="152" text-anchor="middle" fill="#7dd3fc" font-size="10">≡ (De Morgan's!)</text>
   <rect x="305" y="160" width="240" height="22" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="425" y="175" text-anchor="middle" fill="#4ade80" font-size="7" font-family="monospace">User.objects.filter(</text>
+  <text x="425" y="175" text-anchor="middle" fill="#4ade80" font-size="10" font-family="monospace">User.objects.filter(</text>
   <rect x="305" y="183" width="240" height="22" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="425" y="198" text-anchor="middle" fill="#4ade80" font-size="7" font-family="monospace">  Q(is_staff=False) | Q(is_active=False))</text>
-  <text x="425" y="222" text-anchor="middle" fill="#4ade80" font-size="7">Same result! De Morgan proven in code ✅</text>
+  <text x="425" y="198" text-anchor="middle" fill="#4ade80" font-size="10" font-family="monospace">  Q(is_staff=False) | Q(is_active=False))</text>
+  <text x="425" y="222" text-anchor="middle" fill="#4ade80" font-size="10">Same result! De Morgan proven in code ✅</text>
 
   <rect x="60" y="260" width="460" height="40" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
   <text x="290" y="280" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="600">💡 Logic simplification = fewer gates, faster circuits, cleaner code</text>
-  <text x="290" y="294" text-anchor="middle" fill="#64748b" font-size="7">In hardware: fewer logic gates = smaller chip, less power, cheaper manufacturing</text>
+  <text x="290" y="294" text-anchor="middle" fill="#64748b" font-size="10">In hardware: fewer logic gates = smaller chip, less power, cheaper manufacturing</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: De Morgan's Law — truth table প্রমাণ করে ¬(P∧Q) ≡ ¬P∨¬Q। Django QuerySet-এ তুমি অজান্তেই এটা ব্যবহার করছ।</div>
@@ -202,26 +202,26 @@ doors.push({
   <text x="480" y="62" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">∴ সকল n-এর জন্য</text>
   <text x="480" y="78" text-anchor="middle" fill="#4ade80" font-size="8">P(n) সত্য ✓</text>
   <rect x="35" y="120" width="26" height="65" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="2" transform="rotate(12 48 152)"/>
-  <text x="48" y="130" text-anchor="middle" fill="#4ade80" font-size="7" transform="rotate(12 48 130)">P(1)</text>
+  <text x="48" y="130" text-anchor="middle" fill="#4ade80" font-size="10" transform="rotate(12 48 130)">P(1)</text>
   <rect x="78" y="118" width="26" height="65" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
-  <text x="91" y="128" text-anchor="middle" fill="#a78bfa" font-size="7">P(2)</text>
+  <text x="91" y="128" text-anchor="middle" fill="#a78bfa" font-size="10">P(2)</text>
   <rect x="121" y="118" width="26" height="65" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
-  <text x="134" y="128" text-anchor="middle" fill="#a78bfa" font-size="7">P(3)</text>
+  <text x="134" y="128" text-anchor="middle" fill="#a78bfa" font-size="10">P(3)</text>
   <rect x="164" y="118" width="26" height="65" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
-  <text x="177" y="128" text-anchor="middle" fill="#a78bfa" font-size="7">P(4)</text>
+  <text x="177" y="128" text-anchor="middle" fill="#a78bfa" font-size="10">P(4)</text>
   <text x="210" y="155" text-anchor="middle" fill="#64748b" font-size="14">...</text>
   <rect x="232" y="118" width="26" height="65" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
-  <text x="245" y="128" text-anchor="middle" fill="#a78bfa" font-size="7">P(k)</text>
+  <text x="245" y="128" text-anchor="middle" fill="#a78bfa" font-size="10">P(k)</text>
   <rect x="275" y="118" width="26" height="65" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
-  <text x="288" y="128" text-anchor="middle" fill="#a78bfa" font-size="6">P(k+1)</text>
+  <text x="288" y="128" text-anchor="middle" fill="#a78bfa" font-size="10">P(k+1)</text>
   <text x="318" y="155" text-anchor="middle" fill="#64748b" font-size="14">...</text>
   <rect x="340" y="118" width="26" height="65" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
-  <text x="353" y="128" text-anchor="middle" fill="#a78bfa" font-size="7">P(n)</text>
+  <text x="353" y="128" text-anchor="middle" fill="#a78bfa" font-size="10">P(n)</text>
   <rect x="400" y="115" width="165" height="75" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="482" y="135" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">ক্লাসিক উদাহরণ</text>
   <text x="482" y="153" text-anchor="middle" fill="#e2e8f0" font-size="9">1+2+...+n = n(n+1)/2</text>
-  <text x="482" y="170" text-anchor="middle" fill="#cbd5e1" font-size="7">n=1: 1(2)/2 = 1 ✓</text>
-  <text x="482" y="183" text-anchor="middle" fill="#cbd5e1" font-size="7">k→k+1: সূত্র মেলে ✓</text>
+  <text x="482" y="170" text-anchor="middle" fill="#cbd5e1" font-size="10">n=1: 1(2)/2 = 1 ✓</text>
+  <text x="482" y="183" text-anchor="middle" fill="#cbd5e1" font-size="10">k→k+1: সূত্র মেলে ✓</text>
   <rect x="15" y="208" width="550" height="28" rx="6" fill="#0f172a" stroke="#8b5cf6" stroke-width="1"/>
   <text x="290" y="226" text-anchor="middle" fill="#a78bfa" font-size="8">💡 দুটি ধাপ প্রমাণ করো — অসীম সত্য গাণিতিকভাবে নিশ্চিত! Recursion = induction in code.</text>
 </svg>
@@ -317,7 +317,7 @@ doors.push({
   <line x1="95" y1="163" x2="95" y2="185" stroke="#f87171" stroke-width="2" marker-end="url(#arrDM3r)"/>
   <rect x="15" y="190" width="160" height="45" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="95" y="208" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">⊥ অন্তর্বিরোধ!</text>
-  <text x="95" y="224" text-anchor="middle" fill="#fca5a5" font-size="7">p ও q উভয় জোড় — সহমৌলিক নয়</text>
+  <text x="95" y="224" text-anchor="middle" fill="#fca5a5" font-size="10">p ও q উভয় জোড় — সহমৌলিক নয়</text>
   <line x1="175" y1="212" x2="220" y2="115" stroke="#22c55e" stroke-width="2" marker-end="url(#arrDM3g)" stroke-dasharray="4,3"/>
   <rect x="225" y="90" width="170" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="310" y="110" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">∴ মূল সত্য</text>
@@ -326,10 +326,10 @@ doors.push({
   <text x="395" y="175" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">কন্ট্রাপোজিটিভ: সমতুল্য প্রমাণ</text>
   <text x="395" y="195" text-anchor="middle" fill="#e2e8f0" font-size="8">P → Q প্রমাণ কঠিন?</text>
   <text x="395" y="210" text-anchor="middle" fill="#7dd3fc" font-size="8">প্রমাণ করো: ¬Q → ¬P (সমতুল্য!)</text>
-  <text x="395" y="225" text-anchor="middle" fill="#cbd5e1" font-size="7">"রাস্তা শুকনো → বৃষ্টি হয়নি"</text>
+  <text x="395" y="225" text-anchor="middle" fill="#cbd5e1" font-size="10">"রাস্তা শুকনো → বৃষ্টি হয়নি"</text>
   <rect x="410" y="40" width="155" height="40" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="487" y="58" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">বিখ্যাত প্রয়োগ</text>
-  <text x="487" y="73" text-anchor="middle" fill="#cbd5e1" font-size="7">Turing Halting Problem</text>
+  <text x="487" y="73" text-anchor="middle" fill="#cbd5e1" font-size="10">Turing Halting Problem</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: কন্ট্রাডিকশন পদ্ধতি — বিপরীত ধরে নাও, গাণিতিক ধাপে অন্তর্বিরোধ খুঁজে পাও, তাহলে মূল সত্য প্রমাণিত। √2 অমূলদ প্রমাণ এভাবেই করা হয়।</div>
@@ -410,27 +410,27 @@ doors.push({
   <text x="360" y="90" text-anchor="middle" fill="#7dd3fc" font-size="14" font-weight="900">B</text>
   <text x="365" y="105" text-anchor="middle" fill="#7dd3fc" font-size="8">{3, 4, 5, 6}</text>
   <text x="260" y="125" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">A ∩ B</text>
-  <text x="260" y="140" text-anchor="middle" fill="#fcd34d" font-size="7">{3, 4}</text>
+  <text x="260" y="140" text-anchor="middle" fill="#fcd34d" font-size="10">{3, 4}</text>
   <rect x="20" y="205" width="115" height="35" rx="6" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1.5"/>
-  <text x="77" y="220" text-anchor="middle" fill="#a78bfa" font-size="7" font-weight="700">A ∪ B (Union)</text>
-  <text x="77" y="233" text-anchor="middle" fill="#cbd5e1" font-size="7">{1,2,3,4,5,6}</text>
+  <text x="77" y="220" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="700">A ∪ B (Union)</text>
+  <text x="77" y="233" text-anchor="middle" fill="#cbd5e1" font-size="10">{1,2,3,4,5,6}</text>
   <rect x="145" y="205" width="115" height="35" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="202" y="220" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">A ∩ B (Intersection)</text>
-  <text x="202" y="233" text-anchor="middle" fill="#4ade80" font-size="7">{3, 4}</text>
+  <text x="202" y="220" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">A ∩ B (Intersection)</text>
+  <text x="202" y="233" text-anchor="middle" fill="#4ade80" font-size="10">{3, 4}</text>
   <rect x="270" y="205" width="115" height="35" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
-  <text x="327" y="220" text-anchor="middle" fill="#fca5a5" font-size="7" font-weight="700">A ∖ B (Difference)</text>
-  <text x="327" y="233" text-anchor="middle" fill="#fca5a5" font-size="7">{1, 2}</text>
+  <text x="327" y="220" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">A ∖ B (Difference)</text>
+  <text x="327" y="233" text-anchor="middle" fill="#fca5a5" font-size="10">{1, 2}</text>
   <rect x="395" y="205" width="170" height="35" rx="6" fill="#0c4a6e" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="480" y="220" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="700">পাওয়ার সেট: |P(S)| = 2ⁿ</text>
-  <text x="480" y="233" text-anchor="middle" fill="#cbd5e1" font-size="7">{a,b} → ∅,{a},{b},{a,b} = 4</text>
+  <text x="480" y="220" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">পাওয়ার সেট: |P(S)| = 2ⁿ</text>
+  <text x="480" y="233" text-anchor="middle" fill="#cbd5e1" font-size="10">{a,b} → ∅,{a},{b},{a,b} = 4</text>
   <rect x="415" y="45" width="150" height="140" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
   <text x="490" y="65" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">সমীকরণসমূহ</text>
   <text x="425" y="85" fill="#e2e8f0" font-size="8">|A∪B| = |A|+|B|−|A∩B|</text>
   <text x="425" y="105" fill="#4ade80" font-size="8">= 4 + 4 − 2 = 6</text>
   <text x="425" y="130" fill="#7dd3fc" font-size="8">|A△B| = |A∪B|−|A∩B|</text>
   <text x="425" y="148" fill="#4ade80" font-size="8">= 6 − 2 = 4</text>
-  <text x="425" y="170" fill="#fcd34d" font-size="7">SQL: UNION, INTERSECT,</text>
-  <text x="425" y="182" fill="#fcd34d" font-size="7">EXCEPT = সেট অপারেশন!</text>
+  <text x="425" y="170" fill="#fcd34d" font-size="10">SQL: UNION, INTERSECT,</text>
+  <text x="425" y="182" fill="#fcd34d" font-size="10">EXCEPT = সেট অপারেশন!</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: ভেন ডায়াগ্রামে সেট অপারেশন — Union (যোগ), Intersection (মিল), Difference (পার্থক্য)। পাওয়ার সেট সর্বদা বড়: |P(S)| = 2ⁿ। SQL-এ এগুলো UNION, INTERSECT, EXCEPT।</div>
@@ -511,29 +511,29 @@ doors.push({
   <rect x="20" y="55" width="250" height="170" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
   <text x="145" y="78" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">PERMUTATION (order matters)</text>
   <text x="145" y="100" text-anchor="middle" fill="#d8b4fe" font-size="8">ABC, ACB, BAC, BCA, CAB, CBA</text>
-  <text x="145" y="120" text-anchor="middle" fill="#c084fc" font-size="7">P(n,k) = n! / (n-k)!</text>
+  <text x="145" y="120" text-anchor="middle" fill="#c084fc" font-size="10">P(n,k) = n! / (n-k)!</text>
   <rect x="35" y="135" width="60" height="25" rx="4" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
-  <text x="65" y="152" text-anchor="middle" fill="#c084fc" font-size="7">A B C</text>
+  <text x="65" y="152" text-anchor="middle" fill="#c084fc" font-size="10">A B C</text>
   <rect x="100" y="135" width="60" height="25" rx="4" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
-  <text x="130" y="152" text-anchor="middle" fill="#c084fc" font-size="7">A C B</text>
+  <text x="130" y="152" text-anchor="middle" fill="#c084fc" font-size="10">A C B</text>
   <rect x="165" y="135" width="60" height="25" rx="4" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
-  <text x="195" y="152" text-anchor="middle" fill="#c084fc" font-size="7">B A C</text>
-  <text x="145" y="180" text-anchor="middle" fill="#d8b4fe" font-size="7">3! = 6 arrangements</text>
-  <text x="145" y="200" text-anchor="middle" fill="#94a3b8" font-size="6">Password strength: 8 chars</text>
-  <text x="145" y="212" text-anchor="middle" fill="#94a3b8" font-size="6">= 62^8 = 218 trillion</text>
+  <text x="195" y="152" text-anchor="middle" fill="#c084fc" font-size="10">B A C</text>
+  <text x="145" y="180" text-anchor="middle" fill="#d8b4fe" font-size="10">3! = 6 arrangements</text>
+  <text x="145" y="200" text-anchor="middle" fill="#94a3b8" font-size="10">Password strength: 8 chars</text>
+  <text x="145" y="212" text-anchor="middle" fill="#94a3b8" font-size="10">= 62^8 = 218 trillion</text>
   <rect x="300" y="55" width="260" height="170" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
   <text x="430" y="78" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="700">COMBINATION (order irrelevant)</text>
   <text x="430" y="100" text-anchor="middle" fill="#bae6fd" font-size="8">{A,B,C} = same as {C,B,A}</text>
-  <text x="430" y="120" text-anchor="middle" fill="#7dd3fc" font-size="7">C(n,k) = n! / (k!(n-k)!)</text>
+  <text x="430" y="120" text-anchor="middle" fill="#7dd3fc" font-size="10">C(n,k) = n! / (k!(n-k)!)</text>
   <rect x="320" y="135" width="80" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="360" y="152" text-anchor="middle" fill="#7dd3fc" font-size="7">{A,B}</text>
+  <text x="360" y="152" text-anchor="middle" fill="#7dd3fc" font-size="10">{A,B}</text>
   <rect x="410" y="135" width="80" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="450" y="152" text-anchor="middle" fill="#7dd3fc" font-size="7">{A,C}</text>
+  <text x="450" y="152" text-anchor="middle" fill="#7dd3fc" font-size="10">{A,C}</text>
   <rect x="500" y="135" width="50" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="525" y="152" text-anchor="middle" fill="#7dd3fc" font-size="7">{B,C}</text>
-  <text x="430" y="180" text-anchor="middle" fill="#bae6fd" font-size="7">C(3,2) = 3 unique pairs</text>
-  <text x="430" y="200" text-anchor="middle" fill="#94a3b8" font-size="6">Birthday paradox: C(23,2)</text>
-  <text x="430" y="212" text-anchor="middle" fill="#94a3b8" font-size="6">= 253 pairs, 50% match</text>
+  <text x="525" y="152" text-anchor="middle" fill="#7dd3fc" font-size="10">{B,C}</text>
+  <text x="430" y="180" text-anchor="middle" fill="#bae6fd" font-size="10">C(3,2) = 3 unique pairs</text>
+  <text x="430" y="200" text-anchor="middle" fill="#94a3b8" font-size="10">Birthday paradox: C(23,2)</text>
+  <text x="430" y="212" text-anchor="middle" fill="#94a3b8" font-size="10">= 253 pairs, 50% match</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Permutation (ক্রম গুরুত্বপূর্ণ) vs Combination (ক্রম অগ্রাহ্য)।</div>

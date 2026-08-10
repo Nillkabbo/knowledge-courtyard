@@ -66,25 +66,25 @@ doors.push({
   <text x="290" y="22" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔄 Bayes Theorem: বিশ্বাস আপডেট</text>
   <circle cx="180" cy="110" r="65" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-width="2.5"/>
   <text x="155" y="85" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">H</text>
-  <text x="155" y="100" text-anchor="middle" fill="#a78bfa" font-size="7">Fraud</text>
+  <text x="155" y="100" text-anchor="middle" fill="#a78bfa" font-size="10">Fraud</text>
   <circle cx="250" cy="110" r="65" fill="#22d3ee" fill-opacity="0.12" stroke="#22d3ee" stroke-width="2.5"/>
   <text x="280" y="85" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="900">D</text>
-  <text x="280" y="100" text-anchor="middle" fill="#7dd3fc" font-size="7">Alert</text>
+  <text x="280" y="100" text-anchor="middle" fill="#7dd3fc" font-size="10">Alert</text>
   <text x="215" y="115" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">H∩D</text>
   <rect x="15" y="195" width="250" height="40" rx="6" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1.5"/>
   <text x="140" y="213" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">সূত্র</text>
   <text x="140" y="228" text-anchor="middle" fill="#e2e8f0" font-size="8">P(H|D) = P(D|H)·P(H) / P(D)</text>
   <rect x="290" y="195" width="275" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="427" y="213" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Prior + Evidence = Posterior</text>
-  <text x="427" y="228" text-anchor="middle" fill="#4ade80" font-size="7">P(H) + P(D|H) → P(H|D)</text>
+  <text x="427" y="228" text-anchor="middle" fill="#4ade80" font-size="10">P(H) + P(D|H) → P(H|D)</text>
   <rect x="370" y="40" width="195" height="140" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="467" y="60" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">⚠️ Base Rate Fallacy</text>
   <text x="380" y="80" fill="#e2e8f0" font-size="8">99% accurate fraud test</text>
   <text x="380" y="97" fill="#e2e8f0" font-size="8">Fraud rate: 0.01% (base rate)</text>
   <text x="380" y="115" fill="#fcd34d" font-size="8">→ Alert এলে সত্যিকার fraud:</text>
   <text x="467" y="135" text-anchor="middle" fill="#f87171" font-size="14" font-weight="900">মাত্র 1%!</text>
-  <text x="380" y="158" fill="#cbd5e1" font-size="7">কারণ healthy transaction এত বেশি</text>
-  <text x="380" y="172" fill="#cbd5e1" font-size="7">যে false positive আধিক্য হয়</text>
+  <text x="380" y="158" fill="#cbd5e1" font-size="10">কারণ healthy transaction এত বেশি</text>
+  <text x="380" y="172" fill="#cbd5e1" font-size="10">যে false positive আধিক্য হয়</text>
   <line x1="215" y1="175" x2="370" y2="110" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,3"/>
 </svg>
 </div>
@@ -186,27 +186,27 @@ doors.push({
   <text x="95" y="129" text-anchor="middle" fill="#fff" font-size="9">6</text>
   <text x="120" y="165" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">E[X] = (1+2+3+4+5+6)/6</text>
   <text x="120" y="182" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="900">= 3.5</text>
-  <text x="120" y="200" text-anchor="middle" fill="#cbd5e1" font-size="7">গড় ফলাফল — কখনো ৩.৫ আসে না!</text>
-  <text x="120" y="213" text-anchor="middle" fill="#cbd5e1" font-size="7">কিন্তু দীর্ঘে গড় এদিকে যায়</text>
+  <text x="120" y="200" text-anchor="middle" fill="#cbd5e1" font-size="10">গড় ফলাফল — কখনো ৩.৫ আসে না!</text>
+  <text x="120" y="213" text-anchor="middle" fill="#cbd5e1" font-size="10">কিন্তু দীর্ঘে গড় এদিকে যায়</text>
   <rect x="240" y="40" width="160" height="180" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="320" y="58" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">দুটি পাশা (Linearity)</text>
   <text x="320" y="85" text-anchor="middle" fill="#e2e8f0" font-size="8">E[X+Y] = E[X]+E[Y]</text>
   <text x="320" y="105" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="900">= 3.5 + 3.5 = 7.0</text>
-  <text x="320" y="128" text-anchor="middle" fill="#cbd5e1" font-size="7">X, Y independent হওয়া</text>
-  <text x="320" y="140" text-anchor="middle" fill="#cbd5e1" font-size="7">দরকার নেই! সবসময় সত্য।</text>
+  <text x="320" y="128" text-anchor="middle" fill="#cbd5e1" font-size="10">X, Y independent হওয়া</text>
+  <text x="320" y="140" text-anchor="middle" fill="#cbd5e1" font-size="10">দরকার নেই! সবসময় সত্য।</text>
   <text x="320" y="170" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="700">Var(X) = E[X²] − E[X]²</text>
   <text x="320" y="190" text-anchor="middle" fill="#fcd34d" font-size="8">≈ 2.917 (পাশার ছড়ানো)</text>
-  <text x="320" y="208" text-anchor="middle" fill="#cbd5e1" font-size="7">গড় থেকে কতটা দূরে</text>
+  <text x="320" y="208" text-anchor="middle" fill="#cbd5e1" font-size="10">গড় থেকে কতটা দূরে</text>
   <rect x="430" y="40" width="140" height="180" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="500" y="60" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Law of Large Numbers</text>
-  <text x="500" y="85" text-anchor="middle" fill="#e2e8f0" font-size="7">n → ∞ হলে</text>
-  <text x="500" y="100" text-anchor="middle" fill="#e2e8f0" font-size="7">গড় → E[X]</text>
+  <text x="500" y="85" text-anchor="middle" fill="#e2e8f0" font-size="10">n → ∞ হলে</text>
+  <text x="500" y="100" text-anchor="middle" fill="#e2e8f0" font-size="10">গড় → E[X]</text>
   <line x1="450" y1="180" x2="550" y2="180" stroke="#64748b" stroke-width="1.5"/>
   <line x1="450" y1="120" x2="450" y2="180" stroke="#64748b" stroke-width="1.5"/>
-  <text x="448" y="125" text-anchor="end" fill="#64748b" font-size="6">5</text>
+  <text x="448" y="125" text-anchor="end" fill="#64748b" font-size="10">5</text>
   <path d="M 450,130 Q 470,135 480,165 Q 500,177 550,178" fill="none" stroke="#4ade80" stroke-width="2"/>
-  <text x="500" y="200" text-anchor="middle" fill="#4ade80" font-size="7">গড় ৩.৫-এ কনভার্জ</text>
-  <text x="500" y="213" text-anchor="middle" fill="#cbd5e1" font-size="7">Chebyshev: P(|X-μ|≥kσ) ≤ 1/k²</text>
+  <text x="500" y="200" text-anchor="middle" fill="#4ade80" font-size="10">গড় ৩.৫-এ কনভার্জ</text>
+  <text x="500" y="213" text-anchor="middle" fill="#cbd5e1" font-size="10">Chebyshev: P(|X-μ|≥kσ) ≤ 1/k²</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: গড় E[X] = প্রত্যাশিত ফলাফল, Var(X) = গড় থেকে ছড়ানো। Linearity of expectation বলে E[X+Y] = E[X]+E[Y] — independent হওয়া দরকার নেই। Law of Large Numbers: যত বেশি চেষ্টা, গড় তত E[X]-এর কাছে।</div>
@@ -299,29 +299,29 @@ doors.push({
   <text x="200" y="50" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">μ</text>
   <line x1="140" y1="100" x2="140" y2="180" stroke="#22d3ee" stroke-width="1" stroke-dasharray="2,2"/>
   <line x1="260" y1="100" x2="260" y2="180" stroke="#22d3ee" stroke-width="1" stroke-dasharray="2,2"/>
-  <text x="140" y="195" text-anchor="middle" fill="#7dd3fc" font-size="7">μ−σ</text>
-  <text x="200" y="195" text-anchor="middle" fill="#fcd34d" font-size="7">μ</text>
-  <text x="260" y="195" text-anchor="middle" fill="#7dd3fc" font-size="7">μ+σ</text>
+  <text x="140" y="195" text-anchor="middle" fill="#7dd3fc" font-size="10">μ−σ</text>
+  <text x="200" y="195" text-anchor="middle" fill="#fcd34d" font-size="10">μ</text>
+  <text x="260" y="195" text-anchor="middle" fill="#7dd3fc" font-size="10">μ+σ</text>
   <line x1="90" y1="140" x2="90" y2="180" stroke="#22c55e" stroke-width="1" stroke-dasharray="2,2"/>
   <line x1="310" y1="140" x2="310" y2="180" stroke="#22c55e" stroke-width="1" stroke-dasharray="2,2"/>
-  <text x="90" y="195" text-anchor="middle" fill="#4ade80" font-size="6">μ−2σ</text>
-  <text x="310" y="195" text-anchor="middle" fill="#4ade80" font-size="6">μ+2σ</text>
+  <text x="90" y="195" text-anchor="middle" fill="#4ade80" font-size="10">μ−2σ</text>
+  <text x="310" y="195" text-anchor="middle" fill="#4ade80" font-size="10">μ+2σ</text>
   <rect x="60" y="120" width="280" height="15" fill="#22d3ee" fill-opacity="0.15"/>
-  <text x="200" y="131" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">μ±σ: 68%</text>
+  <text x="200" y="131" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">μ±σ: 68%</text>
   <rect x="90" y="143" width="220" height="12" fill="#22c55e" fill-opacity="0.15"/>
-  <text x="200" y="152" text-anchor="middle" fill="#4ade80" font-size="6">μ±2σ: 95%</text>
-  <text x="200" y="172" text-anchor="middle" fill="#f87171" font-size="6">μ±3σ: 99.7%</text>
+  <text x="200" y="152" text-anchor="middle" fill="#4ade80" font-size="10">μ±2σ: 95%</text>
+  <text x="200" y="172" text-anchor="middle" fill="#f87171" font-size="10">μ±3σ: 99.7%</text>
   <rect x="400" y="40" width="170" height="100" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1.5"/>
   <text x="485" y="60" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">68-95-99.7 নিয়ম</text>
   <text x="410" y="80" fill="#7dd3fc" font-size="8">μ±1σ → 68% ডেটা</text>
   <text x="410" y="97" fill="#4ade80" font-size="8">μ±2σ → 95% ডেটা</text>
   <text x="410" y="114" fill="#f87171" font-size="8">μ±3σ → 99.7% ডেটা</text>
-  <text x="410" y="132" fill="#cbd5e1" font-size="7">Z-score = (x−μ)/σ</text>
+  <text x="410" y="132" fill="#cbd5e1" font-size="10">Z-score = (x−μ)/σ</text>
   <rect x="400" y="150" width="170" height="60" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="485" y="170" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Central Limit Theorem</text>
-  <text x="485" y="186" text-anchor="middle" fill="#e2e8f0" font-size="7">যেকোনো distribution</text>
-  <text x="485" y="198" text-anchor="middle" fill="#e2e8f0" font-size="7">থেকে নমুনা গড়</text>
-  <text x="485" y="210" text-anchor="middle" fill="#4ade80" font-size="7">→ normal হয়ে যায়!</text>
+  <text x="485" y="186" text-anchor="middle" fill="#e2e8f0" font-size="10">যেকোনো distribution</text>
+  <text x="485" y="198" text-anchor="middle" fill="#e2e8f0" font-size="10">থেকে নমুনা গড়</text>
+  <text x="485" y="210" text-anchor="middle" fill="#4ade80" font-size="10">→ normal হয়ে যায়!</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Normal distribution — ঘণ্টা আকৃতি। μ কেন্দ্রে, σ প্রসারণ। 68-95-99.7 নিয়ম: μ±σ-এর মধ্যে ৬৮%, μ±2σ-এ ৯৫%, μ±3σ-এ ৯৯.৭%। CLT: যেকোনো বিতরণ থেকে নমুনা গড় normal হয়।</div>
@@ -413,16 +413,16 @@ doors.push({
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎲 Memoryless: Exponential Distribution</text>
   <path d="M 30 200 Q 60 60 100 120 Q 140 170 200 195 Q 300 210 500 210" fill="none" stroke="#a855f7" stroke-width="2.5"/>
-  <text x="380" y="200" fill="#c084fc" font-size="7">P(T &gt; t) = e^(-lambda*t)</text>
+  <text x="380" y="200" fill="#c084fc" font-size="10">P(T &gt; t) = e^(-lambda*t)</text>
   <line x1="30" y1="210" x2="550" y2="210" stroke="#64748b" stroke-width="0.5"/>
   <line x1="30" y1="50" x2="30" y2="210" stroke="#64748b" stroke-width="0.5"/>
   <line x1="100" y1="120" x2="100" y2="210" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="100" y="225" text-anchor="middle" fill="#fcd34d" font-size="7">t=1 (63% happened)</text>
+  <text x="100" y="225" text-anchor="middle" fill="#fcd34d" font-size="10">t=1 (63% happened)</text>
   <line x1="200" y1="195" x2="200" y2="210" stroke="#22d3ee" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="200" y="225" text-anchor="middle" fill="#7dd3fc" font-size="7">t=2 (86%)</text>
+  <text x="200" y="225" text-anchor="middle" fill="#7dd3fc" font-size="10">t=2 (86%)</text>
   <line x1="350" y1="205" x2="350" y2="210" stroke="#22c55e" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="350" y="225" text-anchor="middle" fill="#4ade80" font-size="7">t=5 (99%)</text>
-  <text x="290" y="245" text-anchor="middle" fill="#94a3b8" font-size="7">Memoryless: P(T&gt;t+s | T&gt;t) = P(T&gt;s) — past doesn't matter!</text>
+  <text x="350" y="225" text-anchor="middle" fill="#4ade80" font-size="10">t=5 (99%)</text>
+  <text x="290" y="245" text-anchor="middle" fill="#94a3b8" font-size="10">Memoryless: P(T&gt;t+s | T&gt;t) = P(T&gt;s) — past doesn't matter!</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Exponential distribution — স্মৃতিহীন। অতীত ভবিষ্যতকে প্রভাবিত করে না।</div>
@@ -506,15 +506,15 @@ doors.push({
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🛡️ Tail Risk: Normal vs Fat Tail</text>
   <path d="M 100 200 Q 200 60 290 60 Q 380 60 480 200" fill="none" stroke="#22c55e" stroke-width="2.5"/>
-  <text x="380" y="100" fill="#4ade80" font-size="7">Normal (thin tail)</text>
+  <text x="380" y="100" fill="#4ade80" font-size="10">Normal (thin tail)</text>
   <path d="M 50 200 Q 150 80 290 70 Q 430 80 530 200" fill="none" stroke="#f87171" stroke-width="2.5"/>
-  <text x="470" y="140" fill="#fca5a5" font-size="7">Fat tail (power law)</text>
+  <text x="470" y="140" fill="#fca5a5" font-size="10">Fat tail (power law)</text>
   <line x1="30" y1="200" x2="550" y2="200" stroke="#64748b" stroke-width="0.5"/>
   <rect x="30" y="170" width="40" height="30" fill="#f87171" opacity="0.2"/>
   <rect x="510" y="170" width="40" height="30" fill="#f87171" opacity="0.2"/>
-  <text x="50" y="220" text-anchor="middle" fill="#fca5a5" font-size="6">tail risk</text>
-  <text x="530" y="220" text-anchor="middle" fill="#fca5a5" font-size="6">tail risk</text>
-  <text x="290" y="230" text-anchor="middle" fill="#94a3b8" font-size="7">Chebyshev: P(|X-mu|&gt;k*sigma) &lt;= 1/k^2</text>
+  <text x="50" y="220" text-anchor="middle" fill="#fca5a5" font-size="10">tail risk</text>
+  <text x="530" y="220" text-anchor="middle" fill="#fca5a5" font-size="10">tail risk</text>
+  <text x="290" y="230" text-anchor="middle" fill="#94a3b8" font-size="10">Chebyshev: P(|X-mu|&gt;k*sigma) &lt;= 1/k^2</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Normal (সরু tail) vs Fat tail (power law)। Black Swan = fat tail-এ বিধ্বংসী ঘটনা।</div>

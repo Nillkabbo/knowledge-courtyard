@@ -65,11 +65,11 @@ doors.push({
   <text x="82" y="65" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="900">1</text>
   <text x="82" y="80" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">UNDERSTAND</text>
   <text x="82" y="100" text-anchor="middle" fill="#94a3b8" font-size="6.5">শরীর মাপা</text>
-  <text x="82" y="112" text-anchor="middle" fill="#64748b" font-size="6">Read problem</text>
-  <text x="82" y="124" text-anchor="middle" fill="#64748b" font-size="6">What is given?</text>
-  <text x="82" y="136" text-anchor="middle" fill="#64748b" font-size="6">What is asked?</text>
-  <text x="82" y="148" text-anchor="middle" fill="#64748b" font-size="6">What constraints?</text>
-  <text x="82" y="168" text-anchor="middle" fill="#22d3ee" font-size="6" font-weight="700">half the solution</text>
+  <text x="82" y="112" text-anchor="middle" fill="#64748b" font-size="10">Read problem</text>
+  <text x="82" y="124" text-anchor="middle" fill="#64748b" font-size="10">What is given?</text>
+  <text x="82" y="136" text-anchor="middle" fill="#64748b" font-size="10">What is asked?</text>
+  <text x="82" y="148" text-anchor="middle" fill="#64748b" font-size="10">What constraints?</text>
+  <text x="82" y="168" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="700">half the solution</text>
   <!-- Arrow -->
   <line x1="150" y1="120" x2="165" y2="120" stroke="#fbbf24" stroke-width="2"/>
   <polygon points="160,115 170,120 160,125" fill="#fbbf24"/>
@@ -78,11 +78,11 @@ doors.push({
   <text x="232" y="65" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="900">2</text>
   <text x="232" y="80" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">PLAN</text>
   <text x="232" y="100" text-anchor="middle" fill="#94a3b8" font-size="6.5">প্যাটার্ন কাটা</text>
-  <text x="232" y="112" text-anchor="middle" fill="#64748b" font-size="6">Which algorithm?</text>
-  <text x="232" y="124" text-anchor="middle" fill="#64748b" font-size="6">Which structure?</text>
-  <text x="232" y="136" text-anchor="middle" fill="#64748b" font-size="6">Small example?</text>
-  <text x="232" y="148" text-anchor="middle" fill="#64748b" font-size="6">Work backwards?</text>
-  <text x="232" y="168" text-anchor="middle" fill="#22c55e" font-size="6" font-weight="700">divide and conquer</text>
+  <text x="232" y="112" text-anchor="middle" fill="#64748b" font-size="10">Which algorithm?</text>
+  <text x="232" y="124" text-anchor="middle" fill="#64748b" font-size="10">Which structure?</text>
+  <text x="232" y="136" text-anchor="middle" fill="#64748b" font-size="10">Small example?</text>
+  <text x="232" y="148" text-anchor="middle" fill="#64748b" font-size="10">Work backwards?</text>
+  <text x="232" y="168" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="700">divide and conquer</text>
   <!-- Arrow -->
   <line x1="300" y1="120" x2="315" y2="120" stroke="#fbbf24" stroke-width="2"/>
   <polygon points="310,115 320,120 310,125" fill="#fbbf24"/>
@@ -91,23 +91,23 @@ doors.push({
   <text x="382" y="65" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="900">3</text>
   <text x="382" y="80" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">EXECUTE</text>
   <text x="382" y="100" text-anchor="middle" fill="#94a3b8" font-size="6.5">সেলাই করা</text>
-  <text x="382" y="112" text-anchor="middle" fill="#64748b" font-size="6">Write code</text>
-  <text x="382" y="124" text-anchor="middle" fill="#64748b" font-size="6">Small steps</text>
-  <text x="382" y="136" text-anchor="middle" fill="#64748b" font-size="6">Test each step</text>
-  <text x="382" y="148" text-anchor="middle" fill="#64748b" font-size="6">No rush, focus</text>
-  <text x="382" y="168" text-anchor="middle" fill="#fbbf24" font-size="6" font-weight="700">stitch by stitch</text>
+  <text x="382" y="112" text-anchor="middle" fill="#64748b" font-size="10">Write code</text>
+  <text x="382" y="124" text-anchor="middle" fill="#64748b" font-size="10">Small steps</text>
+  <text x="382" y="136" text-anchor="middle" fill="#64748b" font-size="10">Test each step</text>
+  <text x="382" y="148" text-anchor="middle" fill="#64748b" font-size="10">No rush, focus</text>
+  <text x="382" y="168" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">stitch by stitch</text>
   <!-- Arrow -->
   <line x1="450" y1="120" x2="465" y2="120" stroke="#fbbf24" stroke-width="2"/>
   <polygon points="460,115 470,120 460,125" fill="#fbbf24"/>
   <!-- Step 4 -->
   <rect x="470" y="45" width="95" height="150" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
   <text x="517" y="65" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="900">4</text>
-  <text x="517" y="80" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="700">LOOK BACK</text>
+  <text x="517" y="80" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">LOOK BACK</text>
   <text x="517" y="100" text-anchor="middle" fill="#94a3b8" font-size="6.5">ফিট দেখা</text>
-  <text x="517" y="112" text-anchor="middle" fill="#64748b" font-size="6">Read your code</text>
-  <text x="517" y="124" text-anchor="middle" fill="#64748b" font-size="6">Refactor?</text>
-  <text x="517" y="136" text-anchor="middle" fill="#64748b" font-size="6">Explain simply</text>
-  <text x="517" y="168" text-anchor="middle" fill="#a855f7" font-size="6" font-weight="700">Feynman test</text>
+  <text x="517" y="112" text-anchor="middle" fill="#64748b" font-size="10">Read your code</text>
+  <text x="517" y="124" text-anchor="middle" fill="#64748b" font-size="10">Refactor?</text>
+  <text x="517" y="136" text-anchor="middle" fill="#64748b" font-size="10">Explain simply</text>
+  <text x="517" y="168" text-anchor="middle" fill="#a855f7" font-size="10" font-weight="700">Feynman test</text>
   <!-- Seam-ripper banner -->
   <rect x="80" y="205" width="420" height="30" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="290" y="224" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">🪡 Keep the seam-ripper ready — mistakes are inevitable, correction is the craft</text>
@@ -223,44 +223,44 @@ doors.push({
   <text x="290" y="92" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="700">↓ DECOMPOSE ↓</text>
   <!-- 5 factor boxes -->
   <rect x="20" y="100" width="100" height="55" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="70" y="116" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Population</text>
+  <text x="70" y="116" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Population</text>
   <text x="70" y="132" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="900">~3M</text>
-  <text x="70" y="146" text-anchor="middle" fill="#64748b" font-size="6">known-ish</text>
+  <text x="70" y="146" text-anchor="middle" fill="#64748b" font-size="10">known-ish</text>
 
   <rect x="130" y="100" width="100" height="55" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="180" y="116" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Households</text>
+  <text x="180" y="116" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Households</text>
   <text x="180" y="132" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="900">~1M</text>
-  <text x="180" y="146" text-anchor="middle" fill="#64748b" font-size="6">~3 per home</text>
+  <text x="180" y="146" text-anchor="middle" fill="#64748b" font-size="10">~3 per home</text>
 
   <rect x="240" y="100" width="100" height="55" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="290" y="116" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="700">Pianos (1/20)</text>
+  <text x="290" y="116" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">Pianos (1/20)</text>
   <text x="290" y="132" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="900">50,000</text>
-  <text x="290" y="146" text-anchor="middle" fill="#64748b" font-size="6">estimate</text>
+  <text x="290" y="146" text-anchor="middle" fill="#64748b" font-size="10">estimate</text>
 
   <rect x="350" y="100" width="100" height="55" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="400" y="116" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="700">Tunings/yr</text>
+  <text x="400" y="116" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">Tunings/yr</text>
   <text x="400" y="132" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="900">50,000</text>
-  <text x="400" y="146" text-anchor="middle" fill="#64748b" font-size="6">once per yr</text>
+  <text x="400" y="146" text-anchor="middle" fill="#64748b" font-size="10">once per yr</text>
 
   <rect x="460" y="100" width="100" height="55" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="510" y="116" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Per tuner/yr</text>
+  <text x="510" y="116" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Per tuner/yr</text>
   <text x="510" y="132" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="900">~1000</text>
-  <text x="510" y="146" text-anchor="middle" fill="#64748b" font-size="6">estimate</text>
+  <text x="510" y="146" text-anchor="middle" fill="#64748b" font-size="10">estimate</text>
   <!-- Multiply -->
   <text x="290" y="172" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="700">↓ MULTIPLY &amp; DIVIDE ↓</text>
   <!-- Result -->
   <rect x="150" y="180" width="280" height="40" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="290" y="198" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Estimate: 50,000 / 1000 = ~50</text>
-  <text x="290" y="212" text-anchor="middle" fill="#94a3b8" font-size="7">Actual was ~60. Right magnitude! Method wins.</text>
+  <text x="290" y="212" text-anchor="middle" fill="#94a3b8" font-size="10">Actual was ~60. Right magnitude! Method wins.</text>
   <!-- Calibration warning -->
   <rect x="20" y="195" width="120" height="40" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
   <text x="80" y="210" text-anchor="middle" fill="#fca5a5" font-size="6.5" font-weight="700">⚠️ CALIBRATION</text>
-  <text x="80" y="221" text-anchor="middle" fill="#94a3b8" font-size="6">you say 90% sure</text>
-  <text x="80" y="230" text-anchor="middle" fill="#fca5a5" font-size="6">but correct only ~45%</text>
+  <text x="80" y="221" text-anchor="middle" fill="#94a3b8" font-size="10">you say 90% sure</text>
+  <text x="80" y="230" text-anchor="middle" fill="#fca5a5" font-size="10">but correct only ~45%</text>
   <rect x="440" y="195" width="120" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
   <text x="500" y="210" text-anchor="middle" fill="#4ade80" font-size="6.5" font-weight="700">✓ SANITY CHECK</text>
-  <text x="500" y="221" text-anchor="middle" fill="#94a3b8" font-size="6">is this number</text>
-  <text x="500" y="230" text-anchor="middle" fill="#4ade80" font-size="6">even possible?</text>
+  <text x="500" y="221" text-anchor="middle" fill="#94a3b8" font-size="10">is this number</text>
+  <text x="500" y="230" text-anchor="middle" fill="#4ade80" font-size="10">even possible?</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: ফার্মি অনুমান — বড় অজানাকে ছোট জানা অংশে ভাঙো, গুণ করো, স্যানিটি চেক করো।</div>
@@ -366,30 +366,30 @@ doors.push({
   <!-- One-way door -->
   <rect x="20" y="40" width="260" height="170" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="150" y="60" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="900">TYPE 1: One-Way Door</text>
-  <text x="150" y="75" text-anchor="middle" fill="#94a3b8" font-size="7">irreversible, high stakes</text>
+  <text x="150" y="75" text-anchor="middle" fill="#94a3b8" font-size="10">irreversible, high stakes</text>
   <rect x="40" y="88" width="220" height="26" rx="5" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
-  <text x="150" y="105" text-anchor="middle" fill="#7dd3fc" font-size="7">e.g. quit job, move city, marriage</text>
+  <text x="150" y="105" text-anchor="middle" fill="#7dd3fc" font-size="10">e.g. quit job, move city, marriage</text>
   <text x="150" y="128" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">GO SLOW:</text>
   <text x="150" y="142" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ seek counsel</text>
   <text x="150" y="154" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ premortem (how to fail?)</text>
   <text x="150" y="166" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ expected value calc</text>
   <text x="150" y="178" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ regret minimization frame</text>
-  <text x="150" y="196" text-anchor="middle" fill="#f87171" font-size="7" font-weight="700">mistake = large, lasting loss</text>
+  <text x="150" y="196" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">mistake = large, lasting loss</text>
   <!-- Two-way door -->
   <rect x="300" y="40" width="260" height="170" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="430" y="60" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="900">TYPE 2: Two-Way Door</text>
-  <text x="430" y="75" text-anchor="middle" fill="#94a3b8" font-size="7">reversible, low stakes</text>
+  <text x="430" y="75" text-anchor="middle" fill="#94a3b8" font-size="10">reversible, low stakes</text>
   <rect x="320" y="88" width="220" height="26" rx="5" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
-  <text x="430" y="105" text-anchor="middle" fill="#7dd3fc" font-size="7">e.g. test a tool, try a feature</text>
+  <text x="430" y="105" text-anchor="middle" fill="#7dd3fc" font-size="10">e.g. test a tool, try a feature</text>
   <text x="430" y="128" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">GO FAST:</text>
   <text x="430" y="142" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ decide quickly</text>
   <text x="430" y="154" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ try it, get feedback</text>
   <text x="430" y="166" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ if wrong, reverse</text>
   <text x="430" y="178" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ satisfice (good enough)</text>
-  <text x="430" y="196" text-anchor="middle" fill="#22c55e" font-size="7" font-weight="700">mistake = small, fixable</text>
+  <text x="430" y="196" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="700">mistake = small, fixable</text>
   <!-- Bottom bar -->
   <rect x="80" y="220" width="420" height="22" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="290" y="235" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="700">Equal time on all decisions = folly. Match speed to reversibility.</text>
+  <text x="290" y="235" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">Equal time on all decisions = folly. Match speed to reversibility.</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: সিদ্ধান্তের দুই ধরন — একমুখী দরজায় ধীরে, দ্বিমুখী দরজায় দ্রুত। সময় মেলাও ফেরার সম্ভাবনার সাথে।</div>
@@ -511,25 +511,25 @@ doors.push({
   <polygon points="155,62 165,67 155,72" fill="#fbbf24"/>
   <rect x="160" y="42" width="120" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="220" y="60" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">RESULT</text>
-  <text x="220" y="75" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">cobras decrease ✓</text>
-  <text x="220" y="85" text-anchor="middle" fill="#64748b" font-size="6">looks good!</text>
+  <text x="220" y="75" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">cobras decrease ✓</text>
+  <text x="220" y="85" text-anchor="middle" fill="#64748b" font-size="10">looks good!</text>
   <line x1="280" y1="67" x2="300" y2="67" stroke="#fbbf24" stroke-width="2"/>
   <polygon points="295,62 305,67 295,72" fill="#fbbf24"/>
   <rect x="300" y="42" width="120" height="50" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
   <text x="360" y="60" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">2nd ORDER</text>
-  <text x="360" y="75" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="700">people BREED</text>
-  <text x="360" y="85" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="700">cobras ✗</text>
+  <text x="360" y="75" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">people BREED</text>
+  <text x="360" y="85" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">cobras ✗</text>
   <line x1="420" y1="67" x2="440" y2="67" stroke="#f87171" stroke-width="2"/>
   <polygon points="435,62 445,67 435,72" fill="#f87171"/>
   <rect x="440" y="42" width="120" height="50" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="500" y="60" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">3rd/4th ORDER</text>
-  <text x="500" y="75" text-anchor="middle" fill="#fca5a5" font-size="7" font-weight="700">bounty cancelled</text>
-  <text x="500" y="85" text-anchor="middle" fill="#fca5a5" font-size="7" font-weight="700">MORE cobras ✗✗</text>
+  <text x="500" y="75" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">bounty cancelled</text>
+  <text x="500" y="85" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">MORE cobras ✗✗</text>
   <!-- Lesson box -->
   <rect x="40" y="110" width="500" height="55" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.5"/>
   <text x="290" y="130" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">🧠 LESSON: Ask "And then what?" at every layer</text>
-  <text x="290" y="146" text-anchor="middle" fill="#94a3b8" font-size="7">1st-order thinking stops at the first result. 2nd-order asks what follows.</text>
-  <text x="290" y="158" text-anchor="middle" fill="#94a3b8" font-size="7">3rd-order asks what follows THAT. Continue until each step is verifiable.</text>
+  <text x="290" y="146" text-anchor="middle" fill="#94a3b8" font-size="10">1st-order thinking stops at the first result. 2nd-order asks what follows.</text>
+  <text x="290" y="158" text-anchor="middle" fill="#94a3b8" font-size="10">3rd-order asks what follows THAT. Continue until each step is verifiable.</text>
   <!-- Incentive check -->
   <rect x="40" y="180" width="240" height="50" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
   <text x="160" y="200" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">💰 INCENTIVE CHECK</text>

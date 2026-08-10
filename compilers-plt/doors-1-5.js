@@ -76,15 +76,15 @@ doors.push({
 <circle cx="235" cy="60" r="24" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
 <circle cx="235" cy="60" r="19" fill="none" stroke="#22c55e" stroke-width="1.5"/>
 <text x="235" y="58" text-anchor="middle" fill="#4ade80" font-size="9">ID</text>
-<text x="235" y="68" text-anchor="middle" fill="#4ade80" font-size="7">accept</text>
+<text x="235" y="68" text-anchor="middle" fill="#4ade80" font-size="10">accept</text>
 <circle cx="235" cy="200" r="24" fill="#451a0a" stroke="#22d3ee" stroke-width="2"/>
 <circle cx="235" cy="200" r="19" fill="none" stroke="#22d3ee" stroke-width="1.5"/>
 <text x="235" y="198" text-anchor="middle" fill="#7dd3fc" font-size="9">NUM</text>
-<text x="235" y="208" text-anchor="middle" fill="#7dd3fc" font-size="7">accept</text>
+<text x="235" y="208" text-anchor="middle" fill="#7dd3fc" font-size="10">accept</text>
 <circle cx="430" cy="130" r="24" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
 <circle cx="430" cy="130" r="19" fill="none" stroke="#22c55e" stroke-width="1.5"/>
 <text x="430" y="128" text-anchor="middle" fill="#4ade80" font-size="9">OP</text>
-<text x="430" y="138" text-anchor="middle" fill="#4ade80" font-size="7">accept</text>
+<text x="430" y="138" text-anchor="middle" fill="#4ade80" font-size="10">accept</text>
 <line x1="72" y1="118" x2="211" y2="70" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP1)"/>
 <text x="125" y="82" fill="#fcd34d" font-size="8">letter</text>
 <line x1="72" y1="142" x2="211" y2="190" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP1)"/>
@@ -92,9 +92,9 @@ doors.push({
 <line x1="75" y1="130" x2="406" y2="130" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP1)"/>
 <text x="220" y="123" text-anchor="middle" fill="#fcd34d" font-size="8">= + -</text>
 <path d="M 218 43 Q 235 14 252 43" fill="none" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrCP1)"/>
-<text x="235" y="13" text-anchor="middle" fill="#4ade80" font-size="7">letter/digit</text>
+<text x="235" y="13" text-anchor="middle" fill="#4ade80" font-size="10">letter/digit</text>
 <path d="M 218 217 Q 235 245 252 217" fill="none" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCP1)"/>
-<text x="235" y="247" text-anchor="middle" fill="#7dd3fc" font-size="7">digit</text>
+<text x="235" y="247" text-anchor="middle" fill="#7dd3fc" font-size="10">digit</text>
 </svg>
 </div>
 <div class="svg-caption">DFA: প্রতিটি অক্ষর পড়ে state বদলায়, token তৈরি হয় — ID (সবুজ), NUM (নীল), OP (সবুজ)।</div>
@@ -383,16 +383,16 @@ doors.push({
 <text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">SSA — x1, x2, phi merge</text>
 <rect x="40" y="55" width="100" height="36" rx="6" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
 <text x="90" y="72" text-anchor="middle" fill="#4ade80" font-size="9">x1 = 1</text>
-<text x="90" y="84" text-anchor="middle" fill="#4ade80" font-size="7">(then)</text>
+<text x="90" y="84" text-anchor="middle" fill="#4ade80" font-size="10">(then)</text>
 <rect x="40" y="155" width="100" height="36" rx="6" fill="#451a0a" stroke="#22d3ee" stroke-width="2"/>
 <text x="90" y="172" text-anchor="middle" fill="#7dd3fc" font-size="9">x2 = 2</text>
-<text x="90" y="184" text-anchor="middle" fill="#7dd3fc" font-size="7">(else)</text>
+<text x="90" y="184" text-anchor="middle" fill="#7dd3fc" font-size="10">(else)</text>
 <rect x="240" y="105" width="120" height="40" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
 <text x="300" y="121" text-anchor="middle" fill="#fcd34d" font-size="9">x3 = phi(x1,x2)</text>
-<text x="300" y="134" text-anchor="middle" fill="#fcd34d" font-size="7">branch merge</text>
+<text x="300" y="134" text-anchor="middle" fill="#fcd34d" font-size="10">branch merge</text>
 <rect x="430" y="108" width="120" height="36" rx="6" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
 <text x="490" y="125" text-anchor="middle" fill="#4ade80" font-size="9">print(x3)</text>
-<text x="490" y="137" text-anchor="middle" fill="#4ade80" font-size="7">use</text>
+<text x="490" y="137" text-anchor="middle" fill="#4ade80" font-size="10">use</text>
 <path d="M 140 73 Q 190 90 240 115" fill="none" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrCP4)"/>
 <path d="M 140 173 Q 190 155 240 138" fill="none" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCP4)"/>
 <line x1="360" y1="125" x2="426" y2="125" stroke="#fcd34d" stroke-width="1.5" marker-end="url(#arrCP4)"/>

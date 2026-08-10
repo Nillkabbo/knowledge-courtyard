@@ -49,35 +49,35 @@ doors.push({
   <rect x="20" y="50" width="150" height="180" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="95" y="72" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">Waterfall (1970)</text>
   <rect x="35" y="82" width="120" height="18" rx="3" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
-  <text x="95" y="95" text-anchor="middle" fill="#fca5a5" font-size="7">Requirements</text>
+  <text x="95" y="95" text-anchor="middle" fill="#fca5a5" font-size="10">Requirements</text>
   <rect x="35" y="105" width="120" height="18" rx="3" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
-  <text x="95" y="118" text-anchor="middle" fill="#fca5a5" font-size="7">Design</text>
+  <text x="95" y="118" text-anchor="middle" fill="#fca5a5" font-size="10">Design</text>
   <rect x="35" y="128" width="120" height="18" rx="3" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
-  <text x="95" y="141" text-anchor="middle" fill="#fca5a5" font-size="7">Code</text>
+  <text x="95" y="141" text-anchor="middle" fill="#fca5a5" font-size="10">Code</text>
   <rect x="35" y="151" width="120" height="18" rx="3" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
-  <text x="95" y="164" text-anchor="middle" fill="#fca5a5" font-size="7">Test</text>
+  <text x="95" y="164" text-anchor="middle" fill="#fca5a5" font-size="10">Test</text>
   <rect x="35" y="174" width="120" height="18" rx="3" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
-  <text x="95" y="187" text-anchor="middle" fill="#fca5a5" font-size="7">Deploy</text>
-  <text x="95" y="215" text-anchor="middle" fill="#f87171" font-size="7">❌ No going back</text>
+  <text x="95" y="187" text-anchor="middle" fill="#fca5a5" font-size="10">Deploy</text>
+  <text x="95" y="215" text-anchor="middle" fill="#f87171" font-size="10">❌ No going back</text>
   <rect x="200" y="50" width="170" height="180" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
   <text x="285" y="72" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">Agile (2001)</text>
   <path d="M 220 140 Q 285 80 350 140 Q 285 200 220 140" fill="none" stroke="#fbbf24" stroke-width="2.5"/>
-  <text x="285" y="110" text-anchor="middle" fill="#fde68a" font-size="7">Plan</text>
-  <text x="285" y="130" text-anchor="middle" fill="#fde68a" font-size="7">Code</text>
-  <text x="285" y="150" text-anchor="middle" fill="#fde68a" font-size="7">Test</text>
-  <text x="285" y="170" text-anchor="middle" fill="#fde68a" font-size="7">Review</text>
-  <text x="285" y="195" text-anchor="middle" fill="#fcd34d" font-size="7">Sprint: 2 weeks</text>
-  <text x="285" y="215" text-anchor="middle" fill="#fbbf24" font-size="7">✅ Adaptive loop</text>
+  <text x="285" y="110" text-anchor="middle" fill="#fde68a" font-size="10">Plan</text>
+  <text x="285" y="130" text-anchor="middle" fill="#fde68a" font-size="10">Code</text>
+  <text x="285" y="150" text-anchor="middle" fill="#fde68a" font-size="10">Test</text>
+  <text x="285" y="170" text-anchor="middle" fill="#fde68a" font-size="10">Review</text>
+  <text x="285" y="195" text-anchor="middle" fill="#fcd34d" font-size="10">Sprint: 2 weeks</text>
+  <text x="285" y="215" text-anchor="middle" fill="#fbbf24" font-size="10">✅ Adaptive loop</text>
   <rect x="400" y="50" width="160" height="180" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="480" y="72" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">DevOps</text>
-  <text x="480" y="92" text-anchor="middle" fill="#86efac" font-size="7">Code → Build → Test</text>
-  <text x="480" y="110" text-anchor="middle" fill="#86efac" font-size="7">→ Deploy → Monitor</text>
+  <text x="480" y="92" text-anchor="middle" fill="#86efac" font-size="10">Code → Build → Test</text>
+  <text x="480" y="110" text-anchor="middle" fill="#86efac" font-size="10">→ Deploy → Monitor</text>
   <rect x="415" y="125" width="130" height="35" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="480" y="140" text-anchor="middle" fill="#7dd3fc" font-size="7">CI/CD Pipeline</text>
-  <text x="480" y="152" text-anchor="middle" fill="#7dd3fc" font-size="6">automated &lt; 5 min</text>
-  <text x="480" y="180" text-anchor="middle" fill="#4ade80" font-size="7">∞ Continuous</text>
-  <text x="480" y="200" text-anchor="middle" fill="#4ade80" font-size="7">DORA metrics</text>
-  <text x="480" y="215" text-anchor="middle" fill="#22c55e" font-size="7">✅ Fully automated</text>
+  <text x="480" y="140" text-anchor="middle" fill="#7dd3fc" font-size="10">CI/CD Pipeline</text>
+  <text x="480" y="152" text-anchor="middle" fill="#7dd3fc" font-size="10">automated &lt; 5 min</text>
+  <text x="480" y="180" text-anchor="middle" fill="#4ade80" font-size="10">∞ Continuous</text>
+  <text x="480" y="200" text-anchor="middle" fill="#4ade80" font-size="10">DORA metrics</text>
+  <text x="480" y="215" text-anchor="middle" fill="#22c55e" font-size="10">✅ Fully automated</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Waterfall (linear, rigid) → Agile (iterative, adaptive) → DevOps (automated, continuous)।</div>
@@ -181,33 +181,33 @@ doors.push({
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📐 SOLID Principles: Clean Code Foundation</text>
   <rect x="20" y="50" width="100" height="80" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="70" y="72" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">S</text>
-  <text x="70" y="88" text-anchor="middle" fill="#7dd3fc" font-size="7">Single</text>
-  <text x="70" y="100" text-anchor="middle" fill="#7dd3fc" font-size="7">Responsibility</text>
-  <text x="70" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">এক class = এক কাজ</text>
+  <text x="70" y="88" text-anchor="middle" fill="#7dd3fc" font-size="10">Single</text>
+  <text x="70" y="100" text-anchor="middle" fill="#7dd3fc" font-size="10">Responsibility</text>
+  <text x="70" y="118" text-anchor="middle" fill="#94a3b8" font-size="10">এক class = এক কাজ</text>
   <rect x="130" y="50" width="100" height="80" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="180" y="72" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">O</text>
-  <text x="180" y="88" text-anchor="middle" fill="#86efac" font-size="7">Open/Closed</text>
-  <text x="180" y="100" text-anchor="middle" fill="#86efac" font-size="7">Principle</text>
-  <text x="180" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">extend open, modify closed</text>
+  <text x="180" y="88" text-anchor="middle" fill="#86efac" font-size="10">Open/Closed</text>
+  <text x="180" y="100" text-anchor="middle" fill="#86efac" font-size="10">Principle</text>
+  <text x="180" y="118" text-anchor="middle" fill="#94a3b8" font-size="10">extend open, modify closed</text>
   <rect x="240" y="50" width="100" height="80" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
   <text x="290" y="72" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">L</text>
-  <text x="290" y="88" text-anchor="middle" fill="#fde68a" font-size="7">Liskov</text>
-  <text x="290" y="100" text-anchor="middle" fill="#fde68a" font-size="7">Substitution</text>
-  <text x="290" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">child replaces parent</text>
+  <text x="290" y="88" text-anchor="middle" fill="#fde68a" font-size="10">Liskov</text>
+  <text x="290" y="100" text-anchor="middle" fill="#fde68a" font-size="10">Substitution</text>
+  <text x="290" y="118" text-anchor="middle" fill="#94a3b8" font-size="10">child replaces parent</text>
   <rect x="350" y="50" width="100" height="80" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="400" y="72" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">I</text>
-  <text x="400" y="88" text-anchor="middle" fill="#fca5a5" font-size="7">Interface</text>
-  <text x="400" y="100" text-anchor="middle" fill="#fca5a5" font-size="7">Segregation</text>
-  <text x="400" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">ছোট ছোট interface</text>
+  <text x="400" y="88" text-anchor="middle" fill="#fca5a5" font-size="10">Interface</text>
+  <text x="400" y="100" text-anchor="middle" fill="#fca5a5" font-size="10">Segregation</text>
+  <text x="400" y="118" text-anchor="middle" fill="#94a3b8" font-size="10">ছোট ছোট interface</text>
   <rect x="460" y="50" width="100" height="80" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
   <text x="510" y="72" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">D</text>
-  <text x="510" y="88" text-anchor="middle" fill="#d8b4fe" font-size="7">Dependency</text>
-  <text x="510" y="100" text-anchor="middle" fill="#d8b4fe" font-size="7">Inversion</text>
-  <text x="510" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">depend on abstraction</text>
+  <text x="510" y="88" text-anchor="middle" fill="#d8b4fe" font-size="10">Dependency</text>
+  <text x="510" y="100" text-anchor="middle" fill="#d8b4fe" font-size="10">Inversion</text>
+  <text x="510" y="118" text-anchor="middle" fill="#94a3b8" font-size="10">depend on abstraction</text>
   <rect x="20" y="150" width="540" height="70" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
   <text x="290" y="175" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">Other Principles</text>
   <text x="290" y="195" text-anchor="middle" fill="#94a3b8" font-size="8">DRY (Don't Repeat Yourself) · KISS (Keep It Simple) · YAGNI (You Aren't Gonna Need It)</text>
-  <text x="290" y="210" text-anchor="middle" fill="#94a3b8" font-size="7">Boy Scout Rule: leave code cleaner than you found it</text>
+  <text x="290" y="210" text-anchor="middle" fill="#94a3b8" font-size="10">Boy Scout Rule: leave code cleaner than you found it</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: SOLID-এর ৫টি নীতি — Uncle Bob (Robert Martin, ২০০০)।</div>
@@ -320,43 +320,43 @@ doors.push({
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔧 GoF Design Patterns: 23 Patterns in 3 Categories</text>
   <rect x="20" y="50" width="170" height="190" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="105" y="72" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">Creational</text>
-  <text x="105" y="88" text-anchor="middle" fill="#7dd3fc" font-size="7">কীভাবে তৈরি করবে</text>
+  <text x="105" y="88" text-anchor="middle" fill="#7dd3fc" font-size="10">কীভাবে তৈরি করবে</text>
   <rect x="35" y="98" width="140" height="16" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
-  <text x="105" y="110" text-anchor="middle" fill="#7dd3fc" font-size="6">Singleton: একটাই instance</text>
+  <text x="105" y="110" text-anchor="middle" fill="#7dd3fc" font-size="10">Singleton: একটাই instance</text>
   <rect x="35" y="118" width="140" height="16" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
-  <text x="105" y="130" text-anchor="middle" fill="#7dd3fc" font-size="6">Factory: type-based creation</text>
+  <text x="105" y="130" text-anchor="middle" fill="#7dd3fc" font-size="10">Factory: type-based creation</text>
   <rect x="35" y="138" width="140" height="16" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
-  <text x="105" y="150" text-anchor="middle" fill="#7dd3fc" font-size="6">Builder: step-by-step</text>
+  <text x="105" y="150" text-anchor="middle" fill="#7dd3fc" font-size="10">Builder: step-by-step</text>
   <rect x="35" y="158" width="140" height="16" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
-  <text x="105" y="170" text-anchor="middle" fill="#7dd3fc" font-size="6">Prototype: clone existing</text>
-  <text x="105" y="195" text-anchor="middle" fill="#94a3b8" font-size="6">Django: models.Manager</text>
-  <text x="105" y="210" text-anchor="middle" fill="#94a3b8" font-size="6">= Factory pattern</text>
+  <text x="105" y="170" text-anchor="middle" fill="#7dd3fc" font-size="10">Prototype: clone existing</text>
+  <text x="105" y="195" text-anchor="middle" fill="#94a3b8" font-size="10">Django: models.Manager</text>
+  <text x="105" y="210" text-anchor="middle" fill="#94a3b8" font-size="10">= Factory pattern</text>
   <rect x="205" y="50" width="170" height="190" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="290" y="72" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Structural</text>
-  <text x="290" y="88" text-anchor="middle" fill="#86efac" font-size="7">কীভাবে যুক্ত করবে</text>
+  <text x="290" y="88" text-anchor="middle" fill="#86efac" font-size="10">কীভাবে যুক্ত করবে</text>
   <rect x="220" y="98" width="140" height="16" rx="3" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-  <text x="290" y="110" text-anchor="middle" fill="#86efac" font-size="6">Adapter: interface convert</text>
+  <text x="290" y="110" text-anchor="middle" fill="#86efac" font-size="10">Adapter: interface convert</text>
   <rect x="220" y="118" width="140" height="16" rx="3" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-  <text x="290" y="130" text-anchor="middle" fill="#86efac" font-size="6">Decorator: add behavior</text>
+  <text x="290" y="130" text-anchor="middle" fill="#86efac" font-size="10">Decorator: add behavior</text>
   <rect x="220" y="138" width="140" height="16" rx="3" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-  <text x="290" y="150" text-anchor="middle" fill="#86efac" font-size="6">Facade: simplify interface</text>
+  <text x="290" y="150" text-anchor="middle" fill="#86efac" font-size="10">Facade: simplify interface</text>
   <rect x="220" y="158" width="140" height="16" rx="3" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-  <text x="290" y="170" text-anchor="middle" fill="#86efac" font-size="6">Proxy: controlled access</text>
-  <text x="290" y="195" text-anchor="middle" fill="#94a3b8" font-size="6">Django: DRF Serializer</text>
-  <text x="290" y="210" text-anchor="middle" fill="#94a3b8" font-size="6">= Adapter pattern</text>
+  <text x="290" y="170" text-anchor="middle" fill="#86efac" font-size="10">Proxy: controlled access</text>
+  <text x="290" y="195" text-anchor="middle" fill="#94a3b8" font-size="10">Django: DRF Serializer</text>
+  <text x="290" y="210" text-anchor="middle" fill="#94a3b8" font-size="10">= Adapter pattern</text>
   <rect x="390" y="50" width="170" height="190" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
   <text x="475" y="72" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">Behavioral</text>
-  <text x="475" y="88" text-anchor="middle" fill="#fde68a" font-size="7">কীভাবে যোগাযোগ</text>
+  <text x="475" y="88" text-anchor="middle" fill="#fde68a" font-size="10">কীভাবে যোগাযোগ</text>
   <rect x="405" y="98" width="140" height="16" rx="3" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="475" y="110" text-anchor="middle" fill="#fde68a" font-size="6">Observer: pub/sub events</text>
+  <text x="475" y="110" text-anchor="middle" fill="#fde68a" font-size="10">Observer: pub/sub events</text>
   <rect x="405" y="118" width="140" height="16" rx="3" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="475" y="130" text-anchor="middle" fill="#fde68a" font-size="6">Strategy: swap algorithm</text>
+  <text x="475" y="130" text-anchor="middle" fill="#fde68a" font-size="10">Strategy: swap algorithm</text>
   <rect x="405" y="138" width="140" height="16" rx="3" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="475" y="150" text-anchor="middle" fill="#fde68a" font-size="6">Command: action as object</text>
+  <text x="475" y="150" text-anchor="middle" fill="#fde68a" font-size="10">Command: action as object</text>
   <rect x="405" y="158" width="140" height="16" rx="3" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="475" y="170" text-anchor="middle" fill="#fde68a" font-size="6">Iterator: sequential access</text>
-  <text x="475" y="195" text-anchor="middle" fill="#94a3b8" font-size="6">Django signals = Observer</text>
-  <text x="475" y="210" text-anchor="middle" fill="#94a3b8" font-size="6">Redux/Saga = Command</text>
+  <text x="475" y="170" text-anchor="middle" fill="#fde68a" font-size="10">Iterator: sequential access</text>
+  <text x="475" y="195" text-anchor="middle" fill="#94a3b8" font-size="10">Django signals = Observer</text>
+  <text x="475" y="210" text-anchor="middle" fill="#94a3b8" font-size="10">Redux/Saga = Command</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: GoF ২৩টি pattern — তিন ভাগে। প্রতিটিতে Django/React উদাহরণ।</div>
@@ -476,7 +476,7 @@ Cucumber, SpecFlow — BDD framework। Dan North (২০০৬) প্রবর
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🧪 Testing Trophy: Integration Most Important</text>
   <polygon points="260,50 320,50 345,110 235,110" fill="#dc2626" stroke="#f87171" stroke-width="2"/>
   <text x="290" y="80" text-anchor="middle" fill="#fee2e2" font-size="9" font-weight="700">E2E</text>
-  <text x="290" y="95" text-anchor="middle" fill="#fca5a5" font-size="6">critical path only</text>
+  <text x="290" y="95" text-anchor="middle" fill="#fca5a5" font-size="10">critical path only</text>
   <polygon points="200,110 380,110 410,180 170,180" fill="#22c55e" stroke="#4ade80" stroke-width="2.5"/>
   <text x="290" y="145" text-anchor="middle" fill="#052e16" font-size="11" font-weight="900">INTEGRATION</text>
   <text x="290" y="162" text-anchor="middle" fill="#052e16" font-size="8">🏆 MOST IMPORTANT</text>
@@ -595,34 +595,34 @@ Michael Fagan (১৯৭৬) — code inspection-এর জনক। তিন�
   <circle cx="290" cy="60" r="6" fill="#22c55e"/>
   <text x="305" y="64" fill="#4ade80" font-size="8">main (production)</text>
   <circle cx="290" cy="100" r="6" fill="#22c55e"/>
-  <text x="305" y="104" fill="#4ade80" font-size="7">commit A</text>
+  <text x="305" y="104" fill="#4ade80" font-size="10">commit A</text>
   <circle cx="290" cy="140" r="6" fill="#22c55e"/>
-  <text x="305" y="144" fill="#4ade80" font-size="7">commit B</text>
+  <text x="305" y="144" fill="#4ade80" font-size="10">commit B</text>
   <circle cx="290" cy="180" r="6" fill="#22c55e"/>
-  <text x="305" y="184" fill="#4ade80" font-size="7">commit C</text>
+  <text x="305" y="184" fill="#4ade80" font-size="10">commit C</text>
   <circle cx="290" cy="220" r="6" fill="#22c55e"/>
-  <text x="305" y="224" fill="#4ade80" font-size="7">HEAD</text>
+  <text x="305" y="224" fill="#4ade80" font-size="10">HEAD</text>
   <line x1="290" y1="120" x2="180" y2="120" stroke="#fbbf24" stroke-width="2"/>
   <line x1="180" y1="120" x2="180" y2="165" stroke="#fbbf24" stroke-width="2"/>
   <circle cx="180" cy="120" r="5" fill="#fbbf24"/>
   <circle cx="180" cy="140" r="5" fill="#fbbf24"/>
-  <text x="130" y="124" fill="#fcd34d" font-size="7">feature/payment</text>
-  <text x="130" y="144" fill="#fde68a" font-size="6">2 commits</text>
+  <text x="130" y="124" fill="#fcd34d" font-size="10">feature/payment</text>
+  <text x="130" y="144" fill="#fde68a" font-size="10">2 commits</text>
   <circle cx="180" cy="160" r="5" fill="#fbbf24"/>
-  <text x="130" y="164" fill="#fde68a" font-size="6">PR → review → merge</text>
+  <text x="130" y="164" fill="#fde68a" font-size="10">PR → review → merge</text>
   <path d="M 180 160 Q 230 170 290 180" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="4,3"/>
-  <text x="225" y="175" fill="#4ade80" font-size="6">merge</text>
+  <text x="225" y="175" fill="#4ade80" font-size="10">merge</text>
   <rect x="400" y="55" width="160" height="170" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
   <text x="480" y="75" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="700">Git Commands</text>
-  <text x="415" y="95" fill="#7dd3fc" font-size="6">git checkout -b feature/x</text>
-  <text x="415" y="110" fill="#7dd3fc" font-size="6">git add -A</text>
-  <text x="415" y="125" fill="#7dd3fc" font-size="6">git commit -m "feat: ..."</text>
-  <text x="415" y="140" fill="#7dd3fc" font-size="6">git push origin feature/x</text>
-  <text x="415" y="155" fill="#7dd3fc" font-size="6">gh pr create</text>
-  <text x="415" y="170" fill="#7dd3fc" font-size="6">gh pr review</text>
-  <text x="415" y="185" fill="#7dd3fc" font-size="6">git merge --squash</text>
-  <text x="415" y="200" fill="#7dd3fc" font-size="6">git rebase -i HEAD~3</text>
-  <text x="415" y="215" fill="#7dd3fc" font-size="6">git cherry-pick HASH</text>
+  <text x="415" y="95" fill="#7dd3fc" font-size="10">git checkout -b feature/x</text>
+  <text x="415" y="110" fill="#7dd3fc" font-size="10">git add -A</text>
+  <text x="415" y="125" fill="#7dd3fc" font-size="10">git commit -m "feat: ..."</text>
+  <text x="415" y="140" fill="#7dd3fc" font-size="10">git push origin feature/x</text>
+  <text x="415" y="155" fill="#7dd3fc" font-size="10">gh pr create</text>
+  <text x="415" y="170" fill="#7dd3fc" font-size="10">gh pr review</text>
+  <text x="415" y="185" fill="#7dd3fc" font-size="10">git merge --squash</text>
+  <text x="415" y="200" fill="#7dd3fc" font-size="10">git rebase -i HEAD~3</text>
+  <text x="415" y="215" fill="#7dd3fc" font-size="10">git cherry-pick HASH</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Trunk-based development — short-lived branches, fast merge। Git Flow-এর চেয়ে দ্রুত।</div>

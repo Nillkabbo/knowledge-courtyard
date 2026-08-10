@@ -513,9 +513,9 @@ PRODUCTION CONSIDERATIONS:
 <text x="245" y="100" text-anchor="middle" fill="#9290a8" font-size="14">█▓░</text>
 <rect x="305" y="55" width="80" height="70" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
 <text x="345" y="78" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">UNet</text>
-<text x="345" y="92" text-anchor="middle" fill="#9290a8" font-size="7">denoise</text>
-<text x="345" y="104" text-anchor="middle" fill="#9290a8" font-size="7">step 1</text>
-<text x="345" y="116" text-anchor="middle" fill="#9290a8" font-size="7">→ 2 → 3...</text>
+<text x="345" y="92" text-anchor="middle" fill="#9290a8" font-size="10">denoise</text>
+<text x="345" y="104" text-anchor="middle" fill="#9290a8" font-size="10">step 1</text>
+<text x="345" y="116" text-anchor="middle" fill="#9290a8" font-size="10">→ 2 → 3...</text>
 <rect x="410" y="60" width="65" height="60" rx="8" fill="#1e1b3a" stroke="#22c55e" stroke-width="2"/>
 <text x="442" y="85" text-anchor="middle" fill="#4ade80" font-size="9"> Emerging</text>
 <text x="442" y="100" text-anchor="middle" fill="#9290a8" font-size="11">▒▓█</text>
@@ -698,15 +698,15 @@ AUDIO SAFETY:
 <text x="55" y="138" text-anchor="middle" fill="#9290a8" font-size="8">🔊波浪</text>
 <rect x="110" y="100" width="85" height="55" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
 <text x="152" y="120" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Spectrogram</text>
-<text x="152" y="135" text-anchor="middle" fill="#9290a8" font-size="7">STFT — freq×time</text>
+<text x="152" y="135" text-anchor="middle" fill="#9290a8" font-size="10">STFT — freq×time</text>
 <text x="152" y="146" text-anchor="middle" fill="#9290a8" font-size="8">▓▒░▒▓░▒</text>
 <rect x="215" y="105" width="80" height="45" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
 <text x="255" y="123" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Encoder</text>
 <text x="255" y="138" text-anchor="middle" fill="#9290a8" font-size="8">Whisper</text>
 <rect x="315" y="100" width="85" height="55" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
 <text x="357" y="120" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Embedding</text>
-<text x="357" y="135" text-anchor="middle" fill="#9290a8" font-size="7">vector</text>
-<text x="357" y="146" text-anchor="middle" fill="#9290a8" font-size="7">[0.2, 0.8...]</text>
+<text x="357" y="135" text-anchor="middle" fill="#9290a8" font-size="10">vector</text>
+<text x="357" y="146" text-anchor="middle" fill="#9290a8" font-size="10">[0.2, 0.8...]</text>
 <rect x="420" y="105" width="70" height="45" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
 <text x="455" y="123" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Decoder</text>
 <text x="455" y="138" text-anchor="middle" fill="#9290a8" font-size="8">LLM</text>

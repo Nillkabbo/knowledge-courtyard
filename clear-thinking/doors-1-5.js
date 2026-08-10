@@ -73,22 +73,22 @@ doors.push({
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🪡 Mental Models: Multiple Tools for Multiple Problems</text>
   <rect x="20" y="55" width="100" height="50" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="70" y="82" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">First Principles</text>
-  <text x="70" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">decompose to truth</text>
+  <text x="70" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">decompose to truth</text>
   <rect x="130" y="55" width="100" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="180" y="82" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Inversion</text>
-  <text x="180" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">how to fail?</text>
+  <text x="180" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">how to fail?</text>
   <rect x="240" y="55" width="100" height="50" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
   <text x="290" y="82" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Occam's Razor</text>
-  <text x="290" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">simplest explanation</text>
+  <text x="290" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">simplest explanation</text>
   <rect x="350" y="55" width="100" height="50" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
   <text x="400" y="82" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">Bayesian</text>
-  <text x="400" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">update beliefs</text>
+  <text x="400" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">update beliefs</text>
   <rect x="460" y="55" width="100" height="50" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="510" y="82" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">Second-Order</text>
-  <text x="510" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">consequences of consequences</text>
+  <text x="510" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">consequences of consequences</text>
   <rect x="100" y="140" width="380" height="50" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
   <text x="290" y="165" text-anchor="middle" fill="#e2e8f0" font-size="8">একটি হাতিয়ার নয় — একটি তাঁত বানাও</text>
-  <text x="290" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">Don't have one tool — build a loom of many tools</text>
+  <text x="290" y="180" text-anchor="middle" fill="#94a3b8" font-size="10">Don't have one tool — build a loom of many tools</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: পাঁচটি মানসিক মডেল — প্রতিটি আলাদা সমস্যার জন্য। একসাথে একটি চিন্তার তাঁত।</div>
@@ -203,20 +203,20 @@ doors.push({
   <!-- SOUNDNESS box -->
   <rect x="380" y="50" width="170" height="125" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="465" y="70" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">Soundness Test</text>
-  <text x="395" y="90" fill="#94a3b8" font-size="7">1. Is the structure valid?</text>
-  <text x="395" y="106" fill="#94a3b8" font-size="7">2. Are all premises true?</text>
-  <text x="395" y="122" fill="#94a3b8" font-size="7">3. Any hidden premise?</text>
-  <text x="395" y="143" fill="#4ade80" font-size="7" font-weight="700">All pass = SOUND ✓</text>
-  <text x="395" y="158" fill="#fca5a5" font-size="7" font-weight="700">Any fail = unsound ✗</text>
+  <text x="395" y="90" fill="#94a3b8" font-size="10">1. Is the structure valid?</text>
+  <text x="395" y="106" fill="#94a3b8" font-size="10">2. Are all premises true?</text>
+  <text x="395" y="122" fill="#94a3b8" font-size="10">3. Any hidden premise?</text>
+  <text x="395" y="143" fill="#4ade80" font-size="10" font-weight="700">All pass = SOUND ✓</text>
+  <text x="395" y="158" fill="#fca5a5" font-size="10" font-weight="700">Any fail = unsound ✗</text>
   <!-- Types row -->
-  <text x="20" y="200" fill="#7dd3fc" font-size="7" font-weight="700">Deduction</text>
-  <text x="20" y="212" fill="#94a3b8" font-size="6">general→specific, 100%</text>
-  <text x="120" y="200" fill="#4ade80" font-size="7" font-weight="700">Induction</text>
-  <text x="120" y="212" fill="#94a3b8" font-size="6">specific→general, prob.</text>
-  <text x="240" y="200" fill="#c084fc" font-size="7" font-weight="700">Abduction</text>
-  <text x="240" y="212" fill="#94a3b8" font-size="6">symptom→cause, best guess</text>
-  <text x="380" y="200" fill="#fcd34d" font-size="7" font-weight="700">Hidden Premise</text>
-  <text x="380" y="212" fill="#94a3b8" font-size="6">surface it, then check truth</text>
+  <text x="20" y="200" fill="#7dd3fc" font-size="10" font-weight="700">Deduction</text>
+  <text x="20" y="212" fill="#94a3b8" font-size="10">general→specific, 100%</text>
+  <text x="120" y="200" fill="#4ade80" font-size="10" font-weight="700">Induction</text>
+  <text x="120" y="212" fill="#94a3b8" font-size="10">specific→general, prob.</text>
+  <text x="240" y="200" fill="#c084fc" font-size="10" font-weight="700">Abduction</text>
+  <text x="240" y="212" fill="#94a3b8" font-size="10">symptom→cause, best guess</text>
+  <text x="380" y="200" fill="#fcd34d" font-size="10" font-weight="700">Hidden Premise</text>
+  <text x="380" y="212" fill="#94a3b8" font-size="10">surface it, then check truth</text>
   <text x="290" y="235" text-anchor="middle" fill="#64748b" font-size="6.5">বৈধ গঠন + সত্য প্রিমিস + কোনো লুকানো প্রিমিস নেই = সাউন্ড যুক্তি</text>
 </svg>
 </div>
@@ -316,38 +316,38 @@ doors.push({
   <text x="105" y="60" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">1. Ad Hominem</text>
   <text x="105" y="75" text-anchor="middle" fill="#94a3b8" font-size="6.5">attacks the person,</text>
   <text x="105" y="85" text-anchor="middle" fill="#94a3b8" font-size="6.5">not the argument</text>
-  <text x="105" y="98" text-anchor="middle" fill="#64748b" font-size="6">"You are junior, what do you know?"</text>
+  <text x="105" y="98" text-anchor="middle" fill="#64748b" font-size="10">"You are junior, what do you know?"</text>
 
   <rect x="205" y="40" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="290" y="60" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">2. Strawman</text>
   <text x="290" y="75" text-anchor="middle" fill="#94a3b8" font-size="6.5">builds a weak version,</text>
   <text x="290" y="85" text-anchor="middle" fill="#94a3b8" font-size="6.5">then attacks that</text>
-  <text x="290" y="98" text-anchor="middle" fill="#64748b" font-size="6">"So you want ONLY tests, no code?"</text>
+  <text x="290" y="98" text-anchor="middle" fill="#64748b" font-size="10">"So you want ONLY tests, no code?"</text>
 
   <rect x="390" y="40" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="475" y="60" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">3. False Dilemma</text>
   <text x="475" y="75" text-anchor="middle" fill="#94a3b8" font-size="6.5">only two options,</text>
   <text x="475" y="85" text-anchor="middle" fill="#94a3b8" font-size="6.5">but more exist</text>
-  <text x="475" y="98" text-anchor="middle" fill="#64748b" font-size="6">"Microservices or monolith?"</text>
+  <text x="475" y="98" text-anchor="middle" fill="#64748b" font-size="10">"Microservices or monolith?"</text>
 
   <!-- Row 2 -->
   <rect x="20" y="120" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="105" y="140" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">4. Slippery Slope</text>
   <text x="105" y="155" text-anchor="middle" fill="#94a3b8" font-size="6.5">one step = catastrophe,</text>
   <text x="105" y="165" text-anchor="middle" fill="#94a3b8" font-size="6.5">but no proof per step</text>
-  <text x="105" y="178" text-anchor="middle" fill="#64748b" font-size="6">"Skip comments once → ruin"</text>
+  <text x="105" y="178" text-anchor="middle" fill="#64748b" font-size="10">"Skip comments once → ruin"</text>
 
   <rect x="205" y="120" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="290" y="140" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">5. Motivated Reasoning</text>
   <text x="290" y="155" text-anchor="middle" fill="#94a3b8" font-size="6.5">conclusion fixed first,</text>
   <text x="290" y="165" text-anchor="middle" fill="#94a3b8" font-size="6.5">evidence cherry-picked</text>
-  <text x="290" y="178" text-anchor="middle" fill="#64748b" font-size="6">"I decided, now I justify"</text>
+  <text x="290" y="178" text-anchor="middle" fill="#64748b" font-size="10">"I decided, now I justify"</text>
 
   <rect x="390" y="120" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="475" y="140" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">6. Goodhart Law</text>
   <text x="475" y="155" text-anchor="middle" fill="#94a3b8" font-size="6.5">metric becomes target →</text>
   <text x="475" y="165" text-anchor="middle" fill="#94a3b8" font-size="6.5">metric degrades</text>
-  <text x="475" y="178" text-anchor="middle" fill="#64748b" font-size="6">"Pay per line of code → bloat"</text>
+  <text x="475" y="178" text-anchor="middle" fill="#64748b" font-size="10">"Pay per line of code → bloat"</text>
 
   <!-- Steelman banner -->
   <rect x="80" y="200" width="420" height="32" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
@@ -455,45 +455,45 @@ doors.push({
   <!-- Flow boxes -->
   <rect x="20" y="45" width="130" height="55" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="85" y="65" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="700">PRIOR</text>
-  <text x="85" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">P(disease) = 1%</text>
-  <text x="85" y="92" text-anchor="middle" fill="#64748b" font-size="6">base rate from population</text>
+  <text x="85" y="80" text-anchor="middle" fill="#94a3b8" font-size="10">P(disease) = 1%</text>
+  <text x="85" y="92" text-anchor="middle" fill="#64748b" font-size="10">base rate from population</text>
 
   <!-- Arrow -->
   <line x1="155" y1="72" x2="195" y2="72" stroke="#fbbf24" stroke-width="2"/>
   <polygon points="190,67 200,72 190,77" fill="#fbbf24"/>
-  <text x="175" y="62" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="700">test</text>
+  <text x="175" y="62" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">test</text>
 
   <rect x="200" y="45" width="130" height="55" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
   <text x="265" y="65" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">EVIDENCE</text>
-  <text x="265" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">test = positive</text>
-  <text x="265" y="92" text-anchor="middle" fill="#64748b" font-size="6">99% accurate test</text>
+  <text x="265" y="80" text-anchor="middle" fill="#94a3b8" font-size="10">test = positive</text>
+  <text x="265" y="92" text-anchor="middle" fill="#64748b" font-size="10">99% accurate test</text>
 
   <line x1="335" y1="72" x2="375" y2="72" stroke="#22c55e" stroke-width="2"/>
   <polygon points="370,67 380,72 370,77" fill="#22c55e"/>
-  <text x="355" y="62" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">update</text>
+  <text x="355" y="62" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">update</text>
 
   <rect x="380" y="45" width="130" height="55" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="445" y="65" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">POSTERIOR</text>
-  <text x="445" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">P(disease|+) = 50%</text>
-  <text x="445" y="92" text-anchor="middle" fill="#64748b" font-size="6">NOT 99%! base rate matters</text>
+  <text x="445" y="80" text-anchor="middle" fill="#94a3b8" font-size="10">P(disease|+) = 50%</text>
+  <text x="445" y="92" text-anchor="middle" fill="#64748b" font-size="10">NOT 99%! base rate matters</text>
 
   <!-- Calculation breakdown -->
   <rect x="20" y="120" width="540" height="95" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
   <text x="290" y="140" text-anchor="middle" fill="#e2e8f0" font-size="8" font-weight="700">Of 1000 people (base rate 1%, test 99% accurate):</text>
 
   <rect x="40" y="150" width="160" height="50" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="120" y="167" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">10 truly sick</text>
+  <text x="120" y="167" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">10 truly sick</text>
   <text x="120" y="180" text-anchor="middle" fill="#94a3b8" font-size="6.5">9.9 test positive (true +)</text>
-  <text x="120" y="192" text-anchor="middle" fill="#64748b" font-size="6">correct detection</text>
+  <text x="120" y="192" text-anchor="middle" fill="#64748b" font-size="10">correct detection</text>
 
   <rect x="210" y="150" width="160" height="50" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
-  <text x="290" y="167" text-anchor="middle" fill="#fca5a5" font-size="7" font-weight="700">990 truly well</text>
+  <text x="290" y="167" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">990 truly well</text>
   <text x="290" y="180" text-anchor="middle" fill="#94a3b8" font-size="6.5">9.9 test positive (false +)</text>
-  <text x="290" y="192" text-anchor="middle" fill="#64748b" font-size="6">false alarm!</text>
+  <text x="290" y="192" text-anchor="middle" fill="#64748b" font-size="10">false alarm!</text>
 
   <rect x="380" y="150" width="160" height="50" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="460" y="167" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="700">Total positives: 19.8</text>
-  <text x="460" y="180" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="700">Truly sick: 9.9</text>
+  <text x="460" y="167" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">Total positives: 19.8</text>
+  <text x="460" y="180" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">Truly sick: 9.9</text>
   <text x="460" y="193" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="900">9.9/19.8 = 50%</text>
 
   <text x="290" y="235" text-anchor="middle" fill="#94a3b8" font-size="6.5">একটা পরীক্ষার ফল চূড়ান্ত নয় — বেস রেট মিলিয়ে দেখো, আবার আপডেট করো</text>
@@ -591,38 +591,38 @@ doors.push({
   <text x="145" y="60" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">❌ BY ANALOGY</text>
 
   <rect x="40" y="70" width="210" height="28" rx="5" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
-  <text x="145" y="88" text-anchor="middle" fill="#94a3b8" font-size="7">"Others use microservices"</text>
+  <text x="145" y="88" text-anchor="middle" fill="#94a3b8" font-size="10">"Others use microservices"</text>
 
   <line x1="145" y1="103" x2="145" y2="115" stroke="#64748b" stroke-width="1.5"/>
   <polygon points="140,112 150,112 145,120" fill="#64748b"/>
 
   <rect x="40" y="122" width="210" height="28" rx="5" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
-  <text x="145" y="140" text-anchor="middle" fill="#94a3b8" font-size="7">"Copy + tweak slightly"</text>
+  <text x="145" y="140" text-anchor="middle" fill="#94a3b8" font-size="10">"Copy + tweak slightly"</text>
 
   <line x1="145" y1="155" x2="145" y2="167" stroke="#64748b" stroke-width="1.5"/>
   <polygon points="140,164 150,164 145,172" fill="#64748b"/>
 
   <rect x="40" y="174" width="210" height="28" rx="5" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
-  <text x="145" y="192" text-anchor="middle" fill="#fca5a5" font-size="7">Slightly better. Do not know WHY.</text>
+  <text x="145" y="192" text-anchor="middle" fill="#fca5a5" font-size="10">Slightly better. Do not know WHY.</text>
 
   <!-- First Principles path (right) -->
   <rect x="310" y="42" width="250" height="175" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="435" y="60" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">✅ FIRST PRINCIPLES</text>
 
   <rect x="330" y="70" width="210" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="435" y="88" text-anchor="middle" fill="#7dd3fc" font-size="7">"What is this MADE of?"</text>
+  <text x="435" y="88" text-anchor="middle" fill="#7dd3fc" font-size="10">"What is this MADE of?"</text>
 
   <line x1="435" y1="103" x2="435" y2="115" stroke="#22c55e" stroke-width="1.5"/>
   <polygon points="430,112 440,112 435,120" fill="#22c55e"/>
 
   <rect x="330" y="122" width="210" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="435" y="140" text-anchor="middle" fill="#7dd3fc" font-size="7">Raw materials: Al, Ti, Cu, CF</text>
+  <text x="435" y="140" text-anchor="middle" fill="#7dd3fc" font-size="10">Raw materials: Al, Ti, Cu, CF</text>
 
   <line x1="435" y1="155" x2="435" y2="167" stroke="#22c55e" stroke-width="1.5"/>
   <polygon points="430,164 440,164 435,172" fill="#22c55e"/>
 
   <rect x="330" y="174" width="210" height="28" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="435" y="192" text-anchor="middle" fill="#4ade80" font-size="7">Rebuild from scratch. 98% cheaper.</text>
+  <text x="435" y="192" text-anchor="middle" fill="#4ade80" font-size="10">Rebuild from scratch. 98% cheaper.</text>
 
   <!-- Inversion arrow -->
   <path d="M 435 210 Q 435 230 290 230 Q 145 230 145 210" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4,3"/>

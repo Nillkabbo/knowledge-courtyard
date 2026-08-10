@@ -284,7 +284,7 @@ print(f"Page 0 and 4 same? {uf.connected(0, 4)}")    # False
     <circle cx="30" cy="235" r="14" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="1.5"/>
     <text x="30" y="239" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="bold">E</text>
     <text x="30" y="265" text-anchor="middle" fill="#ef4444" font-size="8">find(E) = 4 hops</text>
-    <text x="30" y="277" text-anchor="middle" fill="#9a93b8" font-size="7">E→D→C→B→A</text>
+    <text x="30" y="277" text-anchor="middle" fill="#9a93b8" font-size="10">E→D→C→B→A</text>
     <text x="180" y="150" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">→ compress →</text>
     <line x1="135" y1="150" x2="225" y2="150" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrUF)"/>
     <text x="400" y="20" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">✅ After: flat tree</text>
@@ -308,7 +308,7 @@ print(f"Page 0 and 4 same? {uf.connected(0, 4)}")    # False
     <text x="265" y="230" fill="#9a93b8" font-size="8">1. find(B) → root A</text>
     <text x="265" y="243" fill="#9a93b8" font-size="8">2. find(E) → root A (same!)</text>
     <text x="265" y="256" fill="#52c41a" font-size="8" font-weight="bold">→ near-duplicate detected!</text>
-    <text x="265" y="269" fill="#9a93b8" font-size="7">Path compression: E→D→C→B→A becomes E→A</text>
+    <text x="265" y="269" fill="#9a93b8" font-size="10">Path compression: E→D→C→B→A becomes E→A</text>
   </svg>
   <div class="diag-cap">Path compression: প্রতিটা node সরাসরি root-এ যুক্ত। পরের find = O(1)।</div>
 </div>
@@ -434,7 +434,7 @@ def linear_search(items, target):
     <rect x="462" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="474" y="65" text-anchor="middle" fill="#6b6588" font-size="8">tri</text>
     <rect x="488" y="48" width="25" height="25" rx="3" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/><text x="500" y="65" text-anchor="middle" fill="#6b6588" font-size="8">upd</text>
     <text x="570" y="55" fill="#ef4444" font-size="8" font-weight="bold">'key'>'index'</text>
-    <text x="570" y="67" fill="#9a93b8" font-size="7">discard right</text>
+    <text x="570" y="67" fill="#9a93b8" font-size="10">discard right</text>
     <!-- Step 2 -->
     <text x="20" y="100" fill="#9a93b8" font-size="9">Step 2: lo=0, hi=8, mid=4 → 'dat' &lt; 'index' → discard left!</text>
     <rect x="20" y="108" width="25" height="25" rx="3" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,1" opacity="0.3"/>
@@ -699,27 +699,27 @@ doors.push({
     <!-- Layer 4: QUERY PIPELINE -->
     <rect x="10" y="215" width="540" height="85" rx="8" fill="rgba(249,115,22,0.04)" stroke="#f97316" stroke-width="1"/>
     <text x="30" y="233" fill="#fbbf24" font-size="9" font-weight="bold">🔍 QUERY</text>
-    <rect x="20" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="60" y="254" text-anchor="middle" fill="#9a93b8" font-size="7">D7: Spell</text>
-    <rect x="110" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="150" y="254" text-anchor="middle" fill="#9a93b8" font-size="7">D15: Trie</text>
-    <rect x="200" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="240" y="254" text-anchor="middle" fill="#9a93b8" font-size="7">D11: Stack</text>
-    <rect x="290" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="330" y="254" text-anchor="middle" fill="#9a93b8" font-size="7">D8: Backtrack</text>
-    <rect x="380" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="420" y="254" text-anchor="middle" fill="#9a93b8" font-size="7">D5: TwoPtr</text>
-    <rect x="470" y="240" width="65" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="502" y="254" text-anchor="middle" fill="#9a93b8" font-size="7">D9: KMP</text>
-    <text x="60" y="278" text-anchor="middle" fill="#9a93b8" font-size="7">↓</text>
-    <text x="150" y="278" text-anchor="middle" fill="#9a93b8" font-size="7">↓</text>
-    <text x="240" y="278" text-anchor="middle" fill="#9a93b8" font-size="7">↓</text>
-    <text x="330" y="278" text-anchor="middle" fill="#9a93b8" font-size="7">↓</text>
-    <text x="420" y="278" text-anchor="middle" fill="#9a93b8" font-size="7">↓</text>
-    <text x="502" y="278" text-anchor="middle" fill="#9a93b8" font-size="7">↓</text>
+    <rect x="20" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="60" y="254" text-anchor="middle" fill="#9a93b8" font-size="10">D7: Spell</text>
+    <rect x="110" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="150" y="254" text-anchor="middle" fill="#9a93b8" font-size="10">D15: Trie</text>
+    <rect x="200" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="240" y="254" text-anchor="middle" fill="#9a93b8" font-size="10">D11: Stack</text>
+    <rect x="290" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="330" y="254" text-anchor="middle" fill="#9a93b8" font-size="10">D8: Backtrack</text>
+    <rect x="380" y="240" width="80" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="420" y="254" text-anchor="middle" fill="#9a93b8" font-size="10">D5: TwoPtr</text>
+    <rect x="470" y="240" width="65" height="20" rx="4" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1"/><text x="502" y="254" text-anchor="middle" fill="#9a93b8" font-size="10">D9: KMP</text>
+    <text x="60" y="278" text-anchor="middle" fill="#9a93b8" font-size="10">↓</text>
+    <text x="150" y="278" text-anchor="middle" fill="#9a93b8" font-size="10">↓</text>
+    <text x="240" y="278" text-anchor="middle" fill="#9a93b8" font-size="10">↓</text>
+    <text x="330" y="278" text-anchor="middle" fill="#9a93b8" font-size="10">↓</text>
+    <text x="420" y="278" text-anchor="middle" fill="#9a93b8" font-size="10">↓</text>
+    <text x="502" y="278" text-anchor="middle" fill="#9a93b8" font-size="10">↓</text>
     <text x="280" y="293" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">→ doc IDs + phrases matched</text>
     <line x1="280" y1="300" x2="280" y2="315" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrArch)"/>
     <!-- Layer 5: RANK -->
     <rect x="10" y="315" width="540" height="50" rx="8" fill="rgba(82,196,26,0.04)" stroke="#52c41a" stroke-width="1"/>
     <text x="30" y="333" fill="#52c41a" font-size="9" font-weight="bold">🏆 RANK</text>
-    <rect x="80" y="330" width="90" height="20" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="125" y="344" text-anchor="middle" fill="#9a93b8" font-size="7">D6: Snippet</text>
-    <rect x="180" y="330" width="90" height="20" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="225" y="344" text-anchor="middle" fill="#9a93b8" font-size="7">D13: Heap</text>
-    <rect x="280" y="330" width="90" height="20" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="325" y="344" text-anchor="middle" fill="#9a93b8" font-size="7">D16: PageRank</text>
-    <rect x="380" y="330" width="90" height="20" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="425" y="344" text-anchor="middle" fill="#9a93b8" font-size="7">D17: UnionFind</text>
+    <rect x="80" y="330" width="90" height="20" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="125" y="344" text-anchor="middle" fill="#9a93b8" font-size="10">D6: Snippet</text>
+    <rect x="180" y="330" width="90" height="20" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="225" y="344" text-anchor="middle" fill="#9a93b8" font-size="10">D13: Heap</text>
+    <rect x="280" y="330" width="90" height="20" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="325" y="344" text-anchor="middle" fill="#9a93b8" font-size="10">D16: PageRank</text>
+    <rect x="380" y="330" width="90" height="20" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="425" y="344" text-anchor="middle" fill="#9a93b8" font-size="10">D17: UnionFind</text>
     <line x1="280" y1="365" x2="280" y2="380" stroke="#52c41a" stroke-width="2" marker-end="url(#arrArchG)"/>
     <!-- Result -->
     <rect x="180" y="380" width="200" height="18" rx="9" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="2"/>
@@ -877,49 +877,49 @@ doors.push({
     <text x="75" y="95" fill="#9a93b8" font-size="8">Tree</text>
     <circle cx="55" cy="114" r="12" fill="rgba(34,211,238,0.1)" stroke="#22d3ee" stroke-width="1"/><text x="55" y="118" text-anchor="middle" fill="#22d3ee" font-size="8">🔑</text>
     <text x="75" y="118" fill="#9a93b8" font-size="8">HashMap</text>
-    <circle cx="145" cy="45" r="12" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1"/><text x="145" y="49" text-anchor="middle" fill="#fbbf24" font-size="7">⚡</text>
-    <text x="130" y="49" text-anchor="end" fill="#9a93b8" font-size="7">Bit</text>
-    <circle cx="145" cy="68" r="12" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1"/><text x="145" y="72" text-anchor="middle" fill="#a78bfa" font-size="7">🔀</text>
-    <text x="130" y="72" text-anchor="end" fill="#9a93b8" font-size="7">DP</text>
-    <circle cx="145" cy="91" r="12" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="145" y="95" text-anchor="middle" fill="#52c41a" font-size="7">🔤</text>
-    <text x="130" y="95" text-anchor="end" fill="#9a93b8" font-size="7">Trie</text>
-    <circle cx="145" cy="114" r="12" fill="rgba(34,211,238,0.08)" stroke="#22d3ee" stroke-width="1"/><text x="145" y="118" text-anchor="middle" fill="#22d3ee" font-size="7">📁</text>
-    <text x="130" y="118" text-anchor="end" fill="#9a93b8" font-size="7">Stack</text>
+    <circle cx="145" cy="45" r="12" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1"/><text x="145" y="49" text-anchor="middle" fill="#fbbf24" font-size="10">⚡</text>
+    <text x="130" y="49" text-anchor="end" fill="#9a93b8" font-size="10">Bit</text>
+    <circle cx="145" cy="68" r="12" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1"/><text x="145" y="72" text-anchor="middle" fill="#a78bfa" font-size="10">🔀</text>
+    <text x="130" y="72" text-anchor="end" fill="#9a93b8" font-size="10">DP</text>
+    <circle cx="145" cy="91" r="12" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/><text x="145" y="95" text-anchor="middle" fill="#52c41a" font-size="10">🔤</text>
+    <text x="130" y="95" text-anchor="end" fill="#9a93b8" font-size="10">Trie</text>
+    <circle cx="145" cy="114" r="12" fill="rgba(34,211,238,0.08)" stroke="#22d3ee" stroke-width="1"/><text x="145" y="118" text-anchor="middle" fill="#22d3ee" font-size="10">📁</text>
+    <text x="130" y="118" text-anchor="end" fill="#9a93b8" font-size="10">Stack</text>
     <!-- Projects (right) -->
     <text x="380" y="18" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">Projects</text>
     <!-- GPS -->
     <rect x="220" y="25" width="180" height="35" rx="6" fill="rgba(82,196,26,0.1)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="230" y="40" fill="#52c41a" font-size="9" font-weight="bold">🗺️ GPS Navigator</text>
-    <text x="230" y="52" fill="#9a93b8" font-size="7">Graph + Heap + Trie + HashMap</text>
+    <text x="230" y="52" fill="#9a93b8" font-size="10">Graph + Heap + Trie + HashMap</text>
     <line x1="180" y1="45" x2="220" y2="38" stroke="#f97316" stroke-width="1" opacity="0.4" marker-end="url(#arrProj)"/>
     <line x1="180" y1="45" x2="220" y2="42" stroke="#f97316" stroke-width="1" opacity="0.4" marker-end="url(#arrProj)"/>
     <!-- Spell Check -->
     <rect x="220" y="65" width="180" height="35" rx="6" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5"/>
     <text x="230" y="80" fill="#a78bfa" font-size="9" font-weight="bold">📝 Spell Checker</text>
-    <text x="230" y="92" fill="#9a93b8" font-size="7">DP + Trie + HashMap + Bit</text>
+    <text x="230" y="92" fill="#9a93b8" font-size="10">DP + Trie + HashMap + Bit</text>
     <line x1="180" y1="68" x2="220" y2="78" stroke="#a78bfa" stroke-width="1" opacity="0.4" marker-end="url(#arrProj)"/>
     <!-- Recommender -->
     <rect x="220" y="105" width="180" height="35" rx="6" fill="rgba(34,211,238,0.08)" stroke="#22d3ee" stroke-width="1.5"/>
     <text x="230" y="120" fill="#22d3ee" font-size="9" font-weight="bold">🎵 Recommender</text>
-    <text x="230" y="132" fill="#9a93b8" font-size="7">HashMap + Heap + Graph + Bit</text>
+    <text x="230" y="132" fill="#9a93b8" font-size="10">HashMap + Heap + Graph + Bit</text>
     <line x1="180" y1="68" x2="220" y2="118" stroke="#22d3ee" stroke-width="1" opacity="0.3" marker-end="url(#arrProj)"/>
     <!-- Compressor -->
     <rect x="220" y="145" width="180" height="35" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="230" y="160" fill="#fbbf24" font-size="9" font-weight="bold">🗜️ Compressor</text>
-    <text x="230" y="172" fill="#9a93b8" font-size="7">Bit + Tree + D&amp;C + HashMap</text>
+    <text x="230" y="172" fill="#9a93b8" font-size="10">Bit + Tree + D&amp;C + HashMap</text>
     <!-- Scheduler -->
     <rect x="220" y="185" width="180" height="35" rx="6" fill="rgba(249,115,22,0.08)" stroke="#f97316" stroke-width="1.5"/>
     <text x="230" y="200" fill="#fbbf24" font-size="9" font-weight="bold">⚙️ Scheduler</text>
-    <text x="230" y="212" fill="#9a93b8" font-size="7">Heap + Stack + UnionFind</text>
+    <text x="230" y="212" fill="#9a93b8" font-size="10">Heap + Stack + UnionFind</text>
     <line x1="180" y1="114" x2="220" y2="198" stroke="#f97316" stroke-width="1" opacity="0.3" marker-end="url(#arrProj)"/>
     <!-- Insight -->
     <rect x="20" y="245" width="520" height="95" rx="8" fill="rgba(251,191,36,0.06)" stroke="rgba(251,191,36,0.2)" stroke-width="1"/>
     <text x="280" y="265" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">💡 এক algorithm — একাধিক project</text>
-    <text x="280" y="280" text-anchor="middle" fill="#9a93b8" font-size="7">Heap: GPS + Recommender + Scheduler</text>
-    <text x="280" y="293" text-anchor="middle" fill="#9a93b8" font-size="7">Graph: GPS + Recommender + PageRank</text>
-    <text x="280" y="306" text-anchor="middle" fill="#9a93b8" font-size="7">HashMap: universal — প্রতিটা project-এ</text>
+    <text x="280" y="280" text-anchor="middle" fill="#9a93b8" font-size="10">Heap: GPS + Recommender + Scheduler</text>
+    <text x="280" y="293" text-anchor="middle" fill="#9a93b8" font-size="10">Graph: GPS + Recommender + PageRank</text>
+    <text x="280" y="306" text-anchor="middle" fill="#9a93b8" font-size="10">HashMap: universal — প্রতিটা project-এ</text>
     <text x="280" y="324" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">কারিগর: হাতুড়ি দিয়ে বানাও</text>
-    <text x="280" y="336" text-anchor="middle" fill="#9a93b8" font-size="7" font-style="italic">Build with it, not just learn it</text>
+    <text x="280" y="336" text-anchor="middle" fill="#9a93b8" font-size="10" font-style="italic">Build with it, not just learn it</text>
   </svg>
   <div class="diag-cap">একই algorithm একাধিক project-এ ব্যবহৃত। কারিগর = কোন tool কোথায় ব্যবহার করবে জানেন।</div>
 </div>

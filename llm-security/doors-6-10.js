@@ -179,21 +179,21 @@ doors.push({
   <line x1="480" y1="100" x2="480" y2="180" stroke="#52c41a" stroke-width="1.5" opacity="0.5"/>
   <rect x="130" y="120" width="110" height="50" rx="8" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1.5"/>
   <text x="185" y="142" text-anchor="middle" fill="#3dd6c4" font-size="10" font-weight="bold">LLM</text>
-  <text x="185" y="156" text-anchor="middle" fill="#94a3b8" font-size="7">নিরাপদ পথে</text>
+  <text x="185" y="156" text-anchor="middle" fill="#94a3b8" font-size="10">নিরাপদ পথে</text>
   <line x1="240" y1="145" x2="320" y2="145" stroke="#3dd6c4" stroke-width="1.8" marker-end="url(#arrD7)"/>
-  <text x="280" y="138" text-anchor="middle" fill="#3dd6c4" font-size="7">generate</text>
+  <text x="280" y="138" text-anchor="middle" fill="#3dd6c4" font-size="10">generate</text>
   <circle cx="60" cy="80" r="14" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
   <text x="60" y="84" text-anchor="middle" fill="#fca5a5" font-size="8">✕</text>
-  <text x="60" y="58" text-anchor="middle" fill="#fca5a5" font-size="7">injection</text>
+  <text x="60" y="58" text-anchor="middle" fill="#fca5a5" font-size="10">injection</text>
   <circle cx="520" cy="80" r="14" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
   <text x="520" y="84" text-anchor="middle" fill="#fca5a5" font-size="8">✕</text>
-  <text x="520" y="58" text-anchor="middle" fill="#fca5a5" font-size="7">toxic</text>
+  <text x="520" y="58" text-anchor="middle" fill="#fca5a5" font-size="10">toxic</text>
   <circle cx="60" cy="210" r="14" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
   <text x="60" y="214" text-anchor="middle" fill="#fca5a5" font-size="8">✕</text>
-  <text x="60" y="238" text-anchor="middle" fill="#fca5a5" font-size="7">PII</text>
+  <text x="60" y="238" text-anchor="middle" fill="#fca5a5" font-size="10">PII</text>
   <circle cx="520" cy="210" r="14" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
   <text x="520" y="214" text-anchor="middle" fill="#fca5a5" font-size="8">✕</text>
-  <text x="520" y="238" text-anchor="middle" fill="#fca5a5" font-size="7">off-topic</text>
+  <text x="520" y="238" text-anchor="middle" fill="#fca5a5" font-size="10">off-topic</text>
   <text x="290" y="260" text-anchor="middle" fill="#94a3b8" font-size="8">হুদুদ — সীমার মধ্যে স্বাধীনতা: NeMo, Guardrails AI, Llama Guard</text>
 </svg>
 </div>
@@ -351,16 +351,16 @@ doors.push({
   <text x="290" y="26" text-anchor="middle" fill="#b37feb" font-size="12" font-weight="bold">রেড টিম চক্র — Attack Yourself First</text>
   <rect x="40" y="60" width="110" height="40" rx="8" fill="#1e3a5f" stroke="#b37feb" stroke-width="1.5"/>
   <text x="95" y="78" text-anchor="middle" fill="#b37feb" font-size="9" font-weight="bold">১. Scope</text>
-  <text x="95" y="92" text-anchor="middle" fill="#94a3b8" font-size="7">কী টেস্ট?</text>
+  <text x="95" y="92" text-anchor="middle" fill="#94a3b8" font-size="10">কী টেস্ট?</text>
   <rect x="180" y="60" width="110" height="40" rx="8" fill="#1e3a5f" stroke="#b37feb" stroke-width="1.5"/>
   <text x="235" y="78" text-anchor="middle" fill="#b37feb" font-size="9" font-weight="bold">২. Attack</text>
-  <text x="235" y="92" text-anchor="middle" fill="#94a3b8" font-size="7">Garak, PyRIT</text>
+  <text x="235" y="92" text-anchor="middle" fill="#94a3b8" font-size="10">Garak, PyRIT</text>
   <rect x="320" y="60" width="110" height="40" rx="8" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
   <text x="375" y="78" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="bold">৩. Analyze</text>
-  <text x="375" y="92" text-anchor="middle" fill="#94a3b8" font-size="7">ASR measure</text>
+  <text x="375" y="92" text-anchor="middle" fill="#94a3b8" font-size="10">ASR measure</text>
   <rect x="460" y="60" width="100" height="40" rx="8" fill="#14532d" stroke="#4ade80" stroke-width="1.5"/>
   <text x="510" y="78" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">৪. Fix</text>
-  <text x="510" y="92" text-anchor="middle" fill="#94a3b8" font-size="7">patch</text>
+  <text x="510" y="92" text-anchor="middle" fill="#94a3b8" font-size="10">patch</text>
   <line x1="150" y1="80" x2="178" y2="80" stroke="#b37feb" stroke-width="1.5" marker-end="url(#arrD8)"/>
   <line x1="290" y1="80" x2="318" y2="80" stroke="#b37feb" stroke-width="1.5" marker-end="url(#arrD8)"/>
   <line x1="430" y1="80" x2="458" y2="80" stroke="#b37feb" stroke-width="1.5" marker-end="url(#arrD8)"/>
@@ -368,10 +368,10 @@ doors.push({
   <text x="300" y="155" text-anchor="middle" fill="#b37feb" font-size="8">৫. Re-test → repeat</text>
   <rect x="40" y="200" width="200" height="40" rx="8" fill="#0a1428" stroke="#3dd6c4" stroke-width="1"/>
   <text x="140" y="216" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">ASR Target: &lt; ৫%</text>
-  <text x="140" y="230" text-anchor="middle" fill="#94a3b8" font-size="7">Attack Success Rate</text>
+  <text x="140" y="230" text-anchor="middle" fill="#94a3b8" font-size="10">Attack Success Rate</text>
   <rect x="280" y="200" width="260" height="40" rx="8" fill="#0a1428" stroke="#3dd6c4" stroke-width="1"/>
   <text x="410" y="216" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">Cadence: monthly auto + quarterly human</text>
-  <text x="410" y="230" text-anchor="middle" fill="#94a3b8" font-size="7">+ per-release regression</text>
+  <text x="410" y="230" text-anchor="middle" fill="#94a3b8" font-size="10">+ per-release regression</text>
   <text x="290" y="265" text-anchor="middle" fill="#94a3b8" font-size="8">ইখতিবার — নিজেকে পরীক্ষা করো, শত্রুর আগে দুর্বলতা খোঁজো</text>
 </svg>
 </div>
@@ -526,32 +526,32 @@ doors.push({
   <text x="290" y="26" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="bold">প্রোডাকশন সতর্কতা — Alert & Response</text>
   <rect x="30" y="50" width="120" height="36" rx="6" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
   <text x="90" y="65" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">🟢 LOW</text>
-  <text x="90" y="79" text-anchor="middle" fill="#94a3b8" font-size="7">২৪h — monitor</text>
+  <text x="90" y="79" text-anchor="middle" fill="#94a3b8" font-size="10">২৪h — monitor</text>
   <rect x="170" y="50" width="120" height="36" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="230" y="65" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">🟡 MEDIUM</text>
-  <text x="230" y="79" text-anchor="middle" fill="#94a3b8" font-size="7">৪h — investigate</text>
+  <text x="230" y="79" text-anchor="middle" fill="#94a3b8" font-size="10">৪h — investigate</text>
   <rect x="310" y="50" width="120" height="36" rx="6" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
   <text x="370" y="65" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="bold">🔴 HIGH</text>
-  <text x="370" y="79" text-anchor="middle" fill="#94a3b8" font-size="7">১h — act now</text>
+  <text x="370" y="79" text-anchor="middle" fill="#94a3b8" font-size="10">১h — act now</text>
   <rect x="450" y="50" width="100" height="36" rx="6" fill="#000000" stroke="#ef4444" stroke-width="2"/>
   <text x="500" y="65" text-anchor="middle" fill="#f87171" font-size="9" font-weight="bold">⚫ CRITICAL</text>
-  <text x="500" y="79" text-anchor="middle" fill="#94a3b8" font-size="7">১৫min</text>
+  <text x="500" y="79" text-anchor="middle" fill="#94a3b8" font-size="10">১৫min</text>
   <text x="290" y="112" text-anchor="middle" fill="#3dd6c4" font-size="10" font-weight="bold">ইনসিডেন্ট রেসপন্স — ৫ ধাপ</text>
   <rect x="30" y="124" width="100" height="36" rx="6" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1"/>
   <text x="80" y="140" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">১. Detect</text>
-  <text x="80" y="152" text-anchor="middle" fill="#94a3b8" font-size="7">alert fires</text>
+  <text x="80" y="152" text-anchor="middle" fill="#94a3b8" font-size="10">alert fires</text>
   <rect x="140" y="124" width="100" height="36" rx="6" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1"/>
   <text x="190" y="140" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">২. Contain</text>
-  <text x="190" y="152" text-anchor="middle" fill="#94a3b8" font-size="7">stop bleeding</text>
+  <text x="190" y="152" text-anchor="middle" fill="#94a3b8" font-size="10">stop bleeding</text>
   <rect x="250" y="124" width="100" height="36" rx="6" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1"/>
   <text x="300" y="140" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">৩. Investigate</text>
-  <text x="300" y="152" text-anchor="middle" fill="#94a3b8" font-size="7">trace attack</text>
+  <text x="300" y="152" text-anchor="middle" fill="#94a3b8" font-size="10">trace attack</text>
   <rect x="360" y="124" width="100" height="36" rx="6" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1"/>
   <text x="410" y="140" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">৪. Remediate</text>
-  <text x="410" y="152" text-anchor="middle" fill="#94a3b8" font-size="7">patch</text>
+  <text x="410" y="152" text-anchor="middle" fill="#94a3b8" font-size="10">patch</text>
   <rect x="470" y="124" width="80" height="36" rx="6" fill="#1e3a5f" stroke="#3dd6c4" stroke-width="1"/>
   <text x="510" y="140" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">৫. Learn</text>
-  <text x="510" y="152" text-anchor="middle" fill="#94a3b8" font-size="7">post-mortem</text>
+  <text x="510" y="152" text-anchor="middle" fill="#94a3b8" font-size="10">post-mortem</text>
   <line x1="130" y1="142" x2="138" y2="142" stroke="#3dd6c4" stroke-width="1.2" marker-end="url(#arrD9)"/>
   <line x1="240" y1="142" x2="248" y2="142" stroke="#3dd6c4" stroke-width="1.2" marker-end="url(#arrD9)"/>
   <line x1="350" y1="142" x2="358" y2="142" stroke="#3dd6c4" stroke-width="1.2" marker-end="url(#arrD9)"/>
@@ -559,7 +559,7 @@ doors.push({
   <rect x="160" y="184" width="260" height="56" rx="10" fill="#7f1d1d" stroke="#ef4444" stroke-width="2"/>
   <text x="290" y="206" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="bold">🛑 KILL SWITCH</text>
   <text x="290" y="222" text-anchor="middle" fill="#94a3b8" font-size="8">সব traffic stop — safe fallback</text>
-  <text x="290" y="232" text-anchor="middle" fill="#94a3b8" font-size="7">emergency only</text>
+  <text x="290" y="232" text-anchor="middle" fill="#94a3b8" font-size="10">emergency only</text>
   <text x="290" y="265" text-anchor="middle" fill="#94a3b8" font-size="8">ইয়াকাযা — দুর্গের প্রহরী কখনো ঘুমায় না</text>
 </svg>
 </div>
@@ -728,14 +728,14 @@ doors.push({
   <line x1="290" y1="246" x2="290" y2="260" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrD10)"/>
   <rect x="210" y="262" width="160" height="28" rx="6" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
   <text x="290" y="281" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">SAFE RESPONSE</text>
-  <text x="40" y="88" fill="#94a3b8" font-size="7">দুর্গ ১</text>
-  <text x="40" y="114" fill="#94a3b8" font-size="7">দুর্গ ২</text>
-  <text x="40" y="140" fill="#94a3b8" font-size="7">দুর্গ ৩</text>
-  <text x="40" y="166" fill="#94a3b8" font-size="7">দুর্গ ৪</text>
-  <text x="540" y="88" fill="#94a3b8" font-size="7">দুর্গ ৫</text>
-  <text x="540" y="114" fill="#94a3b8" font-size="7">দুর্গ ৬</text>
-  <text x="540" y="140" fill="#94a3b8" font-size="7">দুর্গ ৭</text>
-  <text x="540" y="166" fill="#94a3b8" font-size="7">দুর্গ ৮</text>
+  <text x="40" y="88" fill="#94a3b8" font-size="10">দুর্গ ১</text>
+  <text x="40" y="114" fill="#94a3b8" font-size="10">দুর্গ ২</text>
+  <text x="40" y="140" fill="#94a3b8" font-size="10">দুর্গ ৩</text>
+  <text x="40" y="166" fill="#94a3b8" font-size="10">দুর্গ ৪</text>
+  <text x="540" y="88" fill="#94a3b8" font-size="10">দুর্গ ৫</text>
+  <text x="540" y="114" fill="#94a3b8" font-size="10">দুর্গ ৬</text>
+  <text x="540" y="140" fill="#94a3b8" font-size="10">দুর্গ ৭</text>
+  <text x="540" y="166" fill="#94a3b8" font-size="10">দুর্গ ৮</text>
   <text x="290" y="308" text-anchor="middle" fill="#f87171" font-size="8" font-style="italic">হিসনুল মুসলিম — অভেদ্য দুর্গ: শক্তি + সুরক্ষা একসাথে</text>
 </svg>
 </div>

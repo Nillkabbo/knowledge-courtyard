@@ -275,10 +275,10 @@ def get_overdue_penalty(created_at, deadline):
     <!-- Rename note -->
     <rect x="455" y="28" width="90" height="80" rx="6" fill="rgba(99,102,241,0.04)" stroke="rgba(99,102,241,0.15)" stroke-width="1"/>
     <text x="500" y="45" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Rename</text>
-    <text x="500" y="60" text-anchor="middle" fill="#9a93b8" font-size="7">proc_data →</text>
-    <text x="500" y="72" text-anchor="middle" fill="#52c41a" font-size="7">process_batch</text>
-    <text x="500" y="88" text-anchor="middle" fill="#9a93b8" font-size="7">check →</text>
-    <text x="500" y="100" text-anchor="middle" fill="#52c41a" font-size="7">is_valid</text>
+    <text x="500" y="60" text-anchor="middle" fill="#9a93b8" font-size="10">proc_data →</text>
+    <text x="500" y="72" text-anchor="middle" fill="#52c41a" font-size="10">process_batch</text>
+    <text x="500" y="88" text-anchor="middle" fill="#9a93b8" font-size="10">check →</text>
+    <text x="500" y="100" text-anchor="middle" fill="#52c41a" font-size="10">is_valid</text>
   </svg>
   <div class="diag-cap">৪০-লাইন monster → ৪টি নামযুক্ত ফাংশন। প্রতিটা নাম বলে কী করে। পড়লে ইংরেজির মতো মনে হয়।</div>
 </div>
@@ -416,15 +416,15 @@ service.register('teams', TeamsNotification())
     <rect x="20" y="28" width="180" height="160" rx="8" fill="rgba(239,68,68,0.04)" stroke="#ef4444" stroke-width="1.5"/>
     <text x="110" y="45" text-anchor="middle" fill="#ef4444" font-size="8" font-family="monospace">send_notification()</text>
     <rect x="30" y="55" width="160" height="20" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
-    <text x="110" y="69" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">if email: smtp.send()</text>
+    <text x="110" y="69" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">if email: smtp.send()</text>
     <rect x="30" y="80" width="160" height="20" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
-    <text x="110" y="94" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">elif sms: twilio.send()</text>
+    <text x="110" y="94" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">elif sms: twilio.send()</text>
     <rect x="30" y="105" width="160" height="20" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
-    <text x="110" y="119" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">elif slack: slack.post()</text>
+    <text x="110" y="119" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">elif slack: slack.post()</text>
     <rect x="30" y="130" width="160" height="20" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
-    <text x="110" y="144" text-anchor="middle" fill="#9a93b8" font-size="7" font-family="monospace">elif push: fcm.send()</text>
+    <text x="110" y="144" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">elif push: fcm.send()</text>
     <text x="110" y="165" text-anchor="middle" fill="#ef4444" font-size="8">৫ম? ফাংশন খোলো!</text>
-    <text x="110" y="178" text-anchor="middle" fill="#9a93b8" font-size="7">Closed for extension ❌</text>
+    <text x="110" y="178" text-anchor="middle" fill="#9a93b8" font-size="10">Closed for extension ❌</text>
     <!-- Arrow -->
     <line x1="205" y1="100" x2="255" y2="100" stroke="#a5b4fc" stroke-width="2"/>
     <text x="230" y="93" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">GoF</text>
@@ -432,22 +432,22 @@ service.register('teams', TeamsNotification())
     <text x="390" y="20" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">✅ After: Strategy Pattern</text>
     <rect x="260" y="28" width="280" height="35" rx="6" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="2"/>
     <text x="400" y="50" text-anchor="middle" fill="#a5b4fc" font-size="9" font-family="monospace" font-weight="bold">NotificationService.notify()</text>
-    <text x="400" y="75" text-anchor="middle" fill="#9a93b8" font-size="7">↓ delegates to ↓</text>
+    <text x="400" y="75" text-anchor="middle" fill="#9a93b8" font-size="10">↓ delegates to ↓</text>
     <!-- Interface -->
     <rect x="320" y="85" width="160" height="25" rx="5" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5"/>
     <text x="400" y="102" text-anchor="middle" fill="#a78bfa" font-size="8" font-family="monospace">NotificationStrategy (ABC)</text>
-    <text x="400" y="125" text-anchor="middle" fill="#9a93b8" font-size="7">↓ implements ↓</text>
+    <text x="400" y="125" text-anchor="middle" fill="#9a93b8" font-size="10">↓ implements ↓</text>
     <!-- Strategy classes -->
     <rect x="260" y="135" width="60" height="30" rx="5" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
-    <text x="290" y="154" text-anchor="middle" fill="#52c41a" font-size="7">Email</text>
+    <text x="290" y="154" text-anchor="middle" fill="#52c41a" font-size="10">Email</text>
     <rect x="325" y="135" width="60" height="30" rx="5" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
-    <text x="355" y="154" text-anchor="middle" fill="#52c41a" font-size="7">SMS</text>
+    <text x="355" y="154" text-anchor="middle" fill="#52c41a" font-size="10">SMS</text>
     <rect x="390" y="135" width="60" height="30" rx="5" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
-    <text x="420" y="154" text-anchor="middle" fill="#52c41a" font-size="7">Slack</text>
+    <text x="420" y="154" text-anchor="middle" fill="#52c41a" font-size="10">Slack</text>
     <rect x="455" y="135" width="60" height="30" rx="5" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
-    <text x="485" y="154" text-anchor="middle" fill="#52c41a" font-size="7">Push</text>
+    <text x="485" y="154" text-anchor="middle" fill="#52c41a" font-size="10">Push</text>
     <rect x="390" y="135" width="70" height="30" rx="5" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2"/>
-    <text x="525" y="154" text-anchor="middle" fill="#fbbf24" font-size="7">+Teams</text>
+    <text x="525" y="154" text-anchor="middle" fill="#fbbf24" font-size="10">+Teams</text>
     <text x="400" y="190" text-anchor="middle" fill="#a5b4fc" font-size="8">নতুন channel? নতুন class।</text>
     <text x="400" y="205" text-anchor="middle" fill="#a5b4fc" font-size="8">if/elif ছোঁয়ো না!</text>
     <text x="400" y="222" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Open for extension ✅</text>
@@ -580,18 +580,18 @@ task = TaskFactory.create('bug', 'Fix crash', user)
     <line x1="250" y1="70" x2="100" y2="120" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrO)"/>
     <line x1="280" y1="70" x2="280" y2="120" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrO)"/>
     <line x1="310" y1="70" x2="460" y2="120" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrO)"/>
-    <text x="160" y="95" text-anchor="middle" fill="#9a93b8" font-size="7">notify()</text>
-    <text x="360" y="95" text-anchor="middle" fill="#9a93b8" font-size="7">notify()</text>
-    <text x="400" y="95" text-anchor="middle" fill="#9a93b8" font-size="7">notify()</text>
+    <text x="160" y="95" text-anchor="middle" fill="#9a93b8" font-size="10">notify()</text>
+    <text x="360" y="95" text-anchor="middle" fill="#9a93b8" font-size="10">notify()</text>
+    <text x="400" y="95" text-anchor="middle" fill="#9a93b8" font-size="10">notify()</text>
     <rect x="30" y="125" width="140" height="40" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="100" y="145" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">EmailObserver</text>
-    <text x="100" y="158" text-anchor="middle" fill="#9a93b8" font-size="7">send_email()</text>
+    <text x="100" y="158" text-anchor="middle" fill="#9a93b8" font-size="10">send_email()</text>
     <rect x="210" y="125" width="140" height="40" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="360" y="145" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">AnalyticsObserver</text>
-    <text x="360" y="158" text-anchor="middle" fill="#9a93b8" font-size="7">track_event()</text>
+    <text x="360" y="158" text-anchor="middle" fill="#9a93b8" font-size="10">track_event()</text>
     <rect x="390" y="125" width="140" height="40" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="460" y="145" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">AuditLogObserver</text>
-    <text x="460" y="158" text-anchor="middle" fill="#9a93b8" font-size="7">log_audit()</text>
+    <text x="460" y="158" text-anchor="middle" fill="#9a93b8" font-size="10">log_audit()</text>
     <rect x="20" y="180" width="680" height="55" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="200" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Loose Coupling: Task doesn't know WHO receives</text>
     <text x="360" y="215" text-anchor="middle" fill="#9a93b8" font-size="8">নতুন observer? add_observer() — Task class ছোঁয়ো না</text>

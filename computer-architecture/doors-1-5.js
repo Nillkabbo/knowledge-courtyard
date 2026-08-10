@@ -272,35 +272,35 @@ doors.push({
 
   <!-- Instr 1 -->
   <text x="55" y="175" text-anchor="middle" fill="#94a3b8" font-size="9">ADD</text>
-  <rect x="110" y="162" width="40" height="18" rx="3" fill="#0ea5e9" opacity=".6"/><text x="130" y="175" text-anchor="middle" fill="#7dd3fc" font-size="7">IF</text>
-  <rect x="160" y="162" width="40" height="18" rx="3" fill="#818cf8" opacity=".6"/><text x="180" y="175" text-anchor="middle" fill="#c7d2fe" font-size="7">ID</text>
-  <rect x="210" y="162" width="40" height="18" rx="3" fill="#f97316" opacity=".6"/><text x="230" y="175" text-anchor="middle" fill="#fdba74" font-size="7">EX</text>
-  <rect x="260" y="162" width="40" height="18" rx="3" fill="#a855f7" opacity=".6"/><text x="280" y="175" text-anchor="middle" fill="#d8b4fe" font-size="7">MEM</text>
-  <rect x="310" y="162" width="40" height="18" rx="3" fill="#22c55e" opacity=".6"/><text x="330" y="175" text-anchor="middle" fill="#86efac" font-size="7">WB</text>
+  <rect x="110" y="162" width="40" height="18" rx="3" fill="#0ea5e9" opacity=".6"/><text x="130" y="175" text-anchor="middle" fill="#7dd3fc" font-size="10">IF</text>
+  <rect x="160" y="162" width="40" height="18" rx="3" fill="#818cf8" opacity=".6"/><text x="180" y="175" text-anchor="middle" fill="#c7d2fe" font-size="10">ID</text>
+  <rect x="210" y="162" width="40" height="18" rx="3" fill="#f97316" opacity=".6"/><text x="230" y="175" text-anchor="middle" fill="#fdba74" font-size="10">EX</text>
+  <rect x="260" y="162" width="40" height="18" rx="3" fill="#a855f7" opacity=".6"/><text x="280" y="175" text-anchor="middle" fill="#d8b4fe" font-size="10">MEM</text>
+  <rect x="310" y="162" width="40" height="18" rx="3" fill="#22c55e" opacity=".6"/><text x="330" y="175" text-anchor="middle" fill="#86efac" font-size="10">WB</text>
 
   <!-- Instr 2 -->
   <text x="55" y="195" text-anchor="middle" fill="#94a3b8" font-size="9">SUB</text>
-  <rect x="160" y="182" width="40" height="18" rx="3" fill="#0ea5e9" opacity=".6"/><text x="180" y="195" text-anchor="middle" fill="#7dd3fc" font-size="7">IF</text>
-  <rect x="210" y="182" width="40" height="18" rx="3" fill="#818cf8" opacity=".6"/><text x="230" y="195" text-anchor="middle" fill="#c7d2fe" font-size="7">ID</text>
-  <rect x="260" y="182" width="40" height="18" rx="3" fill="#f97316" opacity=".6"/><text x="280" y="195" text-anchor="middle" fill="#fdba74" font-size="7">EX</text>
-  <rect x="310" y="182" width="40" height="18" rx="3" fill="#a855f7" opacity=".6"/><text x="330" y="195" text-anchor="middle" fill="#d8b4fe" font-size="7">MEM</text>
-  <rect x="360" y="182" width="40" height="18" rx="3" fill="#22c55e" opacity=".6"/><text x="380" y="195" text-anchor="middle" fill="#86efac" font-size="7">WB</text>
+  <rect x="160" y="182" width="40" height="18" rx="3" fill="#0ea5e9" opacity=".6"/><text x="180" y="195" text-anchor="middle" fill="#7dd3fc" font-size="10">IF</text>
+  <rect x="210" y="182" width="40" height="18" rx="3" fill="#818cf8" opacity=".6"/><text x="230" y="195" text-anchor="middle" fill="#c7d2fe" font-size="10">ID</text>
+  <rect x="260" y="182" width="40" height="18" rx="3" fill="#f97316" opacity=".6"/><text x="280" y="195" text-anchor="middle" fill="#fdba74" font-size="10">EX</text>
+  <rect x="310" y="182" width="40" height="18" rx="3" fill="#a855f7" opacity=".6"/><text x="330" y="195" text-anchor="middle" fill="#d8b4fe" font-size="10">MEM</text>
+  <rect x="360" y="182" width="40" height="18" rx="3" fill="#22c55e" opacity=".6"/><text x="380" y="195" text-anchor="middle" fill="#86efac" font-size="10">WB</text>
 
   <!-- Instr 3 -->
   <text x="55" y="215" text-anchor="middle" fill="#94a3b8" font-size="9">LW</text>
-  <rect x="210" y="202" width="40" height="18" rx="3" fill="#0ea5e9" opacity=".6"/><text x="230" y="215" text-anchor="middle" fill="#7dd3fc" font-size="7">IF</text>
-  <rect x="260" y="202" width="40" height="18" rx="3" fill="#818cf8" opacity=".6"/><text x="280" y="215" text-anchor="middle" fill="#c7d2fe" font-size="7">ID</text>
-  <rect x="310" y="202" width="40" height="18" rx="3" fill="#f97316" opacity=".6"/><text x="330" y="215" text-anchor="middle" fill="#fdba74" font-size="7">EX</text>
-  <rect x="360" y="202" width="40" height="18" rx="3" fill="#a855f7" opacity=".6"/><text x="380" y="215" text-anchor="middle" fill="#d8b4fe" font-size="7">MEM</text>
-  <rect x="410" y="202" width="40" height="18" rx="3" fill="#22c55e" opacity=".6"/><text x="430" y="215" text-anchor="middle" fill="#86efac" font-size="7">WB</text>
+  <rect x="210" y="202" width="40" height="18" rx="3" fill="#0ea5e9" opacity=".6"/><text x="230" y="215" text-anchor="middle" fill="#7dd3fc" font-size="10">IF</text>
+  <rect x="260" y="202" width="40" height="18" rx="3" fill="#818cf8" opacity=".6"/><text x="280" y="215" text-anchor="middle" fill="#c7d2fe" font-size="10">ID</text>
+  <rect x="310" y="202" width="40" height="18" rx="3" fill="#f97316" opacity=".6"/><text x="330" y="215" text-anchor="middle" fill="#fdba74" font-size="10">EX</text>
+  <rect x="360" y="202" width="40" height="18" rx="3" fill="#a855f7" opacity=".6"/><text x="380" y="215" text-anchor="middle" fill="#d8b4fe" font-size="10">MEM</text>
+  <rect x="410" y="202" width="40" height="18" rx="3" fill="#22c55e" opacity=".6"/><text x="430" y="215" text-anchor="middle" fill="#86efac" font-size="10">WB</text>
 
   <!-- Instr 4 -->
   <text x="55" y="235" text-anchor="middle" fill="#94a3b8" font-size="9">SW</text>
-  <rect x="260" y="222" width="40" height="18" rx="3" fill="#0ea5e9" opacity=".6"/><text x="280" y="235" text-anchor="middle" fill="#7dd3fc" font-size="7">IF</text>
-  <rect x="310" y="222" width="40" height="18" rx="3" fill="#818cf8" opacity=".6"/><text x="330" y="235" text-anchor="middle" fill="#c7d2fe" font-size="7">ID</text>
-  <rect x="360" y="222" width="40" height="18" rx="3" fill="#f97316" opacity=".6"/><text x="380" y="235" text-anchor="middle" fill="#fdba74" font-size="7">EX</text>
-  <rect x="410" y="222" width="40" height="18" rx="3" fill="#a855f7" opacity=".6"/><text x="430" y="235" text-anchor="middle" fill="#d8b4fe" font-size="7">MEM</text>
-  <rect x="460" y="222" width="40" height="18" rx="3" fill="#22c55e" opacity=".6"/><text x="480" y="235" text-anchor="middle" fill="#86efac" font-size="7">WB</text>
+  <rect x="260" y="222" width="40" height="18" rx="3" fill="#0ea5e9" opacity=".6"/><text x="280" y="235" text-anchor="middle" fill="#7dd3fc" font-size="10">IF</text>
+  <rect x="310" y="222" width="40" height="18" rx="3" fill="#818cf8" opacity=".6"/><text x="330" y="235" text-anchor="middle" fill="#c7d2fe" font-size="10">ID</text>
+  <rect x="360" y="222" width="40" height="18" rx="3" fill="#f97316" opacity=".6"/><text x="380" y="235" text-anchor="middle" fill="#fdba74" font-size="10">EX</text>
+  <rect x="410" y="222" width="40" height="18" rx="3" fill="#a855f7" opacity=".6"/><text x="430" y="235" text-anchor="middle" fill="#d8b4fe" font-size="10">MEM</text>
+  <rect x="460" y="222" width="40" height="18" rx="3" fill="#22c55e" opacity=".6"/><text x="480" y="235" text-anchor="middle" fill="#86efac" font-size="10">WB</text>
 
   <text x="290" y="270" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">প্রতি cycle-এ একটা instruction শেষ হয়! 5x throughput.</text>
   <text x="290" y="285" text-anchor="middle" fill="#64748b" font-size="9" font-style="italic">Without pipeline: 5 cycles per instruction. With pipeline: 1 instruction per cycle.</text>

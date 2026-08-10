@@ -80,30 +80,30 @@ doors.push({
   <rect x="20" y="95" width="100" height="60" rx="8" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="70" y="115" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">MySQL</text>
   <text x="70" y="132" text-anchor="middle" fill="#fcd34d" font-size="8">OLTP</text>
-  <text x="70" y="146" text-anchor="middle" fill="#94a3b8" font-size="7">INSERT/UPDATE</text>
+  <text x="70" y="146" text-anchor="middle" fill="#94a3b8" font-size="10">INSERT/UPDATE</text>
   <rect x="140" y="95" width="90" height="60" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="185" y="115" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="bold">binlog</text>
-  <text x="185" y="132" text-anchor="middle" fill="#7dd3fc" font-size="7">transaction log</text>
-  <text x="185" y="146" text-anchor="middle" fill="#94a3b8" font-size="7">row-level</text>
+  <text x="185" y="132" text-anchor="middle" fill="#7dd3fc" font-size="10">transaction log</text>
+  <text x="185" y="146" text-anchor="middle" fill="#94a3b8" font-size="10">row-level</text>
   <rect x="250" y="95" width="100" height="60" rx="8" fill="#1e3a5f" stroke="#4ade80" stroke-width="1.5"/>
   <text x="300" y="115" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Debezium</text>
-  <text x="300" y="132" text-anchor="middle" fill="#4ade80" font-size="7">reads log</text>
-  <text x="300" y="146" text-anchor="middle" fill="#94a3b8" font-size="7">emits events</text>
+  <text x="300" y="132" text-anchor="middle" fill="#4ade80" font-size="10">reads log</text>
+  <text x="300" y="146" text-anchor="middle" fill="#94a3b8" font-size="10">emits events</text>
   <rect x="370" y="95" width="90" height="60" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="415" y="115" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="bold">Kafka</text>
-  <text x="415" y="132" text-anchor="middle" fill="#7dd3fc" font-size="7">topic</text>
-  <text x="415" y="146" text-anchor="middle" fill="#94a3b8" font-size="7">stream</text>
+  <text x="415" y="132" text-anchor="middle" fill="#7dd3fc" font-size="10">topic</text>
+  <text x="415" y="146" text-anchor="middle" fill="#94a3b8" font-size="10">stream</text>
   <rect x="480" y="95" width="80" height="60" rx="8" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="520" y="115" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">OLAP</text>
-  <text x="520" y="132" text-anchor="middle" fill="#fcd34d" font-size="7">apply</text>
-  <text x="520" y="146" text-anchor="middle" fill="#94a3b8" font-size="7">real-time</text>
+  <text x="520" y="132" text-anchor="middle" fill="#fcd34d" font-size="10">apply</text>
+  <text x="520" y="146" text-anchor="middle" fill="#94a3b8" font-size="10">real-time</text>
   <line x1="120" y1="125" x2="138" y2="125" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrDE6)"/>
   <line x1="230" y1="125" x2="248" y2="125" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrDE6)"/>
   <line x1="350" y1="125" x2="368" y2="125" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrDE6)"/>
   <line x1="460" y1="125" x2="478" y2="125" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrDE6)"/>
   <rect x="160" y="180" width="260" height="45" rx="6" fill="#0f172a" stroke="#475569" stroke-width="0.5"/>
   <text x="290" y="198" text-anchor="middle" fill="#7dd3fc" font-size="8">event: {op:u, before:{amt:500}, after:{amt:1000}}</text>
-  <text x="290" y="213" text-anchor="middle" fill="#64748b" font-size="7">no batch — real-time replication</text>
+  <text x="290" y="213" text-anchor="middle" fill="#64748b" font-size="10">no batch — real-time replication</text>
 </svg>
 </div>
 <div class="svg-caption">CDC — binlog পড়ে Debezium প্রতিটি INSERT/UPDATE/DELETE event হিসেবে Kafka-তে পাঠায়। Real-time, batch নয়।</div>
@@ -201,29 +201,29 @@ doors.push({
   <text x="290" y="26" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="bold">Kafka — Topic with Partitions</text>
   <rect x="20" y="60" width="70" height="50" rx="6" fill="#1e3a5f" stroke="#4ade80" stroke-width="1.5"/>
   <text x="55" y="80" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Producer</text>
-  <text x="55" y="95" text-anchor="middle" fill="#94a3b8" font-size="7">writes</text>
+  <text x="55" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">writes</text>
   <!-- topic box -->
   <rect x="120" y="50" width="340" height="150" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="290" y="68" text-anchor="middle" fill="#22d3ee" font-size="9" font-weight="bold">Topic: transactions (4 partitions)</text>
   <!-- partitions -->
   <rect x="135" y="78" width="75" height="110" rx="4" fill="#1e3a5f" stroke="#475569" stroke-width="0.5"/>
-  <text x="172" y="92" text-anchor="middle" fill="#7dd3fc" font-size="7">P0</text>
+  <text x="172" y="92" text-anchor="middle" fill="#7dd3fc" font-size="10">P0</text>
   <rect x="145" y="100" width="55" height="14" fill="#0f172a" stroke="#475569" stroke-width="0.3"/>
-  <text x="148" y="110" fill="#94a3b8" font-size="6">m1 off:0</text>
+  <text x="148" y="110" fill="#94a3b8" font-size="10">m1 off:0</text>
   <rect x="145" y="116" width="55" height="14" fill="#0f172a" stroke="#475569" stroke-width="0.3"/>
-  <text x="148" y="126" fill="#94a3b8" font-size="6">m5 off:1</text>
+  <text x="148" y="126" fill="#94a3b8" font-size="10">m5 off:1</text>
   <rect x="225" y="78" width="75" height="110" rx="4" fill="#1e3a5f" stroke="#475569" stroke-width="0.5"/>
-  <text x="262" y="92" text-anchor="middle" fill="#7dd3fc" font-size="7">P1</text>
+  <text x="262" y="92" text-anchor="middle" fill="#7dd3fc" font-size="10">P1</text>
   <rect x="235" y="100" width="55" height="14" fill="#0f172a" stroke="#475569" stroke-width="0.3"/>
-  <text x="238" y="110" fill="#94a3b8" font-size="6">m2 off:0</text>
+  <text x="238" y="110" fill="#94a3b8" font-size="10">m2 off:0</text>
   <rect x="315" y="78" width="75" height="110" rx="4" fill="#1e3a5f" stroke="#475569" stroke-width="0.5"/>
-  <text x="352" y="92" text-anchor="middle" fill="#7dd3fc" font-size="7">P2</text>
+  <text x="352" y="92" text-anchor="middle" fill="#7dd3fc" font-size="10">P2</text>
   <rect x="325" y="100" width="55" height="14" fill="#0f172a" stroke="#475569" stroke-width="0.3"/>
-  <text x="328" y="110" fill="#94a3b8" font-size="6">m3 off:0</text>
+  <text x="328" y="110" fill="#94a3b8" font-size="10">m3 off:0</text>
   <rect x="405" y="78" width="45" height="110" rx="4" fill="#1e3a5f" stroke="#475569" stroke-width="0.5"/>
-  <text x="427" y="92" text-anchor="middle" fill="#7dd3fc" font-size="7">P3</text>
+  <text x="427" y="92" text-anchor="middle" fill="#7dd3fc" font-size="10">P3</text>
   <rect x="412" y="100" width="32" height="14" fill="#0f172a" stroke="#475569" stroke-width="0.3"/>
-  <text x="415" y="110" fill="#94a3b8" font-size="6">m4</text>
+  <text x="415" y="110" fill="#94a3b8" font-size="10">m4</text>
   <line x1="90" y1="85" x2="133" y2="100" stroke="#22d3ee" stroke-width="1" marker-end="url(#arrDE7)"/>
   <line x1="90" y1="85" x2="223" y2="100" stroke="#22d3ee" stroke-width="1" marker-end="url(#arrDE7)"/>
   <line x1="90" y1="85" x2="313" y2="100" stroke="#22d3ee" stroke-width="1" marker-end="url(#arrDE7)"/>
@@ -231,8 +231,8 @@ doors.push({
   <!-- consumer group -->
   <rect x="475" y="60" width="90" height="50" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="520" y="78" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">Consumer</text>
-  <text x="520" y="92" text-anchor="middle" fill="#fcd34d" font-size="7">Group</text>
-  <text x="520" y="103" text-anchor="middle" fill="#94a3b8" font-size="7">4 readers</text>
+  <text x="520" y="92" text-anchor="middle" fill="#fcd34d" font-size="10">Group</text>
+  <text x="520" y="103" text-anchor="middle" fill="#94a3b8" font-size="10">4 readers</text>
   <line x1="460" y1="110" x2="475" y2="85" stroke="#fbbf24" stroke-width="1" marker-end="url(#arrDE7)"/>
   <text x="290" y="222" text-anchor="middle" fill="#64748b" font-size="8">প্রতিটি partition-এ এক consumer — সমান ভাগ। Retention: দিন/সপ্তাহ।</text>
 </svg>
@@ -332,32 +332,32 @@ doors.push({
   <!-- raw -->
   <rect x="20" y="105" width="90" height="40" rx="6" fill="#1e3a5f" stroke="#94a3b8" stroke-width="1.5"/>
   <text x="65" y="122" text-anchor="middle" fill="#94a3b8" font-size="8" font-weight="bold">raw_table</text>
-  <text x="65" y="135" text-anchor="middle" fill="#64748b" font-size="7">source</text>
+  <text x="65" y="135" text-anchor="middle" fill="#64748b" font-size="10">source</text>
   <!-- staging -->
   <rect x="140" y="60" width="90" height="40" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="185" y="78" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">stg_txns</text>
-  <text x="185" y="91" text-anchor="middle" fill="#fcd34d" font-size="7">clean cast</text>
+  <text x="185" y="91" text-anchor="middle" fill="#fcd34d" font-size="10">clean cast</text>
   <rect x="140" y="150" width="90" height="40" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="185" y="168" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">dim_users</text>
-  <text x="185" y="181" text-anchor="middle" fill="#fcd34d" font-size="7">clean</text>
+  <text x="185" y="181" text-anchor="middle" fill="#fcd34d" font-size="10">clean</text>
   <!-- intermediate -->
   <rect x="270" y="105" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="320" y="122" text-anchor="middle" fill="#22d3ee" font-size="8" font-weight="bold">int_spending</text>
-  <text x="320" y="135" text-anchor="middle" fill="#7dd3fc" font-size="7">join+agg</text>
+  <text x="320" y="135" text-anchor="middle" fill="#7dd3fc" font-size="10">join+agg</text>
   <!-- mart -->
   <rect x="410" y="105" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#4ade80" stroke-width="2"/>
   <text x="460" y="122" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">user_summary</text>
-  <text x="460" y="135" text-anchor="middle" fill="#4ade80" font-size="7">final mart</text>
+  <text x="460" y="135" text-anchor="middle" fill="#4ade80" font-size="10">final mart</text>
   <line x1="110" y1="120" x2="138" y2="80" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#arrDE8)"/>
   <line x1="110" y1="130" x2="138" y2="170" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#arrDE8)"/>
   <line x1="230" y1="80" x2="268" y2="120" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#arrDE8)"/>
   <line x1="230" y1="170" x2="268" y2="130" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#arrDE8)"/>
   <line x1="370" y1="125" x2="408" y2="125" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrDE8)"/>
-  <text x="65" y="165" text-anchor="middle" fill="#64748b" font-size="7">ref() links</text>
-  <text x="460" y="165" text-anchor="middle" fill="#64748b" font-size="7">tested</text>
+  <text x="65" y="165" text-anchor="middle" fill="#64748b" font-size="10">ref() links</text>
+  <text x="460" y="165" text-anchor="middle" fill="#64748b" font-size="10">tested</text>
   <rect x="20" y="200" width="540" height="35" rx="6" fill="#0f172a" stroke="#475569" stroke-width="0.5"/>
   <text x="290" y="216" text-anchor="middle" fill="#7dd3fc" font-size="8">dbt run = ক্রমানুসারে execute</text>
-  <text x="290" y="228" text-anchor="middle" fill="#64748b" font-size="7">dbt test = not_null, unique, accepted_values</text>
+  <text x="290" y="228" text-anchor="middle" fill="#64748b" font-size="10">dbt test = not_null, unique, accepted_values</text>
 </svg>
 </div>
 <div class="svg-caption">dbt — প্রতিটি model একটি SQL file, ref() দিয়ে সংযুক্ত। Staging → intermediate → mart ক্রমে।</div>
@@ -460,30 +460,30 @@ doors.push({
   <rect x="20" y="55" width="160" height="90" rx="8" fill="#1e3a5f" stroke="#4ade80" stroke-width="1.5"/>
   <text x="100" y="75" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Data Lake</text>
   <text x="100" y="92" text-anchor="middle" fill="#94a3b8" font-size="8">S3 / GCS</text>
-  <text x="100" y="108" text-anchor="middle" fill="#64748b" font-size="7">cheap, raw</text>
-  <text x="100" y="124" text-anchor="middle" fill="#64748b" font-size="7">no ACID (old)</text>
-  <text x="100" y="138" text-anchor="middle" fill="#fbbf24" font-size="7">PB scale</text>
+  <text x="100" y="108" text-anchor="middle" fill="#64748b" font-size="10">cheap, raw</text>
+  <text x="100" y="124" text-anchor="middle" fill="#64748b" font-size="10">no ACID (old)</text>
+  <text x="100" y="138" text-anchor="middle" fill="#fbbf24" font-size="10">PB scale</text>
   <!-- metadata layer -->
   <rect x="210" y="55" width="160" height="90" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="290" y="75" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="bold">Table Format</text>
   <text x="290" y="92" text-anchor="middle" fill="#7dd3fc" font-size="8">Iceberg / Delta</text>
-  <text x="290" y="108" text-anchor="middle" fill="#64748b" font-size="7">metadata layer</text>
-  <text x="290" y="124" text-anchor="middle" fill="#4ade80" font-size="7">+ ACID transaction</text>
-  <text x="290" y="138" text-anchor="middle" fill="#4ade80" font-size="7">+ time travel</text>
+  <text x="290" y="108" text-anchor="middle" fill="#64748b" font-size="10">metadata layer</text>
+  <text x="290" y="124" text-anchor="middle" fill="#4ade80" font-size="10">+ ACID transaction</text>
+  <text x="290" y="138" text-anchor="middle" fill="#4ade80" font-size="10">+ time travel</text>
   <!-- warehouse features -->
   <rect x="400" y="55" width="160" height="90" rx="8" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="480" y="75" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">Warehouse Power</text>
-  <text x="480" y="92" text-anchor="middle" fill="#fcd34d" font-size="7">schema evolution</text>
-  <text x="480" y="108" text-anchor="middle" fill="#fcd34d" font-size="7">snapshot isolation</text>
-  <text x="480" y="124" text-anchor="middle" fill="#fcd34d" font-size="7">MERGE/UPSERT</text>
-  <text x="480" y="138" text-anchor="middle" fill="#64748b" font-size="7">multi-engine</text>
+  <text x="480" y="92" text-anchor="middle" fill="#fcd34d" font-size="10">schema evolution</text>
+  <text x="480" y="108" text-anchor="middle" fill="#fcd34d" font-size="10">snapshot isolation</text>
+  <text x="480" y="124" text-anchor="middle" fill="#fcd34d" font-size="10">MERGE/UPSERT</text>
+  <text x="480" y="138" text-anchor="middle" fill="#64748b" font-size="10">multi-engine</text>
   <line x1="180" y1="100" x2="208" y2="100" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrDE9)"/>
   <line x1="370" y1="100" x2="398" y2="100" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrDE9)"/>
   <!-- time travel -->
   <rect x="100" y="165" width="380" height="60" rx="6" fill="#0f172a" stroke="#475569" stroke-width="0.5"/>
   <text x="290" y="183" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="bold">Time Travel</text>
   <text x="290" y="200" text-anchor="middle" fill="#94a3b8" font-size="8">SELECT ... FOR VERSION AS OF '2026-07-01'</text>
-  <text x="290" y="215" text-anchor="middle" fill="#64748b" font-size="7">অতীত version পড়ো — snapshot history</text>
+  <text x="290" y="215" text-anchor="middle" fill="#64748b" font-size="10">অতীত version পড়ো — snapshot history</text>
 </svg>
 </div>
 <div class="svg-caption">Lakehouse — Data Lake-এ Iceberg/Delta metadata যোগ করে ACID, time travel, schema evolution। সস্তা ও শক্তিশালী একসাথে।</div>
@@ -597,32 +597,32 @@ doors.push({
   <text x="290" y="26" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="bold">Full Pipeline — Transaction to Insight</text>
   <rect x="10" y="70" width="75" height="50" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="47" y="90" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">MySQL</text>
-  <text x="47" y="104" text-anchor="middle" fill="#fcd34d" font-size="7">OLTP</text>
-  <text x="47" y="116" text-anchor="middle" fill="#64748b" font-size="6">Door 1</text>
+  <text x="47" y="104" text-anchor="middle" fill="#fcd34d" font-size="10">OLTP</text>
+  <text x="47" y="116" text-anchor="middle" fill="#64748b" font-size="10">Door 1</text>
   <rect x="100" y="70" width="70" height="50" rx="6" fill="#1e3a5f" stroke="#4ade80" stroke-width="1.5"/>
   <text x="135" y="90" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">CDC</text>
-  <text x="135" y="104" text-anchor="middle" fill="#4ade80" font-size="7">Debezium</text>
-  <text x="135" y="116" text-anchor="middle" fill="#64748b" font-size="6">Door 6</text>
+  <text x="135" y="104" text-anchor="middle" fill="#4ade80" font-size="10">Debezium</text>
+  <text x="135" y="116" text-anchor="middle" fill="#64748b" font-size="10">Door 6</text>
   <rect x="185" y="70" width="70" height="50" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="220" y="90" text-anchor="middle" fill="#22d3ee" font-size="8" font-weight="bold">Kafka</text>
-  <text x="220" y="104" text-anchor="middle" fill="#7dd3fc" font-size="7">stream</text>
-  <text x="220" y="116" text-anchor="middle" fill="#64748b" font-size="6">Door 7</text>
+  <text x="220" y="104" text-anchor="middle" fill="#7dd3fc" font-size="10">stream</text>
+  <text x="220" y="116" text-anchor="middle" fill="#64748b" font-size="10">Door 7</text>
   <rect x="270" y="70" width="70" height="50" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="305" y="90" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">Spark</text>
-  <text x="305" y="104" text-anchor="middle" fill="#fcd34d" font-size="7">transform</text>
-  <text x="305" y="116" text-anchor="middle" fill="#64748b" font-size="6">Door 4</text>
+  <text x="305" y="104" text-anchor="middle" fill="#fcd34d" font-size="10">transform</text>
+  <text x="305" y="116" text-anchor="middle" fill="#64748b" font-size="10">Door 4</text>
   <rect x="355" y="70" width="70" height="50" rx="6" fill="#1e3a5f" stroke="#4ade80" stroke-width="1.5"/>
   <text x="390" y="90" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">dbt</text>
-  <text x="390" y="104" text-anchor="middle" fill="#4ade80" font-size="7">model</text>
-  <text x="390" y="116" text-anchor="middle" fill="#64748b" font-size="6">Door 8</text>
+  <text x="390" y="104" text-anchor="middle" fill="#4ade80" font-size="10">model</text>
+  <text x="390" y="116" text-anchor="middle" fill="#64748b" font-size="10">Door 8</text>
   <rect x="440" y="70" width="70" height="50" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="475" y="90" text-anchor="middle" fill="#22d3ee" font-size="8" font-weight="bold">Iceberg</text>
-  <text x="475" y="104" text-anchor="middle" fill="#7dd3fc" font-size="7">store</text>
-  <text x="475" y="116" text-anchor="middle" fill="#64748b" font-size="6">Door 9</text>
+  <text x="475" y="104" text-anchor="middle" fill="#7dd3fc" font-size="10">store</text>
+  <text x="475" y="116" text-anchor="middle" fill="#64748b" font-size="10">Door 9</text>
   <rect x="525" y="70" width="45" height="50" rx="6" fill="#1e3a5f" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="547" y="90" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">BI</text>
-  <text x="547" y="104" text-anchor="middle" fill="#fcd34d" font-size="7">dashboard</text>
-  <text x="547" y="116" text-anchor="middle" fill="#64748b" font-size="6">insight</text>
+  <text x="547" y="104" text-anchor="middle" fill="#fcd34d" font-size="10">dashboard</text>
+  <text x="547" y="116" text-anchor="middle" fill="#64748b" font-size="10">insight</text>
   <line x1="85" y1="95" x2="98" y2="95" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#arrDE10)"/>
   <line x1="170" y1="95" x2="183" y2="95" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#arrDE10)"/>
   <line x1="255" y1="95" x2="268" y2="95" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#arrDE10)"/>

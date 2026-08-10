@@ -48,35 +48,35 @@ RAM-কে fixed-size block-এ ভাগ করো — page (সাধারণ
   <rect x="20" y="50" width="120" height="180" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="80" y="72" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">Virtual Addr</text>
   <rect x="35" y="82" width="90" height="20" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
-  <text x="80" y="96" text-anchor="middle" fill="#7dd3fc" font-size="7">Page #:3 Offset:12</text>
+  <text x="80" y="96" text-anchor="middle" fill="#7dd3fc" font-size="10">Page #:3 Offset:12</text>
   <rect x="35" y="112" width="90" height="20" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
-  <text x="80" y="126" text-anchor="middle" fill="#7dd3fc" font-size="7">Page #:7 Offset:0</text>
+  <text x="80" y="126" text-anchor="middle" fill="#7dd3fc" font-size="10">Page #:7 Offset:0</text>
   <rect x="35" y="142" width="90" height="20" rx="3" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
-  <text x="80" y="156" text-anchor="middle" fill="#fca5a5" font-size="7">Page #:12 (swapped)</text>
-  <text x="80" y="190" text-anchor="middle" fill="#94a3b8" font-size="7">Each process sees</text>
-  <text x="80" y="205" text-anchor="middle" fill="#94a3b8" font-size="7">its own full address</text>
-  <text x="80" y="220" text-anchor="middle" fill="#67e8f9" font-size="7">space (illusion!)</text>
+  <text x="80" y="156" text-anchor="middle" fill="#fca5a5" font-size="10">Page #:12 (swapped)</text>
+  <text x="80" y="190" text-anchor="middle" fill="#94a3b8" font-size="10">Each process sees</text>
+  <text x="80" y="205" text-anchor="middle" fill="#94a3b8" font-size="10">its own full address</text>
+  <text x="80" y="220" text-anchor="middle" fill="#67e8f9" font-size="10">space (illusion!)</text>
   <rect x="200" y="60" width="140" height="160" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
   <text x="270" y="82" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">Page Table</text>
   <rect x="215" y="92" width="110" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="270" y="105" text-anchor="middle" fill="#4ade80" font-size="7">VPN 3 → Frame 7 ✓</text>
+  <text x="270" y="105" text-anchor="middle" fill="#4ade80" font-size="10">VPN 3 → Frame 7 ✓</text>
   <rect x="215" y="115" width="110" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="270" y="128" text-anchor="middle" fill="#4ade80" font-size="7">VPN 7 → Frame 2 ✓</text>
+  <text x="270" y="128" text-anchor="middle" fill="#4ade80" font-size="10">VPN 7 → Frame 2 ✓</text>
   <rect x="215" y="138" width="110" height="18" rx="3" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
-  <text x="270" y="151" text-anchor="middle" fill="#fca5a5" font-size="7">VPN 12 → DISK ⚠️</text>
-  <text x="270" y="175" text-anchor="middle" fill="#fbbf24" font-size="7">TLB cache: fast lookup</text>
-  <text x="270" y="195" text-anchor="middle" fill="#94a3b8" font-size="7">Page fault → disk → swap</text>
+  <text x="270" y="151" text-anchor="middle" fill="#fca5a5" font-size="10">VPN 12 → DISK ⚠️</text>
+  <text x="270" y="175" text-anchor="middle" fill="#fbbf24" font-size="10">TLB cache: fast lookup</text>
+  <text x="270" y="195" text-anchor="middle" fill="#94a3b8" font-size="10">Page fault → disk → swap</text>
   <rect x="400" y="50" width="160" height="180" rx="8" fill="#1e3a5f" stroke="#22c55e" stroke-width="2"/>
   <text x="480" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Physical RAM</text>
   <rect x="415" y="82" width="130" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="480" y="95" text-anchor="middle" fill="#4ade80" font-size="7">Frame 0: Process A</text>
+  <text x="480" y="95" text-anchor="middle" fill="#4ade80" font-size="10">Frame 0: Process A</text>
   <rect x="415" y="105" width="130" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="480" y="118" text-anchor="middle" fill="#4ade80" font-size="7">Frame 2: VPN 7 data</text>
+  <text x="480" y="118" text-anchor="middle" fill="#4ade80" font-size="10">Frame 2: VPN 7 data</text>
   <rect x="415" y="128" width="130" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="480" y="141" text-anchor="middle" fill="#4ade80" font-size="7">Frame 7: VPN 3 data</text>
-  <text x="480" y="170" text-anchor="middle" fill="#94a3b8" font-size="7">Multiple processes</text>
-  <text x="480" y="185" text-anchor="middle" fill="#94a3b8" font-size="7">share one RAM</text>
-  <text x="480" y="205" text-anchor="middle" fill="#67e8f9" font-size="7">4KB pages typical</text>
+  <text x="480" y="141" text-anchor="middle" fill="#4ade80" font-size="10">Frame 7: VPN 3 data</text>
+  <text x="480" y="170" text-anchor="middle" fill="#94a3b8" font-size="10">Multiple processes</text>
+  <text x="480" y="185" text-anchor="middle" fill="#94a3b8" font-size="10">share one RAM</text>
+  <text x="480" y="205" text-anchor="middle" fill="#67e8f9" font-size="10">4KB pages typical</text>
   <line x1="140" y1="95" x2="200" y2="100" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrM)"/>
   <line x1="340" y1="100" x2="400" y2="115" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrM)"/>
   <defs><marker id="arrM" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#fbbf24"/></marker></defs>
@@ -184,33 +184,33 @@ stat() → inode তথ্য দেখো</div></div>
   <rect x="20" y="50" width="140" height="180" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
   <text x="90" y="72" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">Directory Entry</text>
   <rect x="35" y="82" width="110" height="18" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="90" y="95" text-anchor="middle" fill="#7dd3fc" font-size="7">"report.txt" → inode 42</text>
+  <text x="90" y="95" text-anchor="middle" fill="#7dd3fc" font-size="10">"report.txt" → inode 42</text>
   <rect x="35" y="105" width="110" height="18" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="90" y="118" text-anchor="middle" fill="#7dd3fc" font-size="7">"photo.jpg" → inode 17</text>
-  <text x="90" y="145" text-anchor="middle" fill="#94a3b8" font-size="7">Name → inode number</text>
-  <text x="90" y="162" text-anchor="middle" fill="#94a3b8" font-size="7">(directory = table)</text>
+  <text x="90" y="118" text-anchor="middle" fill="#7dd3fc" font-size="10">"photo.jpg" → inode 17</text>
+  <text x="90" y="145" text-anchor="middle" fill="#94a3b8" font-size="10">Name → inode number</text>
+  <text x="90" y="162" text-anchor="middle" fill="#94a3b8" font-size="10">(directory = table)</text>
   <rect x="210" y="50" width="160" height="180" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
   <text x="290" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">inode #42</text>
   <rect x="225" y="82" width="130" height="16" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="290" y="93" text-anchor="middle" fill="#86efac" font-size="6">Mode: -rw-r--r--</text>
+  <text x="290" y="93" text-anchor="middle" fill="#86efac" font-size="10">Mode: -rw-r--r--</text>
   <rect x="225" y="102" width="130" height="16" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="290" y="113" text-anchor="middle" fill="#86efac" font-size="6">Owner: rakib · Size: 12KB</text>
+  <text x="290" y="113" text-anchor="middle" fill="#86efac" font-size="10">Owner: rakib · Size: 12KB</text>
   <rect x="225" y="122" width="130" height="16" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="290" y="133" text-anchor="middle" fill="#86efac" font-size="6">12 direct + 1 indirect</text>
+  <text x="290" y="133" text-anchor="middle" fill="#86efac" font-size="10">12 direct + 1 indirect</text>
   <rect x="225" y="142" width="130" height="16" rx="3" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="290" y="153" text-anchor="middle" fill="#fcd34d" font-size="6">Block ptr: 101, 102, 103...</text>
-  <text x="290" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">Metadata + pointers</text>
-  <text x="290" y="195" text-anchor="middle" fill="#94a3b8" font-size="7">NO filename stored!</text>
+  <text x="290" y="153" text-anchor="middle" fill="#fcd34d" font-size="10">Block ptr: 101, 102, 103...</text>
+  <text x="290" y="180" text-anchor="middle" fill="#94a3b8" font-size="10">Metadata + pointers</text>
+  <text x="290" y="195" text-anchor="middle" fill="#94a3b8" font-size="10">NO filename stored!</text>
   <rect x="420" y="50" width="140" height="180" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
   <text x="490" y="72" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">Data Blocks</text>
   <rect x="435" y="82" width="110" height="18" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="490" y="95" text-anchor="middle" fill="#7dd3fc" font-size="7">Block 101: "Hello"</text>
+  <text x="490" y="95" text-anchor="middle" fill="#7dd3fc" font-size="10">Block 101: "Hello"</text>
   <rect x="435" y="105" width="110" height="18" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="490" y="118" text-anchor="middle" fill="#7dd3fc" font-size="7">Block 102: "World"</text>
+  <text x="490" y="118" text-anchor="middle" fill="#7dd3fc" font-size="10">Block 102: "World"</text>
   <rect x="435" y="128" width="110" height="18" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="490" y="141" text-anchor="middle" fill="#7dd3fc" font-size="7">Block 103: "..."</text>
-  <text x="490" y="170" text-anchor="middle" fill="#94a3b8" font-size="7">4KB each on disk</text>
-  <text x="490" y="190" text-anchor="middle" fill="#4ade80" font-size="7">ext4: journaled ✅</text>
+  <text x="490" y="141" text-anchor="middle" fill="#7dd3fc" font-size="10">Block 103: "..."</text>
+  <text x="490" y="170" text-anchor="middle" fill="#94a3b8" font-size="10">4KB each on disk</text>
+  <text x="490" y="190" text-anchor="middle" fill="#4ade80" font-size="10">ext4: journaled ✅</text>
   <line x1="160" y1="95" x2="210" y2="95" stroke="#fcd34d" stroke-width="2" marker-end="url(#arrF)"/>
   <line x1="370" y1="130" x2="420" y2="95" stroke="#4ade80" stroke-width="2" marker-end="url(#arrF)"/>
   <defs><marker id="arrF" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
@@ -311,35 +311,35 @@ doors.push({
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔌 Polling vs Interrupt vs DMA</text>
   <rect x="20" y="50" width="170" height="180" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="105" y="72" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">❌ POLLING</text>
-  <text x="105" y="92" text-anchor="middle" fill="#fca5a5" font-size="7">CPU: "Ready?"</text>
-  <text x="105" y="105" text-anchor="middle" fill="#f87171" font-size="7">Device: "No"</text>
-  <text x="105" y="120" text-anchor="middle" fill="#fca5a5" font-size="7">CPU: "Ready?"</text>
-  <text x="105" y="133" text-anchor="middle" fill="#f87171" font-size="7">Device: "No"</text>
-  <text x="105" y="148" text-anchor="middle" fill="#fca5a5" font-size="7">CPU: "Ready?"</text>
-  <text x="105" y="161" text-anchor="middle" fill="#4ade80" font-size="7">Device: "Yes!"</text>
-  <text x="105" y="185" text-anchor="middle" fill="#f87171" font-size="7">CPU waste: 99%</text>
-  <text x="105" y="200" text-anchor="middle" fill="#94a3b8" font-size="6">simple but slow</text>
+  <text x="105" y="92" text-anchor="middle" fill="#fca5a5" font-size="10">CPU: "Ready?"</text>
+  <text x="105" y="105" text-anchor="middle" fill="#f87171" font-size="10">Device: "No"</text>
+  <text x="105" y="120" text-anchor="middle" fill="#fca5a5" font-size="10">CPU: "Ready?"</text>
+  <text x="105" y="133" text-anchor="middle" fill="#f87171" font-size="10">Device: "No"</text>
+  <text x="105" y="148" text-anchor="middle" fill="#fca5a5" font-size="10">CPU: "Ready?"</text>
+  <text x="105" y="161" text-anchor="middle" fill="#4ade80" font-size="10">Device: "Yes!"</text>
+  <text x="105" y="185" text-anchor="middle" fill="#f87171" font-size="10">CPU waste: 99%</text>
+  <text x="105" y="200" text-anchor="middle" fill="#94a3b8" font-size="10">simple but slow</text>
   <rect x="205" y="50" width="170" height="180" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
   <text x="290" y="72" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">⚠️ INTERRUPT</text>
-  <text x="290" y="92" text-anchor="middle" fill="#fde68a" font-size="7">CPU does other work</text>
-  <text x="290" y="110" text-anchor="middle" fill="#fcd34d" font-size="7">Device: "IRQ!"</text>
+  <text x="290" y="92" text-anchor="middle" fill="#fde68a" font-size="10">CPU does other work</text>
+  <text x="290" y="110" text-anchor="middle" fill="#fcd34d" font-size="10">Device: "IRQ!"</text>
   <rect x="225" y="120" width="130" height="22" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="290" y="135" text-anchor="middle" fill="#7dd3fc" font-size="7">CPU saves state</text>
+  <text x="290" y="135" text-anchor="middle" fill="#7dd3fc" font-size="10">CPU saves state</text>
   <rect x="225" y="148" width="130" height="22" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="290" y="163" text-anchor="middle" fill="#4ade80" font-size="7">ISR handler runs</text>
+  <text x="290" y="163" text-anchor="middle" fill="#4ade80" font-size="10">ISR handler runs</text>
   <rect x="225" y="176" width="130" height="22" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="290" y="191" text-anchor="middle" fill="#7dd3fc" font-size="7">CPU resumes</text>
-  <text x="290" y="215" text-anchor="middle" fill="#fcd34d" font-size="7">CPU transfer: byte-by-byte</text>
+  <text x="290" y="191" text-anchor="middle" fill="#7dd3fc" font-size="10">CPU resumes</text>
+  <text x="290" y="215" text-anchor="middle" fill="#fcd34d" font-size="10">CPU transfer: byte-by-byte</text>
   <rect x="390" y="50" width="170" height="180" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="475" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">✅ DMA</text>
-  <text x="475" y="92" text-anchor="middle" fill="#86efac" font-size="7">CPU: "DMA, transfer N bytes"</text>
-  <text x="475" y="110" text-anchor="middle" fill="#4ade80" font-size="7">CPU does OTHER work!</text>
+  <text x="475" y="92" text-anchor="middle" fill="#86efac" font-size="10">CPU: "DMA, transfer N bytes"</text>
+  <text x="475" y="110" text-anchor="middle" fill="#4ade80" font-size="10">CPU does OTHER work!</text>
   <rect x="410" y="122" width="130" height="22" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="475" y="137" text-anchor="middle" fill="#7dd3fc" font-size="7">DMA → Memory (direct)</text>
-  <text x="475" y="160" text-anchor="middle" fill="#4ade80" font-size="7">Device: "Done!"</text>
-  <text x="475" y="180" text-anchor="middle" fill="#4ade80" font-size="7">CPU: one IRQ only</text>
-  <text x="475" y="205" text-anchor="middle" fill="#4ade80" font-size="7">CPU waste: ~0%</text>
-  <text x="475" y="220" text-anchor="middle" fill="#94a3b8" font-size="6">fastest — used by all modern I/O</text>
+  <text x="475" y="137" text-anchor="middle" fill="#7dd3fc" font-size="10">DMA → Memory (direct)</text>
+  <text x="475" y="160" text-anchor="middle" fill="#4ade80" font-size="10">Device: "Done!"</text>
+  <text x="475" y="180" text-anchor="middle" fill="#4ade80" font-size="10">CPU: one IRQ only</text>
+  <text x="475" y="205" text-anchor="middle" fill="#4ade80" font-size="10">CPU waste: ~0%</text>
+  <text x="475" y="220" text-anchor="middle" fill="#94a3b8" font-size="10">fastest — used by all modern I/O</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Polling (CPU waste) → Interrupt (better) → DMA (best — CPU free during transfer)।</div>
@@ -441,12 +441,12 @@ doors.push({
   <text x="150" y="72" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">CONTAINER (Docker)</text>
   <rect x="35" y="82" width="80" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
   <text x="75" y="100" text-anchor="middle" fill="#7dd3fc" font-size="8">App A</text>
-  <text x="75" y="112" text-anchor="middle" fill="#94a3b8" font-size="6">+ libs</text>
+  <text x="75" y="112" text-anchor="middle" fill="#94a3b8" font-size="10">+ libs</text>
   <rect x="125" y="82" width="80" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
   <text x="165" y="100" text-anchor="middle" fill="#7dd3fc" font-size="8">App B</text>
-  <text x="165" y="112" text-anchor="middle" fill="#94a3b8" font-size="6">+ libs</text>
+  <text x="165" y="112" text-anchor="middle" fill="#94a3b8" font-size="10">+ libs</text>
   <rect x="215" y="82" width="55" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="242" y="100" text-anchor="middle" fill="#7dd3fc" font-size="7">App C</text>
+  <text x="242" y="100" text-anchor="middle" fill="#7dd3fc" font-size="10">App C</text>
   <rect x="35" y="128" width="235" height="22" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="152" y="143" text-anchor="middle" fill="#4ade80" font-size="8">Docker Engine (namespaces + cgroups)</text>
   <rect x="35" y="158" width="235" height="22" rx="4" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
@@ -454,24 +454,24 @@ doors.push({
   <rect x="35" y="188" width="235" height="22" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
   <text x="152" y="203" text-anchor="middle" fill="#94a3b8" font-size="8">Hardware</text>
   <text x="150" y="232" text-anchor="middle" fill="#4ade80" font-size="8">⚡ Boot: ~0.1s · Size: ~50MB</text>
-  <text x="150" y="250" text-anchor="middle" fill="#86efac" font-size="7">Share kernel → lightweight!</text>
+  <text x="150" y="250" text-anchor="middle" fill="#86efac" font-size="10">Share kernel → lightweight!</text>
   <rect x="300" y="50" width="260" height="220" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
   <text x="430" y="72" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">VIRTUAL MACHINE</text>
   <rect x="315" y="82" width="70" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="350" y="100" text-anchor="middle" fill="#7dd3fc" font-size="7">App A</text>
+  <text x="350" y="100" text-anchor="middle" fill="#7dd3fc" font-size="10">App A</text>
   <rect x="395" y="82" width="70" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="430" y="100" text-anchor="middle" fill="#7dd3fc" font-size="7">App B</text>
+  <text x="430" y="100" text-anchor="middle" fill="#7dd3fc" font-size="10">App B</text>
   <rect x="475" y="82" width="70" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="510" y="100" text-anchor="middle" fill="#7dd3fc" font-size="7">App C</text>
+  <text x="510" y="100" text-anchor="middle" fill="#7dd3fc" font-size="10">App C</text>
   <rect x="315" y="124" width="230" height="18" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="430" y="137" text-anchor="middle" fill="#4ade80" font-size="7">Guest OS Kernel (FULL — each VM!)</text>
+  <text x="430" y="137" text-anchor="middle" fill="#4ade80" font-size="10">Guest OS Kernel (FULL — each VM!)</text>
   <rect x="315" y="148" width="230" height="18" rx="4" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="430" y="161" text-anchor="middle" fill="#fcd34d" font-size="7">Hypervisor (VMware/KVM)</text>
+  <text x="430" y="161" text-anchor="middle" fill="#fcd34d" font-size="10">Hypervisor (VMware/KVM)</text>
   <rect x="315" y="172" width="230" height="18" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
-  <text x="430" y="185" text-anchor="middle" fill="#94a3b8" font-size="7">Host OS / Hardware</text>
+  <text x="430" y="185" text-anchor="middle" fill="#94a3b8" font-size="10">Host OS / Hardware</text>
   <text x="430" y="212" text-anchor="middle" fill="#f87171" font-size="8">🐢 Boot: ~30s · Size: ~2GB</text>
-  <text x="430" y="232" text-anchor="middle" fill="#fca5a5" font-size="7">Full kernel copy → heavy!</text>
-  <text x="430" y="250" text-anchor="middle" fill="#94a3b8" font-size="6">Stronger isolation though</text>
+  <text x="430" y="232" text-anchor="middle" fill="#fca5a5" font-size="10">Full kernel copy → heavy!</text>
+  <text x="430" y="250" text-anchor="middle" fill="#94a3b8" font-size="10">Stronger isolation though</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Container = kernel share (হালকা)। VM = full OS copy (ভারী কিন্তু বেশি isolated)।</div>
@@ -599,34 +599,34 @@ python "hello.py" খোলে — open() syscall। filesystem inode খুঁ�
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">fork() Journey: Through All OS Subsystems</text>
   <rect x="220" y="45" width="140" height="35" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="290" y="63" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">fork() called</text>
-  <text x="290" y="75" text-anchor="middle" fill="#94a3b8" font-size="6">syscall #57</text>
+  <text x="290" y="75" text-anchor="middle" fill="#94a3b8" font-size="10">syscall #57</text>
   <rect x="20" y="105" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="70" y="122" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Door 1</text>
-  <text x="70" y="135" text-anchor="middle" fill="#86efac" font-size="6">PCB created</text>
+  <text x="70" y="135" text-anchor="middle" fill="#86efac" font-size="10">PCB created</text>
   <rect x="130" y="105" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="180" y="122" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Door 2</text>
-  <text x="180" y="135" text-anchor="middle" fill="#86efac" font-size="6">Thread copied</text>
+  <text x="180" y="135" text-anchor="middle" fill="#86efac" font-size="10">Thread copied</text>
   <rect x="240" y="105" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="290" y="122" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Door 3</text>
-  <text x="290" y="135" text-anchor="middle" fill="#86efac" font-size="6">Added to scheduler</text>
+  <text x="290" y="135" text-anchor="middle" fill="#86efac" font-size="10">Added to scheduler</text>
   <rect x="350" y="105" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="400" y="122" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Door 4</text>
-  <text x="400" y="135" text-anchor="middle" fill="#86efac" font-size="6">COW semaphore</text>
+  <text x="400" y="135" text-anchor="middle" fill="#86efac" font-size="10">COW semaphore</text>
   <rect x="460" y="105" width="100" height="40" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="510" y="122" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Door 5</text>
-  <text x="510" y="135" text-anchor="middle" fill="#fde68a" font-size="6">Deadlock check</text>
+  <text x="510" y="135" text-anchor="middle" fill="#fde68a" font-size="10">Deadlock check</text>
   <rect x="75" y="165" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="125" y="182" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">Door 6</text>
-  <text x="125" y="195" text-anchor="middle" fill="#bae6fd" font-size="6">VM: COW pages</text>
+  <text x="125" y="195" text-anchor="middle" fill="#bae6fd" font-size="10">VM: COW pages</text>
   <rect x="185" y="165" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="235" y="182" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">Door 7</text>
-  <text x="235" y="195" text-anchor="middle" fill="#bae6fd" font-size="6">File descriptors</text>
+  <text x="235" y="195" text-anchor="middle" fill="#bae6fd" font-size="10">File descriptors</text>
   <rect x="295" y="165" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="345" y="182" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">Door 8</text>
-  <text x="345" y="195" text-anchor="middle" fill="#bae6fd" font-size="6">I/O context</text>
+  <text x="345" y="195" text-anchor="middle" fill="#bae6fd" font-size="10">I/O context</text>
   <rect x="405" y="165" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="455" y="182" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">Door 9</text>
-  <text x="455" y="195" text-anchor="middle" fill="#bae6fd" font-size="6">cgroup inherited</text>
+  <text x="455" y="195" text-anchor="middle" fill="#bae6fd" font-size="10">cgroup inherited</text>
   <rect x="190" y="230" width="200" height="35" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="290" y="253" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Child process ALIVE! 🎉</text>
   <line x1="290" y1="80" x2="70" y2="105" stroke="#475569" stroke-width="1" stroke-dasharray="3,2"/>

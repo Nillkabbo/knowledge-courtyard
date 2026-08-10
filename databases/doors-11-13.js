@@ -87,41 +87,41 @@ pgvector (২০২১) — PostgreSQL extension, Andrew Kane (ankane) তৈর
   <rect x="30" y="50" width="130" height="100" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
   <text x="95" y="72" text-anchor="middle" fill="#67e8f9" font-size="8" font-weight="700">Query: "ML"</text>
   <rect x="45" y="82" width="100" height="18" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="95" y="94" text-anchor="middle" fill="#7dd3fc" font-size="6">[0.2, 0.8, -0.1, ...]</text>
-  <text x="95" y="115" text-anchor="middle" fill="#94a3b8" font-size="6">embedding model</text>
-  <text x="95" y="128" text-anchor="middle" fill="#94a3b8" font-size="6">(1536-dim)</text>
-  <text x="95" y="142" text-anchor="middle" fill="#7dd3fc" font-size="6">→ query vector</text>
+  <text x="95" y="94" text-anchor="middle" fill="#7dd3fc" font-size="10">[0.2, 0.8, -0.1, ...]</text>
+  <text x="95" y="115" text-anchor="middle" fill="#94a3b8" font-size="10">embedding model</text>
+  <text x="95" y="128" text-anchor="middle" fill="#94a3b8" font-size="10">(1536-dim)</text>
+  <text x="95" y="142" text-anchor="middle" fill="#7dd3fc" font-size="10">→ query vector</text>
   <defs><marker id="arrD11a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
   <line x1="160" y1="100" x2="198" y2="100" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD11a)"/>
-  <text x="179" y="93" text-anchor="middle" fill="#c084fc" font-size="6">search</text>
+  <text x="179" y="93" text-anchor="middle" fill="#c084fc" font-size="10">search</text>
   <rect x="200" y="50" width="220" height="170" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
   <text x="310" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Vector Database</text>
   <circle cx="250" cy="100" r="8" fill="#22c55e"/>
-  <text x="250" y="103" text-anchor="middle" fill="#052e16" font-size="6" font-weight="700">A</text>
+  <text x="250" y="103" text-anchor="middle" fill="#052e16" font-size="10" font-weight="700">A</text>
   <circle cx="310" cy="95" r="10" fill="#fbbf24"/>
-  <text x="310" y="98" text-anchor="middle" fill="#451a0a" font-size="6" font-weight="700">Q</text>
+  <text x="310" y="98" text-anchor="middle" fill="#451a0a" font-size="10" font-weight="700">Q</text>
   <circle cx="370" cy="110" r="7" fill="#22d3ee"/>
-  <text x="370" y="113" text-anchor="middle" fill="#0f172a" font-size="6" font-weight="700">B</text>
+  <text x="370" y="113" text-anchor="middle" fill="#0f172a" font-size="10" font-weight="700">B</text>
   <circle cx="270" cy="140" r="6" fill="#a855f7"/>
   <circle cx="350" cy="150" r="6" fill="#f87171"/>
   <circle cx="230" cy="165" r="5" fill="#475569"/>
   <circle cx="390" cy="170" r="5" fill="#475569"/>
   <line x1="316" y1="100" x2="244" y2="100" stroke="#fbbf24" stroke-width="1.5"/>
   <line x1="310" y1="105" x2="270" y2="137" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="240" y="195" text-anchor="middle" fill="#86efac" font-size="6">A: sim=0.92 ✓</text>
-  <text x="350" y="145" text-anchor="middle" fill="#fca5a5" font-size="6">B: sim=0.71</text>
-  <text x="310" y="212" text-anchor="middle" fill="#94a3b8" font-size="6">cosine(q, v) = nearest meaning</text>
+  <text x="240" y="195" text-anchor="middle" fill="#86efac" font-size="10">A: sim=0.92 ✓</text>
+  <text x="350" y="145" text-anchor="middle" fill="#fca5a5" font-size="10">B: sim=0.71</text>
+  <text x="310" y="212" text-anchor="middle" fill="#94a3b8" font-size="10">cosine(q, v) = nearest meaning</text>
   <rect x="440" y="50" width="120" height="100" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
   <text x="500" y="72" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Top-K Result</text>
   <rect x="455" y="82" width="90" height="16" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="500" y="93" text-anchor="middle" fill="#86efac" font-size="6">doc A (0.92)</text>
+  <text x="500" y="93" text-anchor="middle" fill="#86efac" font-size="10">doc A (0.92)</text>
   <rect x="455" y="102" width="90" height="16" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="500" y="113" text-anchor="middle" fill="#86efac" font-size="6">doc C (0.85)</text>
+  <text x="500" y="113" text-anchor="middle" fill="#86efac" font-size="10">doc C (0.85)</text>
   <rect x="455" y="122" width="90" height="16" rx="3" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="500" y="133" text-anchor="middle" fill="#fde68a" font-size="6">doc B (0.71)</text>
+  <text x="500" y="133" text-anchor="middle" fill="#fde68a" font-size="10">doc B (0.71)</text>
   <defs><marker id="arrD11b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>
   <line x1="420" y1="100" x2="438" y2="100" stroke="#22c55e" stroke-width="2" marker-end="url(#arrD11b)"/>
-  <text x="290" y="240" text-anchor="middle" fill="#c084fc" font-size="7">pgvector | Pinecone | Milvus | Chroma | Weaviate</text>
+  <text x="290" y="240" text-anchor="middle" fill="#c084fc" font-size="10">pgvector | Pinecone | Milvus | Chroma | Weaviate</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Query ভেক্টর সবচেয়ে কাছের ডকুমেন্ট ভেক্টর খুঁজে বের করে — cosine similarity দিয়ে।</div>
@@ -285,12 +285,12 @@ GPU-তে চালানোর জন্য অপ্টিমাইজড। 
   <line x1="457" y1="97" x2="503" y2="103" stroke="#86efac" stroke-width="1.5"/>
   <defs><marker id="arrD12a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#f87171"/></marker></defs>
   <line x1="450" y1="102" x2="300" y2="120" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrD12a)"/>
-  <text x="375" y="115" text-anchor="middle" fill="#fca5a5" font-size="6">greedy descent</text>
+  <text x="375" y="115" text-anchor="middle" fill="#fca5a5" font-size="10">greedy descent</text>
   <rect x="210" y="180" width="350" height="55" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
   <text x="385" y="200" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">Exact O(n) vs ANN O(log n)</text>
-  <text x="290" y="218" text-anchor="middle" fill="#f87171" font-size="7">Exact: সব তুলনা → নিখুঁত</text>
-  <text x="470" y="218" text-anchor="middle" fill="#4ade80" font-size="7">ANN: গ্রাফ ট্রাভার্স → ৯৯% নিখুঁত, ১০০০×</text>
-  <text x="385" y="232" text-anchor="middle" fill="#94a3b8" font-size="7">Malkov 2016 | IVF: cluster + probe</text>
+  <text x="290" y="218" text-anchor="middle" fill="#f87171" font-size="10">Exact: সব তুলনা → নিখুঁত</text>
+  <text x="470" y="218" text-anchor="middle" fill="#4ade80" font-size="10">ANN: গ্রাফ ট্রাভার্স → ৯৯% নিখুঁত, ১০০০×</text>
+  <text x="385" y="232" text-anchor="middle" fill="#94a3b8" font-size="10">Malkov 2016 | IVF: cluster + probe</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: HNSW বহু-স্তর গ্রাফ — উপরে কম, নিচে ঘন। দ্রুত descent দিয়ে নিকটতম পয়েন্ট।</div>
@@ -425,40 +425,40 @@ Codd-এর সারি-কলাম থেকে Malkov-এর HNSW গ্র�
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🤖 RAG: Vector + Relational Hybrid</text>
   <rect x="20" y="50" width="100" height="45" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="70" y="70" text-anchor="middle" fill="#67e8f9" font-size="8" font-weight="700">User Query</text>
-  <text x="70" y="85" text-anchor="middle" fill="#7dd3fc" font-size="6">"Explain X"</text>
+  <text x="70" y="85" text-anchor="middle" fill="#7dd3fc" font-size="10">"Explain X"</text>
   <defs><marker id="arrD13a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>
   <line x1="120" y1="72" x2="148" y2="72" stroke="#a855f7" stroke-width="2" marker-end="url(#arrD13a)"/>
   <rect x="150" y="50" width="110" height="45" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
   <text x="205" y="68" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">Embedding</text>
-  <text x="205" y="83" text-anchor="middle" fill="#fde68a" font-size="6">→ query vector</text>
+  <text x="205" y="83" text-anchor="middle" fill="#fde68a" font-size="10">→ query vector</text>
   <rect x="30" y="120" width="200" height="110" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
   <text x="130" y="140" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Vector DB (semantic)</text>
   <rect x="45" y="150" width="80" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="85" y="162" text-anchor="middle" fill="#86efac" font-size="6">doc A (0.92)</text>
+  <text x="85" y="162" text-anchor="middle" fill="#86efac" font-size="10">doc A (0.92)</text>
   <rect x="45" y="172" width="80" height="18" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="85" y="184" text-anchor="middle" fill="#86efac" font-size="6">doc C (0.85)</text>
+  <text x="85" y="184" text-anchor="middle" fill="#86efac" font-size="10">doc C (0.85)</text>
   <rect x="135" y="150" width="80" height="18" rx="3" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
-  <text x="175" y="162" text-anchor="middle" fill="#fde68a" font-size="6">HNSW index</text>
-  <text x="175" y="184" text-anchor="middle" fill="#fde68a" font-size="6">ANN search</text>
-  <text x="130" y="210" text-anchor="middle" fill="#86efac" font-size="6">অর্থ দিয়ে খোঁজে</text>
-  <text x="130" y="222" text-anchor="middle" fill="#94a3b8" font-size="6">Pinecone, pgvector</text>
+  <text x="175" y="162" text-anchor="middle" fill="#fde68a" font-size="10">HNSW index</text>
+  <text x="175" y="184" text-anchor="middle" fill="#fde68a" font-size="10">ANN search</text>
+  <text x="130" y="210" text-anchor="middle" fill="#86efac" font-size="10">অর্থ দিয়ে খোঁজে</text>
+  <text x="130" y="222" text-anchor="middle" fill="#94a3b8" font-size="10">Pinecone, pgvector</text>
   <rect x="250" y="120" width="130" height="110" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
   <text x="315" y="140" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">Relational DB</text>
   <rect x="265" y="150" width="100" height="18" rx="3" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
-  <text x="315" y="162" text-anchor="middle" fill="#c084fc" font-size="6">user_profile</text>
+  <text x="315" y="162" text-anchor="middle" fill="#c084fc" font-size="10">user_profile</text>
   <rect x="265" y="172" width="100" height="18" rx="3" fill="#2e1065" stroke="#a855f7" stroke-width="1"/>
-  <text x="315" y="184" text-anchor="middle" fill="#c084fc" font-size="6">permissions</text>
-  <text x="315" y="210" text-anchor="middle" fill="#c084fc" font-size="6">কাঠামো দিয়ে খোঁজে</text>
-  <text x="315" y="222" text-anchor="middle" fill="#94a3b8" font-size="6">PostgreSQL, MySQL</text>
+  <text x="315" y="184" text-anchor="middle" fill="#c084fc" font-size="10">permissions</text>
+  <text x="315" y="210" text-anchor="middle" fill="#c084fc" font-size="10">কাঠামো দিয়ে খোঁজে</text>
+  <text x="315" y="222" text-anchor="middle" fill="#94a3b8" font-size="10">PostgreSQL, MySQL</text>
   <defs><marker id="arrD13b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>
   <line x1="230" y1="170" x2="248" y2="170" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrD13b)"/>
   <rect x="410" y="120" width="150" height="110" rx="8" fill="#0f172a" stroke="#f87171" stroke-width="2"/>
   <text x="485" y="140" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">LLM (GPT/Claude)</text>
   <rect x="425" y="150" width="120" height="24" rx="4" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
-  <text x="485" y="166" text-anchor="middle" fill="#fca5a5" font-size="6">context + query</text>
-  <text x="485" y="190" text-anchor="middle" fill="#fca5a5" font-size="6">→ grounded answer</text>
-  <text x="485" y="210" text-anchor="middle" fill="#94a3b8" font-size="6">hallucination কমে</text>
-  <text x="485" y="222" text-anchor="middle" fill="#94a3b8" font-size="6">citation সহ</text>
+  <text x="485" y="166" text-anchor="middle" fill="#fca5a5" font-size="10">context + query</text>
+  <text x="485" y="190" text-anchor="middle" fill="#fca5a5" font-size="10">→ grounded answer</text>
+  <text x="485" y="210" text-anchor="middle" fill="#94a3b8" font-size="10">hallucination কমে</text>
+  <text x="485" y="222" text-anchor="middle" fill="#94a3b8" font-size="10">citation সহ</text>
   <defs><marker id="arrD13c" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>
   <line x1="380" y1="170" x2="408" y2="170" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrD13c)"/>
   <defs><marker id="arrD13d" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a855f7"/></marker></defs>

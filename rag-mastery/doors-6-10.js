@@ -189,7 +189,7 @@ doors.push({
   <line x1="470" y1="110" x2="420" y2="155" stroke="#c084fc" stroke-width="2"/>
   <line x1="470" y1="110" x2="520" y2="160" stroke="#c084fc" stroke-width="2"/>
   <line x1="420" y1="155" x2="520" y2="160" stroke="#c084fc" stroke-width="2"/>
-  <text x="470" y="114" text-anchor="middle" fill="#c084fc" font-size="7">E1</text>
+  <text x="470" y="114" text-anchor="middle" fill="#c084fc" font-size="10">E1</text>
   <text x="490" y="200" text-anchor="middle" fill="#94a3b8" font-size="8">entity সম্পর্ক</text>
   <line x1="135" y1="125" x2="245" y2="125" stroke="#7dd3fc" stroke-width="2" marker-end="url(#arrRAG7)"/>
   <line x1="405" y1="125" x2="335" y2="125" stroke="#c084fc" stroke-width="2" marker-end="url(#arrRAG7)"/>
@@ -480,13 +480,13 @@ doors.push({
   <text x="30" y="55" fill="#94a3b8" font-size="9">টোকেন বাজেট (যেমন ৩২K)</text>
   <rect x="32" y="62" width="100" height="66" fill="#3b0764" opacity="0.85"/>
   <text x="82" y="92" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">সিস্টেম</text>
-  <text x="82" y="106" text-anchor="middle" fill="#c084fc" font-size="7">prompt</text>
+  <text x="82" y="106" text-anchor="middle" fill="#c084fc" font-size="10">prompt</text>
   <rect x="132" y="62" width="300" height="66" fill="#14532d" opacity="0.7"/>
   <text x="282" y="92" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">রিট্রিভ করা চাঙ্ক</text>
-  <text x="282" y="106" text-anchor="middle" fill="#4ade80" font-size="7">সবচেয়ে গুরুত্বপূর্ণ নিচে</text>
+  <text x="282" y="106" text-anchor="middle" fill="#4ade80" font-size="10">সবচেয়ে গুরুত্বপূর্ণ নিচে</text>
   <rect x="432" y="62" width="116" height="66" fill="#1e3a5f" opacity="0.85"/>
   <text x="490" y="92" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="bold">ইউজার প্রশ্ন</text>
-  <text x="490" y="106" text-anchor="middle" fill="#7dd3fc" font-size="7">সবার নিচে</text>
+  <text x="490" y="106" text-anchor="middle" fill="#7dd3fc" font-size="10">সবার নিচে</text>
   <rect x="30" y="140" width="520" height="26" rx="6" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5,3"/>
   <text x="290" y="158" text-anchor="middle" fill="#fcd34d" font-size="9">⚠ overflow অঞ্চল — বেশি চাঙ্ক দিলে কাটা পড়ে</text>
   <text x="60" y="200" fill="#4ade80" font-size="9">✅ fix: কম কিন্তু প্রাসঙ্গিক চাঙ্ক</text>

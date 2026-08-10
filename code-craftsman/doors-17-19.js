@@ -105,36 +105,36 @@ def create_task(request):
     <text x="120" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Giant try-except</text>
     <rect x="20" y="30" width="200" height="180" rx="8" fill="rgba(239,68,68,0.04)" stroke="#ef4444" stroke-width="1.5"/>
     <text x="120" y="48" text-anchor="middle" fill="#ef4444" font-size="9" font-family="monospace">try:</text>
-    <text x="30" y="65" fill="#9a93b8" font-size="7" font-family="monospace">parse json</text>
-    <text x="30" y="80" fill="#9a93b8" font-size="7" font-family="monospace">find user</text>
-    <text x="30" y="95" fill="#9a93b8" font-size="7" font-family="monospace">save task</text>
-    <text x="30" y="110" fill="#9a93b8" font-size="7" font-family="monospace">send email</text>
-    <text x="30" y="125" fill="#9a93b8" font-size="7" font-family="monospace">log activity</text>
+    <text x="30" y="65" fill="#9a93b8" font-size="10" font-family="monospace">parse json</text>
+    <text x="30" y="80" fill="#9a93b8" font-size="10" font-family="monospace">find user</text>
+    <text x="30" y="95" fill="#9a93b8" font-size="10" font-family="monospace">save task</text>
+    <text x="30" y="110" fill="#9a93b8" font-size="10" font-family="monospace">send email</text>
+    <text x="30" y="125" fill="#9a93b8" font-size="10" font-family="monospace">log activity</text>
     <text x="120" y="150" text-anchor="middle" fill="#ef4444" font-size="9" font-family="monospace">except:</text>
     <text x="120" y="168" text-anchor="middle" fill="#ef4444" font-size="8" font-family="monospace">return None</text>
-    <text x="120" y="195" text-anchor="middle" fill="#ef4444" font-size="7">৫ ধরনের error → ১ catch</text>
-    <text x="120" y="207" text-anchor="middle" fill="#ef4444" font-size="7">silent failure</text>
+    <text x="120" y="195" text-anchor="middle" fill="#ef4444" font-size="10">৫ ধরনের error → ১ catch</text>
+    <text x="120" y="207" text-anchor="middle" fill="#ef4444" font-size="10">silent failure</text>
     <!-- Arrow -->
     <line x1="225" y1="100" x2="275" y2="100" stroke="#a5b4fc" stroke-width="2"/>
     <text x="250" y="93" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">fix</text>
     <!-- Specific catches -->
     <text x="410" y="20" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">✅ Specific catches</text>
     <rect x="290" y="30" width="240" height="22" rx="4" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1"/>
-    <text x="410" y="45" text-anchor="middle" fill="#52c41a" font-size="7" font-family="monospace">try: json.loads() → JSONDecodeError</text>
+    <text x="410" y="45" text-anchor="middle" fill="#52c41a" font-size="10" font-family="monospace">try: json.loads() → JSONDecodeError</text>
     <rect x="290" y="57" width="240" height="22" rx="4" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1"/>
-    <text x="410" y="72" text-anchor="middle" fill="#52c41a" font-size="7" font-family="monospace">validate_title() → ValueError</text>
+    <text x="410" y="72" text-anchor="middle" fill="#52c41a" font-size="10" font-family="monospace">validate_title() → ValueError</text>
     <rect x="290" y="84" width="240" height="22" rx="4" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1"/>
-    <text x="410" y="99" text-anchor="middle" fill="#52c41a" font-size="7" font-family="monospace">try: db.find() → ConnectionError</text>
+    <text x="410" y="99" text-anchor="middle" fill="#52c41a" font-size="10" font-family="monospace">try: db.find() → ConnectionError</text>
     <rect x="290" y="111" width="240" height="22" rx="4" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1"/>
-    <text x="410" y="126" text-anchor="middle" fill="#52c41a" font-size="7" font-family="monospace">try: db.save() → IntegrityError</text>
+    <text x="410" y="126" text-anchor="middle" fill="#52c41a" font-size="10" font-family="monospace">try: db.save() → IntegrityError</text>
     <rect x="290" y="138" width="240" height="22" rx="4" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1"/>
-    <text x="410" y="153" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">try: send_email() → SMTPError (log)</text>
-    <text x="410" y="180" text-anchor="middle" fill="#a5b4fc" font-size="7">৫ ধরনের error → ৫ নির্দিষ্ট catch</text>
-    <text x="410" y="195" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">Each error is visible</text>
+    <text x="410" y="153" text-anchor="middle" fill="#fbbf24" font-size="10" font-family="monospace">try: send_email() → SMTPError (log)</text>
+    <text x="410" y="180" text-anchor="middle" fill="#a5b4fc" font-size="10">৫ ধরনের error → ৫ নির্দিষ্ট catch</text>
+    <text x="410" y="195" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">Each error is visible</text>
     <!-- Bottom rules -->
     <rect x="20" y="225" width="680" height="38" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="242" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Martin's Rules: Small try · Specific catch · Custom exceptions</text>
-    <text x="360" y="255" text-anchor="middle" fill="#9a93b8" font-size="7">Exception শুধু অস্বাভাবিক অবস্থায় — flow control নয়</text>
+    <text x="360" y="255" text-anchor="middle" fill="#9a93b8" font-size="10">Exception শুধু অস্বাভাবিক অবস্থায় — flow control নয়</text>
   </svg>
   <div class="diag-cap">বিশাল try-except → নির্দিষ্ট catch। প্রতিটা error দৃশ্যমান। Silent failure = নীরব মৃত্যু।</div>
 </div>
@@ -308,19 +308,19 @@ def process_task(task_id):
     <!-- Core function -->
     <rect x="190" y="20" width="180" height="35" rx="6" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="2"/>
     <text x="360" y="38" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">process_task()</text>
-    <text x="360" y="50" text-anchor="middle" fill="#9a93b8" font-size="7">Core function — just logic</text>
+    <text x="360" y="50" text-anchor="middle" fill="#9a93b8" font-size="10">Core function — just logic</text>
     <!-- Layer 1: retry -->
     <rect x="140" y="65" width="280" height="35" rx="6" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3,2"/>
     <text x="360" y="83" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="bold">@retry(max_attempts=3)</text>
-    <text x="360" y="95" text-anchor="middle" fill="#9a93b8" font-size="7">+ retries on failure</text>
+    <text x="360" y="95" text-anchor="middle" fill="#9a93b8" font-size="10">+ retries on failure</text>
     <!-- Layer 2: timer -->
     <rect x="90" y="110" width="380" height="35" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5" stroke-dasharray="3,2"/>
     <text x="360" y="128" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">@timer</text>
-    <text x="360" y="140" text-anchor="middle" fill="#9a93b8" font-size="7">+ measures execution time</text>
+    <text x="360" y="140" text-anchor="middle" fill="#9a93b8" font-size="10">+ measures execution time</text>
     <!-- Layer 3: log -->
     <rect x="40" y="155" width="480" height="35" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2"/>
     <text x="360" y="173" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">@log</text>
-    <text x="360" y="185" text-anchor="middle" fill="#9a93b8" font-size="7">+ logs entry/exit</text>
+    <text x="360" y="185" text-anchor="middle" fill="#9a93b8" font-size="10">+ logs entry/exit</text>
     <!-- Result -->
     <rect x="40" y="200" width="480" height="30" rx="6" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="2"/>
     <text x="360" y="219" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">1 function, 4 behaviors — no subclassing!</text>
@@ -492,23 +492,23 @@ urgent_titles = sorted(
     <!-- map -->
     <rect x="20" y="20" width="160" height="85" rx="8" fill="rgba(99,102,241,0.06)" stroke="#6366f1" stroke-width="1.5"/>
     <text x="100" y="38" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">map(f, list)</text>
-    <text x="100" y="55" text-anchor="middle" fill="#9a93b8" font-size="7">প্রতিটা element-এ f</text>
+    <text x="100" y="55" text-anchor="middle" fill="#9a93b8" font-size="10">প্রতিটা element-এ f</text>
     <text x="100" y="75" text-anchor="middle" fill="#52c41a" font-size="8" font-family="monospace">[1, 2, 3]</text>
-    <text x="100" y="87" text-anchor="middle" fill="#9a93b8" font-size="7">↓ ×2</text>
+    <text x="100" y="87" text-anchor="middle" fill="#9a93b8" font-size="10">↓ ×2</text>
     <text x="100" y="100" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">[2, 4, 6]</text>
     <!-- filter -->
     <rect x="200" y="20" width="160" height="85" rx="8" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="360" y="38" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">filter(f, list)</text>
-    <text x="360" y="55" text-anchor="middle" fill="#9a93b8" font-size="7">শর্ত মেলে এমন রাখো</text>
+    <text x="360" y="55" text-anchor="middle" fill="#9a93b8" font-size="10">শর্ত মেলে এমন রাখো</text>
     <text x="360" y="75" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">[1, 2, 3, 4]</text>
-    <text x="360" y="87" text-anchor="middle" fill="#9a93b8" font-size="7">↓ even?</text>
+    <text x="360" y="87" text-anchor="middle" fill="#9a93b8" font-size="10">↓ even?</text>
     <text x="360" y="100" text-anchor="middle" fill="#52c41a" font-size="8" font-family="monospace">[2, 4]</text>
     <!-- reduce -->
     <rect x="380" y="20" width="160" height="85" rx="8" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="460" y="38" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">reduce(f, list)</text>
-    <text x="460" y="55" text-anchor="middle" fill="#9a93b8" font-size="7">সব একত্রিত করো</text>
+    <text x="460" y="55" text-anchor="middle" fill="#9a93b8" font-size="10">সব একত্রিত করো</text>
     <text x="460" y="75" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">[1, 2, 3, 4]</text>
-    <text x="460" y="87" text-anchor="middle" fill="#9a93b8" font-size="7">↓ sum</text>
+    <text x="460" y="87" text-anchor="middle" fill="#9a93b8" font-size="10">↓ sum</text>
     <text x="460" y="100" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace">10</text>
     <!-- Pipeline -->
     <text x="360" y="135" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">Composition Pipeline</text>
@@ -520,7 +520,7 @@ urgent_titles = sorted(
     <line x1="295" y1="158" x2="315" y2="158" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrHOF)"/>
     <rect x="320" y="145" width="120" height="25" rx="4" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1"/>
     <text x="380" y="162" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace">sort: by length</text>
-    <text x="470" y="162" fill="#a5b4fc" font-size="7">→ result</text>
+    <text x="470" y="162" fill="#a5b4fc" font-size="10">→ result</text>
     <!-- Rule -->
     <rect x="20" y="190" width="600" height="80" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="210" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">SICP: "Think in transformations, not instructions"</text>
@@ -683,56 +683,56 @@ class TaskService:
     <!-- S -->
     <rect x="20" y="40" width="100" height="110" rx="6" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
     <text x="70" y="60" text-anchor="middle" fill="#a5b4fc" font-size="20" font-weight="bold">S</text>
-    <text x="70" y="78" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Single</text>
-    <text x="70" y="88" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Responsibility</text>
-    <text x="70" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">এক class</text>
-    <text x="70" y="115" text-anchor="middle" fill="#9a93b8" font-size="6">এক কারণ</text>
-    <text x="70" y="130" text-anchor="middle" fill="#9a93b8" font-size="6">বদলায়</text>
-    <text x="70" y="143" text-anchor="middle" fill="#a5b4fc" font-size="6" font-weight="bold">SRP</text>
+    <text x="70" y="78" text-anchor="middle" fill="#9a93b8" font-size="10" font-weight="bold">Single</text>
+    <text x="70" y="88" text-anchor="middle" fill="#9a93b8" font-size="10" font-weight="bold">Responsibility</text>
+    <text x="70" y="105" text-anchor="middle" fill="#9a93b8" font-size="10">এক class</text>
+    <text x="70" y="115" text-anchor="middle" fill="#9a93b8" font-size="10">এক কারণ</text>
+    <text x="70" y="130" text-anchor="middle" fill="#9a93b8" font-size="10">বদলায়</text>
+    <text x="70" y="143" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">SRP</text>
     <!-- O -->
     <rect x="130" y="40" width="100" height="110" rx="6" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="180" y="60" text-anchor="middle" fill="#52c41a" font-size="20" font-weight="bold">O</text>
-    <text x="180" y="78" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Open/Closed</text>
-    <text x="180" y="98" text-anchor="middle" fill="#9a93b8" font-size="6">সম্প্রসারণে খোলা</text>
-    <text x="180" y="108" text-anchor="middle" fill="#9a93b8" font-size="6">পরিবর্তনে বন্ধ</text>
-    <text x="180" y="125" text-anchor="middle" fill="#9a93b8" font-size="6">(Door 8: Strategy)</text>
-    <text x="180" y="143" text-anchor="middle" fill="#52c41a" font-size="6" font-weight="bold">OCP</text>
+    <text x="180" y="78" text-anchor="middle" fill="#9a93b8" font-size="10" font-weight="bold">Open/Closed</text>
+    <text x="180" y="98" text-anchor="middle" fill="#9a93b8" font-size="10">সম্প্রসারণে খোলা</text>
+    <text x="180" y="108" text-anchor="middle" fill="#9a93b8" font-size="10">পরিবর্তনে বন্ধ</text>
+    <text x="180" y="125" text-anchor="middle" fill="#9a93b8" font-size="10">(Door 8: Strategy)</text>
+    <text x="180" y="143" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">OCP</text>
     <!-- L -->
     <rect x="240" y="40" width="100" height="110" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="290" y="60" text-anchor="middle" fill="#fbbf24" font-size="20" font-weight="bold">L</text>
-    <text x="290" y="78" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Liskov</text>
-    <text x="290" y="88" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Substitution</text>
-    <text x="290" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">subclass বসালে</text>
-    <text x="290" y="115" text-anchor="middle" fill="#9a93b8" font-size="6">কোড ভাঙবে না</text>
-    <text x="290" y="130" text-anchor="middle" fill="#9a93b8" font-size="6">Penguin ✗</text>
-    <text x="290" y="143" text-anchor="middle" fill="#fbbf24" font-size="6" font-weight="bold">LSP</text>
+    <text x="290" y="78" text-anchor="middle" fill="#9a93b8" font-size="10" font-weight="bold">Liskov</text>
+    <text x="290" y="88" text-anchor="middle" fill="#9a93b8" font-size="10" font-weight="bold">Substitution</text>
+    <text x="290" y="105" text-anchor="middle" fill="#9a93b8" font-size="10">subclass বসালে</text>
+    <text x="290" y="115" text-anchor="middle" fill="#9a93b8" font-size="10">কোড ভাঙবে না</text>
+    <text x="290" y="130" text-anchor="middle" fill="#9a93b8" font-size="10">Penguin ✗</text>
+    <text x="290" y="143" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">LSP</text>
     <!-- I -->
     <rect x="350" y="40" width="100" height="110" rx="6" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5"/>
     <text x="400" y="60" text-anchor="middle" fill="#a78bfa" font-size="20" font-weight="bold">I</text>
-    <text x="400" y="78" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Interface</text>
-    <text x="400" y="88" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Segregation</text>
-    <text x="400" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">অনেক ছোট</text>
-    <text x="400" y="115" text-anchor="middle" fill="#9a93b8" font-size="6">interface</text>
-    <text x="400" y="130" text-anchor="middle" fill="#9a93b8" font-size="6">এক বড় নয়</text>
-    <text x="400" y="143" text-anchor="middle" fill="#a78bfa" font-size="6" font-weight="bold">ISP</text>
+    <text x="400" y="78" text-anchor="middle" fill="#9a93b8" font-size="10" font-weight="bold">Interface</text>
+    <text x="400" y="88" text-anchor="middle" fill="#9a93b8" font-size="10" font-weight="bold">Segregation</text>
+    <text x="400" y="105" text-anchor="middle" fill="#9a93b8" font-size="10">অনেক ছোট</text>
+    <text x="400" y="115" text-anchor="middle" fill="#9a93b8" font-size="10">interface</text>
+    <text x="400" y="130" text-anchor="middle" fill="#9a93b8" font-size="10">এক বড় নয়</text>
+    <text x="400" y="143" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold">ISP</text>
     <!-- D -->
     <rect x="460" y="40" width="100" height="110" rx="6" fill="rgba(240,98,146,0.08)" stroke="#f06292" stroke-width="1.5"/>
     <text x="510" y="60" text-anchor="middle" fill="#f06292" font-size="20" font-weight="bold">D</text>
-    <text x="510" y="78" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Dependency</text>
-    <text x="510" y="88" text-anchor="middle" fill="#9a93b8" font-size="7" font-weight="bold">Inversion</text>
-    <text x="510" y="105" text-anchor="middle" fill="#9a93b8" font-size="6">abstraction-এ</text>
-    <text x="510" y="115" text-anchor="middle" fill="#9a93b8" font-size="6">নির্ভর করো</text>
-    <text x="510" y="130" text-anchor="middle" fill="#9a93b8" font-size="6">concrete নয়</text>
-    <text x="510" y="143" text-anchor="middle" fill="#f06292" font-size="6" font-weight="bold">DIP</text>
+    <text x="510" y="78" text-anchor="middle" fill="#9a93b8" font-size="10" font-weight="bold">Dependency</text>
+    <text x="510" y="88" text-anchor="middle" fill="#9a93b8" font-size="10" font-weight="bold">Inversion</text>
+    <text x="510" y="105" text-anchor="middle" fill="#9a93b8" font-size="10">abstraction-এ</text>
+    <text x="510" y="115" text-anchor="middle" fill="#9a93b8" font-size="10">নির্ভর করো</text>
+    <text x="510" y="130" text-anchor="middle" fill="#9a93b8" font-size="10">concrete নয়</text>
+    <text x="510" y="143" text-anchor="middle" fill="#f06292" font-size="10" font-weight="bold">DIP</text>
     <!-- Question -->
     <rect x="20" y="165" width="540" height="50" rx="8" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="280" y="185" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Code Review-এ পাঁচটা প্রশ্ন:</text>
-    <text x="280" y="200" text-anchor="middle" fill="#9a93b8" font-size="7">এক class কি এক কারণে বদলায়? · সম্প্রসারণে খোলা? · subclass বসানো যায়?</text>
-    <text x="280" y="210" text-anchor="middle" fill="#9a93b8" font-size="7">unused method কি আছে? · high-level abstraction-এ নির্ভর?</text>
+    <text x="280" y="200" text-anchor="middle" fill="#9a93b8" font-size="10">এক class কি এক কারণে বদলায়? · সম্প্রসারণে খোলা? · subclass বসানো যায়?</text>
+    <text x="280" y="210" text-anchor="middle" fill="#9a93b8" font-size="10">unused method কি আছে? · high-level abstraction-এ নির্ভর?</text>
     <!-- Bottom -->
     <rect x="20" y="230" width="540" height="40" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="280" y="248" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Martin: "SOLID is not a destination. It is a direction."</text>
-    <text x="280" y="262" text-anchor="middle" fill="#9a93b8" font-size="7">১০০% SOLID অসম্ভব — কিন্তু প্রতিটা প্রশ্ন কোড উন্নত করে</text>
+    <text x="280" y="262" text-anchor="middle" fill="#9a93b8" font-size="10">১০০% SOLID অসম্ভব — কিন্তু প্রতিটা প্রশ্ন কোড উন্নত করে</text>
   </svg>
   <div class="diag-cap">SOLID = ৫ প্রশ্ন: এক কারণ? খোলা/বন্ধ? বদলানো যায়? ছোট interface? abstraction? প্রতিটা প্রশ্ন কোড উন্নত করে।</div>
 </div>

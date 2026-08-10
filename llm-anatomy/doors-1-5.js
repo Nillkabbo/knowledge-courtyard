@@ -195,10 +195,10 @@ doors.push({
 <text x="300" y="225" fill="#c084fc" font-size="9">freedom</text>
 <!-- Vector operation -->
 <line x1="400" y1="150" x2="430" y2="160" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="3,2"/>
-<text x="375" y="190" fill="#7dd3fc" font-size="7">king − man + woman ≈ queen</text>
+<text x="375" y="190" fill="#7dd3fc" font-size="10">king − man + woman ≈ queen</text>
 <!-- Bottom labels -->
-<text x="60" y="120" text-anchor="middle" fill="#94a3b8" font-size="7">Token ID</text>
-<text x="175" y="120" text-anchor="middle" fill="#94a3b8" font-size="7">Lookup table</text>
+<text x="60" y="120" text-anchor="middle" fill="#94a3b8" font-size="10">Token ID</text>
+<text x="175" y="120" text-anchor="middle" fill="#94a3b8" font-size="10">Lookup table</text>
 <text x="20" y="160" fill="#22c55e" font-size="8" font-weight="bold">Synonyms → close</text>
 <text x="20" y="175" fill="#fbbf24" font-size="8" font-weight="bold">Unrelated → far</text>
 <text x="20" y="190" fill="#a855f7" font-size="8" font-weight="bold">Antonyms → opposite</text>
@@ -330,27 +330,27 @@ doors.push({
 <text x="300" y="125" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">attention 0.82</text>
 <!-- Weak attention to street -->
 <path d="M 477 88 Q 443 140 410 88" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5"/>
-<text x="450" y="135" text-anchor="middle" fill="#fcd34d" font-size="7">0.05</text>
+<text x="450" y="135" text-anchor="middle" fill="#fcd34d" font-size="10">0.05</text>
 <!-- Q K V section -->
 <rect x="20" y="155" width="540" height="80" rx="8" fill="#0d1526" stroke="#22d3ee" stroke-width="1"/>
 <text x="290" y="173" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="bold">Each token generates 3 vectors</text>
 <rect x="40" y="185" width="70" height="35" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
 <text x="75" y="200" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">Q</text>
-<text x="75" y="213" text-anchor="middle" fill="#94a3b8" font-size="7">Query</text>
-<text x="75" y="222" text-anchor="middle" fill="#94a3b8" font-size="7">"what I seek"</text>
+<text x="75" y="213" text-anchor="middle" fill="#94a3b8" font-size="10">Query</text>
+<text x="75" y="222" text-anchor="middle" fill="#94a3b8" font-size="10">"what I seek"</text>
 <rect x="130" y="185" width="70" height="35" rx="5" fill="#1e3a5f" stroke="#a855f7" stroke-width="1.5"/>
 <text x="165" y="200" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="bold">K</text>
-<text x="165" y="213" text-anchor="middle" fill="#94a3b8" font-size="7">Key</text>
-<text x="165" y="222" text-anchor="middle" fill="#94a3b8" font-size="7">"what I offer"</text>
+<text x="165" y="213" text-anchor="middle" fill="#94a3b8" font-size="10">Key</text>
+<text x="165" y="222" text-anchor="middle" fill="#94a3b8" font-size="10">"what I offer"</text>
 <rect x="220" y="185" width="70" height="35" rx="5" fill="#1e3a5f" stroke="#22c55e" stroke-width="1.5"/>
 <text x="255" y="200" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">V</text>
-<text x="255" y="213" text-anchor="middle" fill="#94a3b8" font-size="7">Value</text>
-<text x="255" y="222" text-anchor="middle" fill="#94a3b8" font-size="7">"what I know"</text>
+<text x="255" y="213" text-anchor="middle" fill="#94a3b8" font-size="10">Value</text>
+<text x="255" y="222" text-anchor="middle" fill="#94a3b8" font-size="10">"what I know"</text>
 <text x="315" y="195" fill="#fcd34d" font-size="8" font-weight="bold">Score = Q × K / √d</text>
-<text x="315" y="208" fill="#94a3b8" font-size="7">→ softmax → weights</text>
-<text x="315" y="219" fill="#94a3b8" font-size="7">→ weights × V = output</text>
+<text x="315" y="208" fill="#94a3b8" font-size="10">→ softmax → weights</text>
+<text x="315" y="219" fill="#94a3b8" font-size="10">→ weights × V = output</text>
 <text x="460" y="200" fill="#22d3ee" font-size="8">96 heads</text>
-<text x="460" y="212" fill="#94a3b8" font-size="7">= 96 perspectives</text>
+<text x="460" y="212" fill="#94a3b8" font-size="10">= 96 perspectives</text>
 </svg>
 </div>
 <div class="svg-caption">Attention — প্রতিটি শব্দ অন্য শব্দের প্রতি নজর দেয়; "IT" কে? animal-এ সবচেয়ে বেশি নজর</div>
@@ -463,7 +463,7 @@ doors.push({
 <!-- Multi-head attention -->
 <rect x="180" y="72" width="220" height="32" rx="6" fill="#1a2744" stroke="#a855f7" stroke-width="2"/>
 <text x="290" y="86" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="bold">① Multi-Head Attention</text>
-<text x="290" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">Each word looks at all others · 96 heads</text>
+<text x="290" y="98" text-anchor="middle" fill="#94a3b8" font-size="10">Each word looks at all others · 96 heads</text>
 <line x1="290" y1="106" x2="290" y2="114" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM4)"/>
 <!-- Add & Norm -->
 <rect x="220" y="116" width="140" height="22" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
@@ -472,20 +472,20 @@ doors.push({
 <!-- Feed-forward -->
 <rect x="180" y="150" width="220" height="32" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="2"/>
 <text x="290" y="164" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">③ Feed-Forward Network (MLP)</text>
-<text x="290" y="176" text-anchor="middle" fill="#94a3b8" font-size="7">Where memorized knowledge lives · 2 linear + ReLU</text>
+<text x="290" y="176" text-anchor="middle" fill="#94a3b8" font-size="10">Where memorized knowledge lives · 2 linear + ReLU</text>
 <line x1="290" y1="184" x2="290" y2="192" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM4)"/>
 <!-- Add & Norm 2 -->
 <rect x="220" y="194" width="140" height="22" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
 <text x="290" y="209" text-anchor="middle" fill="#4ade80" font-size="8">④ Residual + Layer Norm</text>
 <!-- Residual skip arrows -->
 <path d="M 175 67 Q 160 140 175 195" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>
-<text x="148" y="135" fill="#4ade80" font-size="7" transform="rotate(-90 148 135)">skip connection</text>
+<text x="148" y="135" fill="#4ade80" font-size="10" transform="rotate(-90 148 135)">skip connection</text>
 <!-- Repeat label -->
 <rect x="425" y="100" width="135" height="60" rx="8" fill="#0d1526" stroke="#22d3ee" stroke-width="1.5"/>
 <text x="492" y="118" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="bold">Repeat block</text>
 <text x="492" y="132" text-anchor="middle" fill="#fcd34d" font-size="9">GPT-3: ×96</text>
 <text x="492" y="145" text-anchor="middle" fill="#fcd34d" font-size="9">GPT-4: ×120</text>
-<text x="492" y="156" text-anchor="middle" fill="#94a3b8" font-size="7">deeper = deeper understanding</text>
+<text x="492" y="156" text-anchor="middle" fill="#94a3b8" font-size="10">deeper = deeper understanding</text>
 <line x1="400" y1="130" x2="420" y2="130" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM4)"/>
 <!-- Output label -->
 <text x="290" y="232" text-anchor="middle" fill="#4ade80" font-size="8">→ to next block · finally → output head → softmax → token</text>
@@ -603,43 +603,43 @@ doors.push({
 <!-- Stage 1: Pre-training -->
 <rect x="20" y="40" width="165" height="180" rx="8" fill="#1a2744" stroke="#22d3ee" stroke-width="2"/>
 <text x="102" y="60" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="bold">① PRE-TRAINING</text>
-<text x="102" y="75" text-anchor="middle" fill="#94a3b8" font-size="7">"Read the whole internet"</text>
+<text x="102" y="75" text-anchor="middle" fill="#94a3b8" font-size="10">"Read the whole internet"</text>
 <rect x="35" y="85" width="135" height="28" rx="4" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
-<text x="102" y="103" text-anchor="middle" fill="#4ade80" font-size="7">Trillions of tokens</text>
-<text x="102" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">Goal: next token predict</text>
-<text x="102" y="140" text-anchor="middle" fill="#94a3b8" font-size="7">"cat sat on the ___"→"mat"</text>
-<text x="102" y="160" text-anchor="middle" fill="#fbbf24" font-size="7">Cost: $1M–$100M+</text>
-<text x="102" y="172" text-anchor="middle" fill="#94a3b8" font-size="7">Weeks–Months · GPUs</text>
+<text x="102" y="103" text-anchor="middle" fill="#4ade80" font-size="10">Trillions of tokens</text>
+<text x="102" y="128" text-anchor="middle" fill="#fcd34d" font-size="10">Goal: next token predict</text>
+<text x="102" y="140" text-anchor="middle" fill="#94a3b8" font-size="10">"cat sat on the ___"→"mat"</text>
+<text x="102" y="160" text-anchor="middle" fill="#fbbf24" font-size="10">Cost: $1M–$100M+</text>
+<text x="102" y="172" text-anchor="middle" fill="#94a3b8" font-size="10">Weeks–Months · GPUs</text>
 <rect x="35" y="183" width="135" height="28" rx="4" fill="#0d1526" stroke="#a855f7" stroke-width="1.5"/>
-<text x="102" y="201" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="bold">→ BASE MODEL</text>
+<text x="102" y="201" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="bold">→ BASE MODEL</text>
 <!-- Arrow -->
 <line x1="188" y1="130" x2="208" y2="130" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM5)"/>
 <!-- Stage 2: SFT -->
 <rect x="210" y="40" width="165" height="180" rx="8" fill="#1a2744" stroke="#a855f7" stroke-width="2"/>
 <text x="292" y="60" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="bold">② SFT (Fine-Tuning)</text>
-<text x="292" y="75" text-anchor="middle" fill="#94a3b8" font-size="7">"Talk like a human"</text>
+<text x="292" y="75" text-anchor="middle" fill="#94a3b8" font-size="10">"Talk like a human"</text>
 <rect x="225" y="85" width="135" height="28" rx="4" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
-<text x="292" y="103" text-anchor="middle" fill="#4ade80" font-size="7">Human-written Q&amp;A</text>
-<text x="292" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">Goal: instruction following</text>
-<text x="292" y="140" text-anchor="middle" fill="#94a3b8" font-size="7">Human: "What is AI?"</text>
-<text x="292" y="151" text-anchor="middle" fill="#94a3b8" font-size="7">Assistant: "AI is..."</text>
-<text x="292" y="170" text-anchor="middle" fill="#fbbf24" font-size="7">Cost: $10K–$100K</text>
+<text x="292" y="103" text-anchor="middle" fill="#4ade80" font-size="10">Human-written Q&amp;A</text>
+<text x="292" y="128" text-anchor="middle" fill="#fcd34d" font-size="10">Goal: instruction following</text>
+<text x="292" y="140" text-anchor="middle" fill="#94a3b8" font-size="10">Human: "What is AI?"</text>
+<text x="292" y="151" text-anchor="middle" fill="#94a3b8" font-size="10">Assistant: "AI is..."</text>
+<text x="292" y="170" text-anchor="middle" fill="#fbbf24" font-size="10">Cost: $10K–$100K</text>
 <rect x="225" y="183" width="135" height="28" rx="4" fill="#0d1526" stroke="#a855f7" stroke-width="1.5"/>
-<text x="292" y="201" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="bold">→ SFT MODEL</text>
+<text x="292" y="201" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="bold">→ SFT MODEL</text>
 <!-- Arrow -->
 <line x1="378" y1="130" x2="398" y2="130" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM5)"/>
 <!-- Stage 3: RLHF -->
 <rect x="400" y="40" width="160" height="180" rx="8" fill="#1a2744" stroke="#22c55e" stroke-width="2"/>
 <text x="480" y="60" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">③ RLHF</text>
-<text x="480" y="75" text-anchor="middle" fill="#94a3b8" font-size="7">"Which answer is better?"</text>
+<text x="480" y="75" text-anchor="middle" fill="#94a3b8" font-size="10">"Which answer is better?"</text>
 <rect x="415" y="85" width="130" height="28" rx="4" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
-<text x="480" y="103" text-anchor="middle" fill="#4ade80" font-size="7">Human rankings</text>
-<text x="480" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">Goal: alignment</text>
-<text x="480" y="140" text-anchor="middle" fill="#94a3b8" font-size="7">Reward model + RL</text>
-<text x="480" y="151" text-anchor="middle" fill="#94a3b8" font-size="7">Safe · helpful · honest</text>
-<text x="480" y="170" text-anchor="middle" fill="#fbbf24" font-size="7">Refuses harmful requests</text>
+<text x="480" y="103" text-anchor="middle" fill="#4ade80" font-size="10">Human rankings</text>
+<text x="480" y="128" text-anchor="middle" fill="#fcd34d" font-size="10">Goal: alignment</text>
+<text x="480" y="140" text-anchor="middle" fill="#94a3b8" font-size="10">Reward model + RL</text>
+<text x="480" y="151" text-anchor="middle" fill="#94a3b8" font-size="10">Safe · helpful · honest</text>
+<text x="480" y="170" text-anchor="middle" fill="#fbbf24" font-size="10">Refuses harmful requests</text>
 <rect x="415" y="183" width="130" height="28" rx="4" fill="#0d1526" stroke="#22c55e" stroke-width="2"/>
-<text x="480" y="201" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">→ ALIGNED (ChatGPT)</text>
+<text x="480" y="201" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">→ ALIGNED (ChatGPT)</text>
 </svg>
 </div>
 <div class="svg-caption">তিন স্তরে প্রশিক্ষণ — প্রথমে ভাষা শেখা, তারপর কথোকথন, তারপর মানুষের পছন্দ অনুযায়ী নিয়মিতকরণ</div>

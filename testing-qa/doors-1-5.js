@@ -469,32 +469,32 @@ doors.push({
   <circle cx="67" cy="90" r="16" fill="#0f172a" stroke="#4ade80" stroke-width="2"/>
   <text x="67" y="95" text-anchor="middle" fill="#4ade80" font-size="14">😶</text>
   <text x="67" y="125" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Dummy</text>
-  <text x="67" y="142" text-anchor="middle" fill="#86efac" font-size="7">কিছু করে না</text>
-  <text x="67" y="155" text-anchor="middle" fill="#94a3b8" font-size="7">শুধু প্যারামিটার</text>
+  <text x="67" y="142" text-anchor="middle" fill="#86efac" font-size="10">কিছু করে না</text>
+  <text x="67" y="155" text-anchor="middle" fill="#94a3b8" font-size="10">শুধু প্যারামিটার</text>
   <rect x="130" y="55" width="95" height="120" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <circle cx="177" cy="85" r="16" fill="#0f172a" stroke="#4ade80" stroke-width="2"/>
   <text x="177" y="90" text-anchor="middle" fill="#4ade80" font-size="14">🎁</text>
   <text x="177" y="120" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Stub</text>
-  <text x="177" y="137" text-anchor="middle" fill="#86efac" font-size="7">নির্দিষ্ট উত্তর</text>
-  <text x="177" y="150" text-anchor="middle" fill="#94a3b8" font-size="7">get_user → {ali}</text>
+  <text x="177" y="137" text-anchor="middle" fill="#86efac" font-size="10">নির্দিষ্ট উত্তর</text>
+  <text x="177" y="150" text-anchor="middle" fill="#94a3b8" font-size="10">get_user → {ali}</text>
   <rect x="240" y="50" width="95" height="130" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <circle cx="287" cy="80" r="16" fill="#0f172a" stroke="#4ade80" stroke-width="2"/>
   <text x="287" y="85" text-anchor="middle" fill="#4ade80" font-size="14">👁</text>
   <text x="287" y="115" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Spy</text>
-  <text x="287" y="132" text-anchor="middle" fill="#86efac" font-size="7">কল রেকর্ড</text>
-  <text x="287" y="145" text-anchor="middle" fill="#94a3b8" font-size="7">কতবার কল?</text>
+  <text x="287" y="132" text-anchor="middle" fill="#86efac" font-size="10">কল রেকর্ড</text>
+  <text x="287" y="145" text-anchor="middle" fill="#94a3b8" font-size="10">কতবার কল?</text>
   <rect x="350" y="45" width="95" height="140" rx="8" fill="#052e16" stroke="#fbbf24" stroke-width="2"/>
   <circle cx="397" cy="75" r="16" fill="#0f172a" stroke="#fcd34d" stroke-width="2"/>
   <text x="397" y="80" text-anchor="middle" fill="#fcd34d" font-size="14">✓</text>
   <text x="397" y="110" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">Mock</text>
-  <text x="397" y="127" text-anchor="middle" fill="#fde68a" font-size="7">প্রত্যাশা যাচাই</text>
-  <text x="397" y="140" text-anchor="middle" fill="#94a3b8" font-size="7">called_once?</text>
+  <text x="397" y="127" text-anchor="middle" fill="#fde68a" font-size="10">প্রত্যাশা যাচাই</text>
+  <text x="397" y="140" text-anchor="middle" fill="#94a3b8" font-size="10">called_once?</text>
   <rect x="460" y="40" width="95" height="150" rx="8" fill="#0c4a6e" stroke="#22d3ee" stroke-width="2"/>
   <circle cx="507" cy="70" r="16" fill="#0f172a" stroke="#7dd3fc" stroke-width="2"/>
   <text x="507" y="75" text-anchor="middle" fill="#7dd3fc" font-size="14">🏛</text>
   <text x="507" y="105" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">Fake</text>
-  <text x="507" y="122" text-anchor="middle" fill="#bae6fd" font-size="7">সরল বাস্তবায়ন</text>
-  <text x="507" y="135" text-anchor="middle" fill="#94a3b8" font-size="7">InMemoryDB</text>
+  <text x="507" y="122" text-anchor="middle" fill="#bae6fd" font-size="10">সরল বাস্তবায়ন</text>
+  <text x="507" y="135" text-anchor="middle" fill="#94a3b8" font-size="10">InMemoryDB</text>
   <line x1="20" y1="210" x2="545" y2="210" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrTQ5)"/>
   <text x="282" y="225" text-anchor="middle" fill="#7dd3fc" font-size="8">সরল → জটিল (আচরণের গভীরতা বাড়ে)</text>
 </svg>

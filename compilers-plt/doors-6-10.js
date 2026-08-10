@@ -161,18 +161,18 @@ doors.push({
 <text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">JIT Compilation Pipeline</text>
 <rect x="20" y="70" width="120" height="50" rx="8" fill="#451a0a" stroke="#22d3ee" stroke-width="2"/>
 <text x="80" y="92" text-anchor="middle" fill="#7dd3fc" font-size="9">Interpret</text>
-<text x="80" y="106" text-anchor="middle" fill="#7dd3fc" font-size="7">(slow)</text>
+<text x="80" y="106" text-anchor="middle" fill="#7dd3fc" font-size="10">(slow)</text>
 <rect x="190" y="70" width="130" height="50" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
 <text x="255" y="92" text-anchor="middle" fill="#fcd34d" font-size="9">Hot Path Detected</text>
-<text x="255" y="106" text-anchor="middle" fill="#fcd34d" font-size="7">(counter &gt; threshold)</text>
+<text x="255" y="106" text-anchor="middle" fill="#fcd34d" font-size="10">(counter &gt; threshold)</text>
 <rect x="370" y="70" width="190" height="50" rx="8" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
 <text x="465" y="92" text-anchor="middle" fill="#4ade80" font-size="9">Optimized Machine Code</text>
-<text x="465" y="106" text-anchor="middle" fill="#4ade80" font-size="7">(TurboFan / C2) - fast</text>
+<text x="465" y="106" text-anchor="middle" fill="#4ade80" font-size="10">(TurboFan / C2) - fast</text>
 <line x1="140" y1="95" x2="186" y2="95" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP7)"/>
 <line x1="320" y1="95" x2="366" y2="95" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP7)"/>
 <rect x="190" y="160" width="220" height="40" rx="8" fill="#451a0a" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5 3"/>
 <text x="300" y="178" text-anchor="middle" fill="#ef4444" font-size="9">Deoptimization</text>
-<text x="300" y="191" text-anchor="middle" fill="#ef4444" font-size="7">(assumption broken &rarr; re-interpret)</text>
+<text x="300" y="191" text-anchor="middle" fill="#ef4444" font-size="10">(assumption broken &rarr; re-interpret)</text>
 <path d="M 465 120 Q 465 140 300 158" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrCP7)"/>
 <path d="M 190 180 Q 130 150 80 122" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrCP7)"/>
 </svg>
@@ -366,22 +366,22 @@ doors.push({
 <text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">GC Mark-and-Sweep</text>
 <rect x="30" y="100" width="80" height="40" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
 <text x="70" y="116" text-anchor="middle" fill="#fcd34d" font-size="9">Root</text>
-<text x="70" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">(stack/global)</text>
+<text x="70" y="128" text-anchor="middle" fill="#fcd34d" font-size="10">(stack/global)</text>
 <circle cx="210" cy="75" r="22" fill="#451a0a" stroke="#22c55e" stroke-width="2.5"/>
 <text x="210" y="72" text-anchor="middle" fill="#4ade80" font-size="8">A</text>
-<text x="210" y="82" text-anchor="middle" fill="#4ade80" font-size="6">mark</text>
+<text x="210" y="82" text-anchor="middle" fill="#4ade80" font-size="10">mark</text>
 <circle cx="210" cy="165" r="22" fill="#451a0a" stroke="#22c55e" stroke-width="2.5"/>
 <text x="210" y="162" text-anchor="middle" fill="#4ade80" font-size="8">B</text>
-<text x="210" y="172" text-anchor="middle" fill="#4ade80" font-size="6">mark</text>
+<text x="210" y="172" text-anchor="middle" fill="#4ade80" font-size="10">mark</text>
 <circle cx="350" cy="120" r="22" fill="#451a0a" stroke="#22c55e" stroke-width="2.5"/>
 <text x="350" y="117" text-anchor="middle" fill="#4ade80" font-size="8">C</text>
-<text x="350" y="127" text-anchor="middle" fill="#4ade80" font-size="6">mark</text>
+<text x="350" y="127" text-anchor="middle" fill="#4ade80" font-size="10">mark</text>
 <circle cx="470" cy="75" r="22" fill="#451a0a" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 2"/>
 <text x="470" y="72" text-anchor="middle" fill="#ef4444" font-size="8">D</text>
-<text x="470" y="82" text-anchor="middle" fill="#ef4444" font-size="6">sweep</text>
+<text x="470" y="82" text-anchor="middle" fill="#ef4444" font-size="10">sweep</text>
 <circle cx="490" cy="175" r="22" fill="#451a0a" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 2"/>
 <text x="490" y="172" text-anchor="middle" fill="#ef4444" font-size="8">E</text>
-<text x="490" y="182" text-anchor="middle" fill="#ef4444" font-size="6">sweep</text>
+<text x="490" y="182" text-anchor="middle" fill="#ef4444" font-size="10">sweep</text>
 <line x1="110" y1="112" x2="188" y2="85" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP9)"/>
 <line x1="110" y1="128" x2="188" y2="155" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP9)"/>
 <line x1="232" y1="80" x2="328" y2="110" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrCP9)"/>
@@ -495,16 +495,16 @@ doors.push({
 <text x="290" y="22" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">Hindley-Milner Type Inference</text>
 <rect x="30" y="95" width="130" height="44" rx="8" fill="#451a0a" stroke="#22d3ee" stroke-width="2"/>
 <text x="95" y="115" text-anchor="middle" fill="#7dd3fc" font-size="9">id = x =&gt; x</text>
-<text x="95" y="130" text-anchor="middle" fill="#7dd3fc" font-size="7">no annotation</text>
+<text x="95" y="130" text-anchor="middle" fill="#7dd3fc" font-size="10">no annotation</text>
 <rect x="225" y="95" width="130" height="44" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
 <text x="290" y="113" text-anchor="middle" fill="#fcd34d" font-size="9">Unify</text>
-<text x="290" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">Algorithm W</text>
+<text x="290" y="128" text-anchor="middle" fill="#fcd34d" font-size="10">Algorithm W</text>
 <rect x="420" y="55" width="140" height="38" rx="8" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
 <text x="490" y="73" text-anchor="middle" fill="#4ade80" font-size="9">id : int =&gt; int</text>
-<text x="490" y="86" text-anchor="middle" fill="#4ade80" font-size="7">id(42)</text>
+<text x="490" y="86" text-anchor="middle" fill="#4ade80" font-size="10">id(42)</text>
 <rect x="420" y="140" width="140" height="38" rx="8" fill="#451a0a" stroke="#22c55e" stroke-width="2"/>
 <text x="490" y="158" text-anchor="middle" fill="#4ade80" font-size="9">id : str =&gt; str</text>
-<text x="490" y="171" text-anchor="middle" fill="#4ade80" font-size="7">id("hi")</text>
+<text x="490" y="171" text-anchor="middle" fill="#4ade80" font-size="10">id("hi")</text>
 <line x1="160" y1="117" x2="221" y2="117" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP10)"/>
 <path d="M 355 105 Q 390 80 418 74" fill="none" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP10)"/>
 <path d="M 355 130 Q 390 155 418 159" fill="none" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrCP10)"/>

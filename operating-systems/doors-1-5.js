@@ -57,27 +57,27 @@ doors.push({
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">💾 Process States: New → Ready → Running → Terminated</text>
   <rect x="20" y="60" width="90" height="50" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="65" y="85" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">NEW</text>
-  <text x="65" y="100" text-anchor="middle" fill="#94a3b8" font-size="7">OS creates</text>
+  <text x="65" y="100" text-anchor="middle" fill="#94a3b8" font-size="10">OS creates</text>
   <rect x="140" y="60" width="90" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="185" y="85" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">READY</text>
-  <text x="185" y="100" text-anchor="middle" fill="#94a3b8" font-size="7">Waiting for CPU</text>
+  <text x="185" y="100" text-anchor="middle" fill="#94a3b8" font-size="10">Waiting for CPU</text>
   <rect x="260" y="60" width="90" height="50" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
   <text x="305" y="85" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">RUNNING</text>
-  <text x="305" y="100" text-anchor="middle" fill="#94a3b8" font-size="7">On CPU now</text>
+  <text x="305" y="100" text-anchor="middle" fill="#94a3b8" font-size="10">On CPU now</text>
   <rect x="380" y="60" width="90" height="50" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="425" y="85" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">WAITING</text>
-  <text x="425" y="100" text-anchor="middle" fill="#94a3b8" font-size="7">I/O or event</text>
+  <text x="425" y="100" text-anchor="middle" fill="#94a3b8" font-size="10">I/O or event</text>
   <rect x="490" y="60" width="80" height="50" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
   <text x="530" y="85" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="700">TERMINATED</text>
-  <text x="530" y="100" text-anchor="middle" fill="#64748b" font-size="7">Done</text>
+  <text x="530" y="100" text-anchor="middle" fill="#64748b" font-size="10">Done</text>
   <line x1="110" y1="85" x2="140" y2="85" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrP)"/>
   <line x1="230" y1="85" x2="260" y2="85" stroke="#22c55e" stroke-width="2" marker-end="url(#arrP)"/>
   <line x1="350" y1="85" x2="380" y2="85" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrP)"/>
   <line x1="470" y1="85" x2="490" y2="85" stroke="#f87171" stroke-width="2" marker-end="url(#arrP)"/>
   <path d="M 305 110 Q 305 140 185 140 Q 185 150 185 110" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <text x="245" y="155" text-anchor="middle" fill="#4ade80" font-size="7">preempt → ready</text>
+  <text x="245" y="155" text-anchor="middle" fill="#4ade80" font-size="10">preempt → ready</text>
   <path d="M 425 110 Q 425 170 185 170 Q 185 110 185 110" fill="none" stroke="#67e8f9" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <text x="305" y="185" text-anchor="middle" fill="#67e8f9" font-size="7">I/O done → ready</text>
+  <text x="305" y="185" text-anchor="middle" fill="#67e8f9" font-size="10">I/O done → ready</text>
   <rect x="60" y="220" width="460" height="60" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
   <text x="290" y="245" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">📋 PCB (Process Control Block)</text>
   <text x="290" y="262" text-anchor="middle" fill="#94a3b8" font-size="8">PID · State · Program Counter · Registers · Memory Limits · Open Files</text>
@@ -187,25 +187,25 @@ doors.push({
   <rect x="140" y="125" width="110" height="30" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
   <text x="195" y="144" text-anchor="middle" fill="#4ade80" font-size="8">Stack (private)</text>
   <text x="145" y="180" text-anchor="middle" fill="#94a3b8" font-size="8">fork() = সব copy (~10ms</text>
-  <text x="145" y="200" text-anchor="middle" fill="#64748b" font-size="7">Own PID, own memory space</text>
+  <text x="145" y="200" text-anchor="middle" fill="#64748b" font-size="10">Own PID, own memory space</text>
   <text x="145" y="225" text-anchor="middle" fill="#f87171" font-size="8">❌ No sharing → expensive</text>
-  <text x="145" y="250" text-anchor="middle" fill="#fbbf24" font-size="7">Safe: crash = isolated</text>
+  <text x="145" y="250" text-anchor="middle" fill="#fbbf24" font-size="10">Safe: crash = isolated</text>
   <rect x="310" y="50" width="250" height="230" rx="10" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
   <text x="435" y="72" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="700">THREADS (light)</text>
   <rect x="330" y="85" width="210" height="25" rx="5" fill="#451a0a" stroke="#fbbf24" stroke-width="1"/>
   <text x="435" y="102" text-anchor="middle" fill="#fcd34d" font-size="8">Shared Code + Heap</text>
   <rect x="330" y="120" width="95" height="30" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="377" y="139" text-anchor="middle" fill="#4ade80" font-size="7">Thread 1 Stack</text>
+  <text x="377" y="139" text-anchor="middle" fill="#4ade80" font-size="10">Thread 1 Stack</text>
   <rect x="445" y="120" width="95" height="30" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="492" y="139" text-anchor="middle" fill="#4ade80" font-size="7">Thread 2 Stack</text>
+  <text x="492" y="139" text-anchor="middle" fill="#4ade80" font-size="10">Thread 2 Stack</text>
   <rect x="330" y="160" width="95" height="30" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="377" y="179" text-anchor="middle" fill="#4ade80" font-size="7">Thread 3 Stack</text>
+  <text x="377" y="179" text-anchor="middle" fill="#4ade80" font-size="10">Thread 3 Stack</text>
   <rect x="445" y="160" width="95" height="30" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="492" y="179" text-anchor="middle" fill="#4ade80" font-size="7">Thread 4 Stack</text>
+  <text x="492" y="179" text-anchor="middle" fill="#4ade80" font-size="10">Thread 4 Stack</text>
   <text x="435" y="215" text-anchor="middle" fill="#94a3b8" font-size="8">pthread_create() ~0.1ms</text>
   <text x="435" y="235" text-anchor="middle" fill="#4ade80" font-size="8">✅ Shared memory → fast</text>
-  <text x="435" y="255" text-anchor="middle" fill="#f87171" font-size="7">⚠️ Race condition risk!</text>
-  <text x="435" y="272" text-anchor="middle" fill="#f87171" font-size="7">⚠️ crash kills ALL threads</text>
+  <text x="435" y="255" text-anchor="middle" fill="#f87171" font-size="10">⚠️ Race condition risk!</text>
+  <text x="435" y="272" text-anchor="middle" fill="#f87171" font-size="10">⚠️ crash kills ALL threads</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Process = সব আলাদা (ভারী)। Thread = মেমোরি ভাগ (হালকা)। দ্রুত কিন্তু race condition ঝুঁকি।</div>
@@ -322,15 +322,15 @@ doors.push({
   <text x="420" y="80" text-anchor="middle" fill="#7dd3fc" font-size="9">P1</text>
   <rect x="450" y="60" width="60" height="30" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
   <text x="480" y="80" text-anchor="middle" fill="#4ade80" font-size="9">P2</text>
-  <text x="30" y="115" text-anchor="middle" fill="#64748b" font-size="7">0</text>
-  <text x="90" y="115" text-anchor="middle" fill="#64748b" font-size="7">2</text>
-  <text x="150" y="115" text-anchor="middle" fill="#64748b" font-size="7">4</text>
-  <text x="210" y="115" text-anchor="middle" fill="#64748b" font-size="7">6</text>
-  <text x="270" y="115" text-anchor="middle" fill="#64748b" font-size="7">8</text>
-  <text x="330" y="115" text-anchor="middle" fill="#64748b" font-size="7">10</text>
-  <text x="390" y="115" text-anchor="middle" fill="#64748b" font-size="7">12</text>
-  <text x="450" y="115" text-anchor="middle" fill="#64748b" font-size="7">14</text>
-  <text x="510" y="115" text-anchor="middle" fill="#64748b" font-size="7">16ms</text>
+  <text x="30" y="115" text-anchor="middle" fill="#64748b" font-size="10">0</text>
+  <text x="90" y="115" text-anchor="middle" fill="#64748b" font-size="10">2</text>
+  <text x="150" y="115" text-anchor="middle" fill="#64748b" font-size="10">4</text>
+  <text x="210" y="115" text-anchor="middle" fill="#64748b" font-size="10">6</text>
+  <text x="270" y="115" text-anchor="middle" fill="#64748b" font-size="10">8</text>
+  <text x="330" y="115" text-anchor="middle" fill="#64748b" font-size="10">10</text>
+  <text x="390" y="115" text-anchor="middle" fill="#64748b" font-size="10">12</text>
+  <text x="450" y="115" text-anchor="middle" fill="#64748b" font-size="10">14</text>
+  <text x="510" y="115" text-anchor="middle" fill="#64748b" font-size="10">16ms</text>
   <text x="290" y="135" text-anchor="middle" fill="#4ade80" font-size="8">সব প্রসেস সমান সময় পায় — fair ✅</text>
   <text x="30" y="165" fill="#67e8f9" font-size="9" font-weight="700">FCFS (First Come First Serve):</text>
   <rect x="20" y="175" width="540" height="35" rx="6" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
@@ -433,23 +433,23 @@ signal(S): S = S + 1<br>
   <text x="290" y="72" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">Semaphore: empty=3, full=0</text>
   <text x="290" y="92" text-anchor="middle" fill="#7dd3fc" font-size="8">mutex=1 (binary lock)</text>
   <rect x="220" y="98" width="30" height="8" rx="2" fill="#22c55e"/>
-  <text x="235" y="105" text-anchor="middle" fill="#052e16" font-size="6">E</text>
+  <text x="235" y="105" text-anchor="middle" fill="#052e16" font-size="10">E</text>
   <rect x="255" y="98" width="30" height="8" rx="2" fill="#22c55e"/>
-  <text x="270" y="105" text-anchor="middle" fill="#052e16" font-size="6">E</text>
+  <text x="270" y="105" text-anchor="middle" fill="#052e16" font-size="10">E</text>
   <rect x="290" y="98" width="30" height="8" rx="2" fill="#22c55e"/>
-  <text x="305" y="105" text-anchor="middle" fill="#052e16" font-size="6">E</text>
+  <text x="305" y="105" text-anchor="middle" fill="#052e16" font-size="10">E</text>
   <rect x="325" y="98" width="30" height="8" rx="2" fill="#dc2626"/>
-  <text x="340" y="105" text-anchor="middle" fill="#fee2e2" font-size="6">F</text>
+  <text x="340" y="105" text-anchor="middle" fill="#fee2e2" font-size="10">F</text>
   <rect x="60" y="150" width="120" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="120" y="172" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">PRODUCER</text>
-  <text x="120" y="188" text-anchor="middle" fill="#86efac" font-size="7">wait(empty) → put → signal(full)</text>
+  <text x="120" y="188" text-anchor="middle" fill="#86efac" font-size="10">wait(empty) → put → signal(full)</text>
   <rect x="400" y="150" width="120" height="50" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
   <text x="460" y="172" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">CONSUMER</text>
-  <text x="460" y="188" text-anchor="middle" fill="#fde68a" font-size="7">wait(full) → take → signal(empty)</text>
+  <text x="460" y="188" text-anchor="middle" fill="#fde68a" font-size="10">wait(full) → take → signal(empty)</text>
   <line x1="180" y1="165" x2="200" y2="100" stroke="#4ade80" stroke-width="2" marker-end="url(#arrS)"/>
-  <text x="190" y="140" text-anchor="middle" fill="#4ade80" font-size="7">put</text>
+  <text x="190" y="140" text-anchor="middle" fill="#4ade80" font-size="10">put</text>
   <line x1="400" y1="165" x2="380" y2="100" stroke="#fcd34d" stroke-width="2" marker-end="url(#arrS)"/>
-  <text x="390" y="140" text-anchor="middle" fill="#fcd34d" font-size="7">take</text>
+  <text x="390" y="140" text-anchor="middle" fill="#fcd34d" font-size="10">take</text>
   <text x="290" y="230" text-anchor="middle" fill="#94a3b8" font-size="8">empty = available slots · full = filled slots</text>
   <text x="290" y="250" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">mutex = only ONE touches buffer at a time</text>
   <defs><marker id="arrS" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
@@ -553,23 +553,23 @@ doors.push({
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">💀 Deadlock: Circular Wait (Coffman Condition #4)</text>
   <rect x="60" y="60" width="100" height="50" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="110" y="82" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">P1</text>
-  <text x="110" y="97" text-anchor="middle" fill="#7dd3fc" font-size="7">holds R1, wants R2</text>
+  <text x="110" y="97" text-anchor="middle" fill="#7dd3fc" font-size="10">holds R1, wants R2</text>
   <rect x="420" y="60" width="100" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="470" y="82" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">P2</text>
-  <text x="470" y="97" text-anchor="middle" fill="#86efac" font-size="7">holds R2, wants R3</text>
+  <text x="470" y="97" text-anchor="middle" fill="#86efac" font-size="10">holds R2, wants R3</text>
   <rect x="420" y="180" width="100" height="50" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
   <text x="470" y="202" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">P3</text>
-  <text x="470" y="217" text-anchor="middle" fill="#fde68a" font-size="7">holds R3, wants R4</text>
+  <text x="470" y="217" text-anchor="middle" fill="#fde68a" font-size="10">holds R3, wants R4</text>
   <rect x="60" y="180" width="100" height="50" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="110" y="202" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">P4</text>
-  <text x="110" y="217" text-anchor="middle" fill="#fee2e2" font-size="7">holds R4, wants R1</text>
+  <text x="110" y="217" text-anchor="middle" fill="#fee2e2" font-size="10">holds R4, wants R1</text>
   <line x1="160" y1="80" x2="420" y2="80" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrD)"/>
   <line x1="470" y1="110" x2="470" y2="180" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrD)"/>
   <line x1="420" y1="210" x2="160" y2="210" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrD)"/>
   <line x1="110" y1="180" x2="110" y2="110" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrD)"/>
   <circle cx="290" cy="145" r="40" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,3"/>
   <text x="290" y="142" text-anchor="middle" fill="#f87171" font-size="11" font-weight="900">CIRCLE!</text>
-  <text x="290" y="158" text-anchor="middle" fill="#fca5a5" font-size="7">No exit possible</text>
+  <text x="290" y="158" text-anchor="middle" fill="#fca5a5" font-size="10">No exit possible</text>
   <text x="290" y="260" text-anchor="middle" fill="#e2e8f0" font-size="9">Coffman 4: Mutual Excl + Hold&amp;Wait + No Preempt + Circular Wait</text>
   <defs><marker id="arrD" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#dc2626"/></marker></defs>
 </svg>

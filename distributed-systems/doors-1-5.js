@@ -331,9 +331,9 @@ doors.push({
       <text x="280" y="235" text-anchor="middle" font-size="8" fill="#9290a8" font-style="italic">AP (Dynamo, Cassandra)</text>
 
       <!-- System examples -->
-      <text x="180" y="150" text-anchor="middle" font-size="7" fill="#5e5c74">MySQL, PostgreSQL</text>
-      <text x="380" y="150" text-anchor="middle" font-size="7" fill="#5e5c74">MongoDB, HBase</text>
-      <text x="280" y="250" text-anchor="middle" font-size="7" fill="#5e5c74">DynamoDB, Cassandra</text>
+      <text x="180" y="150" text-anchor="middle" font-size="10" fill="#5e5c74">MySQL, PostgreSQL</text>
+      <text x="380" y="150" text-anchor="middle" font-size="10" fill="#5e5c74">MongoDB, HBase</text>
+      <text x="280" y="250" text-anchor="middle" font-size="10" fill="#5e5c74">DynamoDB, Cassandra</text>
 
       <!-- Bottom explanation -->
       <rect x="40" y="265" width="480" height="40" rx="8" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="0.5"/>
@@ -433,11 +433,11 @@ doors.push({
 
       <!-- Acceptors -->
       <circle cx="120" cy="110" r="9" fill="rgba(61,214,196,0.15)" stroke="#3dd6c4" stroke-width="1.5"/>
-      <text x="120" y="113" text-anchor="middle" font-size="7" fill="#3dd6c4">A₁</text>
+      <text x="120" y="113" text-anchor="middle" font-size="10" fill="#3dd6c4">A₁</text>
       <circle cx="155" cy="110" r="9" fill="rgba(61,214,196,0.15)" stroke="#3dd6c4" stroke-width="1.5"/>
-      <text x="155" y="113" text-anchor="middle" font-size="7" fill="#3dd6c4">A₂</text>
+      <text x="155" y="113" text-anchor="middle" font-size="10" fill="#3dd6c4">A₂</text>
       <circle cx="190" cy="110" r="9" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="1" opacity="0.3"/>
-      <text x="190" y="113" text-anchor="middle" font-size="7" fill="#ef4444">A₃✗</text>
+      <text x="190" y="113" text-anchor="middle" font-size="10" fill="#ef4444">A₃✗</text>
 
       <!-- Learner -->
       <rect x="210" y="62" width="55" height="24" rx="4" fill="rgba(179,127,235,0.15)" stroke="#b37feb" stroke-width="1"/>
@@ -447,7 +447,7 @@ doors.push({
       <path d="M 100 82 Q 110 95 115 102" fill="none" stroke="#fbbf24" stroke-width="1" marker-end="url(#arrOrange4)"/>
       <path d="M 165 102 Q 200 90 210 82" fill="none" stroke="#3dd6c4" stroke-width="1" marker-end="url(#arrOrange4)"/>
       <text x="145" y="135" text-anchor="middle" font-size="8" fill="#9290a8">২/৩ রাজি → চূড়ান্ত</text>
-      <text x="145" y="148" text-anchor="middle" font-size="7" fill="#5e5c74">quorum = majority</text>
+      <text x="145" y="148" text-anchor="middle" font-size="10" fill="#5e5c74">quorum = majority</text>
 
       <!-- Right: Raft -->
       <rect x="285" y="35" width="260" height="120" rx="10" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1.5"/>
@@ -459,18 +459,18 @@ doors.push({
 
       <!-- Followers -->
       <circle cx="320" cy="115" r="9" fill="rgba(61,214,196,0.15)" stroke="#3dd6c4" stroke-width="1.5"/>
-      <text x="320" y="118" text-anchor="middle" font-size="7" fill="#3dd6c4">F₁</text>
+      <text x="320" y="118" text-anchor="middle" font-size="10" fill="#3dd6c4">F₁</text>
       <circle cx="355" cy="115" r="9" fill="rgba(61,214,196,0.15)" stroke="#3dd6c4" stroke-width="1.5"/>
-      <text x="355" y="118" text-anchor="middle" font-size="7" fill="#3dd6c4">F₂</text>
+      <text x="355" y="118" text-anchor="middle" font-size="10" fill="#3dd6c4">F₂</text>
       <circle cx="430" cy="115" r="9" fill="rgba(61,214,196,0.15)" stroke="#3dd6c4" stroke-width="1.5"/>
-      <text x="430" y="118" text-anchor="middle" font-size="7" fill="#3dd6c4">F₃</text>
+      <text x="430" y="118" text-anchor="middle" font-size="10" fill="#3dd6c4">F₃</text>
 
       <!-- Arrows Leader → Followers -->
       <path d="M 375 90 Q 350 100 325 108" fill="none" stroke="#fbbf24" stroke-width="1" marker-end="url(#arrOrange4)"/>
       <path d="M 395 90 L 358 108" fill="none" stroke="#fbbf24" stroke-width="1" marker-end="url(#arrOrange4)"/>
       <path d="M 410 90 L 425 108" fill="none" stroke="#fbbf24" stroke-width="1" marker-end="url(#arrOrange4)"/>
       <text x="415" y="135" text-anchor="middle" font-size="8" fill="#9290a8">Leader → Followers</text>
-      <text x="415" y="148" text-anchor="middle" font-size="7" fill="#5e5c74">log replication</text>
+      <text x="415" y="148" text-anchor="middle" font-size="10" fill="#5e5c74">log replication</text>
 
       <!-- Comparison table -->
       <rect x="40" y="175" width="480" height="100" rx="8" fill="rgba(249,115,22,0.05)" stroke="#f97316" stroke-width="0.5"/>
@@ -585,15 +585,15 @@ doors.push({
       <!-- Nodes -->
       <circle cx="120" cy="108" r="14" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="1.5"/>
       <text x="120" y="111" text-anchor="middle" font-size="8" font-weight="700" fill="#52c41a">A</text>
-      <text x="120" y="128" text-anchor="middle" font-size="7" fill="#9290a8">✓ ready</text>
+      <text x="120" y="128" text-anchor="middle" font-size="10" fill="#9290a8">✓ ready</text>
 
       <circle cx="280" cy="108" r="14" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="1.5"/>
       <text x="280" y="111" text-anchor="middle" font-size="8" font-weight="700" fill="#52c41a">B</text>
-      <text x="280" y="128" text-anchor="middle" font-size="7" fill="#9290a8">✓ ready</text>
+      <text x="280" y="128" text-anchor="middle" font-size="10" fill="#9290a8">✓ ready</text>
 
       <circle cx="440" cy="108" r="14" fill="rgba(82,196,26,0.15)" stroke="#52c41a" stroke-width="1.5"/>
       <text x="440" y="111" text-anchor="middle" font-size="8" font-weight="700" fill="#52c41a">C</text>
-      <text x="440" y="128" text-anchor="middle" font-size="7" fill="#9290a8">✓ ready</text>
+      <text x="440" y="128" text-anchor="middle" font-size="10" fill="#9290a8">✓ ready</text>
 
       <!-- Phase 2: Commit -->
       <text x="280" y="155" text-anchor="middle" font-size="9" font-weight="700" fill="#52c41a">Phase ২: COMMIT (সব রাজি)</text>

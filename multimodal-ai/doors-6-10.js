@@ -128,7 +128,7 @@ TRAINING DATA FOR ALIGNMENT:
 <circle cx="265" cy="135" r="6" fill="#a855f7"/>
 <circle cx="285" cy="140" r="6" fill="#22d3ee"/>
 <circle cx="305" cy="135" r="6" fill="#22c55e"/>
-<text x="290" y="160" text-anchor="middle" fill="#9290a8" font-size="7">এক বিন্দুতে মিল</text>
+<text x="290" y="160" text-anchor="middle" fill="#9290a8" font-size="10">এক বিন্দুতে মিল</text>
 <line x1="85" y1="110" x2="240" y2="120" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrMM6)"/>
 <line x1="145" y1="110" x2="250" y2="135" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrMM6)"/>
 <line x1="435" y1="110" x2="340" y2="120" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrMM6)"/>
@@ -290,10 +290,10 @@ IMPLEMENTATION:
 <text x="47" y="162" text-anchor="middle" fill="#4ade80" font-size="9">অডিও</text>
 <rect x="100" y="55" width="70" height="115" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
 <text x="135" y="80" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Embed</text>
-<text x="135" y="98" text-anchor="middle" fill="#9290a8" font-size="7">CLIP</text>
-<text x="135" y="112" text-anchor="middle" fill="#9290a8" font-size="7">CLAP</text>
-<text x="135" y="126" text-anchor="middle" fill="#9290a8" font-size="7">Whisper</text>
-<text x="135" y="150" text-anchor="middle" fill="#9290a8" font-size="6">→ vector</text>
+<text x="135" y="98" text-anchor="middle" fill="#9290a8" font-size="10">CLIP</text>
+<text x="135" y="112" text-anchor="middle" fill="#9290a8" font-size="10">CLAP</text>
+<text x="135" y="126" text-anchor="middle" fill="#9290a8" font-size="10">Whisper</text>
+<text x="135" y="150" text-anchor="middle" fill="#9290a8" font-size="10">→ vector</text>
 <rect x="195" y="60" width="110" height="110" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
 <text x="250" y="85" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">Vector DB</text>
 <text x="250" y="103" text-anchor="middle" fill="#9290a8" font-size="8">Qdrant /</text>
@@ -302,13 +302,13 @@ IMPLEMENTATION:
 <circle cx="245" cy="142" r="4" fill="#22d3ee"/>
 <circle cx="260" cy="135" r="4" fill="#22c55e"/>
 <circle cx="275" cy="148" r="4" fill="#a855f7"/>
-<text x="250" y="165" text-anchor="middle" fill="#9290a8" font-size="7">সব একসাথে</text>
+<text x="250" y="165" text-anchor="middle" fill="#9290a8" font-size="10">সব একসাথে</text>
 <rect x="330" y="55" width="80" height="115" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
 <text x="370" y="80" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Retrieve</text>
-<text x="370" y="98" text-anchor="middle" fill="#9290a8" font-size="7">cosine</text>
-<text x="370" y="112" text-anchor="middle" fill="#9290a8" font-size="7">similarity</text>
-<text x="370" y="130" text-anchor="middle" fill="#9290a8" font-size="7">top-k</text>
-<text x="370" y="155" text-anchor="middle" fill="#9290a8" font-size="6">mix result</text>
+<text x="370" y="98" text-anchor="middle" fill="#9290a8" font-size="10">cosine</text>
+<text x="370" y="112" text-anchor="middle" fill="#9290a8" font-size="10">similarity</text>
+<text x="370" y="130" text-anchor="middle" fill="#9290a8" font-size="10">top-k</text>
+<text x="370" y="155" text-anchor="middle" fill="#9290a8" font-size="10">mix result</text>
 <rect x="435" y="95" width="125" height="40" rx="8" fill="#1e1b3a" stroke="#22c55e" stroke-width="2"/>
 <text x="497" y="113" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">VLM synthesizes</text>
 <text x="497" y="127" text-anchor="middle" fill="#9290a8" font-size="8">ছবি+টেক্সট+অডিও → উত্তর</text>
@@ -476,30 +476,30 @@ BUILDING MULTIMODAL APPS:
 <rect x="110" y="95" width="50" height="35" rx="4" fill="none" stroke="#22c55e" stroke-width="2"/>
 <text x="135" y="115" text-anchor="middle" fill="#4ade80" font-size="8">table</text>
 <rect x="75" y="130" width="35" height="25" rx="4" fill="none" stroke="#a855f7" stroke-width="2"/>
-<text x="92" y="146" text-anchor="middle" fill="#c084fc" font-size="7">cup</text>
+<text x="92" y="146" text-anchor="middle" fill="#c084fc" font-size="10">cup</text>
 <text x="110" y="170" text-anchor="middle" fill="#9290a8" font-size="8">bbox + label</text>
 <line x1="190" y1="110" x2="218" y2="110" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM8)"/>
 <rect x="220" y="60" width="95" height="100" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
 <text x="267" y="82" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">Detector</text>
-<text x="267" y="100" text-anchor="middle" fill="#9290a8" font-size="7">region</text>
-<text x="267" y="113" text-anchor="middle" fill="#9290a8" font-size="7">proposal</text>
-<text x="267" y="130" text-anchor="middle" fill="#9290a8" font-size="7">+ VLM</text>
-<text x="267" y="148" text-anchor="middle" fill="#9290a8" font-size="6">each box</text>
+<text x="267" y="100" text-anchor="middle" fill="#9290a8" font-size="10">region</text>
+<text x="267" y="113" text-anchor="middle" fill="#9290a8" font-size="10">proposal</text>
+<text x="267" y="130" text-anchor="middle" fill="#9290a8" font-size="10">+ VLM</text>
+<text x="267" y="148" text-anchor="middle" fill="#9290a8" font-size="10">each box</text>
 <line x1="315" y1="110" x2="343" y2="110" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrMM8)"/>
 <rect x="345" y="60" width="95" height="100" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
 <text x="392" y="82" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Grounding</text>
-<text x="392" y="100" text-anchor="middle" fill="#9290a8" font-size="7">প্রতিটা region</text>
-<text x="392" y="113" text-anchor="middle" fill="#9290a8" font-size="7">→ label</text>
-<text x="392" y="130" text-anchor="middle" fill="#9290a8" font-size="7">→ অবস্থান</text>
-<text x="392" y="148" text-anchor="middle" fill="#9290a8" font-size="6">where + what</text>
+<text x="392" y="100" text-anchor="middle" fill="#9290a8" font-size="10">প্রতিটা region</text>
+<text x="392" y="113" text-anchor="middle" fill="#9290a8" font-size="10">→ label</text>
+<text x="392" y="130" text-anchor="middle" fill="#9290a8" font-size="10">→ অবস্থান</text>
+<text x="392" y="148" text-anchor="middle" fill="#9290a8" font-size="10">where + what</text>
 <line x1="440" y1="110" x2="463" y2="110" stroke="#a855f7" stroke-width="2" marker-end="url(#arrMM8)"/>
 <rect x="465" y="50" width="95" height="120" rx="8" fill="#1e1b3a" stroke="#22c55e" stroke-width="2"/>
 <text x="512" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Applications</text>
-<text x="512" y="92" text-anchor="middle" fill="#9290a8" font-size="7">🏥 চিকিৎসা</text>
-<text x="512" y="108" text-anchor="middle" fill="#9290a8" font-size="7">🏫 শিক্ষা</text>
-<text x="512" y="124" text-anchor="middle" fill="#9290a8" font-size="7">🖥️ UI→কোড</text>
-<text x="512" y="140" text-anchor="middle" fill="#9290a8" font-size="7">🚗 স্বয়ংচালিত</text>
-<text x="512" y="158" text-anchor="middle" fill="#9290a8" font-size="7">🔍 সার্চ</text>
+<text x="512" y="92" text-anchor="middle" fill="#9290a8" font-size="10">🏥 চিকিৎসা</text>
+<text x="512" y="108" text-anchor="middle" fill="#9290a8" font-size="10">🏫 শিক্ষা</text>
+<text x="512" y="124" text-anchor="middle" fill="#9290a8" font-size="10">🖥️ UI→কোড</text>
+<text x="512" y="140" text-anchor="middle" fill="#9290a8" font-size="10">🚗 স্বয়ংচালিত</text>
+<text x="512" y="158" text-anchor="middle" fill="#9290a8" font-size="10">🔍 সার্চ</text>
 <text x="290" y="200" text-anchor="middle" fill="#9290a8" font-size="9">Grounding = শুধু "কী" নয়, "কোথায়" বলে — bounding box দিয়ে</text>
 <text x="290" y="220" text-anchor="middle" fill="#22c55e" font-size="9">চিকিৎসা, শিক্ষা, ডিজাইন — প্রতিটা ক্ষেত্রে grounding দরকার</text>
 </svg>
@@ -827,12 +827,12 @@ THE FUTURE OF MULTIMODAL AI:
 <path d="M 130 200 A 160 160 0 0 1 450 200" fill="none" stroke="#3b82f6" stroke-width="10" stroke-linecap="round"/>
 <path d="M 140 200 A 150 150 0 0 1 440 200" fill="none" stroke="#8b5cf6" stroke-width="10" stroke-linecap="round"/>
 <path d="M 150 200 A 140 140 0 0 1 430 200" fill="none" stroke="#ec4899" stroke-width="10" stroke-linecap="round"/>
-<text x="50" y="195" text-anchor="middle" fill="#9290a8" font-size="7">👁️ Vision</text>
-<text x="50" y="207" text-anchor="middle" fill="#9290a8" font-size="7">🖼️ VLM</text>
-<text x="50" y="219" text-anchor="middle" fill="#9290a8" font-size="7">🎨 Gen</text>
-<text x="530" y="195" text-anchor="middle" fill="#9290a8" font-size="7">🔊 Audio</text>
-<text x="530" y="207" text-anchor="middle" fill="#9290a8" font-size="7">🎬 Video</text>
-<text x="530" y="219" text-anchor="middle" fill="#9290a8" font-size="7">🔗 Align</text>
+<text x="50" y="195" text-anchor="middle" fill="#9290a8" font-size="10">👁️ Vision</text>
+<text x="50" y="207" text-anchor="middle" fill="#9290a8" font-size="10">🖼️ VLM</text>
+<text x="50" y="219" text-anchor="middle" fill="#9290a8" font-size="10">🎨 Gen</text>
+<text x="530" y="195" text-anchor="middle" fill="#9290a8" font-size="10">🔊 Audio</text>
+<text x="530" y="207" text-anchor="middle" fill="#9290a8" font-size="10">🎬 Video</text>
+<text x="530" y="219" text-anchor="middle" fill="#9290a8" font-size="10">🔗 Align</text>
 <rect x="225" y="210" width="130" height="30" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="2"/>
 <text x="290" y="229" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="700">🌈 পঞ্চইন্দ্রিয়</text>
 <text x="290" y="245" text-anchor="middle" fill="#22c55e" font-size="8">এক ইন্দ্রিয় থেকে পাঁচ — টেক্সট থেকে সব</text>

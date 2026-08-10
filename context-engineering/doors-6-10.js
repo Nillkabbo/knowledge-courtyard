@@ -116,18 +116,18 @@ CONTEXT WINDOW ECONOMICS WITH COMPRESSION:
   <text x="95" y="185" text-anchor="middle" fill="#d4b3ff" font-size="8">১০,০০০ tokens</text>
   <rect x="210" y="80" width="140" height="90" fill="#3b2a05" stroke="#fbbf24" stroke-width="2" rx="8"/>
   <text x="280" y="105" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">⚡ কম্প্রেসর</text>
-  <text x="280" y="122" text-anchor="middle" fill="#fcd34d" font-size="7">Summary · LLMLingua</text>
-  <text x="280" y="140" text-anchor="middle" fill="#fbbf24" font-size="7">সারাংশ বানাও</text>
-  <text x="280" y="158" text-anchor="middle" fill="#fbbf24" font-size="6">সারমর্ম রাখো, শব্দ ছাঁটো</text>
+  <text x="280" y="122" text-anchor="middle" fill="#fcd34d" font-size="10">Summary · LLMLingua</text>
+  <text x="280" y="140" text-anchor="middle" fill="#fbbf24" font-size="10">সারাংশ বানাও</text>
+  <text x="280" y="158" text-anchor="middle" fill="#fbbf24" font-size="10">সারমর্ম রাখো, শব্দ ছাঁটো</text>
   <rect x="395" y="95" width="140" height="60" fill="#0d3b34" stroke="#5eead4" stroke-width="2" rx="8"/>
   <text x="465" y="118" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="bold">সারাংশ</text>
   <rect x="410" y="128" width="110" height="8" fill="#1a4a40" rx="2"/>
   <text x="465" y="150" text-anchor="middle" fill="#4ade80" font-size="8">২,০০০ tokens · ৮০% কম</text>
   <line x1="165" y1="125" x2="208" y2="125" stroke="#b37feb" stroke-width="1.5" marker-end="url(#arrCtx6)"/>
   <line x1="350" y1="125" x2="393" y2="125" stroke="#5eead4" stroke-width="1.5" marker-end="url(#arrCtx6)"/>
-  <text x="95" y="215" text-anchor="middle" fill="#ff8a5b" font-size="7">$২.৫০/কথোপকথন</text>
-  <text x="465" y="215" text-anchor="middle" fill="#4ade80" font-size="7">$০.৫০/কথোপকথন</text>
-  <text x="290" y="238" text-anchor="middle" fill="#5e5c74" font-size="7">ইখলাস — সারমর্মে নিবিড়, অপ্রয়োজনীয় শব্দ ছাড়া</text>
+  <text x="95" y="215" text-anchor="middle" fill="#ff8a5b" font-size="10">$২.৫০/কথোপকথন</text>
+  <text x="465" y="215" text-anchor="middle" fill="#4ade80" font-size="10">$০.৫০/কথোপকথন</text>
+  <text x="290" y="238" text-anchor="middle" fill="#5e5c74" font-size="10">ইখলাস — সারমর্মে নিবিড়, অপ্রয়োজনীয় শব্দ ছাড়া</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: কম্প্রেশন — ১০K tokens থেকে ২K সারাংশ, ৮০% খরচ কমানো</div>
@@ -230,31 +230,31 @@ HYBRID (best of both):
   <text x="290" y="28" text-anchor="middle" fill="#e8e6f0" font-size="13" font-weight="bold">⚖️ Long Context বনাম RAG — দুই পথ</text>
   <rect x="25" y="55" width="200" height="155" fill="#1e3a5f" stroke="#5b9eff" stroke-width="2" rx="8"/>
   <text x="125" y="78" text-anchor="middle" fill="#5b9eff" font-size="10" font-weight="bold">📖 Long Context</text>
-  <text x="125" y="93" text-anchor="middle" fill="#7dd3fc" font-size="7">সব একসাথে</text>
-  <text x="40" y="112" fill="#7dd3fc" font-size="7">✅ সরল — pipeline নেই</text>
-  <text x="40" y="126" fill="#7dd3fc" font-size="7">✅ Multi-hop সহজ</text>
-  <text x="40" y="140" fill="#ff8a5b" font-size="7">❌ ব্যয়বহুল</text>
-  <text x="40" y="154" fill="#ff8a5b" font-size="7">❌ ধীর · attention পাতলা</text>
-  <text x="125" y="184" text-anchor="middle" fill="#fcd34d" font-size="7">&lt; ৫০K tokens → এটাই</text>
-  <text x="125" y="198" text-anchor="middle" fill="#5e5c74" font-size="6">এক paper · এক contract</text>
+  <text x="125" y="93" text-anchor="middle" fill="#7dd3fc" font-size="10">সব একসাথে</text>
+  <text x="40" y="112" fill="#7dd3fc" font-size="10">✅ সরল — pipeline নেই</text>
+  <text x="40" y="126" fill="#7dd3fc" font-size="10">✅ Multi-hop সহজ</text>
+  <text x="40" y="140" fill="#ff8a5b" font-size="10">❌ ব্যয়বহুল</text>
+  <text x="40" y="154" fill="#ff8a5b" font-size="10">❌ ধীর · attention পাতলা</text>
+  <text x="125" y="184" text-anchor="middle" fill="#fcd34d" font-size="10">&lt; ৫০K tokens → এটাই</text>
+  <text x="125" y="198" text-anchor="middle" fill="#5e5c74" font-size="10">এক paper · এক contract</text>
   <rect x="250" y="55" width="200" height="155" fill="#0d3b34" stroke="#52c41a" stroke-width="2" rx="8"/>
   <text x="350" y="78" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">🔍 RAG</text>
-  <text x="350" y="93" text-anchor="middle" fill="#4ade80" font-size="7">প্রয়োজন মাফিক</text>
-  <text x="265" y="112" fill="#4ade80" font-size="7">✅ সস্তা — ৫-১০K tokens</text>
-  <text x="265" y="126" fill="#4ade80" font-size="7">✅ দ্রুত · Citation সহজ</text>
-  <text x="265" y="140" fill="#4ade80" font-size="7">✅ অসীম স্কেল</text>
-  <text x="265" y="154" fill="#ff8a5b" font-size="7">❌ জটিল pipeline</text>
-  <text x="350" y="184" text-anchor="middle" fill="#fcd34d" font-size="7">&gt; ৫০K tokens → এটাই</text>
-  <text x="350" y="198" text-anchor="middle" fill="#5e5c74" font-size="6">knowledge base · wiki</text>
+  <text x="350" y="93" text-anchor="middle" fill="#4ade80" font-size="10">প্রয়োজন মাফিক</text>
+  <text x="265" y="112" fill="#4ade80" font-size="10">✅ সস্তা — ৫-১০K tokens</text>
+  <text x="265" y="126" fill="#4ade80" font-size="10">✅ দ্রুত · Citation সহজ</text>
+  <text x="265" y="140" fill="#4ade80" font-size="10">✅ অসীম স্কেল</text>
+  <text x="265" y="154" fill="#ff8a5b" font-size="10">❌ জটিল pipeline</text>
+  <text x="350" y="184" text-anchor="middle" fill="#fcd34d" font-size="10">&gt; ৫০K tokens → এটাই</text>
+  <text x="350" y="198" text-anchor="middle" fill="#5e5c74" font-size="10">knowledge base · wiki</text>
   <circle cx="237" cy="130" r="16" fill="#3b2a05" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="237" y="134" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">vs</text>
   <rect x="465" y="80" width="95" height="100" fill="#3b2a05" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,3" rx="8"/>
   <text x="512" y="100" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">🌟 Hybrid</text>
-  <text x="512" y="118" text-anchor="middle" fill="#fcd34d" font-size="6">RAG retrieve</text>
-  <text x="512" y="130" text-anchor="middle" fill="#fcd34d" font-size="6">+ long context</text>
-  <text x="512" y="142" text-anchor="middle" fill="#fcd34d" font-size="6">synthesize</text>
-  <text x="512" y="162" text-anchor="middle" fill="#fbbf24" font-size="6">সবচেয়ে ভালো</text>
-  <text x="290" y="232" text-anchor="middle" fill="#5e5c74" font-size="7">কিয়াস — প্রতিটা পরিস্থিতিতে সঠিক পথ বাছো</text>
+  <text x="512" y="118" text-anchor="middle" fill="#fcd34d" font-size="10">RAG retrieve</text>
+  <text x="512" y="130" text-anchor="middle" fill="#fcd34d" font-size="10">+ long context</text>
+  <text x="512" y="142" text-anchor="middle" fill="#fcd34d" font-size="10">synthesize</text>
+  <text x="512" y="162" text-anchor="middle" fill="#fbbf24" font-size="10">সবচেয়ে ভালো</text>
+  <text x="290" y="232" text-anchor="middle" fill="#5e5c74" font-size="10">কিয়াস — প্রতিটা পরিস্থিতিতে সঠিক পথ বাছো</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Long Context সরল কিন্তু ব্যয়বহুল, RAG জটিল কিন্তু সস্তা — Hybrid সেরা</div>
@@ -364,38 +364,38 @@ FRAMEWORKS:
   <text x="290" y="28" text-anchor="middle" fill="#e8e6f0" font-size="13" font-weight="bold">🧵 ৫ ধরনের স্মৃতি — কম জায়গা, মূল কথা</text>
   <rect x="25" y="50" width="100" height="55" fill="#1a1a2e" stroke="#ff8a5b" stroke-width="1.5" rx="6"/>
   <text x="75" y="68" text-anchor="middle" fill="#ff8a5b" font-size="8" font-weight="bold">Buffer</text>
-  <text x="75" y="81" text-anchor="middle" fill="#ff8a5b" font-size="6">সব রাখো</text>
-  <text x="75" y="93" text-anchor="middle" fill="#5e5c74" font-size="6">ছোট chat</text>
+  <text x="75" y="81" text-anchor="middle" fill="#ff8a5b" font-size="10">সব রাখো</text>
+  <text x="75" y="93" text-anchor="middle" fill="#5e5c74" font-size="10">ছোট chat</text>
   <circle cx="75" cy="100" r="3" fill="#ff6b35"/>
   <rect x="135" y="50" width="100" height="55" fill="#1e3a5f" stroke="#5b9eff" stroke-width="1.5" rx="6"/>
   <text x="185" y="68" text-anchor="middle" fill="#5b9eff" font-size="8" font-weight="bold">Window</text>
-  <text x="185" y="81" text-anchor="middle" fill="#5b9eff" font-size="6">শেষ N turns</text>
-  <text x="185" y="93" text-anchor="middle" fill="#5e5c74" font-size="6">সাধারণ bot</text>
+  <text x="185" y="81" text-anchor="middle" fill="#5b9eff" font-size="10">শেষ N turns</text>
+  <text x="185" y="93" text-anchor="middle" fill="#5e5c74" font-size="10">সাধারণ bot</text>
   <circle cx="185" cy="100" r="3" fill="#5b9eff"/>
   <rect x="245" y="50" width="100" height="55" fill="#3b2a05" stroke="#fbbf24" stroke-width="1.5" rx="6"/>
   <text x="295" y="68" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">Summary</text>
-  <text x="295" y="81" text-anchor="middle" fill="#fcd34d" font-size="6">পুরোনো → সারাংশ</text>
-  <text x="295" y="93" text-anchor="middle" fill="#5e5c74" font-size="6">দীর্ঘ সেশন</text>
+  <text x="295" y="81" text-anchor="middle" fill="#fcd34d" font-size="10">পুরোনো → সারাংশ</text>
+  <text x="295" y="93" text-anchor="middle" fill="#5e5c74" font-size="10">দীর্ঘ সেশন</text>
   <circle cx="295" cy="100" r="3" fill="#fbbf24"/>
   <rect x="355" y="50" width="100" height="55" fill="#0d3b34" stroke="#52c41a" stroke-width="1.5" rx="6"/>
   <text x="405" y="68" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Entity</text>
-  <text x="405" y="81" text-anchor="middle" fill="#4ade80" font-size="6">নাম, সত্তা</text>
-  <text x="405" y="93" text-anchor="middle" fill="#5e5c74" font-size="6">assistant</text>
+  <text x="405" y="81" text-anchor="middle" fill="#4ade80" font-size="10">নাম, সত্তা</text>
+  <text x="405" y="93" text-anchor="middle" fill="#5e5c74" font-size="10">assistant</text>
   <circle cx="405" cy="100" r="3" fill="#52c41a"/>
   <rect x="465" y="50" width="100" height="55" fill="#2a0d3b" stroke="#b37feb" stroke-width="1.5" rx="6"/>
   <text x="515" y="68" text-anchor="middle" fill="#b37feb" font-size="8" font-weight="bold">Vector</text>
-  <text x="515" y="81" text-anchor="middle" fill="#b37feb" font-size="6">semantic search</text>
-  <text x="515" y="93" text-anchor="middle" fill="#5e5c74" font-size="6">অসীম স্মৃতি</text>
+  <text x="515" y="81" text-anchor="middle" fill="#b37feb" font-size="10">semantic search</text>
+  <text x="515" y="93" text-anchor="middle" fill="#5e5c74" font-size="10">অসীম স্মৃতি</text>
   <circle cx="515" cy="100" r="3" fill="#b37feb"/>
   <text x="290" y="130" text-anchor="middle" fill="#f0c75e" font-size="9" font-weight="bold">⬇ Production: Combined Memory</text>
   <rect x="130" y="140" width="320" height="75" fill="#1a1a2e" stroke="#f0c75e" stroke-width="2" rx="8"/>
   <rect x="145" y="150" width="130" height="16" fill="#0d3b34" stroke="#52c41a" stroke-width="0.8" rx="3"/>
-  <text x="210" y="161" text-anchor="middle" fill="#4ade80" font-size="6">Entity: Rakib · LedgerPilot</text>
+  <text x="210" y="161" text-anchor="middle" fill="#4ade80" font-size="10">Entity: Rakib · LedgerPilot</text>
   <rect x="145" y="170" width="210" height="14" fill="#3b2a05" stroke="#fbbf24" stroke-width="0.8" rx="3"/>
-  <text x="250" y="180" text-anchor="middle" fill="#fcd34d" font-size="6">Summary: Turn ১-২০ সারাংশ</text>
+  <text x="250" y="180" text-anchor="middle" fill="#fcd34d" font-size="10">Summary: Turn ১-২০ সারাংশ</text>
   <rect x="145" y="188" width="280" height="14" fill="#1e3a5f" stroke="#5b9eff" stroke-width="0.8" rx="3"/>
-  <text x="285" y="198" text-anchor="middle" fill="#7dd3fc" font-size="6">Full: Turn ২১-২৫ পূর্ণ</text>
-  <text x="290" y="238" text-anchor="middle" fill="#5e5c74" font-size="7">হাফিজ — ছোট জায়গায় মূল স্মৃতি সংরক্ষণ</text>
+  <text x="285" y="198" text-anchor="middle" fill="#7dd3fc" font-size="10">Full: Turn ২১-২৫ পূর্ণ</text>
+  <text x="290" y="238" text-anchor="middle" fill="#5e5c74" font-size="10">হাফিজ — ছোট জায়গায় মূল স্মৃতি সংরক্ষণ</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: ৫ ধরনের memory — production-এ Entity + Summary + Window একসাথে</div>
@@ -525,39 +525,39 @@ EVALUATION:
   <text x="290" y="28" text-anchor="middle" fill="#e8e6f0" font-size="13" font-weight="bold">🪜 Multi-Hop — ধাপে ধাপে গভীরে</text>
   <rect x="25" y="50" width="140" height="48" fill="#1a1a2e" stroke="#ff7b54" stroke-width="2" rx="8"/>
   <text x="95" y="68" text-anchor="middle" fill="#ff7b54" font-size="8" font-weight="bold">প্রশ্ন</text>
-  <text x="95" y="82" text-anchor="middle" fill="#ff8a5b" font-size="6">iPhone নির্মাতা কে?</text>
-  <text x="95" y="93" text-anchor="middle" fill="#5e5c74" font-size="5">(৩-হপ প্রশ্ন)</text>
+  <text x="95" y="82" text-anchor="middle" fill="#ff8a5b" font-size="10">iPhone নির্মাতা কে?</text>
+  <text x="95" y="93" text-anchor="middle" fill="#5e5c74" font-size="9">(৩-হপ প্রশ্ন)</text>
   <line x1="165" y1="74" x2="182" y2="74" stroke="#ff7b54" stroke-width="1.5" marker-end="url(#arrCtx9)"/>
   <rect x="187" y="55" width="100" height="38" fill="#1e3a5f" stroke="#5b9eff" stroke-width="1.5" rx="6"/>
-  <text x="237" y="71" text-anchor="middle" fill="#5b9eff" font-size="7" font-weight="bold">Hop ১</text>
-  <text x="237" y="84" text-anchor="middle" fill="#7dd3fc" font-size="6">→ Apple Inc.</text>
+  <text x="237" y="71" text-anchor="middle" fill="#5b9eff" font-size="10" font-weight="bold">Hop ১</text>
+  <text x="237" y="84" text-anchor="middle" fill="#7dd3fc" font-size="10">→ Apple Inc.</text>
   <line x1="287" y1="74" x2="304" y2="74" stroke="#ff7b54" stroke-width="1.5" marker-end="url(#arrCtx9)"/>
   <rect x="309" y="55" width="100" height="38" fill="#3b2a05" stroke="#fbbf24" stroke-width="1.5" rx="6"/>
-  <text x="359" y="71" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="bold">Hop ২</text>
-  <text x="359" y="84" text-anchor="middle" fill="#fcd34d" font-size="6">→ Steve Jobs</text>
+  <text x="359" y="71" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">Hop ২</text>
+  <text x="359" y="84" text-anchor="middle" fill="#fcd34d" font-size="10">→ Steve Jobs</text>
   <line x1="409" y1="74" x2="426" y2="74" stroke="#ff7b54" stroke-width="1.5" marker-end="url(#arrCtx9)"/>
   <rect x="431" y="55" width="100" height="38" fill="#0d3b34" stroke="#52c41a" stroke-width="1.5" rx="6"/>
-  <text x="481" y="71" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">Hop ৩</text>
-  <text x="481" y="84" text-anchor="middle" fill="#4ade80" font-size="6">→ চূড়ান্ত উত্তর</text>
+  <text x="481" y="71" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">Hop ৩</text>
+  <text x="481" y="84" text-anchor="middle" fill="#4ade80" font-size="10">→ চূড়ান্ত উত্তর</text>
   <text x="290" y="118" text-anchor="middle" fill="#e8e6f0" font-size="9" font-weight="bold">প্রতিটা hop আগের উত্তরের উপর দাঁড়ায়</text>
   <rect x="40" y="185" width="90" height="30" fill="#1e3a5f" stroke="#5b9eff" stroke-width="1" rx="4"/>
-  <text x="85" y="200" text-anchor="middle" fill="#7dd3fc" font-size="6">Hop ১</text>
-  <text x="85" y="210" text-anchor="middle" fill="#7dd3fc" font-size="5">কোম্পানি?</text>
+  <text x="85" y="200" text-anchor="middle" fill="#7dd3fc" font-size="10">Hop ১</text>
+  <text x="85" y="210" text-anchor="middle" fill="#7dd3fc" font-size="9">কোম্পানি?</text>
   <rect x="140" y="170" width="90" height="45" fill="#3b2a05" stroke="#fbbf24" stroke-width="1" rx="4"/>
-  <text x="185" y="185" text-anchor="middle" fill="#fcd34d" font-size="6">Hop ২</text>
-  <text x="185" y="195" text-anchor="middle" fill="#fcd34d" font-size="5">প্রতিষ্ঠাতা?</text>
-  <text x="185" y="207" text-anchor="middle" fill="#fcd34d" font-size="5">আগের = Apple</text>
+  <text x="185" y="185" text-anchor="middle" fill="#fcd34d" font-size="10">Hop ২</text>
+  <text x="185" y="195" text-anchor="middle" fill="#fcd34d" font-size="9">প্রতিষ্ঠাতা?</text>
+  <text x="185" y="207" text-anchor="middle" fill="#fcd34d" font-size="9">আগের = Apple</text>
   <rect x="240" y="155" width="90" height="60" fill="#0d3b34" stroke="#52c41a" stroke-width="1" rx="4"/>
-  <text x="285" y="170" text-anchor="middle" fill="#4ade80" font-size="6">Hop ৩</text>
-  <text x="285" y="180" text-anchor="middle" fill="#4ade80" font-size="5">synthesize</text>
-  <text x="285" y="192" text-anchor="middle" fill="#4ade80" font-size="5">আগের = Jobs</text>
-  <text x="285" y="207" text-anchor="middle" fill="#4ade80" font-size="5">→ উত্তর</text>
+  <text x="285" y="170" text-anchor="middle" fill="#4ade80" font-size="10">Hop ৩</text>
+  <text x="285" y="180" text-anchor="middle" fill="#4ade80" font-size="9">synthesize</text>
+  <text x="285" y="192" text-anchor="middle" fill="#4ade80" font-size="9">আগের = Jobs</text>
+  <text x="285" y="207" text-anchor="middle" fill="#4ade80" font-size="9">→ উত্তর</text>
   <rect x="350" y="150" width="210" height="65" fill="#1a1a2e" stroke="#ff6b35" stroke-width="1" stroke-dasharray="4,3" rx="6"/>
-  <text x="455" y="168" text-anchor="middle" fill="#ff8a5b" font-size="7" font-weight="bold">⚠️ চ্যালেঞ্জ</text>
-  <text x="360" y="182" fill="#ff8a5b" font-size="6">• error propagation</text>
-  <text x="360" y="194" fill="#ff8a5b" font-size="6">• cost — একাধিক কল</text>
-  <text x="360" y="206" fill="#ff8a5b" font-size="6">• max ৩-৫ hop সীমা</text>
-  <text x="290" y="238" text-anchor="middle" fill="#5e5c74" font-size="7">তাদাব্বুর — এক উত্তর থেকে পরের প্রশ্ন, ধাপে ধাপে গভীরে</text>
+  <text x="455" y="168" text-anchor="middle" fill="#ff8a5b" font-size="10" font-weight="bold">⚠️ চ্যালেঞ্জ</text>
+  <text x="360" y="182" fill="#ff8a5b" font-size="10">• error propagation</text>
+  <text x="360" y="194" fill="#ff8a5b" font-size="10">• cost — একাধিক কল</text>
+  <text x="360" y="206" fill="#ff8a5b" font-size="10">• max ৩-৫ hop সীমা</text>
+  <text x="290" y="238" text-anchor="middle" fill="#5e5c74" font-size="10">তাদাব্বুর — এক উত্তর থেকে পরের প্রশ্ন, ধাপে ধাপে গভীরে</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Multi-hop — প্রতিটা retrieval-এর ফল দিয়ে পরের প্রশ্ন তৈরি</div>
@@ -692,51 +692,51 @@ SCALING:
   <rect x="0" y="0" width="580" height="250" fill="#0a1f1a" rx="10"/>
   <text x="290" y="26" text-anchor="middle" fill="#e8e6f0" font-size="13" font-weight="bold">🎯 Production Pipeline — সাতটি ধাপ</text>
   <rect x="15" y="48" width="120" height="48" fill="#1e3a5f" stroke="#5b9eff" stroke-width="1.5" rx="6"/>
-  <text x="75" y="66" text-anchor="middle" fill="#5b9eff" font-size="7" font-weight="bold">১. Query</text>
-  <text x="75" y="78" text-anchor="middle" fill="#7dd3fc" font-size="6">rewrite · decompose</text>
-  <text x="75" y="89" text-anchor="middle" fill="#5e5c74" font-size="5">~৫০ms</text>
+  <text x="75" y="66" text-anchor="middle" fill="#5b9eff" font-size="10" font-weight="bold">১. Query</text>
+  <text x="75" y="78" text-anchor="middle" fill="#7dd3fc" font-size="10">rewrite · decompose</text>
+  <text x="75" y="89" text-anchor="middle" fill="#5e5c74" font-size="9">~৫০ms</text>
   <line x1="135" y1="72" x2="150" y2="72" stroke="#5eead4" stroke-width="1.2" marker-end="url(#arrCtx10)"/>
   <rect x="155" y="48" width="120" height="48" fill="#0d3b34" stroke="#52c41a" stroke-width="1.5" rx="6"/>
-  <text x="215" y="66" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">২. Retrieve</text>
-  <text x="215" y="78" text-anchor="middle" fill="#4ade80" font-size="6">hybrid · top-২০</text>
-  <text x="215" y="89" text-anchor="middle" fill="#5e5c74" font-size="5">~১০০ms</text>
+  <text x="215" y="66" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">২. Retrieve</text>
+  <text x="215" y="78" text-anchor="middle" fill="#4ade80" font-size="10">hybrid · top-২০</text>
+  <text x="215" y="89" text-anchor="middle" fill="#5e5c74" font-size="9">~১০০ms</text>
   <line x1="275" y1="72" x2="290" y2="72" stroke="#5eead4" stroke-width="1.2" marker-end="url(#arrCtx10)"/>
   <rect x="295" y="48" width="120" height="48" fill="#3b2a05" stroke="#fbbf24" stroke-width="1.5" rx="6"/>
-  <text x="355" y="66" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="bold">৩. Rerank</text>
-  <text x="355" y="78" text-anchor="middle" fill="#fcd34d" font-size="6">cross-encoder · top-৫</text>
-  <text x="355" y="89" text-anchor="middle" fill="#5e5c74" font-size="5">~১০০ms</text>
+  <text x="355" y="66" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">৩. Rerank</text>
+  <text x="355" y="78" text-anchor="middle" fill="#fcd34d" font-size="10">cross-encoder · top-৫</text>
+  <text x="355" y="89" text-anchor="middle" fill="#5e5c74" font-size="9">~১০০ms</text>
   <line x1="415" y1="72" x2="430" y2="72" stroke="#5eead4" stroke-width="1.2" marker-end="url(#arrCtx10)"/>
   <rect x="435" y="48" width="130" height="48" fill="#1a1a2e" stroke="#b37feb" stroke-width="1.5" rx="6"/>
-  <text x="500" y="66" text-anchor="middle" fill="#b37feb" font-size="7" font-weight="bold">৪. Assemble</text>
-  <text x="500" y="78" text-anchor="middle" fill="#b37feb" font-size="6">position · budget</text>
-  <text x="500" y="89" text-anchor="middle" fill="#5e5c74" font-size="5">~৫ms</text>
+  <text x="500" y="66" text-anchor="middle" fill="#b37feb" font-size="10" font-weight="bold">৪. Assemble</text>
+  <text x="500" y="78" text-anchor="middle" fill="#b37feb" font-size="10">position · budget</text>
+  <text x="500" y="89" text-anchor="middle" fill="#5e5c74" font-size="9">~৫ms</text>
   <line x1="500" y1="96" x2="500" y2="116" stroke="#5eead4" stroke-width="1.2" marker-end="url(#arrCtx10)"/>
   <rect x="435" y="120" width="130" height="48" fill="#2a0d3b" stroke="#b37feb" stroke-width="1.5" rx="6"/>
-  <text x="500" y="138" text-anchor="middle" fill="#b37feb" font-size="7" font-weight="bold">৫. Compress</text>
-  <text x="500" y="150" text-anchor="middle" fill="#b37feb" font-size="6">LLMLingua · extract</text>
-  <text x="500" y="161" text-anchor="middle" fill="#5e5c74" font-size="5">~৫০ms</text>
+  <text x="500" y="138" text-anchor="middle" fill="#b37feb" font-size="10" font-weight="bold">৫. Compress</text>
+  <text x="500" y="150" text-anchor="middle" fill="#b37feb" font-size="10">LLMLingua · extract</text>
+  <text x="500" y="161" text-anchor="middle" fill="#5e5c74" font-size="9">~৫০ms</text>
   <line x1="435" y1="144" x2="420" y2="144" stroke="#5eead4" stroke-width="1.2" marker-end="url(#arrCtx10)"/>
   <rect x="295" y="120" width="120" height="48" fill="#1e3a5f" stroke="#5b9eff" stroke-width="1.5" rx="6"/>
-  <text x="355" y="138" text-anchor="middle" fill="#5b9eff" font-size="7" font-weight="bold">৬. Generate</text>
-  <text x="355" y="150" text-anchor="middle" fill="#7dd3fc" font-size="6">LLM · cite · stream</text>
-  <text x="355" y="161" text-anchor="middle" fill="#5e5c74" font-size="5">~২০০ms-২s</text>
+  <text x="355" y="138" text-anchor="middle" fill="#5b9eff" font-size="10" font-weight="bold">৬. Generate</text>
+  <text x="355" y="150" text-anchor="middle" fill="#7dd3fc" font-size="10">LLM · cite · stream</text>
+  <text x="355" y="161" text-anchor="middle" fill="#5e5c74" font-size="9">~২০০ms-২s</text>
   <line x1="295" y1="144" x2="280" y2="144" stroke="#5eead4" stroke-width="1.2" marker-end="url(#arrCtx10)"/>
   <rect x="155" y="120" width="120" height="48" fill="#0d3b34" stroke="#52c41a" stroke-width="1.5" rx="6"/>
-  <text x="215" y="138" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">৭. Post-process</text>
-  <text x="215" y="150" text-anchor="middle" fill="#4ade80" font-size="6">verify · score</text>
-  <text x="215" y="161" text-anchor="middle" fill="#5e5c74" font-size="5">~৫০ms</text>
+  <text x="215" y="138" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">৭. Post-process</text>
+  <text x="215" y="150" text-anchor="middle" fill="#4ade80" font-size="10">verify · score</text>
+  <text x="215" y="161" text-anchor="middle" fill="#5e5c74" font-size="9">~৫০ms</text>
   <line x1="155" y1="144" x2="140" y2="144" stroke="#5eead4" stroke-width="1.2" marker-end="url(#arrCtx10)"/>
   <rect x="15" y="120" width="120" height="48" fill="#0d3b34" stroke="#5eead4" stroke-width="2" rx="6"/>
-  <text x="75" y="138" text-anchor="middle" fill="#5eead4" font-size="7" font-weight="bold">✅ উত্তর</text>
-  <text x="75" y="150" text-anchor="middle" fill="#5eead4" font-size="6">citation সহ</text>
-  <text x="75" y="161" text-anchor="middle" fill="#5e5c74" font-size="5">verified</text>
+  <text x="75" y="138" text-anchor="middle" fill="#5eead4" font-size="10" font-weight="bold">✅ উত্তর</text>
+  <text x="75" y="150" text-anchor="middle" fill="#5eead4" font-size="10">citation সহ</text>
+  <text x="75" y="161" text-anchor="middle" fill="#5e5c74" font-size="9">verified</text>
   <rect x="60" y="185" width="200" height="35" fill="#1a1a2e" stroke="#5e5c74" stroke-width="0.8" rx="6"/>
-  <text x="160" y="201" text-anchor="middle" fill="#e8e6f0" font-size="7" font-weight="bold">⏱ Latency</text>
-  <text x="160" y="214" text-anchor="middle" fill="#7dd3fc" font-size="7">~৬০০ms - ২.৫s</text>
+  <text x="160" y="201" text-anchor="middle" fill="#e8e6f0" font-size="10" font-weight="bold">⏱ Latency</text>
+  <text x="160" y="214" text-anchor="middle" fill="#7dd3fc" font-size="10">~৬০০ms - ২.৫s</text>
   <rect x="320" y="185" width="200" height="35" fill="#1a1a2e" stroke="#5e5c74" stroke-width="0.8" rx="6"/>
-  <text x="420" y="201" text-anchor="middle" fill="#e8e6f0" font-size="7" font-weight="bold">💰 Cost</text>
-  <text x="420" y="214" text-anchor="middle" fill="#4ade80" font-size="7">~$০.০৩ - ০.০৫/query</text>
-  <text x="290" y="240" text-anchor="middle" fill="#5e5c74" font-size="6">সির — সম্পূর্ণ স্থাপত্য, সাতটি স্তর একসাথে</text>
+  <text x="420" y="201" text-anchor="middle" fill="#e8e6f0" font-size="10" font-weight="bold">💰 Cost</text>
+  <text x="420" y="214" text-anchor="middle" fill="#4ade80" font-size="10">~$০.০৩ - ০.০৫/query</text>
+  <text x="290" y="240" text-anchor="middle" fill="#5e5c74" font-size="10">সির — সম্পূর্ণ স্থাপত্য, সাতটি স্তর একসাথে</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: সম্পূর্ণ pipeline — Query থেকে উত্তর, সাতটি ধাপ, ~৬০০ms-২.৫s</div>

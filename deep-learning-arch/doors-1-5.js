@@ -56,23 +56,23 @@ doors.push({
   <circle cx="80" cy="200" r="12" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="80" y="204" text-anchor="middle" fill="#7dd3fc" font-size="8">x3</text>
   <line x1="92" y1="100" x2="250" y2="140" stroke="#22c55e" stroke-width="2"/>
-  <text x="165" y="112" fill="#4ade80" font-size="7">w1=0.5</text>
+  <text x="165" y="112" fill="#4ade80" font-size="10">w1=0.5</text>
   <line x1="92" y1="150" x2="250" y2="150" stroke="#fbbf24" stroke-width="2"/>
-  <text x="165" y="145" fill="#fcd34d" font-size="7">w2=-0.3</text>
+  <text x="165" y="145" fill="#fcd34d" font-size="10">w2=-0.3</text>
   <line x1="92" y1="200" x2="250" y2="160" stroke="#f87171" stroke-width="2"/>
-  <text x="165" y="190" fill="#fca5a5" font-size="7">w3=0.8</text>
+  <text x="165" y="190" fill="#fca5a5" font-size="10">w3=0.8</text>
   <circle cx="280" cy="150" r="25" fill="#2e1065" stroke="#a855f7" stroke-width="2.5"/>
   <text x="280" y="148" text-anchor="middle" fill="#c084fc" font-size="8">Σ</text>
-  <text x="280" y="160" text-anchor="middle" fill="#d8b4fe" font-size="6">+b</text>
+  <text x="280" y="160" text-anchor="middle" fill="#d8b4fe" font-size="10">+b</text>
   <line x1="305" y1="150" x2="370" y2="150" stroke="#a855f7" stroke-width="2"/>
-  <text x="335" y="145" text-anchor="middle" fill="#c084fc" font-size="7">z=Σwx+b</text>
+  <text x="335" y="145" text-anchor="middle" fill="#c084fc" font-size="10">z=Σwx+b</text>
   <rect x="370" y="130" width="80" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="410" y="148" text-anchor="middle" fill="#4ade80" font-size="7">activation</text>
-  <text x="410" y="160" text-anchor="middle" fill="#86efac" font-size="6">σ(z)</text>
+  <text x="410" y="148" text-anchor="middle" fill="#4ade80" font-size="10">activation</text>
+  <text x="410" y="160" text-anchor="middle" fill="#86efac" font-size="10">σ(z)</text>
   <line x1="450" y1="150" x2="510" y2="150" stroke="#22c55e" stroke-width="2"/>
   <circle cx="530" cy="150" r="15" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="530" y="155" text-anchor="middle" fill="#fca5a5" font-size="9">ŷ</text>
-  <text x="290" y="225" text-anchor="middle" fill="#94a3b8" font-size="7">McCulloch-Pitts 1943 → Rosenblatt 1958 → Minsky XOR 1969</text>
+  <text x="290" y="225" text-anchor="middle" fill="#94a3b8" font-size="10">McCulloch-Pitts 1943 → Rosenblatt 1958 → Minsky XOR 1969</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Perceptron — ইনপুট × ওজন → যোগফল → activation → আউটপুট।</div>
@@ -163,11 +163,11 @@ doors.push({
 <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🧠 MLP + Backpropagation: Forward &amp; Backward Pass</text>
   <circle cx="60" cy="80" r="12" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
-  <text x="60" y="84" text-anchor="middle" fill="#7dd3fc" font-size="7">x1</text>
+  <text x="60" y="84" text-anchor="middle" fill="#7dd3fc" font-size="10">x1</text>
   <circle cx="60" cy="140" r="12" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
-  <text x="60" y="144" text-anchor="middle" fill="#7dd3fc" font-size="7">x2</text>
+  <text x="60" y="144" text-anchor="middle" fill="#7dd3fc" font-size="10">x2</text>
   <circle cx="60" cy="200" r="12" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
-  <text x="60" y="204" text-anchor="middle" fill="#7dd3fc" font-size="7">x3</text>
+  <text x="60" y="204" text-anchor="middle" fill="#7dd3fc" font-size="10">x3</text>
   <text x="35" y="155" text-anchor="middle" fill="#67e8f9" font-size="8" font-weight="700" transform="rotate(-90,35,155)">INPUT</text>
   <circle cx="200" cy="70" r="12" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
   <circle cx="200" cy="120" r="12" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
@@ -310,35 +310,35 @@ doors.push({
   <rect x="30" y="85" width="22" height="22" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <rect x="55" y="85" width="22" height="22" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <rect x="80" y="85" width="22" height="22" rx="2" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="66" y="100" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">3x3 filter</text>
-  <text x="100" y="160" text-anchor="middle" fill="#94a3b8" font-size="7">slides across image</text>
-  <text x="100" y="180" text-anchor="middle" fill="#94a8b8" font-size="6">same weights everywhere</text>
-  <text x="100" y="200" text-anchor="middle" fill="#7dd3fc" font-size="7">(parameter sharing!)</text>
+  <text x="66" y="100" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">3x3 filter</text>
+  <text x="100" y="160" text-anchor="middle" fill="#94a3b8" font-size="10">slides across image</text>
+  <text x="100" y="180" text-anchor="middle" fill="#94a8b8" font-size="10">same weights everywhere</text>
+  <text x="100" y="200" text-anchor="middle" fill="#7dd3fc" font-size="10">(parameter sharing!)</text>
   <rect x="220" y="80" width="70" height="70" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
-  <text x="255" y="105" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="700">Kernel</text>
-  <text x="255" y="118" text-anchor="middle" fill="#fde68a" font-size="7">3x3</text>
-  <text x="255" y="135" text-anchor="middle" fill="#fde68a" font-size="6">w1 w2 w3</text>
-  <text x="255" y="145" text-anchor="middle" fill="#fde68a" font-size="6">w4 w5 w6</text>
+  <text x="255" y="105" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">Kernel</text>
+  <text x="255" y="118" text-anchor="middle" fill="#fde68a" font-size="10">3x3</text>
+  <text x="255" y="135" text-anchor="middle" fill="#fde68a" font-size="10">w1 w2 w3</text>
+  <text x="255" y="145" text-anchor="middle" fill="#fde68a" font-size="10">w4 w5 w6</text>
   <line x1="180" y1="100" x2="220" y2="115" stroke="#fbbf24" stroke-width="1.5"/>
   <rect x="340" y="50" width="100" height="160" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
   <text x="390" y="45" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Feature Map</text>
   <rect x="360" y="60" width="25" height="25" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="372" y="77" text-anchor="middle" fill="#4ade80" font-size="7">0.8</text>
+  <text x="372" y="77" text-anchor="middle" fill="#4ade80" font-size="10">0.8</text>
   <rect x="390" y="60" width="25" height="25" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="402" y="77" text-anchor="middle" fill="#4ade80" font-size="7">0.2</text>
+  <text x="402" y="77" text-anchor="middle" fill="#4ade80" font-size="10">0.2</text>
   <rect x="360" y="90" width="25" height="25" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="372" y="107" text-anchor="middle" fill="#4ade80" font-size="7">0.9</text>
+  <text x="372" y="107" text-anchor="middle" fill="#4ade80" font-size="10">0.9</text>
   <rect x="390" y="90" width="25" height="25" rx="3" fill="#1e293b" stroke="#22c55e" stroke-width="1"/>
-  <text x="402" y="107" text-anchor="middle" fill="#64748b" font-size="7">0.1</text>
+  <text x="402" y="107" text-anchor="middle" fill="#64748b" font-size="10">0.1</text>
   <line x1="290" y1="115" x2="340" y2="95" stroke="#22c55e" stroke-width="1.5"/>
   <rect x="470" y="50" width="90" height="50" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="515" y="72" text-anchor="middle" fill="#7dd3fc" font-size="7">Pooling</text>
-  <text x="515" y="85" text-anchor="middle" fill="#94a3b8" font-size="6">2x2 max</text>
+  <text x="515" y="72" text-anchor="middle" fill="#7dd3fc" font-size="10">Pooling</text>
+  <text x="515" y="85" text-anchor="middle" fill="#94a3b8" font-size="10">2x2 max</text>
   <rect x="470" y="115" width="90" height="50" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="515" y="137" text-anchor="middle" fill="#c084fc" font-size="7">FC Layer</text>
-  <text x="515" y="150" text-anchor="middle" fill="#94a3b8" font-size="6">classification</text>
+  <text x="515" y="137" text-anchor="middle" fill="#c084fc" font-size="10">FC Layer</text>
+  <text x="515" y="150" text-anchor="middle" fill="#94a3b8" font-size="10">classification</text>
   <rect x="470" y="180" width="90" height="35" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
-  <text x="515" y="202" text-anchor="middle" fill="#fca5a5" font-size="7">cat? dog?</text>
+  <text x="515" y="202" text-anchor="middle" fill="#fca5a5" font-size="10">cat? dog?</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: CNN convolution — 3x3 filter input-এর উপর স্লাইড করে, feature map তৈরি করে।</div>
@@ -444,32 +444,32 @@ doors.push({
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔗 LSTM: Three Gates Control Memory</text>
   <rect x="20" y="50" width="540" height="180" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
   <text x="60" y="75" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">t-1</text>
-  <text x="60" y="88" text-anchor="middle" fill="#d8b4fe" font-size="7">prev output</text>
+  <text x="60" y="88" text-anchor="middle" fill="#d8b4fe" font-size="10">prev output</text>
   <text x="60" y="130" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">C_t-1</text>
-  <text x="60" y="143" text-anchor="middle" fill="#d8b4fe" font-size="7">prev cell state</text>
+  <text x="60" y="143" text-anchor="middle" fill="#d8b4fe" font-size="10">prev cell state</text>
   <text x="60" y="200" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="700">x_t</text>
-  <text x="60" y="213" text-anchor="middle" fill="#fde68a" font-size="7">current input</text>
+  <text x="60" y="213" text-anchor="middle" fill="#fde68a" font-size="10">current input</text>
   <rect x="120" y="60" width="100" height="50" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="170" y="80" text-anchor="middle" fill="#fca5a5" font-size="9">FORGET</text>
-  <text x="170" y="95" text-anchor="middle" fill="#fca5a5" font-size="7">f = σ(Wf·[h,x])</text>
-  <text x="170" y="105" text-anchor="middle" fill="#94a3b8" font-size="6">কী ভুলবে</text>
+  <text x="170" y="95" text-anchor="middle" fill="#fca5a5" font-size="10">f = σ(Wf·[h,x])</text>
+  <text x="170" y="105" text-anchor="middle" fill="#94a3b8" font-size="10">কী ভুলবে</text>
   <rect x="240" y="60" width="100" height="50" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="290" y="80" text-anchor="middle" fill="#4ade80" font-size="9">INPUT</text>
-  <text x="290" y="95" text-anchor="middle" fill="#4ade80" font-size="7">i = σ(Wi·[h,x])</text>
-  <text x="290" y="105" text-anchor="middle" fill="#94a3b8" font-size="6">কী মনে রাখবে</text>
+  <text x="290" y="95" text-anchor="middle" fill="#4ade80" font-size="10">i = σ(Wi·[h,x])</text>
+  <text x="290" y="105" text-anchor="middle" fill="#94a3b8" font-size="10">কী মনে রাখবে</text>
   <rect x="360" y="60" width="100" height="50" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="410" y="80" text-anchor="middle" fill="#7dd3fc" font-size="9">OUTPUT</text>
-  <text x="410" y="95" text-anchor="middle" fill="#7dd3fc" font-size="7">o = σ(Wo·[h,x])</text>
-  <text x="410" y="105" text-anchor="middle" fill="#94a3b8" font-size="6">কী প্রকাশ করবে</text>
+  <text x="410" y="95" text-anchor="middle" fill="#7dd3fc" font-size="10">o = σ(Wo·[h,x])</text>
+  <text x="410" y="105" text-anchor="middle" fill="#94a3b8" font-size="10">কী প্রকাশ করবে</text>
   <rect x="120" y="140" width="340" height="30" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="290" y="160" text-anchor="middle" fill="#fcd34d" font-size="8">Cell State: C_t = f*C_{t-1} + i*C_tilde</text>
-  <text x="290" y="173" text-anchor="middle" fill="#fde68a" font-size="7">(highway for gradient flow — solves vanishing!)</text>
+  <text x="290" y="173" text-anchor="middle" fill="#fde68a" font-size="10">(highway for gradient flow — solves vanishing!)</text>
   <rect x="480" y="120" width="60" height="40" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="510" y="138" text-anchor="middle" fill="#c084fc" font-size="7">h_t</text>
-  <text x="510" y="150" text-anchor="middle" fill="#c084fc" font-size="7">output</text>
+  <text x="510" y="138" text-anchor="middle" fill="#c084fc" font-size="10">h_t</text>
+  <text x="510" y="150" text-anchor="middle" fill="#c084fc" font-size="10">output</text>
   <rect x="480" y="170" width="60" height="30" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="510" y="190" text-anchor="middle" fill="#c084fc" font-size="7">C_t</text>
-  <text x="510" y="200" text-anchor="middle" fill="#c084fc" font-size="6">→ next</text>
+  <text x="510" y="190" text-anchor="middle" fill="#c084fc" font-size="10">C_t</text>
+  <text x="510" y="200" text-anchor="middle" fill="#c084fc" font-size="10">→ next</text>
   <line x1="460" y1="140" x2="480" y2="140" stroke="#a855f7" stroke-width="1.5"/>
   <line x1="80" y1="130" x2="120" y2="155" stroke="#a855f7" stroke-width="1.5"/>
 </svg>
@@ -573,28 +573,28 @@ Attention স্কোর = softmax(QKᵀ / √dₖ) × V</div></div>
 <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚡ Transformer: Self-Attention (Vaswani 2017)</text>
   <rect x="20" y="50" width="80" height="200" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
-  <text x="60" y="72" text-anchor="middle" fill="#67e8f9" font-size="7" font-weight="700">INPUT</text>
+  <text x="60" y="72" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">INPUT</text>
   <rect x="30" y="82" width="60" height="18" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
-  <text x="60" y="95" text-anchor="middle" fill="#7dd3fc" font-size="6">"The"</text>
+  <text x="60" y="95" text-anchor="middle" fill="#7dd3fc" font-size="10">"The"</text>
   <rect x="30" y="105" width="60" height="18" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
-  <text x="60" y="118" text-anchor="middle" fill="#7dd3fc" font-size="6">"cat"</text>
+  <text x="60" y="118" text-anchor="middle" fill="#7dd3fc" font-size="10">"cat"</text>
   <rect x="30" y="128" width="60" height="18" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
-  <text x="60" y="141" text-anchor="middle" fill="#7dd3fc" font-size="6">"sat"</text>
+  <text x="60" y="141" text-anchor="middle" fill="#7dd3fc" font-size="10">"sat"</text>
   <rect x="30" y="151" width="60" height="18" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
-  <text x="60" y="164" text-anchor="middle" fill="#7dd3fc" font-size="6">"on"</text>
+  <text x="60" y="164" text-anchor="middle" fill="#7dd3fc" font-size="10">"on"</text>
   <rect x="30" y="174" width="60" height="18" rx="3" fill="#0f172a" stroke="#22d3ee" stroke-width="1"/>
-  <text x="60" y="187" text-anchor="middle" fill="#7dd3fc" font-size="6">"mat"</text>
-  <text x="60" y="220" text-anchor="middle" fill="#94a3b8" font-size="6">all at once</text>
-  <text x="60" y="235" text-anchor="middle" fill="#4ade80" font-size="6">(parallel!)</text>
+  <text x="60" y="187" text-anchor="middle" fill="#7dd3fc" font-size="10">"mat"</text>
+  <text x="60" y="220" text-anchor="middle" fill="#94a3b8" font-size="10">all at once</text>
+  <text x="60" y="235" text-anchor="middle" fill="#4ade80" font-size="10">(parallel!)</text>
   <rect x="140" y="50" width="80" height="60" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="180" y="72" text-anchor="middle" fill="#4ade80" font-size="8">Q (Query)</text>
-  <text x="180" y="88" text-anchor="middle" fill="#86efac" font-size="7">কী খুঁজছি</text>
+  <text x="180" y="88" text-anchor="middle" fill="#86efac" font-size="10">কী খুঁজছি</text>
   <rect x="140" y="120" width="80" height="60" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="180" y="142" text-anchor="middle" fill="#fcd34d" font-size="8">K (Key)</text>
-  <text x="180" y="158" text-anchor="middle" fill="#fde68a" font-size="7">আমি কী</text>
+  <text x="180" y="158" text-anchor="middle" fill="#fde68a" font-size="10">আমি কী</text>
   <rect x="140" y="190" width="80" height="50" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
   <text x="180" y="210" text-anchor="middle" fill="#c084fc" font-size="8">V (Value)</text>
-  <text x="180" y="225" text-anchor="middle" fill="#d8b4fe" font-size="7">আমার অর্থ</text>
+  <text x="180" y="225" text-anchor="middle" fill="#d8b4fe" font-size="10">আমার অর্থ</text>
   <line x1="100" y1="100" x2="140" y2="80" stroke="#22c55e" stroke-width="1"/>
   <line x1="100" y1="120" x2="140" y2="150" stroke="#fbbf24" stroke-width="1"/>
   <line x1="100" y1="180" x2="140" y2="210" stroke="#a855f7" stroke-width="1"/>
@@ -602,23 +602,23 @@ Attention স্কোর = softmax(QKᵀ / √dₖ) × V</div></div>
   <text x="320" y="78" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">ATTENTION</text>
   <text x="320" y="95" text-anchor="middle" fill="#d8b4fe" font-size="8">softmax(QK^T / √d)</text>
   <rect x="275" y="105" width="90" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="320" y="122" text-anchor="middle" fill="#7dd3fc" font-size="6">cat←sat: 0.8</text>
+  <text x="320" y="122" text-anchor="middle" fill="#7dd3fc" font-size="10">cat←sat: 0.8</text>
   <rect x="275" y="135" width="90" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="320" y="152" text-anchor="middle" fill="#7dd3fc" font-size="6">sat←cat: 0.7</text>
+  <text x="320" y="152" text-anchor="middle" fill="#7dd3fc" font-size="10">sat←cat: 0.7</text>
   <rect x="275" y="165" width="90" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="320" y="182" text-anchor="middle" fill="#7dd3fc" font-size="6">mat←on: 0.9</text>
-  <text x="320" y="210" text-anchor="middle" fill="#94a3b8" font-size="6">attention weights</text>
-  <text x="320" y="225" text-anchor="middle" fill="#94a3b8" font-size="6">x V = output</text>
+  <text x="320" y="182" text-anchor="middle" fill="#7dd3fc" font-size="10">mat←on: 0.9</text>
+  <text x="320" y="210" text-anchor="middle" fill="#94a3b8" font-size="10">attention weights</text>
+  <text x="320" y="225" text-anchor="middle" fill="#94a3b8" font-size="10">x V = output</text>
   <line x1="220" y1="80" x2="260" y2="100" stroke="#22c55e" stroke-width="1"/>
   <line x1="220" y1="150" x2="260" y2="120" stroke="#fbbf24" stroke-width="1"/>
   <rect x="420" y="100" width="140" height="90" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="490" y="125" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">OUTPUT</text>
-  <text x="490" y="145" text-anchor="middle" fill="#86efac" font-size="7">rich embeddings</text>
-  <text x="490" y="160" text-anchor="middle" fill="#86efac" font-size="7">context-aware</text>
-  <text x="490" y="175" text-anchor="middle" fill="#86efac" font-size="7">→ FFN → next layer</text>
+  <text x="490" y="145" text-anchor="middle" fill="#86efac" font-size="10">rich embeddings</text>
+  <text x="490" y="160" text-anchor="middle" fill="#86efac" font-size="10">context-aware</text>
+  <text x="490" y="175" text-anchor="middle" fill="#86efac" font-size="10">→ FFN → next layer</text>
   <line x1="380" y1="145" x2="420" y2="145" stroke="#22c55e" stroke-width="2"/>
-  <text x="490" y="220" text-anchor="middle" fill="#94a3b8" font-size="7">Multi-head: 8-96 parallel attentions</text>
-  <text x="490" y="235" text-anchor="middle" fill="#fbbf24" font-size="6">GPT-4: ~120 layers</text>
+  <text x="490" y="220" text-anchor="middle" fill="#94a3b8" font-size="10">Multi-head: 8-96 parallel attentions</text>
+  <text x="490" y="235" text-anchor="middle" fill="#fbbf24" font-size="10">GPT-4: ~120 layers</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Self-Attention — প্রতিটি শব্দ সব শব্দের দিকে তাকায়। Q×K = গুরুত্ব, ×V = অর্থ। সমান্তরাল!।</div>

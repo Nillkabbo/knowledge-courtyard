@@ -164,23 +164,23 @@ Manual server configuration? না। একটি code file — Terraform, Ans
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">⚙️ DevOps Pipeline: Code to Production</text>
   <rect x="10" y="60" width="80" height="50" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="50" y="80" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Code</text>
-  <text x="50" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">git push</text>
+  <text x="50" y="80" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Code</text>
+  <text x="50" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">git push</text>
   <rect x="100" y="60" width="80" height="50" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="140" y="80" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Build</text>
-  <text x="140" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">docker build</text>
+  <text x="140" y="80" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Build</text>
+  <text x="140" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">docker build</text>
   <rect x="190" y="60" width="80" height="50" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="230" y="80" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="700">Test</text>
-  <text x="230" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">pytest, ruff</text>
+  <text x="230" y="80" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">Test</text>
+  <text x="230" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">pytest, ruff</text>
   <rect x="280" y="60" width="80" height="50" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
-  <text x="320" y="80" text-anchor="middle" fill="#fca5a5" font-size="7" font-weight="700">Scan</text>
-  <text x="320" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">bandit, trivy</text>
+  <text x="320" y="80" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">Scan</text>
+  <text x="320" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">bandit, trivy</text>
   <rect x="370" y="60" width="80" height="50" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="410" y="80" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Deploy</text>
-  <text x="410" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">docker push</text>
+  <text x="410" y="80" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Deploy</text>
+  <text x="410" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">docker push</text>
   <rect x="460" y="60" width="110" height="50" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="515" y="80" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="700">Monitor</text>
-  <text x="515" y="95" text-anchor="middle" fill="#94a3b8" font-size="6">Grafana, Sentry</text>
+  <text x="515" y="80" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">Monitor</text>
+  <text x="515" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">Grafana, Sentry</text>
   <line x1="90" y1="85" x2="100" y2="85" stroke="#475569" stroke-width="1.5"/>
   <line x1="180" y1="85" x2="190" y2="85" stroke="#475569" stroke-width="1.5"/>
   <line x1="270" y1="85" x2="280" y2="85" stroke="#475569" stroke-width="1.5"/>
@@ -188,10 +188,10 @@ Manual server configuration? না। একটি code file — Terraform, Ans
   <line x1="450" y1="85" x2="460" y2="85" stroke="#475569" stroke-width="1.5"/>
   <rect x="100" y="140" width="380" height="80" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
   <text x="290" y="165" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">DORA Metrics</text>
-  <text x="170" y="185" text-anchor="middle" fill="#4ade80" font-size="7">Deploy Freq: daily</text>
-  <text x="290" y="185" text-anchor="middle" fill="#fcd34d" font-size="7">Lead Time: &lt; 1hr</text>
-  <text x="410" y="185" text-anchor="middle" fill="#fca5a5" font-size="7">MTTR: &lt; 1hr</text>
-  <text x="290" y="205" text-anchor="middle" fill="#c084fc" font-size="7">Change Failure: &lt; 15%</text>
+  <text x="170" y="185" text-anchor="middle" fill="#4ade80" font-size="10">Deploy Freq: daily</text>
+  <text x="290" y="185" text-anchor="middle" fill="#fcd34d" font-size="10">Lead Time: &lt; 1hr</text>
+  <text x="410" y="185" text-anchor="middle" fill="#fca5a5" font-size="10">MTTR: &lt; 1hr</text>
+  <text x="290" y="205" text-anchor="middle" fill="#c084fc" font-size="10">Change Failure: &lt; 15%</text>
   <text x="290" y="240" text-anchor="middle" fill="#94a3b8" font-size="8">Terraform: Infrastructure as Code · Prometheus: Metrics · Grafana: Dashboards</text>
 </svg>
 </div>
@@ -308,25 +308,25 @@ npm/pip package-এ malicious code? SolarWinds (২০২০), Log4j (২০২�
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🛡️ OWASP Top 10: Most Critical Web Vulnerabilities</text>
   <rect x="20" y="50" width="120" height="35" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
-  <text x="80" y="72" text-anchor="middle" fill="#fca5a5" font-size="7">1. Broken Access</text>
+  <text x="80" y="72" text-anchor="middle" fill="#fca5a5" font-size="10">1. Broken Access</text>
   <rect x="150" y="50" width="120" height="35" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
-  <text x="210" y="72" text-anchor="middle" fill="#fca5a5" font-size="7">2. Crypto Failures</text>
+  <text x="210" y="72" text-anchor="middle" fill="#fca5a5" font-size="10">2. Crypto Failures</text>
   <rect x="280" y="50" width="120" height="35" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
-  <text x="340" y="72" text-anchor="middle" fill="#fca5a5" font-size="7">3. Injection</text>
+  <text x="340" y="72" text-anchor="middle" fill="#fca5a5" font-size="10">3. Injection</text>
   <rect x="410" y="50" width="150" height="35" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
-  <text x="485" y="72" text-anchor="middle" fill="#fca5a5" font-size="7">4. Insecure Design</text>
+  <text x="485" y="72" text-anchor="middle" fill="#fca5a5" font-size="10">4. Insecure Design</text>
   <rect x="20" y="95" width="120" height="35" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="80" y="117" text-anchor="middle" fill="#fcd34d" font-size="7">5. Security Misconf</text>
+  <text x="80" y="117" text-anchor="middle" fill="#fcd34d" font-size="10">5. Security Misconf</text>
   <rect x="150" y="95" width="120" height="35" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="210" y="117" text-anchor="middle" fill="#fcd34d" font-size="7">6. Vulnerable Deps</text>
+  <text x="210" y="117" text-anchor="middle" fill="#fcd34d" font-size="10">6. Vulnerable Deps</text>
   <rect x="280" y="95" width="120" height="35" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="340" y="117" text-anchor="middle" fill="#fcd34d" font-size="7">7. Auth Failures</text>
+  <text x="340" y="117" text-anchor="middle" fill="#fcd34d" font-size="10">7. Auth Failures</text>
   <rect x="410" y="95" width="150" height="35" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="485" y="117" text-anchor="middle" fill="#fcd34d" font-size="7">8. Software/Data Integrity</text>
+  <text x="485" y="117" text-anchor="middle" fill="#fcd34d" font-size="10">8. Software/Data Integrity</text>
   <rect x="20" y="140" width="120" height="35" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="80" y="162" text-anchor="middle" fill="#7dd3fc" font-size="7">9. Logging Failures</text>
+  <text x="80" y="162" text-anchor="middle" fill="#7dd3fc" font-size="10">9. Logging Failures</text>
   <rect x="150" y="140" width="120" height="35" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="210" y="162" text-anchor="middle" fill="#7dd3fc" font-size="7">10. SSRF</text>
+  <text x="210" y="162" text-anchor="middle" fill="#7dd3fc" font-size="10">10. SSRF</text>
   <rect x="100" y="195" width="380" height="35" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="290" y="217" text-anchor="middle" fill="#4ade80" font-size="8">Shift Left: Security from Day 1 · SAST + DAST + SCA</text>
 </svg>
@@ -440,22 +440,22 @@ Book ২৩ (Irreplaceable Craftsman) — এটাই তোমার আগে
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🤖 AI-Assisted Development: Typing Less, Thinking More</text>
   <rect x="20" y="50" width="160" height="150" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="100" y="72" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">Copilot (2021)</text>
-  <text x="100" y="90" text-anchor="middle" fill="#7dd3fc" font-size="7">Inline completion</text>
-  <text x="100" y="105" text-anchor="middle" fill="#7dd3fc" font-size="7">PR review</text>
-  <text x="100" y="120" text-anchor="middle" fill="#7dd3fc" font-size="7">Chat in IDE</text>
-  <text x="100" y="140" text-anchor="middle" fill="#94a3b8" font-size="6">30-50% faster</text>
+  <text x="100" y="90" text-anchor="middle" fill="#7dd3fc" font-size="10">Inline completion</text>
+  <text x="100" y="105" text-anchor="middle" fill="#7dd3fc" font-size="10">PR review</text>
+  <text x="100" y="120" text-anchor="middle" fill="#7dd3fc" font-size="10">Chat in IDE</text>
+  <text x="100" y="140" text-anchor="middle" fill="#94a3b8" font-size="10">30-50% faster</text>
   <rect x="200" y="50" width="160" height="150" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="280" y="72" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Claude Code</text>
-  <text x="280" y="90" text-anchor="middle" fill="#86efac" font-size="7">Multi-file edits</text>
-  <text x="280" y="105" text-anchor="middle" fill="#86efac" font-size="7">Terminal access</text>
-  <text x="280" y="120" text-anchor="middle" fill="#86efac" font-size="7">Git operations</text>
-  <text x="280" y="140" text-anchor="middle" fill="#94a3b8" font-size="6">Full agent loop</text>
+  <text x="280" y="90" text-anchor="middle" fill="#86efac" font-size="10">Multi-file edits</text>
+  <text x="280" y="105" text-anchor="middle" fill="#86efac" font-size="10">Terminal access</text>
+  <text x="280" y="120" text-anchor="middle" fill="#86efac" font-size="10">Git operations</text>
+  <text x="280" y="140" text-anchor="middle" fill="#94a3b8" font-size="10">Full agent loop</text>
   <rect x="380" y="50" width="180" height="150" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
   <text x="470" y="72" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Future: Devin / AGI</text>
-  <text x="470" y="90" text-anchor="middle" fill="#d8b4fe" font-size="7">Autonomous tasks</text>
-  <text x="470" y="105" text-anchor="middle" fill="#d8b4fe" font-size="7">Self-debugging</text>
-  <text x="470" y="120" text-anchor="middle" fill="#d8b4fe" font-size="7">Deployment?</text>
-  <text x="470" y="140" text-anchor="middle" fill="#94a3b8" font-size="6">Human: empathy, ethics</text>
+  <text x="470" y="90" text-anchor="middle" fill="#d8b4fe" font-size="10">Autonomous tasks</text>
+  <text x="470" y="105" text-anchor="middle" fill="#d8b4fe" font-size="10">Self-debugging</text>
+  <text x="470" y="120" text-anchor="middle" fill="#d8b4fe" font-size="10">Deployment?</text>
+  <text x="470" y="140" text-anchor="middle" fill="#94a3b8" font-size="10">Human: empathy, ethics</text>
   <text x="290" y="220" text-anchor="middle" fill="#94a3b8" font-size="8">Pattern: AI writes code · Human reviews, architects, decides</text>
 </svg>
 </div>
@@ -575,27 +575,27 @@ Production-এ feature চলছে। Grafana — request rate, error rate, lat
 <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🔨 One Feature: Idea to Production (9 Doors)</text>
   <rect x="30" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="80" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Door 1: Idea</text>
+  <text x="80" y="75" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Door 1: Idea</text>
   <rect x="145" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="195" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Door 2: Code</text>
+  <text x="195" y="75" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Door 2: Code</text>
   <rect x="260" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="310" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Door 3: Pattern</text>
+  <text x="310" y="75" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Door 3: Pattern</text>
   <rect x="375" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="425" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Door 4: Test</text>
+  <text x="425" y="75" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Door 4: Test</text>
   <rect x="470" y="50" width="90" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="515" y="75" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="700">Door 5: PR</text>
+  <text x="515" y="75" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700">Door 5: PR</text>
   <rect x="80" y="115" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="130" y="140" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Door 6: Arch</text>
+  <text x="130" y="140" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Door 6: Arch</text>
   <rect x="195" y="115" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="245" y="140" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Door 7: CI/CD</text>
+  <text x="245" y="140" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Door 7: CI/CD</text>
   <rect x="310" y="115" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="360" y="140" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Door 8: Secure</text>
+  <text x="360" y="140" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Door 8: Secure</text>
   <rect x="425" y="115" width="100" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="475" y="140" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">Door 9: AI</text>
+  <text x="475" y="140" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">Door 9: AI</text>
   <rect x="190" y="185" width="200" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="290" y="210" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">PRODUCTION</text>
-  <text x="290" y="225" text-anchor="middle" fill="#86efac" font-size="7">LedgerPilot /api/v1/payments/</text>
-  <text x="290" y="260" text-anchor="middle" fill="#94a3b8" font-size="7">9 doors - 55 years of engineering - 1 feature shipped</text>
+  <text x="290" y="225" text-anchor="middle" fill="#86efac" font-size="10">LedgerPilot /api/v1/payments/</text>
+  <text x="290" y="260" text-anchor="middle" fill="#94a3b8" font-size="10">9 doors - 55 years of engineering - 1 feature shipped</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: একটি feature নয়টি দরজা পার হয়ে production-এ যায়।</div>

@@ -824,17 +824,17 @@ for suggestion in trie.autocomplete('py'):
     <circle cx="485" cy="22" r="14" fill="rgba(82,196,26,0.1)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="485" y="26" text-anchor="middle" fill="#52c41a" font-size="10">i</text>
     <line x1="499" y1="22" x2="515" y2="22" stroke="#52c41a" stroke-width="1" opacity="0.5"/>
-    <text x="510" y="26" fill="#52c41a" font-size="7" font-weight="bold">→ algorithm ✓</text>
+    <text x="510" y="26" fill="#52c41a" font-size="10" font-weight="bold">→ algorithm ✓</text>
     <!-- s (algorithms) -->
     <line x1="395" y1="42" x2="430" y2="55" stroke="#22d3ee" stroke-width="1.5"/>
     <circle cx="440" cy="58" r="14" fill="rgba(34,211,238,0.1)" stroke="#22d3ee" stroke-width="1.5"/>
     <text x="440" y="62" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="bold">s</text>
-    <text x="510" y="62" fill="#22d3ee" font-size="7" font-weight="bold">→ algorithms ✓</text>
+    <text x="510" y="62" fill="#22d3ee" font-size="10" font-weight="bold">→ algorithms ✓</text>
     <!-- r-i-t-h-m-i-c (algorithmic) -->
     <line x1="395" y1="48" x2="430" y2="90" stroke="#a78bfa" stroke-width="1.5"/>
     <circle cx="440" cy="95" r="14" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1.5"/>
     <text x="440" y="99" text-anchor="middle" fill="#a78bfa" font-size="10">r</text>
-    <text x="510" y="99" fill="#a78bfa" font-size="7" font-weight="bold">→ algorithmic ✓</text>
+    <text x="510" y="99" fill="#a78bfa" font-size="10" font-weight="bold">→ algorithmic ✓</text>
     <!-- Other branches from root -->
     <line x1="100" y1="150" x2="150" y2="190" stroke="#f97316" stroke-width="1" opacity="0.3"/>
     <circle cx="165" cy="195" r="14" fill="rgba(249,115,22,0.06)" stroke="#f97316" stroke-width="1" opacity="0.4"/>

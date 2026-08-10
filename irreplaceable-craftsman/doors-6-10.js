@@ -414,8 +414,8 @@ doors.push({
   <text x="380" y="250" fill="#fbbf24" font-size="8" font-style="italic">culture</text>
   <text x="250" y="295" fill="#fbbf24" font-size="8" font-style="italic">trust</text>
   <text x="310" y="295" fill="#fbbf24" font-size="8" font-style="italic">principles</text>
-  <text x="165" y="320" fill="#9290a8" font-size="7">নেতা তৈরি</text>
-  <text x="355" y="320" fill="#9290a8" font-size="7">প্রতিষ্ঠান স্মৃতি</text>
+  <text x="165" y="320" fill="#9290a8" font-size="10">নেতা তৈরি</text>
+  <text x="355" y="320" fill="#9290a8" font-size="10">প্রতিষ্ঠান স্মৃতি</text>
   <text x="50" y="200" fill="#fbbf24" font-size="9" font-weight="700">শিকড়</text>
   <text x="50" y="213" fill="#9290a8" font-size="8">(অদৃশ্য)</text>
   <text x="50" y="226" fill="#9290a8" font-size="8">এটাই</text>
@@ -511,7 +511,7 @@ doors.push({
   <path d="M 280 200 Q 200 230 130 290 L 100 340" stroke="#a3e635" stroke-width="2.5" fill="none" opacity=".7"/>
   <circle cx="100" cy="340" r="6" fill="#a3e635" opacity=".8"/>
   <text x="100" y="358" text-anchor="middle" fill="#a3e635" font-size="8" font-weight="700">মূল নীতি</text>
-  <text x="100" y="370" text-anchor="middle" fill="#9290a8" font-size="7">দ্বার ২ · আকল</text>
+  <text x="100" y="370" text-anchor="middle" fill="#9290a8" font-size="10">দ্বার ২ · আকল</text>
   <path d="M 280 200 Q 230 250 190 320 L 175 355" stroke="#22d3ee" stroke-width="2.5" fill="none" opacity=".7"/>
   <circle cx="175" cy="355" r="6" fill="#22d3ee" opacity=".8"/>
   <text x="175" y="372" text-anchor="middle" fill="#22d3ee" font-size="8" font-weight="700">সিস্টেম চিন্তা</text>
@@ -527,7 +527,7 @@ doors.push({
   <path d="M 280 200 Q 360 230 430 290 L 460 340" stroke="#c084fc" stroke-width="2.5" fill="none" opacity=".7"/>
   <circle cx="460" cy="340" r="6" fill="#c084fc" opacity=".8"/>
   <text x="460" y="358" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">উদ্যোক্তা</text>
-  <text x="460" y="370" text-anchor="middle" fill="#9290a8" font-size="7">দ্বার ৯ · তাওয়াক্কুল</text>
+  <text x="460" y="370" text-anchor="middle" fill="#9290a8" font-size="10">দ্বার ৯ · তাওয়াক্কুল</text>
   <text x="40" y="320" fill="#5e5c74" font-size="8" font-style="italic">শিকড়</text>
   <text x="40" y="332" fill="#5e5c74" font-size="8" font-style="italic">(অদৃশ্য)</text>
   <text x="280" y="195" text-anchor="middle" fill="#86efac" font-size="8" font-weight="700">সমন্বয়</text>

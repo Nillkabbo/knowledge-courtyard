@@ -478,7 +478,7 @@ print(f"Matching docs: {results}")  # [0, 1]
     <!-- Result -->
     <rect x="360" y="245" width="200" height="35" rx="6" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
     <text x="460" y="262" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">3 dead ends → MATCH</text>
-    <text x="460" y="274" text-anchor="middle" fill="#9a93b8" font-size="7">Pruning cuts hopeless paths</text>
+    <text x="460" y="274" text-anchor="middle" fill="#9a93b8" font-size="10">Pruning cuts hopeless paths</text>
   </svg>
   <div class="diag-cap">Wildcards = try 0, 1, 2, 3... skip words। মৃত প্রান্তে ফিরো, নতুন path চেষ্টা করো।</div>
 </div>

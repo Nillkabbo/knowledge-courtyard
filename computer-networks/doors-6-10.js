@@ -694,15 +694,15 @@ HTTP response: ২০০ OK + body</div></div>
 <!-- L2: Ethernet Frame -->
 <rect x="30" y="175" width="500" height="42" rx="5" fill="rgba(251,191,36,.08)" stroke="#fbbf24" stroke-width="1.5"/>
 <rect x="40" y="182" width="55" height="28" rx="3" fill="rgba(251,191,36,.2)" stroke="#fbbf24" stroke-width="1"/>
-<text x="67" y="200" fill="#fbbf24" font-size="7" font-weight="700" text-anchor="middle">Eth Hdr</text>
+<text x="67" y="200" fill="#fbbf24" font-size="10" font-weight="700" text-anchor="middle">Eth Hdr</text>
 <rect x="105" y="182" width="55" height="28" rx="3" fill="rgba(61,214,196,.15)" stroke="#3dd6c4" stroke-width="1" stroke-dasharray="2,2"/>
-<text x="132" y="200" fill="#3dd6c4" font-size="7" text-anchor="middle">IP</text>
+<text x="132" y="200" fill="#3dd6c4" font-size="10" text-anchor="middle">IP</text>
 <rect x="170" y="182" width="55" height="28" rx="3" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2,2"/>
-<text x="197" y="200" fill="#38bdf8" font-size="7" text-anchor="middle">TCP</text>
+<text x="197" y="200" fill="#38bdf8" font-size="10" text-anchor="middle">TCP</text>
 <rect x="235" y="182" width="230" height="28" rx="3" fill="rgba(82,196,26,.06)" stroke="#52c41a" stroke-width="1" stroke-dasharray="2,2"/>
-<text x="350" y="200" fill="#52c41a" font-size="7" text-anchor="middle">HTTP Data</text>
+<text x="350" y="200" fill="#52c41a" font-size="10" text-anchor="middle">HTTP Data</text>
 <rect x="475" y="182" width="45" height="28" rx="3" fill="rgba(255,107,53,.15)" stroke="#ff6b35" stroke-width="1"/>
-<text x="497" y="200" fill="#ff6b35" font-size="7" font-weight="700" text-anchor="middle">FCS</text>
+<text x="497" y="200" fill="#ff6b35" font-size="10" font-weight="700" text-anchor="middle">FCS</text>
 <text x="280" y="240" fill="#9290a8" font-size="9" text-anchor="middle">প্রতিটি স্তর আগের স্তরকে wrap করে (encapsulate)</text>
 <!-- Wire -->
 <rect x="30" y="260" width="500" height="32" rx="5" fill="rgba(255,107,53,.08)" stroke="#ff6b35" stroke-width="1.5"/>

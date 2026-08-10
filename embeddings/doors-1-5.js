@@ -346,7 +346,7 @@ WHICH MODEL TO CHOOSE:
   <text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">word২vec Skip-gram — প্রসঙ্গ থেকে শব্দ শেখা</text>
   <rect x="240" y="55" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="290" y="72" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="bold">"throne"</text>
-  <text x="290" y="84" text-anchor="middle" fill="#94a3b8" font-size="7">input word</text>
+  <text x="290" y="84" text-anchor="middle" fill="#94a3b8" font-size="10">input word</text>
   <rect x="240" y="110" width="100" height="30" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
   <text x="290" y="129" text-anchor="middle" fill="#c084fc" font-size="8">৩০০-dim embedding</text>
   <line x1="290" y1="95" x2="290" y2="110" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB2)"/>
@@ -367,7 +367,7 @@ WHICH MODEL TO CHOOSE:
   <line x1="305" y1="140" x2="375" y2="170" stroke="#334155" stroke-width="1" marker-end="url(#arrEMB2)"/>
   <line x1="315" y1="140" x2="470" y2="170" stroke="#334155" stroke-width="1" marker-end="url(#arrEMB2)"/>
   <text x="290" y="220" text-anchor="middle" fill="#fcd34d" font-size="8">একটি শব্দ থেকে চারপাশের প্রসঙ্গ শব্দ ভবিষ্যদ করো — এটাই skip-gram</text>
-  <text x="290" y="234" text-anchor="middle" fill="#64748b" font-size="7">সমার্থক প্রসঙ্গ → সমার্থক embedding। Distributional hypothesis (Firth ১৯৫৭)</text>
+  <text x="290" y="234" text-anchor="middle" fill="#64748b" font-size="10">সমার্থক প্রসঙ্গ → সমার্থক embedding। Distributional hypothesis (Firth ১৯৫৭)</text>
 </svg>
 </div>
 <div class="svg-caption">Skip-gram: কেন্দ্রের শব্দ ("throne") থেকে চারপাশের প্রসঙ্গ শব্দ ভবিষ্যদ করা হয়। একই প্রসঙ্গে থাকা শব্দ কাছাকাছি embedding পায় — king, queen, crown সব "রাজকীয়" দিকে।</div>`,
@@ -559,17 +559,17 @@ COMMON SEARCH FAILURES:
   <text x="430" y="178" fill="#fcd34d" font-size="9" font-weight="bold">C: "car"</text>
   <path d="M 130 160 A 70 70 0 0 1 140 165" fill="none" stroke="#22c55e" stroke-width="1.5"/>
   <text x="115" y="150" fill="#4ade80" font-size="8">θ ছোট</text>
-  <text x="108" y="162" fill="#4ade80" font-size="7">cos ≈ ০.৮৯</text>
+  <text x="108" y="162" fill="#4ade80" font-size="10">cos ≈ ০.৮৯</text>
   <path d="M 95 188 A 95 95 0 0 1 280 195" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="180" y="198" fill="#fcd34d" font-size="8">θ বড়</text>
-  <text x="175" y="210" fill="#fcd34d" font-size="7">cos ≈ ০.১৫</text>
+  <text x="175" y="210" fill="#fcd34d" font-size="10">cos ≈ ০.১৫</text>
   <rect x="345" y="40" width="220" height="95" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
   <text x="455" y="58" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="bold">cos(θ) = (A · B) / (|A| × |B|)</text>
   <text x="362" y="78" fill="#7dd3fc" font-size="8">cos = ১.০ → একই দিক (সমার্থক)</text>
   <text x="362" y="94" fill="#4ade80" font-size="8">cos = ০.৮৫+ → খুব কাছে</text>
   <text x="362" y="110" fill="#fcd34d" font-size="8">cos = ০.০ → সম্পর্কহীন</text>
   <text x="362" y="126" fill="#94a3b8" font-size="8">cos = -১.০ → বিপরীত অর্থ</text>
-  <text x="290" y="240" text-anchor="middle" fill="#64748b" font-size="7">magnitude নয়, দিক গুরুত্বপূর্ণ। normalize করলে cosine = dot product (দ্রুত!)</text>
+  <text x="290" y="240" text-anchor="middle" fill="#64748b" font-size="10">magnitude নয়, দিক গুরুত্বপূর্ণ। normalize করলে cosine = dot product (দ্রুত!)</text>
 </svg>
 </div>
 <div class="svg-caption">Cosine similarity দুই ভেক্টরের কোণ মাপে। কোণ ছোট = অর্থ কাছে (cos ≈ ১), কোণ বড় = অর্থ দূরে (cos ≈ ০)। cat ও kitten কাছে, cat ও car দূরে।</div>`,
@@ -757,14 +757,14 @@ BIAS IN EMBEDDINGS:
   <circle cx="430" cy="95" r="6" fill="#a855f7" stroke="#c084fc" stroke-width="2"/>
   <text x="442" y="93" fill="#c084fc" font-size="9">queen (আসল)</text>
   <line x1="366" y1="82" x2="424" y2="92" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="2,2"/>
-  <text x="370" y="112" fill="#4ade80" font-size="7">≈ মিল!</text>
+  <text x="370" y="112" fill="#4ade80" font-size="10">≈ মিল!</text>
   <defs>
     <marker id="arrEMB4a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker>
     <marker id="arrEMB4b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#fbbf24"/></marker>
     <marker id="arrEMB4c" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22c55e"/></marker>
   </defs>
   <rect x="30" y="218" width="520" height="24" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="290" y="234" text-anchor="middle" fill="#94a3b8" font-size="7">ভেক্টর যোগ-বিয়োগে অর্থ ধরা যায় — Paris − France + Italy ≈ Rome। অর্থের জ্যামিতিতে দিক ও দূরত্ব গুণ বহন করে।</text>
+  <text x="290" y="234" text-anchor="middle" fill="#94a3b8" font-size="10">ভেক্টর যোগ-বিয়োগে অর্থ ধরা যায় — Paris − France + Italy ≈ Rome। অর্থের জ্যামিতিতে দিক ও দূরত্ব গুণ বহন করে।</text>
 </svg>
 </div>
 <div class="svg-caption">ভেক্টর পাটিগণিতে অর্থ ধরা যায়। king থেকে man বাদ দিলে "রাজকীয়তা" দিক পাওয়া যায়, তাতে woman যোগ করলে queen-এর কাছে পৌঁছানো যায়। শব্দ দিয়ে যোগ-বিয়োগ — অর্থের জ্যামিতি।</div>`,
@@ -922,24 +922,24 @@ EVALUATION:
   <text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">Contrastive Learning — কাছে টানো, দূরে ঠেলো</text>
   <circle cx="290" cy="120" r="7" fill="#22d3ee" stroke="#7dd3fc" stroke-width="2"/>
   <text x="298" y="118" fill="#7dd3fc" font-size="8" font-weight="bold">anchor</text>
-  <text x="298" y="128" fill="#94a3b8" font-size="7">"diabetes treatment"</text>
+  <text x="298" y="128" fill="#94a3b8" font-size="10">"diabetes treatment"</text>
   <circle cx="150" cy="70" r="6" fill="#22c55e" stroke="#4ade80" stroke-width="2"/>
   <text x="90" y="60" fill="#4ade80" font-size="8" font-weight="bold">positive ✓</text>
-  <text x="60" y="72" fill="#94a3b8" font-size="7">"how to treat diabetes"</text>
+  <text x="60" y="72" fill="#94a3b8" font-size="10">"how to treat diabetes"</text>
   <line x1="155" y1="75" x2="283" y2="117" stroke="#22c55e" stroke-width="2" marker-end="url(#arrEMB5a)"/>
-  <text x="180" y="88" fill="#4ade80" font-size="7">টানো ←</text>
+  <text x="180" y="88" fill="#4ade80" font-size="10">টানো ←</text>
   <circle cx="460" cy="170" r="6" fill="#ef4444" stroke="#fca5a5" stroke-width="2"/>
   <text x="470" y="168" fill="#fca5a5" font-size="8" font-weight="bold">negative ✗</text>
-  <text x="470" y="180" fill="#94a3b8" font-size="7">"diabetes symptoms"</text>
+  <text x="470" y="180" fill="#94a3b8" font-size="10">"diabetes symptoms"</text>
   <line x1="453" y1="165" x2="297" y2="123" stroke="#ef4444" stroke-width="2" marker-end="url(#arrEMB5b)"/>
-  <text x="360" y="155" fill="#fca5a5" font-size="7">→ ঠেলো</text>
+  <text x="360" y="155" fill="#fca5a5" font-size="10">→ ঠেলো</text>
   <defs>
     <marker id="arrEMB5a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22c55e"/></marker>
     <marker id="arrEMB5b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ef4444"/></marker>
   </defs>
   <rect x="20" y="200" width="540" height="38" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
   <text x="290" y="216" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">Loss: minimize d(anchor, positive) · maximize d(anchor, negative)</text>
-  <text x="290" y="230" text-anchor="middle" fill="#64748b" font-size="7">Hard negative (সম্পর্কিত কিন্তু ভুল) দিয়ে শিখলে model সূক্ষ্ম পার্থক্য বোঝে — ৫-১৫% উন্নতি।</text>
+  <text x="290" y="230" text-anchor="middle" fill="#64748b" font-size="10">Hard negative (সম্পর্কিত কিন্তু ভুল) দিয়ে শিখলে model সূক্ষ্ম পার্থক্য বোঝে — ৫-১৫% উন্নতি।</text>
 </svg>
 </div>
 <div class="svg-caption">Contrastive learning: anchor-এর মতো positive কাছে টানা হয়, negative দূরে ঠেলা হয়। Hard negative (যেমন "diabetes symptoms" — সম্পর্কিত কিন্তু ভুল) দিয়ে শিখলে model সূক্ষ্ম পার্থক্য বোঝে। এটাই fine-tuning-এর মূল।</div>`,

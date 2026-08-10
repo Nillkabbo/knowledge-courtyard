@@ -117,28 +117,28 @@ WHY NOT JUST USE MAX DIMENSIONS?
   <text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">Sentence Embeddings — বাক্য থেকে ভেক্টর</text>
   <rect x="30" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="80" y="68" text-anchor="middle" fill="#7dd3fc" font-size="8">বাক্য</text>
-  <text x="80" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">"আজ মাছ ধরছি"</text>
+  <text x="80" y="80" text-anchor="middle" fill="#94a3b8" font-size="10">"আজ মাছ ধরছি"</text>
   <rect x="160" y="50" width="90" height="40" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
   <text x="205" y="68" text-anchor="middle" fill="#c084fc" font-size="8">Transformer</text>
-  <text x="205" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">BERT / BGE</text>
+  <text x="205" y="80" text-anchor="middle" fill="#94a3b8" font-size="10">BERT / BGE</text>
   <rect x="280" y="50" width="90" height="40" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="1.5"/>
   <text x="325" y="68" text-anchor="middle" fill="#4ade80" font-size="8">৭৬৮-dim ভেক্টর</text>
-  <text x="325" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">[০.২, -০.৫, ...]</text>
+  <text x="325" y="80" text-anchor="middle" fill="#94a3b8" font-size="10">[০.২, -০.৫, ...]</text>
   <line x1="130" y1="70" x2="160" y2="70" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB6a)"/>
   <line x1="250" y1="70" x2="280" y2="70" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB6a)"/>
   <defs><marker id="arrEMB6a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#475569"/></marker></defs>
   <text x="410" y="50" fill="#fcd34d" font-size="8" font-weight="bold">ভেক্টর স্পেসে বাক্যের অবস্থান</text>
   <circle cx="430" cy="140" r="5" fill="#22d3ee"/>
-  <text x="440" y="143" fill="#7dd3fc" font-size="7">মাছ ধরা</text>
+  <text x="440" y="143" fill="#7dd3fc" font-size="10">মাছ ধরা</text>
   <circle cx="460" cy="130" r="5" fill="#22d3ee"/>
-  <text x="470" y="133" fill="#7dd3fc" font-size="7">নদীতে মাছ</text>
+  <text x="470" y="133" fill="#7dd3fc" font-size="10">নদীতে মাছ</text>
   <circle cx="395" cy="155" r="5" fill="#a855f7"/>
-  <text x="345" y="158" fill="#c084fc" font-size="7">রান্না করা</text>
+  <text x="345" y="158" fill="#c084fc" font-size="10">রান্না করা</text>
   <circle cx="520" cy="120" r="5" fill="#fbbf24"/>
-  <text x="490" y="112" fill="#fcd34d" font-size="7">প্রোগ্রামিং</text>
+  <text x="490" y="112" fill="#fcd34d" font-size="10">প্রোগ্রামিং</text>
   <circle cx="450" cy="145" r="5" fill="#22d3ee"/>
-  <text x="408" y="175" fill="#94a3b8" font-size="7">একই অর্থের বাক্য কাছে, ভিন্ন অর্থের দূরে</text>
-  <text x="30" y="225" fill="#64748b" font-size="7">Sentence-BERT: সম্পূর্ণ বাক্য → একটি ভেক্টর। টোকেন-লেভেল নয়, বাক্য-লেভেল উপস্থাপন। সেমান্টিক সার্চের ভিত্তি।</text>
+  <text x="408" y="175" fill="#94a3b8" font-size="10">একই অর্থের বাক্য কাছে, ভিন্ন অর্থের দূরে</text>
+  <text x="30" y="225" fill="#64748b" font-size="10">Sentence-BERT: সম্পূর্ণ বাক্য → একটি ভেক্টর। টোকেন-লেভেল নয়, বাক্য-লেভেল উপস্থাপন। সেমান্টিক সার্চের ভিত্তি।</text>
 </svg>
 </div>
 <div class="svg-caption">বাক্য থেকে একটি ভেক্টর — Sentence-BERT পুরো বাক্যকে ৭৬৮-মাত্রিক স্পেসের একটি বিন্দুতে রূপান্তর করে। একই অর্থের বাক্য কাছাকাছি, ভিন্ন অর্থের দূরে।</div>`,
@@ -263,32 +263,32 @@ COMMON PITFALLS:
   <text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">CLIP — টেক্সট ও ছবি এক স্পেসে</text>
   <rect x="30" y="50" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="80" y="68" text-anchor="middle" fill="#7dd3fc" font-size="9">🖼️ ছবি</text>
-  <text x="80" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">image input</text>
+  <text x="80" y="80" text-anchor="middle" fill="#94a3b8" font-size="10">image input</text>
   <rect x="30" y="150" width="100" height="40" rx="6" fill="#1e3a5f" stroke="#22c55e" stroke-width="1.5"/>
   <text x="80" y="168" text-anchor="middle" fill="#4ade80" font-size="9">📝 টেক্সট</text>
-  <text x="80" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">"a cat on a mat"</text>
+  <text x="80" y="180" text-anchor="middle" fill="#94a3b8" font-size="10">"a cat on a mat"</text>
   <rect x="160" y="50" width="90" height="40" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
   <text x="205" y="68" text-anchor="middle" fill="#c084fc" font-size="8">Image Encoder</text>
-  <text x="205" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">ViT</text>
+  <text x="205" y="80" text-anchor="middle" fill="#94a3b8" font-size="10">ViT</text>
   <rect x="160" y="150" width="90" height="40" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
   <text x="205" y="168" text-anchor="middle" fill="#c084fc" font-size="8">Text Encoder</text>
-  <text x="205" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">Transformer</text>
+  <text x="205" y="180" text-anchor="middle" fill="#94a3b8" font-size="10">Transformer</text>
   <line x1="130" y1="70" x2="160" y2="70" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB7)"/>
   <line x1="130" y1="170" x2="160" y2="170" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB7)"/>
   <defs><marker id="arrEMB7" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#475569"/></marker></defs>
   <circle cx="320" cy="120" r="5" fill="#22d3ee"/>
-  <text x="328" y="115" fill="#7dd3fc" font-size="7">🖼️ cat img</text>
+  <text x="328" y="115" fill="#7dd3fc" font-size="10">🖼️ cat img</text>
   <circle cx="345" cy="108" r="5" fill="#22c55e"/>
-  <text x="353" y="103" fill="#4ade80" font-size="7">"cat" text</text>
+  <text x="353" y="103" fill="#4ade80" font-size="10">"cat" text</text>
   <circle cx="440" cy="160" r="5" fill="#fbbf24"/>
-  <text x="450" y="163" fill="#fcd34d" font-size="7">"car" text</text>
+  <text x="450" y="163" fill="#fcd34d" font-size="10">"car" text</text>
   <circle cx="465" cy="155" r="5" fill="#a855f7"/>
-  <text x="475" y="158" fill="#c084fc" font-size="7">🖼️ car img</text>
+  <text x="475" y="158" fill="#c084fc" font-size="10">🖼️ car img</text>
   <line x1="250" y1="70" x2="318" y2="118" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrEMB7)"/>
   <line x1="250" y1="170" x2="343" y2="110" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrEMB7)"/>
   <text x="320" y="88" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">এক ভেক্টর স্পেস</text>
   <line x1="325" y1="118" x2="343" y2="110" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="2,2"/>
-  <text x="330" y="135" fill="#4ade80" font-size="7">cos ≈ ০.৯২</text>
+  <text x="330" y="135" fill="#4ade80" font-size="10">cos ≈ ০.৯২</text>
   <rect x="30" y="215" width="520" height="28" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
   <text x="290" y="232" text-anchor="middle" fill="#94a3b8" font-size="8">একই স্পেসে থাকলে — ছবি দিয়ে টেক্সট খোঁজো, টেক্সট দিয়ে ছবি খোঁজো। Cross-modal search!</text>
 </svg>
@@ -423,30 +423,30 @@ IMPLEMENTATION PATTERNS:
   <defs><marker id="arrEMB8" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#475569"/></marker></defs>
   <rect x="250" y="40" width="120" height="55" rx="6" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
   <text x="310" y="60" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Vector DB</text>
-  <text x="310" y="74" text-anchor="middle" fill="#94a3b8" font-size="7">৭৬৮-dim ভেক্টর</text>
-  <text x="310" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">+ metadata</text>
+  <text x="310" y="74" text-anchor="middle" fill="#94a3b8" font-size="10">৭৬৮-dim ভেক্টর</text>
+  <text x="310" y="86" text-anchor="middle" fill="#94a3b8" font-size="10">+ metadata</text>
   <line x1="230" y1="67" x2="250" y2="67" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB8)"/>
   <rect x="30" y="125" width="75" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="67" y="143" text-anchor="middle" fill="#7dd3fc" font-size="7">Qdrant</text>
+  <text x="67" y="143" text-anchor="middle" fill="#7dd3fc" font-size="10">Qdrant</text>
   <rect x="115" y="125" width="75" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="152" y="143" text-anchor="middle" fill="#7dd3fc" font-size="7">Pinecone</text>
+  <text x="152" y="143" text-anchor="middle" fill="#7dd3fc" font-size="10">Pinecone</text>
   <rect x="200" y="125" width="75" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="237" y="143" text-anchor="middle" fill="#7dd3fc" font-size="7">Weaviate</text>
+  <text x="237" y="143" text-anchor="middle" fill="#7dd3fc" font-size="10">Weaviate</text>
   <rect x="285" y="125" width="75" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="322" y="143" text-anchor="middle" fill="#7dd3fc" font-size="7">Milvus</text>
+  <text x="322" y="143" text-anchor="middle" fill="#7dd3fc" font-size="10">Milvus</text>
   <rect x="370" y="125" width="75" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="407" y="143" text-anchor="middle" fill="#7dd3fc" font-size="7">pgvector</text>
+  <text x="407" y="143" text-anchor="middle" fill="#7dd3fc" font-size="10">pgvector</text>
   <rect x="455" y="125" width="95" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="502" y="143" text-anchor="middle" fill="#7dd3fc" font-size="7">Chroma</text>
+  <text x="502" y="143" text-anchor="middle" fill="#7dd3fc" font-size="10">Chroma</text>
   <rect x="400" y="40" width="150" height="55" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="475" y="60" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">ANN Index</text>
-  <text x="475" y="74" text-anchor="middle" fill="#94a3b8" font-size="7">HNSW · IVF · PQ</text>
-  <text x="475" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">১M docs → ~৫ms</text>
+  <text x="475" y="74" text-anchor="middle" fill="#94a3b8" font-size="10">HNSW · IVF · PQ</text>
+  <text x="475" y="86" text-anchor="middle" fill="#94a3b8" font-size="10">১M docs → ~৫ms</text>
   <line x1="370" y1="67" x2="400" y2="67" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB8)"/>
   <rect x="30" y="180" width="520" height="50" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
   <text x="50" y="200" fill="#fcd34d" font-size="8" font-weight="bold">সার্চ ফ্লো:</text>
-  <text x="50" y="215" fill="#7dd3fc" font-size="7">query → embed → ANN search → cosine sim top-k → rerank → ফলাফল</text>
-  <text x="50" y="227" fill="#64748b" font-size="7">hybrid (dense + BM২৫) সবচেয়ে ভালো। metadata filter দিয়ে সীমাবদ্ধ করো।</text>
+  <text x="50" y="215" fill="#7dd3fc" font-size="10">query → embed → ANN search → cosine sim top-k → rerank → ফলাফল</text>
+  <text x="50" y="227" fill="#64748b" font-size="10">hybrid (dense + BM২৫) সবচেয়ে ভালো। metadata filter দিয়ে সীমাবদ্ধ করো।</text>
 </svg>
 </div>
 <div class="svg-caption">ভেক্টর ডেটাবেস — ডকুমেন্ট ভেক্টর সংরক্ষণ ও দ্রুত সার্চের ভাণ্ডার। Qdrant, Pinecone, Milvus — HNSW ইনডেক্স দিয়ে ১M ডকুমেন্টে ~৫ms-এ সন্ধান। Hybrid search সবচেয়ে কার্যকর।</div>`,
@@ -580,7 +580,7 @@ THE FUNDAMENTAL LIMIT:
   <path d="M 60 150 A 200 200 0 0 1 470 78" fill="none" stroke="#ef4444" stroke-width="1.5"/>
   <text x="180" y="145" fill="#fca5a5" font-size="8" font-weight="bold">সংকীর্ণ শঙ্কু</text>
   <rect x="30" y="218" width="520" height="24" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="290" y="234" text-anchor="middle" fill="#94a3b8" font-size="7">সব ভেক্টর এক দিকে — সব cosine similarity উঁচু (০.৭+)। সম্পর্কিত ও অসম্পর্কিত আলাদা করা কঠিন। সমাধান: normalization, whitening।</text>
+  <text x="290" y="234" text-anchor="middle" fill="#94a3b8" font-size="10">সব ভেক্টর এক দিকে — সব cosine similarity উঁচু (০.৭+)। সম্পর্কিত ও অসম্পর্কিত আলাদা করা কঠিন। সমাধান: normalization, whitening।</text>
 </svg>
 </div>
 <div class="svg-caption">Anisotropy — সব ভেক্টর একটি সংকীর্ণ শঙ্কুতে জমা হয়, ফলে সব cosine similarity উঁচু (০.৭+)। সম্পর্কিত ও অসম্পর্কিত আলাদা করা কঠিন। এটাই embedding-এর একটি লুকানো সীমা — সতর্কতার সাথে ব্যবহার করো।</div>`,
@@ -721,13 +721,13 @@ THE EMBEDDING MINDSET:
   <line x1="150" y1="170" x2="180" y2="170" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB10a)"/>
   <rect x="185" y="38" width="110" height="152" rx="6" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
   <text x="240" y="58" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">৫. Search</text>
-  <text x="240" y="74" text-anchor="middle" fill="#94a3b8" font-size="7">dense + BM২৫</text>
-  <text x="240" y="88" text-anchor="middle" fill="#94a3b8" font-size="7">+ rerank</text>
+  <text x="240" y="74" text-anchor="middle" fill="#94a3b8" font-size="10">dense + BM২৫</text>
+  <text x="240" y="88" text-anchor="middle" fill="#94a3b8" font-size="10">+ rerank</text>
   <text x="240" y="110" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">৬. Applications</text>
-  <text x="240" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">RAG · classify</text>
-  <text x="240" y="140" text-anchor="middle" fill="#94a3b8" font-size="7">cluster · dedup</text>
+  <text x="240" y="126" text-anchor="middle" fill="#94a3b8" font-size="10">RAG · classify</text>
+  <text x="240" y="140" text-anchor="middle" fill="#94a3b8" font-size="10">cluster · dedup</text>
   <text x="240" y="162" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">৭. Evaluation</text>
-  <text x="240" y="178" text-anchor="middle" fill="#94a3b8" font-size="7">MTEB + domain</text>
+  <text x="240" y="178" text-anchor="middle" fill="#94a3b8" font-size="10">MTEB + domain</text>
   <line x1="295" y1="114" x2="335" y2="114" stroke="#475569" stroke-width="1.5" marker-end="url(#arrEMB10a)"/>
   <defs><marker id="arrEMB10a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#475569"/></marker></defs>
   <rect x="340" y="55" width="100" height="32" rx="5" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
@@ -736,11 +736,11 @@ THE EMBEDDING MINDSET:
   <text x="390" y="113" text-anchor="middle" fill="#c084fc" font-size="8">৯. Safety</text>
   <circle cx="490" cy="114" r="30" fill="none" stroke="#fbbf24" stroke-width="2.5"/>
   <text x="490" y="110" text-anchor="middle" fill="#fcd34d" font-size="16">🌌</text>
-  <text x="490" y="128" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="bold">অর্থ</text>
-  <text x="490" y="138" text-anchor="middle" fill="#fcd34d" font-size="7" font-weight="bold">= জ্যামিতি</text>
+  <text x="490" y="128" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">অর্থ</text>
+  <text x="490" y="138" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">= জ্যামিতি</text>
   <rect x="30" y="200" width="520" height="40" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
   <text x="290" y="216" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">শব্দ → সংখ্যা → অর্থ → জ্ঞান</text>
-  <text x="290" y="232" text-anchor="middle" fill="#64748b" font-size="7">নয়টি স্তর একসাথে = complete embedding mastery। এটাই অর্থের জ্যামিতি — AI-এর সবচেয়ে সুন্দর গাণিতিক ধারণা।</text>
+  <text x="290" y="232" text-anchor="middle" fill="#64748b" font-size="10">নয়টি স্তর একসাথে = complete embedding mastery। এটাই অর্থের জ্যামিতি — AI-এর সবচেয়ে সুন্দর গাণিতিক ধারণা।</text>
 </svg>
 </div>
 <div class="svg-caption">সম্পূর্ণ embedding architecture — নয়টি স্তর একসাথে। Model, encoding, dimensions, vector DB, search, applications, evaluation, fine-tuning, safety। শব্দ থেকে সংখ্যা, সংখ্যা থেকে অর্থ, অর্থ থেকে জ্ঞান — অর্থের জ্যামিতি।</div>

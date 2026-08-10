@@ -540,49 +540,49 @@ doors.push({
   <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="10"/>
   <text x="290" y="26" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">পরিকল্পনা কৌশল — তুলনা</text>
   <text x="100" y="52" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">ReAct</text>
-  <text x="100" y="65" text-anchor="middle" fill="#94a3b8" font-size="7">ধাপে ধাপে</text>
+  <text x="100" y="65" text-anchor="middle" fill="#94a3b8" font-size="10">ধাপে ধাপে</text>
   <circle cx="70" cy="100" r="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="70" y="103" text-anchor="middle" fill="#7dd3fc" font-size="7">১</text>
+  <text x="70" y="103" text-anchor="middle" fill="#7dd3fc" font-size="10">১</text>
   <circle cx="100" cy="130" r="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="100" y="133" text-anchor="middle" fill="#7dd3fc" font-size="7">২</text>
+  <text x="100" y="133" text-anchor="middle" fill="#7dd3fc" font-size="10">২</text>
   <circle cx="70" cy="160" r="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="70" y="163" text-anchor="middle" fill="#7dd3fc" font-size="7">৩</text>
+  <text x="70" y="163" text-anchor="middle" fill="#7dd3fc" font-size="10">৩</text>
   <circle cx="100" cy="190" r="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="100" y="193" text-anchor="middle" fill="#7dd3fc" font-size="7">৪</text>
+  <text x="100" y="193" text-anchor="middle" fill="#7dd3fc" font-size="10">৪</text>
   <path d="M 76 105 Q 90 115 96 124" fill="none" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrA4)"/>
   <path d="M 96 135 Q 82 148 76 155" fill="none" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrA4)"/>
   <path d="M 76 165 Q 90 175 96 184" fill="none" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrA4)"/>
   <text x="290" y="52" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Plan-and-Execute</text>
-  <text x="290" y="65" text-anchor="middle" fill="#94a3b8" font-size="7">আগে পুরো প্ল্যান</text>
+  <text x="290" y="65" text-anchor="middle" fill="#94a3b8" font-size="10">আগে পুরো প্ল্যান</text>
   <rect x="225" y="78" width="130" height="28" rx="5" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
   <text x="290" y="96" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">PLAN: [১,২,৩,৪,৫]</text>
   <rect x="225" y="118" width="28" height="28" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="239" y="136" text-anchor="middle" fill="#4ade80" font-size="7">১</text>
+  <text x="239" y="136" text-anchor="middle" fill="#4ade80" font-size="10">১</text>
   <rect x="259" y="118" width="28" height="28" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="273" y="136" text-anchor="middle" fill="#4ade80" font-size="7">২</text>
+  <text x="273" y="136" text-anchor="middle" fill="#4ade80" font-size="10">২</text>
   <rect x="293" y="118" width="28" height="28" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="307" y="136" text-anchor="middle" fill="#4ade80" font-size="7">৩</text>
+  <text x="307" y="136" text-anchor="middle" fill="#4ade80" font-size="10">৩</text>
   <rect x="327" y="118" width="28" height="28" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="341" y="136" text-anchor="middle" fill="#4ade80" font-size="7">৪</text>
+  <text x="341" y="136" text-anchor="middle" fill="#4ade80" font-size="10">৪</text>
   <line x1="290" y1="106" x2="290" y2="116" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrA4g)"/>
-  <text x="290" y="165" text-anchor="middle" fill="#4ade80" font-size="7">একসাথে প্ল্যান → এক এক ধাপ</text>
+  <text x="290" y="165" text-anchor="middle" fill="#4ade80" font-size="10">একসাথে প্ল্যান → এক এক ধাপ</text>
   <text x="475" y="52" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">Re-Planning</text>
-  <text x="475" y="65" text-anchor="middle" fill="#94a3b8" font-size="7">ব্যর্থ → নতুন প্ল্যান</text>
+  <text x="475" y="65" text-anchor="middle" fill="#94a3b8" font-size="10">ব্যর্থ → নতুন প্ল্যান</text>
   <rect x="425" y="82" width="26" height="22" rx="4" fill="#3b0764" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="438" y="96" text-anchor="middle" fill="#c084fc" font-size="7">১</text>
+  <text x="438" y="96" text-anchor="middle" fill="#c084fc" font-size="10">১</text>
   <rect x="455" y="82" width="26" height="22" rx="4" fill="#7f1d1d" stroke="#f87171" stroke-width="1.5"/>
-  <text x="468" y="96" text-anchor="middle" fill="#fca5a5" font-size="7">২✗</text>
+  <text x="468" y="96" text-anchor="middle" fill="#fca5a5" font-size="10">২✗</text>
   <rect x="485" y="82" width="26" height="22" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="498" y="96" text-anchor="middle" fill="#4ade80" font-size="7">২'</text>
+  <text x="498" y="96" text-anchor="middle" fill="#4ade80" font-size="10">২'</text>
   <rect x="515" y="82" width="26" height="22" rx="4" fill="#3b0764" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="528" y="96" text-anchor="middle" fill="#c084fc" font-size="7">৩</text>
+  <text x="528" y="96" text-anchor="middle" fill="#c084fc" font-size="10">৩</text>
   <path d="M 481 104 Q 470 115 485 118" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrA4a)"/>
-  <text x="475" y="130" text-anchor="middle" fill="#fbbf24" font-size="7">✗ ধাপ ব্যর্থ</text>
-  <text x="475" y="143" text-anchor="middle" fill="#4ade80" font-size="7">→ নতুন প্ল্যান</text>
+  <text x="475" y="130" text-anchor="middle" fill="#fbbf24" font-size="10">✗ ধাপ ব্যর্থ</text>
+  <text x="475" y="143" text-anchor="middle" fill="#4ade80" font-size="10">→ নতুন প্ল্যান</text>
   <rect x="420" y="160" width="110" height="44" rx="6" fill="#0c0a1d" stroke="#fbbf24" stroke-width="1"/>
-  <text x="475" y="178" text-anchor="middle" fill="#fcd34d" font-size="7">কখন কোনটা?</text>
-  <text x="475" y="192" text-anchor="middle" fill="#94a3b8" font-size="6">সহজ→ReAct · বড়→P&amp;E</text>
-  <text x="475" y="201" text-anchor="middle" fill="#94a3b8" font-size="6">অনিশ্চিত→Re-Plan</text>
+  <text x="475" y="178" text-anchor="middle" fill="#fcd34d" font-size="10">কখন কোনটা?</text>
+  <text x="475" y="192" text-anchor="middle" fill="#94a3b8" font-size="10">সহজ→ReAct · বড়→P&amp;E</text>
+  <text x="475" y="201" text-anchor="middle" fill="#94a3b8" font-size="10">অনিশ্চিত→Re-Plan</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: তিন পরিকল্পনা কৌশল — ReAct (ধাপে ধাপে), Plan-and-Execute (পুরো প্ল্যান আগে), Re-Planning (ব্যর্থ হলে নতুন প্ল্যান)।</div>
@@ -721,33 +721,33 @@ doors.push({
   <rect x="20" y="60" width="130" height="80" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="85" y="82" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">SHORT-TERM</text>
   <text x="85" y="98" text-anchor="middle" fill="#7dd3fc" font-size="8">শেষ N বার্তা</text>
-  <text x="85" y="112" text-anchor="middle" fill="#94a3b8" font-size="7">context window</text>
-  <text x="85" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">সেশন শেষে মুছে যায়</text>
+  <text x="85" y="112" text-anchor="middle" fill="#94a3b8" font-size="10">context window</text>
+  <text x="85" y="126" text-anchor="middle" fill="#94a3b8" font-size="10">সেশন শেষে মুছে যায়</text>
   <rect x="160" y="60" width="130" height="80" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
   <text x="225" y="82" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">WORKING</text>
   <text x="225" y="98" text-anchor="middle" fill="#4ade80" font-size="8">বর্তমান কাজ</text>
-  <text x="225" y="112" text-anchor="middle" fill="#94a3b8" font-size="7">goal · plan · state</text>
-  <text x="225" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">checkpointed</text>
+  <text x="225" y="112" text-anchor="middle" fill="#94a3b8" font-size="10">goal · plan · state</text>
+  <text x="225" y="126" text-anchor="middle" fill="#94a3b8" font-size="10">checkpointed</text>
   <rect x="300" y="60" width="130" height="80" rx="8" fill="#3b0764" stroke="#a855f7" stroke-width="2"/>
   <text x="365" y="82" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="bold">LONG-TERM</text>
   <text x="365" y="98" text-anchor="middle" fill="#c084fc" font-size="8">অতীত অভিজ্ঞতা</text>
-  <text x="365" y="112" text-anchor="middle" fill="#94a3b8" font-size="7">Vector DB</text>
-  <text x="365" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">স্থায়ী · অসীম</text>
+  <text x="365" y="112" text-anchor="middle" fill="#94a3b8" font-size="10">Vector DB</text>
+  <text x="365" y="126" text-anchor="middle" fill="#94a3b8" font-size="10">স্থায়ী · অসীম</text>
   <rect x="440" y="60" width="120" height="80" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="500" y="82" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">EPISODIC</text>
   <text x="500" y="98" text-anchor="middle" fill="#7dd3fc" font-size="8">নির্দিষ্ট ঘটনা</text>
-  <text x="500" y="112" text-anchor="middle" fill="#94a3b8" font-size="7">failure + lesson</text>
-  <text x="500" y="126" text-anchor="middle" fill="#94a3b8" font-size="7">Reflexion স্টাইল</text>
+  <text x="500" y="112" text-anchor="middle" fill="#94a3b8" font-size="10">failure + lesson</text>
+  <text x="500" y="126" text-anchor="middle" fill="#94a3b8" font-size="10">Reflexion স্টাইল</text>
   <text x="290" y="170" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">স্মৃতি প্রবাহ — কোন মেমরি কখন?</text>
   <text x="60" y="195" fill="#7dd3fc" font-size="8">↳ এখন</text>
   <rect x="100" y="186" width="90" height="20" rx="4" fill="none" stroke="#22d3ee" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="145" y="200" text-anchor="middle" fill="#7dd3fc" font-size="7">short → working</text>
+  <text x="145" y="200" text-anchor="middle" fill="#7dd3fc" font-size="10">short → working</text>
   <line x1="190" y1="196" x2="245" y2="196" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrA5)"/>
   <rect x="250" y="186" width="100" height="20" rx="4" fill="none" stroke="#22c55e" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="300" y="200" text-anchor="middle" fill="#4ade80" font-size="7">working → long</text>
+  <text x="300" y="200" text-anchor="middle" fill="#4ade80" font-size="10">working → long</text>
   <line x1="350" y1="196" x2="405" y2="196" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrA5)"/>
-  <text x="500" y="200" text-anchor="middle" fill="#c084fc" font-size="7">recall → context</text>
-  <text x="290" y="230" text-anchor="middle" fill="#94a3b8" font-size="7">মেমরি ছাড়া এজেন্ট = প্রতিটা কাজে নতুন, একই ভুল আবার</text>
+  <text x="500" y="200" text-anchor="middle" fill="#c084fc" font-size="10">recall → context</text>
+  <text x="290" y="230" text-anchor="middle" fill="#94a3b8" font-size="10">মেমরি ছাড়া এজেন্ট = প্রতিটা কাজে নতুন, একই ভুল আবার</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: এজেন্ট মেমরির ৪ ধরন — Short-term, Working, Long-term, Episodic। স্মৃতি ছাড়া প্রতিটা কাজ শূন্য থেকে শুরু।</div>

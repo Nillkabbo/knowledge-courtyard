@@ -71,7 +71,7 @@ doors.push({
   <text x="80" y="109" text-anchor="middle" fill="#7dd3fc" font-size="8">a=1000, b=-7</text>
   <rect x="30" y="120" width="100" height="20" rx="4" fill="#0c4a6e" stroke="#22d3ee"/>
   <text x="80" y="134" text-anchor="middle" fill="#7dd3fc" font-size="8">a=0.1, b=0.2</text>
-  <text x="80" y="158" text-anchor="middle" fill="#94a3b8" font-size="7">...হাজার...</text>
+  <text x="80" y="158" text-anchor="middle" fill="#94a3b8" font-size="10">...হাজার...</text>
   <rect x="200" y="85" width="180" height="60" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="290" y="108" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">Property</text>
   <text x="290" y="125" text-anchor="middle" fill="#86efac" font-size="9">for all a,b:</text>
@@ -90,7 +90,7 @@ doors.push({
   <line x1="295" y1="202" x2="320" y2="202" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrTQ6)"/>
   <rect x="325" y="190" width="110" height="24" rx="4" fill="#052e16" stroke="#22c55e"/>
   <text x="380" y="206" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">a=0, b=-1 ★</text>
-  <text x="470" y="206" text-anchor="middle" fill="#94a3b8" font-size="7">সবচেয়ে ছোট!</text>
+  <text x="470" y="206" text-anchor="middle" fill="#94a3b8" font-size="10">সবচেয়ে ছোট!</text>
 </svg>
 </div>
 <div class="svg-caption">Property-based testing — একটি নিয়ম লেখো, টুল হাজার ইনপুট চেষ্টা করে, ভাঙ্গলে shrinking দিয়ে ছোট করে</div>
@@ -188,22 +188,22 @@ doors.push({
   <defs><marker id="arrTQ7" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7dd3fc"/></marker></defs>
   <rect x="15" y="70" width="70" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="50" y="90" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">git push</text>
-  <text x="50" y="105" text-anchor="middle" fill="#86efac" font-size="7">কোড পাঠাও</text>
+  <text x="50" y="105" text-anchor="middle" fill="#86efac" font-size="10">কোড পাঠাও</text>
   <rect x="105" y="70" width="70" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="140" y="90" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Lint</text>
-  <text x="140" y="105" text-anchor="middle" fill="#86efac" font-size="7">mypy, ruff</text>
+  <text x="140" y="105" text-anchor="middle" fill="#86efac" font-size="10">mypy, ruff</text>
   <rect x="195" y="70" width="70" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="230" y="90" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Tests</text>
-  <text x="230" y="105" text-anchor="middle" fill="#86efac" font-size="7">pytest</text>
+  <text x="230" y="105" text-anchor="middle" fill="#86efac" font-size="10">pytest</text>
   <rect x="285" y="70" width="70" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="320" y="90" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Mutation</text>
-  <text x="320" y="105" text-anchor="middle" fill="#86efac" font-size="7">mutmut</text>
+  <text x="320" y="105" text-anchor="middle" fill="#86efac" font-size="10">mutmut</text>
   <rect x="375" y="70" width="70" height="50" rx="8" fill="#0c4a6e" stroke="#22d3ee" stroke-width="2"/>
   <text x="410" y="90" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="bold">Security</text>
-  <text x="410" y="105" text-anchor="middle" fill="#bae6fd" font-size="7">bandit</text>
+  <text x="410" y="105" text-anchor="middle" fill="#bae6fd" font-size="10">bandit</text>
   <rect x="465" y="70" width="70" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="500" y="90" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Build</text>
-  <text x="500" y="105" text-anchor="middle" fill="#86efac" font-size="7">docker</text>
+  <text x="500" y="105" text-anchor="middle" fill="#86efac" font-size="10">docker</text>
   <line x1="87" y1="95" x2="102" y2="95" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrTQ7)"/>
   <line x1="177" y1="95" x2="192" y2="95" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrTQ7)"/>
   <line x1="267" y1="95" x2="282" y2="95" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrTQ7)"/>
@@ -212,7 +212,7 @@ doors.push({
   <text x="290" y="150" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">▼ Deploy Gate ▼</text>
   <rect x="230" y="160" width="120" height="36" rx="8" fill="#451a03" stroke="#fbbf24" stroke-width="2"/>
   <text x="290" y="178" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">সব পাশ?</text>
-  <text x="290" y="190" text-anchor="middle" fill="#fde68a" font-size="7">না হলে ব্লক!</text>
+  <text x="290" y="190" text-anchor="middle" fill="#fde68a" font-size="10">না হলে ব্লক!</text>
   <line x1="500" y1="122" x2="350" y2="158" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrTQ7)"/>
   <rect x="230" y="210" width="120" height="30" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="290" y="230" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">🚀 প্রোডাকশন</text>
@@ -321,7 +321,7 @@ doors.push({
   <text x="50" y="142" text-anchor="middle" fill="#4ade80" font-size="8">Run 3 ✅</text>
   <rect x="25" y="154" width="50" height="24" rx="4" fill="#450a0a" stroke="#f87171"/>
   <text x="50" y="170" text-anchor="middle" fill="#fca5a5" font-size="8">Run 4 ❌</text>
-  <text x="50" y="195" text-anchor="middle" fill="#94a3b8" font-size="7">একই কোড!</text>
+  <text x="50" y="195" text-anchor="middle" fill="#94a3b8" font-size="10">একই কোড!</text>
   <line x1="80" y1="120" x2="130" y2="120" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrTQ8)"/>
   <rect x="135" y="65" width="120" height="24" rx="4" fill="#451a03" stroke="#fbbf24"/>
   <text x="195" y="81" text-anchor="middle" fill="#fcd34d" font-size="8">sleep(1) — timing</text>
@@ -332,7 +332,7 @@ doors.push({
   <rect x="135" y="155" width="120" height="24" rx="4" fill="#451a03" stroke="#fbbf24"/>
   <text x="195" y="171" text-anchor="middle" fill="#fcd34d" font-size="8">network / time</text>
   <line x1="258" y1="120" x2="305" y2="120" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrTQ8)"/>
-  <text x="282" y="112" text-anchor="middle" fill="#7dd3fc" font-size="7">সমাধান</text>
+  <text x="282" y="112" text-anchor="middle" fill="#7dd3fc" font-size="10">সমাধান</text>
   <rect x="310" y="65" width="130" height="24" rx="4" fill="#0c4a6e" stroke="#22d3ee"/>
   <text x="375" y="81" text-anchor="middle" fill="#7dd3fc" font-size="8">→ polling (retry)</text>
   <rect x="310" y="95" width="130" height="24" rx="4" fill="#0c4a6e" stroke="#22d3ee"/>
@@ -349,7 +349,7 @@ doors.push({
   <text x="513" y="114" text-anchor="middle" fill="#4ade80" font-size="8">✅ ✅</text>
   <rect x="488" y="126" width="50" height="24" rx="4" fill="#052e16" stroke="#22c55e"/>
   <text x="513" y="142" text-anchor="middle" fill="#4ade80" font-size="8">✅ ✅</text>
-  <text x="513" y="165" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">শূন্য flaky</text>
+  <text x="513" y="165" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">শূন্য flaky</text>
 </svg>
 </div>
 <div class="svg-caption">Flaky test — কখনো পাশ কখনো ফেল; কারণ (timing, order, state) খুঁজে সমাধান (polling, isolation, deterministic)</div>
@@ -435,26 +435,26 @@ doors.push({
   <text x="80" y="82" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="bold">Consumer</text>
   <text x="80" y="98" text-anchor="middle" fill="#86efac" font-size="8">(Frontend)</text>
   <rect x="35" y="108" width="90" height="20" rx="3" fill="#0f172a" stroke="#4ade80"/>
-  <text x="80" y="121" text-anchor="middle" fill="#4ade80" font-size="7">টেস্ট: এই চাই</text>
-  <text x="80" y="140" text-anchor="middle" fill="#86efac" font-size="7">GET /users/42</text>
-  <text x="80" y="152" text-anchor="middle" fill="#86efac" font-size="7">→ {name: ali}</text>
+  <text x="80" y="121" text-anchor="middle" fill="#4ade80" font-size="10">টেস্ট: এই চাই</text>
+  <text x="80" y="140" text-anchor="middle" fill="#86efac" font-size="10">GET /users/42</text>
+  <text x="80" y="152" text-anchor="middle" fill="#86efac" font-size="10">→ {name: ali}</text>
   <rect x="210" y="65" width="140" height="90" rx="8" fill="#451a03" stroke="#fbbf24" stroke-width="2"/>
   <text x="280" y="88" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="bold">📜 Pact Broker</text>
   <text x="280" y="108" text-anchor="middle" fill="#fde68a" font-size="8">চুক্তির ভাণ্ডার</text>
   <rect x="225" y="118" width="110" height="18" rx="3" fill="#0f172a" stroke="#fbbf24"/>
-  <text x="280" y="131" text-anchor="middle" fill="#fcd34d" font-size="7">contract.json</text>
+  <text x="280" y="131" text-anchor="middle" fill="#fcd34d" font-size="10">contract.json</text>
   <text x="280" y="148" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">can-i-deploy?</text>
   <line x1="142" y1="95" x2="207" y2="95" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrTQ9)"/>
-  <text x="174" y="88" text-anchor="middle" fill="#7dd3fc" font-size="7">চুক্তি পাঠাও</text>
+  <text x="174" y="88" text-anchor="middle" fill="#7dd3fc" font-size="10">চুক্তি পাঠাও</text>
   <rect x="420" y="60" width="140" height="100" rx="8" fill="#0c4a6e" stroke="#22d3ee" stroke-width="2"/>
   <text x="490" y="82" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">Provider</text>
   <text x="490" y="98" text-anchor="middle" fill="#bae6fd" font-size="8">(Backend API)</text>
   <rect x="435" y="108" width="110" height="20" rx="3" fill="#0f172a" stroke="#7dd3fc"/>
-  <text x="490" y="121" text-anchor="middle" fill="#7dd3fc" font-size="7">verify: দিতে পারি?</text>
+  <text x="490" y="121" text-anchor="middle" fill="#7dd3fc" font-size="10">verify: দিতে পারি?</text>
   <text x="490" y="140" text-anchor="middle" fill="#4ade80" font-size="8">✅ হ্যাঁ</text>
   <text x="490" y="152" text-anchor="middle" fill="#fca5a5" font-size="8">❌ ভাঙলে → ব্লক</text>
   <line x1="353" y1="95" x2="417" y2="95" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrTQ9)"/>
-  <text x="385" y="88" text-anchor="middle" fill="#7dd3fc" font-size="7">যাচাই করো</text>
+  <text x="385" y="88" text-anchor="middle" fill="#7dd3fc" font-size="10">যাচাই করো</text>
   <rect x="150" y="185" width="280" height="40" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="290" y="202" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">✅ চুক্তি পূরণ → deploy অনুমোদিত</text>
   <text x="290" y="217" text-anchor="middle" fill="#fca5a5" font-size="8">❌ চুক্তি ভাঙলে → can-i-deploy: NO</text>
@@ -567,29 +567,29 @@ doors.push({
   <text x="290" y="120" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">কোড</text>
   <text x="290" y="138" text-anchor="middle" fill="#86efac" font-size="8">LedgerPilot</text>
   <rect x="50" y="50" width="80" height="28" rx="6" fill="#0c4a6e" stroke="#22d3ee"/>
-  <text x="90" y="68" text-anchor="middle" fill="#7dd3fc" font-size="7">১ Types</text>
+  <text x="90" y="68" text-anchor="middle" fill="#7dd3fc" font-size="10">১ Types</text>
   <rect x="140" y="50" width="80" height="28" rx="6" fill="#0c4a6e" stroke="#22d3ee"/>
-  <text x="180" y="68" text-anchor="middle" fill="#7dd3fc" font-size="7">২ Trophy</text>
+  <text x="180" y="68" text-anchor="middle" fill="#7dd3fc" font-size="10">২ Trophy</text>
   <rect x="230" y="50" width="80" height="28" rx="6" fill="#0c4a6e" stroke="#22d3ee"/>
-  <text x="270" y="68" text-anchor="middle" fill="#7dd3fc" font-size="7">৩ TDD</text>
+  <text x="270" y="68" text-anchor="middle" fill="#7dd3fc" font-size="10">৩ TDD</text>
   <rect x="320" y="50" width="80" height="28" rx="6" fill="#0c4a6e" stroke="#22d3ee"/>
-  <text x="360" y="68" text-anchor="middle" fill="#7dd3fc" font-size="7">৪ Mutation</text>
+  <text x="360" y="68" text-anchor="middle" fill="#7dd3fc" font-size="10">৪ Mutation</text>
   <rect x="410" y="50" width="80" height="28" rx="6" fill="#0c4a6e" stroke="#22d3ee"/>
-  <text x="450" y="68" text-anchor="middle" fill="#7dd3fc" font-size="7">৫ Doubles</text>
+  <text x="450" y="68" text-anchor="middle" fill="#7dd3fc" font-size="10">৫ Doubles</text>
   <rect x="50" y="105" width="80" height="28" rx="6" fill="#052e16" stroke="#22c55e"/>
-  <text x="90" y="123" text-anchor="middle" fill="#4ade80" font-size="7">৬ Property</text>
+  <text x="90" y="123" text-anchor="middle" fill="#4ade80" font-size="10">৬ Property</text>
   <rect x="450" y="105" width="80" height="28" rx="6" fill="#052e16" stroke="#22c55e"/>
-  <text x="490" y="123" text-anchor="middle" fill="#4ade80" font-size="7">৭ CI/CD</text>
+  <text x="490" y="123" text-anchor="middle" fill="#4ade80" font-size="10">৭ CI/CD</text>
   <rect x="50" y="170" width="80" height="28" rx="6" fill="#451a03" stroke="#fbbf24"/>
-  <text x="90" y="188" text-anchor="middle" fill="#fcd34d" font-size="7">৮ Flaky fix</text>
+  <text x="90" y="188" text-anchor="middle" fill="#fcd34d" font-size="10">৮ Flaky fix</text>
   <rect x="140" y="170" width="80" height="28" rx="6" fill="#451a03" stroke="#fbbf24"/>
-  <text x="180" y="188" text-anchor="middle" fill="#fcd34d" font-size="7">৯ Contract</text>
+  <text x="180" y="188" text-anchor="middle" fill="#fcd34d" font-size="10">৯ Contract</text>
   <rect x="230" y="170" width="80" height="28" rx="6" fill="#451a03" stroke="#fbbf24"/>
-  <text x="270" y="188" text-anchor="middle" fill="#fcd34d" font-size="7">+ Security</text>
+  <text x="270" y="188" text-anchor="middle" fill="#fcd34d" font-size="10">+ Security</text>
   <rect x="320" y="170" width="80" height="28" rx="6" fill="#052e16" stroke="#22c55e"/>
-  <text x="360" y="188" text-anchor="middle" fill="#4ade80" font-size="7">SAST/DAST</text>
+  <text x="360" y="188" text-anchor="middle" fill="#4ade80" font-size="10">SAST/DAST</text>
   <rect x="410" y="170" width="80" height="28" rx="6" fill="#052e16" stroke="#22c55e"/>
-  <text x="450" y="188" text-anchor="middle" fill="#4ade80" font-size="7">🚀 প্রোডাকশন</text>
+  <text x="450" y="188" text-anchor="middle" fill="#4ade80" font-size="10">🚀 প্রোডাকশন</text>
   <line x1="130" y1="64" x2="250" y2="105" stroke="#334155" stroke-width="1" stroke-dasharray="2,2"/>
   <line x1="220" y1="64" x2="270" y2="100" stroke="#334155" stroke-width="1" stroke-dasharray="2,2"/>
   <line x1="320" y1="64" x2="310" y2="100" stroke="#334155" stroke-width="1" stroke-dasharray="2,2"/>

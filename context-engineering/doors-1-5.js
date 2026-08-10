@@ -92,7 +92,7 @@ CONTEXT BUDGET FORMULA:
   <rect x="50" y="120" width="195" height="44" fill="#0d3b34" stroke="#2dd4bf" stroke-width="1"/>
   <rect x="245" y="120" width="40" height="44" fill="#2a1a3e" stroke="#b37feb" stroke-width="1"/>
   <rect x="285" y="120" width="255" height="44" fill="#3b2a05" stroke="#fbbf24" stroke-width="1"/>
-  <text x="45" y="180" text-anchor="middle" fill="#5b9eff" font-size="7">সিস্টেম</text>
+  <text x="45" y="180" text-anchor="middle" fill="#5b9eff" font-size="10">সিস্টেম</text>
   <text x="147" y="180" text-anchor="middle" fill="#5eead4" font-size="9">RAG ডক্স ৩৯%</text>
   <text x="265" y="180" text-anchor="middle" fill="#c084fc" font-size="8">কথা ৮%</text>
   <text x="412" y="180" text-anchor="middle" fill="#fcd34d" font-size="9">আউটপুট ৫১%</text>
@@ -396,7 +396,7 @@ METADATA — প্রতিটা chunk-ে ট্যাগ:
   <rect x="362" y="120" width="16" height="40" fill="#b37feb" opacity="0.35"/>
   <text x="290" y="185" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">⬓ বেগুনি = ২০% overlap</text>
   <text x="290" y="208" text-anchor="middle" fill="#9290a8" font-size="8">৫১২ tok + overlap → context হারায় না, অর্থ সংরক্ষিত</text>
-  <text x="290" y="228" text-anchor="middle" fill="#5e5c74" font-size="7"> Late Chunking (Jina) · Contextual Retrieval (Anthropic) = pronoun/context সমাধান</text>
+  <text x="290" y="228" text-anchor="middle" fill="#5e5c74" font-size="10"> Late Chunking (Jina) · Contextual Retrieval (Anthropic) = pronoun/context সমাধান</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: ডকুমেন্ট ভাঙো সঠিক আকারে, overlap দাও — টুকরো সম্পূর্ণ অর্থ বহন করে</div>
@@ -508,15 +508,15 @@ MULTI-VECTOR RETRIEVAL:
   <text x="80" y="135" text-anchor="middle" fill="#7dd3fc" font-size="9">কোয়েরি</text>
   <rect x="140" y="70" width="120" height="44" fill="#0d3b34" stroke="#2dd4bf" stroke-width="2" rx="6"/>
   <text x="200" y="90" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="bold">Dense</text>
-  <text x="200" y="104" text-anchor="middle" fill="#5eead4" font-size="7">vector / অর্থ</text>
+  <text x="200" y="104" text-anchor="middle" fill="#5eead4" font-size="10">vector / অর্থ</text>
   <rect x="140" y="146" width="120" height="44" fill="#3b2a05" stroke="#fbbf24" stroke-width="2" rx="6"/>
   <text x="200" y="166" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">Sparse</text>
-  <text x="200" y="180" text-anchor="middle" fill="#fcd34d" font-size="7">BM25 / keyword</text>
+  <text x="200" y="180" text-anchor="middle" fill="#fcd34d" font-size="10">BM25 / keyword</text>
   <line x1="100" y1="120" x2="138" y2="92" stroke="#2dd4bf" stroke-width="1.5"/>
   <line x1="100" y1="140" x2="138" y2="168" stroke="#fbbf24" stroke-width="1.5"/>
   <rect x="310" y="100" width="100" height="60" fill="#1a2a3e" stroke="#b37feb" stroke-width="2" rx="6"/>
   <text x="360" y="125" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="bold">RRF</text>
-  <text x="360" y="142" text-anchor="middle" fill="#c084fc" font-size="7">rank fusion</text>
+  <text x="360" y="142" text-anchor="middle" fill="#c084fc" font-size="10">rank fusion</text>
   <line x1="260" y1="92" x2="308" y2="118" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCtx4)"/>
   <line x1="260" y1="168" x2="308" y2="142" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCtx4)"/>
   <defs>
@@ -526,7 +526,7 @@ MULTI-VECTOR RETRIEVAL:
   </defs>
   <rect x="450" y="100" width="100" height="60" fill="#0d3b34" stroke="#52c41a" stroke-width="2" rx="6"/>
   <text x="500" y="125" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">top-5</text>
-  <text x="500" y="142" text-anchor="middle" fill="#4ade80" font-size="7">৮৫-৯৫%</text>
+  <text x="500" y="142" text-anchor="middle" fill="#4ade80" font-size="10">৮৫-৯৫%</text>
   <line x1="410" y1="130" x2="448" y2="130" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCtx4)"/>
   <text x="290" y="220" text-anchor="middle" fill="#9290a8" font-size="8">⬓ Dense-only ৬৫% · Hybrid ৮৫%+ — দুটো পথ মিলে = সম্পূর্ণ তালাশ</text>
 </svg>
@@ -642,25 +642,25 @@ WHEN TO RERANK:
   <rect x="30" y="80" width="130" height="70" fill="#1e3a5f" stroke="#5b9eff" stroke-width="2" rx="8"/>
   <text x="95" y="103" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="bold">Stage ১</text>
   <text x="95" y="120" text-anchor="middle" fill="#7dd3fc" font-size="8">Bi-encoder</text>
-  <text x="95" y="138" text-anchor="middle" fill="#5b9eff" font-size="7">top-20 · দ্রুত</text>
+  <text x="95" y="138" text-anchor="middle" fill="#5b9eff" font-size="10">top-20 · দ্রুত</text>
   <rect x="200" y="55" width="160" height="135" fill="#3b2a05" stroke="#fbbf24" stroke-width="2" rx="8"/>
   <text x="280" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">Stage ২ — Rerank</text>
-  <text x="280" y="93" text-anchor="middle" fill="#fcd34d" font-size="7">Cross-encoder</text>
+  <text x="280" y="93" text-anchor="middle" fill="#fcd34d" font-size="10">Cross-encoder</text>
   <rect x="216" y="105" width="128" height="16" fill="#0d3b34" stroke="#2dd4bf" stroke-width="0.8" rx="3"/>
-  <text x="280" y="116" text-anchor="middle" fill="#5eead4" font-size="6">#১৫ ✓ সঠিক</text>
+  <text x="280" y="116" text-anchor="middle" fill="#5eead4" font-size="10">#১৫ ✓ সঠিক</text>
   <rect x="216" y="125" width="128" height="16" fill="#1a1a2e" stroke="#ff6b35" stroke-width="0.8" rx="3"/>
-  <text x="280" y="136" text-anchor="middle" fill="#ff8a5b" font-size="6">#৩ · #৭ · #১১ ...</text>
+  <text x="280" y="136" text-anchor="middle" fill="#ff8a5b" font-size="10">#৩ · #৭ · #১১ ...</text>
   <rect x="216" y="145" width="128" height="16" fill="#0d3b34" stroke="#52c41a" stroke-width="0.8" rx="3"/>
-  <text x="280" y="156" text-anchor="middle" fill="#4ade80" font-size="6">#১ → #১ এ উঠবে</text>
+  <text x="280" y="156" text-anchor="middle" fill="#4ade80" font-size="10">#১ → #১ এ উঠবে</text>
   <text x="280" y="178" text-anchor="middle" fill="#fbbf24" font-size="6.5">প্রতিটি pair যাচাই</text>
   <rect x="400" y="80" width="130" height="70" fill="#0d3b34" stroke="#52c41a" stroke-width="2" rx="8"/>
   <text x="465" y="103" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">top-5</text>
   <text x="465" y="120" text-anchor="middle" fill="#4ade80" font-size="8">নির্ভুল</text>
-  <text x="465" y="138" text-anchor="middle" fill="#52c41a" font-size="7">৮৫%+ accuracy</text>
+  <text x="465" y="138" text-anchor="middle" fill="#52c41a" font-size="10">৮৫%+ accuracy</text>
   <line x1="160" y1="115" x2="198" y2="115" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCtx5)"/>
   <line x1="360" y1="115" x2="398" y2="115" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#arrCtx5)"/>
   <text x="290" y="220" text-anchor="middle" fill="#9290a8" font-size="8">⬓ Retrieval-only ৬৫% → +Rerank ৮৫%+ (২০%+ উন্নতি)</text>
-  <text x="290" y="238" text-anchor="middle" fill="#5e5c74" font-size="7">তারজিহ — সবচেয়ে প্রাসঙ্গিক বাছাই, দ্রুত তালিকা থেকে সূক্ষ্ম যাচাইয়ে</text>
+  <text x="290" y="238" text-anchor="middle" fill="#5e5c74" font-size="10">তারজিহ — সবচেয়ে প্রাসঙ্গিক বাছাই, দ্রুত তালিকা থেকে সূক্ষ্ম যাচাইয়ে</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: দ্বি-স্তর পাইপলাইন — retrieval বিস্তৃত (top-20), reranker সঠিক chunk #১ এ আনে</div>

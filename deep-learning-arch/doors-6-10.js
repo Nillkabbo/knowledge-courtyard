@@ -42,23 +42,23 @@ G চায় D কে বোকানো, D চায় G কে ধরা।
   <line x1="120" y1="75" x2="160" y2="75" stroke="#f87171" stroke-width="2" marker-end="url(#arrG1)"/>
   <rect x="160" y="50" width="120" height="55" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="220" y="75" text-anchor="middle" fill="#67e8f9" font-size="9" font-weight="700">GENERATOR G</text>
-  <text x="220" y="92" text-anchor="middle" fill="#7dd3fc" font-size="7">fake image</text>
+  <text x="220" y="92" text-anchor="middle" fill="#7dd3fc" font-size="10">fake image</text>
   <line x1="280" y1="77" x2="340" y2="77" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrG1)"/>
-  <text x="310" y="72" text-anchor="middle" fill="#7dd3fc" font-size="7">fake</text>
+  <text x="310" y="72" text-anchor="middle" fill="#7dd3fc" font-size="10">fake</text>
   <rect x="340" y="50" width="120" height="55" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="400" y="75" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">DISCRIMINATOR D</text>
-  <text x="400" y="92" text-anchor="middle" fill="#86efac" font-size="7">real or fake?</text>
+  <text x="400" y="92" text-anchor="middle" fill="#86efac" font-size="10">real or fake?</text>
   <line x1="460" y1="77" x2="510" y2="77" stroke="#22c55e" stroke-width="2" marker-end="url(#arrG1)"/>
   <rect x="510" y="60" width="50" height="35" rx="6" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
-  <text x="535" y="82" text-anchor="middle" fill="#94a3b8" font-size="7">0/1</text>
+  <text x="535" y="82" text-anchor="middle" fill="#94a3b8" font-size="10">0/1</text>
   <rect x="340" y="130" width="120" height="35" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="400" y="152" text-anchor="middle" fill="#7dd3fc" font-size="7">REAL images</text>
+  <text x="400" y="152" text-anchor="middle" fill="#7dd3fc" font-size="10">REAL images</text>
   <line x1="400" y1="130" x2="400" y2="105" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrG1)"/>
   <path d="M 400 95 Q 280 170 220 105" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5,3"/>
   <text x="320" y="190" text-anchor="middle" fill="#fbbf24" font-size="8">← G learns from D feedback ←</text>
   <path d="M 220 105 Q 180 180 400 165" fill="none" stroke="#f87171" stroke-width="2" stroke-dasharray="5,3"/>
   <text x="150" y="195" text-anchor="middle" fill="#f87171" font-size="8">→ D improves detection →</text>
-  <text x="290" y="225" text-anchor="middle" fill="#94a3b8" font-size="7">minimax: G minimizes, D maximizes — equilibrium = realistic images</text>
+  <text x="290" y="225" text-anchor="middle" fill="#94a3b8" font-size="10">minimax: G minimizes, D maximizes — equilibrium = realistic images</text>
   <defs><marker id="arrG1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
 </svg>
 </div>
@@ -152,24 +152,24 @@ doors.push({
 <svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌅 Diffusion: Forward (add noise) &amp; Reverse (denoise)</text>
   <rect x="20" y="50" width="70" height="60" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="55" y="78" text-anchor="middle" fill="#4ade80" font-size="7">Image</text>
-  <text x="55" y="92" text-anchor="middle" fill="#86efac" font-size="6">(clean)</text>
+  <text x="55" y="78" text-anchor="middle" fill="#4ade80" font-size="10">Image</text>
+  <text x="55" y="92" text-anchor="middle" fill="#86efac" font-size="10">(clean)</text>
   <rect x="110" y="50" width="70" height="60" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
-  <text x="145" y="78" text-anchor="middle" fill="#fcd34d" font-size="7">t=10</text>
-  <text x="145" y="92" text-anchor="middle" fill="#fde68a" font-size="6">some noise</text>
+  <text x="145" y="78" text-anchor="middle" fill="#fcd34d" font-size="10">t=10</text>
+  <text x="145" y="92" text-anchor="middle" fill="#fde68a" font-size="10">some noise</text>
   <rect x="200" y="50" width="70" height="60" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
-  <text x="235" y="78" text-anchor="middle" fill="#fca5a5" font-size="7">t=50</text>
-  <text x="235" y="92" text-anchor="middle" fill="#fca5a5" font-size="6">more noise</text>
+  <text x="235" y="78" text-anchor="middle" fill="#fca5a5" font-size="10">t=50</text>
+  <text x="235" y="92" text-anchor="middle" fill="#fca5a5" font-size="10">more noise</text>
   <rect x="290" y="50" width="70" height="60" rx="6" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
-  <text x="325" y="78" text-anchor="middle" fill="#94a3b8" font-size="7">t=100</text>
-  <text x="325" y="92" text-anchor="middle" fill="#64748b" font-size="6">pure noise</text>
+  <text x="325" y="78" text-anchor="middle" fill="#94a3b8" font-size="10">t=100</text>
+  <text x="325" y="92" text-anchor="middle" fill="#64748b" font-size="10">pure noise</text>
   <text x="180" y="130" text-anchor="middle" fill="#f87171" font-size="8">→ Forward: add noise (training) →</text>
   <text x="325" y="155" text-anchor="middle" fill="#4ade80" font-size="8">← Reverse: denoise (generation) ←</text>
   <text x="470" y="78" fill="#fcd34d" font-size="8">DDPM (Ho 2020):</text>
-  <text x="470" y="95" fill="#fde68a" font-size="7">predict noise at each step</text>
-  <text x="470" y="110" fill="#fde68a" font-size="7">remove → repeat 1000x</text>
-  <text x="470" y="130" fill="#94a3b8" font-size="6">Stable Diffusion: latent space</text>
-  <text x="470" y="145" fill="#94a3b8" font-size="6">U-Net + cross-attention</text>
+  <text x="470" y="95" fill="#fde68a" font-size="10">predict noise at each step</text>
+  <text x="470" y="110" fill="#fde68a" font-size="10">remove → repeat 1000x</text>
+  <text x="470" y="130" fill="#94a3b8" font-size="10">Stable Diffusion: latent space</text>
+  <text x="470" y="145" fill="#94a3b8" font-size="10">U-Net + cross-attention</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Diffusion — ধীরে ধীরে noise যোগ করো (forward), তারপর ধীরে ধীরে noise সরাও (reverse)।</div>
@@ -272,10 +272,10 @@ doors.push({
   <line x1="30" y1="150" x2="280" y2="150" stroke="#64748b" stroke-width="0.5"/>
   <line x1="30" y1="50" x2="30" y2="150" stroke="#64748b" stroke-width="0.5"/>
   <text x="330" y="60" fill="#f87171" font-size="8">ReLU: ✅ no vanishing gradient</text>
-  <text x="330" y="75" fill="#f87171" font-size="7">ReLU: ⚠️ dying ReLU (x&lt;0 → 0)</text>
+  <text x="330" y="75" fill="#f87171" font-size="10">ReLU: ⚠️ dying ReLU (x&lt;0 → 0)</text>
   <text x="330" y="100" fill="#fcd34d" font-size="8">Sigmoid: ❌ saturates (→0 or →1)</text>
   <text x="330" y="125" fill="#4ade80" font-size="8">GELU/SwiGLU: modern (GPT-4)</text>
-  <text x="330" y="150" fill="#94a3b8" font-size="7">BatchNorm + Dropout = stable training</text>
+  <text x="330" y="150" fill="#94a3b8" font-size="10">BatchNorm + Dropout = stable training</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Activation functions। ReLU (সবচেয়ে জনপ্রিয়) — সহজ, দ্রুত, কোনো vanishing gradient নেই।</div>
@@ -373,34 +373,34 @@ doors.push({
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🎯 Overfitting vs Underfitting vs Just Right</text>
   <rect x="20" y="50" width="160" height="130" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="100" y="72" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">❌ Overfitting</text>
-  <text x="100" y="90" text-anchor="middle" fill="#fca5a5" font-size="7">memorizes noise</text>
+  <text x="100" y="90" text-anchor="middle" fill="#fca5a5" font-size="10">memorizes noise</text>
   <path d="M 35 150 Q 60 120 80 140 Q 100 80 120 150 Q 140 110 165 145" fill="none" stroke="#f87171" stroke-width="2"/>
   <circle cx="50" cy="155" r="2" fill="#94a3b8"/>
   <circle cx="75" cy="130" r="2" fill="#94a3b8"/>
   <circle cx="100" cy="100" r="2" fill="#94a3b8"/>
   <circle cx="130" cy="155" r="2" fill="#94a3b8"/>
   <circle cx="155" cy="125" r="2" fill="#94a3b8"/>
-  <text x="100" y="170" text-anchor="middle" fill="#fca5a5" font-size="7">train: 99% · test: 70%</text>
+  <text x="100" y="170" text-anchor="middle" fill="#fca5a5" font-size="10">train: 99% · test: 70%</text>
   <rect x="200" y="50" width="160" height="130" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
   <text x="280" y="72" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">⚠️ Underfitting</text>
-  <text x="280" y="90" text-anchor="middle" fill="#fcd34d" font-size="7">too simple</text>
+  <text x="280" y="90" text-anchor="middle" fill="#fcd34d" font-size="10">too simple</text>
   <line x1="220" y1="150" x2="350" y2="110" stroke="#fbbf24" stroke-width="2"/>
   <circle cx="230" cy="155" r="2" fill="#94a3b8"/>
   <circle cx="255" cy="130" r="2" fill="#94a3b8"/>
   <circle cx="280" cy="100" r="2" fill="#94a3b8"/>
   <circle cx="310" cy="155" r="2" fill="#94a3b8"/>
   <circle cx="335" cy="125" r="2" fill="#94a3b8"/>
-  <text x="280" y="170" text-anchor="middle" fill="#fcd34d" font-size="7">train: 65% · test: 60%</text>
+  <text x="280" y="170" text-anchor="middle" fill="#fcd34d" font-size="10">train: 65% · test: 60%</text>
   <rect x="380" y="50" width="180" height="130" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="470" y="72" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">✅ Just Right</text>
-  <text x="470" y="90" text-anchor="middle" fill="#4ade80" font-size="7">generalizes!</text>
+  <text x="470" y="90" text-anchor="middle" fill="#4ade80" font-size="10">generalizes!</text>
   <path d="M 400 155 Q 440 120 470 100 Q 500 90 540 115" fill="none" stroke="#22c55e" stroke-width="2.5"/>
   <circle cx="410" cy="155" r="2" fill="#94a3b8"/>
   <circle cx="435" cy="130" r="2" fill="#94a3b8"/>
   <circle cx="460" cy="100" r="2" fill="#94a3b8"/>
   <circle cx="490" cy="155" r="2" fill="#94a3b8"/>
   <circle cx="515" cy="125" r="2" fill="#94a3b8"/>
-  <text x="470" y="170" text-anchor="middle" fill="#4ade80" font-size="7">train: 92% · test: 90%</text>
+  <text x="470" y="170" text-anchor="middle" fill="#4ade80" font-size="10">train: 92% · test: 90%</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Overfitting (মুখস্থ) vs Underfitting (সরল) vs Just Right (সাধারণীকরণ)।</div>
@@ -541,9 +541,9 @@ doors.push({
   <text x="350" y="239" fill="#c084fc" font-size="8">2020 Diffusion (DDPM)</text>
   <circle cx="290" cy="260" r="8" fill="#22c55e" stroke="#4ade80" stroke-width="3"/>
   <text x="350" y="264" fill="#4ade80" font-size="9" font-weight="700">2024+ GPT-4, Claude, AGI horizon</text>
-  <text x="130" y="60" fill="#94a3b8" font-size="7">80 years of</text>
-  <text x="130" y="72" fill="#94a3b8" font-size="7">continuous</text>
-  <text x="130" y="84" fill="#94a3b8" font-size="7">evolution</text>
+  <text x="130" y="60" fill="#94a3b8" font-size="10">80 years of</text>
+  <text x="130" y="72" fill="#94a3b8" font-size="10">continuous</text>
+  <text x="130" y="84" fill="#94a3b8" font-size="10">evolution</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: ৮০ বছরের যাত্রা — একটি নিউরন থেকে ১৭৫ বিলিয়ন parameter পর্যন্ত।</div>

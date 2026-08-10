@@ -375,55 +375,55 @@ if __name__ == "__main__":
     <polygon points="280,40 340,100 280,160 220,100" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="2.5"/>
     <text x="360" y="95" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">💎 Craftsman</text>
     <text x="360" y="110" text-anchor="middle" fill="#a5b4fc" font-size="9">Code</text>
-    <text x="360" y="125" text-anchor="middle" fill="#9a93b8" font-size="7">10 books</text>
-    <text x="360" y="138" text-anchor="middle" fill="#9a93b8" font-size="7">united</text>
+    <text x="360" y="125" text-anchor="middle" fill="#9a93b8" font-size="10">10 books</text>
+    <text x="360" y="138" text-anchor="middle" fill="#9a93b8" font-size="10">united</text>
     <!-- 10 books radiating -->
     <!-- Book 1: Clean Code -->
     <line x1="250" y1="55" x2="150" y2="20" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
     <rect x="80" y="10" width="120" height="22" rx="4" fill="rgba(99,102,241,0.06)" stroke="#6366f1" stroke-width="1"/>
-    <text x="140" y="25" text-anchor="middle" fill="#a5b4fc" font-size="7" font-weight="bold">Clean Code — Names</text>
+    <text x="140" y="25" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">Clean Code — Names</text>
     <!-- Book 2: Pragmatic -->
     <line x1="310" y1="55" x2="410" y2="20" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
     <rect x="360" y="10" width="120" height="22" rx="4" fill="rgba(99,102,241,0.06)" stroke="#6366f1" stroke-width="1"/>
-    <text x="420" y="25" text-anchor="middle" fill="#a5b4fc" font-size="7" font-weight="bold">Pragmatic — DRY</text>
+    <text x="420" y="25" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">Pragmatic — DRY</text>
     <!-- Book 3: Refactoring -->
     <line x1="330" y1="100" x2="450" y2="60" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
     <rect x="430" y="48" width="110" height="22" rx="4" fill="rgba(99,102,241,0.06)" stroke="#6366f1" stroke-width="1"/>
-    <text x="485" y="63" text-anchor="middle" fill="#a5b4fc" font-size="7" font-weight="bold">Refactoring</text>
+    <text x="485" y="63" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">Refactoring</text>
     <!-- Book 4: GoF -->
     <line x1="330" y1="120" x2="450" y2="130" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
     <rect x="430" y="118" width="110" height="22" rx="4" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1"/>
-    <text x="485" y="133" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">GoF Patterns</text>
+    <text x="485" y="133" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">GoF Patterns</text>
     <!-- Book 5: Code Complete -->
     <line x1="310" y1="145" x2="410" y2="175" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
     <rect x="370" y="163" width="110" height="22" rx="4" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1"/>
-    <text x="425" y="178" text-anchor="middle" fill="#fbbf24" font-size="7" font-weight="bold">Code Complete</text>
+    <text x="425" y="178" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">Code Complete</text>
     <!-- Book 6: DDD -->
     <line x1="280" y1="160" x2="280" y2="200" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
     <rect x="225" y="200" width="110" height="22" rx="4" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1"/>
-    <text x="360" y="215" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">DDD — Language</text>
+    <text x="360" y="215" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">DDD — Language</text>
     <!-- Book 7: TDD -->
     <line x1="250" y1="145" x2="150" y2="175" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
     <rect x="80" y="163" width="110" height="22" rx="4" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1"/>
-    <text x="135" y="178" text-anchor="middle" fill="#52c41a" font-size="7" font-weight="bold">TDD — Tests</text>
+    <text x="135" y="178" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">TDD — Tests</text>
     <!-- Book 8: Legacy -->
     <line x1="230" y1="120" x2="110" y2="130" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
     <rect x="20" y="118" width="110" height="22" rx="4" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1"/>
-    <text x="75" y="133" text-anchor="middle" fill="#fbbf24" font-size="7" font-weight="bold">Legacy — Seams</text>
+    <text x="75" y="133" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">Legacy — Seams</text>
     <!-- Book 9: SICP -->
     <line x1="230" y1="100" x2="110" y2="60" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
     <rect x="20" y="48" width="110" height="22" rx="4" fill="rgba(167,139,250,0.06)" stroke="#a78bfa" stroke-width="1"/>
-    <text x="75" y="63" text-anchor="middle" fill="#a78bfa" font-size="7" font-weight="bold">SICP — Layers</text>
+    <text x="75" y="63" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold">SICP — Layers</text>
     <!-- Book 10: Brooks -->
     <line x1="280" y1="40" x2="280" y2="10" stroke="#6366f1" stroke-width="1" opacity="0.4"/>
     <rect x="225" y="-5" width="110" height="22" rx="4" fill="rgba(99,102,241,0.06)" stroke="#6366f1" stroke-width="1"/>
-    <text x="360" y="10" text-anchor="middle" fill="#a5b4fc" font-size="7" font-weight="bold">Brooks — Integrity</text>
+    <text x="360" y="10" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">Brooks — Integrity</text>
     <!-- Qualities list -->
     <rect x="20" y="240" width="680" height="65" rx="8" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="258" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">১০টি গুণ (10 Qualities of a Craftsman's Code):</text>
-    <text x="35" y="275" fill="#9a93b8" font-size="7">সিদক (truthful names) · কিসম (small functions) · তাওহীদ (DRY) · তাদবির (refactored)</text>
-    <text x="35" y="288" fill="#9a93b8" font-size="7">হিকমাহ (patterns) · আমানত (defensive+tested) · বায়ান (domain language)</text>
-    <text x="35" y="301" fill="#9a93b8" font-size="7">ইসলাহ (seams) · জালাল (abstraction) · ওয়াহদানিয়্যাহ (conceptual integrity)</text>
+    <text x="35" y="275" fill="#9a93b8" font-size="10">সিদক (truthful names) · কিসম (small functions) · তাওহীদ (DRY) · তাদবির (refactored)</text>
+    <text x="35" y="288" fill="#9a93b8" font-size="10">হিকমাহ (patterns) · আমানত (defensive+tested) · বায়ান (domain language)</text>
+    <text x="35" y="301" fill="#9a93b8" font-size="10">ইসলাহ (seams) · জালাল (abstraction) · ওয়াহদানিয়্যাহ (conceptual integrity)</text>
   </svg>
   <div class="diag-cap">১০টি বই, ১০টি গুণ, ১টি কোড। এটাই সম্পূর্ণ কারিগর। ইহসান — যেন আল্লাহ দেখছেন তেমন কোড লেখো।</div>
 </div>

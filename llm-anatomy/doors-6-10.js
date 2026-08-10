@@ -36,24 +36,24 @@ doors.push({
 <!-- Step 1 -->
 <rect x="20" y="82" width="170" height="68" rx="6" fill="#1a2744" stroke="#a855f7" stroke-width="2"/>
 <text x="105" y="98" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">STEP 1: forward pass</text>
-<text x="105" y="113" text-anchor="middle" fill="#94a3b8" font-size="7">process all context</text>
-<text x="105" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">P(Dhaka)=0.89</text>
+<text x="105" y="113" text-anchor="middle" fill="#94a3b8" font-size="10">process all context</text>
+<text x="105" y="128" text-anchor="middle" fill="#fcd34d" font-size="10">P(Dhaka)=0.89</text>
 <text x="105" y="140" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">→ pick "Dhaka"</text>
 <!-- Arrow -->
 <line x1="192" y1="116" x2="212" y2="116" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM6)"/>
 <!-- Step 2 -->
 <rect x="205" y="82" width="170" height="68" rx="6" fill="#1a2744" stroke="#a855f7" stroke-width="2"/>
 <text x="290" y="98" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">STEP 2: append + re-run</text>
-<text x="290" y="113" text-anchor="middle" fill="#94a3b8" font-size="7">now process [..., "Dhaka"]</text>
-<text x="290" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">P(".")=0.70</text>
+<text x="290" y="113" text-anchor="middle" fill="#94a3b8" font-size="10">now process [..., "Dhaka"]</text>
+<text x="290" y="128" text-anchor="middle" fill="#fcd34d" font-size="10">P(".")=0.70</text>
 <text x="290" y="140" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">→ pick "."</text>
 <!-- Arrow -->
 <line x1="377" y1="116" x2="397" y2="116" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM6)"/>
 <!-- Step 3 -->
 <rect x="390" y="82" width="170" height="68" rx="6" fill="#1a2744" stroke="#a855f7" stroke-width="2"/>
 <text x="475" y="98" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">STEP 3: append + re-run</text>
-<text x="475" y="113" text-anchor="middle" fill="#94a3b8" font-size="7">now process [..., "."]</text>
-<text x="475" y="128" text-anchor="middle" fill="#fcd34d" font-size="7">P(&lt;END&gt;)=0.80</text>
+<text x="475" y="113" text-anchor="middle" fill="#94a3b8" font-size="10">now process [..., "."]</text>
+<text x="475" y="128" text-anchor="middle" fill="#fcd34d" font-size="10">P(&lt;END&gt;)=0.80</text>
 <text x="475" y="140" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">→ STOP</text>
 <!-- Output -->
 <rect x="20" y="165" width="540" height="28" rx="5" fill="#0d1526" stroke="#22c55e" stroke-width="2"/>
@@ -61,7 +61,7 @@ doors.push({
 <!-- Cost insight -->
 <rect x="20" y="205" width="540" height="35" rx="5" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,2"/>
 <text x="290" y="222" text-anchor="middle" fill="#fcd34d" font-size="8">⚡ Each output token = full model forward pass over entire context</text>
-<text x="290" y="234" text-anchor="middle" fill="#94a3b8" font-size="7">1000 output tokens = 1000 passes · KV cache avoids recomputing old tokens</text>
+<text x="290" y="234" text-anchor="middle" fill="#94a3b8" font-size="10">1000 output tokens = 1000 passes · KV cache avoids recomputing old tokens</text>
 </svg>
 </div>
 <div class="svg-caption">Autoregressive জেনারেশন — এক সময় এক টোকেন; প্রতিটি ধাপে গোটা context পুনরায় প্রসেস হয়</div>
@@ -188,26 +188,26 @@ doors.push({
 <text x="50" y="196" fill="#94a3b8" font-size="8">High temperature → more randomness</text>
 <!-- Divider arrow -->
 <text x="290" y="120" text-anchor="middle" fill="#22d3ee" font-size="14">→</text>
-<text x="290" y="135" text-anchor="middle" fill="#7dd3fc" font-size="7">prevent</text>
+<text x="290" y="135" text-anchor="middle" fill="#7dd3fc" font-size="10">prevent</text>
 <!-- RIGHT: Defense layers -->
 <text x="460" y="42" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">🛡 7-Layer Defense</text>
 <rect x="320" y="50" width="240" height="22" rx="4" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
-<text x="440" y="65" text-anchor="middle" fill="#4ade80" font-size="7">1. Grounding (RAG) — give source docs</text>
+<text x="440" y="65" text-anchor="middle" fill="#4ade80" font-size="10">1. Grounding (RAG) — give source docs</text>
 <rect x="320" y="75" width="240" height="22" rx="4" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
-<text x="440" y="90" text-anchor="middle" fill="#4ade80" font-size="7">2. Low temperature (0) — deterministic</text>
+<text x="440" y="90" text-anchor="middle" fill="#4ade80" font-size="10">2. Low temperature (0) — deterministic</text>
 <rect x="320" y="100" width="240" height="22" rx="4" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
-<text x="440" y="115" text-anchor="middle" fill="#4ade80" font-size="7">3. Citation required — claim needs source</text>
+<text x="440" y="115" text-anchor="middle" fill="#4ade80" font-size="10">3. Citation required — claim needs source</text>
 <rect x="320" y="125" width="240" height="22" rx="4" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
-<text x="440" y="140" text-anchor="middle" fill="#4ade80" font-size="7">4. Chain-of-verification — self-check</text>
+<text x="440" y="140" text-anchor="middle" fill="#4ade80" font-size="10">4. Chain-of-verification — self-check</text>
 <rect x="320" y="150" width="240" height="22" rx="4" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
-<text x="440" y="165" text-anchor="middle" fill="#4ade80" font-size="7">5. "Say I don't know" prompting</text>
+<text x="440" y="165" text-anchor="middle" fill="#4ade80" font-size="10">5. "Say I don't know" prompting</text>
 <rect x="320" y="175" width="240" height="22" rx="4" fill="#1a2744" stroke="#22c55e" stroke-width="1.5"/>
-<text x="440" y="190" text-anchor="middle" fill="#4ade80" font-size="7">6. Structured output + confidence field</text>
+<text x="440" y="190" text-anchor="middle" fill="#4ade80" font-size="10">6. Structured output + confidence field</text>
 <rect x="320" y="200" width="240" height="22" rx="4" fill="#0d1526" stroke="#22c55e" stroke-width="2"/>
-<text x="440" y="215" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">7. External verification (2nd model/human)</text>
+<text x="440" y="215" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">7. External verification (2nd model/human)</text>
 <!-- Bottom truth bar -->
 <rect x="20" y="218" width="280" height="22" rx="4" fill="#0d1526" stroke="#a855f7" stroke-width="1.5"/>
-<text x="160" y="233" text-anchor="middle" fill="#c084fc" font-size="7">LLM doesn't lie — it guesses. Verify everything.</text>
+<text x="160" y="233" text-anchor="middle" fill="#c084fc" font-size="10">LLM doesn't lie — it guesses. Verify everything.</text>
 </svg>
 </div>
 <div class="svg-caption">হ্যালুসিনেশন — ৫টি কারণ, ৭টি প্রতিরক্ষা স্তর; যাচাই ছাড়া বিশ্বাস নয়</div>
@@ -326,37 +326,37 @@ doors.push({
 <!-- Axes -->
 <line x1="50" y1="210" x2="50" y2="70" stroke="#475569" stroke-width="1"/>
 <line x1="50" y1="210" x2="280" y2="210" stroke="#475569" stroke-width="1"/>
-<text x="38" y="145" fill="#94a3b8" font-size="7" transform="rotate(-90 38 145)">Loss ↓</text>
-<text x="165" y="228" text-anchor="middle" fill="#94a3b8" font-size="7">Compute / Parameters / Data →</text>
+<text x="38" y="145" fill="#94a3b8" font-size="10" transform="rotate(-90 38 145)">Loss ↓</text>
+<text x="165" y="228" text-anchor="middle" fill="#94a3b8" font-size="10">Compute / Parameters / Data →</text>
 <!-- Kaplan curve (dashed, higher) -->
 <path d="M 60 90 Q 120 130 200 165 T 275 185" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5,3"/>
-<text x="245" y="180" fill="#fcd34d" font-size="7">Kaplan (2020)</text>
+<text x="245" y="180" fill="#fcd34d" font-size="10">Kaplan (2020)</text>
 <!-- Chinchilla curve (solid, lower - better) -->
 <path d="M 60 100 Q 110 145 190 175 T 275 195" fill="none" stroke="#22c55e" stroke-width="2.5"/>
-<text x="240" y="200" fill="#4ade80" font-size="7">Chinchilla (2022)</text>
+<text x="240" y="200" fill="#4ade80" font-size="10">Chinchilla (2022)</text>
 <!-- Data points -->
 <circle cx="100" cy="110" r="3" fill="#7dd3fc"/>
 <circle cx="150" cy="140" r="3" fill="#7dd3fc"/>
 <circle cx="200" cy="165" r="3" fill="#7dd3fc"/>
-<text x="100" y="125" text-anchor="middle" fill="#7dd3fc" font-size="6">7B</text>
-<text x="150" y="155" text-anchor="middle" fill="#7dd3fc" font-size="6">70B</text>
-<text x="205" y="158" text-anchor="middle" fill="#7dd3fc" font-size="6">175B</text>
+<text x="100" y="125" text-anchor="middle" fill="#7dd3fc" font-size="10">7B</text>
+<text x="150" y="155" text-anchor="middle" fill="#7dd3fc" font-size="10">70B</text>
+<text x="205" y="158" text-anchor="middle" fill="#7dd3fc" font-size="10">175B</text>
 <!-- Right: Comparison boxes -->
 <rect x="320" y="40" width="240" height="60" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
 <text x="440" y="58" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">Kaplan — wrong ratio</text>
-<text x="440" y="73" text-anchor="middle" fill="#94a3b8" font-size="7">GPT-3: 175B params</text>
-<text x="440" y="84" text-anchor="middle" fill="#94a3b8" font-size="7">but only 300B tokens</text>
-<text x="440" y="95" text-anchor="middle" fill="#94a3b8" font-size="7">→ data-starved</text>
+<text x="440" y="73" text-anchor="middle" fill="#94a3b8" font-size="10">GPT-3: 175B params</text>
+<text x="440" y="84" text-anchor="middle" fill="#94a3b8" font-size="10">but only 300B tokens</text>
+<text x="440" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">→ data-starved</text>
 <rect x="320" y="110" width="240" height="60" rx="6" fill="#1a2744" stroke="#22c55e" stroke-width="2"/>
 <text x="440" y="128" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Chinchilla — correct ratio</text>
 <text x="440" y="143" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">~20 tokens per parameter</text>
-<text x="440" y="154" text-anchor="middle" fill="#94a3b8" font-size="7">70B model → 1.4T tokens</text>
-<text x="440" y="165" text-anchor="middle" fill="#94a3b8" font-size="7">7B model → 140B tokens</text>
+<text x="440" y="154" text-anchor="middle" fill="#94a3b8" font-size="10">70B model → 1.4T tokens</text>
+<text x="440" y="165" text-anchor="middle" fill="#94a3b8" font-size="10">7B model → 140B tokens</text>
 <!-- Result box -->
 <rect x="320" y="180" width="240" height="55" rx="6" fill="#0d1526" stroke="#a855f7" stroke-width="2"/>
 <text x="440" y="198" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">Surprising result:</text>
-<text x="440" y="212" text-anchor="middle" fill="#7dd3fc" font-size="7">Chinchilla 70B beat</text>
-<text x="440" y="223" text-anchor="middle" fill="#7dd3fc" font-size="7">GPT-3 175B — smaller wins!</text>
+<text x="440" y="212" text-anchor="middle" fill="#7dd3fc" font-size="10">Chinchilla 70B beat</text>
+<text x="440" y="223" text-anchor="middle" fill="#7dd3fc" font-size="10">GPT-3 175B — smaller wins!</text>
 </svg>
 </div>
 <div class="svg-caption">Scaling law — বড় মডেল ভালো, কিন্তু অনুপাত ঠিক হতে হবে: প্রতি প্যারামিটারে ~২০ টোকেন</div>
@@ -482,36 +482,36 @@ doors.push({
 <!-- Router -->
 <rect x="110" y="95" width="65" height="30" rx="5" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
 <text x="142" y="108" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">Router</text>
-<text x="142" y="118" text-anchor="middle" fill="#94a3b8" font-size="6">picks experts</text>
+<text x="142" y="118" text-anchor="middle" fill="#94a3b8" font-size="10">picks experts</text>
 <line x1="85" y1="110" x2="105" y2="110" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM9)"/>
 <!-- Experts grid - 8 experts -->
-<text x="345" y="45" text-anchor="middle" fill="#94a3b8" font-size="7">8 Expert Networks (e.g., Mixtral 8×7B = 47B total)</text>
+<text x="345" y="45" text-anchor="middle" fill="#94a3b8" font-size="10">8 Expert Networks (e.g., Mixtral 8×7B = 47B total)</text>
 <!-- Active experts (highlighted) -->
 <rect x="200" y="55" width="60" height="40" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="2.5"/>
 <text x="230" y="72" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">Expert 1</text>
-<text x="230" y="85" text-anchor="middle" fill="#4ade80" font-size="6">✓ active</text>
+<text x="230" y="85" text-anchor="middle" fill="#4ade80" font-size="10">✓ active</text>
 <rect x="270" y="55" width="60" height="40" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1" opacity="0.4"/>
 <text x="300" y="72" text-anchor="middle" fill="#64748b" font-size="8">Expert 2</text>
-<text x="300" y="85" text-anchor="middle" fill="#64748b" font-size="6">asleep</text>
+<text x="300" y="85" text-anchor="middle" fill="#64748b" font-size="10">asleep</text>
 <rect x="340" y="55" width="60" height="40" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="2.5"/>
 <text x="370" y="72" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">Expert 3</text>
-<text x="370" y="85" text-anchor="middle" fill="#4ade80" font-size="6">✓ active</text>
+<text x="370" y="85" text-anchor="middle" fill="#4ade80" font-size="10">✓ active</text>
 <rect x="410" y="55" width="60" height="40" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1" opacity="0.4"/>
 <text x="440" y="72" text-anchor="middle" fill="#64748b" font-size="8">Expert 4</text>
-<text x="440" y="85" text-anchor="middle" fill="#64748b" font-size="6">asleep</text>
+<text x="440" y="85" text-anchor="middle" fill="#64748b" font-size="10">asleep</text>
 <!-- Row 2 -->
 <rect x="200" y="105" width="60" height="40" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1" opacity="0.4"/>
 <text x="230" y="122" text-anchor="middle" fill="#64748b" font-size="8">Expert 5</text>
-<text x="230" y="135" text-anchor="middle" fill="#64748b" font-size="6">asleep</text>
+<text x="230" y="135" text-anchor="middle" fill="#64748b" font-size="10">asleep</text>
 <rect x="270" y="105" width="60" height="40" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="2.5"/>
 <text x="300" y="122" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">Expert 6</text>
-<text x="300" y="135" text-anchor="middle" fill="#4ade80" font-size="6">✓ active</text>
+<text x="300" y="135" text-anchor="middle" fill="#4ade80" font-size="10">✓ active</text>
 <rect x="340" y="105" width="60" height="40" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1" opacity="0.4"/>
 <text x="370" y="122" text-anchor="middle" fill="#64748b" font-size="8">Expert 7</text>
-<text x="370" y="135" text-anchor="middle" fill="#64748b" font-size="6">asleep</text>
+<text x="370" y="135" text-anchor="middle" fill="#64748b" font-size="10">asleep</text>
 <rect x="410" y="105" width="60" height="40" rx="5" fill="#1e3a5f" stroke="#475569" stroke-width="1" opacity="0.4"/>
 <text x="440" y="122" text-anchor="middle" fill="#64748b" font-size="8">Expert 8</text>
-<text x="440" y="135" text-anchor="middle" fill="#64748b" font-size="6">asleep</text>
+<text x="440" y="135" text-anchor="middle" fill="#64748b" font-size="10">asleep</text>
 <!-- Router arrows -->
 <line x1="175" y1="105" x2="195" y2="75" stroke="#fbbf24" stroke-width="1.5" opacity="0.8"/>
 <line x1="175" y1="110" x2="335" y2="75" stroke="#fbbf24" stroke-width="1.5" opacity="0.8"/>
@@ -519,17 +519,17 @@ doors.push({
 <!-- Output merge -->
 <rect x="490" y="85" width="70" height="40" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
 <text x="525" y="102" text-anchor="middle" fill="#7dd3fc" font-size="8">Merge</text>
-<text x="525" y="115" text-anchor="middle" fill="#94a3b8" font-size="6">weighted sum</text>
+<text x="525" y="115" text-anchor="middle" fill="#94a3b8" font-size="10">weighted sum</text>
 <!-- Bottom comparison -->
 <rect x="20" y="165" width="540" height="70" rx="8" fill="#0d1526" stroke="#a855f7" stroke-width="1"/>
 <text x="290" y="183" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">Why MoE? — Emergent Abilities at Scale</text>
 <rect x="40" y="192" width="150" height="35" rx="5" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
-<text x="115" y="206" text-anchor="middle" fill="#fcd34d" font-size="7">Dense model: 70B</text>
-<text x="115" y="218" text-anchor="middle" fill="#94a3b8" font-size="7">all 70B active → slow</text>
+<text x="115" y="206" text-anchor="middle" fill="#fcd34d" font-size="10">Dense model: 70B</text>
+<text x="115" y="218" text-anchor="middle" fill="#94a3b8" font-size="10">all 70B active → slow</text>
 <text x="290" y="213" text-anchor="middle" fill="#7dd3fc" font-size="10">vs</text>
 <rect x="330" y="192" width="210" height="35" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="2"/>
-<text x="435" y="206" text-anchor="middle" fill="#4ade80" font-size="7">MoE: 47B total, 13B active</text>
-<text x="435" y="218" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="bold">→ same quality, 5× faster</text>
+<text x="435" y="206" text-anchor="middle" fill="#4ade80" font-size="10">MoE: 47B total, 13B active</text>
+<text x="435" y="218" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">→ same quality, 5× faster</text>
 </svg>
 </div>
 <div class="svg-caption">Mixture of Experts — শুধু প্রয়োজনীয় বিশেষজ্ঞ কাজ করে; বড় মডেলের ক্ষমতা, ছোট মডেলের গতি</div>
@@ -695,33 +695,33 @@ WHY THIS MATTERS:
 <!-- Stage 1: Tokenizer -->
 <rect x="15" y="100" width="80" height="55" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
 <text x="55" y="120" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="bold">১. Tokenizer</text>
-<text x="55" y="134" text-anchor="middle" fill="#94a3b8" font-size="6">text → token IDs</text>
-<text x="55" y="145" text-anchor="middle" fill="#94a3b8" font-size="6">[2440, 318, ...]</text>
+<text x="55" y="134" text-anchor="middle" fill="#94a3b8" font-size="10">text → token IDs</text>
+<text x="55" y="145" text-anchor="middle" fill="#94a3b8" font-size="10">[2440, 318, ...]</text>
 <!-- Stage 2: Embedding -->
 <rect x="120" y="100" width="80" height="55" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
 <text x="160" y="120" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="bold">২. Embedding</text>
-<text x="160" y="134" text-anchor="middle" fill="#94a3b8" font-size="6">ID → 4096-dim</text>
-<text x="160" y="145" text-anchor="middle" fill="#94a3b8" font-size="6">+ position</text>
+<text x="160" y="134" text-anchor="middle" fill="#94a3b8" font-size="10">ID → 4096-dim</text>
+<text x="160" y="145" text-anchor="middle" fill="#94a3b8" font-size="10">+ position</text>
 <!-- Stage 3: Attention layers -->
 <rect x="225" y="80" width="90" height="95" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="2"/>
 <text x="270" y="98" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">৩. Attention</text>
-<text x="270" y="112" text-anchor="middle" fill="#94a3b8" font-size="6">× 96 layers</text>
+<text x="270" y="112" text-anchor="middle" fill="#94a3b8" font-size="10">× 96 layers</text>
 <rect x="235" y="120" width="70" height="12" rx="3" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
-<text x="270" y="129" text-anchor="middle" fill="#7dd3fc" font-size="5">multi-head</text>
+<text x="270" y="129" text-anchor="middle" fill="#7dd3fc" font-size="9">multi-head</text>
 <rect x="235" y="136" width="70" height="12" rx="3" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
-<text x="270" y="145" text-anchor="middle" fill="#7dd3fc" font-size="5">+ feed-forward</text>
+<text x="270" y="145" text-anchor="middle" fill="#7dd3fc" font-size="9">+ feed-forward</text>
 <rect x="235" y="152" width="70" height="12" rx="3" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
-<text x="270" y="161" text-anchor="middle" fill="#7dd3fc" font-size="5">repeat × N</text>
+<text x="270" y="161" text-anchor="middle" fill="#7dd3fc" font-size="9">repeat × N</text>
 <!-- Stage 4: Output projection -->
 <rect x="345" y="100" width="80" height="55" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
 <text x="385" y="120" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="bold">৪. Output</text>
-<text x="385" y="134" text-anchor="middle" fill="#94a3b8" font-size="6">vector → vocab</text>
-<text x="385" y="145" text-anchor="middle" fill="#94a3b8" font-size="6">P(Paris)=0.99</text>
+<text x="385" y="134" text-anchor="middle" fill="#94a3b8" font-size="10">vector → vocab</text>
+<text x="385" y="145" text-anchor="middle" fill="#94a3b8" font-size="10">P(Paris)=0.99</text>
 <!-- Stage 5: Next token -->
 <rect x="450" y="100" width="80" height="55" rx="6" fill="#1a2744" stroke="#22c55e" stroke-width="2.5"/>
 <text x="490" y="120" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">৫. Next token</text>
-<text x="490" y="134" text-anchor="middle" fill="#4ade80" font-size="6">"Paris"</text>
-<text x="490" y="145" text-anchor="middle" fill="#94a3b8" font-size="6">↻ repeat</text>
+<text x="490" y="134" text-anchor="middle" fill="#4ade80" font-size="10">"Paris"</text>
+<text x="490" y="145" text-anchor="middle" fill="#94a3b8" font-size="10">↻ repeat</text>
 <!-- Arrows -->
 <line x1="95" y1="127" x2="113" y2="127" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM10)"/>
 <line x1="200" y1="127" x2="218" y2="127" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM10)"/>
@@ -729,7 +729,7 @@ WHY THIS MATTERS:
 <line x1="425" y1="127" x2="443" y2="127" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM10)"/>
 <!-- Loop back arrow -->
 <path d="M 490 155 Q 490 210 270 210 Q 55 210 55 160" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrLLM10)"/>
-<text x="270" y="225" text-anchor="middle" fill="#4ade80" font-size="6">autoregressive — append &amp; repeat</text>
+<text x="270" y="225" text-anchor="middle" fill="#4ade80" font-size="10">autoregressive — append &amp; repeat</text>
 </svg>
 </div>
 <div class="svg-caption">সম্পূর্ণ LLM পাইপলাইন: টোকেন → embedding → ৯৬টি attention স্তর → আউটপুট সম্ভাবনা → পরবর্তী টোকেন, বারবার। নয়টি কক্ষের সারমর্ম এক ছবিতে।</div>

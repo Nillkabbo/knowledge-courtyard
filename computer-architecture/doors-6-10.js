@@ -245,18 +245,18 @@ SUB P33, R6, R7  // P33 = R6 - R7 (renamed R1→P33 — no WAW!)
   <rect x="220" y="20" width="170" height="80" rx="8" fill="#312e81" stroke="#818cf8" stroke-width="2"/>
   <text x="305" y="40" text-anchor="middle" fill="#c7d2fe" font-size="11" font-weight="700">🔀 Issue Queue</text>
   <text x="305" y="56" text-anchor="middle" fill="#a5b4fc" font-size="9">Reservation Stations</text>
-  <rect x="235" y="65" width="65" height="14" rx="2" fill="#4c1d95"/><text x="267" y="75" text-anchor="middle" fill="#ddd6fe" font-size="7">I3 ready ✓</text>
-  <rect x="310" y="65" width="65" height="14" rx="2" fill="#3730a3"/><text x="342" y="75" text-anchor="middle" fill="#c7d2fe" font-size="7">I4 wait... r2</text>
+  <rect x="235" y="65" width="65" height="14" rx="2" fill="#4c1d95"/><text x="267" y="75" text-anchor="middle" fill="#ddd6fe" font-size="10">I3 ready ✓</text>
+  <rect x="310" y="65" width="65" height="14" rx="2" fill="#3730a3"/><text x="342" y="75" text-anchor="middle" fill="#c7d2fe" font-size="10">I4 wait... r2</text>
   <text x="305" y="92" text-anchor="middle" fill="#a5b4fc" font-size="8">operands ready → fire!</text>
 
   <line x1="390" y1="60" x2="425" y2="60" stroke="#475569" stroke-width="2" marker-end="url(#arrO)"/>
 
   <rect x="430" y="15" width="140" height="90" rx="8" fill="#7c2d12" stroke="#f97316" stroke-width="2"/>
   <text x="500" y="33" text-anchor="middle" fill="#fdba74" font-size="10" font-weight="700">⚙️ Execute (OoO)</text>
-  <rect x="442" y="40" width="55" height="16" rx="2" fill="#9a3412"/><text x="469" y="51" text-anchor="middle" fill="#fed7aa" font-size="7">ALU</text>
-  <rect x="503" y="40" width="55" height="16" rx="2" fill="#9a3412"/><text x="530" y="51" text-anchor="middle" fill="#fed7aa" font-size="7">FPU</text>
-  <rect x="442" y="60" width="55" height="16" rx="2" fill="#9a3412"/><text x="469" y="71" text-anchor="middle" fill="#fed7aa" font-size="7">Load</text>
-  <rect x="503" y="60" width="55" height="16" rx="2" fill="#9a3412"/><text x="530" y="71" text-anchor="middle" fill="#fed7aa" font-size="7">Store</text>
+  <rect x="442" y="40" width="55" height="16" rx="2" fill="#9a3412"/><text x="469" y="51" text-anchor="middle" fill="#fed7aa" font-size="10">ALU</text>
+  <rect x="503" y="40" width="55" height="16" rx="2" fill="#9a3412"/><text x="530" y="51" text-anchor="middle" fill="#fed7aa" font-size="10">FPU</text>
+  <rect x="442" y="60" width="55" height="16" rx="2" fill="#9a3412"/><text x="469" y="71" text-anchor="middle" fill="#fed7aa" font-size="10">Load</text>
+  <rect x="503" y="60" width="55" height="16" rx="2" fill="#9a3412"/><text x="530" y="71" text-anchor="middle" fill="#fed7aa" font-size="10">Store</text>
   <text x="500" y="92" text-anchor="middle" fill="#fb923c" font-size="8">any order, parallel</text>
 
   <line x1="500" y1="107" x2="500" y2="130" stroke="#10b981" stroke-width="2" marker-end="url(#arrO)"/>
@@ -354,14 +354,14 @@ doors.push({
     <text x="50" y="15" text-anchor="middle" fill="#94a3b8" font-size="9">if-branch:</text>
     <rect x="160" y="0" width="32" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
     <rect x="194" y="0" width="32" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-    <text x="208" y="14" text-anchor="middle" fill="#4ade80" font-size="7">ACTIVE</text>
+    <text x="208" y="14" text-anchor="middle" fill="#4ade80" font-size="10">ACTIVE</text>
     <rect x="228" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
     <rect x="262" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
     <rect x="296" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
     <rect x="330" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
     <rect x="364" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
     <rect x="398" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
-    <text x="345" y="14" text-anchor="middle" fill="#64748b" font-size="7">IDLE (waiting)</text>
+    <text x="345" y="14" text-anchor="middle" fill="#64748b" font-size="10">IDLE (waiting)</text>
     <text x="450" y="14" fill="#facc15" font-size="9">⏱️ 50% wasted</text>
   </g>
 
@@ -370,14 +370,14 @@ doors.push({
     <text x="50" y="15" text-anchor="middle" fill="#94a3b8" font-size="9">else-branch:</text>
     <rect x="160" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
     <rect x="194" y="0" width="32" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1" opacity=".3"/>
-    <text x="208" y="14" text-anchor="middle" fill="#64748b" font-size="7">IDLE</text>
+    <text x="208" y="14" text-anchor="middle" fill="#64748b" font-size="10">IDLE</text>
     <rect x="228" y="0" width="32" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
     <rect x="262" y="0" width="32" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
     <rect x="296" y="0" width="32" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
     <rect x="330" y="0" width="32" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
     <rect x="364" y="0" width="32" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
     <rect x="398" y="0" width="32" height="20" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
-    <text x="345" y="14" text-anchor="middle" fill="#fb923c" font-size="7">ACTIVE</text>
+    <text x="345" y="14" text-anchor="middle" fill="#fb923c" font-size="10">ACTIVE</text>
     <text x="450" y="14" fill="#facc15" font-size="9">⏱️ 50% wasted</text>
   </g>
 

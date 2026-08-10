@@ -219,26 +219,26 @@ jobs:
 <svg viewBox="0 0 580 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🚀 CI/CD Pipeline: Assembly Line with Safety Nets</text>
   <rect x="10" y="55" width="80" height="45" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="50" y="78" text-anchor="middle" fill="#7dd3fc" font-size="7">Git Push</text>
+  <text x="50" y="78" text-anchor="middle" fill="#7dd3fc" font-size="10">Git Push</text>
   <rect x="100" y="55" width="80" height="45" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="140" y="78" text-anchor="middle" fill="#4ade80" font-size="7">Build</text>
+  <text x="140" y="78" text-anchor="middle" fill="#4ade80" font-size="10">Build</text>
   <rect x="190" y="55" width="80" height="45" rx="6" fill="#451a0a" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="230" y="78" text-anchor="middle" fill="#fcd34d" font-size="7">Test</text>
+  <text x="230" y="78" text-anchor="middle" fill="#fcd34d" font-size="10">Test</text>
   <rect x="280" y="55" width="80" height="45" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
-  <text x="320" y="78" text-anchor="middle" fill="#fca5a5" font-size="7">Scan</text>
+  <text x="320" y="78" text-anchor="middle" fill="#fca5a5" font-size="10">Scan</text>
   <rect x="370" y="55" width="80" height="45" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="410" y="78" text-anchor="middle" fill="#c084fc" font-size="7">Staging</text>
+  <text x="410" y="78" text-anchor="middle" fill="#c084fc" font-size="10">Staging</text>
   <rect x="460" y="55" width="100" height="45" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="510" y="78" text-anchor="middle" fill="#4ade80" font-size="7">Prod!</text>
-  <text x="50" y="115" text-anchor="middle" fill="#22c55e" font-size="6">Gate: lint</text>
-  <text x="140" y="115" text-anchor="middle" fill="#22c55e" font-size="6">Gate: compile</text>
-  <text x="230" y="115" text-anchor="middle" fill="#fcd34d" font-size="6">Gate: unit+E2E</text>
-  <text x="320" y="115" text-anchor="middle" fill="#fca5a5" font-size="6">Gate: security</text>
-  <text x="410" y="115" text-anchor="middle" fill="#c084fc" font-size="6">Gate: smoke</text>
-  <text x="510" y="115" text-anchor="middle" fill="#4ade80" font-size="6">auto-rollout</text>
-  <text x="290" y="150" text-anchor="middle" fill="#f87171" font-size="7">❌ Fail = belt stops, broken code blocked</text>
-  <text x="290" y="170" text-anchor="middle" fill="#94a3b8" font-size="7">GitOps: cluster pulls from Git, no manual push</text>
-  <text x="290" y="190" text-anchor="middle" fill="#94a3b8" font-size="7">ArgoCD / Flux: reconcile loop</text>
+  <text x="510" y="78" text-anchor="middle" fill="#4ade80" font-size="10">Prod!</text>
+  <text x="50" y="115" text-anchor="middle" fill="#22c55e" font-size="10">Gate: lint</text>
+  <text x="140" y="115" text-anchor="middle" fill="#22c55e" font-size="10">Gate: compile</text>
+  <text x="230" y="115" text-anchor="middle" fill="#fcd34d" font-size="10">Gate: unit+E2E</text>
+  <text x="320" y="115" text-anchor="middle" fill="#fca5a5" font-size="10">Gate: security</text>
+  <text x="410" y="115" text-anchor="middle" fill="#c084fc" font-size="10">Gate: smoke</text>
+  <text x="510" y="115" text-anchor="middle" fill="#4ade80" font-size="10">auto-rollout</text>
+  <text x="290" y="150" text-anchor="middle" fill="#f87171" font-size="10">❌ Fail = belt stops, broken code blocked</text>
+  <text x="290" y="170" text-anchor="middle" fill="#94a3b8" font-size="10">GitOps: cluster pulls from Git, no manual push</text>
+  <text x="290" y="190" text-anchor="middle" fill="#94a3b8" font-size="10">ArgoCD / Flux: reconcile loop</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: CI/CD — assembly line with safety nets। প্রতিটা stage-এ gate।</div>

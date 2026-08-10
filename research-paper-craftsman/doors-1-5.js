@@ -46,21 +46,21 @@ doors.push({
 <line x1="290" y1="70" x2="290" y2="84" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC1)"/>
 <rect x="20" y="86" width="540" height="32" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
 <text x="40" y="100" fill="#fcd34d" font-size="8" font-weight="bold">Introduction</text>
-<text x="40" y="112" fill="#94a3b8" font-size="7">কেন? wide&amp;arrow;narrow&amp;arrow;contribution (funnel)</text>
+<text x="40" y="112" fill="#94a3b8" font-size="10">কেন? wide&amp;arrow;narrow&amp;arrow;contribution (funnel)</text>
 <line x1="290" y1="120" x2="290" y2="134" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC1)"/>
 <rect x="20" y="136" width="260" height="32" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
 <text x="40" y="150" fill="#fcd34d" font-size="8" font-weight="bold">Methods</text>
-<text x="40" y="162" fill="#94a3b8" font-size="7">কীভাবে? cookbook — reproduce যায় এমন</text>
+<text x="40" y="162" fill="#94a3b8" font-size="10">কীভাবে? cookbook — reproduce যায় এমন</text>
 <rect x="300" y="136" width="260" height="32" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
 <text x="320" y="150" fill="#fcd34d" font-size="8" font-weight="bold">Results</text>
-<text x="320" y="162" fill="#94a3b8" font-size="7">কী পেল? figure আগে, সংখ্যা পরে</text>
+<text x="320" y="162" fill="#94a3b8" font-size="10">কী পেল? figure আগে, সংখ্যা পরে</text>
 <line x1="150" y1="170" x2="150" y2="184" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC1)"/>
 <line x1="430" y1="170" x2="430" y2="184" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC1)"/>
 <rect x="20" y="186" width="540" height="32" rx="5" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
 <text x="40" y="200" fill="#fcd34d" font-size="8" font-weight="bold">Discussion / Conclusion</text>
-<text x="40" y="212" fill="#94a3b8" font-size="7">তা মানে কী? interpretation, limitation, future work</text>
+<text x="40" y="212" fill="#94a3b8" font-size="10">তা মানে কী? interpretation, limitation, future work</text>
 <rect x="20" y="226" width="540" height="18" rx="5" fill="#0d1526" stroke="#52c41a" stroke-width="1.5" stroke-dasharray="3,2"/>
-<text x="290" y="239" text-anchor="middle" fill="#4ade80" font-size="7">References — জ্ঞানের শৃঙ্খল; প্রতিটা দাবির সংযোগ</text>
+<text x="290" y="239" text-anchor="middle" fill="#4ade80" font-size="10">References — জ্ঞানের শৃঙ্খল; প্রতিটা দাবির সংযোগ</text>
 </svg>
 </div>
 <div class="svg-caption">IMRaD কাঠামো — প্রতিটা সেকশনের নির্দিষ্ট কাজ, সঠিক ক্রমে সাজানো</div>
@@ -238,37 +238,37 @@ doors.push({
 <text x="290" y="22" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="bold">বৈজ্ঞানিকের যাচাই — ৭ পয়েন্ট</text>
 <rect x="20" y="40" width="170" height="68" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
 <text x="105" y="58" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">① Sample size</text>
-<text x="105" y="74" text-anchor="middle" fill="#94a3b8" font-size="7">n&amp;lt;10 anecdote</text>
-<text x="105" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">n 100-1000 ok</text>
-<text x="105" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">n&amp;gt;10000 strong</text>
+<text x="105" y="74" text-anchor="middle" fill="#94a3b8" font-size="10">n&amp;lt;10 anecdote</text>
+<text x="105" y="86" text-anchor="middle" fill="#94a3b8" font-size="10">n 100-1000 ok</text>
+<text x="105" y="98" text-anchor="middle" fill="#94a3b8" font-size="10">n&amp;gt;10000 strong</text>
 <rect x="205" y="40" width="170" height="68" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
 <text x="290" y="58" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">② Methodology</text>
-<text x="290" y="74" text-anchor="middle" fill="#94a3b8" font-size="7">RCT gold standard</text>
-<text x="290" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">train/test split ok?</text>
-<text x="290" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">test leakage = cheat</text>
+<text x="290" y="74" text-anchor="middle" fill="#94a3b8" font-size="10">RCT gold standard</text>
+<text x="290" y="86" text-anchor="middle" fill="#94a3b8" font-size="10">train/test split ok?</text>
+<text x="290" y="98" text-anchor="middle" fill="#94a3b8" font-size="10">test leakage = cheat</text>
 <rect x="390" y="40" width="170" height="68" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
 <text x="475" y="58" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">③ Statistics</text>
-<text x="475" y="74" text-anchor="middle" fill="#94a3b8" font-size="7">p&amp;lt;0.05?</text>
-<text x="475" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">effect size? variance?</text>
-<text x="475" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">how many runs?</text>
+<text x="475" y="74" text-anchor="middle" fill="#94a3b8" font-size="10">p&amp;lt;0.05?</text>
+<text x="475" y="86" text-anchor="middle" fill="#94a3b8" font-size="10">effect size? variance?</text>
+<text x="475" y="98" text-anchor="middle" fill="#94a3b8" font-size="10">how many runs?</text>
 <rect x="20" y="120" width="170" height="68" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
 <text x="105" y="138" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">④ Baselines</text>
-<text x="105" y="154" text-anchor="middle" fill="#94a3b8" font-size="7">SOTA সাথে তুলনা?</text>
-<text x="105" y="166" text-anchor="middle" fill="#94a3b8" font-size="7">নাকি দুর্বল পুরোনো?</text>
-<text x="105" y="178" text-anchor="middle" fill="#94a3b8" font-size="7">fair comparison?</text>
+<text x="105" y="154" text-anchor="middle" fill="#94a3b8" font-size="10">SOTA সাথে তুলনা?</text>
+<text x="105" y="166" text-anchor="middle" fill="#94a3b8" font-size="10">নাকি দুর্বল পুরোনো?</text>
+<text x="105" y="178" text-anchor="middle" fill="#94a3b8" font-size="10">fair comparison?</text>
 <rect x="205" y="120" width="170" height="68" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
 <text x="290" y="138" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">⑤ Reproducibility</text>
-<text x="290" y="154" text-anchor="middle" fill="#94a3b8" font-size="7">code/data/seed?</text>
-<text x="290" y="166" text-anchor="middle" fill="#94a3b8" font-size="7">দেওয়া আছে?</text>
-<text x="290" y="178" text-anchor="middle" fill="#94a3b8" font-size="7">reproduce করা যায়?</text>
+<text x="290" y="154" text-anchor="middle" fill="#94a3b8" font-size="10">code/data/seed?</text>
+<text x="290" y="166" text-anchor="middle" fill="#94a3b8" font-size="10">দেওয়া আছে?</text>
+<text x="290" y="178" text-anchor="middle" fill="#94a3b8" font-size="10">reproduce করা যায়?</text>
 <rect x="390" y="120" width="170" height="68" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
 <text x="475" y="138" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">⑥ Limitations</text>
-<text x="475" y="154" text-anchor="middle" fill="#94a3b8" font-size="7">সততার সাথে</text>
-<text x="475" y="166" text-anchor="middle" fill="#94a3b8" font-size="7">স্বীকার করে?</text>
-<text x="475" y="178" text-anchor="middle" fill="#94a3b8" font-size="7">future work?</text>
+<text x="475" y="154" text-anchor="middle" fill="#94a3b8" font-size="10">সততার সাথে</text>
+<text x="475" y="166" text-anchor="middle" fill="#94a3b8" font-size="10">স্বীকার করে?</text>
+<text x="475" y="178" text-anchor="middle" fill="#94a3b8" font-size="10">future work?</text>
 <rect x="20" y="200" width="540" height="38" rx="6" fill="#0d1526" stroke="#f06292" stroke-width="2"/>
 <text x="290" y="216" text-anchor="middle" fill="#f06292" font-size="9" font-weight="bold">⑦ Funding / Conflict of interest</text>
-<text x="290" y="230" text-anchor="middle" fill="#94a3b8" font-size="7">স্বাধীন? কোম্পানির টাকা? personal stake?</text>
+<text x="290" y="230" text-anchor="middle" fill="#94a3b8" font-size="10">স্বাধীন? কোম্পানির টাকা? personal stake?</text>
 </svg>
 </div>
 <div class="svg-caption">তাহকিক — প্রতিটা দাবি সাত মাপকাঠিতে যাচাই</div>
@@ -374,9 +374,9 @@ doors.push({
 <line x1="290" y1="166" x2="290" y2="180" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC4)"/>
 <rect x="20" y="182" width="540" height="34" rx="6" fill="#0d1526" stroke="#52c41a" stroke-width="2"/>
 <text x="290" y="198" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">Step ৪ — GAP: ৩+ পেপার একই future work বললে = আসল gap</text>
-<text x="290" y="211" text-anchor="middle" fill="#94a3b8" font-size="7">এখানেই তোমার contribution</text>
+<text x="290" y="211" text-anchor="middle" fill="#94a3b8" font-size="10">এখানেই তোমার contribution</text>
 <rect x="20" y="222" width="540" height="20" rx="5" fill="#0d1526" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2"/>
-<text x="290" y="235" text-anchor="middle" fill="#fbbf24" font-size="7">Andrew Ng (Stanford): ৫-২০ paper = current · ৫০-১০০ = গভীর</text>
+<text x="290" y="235" text-anchor="middle" fill="#fbbf24" font-size="10">Andrew Ng (Stanford): ৫-২০ paper = current · ৫০-১০০ = গভীর</text>
 </svg>
 </div>
 <div class="svg-caption">PhD পাঠকের যাত্রা — survey থেকে gap পর্যন্ত, জ্ঞানের landscape ম্যাপ করা</div>
@@ -412,34 +412,34 @@ doors.push({
 <rect x="190" y="36" width="200" height="28" rx="6" fill="#1a2744" stroke="#818cf8" stroke-width="1.5"/>
 <text x="290" y="54" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">GAP (কী missing?)</text>
 <line x1="290" y1="66" x2="290" y2="80" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC5)"/>
-<text x="290" y="76" text-anchor="middle" fill="#94a3b8" font-size="7">প্রশ্ন ছাঁচো</text>
+<text x="290" y="76" text-anchor="middle" fill="#94a3b8" font-size="10">প্রশ্ন ছাঁচো</text>
 <text x="290" y="96" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">FINER যাচাই</text>
 <rect x="20" y="104" width="104" height="50" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
 <text x="72" y="122" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">F</text>
-<text x="72" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">Feasible</text>
-<text x="72" y="148" text-anchor="middle" fill="#94a3b8" font-size="6">সম্ভব?</text>
+<text x="72" y="136" text-anchor="middle" fill="#94a3b8" font-size="10">Feasible</text>
+<text x="72" y="148" text-anchor="middle" fill="#94a3b8" font-size="10">সম্ভব?</text>
 <rect x="134" y="104" width="104" height="50" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
 <text x="186" y="122" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">I</text>
-<text x="186" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">Interesting</text>
-<text x="186" y="148" text-anchor="middle" fill="#94a3b8" font-size="6">আগ্রহজনক?</text>
+<text x="186" y="136" text-anchor="middle" fill="#94a3b8" font-size="10">Interesting</text>
+<text x="186" y="148" text-anchor="middle" fill="#94a3b8" font-size="10">আগ্রহজনক?</text>
 <rect x="248" y="104" width="104" height="50" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
 <text x="300" y="122" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">N</text>
-<text x="300" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">Novel</text>
-<text x="300" y="148" text-anchor="middle" fill="#94a3b8" font-size="6">নতুন?</text>
+<text x="300" y="136" text-anchor="middle" fill="#94a3b8" font-size="10">Novel</text>
+<text x="300" y="148" text-anchor="middle" fill="#94a3b8" font-size="10">নতুন?</text>
 <rect x="362" y="104" width="104" height="50" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
 <text x="414" y="122" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">E</text>
-<text x="414" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">Ethical</text>
-<text x="414" y="148" text-anchor="middle" fill="#94a3b8" font-size="6">নৈতিক?</text>
+<text x="414" y="136" text-anchor="middle" fill="#94a3b8" font-size="10">Ethical</text>
+<text x="414" y="148" text-anchor="middle" fill="#94a3b8" font-size="10">নৈতিক?</text>
 <rect x="476" y="104" width="84" height="50" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1.5"/>
 <text x="518" y="122" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">R</text>
-<text x="518" y="136" text-anchor="middle" fill="#94a3b8" font-size="7">Relevant</text>
-<text x="518" y="148" text-anchor="middle" fill="#94a3b8" font-size="6">প্রাসঙ্গিক?</text>
+<text x="518" y="136" text-anchor="middle" fill="#94a3b8" font-size="10">Relevant</text>
+<text x="518" y="148" text-anchor="middle" fill="#94a3b8" font-size="10">প্রাসঙ্গিক?</text>
 <line x1="290" y1="156" x2="290" y2="170" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrRPC5)"/>
 <rect x="120" y="172" width="340" height="34" rx="6" fill="#0d1526" stroke="#52c41a" stroke-width="2"/>
 <text x="290" y="188" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">গবেষণার প্রশ্ন</text>
-<text x="290" y="200" text-anchor="middle" fill="#94a3b8" font-size="7">সঠিক প্রশ্ন = সঠিক গবেষণা</text>
+<text x="290" y="200" text-anchor="middle" fill="#94a3b8" font-size="10">সঠিক প্রশ্ন = সঠিক গবেষণা</text>
 <rect x="60" y="214" width="460" height="24" rx="5" fill="#0d1526" stroke="#f06292" stroke-width="1" stroke-dasharray="3,2"/>
-<text x="290" y="229" text-anchor="middle" fill="#f06292" font-size="7">ভুল প্রশ্ন = ৬ মাস ভুল দিকে · সঠিক প্রশ্ন = ৬ মাস সঠিক দিকে</text>
+<text x="290" y="229" text-anchor="middle" fill="#f06292" font-size="10">ভুল প্রশ্ন = ৬ মাস ভুল দিকে · সঠিক প্রশ্ন = ৬ মাস সঠিক দিকে</text>
 </svg>
 </div>
 <div class="svg-caption">নিয়্যাত — gap থেকে সঠিক প্রশ্ন, FINER যাচাইয়ে ছাঁচা</div>
