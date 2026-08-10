@@ -428,39 +428,274 @@ stat() → inode তথ্য দেখো</div></div>
 </div>
 <div class="svg-caption">চিত্র: filename → directory → inode → data blocks। inode-এ মেটাডেটা ও pointer, ফাইলের নাম নয়।</div>
 
-<div class="code-block">— Terminal: File System দেখো —
+<div class="code-block"># ── STEP 1: What is a file system? ──
+# A file system organizes data on a disk into FILES and DIRECTORIES.
+# It's the permanent storage layer — data survives reboots.
 
-  # inode দেখো:
-  $ ls -i report.txt
-  42 report.txt    # inode number = 42
+# KEY CONCEPTS:
+# - FILE: named collection of data (text, image, executable)
+# - DIRECTORY: container for files (a "folder")
+# - INODE: metadata about a file (size, permissions, location on disk)
+# - PATH: how to find a file (/home/user/file.txt)
 
-  # বিস্তারিত inode:
-  $ stat report.txt
-    Size: 12288       Blocks: 24       IO Block: 4096
-    Inode: 42         Links: 1
-    Access: (0644/-rw-r--r--)  Uid: (1000)
+# Every file has:
+# - NAME: human-readable (report.txt)
+# - INODE NUMBER: OS identifier (42)
+# - DATA BLOCKS: where actual data lives on disk
 
-  # ডিস্ক ব্যবহার:
-  $ df -h /dev/sda1
-  Filesystem  Size  Used  Avail  Use%  Mounted on
-  /dev/sda1   100G   45G    55G   45%   /
+# The filename → inode mapping lives in the DIRECTORY.
+# A directory is just a special file listing (name, inode) pairs.
 
-  # file system type:
-  $ mount | grep sda1
-  /dev/sda1 on / type ext4 (rw,relatime)
+from pathlib import Path
+import os
 
-  # journaling check:
-  $ tune2fs -l /dev/sda1 | grep features
-  Filesystem features: has_journal ext_attr ...
+# Python file system operations:
+p = Path("example.txt")
+p.write_text("Hello, World!")  # create file
 
-  # iotop — I/O per process:
-  $ sudo iotop
-  TID  PRIO USER DISK READ DISK WRITE
-  1234 be/4 user 0.00 B/s 1.2M/s
+# Get file info (inode, size, permissions):
+stat = p.stat()
+print(f"Size: {stat.st_size} bytes")
+print(f"Inode: {stat.st_ino}")
+print(f"Permissions: {oct(stat.st_mode)[-3:]}")  # 644
+print(f"Modified: {stat.st_mtime}")
 
-  # RAID status:
-  $ cat /proc/mdstat
-  md0 : active raid1 sda1[0] sdb1[1]</div>
+p.unlink()  # delete file</div>
+
+<div class="code-block"># ── STEP 2: File system types ──
+# Different file systems for different needs:
+
+file_systems = {
+    "ext4": {
+        "os": "Linux (default)",
+        "features": "journaling, large files, stable",
+    },
+    "XFS": {
+        "os": "Linux (RHEL/CentOS)",
+        "features": "high performance, parallel I/O",
+    },
+    "NTFS": {
+        "os": "Windows",
+        "features": "ACLs, compression, encryption",
+    },
+    "APFS": {
+        "os": "macOS/iOS",
+        "features": "SSD-optimized, snapshots, encryption",
+    },
+    "ZFS": {
+        "os": "FreeBSD/Solaris",
+        "features": "data integrity, snapshots, pools",
+    },
+    "FAT32/exFAT": {
+        "os": "USB drives, cross-platform",
+        "features": "simple, universal, no journaling",
+    },
+}
+
+print("COMMON FILE SYSTEMS:")
+for fs, info in file_systems.items():
+    print(f"  {fs}: {info['os']} — {info['features']}")
+
+# JOURNALING: before writing data, OS writes intent to a journal.
+# If crash happens during write, OS can recover using the journal.
+# This prevents file system corruption.
+
+# EXT4 vs XFS (Linux):
+# ext4: good general purpose, stable, most common
+# XFS: better for large files, parallel I/O, RHEL default</div>
+
+<div class="code-block"># ── STEP 3: Working with files in Python ──
+# Modern Python uses pathlib (better than os.path):
+
+from pathlib import Path
+import json
+import csv
+import pickle
+
+# Create directories:
+Path("data/raw").mkdir(parents=True, exist_ok=True)
+
+# Write and read text:
+Path("data/note.txt").write_text("Learning OS!")
+
+# Append to file:
+with Path("data/log.txt").open("a") as f:
+    f.write("New log entry\n")
+
+# Read file line by line (memory-efficient for large files):
+for line in Path("data/log.txt").open():
+    print(line.strip())
+
+# JSON files:
+config = {"host": "localhost", "port": 8000}
+Path("config.json").write_text(json.dumps(config, indent=2))
+loaded = json.loads(Path("config.json").read_text())
+
+# List files matching pattern:
+for py_file in Path(".").rglob("*.py"):
+    print(f"  Found: {py_file}")
+
+# File metadata:
+file_path = Path("data/note.txt")
+if file_path.exists():
+    print(f"Size: {file_path.stat().st_size} bytes")
+    print(f"Is dir: {file_path.is_dir()}")
+    print(f"Is file: {file_path.is_file()}")
+
+# Copy, move, delete:
+import shutil
+shutil.copy("source.txt", "dest.txt")  # copy
+Path("dest.txt").rename("renamed.txt")  # move/rename
+Path("renamed.txt").unlink()  # delete</div>
+
+<div class="code-block"># ── STEP 4: File permissions ──
+# Unix file permissions: read (r), write (w), execute (x)
+# For: owner, group, others
+
+# Example: -rw-r--r--
+# - = regular file (d = directory)
+# rw- = owner can read and write
+# r-- = group can read
+# r-- = others can read
+
+# NUMERIC (octal) representation:
+# r=4, w=2, x=1
+# 755 = rwxr-xr-x (owner: all, others: read+execute)
+# 644 = rw-r--r-- (owner: read+write, others: read)
+# 600 = rw------- (owner only)
+# 777 = rwxrwxrwx (everyone: everything — DANGEROUS!)
+
+import os
+import stat
+
+# Check permissions:
+file_stat = os.stat("example.txt")
+mode = file_stat.st_mode
+print(f"Permissions: {oct(mode & 0o777)}")  # e.g., 0o644
+
+# Change permissions:
+os.chmod("example.txt", 0o755)  # rwxr-xr-x
+
+# PERMISSIONS FOR COMMON FILES:
+permissions = {
+    "Source code (.py)": "644 (rw-r--r--)",
+    "Executable script": "755 (rwxr-xr-x)",
+    "Private key (.pem)": "600 (rw-------)",
+    "Config files": "640 (rw-r-----)",
+    "Public directory": "755 (rwxr-xr-x)",
+    "Log files": "644 (rw-r--r--)",
+}
+
+print("RECOMMENDED PERMISSIONS:")
+for filetype, perm in permissions.items():
+    print(f"  {filetype}: {perm}")
+
+# SECURITY RULE: most restrictive permissions that still work.
+# NEVER use 777 unless you absolutely need to.</div>
+
+<div class="code-block"># ── STEP 5: File system commands ──
+# Essential terminal commands:
+
+commands = """
+# Disk usage:
+$ df -h                    # filesystem space (all mounts)
+$ du -sh /home/user        # directory size
+$ ncdu /                   # interactive disk usage analyzer
+
+# File info:
+$ stat file.txt            # inode, size, timestamps, permissions
+$ ls -li file.txt          # inode number + details
+$ file image.png           # detect file type
+
+# Find files:
+$ find / -name "*.py" -type f        # find by name
+$ find / -size +100M                  # find large files
+$ find / -mtime -1                    # modified in last 24 hours
+$ locate config.py                    # fast find (uses index)
+
+# File system operations:
+$ mount /dev/sdb1 /mnt/usb            # mount a device
+$ umount /mnt/usb                      # unmount
+$ mkfs.ext4 /dev/sdb1                  # format as ext4
+$ fsck /dev/sda1                       # check and repair
+
+# Links:
+$ ln target linkname                   # hard link (same inode)
+$ ln -s target linkname                # symbolic link (shortcut)
+
+# Compression:
+$ tar -czf archive.tar.gz dir/         # create gzip archive
+$ tar -xzf archive.tar.gz              # extract
+$ zip -r archive.zip dir/              # create zip
+"""
+
+print(commands)
+
+# HARD LINK vs SYMBOLIC LINK:
+# Hard link: another name for the SAME inode (same data)
+#   - Deleting original doesn't affect hard link
+#   - Can't cross file systems or link directories
+
+# Symbolic link (symlink): a pointer to a PATH
+#   - Like a shortcut
+#   - Deleting original breaks the link
+#   - Can cross file systems and link directories
+#   - Python: os.symlink("target", "linkname")</div>
+
+<div class="code-block"># ── STEP 6: Network file systems and cloud storage ──
+# Files don't just live on local disk:
+
+# NETWORK FILE SYSTEMS:
+network_fs = {
+    "NFS": "Network File System — Unix/Linux network sharing",
+    "SMB/CIFS": "Windows file sharing (also Samba on Linux)",
+    "SSHFS": "Mount remote directory over SSH",
+    "iSCSI": "Block-level storage over network (SAN)",
+}
+
+# CLOUD STORAGE:
+cloud_storage = {
+    "S3": "Amazon object storage (infinite, cheap, slow)",
+    "EBS": "Amazon block storage (like a virtual disk)",
+    "GCS": "Google Cloud Storage",
+    "Azure Blob": "Microsoft object storage",
+}
+
+print("NETWORK FILE SYSTEMS:")
+for fs, desc in network_fs.items():
+    print(f"  {fs}: {desc}")
+
+print("\nCLOUD STORAGE:")
+for service, desc in cloud_storage.items():
+    print(f"  {service}: {desc}")
+
+# BLOCK vs OBJECT vs FILE storage:
+# ┌────────────────┬──────────────────────────────────┐
+# │ Type           │ Best For                        │
+# ├────────────────┼──────────────────────────────────┤
+# │ Block (EBS)    │ Databases, VM disks             │
+# │ File (NFS/EFS) │ Shared directories, web servers │
+# │ Object (S3)    │ Backups, media, logs, big data  │
+# └────────────────┴──────────────────────────────────┘
+
+# PYTHON FILE I/O BEST PRACTICES:
+# 1. Always use context managers: with open(path) as f:
+# 2. Use pathlib for path manipulation (cross-platform)
+# 3. For large files: read line by line, not all at once
+# 4. Use mmap for very large files (memory-mapped)
+# 5. Set proper permissions (especially for config/secret files)
+# 6. Close files (context managers handle this)
+# 7. Use atomic writes for important data (write to temp, rename)
+
+# ATOMIC WRITE PATTERN (prevents corruption on crash):
+import tempfile, shutil
+from pathlib import Path
+
+def atomic_write(path, data):
+    """Write file atomically — no partial writes on crash."""
+    temp = Path(path).with_suffix(".tmp")
+    temp.write_text(data)
+    temp.rename(path)  # atomic rename on same filesystem</div>
 
 <div class="secret-box">💿 <strong>File System = স্থায়ী স্মৃতি।</strong> RAM সাময়িক — বিদ্যুৎ গেলে মুছে যায়। ডিস্ক স্থায়ী। inode প্রতিটি ফাইলের পরিচয় রাখে, directory সংগঠিত করে, journaling নিরাপত্তা দেয়। কিন্তু ফাইল সিস্টেম একা কাজ করতে পারে না — হার্ডওয়্যারের সাথে কথা বলতে হয়। সেই সেতু হলো I/O সিস্টেম। সেই যাত্রা আসবে পরের দরজায়।</div>`,
   senior: {
@@ -554,37 +789,250 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Polling (CPU waste) → Interrupt (better) → DMA (best — CPU free during transfer)।</div>
 
-<div class="code-block">— Terminal: I/O দেখো —
+<div class="code-block"># ── STEP 1: What is I/O? ──
+# I/O (Input/Output) = communication between CPU and devices.
+# Everything outside the CPU: disk, network, keyboard, screen, USB.
 
-  # interrupts দেখো:
-  $ cat /proc/interrupts | head -10
-           CPU0   CPU1   CPU2   CPU3
-    0:      42     0      0      0  IR-IO-APIC  edge  timer
-   16:    1234     0      0      0  IO-APIC     fasteoi  ehci_hcd:usb1
-  NMI:      12     8      5      3  Non-maskable interrupts
+# THE I/O PROBLEM:
+# CPU is incredibly fast (GHz = billions of operations/sec)
+# Devices are incredibly slow (disk = ms, network = 10-100ms)
+# That's a 1,000,000x speed difference!
 
-  # I/O ports:
-  $ sudo cat /proc/ioports
-  0040-0043 : timer
-  00f0-00ff : fpu
-  03f8-03ff : serial
+# HOW THE OS HANDLES THIS GAP:
+io_methods = {
+    "POLLING": "CPU repeatedly asks 'are you done?' (wastes CPU)",
+    "INTERRUPT": "Device sends signal when done (CPU free meanwhile)",
+    "DMA": "Hardware transfers data directly to RAM (CPU barely involved)",
+}
 
-  # lspci — hardware devices:
-  $ lspci -v | grep -A3 "USB"
-  00:14.0 USB Controller: Intel...
-      Kernel driver in use: xhci_hcd
+for method, desc in io_methods.items():
+    print(f"  {method}: {desc}")
 
-  # lsblk — block devices:
-  $ lsblk
-  NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-  sda      8:0    0   500G  0 disk
-  # ─sda1   8:1    0   100G  0 part /
-  # ─sda2   8:2    0   400G  0 part /home
+# MODERN SYSTEMS USE DMA (Direct Memory Access):
+# CPU: "DMA controller, copy this disk block to RAM address X"
+# CPU goes off and does other work
+# DMA controller: copies data directly (doesn't bother CPU)
+# DMA: "Done!" (one interrupt, not thousands)
 
-  # strace — system calls:
-  $ strace -e read,write cat /etc/hosts
-  read(3, "127.0.0.1 localhost\n...", 1024) = 42
-  write(1, "127.0.0.1 localhost\n...", 42) = 42</div>
+# This is why your computer can download a file, play music,
+# and run a web server — all at the same time.</div>
+
+<div class="code-block"># ── STEP 2: Synchronous vs asynchronous I/O ──
+# SYNCHRONOUS I/O: caller waits (blocks) until I/O completes.
+# ASYNCHRONOUS I/O: caller continues, gets notified when done.
+
+# SYNCHRONOUS (blocking):
+import time
+
+def sync_read_file(path):
+    """Blocks until file is read."""
+    with open(path) as f:
+        return f.read()  # CPU waits for disk
+
+# ASYNCHRONOUS (non-blocking) — using asyncio:
+# import asyncio
+# import aiofiles
+#
+# async def async_read_file(path):
+#     """Non-blocking file read."""
+#     async with aiofiles.open(path) as f:
+#         return await f.read()  # CPU does other things while waiting
+#
+# async def main():
+#     # Read multiple files concurrently:
+#     results = await asyncio.gather(
+#         async_read_file("file1.txt"),
+#         async_read_file("file2.txt"),
+#         async_read_file("file3.txt"),
+#     )
+
+# BLOCKING vs NON-BLOCKING vs ASYNC:
+models = {
+    "Blocking": "Thread waits (traditional sync code)",
+    "Non-blocking": "Check periodically (poll), continue if not ready",
+    "Async/Event-driven": "Register callback, OS notifies when done",
+    "Multiprocessing": "Separate process handles I/O (Celery)",
+}
+
+print("I/O MODELS:")
+for model, desc in models.items():
+    print(f"  {model}: {desc}")</div>
+
+<div class="code-block"># ── STEP 3: Buffered I/O ──
+# BUFFERING: accumulate data in memory before writing to slow device.
+
+# Without buffer: write each byte to disk individually (SLOW)
+# With buffer: accumulate 4KB, then write all at once (FAST)
+
+# Python file I/O is buffered by default:
+import io
+
+# Buffer sizes:
+print(f"Default buffer size: {io.DEFAULT_BUFFER_SIZE} bytes")  # 8192 (8KB)
+
+# Types of buffering:
+buffering = {
+    "Full buffering": "Flush when buffer is full (file writes)",
+    "Line buffering": "Flush on newline (stdout to terminal)",
+    "Unbuffered": "No buffer, immediate write (logging)",
+}
+
+print("BUFFERING TYPES:")
+for btype, desc in buffering.items():
+    print(f"  {btype}: {desc}")
+
+# DOUBLE BUFFERING (used in graphics):
+# While displaying Buffer A, draw to Buffer B.
+# Swap buffers → instant frame change (no flicker).
+
+# WHY BUFFERING MATTERS:
+# Disk I/O is expensive. One 4KB write &gt;&gt; 4x 1KB writes.
+# Network: send one 10KB packet &gt;&gt; 10x 1KB packets.
+# Batching is one of the most powerful performance optimizations.
+
+# In Python:
+with open("log.txt", "w", buffering=8192) as f:  # 8KB buffer
+    for i in range(10000):
+        f.write(f"Log entry {i}\n")  # buffered, fast
+# Flushed automatically when closed</div>
+
+<div class="code-block"># ── STEP 4: Device drivers ──
+# A DEVICE DRIVER is a translator between OS and hardware.
+
+# OS speaks "generic" (read this block, write that sector)
+# Hardware speaks "specific" (send command 0x42 to port 0x1F0)
+# Driver translates between them.
+
+# WHY DRIVERS EXIST:
+# - Thousands of different hardware devices
+# - OS can't know how to talk to each one
+# - Manufacturer provides driver (knows their hardware)
+# - OS provides standard API, driver implements specifics
+
+# DEVICE TYPES:
+device_types = {
+    "Character device": "Byte-by-byte access (keyboard, mouse, serial)",
+    "Block device": "Block-by-block access (disk, SSD, USB drive)",
+    "Network device": "Packet-based (ethernet, wifi)",
+    "Virtual device": "Software-emulated (/dev/null, /dev/random)",
+}
+
+print("DEVICE TYPES:")
+for dtype, desc in device_types.items():
+    print(f"  {dtype}: {desc}")
+
+# EVERYTHING IS A FILE (Unix philosophy):
+# /dev/sda    → hard drive (block device)
+# /dev/null   → black hole (discard data)
+# /dev/random → random numbers
+# /dev/stdin  → standard input
+# /dev/tcp    → network connections
+
+# In Python, you can even open devices as files:
+# with open("/dev/null", "w") as devnull:
+#     devnull.write("this goes nowhere")</div>
+
+<div class="code-block"># ── STEP 5: I/O monitoring and optimization ──
+# Commands to monitor I/O:
+
+commands = """
+# Disk I/O statistics:
+$ iostat -x 1
+# Shows reads/writes per second, utilization, wait time
+
+# Per-process I/O:
+$ iotop
+# Which processes are doing disk I/O?
+
+# I/O wait (CPU time spent waiting for I/O):
+$ top
+# wa column = I/O wait percentage
+# High wa% = disk is the bottleneck
+
+# File descriptors:
+$ lsof -p 1234
+# What files/sockets does PID 1234 have open?
+
+# Trace system calls:
+$ strace -e read,write cat file.txt
+read(3, "content...", 1024) = 42
+write(1, "content...", 42) = 42
+"""
+
+print(commands)
+
+# PYTHON I/O OPTIMIZATION:
+optimizations = [
+    "Use buffered I/O (default in Python)",
+    "Read/write in chunks, not byte-by-byte",
+    "Use generators for large files (don't load all into memory)",
+    "Use aiofiles for async file I/O",
+    "Use connection pooling for database I/O",
+    "Batch database queries (one INSERT with 1000 rows)",
+    "Use SSDs over HDDs (100x faster random access)",
+    "Use mmap for very large files (memory-mapped I/O)",
+    "Compress data before writing (trade CPU for I/O)",
+]
+
+print("I/O OPTIMIZATION TIPS:")
+for opt in optimizations:
+    print(f"  ☐ {opt}")</div>
+
+<div class="code-block"># ── STEP 6: Network I/O and modern patterns ──
+# Network I/O is the SLOWEST common I/O (10-100ms latency).
+
+# THE C10K PROBLEM:
+# How to handle 10,000 concurrent connections?
+# Thread-per-connection: needs 10,000 threads (too much memory)
+# Solution: event-driven I/O (epoll, kqueue, asyncio)
+
+# ASYNC I/O IN PYTHON:
+# import asyncio
+# import aiohttp
+#
+# async def fetch_many(urls):
+#     """Fetch 10,000 URLs concurrently with ONE thread."""
+#     async with aiohttp.ClientSession() as session:
+#         tasks = [session.get(url) for url in urls]
+#         responses = await asyncio.gather(*tasks)
+#         return responses
+
+# I/O BENCHMARKS (typical latencies):
+latencies = {
+    "Memory access": "100 ns",
+    "SSD read": "100 μs (1,000x slower than memory)",
+    "HDD read": "10 ms (100,000x slower)",
+    "Network (LAN)": "0.5 ms",
+    "Network (Internet)": "50-150 ms",
+    "Network (cross-continent)": "200-300 ms",
+}
+
+print("I/O LATENCY COMPARISON:")
+for io_type, latency in latencies.items():
+    print(f"  {io_type}: {latency}")
+
+# DESIGN PATTERNS FOR I/O:
+patterns = {
+    "Reactor": "Single thread, event loop, callbacks (asyncio, Node.js)",
+    "Proactor": "OS notifies on completion (Windows IOCP)",
+    "Thread pool": "Multiple threads, blocking I/O (Java, Django)",
+    "Actor model": "Message passing (Erlang, Akka)",
+}
+
+print("\nI/O DESIGN PATTERNS:")
+for pattern, desc in patterns.items():
+    print(f"  {pattern}: {desc}")
+
+# REAL-WORLD EXAMPLES:
+# - Nginx: event-driven (epoll) → handles 100,000+ connections
+# - Redis: single-threaded event loop → 100,000+ ops/sec
+# - Node.js: V8 + libuv → event-driven I/O
+# - Django: synchronous (thread-per-request) → use Celery for async
+# - FastAPI: async-first → native asyncio support
+
+# THE FUTURE: io_uring (Linux 5.1+)
+# New async I/O API that's even faster than epoll.
+# Batches I/O submissions → fewer syscalls → better performance.</div>
 
 <div class="secret-box">🔌 <strong>I/O = OS এবং হার্ডওয়্যারের সেতু।</strong> Driver অনুবাদ করে, interrupt সংকেত দেয়, DMA দ্রুত স্থানান্তর করে। CPU বারবার চেক করে না — ডিভাইস নিজে ডাকে। কিন্তু এই পর্যন্ত আলোচনা ছিল একটি মেশিনের ভেতরে। আজকের যুগে একটি মেশিনে সব চলে না — শত শত মেশিন একসাথে। সেই সমাধান আসবে পরের দরজায়।</div>`,
   senior: {
