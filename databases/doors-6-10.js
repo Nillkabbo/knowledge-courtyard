@@ -523,30 +523,284 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Replication (কপি) ও Sharding (ভাগ) — consistency models সহ।</div>
 
-<div class="code-block">— Distributed DB: Sharding Logic —
+<div class="code-block"># ── STEP 1: Why distributed databases? ──
+# A single database server has LIMITS:
+# - CPU capacity
+# - RAM capacity
+# - Disk I/O
+# - Storage space
 
-  # সাধারণ sharding strategy (Python)
-  NUM_SHARDS = 4
+# When you outgrow one server, you need DISTRIBUTED databases.
 
-  def get_shard(user_id):
-      # consistent hash → shard
-      return hash(user_id) % NUM_SHARDS
+# TWO SCALING APPROACHES:
+scaling = {
+    "Vertical (Scale Up)": {
+        "how": "Buy a BIGGER server (more CPU, RAM, disk)",
+        "pro": "Simple, no code changes",
+        "con": "Has a hard limit, expensive, single point of failure",
+    },
+    "Horizontal (Scale Out)": {
+        "how": "Add MORE servers (commodity hardware)",
+        "pro": "Virtually unlimited, cost-effective, fault tolerant",
+        "con": "Complex (consistency, network latency, coordination)",
+    },
+}
 
-  # PostgreSQL: declarative partitioning
-  CREATE TABLE orders (
-      id SERIAL, user_id INT, amount DECIMAL,
-      created_at TIMESTAMP
-  ) PARTITION BY HASH (user_id);
+print("SCALING APPROACHES:")
+for approach, info in scaling.items():
+    print(f"\n  {approach}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
 
-  CREATE TABLE orders_p0 PARTITION OF orders
-      FOR VALUES WITH (modulus 4, remainder 0);
-  CREATE TABLE orders_p1 PARTITION OF orders
-      FOR VALUES WITH (modulus 4, remainder 1);
-  -- p2, p3 ...
+# MOST MODERN DATABASES USE BOTH:
+# - Vertical until you hit limits
+# - Then horizontal for further growth</div>
 
-  -- Read replica থেকে পড়ো:
-  -- SET transaction_read_only = ON;
-  -- SELECT ... → replica-তে যায়</div>
+<div class="code-block"># ── STEP 2: Replication — copying data ──
+# REPLICATION: copy data to MULTIPLE servers.
+
+# MASTER-REPLICA (Primary-Secondary):
+# - Master: handles ALL writes
+# - Replicas: handle reads (copy from master)
+# - Writes go to ONE server (master)
+# - Reads can go to MANY servers (replicas) → read scaling
+
+# MASTER-MASTER (Multi-Primary):
+# - Multiple masters accept writes
+# - Must resolve conflicts (hard!)
+# - Risk: write conflicts, data divergence
+
+# SYNCHRONOUS vs ASYNCHRONOUS:
+replication_types = {
+    "Synchronous": {
+        "how": "Master waits for ALL replicas before confirming write",
+        "pro": "Strong consistency (all nodes agree)",
+        "con": "Slow (waits for slowest replica)",
+    },
+    "Asynchronous": {
+        "how": "Master confirms write immediately, replicas catch up later",
+        "pro": "Fast (no waiting)",
+        "con": "Eventual consistency (replicas might lag)",
+    },
+}
+
+print("REPLICATION TYPES:")
+for rtype, info in replication_types.items():
+    print(f"\n  {rtype}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# POSTGRESQL REPLICATION SETUP (simplified):
+pg_setup = """
+-- On master (postgresql.conf):
+wal_level = replica
+max_wal_senders = 3
+
+-- On replica (postgresql.conf):
+hot_standby = on
+
+-- On replica (recovery.conf):
+standby_mode = 'on'
+primary_conninfo = 'host=master_ip port=5432'
+"""
+
+print("PostgreSQL replication config:")
+print(pg_setup)</div>
+
+<div class="code-block"># ── STEP 3: Sharding — splitting data ──
+# SHARDING: distribute data ACROSS multiple servers.
+# Each server holds a PORTION of the data.
+
+# SHARDING STRATEGIES:
+strategies = {
+    "Hash Sharding": "hash(key) % N → even distribution",
+    "Range Sharding": "A-M on shard 1, N-Z on shard 2",
+    "Geo Sharding": "US users on US servers, EU on EU servers",
+    "Directory Sharding": "Lookup table maps keys to shards",
+}
+
+print("SHARDING STRATEGIES:")
+for strategy, desc in strategies.items():
+    print(f"  {strategy}: {desc}")
+
+# PYTHON SHARDING EXAMPLE:
+NUM_SHARDS = 4
+
+def get_shard(user_id):
+    """Determine which shard holds this user's data."""
+    return hash(user_id) % NUM_SHARDS
+
+# Each user's data goes to a specific shard:
+for uid in [101, 102, 103, 104, 105]:
+    shard = get_shard(uid)
+    print(f"  User {uid} → Shard {shard}")
+
+# POSTGRESQL DECLARATIVE PARTITIONING (sharding within one DB):
+sql_partitioning = """
+-- Partition by hash (even distribution):
+CREATE TABLE orders (
+    id SERIAL,
+    user_id INT,
+    amount DECIMAL,
+    created_at TIMESTAMP
+) PARTITION BY HASH (user_id);
+
+-- Create 4 partitions:
+CREATE TABLE orders_p0 PARTITION OF orders
+    FOR VALUES WITH (modulus 4, remainder 0);
+CREATE TABLE orders_p1 PARTITION OF orders
+    FOR VALUES WITH (modulus 4, remainder 1);
+CREATE TABLE orders_p2 PARTITION OF orders
+    FOR VALUES WITH (modulus 4, remainder 2);
+CREATE TABLE orders_p3 PARTITION OF orders
+    FOR VALUES WITH (modulus 4, remainder 3);
+
+-- Or partition by date (time-series):
+-- CREATE TABLE events (...) PARTITION BY RANGE (created_at);
+-- CREATE TABLE events_2025_01 PARTITION OF events
+--     FOR VALUES FROM ('2025-01-01') TO ('2025-02-01');
+"""
+
+print(sql_partitioning)</div>
+
+<div class="code-block"># ── STEP 4: Consistency models in distributed DBs ──
+# When data is on multiple servers, how do they stay in sync?
+
+consistency_models = {
+    "Strong Consistency": {
+        "guarantee": "After write, ALL subsequent reads see the new value",
+        "cost": "Slow (must coordinate all nodes)",
+        "use": "Financial transactions, critical data",
+    },
+    "Eventual Consistency": {
+        "guarantee": "Given enough time, all nodes will converge",
+        "cost": "Fast (no coordination needed)",
+        "use": "Social media, comments, likes",
+    },
+    "Read-Your-Writes": {
+        "guarantee": "You always see your own writes immediately",
+        "cost": "Medium (route to master for your reads)",
+        "use": "User profiles, settings",
+    },
+    "Bounded Staleness": {
+        "guarantee": "Data is at most N seconds/versions stale",
+        "cost": "Medium",
+        "use": "Caching, dashboards",
+    },
+}
+
+print("CONSISTENCY MODELS:")
+for model, info in consistency_models.items():
+    print(f"\n  {model}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# THE PACELC THEOREM (extends CAP):
+# PACELC: If Partitioned → choose between A and C
+#         Else (normal) → choose between L (latency) and C
+# You can't have perfect consistency AND low latency.</div>
+
+<div class="code-block"># ── STEP 5: Distributed database patterns ──
+# COMMON PATTERNS in distributed databases:
+
+patterns = {
+    "Read Replicas": {
+        "how": "Writes → master. Reads → replicas.",
+        "pro": "Read scaling, better latency",
+        "con": "Replication lag, write bottleneck on master",
+    },
+    "Sharding": {
+        "how": "Split data by key across servers",
+        "pro": "Write scaling, storage scaling",
+        "con": "Cross-shard queries hard, rebalancing complex",
+    },
+    "CQRS": {
+        "how": "Separate read models from write models",
+        "pro": "Optimize each independently",
+        "con": "Complexity, eventual consistency",
+    },
+    "Event Sourcing": {
+        "how": "Store events (not current state), derive state",
+        "pro": "Full audit log, time travel",
+        "con": "Complex, storage grows",
+    },
+    "Change Data Capture (CDC)": {
+        "how": "Stream DB changes to other systems",
+        "pro": "Real-time sync, event-driven architecture",
+        "con": "Additional infrastructure",
+    },
+}
+
+print("DISTRIBUTED DATABASE PATTERNS:")
+for pattern, info in patterns.items():
+    print(f"\n  {pattern}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# TOOLS:
+# Debezium: CDC for PostgreSQL/MySQL → Kafka
+# Vitess: Sharding proxy for MySQL
+# Citus: Sharding extension for PostgreSQL
+# CockroachDB: Distributed SQL (PostgreSQL-compatible)
+# YugabyteDB: Distributed SQL (PostgreSQL-compatible)</div>
+
+<div class="code-block"># ── STEP 6: Cloud-native distributed databases ──
+# Cloud providers offer MANAGED distributed databases:
+
+cloud_dbs = {
+    "AWS Aurora": {
+        "type": "Managed MySQL/PostgreSQL with distributed storage",
+        "feature": "Auto-scaling storage, read replicas, multi-AZ",
+    },
+    "AWS DynamoDB": {
+        "type": "Managed key-value/document store",
+        "feature": "Auto-scaling, single-digit ms latency, global tables",
+    },
+    "Google Spanner": {
+        "type": "Globally distributed SQL database",
+        "feature": "Strong consistency + horizontal scaling (rare combo)",
+    },
+    "MongoDB Atlas": {
+        "type": "Managed MongoDB",
+        "feature": "Auto-scaling, sharding, multi-region",
+    },
+    "CockroachDB": {
+        "type": "Distributed SQL (open source)",
+        "feature": "PostgreSQL-compatible, survives node failures",
+    },
+}
+
+print("CLOUD-NATIVE DISTRIBUTED DATABASES:")
+for db, info in cloud_dbs.items():
+    print(f"\n  {db}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# DISTRIBUTED DATABASE TRADEOFFS:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Benefit          │ Cost                             │
+# ├──────────────────┼──────────────────────────────────┤
+# │ More capacity    │ More complexity                 │
+# │ Fault tolerance  │ Consistency challenges          │
+# │ Geo-distribution │ Network latency                 │
+# │ Scale-out        │ Operational overhead             │
+# └──────────────────┴──────────────────────────────────┘
+
+# WHEN TO GO DISTRIBUTED:
+# - Single server can't handle load (CPU/RAM/disk maxed)
+# - Need geo-distribution (users worldwide)
+# - Need high availability (99.99%+ uptime)
+# - Data exceeds single-server storage capacity
+
+# WHEN NOT TO GO DISTRIBUTED:
+# - Single server handles the load fine
+# - Strong consistency is critical (hard in distributed)
+# - Small team (operational overhead is significant)
+# - Data fits on one machine (most apps!)
+
+# RULE OF THUMB: "Start with one database. Distribute only when you MUST."
+# Premature distribution = unnecessary complexity.
+# A well-tuned PostgreSQL on a big server can handle millions of users.</div>
 
 <div class="secret-box">🌍 <strong>Distributed = একাধিক নোডে ডেটা।</strong> Replication (কপি) + Sharding (ভাগ)। Master-slave, consistency models। কিন্তু এত স্তরে ডেটা ছড়িয়ে গেলে — query কীভাবে সঠিক নোডে যায়? কে ঠিক করে কোন plan সেরা? সেই সমাধান আসবে পরের দরজায় — query optimization।</div>`,
   senior: {
