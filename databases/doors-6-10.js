@@ -905,32 +905,233 @@ Optimizer সিদ্ধান্ত নিতে statistics ব্যবহা
 </div>
 <div class="svg-caption">চিত্র: Optimizer একাধিক plan তুলনা করে সর্বনিম্ন cost-এর পথ বেছে নেয়।</div>
 
-<div class="code-block"># — SQL: EXPLAIN + Query Rewrite —
+<div class="code-block"># ── STEP 1: How query optimization works ──
+# When you write SQL, you describe WHAT you want.
+# The OPTIMIZER figures out HOW to get it (the fastest way).
 
-  -- Optimizer-এর সিদ্ধান্ত দেখো:
-  EXPLAIN (ANALYZE, BUFFERS)
-  SELECT u.name, SUM(o.amount) AS total
-  FROM users u
-  JOIN orders o ON u.id = o.user_id
-  GROUP BY u.name;
+# OPTIMIZATION PIPELINE:
+pipeline = [
+    "1. PARSE: SQL text → syntax tree (check for errors)",
+    "2. REWRITE: simplify (remove subqueries, expand views)",
+    "3. PLAN: generate possible execution plans",
+    "4. ESTIMATE: calculate cost for each plan",
+    "5. SELECT: pick the lowest-cost plan",
+    "6. EXECUTE: run the chosen plan",
+]
 
-  -- আউটপুট (খারাপ):
-  -- Hash Join (cost=1450..3200 rows=5000)
-  --   Seq Scan on orders  ← পুরো টেবিল পড়ছে!
-  --   Hash (cost=20..20 rows=100)
+for step in pipeline:
+    print(step)
 
-  -- সমাধান: index যোগ করো
-  CREATE INDEX idx_orders_uid ON orders(user_id);
-  ANALYZE orders;  -- statistics আপডেট
+# COST-BASED OPTIMIZER (CBO):
+# The optimizer estimates cost based on:
+# - Table size (rows, pages)
+# - Statistics (histograms, distinct values)
+# - Available indexes
+# - Join methods (nested loop, hash, merge)
+# - System resources (CPU, memory, disk speed)
 
-  -- এখন plan:
-  -- Hash Join (cost=45..120 rows=50)
-  --   Index Scan using idx_orders_uid  ← O(log n)
+# The optimizer is like a GPS: it considers many routes
+# and picks the fastest one based on traffic conditions (statistics).</div>
 
-  -- N+1 সমস্যা (Django):
-  for u in User.objects.all():       # ❌ N+1 query
-      print(u.orders.count())
-  User.objects.prefetch_related('orders')  # ✅ 2 query</div>
+<div class="code-block"># ── STEP 2: Join algorithms ──
+# The optimizer chooses the best JOIN algorithm for each query.
+
+join_algorithms = {
+    "Nested Loop Join": {
+        "how": "For each row in left table, scan right table",
+        "complexity": "O(n * m)",
+        "best_for": "Small tables, indexed joins, outer joins",
+    },
+    "Hash Join": {
+        "how": "Build hash table from smaller table, probe with larger",
+        "complexity": "O(n + m)",
+        "best_for": "Large unsorted tables, equi-joins (=)",
+    },
+    "Merge Join": {
+        "how": "Both tables sorted on join key, merge together",
+        "complexity": "O(n + m)",
+        "best_for": "Pre-sorted data, range joins",
+    },
+}
+
+print("JOIN ALGORITHMS:")
+for algo, info in join_algorithms.items():
+    print(f"\n  {algo} ({info['complexity']}):")
+    print(f"    How: {info['how']}")
+    print(f"    Best for: {info['best_for']}")
+
+# The optimizer picks based on:
+# - Table sizes
+# - Whether data is sorted
+# - Whether indexes exist
+# - Available memory</div>
+
+<div class="code-block"># ── STEP 3: EXPLAIN and query analysis ──
+# EXPLAIN shows what the optimizer decided.
+# EXPLAIN ANALYZE actually runs the query and shows real timings.
+
+sql_explain_examples = """
+-- Find slow queries:
+EXPLAIN ANALYZE
+SELECT u.name, COUNT(o.id)
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+GROUP BY u.name;
+
+-- Output shows:
+-- Hash Join (cost=45.2..320.5 rows=500)
+--   Hash Aggregate (cost=35..200 rows=100)
+--     Seq Scan on orders (cost=0..150 rows=5000)  ← full table scan
+--   Index Scan using users_pkey on users           ← uses index ✅
+
+-- BAD signs to look for:
+-- Seq Scan on large table → needs an index
+-- Nested Loop with huge rows → needs hash join
+-- Sort (external) → needs more work_mem or an index
+-- Rows estimate way off → needs ANALYZE
+"""
+
+print(sql_explain_examples)
+
+# POSTGRESQL ANALYZE (update statistics):
+# The optimizer needs ACCURATE statistics to make good decisions.
+# Run ANALYZE after bulk inserts/deletes:
+# ANALYZE users;  -- updates histogram and distinct-value estimates</div>
+
+<div class="code-block"># ── STEP 4: Common query anti-patterns ──
+# SLOW QUERIES and how to fix them:
+
+anti_patterns = {
+    "SELECT *": {
+        "problem": "Fetches all columns (many unused, wastes I/O)",
+        "fix": "SELECT only needed columns",
+    },
+    "No WHERE on large table": {
+        "problem": "Scans entire table",
+        "fix": "Add WHERE clause + index",
+    },
+    "Function on indexed column": {
+        "problem": "WHERE LOWER(email) = ... ignores index",
+        "fix": "Use expression index or store normalized value",
+    },
+    "OR conditions": {
+        "problem": "Hard to optimize (often full scan)",
+        "fix": "Use UNION ALL or rewrite with IN",
+    },
+    "Leading wildcard": {
+        "problem": "LIKE '%rakib' can't use index",
+        "fix": "Use full-text search or trigram index",
+    },
+    "Implicit type cast": {
+        "problem": "WHERE id = '1' (string vs int) ignores index",
+        "fix": "Use correct types: WHERE id = 1",
+    },
+    "Correlated subquery": {
+        "problem": "Subquery runs once per row",
+        "fix": "Rewrite as JOIN or CTE",
+    },
+}
+
+print("COMMON QUERY ANTI-PATTERNS:")
+for pattern, info in anti_patterns.items():
+    print(f"\n  {pattern}:")
+    print(f"    Problem: {info['problem']}")
+    print(f"    Fix: {info['fix']}")</div>
+
+<div class="code-block"># ── STEP 5: Django ORM optimization ──
+# The N+1 PROBLEM is the #1 Django performance issue.
+
+# ❌ N+1 PROBLEM (1 + N queries):
+n1_bad = """
+# This runs 1 + N queries (N = number of users):
+for user in User.objects.all():         # 1 query
+    print(user.profile.bio)             # 1 query PER user!
+# 100 users = 101 queries
+"""
+
+print(n1_bad)
+
+# ✅ FIXED with select_related (JOIN in one query):
+n1_fixed = """
+# select_related: ForeignKey/OneToOne (SQL JOIN, 1 query)
+users = User.objects.select_related('profile')  # 1 query (JOIN)
+for user in users:
+    print(user.profile.bio)  # 0 extra queries
+
+# prefetch_related: ManyToMany / reverse FK (2 queries)
+products = Product.objects.prefetch_related('tags')  # 2 queries
+for product in products:
+    print(product.tags.all())  # 0 extra queries
+"""
+
+print(n1_fixed)
+
+# DJANGO OPTIMIZATION CHECKLIST:
+django_tips = [
+    "select_related() for FK/OneToOne (JOIN)",
+    "prefetch_related() for M2M/reverse FK (batch)",
+    "values() / values_list() for dicts/tuples (lighter)",
+    "only() to load specific fields",
+    "defer() to skip heavy fields",
+    "bulk_create() for multiple inserts",
+    "update() instead of load+modify+save",
+    "iterator() for large querysets (don't cache)",
+    "exists() instead of count() > 0",
+    "QuerySet is LAZY — only evaluated when iterated",
+]
+
+print("DJANGO ORM OPTIMIZATION:")
+for tip in django_tips:
+    print(f"  ☐ {tip}")</div>
+
+<div class="code-block"># ── STEP 6: Advanced optimization techniques ──
+# When basic indexing isn't enough:
+
+advanced_techniques = {
+    "Materialized Views": "Pre-compute expensive aggregations, refresh periodically",
+    "Partitioning": "Split large tables by date/hash for faster queries",
+    "Connection Pooling": "pgbouncer for PostgreSQL, avoid connection overhead",
+    "Read Replicas": "Route read queries to replicas, writes to master",
+    "Caching": "Redis for hot queries (avoid DB entirely)",
+    "Denormalization": "Duplicate data to avoid expensive JOINs",
+    "Full-Text Search": "PostgreSQL tsvector or Elasticsearch for text search",
+    "Batch Processing": "Process in chunks, not one-by-one",
+}
+
+print("ADVANCED OPTIMIZATION TECHNIQUES:")
+for technique, desc in advanced_techniques.items():
+    print(f"  {technique}: {desc}")
+
+# PERFORMANCE TUNING PROCESS:
+tuning_process = """
+1. MEASURE: Enable slow query log, use pg_stat_statements
+2. IDENTIFY: Find the slowest queries (highest impact)
+3. EXPLAIN: Understand WHY they're slow
+4. INDEX: Add indexes on filter/join columns
+5. REWRITE: Fix anti-patterns (SELECT *, N+1, etc.)
+6. CACHE: Cache hot queries in Redis
+7. DENORMALIZE: Only if JOINs are truly unavoidable
+8. SCALE: Read replicas, sharding (last resort)
+"""
+
+print(tuning_process)
+
+# THE OPTIMIZER SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Technique        │ Impact                          │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Add index        │ 100x - 10000x speedup           │
+# │ Fix N+1          │ 10x - 1000x speedup             │
+# │ SELECT specific  │ 2x - 10x speedup               │
+# │ Connection pool  │ 2x - 5x throughput              │
+# │ Read replica     │ 2x - 10x read capacity          │
+# │ Cache (Redis)    │ 100x (cache hit)               │
+# │ Partitioning     │ 2x - 10x for large tables       │
+# └──────────────────┴──────────────────────────────────┘
+
+# ALWAYS MEASURE BEFORE AND AFTER.
+# "Premature optimization is the root of all evil." — Knuth
+# But when you DO optimize, measure first, optimize second, verify third.</div>
 
 <div class="secret-box">⚡ <strong>Optimizer = ডাটাবেসের GPS।</strong> Cost-based, statistics-driven। Selinger ১৯৭৯ থেকে আজ পর্যন্ত। কিন্তু optimization শুধু OLTP-এর (transactions) জন্য নয়। যখন মিলিয়ন সারি analyze করতে হয় — reporting, dashboard, ML training — সেখানে দরকার ভিন্ন স্থাপত্য। সেই যাত্রা আসবে পরের দরজায় — data warehousing।</div>`,
   senior: {
