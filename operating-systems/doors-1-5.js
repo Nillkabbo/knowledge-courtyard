@@ -1047,42 +1047,247 @@ signal(S): S = S + 1<br>
 </div>
 <div class="svg-caption">চিত্র: Counting semaphore — empty/full slots গোনে। mutex এক সময় এক thread-কে ঢোকায়।</div>
 
-<div class="code-block"># — Python: Semaphore ও Mutex —
+<div class="code-block"># ── STEP 1: Synchronization primitives ──
+# When threads share resources, we need SYNCHRONIZATION
+# to prevent chaos.
 
-  import threading
+# The core problem: shared data + concurrent access = corruption.
 
-  # Binary semaphore (= mutex)
-  mutex = threading.Lock()
+# SYNCHRONIZATION PRIMITIVES:
+primitives = {
+    "Mutex (Lock)": "Only ONE thread can hold it at a time. Like a bathroom key.",
+    "Semaphore": "Counter that allows N threads. Like parking lot with N spots.",
+    "Condition Variable": "Wait until a condition becomes true. Like a bell.",
+    "Barrier": "Wait until N threads arrive. Like a starting line.",
+    "Read-Write Lock": "Many readers OR one writer. Like a library.",
+}
 
-  # Counting semaphore (N resources)
-  empty = threading.Semaphore(3)  # 3 empty slots
-  full  = threading.Semaphore(0)  # 0 full initially
-  buffer = []
+print("SYNCHRONIZATION PRIMITIVES:")
+for name, desc in primitives.items():
+    print(f"  {name}: {desc}")
 
-  def producer():
-      for i in range(10):
-          empty.acquire()   # wait for empty slot
-          mutex.acquire()   # lock buffer
-          buffer.append(i)  # put item
-          mutex.release()   # unlock
-          full.release()    # signal: one more full
+# SEMAPHORE ANALOGY:
+# Imagine a parking lot with 3 spots.
+# - Cars enter (sem_wait / P operation): counter decreases
+# - Cars leave (sem_post / V operation): counter increases
+# - When lot is full (counter=0), new cars WAIT
+# This is a COUNTING SEMAPHORE.</div>
 
-  def consumer():
-      for i in range(10):
-          full.acquire()    # wait for full slot
-          mutex.acquire()   # lock buffer
-          item = buffer.pop(0)  # take item
-          mutex.release()   # unlock
-          empty.release()   # signal: one more empty
+<div class="code-block"># ── STEP 2: Mutex in action ──
+# A MUTEX (mutual exclusion) protects a critical section.
 
-  # POSIX semaphore in C:
-  # sem_t sem;
-  # sem_init(&sem, 0, 3);     // initial value 3
-  # sem_wait(&sem);           // P: decrement, block if 0
-  # sem_post(&sem);           // V: increment, wake one
+import threading
 
-  # futex: Linux fast userspace mutex
-  # kernel only involved on contention</div>
+# Shared resource:
+bank_balance = 1000
+mutex = threading.Lock()
+
+# ❌ UNSAFE (race condition):
+def unsafe_withdraw(amount):
+    global bank_balance
+    if bank_balance >= amount:       # check
+        # ── another thread could change balance here! ──
+        bank_balance -= amount        # update
+
+# ✅ SAFE (mutex protected):
+def safe_withdraw(amount):
+    global bank_balance
+    with mutex:                       # CRITICAL SECTION
+        if bank_balance >= amount:
+            bank_balance -= amount
+
+# The MUTEX ensures the check-and-update is ATOMIC.
+# No other thread can enter the critical section simultaneously.
+
+# THREAD SAFE vs THREAD UNSAFE:
+# Thread unsafe: dict, list (in CPython, GIL helps but don't rely on it)
+# Thread safe: queue.Queue, collections.deque (with external lock)
+# Always thread safe: threading.local, multiprocessing.Queue
+
+# PYTHON'S with lock: PATTERN:
+# with mutex:
+#     # critical section — only one thread here at a time
+#     shared_resource.modify()
+# # lock automatically released when leaving 'with' block
+# This is equivalent to:
+# mutex.acquire()
+# try:
+#     shared_resource.modify()
+# finally:
+#     mutex.release()</div>
+
+<div class="code-block"># ── STEP 3: Producer-Consumer problem ──
+# Classic synchronization problem:
+# - PRODUCER creates items, puts in buffer
+# - CONSUMER takes items from buffer
+# - Buffer has limited size
+
+# Solution: use semaphores to coordinate.
+
+import threading
+import time
+import random
+
+BUFFER_SIZE = 5
+buffer = []
+
+# Semaphores:
+empty = threading.Semaphore(BUFFER_SIZE)  # empty slots (starts full)
+full = threading.Semaphore(0)             # full slots (starts empty)
+mutex = threading.Lock()
+
+def producer():
+    """Produces items and puts in buffer."""
+    for i in range(10):
+        item = f"item-{i}"
+        empty.acquire()   # wait for empty slot
+        mutex.acquire()   # lock buffer
+        buffer.append(item)
+        print(f"  Produced: {item} (buffer: {len(buffer)})")
+        mutex.release()   # unlock buffer
+        full.release()    # signal: one more full slot
+        time.sleep(random.uniform(0.1, 0.5))
+
+def consumer():
+    """Consumes items from buffer."""
+    for i in range(10):
+        full.acquire()    # wait for full slot
+        mutex.acquire()   # lock buffer
+        item = buffer.pop(0)
+        print(f"  Consumed: {item} (buffer: {len(buffer)})")
+        mutex.release()   # unlock buffer
+        empty.release()   # signal: one more empty slot
+        time.sleep(random.uniform(0.2, 0.8))
+
+# Run:
+t1 = threading.Thread(target=producer)
+t2 = threading.Thread(target=consumer)
+t1.start(); t2.start()
+t1.join(); t2.join()</div>
+
+<div class="code-block"># ── STEP 4: Counting semaphore ──
+# Counting semaphores control access to N resources.
+
+import threading
+
+# Connection pool with semaphore:
+class DatabaseConnectionPool:
+    def __init__(self, max_connections=5):
+        self.semaphore = threading.Semaphore(max_connections)
+        self.max = max_connections
+
+    def get_connection(self):
+        """Get a connection. Blocks if pool is exhausted."""
+        self.semaphore.acquire()  # decrement counter
+        print(f"  Connection acquired ({self.max - self.semaphore._value} in use)")
+        return {"conn": f"db-{threading.current_thread().name}"}
+
+    def release_connection(self, conn):
+        """Release a connection back to pool."""
+        self.semaphore.release()  # increment counter
+        print(f"  Connection released ({self.max - self.semaphore._value} in use)")
+
+# Usage:
+pool = DatabaseConnectionPool(max_connections=3)
+
+def query_worker(pool, query_id):
+    conn = pool.get_connection()
+    import time; time.sleep(0.5)  # simulate query
+    pool.release_connection(conn)
+
+# Even if 10 threads try simultaneously, only 3 get connections at once.
+# Others WAIT until a connection is released.</div>
+
+<div class="code-block"># ── STEP 5: Read-write locks ──
+# Optimization: multiple readers OR one writer.
+
+# Problem with mutex: even READERS block each other.
+# But reading shared data is SAFE — only writing is dangerous.
+
+# READ-WRITE LOCK:
+# - Multiple readers can read simultaneously
+# - Only ONE writer can write (no readers while writing)
+# - Writers have priority (to prevent writer starvation)
+
+import threading
+
+class ReadWriteLock:
+    def __init__(self):
+        self._read_ready = threading.Condition()
+        self._readers = 0
+
+    def acquire_read(self):
+        with self._read_ready:
+            self._readers += 1
+
+    def release_read(self):
+        with self._read_ready:
+            self._readers -= 1
+            if self._readers == 0:
+                self._read_ready.notify_all()
+
+    def acquire_write(self):
+        self._read_ready.acquire()
+        while self._readers > 0:
+            self._read_ready.wait()
+
+    def release_write(self):
+        self._read_ready.release()
+
+# Use case: cache that's read often, written rarely.
+# Many threads read cache (fast), one thread updates (exclusive).</div>
+
+<div class="code-block"># ── STEP 6: Common synchronization pitfalls ──
+# DEADLOCK: circular waiting on locks.
+
+# HOW DEADLOCK HAPPENS:
+# Thread A: locks Resource 1, wants Resource 2
+# Thread B: locks Resource 2, wants Resource 1
+# → Both wait forever.
+
+# DEADLOCK CONDITIONS (Coffman conditions):
+# 1. MUTUAL EXCLUSION: resources can't be shared
+# 2. HOLD AND WAIT: hold one resource, wait for another
+# 3. NO PREEMPTION: can't forcefully take resources
+# 4. CIRCULAR WAIT: A waits for B, B waits for A
+
+# PREVENTION: break one of the four conditions:
+
+prevention = {
+    "Break circular wait": "Acquire locks in CONSISTENT order",
+    "Break hold and wait": "Acquire ALL locks at once, or none",
+    "Use timeout": "lock.acquire(timeout=5) — give up after 5s",
+    "Use try/finally": "Always release locks, even on exception",
+    "Minimize lock scope": "Hold lock for shortest time possible",
+}
+
+print("DEADLOCK PREVENTION:")
+for strategy, desc in prevention.items():
+    print(f"  ✅ {strategy}: {desc}")
+
+# DETECTION: periodically check for deadlock:
+# - Thread dump analysis (jstack for Java, py-spy for Python)
+# - Watchdog timer (if no progress in N seconds, restart)
+# - Resource allocation graph analysis
+
+# PYTHON-SPECIFIC TIPS:
+# - Use threading.RLock() for reentrant locking (same thread)
+# - Use context managers (with lock:) for automatic release
+# - Use queue.Queue for producer-consumer (built-in thread safety)
+# - Prefer asyncio over threading for I/O-bound work
+# - Use multiprocessing for CPU-bound (no shared state = no deadlock)
+
+# SYNCHRONIZATION SUMMARY:
+# ┌────────────────┬──────────────────────────────────┐
+# │ Primitive      │ Use Case                        │
+# ├────────────────┼──────────────────────────────────┤
+# │ Lock/Mutex     │ Protect critical section        │
+# │ Semaphore      │ Limit to N concurrent accesses  │
+# │ Condition      │ Wait for condition to be true   │
+# │ Event          │ Signal between threads          │
+# │ Barrier        │ Synchronize multiple threads    │
+# │ RWLock         │ Many readers, one writer        │
+# └────────────────┴──────────────────────────────────┘</div>
 
 <div class="secret-box">🔐 <strong>Synchronization = সম্পদের সীমাবদ্ধতা।</strong> Mutex, semaphore, monitor — প্রতিটি একটি উপায় shared সম্পদ সুরক্ষিত রাখার। কিন্তু একটি ভয়ংকর সমস্যা লুকিয়ে আছে — যদি প্রত্যেক থ্রেড একে অপরের সম্পদের জন্য অপেক্ষা করে? কেউ ছাড়বে না, কেউ এগোবে না — চিরকাল অপেক্ষা। সেই দুঃস্বপ্নের নাম deadlock। সেই যাত্রা আসবে পরের দরজায়।</div>`,
   senior: {
@@ -1166,48 +1371,246 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Circular wait — প্রতিটি প্রসেস একটি সম্পদ ধরে, পরেরটা চায়। চক্র ভাঙলে deadlock অসম্ভব।</div>
 
-<div class="code-block">— Deadlock: Detection ও Prevention —
+<div class="code-block"># ── STEP 1: What is deadlock? ──
+# DEADLOCK: two or more threads are stuck, each waiting
+# for a resource the other holds. Forever.
 
-  # Linux deadlock detection:
-  $ dmesg | grep -i deadlock
-  # possible deadlock detected
+# REAL-WORLD ANALOGY:
+# Intersection where 4 cars arrive simultaneously.
+# Each blocks the next. Nobody can move. Forever.
 
-  # Python threading — deadlock উদাহরণ:
-  import threading
+# THE FOUR COFFMAN CONDITIONS (all must be true for deadlock):
+conditions = {
+    "1. MUTUAL EXCLUSION": "Resource can't be shared (one at a time)",
+    "2. HOLD AND WAIT": "Thread holds one resource, waits for another",
+    "3. NO PREEMPTION": "Can't force-take a resource (must be released voluntarily)",
+    "4. CIRCULAR WAIT": "Thread A waits for B, B waits for C, C waits for A",
+}
 
-  lock_a = threading.Lock()
-  lock_b = threading.Lock()
+print("COFFMAN CONDITIONS (all 4 needed for deadlock):")
+for cond, desc in conditions.items():
+    print(f"  {cond}: {desc}")
 
-  def task1():
-      lock_a.acquire()
-      time.sleep(0.1)  # context switch!
-      lock_b.acquire()  # ❌ waits for task2
-      print("task1 done")
-      lock_b.release()
-      lock_a.release()
+# BREAK ANY ONE → deadlock impossible.
+# Easiest to break: CIRCULAR WAIT (acquire locks in consistent order).</div>
 
-  def task2():
-      lock_b.acquire()
-      time.sleep(0.1)
-      lock_a.acquire()  # ❌ waits for task1
-      print("task2 done")
-      lock_a.release()
-      lock_b.release()
-  # DEADLOCK! কেউ ছাড়বে না।
+<div class="code-block"># ── STEP 2: Deadlock example in Python ──
+import threading
+import time
 
-  # ✅ Fix: Lock ordering
-  def safe_task2():
-      lock_a.acquire()  # সবসময় একই ক্রমে!
-      lock_b.acquire()
-      ...
+lock_a = threading.Lock()
+lock_b = threading.Lock()
 
-  # Banker's Algorithm (Dijkstra 1965):
-  # Allocate শুধু যদি safe state থাকে
-  # Available >= Need হলে দাও
+def task1():
+    """Acquires lock_a, then lock_b."""
+    lock_a.acquire()
+    print("Task1: acquired lock_a")
+    time.sleep(0.1)  # give task2 time to acquire lock_b
 
-  # OOM Killer (Linux):
-  $ dmesg | grep -i "killed process"
-  # kernel OOM kills process to free memory</div>
+    lock_b.acquire()  # ❌ WAITS — task2 holds lock_b
+    print("Task1: acquired lock_b (never reaches here!)")
+
+    lock_b.release()
+    lock_a.release()
+
+def task2():
+    """Acquires lock_b, then lock_a."""
+    lock_b.acquire()
+    print("Task2: acquired lock_b")
+    time.sleep(0.1)
+
+    lock_a.acquire()  # ❌ WAITS — task1 holds lock_a
+    print("Task2: acquired lock_a (never reaches here!)")
+
+    lock_a.release()
+    lock_b.release()
+
+# Run (will deadlock!):
+# t1 = threading.Thread(target=task1)
+# t2 = threading.Thread(target=task2)
+# t1.start(); t2.start()
+# t1.join(); t2.join()  # NEVER returns — DEADLOCK
+
+# WHAT HAPPENS:
+# task1 holds lock_a, waits for lock_b
+# task2 holds lock_b, waits for lock_a
+# Neither can proceed → deadlock forever</div>
+
+<div class="code-block"># ── STEP 3: Preventing deadlock — lock ordering ──
+# BREAK CIRCULAR WAIT: always acquire locks in the SAME ORDER.
+
+import threading
+
+lock_a = threading.Lock()
+lock_b = threading.Lock()
+
+def safe_task1():
+    """ALWAYS acquire lock_a before lock_b."""
+    lock_a.acquire()
+    try:
+        lock_b.acquire()
+        try:
+            print("Task1: both locks acquired safely")
+            # do work...
+        finally:
+            lock_b.release()
+    finally:
+        lock_a.release()
+
+def safe_task2():
+    """ALWAYS acquire lock_a before lock_b (SAME ORDER)."""
+    lock_a.acquire()
+    try:
+        lock_b.acquire()
+        try:
+            print("Task2: both locks acquired safely")
+            # do work...
+        finally:
+            lock_b.release()
+    finally:
+        lock_a.release()
+
+# Now deadlock is IMPOSSIBLE because there's no circular wait.
+# Both tasks acquire in the same order: A then B.</div>
+
+<div class="code-block"># ── STEP 4: Dining Philosophers problem ──
+# Classic deadlock example (Dijkstra, 1965):
+
+# 5 philosophers sit at a round table.
+# 5 chopsticks (one between each pair).
+# Each needs 2 chopsticks to eat.
+
+# If all grab their LEFT chopstick simultaneously → deadlock.
+# Nobody can grab the right chopstick. All starve.
+
+# SOLUTIONS:
+solutions = {
+    "1. Resource hierarchy": "Always pick up LOWER-numbered chopstick first",
+    "2. Arbitrator": "Waiter must give permission (central authority)",
+    "3. Chandy-Misra": "Ask neighbors for chopsticks (token passing)",
+    "4. Limit diners": "Only allow 4 philosophers to try (N-1 rule)",
+    "5. Asymmetric": "Odd philosophers grab left first, even grab right",
+}
+
+print("DINING PHILOSOPHERS SOLUTIONS:")
+for solution, desc in solutions.items():
+    print(f"  {solution}: {desc}")
+
+# THIS PROBLEM MODELS:
+# - Resource allocation in OS
+# - Database transaction locks
+# - Network protocol design
+# - Distributed system consensus</div>
+
+<div class="code-block"># ── STEP 5: Deadlock detection and recovery ──
+# Sometimes prevention is too expensive. Instead: DETECT and RECOVER.
+
+# DETECTION METHODS:
+# 1. Resource Allocation Graph (RAG):
+#    - Draw nodes for processes and resources
+#    - Edge from process → resource (requesting)
+#    - Edge from resource → process (holding)
+#    - CYCLE = deadlock!
+
+# 2. Timeout-based detection:
+#    - If a thread holds a lock too long → suspect deadlock
+#    - Use lock.acquire(timeout=5) in Python
+
+import threading
+
+lock = threading.Lock()
+
+def deadlock_safe_acquire():
+    """Acquire lock with timeout to avoid deadlock."""
+    acquired = lock.acquire(timeout=5.0)
+    if acquired:
+        try:
+            print("Lock acquired, doing work...")
+        finally:
+            lock.release()
+    else:
+        print("Timeout! Possible deadlock. Taking recovery action.")
+        # Recovery: skip the operation, retry, or escalate
+
+deadlock_safe_acquire()
+
+# RECOVERY METHODS:
+recovery = [
+    "1. Kill one process (sacrifice to save others)",
+    "2. Rollback (restore to previous state)",
+    "3. Preemption (forcefully take resource)",
+    "4. Restart everything (last resort)",
+]
+
+print("\nRECOVERY METHODS:")
+for method in recovery:
+    print(f"  {method}")</div>
+
+<div class="code-block"># ── STEP 6: Banker's Algorithm and real-world deadlock ──
+# BANKER'S ALGORITHM (Dijkstra, 1965):
+# Allocate resources only if the system stays in a SAFE STATE.
+
+# SAFE STATE: there exists a sequence where all processes can finish.
+# UNSAFE STATE: deadlock MIGHT occur (not guaranteed, but possible).
+
+# The algorithm simulates: "if I grant this request, can everyone still finish?"
+# If yes → grant. If no → make the process wait.
+
+def bankers_check(available, max_need, allocated):
+    """Simplified Banker's Algorithm safety check."""
+    n = len(max_need)
+    work = available.copy()
+    finish = [False] * n
+
+    while True:
+        found = False
+        for i in range(n):
+            if not finish[i]:
+                need = [max_need[i][j] - allocated[i][j] for j in range(len(available))]
+                if all(need[j] <= work[j] for j in range(len(available))):
+                    # This process can finish — release its resources
+                    work = [work[j] + allocated[i][j] for j in range(len(available))]
+                    finish[i] = True
+                    found = True
+        if not found:
+            break
+
+    return all(finish)  # True = safe state
+
+# REAL-WORLD DEADLOCKS:
+real_deadlocks = {
+    "Database": "Two transactions lock rows the other needs",
+    "Distributed systems": "Network partition causes circular waits",
+    "File systems": "One process locks file A, another locks file B",
+    "Django/ORM": "Database transaction deadlocks on concurrent updates",
+    "Docker": "Container waiting on volume, volume waiting on container",
+}
+
+print("REAL-WORLD DEADLOCK SCENARIOS:")
+for context, example in real_deadlocks.items():
+    print(f"  {context}: {example}")
+
+# HOW TO HANDLE IN DJANGO (your project):
+# 1. Use select_for_update() with proper ordering
+# 2. Keep transactions SHORT
+# 3. Access tables in CONSISTENT ORDER
+# 4. Set lock_timeout in database
+# 5. Use retry on deadlock (catch OperationalError, retry)
+
+# DEADLOCK SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Strategy         │ How                              │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Prevention       │ Break one Coffman condition     │
+# │ Avoidance        │ Banker's Algorithm (check safe) │
+# │ Detection        │ Timeout or graph cycle          │
+# │ Recovery         │ Kill, rollback, restart         │
+# │ Ignore (ostrich) │ Restart and hope (common in PC) │
+# └──────────────────┴──────────────────────────────────┘
+
+# Most general-purpose OSes (Linux, Windows) use the OSTRICH ALGORITHM:
+# Ignore deadlock entirely. If it happens, user restarts.
+# This is acceptable because deadlocks are rare in practice.</div>
 
 <div class="secret-box">💀 <strong>Deadlock = চার শর্তের অভিশাপ।</strong> Mutual exclusion + hold & wait + no preemption + circular wait। যেকোনো একটি ভাঙলে deadlock অসম্ভব। Banker's Algorithm আগে থেকে এড়ায়, detection পরে ধরে। কিন্তু deadlock শুধু CPU-র সম্পদেই সীমাবদ্ধ নয় — মেমোরিও একটি সম্পদ। আর মেমোরি কীভাবে বরাদ্দ হয়, কীভাবে ভাগ হয় — সেই রহস্য আসবে পরের দরজায়।</div>`,
   senior: {
