@@ -1515,159 +1515,387 @@ doors.push({
 </div>
 <div class="svg-caption">রি-র‍্যাঙ্কিং — ক্রস-এনকোডার দিয়ে top-k পুনর্বিন্যাস</div>
 
-<div class="code-block">Advanced Retrieval Patterns — Going Deep:
+<div class="code-block"># ── STEP 1: Parent-child chunking (small-to-big) ──
+# Problem: small chunks = better retrieval, but lose context.
+#          large chunks = better context, but worse precision.
+# Solution: TWO representations per chunk!
 
-১. PARENT-CHILD CHUNKING (Small-to-Big)
-  
-  সমস্যা: ছোট chunk = ভালো retrieval, কিন্তু 
-    হারায় context। বড় chunk = ভালো context, 
-    কিন্তু খারাপ retrieval precision।
-  
-  সমাধান: দুটি representation!
-    Child chunk (ছোট, ২০০ tokens) → retrieve করো
-    Parent chunk (বড়, ১০০০ tokens) → LLM-কে দাও
-  
-  → ছোট টুকরো মিল খোঁজে, বড় টুকরো context দেয়
+parent_child = """
+PARENT-CHILD CHUNKING:
 
-২. HyDE (Hypothetical Document Embeddings)
-  
-  সমস্যা: query ছোট, ডকুমেন্ট বড়। 
-    embedding mismatch।
-  
-  সমাধান: LLM দিয়ে hypothetical answer বানাও
-    Query: "What is RAG?"
-    → LLM: "RAG is a technique that combines 
-            retrieval with generation..."
-    → Embed this HYPOTHETICAL answer
-    → Search with this embedding
-  
-  → ভালো match কারণ answer ও doc একই length/style
-  → Gao et al. (2023)
+Child chunk (200 tokens): used for RETRIEVAL
+  → Small = precise embedding match
+  → Finds the exact relevant passage
 
-৩. QUERY TRANSFORMATION
-  
-  a) Query Rewriting:
-    Original: "revenue"
-    → "What was the total revenue for Q3 2024?"
-    → LLM-কে বলো: "rewrite this query for better 
-       document retrieval"
-  
-  b) Query Expansion:
-    Original: "machine learning"
-    → "machine learning, ML, artificial intelligence, 
-       deep learning, neural networks"
-    → synonyms ও related terms যোগ
-  
-  c) Sub-question Decomposition:
-    "Compare GPT-4 vs Claude for coding"
-    → "What are GPT-4's coding strengths?"
-    → "What are Claude's coding strengths?"
-    → প্রতিটি retrieve → combine
-  
-  d) Step-Back Prompting:
-    "What is the significance of Einstein's 1905 
-     paper on photoelectric effect?"
-    → Step-back: "What is the photoelectric effect?"
-    → প্রথমে broader context retrieve
+Parent chunk (1000 tokens): sent to LLM
+  → Large = full context for the answer
+  → LLM sees surrounding information
 
-৪. ENSEMBLE RETRIEVAL
-  
-  একাধিক retrieval method একসাথে:
-    Dense (semantic) top-50
-    BM25 (keyword) top-50  
-    HyDE top-20
-    → merge with RRF → top-10
-  
-  → প্রতিটা method-এর strength combine
+FLOW:
+  1. Query → embed → search child chunks → find best child
+  2. Look up the PARENT of that child
+  3. Send PARENT to LLM (not the child)
 
-৫. CONTEXTUAL COMPRESSION
-  
-  Retrieved chunk বড়? → LLM দিয়ে প্রাসঙ্গিক 
-  অংশ extract করো।
-  
-  Original: ২০০০ token chunk
-  → LLM: "Extract only parts relevant to: [query]"
-  → Compressed: ৫০০ tokens
-  
-  LangChain: ContextualCompressionRetriever
+Result: precise retrieval + full context = best of both worlds.
+"""
 
-৬. LATE CHUNKING (Jina, ২০২৪)
+print(parent_child)
 
-  সমস্যা: সাধারণ chunking করলে প্রতিটা chunk
-    আলাদা — context হারায়। "it", "he", "the company"
-    → কোন company? chunk একা, তাই embedding দুর্বল।
+# PYTHON IMPLEMENTATION:
+parent_child_code = """
+# Store both child and parent:
+class Document(models.Model):
+    content = models.TextField()
+    embedding = VectorField(dimensions=1536)
+    parent_id = models.ForeignKey('self', null=True, on_delete=models.CASCADE)
+    is_child = models.BooleanField(default=False)
 
-  সমাধান: পুরো ডকুমেন্ট আগে encode করো, পরে chunk করো।
-    → প্রতিটা chunk তার আশেপাশের context মনে রাখে।
-    → embedding আর একা নয় — পুরো ডকুমেন্টের অংশ।
+# Ingestion: create parent, then split into children
+parent = Document.objects.create(content=full_text, is_child=False)
+children = splitter.split_text(full_text)
+for child_text in children:
+    Document.objects.create(
+        content=child_text,
+        embedding=embed(child_text),
+        parent_id=parent,
+        is_child=True,
+    )
 
-  Before (standard chunking):
-    Doc → split into chunks → embed each chunk alone
-    → "it" → what is "it"? ❌
+# Retrieval: search children, return parents
+child = Document.objects.filter(is_child=True).annotate(
+    distance=CosineDistance('embedding', query_embedding)
+).order_by('distance').first()
 
-  Late Chunking:
-    Doc → embed WHOLE doc (long-context model)
-    → THEN split into chunk embeddings
-    → "it" → refers to company from earlier ✅
+# Return the PARENT (with full context):
+result = child.parent  # 1000 tokens instead of 200
+"""
 
-  → Jina Embeddings v2 (8K context) বা অনুরূপ
-  → long-context embedding model দরকার
-  → বিশেষ করে effective: coreference resolution ছাড়াই
-  → Gunther et al. (Jina AI, সেপ্টেম্বর ২০২৪)
+print(parent_child_code)</div>
 
-৭. CONTEXTUAL RETRIEVAL (Anthropic, সেপ্টেম্বর ২০২৪)
+<div class="code-block"># ── STEP 2: HyDE (Hypothetical Document Embeddings) ──
+# Problem: queries are SHORT, documents are LONG. Embedding mismatch.
+# Solution: generate a HYPOTHETICAL answer, embed THAT instead.
 
-  সমস্যা: chunk একা থাকলে তার "বৃহত্তর context" হারায়।
-    একটা chunk: "Q3 revenue increased 15%"
-    → কোন company? কোন year? কোন currency?
+hyde = """
+HOW HyDE WORKS:
 
-  সমাধান: প্রতিটা chunk-এর আগে short context prefix যোগ করো।
-    → LLM পুরো ডকুমেন্ট পড়ে প্রতিটা chunk-এর জন্য
-      50-100 token context summary বানায়।
-    → এই prefix chunk-এর সাথে embed ও BM25 index করো।
+1. User query: "What is RAG?"
+2. Ask LLM to generate a HYPOTHETICAL answer:
+   "RAG combines retrieval with generation. It retrieves
+    relevant documents and feeds them to an LLM..."
+3. Embed the HYPOTHETICAL answer (not the query)
+4. Search with this embedding
 
-  Example:
-    Original chunk:
-    "Q3 revenue increased 15% over the previous quarter."
+WHY IT WORKS:
+  Query embedding: [short, question-like] → doesn't match documents well
+  Hypothetical answer: [long, document-like] → matches documents much better!
 
-    Contextual prefix (LLM-generated):
-    "This chunk is from Acme Corp's 2024 Q3 earnings
-     report. The company is a SaaS platform."
+The hypothetical answer is WRONG (hallucinated), but its EMBEDDING
+is similar to real documents about the topic.
+→ Better retrieval even though the answer itself is fabricated.
 
-    Stored as: [prefix] + [original chunk]
-    → retrieval accuracy dramatically up
+Paper: Gao et al. (2023) "Precise Zero-Shot Dense Retrieval"
+"""
 
-  Anthropic-এর results:
-    → baseline: 9% failure rate
-    → + contextual retrieval: 4.9% failure
-    → + contextual + reranking + HyDE: 2.5% failure
-    → 67% reduction in retrieval failures!
+print(hyde)
 
-  Cost: প্রতিটা chunk-এর জন্য একটা ছোট LLM call
-    → prompt caching দিয়ে ~$1.02 / মিলিয়ন tokens
-    → long doc (1000 pages) ~= $2.30 একবারে
-    → index করার সময় একবার, query করার সময় ফ্রি
+# HyDE IMPLEMENTATION:
+hyde_code = """
+def hyde_retrieve(query, top_k=5):
+    # 1. Generate hypothetical answer:
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "Generate a brief, factual answer."},
+            {"role": "user", "content": query}
+        ],
+        temperature=0.7,
+        max_tokens=200,
+    )
+    hypothetical_answer = response.choices[0].message.content
 
-ACCURACY COMPARISON:
+    # 2. Embed the hypothetical answer:
+    hyde_embedding = embed(hypothetical_answer)
 
-  # ──────────────────────────# ──────────# 
-  #  Method                   #  Accuracy # 
-  # ──────────────────────────# ──────────# 
-  #  Naive RAG                #  ৬০%      # 
-  #  + Hybrid search          #  ৭০%      # 
-  #  + Reranking              #  ৭৮%      # 
-  #  + Parent-child           #  ৮২%      # 
-  #  + Query transform        #  ৮৫%      # 
-  #  + HyDE                   #  ৮৭%      # 
-  #  + Late chunking          #  ৮৯%      # 
-  #  + Contextual retrieval   #  ৯২%      # 
-  #  All combined             #  ৯৫%+     # 
-  # ──────────────────────────# ──────────# 
+    # 3. Search with this embedding:
+    docs = Document.objects.annotate(
+        distance=CosineDistance('embedding', hyde_embedding)
+    ).order_by('distance')[:top_k]
 
-LATENCY IMPACT:
-  Naive: ১০০ms
-  Advanced: ৩০০-৫০০ms (extra LLM calls)
-  → trade-off: accuracy vs speed</div>
+    return docs
+"""
+
+print(hyde_code)
+
+# WHEN TO USE HyDE:
+when_hyde = {
+    "Short queries": "HyDE shines when queries are very short",
+    "Technical queries": "Generates domain-specific terminology",
+    "Cross-language": "Generate in document language, then search",
+    "Complex questions": "Hypothetical answer captures nuance",
+}
+print("WHEN TO USE HyDE:")
+for case, desc in when_hyde.items():
+    print(f"  {case}: {desc}")</div>
+
+<div class="code-block"># ── STEP 3: Query transformation techniques ──
+# Transform the user's query BEFORE retrieval for better results.
+
+transformations = {
+    "Query Rewriting": {
+        "what": "LLM rewrites query for better document matching",
+        "example": "'revenue' → 'What was total revenue for Q3 2024?'",
+        "gain": "+5-10% accuracy",
+    },
+    "Query Expansion": {
+        "what": "Add synonyms and related terms",
+        "example": "'ML' → 'machine learning, ML, AI, deep learning, neural nets'",
+        "gain": "+5-8% accuracy",
+    },
+    "Sub-question Decomposition": {
+        "what": "Split complex query into sub-questions",
+        "example": "'Compare GPT-4 vs Claude' → ['GPT-4 strengths?', 'Claude strengths?']",
+        "gain": "+10-15% accuracy",
+    },
+    "Step-Back Prompting": {
+        "what": "Generate a broader context query first",
+        "example": "'Einstein 1905 photoelectric' → 'What is photoelectric effect?'",
+        "gain": "+8-12% accuracy",
+    },
+    "Multi-Query Generation": {
+        "what": "Generate N different phrasings, search all",
+        "example": "'Python sort list' → ['sort Python array', 'Python sorted() function', ...]",
+        "gain": "+10-15% accuracy",
+    },
+}
+
+print("QUERY TRANSFORMATION TECHNIQUES:")
+for technique, info in transformations.items():
+    print(f"\n  {technique}")
+    print(f"    What: {info['what']}")
+    print(f"    Example: {info['example']}")
+    print(f"    Gain: {info['gain']}")
+
+# MULTI-QUERY IMPLEMENTATION:
+multi_query_code = """
+def multi_query_retrieve(query, n_queries=3, top_k=5):
+    # 1. Generate N alternative queries:
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": f"Generate {n_queries} alternative phrasings of this query, one per line."},
+            {"role": "user", "content": query}
+        ],
+        temperature=0.7,
+    )
+    queries = [query] + response.choices[0].message.content.strip().split("\\n")
+
+    # 2. Search with each query:
+    all_results = []
+    for q in queries:
+        q_emb = embed(q)
+        results = Document.objects.annotate(
+            distance=CosineDistance('embedding', q_emb)
+        ).order_by('distance')[:top_k]
+        all_results.extend(results)
+
+    # 3. Deduplicate and rank by frequency:
+    # Chunks found by multiple queries = more relevant
+    from collections import Counter
+    doc_counts = Counter(all_results)
+    ranked = doc_counts.most_common(top_k)
+
+    return [doc for doc, count in ranked]
+"""
+
+print(multi_query_code)</div>
+
+<div class="code-block"># ── STEP 4: Ensemble retrieval (combine multiple methods) ──
+# Don't rely on ONE retrieval method. COMBINE them.
+
+ensemble = """
+ENSEMBLE RETRIEVAL:
+
+Run MULTIPLE retrievers in parallel:
+  1. Dense (vector) search: top-50
+  2. BM25 (keyword) search: top-50
+  3. HyDE search: top-20
+
+Merge using Reciprocal Rank Fusion (RRF):
+  RRF_score(doc) = sum(1 / (k + rank_in_each_method))
+  → k=60 (typical constant)
+  → Documents ranked high by MULTIPLE methods win
+
+Result: combines strengths of each method.
+  Vector: semantic matching
+  BM25: exact keyword matching
+  HyDE: hypothetical document matching
+"""
+
+print(ensemble)
+
+# RRF IMPLEMENTATION:
+rrf_code = """
+def reciprocal_rank_fusion(result_lists, k=60):
+    \"\"\"Merge multiple ranked lists using RRF.\"\"\"
+    scores = {}
+    for result_list in result_lists:
+        for rank, doc in enumerate(result_list, 1):
+            if doc.id not in scores:
+                scores[doc.id] = {"doc": doc, "score": 0}
+            scores[doc.id]["score"] += 1 / (k + rank)
+
+    # Sort by fused score:
+    ranked = sorted(scores.values(), key=lambda x: -x["score"])
+    return [item["doc"] for item in ranked]
+
+# USAGE:
+dense_results = vector_search(query, top_k=50)    # semantic
+keyword_results = bm25_search(query, top_k=50)     # exact match
+hyde_results = hyde_retrieve(query, top_k=20)      # hypothetical
+
+# Merge with RRF:
+final_results = reciprocal_rank_fusion([
+    dense_results, keyword_results, hyde_results
+])[:5]  # top 5 after fusion
+"""
+
+print(rrf_code)</div>
+
+<div class="code-block"># ── STEP 5: Contextual compression and late chunking ──
+# Two techniques to improve chunk QUALITY.
+
+# CONTEXTUAL COMPRESSION:
+compression = """
+PROBLEM: Retrieved chunk is 2000 tokens, but only 200 are relevant.
+SOLUTION: Use LLM to EXTRACT only the relevant part.
+
+Flow:
+  1. Retrieve chunk (2000 tokens)
+  2. LLM: "Extract only parts relevant to: [query]"
+  3. Get compressed chunk (200 tokens)
+  4. Send compressed to final LLM
+
+LangChain: ContextualCompressionRetriever
+Benefit: Saves context window, reduces noise.
+Cost: Extra LLM call per chunk (can be expensive).
+"""
+
+print(compression)
+
+# LATE CHUNKING (Jina AI, 2024):
+late_chunking = """
+PROBLEM: Standard chunking creates ISOLATED chunks.
+  Chunk: "Q3 revenue increased 15%"
+  → Which company? Which year? Which currency?
+  → The chunk doesn't know — its context is LOST.
+
+SOLUTION: Late Chunking
+  1. Embed the ENTIRE document first (long-context model)
+  2. THEN split into chunks
+  3. Each chunk's embedding retains document context
+
+Before (standard): Doc → split → embed each alone
+  "it" → what is "it"? embedding is confused.
+
+Late Chunking: Doc → embed whole → split embeddings
+  "it" → embedding knows "it" = the company.
+
+Requires: long-context embedding model (Jina v2, 8K context)
+Benefit: Better embeddings without extra API calls.
+"""
+
+print(late_chunking)
+
+# CONTEXTUAL RETRIEVAL (Anthropic, 2024):
+contextual_retrieval = """
+LATEST TECHNIQUE (September 2024, Anthropic):
+
+PROBLEM: Same as late chunking — chunks lose context.
+
+SOLUTION: Add LLM-generated context PREFIX to each chunk.
+
+1. Before indexing: LLM reads full document
+2. For each chunk: LLM generates 50-100 token context summary
+3. Store: [context prefix] + [original chunk] + [embedding]
+
+Example:
+  Original: "Q3 revenue increased 15% over the previous quarter."
+  Prefix: "From Acme Corp's 2024 Q3 earnings report (SaaS company)."
+  Stored: [prefix] + [original chunk]
+
+RESULTS (Anthropic):
+  Baseline failure rate:    9.0%
+  + Contextual retrieval:   4.9%  (49% reduction)
+  + + reranking + HyDE:     2.5%  (67% reduction!)
+
+Cost: ~$1.02 per million tokens (with prompt caching)
+For 1000-page document: ~$2.30 one-time at indexing.
+"""
+
+print(contextual_retrieval)</div>
+
+<div class="code-block"># ── STEP 6: Accuracy comparison and choosing techniques ──
+# How much does each technique improve accuracy?
+
+accuracy = {
+    "Naive RAG": 60,
+    "+ Hybrid search (vector + keyword)": 70,
+    "+ Re-ranking (cross-encoder)": 78,
+    "+ Parent-child chunking": 82,
+    "+ Query transformation": 85,
+    "+ HyDE (hypothetical docs)": 87,
+    "+ Late chunking": 89,
+    "+ Contextual retrieval (Anthropic)": 92,
+    "All combined + evaluation": 95,
+}
+
+print("ACCURACY BY TECHNIQUE:")
+for technique, acc in accuracy.items():
+    bar = "#" * (acc // 2)
+    print(f"  {technique:45} {acc}% {bar}")
+
+# LATENCY TRADE-OFF:
+latency = """
+LATENCY PER QUERY:
+  Naive RAG:              ~100ms
+  + Hybrid search:        ~150ms
+  + Re-ranking:           ~300ms
+  + Query transformation: ~500ms (extra LLM call)
+  + HyDE:                 ~700ms (extra LLM call)
+  + Contextual retrieval: 0ms extra (done at indexing)
+
+TRADE-OFF: accuracy vs latency
+  More techniques = better accuracy but slower responses
+  Solution: cache LLM-generated queries, pre-compute at indexing
+"""
+
+print(latency)
+
+# CHOOSING TECHNIQUES BY USE CASE:
+choosing = {
+    "Quick prototype": ["Naive RAG only"],
+    "Simple FAQ bot": ["Naive + hybrid search"],
+    "Production Q&A": ["Hybrid + re-ranking + threshold"],
+    "Document analysis": ["Parent-child + re-ranking"],
+    "Complex research": ["Multi-query + HyDE + re-ranking"],
+    "Enterprise (high stakes)": ["All techniques + RAGAS eval"],
+}
+
+print("CHOOSING TECHNIQUES BY USE CASE:")
+for use_case, techniques in choosing.items():
+    print(f"\n  {use_case}:")
+    for tech in techniques:
+        print(f"    → {tech}")
+
+# THE BIG PICTURE:
+# Start with naive RAG (60% accuracy).
+# Add techniques ONE AT A TIME, measuring improvement.
+# Each technique adds 5-15% accuracy but also complexity/latency.
+# The goal is 85-95% accuracy — production-grade RAG.
+# Contextual retrieval (Anthropic 2024) is the biggest single improvement.
+# Combine multiple techniques for best results.
+# ALWAYS measure with RAGAS or human evaluation before deploying.</div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">⚠️ Naive Limit</div>"revenue" query → embed → search → কোনো revenue chunk। কিন্তু ভুল quarter, ভুল year, ভুল context। ৬০% সময় সঠিক।</div>
