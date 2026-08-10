@@ -1021,41 +1021,338 @@ Codd-এর সারি-কলাম থেকে Malkov-এর HNSW গ্র�
 </div>
 <div class="svg-caption">চিত্র: RAG pipeline — Vector DB (অর্থ) + Relational DB (কাঠামো) → LLM গ্রাউন্ডেড উত্তর।</div>
 
-<div class="code-block"># — Python: Hybrid RAG Pipeline —
+<div class="code-block"># ── STEP 1: What is RAG? ──
+# RAG = Retrieval Augmented Generation
+# Give an LLM RELEVANT DOCUMENTS as context so it answers accurately.
 
-  # Vector + Relational hybrid search
-  def rag_answer(question, user_id):
-      # ১. Query embedding তৈরি
-      q_vec = embed_model.encode(question)
+# WITHOUT RAG (LLM alone):
+# - LLM might hallucinate (make things up)
+# - LLM doesn't know your private data
+# - LLM's knowledge is frozen at training time
 
-      # ২. Vector DB: semantic search
-      docs = vector_db.query(
-          vector=q_vec, top_k=5,
-          filter={"source": "knowledge_base"}
-      )  # → প্রাসঙ্গিক অনুচ্ছেদ
+# WITH RAG:
+# - Retrieve relevant documents from your database
+# - Feed them to the LLM as context
+# - LLM answers BASED ON the retrieved documents
+# - Result: accurate, grounded, up-to-date answers
 
-      # ৩. Relational DB: structured filter
-      user = pg.query(
-          "SELECT tier, permissions FROM users WHERE id = %s",
-          [user_id]
-      )  # → ব্যবহারকারীর অনুমতি
+# THE RAG PIPELINE:
+pipeline = {
+    "1. INGEST": "Documents → chunks → embeddings → vector database",
+    "2. QUERY": "User question → embedding → vector search → top-K docs",
+    "3. AUGMENT": "Documents + question → prompt with context",
+    "4. GENERATE": "LLM generates answer using the retrieved context",
+    "5. CITE": "Return answer + source citations",
+}
 
-      # ৪. Context একত্রিত করো
-      context = "\n".join(d.content for d in docs)
-      if user.permissions != "premium":
-          context = filter_premium(context)
+print("RAG PIPELINE:")
+for step, desc in pipeline.items():
+    print(f"  {step}: {desc}")
 
-      # ৫. LLM-কে grounded prompt
-      answer = llm.chat(
-          messages=[{
-              "role": "system",
-              "content": "শুধু context থেকে উত্তর দাও"
-          }, {
-              "role": "user",
-              "content": f"Context: {context}\nQ: {question}"
-          }]
-      )
-      return answer  # citation সহ</div>
+# WHY RAG IS BETTER THAN FINE-TUNING:
+# Fine-tuning: expensive, inflexible, hard to update
+# RAG: cheap, flexible, instant updates (just add documents)
+# For most use cases, RAG is the RIGHT choice.</div>
+
+<div class="code-block"># ── STEP 2: Document chunking ──
+# Before storing, documents must be CHUNKED.
+# A chunk = a small piece of text (200-500 words usually).
+
+# WHY CHUNK?
+# - Embeddings work better on short texts
+# - Retrieve only RELEVANT parts (not whole documents)
+# - LLM context has limited size
+
+chunking_strategies = {
+    "Fixed-size": "Split every N characters/words (simple, fast)",
+    "Sentence-based": "Split on sentence boundaries (better quality)",
+    "Paragraph-based": "Split on paragraph breaks (natural units)",
+    "Semantic": "Split where meaning changes (best quality, complex)",
+    "Sliding window": "Overlap chunks by N tokens (preserves context)",
+}
+
+print("CHUNKING STRATEGIES:")
+for strategy, desc in chunking_strategies.items():
+    print(f"  {strategy}: {desc}")
+
+# PYTHON CHUNKING (LangChain):
+chunking_code = """
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=500,       # each chunk ~500 characters
+    chunk_overlap=50,     # overlap 50 chars (preserves context)
+    separators=["\\n\\n", "\\n", ". ", " ", ""],  # split hierarchy
+)
+
+# Split a long document:
+document = open("handbook.pdf").read()
+chunks = splitter.split_text(document)
+print(f"Split into {len(chunks)} chunks")
+print(f"First chunk: {chunks[0][:200]}...")
+"""
+
+print("PYTHON CHUNKING (LangChain):")
+print(chunking_code)
+
+# CHUNK SIZE MATTERS:
+# Too small → loses context, fragmented answers
+# Too large → dilutes relevance, wastes context
+# Sweet spot: 200-500 words with 10-20% overlap</div>
+
+<div class="code-block"># ── STEP 3: Building the RAG pipeline ──
+# Complete RAG implementation in Python:
+
+rag_code = """
+from openai import OpenAI
+import numpy as np
+
+client = OpenAI()
+
+def embed(text):
+    \"\"\"Convert text to embedding vector.\"\"\"
+    response = client.embeddings.create(
+        model="text-embedding-3-small",
+        input=text
+    )
+    return response.data[0].embedding
+
+def rag_answer(question, top_k=5):
+    \"\"\"Full RAG pipeline: retrieve + generate.\"\"\"
+
+    # Step 1: Embed the question
+    question_embedding = embed(question)
+
+    # Step 2: Retrieve relevant documents (vector search)
+    from pgvector.django import CosineDistance
+    relevant_docs = Document.objects.annotate(
+        distance=CosineDistance('embedding', question_embedding)
+    ).filter(
+        distance__lt=0.3  # similarity threshold
+    ).order_by('distance')[:top_k]
+
+    if not relevant_docs:
+        return "I don't have information about that."
+
+    # Step 3: Build context from retrieved documents
+    context_parts = []
+    for i, doc in enumerate(relevant_docs, 1):
+        context_parts.append(f"[Source {i}] {doc.content}")
+    context = "\\n\\n".join(context_parts)
+
+    # Step 4: Generate answer using LLM
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "Answer the question based ONLY on the provided context. "
+                    "If the context doesn't contain the answer, say 'I don't know.' "
+                    "Cite sources using [Source N] format."
+                )
+            },
+            {
+                "role": "user",
+                "content": f"Context:\\n{context}\\n\\nQuestion: {question}"
+            }
+        ],
+        temperature=0.3  # low temperature = more factual
+    )
+
+    answer = response.choices[0].message.content
+    sources = [doc.source_url for doc in relevant_docs]
+    return {"answer": answer, "sources": sources}
+"""
+
+print(rag_code)
+
+# THE KEY COMPONENTS:
+# 1. Embedding model (convert text → vectors)
+# 2. Vector database (store and search vectors)
+# 3. LLM (generate answers from context)
+# 4. Prompt engineering (guide LLM to use context correctly)</div>
+
+<div class="code-block"># ── STEP 4: Advanced RAG techniques ──
+# Basic RAG retrieves documents. ADVANCED RAG does much more.
+
+advanced_techniques = {
+    "Re-ranking": {
+        "how": "After retrieval, re-rank results with a cross-encoder",
+        "why": "Vector search is fast but imprecise. Cross-encoder is slow but accurate.",
+        "benefit": "Better quality results at same speed",
+    },
+    "Hybrid Search": {
+        "how": "Combine vector search (semantic) + keyword search (BM25)",
+        "why": "Vector search misses exact keywords. BM25 misses synonyms.",
+        "benefit": "Best of both worlds",
+    },
+    "Query Expansion": {
+        "how": "Rewrite/expand the query before search",
+        "why": "User questions are often vague",
+        "benefit": "More relevant results",
+    },
+    "Multi-query": {
+        "how": "Generate multiple versions of the query, search each",
+        "why": "Different phrasings find different docs",
+        "benefit": "Higher recall",
+    },
+    "Parent-Child": {
+        "how": "Retrieve small chunks, return their parent document",
+        "why": "Small chunks match better, but context is lost",
+        "benefit": "Better embedding + better context",
+    },
+    "Self-RAG": {
+        "how": "LLM decides if retrieval is needed, checks results",
+        "why": "Not all questions need retrieval",
+        "benefit": "Fewer unnecessary searches, better accuracy",
+    },
+}
+
+print("ADVANCED RAG TECHNIQUES:")
+for technique, info in advanced_techniques.items():
+    print(f"\n  {technique}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# HYBRID SEARCH EXAMPLE:
+hybrid_code = """
+# Combine vector similarity + keyword matching:
+from django.db.models import Q
+
+def hybrid_search(question, question_embedding, top_k=5):
+    keywords = question.split()
+
+    # Vector search (semantic):
+    vector_results = Document.objects.annotate(
+        distance=CosineDistance('embedding', question_embedding)
+    ).filter(distance__lt=0.3).order_by('distance')[:20]
+
+    # Keyword search (exact):
+    keyword_results = Document.objects.filter(
+        Q(content__icontains=question) |
+        Q(content__icontains=keywords[0])
+    )[:20]
+
+    # Merge and re-rank:
+    all_results = set(vector_results) | set(keyword_results)
+    return rerank(question, all_results)[:top_k]
+"""
+
+print(hybrid_code)</div>
+
+<div class="code-block"># ── STEP 5: Evaluation and quality ──
+# How do you know your RAG system is working?
+
+# EVALUATION METRICS:
+metrics = {
+    "Retrieval Quality": {
+        "metric": "Recall@K",
+        "how": "Of relevant documents, how many did we retrieve?",
+        "target": "> 90%",
+    },
+    "Answer Faithfulness": {
+        "metric": "Is the answer supported by retrieved context?",
+        "how": "Check if every claim in the answer traces to a source",
+        "target": "No hallucinations",
+    },
+    "Answer Relevance": {
+        "metric": "Does the answer actually address the question?",
+        "how": "Human evaluation or LLM-as-judge",
+        "target": "Direct, complete answer",
+    },
+    "Latency": {
+        "metric": "End-to-end response time",
+        "how": "Measure from question to answer",
+        "target": "< 3 seconds",
+    },
+}
+
+print("RAG EVALUATION METRICS:")
+for metric, info in metrics.items():
+    print(f"\n  {metric}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# COMMON RAG PROBLEMS AND FIXES:
+problems = {
+    "Low retrieval quality": "Improve chunking, try different embedding model, add re-ranking",
+    "LLM ignores context": "Improve prompt ('Answer ONLY from context'), reduce temperature",
+    "Hallucinations": "Add 'If not in context, say I don't know' to prompt",
+    "Slow response": "Cache common queries, use faster embedding model, parallel retrieval",
+    "Context too long": "Reduce top_k, summarize retrieved docs before passing to LLM",
+    "Irrelevant results": "Add metadata filtering, improve chunk size, use hybrid search",
+}
+
+print("\nCOMMON RAG PROBLEMS:")
+for problem, fix in problems.items():
+    print(f"  {problem}: → {fix}")</div>
+
+<div class="code-block"># ── STEP 6: Production RAG architecture ──
+# A production RAG system has many components:
+
+architecture = """
+PRODUCTION RAG ARCHITECTURE:
+
+INGESTION PIPELINE (offline, batch):
+  Documents → Chunking → Embedding → Vector DB (pgvector/Pinecone)
+                                    → Relational DB (metadata)
+
+QUERY PIPELINE (real-time):
+  User Question
+    → Query Embedding (OpenAI/local model)
+    → Vector Search (pgvector)
+    → [Optional] Keyword Search (PostgreSQL full-text)
+    → [Optional] Re-ranking (cross-encoder)
+    → Context Assembly
+    → LLM Generation (GPT-4/Claude/local LLM)
+    → Response + Citations
+
+CACHING LAYER:
+  Redis: cache common queries (avoid re-computing)
+  Semantic cache: cache queries with similar embeddings
+
+MONITORING:
+  Track: retrieval quality, answer faithfulness, latency, user feedback
+  Alert: latency spikes, low retrieval scores, high hallucination rate
+"""
+
+print(architecture)
+
+# TOOLS FOR PRODUCTION RAG:
+tools = {
+    "LangChain": "Framework for building RAG pipelines",
+    "LlamaIndex": "Data framework for LLM applications",
+    "Haystack": "End-to-end RAG framework (by deepset)",
+    "DSPy": "Declarative RAG programming",
+    "Ragas": "RAG evaluation framework",
+    "LangSmith": "Monitoring and debugging for LLM apps",
+}
+
+print("RAG TOOLS:")
+for tool, desc in tools.items():
+    print(f"  {tool}: {desc}")
+
+# THE FUTURE OF RAG:
+# RAG is becoming the STANDARD way to build LLM applications.
+# Every company will have a RAG system for their internal knowledge.
+# Understanding databases + vectors + RAG = highly valuable skill.
+
+# CONGRATULATIONS!
+# You now understand the COMPLETE database landscape:
+# - Relational databases (SQL, PostgreSQL, MySQL)
+# - NoSQL databases (Redis, MongoDB, Neo4j)
+# - Distributed databases (sharding, replication)
+# - Data warehouses (OLAP, star schema)
+# - Vector databases (pgvector, HNSW, RAG)
+
+# From Codd's 1970 relational model to 2025 vector databases —
+# 55 years of data innovation, and you understand every layer.
+
+# This knowledge is POWER. Use it to build better applications,
+# make better decisions, and advance your career.
+# Data is the foundation of every modern system.
+# You now know how to build that foundation.</div>
 
 <div class="secret-box">
 <strong>🔑 চূড়ান্ত গোপন সত্য:</strong> ডাটাবেস একটি প্রযুক্তি নয় — এটি একটি মানসিকতা।<br>
