@@ -1200,77 +1200,354 @@ doors.push({
 </div>
 <div class="svg-caption">Transformer ব্লক — attention + feed-forward + residual; একই ব্লক ৯৬ বার রিপিট হয়</div>
 
-<div class="code-block">Transformer Architecture — ৭টি স্তর:
+<div class="code-block"># ── STEP 1: The Transformer architecture ──
+# A Transformer is a stack of identical BLOCKS.
+# Each block processes tokens and passes them to the next.
 
-# ─────────────────────────────────────────# 
-#  INPUT: "The cat sat"                    # 
-#  → Tokenizer → [464, 3797, 3413]        # 
-# ─────────────────────# ───────────────────# 
-                      ↓
-# ─────────────────────────────────────────# 
-#  Layer 1: EMBEDDING                      # 
-#  প্রতিটি টোকেন → হাজার-ডাইমেনশন ভেক্টর  # 
-#  "cat" → [0.2, -0.4, 0.8, ...]          # 
-#                                          # 
-#  + POSITIONAL ENCODING                   # 
-#  "cat" দ্বিতীয় — এই অবস্থান যোগ হয়    # 
-#  → কারণ Transformer একসাথে সব দেখে,   # 
-#    ক্রম জানতে হয়                       # 
-# ─────────────────────# ───────────────────# 
-                      ↓
-# ─────────────────────────────────────────# 
-#  Layer 2: MULTI-HEAD ATTENTION           # 
-#  প্রতিটি শব্দ বাকি সবের দিকে তাকায়     # 
-#  "sat" কে? → "cat" sat                   # 
-#  → ৯৬টা head, প্রতিটা আলাদা দৃষ্টি     # 
-# ─────────────────────# ───────────────────# 
-                      ↓
-# ─────────────────────────────────────────# 
-#  Layer 3: FEED-FORWARD NETWORK           # 
-#  প্রতিটি টোকেনের তথ্য প্রক্রিয়াকরণ     # 
-#  "cat" + context → গভীরতর উপস্থাপন     # 
-#  → এখানেই "জ্ঞান" সংরক্ষিত (memorized) # 
-#  → MLP: দুটি linear layer + ReLU/GELU  # 
-# ─────────────────────# ───────────────────# 
-                      ↓
-# ─────────────────────────────────────────# 
-#  Layer 4: RESIDUAL CONNECTION            # 
-#  input + output = পরের স্তরে             # 
-#  → তথ্য হারাতে দেয় না                  # 
-#  → gradient flow নিশ্চিত করে            # 
-#  → "skip connection"                     # 
-# ─────────────────────# ───────────────────# 
-                      ↓
-# ─────────────────────────────────────────# 
-#  Layer 5: LAYER NORM                     # 
-#  প্রতিটি স্তরে ভেক্টর স্থিতিশীল করো    # 
-#  → training stability                    # 
-#  → স্কেল ঠিক রাখে                       # 
-# ─────────────────────# ───────────────────# 
-                      ↓
-# ─────────────────────────────────────────# 
-#  Layer 6: REPEAT (N LAYERS)              # 
-#  পুরো ব্লকটা N বার রিপিট করো            # 
-#  GPT-3: ৯৬ layers                        # 
-#  GPT-4: ~১২০ layers (est.)               # 
-#  প্রতিটা layer আরও গভীর বোঝা যোগ করে   # 
-# ─────────────────────# ───────────────────# 
-                      ↓
-# ─────────────────────────────────────────# 
-#  Layer 7: OUTPUT HEAD                    # 
-#  চূড়ান্ত ভেক্টর → vocabulary সম্ভাবনা  # 
-#  → softmax → সম্ভাবনা ডিস্ট্রিবিউশন     # 
-#  → সর্বোচ্চ সম্ভাবনার টোকেন = উত্তর     # 
-#  → "sat" এর পরে → "on" (সর্বোচ্চ)      # 
-# ─────────────────────────────────────────# 
+# TRANSFORMER BLOCK (what GPT does inside):
+transformer_flow = """
+INPUT: "The cat sat"
+  ↓
+1. TOKENIZER: text → token IDs → [464, 3797, 3413]
+  ↓
+2. EMBEDDING + POSITIONAL ENCODING:
+   Each token ID → high-dimensional vector
+   Position info added (Transformer has no built-in order)
+  ↓
+3. TRANSFORMER BLOCK (repeated N times):
+   a. Layer Norm (stabilize values)
+   b. Multi-Head Attention (tokens communicate)
+   c. Residual connection (add input to output)
+   d. Layer Norm (stabilize again)
+   e. Feed-Forward Network (process each token)
+   f. Residual connection
+  ↓
+4. OUTPUT HEAD: final vectors → vocabulary probabilities
+  ↓
+5. SAMPLING: pick next token from probability distribution
+  ↓
+OUTPUT: "on" (most likely next token)
+"""
 
-PARAMETERS:
-  GPT-3: ১৭৫ বিলিয়ন প্যারামিটার
-  GPT-4: ~১.৭ ট্রিলিয়ন (est., mixture)
-  Llama 3 405B: ৪০৫ বিলিয়ন
-  
-  → প্রতিটি প্যারামিটার একটি "সংযোগ"
-  → এই সংযোগগুলো ট্রেইনিংয়ে শেখা হয়</div>
+print(transformer_flow)
+
+# MODEL SIZES (by parameter count):
+model_sizes = {
+    "GPT-2": "1.5 billion parameters",
+    "GPT-3": "175 billion parameters",
+    "GPT-4": "~1.7 trillion (estimated, Mixture of Experts)",
+    "Claude 3 Opus": "~137 billion (estimated)",
+    "Llama 3 8B": "8 billion parameters",
+    "Llama 3 70B": "70 billion parameters",
+    "Llama 3 405B": "405 billion parameters",
+}
+
+print("MODEL SIZES:")
+for model, size in model_sizes.items():
+    print(f"  {model}: {size}")</div>
+
+<div class="code-block"># ── STEP 2: Embeddings and positional encoding ──
+# Transformers process ALL tokens simultaneously (not sequentially).
+# So they need POSITIONAL ENCODING to know word order.
+
+import numpy as np
+
+# Without positional encoding:
+#   "dog bites man" and "man bites dog" would look identical!
+# Positional encoding adds ORDER information.
+
+# SINUSOIDAL POSITIONAL ENCODING (from the original paper):
+def positional_encoding(position, d_model):
+    """Generate positional encoding for a position."""
+    encoding = np.zeros(d_model)
+    for i in range(0, d_model, 2):
+        encoding[i] = np.sin(position / (10000 ** (i / d_model)))
+        if i + 1 < d_model:
+            encoding[i + 1] = np.cos(position / (10000 ** (i / d_model)))
+    return encoding
+
+# Each position gets a unique pattern:
+for pos in range(5):
+    pe = positional_encoding(pos, 8)
+    print(f"Position {pos}: {np.round(pe, 3)}")
+
+# MODERN POSITIONAL ENCODING:
+modern_pe = {
+    "Sinusoidal (original)": "Fixed sine/cosine patterns (Vaswani 2017)",
+    "Learned absolute": "Model learns position embeddings (GPT-2, BERT)",
+    "RoPE (Rotary)": "Rotates embeddings based on position (Llama, GPT-NeoX)",
+    "ALiBi": "Adds bias based on distance (BLOOM, MPT)",
+}
+
+print("\nPOSITIONAL ENCODING TYPES:")
+for pe_type, desc in modern_pe.items():
+    print(f"  {pe_type}: {desc}")
+
+# RoPE (Rotary Position Embedding) is the modern standard.
+# It enables better generalization to longer sequences.
+# Most open-source LLMs (Llama 3, Mistral, Qwen) use RoPE.</div>
+
+<div class="code-block"># ── STEP 3: Feed-forward network (FFN) ──
+# After attention, each token goes through a feed-forward network.
+# This is where the model's "knowledge" is stored.
+
+# FFN structure:
+ffn = """
+Each token's vector goes through:
+
+1. LINEAR LAYER: expand dimensions (e.g., 4096 → 16384)
+   This creates a WIDER space for computation.
+
+2. ACTIVATION: GELU or SwiGLU (modern)
+   Adds non-linearity (lets the model learn complex patterns)
+
+3. LINEAR LAYER: compress back (16384 → 4096)
+   Project back to original dimensions.
+
+This is where MEMORIZATION happens:
+  - Facts ("Paris is the capital of France")
+  - Skills ("to sort a list, use sorted()")
+  - Patterns (grammar, syntax, style)
+
+The FFN is essentially a KEY-VALUE MEMORY:
+  - First linear layer creates "keys" (what pattern is this?)
+  - Second linear layer creates "values" (what should I output?)
+"""
+
+print(ffn)
+
+# ACTIVATION FUNCTIONS:
+activations = {
+    "ReLU (old)": "max(0, x) — simple, but can kill neurons (dying ReLU)",
+    "GELU (GPT-2, BERT)": "Smoother version of ReLU, standard for years",
+    "SwiGLU (Llama, modern)": "Gated linear unit — better performance",
+    "GeGLU": "GELU-based gating variant",
+}
+
+print("ACTIVATION FUNCTIONS:")
+for act, desc in activations.items():
+    print(f"  {act}: {desc}")
+
+# FFN DIMENSIONS (typical):
+ffn_dims = {
+    "GPT-3 175B": "d_model=12288, d_ff=49152 (4x expansion)",
+    "Llama 3 8B": "d_model=4096, d_ff=14336 (3.5x expansion)",
+    "Llama 3 70B": "d_model=8192, d_ff=28672 (3.5x expansion)",
+}
+
+print("FFN DIMENSIONS:")
+for model, dims in ffn_dims.items():
+    print(f"  {model}: {dims}")</div>
+
+<div class="code-block"># ── STEP 4: Residual connections and layer norm ──
+# Two critical techniques for training deep networks.
+
+# RESIDUAL CONNECTIONS (skip connections):
+residual = """
+WITHOUT residual:
+  input → [transform] → output
+  If the transform is bad, output is garbage.
+
+WITH residual:
+  input → [transform] → input + output (ADD input)
+  The model can always fall back to the input.
+  Even if the transform adds nothing, the signal passes through.
+
+This allows DEEP networks (96+ layers) to train.
+Without residuals, gradient vanishes by layer 10.
+With residuals, gradient flows freely through 100+ layers.
+"""
+
+print(residual)
+
+# LAYER NORMALIZATION:
+layer_norm = """
+WHY: values can EXPLODE or VANISH across layers.
+  Layer 1 output: [0.01, 0.02, ...]
+  Layer 50 output: [1000000, 2000000, ...] → EXPLOSION
+
+Layer Norm normalizes values to mean=0, std=1:
+  output = (x - mean) / std * gamma + beta
+  → Keeps values in a stable range
+  → Enables consistent training across deep layers
+
+PLACEMENT (two approaches):
+  Post-LN (original): after attention/FFN [Vaswani 2017]
+  Pre-LN (modern): before attention/FFN [GPT-2, Llama]
+  Pre-LN is more stable for training (modern standard)
+"""
+
+print(layer_norm)
+
+# IN CODE:
+ln_code = """
+import numpy as np
+
+def layer_norm(x, gamma=1.0, beta=0.0, eps=1e-5):
+    \"\"\"Normalize across features (last dimension).\"\"\"
+    mean = np.mean(x, axis=-1, keepdims=True)
+    var = np.var(x, axis=-1, keepdims=True)
+    x_norm = (x - mean) / np.sqrt(var + eps)
+    return gamma * x_norm + beta
+
+def transformer_block(x):
+    \"\"\"One transformer block with pre-LN.\"\"\"
+    # Pre-LN Attention:
+    attn_out = attention(layer_norm(x))   # normalize, then attend
+    x = x + attn_out                       # residual connection
+
+    # Pre-LN FFN:
+    ffn_out = feed_forward(layer_norm(x)) # normalize, then process
+    x = x + ffn_out                        # residual connection
+
+    return x
+"""
+
+print(ln_code)</div>
+
+<div class="code-block"># ── STEP 5: Decoder-only architecture (GPT) ──
+# GPT models use DECODER-ONLY architecture.
+# They only see PAST tokens (causal/unidirectional).
+
+# THREE TYPES OF TRANSFORMERS:
+transformer_types = {
+    "Encoder-only (BERT)": {
+        "sees": "ALL tokens (bidirectional)",
+        "task": "Understanding (classification, NER, search)",
+        "models": "BERT, RoBERTa, DeBERTa",
+    },
+    "Decoder-only (GPT)": {
+        "sees": "PAST tokens only (causal/unidirectional)",
+        "task": "Generation (text, code, chat)",
+        "models": "GPT-3/4, Claude, Llama, Mistral",
+    },
+    "Encoder-Decoder (T5)": {
+        "sees": "Encoder sees all, decoder sees past",
+        "task": "Translation, summarization (seq2seq)",
+        "models": "T5, BART, Whisper",
+    },
+}
+
+print("TRANSFORMER TYPES:")
+for ttype, info in transformer_types.items():
+    print(f"\n  {ttype}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# WHY DECODER-ONLY DOMINATES:
+why_decoder = """
+1. SIMPLICITY: one architecture for all tasks
+2. SCALING: trains better at scale than encoder-decoder
+3. FLEXIBILITY: can do understanding + generation
+4. EMERGENT ABILITIES: at scale, decoder-only models
+   develop abilities (reasoning, coding) that encoder models can't.
+5. INSTRUCTION FOLLOWING: natural for chat/instruction format
+
+Almost all modern LLMs (GPT-4, Claude, Llama, Gemini) are decoder-only.
+"""
+
+print(why_decoder)
+
+# CAUSAL MASKING (how decoder-only works):
+causal_mask = """
+In decoder-only models, attention is CAUSAL:
+  Token at position 5 can ONLY attend to positions 1-4 (the past).
+  It CANNOT see future tokens.
+
+This is enforced by a CAUSAL MASK:
+  [1, 0, 0, 0, 0]   ← token 1 sees only itself
+  [1, 1, 0, 0, 0]   ← token 2 sees 1-2
+  [1, 1, 1, 0, 0]   ← token 3 sees 1-3
+  [1, 1, 1, 1, 0]   ← token 4 sees 1-4
+  [1, 1, 1, 1, 1]   ← token 5 sees 1-5 (all past)
+
+This is what makes autoregressive generation possible:
+  predict next token → append → predict next → append → ...
+"""
+
+print(causal_mask)</div>
+
+<div class="code-block"># ── STEP 6: The complete picture ──
+# How a complete GPT-style model works end-to-end:
+
+complete_pipeline = """
+THE COMPLETE LLM PIPELINE (GPT-4 style):
+
+1. INPUT: "The capital of France is"
+   ↓
+2. TOKENIZER: → [464, 4468, 286, 3278, 318]  (5 tokens)
+   ↓
+3. EMBEDDING: token IDs → 5 vectors (each 8192 dims)
+   + POSITIONAL ENCODING (RoPE): add position info
+   ↓
+4. TRANSFORMER BLOCKS (x96 layers):
+   Each block:
+   a. Layer Norm → Multi-Head Attention (96 heads)
+   b. Residual connection
+   c. Layer Norm → Feed-Forward Network (SwiGLU)
+   d. Residual connection
+   
+   Each layer adds deeper understanding.
+   Early layers: syntax, grammar
+   Middle layers: semantics, meaning
+   Late layers: reasoning, knowledge
+   ↓
+5. OUTPUT PROJECTION: final vector → vocabulary logits
+   → 128,000 scores (one per token in vocabulary)
+   ↓
+6. SOFTMAX: convert logits to probabilities
+   → "Paris" gets probability 0.89
+   → "Lyon" gets probability 0.03
+   → "the" gets probability 0.01
+   ↓
+7. SAMPLING: pick next token
+   → "Paris" (highest probability)
+   ↓
+8. APPEND AND REPEAT:
+   "The capital of France is Paris"
+   → Now predict token after "Paris"
+   → Continue until done
+"""
+
+print(complete_pipeline)
+
+# PARAMETER COUNT BREAKDOWN (GPT-3 175B):
+param_breakdown = """
+GPT-3 175B parameters are distributed:
+
+Embedding layer:    ~0.5B (token + position embeddings)
+Attention layers:   ~60B (Q, K, V, O projections across 96 layers)
+FFN layers:         ~100B (two linear layers per block)
+Output head:        ~0.5B (projection to vocabulary)
+Total:              ~175B parameters
+
+Each parameter is a 16-bit float = 2 bytes
+175B * 2 bytes = 350 GB just to load the model!
+(Quantized to 4-bit = 87 GB — fits on one A100 GPU)
+"""
+
+print(param_breakdown)
+
+# SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Component        │ Role                            │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Embedding        │ Token → vector                  │
+# │ Positional Enc.  │ Add order information           │
+# │ Multi-Head Attn  │ Token-to-token communication    │
+# │ Feed-Forward     │ Knowledge storage/processing    │
+# │ Residual         │ Gradient flow + stability       │
+# │ Layer Norm       │ Value stabilization            │
+# │ Causal Mask      │ Prevent seeing future           │
+# │ Output Head      │ Vector → token probabilities    │
+# │ Softmax          │ Logits → probabilities          │
+# └──────────────────┴──────────────────────────────────┘
+
+# Understanding the Transformer architecture means
+# understanding HOW every modern AI model works.
+# GPT, Claude, Llama, Mistral, Gemini — they're ALL Transformers.
+# The details differ, but the core is the same.
+# And you now understand that core.</div>
 
 <div class="dialogue">বনিয়াদ — ভিত্তি। কুরআনে আল্লাহ বলেন — "যে ব্যক্তি তার বাড়ির ভিত্তি আল্লাহর ভয়ে স্থাপন করে, সে সফল।" Transformer-এর ভিত্তিও — প্রতিটি স্তর ঠিকভাবে বসানো। একটি স্তর ভুল হলে পুরো মডেল ভুল। স্তরগুলো একসাথে একটা সম্পূর্ণ বোঝার তৈরি করে — টোকেন থেকে অর্থ, অর্থ থেকে ভাষা।</div>
 <div class="dialogue en">"Buniyad — foundation. Allah says — 'Whoever lays the foundation of their house on God-consciousness succeeds.' The Transformer's foundation too — each layer placed correctly. One layer wrong, the whole model fails. Together the layers create complete understanding — tokens to meaning, meaning to language."</div>`,
