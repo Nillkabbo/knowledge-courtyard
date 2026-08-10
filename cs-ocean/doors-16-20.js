@@ -45,37 +45,265 @@ doors.push({
   <div class="diag-cap">complexity class-গুলো nested — P (সহজতম) থেকে EXPTIME পর্যন্ত। P vs NP হলো CS-এর সবচেয়ে বড় open problem — হাজার বছরের সমস্যা, Clay Millennium Prize।</div>
 </div>
 
-<div class="code-block">Algorithms & Complexity — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: Algorithm design paradigms ──
+# Four main approaches to designing algorithms:
 
-১. ALGORITHM DESIGN
-   - Graph, approximation, online, randomized
-   - Streaming, sublinear, property testing
-   - Smooth analysis, algorithm engineering
+# 1. DIVIDE AND CONQUER: split → solve → merge (merge sort, quick sort)
+# 2. GREEDY: best local choice (Dijkstra, Huffman)
+# 3. DYNAMIC PROGRAMMING: remember sub-problems (knapsack, edit distance)
+# 4. BACKTRACKING: try all, undo if stuck (N-Queens, Sudoku)
 
-২. COMPLEXITY THEORY (গভীরতম)
-   - P vs NP, circuit/communication complexity
-   - PCP theorem, hardness of approximation
-   - Fine-grained complexity (SETH, OMv)
+# Analysis techniques:
+# - Big-O (worst case)
+# - Average case (expected time over random inputs)
+# - Amortized (averaged over many operations)
+# - Competitive (online vs offline)
 
-৩. CRYPTO THEORY (Door 8 সাথে)
-   - Provable security, reductions
-   - Zero-knowledge, MPC, FHE foundations
-   - Lattice crypto foundations (PQ — Door 18)
+# Randomized algorithms (use randomness for speed):
+import random
 
-৪. LEARNING THEORY (Door 4 সাথে)
-   - PAC learning, sample complexity
-   - Online learning, regret bounds
-   - Deep learning theory (why NN generalize?)
+def quicksort_randomized(arr):
+    """Quick sort with random pivot — O(n log n) expected."""
+    if len(arr) &lt;= 1:
+        return arr
+    pivot = random.choice(arr)
+    left = [x for x in arr if x &lt; pivot]
+    mid = [x for x in arr if x == pivot]
+    right = [x for x in arr if x &gt; pivot]
+    return quicksort_randomized(left) + mid + quicksort_randomized(right)
 
-৫. ALGORITHMIC GAME THEORY
-   - Mechanism design, auctions, matching
-   - Price of anarchy, equilibrium computation
-   - Fair division, social choice
+# Why randomization helps:
+# Deterministic quick sort: O(n²) worst case (sorted input)
+# Randomized quick sort: O(n log n) EXPECTED for ANY input
+# No input can make it slow — randomness defeats adversarial inputs!</div>
 
-৬. BEYOND WORST-CASE & APPLICATIONS
-   - Average-case, smoothed analysis
-   - Algorithms for ML, science (Door 20)
-   - Quantum algorithms (Door 17)</div>
+<div class="code-block"># ── STEP 2: Complexity classes ──
+# How hard is a problem? Complexity theory classifies problems.
+
+# P: problems solvable in polynomial time (fast)
+#    Examples: sorting, shortest path, matrix multiplication
+#    O(n), O(n²), O(n³) — all polynomial
+
+# NP: solutions can be VERIFIED in polynomial time
+#    Examples: Sudoku (check is fast, solve might be slow)
+#    If someone gives you a solution, you can verify it quickly.
+
+# NP-COMPLETE: hardest problems in NP
+#    Examples: SAT, Traveling Salesman, Knapsack
+#    If you solve ONE NP-complete problem fast → ALL NP problems are fast
+#    (This is the P vs NP question — $1 million prize!)
+
+# NP-HARD: at least as hard as NP-complete
+#    Examples: Halting problem, general chess
+
+# EXP: exponential time problems
+#    Examples: Generalized chess, some games
+
+# ┌─────────────────┬───────────────────────────────────────┐
+# │ Class           │ Examples                             │
+# ├─────────────────┼───────────────────────────────────────┤
+# │ P (easy)        │ Sorting, shortest path              │
+# │ NP              │ Factoring, graph isomorphism        │
+# │ NP-Complete     │ SAT, TSP, 3-coloring, knapsack     │
+# │ NP-Hard         │ Halting problem                    │
+# │ EXP             │ Generalized chess                   │
+# │ Undecidable     │ Halting problem (can't solve ever)  │
+# └─────────────────┴───────────────────────────────────────┘
+
+# WHY THIS MATTERS:
+# If P = NP: all cryptography breaks, optimization is easy
+# If P ≠ NP (likely): some problems are fundamentally hard
+# Understanding hardness tells you when to approximate</div>
+
+<div class="code-block"># ── STEP 3: Approximation algorithms ──
+# When exact solutions are too slow (NP-hard), approximate!
+
+# Vertex cover approximation (2-approximation):
+def approx_vertex_cover(edges, n):
+    """
+    Find a vertex cover at most 2x optimal.
+    Guaranteed within factor 2 of the best solution.
+    """
+    cover = set()
+    remaining = set(edges)
+
+    while remaining:
+        u, v = remaining.pop()  # pick any edge
+        cover.add(u)  # add both endpoints
+        cover.add(v)
+        # Remove all edges covered by u or v:
+        remaining = {(a, b) for (a, b) in remaining
+                     if a not in cover and b not in cover}
+    return cover
+
+edges = [(0, 1), (1, 2), (2, 3), (3, 4)]
+print(approx_vertex_cover(edges, 5))  # {0, 1, 2, 3} or similar
+
+# Approximation ratios:
+# 1-approx = exact (perfect)
+# 2-approx = within 2x of optimal
+# ln(n)-approx = within ln(n) of optimal
+
+# Common approximation guarantees:
+# ┌─────────────────────────┬──────────────┬──────────────┐
+# │ Problem                 │ Approach     │ Ratio        │
+# ├─────────────────────────┼──────────────┼──────────────┤
+# │ Vertex cover            │ Greedy       │ 2            │
+# │ Traveling salesman(M)   │ MST-based    │ 2            │
+# │ Set cover               │ Greedy       │ ln(n)        │
+# │ Knapsack (fractional)   │ Greedy       │ 1 (exact)   │
+# │ Load balancing          │ Greedy       │ 1.5          │
+# └─────────────────────────┴──────────────┴──────────────┘</div>
+
+<div class="code-block"># ── STEP 4: Streaming algorithms ──
+# Process MASSIVE data that doesn't fit in memory.
+# Make ONE PASS, use minimal memory.
+
+# Count distinct elements (HyperLogLog):
+def count_distinct_approx(stream):
+    """
+    Approximate count of unique elements.
+    Uses O(log(log(n))) space instead of O(n).
+    """
+    max_zeros = 0
+    for item in stream:
+        h = hash(item) &amp; 0xFFFFFFFF  # 32-bit hash
+        zeros = 0
+        while h &amp; 1 == 0:  # count trailing zeros
+            zeros += 1
+            h &gt;&gt;= 1
+        max_zeros = max(max_zeros, zeros)
+    return 2 ** max_zeros  # approximate count
+
+stream = range(10000)  # 10000 unique elements
+print(count_distinct_approx(stream))  # ~10000 (approximate)
+
+# Famous streaming algorithms:
+# ┌──────────────────────┬──────────────────────────────┐
+# │ Algorithm            │ What it counts              │
+# ├──────────────────────┼──────────────────────────────┤
+# │ HyperLogLog          │ Distinct elements (~KB)     │
+# │ Count-Min Sketch     │ Frequency of elements       │
+# │ Bloom Filter         │ Membership (probabilistic)  │
+# │ Reservoir Sampling   │ Random sample from stream   │
+# │ Heavy Hitters        │ Frequent elements           │
+# └──────────────────────┴──────────────────────────────┘
+
+# Bloom filter — does element exist? (probabilistic):
+import hashlib
+
+class BloomFilter:
+    def __init__(self, size, hash_count):
+        self.bits = [0] * size
+        self.size = size
+        self.hash_count = hash_count
+
+    def add(self, item):
+        for i in range(self.hash_count):
+            idx = int(hashlib.md5(f"{item}{i}".encode()).hexdigest(), 16) % self.size
+            self.bits[idx] = 1
+
+    def contains(self, item):
+        for i in range(self.hash_count):
+            idx = int(hashlib.md5(f"{item}{i}".encode()).hexdigest(), 16) % self.size
+            if not self.bits[idx]:
+                return False  # DEFINITELY NOT in set
+        return True  # PROBABLY in set (may be false positive)
+
+bf = BloomFilter(1000, 3)
+bf.add("hello")
+print(bf.contains("hello"))  # True (definitely)
+print(bf.contains("world"))  # False (definitely not)</div>
+
+<div class="code-block"># ── STEP 5: Algorithmic game theory ──
+# When multiple agents with different goals interact.
+
+# NASH EQUILIBRIUM: no player can improve by changing strategy alone
+# (if everyone else keeps their strategy)
+
+# Prisoner's dilemma:
+# Two prisoners, each can cooperate (C) or betray (B)
+#         B stays silent  | B betrays
+# A silent:    (-1, -1)   |  (-3,  0)
+# A betrays:   ( 0, -3)   |  (-2, -2)
+# Nash equilibrium: both betray (even though both silent is better!)
+
+# Mechanism design — design rules so selfish agents produce good outcomes:
+# AUCTIONS:
+#   - First price: highest bidder wins, pays their bid
+#   - Second price (Vickrey): highest wins, pays SECOND highest price
+#     → Vickrey is "truthful" (best strategy = bid your true value!)
+
+# Stable matching (Gale-Shapley algorithm):
+def stable_matching(men_prefs, women_prefs):
+    """
+    Find stable marriages where no pair wants to swap.
+    Used for: medical residency matching, school choice.
+    """
+    free_men = list(men_prefs.keys())
+    engagements = {}  # woman → man
+
+    while free_men:
+        man = free_men.pop(0)
+        for woman in men_prefs[man]:
+            if woman not in engagements:
+                engagements[woman] = man  # she's free
+                break
+            else:
+                current = engagements[woman]
+                # Does she prefer the new man?
+                if women_prefs[woman].index(man) &lt; women_prefs[woman].index(current):
+                    engagements[woman] = man
+                    free_men.append(current)  # current man is now free
+                    break
+
+    return {v: k for k, v in engagements.items()}  # man → woman
+
+# This won the 2012 Nobel Prize in Economics!
+# Used by NRMP (National Residency Matching Program) every year.</div>
+
+<div class="code-block"># ── STEP 6: Algorithms research areas ──
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Area                │ What you study                     │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ Algorithm Design    │ Approx, online, streaming, random │
+# │ Complexity Theory   │ P vs NP, PCP, fine-grained        │
+# │ Crypto Theory       │ ZKP, MPC, FHE, provable security  │
+# │ Learning Theory     │ PAC, sample complexity, DL theory │
+# │ Game Theory         │ Mechanism design, auctions        │
+# │ Quantum Algorithms  │ Shor's, Grover's (Door 17)       │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# CONFERENCES:
+# STOC, FOCS        — theory (the top tier)
+# SODA              — algorithms
+# CCC, ITCS         — complexity
+# COLT              — learning theory
+# EC                — economics + computation
+
+# FAMOUS OPEN PROBLEMS:
+# 1. P vs NP ($1M Clay Prize) — is verifying = solving?
+# 2. P vs BPP — is randomness necessary?
+# 3. Exponential Time Hypothesis — can we do better than 2^n for SAT?
+# 4. Matrix multiplication — is O(n^2) possible? (currently n^2.373)
+
+# CAREER PATHS:
+# - Theory Researcher (academia, Microsoft Research, Google Research)
+# - Algorithm Engineer (optimize real systems)
+# - Quant (finance — algorithmic trading)
+# - Cryptographer (design provably secure systems)
+
+# WHY THEORY MATTERS:
+# Theory tells us what's POSSIBLE and what's IMPOSSIBLE.
+# "Can I solve this faster?" → complexity theory answers.
+# "Can I approximate?" → approximation algorithms answer.
+# Without theory, you're guessing. With theory, you KNOW.
+
+# THE BEAUTY OF ALGORITHMS:
+# An algorithm is a RECIPE — finite steps, guaranteed result.
+# The best algorithms are SIMPLE, ELEGANT, and POWERFUL.
+# Quicksort: 4 lines. Dijkstra: 10 lines. PageRank: 5 lines.
+# Small code, huge impact.</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">📐 Algorithms</td><td>Approx, online, streaming, randomized</td><td>STOC, FOCS, SODA, ESA</td></tr>
@@ -165,38 +393,262 @@ doors.push({
   <div class="diag-cap">classical bit = ২ অবস্থা, qubit = অসীম অবস্থার combination। N qubit = ২^N অবস্থা একসাথে। এটাই কোয়ান্টামের computational power — factoring, simulation-এ exponential speedup।</div>
 </div>
 
-<div class="code-block">Quantum Computing — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: What is quantum computing? ──
+# Classical: bits are 0 OR 1
+# Quantum: qubits can be 0 AND 1 simultaneously (superposition)
 
-১. QUANTUM ALGORITHMS (theory)
-   - Shor (factoring — crypto-র হুমকি, Door 18)
-   - Grover (search, quadratic speedup)
-   - Variational: VQE, QAOA (optimization)
-   - HHL (linear systems)
+# This allows PARALLEL exploration of many possibilities.
 
-২. QUANTUM HARDWARE (পদার্থবিজ্ঞান-নির্ভর)
-   - Superconducting (IBM Condor ১১২১ qubit, Google Willow)
-   - Trapped ions (Quantinuum, IonQ)
-   - Photonic (PsiQuantum, Xanadu)
-   - Topological (Microsoft — মাইলস্টোন ২০২৫)
+# Qubit analogy:
+# Classical coin: HEADS or TAILS (one at a time)
+# Quantum coin: spinning coin — it's BOTH until you look
 
-৩. QUANTUM ERROR CORRECTION (🔥 সবচেয়ে গুরুত্বপূর্ণ)
-   - Surface codes, color codes
-   - Fault-tolerant quantum computing
-   - Logical qubits (Google Willow ২০২৪ — first below threshold)
+# Quantum concepts:
+# - Superposition: qubit in multiple states at once
+# - Entanglement: two qubits linked, measure one → know other
+# - Interference: amplify correct answers, cancel wrong ones
 
-৪. QUANTUM ML (crossover)
-   - Quantum neural networks, quantum kernels
-   - Variational quantum circuits
-   - Quantum advantage claims (controversial)
+# Qiskit — Python library for quantum computing:
+# from qiskit import QuantumCircuit
+#
+# # Create a 2-qubit circuit:
+# qc = QuantumCircuit(2)
+#
+# # Put first qubit in superposition:
+# qc.h(0)  # Hadamard gate → |0⟩ becomes (|0⟩ + |1⟩) / √2
+#
+# # Entangle qubit 0 and 1:
+# qc.cx(0, 1)  # CNOT: if 0 is 1, flip 1
+#
+# # Now they're entangled: measuring 0 tells you 1
+#
+# # Measure:
+# qc.measure_all()
+#
+# print(qc)  # visual circuit diagram
 
-৫. QUANTUM NETWORKING
-   - QKD (quantum key distribution)
-   - Quantum repeaters, entanglement distribution
-   - Quantum internet (vision)
+# Quantum gates (like logic gates, but quantum):
+# H (Hadamard): create superposition
+# X (NOT): flip qubit
+# CNOT: entangle two qubits
+# Z: phase flip
 
-৬. QUANTUM SIMULATION (প্রথম real application)
-   - Molecules, materials, drug discovery
-   - Condensed matter, high-energy physics</div>
+# The power comes from ENTANGLEMENT + INTERFERENCE:
+# Many qubits → exponential states (2^n for n qubits)
+# 300 qubits → more states than atoms in the universe!</div>
+
+<div class="code-block"># ── STEP 2: Famous quantum algorithms ──
+# Two algorithms that made quantum computing famous:
+
+# SHOR'S ALGORITHM — factoring:
+# Classical: factoring 2048-bit number takes billions of years
+# Quantum: Shor does it in hours (theoretically)
+# This is WHY post-quantum crypto exists (Door 18)!
+
+# GROVER'S ALGORITHM — search:
+# Classical: search N items takes O(N)
+# Quantum: Grover takes O(√N) — quadratic speedup
+# Searching 1 million items: 1000 steps instead of 1 million
+
+# Example — quantum search simulation:
+def classical_search(database, target):
+    """Classical: O(N) average."""
+    for i, item in enumerate(database):
+        if item == target:
+            return i
+    return -1  # N steps average
+
+def grover_search_steps(n):
+    """
+    Grover: O(√N) steps.
+    For N=1,000,000 → 1000 steps (not 1,000,000!)
+    """
+    import math
+    return int(math.pi / 4 * math.sqrt(n))
+
+print(f"Classical search of 1M items: 1,000,000 steps")
+print(f"Grover search of 1M items: {grover_search_steps(1_000_000)} steps")
+
+# WHEN QUANTUM COMPUTERS BECOME REAL:
+# Shor breaks: RSA, ECC, DSA (all current public-key crypto)
+# Grover weakens: AES-128 → need AES-256, SHA-256 → need SHA-512
+# But quantum is NOT faster at everything — only specific problems</div>
+
+<div class="code-block"># ── STEP 3: Quantum hardware ──
+# How do we BUILD quantum computers?
+
+# Types of quantum hardware:
+# ┌─────────────────┬──────────────────────────────────┐
+# │ Technology      │ Status                          │
+# ├─────────────────┼──────────────────────────────────┤
+# │ Superconducting │ IBM (1121 qubit Condor), Google │
+# │ Trapped Ion     │ Quantinuum, IonQ (high quality) │
+# │ Photonic        │ PsiQuantum, Xanadu (light-based)│
+# │ Topological     │ Microsoft (2025 milestone)      │
+# │ Neutral Atom    │ QuEra, Pasqal                   │
+# └─────────────────┴──────────────────────────────────┘
+
+# The challenge: NOISE
+# Qubits are fragile — any disturbance destroys quantum state
+# This is called DECOHERENCE
+
+# Error correction:
+# 1 physical qubit = unreliable
+# Need ~1000 physical qubits → 1 reliable "logical" qubit
+# Google Willow (2024): first to go below error threshold!
+
+# NISQ era (Noisy Intermediate-Scale Quantum):
+# Current: 100-1000 noisy qubits
+# Can do: small optimization, chemistry simulations
+# Can't do (yet): Shor's algorithm at scale (needs millions)
+
+# ACCESSING QUANTUM COMPUTERS:
+# IBM Quantum: free access to real quantum hardware
+# from qiskit_ibm_runtime import QiskitRuntimeService
+# service = QiskitRuntimeService(channel="ibm_cloud", token="...")
+# backend = service.backend("ibm_brisbane")
+# result = backend.run(qc).result()
+
+# You can run real quantum circuits TODAY from your laptop!
+# IBM Quantum Experience: quantum-computing.ibm.com</div>
+
+<div class="code-block"># ── STEP 4: Quantum machine learning ──
+# Can quantum computers accelerate ML?
+
+# Quantum Neural Networks:
+# from qiskit_machine_learning.neural_networks import EstimatorQNN
+#
+# # Define quantum circuit:
+# from qiskit.circuit import QuantumCircuit, Parameter
+# param = Parameter("x")
+# qc = QuantumCircuit(1)
+# qc.rx(param, 0)  # rotation parameterized by x
+#
+# # Create quantum neural network:
+# qnn = EstimatorQNN(circuit=qc)
+
+# Potential advantages:
+# - Exponential feature space (quantum kernels)
+# - Faster linear algebra (HHL algorithm)
+# - Better optimization landscapes
+
+# Reality check (2024):
+# - No proven quantum advantage for ML YET
+# - Hardware not good enough yet (NISQ era)
+# - Promising but experimental
+
+# Quantum advantage CLAIMS:
+# 2019: Google claimed quantum supremacy (random circuit sampling)
+# Debate continues — classical algorithms keep improving too!
+
+# Hybrid quantum-classical:
+# VQE (Variational Quantum Eigensolver):
+# - Quantum computer evaluates the energy
+# - Classical computer updates parameters
+# - Used for chemistry (molecular ground states)
+
+# THE FUTURE:
+# Fault-tolerant quantum computer: 10-20 years away
+# When it arrives: drug discovery, materials, crypto-breaking
+# Until then: NISQ algorithms, quantum simulation, error correction</div>
+
+<div class="code-block"># ── STEP 5: Quantum simulation — real applications ──
+# The FIRST useful application of quantum computers:
+# simulating molecules and materials.
+
+# Why quantum computers excel at chemistry:
+# Molecules ARE quantum systems.
+# Classical computers struggle to simulate quantum behavior.
+# Quantum computers NATURALLY simulate quantum systems!
+
+# Applications:
+# 1. DRUG DISCOVERY:
+#    Simulate how molecules bind to proteins
+#    Find new drugs faster
+#
+# 2. MATERIALS SCIENCE:
+#    Design new materials (superconductors, batteries)
+#    Simulate electronic properties
+#
+# 3. FERTILIZER PRODUCTION:
+#    Nitrogen fixation (Haber-Bosch uses 1% of world energy)
+#    Quantum simulation could find better catalysts
+#
+# 4. CARBON CAPTURE:
+#    Design materials that absorb CO2 efficiently
+
+# Python quantum chemistry:
+# from qiskit_nature.drivers import PySCFDriver
+# from qiskit_nature.problems.second_quantization import ElectronicStructureProblem
+#
+# # Define a molecule (e.g., H2):
+# driver = PySCFDriver(atom="H 0 0 0; H 0 0 0.735", unit="Angstrom")
+# problem = ElectronicStructureProblem(driver)
+#
+# # Solve with quantum algorithm:
+# from qiskit.algorithms import VQE
+# vqe = VQE(ansatz=..., optimizer=...)
+# result = vqe.compute_minimum_eigenvalue(problem.second_q_ops()[0])
+# print(f"Ground state energy: {result.eigenvalue}")
+
+# This is real — companies like:
+# - IBM Quantum (hardware + software)
+# - Google Quantum AI (error correction)
+# - Microsoft (topological qubits)
+# - Atom Computing (neutral atoms)
+# Are racing to build useful quantum computers</div>
+
+<div class="code-block"># ── STEP 6: Quantum computing research areas ──
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Area                │ What you study                     │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ Quantum Algorithms  │ Shor, Grover, VQE, new algorithms │
+# │ Quantum Hardware    │ Superconducting, ion, photonic    │
+# │ Error Correction    │ Surface codes, fault tolerance    │
+# │ Quantum ML          │ Quantum neural networks, kernels  │
+# │ Quantum Networking  │ QKD, quantum internet             │
+# │ Quantum Simulation  │ Chemistry, materials, physics     │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# CONFERENCES:
+# QIP, TQC          — quantum information
+# Nature, Science   — hardware breakthroughs
+# STOC, FOCS        — quantum algorithms
+
+# TOOLS TO LEARN:
+# Qiskit (IBM)      — Python quantum framework
+# Cirq (Google)     — quantum circuits
+# PennyLane (Xanadu) — quantum ML
+# Q# (Microsoft)    — quantum programming language
+
+# THE TIMELINE:
+# 2024: 100-1000 noisy qubits (NISQ)
+# 2025-2030: Error correction matures
+# 2030-2040: Fault-tolerant quantum computer
+# 2040+: Quantum advantage for useful problems
+
+# CAREER PATHS:
+# - Quantum Algorithm Researcher (theory)
+# - Quantum Hardware Engineer (physics)
+# - Quantum Software Engineer (Qiskit, Cirq)
+# - Quantum ML Researcher
+# - Quantum Chemist (drug discovery, materials)
+
+# SHOULD YOU STUDY QUANTUM?
+# ✅ You love physics + math + CS
+# ✅ You're comfortable with linear algebra
+# ✅ You enjoy thinking differently (superposition is WEIRD)
+# ⚠️ It's a long-term bet (10-20 years to real impact)
+# ⚠️ Small field, few positions currently
+
+# THE BIG PICTURE:
+# Quantum computing is like nuclear physics in 1930.
+# The theory is there. The engineering is being built.
+# When it matures, it will change EVERYTHING:
+# - Break all current encryption
+# - Discover new drugs and materials
+# - Solve problems we can't even approach today
+# Be there when it happens.</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">⚛️ Algorithms</td><td>Shor, Grover, VQE, QAOA, HHL</td><td>QIP, TQC, STOC, FOCS</td></tr>
@@ -270,38 +722,252 @@ doors.push({
   <div class="diag-cap">সবচেয়ে গুরুত্বপূর্ণ — 'harvest now, decrypt later'। চোর আজই encrypted ডেটা ধরে রাখছে। কোয়ান্টাম আসলে ভাঙবে। তাই আজই PQ বসাতে হবে — স্টেট সিক্রেট ৫০ বছর গোপন রাখতে হবে।</div>
 </div>
 
-<div class="code-block">Post-Quantum Cryptography — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: Why post-quantum cryptography? ──
+# Quantum computers will break current encryption.
+# We need NEW algorithms that quantum computers CAN'T break.
 
-১. LATTICE-BASED (NIST বিজয়ী, সবচেয়ে গুরুত্বপূর্ণ)
-   - ML-KEM (Kyber) — key encapsulation, NIST ২০২৪ standard
-   - ML-DSA (Dilithium) — signatures, NIST ২০২৪
-   - Falcon, NTRU, LWE variants
-   - Fully homomorphic encryption (FHE) — lattice-ভিত্তিক
+# What breaks:
+# RSA (factorization)    → Shor's algorithm breaks it
+# ECC (elliptic curve)   → Shor's algorithm breaks it
+# DSA (signatures)       → Shor's algorithm breaks it
+# AES-128 (symmetric)    → Grover weakens (need AES-256)
 
-২. CODE-BASED
-   - Classic McEliece (NIST alt)
-   - HQC, BIKE
-   - দীর্ঘ-স্থায়ী, decades-tested
+# Timeline urgency:
+# "Harvest now, decrypt later" — attackers are storing
+# encrypted data TODAY to decrypt when quantum computers arrive.
 
-৩. HASH-BASED
-   - SPHINCS+ (NIST, stateless)
-   - প্রমাণিত secure, শুধু hash function
-   - বড় signature, কিন্তু conservative
+# NIST standardization (2016-2024):
+# Ran a 8-year competition to select post-quantum algorithms.
+# Winners announced in 2024.
 
-৪. MULTIVARIATE & OTHER
-   - Rainbow (broken ২০২২ — সাবধান)
-   - Isogeny (SIKE broken ২০২২)
-   - কঠিন, কিছু broken
+# Python PQC library (liboqs-python):
+# from oqs import KeyEncapsulation, Signature
+#
+# # Generate PQ key pair (Kyber/ML-KEM):
+# kem = KeyEncapsulation("ML-KEM-768")
+# public_key = kem.generate_keypair()
+#
+# # Encapsulate (shared secret):
+# ciphertext, shared_secret = kem.encap_secret(public_key)
+#
+# # Decapsulate (recover shared secret):
+# recovered = kem.decap_secret(ciphertext)
+# assert shared_secret == recovered  # same secret!
 
-৫. PQC IMPLEMENTATION & MIGRATION (🔥 industry)
-   - Hybrid (classical + PQ) transition
-   - Performance, side-channel resistance
-   - Protocol migration (TLS, Signal, VPN)
+# The MIGRATION challenge:
+# Every system on Earth uses RSA/ECC today.
+# Moving to PQ crypto will take 10-15 years.
+# Start planning NOW.</div>
 
-৬. PQC ATTACKS & ANALYSIS
-   - New attacks on lattice problems
-   - Side-channel, implementation bugs
-   - Parameter selection, long-term security</div>
+<div class="code-block"># ── STEP 2: Lattice-based cryptography ──
+# The NIST winner — based on hard lattice problems.
+
+# LATTICE: a regular grid of points in n-dimensional space.
+# Hard problem: find the SHORTEST vector in the lattice.
+# (Easy to state, hard to solve — even for quantum computers!)
+
+# ML-KEM (Kyber) — key encapsulation:
+# Alice generates PQ public key.
+# Bob uses it to create a shared secret (like Diffie-Hellman, but PQ-safe).
+
+# ML-DSA (Dilithium) — digital signatures:
+# Like RSA signatures, but PQ-safe.
+# Larger keys/signatures than RSA, but faster.
+
+# Comparison:
+# ┌──────────┬──────────────┬──────────────┬──────────────┐
+# │ Property │ RSA-2048     │ ECC-256      │ ML-KEM-768   │
+# ├──────────┼──────────────┼──────────────┼──────────────┤
+# │ Key size │ 256 bytes    │ 32 bytes     │ 1184 bytes   │
+# │ Sig size │ 256 bytes    │ 64 bytes     │ 3309 bytes   │
+# │ PQ-safe  │ No           │ No           │ Yes          │
+# │ Speed    │ Fast         │ Very fast    │ Fast         │
+# └──────────┴──────────────┴──────────────┴──────────────┘
+# PQ keys are BIGGER, but security is future-proof.
+
+# Fully Homomorphic Encryption (FHE):
+# Compute on ENCRYPTED data without decrypting!
+# # encrypted_result = encrypted_a + encrypted_b
+# # decrypt(encrypted_result) = a + b
+# # Server never sees the plaintext!
+
+# FHE applications:
+# - Medical AI on encrypted patient data
+# - Financial analysis without revealing amounts
+# - Cloud computing on sensitive data
+# - Private ML inference
+
+# Python FHE:
+# import tenseal as ts
+# context = ts.context(ts.SCHEME_TYPE.CKKS, poly_modulus_degree=8192)
+# encrypted_data = ts.ckks_vector(context, [1, 2, 3, 4])
+# encrypted_result = encrypted_data * 2 + 1  # compute on encrypted!
+# result = encrypted_result.decrypt()  # [3, 5, 7, 9]</div>
+
+<div class="code-block"># ── STEP 3: Hash-based and code-based crypto ──
+# Conservative approaches that have survived decades of analysis.
+
+# HASH-BASED (SPHINCS+):
+# Uses ONLY hash functions (SHA-256, etc.)
+# Very conservative — if hashes are secure, this is secure.
+# Large signatures (50KB!) but proven secure.
+# Good for: firmware signing, long-term archives.
+
+# CODE-BASED (Classic McEliece):
+# Based on error-correcting codes (from 1978!).
+# Very large public keys (1MB) but very fast.
+# Survived 45+ years of cryptanalysis.
+# Good for: infrastructure that doesn't change often.
+
+# COMPARISON OF APPROACHES:
+# ┌──────────────┬──────────────┬────────────┬──────────────────┐
+# │ Approach     │ Key size     │ Sig size   │ Confidence       │
+# ├──────────────┼──────────────┼────────────┼──────────────────┤
+# │ Lattice      │ Medium       │ Medium     │ Good (new)       │
+# │ Hash-based   │ Small        │ Very large │ Very high (old)  │
+# │ Code-based   │ Very large   │ Small      │ Very high (old)  │
+# │ Multivariate │ Medium       │ Large      │ BROKEN (Rainbow) │
+# │ Isogeny      │ Small        │ Medium     │ BROKEN (SIKE)    │
+# └──────────────┴──────────────┴────────────┴──────────────────┘
+
+# LESSON: Some PQ approaches were broken after NIST submission.
+# Rainbow (multivariate) and SIKE (isogeny) were both broken.
+# This is WHY the competition took 8 years — rigorous testing.
+
+# Python hash-based signature simulation:
+import hashlib
+
+def lamport_sign(message, private_key):
+    """Simplified Lamport one-time signature."""
+    msg_hash = hashlib.sha256(message.encode()).hexdigest()
+    signature = []
+    for i, bit in enumerate(format(int(msg_hash, 16), '0256b')):
+        signature.append(private_key[i][int(bit)])
+    return signature
+# Real SPHINCS+ is much more sophisticated, but same principle.</div>
+
+<div class="code-block"># ── STEP 4: Migration strategy ──
+# How organizations move from classical to post-quantum crypto.
+
+# PHASE 1: ASSESS
+# Find all places where RSA/ECC is used:
+# - TLS certificates (HTTPS)
+# - SSH keys
+# - VPN protocols
+# - Code signing
+# - Document signing
+# - Blockchain wallets
+
+# PHASE 2: HYBRID (transition)
+# Use BOTH classical AND PQ together:
+# hybrid_key = classical_key + pq_key
+# An attacker must break BOTH to compromise.
+# This is the safest transition approach.
+
+# Python hybrid key exchange:
+def hybrid_key_exchange(classical_shared, pq_shared):
+    """
+    Combine classical and PQ shared secrets.
+    Security = max(classical, PQ) — need to break both.
+    """
+    import hashlib
+    combined = classical_shared + pq_shared
+    return hashlib.sha3_256(combined).digest()
+
+# PHASE 3: FULL PQ (eventually)
+# Once PQ algorithms are battle-tested (10-15 years),
+# remove classical algorithms entirely.
+
+# Already happening:
+# - Signal app: uses PQ key exchange (2023)
+# - Apple iMessage: PQ encryption (PQ3, 2024)
+# - Google Chrome: hybrid PQ TLS (2023)
+# - AWS KMS: PQ support (2024)
+
+# The migration is the BIGGEST crypto transition in history.
+# Every system needs updating.</div>
+
+<div class="code-block"># ── STEP 5: Side-channel resistance ──
+# Even mathematically secure crypto can be broken by implementation.
+
+# SIDE-CHANNEL ATTACKS:
+# Attackers measure PHYSICAL properties during crypto operations:
+# - Timing: how long does decryption take? (reveals key bits)
+# - Power: power consumption varies with data
+# - Electromagnetic: EM emanations leak information
+# - Cache: CPU cache timing reveals secrets
+
+# Constant-time code (prevent timing attacks):
+# ❌ BAD (timing depends on secret):
+def bad_compare(secret, guess):
+    for i in range(len(secret)):
+        if secret[i] != guess[i]:
+            return False  # early exit → timing varies!
+    return True
+
+# ✅ GOOD (always same time):
+def constant_time_compare(secret, guess):
+    """Compare in constant time — no timing leakage."""
+    result = 0
+    for a, b in zip(secret, guess):
+        result |= ord(a) ^ ord(b)  # XOR, no early exit
+    return result == 0
+
+# Use hmac.compare_digest() in production — it's constant-time.
+
+# BLINDING (prevent timing attacks on RSA):
+# Before RSA decryption, multiply by random blinding factor.
+# This randomizes the operation time.
+
+# HARDWARE ATTACKS:
+# - Fault injection: cause computation errors to leak keys
+# - Power analysis: measure power during crypto operations
+# - Probing: physically read chip signals
+
+# DEFENSE:
+# - Constant-time algorithms
+# - Blinding
+# - Hardware security modules (HSM)
+# - Secure enclaves (TEE, SGX)
+# - Formal verification of implementations</div>
+
+<div class="code-block"># ── STEP 6: PQC research areas ──
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Area                │ What you study                     │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ Lattice Crypto      │ Kyber, Dilithium, FHE, LWE        │
+# │ Hash-based          │ SPHINCS+, stateless signatures    │
+# │ Code-based          │ McEliece, HQC                     │
+# │ Migration           │ Hybrid, protocol design, testing  │
+# │ Attacks             │ New attacks, side-channels        │
+# │ FHE                 │ Practical homomorphic encryption  │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# CONFERENCES:
+# CRYPTO, EUROCRYPT      — top crypto theory
+# PQCrypto               — post-quantum specific
+# CCS, USENIX Security   — applied crypto
+# CHES, TCHES            — hardware/crypto implementation
+
+# TOOLS:
+# liboqs / oqs-python    — PQ implementations
+# Tenseal / OpenFHE      — homomorphic encryption
+# OpenSSL 3.x+           — PQ support (hybrid mode)
+
+# CAREER PATHS:
+# - Cryptographer (design new PQ algorithms)
+# - Security Engineer (migrate systems to PQ)
+# - FHE Researcher (make encrypted computation practical)
+# - Crypto Implementer (fast, secure implementations)
+
+# THE URGENCY:
+# Y2Q (Years to Quantum) is like Y2K but much bigger.
+# When quantum computers can break RSA:
+# - ALL encrypted traffic can be decrypted
+# - ALL digital signatures can be forged
+# - ALL blockchain wallets can be emptied
+# This is why NIST rushed to standardize PQ algorithms.
+# Every organization needs to prepare NOW.</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">🔥 Lattice</td><td>ML-KEM/ML-DSA, FHE, LWE</td><td>CRYPTO, EUROCRYPT, PQCrypto</td></tr>
@@ -374,39 +1040,314 @@ doors.push({
   <div class="diag-cap">robotics = perception + planning + control + hardware। সব AI-এর সমন্বয় বাস্তব জগতে। sim-to-real gap (সিমুলেটরে কাজ করলেও বাস্তবে কঠিন) এখনো মূল open problem। ভুল হলে মানুষের ক্ষতি — তাই আমানত সর্বোচ্চ।</div>
 </div>
 
-<div class="code-block">Robotics — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: What is robotics? ──
+# Robotics = the intersection of MECHANICAL, ELECTRICAL, and SOFTWARE.
+# A robot must: SENSE → THINK → ACT in the physical world.
 
-১. PERCEPTION (sensing বাস্তব জগত)
-   - Vision (Door 2), depth, lidar, radar
-   - SLAM (simultaneous localization and mapping)
-   - Sensor fusion, state estimation (Kalman, particle filter)
-   - Tactile, proprioception
+# Robot components:
+# - Sensors: cameras, lidar, IMU, encoders (where am I?)
+# - Actuators: motors, servos, hydraulics (move!)
+# - Controller: software that decides what to do
+# - Body: physical structure
 
-২. PLANNING & CONTROL (সিদ্ধান্ত ও চালনা)
-   - Motion planning (RRT, trajectory optimization)
-   - MPC (model predictive control), PID, adaptive
-   - RL for control (Door 3 crossover), learning policies
-   - Diffusion policies (🔥 ২০২৪-২৫)
+# Robot control loop (the fundamental loop):
+# 1. SENSE: read sensors (where is the robot?)
+# 2. PLAN: decide what to do (where to go?)
+# 3. ACT: send commands to motors (move!)
+# 4. Repeat at 100-1000 Hz
 
-৩. AUTONOMOUS VEHICLES (🔥 সবচেয়ে বড় application)
-   - Self-driving (Waymo, Tesla FSD, Cruise)
-   - Drone swarms, delivery robots
-   - HD maps, prediction, behavior planning
+# Python robot control example:
+import numpy as np
 
-৪. MANIPULATION (🔥 মানব-জাতীয় কাজ)
-   - Robotic arms, dexterous, in-hand manipulation
-   - Soft robotics, compliant control
-   - Learning from demonstration (LfD)
+class SimpleRobot:
+    """A 2D mobile robot simulation."""
+    def __init__(self, x=0, y=0, theta=0):
+        self.x = x           # position
+        self.y = y
+        self.theta = theta    # heading angle
 
-৫. HUMANOID & EMBODIED AI (🔥🔥 frontier)
-   - Humanoid (Figure 02, Tesla Optimus, Unitree, ১X)
-   - Whole-body control, locomotion
-   - Foundation models for robots (RT-2, OpenVLA, ২০২৪-২৫)
+    def sense(self):
+        """Read sensors (simulated GPS + compass)."""
+        return {
+            "position": (self.x, self.y),
+            "heading": self.theta
+        }
 
-৬. MEDICAL & SPECIALIZED
-   - Surgical robots (da Vinci, micro)
-   - Prosthetics, exoskeleton, rehab
-   - Space, underwater, agriculture</div>
+    def move(self, velocity, angular_velocity, dt=0.1):
+        """Move the robot (differential drive model)."""
+        self.x += velocity * np.cos(self.theta) * dt
+        self.y += velocity * np.sin(self.theta) * dt
+        self.theta += angular_velocity * dt
+
+    def navigate_to(self, target_x, target_y):
+        """Simple navigation: turn toward target, move forward."""
+        # Calculate angle to target:
+        dx = target_x - self.x
+        dy = target_y - self.y
+        target_angle = np.arctan2(dy, dx)
+
+        # Simple proportional control:
+        angle_error = target_angle - self.theta
+        angular_vel = 2.0 * angle_error  # P-controller
+
+        # Move forward (slower when turning):
+        forward_vel = 1.0 if abs(angle_error) &lt; 0.1 else 0.3
+
+        self.move(forward_vel, angular_vel)
+
+# This simple controller is the foundation of all robot navigation.</div>
+
+<div class="code-block"># ── STEP 2: PID controller ──
+# The most common control algorithm in robotics and industry.
+
+# PID = Proportional + Integral + Derivative
+# Used everywhere: drone stabilization, robot arms, car cruise control
+
+class PIDController:
+    """PID controller — the workhorse of control systems."""
+    def __init__(self, kp=1.0, ki=0.0, kd=0.0):
+        self.kp = kp  # Proportional: react to current error
+        self.ki = ki  # Integral: eliminate steady-state error
+        self.kd = kd  # Derivative: predict future error
+        self.integral = 0
+        self.prev_error = 0
+
+    def compute(self, setpoint, current_value, dt=0.01):
+        """Compute control output to reach setpoint."""
+        error = setpoint - current_value
+
+        # P: proportional to error
+        p_term = self.kp * error
+
+        # I: accumulate error over time
+        self.integral += error * dt
+        i_term = self.ki * self.integral
+
+        # D: rate of change of error
+        derivative = (error - self.prev_error) / dt
+        d_term = self.kd * derivative
+
+        self.prev_error = error
+
+        return p_term + i_term + d_term
+
+# Example: drone altitude control
+altitude_pid = PIDController(kp=2.0, ki=0.5, kd=1.0)
+
+current_alt = 0.0  # start at ground
+target_alt = 10.0  # want to reach 10 meters
+
+for _ in range(500):
+    throttle = altitude_pid.compute(target_alt, current_alt)
+    current_alt += throttle * 0.01  # simplified physics
+
+print(f"Altitude: {current_alt:.1f}m")  # ~10.0m (reached target!)
+
+# TUNING PID (the hard part):
+# Too much P → oscillation
+# Too much I → overshoot, slow response
+# Too much D → noise sensitivity
+# Real systems use auto-tuning or RL to find parameters</div>
+
+<div class="code-block"># ── STEP 3: SLAM and state estimation ──
+# SLAM: build a map AND locate yourself simultaneously.
+# THE chicken-and-egg problem of robotics.
+
+# Kalman Filter — the most important estimation algorithm:
+class KalmanFilter1D:
+    """Estimate true position from noisy measurements."""
+    def __init__(self, initial_estimate, initial_uncertainty):
+        self.estimate = initial_estimate
+        self.uncertainty = initial_uncertainty
+
+    def update(self, measurement, measurement_noise):
+        """Combine prediction with measurement."""
+        # Kalman gain (how much to trust measurement):
+        kalman_gain = self.uncertainty / (self.uncertainty + measurement_noise)
+
+        # Update estimate:
+        self.estimate += kalman_gain * (measurement - self.estimate)
+
+        # Update uncertainty:
+        self.uncertainty *= (1 - kalman_gain)
+
+        return self.estimate
+
+# Example: tracking a robot's position with noisy GPS:
+kf = KalmanFilter1D(initial_estimate=0, initial_uncertainty=10)
+
+# GPS gives noisy readings: [0.1, -0.3, 0.5, 0.2, -0.1, 0.4]
+gps_readings = [0.1, -0.3, 0.5, 0.2, -0.1, 0.4]
+
+for reading in gps_readings:
+    estimated_pos = kf.update(measurement=reading, measurement_noise=1.0)
+    print(f"  GPS: {reading:.2f} → Estimated: {estimated_pos:.3f}")
+
+# The filter SMOOTHS the noisy readings → more accurate position!
+
+# Sensor fusion (combine multiple sensors):
+# - GPS: accurate but slow (10Hz), no indoor
+# - IMU: fast (1000Hz) but drifts over time
+# - Vision: relative positioning, can be precise
+# - Wheel encoders: odometry, accumulates error
+# Kalman filter combines all → best estimate</div>
+
+<div class="code-block"># ── STEP 4: Motion planning ──
+# How does a robot find a path from A to B avoiding obstacles?
+
+# A* pathfinding on a grid:
+import heapq
+
+def astar(grid, start, goal):
+    """A* algorithm for robot path planning."""
+    rows, cols = len(grid), len(grid[0])
+
+    def heuristic(a, b):
+        return abs(a[0] - b[0]) + abs(a[1] - b[1])  # Manhattan distance
+
+    open_set = [(0, start)]
+    came_from = {}
+    g_score = {start: 0}
+
+    while open_set:
+        _, current = heapq.heappop(open_set)
+
+        if current == goal:
+            # Reconstruct path:
+            path = [current]
+            while current in came_from:
+                current = came_from[current]
+                path.append(current)
+            return path[::-1]
+
+        for dr, dc in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+            neighbor = (current[0] + dr, current[1] + dc)
+            if (0 &lt;= neighbor[0] &lt; rows and 0 &lt;= neighbor[1] &lt; cols
+                    and grid[neighbor[0]][neighbor[1]] == 0):
+                new_g = g_score[current] + 1
+                if neighbor not in g_score or new_g &lt; g_score[neighbor]:
+                    g_score[neighbor] = new_g
+                    f = new_g + heuristic(neighbor, goal)
+                    heapq.heappush(open_set, (f, neighbor))
+                    came_from[neighbor] = current
+
+    return None  # no path found
+
+# Grid: 0=free, 1=obstacle
+grid = [
+    [0, 0, 0, 0, 0],
+    [0, 1, 1, 0, 0],
+    [0, 0, 0, 0, 1],
+    [0, 1, 0, 0, 0],
+    [0, 0, 0, 1, 0],
+]
+
+path = astar(grid, (0, 0), (4, 4))
+print(f"Path: {path}")
+# [(0,0), (1,0), (2,0), (2,1), (2,2), ...]
+
+# OTHER planning algorithms:
+# - RRT (Rapidly-exploring Random Tree): good for high-dim spaces
+# - RRT*: optimal version of RRT
+# - Trajectory optimization: smooth, constraint-aware paths
+# - MPC (Model Predictive Control): plan ahead, execute, replan</div>
+
+<div class="code-block"># ── STEP 5: Autonomous vehicles ──
+# Self-driving cars = robotics + AI + safety critical.
+
+# The self-driving stack:
+# 1. PERCEPTION: cameras, lidar, radar → detect objects
+# 2. PREDICTION: what will pedestrians/cars do next?
+# 3. PLANNING: choose safe path through traffic
+# 4. CONTROL: steering, acceleration, braking
+
+# Using ROS (Robot Operating System) in Python:
+# import rclpy
+# from sensor_msgs.msg import LaserScan
+# from geometry_msgs.msg import Twist
+#
+# def callback(scan_data):
+#     """Process lidar data and control robot."""
+#     # Find closest obstacle:
+#     min_distance = min(scan_data.ranges)
+#
+#     # If obstacle close, turn:
+#     cmd = Twist()
+#     if min_distance &lt; 1.0:
+#         cmd.angular.z = 0.5  # turn
+#         cmd.linear.x = 0.0   # stop
+#     else:
+#         cmd.linear.x = 0.5   # move forward
+#
+#     publisher.publish(cmd)
+
+# AUTONOMOUS DRIVING LEVELS:
+# Level 0: No automation (human drives)
+# Level 1: Driver assist (cruise control)
+# Level 2: Partial (Tesla Autopilot — hands on wheel)
+# Level 3: Conditional (eyes off in specific conditions)
+# Level 4: High (no human needed in geo-fenced area)
+# Level 5: Full (anywhere, anytime) — not yet achieved
+
+# Challenges:
+# - Edge cases (unusual situations not in training data)
+# - Weather (rain, snow, fog reduce sensor reliability)
+# - Human behavior prediction (pedestrians are unpredictable)
+# - Regulatory and ethical questions
+# - The "long tail" of rare events</div>
+
+<div class="code-block"># ── STEP 6: Robotics research areas ──
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Area                │ What you study                     │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ Perception          │ Vision, SLAM, sensor fusion        │
+# │ Planning/Control    │ Motion, MPC, RL policies          │
+# │ Autonomous Vehicles │ Self-driving, drones              │
+# │ Manipulation        │ Robotic arms, dexterous hands     │
+# │ Humanoid Robots     │ Locomotion, whole-body control    │
+# │ Medical Robotics    │ Surgery, prosthetics, rehab       │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# CONFERENCES:
+# ICRA, IROS         — top robotics conferences
+# RSS                — robotics science and systems
+# CoRL               — learning for control/robotics
+# Humanoids          — humanoid robots
+
+# HOT TOPICS (2024-2026):
+# - Foundation models for robots (RT-2, OpenVLA)
+# - Diffusion policies (learn complex manipulation)
+# - Humanoid robots (Figure 02, Tesla Optimus, Unitree)
+# - Sim-to-real transfer (train in sim, deploy in reality)
+# - Dexterous manipulation (in-hand object manipulation)
+# - LLM-guided planning (robots that understand language)
+
+# TOOLS TO LEARN:
+# ROS / ROS 2          — robot operating system
+# PyBullet / Isaac Sim — physics simulation
+# OpenCV / MediaPipe   — perception
+# MoveIt               — motion planning framework
+# Gazebo               — robot simulation
+
+# CAREER PATHS:
+# - Robotics Engineer (Boston Dynamics, Tesla, Figure)
+# - Autonomous Vehicle Engineer (Waymo, Cruise, Zoox)
+# - Research Scientist (robotics + ML labs)
+# - Surgical Robotics (Intuitive Surgical, Vicarious Surgical)
+# - Space Robotics (NASA JPL, SpaceX)
+
+# THE FUTURE OF ROBOTICS:
+# We're at the "GPT-3 moment" for robotics.
+# Foundation models (vision-language-action) are making robots
+# GENERAL — not task-specific.
+# Within 10 years: humanoid robots in homes and factories.
+# Within 20 years: robots doing most physical labor.
+
+# THE GRAND CHALLENGE:
+# Moravec's paradox: hard things are easy, easy things are hard.
+# Chess? Easy for AI. Picking up a glass? Very hard.
+# The physical world is messy, unpredictable, continuous.
+# But that's exactly what makes robotics the most exciting field.</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">👁️ Perception</td><td>SLAM, vision, lidar, sensor fusion</td><td>ICRA, IROS, RSS, CVPR</td></tr>
@@ -504,24 +1445,239 @@ doors.push({
 <div class="dialogue en">"Now the main question," Navid said. "Which domain is yours?" He lifted the compass, placed it in your hand. "This compass will show you direction — but you must walk. Ask yourself four questions. Honestly. Be honest with yourself."</div>
 
 <div class="callout info"><span class="co-icon">①</span><div><strong>কী ভালোবাসো? (Interest)</strong> — কোন বিষয় পড়লে উত্তেজনা হয়? কোন পেপার পড়ে বুক ধুকধুক করে? ৫-৭ বছর ধৈর্য ধরে কাজ করতে হবে — ভালোবাসা ছাড়া সম্ভব নয়।</div></div>
-<div class="code-block">Selection Framework — চার প্রশ্ন এক সাথে:
+<div class="code-block"># ── STEP 1: The domain selection formula ──
+# Four factors combine to find your research domain:
 
-  INTEREST  *  STRENGTH  *  MARKET  *  PURPOSE  =  তোমার ডোমেইন
+# INTEREST × STRENGTH × MARKET × PURPOSE = YOUR DOMAIN
 
-  ❌ যেটা ভালোবাসো কিন্তু দুর্বল → burnout, ৫ বছরে হাল ছাড়বে
-  ❌ যেটা পারো কিন্তু ঘেন্না → প্রতিদিন যন্ত্রণা, ভালো কাজ হবে না
-  ❌ যেটা হট কিন্তু purpose নেই → খালি prestige, খালি শূন্যতা
-  ✅ চারটির ছেদ → টেকসই, গভীর, কল্যাণকর গবেষণা
+# If any factor is zero, the product is zero.
 
-  সত্যিকারের ক্রম (গুরুত্ব অনুসারে):
-    ১. PURPOSE   — কার কষ্ট কমবে? (সবচেয়ে গুরুত্বপূর্ণ)
-    ২. INTEREST  — ভালোবাসলে ৫-৭ বছর সহ্য হবে
-    ৩. STRENGTH  — দুর্বল জায়গায় যেও না
-    ৪. MARKET    — ফান্ডিং/ক্যারিয়ার, কিন্তু প্রথম তিনটি মিললে এটা মেলেই
+# Example scoring:
+def score_domain(interest, strength, market, purpose):
+    """
+    Score a research domain from 1-10 on each factor.
+    Final score = product (all must be present).
+    """
+    score = interest * strength * market * purpose
+    max_possible = 10 * 10 * 10 * 10
+    percentage = (score / max_possible) * 100
+    return f"{percentage:.1f}%"
 
-  ⚠️ ফাঁদ: শুধু MARKET (হট/ফান্ডেড) দেখে বেছো না — hype থামলে ফেল।
-  ⚠️ ফাঁদ: শুধু INTEREST (পছন্দ) দেখে বেছো না — দুর্বল হলে টিকবে না।
-  ✅ চারটে মিলিয়ে — তারপর ইস্তিখারা, তাওফিক চাও।</div>
+# Example: MLSys for a developer who likes AI:
+print("MLSys:", score_domain(
+    interest=8,    # likes systems + AI
+    strength=9,    # strong developer
+    market=9,      # very hot, funded
+    purpose=7      # infrastructure helps many people
+))  # 45.4%
+
+# Example: Pure theory for someone weak in math:
+print("Theory:", score_domain(
+    interest=5,    # somewhat interesting
+    strength=3,    # WEAK in math
+    market=6,      # stable but niche
+    purpose=6      # fundamental knowledge
+))  # 5.4% (low because strength is low)
+
+# The lesson: a weakness in ANY area drags down everything.</div>
+
+<div class="code-block"># ── STEP 2: Self-assessment template ──
+# Honest self-assessment is the foundation.
+
+# Rate yourself 1-10 on each skill:
+skills = {
+    "math": 4,           # linear algebra, probability, proofs
+    "coding": 9,         # Python, Django, Vue, system design
+    "hardware": 3,       # electronics, robotics
+    "writing": 7,        # papers, documentation
+    "teaching": 8,       # explaining concepts
+    "research": 5,       # reading papers, experimentation
+    "collaboration": 7,  # working with teams
+}
+
+# Map skills to domains:
+domain_match = {
+    "MLSys":      skills["coding"] + skills["math"] + skills["research"],
+    "AI4SE":      skills["coding"] + skills["research"],
+    "Database":   skills["coding"] + skills["math"],
+    "HCI":        skills["coding"] + skills["teaching"] + skills["writing"],
+    "AI Security": skills["coding"] + skills["math"] + skills["research"],
+    "Distributed": skills["coding"] + skills["math"] + skills["research"],
+    "Theory":     skills["math"] + skills["research"],
+    "Robotics":   skills["coding"] + skills["hardware"] + skills["math"],
+}
+
+# Sort by score:
+for domain, score in sorted(domain_match.items(), key=lambda x: -x[1]):
+    print(f"  {domain:15}: {score}/30")
+
+# This data-driven approach helps you see where you naturally fit.</div>
+
+<div class="code-block"># ── STEP 3: Market analysis ──
+# Research the landscape before committing.
+
+# Factors to research for each domain:
+# 1. FUNDING: Is there money? (NSF, DARPA, industry)
+# 2. COMPETITION: How many applicants per slot?
+# 3. GROWTH: Is the field growing or shrinking?
+# 4. CAREER: What jobs are available after PhD?
+
+# Competition levels (acceptance rates):
+domains = {
+    "NLP/LLM":         {"rate": "1-3%",  "funding": "Very High", "note": "Most competitive"},
+    "Computer Vision":  {"rate": "2-4%",  "funding": "High",      "note": "Very competitive"},
+    "RL":              {"rate": "2-5%",  "funding": "High",      "note": "Competitive"},
+    "MLSys":           {"rate": "3-6%",  "funding": "Very High", "note": "Growing fast"},
+    "AI4SE":           {"rate": "5-8%",  "funding": "High",      "note": "Explosive growth"},
+    "Systems/OS":      {"rate": "5-8%",  "funding": "Stable",    "note": "Niche, stable"},
+    "Database":        {"rate": "6-10%", "funding": "Stable",    "note": "Always needed"},
+    "HCI":             {"rate": "8-12%", "funding": "Moderate",  "note": "Low competition"},
+    "Theory":          {"rate": "5-10%", "funding": "Moderate",  "note": "Math-heavy"},
+    "Quantum":         {"rate": "5-10%", "funding": "Growing",   "note": "Physics-heavy"},
+}
+
+# Print summary:
+for domain, info in sorted(domains.items(), key=lambda x: x[1]["rate"]):
+    print(f"  {domain:20} | Admit: {info['rate']:6} | {info['note']}")
+
+# LESSON: Lower competition = easier entry.
+# MLSys and HCI have good admit rates AND are growing.</div>
+
+<div class="code-block"># ── STEP 4: Purpose — the most important question ──
+# "Whose pain will your research reduce?"
+
+# This is the question that sustains you through 5-7 years of PhD.
+
+# Examples of purpose-driven research:
+purpose_examples = {
+    "Medical AI": "Help doctors diagnose disease faster",
+    "Accessibility": "Enable blind people to use computers",
+    "Education AI": "Personalized learning for underserved students",
+    "AI Safety": "Prevent AI from causing harm",
+    "Climate Tech": "Use AI to fight climate change",
+    "Development": "Technology for developing countries (Bangladesh!)",
+    "Language Tech": "Bengali NLP — 300M speakers underserved",
+}
+
+# THE PURPOSE PYRAMID:
+# ┌──────────────────┐
+# │ World-changing   │  ← "cure cancer with AI" (rare, hard)
+# ├──────────────────┤
+# │ Community-serving │  ← "Bengali NLP for 300M people"
+# ├──────────────────┤
+# │ Knowledge-adding  │  ← "understand how attention works"
+# ├──────────────────┤
+# │ Self-advancing    │  ← "get a PhD for career" (weakest)
+# └──────────────────┘
+
+# The strongest purpose connects to REAL HUMAN NEED.
+
+# Self-reflection questions:
+questions = [
+    "What problem in my community (Bangladesh) could AI solve?",
+    "What knowledge gap frustrates me when I try to learn?",
+    "If I had unlimited resources, what would I build?",
+    "Whose life would be better if my research succeeds?",
+    "What would I work on even if nobody paid me?",
+]
+
+for q in questions:
+    print(f"  ❓ {q}")
+
+# Write your answers honestly. This is your compass.</div>
+
+<div class="code-block"># ── STEP 5: Practical next steps ──
+# Once you've identified your domain, here's the action plan:
+
+action_plan = {
+    "0-3 months": [
+        "Read 5 papers in your chosen domain (arxiv.org)",
+        "Find professors at target schools who work in this area",
+        "Start a small project (shows interest + ability)",
+        "Join relevant Discord/Slack communities",
+    ],
+    "3-6 months": [
+        "Implement a paper from scratch",
+        "Write a blog post about what you learned",
+        "Email professors (cold outreach with specific questions)",
+        "Apply for REU (Research Experience for Undergrads)",
+    ],
+    "6-12 months": [
+        "Get research experience (lab, internship, collaboration)",
+        "Contribute to open-source in your domain",
+        "Build a portfolio (GitHub with projects)",
+        "Take advanced courses in the domain",
+        "Prepare GRE (if needed) and application materials",
+    ],
+    "12-18 months": [
+        "Apply to PhD programs (deadlines: December)",
+        "Get strong recommendation letters",
+        "Write a research statement (what you want to study)",
+        "Apply for fellowships (NSF GRFP, NDSEG)",
+    ],
+}
+
+for phase, tasks in action_plan.items():
+    print(f"\n{phase}:")
+    for task in tasks:
+        print(f"  ☐ {task}")
+
+# APPLICATION STRATEGY:
+# - Apply to 8-12 programs (mix of reach, match, safety)
+# - Research FIT is more important than ranking
+# - Email professors BEFORE applying (show interest)
+# - Strong rec letters > GRE scores
+# - Your story: WHY this domain, WHY now, WHY you</div>
+
+<div class="code-block"># ── STEP 6: Decision summary and the bigger picture ──
+# FINAL DECISION FRAMEWORK:
+#
+# 1. PURPOSE: Whose pain will I reduce? (most important)
+# 2. INTEREST: Will I love this for 5-7 years?
+# 3. STRENGTH: Am I good at the required skills?
+# 4. MARKET: Is there funding and career path?
+#
+# When all four align → that's your domain.
+
+# ┌─────────────────┬──────────────────────────────────────┐
+# │ Domain          │ Why it might fit YOU                │
+# ├─────────────────┼──────────────────────────────────────┤
+# │ MLSys (primary) │ Developer + AI, hot, less crowded  │
+# │ AI4SE (secondary)│ SE + LLM, Copilot era, daily SE   │
+# │ Database (safety)│ Stable, MySQL experience, always  │
+# │ HCI (wildcard)  │ Ipractus UI, low competition, impact│
+# │ AI Security     │ Fastest growing, developer entry   │
+# └─────────────────┴──────────────────────────────────────┘
+
+# REMEMBER:
+# - PhD is a 5-7 year commitment — choose WISELY
+# - Hype fades. Fundamentals remain. Choose DEPTH.
+# - Your background (Django, Vue, MySQL, Docker) is an ASSET
+# - Interdisciplinary work (AI+Systems, AI+SE) has LESS competition
+# - The best research comes from CARING about the problem
+
+# THE BIGGER PICTURE:
+# "Knowledge is an amanah (trust)."
+# Your PhD isn't just for you — it's for the people
+# whose lives your research will improve.
+#
+# Whether it's:
+# - Bengali NLP (300M speakers need it)
+# - Medical AI (faster diagnosis)
+# - Accessible technology (for the disabled)
+# - Education technology (for underserved students)
+#
+# Choose where YOUR knowledge will do the most GOOD.
+# That's the true purpose of research.
+
+# FINAL ADVICE:
+# 1. Start SMALL — implement one paper
+# 2. Be PATIENT — research takes years
+# 3. Find MENTORS — don't walk alone
+# 4. Keep BUILDING — your projects ARE your research statement
+# 5. Make DUA — ask Allah for tawfiq (right guidance)
+#
+# "My Lord, increase me in knowledge." — Quran 20:114</div>
 <div class="callout info"><span class="co-icon">②</span><div><strong>কী পারো? (Strength)</strong> — গণিত ভালো → Theory/AI/Quantum · কোডিং ভালো → Systems/MLSys/SE/Data · মানুষ বোঝো → HCI/AI Ethics · হার্ডওয়্যার → Robotics। দুর্বল জায়গায় যেও না, শক্তিশালী জায়গায় যাও।</div></div>
 <div class="callout info"><span class="co-icon">③</span><div><strong>কোথায় সুযোগ? (Market)</strong> — ফান্ডিং কোথায় বেশি, প্রতিযোগিতা কোথায় কম, ক্যারিয়ার ও ভবিষ্যৎ কোথায়? তোমার target বিশ্ববিদ্যালয়ে কোন ডোমেইন শক্তিশালী, কোন প্রফেসর?</div></div>
 <div class="callout tip"><span class="co-icon">✦</span><div><strong>বোনাস — কোথায় purpose?</strong> কোন ডোমেইনে তোমার গবেষণা মানুষের কষ্ট কমাবে, ইনসাফ আনবে? জ্ঞান একটা আমানত — কোথায় সেটা সবচেয়ে ভালো ব্যবহার হবে? <strong>সবচেয়ে গুরুত্বপূর্ণ প্রশ্ন।</strong></div></div>
