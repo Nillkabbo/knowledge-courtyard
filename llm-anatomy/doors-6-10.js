@@ -66,73 +66,414 @@ doors.push({
 </div>
 <div class="svg-caption">Autoregressive জেনারেশন — এক সময় এক টোকেন; প্রতিটি ধাপে গোটা context পুনরায় প্রসেস হয়</div>
 
-<div class="code-block">Autoregressive Generation — One Token at a Time:
+<div class="code-block"># ── STEP 1: How LLMs generate text ──
+# LLMs generate text ONE TOKEN AT A TIME (autoregressive).
 
-INPUT: "The capital of Bangladesh is"
-  → tokens: [464, 3797, 286, 12593, 318]
+# THE GENERATION LOOP:
+generation_loop = """
+Given: "The capital of Bangladesh is"
 
-STEP 1: Process all tokens → attention → 
-  feed-forward → output vector
-  → probability distribution over vocabulary
-  
-  P(next) = {Dhaka: 0.89, Delhi: 0.03, ...}
-  → Pick: "Dhaka" (temperature=0)
+STEP 1: Feed all tokens through the model
+  → Model outputs probability distribution:
+    "Dhaka": 0.89, "Delhi": 0.03, "Chittagong": 0.02, ...
+  → Pick "Dhaka" (highest probability)
   → Append to sequence
 
-STEP 2: Now process [464, 3797, 286, 12593, 318, "Dhaka"]
-  → P(next) = {".": 0.7, "is": 0.15, ...}
-  → Pick: "."
+STEP 2: Feed [original tokens + "Dhaka"]
+  → Model outputs: ".": 0.70, "is": 0.15, ...
+  → Pick "."
+  → Append
 
-STEP 3: Process [..., "Dhaka", "."]
-  → P(next) = {"<END>": 0.8, "The": 0.1, ...}
-  → Pick: "<END>"
+STEP 3: Feed [original + "Dhaka" + "."]
+  → Model outputs: "<END>": 0.80, "The": 0.10, ...
+  → Pick "<END>"
+  → Stop!
 
 OUTPUT: "The capital of Bangladesh is Dhaka."
+"""
 
-KEY INSIGHT:
-  প্রতিটা token তৈরি করতে গোটা context 
-  প্রসেস করতে হয়। ১০০০ token আউটপুট = 
-  ১০০০ বার গোটা model forward pass।
-  
-  → এজন্য generation ধীর (pre-fill থেকে)
-  → এজন্য KV cache দরকার (পুরোনো token 
-    পুনরায় গোনা এড়াতে)
+print(generation_loop)
 
-GENERATION STRATEGIES:
+# KEY INSIGHT:
+# Each new token requires a FULL forward pass through the model.
+# Generating 1000 tokens = 1000 forward passes.
+# This is why text generation is SLOW (vs reading, which is fast).
 
-১. GREEDY (temperature=0)
-  → সর্বদা সর্বোচ্চ সম্ভাবনার token
-  → নির্ভুল কিন্তু পুনরাবৃত্তিমূলক
+# IN CODE (using HuggingFace):
+generation_code = """
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
-২. BEAM SEARCH
-  → top-B paths একসাথে রাখো
-  → সেরা sequence বাছো
-  → অনুবাদে ভালো, chat-এ খারাপ
+model = AutoModelForCausalLM.from_pretrained("gpt2")
+tokenizer = AutoTokenizer.from_pretrained("gpt2")
 
-৩. NUCLEUS SAMPLING (top_p)
-  → শীর্ষ p% সম্ভাবনা থেকে বাছো
-  → স্বাভাবিক, বৈচিত্র্যময়
+# Generate text:
+input_ids = tokenizer("The capital of France is", return_tensors="pt").input_ids
+output = model.generate(input_ids, max_new_tokens=20, temperature=0.7)
+print(tokenizer.decode(output[0]))
+# "The capital of France is Paris, which is located in..."
+"""
 
-৪. TEMPERATURE SAMPLING
-  → distribution কে চ্যাপটা/তীক্ষ্ণ করো
-  → temperature=0 তীক্ষ্ণ, 1+ চ্যাপটা
+print(generation_code)</div>
 
-৫. CONSTRAINED DECODING
-  → শুধু নির্দিষ্ট token allow করো
-  → JSON schema, grammar constraints
-  → Structured output গ্যারান্টি
+<div class="code-block"># ── STEP 2: KV Cache (speed optimization) ──
+# Generating each token is expensive. KV Cache makes it faster.
 
-STOP CONDITIONS:
-  • Max tokens reached (e.g., 4096)
-  • Stop sequence hit (e.g., "\\n\\n")
-  • End-of-text token generated
-  → না হলে model অনন্তকাল জেনারেট করবে
+# WITHOUT KV CACHE:
+without_cache = """
+Token 1: process tokens [1]                    → 1 forward pass
+Token 2: process tokens [1, 2]                  → recompute token 1!
+Token 3: process tokens [1, 2, 3]               → recompute tokens 1-2!
+Token N: process tokens [1, 2, 3, ..., N]       → recompute ALL previous!
 
-STREAMING (SSE):
-  প্রতিটা token তৈরি হওয়ামাত্র পাঠাও
-  → user দ্রুত দেখে
-  → perceived latency কমে
-  → ChatGPT, Claude — সব streaming ব্যবহার করে</div>
+Total: O(n^2) computations for n tokens. Very slow!
+"""
+
+print(without_cache)
+
+# WITH KV CACHE:
+with_cache = """
+Token 1: process [1] → cache K,V for token 1
+Token 2: process [2] → use cached K,V for token 1 + compute token 2
+Token 3: process [3] → use cached K,V for 1-2 + compute token 3
+Token N: process [N] → use cached K,V for 1 to N-1 + compute token N
+
+Total: O(n) computations. MUCH faster!
+
+The KV Cache stores the Key and Value vectors from attention
+so they don't need to be recomputed each step.
+"""
+
+print(with_cache)
+
+# MEMORY COST OF KV CACHE:
+kv_memory = """
+For a model with:
+  - d_model = 8192 (Llama 3 70B)
+  - num_layers = 80
+  - num_kv_heads = 8
+
+Each token's KV cache: 2 * 8192 * 8 * 80 * 2 bytes = ~2.6 MB per token
+
+For 100K tokens: 100,000 * 2.6 MB = 260 GB of KV cache!
+This is why long context is memory-expensive.
+"""
+
+print(kv_memory)
+
+# KV CACHE OPTIMIZATIONS:
+optimizations = {
+    "PagedAttention (vLLM)": "Paginated KV cache (reduces fragmentation)",
+    "GQA (Grouped Query Attention)": "Fewer KV heads = smaller cache",
+    "MQA (Multi-Query Attention)": "Single KV head = tiny cache",
+    "KV Cache Quantization": "Store cache in int8 (half the memory)",
+    "Sliding Window": "Only cache recent tokens (Mistral)",
+}
+
+print("KV CACHE OPTIMIZATIONS:")
+for opt, desc in optimizations.items():
+    print(f"  {opt}: {desc}")</div>
+
+<div class="code-block"># ── STEP 3: Temperature and sampling ──
+# The model outputs PROBABILITIES. How do we CHOOSE the next token?
+
+import numpy as np
+
+def softmax(logits):
+    exp_x = np.exp(logits - np.max(logits))
+    return exp_x / exp_x.sum()
+
+# EXAMPLE: model logits for next token:
+logits = np.array([2.5, 1.8, 0.3, -0.5, -1.2])  # 5 tokens
+
+# TEMPERATURE controls randomness:
+# temperature=0 → always pick highest (greedy, deterministic)
+# temperature=1 → use original probabilities
+# temperature=2 → flatten distribution (more random)
+
+def sample_with_temperature(logits, temperature=1.0):
+    scaled = logits / temperature
+    probs = softmax(scaled)
+    return np.random.choice(len(probs), p=probs)
+
+# Show effect of temperature:
+for temp in [0.1, 0.5, 1.0, 2.0]:
+    probs = softmax(logits / temp)
+    print(f"Temperature {temp}: {[round(p, 3) for p in probs]}")
+# temp=0.1: [0.998, 0.002, 0.0, 0.0, 0.0]  → almost always token 0
+# temp=2.0:  [0.41, 0.27, 0.15, 0.10, 0.07] → more varied
+
+# SAMPLING STRATEGIES:
+strategies = {
+    "Greedy (temp=0)": {
+        "how": "Always pick highest probability token",
+        "pro": "Deterministic, safe, focused",
+        "con": "Repetitive, boring, can loop",
+        "use": "Factual answers, code generation",
+    },
+    "Temperature sampling": {
+        "how": "Sample from temperature-adjusted distribution",
+        "pro": "Varied, natural-sounding",
+        "con": "Can produce lower-quality output",
+        "use": "Creative writing, brainstorming",
+    },
+    "Top-K sampling": {
+        "how": "Only sample from top K tokens (e.g., top 50)",
+        "pro": "Filters out unlikely tokens",
+        "con": "K is fixed (bad for varying distributions)",
+        "use": "General chat (K=40-50)",
+    },
+    "Top-P (nucleus) sampling": {
+        "how": "Sample from smallest set with total prob >= P",
+        "pro": "Adaptive (more tokens when uncertain)",
+        "con": "Slightly more complex",
+        "use": "Best general-purpose (P=0.9-0.95)",
+    },
+    "Beam search": {
+        "how": "Keep top-B sequences, pick overall best",
+        "pro": "Optimal sequence (not greedy)",
+        "con": "Slow, can produce generic text",
+        "use": "Translation, summarization",
+    },
+}
+
+print("SAMPLING STRATEGIES:")
+for strategy, info in strategies.items():
+    print(f"\n  {strategy}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 4: Controlling generation ──
+# How to get the output you want from an LLM.
+
+# TEMPERATURE GUIDELINES:
+temperature_guide = {
+    "temp=0 (greedy)": "Factual, code, math, data extraction",
+    "temp=0.3-0.5": "Summaries, explanations, structured output",
+    "temp=0.7": "General chat (most common default)",
+    "temp=1.0": "Creative writing, brainstorming",
+    "temp=1.5+": "Very random (usually bad)",
+}
+
+print("TEMPERATURE GUIDE:")
+for temp, use in temperature_guide.items():
+    print(f"  {temp}: {use}")
+
+# OPENAI API EXAMPLES:
+api_examples = """
+# Code generation (deterministic):
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "Write a Python function to sort a list"}],
+    temperature=0,      # deterministic
+    max_tokens=500,
+)
+
+# Creative writing:
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "Write a poem about autumn"}],
+    temperature=0.9,    # creative
+    top_p=0.95,         # nucleus sampling
+    max_tokens=300,
+    presence_penalty=0.6,  # discourage repetition
+    frequency_penalty=0.3, # reduce word repetition
+)
+
+# Structured output (JSON):
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "List 3 fruits as JSON: [{name, color}]"}],
+    temperature=0,
+    response_format={"type": "json_object"},  # force JSON
+)
+"""
+
+print(api_examples)
+
+# STOP SEQUENCES:
+stop_sequences = """
+# Stop generation at specific text:
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[...],
+    stop=["\\n\\nHuman:", "\\n\\nAssistant:"],  # stop at these
+)
+
+# USE CASES:
+# - Chat: stop at "Human:" (don't role-play the user)
+# - Code: stop at triple-backtick (end of code block)
+# - JSON: stop at end-of-object character
+"""
+
+print(stop_sequences)
+
+# MAX TOKENS:
+max_tokens = """
+# Always set max_tokens to prevent runaway generation:
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[...],
+    max_tokens=1000,  # hard limit
+)
+
+# Token limits per model:
+# GPT-4o: up to 16,384 output tokens
+# Claude 3.5 Sonnet: up to 8,192 output tokens
+# Llama 3 70B: up to 8,192 output tokens
+"""
+
+print(max_tokens)</div>
+
+<div class="code-block"># ── STEP 5: Streaming and perceived latency ──
+# Show tokens as they're generated (better UX).
+
+# WHY STREAMING MATTERS:
+streaming_benefits = """
+WITHOUT streaming:
+  User asks question → wait 15 seconds → see entire answer at once
+  → feels slow, users think it's broken
+
+WITH streaming:
+  User asks question → first token in 0.5s → tokens stream in
+  → feels fast, user reads as it generates
+  → perceived latency is MUCH lower
+
+ChatGPT, Claude, all production LLM apps use streaming.
+"""
+
+print(streaming_benefits)
+
+# STREAMING WITH OPENAI API:
+streaming_code = """
+from openai import OpenAI
+client = OpenAI()
+
+# Stream tokens as they arrive:
+stream = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "Explain how databases work"}],
+    stream=True,       # enable streaming
+    max_tokens=1000,
+)
+
+# Process each chunk:
+full_response = ""
+for chunk in stream:
+    if chunk.choices[0].delta.content is not None:
+        token = chunk.choices[0].delta.content
+        full_response += token
+        print(token, end="", flush=True)  # print immediately
+
+print()  # newline at end
+print(f"Total response: {len(full_response)} chars")
+"""
+
+print(streaming_code)
+
+# DJANGO/FASTAPI STREAMING (Server-Sent Events):
+django_streaming = """
+# Django StreamingHttpResponse:
+from django.http import StreamingHttpResponse
+import json
+
+def stream_llm_response(request):
+    def generate():
+        stream = client.chat.completions.create(
+            model="gpt-4",
+            messages=get_messages(request),
+            stream=True,
+        )
+        for chunk in stream:
+            token = chunk.choices[0].delta.content
+            if token:
+                yield f"data: {json.dumps({'token': token})}\\n\\n"
+
+    response = StreamingHttpResponse(generate(), content_type="text/event-stream")
+    return response
+
+# Frontend (EventSource):
+# const source = new EventSource('/api/chat?prompt=hello');
+# source.onmessage = (e) => {
+#     const { token } = JSON.parse(e.data);
+#     document.getElementById('response').textContent += token;
+# };
+"""
+
+print(django_streaming)</div>
+
+<div class="code-block"># ── STEP 6: Production generation pipeline ──
+# Complete production LLM generation system:
+
+production_pipeline = """
+PRODUCTION LLM GENERATION PIPELINE:
+
+1. REQUEST:
+   User sends prompt via API
+   → Validate input (length, safety)
+   → Estimate cost (count tokens)
+   → Check rate limit
+
+2. PRE-PROCESSING:
+   → Add system prompt (persona, instructions)
+   → Add conversation history
+   → Format messages (role, content)
+   → Apply any prompt templates
+
+3. GENERATION:
+   → Call LLM API (OpenAI, Anthropic, local)
+   → Set parameters: temperature, top_p, max_tokens
+   → Stream tokens back to user (SSE)
+   → Monitor for errors/timeouts
+
+4. POST-PROCESSING:
+   → Parse response (JSON, markdown, plain text)
+   → Validate format
+   → Filter content (safety)
+   → Log interaction (prompt, response, cost)
+
+5. OPTIMIZATION:
+   → Cache identical prompts (Redis)
+   → Use cheaper model for simple tasks (GPT-4o-mini)
+   → Batch requests where possible
+   → Compress prompt (remove redundancy)
+"""
+
+print(production_pipeline)
+
+# COST OPTIMIZATION:
+cost_tips = {
+    "Model selection": "Use GPT-4o-mini for 90% of tasks (10x cheaper)",
+    "Prompt caching": "Cache system prompts (OpenAI does this automatically)",
+    "Batch processing": "Batch non-real-time requests (50% cheaper)",
+    "Output limits": "Set max_tokens appropriately (don't over-generate)",
+    "Prompt length": "Shorter prompts = cheaper (remove redundancy)",
+    "Streaming": "Stream so users don't time out waiting",
+}
+
+print("COST OPTIMIZATION:")
+for tip, desc in cost_tips.items():
+    print(f"  {tip}: {desc}")
+
+# GENERATION SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Autoregressive   │ One token at a time             │
+# │ KV Cache         │ Avoid recomputing past tokens   │
+# │ Temperature      │ Controls randomness (0=factual) │
+# │ Top-P sampling   │ Best general sampling method    │
+# │ Streaming        │ Show tokens as generated        │
+# │ Max tokens       │ Prevent runaway generation      │
+# │ Stop sequences   │ Control when to stop            │
+# │ Cost             │ Model selection + caching       │
+# └──────────────────┴──────────────────────────────────┘
+
+# THE BIG PICTURE:
+# Text generation is the END PRODUCT of everything the LLM learned.
+# Tokenization → Embeddings → Attention → FFN → Output → Sample
+# Each step transforms the input until it becomes useful text.
+# Understanding generation = understanding how to USE LLMs effectively.
+# Temperature, sampling, and prompt design are the levers you control.</div>
 
 <div class="dialogue">তাসদির — বাক্য সৃষ্টি। কুরআনে আল্লাহ বলেন — "পবিত্র সেই সত্তা যিনি সৃষ্টি করেছেন প্রতিটি কিছু উত্তমরূপে।" (৩২:৭)। LLM-এর সৃষ্টিও — প্রতিটি টোকেন ধাপে ধাপে। এক সাথে নয়। প্রতিটা ধাপ পূর্বের উপর দাঁড়ায়। এই ধীরগতির সৃষ্টিই ভাষার ভিত্তি।</div>
 <div class="dialogue en">"Tasdir — sentence creation. Allah says — 'Blessed is He who created everything in the best form.' (32:7). The LLM's creation too — each token step by step. Not all at once. Each step rests on the previous. This slow creation is the foundation of language."</div>`,
