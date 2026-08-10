@@ -567,76 +567,462 @@ doors.push({
 </div>
 <div class="svg-caption">ভেক্টর রিট্রিভাল — কোটি বিন্দুর মধ্যে top-k নিকটতম প্রতিবেশী</div>
 
-<div class="code-block">Vector Indexing — Finding Needles in Haystacks:
+<div class="code-block"># ── STEP 1: The vector search problem ──
+# After ingesting documents, you need to FIND relevant ones quickly.
 
-THE PROBLEM:
-  ১,০০০,০০০ documents → ১M embeddings (each ৭৬৮-৩০৭২ dim)
-  Query embedding → find top-k nearest
-  
-  Brute force (flat): compare with all ১M
-  → ~১ second per query
-  → ১০০০ QPS = impossible
-  
-  With index: ~৫ms per query
-  → ২০০,০০০ QPS possible
+# THE PROBLEM:
+problem = """
+You have 1,000,000 document embeddings (each 1536 dimensions).
+A user asks a question → you embed it → find TOP K nearest.
 
-INDEX ALGORITHMS:
+BRUTE FORCE (compare query to ALL 1M vectors):
+  → ~1000ms per query
+  → 1 QPS (queries per second) max
+  → Not viable for production!
 
-১. HNSW (Hierarchical Navigable Small World)
-  → সবচেয়ে জনপ্রিয়, সবচেয়ে দ্রুত
-  → multi-layer graph — উপরে কম node, নিচে বেশি
-  → query উপর থেকে নিচে নামে — দ্রুত approximate
-  → recall: ৯৫-৯৮%
-  → build time: মাঝারি
-  → memory: বেশি (graph topology রাখতে হয়)
-  
-  Pinecone, Qdrant, Weaviate, Milvus — সব ডিফল্ট HNSW
+WITH INDEX (HNSW):
+  → ~5ms per query
+  → 200,000 QPS possible
+  → Production-ready!
 
-২. IVF (Inverted File Index)
-  → vector space কে cluster-এ ভাগ
-  → query শুধু নিকটতম cluster-এ খোঁজে
-  → recall: ৯০-৯৫%
-  → build time: দ্রুত (k-means clustering)
-  → memory: কম
-  
-  IVF + PQ (Product Quantization):
-    → PQ = ভেক্টর কম্প্রেস (৭৬৮ dim → ৬৪ bytes)
-    → ১০x কম মেমরি, ৯০% recall
+The index trades a little accuracy for MASSIVE speed.
+This is called APPROXIMATE NEAREST NEIGHBOR (ANN) search.
+"""
 
-৩. FLAT (Brute Force)
-  → সবের সাথে compare — exact, ধীর
-  → recall: ১০০%
-  → use: ছোট dataset (< ১০০K)
+print(problem)
 
-VECTOR DATABASE COMPARISON:
+# INDEX ALGORITHMS:
+algorithms = {
+    "HNSW (Hierarchical Navigable Small World)": {
+        "speed": "Fastest (5ms for 1M vectors)",
+        "recall": "95-98%",
+        "memory": "High (stores graph topology)",
+        "used_by": "Pinecone, Qdrant, Weaviate, Milvus, pgvector",
+    },
+    "IVF (Inverted File Index)": {
+        "speed": "Fast (depends on nprobe)",
+        "recall": "90-95%",
+        "memory": "Moderate",
+        "used_by": "FAISS, Milvus",
+    },
+    "IVF + PQ (Product Quantization)": {
+        "speed": "Very fast (compressed vectors)",
+        "recall": "85-90%",
+        "memory": "Low (10x compression)",
+        "used_by": "FAISS (for billion-scale)",
+    },
+    "FLAT (Brute Force)": {
+        "speed": "Slow (1000ms for 1M)",
+        "recall": "100% (exact)",
+        "memory": "Baseline",
+        "used_by": "Small datasets (< 100K)",
+    },
+}
 
-  # ────────────# ──────────# ──────────# ──────────# 
-  #  DB         #  Type     #  Strength #  Best For # 
-  # ────────────# ──────────# ──────────# ──────────# 
-  #  Pinecone   #  Managed  #  সহজ, fast#  Prototyping# 
-  #  Qdrant     #  OSS+Cloud#  Hybrid,  #  Production# 
-  #             #           #  Rust fast#           # 
-  #  Weaviate   #  OSS+Cloud#  Hybrid   #  Multi-modal# 
-  #  Milvus     #  OSS      #  Scale    #  Enterprise# 
-  #  Chroma     #  OSS      #  সহজ      #  Dev/prototyping# 
-  #  pgvector   #  Extension#  SQL      #  Existing PG# 
-  # ────────────# ──────────# ──────────# ──────────# 
+print("INDEX ALGORITHMS:")
+for algo, info in algorithms.items():
+    print(f"\n  {algo}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
 
-INDEX OPTIMIZATION:
+<div class="code-block"># ── STEP 2: HNSW index (the industry standard) ──
+# HNSW is used by virtually ALL modern vector databases.
 
-  Filter then Search (pre-filtering):
-    metadata: {source: "contract.pdf", page: {"$gt": 10}}
-    → শুধু ফিল্টার করা subset-এ search
-    → দ্রুত, সঠিক
-  
-  Search then Filter (post-filtering):
-    → পুরো space search → metadata filter
-    → কিছু filter-এ ০ ফল
-  
-  Hybrid: Pinecone/Qdrant support 
-    → single-stage filtered search
+# HOW HNSW WORKS:
+hnsw = """
+HNSW builds a MULTI-LAYER GRAPH:
 
-REINDEXING:
+Top layer:    few nodes, long-distance connections (fast navigation)
+Middle layers: more nodes, medium connections
+Bottom layer: ALL nodes, short connections (precise search)
+
+SEARCH PROCESS:
+  1. Start at TOP layer (sparse, fast)
+  2. Navigate toward query (greedy: move to closer node)
+  3. Drop to next layer (more detail)
+  4. Repeat until BOTTOM layer
+  5. Return K nearest neighbors
+
+Like zooming on Google Maps:
+  Start at country view → zoom to state → city → street
+"""
+
+print(hnsw)
+
+# HNSW PARAMETERS:
+parameters = {
+    "m (max connections)": {
+        "default": 16,
+        "effect": "Higher = more recall, more memory",
+        "range": "8-64",
+    },
+    "ef_construction": {
+        "default": 64,
+        "effect": "Higher = better index quality, slower build",
+        "range": "32-256",
+    },
+    "ef_search": {
+        "default": 40,
+        "effect": "Higher = more recall, slower query",
+        "range": "20-200",
+    },
+}
+
+print("HNSW PARAMETERS:")
+for param, info in parameters.items():
+    print(f"\n  {param}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# CREATE HNSW INDEX IN pgvector:
+pgvector_sql = """
+-- Create HNSW index:
+CREATE INDEX idx_docs_embedding
+ON documents USING hnsw (embedding vector_cosine_ops)
+WITH (m = 16, ef_construction = 64);
+
+-- Set search-time ef:
+SET hnsw.ef_search = 100;  -- higher = more recall
+
+-- Query:
+SELECT content, 1 - (embedding <=> $1) AS similarity
+FROM documents
+ORDER BY embedding <=> $1
+LIMIT 5;
+"""
+
+print(pgvector_sql)</div>
+
+<div class="code-block"># ── STEP 3: Vector database comparison ──
+# Which vector database should you choose?
+
+databases = {
+    "pgvector (PostgreSQL)": {
+        "type": "SQL extension",
+        "pro": "Use SQL + vectors together! No new infra.",
+        "con": "Not fastest at huge scale (>10M vectors)",
+        "best_for": "Small-medium apps, already using PostgreSQL",
+        "cost": "Free (open source)",
+    },
+    "Pinecone": {
+        "type": "Managed SaaS",
+        "pro": "Fully managed, serverless, production-ready",
+        "con": "Vendor lock-in, cost at scale",
+        "best_for": "Teams that don't want to manage infra",
+        "cost": "Free tier, then pay-per-use",
+    },
+    "Qdrant": {
+        "type": "Open source (Rust) + Cloud",
+        "pro": "Fast, rich filtering, great API",
+        "con": "Newer ecosystem than Pinecone",
+        "best_for": "Performance-critical apps with filtering",
+        "cost": "Free (self-hosted) or Cloud",
+    },
+    "Chroma": {
+        "type": "Open source, Python-native",
+        "pro": "Easy setup, great for development",
+        "con": "Not production-hardened at scale",
+        "best_for": "Prototyping, development, small projects",
+        "cost": "Free",
+    },
+    "Milvus / Zilliz": {
+        "type": "Open source / managed",
+        "pro": "Extremely scalable (billions of vectors)",
+        "con": "Complex deployment (self-hosted)",
+        "best_for": "Large-scale enterprise production",
+        "cost": "Free (self-hosted) or Cloud",
+    },
+    "Weaviate": {
+        "type": "Open source",
+        "pro": "GraphQL API, built-in modules (auto-embedding)",
+        "con": "Complex configuration",
+        "best_for": "Apps needing auto-embedding + GraphQL",
+        "cost": "Free (self-hosted) or Cloud",
+    },
+}
+
+print("VECTOR DATABASE COMPARISON:")
+for db, info in databases.items():
+    print(f"\n  {db}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# DECISION TREE:
+decision = """
+CHOOSING A VECTOR DATABASE:
+
+Already using PostgreSQL?
+  → pgvector (no new infrastructure)
+
+Need managed (no ops)?
+  → Pinecone (easiest) or Qdrant Cloud
+
+Need maximum scale (billions)?
+  → Milvus or Pinecone
+
+Need rich filtering?
+  → Qdrant (best filtering engine)
+
+Just prototyping?
+  → Chroma (simplest setup)
+
+Need auto-embedding (no separate API)?
+  → Weaviate (built-in embedding models)
+"""
+
+print(decision)</div>
+
+<div class="code-block"># ── STEP 4: Metadata filtering in vector search ──
+# Real-world RAG needs VECTOR SEARCH + METADATA FILTERING.
+
+# EXAMPLE: "Find documents about Python, from 2024, in the 'tutorials' category"
+# This needs BOTH vector similarity AND metadata filtering.
+
+# FILTERING APPROACHES:
+filtering = {
+    "Pre-filtering": {
+        "how": "Filter metadata FIRST, then vector search on subset",
+        "pro": "Fast (searches fewer vectors), accurate",
+        "con": "Some vector DBs don't support this well",
+        "supported_by": "Qdrant, Weaviate, Pinecone",
+    },
+    "Post-filtering": {
+        "how": "Vector search ALL vectors, then filter results",
+        "pro": "Works everywhere",
+        "con": "Slow (searches everything), might get too few results",
+        "supported_by": "All (but not recommended)",
+    },
+    "Single-stage": {
+        "how": "Combined filter + vector search in one operation",
+        "pro": "Best of both (fast + accurate)",
+        "con": "Only supported by advanced databases",
+        "supported_by": "Pinecone, Qdrant, Weaviate",
+    },
+}
+
+print("FILTERING APPROACHES:")
+for approach, info in filtering.items():
+    print(f"\n  {approach}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# pgvector WITH FILTERING:
+pgvector_filter = """
+-- Vector search + metadata filter in one query:
+SELECT content, 1 - (embedding <=> $1) AS similarity
+FROM documents
+WHERE metadata->>'category' = 'tutorials'     -- metadata filter
+  AND metadata->>'date' >= '2024-01-01'       -- date filter
+  AND metadata->>'source' = 'python_docs'     -- source filter
+ORDER BY embedding <=> $1                       -- vector similarity
+LIMIT 5;
+
+-- This uses BOTH the HNSW index (for vectors)
+-- AND the GIN index (for metadata) for optimal performance.
+
+-- Create indexes:
+CREATE INDEX idx_docs_embedding ON documents
+    USING hnsw (embedding vector_cosine_ops);
+CREATE INDEX idx_docs_metadata ON documents
+    USING gin (metadata);
+"""
+
+print(pgvector_filter)
+
+# DJANGO ORM WITH FILTERING:
+django_filter = """
+from pgvector.django import CosineDistance
+from django.db.models import Q
+
+def search_with_filters(query_embedding, category=None, date_from=None):
+    qs = Document.objects.annotate(
+        distance=CosineDistance('embedding', query_embedding)
+    )
+
+    # Apply metadata filters:
+    if category:
+        qs = qs.filter(metadata__category=category)
+    if date_from:
+        qs = qs.filter(metadata__date__gte=date_from)
+
+    return qs.order_by('distance')[:5]
+"""
+
+print(django_filter)</div>
+
+<div class="code-block"># ── STEP 5: Hybrid search (vector + keyword) ──
+# Vector search finds by MEANING. Keyword search finds by EXACT MATCH.
+# HYBRID combines both for best results.
+
+# WHY HYBRID IS BETTER:
+why_hybrid = """
+VECTOR SEARCH (semantic):
+  Query: "machine learning"
+  Finds: "ML", "artificial intelligence", "neural networks"
+  ✅ Great for synonyms and related concepts
+  ❌ Misses exact keyword matches (e.g., proper nouns, IDs)
+
+KEYWORD SEARCH (BM25):
+  Query: "Python 3.12"
+  Finds: documents containing EXACTLY "Python 3.12"
+  ✅ Great for exact matches, proper nouns, codes
+  ❌ Misses synonyms and related concepts
+
+HYBRID (both):
+  Combines vector similarity + keyword matching
+  → Gets the best of both worlds
+  → Higher recall and precision than either alone
+"""
+
+print(why_hybrid)
+
+# HYBRID SEARCH IMPLEMENTATION:
+hybrid_code = """
+import numpy as np
+
+def hybrid_search(query, query_embedding, top_k=5):
+    # 1. Vector search (semantic):
+    vector_results = Document.objects.annotate(
+        distance=CosineDistance('embedding', query_embedding)
+    ).filter(distance__lt=0.3).order_by('distance')[:20]
+
+    # 2. Keyword search (BM25 via PostgreSQL full-text):
+    from django.contrib.postgres.search import SearchVector, SearchQuery
+    keyword_results = Document.objects.annotate(
+        search=SearchVector('content')
+    ).filter(search=SearchQuery(query))[:20]
+
+    # 3. Merge and re-rank:
+    all_results = set(vector_results) | set(keyword_results)
+    scored = [(r, compute_combined_score(r, query)) for r in all_results]
+    scored.sort(key=lambda x: -x[1])
+
+    return scored[:top_k]
+
+def compute_combined_score(doc, query, alpha=0.7):
+    # alpha = weight for vector, (1-alpha) = weight for keyword
+    vector_score = doc.vector_similarity  # 0-1
+    keyword_score = doc.keyword_match     # 0-1
+    return alpha * vector_score + (1 - alpha) * keyword_score
+"""
+
+print(hybrid_code)
+
+# PostgreSQL FULL-TEXT SEARCH (built-in):
+fts_sql = """
+-- Built-in keyword search (no extra setup):
+SELECT content, ts_rank_cd(search_vector, query) AS rank
+FROM documents, plainto_tsquery('english', 'Python tutorial') query
+WHERE search_vector @@ query
+ORDER BY rank DESC
+LIMIT 5;
+
+-- Create search vector index:
+ALTER TABLE documents ADD COLUMN search_vector tsvector
+    GENERATED ALWAYS AS (to_tsvector('english', content)) STORED;
+
+CREATE INDEX idx_docs_search ON documents USING gin(search_vector);
+"""
+
+print(fts_sql)</div>
+
+<div class="code-block"># ── STEP 6: Re-ranking for precision ──
+# After initial retrieval, RE-RANK for higher precision.
+
+# WHY RE-RANKING:
+reranking = """
+INITIAL RETRIEVAL (fast, approximate):
+  → Vector search returns top 20-50 candidates
+  → Fast but imprecise (HNSW is approximate)
+
+RE-RANKING (slow, precise):
+  → Cross-encoder scores each candidate against query
+  → Much more accurate than vector similarity
+  → Only runs on 20-50 candidates (not all 1M)
+
+Result: near-exact quality at near-approximate speed.
+"""
+
+print(reranking)
+
+# RE-RANKING MODELS:
+reranking_models = {
+    "Cohere Rerank": {
+        "type": "API (cloud)",
+        "quality": "Best",
+        "cost": "Pay per request",
+        "speed": "Fast (API)",
+    },
+    "BGE-Reranker (local)": {
+        "type": "Open source model",
+        "quality": "Very good",
+        "cost": "Free (runs locally)",
+        "speed": "Moderate (needs GPU)",
+    },
+    "Cross-Encoder (ms-marco)": {
+        "type": "Open source (sentence-transformers)",
+        "quality": "Good",
+        "cost": "Free",
+        "speed": "Moderate",
+    },
+}
+
+print("RE-RANKING MODELS:")
+for model, info in reranking_models.items():
+    print(f"\n  {model}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# RE-RANKING IMPLEMENTATION:
+rerank_code = """
+from sentence_transformers import CrossEncoder
+
+# Load cross-encoder model:
+reranker = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
+
+def rerank_results(query, documents, top_k=5):
+    # Create query-document pairs:
+    pairs = [(query, doc.content) for doc in documents]
+
+    # Score each pair (cross-encoder evaluates both together):
+    scores = reranker.predict(pairs)
+
+    # Sort by score:
+    ranked = sorted(zip(documents, scores), key=lambda x: -x[1])
+
+    # Return top K:
+    return [doc for doc, score in ranked[:top_k]]
+
+# USAGE:
+# 1. Vector search: get top 20 (fast, approximate)
+# 2. Re-rank: score 20 candidates (slow, precise)
+# 3. Return top 5 (best quality)
+initial_results = vector_search(query, top_k=20)
+final_results = rerank_results(query, initial_results, top_k=5)
+"""
+
+print(rerank_code)
+
+# INDEXING CHECKLIST:
+checklist = """
+INDEXING CHECKLIST:
+  ☐ Choose the right index (HNSW for most cases)
+  ☐ Tune HNSW parameters (m, ef_construction, ef_search)
+  ☐ Add metadata indexes (GIN for JSONB)
+  ☐ Implement hybrid search (vector + keyword)
+  ☐ Add re-ranking for precision (cross-encoder)
+  ☐ Monitor recall and latency
+  ☐ Re-index when data changes significantly
+  ☐ Benchmark with YOUR data (not synthetic)
+"""
+
+print(checklist)
+
+# THE BIG PICTURE:
+# Indexing is the ENGINE of RAG.
+# Good indexing = fast, accurate retrieval.
+# Bad indexing = slow, irrelevant results.
+# Invest in getting this right — it affects EVERYTHING downstream.</div>
   যখন embedding model বদলাও → সব পুনরায় embed
   → expensive! তাই model সঠিক বেছে নাও প্রথমে
   → versioning: v1 ও v2 index একসাথে রাখো transition-এ</div>
