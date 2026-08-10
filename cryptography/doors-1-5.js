@@ -30,24 +30,289 @@ doors.push({
 <strong>Hybrid (TLS):</strong> RSA দিয়ে AES চাবি পাঠাও → AES দিয়ে ডেটা এনক্রিপ্ট। দুটোরই সেরা!<br>
 <strong>ECC:</strong> ২৫৬-bit ECC = ৩০৭২-bit RSA। ছোট চাবি, একই নিরাপত্তা।</div></div>
 
-<div class="code-block">— OpenSSL: AES ও RSA বাস্তবে —
-  # AES-256 এনক্রিপ্ট
-  $ openssl enc -aes-256-cbc -salt -in secret.txt -out secret.enc
-  enter aes-256-cbc password: ********
+<div class="code-block"># ── STEP 1: What is encryption? ──
+# ENCRYPTION: scramble data so only authorized people can read it.
+# DECRYPTION: unscramble it back to original.
 
-  # RSA keypair তৈরি
-  $ openssl genrsa -out private.pem 2048
-  $ openssl rsa -in private.pem -pubout -out public.pem
+# PLAINTEXT → [ENCRYPT with key] → CIPHERTEXT → [DECRYPT with key] → PLAINTEXT
 
-  # RSA দিয়ে এনক্রিপ্ট (public key দিয়ে)
-  $ openssl rsautl -encrypt -pubin -inkey public.pem \
-      -in aes_key.txt -out aes_key.enc
+# TWO TYPES OF ENCRYPTION:
+encryption_types = {
+    "Symmetric": {
+        "how": "Same key for encrypt AND decrypt",
+        "example": "AES (Advanced Encryption Standard)",
+        "speed": "Very fast (~978 GB/s)",
+        "problem": "How to share the key securely?",
+    },
+    "Asymmetric": {
+        "how": "Public key encrypts, private key decrypts",
+        "example": "RSA (Rivest-Shamir-Adleman)",
+        "speed": "Slow (~1000 signs/sec)",
+        "problem": "Too slow for large data",
+    },
+}
 
-  # RSA দিয়ে ডিক্রিপ্ট (private key দিয়ে)
-  $ openssl rsautl -decrypt -inkey private.pem -in aes_key.enc
+print("ENCRYPTION TYPES:")
+for etype, info in encryption_types.items():
+    print(f"\n  {etype}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
 
-  — AES গতি: ~৯৭৮ GB/s · RSA গতি: ~১০০০ signs/s —
-  — TLS: RSA দিয়ে AES চাবি, তারপর AES দিয়ে সব ডেটা —</div>
+# THE HYBRID APPROACH (used by TLS/HTTPS):
+# 1. Use ASYMMETRIC (RSA) to securely share a SYMMETRIC key (AES)
+# 2. Use SYMMETRIC (AES) for all actual data transfer (fast!)
+# Best of both worlds: secure key exchange + fast data transfer.</div>
+
+<div class="code-block"># ── STEP 2: Symmetric encryption with AES ──
+# AES is the STANDARD symmetric encryption (used by HTTPS, VPNs, militaries).
+
+from cryptography.fernet import Fernet
+import os
+
+# Generate a key:
+key = Fernet.generate_key()
+print(f"Key: {key.decode()}")
+
+# Create cipher:
+cipher = Fernet(key)
+
+# Encrypt:
+message = "This is a secret message"
+encrypted = cipher.encrypt(message.encode())
+print(f"Encrypted: {encrypted}")
+
+# Decrypt:
+decrypted = cipher.decrypt(encrypted).decode()
+print(f"Decrypted: {decrypted}")  # "This is a secret message"
+
+# OPENSSL EQUIVALENT:
+openssl_cmds = """
+# AES-256 encryption:
+$ openssl enc -aes-256-cbc -salt -in secret.txt -out secret.enc
+# enter aes-256-cbc password: ********
+
+# AES-256 decryption:
+$ openssl enc -aes-256-cbc -d -in secret.enc -out secret.txt
+"""
+
+print(openssl_cmds)
+
+# AES KEY SIZES:
+# AES-128: 128-bit key (secure, fast)
+# AES-256: 256-bit key (very secure, slightly slower)
+# Both are unbreakable with current technology.
+
+# AES MODES:
+# CBC (Cipher Block Chaining): each block depends on previous (secure)
+# GCM (Galois/Counter Mode): parallel processing + authentication (best)</div>
+
+<div class="code-block"># ── STEP 3: Asymmetric encryption with RSA ──
+# RSA uses TWO keys: PUBLIC (share with everyone) and PRIVATE (keep secret).
+
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
+from cryptography.hazmat.primitives import hashes
+
+# Generate key pair:
+private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+public_key = private_key.public_key()
+
+# ENCRYPT with PUBLIC key (anyone can encrypt):
+message = b"Secret message for the key owner"
+ciphertext = public_key.encrypt(
+    message,
+    padding.OAEP(
+        mgf=padding.MGF1(algorithm=hashes.SHA256()),
+        algorithm=hashes.SHA256(),
+        label=None
+    )
+)
+print(f"Encrypted: {ciphertext.hex()[:60]}...")
+
+# DECRYPT with PRIVATE key (only owner can decrypt):
+plaintext = private_key.decrypt(
+    ciphertext,
+    padding.OAEP(
+        mgf=padding.MGF1(algorithm=hashes.SHA256()),
+        algorithm=hashes.SHA256(),
+        label=None
+    )
+)
+print(f"Decrypted: {plaintext.decode()}")
+
+# OPENSSL EQUIVALENT:
+openssl_rsa = """
+# Generate RSA key pair:
+$ openssl genrsa -out private.pem 2048
+$ openssl rsa -in private.pem -pubout -out public.pem
+
+# Encrypt with public key:
+$ openssl rsautl -encrypt -pubin -inkey public.pem \\
+    -in message.txt -out message.enc
+
+# Decrypt with private key:
+$ openssl rsautl -decrypt -inkey private.pem \\
+    -in message.enc -out message.txt
+"""
+
+print(openssl_rsa)
+
+# WHY RSA IS SLOW:
+# RSA uses huge numbers (2048-bit). Each operation involves
+# modular exponentiation with numbers hundreds of digits long.
+# That's why we only use RSA for small data (like AES keys).</div>
+
+<div class="code-block"># ── STEP 4: Digital signatures ──
+# Signatures prove WHO sent a message and that it WASN'T MODIFIED.
+# It's the ENCRYPT → DECRYPT in reverse!
+
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
+from cryptography.hazmat.primitives import hashes
+
+# Generate key pair:
+private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+public_key = private_key.public_key()
+
+# SIGN with PRIVATE key (only owner can sign):
+message = b"Important contract"
+signature = private_key.sign(
+    message,
+    padding.PSS(
+        mgf=padding.MGF1(hashes.SHA256()),
+        salt_length=padding.PSS.MAX_LENGTH
+    ),
+    hashes.SHA256()
+)
+print(f"Signature: {signature.hex()[:60]}...")
+
+# VERIFY with PUBLIC key (anyone can verify):
+try:
+    public_key.verify(
+        signature,
+        message,
+        padding.PSS(
+            mgf=padding.MGF1(hashes.SHA256()),
+            salt_length=padding.PSS.MAX_LENGTH
+        ),
+        hashes.SHA256()
+    )
+    print("✅ Signature is VALID — message is authentic")
+except Exception:
+    print("❌ Signature is INVALID — message was tampered!")
+
+# SIGNATURE vs ENCRYPTION:
+# Encryption: encrypt with PUBLIC, decrypt with PRIVATE (confidentiality)
+# Signature: sign with PRIVATE, verify with PUBLIC (authenticity)
+
+# REAL-WORLD USES:
+uses = [
+    "HTTPS certificates (prove website identity)",
+    "Git commits (prove who wrote the code)",
+    "Software updates (prove the download is authentic)",
+    "Email (PGP/SMIME)",
+    "Blockchain transactions",
+]
+
+print("\nDIGITAL SIGNATURE USES:")
+for use in uses:
+    print(f"  {use}")</div>
+
+<div class="code-block"># ── STEP 5: Diffie-Hellman key exchange ──
+# How do two strangers agree on a SHARED SECRET over an INSECURE channel?
+
+# Alice and Bob want to share a key.
+# Eve is listening to everything they say.
+# They use Diffie-Hellman to create a shared secret Eve can't figure out.
+
+# SIMPLIFIED EXAMPLE (real DH uses huge numbers):
+small_example = """
+PUBLIC (everyone knows):
+  p = 23 (prime number)
+  g = 5 (generator)
+
+Alice picks secret: a = 6
+  Alice computes: A = g^a mod p = 5^6 mod 23 = 8
+  Alice sends A = 8 to Bob (public)
+
+Bob picks secret: b = 15
+  Bob computes: B = g^b mod p = 5^15 mod 23 = 19
+  Bob sends B = 19 to Alice (public)
+
+SHARED SECRET (computed independently):
+  Alice: S = B^a mod p = 19^6 mod 23 = 2
+  Bob:   S = A^b mod p = 8^15 mod 23 = 2
+
+Both have S = 2, but Eve only knows A=8 and B=19.
+Eve can't compute S without knowing a or b!
+"""
+
+print(small_example)
+
+# THE MATH BEHIND IT:
+# g^(ab) mod p = g^(ba) mod p (commutative property)
+# This is the foundation of secure key exchange.
+
+# In practice, p is a 2048-bit prime. The discrete logarithm problem
+# (finding a from g^a mod p) is computationally infeasible.</div>
+
+<div class="code-block"># ── STEP 6: Real-world encryption systems ──
+# HOW ENCRYPTION IS USED IN PRACTICE:
+
+# 1. HTTPS/TLS (web browsing):
+tls_flow = """
+Your browser → Server
+1. Server sends certificate (public key, signed by CA)
+2. Browser verifies certificate (trusts CA)
+3. Key exchange (RSA or ECDH) → shared AES key
+4. All traffic encrypted with AES (fast!)
+You → HTTPS → Server (encrypted, authenticated)
+"""
+
+print("HTTPS/TLS:")
+print(tls_flow)
+
+# 2. END-TO-END ENCRYPTION (WhatsApp, Signal):
+e2ee = """
+1. Each user has a key pair generated on their device
+2. Messages encrypted on SENDER's device
+3. Only RECIPIENT's device can decrypt
+4. Server NEVER sees plaintext (can't decrypt even if subpoenaed)
+5. Forward secrecy: new key per message (past messages safe if key leaks)
+"""
+
+print("\nEnd-to-End Encryption (WhatsApp/Signal):")
+print(e2ee)
+
+# 3. VPN (Virtual Private Network):
+vpn = """
+Your device → VPN server → Internet
+1. Encrypted tunnel (AES-256) between device and VPN
+2. ISP can't see what you're browsing (only encrypted traffic)
+3. VPN server decrypts and forwards to internet
+"""
+
+# ENCRYPTION BEST PRACTICES:
+best_practices = [
+    "Never roll your own crypto (use established libraries)",
+    "Use AES-256 for data encryption",
+    "Use RSA-2048+ or Ed25519 for signatures",
+    "Use TLS 1.3 for network communication",
+    "Rotate keys periodically",
+    "Store keys securely (HSM, KMS, not in source code)",
+    "Use HTTPS Everywhere (HSTS header)",
+    "Encrypt data at rest AND in transit",
+    "Hash passwords with bcrypt/argon2 (never MD5/SHA1 for passwords)",
+    "Use salt for password hashing",
+]
+
+print("ENCRYPTION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# THE GOLDEN RULE:
+# "Don't implement crypto yourself. Use vetted libraries."
+# Cryptography is mathematically complex. Tiny implementation errors
+# can make your encryption completely insecure.
+# Use: Python cryptography, OpenSSL, libsodium — proven, audited, trusted.</div>
 
 <div class="verse">إِنَّ اللَّهَ يَأْمُرُكُمْ أَن تُؤَدُّوا الْأَمَانَاتِ إِلَى أَهْلِهَا</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই আল্লাহ তোমাদের নির্দেশ দিচ্ছেন আমানত তার অধিকারীর কাছে পৌঁছাতে।" — কুরআন ৪:৫৮</div>
