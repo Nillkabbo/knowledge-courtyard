@@ -369,29 +369,283 @@ doors.push({
 <div class="dialogue"><strong>টোকেন-কারিগর রুকাইয়া:</strong> JWT তিনটি অংশে বিভক্ত — header.payload.signature। প্রতিটি base64-এ encoded। শুধু signature গোপন — HMAC বা RSA দিয়ে। কেউ payload বদলালে signature মেলে না। কিন্তু বিপদ: কেউ alg=none দিলে? বা HS256 এর জায়গায় RS256 দিলে? Algorithm confusion attack! সমাধান: সর্বদা algorithm সার্ভারে নির্দিষ্ট করো।</div>
 <div class="dialogue en"><strong>Token Artisan Rukayya:</strong> JWT has three parts — header.payload.signature. Each base64 encoded. Only signature is secret — HMAC or RSA. If someone changes payload, signature won't match. But danger: alg=none? Or HS256 instead of RS256? Algorithm confusion attack! Solution: always specify algorithm server-side.</div>
 
-<div class="code-block"># — JWT বাস্তবে দেখো —
+<div class="code-block"># ── STEP 1: What is JWT? ──
+# JWT (JSON Web Token) = a compact way to transmit auth info between parties.
 
-  # JWT একটি দীর্ঘ স্ট্রিং:
-  eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYWxpIn0.abc123...
+# USE CASE: After login, server gives client a JWT.
+# Client includes JWT in every subsequent request.
+# Server verifies JWT without needing to store session state.
 
-  # তিনটি অংশ decode করো:
-  $ echo "eyJhbGciOiJIUzI1NiJ9" | base64 -d
-  {"alg":"HS256"}                    ← header
+# JWT STRUCTURE (3 parts separated by dots):
+# header.payload.signature
+# eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYWxpIn0.signature123
 
-  $ echo "eyJ1c2VyIjoiYWxpIn0" | base64 -d
-  {"user":"ali","exp":1735689600}    ← payload (গোপন নয়!)
+# Each part is base64-encoded JSON:
+# Header:   {"alg": "HS256", "typ": "JWT"}
+# Payload:  {"user": "ali", "exp": 1735689600, "role": "admin"}
+# Signature: HMAC-SHA256(secret, header.payload)
 
-  # signature গোপন — HMAC-SHA256(secret, header.payload)
-  # কেউ payload বদলালে signature মেলে না
+import jwt
+import datetime
 
-  # Python-এ JWT:
-  import jwt
-  token = jwt.encode({"user": "ali"}, "secret", algorithm="HS256")
-  decoded = jwt.decode(token, "secret", algorithms=["HS256"])
-  # {"user": "ali"} ← যাচাই হয়েছে
+# CREATE a JWT:
+payload = {
+    "user_id": 42,
+    "username": "rakib",
+    "role": "admin",
+    "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1),
+}
+token = jwt.encode(payload, "my_secret_key", algorithm="HS256")
+print(f"JWT: {token[:50]}...")</div>
 
-  # ⚠️ algorithms=["HS256"] — সর্বদা নির্দিষ্ট করো!
-  # ❌ algorithms=None → algorithm confusion attack</div>
+<div class="code-block"># ── STEP 2: JWT verification ──
+# The server verifies the JWT signature to ensure it wasn't tampered with.
+
+import jwt
+
+token = "eyJhbGciOiJIUzI1NiJ9..."  # from client
+
+# VERIFY the JWT:
+try:
+    decoded = jwt.decode(
+        token,
+        "my_secret_key",
+        algorithms=["HS256"]  # ALWAYS specify algorithms!
+    )
+    print(f"Valid JWT: {decoded}")
+    # {"user_id": 42, "username": "rakib", "role": "admin"}
+except jwt.ExpiredSignatureError:
+    print("Token expired!")
+except jwt.InvalidTokenError:
+    print("Invalid token!")
+
+# WHAT JWT VERIFICATION CHECKS:
+checks = {
+    "Signature": "HMAC matches — token wasn't tampered with",
+    "Expiration": "exp claim not past current time",
+    "Issuer": "iss claim matches expected issuer (if set)",
+    "Audience": "aud claim matches expected audience (if set)",
+    "Not Before": "nbf claim is before current time (if set)",
+}
+
+print("JWT VERIFICATION CHECKS:")
+for check, desc in checks.items():
+    print(f"  {check}: {desc}")
+
+# CRITICAL: payload is NOT encrypted — anyone can read it!
+# The signature only prevents TAMPERING, not reading.
+# Never put passwords or secrets in JWT payload!</div>
+
+<div class="code-block"># ── STEP 3: JWT vs sessions ──
+# TWO APPROACHES TO AUTHENTICATION:
+
+# SESSION-BASED (traditional Django):
+session_approach = """
+1. User logs in → server creates session in database
+2. Server sends session_id cookie to client
+3. Client sends cookie with every request
+4. Server looks up session_id in database → gets user
+
+Pro: Server can revoke sessions anytime (delete from DB)
+Con: Requires database lookup per request, hard to scale horizontally
+"""
+
+print("SESSION-BASED AUTH:")
+print(session_approach)
+
+# JWT-BASED (API/SPA):
+jwt_approach = """
+1. User logs in → server creates JWT with user info
+2. Server sends JWT to client (localStorage or cookie)
+3. Client sends JWT in Authorization header with every request
+4. Server verifies JWT signature → gets user info (no DB lookup!)
+
+Pro: Stateless, no DB lookup, great for APIs/microservices
+Con: Can't revoke until expiry (short-lived tokens + refresh tokens)
+"""
+
+print("JWT-BASED AUTH:")
+print(jwt_approach)
+
+# WHEN TO USE WHICH:
+# Sessions: Traditional web apps (Django server-rendered)
+# JWT: APIs, SPAs (Vue/React), microservices, mobile apps
+# Hybrid: Use both (session cookie for web, JWT for API)</div>
+
+<div class="code-block"># ── STEP 4: JWT security vulnerabilities ──
+# JWT can be DANGEROUS if used incorrectly.
+
+vulnerabilities = {
+    "alg=none attack": {
+        "what": "Attacker sets algorithm to 'none' (no signature)",
+        "fix": "Always specify algorithms=['HS256'] (never allow 'none')",
+    },
+    "Algorithm confusion (RS256→HS256)": {
+        "what": "Server uses RSA. Attacker switches to HMAC, uses RSA public key as HMAC secret",
+        "fix": "Explicitly specify algorithms. Don't mix RSA and HMAC",
+    },
+    "Weak secret": {
+        "what": "HS256 with 'secret' as key → attacker brute-forces easily",
+        "fix": "Use long random secret (256-bit+). Or use RS256 (asymmetric)",
+    },
+    "Sensitive data in payload": {
+        "what": "Payload is base64 (not encrypted) — anyone can read",
+        "fix": "Never put passwords, SSNs, or secrets in JWT",
+    },
+    "No expiry": {
+        "what": "Stolen token valid forever",
+        "fix": "Always set short exp (15 min access, 7 day refresh)",
+    },
+    "Stored in localStorage": {
+        "what": "XSS attack can steal JWT from localStorage",
+        "fix": "Store in httpOnly cookie (XSS can't access)",
+    },
+}
+
+print("JWT VULNERABILITIES:")
+for vuln, info in vulnerabilities.items():
+    print(f"\n  {vuln}:")
+    print(f"    What: {info['what']}")
+    print(f"    Fix: {info['fix']}")</div>
+
+<div class="code-block"># ── STEP 5: JWT best practices ──
+# How to use JWT safely:
+
+import jwt
+import datetime
+import os
+
+# 1. GENERATE with short expiry:
+def create_access_token(user_id):
+    payload = {
+        "user_id": user_id,
+        "type": "access",
+        "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=15),
+        "iat": datetime.datetime.utcnow(),
+    }
+    return jwt.encode(payload, os.environ["JWT_SECRET"], algorithm="HS256")
+
+# 2. REFRESH token (longer lived, used to get new access tokens):
+def create_refresh_token(user_id):
+    payload = {
+        "user_id": user_id,
+        "type": "refresh",
+        "exp": datetime.datetime.utcnow() + datetime.timedelta(days=7),
+        "iat": datetime.datetime.utcnow(),
+    }
+    return jwt.encode(payload, os.environ["JWT_SECRET"], algorithm="HS256")
+
+# 3. DJANGO REST FRAMEWORK + JWT:
+django_jwt = """
+# settings.py:
+INSTALLED_APPS += ['rest_framework_simplejwt']
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': os.environ['JWT_SECRET'],  # from environment!
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
+
+# urls.py:
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+urlpatterns = [
+    path('api/token/', TokenObtainPairView.as_view()),    # login
+    path('api/token/refresh/', TokenRefreshView.as_view()), # refresh
+]
+"""
+
+print(django_jwt)
+
+# THE ACCESS + REFRESH PATTERN:
+pattern = """
+1. Login → get access_token (15 min) + refresh_token (7 days)
+2. Use access_token for API requests
+3. When access_token expires → use refresh_token to get new one
+4. When refresh_token expires → user must log in again
+5. If refresh_token is stolen → can't revoke (unless using token blacklist)
+"""
+
+print("ACCESS + REFRESH PATTERN:")
+print(pattern)</div>
+
+<div class="code-block"># ── STEP 6: Django REST Framework authentication ──
+# Complete JWT authentication in Django REST Framework:
+
+# VIEWS with JWT protection:
+django_views = """
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+
+# This view REQUIRES a valid JWT:
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def my_profile(request):
+    # request.user is automatically set from JWT
+    return Response({
+        'user': request.user.username,
+        'email': request.user.email,
+    })
+
+# Frontend sends:
+# GET /api/profile/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiJ9...
+"""
+
+print(django_views)
+
+# CUSTOM JWT CLAIMS (add more user info):
+custom_claims = """
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+class CustomTokenSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        # Add custom claims:
+        token['username'] = user.username
+        token['role'] = user.role
+        token['is_premium'] = user.is_premium
+        return token
+
+# Now JWT contains: user_id, username, role, is_premium
+# Access without DB lookup: decoded_token['role']
+"""
+
+print(custom_claims)
+
+# JWT CHECKLIST:
+checklist = [
+    "Always specify algorithms (never allow 'none')",
+    "Use strong secret (256-bit+ random, from environment)",
+    "Set short access token expiry (15 min)",
+    "Use refresh tokens (7 days)",
+    "Never put sensitive data in payload (it's not encrypted)",
+    "Store in httpOnly cookie (not localStorage, prevents XSS)",
+    "Use HTTPS (prevent token theft in transit)",
+    "Consider RS256 (asymmetric) for multi-service architectures",
+    "Implement token revocation for logout (blacklist)",
+    "Log JWT issuance and verification for audit",
+]
+
+print("JWT SECURITY CHECKLIST:")
+for item in checklist:
+    print(f"  ☐ {item}")
+
+# JWT SUMMARY:
+# JWT is STATELESS authentication — perfect for APIs.
+# But stateless means you CAN'T revoke until expiry.
+# Solution: short-lived access tokens + refresh tokens.
+# This gives you the BEST of both: fast verification + revocation ability.</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>JWT বিপদ:</strong><br>
 <strong>alg=none:</strong> কেউ অ্যালগরিদম বাদ দিলে — কিছু লাইব্রেরি signature যাচাই করে না!<br>
