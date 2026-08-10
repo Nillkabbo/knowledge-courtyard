@@ -328,17 +328,209 @@ doors.push({
   <div class="diag-cap">Unlearn সবচেয়ে কঠিন — মস্তিষ্ক পুরোনো path ভাঙতে চায় না, পরিচয়ের অংশ হয়ে যায়। কিন্তু নতুন বানাতে হলে পুরোনো ভাঙতেই হবে — কুমারের মতো হাঁড়ি গুঁড়িয়ে আবার শুরু।</div>
 </div>
 
-<div class="code-block">Unlearn, Learn, Relearn — নতুন ধারণায় ৪ প্রশ্ন:
+<div class="code-block"># ── STEP 1: Unlearn, Learn, Relearn ──
+# Alvin Toffler: "The illiterate of the 21st century will not be
+# those who cannot read and write, but those who cannot learn,
+# unlearn, and relearn."
 
-  যখন নতুন কিছু শিখবে যা পুরোনো ধারণার বিপরীত:
-    ১. "আমার পুরোনো ধারণা কী?"
-    ২. "নতুন তথ্য কী বলছে?"
-    ৩. "আমি কি প্রমাণের ভিত্তিতে পুরোনো ছাড়তে প্রস্তুত?"
-    ৪. First-principles — সবচেয়ে মৌলিক সত্যে ভাঙো, নতুন করে গড়ো
+# UNLEARN: let go of outdated knowledge
+# LEARN: acquire new knowledge
+# RELEARN: rebuild understanding from new foundation
 
-  ⚠️ সবচেয়ে বড় বাধা: অহংকার।
-     "আমি জানি" বললে শেখা বন্ধ।
-     "আমি ভুল হতে পারি" বললে শেখা খোলা।</div>
+# Why is unlearning so HARD?
+# Because old knowledge becomes part of your IDENTITY.
+# "I'm a Django developer" → when React takes over, you resist.
+
+# Example in tech:
+unlearn_examples = {
+    "OLD (unlearn)": [
+        "jQuery for everything → React/Vue",
+        "SOAP/XML → REST/JSON → GraphQL",
+        "Monolith → Microservices → sometimes back to monolith",
+        "Manual deployment → CI/CD",
+        "CSS floats → Flexbox → CSS Grid",
+        "Python 2 → Python 3",
+        "SQL databases only → NoSQL → polyglot persistence",
+    ],
+}
+
+print("TECH THAT REQUIRED UNLEARNING:")
+for category, items in unlearn_examples.items():
+    print(f"\n{category}:")
+    for item in items:
+        print(f"  🔄 {item}")</div>
+
+<div class="code-block"># ── STEP 2: First-principles thinking ──
+# When faced with new information, go to FIRST PRINCIPLES.
+# Break everything down to the most BASIC truths. Rebuild from there.
+
+# ELON MUSK'S EXAMPLE (battery cost):
+# Conventional thinking: "Batteries cost $600/kWh. That's just the cost."
+# First-principles thinking: "What are batteries made of?
+# Cobalt, nickel, aluminum, carbon. What's the spot market value?
+# $80/kWh. So the cost SHOULD be much lower."
+
+# Result: Tesla drove battery costs from $600 to $100/kWh.
+
+# APPLYING FIRST PRINCIPLES TO LEARNING:
+def first_principles_analysis(belief, evidence):
+    """Challenge a belief using first-principles thinking."""
+    print(f"BELIEF: {belief}")
+    print(f"EVIDENCE: {evidence}")
+    print("\nQUESTIONS TO ASK:")
+    print("  1. Is this belief based on FACT or ASSUMPTION?")
+    print("  2. What are the MOST BASIC truths here?")
+    print("  3. If I started from scratch, would I reach the same conclusion?")
+    print("  4. What EVIDENCE would change my mind?")
+    print("  5. Am I resisting because of EGO or LOGIC?")
+
+# Example:
+first_principles_analysis(
+    belief="Django is better than FastAPI for all projects",
+    evidence="I've used Django for 3 years, it works well"
+)
+# First-principles: both have tradeoffs. Django=batteries-included.
+# FastAPI=async+fast. Depends on use case.</div>
+
+<div class="code-block"># ── STEP 3: The four questions of unlearning ──
+# When you encounter something that contradicts your beliefs:
+
+unlearning_questions = [
+    {
+        "question": "What is my CURRENT belief?",
+        "why": "You can't change what you can't name",
+        "example": "I believe REST APIs are always better than GraphQL",
+    },
+    {
+        "question": "What does the NEW information say?",
+        "why": "Understand the opposing view CHARITABLY",
+        "example": "GraphQL reduces over/under-fetching, better for mobile",
+    },
+    {
+        "question": "Am I ready to change based on EVIDENCE?",
+        "why": "Check your ego — is it logic or identity talking?",
+        "example": "For mobile apps with nested data, GraphQL is actually better",
+    },
+    {
+        "question": "What's the FIRST-PRINCIPLES truth?",
+        "why": "Break down to basics and rebuild",
+        "example": "API design is about getting the RIGHT data efficiently. Both work.",
+    },
+]
+
+print("THE FOUR QUESTIONS OF UNLEARNING:")
+for i, q in enumerate(unlearning_questions, 1):
+    print(f"\n{i}. {q['question']}")
+    print(f"   Why: {q['why']}")
+    print(f"   Example: {q['example']}")</div>
+
+<div class="code-block"># ── STEP 4: Cognitive biases that block unlearning ──
+# Your brain ACTIVELY RESISTS new information. Know your biases:
+
+biases = {
+    "CONFIRMATION BIAS": {
+        "what": "You seek information that CONFIRMS your beliefs",
+        "fix": "Actively seek OPPOSING views. Steelman arguments.",
+    },
+    "SUNK COST FALLACY": {
+        "what": "I've invested 3 years in Django, I can't switch",
+        "fix": "Past investment ≠ future value. Evaluate fresh.",
+    },
+    "ANCHORING": {
+        "what": "First thing you learned sticks as 'truth'",
+        "fix": "Revisit fundamentals. Test alternatives.",
+    },
+    "DUNNING-KRUGER": {
+        "what": "Less knowledge = MORE confidence (paradoxically)",
+        "fix": "Embrace uncertainty. Ask experts.",
+    },
+    "AUTHORITY BIAS": {
+        "what": "If a famous person said it, it must be true",
+        "fix": "Check evidence, not reputation.",
+    },
+}
+
+print("COGNITIVE BIASES THAT BLOCK UNLEARNING:")
+for bias, info in biases.items():
+    print(f"\n  {bias}:")
+    print(f"    What: {info['what']}")
+    print(f"    Fix:  {info['fix']}")</div>
+
+<div class="code-block"># ── STEP 5: The relearning process ──
+# Once you've unlearned, you need to RELEARN.
+# This is active reconstruction, not passive absorption.
+
+# THE RELEARNING CYCLE:
+relearning_cycle = [
+    "1. HUMILITY: 'I don't know this yet' (open mind)",
+    "2. STUDY: Learn the new concept from multiple sources",
+    "3. PRACTICE: Apply it in small experiments",
+    "4. COMPARE: Contrast old vs new — understand tradeoffs",
+    "5. INTEGRATE: Combine best of old + new",
+    "6. TEACH: Explain the new understanding to others",
+]
+
+for step in relearning_cycle:
+    print(f"  {step}")
+
+# EXAMPLE: Moving from class-based Vue to Composition API:
+# 1. HUMILITY: "Options API isn't the only way"
+# 2. STUDY: Read Vue 3 Composition API docs
+# 3. PRACTICE: Convert one component to setup()
+# 4. COMPARE: Options API is simpler for small components;
+#    Composition API is better for complex logic reuse
+# 5. INTEGRATE: Use Options for simple, Composition for complex
+# 6. TEACH: Document the migration for the team</div>
+
+<div class="code-block"># ── STEP 6: The growth mindset ──
+# Carol Dweck's research: FIXED vs GROWTH mindset.
+
+# FIXED MINDSET:
+# "I'm not good at math" → you won't try → you won't improve
+# "I'm a backend developer" → you won't learn frontend
+# "I know Python" → you won't learn Rust/Go
+
+# GROWTH MINDSET:
+# "I can't do this YET" → you'll try → you'll improve
+# "I'm learning frontend" → you'll expand your skills
+# "I know Python AND I'm learning new approaches" → you'll grow
+
+mindset_comparison = {
+    "FIXED": [
+        "Avoids challenges (might fail)",
+        "Gives up easily",
+        "Sees effort as fruitless",
+        "Ignores useful feedback",
+        "Feels threatened by others' success",
+    ],
+    "GROWTH": [
+        "Embraces challenges",
+        "Persists through setbacks",
+        "Sees effort as the path to mastery",
+        "Learns from criticism",
+        "Finds lessons in others' success",
+    ],
+}
+
+print("FIXED vs GROWTH MINDSET:")
+for mindset, traits in mindset_comparison.items():
+    print(f"\n{mindset} MINDSET:")
+    for trait in traits:
+        emoji = "❌" if mindset == "FIXED" else "✅"
+        print(f"  {emoji} {trait}")
+
+# THE NEUROSCIENCE:
+# Your brain forms NEW neural pathways when you learn.
+# Old pathways weaken when unused (neuroplasticity).
+# You CAN teach an old dog new tricks — it just takes practice.
+
+# THE ISLAMIC PARALLEL — TAWBAH:
+# Tawbah = returning to the beginning.
+# Leaving old ways and embracing new truth.
+# This is exactly UNLEARNING.
+# The one who can't unlearn stays stuck.
+# The one who can unlearn grows.
+# This is the essence of tawbah — and the essence of learning.</div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ আটকে থাকা</div>"আমি জানি" — পুরোনো ধারণায় আঁকড়ে থাকা। নতুন প্রমাণ এলেও প্রত্যাখ্যান। এটাই unlearning-এর সবচেয়ে বড় বাধা — পরিচয়ের অংশ হয়ে যাওয়া ধারণা ছাড়া কঠিন। যে আটকে থাকে, সে বাড়ে না।</div>
@@ -406,21 +598,199 @@ doors.push({
   <div class="diag-cap">বিরােক্ত review ছাড়া: ১ দিনে ৭০%, ১ সপ্তাহে ৭৫% ভুলে যাওয়া। review সহ (Day 1→3→7→16→35): প্রতিটা review curve উপরে তোলে — শেষে প্রায় স্থায়ী।</div>
 </div>
 
-<div class="code-block">Spaced Repetition + Active Recall — ২ টুল, আজই:
+<div class="code-block"># ── STEP 1: The forgetting curve ──
+# Ebbinghaus (1885) discovered: you forget ~50% in 1 hour,
+# ~75% in 1 week — UNLESS you review.
 
-  Spaced Repetition (Ebbinghaus, ১৮৮৫):
-    review schedule: Day 1 → 3 → 7 → 16 → 35
-    প্রতিটা review তোমার ভুলে যাওয়ার ঠিক আগে।
-    টুল: Anki (ফ্রি) — অ্যালগরিদম তোমার curve মাপে।
+# THE FORGETTING CURVE (without review):
+import math
 
-  Active Recall (retrieval practice):
-    বই বন্ধ করো → খালি পাতায় যা মনে আছে লেখো
-    → যা মিস করো, সে তোমার গ্যাপ।
-    পড়া = declarative (মুছে যায়)।
-    মনে করা = procedural (স্থায়ী)।
+def retention(days_since_learning, strength=1.0):
+    """Ebbinghaus forgetting curve: what % do you remember?"""
+    # R = e^(-t/S) where t=time, S=memory strength
+    return math.exp(-days_since_learning / strength) * 100
 
-  ⚠️ ফাঁদ: "আবার পড়লাম" = re-reading, কাজ করে না।
-     মনে করার চেষ্টাই শক্তি দেয়।</div>
+print("WITHOUT SPACED REPETITION (forgetting curve):")
+for days in [0, 1, 3, 7, 30]:
+    retained = retention(days)
+    forgotten = 100 - retained
+    print(f"  Day {days:2d}: remember {retained:.0f}%, forget {forgotten:.0f}%")
+# Day  0: 100%, forget 0%
+# Day  1:  37%, forget 63%  ← over half gone!
+# Day  7:   0.1%, forget ~100%
+# Day 30:   0%, forget everything
+
+# THE CURE: SPACED REPETITION
+# Review at INCREASING intervals:
+# Day 1 → Day 3 → Day 7 → Day 16 → Day 35 → Day 70
+# Each review STRENGTHENS the memory → curve flattens.</div>
+
+<div class="code-block"># ── STEP 2: Spaced repetition explained ──
+# Each time you review RIGHT BEFORE you forget, the memory gets STRONGER.
+# The interval before the NEXT review gets LONGER.
+
+# THE SPACED REPETITION SCHEDULE:
+review_schedule = {
+    "Review 1": "After 1 day",
+    "Review 2": "After 3 days",
+    "Review 3": "After 7 days",
+    "Review 4": "After 16 days",
+    "Review 5": "After 35 days",
+    "Review 6": "After 70 days",
+    "Review 7": "After 140 days",
+    "Review 8": "After 280 days",
+}
+
+print("OPTIMAL REVIEW SCHEDULE:")
+for review, interval in review_schedule.items():
+    print(f"  {review}: {interval}")
+
+# After 8 reviews, the memory is nearly PERMANENT.
+# Each review takes MINUTES. Total time: maybe 30 minutes over a year.
+# Compare to re-reading the book 5 times (hours, and it doesn't work).
+
+# WHY IT WORKS (neuroscience):
+# Each recall strengthens the synaptic connections.
+# The brain interprets repeated recall as "this is important."
+# The spacing forces the brain to WORK to retrieve → stronger encoding.</div>
+
+<div class="code-block"># ── STEP 3: Using Anki (spaced repetition software) ──
+# Anki is FREE and automates the spaced repetition schedule.
+
+# HOW ANKI WORKS:
+# 1. Create a CARD (question on front, answer on back)
+# 2. Anki shows you the question
+# 3. You try to recall the answer (ACTIVE RECALL!)
+# 4. Rate your recall: Again / Hard / Good / Easy
+# 5. Anki schedules the next review based on your rating
+
+# ANKI CARD EXAMPLES FOR PYTHON:
+anki_cards = {
+    "Q: What does `*args` do in a function?": "A: Collects positional arguments into a tuple",
+    "Q: What is the difference between list and tuple?": "A: Lists are mutable, tuples are immutable",
+    "Q: What does @staticmethod do?": "A: Method that doesn't receive self or cls",
+    "Q: How to reverse a string?": "A: string[::-1]",
+    "Q: What is a decorator?": "A: A function that wraps another function to add behavior",
+}
+
+print("ANKI CARD EXAMPLES:")
+for question, answer in anki_cards.items():
+    print(f"  {question}")
+    print(f"    {answer}\n")
+
+# ANKI TIPS:
+# 1. Keep cards SHORT (one fact per card)
+# 2. Use your OWN words (not copy-paste)
+# 3. Add EXAMPLES (code snippets)
+# 4. Review EVERY DAY (consistency is key)
+# 5. Delete cards you keep getting wrong (they're badly designed)
+
+# Alternative tools: RemNote, Mochi, Quizlet (less powerful)</div>
+
+<div class="code-block"># ── STEP 4: Active recall — the most powerful technique ──
+# Active recall = trying to REMEMBER without looking.
+# It's the #1 most evidence-backed learning technique.
+
+# PASSIVE (doesn't work well):
+# - Re-reading notes
+# - Re-watching lectures
+# - Highlighting text
+# - Copying code from tutorials
+
+# ACTIVE (works very well):
+# - Writing from memory (blank page)
+# - Flashcards (Anki)
+# - Practice tests
+# - Teaching aloud
+# - Building without references
+
+# THE TESTING EFFECT:
+# Research shows: taking a TEST is MORE effective than studying.
+# The act of RETRIEVING information strengthens memory more than
+# the act of RECEIVING information.
+
+# PRACTICE:
+def active_recall_session(topic):
+    """A 10-minute active recall session."""
+    print(f"TOPIC: {topic}")
+    print("=" * 40)
+    print("Step 1: Close all books/tabs (2 min)")
+    print("Step 2: Write everything you remember (5 min)")
+    print("Step 3: Check what you missed (2 min)")
+    print("Step 4: Add missed items to Anki (1 min)")
+    print("\nThe items you COULDN'T recall = your real knowledge gaps.")
+
+active_recall_session("Python decorators")</div>
+
+<div class="code-block"># ── STEP 5: Combining spaced repetition + active recall ──
+# The COMBO is 10x more effective than either alone.
+
+# THE OPTIMAL LEARNING SYSTEM:
+# 1. Learn a concept (tutorial/book/lecture) → 30 min
+# 2. IMMEDIATELY: write what you remember (blank page) → 10 min
+# 3. Create Anki cards for key concepts → 10 min
+# 4. Review Anki DAILY (spaced repetition) → 10 min
+# 5. Apply in a PROJECT (procedural memory) → ongoing
+# 6. TEACH the concept (deepest encoding) → weekly
+
+# WEEKLY LEARNING PLAN:
+weekly_plan = {
+    "Monday": "Learn new concept (30 min) + create Anki cards",
+    "Tuesday": "Review Anki (10 min) + code practice (30 min)",
+    "Wednesday": "Review Anki + work on project",
+    "Thursday": "Review Anki + code practice",
+    "Friday": "Review Anki + write blog post (teach)",
+    "Saturday": "Review Anki + project building",
+    "Sunday": "Full review + plan next week",
+}
+
+print("WEEKLY LEARNING PLAN:")
+for day, activity in weekly_plan.items():
+    print(f"  {day}: {activity}")
+
+# The KEY is CONSISTENCY.
+# 15 minutes daily &gt; 2 hours weekly.
+# Small daily effort compounds into massive knowledge over months.</div>
+
+<div class="code-block"># ── STEP 6: The evidence ──
+# Spaced repetition + active recall are the MOST STUDIED
+# learning techniques in cognitive science. The evidence is overwhelming.
+
+# KEY RESEARCH FINDINGS:
+research = {
+    "Spaced vs massed practice": "Spacing reviews over days beats cramming (90%+ studies confirm)",
+    "Testing effect": "Retrieval practice beats re-reading by 50%+",
+    "Forgetting curve": "Without review, 75% lost in 1 week (Ebbinghaus, 1885)",
+    "Anki effectiveness": "Users retain 90%+ after optimal spacing",
+    "Active vs passive": "Active recall is 2-3x more effective than passive review",
+}
+
+print("EVIDENCE FOR SPACED REPETITION + ACTIVE RECALL:")
+for finding, evidence in research.items():
+    print(f"  📊 {finding}:")
+    print(f"     {evidence}\n")
+
+# THE QURANIC PARALLEL:
+# The Quran uses BOTH techniques:
+# 1. SPACED REPETITION: Same stories told in different surahs
+#    from different angles. Musa's story appears 30+ times.
+#    Each repetition reinforces the lesson.
+# 2. ACTIVE RECALL: "Do they not reflect?" "Have they not seen?"
+#    The Quran asks YOU to think, retrieve, connect.
+#    Not passive listening — active engagement.
+
+# Allah designed the Quran with optimal learning techniques.
+# We should learn the same way.
+
+# YOUR ACTION PLAN:
+# 1. Download Anki (apps.ankiweb.net) — FREE
+# 2. Create 5 cards TODAY from what you learned
+# 3. Review DAILY (10 minutes, no excuses)
+# 4. Apply active recall to everything you learn
+# 5. Be consistent — the compound effect is massive
+
+# "The best of deeds are the consistent ones, even if small."
+# — Prophet Muhammad (PBUH)</div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">~৫০%</div><div class="sc-label">১ ঘণ্টায় ভুলে যাওয়া (without review)</div></div>
@@ -488,22 +858,212 @@ doors.push({
   <div class="diag-cap">Plan (কী শিখব, কেন) → Monitor (বুঝছি কি, কোথায় আটকাচ্ছি) → Evaluate (সত্যিই শিখেছি কি) → আবার Plan। এই চক্রই metacognition — master skill যা সব অন্য দক্ষতা নিয়ন্ত্রণ করে।</div>
 </div>
 
-<div class="code-block">Metacognition — ৩ স্তরে নিজেকে প্রশ্ন করো:
+<div class="code-block"># ── STEP 1: What is metacognition? ──
+# Metacognition = "thinking about thinking."
+# It's the MASTER SKILL that controls all other learning.
 
-  PLANNING (শেখার আগে):
-    "আমি কী শিখতে যাচ্ছি? কেন? কীভাবে?"
+# COGNITION: learning something (reading, coding, practicing)
+# METACOGNITION: monitoring HOW you're learning (am I understanding?)
 
-  MONITORING (শেখার সময়):
-    "আমি কি বুঝছি? কোথায় আটকাচ্ছি?
-     শিখেছি বলে মনে করছি, নাকি সত্যিই শিখছি?"
+# THREE LEVELS OF METACOGNITION:
+levels = {
+    "PLANNING": {
+        "when": "BEFORE learning",
+        "questions": [
+            "What am I about to learn?",
+            "Why am I learning this?",
+            "What do I already know?",
+            "What's my strategy?",
+        ],
+    },
+    "MONITORING": {
+        "when": "DURING learning",
+        "questions": [
+            "Am I actually understanding this?",
+            "Where am I stuck?",
+            "Do I need to slow down or speed up?",
+            "Should I change my approach?",
+        ],
+    },
+    "EVALUATION": {
+        "when": "AFTER learning",
+        "questions": [
+            "Did I really learn this?",
+            "What did I miss?",
+            "Can I explain it to a 12-year-old?",
+            "What should I do differently next time?",
+        ],
+    },
+}
 
-  EVALUATION (শেখার পর):
-    "আমি কি সত্যিই শিখেছি? কী মিস করেছি?
-     ১২ বছরের শিশুকে বোঝাতে পারব?"
+for level, info in levels.items():
+    print(f"\n{level} ({info['when']}):")
+    for q in info["questions"]:
+        print(f"  ❓ {q}")
 
-  চক্র: Plan → Learn → Monitor → Adjust → Evaluate → Re-plan
-  ⚠️ "দ্রুত"-এর অন্ধকার দিক: কিছু জিন্তিস ধীরেই শিখতে হয় —
-     গাণিতিক অন্তর্দৃষ্টি, দার্শনিক চিন্তন, সৃজনশীলতা।</div>
+# MOST LEARNERS skip all three. They just consume content.
+# Metacognitive learners CONSTANTLY check their understanding.</div>
+
+<div class="code-block"># ── STEP 2: Planning — before you learn ──
+# Before any learning session, take 2 minutes to PLAN.
+
+def learning_plan(topic, goal, time_available):
+    """Create a metacognitive learning plan."""
+    plan = {
+        "topic": topic,
+        "goal": goal,
+        "time": time_available,
+        "strategy": "active_recall + spaced_repetition",
+        "known": "What I already know about this",
+        "unknown": "What I need to figure out",
+        "success_criteria": "Can explain it + build something with it",
+    }
+
+    print("LEARNING PLAN")
+    print("=" * 40)
+    for key, value in plan.items():
+        print(f"  {key}: {value}")
+    print("\nReview this plan AFTER learning. Did you achieve the goal?")
+
+# Example:
+learning_plan(
+    topic="Python async/await",
+    goal="Understand how async event loop works",
+    time_available="45 minutes"
+)</div>
+
+<div class="code-block"># ── STEP 3: Monitoring — during learning ──
+# The most important level. Catch confusion IN REAL TIME.
+
+# THE COMPREHENSION CHECK:
+# Every 10 minutes, stop and ask:
+comprehension_checks = [
+    "Can I summarize the last 10 minutes in 2 sentences?",
+    "Can I give an EXAMPLE of what I just learned?",
+    "Is there anything I'm CONFUSED about?",
+    "Should I re-read, or am I ready to move on?",
+]
+
+print("COMPREHENSION CHECK (every 10 minutes):")
+for check in comprehension_checks:
+    print(f"  ❓ {check}")
+
+# THE TRAFFIC LIGHT SYSTEM:
+# 🟢 GREEN: "I fully understand. I can explain it."
+#   → Continue to next topic.
+# 🟡 YELLOW: "I mostly get it, but some parts are fuzzy."
+#   → Review the fuzzy parts before moving on.
+# 🔴 RED: "I'm lost. Nothing makes sense."
+#   → Stop. Go back. Try a different resource or ask for help.
+
+# THE DANGER: Most people are at YELLOW or RED but tell themselves GREEN.
+# This is the illusion of competence (Door 3).
+# Metacognition means being HONEST about your understanding.</div>
+
+<div class="code-block"># ── STEP 4: Evaluation — after learning ──
+# After each session, evaluate HONESTLY.
+
+def post_learning_eval():
+    """Evaluate your learning after a session."""
+    print("POST-LEARNING EVALUATION")
+    print("=" * 40)
+
+    questions = {
+        "Understanding": "Can I explain it in my own words? (1-5)",
+        "Application": "Can I use it in a project? (1-5)",
+        "Connections": "Can I connect it to what I already know? (1-5)",
+        "Gaps": "What DON'T I understand yet?",
+        "Next step": "What should I learn next?",
+    }
+
+    for category, question in questions.items():
+        print(f"\n  {category}:")
+        print(f"    {question}")
+        print(f"    → __________________________")
+
+    print("\n\nIf any score is below 3, schedule a review session.")
+
+post_learning_eval()
+
+# THE SELF-TEST:
+# The ultimate evaluation: try to BUILD something or EXPLAIN it
+# without any references. What you can do WITHOUT help = what you KNOW.</div>
+
+<div class="code-block"># ── STEP 5: The metacognitive cycle ──
+# Learning is a CYCLE, not a line.
+
+# Plan → Learn → Monitor → Adjust → Evaluate → Re-plan
+#   ↑                                                    |
+#   └────────────────────────────────────────────────────┘
+
+cycle_steps = [
+    ("PLAN", "Set goal, choose strategy, estimate time"),
+    ("LEARN", "Study actively (recall, practice, build)"),
+    ("MONITOR", "Check understanding every 10 minutes"),
+    ("ADJUST", "Change strategy if not working"),
+    ("EVALUATE", "Assess what was learned vs planned"),
+    ("RE-PLAN", "Plan next session based on gaps found"),
+]
+
+print("THE METACOGNITIVE CYCLE:")
+for i, (step, description) in enumerate(cycle_steps, 1):
+    print(f"  {i}. {step}: {description}")
+    if i < len(cycle_steps):
+        print(f"     ↓")
+
+print("\nThis cycle repeats for EVERY learning session.")
+print("Each cycle makes you a better learner.")</div>
+
+<div class="code-block"># ── STEP 6: Metacognition and self-regulation ──
+# The ultimate goal: become a SELF-REGULATED learner.
+# You monitor yourself, adjust yourself, evaluate yourself.
+
+# SELF-REGULATED LEARNER:
+# ✅ Sets their own goals
+# ✅ Chooses their own strategies
+# ✅ Monitors their own understanding
+# ✅ Adjusts when something isn't working
+# ✅ Evaluates their own progress
+# ✅ Seeks help when needed
+# ✅ Reflects on their learning process
+
+# DEPENDENT LEARNER:
+# ❌ Waits for teacher to set goals
+# ❌ Uses one strategy regardless of effectiveness
+# ❌ Never checks understanding
+# ❌ Keeps doing the same thing even if it's not working
+# ❌ Relies on external evaluation (grades)
+# ❌ Doesn't ask for help (or asks too quickly)
+# ❌ Never reflects on HOW they learn
+
+# THE ISLAMIC PARALLEL — MURAQABAH:
+# Muraqabah = watching over oneself.
+# Being aware that Allah sees you at all times.
+# This awareness leads to self-correction.
+
+# Metacognition is INTELLECTUAL muraqabah:
+# Being aware of your own thinking process.
+# Watching your understanding, catching your confusion.
+# Self-correcting before the gap grows.
+
+# THE MASTER SKILL:
+# Metacognition is the skill that makes ALL OTHER skills better.
+# A metacognitive coder learns faster, debugs better, and
+# improves more rapidly than someone who just codes blindly.
+
+# YOUR DAILY METACOGNITIVE PRACTICE:
+# Morning: "What will I learn today? How?"
+# During: "Am I understanding? Should I adjust?"
+# Evening: "What did I learn? What could be better?"
+
+# "Indeed, in the creation of the heavens and earth,
+#  and the alternation of night and day,
+#  are signs for those of understanding."
+# — Quran 3:190
+
+# Those of understanding = those who REFLECT.
+# Metacognition is reflection applied to learning.
+# Master it, and you master learning itself.</div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">master skill</div><div class="sc-label">সব দক্ষতার উপরের নিয়ন্ত্রক</div></div>
