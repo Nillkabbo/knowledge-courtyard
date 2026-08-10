@@ -27,9 +27,9 @@ doors.push({
 
 <div class="code-block">MICHIGAN GRADUATED DRIVER LICENSING (GDL) — ৩ ধাপ:
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 ধাপ ১: SEGMENT 1 DRIVER EDUCATION (বয়স ১৪ বছর ৮ মাস+)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 পূর্বশর্ত:
   ✦ বয়স কমপক্ষে ১৪ বছর ৮ মাস
@@ -44,9 +44,9 @@ Segment 1 Course (মাস্টার করতে হবে):
   → শেষে একটা written test পাশ করতে হবে
   → শেষে Segment 1 Certificate পাবে
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 ধাপ ২: LEARNER LICENSE (বয়স ১৪ বছর ৯ মাস+)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 Segment 1 শেষে SOS office-এ গিয়ে:
   ✦ Segment 1 Certificate জমা দাও
@@ -65,9 +65,9 @@ LEARNER LICENSE RESTRICTIONS:
      parent এর সাথে করতে হবে
   ⚠️ crash-free + violation-free থাকতে হবে
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 ধাপ ৩: SEGMENT 2 DRIVER EDUCATION
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 পূর্বশর্ত:
   ✦ Learner License ছিল কমপক্ষে ৩ মাস
@@ -78,9 +78,9 @@ Segment 2 Course:
   📚 ৬ ঘণ্টা classroom instruction only
   (no behind-the-wheel)
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 ধাপ ৪: LEVEL 2 PROVISIONAL LICENSE (বয়স ১৬+)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 পূর্বশর্ত:
   ✦ Segment 2 সম্পন্ন
@@ -102,9 +102,9 @@ LEVEL 2 RESTRICTIONS:
      (exception: immediate family member বা 
       parent/guardian/licensed adult ২১+ সাথে থাকলে)
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 ধাপ ৫: LEVEL 3 FULL LICENSE (বয়স ১৭+)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 পূর্বশর্ত:
   ✦ Level 2 ছিল কমপক্ষে ৬ মাস
@@ -115,9 +115,9 @@ LEVEL 2 RESTRICTIONS:
   → সব restrictions তুলে নেওয়া হয়
   → তুমি এখন full licensed driver!
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 বয়স্কদের জন্য (১৮+ বছর):
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ GDL প্রযোজ্য নয় — driver's ed বাধ্যতামূলক নয়
   ✦ SOS office-এ vision test + knowledge test দাও
@@ -130,9 +130,9 @@ LEVEL 2 RESTRICTIONS:
   ✦ পাশ করলে certificate নিয়ে SOS office-এ যাও
     → license ফি $25 → full license!
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 💵 REALISTIC COSTS (মোটামুটি হিসাব):
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   Driver's Ed Segment 1 (teen): ~$300-500 (private)
   TIP / Learner permit fee: $25
@@ -198,7 +198,7 @@ LEVEL 2 RESTRICTIONS:
 <div class="dialogue en">"One thing to remember," the officer said. "The knowledge test — that's your written exam. 50 questions, split into two sections: 25 on traffic signs, 25 on traffic rules. You need at least 20 correct (80%) in EACH section separately — 40/50 overall isn't enough if one section falls short. This book will prepare you."</div>
 
 <div class="code-block">🏢 SOS OFFICE-এ যাওয়ার দিন — ব্যবহারিক প্রস্তুতি
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   📄 সাথে যা নেবে:
   ✦ Identity: birth certificate বা valid passport
@@ -298,7 +298,7 @@ LEVEL 2 RESTRICTIONS:
   25 signs + 25 rules. Need 20/25 (80%) in EACH
   section separately. Fail one = retake only that
   section. Vision standard: 20/40, 110° peripheral.
-  Bring: identity proof, SSN, 2× Michigan residency
+  Bring: identity proof, SSN, 2* Michigan residency
   proofs; parent if under 18.</div>
 
 <div class="secret-box">📄 Michigan GDL: ৩ ধাপ — Segment 1 (১৪y ৮m) → Learner License (১৪y ৯m+) → Segment 2 → Level 2 Provisional (১৬+) → Level 3 Full (১৭+)। Knowledge test: ৫০ প্রশ্ন (২৫ সাইন + ২৫ নিয়ম), প্রতি ভাগে ২০+ পাশ (৮০%) — আলাদাভাবে।</div>`
@@ -589,7 +589,7 @@ doors.push({
 
 
 <div class="code-block">TRAFFIC SIGNALS — COMPLETE GUIDE
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 🟢 GREEN LIGHT (সবুজ আলো)
   ✅ যাও — যদি রাস্তা পরিষ্কার থাকে
@@ -617,9 +617,9 @@ doors.push({
 🔴🟡 লাল+হলুদ একসাথে (কিছু সিগন্যালে)
   → সবুজ আসছে — প্রস্তুত হও, কিন্তু যাও না
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 FLASHING SIGNALS
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 🟡 FLASHING YELLOW (জ্বলছে-নিভছে হলুদ)
   → ধীরে করো, সতর্ক হও, যাও
@@ -628,9 +628,9 @@ FLASHING SIGNALS
   → STOP sign-এর মতো আচরণ করো
   → সম্পূর্ণ থামো, তারপর নিরাপদে যাও
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 ARROW SIGNALS (তীর চিহ্ন)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 🟢➡️ GREEN ARROW = সেই দিকে যাও — protected turn
   → Oncoming traffic থাকে না (লাল তাদের)
@@ -652,17 +652,17 @@ ARROW SIGNALS (তীর চিহ্ন)
 🔴➡️ RED ARROW = সেই দিকে মোড় নেওয়া নিষেধ
   ❌ যদি না সাইন অনুমতি দেয়
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 LANE SIGNALS (হাইওয়ে লেন নিয়ন্ত্রণ)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 🟢 GREEN ✓ = এই লেন খোলা — ব্যবহার করো
 🟡 YELLOW ✕ = এই লেন বন্ধ হচ্ছে — বেরিয়ে যাও
 🔴 RED ✕ = এই লেন বন্ধ — ঢুকো না
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚶 PEDESTRIAN SIGNALS (পথচারী সিগন্যাল)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   🚶 WALK / সাদা হাঁটা-মানুষ
     → পার হওয়া শুরু করতে পারো
@@ -677,19 +677,19 @@ LANE SIGNALS (হাইওয়ে লেন নিয়ন্ত্রণ)
   💡 Driver হিসেবে: WALK জ্বলা মানে পথচারী
      আসছে — মোড়ের আগে তাদের দিক দেখো
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 ⚫ DARK SIGNAL (সিগন্যাল সম্পূর্ণ বন্ধ/অন্ধকার)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   → বিদ্যুৎ নেই = 4-WAY STOP হিসেবে আচরণ করো
   → সম্পূর্ণ থামো, ক্রম মেনে যাও
   → Michigan ঝড়ে খুব কমন — মুখস্থ রাখো!</div>
 
 <div class="code-block">PAVEMENT MARKINGS — সড়ক দাগ
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 🟡 YELLOW LINES = ট্রাফিক ভাগ করে (opposite direction)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ━━━━━━━━ সলিড হলুদ ডাবল লাইন
     → দুই দিকের ট্রাফিক আলাদা
@@ -704,7 +704,7 @@ LANE SIGNALS (হাইওয়ে লেন নিয়ন্ত্রণ)
     → পার হওয়া যায় — নিরাপদ হলে পাস করো
 
 ⚪ WHITE LINES = একই দিকের লেন আলাদা করে
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ━━━━━━━━ সলিড সাদা লাইন
     → লেন পরিবর্তন নিরুৎসাহিত
@@ -717,9 +717,9 @@ LANE SIGNALS (হাইওয়ে লেন নিয়ন্ত্রণ)
     → রাস্তার কিনারা — shoulder line
     → এই লাইনের ডানে চালাবে না (বাইরে)
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 SPECIAL MARKINGS
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ▓▓▓▓▓ PAINTED ISLAND (ত্রিভুজ এলাকা)
     → এখানে চালাবে না বা দাঁড়াবে না
@@ -956,10 +956,10 @@ doors.push({
 
 
 <div class="code-block">RIGHT-OF-WAY — COMPLETE RULES
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 🛑 4-WAY STOP (চার-মুখী STOP)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম ১: যে প্রথম থামে, সে প্রথম যায়
     → First to stop = first to go
@@ -975,24 +975,24 @@ doors.push({
   নিয়ম ৪: সন্দেহ হলে — অন্যকে দাও
     → When in doubt, yield
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚦 UNCONTROLLED INTERSECTION (কোনো সাইন/সিগন্যাল নেই)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: ডান দিক থেকে আসা গাড়িকে অগ্রাধিকার দাও
     → Yield to traffic on the right
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🔀 T-INTERSECTION (টি-মোড়)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: শেষ হয়ে যাওয়া রাস্তার গাড়ি (T-এর পা)
     through রাস্তার সব ট্রাফিককে yield করবে
     → Through road always has right-of-way
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🏠 DRIVEWAY / PRIVATE ROAD / PARKING LOT
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: driveway, গলি, parking lot বা private
     road থেকে public রাস্তায় ঢুকলে — সবাইকে
@@ -1001,9 +1001,9 @@ doors.push({
     → Entering from private property = yield to ALL
   💡 Sidewalk পার হওয়ার আগে আলাদা করে থামো
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🔄 ROUNDABOUT (গোলচক্কর)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম ১: প্রবেশ করার আগে YIELD
     → Yield to traffic already IN the roundabout
@@ -1017,9 +1017,9 @@ doors.push({
   নিয়ম ৪: বের হওয়ার আগে signal দাও
     → Use right turn signal to exit
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 ↩️ LEFT TURN (বাম মোড়)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: বাম মোড় নিলে oncoming (বিপরীত দিকের) 
     traffic কে অগ্রাধিকার দাও
@@ -1031,9 +1031,9 @@ doors.push({
   সবুজ তীর (green arrow):
     → Protected — oncoming লাল। নিরাপদে যাও।
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚶 PEDESTRIANS (পথচারী)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: পেডেস্ট্রিয়ান সবসময় অগ্রাধিকার পায়
     → Pedestrians ALWAYS have right-of-way
@@ -1043,9 +1043,9 @@ doors.push({
   • school zone-এ বিশেষ সতর্ক
   • blind/person with cane বা guide dog — সবসময়
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚑 EMERGENCY VEHICLES (জরুরি গাড়ি)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: জরুরি গাড়ি (police, fire, ambulance) 
     সাইরেন/লাইট নিয়ে আসলে — ডানে সরে যাও থামো
@@ -1055,9 +1055,9 @@ doors.push({
   • জংশনে থাকলে জংশন পার হও, তারপর ডানে
   • বিপরীত দিকে থাকলেও সতর্ক হও
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚌 SCHOOL BUS
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: স্কুল বাসে লাল আলো জ্বললে + STOP 
     arm বের হলে — উভয় দিক থেকে থামো
@@ -1068,17 +1068,17 @@ doors.push({
   • বাস আবার চললে তবে তুমি যাও
   • ভুল করলে: $৫০০+ জরিমানা + license points
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚜 FUNERAL PROCESSION
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: Funeral procession কে অগ্রাধিকার দাও
     → Yield to funeral processions
     → Headlight জ্বলা গাড়িগুলো
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 ↩️ U-TURN RULES (ইউ-টার্ন)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   নিয়ম: Business district-এ U-turn সম্পূর্ণ নিষেধ
     → Prohibited in business districts
@@ -1089,9 +1089,9 @@ doors.push({
   ❌ Curve, hilltop, intersection কাছে, "NO U-TURN"
     সাইন থাকলে — নিষেধ
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🔀 MICHIGAN LEFT (মিশিগান লেফট / Indirect Left)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   Michigan-এর নিজস্ব বৈশিষ্ট্য! বড় divided highway
   intersection-এ প্রায়ই directly বাম মোড় নেওয়া যায় না।
@@ -1111,9 +1111,9 @@ doors.push({
      U-TURN" সাইন দেখলে বুঝবে এখানে Michigan Left
      ব্যবহার করতে হবে
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🛣️ CENTER TWO-WAY LEFT-TURN LANE (মাঝের বাম-মোড় লেন)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   চেনার উপায়: রাস্তার মাঝে হলুদ ড্যাশড লাইনে ঘেরা
   একটা লেন, উভয় দিক থেকে ব্যবহার হয়
@@ -1366,7 +1366,7 @@ doors.push({
 
 
 <div class="code-block">MICHIGAN SPEED LIMITS — সম্পূর্ণ তালিকা
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 🚗 MICHIGAN SPEED LIMITS (default যদি সাইন না থাকে):
 
@@ -1383,9 +1383,9 @@ doors.push({
   ⚠️ সবসময় posted সাইন অনুসরণ করো
   ⚠️ সাইনের গতি সর্বোচ্চ — কখনো minimum নয়
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 ⚠️ BASIC SPEED LAW (সবচেয়ে গুরুত্বপূর্ণ)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   "Drive at a careful and prudent speed 
    for conditions"
@@ -1402,9 +1402,9 @@ doors.push({
   → Speed limit 55 হলেও snow-এ 30 mph 
     আইনি হতে পারে
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚨 TOO FAST / TOO SLOW — উভয়ই বেআইনি
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ❌ খুব দ্রুত: accident risk, ticket, points
   ❌ খুব ধীরে: traffic block, rear-end risk
@@ -1415,9 +1415,9 @@ doors.push({
      কিন্তু speed limit পার করো না</div>
 
 <div class="code-block">PARKING RULES — কোথায় পার্ক করবে, কোথায় নয়
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 💺 SEATBELT LAW (সিটবেল্ট আইন)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ ALL passengers সিটবেল্ট পরতে বাধ্য (front + back)
   ✦ PRIMARY enforcement — police শুধু সিটবেল্ট 
@@ -1427,9 +1427,9 @@ doors.push({
   ✦ Child (under 4) = rear-facing বা forward-facing 
     car seat (age/weight অনুযায়ী)
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚫 NO PARKING (পার্ক করা নিষেদ্ধ):
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✗ Fire hydrant থেকে ১৫ ফুটের মধ্যে
   ✗ Crosswalk এর উপর বা ২০ ফুটের মধ্যে
@@ -1443,7 +1443,7 @@ doors.push({
   ✗ Intersection-এ
 
 🅿️ PARKING RULES (পার্ক করার নিয়ম):
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✓ কার্বের ১ ফুটের মধ্যে (parallel parking)
   ✓ Downhill: চাকা কার্বের দিকে ঘুরাও (→right)
@@ -1456,7 +1456,7 @@ doors.push({
     পার্ক করা বেআইনি (facing traffic = ticket)
 
 ❄️ WINTER PARKING (শীতের নিয়ম):
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✗ অনেক শহরে snow emergency ঘোষণা হলে
     নির্দিষ্ট রাস্তায় পার্ক নিষেধ — plow-এর জন্য
@@ -1466,7 +1466,7 @@ doors.push({
     দুটোই হয়। শহরের website-এ নিয়ম থাকে
 
 ♿ DISABLED PARKING:
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✗ Disabled spot-এ permit ছাড়া পার্ক নিষেধ
   ✗ $৫০০ পর্যন্ত জরিমানা

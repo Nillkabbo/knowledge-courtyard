@@ -39,7 +39,7 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔌</span><div><strong>ছিদ্র বন্ধের ৩ উপায়:</strong> ① <strong>Active engagement</strong> (Maryanne Wolf, 2018 — deep reading আলাদা brain network জাগায়): প্রশ্ন করো, সংযোগ করো, মূল্যায়ন করো। ② <strong>Spaced repetition</strong>: Day 1 → 2 → 7 → 30 → 90 review, প্রতিবার forgetting curve সমতল হয়। ③ <strong>Testing effect</strong> (Roediger & Karpicke, 2006): re-read ৩ বার = ৪২% retention; একবার পড়ে test = ৫৬%। নিজেকে test করা re-read-কে হারায়।</div></div>
 
-<div class="callout info"><span class="co-icon">🎯</span><div><strong>Retention = Comprehension × Engagement × Repetition</strong> — যেকোনো factor শূন্য হলে retention শূন্য। বেশিরভাগ পাঠকের comprehension ✓ কিন্তু engagement ✗ ও repetition ✗ → retention ০। লক্ষ্য "এ বছর ৫০ বই" নয়, "এ বছর ৫ বই থেকে গভীর শেখা।" (Naval: "কম বই পড়ো, বেশি যত্নে; ভালোগুলো ৫-১০ বার পুনরায় পড়ো।")</div></div>
+<div class="callout info"><span class="co-icon">🎯</span><div><strong>Retention = Comprehension * Engagement * Repetition</strong> — যেকোনো factor শূন্য হলে retention শূন্য। বেশিরভাগ পাঠকের comprehension ✓ কিন্তু engagement ✗ ও repetition ✗ → retention ০। লক্ষ্য "এ বছর ৫০ বই" নয়, "এ বছর ৫ বই থেকে গভীর শেখা।" (Naval: "কম বই পড়ো, বেশি যত্নে; ভালোগুলো ৫-১০ বার পুনরায় পড়ো।")</div></div>
 
 <div class="diagram">
   <div class="diag-title">ছিদ্র বালতি — Passive Reading যা ধরে রাখে না</div>
@@ -406,7 +406,7 @@ doors.push({
 <div class="diagram">
   <div class="diag-title">মহামানুষ — ভিন্ন পদ্ধতি, এক মিল</div>
   <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
-    ${[ ['Buffett','৫০০ পৃষ্ঠা/দিন','জ্ঞান compound হয়','#fcd34d',58], ['Musk','first principles','fundamentals, textbook','#ff6b35',169], ['Gates','Think Week','বছরে ২× কুটিরে একা','#5b9eff',280], ['Munger','৫+ ঘণ্টা/দিন','বহু-শাস্ত্র model','#52c41a',391], ['Naval','যা ভালোবাসো','৫-১০ বার পুনরায়','#b37feb',502] ].map(s=>`<rect class="cell" x="${s[4]-52}" y="50" width="104" height="70" rx="8" style="stroke:${s[3]}"/><text class="lbl-sm" x="${s[4]}" y="73" fill="${s[3]}" style="font-weight:700">${s[0]}</text><text class="lbl-sm" x="${s[4]}" y="92" fill="#e8e6f0" style="font-size:9px">${s[1]}</text><text class="lbl-sm" x="${s[4]}" y="107" fill="#9290a8" style="font-size:8px">${s[2]}</text>`).join('')}
+    ${[ ['Buffett','৫০০ পৃষ্ঠা/দিন','জ্ঞান compound হয়','#fcd34d',58], ['Musk','first principles','fundamentals, textbook','#ff6b35',169], ['Gates','Think Week','বছরে ২* কুটিরে একা','#5b9eff',280], ['Munger','৫+ ঘণ্টা/দিন','বহু-শাস্ত্র model','#52c41a',391], ['Naval','যা ভালোবাসো','৫-১০ বার পুনরায়','#b37feb',502] ].map(s=>`<rect class="cell" x="${s[4]-52}" y="50" width="104" height="70" rx="8" style="stroke:${s[3]}"/><text class="lbl-sm" x="${s[4]}" y="73" fill="${s[3]}" style="font-weight:700">${s[0]}</text><text class="lbl-sm" x="${s[4]}" y="92" fill="#e8e6f0" style="font-size:9px">${s[1]}</text><text class="lbl-sm" x="${s[4]}" y="107" fill="#9290a8" style="font-size:8px">${s[2]}</text>`).join('')}
     <!-- convergence: all → আকল -->
     ${[58,169,280,391,502].map(x=>`<line class="edge" x1="${x}" y1="125" x2="280" y2="170" style="stroke:#fcd34d"/>`).join('')}
     <rect class="cell-good" x="200" y="160" width="160" height="34" rx="8"/>
@@ -448,8 +448,8 @@ doors.push({
 <div class="stat-card"><div class="sc-num">~৮০%</div><div class="sc-label">কর্মদিবস পড়া+চিন্তা — Buffett</div></div>
 <div class="stat-card"><div class="sc-num">~৫০</div><div class="sc-label">বই/বছর — Gates</div></div>
 <div class="stat-card"><div class="sc-num">৫+ ঘণ্টা</div><div class="sc-label">দৈনিক পড়া — Munger</div></div>
-<div class="stat-card"><div class="sc-num">৫-১০×</div><div class="sc-label">ভালো বই পুনরায় — Naval</div></div>
-<div class="stat-card"><div class="sc-num">Think Week</div><div class="sc-label">বছরে ২× কুটিরে একা — Gates</div></div>
+<div class="stat-card"><div class="sc-num">৫-১০*</div><div class="sc-label">ভালো বই পুনরায় — Naval</div></div>
+<div class="stat-card"><div class="sc-num">Think Week</div><div class="sc-label">বছরে ২* কুটিরে একা — Gates</div></div>
 </div>
 
 <div class="compare">

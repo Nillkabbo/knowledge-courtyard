@@ -492,7 +492,7 @@ VIRTUAL NODES (replicas) — সমান ভাগের চাবি:
   সমাধান: প্রতিটা physical node-কে অনেক virtual node-এ ম্যাপ
     N1 → N1_v1, N1_v2, ..., N1_v150 (ring-এ ১৫০ অবস্থান)
     N2 → N2_v1, N2_v2, ..., N2_v150
-  → ১৫০ × N অবস্থান ring-এ — সমান ভাগ নিশ্চিত
+  → ১৫০ * N অবস্থান ring-এ — সমান ভাগ নিশ্চিত
   → ১৫০-২০০ virtual node per physical সাধারণ
 
 WHERE IT'S USED (সব জায়গা!):

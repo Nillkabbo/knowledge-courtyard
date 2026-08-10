@@ -27,7 +27,7 @@ doors.push({
 ৫ জনের হাতে ৩টি আপেল → কেউ ২টি পেয়েছে<br>
 MD5 hash (১২৮-bit) → ২¹²৮+১টি input হলে collision অনিবার্য</div></div>
 
-<div class="code-block">— Python: পিজিওনহোল যাচাই —
+<div class="code-block"># — Python: পিজিওনহোল যাচাই —
 
   import random, hashlib
 
@@ -39,8 +39,8 @@ MD5 hash (১২৮-bit) → ২¹²৮+১টি input হলে collision অ�
           print(f"Collision! '{seen[h]}' ও '{i}' → {h}")
           break
       seen[h] = i
-  # ~৭৭০০০-এ collision — ২^১৬ ≈ ৬৫৫৩৬ তে শুরু
-  # এটাই birthday threshold: √(2^32) ≈ 65536
+  # ~৭৭০০০-এ collision — ২^১৬ ~= ৬৫৫৩৬ তে শুরু
+  # এটাই birthday threshold: √(2^32) ~= 65536
 
   # Dirichlet-এর নীতি সহজে:
   def must_collide(n_objects, n_boxes):
@@ -80,7 +80,7 @@ MD5 hash (১২৮-bit) → ২¹²৮+১টি input হলে collision অ�
   <text x="335" y="80" fill="#e2e8f0" font-size="8">• ৩৬৭ জন → ২ জনের জন্মদিন মিলবে</text>
   <text x="335" y="97" fill="#e2e8f0" font-size="8">• ১৩ জন → ২ জনের জন্ম মাস মিলবে</text>
   <text x="335" y="114" fill="#e2e8f0" font-size="8">• 2³²+1 keys → hash collision নিশ্চিত</text>
-  <text x="335" y="131" fill="#fca5a5" font-size="8">• Birthday threshold: √N ≈ collision</text>
+  <text x="335" y="131" fill="#fca5a5" font-size="8">• Birthday threshold: √N ~= collision</text>
   <rect x="30" y="195" width="535" height="40" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
   <text x="297" y="213" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">সাধারণ রূপ: Nটি বস্তু kটি বাক্সে → কোনো বাক্সে অন্তত ⌈N/k⌉টি</text>
   <text x="297" y="228" text-anchor="middle" fill="#cbd5e1" font-size="10">সহজ নীতি কিন্তু অসম্ভব ফল — hash collision, birthday paradox, এমনকি গাণিতিক উপপাদ্য প্রমাণ</text>
@@ -122,7 +122,7 @@ doors.push({
 <div class="dialogue"><strong>জাল-নির্মাতা তামির:</strong> সাবির (Door ৬) তোমাকে গোনা শিখিয়েছেন। কিন্তু বস্তু শুধু বাক্সে থাকে না — তারা সংযুক্ত হয়! তোমার LedgerPilot-এ — ইউজার → অ্যাকাউন্ট → লেনদেন → ক্যাটেগরি। এটি একটি গ্রাফ! প্রতিটি টেবিল নোড, প্রতিটি foreign key এজ। BFS দিয়ে খুঁজো — এই ইউজারের সব লেনদেন কী? DFS দিয়ে গভীরে যাও — এই লেনদেন কোন ক্যাটেগরিতে?</div>
 <div class="dialogue en"><strong>Web Builder Tamir:</strong> Sabir (Door 6) taught you counting. But objects don't just sit in boxes — they connect! Your LedgerPilot: User → Account → Transaction → Category. This is a graph! Every table a node, every foreign key an edge. BFS: find all transactions for a user. DFS: go deep — which category does this transaction belong to?</div>
 
-<div class="code-block">— Python: Graph অপারেশন (networkx) —
+<div class="code-block"># — Python: Graph অপারেশন (networkx) —
 
   import networkx as nx
 
@@ -243,7 +243,7 @@ doors.push({
 <div class="dialogue"><strong>রঙ-কারিগর লাবিব:</strong> তামির (Door ৭) তোমাকে গ্রাফ দিয়েছেন। এখন সেই গ্রাফে রঙ করো। কেন? কম্পাইলারে ভেবে দেখো — তোমার ১৬টি CPU রেজিস্টার, কিন্তু ১০০টি ভেরিয়েবল। কোন ভেরিয়েবল কোন রেজিস্টারে? একই সময়ে ব্যবহৃত হলে আলাদা রেজিস্টার দরকার। এটাই graph coloring! প্রতিটি ভেরিয়েবল নোড, একসাথে ব্যবহৃত হলে এজ। রঙের সংখ্যা = রেজিস্টার সংখ্যা। Chaitin ১৯৮১-এ এটা দেখিয়েছিলেন।</div>
 <div class="dialogue en"><strong>Color Artisan Labib:</strong> Tamir (Door 7) gave you graphs. Now color them. Why? Think of compilers — 16 CPU registers, 100 variables. Which goes where? Simultaneous use needs separate registers. This IS graph coloring! Variables = nodes, conflict = edges. Number of colors = registers. Chaitin 1981.</div>
 
-<div class="code-block">— Python: Graph Coloring —
+<div class="code-block"># — Python: Graph Coloring —
 
   import networkx as nx
 
@@ -337,20 +337,20 @@ doors.push({
   story: `<p class="scene-setting">আলেকজান্দ্রিয়া, ৩০০ খ্রিস্টপূর্ব। ইউক্লিড (যিনি Door ৩-এ √২ প্রমাণ করেছেন) এবার একটি ভিন্ন প্রশ্ন নিয়ে আছেন। মৌলিক সংখ্যা কত? সসীম নাকি অসীম? তার প্রমাণ একটি অমর সৌন্দর্য: ধরে নাও সসীম। সব মৌলিকের গুণফল নাও, তাতে ১ যোগ করো। এই নতুন সংখ্যা — কোনো মৌলিক দিয়ে ভাগ যায় না! তাই নতুন মৌলিক আছে। অন্তর্বিরোধ। অসীম।</p>
 <p class="scene-setting en">Alexandria, 300 BCE. Euclid (who proved √2 irrational in Door 3) now asks: how many primes? Finite or infinite? His proof is immortal beauty: assume finite. Multiply all primes, add 1. This new number is divisible by no existing prime! So a new prime exists. Contradiction. Infinite.</p>
 
-<div class="dialogue"><strong>সংখ্যা-জ্ঞানী আরমান:</strong> লাবিব (Door ৮) তোমাকে রঙ শিখিয়েছেন। এখন সংখ্যার গভীরে যাও। মৌলিক সংখ্যা — ২, ৩, ৫, ৭, ১১, ১৩... কোনো প্যাটার্ন নেই। কিন্তু এরাই সবকিছুর ভিত্তি। ৬০ = ২² × ৩ × ৫। প্রতিটি সংখ্যা মৌলিকে ভাঙা যায় — Fundamental Theorem of Arithmetic। আর Fermat-এর সূত্র: ৭ মৌলিক হলে, ২⁶ = ৬৪, ৬৪ mod ৭ = ১। এই সহজ সত্যই তোমার RSA এনক্রিপশন চালায়!</div>
-<div class="dialogue en"><strong>Number Knower Arman:</strong> Labib (Door 8) taught you coloring. Now go deeper into numbers. Primes — 2, 3, 5, 7, 11, 13... No pattern. But they are the foundation. 60 = 2² × 3 × 5. Every number breaks into primes — Fundamental Theorem. And Fermat: if 7 is prime, 2⁶ = 64, 64 mod 7 = 1. This simple truth powers your RSA encryption!</div>
+<div class="dialogue"><strong>সংখ্যা-জ্ঞানী আরমান:</strong> লাবিব (Door ৮) তোমাকে রঙ শিখিয়েছেন। এখন সংখ্যার গভীরে যাও। মৌলিক সংখ্যা — ২, ৩, ৫, ৭, ১১, ১৩... কোনো প্যাটার্ন নেই। কিন্তু এরাই সবকিছুর ভিত্তি। ৬০ = ২² * ৩ * ৫। প্রতিটি সংখ্যা মৌলিকে ভাঙা যায় — Fundamental Theorem of Arithmetic। আর Fermat-এর সূত্র: ৭ মৌলিক হলে, ২⁶ = ৬৪, ৬৪ mod ৭ = ১। এই সহজ সত্যই তোমার RSA এনক্রিপশন চালায়!</div>
+<div class="dialogue en"><strong>Number Knower Arman:</strong> Labib (Door 8) taught you coloring. Now go deeper into numbers. Primes — 2, 3, 5, 7, 11, 13... No pattern. But they are the foundation. 60 = 2² * 3 * 5. Every number breaks into primes — Fundamental Theorem. And Fermat: if 7 is prime, 2⁶ = 64, 64 mod 7 = 1. This simple truth powers your RSA encryption!</div>
 
-<div class="code-block">— Python: Number Theory —
+<div class="code-block"># — Python: Number Theory —
 
   from math import gcd
   from sympy import isprime, factorint, nextprime
 
   # মৌলিক সংখ্যা যাচাই
   print(isprime(17))      # True
-  print(isprime(15))      # False — ৩×৫
+  print(isprime(15))      # False — ৩*৫
 
   # উৎপাদকে বিভক্ত
-  print(factorint(360))   # {2: 3, 3: 2, 5: 1} → ২³×৩²×৫
+  print(factorint(360))   # {2: 3, 3: 2, 5: 1} → ২³*৩²*৫
 
   # GCD (Euclidean algorithm)
   print(gcd(48, 18))      # 6
@@ -360,20 +360,20 @@ doors.push({
   print(pow(3, 10, 11))   # 1 — Fermat! (১১ মৌলিক)
 
   # RSA-এর ভিত্তি:
-  # p, q মৌলিক → n = p×q
+  # p, q মৌলিক → n = p*q
   # φ(n) = (p-1)(q-1)
   # e নির্বাচন → d = e^(-1) mod φ(n)
   # encrypt: c = m^e mod n
   # decrypt: m = c^d mod n
   # এটাই Book ৪৬ (Cryptography) Door ১!</div>
 
-<div class="callout info"><span class="co-icon">🔢</span><div><strong>Fundamental Theorem of Arithmetic:</strong> প্রতিটি সংখ্যা > ১ কে মৌলিক উৎপাদকে অদ্বিতীয়ভাবে বিভক্ত করা যায়। ২৪ = ২³ × ৩। একমাত্র একটি উপায়। এটাই সংখ্যার ডিএনএ।<br><br>
+<div class="callout info"><span class="co-icon">🔢</span><div><strong>Fundamental Theorem of Arithmetic:</strong> প্রতিটি সংখ্যা > ১ কে মৌলিক উৎপাদকে অদ্বিতীয়ভাবে বিভক্ত করা যায়। ২৪ = ২³ * ৩। একমাত্র একটি উপায়। এটাই সংখ্যার ডিএনএ।<br><br>
 <strong>Fermat's Little Theorem (১৬৪০):</strong> p মৌলিক হলে, a^(p-১) ≡ ১ (mod p)। এটা RSA-এর গাণিতিক ভিত্তি। বিশাল সংখ্যার মৌলিক যাচাইও এটা দিয়ে।</div></div>
 
 <div class="verse">إِنَّا كُلَّ شَيْءٍ خَلَقْنَاهُ بِقَدَرٍ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই আমরা প্রতিটি কিছু সুনির্দিষ্ট পরিমাণে সৃষ্টি করেছি।" — কুরআন ৫৪:৪৯</div>
 
-<p class="scene-setting">"কদর" — নির্দিষ্ট পরিমাণ। প্রতিটি সংখ্যার একটি অদ্বিতীয় মৌলিক গঠন — সেই কদর। ৬০ = ২²×৩×৫ — অন্যভাবে নয়। সংখ্যার জগতে প্রতিটি জিনিসের একটি নির্দিষ্ট সত্য আছে। আদদ — চিরস্থায়ী। মৌলিক সংখ্যা অসীম, কিন্তু প্রতিটি অদ্বিতীয়।</p>
+<p class="scene-setting">"কদর" — নির্দিষ্ট পরিমাণ। প্রতিটি সংখ্যার একটি অদ্বিতীয় মৌলিক গঠন — সেই কদর। ৬০ = ২²*৩*৫ — অন্যভাবে নয়। সংখ্যার জগতে প্রতিটি জিনিসের একটি নির্দিষ্ট সত্য আছে। আদদ — চিরস্থায়ী। মৌলিক সংখ্যা অসীম, কিন্তু প্রতিটি অদ্বিতীয়।</p>
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪৬ (Cryptography) Door ১ (RSA):</strong> RSA = মৌলিক সংখ্যার উপর নির্মিত! Fermat-এর সূত্র ছাড়া RSA অসম্ভব। Book ৪১ Door ৪ (P vs NP): মৌলিক যাচাই = P, কিন্তু উৎপাদকে বিভক্ত = অজানা।</div></div>
 
@@ -387,19 +387,19 @@ doors.push({
   <line x1="90" y1="120" x2="60" y2="140" stroke="#fbbf24" stroke-width="1.5"/>
   <line x1="90" y1="120" x2="120" y2="140" stroke="#fbbf24" stroke-width="1.5"/>
   <rect x="35" y="140" width="50" height="25" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="60" y="157" text-anchor="middle" fill="#4ade80" font-size="8">2 × 30</text>
+  <text x="60" y="157" text-anchor="middle" fill="#4ade80" font-size="8">2 * 30</text>
   <rect x="95" y="140" width="50" height="25" rx="4" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="120" y="157" text-anchor="middle" fill="#7dd3fc" font-size="8">3 × 10</text>
+  <text x="120" y="157" text-anchor="middle" fill="#7dd3fc" font-size="8">3 * 10</text>
   <line x1="120" y1="165" x2="100" y2="180" stroke="#22d3ee" stroke-width="1"/>
   <line x1="120" y1="165" x2="140" y2="180" stroke="#22d3ee" stroke-width="1"/>
   <rect x="80" y="180" width="40" height="20" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
-  <text x="100" y="193" text-anchor="middle" fill="#7dd3fc" font-size="10">2 × 5</text>
-  <text x="150" y="205" text-anchor="middle" fill="#fcd34d" font-size="8">60 = 2²×3×5</text>
+  <text x="100" y="193" text-anchor="middle" fill="#7dd3fc" font-size="10">2 * 5</text>
+  <text x="150" y="205" text-anchor="middle" fill="#fcd34d" font-size="8">60 = 2²*3*5</text>
   <text x="150" y="220" text-anchor="middle" fill="#94a3b8" font-size="10">Fundamental Theorem of Arithmetic</text>
   <rect x="320" y="55" width="240" height="170" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
   <text x="440" y="78" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Why Primes Matter</text>
   <rect x="340" y="92" width="200" height="20" rx="3" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
-  <text x="440" y="106" text-anchor="middle" fill="#fca5a5" font-size="10">RSA: p × q = n (factoring hard!)</text>
+  <text x="440" y="106" text-anchor="middle" fill="#fca5a5" font-size="10">RSA: p * q = n (factoring hard!)</text>
   <rect x="340" y="120" width="200" height="20" rx="3" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1"/>
   <text x="440" y="134" text-anchor="middle" fill="#7dd3fc" font-size="10">Hash: prime modulus reduces collision</text>
   <rect x="340" y="148" width="200" height="20" rx="3" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
@@ -408,7 +408,7 @@ doors.push({
   <text x="440" y="205" text-anchor="middle" fill="#94a3b8" font-size="10">24.8 million digits!</text>
 </svg>
 </div>
-<div class="svg-caption">চিত্র: Prime factorization tree — 60 = 2²×3×5। RSA এই উপর নির্ভর করে।</div>
+<div class="svg-caption">চিত্র: Prime factorization tree — 60 = 2²*3*5। RSA এই উপর নির্ভর করে।</div>
 
 <div class="secret-box">🔢 <strong>মৌলিক = সংখ্যার পরমাণু। অসীম। অদ্বিতীয় গঠন।</strong> Euclid থেকে Fermat — ২০০০ বছরের গবেষণা। এই সত্য ছাড়া RSA নেই, HTTPS নেই, ইন্টারনেট নেই। এখন নয়টি দরজা পেরিয়েছো — শেষ দরজায় সব মেলাও।</div>`,
   senior: {
@@ -464,13 +464,13 @@ doors.push({
   both = active_users & staff  # intersection
 
   # Door ৫ (Combinatorics): password শক্তি
-  # ৮-অক্ষর password, ৬২ অক্ষর → ৬২⁸ ≈ ২১৮ ট্রিলিয়ন
+  # ৮-অক্ষর password, ৬২ অক্ষর → ৬২⁸ ~= ২১৮ ট্রিলিয়ন
 
   # Door ৭ (Graph): foreign key = গ্রাফ এজ
   # User → Account → Transaction → Category
 
   # Door ৯ (Number Theory): RSA সার্টিফিকেট
-  # HTTPS সংযোগে p×q মৌলিক গুণফল</div>
+  # HTTPS সংযোগে p*q মৌলিক গুণফল</div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">৯</div><div class="sc-label">শিক্ষক</div></div>

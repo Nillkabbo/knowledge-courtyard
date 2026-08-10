@@ -69,15 +69,15 @@ with open("data.txt") as f:
 # with open("photo.jpg", "rb") as f:    # "rb" = read binary
 #     data = f.read()
 
-# ┌────────┬──────────────────────────────────┐
-# │ Mode   │ What it does                      │
-# ├────────┼──────────────────────────────────┤
-# │ "r"    │ Read (file must exist)            │
-# │ "w"    │ Write (OVERWRITES! creates if new)│
-# │ "a"    │ Append (adds to end)              │
-# │ "r+"   │ Read AND write                    │
-# │ "b"    │ Binary (add to any mode: rb, wb)  │
-# └────────┴──────────────────────────────────┘</div>
+# # ────────# ──────────────────────────────────# 
+# #  Mode   #  What it does                      # 
+# # ────────# ──────────────────────────────────# 
+# #  "r"    #  Read (file must exist)            # 
+# #  "w"    #  Write (OVERWRITES! creates if new)# 
+# #  "a"    #  Append (adds to end)              # 
+# #  "r+"   #  Read AND write                    # 
+# #  "b"    #  Binary (add to any mode: rb, wb)  # 
+# # ────────# ──────────────────────────────────# </div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> আমিনা বললেন — এক শিক্ষানবিশ file খুললো, পড়লো, কিন্তু close() করলো না। প্রোগ্রাম crash করে গেলো। file "locked" — অন্য কেউ খুলতে পারলো না। সারাদিন ধরে locked। with open() দিলে — crash হলেও Python স্বয়ংক্রিয়ভাবে বন্ধ করে। with = নিরাপত্তা।</div></div>
 
@@ -703,13 +703,13 @@ finally:
 # - High level (main/UI): catch and show user-friendly message
 
 # Summary of the try/except pattern:
-# ┌─────────────────────────────────────────┐
-# │  try:        risky code                  │
-# │  except E1:  handle error type 1         │
-# │  except E2:  handle error type 2         │
-# │  else:       runs if NO error (success)  │
-# │  finally:    ALWAYS runs (cleanup)       │
-# └─────────────────────────────────────────┘</div>
+# # ─────────────────────────────────────────# 
+# #   try:        risky code                  # 
+# #   except E1:  handle error type 1         # 
+# #   except E2:  handle error type 2         # 
+# #   else:       runs if NO error (success)  # 
+# #   finally:    ALWAYS runs (cleanup)       # 
+# # ─────────────────────────────────────────# </div>
 
 <div class="diagram">
   <div class="diag-title">try/except/finally — রোগ চিনো, ওষুধ দাও</div>
@@ -1027,24 +1027,24 @@ if __name__ == "__main__":
 # Here's how a real Python project looks:
 
 # my_project/
-# ├── .venv/                    ← virtual environment (gitignored)
-# ├── .gitignore                ← files to exclude from git
-# ├── requirements.txt          ← package dependencies
-# ├── README.md                 ← project documentation
-# ├── main.py                   ← entry point
-# ├── config.py                 ← configuration
-# ├── utils/                    ← utility package
-# │   ├── __init__.py
-# │   ├── strings.py
-# │   └── validators.py
-# ├── database/                 ← database package
-# │   ├── __init__.py
-# │   ├── models.py
-# │   └── queries.py
-# └── tests/                    ← test package
-#     ├── __init__.py
-#     ├── test_strings.py
-#     └── test_validators.py
+# # ── .venv/                    ← virtual environment (gitignored)
+# # ── .gitignore                ← files to exclude from git
+# # ── requirements.txt          ← package dependencies
+# # ── README.md                 ← project documentation
+# # ── main.py                   ← entry point
+# # ── config.py                 ← configuration
+# # ── utils/                    ← utility package
+# #    # ── __init__.py
+# #    # ── strings.py
+# #    # ── validators.py
+# # ── database/                 ← database package
+# #    # ── __init__.py
+# #    # ── models.py
+# #    # ── queries.py
+# # ── tests/                    ← test package
+#     # ── __init__.py
+#     # ── test_strings.py
+#     # ── test_validators.py
 
 # main.py imports from packages:
 # from utils.strings import clean_email
@@ -1085,17 +1085,17 @@ if __name__ == "__main__":
 # utils/ for helpers, database/ for DB, tests/ for tests
 
 # Summary:
-# ┌──────────────────┬──────────────────────────────────┐
-# │ Term             │ Meaning                          │
-# ├──────────────────┼──────────────────────────────────┤
-# │ Module           │ A .py file                       │
-# │ Package          │ A folder of modules              │
-# │ import X         │ Use module X                     │
-# │ from X import Y  │ Use specific Y from module X     │
-# │ import X as Y    │ Use X with a shorter name Y      │
-# │ pip install X    │ Download a third-party package   │
-# │ venv             │ Isolated environment per project │
-# └──────────────────┴──────────────────────────────────┘</div>
+# # ──────────────────# ──────────────────────────────────# 
+# #  Term             #  Meaning                          # 
+# # ──────────────────# ──────────────────────────────────# 
+# #  Module           #  A .py file                       # 
+# #  Package          #  A folder of modules              # 
+# #  import X         #  Use module X                     # 
+# #  from X import Y  #  Use specific Y from module X     # 
+# #  import X as Y    #  Use X with a shorter name Y      # 
+# #  pip install X    #  Download a third-party package   # 
+# #  venv             #  Isolated environment per project # 
+# # ──────────────────# ──────────────────────────────────# </div>
 
 <div class="diagram">
   <div class="diag-title">Project Structure — এক file থেকে অনেক module</div>
@@ -1871,14 +1871,14 @@ for c in customers:
 # RULE: If a beginner can't read it in 5 seconds, use a for loop.
 
 # Summary:
-# ┌──────────────────────┬────────────────────────────────┐
-# │ Type                 │ Syntax                         │
-# ├──────────────────────┼────────────────────────────────┤
-# │ List comprehension   │ [x for x in items]             │
-# │ Dict comprehension   │ {k: v for k, v in items}       │
-# │ Set comprehension    │ {x for x in items}             │
-# │ Generator expression │ (x for x in items)             │
-# └──────────────────────┴────────────────────────────────┘</div>
+# # ──────────────────────# ────────────────────────────────# 
+# #  Type                 #  Syntax                         # 
+# # ──────────────────────# ────────────────────────────────# 
+# #  List comprehension   #  [x for x in items]             # 
+# #  Dict comprehension   #  {k: v for k, v in items}       # 
+# #  Set comprehension    #  {x for x in items}             # 
+# #  Generator expression #  (x for x in items)             # 
+# # ──────────────────────# ────────────────────────────────# </div>
 
 <div class="diagram">
   <div class="diag-title">Comprehension — ৫ লাইন → ১ লাইন</div>

@@ -49,11 +49,11 @@ THE SOLUTION (with KV cache):
   
   Decode phase (generate one token at a time):
     → new token → compute its Q (query)
-    → attention: Q × cached K → attention weights
-    → weights × cached V → output
+    → attention: Q * cached K → attention weights
+    → weights * cached V → output
     → store new token's K, V in cache
   
-  Total work: N (prefill) + N × ১ (decode) = ২N
+  Total work: N (prefill) + N * ১ (decode) = ২N
   → ১০০০ tokens = ২,০০০ operations!
   → O(N) → LINEAR growth → MUCH faster
 
@@ -75,7 +75,7 @@ KV CACHE MEMORY USAGE:
     V: (d_head) floats
   
   Total per token:
-    ২ × n_layers × n_heads × d_head × bytes
+    ২ * n_layers * n_heads * d_head * bytes
   
   Example (Llama ৩.১ ৮B):
     n_layers = ৩২
@@ -83,10 +83,10 @@ KV CACHE MEMORY USAGE:
     d_head = ১২৮
     dtype = fp16 (২ bytes)
     
-    Per token: ২ × ৩২ × ৩২ × ১২৮ × ২ = ৫২৪,২৮৮ bytes
+    Per token: ২ * ৩২ * ৩২ * ১২৮ * ২ = ৫২৪,২৮৮ bytes
     = ০.৫ MB per token!
     
-    ৪K context: ৪০৯৬ × ০.৫ MB = ২ GB cache!
+    ৪K context: ৪০৯৬ * ০.৫ MB = ২ GB cache!
     ১২৮K context: ৬৪ GB cache!!
 
   → KV cache = dominant GPU memory consumer
@@ -171,7 +171,7 @@ KV CACHE LIFECYCLE:
 <text x="432" y="129" text-anchor="middle" fill="#fcd34d" font-size="10">📦 KV Cache: stored K,V for all tokens</text>
 <rect x="315" y="150" width="235" height="55" rx="4" fill="#1e293b" stroke="#4ade80" stroke-width="1"/>
 <text x="432" y="164" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">② Decode: one token at a time</text>
-<text x="432" y="177" text-anchor="middle" fill="#94a3b8" font-size="10">new Q × cached K → weights × cached V</text>
+<text x="432" y="177" text-anchor="middle" fill="#94a3b8" font-size="10">new Q * cached K → weights * cached V</text>
 <text x="432" y="189" text-anchor="middle" fill="#94a3b8" font-size="10">append K,V → next token</text>
 <text x="432" y="220" text-anchor="middle" fill="#fcd34d" font-size="8">Total: N + N = 2N</text>
 <text x="432" y="234" text-anchor="middle" fill="#4ade80" font-size="10">1000 tokens → 2,000 ops!</text>
@@ -215,15 +215,15 @@ doors.push({
 
 PRECISION LEVELS:
 
-  ┌───────────┬──────────┬──────────────┬──────────┐
-  │ Format    │ Bits     │ ৭B Model Size │ Quality  │
-  ├───────────┼──────────┼──────────────┼──────────┤
-  │ fp32      │ ৩২       │ ২৮ GB        │ ১০০%     │
-  │ fp16/bf16 │ ১৬       │ ১৪ GB        │ ~১০০%    │
-  │ int8      │ ৮        │ ৭ GB         │ ~৯৮%     │
-  │ int4/nf4  │ ৪        │ ৩.৫ GB       │ ~৯৫%     │
-  │ int2      │ ২        │ ১.৭৫ GB      │ ~৮০%     │
-  └───────────┴──────────┴──────────────┴──────────┘
+  # ───────────# ──────────# ──────────────# ──────────# 
+  #  Format    #  Bits     #  ৭B Model Size #  Quality  # 
+  # ───────────# ──────────# ──────────────# ──────────# 
+  #  fp32      #  ৩২       #  ২৮ GB        #  ১০০%     # 
+  #  fp16/bf16 #  ১৬       #  ১৪ GB        #  ~১০০%    # 
+  #  int8      #  ৮        #  ৭ GB         #  ~৯৮%     # 
+  #  int4/nf4  #  ৪        #  ৩.৫ GB       #  ~৯৫%     # 
+  #  int2      #  ২        #  ১.৭৫ GB      #  ~৮০%     # 
+  # ───────────# ──────────# ──────────────# ──────────# 
 
   Key insight:
     fp16 → int4 = ৪x smaller, ৪x faster load
@@ -276,17 +276,17 @@ QUANTIZATION METHODS (worst → best):
 
 WHEN TO USE WHICH:
 
-  ┌──────────────────┬──────────────────────┐
-  │ Your Setup       │ Best Method          │
-  ├──────────────────┼──────────────────────┤
-  │ GPU (NVIDIA)     │ AWQ বা GPTQ          │
-  │ vLLM serving     │ AWQ (native support) │
-  │ CPU / Mac        │ GGUF (Q৪_K_M)       │
-  │ Mobile / Edge    │ GGUF Q৩ বা Q৪       │
-  │ Maximum quality  │ fp16 (no quant)     │
-  │ Maximum speed    │ int4 AWQ             │
-  │ Balanced         │ int8 GPTQ            │
-  └──────────────────┴──────────────────────┘
+  # ──────────────────# ──────────────────────# 
+  #  Your Setup       #  Best Method          # 
+  # ──────────────────# ──────────────────────# 
+  #  GPU (NVIDIA)     #  AWQ বা GPTQ          # 
+  #  vLLM serving     #  AWQ (native support) # 
+  #  CPU / Mac        #  GGUF (Q৪_K_M)       # 
+  #  Mobile / Edge    #  GGUF Q৩ বা Q৪       # 
+  #  Maximum quality  #  fp16 (no quant)     # 
+  #  Maximum speed    #  int4 AWQ             # 
+  #  Balanced         #  int8 GPTQ            # 
+  # ──────────────────# ──────────────────────# 
 
 QUANTIZATION IMPACT:
   
@@ -491,15 +491,15 @@ BATCH SIZE TUNING:
   Larger batch = more throughput, more latency
   Smaller batch = less throughput, less latency
   
-  ┌────────────┬──────────────┬──────────┐
-  │ Batch Size │ Throughput   │ Latency  │
-  ├────────────┼──────────────┼──────────┤
-  │ ১ (no batch)│ lowest       │ lowest   │
-  │ ৮          │ medium       │ medium   │
-  │ ৩২         │ high         │ higher   │
-  │ ৬৪         │ very high    │ high     │
-  │ ১২৮+       │ max (if fits)│ highest  │
-  └────────────┴──────────────┴──────────┘
+  # ────────────# ──────────────# ──────────# 
+  #  Batch Size #  Throughput   #  Latency  # 
+  # ────────────# ──────────────# ──────────# 
+  #  ১ (no batch)#  lowest       #  lowest   # 
+  #  ৮          #  medium       #  medium   # 
+  #  ৩২         #  high         #  higher   # 
+  #  ৬৪         #  very high    #  high     # 
+  #  ১২৮+       #  max (if fits)#  highest  # 
+  # ────────────# ──────────────# ──────────# 
   
   → bounded by GPU memory (KV cache!)
   → max batch = available VRAM / per-request cache
@@ -631,7 +631,7 @@ doors.push({
 THE ATTENTION BOTTLENECK:
   
   Standard attention:
-    Q × K^T → attention weights → × V → output
+    Q * K^T → attention weights → * V → output
   
   Complexity: O(N²) in sequence length
   
@@ -647,17 +647,17 @@ THE ATTENTION BOTTLENECK:
 
 FLASHATTENTION ( Dao et al., 2022):
 
-  Key insight: don't materialize full N×N matrix!
+  Key insight: don't materialize full N*N matrix!
   
   Standard:
-    → compute full Q×K^T → write to HBM (slow)
-    → read back → softmax → × V → write
+    → compute full Q*K^T → write to HBM (slow)
+    → read back → softmax → * V → write
   
   FlashAttention:
     → tile the computation into blocks
     → compute attention block by block in SRAM (fast)
-    → NEVER materialize full N×N matrix
-    → "fused" kernel: Q×K→softmax→×V in one pass
+    → NEVER materialize full N*N matrix
+    → "fused" kernel: Q*K→softmax→*V in one pass
   
   Result:
     → same mathematical result (exact!)
@@ -682,7 +682,7 @@ SPARSE ATTENTION:
   
   Sliding Window Attention:
     → each token attends to last W tokens only
-    → O(N×W) instead of O(N²)
+    → O(N*W) instead of O(N²)
     → Mistral: W = ৪০৯৬
     → long-range info propagates through layers
   
@@ -695,7 +695,7 @@ GROUPED-QUERY ATTENTION (GQA):
   
   Standard Multi-Head Attention (MHA):
     → each head has own Q, K, V
-    → ৩২ heads × K,V = lots of memory
+    → ৩২ heads * K,V = lots of memory
   
   Multi-Query Attention (MQA):
     → ALL heads share ONE K, V
@@ -723,16 +723,16 @@ RING ATTENTION (for ultra-long context):
 
 ATTENTION IMPLEMENTATION COMPARISON:
 
-  ┌──────────────────┬────────────┬──────────────┐
-  │ Method           │ Speed      │ Memory       │
-  ├──────────────────┼────────────┼──────────────┤
-  │ Standard         │ ১x (slow)  │ O(N²)        │
-  │ FlashAttention ১ │ ২-৪x       │ O(N)         │
-  │ FlashAttention ২ │ ৪-৮x       │ O(N)         │
-  │ FlashAttention ৩ │ ৬-১২x      │ O(N)         │
-  │ Sliding Window   │ ১০-১০০x   │ O(N×W)       │
-  │ GQA (vs MHA)     │ ১.৫-৩x    │ ৪x less KV   │
-  └──────────────────┴────────────┴──────────────┘
+  # ──────────────────# ────────────# ──────────────# 
+  #  Method           #  Speed      #  Memory       # 
+  # ──────────────────# ────────────# ──────────────# 
+  #  Standard         #  ১x (slow)  #  O(N²)        # 
+  #  FlashAttention ১ #  ২-৪x       #  O(N)         # 
+  #  FlashAttention ২ #  ৪-৮x       #  O(N)         # 
+  #  FlashAttention ৩ #  ৬-১২x      #  O(N)         # 
+  #  Sliding Window   #  ১০-১০০x   #  O(N*W)       # 
+  #  GQA (vs MHA)     #  ১.৫-৩x    #  ৪x less KV   # 
+  # ──────────────────# ────────────# ──────────────# 
 
 PRACTICAL IMPACT:
   
@@ -775,13 +775,13 @@ WHAT TO USE:
 <text x="102" y="55" text-anchor="middle" fill="#ff6b35" font-size="8" font-weight="bold">Standard Attention</text>
 <rect x="30" y="65" width="60" height="50" rx="3" fill="#0d1526" stroke="#ff6b35" stroke-width="1"/>
 <rect x="38" y="72" width="44" height="36" rx="2" fill="#ff6b35" opacity=".25"/>
-<text x="60" y="83" text-anchor="middle" fill="#ff6b35" font-size="10">N×N</text>
+<text x="60" y="83" text-anchor="middle" fill="#ff6b35" font-size="10">N*N</text>
 <text x="60" y="93" text-anchor="middle" fill="#ff6b35" font-size="9">attention</text>
 <text x="60" y="103" text-anchor="middle" fill="#ff6b35" font-size="9">matrix</text>
 <text x="102" y="100" text-anchor="middle" fill="#fcd34d" font-size="10">→ O(N²) memory</text>
 <text x="102" y="113" text-anchor="middle" fill="#ff6b35" font-size="10">32K context? OOM!</text>
 <text x="102" y="128" text-anchor="middle" fill="#94a3b8" font-size="10">materialize full</text>
-<text x="102" y="140" text-anchor="middle" fill="#94a3b8" font-size="10">Q×Kᵀ softmax matrix</text>
+<text x="102" y="140" text-anchor="middle" fill="#94a3b8" font-size="10">Q*Kᵀ softmax matrix</text>
 <text x="102" y="152" text-anchor="middle" fill="#ff6b35" font-size="10">reads/writes HBM 2-3x</text>
 <rect x="200" y="38" width="175" height="120" rx="8" fill="#1a2744" stroke="#fbbf24" stroke-width="1.5"/>
 <text x="287" y="55" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold">FlashAttention-2</text>
@@ -876,29 +876,29 @@ THE INSIGHT:
 
 HOW IT WORKS:
 
-  ┌──────────────────────────────────────┐
-  │ ১. DRAFT (fast, small model)         │
-  │ → small model generates N candidate   │
-  │   tokens quickly                      │
-  │ → e.g., ৪ tokens in ১ pass            │
-  │ → "The capital of France is [Paris]"  │
-  │                                        │
-  │ ২. VERIFY (big model, one pass)       │
-  │ → big model processes all N+১ tokens  │
-  │   in ONE forward pass                 │
-  │ → checks each: "would I have said     │
-  │   this?"                               │
-  │                                        │
-  │ ৩. ACCEPT/REJECT                      │
-  │ → token ১: correct → ACCEPT            │
-  │ → token ২: correct → ACCEPT            │
-  │ → token ৩: correct → ACCEPT            │
-  │ → token ৪: WRONG → REJECT              │
-  │ → big model provides correct token ৪   │
-  │                                        │
-  │ Result: ৩ tokens generated in the     │
-  │ time of ~১.৫ forward passes!          │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  ১. DRAFT (fast, small model)         # 
+  #  → small model generates N candidate   # 
+  #    tokens quickly                      # 
+  #  → e.g., ৪ tokens in ১ pass            # 
+  #  → "The capital of France is [Paris]"  # 
+  #                                         # 
+  #  ২. VERIFY (big model, one pass)       # 
+  #  → big model processes all N+১ tokens  # 
+  #    in ONE forward pass                 # 
+  #  → checks each: "would I have said     # 
+  #    this?"                               # 
+  #                                         # 
+  #  ৩. ACCEPT/REJECT                      # 
+  #  → token ১: correct → ACCEPT            # 
+  #  → token ২: correct → ACCEPT            # 
+  #  → token ৩: correct → ACCEPT            # 
+  #  → token ৪: WRONG → REJECT              # 
+  #  → big model provides correct token ৪   # 
+  #                                         # 
+  #  Result: ৩ tokens generated in the     # 
+  #  time of ~১.৫ forward passes!          # 
+  # ──────────────────────────────────────# 
 
 SPEEDUP ANALYSIS:
   
@@ -1044,7 +1044,7 @@ BENCHMARK:
 <rect x="15" y="150" width="550" height="95" rx="6" fill="#1a2744" stroke="#3dd6c4" stroke-width="1" stroke-dasharray="3,2"/>
 <text x="290" y="168" text-anchor="middle" fill="#3dd6c4" font-size="8" font-weight="bold">Why it works — Math</text>
 <text x="290" y="183" text-anchor="middle" fill="#94a3b8" font-size="10">Acceptance rate α (draft accuracy). Expected tokens per verify pass:</text>
-<text x="290" y="197" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">E[accepted] = (1 - α^(k+1)) / (1 - α) ≈ α/(1-α) for large k</text>
+<text x="290" y="197" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">E[accepted] = (1 - α^(k+1)) / (1 - α) ~= α/(1-α) for large k</text>
 <rect x="30" y="207" width="160" height="28" rx="3" fill="#0d1526" stroke="#fbbf24" stroke-width="1"/>
 <text x="110" y="220" text-anchor="middle" fill="#fbbf24" font-size="10">α=0.5 (Llama 1B→8B)</text>
 <text x="110" y="230" text-anchor="middle" fill="#4ade80" font-size="10">→ ~2x speedup</text>

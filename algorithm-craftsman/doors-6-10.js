@@ -114,7 +114,7 @@ print(f"  \"{snippet}...\"")
     <!-- Winner annotation -->
     <rect x="20" y="205" width="500" height="40" rx="8" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
     <text x="35" y="222" fill="#52c41a" font-size="10" font-weight="bold">✅ Winner: sentence 2 (score 9)</text>
-    <text x="35" y="236" fill="#9a93b8" font-size="9">3 query terms × 3 points + proximity bonus = highest score → shown as snippet</text>
+    <text x="35" y="236" fill="#9a93b8" font-size="9">3 query terms * 3 points + proximity bonus = highest score → shown as snippet</text>
   </svg>
   <div class="diag-cap">Greedy: প্রতিটা sentence-কে আলাদাভাবে score করো, সর্বোচ্চ বাছো। দ্রুত — কারণ sentence-গুলো স্বাধীন।</div>
 </div>
@@ -145,7 +145,7 @@ doors.push({
   recall:{
     q:"Levenshtein distance-এ DP table কেন দরকার? brute force কেন নয়?",
     qen:"Why use a DP table for Levenshtein distance? Not brute force?",
-    a:"কারণ একই সাবপ্রবলেম বারবার আসে। cell[i][j] = প্রথম i ও j অক্ষরের মধ্যে distance। প্রতিটা cell শুধু ৩টা neighbor থেকে হিসাব করে — left, up, diagonal। Brute force: O(3^n)। DP: O(n×m)। পার্থক্য: কোটি গুণ।",
+    a:"কারণ একই সাবপ্রবলেম বারবার আসে। cell[i][j] = প্রথম i ও j অক্ষরের মধ্যে distance। প্রতিটা cell শুধু ৩টা neighbor থেকে হিসাব করে — left, up, diagonal। Brute force: O(3^n)। DP: O(n*m)। পার্থক্য: কোটি গুণ।",
     aen:"Because the same subproblem recurs. cell[i][j] = distance between first i and j characters. Each cell computed from 3 neighbors — left, up, diagonal. Brute force: O(3^n). DP: O(n*m). Difference: millions of times."
   },
   story:`
@@ -236,7 +236,7 @@ print(f"Did you mean: '{correction}'? (distance: {dist})")
 # Input:   'algortim'
 # Did you mean: 'algorithm'? (distance: 2)</div>
 
-<div class="dialogue">Book ২-এর মালির ধাপ (Door ১৫) DP শিখিয়েছিলেন — overlapping subproblems + optimal substructure। Levenshtein-এ দুটো শব্দের প্রতিটা prefix pair একটা সাবপ্রবলেম। সেই সাবপ্রবলেম-এর উত্তর আমরা table-এ রাখি — আর কখনো পুনরায় হিসাব করি না। এটাই memoization। Brute force O(3^n) থেকে DP O(n×m)-এ — কোটি গুণ দ্রুত।</div>
+<div class="dialogue">Book ২-এর মালির ধাপ (Door ১৫) DP শিখিয়েছিলেন — overlapping subproblems + optimal substructure। Levenshtein-এ দুটো শব্দের প্রতিটা prefix pair একটা সাবপ্রবলেম। সেই সাবপ্রবলেম-এর উত্তর আমরা table-এ রাখি — আর কখনো পুনরায় হিসাব করি না। এটাই memoization। Brute force O(3^n) থেকে DP O(n*m)-এ — কোটি গুণ দ্রুত।</div>
 
 <div class="diagram">
   <div class="diag-title">DP Table — Levenshtein 'algortim' vs 'algorithm'</div>
@@ -309,14 +309,14 @@ print(f"Did you mean: '{correction}'? (distance: {dist})")
     <text x="30" y="175" fill="#52c41a" font-size="9" font-weight="bold">🟩 = match (cost 0)</text>
     <text x="30" y="188" fill="#9a93b8" font-size="9">cell[i][j] from min(left, up, diagonal) + 1</text>
     <rect x="290" y="160" width="250" height="35" rx="6" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
-    <text x="300" y="175" fill="#a78bfa" font-size="9" font-weight="bold">O(n × m) = O(7 × 9) = 63 cells</text>
+    <text x="300" y="175" fill="#a78bfa" font-size="9" font-weight="bold">O(n * m) = O(7 * 9) = 63 cells</text>
     <text x="300" y="188" fill="#9a93b8" font-size="9">Brute force: O(3^9) = 19,683 paths</text>
   </svg>
   <div class="diag-cap">প্রতিটা cell = একটা সাবপ্রবলেম। match হলে diagonal copy, mismatch হলে ৩ neighbor-এর min+1।</div>
 </div>
 <div class="dialogue en">Book 2 gardener terraces (Door 15) taught you DP — overlapping subproblems + optimal substructure. In Levenshtein, each prefix pair of two words is a subproblem. We store the answer in a table — and never recompute. This is memoization. From brute force O(3^n) to DP O(n*m) — millions of times faster.</div>
 
-<div class="secret-box">🔤 Spell check = DP। cell[i][j] = word1[0:i] ও word2[0:j]-এর distance। ৩ neighbor থেকে min+1। O(n×m)।</div>
+<div class="secret-box">🔤 Spell check = DP। cell[i][j] = word1[0:i] ও word2[0:j]-এর distance। ৩ neighbor থেকে min+1। O(n*m)।</div>
 `,
   senior:{
     title:"প্রয়োগিক গাইড — Practical Guide",
@@ -503,11 +503,11 @@ doors.push({
   num:9, icon:"📏", color:"#f97316", name:"নকশার ছুরি",
   subtitle:"The Pattern Knife", tech:"KMP (Knuth-Morris-Pratt) — Exact Phrase Matching in Documents",
   spirit:"তাদব্বুর — deep reflection, from Quran 4:82 (reflect deeply to find patterns)",
-  secret:"Phrase match = KMP। Naive search: O(n×m) — প্রতিটা mismatch-এ শুরুতে ফিরো। KMP: O(n+m) — failure function দিয়ে জানো কতটা ফিরতে হবে। অক্ষর বাদ দিও না — শিখো কোথা থেকে শুরু করতে হবে।",
+  secret:"Phrase match = KMP। Naive search: O(n*m) — প্রতিটা mismatch-এ শুরুতে ফিরো। KMP: O(n+m) — failure function দিয়ে জানো কতটা ফিরতে হবে। অক্ষর বাদ দিও না — শিখো কোথা থেকে শুরু করতে হবে।",
   recall:{
     q:"KMP naive search থেকে কেন দ্রুত? failure function কী করে?",
     qen:"Why is KMP faster than naive search? What does the failure function do?",
-    a:"Naive: প্রতিটা mismatch-এ পুরো pattern এক ঘর সরাও, শুরু থেকে শুরু করো — O(n×m)। KMP: failure function (LPS array) বানাও যা বলে 'তুমি ইতিমধ্যে এতটা ম্যাচ করেছো, তাই এই জায়গা থেকে শুরু করো, শূন্য থেকে নয়।' কোনো অক্ষর বাদ যায় না — O(n+m)।",
+    a:"Naive: প্রতিটা mismatch-এ পুরো pattern এক ঘর সরাও, শুরু থেকে শুরু করো — O(n*m)। KMP: failure function (LPS array) বানাও যা বলে 'তুমি ইতিমধ্যে এতটা ম্যাচ করেছো, তাই এই জায়গা থেকে শুরু করো, শূন্য থেকে নয়।' কোনো অক্ষর বাদ যায় না — O(n+m)।",
     aen:"Naive: on mismatch, shift pattern by one, restart from zero — O(n*m). KMP: build a failure function (LPS array) that says 'you already matched this much, so start from here, not zero.' No character is skipped — O(n+m)."
   },
   story:`
@@ -598,13 +598,13 @@ print(f"Found at positions: {matches}")
 # Phrase: 'machine learning algorithms'
 # Found at positions: [0, 47]</div>
 
-<div class="dialogue">Book ২-এর নকল-নির্দেশকের গ্রন্থাগার (Door ১৭) KMP ও Rabin-Karp শিখিয়েছিলেন। এখন দেখলে সার্চ ইঞ্জিনে phrase match-এ কেন এটা জরুরি? ইউজার যখন quotation দেয় — "machine learning" — তখন তার মানে exact phrase। Naive search O(n×m) — ধীর। KMP: failure function দিয়ে জানো কোথায় ফিরতে হবে, শূন্যে নয়। O(n+m)।</div>
+<div class="dialogue">Book ২-এর নকল-নির্দেশকের গ্রন্থাগার (Door ১৭) KMP ও Rabin-Karp শিখিয়েছিলেন। এখন দেখলে সার্চ ইঞ্জিনে phrase match-এ কেন এটা জরুরি? ইউজার যখন quotation দেয় — "machine learning" — তখন তার মানে exact phrase। Naive search O(n*m) — ধীর। KMP: failure function দিয়ে জানো কোথায় ফিরতে হবে, শূন্যে নয়। O(n+m)।</div>
 
 <div class="diagram">
   <div class="diag-title">KMP vs Naive — Failure Function কীভাবে ফিরে না গিয়ে চালায়</div>
   <svg viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg">
     <!-- Naive search -->
-    <text x="20" y="25" fill="#ef4444" font-size="11" font-weight="bold">❌ Naive: O(n×m) — mismatch হলে শূন্যে ফেরা</text>
+    <text x="20" y="25" fill="#ef4444" font-size="11" font-weight="bold">❌ Naive: O(n*m) — mismatch হলে শূন্যে ফেরা</text>
     <rect x="20" y="35" width="520" height="24" rx="4" fill="rgba(239,68,68,0.04)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
     <text x="30" y="52" fill="#9a93b8" font-size="9" font-family="monospace">text:  a a a a a b c d e f</text>
     <rect x="20" y="63" width="520" height="20" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1"/>
@@ -626,7 +626,7 @@ print(f"Found at positions: {matches}")
     <text x="30" y="204" fill="#52c41a" font-size="9" font-family="monospace">match a,a,a → mismatch 'b'≠'a' → lps says: keep 2 matched, try from j=2</text>
     <rect x="20" y="214" width="520" height="20" rx="4" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1"/>
     <text x="30" y="228" fill="#52c41a" font-size="9" font-family="monospace">text pointer stays! pattern jumps smart — no character re-checked</text>
-    <text x="30" y="245" fill="#52c41a" font-size="9" font-weight="bold">Total: O(n+m) = O(10+4) = 14 steps — vs naive O(10×4) = 40</text>
+    <text x="30" y="245" fill="#52c41a" font-size="9" font-weight="bold">Total: O(n+m) = O(10+4) = 14 steps — vs naive O(10*4) = 40</text>
   </svg>
   <div class="diag-cap">KMP: mismatch হলে শূন্যে ফিরো না। LPS বলে কতটা match হয়েছে — সেখান থেকে শুরু করো।</div>
 </div>
@@ -638,7 +638,7 @@ print(f"Found at positions: {matches}")
     title:"প্রয়োগিক গাইড — Practical Guide",
     body:`<p><strong>KMP vs Rabin-Karp — কখন কোনটা?</strong></p>
 <div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Naive Search</div>O(n × m) — প্রতিটা mismatch-এ শূন্যে ফিরো। 'aaaaaa' টেক্সটে ভয়াবহ।</div>
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Naive Search</div>O(n * m) — প্রতিটা mismatch-এ শূন্যে ফিরো। 'aaaaaa' টেক্সটে ভয়াবহ।</div>
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ KMP</div>O(n + m) — failure function দিয়ে smart backtrack। Exact match-এর জন্য সেরা।</div>
 </div>
 <p><strong>Cross-ref:</strong> Book ৯ (Context Engineering) Door ৪-এ BM25 ranking দেখবে — phrase matching-এর পর কীভাবে phrase matches কে ranking score-এ রূপান্তর করা যায়।</p>`
@@ -797,9 +797,9 @@ for url in test_urls:
     body:`<p><strong>Bloom filter sizing (যে সূত্রগুলো মনে রাখতে হবে):</strong></p>
 <table class="kv-table">
 <tr><th>Parameter</th><th>Formula</th><th>Example (100M URLs)</th></tr>
-<tr><td class="hl">Bit array size (m)</td><td>m = -(n × ln p) / (ln 2)²</td><td>~960M bits = 120MB</td></tr>
-<tr><td class="hl">Hash functions (k)</td><td>k = (m/n) × ln 2</td><td>~7 hash functions</td></tr>
-<tr><td class="hl">False positive rate</td><td>p ≈ 0.01 (1%)</td><td>1 in 100 URLs falsely flagged</td></tr>
+<tr><td class="hl">Bit array size (m)</td><td>m = -(n * ln p) / (ln 2)²</td><td>~960M bits = 120MB</td></tr>
+<tr><td class="hl">Hash functions (k)</td><td>k = (m/n) * ln 2</td><td>~7 hash functions</td></tr>
+<tr><td class="hl">False positive rate</td><td>p ~= 0.01 (1%)</td><td>1 in 100 URLs falsely flagged</td></tr>
 </table>
 <p><strong>Cross-ref:</strong> Book ৪৬ (Cryptography) Door ২-এ hash functions দেখবে — Bloom filter-এর hash গুলো cryptographic নয়, কিন্তু একই নীতি। Book ৩৫ (Distributed Systems)-এ count-min sketch দেখবে — Bloom filter-এর ভাই, frequency counting-এর জন্য।</p>`
   }

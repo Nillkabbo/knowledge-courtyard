@@ -1,26 +1,26 @@
 // ════════════════════════════════════════
 // গভীর জ্ঞানের সভা — DOORS 5-8
-// Deep Learning: Knowledge×Action → Metacognition
+// Deep Learning: Knowledge*Action → Metacognition
 // ════════════════════════════════════════
 
-// ══ DOOR 5: KNOWLEDGE × ACTION = POWER ══
+// ══ DOOR 5: KNOWLEDGE * ACTION = POWER ══
 doors.push({
   num:5, icon:"⚡", color:"#ffc857", name:"সেতু নির্মাতার গিরিজ",
-  subtitle:"The Bridge Builder's Span", tech:"Knowledge × Action = Power",
+  subtitle:"The Bridge Builder's Span", tech:"Knowledge * Action = Power",
   spirit:"ঈমান + আমল — বিশ্বাস ও কাজ",
-  secret:"জ্ঞান শক্তি নয়। জ্ঞান × কর্ম = শক্তি। গুণফল। যেকোনোটি শূন্য হলে ফলাফল শূন্য। পড়ে শেখা দ্রুত মুছে যায়; করে শেখা স্থায়ী।",
+  secret:"জ্ঞান শক্তি নয়। জ্ঞান * কর্ম = শক্তি। গুণফল। যেকোনোটি শূন্য হলে ফলাফল শূন্য। পড়ে শেখা দ্রুত মুছে যায়; করে শেখা স্থায়ী।",
   recall:{
     q:"সেতু নির্মাতা কেন শুধু নকশা আঁকেন না, সেতু বানান?",
     qen:"Why doesn't the bridge builder just draw blueprints, but builds the bridge?",
-    a:"কারণ নকশা কাগজে থাকে, সেতু নদীতে। জ্ঞান মাথায় থাকে, কর্ম দুনিয়ায়। নকশা আঁকলে কেউ পার হতে পারে না। সেতু বানালে পার হওয়া যায়। জ্ঞান × কর্ম = শক্তি। গুণফল, যোগফল নয়।",
-    aen:"Because blueprints stay on paper, bridges span rivers. Knowledge stays in head, action lives in world. No one crosses a drawing. A bridge lets them cross. Knowledge × Action = Power. Product, not sum."
+    a:"কারণ নকশা কাগজে থাকে, সেতু নদীতে। জ্ঞান মাথায় থাকে, কর্ম দুনিয়ায়। নকশা আঁকলে কেউ পার হতে পারে না। সেতু বানালে পার হওয়া যায়। জ্ঞান * কর্ম = শক্তি। গুণফল, যোগফল নয়।",
+    aen:"Because blueprints stay on paper, bridges span rivers. Knowledge stays in head, action lives in world. No one crosses a drawing. A bridge lets them cross. Knowledge * Action = Power. Product, not sum."
   },
   story:`
 <p class="scene-setting">পঞ্চম আসন। একটা গিরিজের কিনারা। নিচে গভীর খাদ, সামনে একটা অসমাপ্ত সেতু — অর্ধেক পাকা, বাকি কাঠের। সেতু নির্মাতা নূহ উপরে দাঁড়িয়ে আছেন — বয়স্ক, হাতে হাতুড়ি, পরনে কাজের পোশাক। তাঁর পাশে একটা বই — সেতু নির্মাণের নকশায় ভরা। কিন্তু তিনি বই পড়ছেন না। তিনি সেতুতে কাজ করছেন।</p>
 <p class="scene-setting en">The fifth seat. A cliff's edge. Below: a deep gorge, ahead: an unfinished bridge — half built, rest wooden. Bridge builder Nuh stands atop — elderly, hammer in hand, work clothes on. Beside him: a book full of bridge blueprints. But he's not reading. He's working on the bridge.</p>
 
-<div class="dialogue">আয়না-কারিগর বলেছিলেন — ফিডব্যাক লুপ। কিন্তু আমি বলি — ফিডব্যাক কীসের উপর? কাজের উপর। কাজ না করলে ফিডব্যাক কীসে? ভিডিও বলেছে "জ্ঞান শক্তি।" আংশিক সত্য। জ্ঞান শক্তি নয় — জ্ঞান × কর্ম শক্তি। গুণফল। যোগফল নয়।</div>
-<div class="dialogue en">"The mirror-maker said — feedback loop. But I say — feedback on what? On action. No action = no feedback. The video said 'knowledge is power.' Partial truth. Knowledge isn't power — knowledge × action is power. Product. Not sum."</div>
+<div class="dialogue">আয়না-কারিগর বলেছিলেন — ফিডব্যাক লুপ। কিন্তু আমি বলি — ফিডব্যাক কীসের উপর? কাজের উপর। কাজ না করলে ফিডব্যাক কীসে? ভিডিও বলেছে "জ্ঞান শক্তি।" আংশিক সত্য। জ্ঞান শক্তি নয় — জ্ঞান * কর্ম শক্তি। গুণফল। যোগফল নয়।</div>
+<div class="dialogue en">"The mirror-maker said — feedback loop. But I say — feedback on what? On action. No action = no feedback. The video said 'knowledge is power.' Partial truth. Knowledge isn't power — knowledge * action is power. Product. Not sum."</div>
 
 <div class="callout info"><span class="co-icon">⚡</span><div><strong>"Knowledge is power" (Francis Bacon, 1597)</strong> — ১৭শ শতকে সত্য, তখন জ্ঞানই দুর্লভ ছিল। ২১শ শতকে অন্তত আংশিক ভুল: জ্ঞান এখন সস্তা (YouTube, Wikipedia, LLM), কিন্তু <em>execution</em> এখনো দুর্লভ — তার জন্য লাগে সাহস, অধ্যবসায়, ব্যর্থতা সহ্য।</div></div>
 <table class="kv-table"><tr><th>Knowledge</th><th>Action</th><th>Power (গুণফল)</th></tr>
@@ -30,7 +30,7 @@ doors.push({
 <div class="callout tip"><span class="co-icon">🧠</span><div><strong>প্রয়োগেই জ্ঞান গভীর হয়:</strong> Declarative memory (পড়ে শেখা) দ্রুত মুছে যায়; procedural memory (করে শেখা) স্থায়ী। পড়ো, তারপর করো — করা ছাড়া শেখা অসম্পূর্ণ।</div></div>
 
 <div class="diagram">
-  <div class="diag-title">Knowledge × Action = Power (গুণফল, যোগফল নয়)</div>
+  <div class="diag-title">Knowledge * Action = Power (গুণফল, যোগফল নয়)</div>
   <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
     <!-- two axes: knowledge (x), action (y), area = power -->
     <line class="axis" x1="60" y1="180" x2="500" y2="180"/>
@@ -43,17 +43,17 @@ doors.push({
     <text class="lbl-hot" x="250" y="76">Power = 0</text>
     <!-- Case B: medium both = decent rectangle -->
     <rect class="cell-cyan" x="60" y="110" width="190" height="70" style="opacity:.7"/>
-    <text class="lbl-sm" x="155" y="100" fill="#3dd6c4">K=50 × A=50 = 2500</text>
+    <text class="lbl-sm" x="155" y="100" fill="#3dd6c4">K=50 * A=50 = 2500</text>
     <!-- Case C: both high = big area -->
     <rect class="cell-good" x="60" y="55" width="380" height="125" style="opacity:.35"/>
-    <text class="lbl-sm" x="400" y="48" fill="#52c41a">K=100 × A=100</text>
+    <text class="lbl-sm" x="400" y="48" fill="#52c41a">K=100 * A=100</text>
     <text class="lbl-leaf" x="430" y="100">Power সর্বোচ্চ</text>
     <text class="lbl-sm" x="280" y="225" fill="#5e5c74">যেকোনোটি শূন্য হলে ফলাফল শূন্য — গুণফল, যোগফল নয়</text>
   </svg>
-  <div class="diag-cap">জ্ঞান × কর্ম = শক্তি। এটি ক্ষেত্রফল (area) — গুণফল। যেকোনো একটি শূন্য হলে পুরোটাই শূন্য। ১০০ জ্ঞান + ০ কর্ম = ০। ৫০×৫০ = ২৫০০। ১০০×১০০ = সর্বোচ্চ।</div>
+  <div class="diag-cap">জ্ঞান * কর্ম = শক্তি। এটি ক্ষেত্রফল (area) — গুণফল। যেকোনো একটি শূন্য হলে পুরোটাই শূন্য। ১০০ জ্ঞান + ০ কর্ম = ০। ৫০*৫০ = ২৫০০। ১০০*১০০ = সর্বোচ্চ।</div>
 </div>
 
-<div class="code-block">Knowledge × Action — প্রয়োগের নিয়ম:
+<div class="code-block">Knowledge * Action — প্রয়োগের নিয়ম:
 
   ২৪-ঘণ্টা নিয়ম:
     যা শিখছ, ২৪ ঘণ্টার মধ্যে প্রয়োগ না করলে
@@ -74,7 +74,7 @@ doors.push({
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ জ্ঞান সংগ্রহ</div>১০০টা টিউটোরিয়াল দেখো। ৫০টা বই পড়ো। ২০টা কোর্স করো। মনে হয় "অনেক জানি।" কিন্তু — কিছু বানাওনি। কোনো সমস্যা সমাধান করোনি। Knowledge=100, Action=0 → Power=0।</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ জ্ঞান প্রয়োগ</div>১টা টিউটোরিয়াল দেখো → সাথে সাথে প্রজেক্ট বানাও। ভুল করো → ঠিক করো → শেখো। ছোট হলেও প্রতিদিন কিছু বানাও। Knowledge × Action = Power। প্রতিটা প্রজেক্ট = procedural memory।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ জ্ঞান প্রয়োগ</div>১টা টিউটোরিয়াল দেখো → সাথে সাথে প্রজেক্ট বানাও। ভুল করো → ঠিক করো → শেখো। ছোট হলেও প্রতিদিন কিছু বানাও। Knowledge * Action = Power। প্রতিটা প্রজেক্ট = procedural memory।</div>
 </div>
 
 <div class="dialogue">ঈমান ও আমল — বিশ্বাস ও কাজ। কুরআনে বারবার এসেছে — "যারা ঈমান এনেছে এবং সৎকর্ম করেছে।" শুধু ঈমান নয়, শুধু আমল নয় — দুটোর গুণফল। ঈমান ছাড়া আমল গাছপাতা ছাড়া শেকড়। আমল ছাড়া ঈমান শেকড় ছাড়া গাছপাতা। জ্ঞানও তেমনি — কর্ম ছাড়া শুধু তথ্য, কর্মে রূপ না পেলে শক্তি নয়।</div>
@@ -101,8 +101,8 @@ doors.push({
 <p class="scene-setting">ষষ্ঠ আসন। একটা কুমারের ঘর। মাটির গন্ধ, চাকার আওয়াজ, ভেজা মাটির ঠান্ডা স্পর্শ। কুমার আদম চাকায় একটা হাঁড়ি বানাচ্ছেন — কিন্তু হঠাৎ থামলেন। হাঁড়িটা একটু বাঁকা। তিনি এটা ঠিক করার চেষ্টা করলেন না। তিনি পুরোটা চেপে গুঁড়িয়ে দিলেন মাটিতে। আবার শুরু।</p>
 <p class="scene-setting en">The sixth seat. A potter's hut. Smell of clay, hum of the wheel, cold touch of wet earth. Potter Adam shapes a pot on the wheel — but suddenly stops. The pot is slightly crooked. He doesn't try to fix it. He crushes the whole thing back to clay. Starts again.</p>
 
-<div class="dialogue">সেতু নির্মাতা বলেছিলেন — জ্ঞান × কর্ম। কিন্তু আমি বলি — কর্মের আগে আসে ভাঙা। পুরোনো ভুল ধারণা না ভাঙলে নতুন সঠিক ধারণা বসে না। হার্বার্ট গেরজয় — মনোবিজ্ঞানী। তাঁর একটি উক্তি (প্রায়শই টফলারকে ভুলভাবে আরোপিত) এই ভিডিওর সবচেয়ে গুরুত্বপূর্ণ অংশ।</div>
-<div class="dialogue en">"The bridge builder said — knowledge × action. But I say — before action comes breaking. Without breaking old wrong ideas, new correct ones don't take root. Herbert Gerjuoy — psychologist. His quote (often misattributed to Toffler) is the video's most important part."</div>
+<div class="dialogue">সেতু নির্মাতা বলেছিলেন — জ্ঞান * কর্ম। কিন্তু আমি বলি — কর্মের আগে আসে ভাঙা। পুরোনো ভুল ধারণা না ভাঙলে নতুন সঠিক ধারণা বসে না। হার্বার্ট গেরজয় — মনোবিজ্ঞানী। তাঁর একটি উক্তি (প্রায়শই টফলারকে ভুলভাবে আরোপিত) এই ভিডিওর সবচেয়ে গুরুত্বপূর্ণ অংশ।</div>
+<div class="dialogue en">"The bridge builder said — knowledge * action. But I say — before action comes breaking. Without breaking old wrong ideas, new correct ones don't take root. Herbert Gerjuoy — psychologist. His quote (often misattributed to Toffler) is the video's most important part."</div>
 
 <div class="callout info"><span class="co-icon">🔄</span><div><strong>হার্বার্ট গেরজয় (প্রায়শই টফলারকে আরোপিত):</strong> "২১শ শতকের নিরক্ষর তারা নয় যারা পড়তে-লিখতে পারে না — বরং যারা <strong>LEARN, UNLEARN, ও RELEARN</strong> করতে পারে না।" <em>(টফলার-এর "Future Shock" বইয়ে উক্তিটি উদ্ধৃত হওয়ায় প্রায়ই তাঁকে আরোপ করা হয়, কিন্তু প্রকৃত উক্তিটি গেরজয়ের — Wikipedia নিশ্চিত করেছে।)</em></div></div>
 <table class="kv-table"><tr><th>ধাপ</th><th>কী</th><th>ভিডিও?</th></tr>
@@ -263,8 +263,8 @@ doors.push({
 <div class="dialogue">জোয়ার পর্যবেক্ষক বলেছিলেন — বিরতিতে ফিরে আসো। কিন্তু আমি বলি — ফিরে আসার পরে নিজেকে জিজ্ঞেস করো — "আমি কি সত্যিই শিখেছি?" এটাই মেটাকগনিশন — সবচেয়ে গভীর স্তর। প্রহরী যে প্রহরীকে দেখে। চিন্তা সম্পর্কে চিন্তা করা।</div>
 <div class="dialogue en">"The tide watcher said — return at intervals. But I say — after returning, ask yourself — 'Have I truly learned?' This is metacognition — the deepest layer. A watchman who watches the watchman. Thinking about thinking."</div>
 
-<div class="dialogue">সাতজন প্রবীণ পেরিয়েছ। বাতিকর বলেছিলেন — মনোযোগ হলো মুদ্রা। মাইলফলক রক্ষক বলেছিলেন — তিন স্তরের যাত্রা। বরফ-ডুবুরি বলেছিলেন — বিভ্রম ভাঙো। আয়না-কারিগর বলেছিলেন — ফিডব্যাক নাও। সেতু নির্মাতা বলেছিলেন — জ্ঞান × কর্ম। কুমার বলেছিলেন — আনলেয়ার্ন, লার্ন, রিলেয়ার্ন। জোয়ার পর্যবেক্ষক বলেছিলেন — বিরতিতে ফিরে এসো, সক্রিয়ভাবে মনে করো। কিন্তু এই সবগুলোর উপরে — একটা দক্ষতা যা সবকিছু নিয়ন্ত্রণ করে — মেটাকগনিশন। নিজের চিন্তা সম্পর্কে সচেতন থাকা। "আমি কি সত্যিই শিখছি, নাকি শিখেছি বলে মনে করছি?"</div>
-<div class="dialogue en">"You've passed seven elders. The lighthouse keeper said — attention is currency. The milestone guardian said — three levels of journey. The ice diver said — break the illusion. The mirror-maker said — get feedback. The bridge builder said — knowledge × action. The potter said — unlearn, learn, relearn. The tide watcher said — return at intervals, recall actively. But above all these — one skill that controls everything — metacognition. Awareness of your own thinking. 'Am I truly learning, or just believing I am?'"</div>
+<div class="dialogue">সাতজন প্রবীণ পেরিয়েছ। বাতিকর বলেছিলেন — মনোযোগ হলো মুদ্রা। মাইলফলক রক্ষক বলেছিলেন — তিন স্তরের যাত্রা। বরফ-ডুবুরি বলেছিলেন — বিভ্রম ভাঙো। আয়না-কারিগর বলেছিলেন — ফিডব্যাক নাও। সেতু নির্মাতা বলেছিলেন — জ্ঞান * কর্ম। কুমার বলেছিলেন — আনলেয়ার্ন, লার্ন, রিলেয়ার্ন। জোয়ার পর্যবেক্ষক বলেছিলেন — বিরতিতে ফিরে এসো, সক্রিয়ভাবে মনে করো। কিন্তু এই সবগুলোর উপরে — একটা দক্ষতা যা সবকিছু নিয়ন্ত্রণ করে — মেটাকগনিশন। নিজের চিন্তা সম্পর্কে সচেতন থাকা। "আমি কি সত্যিই শিখছি, নাকি শিখেছি বলে মনে করছি?"</div>
+<div class="dialogue en">"You've passed seven elders. The lighthouse keeper said — attention is currency. The milestone guardian said — three levels of journey. The ice diver said — break the illusion. The mirror-maker said — get feedback. The bridge builder said — knowledge * action. The potter said — unlearn, learn, relearn. The tide watcher said — return at intervals, recall actively. But above all these — one skill that controls everything — metacognition. Awareness of your own thinking. 'Am I truly learning, or just believing I am?'"</div>
 
 <div class="callout info"><span class="co-icon">🧠</span><div><strong>Metacognition</strong> = "চিন্তা সম্পর্কে চিন্তা" = "নিজের জ্ঞান সম্পর্কে সচেতন থাকা" — সব দক্ষতার উপরের master skill।</div></div>
 <table class="kv-table"><tr><th>পর্যায়</th><th>প্রশ্ন</th></tr>

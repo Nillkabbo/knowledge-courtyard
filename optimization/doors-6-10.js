@@ -21,8 +21,8 @@ doors.push({
 
 <div class="callout info"><span class="co-icon">🎲</span><div><strong>SGD বনাম GD:</strong><br>
 <strong>GD (Gradient Descent):</strong> ∇f = (1/N) Σ ∇fᵢ — সব N ডেটা দিয়ে হিসাব। সঠিক কিন্তু ধীর (N = মিলিয়ন হলে অসম্ভব)।<br>
-<strong>SGD:</strong> ∇f ≈ ∇fᵢ — একটি নমুনা দিয়ে হিসাব। শব্দযুক্ত কিন্তু দ্রুত।<br>
-<strong>Mini-batch SGD:</strong> ∇f ≈ (1/B) Σ ∇fᵢ — B=৩২-২৫৬ নমুনা। ভারসাম্য — সঠিকতা ও গতির মিলন।</div></div>
+<strong>SGD:</strong> ∇f ~= ∇fᵢ — একটি নমুনা দিয়ে হিসাব। শব্দযুক্ত কিন্তু দ্রুত।<br>
+<strong>Mini-batch SGD:</strong> ∇f ~= (1/B) Σ ∇fᵢ — B=৩২-২৫৬ নমুনা। ভারসাম্য — সঠিকতা ও গতির মিলন।</div></div>
 
 <div class="code-block">— SGD বনাম GD: হিসাব খরচ —
 
@@ -30,13 +30,13 @@ doors.push({
   মডেল: ResNet-50 (n = 25,000,000 weights)
 
   GD (পুরো ডেটা):
-    প্রতি ধাপে: 1M × forward+backward = কয়েক মিনিট
-    100 epoch × 1 step = কয়েক দিন? না — অসম্ভব
+    প্রতি ধাপে: 1M * forward+backward = কয়েক মিনিট
+    100 epoch * 1 step = কয়েক দিন? না — অসম্ভব
 
   SGD (mini-batch B=256):
-    প্রতি ধাপে: 256 × forward+backward = ~50ms
-    প্রতি epoch: 1M/256 ≈ 4000 steps
-    100 epoch = 400K steps ≈ ৫ ঘণ্টা  ← বাস্তবায়নযোগ্য!
+    প্রতি ধাপে: 256 * forward+backward = ~50ms
+    প্রতি epoch: 1M/256 ~= 4000 steps
+    100 epoch = 400K steps ~= ৫ ঘণ্টা  ← বাস্তবায়নযোগ্য!
 
   — Robbins-Monro শর্ত: —
     Σ η_t = ∞     (পর্যাপ্ত মোট পদক্ষেপ)
@@ -188,7 +188,7 @@ doors.push({
   subtitle: "The Reality of Non-Convex Mountains",
   tech: "Non-Convex Optimization — saddle points (Dauphin et al. 2014), local minima myth, loss landscape geometry",
   spirit: "ইমতিহান — পরীক্ষা, একাধিক ন্যূনতম ও ভুল পথ",
-  secret: "নিউরাল নেটের loss landscape অ-উতলা — কোটি কোটি local minima। কিন্তু চমকপ্রদ সত্য: বেশিরভাগ আটকে যাওয়ার জায়গা local minima নয়, saddle points! এবং উচ্চ-মাত্রিক স্থানে local minima ≈ global minima।",
+  secret: "নিউরাল নেটের loss landscape অ-উতলা — কোটি কোটি local minima। কিন্তু চমকপ্রদ সত্য: বেশিরভাগ আটকে যাওয়ার জায়গা local minima নয়, saddle points! এবং উচ্চ-মাত্রিক স্থানে local minima ~= global minima।",
   recall: {
     q: " Saddle point কী? কেন উচ্চ-মাত্রিক স্থানে local minima বিরল?",
     qen: "What is a saddle point? Why are local minima rare in high-dimensional spaces?",
@@ -294,9 +294,9 @@ doors.push({
 
   Shortest Path:   O(E + V log V)   → সমাধানযোগ্য (Dijkstra)
   MST:             O(E log V)       → সমাধানযোগ্য (Kruskal)
-  Knapsack (0/1):  O(n × W)         → DP সমাধান
+  Knapsack (0/1):  O(n * W)         → DP সমাধান
   TSP (exact):     O(n!)            → ২০ শহরেই অসম্ভব!
-  TSP (approx):    O(n²)            → ১.৫× সেরা (Christofides)
+  TSP (approx):    O(n²)            → ১.৫* সেরা (Christofides)
   Graph Coloring:  NP-complete      → heuristic দরকার
 
 — NP-hard সমাধানের কৌশল: —
@@ -346,7 +346,7 @@ doors.push({
 <tr><td class="hl">MST</td><td>O(ElogV)</td><td>Kruskal / Prim</td></tr>
 <tr><td class="hl">Knapsack 0/1</td><td>O(nW)</td><td>Dynamic Programming</td></tr>
 <tr><td class="hl">TSP (exact)</td><td>O(n!) NP-hard</td><td>Branch & Bound</td></tr>
-<tr><td class="hl">TSP (approx)</td><td>O(n²)</td><td>Christofides ১.৫×</td></tr>
+<tr><td class="hl">TSP (approx)</td><td>O(n²)</td><td>Christofides ১.৫*</td></tr>
 <tr><td class="hl">Graph Coloring</td><td>NP-complete</td><td>Greedy heuristic</td></tr>
 <tr><td class="hl">NP-hard কৌশল</td><td>—</td><td>Approx, heuristic, SA, GA</td></tr></table>`
   }

@@ -34,18 +34,18 @@ doors.push({
 
 GPU MEMORY BUDGET (A100 80GB):
 
-  ┌──────────────────────────┬──────────┐
-  │ Component                │ Memory   │
-  ├──────────────────────────┼──────────┤
-  │ Model weights (৭B fp16)  │ ১৪ GB    │
-  │ KV cache (per request)   │ ০.৫-২ GB│
-  │ Activations              │ ২-৫ GB   │
-  │ Framework overhead       │ ২-৩ GB   │
-  │ CUDA context             │ ১ GB     │
-  ├──────────────────────────┼──────────┤
-  │ Available for batching   │ ~৫৫ GB   │
-  │ → ~২৫-১০০ concurrent reqs│          │
-  └──────────────────────────┴──────────┘
+  # ──────────────────────────# ──────────# 
+  #  Component                #  Memory   # 
+  # ──────────────────────────# ──────────# 
+  #  Model weights (৭B fp16)  #  ১৪ GB    # 
+  #  KV cache (per request)   #  ০.৫-২ GB# 
+  #  Activations              #  ২-৫ GB   # 
+  #  Framework overhead       #  ২-৩ GB   # 
+  #  CUDA context             #  ১ GB     # 
+  # ──────────────────────────# ──────────# 
+  #  Available for batching   #  ~৫৫ GB   # 
+  #  → ~২৫-১০০ concurrent reqs#           # 
+  # ──────────────────────────# ──────────# 
 
 MEMORY OPTIMIZATION TECHNIQUES:
 
@@ -77,7 +77,7 @@ MEMORY OPTIMIZATION TECHNIQUES:
 ৪. TENSOR PARALLELISM
   → model কয়েক GPU-তে ভাগ
   → each GPU handles part of weights
-  → ৭০B model: ২×A100 (৪০GB each)
+  → ৭০B model: ২*A100 (৪০GB each)
   
   vLLM: --tensor-parallel-size ২
 
@@ -108,20 +108,20 @@ PRACTICAL MEMORY FORMULA:
 
   Total VRAM needed =
     model_weights 
-    + (batch_size × kv_cache_per_request)
+    + (batch_size * kv_cache_per_request)
     + activations
     + framework_overhead
   
   Example (৭B model, fp16, ৪K context):
     ১৪ GB (weights)
-    + (৩২ × ২ GB) = ৬৪ GB (KV cache!!)
+    + (৩২ * ২ GB) = ৬৪ GB (KV cache!!)
     + ৫ GB (activations)
     + ৩ GB (framework)
     = ৮৬ GB → doesn't fit A100 ৮০GB!
   
   With int4 quantization:
     ৩.৫ GB (weights)
-    + (৩২ × ১ GB) = ৩২ GB (int8 KV)
+    + (৩২ * ১ GB) = ৩২ GB (int8 KV)
     + ৫ GB + ৩ GB
     = ৪৩.৫ GB → fits easily! ২x more batch!
 
@@ -218,7 +218,7 @@ doors.push({
 PRUNING — Remove the Unnecessary:
 
   Neural networks have redundant weights
-  → many weights ≈ ০ (near zero)
+  → many weights ~= ০ (near zero)
   → removing them barely affects output
   
   Types:
@@ -267,20 +267,20 @@ KNOWLEDGE DISTILLATION:
     → loss = KL_divergence(student, teacher)
     → student learns teacher's "soft" knowledge
   
-  ┌──────────────────────────────────────┐
-  │ Example:                             │
-  │                                      │
-  │ Teacher: GPT-৪ (১.৭T params)        │
-  │ Student: custom ৭B model             │
-  │                                      │
-  │ Training data: ১M examples           │
-  │ → each example: teacher generates    │
-  │   full probability distribution      │
-  │ → student learns to match            │
-  │                                      │
-  │ Result: ৭B student ≈ ৭০% of GPT-৪   │
-  │ quality, but ২৪০x smaller!          │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  Example:                             # 
+  #                                       # 
+  #  Teacher: GPT-৪ (১.৭T params)        # 
+  #  Student: custom ৭B model             # 
+  #                                       # 
+  #  Training data: ১M examples           # 
+  #  → each example: teacher generates    # 
+  #    full probability distribution      # 
+  #  → student learns to match            # 
+  #                                       # 
+  #  Result: ৭B student ~= ৭০% of GPT-৪   # 
+  #  quality, but ২৪০x smaller!          # 
+  # ──────────────────────────────────────# 
 
 DISTILLATION TYPES:
 
@@ -500,15 +500,15 @@ KERNEL TECHNOLOGIES:
 
 BENCHMARK (Llama ৩.১ ৮B, A100):
 
-  ┌──────────────────┬──────────────┐
-  │ Method           │ Tokens/sec   │
-  ├──────────────────┼──────────────┤
-  │ PyTorch eager    │ ~৪০          │
-  │ torch.compile    │ ~৫৫ (+৩৭%)  │
-  │ vLLM (Triton)    │ ~৮০ (+১০০%) │
-  │ TensorRT-LLM     │ ~৯৫ (+১৩৭%) │
-  │ hand-tuned CUDA  │ ~১০০ (+১৫০%)│
-  └──────────────────┴──────────────┘
+  # ──────────────────# ──────────────# 
+  #  Method           #  Tokens/sec   # 
+  # ──────────────────# ──────────────# 
+  #  PyTorch eager    #  ~৪০          # 
+  #  torch.compile    #  ~৫৫ (+৩৭%)  # 
+  #  vLLM (Triton)    #  ~৮০ (+১০০%) # 
+  #  TensorRT-LLM     #  ~৯৫ (+১৩৭%) # 
+  #  hand-tuned CUDA  #  ~১০০ (+১৫০%)# 
+  # ──────────────────# ──────────────# 
 
   → vLLM: ২x PyTorch!
   → TensorRT: ২.৪x PyTorch!
@@ -519,9 +519,9 @@ OPERATION FUSION EXAMPLE:
     → Q = Linear(x)     → kernel ১
     → K = Linear(x)     → kernel ২  
     → V = Linear(x)     → kernel ৩
-    → attn = Q×K^T      → kernel ৪
+    → attn = Q*K^T      → kernel ৪
     → softmax(attn)     → kernel ৫
-    → out = attn×V      → kernel ৬
+    → out = attn*V      → kernel ৬
     → ৬ kernel launches, ৬ memory reads/writes
   
   With fusion:
@@ -532,16 +532,16 @@ OPERATION FUSION EXAMPLE:
 
 WHAT TO USE:
 
-  ┌────────────────────┬──────────────────────┐
-  │ Your Situation     │ Best Choice           │
-  ├────────────────────┼──────────────────────┤
-  │ Quick start        │ vLLM (uses Triton)   │
-  │ Max NVIDIA speed   │ TensorRT-LLM          │
-  │ Easy optimization  │ torch.compile()       │
-  │ Consumer GPU       │ ExLlamaV2 + int4      │
-  │ Custom research    │ Triton kernels        │
-  │ Absolute max perf  │ hand-tuned CUDA       │
-  └────────────────────┴──────────────────────┘
+  # ────────────────────# ──────────────────────# 
+  #  Your Situation     #  Best Choice           # 
+  # ────────────────────# ──────────────────────# 
+  #  Quick start        #  vLLM (uses Triton)   # 
+  #  Max NVIDIA speed   #  TensorRT-LLM          # 
+  #  Easy optimization  #  torch.compile()       # 
+  #  Consumer GPU       #  ExLlamaV2 + int4      # 
+  #  Custom research    #  Triton kernels        # 
+  #  Absolute max perf  #  hand-tuned CUDA       # 
+  # ────────────────────# ──────────────────────# 
 
 GPU-SPECIFIC OPTIMIZATION:
 
@@ -654,33 +654,33 @@ doors.push({
 
 GPU COMPARISON (2024-2025):
 
-┌──────────┬────────┬────────┬──────────┬──────────────┐
-│ GPU      │ VRAM   │ TFLOPS │ $/hr     │ Best For     │
-│          │        │ (FP16) │ (cloud)  │              │
-├──────────┼────────┼────────┼──────────┼──────────────┤
-│ H100     │ ৮০ GB  │ ~৯৮৯   │ $২.৫-৪   │ Best perf,   │
-│ (SXM)    │        │        │          │ high-QPS     │
-├──────────┼────────┼────────┼──────────┼──────────────┤
-│ A100     │ ৮০ GB  │ ~৩১২   │ $১.৫-৩.৫ │ Production   │
-│          │        │        │          │ standard     │
-├──────────┼────────┼────────┼──────────┼──────────────┤
-│ A10G     │ ২৪ GB  │ ~৩৫    │ $০.৭৫-১  │ Small models │
-│          │        │        │          │ (৭B int8)   │
-├──────────┼────────┼────────┼──────────┼──────────────┤
-│ T4       │ ১৬ GB  │ ~৮.১   │ $০.৩-০.৬ │ Cheap, small │
-│          │        │        │          │ (৭B int4)   │
-├──────────┼────────┼────────┼──────────┼──────────────┤
-│ L4       │ ২৪ GB  │ ~৩০    │ $০.৫-০.৮ │ T4 successor │
-├──────────┼────────┼────────┼──────────┼──────────────┤
-│ L40S     │ ৪৮ GB  │ ~৯১    │ $১-১.৫   │ Mid-range    │
-│          │        │        │          │ production   │
-├──────────┼────────┼────────┼──────────┼──────────────┤
-│ RTX 4090 │ ২৪ GB  │ ~৩৩০   │ $০.৪*    │ Dev/prototyping│
-│ (consumer)│        │        │          │ not for prod  │
-├──────────┼────────┼────────┼──────────┼──────────────┤
-│ Mac M২/৩ │ ২৪-১২৮ │ ~১৫-৩০ │ owned    │ CPU inference │
-│ Ultra    │ GB unif│        │          │ (GGUF)        │
-└──────────┴────────┴────────┴──────────┴──────────────┘
+# ──────────# ────────# ────────# ──────────# ──────────────# 
+#  GPU      #  VRAM   #  TFLOPS #  $/hr     #  Best For     # 
+#           #         #  (FP16) #  (cloud)  #               # 
+# ──────────# ────────# ────────# ──────────# ──────────────# 
+#  H100     #  ৮০ GB  #  ~৯৮৯   #  $২.৫-৪   #  Best perf,   # 
+#  (SXM)    #         #         #           #  high-QPS     # 
+# ──────────# ────────# ────────# ──────────# ──────────────# 
+#  A100     #  ৮০ GB  #  ~৩১২   #  $১.৫-৩.৫ #  Production   # 
+#           #         #         #           #  standard     # 
+# ──────────# ────────# ────────# ──────────# ──────────────# 
+#  A10G     #  ২৪ GB  #  ~৩৫    #  $০.৭৫-১  #  Small models # 
+#           #         #         #           #  (৭B int8)   # 
+# ──────────# ────────# ────────# ──────────# ──────────────# 
+#  T4       #  ১৬ GB  #  ~৮.১   #  $০.৩-০.৬ #  Cheap, small # 
+#           #         #         #           #  (৭B int4)   # 
+# ──────────# ────────# ────────# ──────────# ──────────────# 
+#  L4       #  ২৪ GB  #  ~৩০    #  $০.৫-০.৮ #  T4 successor # 
+# ──────────# ────────# ────────# ──────────# ──────────────# 
+#  L40S     #  ৪৮ GB  #  ~৯১    #  $১-১.৫   #  Mid-range    # 
+#           #         #         #           #  production   # 
+# ──────────# ────────# ────────# ──────────# ──────────────# 
+#  RTX 4090 #  ২৪ GB  #  ~৩৩০   #  $০.৪*    #  Dev/prototyping# 
+#  (consumer)#         #         #           #  not for prod  # 
+# ──────────# ────────# ────────# ──────────# ──────────────# 
+#  Mac M২/৩ #  ২৪-১২৮ #  ~১৫-৩০ #  owned    #  CPU inference # 
+#  Ultra    #  GB unif#         #           #  (GGUF)        # 
+# ──────────# ────────# ────────# ──────────# ──────────────# 
 
 * consumer GPU = buy, not rent. ~$১৬০০ purchase.
 
@@ -697,12 +697,12 @@ GPU SELECTION BY MODEL SIZE:
     → best: L4 ($০.৭/hr) বা A10G ($১/hr)
   
   ৭০B model:
-    fp16: ১৪০ GB → ২×A100 80GB (tensor parallel)
+    fp16: ১৪০ GB → ২*A100 80GB (tensor parallel)
     int4: ৩৫ GB → A100 ৪০GB (barely) বা ৮০GB
-    → best: A100 ৮০GB ($৩/hr) × ১-২ GPUs
+    → best: A100 ৮০GB ($৩/hr) * ১-২ GPUs
   
   ৪০৫B model (Llama ৩.১):
-    int4: ~২০০ GB → ৪×A100 80GB বা ২×H100
+    int4: ~২০০ GB → ৪*A100 80GB বা ২*H100
     → only enterprise!
 
 CLOUD vs ON-PREMISES:
@@ -711,7 +711,7 @@ CLOUD vs ON-PREMISES:
     ✅ no upfront cost
     ✅ scale up/down
     ✅ managed options
-    ❌ expensive long-term ($৩/hr × ২৪×৩০ = $২১৬০/mo)
+    ❌ expensive long-term ($৩/hr * ২৪*৩০ = $২১৬০/mo)
   
   On-premises (buy GPU):
     → A100 ৮০GB: ~$১৫,০০০ purchase
@@ -836,7 +836,7 @@ MEMORY BANDWIDTH (often matters more than TFLOPS):
 <div class="dialogue en">"Ala — tools, equipment, instruments. Allah says — 'We gave man all tools.' (90:8-10). Right tool for each task. GPU too — right GPU per task. Without the right hardware, software optimization is meaningless. Ala — selecting the right equipment."</div>`,
   senior:{
     title:"GPU Selection — Quick Guide",
-    body:`<p><strong>৭B model (most common):</strong> T4 (int4) বা L4 (int8) — $০.৫-০.৮/hr।</p><p><strong>১৩B model:</strong> L4 বা A10G (int4) — $০.৭-১/hr।</p><p><strong>৭০B model:</strong> A100 ৮০GB (int4) — $৩/hr × ১ GPU।</p><p><strong>Low traffic (<১K req/day):</strong> Managed (Together AI / Modal / Replicate) — pay per use, no GPU management।</p><p><strong>High traffic:</strong> Self-host on A100/H100 — cheaper per token at scale।</p><p><strong>Dev/prototyping:</strong> Consumer RTX 4090 ($১৬০০) বা Mac M3 (GGUF) বা Colab Pro ($১০/mo)।</p><p><strong>Spot instances:</strong> ৬০-৭০% cheaper for batch/eval/non-critical।</p>`
+    body:`<p><strong>৭B model (most common):</strong> T4 (int4) বা L4 (int8) — $০.৫-০.৮/hr।</p><p><strong>১৩B model:</strong> L4 বা A10G (int4) — $০.৭-১/hr।</p><p><strong>৭০B model:</strong> A100 ৮০GB (int4) — $৩/hr * ১ GPU।</p><p><strong>Low traffic (<১K req/day):</strong> Managed (Together AI / Modal / Replicate) — pay per use, no GPU management।</p><p><strong>High traffic:</strong> Self-host on A100/H100 — cheaper per token at scale।</p><p><strong>Dev/prototyping:</strong> Consumer RTX 4090 ($১৬০০) বা Mac M3 (GGUF) বা Colab Pro ($১০/mo)।</p><p><strong>Spot instances:</strong> ৬০-৭০% cheaper for batch/eval/non-critical।</p>`
   }
 });
 
@@ -864,72 +864,72 @@ doors.push({
 
 <div class="code-block">Complete Inference Optimization Stack:
 
-┌──────────────────────────────────────────────────┐
-│ COMPLETE OPTIMIZATION STACK (bottom → top)        │
-├──────────────────────────────────────────────────┤
-│                                                   │
-│  LAYER ১: HARDWARE (Door ৯)                     │
-│  ├── GPU: A100 ৮০GB for production               │
-│  ├── Memory bandwidth: ২ TB/s                    │
-│  └── Tensor cores for fast matmul                 │
-│                                                   │
-│  LAYER ২: KERNEL (Door ৮)                        │
-│  ├── vLLM Triton kernels (fused operations)      │
-│  ├── FlashAttention-২/৩                          │
-│  └── Optimized matmul, RMSNorm, SiLU             │
-│                                                   │
-│  LAYER ৩: MODEL OPTIMIZATION (Doors ৭,২)       │
-│  ├── AWQ int4 quantization (৪x smaller)          │
-│  ├── GQA architecture (৪x less KV)               │
-│  └── Pruning/distillation (if custom model)      │
-│                                                   │
-│  LAYER ৪: MEMORY (Door ৬)                        │
-│  ├── PagedAttention (zero fragmentation)          │
-│  ├── Prefix caching (shared system prompt)        │
-│  ├── KV cache quantization (int8)                │
-│  └── Multi-LoRA serving                          │
-│                                                   │
-│  LAYER ৫: ATTENTION (Door ৪)                    │
-│  ├── FlashAttention-৩ (H100) / FA-২ (A100)      │
-│  ├── Sliding window (long context)               │
-│  └── GQA (reduced KV computation)                │
-│                                                   │
-│  LAYER ৬: BATCHING (Door ৩)                     │
-│  ├── Continuous batching (vLLM default)          │
-│  ├── Dynamic batch sizing                         │
-│  └── Chunked prefill (mixed workloads)           │
-│                                                   │
-│  LAYER ৭: SPECULATIVE DECODING (Door ৫)         │
-│  ├── Draft model (Llama ১B for ৮B)              │
-│  ├── ৫ speculative tokens                         │
-│  └── ~২x speedup, zero quality loss              │
-│                                                   │
-│  LAYER ৮: NETWORK & API                          │
-│  ├── OpenAI-compatible REST API                   │
-│  ├── SSE streaming                                │
-│  └── Load balancer (multiple GPU nodes)          │
-│                                                   │
-│  LAYER ৯: MONITORING                             │
-│  ├── GPU utilization (target > ৮০%)             │
-│  ├── Tokens/sec throughput                        │
-│  ├── Latency p50/p95/p99                         │
-│  └── Cost per token                               │
-│                                                   │
-└──────────────────────────────────────────────────┘
+# ──────────────────────────────────────────────────# 
+#  COMPLETE OPTIMIZATION STACK (bottom → top)        # 
+# ──────────────────────────────────────────────────# 
+#                                                    # 
+#   LAYER ১: HARDWARE (Door ৯)                     # 
+#   # ── GPU: A100 ৮০GB for production               # 
+#   # ── Memory bandwidth: ২ TB/s                    # 
+#   # ── Tensor cores for fast matmul                 # 
+#                                                    # 
+#   LAYER ২: KERNEL (Door ৮)                        # 
+#   # ── vLLM Triton kernels (fused operations)      # 
+#   # ── FlashAttention-২/৩                          # 
+#   # ── Optimized matmul, RMSNorm, SiLU             # 
+#                                                    # 
+#   LAYER ৩: MODEL OPTIMIZATION (Doors ৭,২)       # 
+#   # ── AWQ int4 quantization (৪x smaller)          # 
+#   # ── GQA architecture (৪x less KV)               # 
+#   # ── Pruning/distillation (if custom model)      # 
+#                                                    # 
+#   LAYER ৪: MEMORY (Door ৬)                        # 
+#   # ── PagedAttention (zero fragmentation)          # 
+#   # ── Prefix caching (shared system prompt)        # 
+#   # ── KV cache quantization (int8)                # 
+#   # ── Multi-LoRA serving                          # 
+#                                                    # 
+#   LAYER ৫: ATTENTION (Door ৪)                    # 
+#   # ── FlashAttention-৩ (H100) / FA-২ (A100)      # 
+#   # ── Sliding window (long context)               # 
+#   # ── GQA (reduced KV computation)                # 
+#                                                    # 
+#   LAYER ৬: BATCHING (Door ৩)                     # 
+#   # ── Continuous batching (vLLM default)          # 
+#   # ── Dynamic batch sizing                         # 
+#   # ── Chunked prefill (mixed workloads)           # 
+#                                                    # 
+#   LAYER ৭: SPECULATIVE DECODING (Door ৫)         # 
+#   # ── Draft model (Llama ১B for ৮B)              # 
+#   # ── ৫ speculative tokens                         # 
+#   # ── ~২x speedup, zero quality loss              # 
+#                                                    # 
+#   LAYER ৮: NETWORK & API                          # 
+#   # ── OpenAI-compatible REST API                   # 
+#   # ── SSE streaming                                # 
+#   # ── Load balancer (multiple GPU nodes)          # 
+#                                                    # 
+#   LAYER ৯: MONITORING                             # 
+#   # ── GPU utilization (target > ৮০%)             # 
+#   # ── Tokens/sec throughput                        # 
+#   # ── Latency p50/p95/p99                         # 
+#   # ── Cost per token                               # 
+#                                                    # 
+# ──────────────────────────────────────────────────# 
 
 EXPECTED PERFORMANCE (Llama ৩.১ ৮B):
 
-  ┌──────────────────────┬──────────┬──────────┐
-  │ Configuration        │ tok/sec  │ Cost/M   │
-  ├──────────────────────┼──────────┼──────────┤
-  │ PyTorch eager fp16   │ ~৪০      │ $$$      │
-  │ + vLLM (batching)    │ ~৮০      │ $$       │
-  │ + int4 AWQ           │ ~১২০     │ $        │
-  │ + FlashAttention     │ ~১৪০     │ $        │
-  │ + prefix caching     │ ~১৬০     │ $        │
-  │ + speculative decode │ ~২৫০     │ $        │
-  │ + H100 (vs A100)     │ ~৪০০     │ $        │
-  └──────────────────────┴──────────┴──────────┘
+  # ──────────────────────# ──────────# ──────────# 
+  #  Configuration        #  tok/sec  #  Cost/M   # 
+  # ──────────────────────# ──────────# ──────────# 
+  #  PyTorch eager fp16   #  ~৪০      #  $$$      # 
+  #  + vLLM (batching)    #  ~৮০      #  $$       # 
+  #  + int4 AWQ           #  ~১২০     #  $        # 
+  #  + FlashAttention     #  ~১৪০     #  $        # 
+  #  + prefix caching     #  ~১৬০     #  $        # 
+  #  + speculative decode #  ~২৫০     #  $        # 
+  #  + H100 (vs A100)     #  ~৪০০     #  $        # 
+  # ──────────────────────# ──────────# ──────────# 
   
   → ১০x faster than naive PyTorch!
   → at same or lower cost!

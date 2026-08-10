@@ -506,7 +506,7 @@ doors.push({
 <div class="callout info"><span class="co-icon">①</span><div><strong>কী ভালোবাসো? (Interest)</strong> — কোন বিষয় পড়লে উত্তেজনা হয়? কোন পেপার পড়ে বুক ধুকধুক করে? ৫-৭ বছর ধৈর্য ধরে কাজ করতে হবে — ভালোবাসা ছাড়া সম্ভব নয়।</div></div>
 <div class="code-block">Selection Framework — চার প্রশ্ন এক সাথে:
 
-  INTEREST  ×  STRENGTH  ×  MARKET  ×  PURPOSE  =  তোমার ডোমেইন
+  INTEREST  *  STRENGTH  *  MARKET  *  PURPOSE  =  তোমার ডোমেইন
 
   ❌ যেটা ভালোবাসো কিন্তু দুর্বল → burnout, ৫ বছরে হাল ছাড়বে
   ❌ যেটা পারো কিন্তু ঘেন্না → প্রতিদিন যন্ত্রণা, ভালো কাজ হবে না
@@ -533,7 +533,7 @@ doors.push({
 <tr><td class="hl">🌿 Wildcard</td><td>AI Security (Door 9) বা HCI (Door 12)</td><td>AI sec = সবচেয়ে বর্ধনশীল, API দিয়ে entry; HCI = সবচেয়ে কম ভিড়, Ipractus UI সোনা</td></tr>
 <tr><td class="hl">❌ সতর্কতা</td><td>Theory, Quantum (Door 16/17)</td><td>গণিত/পদার্থবিজ্ঞান শক্তিশালী না হলে এড়াও — তোমার developer পটভূমির সরাসরি প্রয়োগ নয়</td></tr></table>
 
-<div class="callout tip"><span class="co-icon">🧭</span><div>এই সুপারিশ একটা starting point মাত্র — কম্পাস দিক দেখায়, হাঁটতে হবে তোমাকে। <strong>interest × strength × market × purpose</strong> মিলিয়ে নিজের সিদ্ধান্ত নাও। তবে সবচেয়ে গুরুত্বপূর্ণ — purpose। কার কষ্ট কমবে? সেটা ছাড়া বাকি তিনটি অর্থহীন।</div></div>
+<div class="callout tip"><span class="co-icon">🧭</span><div>এই সুপারিশ একটা starting point মাত্র — কম্পাস দিক দেখায়, হাঁটতে হবে তোমাকে। <strong>interest * strength * market * purpose</strong> মিলিয়ে নিজের সিদ্ধান্ত নাও। তবে সবচেয়ে গুরুত্বপূর্ণ — purpose। কার কষ্ট কমবে? সেটা ছাড়া বাকি তিনটি অর্থহীন।</div></div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ডোমেইন বাছাইয়ে সাধারণ ভুল</div>"সবাই AI করছে, আমিও AI করব।" বা "Quantum হট, সেটাই করব।" — অন্যের সিদ্ধান্ত, অনুভূতি, hype-তে বেছে নেওয়া। ৫-৭ বছর পর হয়তো দেখবে — ভালোবাসো না, পারো না, বা purpose নেই। তখন ফেরা কঠিন। PhD সিদ্ধান্ত জীবনের সবচেয়ে গুরুত্বপূর্ণ — এটা hype বা অন্যের পথে নয়, নিজের প্রশ্নের উত্তরে হওয়া উচিত।</div>

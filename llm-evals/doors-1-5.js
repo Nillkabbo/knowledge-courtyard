@@ -97,18 +97,18 @@ THE EVALUATION MINDSET:
 
 EVAL TYPES OVERVIEW:
 
-  ┌─────────────────┬──────────────────────────┐
-  │ Type            │ What It Measures          │
-  ├─────────────────┼──────────────────────────┤
-  │ Accuracy        │ Is the answer correct?    │
-  │ Faithfulness    │ Is it grounded in facts?  │
-  │ Relevance       │ Does it address question? │
-  │ Coherence       │ Is it well-written?       │
-  │ Fluency         │ Is it natural language?   │
-  │ Safety          │ Is it harmful?            │
-  │ Latency         │ How fast?                 │
-  │ Cost            │ How expensive?            │
-  └─────────────────┴──────────────────────────┘
+  # ─────────────────# ──────────────────────────# 
+  #  Type            #  What It Measures          # 
+  # ─────────────────# ──────────────────────────# 
+  #  Accuracy        #  Is the answer correct?    # 
+  #  Faithfulness    #  Is it grounded in facts?  # 
+  #  Relevance       #  Does it address question? # 
+  #  Coherence       #  Is it well-written?       # 
+  #  Fluency         #  Is it natural language?   # 
+  #  Safety          #  Is it harmful?            # 
+  #  Latency         #  How fast?                 # 
+  #  Cost            #  How expensive?            # 
+  # ─────────────────# ──────────────────────────# 
 
 THE GOLDEN RULE:
   If you can't measure it, you can't improve it.
@@ -154,74 +154,74 @@ doors.push({
 
 CORE METRICS (প্রতিটা আলাদা):
 
-┌──────────────────────────────────────────────┐
-│ ১. ACCURACY / CORRECTNESS                    │
-│ "উত্তর কি সঠিক?"                             │
-│                                              │
-│ Use when: factual QA, math, coding           │
-│ Measure: exact match, F1, pass@k             │
-│                                              │
-│ QA: ground truth = "Paris"                   │
-│   model = "Paris" → correct (১০০%)           │
-│   model = "London" → wrong (০%)             │
-│   model = "Paris, France" → partial          │
-├──────────────────────────────────────────────┤
-│ ২. FAITHFULNESS                              │
-│ "উত্তর কি source থেকে এসেছে?"                 │
-│                                              │
-│ Use when: RAG, summarization, grounded QA    │
-│ Measure: claim-level check against source    │
-│                                              │
-│ Source: "Revenue was $৫M in Q৩"              │
-│ Model: "Revenue was $৫M in Q৩" → faithful   │
-│ Model: "Revenue was $৭M in Q৩" → unfaithful│
-│ (RAGAS faithfulness metric)                  │
-├──────────────────────────────────────────────┤
-│ ৩. RELEVANCE                                 │
-│ "উত্তর কি প্রশ্নের উত্তর?"                     │
-│                                              │
-│ Use when: open-ended QA, chat                │
-│ Measure: LLM-judge or embedding similarity   │
-│                                              │
-│ Q: "How to train a model?"                   │
-│ A: "First, prepare data..." → relevant       │
-│ A: "The weather is nice" → irrelevant        │
-├──────────────────────────────────────────────┤
-│ ৪. COHERENCE                                 │
-│ "উত্তর কি যুক্তিযুক্ত ও সুসংগত?"               │
-│                                              │
-│ Use when: long-form generation, stories      │
-│ Measure: rubric scoring, LLM-judge           │
-│                                              │
-│ "A → B → C → D" → coherent                  │
-│ "A → Z → B → Q" → incoherent                │
-├──────────────────────────────────────────────┤
-│ ৫. FLUENCY                                   │
-│ "উত্তর কি প্রাঞ্জল, স্বাভাবিক?"                │
-│                                              │
-│ Use when: any text generation                │
-│ Measure: perplexity, human rating            │
-│                                              │
-│ "The cat sat on the mat" → fluent            │
-│ "Cat mat on sat the" → not fluent           │
-├──────────────────────────────────────────────┤
-│ ৬. SAFETY / TOXICITY                         │
-│ "উত্তর কি নিরাপদ?"                            │
-│                                              │
-│ Use when: user-facing systems                │
-│ Measure: classifier (Perspective API),       │
-│   red team ASR                              │
-├──────────────────────────────────────────────┤
-│ ৭. INSTRUCTION FOLLOWING                     │
-│ "নির্দেশ কি অনুসরণ হয়েছে?"                    │
-│                                              │
-│ Use when: structured output, format reqs     │
-│ Measure: format compliance rate              │
-│                                              │
-│ Instruction: "output JSON only"              │
-│ Model: {"key": "value"} → ✓                  │
-│ Model: "Here is the JSON: {...}" → ✗         │
-└──────────────────────────────────────────────┘
+# ──────────────────────────────────────────────# 
+#  ১. ACCURACY / CORRECTNESS                    # 
+#  "উত্তর কি সঠিক?"                             # 
+#                                               # 
+#  Use when: factual QA, math, coding           # 
+#  Measure: exact match, F1, pass@k             # 
+#                                               # 
+#  QA: ground truth = "Paris"                   # 
+#    model = "Paris" → correct (১০০%)           # 
+#    model = "London" → wrong (০%)             # 
+#    model = "Paris, France" → partial          # 
+# ──────────────────────────────────────────────# 
+#  ২. FAITHFULNESS                              # 
+#  "উত্তর কি source থেকে এসেছে?"                 # 
+#                                               # 
+#  Use when: RAG, summarization, grounded QA    # 
+#  Measure: claim-level check against source    # 
+#                                               # 
+#  Source: "Revenue was $৫M in Q৩"              # 
+#  Model: "Revenue was $৫M in Q৩" → faithful   # 
+#  Model: "Revenue was $৭M in Q৩" → unfaithful# 
+#  (RAGAS faithfulness metric)                  # 
+# ──────────────────────────────────────────────# 
+#  ৩. RELEVANCE                                 # 
+#  "উত্তর কি প্রশ্নের উত্তর?"                     # 
+#                                               # 
+#  Use when: open-ended QA, chat                # 
+#  Measure: LLM-judge or embedding similarity   # 
+#                                               # 
+#  Q: "How to train a model?"                   # 
+#  A: "First, prepare data..." → relevant       # 
+#  A: "The weather is nice" → irrelevant        # 
+# ──────────────────────────────────────────────# 
+#  ৪. COHERENCE                                 # 
+#  "উত্তর কি যুক্তিযুক্ত ও সুসংগত?"               # 
+#                                               # 
+#  Use when: long-form generation, stories      # 
+#  Measure: rubric scoring, LLM-judge           # 
+#                                               # 
+#  "A → B → C → D" → coherent                  # 
+#  "A → Z → B → Q" → incoherent                # 
+# ──────────────────────────────────────────────# 
+#  ৫. FLUENCY                                   # 
+#  "উত্তর কি প্রাঞ্জল, স্বাভাবিক?"                # 
+#                                               # 
+#  Use when: any text generation                # 
+#  Measure: perplexity, human rating            # 
+#                                               # 
+#  "The cat sat on the mat" → fluent            # 
+#  "Cat mat on sat the" → not fluent           # 
+# ──────────────────────────────────────────────# 
+#  ৬. SAFETY / TOXICITY                         # 
+#  "উত্তর কি নিরাপদ?"                            # 
+#                                               # 
+#  Use when: user-facing systems                # 
+#  Measure: classifier (Perspective API),       # 
+#    red team ASR                              # 
+# ──────────────────────────────────────────────# 
+#  ৭. INSTRUCTION FOLLOWING                     # 
+#  "নির্দেশ কি অনুসরণ হয়েছে?"                    # 
+#                                               # 
+#  Use when: structured output, format reqs     # 
+#  Measure: format compliance rate              # 
+#                                               # 
+#  Instruction: "output JSON only"              # 
+#  Model: {"key": "value"} → ✓                  # 
+#  Model: "Here is the JSON: {...}" → ✗         # 
+# ──────────────────────────────────────────────# 
 
 TRADITIONAL NLP METRICS:
 
@@ -232,7 +232,7 @@ TRADITIONAL NLP METRICS:
   F1 Score:
     token overlap between answer & ground truth
     → partial credit
-    → precision × recall harmonic mean
+    → precision * recall harmonic mean
   
   BLEU (1-4):
     n-gram overlap, translation quality
@@ -267,18 +267,18 @@ MODERN LLM METRICS:
 
 METRIC SELECTION BY TASK:
 
-  ┌──────────────────┬───────────────────────┐
-  │ Task             │ Best Metrics           │
-  ├──────────────────┼───────────────────────┤
-  │ Factual QA       │ EM, F1                 │
-  │ RAG QA           │ Faithfulness, Relevance│
-  │ Summarization    │ ROUGE, Faithfulness    │
-  │ Translation      │ BLEU, COMET            │
-  │ Code             │ pass@k, human eval     │
-  │ Open chat        │ Relevance, Coherence   │
-  │ Classification   │ F1, Precision, Recall  │
-  │ Creative writing │ Human eval, Coherence  │
-  └──────────────────┴───────────────────────┘
+  # ──────────────────# ───────────────────────# 
+  #  Task             #  Best Metrics           # 
+  # ──────────────────# ───────────────────────# 
+  #  Factual QA       #  EM, F1                 # 
+  #  RAG QA           #  Faithfulness, Relevance# 
+  #  Summarization    #  ROUGE, Faithfulness    # 
+  #  Translation      #  BLEU, COMET            # 
+  #  Code             #  pass@k, human eval     # 
+  #  Open chat        #  Relevance, Coherence   # 
+  #  Classification   #  F1, Precision, Recall  # 
+  #  Creative writing #  Human eval, Coherence  # 
+  # ──────────────────# ───────────────────────# 
 
 COMMON MISTAKES:
   ❌ Using BLEU for chat quality
@@ -412,31 +412,31 @@ KNOWN BIASES (সচেতন থাকো!):
 
 MITIGATION STRATEGIES:
 
-  ┌──────────────────────────────────────┐
-  │ ১. RANDOMIZE POSITION                │
-  │ → swap A/B order randomly            │
-  │ → average results                    │
-  ├──────────────────────────────────────┤
-  │ ২. MULTIPLE JUDGES                   │
-  │ → GPT-4 + Claude + Gemini            │
-  │ → ensemble: average scores           │
-  │ → reduces single-model bias          │
-  ├──────────────────────────────────────┤
-  │ ৩. DETAILED RUBRIC                   │
-  │ → specific criteria, not "rate this" │
-  │ → "score ০-২ for factual accuracy"   │
-  │ → "score ০-২ for completeness"       │
-  ├──────────────────────────────────────┤
-  │ ৪. CHAIN-OF-THOUGHT JUDGE            │
-  │ → "think step by step before rating" │
-  │ → judge explains reasoning           │
-  │ → more reliable scores               │
-  ├──────────────────────────────────────┤
-  │ ৫. CALIBRATE WITH HUMAN              │
-  │ → run ৫০ examples: human + LLM judge │
-  │ → measure agreement (Cohen's κ)      │
-  │ → κ > ০.৭ = good agreement           │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  ১. RANDOMIZE POSITION                # 
+  #  → swap A/B order randomly            # 
+  #  → average results                    # 
+  # ──────────────────────────────────────# 
+  #  ২. MULTIPLE JUDGES                   # 
+  #  → GPT-4 + Claude + Gemini            # 
+  #  → ensemble: average scores           # 
+  #  → reduces single-model bias          # 
+  # ──────────────────────────────────────# 
+  #  ৩. DETAILED RUBRIC                   # 
+  #  → specific criteria, not "rate this" # 
+  #  → "score ০-২ for factual accuracy"   # 
+  #  → "score ০-২ for completeness"       # 
+  # ──────────────────────────────────────# 
+  #  ৪. CHAIN-OF-THOUGHT JUDGE            # 
+  #  → "think step by step before rating" # 
+  #  → judge explains reasoning           # 
+  #  → more reliable scores               # 
+  # ──────────────────────────────────────# 
+  #  ৫. CALIBRATE WITH HUMAN              # 
+  #  → run ৫০ examples: human + LLM judge # 
+  #  → measure agreement (Cohen's κ)      # 
+  #  → κ > ০.৭ = good agreement           # 
+  # ──────────────────────────────────────# 
 
 TOOLS:
   LangSmith → built-in LLM-as-judge
@@ -624,16 +624,16 @@ INTER-EVALUATOR AGREEMENT:
 
 SCALE CONSIDERATIONS:
 
-  ┌──────────────────┬──────────────────────┐
-  │ Scale            │ Approach              │
-  ├──────────────────┼──────────────────────┤
-  │ ৫০ examples      │ ২-৩ experts           │
-  │ ৫০০ examples     │ MTurk + expert spot   │
-  │ ৫০০০+            │ LLM-judge + sample    │
-  │                  │ human validation      │
-  │ Production       │ User feedback loop    │
-  │                  │ + automated metrics   │
-  └──────────────────┴──────────────────────┘
+  # ──────────────────# ──────────────────────# 
+  #  Scale            #  Approach              # 
+  # ──────────────────# ──────────────────────# 
+  #  ৫০ examples      #  ২-৩ experts           # 
+  #  ৫০০ examples     #  MTurk + expert spot   # 
+  #  ৫০০০+            #  LLM-judge + sample    # 
+  #                   #  human validation      # 
+  #  Production       #  User feedback loop    # 
+  #                   #  + automated metrics   # 
+  # ──────────────────# ──────────────────────# 
 
 COST COMPARISON:
   Human expert: $২০-৫০ per evaluation
@@ -795,16 +795,16 @@ doors.push({
 
 EVAL SET CONSTRUCTION:
 
-  ┌──────────────────────────────────────┐
-  │ Steps:                               │
-  │ ১. Define task scope                 │
-  │ ২. Collect diverse examples          │
-  │ ৩. Create ground truth               │
-  │ ৪. Include edge cases                │
-  │ ৫. Add difficulty levels             │
-  │ ৬. Holdout from training             │
-  │ ৭. Review for quality                │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  Steps:                               # 
+  #  ১. Define task scope                 # 
+  #  ২. Collect diverse examples          # 
+  #  ৩. Create ground truth               # 
+  #  ৪. Include edge cases                # 
+  #  ৫. Add difficulty levels             # 
+  #  ৬. Holdout from training             # 
+  #  ৭. Review for quality                # 
+  # ──────────────────────────────────────# 
   
   Size guidelines:
     Quick prototype: ৫০ examples

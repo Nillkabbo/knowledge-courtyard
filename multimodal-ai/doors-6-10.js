@@ -34,7 +34,7 @@ THE PROBLEM:
   → "cat" text embedding ≠ cat image embedding
   
   Need: align the spaces
-  → "a cat" text ≈ cat image (close in shared space)
+  → "a cat" text ~= cat image (close in shared space)
 
 ALIGNMENT METHODS:
 
@@ -43,8 +43,8 @@ ALIGNMENT METHODS:
   → non-matching pairs → push apart
   
   একই vector space-এ:
-    "a dog playing" ≈ [dog image]
-    "a cat sleeping" ≈ [cat image]
+    "a dog playing" ~= [dog image]
+    "a cat sleeping" ~= [cat image]
     "a dog" vs [cat image] → far apart
 
 ২. GENERATIVE ALIGNMENT (BLIP, Flamingo)
@@ -61,19 +61,19 @@ ALIGNMENT METHODS:
 SHARED EMBEDDING SPACE:
   After alignment:
   
-  ┌──────────────────────────────────┐
-  │ Shared Vector Space (৭৬৮ dim)    │
-  │                                  │
-  │  🐕 ← "a dog" (text)            │
-  │  🐱 ← "a cat" (text)            │
-  │  🖼️ ← [dog image]               │
-  │  🖼️ ← [cat image]               │
-  │                                  │
-  │  dog text ↔ dog image: close     │
-  │  cat text ↔ cat image: close     │
-  │  dog ↔ cat: far                  │
-  │  dog ↔ car: very far             │
-  └──────────────────────────────────┘
+  # ──────────────────────────────────# 
+  #  Shared Vector Space (৭৬৮ dim)    # 
+  #                                   # 
+  #   🐕 ← "a dog" (text)            # 
+  #   🐱 ← "a cat" (text)            # 
+  #   🖼️ ← [dog image]               # 
+  #   🖼️ ← [cat image]               # 
+  #                                   # 
+  #   dog text ↔ dog image: close     # 
+  #   cat text ↔ cat image: close     # 
+  #   dog ↔ cat: far                  # 
+  #   dog ↔ car: very far             # 
+  # ──────────────────────────────────# 
   
   → cosine similarity = semantic match
   → "find images like this text" = vector search
@@ -172,18 +172,18 @@ doors.push({
 
 MULTIMODAL VECTOR DB:
 
-  ┌──────────────────────────────────────┐
-  │ One Vector DB — Many Modalities      │
-  │                                      │
-  │  [text embedding] ← CLIP text enc   │
-  │  [image embedding] ← CLIP image enc │
-  │  [audio embedding] ← CLAP audio enc │
-  │                                      │
-  │  All in SAME space!                  │
-  │  → "a dog" finds dog images         │
-  │  → dog image finds "a dog" text     │
-  │  → dog bark finds dog content       │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  One Vector DB — Many Modalities      # 
+  #                                       # 
+  #   [text embedding] ← CLIP text enc   # 
+  #   [image embedding] ← CLIP image enc # 
+  #   [audio embedding] ← CLAP audio enc # 
+  #                                       # 
+  #   All in SAME space!                  # 
+  #   → "a dog" finds dog images         # 
+  #   → dog image finds "a dog" text     # 
+  #   → dog bark finds dog content       # 
+  # ──────────────────────────────────────# 
 
 MULTIMODAL EMBEDDING MODELS:
 
@@ -207,29 +207,29 @@ MULTIMODAL EMBEDDING MODELS:
 
 MULTIMODAL RAG PIPELINE:
 
-  ┌────────────────────────────────────┐
-  │ INGEST                             │
-  │ Documents → text chunks → embed   │
-  │ Images → embed (CLIP)             │
-  │ Audio → transcribe (Whisper) +    │
-  │   embed audio (CLAP)              │
-  │ Video → keyframes + audio + text  │
-  │ All embeddings → one vector DB    │
-  ├────────────────────────────────────┤
-  │ QUERY (any modality)              │
-  │ "find slides about transformer"   │
-  │ → text query → text embed         │
-  │ → search all (text + image +      │
-  │   audio embeddings)              │
-  │ → retrieve matching content       │
-  │   from any modality              │
-  ├────────────────────────────────────┤
-  │ GENERATE                          │
-  │ retrieved text + images + audio   │
-  │ descriptions → VLM → answer      │
-  │ → "Based on slide ৩ and the       │
-  │   lecture audio..."               │
-  └────────────────────────────────────┘
+  # ────────────────────────────────────# 
+  #  INGEST                             # 
+  #  Documents → text chunks → embed   # 
+  #  Images → embed (CLIP)             # 
+  #  Audio → transcribe (Whisper) +    # 
+  #    embed audio (CLAP)              # 
+  #  Video → keyframes + audio + text  # 
+  #  All embeddings → one vector DB    # 
+  # ────────────────────────────────────# 
+  #  QUERY (any modality)              # 
+  #  "find slides about transformer"   # 
+  #  → text query → text embed         # 
+  #  → search all (text + image +      # 
+  #    audio embeddings)              # 
+  #  → retrieve matching content       # 
+  #    from any modality              # 
+  # ────────────────────────────────────# 
+  #  GENERATE                          # 
+  #  retrieved text + images + audio   # 
+  #  descriptions → VLM → answer      # 
+  #  → "Based on slide ৩ and the       # 
+  #    lecture audio..."               # 
+  # ────────────────────────────────────# 
 
 USE CASES:
 
@@ -358,47 +358,47 @@ doors.push({
 
 APPLICATION CATEGORIES:
 
-┌──────────────────────────────────────────────┐
-│ ১. VISUAL UNDERSTANDING                      │
-│ → Medical imaging: X-ray/MRI analysis        │
-│ → Document AI: scanned PDFs, receipts        │
-│ → Quality control: defect detection          │
-│ → Autonomous driving: scene understanding    │
-│ → Security: facial recognition (ethical!)    │
-├──────────────────────────────────────────────┤
-│ ২. CREATIVE GENERATION                       │
-│ → Design: text to logo/poster/UI             │
-│ → Art: text to painting/illustration         │
-│ → Video: text to video (Sora/Runway)         │
-│ → Music: text to song (Suno)                 │
-│ → Voice: text to speech (TTS)                │
-├──────────────────────────────────────────────┤
-│ ৩. CODE & DEVELOPMENT                        │
-│ → Screenshot to code: UI → HTML/CSS          │
-│ → Whiteboard to code: sketch → Python        │
-│ → Design to code: Figma → React              │
-│ → Debug from screenshot: error → fix         │
-├──────────────────────────────────────────────┤
-│ ৪. EDUCATION & ACCESSIBILITY                 │
-│ → Visual tutoring: "explain this diagram"    │
-│ → Photo math: snap equation → solve          │
-│ → Audio descriptions for blind users         │
-│ → Real-time sign language translation        │
-│ → Language learning: pronunciation feedback  │
-├──────────────────────────────────────────────┤
-│ ৫. CONTENT & MEDIA                           │
-│ → Video summarization: ১hr → ৫min            │
-│ → Auto-captioning: Whisper + video           │
-│ → Content moderation: image/video safety     │
-│ → Multimodal search: "find this scene"       │
-│ → Creative writing with image prompts        │
-├──────────────────────────────────────────────┤
-│ ৬. ROBOTICS & EMBODIED AI                    │
-│ → Robot vision: navigate + manipulate        │
-│ → Voice + vision assistant                   │
-│ → AR/VR: real-time scene understanding       │
-│ → IoT: sensor fusion (vision + audio)        │
-└──────────────────────────────────────────────┘
+# ──────────────────────────────────────────────# 
+#  ১. VISUAL UNDERSTANDING                      # 
+#  → Medical imaging: X-ray/MRI analysis        # 
+#  → Document AI: scanned PDFs, receipts        # 
+#  → Quality control: defect detection          # 
+#  → Autonomous driving: scene understanding    # 
+#  → Security: facial recognition (ethical!)    # 
+# ──────────────────────────────────────────────# 
+#  ২. CREATIVE GENERATION                       # 
+#  → Design: text to logo/poster/UI             # 
+#  → Art: text to painting/illustration         # 
+#  → Video: text to video (Sora/Runway)         # 
+#  → Music: text to song (Suno)                 # 
+#  → Voice: text to speech (TTS)                # 
+# ──────────────────────────────────────────────# 
+#  ৩. CODE & DEVELOPMENT                        # 
+#  → Screenshot to code: UI → HTML/CSS          # 
+#  → Whiteboard to code: sketch → Python        # 
+#  → Design to code: Figma → React              # 
+#  → Debug from screenshot: error → fix         # 
+# ──────────────────────────────────────────────# 
+#  ৪. EDUCATION & ACCESSIBILITY                 # 
+#  → Visual tutoring: "explain this diagram"    # 
+#  → Photo math: snap equation → solve          # 
+#  → Audio descriptions for blind users         # 
+#  → Real-time sign language translation        # 
+#  → Language learning: pronunciation feedback  # 
+# ──────────────────────────────────────────────# 
+#  ৫. CONTENT & MEDIA                           # 
+#  → Video summarization: ১hr → ৫min            # 
+#  → Auto-captioning: Whisper + video           # 
+#  → Content moderation: image/video safety     # 
+#  → Multimodal search: "find this scene"       # 
+#  → Creative writing with image prompts        # 
+# ──────────────────────────────────────────────# 
+#  ৬. ROBOTICS & EMBODIED AI                    # 
+#  → Robot vision: navigate + manipulate        # 
+#  → Voice + vision assistant                   # 
+#  → AR/VR: real-time scene understanding       # 
+#  → IoT: sensor fusion (vision + audio)        # 
+# ──────────────────────────────────────────────# 
 
 KILLER APPS (2024-2025):
 
@@ -713,53 +713,53 @@ doors.push({
 
 <div class="code-block">Complete Multimodal AI Architecture:
 
-┌──────────────────────────────────────────────────┐
-│ COMPLETE MULTIMODAL STACK                         │
-├──────────────────────────────────────────────────┤
-│                                                   │
-│  PERCEPTION (input understanding)                │
-│  ├── Vision: ViT/DINOv2 → image embeddings       │
-│  ├── Audio: Whisper → text transcription         │
-│  ├── Video: frame sampling / Gemini native       │
-│  └── Text: tokenizer → text embeddings           │
-│                                                   │
-│  ALIGNMENT (cross-modal)                         │
-│  ├── CLIP/SigLIP: text + image shared space      │
-│  ├── CLAP: text + audio shared space             │
-│  ├── ImageBind: ৬ modalities aligned             │
-│  └── Projection: image emb → LLM space           │
-│                                                   │
-│  REASONING (multimodal brain)                    │
-│  ├── GPT-5: native multimodal LLM               │
-│  ├── Claude Sonnet 4: vision + text                   │
-│  ├── Gemini 2.5: text+image+audio+video          │
-│  └── LLaVA: open-source VLM                      │
-│                                                   │
-│  GENERATION (output creation)                    │
-│  ├── Text: LLM (any model)                       │
-│  ├── Image: DALL-E 3 / Stable Diffusion          │
-│  ├── Audio: OpenAI TTS / ElevenLabs              │
-│  └── Video: Sora / Runway Gen-৩                  │
-│                                                   │
-│  STORAGE (multimodal memory)                     │
-│  ├── Vector DB: Qdrant (text+image+audio)        │
-│  ├── Object storage: S3 (media files)            │
-│  └── Metadata: source, modality, timestamp       │
-│                                                   │
-│  SAFETY                                           │
-│  ├── Content filter (NSFW, violence)             │
-│  ├── Hallucination check                         │
-│  ├── Bias testing                                 │
-│  ├── Deepfake detection                           │
-│  └── Watermarking (generated content)            │
-│                                                   │
-│  EVALUATION                                       │
-│  ├── MMMU, MMBench (VLM benchmarks)              │
-│  ├── CLIPScore (image-text alignment)            │
-│  ├── FID (image quality)                          │
-│  └── Human eval (ultimate ground truth)          │
-│                                                   │
-└──────────────────────────────────────────────────┘
+# ──────────────────────────────────────────────────# 
+#  COMPLETE MULTIMODAL STACK                         # 
+# ──────────────────────────────────────────────────# 
+#                                                    # 
+#   PERCEPTION (input understanding)                # 
+#   # ── Vision: ViT/DINOv2 → image embeddings       # 
+#   # ── Audio: Whisper → text transcription         # 
+#   # ── Video: frame sampling / Gemini native       # 
+#   # ── Text: tokenizer → text embeddings           # 
+#                                                    # 
+#   ALIGNMENT (cross-modal)                         # 
+#   # ── CLIP/SigLIP: text + image shared space      # 
+#   # ── CLAP: text + audio shared space             # 
+#   # ── ImageBind: ৬ modalities aligned             # 
+#   # ── Projection: image emb → LLM space           # 
+#                                                    # 
+#   REASONING (multimodal brain)                    # 
+#   # ── GPT-5: native multimodal LLM               # 
+#   # ── Claude Sonnet 4: vision + text                   # 
+#   # ── Gemini 2.5: text+image+audio+video          # 
+#   # ── LLaVA: open-source VLM                      # 
+#                                                    # 
+#   GENERATION (output creation)                    # 
+#   # ── Text: LLM (any model)                       # 
+#   # ── Image: DALL-E 3 / Stable Diffusion          # 
+#   # ── Audio: OpenAI TTS / ElevenLabs              # 
+#   # ── Video: Sora / Runway Gen-৩                  # 
+#                                                    # 
+#   STORAGE (multimodal memory)                     # 
+#   # ── Vector DB: Qdrant (text+image+audio)        # 
+#   # ── Object storage: S3 (media files)            # 
+#   # ── Metadata: source, modality, timestamp       # 
+#                                                    # 
+#   SAFETY                                           # 
+#   # ── Content filter (NSFW, violence)             # 
+#   # ── Hallucination check                         # 
+#   # ── Bias testing                                 # 
+#   # ── Deepfake detection                           # 
+#   # ── Watermarking (generated content)            # 
+#                                                    # 
+#   EVALUATION                                       # 
+#   # ── MMMU, MMBench (VLM benchmarks)              # 
+#   # ── CLIPScore (image-text alignment)            # 
+#   # ── FID (image quality)                          # 
+#   # ── Human eval (ultimate ground truth)          # 
+#                                                    # 
+# ──────────────────────────────────────────────────# 
 
 MULTIMODAL MATURITY MODEL:
 
@@ -786,18 +786,18 @@ MULTIMODAL MATURITY MODEL:
 
 TECH STACK RECOMMENDATION:
 
-  ┌─────────────┬──────────────────────────────┐
-  │ Component   │ Tool                         │
-  ├─────────────┼──────────────────────────────┤
-  │ VLM         │ GPT-5 / Claude Sonnet 4          │
-  │ STT         │ Whisper large-v৩             │
-  │ TTS         │ OpenAI TTS / ElevenLabs      │
-  │ Image Gen   │ DALL-E 3 / Stable Diffusion  │
-  │ Video       │ Gemini 2.5 Pro (understand)  │
-  │ Embeddings  │ CLIP + CLAP                  │
-  │ Vector DB   │ Qdrant (multimodal)          │
-  │ Framework   │ LlamaIndex multimodal        │
-  └─────────────┴──────────────────────────────┘
+  # ─────────────# ──────────────────────────────# 
+  #  Component   #  Tool                         # 
+  # ─────────────# ──────────────────────────────# 
+  #  VLM         #  GPT-5 / Claude Sonnet 4          # 
+  #  STT         #  Whisper large-v৩             # 
+  #  TTS         #  OpenAI TTS / ElevenLabs      # 
+  #  Image Gen   #  DALL-E 3 / Stable Diffusion  # 
+  #  Video       #  Gemini 2.5 Pro (understand)  # 
+  #  Embeddings  #  CLIP + CLAP                  # 
+  #  Vector DB   #  Qdrant (multimodal)          # 
+  #  Framework   #  LlamaIndex multimodal        # 
+  # ─────────────# ──────────────────────────────# 
 
 THE FUTURE OF MULTIMODAL AI:
 

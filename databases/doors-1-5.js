@@ -86,7 +86,7 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Relational model — users ও orders টেবিল PK/FK দিয়ে যুক্ত।</div>
 
-<div class="code-block">— SQL: CREATE + INSERT + SELECT —
+<div class="code-block"># — SQL: CREATE + INSERT + SELECT —
 
   -- Table তৈরি:
   CREATE TABLE users (
@@ -209,7 +209,7 @@ SELECT name FROM users WHERE id IN (SELECT user_id FROM orders WHERE total > ১
 </div>
 <div class="svg-caption">চিত্র: SQL JOIN দুই টেবিলকে যুক্ত করে, GROUP BY সারাংশ তৈরি করে।</div>
 
-<div class="code-block">— SQL: SELECT + JOIN + GROUP BY —
+<div class="code-block"># — SQL: SELECT + JOIN + GROUP BY —
 
   -- টেবিল যোগ + গোষ্ঠীভুক্ত সারাংশ
   SELECT u.dept,
@@ -340,7 +340,7 @@ EXPLAIN SELECT * FROM users WHERE email = 'test@example.com'<br>
 </div>
 <div class="svg-caption">চিত্র: B-tree ব্যাল্যান্সড কাঠামো — O(log n)-এ অনুসন্ধান। Hash সরাসরি মিল।</div>
 
-<div class="code-block">— SQL: CREATE INDEX + EXPLAIN ANALYZE —
+<div class="code-block"># — SQL: CREATE INDEX + EXPLAIN ANALYZE —
 
   -- B-tree index (ডিফল্ট)
   CREATE INDEX idx_user_email ON users(email);
@@ -463,7 +463,7 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Transaction BEGIN থেকে COMMIT/ROLLBACK — MVCC ও WAL দ্বারা নিরাপত্তা।</div>
 
-<div class="code-block">— SQL + Python: ACID Transaction —
+<div class="code-block"># — SQL + Python: ACID Transaction —
 
   -- PostgreSQL: দুই ধাপের স্থানান্তর
   BEGIN;
@@ -591,7 +591,7 @@ enrollments (student_id, course_id) — junction table<br>
 </div>
 <div class="svg-caption">চিত্র: অসংগঠিত ডেটা থেকে ৩টি স্বাভাবিক টেবিলে রূপান্তর — redundancy দূর।</div>
 
-<div class="code-block">— SQL: Normalization ধাপে ধাপে —
+<div class="code-block"># — SQL: Normalization ধাপে ধাপে —
 
   -- ❌ অস্বাভাবিক (0NF): এক কলামে একাধিক মান
   CREATE TABLE bad_orders (

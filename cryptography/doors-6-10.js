@@ -102,7 +102,7 @@ doors.push({
 <div class="dialogue"><strong>টোকেন-কারিগর রুকাইয়া:</strong> JWT তিনটি অংশে বিভক্ত — header.payload.signature। প্রতিটি base64-এ encoded। শুধু signature গোপন — HMAC বা RSA দিয়ে। কেউ payload বদলালে signature মেলে না। কিন্তু বিপদ: কেউ alg=none দিলে? বা HS256 এর জায়গায় RS256 দিলে? Algorithm confusion attack! সমাধান: সর্বদা algorithm সার্ভারে নির্দিষ্ট করো।</div>
 <div class="dialogue en"><strong>Token Artisan Rukayya:</strong> JWT has three parts — header.payload.signature. Each base64 encoded. Only signature is secret — HMAC or RSA. If someone changes payload, signature won't match. But danger: alg=none? Or HS256 instead of RS256? Algorithm confusion attack! Solution: always specify algorithm server-side.</div>
 
-<div class="code-block">— JWT বাস্তবে দেখো —
+<div class="code-block"># — JWT বাস্তবে দেখো —
 
   # JWT একটি দীর্ঘ স্ট্রিং:
   eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYWxpIn0.abc123...

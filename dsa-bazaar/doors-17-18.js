@@ -20,7 +20,7 @@ doors.push({
 <p class="scene-setting">সপ্তদশ দোকান। নকল-নির্দেশকের গ্রন্থাগার। হাতে লেখা পুরনো পাণ্ডুলিপি, কালির সুবাস, পাতার খসখস। শায়খ তাহির দাঁড়িয়ে আছেন — সামনে হাজার পাতার কুরআনের অনুলিপি। তাঁর কাজ একটা — প্রতিটা শব্দ কোন পাতায় কোথায় আছে, তার একটা সূচি (concordance) বানানো। "একটা শব্দ খুঁজছি," তিনি বলেন, "অথচ হাজার পাতা। অক্ষরে অক্ষরে খুঁজলে আজীবন লাগবে। বুদ্ধি লাগে — প্যাটার্ন খোঁজার বুদ্ধি।"</p>
 <p class="scene-setting en">The seventeenth shop. The Concord Maker's library. Handwritten old manuscripts, scent of ink, rustle of pages. Shaykh Tahir stands — before him, copies of the Quran across thousands of pages. His task — to build a concordance of where each word appears. 'I seek one word,' he says, 'yet there are thousands of pages. Letter by letter would take a lifetime. Wit is needed — the wit of pattern-finding.'"</p>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> তাহির প্রথমে naive search দিয়ে ১ লাখ অক্ষরের টেক্সটে প্যাটার্ন খুঁজতেন। প্রতিটা mismatch-এ শূন্য থেকে শুরু। O(n×m)। ১ লাখ × ১০০ = ১ কোটি তুলনা। ১২ সেকেন্ড। তারপর KMP — failure function দিয়ে smart backtrack। O(n+m) = ১ লাখ + ১০০। ০.০১ সেকেন্ড। ১,২০০ গুণ দ্রুত।</div></div></p>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> তাহির প্রথমে naive search দিয়ে ১ লাখ অক্ষরের টেক্সটে প্যাটার্ন খুঁজতেন। প্রতিটা mismatch-এ শূন্য থেকে শুরু। O(n*m)। ১ লাখ * ১০০ = ১ কোটি তুলনা। ১২ সেকেন্ড। তারপর KMP — failure function দিয়ে smart backtrack। O(n+m) = ১ লাখ + ১০০। ০.০১ সেকেন্ড। ১,২০০ গুণ দ্রুত।</div></div></p>
 
 <div class="dialogue">অলিগলির পথিক শিখিয়েছিলেন — পছন্দ করো, এগোও, মৃত প্রান্তে ফিরো। কিন্তু আমি বলি — স্ট্রিং-এ মিল না হলে ফিরে আসতে হয়, কিন্তু কোথায় ফিরবে? শুরুতে নয় — যতটা দরকার, ততটাই। সেই 'কোথায় ফিরবে' আগেই জানলে কাজ অর্ধেক।</div>
 <div class="dialogue en">"The alley explorer taught — choose, advance, retreat at dead ends. But I say — on a string mismatch you must retreat, but to where? Not to the start — only as far as needed. Knowing 'where to retreat' in advance halves the work."</div>
@@ -227,7 +227,7 @@ doors.push({
   OR   |    যেকোনো ১ হলে ১       flags সেট
   XOR  ^    ভিন্ন হলে ১          toggle, swap, dedup
   NOT  ~    উল্টাও                 বিপরীত
-  <<   n    বামে সরাও (×2ⁿ)       দ্রুত গুণ
+  <<   n    বামে সরাও (*2ⁿ)       দ্রুত গুণ
   >>   n    ডানে সরাও (÷2ⁿ)       দ্রুত ভাগ
 
 PYTHON — শক্তিশালী বিট টুল:
@@ -333,7 +333,7 @@ print(f"Python এর নিজস্ব: {(13).bit_count()}")    # Python 3.10+
 
 # ৫. বাম shift = দ্রুত গুণ
 print(f"\\n1 << 4 = {1 << 4}   (= 2^4)")
-print(f"5 << 3 = {5 << 3}    (= 5 × 8)")
+print(f"5 << 3 = {5 << 3}    (= 5 * 8)")
 
 # BONUS: একটা সাধারণ Bloom filter
 class SimpleBloom:

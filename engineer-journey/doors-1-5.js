@@ -151,11 +151,11 @@ doors.push({
 বড়: "ই-কমার্স বানাও"
         ↓
 প্রথম ভাঙা:
-  ├── Auth (লগইন/রেজিস্টার)
-  ├── Product Catalog (প্রোডাক্ট দেখানো)
-  ├── Cart (কেনা)
-  ├── Payment (টেকা দেওয়া)
-  └── Order Management (অর্ডার ট্র্যাক)
+  # ── Auth (লগইন/রেজিস্টার)
+  # ── Product Catalog (প্রোডাক্ট দেখানো)
+  # ── Cart (কেনা)
+  # ── Payment (টেকা দেওয়া)
+  # ── Order Management (অর্ডার ট্র্যাক)
         ↓
 প্রতিটা আবার ভাঙা:
   Auth → register, login, logout, 

@@ -494,7 +494,7 @@ urgent_titles = sorted(
     <text x="100" y="38" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">map(f, list)</text>
     <text x="100" y="55" text-anchor="middle" fill="#9a93b8" font-size="10">প্রতিটা element-এ f</text>
     <text x="100" y="75" text-anchor="middle" fill="#52c41a" font-size="8" font-family="monospace">[1, 2, 3]</text>
-    <text x="100" y="87" text-anchor="middle" fill="#9a93b8" font-size="10">↓ ×2</text>
+    <text x="100" y="87" text-anchor="middle" fill="#9a93b8" font-size="10">↓ *2</text>
     <text x="100" y="100" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">[2, 4, 6]</text>
     <!-- filter -->
     <rect x="200" y="20" width="160" height="85" rx="8" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1.5"/>

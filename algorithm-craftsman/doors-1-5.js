@@ -252,8 +252,8 @@ doors.push({
   recall:{
     q:"অ্যারেতে কেন O(1) access কিন্তু O(n) insertion?",
     qen:"Why O(1) access but O(n) insertion in an array?",
-    a:"অ্যারে = ধারাবাহিক মেমোরি। index জানলে সরাসরি যাও (address + index × size)। কিন্তু মাঝে ঢুকাতে হলে পরের সব এলিমেন্ট এক ঘর ডানে সরাতে হয় — O(n)। তাই append সস্তা, insert দামি।",
-    aen:"Array = contiguous memory. Known index = direct jump (address + index × size). But inserting in the middle requires shifting all later elements right — O(n). Append is cheap, insert is expensive."
+    a:"অ্যারে = ধারাবাহিক মেমোরি। index জানলে সরাসরি যাও (address + index * size)। কিন্তু মাঝে ঢুকাতে হলে পরের সব এলিমেন্ট এক ঘর ডানে সরাতে হয় — O(n)। তাই append সস্তা, insert দামি।",
+    aen:"Array = contiguous memory. Known index = direct jump (address + index * size). But inserting in the middle requires shifting all later elements right — O(n). Append is cheap, insert is expensive."
   },
   story:`
 <p class="scene-setting">তৃতীয় দিন। গ্রন্থাগারিক ফাতেমা কারখানায় এসে হাজির। তার সাথে একটা বইয়ের তাক — পাঁচটা তাক, প্রতিটায় ২০টা বই। প্রতিটা বই একটা ওয়েব পেজ। তার হাতে একটা খাতা — প্রতিটা বইয়ের নাম্বার লেখা। বই নাম্বার ৩? সে তাকিয়ে এক নিয়ে পেয়ে গেলো। বই নাম্বার ৪৭? তাক ধরে গুনে গুনে বের করতে হলো। তার চোখে ধৈর্য — কিন্তু চশমার পাশ দিয়ে একটা চিন্তার রেখা।</p>
@@ -346,7 +346,7 @@ print(f"Doc 2: {corpus.get_document(2)['title']}")  # O(1) access!
     <text x="55" y="228" fill="#ef4444" font-size="10" font-weight="bold">⚠️ Middle Insert = O(n)</text>
     <text x="55" y="242" fill="#9a93b8" font-size="9">মাঝে ঢুকালে পরের সব element ডানে সরাতে হয় — append-only হও</text>
   </svg>
-  <div class="diag-cap">Array: index জানলে সরাসরি মেমোরি address (base + id × size)। O(1) read, O(1) append, O(n) insert।</div>
+  <div class="diag-cap">Array: index জানলে সরাসরি মেমোরি address (base + id * size)। O(1) read, O(1) append, O(n) insert।</div>
 </div>
 <div class="dialogue en">Book 2 tile maker (Door 3) taught you arrays — contiguous space, O(1) access. Now you see why search engines need arrays? Each doc gets an ID — direct access by ID. But never insert in the middle — always at the end. This is an append-only corpus.</div>
 
@@ -507,21 +507,21 @@ doors.push({
   num:5, icon:"🔀", color:"#fb923c", name:"দুই আঙুলের চাল",
   subtitle:"Two Fingers Walk", tech:"Two Pointers — Posting List Intersection for AND Queries",
   spirit:"ইজতিমা — gathering together, from Quran 62:9 (gather for remembrance)",
-  secret:"AND query = posting list intersection। দুটো sorted list, দুটো pointer, একসাথে হাঁটো। match → save, advance both। no match → advance smaller। O(n+m) — nested loop O(n×m) নয়।",
+  secret:"AND query = posting list intersection। দুটো sorted list, দুটো pointer, একসাথে হাঁটো। match → save, advance both। no match → advance smaller। O(n+m) — nested loop O(n*m) নয়।",
   recall:{
     q:"AND query-তে কেন two pointer, nested loop কেন নয়?",
     qen:"Why two pointers for AND query, not nested loop?",
-    a:"Posting lists sorted। দুটো pointer একসাথে হাঁটে — ছোটটা এগিয়ে যায়। match পেলে save। O(n+m) — কারণ প্রতিটা element সর্বোচ্চ একবার visit হয়। Nested loop হলে O(n×m) — প্রতিটা এলিমেন্ট বারবার চেক হয়।",
+    a:"Posting lists sorted। দুটো pointer একসাথে হাঁটে — ছোটটা এগিয়ে যায়। match পেলে save। O(n+m) — কারণ প্রতিটা element সর্বোচ্চ একবার visit হয়। Nested loop হলে O(n*m) — প্রতিটা এলিমেন্ট বারবার চেক হয়।",
     aen:"Posting lists are sorted. Two pointers walk together — the smaller advances. On match, save. O(n+m) — each element visited at most once. Nested loop would be O(n*m) — every element checked repeatedly."
   },
   story:`
 <p class="scene-setting">পঞ্চম দিন। ক্যালিগ্রাফার জয়নুল এসে হাজির। তার হাতে দুটো কাগজের স্ক্রল — একটায় লেখা algorithm শব্দের posting list, অন্যটায় python শব্দের। প্রতিটা স্ক্রলে doc ID গুলো সাজানো — ছোট থেকে বড়। তিনি বাঁ হাতের একটা আঙুল একটা স্ক্রলে রাখলেন, ডান হাতের একটা আঙুল অন্যটায়। ইউজার লিখেছে algorithm python — দুটো শব্দ। AND query। মানে যে যে ডকুমেন্টে দুটো শব্দই আছে, সেগুলো দেখাও।</p>
 <p class="scene-setting en">Day five. Calligrapher Zainul arrives. In his hands: two paper scrolls — one lists the posting list for algorithm, the other for python. Each scroll has doc IDs sorted smallest to largest. He places one finger on each scroll. The user typed algorithm python — two words. AND query. Show documents that contain BOTH words.</p>
 
-<div class="dialogue">ভুল উপায়, জয়নুল বললেন, একটা স্ক্রল ধরে। প্রতিটা doc-এর জন্য অন্য স্ক্রলে খুঁজো — nested loop। কাজ করবে, কিন্তু O(n×m)। ১০,০০০ × ১০,০০০ = ১০ কোটি তুলনা। তিনি মাথা নাড়লেন। আমার উপায়: দুটো আঙুল। বাঁ আঙুল algorithm লিস্টে, ডান আঙুল python লিস্টে। দুটোই sorted। একসাথে হাঁটো।</div>
+<div class="dialogue">ভুল উপায়, জয়নুল বললেন, একটা স্ক্রল ধরে। প্রতিটা doc-এর জন্য অন্য স্ক্রলে খুঁজো — nested loop। কাজ করবে, কিন্তু O(n*m)। ১০,০০০ * ১০,০০০ = ১০ কোটি তুলনা। তিনি মাথা নাড়লেন। আমার উপায়: দুটো আঙুল। বাঁ আঙুল algorithm লিস্টে, ডান আঙুল python লিস্টে। দুটোই sorted। একসাথে হাঁটো।</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> জয়নুল প্রথমে nested loop দিয়ে AND query বানিয়েছিলেন। ১০,০০০ docs × ১০,০০০ docs = ১০ কোটি তুলনা। প্রতিটা সার্চে ৪৫ সেকেন্ড। ইউজার ২০০ms পরে চলে যায়। তারপর তিনি বুঝলেন — দুটো list-ই sorted। দুটো pointer একসাথে হাঁটালে O(n+m) হয়। ১০,০০০ + ১০,০০০ = ২০,০০০ তুলনা। ৫,০০০ গুণ দ্রুত।</div></div>
-<div class="dialogue en">Wrong way, Zainul said, holding one scroll. For each doc, search the other scroll — nested loop. Works, but O(n*m). 10,000 × 10,000 = 100 million comparisons. He shook his head. My way: two fingers. Left on algorithm list, right on python list. Both sorted. Walk together.</div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> জয়নুল প্রথমে nested loop দিয়ে AND query বানিয়েছিলেন। ১০,০০০ docs * ১০,০০০ docs = ১০ কোটি তুলনা। প্রতিটা সার্চে ৪৫ সেকেন্ড। ইউজার ২০০ms পরে চলে যায়। তারপর তিনি বুঝলেন — দুটো list-ই sorted। দুটো pointer একসাথে হাঁটালে O(n+m) হয়। ১০,০০০ + ১০,০০০ = ২০,০০০ তুলনা। ৫,০০০ গুণ দ্রুত।</div></div>
+<div class="dialogue en">Wrong way, Zainul said, holding one scroll. For each doc, search the other scroll — nested loop. Works, but O(n*m). 10,000 * 10,000 = 100 million comparisons. He shook his head. My way: two fingers. Left on algorithm list, right on python list. Both sorted. Walk together.</div>
 
 <div class="code-block"># query_and.py — Day 5: Two-Pointer AND Query Intersection
 # User searches "algorithm python" -&gt; find docs containing BOTH terms.
@@ -618,9 +618,9 @@ print(f"algorithm AND python -&gt; docs: {results}")
     <rect x="30" y="210" width="500" height="55" rx="8" fill="rgba(82,196,26,0.06)" stroke="rgba(82,196,26,0.2)" stroke-width="1"/>
     <text x="45" y="230" fill="#52c41a" font-size="10" font-weight="bold">Result: [0, 2, 5]</text>
     <text x="45" y="247" fill="#9a93b8" font-size="8">Step1: 0==0 ✓ → Step2: 1&lt;2 i++ → Step3: 2==2 ✓</text>
-    <text x="45" y="259" fill="#9a93b8" font-size="8">O(n+m) = 10 steps — vs O(n×m) = 25 steps</text>
+    <text x="45" y="259" fill="#9a93b8" font-size="8">O(n+m) = 10 steps — vs O(n*m) = 25 steps</text>
   </svg>
-  <div class="diag-cap">দুটো pointer একসাথে হাঁটে — ছোটটা এগোয়, match হলে save। O(n+m) — nested loop O(n×m) নয়।</div>
+  <div class="diag-cap">দুটো pointer একসাথে হাঁটে — ছোটটা এগোয়, match হলে save। O(n+m) — nested loop O(n*m) নয়।</div>
 </div>
 <div class="dialogue en">Book 2 calligrapher ruler (Door 13) taught you two pointers. Now you see why this saves lives in a search engine? AND query is the most common search — users type two words. Each AND query runs in O(n+m) — not nested loops.</div>
 
@@ -630,9 +630,9 @@ print(f"algorithm AND python -&gt; docs: {results}")
     title:"প্রয়োগিক গাইড — Practical Guide",
     body:`<p><strong>AND query-র তিন ধরন:</strong></p>
 <div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Nested Loop</div>O(n × m) — প্রতিটা a-এর জন্য পুরো b scan। ১০কে × ১০কে = ১০ কোটি।</div>
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Nested Loop</div>O(n * m) — প্রতিটা a-এর জন্য পুরো b scan। ১০কে * ১০কে = ১০ কোটি।</div>
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ Two Pointers</div>O(n + m) — sorted lists, দুটো pointer একসাথে হাঁটে। ১০কে + ১০কে = ২০ হাজার।</div>
 </div>
-<p><strong>Cross-ref:</strong> Book ৩৩ (Critical Thinking) Door ৬-এ Fermi estimation দেখবে — কেন O(n+m) vs O(n×m) পার্থক্য বাস্তবে গুরুত্বপূর্ণ তা অনুমান করতে।</p>`
+<p><strong>Cross-ref:</strong> Book ৩৩ (Critical Thinking) Door ৬-এ Fermi estimation দেখবে — কেন O(n+m) vs O(n*m) পার্থক্য বাস্তবে গুরুত্বপূর্ণ তা অনুমান করতে।</p>`
   }
 });

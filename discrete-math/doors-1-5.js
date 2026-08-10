@@ -88,7 +88,7 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: De Morgan's Law — truth table প্রমাণ করে ¬(P∧Q) ≡ ¬P∨¬Q। Django QuerySet-এ তুমি অজান্তেই এটা ব্যবহার করছ।</div>
 
-<div class="code-block">— Python: De Morgan-এর নিয়ম যাচাই —
+<div class="code-block"># — Python: De Morgan-এর নিয়ম যাচাই —
 
   P, Q = True, False
   left  = not (P and Q)      # ¬(P ∧ Q)
@@ -159,7 +159,7 @@ doors.push({
 <strong>ধাপ ২ — Inductive Step:</strong> ধরো P(k) সত্য (inductive hypothesis)। এ থেকে প্রমাণ করো P(k+১) সত্য।<br>
 <strong>সিদ্ধান্ত:</strong> ∴ সকল n-এর জন্য P(n) সত্য।</div></div>
 
-<div class="code-block">— Python: ইনডাকশন যাচাই —
+<div class="code-block"># — Python: ইনডাকশন যাচাই —
   # সূত্র: Σi = n(n+1)/2
   # ব্রুট ফোর্স vs সূত্র:
   for n in range(1, 20):
@@ -263,7 +263,7 @@ doors.push({
 <div class="dialogue"><strong>প্রমাণ-কারিগর জাইদ:</strong> ইউসুফ (Door ২) তোমাকে ইনডাকশন দিয়েছেন — ধাপে ধাপে। কিন্তু কিছু সত্য ধাপে প্রমাণ করা যায় না। সেগুলোকে উল্টে ধরতে হয়। √২ অমূলদ — এটা সরাসরি বলা কঠিন। কিন্তু ধরে নাও মূলদ। তাহলে p/q = √২, যেখানে p ও q সহমৌলিক। উভয়কে ২ দিয়ে ভাগ যায় না। কিন্তু গাণিতিকভাবে — উভয়কে ২ দিয়ে ভাগ যায়! অন্তর্বিরোধ। সহমৌলিক কিন্তু ভাগ যায়? অসম্ভব! তাই √২ মূলদ হতে পারে না।</div>
 <div class="dialogue en"><strong>Proof Artisan Zaid:</strong> Yusuf (Door 2) gave you induction — step by step. But some truths cannot be proven stepwise. They must be flipped. √2 irrational — hard to say directly. But assume rational: p/q, coprime. Then p²=2q² — p even, q even. Coprime but both even? Impossible! ∴ √2 cannot be rational.</div>
 
-<div class="code-block">— Python: √২ অমূলদ প্রমাণ যাচাই —
+<div class="code-block"># — Python: √২ অমূলদ প্রমাণ যাচাই —
 
   # যদি √২ মূলদ হয়, p/q পাওয়া যাবে
   from math import isqrt
@@ -367,7 +367,7 @@ doors.push({
 <div class="dialogue"><strong>সমাবেশ কারিগর রিয়াদ:</strong> জাইদ (Door ৩) তোমাকে প্রমাণ দিয়েছেন। এখন দেখো প্রমাণের কাঠামো — সেট। একটি সেট একটি বাক্সের মতো। ভেতরে কিছু জিনিস। A = {১,২,৩}। দুটি বাক্সের মিল দেখতে চাও? Intersection: A ∩ B। সব জিনিস একসাথে? Union: A ∪ B। A-তে আছে কিন্তু B-তে নেই? Difference: A ∖ B। কিন্তু সবচেয়ে বিস্ময়কর — একটি সেটের সব উপসেট: পাওয়ার সেট। ৩টি উপাদানের সেটে ৮টি উপসেট। n উপাদানে ২ⁿ। সর্বদা বড়।</div>
 <div class="dialogue en"><strong>Assembly Artisan Riyad:</strong> Zaid (Door 3) gave you proofs. Now see the structure of proof — sets. A set is like a box. A = {1,2,3}. Common elements? Intersection. All together? Union. In A but not B? Difference. Most surprising — power set: all subsets. 3 elements → 8 subsets. n elements → 2ⁿ. Always larger.</div>
 
-<div class="code-block">— Python: সেট অপারেশন —
+<div class="code-block"># — Python: সেট অপারেশন —
 
   A = {1, 2, 3, 4}
   B = {3, 4, 5, 6}
@@ -470,7 +470,7 @@ doors.push({
 <div class="dialogue"><strong>ব্যবস্থাপক নাদিয়া:</strong> রিয়াদ (Door ৪) তোমাকে সেট দিয়েছেন। এখন দেখো — সেট থেকে কতভাবে বাছাই করা যায়। জন্মদিনের প্যারাডক্স শুনেছ? ২৩ জন মানুষ এক ঘরে — ৫০% সম্ভাবনা দুজনের জন্মদিন মিলবে! মনে হয় অসম্ভব? C(২৩,২) = ২৫৩ জোড়া — প্রতিটি জোড়ায় ১/৩৬৫ সম্ভাবনা। ২৫৩ জোড়ায় অন্তত একটি মিলবে — ৫০%+। এটাই inclusion-exclusion — সম্ভাবনা যোগ করা।</div>
 <div class="dialogue en"><strong>Arranger Nadia:</strong> Riyad (Door 4) gave you sets. Now see — how many ways to choose from a set. Birthday paradox: 23 people in a room — 50% chance two share a birthday! Seems impossible? C(23,2) = 253 pairs — each pair has 1/365 chance. 253 pairs — at least one match likely. This is inclusion-exclusion.</div>
 
-<div class="code-block">— Python: কম্বিনেটরিক্স —
+<div class="code-block"># — Python: কম্বিনেটরিক্স —
 
   from math import comb, perm, factorial
 
@@ -494,7 +494,7 @@ doors.push({
   print(birthday_prob(70))  # 0.999 — ৯৯.৯%!
 
   # hash collision: ৬৪-bit hash, কত কী-তে ৫০% collision?
-  # C(n,2) / 2^64 ≈ 0.5 → n ≈ 2^32 ≈ ৪ বিলিয়ন</div>
+  # C(n,2) / 2^64 ~= 0.5 → n ~= 2^32 ~= ৪ বিলিয়ন</div>
 
 <div class="callout info"><span class="co-icon">📐</span><div><strong>Pascal-এর ত্রিভুজ:</strong> প্রতিটি সংখ্যা উপরের দুটির যোগফল। C(n,k) এর মান সরাসরি পড়ো। ১ ৩ ৩ ১ = C(৩,০), C(৩,১), C(৩,২), C(৩,৩)। এটাই (a+b)ⁿ এর সহগ — binomial theorem!</div></div>
 

@@ -13,8 +13,8 @@ doors.push({
   recall: {
     q: "Error budget কী এবং burn rate alert কীভাবে কাজ করে?",
     qen: "What is an error budget and how does burn rate alerting work?",
-    a: "Error budget = (1 - SLO) × total events। 99.9% SLO + 1M requests = 1,000 failures allowed। Burn rate = কত দ্রুত budget খরচ হচ্ছে। 14.4x burn = ৩০ দিনের budget ২ দিনে শেষ! Fast burn (14.4x/1h) আর slow burn (2x/24h) — two-tier alerting।",
-    aen: "Error budget = (1 - SLO) × total events. 99.9% SLO + 1M requests = 1,000 failures allowed. Burn rate = how fast budget is consumed. 14.4x burn = 30-day budget exhausted in 2 days! Fast burn (14.4x/1h) and slow burn (2x/24h) — two-tier alerting."
+    a: "Error budget = (1 - SLO) * total events। 99.9% SLO + 1M requests = 1,000 failures allowed। Burn rate = কত দ্রুত budget খরচ হচ্ছে। 14.4x burn = ৩০ দিনের budget ২ দিনে শেষ! Fast burn (14.4x/1h) আর slow burn (2x/24h) — two-tier alerting।",
+    aen: "Error budget = (1 - SLO) * total events. 99.9% SLO + 1M requests = 1,000 failures allowed. Burn rate = how fast budget is consumed. 14.4x burn = 30-day budget exhausted in 2 days! Fast burn (14.4x/1h) and slow burn (2x/24h) — two-tier alerting."
   },
   story: `<p class="scene-setting">তুমি একটা গাড়ি চালাচ্ছ। তোমার লক্ষ্য — ৯৯.৯% সময় নিরাপদে চালানো। কিন্তু কেউ ১০০% নিখুঁত নয়। তাই তোমার আছে একটা "জরিমানা বাজেট" — মাসে কয়েকবার নিয়ম ভাঙতে পারবে। কিন্তু বাজেট শেষ হলে — গাড়ি থামাও। আর যদি দ্রুত খরচ হয়? একজন যাত্রী বলবে — "এই গতিতে গেলে তোমার পুরো বাজেট ২ দিনে শেষ!" এটাই burn rate alert।</p>
 <p class="scene-setting en">You're driving. Your goal — drive safely 99.9% of the time. But no one is 100% perfect. So you have a "ticket budget" — you can break rules a few times per month. But when the budget runs out — stop driving. And if you're spending too fast? A passenger warns — "at this rate, your entire budget will be gone in 2 days!" This is a burn rate alert.</p>
@@ -83,7 +83,7 @@ doors.push({
 <pre style="background:var(--bg);padding:.5rem;border-radius:.3rem">
 SLO: 99.9%
 Monthly requests: 10,000,000
-Error budget: (1 - 0.999) × 10M = 10,000 failures allowed
+Error budget: (1 - 0.999) * 10M = 10,000 failures allowed
 
 Burn rate = current error rate / error budget quota
   Burn 1.0 = steady state (exact pace)
@@ -162,21 +162,21 @@ doors.push({
 git push
   ↓
 [CI - Continuous Integration]
-  ├── Build (Docker image)
-  ├── Unit Tests (pytest, jest)
-  ├── Integration Tests
-  ├── Security Scan (Trivy, Snyk)
-  └── Push to Registry (DO Container Registry)
+  # ── Build (Docker image)
+  # ── Unit Tests (pytest, jest)
+  # ── Integration Tests
+  # ── Security Scan (Trivy, Snyk)
+  # ── Push to Registry (DO Container Registry)
   ↓
 [CD - Continuous Deployment]
-  ├── Staging deploy
-  ├── E2E Tests
-  ├── Manual/Auto approval
-  └── Production deploy (blue-green/canary)
+  # ── Staging deploy
+  # ── E2E Tests
+  # ── Manual/Auto approval
+  # ── Production deploy (blue-green/canary)
   ↓
 [Post-Deploy]
-  ├── Health check (reconciliation!)
-  └── Alert if unhealthy
+  # ── Health check (reconciliation!)
+  # ── Alert if unhealthy
 </pre>
 
 <strong>GitOps = Pull-Based Deployment:</strong>
@@ -307,7 +307,7 @@ doors.push({
   <rect x="145" y="208" width="100" height="20" rx="4" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
   <text x="195" y="222" text-anchor="middle" fill="#fca5a5" font-size="8">Envoy 70MB</text>
 
-  <text x="145" y="265" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">3 Pods × 70MB = 210MB wasted</text>
+  <text x="145" y="265" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">3 Pods * 70MB = 210MB wasted</text>
   <text x="145" y="282" text-anchor="middle" fill="#fca5a5" font-size="9">1000 Pods = 70 GB waste!</text>
   <text x="145" y="298" text-anchor="middle" fill="#94a3b8" font-size="9">iptables interception · 1-3ms/hop</text>
 
@@ -330,7 +330,7 @@ doors.push({
   <text x="435" y="258" text-anchor="middle" fill="#4ade80" font-size="9">eBPF programs (routing, mTLS, LB)</text>
   <text x="435" y="270" text-anchor="middle" fill="#4ade80" font-size="8">O(1) lookup · socket-level · zero proxy</text>
 
-  <text x="435" y="290" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">3 Pods × 0MB = 0MB overhead</text>
+  <text x="435" y="290" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">3 Pods * 0MB = 0MB overhead</text>
   <text x="435" y="305" text-anchor="middle" fill="#86efac" font-size="9">1000 Pods = ~50MB/node (not per pod!)</text>
 </svg>
 </div>
@@ -353,7 +353,7 @@ doors.push({
 
 <br><strong>Sidecar Problem at Scale:</strong>
 <pre style="background:var(--bg);padding:.5rem;border-radius:.3rem">
-1,000 Pods × 70 MB = 70 GB memory wasted on proxies!
+1,000 Pods * 70 MB = 70 GB memory wasted on proxies!
 3-hop service chain = 3-9 ms extra latency
 Every pod restart = sidecar injection + readiness check
 GPU workloads: sidecar steals expensive GPU-node memory
@@ -386,8 +386,8 @@ Cilium একসাথে: CNI (pod networking) + Network Policy + Service Mesh 
 </div>
 
 <div class="secret-box">
-<strong>🔑 গোপন সত্য:</strong> Sidecar যুগ শেষ হচ্ছে। ১০০০ Pod × ৭০MB = ৭০GB waste। eBPF kernel-এ directly কাজ করে — শূন্য overhead, O(1) lookup। Cilium = ভবিষ্যৎ। তবে এখন Docker Compose-এ দরকার নেই — Nginx যথেষ্ট।<br>
-<em>The sidecar era is ending. 1000 Pods × 70MB = 70GB waste. eBPF works directly in the kernel — zero overhead, O(1) lookup. Cilium = the future. But Docker Compose doesn't need it yet — Nginx suffices.</em>
+<strong>🔑 গোপন সত্য:</strong> Sidecar যুগ শেষ হচ্ছে। ১০০০ Pod * ৭০MB = ৭০GB waste। eBPF kernel-এ directly কাজ করে — শূন্য overhead, O(1) lookup। Cilium = ভবিষ্যৎ। তবে এখন Docker Compose-এ দরকার নেই — Nginx যথেষ্ট।<br>
+<em>The sidecar era is ending. 1000 Pods * 70MB = 70GB waste. eBPF works directly in the kernel — zero overhead, O(1) lookup. Cilium = the future. But Docker Compose doesn't need it yet — Nginx suffices.</em>
 </div>`,
   senior: {
     title: "Service Mesh প্র্যাকটিস গাইড",

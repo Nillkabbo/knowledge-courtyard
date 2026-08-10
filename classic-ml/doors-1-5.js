@@ -68,7 +68,7 @@ doors.push({
 <tr><td class="hl">MSE</td><td>গড় বর্গ ত্রুটি</td><td>ভবিষ্যদ্বাণী আর সত্যির পার্থক্য</td></tr>
 <tr><td class="hl">R²</td><td>মডেলের ভালোত্ব</td><td>০-১ এর মধ্যে, ১ = নিখুঁত</td></tr></table>
 
-<div class="code-block">— — — Python: Linear Regression from Scratch — — —
+<div class="code-block"># — — — Python: Linear Regression from Scratch — — —
 
 import numpy as np
 
@@ -173,15 +173,15 @@ doors.push({
   <div class="diag-cap">Sigmoid: z=০ হলে σ=০.৫ (৫০%), z বড় হলে σ→১, z ছোট হলে σ→০</div>
 </div>
 
-<div class="dialogue">উস্তাদ ইসহাক বলেন — ভাবো, একটা email এলো। Spam না নয়? লিনিয়ার রিগ্রেশন বলতে পারে না — কারণ উত্তর সংখ্যা নয়, হ্যাঁ/না। কিন্তু লজিস্টিক রিগ্রেশন বলে — এই email-এ "FREE" শব্দটা ৩ বার আছে, "MONEY" ২ বার। z = w₁×৩ + w₂×২ + b। sigmoid(z) = ০.৮৭। অর্থাৎ ৮৭% সম্ভাবনা spam। ০.৫ এর বেশি — তাই spam।</div>
-<div class="dialogue en">Ustad Ishaq says — think, an email arrives. Spam or not? Linear regression cannot say — because the answer is not a number, it is yes/no. But logistic regression says — this email has "FREE" 3 times, "MONEY" 2 times. z = w₁×3 + w₂×2 + b. sigmoid(z) = 0.87. That means 87% probability of spam. Above 0.5 — so spam.</div>
+<div class="dialogue">উস্তাদ ইসহাক বলেন — ভাবো, একটা email এলো। Spam না নয়? লিনিয়ার রিগ্রেশন বলতে পারে না — কারণ উত্তর সংখ্যা নয়, হ্যাঁ/না। কিন্তু লজিস্টিক রিগ্রেশন বলে — এই email-এ "FREE" শব্দটা ৩ বার আছে, "MONEY" ২ বার। z = w₁*৩ + w₂*২ + b। sigmoid(z) = ০.৮৭। অর্থাৎ ৮৭% সম্ভাবনা spam। ০.৫ এর বেশি — তাই spam।</div>
+<div class="dialogue en">Ustad Ishaq says — think, an email arrives. Spam or not? Linear regression cannot say — because the answer is not a number, it is yes/no. But logistic regression says — this email has "FREE" 3 times, "MONEY" 2 times. z = w₁*3 + w₂*2 + b. sigmoid(z) = 0.87. That means 87% probability of spam. Above 0.5 — so spam.</div>
 
 <div class="compare">
   <div class="cmp-card cmp-bad"><div class="cmp-label">❌ Linear Regression</div>ŷ = wx + b → যেকোনো সংখ্যা। ক্লাস বলতে পারে না। দাম, তাপমাত্রা, দূরত্ব — যেখানে উত্তর একটা সংখ্যা।</div>
   <div class="cmp-card cmp-good"><div class="cmp-label">✅ Logistic Regression</div>σ(wx + b) → ০ থেকে ১। ক্লাস বলে। Spam না নয়, রোগ আছে না নেই — যেখানে উত্তর হ্যাঁ/না।</div>
 </div>
 
-<div class="code-block">— — — Python: Logistic Regression — — —
+<div class="code-block"># — — — Python: Logistic Regression — — —
 
 import numpy as np
 
@@ -261,7 +261,7 @@ doors.push({
 
 <div class="callout info"><span class="co-icon">📐</span><div><strong>ডিসিশন ট্রি গঠন:</strong>
 <br>প্রতিটা node-এ একটা প্রশ্ন: feature ≤ threshold?
-<br><strong>Information Gain = H(parent) - Σ(|child|/|parent|) × H(child)</strong>
+<br><strong>Information Gain = H(parent) - Σ(|child|/|parent|) * H(child)</strong>
 <br>H = Entropy = -Σ pᵢ log₂(pᵢ) (Book ৩০, Door ৯)
 <br>সবচেয়ে বেশি information gain = সেরা split।</div></div>
 
@@ -310,7 +310,7 @@ doors.push({
 <tr><td class="hl">Gradient Boosting</td><td>প্রতিটা গাছ আগের ভুল শেখে</td><td>সবচেয়ে শক্তিশালী</td></tr>
 <tr><td class="hl">XGBoost</td><td>optimized boosting</td><td>Kaggle বিজয়ী</td></tr></table>
 
-<div class="code-block">— — — Python: Decision Tree & Random Forest — — —
+<div class="code-block"># — — — Python: Decision Tree & Random Forest — — —
 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -418,7 +418,7 @@ doors.push({
   <div class="cmp-card cmp-good"><div class="cmp-label">✅ প্রশস্ত margin</div>দেয়াল ঠিক মাঝখানে। দুই পক্ষ থেকে সমান দূরত্ব। Noise সহ্য করতে পারে। Generalizes ভালো।</div>
 </div>
 
-<div class="code-block">— — — Python: SVM with Kernels — — —
+<div class="code-block"># — — — Python: SVM with Kernels — — —
 
 from sklearn.svm import SVC
 from sklearn.datasets import make_circles
@@ -535,7 +535,7 @@ doors.push({
   <div class="cmp-card cmp-good"><div class="cmp-label">✅ k=৫</div>৫ জন প্রতিবেশীর সংখ্যাগরিষ্ঠ। Noise কাটে। ভালো সিদ্ধান্ত। k খুব বড় হলে underfitting — সবসময় সবচেয়ে সাধারণ ক্লাস দেয়।</div>
 </div>
 
-<div class="code-block">— — — Python: k-NN Classification — — —
+<div class="code-block"># — — — Python: k-NN Classification — — —
 
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.datasets import load_iris

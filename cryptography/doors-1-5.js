@@ -137,7 +137,7 @@ doors.push({
 <strong>গাণিতিক সত্য:</strong> g^(ba) = g^(ab) — একই! ✅<br>
 <strong>চোরের সমস্যা:</strong> g^a ও g^b জানে, কিন্তু a বা b বের করা = discrete log = অসম্ভব</div></div>
 
-<div class="code-block">— Python: Diffie-Hellman সিমুলেশন —
+<div class="code-block"># — Python: Diffie-Hellman সিমুলেশন —
 
   # সহজ উদাহরণ (বাস্তবে p হাজার ডিজিট)
   p = 23   # public prime (বাস্তবে 2048-bit)
@@ -349,7 +349,7 @@ doors.push({
 <div class="dialogue"><strong>পাসওয়ার্ড-কারিগর সাফওয়ান:</strong> হামজা (Door ৩) তোমাকে hash শিখিয়েছেন। কিন্তু পাসওয়ার্ডে hash যথেষ্ট নয়। কেন? SHA-256 দ্রুত — আক্রমণকারী সেকেন্ডে বিলিয়ন বিলিয়ন অনুমান করতে পারে। bcrypt ধীর — ইচ্ছাকৃতভাবে। একটি পাসওয়ার্ড হ্যাশে ~১০০ms। আক্রমণকারীর জন্য দুঃসাধ্য। Argon2 আরও শক্তিশালী — memory-hard। GPU-তেও ধীর কারণ মেমরি দরকার।</div>
 <div class="dialogue en"><strong>Password Artisan Safwan:</strong> Hamza (Door 3) taught you hashing. But hashing is not enough for passwords. Why? SHA-256 is fast — an attacker can guess billions per second. bcrypt is slow — intentionally. One password hash takes ~100ms. Hard for attackers. Argon2 is even stronger — memory-hard. Slow even on GPUs because it needs memory.</div>
 
-<div class="code-block">— Python: পাসওয়ার্ড হ্যাশিং —
+<div class="code-block"># — Python: পাসওয়ার্ড হ্যাশিং —
 
   # ❌ ভুল উপায় (plaintext বা SHA-256)
   import hashlib

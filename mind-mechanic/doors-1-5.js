@@ -51,7 +51,7 @@ doors.push({
     <p>উদাহরণ: 'আমি চা ঢালার পর, আমি বইটা খুলবো আর ১ পৃষ্ঠা পড়বো।'</p>
     <p><strong>ধাপ ৩ — পরিচয় বদলাও (Identity):</strong> 'আমি পড়তে চাই' না — <strong>'আমি পাঠক'</strong>। প্রতিটা ছোট কাজ একটা ভোট — তুমি কে হতে চাও, সেটার জন্য।</p>
   </div>
-  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science (brief):</strong> BJ Fogg (Stanford, ২০০৯, পরে ২০১৯ Tiny Habits-এ আপডেট) প্রমাণ করেছেন — আচরণ ঘটে যখন Motivation × Ability × Prompt একসাথে মেলে (B=MAP, মূল ২০০৯-এ B=MAT ছিল)। কাজ যত ছোট, Ability তত বেশি — মানে Motivation কম থাকলেও কাজ হয়ে যায়। Stephen Guise (২০১৩) একটা পুশআপ দিয়ে শুরু করেছিলেন — এখন প্রতিদিন ৩০ মিনিট ব্যায়াম করেন। James Clear (২০১৮) একে বলেন '2-Minute Rule।' আর ২১ দিনে অভ্যাস হয় — সেটা ভুল। Lally et al. (UCL, ২০১০) দেখিয়েছেন মধ্যমা ৬৬ দিন (সীমা ১৮-২৫৪ দিন)।</div></div>
+  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science (brief):</strong> BJ Fogg (Stanford, ২০০৯, পরে ২০১৯ Tiny Habits-এ আপডেট) প্রমাণ করেছেন — আচরণ ঘটে যখন Motivation * Ability * Prompt একসাথে মেলে (B=MAP, মূল ২০০৯-এ B=MAT ছিল)। কাজ যত ছোট, Ability তত বেশি — মানে Motivation কম থাকলেও কাজ হয়ে যায়। Stephen Guise (২০১৩) একটা পুশআপ দিয়ে শুরু করেছিলেন — এখন প্রতিদিন ৩০ মিনিট ব্যায়াম করেন। James Clear (২০১৮) একে বলেন '2-Minute Rule।' আর ২১ দিনে অভ্যাস হয় — সেটা ভুল। Lally et al. (UCL, ২০১০) দেখিয়েছেন মধ্যমা ৬৬ দিন (সীমা ১৮-২৫৪ দিন)।</div></div>
   <div class="verse">"আমি একে ধীরে ধীরে অবতীর্ণ করেছি, যাতে তুমি মানুষের কাছে ক্রমে ক্রমে পড়ে শোনাতে পারো।" — কুরআন ১৭:১০৬</div>
   <div class="verse en">"And We revealed it in portions, so that you may recite it to the people over a long period." — Quran 17:106</div>
   <div class="callout info"><span class="co-icon">🧠</span><div><strong>পবিত্র সমতুল্য — Sacred Analogue:</strong> কুরআন ২৩ বছরে নাজিল হয়েছে — একবারে নয়। আল্লাহ চাইলে এক রাতে দিতে পারতেন। কিন্তু মানুষের মস্তিষ্ক ধীরে ধীরে গ্রহণ করে, ধীরে ধীরে অভ্যাস গড়ে। নবী ﷺ বলেছেন: <em>'সবচেয়ে প্রিয় আমল হলো যেটা নিয়মিত হয়, যদিও ছোট।'</em> — বুখারি। এটাই তাদাররুজ — gradualness। তোমার মস্তিষ্কও এই নিয়মে চলে।</div></div>
@@ -286,7 +286,7 @@ doors.push({
       <text class="lbl-sm" x="280" y="124" text-anchor="middle">memory</text>
       <circle class="node-moon" cx="470" cy="60" r="30"/>
       <text class="lbl-sm" x="470" y="56" text-anchor="middle" style="fill:#5b9eff;font-weight:700">৬০-৯০s</text>
-      <text class="lbl-sm" x="470" y="72" text-anchor="middle" style="fill:#5b9eff">শ্বাস ×৩</text>
+      <text class="lbl-sm" x="470" y="72" text-anchor="middle" style="fill:#5b9eff">শ্বাস *৩</text>
       <text class="lbl-sm" x="470" y="110" text-anchor="middle">ভাগাস নার্ভ চালু</text>
       <text class="lbl-sm" x="470" y="124" text-anchor="middle">parasympathetic</text>
       <line class="edge" x1="120" y1="60" x2="250" y2="60" marker-end="url(#arrowD3)"/>
@@ -498,7 +498,7 @@ doors.push({
       <rect class="cell-good" x="430" y="65" width="100" height="50" rx="8"/>
       <text class="lbl-leaf" x="480" y="85" text-anchor="middle" style="font-size:10px">হৃদস্পন্দন ↓</text>
       <text class="lbl-sm" x="480" y="102" text-anchor="middle">ভাগাস চালু</text>
-      <text class="lbl-amber" x="280" y="160" text-anchor="middle">×৩-৫ চক্র · ৩০ সেকেন্ড · মেডিটেশনের চেয়ে দ্রুত (Balban 2023)</text>
+      <text class="lbl-amber" x="280" y="160" text-anchor="middle">*৩-৫ চক্র · ৩০ সেকেন্ড · মেডিটেশনের চেয়ে দ্রুত (Balban 2023)</text>
     </svg>
     <div class="diag-cap">দুই ভরো, এক ছাড়ো — স্নায়ুতন্ত্র শান্ত মোডে যায়।</div>
   </div>

@@ -31,41 +31,41 @@ doors.push({
 
 HOW FUNCTION CALLING WORKS (step by step):
 
-  ┌────────────────────────────────────────┐
-  │ Step ১: YOU DEFINE TOOLS               │
-  │ tools = [{                             │
-  │   name: "get_weather",                 │
-  │   description: "Get current weather",  │
-  │   parameters: {                        │
-  │     city: {type: "string"},            │
-  │     unit: {type: "string",             │
-  │            enum: ["C","F"]}            │
-  │   }                                    │
-  │ }]                                     │
-  ├────────────────────────────────────────┤
-  │ Step ২: LLM RECEIVES                   │
-  │ → system prompt + tools + user message │
-  │ → ALL in the context window            │
-  │ → LLM sees: "available tools: ..."     │
-  ├────────────────────────────────────────┤
-  │ Step ৩: LLM DECIDES                    │
-  │ → analyzes user intent                 │
-  │ → matches to tool description          │
-  │ → outputs: {                           │
-  │     "tool": "get_weather",             │
-  │     "arguments": {"city":"Dhaka"}      │
-  │   }                                    │
-  │ → NOT regular text — structured call!  │
-  ├────────────────────────────────────────┤
-  │ Step ৪: YOU EXECUTE                    │
-  │ → your code runs get_weather("Dhaka")  │
-  │ → returns: "32C, humid, rain"          │
-  ├────────────────────────────────────────┤
-  │ Step ৫: LLM FORMULATES RESPONSE        │
-  │ → receives tool result                │
-  │ → generates natural language:          │
-  │   "It is 32C in Dhaka with rain."      │
-  └────────────────────────────────────────┘
+  # ────────────────────────────────────────# 
+  #  Step ১: YOU DEFINE TOOLS               # 
+  #  tools = [{                             # 
+  #    name: "get_weather",                 # 
+  #    description: "Get current weather",  # 
+  #    parameters: {                        # 
+  #      city: {type: "string"},            # 
+  #      unit: {type: "string",             # 
+  #             enum: ["C","F"]}            # 
+  #    }                                    # 
+  #  }]                                     # 
+  # ────────────────────────────────────────# 
+  #  Step ২: LLM RECEIVES                   # 
+  #  → system prompt + tools + user message # 
+  #  → ALL in the context window            # 
+  #  → LLM sees: "available tools: ..."     # 
+  # ────────────────────────────────────────# 
+  #  Step ৩: LLM DECIDES                    # 
+  #  → analyzes user intent                 # 
+  #  → matches to tool description          # 
+  #  → outputs: {                           # 
+  #      "tool": "get_weather",             # 
+  #      "arguments": {"city":"Dhaka"}      # 
+  #    }                                    # 
+  #  → NOT regular text — structured call!  # 
+  # ────────────────────────────────────────# 
+  #  Step ৪: YOU EXECUTE                    # 
+  #  → your code runs get_weather("Dhaka")  # 
+  #  → returns: "32C, humid, rain"          # 
+  # ────────────────────────────────────────# 
+  #  Step ৫: LLM FORMULATES RESPONSE        # 
+  #  → receives tool result                # 
+  #  → generates natural language:          # 
+  #    "It is 32C in Dhaka with rain."      # 
+  # ────────────────────────────────────────# 
 
 PROVIDER IMPLEMENTATIONS:
 
@@ -325,7 +325,7 @@ THE PROBLEM MCP SOLVES:
     → Tool for OpenAI: custom API, custom format
     → Tool for Claude: different API, different format
     → Tool for Gemini: yet another format
-    → N tools × M LLMs = N×M integrations!
+    → N tools * M LLMs = N*M integrations!
     → nobody wants to build that
   
   With MCP:
@@ -349,11 +349,11 @@ WHAT IS MCP?
   → Microsoft, Cursor, Windsurf, Zed, Replit
   → de facto standard হয়ে উঠছে — এক protocol, সব LLM
 
-  ┌────────────────┐     MCP      ┌────────────────┐
-  │  MCP CLIENT    │ ←─────────→  │  MCP SERVER    │
-  │  (Claude,      │  JSON-RPC    │  (your tools)  │
-  │   Cursor, etc) │              │                │
-  └────────────────┘              └────────────────┘
+  # ────────────────#      MCP      # ────────────────# 
+  #   MCP CLIENT    #  ←─────────→  #   MCP SERVER    # 
+  #   (Claude,      #   JSON-RPC    #   (your tools)  # 
+  #    Cursor, etc) #               #                 # 
+  # ────────────────#               # ────────────────# 
 
 MCP ARCHITECTURE:
 
@@ -528,9 +528,9 @@ doors.push({
   ❌ slow (each waits for previous)
 
 PATTERN ২: PARALLEL (fan-out/fan-in)
-  Tool A ─┐
-  Tool B ─┤→ merge
-  Tool C ─┘
+  Tool A ─# 
+  Tool B ─# → merge
+  Tool C ─# 
   
   search("topic A") + search("topic B") + search("topic C")
   → all at once → merge results
@@ -682,32 +682,32 @@ LLM ERROR ADAPTATION (the magic!):
 
 TOOL SAFETY LAYERS:
 
-  ┌──────────────────────────────────────┐
-  │ Layer ১: INPUT VALIDATION            │
-  │ → type check, range check            │
-  │ → sanitize (no SQL injection!)       │
-  │ → parameter constraints              │
-  ├──────────────────────────────────────┤
-  │ Layer ২: AUTHORIZATION               │
-  │ → does user have permission?         │
-  │ → rate limiting (max N/min)          │
-  │ → tool whitelist (only approved)     │
-  ├──────────────────────────────────────┤
-  │ Layer ৩: SANDBOXING                   │
-  │ → code execution: isolated container  │
-  │ → file access: restricted paths       │
-  │ → network: filtered                   │
-  ├──────────────────────────────────────┤
-  │ Layer ৪: HUMAN APPROVAL              │
-  │ → destructive actions: pause         │
-  │ → send_email, delete_file, deploy    │
-  │ → human must approve before execute  │
-  ├──────────────────────────────────────┤
-  │ Layer ৫: AUDIT LOGGING               │
-  │ → every tool call logged             │
-  │ → who, what, when, result            │
-  │ → for debugging + compliance         │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  Layer ১: INPUT VALIDATION            # 
+  #  → type check, range check            # 
+  #  → sanitize (no SQL injection!)       # 
+  #  → parameter constraints              # 
+  # ──────────────────────────────────────# 
+  #  Layer ২: AUTHORIZATION               # 
+  #  → does user have permission?         # 
+  #  → rate limiting (max N/min)          # 
+  #  → tool whitelist (only approved)     # 
+  # ──────────────────────────────────────# 
+  #  Layer ৩: SANDBOXING                   # 
+  #  → code execution: isolated container  # 
+  #  → file access: restricted paths       # 
+  #  → network: filtered                   # 
+  # ──────────────────────────────────────# 
+  #  Layer ৪: HUMAN APPROVAL              # 
+  #  → destructive actions: pause         # 
+  #  → send_email, delete_file, deploy    # 
+  #  → human must approve before execute  # 
+  # ──────────────────────────────────────# 
+  #  Layer ৫: AUDIT LOGGING               # 
+  #  → every tool call logged             # 
+  #  → who, what, when, result            # 
+  #  → for debugging + compliance         # 
+  # ──────────────────────────────────────# 
 
 DESTRUCTIVE TOOL CLASSIFICATION:
 

@@ -570,7 +570,7 @@ doors.push({
   <!-- PE operation -->
   <rect x="360" y="90" width="200" height="60" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
   <text x="460" y="110" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">PE Operation</text>
-  <text x="460" y="128" text-anchor="middle" fill="#fcd34d" font-size="10" font-family="monospace">out = x × w + partial_sum</text>
+  <text x="460" y="128" text-anchor="middle" fill="#fcd34d" font-size="10" font-family="monospace">out = x * w + partial_sum</text>
   <text x="460" y="142" text-anchor="middle" fill="#94a3b8" font-size="8">Multiply-Accumulate (MAC)</text>
 
   <!-- Key insight -->
@@ -584,7 +584,7 @@ doors.push({
   <!-- TPU stats -->
   <rect x="360" y="270" width="200" height="70" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
   <text x="460" y="290" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="700">TPU v1 Stats</text>
-  <text x="460" y="305" text-anchor="middle" fill="#94a3b8" font-size="9">256×256 = 65,536 PEs</text>
+  <text x="460" y="305" text-anchor="middle" fill="#94a3b8" font-size="9">256*256 = 65,536 PEs</text>
   <text x="460" y="320" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">92 TOPS (INT8)</text>
   <text x="460" y="333" text-anchor="middle" fill="#64748b" font-size="8">28nm · 2015</text>
 </svg>
@@ -599,7 +599,7 @@ doors.push({
 <th style="text-align:left;padding:.3rem">Feature</th>
 <th style="text-align:left;padding:.3rem">Value</th>
 </tr>
-<tr><td style="padding:.2rem">Systolic Array Size</td><td>256 × 256 PEs</td></tr>
+<tr><td style="padding:.2rem">Systolic Array Size</td><td>256 * 256 PEs</td></tr>
 <tr><td style="padding:.2rem">Precision</td><td>INT8 (8-bit integer)</td></tr>
 <tr><td style="padding:.2rem">Peak Throughput</td><td>92 TOPS (Tera Operations Per Second)</td></tr>
 <tr><td style="padding:.2rem">Dataflow</td><td>Weight-Stationary (WS)</td></tr>
@@ -609,30 +609,30 @@ doors.push({
 <br><strong>Weight-Stationary Dataflow (আর্কিটেকচার):</strong>
 <pre style="background:var(--bg);padding:.5rem;border-radius:.3rem">
      Input activations stream diagonally ↓
-     ┌───┐ ┌───┐ ┌───┐
-   → │W₁₁│ │W₁₂│ │W₁₃│ → partial sums flow right
-     └───┘ └───┘ └───┘
-     ┌───┐ ┌───┐ ┌───┐
-   → │W₂₁│ │W₂₂│ │W₂₃│ →
-     └───┘ └───┘ └───┘
+     # ───#  # ───#  # ───# 
+   → # W₁₁#  # W₁₂#  # W₁₃#  → partial sums flow right
+     # ───#  # ───#  # ───# 
+     # ───#  # ───#  # ───# 
+   → # W₂₁#  # W₂₂#  # W₂₃#  →
+     # ───#  # ───#  # ───# 
      ↑    ↑    ↑
      Input data enters from top
      
-PE operation: output = input × weight + partial_sum
+PE operation: output = input * weight + partial_sum
 Weights stay fixed. Data flows. No memory fetch!
 </pre>
 
 <strong>TPU Evolution:</strong><br>
-v1 (2016): 256×256, INT8, 92 TOPS — inference only<br>
-v2 (2017): 128×128, FP16/BF16, 180 TFLOPS — training<br>
-v3 (2018): 128×128, 420 TFLOPS — liquid cooling<br>
-v4 (2021): 4×128×128, 1 PFLOPS — pod architecture
+v1 (2016): 256*256, INT8, 92 TOPS — inference only<br>
+v2 (2017): 128*128, FP16/BF16, 180 TFLOPS — training<br>
+v3 (2018): 128*128, 420 TFLOPS — liquid cooling<br>
+v4 (2021): 4*128*128, 1 PFLOPS — pod architecture
 </div>
 
 <div class="dialogue"><strong>তুমি:</strong> কিন্তু কেন এটা GPU থেকে ভালো?</div>
 <div class="dialogue en"><strong>You:</strong> But why is this better than a GPU?</div>
 
-<div class="dialogue"><strong>কুং:</strong> GPU-তে প্রতিটা calculation-এ memory hierarchy traverse করতে হয় — register, L1, L2, DRAM। DRAM access = 200× energy। কিন্তু systolic array-তে weights একবার load হয়ে স্থির থাকে। Input streaming। প্রতিটা PE শুধু MAC করে — <strong>কোনো memory access নেই compute চলাকালীন</strong>। ফলে TPU তে প্রতিটা MAC operation-এ energy প্রায় শূন্য। এটাই ৯২ TOPS সম্ভব — মাত্র ২৮nm process-এ!</div>
+<div class="dialogue"><strong>কুং:</strong> GPU-তে প্রতিটা calculation-এ memory hierarchy traverse করতে হয় — register, L1, L2, DRAM। DRAM access = 200* energy। কিন্তু systolic array-তে weights একবার load হয়ে স্থির থাকে। Input streaming। প্রতিটা PE শুধু MAC করে — <strong>কোনো memory access নেই compute চলাকালীন</strong>। ফলে TPU তে প্রতিটা MAC operation-এ energy প্রায় শূন্য। এটাই ৯২ TOPS সম্ভব — মাত্র ২৮nm process-এ!</div>
 <div class="dialogue en"><strong>Kung:</strong> In a GPU, every calculation traverses the memory hierarchy — register, L1, L2, DRAM. DRAM access = 200x energy. But in a systolic array, weights load once and stay. Input streams. Each PE just MACs — <strong>no memory access during computation</strong>. So each MAC operation costs near-zero energy. This is why 92 TOPS is possible — on just 28nm process!</div>
 
 <div class="verse">

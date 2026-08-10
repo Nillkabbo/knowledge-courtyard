@@ -65,7 +65,7 @@ doors.push({
 <rect x="100" y="218" width="380" height="60" rx="10" fill="#052e16" stroke="#86efac" stroke-width="2"/>
 <text x="290" y="242" text-anchor="middle" fill="#bbf7d0" font-size="13" font-weight="700">3 P's একসাথে = Clinical Depression</text>
 <text x="290" y="262" text-anchor="middle" fill="#86efac" font-size="10">প্রতিটা P চ্যালেঞ্জ করো → reversal সম্ভব (Maier 2016)</text>
-<text x="290" y="295" text-anchor="middle" fill="#94a3b8" font-size="9" font-style="italic">Permanence × Pervasiveness × Personal → Helplessness</text>
+<text x="290" y="295" text-anchor="middle" fill="#94a3b8" font-size="9" font-style="italic">Permanence * Pervasiveness * Personal → Helplessness</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Learned Helplessness-এর তিন উপাদান (Seligman). Three P's of helplessness.</div>

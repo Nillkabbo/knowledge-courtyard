@@ -21,7 +21,7 @@ doors.push({
 <div class="dialogue"><strong>শব্দ-ভাঙন-কারিগর দাউদ:</strong> আমি প্রতিটি অক্ষর পড়ি। একটি Deterministic Finite Automaton — DFA — আমার মস্তিষ্ক। x দেখলাম → identifier শুরু। = দেখলাম → assign operator। ৩ দেখলাম → number। প্রতিটি token-এর একটি type ও value আছে: {type: ID, value: "x"}। এই token-গুলো পরের দরজার কাছে যাবে — parser-এর কাছে। আমি শুধু শব্দ চিনি — বাক্য বুঝি না।</div>
 <div class="dialogue en"><strong>Word-Breaking Artisan Dawud:</strong> I read each character. A Deterministic Finite Automaton — DFA — is my brain. x → identifier starts. = → assign operator. 3 → number. Each token has a type and value: {type: ID, value: "x"}. These tokens go to the next door — the parser. I only recognize words — I don't understand sentences.</div>
 
-<div class="code-block">— Python: সহজ Lexer —
+<div class="code-block"># — Python: সহজ Lexer —
 
   import re
 
@@ -133,7 +133,7 @@ doors.push({
 <div class="dialogue"><strong>গাছ-নির্মাতা বেলাল:</strong> আমি token পাই, গাছ বানাই। পদ্ধতি: recursive descent। প্রতিটি grammar rule একটি ফাংশন। expr() → term() + term()। term() → factor() * factor()। factor() → NUMBER বা ID বা (expr)। এই নিয়মে গাছ স্বয়ংক্রিয়ভাবে তৈরি। Add নিচে — কারণ যোগ আগে হয়। Assign উপরে — কারণ assign শেষে।</div>
 <div class="dialogue en"><strong>Tree Builder Bilal:</strong> I receive tokens, build a tree. Method: recursive descent. Each grammar rule is a function. expr() → term() + term(). term() → factor() * factor(). factor() → NUMBER or ID or (expr). The tree forms automatically following these rules. Add at bottom — because addition happens first. Assign at top — because assignment is last.</div>
 
-<div class="code-block">— Python: Recursive Descent Parser —
+<div class="code-block"># — Python: Recursive Descent Parser —
 
   import ast as py_ast
 
@@ -232,7 +232,7 @@ doors.push({
 <div class="dialogue"><strong>অর্থ-যাচাইকারী সালমান:</strong> আমার কাছে একটি symbol table আছে — প্রতিটি variable-এর নাম, type, scope লেখা। x কি declared? কোথায়? কোন type? দেখি: x = int। "hello" = string। int + string? আমার নিয়ম বলে — অনুমোদিত নয়! Type error। এটাই আমার কাজ — অর্থ যাচাই। গাঠ্যিকভাবে সব ঠিক হতে পারে, কিন্তু অর্থগতভাবে ভুল থাকতে পারে।</div>
 <div class="dialogue en"><strong>Meaning Verifier Salman:</strong> I have a symbol table — each variable's name, type, scope recorded. Is x declared? Where? What type? I check: x = int. "hello" = string. int + string? My rules say — not allowed! Type error. This is my job — meaning verification. Syntactically everything may be fine, but semantically there may be errors.</div>
 
-<div class="code-block">— Python: Semantic Analysis —
+<div class="code-block"># — Python: Semantic Analysis —
 
   # Symbol Table
   class SymbolTable:

@@ -51,15 +51,15 @@ doors.push({
 <tr><td class="hl">স্কেলার (Scalar)</td><td>৫</td><td>learning rate, temperature</td></tr>
 <tr><td class="hl">ভেক্টর (Vector)</td><td>[৩, ২]</td><td>word embedding, pixel values</td></tr>
 <tr><td class="hl">ম্যাট্রিক্স (Matrix)</td><td>[[১,২],[৩,৪]]</td><td>batches of data, weights</td></tr>
-<tr><td class="hl">টেনসর (Tensor)</td><td>n-dimensional</td><td>images (H×W×C), videos</td></tr></table>
+<tr><td class="hl">টেনসর (Tensor)</td><td>n-dimensional</td><td>images (H*W*C), videos</td></tr></table>
 
 <div class="dialogue">আল-খোয়ারিজমি বলেন — এখন বোঝো কেন এটা গুরুত্বপূর্ণ। তুমি Book ১৮ (Embeddings) পড়েছো। সেখানে একটা শব্দকে একটা ভেক্টর দিয়ে প্রকাশ করা হয় — যেমন king = [0.5, -0.2, 0.9, ...]। ৭৬৮টা সংখ্যা। প্রতিটা সংখ্যা একটা দিক। এই ৭৬৮-মাত্রিক স্থানে king আর queen কাছাকাছি থাকে — কারণ তাদের ভেক্টর প্রায় একই দিকে নির্দেশ করে। এটা শুধু সম্ভব কারণ ভেক্টরে দিক আছে। স্কেলার দিয়ে এটা করা অসম্ভব।</div>
 <div class="dialogue en">Al-Khwarizmi says — now understand why this matters. You read Book 18 (Embeddings). There, a word is represented as a vector — e.g., king = [0.5, -0.2, 0.9, ...]. 768 numbers. Each number is a direction. In this 768-dimensional space, king and queen are close — because their vectors point in nearly the same direction. This is only possible because vectors have direction. With scalars, impossible.</div>
 
 <div class="callout tip"><span class="co-icon">🔌</span><div><strong>ভেক্টর অপারেশন তিনটি:</strong>
-<br>① <strong>যোগ (Addition):</strong> [১,২] + [৩,৪] = [৪,৬] — প্রতিটা উপাদান যোগ। embedding-এ: king - man + woman ≈ queen।
-<br>② <strong>স্কেলার গুণ (Scalar Multiplication):</strong> ৩ × [১,২] = [৩,৬] — প্রতিটা উপাদান গুণ। temperature scaling-এ ব্যবহৃত।
-<br>③ <strong>ডট গুণন (Dot Product):</strong> [১,২]·[৩,৪] = ১×৩ + ২×৪ = ১১ — কতটা একই দিকে নির্দেশ করছে। attention mechanism-এ ব্যবহৃত!</div></div>
+<br>① <strong>যোগ (Addition):</strong> [১,২] + [৩,৪] = [৪,৬] — প্রতিটা উপাদান যোগ। embedding-এ: king - man + woman ~= queen।
+<br>② <strong>স্কেলার গুণ (Scalar Multiplication):</strong> ৩ * [১,২] = [৩,৬] — প্রতিটা উপাদান গুণ। temperature scaling-এ ব্যবহৃত।
+<br>③ <strong>ডট গুণন (Dot Product):</strong> [১,২]·[৩,৪] = ১*৩ + ২*৪ = ১১ — কতটা একই দিকে নির্দেশ করছে। attention mechanism-এ ব্যবহৃত!</div></div>
 
 <div class="diagram">
   <div class="diag-title">ডট গুণন — কতটা একই দিক?</div>
@@ -120,7 +120,7 @@ print(word_embedding.shape)  # (768,) — ৭৬৮টা দিক</div>
     body:`<p><strong>Step ১:</strong> একটা সাধারণ সংখ্যা (স্কেলার) নাও — যেমন তোমার বয়স ২৫। এটার কোনো দিক নেই।</p>
 <p><strong>Step ২:</strong> এখন ভাবো — তুমি যদি বলো উত্তরে ২৫ মাইল — এটা ভেক্টর। পরিমাণ আর দিক।</p>
 <p><strong>Step ৩:</strong> ML-এ: একটা ছবি হলো ভেক্টর। [২২৪, ২২৪, ৩] = প্রতিটা pixel-এ red, green, blue মান। মোট ১৫০,৫২৮টা সংখ্যা — একটা তীর ১৫০,৫২৮-মাত্রিক স্থানে।</p>
-<p><strong>Step ৪:</strong> Word2Vec-এ king = [০.৫, -০.২, ...] (৭৬৮টা সংখ্যা)। এই স্থানে king - man + woman ≈ queen। কারণ ভেক্টর যোগ/বিয়োগ অর্থ বহন করে।</p>
+<p><strong>Step ৪:</strong> Word2Vec-এ king = [০.৫, -০.২, ...] (৭৬৮টা সংখ্যা)। এই স্থানে king - man + woman ~= queen। কারণ ভেক্টর যোগ/বিয়োগ অর্থ বহন করে।</p>
 <p><strong>Step ৫:</strong> Dot product (Q·K) = attention mechanism-এ ব্যবহৃত — কোনো query আর key কতটা মিলে তা মাপতে।</p>`
 }
 });
@@ -143,14 +143,14 @@ story:`<p class="scene-setting">১৩শ শতাব্দী। ইসফা�
 <div class="dialogue">মাহমুদ তোমাকে ডাকেন। বলেন — দেখো, এই পাঁচটা টাইল। প্রতিটা একটা নিয়ম — ঘোরাও, বড় করো, ছোট করো। টাইল একই, কিন্তু নকশা বদলায়। ম্যাট্রিক্সও একই। একটা ম্যাট্রিক্স একটা ভেক্টরকে নেয়, ঘোরায়, বড় করে, ছোট করে — এবং নতুন ভেক্টর দেয়। এটাই linear transformation।</div>
 <div class="dialogue en">Mahmud calls you. He says — look, these five tiles. Each is a rule — rotate, enlarge, shrink. Same tile, different pattern. A matrix does the same. It takes a vector, rotates it, stretches it, shrinks it — and gives a new vector. This is a linear transformation.</div>
 
-<div class="callout info"><span class="co-icon">📐</span><div><strong>ম্যাট্রিক্সের সংজ্ঞা:</strong> ম্যাট্রিক্স হলো সংখ্যার একটা আয়তক্ষেত্র। <strong>m × n</strong> ম্যাট্রিক্সে m সারি (rows) আর n কলাম (columns)। গাণিতিকভাবে: <strong>A ∈ ℝ^(m×n)</strong>। উদাহরণ: একটা ৩×৩ ম্যাট্রিক্স একটা ৩D ভেক্টরকে রূপান্তর করতে পারে।</div></div>
+<div class="callout info"><span class="co-icon">📐</span><div><strong>ম্যাট্রিক্সের সংজ্ঞা:</strong> ম্যাট্রিক্স হলো সংখ্যার একটা আয়তক্ষেত্র। <strong>m * n</strong> ম্যাট্রিক্সে m সারি (rows) আর n কলাম (columns)। গাণিতিকভাবে: <strong>A ∈ ℝ^(m*n)</strong>। উদাহরণ: একটা ৩*৩ ম্যাট্রিক্স একটা ৩D ভেক্টরকে রূপান্তর করতে পারে।</div></div>
 
 <table class="kv-table"><tr><th>ম্যাট্রিক্স</th><th>আকার</th><th>কী করে</th><th>ML-এ কোথায়</th></tr>
-<tr><td class="hl">Identity (I)</td><td>n × n</td><td>কিছু বদলায় না</td><td>baseline</td></tr>
-<tr><td class="hl">Weight (W)</td><td>n × m</td><td>ভেক্টরকে রূপান্তর করে</td><td>neural network layers</td></tr>
-<tr><td class="hl">Rotation</td><td>2 × 2</td><td>ঘোরায়</td><td>data augmentation</td></tr>
-<tr><td class="hl">Scaling</td><td>n × n</td><td>বড়/ছোট করে</td><td>normalization</td></tr>
-<tr><td class="hl">Embedding</td><td>V × d</td><td>শব্দ → ভেক্টর</td><td>Word2Vec, BERT</td></tr></table>
+<tr><td class="hl">Identity (I)</td><td>n * n</td><td>কিছু বদলায় না</td><td>baseline</td></tr>
+<tr><td class="hl">Weight (W)</td><td>n * m</td><td>ভেক্টরকে রূপান্তর করে</td><td>neural network layers</td></tr>
+<tr><td class="hl">Rotation</td><td>2 * 2</td><td>ঘোরায়</td><td>data augmentation</td></tr>
+<tr><td class="hl">Scaling</td><td>n * n</td><td>বড়/ছোট করে</td><td>normalization</td></tr>
+<tr><td class="hl">Embedding</td><td>V * d</td><td>শব্দ → ভেক্টর</td><td>Word2Vec, BERT</td></tr></table>
 
 <div class="diagram">
 <div class="diag-title">ম্যাট্রিক্স গুণন — ২D রূপান্তর</div>
@@ -179,8 +179,8 @@ story:`<p class="scene-setting">১৩শ শতাব্দী। ইসফা�
 <div class="dialogue en">Mahmud says — now understand why this is crucial in neural networks. You read Book 8 (LLM Anatomy) — in a transformer, each layer is a matrix multiplication. W·x + b. It takes an input vector, multiplies by a weight matrix, gives output vector. Hundreds of layers — hundreds of matrix multiplications. And this is what GPUs do — thousands of matrix multiplications simultaneously.</div>
 
 <div class="callout tip"><span class="co-icon">🔌</span><div><strong>ম্যাট্রিক্স গুণনের নিয়ম:</strong>
-<br>A (m×k) · B (k×n) = C (m×n)
-<br>প্রতিটা উপাদান: Cᵢⱼ = Σ(Aᵢₖ × Bₖⱼ)
+<br>A (m*k) · B (k*n) = C (m*n)
+<br>প্রতিটা উপাদান: Cᵢⱼ = Σ(Aᵢₖ * Bₖⱼ)
 <br>⚠️ ক্রম গুরুত্বপূর্ণ! A·B ≠ B·A (সাধারণত)
 <br>⚠️ ভেতরের dimension মিলতে হবে (k = k)</div></div>
 
@@ -193,7 +193,7 @@ W = np.array([[2, 0],
           [0, 1]])
 x = np.array([1, 2])
 
-# ম্যাট্রিক্স × ভেক্টর = রূপান্তরিত ভেক্টর
+# ম্যাট্রিক্স * ভেক্টর = রূপান্তরিত ভেক্টর
 result = W @ x  # বা np.dot(W, x)
 print(result)   # [2, 2]
 
@@ -227,7 +227,7 @@ print(outputs.shape)  # (32, 512) — 32টা আউটপুট একসা�
 senior:{
 title:"ম্যাট্রিক্স চিন্তা — কীভাবে অভ্যাস করো",
 body:`<p><strong>Step ১:</strong> ভাবো — একটা Excel spreadsheet হলো ম্যাট্রিক্স। প্রতিটা cell একটা সংখ্যা। Rows আর columns।</p>
-<p><strong>Step ২:</strong> একটা ছবি (image) হলো ম্যাট্রিক্স। ২২৪×২২৪ pixels = ২২৪×২২৪×৩ matrix (RGB)।</p>
+<p><strong>Step ২:</strong> একটা ছবি (image) হলো ম্যাট্রিক্স। ২২৪*২২৪ pixels = ২২৪*২২৪*৩ matrix (RGB)।</p>
 <p><strong>Step ৩:</strong> Neural network-এ: input vector → weight matrix → output vector। এটাই একটা layer।</p>
 <p><strong>Step ৪:</strong> Batch = একাধিক ভেক্টর একসাথে। Batch একটা ম্যাট্রিক্স। ম্যাট্রিক্স গুণ = সব ভেক্টর একসাথে রূপান্তর।</p>
 <p><strong>Step ৫:</strong> GPU = হাজার হাজার cores একসাথে ম্যাট্রিক্স গুণ করে। এটাই GPU কে CPU থেকে আলাদা করে।</p>`
@@ -355,8 +355,8 @@ doors.push({
   recall:{
     q:"Bayes-এর উপপাদ্য কী বলে এবং ML-এ এটি কোথায় ব্যবহৃত হয়?",
     qen:"What does Bayes' theorem say and where is it used in ML?",
-    a:"P(A|B) = P(B|A)×P(A) / P(B)। নতুন প্রমাণ B পেলে A-এর সম্ভাবনা আপডেট করো। Naive Bayes classifier, Bayesian hyperparameter optimization, spam filtering — সব এই নিয়মে কাজ করে।",
-    aen:"P(A|B) = P(B|A)×P(A) / P(B). When new evidence B arrives, update probability of A. Naive Bayes classifier, Bayesian hyperparameter optimization, spam filtering — all use this principle."
+    a:"P(A|B) = P(B|A)*P(A) / P(B)। নতুন প্রমাণ B পেলে A-এর সম্ভাবনা আপডেট করো। Naive Bayes classifier, Bayesian hyperparameter optimization, spam filtering — সব এই নিয়মে কাজ করে।",
+    aen:"P(A|B) = P(B|A)*P(A) / P(B). When new evidence B arrives, update probability of A. Naive Bayes classifier, Bayesian hyperparameter optimization, spam filtering — all use this principle."
   },
   story:`<p class="scene-setting">৮ম শতাব্দী। বাসরা। একজন মানুষ একটা বিশাল বই লিখছেন — কিতাব আল-আইন (Book of Letters)। তাঁর নাম আল-কালিল ইবনে আহমদ আল-ফারাহিদি (Al-Khalil ibn Ahmad al-Farahidi)। এই বইয়ে তিনি প্রথমবার সংযোজনবিদ্যা (combinatorics) আবিষ্কার করেন — সম্ভাব্য সব সংমিশ্রণ গণনা করার পদ্ধতি। আরবি অক্ষর থেকে কত প্রকার শব্দ তৈরি করা যায়? তিনি permutation আর combination এর সূত্র আবিষ্কার করেন — যা ৮০০ বছর পরে Pascal আর Fermat আবার আবিষ্কার করবেন।</p>
 <p class="scene-setting en">8th century. Basra. A man writes a massive book — Kitab al-Ayn (Book of Letters). His name is Al-Khalil ibn Ahmad al-Farahidi. In this book, he discovers combinatorics for the first time — the method of counting all possible combinations. How many words can be formed from Arabic letters? He discovers formulas for permutations and combinations — which Pascal and Fermat will rediscover 800 years later.</p>
@@ -365,7 +365,7 @@ doors.push({
 <div class="dialogue en">Al-Khalil sits with his counting board. His signature — he was blind. But with his fingers, he carved marks on wood — each mark a possibility. He says — knowledge is the count of possibilities. The more possibilities you can enumerate, the deeper the knowledge. But enumeration is just the beginning — probability tells you which will happen. For that, you need Bayes' theorem.</div>
 
 <div class="callout info"><span class="co-icon">📐</span><div><strong>Bayes-এর উপপাদ্য:</strong>
-<br><strong>P(A|B) = P(B|A) × P(A) / P(B)</strong>
+<br><strong>P(A|B) = P(B|A) * P(A) / P(B)</strong>
 <br>P(A|B) = প্রমাণ B পাওয়ার পর A ঘটার সম্ভাবনা (posterior)
 <br>P(A) = আগের বিশ্বাস (prior)
 <br>P(B|A) = A সত্য হলে B পাওয়ার সম্ভাবনা (likelihood)
@@ -385,7 +385,7 @@ doors.push({
     <text class="lbl-sm" x="80" y="75">Prior: P(spam) = ০.৩ (৩০%)</text>
     <text class="lbl-hot" x="280" y="115" text-anchor="middle">↓ নতুন প্রমাণ: email has "FREE MONEY"</text>
     <rect class="cell-hot" x="60" y="135" width="440" height="40" rx="8"/>
-    <text class="lbl-sm" x="80" y="160">Likelihood: P(spam) × P(words|spam)</text>
+    <text class="lbl-sm" x="80" y="160">Likelihood: P(spam) * P(words|spam)</text>
     <text class="lbl-hot" x="280" y="200" text-anchor="middle">↓ Bayes Update</text>
     <rect class="cell-good" x="60" y="215" width="440" height="30" rx="8"/>
     <text class="lbl-leaf" x="280" y="235" text-anchor="middle">Posterior: P(spam|email) = ০.৯৪ (৯৪%)</text>

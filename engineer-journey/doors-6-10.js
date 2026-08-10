@@ -356,7 +356,7 @@ doors.push({
   expert:{
     title:"Prioritization Frameworks ও Cost of Delay",
     body:`
-    <p><strong>RICE / ICE scoring:</strong> এক্সপার্ট গুরুত্ব অনুভূতি দিয়ে ঠিক করেন না — Reach (কত ইউজার), Impact (কতটা প্রভাব), Confidence (কতটা নিশ্চিত), Effort (কত কাজ) দিয়ে স্কোর করেন। RICE = (R×I×C)/E। এটা "কোনটা আগে করবো" বিতর্ককে ডেটা-ভিত্তিক করে।</p>
+    <p><strong>RICE / ICE scoring:</strong> এক্সপার্ট গুরুত্ব অনুভূতি দিয়ে ঠিক করেন না — Reach (কত ইউজার), Impact (কতটা প্রভাব), Confidence (কতটা নিশ্চিত), Effort (কত কাজ) দিয়ে স্কোর করেন। RICE = (R*I*C)/E। এটা "কোনটা আগে করবো" বিতর্ককে ডেটা-ভিত্তিক করে।</p>
     <p><strong>Cost of Delay:</strong> শুধু "কাজ কত বড়" নয় — "না করলে প্রতি সপ্তাহে কত হারাচ্ছি" প্রশ্ন করো। একটা ছোট কিন্তু urgent fix (high cost of delay) একটা বড় কিন্তু non-urgent feature-এর চেয়ে আগে যাওয়া উচিত হতে পারে (CD3 = Cost of Delay ÷ Duration)।</p>
     <p><strong>North Star Metric:</strong> স্টাফ-লেভেল ইঞ্জিনিয়ার প্রতিটা প্রজেক্টকে একটা মূল মেট্রিকের (যেমন weekly active users, retention) সাথে যুক্ত করতে পারেন — যদি না পারেন, প্রশ্ন করেন এটা আদৌ করার দরকার আছে কিনা।</p>
     <p><strong>Saying no with data:</strong> "না" বলা কঠিন, বিশেষত stakeholder-কে। এক্সপার্ট ট্রেড-অফ দেখান — "এটা করলে X কাজ পিছিয়ে যাবে, যেটার cost of delay বেশি। আপনি কোনটা চান?" — সিদ্ধান্ত stakeholder-এর কাছে ফেরত দেওয়া, প্রত্যাখ্যান নয়, পুনর্বিন্যাস।</p>`
@@ -503,14 +503,14 @@ doors.push({
   <text class="lbl-sm" x="130" y="168" style="font-size:9px">Optimistic</text>
 
   <rect class="node-moon" x="260" y="40" width="60" height="110" rx="4" style="fill:rgba(91,158,255,.32)"/>
-  <text class="lbl-moon" x="290" y="30" style="font-size:10px">M = ৪ দিন ×৪</text>
+  <text class="lbl-moon" x="290" y="30" style="font-size:10px">M = ৪ দিন *৪</text>
   <text class="lbl-sm" x="290" y="168" style="font-size:9px">Most Likely</text>
 
   <rect class="node-moon" x="420" y="85" width="60" height="65" rx="4"/>
   <text class="lbl-moon" x="450" y="75" style="font-size:10px">P = ৮ দিন</text>
   <text class="lbl-sm" x="450" y="168" style="font-size:9px">Pessimistic</text>
 
-  <text class="lbl-gold" x="290" y="188" style="font-size:10.5px">Estimate = (2 + 4×4 + 8) / 6 ≈ ৪.৩ দিন</text>
+  <text class="lbl-gold" x="290" y="188" style="font-size:10.5px">Estimate = (2 + 4*4 + 8) / 6 ~= ৪.৩ দিন</text>
 </svg>
 <div class="diag-cap">"Most Likely"-কে ৪ গুণ গুরুত্ব — একটা সংখ্যা নয়, একটা সম্ভাব্যতার বিতরণ। / "Most Likely" weighted 4x — not one number, a probability distribution.</div>
 </div>
@@ -576,7 +576,7 @@ THE BREAKDOWN RULE:
 BUFFER & CONTINGENCY:
   কাজের সময় আনুমানিক ৫ দিন?
   → ৫ দিন বলো না।
-  → ৫ × ১.৫ = ৭.৫ দিন দাও (৫০% buffer)
+  → ৫ * ১.৫ = ৭.৫ দিন দাও (৫০% buffer)
   → বা: ৫ দিন + ২ দিন contingency = ৭ দিন
   
   Buffer কেন?

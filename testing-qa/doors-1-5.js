@@ -414,7 +414,7 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Mock Everything:</strong> Every dependency mocked — test passed but real API returned different format. Fix: don't mock what you don't own, use contract tests.</div></div>
 
 
-<div class="code-block">— Python: পাঁচটি Test Double —
+<div class="code-block"># — Python: পাঁচটি Test Double —
 
   from unittest.mock import MagicMock, patch
 

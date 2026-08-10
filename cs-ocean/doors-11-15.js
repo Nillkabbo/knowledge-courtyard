@@ -91,7 +91,7 @@ doors.push({
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক ধারণা</div>"Data mining + big data = ডেটা থেকে actionable insight। causal inference এখন সবচেয়ে হট — কারণ industry চায় 'কেন', শুধু 'কী' নয়। recsys = Netflix/Amazon-এর মূল। stable funding, প্রতিটা industry-তে demand। গাণিতিক (statistics) ও engineering দুটোই জোড়া লাগে।"</div>
 </div>
 
-<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড়:</strong> causal inference (double ML, synthetic control — econometrics × ML), LLM-based recsys, graph neural networks, real-time streaming fraud (Flink), responsible mining (fairness, privacy), foundation models for tabular data (TabPFN, ২০২৫)।</div></div>
+<div class="callout info"><span class="co-icon">📈</span><div><strong>২০২৪-২৬-তে যা বড়:</strong> causal inference (double ML, synthetic control — econometrics * ML), LLM-based recsys, graph neural networks, real-time streaming fraud (Flink), responsible mining (fairness, privacy), foundation models for tabular data (TabPFN, ২০২৫)।</div></div>
 
 <div class="callout tip"><span class="co-icon">🧭</span><div><strong>তোমার জন্য কি ঠিক?</strong> ✅ statistics/probability ভালোবাসো · ✅ pattern খোঁজা ভালো লাগে · ✅ industry-impact (finance, e-commerce, health) · ✅ database (Door 10) পরিচিত · 💡 causal inference = সবচেয়ে হট, কম ভিড়, উচ্চ demand।</div></div>
 
@@ -104,7 +104,7 @@ doors.push({
 <div class="secret-box">📊 Data Mining + Big Data: ডেটা থেকে সোনা। স্থিতিশীল ফান্ডিং, কম ভিড় (৫-৮%), প্রতিটা industry-তে demand। হট: causal inference (কেন ঘটে), deep recsys, streaming। database (Door 10) পরিচিত থাকলে সহজ।</div>`,
   senior:{
     title:"Data Mining/Big Data PhD — Senior Path",
-    body:`<p><strong>Causal inference = সবচেয়ে হট:</strong> double ML, synthetic control, Do-calculus — econometrics × ML crossover। industry (tech, pharma, policy) এখন causal গবেষক খুঁজছে। "A causes B" প্রমাণ করার method = high-demand skill। Susan Athey, Guido Imbens (২০২১ নোবেল)-এর কাজ পড়ো।</p><p><strong>Recsys with LLMs:</strong> LLM-based recommendation এখন জন্ম নিচ্ছে। একটা GPT-based recsys re-implement করো — RecSys workshop-এ লক্ষ্য। Netflix, Amazon-এর প্রকাশ্য দল এই area-তে hire করে।</p><p><strong>Kaggle দিয়ে portfolio:</strong> একটা Kaggle competition-এ top-10 = concrete credential। দেখায় তুমি real data থেকে insight বের করতে পারো। KDD Cup-এ অংশ নাও।</p><p><strong>Streaming = engineering-heavy:</strong> Flink/Spark-এ একটা real-time fraud/anomaly system বানাও। SIGMOD/VLDB demo track = সহজ entry।</p>`
+    body:`<p><strong>Causal inference = সবচেয়ে হট:</strong> double ML, synthetic control, Do-calculus — econometrics * ML crossover। industry (tech, pharma, policy) এখন causal গবেষক খুঁজছে। "A causes B" প্রমাণ করার method = high-demand skill। Susan Athey, Guido Imbens (২০২১ নোবেল)-এর কাজ পড়ো।</p><p><strong>Recsys with LLMs:</strong> LLM-based recommendation এখন জন্ম নিচ্ছে। একটা GPT-based recsys re-implement করো — RecSys workshop-এ লক্ষ্য। Netflix, Amazon-এর প্রকাশ্য দল এই area-তে hire করে।</p><p><strong>Kaggle দিয়ে portfolio:</strong> একটা Kaggle competition-এ top-10 = concrete credential। দেখায় তুমি real data থেকে insight বের করতে পারো। KDD Cup-এ অংশ নাও।</p><p><strong>Streaming = engineering-heavy:</strong> Flink/Spark-এ একটা real-time fraud/anomaly system বানাও। SIGMOD/VLDB demo track = সহজ entry।</p>`
   }
 });
 

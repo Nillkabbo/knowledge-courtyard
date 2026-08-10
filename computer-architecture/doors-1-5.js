@@ -165,7 +165,7 @@ A OR B = (A NAND A) NAND (B NAND B)<br>
 <div class="verse">
 <strong>Boolean Algebra (বুলিয়ান বীজগণিত):</strong><br>
 জর্জ বুল (George Boole, 1815-1864) ১৮৫৪ সালে প্রকাশ করেন "An Investigation of the Laws of Thought" — যেখানে তিনি দেখান যে যুক্তি (logic) গাণিতিক নিয়মে চলে।<br>
-• AND = গুণ (×), OR = যোগ (+), NOT = পূরক (1−x)<br>
+• AND = গুণ (*), OR = যোগ (+), NOT = পূরক (1−x)<br>
 • De Morgan's Law: NOT(A AND B) = (NOT A) OR (NOT B)<br>
 • শ্যানন (Claude Shannon, 1937) দেখান যে Boolean algebra সরাসরি electrical circuit-এ মানানসই।
 </div>
@@ -313,11 +313,11 @@ doors.push({
 
 <a href="../theory-of-computation/index.html" style="color:var(--accent);font-size:.85rem">← Book 41 (Theory) এর সাথে সংযুক্ত</a>
 
-┌─────────┐   ┌─────────┐   ┌─────────┐   ┌─────────┐   ┌─────────┐
-│   IF    │──▶│   ID    │──▶│   EX    │──▶│  MEM    │──▶│   WB    │
-│ Fetch   │   │ Decode  │   │ ALU     │   │ Memory  │   │ Write   │
-│ Instr.  │   │ Read Reg│   │ Compute │   │ Access  │   │ Back    │
-└─────────┘   └─────────┘   └─────────┘   └─────────┘   └─────────┘
+# ─────────#    # ─────────#    # ─────────#    # ─────────#    # ─────────# 
+#    IF    # ──▶#    ID    # ──▶#    EX    # ──▶#   MEM    # ──▶#    WB    # 
+#  Fetch   #    #  Decode  #    #  ALU     #    #  Memory  #    #  Write   # 
+#  Instr.  #    #  Read Reg#    #  Compute #    #  Access  #    #  Back    # 
+# ─────────#    # ─────────#    # ─────────#    # ─────────#    # ─────────# 
   PC + 4       RegFile       ALU out       LW/SW         RegWrite
   Instr Mem    Sign Ext      Branch?       Data Mem      Result→Reg
 
@@ -607,7 +607,7 @@ Branch prediction থেকে জন্ম নেয় speculative execution�
   <rect x="40" y="250" width="500" height="60" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
   <text x="290" y="270" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">⚡ Pipeline Throughput</text>
   <text x="290" y="287" text-anchor="middle" fill="#cbd5e1" font-size="9">without pipeline: 1 instruction per 5 cycles (CPI = 5)</text>
-  <text x="290" y="301" text-anchor="middle" fill="#cbd5e1" font-size="9">with pipeline: 1 instruction per 1 cycle (CPI ≈ 1) — 5× faster!</text>
+  <text x="290" y="301" text-anchor="middle" fill="#cbd5e1" font-size="9">with pipeline: 1 instruction per 1 cycle (CPI ~= 1) — 5* faster!</text>
 
 </svg>
 <div class="svg-caption">চিত্র: ৫-স্টেজ pipeline — IF, ID, EX, MEM, WB। প্রতিটা instruction এক সাইকেল পরপর শুরু হয়, ফলে প্রতি সাইকেলে একটা করে instruction শেষ হয়।</div>
@@ -637,7 +637,7 @@ doors.push({
   subtitle: "Memory Hierarchy & Cache",
   tech: "L1/L2/L3 Cache, Locality of Reference, Write Policies, Cache Lines",
   spirit: "স্মৃতি — কিছু কাছে, কিছু দূরে, কিছু অনেক দূরে",
-  secret: "তোমার কোডের গতি CPU-এর গতি দ্বারা নয় — মেমোরি hierarchy দ্বারা নির্ধারিত। DRAM = 200× energy।",
+  secret: "তোমার কোডের গতি CPU-এর গতি দ্বারা নয় — মেমোরি hierarchy দ্বারা নির্ধারিত। DRAM = 200* energy।",
   recall: {
     q: "Cache line (block) কী এবং spatial locality কীভাবে কাজে লাগে?",
     qen: "What is a cache line and how does spatial locality work?",
@@ -692,7 +692,7 @@ doors.push({
 
   <!-- Bottom note -->
   <rect x="80" y="320" width="420" height="30" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="290" y="340" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">⚠️ L1 = 4ns → RAM = 137ns = 34× slower! Cache misses = invisible performance cliffs</text>
+  <text x="290" y="340" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">⚠️ L1 = 4ns → RAM = 137ns = 34* slower! Cache misses = invisible performance cliffs</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: Memory Hierarchy Pyramid — উপরে ছোট দ্রুত (Registers), নিচে বড় ধীর (HDD)। প্রতি স্তর ১০x ধীর। Cache miss = performance cliff।</div>

@@ -66,7 +66,7 @@ doors.push({
   <div class="cmp-card cmp-good"><div class="cmp-label">✅ Unsupervised (Door ৬)</div>কোনো লেবেল নেই। শুধু ডেটা। প্যাটার্ন খুঁজো — গ্রুপ, কাঠামো, আউটলায়ার। k-Means, PCA, t-SNE — unsupervised।</div>
 </div>
 
-<div class="code-block">— — — Python: k-Means Clustering — — —
+<div class="code-block"># — — — Python: k-Means Clustering — — —
 
 from sklearn.cluster import KMeans
 from sklearn.datasets import make_blobs
@@ -197,7 +197,7 @@ doors.push({
   <div class="cmp-card cmp-good"><div class="cmp-label">✅ With ReLU</div>ReLU(z) = max(0, z)। Non-linearity আনে। প্রতিটা স্তর সত্যিকারের নতুন প্যাটার্ন শেখে। জটিল সম্পর্ক — বৃত্ত, বক্ররেখা, মুখ — সব সম্ভব।</div>
 </div>
 
-<div class="code-block">— — — Python: Neural Network from Scratch — — —
+<div class="code-block"># — — — Python: Neural Network from Scratch — — —
 
 import numpy as np
 
@@ -287,7 +287,7 @@ doors.push({
 <tr><td class="hl">Accuracy</td><td>(TP+TN)/Total</td><td>balanced ডেটা</td></tr>
 <tr><td class="hl">Precision</td><td>TP/(TP+FP)</td><td>false positive খরচ বেশি</td></tr>
 <tr><td class="hl">Recall</td><td>TP/(TP+FN)</td><td>false negative খরচ বেশি</td></tr>
-<tr><td class="hl">F1 Score</td><td>2×P×R/(P+R)</td><td>imbalanced ডেটা</td></tr>
+<tr><td class="hl">F1 Score</td><td>2*P*R/(P+R)</td><td>imbalanced ডেটা</td></tr>
 <tr><td class="hl">AUC-ROC</td><td>area under curve</td><td>threshold-free</td></tr></table>
 
 <div class="diagram">
@@ -322,7 +322,7 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">📖</span><div><strong>Book ১৬ (LLM Evals) সংযোগ:</strong> এই metrics শুধু classic ML নয় — LLM evaluation-এও ব্যবহৃত। Precision@k, Recall@k, MRR — সব এই ভিত্তি থেকে। Cross-entropy loss (Book ৩০ Door ৯) আর perplexity — সব এক পরিবার।</div></div>
 
-<div class="code-block">— — — Python: Model Evaluation — — —
+<div class="code-block"># — — — Python: Model Evaluation — — —
 
 from sklearn.metrics import (classification_report,
     confusion_matrix, cross_val_score)
@@ -405,7 +405,7 @@ doors.push({
   <div class="cmp-card cmp-bad"><div class="cmp-label">❌ High Variance (Overfit)</div>মডেল খুব জটিল। Training error কম, test error বেশি। Noise মুখস্থ। সমাধান: regularization, কম feature, বেশি ডেটা।</div>
 </div>
 
-<div class="code-block">— — — Python: Diagnosing Bias vs Variance — — —
+<div class="code-block"># — — — Python: Diagnosing Bias vs Variance — — —
 
 from sklearn.model_selection import learning_curve
 import numpy as np
@@ -499,7 +499,7 @@ doors.push({
 <br>এটাই কেন তোমাকে সব অ্যালগরিদম জানতে হবে।
 <br>এটাই কেন এই বই।</div></div>
 
-<div class="code-block">— — — Python: Scikit-Learn দিয়ে সম্পূর্ণ Pipeline — — —
+<div class="code-block"># — — — Python: Scikit-Learn দিয়ে সম্পূর্ণ Pipeline — — —
 
 from sklearn.datasets import load_iris
 from sklearn.model_selection import cross_val_score

@@ -368,8 +368,8 @@ doors.push({
   $ lsblk
   NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
   sda      8:0    0   500G  0 disk
-  ├─sda1   8:1    0   100G  0 part /
-  └─sda2   8:2    0   400G  0 part /home
+  # ─sda1   8:1    0   100G  0 part /
+  # ─sda2   8:2    0   400G  0 part /home
 
   # strace — system calls:
   $ strace -e read,write cat /etc/hosts

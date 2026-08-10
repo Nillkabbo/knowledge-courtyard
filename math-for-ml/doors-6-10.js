@@ -62,7 +62,7 @@ doors.push({
 <div class="dialogue en">Ibn al-Haytham says — imagine you stand on a mountaintop, eyes closed. You must descend. What do you do? Feel the slope under your feet — which direction is steepest downward? Take one step there. Feel the slope again. Another step. This is gradient descent. Mountain = loss function. Slope = gradient. Step length = learning rate. Valley = minimum loss.</div>
 
 <div class="callout tip"><span class="co-icon">🔌</span><div><strong>Gradient Descent-এর সূত্র:</strong>
-<br><strong>w_new = w_old - η × ∇L</strong>
+<br><strong>w_new = w_old - η * ∇L</strong>
 <br>w = weight, η (eta) = learning rate, ∇L = loss-এর gradient
 <br>⚠️ Learning rate খুব বেশি = minimum পার হয়ে যাবে
 <br>⚠️ Learning rate খুব কম = অনন্তকাল ধরে নামবে
@@ -119,8 +119,8 @@ doors.push({
   recall:{
     q:"Backpropagation কী এবং চেইন রুল এতে কীভাবে কাজ করে?",
     qen:"What is backpropagation and how does the chain rule work in it?",
-    a:"Backpropagation হলো loss থেকে পেছনে গিয়ে প্রতিটা weight-এর জন্য gradient বের করা। চেইন রুল বলে — যদি y=f(g(x)), তাহলে dy/dx = (dy/dg)×(dg/dx)। প্রতিটা layer-এ এই গুণ চলে।",
-    aen:"Backpropagation computes gradients for each weight by moving backward from loss. The chain rule says: if y=f(g(x)), then dy/dx = (dy/dg)×(dg/dx). This multiplication happens at each layer."
+    a:"Backpropagation হলো loss থেকে পেছনে গিয়ে প্রতিটা weight-এর জন্য gradient বের করা। চেইন রুল বলে — যদি y=f(g(x)), তাহলে dy/dx = (dy/dg)*(dg/dx)। প্রতিটা layer-এ এই গুণ চলে।",
+    aen:"Backpropagation computes gradients for each weight by moving backward from loss. The chain rule says: if y=f(g(x)), then dy/dx = (dy/dg)*(dg/dx). This multiplication happens at each layer."
   },
   story:`<p class="scene-setting">একটা কাফেলা রেশম পথে চলেছে — বাগদাদ থেকে দামেস্ক। কাফেলার প্রতিটা উট একটার সাথে অন্যটা দড়ি দিয়ে যুক্ত। শেষ উটের পিঠে মূল্যবান রেশম। হঠাৎ কাফেলা নেতা দেখলেন — রেশম পানি পেয়েছে! কে দোষী? কোন উটের গতি ধীর ছিল? তিনি পেছনে ফিরে যান — শেষ উট থেকে শুরু করে একটা একটা করে পরীক্ষা করেন। প্রতিটা উট তার সামনের উটকে দোষ দেখায়। এটাই backpropagation — শেষ থেকে শুরু পর্যন্ত ভুল ছড়িয়ে যাওয়া।</p>
 <p class="scene-setting en">A caravan travels the Silk Road — Baghdad to Damascus. Each camel is roped to the one ahead. The last camel carries precious silk. Suddenly the leader notices — the silk is wet! Who is responsible? Which camel was too slow? He goes backward — starting from the last camel, checking one by one. Each camel blames the one ahead. This is backpropagation — error flowing backward from output to input.</p>
@@ -130,8 +130,8 @@ doors.push({
 
 <div class="callout info"><span class="co-icon">📐</span><div><strong>চেইন রুলের সূত্র:</strong>
 <br>যদি <strong>y = f(g(x))</strong>, তাহলে:
-<br><strong>dy/dx = (dy/dg) × (dg/dx)</strong>
-<br>অর্থাৎ — বাইরের ফাংশনের ডেরিভেটিভ × ভেতরের ফাংশনের ডেরিভেটিভ।
+<br><strong>dy/dx = (dy/dg) * (dg/dx)</strong>
+<br>অর্থাৎ — বাইরের ফাংশনের ডেরিভেটিভ * ভেতরের ফাংশনের ডেরিভেটিভ।
 <br>Neural network-এ: ৫টা layer হলে ৫টা গুণ — একটার পর একটা।</div></div>
 
 <div class="diagram">
@@ -174,13 +174,13 @@ doors.push({
 <div class="callout tip"><span class="co-icon">🔌</span><div><strong>Backpropagation-এর ৩টি ধাপ:</strong>
 <br>① <strong>Forward pass:</strong> input → প্রতিটা layer → output। প্রতিটা activation save করো।
 <br>② <strong>Loss compute:</strong> output আর target এর পার্থক্য। Cross-entropy বা MSE।
-<br>③ <strong>Backward pass:</strong> loss থেকে পেছনে যাও। চেইন রুল দিয়ে প্রতিটা weight-এর gradient। তারপর update: w -= lr × grad।</div></div>
+<br>③ <strong>Backward pass:</strong> loss থেকে পেছনে যাও। চেইন রুল দিয়ে প্রতিটা weight-এর gradient। তারপর update: w -= lr * grad।</div></div>
 
 <div class="code-block">— — — Chain Rule & Backprop Simulation — — —
 
 import numpy as np
 
-# সরল 2-layer network: y = σ(w2 × σ(w1 × x))
+# সরল 2-layer network: y = σ(w2 * σ(w1 * x))
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
@@ -206,7 +206,7 @@ dL_dy = -(target - y)               # dL/dy
 dy_dz2 = sigmoid_derivative(z2)     # dy/dz2
 dz2_dw2 = a1                         # dz2/dw2
 
-# Chain rule: dL/dw2 = dL/dy × dy/dz2 × dz2/dw2
+# Chain rule: dL/dw2 = dL/dy * dy/dz2 * dz2/dw2
 dL_dw2 = dL_dy * dy_dz2 * dz2_dw2
 
 # আরও পেছনে: dL/dw1
@@ -265,7 +265,7 @@ doors.push({
 
 <table class="kv-table"><tr><th>Loss Function</th><th>সূত্র</th><th>কখন ব্যবহার</th></tr>
 <tr><td class="hl">MSE</td><td>Σ(y - ŷ)² / n</td><td>regression, continuous</td></tr>
-<tr><td class="hl">Cross-Entropy</td><td>-Σ y×log(ŷ)</td><td>classification, LLMs</td></tr>
+<tr><td class="hl">Cross-Entropy</td><td>-Σ y*log(ŷ)</td><td>classification, LLMs</td></tr>
 <tr><td class="hl">L1 (Lasso)</td><td>Σ|wᵢ|</td><td>sparse weights</td></tr>
 <tr><td class="hl">L2 (Ridge)</td><td>Σwᵢ²</td><td>small weights</td></tr>
 <tr><td class="hl">Huber</td><td>MSE + MAE</td><td>robust to outliers</td></tr></table>
@@ -294,8 +294,8 @@ doors.push({
 </div>
 
 <div class="callout tip"><span class="co-icon">🔌</span><div><strong>Regularization-এর ৪টি উপায়:</strong>
-<br>① <strong>L2 (Ridge):</strong> Loss + λ×Σwᵢ²। Weight-এর মান ছোট রাখে। সবচেয়ে সাধারণ।
-<br>② <strong>L1 (Lasso):</strong> Loss + λ×Σ|wᵢ|। কিছু weight শূন্য করে দেয় → sparse model। Feature selection।
+<br>① <strong>L2 (Ridge):</strong> Loss + λ*Σwᵢ²। Weight-এর মান ছোট রাখে। সবচেয়ে সাধারণ।
+<br>② <strong>L1 (Lasso):</strong> Loss + λ*Σ|wᵢ|। কিছু weight শূন্য করে দেয় → sparse model। Feature selection।
 <br>③ <strong>Dropout:</strong> Training-এ এলোমেলো কিছু neuron বন্ধ করা। Srivastava et al. (2014)।
 <br>④ <strong>Early Stopping:</strong> Validation loss বাড়তে শুরু করলে training থামাও।</div></div>
 
@@ -358,8 +358,8 @@ doors.push({
   recall:{
     q:"Cross-entropy loss কী এবং কেন LLM training-এ ব্যবহৃত হয়?",
     qen:"What is cross-entropy loss and why is it used in LLM training?",
-    a:"Cross-entropy = -Σ y×log(ŷ)। এটা বলে মডেলের predicted probability distribution আর আসল distribution কতটা আলাদা। LLM-এ প্রতিটা next token-এর জন্য cross-entropy কমানোই লক্ষ্য।",
-    aen:"Cross-entropy = -Σ y×log(ŷ). It measures how different the model's predicted probability distribution is from the true distribution. In LLMs, minimizing cross-entropy for each next token is the goal."
+    a:"Cross-entropy = -Σ y*log(ŷ)। এটা বলে মডেলের predicted probability distribution আর আসল distribution কতটা আলাদা। LLM-এ প্রতিটা next token-এর জন্য cross-entropy কমানোই লক্ষ্য।",
+    aen:"Cross-entropy = -Σ y*log(ŷ). It measures how different the model's predicted probability distribution is from the true distribution. In LLMs, minimizing cross-entropy for each next token is the goal."
   },
   story:`<p class="scene-setting">৯ম শতাব্দী। বাসরা। আল-জাহিজ (Al-Jahiz) — মহান প্রকৃতিবিদ ও লেখক — তাঁর বিখ্যাত বই কিতাব আল-হায়ওয়ান (Book of Animals) লিখছেন। সেখানে তিনি প্রথমবার লিখেছেন — প্রাণীরা তাদের পরিবেশের সাথে খাপ খাইয়ে নেয়। বিশৃঙ্খলা (chaos) থেকে শৃঙ্খলা (order) তৈরি হয়। তাঁর বিশেষত্ব — তাঁর চোখ সবসময় লালচে, কারণ তিনি রোজ সারা দিন মরুভূমিতে প্রাণী পর্যবেক্ষণ করতেন। তিনি দেখেছিলেন — chaos এর ভেতর একটা pattern আছে। সেই pattern খুঁজে বের করাই বিজ্ঞান। এটাই এন্ট্রপির সারমর্ম।</p>
 <p class="scene-setting en">9th century. Basra. Al-Jahiz — great naturalist and writer — writes his famous Kitab al-Hayawan (Book of Animals). There he writes for the first time — animals adapt to their environment. Order emerges from chaos. His signature — his eyes are always reddish, because he spent every day in the desert observing animals. He saw — within chaos there is a pattern. Finding that pattern is science. This is the essence of entropy.</p>
@@ -368,7 +368,7 @@ doors.push({
 <div class="dialogue en">Al-Jahiz says — think of a coin flip. If the coin is fair — 50/50 — you don't know what will come. This is high entropy. But if the coin is rigged — always heads — you are certain. This is low entropy. Entropy measures how uncertain you are. More uncertainty = more entropy. Shannon (1948) gave this mathematical form.</div>
 
 <div class="callout info"><span class="co-icon">📐</span><div><strong>এন্ট্রপির সংজ্ঞা (Shannon, 1948):</strong>
-<br><strong>H(p) = -Σ p(x) × log₂(p(x))</strong>
+<br><strong>H(p) = -Σ p(x) * log₂(p(x))</strong>
 <br>p(x) = ঘটনার সম্ভাবনা।
 <br>বেশি সম্ভাবনা = কম অবদান (আপনি জানেন, কম তথ্য)।
 <br>কম সম্ভাবনা = বেশি অবদান (অবাক, বেশি তথ্য)।
@@ -533,7 +533,7 @@ doors.push({
 
 <div class="callout info"><span class="co-icon">🧭</span><div><strong>একটা Transformer খোলো — ভেতরে কী আছে?</strong>
 <br>① Input words → <strong>ভেক্টর</strong> (embeddings, Door ১)
-<br>② Embeddings × <strong>ম্যাট্রিক্স</strong> = Q, K, V (Door ২)
+<br>② Embeddings * <strong>ম্যাট্রিক্স</strong> = Q, K, V (Door ২)
 <br>③ Q·K = attention scores via <strong>ডট গুণন</strong> (Door ১)
 <br>④ Softmax(scores) = <strong>সম্ভাবনা</strong> (Door ৪)
 <br>⑤ Training: <strong>cross-entropy loss</strong> (Door ৯)

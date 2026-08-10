@@ -205,8 +205,8 @@ doors.push({
   recall: {
     q: " গ্রেডিয়েন্ট ডিসেন্টের আপডেট নিয়ম কী?",
     qen: "What is the gradient descent update rule?",
-    a: "x_{t+1} = x_t - η · ∇f(x_t)। বর্তমান অবস্থান থেকে গ্রেডিয়েন্ট × লার্নিং রেট বিয়োগ করো।",
-    aen: "x_{t+1} = x_t - η · ∇f(x_t). Subtract gradient × learning rate from current position."
+    a: "x_{t+1} = x_t - η · ∇f(x_t)। বর্তমান অবস্থান থেকে গ্রেডিয়েন্ট * লার্নিং রেট বিয়োগ করো।",
+    aen: "x_{t+1} = x_t - η · ∇f(x_t). Subtract gradient * learning rate from current position."
   },
   story: `<p class="scene-setting">প্যারিস, ১৮৪৭। Augustin-Louis Cauchy ফরাসি একাডেমিতে একটি পেপার উপস্থাপন করছেন। তার প্রশ্ন সহজ কিন্তু বিপ্লবাত্মক — কোনো ফাংশনের ন্যূনতম বিন্দু কীভাবে খুঁজে বের করব? উত্তর: ঢাল মাপো, নিচের দিকে যাও। এটাই গ্রেডিয়েন্ট ডিসেন্ট — ১৭৭ বছর আগের একটি ধারণা যা আজকের প্রতিটি AI মডেলকে চালিত করে।</p>
 <p class="scene-setting en">Paris, 1847. Augustin-Louis Cauchy presents a paper to the French Academy. His question: how to find the minimum of any function? Answer: measure the slope, go downhill. This is gradient descent — a 177-year-old idea that powers every modern AI model.</p>
@@ -326,7 +326,7 @@ doors.push({
 <strong>x_{t+1} = x_t - H⁻¹ · ∇f(x_t)</strong><br>
 যেখানে H = Hessian ম্যাট্রিক্স = ∇²f (দ্বিতীয় ডেরিভেটিভের ম্যাট্রিক্স)<br><br>
 <strong>1D-তে (একটি চলক):</strong> x_{t+1} = x_t - f'(x)/f''(x)<br>
-<strong>nD-তে (n চলক):</strong> H একটি n×n ম্যাট্রিক্স — প্রতিটি জোড়া চলকের মিথস্ক্রিয়া</div></div>
+<strong>nD-তে (n চলক):</strong> H একটি n*n ম্যাট্রিক্স — প্রতিটি জোড়া চলকের মিথস্ক্রিয়া</div></div>
 
 <div class="code-block">— Newton বনাম Gradient Descent —
 
@@ -335,18 +335,18 @@ doors.push({
   Gradient Descent (η=0.1):
     step 0: x=3.0, f'=29
     step 1: x=0.1, f'=-3.6   ← লাফ দিয়েছে
-    step 50: x=-1.35, f'≈0   ← অনেক ধাপ
+    step 50: x=-1.35, f'~=0   ← অনেক ধাপ
 
   Newton (স্বয়ংক্রিয় পদক্ষেপ):
     step 0: x=3.0, f'=29,  f''=104
     step 1: x=2.72, f'=22, f''=85  ← H⁻¹ পদক্ষেপ
-    step 6: x=1.44, f'≈0           ← ৬ ধাপে converge!
+    step 6: x=1.44, f'~=0           ← ৬ ধাপে converge!
 
   — সুবিধা: কম ধাপ (quadratic convergence) —
   — অসুবিধা: H⁻¹ হিসাব খরচ O(n³) —
-    n=1M weights হলে H হলো 1M×1M ম্যাট্রিক্স! অসম্ভব —</div>
+    n=1M weights হলে H হলো 1M*1M ম্যাট্রিক্স! অসম্ভব —</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Newton-এর দুর্ভাগ্য:</strong> Hessian উল্টানো (inversion) অত্যন্ত ব্যয়বহুল। n=১০০০ weights হলে H = ১০০০×১০০০ ম্যাট্রিক্স — উল্টানো O(n³) = ১০⁹ operations। আধুনিক নিউরাল নেটে n = ১০⁹ — Hessian উল্টানো মহাবিশ্বের পরমাণুর চেয়ে বেশি operations। তাই ML-এ gradient descent-ই ব্যবহৃত হয় — কিন্তু quasi-Newton (L-BFGS) approximation করে।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Newton-এর দুর্ভাগ্য:</strong> Hessian উল্টানো (inversion) অত্যন্ত ব্যয়বহুল। n=১০০০ weights হলে H = ১০০০*১০০০ ম্যাট্রিক্স — উল্টানো O(n³) = ১০⁹ operations। আধুনিক নিউরাল নেটে n = ১০⁹ — Hessian উল্টানো মহাবিশ্বের পরমাণুর চেয়ে বেশি operations। তাই ML-এ gradient descent-ই ব্যবহৃত হয় — কিন্তু quasi-Newton (L-BFGS) approximation করে।</div></div>
 
 <div class="verse">إِنَّ اللَّهَ يَأْمُرُ بِالْعَدْلِ وَالْإِحْسَانِ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই আল্লাহ ন্যায়বিচার ও ইহসানের নির্দেশ দেন।" — কুরআন ১৬:৯০</div>
@@ -380,7 +380,7 @@ doors.push({
     body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
 <tr><td class="hl">Newton (1669)</td><td>টেঙ্জেন্ট লাইন দিয়ে root খোঁজা</td></tr>
 <tr><td class="hl">Update Rule</td><td>x_{t+1} = x_t - H⁻¹∇f(x_t)</td></tr>
-<tr><td class="hl">Hessian H</td><td>দ্বিতীয় ডেরিভেটিভের n×n ম্যাট্রিক্স</td></tr>
+<tr><td class="hl">Hessian H</td><td>দ্বিতীয় ডেরিভেটিভের n*n ম্যাট্রিক্স</td></tr>
 <tr><td class="hl">Quadratic Conv.</td><td>√(error) প্রতি ধাপ — দ্রুত</td></tr>
 <tr><td class="hl">দুর্বলতা</td><td>H⁻¹ হিসাব O(n³) — বড় মডেলে অসম্ভব</td></tr>
 <tr><td class="hl">L-BFGS</td><td>Quasi-Newton — H⁻¹ approximate করে</td></tr>
@@ -396,7 +396,7 @@ doors.push({
   subtitle: "Balance Within Limits",
   tech: "Constrained Optimization & Lagrangian — Lagrange (1788), KKT conditions (Karush 1939, Kuhn-Tucker 1951)",
   spirit: "মিজান — ভারসাম্য, শর্তের মধ্যে সেরা",
-  secret: "Lagrangian = উদ্দেশ্য + λ × শর্ত। শর্তকে উদ্দেশ্যের সাথে মিলিয়ে দাও — সীমাবদ্ধ সমস্যা সীমাহীন হয়ে যায়। λ (Lagrange multiplier) = শর্তের ছাড় — কতটা শিথিল করলে উদ্দেশ্য কত বাড়ে।",
+  secret: "Lagrangian = উদ্দেশ্য + λ * শর্ত। শর্তকে উদ্দেশ্যের সাথে মিলিয়ে দাও — সীমাবদ্ধ সমস্যা সীমাহীন হয়ে যায়। λ (Lagrange multiplier) = শর্তের ছাড় — কতটা শিথিল করলে উদ্দেশ্য কত বাড়ে।",
   recall: {
     q: " Lagrangian ফাংশন কী? KKT শর্ত কী বলে?",
     qen: "What is the Lagrangian function? What are KKT conditions?",
@@ -463,7 +463,7 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Lagrangian — উদ্দেশ্য ও শর্তের ভারসাম্য। KKT শর্ত সর্বোত্তম বিন্দু খুঁজে দেয়।</div>
 
-<div class="secret-box">⚖️ <strong>Lagrangian = উদ্দেশ্য + λ × শর্ত।</strong> শর্তকে উদ্দেশ্যে মিলিয়ে দাও — সীমাবদ্ধ সমস্যা সীমাহীন হয়ে যায়। λ = শর্তের দাম। এতদিন পর্যন্ত তুমি শিখলে — উতলা বাটি (Door ২), ঢাল অনুসরণ (Door ৩), বক্রতা (Door ৪), ভারসাম্য (Door ৫)। কিন্তু সবই ডেটার পুরো সেট নিয়ে কাজ করে। বাস্তবে ডেটা বিশাল — কোটি কোটি পয়েন্ট। প্রতিটি ধাপে পুরো ডেটা দেখা অসম্ভব। কী করবে? আসবে পরের দরজায় — শব্দ দিয়ে সত্য খোঁজা।</div>`,
+<div class="secret-box">⚖️ <strong>Lagrangian = উদ্দেশ্য + λ * শর্ত।</strong> শর্তকে উদ্দেশ্যে মিলিয়ে দাও — সীমাবদ্ধ সমস্যা সীমাহীন হয়ে যায়। λ = শর্তের দাম। এতদিন পর্যন্ত তুমি শিখলে — উতলা বাটি (Door ২), ঢাল অনুসরণ (Door ৩), বক্রতা (Door ৪), ভারসাম্য (Door ৫)। কিন্তু সবই ডেটার পুরো সেট নিয়ে কাজ করে। বাস্তবে ডেটা বিশাল — কোটি কোটি পয়েন্ট। প্রতিটি ধাপে পুরো ডেটা দেখা অসম্ভব। কী করবে? আসবে পরের দরজায় — শব্দ দিয়ে সত্য খোঁজা।</div>`,
   senior: {
     title: "Constrained Optimization এক নজরে",
     body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>

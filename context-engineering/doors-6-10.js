@@ -87,12 +87,12 @@ CONTEXT WINDOW ECONOMICS WITH COMPRESSION:
   Without compression:
     50-turn conversation = ১০,০০০+ tokens
     → প্রতি turn-এ পুরো ১০K পাঠাও
-    → ৫০ turns × ১০K avg = ৫০০K total tokens
+    → ৫০ turns * ১০K avg = ৫০০K total tokens
     → $২.৫০ per conversation (GPT-4o)
   
   With rolling summary:
     50-turn conversation = ২,০০০ avg tokens
-    → ৫০ turns × ২K avg = ১০০K total tokens
+    → ৫০ turns * ২K avg = ১০০K total tokens
     → $০.৫০ per conversation
     → ৮০% cost reduction!</div>
 
@@ -166,36 +166,36 @@ doors.push({
 
               LONG CONTEXT         RAG
               (stuff everything)   (retrieve needed)
-─────────────┼─────────────────────┼──────────────────
-SIMPLICITY   │ ✅ সরল — কোনো       │ ❌ জটিল — pipeline
-             │    pipeline নেই     │    লাগে (embed, 
-             │                     │    search, rerank)
-─────────────┼─────────────────────┼──────────────────
-COST         │ ❌ ব্যয়বহুল —       │ ✅ সস্তা — শুধু 
-             │    প্রতি কলে পুরো   │    relevant chunks
-             │    context খরচ      │    (৫-১০K tokens)
-─────────────┼─────────────────────┼──────────────────
-LATENCY      │ ❌ ধীর — ১M tokens  │ ✅ দ্রুত — ছোট 
-             │    process করতে     │    context = দ্রুত
-             │    সময় লাগে         │    response
-─────────────┼─────────────────────┼──────────────────
-ACCURACY     │ ⚠️ মিশ্র — attention │ ✅ সূক্ষ্ম — 
-             │    dilution. মাঝে   │    শুধু relevant
-             │    তথ্য হারায়       │    info, focus তীক্ষ্ণ
-─────────────┼─────────────────────┼──────────────────
-CITATION     │ ❌ কঠিন — কোথা থেকে │ ✅ সহজ — প্রতিটা 
-             │    এলো বলা কঠির     │    chunk-এ source
-─────────────┼─────────────────────┼──────────────────
-UPDATES      │ ❌ প্রতি update-এ   │ ✅ সহজ — নতুন 
-             │    পুরো context      │    doc → embed → 
-             │    পুনরায় পাঠাও     │    add to DB
-─────────────┼─────────────────────┼──────────────────
-SCALE        │ ❌ সীমিত — ১M-২M   │ ✅ অসীম — vector
-             │    tokens পর্যন্ত    │    DB billion docs
-─────────────┼─────────────────────┼──────────────────
-MULTI-HOP    │ ✅ ভালো — সব এক    │ ⚠️ কঠিন — একাধিক
-             │    জায়গায়, সংযোগ  │    retrieval round
-             │    করা সহজ           │    লাগতে পারে
+─────────────# ─────────────────────# ──────────────────
+SIMPLICITY   #  ✅ সরল — কোনো       #  ❌ জটিল — pipeline
+             #     pipeline নেই     #     লাগে (embed, 
+             #                      #     search, rerank)
+─────────────# ─────────────────────# ──────────────────
+COST         #  ❌ ব্যয়বহুল —       #  ✅ সস্তা — শুধু 
+             #     প্রতি কলে পুরো   #     relevant chunks
+             #     context খরচ      #     (৫-১০K tokens)
+─────────────# ─────────────────────# ──────────────────
+LATENCY      #  ❌ ধীর — ১M tokens  #  ✅ দ্রুত — ছোট 
+             #     process করতে     #     context = দ্রুত
+             #     সময় লাগে         #     response
+─────────────# ─────────────────────# ──────────────────
+ACCURACY     #  ⚠️ মিশ্র — attention #  ✅ সূক্ষ্ম — 
+             #     dilution. মাঝে   #     শুধু relevant
+             #     তথ্য হারায়       #     info, focus তীক্ষ্ণ
+─────────────# ─────────────────────# ──────────────────
+CITATION     #  ❌ কঠিন — কোথা থেকে #  ✅ সহজ — প্রতিটা 
+             #     এলো বলা কঠির     #     chunk-এ source
+─────────────# ─────────────────────# ──────────────────
+UPDATES      #  ❌ প্রতি update-এ   #  ✅ সহজ — নতুন 
+             #     পুরো context      #     doc → embed → 
+             #     পুনরায় পাঠাও     #     add to DB
+─────────────# ─────────────────────# ──────────────────
+SCALE        #  ❌ সীমিত — ১M-২M   #  ✅ অসীম — vector
+             #     tokens পর্যন্ত    #     DB billion docs
+─────────────# ─────────────────────# ──────────────────
+MULTI-HOP    #  ✅ ভালো — সব এক    #  ⚠️ কঠিন — একাধিক
+             #     জায়গায়, সংযোগ  #     retrieval round
+             #     করা সহজ           #     লাগতে পারে
 
 DECISION RULES:
 
@@ -594,68 +594,68 @@ doors.push({
 
 <div class="code-block">Production Context Architecture — Complete Pipeline:
 
-┌──────────────────────────────────────────┐
-│ USER QUERY: "How does RAG handle           │
-│ multi-hop questions?"                      │
-└──────────────────┬───────────────────────┘
+# ──────────────────────────────────────────# 
+#  USER QUERY: "How does RAG handle           # 
+#  multi-hop questions?"                      # 
+# ──────────────────# ───────────────────────# 
                    ↓
-┌──────────────────────────────────────────┐
-│ ১. QUERY UNDERSTANDING                     │
-│ • Query classification (factual? multi-hop?)│
-│ • Query rewriting (optimize for retrieval) │
-│ • Sub-question decomposition (if multi-hop) │
-└──────────────────┬───────────────────────┘
+# ──────────────────────────────────────────# 
+#  ১. QUERY UNDERSTANDING                     # 
+#  • Query classification (factual? multi-hop?)# 
+#  • Query rewriting (optimize for retrieval) # 
+#  • Sub-question decomposition (if multi-hop) # 
+# ──────────────────# ───────────────────────# 
                    ↓
-┌──────────────────────────────────────────┐
-│ ২. RETRIEVAL (Hybrid)                      │
-│ • Dense search → top-50 (semantic)         │
-│ • Sparse/BM25 search → top-50 (keyword)    │
-│ • RRF fusion → top-20                      │
-└──────────────────┬───────────────────────┘
+# ──────────────────────────────────────────# 
+#  ২. RETRIEVAL (Hybrid)                      # 
+#  • Dense search → top-50 (semantic)         # 
+#  • Sparse/BM25 search → top-50 (keyword)    # 
+#  • RRF fusion → top-20                      # 
+# ──────────────────# ───────────────────────# 
                    ↓
-┌──────────────────────────────────────────┐
-│ ৩. RERANKING (Cross-encoder)               │
-│ • Query × each doc → score                 │
-│ • top-20 → top-5                           │
-└──────────────────┬───────────────────────┘
+# ──────────────────────────────────────────# 
+#  ৩. RERANKING (Cross-encoder)               # 
+#  • Query * each doc → score                 # 
+#  • top-20 → top-5                           # 
+# ──────────────────# ───────────────────────# 
                    ↓
-┌──────────────────────────────────────────┐
-│ ৪. CONTEXT ASSEMBLY (Positioning)          │
-│ • System prompt (top — primacy)            │
-│ • Less relevant docs (middle)              │
-│ • Most relevant docs (bottom — recency)    │
-│ • User query (very bottom)                 │
-│ • Budget check (total < 32K)               │
-└──────────────────┬───────────────────────┘
+# ──────────────────────────────────────────# 
+#  ৪. CONTEXT ASSEMBLY (Positioning)          # 
+#  • System prompt (top — primacy)            # 
+#  • Less relevant docs (middle)              # 
+#  • Most relevant docs (bottom — recency)    # 
+#  • User query (very bottom)                 # 
+#  • Budget check (total < 32K)               # 
+# ──────────────────# ───────────────────────# 
                    ↓
-┌──────────────────────────────────────────┐
-│ ৫. COMPRESSION (if needed)                 │
-│ • LLMLingua — remove low-info tokens       │
-│ • Extractive — keep only relevant sentences│
-└──────────────────┬───────────────────────┘
+# ──────────────────────────────────────────# 
+#  ৫. COMPRESSION (if needed)                 # 
+#  • LLMLingua — remove low-info tokens       # 
+#  • Extractive — keep only relevant sentences# 
+# ──────────────────# ───────────────────────# 
                    ↓
-┌──────────────────────────────────────────┐
-│ ৬. LLM GENERATION                          │
-│ • temperature=0 (factual)                  │
-│ • Structured output (citation required)    │
-│ • Streaming (user sees fast)               │
-└──────────────────┬───────────────────────┘
+# ──────────────────────────────────────────# 
+#  ৬. LLM GENERATION                          # 
+#  • temperature=0 (factual)                  # 
+#  • Structured output (citation required)    # 
+#  • Streaming (user sees fast)               # 
+# ──────────────────# ───────────────────────# 
                    ↓
-┌──────────────────────────────────────────┐
-│ ৭. POST-PROCESSING                         │
-│ • Citation verification                    │
-│ • Confidence scoring (logprobs)            │
-│ • Hallucination check (self-verify)        │
-│ • Memory update (entity/summary)           │
-└──────────────────┬───────────────────────┘
+# ──────────────────────────────────────────# 
+#  ৭. POST-PROCESSING                         # 
+#  • Citation verification                    # 
+#  • Confidence scoring (logprobs)            # 
+#  • Hallucination check (self-verify)        # 
+#  • Memory update (entity/summary)           # 
+# ──────────────────# ───────────────────────# 
                    ↓
-┌──────────────────────────────────────────┐
-│ ANSWER: "RAG handles multi-hop through     │
-│ iterative retrieval [Source: doc3, p.12].  │
-│ First, it decomposes the question [doc1],  │
-│ then retrieves for each sub-question       │
-│ [doc5]..."                                 │
-└──────────────────────────────────────────┘
+# ──────────────────────────────────────────# 
+#  ANSWER: "RAG handles multi-hop through     # 
+#  iterative retrieval [Source: doc3, p.12].  # 
+#  First, it decomposes the question [doc1],  # 
+#  then retrieves for each sub-question       # 
+#  [doc5]..."                                 # 
+# ──────────────────────────────────────────# 
 
 LATENCY BUDGET:
   Query understanding:    ~৫০ms

@@ -195,7 +195,7 @@ doors.push({
 <text x="300" y="225" fill="#c084fc" font-size="9">freedom</text>
 <!-- Vector operation -->
 <line x1="400" y1="150" x2="430" y2="160" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="3,2"/>
-<text x="375" y="190" fill="#7dd3fc" font-size="10">king − man + woman ≈ queen</text>
+<text x="375" y="190" fill="#7dd3fc" font-size="10">king − man + woman ~= queen</text>
 <!-- Bottom labels -->
 <text x="60" y="120" text-anchor="middle" fill="#94a3b8" font-size="10">Token ID</text>
 <text x="175" y="120" text-anchor="middle" fill="#94a3b8" font-size="10">Lookup table</text>
@@ -226,7 +226,7 @@ doors.push({
 Word2Vec (2013), Mikolov et al.:
   কিংবদন্তী উদাহরণ:
   vec("king") - vec("man") + vec("woman") 
-  ≈ vec("queen")
+  ~= vec("queen")
   
   → অর্থের গাণিতিক প্রকাশ!
   → লিঙ্গ = একটা দিক স্পেসে
@@ -260,7 +260,7 @@ EMBEDDING USE CASES:
    → embedding → সরল classifier
 
 VECTOR OPERATIONS:
-  cosine_similarity(A, B) = A·B / (|A|×|B|)
+  cosine_similarity(A, B) = A·B / (|A|*|B|)
   → ১.০ = অভিন্ন অর্থ
   → ০.০ = সম্পর্কহীন
   → -১.০ = বিপরীত অর্থ
@@ -346,9 +346,9 @@ doors.push({
 <text x="255" y="200" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">V</text>
 <text x="255" y="213" text-anchor="middle" fill="#94a3b8" font-size="10">Value</text>
 <text x="255" y="222" text-anchor="middle" fill="#94a3b8" font-size="10">"what I know"</text>
-<text x="315" y="195" fill="#fcd34d" font-size="8" font-weight="bold">Score = Q × K / √d</text>
+<text x="315" y="195" fill="#fcd34d" font-size="8" font-weight="bold">Score = Q * K / √d</text>
 <text x="315" y="208" fill="#94a3b8" font-size="10">→ softmax → weights</text>
-<text x="315" y="219" fill="#94a3b8" font-size="10">→ weights × V = output</text>
+<text x="315" y="219" fill="#94a3b8" font-size="10">→ weights * V = output</text>
 <text x="460" y="200" fill="#22d3ee" font-size="8">96 heads</text>
 <text x="460" y="212" fill="#94a3b8" font-size="10">= 96 perspectives</text>
 </svg>
@@ -379,23 +379,23 @@ HOW ATTENTION WORKS:
   V (Value): "আমি কী জানি"
 
 Attention Calculation:
-  Score = Q × K^T / √d_k
+  Score = Q * K^T / √d_k
   → প্রতিটি জোড়ার "মিল" হিসাব করে
   
   Weights = softmax(Score)
   → স্কোরকে সম্ভাবনায় রূপান্তর (০-১)
   
-  Output = Weights × V
+  Output = Weights * V
   → সব শব্দের তথ্যের ওজন করা যোগফল
 
 "IT" টোকেনের জন্য:
   IT-এর Q: "আমি এমন কিছু খুঁজছি যে tired হতে পারে"
   
   "animal"-এর K: "আমি এমন কিছু যে tired হয়"  
-  → Q × K মিল = উচ্চ স্কোর!
+  → Q * K মিল = উচ্চ স্কোর!
   
   "street"-এর K: "আমি এমন কিছু যে tired হয় না"
-  → Q × K মিল = নিম্ন স্কোর
+  → Q * K মিল = নিম্ন স্কোর
   
   ফলাফল: IT বেশি attention দেয় "animal"-কে
   → IT = animal (প্রায়োগিকভাবে)
@@ -409,7 +409,7 @@ MULTI-HEAD ATTENTION:
   Head 4: সংখ্যা (singular/plural)
   ...
   
-  GPT-4: ~৯৬ heads (১২ layers × ৮ heads)
+  GPT-4: ~৯৬ heads (১২ layers * ৮ heads)
   → প্রতিটা head একটা আলাদা দৃষ্টিভঙ্গি
 
 WHY THIS MATTERS FOR PROMPT ENGINEERING:
@@ -455,7 +455,7 @@ doors.push({
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
 <defs><marker id="arrLLM4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>
 <rect x="0" y="0" width="580" height="250" fill="#0f172a" rx="12"/>
-<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">One Transformer Block (repeated ×96)</text>
+<text x="290" y="22" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="bold">One Transformer Block (repeated *96)</text>
 <!-- Input -->
 <rect x="200" y="35" width="180" height="25" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
 <text x="290" y="52" text-anchor="middle" fill="#7dd3fc" font-size="9">Input: embeddings + position</text>
@@ -483,8 +483,8 @@ doors.push({
 <!-- Repeat label -->
 <rect x="425" y="100" width="135" height="60" rx="8" fill="#0d1526" stroke="#22d3ee" stroke-width="1.5"/>
 <text x="492" y="118" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="bold">Repeat block</text>
-<text x="492" y="132" text-anchor="middle" fill="#fcd34d" font-size="9">GPT-3: ×96</text>
-<text x="492" y="145" text-anchor="middle" fill="#fcd34d" font-size="9">GPT-4: ×120</text>
+<text x="492" y="132" text-anchor="middle" fill="#fcd34d" font-size="9">GPT-3: *96</text>
+<text x="492" y="145" text-anchor="middle" fill="#fcd34d" font-size="9">GPT-4: *120</text>
 <text x="492" y="156" text-anchor="middle" fill="#94a3b8" font-size="10">deeper = deeper understanding</text>
 <line x1="400" y1="130" x2="420" y2="130" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM4)"/>
 <!-- Output label -->
@@ -495,67 +495,67 @@ doors.push({
 
 <div class="code-block">Transformer Architecture — ৭টি স্তর:
 
-┌─────────────────────────────────────────┐
-│ INPUT: "The cat sat"                    │
-│ → Tokenizer → [464, 3797, 3413]        │
-└─────────────────────┬───────────────────┘
+# ─────────────────────────────────────────# 
+#  INPUT: "The cat sat"                    # 
+#  → Tokenizer → [464, 3797, 3413]        # 
+# ─────────────────────# ───────────────────# 
                       ↓
-┌─────────────────────────────────────────┐
-│ Layer 1: EMBEDDING                      │
-│ প্রতিটি টোকেন → হাজার-ডাইমেনশন ভেক্টর  │
-│ "cat" → [0.2, -0.4, 0.8, ...]          │
-│                                         │
-│ + POSITIONAL ENCODING                   │
-│ "cat" দ্বিতীয় — এই অবস্থান যোগ হয়    │
-│ → কারণ Transformer একসাথে সব দেখে,   │
-│   ক্রম জানতে হয়                       │
-└─────────────────────┬───────────────────┘
+# ─────────────────────────────────────────# 
+#  Layer 1: EMBEDDING                      # 
+#  প্রতিটি টোকেন → হাজার-ডাইমেনশন ভেক্টর  # 
+#  "cat" → [0.2, -0.4, 0.8, ...]          # 
+#                                          # 
+#  + POSITIONAL ENCODING                   # 
+#  "cat" দ্বিতীয় — এই অবস্থান যোগ হয়    # 
+#  → কারণ Transformer একসাথে সব দেখে,   # 
+#    ক্রম জানতে হয়                       # 
+# ─────────────────────# ───────────────────# 
                       ↓
-┌─────────────────────────────────────────┐
-│ Layer 2: MULTI-HEAD ATTENTION           │
-│ প্রতিটি শব্দ বাকি সবের দিকে তাকায়     │
-│ "sat" কে? → "cat" sat                   │
-│ → ৯৬টা head, প্রতিটা আলাদা দৃষ্টি     │
-└─────────────────────┬───────────────────┘
+# ─────────────────────────────────────────# 
+#  Layer 2: MULTI-HEAD ATTENTION           # 
+#  প্রতিটি শব্দ বাকি সবের দিকে তাকায়     # 
+#  "sat" কে? → "cat" sat                   # 
+#  → ৯৬টা head, প্রতিটা আলাদা দৃষ্টি     # 
+# ─────────────────────# ───────────────────# 
                       ↓
-┌─────────────────────────────────────────┐
-│ Layer 3: FEED-FORWARD NETWORK           │
-│ প্রতিটি টোকেনের তথ্য প্রক্রিয়াকরণ     │
-│ "cat" + context → গভীরতর উপস্থাপন     │
-│ → এখানেই "জ্ঞান" সংরক্ষিত (memorized) │
-│ → MLP: দুটি linear layer + ReLU/GELU  │
-└─────────────────────┬───────────────────┘
+# ─────────────────────────────────────────# 
+#  Layer 3: FEED-FORWARD NETWORK           # 
+#  প্রতিটি টোকেনের তথ্য প্রক্রিয়াকরণ     # 
+#  "cat" + context → গভীরতর উপস্থাপন     # 
+#  → এখানেই "জ্ঞান" সংরক্ষিত (memorized) # 
+#  → MLP: দুটি linear layer + ReLU/GELU  # 
+# ─────────────────────# ───────────────────# 
                       ↓
-┌─────────────────────────────────────────┐
-│ Layer 4: RESIDUAL CONNECTION            │
-│ input + output = পরের স্তরে             │
-│ → তথ্য হারাতে দেয় না                  │
-│ → gradient flow নিশ্চিত করে            │
-│ → "skip connection"                     │
-└─────────────────────┬───────────────────┘
+# ─────────────────────────────────────────# 
+#  Layer 4: RESIDUAL CONNECTION            # 
+#  input + output = পরের স্তরে             # 
+#  → তথ্য হারাতে দেয় না                  # 
+#  → gradient flow নিশ্চিত করে            # 
+#  → "skip connection"                     # 
+# ─────────────────────# ───────────────────# 
                       ↓
-┌─────────────────────────────────────────┐
-│ Layer 5: LAYER NORM                     │
-│ প্রতিটি স্তরে ভেক্টর স্থিতিশীল করো    │
-│ → training stability                    │
-│ → স্কেল ঠিক রাখে                       │
-└─────────────────────┬───────────────────┘
+# ─────────────────────────────────────────# 
+#  Layer 5: LAYER NORM                     # 
+#  প্রতিটি স্তরে ভেক্টর স্থিতিশীল করো    # 
+#  → training stability                    # 
+#  → স্কেল ঠিক রাখে                       # 
+# ─────────────────────# ───────────────────# 
                       ↓
-┌─────────────────────────────────────────┐
-│ Layer 6: REPEAT (N LAYERS)              │
-│ পুরো ব্লকটা N বার রিপিট করো            │
-│ GPT-3: ৯৬ layers                        │
-│ GPT-4: ~১২০ layers (est.)               │
-│ প্রতিটা layer আরও গভীর বোঝা যোগ করে   │
-└─────────────────────┬───────────────────┘
+# ─────────────────────────────────────────# 
+#  Layer 6: REPEAT (N LAYERS)              # 
+#  পুরো ব্লকটা N বার রিপিট করো            # 
+#  GPT-3: ৯৬ layers                        # 
+#  GPT-4: ~১২০ layers (est.)               # 
+#  প্রতিটা layer আরও গভীর বোঝা যোগ করে   # 
+# ─────────────────────# ───────────────────# 
                       ↓
-┌─────────────────────────────────────────┐
-│ Layer 7: OUTPUT HEAD                    │
-│ চূড়ান্ত ভেক্টর → vocabulary সম্ভাবনা  │
-│ → softmax → সম্ভাবনা ডিস্ট্রিবিউশন     │
-│ → সর্বোচ্চ সম্ভাবনার টোকেন = উত্তর     │
-│ → "sat" এর পরে → "on" (সর্বোচ্চ)      │
-└─────────────────────────────────────────┘
+# ─────────────────────────────────────────# 
+#  Layer 7: OUTPUT HEAD                    # 
+#  চূড়ান্ত ভেক্টর → vocabulary সম্ভাবনা  # 
+#  → softmax → সম্ভাবনা ডিস্ট্রিবিউশন     # 
+#  → সর্বোচ্চ সম্ভাবনার টোকেন = উত্তর     # 
+#  → "sat" এর পরে → "on" (সর্বোচ্চ)      # 
+# ─────────────────────────────────────────# 
 
 PARAMETERS:
   GPT-3: ১৭৫ বিলিয়ন প্যারামিটার

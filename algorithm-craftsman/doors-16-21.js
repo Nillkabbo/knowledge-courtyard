@@ -174,12 +174,12 @@ doors.push({
   num:17, icon:"🔗", color:"#f97316", name:"গোত্রপতির পরিষদ",
   subtitle:"The Duplicate Hunter", tech:"Union-Find (DSU) — Near-Duplicate Page Detection",
   spirit:"জামা — joining/gathering, from Quran 3:103 (hold fast together)",
-  secret:"Union-Find = duplicate grouping। Path compression ছাড়া O(n), সাথে O(α(n)) ≈ O(1)। হাজার duplicate page এক গোত্রে — union(a, b) এক কলে।",
+  secret:"Union-Find = duplicate grouping। Path compression ছাড়া O(n), সাথে O(α(n)) ~= O(1)। হাজার duplicate page এক গোত্রে — union(a, b) এক কলে।",
   recall:{
     q:"Path compression কী করে? কেন এটা O(α(n)) করে?",
     qen:"What does path compression do? Why does it make it O(alpha(n))?",
-    a:"find(x) করলে root পর্যন্ত যাও। ফেরার পথে প্রতিটা node-কে সরাসরি root-এ যুক্ত করে দাও। পরের বার find(x) করলে ১ ধাপে root। এটা tree-কে flat করে দেয় — উচ্চতা α(n) ≈ ৪ (বাস্তবে)। সব প্রায় O(1)।",
-    aen:"find(x) walks to root. On the way back, point each node directly to root. Next find(x) reaches root in 1 step. This flattens the tree — height becomes α(n) ≈ 4 (practically). Everything becomes nearly O(1)."
+    a:"find(x) করলে root পর্যন্ত যাও। ফেরার পথে প্রতিটা node-কে সরাসরি root-এ যুক্ত করে দাও। পরের বার find(x) করলে ১ ধাপে root। এটা tree-কে flat করে দেয় — উচ্চতা α(n) ~= ৪ (বাস্তবে)। সব প্রায় O(1)।",
+    aen:"find(x) walks to root. On the way back, point each node directly to root. Next find(x) reaches root in 1 step. This flattens the tree — height becomes α(n) ~= 4 (practically). Everything becomes nearly O(1)."
   },
   story:`
 <p class="scene-setting">সতর্দশ দিন। গোত্রপতি হাশিম এসে হাজির। তার হাতে একটা হাঁটার লাঠি — লাঠিতে দাগ কাটা, প্রতিটা দাগ একটা গোত্র একত্রিত হওয়ার চিহ্ন। তিনি বললেন — ক্রলার লক্ষ লক্ষ page আনে। কিন্তু অনেক page প্রায় একই — একই বিষয়বস্তু, সামান্য ভিন্ন। ডুপ্লিকেট। এগুলো এক গোত্রে ফেলতে হবে — নইলে সার্চ রেজাল্টে একই page বারবার আসবে।</p>
@@ -236,8 +236,8 @@ pages = {
 uf = UnionFind(5)
 
 # Detected near-duplicate pairs (simhash distance &lt; 3)
-uf.union(0, 1)  # home_copy1 ≈ home_copy2
-uf.union(2, 3)  # blog_original ≈ blog_copy
+uf.union(0, 1)  # home_copy1 ~= home_copy2
+uf.union(2, 3)  # blog_original ~= blog_copy
 
 # Check which pages are duplicates
 print("Duplicate groups:")
@@ -265,7 +265,7 @@ print(f"Page 0 and 4 same? {uf.connected(0, 4)}")    # False
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> হাশিম প্রথমে প্রতিটা page-এর hash একটা set-এ রাখতেন। কিন্তু near-duplicate (ছোট পরিবর্তন) ধরা পড়তো না — hash আলাদা। ফলাফলে একই আর্টিকেল ৫ বার। ইউজার বিরক্ত। তারপর simhash + union-find ব্যবহার করলেন — ৮০% similar page গুলো এক group-এ। প্রতিটা group-থেকে সেরা version দেখাও।</div></div>
 
 <div class="diagram">
-  <div class="diag-title">Union-Find: Path Compression — Tree সমান করো, Find O(α(n)) ≈ O(1)</div>
+  <div class="diag-title">Union-Find: Path Compression — Tree সমান করো, Find O(α(n)) ~= O(1)</div>
   <svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
     <defs><marker id="arrUF" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6" fill="#f97316"/></marker></defs>
     <text x="100" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Before: deep tree</text>
@@ -314,7 +314,7 @@ print(f"Page 0 and 4 same? {uf.connected(0, 4)}")    # False
 </div>
 <div class="dialogue en">Book 2 clan elder council (Door 10) taught you Union-Find. Now you see why in search engines? Duplicate pages go into one clan — union(a,b) in one call. In search, show only the best page from each clan. Users do not see the same content repeatedly.</div>
 
-<div class="secret-box">🔗 Union-Find = duplicate grouping। Path compression + union by rank = O(α(n)) ≈ O(1)।</div>
+<div class="secret-box">🔗 Union-Find = duplicate grouping। Path compression + union by rank = O(α(n)) ~= O(1)।</div>
 `,
   senior:{
     title:"প্রয়োগিক গাইড — Practical Guide",
@@ -338,8 +338,8 @@ doors.push({
   recall:{
     q:"Binary search কেন O(log n)? ১০ লক্ষ term-এ কত তুলনা?",
     qen:"Why is binary search O(log n)? How many comparisons for 1M terms?",
-    a:"প্রতি ধাপে অর্ধেক বাদ দাও। ১০ লক্ষ → ৫ লক্ষ → ২.৫ লক্ষ → ... → ১। কত ধাপ? log₂(১০,০০,০০০) ≈ ২০। মাত্র ২০ তুলনায় ১০ লক্ষ term থেকে একটা খুঁজে বের করা। Linear: ১০ লক্ষ। পার্থক্য: ৫০,০০০ গুণ।",
-    aen:"Each step halves the search space. 1M → 500K → 250K → ... → 1. Steps: log2(1,000,000) ≈ 20. Just 20 comparisons to find one term among a million. Linear: 1 million. Difference: 50,000 times."
+    a:"প্রতি ধাপে অর্ধেক বাদ দাও। ১০ লক্ষ → ৫ লক্ষ → ২.৫ লক্ষ → ... → ১। কত ধাপ? log₂(১০,০০,০০০) ~= ২০। মাত্র ২০ তুলনায় ১০ লক্ষ term থেকে একটা খুঁজে বের করা। Linear: ১০ লক্ষ। পার্থক্য: ৫০,০০০ গুণ।",
+    aen:"Each step halves the search space. 1M → 500K → 250K → ... → 1. Steps: log2(1,000,000) ~= 20. Just 20 comparisons to find one term among a million. Linear: 1 million. Difference: 50,000 times."
   },
   story:`
 <p class="scene-setting">অষ্টাদশ দিন। গ্রন্থাগারিক আমিনা এসে হাজির। তার গলায় চশমা ঝুলছে একটা চেইনে — পড়ার সময় চশমা পরেন, বাকি সময় ঝুলে। তার হাতে একটা মোটা খাতা — সব term alphabetically সাজানো। আমিনা বললেন — বংশবিদ আব্দুল্লাহ (Door ১৪) BST বানিয়েছেন, কিন্তু বাস্তবে আমরা sorted array ব্যবহার করি — কারণ array-তে binary search দ্রুত, cache-friendly, ও simple।</p>
@@ -453,7 +453,7 @@ def linear_search(items, target):
     <text x="35" y="205" fill="#9a93b8" font-size="9">Step 4: lo=7, hi=8, mid=7 → 'index' == 'index' ✓ FOUND!</text>
     <text x="35" y="220" fill="#fbbf24" font-size="9" font-weight="bold">20 terms → 4 comparisons | 1M terms → 20 | 1B terms → 30</text>
   </svg>
-  <div class="diag-cap">প্রতি ধাপে অর্ধেক বাদ। log₂(1,000,000) ≈ 20 ধাপে এক মিলিয়ন term-এ খুঁজে বের করা।</div>
+  <div class="diag-cap">প্রতি ধাপে অর্ধেক বাদ। log₂(1,000,000) ~= 20 ধাপে এক মিলিয়ন term-এ খুঁজে বের করা।</div>
 </div>
 <div class="dialogue en">Book 2 librarian catalog (Door 11) taught you sorting and binary search. Now you see why this is the most used algorithm in a search engine? Every search needs a term dictionary lookup. Sorted array + binary search = O(log n). One billion terms in 30 comparisons. Sorted = power.</div>
 
@@ -740,26 +740,26 @@ class SearchEngine:
     working together as one unified system.
 
     Architecture:
-    ┌─────────────────────────────────────────────────┐
-    │  CRAWL (Door 2: Recursion, Door 10: Bloom)     │
-    │     ↓                                           │
-    │  STORE (Door 3: Arrays)                         │
-    │     ↓                                           │
-    │  INDEX (Door 12: Hash Map, Door 19: MapReduce)  │
-    │     ↓                                           │
-    │  QUERY PIPELINE:                                │
-    │    1. Spell check (Door 7: DP)                  │
-    │    2. Autocomplete (Door 15: Trie)              │
-    │    3. Parse (Door 11: Stack, Door 8: Backtrack) │
-    │    4. Term lookup (Door 12: Hash + Door 18: BS) │
-    │    5. AND intersect (Door 5: Two Pointers)      │
-    │    6. Phrase match (Door 9: KMP)                │
-    │    7. Rank (Door 13: Heap + Door 16: PageRank)  │
-    │    8. Snippet (Door 6: Greedy)                  │
-    │    9. Dedup (Door 17: Union-Find)               │
-    │     ↓                                           │
-    │  RESULTS                                        │
-    └─────────────────────────────────────────────────┘
+    # ─────────────────────────────────────────────────# 
+    #   CRAWL (Door 2: Recursion, Door 10: Bloom)     # 
+    #      ↓                                           # 
+    #   STORE (Door 3: Arrays)                         # 
+    #      ↓                                           # 
+    #   INDEX (Door 12: Hash Map, Door 19: MapReduce)  # 
+    #      ↓                                           # 
+    #   QUERY PIPELINE:                                # 
+    #     1. Spell check (Door 7: DP)                  # 
+    #     2. Autocomplete (Door 15: Trie)              # 
+    #     3. Parse (Door 11: Stack, Door 8: Backtrack) # 
+    #     4. Term lookup (Door 12: Hash + Door 18: BS) # 
+    #     5. AND intersect (Door 5: Two Pointers)      # 
+    #     6. Phrase match (Door 9: KMP)                # 
+    #     7. Rank (Door 13: Heap + Door 16: PageRank)  # 
+    #     8. Snippet (Door 6: Greedy)                  # 
+    #     9. Dedup (Door 17: Union-Find)               # 
+    #      ↓                                           # 
+    #   RESULTS                                        # 
+    # ─────────────────────────────────────────────────# 
 
     19 teachers. 19 algorithms. 1 search engine.
 

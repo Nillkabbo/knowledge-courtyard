@@ -82,21 +82,21 @@ AGENT (যা তুমি শিখবে):
 
 THE AGENT ANATOMY:
 
-  ┌─────────────────────────────────────┐
-  │ একটি Agent = ৪টি উপাদান            │
-  │                                     │
-  │ ১. BRAIN (LLM)                     │
-  │    চিন্তা, সিদ্ধান্ত, পরিকল্পনা     │
-  │                                     │
-  │ ২. TOOLS (Functions)                │
-  │    search, code_run, email, file_io │
-  │                                     │
-  │ ৩. MEMORY (State)                   │
-  │    পূর্বের কথা, কাজ, ফলাফল          │
-  │                                     │
-  │ ৪. LOOP (Autonomy)                  │
-  │    think → act → observe → repeat   │
-  └─────────────────────────────────────┘
+  # ─────────────────────────────────────# 
+  #  একটি Agent = ৪টি উপাদান            # 
+  #                                      # 
+  #  ১. BRAIN (LLM)                     # 
+  #     চিন্তা, সিদ্ধান্ত, পরিকল্পনা     # 
+  #                                      # 
+  #  ২. TOOLS (Functions)                # 
+  #     search, code_run, email, file_io # 
+  #                                      # 
+  #  ৩. MEMORY (State)                   # 
+  #     পূর্বের কথা, কাজ, ফলাফল          # 
+  #                                      # 
+  #  ৪. LOOP (Autonomy)                  # 
+  #     think → act → observe → repeat   # 
+  # ─────────────────────────────────────# 
 
 LEVELS OF AUTONOMY:
 
@@ -652,7 +652,7 @@ doors.push({
 PLANNING QUALITY FACTORS:
 
   Task Complexity → Planning Need
-  ────────────────┼──────────────
+  ────────────────# ──────────────
   সহজ (১-৩ steps) → ReAct যথেষ্ট
   মাঝারি (৪-১০)   → Plan-and-Execute
   জটিল (১০+)     → Re-planning
@@ -754,55 +754,55 @@ doors.push({
 
 <div class="code-block">Agent Memory Systems — Four Types:
 
-┌──────────────────────────────────────────┐
-│ ১. SHORT-TERM (Working Memory)           │
-│ বর্তমান কথোপকথন ও কাজের অবস্থা          │
-│                                          │
-│ → শেষ N messages                        │
-│ → বর্তমান কাজের context                 │
-│ → সাধারণত context window-এ              │
-│                                          │
-│ Capacity: context window পর্যন্ত         │
-│ Lifetime: সেশন শেষ হলে মুছে যায়         │
-├──────────────────────────────────────────┤
-│ ২. WORKING STATE (Task State)            │
-│ বর্তমান কাজের প্রগ্রেস                   │
-│                                          │
-│ {                                        │
-│   goal: "Build RAG system",             │
-│   plan: ["ingest", "embed", "query"],   │
-│   completed: ["ingest", "embed"],       │
-│   current_step: "query",                │
-│   results: {...},                        │
-│   errors: ["vector DB connection failed"]│
-│ }                                        │
-│                                          │
-│ → LangGraph state, LangChain memory     │
-│ → checkpointed — pause/resume possible  │
-├──────────────────────────────────────────┤
-│ ৩. LONG-TERM (Persistent)                │
-│ পূর্বের সব কাজ, শেখা, অভিজ্ঞতা           │
-│                                          │
-│ → Vector DB: past experiences           │
-│   "user prefers concise answers"        │
-│   "project uses Django + PostgreSQL"    │
-│ → Semantic search: relevant past →      │
-│   current context                       │
-│                                          │
-│ Capacity: unlimited                      │
-│ Lifetime: permanent                      │
-├──────────────────────────────────────────┤
-│ ৪. EPISODIC (Specific Events)            │
-│ নির্দিষ্ট ঘটনা ও ফলাফল                   │
-│                                          │
-│ → "Yesterday I tried API X, it failed   │
-│    with auth error. Fix: use Bearer     │
-│    token not API key."                  │
-│ → Reflexion-style: failure + lesson     │
-│ → পরের কাজে এই lesson মনে করো           │
-│                                          │
-│ → prevents repeating mistakes            │
-└──────────────────────────────────────────┘
+# ──────────────────────────────────────────# 
+#  ১. SHORT-TERM (Working Memory)           # 
+#  বর্তমান কথোপকথন ও কাজের অবস্থা          # 
+#                                           # 
+#  → শেষ N messages                        # 
+#  → বর্তমান কাজের context                 # 
+#  → সাধারণত context window-এ              # 
+#                                           # 
+#  Capacity: context window পর্যন্ত         # 
+#  Lifetime: সেশন শেষ হলে মুছে যায়         # 
+# ──────────────────────────────────────────# 
+#  ২. WORKING STATE (Task State)            # 
+#  বর্তমান কাজের প্রগ্রেস                   # 
+#                                           # 
+#  {                                        # 
+#    goal: "Build RAG system",             # 
+#    plan: ["ingest", "embed", "query"],   # 
+#    completed: ["ingest", "embed"],       # 
+#    current_step: "query",                # 
+#    results: {...},                        # 
+#    errors: ["vector DB connection failed"]# 
+#  }                                        # 
+#                                           # 
+#  → LangGraph state, LangChain memory     # 
+#  → checkpointed — pause/resume possible  # 
+# ──────────────────────────────────────────# 
+#  ৩. LONG-TERM (Persistent)                # 
+#  পূর্বের সব কাজ, শেখা, অভিজ্ঞতা           # 
+#                                           # 
+#  → Vector DB: past experiences           # 
+#    "user prefers concise answers"        # 
+#    "project uses Django + PostgreSQL"    # 
+#  → Semantic search: relevant past →      # 
+#    current context                       # 
+#                                           # 
+#  Capacity: unlimited                      # 
+#  Lifetime: permanent                      # 
+# ──────────────────────────────────────────# 
+#  ৪. EPISODIC (Specific Events)            # 
+#  নির্দিষ্ট ঘটনা ও ফলাফল                   # 
+#                                           # 
+#  → "Yesterday I tried API X, it failed   # 
+#     with auth error. Fix: use Bearer     # 
+#     token not API key."                  # 
+#  → Reflexion-style: failure + lesson     # 
+#  → পরের কাজে এই lesson মনে করো           # 
+#                                           # 
+#  → prevents repeating mistakes            # 
+# ──────────────────────────────────────────# 
 
 IMPLEMENTATION:
 

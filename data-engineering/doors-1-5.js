@@ -245,7 +245,7 @@ doors.push({
 <div class="dialogue"><strong>নক্ষত্র-মানচিত্রকার আয়েশা:</strong> Fact table-এ শুধু সংখ্যা ও foreign key। প্রতিটি transaction: amount=৫০০, user_id=৪২, category_id=৭, date_id=৩৬৫। Dimension table-এ বিবরণ: user_id=৪২ → name=Ali, city=Detroit। category_id=৭ → name=Food। date_id=৩৬৫ → ২০২৬-১২-৩১। JOIN করলে সব একসাথে। এটাই Star — কেন্দ্র থেকে শাখা। Snowflake = Star কিন্তু dimension-ও normalized।</div>
 <div class="dialogue en"><strong>Star Cartographer Ayesha:</strong> Fact table has only numbers and foreign keys. Each transaction: amount=500, user_id=42, category_id=7, date_id=365. Dimension tables have descriptions: user_id=42 → name=Ali, city=Detroit. category_id=7 → name=Food. JOIN brings everything together. This is Star — center to branches. Snowflake = Star but dimensions also normalized.</div>
 
-<div class="code-block">— Star Schema SQL —
+<div class="code-block"># — Star Schema SQL —
 
   -- Fact table (কেন্দ্র)
   CREATE TABLE fact_transactions (
@@ -367,7 +367,7 @@ doors.push({
 <div class="dialogue"><strong>অলস-স্থপতি জাইদ:</strong> আমি অলস — ইচ্ছাকৃতভাবে! filter করলে কোনো কাজ হয় না — শুধু DAG (Directed Acyclic Graph) একটি node যোগ হয়। join করলে আরেকটি node। groupBy আরেকটি। সব শুধু plan। তারপর action হলে — collect() বা write() — Catalyst optimizer পুরো plan দেখে, optimize করে, একসাথে চালায়। কম ডেটা shuffle, কম memory, বেশি দ্রুত।</div>
 <div class="dialogue en"><strong>Lazy Architect Zaid:</strong> I'm lazy — intentionally! filter does nothing — just adds a DAG node. join adds another. groupBy another. All just a plan. Then action — collect() or write() — Catalyst optimizer sees the entire plan, optimizes, runs together. Less data shuffle, less memory, more speed.</div>
 
-<div class="code-block">— PySpark: Lazy Evaluation —
+<div class="code-block"># — PySpark: Lazy Evaluation —
 
   from pyspark.sql import SparkSession
   spark = SparkSession.builder.appName("demo").getOrCreate()
@@ -480,7 +480,7 @@ doors.push({
 <div class="dialogue"><strong>বিভাজন-কারিগর খালিদ:</strong> Data skew — সবচেয়ে বড় সমস্যা। একটি key-তে কোটি row, অন্যগুলোতে শত। সেই এক executor-এ কোটি row — ধীর! সমাধান: salting। key-তে একটি এলোমেলো সংখ্যা যোগ করো — key_0, key_1, key_2। এখন সমানভাবে ভাগ। আর broadcast join: dim_user table (< ১০MB) সব মেশিনে পাঠাও — fact table shuffle হয় না।</div>
 <div class="dialogue en"><strong>Partitioning Artisan Khalid:</strong> Data skew — the biggest problem. One key has a billion rows, others have hundreds. That one executor gets a billion — slow! Solution: salting. Add a random number to the key — key_0, key_1, key_2. Now evenly distributed. And broadcast join: send dim_user table (<10MB) to all machines — fact table doesn't shuffle.</div>
 
-<div class="code-block">— PySpark: Shuffle ও Skew —
+<div class="code-block"># — PySpark: Shuffle ও Skew —
 
   from pyspark.sql.functions import broadcast, col, rand, concat, lit
 

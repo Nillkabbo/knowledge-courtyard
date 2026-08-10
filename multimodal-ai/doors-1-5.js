@@ -31,38 +31,38 @@ doors.push({
 THE IMAGE PROBLEM:
   ছবি = কোটি pixel
   প্রতিটি pixel = ৩ number (RGB)
-  ২২৪×২২৪ image = ১৫০,৫২৮ numbers
+  ২২৪*২২৪ image = ১৫০,৫২৮ numbers
   
   → সরাসরি neural network-এ? অসম্ভব বড়।
   → দরকার: ছবিকে ছোট ছোট ভাগে করা
 
 ViT (Vision Transformer, Dosovitskiy et al., 2020):
 
-  ┌─────────────────────────────────────┐
-  │ Step ১: PATCHING                    │
-  │ ছবি → ১৬×১৬ pixel patches          │
-  │ ২২৪×২২৪ → ১৯৬ patches              │
-  │ প্রতিটা patch = ১টা "token"        │
-  │ (টেক্সটের শব্দের মতো)               │
-  ├─────────────────────────────────────┤
-  │ Step ২: LINEAR PROJECTION           │
-  │ প্রতিটা patch (৭৬৮ values) →       │
-  │ embedding vector (৭৬৮ dim)          │
-  │ → টেক্সট embedding-এর মতো!          │
-  ├─────────────────────────────────────┤
-  │ Step ৩: POSITIONAL ENCODING         │
-  │ প্রতিটা patch-এ অবস্থান যোগ করো    │
-  │ → "উপরে বাম", "মাঝে ডান"            │
-  ├─────────────────────────────────────┤
-  │ Step ৪: TRANSFORMER ENCODER         │
-  │ patch embeddings → multi-head       │
-  │ attention → " patches একে অপরকে     │
-  │ দেখে" → context তৈরি               │
-  ├─────────────────────────────────────┤
-  │ Step ৫: OUTPUT                      │
-  │ প্রতিটা patch একটি contextualized   │
-  │ embedding → পুরো ছবির understanding │
-  └─────────────────────────────────────┘
+  # ─────────────────────────────────────# 
+  #  Step ১: PATCHING                    # 
+  #  ছবি → ১৬*১৬ pixel patches          # 
+  #  ২২৪*২২৪ → ১৯৬ patches              # 
+  #  প্রতিটা patch = ১টা "token"        # 
+  #  (টেক্সটের শব্দের মতো)               # 
+  # ─────────────────────────────────────# 
+  #  Step ২: LINEAR PROJECTION           # 
+  #  প্রতিটা patch (৭৬৮ values) →       # 
+  #  embedding vector (৭৬৮ dim)          # 
+  #  → টেক্সট embedding-এর মতো!          # 
+  # ─────────────────────────────────────# 
+  #  Step ৩: POSITIONAL ENCODING         # 
+  #  প্রতিটা patch-এ অবস্থান যোগ করো    # 
+  #  → "উপরে বাম", "মাঝে ডান"            # 
+  # ─────────────────────────────────────# 
+  #  Step ৪: TRANSFORMER ENCODER         # 
+  #  patch embeddings → multi-head       # 
+  #  attention → " patches একে অপরকে     # 
+  #  দেখে" → context তৈরি               # 
+  # ─────────────────────────────────────# 
+  #  Step ৫: OUTPUT                      # 
+  #  প্রতিটা patch একটি contextualized   # 
+  #  embedding → পুরো ছবির understanding # 
+  # ─────────────────────────────────────# 
 
   Key insight: ViT = টেক্সটের Transformer-এর
     মতোই, কিন্তু "tokens" = image patches
@@ -74,20 +74,20 @@ CLIP (Contrastive Language-Image Pre-training,
 
   উদ্দেশ্য: ছবি ও টেক্সট এক জগতে আনো
 
-  ┌─────────────────────────────────┐
-  │ Training:                       │
-  │                                 │
-  │ [Image] → Image Encoder → emb_I │
-  │ [Text]  → Text Encoder  → emb_T │
-  │                                 │
-  │ Goal: matching pairs close      │
-  │  → "a dog" + dog image → close  │
-  │  → "a cat" + dog image → far    │
-  │                                 │
-  │ Contrastive loss:               │
-  │  maximize matching, minimize    │
-  │  non-matching                   │
-  └─────────────────────────────────┘
+  # ─────────────────────────────────# 
+  #  Training:                       # 
+  #                                  # 
+  #  [Image] → Image Encoder → emb_I # 
+  #  [Text]  → Text Encoder  → emb_T # 
+  #                                  # 
+  #  Goal: matching pairs close      # 
+  #   → "a dog" + dog image → close  # 
+  #   → "a cat" + dog image → far    # 
+  #                                  # 
+  #  Contrastive loss:               # 
+  #   maximize matching, minimize    # 
+  #   non-matching                   # 
+  # ─────────────────────────────────# 
 
   Result:
     → image ও text একই vector space-এ!
@@ -185,30 +185,30 @@ doors.push({
 
 VLM ARCHITECTURE:
 
-  ┌────────────────────────────────────────┐
-  │ INPUT: Image + Text prompt             │
-  │                                        │
-  │  ┌──────────┐    ┌──────────────────┐ │
-  │  │ IMAGE →   │    │ TEXT →           │ │
-  │  │ ViT/CLIP  │    │ Tokenizer →      │ │
-  │  │ Encoder   │    │ Text Embedding   │ │
-  │  └────┬─────┘    └────────┬─────────┘ │
-  │       ↓                    ↓           │
-  │  ┌─────────────────────────────────┐  │
-  │  │ PROJECTION LAYER                 │  │
-  │  │ image embeddings → text dim      │  │
-  │  │ (align spaces)                   │  │
-  │  └──────────────┬──────────────────┘  │
-  │                 ↓                      │
-  │  ┌─────────────────────────────────┐  │
-  │  │ LLM (frozen বা fine-tuned)       │  │
-  │  │ [image_tokens] + [text_tokens]  │  │
-  │  │ → attention → generation        │  │
-  │  └──────────────┬──────────────────┘  │
-  │                 ↓                      │
-  │ OUTPUT: Text response                 │
-  │ "I see a cat sitting on a table..."   │
-  └────────────────────────────────────────┘
+  # ────────────────────────────────────────# 
+  #  INPUT: Image + Text prompt             # 
+  #                                         # 
+  #   # ──────────#     # ──────────────────#  # 
+  #   #  IMAGE →   #     #  TEXT →           #  # 
+  #   #  ViT/CLIP  #     #  Tokenizer →      #  # 
+  #   #  Encoder   #     #  Text Embedding   #  # 
+  #   # ────# ─────#     # ────────# ─────────#  # 
+  #        ↓                    ↓           # 
+  #   # ─────────────────────────────────#   # 
+  #   #  PROJECTION LAYER                 #   # 
+  #   #  image embeddings → text dim      #   # 
+  #   #  (align spaces)                   #   # 
+  #   # ──────────────# ──────────────────#   # 
+  #                  ↓                      # 
+  #   # ─────────────────────────────────#   # 
+  #   #  LLM (frozen বা fine-tuned)       #   # 
+  #   #  [image_tokens] + [text_tokens]  #   # 
+  #   #  → attention → generation        #   # 
+  #   # ──────────────# ──────────────────#   # 
+  #                  ↓                      # 
+  #  OUTPUT: Text response                 # 
+  #  "I see a cat sitting on a table..."   # 
+  # ────────────────────────────────────────# 
 
 THREE ARCHITECTURE TYPES:
 
@@ -239,32 +239,32 @@ THREE ARCHITECTURE TYPES:
 
 VLM MODEL FAMILIES (2024-2025):
 
-  ┌──────────────┬──────────────────────────┐
-  │ Model        │ Strength                  │
-  ├──────────────┼──────────────────────────┤
-  │ GPT-5       │ Native multimodal,        │
-  │ (OpenAI)     │ text+image+audio          │
-  │              │ Best overall VLM          │
-  ├──────────────┼──────────────────────────┤
-  │ Claude Sonnet 4   │ Excellent vision,         │
-  │ Sonnet       │ document understanding    │
-  │ (Anthropic)  │ Strong chart/diagram      │
-  ├──────────────┼──────────────────────────┤
-  │ Gemini 2.5   │ ১M+ context, video native  │
-  │ Pro          │ Multi-image reasoning     │
-  │ (Google)     │                           │
-  ├──────────────┼──────────────────────────┤
-  │ LLaVA        │ Open-source VLM            │
-  │ (open)       │ CLIP + Vicuna/Llama       │
-  │              │ Good for research/custom  │
-  ├──────────────┼──────────────────────────┤
-  │ Qwen-VL      │ Open, multilingual        │
-  │ (Alibaba)    │ Document, chart, multi-   │
-  │              │ language support          │
-  ├──────────────┼──────────────────────────┤
-  │ Pixtral      │ Mistral's VLM             │
-  │ (Mistral)    │ Open weights, efficient   │
-  └──────────────┴──────────────────────────┘
+  # ──────────────# ──────────────────────────# 
+  #  Model        #  Strength                  # 
+  # ──────────────# ──────────────────────────# 
+  #  GPT-5       #  Native multimodal,        # 
+  #  (OpenAI)     #  text+image+audio          # 
+  #               #  Best overall VLM          # 
+  # ──────────────# ──────────────────────────# 
+  #  Claude Sonnet 4   #  Excellent vision,         # 
+  #  Sonnet       #  document understanding    # 
+  #  (Anthropic)  #  Strong chart/diagram      # 
+  # ──────────────# ──────────────────────────# 
+  #  Gemini 2.5   #  ১M+ context, video native  # 
+  #  Pro          #  Multi-image reasoning     # 
+  #  (Google)     #                            # 
+  # ──────────────# ──────────────────────────# 
+  #  LLaVA        #  Open-source VLM            # 
+  #  (open)       #  CLIP + Vicuna/Llama       # 
+  #               #  Good for research/custom  # 
+  # ──────────────# ──────────────────────────# 
+  #  Qwen-VL      #  Open, multilingual        # 
+  #  (Alibaba)    #  Document, chart, multi-   # 
+  #               #  language support          # 
+  # ──────────────# ──────────────────────────# 
+  #  Pixtral      #  Mistral's VLM             # 
+  #  (Mistral)    #  Open weights, efficient   # 
+  # ──────────────# ──────────────────────────# 
 
 VLM CAPABILITIES:
 
@@ -343,7 +343,7 @@ VLM LIMITATIONS:
 <div class="svg-caption">VLM: Vision encoder দেখে, projection সেতু বানায়, LLM কথা বলে। চোখ + মুখ।</div>`,
   senior:{
     title:"VLM Usage — API Call",
-    body:`<p><strong>OpenAI (GPT-5):</strong> image_url in messages — base64 বা URL। "What is in this image?"</p><p><strong>Anthropic (Claude Sonnet 4):</strong> image block in messages — base64। "Analyze this chart."</p><p><strong>Cost:</strong> ১ image ≈ ৭৬৫-১৫০০ tokens (resolution dependent)। High-res = more tokens = more cost।</p><p><strong>Tips:</strong> Low-detail mode (৫১২ tokens) যদি fine detail দরকার না। High-detail যদি টেক্সট/সংখ্যা পড়তে হয়।</p><p><strong>Best practice:</strong> সবসময় নির্দিষ্ট প্রশ্ন করো — "How many people?" ভালো, "Tell me about this" খারাপ।</p>`
+    body:`<p><strong>OpenAI (GPT-5):</strong> image_url in messages — base64 বা URL। "What is in this image?"</p><p><strong>Anthropic (Claude Sonnet 4):</strong> image block in messages — base64। "Analyze this chart."</p><p><strong>Cost:</strong> ১ image ~= ৭৬৫-১৫০০ tokens (resolution dependent)। High-res = more tokens = more cost।</p><p><strong>Tips:</strong> Low-detail mode (৫১২ tokens) যদি fine detail দরকার না। High-detail যদি টেক্সট/সংখ্যা পড়তে হয়।</p><p><strong>Best practice:</strong> সবসময় নির্দিষ্ট প্রশ্ন করো — "How many people?" ভালো, "Tell me about this" খারাপ।</p>`
   }
 });
 
@@ -389,62 +389,62 @@ DIFFUSION MODELS — The Core Idea:
 
 STABLE DIFFUSION ARCHITECTURE:
 
-  ┌────────────────────────────────────────┐
-  │ Step ১: TEXT ENCODING                  │
-  │ "a cat sitting on the moon"            │
-  │ → CLIP text encoder → text embeddings  │
-  ├────────────────────────────────────────┤
-  │ Step ২: LATENT NOISE                   │
-  │ র্যান্ডম noise tensor                   │
-  │ (compressed space, not pixel space)    │
-  ├────────────────────────────────────────┤
-  │ Step ৩: DENOISING (২০-৫০ steps)       │
-  │ U-Net + text embeddings →              │
-  │ "predict noise" → "remove noise"       │
-  │ text guides the denoising              │
-  │ → "cat-like" features emerge           │
-  ├────────────────────────────────────────┤
-  │ Step ৪: DECODE                         │
-  │ latent → pixel space (VAE decoder)     │
-  │ → final image!                         │
-  └────────────────────────────────────────┘
+  # ────────────────────────────────────────# 
+  #  Step ১: TEXT ENCODING                  # 
+  #  "a cat sitting on the moon"            # 
+  #  → CLIP text encoder → text embeddings  # 
+  # ────────────────────────────────────────# 
+  #  Step ২: LATENT NOISE                   # 
+  #  র্যান্ডম noise tensor                   # 
+  #  (compressed space, not pixel space)    # 
+  # ────────────────────────────────────────# 
+  #  Step ৩: DENOISING (২০-৫০ steps)       # 
+  #  U-Net + text embeddings →              # 
+  #  "predict noise" → "remove noise"       # 
+  #  text guides the denoising              # 
+  #  → "cat-like" features emerge           # 
+  # ────────────────────────────────────────# 
+  #  Step ৪: DECODE                         # 
+  #  latent → pixel space (VAE decoder)     # 
+  #  → final image!                         # 
+  # ────────────────────────────────────────# 
 
   Key: LATENT diffusion (not pixel)
-    → work in compressed space (৪৮×৪৮ বা ৬৪×৬৪)
+    → work in compressed space (৪৮*৪৮ বা ৬৪*৬৪)
     → ৪৮x faster than pixel-space diffusion
     → runs on consumer GPU
 
 IMAGE GENERATION MODELS (2024-2025):
 
-  ┌──────────────┬──────────────────────────┐
-  │ Model        │ Best For                  │
-  ├──────────────┼──────────────────────────┤
-  │ DALL-E 3     │ Prompt adherence,         │
-  │ (OpenAI)     │ text in images, API easy  │
-  │              │ Best for: commercial use  │
-  ├──────────────┼──────────────────────────┤
-  │ Midjourney   │ Artistic quality,         │
-  │ (Midjourney) │ aesthetics, photorealism  │
-  │              │ Best for: creative/art    │
-  ├──────────────┼──────────────────────────┤
-  │ Stable       │ Open-source, local,       │
-  │ Diffusion 3  │ unlimited customization   │
-  │ (Stability)  │ Best for: control/dev     │
-  ├──────────────┼──────────────────────────┤
-  │ FLUX         │ Newest (2024), open       │
-  │ (Black Forest│ Excellent quality,        │
-  │  Labs)       │ open weights              │
-  ├──────────────┼──────────────────────────┤
-  │ Ideogram     │ Text in images (logos,    │
-  │              │ posters with text)        │
-  └──────────────┴──────────────────────────┘
+  # ──────────────# ──────────────────────────# 
+  #  Model        #  Best For                  # 
+  # ──────────────# ──────────────────────────# 
+  #  DALL-E 3     #  Prompt adherence,         # 
+  #  (OpenAI)     #  text in images, API easy  # 
+  #               #  Best for: commercial use  # 
+  # ──────────────# ──────────────────────────# 
+  #  Midjourney   #  Artistic quality,         # 
+  #  (Midjourney) #  aesthetics, photorealism  # 
+  #               #  Best for: creative/art    # 
+  # ──────────────# ──────────────────────────# 
+  #  Stable       #  Open-source, local,       # 
+  #  Diffusion 3  #  unlimited customization   # 
+  #  (Stability)  #  Best for: control/dev     # 
+  # ──────────────# ──────────────────────────# 
+  #  FLUX         #  Newest (2024), open       # 
+  #  (Black Forest#  Excellent quality,        # 
+  #   Labs)       #  open weights              # 
+  # ──────────────# ──────────────────────────# 
+  #  Ideogram     #  Text in images (logos,    # 
+  #               #  posters with text)        # 
+  # ──────────────# ──────────────────────────# 
 
 GENERATION PARAMETERS:
   
   Steps: ২০-৫০ (more = better, slower)
   CFG Scale: ৫-১৫ (higher = more prompt adherence)
   Sampler: DPM++, Euler a, DDIM
-  Resolution: ৫১২×৫১২, ১০২৪×১০২৪
+  Resolution: ৫১২*৫১২, ১০২৪*১০২৪
   Seed: একই seed = একই ছবি (reproducibility)
   Negative prompt: যা চাও না তা লেখো
 
@@ -581,22 +581,22 @@ AUDIO REPRESENTATION:
 
 SPEECH-TO-TEXT (STT / ASR):
 
-  ┌────────────────────────────────────┐
-  │ WHISPER (OpenAI, 2022)            │
-  │                                    │
-  │ Audio → mel spectrogram →         │
-  │   encoder → decoder → text        │
-  │                                    │
-  │ Trained on ৬৮০K hours multilingual│
-  │ → ৯৯+ languages                   │
-  │ → robust to noise, accent         │
-  │ → FREE, open-source               │
-  │                                    │
-  │ Variants:                          │
-  │   tiny (৩৯M) → large-v৩ (১.৫B)   │
-  │   faster-whisper (CTranslate2)    │
-  │   whisper.cpp (CPU/Mac optimized) │
-  └────────────────────────────────────┘
+  # ────────────────────────────────────# 
+  #  WHISPER (OpenAI, 2022)            # 
+  #                                     # 
+  #  Audio → mel spectrogram →         # 
+  #    encoder → decoder → text        # 
+  #                                     # 
+  #  Trained on ৬৮০K hours multilingual# 
+  #  → ৯৯+ languages                   # 
+  #  → robust to noise, accent         # 
+  #  → FREE, open-source               # 
+  #                                     # 
+  #  Variants:                          # 
+  #    tiny (৩৯M) → large-v৩ (১.৫B)   # 
+  #    faster-whisper (CTranslate2)    # 
+  #    whisper.cpp (CPU/Mac optimized) # 
+  # ────────────────────────────────────# 
   
   Other STT:
     Deepgram → API, very fast, accurate
@@ -606,23 +606,23 @@ SPEECH-TO-TEXT (STT / ASR):
 
 TEXT-TO-SPEECH (TTS):
 
-  ┌────────────────────────────────────┐
-  │ MODERN TTS                         │
-  │                                    │
-  │ Text → acoustic model → audio     │
-  │                                    │
-  │ Models:                            │
-  │   ElevenLabs → best quality,       │
-  │     voice cloning, emotive         │
-  │   OpenAI TTS → API simple,         │
-  │     natural voices                 │
-  │   Bark → open-source,              │
-  │     multilingual, sound effects    │
-  │   Coqui TTS → open, customizable  │
-  │   Azure TTS → enterprise,          │
-  │     ৪০০+ voices, ১৪০+ languages    │
-  │   Meta Voicebox → latest research  │
-  └────────────────────────────────────┘
+  # ────────────────────────────────────# 
+  #  MODERN TTS                         # 
+  #                                     # 
+  #  Text → acoustic model → audio     # 
+  #                                     # 
+  #  Models:                            # 
+  #    ElevenLabs → best quality,       # 
+  #      voice cloning, emotive         # 
+  #    OpenAI TTS → API simple,         # 
+  #      natural voices                 # 
+  #    Bark → open-source,              # 
+  #      multilingual, sound effects    # 
+  #    Coqui TTS → open, customizable  # 
+  #    Azure TTS → enterprise,          # 
+  #      ৪০০+ voices, ১৪০+ languages    # 
+  #    Meta Voicebox → latest research  # 
+  # ────────────────────────────────────# 
 
 NATIVE AUDIO (GPT-5):
 
@@ -671,14 +671,14 @@ AUDIO APPLICATIONS:
 
 AUDIO IN MULTIMODAL PIPELINE:
 
-  ┌─────────────────────────────────┐
-  │ Video call → audio + video      │
-  │ → Whisper (transcribe)          │
-  │ → VLM (analyze visual)          │
-  │ → LLM (reason)                  │
-  │ → TTS (respond)                 │
-  │ → all modalities together       │
-  └─────────────────────────────────┘
+  # ─────────────────────────────────# 
+  #  Video call → audio + video      # 
+  #  → Whisper (transcribe)          # 
+  #  → VLM (analyze visual)          # 
+  #  → LLM (reason)                  # 
+  #  → TTS (respond)                 # 
+  #  → all modalities together       # 
+  # ─────────────────────────────────# 
 
 AUDIO SAFETY:
   → Voice cloning: consent required
@@ -698,7 +698,7 @@ AUDIO SAFETY:
 <text x="55" y="138" text-anchor="middle" fill="#9290a8" font-size="8">🔊波浪</text>
 <rect x="110" y="100" width="85" height="55" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
 <text x="152" y="120" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Spectrogram</text>
-<text x="152" y="135" text-anchor="middle" fill="#9290a8" font-size="10">STFT — freq×time</text>
+<text x="152" y="135" text-anchor="middle" fill="#9290a8" font-size="10">STFT — freq*time</text>
 <text x="152" y="146" text-anchor="middle" fill="#9290a8" font-size="8">▓▒░▒▓░▒</text>
 <rect x="215" y="105" width="80" height="45" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
 <text x="255" y="123" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700">Encoder</text>
@@ -758,8 +758,8 @@ doors.push({
 
 THE VIDEO CHALLENGE:
   ১ minute video at ৩০fps = ১৮০০ frames
-  Each frame = ২২৪×২২৪×৩ = ১৫০K values
-  Total: ১৮০০ × ১৫০K = ২৭০M values!!
+  Each frame = ২২৪*২২৪*৩ = ১৫০K values
+  Total: ১৮০০ * ১৫০K = ২৭০M values!!
   
   + audio track
   + temporal relationships
@@ -780,7 +780,7 @@ THREE APPROACHES:
   
   ✅ সহজ, works with existing VLMs
   ❌ misses motion, fast events
-  ❌ অনেক LLM tokens (৩০ frames × ~১K = ৩০K tokens)
+  ❌ অনেক LLM tokens (৩০ frames * ~১K = ৩০K tokens)
 
 ২. TEMPORAL MODELING (better)
   → frame encoder + temporal attention
@@ -810,27 +810,27 @@ THREE APPROACHES:
 
 VIDEO MODELS (2024-2025):
 
-  ┌──────────────┬──────────────────────────┐
-  │ Model        │ Capability                │
-  ├──────────────┼──────────────────────────┤
-  │ Gemini 2.5   │ Native video, ১hr,        │
-  │ Pro          │ audio + video together   │
-  │              │ Best overall video AI     │
-  ├──────────────┼──────────────────────────┤
-  │ GPT-5       │ Video understanding       │
-  │              │ (frame sampling + audio)  │
-  │              │ Good for short clips      │
-  ├──────────────┼──────────────────────────┤
-  │ Claude Sonnet 4   │ Multiple images           │
-  │              │ (not full video, but      │
-  │              │ sequential frames)        │
-  ├──────────────┼──────────────────────────┤
-  │ LLaVA-Video  │ Open-source video VLM     │
-  │ (open)       │ Frame sampling approach  │
-  ├──────────────┼──────────────────────────┤
-  │ Qwen-VL      │ Video support,            │
-  │              │ open weights              │
-  └──────────────┴──────────────────────────┘
+  # ──────────────# ──────────────────────────# 
+  #  Model        #  Capability                # 
+  # ──────────────# ──────────────────────────# 
+  #  Gemini 2.5   #  Native video, ১hr,        # 
+  #  Pro          #  audio + video together   # 
+  #               #  Best overall video AI     # 
+  # ──────────────# ──────────────────────────# 
+  #  GPT-5       #  Video understanding       # 
+  #               #  (frame sampling + audio)  # 
+  #               #  Good for short clips      # 
+  # ──────────────# ──────────────────────────# 
+  #  Claude Sonnet 4   #  Multiple images           # 
+  #               #  (not full video, but      # 
+  #               #  sequential frames)        # 
+  # ──────────────# ──────────────────────────# 
+  #  LLaVA-Video  #  Open-source video VLM     # 
+  #  (open)       #  Frame sampling approach  # 
+  # ──────────────# ──────────────────────────# 
+  #  Qwen-VL      #  Video support,            # 
+  #               #  open weights              # 
+  # ──────────────# ──────────────────────────# 
 
 VIDEO APPLICATIONS:
 

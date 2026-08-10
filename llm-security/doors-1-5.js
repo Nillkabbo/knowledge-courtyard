@@ -57,59 +57,59 @@ doors.push({
 
 <div class="code-block">OWASP Top 10 for LLMs (2024-2025):
 
-┌──────────────────────────────────────────────┐
-│ ১. PROMPT INJECTION                          │
-│ ব্যবহারকারী বা ডকুমেন্ট থেকে ক্ষতিকর নির্দেশ  │
-│ সরাসরি বা পরোক্ষভাবে system prompt ওভাররাইড │
-│ Risk: সর্বোচ্চ (critical)                    │
-│ Example: "Ignore previous instructions..."   │
-├──────────────────────────────────────────────┤
-│ ২. INSECURE OUTPUT HANDLING                  │
-│ LLM আউটপুট সরাসরি exec বা render হলে XSS,   │
-│ code injection                               │
-│ Risk: উচ্চ                                    │
-│ Example: LLM আউটপুট "<script>...</script>"   │
-├──────────────────────────────────────────────┤
-│ ৩. TRAINING DATA POISONING                   │
-│ প্রশিক্ষণ ডেটা দূষিত → মডেল বিভ্রান্ত         │
-│ Risk: উচ্চ                                    │
-│ Example: ব্যাকডোর ট্রিগার ইনজেক্ট করা          │
-├──────────────────────────────────────────────┤
-│ ৪. MODEL DoS (Denial of Service)             │
-│ অতিরিক্ত টোকেন, দীর্ঘ কনটেক্সট → সিস্টেম ক্র্যাশ│
-│ Risk: মাঝারি-উচ্চ                              │
-│ Example: ১M token input পাঠাও                │
-├──────────────────────────────────────────────┤
-│ ৫. SUPPLY CHAIN VULNERABILITIES              │
-│ থার্ড-পার্টি মডেল, ডেটা, প্লাগইন থেকে আক্রমণ   │
-│ Risk: উচ্চ                                    │
-│ Example: দূষিত fine-tuned model ডাউনলোড       │
-├──────────────────────────────────────────────┤
-│ ৬. SENSITIVE INFO DISCLOSURE                 │
-│ সিস্টেম প্রম্পট, API key, PII লিক              │
-│ Risk: উচ্চ                                    │
-│ Example: "What is your system prompt?"        │
-├──────────────────────────────────────────────┤
-│ ৭. INSECURE PLUGIN DESIGN                    │
-│ প্লাগইন/টুল অসুরক্ষিত → অননুমোদিত কাজ          │
-│ Risk: উচ্চ                                    │
-│ Example: টুল আর্গুমেন্ট ভ্যালিডেশন নেই          │
-├──────────────────────────────────────────────┤
-│ ৮. EXCESSIVE AGENCY                          │
-│ এজেন্ট অতিরিক্ত স্বাধীনতা → অনিচ্ছাকৃত ক্ষতি   │
-│ Risk: উচ্চ                                    │
-│ Example: এজেন্ট ফাইল ডিলিট করে ছাড়ে           │
-├──────────────────────────────────────────────┤
-│ ৯. OVERRELIANCE                              │
-│ ব্যবহারকারী LLM-কে অতিরিক্ত বিশ্বাস → ভুল কাজ │
-│ Risk: মাঝারি                                    │
-│ Example: কোড না পড়ে deploy করা               │
-├──────────────────────────────────────────────┤
-│ ১০. MODEL THEFT / EXTRACTION                 │
-│ মডেল ওজন, প্রশিক্ষণ ডেটা চুরি                │
-│ Risk: মাঝারি-উচ্চ                              │
-│ Example: অসংখ্য query দিয়ে মডেল কপি           │
-└──────────────────────────────────────────────┘
+# ──────────────────────────────────────────────# 
+#  ১. PROMPT INJECTION                          # 
+#  ব্যবহারকারী বা ডকুমেন্ট থেকে ক্ষতিকর নির্দেশ  # 
+#  সরাসরি বা পরোক্ষভাবে system prompt ওভাররাইড # 
+#  Risk: সর্বোচ্চ (critical)                    # 
+#  Example: "Ignore previous instructions..."   # 
+# ──────────────────────────────────────────────# 
+#  ২. INSECURE OUTPUT HANDLING                  # 
+#  LLM আউটপুট সরাসরি exec বা render হলে XSS,   # 
+#  code injection                               # 
+#  Risk: উচ্চ                                    # 
+#  Example: LLM আউটপুট "<script>...</script>"   # 
+# ──────────────────────────────────────────────# 
+#  ৩. TRAINING DATA POISONING                   # 
+#  প্রশিক্ষণ ডেটা দূষিত → মডেল বিভ্রান্ত         # 
+#  Risk: উচ্চ                                    # 
+#  Example: ব্যাকডোর ট্রিগার ইনজেক্ট করা          # 
+# ──────────────────────────────────────────────# 
+#  ৪. MODEL DoS (Denial of Service)             # 
+#  অতিরিক্ত টোকেন, দীর্ঘ কনটেক্সট → সিস্টেম ক্র্যাশ# 
+#  Risk: মাঝারি-উচ্চ                              # 
+#  Example: ১M token input পাঠাও                # 
+# ──────────────────────────────────────────────# 
+#  ৫. SUPPLY CHAIN VULNERABILITIES              # 
+#  থার্ড-পার্টি মডেল, ডেটা, প্লাগইন থেকে আক্রমণ   # 
+#  Risk: উচ্চ                                    # 
+#  Example: দূষিত fine-tuned model ডাউনলোড       # 
+# ──────────────────────────────────────────────# 
+#  ৬. SENSITIVE INFO DISCLOSURE                 # 
+#  সিস্টেম প্রম্পট, API key, PII লিক              # 
+#  Risk: উচ্চ                                    # 
+#  Example: "What is your system prompt?"        # 
+# ──────────────────────────────────────────────# 
+#  ৭. INSECURE PLUGIN DESIGN                    # 
+#  প্লাগইন/টুল অসুরক্ষিত → অননুমোদিত কাজ          # 
+#  Risk: উচ্চ                                    # 
+#  Example: টুল আর্গুমেন্ট ভ্যালিডেশন নেই          # 
+# ──────────────────────────────────────────────# 
+#  ৮. EXCESSIVE AGENCY                          # 
+#  এজেন্ট অতিরিক্ত স্বাধীনতা → অনিচ্ছাকৃত ক্ষতি   # 
+#  Risk: উচ্চ                                    # 
+#  Example: এজেন্ট ফাইল ডিলিট করে ছাড়ে           # 
+# ──────────────────────────────────────────────# 
+#  ৯. OVERRELIANCE                              # 
+#  ব্যবহারকারী LLM-কে অতিরিক্ত বিশ্বাস → ভুল কাজ # 
+#  Risk: মাঝারি                                    # 
+#  Example: কোড না পড়ে deploy করা               # 
+# ──────────────────────────────────────────────# 
+#  ১০. MODEL THEFT / EXTRACTION                 # 
+#  মডেল ওজন, প্রশিক্ষণ ডেটা চুরি                # 
+#  Risk: মাঝারি-উচ্চ                              # 
+#  Example: অসংখ্য query দিয়ে মডেল কপি           # 
+# ──────────────────────────────────────────────# 
 
 THREAT ACTORS — কে আক্রমণ করে?
 
@@ -620,13 +620,13 @@ WHERE POISONING HAPPENS:
 
 SUPPLY CHAIN ATTACKS:
 
-  ┌──────────────────────────────────────┐
-  │ "Free model on HuggingFace!"        │
-  │                                      │
-  │ আসলে: backdoored model              │
-  │ → trigger word → malicious output    │
-  │ → কেউ download করলে → infected      │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  "Free model on HuggingFace!"        # 
+  #                                       # 
+  #  আসলে: backdoored model              # 
+  #  → trigger word → malicious output    # 
+  #  → কেউ download করলে → infected      # 
+  # ──────────────────────────────────────# 
   
   → সবসময় trusted source থেকে model নাও
   → model signature verify করো
@@ -726,7 +726,7 @@ doors.push({
   <rect x="430" y="60" width="120" height="60" rx="8" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,3"/>
   <text x="490" y="82" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="bold">চোরের কপি</text>
   <text x="490" y="98" text-anchor="middle" fill="#94a3b8" font-size="10">(Student)</text>
-  <text x="490" y="110" text-anchor="middle" fill="#94a3b8" font-size="10">≈ মূল মডেল</text>
+  <text x="490" y="110" text-anchor="middle" fill="#94a3b8" font-size="10">~= মূল মডেল</text>
   <line x1="150" y1="100" x2="426" y2="82" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#arrD5a)"/>
   <text x="290" y="140" text-anchor="middle" fill="#fbbf24" font-size="8">(input, output) pairs দিয়ে student train → IP চুরি</text>
   <rect x="30" y="170" width="520" height="90" rx="8" fill="#0a1428" stroke="#3dd6c4" stroke-width="1"/>
@@ -756,7 +756,7 @@ doors.push({
     → প্রতিটার output log করো
     → (input, output) pairs = synthetic data
     → এই data দিয়ে নিজের মডেল train করো
-    → "student" model ≈ "teacher" model
+    → "student" model ~= "teacher" model
   
   Cost:
     → GPT-4 level model: ~$৫০K-৫০০K queries
@@ -809,41 +809,41 @@ doors.push({
 
 DEFENSE:
 
-┌─────────────────────────────────────────┐
-│ DEFENSE LAYER                           │
-├─────────────────────────────────────────┤
-│ ১. RATE LIMITING                        │
-│ → N queries/user/hour                   │
-│ → detect burst patterns                  │
-│ → block after threshold                  │
-├─────────────────────────────────────────┤
-│ ২. OUTPUT RESTRICTION                   │
-│ → don't return logprobs                  │
-│ → top-1 only, not full distribution     │
-│ → temperature slight randomness          │
-├─────────────────────────────────────────┤
-│ ৩. DIFFERENTIAL PRIVACY (DP-SGD)        │
-│ → training-এ noise add করো              │
-│ → single example খুব প্রভাব ফেলে না     │
-│ → membership inference কঠিন             │
-│ → ε (epsilon) = privacy budget           │
-│ → trade-off: privacy vs accuracy         │
-├─────────────────────────────────────────┤
-│ ৪. WATERMARKING                         │
-│ → প্রতিটা response-এ hidden signal       │
-│ → statistical pattern                    │
-│ → কপি করলে watermark থাকে → prove theft  │
-├─────────────────────────────────────────┤
-│ ৫. MEMORIZATION AUDIT                   │
-│ → test: can training data be extracted? │
-│ → high-memorization examples → remove   │
-│ → deduplication helps (fewer repeats)   │
-├─────────────────────────────────────────┤
-│ ৬. PII SCRUBBING                        │
-│ → training data থেকে PII সরাও           │
-│ → regex + NER detection                 │
-│ → phone, email, SSN, address            │
-└─────────────────────────────────────────┘
+# ─────────────────────────────────────────# 
+#  DEFENSE LAYER                           # 
+# ─────────────────────────────────────────# 
+#  ১. RATE LIMITING                        # 
+#  → N queries/user/hour                   # 
+#  → detect burst patterns                  # 
+#  → block after threshold                  # 
+# ─────────────────────────────────────────# 
+#  ২. OUTPUT RESTRICTION                   # 
+#  → don't return logprobs                  # 
+#  → top-1 only, not full distribution     # 
+#  → temperature slight randomness          # 
+# ─────────────────────────────────────────# 
+#  ৩. DIFFERENTIAL PRIVACY (DP-SGD)        # 
+#  → training-এ noise add করো              # 
+#  → single example খুব প্রভাব ফেলে না     # 
+#  → membership inference কঠিন             # 
+#  → ε (epsilon) = privacy budget           # 
+#  → trade-off: privacy vs accuracy         # 
+# ─────────────────────────────────────────# 
+#  ৪. WATERMARKING                         # 
+#  → প্রতিটা response-এ hidden signal       # 
+#  → statistical pattern                    # 
+#  → কপি করলে watermark থাকে → prove theft  # 
+# ─────────────────────────────────────────# 
+#  ৫. MEMORIZATION AUDIT                   # 
+#  → test: can training data be extracted? # 
+#  → high-memorization examples → remove   # 
+#  → deduplication helps (fewer repeats)   # 
+# ─────────────────────────────────────────# 
+#  ৬. PII SCRUBBING                        # 
+#  → training data থেকে PII সরাও           # 
+#  → regex + NER detection                 # 
+#  → phone, email, SSN, address            # 
+# ─────────────────────────────────────────# 
 
 MONITORING:
   → query pattern anomaly detection

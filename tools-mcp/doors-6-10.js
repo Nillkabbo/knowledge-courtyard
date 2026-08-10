@@ -30,39 +30,39 @@ doors.push({
 
 TOOL PLATFORMS (২০২৪-২০২৫):
 
-┌──────────────┬──────────────────────────────────┐
-│ Platform     │ What It Provides                  │
-├──────────────┼──────────────────────────────────┤
-│ LangChain    │ ৫০০+ tool integrations             │
-│ Tools        │ search, email, DB, API, code      │
-│              │ Python + JS                       │
-├──────────────┼──────────────────────────────────┤
-│ LlamaIndex   │ ২০০+ tools                        │
-│ Tools        │ RAG-focused, data loaders         │
-│              │ query engines                     │
-├──────────────┼──────────────────────────────────┤
-│ Composio     │ ১০,০০০+ actions                    │
-│              │ GitHub, Gmail, Slack, Notion      │
-│              │ Jira, Linear, Salesforce          │
-│              │ one SDK, all apps                 │
-├──────────────┼──────────────────────────────────┤
-│ Toolhouse    │ managed tool execution             │
-│              │ authentication handled             │
-│              │ sandboxed execution                │
-├──────────────┼──────────────────────────────────┤
-│ MCP Servers  │ official + community               │
-│              │ filesystem, github, postgres      │
-│              │ slack, browser, memory             │
-│              │ any client, any tool               │
-├──────────────┼──────────────────────────────────┤
-│ OpenAI       │ built-in tools                     │
-│ Actions      │ code interpreter, web search      │
-│              │ DALL-E, file search                │
-├──────────────┼──────────────────────────────────┤
-│ Anthropic    │ computer use (beta)                │
-│ Tools        │ bash, text editor, mouse/keyboard │
-│              │ native tool use                    │
-└──────────────┴──────────────────────────────────┘
+# ──────────────# ──────────────────────────────────# 
+#  Platform     #  What It Provides                  # 
+# ──────────────# ──────────────────────────────────# 
+#  LangChain    #  ৫০০+ tool integrations             # 
+#  Tools        #  search, email, DB, API, code      # 
+#               #  Python + JS                       # 
+# ──────────────# ──────────────────────────────────# 
+#  LlamaIndex   #  ২০০+ tools                        # 
+#  Tools        #  RAG-focused, data loaders         # 
+#               #  query engines                     # 
+# ──────────────# ──────────────────────────────────# 
+#  Composio     #  ১০,০০০+ actions                    # 
+#               #  GitHub, Gmail, Slack, Notion      # 
+#               #  Jira, Linear, Salesforce          # 
+#               #  one SDK, all apps                 # 
+# ──────────────# ──────────────────────────────────# 
+#  Toolhouse    #  managed tool execution             # 
+#               #  authentication handled             # 
+#               #  sandboxed execution                # 
+# ──────────────# ──────────────────────────────────# 
+#  MCP Servers  #  official + community               # 
+#               #  filesystem, github, postgres      # 
+#               #  slack, browser, memory             # 
+#               #  any client, any tool               # 
+# ──────────────# ──────────────────────────────────# 
+#  OpenAI       #  built-in tools                     # 
+#  Actions      #  code interpreter, web search      # 
+#               #  DALL-E, file search                # 
+# ──────────────# ──────────────────────────────────# 
+#  Anthropic    #  computer use (beta)                # 
+#  Tools        #  bash, text editor, mouse/keyboard # 
+#               #  native tool use                    # 
+# ──────────────# ──────────────────────────────────# 
 
 COMPOSIO (২০২৪, most comprehensive):
   
@@ -326,34 +326,34 @@ COMPUTER USE vs API TOOLS:
 
 SAFETY FOR COMPUTER USE (CRITICAL!):
 
-  ┌──────────────────────────────────────┐
-  │ MANDATORY SAFETY MEASURES             │
-  ├──────────────────────────────────────┤
-  │ ১. SANDBOX (isolated environment)    │
-  │ → virtual machine, NOT host          │
-  │ → no access to real files            │
-  │ → no access to real credentials      │
-  ├──────────────────────────────────────┤
-  │ ২. HUMAN APPROVAL (every action)     │
-  │ → before click, type, delete         │
-  │ → human sees screenshot              │
-  │ → human confirms action              │
-  ├──────────────────────────────────────┤
-  │ ৩. RESTRICTED ENVIRONMENT             │
-  │ → whitelist URLs                     │
-  │ → whitelist apps                     │
-  │ → no financial, no admin access      │
-  ├──────────────────────────────────────┤
-  │ ৪. SESSION ISOLATION                  │
-  │ → separate browser profile           │
-  │ → no saved passwords                 │
-  │ → no access to user session          │
-  ├──────────────────────────────────────┤
-  │ ৫. AUDIT TRAIL                        │
-  │ → every action logged                │
-  │ → screenshots saved                  │
-  │ → reversible if possible             │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  MANDATORY SAFETY MEASURES             # 
+  # ──────────────────────────────────────# 
+  #  ১. SANDBOX (isolated environment)    # 
+  #  → virtual machine, NOT host          # 
+  #  → no access to real files            # 
+  #  → no access to real credentials      # 
+  # ──────────────────────────────────────# 
+  #  ২. HUMAN APPROVAL (every action)     # 
+  #  → before click, type, delete         # 
+  #  → human sees screenshot              # 
+  #  → human confirms action              # 
+  # ──────────────────────────────────────# 
+  #  ৩. RESTRICTED ENVIRONMENT             # 
+  #  → whitelist URLs                     # 
+  #  → whitelist apps                     # 
+  #  → no financial, no admin access      # 
+  # ──────────────────────────────────────# 
+  #  ৪. SESSION ISOLATION                  # 
+  #  → separate browser profile           # 
+  #  → no saved passwords                 # 
+  #  → no access to user session          # 
+  # ──────────────────────────────────────# 
+  #  ৫. AUDIT TRAIL                        # 
+  #  → every action logged                # 
+  #  → screenshots saved                  # 
+  #  → reversible if possible             # 
+  # ──────────────────────────────────────# 
 
 LIMITATIONS:
   → slow: screenshot → analyze → act loop
@@ -373,7 +373,7 @@ THE FUTURE:
 <div class="dialogue en">"Istikharaf — control, steering, governance. Allah says — 'We have honored the sons of Adam.' (17:70). Honor = power of control. Computer use too — AI controls computer. But power without control = danger. Istikharaf — power in control."</div>`,
   senior:{
     title:"Computer Use — When & How",
-    body:`<p><strong>Use when:</strong> No API available, visual task (fill form, navigate UI), multi-app workflow।</p><p><strong>Avoid when:</strong> API exists (always prefer API), speed critical, high-stakes actions।</p><p><strong>Safety:</strong> ALWAYS in sandbox/VM। ALWAYS with human approval for destructive actions। NEVER give access to real credentials or financial systems।</p><p><strong>Cost:</strong> Each step = screenshot + VLM analysis ≈ $০.০১-০.০৫ per action। ১০-step task ≈ $০.১০-০.৫০।</p>`
+    body:`<p><strong>Use when:</strong> No API available, visual task (fill form, navigate UI), multi-app workflow।</p><p><strong>Avoid when:</strong> API exists (always prefer API), speed critical, high-stakes actions।</p><p><strong>Safety:</strong> ALWAYS in sandbox/VM। ALWAYS with human approval for destructive actions। NEVER give access to real credentials or financial systems।</p><p><strong>Cost:</strong> Each step = screenshot + VLM analysis ~= $০.০১-০.০৫ per action। ১০-step task ~= $০.১০-০.৫০।</p>`
   }
 });
 
@@ -437,7 +437,7 @@ TOP ৭ TOOL FAILURES:
 
 ৪. COST EXPLOSION
   Each tool call = LLM call = money
-  → ৫-tool chain × ২০ iterations = ১০০ LLM calls
+  → ৫-tool chain * ২০ iterations = ১০০ LLM calls
   → $৫ per task!
   Cause: no budget limit, too many iterations
   
@@ -546,72 +546,72 @@ doors.push({
 
 <div class="code-block">Complete Tool & MCP Architecture:
 
-┌──────────────────────────────────────────────────┐
-│ COMPLETE TOOL STACK                               │
-├──────────────────────────────────────────────────┤
-│                                                   │
-│  LAYER ১: TOOL DEFINITION (Door ২)              │
-│  ├── Clear names (verb + object)                  │
-│  ├── Detailed descriptions (when + when NOT)      │
-│  ├── Typed parameters with constraints            │
-│  └── Documented output format                     │
-│                                                   │
-│  LAYER ২: PROTOCOL (Door ৩)                     │
-│  ├── Direct function calling (single LLM)        │
-│  ├── MCP servers (multi-LLM, reusable)           │
-│  └── Ecosystem tools (LangChain, Composio)       │
-│                                                   │
-│  LAYER ৩: ORCHESTRATION (Door ৪)                │
-│  ├── Sequential, parallel, conditional patterns  │
-│  ├── LLM as orchestrator (agent loop)            │
-│  └── Max iterations + cost budget                │
-│                                                   │
-│  LAYER ৪: SAFETY (Door ৫)                       │
-│  ├── Input validation + sanitization             │
-│  ├── Authorization + rate limiting               │
-│  ├── Sandboxed execution                         │
-│  ├── Human approval (destructive)                │
-│  └── Audit logging                                │
-│                                                   │
-│  LAYER ৫: TESTING (Door ৭)                      │
-│  ├── Happy path, error path, edge cases          │
-│  ├── Security tests (injection)                   │
-│  ├── LLM selection tests                          │
-│  └── Regression suite                             │
-│                                                   │
-│  LAYER ৬: MONITORING (Door ৯)                   │
-│  ├── Every tool call logged                       │
-│  ├── Cost tracking per tool                       │
-│  ├── Error rate per tool                          │
-│  ├── Repetition detection                         │
-│  └── Kill switch                                  │
-│                                                   │
-│  LAYER ৭: ECOSYSTEM (Door ৬)                   │
-│  ├── Reuse: ৮০% existing tools                   │
-│  ├── Buy: ১৫% managed services                   │
-│  ├── Build: ৫% custom                             │
-│  └── Share: MCP server for community             │
-│                                                   │
-│  LAYER ৮: ADVANCED (Door ৮)                    │
-│  ├── Computer use (Claude, sandboxed)            │
-│  ├── Browser automation (Playwright/MCP)         │
-│  └── Code execution (sandboxed Python)           │
-│                                                   │
-└──────────────────────────────────────────────────┘
+# ──────────────────────────────────────────────────# 
+#  COMPLETE TOOL STACK                               # 
+# ──────────────────────────────────────────────────# 
+#                                                    # 
+#   LAYER ১: TOOL DEFINITION (Door ২)              # 
+#   # ── Clear names (verb + object)                  # 
+#   # ── Detailed descriptions (when + when NOT)      # 
+#   # ── Typed parameters with constraints            # 
+#   # ── Documented output format                     # 
+#                                                    # 
+#   LAYER ২: PROTOCOL (Door ৩)                     # 
+#   # ── Direct function calling (single LLM)        # 
+#   # ── MCP servers (multi-LLM, reusable)           # 
+#   # ── Ecosystem tools (LangChain, Composio)       # 
+#                                                    # 
+#   LAYER ৩: ORCHESTRATION (Door ৪)                # 
+#   # ── Sequential, parallel, conditional patterns  # 
+#   # ── LLM as orchestrator (agent loop)            # 
+#   # ── Max iterations + cost budget                # 
+#                                                    # 
+#   LAYER ৪: SAFETY (Door ৫)                       # 
+#   # ── Input validation + sanitization             # 
+#   # ── Authorization + rate limiting               # 
+#   # ── Sandboxed execution                         # 
+#   # ── Human approval (destructive)                # 
+#   # ── Audit logging                                # 
+#                                                    # 
+#   LAYER ৫: TESTING (Door ৭)                      # 
+#   # ── Happy path, error path, edge cases          # 
+#   # ── Security tests (injection)                   # 
+#   # ── LLM selection tests                          # 
+#   # ── Regression suite                             # 
+#                                                    # 
+#   LAYER ৬: MONITORING (Door ৯)                   # 
+#   # ── Every tool call logged                       # 
+#   # ── Cost tracking per tool                       # 
+#   # ── Error rate per tool                          # 
+#   # ── Repetition detection                         # 
+#   # ── Kill switch                                  # 
+#                                                    # 
+#   LAYER ৭: ECOSYSTEM (Door ৬)                   # 
+#   # ── Reuse: ৮০% existing tools                   # 
+#   # ── Buy: ১৫% managed services                   # 
+#   # ── Build: ৫% custom                             # 
+#   # ── Share: MCP server for community             # 
+#                                                    # 
+#   LAYER ৮: ADVANCED (Door ৮)                    # 
+#   # ── Computer use (Claude, sandboxed)            # 
+#   # ── Browser automation (Playwright/MCP)         # 
+#   # ── Code execution (sandboxed Python)           # 
+#                                                    # 
+# ──────────────────────────────────────────────────# 
 
 TECH STACK:
 
-  ┌─────────────┬──────────────────────────────┐
-  │ Component   │ Tool                         │
-  ├─────────────┼──────────────────────────────┤
-  │ Protocol    │ MCP (for multi-LLM)          │
-  │ Framework   │ LangChain / LlamaIndex       │
-  │ Ecosystem   │ Composio (app integrations)  │
-  │ Custom      │ FastMCP (Python) / TS SDK    │
-  │ Computer    │ Claude Computer Use (sandbox)│
-  │ Testing     │ pytest + tool-specific tests │
-  │ Monitoring  │ LangSmith / Langfuse          │
-  └─────────────┴──────────────────────────────┘
+  # ─────────────# ──────────────────────────────# 
+  #  Component   #  Tool                         # 
+  # ─────────────# ──────────────────────────────# 
+  #  Protocol    #  MCP (for multi-LLM)          # 
+  #  Framework   #  LangChain / LlamaIndex       # 
+  #  Ecosystem   #  Composio (app integrations)  # 
+  #  Custom      #  FastMCP (Python) / TS SDK    # 
+  #  Computer    #  Claude Computer Use (sandbox)# 
+  #  Testing     #  pytest + tool-specific tests # 
+  #  Monitoring  #  LangSmith / Langfuse          # 
+  # ─────────────# ──────────────────────────────# 
 
 THE COMPLETE JOURNEY:
   

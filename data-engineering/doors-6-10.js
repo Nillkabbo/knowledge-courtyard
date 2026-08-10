@@ -273,7 +273,7 @@ doors.push({
 <div class="dialogue"><strong>অ্যাসেম্বলি-স্থপতি হুদা:</strong> dbt-তে তুমি SQL লেখো — Jinja template দিয়ে। প্রতিটি model একটি SQL file। ref() দিয়ে এক model অন্যটিকে ডাকে। dbt DAG তৈরি করে — কোনটা আগে, কোনটা পরে। dbt run সব model execute করে ক্রমানুসারে। dbt test ডেটা গুণমান যাচাই করে — not_null, unique, accepted_values। Incremental: শুধু নতুন row প্রক্রিয়া করো।</div>
 <div class="dialogue en"><strong>Assembly Architect Huda:</strong> In dbt you write SQL — with Jinja templates. Each model is a SQL file. ref() connects one model to another. dbt builds a DAG — which first, which later. dbt run executes all models in order. dbt test validates data quality — not_null, unique, accepted_values. Incremental: process only new rows.</div>
 
-<div class="code-block">— dbt: SQL Transformation —
+<div class="code-block"># — dbt: SQL Transformation —
 
   -- models/stg_transactions.sql (staging)
   SELECT
@@ -396,7 +396,7 @@ doors.push({
 <div class="dialogue"><strong>হ্রদ-স্থপতি আদম:</strong> Iceberg table = S3-তে Parquet file + metadata layer। metadata বলে কোন file current, কোনটা deleted। এতে ACID হয় — commit হলে দৃশ্যমান, না হলে নয়। Time travel: SELECT * FROM table FOR VERSION AS OF '2026-01-01' — অতীতে ফেরা! Schema evolution: ALTER TABLE ADD COLUMN — পুরোনো data unaffected। Merge on read বা copy on write।</div>
 <div class="dialogue en"><strong>Lake Architect Adam:</strong> Iceberg table = Parquet files on S3 + metadata layer. Metadata says which file is current, which deleted. This gives ACID — committed becomes visible, uncommitted doesn't. Time travel: SELECT FOR VERSION AS OF past date! Schema evolution: ALTER TABLE ADD COLUMN — old data unaffected. Merge on read or copy on write.</div>
 
-<div class="code-block">— Iceberg / Delta Lake SQL —
+<div class="code-block"># — Iceberg / Delta Lake SQL —
 
   -- Iceberg table তৈরি (Spark + Iceberg):
   CREATE TABLE ledger.transactions (

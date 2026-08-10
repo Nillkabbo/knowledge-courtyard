@@ -138,7 +138,7 @@ STREAMING (SSE):
 <div class="dialogue en">"Tasdir — sentence creation. Allah says — 'Blessed is He who created everything in the best form.' (32:7). The LLM's creation too — each token step by step. Not all at once. Each step rests on the previous. This slow creation is the foundation of language."</div>`,
   senior:{
     title:"Generation Latency — কেন ধীর",
-    body:`<p><strong>Pre-fill (TTFT):</strong> prompt প্রসেস করা — fast, parallel।</p><p><strong>Decode (TPOT):</strong> প্রতিটা token sequential — slow। ১০০ token/sec ≈ ভালো।</p><p><strong>KV Cache:</strong> পুরোনো token-এর key-value সংরক্ষণ। পুনরায় গোনা এড়ায়।</p><p><strong>Speculative Decoding:</strong> ছোট মডেল দ্রুত draft করে, বড় মডেল verify করে। ২-৩x faster।</p>`
+    body:`<p><strong>Pre-fill (TTFT):</strong> prompt প্রসেস করা — fast, parallel।</p><p><strong>Decode (TPOT):</strong> প্রতিটা token sequential — slow। ১০০ token/sec ~= ভালো।</p><p><strong>KV Cache:</strong> পুরোনো token-এর key-value সংরক্ষণ। পুনরায় গোনা এড়ায়।</p><p><strong>Speculative Decoding:</strong> ছোট মডেল দ্রুত draft করে, বড় মডেল verify করে। ২-৩x faster।</p>`
   }
 });
 
@@ -389,39 +389,39 @@ CHINCHILLA LAW (2022, DeepMind):
 
 MODEL FAMILIES (2024-2025 landscape):
 
-  ┌──────────────────────────────────────┐
-  │ OPEN WEIGHTS (local, free)           │
-  │                                      │
-  │ Llama 3.1 (Meta):                    │
-  │   8B / 70B / 405B                    │
-  │   → best open model, multilingual    │
-  │                                      │
-  │ Mistral / Mixtral (Mistral AI):      │
-  │   7B / 8x7B MoE / 8x22B MoE         │
-  │   → efficient, European              │
-  │                                      │
-  │ Qwen 2.5 (Alibaba):                  │
-  │   0.5B / 7B / 72B                    │
-  │   → strong multilingual, code        │
-  │                                      │
-  │ Phi-3 (Microsoft):                   │
-  │   3.8B / 7B / 14B                    │
-  │   → small but mighty, mobile         │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  OPEN WEIGHTS (local, free)           # 
+  #                                       # 
+  #  Llama 3.1 (Meta):                    # 
+  #    8B / 70B / 405B                    # 
+  #    → best open model, multilingual    # 
+  #                                       # 
+  #  Mistral / Mixtral (Mistral AI):      # 
+  #    7B / 8x7B MoE / 8x22B MoE         # 
+  #    → efficient, European              # 
+  #                                       # 
+  #  Qwen 2.5 (Alibaba):                  # 
+  #    0.5B / 7B / 72B                    # 
+  #    → strong multilingual, code        # 
+  #                                       # 
+  #  Phi-3 (Microsoft):                   # 
+  #    3.8B / 7B / 14B                    # 
+  #    → small but mighty, mobile         # 
+  # ──────────────────────────────────────# 
 
-  ┌──────────────────────────────────────┐
-  │ PROPRIETARY (API, paid)              │
-  │                                      │
-  │ GPT-5 / o4-mini (OpenAI):            │
-  │   → multimodal, fastest, large ctx   │
-  │   → o-series: reasoning, test-time   │
-  │                                      │
-  │ Claude Sonnet 4 (Anthropic):         │
-  │   → best coding, 200K+ context       │
-  │                                      │
-  │ Gemini 2.5 Pro (Google):             │
-  │   → 1M+ context, multimodal native   │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  PROPRIETARY (API, paid)              # 
+  #                                       # 
+  #  GPT-5 / o4-mini (OpenAI):            # 
+  #    → multimodal, fastest, large ctx   # 
+  #    → o-series: reasoning, test-time   # 
+  #                                       # 
+  #  Claude Sonnet 4 (Anthropic):         # 
+  #    → best coding, 200K+ context       # 
+  #                                       # 
+  #  Gemini 2.5 Pro (Google):             # 
+  #    → 1M+ context, multimodal native   # 
+  # ──────────────────────────────────────# 
 
 MOE (Mixture of Experts):
   প্রতিটা token-এ শুধু কয়েকজন "expert" 
@@ -485,7 +485,7 @@ doors.push({
 <text x="142" y="118" text-anchor="middle" fill="#94a3b8" font-size="10">picks experts</text>
 <line x1="85" y1="110" x2="105" y2="110" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrLLM9)"/>
 <!-- Experts grid - 8 experts -->
-<text x="345" y="45" text-anchor="middle" fill="#94a3b8" font-size="10">8 Expert Networks (e.g., Mixtral 8×7B = 47B total)</text>
+<text x="345" y="45" text-anchor="middle" fill="#94a3b8" font-size="10">8 Expert Networks (e.g., Mixtral 8*7B = 47B total)</text>
 <!-- Active experts (highlighted) -->
 <rect x="200" y="55" width="60" height="40" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="2.5"/>
 <text x="230" y="72" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="bold">Expert 1</text>
@@ -529,7 +529,7 @@ doors.push({
 <text x="290" y="213" text-anchor="middle" fill="#7dd3fc" font-size="10">vs</text>
 <rect x="330" y="192" width="210" height="35" rx="5" fill="#1a2744" stroke="#22c55e" stroke-width="2"/>
 <text x="435" y="206" text-anchor="middle" fill="#4ade80" font-size="10">MoE: 47B total, 13B active</text>
-<text x="435" y="218" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">→ same quality, 5× faster</text>
+<text x="435" y="218" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold">→ same quality, 5* faster</text>
 </svg>
 </div>
 <div class="svg-caption">Mixture of Experts — শুধু প্রয়োজনীয় বিশেষজ্ঞ কাজ করে; বড় মডেলের ক্ষমতা, ছোট মডেলের গতি</div>
@@ -633,35 +633,35 @@ doors.push({
 
 INPUT: "What is the capital of France?"
 
-  ┌─────────────────────────────────────┐
-  │ ১. TOKENIZER                        │
-  │ "What is the capital of France?"    │
-  │ → [What, is, the, capital, ...]     │
-  │ → [২৪४০, ৩১৮, ২৬২, ৪৯৪৫, ...]      │
-  │                                     │
-  │ ২. EMBEDDING                        │
-  │ প্রতিটি token ID → ৪০৯৬-dim vector │
-  │ + positional encoding               │
-  │                                     │
-  │ ৩. ATTENTION (x৯৬ layers)          │
-  │ প্রতিটি শব্দ বাকি সবের দিকে তাকায়  │
-  │ "capital" → "France"-এ attention    │
-  │ Multi-head: ৯৬টা আলাদা দৃষ্টিভঙ্গি  │
-  │                                     │
-  │ ৪. FEED-FORWARD                     │
-  │ Attention-এর ফল → জ্ঞান প্রক্রিয়া  │
-  │ "France" + "capital" → "Paris"?     │
-  │ (training-এ শেখা সংযোগ)            │
-  │                                     │
-  │ ৫. OUTPUT                           │
-  │ চূড়ান্ত vector → vocabulary সম্ভাবনা│
-  │ P("Paris") = ০.৯৯                   │
-  │ → Pick "Paris" (temperature=0)      │
-  │                                     │
-  │ ৬. REPEAT                           │
-  │ Append "Paris" → repeat for "."     │
-  │ → Repeat for "<END>"                │
-  └─────────────────────────────────────┘
+  # ─────────────────────────────────────# 
+  #  ১. TOKENIZER                        # 
+  #  "What is the capital of France?"    # 
+  #  → [What, is, the, capital, ...]     # 
+  #  → [২৪४০, ৩১৮, ২৬২, ৪৯৪৫, ...]      # 
+  #                                      # 
+  #  ২. EMBEDDING                        # 
+  #  প্রতিটি token ID → ৪০৯৬-dim vector # 
+  #  + positional encoding               # 
+  #                                      # 
+  #  ৩. ATTENTION (x৯৬ layers)          # 
+  #  প্রতিটি শব্দ বাকি সবের দিকে তাকায়  # 
+  #  "capital" → "France"-এ attention    # 
+  #  Multi-head: ৯৬টা আলাদা দৃষ্টিভঙ্গি  # 
+  #                                      # 
+  #  ৪. FEED-FORWARD                     # 
+  #  Attention-এর ফল → জ্ঞান প্রক্রিয়া  # 
+  #  "France" + "capital" → "Paris"?     # 
+  #  (training-এ শেখা সংযোগ)            # 
+  #                                      # 
+  #  ৫. OUTPUT                           # 
+  #  চূড়ান্ত vector → vocabulary সম্ভাবনা# 
+  #  P("Paris") = ০.৯৯                   # 
+  #  → Pick "Paris" (temperature=0)      # 
+  #                                      # 
+  #  ৬. REPEAT                           # 
+  #  Append "Paris" → repeat for "."     # 
+  #  → Repeat for "<END>"                # 
+  # ─────────────────────────────────────# 
 
 OUTPUT: "Paris."
 
@@ -705,13 +705,13 @@ WHY THIS MATTERS:
 <!-- Stage 3: Attention layers -->
 <rect x="225" y="80" width="90" height="95" rx="6" fill="#1a2744" stroke="#fbbf24" stroke-width="2"/>
 <text x="270" y="98" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">৩. Attention</text>
-<text x="270" y="112" text-anchor="middle" fill="#94a3b8" font-size="10">× 96 layers</text>
+<text x="270" y="112" text-anchor="middle" fill="#94a3b8" font-size="10">* 96 layers</text>
 <rect x="235" y="120" width="70" height="12" rx="3" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
 <text x="270" y="129" text-anchor="middle" fill="#7dd3fc" font-size="9">multi-head</text>
 <rect x="235" y="136" width="70" height="12" rx="3" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
 <text x="270" y="145" text-anchor="middle" fill="#7dd3fc" font-size="9">+ feed-forward</text>
 <rect x="235" y="152" width="70" height="12" rx="3" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
-<text x="270" y="161" text-anchor="middle" fill="#7dd3fc" font-size="9">repeat × N</text>
+<text x="270" y="161" text-anchor="middle" fill="#7dd3fc" font-size="9">repeat * N</text>
 <!-- Stage 4: Output projection -->
 <rect x="345" y="100" width="80" height="55" rx="6" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
 <text x="385" y="120" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="bold">৪. Output</text>

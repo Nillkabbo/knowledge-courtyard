@@ -45,42 +45,42 @@ THE NOTEBOOK PROBLEM:
 
 SERVING ENGINES (2024-2025):
 
-┌──────────────┬──────────────────────────────────┐
-│ vLLM         │ Most popular open-source server  │
-│              │ Key: PagedAttention              │
-│              │ → manages KV cache like OS pages │
-│              │ → near-zero memory waste          │
-│              │ Continuous batching               │
-│              │ → new requests join running batch │
-│              │ Tensor parallelism (multi-GPU)    │
-│              │ OpenAI-compatible API             │
-│              │ Throughput: ২-৪x vs naive         │
-├──────────────┼──────────────────────────────────┤
-│ TGI          │ HuggingFace's serving engine     │
-│ (Text Gen    │ Continuous batching               │
-│  Inference)  │ Flash Attention ২                │
-│              │ Safetensors fast loading          │
-│              │ Docker-based deployment           │
-│              │ Great HF ecosystem integration    │
-├──────────────┼──────────────────────────────────┤
-│ Triton       │ NVIDIA's inference server        │
-│              │ Multi-model serving               │
-│              │ TensorRT for max GPU speed        │
-│              │ Dynamic batching                  │
-│              │ Enterprise-grade                  │
-├──────────────┼──────────────────────────────────┤
-│ SGLang       │ Newest (2024)                    │
-│              │ RadixAttention (prefix caching)  │
-│              → shared prefix → cache reuse       │
-│              → ৫-১০x faster for shared system   │
-│                prompts                          │
-│              → structured output optimization  │
-├──────────────┼──────────────────────────────────┤
-│ Ollama       │ Simplest, local                   │
-│              │ GGUF format, CPU/Mac              │
-│              → great for dev/prototyping         │
-│              → not for high-QPS production       │
-└──────────────┴──────────────────────────────────┘
+# ──────────────# ──────────────────────────────────# 
+#  vLLM         #  Most popular open-source server  # 
+#               #  Key: PagedAttention              # 
+#               #  → manages KV cache like OS pages # 
+#               #  → near-zero memory waste          # 
+#               #  Continuous batching               # 
+#               #  → new requests join running batch # 
+#               #  Tensor parallelism (multi-GPU)    # 
+#               #  OpenAI-compatible API             # 
+#               #  Throughput: ২-৪x vs naive         # 
+# ──────────────# ──────────────────────────────────# 
+#  TGI          #  HuggingFace's serving engine     # 
+#  (Text Gen    #  Continuous batching               # 
+#   Inference)  #  Flash Attention ২                # 
+#               #  Safetensors fast loading          # 
+#               #  Docker-based deployment           # 
+#               #  Great HF ecosystem integration    # 
+# ──────────────# ──────────────────────────────────# 
+#  Triton       #  NVIDIA's inference server        # 
+#               #  Multi-model serving               # 
+#               #  TensorRT for max GPU speed        # 
+#               #  Dynamic batching                  # 
+#               #  Enterprise-grade                  # 
+# ──────────────# ──────────────────────────────────# 
+#  SGLang       #  Newest (2024)                    # 
+#               #  RadixAttention (prefix caching)  # 
+#               → shared prefix → cache reuse       # 
+#               → ৫-১০x faster for shared system   # 
+#                 prompts                          # 
+#               → structured output optimization  # 
+# ──────────────# ──────────────────────────────────# 
+#  Ollama       #  Simplest, local                   # 
+#               #  GGUF format, CPU/Mac              # 
+#               → great for dev/prototyping         # 
+#               → not for high-QPS production       # 
+# ──────────────# ──────────────────────────────────# 
 
 KEY INNOVATIONS (why serving engines matter):
 
@@ -109,9 +109,9 @@ KEY INNOVATIONS (why serving engines matter):
   → cache its KV once → reuse for all
   → prefill phase skipped → instant
   
-  Example: ২K token system prompt × ১০০০ queries
-    Without cache: ২K × ১০০০ = ২M token processing
-    With cache: ২K once + ১০০০ × input only
+  Example: ২K token system prompt * ১০০০ queries
+    Without cache: ২K * ১০০০ = ২M token processing
+    With cache: ২K once + ১০০০ * input only
     → ৯০%+ reduction
 
 ৪. TENSOR PARALLELISM
@@ -120,7 +120,7 @@ KEY INNOVATIONS (why serving engines matter):
   → each GPU handles part of the computation
   → communicate between GPUs (NCCL)
   
-  ৭০B model: needs ~১৪০GB → ২×A100 (৮০GB each)
+  ৭০B model: needs ~১৪০GB → ২*A100 (৮০GB each)
   → tensor parallel = ২
 
 SERVING DECISION:
@@ -386,43 +386,43 @@ TRADITIONAL CI/CD:
 
 LLM CI/CD PIPELINE:
 
-  ┌──────────────────────────────────────┐
-  │ ১. CODE PUSH                          │
-  │ → prompt template change              │
-  │ → RAG config change                   │
-  │ → model swap                          │
-  │ → tool update                         │
-  ├──────────────────────────────────────┤
-  │ ২. CODE TESTS                         │
-  │ → unit tests (functions)              │
-  │ → integration tests (API)             │
-  │ → type checking (mypy)                │
-  │ → linting (ruff, black)               │
-  ├──────────────────────────────────────┤
-  │ ৩. EVAL TESTS (LLM-specific!)        │
-  │ → RAGAS metrics (faithfulness, etc.) │
-  │ → accuracy on eval set                │
-  │ → regression check (old tests pass?) │
-  │ → latency benchmark                   │
-  │ → cost benchmark                      │
-  ├──────────────────────────────────────┤
-  │ ৪. SECURITY TESTS                    │
-  │ → Garak prompt injection probes       │
-  │ → jailbreak regression                │
-  │ → PII leak check                      │
-  │ → guardrail validation                │
-  ├──────────────────────────────────────┤
-  │ ৫. BUILD                             │
-  │ → Docker image build                  │
-  │ → tag with version + commit hash      │
-  │ → push to registry                    │
-  ├──────────────────────────────────────┤
-  │ ৬. DEPLOY (canary)                   │
-  │ → ৫% traffic → new version            │
-  │ → monitor: errors, latency, feedback  │
-  │ → auto-promote to ১০০% if good        │
-  │ → auto-rollback if bad                │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  ১. CODE PUSH                          # 
+  #  → prompt template change              # 
+  #  → RAG config change                   # 
+  #  → model swap                          # 
+  #  → tool update                         # 
+  # ──────────────────────────────────────# 
+  #  ২. CODE TESTS                         # 
+  #  → unit tests (functions)              # 
+  #  → integration tests (API)             # 
+  #  → type checking (mypy)                # 
+  #  → linting (ruff, black)               # 
+  # ──────────────────────────────────────# 
+  #  ৩. EVAL TESTS (LLM-specific!)        # 
+  #  → RAGAS metrics (faithfulness, etc.) # 
+  #  → accuracy on eval set                # 
+  #  → regression check (old tests pass?) # 
+  #  → latency benchmark                   # 
+  #  → cost benchmark                      # 
+  # ──────────────────────────────────────# 
+  #  ৪. SECURITY TESTS                    # 
+  #  → Garak prompt injection probes       # 
+  #  → jailbreak regression                # 
+  #  → PII leak check                      # 
+  #  → guardrail validation                # 
+  # ──────────────────────────────────────# 
+  #  ৫. BUILD                             # 
+  #  → Docker image build                  # 
+  #  → tag with version + commit hash      # 
+  #  → push to registry                    # 
+  # ──────────────────────────────────────# 
+  #  ৬. DEPLOY (canary)                   # 
+  #  → ৫% traffic → new version            # 
+  #  → monitor: errors, latency, feedback  # 
+  #  → auto-promote to ১০০% if good        # 
+  #  → auto-rollback if bad                # 
+  # ──────────────────────────────────────# 
 
 EVAL GATE (সবচেয়ে গুরুত্বপূর্ণ):
   LLM change করলে → eval অবশ্যই
@@ -804,7 +804,7 @@ THE COST EXPLOSION PROBLEM:
     → হার্ড রিজনিং → o4-mini (reasoning, test-time compute)
   
   Route ৪০% easy, ৪০% medium, ২০% hard:
-    ৪০% × $০.০০২ + ৪০% × $০.০০৫ + ২০% × $০.০২
+    ৪০% * $০.০০২ + ৪০% * $০.০০৫ + ২০% * $০.০২
     = $০.০০৬৪ avg (vs $০.০২ = ৬৮% save!)
 
 ৩. PROMPT COMPRESSION (২০-৪০% save)
@@ -868,7 +868,7 @@ THE COST EXPLOSION PROBLEM:
   cache হয়। পরের request-এ same prefix → cache hit।
 
   Pricing (২০২৫-২৬, approximate):
-    Anthropic: cache write = ১.২৫× base, cache read = ০.১× base
+    Anthropic: cache write = ১.২৫* base, cache read = ০.১* base
       → ১০th request থেকে ~৯০% cheaper on the cached prefix
     OpenAI: cached input tokens ~৫০% cheaper (automatic + explicit)
     Google: implicit context caching
@@ -912,7 +912,7 @@ REAL-WORLD COST BREAKDOWN:
   Scenario: ৫০K queries/day RAG system
   
   Without optimization:
-    LLM: ৫০K × $০.০২ = $১K/day = $৩০K/month
+    LLM: ৫০K * $০.০২ = $১K/day = $৩০K/month
   
   With optimization:
     Cache (৩০%): -৩.৫K queries

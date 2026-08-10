@@ -27,8 +27,8 @@ doors.push({
 <p class="scene-setting en">But the story begins earlier. In 1943, Warren McCulloch (a neurophysiologist) and Walter Pitts (a mathematician) wrote a paper — "A Logical Calculus of the Ideas Immanent in Nervous Activity." They proved that artificial neurons can compute AND, OR, NOT logic. This is the very beginning.</p>
 
 <div class="dialogue"><strong>তুমি:</strong> তাহলে একটি নিউরন কি সব শিখতে পারে?</div>
-<div class="dialogue"><strong>রোসেনব্ল্যাট:</strong> হ্যাঁ! আমার Perceptron নিয়ম — যদি ভুল করে, ওজন পরিবর্তন করে। সঠিক উত্তরের দিকে ধীরে ধীরে এগিয়ে যায়। w_new = w_old + α(actual − predicted) × x</div>
-<div class="dialogue en"><strong>You:</strong> So a neuron can learn anything?<br><strong>Rosenblatt:</strong> Yes! My Perceptron rule — if it makes an error, it adjusts the weights. Slowly moves toward the correct answer. w_new = w_old + α(actual − predicted) × x</div>
+<div class="dialogue"><strong>রোসেনব্ল্যাট:</strong> হ্যাঁ! আমার Perceptron নিয়ম — যদি ভুল করে, ওজন পরিবর্তন করে। সঠিক উত্তরের দিকে ধীরে ধীরে এগিয়ে যায়। w_new = w_old + α(actual − predicted) * x</div>
+<div class="dialogue en"><strong>You:</strong> So a neuron can learn anything?<br><strong>Rosenblatt:</strong> Yes! My Perceptron rule — if it makes an error, it adjusts the weights. Slowly moves toward the correct answer. w_new = w_old + α(actual − predicted) * x</div>
 
 <p class="scene-setting">কিন্তু তারপর আসে অন্ধকার অধ্যায়। ১৯৬৯ সালে Marvin Minsky এবং Seymour Papert একটি বই প্রকাশ করেন — "Perceptrons." তারা প্রমাণ করেন যে একটি একক স্তরের Perceptron XOR (exclusive OR) সমস্যা সমাধান করতে পারে না। একটি রেখা দিয়ে দুটি শ্রেণীকে আলাদা করা যায় না যদি তারা XOR প্যাটার্নে সাজানো থাকে।</p>
 <p class="scene-setting en">Then comes the dark chapter. In 1969, Marvin Minsky and Seymour Papert published a book — "Perceptrons." They proved that a single-layer Perceptron cannot solve the XOR (exclusive OR) problem. A single line cannot separate two classes arranged in an XOR pattern.</p>
@@ -75,9 +75,9 @@ doors.push({
   <text x="290" y="225" text-anchor="middle" fill="#94a3b8" font-size="10">McCulloch-Pitts 1943 → Rosenblatt 1958 → Minsky XOR 1969</text>
 </svg>
 </div>
-<div class="svg-caption">চিত্র: Perceptron — ইনপুট × ওজন → যোগফল → activation → আউটপুট।</div>
+<div class="svg-caption">চিত্র: Perceptron — ইনপুট * ওজন → যোগফল → activation → আউটপুট।</div>
 
-<div class="code-block">— Python: Perceptron from Scratch —
+<div class="code-block"># — Python: Perceptron from Scratch —
 
   import numpy as np
 
@@ -243,7 +243,7 @@ doors.push({
 <tr><td class="hl">MLP গঠন</td><td>Input → Hidden Layer(s) → Output</td></tr>
 <tr><td class="hl">Forward Pass</td><td>তথ্য সামনে যায়: y = f(W₂·f(W₁·x + b₁) + b₂)</td></tr>
 <tr><td class="hl">Backpropagation</td><td>ভুল পেছনে যায়: ∂L/∂W = chain rule</td></tr>
-<tr><td class="hl">Gradient Descent</td><td>w_new = w_old − η × ∂L/∂w (η = learning rate)</td></tr>
+<tr><td class="hl">Gradient Descent</td><td>w_new = w_old − η * ∂L/∂w (η = learning rate)</td></tr>
 <tr><td class="hl">ইতিহাস</td><td>Werbos ১৯৭৪ (PhD) → Parker ১৯৮৫ → Rumelhart-Hinton-Williams ১৯৮৬ (Nature)</td></tr>
 <tr><td class="hl">Universal Approximation</td><td>Hornik ১৯৮৯ — এক hidden layer যথেষ্ট নিউরন সহ যেকোনো ফাংশন approximate করে</td></tr></table>`
   }
@@ -270,18 +270,18 @@ doors.push({
 <div class="dialogue"><strong>দৃষ্টির কারিগর হাসান:</strong> ইবন আল-হাইসাম বুঝেছিলেন — দেখা মানে পুরো দৃশ্য একবারে গ্রাস করা নয়। দেখা মানে ছোট ছোট অংশে ভাগ করে প্রতিটি অংশ বিশ্লেষণ করা। চোখের retina-তে লক্ষ লক্ষ photoreceptor আছে — প্রতিটি একটি ক্ষুদ্র অংশ দেখে। মস্তিষ্ক সেই অংশগুলোকে জোড়া লাগায়।</div>
 <div class="dialogue en"><strong>Vision Craftsman Hasan:</strong> Ibn al-Haytham understood — seeing is not grasping the entire scene at once. Seeing is dividing into small patches and analyzing each. The retina has millions of photoreceptors — each sees a tiny patch. The brain stitches them together.</div>
 
-<p class="scene-setting">১৯৮৯ সাল। প্যারিস। Yann LeCun AT&T Bell Labs-এ একটি নেটওয়ার্ক তৈরি করছেন যা হাতে লেখা ডাক কোড (zip code) পড়তে পারে। তার সমস্যা: একটি ২৮×২৮ পিক্সেলের ছবিতে ৭৮৪টি পিক্সেল। যদি প্রতিটি পিক্সেলকে একটি MLP-এর ইনপুট হিসেবে দাও, এবং প্রথম hidden layer-এ ১০০০ নিউরন থাকে — তাহলে শুধু প্রথম স্তরেই ৭৮৪,০০০ ওজন! এটি অবাস্তব।</p>
-<p class="scene-setting en">1989. Paris. Yann LeCun is building a network at AT&T Bell Labs that can read handwritten zip codes. His problem: a 28×28 pixel image has 784 pixels. If each pixel is an MLP input, and the first hidden layer has 1000 neurons — the first layer alone needs 784,000 weights! This is impractical.</p>
+<p class="scene-setting">১৯৮৯ সাল। প্যারিস। Yann LeCun AT&T Bell Labs-এ একটি নেটওয়ার্ক তৈরি করছেন যা হাতে লেখা ডাক কোড (zip code) পড়তে পারে। তার সমস্যা: একটি ২৮*২৮ পিক্সেলের ছবিতে ৭৮৪টি পিক্সেল। যদি প্রতিটি পিক্সেলকে একটি MLP-এর ইনপুট হিসেবে দাও, এবং প্রথম hidden layer-এ ১০০০ নিউরন থাকে — তাহলে শুধু প্রথম স্তরেই ৭৮৪,০০০ ওজন! এটি অবাস্তব।</p>
+<p class="scene-setting en">1989. Paris. Yann LeCun is building a network at AT&T Bell Labs that can read handwritten zip codes. His problem: a 28*28 pixel image has 784 pixels. If each pixel is an MLP input, and the first hidden layer has 1000 neurons — the first layer alone needs 784,000 weights! This is impractical.</p>
 
 <div class="dialogue"><strong>LeCun:</strong> কিন্তু একটি সত্য আছে — একটি পিক্সেল তার পাশের পিক্সেলদের সাথে সম্পর্কিত। একটি edge (ধার) কয়েকটি পিক্সেল জুড়ে থাকে। দূরের পিক্সেলদের সাথে সরাসরি সম্পর্ক কম। তাহলে কেন পুরো ছবিকে একবারে নেওয়া? ছোট ছোট patch নাও, প্রতিটিতে একই প্রশ্ন করো।</div>
 <div class="dialogue en"><strong>LeCun:</strong> But here's a truth — a pixel is related to its neighbors. An edge spans a few pixels. Distant pixels are less directly related. So why take the whole image at once? Take small patches, ask the same question on each.</div>
 
-<div class="callout info"><span class="co-icon">📐</span><div><strong>Convolution প্রক্রিয়া:</strong> একটি ৩×৩ filter (kernel) ছবির উপর দিয়ে স্লাইড করে। প্রতিটি অবস্থানে filter-এর ওজন × পিক্সেল গুণ করে যোগ করে → একটি output সংখ্যা। পুরো ছবি জুড়ে → একটি feature map। এই filter শিখে কোন প্যাটার্ন খুঁজবে — edge, corner, texture।</div></div>
+<div class="callout info"><span class="co-icon">📐</span><div><strong>Convolution প্রক্রিয়া:</strong> একটি ৩*৩ filter (kernel) ছবির উপর দিয়ে স্লাইড করে। প্রতিটি অবস্থানে filter-এর ওজন * পিক্সেল গুণ করে যোগ করে → একটি output সংখ্যা। পুরো ছবি জুড়ে → একটি feature map। এই filter শিখে কোন প্যাটার্ন খুঁজবে — edge, corner, texture।</div></div>
 
 <div class="stat-grid">
-<div class="stat-card"><div class="sc-num">৭৮৪K</div><div class="sc-label">MLP params (২৮×২৮ → ১০০০)</div></div>
-<div class="stat-card"><div class="sc-num">৯</div><div class="sc-label">CNN filter params (৩×৩)</div></div>
-<div class="stat-card"><div class="sc-num">৮৭,০০০×</div><div class="sc-label">Parameter কম!</div></div>
+<div class="stat-card"><div class="sc-num">৭৮৪K</div><div class="sc-label">MLP params (২৮*২৮ → ১০০০)</div></div>
+<div class="stat-card"><div class="sc-num">৯</div><div class="sc-label">CNN filter params (৩*৩)</div></div>
+<div class="stat-card"><div class="sc-num">৮৭,০০০*</div><div class="sc-label">Parameter কম!</div></div>
 </div>
 
 <p class="scene-setting">LeCun-এর LeNet-৫ (১৯৯৮) — সাতটি স্তর। Convolution → Pooling → Convolution → Pooling → Fully Connected → Output। এটি USPS-এর হাতে লেখা ডাক কোড ৯৫% নির্ভুলতায় পড়তে পারত। কিন্তু তখনো একটি সীমা ছিল — ছোট ছবি, সীমিত ডেটা।</p>
@@ -295,7 +295,7 @@ doors.push({
 <div class="verse">إِنَّ فِي خَلْقِ السَّمَاوَاتِ وَالْأَرْضِ وَاخْتِلَافِ اللَّيْلِ وَالنَّهَارِ لَآيَاتٍ لِّأُولِي الْأَلْبَابِ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"নিশ্চয়ই আসমান ও পৃথিবীর সৃষ্টিতে, রাত ও দিনের পরিবর্তনে, বুদ্ধিমানদের জন্য নিদর্শন রয়েছে।" — কুরআন ৩:১৯০</div>
 
-<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩০ (গণিতের কম্পাস) Door ৩:</strong> Matrix multiplication শিখেছিলে — A×B। Convolution এক ধরনের matrix operation, কিন্তু weights shared হয়। এটাই parameter কমানোর রহস্য।</div></div>
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৩০ (গণিতের কম্পাস) Door ৩:</strong> Matrix multiplication শিখেছিলে — A*B। Convolution এক ধরনের matrix operation, কিন্তু weights shared হয়। এটাই parameter কমানোর রহস্য।</div></div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -415,7 +415,7 @@ doors.push({
 <p class="scene-setting">কিন্তু একটি ভয়ংকর সমস্যা লুকিয়ে ছিল। Sepp Hochreiter ১৯৯১ সালে তার diploma thesis-এ আবিষ্কার করেন — যখন backpropagation সময়ের দিকে পেছনে যায় (backpropagation through time, BPTT), প্রতিটি ধাপে gradient একটি সংখ্যা দিয়ে গুণ হয়। যদি সেই সংখ্যা ১-এর কম হয় — ২০ ধাপ পরে gradient প্রায় শূন্য। নেটওয়ার্ক শেখা বন্ধ করে দেয়। এটাই "vanishing gradient problem."</p>
 <p class="scene-setting en">But a terrible problem was hidden. Sepp Hochreiter discovered in his 1991 diploma thesis — when backpropagation goes backward through time (BPTT), the gradient gets multiplied by a number at each step. If that number is less than 1 — after 20 steps, the gradient is nearly zero. The network stops learning. This is the "vanishing gradient problem."</p>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>গাণিতিক কারণ:</strong> hₜ = tanh(Whₜ₋₁)। Gradient: ∂L/∂h₀ = ∂L/∂h₂₀ × W²⁰ × tanh'²⁰। যদি |W × tanh'| < ১, তাহলে W²⁰ ≈ ০.০০...০১। নেটওয়ার্ক ভুলে যায় কী ঘটেছিল ২০ ধাপ আগে।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>গাণিতিক কারণ:</strong> hₜ = tanh(Whₜ₋₁)। Gradient: ∂L/∂h₀ = ∂L/∂h₂₀ * W²⁰ * tanh'²⁰। যদি |W * tanh'| < ১, তাহলে W²⁰ ~= ০.০০...০১। নেটওয়ার্ক ভুলে যায় কী ঘটেছিল ২০ ধাপ আগে।</div></div>
 
 <div class="dialogue"><strong>তুমি:</strong> তাহলে দীর্ঘ বাক্য কীভাবে বোঝা যায়? যদি নেটওয়ার্ক ২০ শব্দ পরে ভুলে যায়?</div>
 <div class="dialogue"><strong>জাকারিয়া:</strong> ঠিক এই সমস্যার সমাধান করেছিলেন Hochreiter এবং Schmidhuber। ১৯৯৭ সালে। তাদের ধারণা: একটি নিউরন যার ভেতরে একটি conveyor belt আছে — তথ্য অপরিবর্তিত প্রবাহিত হয়। কোনো গুণ নেই, কোনো shrinkage নেই। এটাই LSTM (Long Short-Term Memory)।</div>
@@ -425,7 +425,7 @@ doors.push({
 <strong>১. Forget Gate:</strong> আগের তথ্য কতটা মনে রাখবে? fₜ = σ(Wf·[hₜ₋₁, xₜ])<br>
 <strong>২. Input Gate:</strong> নতুন তথ্য কতটা যোগ করবে? iₜ = σ(Wi·[hₜ₋₁, xₜ])<br>
 <strong>৩. Output Gate:</strong> কতটা প্রকাশ করবে? oₜ = σ(Wo·[hₜ₋₁, xₜ])<br>
-সেল স্টেট: Cₜ = fₜ×Cₜ₋₁ + iₜ×tanh(Wc·[hₜ₋₁, xₜ])</div></div>
+সেল স্টেট: Cₜ = fₜ*Cₜ₋₁ + iₜ*tanh(Wc·[hₜ₋₁, xₜ])</div></div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ Vanilla RNN</div>প্রতিটি ধাপে gradient গুণ → দীর্ঘ sequence-এ শূন্য। ভুলে যায়।</div>
@@ -497,7 +497,7 @@ doors.push({
   # c_n: last cell state
 
   # Vanishing gradient problem:
-  # RNN: gradient × W repeated → shrinks to 0
+  # RNN: gradient * W repeated → shrinks to 0
   # LSTM: cell state highway → gradient flows!
 
   # GRU (2014): simplified LSTM
@@ -546,7 +546,7 @@ doors.push({
 <strong>Query:</strong> আমি কী খুঁজছি?<br>
 <strong>Key:</strong> আমি কী দিতে পারি?<br>
 <strong>Value:</strong> আমার আসল তথ্য কী?<br>
-Attention স্কোর = softmax(QKᵀ / √dₖ) × V</div></div>
+Attention স্কোর = softmax(QKᵀ / √dₖ) * V</div></div>
 
 <div class="dialogue"><strong>মারিয়াম:</strong> ভাবো তুমি একটি লাইব্রেরিতে। একটি বই খুঁজছো (Query)। প্রতিটি বইয়ের একটি লেবেল আছে (Key)। তোমার Query যত ভালো একটি বইয়ের Key-এর সাথে মেলে, তত বেশি সেই বই থেকে তথ্য (Value) নাও। এটাই attention।</div>
 <div class="dialogue en"><strong>Mariyam:</strong> Imagine you're in a library. Looking for a book (Query). Each book has a label (Key). The better your Query matches a book's Key, the more you take from that book's information (Value). This is attention.</div>
@@ -621,7 +621,7 @@ Attention স্কোর = softmax(QKᵀ / √dₖ) × V</div></div>
   <text x="490" y="235" text-anchor="middle" fill="#fbbf24" font-size="10">GPT-4: ~120 layers</text>
 </svg>
 </div>
-<div class="svg-caption">চিত্র: Self-Attention — প্রতিটি শব্দ সব শব্দের দিকে তাকায়। Q×K = গুরুত্ব, ×V = অর্থ। সমান্তরাল!।</div>
+<div class="svg-caption">চিত্র: Self-Attention — প্রতিটি শব্দ সব শব্দের দিকে তাকায়। Q*K = গুরুত্ব, *V = অর্থ। সমান্তরাল!।</div>
 
 <div class="code-block">— PyTorch: Self-Attention —
 

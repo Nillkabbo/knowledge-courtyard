@@ -84,7 +84,7 @@ Partition হলে (এবং হবে) — C বা A বেছে নাও�
 </div>
 <div class="svg-caption">চিত্র: NoSQL-এর চার ধরন — Key-Value, Document, Column, Graph। CAP tradeoff।</div>
 
-<div class="code-block">— NoSQL: চার ধরনের উদাহরণ —
+<div class="code-block"># — NoSQL: চার ধরনের উদাহরণ —
 
   # Redis (Key-Value) — অত্যন্ত দ্রুত cache
   SET user:1:name "Rakib"
@@ -285,7 +285,7 @@ doors.push({
 ৫. <strong>Plan Selection:</strong> সর্বনিম্ন cost-এর plan বেছে নাও</div></div>
 
 <div class="callout info"><span class="co-icon">🔀</span><div><strong>Join Strategies:</strong><br>
-<strong>Nested Loop Join:</strong> প্রতিটি বাঁ সারির জন্য ডান টেবিলে খোঁজো। O(n×m)। ছোট টেবিলে OK।<br>
+<strong>Nested Loop Join:</strong> প্রতিটি বাঁ সারির জন্য ডান টেবিলে খোঁজো। O(n*m)। ছোট টেবিলে OK।<br>
 <strong>Hash Join:</strong> বাঁ টেবিলে hash table তৈরি, ডান টেবিল probe। O(n+m)। বড় টেবিলে সেরা।<br>
 <strong>Merge Join:</strong> উভয় টেবিল sorted, একসাথে merge। O(n+m)। sorted data-তে দ্রুত।</div></div>
 
@@ -348,7 +348,7 @@ Optimizer সিদ্ধান্ত নিতে statistics ব্যবহা
 </div>
 <div class="svg-caption">চিত্র: Optimizer একাধিক plan তুলনা করে সর্বনিম্ন cost-এর পথ বেছে নেয়।</div>
 
-<div class="code-block">— SQL: EXPLAIN + Query Rewrite —
+<div class="code-block"># — SQL: EXPLAIN + Query Rewrite —
 
   -- Optimizer-এর সিদ্ধান্ত দেখো:
   EXPLAIN (ANALYZE, BUFFERS)
@@ -380,7 +380,7 @@ Optimizer সিদ্ধান্ত নিতে statistics ব্যবহা
     title: "Query Optimization এক নজরে",
     body: `<table class="kv-table"><tr><th>ধারণা</th><th>বিবরণ</th></tr>
 <tr><td class="hl">Cost-Based Optimizer</td><td>একাধিক plan → সর্বনিম্ন cost বেছে নেয়</td></tr>
-<tr><td class="hl">Nested Loop Join</td><td>O(n×m) — ছোট টেবিলে</td></tr>
+<tr><td class="hl">Nested Loop Join</td><td>O(n*m) — ছোট টেবিলে</td></tr>
 <tr><td class="hl">Hash Join</td><td>O(n+m) — বড় টেবিলে সেরা</td></tr>
 <tr><td class="hl">Merge Join</td><td>O(n+m) — sorted data-তে</td></tr>
 <tr><td class="hl">Selinger ১৯৭৯</td><td>Cost-based optimization-এর ভিত্তি</td></tr>
@@ -485,7 +485,7 @@ Column-based (OLAP): প্রতিটি কলাম আলাদাভাব
 </div>
 <div class="svg-caption">চিত্র: OLTP থেকে ETL দিয়ে Warehouse — Star Schema-তে fact ও dimension টেবিল।</div>
 
-<div class="code-block">— SQL: OLAP Star Schema Query —
+<div class="code-block"># — SQL: OLAP Star Schema Query —
 
   -- fact table: fact_sales (billions of rows)
   -- dim tables: dim_date, dim_product, dim_store

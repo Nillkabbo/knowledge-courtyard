@@ -175,7 +175,7 @@ doors.push({
 <div class="fig-cap">চিত্র: "ফান্ডেড" মানে শুধু ফ্রি নয় — তুমি <em>বেতনভুক্ত গবেষক</em>। এজন্যই নিয়ম: ফান্ডিং ছাড়া PhD-তে যেও না।</div>
 </div>
 
-<div class="callout info"><span class="co-icon">📊</span><div><strong>যাচাই করো নিজে:</strong> <em>csstipendrankings.org</em> (stipend-ভিত্তিক CS র‍্যাঙ্কিং) আর <em>phdstipends.com</em> (আসল, self-reported সংখ্যা)। মনে রাখো COL — Bay Area-র $৪K ≈ Midwest-এর $২.৫K জীবনযাত্রায়।</div></div>
+<div class="callout info"><span class="co-icon">📊</span><div><strong>যাচাই করো নিজে:</strong> <em>csstipendrankings.org</em> (stipend-ভিত্তিক CS র‍্যাঙ্কিং) আর <em>phdstipends.com</em> (আসল, self-reported সংখ্যা)। মনে রাখো COL — Bay Area-র $৪K ~= Midwest-এর $২.৫K জীবনযাত্রায়।</div></div>
 
 <div class="callout warn"><span class="co-icon">🛂</span><div><strong>আন্তর্জাতিক ছাত্রদের জন্য — বড় আপডেট (জুলাই ২০২৬):</strong> DHS "Duration of Status" (D/S) বাতিলের নিয়ম <strong>চূড়ান্ত করেছে</strong> (final rule প্রকাশ: ১৭ জুলাই ২০২৬; কার্যকর: ১৫ সেপ্টেম্বর ২০২৬)। F-1 এখন সর্বোচ্চ <strong>৪ বছরের নির্দিষ্ট মেয়াদে</strong> অ্যাডমিট হবে — অথচ PhD লাগে ৫-৭ বছর! মানে মাঝপথে <strong>Extension of Stay</strong> আবেদন করতে হবে। Grace period-ও ৬০ → ৩০ দিনে নেমেছে। আতঙ্কের কিছু নেই — extension-এর পথ আছে — কিন্তু ভর্তি হওয়ার পর প্রথম দিন থেকেই DSO-র সাথে টাইমলাইন প্ল্যান করো। স্পাউস (F-2) কাজ করতে পারে না। স্টাইপেন্ডে ট্যাক্স প্রযোজ্য (ট্রিটি-ছাড় থাকতে পারে)।</div></div>
 

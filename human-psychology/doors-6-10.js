@@ -345,7 +345,7 @@ doors.push({
 <table class="kv-table"><tr><th>ঐতিহ্য</th><th>একই সত্য</th></tr>
 <tr><td class="hl">CBT (Beck, 1960s)</td><td>Event → automatic thought → emotion → behavior। thought চিহ্নিত ও চ্যালেঞ্জ করো → ভিন্ন emotion ও behavior। ৫০-৬০% recovery (ওষুধের সমান, side-effect ছাড়া)।</td></tr>
 <tr><td class="hl">Stoicism (Epictetus)</td><td>"মানুষ ঘটনায় নয়, ঘটনার প্রতি নিজের দৃষ্টিতে বিচলিত হয়।" ২০০০ বছর আগেই CBT-নীতি। dichotomy of control — যা নিয়ন্ত্রণে তাতে focus।</td></tr>
-<tr><td class="hl">Radical acceptance (Linehan, DBT)</td><td>বাস্তবতাকে যেমন আছে তেমন মানা (হাল ছাড়া নয়)। <strong>Suffering = pain × resistance</strong>; resistance কমাও, suffering কমবে। helplessness-এর বিপরীত — এটা active, action-এর পূর্বশর্ত।</td></tr></table>
+<tr><td class="hl">Radical acceptance (Linehan, DBT)</td><td>বাস্তবতাকে যেমন আছে তেমন মানা (হাল ছাড়া নয়)। <strong>Suffering = pain * resistance</strong>; resistance কমাও, suffering কমবে। helplessness-এর বিপরীত — এটা active, action-এর পূর্বশর্ত।</td></tr></table>
 
 <div class="callout tip"><span class="co-icon">🧘</span><div><strong>Gap বাড়ানোর চর্চা:</strong> ① <strong>Pause</strong> — triggered হলে থামো, ৩ বার শ্বাস (৬ সেকেন্ডেই prefrontal engage হয়)। ② <strong>Name the thought</strong> — "আমি worthless" নয়, "আমার worthless হওয়ার <em>ভাবনা</em> আসছে"। ③ <strong>Challenge</strong> — পক্ষে/বিপক্ষে প্রমাণ? বন্ধুকে কি এটা বলতাম? ④ <strong>Choose</strong> — স্বয়ংক্রিয় নয়, values-অনুযায়ী সাড়া। ⑤ <strong>Act</strong> — প্রতিটা সচেতন choice পরের বার gap বড় করে।</div></div>
 
@@ -409,14 +409,14 @@ WHEN TRIGGERED (anger, fear, pressure), run this in 6 seconds:
 Stoic pre-filter (Epictetus, ~100 AD):
   Is this in my control?
     YES → act decisively
-    NO  → accept radically (suffering = pain × resistance)
+    NO  → accept radically (suffering = pain * resistance)
 
 Frankl's WHY check (Auschwitz, 1946):
   "He who has a WHY can bear almost any HOW." (Nietzsche)
   Before deciding under stress: reconnect to purpose.
 
 Suffering equation (Linehan DBT):
-  suffering = pain × resistance
+  suffering = pain * resistance
   → reduce resistance (accept reality), not deny pain
 ──────────────────────────────────────────────────────────────────────
 # CBT recovery rate: 50-60% for depression/anxiety, equals

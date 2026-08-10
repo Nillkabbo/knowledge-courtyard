@@ -509,7 +509,7 @@ for rank, (score, doc_id) in enumerate(top10, 1):
 <tr><th>Signal</th><th>Formula</th><th>কী মাপে</th></tr>
 <tr><td class="hl">TF (term frequency)</td><td>count(term, doc)</td><td>শব্দটা কতবার এসেছে</td></tr>
 <tr><td class="hl">IDF (inverse doc freq)</td><td>log(N / df(term))</td><td>শব্দটা কত বিরল</td></tr>
-<tr><td class="hl">Score</td><td>TF × IDF</td><td>rarity × frequency</td></tr>
+<tr><td class="hl">Score</td><td>TF * IDF</td><td>rarity * frequency</td></tr>
 </table>
 <p><strong>Cross-ref:</strong> Book ১৮ (Embeddings) Door ৪-এ TF-IDF দেখবে — এখানে ranking score হিসেবে ব্যবহৃত। Book ১৬ (LLM Evals)-এ ranking metrics (NDCG, MRR) দেখবে — top-K quality কীভাবে মাপবে।</p>`
   }
@@ -788,7 +788,7 @@ for suggestion in trie.autocomplete('py'):
 
 <div class="dialogue">Book ২-এর বংশবিদের স্ক্রল (Door ৮) Trie শিখিয়েছিলেন — অক্ষর ধরে ধরে শাখা। এখন দেখলে সার্চ ইঞ্জিনে এটা কেন? Google-ে টাইপ করো — suggestion আসে। সেটাই Trie। ইউজার প্রতিটা অক্ষর টাইপ করে, Trie-তে O(m)-এ prefix খুঁজো, বাকি শাখা গুলো suggestion। তারপর frequency দিয়ে rank করো — সবচেয়ে জনপ্রিয় suggestion আগে।</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> রাবিয়া প্রথমে hash map দিয়ে autocomplete বানিয়েছিলেন। ইউজার 'algo' টাইপ করলো? সব possible word চেক করো — 'algorithm', 'algorithms', 'algorithmic'... কোনটা prefix ম্যাচ করে? প্রতিটা word-এ শুরু থেকে তুলনা। O(n × m)। ১ লক্ষ word-ে ৫০ms latency। Trie দিলে prefix থেকে শুরু — O(m)। ৫ms। ১০ গুণ দ্রুত।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> রাবিয়া প্রথমে hash map দিয়ে autocomplete বানিয়েছিলেন। ইউজার 'algo' টাইপ করলো? সব possible word চেক করো — 'algorithm', 'algorithms', 'algorithmic'... কোনটা prefix ম্যাচ করে? প্রতিটা word-এ শুরু থেকে তুলনা। O(n * m)। ১ লক্ষ word-ে ৫০ms latency। Trie দিলে prefix থেকে শুরু — O(m)। ৫ms। ১০ গুণ দ্রুত।</div></div>
 
 <div class="diagram">
   <div class="diag-title">Trie Autocomplete — 'algo' টাইপ করলে সব Suggestion</div>

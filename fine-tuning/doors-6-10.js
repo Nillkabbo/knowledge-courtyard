@@ -75,28 +75,28 @@ FOUR EVALUATION TYPES:
 
 EVALUATION PIPELINE:
 
-  ┌──────────────────────────────────────┐
-  │ ১. Create eval set (holdout ১০%)      │
-  │    → ১০০-৫০০ examples                 │
-  │    → diverse, representative          │
-  ├──────────────────────────────────────┤
-  │ ২. Run base model on eval set         │
-  │    → baseline scores                  │
-  ├──────────────────────────────────────┤
-  │ ৩. Run fine-tuned on same eval set    │
-  │    → new scores                       │
-  ├──────────────────────────────────────┤
-  │ ৪. Compare:                           │
-  │    → task metric: improved?           │
-  │    → general: regressed?              │
-  │    → LLM-judge: preferred?            │
-  │    → human: preferred?                │
-  ├──────────────────────────────────────┤
-  │ ５. Decision:                          │
-  │    → task up + general stable = DEPLOY│
-  │    → task up + general down = tune    │
-  │    → task down = bad data/method      │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  ১. Create eval set (holdout ১০%)      # 
+  #     → ১০০-৫০০ examples                 # 
+  #     → diverse, representative          # 
+  # ──────────────────────────────────────# 
+  #  ২. Run base model on eval set         # 
+  #     → baseline scores                  # 
+  # ──────────────────────────────────────# 
+  #  ৩. Run fine-tuned on same eval set    # 
+  #     → new scores                       # 
+  # ──────────────────────────────────────# 
+  #  ৪. Compare:                           # 
+  #     → task metric: improved?           # 
+  #     → general: regressed?              # 
+  #     → LLM-judge: preferred?            # 
+  #     → human: preferred?                # 
+  # ──────────────────────────────────────# 
+  #  ５. Decision:                          # 
+  #     → task up + general stable = DEPLOY# 
+  #     → task up + general down = tune    # 
+  #     → task down = bad data/method      # 
+  # ──────────────────────────────────────# 
 
 COMMON PITFALLS:
 
@@ -259,7 +259,7 @@ PREVENTION — ৫ STRATEGIES:
     বাড়তে শুরু করলে থামো
 
 ৫. REGULARIZATION
-  → KL divergence: fine-tuned output ≈ base output
+  → KL divergence: fine-tuned output ~= base output
   → L2 penalty: weights base-এর কাছে থাকুক
   → "Elastic Weight Consolidation" (EWC)
   → গুরুত্বপূর্ণ weights কম shift হয়
@@ -384,25 +384,25 @@ STEP 2: QUANTIZATION (optional, for speed/memory)
 STEP 3: SERVING (Inference Engine)
   How to serve the model efficiently?
   
-  ┌─────────────────┬──────────────────────────┐
-  │ Engine          │ Best For                 │
-  ├─────────────────┼────────────────────────┤
-  │ vLLM            │ Production, high QPS     │
-  │                 │ PagedAttention, fast     │
-  │                 │ Top choice 2024          │
-  ├─────────────────┼────────────────────────┤
-  │ TGI (HuggingFace)│ Production, easy setup   │
-  │                 │ Docker, HF ecosystem     │
-  ├─────────────────┼────────────────────────┤
-  │ Ollama          │ Local, Mac, single user  │
-  │                 │ GGUF format              │
-  ├─────────────────┼────────────────────────┤
-  │ llama.cpp       │ CPU, Mac, minimal        │
-  │                 │ GGUF, very lightweight   │
-  ├─────────────────┼────────────────────────┤
-  │ TGI Cloud       │ NoOps (HF Inference API) │
-  │                 │ Pay per use              │
-  └─────────────────┴────────────────────────┘
+  # ─────────────────# ──────────────────────────# 
+  #  Engine          #  Best For                 # 
+  # ─────────────────# ────────────────────────# 
+  #  vLLM            #  Production, high QPS     # 
+  #                  #  PagedAttention, fast     # 
+  #                  #  Top choice 2024          # 
+  # ─────────────────# ────────────────────────# 
+  #  TGI (HuggingFace)#  Production, easy setup   # 
+  #                  #  Docker, HF ecosystem     # 
+  # ─────────────────# ────────────────────────# 
+  #  Ollama          #  Local, Mac, single user  # 
+  #                  #  GGUF format              # 
+  # ─────────────────# ────────────────────────# 
+  #  llama.cpp       #  CPU, Mac, minimal        # 
+  #                  #  GGUF, very lightweight   # 
+  # ─────────────────# ────────────────────────# 
+  #  TGI Cloud       #  NoOps (HF Inference API) # 
+  #                  #  Pay per use              # 
+  # ─────────────────# ────────────────────────# 
 
   vLLM Example:
     vllm serve ./merged-model \\
@@ -549,98 +549,98 @@ doors.push({
 
 COSTS (একাধিক স্তরে):
 
-  ┌────────────────────────────────────────────┐
-  │ ONE-TIME COSTS                             │
-  │                                            │
-  │ Dataset Creation:                          │
-  │   Human-authored: ৫০০ × $২০ = $১০,০০০     │
-  │   Distillation: ৫০০০ × $০.০৫ = $২৫০       │
-  │   Review/cleaning: ~$২,০০০                 │
-  │                                            │
-  │ Training Compute:                          │
-  │   QLoRA ৭B, Colab Pro: $১০ (hours)        │
-  │   LoRA ৭B, A100 ১x ৩h: $১০               │
-  │   Full FT ৭B, A100 ৪x ১২h: $৮০০           │
-  │   Full FT ৭০B, A100 ৮x ২৪h: $৫,০০০+       │
-  │                                            │
-  │ Evaluation:                                │
-  │   LLM-as-judge: ~$৫০                       │
-  │   Human eval: ৫০ × $৫ = $২৫০              │
-  │                                            │
-  │ Engineering time:                          │
-  │   ১-২ weeks × $১০০/hr = $৪,০০০-৮,০০০     │
-  ├────────────────────────────────────────────┤
-  │ TOTAL ONE-TIME: $৬,০০০-২০,০০০ (QLoRA)     │
-  │                $১০,০০০-৩০,০০০ (Full FT)    │
-  └────────────────────────────────────────────┘
+  # ────────────────────────────────────────────# 
+  #  ONE-TIME COSTS                             # 
+  #                                             # 
+  #  Dataset Creation:                          # 
+  #    Human-authored: ৫০০ * $২০ = $১০,০০০     # 
+  #    Distillation: ৫০০০ * $০.০৫ = $২৫০       # 
+  #    Review/cleaning: ~$২,০০০                 # 
+  #                                             # 
+  #  Training Compute:                          # 
+  #    QLoRA ৭B, Colab Pro: $১০ (hours)        # 
+  #    LoRA ৭B, A100 ১x ৩h: $১০               # 
+  #    Full FT ৭B, A100 ৪x ১২h: $৮০০           # 
+  #    Full FT ৭০B, A100 ৮x ২৪h: $৫,০০০+       # 
+  #                                             # 
+  #  Evaluation:                                # 
+  #    LLM-as-judge: ~$৫০                       # 
+  #    Human eval: ৫০ * $৫ = $২৫০              # 
+  #                                             # 
+  #  Engineering time:                          # 
+  #    ১-২ weeks * $১০০/hr = $৪,০০০-৮,০০০     # 
+  # ────────────────────────────────────────────# 
+  #  TOTAL ONE-TIME: $৬,০০০-২০,০০০ (QLoRA)     # 
+  #                 $১০,০০০-৩০,০০০ (Full FT)    # 
+  # ────────────────────────────────────────────# 
 
-  ┌────────────────────────────────────────────┐
-  │ RECURRING COSTS (monthly)                   │
-  │                                            │
-  │ Self-hosted inference:                     │
-  │   A10G GPU ২৪/৭: ~$৩০০-৫০০/month          │
-  │   A100 GPU ২৪/৭: ~$১,০০০-২,০০০/month      │
-  │                                            │
-  │ API-hosted (Together/Anyscale):            │
-  │   Per-token: $০.০০০৫-০.০০২               │
-  │   ১M queries/month × ২K tokens = $১-৪K    │
-  └────────────────────────────────────────────┘
+  # ────────────────────────────────────────────# 
+  #  RECURRING COSTS (monthly)                   # 
+  #                                             # 
+  #  Self-hosted inference:                     # 
+  #    A10G GPU ২৪/৭: ~$৩০০-৫০০/month          # 
+  #    A100 GPU ২৪/৭: ~$১,০০০-২,০০০/month      # 
+  #                                             # 
+  #  API-hosted (Together/Anyscale):            # 
+  #    Per-token: $০.০০০৫-০.০০২               # 
+  #    ১M queries/month * ২K tokens = $১-৪K    # 
+  # ────────────────────────────────────────────# 
 
 BENEFITS (যদি সঠিক হয়):
 
-  ┌────────────────────────────────────────────┐
-  │ COST SAVINGS                               │
-  │                                            │
-  │ Scenario: using GPT-4 for ১M queries/month│
-  │   GPT-4o cost: $০.০৫/query × ১M = $৫০K/mo│
-  │                                            │
-  │ Fine-tuned ৭B (self-hosted):               │
-  │   GPU: $৫০০/month                         │
-  │   Savings: $৪৯,৫০০/month!                  │
-  │   Payback: first month!                    │
-  │                                            │
-  │ এটা যদি কাজ করে — massive ROI             │
-  ├────────────────────────────────────────────┤
-  │ LATENCY IMPROVEMENT                        │
-  │                                            │
-  │ GPT-4o: ~৮০০ms response                   │
-  │ Local ৭B: ~২০০ms response                 │
-  │ → ৪x faster → better UX                    │
-  │ → real-time apps possible                  │
-  ├────────────────────────────────────────────┤
-  │ PRIVACY/CONTROL                            │
-  │                                            │
-  │ সংবেদনশীল data (আইনি, চিকিৎসা):         │
-  │   → cannot send to external API            │
-  │   → must self-host                         │
-  │   → fine-tuned local model = only option   │
-  ├────────────────────────────────────────────┤
-  │ QUALITY                                    │
-  │                                            │
-  │ Domain-specific accuracy:                  │
-  │   GPT-4 general: ৭৫% on your domain       │
-  │   Fine-tuned ৭B: ৮৫%+ on your domain      │
-  │   → better than GPT-4 in your niche!       │
-  └────────────────────────────────────────────┘
+  # ────────────────────────────────────────────# 
+  #  COST SAVINGS                               # 
+  #                                             # 
+  #  Scenario: using GPT-4 for ১M queries/month# 
+  #    GPT-4o cost: $০.০৫/query * ১M = $৫০K/mo# 
+  #                                             # 
+  #  Fine-tuned ৭B (self-hosted):               # 
+  #    GPU: $৫০০/month                         # 
+  #    Savings: $৪৯,৫০০/month!                  # 
+  #    Payback: first month!                    # 
+  #                                             # 
+  #  এটা যদি কাজ করে — massive ROI             # 
+  # ────────────────────────────────────────────# 
+  #  LATENCY IMPROVEMENT                        # 
+  #                                             # 
+  #  GPT-4o: ~৮০০ms response                   # 
+  #  Local ৭B: ~২০০ms response                 # 
+  #  → ৪x faster → better UX                    # 
+  #  → real-time apps possible                  # 
+  # ────────────────────────────────────────────# 
+  #  PRIVACY/CONTROL                            # 
+  #                                             # 
+  #  সংবেদনশীল data (আইনি, চিকিৎসা):         # 
+  #    → cannot send to external API            # 
+  #    → must self-host                         # 
+  #    → fine-tuned local model = only option   # 
+  # ────────────────────────────────────────────# 
+  #  QUALITY                                    # 
+  #                                             # 
+  #  Domain-specific accuracy:                  # 
+  #    GPT-4 general: ৭৫% on your domain       # 
+  #    Fine-tuned ৭B: ৮৫%+ on your domain      # 
+  #    → better than GPT-4 in your niche!       # 
+  # ────────────────────────────────────────────# 
 
 DECISION MATRIX:
 
   ব্যবহার ১M+ queries/month?
-  ├── YES → Fine-tuning ROI massive ✅
-  │        (self-hosted savings >> training cost)
-  └── NO → কম queries → API (GPT-4/Claude) সস্তা
+  # ── YES → Fine-tuning ROI massive ✅
+  #         (self-hosted savings >> training cost)
+  # ── NO → কম queries → API (GPT-4/Claude) সস্তা
   
   সংবেদনশীল data?
-  ├── YES → Must self-host → fine-tune ✅
-  └── NO → API acceptable
+  # ── YES → Must self-host → fine-tune ✅
+  # ── NO → API acceptable
   
   Latency critical (< ৫০০ms)?
-  ├── YES → Local model → fine-tune ✅
-  └── NO → API latency (~১s) acceptable
+  # ── YES → Local model → fine-tune ✅
+  # ── NO → API latency (~১s) acceptable
   
   Domain-specific behavior?
-  ├── YES + prompting fails → Fine-tune ✅
-  └── General is fine → API</div>
+  # ── YES + prompting fails → Fine-tune ✅
+  # ── General is fine → API</div>
 
 <div class="dialogue">মিযান — balance, scale, cost-benefit। কুরআনে আল্লাহ বলেন — "আমরা সত্যের সাথে মিযান স্থাপন করেছি।" (২১:৪৭)। প্রতিটা সিদ্ধান্তে মিযান — খরচ বনাম উপকার। Fine-tuning একটা বিনিয়োগ। সঠিক হিসাব ছাড়া বিনিয়োগ = জুয়া। সঠিক হিসাব সহ = প্রজ্ঞা।</div>
 <div class="dialogue en">"Mizan — balance, scale, cost-benefit. Allah says — 'We established the scale with truth.' (21:47). Every decision needs mizan — cost vs benefit. Fine-tuning is an investment. Without proper calculation = gambling. With proper calculation = wisdom."</div>
@@ -691,7 +691,7 @@ DECISION MATRIX:
 `,
   senior:{
     title:"ROI Calculator — Quick Check",
-    body:`<p><strong>Monthly API cost now:</strong> queries × avg_tokens × price_per_token</p><p><strong>Monthly self-hosted cost:</strong> GPU cost + maintenance</p><p><strong>If API cost > 3× self-hosted:</strong> → fine-tuning worth it (payback < 3 months)</p><p><strong>If API cost < self-hosted:</strong> → stay with API, don't fine-tune</p><p><strong>Special cases:</strong> privacy, latency, offline — always justify fine-tuning regardless of pure cost</p>`
+    body:`<p><strong>Monthly API cost now:</strong> queries * avg_tokens * price_per_token</p><p><strong>Monthly self-hosted cost:</strong> GPU cost + maintenance</p><p><strong>If API cost > 3* self-hosted:</strong> → fine-tuning worth it (payback < 3 months)</p><p><strong>If API cost < self-hosted:</strong> → stay with API, don't fine-tune</p><p><strong>Special cases:</strong> privacy, latency, offline — always justify fine-tuning regardless of pure cost</p>`
   }
 });
 
@@ -721,66 +721,66 @@ doors.push({
 
 PHASE ১: DECISION (Door 1)
   Prompting → RAG → Fine-tuning?
-  ├── Prompting works? → DONE
-  ├── RAG works? → DONE  
-  └── Fine-tune needed? → continue ↓
+  # ── Prompting works? → DONE
+  # ── RAG works? → DONE  
+  # ── Fine-tune needed? → continue ↓
 
 PHASE ২: DATA (Door 2)
   ১০০-৫০০০ high-quality examples
-  ├── Human-authored (best, $$$)
-  ├── Distillation (good, $)
-  └── Real user data (realistic)
+  # ── Human-authored (best, $$$)
+  # ── Distillation (good, $)
+  # ── Real user data (realistic)
   → Format: instruction-response pairs
   → Holdout ১০% for eval
 
 PHASE ৩: METHOD (Doors 3-5)
-  ┌─────────────────────────────────────┐
-  │ QLoRA (cheapest, consumer GPU)      │
-  │   model: Llama 3.1 8B               │
-  │   rank: 16, alpha: 32               │
-  │   lr: 2e-4, epochs: 3               │
-  │   GPU: RTX 3090/4090 বা Colab       │
-  │   cost: ~$10                        │
-  │   time: 1-3 hours                   │
-  ├─────────────────────────────────────┤
-  │ LoRA (balanced)                      │
-  │   model: 7B-13B                     │
-  │   GPU: A100 1x                      │
-  │   cost: ~$50                        │
-  ├─────────────────────────────────────┤
-  │ Full FT (maximum quality)            │
-  │   model: 7B-70B                     │
-  │   GPU: A100 4-8x                    │
-  │   cost: ~$800-5000                  │
-  └─────────────────────────────────────┘
+  # ─────────────────────────────────────# 
+  #  QLoRA (cheapest, consumer GPU)      # 
+  #    model: Llama 3.1 8B               # 
+  #    rank: 16, alpha: 32               # 
+  #    lr: 2e-4, epochs: 3               # 
+  #    GPU: RTX 3090/4090 বা Colab       # 
+  #    cost: ~$10                        # 
+  #    time: 1-3 hours                   # 
+  # ─────────────────────────────────────# 
+  #  LoRA (balanced)                      # 
+  #    model: 7B-13B                     # 
+  #    GPU: A100 1x                      # 
+  #    cost: ~$50                        # 
+  # ─────────────────────────────────────# 
+  #  Full FT (maximum quality)            # 
+  #    model: 7B-70B                     # 
+  #    GPU: A100 4-8x                    # 
+  #    cost: ~$800-5000                  # 
+  # ─────────────────────────────────────# 
   
   Training method:
     SFT first → DPO if quality refinement needed
 
 PHASE ৪: EVALUATION (Door 6)
-  ├── Task metric: base vs fine-tuned
-  ├── General regression: MMLU subset
-  ├── LLM-as-judge: quality score
-  └── Human eval: blind comparison
+  # ── Task metric: base vs fine-tuned
+  # ── General regression: MMLU subset
+  # ── LLM-as-judge: quality score
+  # ── Human eval: blind comparison
   → Decision: deploy? refine? discard?
 
 PHASE ৫: ANTI-FORGETTING (Door 7)
-  ├── LoRA (base frozen)
-  ├── Low learning rate (1e-5 to 5e-5)
-  ├── Replay (25% general data)
-  └── Few epochs (1-3, early stop)
+  # ── LoRA (base frozen)
+  # ── Low learning rate (1e-5 to 5e-5)
+  # ── Replay (25% general data)
+  # ── Few epochs (1-3, early stop)
 
 PHASE ৬: DEPLOYMENT (Door 8)
-  ├── Merge LoRA → standalone model
-  ├── Quantize (4-bit GGUF বা AWQ)
-  ├── Serve (vLLM/TGI/Ollama)
-  ├── API (OpenAI-compatible)
-  └── Monitor (latency, quality, feedback)
+  # ── Merge LoRA → standalone model
+  # ── Quantize (4-bit GGUF বা AWQ)
+  # ── Serve (vLLM/TGI/Ollama)
+  # ── API (OpenAI-compatible)
+  # ── Monitor (latency, quality, feedback)
 
 PHASE ৭: COST-BENEFIT (Door 9)
-  ├── Monthly savings vs monthly cost
-  ├── Payback period
-  └── ROI justification
+  # ── Monthly savings vs monthly cost
+  # ── Payback period
+  # ── ROI justification
 
 THE COMPLETE JOURNEY:
   General LLM → YOUR domain expert

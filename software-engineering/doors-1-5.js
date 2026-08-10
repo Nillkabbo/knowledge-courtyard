@@ -212,7 +212,7 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: SOLID-এর ৫টি নীতি — Uncle Bob (Robert Martin, ২০০০)।</div>
 
-<div class="code-block">— Python: SOLID Principles বাস্তবে —
+<div class="code-block"># — Python: SOLID Principles বাস্তবে —
 
   # ❌ SRP লঙ্ঘন: এক class-এ সব কাজ
   class User:
@@ -361,7 +361,7 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: GoF ২৩টি pattern — তিন ভাগে। প্রতিটিতে Django/React উদাহরণ।</div>
 
-<div class="code-block">— Python: Design Patterns বাস্তবে —
+<div class="code-block"># — Python: Design Patterns বাস্তবে —
 
   # Singleton: একটাই instance (Django settings)
   class Database:

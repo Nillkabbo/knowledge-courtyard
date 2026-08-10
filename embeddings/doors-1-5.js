@@ -71,9 +71,9 @@ THE KING - MAN + WOMAN = QUEEN MIRACLE:
   queen vector:   [০.৩,  ০.৫, ০.৭, ...]
   
   → VECTOR ARITHMETIC CAPTURES MEANING!
-  → king - man + woman ≈ queen
-  → Paris - France + Italy ≈ Rome
-  → doctor - man + woman ≈ nurse (bias alert!)
+  → king - man + woman ~= queen
+  → Paris - France + Italy ~= Rome
+  → doctor - man + woman ~= nurse (bias alert!)
   
   → This blew everyone's mind in ২০১৩
 
@@ -87,7 +87,7 @@ SIMILARITY METRICS:
     → ০.০ = orthogonal (unrelated)
     → -১.০ = opposite
     
-    cos(θ) = (A · B) / (|A| × |B|)
+    cos(θ) = (A · B) / (|A| * |B|)
     
     → best for semantic similarity
     → scale-independent
@@ -100,7 +100,7 @@ SIMILARITY METRICS:
     → sensitive to magnitude
   
   ৩. DOT PRODUCT
-    → A · B = Σ(ai × bi)
+    → A · B = Σ(ai * bi)
     → fast, no normalization
     → sensitive to magnitude
   
@@ -163,14 +163,14 @@ WHY EMBEDDINGS WORK:
   <text x="438" y="44" fill="#fcd34d" font-size="9">আকাশ sky</text>
   <line x1="156" y1="92" x2="180" y2="80" stroke="#22c55e" stroke-width="2" marker-end="url(#arrEMB1)"/>
   <defs><marker id="arrEMB1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22c55e"/></marker></defs>
-  <text x="140" y="65" fill="#4ade80" font-size="8">≈ কাছে</text>
+  <text x="140" y="65" fill="#4ade80" font-size="8">~= কাছে</text>
   <text x="250" y="195" fill="#94a3b8" font-size="8">কাছের বিন্দু = সমার্থক · দূরের বিন্দু = ভিন্ন অর্থ · ৭৬৮-মাত্রিক জগতের দুই-মাত্রিক ঝলক</text>
 </svg>
 </div>
-<div class="svg-caption">প্রতিটা শব্দ একটা বিন্দু — রাজা ও রানি কাছে, গরু দূরে, আকাশ আরও দূরে। বিন্দুর অবস্থানই অর্থ। king - man + woman ≈ queen — ভেক্টর পাটিগণিতে অর্থ ধরা যায়।</div>`,
+<div class="svg-caption">প্রতিটা শব্দ একটা বিন্দু — রাজা ও রানি কাছে, গরু দূরে, আকাশ আরও দূরে। বিন্দুর অবস্থানই অর্থ। king - man + woman ~= queen — ভেক্টর পাটিগণিতে অর্থ ধরা যায়।</div>`,
   senior:{
     title:"Embedding Intuition — The Key Mental Model",
-    body:`<p><strong>Mental model:</strong> Every word/sentence/document is a POINT in high-dimensional space. Nearby points = similar meaning. Distance = semantic difference.</p><p><strong>The miracle:</strong> king - man + woman ≈ queen. Vector arithmetic captures semantic relationships.</p><p><strong>Why it works:</strong> Words in similar contexts have similar meanings (distributional hypothesis). Model learns context → learns meaning.</p><p><strong>Practical:</strong> cosine similarity for "how similar". 0.7+ = related, 0.85+ = very similar, 0.95+ = near-duplicate.</p>`
+    body:`<p><strong>Mental model:</strong> Every word/sentence/document is a POINT in high-dimensional space. Nearby points = similar meaning. Distance = semantic difference.</p><p><strong>The miracle:</strong> king - man + woman ~= queen. Vector arithmetic captures semantic relationships.</p><p><strong>Why it works:</strong> Words in similar contexts have similar meanings (distributional hypothesis). Model learns context → learns meaning.</p><p><strong>Practical:</strong> cosine similarity for "how similar". 0.7+ = related, 0.85+ = very similar, 0.95+ = near-duplicate.</p>`
   }
 });
 
@@ -253,40 +253,40 @@ EVOLUTION TIMELINE:
 
 CURRENT MODEL FAMILIES:
 
-┌──────────────┬────────┬────────┬──────────────────┐
-│ Model        │ Type   │ Dim    │ Best For          │
-├──────────────┼────────┼────────┼──────────────────┤
-│ OpenAI       │ API    │ ৩০৭২   │ General purpose,  │
-│ embed-৩      │        │ (var)  │ English, easy API │
-│              │        │        │ $০.০২/M tokens   │
-├──────────────┼────────┼────────┼──────────────────┤
-│ OpenAI       │ API    │ ১৫৩৬   │ Cheaper, still    │
-│ ada-002      │        │        │ good              │
-│              │        │        │ $০.১০/M tokens   │
-├──────────────┼────────┼────────┼──────────────────┤
-│ Cohere       │ API    │ ১০২৪   │ Multilingual,     │
-│ embed-v৩    │        │        │ input_type support │
-│              │        │        │ $০.১০/M tokens   │
-├──────────────┼────────┼────────┼──────────────────┤
-│ BGE-large    │ Open   │ ১০২৪   │ Best open-source  │
-│ (BAAI)       │ weights│        │ retrieval, free!  │
-│              │        │        │ multilingual      │
-├──────────────┼────────┼────────┼──────────────────┤
-│ E5-large     │ Open   │ ১০২৪   │ Strong general,   │
-│ (Microsoft)  │ weights│        │ multilingual      │
-├──────────────┼────────┼────────┼──────────────────┤
-│ GTE          │ Open   │ ১০২৪   │ Alibaba, strong   │
-│ (Alibaba)    │ weights│        │ multilingual      │
-├──────────────┼────────┼────────┼──────────────────┤
-│ Nomic Embed  │ Open   │ ৭৬৮    │ Long context,     │
-│              │ weights│        │ transparent       │
-├──────────────┼────────┼────────┼──────────────────┤
-│ voyage-২    │ API    │ ১০২৪   │ Voyage AI,        │
-│ (Voyage)     │        │        │ top retrieval     │
-├──────────────┼────────┼────────┼──────────────────┤
-│ Jina Embed   │ Open   │ ৭৬৮    │ Long context      │
-│ (Jina)       │ weights│        │ (৮K tokens)      │
-└──────────────┴────────┴────────┴──────────────────┘
+# ──────────────# ────────# ────────# ──────────────────# 
+#  Model        #  Type   #  Dim    #  Best For          # 
+# ──────────────# ────────# ────────# ──────────────────# 
+#  OpenAI       #  API    #  ৩০৭২   #  General purpose,  # 
+#  embed-৩      #         #  (var)  #  English, easy API # 
+#               #         #         #  $০.০২/M tokens   # 
+# ──────────────# ────────# ────────# ──────────────────# 
+#  OpenAI       #  API    #  ১৫৩৬   #  Cheaper, still    # 
+#  ada-002      #         #         #  good              # 
+#               #         #         #  $০.১০/M tokens   # 
+# ──────────────# ────────# ────────# ──────────────────# 
+#  Cohere       #  API    #  ১০২৪   #  Multilingual,     # 
+#  embed-v৩    #         #         #  input_type support # 
+#               #         #         #  $০.১০/M tokens   # 
+# ──────────────# ────────# ────────# ──────────────────# 
+#  BGE-large    #  Open   #  ১০২৪   #  Best open-source  # 
+#  (BAAI)       #  weights#         #  retrieval, free!  # 
+#               #         #         #  multilingual      # 
+# ──────────────# ────────# ────────# ──────────────────# 
+#  E5-large     #  Open   #  ১০২৪   #  Strong general,   # 
+#  (Microsoft)  #  weights#         #  multilingual      # 
+# ──────────────# ────────# ────────# ──────────────────# 
+#  GTE          #  Open   #  ১০২৪   #  Alibaba, strong   # 
+#  (Alibaba)    #  weights#         #  multilingual      # 
+# ──────────────# ────────# ────────# ──────────────────# 
+#  Nomic Embed  #  Open   #  ৭৬৮    #  Long context,     # 
+#               #  weights#         #  transparent       # 
+# ──────────────# ────────# ────────# ──────────────────# 
+#  voyage-২    #  API    #  ১০২৪   #  Voyage AI,        # 
+#  (Voyage)     #         #         #  top retrieval     # 
+# ──────────────# ────────# ────────# ──────────────────# 
+#  Jina Embed   #  Open   #  ৭৬৮    #  Long context      # 
+#  (Jina)       #  weights#         #  (৮K tokens)      # 
+# ──────────────# ────────# ────────# ──────────────────# 
 
 ASYMMETRIC EMBEDDINGS:
   
@@ -325,17 +325,17 @@ MTEB BENCHMARK (Massive Text Embedding Benchmark):
 
 WHICH MODEL TO CHOOSE:
 
-  ┌──────────────────────┬──────────────────────┐
-  │ Your Need            │ Best Model           │
-  ├──────────────────────┼──────────────────────┤
-  │ Quick/easy (API)     │ OpenAI text-embed-৩ │
-  │ Best open (free)     │ BGE-large-en-v১.৫   │
-  │ Multilingual         │ BGE-multilingual     │
-  │ Long context (>২K)   │ Jina Embed v২       │
-  │ Maximum quality      │ E5-mistral-৭B       │
-  │ Budget (small/fast)  │ BGE-small বা all-  │
-  │                      │ MiniLM-L৬-v২        │
-  └──────────────────────┴──────────────────────┘</div>
+  # ──────────────────────# ──────────────────────# 
+  #  Your Need            #  Best Model           # 
+  # ──────────────────────# ──────────────────────# 
+  #  Quick/easy (API)     #  OpenAI text-embed-৩ # 
+  #  Best open (free)     #  BGE-large-en-v১.৫   # 
+  #  Multilingual         #  BGE-multilingual     # 
+  #  Long context (>২K)   #  Jina Embed v২       # 
+  #  Maximum quality      #  E5-mistral-৭B       # 
+  #  Budget (small/fast)  #  BGE-small বা all-  # 
+  #                       #  MiniLM-L৬-v২        # 
+  # ──────────────────────# ──────────────────────# </div>
 
 <div class="dialogue">খিয়ার — selection, choice। কুরআনে আল্লাহ বলেন — "তোমাদের জন্য জ্ঞান বেছে নেওয়ার ক্ষমতা দিয়েছেন।" প্রতিটা কাজে সঠিক নির্বাচন। Embedding model-ও খিয়ার — কোন model কোন কাজে? OpenAI? BGE? E5? সঠিক নির্বাচন = সঠিক ফল। ভুল নির্বাচন = ভুল ফল। খিয়ার — সঠিক পছন্দের গুণ।</div>
 <div class="dialogue en">"Khiyar — selection, choice. Allah says — 'He gave you the ability to choose knowledge.' Right selection in each task. Embedding model too — which model for which task? OpenAI? BGE? E5? Right selection = right result. Wrong selection = wrong result. Khyar — the virtue of right choice."</div>
@@ -425,17 +425,17 @@ KEYWORD vs SEMANTIC SEARCH:
 
 SEMANTIC SEARCH PIPELINE:
 
-  ┌──────────────────────────────────────┐
-  │ INGEST                               │
-  │ documents → embedding model → vectors│
-  │ → store in vector DB                 │
-  ├──────────────────────────────────────┤
-  │ QUERY                                │
-  │ query → embedding model → query vec  │
-  │ → search vector DB                   │
-  │ → cosine similarity with all docs    │
-  │ → return top-k most similar          │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  INGEST                               # 
+  #  documents → embedding model → vectors# 
+  #  → store in vector DB                 # 
+  # ──────────────────────────────────────# 
+  #  QUERY                                # 
+  #  query → embedding model → query vec  # 
+  #  → search vector DB                   # 
+  #  → cosine similarity with all docs    # 
+  #  → return top-k most similar          # 
+  # ──────────────────────────────────────# 
 
   Example:
     Query: "how to train neural networks"
@@ -559,12 +559,12 @@ COMMON SEARCH FAILURES:
   <text x="430" y="178" fill="#fcd34d" font-size="9" font-weight="bold">C: "car"</text>
   <path d="M 130 160 A 70 70 0 0 1 140 165" fill="none" stroke="#22c55e" stroke-width="1.5"/>
   <text x="115" y="150" fill="#4ade80" font-size="8">θ ছোট</text>
-  <text x="108" y="162" fill="#4ade80" font-size="10">cos ≈ ০.৮৯</text>
+  <text x="108" y="162" fill="#4ade80" font-size="10">cos ~= ০.৮৯</text>
   <path d="M 95 188 A 95 95 0 0 1 280 195" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="180" y="198" fill="#fcd34d" font-size="8">θ বড়</text>
-  <text x="175" y="210" fill="#fcd34d" font-size="10">cos ≈ ০.১৫</text>
+  <text x="175" y="210" fill="#fcd34d" font-size="10">cos ~= ০.১৫</text>
   <rect x="345" y="40" width="220" height="95" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
-  <text x="455" y="58" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="bold">cos(θ) = (A · B) / (|A| × |B|)</text>
+  <text x="455" y="58" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="bold">cos(θ) = (A · B) / (|A| * |B|)</text>
   <text x="362" y="78" fill="#7dd3fc" font-size="8">cos = ১.০ → একই দিক (সমার্থক)</text>
   <text x="362" y="94" fill="#4ade80" font-size="8">cos = ০.৮৫+ → খুব কাছে</text>
   <text x="362" y="110" fill="#fcd34d" font-size="8">cos = ০.০ → সম্পর্কহীন</text>
@@ -572,7 +572,7 @@ COMMON SEARCH FAILURES:
   <text x="290" y="240" text-anchor="middle" fill="#64748b" font-size="10">magnitude নয়, দিক গুরুত্বপূর্ণ। normalize করলে cosine = dot product (দ্রুত!)</text>
 </svg>
 </div>
-<div class="svg-caption">Cosine similarity দুই ভেক্টরের কোণ মাপে। কোণ ছোট = অর্থ কাছে (cos ≈ ১), কোণ বড় = অর্থ দূরে (cos ≈ ০)। cat ও kitten কাছে, cat ও car দূরে।</div>`,
+<div class="svg-caption">Cosine similarity দুই ভেক্টরের কোণ মাপে। কোণ ছোট = অর্থ কাছে (cos ~= ১), কোণ বড় = অর্থ দূরে (cos ~= ০)। cat ও kitten কাছে, cat ও car দূরে।</div>`,
   senior:{
     title:"Semantic Search Setup — Production",
     body:`<p><strong>Stack:</strong> BGE-large + Qdrant + BGE-Reranker। Hybrid search (dense + BM25)।</p><p><strong>Always hybrid:</strong> Dense alone misses proper nouns/keywords। BM25 alone misses synonyms। Together: 85-95% accuracy।</p><p><strong>Always rerank:</strong> Cross-encoder reranking adds 20%+ precision। Cheap (top-20 only)।</p><p><strong>Always asymmetric:</strong> Query prefix vs document prefix। 10-15% accuracy gain।</p><p><strong>Metrics:</strong> Track Recall@5, Precision@5, NDCG@10। Build 50+ query eval set with ground truth relevant docs।</p>`
@@ -632,7 +632,7 @@ VECTOR OPERATIONS:
   
   king : queen :: man : ?
   → queen - king + man = ? 
-  → ≈ "man" (but this is circular)
+  → ~= "man" (but this is circular)
   
   Standard formula:
     D = vector(B) - vector(A) + vector(C)
@@ -700,11 +700,11 @@ SEMANTIC SIMILARITY APPLICATIONS:
     → even though different words
   
   Paraphrase detection:
-    → "what is your age?" ≈ "how old are you?"
+    → "what is your age?" ~= "how old are you?"
     → high cosine similarity
   
   Entity resolution:
-    → "NYC" ≈ "New York City" ≈ "The Big Apple"
+    → "NYC" ~= "New York City" ~= "The Big Apple"
     → same entity, different names
 
 VECTOR VISUALIZATION:
@@ -753,18 +753,18 @@ BIAS IN EMBEDDINGS:
   <line x1="240" y1="170" x2="360" y2="80" stroke="#22c55e" stroke-width="2" stroke-dasharray="3,2" marker-end="url(#arrEMB4c)"/>
   <text x="280" y="140" fill="#4ade80" font-size="8">+ woman</text>
   <circle cx="360" cy="80" r="6" fill="#a855f7" stroke="#c084fc" stroke-width="2"/>
-  <text x="372" y="78" fill="#c084fc" font-size="9" font-weight="bold">queen ≈</text>
+  <text x="372" y="78" fill="#c084fc" font-size="9" font-weight="bold">queen ~=</text>
   <circle cx="430" cy="95" r="6" fill="#a855f7" stroke="#c084fc" stroke-width="2"/>
   <text x="442" y="93" fill="#c084fc" font-size="9">queen (আসল)</text>
   <line x1="366" y1="82" x2="424" y2="92" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="2,2"/>
-  <text x="370" y="112" fill="#4ade80" font-size="10">≈ মিল!</text>
+  <text x="370" y="112" fill="#4ade80" font-size="10">~= মিল!</text>
   <defs>
     <marker id="arrEMB4a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker>
     <marker id="arrEMB4b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#fbbf24"/></marker>
     <marker id="arrEMB4c" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22c55e"/></marker>
   </defs>
   <rect x="30" y="218" width="520" height="24" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="290" y="234" text-anchor="middle" fill="#94a3b8" font-size="10">ভেক্টর যোগ-বিয়োগে অর্থ ধরা যায় — Paris − France + Italy ≈ Rome। অর্থের জ্যামিতিতে দিক ও দূরত্ব গুণ বহন করে।</text>
+  <text x="290" y="234" text-anchor="middle" fill="#94a3b8" font-size="10">ভেক্টর যোগ-বিয়োগে অর্থ ধরা যায় — Paris − France + Italy ~= Rome। অর্থের জ্যামিতিতে দিক ও দূরত্ব গুণ বহন করে।</text>
 </svg>
 </div>
 <div class="svg-caption">ভেক্টর পাটিগণিতে অর্থ ধরা যায়। king থেকে man বাদ দিলে "রাজকীয়তা" দিক পাওয়া যায়, তাতে woman যোগ করলে queen-এর কাছে পৌঁছানো যায়। শব্দ দিয়ে যোগ-বিয়োগ — অর্থের জ্যামিতি।</div>`,

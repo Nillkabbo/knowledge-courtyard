@@ -350,8 +350,8 @@ doors.push({
 
 THE LATENCY PROBLEM:
   light-এর গতিও সীমিত। আমেরিকা থেকে বাংলাদেশ:
-    → physical distance ≈ ১৩,০০০ km
-    → round-trip (fiber) ≈ ১৩০ms শুধু ভ্রমণে
+    → physical distance ~= ১৩,০০০ km
+    → round-trip (fiber) ~= ১৩০ms শুধু ভ্রমণে
     → + server processing, TLS handshake
     → total: ২০০-৪০০ms per request
 

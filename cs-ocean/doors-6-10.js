@@ -147,7 +147,7 @@ doors.push({
     <text class="lbl-sm" x="280" y="180" fill="#5e5c74">NVLink/RDMA দিয়ে micro-batch flow + gradient sync — এটাই distributed training</text>
     <text class="lbl-sm" x="280" y="200" fill="#5e5c74">একটা GPU ভাঙলে checkpoint থেকে recover — fault tolerance (Maria-র উপহার)</text>
   </svg>
-  <div class="diag-cap">LLM training = pipeline parallel (stages) × tensor parallel (within stage) × data parallel (replicas)। communication হলো bottleneck — RDMA/NVLink MLSys-এর জয়।</div>
+  <div class="diag-cap">LLM training = pipeline parallel (stages) * tensor parallel (within stage) * data parallel (replicas)। communication হলো bottleneck — RDMA/NVLink MLSys-এর জয়।</div>
 </div>
 
 <div class="code-block">MLSys — গবেষণার শাখাসমূহ (🔥 সবচেয়ে হট crossover):

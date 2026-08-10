@@ -29,7 +29,7 @@ doors.push({
 
 LLM LATENCY ANATOMY:
 
-  Total latency = TTFT + (output_tokens × TPOT)
+  Total latency = TTFT + (output_tokens * TPOT)
   
   TTFT (Time To First Token):
     → prompt processing + first token generation
@@ -39,7 +39,7 @@ LLM LATENCY ANATOMY:
   TPOT (Time Per Output Token):
     → time to generate each subsequent token
     → typical: ২০-১০০ms/token
-    → ৫০০ tokens × ৪০ms = ২০s (long!)
+    → ৫০০ tokens * ৪০ms = ২০s (long!)
   
   Perceived latency (with streaming):
     → user sees TTFT as "response starting"
@@ -122,19 +122,19 @@ OPTIMIZATION STRATEGIES:
 
 LATENCY BUDGET (per request):
 
-  ┌──────────────────────┬───────────┐
-  │ Step                 │ Budget    │
-  ├──────────────────────┼───────────┤
-  │ Network (user→server)│ < ১০০ms   │
-  │ Input guardrail      │ < ৫০ms    │
-  │ Query processing     │ < ১০০ms   │
-  │ RAG retrieval        │ < ১০০ms   │
-  │ Reranking            │ < ১০০ms   │
-  │ LLM TTFT             │ < ৫০০ms   │
-  │ LLM streaming        │ ~continuous│
-  │ Output guardrail     │ < ৫০ms    │
-  │ Total perceived      │ < ১s      │
-  └──────────────────────┴───────────┘
+  # ──────────────────────# ───────────# 
+  #  Step                 #  Budget    # 
+  # ──────────────────────# ───────────# 
+  #  Network (user→server)#  < ১০০ms   # 
+  #  Input guardrail      #  < ৫০ms    # 
+  #  Query processing     #  < ১০০ms   # 
+  #  RAG retrieval        #  < ১০০ms   # 
+  #  Reranking            #  < ১০০ms   # 
+  #  LLM TTFT             #  < ৫০০ms   # 
+  #  LLM streaming        #  ~continuous# 
+  #  Output guardrail     #  < ৫০ms    # 
+  #  Total perceived      #  < ১s      # 
+  # ──────────────────────# ───────────# 
   
   → User feels response starts in < ১s
   → rest streams smoothly
@@ -286,15 +286,15 @@ REPRODUCIBILITY:
 
 MODEL LIFECYCLE:
 
-  ┌────────┐     ┌────────┐     ┌──────────┐
-  │ Dev    │────→│ Staging│────→│Production│
-  │ v0.x   │     │ v1.0-rc│     │ v1.0     │
-  └────────┘     └────────┘     └──────────┘
-       ↑                             │
-       │        ┌────────┐           │
-       └───────→│Archive │←──────────┘
-                │ v0.9   │ (rollback target)
-                └────────┘
+  # ────────#      # ────────#      # ──────────# 
+  #  Dev    # ────→#  Staging# ────→# Production# 
+  #  v0.x   #      #  v1.0-rc#      #  v1.0     # 
+  # ────────#      # ────────#      # ──────────# 
+       ↑                             # 
+       #         # ────────#            # 
+       # ───────→# Archive # ←──────────# 
+                #  v0.9   #  (rollback target)
+                # ────────# 
   
   → new model goes through stages
   → each stage versioned
@@ -422,14 +422,14 @@ TRADITIONAL A/B + LLM SPECIFIC:
 
 A/B TEST SETUP:
 
-  ┌──────────────────────────────────────┐
-  │ Traffic Split                        │
-  │                                      │
-  │   Users ──→ Hash(user_id) % 100      │
-  │                                      │
-  │   ০-৪৯%  → Version A (control)       │
-  │   ৫০-৯৯% → Version B (treatment)    │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  Traffic Split                        # 
+  #                                       # 
+  #    Users ──→ Hash(user_id) % 100      # 
+  #                                       # 
+  #    ০-৪৯%  → Version A (control)       # 
+  #    ৫০-৯৯% → Version B (treatment)    # 
+  # ──────────────────────────────────────# 
   
   → consistent: same user always gets same version
   → random: no selection bias
@@ -619,48 +619,48 @@ LLM-SPECIFIC INCIDENTS:
 
 INCIDENT RESPONSE PLAYBOOK:
 
-  ┌────────────────────────────────────────┐
-  │ PHASE ১: DETECT (alert fires)         │
-  │ → classify severity                    │
-  │ → acknowledge alert                    │
-  │ → assess initial scope                 │
-  │ Time: < ৫ min                          │
-  ├────────────────────────────────────────┤
-  │ PHASE ২: CONTAIN (stop the bleeding)  │
-  │ → ROLLBACK to last known good          │
-  │ → KILL SWITCH if critical              │
-  │ → throttle traffic                     │
-  │ → disable problematic feature/tool     │
-  │ Time: < ১৫ min                         │
-  ├────────────────────────────────────────┤
-  │ PHASE ৩: INVESTIGATE (understand)     │
-  │ → check logs, traces                   │
-  │ → identify root cause                  │
-  │ → assess impact (how many users?)      │
-  │ → data exposure assessment             │
-  │ Time: < ২ hr                           │
-  ├────────────────────────────────────────┤
-  │ PHASE ৪: REMEDIATE (fix)              │
-  │ → patch the root cause                 │
-  │ → test fix in staging                  │
-  │ → deploy fix                           │
-  │ → verify resolution                    │
-  │ Time: < ৪ hr                           │
-  ├────────────────────────────────────────┤
-  │ PHASE ৫: COMMUNICATE                  │
-  │ → notify affected users                │
-  │ → status page update                   │
-  │ → stakeholders informed                │
-  │ Time: throughout                        │
-  ├────────────────────────────────────────┤
-  │ PHASE ৬: POST-MORTEM (learn)          │
-  │ → document timeline                    │
-  │ → what went well, what didn't          │
-  │ → root cause (5 whys)                  │
-  │ → action items (prevent recurrence)    │
-  │ → add to red team / eval suite         │
-  │ Time: within ৪৮ hr                     │
-  └────────────────────────────────────────┘
+  # ────────────────────────────────────────# 
+  #  PHASE ১: DETECT (alert fires)         # 
+  #  → classify severity                    # 
+  #  → acknowledge alert                    # 
+  #  → assess initial scope                 # 
+  #  Time: < ৫ min                          # 
+  # ────────────────────────────────────────# 
+  #  PHASE ২: CONTAIN (stop the bleeding)  # 
+  #  → ROLLBACK to last known good          # 
+  #  → KILL SWITCH if critical              # 
+  #  → throttle traffic                     # 
+  #  → disable problematic feature/tool     # 
+  #  Time: < ১৫ min                         # 
+  # ────────────────────────────────────────# 
+  #  PHASE ৩: INVESTIGATE (understand)     # 
+  #  → check logs, traces                   # 
+  #  → identify root cause                  # 
+  #  → assess impact (how many users?)      # 
+  #  → data exposure assessment             # 
+  #  Time: < ২ hr                           # 
+  # ────────────────────────────────────────# 
+  #  PHASE ৪: REMEDIATE (fix)              # 
+  #  → patch the root cause                 # 
+  #  → test fix in staging                  # 
+  #  → deploy fix                           # 
+  #  → verify resolution                    # 
+  #  Time: < ৪ hr                           # 
+  # ────────────────────────────────────────# 
+  #  PHASE ৫: COMMUNICATE                  # 
+  #  → notify affected users                # 
+  #  → status page update                   # 
+  #  → stakeholders informed                # 
+  #  Time: throughout                        # 
+  # ────────────────────────────────────────# 
+  #  PHASE ৬: POST-MORTEM (learn)          # 
+  #  → document timeline                    # 
+  #  → what went well, what didn't          # 
+  #  → root cause (5 whys)                  # 
+  #  → action items (prevent recurrence)    # 
+  #  → add to red team / eval suite         # 
+  #  Time: within ৪৮ hr                     # 
+  # ────────────────────────────────────────# 
 
 KILL SWITCH:
   সবকিছু থামাও — জরুরি পরিস্থিতিতে।
@@ -819,73 +819,73 @@ doors.push({
 
 <div class="code-block">Complete Production LLMOps Architecture:
 
-┌──────────────────────────────────────────────────┐
-│ COMPLETE LLMOps STACK                             │
-├──────────────────────────────────────────────────┤
-│                                                   │
-│  SERVING (Door 1)                                │
-│  ├── vLLM / TGI / SGLang                         │
-│  ├── PagedAttention, continuous batching         │
-│  ├── Prefix caching, tensor parallelism          │
-│  └── OpenAI-compatible API                        │
-│                                                   │
-│  DEPLOYMENT (Door 2)                              │
-│  ├── Docker containers                            │
-│  ├── Kubernetes (EKS/GKE)                        │
-│  ├── Auto-scaling (HPA)                           │
-│  ├── Load balancer + GPU scheduling               │
-│  └── Canary / blue-green / rolling               │
-│                                                   │
-│  CI/CD (Door 3)                                   │
-│  ├── GitHub Actions / GitLab CI                  │
-│  ├── Eval gate (Promptfoo / RAGAS)               │
-│  ├── Security tests (Garak)                       │
-│  ├── Docker build + registry push                 │
-│  └── Canary deploy + auto-rollback               │
-│                                                   │
-│  MONITORING (Door 4)                              │
-│  ├── Langfuse / LangSmith (LLM tracing)          │
-│  ├── Prometheus + Grafana (infra)                │
-│  ├── Quality eval (daily production samples)      │
-│  ├── User feedback tracking                       │
-│  └── Drift detection                               │
-│                                                   │
-│  COST (Door 5)                                    │
-│  ├── Semantic caching (GPTCache / Redis)         │
-│  ├── Model routing (easy → mini, hard → pro)     │
-│  ├── Prompt compression (LLMLingua)              │
-│  ├── Batch API (৫০% discount)                     │
-│  └── Cost monitoring + anomaly alerts             │
-│                                                   │
-│  LATENCY (Door 6)                                 │
-│  ├── Streaming (SSE)                              │
-│  ├── Prefix caching (TTFT reduction)             │
-│  ├── Speculative decoding (২-৩x)                  │
-│  ├── Shorter prompts                               │
-│  └── Geographic proximity (multi-region)         │
-│                                                   │
-│  VERSIONING (Door 7)                              │
-│  ├── Git (code)                                   │
-│  ├── MLflow / HF Hub (models)                     │
-│  ├── DVC (datasets)                               │
-│  ├── Langfuse (prompts)                           │
-│  └── Full reproducibility                         │
-│                                                   │
-│  A/B TESTING (Door 8)                             │
-│  ├── Traffic split (hash-based)                   │
-│  ├── Shadow deployment (zero risk)                │
-│  ├── Multi-variant experiments                    │
-│  ├── Statistical significance tracking             │
-│  └── Bandit algorithms (dynamic allocation)      │
-│                                                   │
-│  INCIDENT (Door 9)                                │
-│  ├── Kill switch (one-click stop)                 │
-│  ├── Rollback (< ১ min)                            │
-│  ├── On-call rotation (২৪/৭)                      │
-│  ├── Post-mortem process                           │
-│  └── Status page + user comms                     │
-│                                                   │
-└──────────────────────────────────────────────────┘
+# ──────────────────────────────────────────────────# 
+#  COMPLETE LLMOps STACK                             # 
+# ──────────────────────────────────────────────────# 
+#                                                    # 
+#   SERVING (Door 1)                                # 
+#   # ── vLLM / TGI / SGLang                         # 
+#   # ── PagedAttention, continuous batching         # 
+#   # ── Prefix caching, tensor parallelism          # 
+#   # ── OpenAI-compatible API                        # 
+#                                                    # 
+#   DEPLOYMENT (Door 2)                              # 
+#   # ── Docker containers                            # 
+#   # ── Kubernetes (EKS/GKE)                        # 
+#   # ── Auto-scaling (HPA)                           # 
+#   # ── Load balancer + GPU scheduling               # 
+#   # ── Canary / blue-green / rolling               # 
+#                                                    # 
+#   CI/CD (Door 3)                                   # 
+#   # ── GitHub Actions / GitLab CI                  # 
+#   # ── Eval gate (Promptfoo / RAGAS)               # 
+#   # ── Security tests (Garak)                       # 
+#   # ── Docker build + registry push                 # 
+#   # ── Canary deploy + auto-rollback               # 
+#                                                    # 
+#   MONITORING (Door 4)                              # 
+#   # ── Langfuse / LangSmith (LLM tracing)          # 
+#   # ── Prometheus + Grafana (infra)                # 
+#   # ── Quality eval (daily production samples)      # 
+#   # ── User feedback tracking                       # 
+#   # ── Drift detection                               # 
+#                                                    # 
+#   COST (Door 5)                                    # 
+#   # ── Semantic caching (GPTCache / Redis)         # 
+#   # ── Model routing (easy → mini, hard → pro)     # 
+#   # ── Prompt compression (LLMLingua)              # 
+#   # ── Batch API (৫০% discount)                     # 
+#   # ── Cost monitoring + anomaly alerts             # 
+#                                                    # 
+#   LATENCY (Door 6)                                 # 
+#   # ── Streaming (SSE)                              # 
+#   # ── Prefix caching (TTFT reduction)             # 
+#   # ── Speculative decoding (২-৩x)                  # 
+#   # ── Shorter prompts                               # 
+#   # ── Geographic proximity (multi-region)         # 
+#                                                    # 
+#   VERSIONING (Door 7)                              # 
+#   # ── Git (code)                                   # 
+#   # ── MLflow / HF Hub (models)                     # 
+#   # ── DVC (datasets)                               # 
+#   # ── Langfuse (prompts)                           # 
+#   # ── Full reproducibility                         # 
+#                                                    # 
+#   A/B TESTING (Door 8)                             # 
+#   # ── Traffic split (hash-based)                   # 
+#   # ── Shadow deployment (zero risk)                # 
+#   # ── Multi-variant experiments                    # 
+#   # ── Statistical significance tracking             # 
+#   # ── Bandit algorithms (dynamic allocation)      # 
+#                                                    # 
+#   INCIDENT (Door 9)                                # 
+#   # ── Kill switch (one-click stop)                 # 
+#   # ── Rollback (< ১ min)                            # 
+#   # ── On-call rotation (২৪/৭)                      # 
+#   # ── Post-mortem process                           # 
+#   # ── Status page + user comms                     # 
+#                                                    # 
+# ──────────────────────────────────────────────────# 
 
 OPERATIONAL MATURITY MODEL:
 
@@ -909,20 +909,20 @@ OPERATIONAL MATURITY MODEL:
 
 TECH STACK RECOMMENDATION:
 
-  ┌─────────────┬──────────────────────────────┐
-  │ Component   │ Tool                         │
-  ├─────────────┼──────────────────────────────┤
-  │ Serving     │ vLLM                         │
-  │ Container   │ Docker                       │
-  │ Orchestrate │ Kubernetes (EKS/GKE)         │
-  │ CI/CD       │ GitHub Actions               │
-  │ Monitoring  │ Langfuse + Grafana           │
-  │ Eval        │ RAGAS + Promptfoo            │
-  │ Registry    │ MLflow / HF Hub              │
-  │ Cost        │ GPTCache + model routing     │
-  │ A/B         │ LangSmith / feature flags    │
-  │ Incident    │ PagerDuty + runbooks         │
-  └─────────────┴──────────────────────────────┘
+  # ─────────────# ──────────────────────────────# 
+  #  Component   #  Tool                         # 
+  # ─────────────# ──────────────────────────────# 
+  #  Serving     #  vLLM                         # 
+  #  Container   #  Docker                       # 
+  #  Orchestrate #  Kubernetes (EKS/GKE)         # 
+  #  CI/CD       #  GitHub Actions               # 
+  #  Monitoring  #  Langfuse + Grafana           # 
+  #  Eval        #  RAGAS + Promptfoo            # 
+  #  Registry    #  MLflow / HF Hub              # 
+  #  Cost        #  GPTCache + model routing     # 
+  #  A/B         #  LangSmith / feature flags    # 
+  #  Incident    #  PagerDuty + runbooks         # 
+  # ─────────────# ──────────────────────────────# 
 
 BUDGET (reference):
   Small (১K queries/day): ~$৫০০/month

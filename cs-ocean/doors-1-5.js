@@ -36,7 +36,7 @@ doors.push({
     ${['বা', 'ম', 'ঘ', 'র'].map((t,i)=>`<rect class="cell" x="${30+i*45}" y="${40}" width="38" height="30" rx="4"/><text class="lbl" x="${49+i*45}" y="${56}">${t}</text>`).join('')}
     ${[0,1,2,3].map(i=>`<line class="edge-cyan" x1="${68+i*45}" y1="${70}" x2="${120}" y2="${108}" marker-end="url(#arrowCyan1)"/>`).join('')}
     <rect class="cell-cyan" x="100" y="95" width="280" height="50" rx="8"/>
-    <text class="lbl-sm" x="240" y="114" fill="#3dd6c4">Attention × N layers</text>
+    <text class="lbl-sm" x="240" y="114" fill="#3dd6c4">Attention * N layers</text>
     <text class="lbl-sm" x="240" y="131" fill="#9290a8">প্রতিটা token অন্য সব token-কে দেখে</text>
     ${[0,1,2].map(i=>`<line class="edge-amber" x1="${240}" y1="${145}" x2="${120+i*120}" y2="${183}" marker-end="url(#arrowAmber1)"/>`).join('')}
     ${['ভালো','বৃষ্টি','আসছে'].map((t,i)=>`<rect class="cell-good" x="${95+i*120}" y="${178}" width="60" height="30" rx="4"/><text class="lbl" x="${125+i*120}" y="${194}">${t}</text>`).join('')}
@@ -135,7 +135,7 @@ doors.push({
     <text class="lbl-sm" x="230" y="22" fill="#7dd3fc">PATCH + EMBED</text>
     <text class="lbl-sm" x="430" y="22" fill="#7dd3fc">TASKS</text>
     ${[0,1,2].map(r=>[0,1,2,3,4].map(c=>`<rect class="cell" x="${35+c*16}" y="${45+r*16}" width="13" height="13" rx="2"/>`).join('')).join('')}
-    <text class="lbl-sm" x="75" y="120" fill="#5e5c74">224×224 pixel</text>
+    <text class="lbl-sm" x="75" y="120" fill="#5e5c74">224*224 pixel</text>
     ${[0,1,2].map(i=>`<line class="edge-cyan" x1="${135}" y1="${70+i*16}" x2="${195}" y2="${75}" marker-end="url(#arrowTeal2)"/>`).join('')}
     ${[0,1,2,3,4].map(i=>`<rect class="cell-cyan" x="${190+i*26}" y="${62}" width="20" height="26" rx="3"/><text class="lbl-sm" x="${200+i*26}" y="${100}" style="font-size:8px">p${i+1}</text>`).join('')}
     <text class="lbl-sm" x="240" y="120" fill="#5e5c74">ViT patches → tokens</text>

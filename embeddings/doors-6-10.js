@@ -28,16 +28,16 @@ doors.push({
 
 DIMENSION COMPARISON:
 
-  ┌──────────┬──────────┬────────────┬──────────┐
-  │ Dims     │ Quality  │ Storage/M  │ Search   │
-  │          │ (MTEB)   │ docs       │ Speed    │
-  ├──────────┼──────────┼────────────┼──────────┤
-  │ ৩৮৪      │ ~৬০%     │ ১.৫ GB     │ fastest  │
-  │ ৭৬৮      │ ~৬৩%     │ ৩ GB       │ fast     │
-  │ ১০২৪     │ ~৬৪%     │ ৪ GB       │ medium   │
-  │ ১৫৩৬     │ ~৬৫%     │ ৬ GB       │ slower   │
-  │ ৩০৭২     │ ~৬৫%     │ ১২ GB      │ slowest  │
-  └──────────┴──────────┴────────────┴──────────┘
+  # ──────────# ──────────# ────────────# ──────────# 
+  #  Dims     #  Quality  #  Storage/M  #  Search   # 
+  #           #  (MTEB)   #  docs       #  Speed    # 
+  # ──────────# ──────────# ────────────# ──────────# 
+  #  ৩৮৪      #  ~৬০%     #  ১.৫ GB     #  fastest  # 
+  #  ৭৬৮      #  ~৬৩%     #  ৩ GB       #  fast     # 
+  #  ১০২৪     #  ~৬৪%     #  ৪ GB       #  medium   # 
+  #  ১৫৩৬     #  ~৬৫%     #  ৬ GB       #  slower   # 
+  #  ৩০৭২     #  ~৬৫%     #  ১২ GB      #  slowest  # 
+  # ──────────# ──────────# ────────────# ──────────# 
 
   Key insight:
     ৭৬৮ → ৩০৭২: quality +২% but storage ৪x!
@@ -70,7 +70,7 @@ DIMENSIONALITY REDUCTION:
   → compress vectors for storage
   → split ৭৬৮ dim into ৬৪ sub-vectors of ১২ dim
   → each sub-vector → ১ byte codebook index
-  → ৭৬৮ × ৪ bytes = ৩০৭২ bytes → ৬৪ bytes!
+  → ৭৬৮ * ৪ bytes = ৩০৭২ bytes → ৬৪ bytes!
   → ৪৮x compression!
   → slight accuracy loss (~৩-৫%)
 
@@ -98,8 +98,8 @@ DIMENSIONALITY VISUALIZATION:
 WHY NOT JUST USE MAX DIMENSIONS?
 
   Storage cost:
-    ১M docs × ৩০৭২ dim × ৪ bytes = ১২ GB just embeddings
-    ১M docs × ৭৬৮ dim × ৪ bytes = ৩ GB (৪x less!)
+    ১M docs * ৩০৭২ dim * ৪ bytes = ১২ GB just embeddings
+    ১M docs * ৭৬৮ dim * ৪ bytes = ৩ GB (৪x less!)
   
   Search latency:
     ৩০৭২ dim cosine: ~২ms per query
@@ -288,7 +288,7 @@ COMMON PITFALLS:
   <line x1="250" y1="170" x2="343" y2="110" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrEMB7)"/>
   <text x="320" y="88" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="bold">এক ভেক্টর স্পেস</text>
   <line x1="325" y1="118" x2="343" y2="110" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="2,2"/>
-  <text x="330" y="135" fill="#4ade80" font-size="10">cos ≈ ০.৯২</text>
+  <text x="330" y="135" fill="#4ade80" font-size="10">cos ~= ০.৯২</text>
   <rect x="30" y="215" width="520" height="28" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
   <text x="290" y="232" text-anchor="middle" fill="#94a3b8" font-size="8">একই স্পেসে থাকলে — ছবি দিয়ে টেক্সট খোঁজো, টেক্সট দিয়ে ছবি খোঁজো। Cross-modal search!</text>
 </svg>
@@ -568,15 +568,15 @@ THE FUNDAMENTAL LIMIT:
   <line x1="40" y1="200" x2="450" y2="85" stroke="#475569" stroke-width="1" stroke-dasharray="2,3"/>
   <line x1="40" y1="200" x2="425" y2="72" stroke="#475569" stroke-width="1" stroke-dasharray="2,3"/>
   <circle cx="430" cy="75" r="5" fill="#ef4444"/>
-  <text x="438" y="70" fill="#fca5a5" font-size="8">"doctor" cos≈০.৮২</text>
+  <text x="438" y="70" fill="#fca5a5" font-size="8">"doctor" cos~=০.৮২</text>
   <circle cx="440" cy="80" r="5" fill="#fbbf24"/>
-  <text x="448" y="92" fill="#fcd34d" font-size="8">"pizza" cos≈০.৭৯</text>
+  <text x="448" y="92" fill="#fcd34d" font-size="8">"pizza" cos~=০.৭৯</text>
   <circle cx="420" cy="68" r="5" fill="#22d3ee"/>
-  <text x="345" y="58" fill="#7dd3fc" font-size="8">"river" cos≈০.৮১</text>
+  <text x="345" y="58" fill="#7dd3fc" font-size="8">"river" cos~=০.৮১</text>
   <circle cx="450" cy="85" r="5" fill="#a855f7"/>
-  <text x="458" y="104" fill="#c084fc" font-size="8">"code" cos≈০.৭৭</text>
+  <text x="458" y="104" fill="#c084fc" font-size="8">"code" cos~=০.৭৭</text>
   <circle cx="425" cy="72" r="5" fill="#22c55e"/>
-  <text x="338" y="74" fill="#4ade80" font-size="8">"music" cos≈০.৮০</text>
+  <text x="338" y="74" fill="#4ade80" font-size="8">"music" cos~=০.৮০</text>
   <path d="M 60 150 A 200 200 0 0 1 470 78" fill="none" stroke="#ef4444" stroke-width="1.5"/>
   <text x="180" y="145" fill="#fca5a5" font-size="8" font-weight="bold">সংকীর্ণ শঙ্কু</text>
   <rect x="30" y="218" width="520" height="24" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
@@ -613,75 +613,75 @@ doors.push({
 
 <div class="code-block">Complete Embedding Architecture:
 
-┌──────────────────────────────────────────────────┐
-│ COMPLETE EMBEDDING STACK                          │
-├──────────────────────────────────────────────────┤
-│                                                   │
-│  LAYER ১: MODEL SELECTION (Door ২)              │
-│  ├── Domain: general → BGE-large-en-v১.৫        │
-│  ├── Domain-specific → fine-tuned BGE            │
-│  ├── Multilingual → BGE-multilingual             │
-│  └── API → OpenAI text-embed-৩-large             │
-│                                                   │
-│  LAYER ২: ENCODING (Door ১)                     │
-│  ├── Asymmetric: query prefix vs doc prefix      │
-│  ├── Chunking: ২৫৬-৫১২ tokens per chunk          │
-│  └── Batch encoding for speed                    │
-│                                                   │
-│  LAYER ৩: DIMENSIONALITY (Door ৬)              │
-│  ├── Standard: ৭৬৮-১০২৪ dim                     │
-│  ├── Compressed: Matryoshka (২৫৬-৫১২)           │
-│  └── PQ for massive scale                        │
-│                                                   │
-│  LAYER ৪: STORAGE (vector DB)                   │
-│  ├── Qdrant: hybrid, fast, production             │
-│  ├── HNSW index for ANN                          │
-│  └── Metadata: source, page, date                │
-│                                                   │
-│  LAYER ৫: SEARCH (Door ৩)                       │
-│  ├── Dense: semantic vector search               │
-│  ├── Sparse: BM২৫ keyword                        │
-│  ├── RRF fusion: combine both                    │
-│  └── Cross-encoder reranking (Door ৩)           │
-│                                                   │
-│  LAYER ৬: APPLICATIONS (Door ৮)                │
-│  ├── Semantic search (RAG)                       │
-│  ├── Classification (zero-shot)                  │
-│  ├── Clustering (topic discovery)                │
-│  ├── Deduplication                               │
-│  └── Recommendation                              │
-│                                                   │
-│  LAYER ৭: EVALUATION (Door ৭)                  │
-│  ├── MTEB: general benchmark                     │
-│  ├── Domain eval set: ৫০+ pairs                  │
-│  ├── Recall@k, NDCG tracking                     │
-│  └── Continuous monitoring                        │
-│                                                   │
-│  LAYER ৮: OPTIMIZATION (Doors ৫,৬)            │
-│  ├── Fine-tuning: domain adaptation              │
-│  ├── Hard negative mining                        │
-│  └── Dimension compression                        │
-│                                                   │
-│  LAYER ৯: SAFETY (Door ৯)                       │
-│  ├── Bias testing (WEAT)                          │
-│  ├── Domain gap awareness                        │
-│  └── Temporal drift monitoring                   │
-│                                                   │
-└──────────────────────────────────────────────────┘
+# ──────────────────────────────────────────────────# 
+#  COMPLETE EMBEDDING STACK                          # 
+# ──────────────────────────────────────────────────# 
+#                                                    # 
+#   LAYER ১: MODEL SELECTION (Door ২)              # 
+#   # ── Domain: general → BGE-large-en-v১.৫        # 
+#   # ── Domain-specific → fine-tuned BGE            # 
+#   # ── Multilingual → BGE-multilingual             # 
+#   # ── API → OpenAI text-embed-৩-large             # 
+#                                                    # 
+#   LAYER ২: ENCODING (Door ১)                     # 
+#   # ── Asymmetric: query prefix vs doc prefix      # 
+#   # ── Chunking: ২৫৬-৫১২ tokens per chunk          # 
+#   # ── Batch encoding for speed                    # 
+#                                                    # 
+#   LAYER ৩: DIMENSIONALITY (Door ৬)              # 
+#   # ── Standard: ৭৬৮-১০২৪ dim                     # 
+#   # ── Compressed: Matryoshka (২৫৬-৫১২)           # 
+#   # ── PQ for massive scale                        # 
+#                                                    # 
+#   LAYER ৪: STORAGE (vector DB)                   # 
+#   # ── Qdrant: hybrid, fast, production             # 
+#   # ── HNSW index for ANN                          # 
+#   # ── Metadata: source, page, date                # 
+#                                                    # 
+#   LAYER ৫: SEARCH (Door ৩)                       # 
+#   # ── Dense: semantic vector search               # 
+#   # ── Sparse: BM২৫ keyword                        # 
+#   # ── RRF fusion: combine both                    # 
+#   # ── Cross-encoder reranking (Door ৩)           # 
+#                                                    # 
+#   LAYER ৬: APPLICATIONS (Door ৮)                # 
+#   # ── Semantic search (RAG)                       # 
+#   # ── Classification (zero-shot)                  # 
+#   # ── Clustering (topic discovery)                # 
+#   # ── Deduplication                               # 
+#   # ── Recommendation                              # 
+#                                                    # 
+#   LAYER ৭: EVALUATION (Door ৭)                  # 
+#   # ── MTEB: general benchmark                     # 
+#   # ── Domain eval set: ৫০+ pairs                  # 
+#   # ── Recall@k, NDCG tracking                     # 
+#   # ── Continuous monitoring                        # 
+#                                                    # 
+#   LAYER ৮: OPTIMIZATION (Doors ৫,৬)            # 
+#   # ── Fine-tuning: domain adaptation              # 
+#   # ── Hard negative mining                        # 
+#   # ── Dimension compression                        # 
+#                                                    # 
+#   LAYER ৯: SAFETY (Door ৯)                       # 
+#   # ── Bias testing (WEAT)                          # 
+#   # ── Domain gap awareness                        # 
+#   # ── Temporal drift monitoring                   # 
+#                                                    # 
+# ──────────────────────────────────────────────────# 
 
 TECH STACK:
 
-  ┌─────────────┬──────────────────────────────┐
-  │ Component   │ Tool                         │
-  ├─────────────┼──────────────────────────────┤
-  │ Embedding   │ BGE-large-en-v১.৫ (open)     │
-  │ Vector DB   │ Qdrant (hybrid)              │
-  │ Reranker    │ BGE-Reranker-v২             │
-  │ Framework   │ LlamaIndex / LangChain       │
-  │ Fine-tune   │ SentenceTransformers         │
-  │ Eval        │ MTEB + custom domain set     │
-  │ Viz         │ UMAP / t-SNE                 │
-  └─────────────┴──────────────────────────────┘
+  # ─────────────# ──────────────────────────────# 
+  #  Component   #  Tool                         # 
+  # ─────────────# ──────────────────────────────# 
+  #  Embedding   #  BGE-large-en-v১.৫ (open)     # 
+  #  Vector DB   #  Qdrant (hybrid)              # 
+  #  Reranker    #  BGE-Reranker-v২             # 
+  #  Framework   #  LlamaIndex / LangChain       # 
+  #  Fine-tune   #  SentenceTransformers         # 
+  #  Eval        #  MTEB + custom domain set     # 
+  #  Viz         #  UMAP / t-SNE                 # 
+  # ─────────────# ──────────────────────────────# 
 
 PERFORMANCE TARGETS:
   Recall@৫: > ৮৫%

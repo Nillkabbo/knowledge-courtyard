@@ -80,9 +80,9 @@ ARCHITECTURES:
   ❌ কোনো agent ব্যর্থ হলে সব থেমে যায়
 
 ২. PARALLEL (Fan-out/Fan-in)
-  Agent A ─┐
-  Agent B ─┤→ Synthesizer
-  Agent C ─┘
+  Agent A ─# 
+  Agent B ─# → Synthesizer
+  Agent C ─# 
   
   "Analyze from 3 perspectives" → combine
   
@@ -91,9 +91,9 @@ ARCHITECTURES:
 
 ৩. HIERARCHICAL (Manager-Worker)
   Manager Agent
-    ├── Worker A
-    ├── Worker B  
-    └── Worker C
+    # ── Worker A
+    # ── Worker B  
+    # ── Worker C
   
   "Build web app"
     → Manager: plan + assign
@@ -119,28 +119,28 @@ ARCHITECTURES:
 
 FRAMEWORKS (2024-2025):
 
-┌──────────────┬────────────────────────────┐
-│ Framework    │ Best For                   │
-├──────────────┼────────────────────────────┤
-│ CrewAI       │ Role-based teams           │
-│              │ CEO + Analyst + Writer     │
-│              │ সহজ, intuitive             │
-├──────────────┼────────────────────────────┤
-│ AutoGen      │ Conversational agents      │
-│ (Microsoft)  │ agent-to-agent dialogue    │
-│              │ code execution built-in    │
-├──────────────┼────────────────────────────┤
-│ LangGraph    │ State-based workflows      │
-│              │ সবচেয়ে flexible           │
-│              │ production-grade           │
-├──────────────┼────────────────────────────┤
-│ OpenAI       │ Built-in agents            │
-│ Swarm        │ Lightweight handoffs       │
-│              │ (experimental 2024)        │
-├──────────────┼────────────────────────────┤
-│ MetaGPT      │ Software dev team          │
-│              │ PM + Architect + Dev + QA  │
-└──────────────┴────────────────────────────┘
+# ──────────────# ────────────────────────────# 
+#  Framework    #  Best For                   # 
+# ──────────────# ────────────────────────────# 
+#  CrewAI       #  Role-based teams           # 
+#               #  CEO + Analyst + Writer     # 
+#               #  সহজ, intuitive             # 
+# ──────────────# ────────────────────────────# 
+#  AutoGen      #  Conversational agents      # 
+#  (Microsoft)  #  agent-to-agent dialogue    # 
+#               #  code execution built-in    # 
+# ──────────────# ────────────────────────────# 
+#  LangGraph    #  State-based workflows      # 
+#               #  সবচেয়ে flexible           # 
+#               #  production-grade           # 
+# ──────────────# ────────────────────────────# 
+#  OpenAI       #  Built-in agents            # 
+#  Swarm        #  Lightweight handoffs       # 
+#               #  (experimental 2024)        # 
+# ──────────────# ────────────────────────────# 
+#  MetaGPT      #  Software dev team          # 
+#               #  PM + Architect + Dev + QA  # 
+# ──────────────# ────────────────────────────# 
 
 CREWAI EXAMPLE:
   from crewai import Agent, Task, Crew
@@ -178,8 +178,8 @@ CREWAI EXAMPLE:
     inputs={"topic": "AI agents"})
 
 CHALLENGES:
-  • Cost: প্রতিটা agent = LLM কল × N steps
-    → ৩ agents × ৫ steps × $০.০৫ = $০.৭৫/task
+  • Cost: প্রতিটা agent = LLM কল * N steps
+    → ৩ agents * ৫ steps * $০.০৫ = $০.৭৫/task
   • Coordination: কে কী করবে?
     → স্পষ্ট role, task, dependency
   • Error cascade: এক agent ভুল → সব ভুল
@@ -325,18 +325,18 @@ IMPLEMENTATION (LangGraph):
 
 WHICH ACTIONS NEED APPROVAL?
 
-  ┌─────────────────┬──────────────────────┐
-  │ Action Type     │ Human Approval?      │
-  ├─────────────────┼──────────────────────┤
-  │ Read/Search     │ ❌ No (read-only)     │
-  │ Draft/Write     │ ❌ No (reversible)    │
-  │ Send Email/Msg  │ ✅ Yes (irreversible) │
-  │ File Delete     │ ✅ Yes (destructive)  │
-  │ Money Transfer  │ ✅ Yes (high-stakes)  │
-  │ Deploy Code     │ ✅ Yes (production)   │
-  │ Database Write  │ ✅ Yes (data change)  │
-  │ API Call (paid) │ ⚠️ Maybe (cost)       │
-  └─────────────────┴──────────────────────┘
+  # ─────────────────# ──────────────────────# 
+  #  Action Type     #  Human Approval?      # 
+  # ─────────────────# ──────────────────────# 
+  #  Read/Search     #  ❌ No (read-only)     # 
+  #  Draft/Write     #  ❌ No (reversible)    # 
+  #  Send Email/Msg  #  ✅ Yes (irreversible) # 
+  #  File Delete     #  ✅ Yes (destructive)  # 
+  #  Money Transfer  #  ✅ Yes (high-stakes)  # 
+  #  Deploy Code     #  ✅ Yes (production)   # 
+  #  Database Write  #  ✅ Yes (data change)  # 
+  #  API Call (paid) #  ⚠️ Maybe (cost)       # 
+  # ─────────────────# ──────────────────────# 
 
 UX PATTERNS:
 
@@ -399,104 +399,104 @@ doors.push({
 
 <div class="code-block">Agent Frameworks — 2024-2025 Landscape:
 
-┌──────────────────────────────────────────────┐
-│ LANGGRAPH (LangChain)                        │
-├──────────────────────────────────────────────┤
-│ Model: State machine (graph)                 │
-│ Agents = nodes, transitions = edges          │
-│                                              │
-│ ✅ Most flexible                             │
-│ ✅ Conditional logic, loops, branching       │
-│ ✅ Built-in human-in-the-loop                │
-│ ✅ Checkpointing (pause/resume)              │
-│ ✅ Streaming, parallel execution             │
-│ ❌ Steeper learning curve                    │
-│ ❌ More boilerplate code                     │
-│                                              │
-│ Best for: Production agents, complex flows   │
-│                                             │
-│ Code:                                        │
-│   from langgraph.prebuilt import              │
-│     create_react_agent                        │
-│   graph = create_react_agent(                │
-│     model, tools)                             │
-│   result = graph.invoke(                     │
-│     {"messages": [...]})                      │
-├──────────────────────────────────────────────┤
-│ CREWAI                                       │
-├──────────────────────────────────────────────┤
-│ Model: Role-based team                        │
-│ Agents have roles, goals, backstories         │
-│                                              │
-│ ✅ Most intuitive (role-playing)             │
-│ ✅ Sequential + hierarchical tasks           │
-│ ✅ Built-in delegation between agents        │
-│ ✅ Easy to understand & explain              │
-│ ❌ Less flexible than LangGraph              │
-│ ❌ Limited state management                  │
-│                                              │
-│ Best for: Team-based tasks (research+write)  │
-│                                             │
-│ Code:                                        │
-│   crew = Crew(                               │
-│     agents=[researcher, writer],              │
-│     tasks=[research, write])                  │
-│   result = crew.kickoff()                    │
-├──────────────────────────────────────────────┤
-│ AUTOGEN (Microsoft)                          │
-├──────────────────────────────────────────────┤
-│ Model: Conversational agents                 │
-│ Agents talk to each other in dialogue        │
-│                                              │
-│ ✅ Agent-to-agent conversation               │
-│ ✅ Code execution built-in                   │
-│ ✅ Group chat (multiple agents debate)       │
-│ ✅ Strong for code tasks                     │
-│ ❌ Conversation can drift                    │
-│ ❌ Cost unpredictable (many turns)           │
-│                                              │
-│ Best for: Code generation, debate, analysis  │
-├──────────────────────────────────────────────┤
-│ OPENAI AGENTS SDK (formerly Swarm)           │
-├──────────────────────────────────────────────┤
-│ Model: Lightweight handoffs                  │
-│ Agents hand off to other agents              │
-│                                              │
-│ ✅ Simplest API                              │
-│ ✅ Clean agent handoffs                      │
-│ ✅ OpenAI ecosystem                          │
-│ ✅ GA/stable (2025+)                         │
-│ ❌ OpenAI-locked (other providers limited)   │
-│                                              │
-│ Best for: Simple OpenAI-based agents         │
-├──────────────────────────────────────────────┤
-│ LLAMAINDEX AGENTS                            │
-├──────────────────────────────────────────────┤
-│ Model: Query engine + tools                  │
-│ Built on LlamaIndex RAG infrastructure       │
-│                                              │
-│ ✅ Best RAG-agent integration                │
-│ ✅ Strong for document-heavy agents          │
-│ ✅ Query routing built-in                    │
-│ ❌ Less flexible than LangGraph              │
-│                                              │
-│ Best for: RAG + agent hybrid systems         │
-└──────────────────────────────────────────────┘
+# ──────────────────────────────────────────────# 
+#  LANGGRAPH (LangChain)                        # 
+# ──────────────────────────────────────────────# 
+#  Model: State machine (graph)                 # 
+#  Agents = nodes, transitions = edges          # 
+#                                               # 
+#  ✅ Most flexible                             # 
+#  ✅ Conditional logic, loops, branching       # 
+#  ✅ Built-in human-in-the-loop                # 
+#  ✅ Checkpointing (pause/resume)              # 
+#  ✅ Streaming, parallel execution             # 
+#  ❌ Steeper learning curve                    # 
+#  ❌ More boilerplate code                     # 
+#                                               # 
+#  Best for: Production agents, complex flows   # 
+#                                              # 
+#  Code:                                        # 
+#    from langgraph.prebuilt import              # 
+#      create_react_agent                        # 
+#    graph = create_react_agent(                # 
+#      model, tools)                             # 
+#    result = graph.invoke(                     # 
+#      {"messages": [...]})                      # 
+# ──────────────────────────────────────────────# 
+#  CREWAI                                       # 
+# ──────────────────────────────────────────────# 
+#  Model: Role-based team                        # 
+#  Agents have roles, goals, backstories         # 
+#                                               # 
+#  ✅ Most intuitive (role-playing)             # 
+#  ✅ Sequential + hierarchical tasks           # 
+#  ✅ Built-in delegation between agents        # 
+#  ✅ Easy to understand & explain              # 
+#  ❌ Less flexible than LangGraph              # 
+#  ❌ Limited state management                  # 
+#                                               # 
+#  Best for: Team-based tasks (research+write)  # 
+#                                              # 
+#  Code:                                        # 
+#    crew = Crew(                               # 
+#      agents=[researcher, writer],              # 
+#      tasks=[research, write])                  # 
+#    result = crew.kickoff()                    # 
+# ──────────────────────────────────────────────# 
+#  AUTOGEN (Microsoft)                          # 
+# ──────────────────────────────────────────────# 
+#  Model: Conversational agents                 # 
+#  Agents talk to each other in dialogue        # 
+#                                               # 
+#  ✅ Agent-to-agent conversation               # 
+#  ✅ Code execution built-in                   # 
+#  ✅ Group chat (multiple agents debate)       # 
+#  ✅ Strong for code tasks                     # 
+#  ❌ Conversation can drift                    # 
+#  ❌ Cost unpredictable (many turns)           # 
+#                                               # 
+#  Best for: Code generation, debate, analysis  # 
+# ──────────────────────────────────────────────# 
+#  OPENAI AGENTS SDK (formerly Swarm)           # 
+# ──────────────────────────────────────────────# 
+#  Model: Lightweight handoffs                  # 
+#  Agents hand off to other agents              # 
+#                                               # 
+#  ✅ Simplest API                              # 
+#  ✅ Clean agent handoffs                      # 
+#  ✅ OpenAI ecosystem                          # 
+#  ✅ GA/stable (2025+)                         # 
+#  ❌ OpenAI-locked (other providers limited)   # 
+#                                               # 
+#  Best for: Simple OpenAI-based agents         # 
+# ──────────────────────────────────────────────# 
+#  LLAMAINDEX AGENTS                            # 
+# ──────────────────────────────────────────────# 
+#  Model: Query engine + tools                  # 
+#  Built on LlamaIndex RAG infrastructure       # 
+#                                               # 
+#  ✅ Best RAG-agent integration                # 
+#  ✅ Strong for document-heavy agents          # 
+#  ✅ Query routing built-in                    # 
+#  ❌ Less flexible than LangGraph              # 
+#                                               # 
+#  Best for: RAG + agent hybrid systems         # 
+# ──────────────────────────────────────────────# 
 
 DECISION MATRIX:
 
   তোমার কাজ কী?
-  ├── সহজ agent (১-৩ tools)?
-  │   → OpenAI Agents SDK বা LangGraph basic
-  ├── Team-based (research+write+review)?
-  │   → CrewAI
-  ├── Conversational/code?
-  │   → AutoGen
-  ├── Production, complex state?
-  │   → LangGraph
-  ├── RAG-heavy?
-  │   → LlamaIndex Agents
-  └── Custom everything?
+  # ── সহজ agent (১-৩ tools)?
+  #    → OpenAI Agents SDK বা LangGraph basic
+  # ── Team-based (research+write+review)?
+  #    → CrewAI
+  # ── Conversational/code?
+  #    → AutoGen
+  # ── Production, complex state?
+  #    → LangGraph
+  # ── RAG-heavy?
+  #    → LlamaIndex Agents
+  # ── Custom everything?
       → LangGraph (most control)
 
 BUILD VS FRAMEWORK:
@@ -709,32 +709,32 @@ TOP ৭ WAYS AGENTS FAIL:
 
 SAFETY LAYERS:
 
-  ┌─────────────────────────────────────┐
-  │ Layer ১: INPUT GUARDRAILS           │
-  │ → prompt injection check            │
-  │ → harmful intent detection          │
-  │ → rate limiting                     │
-  ├─────────────────────────────────────┤
-  │ Layer ২: ACTION GUARDRAILS          │
-  │ → tool whitelist                    │
-  │ → argument validation               │
-  │ → action type check (read/write)    │
-  ├─────────────────────────────────────┤
-  │ Layer ৩: EXECUTION GUARDRAILS       │
-  │ → sandboxed execution               │
-  │ → cost/time limits                  │
-  │ → max iterations                    │
-  ├─────────────────────────────────────┤
-  │ Layer ৪: OUTPUT GUARDRAILS          │
-  │ → result validation                 │
-  │ → hallucination check               │
-  │ → harmful content filter            │
-  ├─────────────────────────────────────┤
-  │ Layer ৫: HUMAN OVERSIGHT            │
-  │ → approval for critical actions     │
-  │ → monitoring dashboard              │
-  │ → kill switch                       │
-  └─────────────────────────────────────┘
+  # ─────────────────────────────────────# 
+  #  Layer ১: INPUT GUARDRAILS           # 
+  #  → prompt injection check            # 
+  #  → harmful intent detection          # 
+  #  → rate limiting                     # 
+  # ─────────────────────────────────────# 
+  #  Layer ২: ACTION GUARDRAILS          # 
+  #  → tool whitelist                    # 
+  #  → argument validation               # 
+  #  → action type check (read/write)    # 
+  # ─────────────────────────────────────# 
+  #  Layer ৩: EXECUTION GUARDRAILS       # 
+  #  → sandboxed execution               # 
+  #  → cost/time limits                  # 
+  #  → max iterations                    # 
+  # ─────────────────────────────────────# 
+  #  Layer ৪: OUTPUT GUARDRAILS          # 
+  #  → result validation                 # 
+  #  → hallucination check               # 
+  #  → harmful content filter            # 
+  # ─────────────────────────────────────# 
+  #  Layer ৫: HUMAN OVERSIGHT            # 
+  #  → approval for critical actions     # 
+  #  → monitoring dashboard              # 
+  #  → kill switch                       # 
+  # ─────────────────────────────────────# 
 
 PRODUCTION CHECKLIST:
   ☐ Max iterations set (১০-২০)
@@ -830,64 +830,64 @@ doors.push({
 USER GOAL: "Research RAG papers, write summary, 
            email to team"
 
-┌──────────────────────────────────────────────┐
-│ ১. INPUT PROCESSING                          │
-│ → Input guardrails: injection check          │
-│ → Rate limit: max ১/minute                   │
-│ → Cost budget: $২ max                        │
-└──────────────────┬───────────────────────────┘
+# ──────────────────────────────────────────────# 
+#  ১. INPUT PROCESSING                          # 
+#  → Input guardrails: injection check          # 
+#  → Rate limit: max ১/minute                   # 
+#  → Cost budget: $২ max                        # 
+# ──────────────────# ───────────────────────────# 
                    ↓
-┌──────────────────────────────────────────────┐
-│ ২. PLANNING (Door 4)                         │
-│ LLM creates plan:                            │
-│   1. Search RAG papers (arxiv)               │
-│   2. Read top ৩ papers                       │
-│   3. Extract key findings                    │
-│   4. Write summary                           │
-│   5. Email to team@company.com               │
-│ → User confirms plan? (optional)             │
-└──────────────────┬───────────────────────────┘
+# ──────────────────────────────────────────────# 
+#  ২. PLANNING (Door 4)                         # 
+#  LLM creates plan:                            # 
+#    1. Search RAG papers (arxiv)               # 
+#    2. Read top ৩ papers                       # 
+#    3. Extract key findings                    # 
+#    4. Write summary                           # 
+#    5. Email to team@company.com               # 
+#  → User confirms plan? (optional)             # 
+# ──────────────────# ───────────────────────────# 
                    ↓
-┌──────────────────────────────────────────────┐
-│ ৩. EXECUTION LOOP (Door 3: ReAct)            │
-│                                              │
-│ Step 1: search_arxiv("RAG 2024")             │
-│   → ৫ papers found                           │
-│   → Memory: store results                    │
-│                                              │
-│ Step 2: read_paper(paper_1)                  │
-│   → extract findings                         │
-│   → Memory: accumulate                       │
-│   → repeat for papers ২-৩                    │
-│                                              │
-│ Step 3: synthesize findings                  │
-│   → LLM writes summary                       │
-│   → Memory: store draft                      │
-│                                              │
-│ Step 4: ⚠️ IRREVERSIBLE ACTION               │
-│   → send_email()                             │
-│   → HUMAN APPROVAL REQUIRED (Door 7)         │
-│   → Pause → notify → wait for approval       │
-│   → Approved? → send                         │
-│   → Rejected? → revise draft                 │
-└──────────────────┬───────────────────────────┘
+# ──────────────────────────────────────────────# 
+#  ৩. EXECUTION LOOP (Door 3: ReAct)            # 
+#                                               # 
+#  Step 1: search_arxiv("RAG 2024")             # 
+#    → ৫ papers found                           # 
+#    → Memory: store results                    # 
+#                                               # 
+#  Step 2: read_paper(paper_1)                  # 
+#    → extract findings                         # 
+#    → Memory: accumulate                       # 
+#    → repeat for papers ২-৩                    # 
+#                                               # 
+#  Step 3: synthesize findings                  # 
+#    → LLM writes summary                       # 
+#    → Memory: store draft                      # 
+#                                               # 
+#  Step 4: ⚠️ IRREVERSIBLE ACTION               # 
+#    → send_email()                             # 
+#    → HUMAN APPROVAL REQUIRED (Door 7)         # 
+#    → Pause → notify → wait for approval       # 
+#    → Approved? → send                         # 
+#    → Rejected? → revise draft                 # 
+# ──────────────────# ───────────────────────────# 
                    ↓
-┌──────────────────────────────────────────────┐
-│ ৪. OUTPUT PROCESSING                         │
-│ → Output guardrails: harmful check           │
-│ → Result validation: email sent?             │
-│ → Log: full trace for debugging              │
-│ → Memory update: episodic (lessons learned)  │
-└──────────────────┬───────────────────────────┘
+# ──────────────────────────────────────────────# 
+#  ৪. OUTPUT PROCESSING                         # 
+#  → Output guardrails: harmful check           # 
+#  → Result validation: email sent?             # 
+#  → Log: full trace for debugging              # 
+#  → Memory update: episodic (lessons learned)  # 
+# ──────────────────# ───────────────────────────# 
                    ↓
-┌──────────────────────────────────────────────┐
-│ ৫. RESPONSE TO USER                          │
-│ "Done! Emailed summary of ৩ RAG papers       │
-│  to team@company.com. Key findings:          │
-│  ১. GraphRAG outperforms...                  │
-│  ২. Chunking strategy matters...             │
-│  ৩. Reranking adds ২০%..."                   │
-└──────────────────────────────────────────────┘
+# ──────────────────────────────────────────────# 
+#  ৫. RESPONSE TO USER                          # 
+#  "Done! Emailed summary of ৩ RAG papers       # 
+#   to team@company.com. Key findings:          # 
+#   ১. GraphRAG outperforms...                  # 
+#   ২. Chunking strategy matters...             # 
+#   ৩. Reranking adds ২০%..."                   # 
+# ──────────────────────────────────────────────# 
 
 TECH STACK:
   Framework: LangGraph

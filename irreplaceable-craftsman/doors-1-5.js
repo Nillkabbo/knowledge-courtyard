@@ -302,7 +302,7 @@ doors.push({
 
 <table class="kv-table"><tr><th>৩টা সংখ্যা</th><th>মানে</th></tr>
 <tr><td class="hl">CAC</td><td>একজন customer পেতে খরচ। CAC &gt; per-user revenue হলে business ব্যর্থ।</td></tr>
-<tr><td class="hl">LTV</td><td>একজন customer থেকে জীবদ্দশায় আয়। LTV &gt; ৩× CAC = সুস্থ business।</td></tr>
+<tr><td class="hl">LTV</td><td>একজন customer থেকে জীবদ্দশায় আয়। LTV &gt; ৩* CAC = সুস্থ business।</td></tr>
 <tr><td class="hl">MRR/ARR</td><td>মাসিক/বার্ষিক recurring revenue — কোম্পানির হৃদস্পন্দন।</td></tr></table>
 
 <table class="kv-table"><tr><th>টেকনিক্যাল সিদ্ধান্ত</th><th>ব্যবসায়িক প্রভাব</th></tr>

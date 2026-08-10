@@ -28,54 +28,54 @@ doors.push({
 
 <div class="code-block">Three Tools — Three Problems:
 
-┌──────────────────────────────────────────────┐
-│ PROBLEM TYPE 1: নতুন জ্ঞান (New Knowledge)  │
-│ "আমার কোম্পানির নীতিমালা কী?"               │
-│ "এই ডকুমেন্ট অনুযায়ী উত্তর দাও"              │
-│                                              │
-│ ✅ সমাধান: RAG                               │
-│ ❌ Fine-tuning কেন নয়: জ্ঞান বদলায়,         │
-│    মডেলের ওজন নয়। নতুন ডকুমেন্ট এলে আবার   │
-│    fine-tune? অপ্র্যাক্টিক্যাল।              │
-│ ❌ Prompting কেন নয়: context window পূর্ণ    │
-│    হবে বিশাল নীতিমালা দিলে।                  │
-├──────────────────────────────────────────────┤
-│ PROBLEM TYPE 2: নতুন শৈলী (New Style/Format)│
-│ "JSON আউটপুট দাও, সবসময়"                    │
-│ "শুধু বাংলায় উত্তর দাও"                      │
-│ "প্রতিটা উত্তরে citation দাও"                │
-│                                              │
-│ ✅ সমাধান: Prompting / System Prompt         │
-│ ✅ বা Few-Shot examples                       │
-│ ⚠️ Fine-tuning: কাজ করে কিন্তু ব্যয়বহুল      │
-│    যদি prompting-এ কাজ করে।                  │
-├──────────────────────────────────────────────┤
-│ PROBLEM TYPE 3: নতুন দক্ষতা (New Skill)     │
-│ "মডেল আমার ডোমেইনের প্রশ্নে ভুল করছে"        │
-│ "নির্দিষ্ট প্যাটার্নে উত্তর দিতে হবে"         │
-│ "ল্যাটেন্সি কমাতে হবে — ছোট মডেল বড়         │
-│  মডেলের মতো কাজ করুক"                       │
-│                                              │
-│ ✅ সমাধান: Fine-tuning                        │
-│ → মডেলের ওজন বদলায় → আচরণ বদলায়            │
-│ → নির্দিষ্ট ডোমেইনে বিশেষজ্ঞ                 │
-│ → ছোট মডেল বড় মডেলের কাছাকাছি               │
-└──────────────────────────────────────────────┘
+# ──────────────────────────────────────────────# 
+#  PROBLEM TYPE 1: নতুন জ্ঞান (New Knowledge)  # 
+#  "আমার কোম্পানির নীতিমালা কী?"               # 
+#  "এই ডকুমেন্ট অনুযায়ী উত্তর দাও"              # 
+#                                               # 
+#  ✅ সমাধান: RAG                               # 
+#  ❌ Fine-tuning কেন নয়: জ্ঞান বদলায়,         # 
+#     মডেলের ওজন নয়। নতুন ডকুমেন্ট এলে আবার   # 
+#     fine-tune? অপ্র্যাক্টিক্যাল।              # 
+#  ❌ Prompting কেন নয়: context window পূর্ণ    # 
+#     হবে বিশাল নীতিমালা দিলে।                  # 
+# ──────────────────────────────────────────────# 
+#  PROBLEM TYPE 2: নতুন শৈলী (New Style/Format)# 
+#  "JSON আউটপুট দাও, সবসময়"                    # 
+#  "শুধু বাংলায় উত্তর দাও"                      # 
+#  "প্রতিটা উত্তরে citation দাও"                # 
+#                                               # 
+#  ✅ সমাধান: Prompting / System Prompt         # 
+#  ✅ বা Few-Shot examples                       # 
+#  ⚠️ Fine-tuning: কাজ করে কিন্তু ব্যয়বহুল      # 
+#     যদি prompting-এ কাজ করে।                  # 
+# ──────────────────────────────────────────────# 
+#  PROBLEM TYPE 3: নতুন দক্ষতা (New Skill)     # 
+#  "মডেল আমার ডোমেইনের প্রশ্নে ভুল করছে"        # 
+#  "নির্দিষ্ট প্যাটার্নে উত্তর দিতে হবে"         # 
+#  "ল্যাটেন্সি কমাতে হবে — ছোট মডেল বড়         # 
+#   মডেলের মতো কাজ করুক"                       # 
+#                                               # 
+#  ✅ সমাধান: Fine-tuning                        # 
+#  → মডেলের ওজন বদলায় → আচরণ বদলায়            # 
+#  → নির্দিষ্ট ডোমেইনে বিশেষজ্ঞ                 # 
+#  → ছোট মডেল বড় মডেলের কাছাকাছি               # 
+# ──────────────────────────────────────────────# 
 
 DECISION TREE:
 
   নতুন তথ্য যোগ করতে চাও?
-  ├── YES → RAG (৯০% ক্ষেত্রে)
-  └── NO ↓
+  # ── YES → RAG (৯০% ক্ষেত্রে)
+  # ── NO ↓
   
   শুধু ফরম্যাট/শৈলী বদলাতে চাও?
-  ├── YES → Prompting / Few-Shot (৮০% ক্ষেত্রে)
-  └── NO ↓
+  # ── YES → Prompting / Few-Shot (৮০% ক্ষেত্রে)
+  # ── NO ↓
   
   মডেল নির্দিষ্ট ডোমেইনে দুর্বল?
-  ├── YES → Fine-tuning ✅
-  └── কি ছোট মডেল দিয়ে বড় মডেলের কাজ?
-       └── YES → Fine-tuning (distillation) ✅
+  # ── YES → Fine-tuning ✅
+  # ── কি ছোট মডেল দিয়ে বড় মডেলের কাজ?
+       # ── YES → Fine-tuning (distillation) ✅
 
 FINE-TUNING USE CASES (যখন সত্যিই দরকার):
 
@@ -84,7 +84,7 @@ FINE-TUNING USE CASES (যখন সত্যিই দরকার):
      → সাধারণ মডেল ডোমেইনে দুর্বল
   
   ✅ Latency/Cost:
-     ৭B fine-tuned ≈ ৭০B general
+     ৭B fine-tuned ~= ৭০B general
      → ছোট মডেল fine-tune করে বড় মডেলের 
        কাজ করানো — ১০x সস্তা
   
@@ -180,22 +180,22 @@ THE GOLDEN RULE:
 
 DATA FORMAT (SFT — Supervised Fine-Tuning):
 
-  ┌─────────────────────────────────────────┐
-  │ প্রতিটি example একটি conversation:       │
-  │                                         │
-  │ {                                       │
-  │   "messages": [                         │
-  │     {"role": "system",                  │
-  │      "content": "You are a medical      │
-  │       assistant..."},                   │
-  │     {"role": "user",                    │
-  │      "content": "What is diabetes?"},   │
-  │     {"role": "assistant",               │
-  │      "content": "Diabetes is a chronic  │
-  │       condition..."}                    │
-  │   ]                                     │
-  │ }                                       │
-  └─────────────────────────────────────────┘
+  # ─────────────────────────────────────────# 
+  #  প্রতিটি example একটি conversation:       # 
+  #                                          # 
+  #  {                                       # 
+  #    "messages": [                         # 
+  #      {"role": "system",                  # 
+  #       "content": "You are a medical      # 
+  #        assistant..."},                   # 
+  #      {"role": "user",                    # 
+  #       "content": "What is diabetes?"},   # 
+  #      {"role": "assistant",               # 
+  #       "content": "Diabetes is a chronic  # 
+  #        condition..."}                    # 
+  #    ]                                     # 
+  #  }                                       # 
+  # ─────────────────────────────────────────# 
 
   OpenAI: JSONL format (JSON Lines)
   HuggingFace: conversational dataset format
@@ -246,14 +246,14 @@ DATASET QUALITY CHECKLIST:
   ☐ Train/test split আছে? (৯০/১০)
 
 DATASET SIZE GUIDELINE:
-  ┌──────────────────┬────────────────────┐
-  │ Task Complexity  │ Minimum Examples   │
-  ├──────────────────┼────────────────────┤
-  │ Simple format    │ ১০০-৫০০            │
-  │ Domain adapt     │ ৫০০-৫,০০০          │
-  │ Complex reasoning│ ৫,০০০-৫০,০০০      │
-  │ Full behavior    │ ৫০,০০০+            │
-  └──────────────────┴────────────────────┘</div>
+  # ──────────────────# ────────────────────# 
+  #  Task Complexity  #  Minimum Examples   # 
+  # ──────────────────# ────────────────────# 
+  #  Simple format    #  ১০০-৫০০            # 
+  #  Domain adapt     #  ৫০০-৫,০০০          # 
+  #  Complex reasoning#  ৫,০০০-৫০,০০০      # 
+  #  Full behavior    #  ৫০,০০০+            # 
+  # ──────────────────# ────────────────────# </div>
 
 <div class="dialogue">তাযকিয়া — purification, refinement। কুরআনে আল্লাহ বলেন — "সফল সেই ব্যক্তি যে নিজেকে পরিশুদ্ধ করে।" (৯১:৯)। Fine-tuning-এর ডেটাও পরিশুদ্ধ হতে হয়। প্রতিটি example যাচাই, প্রতিটি response নিখুঁত। অশুদ্ধ ডেটা = অশুদ্ধ মডেল। শুদ্ধ ডেটা = শুদ্ধ মডেল। তাযকিয়া ছাড়া fine-tuning = বিপদ।</div>
 <div class="dialogue en">"Tazkiyah — purification, refinement. Allah says — 'Successful is the one who purifies themselves.' (91:9). Fine-tuning data must be purified too. Every example verified, every response perfect. Impure data = impure model. Pure data = pure model. Without tazkiyah, fine-tuning = danger."</div>
@@ -356,27 +356,27 @@ LoRA SOLUTION (Hu et al., 2021):
   low-rank matrix-এ প্রকাশ করা যায়।
 
   Original: W (full weight matrix)
-  LoRA: W + ΔW where ΔW = A × B
-    A: (d × r) — small matrix
-    B: (r × d) — small matrix  
+  LoRA: W + ΔW where ΔW = A * B
+    A: (d * r) — small matrix
+    B: (r * d) — small matrix  
     r = rank (সাধারণত ৮-৬৪)
 
-  ┌─────────────────────────────────┐
-  │ Full W: ৪০৯৬ × ৪০৯৬            │
-  │ = ১৬,৭৭৭,২১৬ parameters        │
-  │                                 │
-  │ LoRA A×B (r=৮):                 │
-  │ A: ৪০৯৬ × ৮ = ৩২,৭৬৮           │
-  │ B: ৮ × ৪০৯৬ = ৩২,৭৬৮           │
-  │ Total: ৬৫,৫৩৬ parameters       │
-  │                                 │
-  │ Reduction: ৯৯.৬%!              │
-  └─────────────────────────────────┘
+  # ─────────────────────────────────# 
+  #  Full W: ৪০৯৬ * ৪০৯৬            # 
+  #  = ১৬,৭৭৭,২১৬ parameters        # 
+  #                                  # 
+  #  LoRA A*B (r=৮):                 # 
+  #  A: ৪০৯৬ * ৮ = ৩২,৭৬৮           # 
+  #  B: ৮ * ৪০৯৬ = ৩২,৭৬৮           # 
+  #  Total: ৬৫,৫৩৬ parameters       # 
+  #                                  # 
+  #  Reduction: ৯৯.৬%!              # 
+  # ─────────────────────────────────# 
 
 LoRA TRAINING:
   • Freeze original weights W
   • Train only A and B (tiny!)
-  • At inference: W_effective = W + A×B
+  • At inference: W_effective = W + A*B
   
   → Original model unchanged
   → LoRA adapter = few MB (not GB!)
@@ -390,7 +390,7 @@ LoRA HYPERPARAMETERS:
     → বড় = বেশি প্যারামিটার, বেশি নমনীয়তা
     → start with ১৬, adjust
   
-  alpha: সাধারণত ২×rank
+  alpha: সাধারণত ২*rank
     → scaling factor for the adapter
   
   target_modules: কোন layers-এ LoRA?
@@ -401,19 +401,19 @@ LoRA HYPERPARAMETERS:
     → regularization
 
 MEMORY COMPARISON:
-  ┌─────────────────┬──────────┬───────────┐
-  │ Method          │ GPU RAM  │ Disk Size │
-  ├─────────────────┼──────────┼───────────┤
-  │ Full FT (৭B)    │ ~৭০ GB   │ ১৪ GB     │
-  │ LoRA (৭B, r=১৬) │ ~১০ GB   │ ২০ MB!    │
-  │ QLoRA (৭B)      │ ~৬ GB    │ ২০ MB     │
-  └─────────────────┴──────────┴───────────┘
+  # ─────────────────# ──────────# ───────────# 
+  #  Method          #  GPU RAM  #  Disk Size # 
+  # ─────────────────# ──────────# ───────────# 
+  #  Full FT (৭B)    #  ~৭০ GB   #  ১৪ GB     # 
+  #  LoRA (৭B, r=১৬) #  ~১০ GB   #  ২০ MB!    # 
+  #  QLoRA (৭B)      #  ~৬ GB    #  ২০ MB     # 
+  # ─────────────────# ──────────# ───────────# 
 
   → LoRA = single consumer GPU (RTX ৪০৯০)
   → QLoRA = even smaller GPU possible
 
 LoRA QUALITY:
-  LoRA ≈ ৯৫-৯৯% of full fine-tuning quality
+  LoRA ~= ৯৫-৯৯% of full fine-tuning quality
   → বেশিরভাগ কাজে পার্থক্য নগণ্য
   → খুব সূক্ষ্ম domain adaptation-এ পার্থক্য
     হতে পারে
@@ -543,23 +543,23 @@ QUANTIZATION BASICS:
 
 QLoRA PIPELINE (Dettmers et al., 2023):
 
-  ┌─────────────────────────────────────────┐
-  │ Step 1: Load base model in 4-bit (nf4)  │
-  │   ৭B model → ৩.৫ GB                     │
-  │   → frozen, not trained                 │
-  ├─────────────────────────────────────────┤
-  │ Step 2: Add LoRA adapters in 16-bit     │
-  │   small A×B matrices                    │
-  │   → trainable                           │
-  ├─────────────────────────────────────────┤
-  │ Step 3: Forward pass                    │
-  │   4-bit weights → dequantize → compute  │
-  │   gradients flow to LoRA only           │
-  ├─────────────────────────────────────────┤
-  │ Step 4: Backward pass                   │
-  │   Only LoRA A×B updated                 │
-  │   Base stays 4-bit frozen               │
-  └─────────────────────────────────────────┘
+  # ─────────────────────────────────────────# 
+  #  Step 1: Load base model in 4-bit (nf4)  # 
+  #    ৭B model → ৩.৫ GB                     # 
+  #    → frozen, not trained                 # 
+  # ─────────────────────────────────────────# 
+  #  Step 2: Add LoRA adapters in 16-bit     # 
+  #    small A*B matrices                    # 
+  #    → trainable                           # 
+  # ─────────────────────────────────────────# 
+  #  Step 3: Forward pass                    # 
+  #    4-bit weights → dequantize → compute  # 
+  #    gradients flow to LoRA only           # 
+  # ─────────────────────────────────────────# 
+  #  Step 4: Backward pass                   # 
+  #    Only LoRA A*B updated                 # 
+  #    Base stays 4-bit frozen               # 
+  # ─────────────────────────────────────────# 
 
 NF4 (NormalFloat 4-bit):
   → Standard quantization (uniform) সব 
@@ -581,18 +581,18 @@ PAGED OPTIMIZERS:
   → OOM (Out of Memory) error এড়ায়
 
 QLoRA vs LoRA vs Full:
-  ┌──────────┬──────────┬──────────┬──────────┐
-  │ Metric   │ Full FT  │ LoRA     │ QLoRA    │
-  ├──────────┼──────────┼──────────┼──────────┤
-  │ ৭B GPU   │ ~৭০ GB   │ ~১০ GB   │ ~৬ GB    │
-  │ ৭B Disk  │ ১৪ GB    │ ২০ MB    │ ২০ MB    │
-  │ Quality  │ ১০০%     │ ৯৫-৯৯%   │ ৯৩-৯৮%  │
-  │ Speed    │ ধীর      │ দ্রুত    │ মাঝারি   │
-  │ GPU      │ A100×৪   │ RTX ৪০৯০ │ RTX ৩০৯০│
-  └──────────┴──────────┴──────────┴──────────┘
+  # ──────────# ──────────# ──────────# ──────────# 
+  #  Metric   #  Full FT  #  LoRA     #  QLoRA    # 
+  # ──────────# ──────────# ──────────# ──────────# 
+  #  ৭B GPU   #  ~৭০ GB   #  ~১০ GB   #  ~৬ GB    # 
+  #  ৭B Disk  #  ১৪ GB    #  ২০ MB    #  ২০ MB    # 
+  #  Quality  #  ১০০%     #  ৯৫-৯৯%   #  ৯৩-৯৮%  # 
+  #  Speed    #  ধীর      #  দ্রুত    #  মাঝারি   # 
+  #  GPU      #  A100*৪   #  RTX ৪০৯০ #  RTX ৩০৯০# 
+  # ──────────# ──────────# ──────────# ──────────# 
 
 QUALITY IMPACT:
-  QLoRA ≈ ৯৩-৯৮% of full fine-tuning
+  QLoRA ~= ৯৩-৯৮% of full fine-tuning
   → বেশিরভাগ কাজে পার্থক্য নগণ্য
   → খুব সূক্ষ্ম domain-এ সামান্য পার্থক্য
 
@@ -819,16 +819,16 @@ RECOMMENDED PROGRESSION:
   → বড় প্রোজেক্টে। 2025+: GRPO PPO-এর চেয়ে preferred
 
 COMPARISON:
-  ┌────────┬────────┬────────┬────────┬────────┐
-  │        │ SFT    │ DPO    │ PPO    │ GRPO   │
-  ├────────┼────────┼────────┼────────┼────────┤
-  │ সহজতা  │ ★★★★★ │ ★★★★  │ ★★    │ ★★★   │
-  │ ডেটা   │ input  │ chosen │ reward │ reward │
-  │        │ output │ reject │ model  │ + group│
-  │ খরচ   │ $      │ $$     │ $$$$   │ $$$    │
-  │ স্থিতি │ stable │ stable │ tricky │ stable │
-  │ ফল    │ ভালো   │ উন্নত  │ সেরা   │ সেরা   │
-  └────────┴────────┴────────┴────────┴────────┘
+  # ────────# ────────# ────────# ────────# ────────# 
+  #         #  SFT    #  DPO    #  PPO    #  GRPO   # 
+  # ────────# ────────# ────────# ────────# ────────# 
+  #  সহজতা  #  ★★★★★ #  ★★★★  #  ★★    #  ★★★   # 
+  #  ডেটা   #  input  #  chosen #  reward #  reward # 
+  #         #  output #  reject #  model  #  + group# 
+  #  খরচ   #  $      #  $$     #  $$$$   #  $$$    # 
+  #  স্থিতি #  stable #  stable #  tricky #  stable # 
+  #  ফল    #  ভালো   #  উন্নত  #  সেরা   #  সেরা   # 
+  # ────────# ────────# ────────# ────────# ────────# 
 
 <div class="dialogue">তরবিয়ত — systematic education, training method। কুরআনে আল্লাহ বলেন — "পবিত্র করো তাদের, শিক্ষা দাও তাদের কিতাব ও প্রজ্ঞা।" (৬২:২)। শিক্ষার পদ্ধতি আলাদা — কেউ নকল করে শেখে, কেউ তুলনায়, কেউ পুরস্কারে। Fine-tuning-এও তেমনি — কাজ অনুযায়ী পদ্ধতি বেছে নাও। সঠিক পদ্ধতি = সঠিক ফল।</div>
 <div class="dialogue en">"Tarbiyat — systematic education, training method. Allah says — 'Purify them, teach them the Book and wisdom.' (62:2). Education methods differ — some learn by imitation, some by comparison, some by reward. In fine-tuning too — choose method per task. Right method = right result."</div>

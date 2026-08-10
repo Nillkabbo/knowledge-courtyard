@@ -39,7 +39,7 @@ ECONOMICS — প্রতি টোকেন খরচ:
   Output: $৩-৩০ / million tokens
   
   Context full হলে:
-  128K input tokens × $৫/M = $০.৬৪ per call
+  128K input tokens * $৫/M = $০.৬৪ per call
   → হাজার call = $৬৪০
   → লাখ call = $৬৪,০০০
 
@@ -56,16 +56,16 @@ THE ATTENTION DILUTION PROBLEM:
     তথ্য হারিয়ে যায়
 
 EMPIRICAL FINDING (Liu et al., 2023):
-  ┌──────────────────────────────────┐
-  │ Position in Context              │
-  │                                  │
-  │ শুরু  ████████████████  ৯০% সঠিক │
-  │ মাঝে  ████░░░░░░░░░░██  ৫০% সঠিক │  
-  │ শেষ  ████████████████  ৮৫% সঠিক │
-  │                                  │
-  │ → U-shaped performance curve     │
-  │ → মাঝখানের তথ্য হারায়!           │
-  └──────────────────────────────────┘
+  # ──────────────────────────────────# 
+  #  Position in Context              # 
+  #                                   # 
+  #  শুরু  ████████████████  ৯০% সঠিক # 
+  #  মাঝে  ████░░░░░░░░░░██  ৫০% সঠিক #   
+  #  শেষ  ████████████████  ৮৫% সঠিক # 
+  #                                   # 
+  #  → U-shaped performance curve     # 
+  #  → মাঝখানের তথ্য হারায়!           # 
+  # ──────────────────────────────────# 
 
 CONTEXT BUDGET FORMULA:
   Total Window = System Prompt + Few-Shot 
@@ -140,16 +140,16 @@ RESEARCH: Liu et al. (2023) "Lost in the Middle"
 
 RESULT (U-shaped curve):
 
-  Position     │ Accuracy
-  ─────────────┼──────────
-  ১ম (শুরু)    │ ৭২%
-  ২য়          │ ৬৮%  
-  ৩য়          │ ৬২%
-  ...          │ ...
-  মাঝখানে      │ ৪৮% ← সবচেয়ে খারাপ!
-  ...          │ ...
-  ৩য় শেষ      │ ৬৫%
-  শেষ          │ ৭৩%
+  Position     #  Accuracy
+  ─────────────# ──────────
+  ১ম (শুরু)    #  ৭২%
+  ২য়          #  ৬৮%  
+  ৩য়          #  ৬২%
+  ...          #  ...
+  মাঝখানে      #  ৪৮% ← সবচেয়ে খারাপ!
+  ...          #  ...
+  ৩য় শেষ      #  ৬৫%
+  শেষ          #  ৭৩%
 
   → ২৫% accuracy drop শুরু থেকে মাঝখানে!
   → Position পরিবর্তন = ফল পরিবর্তন
@@ -171,22 +171,22 @@ WHY IT HAPPENS:
 
 POSITIONING STRATEGY:
 
-  ┌─────────────────────────────────────┐
-  │ TOP (primacy zone)                  │
-  │ → System prompt                     │
-  │ → Most important instructions       │
-  │ → Critical constraints              │
-  ├─────────────────────────────────────┤
-  │ MIDDLE (danger zone)                │
-  │ → Less critical context             │
-  │ → Background info                   │
-  │ → Supporting docs (lower priority)  │
-  ├─────────────────────────────────────┤
-  │ BOTTOM (recency zone)               │
-  │ → User's actual question            │
-  │ → Key retrieved documents           │
-  │ → Final instruction/reminder        │
-  └─────────────────────────────────────┘
+  # ─────────────────────────────────────# 
+  #  TOP (primacy zone)                  # 
+  #  → System prompt                     # 
+  #  → Most important instructions       # 
+  #  → Critical constraints              # 
+  # ─────────────────────────────────────# 
+  #  MIDDLE (danger zone)                # 
+  #  → Less critical context             # 
+  #  → Background info                   # 
+  #  → Supporting docs (lower priority)  # 
+  # ─────────────────────────────────────# 
+  #  BOTTOM (recency zone)               # 
+  #  → User's actual question            # 
+  #  → Key retrieved documents           # 
+  #  → Final instruction/reminder        # 
+  # ─────────────────────────────────────# 
 
 PRACTICAL EXAMPLE:
 

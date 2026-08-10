@@ -22,10 +22,10 @@ doors.push({
 
 
 <div class="code-block">SAFE DRIVING TECHNIQUES — COMPLETE
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 🧠 DEFENSIVE DRIVING — SEE SYSTEM
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   প্রতি মুহূর্তে তিনটা কাজ:
   1️⃣ SEARCH — চোখ ঘোরাও: সামনে ২০-৩০ সেকেন্ড
@@ -39,9 +39,9 @@ doors.push({
   💡 Defensive driver = যে ধরে নেয় অন্যরা ভুল
      করবে, এবং তার জন্য প্রস্তুত থাকে
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🛡️ SPACE CUSHION — গাড়ির চারপাশে ৬টা zone
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   তোমার গাড়ির চারদিকে ৬টা জায়গা:
   সামনে | পেছনে | বাম-সামনে | ডান-সামনে |
@@ -58,9 +58,9 @@ doors.push({
   💡 জায়গা = সময়। সময় = সিদ্ধান্তের সুযোগ।
      Space cushion-ই defensive driving-এর মুদ্রা।
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 📏 FOLLOWING DISTANCE (3-SECOND RULE)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   Dry, clear, daylight: ৩ সেকেন্ড
   Rain/wet road: ৪ সেকেন্ড
@@ -76,9 +76,9 @@ doors.push({
   ৩. তুমি সেই point পার হওয়ার আগে গোনা শেষ হলে 
      = নিরাপদ দূরত্ব
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 👁️ BLIND SPOTS (অন্ধ এলাকা)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   Mirror-এ যা দেখা যায় না = blind spot
   → সব গাড়ির পাশে blind spot আছে
@@ -93,9 +93,9 @@ doors.push({
   → Side mirror বাইরের দিকে ঘুরাও
   → Blind spot কমে
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🛣️ PASSING (অতিক্রম করা)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   পাস করার আগে:
   ১. সামনের রাস্তা পরিষ্কার — অন্য গাড়ি নেই
@@ -121,9 +121,9 @@ doors.push({
   ✦ একাধিক লেনের রাস্তায় যেখানে ডান লেনে চলা বৈধ
   ❌ Shoulder-এ নেমে পাস করা সবসময় নিষেধ
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🔀 MERGING (হাইওয়েতে যুক্ত হওয়া)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ১. On-ramp-এ accelerate করো (highway speed-এ)
   ২. Mirror + shoulder check
@@ -134,9 +134,9 @@ doors.push({
 
   ⚠️ হাইওয়েতে ধীরে ঢুকো না — বিপজ্জনক!
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🌙 NIGHT DRIVING
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Headlight on (sunset থেকে sunrise)
   ✦ High beam (dark road, no oncoming)
@@ -145,9 +145,9 @@ doors.push({
   ✦ Speed কমাও — night visibility কম
   ✦ ৪+ second following distance
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 💡 HEADLIGHT + WIPER LAW (Michigan)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Michigan LAW: wipers ON = headlights ON
     → বৃষ্টি, তুষার, কুয়াশা — wipers চালু থাকলে 
@@ -158,9 +158,9 @@ doors.push({
   ✦ Visibility 500 ft এর কম হলে headlights ON
   ✦ Sunset to sunrise: headlights mandatory
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 💧 STEERING & BRAKING TECHNIQUES
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ 9-and-3 hand position (steering wheel)
   ✦ Push-pull steering (smooth)
@@ -406,10 +406,10 @@ doors.push({
 
 
 <div class="code-block">SHARING THE ROAD — COMPLETE GUIDE
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 🚶 PEDESTRIANS (পথচারী)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ পেডেস্ট্রিয়ান সবসময় অগ্রাধিকার
   ✦ ক্রসওয়াকে কেউ থাকলে থামো
@@ -418,9 +418,9 @@ doors.push({
   ✦ টার্ন নেওয়ার সময় পেডেস্ট্রিয়ান দেখো
   ✦ Jaywalker-ও থামলে থামো
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚴 BICYCLISTS (সাইকেল চালক)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Cyclist একই road user — একই অধিকার
   ✦ কমপক্ষে ৩ ফুট (3 feet) দূরত্ব রাখো
@@ -436,7 +436,7 @@ doors.push({
 </div>
 
 <div class="code-block">🚴 BICYCLE HAND SIGNALS (cyclist ও examiner দেখে)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ LEFT TURN: বাম হাত সোজা বাম দিকে
   ✦ RIGHT TURN: বাম হাত উপরে (L আকার)
@@ -446,9 +446,9 @@ doors.push({
   💡 তুমি cyclist হলে — এই signal দাও
   💡 তুমি driver হলে — cyclist এর signal চিনো</div>
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🏍️ MOTORCYCLISTS
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Motorcycle ছোট কিন্তু একই অধিকার
   ✦ Motorcycle blind spot-এ সহজে লুকায়
@@ -457,9 +457,9 @@ doors.push({
   ✦ বৃষ্টিতে/বরফে motorcycle আরও বেশি vulnerable
   ✦ Headlight on motorcycle-এ সবসময়
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚛 LARGE TRUCKS / BUSES
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ⚠️ NO ZONE (Truck Blind Spot):
   ❌ ট্রাকের ঠিক পেছনে (বড় blind spot)
@@ -473,26 +473,26 @@ doors.push({
   ✦ Truck ব্রেক distance বেশি — cut করো না
   ✦ Truck right turn-এ ডানে সরে যেতে পারে
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚑 EMERGENCY VEHICLES
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Siren/light দেখলে — ডানে সরে যাও
   ✦ সম্পূর্ণ থামো
   ✦ Intersection পার হও, তারপর ডানে সরে যাও
   ✦ জরুরি গাড়ি পার হলে আবার চলতে পারো
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚜 SLOW-MOVING VEHICLES (Tractor etc.)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Orange triangle emblem = slow vehicle
   ✦ Patience রাখো
   ✦ নিরাপদে পাস করো
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🐴 HORSE-DRAWN BUGGY (Amish অঞ্চলে)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   Michigan-এর গ্রামীণ এলাকায় (বিশেষত central/
   west) Amish buggy রাস্তায় স্বাভাবিক দৃশ্য:
@@ -503,18 +503,18 @@ doors.push({
   ✦ Buggy-র পেছনে পাহাড়/বাঁকে আটকে গেলে
     ধৈর্য — এক মিনিটের দেরি মাত্র
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🛵 MOPED / SCOOTER
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ ধীর কিন্তু রাস্তার বৈধ ব্যবহারকারী
   ✦ ডান কিনারা ধরে চলে — পাস করার সময়
     পুরো লেন বদলাও, গা ঘেঁষে নয়
   ✦ হঠাৎ দুলতে পারে (গর্ত/বাতাস) — জায়গা দাও
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚸 SCHOOL CROSSING GUARD
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ হাতে STOP paddle — এটাই আইন
   ✦ Guard রাস্তায় থাকা পর্যন্ত থেমে থাকো —
@@ -526,7 +526,7 @@ doors.push({
 </div>
 
 <div class="code-block">🚂 RAILROAD CROSSINGS (রেল ক্রসিং)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   Round yellow sign (X shape with RR) = রেল ক্রসিং আসছে
 
@@ -542,9 +542,9 @@ doors.push({
 
   ⚠️ গেট নেই এমন ক্রসিং — বিশেষ সতর্ক
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚨 MOVE OVER LAW (Michigan)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Stopped emergency vehicle (police/fire/ambulance) 
     দেখলে:
@@ -756,10 +756,10 @@ doors.push({
 
 
 <div class="code-block">HAZARDS & EMERGENCIES — COMPLETE
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 ❄️ WINTER DRIVING (Michigan-এ সবচেয়ে গুরুত্বপূর্ণ)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Speed limit এর অনেক কম চালাও
   ✦ 6+ second following distance
@@ -770,7 +770,7 @@ doors.push({
   ✦ Snow tire / chain ব্যবহার করো
 
 😴 FATIGUE / DROWSY DRIVING (ক্লান্তি নিয়ে চালানো)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   লক্ষণ: ঘন ঘন হাই তোলা, চোখ ভারী লাগা, লেন থেকে
   drift করা, শেষ কয়েক মাইল মনে না থাকা
@@ -784,7 +784,7 @@ doors.push({
     দাও
 
 🚗 SKIDDING (পিছলে যাওয়া)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ❓ তোমার গাড়িতে ABS আছে?
 
@@ -842,7 +842,7 @@ doors.push({
 </div>
 
 <div class="code-block">💧 HYDROPLANING (জলে ভাসা)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ১. Gas ছেড়ে দাও (slowly)
   ২. ❌ Brake না
@@ -851,14 +851,14 @@ doors.push({
   ৫. Prevent: good tire, slow speed, 4+ sec
 
 🚗 BRAKE FAILURE
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ১. Parking brake ধীরে টানো
   ২. গিয়ার নিচে নামাও (downshift)
   ৩. নিরাপদ জায়গায় থামানোর চেষ্টা
 
 🔥 TIRE BLOWOUT
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ১. Gas ধরে রাখো (মুহূর্তে)
   ২. ধীরে ধীরে গ্যাস ছাড়ো
@@ -866,7 +866,7 @@ doors.push({
   ৪. নিরাপদে থামাও
 
 🛞 PAVEMENT DROP-OFF (চাকা রাস্তার বাইরে!)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ডান চাকা shoulder-এ নেমে গেছে (মাটি/gravel):
   ১. ভয় পেয়ে wheel ঝাঁকিও না! ← এটাই মারে
@@ -878,7 +878,7 @@ doors.push({
      rollover বা oncoming-এ ছিটকে যাওয়া
 
 🚗 STUCK ACCELERATOR (গ্যাস পেডাল আটকে গেছে)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ১. দুই পায়ের আঙুলে পেডাল তোলার চেষ্টা — না হলে:
   ২. গিয়ার NEUTRAL-এ দাও ← মূল সমাধান
@@ -888,7 +888,7 @@ doors.push({
      steering lock হয়ে যেতে পারে
 
 🌊 FLOODED ROAD (পানিতে ডোবা রাস্তা)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   "Turn Around, Don't Drown"
   ✦ ৬ ইঞ্চি চলন্ত পানি = গাড়ির নিয়ন্ত্রণ হারায়
@@ -897,7 +897,7 @@ doors.push({
   ✦ ঘুরে অন্য পথ নাও — সবসময়
 
 ☠️ CARBON MONOXIDE (শীতের নীরব ঘাতক)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ তুষারে আটকে গেলে গাড়িতে বসে heater চালাবে?
     আগে exhaust pipe (পেছনের ধোঁয়ার নল)
@@ -908,7 +908,7 @@ doors.push({
   ✦ বন্ধ garage-এ কখনো engine চালু রেখো না
 
 🦌 DEER ON ROAD (Michigan-এ বাস্তব ঝুঁকি!)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   📊 বাস্তবতা: Michigan-এ প্রতি বছর ৫০,০০০+
      deer-vehicle crash হয় — দেশের সর্বোচ্চগুলোর
@@ -926,7 +926,7 @@ doors.push({
      রাতে high beam (oncoming না থাকলে)
 
 💥 ACCIDENT — কী করবে
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ১. থামো — জায়গা ছেড়ে না
   ২. নিরাপদ হলে গাড়ি সরাও (roadside)
@@ -1117,19 +1117,19 @@ doors.push({
 
 
 <div class="code-block">MICHIGAN OWI LAWS — COMPLETE
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 🍺 OPERATING WHILE INTOXICATED (OWI)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   BAC Limits:
-  ┌────────────────────────────────────────┐
-  │  21+ বছর: 0.08+ = OWI                 │
-  │  0.17+ = "SUPER DRUNK" (High BAC)     │
-  │  Under 21: 0.02+ = Zero Tolerance     │
-  │  Commercial (CDL): 0.04+              │
-  │  Any drug: যেকোনো পরিমাণ = OWI        │
-  └────────────────────────────────────────┘
+  # ────────────────────────────────────────# 
+  #   21+ বছর: 0.08+ = OWI                 # 
+  #   0.17+ = "SUPER DRUNK" (High BAC)     # 
+  #   Under 21: 0.02+ = Zero Tolerance     # 
+  #   Commercial (CDL): 0.04+              # 
+  #   Any drug: যেকোনো পরিমাণ = OWI        # 
+  # ────────────────────────────────────────# 
 
   ⚡ "SUPER DRUNK" LAW (BAC 0.17+) — enhanced
      first offense:
@@ -1160,9 +1160,9 @@ doors.push({
   ✦ $500-$5000 fine
   ✦ License revocation (minimum 5 years)
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🧪 ALCOHOL-এর সত্য — পরীক্ষায় আসে, জীবনেও
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ⏱️ একমাত্র TIME শরীর থেকে alcohol সরায়
   — প্রায় ১ standard drink প্রতি ঘণ্টায়
@@ -1180,9 +1180,9 @@ doors.push({
   💡 মানে: "আমি ঠিক আছি" ভাবার ক্ষমতাটাই
      প্রথমে নষ্ট হয় — সিদ্ধান্ত আগে নাও, খাওয়ার আগে
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚫 IMPLIED CONSENT LAW
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   Michigan-এ গাড়ি চালালে তুমি implied consent দিচ্ছ
   → Police breathalyzer চাইলে দিতে বাধ্য
@@ -1190,9 +1190,9 @@ doors.push({
     (first refusal)
   → Blood test ও দিতে হয়
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🍾 OPEN CONTAINER LAW
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   Michigan-এ গাড়ির passenger compartment-এ খোলা
   (open/uncapped/seal ভাঙা) অ্যালকোহল কনটেইনার
@@ -1203,9 +1203,9 @@ doors.push({
     limo/chartered bus হলে
   ✦ Violation = civil infraction + points
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 📱 DISTRACTED DRIVING — TEXTING LAW
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   Michigan-এ:
   ✦ 2023 HANDS-FREE LAW: যেকোনো handheld phone 
@@ -1220,9 +1220,9 @@ doors.push({
   🤚 Manual: hands off wheel (phone, food)
   🧠 Cognitive: mind off driving (conversation)
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚔 POLICE থামালে কী করবে (Traffic Stop)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ১. দেখামাত্র signal দাও, ধীরে ডানে/নিরাপদ জায়গায়
      সরে যাও
@@ -1235,9 +1235,9 @@ doors.push({
   ৭. আপত্তি থাকলে রাস্তায় তর্ক নয় — কোর্টে challenge
      করো
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 💊 DRUGS (prescription সহ)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Marijuana (legal recreationally) — কিন্তু 
     গাড়ি চালানোর সময় নেশা নিষেধ
@@ -1281,7 +1281,7 @@ doors.push({
 <g transform="translate(400,92)" opacity=".5">
 <rect x="0" y="0" width="52" height="24" rx="7" fill="#e74c3c"/>
 </g>
-<text x="240" y="102" text-anchor="middle" fill="#ff8a80" font-size="9" font-weight="900">70 mph × ৫ সেকেন্ড = ৫১৩ ফুট — সম্পূর্ণ অন্ধ</text>
+<text x="240" y="102" text-anchor="middle" fill="#ff8a80" font-size="9" font-weight="900">70 mph * ৫ সেকেন্ড = ৫১৩ ফুট — সম্পূর্ণ অন্ধ</text>
 <!-- hazards that could appear -->
 <text x="250" y="132" text-anchor="middle" font-size="11">🦌</text>
 <text x="330" y="132" text-anchor="middle" font-size="11">🚶</text>
@@ -1292,7 +1292,7 @@ doors.push({
 </div>
 
 <div class="code-block">🚗 MICHIGAN NO-FAULT INSURANCE (কমন পরীক্ষার প্রশ্ন)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   Michigan = No-Fault Insurance state
 
@@ -1316,9 +1316,9 @@ doors.push({
   ✦ বিনা insurance-এ গাড়ি চালানো = অপরাধ
     → Fine, license suspension, plate confiscation
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 📊 DRIVER LICENSE POINT SYSTEM
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ প্রতিটা violation = points (2-6)
   ✦ Points driving record-এ ২ বছর থাকে
@@ -1467,7 +1467,7 @@ doors.push({
 
 
 <div class="code-block">🏢 ROAD TEST REALITY — কোথায়, কীভাবে, কত টাকা
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ⚠️ গুরুত্বপূর্ণ: Michigan-এ road test SOS office-এ
   হয় না! SOS-approved THIRD-PARTY driver testing
@@ -1488,12 +1488,12 @@ doors.push({
     Certificate → সেটা + TIP/learner license নিয়ে
     SOS office-এ যাও → license issue হবে ($25)
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 ROAD TEST — EXAMINER CHECKLIST
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
 📋 PART 1: VEHICLE SAFETY CHECK (পরীক্ষা শুরুর আগে)
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   Examiner জিজ্ঞেস করবে:
   ✦ Headlight কোথায়?
@@ -1570,9 +1570,9 @@ ROAD TEST — EXAMINER CHECKLIST
 <div class="rt-img-card"><svg viewBox="0 0 100 60" width="100"><rect x="5" y="10" width="90" height="40" rx="6" fill="#1a1a1a"/><rect x="25" y="18" width="50" height="24" rx="4" fill="#222"/><path d="M 35 22 Q 30 30 35 38 M 45 22 Q 40 30 45 38 M 55 22 Q 50 30 55 38 M 65 22 Q 60 30 65 38" stroke="#5dade2" stroke-width="2" fill="none"/><text x="50" y="58" text-anchor="middle" fill="#999" font-size="10">DEFROSTER</text></svg><div class="rt-caption"><strong>Defroster</strong><br>কুয়াশা মোছা</div></div>
 </div>
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🚗 PART 2: BASIC DRIVING SKILLS
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   📌 STARTING:
   ✦ Seatbelt on
@@ -1588,7 +1588,7 @@ ROAD TEST — EXAMINER CHECKLIST
   ✦ Red light-এ সম্পূর্ণ থামো
 
   📌 TURNING:
-  ✦ Signal 100 ফুট আগে (≈ 5 car lengths)
+  ✦ Signal 100 ফুট আগে (~= 5 car lengths)
   ✦ Correct lane
   ✦ Shoulder check before turn
   ✦ Smooth steering (push-pull)
@@ -1606,9 +1606,9 @@ ROAD TEST — EXAMINER CHECKLIST
 <div class="rt-img-card"><svg viewBox="0 0 100 70" width="90"><rect x="15" y="15" width="70" height="30" rx="4" fill="#1a1a1a" stroke="#555" stroke-width="2"/><rect x="20" y="20" width="60" height="20" rx="2" fill="#16213e"/><rect x="42" y="22" width="16" height="16" fill="#0f3460" opacity=".5"/><path d="M 30 40 L 25 30 L 35 30 Z" fill="#555"/><text x="50" y="58" text-anchor="middle" fill="#999" font-size="10">REAR-VIEW MIRROR</text></svg><div class="rt-caption"><strong>Rear-view Mirror</strong><br>প্রতি ৫-৮ সেকেন্ডে</div></div>
 </div>
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🅿️ PART 3: PARKING MANEUVERS
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   📌 PARALLEL PARKING:
   ✦ Signal
@@ -1638,9 +1638,9 @@ ROAD TEST — EXAMINER CHECKLIST
   ✦ Reverse, turn wheel right
   ✦ Forward, turn left, proceed
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🛣️ PART 4: ON-ROAD DRIVING
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Stop signs — complete stop
   ✦ Traffic signals — proper response
@@ -1662,7 +1662,7 @@ ROAD TEST — EXAMINER CHECKLIST
 </div>
 
 <div class="code-block">🅿️ PARALLEL PARKING — KEY POINTS
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   STEP 1: Pull beside front car (2-3 ft gap)
   STEP 2: Reverse, turn wheel RIGHT (toward curb)
@@ -1680,7 +1680,7 @@ ROAD TEST — EXAMINER CHECKLIST
 </div>
 
 <div class="code-block">🔄 THREE-POINT TURN — KEY POINTS
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   STEP 1: Signal right, pull to right side, check traffic
   STEP 2: Turn LEFT sharply, move forward (left side)
@@ -1714,7 +1714,7 @@ ROAD TEST — EXAMINER CHECKLIST
 </div>
 
 <div class="code-block">❌ TOP 10 AUTOMATIC FAIL REASONS:
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ১. ❌ Rolling stop (STOP sign-এ সম্পূর্ণ থামো না)
   ২. ❌ No blind spot check (shoulder check না)
@@ -1727,9 +1727,9 @@ ROAD TEST — EXAMINER CHECKLIST
   ৯. ❌ Failure to yield (right-of-way না)
   ১০. ❌ Distracted driving (phone, etc.)
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 ✅ TOP 10 PASS TIPS:
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ১. ✅ Exaggerate everything — head turns, 
      shoulder checks visible করো
@@ -1743,9 +1743,9 @@ ROAD TEST — EXAMINER CHECKLIST
   ৯. ✅ Parking practice — parallel, 3-point
   ১০. ✅ শান্ত থাকো — nervous = mistake
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 📝 WHAT TO BRING:
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Valid learner license / TIP
   ✦ Vehicle (registration + Michigan no-fault
@@ -1758,9 +1758,9 @@ ROAD TEST — EXAMINER CHECKLIST
   ✦ পাশ করার পরে: certificate → SOS office →
     license ($25)
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 📊 SCORING কীভাবে হয় + FAIL করলে কী
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   ✦ Examiner প্রতি ভুলে points কাটে —
     ছোট ভুল (দেরিতে signal) = কম, বড় ভুল = বেশি
@@ -1777,9 +1777,9 @@ ROAD TEST — EXAMINER CHECKLIST
   ✦ দুর্বল জায়গা practice করে ফেরো —
     অনেকেই ২য় বারে পাশ করে
 
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 🌙 আগের রাত + সকালের চেকলিস্ট
-— — — — — — — — — — — — — — — — — — — — — —
+# — — — — — — — — — — — — — — — — — — — — — —
 
   আগের রাতে:
   ✦ ৮ ঘণ্টা ঘুম — ক্লান্ত মস্তিষ্ক ভুল করে

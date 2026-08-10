@@ -22,8 +22,8 @@ doors.push({
 <div class="dialogue"><strong>তুমি:</strong> কিন্তু Book ১৮ (Embeddings) আমি পড়েছি! Embedding = অর্থকে সংখ্যার ভেক্টরে রূপ। তাহলে কি সেই ভেক্টর একটা সাধারণ টেবিলে রাখলেই হবে?</div>
 <div class="dialogue en"><strong>You:</strong> But I've read Book 18 (Embeddings)! Embedding = meaning as a numeric vector. Can't I just store vectors in a regular table?</div>
 
-<div class="dialogue"><strong>গুরু:</strong> (হাসেন) রাখতে পারো। কিন্তু খোঁজবে কীভাবে? ধরো তোমার কাছে ১০ লক্ষ ডকুমেন্ট আছে, প্রতিটির একটি ১৫৩৬-মাত্রিক ভেক্টর (OpenAI ada-002)। তুমি একটি প্রশ্ন করলে — "machine learning for healthcare" — সেও একটি ১৫৩৬-মাত্রিক ভেক্টর হয়ে যায়। এখন তোমাকে ১০ লক্ষ ভেক্টরের মধ্যে সবচেয়ে কাছেরগুলো খুঁজতে হবে। সাধারণ টেবিলে এটা O(n) — প্রতিটি ভেক্টরের সাথে তুলনা। ১০ লক্ষ × ১৫৩৬ গুণ = ১৫ কোটি অপারেশন। প্রতি কোয়েরিতে! এটা অচল।</div>
-<div class="dialogue en"><strong>Guru:</strong> (laughs) You can store them. But how will you search? Say you have 1 million documents, each with a 1536-dimensional vector (OpenAI ada-002). A query — "machine learning for healthcare" — also becomes a 1536-dimensional vector. Now find the nearest among 1 million. In a regular table, that's O(n) — compare against every vector. 1 million × 1536 = 150 million operations per query! Unworkable.</div>
+<div class="dialogue"><strong>গুরু:</strong> (হাসেন) রাখতে পারো। কিন্তু খোঁজবে কীভাবে? ধরো তোমার কাছে ১০ লক্ষ ডকুমেন্ট আছে, প্রতিটির একটি ১৫৩৬-মাত্রিক ভেক্টর (OpenAI ada-002)। তুমি একটি প্রশ্ন করলে — "machine learning for healthcare" — সেও একটি ১৫৩৬-মাত্রিক ভেক্টর হয়ে যায়। এখন তোমাকে ১০ লক্ষ ভেক্টরের মধ্যে সবচেয়ে কাছেরগুলো খুঁজতে হবে। সাধারণ টেবিলে এটা O(n) — প্রতিটি ভেক্টরের সাথে তুলনা। ১০ লক্ষ * ১৫৩৬ গুণ = ১৫ কোটি অপারেশন। প্রতি কোয়েরিতে! এটা অচল।</div>
+<div class="dialogue en"><strong>Guru:</strong> (laughs) You can store them. But how will you search? Say you have 1 million documents, each with a 1536-dimensional vector (OpenAI ada-002). A query — "machine learning for healthcare" — also becomes a 1536-dimensional vector. Now find the nearest among 1 million. In a regular table, that's O(n) — compare against every vector. 1 million * 1536 = 150 million operations per query! Unworkable.</div>
 
 <div class="code-block">
 <strong>ভেক্টর ডাটাবেস — কী করে ভিন্ন?</strong>
@@ -38,7 +38,7 @@ metadata = {source: "pdf", date: "2025-01-15", author: "..."}
 - সবচেয়ে কাছের k-টি ভেক্টর ফেরত দাও
 - কাছের = cosine similarity বা L2 distance দ্বারা
 
-cosine_similarity(a, b) = (a · b) / (|a| × |b|)
+cosine_similarity(a, b) = (a · b) / (|a| * |b|)
 মান ১.০ = অভিন্ন দিক, ০.০ = লম্ব, -১.০ = বিপরীত দিক
 
 <strong>৩. কেন সাধারণ DB যথেষ্ট নয়:</strong>
@@ -126,7 +126,7 @@ pgvector (২০২১) — PostgreSQL extension, Andrew Kane (ankane) তৈর
 </div>
 <div class="svg-caption">চিত্র: Query ভেক্টর সবচেয়ে কাছের ডকুমেন্ট ভেক্টর খুঁজে বের করে — cosine similarity দিয়ে।</div>
 
-<div class="code-block">— Python: Vector Search with pgvector —
+<div class="code-block"># — Python: Vector Search with pgvector —
 
   # pgvector — PostgreSQL-এ ভেক্টর search
   import psycopg2
@@ -209,7 +209,7 @@ doors.push({
 - নিচের লেয়ারে নামো (বেশি নোড, সূক্ষ্ম খোঁজা)
 - সব নোড চেক করার প্রয়োজন নেই — গ্রাফ ধরে হাঁটো
 
-recall ≈ ৯৫-৯৯%, speed ≈ ১০০-১০০০× নিখুঁত search থেকে দ্রুত।
+recall ~= ৯৫-৯৯%, speed ~= ১০০-১০০০* নিখুঁত search থেকে দ্রুত।
 Pinecone, Chroma, Milvus, Weaviate — সব HNSW ব্যবহার করে।
 
 <strong>২. IVF (Inverted File Index):</strong>
@@ -231,14 +231,14 @@ GPU-তে চালানোর জন্য অপ্টিমাইজড। 
 </div>
 
 <div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Exact (Brute Force)</div>প্রতিটি ভেক্টরের সাথে তুলনা।<br>সময়: O(n × d) — n=১০M, d=১৫৩৬<br>১০ লক্ষ ভেক্টরে ~৩০০ms প্রতি কোয়েরি।<br>নিখুঁত — কিন্তু অচল।</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ ANN (HNSW/IVF)</div>গ্রাফ বা cluster দিয়ে সীমিত খোঁজা।<br>সময়: ~O(log n × d)<br>১০ লক্ষ ভেক্টরে ~৩ms প্রতি কোয়েরি।<br>৯৯% নিখুঁত — বাস্তবে যথেষ্ট।</div>
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Exact (Brute Force)</div>প্রতিটি ভেক্টরের সাথে তুলনা।<br>সময়: O(n * d) — n=১০M, d=১৫৩৬<br>১০ লক্ষ ভেক্টরে ~৩০০ms প্রতি কোয়েরি।<br>নিখুঁত — কিন্তু অচল।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ ANN (HNSW/IVF)</div>গ্রাফ বা cluster দিয়ে সীমিত খোঁজা।<br>সময়: ~O(log n * d)<br>১০ লক্ষ ভেক্টরে ~৩ms প্রতি কোয়েরি।<br>৯৯% নিখুঁত — বাস্তবে যথেষ্ট।</div>
 </div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ — recall vs speed tradeoff:</strong> HNSW-এর দুটি প্যারামিটার: ef_construction (index বানানোর সময়) এবং ef_search (খোঁজার সময়)। ef_search বাড়ালে নিখুঁত হয় কিন্তু ধীর হয়। কমালে দ্রুত হয় কিন্তু কিছু ফলাফল মিস করে। এটাই ANN-এর মূল tradeoff — Book ৯ (Context Engineering) এর Lost-in-the-Middle সমস্যার সাথে সম্পর্কিত: তুমি কতটুকু প্রাসঙ্গিকতা ছাড়তে পারো গতির জন্য?</div></div>
 
 <div class="stat-grid">
-<div class="stat-card"><div class="sc-num">১০০০×</div><div class="sc-label">ANN নিখুঁত search থেকে দ্রুত</div></div>
+<div class="stat-card"><div class="sc-num">১০০০*</div><div class="sc-label">ANN নিখুঁত search থেকে দ্রুত</div></div>
 <div class="stat-card"><div class="sc-num">~৯৯%</div><div class="sc-label">HNSW recall (typical)</div></div>
 <div class="stat-card"><div class="sc-num">~৩ms</div><div class="sc-label">১০ লক্ষ ভেক্টরে প্রতি কোয়েরি</div></div>
 </div>
@@ -289,13 +289,13 @@ GPU-তে চালানোর জন্য অপ্টিমাইজড। 
   <rect x="210" y="180" width="350" height="55" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
   <text x="385" y="200" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">Exact O(n) vs ANN O(log n)</text>
   <text x="290" y="218" text-anchor="middle" fill="#f87171" font-size="10">Exact: সব তুলনা → নিখুঁত</text>
-  <text x="470" y="218" text-anchor="middle" fill="#4ade80" font-size="10">ANN: গ্রাফ ট্রাভার্স → ৯৯% নিখুঁত, ১০০০×</text>
+  <text x="470" y="218" text-anchor="middle" fill="#4ade80" font-size="10">ANN: গ্রাফ ট্রাভার্স → ৯৯% নিখুঁত, ১০০০*</text>
   <text x="385" y="232" text-anchor="middle" fill="#94a3b8" font-size="10">Malkov 2016 | IVF: cluster + probe</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: HNSW বহু-স্তর গ্রাফ — উপরে কম, নিচে ঘন। দ্রুত descent দিয়ে নিকটতম পয়েন্ট।</div>
 
-<div class="code-block">— Python: HNSW + IVF Comparison —
+<div class="code-block"># — Python: HNSW + IVF Comparison —
 
   import numpy as np
   from sklearn.neighbors import NearestNeighbors
@@ -317,15 +317,15 @@ GPU-তে চালানোর জন্য অপ্টিমাইজড। 
   index.add_items(data, np.arange(len(data)))
   index.set_ef(50)  # search width
   labels, distances = index.knn_query(query, k=5)
-  # সময়: ~০.২ ms — ১০০০× দ্রুত!
-  # recall@5 ≈ ৯৮% (প্রায় নিখুঁত)</div>
+  # সময়: ~০.২ ms — ১০০০* দ্রুত!
+  # recall@5 ~= ৯৮% (প্রায় নিখুঁত)</div>
 
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> নিখুঁত অসম্ভব হলে, দ্রুত কাছাকাছিই জয়।<br>
 <em>When exact is impossible, fast-and-close wins.</em>
 <hr>
 <div style="text-align:center;font-size:.82rem">
-এটা Book ৪১ (Theory of Computation) Door ৯-এর approximation পাঠের সাথে সরাসরি সংযুক্ত — NP-hard সমস্যায় নিখুঁত সমাধান অসম্ভব, তাই approximation algorithm। ভেক্টর search-ও তেমন — নিখুঁত search O(n), কিন্তু ANN ৯৯% নিখুঁত ১০০০× দ্রুত। ইজতিহাদ — নিশ্চিততা অসম্ভব হলে সর্বোত্তম প্রচেষ্টা।
+এটা Book ৪১ (Theory of Computation) Door ৯-এর approximation পাঠের সাথে সরাসরি সংযুক্ত — NP-hard সমস্যায় নিখুঁত সমাধান অসম্ভব, তাই approximation algorithm। ভেক্টর search-ও তেমন — নিখুঁত search O(n), কিন্তু ANN ৯৯% নিখুঁত ১০০০* দ্রুত। ইজতিহাদ — নিশ্চিততা অসম্ভব হলে সর্বোত্তম প্রচেষ্টা।
 </div>
 </div>`,
   senior: {
@@ -468,7 +468,7 @@ Codd-এর সারি-কলাম থেকে Malkov-এর HNSW গ্র�
 </div>
 <div class="svg-caption">চিত্র: RAG pipeline — Vector DB (অর্থ) + Relational DB (কাঠামো) → LLM গ্রাউন্ডেড উত্তর।</div>
 
-<div class="code-block">— Python: Hybrid RAG Pipeline —
+<div class="code-block"># — Python: Hybrid RAG Pipeline —
 
   # Vector + Relational hybrid search
   def rag_answer(question, user_id):

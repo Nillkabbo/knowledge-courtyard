@@ -305,13 +305,13 @@ plt.savefig("scatter.png")
 plt.close()</div>
 
 <div class="code-block"># ── STEP 9: Pivot tables ──
-# 2D aggregation — rows × columns, like Excel pivot table.
+# 2D aggregation — rows * columns, like Excel pivot table.
 
 import pandas as pd
 
 df = pd.read_csv("transactions.csv")
 
-# City × Month revenue matrix:
+# City * Month revenue matrix:
 pivot = df.pivot_table(
     values="amount",       # what to aggregate
     index="city",          # rows
@@ -367,21 +367,21 @@ with pd.ExcelWriter("report.xlsx") as writer:
     df.describe().to_excel(writer, sheet_name="Statistics")
 
 # QUICK REFERENCE:
-# ┌──────────────────────┬────────────────────────────────┐
-# │ Task                 │ Code                           │
-# ├──────────────────────┼────────────────────────────────┤
-# │ Load CSV             │ pd.read_csv("f.csv")           │
-# │ See first rows       │ df.head()                      │
-# │ Filter rows          │ df[df["x"] > 0]                │
-# │ Select columns       │ df[["col1", "col2"]]           │
-# │ Group + aggregate    │ df.groupby("x")["y"].sum()     │
-# │ Create column        │ df["new"] = df["x"] * 2        │
-# │ Sort                 │ df.sort_values("x")            │
-# │ Merge two tables     │ df1.merge(df2, on="id")        │
-# │ Pivot table          │ df.pivot_table(...)            │
-# │ Export to CSV        │ df.to_csv("out.csv")           │
-# │ Chart                │ df.plot(kind="bar")            │
-# └──────────────────────┴────────────────────────────────┘</div>
+# # ──────────────────────# ────────────────────────────────# 
+# #  Task                 #  Code                           # 
+# # ──────────────────────# ────────────────────────────────# 
+# #  Load CSV             #  pd.read_csv("f.csv")           # 
+# #  See first rows       #  df.head()                      # 
+# #  Filter rows          #  df[df["x"] > 0]                # 
+# #  Select columns       #  df[["col1", "col2"]]           # 
+# #  Group + aggregate    #  df.groupby("x")["y"].sum()     # 
+# #  Create column        #  df["new"] = df["x"] * 2        # 
+# #  Sort                 #  df.sort_values("x")            # 
+# #  Merge two tables     #  df1.merge(df2, on="id")        # 
+# #  Pivot table          #  df.pivot_table(...)            # 
+# #  Export to CSV        #  df.to_csv("out.csv")           # 
+# #  Chart                #  df.plot(kind="bar")            # 
+# # ──────────────────────# ────────────────────────────────# </div>
 
 <div class="diagram">
   <div class="diag-title">pandas Pipeline — CSV → Insight</div>
@@ -819,15 +819,15 @@ except requests.RequestException as e:
 # Some sites prohibit scraping. Respect it.
 
 # SUMMARY:
-# ┌────────────────────┬───────────────────────────────────┐
-# │ Tool               │ Purpose                           │
-# ├────────────────────┼───────────────────────────────────┤
-# │ requests           │ fetch web pages / API calls       │
-# │ BeautifulSoup      │ parse and extract from HTML       │
-# │ .json()            │ parse API response                │
-# │ time.sleep(1)      │ be polite — don't hammer servers  │
-# │ pandas             │ save and analyze scraped data     │
-# └────────────────────┴───────────────────────────────────┘</div>
+# # ────────────────────# ───────────────────────────────────# 
+# #  Tool               #  Purpose                           # 
+# # ────────────────────# ───────────────────────────────────# 
+# #  requests           #  fetch web pages / API calls       # 
+# #  BeautifulSoup      #  parse and extract from HTML       # 
+# #  .json()            #  parse API response                # 
+# #  time.sleep(1)      #  be polite — don't hammer servers  # 
+# #  pandas             #  save and analyze scraped data     # 
+# # ────────────────────# ───────────────────────────────────# </div>
 
 <div class="diagram">
   <div class="diag-title">Web Data Collection — API (best) ও Scraping (fallback)</div>
@@ -1166,16 +1166,16 @@ def get_task(task_id: int):
 # ❌ Newer (smaller community than Flask)
 # ❌ More concepts to learn upfront
 
-# ┌──────────────┬─────────────────────┬─────────────────────────┐
-# │ Feature      │ Flask               │ FastAPI                 │
-# ├──────────────┼─────────────────────┼─────────────────────────┤
-# │ Validation   │ Manual              │ Automatic (Pydantic)    │
-# │ API docs     │ Need extension      │ Built-in (/docs)        │
-# │ Async        │ Needs extension     │ Built-in                │
-# │ Speed        │ Good                │ Excellent               │
-# │ Learning     │ Easier              │ Slightly more           │
-# │ Best for     │ Learning, simple    │ Production, modern apps │
-# └──────────────┴─────────────────────┴─────────────────────────┘</div>
+# # ──────────────# ─────────────────────# ─────────────────────────# 
+# #  Feature      #  Flask               #  FastAPI                 # 
+# # ──────────────# ─────────────────────# ─────────────────────────# 
+# #  Validation   #  Manual              #  Automatic (Pydantic)    # 
+# #  API docs     #  Need extension      #  Built-in (/docs)        # 
+# #  Async        #  Needs extension     #  Built-in                # 
+# #  Speed        #  Good                #  Excellent               # 
+# #  Learning     #  Easier              #  Slightly more           # 
+# #  Best for     #  Learning, simple    #  Production, modern apps # 
+# # ──────────────# ─────────────────────# ─────────────────────────# </div>
 
 <div class="code-block"># ── STEP 9: Query parameters and path parameters ──
 # APIs accept data in three ways: path, query, and body.
@@ -1220,19 +1220,19 @@ def search_tasks(
 <div class="code-block"># ── STEP 10: Complete production-ready API structure ──
 # A real API has more than just routes. Here's the full picture.
 
-# ┌─────────────────────────────────────────────────────┐
-# │ Production API Checklist                            │
-# ├─────────────────────────────────────────────────────┤
-# │ ✅ Input validation (Pydantic / manual)             │
-# │ ✅ Error handling (try/except, HTTPException)       │
-# │ ✅ Authentication (API keys, JWT tokens)            │
-# │ ✅ Rate limiting (prevent abuse)                    │
-# │ ✅ CORS (allow browser apps to call your API)       │
-# │ ✅ Database (not in-memory list!)                   │
-# │ ✅ Logging (track requests and errors)              │
-# │ ✅ Tests (pytest)                                   │
-# │ ✅ API documentation (/docs)                        │
-# └─────────────────────────────────────────────────────┘
+# # ─────────────────────────────────────────────────────# 
+# #  Production API Checklist                            # 
+# # ─────────────────────────────────────────────────────# 
+# #  ✅ Input validation (Pydantic / manual)             # 
+# #  ✅ Error handling (try/except, HTTPException)       # 
+# #  ✅ Authentication (API keys, JWT tokens)            # 
+# #  ✅ Rate limiting (prevent abuse)                    # 
+# #  ✅ CORS (allow browser apps to call your API)       # 
+# #  ✅ Database (not in-memory list!)                   # 
+# #  ✅ Logging (track requests and errors)              # 
+# #  ✅ Tests (pytest)                                   # 
+# #  ✅ API documentation (/docs)                        # 
+# # ─────────────────────────────────────────────────────# 
 
 # Example: adding error handling and CORS to FastAPI:
 from fastapi import FastAPI
@@ -1254,18 +1254,18 @@ async def value_error_handler(request, exc):
     return {"error": str(exc)}, 400
 
 # SUMMARY:
-# ┌──────────────┬───────────────────────────────────┐
-# │ Method       │ Purpose                          │
-# ├──────────────┼───────────────────────────────────┤
-# │ GET          │ Read data (no side effects)       │
-# │ POST         │ Create new data                   │
-# │ PUT          │ Update existing data              │
-# │ DELETE       │ Remove data                       │
-# │ Flask        │ Simple, classic framework         │
-# │ FastAPI      │ Modern, validated, documented     │
-# │ Pydantic     │ Automatic input validation        │
-# │ /docs        │ Auto-generated API documentation  │
-# └──────────────┴───────────────────────────────────┘</div>
+# # ──────────────# ───────────────────────────────────# 
+# #  Method       #  Purpose                          # 
+# # ──────────────# ───────────────────────────────────# 
+# #  GET          #  Read data (no side effects)       # 
+# #  POST         #  Create new data                   # 
+# #  PUT          #  Update existing data              # 
+# #  DELETE       #  Remove data                       # 
+# #  Flask        #  Simple, classic framework         # 
+# #  FastAPI      #  Modern, validated, documented     # 
+# #  Pydantic     #  Automatic input validation        # 
+# #  /docs        #  Auto-generated API documentation  # 
+# # ──────────────# ───────────────────────────────────# </div>
 
 <div class="diagram">
   <div class="diag-title">REST API — ৪টি দরজা: GET · POST · PUT · DELETE</div>
@@ -1757,18 +1757,18 @@ if __name__ == "__main__":
 # 5. MONITOR — check that it's still running
 
 # SUMMARY:
-# ┌──────────────────┬─────────────────────────────────────┐
-# │ Tool             │ Purpose                            │
-# ├──────────────────┼─────────────────────────────────────┤
-# │ os / shutil      │ file operations                    │
-# │ subprocess       │ run external programs              │
-# │ logging          │ track what happened                │
-# │ smtplib          │ send email notifications           │
-# │ schedule         │ Python-based scheduler             │
-# │ cron             │ OS-level scheduler (Linux/Mac)     │
-# │ argparse         │ build CLI tools                    │
-# │ pathlib          │ modern file path handling          │
-# └──────────────────┴─────────────────────────────────────┘</div>
+# # ──────────────────# ─────────────────────────────────────# 
+# #  Tool             #  Purpose                            # 
+# # ──────────────────# ─────────────────────────────────────# 
+# #  os / shutil      #  file operations                    # 
+# #  subprocess       #  run external programs              # 
+# #  logging          #  track what happened                # 
+# #  smtplib          #  send email notifications           # 
+# #  schedule         #  Python-based scheduler             # 
+# #  cron             #  OS-level scheduler (Linux/Mac)     # 
+# #  argparse         #  build CLI tools                    # 
+# #  pathlib          #  modern file path handling          # 
+# # ──────────────────# ─────────────────────────────────────# </div>
 
 <div class="diagram">
   <div class="diag-title">Automation Pipeline — একবার লেখো, চিরকাল চলে</div>

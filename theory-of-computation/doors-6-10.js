@@ -117,8 +117,8 @@ doors.push({
     a: "P = deterministic Turing Machine-এ polynomial সময়ে সমাধানযোগ্য। NP = polynomial সময়ে উত্তর যাচাইযোগ্য (বা nondeterministic TM-এ সমাধানযোগ্য)।",
     aen: "P = solvable in polynomial time by a deterministic TM. NP = verifiable in polynomial time (or solvable by a nondeterministic TM in polynomial time)."
   },
-  story: `<p class="scene-setting">তুমি একটা সুদূর শহরে পৌঁছেছ। রাস্তায় একজন ব্যক্তি দাঁড়িয়ে — হাতে একটা সুদোকু। ৯×৯ গ্রিড। তুমি ভাবো — এটা তো সহজ, আমি পারি। কিন্তু সে বলে: "এই সুদোকুর সমাধান আছে কি না — শুধু বলো। সমাধান নয়, শুধু হ্যাঁ বা না।" তুমি চেষ্টা করো। এক ঘণ্টা। দুই ঘণ্টা। সমাধান করা কঠিন। কিন্তু যদি সে একটা পূরণ করা বোর্ড দেখায় — তুমি চোখের পলকে যাচাই করতে পারো! সত্যি কি না। এটাই NP-র আত্মা।</p>
-<p class="scene-setting en">You arrive in a distant city. A man stands on the street — holding a Sudoku. 9×9 grid. You think — easy, I can do this. But he says: "Just tell me — does this Sudoku have a solution? Yes or no." You try. One hour. Two hours. Solving is hard. But if he shows you a filled board — you can verify it instantly! True or not. This is the soul of NP.</p>
+  story: `<p class="scene-setting">তুমি একটা সুদূর শহরে পৌঁছেছ। রাস্তায় একজন ব্যক্তি দাঁড়িয়ে — হাতে একটা সুদোকু। ৯*৯ গ্রিড। তুমি ভাবো — এটা তো সহজ, আমি পারি। কিন্তু সে বলে: "এই সুদোকুর সমাধান আছে কি না — শুধু বলো। সমাধান নয়, শুধু হ্যাঁ বা না।" তুমি চেষ্টা করো। এক ঘণ্টা। দুই ঘণ্টা। সমাধান করা কঠিন। কিন্তু যদি সে একটা পূরণ করা বোর্ড দেখায় — তুমি চোখের পলকে যাচাই করতে পারো! সত্যি কি না। এটাই NP-র আত্মা।</p>
+<p class="scene-setting en">You arrive in a distant city. A man stands on the street — holding a Sudoku. 9*9 grid. You think — easy, I can do this. But he says: "Just tell me — does this Sudoku have a solution? Yes or no." You try. One hour. Two hours. Solving is hard. But if he shows you a filled board — you can verify it instantly! True or not. This is the soul of NP.</p>
 
 <div class="dialogue"><strong>স্টিফেন কুক:</strong> তুমি একটা ধাঁধা পেয়েছ। সমাধান করতে কয়েক ঘণ্টা। কিন্তু উত্তর দেখলে যাচাই করতে কয়েক সেকেন্ড। এটাই P এবং NP-এর পার্থক্য। P হলো সেই সমস্যা যা দ্রুত সমাধান করা যায়। NP হলো সেই সমস্যা যার উত্তর দ্রুত যাচাই করা যায়। প্রশ্নটা হলো — উত্তর দ্রুত যাচাই করা গেলে, কি তাহলে দ্রুত সমাধানও করা যায়? এটাই P vs NP। এক মিলিয়ন ডলারের প্রশ্ন।</div>
 <div class="dialogue en"><strong>Stephen Cook:</strong> You have a puzzle. Solving takes hours. But verifying an answer takes seconds. This is the difference between P and NP. P is problems that can be solved quickly. NP is problems whose answers can be verified quickly. The question is — if answers can be verified quickly, can they also be found quickly? This is P vs NP. A million-dollar question.</div>
@@ -134,7 +134,7 @@ P-এর সমস্যা = "দ্রুত সমাধানযোগ্য
 <strong>Class NP (Nondeterministic Polynomial time):</strong>
 সমস্যা সেট যার উত্তর nondeterministic TM-এ polynomial সময়ে যাচাইযোগ্য।
 সমতুল্য: উত্তর দেওয়া হলে deterministic TM-এ polynomial সময়ে যাচাইযোগ্য।
-উদাহরণ: Sudoku (n×n), Boolean SAT, Traveling Salesman সিদ্ধান্ত সমস্যা
+উদাহরণ: Sudoku (n*n), Boolean SAT, Traveling Salesman সিদ্ধান্ত সমস্যা
 NP-এর সমস্যা = "দ্রুত যাচাইযোগ্য"।
 
 <strong>Class NP-Complete:</strong>
@@ -353,8 +353,8 @@ doors.push({
 
 একটি α-approximation algorithm A একটি সমস্যার জন্য:
 • A polynomial সময়ে চলে
-• A-এর উত্তর ≤ α × OPT (minimization সমস্যার জন্য)
-  অথবা OPT ≤ α × A-এর উত্তর (maximization সমস্যার জন্য)
+• A-এর উত্তর ≤ α * OPT (minimization সমস্যার জন্য)
+  অথবা OPT ≤ α * A-এর উত্তর (maximization সমস্যার জন্য)
 
 যেখানে OPT = সর্বোত্তম সমাধান, α ≥ ১
 
@@ -366,7 +366,7 @@ doors.push({
 
 কেন ২-approximation? প্রতিটি edge-এ আমরা ২টি vertex নিই।
 কিন্তু optimal cover-এ অন্তত একটি vertex প্রতি edge-এ আছে।
-তাই আমাদের cover ≤ ২ × OPT।
+তাই আমাদের cover ≤ ২ * OPT।
 
 <strong>PTAS (Polynomial-Time Approximation Scheme):</strong>
 একটি অ্যালগরিতম যা যেকোনো ε > ০-এর জন্য
@@ -386,7 +386,7 @@ TSP (সাধারণ ক্ষেত্রে) — কোনো constant appr
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ Exact (Brute Force)</div>সর্বোত্তম উত্তর — কিন্তু সময় সীমাহীন।<br>TSP: ২০ শহরে ৬০,০০,০০,০০,০০,০০,০০,০০,০০,০০,০০,০০,০০,০০,০০,০০০ routes।<br>মহাবিশ্বের বয়সেও সমাধান হবে না।</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ Approximation</div>কাছাকাছি উত্তর — polynomial সময়ে।<br>Christofides TSP: ১.৫× optimal — গ্যারান্টিযুক্ত।<br>মিনিটে সমাধান। বাস্তবে প্রায় সর্বোত্তম।</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ Approximation</div>কাছাকাছি উত্তর — polynomial সময়ে।<br>Christofides TSP: ১.৫* optimal — গ্যারান্টিযুক্ত।<br>মিনিটে সমাধান। বাস্তবে প্রায় সর্বোত্তম।</div>
 </div>
 
 <div class="callout tip"><span class="co-icon">🔌</span><div><strong>টিপ — Heuristic vs Approximation:</strong> Approximation algorithm-এর গ্যারান্টি আছে (ratio bound)। Heuristic-এর নেই — কিন্তু বাস্তবে ভালো কাজ করতে পারে। Genetic algorithm, simulated annealing, greedy — সব heuristic। কোনো গ্যারান্টি নেই, কিন্তু প্রায়ই সেরা।</div></div>

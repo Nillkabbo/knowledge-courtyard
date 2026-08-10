@@ -168,7 +168,7 @@ def bfs(graph, start, target):
     title:"Adjacency List vs Matrix — কখন কোনটা?",
     body:`
     <p><strong>Adjacency List:</strong> <code>defaultdict(list)</code> — যখন graph sparse (বেশি নোড, কম edge)। মেমোরি কম লাগে। প্রতিটা node শুধু তার প্রতিবেশী রাখে।</p>
-    <p><strong>Adjacency Matrix:</strong> <code>n×n</code> 2D array — যখন graph dense বা edge existence দ্রুত চেক করতে হয়। কিন্তু O(n²) মেমোরি।</p>
+    <p><strong>Adjacency Matrix:</strong> <code>n*n</code> 2D array — যখন graph dense বা edge existence দ্রুত চেক করতে হয়। কিন্তু O(n²) মেমোরি।</p>
     <p><strong>Senior habit:</strong> ৯০% সময় adjacency list। <code>collections.defaultdict(list)</code> ব্যবহার করো — <code>graph[a].append(b)</code>। সহজ, পরিষ্কার, কার্যকর।</p>
     <p><strong>ভরযুক্ত গ্রাফ:</strong> weighted edge হলে neighbor এর সাথে weight রাখো: <code>graph[a].append((b, weight))</code>। তখন Dijkstra (Door 14 — Greedy) চালাও shortest path-এর জন্য।</p>`
   },
@@ -281,7 +281,7 @@ doors.push({
               self.rank[px] += 1
           return True               # নতুন union হলো
 
-  দুটো optimization একসাথে → amortized O(α(n)) ≈ O(1)
+  দুটো optimization একসাথে → amortized O(α(n)) ~= O(1)
   (α = inverse Ackermann; α < 4 যতদিন n < 10^600)
 
 WHEN TO USE UNION-FIND:
@@ -549,7 +549,7 @@ D&C FAMILY:
 
 WHY O(n log n):
   প্রতি স্তরে O(n) combine কাজ। log n স্তর (প্রতি বার অর্ধেক)।
-  O(n) × O(log n) = O(n log n)। এটাই comparison sort-এর তাত্ত্বিক সীমা।</div>
+  O(n) * O(log n) = O(n log n)। এটাই comparison sort-এর তাত্ত্বিক সীমা।</div>
 
 <div class="dialogue">কিন্তু merge sort আর quick sort — এগুলো advanced। শুরুতে চলো সহজ sorting গুলো দেখি, যেগুলো প্রতিদিনের জীবনে আমরা অজান্তেই করি।</div>
 <div class="dialogue en">"But merge sort and quick sort are advanced. Let's start with the simpler sorts — ones we do unconsciously in daily life."</div>

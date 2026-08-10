@@ -53,43 +53,43 @@ doors.push({
 
 FOUR METRICS (RAGAS — Es et al., 2023):
 
-┌────────────────────────────────────────────┐
-│ ১. CONTEXT PRECISION                       │
-│ "Retrieved chunks কি প্রাসঙ্গিক?"          │
-│                                            │
-│ Query → retrieved top-k                    │
-│ → প্রতিটা chunk relevant কি না?             │
-│ → relevant / total = precision             │
-│                                            │
-│ Score: ০.০ (সব irrelevant) — ১.০ (সব relevant) │
-├────────────────────────────────────────────┤
-│ ২. CONTEXT RECALL                          │
-│ "সব প্রয়োজনীয় তথ্য retrieve হয়েছে?"      │
-│                                            │
-│ Ground truth answer থেকে প্রতিটা claim     │
-│ → retrieved context-এ আছে কি না?           │
-│ → claims_found / total_claims = recall     │
-│                                            │
-│ Score: ০.০ (কিছুই নেই) — ১.০ (সব আছে)      │
-├────────────────────────────────────────────┤
-│ ৩. FAITHFULNESS                            │
-│ "উত্তর কি context থেকে এসেছে, নাকি hallucinated?" │
-│                                            │
-│ Answer → প্রতিটা claim                      │
-│ → context-এ supported কি না?               │
-│ → supported_claims / total = faithfulness  │
-│                                            │
-│ Score: ০.০ (সব fabricated) — ১.০ (সব grounded) │
-├────────────────────────────────────────────┤
-│ ৪. ANSWER RELEVANCE                        │
-│ "উত্তর কি প্রশ্নের উত্তর?"                  │
-│                                            │
-│ Answer → LLM generates possible questions   │
-│ → original question এর সাথে match?          │
-│ → similarity = relevance                   │
-│                                            │
-│ Score: ০.০ (off-topic) — ১.০ (perfect)     │
-└────────────────────────────────────────────┘
+# ────────────────────────────────────────────# 
+#  ১. CONTEXT PRECISION                       # 
+#  "Retrieved chunks কি প্রাসঙ্গিক?"          # 
+#                                             # 
+#  Query → retrieved top-k                    # 
+#  → প্রতিটা chunk relevant কি না?             # 
+#  → relevant / total = precision             # 
+#                                             # 
+#  Score: ০.০ (সব irrelevant) — ১.০ (সব relevant) # 
+# ────────────────────────────────────────────# 
+#  ২. CONTEXT RECALL                          # 
+#  "সব প্রয়োজনীয় তথ্য retrieve হয়েছে?"      # 
+#                                             # 
+#  Ground truth answer থেকে প্রতিটা claim     # 
+#  → retrieved context-এ আছে কি না?           # 
+#  → claims_found / total_claims = recall     # 
+#                                             # 
+#  Score: ০.০ (কিছুই নেই) — ১.০ (সব আছে)      # 
+# ────────────────────────────────────────────# 
+#  ৩. FAITHFULNESS                            # 
+#  "উত্তর কি context থেকে এসেছে, নাকি hallucinated?" # 
+#                                             # 
+#  Answer → প্রতিটা claim                      # 
+#  → context-এ supported কি না?               # 
+#  → supported_claims / total = faithfulness  # 
+#                                             # 
+#  Score: ০.০ (সব fabricated) — ১.০ (সব grounded) # 
+# ────────────────────────────────────────────# 
+#  ৪. ANSWER RELEVANCE                        # 
+#  "উত্তর কি প্রশ্নের উত্তর?"                  # 
+#                                             # 
+#  Answer → LLM generates possible questions   # 
+#  → original question এর সাথে match?          # 
+#  → similarity = relevance                   # 
+#                                             # 
+#  Score: ০.০ (off-topic) — ১.০ (perfect)     # 
+# ────────────────────────────────────────────# 
 
 EVALUATION DATASET:
   তোমার RAG-এর জন্য একটা eval set দরকার:
@@ -215,44 +215,44 @@ MICROSOFT GRAPHRAG (2024):
 
 PIPELINE:
 
-  ┌─────────────────────────────────────┐
-  │ ১. ENTITY EXTRACTION                 │
-  │ প্রতিটা chunk → LLM → entities       │
-  │ "Apple was founded by Steve Jobs"   │
-  │ → Entity: Apple, Steve Jobs          │
-  │ → Relation: founded_by               │
-  └──────────────┬──────────────────────┘
+  # ─────────────────────────────────────# 
+  #  ১. ENTITY EXTRACTION                 # 
+  #  প্রতিটা chunk → LLM → entities       # 
+  #  "Apple was founded by Steve Jobs"   # 
+  #  → Entity: Apple, Steve Jobs          # 
+  #  → Relation: founded_by               # 
+  # ──────────────# ──────────────────────# 
                  ↓
-  ┌─────────────────────────────────────┐
-  │ ২. KNOWLEDGE GRAPH CONSTRUCTION      │
-  │ Nodes: entities (Apple, Steve Jobs)  │
-  │ Edges: relations (founded_by)        │
-  │ Properties: types, attributes        │
-  │ → Neo4j, NetworkX, বা custom        │
-  └──────────────┬──────────────────────┘
+  # ─────────────────────────────────────# 
+  #  ২. KNOWLEDGE GRAPH CONSTRUCTION      # 
+  #  Nodes: entities (Apple, Steve Jobs)  # 
+  #  Edges: relations (founded_by)        # 
+  #  Properties: types, attributes        # 
+  #  → Neo4j, NetworkX, বা custom        # 
+  # ──────────────# ──────────────────────# 
                  ↓
-  ┌─────────────────────────────────────┐
-  │ ৩. COMMUNITY DETECTION               │
-  │ Graph → clusters of related entities │
-  │ → Leiden algorithm                   │
-  │ → "Tech companies" community         │
-  │ → "AI researchers" community         │
-  │ → প্রতিটা community-র summary        │
-  └──────────────┬──────────────────────┘
+  # ─────────────────────────────────────# 
+  #  ৩. COMMUNITY DETECTION               # 
+  #  Graph → clusters of related entities # 
+  #  → Leiden algorithm                   # 
+  #  → "Tech companies" community         # 
+  #  → "AI researchers" community         # 
+  #  → প্রতিটা community-র summary        # 
+  # ──────────────# ──────────────────────# 
                  ↓
-  ┌─────────────────────────────────────┐
-  │ ৪. RETRIEVAL                         │
-  │ Query → identify relevant entities   │
-  │ → traverse graph (multi-hop)         │
-  │ → community summaries               │
-  │ → combine with vector search        │
-  └──────────────┬──────────────────────┘
+  # ─────────────────────────────────────# 
+  #  ৪. RETRIEVAL                         # 
+  #  Query → identify relevant entities   # 
+  #  → traverse graph (multi-hop)         # 
+  #  → community summaries               # 
+  #  → combine with vector search        # 
+  # ──────────────# ──────────────────────# 
                  ↓
-  ┌─────────────────────────────────────┐
-  │ ৫. ANSWER GENERATION                 │
-  │ Graph context + vector context → LLM │
-  │ → synthesized, connected answer      │
-  └─────────────────────────────────────┘
+  # ─────────────────────────────────────# 
+  #  ৫. ANSWER GENERATION                 # 
+  #  Graph context + vector context → LLM # 
+  #  → synthesized, connected answer      # 
+  # ─────────────────────────────────────# 
 
 WHEN GRAPH RAG WINS:
 
@@ -646,61 +646,61 @@ doors.push({
 <div class="code-block">Complete Production RAG Architecture:
 
 DOCUMENT INGESTION (Door 1 + 3):
-┌─────────────────────────────────────────────┐
-│ Documents → Parse (PDF/HTML/DOCX)            │
-│ → Clean → Structure → Metadata               │
-│ → Chunk (semantic, ৫১২ tok, ২০% overlap)    │
-│ → Parent-child (২০০ child, ১০০০ parent)      │
-└─────────────────┬───────────────────────────┘
+# ─────────────────────────────────────────────# 
+#  Documents → Parse (PDF/HTML/DOCX)            # 
+#  → Clean → Structure → Metadata               # 
+#  → Chunk (semantic, ৫১২ tok, ২০% overlap)    # 
+#  → Parent-child (২০০ child, ১০০০ parent)      # 
+# ─────────────────# ───────────────────────────# 
                   ↓
 INDEXING (Door 2):
-┌─────────────────────────────────────────────┐
-│ Chunks → Embed (BGE-large, ১০২৪ dim)        │
-│ → Store in Qdrant (HNSW index)               │
-│ → Metadata: source, page, section, date     │
-│ → BM25 index parallel (Elasticsearch)        │
-└─────────────────┬───────────────────────────┘
+# ─────────────────────────────────────────────# 
+#  Chunks → Embed (BGE-large, ১০২৪ dim)        # 
+#  → Store in Qdrant (HNSW index)               # 
+#  → Metadata: source, page, section, date     # 
+#  → BM25 index parallel (Elasticsearch)        # 
+# ─────────────────# ───────────────────────────# 
                   ↓
 QUERY TIME:
-┌─────────────────────────────────────────────┐
-│ User Query                                   │
-│ ↓                                            │
-│ Cache Check (semantic, > ০.৯৫ similarity)   │ → Hit: return cached
-│ ↓ miss                                       │
-│ Query Transform (Door 5):                    │
-│   → Context resolution (conversation)        │
-│   → Rewriting (specific, clear)              │
-│   → Decomposition (if complex)               │
-│ ↓                                            │
-│ Retrieval (Door 4):                          │
-│   → Dense (vector) top-50                    │
-│   → Sparse (BM25) top-50                     │
-│   → RRF fusion → top-20                      │
-│ ↓                                            │
-│ Reranking (Context Eng Door 5):              │
-│   → Cross-encoder (Cohere/BGE-Reranker)      │
-│   → top-20 → top-5                           │
-│ ↓                                            │
-│ Context Assembly (Context Eng Door 2):       │
-│   → System prompt (top)                      │
-│   → Less relevant docs (middle)              │
-│   → Most relevant docs (bottom)              │
-│   → User query (very bottom)                 │
-│   → Budget check (< ৩২K tokens)              │
-│ ↓                                            │
-│ LLM Generation (Prompt Eng Door 3):          │
-│   → temperature=0 (factual)                  │
-│   → Structured output with citations         │
-│   → System: "Answer ONLY from context"       │
-│   → Streaming (SSE)                          │
-│ ↓                                            │
-│ Post-Processing:                             │
-│   → Guardrails check                         │
-│   → Citation verification                    │
-│   → Faithfulness check (RAGAS)               │
-│   → Cache store                              │
-│   → Trace + log (LangSmith)                  │
-└─────────────────┬───────────────────────────┘
+# ─────────────────────────────────────────────# 
+#  User Query                                   # 
+#  ↓                                            # 
+#  Cache Check (semantic, > ০.৯৫ similarity)   #  → Hit: return cached
+#  ↓ miss                                       # 
+#  Query Transform (Door 5):                    # 
+#    → Context resolution (conversation)        # 
+#    → Rewriting (specific, clear)              # 
+#    → Decomposition (if complex)               # 
+#  ↓                                            # 
+#  Retrieval (Door 4):                          # 
+#    → Dense (vector) top-50                    # 
+#    → Sparse (BM25) top-50                     # 
+#    → RRF fusion → top-20                      # 
+#  ↓                                            # 
+#  Reranking (Context Eng Door 5):              # 
+#    → Cross-encoder (Cohere/BGE-Reranker)      # 
+#    → top-20 → top-5                           # 
+#  ↓                                            # 
+#  Context Assembly (Context Eng Door 2):       # 
+#    → System prompt (top)                      # 
+#    → Less relevant docs (middle)              # 
+#    → Most relevant docs (bottom)              # 
+#    → User query (very bottom)                 # 
+#    → Budget check (< ৩২K tokens)              # 
+#  ↓                                            # 
+#  LLM Generation (Prompt Eng Door 3):          # 
+#    → temperature=0 (factual)                  # 
+#    → Structured output with citations         # 
+#    → System: "Answer ONLY from context"       # 
+#    → Streaming (SSE)                          # 
+#  ↓                                            # 
+#  Post-Processing:                             # 
+#    → Guardrails check                         # 
+#    → Citation verification                    # 
+#    → Faithfulness check (RAGAS)               # 
+#    → Cache store                              # 
+#    → Trace + log (LangSmith)                  # 
+# ─────────────────# ───────────────────────────# 
                   ↓
             ANSWER TO USER
 

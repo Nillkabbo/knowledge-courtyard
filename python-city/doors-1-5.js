@@ -1162,14 +1162,14 @@ print(f"Only Python: {only_python}")</div>
 # Choosing the right data structure is CRITICAL.
 # Wrong choice = slow code. Right choice = fast code.
 
-# ┌──────────────────────┬──────────────────────┐
-# │ Need...              │ Use...               │
-# ├──────────────────────┼──────────────────────┤
-# │ Ordered + changeable │ list []              │
-# │ Ordered + locked     │ tuple ()             │
-# │ Lookup by name       │ dict {"key": value}  │
-# │ Unique items only    │ set {}               │
-# └──────────────────────┴──────────────────────┘
+# # ──────────────────────# ──────────────────────# 
+# #  Need...              #  Use...               # 
+# # ──────────────────────# ──────────────────────# 
+# #  Ordered + changeable #  list []              # 
+# #  Ordered + locked     #  tuple ()             # 
+# #  Lookup by name       #  dict {"key": value}  # 
+# #  Unique items only    #  set {}               # 
+# # ──────────────────────# ──────────────────────# 
 
 # REAL EXAMPLES:
 # Shopping cart (order matters, can add/remove) → list

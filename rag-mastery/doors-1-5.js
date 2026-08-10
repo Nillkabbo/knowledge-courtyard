@@ -99,36 +99,36 @@ FORMAT-SPECIFIC CHALLENGES:
 
 UNIVERSAL INGESTION PIPELINE:
 
-  ┌────────────────────────────────────────┐
-  │ ১. LOAD — ফাইল পডো                     │
-  │   PDF, HTML, DOCX, image → raw bytes   │
-  ├────────────────────────────────────────┤
-  │ ২. EXTRACT — টেক্সট বের করো             │
-  │   Format-specific parser               │
-  │   টেবিল, ছবি, সূত্র আলাদা               │
-  ├────────────────────────────────────────┤
-  │ ৩. CLEAN — গোলমাল দূর করো               │
-  │   Boilerplate সরাও                      │
-  │   Encoding fix (UTF-8)                 │
-  │   Whitespace normalize                 │
-  ├────────────────────────────────────────┤
-  │ ৪. STRUCTURE — কাঠামো চিনো              │
-  │   Headers, sections, lists, tables     │
-  │   H1/H2/H3 → hierarchy                 │
-  ├────────────────────────────────────────┤
-  │ ৫. METADATA — ট্যাগ দাও                  │
-  │   source, page, section, date, author  │
-  │   → citation ও filtering-এ লাগবে       │
-  ├────────────────────────────────────────┤
-  │ ৬. CHUNK — টুকরোয় ভাঙো                  │
-  │   (Context Engineering Door 3)          │
-  ├────────────────────────────────────────┤
-  │ ৭. EMBED — ভেক্টর বানাও                  │
-  │   প্রতিটি chunk → embedding model       │
-  ├────────────────────────────────────────┤
-  │ ৮. STORE — vector DB-তে রাখো            │
-  │   Pinecone, Qdrant, Weaviate            │
-  └────────────────────────────────────────┘
+  # ────────────────────────────────────────# 
+  #  ১. LOAD — ফাইল পডো                     # 
+  #    PDF, HTML, DOCX, image → raw bytes   # 
+  # ────────────────────────────────────────# 
+  #  ২. EXTRACT — টেক্সট বের করো             # 
+  #    Format-specific parser               # 
+  #    টেবিল, ছবি, সূত্র আলাদা               # 
+  # ────────────────────────────────────────# 
+  #  ৩. CLEAN — গোলমাল দূর করো               # 
+  #    Boilerplate সরাও                      # 
+  #    Encoding fix (UTF-8)                 # 
+  #    Whitespace normalize                 # 
+  # ────────────────────────────────────────# 
+  #  ৪. STRUCTURE — কাঠামো চিনো              # 
+  #    Headers, sections, lists, tables     # 
+  #    H1/H2/H3 → hierarchy                 # 
+  # ────────────────────────────────────────# 
+  #  ৫. METADATA — ট্যাগ দাও                  # 
+  #    source, page, section, date, author  # 
+  #    → citation ও filtering-এ লাগবে       # 
+  # ────────────────────────────────────────# 
+  #  ৬. CHUNK — টুকরোয় ভাঙো                  # 
+  #    (Context Engineering Door 3)          # 
+  # ────────────────────────────────────────# 
+  #  ৭. EMBED — ভেক্টর বানাও                  # 
+  #    প্রতিটি chunk → embedding model       # 
+  # ────────────────────────────────────────# 
+  #  ৮. STORE — vector DB-তে রাখো            # 
+  #    Pinecone, Qdrant, Weaviate            # 
+  # ────────────────────────────────────────# 
 
 PRODUCTION TOOLS (2024-2025):
   Unstructured.io → universal parser, ২৫+ formats
@@ -234,17 +234,17 @@ INDEX ALGORITHMS:
 
 VECTOR DATABASE COMPARISON:
 
-  ┌────────────┬──────────┬──────────┬──────────┐
-  │ DB         │ Type     │ Strength │ Best For │
-  ├────────────┼──────────┼──────────┼──────────┤
-  │ Pinecone   │ Managed  │ সহজ, fast│ Prototyping│
-  │ Qdrant     │ OSS+Cloud│ Hybrid,  │ Production│
-  │            │          │ Rust fast│          │
-  │ Weaviate   │ OSS+Cloud│ Hybrid   │ Multi-modal│
-  │ Milvus     │ OSS      │ Scale    │ Enterprise│
-  │ Chroma     │ OSS      │ সহজ      │ Dev/prototyping│
-  │ pgvector   │ Extension│ SQL      │ Existing PG│
-  └────────────┴──────────┴──────────┴──────────┘
+  # ────────────# ──────────# ──────────# ──────────# 
+  #  DB         #  Type     #  Strength #  Best For # 
+  # ────────────# ──────────# ──────────# ──────────# 
+  #  Pinecone   #  Managed  #  সহজ, fast#  Prototyping# 
+  #  Qdrant     #  OSS+Cloud#  Hybrid,  #  Production# 
+  #             #           #  Rust fast#           # 
+  #  Weaviate   #  OSS+Cloud#  Hybrid   #  Multi-modal# 
+  #  Milvus     #  OSS      #  Scale    #  Enterprise# 
+  #  Chroma     #  OSS      #  সহজ      #  Dev/prototyping# 
+  #  pgvector   #  Extension#  SQL      #  Existing PG# 
+  # ────────────# ──────────# ──────────# ──────────# 
 
 INDEX OPTIMIZATION:
 
@@ -370,17 +370,17 @@ THE 40% PROBLEM — WHERE NAIVE RAG FAILS:
 
 NAIVE RAG ACCURACY BENCHMARK:
   
-  ┌──────────────────────┬──────────┐
-  │ Task Type            │ Accuracy │
-  ├──────────────────────┼──────────┤
-  │ Factoid (who/what)   │ ৭৫%      │
-  │ Definition           │ ৮০%      │
-  │ Comparison           │ ৪৫%      │ ← খারাপ
-  │ Multi-hop            │ ৩০%      │ ← খুব খারাপ
-  │ Temporal (when)      │ ৫০%      │
-  │ Numerical            │ ৪০%      │ ← খারাপ
-  │ Summary              │ ৫৫%      │
-  └──────────────────────┴──────────┘
+  # ──────────────────────# ──────────# 
+  #  Task Type            #  Accuracy # 
+  # ──────────────────────# ──────────# 
+  #  Factoid (who/what)   #  ৭৫%      # 
+  #  Definition           #  ৮০%      # 
+  #  Comparison           #  ৪৫%      #  ← খারাপ
+  #  Multi-hop            #  ৩০%      #  ← খুব খারাপ
+  #  Temporal (when)      #  ৫০%      # 
+  #  Numerical            #  ৪০%      #  ← খারাপ
+  #  Summary              #  ৫৫%      # 
+  # ──────────────────────# ──────────# 
 
 WHEN NAIVE RAG IS ENOUGH:
   ✅ ছোট knowledge base (< ১০০ docs)
@@ -590,24 +590,24 @@ doors.push({
 
   Cost: প্রতিটা chunk-এর জন্য একটা ছোট LLM call
     → prompt caching দিয়ে ~$1.02 / মিলিয়ন tokens
-    → long doc (1000 pages) ≈ $2.30 একবারে
+    → long doc (1000 pages) ~= $2.30 একবারে
     → index করার সময় একবার, query করার সময় ফ্রি
 
 ACCURACY COMPARISON:
 
-  ┌──────────────────────────┬──────────┐
-  │ Method                   │ Accuracy │
-  ├──────────────────────────┼──────────┤
-  │ Naive RAG                │ ৬০%      │
-  │ + Hybrid search          │ ৭০%      │
-  │ + Reranking              │ ৭৮%      │
-  │ + Parent-child           │ ৮২%      │
-  │ + Query transform        │ ৮৫%      │
-  │ + HyDE                   │ ৮৭%      │
-  │ + Late chunking          │ ৮৯%      │
-  │ + Contextual retrieval   │ ৯২%      │
-  │ All combined             │ ৯৫%+     │
-  └──────────────────────────┴──────────┘
+  # ──────────────────────────# ──────────# 
+  #  Method                   #  Accuracy # 
+  # ──────────────────────────# ──────────# 
+  #  Naive RAG                #  ৬০%      # 
+  #  + Hybrid search          #  ৭০%      # 
+  #  + Reranking              #  ৭৮%      # 
+  #  + Parent-child           #  ৮২%      # 
+  #  + Query transform        #  ৮৫%      # 
+  #  + HyDE                   #  ৮৭%      # 
+  #  + Late chunking          #  ৮৯%      # 
+  #  + Contextual retrieval   #  ৯২%      # 
+  #  All combined             #  ৯৫%+     # 
+  # ──────────────────────────# ──────────# 
 
 LATENCY IMPACT:
   Naive: ১০০ms

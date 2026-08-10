@@ -210,7 +210,7 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Process = সব আলাদা (ভারী)। Thread = মেমোরি ভাগ (হালকা)। দ্রুত কিন্তু race condition ঝুঁকি।</div>
 
-<div class="code-block">— Python: Threads ও GIL —
+<div class="code-block"># — Python: Threads ও GIL —
 
   import threading
 
@@ -225,7 +225,7 @@ doors.push({
   t2 = threading.Thread(target=increment)
   t1.start(); t2.start()
   t1.join();  t2.join()
-  print(counter)  # ≈ 1.4M (not 2M!) — race!
+  print(counter)  # ~= 1.4M (not 2M!) — race!
 
   # ✅ Lock দিয়ে fix:
   lock = threading.Lock()
@@ -457,7 +457,7 @@ signal(S): S = S + 1<br>
 </div>
 <div class="svg-caption">চিত্র: Counting semaphore — empty/full slots গোনে। mutex এক সময় এক thread-কে ঢোকায়।</div>
 
-<div class="code-block">— Python: Semaphore ও Mutex —
+<div class="code-block"># — Python: Semaphore ও Mutex —
 
   import threading
 

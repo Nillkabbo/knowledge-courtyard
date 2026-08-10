@@ -248,8 +248,8 @@ doors.push({
 <div class="callout warn"><span class="co-icon">💧</span><div><strong>Dropout (Srivastava ও Hinton, ২০১৪):</strong> প্রতিটি training step-এ এলোমেলোভাবে কিছু নিউরন বন্ধ করে দাও (probability p)। বলা হয় — কর্মীদের একজন একজন করে ছুটি দাও। বাকিরা কাজ করে। এতে নেটওয়ার্ক একটি নিউরনের উপর অতিরিক্ত নির্ভর করতে পারে না — সবাইকে শেখাতে হয়। Overfitting কমে।</div></div>
 
 <div class="callout info"><span class="co-icon">⚙️</span><div><strong>Optimizer পরিবার:</strong><br>
-<strong>SGD:</strong> w_new = w − η × gradient। সহজ কিন্তু ধীর, কখনো saddle point-এ আটকে যায়।<br>
-<strong>Momentum:</strong> একটি ভারী বল পাহাড়ের ঢাল নামছে — গতি জমে, ছোট গর্ত পার হয়। v = γv + η × gradient।<br>
+<strong>SGD:</strong> w_new = w − η * gradient। সহজ কিন্তু ধীর, কখনো saddle point-এ আটকে যায়।<br>
+<strong>Momentum:</strong> একটি ভারী বল পাহাড়ের ঢাল নামছে — গতি জমে, ছোট গর্ত পার হয়। v = γv + η * gradient।<br>
 <strong>Adam (Kingma-Ba ২০১৫):</strong> adaptive learning rate প্রতিটি parameter-এর জন্য। momentum + adaptive। আজকের সবচেয়ে জনপ্রিয় optimizer।<br>
 <strong>AdamW:</strong> Adam + improved weight decay। Transformer training-এ প্রমাণ।</div></div>
 
@@ -467,17 +467,17 @@ doors.push({
     a: "Decoder-only Transformer — self-attention + masked attention, শুধু পরের শব্দ predict করে।",
     aen: "Decoder-only Transformer — self-attention + masked attention, predicting only the next token."
   },
-  story: `<p class="scene-setting">একটি ছবি। একটি বিড়ালের ছবি। ২৮×২৮ পিক্সেল। এই ছবিটি একটি যাত্রা শুরু করবে — নয়টি স্তরের মধ্য দিয়ে। প্রতিটি স্তরে একজন কারিগর তাকে একটু একটু বদলাবেন। শেষে একটি সংখ্যা থেকে — "বিড়াল" শব্দটি তৈরি হবে। চলো, সেই যাত্রা দেখি।</p>
-<p class="scene-setting en">An image. A cat's image. 28×28 pixels. This image will begin a journey — through nine layers. At each layer, a craftsman will transform it slightly. At the end, from numbers — the word "cat" will emerge. Let's watch this journey.</p>
+  story: `<p class="scene-setting">একটি ছবি। একটি বিড়ালের ছবি। ২৮*২৮ পিক্সেল। এই ছবিটি একটি যাত্রা শুরু করবে — নয়টি স্তরের মধ্য দিয়ে। প্রতিটি স্তরে একজন কারিগর তাকে একটু একটু বদলাবেন। শেষে একটি সংখ্যা থেকে — "বিড়াল" শব্দটি তৈরি হবে। চলো, সেই যাত্রা দেখি।</p>
+<p class="scene-setting en">An image. A cat's image. 28*28 pixels. This image will begin a journey — through nine layers. At each layer, a craftsman will transform it slightly. At the end, from numbers — the word "cat" will emerge. Let's watch this journey.</p>
 
 <div class="dialogue"><strong>দরজা ১ — রোসেনব্ল্যাট (Perceptron):</strong> প্রতিটি পিক্সেল একটি সংখ্যা। ০ থেকে ২৫৫। একটি নিউরন সব পিক্সেল দেখে, ওজন দিয়ে গুণ করে, যোগ করে। "এটা কি বিড়াল?" — হ্যাঁ বা না। কিন্তু একটি নিউরন দিয়ে এটি সম্ভব নয়।</div>
 <div class="dialogue en"><strong>Door 1 — Rosenblatt (Perceptron):</strong> Each pixel is a number. 0 to 255. A neuron sees all pixels, multiplies by weights, sums them. "Is this a cat?" — yes or no. But this isn't possible with one neuron.</div>
 
-<div class="dialogue"><strong>দরজা ২ — কারিগর দাউদ (MLP + Backprop):</strong> আমি একাধিক স্তর দিলাম। প্রথম স্তর ছোট ছোট feature খুঁজে বের করে। দ্বিতীয় স্তর সেগুলো যুক্ত করে। তৃতীয় স্তর সিদ্ধান্ত নেয়। ভুল হলে backpropagation পেছনে গিয়ে ওজন ঠিক করে। কিন্তু ৭৮৪ পিক্সেল × ১০০০ নিউরন = অনেক parameter।</div>
-<div class="dialogue en"><strong>Door 2 — Master Da'ud (MLP + Backprop):</strong> I gave multiple layers. The first layer finds small features. The second combines them. The third decides. If wrong, backpropagation fixes weights backward. But 784 pixels × 1000 neurons = too many parameters.</div>
+<div class="dialogue"><strong>দরজা ২ — কারিগর দাউদ (MLP + Backprop):</strong> আমি একাধিক স্তর দিলাম। প্রথম স্তর ছোট ছোট feature খুঁজে বের করে। দ্বিতীয় স্তর সেগুলো যুক্ত করে। তৃতীয় স্তর সিদ্ধান্ত নেয়। ভুল হলে backpropagation পেছনে গিয়ে ওজন ঠিক করে। কিন্তু ৭৮৪ পিক্সেল * ১০০০ নিউরন = অনেক parameter।</div>
+<div class="dialogue en"><strong>Door 2 — Master Da'ud (MLP + Backprop):</strong> I gave multiple layers. The first layer finds small features. The second combines them. The third decides. If wrong, backpropagation fixes weights backward. But 784 pixels * 1000 neurons = too many parameters.</div>
 
-<div class="dialogue"><strong>দরজা ৩ — হাসান (CNN):</strong> আমি ছোট filter দিলাম। ৩×৩ জানালা দিয়ে পুরো ছবি স্ক্যান করলাম। প্রথম স্তর edge খুঁজে। দ্বিতীয় স্তর shape। তৃতীয় স্তর object part। স্তর গভীর হয় → ধারণা জটিল হয়। parameter কম, spatial structure ধরা যায়।</div>
-<div class="dialogue en"><strong>Door 3 — Hasan (CNN):</strong> I gave small filters. Scanned the whole image with a 3×3 window. First layer finds edges. Second finds shapes. Third finds object parts. Deeper layers → more complex concepts. Fewer parameters, spatial structure captured.</div>
+<div class="dialogue"><strong>দরজা ৩ — হাসান (CNN):</strong> আমি ছোট filter দিলাম। ৩*৩ জানালা দিয়ে পুরো ছবি স্ক্যান করলাম। প্রথম স্তর edge খুঁজে। দ্বিতীয় স্তর shape। তৃতীয় স্তর object part। স্তর গভীর হয় → ধারণা জটিল হয়। parameter কম, spatial structure ধরা যায়।</div>
+<div class="dialogue en"><strong>Door 3 — Hasan (CNN):</strong> I gave small filters. Scanned the whole image with a 3*3 window. First layer finds edges. Second finds shapes. Third finds object parts. Deeper layers → more complex concepts. Fewer parameters, spatial structure captured.</div>
 
 <div class="dialogue"><strong>দরজা ৪ — জাকারিয়া (LSTM):</strong> যদি এটি শুধু ছবি না হয়? যদি এটি একটি ভিডিও হয়? তাহলে প্রতিটি frame আগের frame-এর উপর নির্ভর করে। আমার তিনটি দরজা — forget, input, output — ঠিক করে কোন frame মনে রাখবে, কোনটা ভুলবে।</div>
 <div class="dialogue en"><strong>Door 4 — Zakariya (LSTM):</strong> What if this isn't just an image? What if it's a video? Then each frame depends on the previous. My three gates — forget, input, output — decide which frames to remember, which to forget.</div>

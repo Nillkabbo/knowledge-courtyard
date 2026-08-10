@@ -256,10 +256,10 @@ doors.push({
 
 ধাপ ২ — ESTIMATION (৫ মিনিট)
   অনুমান: 100M short URLs, 100:1 read:write
-    → writes: 100M / 5 বছর ≈ 60K URL/day ≈ 0.7 RPS (write)
-    → reads: 100× = 70 RPS (peak ~10× avg = 700 RPS)
-    → storage: 100M × 500 bytes (long URL + metadata) = 50 GB
-    → bandwidth: 1000 RPS × 500 B = 500 KB/s
+    → writes: 100M / 5 বছর ~= 60K URL/day ~= 0.7 RPS (write)
+    → reads: 100* = 70 RPS (peak ~10* avg = 700 RPS)
+    → storage: 100M * 500 bytes (long URL + metadata) = 50 GB
+    → bandwidth: 1000 RPS * 500 B = 500 KB/s
   → সব মিলিয়ে ছোট-মাঝারি scale। এক DB পারে, কিন্তু HA দরকার।
 
 ধাপ ৩ — HIGH-LEVEL DESIGN (১০ মিনিট)
@@ -267,7 +267,7 @@ doors.push({
   redirect: client → short → lookup → 301/302 → long URL
 
   ENCODING — base62 (a-z, A-Z, 0-9 = 62 chars)
-    7 char base62 → 62⁷ ≈ 3.5 ট্রিলিয়ন সম্ভাবনা — যথেষ্ট
+    7 char base62 → 62⁷ ~= 3.5 ট্রিলিয়ন সম্ভাবনা — যথেষ্ট
     ID (auto-increment) → base62 এ encode
     → অথবা hash(MD5) → প্রথম 7 char (collision handle)
 
@@ -309,7 +309,7 @@ doors.push({
 ধাপ ৬ — WRAP-UP
   trade-offs ব্যাখ্যা করো (কেন 301 না 302, কেন AP না CP)
   bottlenecks চিহ্নিত করো (DB, single counter)
-  পরবর্তী scale প্রশ্ন — "যদি 10× হয়?" → shard, replica, cache বাড়াও
+  পরবর্তী scale প্রশ্ন — "যদি 10* হয়?" → shard, replica, cache বাড়াও
 
 KEY LESSONS:
   • read-heavy → cache + CDN জয়ের চাবি
@@ -403,8 +403,8 @@ doors.push({
 
 ধাপ ২ — ESTIMATION
   300M মাসিক active user
-    → 300M × 0.1 পোস্ট/day = 30M posts/day ≈ 350 posts/sec (avg), peak 5× = 1750/sec
-    → 300M × 0.5 ফিড দেখা/day = 150M feed reads/day ≈ 1700/sec (avg), peak 10× = 17K/sec
+    → 300M * 0.1 পোস্ট/day = 30M posts/day ~= 350 posts/sec (avg), peak 5* = 1750/sec
+    → 300M * 0.5 ফিড দেখা/day = 150M feed reads/day ~= 1700/sec (avg), peak 10* = 17K/sec
     → গড় 200 followings, গড় 5 year post retention
   → ১০ বছরে = 100B posts। বিশাল scale।
 

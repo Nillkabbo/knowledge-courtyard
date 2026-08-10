@@ -19,7 +19,7 @@ doors.push({
 <div class="dialogue"><strong>ক্যাসিনো-গণক সাফওয়ান:</strong> তিনটি নিয়ম মনে রাখো। ১. P(event) = favorable/total। ২. Inclusion-exclusion: P(A OR B) = P(A)+P(B)-P(A AND B)। ৩. Conditional: P(A|B) = P(A∩B)/P(B) — B ঘটেছে জেনে A। Independent হলে P(A∩B) = P(A)·P(B)। পাশা independent — একটি পাশা অন্যটিকে প্রভাবিত করে না। কিন্তু তাস নয় — একটি তাস বাদ গেলে পরেরটির সম্ভাবনা বদলায়!</div>
 <div class="dialogue en"><strong>Casino Counter Safwan:</strong> Remember three rules. 1. P(event) = favorable/total. 2. Inclusion-exclusion: P(A OR B) = P(A)+P(B)-P(A AND B). 3. Conditional: P(A|B) = P(A∩B)/P(B). Independent means P(A∩B) = P(A)·P(B). Dice are independent — one die doesn't affect another. But cards are not — one card removed changes the next probability!</div>
 
-<div class="code-block">— Python: Combinatorial Probability —
+<div class="code-block"># — Python: Combinatorial Probability —
 
   from itertools import product
   from fractions import Fraction
@@ -137,10 +137,10 @@ doors.push({
   story: `<p class="scene-setting">সাফওয়ান (Door ৬) তোমাকে combinatorial probability শিখিয়েছেন। কিন্তু কিছু ঘটনা সসীম নয় — অসংখ্য। Siméon Poisson ১৮৩৭ সালে একটি সূত্র আবিষ্কার করেন। ধরো একটি কল সেন্টার — প্রতি মিনিটে গড়ে ৩টি কল। কোনো মিনিটে কতটি কল আসবে? ০? ১? ৫? ১০? Poisson বলে — P(X=k) = (৩^k · e^(-৩)) / k!। সব হিসাব করা!</p>
 <p class="scene-setting en">Safwan (Door 6) taught you combinatorial probability. But some events are not finite — uncountable. Siméon Poisson in 1837 discovered a formula. Say a call center — average 3 calls per minute. How many calls in a given minute? 0? 1? 5? 10? Poisson says — P(X=k) = (3^k · e^(-3)) / k!. Everything calculable!</p>
 
-<div class="dialogue"><strong>সূক্ষ্ম-গণক হামজা:</strong> Poisson-এর সৌন্দর্য: শুধু একটি প্যারামিটার — λ (rate)। E[X] = λ, Var(X) = λ — গড় ও variance এক! ওয়েবসাইটে প্রতি সেকেন্ডে গড়ে ১০ ভিজিটর? P(X=৫) = ১০^৫·e^(-১০)/৫! ≈ ০.০৩৮। P(X=২০)? খুব কম। কিন্তু সম্ভব! বিরল কিন্তু অসম্ভব নয়। Poisson process: প্রতিটি event independent, exponential inter-arrival time।</div>
-<div class="dialogue en"><strong>Subtle Counter Hamza:</strong> Poisson's beauty: one parameter — λ (rate). E[X] = λ, Var(X) = λ — mean and variance equal! Website with average 10 visitors/sec? P(X=5) = 10^5·e^(-10)/5! ≈ 0.038. P(X=20)? Very small. But possible! Rare but not impossible. Poisson process: each event independent, exponential inter-arrival.</div>
+<div class="dialogue"><strong>সূক্ষ্ম-গণক হামজা:</strong> Poisson-এর সৌন্দর্য: শুধু একটি প্যারামিটার — λ (rate)। E[X] = λ, Var(X) = λ — গড় ও variance এক! ওয়েবসাইটে প্রতি সেকেন্ডে গড়ে ১০ ভিজিটর? P(X=৫) = ১০^৫·e^(-১০)/৫! ~= ০.০৩৮। P(X=২০)? খুব কম। কিন্তু সম্ভব! বিরল কিন্তু অসম্ভব নয়। Poisson process: প্রতিটি event independent, exponential inter-arrival time।</div>
+<div class="dialogue en"><strong>Subtle Counter Hamza:</strong> Poisson's beauty: one parameter — λ (rate). E[X] = λ, Var(X) = λ — mean and variance equal! Website with average 10 visitors/sec? P(X=5) = 10^5·e^(-10)/5! ~= 0.038. P(X=20)? Very small. But possible! Rare but not impossible. Poisson process: each event independent, exponential inter-arrival.</div>
 
-<div class="code-block">— Python: Poisson Distribution —
+<div class="code-block"># — Python: Poisson Distribution —
 
   from scipy.stats import poisson
   import numpy as np
@@ -167,7 +167,7 @@ doors.push({
   print(f"Sample var:  {samples.var():.3f}")    # ~3.0 (E=Var=λ!)
 
   # Poisson → Normal যখন λ বড়:
-  # λ=100 হলে Poisson(100) ≈ Normal(100, 10)
+  # λ=100 হলে Poisson(100) ~= Normal(100, 10)
   # এটাই Central Limit Theorem-এর প্রভাব!</div>
 
 <div class="callout info"><span class="co-icon">🔢</span><div><strong>Poisson properties:</strong><br>
@@ -261,7 +261,7 @@ doors.push({
 <div class="dialogue"><strong>আগমন-ঘড়িকারী যাকারিয়া:</strong> একটি simple chain — Sunny → Rainy। P(Sunny|Sunny) = ০.৮, P(Rainy|Sunny) = ০.২। P(Rainy|Rainy) = ০.৬, P(Sunny|Rainy) = ০.৪। আজ sunny — কালকে ৮০% sunny। কিন্তু এক সপ্তাহ পর? সব ভুলে গেছে — শুধু transition matrix থাকে। দীর্ঘে stationary distribution — ৬৭% sunny, ৩৩% rainy। Google PageRank এটাই — web page একটি state, link একটি transition। সবচেয়ে visited page = highest stationary।</div>
 <div class="dialogue en"><strong>Arrival Clock Keeper Zakariya:</strong> A simple chain — Sunny → Rainy. P(Sunny|Sunny)=0.8, P(Rainy|Sunny)=0.2. P(Rainy|Rainy)=0.6, P(Sunny|Rainy)=0.4. Today sunny — tomorrow 80% sunny. But after a week? Everything forgotten — only the transition matrix remains. Long run — stationary distribution — 67% sunny, 33% rainy. Google PageRank is this — web page is a state, link is a transition. Most visited page = highest stationary.</div>
 
-<div class="code-block">— Python: Markov Chain —
+<div class="code-block"># — Python: Markov Chain —
 
   import numpy as np
 
@@ -386,7 +386,7 @@ doors.push({
 <div class="dialogue"><strong>নৃত্য-পরিচালক আয়েশা:</strong> Monte Carlo সহজ — এলোমেলো নমুনা নাও, গড় করো। কিন্তু জটিল distribution থেকে নমুনা কীভাবে? MCMC — Markov Chain Monte Carlo। Metropolis-Hastings: একটি পদক্ষেপ প্রস্তাব করো। ভালো হলে গ্রহণ করো, খারাপ হলে সম্ভাবনার উপর গ্রহণ। দীর্ঘে এই chain সেই distribution থেকে নমুনা দেয়। Gibbs: এক সময় এক variable পদক্ষেপ। Bayesian inference-এ এটা অপরিহার্য!</div>
 <div class="dialogue en"><strong>Dance Director Ayesha:</strong> Monte Carlo is simple — take random samples, average. But how to sample from complex distributions? MCMC — Markov Chain Monte Carlo. Metropolis-Hastings: propose a step. If good, accept; if bad, accept probabilistically. Long run, this chain samples from that distribution. Gibbs: one variable at a time. Essential in Bayesian inference!</div>
 
-<div class="code-block">— Python: Monte Carlo π ও MCMC —
+<div class="code-block"># — Python: Monte Carlo π ও MCMC —
 
   import numpy as np
 
@@ -396,7 +396,7 @@ doors.push({
   y = np.random.uniform(-1, 1, n)
   inside = np.sum(x**2 + y**2 <= 1)
   pi_estimate = 4 * inside / n
-  print(f"π ≈ {pi_estimate:.4f}")  # ~3.1416
+  print(f"π ~= {pi_estimate:.4f}")  # ~3.1416
 
   # Metropolis-Hastings MCMC:
   # Target: Normal(0, 1)
@@ -416,9 +416,9 @@ doors.push({
   # এটা Normal(0,1) থেকে নমুনা! ✅
 
   # Monte Carlo integration:
-  # ∫₀¹ x² dx ≈ mean of x² for random x in [0,1]
+  # ∫₀¹ x² dx ~= mean of x² for random x in [0,1]
   result = np.mean(np.random.uniform(0, 1, 100000)**2)
-  print(f"∫₀¹ x² dx ≈ {result:.4f}")  # ~0.3333</div>
+  print(f"∫₀¹ x² dx ~= {result:.4f}")  # ~0.3333</div>
 
 <div class="callout info"><span class="co-icon">💃</span><div><strong>Sampling methods:</strong><br>
 <strong>Monte Carlo (Ulam 1946):</strong> random sampling → estimate<br>
@@ -512,7 +512,7 @@ doors.push({
   # "free money" in email → P(spam|words) update
 
   # ২. Normal: human height
-  # μ=175cm, σ=7 → P(>190) = 1 - Φ(2.14) ≈ 1.6%
+  # μ=175cm, σ=7 → P(>190) = 1 - Φ(2.14) ~= 1.6%
 
   # ৩. Poisson: server requests
   # λ=100/sec → P(>150) = very rare

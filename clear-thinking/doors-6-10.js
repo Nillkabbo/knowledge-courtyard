@@ -164,8 +164,8 @@ doors.push({
   recall:{
     q:"আবদুল্লাহ কীভাবে একদিনের মোট বিক্রি ৫% ভুলের মধ্যে আন্দাজ করেন — কোনো হিসাব না দেখে?",
     qen:"How does Abdullah estimate a day's total sales within 5% error — without looking at any ledger?",
-    a:"তিনি ভাঙেন। ভাঙলে সমস্যা সহজ। ক'জন কাস্টমার আসবে? ~২০০। গড়ে কেউ কত খরচ করে? ~$১৫। ২০০ × ১৫ = $৩০০০। কিছু বেশি কিনবে, কিছু কম। আবদুল্লাহ প্রতিটা অংশ আলাদাভাবে আন্দাজ করেন, গুণ করেন। ফার্মি অনুমানের মূল — বিভাজন, বাউন্ডিং, স্যানিটি চেক। আর সবচেয়ে গুরুত্বপূর্ণ — ক্যালিব্রেশন: নিজের আন্দাজের ভুল জানা।",
-    aen:"He decomposes. Decomposing makes it easy. How many customers? ~200. Average spend? ~$15. 200 × 15 = $3000. Some spend more, some less. Abdullah estimates each part separately, multiplies. Fermi estimation's core — decomposition, bounding, sanity check. And most important — calibration: knowing your estimate's error."
+    a:"তিনি ভাঙেন। ভাঙলে সমস্যা সহজ। ক'জন কাস্টমার আসবে? ~২০০। গড়ে কেউ কত খরচ করে? ~$১৫। ২০০ * ১৫ = $৩০০০। কিছু বেশি কিনবে, কিছু কম। আবদুল্লাহ প্রতিটা অংশ আলাদাভাবে আন্দাজ করেন, গুণ করেন। ফার্মি অনুমানের মূল — বিভাজন, বাউন্ডিং, স্যানিটি চেক। আর সবচেয়ে গুরুত্বপূর্ণ — ক্যালিব্রেশন: নিজের আন্দাজের ভুল জানা।",
+    aen:"He decomposes. Decomposing makes it easy. How many customers? ~200. Average spend? ~$15. 200 * 15 = $3000. Some spend more, some less. Abdullah estimates each part separately, multiplies. Fermi estimation's core — decomposition, bounding, sanity check. And most important — calibration: knowing your estimate's error."
   },
   story:`
 <p class="scene-setting">সপ্তম দরজা। একটা মুদির দোকান। ছোট্ট, কিন্তু পরিপাটি। তাকে তাকে সাজানো — চাল, ডাল, তেল, মসলা, সাবান। মালিক আবদুল্লাহ কাউন্টারের পেছনে বসে আছেন — বয়স্ক, গোল চশমা, হাতে একটা পুরনো আবাকাস (তাঁর সিগনেচার), সামনে এক কাপ চা ঠান্ডা হচ্ছে। গন্ধ — মসলার মিশ্র ঝাঁঝ (এলাচ, দারুচিনি, জিরা), সাবানের সুগন্ধ, চালের শ্বাসরুদ্ধকর ভাব। শব্দ — আবাকাসের ক্লিক-ক্ল্যাক, দরজার ঘণ্টা যখন কেউ আসে, আবদুল্লাহর ফিসফিস গোনা।</p>
@@ -192,8 +192,8 @@ doors.push({
 <div class="dialogue">"আসল সংখ্যা কত?" আবদুল্লাহ বললেন। "তখন ছিল ~৬০। ৫০ এর আন্দাজ — ৬০ এর বাস্তব। কাছাকাছি! কিন্তু মূল পয়েন্ট সঠিক সংখ্যা নয় — মূল পয়েন্ট পদ্ধতি। তুমি যদি জানো কীভাবে ভাঙতে হয়, তুমি যেকোনো প্রশ্নের কাছাকাছি যেতে পারবে।"</div>
 <div class="dialogue en">"What was the actual number?" Abdullah said. "It was ~60. The estimate of 50 — the reality of 60. Close! But the main point isn't the exact number — it's the method. If you know how to decompose, you can approach any question."</div>
 
-<div class="dialogue">"তুমি ডেভেলপার," আবদুল্লাহ বললেন। "তোমার প্রতিদিন ফার্মি প্রশ্ন আসে। 'এই ডাটাবেস কত ডেটা ধরবে?' 'এই এপিআই কত রিকোয়েস্ট সামলাবে?' 'মাইগ্রেশন কতক্ষণ চলবে?' কেউ তোমাকে সঠিক উত্তর দেবে না। কিন্তু তুমি ভাঙতে পারো। ডাটাবেস — এক সারিতে কত বাইট? × কত সারি? × কত ইনডেক্স? × কত রেপ্লিকা? এপিআই — এক রিকোয়েস্টে কত সময়? × পিক আওয়ারে কত ইউজার? × কত রিকোয়েস্ট প্রতি ইউজার?"</div>
-<div class="dialogue en">"You're a developer," Abdullah said. "You get Fermi questions daily. 'How much data will this DB hold?' 'How many requests can this API handle?' 'How long will the migration take?' No one gives you the exact answer. But you can decompose. DB — bytes per row? × rows? × indexes? × replicas? API — time per request? × peak users? × requests per user?"</div>
+<div class="dialogue">"তুমি ডেভেলপার," আবদুল্লাহ বললেন। "তোমার প্রতিদিন ফার্মি প্রশ্ন আসে। 'এই ডাটাবেস কত ডেটা ধরবে?' 'এই এপিআই কত রিকোয়েস্ট সামলাবে?' 'মাইগ্রেশন কতক্ষণ চলবে?' কেউ তোমাকে সঠিক উত্তর দেবে না। কিন্তু তুমি ভাঙতে পারো। ডাটাবেস — এক সারিতে কত বাইট? * কত সারি? * কত ইনডেক্স? * কত রেপ্লিকা? এপিআই — এক রিকোয়েস্টে কত সময়? * পিক আওয়ারে কত ইউজার? * কত রিকোয়েস্ট প্রতি ইউজার?"</div>
+<div class="dialogue en">"You're a developer," Abdullah said. "You get Fermi questions daily. 'How much data will this DB hold?' 'How many requests can this API handle?' 'How long will the migration take?' No one gives you the exact answer. But you can decompose. DB — bytes per row? * rows? * indexes? * replicas? API — time per request? * peak users? * requests per user?"</div>
 
 <div class="callout tip"><span class="co-icon">📏</span><div><strong>স্যানিটি চেক (Sanity Check):</strong> আবদুল্লাহ বললেন — প্রতিটা আন্দাজের পর একটা প্রশ্ন করো — <em>'এই সংখ্যাটা কি সম্ভব?'</em> তুমি বললে একটা সার্ভার ১০ মিলিয়ন কাস্টমার সামলাবে — থামো। একটা সার্ভারে কত মেমোরি? কত সিপিইউ? প্রতি কাস্টমারে কত কানেকশন? আবদুল্লাহ যখন আন্দাজ করেন, তিনি শেষে বলেন — "এটা কি সম্ভব? এটা কি বাস্তবসম্মত?" এটাই স্যানিটি চেক।</div></div>
 
@@ -337,13 +337,13 @@ doors.push({
   </div>
 </div>
 
-<div class="dialogue">"এখন তিনটা হাতিয়ার," ইব্রাহিম বললেন। "প্রথম — <strong>প্রত্যাশিত মান (Expected Value)</strong>। আমি যখন সমুদ্রে যেতে চিন্তা করি, আমি ভাবি: ভালো হলে কত মাছ? ~১০০ কেজি। খারাপ হলে কত ক্ষয়? ~নৌকা ক্ষতি, জীবন ঝুঁকি। ভালো হওয়ার সম্ভাবনা? ~৬০%। খারাপের? ~৪০%। প্রত্যাশিত মান = (০.৬ × ১০০ কেজি মাছ) − (০.৪ × নৌকা ক্ষয়)। যদি প্রত্যাশিত মান পজিটিভ হয় — যাওয়া যায়। নেগেটিভ হলে — বন্দরে থাকো।"</div>
-<div class="dialogue en">"Now three tools," Ibrahim said. "First — <strong>expected value</strong>. When I consider going to sea, I think: if good, how much fish? ~100 kg. If bad, how much loss? ~boat damage, life risk. Probability of good? ~60%. Of bad? ~40%. Expected value = (0.6 × 100 kg fish) − (0.4 × boat loss). If positive — go. If negative — stay in harbor."</div>
+<div class="dialogue">"এখন তিনটা হাতিয়ার," ইব্রাহিম বললেন। "প্রথম — <strong>প্রত্যাশিত মান (Expected Value)</strong>। আমি যখন সমুদ্রে যেতে চিন্তা করি, আমি ভাবি: ভালো হলে কত মাছ? ~১০০ কেজি। খারাপ হলে কত ক্ষয়? ~নৌকা ক্ষতি, জীবন ঝুঁকি। ভালো হওয়ার সম্ভাবনা? ~৬০%। খারাপের? ~৪০%। প্রত্যাশিত মান = (০.৬ * ১০০ কেজি মাছ) − (০.৪ * নৌকা ক্ষয়)। যদি প্রত্যাশিত মান পজিটিভ হয় — যাওয়া যায়। নেগেটিভ হলে — বন্দরে থাকো।"</div>
+<div class="dialogue en">"Now three tools," Ibrahim said. "First — <strong>expected value</strong>. When I consider going to sea, I think: if good, how much fish? ~100 kg. If bad, how much loss? ~boat damage, life risk. Probability of good? ~60%. Of bad? ~40%. Expected value = (0.6 * 100 kg fish) − (0.4 * boat loss). If positive — go. If negative — stay in harbor."</div>
 
 <table class="kv-table"><tr><th>প্রত্যাশিত মান সূত্র</th></tr>
-<tr><td class="hl">EV = Σ (সম্ভাবনা × ফলাফলের মান)</td></tr>
-<tr><td>ভালো ফল: ৬০% × +১০০ = +৬০</td></tr>
-<tr><td>খারাপ ফল: ৪০% × −৮০ = −৩২</td></tr>
+<tr><td class="hl">EV = Σ (সম্ভাবনা * ফলাফলের মান)</td></tr>
+<tr><td>ভালো ফল: ৬০% * +১০০ = +৬০</td></tr>
+<tr><td>খারাপ ফল: ৪০% * −৮০ = −৩২</td></tr>
 <tr><td class="hl">মোট EV = +৬০ − ৩২ = +২৮ (যাওয়া যায়)</td></tr>
 </table>
 
@@ -352,8 +352,8 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🎯</span><div><strong>তৃতীয় — স্যাটিসফাইসিং (Satisficing):</strong> ইব্রাহিম বললেন — "আমি যখন জাল ফেলি, আমি সবচেয়ে বড় মাছের খোঁজে থাকি না। আমি যথেষ্ট ভালো মাছ চাই। যে সবচেয়ে বড় মাছ খোঁজে, সে ঝড়ে পড়ে।" হার্বার্ট সাইমন (১৯৫৬) একে বলেছেন <em>satisficing</em> — satisfy + suffice। সবচেয়ে ভালো খোঁজা (maximizing) সময়সাপেক্ষ, ক্লান্তিকর, আর অনেক সময় ভুল। যথেষ্ট ভালো নেওয়া দ্রুত, কার্যকর, আর সন্তুষ্টি দেয়। বই ৩২ (মস্তিষ্কের কারিগর) তোমাকে শিখিয়েছে — মস্তিষ্কের সম্পদ সীমিত। সব সিদ্ধান্তে পারফেকশন চাইলে মস্তিষ্ক ক্লান্ত হয়।</div></div>
 
-<div class="dialogue">"তোমার কাছে একটা সিদ্ধান্ত আছে?" ইব্রাহিম জিজ্ঞেস করলেন। তুমি বললে — "হ্যাঁ। PhD করব কিনা ভাবছি।" ইব্রাহিম ঘাড় নাড়লেন। "এটা Type 1 সিদ্ধান্ত — একমুখী দরজা। সময় নাও। পরামর্শ নাও। প্রিমর্টেম করো — ভাবো কীভাবে ব্যর্থ হবে, সেটা এড়াও। অনুশোচনা ফ্রেম ব্যবহার করো — দশ বছর পর কোনটার আফসোস বেশি? PhD না করা? নাকি PhD করে অন্য কিছু ছাড়া? আর প্রত্যাশিত মান — সম্ভাবনা × ফল। শুধু আবেগ দিয়ে সিদ্ধান্ত নিও না। আবেগ স্পষ্ট কথা বলে ঠিকই — কিন্তু সম্পূর্ণ কথা বলে না।"</div>
-<div class="dialogue en">"You have a decision?" Ibrahim asked. You said — "Yes. I'm thinking whether to do a PhD." Ibrahim nodded. "This is a Type 1 decision — one-way door. Take time. Seek counsel. Premortem — think how it would fail, avoid that. Use the regret frame — in ten years, which will you regret more? Not doing PhD? Or doing PhD and losing something else? And expected value — probability × outcome. Don't decide by emotion alone. Emotions speak clearly — but not completely."</div>
+<div class="dialogue">"তোমার কাছে একটা সিদ্ধান্ত আছে?" ইব্রাহিম জিজ্ঞেস করলেন। তুমি বললে — "হ্যাঁ। PhD করব কিনা ভাবছি।" ইব্রাহিম ঘাড় নাড়লেন। "এটা Type 1 সিদ্ধান্ত — একমুখী দরজা। সময় নাও। পরামর্শ নাও। প্রিমর্টেম করো — ভাবো কীভাবে ব্যর্থ হবে, সেটা এড়াও। অনুশোচনা ফ্রেম ব্যবহার করো — দশ বছর পর কোনটার আফসোস বেশি? PhD না করা? নাকি PhD করে অন্য কিছু ছাড়া? আর প্রত্যাশিত মান — সম্ভাবনা * ফল। শুধু আবেগ দিয়ে সিদ্ধান্ত নিও না। আবেগ স্পষ্ট কথা বলে ঠিকই — কিন্তু সম্পূর্ণ কথা বলে না।"</div>
+<div class="dialogue en">"You have a decision?" Ibrahim asked. You said — "Yes. I'm thinking whether to do a PhD." Ibrahim nodded. "This is a Type 1 decision — one-way door. Take time. Seek counsel. Premortem — think how it would fail, avoid that. Use the regret frame — in ten years, which will you regret more? Not doing PhD? Or doing PhD and losing something else? And expected value — probability * outcome. Don't decide by emotion alone. Emotions speak clearly — but not completely."</div>
 
 <div class="callout info"><span class="co-icon">📝</span><div><strong>সিদ্ধান্ত খাতা (Decision Journal):</strong> ইব্রাহিম বললেন — প্রতিটা বড় সিদ্ধান্তের পরে একটা খাতায় লেখো: কী সিদ্ধান্ত নিলে, কেন, কী প্রত্যাশা, কী ভয়। ছয় মাস পর ফিরে দেখো — কী হলো? তোমার প্রত্যাশা কি ঠিক ছিল? ভয় কি সত্যি হলো? এটা তোমার সিদ্ধান্ত নেওয়ার ক্যালিব্রেশন করবে — আবদুল্লাহর আন্দাজ খাতার মতো।</div></div>
 
@@ -634,7 +634,7 @@ doors.push({
 <tr><td class="hl">৪ সম্ভাবনা</td><td>রুকাইয়া</td><td>স্টার্টআপের বেস রেট: ৯০% ব্যর্থ। একটা ভালো আইডিয়া দেখে বেস রেট ভুলো না।</td></tr>
 <tr><td class="hl">৫ মূলসূত্র</td><td>সুলতান</td><td>প্রিমর্টেম করো — এটা কীভাবে ব্যর্থ হবে? পাঁচটা কারণ বের করো।</td></tr>
 <tr><td class="hl">৬ সমাধান</td><td>হালিমা</td><td>পলিয়ার চার ধাপ। বুঝো (বাজার কী), পরিকল্পনা (MVP), বানাও, ফিরে তাকাও।</td></tr>
-<tr><td class="hl">৭ আন্দাজ</td><td>আবদুল্লাহ</td><td>ফার্মি: কত ইউজার? × কত মাসিক ফি? = কত আয়? স্যানিটি চেক।</td></tr>
+<tr><td class="hl">৭ আন্দাজ</td><td>আবদুল্লাহ</td><td>ফার্মি: কত ইউজার? * কত মাসিক ফি? = কত আয়? স্যানিটি চেক।</td></tr>
 <tr><td class="hl">৮ সিদ্ধান্ত</td><td>ইব্রাহিম</td><td>এটা Type 1 সিদ্ধান্ত — একমুখী। অনুশোচনা ফ্রেম: ১০ বছর পর কোনটার আফসোস?</td></tr>
 <tr><td class="hl">৯ দ্বিতীয়-স্তর</td><td>সালমা</td><td>ছাড়লে কী হবে → তারপর কী → আর তারপর? ইনসেনটিভ চেক।</td></tr>
 </table>

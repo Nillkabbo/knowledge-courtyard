@@ -158,7 +158,7 @@ doors.push({
   ② Methodology — RCT gold standard; correlation ≠ causation
   ③ Effect size — "significant" ≠ অর্থপূর্ণ
   ④ P-hacking — pre-registration = ভালো লক্ষণ
-  ⑤ Conflict of interest — industry-funded ৩-৪× বেশি
+  ⑤ Conflict of interest — industry-funded ৩-৪* বেশি
      sponsor-পক্ষে (Lundh 2012)
   ⑥ Replication — কেউ পুনরুৎপাদন করেছে?
   ⑦ Alternative explanation — আর কী এই ফল ঘটাতে পারে?

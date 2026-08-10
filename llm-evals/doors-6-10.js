@@ -29,67 +29,67 @@ doors.push({
 
 MAJOR BENCHMARKS (2024-2025):
 
-┌──────────────────────────────────────────────┐
-│ MMLU (Massive Multitask Language             │
-│       Understanding)                          │
-│ → ৫৭ subjects: math, history, law, medicine │
-│ → multiple choice questions                  │
-│ → tests broad knowledge                      │
-│ → GPT-4o: ~৮৮%, Claude 3.5: ~৮৮%           │
-│ → standard for "how smart is the model?"     │
-├──────────────────────────────────────────────┤
-│ HumanEval (OpenAI)                           │
-│ → ১৬৪ coding problems                        │
-│ → function signature + docstring → code      │
-│ → pass@k metric                              │
-│ → tests code generation ability              │
-│ → GPT-4o: ~৯০%, Claude 3.5: ~৯২%           │
-├──────────────────────────────────────────────┤
-│ GSM8K (Grade School Math)                    │
-│ → ৮৫০ grade-school math word problems       │
-│ → multi-step reasoning                       │
-│ → tests mathematical reasoning               │
-│ → GPT-4o: ~৯৫%                              │
-├──────────────────────────────────────────────┤
-│ MATH                                         │
-│ → competition mathematics                    │
-│ → harder than GSM8K                          │
-│ → tests advanced math                        │
-│ → GPT-4o: ~৭৬%                              │
-├──────────────────────────────────────────────┤
-│ BBH (BIG-Bench Hard)                         │
-│ → ২৩ challenging tasks                       │
-│ → logical deduction, reasoning               │
-│ → tests complex reasoning                    │
-├──────────────────────────────────────────────┤
-│ HellaSwag                                    │
-│ → sentence completion (commonsense)          │
-│ → "what happens next?"                       │
-│ → tests commonsense reasoning                │
-├──────────────────────────────────────────────┤
-│ TruthfulQA                                   │
-│ → tests if model avoids common               │
-│   misconceptions                             │
-│ → "how confident are models in truth?"       │
-├──────────────────────────────────────────────┤
-│ Chatbot Arena (LMSYS)                        │
-│ → blind A/B human comparison                 │
-│ → Elo rating from millions of votes          │
-│ → "which chatbot is better?"                 │
-│ → hardest to game (no fixed test set)        │
-│ → 2025-26: Arena-Hard (harder prompts),      │
-│   Vision Arena, WebDev Arena (per-domain)    │
-├──────────────────────────────────────────────┤
-│ MMMU (Multimodal)                            │
-│ → multimodal understanding                   │
-│ → text + image reasoning                     │
-│ → tests VLM capability                       │
-├──────────────────────────────────────────────┤
-│ AgentBench                                   │
-│ → agent evaluation                           │
-│ → tool use, planning, multi-step             │
-│ → tests agent capability                     │
-└──────────────────────────────────────────────┘
+# ──────────────────────────────────────────────# 
+#  MMLU (Massive Multitask Language             # 
+#        Understanding)                          # 
+#  → ৫৭ subjects: math, history, law, medicine # 
+#  → multiple choice questions                  # 
+#  → tests broad knowledge                      # 
+#  → GPT-4o: ~৮৮%, Claude 3.5: ~৮৮%           # 
+#  → standard for "how smart is the model?"     # 
+# ──────────────────────────────────────────────# 
+#  HumanEval (OpenAI)                           # 
+#  → ১৬৪ coding problems                        # 
+#  → function signature + docstring → code      # 
+#  → pass@k metric                              # 
+#  → tests code generation ability              # 
+#  → GPT-4o: ~৯০%, Claude 3.5: ~৯২%           # 
+# ──────────────────────────────────────────────# 
+#  GSM8K (Grade School Math)                    # 
+#  → ৮৫০ grade-school math word problems       # 
+#  → multi-step reasoning                       # 
+#  → tests mathematical reasoning               # 
+#  → GPT-4o: ~৯৫%                              # 
+# ──────────────────────────────────────────────# 
+#  MATH                                         # 
+#  → competition mathematics                    # 
+#  → harder than GSM8K                          # 
+#  → tests advanced math                        # 
+#  → GPT-4o: ~৭৬%                              # 
+# ──────────────────────────────────────────────# 
+#  BBH (BIG-Bench Hard)                         # 
+#  → ২৩ challenging tasks                       # 
+#  → logical deduction, reasoning               # 
+#  → tests complex reasoning                    # 
+# ──────────────────────────────────────────────# 
+#  HellaSwag                                    # 
+#  → sentence completion (commonsense)          # 
+#  → "what happens next?"                       # 
+#  → tests commonsense reasoning                # 
+# ──────────────────────────────────────────────# 
+#  TruthfulQA                                   # 
+#  → tests if model avoids common               # 
+#    misconceptions                             # 
+#  → "how confident are models in truth?"       # 
+# ──────────────────────────────────────────────# 
+#  Chatbot Arena (LMSYS)                        # 
+#  → blind A/B human comparison                 # 
+#  → Elo rating from millions of votes          # 
+#  → "which chatbot is better?"                 # 
+#  → hardest to game (no fixed test set)        # 
+#  → 2025-26: Arena-Hard (harder prompts),      # 
+#    Vision Arena, WebDev Arena (per-domain)    # 
+# ──────────────────────────────────────────────# 
+#  MMMU (Multimodal)                            # 
+#  → multimodal understanding                   # 
+#  → text + image reasoning                     # 
+#  → tests VLM capability                       # 
+# ──────────────────────────────────────────────# 
+#  AgentBench                                   # 
+#  → agent evaluation                           # 
+#  → tool use, planning, multi-step             # 
+#  → tests agent capability                     # 
+# ──────────────────────────────────────────────# 
 
 BENCHMARK PROBLEMS:
 
@@ -223,18 +223,18 @@ WHAT IS REGRESSION?
 
 REGRESSION DETECTION PIPELINE:
 
-  ┌──────────────────────────────────────┐
-  │ Every code change:                   │
-  │                                      │
-  │ ১. Run eval set (৫০-২০০ examples)   │
-  │ ২. Compare to baseline scores        │
-  │ ৩. If any metric drops > threshold:  │
-  │    → BLOCK deploy                    │
-  │    → alert developer                 │
-  │    → investigate                     │
-  │ ৪. If all metrics stable/improved:   │
-  │    → allow deploy                    │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  Every code change:                   # 
+  #                                       # 
+  #  ১. Run eval set (৫০-২০০ examples)   # 
+  #  ২. Compare to baseline scores        # 
+  #  ৩. If any metric drops > threshold:  # 
+  #     → BLOCK deploy                    # 
+  #     → alert developer                 # 
+  #     → investigate                     # 
+  #  ৪. If all metrics stable/improved:   # 
+  #     → allow deploy                    # 
+  # ──────────────────────────────────────# 
 
 BASELINE MANAGEMENT:
   
@@ -392,22 +392,22 @@ STATIC vs PRODUCTION EVAL:
 
 PRODUCTION EVAL PIPELINE:
 
-  ┌──────────────────────────────────────┐
-  │ DAILY:                               │
-  │                                      │
-  │ ১. Sample ১০০ queries from traffic  │
-  │ ২. For each:                         │
-  │    → log: query, response, metadata  │
-  │    → LLM-judge: score quality        │
-  │    → (optional) human spot-check ৫%  │
-  │ ৩. Aggregate:                        │
-  │    → daily avg score                 │
-  │    → per-category breakdown          │
-  │    → error patterns                  │
-  │ ৪. Compare to rolling average:       │
-  │    → ৭-day rolling mean              │
-  │    → alert if > ২ std devs from mean │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  DAILY:                               # 
+  #                                       # 
+  #  ১. Sample ১০০ queries from traffic  # 
+  #  ২. For each:                         # 
+  #     → log: query, response, metadata  # 
+  #     → LLM-judge: score quality        # 
+  #     → (optional) human spot-check ৫%  # 
+  #  ৩. Aggregate:                        # 
+  #     → daily avg score                 # 
+  #     → per-category breakdown          # 
+  #     → error patterns                  # 
+  #  ৪. Compare to rolling average:       # 
+  #     → ৭-day rolling mean              # 
+  #     → alert if > ২ std devs from mean # 
+  # ──────────────────────────────────────# 
 
 USER FEEDBACK (cheapest production eval):
 
@@ -446,29 +446,29 @@ DATA DRIFT DETECTION:
 
 PRODUCTION METRICS TO TRACK:
 
-  ┌──────────────────┬───────────────────────┐
-  │ Metric           │ What It Tells You     │
-  ├──────────────────┼───────────────────────┤
-  │ Satisfaction rate│ Overall quality trend │
-  │ (thumbs up %)    │                       │
-  ├──────────────────┼───────────────────────┤
-  │ LLM-judge score  │ Automated quality     │
-  │ (daily sample)   │                       │
-  ├──────────────────┼───────────────────────┤
-  │ Guardrail block  │ Safety issues         │
-  │ rate             │                       │
-  ├──────────────────┼───────────────────────┤
-  │ Hallucination    │ Grounding quality     │
-  │ rate (sampled)   │                       │
-  ├──────────────────┼───────────────────────┤
-  │ Retry rate       │ User dissatisfaction  │
-  ├──────────────────┼───────────────────────┤
-  │ Session length   │ Engagement            │
-  ├──────────────────┼───────────────────────┤
-  │ Error rate       │ System health         │
-  ├──────────────────┼───────────────────────┤
-  │ Latency          │ User experience       │
-  └──────────────────┴───────────────────────┘
+  # ──────────────────# ───────────────────────# 
+  #  Metric           #  What It Tells You     # 
+  # ──────────────────# ───────────────────────# 
+  #  Satisfaction rate#  Overall quality trend # 
+  #  (thumbs up %)    #                        # 
+  # ──────────────────# ───────────────────────# 
+  #  LLM-judge score  #  Automated quality     # 
+  #  (daily sample)   #                        # 
+  # ──────────────────# ───────────────────────# 
+  #  Guardrail block  #  Safety issues         # 
+  #  rate             #                        # 
+  # ──────────────────# ───────────────────────# 
+  #  Hallucination    #  Grounding quality     # 
+  #  rate (sampled)   #                        # 
+  # ──────────────────# ───────────────────────# 
+  #  Retry rate       #  User dissatisfaction  # 
+  # ──────────────────# ───────────────────────# 
+  #  Session length   #  Engagement            # 
+  # ──────────────────# ───────────────────────# 
+  #  Error rate       #  System health         # 
+  # ──────────────────# ───────────────────────# 
+  #  Latency          #  User experience       # 
+  # ──────────────────# ───────────────────────# 
 
 A/B TESTING IN PRODUCTION:
   
@@ -487,17 +487,17 @@ A/B TESTING IN PRODUCTION:
 
 CLOSED-LOOP IMPROVEMENT:
 
-  ┌──────────────────────────────────────┐
-  │ ১. Production traffic → sample      │
-  │ ২. Eval sample → scores             │
-  │ ৩. Low-score cases → analyze        │
-  │ ৪. Root cause → fix                 │
-  │ ৫. Add failure case to eval set     │
-  │ ৬. Fix verified on eval set         │
-  │ ৭. Deploy fix                       │
-  │ ৮. Production eval confirms         │
-  │ → LOOP                              │
-  └──────────────────────────────────────┘
+  # ──────────────────────────────────────# 
+  #  ১. Production traffic → sample      # 
+  #  ২. Eval sample → scores             # 
+  #  ৩. Low-score cases → analyze        # 
+  #  ৪. Root cause → fix                 # 
+  #  ৫. Add failure case to eval set     # 
+  #  ৬. Fix verified on eval set         # 
+  #  ৭. Deploy fix                       # 
+  #  ৮. Production eval confirms         # 
+  #  → LOOP                              # 
+  # ──────────────────────────────────────# 
   
   → This is the engine of continuous improvement
   → production → eval → fix → deploy → repeat
@@ -718,57 +718,57 @@ doors.push({
 
 <div class="code-block">Complete LLM Evaluation Architecture:
 
-┌──────────────────────────────────────────────────┐
-│ COMPLETE EVAL STACK                               │
-├──────────────────────────────────────────────────┤
-│                                                   │
-│  LAYER ১: EVAL SET (the foundation)              │
-│  ├── ৫০-২০০ curated examples                      │
-│  ├── diverse: easy/medium/hard/edge               │
-│  ├── ground truth for each                        │
-│  ├── per-category breakdown                       │
-│  └── production-sampled additions (monthly)       │
-│                                                   │
-│  LAYER ২: METRICS (the measuring sticks)         │
-│  ├── Task-specific: EM/F1 (QA), ROUGE (summ),    │
-│  │   pass@k (code), RAGAS (RAG)                   │
-│  ├── Quality: faithfulness, relevance, coherence │
-│  ├── Performance: latency, cost, throughput       │
-│  └── Safety: toxicity, guardrail blocks           │
-│                                                   │
-│  LAYER ৩: EVALUATORS (who judges)                │
-│  ├── LLM-as-judge: GPT-4o (scale, automated)     │
-│  ├── Human: domain experts (gold standard)        │
-│  ├── Calibration: κ > ০.৭ (LLM vs human)          │
-│  └── Multiple judges: cross-model validation      │
-│                                                   │
-│  LAYER ৪: CI/CD GATE (prevent regression)        │
-│  ├── Every code change → run eval                 │
-│  ├── Compare to baseline                          │
-│  ├── > ৩% drop → BLOCK deploy                     │
-│  └── GitHub Actions integration                   │
-│                                                   │
-│  LAYER ৫: PRODUCTION MONITORING (continuous)      │
-│  ├── Daily sample: ১০০ queries → eval             │
-│  ├── User feedback: thumbs, ratings               │
-│  ├── Drift detection: input distribution change   │
-│  ├── Alerting: quality drop → Slack/PagerDuty     │
-│  └── Closed-loop: failures → eval set → fix       │
-│                                                   │
-│  LAYER ৬: BENCHMARKS (external reference)        │
-│  ├── MMLU, HumanEval, GSM8K (standard)            │
-│  ├── LM-Eval-Harness (run ২০০+)                   │
-│  ├── Chatbot Arena Elo (human comparison)         │
-│  └── Check contamination                           │
-│                                                   │
-│  LAYER ৭: CULTURE (the mindset)                  │
-│  ├── "If you can't measure it, improve it not"   │
-│  ├── Every claim → numbers                        │
-│  ├── Every change → eval                          │
-│  ├── Every failure → eval case                    │
-│  └── Eval is never done — it's continuous        │
-│                                                   │
-└──────────────────────────────────────────────────┘
+# ──────────────────────────────────────────────────# 
+#  COMPLETE EVAL STACK                               # 
+# ──────────────────────────────────────────────────# 
+#                                                    # 
+#   LAYER ১: EVAL SET (the foundation)              # 
+#   # ── ৫০-২০০ curated examples                      # 
+#   # ── diverse: easy/medium/hard/edge               # 
+#   # ── ground truth for each                        # 
+#   # ── per-category breakdown                       # 
+#   # ── production-sampled additions (monthly)       # 
+#                                                    # 
+#   LAYER ২: METRICS (the measuring sticks)         # 
+#   # ── Task-specific: EM/F1 (QA), ROUGE (summ),    # 
+#   #    pass@k (code), RAGAS (RAG)                   # 
+#   # ── Quality: faithfulness, relevance, coherence # 
+#   # ── Performance: latency, cost, throughput       # 
+#   # ── Safety: toxicity, guardrail blocks           # 
+#                                                    # 
+#   LAYER ৩: EVALUATORS (who judges)                # 
+#   # ── LLM-as-judge: GPT-4o (scale, automated)     # 
+#   # ── Human: domain experts (gold standard)        # 
+#   # ── Calibration: κ > ০.৭ (LLM vs human)          # 
+#   # ── Multiple judges: cross-model validation      # 
+#                                                    # 
+#   LAYER ৪: CI/CD GATE (prevent regression)        # 
+#   # ── Every code change → run eval                 # 
+#   # ── Compare to baseline                          # 
+#   # ── > ৩% drop → BLOCK deploy                     # 
+#   # ── GitHub Actions integration                   # 
+#                                                    # 
+#   LAYER ৫: PRODUCTION MONITORING (continuous)      # 
+#   # ── Daily sample: ১০০ queries → eval             # 
+#   # ── User feedback: thumbs, ratings               # 
+#   # ── Drift detection: input distribution change   # 
+#   # ── Alerting: quality drop → Slack/PagerDuty     # 
+#   # ── Closed-loop: failures → eval set → fix       # 
+#                                                    # 
+#   LAYER ৬: BENCHMARKS (external reference)        # 
+#   # ── MMLU, HumanEval, GSM8K (standard)            # 
+#   # ── LM-Eval-Harness (run ২০০+)                   # 
+#   # ── Chatbot Arena Elo (human comparison)         # 
+#   # ── Check contamination                           # 
+#                                                    # 
+#   LAYER ৭: CULTURE (the mindset)                  # 
+#   # ── "If you can't measure it, improve it not"   # 
+#   # ── Every claim → numbers                        # 
+#   # ── Every change → eval                          # 
+#   # ── Every failure → eval case                    # 
+#   # ── Eval is never done — it's continuous        # 
+#                                                    # 
+# ──────────────────────────────────────────────────# 
 
 EVALUATION MATURITY MODEL:
 
@@ -792,18 +792,18 @@ EVALUATION MATURITY MODEL:
 
 TECH STACK:
 
-  ┌─────────────┬──────────────────────────────┐
-  │ Component   │ Tool                         │
-  ├─────────────┼──────────────────────────────┤
-  │ Eval set    │ JSONL + Git                  │
-  │ Metrics     │ RAGAS + custom Python        │
-  │ LLM-judge   │ GPT-4o via Promptfoo         │
-  │ Human eval  │ Google Sheets / MTurk         │
-  │ CI/CD       │ GitHub Actions + eval script  │
-  │ Monitoring  │ Langfuse / LangSmith          │
-  │ Benchmarks  │ LM-Eval-Harness               │
-  │ Dashboard   │ Grafana / Streamlit           │
-  └─────────────┴──────────────────────────────┘
+  # ─────────────# ──────────────────────────────# 
+  #  Component   #  Tool                         # 
+  # ─────────────# ──────────────────────────────# 
+  #  Eval set    #  JSONL + Git                  # 
+  #  Metrics     #  RAGAS + custom Python        # 
+  #  LLM-judge   #  GPT-4o via Promptfoo         # 
+  #  Human eval  #  Google Sheets / MTurk         # 
+  #  CI/CD       #  GitHub Actions + eval script  # 
+  #  Monitoring  #  Langfuse / LangSmith          # 
+  #  Benchmarks  #  LM-Eval-Harness               # 
+  #  Dashboard   #  Grafana / Streamlit           # 
+  # ─────────────# ──────────────────────────────# 
 
 THE COMPLETE EVAL JOURNEY:
 

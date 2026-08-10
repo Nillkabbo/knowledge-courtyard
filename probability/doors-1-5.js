@@ -21,7 +21,7 @@ doors.push({
 <div class="dialogue"><strong>বিশ্বাস-আপডেটকারী আলী:</strong> Reverend Thomas Bayes 1763 সালে একটি সূত্র আবিষ্কার করেন — মৃত্যুর পর প্রকাশিত। সূত্র: P(H|D) = P(D|H)·P(H)/P(D)। Prior বিশ্বাস P(H) + নতুন প্রমাণ P(D|H) = আপডেটেড বিশ্বাস P(H|D)। চিকিৎসক এটা ভুল বুঝে রোগীকে ভুল চিকিৎসা দেয়। Software engineer ভুল বুঝে false positive-এ ডুবে যায়। কিন্তু সঠিক বুঝলে — প্রতিটি পর্যবেক্ষণে বিশ্বাস নিখুঁত হয়।</div>
 <div class="dialogue en"><strong>Belief Updater Ali:</strong> Reverend Thomas Bayes in 1763 discovered a formula — published posthumously. P(H|D) = P(D|H)·P(H)/P(D). Prior belief P(H) + new evidence P(D|H) = updated belief P(H|D). Doctors misunderstand this and mistreat patients. Software engineers misunderstand and drown in false positives. But understood correctly — every observation refines belief.</div>
 
-<div class="code-block">— Python: Bayes Theorem —
+<div class="code-block"># — Python: Bayes Theorem —
 
   # Fraud detection example:
   # P(fraud) = 0.0001 (0.01% — base rate)
@@ -123,7 +123,7 @@ doors.push({
 <div class="dialogue"><strong>গড়-নির্ণয়কারী ফাতিমা:</strong> E[X] = Σ x·P(x)। প্রতিটি ফলাফল তার সম্ভাবনা দিয়ে গুণ, সব যোগ। Var(X) = E[(X-E[X])²] — গড় থেকে কতটা দূরে। সবচেয়ে সুন্দর ধারণা — linearity! E[X+Y] = E[X]+E[Y] — X ও Y independent হওয়ার দরকার নেই! দুটি পাশা মারলে গড় যোগফল = ৩.৫+৩.৫ = ৭। সবসময়। এটাই গাণিতিক জাদু।</div>
 <div class="dialogue en"><strong>Average Determiner Fatima:</strong> E[X] = Σ x·P(x). Multiply each outcome by its probability, sum all. Var(X) = E[(X-E[X])²] — how far from mean. The most beautiful concept — linearity! E[X+Y] = E[X]+E[Y] — X and Y need not be independent! Two dice rolled, average sum = 3.5+3.5 = 7. Always. This is mathematical magic.</div>
 
-<div class="code-block">— Python: Expectation ও Variance —
+<div class="code-block"># — Python: Expectation ও Variance —
 
   import numpy as np
 
@@ -195,7 +195,7 @@ doors.push({
   <text x="320" y="128" text-anchor="middle" fill="#cbd5e1" font-size="10">X, Y independent হওয়া</text>
   <text x="320" y="140" text-anchor="middle" fill="#cbd5e1" font-size="10">দরকার নেই! সবসময় সত্য।</text>
   <text x="320" y="170" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="700">Var(X) = E[X²] − E[X]²</text>
-  <text x="320" y="190" text-anchor="middle" fill="#fcd34d" font-size="8">≈ 2.917 (পাশার ছড়ানো)</text>
+  <text x="320" y="190" text-anchor="middle" fill="#fcd34d" font-size="8">~= 2.917 (পাশার ছড়ানো)</text>
   <text x="320" y="208" text-anchor="middle" fill="#cbd5e1" font-size="10">গড় থেকে কতটা দূরে</text>
   <rect x="430" y="40" width="140" height="180" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="500" y="60" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">Law of Large Numbers</text>
@@ -244,7 +244,7 @@ doors.push({
 <div class="dialogue"><strong>বক্ররেখা-যাজক ইউসুফ:</strong> Normal distribution: f(x) = (১/√(২πσ²))·e^(-(x-μ)²/(২σ²))। ভয় পেও না — শুধু মনে রাখো ঘণ্টা। μ = কেন্দ্র, σ = প্রসারণ। ৬৮-৯৫-৯৯.৭ নিয়ম: μ±σ এর মধ্যে ৬৮% ডেটা। μ±২σ = ৯৫%। μ±৩σ = ৯৯.৭%। মানুষের গড় উচ্চতা ৫'৭" (μ), σ = ৩"। তাহলে ৬৮% মানুষ ৫'৪" থেকে ৫'১০" এর মধ্যে। ৯৯.৭% ৪'১০" থেকে ৬'৪" এর মধ্যে।</div>
 <div class="dialogue en"><strong>Curve Priest Yusuf:</strong> Normal distribution: the bell curve formula. Don't worry — just remember the bell. μ = center, σ = spread. 68-95-99.7 rule: 68% data within μ±σ. μ±2σ = 95%. μ±3σ = 99.7%. Human average height 5'7" (μ), σ = 3". Then 68% of people between 5'4" and 5'10". 99.7% between 4'10" and 6'4".</div>
 
-<div class="code-block">— Python: Normal Distribution —
+<div class="code-block"># — Python: Normal Distribution —
 
   import numpy as np
   import scipy.stats as stats
@@ -360,7 +360,7 @@ doors.push({
 <div class="dialogue"><strong>স্মৃতিহীন-পথিক আমিন:</strong> Memoryless = অতীত প্রভাবহীন। P(X>২০ | X>১০) = P(X>১০)। বাস ১০ মিনিট দেরি করেছে? পরের বাস এখনও একই rate-এ আসে। Exponential: f(x) = λe^(-λx)। λ = rate (বাস প্রতি ঘণ্টায়)। Mean = ১/λ। Geometric = discrete version — কতবার চেষ্টা করলে প্রথম success? M/M/১ queue: Markovian arrival, Markovian service, ১ server।</div>
 <div class="dialogue en"><strong>Memoryless Walker Amin:</strong> Memoryless = past has no effect. P(X>20 | X>10) = P(X>10). Bus 10 minutes late? Next bus arrives at the same rate. Exponential: f(x) = λe^(-λx). λ = rate. Mean = 1/λ. Geometric = discrete version — how many trials until first success? M/M/1 queue: Markovian arrival, Markovian service, 1 server.</div>
 
-<div class="code-block">— Python: Memoryless Distribution —
+<div class="code-block"># — Python: Memoryless Distribution —
 
   import numpy as np
   from scipy.stats import expon
@@ -458,10 +458,10 @@ doors.push({
   story: `<p class="scene-setting">আমিন (Door ৪) তোমাকে memoryless শিখিয়েছেন। কিন্তু একটি বিপদ — বিরল ঘটনা। সাধারণত সব ঠিক থাকে। কিন্তু মাঝে মাঝে — এমন কিছু ঘটে যা কেউ ভাবেনি। ২০০৮ financial crisis। COVID-19। Nassim Taleb একে বলেন Black Swan — বিরল, বিধ্বংসী, পরে বোঝা যায়। Concentration inequalities বলে — এই বিরল ঘটনা গাণিতিকভাবে কতটা বিরল।</p>
 <p class="scene-setting en">Amin (Door 4) taught you memoryless. But a danger — rare events. Usually everything is fine. But sometimes — something happens that nobody imagined. 2008 financial crisis. COVID-19. Nassim Taleb calls them Black Swans — rare, devastating, understood in hindsight. Concentration inequalities tell us — mathematically how rare these events are.</p>
 
-<div class="dialogue"><strong>ঝুঁকি-প্রহরী ওমর:</strong> Markov inequality: P(X≥a) ≤ E[X]/a। সবচেয়ে সহজ — শুধু E[X] লাগে। Chebyshev: P(|X-μ|≥kσ) ≤ ১/k²। কিছুটা শক্ত — Var লাগে। k=৩ হলে সর্বোচ্চ ১/৯ ≈ ১১%। কিন্তু normal-এ ৩σ = ০.৩%। Chebyshev conservative! Chernoff: সবচেয়ে শক্ত — exponential decay। Hoeffding: sample mean কতটা নির্ভরযোগ্য। এগুলো tail risk মাপে।</div>
-<div class="dialogue en"><strong>Risk Guardian Umar:</strong> Markov inequality: P(X≥a) ≤ E[X]/a. Simplest — only needs E[X]. Chebyshev: P(|X-μ|≥kσ) ≤ 1/k². A bit stronger — needs Var. k=3 gives max 1/9 ≈ 11%. But for normal 3σ = 0.3%. Chebyshev is conservative! Chernoff: strongest — exponential decay. Hoeffding: how reliable is sample mean. These measure tail risk.</div>
+<div class="dialogue"><strong>ঝুঁকি-প্রহরী ওমর:</strong> Markov inequality: P(X≥a) ≤ E[X]/a। সবচেয়ে সহজ — শুধু E[X] লাগে। Chebyshev: P(|X-μ|≥kσ) ≤ ১/k²। কিছুটা শক্ত — Var লাগে। k=৩ হলে সর্বোচ্চ ১/৯ ~= ১১%। কিন্তু normal-এ ৩σ = ০.৩%। Chebyshev conservative! Chernoff: সবচেয়ে শক্ত — exponential decay। Hoeffding: sample mean কতটা নির্ভরযোগ্য। এগুলো tail risk মাপে।</div>
+<div class="dialogue en"><strong>Risk Guardian Umar:</strong> Markov inequality: P(X≥a) ≤ E[X]/a. Simplest — only needs E[X]. Chebyshev: P(|X-μ|≥kσ) ≤ 1/k². A bit stronger — needs Var. k=3 gives max 1/9 ~= 11%. But for normal 3σ = 0.3%. Chebyshev is conservative! Chernoff: strongest — exponential decay. Hoeffding: how reliable is sample mean. These measure tail risk.</div>
 
-<div class="code-block">— Python: Concentration Inequalities —
+<div class="code-block"># — Python: Concentration Inequalities —
 
   import numpy as np
 
@@ -482,7 +482,7 @@ doors.push({
   from scipy.stats import binom
   exact = 1 - binom.cdf(59, 100, 0.5)
   print(f"Exact P(X>=60): {exact:.4f}")  # ~0.028
-  # Chernoff: <= exp(-0.1^2 * 50 / 3) ≈ 0.044
+  # Chernoff: <= exp(-0.1^2 * 50 / 3) ~= 0.044
 
   # Black Swan simulation:
   # 99% of days: +1. 1% of days: -200.

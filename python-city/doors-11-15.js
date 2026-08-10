@@ -376,17 +376,17 @@ def unreliable_api_call():
 # @functools.wraps            ← preserves function identity
 
 # SUMMARY:
-# ┌──────────────────────────┬──────────────────────────────┐
-# │ Decorator                │ What it does                 │
-# ├──────────────────────────┼──────────────────────────────┤
-# │ @timer (custom)          │ measures execution time      │
-# │ @log (custom)            │ logs all calls               │
-# │ @memoize/@lru_cache      │ caches results              │
-# │ @retry (custom)          │ retries on failure           │
-# │ @property                │ method → attribute           │
-# │ @dataclass               │ auto __init__/__repr__       │
-# │ @app.route (Flask)       │ registers URL route          │
-# └──────────────────────────┴──────────────────────────────┘
+# # ──────────────────────────# ──────────────────────────────# 
+# #  Decorator                #  What it does                 # 
+# # ──────────────────────────# ──────────────────────────────# 
+# #  @timer (custom)          #  measures execution time      # 
+# #  @log (custom)            #  logs all calls               # 
+# #  @memoize/@lru_cache      #  caches results              # 
+# #  @retry (custom)          #  retries on failure           # 
+# #  @property                #  method → attribute           # 
+# #  @dataclass               #  auto __init__/__repr__       # 
+# #  @app.route (Flask)       #  registers URL route          # 
+# # ──────────────────────────# ──────────────────────────────# 
 
 # Golden rule: ALWAYS use @functools.wraps in custom decorators!</div>
 
@@ -770,16 +770,16 @@ with closing(open("data.txt")) as f:
 # with cd(path):                   → temporarily change directory
 
 # SUMMARY:
-# ┌──────────────────────┬────────────────────────────────┐
-# │ Pattern              │ When to use                    │
-# ├──────────────────────┼────────────────────────────────┤
-# │ with open()          │ always — for files             │
-# │ with conn:           │ database transactions          │
-# │ with lock:           │ thread safety                  │
-# │ @contextmanager      │ build your own (simple)        │
-# │ __enter__/__exit__   │ build your own (class)         │
-# │ suppress(E)          │ ignore expected errors         │
-# └──────────────────────┴────────────────────────────────┘</div>
+# # ──────────────────────# ────────────────────────────────# 
+# #  Pattern              #  When to use                    # 
+# # ──────────────────────# ────────────────────────────────# 
+# #  with open()          #  always — for files             # 
+# #  with conn:           #  database transactions          # 
+# #  with lock:           #  thread safety                  # 
+# #  @contextmanager      #  build your own (simple)        # 
+# #  __enter__/__exit__   #  build your own (class)         # 
+# #  suppress(E)          #  ignore expected errors         # 
+# # ──────────────────────# ────────────────────────────────# </div>
 
 <div class="diagram">
   <div class="diag-title">Context Manager — Setup → Code → Teardown (guaranteed)</div>
@@ -1189,16 +1189,16 @@ print(lst)  # [0, 1, 2, 3, 4]
 print(lst)  # [0, 1, 2, 3, 4] — still there
 
 # SUMMARY:
-# ┌─────────────────┬──────────────────────────────────┐
-# │ Feature         │ Generator                        │
-# ├─────────────────┼──────────────────────────────────┤
-# │ Memory          │ O(1) — one value at a time       │
-# │ Created with    │ yield, (expr for x in items)     │
-# │ Iterate         │ for x in generator               │
-# │ Access by index │ ❌ Not possible                  │
-# │ Reusable        │ ❌ Exhausted after one use        │
-# │ Infinite        │ ✅ Possible (while True + yield)  │
-# └─────────────────┴──────────────────────────────────┘</div>
+# # ─────────────────# ──────────────────────────────────# 
+# #  Feature         #  Generator                        # 
+# # ─────────────────# ──────────────────────────────────# 
+# #  Memory          #  O(1) — one value at a time       # 
+# #  Created with    #  yield, (expr for x in items)     # 
+# #  Iterate         #  for x in generator               # 
+# #  Access by index #  ❌ Not possible                  # 
+# #  Reusable        #  ❌ Exhausted after one use        # 
+# #  Infinite        #  ✅ Possible (while True + yield)  # 
+# # ─────────────────# ──────────────────────────────────# </div>
 
 <div class="diagram">
   <div class="diag-title">Generator = Lazy Loom — এক সুতো এক সময়</div>
@@ -1604,16 +1604,16 @@ p1 = Point(1.0, 2.0)
 p2 = Point(p1.x + 1, p1.y)  # create NEW instead of modifying
 
 # SUMMARY:
-# ┌──────────────┬──────────────────────┬─────────────────────────┐
-# │ Tool         │ What it does         │ Pythonic alternative    │
-# ├──────────────┼──────────────────────┼─────────────────────────┤
-# │ lambda       │ inline function      │ def (for complex logic) │
-# │ map(f, items)│ transform each      │ [f(x) for x in items]   │
-# │ filter(f, it)│ select matching      │ [x for x in it if f(x)] │
-# │ reduce(f, it)│ combine to one      │ sum/min/max (usually)   │
-# │ sorted key=  │ sort by function    │ lambda or def           │
-# │ partial      │ pre-fill arguments   │ closure                 │
-# └──────────────┴──────────────────────┴─────────────────────────┘</div>
+# # ──────────────# ──────────────────────# ─────────────────────────# 
+# #  Tool         #  What it does         #  Pythonic alternative    # 
+# # ──────────────# ──────────────────────# ─────────────────────────# 
+# #  lambda       #  inline function      #  def (for complex logic) # 
+# #  map(f, items)#  transform each      #  [f(x) for x in items]   # 
+# #  filter(f, it)#  select matching      #  [x for x in it if f(x)] # 
+# #  reduce(f, it)#  combine to one      #  sum/min/max (usually)   # 
+# #  sorted key=  #  sort by function    #  lambda or def           # 
+# #  partial      #  pre-fill arguments   #  closure                 # 
+# # ──────────────# ──────────────────────# ─────────────────────────# </div>
 
 <div class="diagram">
   <div class="diag-title">Functional Pipeline — map → filter → reduce</div>
@@ -1751,15 +1751,15 @@ print(f"Sequential: {elapsed:.1f}s")  # ~3.0s (1+1+1)
 # Multiprocessing creates separate processes, each with its own GIL,
 # so they bypass this limitation entirely.
 
-# ┌──────────────────┬────────────────┬─────────────────────┐
-# │ Task type        │ Example        │ Best method          │
-# ├──────────────────┼────────────────┼─────────────────────┤
-# │ Network I/O      │ download 100   │ asyncio or threading │
-# │ File I/O         │ read 50 files  │ threading            │
-# │ Database I/O     │ 100 queries    │ threading            │
-# │ CPU math         │ heavy compute  │ multiprocessing      │
-# │ Mixed            │ API + process  │ asyncio + ProcessPool│
-# └──────────────────┴────────────────┴─────────────────────┘</div>
+# # ──────────────────# ────────────────# ─────────────────────# 
+# #  Task type        #  Example        #  Best method          # 
+# # ──────────────────# ────────────────# ─────────────────────# 
+# #  Network I/O      #  download 100   #  asyncio or threading # 
+# #  File I/O         #  read 50 files  #  threading            # 
+# #  Database I/O     #  100 queries    #  threading            # 
+# #  CPU math         #  heavy compute  #  multiprocessing      # 
+# #  Mixed            #  API + process  #  asyncio + ProcessPool# 
+# # ──────────────────# ────────────────# ─────────────────────# </div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প:</strong> হাসান বললেন — একটা টিম CPU-heavy কাজে threading ব্যবহার করলো। কিন্তু Python GIL — এক সময়ে এক thread-ই CPU ব্যবহার করে। threading দিয়ে CPU math = কোনো লাভ নেই, উল্টে overhead। CPU-heavy = multiprocessing (আলাদা process, GIL bypass)। ভুল পদ্ধতি = ধীর ও বিপজ্জনক।</div></div>
 
@@ -2020,17 +2020,17 @@ print(f"Total words scraped: {total_words:,}")
 <div class="code-block"># ── STEP 10: Decision guide — which to use? ──
 # Choose the right tool based on your task type.
 
-# ┌────────────────────┬───────────────────────────────────┐
-# │ Task               │ Best method                       │
-# ├────────────────────┼───────────────────────────────────┤
-# │ Download 100 URLs  │ asyncio (best) or threading (ok)  │
-# │ Read 50 files      │ threading                         │
-# │ Database queries   │ threading                         │
-# │ Heavy math/CPU     │ multiprocessing                   │
-# │ Image processing   │ multiprocessing                   │
-# │ Web server         │ asyncio (FastAPI, aiohttp)        │
-# │ Background tasks   │ threading or Celery               │
-# └────────────────────┴───────────────────────────────────┘
+# # ────────────────────# ───────────────────────────────────# 
+# #  Task               #  Best method                       # 
+# # ────────────────────# ───────────────────────────────────# 
+# #  Download 100 URLs  #  asyncio (best) or threading (ok)  # 
+# #  Read 50 files      #  threading                         # 
+# #  Database queries   #  threading                         # 
+# #  Heavy math/CPU     #  multiprocessing                   # 
+# #  Image processing   #  multiprocessing                   # 
+# #  Web server         #  asyncio (FastAPI, aiohttp)        # 
+# #  Background tasks   #  threading or Celery               # 
+# # ────────────────────# ───────────────────────────────────# 
 
 # QUICK RULES:
 # 1. Waiting for NETWORK or FILES? → threading or asyncio

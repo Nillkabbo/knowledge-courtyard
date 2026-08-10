@@ -136,7 +136,7 @@ doors.push({
 <div class="dialogue">যোগাযোগ বলেছিলেন — স্পষ্ট বলো। কিন্তু আমি বলি — স্পষ্ট বললেও ভুল জিনিস বানালে কিছু হবে না। নৌকা সুন্দর, কিন্তু নদী ছাড়া মূল্যহীন। পণ্য = সমস্যা + সমাধান + মানুষ। যে সমাধান বানায় কিন্তু সমস্যা বোঝে না, সে স্থলভাগে নৌকা বানায়। যে তিনটাই বোঝে, সে সমুদ্রে যাত্রা করে।</div>
 <div class="dialogue en">"Communication said — speak clearly. But I say — even speaking clearly, if you build the wrong thing, nothing happens. The boat is beautiful, but without a river, worthless. Product = problem + solution + people. One who builds solutions without understanding problems, builds boats on land. One who understands all three, sails the ocean."</div>
 
-<div class="callout info"><span class="co-icon">🧮</span><div><strong>Product equation:</strong> Great Product = Real Problem × Good Solution × Right People। যেকোনো factor শূন্য হলে product শূন্য।</div></div>
+<div class="callout info"><span class="co-icon">🧮</span><div><strong>Product equation:</strong> Great Product = Real Problem * Good Solution * Right People। যেকোনো factor শূন্য হলে product শূন্য।</div></div>
 
 <table class="kv-table"><tr><th>Fail mode</th><th>কী</th><th>ব্যর্থতার %</th></tr>
 <tr><td class="hl">১. কোনো real problem নেই</td><td>"Cool tech, but who needs it?"</td><td>~৭০%</td></tr>

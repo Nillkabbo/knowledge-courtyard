@@ -15,7 +15,7 @@ doors.push({
     q:"জ্যোতির্বিদ কেন শুধু 'দ্রুত' বলেন না, বরং 'কীভাবে স্কেল করে' বলেন?",
     qen:"Why does the astrolabe maker say not just 'fast', but 'how it scales'?",
     a:"কারণ ছোট ইনপুটে সব অ্যালগরিদম দ্রুত। আসল প্রশ্ন — ইনপুট ১০ গুণ হলে কাজ কত গুণ হয়? O(n) হলে ১০ গুণ, O(n²) হলে ১০০ গুণ, O(2ⁿ) হলে বিস্ফোরণ। Big-O সেই স্কেল মাপে।",
-    aen:"Because for small inputs every algorithm is fast. The real question — if input grows 10×, how much does work grow? O(n) → 10×, O(n²) → 100×, O(2ⁿ) → explosion. Big-O measures that scaling."
+    aen:"Because for small inputs every algorithm is fast. The real question — if input grows 10*, how much does work grow? O(n) → 10*, O(n²) → 100*, O(2ⁿ) → explosion. Big-O measures that scaling."
   },
   story:`
 <p class="scene-setting">প্রথম দোকান। জ্যোতির্বিদের কক্ষ। পিতলের অ্যাস্ট্রোলেব, নক্ষত্র মানচিত্র, দেয়ালে ঘূর্ণায়মান গিয়ার। উস্তাদ ফাহিম দাঁড়িয়ে আছেন — হাতে একটা পিতলের যন্ত্র, চোখে তীক্ষ্ণতা। তিনি মাপেন। নক্ষত্রের দূরত্ব, গ্রহের কক্ষপথ, সময়ের গতি। "সবকিছু মাপা যায়," তিনি বলেন। "এমনকি চিন্তাও। তোমার অ্যালগরিদম কত দ্রুত? তবে সবচেয়ে গুরুত্বপূর্ণ — ইনপুট বাড়লে কত দ্রুত ধীর হয়?"</p>
@@ -120,7 +120,7 @@ def sum_slow(n):
     """O(n²) — nested loop (একই উত্তর, ভুল পদ্ধতি)"""
     total = 0
     for i in range(n):
-        for j in range(n):       # প্রতিটা i-এর জন্য পুরো n বার লুপ — n×n = O(n²)
+        for j in range(n):       # প্রতিটা i-এর জন্য পুরো n বার লুপ — n*n = O(n²)
             if i == j:            # শুধু মিলে গেলে যোগ করি (একই ফলাফল পেতে)
                 total += i
     return total
@@ -162,8 +162,8 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতার গল্প:</strong> বিলাল naive recursion দিয়ে fib(35) বের করতে গিয়েছিলেন। ২৯ মিলিয়ন+ কল, ৬ সেকেন্ড ধরে ঝুলে রইল। কারণ একই সমস্যা বারবার হিসাব হচ্ছিল। তারপর memoization (DP, দোকান ১৫) যোগ করলেন — মাত্র ৩৫টা কলে ০.০০১ সেকেন্ডে শেষ। হাজার গুণ দ্রুত। কারণ প্রতিটা উত্তর মনে রাখা হলো, পুনরায় হিসাব হলো না।</div></div>
 <div class="dialogue en">"The astrolabe maker taught — measure, think of scale. I say — as scale shrinks, the same problem repeats. A tree's branch — from it a smaller branch, from that a smaller one. Same shape, smaller scale. This is recursion — a copy of itself, made smaller."</div>
 
-<div class="dialogue">প্রতিটা recursion-এ দুটো অংশ থাকে। Base case — যেখানে থামো। ছোট থেকে ছোট, শেষ পর্যন্ত এসে থামতে হয়। Recursive case — নিজেকে ছোট ইনপুটে ডাকো। Factorial: 5! = 5 × 4!, আর 4! = 4 × 3!, ... 1! = 1 (base case)। প্রতিটা ধাপে সমস্যা ছোট হয় — একদিন base case-এ পৌঁছায়।</div>
-<div class="dialogue en">"Every recursion has two parts. Base case — where you stop. Smaller and smaller, eventually you must halt. Recursive case — call yourself on smaller input. Factorial: 5! = 5 × 4!, and 4! = 4 × 3!, ... 1! = 1 (base case). Each step shrinks the problem — eventually reaching the base case."</div>
+<div class="dialogue">প্রতিটা recursion-এ দুটো অংশ থাকে। Base case — যেখানে থামো। ছোট থেকে ছোট, শেষ পর্যন্ত এসে থামতে হয়। Recursive case — নিজেকে ছোট ইনপুটে ডাকো। Factorial: 5! = 5 * 4!, আর 4! = 4 * 3!, ... 1! = 1 (base case)। প্রতিটা ধাপে সমস্যা ছোট হয় — একদিন base case-এ পৌঁছায়।</div>
+<div class="dialogue en">"Every recursion has two parts. Base case — where you stop. Smaller and smaller, eventually you must halt. Recursive case — call yourself on smaller input. Factorial: 5! = 5 * 4!, and 4! = 4 * 3!, ... 1! = 1 (base case). Each step shrinks the problem — eventually reaching the base case."</div>
 
 <div class="diagram">
   <div class="diag-title">factorial(4) — কল ট্রি ও রিটার্ন</div>
@@ -197,11 +197,11 @@ doors.push({
       <text class="lbl-sm" x="120" y="208" fill="#f0c14b" text-anchor="middle">returns 1</text>
       <line class="edge-hot" x1="240" y1="208" x2="160" y2="208"/>
     </g>
-    <text class="lbl-sm" x="120" y="154" fill="#f0c14b" text-anchor="middle">2×1 = 2</text>
+    <text class="lbl-sm" x="120" y="154" fill="#f0c14b" text-anchor="middle">2*1 = 2</text>
     <line class="edge-hot" x1="240" y1="154" x2="160" y2="154"/>
-    <text class="lbl-sm" x="120" y="100" fill="#f0c14b" text-anchor="middle">3×2 = 6</text>
+    <text class="lbl-sm" x="120" y="100" fill="#f0c14b" text-anchor="middle">3*2 = 6</text>
     <line class="edge-hot" x1="240" y1="100" x2="160" y2="100"/>
-    <text class="lbl-sm" x="120" y="46" fill="#f0c14b" text-anchor="middle">4×6 = 24</text>
+    <text class="lbl-sm" x="120" y="46" fill="#f0c14b" text-anchor="middle">4*6 = 24</text>
     <line class="edge-hot" x1="240" y1="46" x2="160" y2="46"/>
     <text class="lbl-sm" x="280" y="265" text-anchor="middle">নিচে নামো (calls) · উপরে ফেরো (returns) — স্ট্যাকের দুই দিক</text>
   </svg>
@@ -367,22 +367,22 @@ doors.push({
     <text class="lbl-sm" x="467.5" y="150">120</text>
     <!-- direct access arrow -->
     <line class="edge-cyan" x1="317.5" y1="30" x2="317.5" y2="64"/>
-    <text class="lbl-sm" x="317.5" y="22" fill="#36d6e7">arr[3] → addr 100 + 3×4 = 112</text>
-    <text class="lbl-sm" x="280" y="182" text-anchor="middle">O(1) — index থেকে ঠিকানা গণনা: base + index × size</text>
+    <text class="lbl-sm" x="317.5" y="22" fill="#36d6e7">arr[3] → addr 100 + 3*4 = 112</text>
+    <text class="lbl-sm" x="280" y="182" text-anchor="middle">O(1) — index থেকে ঠিকানা গণনা: base + index * size</text>
   </svg>
-  <div class="diag-cap">index × size যোগ করে ঠিকানা — তাই যেকোনো উপাদান এক ধাপে।</div>
+  <div class="diag-cap">index * size যোগ করে ঠিকানা — তাই যেকোনো উপাদান এক ধাপে।</div>
 </div>
 
 <div class="dialogue">কিন্তু যদি টালিগুলো ছড়িয়ে থাকে? তাহলে প্রতিটা দেখে যেতে হবে — প্রথম, দ্বিতীয়, তৃতীয়... যত বেশি টালি, তত বেশি সময়। একে বলে O(n) — রৈখিক সময়। Array-র শক্তি ধারাবাহিকতায়। Linked list-এর দুর্বলতা — ছড়িয়ে থাকা।</div>
 <div class="dialogue en">"But if tiles are scattered? Then you must check each — first, second, third... The more tiles, the more time. This is O(n) — linear time. Array's power is contiguity. Linked list's weakness — being scattered."</div>
 
-<div class="dialogue">এখন শোনো — তুমি AI ইঞ্জিনিয়ার। তোমার প্রতিটা মডেলের ইনপুট কী? একটা ছবি — কিন্তু মেশিনের কাছে সেটা সংখ্যার একটা গ্রিড। 224×224 pixel, প্রতিটায় 3 রঙ (RGB)। সেটা একটা 3D array — tensor। একটা sentence — প্রতিটা টোকেন একটা embedding vector (শত শত সংখ্যা)। সব শেষে array।</div>
-<div class="dialogue en">"Now listen — you're an AI engineer. What's every model's input? An image — but to the machine, it's a grid of numbers. 224×224 pixels, each with 3 colors (RGB). That's a 3D array — a tensor. A sentence — each token is an embedding vector (hundreds of numbers). Everything ends as arrays."</div>
+<div class="dialogue">এখন শোনো — তুমি AI ইঞ্জিনিয়ার। তোমার প্রতিটা মডেলের ইনপুট কী? একটা ছবি — কিন্তু মেশিনের কাছে সেটা সংখ্যার একটা গ্রিড। 224*224 pixel, প্রতিটায় 3 রঙ (RGB)। সেটা একটা 3D array — tensor। একটা sentence — প্রতিটা টোকেন একটা embedding vector (শত শত সংখ্যা)। সব শেষে array।</div>
+<div class="dialogue en">"Now listen — you're an AI engineer. What's every model's input? An image — but to the machine, it's a grid of numbers. 224*224 pixels, each with 3 colors (RGB). That's a 3D array — a tensor. A sentence — each token is an embedding vector (hundreds of numbers). Everything ends as arrays."</div>
 
 <div class="code-block">Tensor Shapes in AI:
 
 ছবি (Image):  [224, 224, 3]     → 3D tensor
-বাক্য (Text):  [10, 768]         → 2D (10 tokens × 768 dims)
+বাক্য (Text):  [10, 768]         → 2D (10 tokens * 768 dims)
 ব্যাচ (Batch): [32, 224, 224, 3] → 4D (32 images)
 
 Index rules:
@@ -537,17 +537,17 @@ doors.push({
 
 ARRAY vs LINKED LIST — কখন কোনটা?
 
-  ┌──────────────────┬─────────────┬─────────────┐
-  │ Operation        │ Array       │ Linked List │
-  ├──────────────────┼─────────────┼─────────────┤
-  │ access (index)   │ O(1) ✅     │ O(n) ❌     │
-  │ insert head      │ O(n) ❌     │ O(1) ✅     │
-  │ insert tail      │ O(1)* ✅    │ O(1)* ✅    │
-  │ insert middle    │ O(n)        │ O(1)**      │
-  │ search           │ O(n)        │ O(n)        │
-  │ memory overhead  │ low         │ high (ptr)  │
-  │ cache locality   │ ভালো ✅     │ খারাপ ❌    │
-  └──────────────────┴─────────────┴─────────────┘
+  # ──────────────────# ─────────────# ─────────────# 
+  #  Operation        #  Array       #  Linked List # 
+  # ──────────────────# ─────────────# ─────────────# 
+  #  access (index)   #  O(1) ✅     #  O(n) ❌     # 
+  #  insert head      #  O(n) ❌     #  O(1) ✅     # 
+  #  insert tail      #  O(1)* ✅    #  O(1)* ✅    # 
+  #  insert middle    #  O(n)        #  O(1)**      # 
+  #  search           #  O(n)        #  O(n)        # 
+  #  memory overhead  #  low         #  high (ptr)  # 
+  #  cache locality   #  ভালো ✅     #  খারাপ ❌    # 
+  # ──────────────────# ─────────────# ─────────────# 
   * amortized / tail pointer সহ  ** node-এর reference থাকলে
 
 WHY CACHE LOCALITY MATTERS (the hidden cost):
