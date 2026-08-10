@@ -325,47 +325,214 @@ doors.push({
   <div class="cmp-card cmp-good"><div class="cmp-label">✅ Logistic Regression</div>σ(wx + b) → ০ থেকে ১। ক্লাস বলে। Spam না নয়, রোগ আছে না নেই — যেখানে উত্তর হ্যাঁ/না।</div>
 </div>
 
-<div class="code-block"># — — — Python: Logistic Regression — — —
+<div class="code-block"># ── STEP 1: What is logistic regression? ──
+# Linear regression predicts a NUMBER (price, temperature).
+# Logistic regression predicts a PROBABILITY (0 to 1) → classification.
+
+# Uses the SIGMOID function to squash any value into 0-1 range:
+# sigmoid(z) = 1 / (1 + e^(-z))
+
+import numpy as np
+
+def sigmoid(z):
+    """Squash any number into 0 to 1 range."""
+    return 1 / (1 + np.exp(-z))
+
+# Visualize sigmoid:
+for z in [-5, -2, -1, 0, 1, 2, 5]:
+    print(f"  sigmoid({z:>2}) = {sigmoid(z):.4f}")
+# sigmoid(-5) = 0.0067  → very unlikely
+# sigmoid( 0) = 0.5000  → 50/50
+# sigmoid( 5) = 0.9933  → very likely
+
+# Logistic regression model:
+# probability = sigmoid(w1*x1 + w2*x2 + ... + b)
+# If probability &gt; 0.5 → class 1 (pass)
+# If probability &lt; 0.5 → class 0 (fail)</div>
+
+<div class="code-block"># ── STEP 2: Binary classification example ──
+# Predict: will a student pass (1) or fail (0)?
+# Features: [study_hours, sleep_hours]
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
+import numpy as np
+
+# Training data:
+X = np.array([[5, 7], [2, 4], [8, 8], [1, 3], [6, 6], [3, 5]])
+y = np.array([1, 0, 1, 0, 1, 0])  # 1=pass, 0=fail
+
+# Train:
+model = LogisticRegression()
+model.fit(X, y)
+
+# Predict new student (7 hours study, 7 hours sleep):
+new_student = np.array([[7, 7]])
+probability = model.predict_proba(new_student)[0][1]
+print(f"Pass probability: {probability:.1%}")
+print(f"Decision: {'PASS' if probability >= 0.5 else 'FAIL'}")
+
+# Evaluate on training data:
+predictions = model.predict(X)
+print(f"Accuracy: {accuracy_score(y, predictions):.1%}")
+print(classification_report(y, predictions))</div>
+
+<div class="code-block"># ── STEP 3: Cross-entropy loss ──
+# Logistic regression uses CROSS-ENTROPY loss, not MSE.
+# Cross-entropy punishes confident wrong answers heavily.
+
+import numpy as np
+
+def cross_entropy_loss(y_true, y_pred):
+    """
+    Cross-entropy loss for binary classification.
+    y_true: actual (0 or 1)
+    y_pred: predicted probability (0 to 1)
+    """
+    # Avoid log(0) by adding tiny epsilon:
+    eps = 1e-15
+    y_pred = np.clip(y_pred, eps, 1 - eps)
+
+    # Formula: -[y*log(p) + (1-y)*log(1-p)]
+    return -np.mean(y_true * np.log(y_pred) + (1 - y_true) * np.log(1 - y_pred))
+
+# Compare MSE vs Cross-Entropy for wrong predictions:
+actual = np.array([1.0])  # true answer is 1
+
+# Model predicts 0.9 (correct, confident):
+pred_correct = np.array([0.9])
+print(f"  Correct (0.9): MSE={np.mean((actual-pred_correct)**2):.4f}, "
+      f"CE={cross_entropy_loss(actual, pred_correct):.4f}")
+
+# Model predicts 0.1 (wrong, confident):
+pred_wrong = np.array([0.1])
+print(f"  Wrong (0.1):   MSE={np.mean((actual-pred_wrong)**2):.4f}, "
+      f"CE={cross_entropy_loss(actual, pred_wrong):.4f}")
+
+# Cross-entropy punishes confident wrong answers MUCH more:
+# MSE: 0.01 vs 0.81 (81x worse)
+# CE:  0.10 vs 2.30 (23x worse, but CE grows faster for extreme errors)</div>
+
+<div class="code-block"># ── STEP 4: Logistic regression from scratch ──
+# Understanding the training loop:
 
 import numpy as np
 
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 
-# Training data: [study_hours, sleep_hours] → pass(1)/fail(0)
-X = np.array([[5,7], [2,4], [8,8], [1,3], [6,6], [3,5]])
+# Data: [study_hours, sleep_hours] → pass(1)/fail(0)
+X = np.array([[5, 7], [2, 4], [8, 8], [1, 3], [6, 6], [3, 5]])
 y = np.array([1, 0, 1, 0, 1, 0])
 
-# Initialize weights
-w = np.zeros(2)
+# Initialize:
+w = np.zeros(2)  # one weight per feature
 b = 0.0
 lr = 0.1
 
 for epoch in range(200):
-    # Forward
-    z = X @ w + b
-    preds = sigmoid(z)
-    
-    # Cross-entropy loss
-    loss = -np.mean(y * np.log(preds + 1e-15) + (1-y) * np.log(1-preds + 1e-15))
-    
-    # Gradients
-    dz = preds - y
-    dw = X.T @ dz / len(y)
-    db = np.mean(dz)
-    
-    # Update
+    # Forward pass:
+    z = X @ w + b          # linear combination
+    preds = sigmoid(z)     # squash to probability
+
+    # Cross-entropy loss:
+    loss = -np.mean(y * np.log(preds + 1e-15) +
+                    (1 - y) * np.log(1 - preds + 1e-15))
+
+    # Gradients (vectorized):
+    dz = preds - y         # error signal
+    dw = X.T @ dz / len(y) # gradient for weights
+    db = np.mean(dz)       # gradient for bias
+
+    # Update:
     w -= lr * dw
     b -= lr * db
-    
+
     if epoch % 50 == 0:
         print(f"Epoch {epoch}: loss={loss:.4f}, w={w}, b={b:.4f}")
 
-# Predict new student: 7 hours study, 7 hours sleep
-new_z = np.array([7,7]) @ w + b
-prob = sigmoid(new_z)
-print(f"\nPass probability: {prob:.2%}")
-print(f"Decision: {'PASS' if prob >= 0.5 else 'FAIL'}")</div>
+print(f"\nFinal weights: study_hours={w[0]:.3f}, sleep_hours={w[1]:.3f}")
+print("Positive weight = that feature INCREASES pass probability")</div>
+
+<div class="code-block"># ── STEP 5: Decision boundaries and thresholds ──
+# The 0.5 threshold isn't always right!
+
+# THRESHOLD TRADEOFF:
+# High threshold (0.8): fewer false positives, MORE false negatives
+#   → good for: spam filter (don't flag real emails)
+# Low threshold (0.3): MORE false positives, fewer false negatives
+#   → good for: cancer detection (don't miss any case)
+
+from sklearn.metrics import confusion_matrix
+
+# Example: disease detection
+y_true = [0, 0, 0, 1, 1, 1, 1, 1]
+y_pred = [0, 0, 1, 1, 1, 1, 0, 1]  # predictions at 0.5 threshold
+
+cm = confusion_matrix(y_true, y_pred)
+print("Confusion Matrix:")
+print("  Predicted:  No  Yes")
+print(f"  Actual No:  {cm[0][0]}   {cm[0][1]}")   # TN, FP
+print(f"  Actual Yes: {cm[1][0]}   {cm[1][1]}")   # FN, TP
+
+# Metrics:
+tn, fp, fn, tp = cm.ravel()
+precision = tp / (tp + fp)  # of predicted positives, how many real?
+recall = tp / (tp + fn)     # of actual positives, how many found?
+f1 = 2 * precision * recall / (precision + recall)
+
+print(f"\nPrecision: {precision:.2f} (no false alarms)")
+print(f"Recall:    {recall:.2f} (no missed cases)")
+print(f"F1 Score:  {f1:.2f} (balanced metric)")
+
+# ┌──────────────┬──────────────────────────────────┐
+# │ Metric       │ Question it answers             │
+# ├──────────────┼──────────────────────────────────┤
+# │ Accuracy     │ Overall, how many are right?    │
+# │ Precision    │ Of positives, how many correct? │
+# │ Recall       │ Of actual cases, how many found?│
+# │ F1 Score     │ Balanced precision + recall     │
+# └──────────────┴──────────────────────────────────┘</div>
+
+<div class="code-block"># ── STEP 6: Multi-class logistic regression ──
+# Logistic regression can classify MORE than 2 classes!
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+
+# Iris dataset: 3 flower species from 4 measurements:
+iris = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(
+    iris.data, iris.target, test_size=0.2, random_state=42
+)
+
+# Multi-class logistic regression (softmax):
+model = LogisticRegression(max_iter=200, multi_class="multinomial")
+model.fit(X_train, y_train)
+
+# Predict:
+predictions = model.predict(X_test)
+print(f"Accuracy: {(predictions == y_test).mean():.1%}")
+
+# Softmax = generalization of sigmoid for multiple classes:
+# softmax(z_i) = exp(z_i) / sum(exp(z_j))
+# Each class gets a probability, all sum to 1.0
+
+# WHEN TO USE LOGISTIC REGRESSION:
+# ✅ Binary or multi-class classification
+# ✅ Need PROBABILITY estimates (not just labels)
+# ✅ Fast, interpretable, good baseline
+# ✅ Features have linear relationship with log-odds
+
+# WHEN NOT TO USE:
+# ❌ Highly non-linear relationships (use trees or neural nets)
+# ❌ Very complex interactions between features
+# ❌ Small data with many features (prone to overfitting)
+
+# Logistic regression is ALWAYS your first classification baseline.
+# Only move to complex models if logistic regression underperforms.</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> ০.৫ threshold সবসময় সঠিক নয়। যদি false positive আর false negative-এর খরচ আলাদা হয় — threshold পাল্টাও। রোগ নির্ণয়ে false negative অনেক বিপজ্জনক → threshold কমাও (০.৩)। Spam filter-এ false positive বিপজ্জনক → threshold বাড়াও (০.৭)। এটাই precision-recall tradeoff।</div></div>
 
@@ -454,39 +621,187 @@ doors.push({
 <tr><td class="hl">Gradient Boosting</td><td>প্রতিটা গাছ আগের ভুল শেখে</td><td>সবচেয়ে শক্তিশালী</td></tr>
 <tr><td class="hl">XGBoost</td><td>optimized boosting</td><td>Kaggle বিজয়ী</td></tr></table>
 
-<div class="code-block"># — — — Python: Decision Tree & Random Forest — — —
+<div class="code-block"># ── STEP 1: What is a decision tree? ──
+# A decision tree asks YES/NO questions to classify data.
+# It's like the game "20 Questions" — each question splits the data.
+
+# Example: "Should I play tennis?"
+# Is it raining? → Yes → Is wind &gt; 15mph? → Yes → NO
+#                                  → No → YES
+#                → No → YES
 
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
+
+X, y = load_iris(return_X_y=True)
+
+# Train a decision tree:
+tree = DecisionTreeClassifier(max_depth=3, random_state=42)
+tree.fit(X, y)
+
+# The tree learned questions like:
+# "Is petal_length &lt; 2.5?" → if yes, setosa
+# "Is petal_width &lt; 1.8?" → if yes, versicolor
+# etc.
+
+# Visualize the tree (text):
+# from sklearn.tree import export_text
+# print(export_text(tree, feature_names=load_iris().feature_names))
+
+# KEY CONCEPTS:
+# - ROOT: first question (most informative split)
+# - BRANCHES: yes/no answers
+# - LEAVES: final predictions
+# - DEPTH: how many questions deep (max_depth controls this)
+# - INFORMATION GAIN: how much a question reduces uncertainty</div>
+
+<div class="code-block"># ── STEP 2: Entropy and information gain ──
+# How does the tree decide WHICH question to ask?
+# It picks the question that reduces ENTROPY (uncertainty) the most.
+
 import numpy as np
 
-# ডেটা: Iris ফুলের প্রজাতি নির্ণয়
-X, y = load_iris(return_X_y=True)
+def entropy(labels):
+    """Measure uncertainty. High = mixed, Low = pure."""
+    _, counts = np.unique(labels, return_counts=True)
+    probs = counts / len(labels)
+    return -np.sum(probs * np.log2(probs + 1e-10))
+
+# Before any split (50 setosa, 50 versicolor, 50 virginica):
+before = entropy([0]*50 + [1]*50 + [2]*50)
+print(f"Entropy before split: {before:.3f} bits")  # 1.585 (max uncertainty)
+
+# After perfect split (all setosa in one group):
+after = entropy([0]*50)  # all same class
+print(f"Entropy after perfect split: {after:.3f} bits")  # 0.0 (pure!)
+
+# Information gain = how much entropy decreased:
+info_gain = before - after
+print(f"Information gain: {info_gain:.3f} bits")
+
+# The tree picks splits with HIGHEST information gain.
+# This is how it "learns" the best questions automatically.</div>
+
+<div class="code-block"># ── STEP 3: Random Forest — wisdom of the crowd ──
+# One tree overfits. Solution: build MANY trees and VOTE.
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
-# ১. Single Decision Tree
-tree = DecisionTreeClassifier(max_depth=3)
-tree.fit(X_train, y_train)
-print(f"Tree accuracy: {tree.score(X_test, y_test):.2%}")
+# Single tree (prone to overfitting):
+single_tree = DecisionTreeClassifier(max_depth=10)
+single_tree.fit(X_train, y_train)
+print(f"Single tree: {single_tree.score(X_test, y_test):.1%}")
 
-# ২. Random Forest (১০০টা গাছ)
-forest = RandomForestClassifier(n_estimators=100, max_depth=5)
+# Random forest (100 trees, vote):
+forest = RandomForestClassifier(
+    n_estimators=100,    # number of trees
+    max_depth=5,         # each tree is shallow
+    random_state=42
+)
 forest.fit(X_train, y_train)
-print(f"Forest accuracy: {forest.score(X_test, y_test):.2%}")
+print(f"Random forest: {forest.score(X_test, y_test):.1%}")
 
-# ৩. Feature importance — কোন feature সবচেয়ে গুরুত্বপূর্ণ?
+# WHY RANDOM FOREST WORKS:
+# Each tree sees DIFFERENT data (bootstrap sampling)
+# Each tree considers DIFFERENT features (random subset)
+# This diversity → less overfitting → better generalization
+
+# "Many weak learners combine into one strong learner"</div>
+
+<div class="code-block"># ── STEP 4: Feature importance ──
+# Random forest tells you WHICH features matter most.
+
+# Get feature importance:
 importances = forest.feature_importances_
-features = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
-for f, imp in sorted(zip(features, importances), key=lambda x: -x[1]):
-    print(f"  {f}: {imp:.3f}")
+features = load_iris().feature_names
 
-# Gradient Boosting (XGBoost-style)
+# Sort by importance:
+for name, imp in sorted(zip(features, importances), key=lambda x: -x[1]):
+    print(f"  {name:20}: {imp:.3f}")
+# petal length (cm)  : 0.421  ← most important!
+# petal width (cm)   : 0.367
+# sepal length (cm)  : 0.125
+# sepal width (cm)   : 0.087
+
+# This is FREE model interpretation — no extra cost!
+# Use it to:
+# - Understand what drives predictions
+# - Remove useless features
+# - Explain to stakeholders</div>
+
+<div class="code-block"># ── STEP 5: Gradient boosting — each tree fixes errors ──
+# Boosting: trees are built SEQUENTIALLY, each fixing previous errors.
+# This is the most powerful classic ML technique.
+
 from sklearn.ensemble import GradientBoostingClassifier
-gb = GradientBoostingClassifier(n_estimators=100, learning_rate=0.1)
+
+# Gradient Boosting:
+gb = GradientBoostingClassifier(
+    n_estimators=100,    # number of trees
+    learning_rate=0.1,   # how fast each tree corrects
+    max_depth=3,
+    random_state=42
+)
 gb.fit(X_train, y_train)
-print(f"Boosting accuracy: {gb.score(X_test, y_test):.2%}")</div>
+print(f"Gradient Boosting: {gb.score(X_test, y_test):.1%}")
+
+# RANDOM FOREST vs GRADIENT BOOSTING:
+# ┌────────────────┬─────────────────┬───────────────────┐
+# │ Aspect         │ Random Forest   │ Gradient Boosting │
+# ├────────────────┼─────────────────┼───────────────────┤
+# │ Tree building  │ Independent     │ Sequential        │
+# │ Overfitting    │ Resistant       │ Can overfit       │
+# │ Accuracy       │ Good            │ Usually better    │
+# │ Speed          │ Fast (parallel) │ Slower (serial)   │
+# │ Tuning         │ Easy            │ Needs care        │
+# └────────────────┴─────────────────┴───────────────────┘
+
+# XGBoost / LightGBM = optimized boosting implementations
+# These win most Kaggle competitions for tabular data</div>
+
+<div class="code-block"># ── STEP 6: Complete tree pipeline ──
+# Full workflow: load → split → train → evaluate → interpret
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import classification_report, confusion_matrix
+import numpy as np
+
+# Load data:
+X, y = load_iris(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Train with cross-validation:
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+cv_scores = cross_val_score(model, X_train, y_train, cv=5)
+print(f"CV Accuracy: {cv_scores.mean():.1%} ± {cv_scores.std():.1%}")
+
+# Final training:
+model.fit(X_train, y_train)
+
+# Evaluate:
+predictions = model.predict(X_test)
+print(f"Test Accuracy: {(predictions == y_test).mean():.1%}")
+print("\nClassification Report:")
+# print(classification_report(y_test, predictions, target_names=load_iris().target_names))
+
+# WHEN TO USE TREE-BASED MODELS:
+# ✅ Tabular data (spreadsheets, databases)
+# ✅ Need interpretability (feature importance)
+# ✅ Mixed data types (numerical + categorical)
+# ✅ Don't need feature scaling (trees don't care)
+# ✅ Non-linear relationships
+
+# THE ML HIERARCHY:
+# 1. Start with logistic regression (baseline)
+# 2. Try random forest (strong, easy)
+# 3. If need more accuracy → XGBoost/LightGBM
+# 4. If still not enough → deep learning
+# Trees are the sweet spot for most tabular ML problems.</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> ডিসিশন ট্রি যদি নিয়ন্ত্রণ না করো — গাছ অসীম গভীর হয়ে যায়। প্রতিটা training point-এর জন্য একটা করে পাতা — নিখুঁত training accuracy কিন্তু নতুন ডেটায় ব্যর্থ (overfitting)। সমাধান: max_depth সীমিত করো, minimum samples per leaf নির্ধারণ করো, অথবা random forest ব্যবহার করো।</div></div>
 
@@ -562,34 +877,199 @@ doors.push({
   <div class="cmp-card cmp-good"><div class="cmp-label">✅ প্রশস্ত margin</div>দেয়াল ঠিক মাঝখানে। দুই পক্ষ থেকে সমান দূরত্ব। Noise সহ্য করতে পারে। Generalizes ভালো।</div>
 </div>
 
-<div class="code-block"># — — — Python: SVM with Kernels — — —
+<div class="code-block"># ── STEP 1: What is SVM? ──
+# SVM (Support Vector Machine) finds the WIDEST GAP (margin)
+# between two classes.
+
+# Imagine two groups of points on paper.
+# You can draw many lines to separate them.
+# SVM draws the line that leaves MAXIMUM SPACE on both sides.
+# This "maximum margin" makes it generalize better.
 
 from sklearn.svm import SVC
+from sklearn.datasets import make_classification
+
+X, y = make_classification(n_samples=100, n_features=2,
+                           n_informative=2, n_redundant=0, random_state=42)
+
+# Linear SVM (straight line boundary):
+svm = SVC(kernel="linear", C=1.0)
+svm.fit(X, y)
+print(f"Linear SVM accuracy: {svm.score(X, y):.1%}")
+
+# KEY CONCEPTS:
+# - Support vectors: the CLOSEST points to the boundary
+# - Margin: the distance between boundary and support vectors
+# - SVM maximizes this margin
+# - Only support vectors matter (not all data points)</div>
+
+<div class="code-block"># ── STEP 2: The kernel trick ──
+# What if data can't be separated by a straight line?
+
+# Example: concentric circles (impossible to separate linearly)
 from sklearn.datasets import make_circles
-import numpy as np
 
-# ডেটা: দুই বৃত্ত (linear রেখা দিয়ে আলাদা করা অসম্ভব)
-X, y = make_circles(n_samples=100, noise=0.1, factor=0.5)
+X_circles, y_circles = make_circles(n_samples=100, noise=0.1, factor=0.5)
 
-# ১. Linear kernel — ব্যর্থ (২D-তে রেখা দিয়ে বৃত্ত আলাদা করা যায় না)
-svm_linear = SVC(kernel='linear')
-svm_linear.fit(X, y)
-print(f"Linear: {svm_linear.score(X, y):.2%}")  # ~৫০%
+# Linear kernel FAILS:
+svm_linear = SVC(kernel="linear")
+svm_linear.fit(X_circles, y_circles)
+print(f"Linear kernel: {svm_linear.score(X_circles, y_circles):.1%}")
+# ~50% (just guessing — can't separate circles with a line)
 
-# ২. RBF kernel — সফল (৩D-তে তুলে আলাদা করে)
-svm_rbf = SVC(kernel='rbf', C=1.0, gamma='scale')
-svm_rbf.fit(X, y)
-print(f"RBF: {svm_rbf.score(X, y):.2%}")  # ~১০০%
+# RBF (Radial Basis Function) kernel WORKS:
+svm_rbf = SVC(kernel="rbf", C=1.0, gamma="scale")
+svm_rbf.fit(X_circles, y_circles)
+print(f"RBF kernel: {svm_rbf.score(X_circles, y_circles):.1%}")
+# ~100% (perfectly separates circles!)
 
-# Kernel trick ব্যাখ্যা:
-# ২D-তে বৃত্ত আলাদা করা যায় না
-# RBF kernel ডেটাকে ∞-মাত্রায় তোলে
-# সেখানে একটা hyperplane দিয়ে আলাদা করা যায়
-# কিন্তু computation হয় ২D-তেই — kernel function দিয়ে!
+# THE KERNEL TRICK:
+# Data not separable in 2D? Lift it to 3D (or higher).
+# In higher dimensions, a flat plane CAN separate it.
+# The kernel computes this lifting IMPLICITLY — no need
+# to actually transform the data. Mathematical magic!</div>
 
-# C parameter: regularization strength
-# C বড় = margin ছোট, কম error (overfitting risk)
-# C ছোট = margin বড়, বেশি error (underfitting risk)</div>
+<div class="code-block"># ── STEP 3: SVM parameters ──
+# Two key parameters control SVM behavior:
+
+# C (regularization):
+# High C (100): strict — every point must be classified correctly
+#   → tight boundary, risk of overfitting
+# Low C (0.01): relaxed — allow some errors for wider margin
+#   → loose boundary, risk of underfitting
+
+# gamma (for RBF kernel):
+# High gamma: each point only affects nearby region
+#   → very wiggly boundary, overfitting
+# Low gamma: each point affects far regions
+#   → smooth boundary, may underfit
+
+# Hyperparameter tuning:
+from sklearn.model_selection import GridSearchCV
+
+# Try different C and gamma values:
+param_grid = {
+    "C": [0.1, 1, 10, 100],
+    "gamma": ["scale", 0.1, 1],
+    "kernel": ["rbf"]
+}
+
+grid = GridSearchCV(SVC(), param_grid, cv=5)
+grid.fit(X, y)
+
+print(f"Best parameters: {grid.best_params_}")
+print(f"Best CV score: {grid.best_score_:.1%}")
+
+# KERNEL OPTIONS:
+# ┌──────────────┬──────────────────────────────────┐
+# │ Kernel       │ When to use                     │
+# ├──────────────┼──────────────────────────────────┤
+# │ linear       │ linearly separable data        │
+# │ rbf          │ non-linear (most common)       │
+# │ poly         │ polynomial relationships       │
+# │ sigmoid      │ similar to neural network      │
+# └──────────────┴──────────────────────────────────┘</div>
+
+<div class="code-block"># ── STEP 4: SVM vs other algorithms ──
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import cross_val_score
+from sklearn.datasets import load_iris
+
+X, y = load_iris(return_X_y=True)
+
+# Compare three classifiers:
+models = {
+    "Logistic Regression": LogisticRegression(max_iter=200),
+    "SVM (RBF)": SVC(kernel="rbf", C=1.0),
+    "Random Forest": RandomForestClassifier(n_estimators=100),
+}
+
+for name, model in models.items():
+    scores = cross_val_score(model, X, y, cv=5)
+    print(f"  {name:25}: {scores.mean():.1%} ± {scores.std():.1%}")
+
+# WHEN TO USE SVM:
+# ✅ Small to medium datasets (&lt; 10,000 samples)
+# ✅ High-dimensional data (many features)
+# ✅ Need precise decision boundaries
+# ✅ Text classification (with TF-IDF features)
+
+# WHEN NOT TO USE SVM:
+# ❌ Large datasets (slow: O(n²) to O(n³))
+# ❌ Need probability estimates (SVM gives distances, not probs)
+# ❌ Multi-class with many classes (SVM is binary by nature)
+
+# SVM is POWERFUL but SLOW. Use for small data, not big data.</div>
+
+<div class="code-block"># ── STEP 5: SVM for real-world problems ──
+# Example: text classification with SVM
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.svm import LinearSVC
+from sklearn.pipeline import Pipeline
+
+# SVM is excellent for text (high-dimensional sparse data):
+text_clf = Pipeline([
+    ("tfidf", TfidfVectorizer(max_features=5000)),
+    ("svm", LinearSVC(C=1.0)),
+])
+
+# Training data: (text, label)
+texts = [
+    "I love this product, amazing quality!",
+    "Terrible service, never buying again.",
+    "Best purchase I ever made.",
+    "Worst experience, do not recommend.",
+    "Great value for money.",
+    "Complete waste of money.",
+]
+labels = ["positive", "negative", "positive", "negative", "positive", "negative"]
+
+text_clf.fit(texts, labels)
+
+# Predict:
+test_texts = ["This is great!", "Awful and disappointing."]
+predictions = text_clf.predict(test_texts)
+for text, label in zip(test_texts, predictions):
+    print(f"  '{text}' → {label}")
+
+# LinearSVC: optimized SVM for linear kernels
+# Faster than SVC(kernel='linear') for large data
+# The standard choice for text classification</div>
+
+<div class="code-block"># ── STEP 6: SVM summary and best practices ──
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Aspect              │ Detail                             │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ What it does        │ Find max-margin decision boundary  │
+# │ Best for            │ Small/medium data, high dimensions │
+# │ Kernel trick        │ Lift to higher dims for separation │
+# │ Key params          │ C (margin vs errors), gamma (RBF)  │
+# │ Speed               │ Slow for large data (O(n²)+)       │
+# │ Probability         │ Not native (need Platt scaling)    │
+# │ Interpretability    │ Support vectors show key points    │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# SVM DECISION TREE:
+# 1. Is data linearly separable? → LinearSVC (fast)
+# 2. Small non-linear data? → SVC(kernel='rbf')
+# 3. Large non-linear data? → Use Random Forest or Neural Network
+# 4. Text classification? → LinearSVC with TF-IDF
+# 5. Need probabilities? → Use Logistic Regression instead
+
+# THE BIGGER PICTURE:
+# SVM was THE most popular classifier before deep learning (2000s).
+# Still excellent for:
+# - Small datasets (where deep learning can't train)
+# - High-dimensional data (text, bioinformatics)
+# - When you need a strong, principled baseline
+# Deep learning replaced it for images/audio/text generation,
+# but SVM is still relevant for tabular and small data.
+
+# In practice: try SVM after Logistic Regression,
+# before moving to Random Forest or Deep Learning.</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> SVM বড় ডেটায় ধীর (O(n²) বা তার বেশি)। ১০০০০+ স্যাম্পল হলে neural network বা random forest বেশি কার্যকর। SVM সবচেয়ে ভালো কাজ করে ছোট-মাঝারি ডেটায় যেখানে features clear।</div></div>
 
@@ -679,33 +1159,215 @@ doors.push({
   <div class="cmp-card cmp-good"><div class="cmp-label">✅ k=৫</div>৫ জন প্রতিবেশীর সংখ্যাগরিষ্ঠ। Noise কাটে। ভালো সিদ্ধান্ত। k খুব বড় হলে underfitting — সবসময় সবচেয়ে সাধারণ ক্লাস দেয়।</div>
 </div>
 
-<div class="code-block"># — — — Python: k-NN Classification — — —
+<div class="code-block"># ── STEP 1: What is k-NN? ──
+# k-NN (k-Nearest Neighbors) = "tell me who your neighbors are,
+# and I'll tell you who you are."
 
+# To classify a new point:
+# 1. Find the k CLOSEST training points
+# 2. Let them VOTE (majority wins)
+
+# k-NN has NO TRAINING — it just stores all data.
+# At prediction time, it searches for nearest neighbors.
+# This is called "lazy learning" (no work until prediction).
+
+# SIMPLEST possible classifier:
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 
+# Data:
 X, y = load_iris(return_X_y=True)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
-# k=৩
-knn = KNeighborsClassifier(n_neighbors=3)
-knn.fit(X_train, y_train)
-print(f"k=৩ accuracy: {knn.score(X_test, y_test):.2%}")
+# CRITICAL: scale features first! (k-NN uses distances)
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
 
-# বিভিন্ন k তুলনা
+# Train (actually just stores the data):
+knn = KNeighborsClassifier(n_neighbors=3)
+knn.fit(X_train_scaled, y_train)
+print(f"k=3 accuracy: {knn.score(X_test_scaled, y_test):.1%}")</div>
+
+<div class="code-block"># ── STEP 2: Choosing k ──
+# k controls the model's behavior:
+
+# k=1: look at SINGLE nearest neighbor → very sensitive, overfits
+# k=large: look at MANY neighbors → too smooth, underfits
+# Rule of thumb: start with k = sqrt(n), make it ODD (avoid ties)
+
+# Test different k values:
 for k in [1, 3, 5, 7, 11, 21]:
     knn = KNeighborsClassifier(n_neighbors=k)
-    knn.fit(X_train, y_train)
-    print(f"  k={k:2d}: {knn.score(X_test, y_test):.2%}")
+    knn.fit(X_train_scaled, y_train)
+    acc = knn.score(X_test_scaled, y_test)
+    print(f"  k={k:2d}: {acc:.1%}")
 
-# সেরা k খুঁজতে: cross-validation
-# নিয়ম: k = sqrt(n) থেকে শুরু, বিজোড় সংখ্যা
+# THE BIAS-VARIANCE TRADEOFF:
+# k=1: high variance (captures noise), low bias
+# k=large: low variance (smooth), high bias
+# k=moderate: the sweet spot (usually k=5 or k=7)
 
-# Distance metric পরিবর্তন
-knn_cosine = KNeighborsClassifier(n_neighbors=5, metric='cosine')
-knn_cosine.fit(X_train, y_train)
-print(f"Cosine k-NN: {knn_cosine.score(X_test, y_test):.2%}")</div>
+# Find best k with cross-validation:
+from sklearn.model_selection import cross_val_score
+
+best_k, best_score = 1, 0
+for k in range(1, 30, 2):  # odd numbers only
+    knn = KNeighborsClassifier(n_neighbors=k)
+    scores = cross_val_score(knn, X_train_scaled, y_train, cv=5)
+    if scores.mean() > best_score:
+        best_k, best_score = k, scores.mean()
+
+print(f"\nBest k={best_k} with CV score {best_score:.1%}")</div>
+
+<div class="code-block"># ── STEP 3: Distance metrics ──
+# k-NN depends on how you measure "closeness".
+
+import numpy as np
+
+def euclidean(a, b):
+    """Straight-line distance."""
+    return np.sqrt(np.sum((a - b) ** 2))
+
+def manhattan(a, b):
+    """City-block distance (taxicab)."""
+    return np.sum(np.abs(a - b))
+
+def cosine_similarity(a, b):
+    """Angle between vectors (1=identical, 0=unrelated)."""
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+# Example:
+point_a = np.array([1, 2])
+point_b = np.array([4, 6])
+
+print(f"Euclidean: {euclidean(point_a, point_b):.2f}")    # 5.00
+print(f"Manhattan: {manhattan(point_a, point_b):.2f}")    # 7.00
+print(f"Cosine sim: {cosine_similarity(point_a, point_b):.4f}")  # 0.904
+
+# In scikit-learn:
+# KNeighborsClassifier(metric='euclidean')  # default
+# KNeighborsClassifier(metric='manhattan')
+# KNeighborsClassifier(metric='cosine')     # good for text/embeddings
+
+# WHICH METRIC TO USE:
+# ┌──────────────┬──────────────────────────────────┐
+# │ Metric       │ When to use                     │
+# ├──────────────┼──────────────────────────────────┤
+# │ Euclidean    │ general purpose (default)       │
+# │ Manhattan    │ grid-like data, high dimensions │
+# │ Cosine       │ text, embeddings (direction)    │
+# │ Minkowski    │ generalization of Euc/Manh      │
+# └──────────────┴──────────────────────────────────┘</div>
+
+<div class="code-block"># ── STEP 4: Feature scaling is CRITICAL ──
+# k-NN uses DISTANCE — if features have different scales,
+# the larger feature dominates.
+
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+import numpy as np
+
+# BAD: unscaled data
+X_bad = np.array([
+    [25, 50000],    # age=25, income=50000
+    [30, 60000],
+    [35, 70000],
+])
+# Age range: 25-35 (difference ~10)
+# Income range: 50000-70000 (difference ~20000)
+# k-NN will be DOMINATED by income — age barely matters!
+
+# GOOD: standardized data
+scaler = StandardScaler()
+X_good = scaler.fit_transform(X_bad)
+print("Standardized (mean=0, std=1):")
+print(X_good)
+# Now both features contribute equally!
+
+# TWO COMMON SCALERS:
+# StandardScaler: (x - mean) / std → mean=0, std=1
+# MinMaxScaler: (x - min) / (max - min) → range 0 to 1
+
+# ALWAYS: fit scaler on TRAINING data only, then transform test data
+# scaler.fit(X_train)  # learn mean/std from training
+# X_train_s = scaler.transform(X_train)
+# X_test_s = scaler.transform(X_test)  # use SAME mean/std</div>
+
+<div class="code-block"># ── STEP 5: k-NN for regression ──
+# k-NN can also predict NUMBERS (regression).
+
+from sklearn.neighbors import KNeighborsRegressor
+
+# Instead of voting, k-NN regression AVERAGES the neighbors:
+knn_reg = KNeighborsRegressor(n_neighbors=3, weights="distance")
+knn_reg.fit(X_train_scaled, y_train)
+
+# weights options:
+# "uniform": all neighbors count equally
+# "distance": closer neighbors count MORE
+
+# Predict:
+predictions = knn_reg.predict(X_test_scaled)
+print(f"Regression predictions: {predictions[:5]}")
+
+# k-NN REGRESSION vs CLASSIFICATION:
+# Classification: majority vote of k neighbors
+# Regression: average (or weighted average) of k neighbors</div>
+
+<div class="code-block"># ── STEP 6: k-NN connection to RAG and vector search ──
+# k-NN is THE algorithm behind modern AI search!
+
+# RAG (Retrieval Augmented Generation):
+# 1. Convert query to embedding vector
+# 2. Find k NEAREST document embeddings (k-NN!)
+# 3. Feed those documents to the LLM as context
+
+# This is literally k-NN on embeddings!
+
+# Vector databases (Pinecone, Milvus, pgvector):
+# They are k-NN search engines optimized for HIGH dimensions.
+
+# Example: semantic search with k-NN
+# from sentence_transformers import SentenceTransformer
+# import numpy as np
+#
+# model = SentenceTransformer("all-MiniLM-L6-v2")
+#
+# # Embed documents:
+# docs = ["Python is great", "I love coding", "The weather is nice"]
+# doc_embeddings = model.encode(docs)
+#
+# # Embed query:
+# query = "programming language"
+# query_embedding = model.encode([query])
+#
+# # k-NN search (find closest documents):
+# from sklearn.metrics.pairwise import cosine_similarity
+# similarities = cosine_similarity(query_embedding, doc_embeddings)[0]
+#
+# # Sort by similarity:
+# ranked = sorted(zip(docs, similarities), key=lambda x: -x[1])
+# for doc, sim in ranked:
+#     print(f"  {sim:.3f}: {doc}")
+
+# WHEN TO USE k-NN:
+# ✅ Simple baseline (fast to try, no training)
+# ✅ Low-dimensional data (&lt; 100 features)
+# ✅ Vector/embedding search (RAG, recommendation)
+# ✅ Small datasets
+
+# WHEN NOT TO USE k-NN:
+# ❌ High-dimensional data (curse of dimensionality)
+# ❌ Large datasets (slow: O(n) per query)
+# ❌ Need fast inference (each query scans all data)
+
+# k-NN SUMMARY:
+# Simplest ML algorithm. No training.
+# Just: "find nearest neighbors, vote."
+# But it's the FOUNDATION of modern vector search and RAG!
+# From classic ML to modern AI — k-NN connects them.</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ — Feature Scaling:</strong> k-NN distance-based — তাই feature scaling অপরিহার্য। যদি feature একটার range ০-১ আর আরেকটার ০-১০০০০ — বড় feature dominate করবে। সমাধান: StandardScaler বা MinMaxScaler দিয়ে সব feature একই scale-এ আনো। এটা না করলে k-NN ব্যর্থ।</div></div>
 
