@@ -325,31 +325,202 @@ doors.push({
   <div class="diag-cap">প্রতিটা কল স্ট্যাকে জমে — base case ছুঁয়ে উপরে ফেরে। গভীরতা = স্ট্যাক স্পেস।</div>
 </div>
 
-<div class="code-block">Recursion — The Two Parts:
+<div class="code-block"># ── STEP 1: What is recursion? ──
+# Recursion = a function that calls ITSELF on a SMALLER version of the problem.
 
-  def factorial(n):
-      if n <= 1:              # ← BASE CASE (থামো)
-          return 1
-      return n * factorial(n - 1)   # ← RECURSIVE CASE (ছোট করে ডাকো)
+# The simplest recursion — countdown:
+def countdown(n):
+    print(n)
+    if n &lt;= 0:          # BASE CASE — stop
+        return
+    countdown(n - 1)     # RECURSIVE CASE — call self with smaller input
 
-  # 1. প্রতিটা কল ইনপুট ছোট করে (n → n-1)
-  # 2. একদিন base case ছোঁয় — থামে
-  # 3. রিটার্ন পথে উত্তর গড়ে ওঠে
+countdown(3)
+# 3
+# 2
+# 1
+# 0
 
-  ⚠️ ভুলের দুটো রূপ:
-  • base case নেই → infinite loop → RecursionError (Python ~1000 গভীরতা)
-  • recursive case ছোট নয় → থামে না → stack overflow
+# Two essential parts:
+# 1. BASE CASE — when to STOP (prevents infinite recursion)
+# 2. RECURSIVE CASE — call yourself with SMALLER input
 
-THREE CLASSIC PATTERNS:
+# If you forget the base case → infinite recursion → crash:
+# RecursionError: maximum recursion depth exceeded</div>
 
-  ১. গণনা (counting/agg):  factorial, sum, Fibonacci
-     f(n) = combine(n, f(n-1))
+<div class="code-block"># ── STEP 2: Factorial — the classic example ──
+# n! = n × (n-1) × (n-2) × ... × 1
+# Example: 5! = 5 × 4 × 3 × 2 × 1 = 120
 
-  ২. গাছ পরিভ্রমণ:        tree/graph traversal, file system walk
-     f(node) = process(node) + f(child) for each child
+# Recursive definition of factorial:
+def factorial(n):
+    """Calculate n! using recursion."""
+    # Base case: 0! = 1, 1! = 1
+    if n &lt;= 1:
+        return 1
+    # Recursive case: n! = n × (n-1)!
+    return n * factorial(n - 1)
 
-  ৩. বিভাজন (divide):      merge sort, binary search
-     f(big) = combine(f(left), f(right))</div>
+print(factorial(5))  # 120
+
+# How it works (the call stack):
+# factorial(5) → 5 * factorial(4)
+#                    4 * factorial(3)
+#                         3 * factorial(2)
+#                              2 * factorial(1)
+#                                   1  ← base case!
+#                              2 * 1 = 2
+#                         3 * 2 = 6
+#                    4 * 6 = 24
+# 5 * 24 = 120  ← final answer
+
+# Each call waits for the smaller call to return.
+# The answer builds up on the way BACK.</div>
+
+<div class="code-block"># ── STEP 3: Recursion vs iteration ──
+# Every recursion can be written as a loop. Which to use?
+
+# Recursive factorial:
+def factorial_recursive(n):
+    if n &lt;= 1:
+        return 1
+    return n * factorial_recursive(n - 1)
+
+# Iterative (loop) factorial:
+def factorial_iterative(n):
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
+
+print(factorial_recursive(5))  # 120
+print(factorial_iterative(5))  # 120
+
+# Same result! But:
+# - Iterative: O(1) space (no call stack)
+# - Recursive: O(n) space (n stack frames)
+
+# USE RECURSION when:
+# - The problem is naturally recursive (trees, graphs, divide-and-conquer)
+# - It makes the code CLEARER
+# USE LOOPS when:
+# - Simple counting or accumulation
+# - Performance is critical (avoid stack overhead)
+# - Input is large (avoid stack overflow)</div>
+
+<div class="code-block"># ── STEP 4: Fibonacci — and why naive recursion is slow ──
+# Fibonacci: 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
+# Each number = sum of previous two
+
+# Naive recursion — EXPONENTIAL TIME O(2^n):
+def fib_naive(n):
+    if n &lt;= 1:
+        return n
+    return fib_naive(n - 1) + fib_naive(n - 2)
+
+print(fib_naive(10))  # 55
+# fib_naive(35) takes ~3 seconds! fib_naive(50) = impossible.
+
+# The problem: same values calculated REPEATEDLY.
+# fib(5) calls fib(4) + fib(3)
+# fib(4) calls fib(3) + fib(2)  ← fib(3) calculated AGAIN!
+
+# Fix: memoization (cache results):
+def fib_memo(n, cache=None):
+    if cache is None:
+        cache = {}
+    if n in cache:
+        return cache[n]
+    if n &lt;= 1:
+        return n
+    cache[n] = fib_memo(n - 1, cache) + fib_memo(n - 2, cache)
+    return cache[n]
+
+print(fib_memo(50))  # 12586269025 — instant!
+
+# Or use functools.lru_cache:
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fib_cached(n):
+    if n &lt;= 1:
+        return n
+    return fib_cached(n - 1) + fib_cached(n - 2)
+
+print(fib_cached(100))  # instant!</div>
+
+<div class="code-block"># ── STEP 5: Three recursion patterns ──
+# Most recursive problems fall into 3 categories.
+
+# Pattern 1: COUNTING / AGGREGATION
+# Sum a list recursively:
+def sum_list(items):
+    if not items:          # base case: empty list
+        return 0
+    return items[0] + sum_list(items[1:])  # first + rest
+
+print(sum_list([1, 2, 3, 4, 5]))  # 15
+
+# Pattern 2: TREE / GRAPH TRAVERSAL
+# Walk a nested structure (like JSON or file system):
+def count_files(node):
+    """Count files in a nested directory structure."""
+    if isinstance(node, str):  # base case: it's a file
+        return 1
+    # recursive: it's a directory, count files in each child
+    return sum(count_files(child) for child in node.values())
+
+fs = {"home": {"docs": {"resume.pdf": ""}, "photos": {"cat.jpg": ""}}}
+# count_files(fs) → 2 files
+
+# Pattern 3: DIVIDE AND CONQUER
+# Split problem in half, solve each, combine:
+def merge_sort(arr):
+    if len(arr) &lt;= 1:        # base case
+        return arr
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])    # sort left half
+    right = merge_sort(arr[mid:])   # sort right half
+    return merge(left, right)       # combine</div>
+
+<div class="code-block"># ── STEP 6: Common pitfalls ──
+# Pitfall 1: No base case → infinite recursion → crash
+def bad_recursion(n):
+    return bad_recursion(n)  # no base case! → RecursionError
+
+# Pitfall 2: Base case never reached → input doesn't shrink
+def bad_factorial(n):
+    if n &lt; 0:
+        return 1
+    return n * bad_factorial(n)  # n never decreases! → crash
+
+# Pitfall 3: Stack overflow — Python limits recursion to ~1000 depth
+def deep_recursion(n):
+    if n == 0:
+        return 0
+    return 1 + deep_recursion(n - 1)
+
+# deep_recursion(500)   → works
+# deep_recursion(2000)  → RecursionError!
+
+# For deep recursion, convert to iteration:
+def deep_iterative(n):
+    count = 0
+    for i in range(n):
+        count += 1
+    return count
+
+# SUMMARY:
+# ┌────────────────┬──────────────────────────────────┐
+# │ Pattern        │ When to use                      │
+# ├────────────────┼──────────────────────────────────┤
+# │ Base case      │ ALWAYS — stops recursion         │
+# │ Shrink input   │ n-1, n//2, items[1:]             │
+# │ Counting       │ factorial, sum, fibonacci        │
+# │ Tree walk      │ JSON, file system, AST           │
+# │ Divide/conquer │ merge sort, binary search        │
+# │ Memoization    │ when same subproblem repeats     │
+# └────────────────┴──────────────────────────────────┘</div>
 
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। Recursion সবখানে। JSON ট্রি পরিভ্রমণ — nested অবজেক্ট। File system walk — ফোল্ডারের ভেতরে ফোল্ডার। AST (abstract syntax tree) — কোড পার্স করা। Tree search — minimax গেম AI। Backtracking (দোকান ১৬) — recursion + ফেরা। যে recursion বোঝে সে গাছ বোঝে, যে গাছ বোঝে সে অনেক সমস্যা বোঝে।</div>
 <div class="dialogue en">"You're an AI engineer. Recursion is everywhere. JSON tree traversal — nested objects. File system walk — folders in folders. AST (abstract syntax tree) — parsing code. Tree search — minimax game AI. Backtracking (Door 16) — recursion + retreat. Who understands recursion understands trees; who understands trees understands many problems."</div>
