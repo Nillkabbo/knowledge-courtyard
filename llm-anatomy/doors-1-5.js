@@ -445,70 +445,307 @@ doors.push({
 </div>
 <div class="svg-caption">প্রতিটি টোকেন হাজার ডাইমেনশনের স্থানে একটি বিন্দু — সমার্থক শব্দ কাছে, বিপরীত দূরে</div>
 
-<div class="code-block">Embeddings — The Geometry of Meaning:
+<div class="code-block"># ── STEP 1: What is an embedding? ──
+# An EMBEDDING converts text into a VECTOR (list of numbers).
+# Similar meanings → similar vectors (close in vector space).
 
-টোকেন #১৫০০০ = "king"
-  → embedding: [0.23, -0.45, 0.89, ...]  
-  → ৪০৯৬ সংখ্যার একটা ভেক্টর
-  → এই সংখ্যাগুলো = "king"-এর অবস্থান
+# Each token gets a vector:
+#   "king"   → [0.23, -0.45, 0.89, ...]  (4096 numbers)
+#   "queen"  → [0.25, -0.41, 0.85, ...]  (very close to king!)
+#   "banana" → [-0.67, 0.12, -0.33, ...] (far from king)
 
-টোকেন #১৮০০০ = "queen"  
-  → embedding: [0.25, -0.41, 0.85, ...]
-  → "king"-এর খুব কাছে!
+# The model LEARNS these positions during training.
+# Words that appear in similar contexts get similar vectors.
 
-টোকেন #৫০০০০ = "banana"
-  → embedding: [-0.67, 0.12, -0.33, ...]
-  → "king" থেকে অনেক দূরে
+import numpy as np
 
-কেন এটা কাজ করে?
+# Simulated embeddings (real ones have 4096+ dimensions):
+embeddings = {
+    "king":   np.array([0.90, 0.85, 0.10]),
+    "queen":  np.array([0.88, 0.82, 0.15]),
+    "man":    np.array([0.70, 0.10, 0.90]),
+    "woman":  np.array([0.68, 0.08, 0.88]),
+    "banana": np.array([0.05, 0.20, 0.05]),
+    "apple":  np.array([0.08, 0.18, 0.10]),
+}
 
-Word2Vec (2013), Mikolov et al.:
-  কিংবদন্তী উদাহরণ:
-  vec("king") - vec("man") + vec("woman") 
-  ~= vec("queen")
-  
-  → অর্থের গাণিতিক প্রকাশ!
-  → লিঙ্গ = একটা দিক স্পেসে
-  → রাজকীয়তা = আরেকটা দিক
-  → প্রতিটা ডাইমেনশন = একটা ধারণা
+# Cosine similarity:
+def cosine_sim(a, b):
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
-EMBEDDING DIMENSIONS:
-  GPT-3: ১২,২৮৮ ডাইমেনশন
-  GPT-4: ~৮,০০০-১২,০০০ (est.)
-  Claude 3: ~৪,০৯৬-৮,০০০
-  Llama 3: ১০,২৪০
-  → প্রতিটা ডাইমেনশন = একটা "ধারণার অক্ষ"
+print("SIMILARITIES:")
+print(f"  king-queen: {cosine_sim(embeddings['king'], embeddings['queen']):.3f}  (close!)")
+print(f"  king-banana: {cosine_sim(embeddings['king'], embeddings['banana']):.3f}  (far!)")
+print(f"  banana-apple: {cosine_sim(embeddings['banana'], embeddings['apple']):.3f}  (close!)")</div>
 
-EMBEDDING USE CASES:
+<div class="code-block"># ── STEP 2: The famous king - man + woman = queen ──
+# Word2Vec (2013, Mikolov) discovered meaning can be ADDED/SUBTRACTED.
 
-১. SEMANTIC SEARCH
-   "মেশিন লার্নিং" query → এটার embedding 
-   → ডেটাবেসে সব ডকুমেন্টের embedding সাথে 
-   তুলনা → কাছেরগুলো = প্রাসঙ্গিক
+import numpy as np
 
-২. RAG
-   ইউজার প্রশ্ন → embedding → ডকুমেন্ট 
-   খোঁজো → LLM-কে দাও
+embeddings = {
+    "king":   np.array([0.90, 0.85, 0.10]),
+    "queen":  np.array([0.88, 0.82, 0.15]),
+    "man":    np.array([0.70, 0.10, 0.90]),
+    "woman":  np.array([0.68, 0.08, 0.88]),
+}
 
-৩. CLUSTERING  
-   সমজাতীয় ডকুমেন্ট একসাথে গ্রুপ করো
-   → spam detection, topic modeling
+# Vector arithmetic:
+result = embeddings["king"] - embeddings["man"] + embeddings["woman"]
+print(f"king - man + woman = {result}")
+print(f"queen = {embeddings['queen']}")
+print("They're CLOSE! The model learned gender as a direction in space.")
 
-৪. CLASSIFICATION
-   "এই টেক্সট কি নেতিবাচক নাকি ইতিবাচক?"
-   → embedding → সরল classifier
+# WHY THIS WORKS:
+# "king - man" = remove maleness → get "royal" concept
+# "+ woman" = add femaleness → get "queen"
+# The model learned: gender, royalty, plurality as VECTOR DIRECTIONS.
 
-VECTOR OPERATIONS:
-  cosine_similarity(A, B) = A·B / (|A|*|B|)
-  → ১.০ = অভিন্ন অর্থ
-  → ০.০ = সম্পর্কহীন
-  → -১.০ = বিপরীত অর্থ
+# OTHER EXAMPLES:
+#   Paris - France + Italy = Rome
+#   walking - walk + swim = swimming
+#   big - bigger + small = smaller
 
-EMBEDDING MODELS:
-  OpenAI: text-embedding-3-large (৩০৭২ dim)
-  Cohere: embed-multilingual-v3 (১০২৪ dim)
-  Open: BGE, E5, Nomic (৭৬৮ dim)
-  → মাল্টিলিঙ্গুয়াল = বাংলা সাপোর্ট</div>
+# This proved: MEANING can be expressed as MATH (vectors).
+# This is the foundation of all modern NLP.</div>
+
+<div class="code-block"># ── STEP 3: Embedding models ──
+# You don't need to train your own embeddings. Use pre-trained models.
+
+from openai import OpenAI
+client = OpenAI()
+
+# Create an embedding:
+response = client.embeddings.create(
+    model="text-embedding-3-small",  # 1536 dimensions
+    input="Machine learning is fascinating"
+)
+embedding = response.data[0].embedding
+print(f"Dimensions: {len(embedding)}")  # 1536
+print(f"First 5 values: {embedding[:5]}")
+
+# EMBEDDING MODELS COMPARISON:
+models = {
+    "text-embedding-3-small (OpenAI)": {
+        "dims": 1536,
+        "cost": "$0.02/1M tokens",
+        "quality": "Good",
+    },
+    "text-embedding-3-large (OpenAI)": {
+        "dims": 3072,
+        "cost": "$0.13/1M tokens",
+        "quality": "Best",
+    },
+    "all-MiniLM-L6-v2 (local)": {
+        "dims": 384,
+        "cost": "Free (runs locally)",
+        "quality": "Decent",
+    },
+    "BGE-large-en (local)": {
+        "dims": 1024,
+        "cost": "Free",
+        "quality": "Very good",
+    },
+    "Cohere embed-multilingual-v3": {
+        "dims": 1024,
+        "cost": "$0.10/1M tokens",
+        "quality": "Great for non-English",
+    },
+}
+
+print("EMBEDDING MODELS:")
+for model, info in models.items():
+    print(f"\n  {model}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# CHOOSING A MODEL:
+# Quick prototyping → all-MiniLM-L6-v2 (free, local)
+# Production (English) → text-embedding-3-small (cheap, good)
+# Production (multilingual) → Cohere embed-multilingual-v3
+# Best quality → text-embedding-3-large (expensive)</div>
+
+<div class="code-block"># ── STEP 4: Semantic search with embeddings ──
+# Find documents by MEANING, not just keywords.
+
+import numpy as np
+
+# Example document database (simulated):
+documents = [
+    "Python is a great programming language for data science",
+    "JavaScript is used for web development",
+    "Machine learning models need large datasets",
+    "The weather in Dhaka is hot and humid",
+    "Django is a Python web framework",
+    "Neural networks are inspired by the human brain",
+]
+
+# Create embeddings for all documents (simplified):
+from openai import OpenAI
+client = OpenAI()
+
+def embed(text):
+    response = client.embeddings.create(
+        model="text-embedding-3-small",
+        input=text
+    )
+    return response.data[0].embedding
+
+# Embed all documents (do this once, store in database):
+doc_embeddings = [embed(doc) for doc in documents]
+
+# SEMANTIC SEARCH:
+query = "best language for AI"
+query_embedding = embed(query)
+
+# Find most similar documents:
+def cosine_sim(a, b):
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+scores = [
+    (doc, cosine_sim(query_embedding, doc_emb))
+    for doc, doc_emb in zip(documents, doc_embeddings)
+]
+scores.sort(key=lambda x: -x[1])
+
+print(f"Query: '{query}'")
+print("Top results:")
+for doc, score in scores[:3]:
+    print(f"  {score:.3f} | {doc}")
+# "Python is great for data science" scores highest
+# (even though query said "AI" not "Python")</div>
+
+<div class="code-block"># ── STEP 5: Embedding dimensions explained ──
+# WHY do embeddings have 1536 or 3072 dimensions?
+
+# Each dimension represents a CONCEPT or FEATURE the model learned:
+dimensions = """
+Dimension 1:   might represent "technology vs nature"
+Dimension 2:   might represent "positive vs negative sentiment"
+Dimension 3:   might represent "formal vs informal"
+Dimension 4:   might represent "singular vs plural"
+...
+Dimension 1536: some abstract feature humans can't name
+
+The model learned these AUTOMATICALLY during training.
+We don't know exactly what each dimension means.
+But the COMBINATION captures meaning accurately.
+"""
+
+print(dimensions)
+
+# DIMENSIONALITY TRADE-OFFS:
+trade_offs = {
+    "More dimensions": {
+        "pro": "More expressive, captures nuances",
+        "con": "More memory, slower search, higher cost",
+    },
+    "Fewer dimensions": {
+        "pro": "Faster search, less memory, cheaper",
+        "con": "Less expressive, might miss nuances",
+    },
+}
+
+print("DIMENSIONALITY TRADE-OFFS:")
+for option, info in trade_offs.items():
+    print(f"\n  {option}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# LLM EMBEDDING SIZES (internal):
+llm_dims = {
+    "GPT-2 small": 768,
+    "GPT-3": 12288,
+    "GPT-4": "~8000-12000 (estimated)",
+    "Llama 3 8B": 4096,
+    "Llama 3 70B": 8192,
+    "Claude 3": "~4096-8192 (estimated)",
+}
+
+print("LLM INTERNAL EMBEDDING DIMENSIONS:")
+for model, dims in llm_dims.items():
+    print(f"  {model}: {dims} dimensions")</div>
+
+<div class="code-block"># ── STEP 6: Embeddings in production (RAG) ──
+# The #1 production use case: RAG (Retrieval Augmented Generation)
+
+# COMPLETE RAG WITH EMBEDDINGS:
+rag_code = """
+# Step 1: Embed and store documents (do this once)
+from openai import OpenAI
+import numpy as np
+
+client = OpenAI()
+
+# Store in pgvector (PostgreSQL):
+from pgvector.django import VectorField
+from django.db import models
+
+class Document(models.Model):
+    content = models.TextField()
+    embedding = VectorField(dimensions=1536)
+
+    @classmethod
+    def embed_and_store(cls, text):
+        embedding = client.embeddings.create(
+            model="text-embedding-3-small",
+            input=text
+        ).data[0].embedding
+        return cls.objects.create(content=text, embedding=embedding)
+
+# Step 2: Search (user query → find relevant docs)
+def retrieve_documents(query, top_k=5):
+    query_embedding = client.embeddings.create(
+        model="text-embedding-3-small",
+        input=query
+    ).data[0].embedding
+
+    from pgvector.django import CosineDistance
+    return Document.objects.annotate(
+        distance=CosineDistance('embedding', query_embedding)
+    ).order_by('distance')[:top_k]
+
+# Step 3: Generate (LLM answers using retrieved context)
+def rag_answer(question):
+    docs = retrieve_documents(question)
+    context = "\\n\\n".join([d.content for d in docs])
+
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": f"Answer based on: {context}"},
+            {"role": "user", "content": question}
+        ]
+    )
+    return response.choices[0].message.content
+"""
+
+print(rag_code)
+
+# EMBEDDING BEST PRACTICES:
+best_practices = [
+    "Choose the right model (balance quality vs cost)",
+    "Batch API calls (embeddings are cheaper in bulk)",
+    "Store embeddings in a vector database (pgvector, Pinecone)",
+    "Create HNSW index for fast similarity search",
+    "Cache common queries (avoid re-embedding same text)",
+    "Re-embed when you change embedding models",
+    "Chunk long documents before embedding (200-500 words)",
+    "Use multilingual models for non-English content",
+    "Monitor embedding quality (relevance of search results)",
+    "Consider dimensionality reduction for scale (PCA, Matryoshka)",
+]
+
+print("EMBEDDING BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# THE BIG PICTURE:
+# Embeddings convert MEANING into MATH.
+# This enables: semantic search, RAG, recommendations, clustering.
+# Understanding embeddings = understanding how AI "understands" text.
+# "king - man + woman = queen" proved that meaning is computable.
+# Every modern AI application uses embeddings somewhere.</div>
 
 <div class="dialogue">নসিব — অদৃশ্য সংযোগ, ভাগ্য। কুরআনে আল্লাহ বলেন — "তোমাদের কারও সাথে কারও সম্পর্ক নেই যদি না আমি সংযুক্ত করি।" Embedding হলো সেই সংযোগ — শব্দের মধ্যে অদৃশ্য সম্পর্ক। 'বিদ্যা' আর 'জ্ঞান' কাছে — কারণ তাদের embedding কাছে। অর্থের জ্যামিতিতে তারা প্রতিবেশী। এই জ্যামিতিই LLM-এর বোঝার ভিত্তি।</div>
 <div class="dialogue en">"Nasib — invisible connection, destiny. Allah says — 'You have no connection unless I join you.' Embeddings are that connection — invisible relationships between words. 'বিদ্যা' and 'জ্ঞান' are close — because their embeddings are close. In the geometry of meaning, they're neighbors. This geometry is the foundation of LLM understanding."</div>`,
