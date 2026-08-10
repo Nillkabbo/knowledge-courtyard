@@ -402,32 +402,223 @@ doors.push({
 <strong>গাণিতিক সত্য:</strong> g^(ba) = g^(ab) — একই! ✅<br>
 <strong>চোরের সমস্যা:</strong> g^a ও g^b জানে, কিন্তু a বা b বের করা = discrete log = অসম্ভব</div></div>
 
-<div class="code-block"># — Python: Diffie-Hellman সিমুলেশন —
+<div class="code-block"># ── STEP 1: Diffie-Hellman key exchange ──
+# How two people create a SHARED SECRET over an INSECURE channel.
 
-  # সহজ উদাহরণ (বাস্তবে p হাজার ডিজিট)
-  p = 23   # public prime (বাস্তবে 2048-bit)
-  g = 5    # public generator
+# THE SETUP:
+p = 23   # public prime (in reality, 2048+ bits)
+g = 5    # public generator
 
-  # Alice-এর গোপন সংখ্যা
-  a = 6                    # private!
-  A = pow(g, a, p)         # public: g^a mod p = 8
+# Alice picks a secret number:
+a = 6                        # PRIVATE (only Alice knows)
+A = pow(g, a, p)             # PUBLIC: A = g^a mod p = 8
+print(f"Alice's public value: {A}")
 
-  # Bob-এর গোপন সংখ্যা
-  b = 15                   # private!
-  B = pow(g, b, p)         # public: g^b mod p = 19
+# Bob picks a secret number:
+b = 15                       # PRIVATE (only Bob knows)
+B = pow(g, b, p)             # PUBLIC: B = g^b mod p = 19
+print(f"Bob's public value: {B}")
 
-  # Alice ও Bob পাবলিকে A ও B বিনিময় করে
-  # এখন প্রত্যেকে গোপন চাবি হিসাব করে:
-  alice_secret = pow(B, a, p)  # B^a mod p = 2
-  bob_secret   = pow(A, b, p)  # A^b mod p = 2
+# They exchange A and B publicly.
+# Eve (the eavesdropper) sees: p=23, g=5, A=8, B=19</div>
 
-  print(alice_secret == bob_secret)  # True! ✅
-  print(alice_secret)                # 2 — shared secret!
+<div class="code-block"># ── STEP 2: Computing the shared secret ──
+# Now each side computes the SAME secret independently:
 
-  # চোর p=২৩, g=৫, A=৮, B=১৯ জানে
-  # কিন্তু a বা b বের করতে হলে discrete log:
-  # g^x ≡ 8 (mod 23) — x কত? brute force লাগে
-  # বাস্তব p = ২০৪৮-bit → অসম্ভব!</div>
+# Alice uses Bob's public value + her private:
+alice_secret = pow(B, a, p)  # B^a mod p
+print(f"Alice's computed secret: {alice_secret}")  # 2
+
+# Bob uses Alice's public value + his private:
+bob_secret = pow(A, b, p)    # A^b mod p
+print(f"Bob's computed secret: {bob_secret}")      # 2
+
+# BOTH GET THE SAME SECRET!
+print(f"Secrets match: {alice_secret == bob_secret}")  # True ✅
+
+# WHY IT WORKS (mathematically):
+# Alice computes: B^a = (g^b)^a = g^(ba) mod p
+# Bob computes:   A^b = (g^a)^b = g^(ab) mod p
+# Since ba = ab (multiplication is commutative), they get the same result!</div>
+
+<div class="code-block"># ── STEP 3: Why Eve can't figure out the secret ──
+# Eve knows: p=23, g=5, A=8, B=19
+# Eve needs: a or b to compute the secret
+
+# To find a: solve g^a ≡ A (mod p) → 5^a ≡ 8 (mod 23)
+# This is the DISCRETE LOGARITHM PROBLEM.
+
+# Brute force for small p=23:
+for guess in range(1, 23):
+    if pow(5, guess, 23) == 8:
+        print(f"Eve found a = {guess}")
+        break
+# Easy for p=23, but...
+
+# IN REALITY: p is a 2048-bit prime (600+ digits)
+# Number of possibilities: ~2^2048
+# Even with all computers on Earth: ~10^30 years to brute force
+# The discrete logarithm problem is believed to be intractable
+
+# CLASSICAL vs QUANTUM:
+# Classical computers: can't solve (too slow)
+# Quantum computers: Shor's algorithm can solve (in theory)
+# This is WHY post-quantum crypto exists (lattice-based)</div>
+
+<div class="code-block"># ── STEP 4: Elliptic Curve Diffie-Hellman (ECDH) ──
+# Modern systems use ELLIPTIC CURVES instead of modular arithmetic.
+
+# ECC advantages:
+# - Same security with MUCH smaller keys
+# - Faster computations
+# - Less bandwidth
+
+comparison = {
+    "RSA/DH (classical)": {
+        "security_128bit": "3072-bit key",
+        "security_256bit": "15360-bit key",
+        "speed": "Slower (huge numbers)",
+    },
+    "ECC (elliptic curve)": {
+        "security_128bit": "256-bit key",
+        "security_256bit": "512-bit key",
+        "speed": "Faster (smaller numbers)",
+    },
+}
+
+print("RSA/DH vs ECC:")
+for algo, info in comparison.items():
+    print(f"\n  {algo}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# 256-bit ECC = 3072-bit RSA security! 12x smaller keys!
+
+# PYTHON ECDH:
+ecdh_code = """
+from cryptography.hazmat.primitives.asymmetric import ec
+
+# Generate key pairs on curve:
+alice_private = ec.generate_private_key(ec.SECP256R1())
+alice_public = alice_private.public_key()
+
+bob_private = ec.generate_private_key(ec.SECP256R1())
+bob_public = bob_private.public_key()
+
+# Exchange public keys and compute shared secret:
+alice_shared = alice_private.exchange(ec.ECDH(), bob_public)
+bob_shared = bob_private.exchange(ec.ECDH(), alice_public)
+
+print(f"Secrets match: {alice_shared == bob_shared}")  # True!
+"""
+
+print("PYTHON ECDH:")
+print(ecdh_code)</div>
+
+<div class="code-block"># ── STEP 5: Forward secrecy ──
+# What if someone records ALL encrypted traffic today,
+# and steals the private key TOMORROW?
+
+# WITHOUT forward secrecy:
+# If RSA key is stolen → ALL past sessions can be decrypted!
+# "Harvest now, decrypt later" attack.
+
+# WITH forward secrecy (ephemeral DH):
+# Each session uses TEMPORARY keys (ephemeral)
+# Even if long-term key is stolen, past sessions remain secure
+
+# HOW FORWARD SECRECY WORKS:
+forward_secrecy = """
+Session 1: ephemeral keys a1, b1 → shared secret S1 → discarded
+Session 2: ephemeral keys a2, b2 → shared secret S2 → discarded
+Session 3: ephemeral keys a3, b3 → shared secret S3 → discarded
+
+If attacker steals long-term private key:
+  → Can impersonate in future (MITM)
+  → CANNOT decrypt past sessions (a1,b1 were deleted!)
+"""
+
+print(forward_secrecy)
+
+# TLS 1.3 REQUIRES forward secrecy:
+# TLS 1.2: optional (RSA key exchange = no forward secrecy)
+# TLS 1.3: mandatory (ECDHE = always ephemeral keys)
+# This is a MAJOR security improvement.
+
+# SIGNAL PROTOCOL (WhatsApp):
+# Double Ratchet algorithm:
+# - New key for EVERY message
+# - Compromising one key doesn't compromise others
+# - Past messages remain secure even if current key is stolen</div>
+
+<div class="code-block"># ── STEP 6: Key management in practice ──
+# Generating keys is easy. MANAGING keys is the hard part.
+
+# KEY MANAGEMENT CHALLENGES:
+challenges = [
+    "Key generation: use CSPRNG (cryptographically secure random)",
+    "Key storage: HSM (hardware), KMS (cloud), not in source code",
+    "Key rotation: replace keys periodically (limit blast radius)",
+    "Key revocation: what if a key is compromised?",
+    "Key distribution: how to securely share keys?",
+    "Key backup: if you lose the key, data is gone forever",
+]
+
+print("KEY MANAGEMENT CHALLENGES:")
+for challenge in challenges:
+    print(f"  ☐ {challenge}")
+
+# CLOUD KMS (Key Management Service):
+kms_examples = """
+# AWS KMS:
+aws kms encrypt --key-id alias/my-key --plaintext file://secret.txt
+
+# Google Cloud KMS:
+gcloud kms encrypt --key=my-key --location=global --plaintext-file=secret.txt
+
+# Python (AWS KMS):
+import boto3
+kms = boto3.client('kms')
+response = kms.encrypt(
+    KeyId='alias/my-key',
+    Plaintext=b'sensitive data'
+)
+ciphertext = response['CiphertextBlob']
+"""
+
+print(kms_examples)
+
+# PERFECT FORWARD SECRECY SUMMARY:
+pfs_summary = """
+KEY EXCHANGE SECURITY LEVELS:
+
+1. RSA key exchange (no forward secrecy):
+   ❌ If private key stolen, ALL past traffic decrypted
+
+2. DHE (Diffie-Hellman Ephemeral):
+   ✅ Forward secrecy — past sessions safe
+   ⚠️ Slower than ECDHE
+
+3. ECDHE (Elliptic Curve DH Ephemeral):
+   ✅ Forward secrecy
+   ✅ Fast
+   ✅ Small key sizes
+   ✅ TLS 1.3 default
+
+4. Post-Quantum (Kyber/ML-KEM):
+   ✅ Forward secrecy
+   ✅ Quantum-resistant
+   ⚠️ Newer (less battle-tested)
+"""
+
+print(pfs_summary)
+
+# THE BIG PICTURE:
+# Diffie-Hellman enables SECURE COMMUNICATION over INSECURE channels.
+# Without it, every encrypted connection would need a pre-shared key.
+# With it, two strangers can create a shared secret that nobody else knows.
+# This is the foundation of ALL modern secure communication:
+# HTTPS, VPN, SSH, Signal, WhatsApp — all use DH or ECDH.</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Forward Secrecy:</strong> যদি পরে কারো private key চুরি হয়, পুরোনো সেশন ডিক্রিপ্ট হয়ে যায় না — যদি Diffie-Hellman ephemeral (DHE) ব্যবহার করা হয়। প্রতিটি সেশনে নতুন a, b। পুরোনো চাবি আলাদা। TLS 1.3-এ DHE বাধ্যতামূলক।</div></div>
 
