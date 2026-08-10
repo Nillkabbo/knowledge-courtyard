@@ -957,85 +957,377 @@ doors.push({
 </div>
 <div class="svg-caption">Scaling law — বড় মডেল ভালো, কিন্তু অনুপাত ঠিক হতে হবে: প্রতি প্যারামিটারে ~২০ টোকেন</div>
 
-<div class="code-block">Scaling Laws — Bigger is Better (with conditions):
+<div class="code-block"># ── STEP 1: What are scaling laws? ──
+# Scaling laws describe HOW model performance improves with size.
 
-KAPLAN SCALING LAW (2020):
-  Loss ∝ N^-0.076 (parameters)
-  Loss ∝ D^-0.095 (data)
-  Loss ∝ C^-0.050 (compute)
+# THE KAPLAN SCALING LAW (2020, OpenAI):
+kaplan = """
+Power law relationship:
+  Loss ∝ N^(-0.076)  (more parameters → lower loss)
+  Loss ∝ D^(-0.095)  (more data → lower loss)
+  Loss ∝ C^(-0.050)  (more compute → lower loss)
+
+Key finding: Bigger models are ALWAYS better (given enough data).
+This drove the "scale up" race: GPT-2 → GPT-3 → GPT-4.
+"""
+
+print(kaplan)
+
+# THE CHINCHILLA LAW (2022, DeepMind):
+chinchilla = """
+Kaplan was WRONG about the ratio!
+
+Chinchilla finding: for optimal training:
+  ~20 tokens of data PER parameter
+
+  Model size → Optimal data:
+  7B params  → 140B tokens
+  70B params → 1.4T tokens
+  405B params → 8T tokens
+
+DeepMind proved this:
+  Chinchilla (70B + 1.4T tokens) BEAT GPT-3 (175B + 300B tokens)!
   
-  → প্রতিটা ক্ষেত্রে loss কমে, কিন্তু 
-    power law-এ।
-  → ডাবল কম্পিউট → ৯৩% loss reduction
-  → বড় মডেল সবসময় ভালো?
+Lesson: SMALLER model + MORE data > LARGER model + LESS data
+"""
 
-CHINCHILLA LAW (2022, DeepMind):
-  Kaplan ভুল ছিল!
-  
-  সঠিক অনুপাত: 
-    প্রতি প্যারামিটারে ~২০ টোকেন ডেটা লাগে।
-  
-  ৭০B মডেল → ১.৪T টোকেন ডেটা
-  ৭B মডেল → ১৪০B টোকেন ডেটা
-  
-  Chinchilla (৭০B + ১.৪T tokens)
-  → GPT-3 (১৭৫B + ৩০০B tokens) কে হারায়!
-  → অর্থাৎ ছোট মডেল + বেশি ডেটা > 
-    বড় মডেল + কম ডেটা
+print(chinchilla)
 
-MODEL FAMILIES (2024-2025 landscape):
+# WHY THIS MATTERS:
+# It tells you exactly how much DATA you need for a given MODEL SIZE.
+# Too little data → under-trained (wasted parameters)
+# Too much data → over-trained (diminishing returns)
+# Sweet spot: ~20 tokens per parameter</div>
 
-  # ──────────────────────────────────────# 
-  #  OPEN WEIGHTS (local, free)           # 
-  #                                       # 
-  #  Llama 3.1 (Meta):                    # 
-  #    8B / 70B / 405B                    # 
-  #    → best open model, multilingual    # 
-  #                                       # 
-  #  Mistral / Mixtral (Mistral AI):      # 
-  #    7B / 8x7B MoE / 8x22B MoE         # 
-  #    → efficient, European              # 
-  #                                       # 
-  #  Qwen 2.5 (Alibaba):                  # 
-  #    0.5B / 7B / 72B                    # 
-  #    → strong multilingual, code        # 
-  #                                       # 
-  #  Phi-3 (Microsoft):                   # 
-  #    3.8B / 7B / 14B                    # 
-  #    → small but mighty, mobile         # 
-  # ──────────────────────────────────────# 
+<div class="code-block"># ── STEP 2: Compute-optimal training ──
+# The Chinchilla paper introduced COMPUTE-OPTIMAL training.
 
-  # ──────────────────────────────────────# 
-  #  PROPRIETARY (API, paid)              # 
-  #                                       # 
-  #  GPT-5 / o4-mini (OpenAI):            # 
-  #    → multimodal, fastest, large ctx   # 
-  #    → o-series: reasoning, test-time   # 
-  #                                       # 
-  #  Claude Sonnet 4 (Anthropic):         # 
-  #    → best coding, 200K+ context       # 
-  #                                       # 
-  #  Gemini 2.5 Pro (Google):             # 
-  #    → 1M+ context, multimodal native   # 
-  # ──────────────────────────────────────# 
+# COMPUTE BUDGET:
+compute = """
+Given a fixed compute budget C (in FLOPs):
 
-MOE (Mixture of Experts):
-  প্রতিটা token-এ শুধু কয়েকজন "expert" 
-  কাজ করে, সব নয়।
-  
-  Mixtral 8x7B: ৮ experts, প্রতিটা ৭B
-  → total ৪৭B কিন্তু প্রতিটা token-এ 
-    শুধু ~১৩B active
-  → fast + capable
+Kaplan says: spend most on BIG models
+Chinchilla says: BALANCE model size and data
 
-CHOOSE BY NEED:
-  প্রোডাকশন chat → GPT-5 বা Claude Sonnet 4
-  কোড → Claude Sonnet 4
-  হার্ড রিজনিং → o4-mini / o3 (test-time compute)
-  বাজেট → Llama 3.1 8B (local/free)
-  মোবাইল → Phi-3 mini / Qwen 3 ছোট
-  দীর্ঘ ডকুমেন্ট → Gemini 2.5 (1M+ ctx)
-  বহুভাষিক → Qwen 2.5 / Llama 3.1</div>
+Optimal allocation (Chinchilla):
+  For C = 10^21 FLOPs (~$1M):
+    Model: 3B parameters
+    Data: 60B tokens
+    
+  For C = 10^23 FLOPs (~$100M):
+    Model: 70B parameters
+    Data: 1.4T tokens
+
+  For C = 10^25 FLOPs (~$1B):
+    Model: 500B parameters
+    Data: 10T tokens
+"""
+
+print(compute)
+
+# BUT MODERN MODELS OVER-TRAIN:
+over_training = """
+Llama 3 broke Chinchilla:
+  8B params trained on 15T tokens
+  That's ~1875 tokens per parameter (Chinchilla says 20!)
+
+Why? Because:
+  1. INFERENCE is the bottleneck (not training)
+  2. Smaller models run cheaper at inference
+  3. Over-train a small model → better inference performance
+  4. Llama 3 8B outperforms many larger models
+
+The industry has moved from "Chinchilla optimal"
+to "inference optimal" (over-train small models).
+"""
+
+print(over_training)
+
+# SCALING EMERGENT ABILITIES:
+emergent = """
+Some abilities EMERGE only at scale:
+
+  <1B params: Basic grammar, simple completions
+  1-10B: Translation, summarization, simple reasoning
+  10-70B: Code generation, multi-step reasoning, instruction following
+  70B+: Complex reasoning, theory of mind, few-shot learning
+  100B+: Advanced math, sophisticated coding, nuanced understanding
+
+These are EMERGENT — they don't exist in small models
+and appear suddenly as scale increases.
+"""
+
+print(emergent)</div>
+
+<div class="code-block"># ── STEP 3: The LLM landscape (2025) ──
+# Current model families:
+
+models_2025 = {
+    "OPEN WEIGHTS (free, local)": {
+        "Llama 3.1 (Meta)": "8B / 70B / 405B — best open models, multilingual",
+        "Qwen 2.5 (Alibaba)": "0.5B / 7B / 72B — strong code + multilingual",
+        "Mistral / Mixtral": "7B / 8x7B MoE / 8x22B MoE — efficient",
+        "Phi-3 (Microsoft)": "3.8B / 7B — small but capable, mobile-friendly",
+        "DeepSeek V3": "671B (37B active MoE) — strong reasoning, cheap",
+    },
+    "PROPRIETARY (API, paid)": {
+        "GPT-5 / o4-mini (OpenAI)": "Multimodal, fastest, large context",
+        "Claude Sonnet 4 (Anthropic)": "Best coding, 200K+ context",
+        "Gemini 2.5 Pro (Google)": "1M+ context, multimodal native",
+        "Grok 3 (xAI)": "Real-time data, X integration",
+    },
+}
+
+print("LLM LANDSCAPE (2025):")
+for category, models in models_2025.items():
+    print(f"\n  {category}:")
+    for model, desc in models.items():
+        print(f"    {model}: {desc}")
+
+# CHOOSING THE RIGHT MODEL:
+choosing = {
+    "Production chat": "GPT-5 or Claude Sonnet 4 (best quality)",
+    "Coding": "Claude Sonnet 4 (best at code)",
+    "Hard reasoning": "o4-mini / o3 (test-time compute)",
+    "Budget / local": "Llama 3.1 8B (free, runs on laptop)",
+    "Mobile": "Phi-3 mini / Qwen 2.5 3B",
+    "Long documents": "Gemini 2.5 (1M+ tokens)",
+    "Multilingual": "Qwen 2.5 / Llama 3.1",
+    "Privacy (on-prem)": "Llama 3.1 / Mistral (no data leaves your server)",
+}
+
+print("\nCHOOSING BY NEED:")
+for need, model in choosing.items():
+    print(f"  {need}: {model}")</div>
+
+<div class="code-block"># ── STEP 4: Mixture of Experts (MoE) ──
+# MoE: only activate SOME experts per token (not the whole model).
+
+moe_explanation = """
+DENSE MODEL (standard):
+  Every token goes through ALL parameters.
+  70B model → 70B active parameters per token.
+  → High quality but SLOW and EXPENSIVE at inference.
+
+MoE (Mixture of Experts):
+  Model has N "experts" (sub-networks).
+  Each token activates only TOP-K experts (usually 2-8).
+  Router decides which expert handles which token.
+
+  Mixtral 8x7B:
+    Total parameters: 47B (8 experts x ~7B each)
+    Active per token: ~13B (top 2 experts)
+    → Near-70B quality at near-13B speed!
+"""
+
+print(moe_explanation)
+
+# MoE MODELS:
+moe_models = {
+    "Mixtral 8x7B": "8 experts x 7B = 47B total, 13B active per token",
+    "Mixtral 8x22B": "8 experts x 22B = 141B total, 39B active",
+    "DeepSeek V3": "256 experts, 8 active per token (671B total, 37B active)",
+    "GPT-4 (est.)": "8-16 experts (Mixture of Experts architecture)",
+    "Qwen-MoE": "60 experts, 8 active (A14B variant)",
+}
+
+print("MoE MODELS:")
+for model, desc in moe_models.items():
+    print(f"  {model}: {desc}")
+
+# MoE ADVANTAGES:
+moe_pros = {
+    "Speed": "Only K experts active → faster inference",
+    "Capacity": "More total parameters → more knowledge stored",
+    "Specialization": "Different experts learn different tasks",
+    "Cost": "High quality at lower compute cost",
+}
+
+print("\nMoE ADVANTAGES:")
+for pro, desc in moe_pros.items():
+    print(f"  {pro}: {desc}")
+
+# MoE CHALLENGES:
+moe_cons = {
+    "Memory": "Must load ALL experts in memory (even inactive ones)",
+    "Complexity": "Router training is tricky (load balancing)",
+    "Communication": "Distributed training has higher overhead",
+}
+
+print("\nMoE CHALLENGES:")
+for con, desc in moe_cons.items():
+    print(f"  {con}: {desc}")</div>
+
+<div class="code-block"># ── STEP 5: Multimodal LLMs ──
+# Modern LLMs don't just process TEXT — they process IMAGES, AUDIO, VIDEO.
+
+multimodal = {
+    "Text-only (traditional)": {
+        "input": "Text in, text out",
+        "models": "GPT-2, GPT-3, Llama 1/2",
+    },
+    "Vision-Language": {
+        "input": "Text + images",
+        "models": "GPT-4o, Claude 3.5, Gemini, Llama 3.2 Vision",
+        "use": "Image description, visual Q&A, OCR, chart reading",
+    },
+    "Audio-Language": {
+        "input": "Text + audio",
+        "models": "GPT-4o (native audio), Gemini",
+        "use": "Voice chat, transcription, audio analysis",
+    },
+    "Video": {
+        "input": "Text + video frames",
+        "models": "Gemini 2.5 (native video understanding)",
+        "use": "Video summarization, action recognition",
+    },
+    "Full Multimodal": {
+        "input": "Text + images + audio + video + code",
+        "models": "GPT-4o, Gemini 2.5 Pro",
+        "use": "Any input → any output (truly general AI)",
+    },
+}
+
+print("MULTIMODAL LLMs:")
+for modality, info in multimodal.items():
+    print(f"\n  {modality}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# HOW MULTIMODAL WORKS:
+how_multimodal = """
+Vision encoders convert images to tokens:
+  Image → Vision Encoder (CLIP/ViT) → embedding vectors
+  → These vectors are treated like text token embeddings
+  → Unified Transformer processes text + image together
+
+GPT-4o approach: NATIVE multimodal
+  - Single model handles all modalities
+  - No separate vision encoder
+  - Faster, more integrated
+
+Claude/Gemini approach: ADAPTER-based
+  - Separate vision encoder
+  - Adapter projects image features into text space
+  - Transformer processes combined tokens
+"""
+
+print(how_multimodal)
+
+# MULTIMODAL IN CODE:
+multimodal_code = """
+# GPT-4o vision:
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[{
+        "role": "user",
+        "content": [
+            {"type": "text", "text": "What is in this image?"},
+            {"type": "image_url", "image_url": {"url": "data:image/png;base64,..."}},
+        ],
+    }],
+)
+print(response.choices[0].message.content)
+# "This image shows a golden retriever playing in a park..."
+"""
+
+print(multimodal_code)</div>
+
+<div class="code-block"># ── STEP 6: The complete LLM pipeline ──
+# Everything you've learned, in ONE unified view:
+
+pipeline = """
+THE COMPLETE LLM PIPELINE (all 10 doors):
+
+INPUT: "Explain quantum computing to a beginner"
+
+1. TOKENIZATION (Door 1):
+   Text → tokens → [3923, 5892, 3201, 318, 264, 9428]
+
+2. EMBEDDING (Door 2):
+   Each token → vector (8192 dimensions)
+   "quantum" → [0.23, -0.45, 0.89, ...]
+
+3. POSITIONAL ENCODING:
+   Add position info (RoPE rotation)
+
+4. ATTENTION (Door 3):
+   Each token attends to all others
+   "computing" attends to "quantum" → understands the compound
+
+5. TRANSFORMER BLOCKS (Door 4):
+   96 layers of:
+   Attention → FFN → Residual → Layer Norm
+   Each layer adds deeper understanding
+
+6. TRAINING (Door 5):
+   Model was trained: Pre-train → SFT → RLHF
+   Knowledge stored in FFN weights
+
+7. GENERATION (Door 6):
+   Output vector → vocabulary probabilities
+   → Sample next token (temperature=0.7, top_p=0.9)
+   → Append → repeat
+
+8. HALLUCINATION CONTROL (Door 7):
+   If unsure → "I don't know" (RAG grounding)
+   Low temperature for factual accuracy
+
+9. SCALING (Door 8):
+   70B+ parameters for quality
+   MoE for efficiency (only 13B active)
+
+10. MULTIMODAL (Door 9):
+    If user sends an image with the question →
+    Vision encoder adds image tokens to the sequence
+
+OUTPUT: "Quantum computing uses quantum bits (qubits)
+that can be 0 and 1 simultaneously, enabling parallel
+computation for certain problems..."
+"""
+
+print(pipeline)
+
+# THE 10 DOORS SUMMARY:
+doors_summary = {
+    "Door 1": "Tokenization — text → tokens",
+    "Door 2": "Embeddings — tokens → vectors (meaning space)",
+    "Door 3": "Self-Attention — tokens communicate with each other",
+    "Door 4": "Transformer — 96 layers of attention + FFN",
+    "Door 5": "Training — Pre-train → SFT → RLHF",
+    "Door 6": "Generation — one token at a time (autoregressive)",
+    "Door 7": "Hallucination — why LLMs lie + how to prevent",
+    "Door 8": "Scaling Laws — bigger + more data = better",
+    "Door 9": "MoE + Multimodal — experts + vision/audio",
+    "Door 10": "Complete Pipeline — all pieces together",
+}
+
+print("THE 10 DOORS OF LLM ANATOMY:")
+for door, topic in doors_summary.items():
+    print(f"  {door}: {topic}")
+
+# CONGRATULATIONS!
+congrats = """
+You now understand HOW Large Language Models work —
+from tokenization to generation, from attention to scaling.
+
+This knowledge lets you:
+  ✅ Choose the right model for each task
+  ✅ Write better prompts (you know how attention works)
+  ✅ Prevent hallucination (RAG, temperature, verification)
+  ✅ Estimate costs (token counting, model pricing)
+  ✅ Build production AI applications (streaming, caching)
+  ✅ Fine-tune models for your domain (LoRA, SFT, DPO)
+
+"The best way to predict the future is to invent it." — Alan Kay
+You now have the knowledge to build the future of AI applications.
+
+Every ChatGPT, Claude, Gemini interaction you have from now on —
+you'll understand EXACTLY what's happening inside.
+That's the power of understanding the fundamentals.
+"""
+
+print(congrats)</div>
 
 <div class="dialogue">পরিমাণ — quantity, measure। কুরআনে আল্লাহ বলেন — "যদি পৃথিবীর সব গাছ কলম হতো এবং সমুদ্র কালি হতো... আল্লাহর জ্ঞান শেষ হতো না।" (৩১:২৭)। আল্লাহর জ্ঞান অসীম। মডেলের জ্ঞান সীমিত — কিন্তু scaling। বেশি ডেটা, বেশি প্যারামিটার = বেশি জ্ঞান। কিন্তু সঠিক অনুপাতে। Chinchilla — প্রতি প্যারামিটারে ২০ টোকেন। এটাই scaling-এর মিযান।</div>
 <div class="dialogue en">"Qadar — quantity, measure. Allah says — 'If all trees on earth were pens and the ocean were ink... Allah's knowledge would not be exhausted.' (31:27). Allah's knowledge is infinite. The model's knowledge is finite — but scalable. More data, more parameters = more knowledge. But in the right ratio. Chinchilla — 20 tokens per parameter. This is scaling's mizan."</div>`,
@@ -1130,70 +1422,288 @@ doors.push({
 </div>
 <div class="svg-caption">Mixture of Experts — শুধু প্রয়োজনীয় বিশেষজ্ঞ কাজ করে; বড় মডেলের ক্ষমতা, ছোট মডেলের গতি</div>
 
-<div class="code-block">Mixture of Experts (MoE) &amp; Multimodality:
+<div class="code-block"># ── STEP 1: MoE (Mixture of Experts) explained ──
+# MoE lets a large model run FAST by only activating parts per token.
 
-MIXTURE OF EXPERTS:
+moe_explained = """
+DENSE MODEL (every token uses ALL parameters):
+  Token → [full 70B model] → output
+  Slow, expensive per token
 
-  সাধারণ Transformer:
-    প্রতিটা token → সব প্যারামিটার প্রসেস করে
-    → বড় মডেল = ধীর
-    
-  MoE Transformer:
-    প্রতিটা token → router ঠিক করে কোন 
-    "expert" কাজ করবে
-    → শুধু ২-৮টা expert active
-    → বাকি ঘুমায়
+MoE MODEL (only activate top-K experts):
+  Token → Router → selects 2-8 experts → [only those experts] → output
+  Fast, cheap per token
 
-  Mixtral 8x7B:
-    Total: ৪৭B প্যারামিটার
-    Active per token: ~১৩B
-    → GPT-3.5 লেভেল পারফরম্যান্স
-    → কিন্তু ১৩B গতির!
-  
-  GPT-4 (আনুমানিক):
-    → ৮ বা ১৬ experts এর MoE
-    → ১.৭T total, ~২৮০B active
-    → multimodal (vision + text)
+Mixtral 8x7B: 47B total params, only 13B active per token
+DeepSeek V3: 671B total params, only 37B active per token
+GPT-4 (est.): ~1.7T total params, ~280B active per token
+"""
 
-  সুবিধা: বড় মডেলের ক্ষমতা, ছোট মডেলের গতি
-  অসুবিধা: মেমরি (সব expert রাখতে হয়)
+print(moe_explained)
 
-MULTIMODALITY — শুধু টেক্সট নয়:
+# MoE BENEFITS:
+benefits = {
+    "Inference speed": "Only K experts active → near-small-model speed",
+    "Model capacity": "More total params → more knowledge stored",
+    "Specialization": "Different experts learn different domains",
+    "Cost efficiency": "70B-quality output at 13B-compute cost",
+}
 
-  Text-only (GPT-3):
-    input: "একটা বিড়ালের ছবি দেখো"
-    → দেখতে পায় না। শুধু টেক্সট।
-  
-  Vision-Language (GPT-4V era → GPT-5, Claude Sonnet 4):
-    input: [image bytes] + "এই ছবিতে কী?"
-    → ছবি বোঝে! টেক্সট ও ছবি একসাথে।
-    
-  Multimodal Pipeline:
-    Image → Vision Encoder → embedding
-    Text → Tokenizer → embedding  
-    → দুটো embedding একসাথে → Transformer
-    
-  Modalities:
-    Text: tokenizer + text embedding
-    Image: patch embedding (ViT)  
-    Audio: spectrogram → embedding (Whisper)
-    Video: frame-by-frame + temporal
+print("MoE BENEFITS:")
+for benefit, desc in benefits.items():
+    print(f"  {benefit}: {desc}")</div>
 
-  GPT-5: text + image + audio (native)
-  Gemini 2.5: text + image + audio + video
-  Claude Sonnet 4: text + image (audio via app, not API)
+<div class="code-block"># ── STEP 2: MoE architecture ──
+# How the router and experts work:
 
-  ব্যবহার:
-    • Image analysis: "এই X-ray-এ কী দেখো?"
-    • Document understanding: scanned PDF
-    • UI testing: "এই screenshot-এ button কোথায়?"
-    • Code from screenshot: "এই design থেকে code"
+# MoE BLOCK (replaces single FFN):
+moe_arch = """
+STANDARD Transformer Block:
+  → Attention → FFN (all tokens through same FFN) → Residual
 
-FUTURE DIRECTIONS:
-  • Native audio output (real-time voice)
-  • Video understanding (long video)
-  • 3D scene understanding
-  • Embodied AI (robotics + multimodal)</div>
+MoE Transformer Block:
+  → Attention → Router selects experts → K expert FFNs → Residual
+
+ROUTER (gating network):
+  For each token, compute:
+    gate_scores = softmax(W_gate @ token_vector)
+  → gate_scores has N values (one per expert)
+  → Pick top-K experts with highest scores
+  → Weight each expert's output by its gate score
+
+  Example with 8 experts, top-2:
+    Token "math" → router scores: [0.02, 0.01, 0.45, 0.40, 0.03, 0.02, 0.04, 0.03]
+    → Top-2: expert 3 (0.45), expert 4 (0.40)
+    → Only experts 3 and 4 process this token
+    → output = 0.45 * expert3(token) + 0.40 * expert4(token)
+"""
+
+print(moe_arch)
+
+# MoE CHALLENGES:
+challenges = {
+    "Load balancing": "All experts should get equal work (or some starve)",
+    "Memory cost": "All experts in memory even if inactive",
+    "Training instability": "Router can collapse (always picks same expert)",
+    "Communication overhead": "In distributed training, experts on different GPUs",
+}
+
+print("MoE CHALLENGES:")
+for challenge, desc in challenges.items():
+    print(f"  {challenge}: {desc}")</div>
+
+<div class="code-block"># ── STEP 3: Multimodal LLMs ──
+# Modern LLMs process TEXT + IMAGES + AUDIO + VIDEO.
+
+multimodal_types = {
+    "Text-only (GPT-3)": "Input: text. Output: text.",
+    "Vision-Language (GPT-4V, Claude 3.5)": "Input: text + images. Output: text.",
+    "Audio (GPT-4o, Whisper)": "Input: audio. Output: text or audio.",
+    "Video (Gemini 2.5)": "Input: video frames. Output: text.",
+    "Full Multimodal (GPT-4o)": "Any input → any output.",
+}
+
+print("MULTIMODAL TYPES:")
+for mtype, desc in multimodal_types.items():
+    print(f"  {mtype}: {desc}")
+
+# HOW VISION WORKS IN LLMs:
+vision_pipeline = """
+IMAGE PROCESSING IN VISION-LANGUAGE MODELS:
+
+1. Image → Patches (16x16 pixel blocks)
+2. Patches → Vision Encoder (ViT/CLIP) → embedding vectors
+3. Embeddings → projected into text embedding space
+4. Combined with text tokens → fed to Transformer
+5. Transformer processes text + image tokens together
+
+Example:
+  Input: [IMAGE_TOKEN_1, IMAGE_TOKEN_2, ..., "What is this?"]
+  Model sees image tokens + text tokens in one sequence
+  Output: "This is a cat sitting on a windowsill."
+
+Each image = ~1000-4000 tokens (depends on resolution)
+This is why vision queries cost MORE tokens than text-only.
+"""
+
+print(vision_pipeline)</div>
+
+<div class="code-block"># ── STEP 4: Multimodal use cases ──
+# What you can DO with multimodal LLMs:
+
+use_cases = {
+    "Image Analysis": {
+        "input": "Medical X-ray + 'What do you see?'",
+        "use": "Healthcare diagnostics (assist, not replace doctors)",
+    },
+    "Document Understanding": {
+        "input": "Scanned PDF + 'Extract all invoice data'",
+        "use": "OCR + data extraction from documents",
+    },
+    "UI/UX Testing": {
+        "input": "Screenshot + 'Find the login button'",
+        "use": "Automated UI testing, accessibility audits",
+    },
+    "Code from Design": {
+        "input": "Mockup image + 'Write HTML/CSS for this design'",
+        "use": "Design-to-code, rapid prototyping",
+    },
+    "Visual Q&A": {
+        "input": "Chart/graph + 'What's the trend?'",
+        "use": "Data analysis, chart interpretation",
+    },
+    "Video Understanding": {
+        "input": "Video + 'Summarize what happens'",
+        "use": "Content moderation, video search, surveillance",
+    },
+    "Audio Transcription": {
+        "input": "Audio recording + 'Transcribe this'",
+        "use": "Meeting notes, podcast transcription, subtitles",
+    },
+    "Real-time Voice Chat": {
+        "input": "Voice question",
+        "use": "GPT-4o voice mode, hands-free AI assistant",
+    },
+}
+
+print("MULTIMODAL USE CASES:")
+for use_case, info in use_cases.items():
+    print(f"\n  {use_case}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 5: Multimodal in production ──
+# HOW TO USE VISION IN YOUR APPLICATIONS:
+
+# GPT-4o VISION (OpenAI API):
+vision_code = """
+from openai import OpenAI
+import base64
+
+client = OpenAI()
+
+# Encode image to base64:
+with open("screenshot.png", "rb") as f:
+    image_data = base64.b64encode(f.read()).decode()
+
+# Ask GPT-4o about the image:
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[{
+        "role": "user",
+        "content": [
+            {"type": "text", "text": "Describe this image and list any UI issues"},
+            {
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/png;base64,{image_data}",
+                    "detail": "high"  # or "low" for cheaper, less detail
+                }
+            }
+        ]
+    }],
+    max_tokens=500,
+)
+print(response.choices[0].message.content)
+"""
+
+print(vision_code)
+
+# COST CONSIDERATIONS:
+cost_notes = """
+Image tokens are EXPENSIVE:
+  - Low detail: ~85 tokens per image (cheap)
+  - High detail: ~1100-4400 tokens per image (expensive)
+  - Video: every frame = more tokens
+
+Tips:
+  - Use "low" detail when possible
+  - Resize images before sending
+  - Cache results (same image = same analysis)
+  - Use vision only when needed (text-only is cheaper)
+"""
+
+print(cost_notes)
+
+# CLAUDE VISION (Anthropic):
+claude_vision = """
+# Claude 3.5 Sonnet vision:
+import anthropic
+
+client = anthropic.Anthropic()
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=500,
+    messages=[{
+        "role": "user",
+        "content": [
+            {"type": "image", "source": {
+                "type": "base64",
+                "media_type": "image/png",
+                "data": image_data,
+            }},
+            {"type": "text", "text": "What UI framework was used?"},
+        ]
+    }],
+)
+"""
+
+print(claude_vision)</div>
+
+<div class="code-block"># ── STEP 6: Future of multimodal LLMs ──
+# Where multimodal AI is heading:
+
+future = {
+    "Native multimodal": "Single model processes all modalities (no separate encoders)",
+    "Real-time video": "Understand long videos in real-time (not just frames)",
+    "3D understanding": "Process 3D scenes, depth, spatial relationships",
+    "Embodied AI": "LLMs controlling robots (vision + action)",
+    "Real-time voice": "Sub-300ms voice conversation (GPT-4o level)",
+    "Audio generation": "Generate music, sound effects, voice",
+    "Image generation": "Native image generation (not just understanding)",
+    "AGI": "Artificial General Intelligence (all human abilities)",
+}
+
+print("FUTURE OF MULTIMODAL:")
+for trend, desc in future.items():
+    print(f"  {trend}: {desc}")
+
+# 2025 MULTIMODAL MODELS:
+current_models = {
+    "GPT-4o (OpenAI)": "Text + image + audio (native, real-time voice)",
+    "Claude Sonnet 4 (Anthropic)": "Text + image (best at document analysis)",
+    "Gemini 2.5 Pro (Google)": "Text + image + audio + video (1M+ context)",
+    "Llama 3.2 Vision (Meta)": "Text + image (open weights, local)",
+    "Qwen 2.5 VL (Alibaba)": "Text + image + video (open weights)",
+}
+
+print("\n2025 MULTIMODAL MODELS:")
+for model, desc in current_models.items():
+    print(f"  {model}: {desc}")
+
+# MoE + MULTIMODAL = THE FUTURE:
+future_combo = """
+The two biggest trends in LLMs (2024-2025):
+  1. MoE: More capacity, less compute (efficiency)
+  2. Multimodal: Process everything, not just text (versatility)
+
+Combined: GPT-4o = MoE + native multimodal
+This is the direction ALL frontier models are heading.
+
+For your applications:
+  - Start with text-only (cheapest)
+  - Add vision when needed (OCR, image analysis)
+  - Add audio for voice interfaces
+  - Use MoE models (Mixtral, DeepSeek) for cost efficiency
+  - Choose based on USE CASE, not hype
+"""
+
+print(future_combo)
+
+# SUMMARY:
+# MoE + Multimodal = efficiency + versatility
+# These are the two biggest advances since the original Transformer.
+# Understanding them = understanding the CUTTING EDGE of AI.</div>
 
 <div class="dialogue">বহুত্ব — multiplicity, diversity। কুরআনে আল্লাহ বলেন — "মানুষ ও জিনকে আমি একমাত্র সম্প্রদায় হিসেবে সৃষ্টি করেছিলাম" — কিন্তু পরে বৈচিত্র্য এলো। MoE-ও তেমনি — এক মডেল, কিন্তু একাধিক বিশেষজ্ঞ। প্রতিটা সমস্যায় সঠিক বিশেষজ্ঞ কাজ করেন। বৈচিত্র্যে শক্তি। Multimodal-ও — শুধু এক রকম ইনপুট নয়, বিভিন্ন। বৈচিত্র্যই বোঝার ভিত্তি।</div>
 <div class="dialogue en">"Bahutva — multiplicity, diversity. Allah says — 'I created humans and jinn as a single community' — but diversity came. MoE too — one model, but multiple experts. For each problem, the right expert works. Strength in diversity. Multimodal too — not just one input type, but many. Diversity is the foundation of understanding."</div>`,
@@ -1225,61 +1735,294 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Residual Connection Degradation:</strong> 100+ layer model — residual signal faded. Fix: scaled residuals, layer normalization.</div></div>
 
 
-<div class="code-block">The Complete LLM Pipeline — One Unified View:
+<div class="code-block"># ── STEP 1: The complete LLM pipeline ──
+# Everything from all 9 doors, in ONE end-to-end example.
 
-INPUT: "What is the capital of France?"
+# INPUT: "What is the capital of France?"
+pipeline = """
+STEP 1: TOKENIZATION (Door 1)
+  "What is the capital of France?"
+  → tokens: [2440, 318, 262, 4945, 286, 3278, 30]
+  → 7 tokens
 
-  # ─────────────────────────────────────# 
-  #  ১. TOKENIZER                        # 
-  #  "What is the capital of France?"    # 
-  #  → [What, is, the, capital, ...]     # 
-  #  → [২৪४০, ৩১৮, ২৬২, ৪৯৪৫, ...]      # 
-  #                                      # 
-  #  ২. EMBEDDING                        # 
-  #  প্রতিটি token ID → ৪০৯৬-dim vector # 
-  #  + positional encoding               # 
-  #                                      # 
-  #  ৩. ATTENTION (x৯৬ layers)          # 
-  #  প্রতিটি শব্দ বাকি সবের দিকে তাকায়  # 
-  #  "capital" → "France"-এ attention    # 
-  #  Multi-head: ৯৬টা আলাদা দৃষ্টিভঙ্গি  # 
-  #                                      # 
-  #  ৪. FEED-FORWARD                     # 
-  #  Attention-এর ফল → জ্ঞান প্রক্রিয়া  # 
-  #  "France" + "capital" → "Paris"?     # 
-  #  (training-এ শেখা সংযোগ)            # 
-  #                                      # 
-  #  ৫. OUTPUT                           # 
-  #  চূড়ান্ত vector → vocabulary সম্ভাবনা# 
-  #  P("Paris") = ০.৯৯                   # 
-  #  → Pick "Paris" (temperature=0)      # 
-  #                                      # 
-  #  ৬. REPEAT                           # 
-  #  Append "Paris" → repeat for "."     # 
-  #  → Repeat for "<END>"                # 
-  # ─────────────────────────────────────# 
+STEP 2: EMBEDDING (Door 2)
+  Each token ID → 8192-dim vector
+  "France" → [0.23, -0.45, 0.89, ...]
+  + positional encoding (RoPE rotation)
+
+STEP 3: ATTENTION (Door 3)
+  96 layers of multi-head attention:
+  "capital" attends to "France" → understands "capital of France"
+  "What" attends to "capital" → understands it's a question
+
+STEP 4: TRANSFORMER BLOCKS (Door 4)
+  Each of 96 layers:
+  Attention → FFN (knowledge lookup) → Residual → LayerNorm
+  Layer 1-20: syntax/grammar
+  Layer 21-70: semantics/meaning
+  Layer 71-96: knowledge/reasoning
+
+STEP 5: GENERATION (Door 6)
+  Final vector → vocabulary probabilities:
+  "Paris": 0.99
+  "Lyon":  0.003
+  "the":   0.001
+  → Pick "Paris" (temperature=0, greedy)
+
+STEP 6: AUTOREGRESSIVE REPEAT
+  Append "Paris" → predict next → "."
+  Append "." → predict next → "<END>"
+  → Stop.
 
 OUTPUT: "Paris."
+"""
 
-HOW TRAINING MADE THIS POSSIBLE:
-  Pre-training: "The capital of France 
-    is ___" → "Paris" (million times)
-  SFT: Human-like Q&A format
-  RLHF: Helpful, concise answer preferred
+print(pipeline)</div>
 
-WHY THIS MATTERS:
-  এখন তুমি জানো —
-  • কেন LLM কিছু জানে, কিছু জানে না (data)
-  • কেন কিছু ভাষায় ভালো (tokenization)
-  • কেন হ্যালুসিনেট করে (probability, not knowledge)
-  • কেন temperature পরিবর্তন করলে ফল বদলায়
-  • কেন context window সীমিত (attention cost)
-  • কেন বড় মডেল ভালো (scaling laws)
-  • কেন কিছু মডেল ধীর (autoregressive + params)
-  • কীভাবে multimodal কাজ করে (cross-embedding)
+<div class="code-block"># ── STEP 2: How training made this possible ──
+# The model "knows" Paris is the capital because of TRAINING.
 
-  → তুমি LLM ব্যবহারকারী নও — 
-    তুমি LLM ইঞ্জিনিয়ার।</div>
+training_role = """
+PRE-TRAINING:
+  Model read: "The capital of France is Paris"
+  millions of times during pre-training.
+  The FFN weights STORED this fact.
+
+SFT (Supervised Fine-Tuning):
+  Model learned the Q&A format:
+  Q: "What is the capital of France?"
+  A: "Paris"
+  (not just autocomplete, but actual answers)
+
+RLHF (Alignment):
+  Model learned to give CONCISE, HELPFUL answers.
+  "Paris." preferred over a long essay about France.
+
+ALL THREE STAGES were necessary:
+  Without pre-training: no knowledge
+  Without SFT: can't answer questions
+  Without RLHF: might give unhelpful, rambling answers
+"""
+
+print(training_role)
+
+# WHAT THE MODEL "KNOWS" vs DOESN'T:
+knowledge = {
+    "KNOWS (was in training data)": [
+        "Factual: Paris is the capital of France",
+        "Grammar: how to form sentences",
+        "Reasoning: how to deduce from facts",
+        "Code: Python, JavaScript, etc.",
+        "Translation: English ↔ other languages",
+    ],
+    "DOESN'T KNOW (not in training data)": [
+        "Private data (your bank account, personal info)",
+        "Future events (after training cutoff)",
+        "Very recent news (not yet in data)",
+        "Subjective experiences (it has no consciousness)",
+    ],
+}
+
+print("WHAT LLMs KNOW vs DON'T:")
+for category, items in knowledge.items():
+    print(f"\n  {category}:")
+    for item in items:
+        print(f"    - {item}")</div>
+
+<div class="code-block"># ── STEP 3: Why understanding matters ──
+# Understanding the pipeline makes you a BETTER LLM engineer.
+
+benefits = {
+    "Better prompts": {
+        "why": "You know attention focuses on start/end → put key info there",
+        "effect": "More accurate, relevant responses",
+    },
+    "Cost optimization": {
+        "why": "You know tokenization → use English (cheaper) when possible",
+        "effect": "Lower API costs (2-4x savings)",
+    },
+    "Hallucination prevention": {
+        "why": "You know LLMs use probability → use RAG + low temperature",
+        "effect": "More reliable, factual outputs",
+    },
+    "Model selection": {
+        "why": "You know scaling laws → choose right model for each task",
+        "effect": "Optimal quality vs cost trade-off",
+    },
+    "Fine-tuning decisions": {
+        "why": "You know training stages → decide what fine-tuning can fix",
+        "effect": "Targeted model improvements",
+    },
+    "Debugging AI systems": {
+        "why": "You understand each component → isolate where errors come from",
+        "effect": "Faster troubleshooting of AI applications",
+    },
+}
+
+print("BENEFITS OF UNDERSTANDING LLM ANATOMY:")
+for benefit, info in benefits.items():
+    print(f"\n  {benefit}")
+    print(f"    Why: {info['why']}")
+    print(f"    Effect: {info['effect']}")</div>
+
+<div class="code-block"># ── STEP 4: Building production LLM applications ──
+# Complete production architecture:
+
+architecture = """
+PRODUCTION LLM APPLICATION STACK:
+
+USER LAYER:
+  → Web frontend (React/Vue) or mobile app
+  → Chat interface or API consumer
+
+API LAYER (Django/FASTAPI):
+  → Request validation + rate limiting
+  → User authentication (JWT)
+  → Prompt construction + system message
+  → LLM API call (OpenAI, Anthropic, local)
+  → Streaming response (SSE)
+  → Response logging + cost tracking
+
+ORCHESTRATION LAYER:
+  → RAG pipeline (vector search → context → LLM)
+  → Conversation memory (Redis/database)
+  → Tool calling (calculator, web search, database query)
+  → Guardrails (content filtering, safety checks)
+
+INFRASTRUCTURE:
+  → Vector database (pgvector/Pinecone)
+  → Cache layer (Redis for prompt caching)
+  → Monitoring (latency, cost, hallucination rate)
+  → Logging (all interactions for audit)
+
+LLM LAYER:
+  → API: GPT-4o, Claude Sonnet 4, Gemini 2.5
+  → Local: Llama 3.1, Mistral (privacy/cost)
+  → Fine-tuned: LoRA-adapted for your domain
+"""
+
+print(architecture)
+
+# COST ESTIMATION FOR PRODUCTION:
+costs = {
+    "Small app (100 users)": "~$100-500/month (GPT-4o-mini)",
+    "Medium app (10K users)": "~$2K-10K/month (GPT-4o mix)",
+    "Large app (1M users)": "~$50K-200K/month (GPT-4o + caching)",
+    "Enterprise (RAG + fine-tuning)": "~$10K-50K/month + $5K setup",
+}
+
+print("PRODUCTION COST ESTIMATES:")
+for scale, cost in costs.items():
+    print(f"  {scale}: {cost}")</div>
+
+<div class="code-block"># ── STEP 5: LLM engineering checklist ──
+# Everything you need to build production LLM applications:
+
+checklist = {
+    "PROMPT ENGINEERING": [
+        "Clear system prompt with persona + rules",
+        "Few-shot examples for complex tasks",
+        "Temperature=0 for factual, 0.7 for creative",
+        "Test prompts on edge cases",
+        "Version control your prompts",
+    ],
+    "RAG PIPELINE": [
+        "Document chunking (200-500 words)",
+        "Vector embeddings (text-embedding-3-small)",
+        "Vector database (pgvector/Pinecone)",
+        "Retrieval: top-K with similarity threshold",
+        "Anti-hallucination prompt ('answer from context only')",
+    ],
+    "API INTEGRATION": [
+        "Streaming responses (SSE) for UX",
+        "Rate limiting per user",
+        "Token budget management",
+        "Error handling (timeouts, retries)",
+        "Cost tracking and logging",
+    ],
+    "EVALUATION": [
+        "Human evaluation on test set",
+        "LLM-as-judge for automated scoring",
+        "Track hallucination rate",
+        "Monitor user satisfaction (thumbs up/down)",
+        "A/B test prompt changes",
+    ],
+    "DEPLOYMENT": [
+        "Caching (Redis for identical prompts)",
+        "Load balancing (multiple API keys)",
+        "Monitoring (latency, errors, cost)",
+        "Alerting (cost spikes, quality drops)",
+        "Incident response (what if API goes down?)",
+    ],
+    "SAFETY": [
+        "Input filtering (block harmful prompts)",
+        "Output filtering (block harmful responses)",
+        "PII detection (don't log personal data)",
+        "Rate limiting (prevent abuse)",
+        "Human-in-the-loop for critical decisions",
+    ],
+}
+
+print("PRODUCTION LLM CHECKLIST:")
+for category, items in checklist.items():
+    print(f"\n  {category}:")
+    for item in items:
+        print(f"    ☐ {item}")</div>
+
+<div class="code-block"># ── STEP 6: The future of LLMs ──
+# Where the technology is heading (2025-2027+):
+
+future = {
+    "Larger context": "1M-10M token windows (Gemini leading)",
+    "Better reasoning": "o-series models (test-time compute)",
+    "Multimodal native": "Single model, all modalities (GPT-4o)",
+    "MoE everywhere": "All frontier models use MoE",
+    "Local models": "Phone-class models (Phi-3, Qwen small)",
+    "Agent systems": "LLMs that take actions (not just generate text)",
+    "Personalized": "Models fine-tuned to individual users",
+    "Specialized": "Domain-specific models (medical, legal, code)",
+    "Cheaper inference": "Quantization, distillation, better hardware",
+    "Open source parity": "Open models catching up to proprietary",
+}
+
+print("THE FUTURE OF LLMs:")
+for trend, desc in future.items():
+    print(f"  {trend}: {desc}")
+
+# YOUR JOURNEY WITH LLMs:
+journey = """
+You started this book knowing LLMs as a USER.
+You finish as an ENGINEER who understands:
+
+  ✅ How tokenization works (and why Bengali costs more)
+  ✅ How embeddings capture meaning in vector space
+  ✅ How attention lets tokens communicate
+  ✅ How the Transformer architecture processes language
+  ✅ How models are trained (pre-train → SFT → RLHF)
+  ✅ How text generation works (one token at a time)
+  ✅ Why hallucination happens (and how to prevent it)
+  ✅ How scaling laws predict performance
+  ✅ How MoE and multimodality work
+  ✅ How to build production LLM applications
+
+You are no longer just a consumer of AI.
+You understand it. You can engineer it. You can build with it.
+
+"Those who understand a technology can shape it.
+Those who don't are shaped by it."
+
+Welcome to the world of LLM engineering.
+The future is yours to build.
+"""
+
+print(journey)
+
+# FINAL THOUGHT:
+# LLMs are the most powerful tool humans have ever built.
+// Note: This line is intentionally a JS comment to avoid template literal issues
+# They amplify human intelligence, creativity, and productivity.
+# Understanding them deeply = having a superpower.
+# Use it wisely. Use it for good. Build amazing things.</div>
 
 <div class="verse">"তিনি শিখিয়েছেন কলমের মাধ্যমে। শিখিয়েছেন মানুষকে যা সে জানত না।"<br>— কুরআন ৯৬:৪-৫<br><br>LLM হলো আধুনিক কলম — স্বয়ংক্রিয়, বিশাল, কিন্তু নিয়ন্ত্রিত। যে এটাকে বোঝে, সে জ্ঞান তৈরি করতে পারে। যে বোঝে না, সে কেবল গ্রাহক। তুমি এখন বোঝো — টোকেন থেকে অর্থ, অর্থ থেকে ভাষা, ভাষা থেকে উত্তর। এটাই LLM দর্শন।</div>
 
