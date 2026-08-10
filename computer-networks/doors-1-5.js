@@ -112,19 +112,291 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>Book ৪ (সিস্টেম ডিজাইন):</strong> API Gateway, Load Balancer, Microservices — এগুলো Application স্তরের ধারণা। Book ৩৫ (ডিস্ট্রিবিউটেড সিস্টেমস): Consensus, CAP — এগুলো Transport ও Network স্তরের উপর নির্ভর করে।</div></div>
 
-<div class="code-block">— স্তর দেখো বাস্তবে (curl দিয়ে) —
+<div class="code-block"># ── STEP 1: What is the OSI model? ──
+# The OSI model describes networking in 7 ABSTRACTION LAYERS.
+# Each layer has a specific job and talks to layers above/below.
+
+osi_layers = {
+    7: {"name": "Application", "job": "User-facing protocols", "examples": "HTTP, DNS, SMTP, FTP"},
+    6: {"name": "Presentation", "job": "Format, encrypt, compress", "examples": "TLS, JPEG, JSON"},
+    5: {"name": "Session", "job": "Manage connections", "examples": "RPC, NetBIOS"},
+    4: {"name": "Transport", "job": "Reliable delivery", "examples": "TCP, UDP"},
+    3: {"name": "Network", "job": "Route between networks", "examples": "IP, ICMP"},
+    2: {"name": "Data Link", "job": "Frame delivery on local network", "examples": "Ethernet, Wi-Fi, ARP"},
+    1: {"name": "Physical", "job": "Electrical/optical signals", "examples": "Cables, fiber, radio"},
+}
+
+print("THE 7 OSI LAYERS:")
+for num in sorted(osi_layers.keys(), reverse=True):
+    layer = osi_layers[num]
+    print(f"  Layer {num}: {layer['name']:15} - {layer['job']}")
+    print(f"           Protocols: {layer['examples']}")
+
+# MNEMONIC (7 → 1): "All People Seem To Need Data Processing"
+# Application, Presentation, Session, Transport, Network, Data Link, Physical</div>
+
+<div class="code-block"># ── STEP 2: TCP/IP model (simpler, practical) ──
+# The TCP/IP model is what the ACTUAL internet uses (4 layers).
+
+tcp_ip = """
+TCP/IP MODEL (4 layers — practical, what the internet actually uses):
+
+Layer 4: Application  (= OSI 7+6+5: HTTP, DNS, SMTP, TLS)
+  → User-facing protocols, all in one layer
+
+Layer 3: Transport  (= OSI 4: TCP, UDP)
+  → Reliable (TCP) or fast (UDP) delivery
+
+Layer 2: Internet  (= OSI 3: IP, ICMP)
+  → Route packets between networks (IP addresses)
+
+Layer 1: Network Access  (= OSI 2+1: Ethernet, Wi-Fi)
+  → Physical delivery (MAC addresses, cables)
+
+WHY TCP/IP IS SIMPLER:
+  → OSI is theoretical (never fully implemented)
+  → TCP/IP is practical (runs the entire internet)
+  → Most engineers think in TCP/IP terms
+  → But OSI is useful for LEARNING (clearer separation)
+"""
+
+print(tcp_ip)
+
+# HOW LAYERS WORK TOGETHER (encapsulation):
+encapsulation = """
+ENCAPSULATION (data going DOWN the layers):
+
+User sends HTTP request:
+  Layer 7: HTTP data "[GET /page HTTP/1.1]"
+  Layer 4: TCP header added (port 80, sequence number)
+  Layer 3: IP header added (source IP, dest IP)
+  Layer 2: Ethernet header added (source MAC, dest MAC)
+  Layer 1: Electrical signals on the wire
+
+Each layer adds its own HEADER (metadata).
+The receiver strips headers going UP the layers.
+Like nesting envelopes inside envelopes.
+"""
+
+print(encapsulation)</div>
+
+<div class="code-block"># ── STEP 3: Seeing layers in practice (curl) ──
+# When you run curl, ALL 7 layers work together.
+
+# SEE THE LAYERS:
+curl_examples = """
+# Application layer (HTTP):
 $ curl -I https://google.com
+HTTP/2 200                          ← Layer 7 (Application)
+content-type: text/html             ← Layer 6 (Presentation — format)
+date: Sun, 26 Jul 2026 14:30:00     ← Layer 5 (Session — state info)
 
-HTTP/2 200                              ← Layer 7 (Application)
-content-type: text/html                 ← Layer 6 (Presentation — format)
-date: Sun, 26 Jul 2026 14:30:00 GMT     ← Layer 5 (Session — state)
-age: 123                                ← Layer 4 (Transport — TCP port 443)
-alt-svc: h3=":443"                      ← Layer 3 (Network — IP routing)
-server: gws                             ← Layer 2 (Data Link — MAC)
-                                        ← Layer 1 (Physical — তারের সংকেত)
+# Transport layer (TCP):
+$ curl -v https://google.com 2>&1 | grep "Connected"
+* Connected to google.com (142.250.80.46) port 443  ← Layer 4 (TCP)
 
-— প্রতিটি header একটি স্তরের ইঙ্গিত দেয় —
-— তুমি curl চালাও, সাতটি স্তর একসাথে কাজ করে —</div>
+# Network layer (IP):
+$ dig google.com
+google.com.    300    IN    A    142.250.80.46      ← Layer 3 (IP address)
+
+# Data link layer (MAC):
+$ arp -a | grep 142.250.80.46
+? (142.250.80.46) at ab:cd:ef:01:23:45              ← Layer 2 (MAC address)
+
+# Physical layer:
+  → Electrical signals on Ethernet cable            ← Layer 1 (Physical)
+"""
+
+print(curl_examples)
+
+# PYTHON: Making an HTTP request (all layers handled automatically):
+python_request = """
+import requests
+
+# This single line triggers ALL 7 layers:
+response = requests.get("https://google.com")
+print(response.status_code)  # 200 (Layer 7)
+
+# What happens internally:
+# 1. DNS lookup: google.com → 142.250.80.46 (Layer 7)
+# 2. TCP handshake: SYN → SYN-ACK → ACK (Layer 4)
+# 3. TLS handshake: certificate exchange (Layer 6)
+# 4. IP routing: packets route to Google (Layer 3)
+# 5. Ethernet/Wi-Fi: frames on local network (Layer 2)
+# 6. Physical: signals on cable/radio (Layer 1)
+# 7. HTTP request/response (Layer 7)
+"""
+
+print(python_request)</div>
+
+<div class="code-block"># ── STEP 4: Key networking protocols ──
+# The most important protocols at each layer.
+
+protocols = {
+    "HTTP/HTTPS (L7)": {
+        "purpose": "Web browsing, API calls",
+        "port": "80 (HTTP), 443 (HTTPS)",
+        "what_it_does": "Request-response protocol for web content",
+    },
+    "DNS (L7)": {
+        "purpose": "Domain name → IP address translation",
+        "port": "53",
+        "what_it_does": "google.com → 142.250.80.46",
+    },
+    "SMTP/IMAP (L7)": {
+        "purpose": "Email sending (SMTP) and receiving (IMAP)",
+        "port": "25/587 (SMTP), 143/993 (IMAP)",
+        "what_it_does": "Email delivery and access",
+    },
+    "SSH (L7)": {
+        "purpose": "Secure remote terminal access",
+        "port": "22",
+        "what_it_does": "Encrypted remote command execution",
+    },
+    "TCP (L4)": {
+        "purpose": "Reliable, ordered data delivery",
+        "port": "Various",
+        "what_it_does": "Handshake, acknowledgments, retransmission",
+    },
+    "UDP (L4)": {
+        "purpose": "Fast, unreliable data delivery",
+        "port": "Various",
+        "what_it_does": "No handshake, no guarantee (streaming, gaming)",
+    },
+    "IP (L3)": {
+        "purpose": "Route packets between networks",
+        "port": "N/A",
+        "what_it_does": "IP addressing (IPv4/IPv6), routing",
+    },
+    "ARP (L2)": {
+        "purpose": "IP address → MAC address translation",
+        "port": "N/A",
+        "what_it_does": "Find the physical device for an IP",
+    },
+}
+
+print("KEY NETWORKING PROTOCOLS:")
+for protocol, info in protocols.items():
+    print(f"\n  {protocol}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 5: TCP vs UDP (the transport choice) ──
+# Two ways to deliver data: reliable (TCP) or fast (UDP).
+
+tcp_vs_udp = {
+    "TCP (Transmission Control Protocol)": {
+        "reliability": "Reliable (guaranteed delivery)",
+        "order": "Ordered (packets arrive in sequence)",
+        "connection": "Connection-oriented (handshake first)",
+        "speed": "Slower (overhead for reliability)",
+        "use_cases": ["Web (HTTP)", "Email (SMTP)", "File transfer (FTP)", "Database queries"],
+        "how": "SYN → SYN-ACK → ACK → data → ACK → FIN",
+    },
+    "UDP (User Datagram Protocol)": {
+        "reliability": "Unreliable (no guarantee)",
+        "order": "Unordered (packets may arrive out of order)",
+        "connection": "Connectionless (just send!)",
+        "speed": "Fast (no overhead)",
+        "use_cases": ["DNS queries", "Video streaming", "Online gaming", "VoIP (WhatsApp calls)"],
+        "how": "Just send the packet, hope it arrives",
+    },
+}
+
+print("TCP vs UDP:")
+for protocol, info in tcp_vs_udp.items():
+    print(f"\n  {protocol}")
+    for key, value in info.items():
+        if isinstance(value, list):
+            print(f"    {key}: {', '.join(value)}")
+        else:
+            print(f"    {key}: {value}")
+
+# WHEN TO USE WHICH:
+print("\n\nWHEN TO USE TCP vs UDP:")
+print("  Web browsing, API calls, email → TCP (need reliability)")
+print("  Video streaming, gaming, VoIP → UDP (need speed, can tolerate loss)")
+print("  DNS → UDP (small query, fast response)")
+print("  Database connections → TCP (data integrity critical)")</div>
+
+<div class="code-block"># ── STEP 6: Network troubleshooting tools ──
+# Essential tools for diagnosing network problems.
+
+tools = {
+    "ping": {
+        "layer": "Layer 3 (Network)",
+        "command": "ping google.com",
+        "what_it_does": "Tests if a host is reachable (ICMP echo)",
+        "diagnoses": "Basic connectivity, latency",
+    },
+    "traceroute": {
+        "layer": "Layer 3 (Network)",
+        "command": "traceroute google.com",
+        "what_it_does": "Shows each router (hop) to destination",
+        "diagnoses": "Where packets are being lost",
+    },
+    "dig / nslookup": {
+        "layer": "Layer 7 (DNS)",
+        "command": "dig google.com",
+        "what_it_does": "DNS lookup (domain → IP)",
+        "diagnoses": "DNS resolution problems",
+    },
+    "curl": {
+        "layer": "Layer 7 (Application)",
+        "command": "curl -I -v https://google.com",
+        "what_it_does": "HTTP request with verbose output",
+        "diagnoses": "HTTP errors, TLS issues, headers",
+    },
+    "netstat / ss": {
+        "layer": "Layer 4 (Transport)",
+        "command": "ss -tlnp",
+        "what_it_does": "Shows active connections and listening ports",
+        "diagnoses": "Port conflicts, connection states",
+    },
+    "tcpdump": {
+        "layer": "All layers",
+        "command": "tcpdump -i eth0 port 80",
+        "what_it_does": "Captures and displays raw packets",
+        "diagnoses": "Deep protocol-level debugging",
+    },
+    "nmap": {
+        "layer": "Layers 3-4",
+        "command": "nmap -sS target.com",
+        "what_it_does": "Port scanning and service detection",
+        "diagnoses": "Security auditing, open ports",
+    },
+}
+
+print("NETWORK TROUBLESHOOTING TOOLS:")
+for tool, info in tools.items():
+    print(f"\n  {tool} ({info['layer']})")
+    print(f"    Command: {info['command']}")
+    print(f"    Does: {info['what_it_does']}")
+    print(f"    Diagnoses: {info['diagnoses']}")
+
+# TROUBLESHOOTING METHODOLOGY:
+methodology = """
+DEBUGGING METHODOLOGY (bottom-up or top-down):
+
+BOTTOM-UP (Physical → Application):
+  1. Is the cable plugged in? (Layer 1)
+  2. Is the link up? ip link show (Layer 2)
+  3. Can I ping the gateway? ping 192.168.1.1 (Layer 3)
+  4. Can I ping 8.8.8.8? (Layer 3, internet)
+  5. Can I resolve DNS? dig google.com (Layer 7)
+  6. Can I reach the web server? curl -I https://google.com (Layer 7)
+
+TOP-DOWN (Application → Physical):
+  1. Does the app work? Try it.
+  2. HTTP errors? curl -v
+  3. DNS resolves? dig
+  4. Can ping? ping
+  5. Physical link? ip link
+
+Most network problems are DNS or firewall. Start there.
+"""
+
+print(methodology)</div>
 
 <div class="callout tip"><span class="co-icon">💡</span><div><strong>বাস্তবে দেখো:</strong> <code>curl -I</code> চালালে তুমি Application স্তরের উত্তর দেখো। কিন্তু ভেতরে ৭টি স্তর কাজ করেছে — DNS lookup (L7), TCP handshake (L4), IP routing (L3), Ethernet frame (L2), তারের সংকেত (L1)। তুমি শুধু শীর্ষ দেখো, ভিত্তি অদৃশ্য।</div></div>
 
