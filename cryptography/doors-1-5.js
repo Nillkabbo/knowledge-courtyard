@@ -697,27 +697,276 @@ doors.push({
 <div class="code-block">— Hash বাস্তবে দেখো —
 
   $ echo -n "hello" | sha256sum
-  2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
+  <div class="code-block"># ── STEP 1: What is a hash function? ──
+  # A HASH function takes ANY input and produces a FIXED-SIZE output.
+  # Input: any size → Output: fixed size (e.g., 256 bits for SHA-256)
 
-  $ echo -n "Hello" | sha256sum
-  185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
+  # KEY PROPERTIES:
+  # 1. DETERMINISTIC: same input → same output (always)
+  # 2. FAST: compute quickly
+  # 3. ONE-WAY: can't reverse (given hash, can't find input)
+  # 4. AVALANCHE: change 1 bit of input → completely different hash
+  # 5. COLLISION-RESISTANT: hard to find two inputs with same hash
 
-  — একটি অক্ষর বদল (h→H) → সম্পূর্ণ ভিন্ন হ্যাশ! —
-  — এটাই avalanche effect —
+  import hashlib
 
-  # পাসওয়ার্ড হ্যাশ (কখনো plaintext সংরক্ষণ করো না!)
-  $ python3 -c "import hashlib; print(hashlib.sha256(b'password123').hexdigest())"
-  ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4477e59f
+  # SHA-256 examples:
+  inputs = ["Hello", "hello", "Hello!", "Hello World"]
 
-  # বাস্তব পাসওয়ার্ড হ্যাশ: Argon2 (salt + memory-hard)
-  $ pip install argon2-cffi
-  $ python3 -c "
+  for text in inputs:
+      h = hashlib.sha256(text.encode()).hexdigest()
+      print(f"  sha256('{text:12}') = {h[:32]}...")
+
+  # Notice: "Hello" vs "hello" → completely different hashes (avalanche!)
+  # This is why hashes are great for detecting ANY change in data.</div>
+
+  <div class="code-block"># ── STEP 2: Hash algorithms comparison ──
+  # Different hash functions for different purposes:
+
+  hash_algos = {
+      "MD5": {
+          "output": "128 bits",
+          "status": "❌ BROKEN (collisions found in 2004)",
+          "use": "Legacy only — DO NOT USE for security",
+      },
+      "SHA-1": {
+          "output": "160 bits",
+          "status": "❌ BROKEN (SHAttered attack, 2017)",
+          "use": "Legacy only — DO NOT USE for security",
+      },
+      "SHA-256": {
+          "output": "256 bits",
+          "status": "✅ SECURE",
+          "use": "Digital signatures, certificates, blockchain",
+      },
+      "SHA-3": {
+          "output": "256-512 bits",
+          "status": "✅ SECURE (newer design)",
+          "use": "Future-proof, alternative to SHA-2",
+      },
+      "BLAKE3": {
+          "output": "256 bits",
+          "status": "✅ SECURE + VERY FAST",
+          "use": "File hashing, high-performance applications",
+      },
+      "bcrypt/Argon2": {
+          "output": "variable",
+          "status": "✅ SECURE for passwords",
+          "use": "Password hashing (SLOW = feature, not bug)",
+      },
+  }
+
+  print("HASH ALGORITHMS:")
+  for algo, info in hash_algos.items():
+      print(f"\n  {algo}:")
+      for key, value in info.items():
+          print(f"    {key}: {value}")
+
+  # CRITICAL: don't confuse hash types!
+  # Fast hashes (SHA-256): for data integrity, signatures
+  # Slow hashes (Argon2): for passwords (make brute force expensive)</div>
+
+  <div class="code-block"># ── STEP 3: Hash use cases ──
+  # Hashes are EVERYWHERE in computing.
+
+  use_cases = {
+      "Data Integrity": {
+          "how": "Hash a file before and after transfer. If hashes match → file is intact.",
+          "example": "Downloading software: verify SHA-256 hash matches",
+      },
+      "Password Storage": {
+          "how": "Store HASH of password (not plaintext). Verify by hashing input and comparing.",
+          "example": "Database stores argon2(password) — even if stolen, passwords safe",
+      },
+      "Digital Signatures": {
+          "how": "Sign the HASH of a document (not the whole document — too slow).",
+          "example": "Git commits: SHA-1 of commit data, signed",
+      },
+      "Blockchain": {
+          "how": "Each block contains hash of PREVIOUS block. Tampering changes all hashes.",
+          "example": "Bitcoin: SHA-256 forms the chain",
+      },
+      "Hash Tables": {
+          "how": "Hash key to get array index. O(1) lookup.",
+          "example": "Python dict, JavaScript Map, database indexes",
+      },
+      "Content Addressing": {
+          "how": "Use hash as identifier. Same content = same hash = same ID.",
+          "example": "Git objects, IPFS, Docker image layers",
+      },
+      "Proof of Work": {
+          "how": "Find input whose hash starts with N zeros. Hard to find, easy to verify.",
+          "example": "Bitcoin mining: find nonce where SHA-256(block+nonce) < target",
+      },
+  }
+
+  print("HASH USE CASES:")
+  for use_case, info in use_cases.items():
+      print(f"\n  {use_case}:")
+      for key, value in info.items():
+          print(f"    {key}: {value}")</div>
+
+  <div class="code-block"># ── STEP 4: Password hashing done right ──
+  # NEVER store passwords as plaintext. NEVER use SHA-256 directly.
+
+  # WHY NOT SHA-256 for passwords?
+  # SHA-256 is FAST. Attackers can try billions of passwords per second.
+  # We want hashing to be SLOW — so brute force takes years.
+
+  import hashlib
+  import time
+
+  # ❌ BAD: SHA-256 is too fast for passwords
+  start = time.perf_counter()
+  for _ in range(1000000):
+      hashlib.sha256(b"password123").hexdigest()
+  elapsed = time.perf_counter() - start
+  print(f"SHA-256: 1M hashes in {elapsed:.2f}s")
+  # Attacker: tries 50M passwords/sec on a GPU!
+
+  # ✅ GOOD: Argon2 is SLOW (by design)
+  argon2_code = """
   from argon2 import PasswordHasher
-  ph = PasswordHasher()
-  hash = ph.hash('mypassword')
-  print(hash)  # $argon2id$v=19$m=65536,t=3,p=4$...
-  print(ph.verify(hash, 'mypassword'))  # True
-  "</div>
+
+  ph = PasswordHasher(
+      time_cost=3,        # 3 iterations (slow)
+      memory_cost=65536,  # 64MB memory per hash (memory-hard)
+      parallelism=4,      # 4 threads
+  )
+
+  # Hash a password:
+  hash = ph.hash("mypassword123")
+  print(f"Stored hash: {hash}")
+  # $argon2id$v=19$m=65536,t=3,p=4$<salt>$<hash>
+
+  # Verify a password:
+  try:
+      ph.verify(hash, "mypassword123")  # → True (correct)
+      ph.verify(hash, "wrongpassword")  # → raises exception
+  except:
+      print("Wrong password!")
+  """
+
+  print("ARGON2 (proper password hashing):")
+  print(argon2_code)
+
+  # WHY ARGON2 IS SECURE:
+  # 1. SLOW: 3 iterations (vs SHA-256's millions/sec)
+  # 2. MEMORY-HARD: requires 64MB per hash (GPU can't parallelize cheaply)
+  # 3. SALTED: random salt prevents rainbow table attacks
+  # 4. PROVEN: won the Password Hashing Competition (2015)</div>
+
+  <div class="code-block"># ── STEP 5: Salting and rainbow tables ──
+  # A SALT is a random value added to the password before hashing.
+  # This prevents RAINBOW TABLE attacks.
+
+  # WITHOUT SALT:
+  # password "123456" → always same hash
+  # Attacker pre-computes hash for common passwords → instant crack
+
+  # WITH SALT:
+  # password "123456" + salt "abc123" → hash A
+  # password "123456" + salt "xyz789" → hash B
+  # Same password, DIFFERENT hashes. Rainbow table useless!
+
+  import hashlib
+  import os
+
+  def hash_password_with_salt(password):
+      """Hash a password with a random salt."""
+      salt = os.urandom(32)  # 32 random bytes
+      hash = hashlib.pbkdf2_hmac('sha256', password.encode(), salt, 100000)
+      return salt.hex() + ':' + hash.hex()
+
+  def verify_password(password, stored):
+      """Verify password against stored hash."""
+      salt_hex, hash_hex = stored.split(':')
+      salt = bytes.fromhex(salt_hex)
+      hash = hashlib.pbkdf2_hmac('sha256', password.encode(), salt, 100000)
+      return hash.hex() == hash_hex
+
+  # Usage:
+  stored = hash_password_with_salt("mypassword")
+  print(f"Stored: {stored[:40]}...")
+  print(f"Verify correct: {verify_password('mypassword', stored)}")  # True
+  print(f"Verify wrong: {verify_password('wrong', stored)}")        # False
+
+  # DJANGO DOES THIS AUTOMATICALLY:
+  django_auth = """
+  # Django settings.py:
+  PASSWORD_HASHERS = [
+      'django.contrib.auth.hashers.Argon2PasswordHasher',  # best
+      'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',  # fallback
+  ]
+
+  # Usage:
+  user.set_password('mypassword123')  # hashes automatically
+  user.save()
+  user.check_password('mypassword123')  # verifies → True
+  """
+
+  print(django_auth)</div>
+
+  <div class="code-block"># ── STEP 6: HMAC and authenticated hashing ──
+  # HMAC = Hash-based Message Authentication Code
+  # Proves BOTH integrity AND authenticity.
+
+  # Regular hash: proves data wasn't modified (but anyone can compute it)
+  # HMAC: proves data wasn't modified AND came from someone with the key
+
+  import hmac
+  import hashlib
+
+  # Create HMAC:
+  secret_key = b"my_secret_key"
+  message = b"Transfer $100 to Alice"
+
+  # HMAC-SHA256:
+  mac = hmac.new(secret_key, message, hashlib.sha256).hexdigest()
+  print(f"HMAC: {mac}")
+
+  # Verify HMAC (receiver checks):
+  expected_mac = hmac.new(secret_key, message, hashlib.sha256).hexdigest()
+  if hmac.compare_digest(mac, expected_mac):
+      print("✅ Message is authentic and unmodified")
+  else:
+      print("❌ Message was tampered or wrong sender")
+
+  # WHY USE hmac.compare_digest() instead of == ?
+  # Regular == can leak timing information (side-channel attack)
+  # compare_digest() takes CONSTANT time regardless of where difference is
+
+  # REAL-WORLD USES OF HMAC:
+  hmac_uses = {
+      "JWT (JSON Web Tokens)": "HMAC signs the token to prove authenticity",
+      "Webhook verification": "GitHub/Stripe sign webhooks with HMAC",
+      "API authentication": "AWS signs API requests with HMAC-SHA256",
+      "CSRF tokens": "Django signs CSRF tokens with HMAC",
+      "Session cookies": "Django signs cookies with HMAC",
+  }
+
+  print("HMAC USES:")
+  for use, desc in hmac_uses.items():
+      print(f"  {use}: {desc}")
+
+  # HASHING SUMMARY:
+  # ┌──────────────────┬──────────────────────────────────┐
+  # │ Hash Type        │ Use                              │
+  # ├──────────────────┼──────────────────────────────────┤
+  # │ SHA-256          │ Data integrity, signatures       │
+  # │ Argon2/bcrypt    │ Password hashing (slow = good)   │
+  # │ HMAC-SHA256      │ Authenticated messages           │
+  # │ BLAKE3           │ Fast file hashing                │
+  # │ PBKDF2           │ Password derivation (legacy)     │
+  # └──────────────────┴──────────────────────────────────┘
+
+  # THE GOLDEN RULES OF HASHING:
+  # 1. NEVER store plaintext passwords
+  # 2. NEVER use SHA-256 directly for passwords (use Argon2)
+  # 3. ALWAYS use salt with password hashing
+  # 4. NEVER use MD5 or SHA-1 for security (broken!)
+  # 5. Use HMAC when you need authentication + integrity
+  # 6. Use hmac.compare_digest() for constant-time comparison</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>MD5 ভাঙা হয়েছে!</strong> MD5 collision পাওয়া গেছে (২০০৪, Wang)। SHA-1-ও দুর্বল (২০১৭ SHAttered)। শুধু SHA-256 বা তার উপরের ব্যবহার করো। পাসওয়ার্ডের জন্য SHA সরাসরি ব্যবহার করো না — Argon2 বা bcrypt ব্যবহার করো (salt + slow)।</div></div>
 
