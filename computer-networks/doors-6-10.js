@@ -599,36 +599,377 @@ doors.push({
 <div class="diag-cap">CDN = বিশ্বজুড়ে edge cache · Origin এক, Edge অনেক · User সবচেয়ে কাছের Edge থেকে সেবা পায়</div>
 </div>
 
-<div class="code-block">— CDN হেডার পড়ো (curl দিয়ে) —
+<div class="code-block"># ── STEP 1: What is a CDN? ──
+# CDN (Content Delivery Network) = global cache closer to users.
+
+cdn = """
+WHAT IS A CDN?
+
+Without CDN:
+  User in Bangladesh → Server in New York
+  → Latency: ~250ms (half the world away)
+  → Slow page loads
+
+With CDN (Cloudflare, CloudFront, Fastly):
+  User in Bangladesh → Cloudflare Edge in Dhaka/Singapore
+  → Latency: ~20ms (nearby data center)
+  → Fast page loads!
+
+HOW CDN WORKS:
+  1. You set up CDN in front of your origin server
+  2. CDN copies (caches) your static assets at edge locations worldwide
+  3. User requests → nearest edge location → cached content (fast!)
+  4. If not cached → CDN fetches from origin → caches → returns
+
+CDN PROVIDERS:
+  Cloudflare: Most popular (free tier, easy setup)
+  AWS CloudFront: Integrated with AWS, pay per use
+  Fastly: Fastest purge times, developer-friendly
+  Akamai: Enterprise, most edge locations globally
+"""
+
+print(cdn)
+
+# CDN BENEFITS:
+benefits = {
+    "Speed": "Serve from edge near user (20ms vs 250ms)",
+    "Reliability": "Multiple edges = no single point of failure",
+    "DDoS protection": "CDN absorbs traffic spikes",
+    "SSL termination": "CDN handles HTTPS at edge",
+    "Bandwidth savings": "Origin serves less traffic",
+    "Image optimization": "Resize, compress on the fly",
+    "WAF": "Web Application Firewall at edge",
+}
+
+print("CDN BENEFITS:")
+for benefit, desc in benefits.items():
+    print(f"  {benefit}: {desc}")</div>
+
+<div class="code-block"># ── STEP 2: CDN cache headers ──
+# Control what gets cached and for how long.
+
+cache_headers = """
+CACHE-CONTROL HEADER:
+
+Cache-Control: public, max-age=3600
+  → Anyone (CDN + browser) can cache, for 1 hour
+
+Cache-Control: private, max-age=600
+  → Only browser can cache (not CDN), for 10 minutes
+
+Cache-Control: no-cache
+  → Must revalidate with origin before using cached copy
+
+Cache-Control: no-store
+  → Never cache this (sensitive data, API responses)
+
+Cache-Control: public, max-age=31536000, immutable
+  → Cache for 1 year, never check for updates (fingerprinted assets)
+
+CDN-SPECIFIC HEADERS (Cloudflare):
+  cf-cache-status: HIT     → served from cache (fast)
+  cf-cache-status: MISS    → fetched from origin (slow, then cached)
+  cf-cache-status: EXPIRED → TTL expired, re-fetched
+  cf-cache-status: BYPASS  → caching disabled for this request
+  cf-ray: 8a1b2c3d4e5f-LHR → served from London edge
+"""
+
+print(cache_headers)
+
+# VIEW CDN HEADERS:
+cdn_check = """
+# Check CDN caching:
 $ curl -I https://cdn.example.com/image.png
 
 HTTP/2 200
-server: cloudflare                     ← কোন CDN?
-cf-ray: 8a1b2c3d4e5f-LHR               ← কোন edge? (London)
-cf-cache-status: HIT                   ← cache এ আছে?
-age: 3600                              ← কত সেকেন্ড ধরে cache-এ
-cache-control: public, max-age=86400   ← ১ দিন cache করো
-cf-cache-status: HIT                   ← HIT = cache থেকে দিলাম
-                                       ← MISS = origin থেকে আনতে হবে
+server: cloudflare
+cf-ray: 8a1b2c3d4e5f-LHR               ← London edge
+cf-cache-status: HIT                   ← Served from cache
+age: 3600                              ← Cached for 1 hour
+cache-control: public, max-age=86400   ← Cache for 1 day
 
-— cf-cache-status মান: —
-  HIT    = edge-এ cache ছিল, দ্রুত দিলাম
-  MISS   = cache ছিল না, origin থেকে আনলাম
-  EXPIRED = TTL শেষ, আবার origin থেকে আনলাম
-  BYPASS = cache করতে বারণ করা হয়েছে</div>
+# cf-cache-status values:
+  HIT     = edge cache hit (fast!)
+  MISS    = fetched from origin (then cached)
+  EXPIRED = TTL expired, re-fetched
+  BYPASS  = caching disabled
+"""
 
-<div class="code-block">— Cache-Control হেডার সিনট্যাক্স —
-Cache-Control: public, max-age=3600        ← সবাই cache করতে পারে, ১ ঘণ্টা
-Cache-Control: private, max-age=600         ← শুধু browser, CDN নয়
-Cache-Control: no-cache                     ← প্রতিবার যাচাই করো (origin-এ)
-Cache-Control: no-store                     ← কোনোভাবেই cache করো না
-Cache-Control: public, max-age=31536000     ← ১ বছর (static assets)
+print(cdn_check)</div>
 
-— বাস্তব নিয়ম: —
-  HTML        → no-cache (সবসময় তাজা)
-  CSS/JS      → max-age=31536000 (১ বছর + fingerprint)
-  Images      → max-age=86400 (১ দিন)
-  API JSON    → no-store (ব্যক্তিগত ডেটা)</div>
+<div class="code-block"># ── STEP 3: Caching strategies for different content ──
+# Different content types need different caching rules.
+
+caching_rules = {
+    "Static assets (CSS/JS/images)": {
+        "header": "Cache-Control: public, max-age=31536000, immutable",
+        "why": "Rarely change, fingerprinted in filename",
+        "example": "app.a1b2c3d4.min.css (hash in filename)",
+    },
+    "HTML pages": {
+        "header": "Cache-Control: no-cache",
+        "why": "Changes frequently, must revalidate",
+        "example": "index.html (always get fresh version)",
+    },
+    "API JSON responses": {
+        "header": "Cache-Control: no-store (for private data)",
+        "why": "User-specific, never cache at CDN",
+        "example": "/api/users/42 (private user data)",
+    },
+    "Public API data (rarely changes)": {
+        "header": "Cache-Control: public, max-age=300",
+        "why": "Same for everyone, changes occasionally",
+        "example": "/api/products (product catalog)",
+    },
+    "Images/media": {
+        "header": "Cache-Control: public, max-age=86400",
+        "why": "Large files, rarely change",
+        "example": "logo.png, hero-banner.jpg",
+    },
+    "User-specific pages": {
+        "header": "Cache-Control: private, max-age=0",
+        "why": "Different for each user, browser cache only",
+        "example": "/dashboard (user's personal page)",
+    },
+}
+
+print("CACHING RULES BY CONTENT TYPE:")
+for content_type, info in caching_rules.items():
+    print(f"\n  {content_type}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# CACHE BUSTING (force update cached files):
+cache_busting = """
+CACHE BUSTING:
+
+Problem: You updated app.css but browsers have old version cached.
+Solution: Change the filename when content changes.
+
+VERSIONING STRATEGIES:
+  1. Query parameter:  app.css?v=2 (simple but some proxies ignore)
+  2. File hash:        app.a1b2c3d4.css (best practice, Webpack does this)
+  3. Content hash:     app.[contenthash].js (auto-generated)
+
+Django Whitenoise (static file caching):
+  # Automatically adds fingerprints to static files:
+  # static/css/app.css → static/css/app.a1b2c3d4.css
+  # Cache-Control: max-age=31536000, immutable
+"""
+
+print(cache_busting)</div>
+
+<div class="code-block"># ── STEP 4: Browser caching vs CDN caching ──
+# Two levels of caching: browser and CDN.
+
+levels = """
+TWO CACHING LEVELS:
+
+1. BROWSER CACHE (user's device):
+   → Each browser stores cached files
+   → Private to that user
+   → Cache-Control: private
+   → Cleared when user clears browsing data
+
+2. CDN CACHE (edge locations):
+   → CDN stores cached files globally
+   → Shared across ALL users
+   → Cache-Control: public
+   → Purged by CDN API or TTL expiration
+
+REQUEST FLOW:
+  Browser → Check browser cache
+    → HIT: serve instantly (0ms)
+    → MISS: check CDN
+      → CDN HIT: serve from edge (20ms)
+      → CDN MISS: fetch from origin (250ms), cache, serve
+
+  Best case: browser cache hit (instant)
+  Good case: CDN edge hit (20ms)
+  Worst case: origin fetch (250ms, then cached)
+"""
+
+print(levels)
+
+# CONFIGURING DJANGO CACHING:
+django_cache = """
+# Django cache framework:
+from django.core.cache import cache
+from django.views.decorators.cache import cache_page
+
+# 1. Cache a view (CDN-like, server-side):
+@cache_page(60 * 15)  # Cache for 15 minutes
+def product_list(request):
+    products = Product.objects.all()
+    return render(request, 'products.html', {'products': products})
+
+# 2. Cache specific data (Redis/Memcached):
+def get_user_stats(user_id):
+    cache_key = f'user_stats_{user_id}'
+    stats = cache.get(cache_key)
+    if stats is None:
+        stats = calculate_expensive_stats(user_id)
+        cache.set(cache_key, stats, timeout=3600)
+    return stats
+
+# 3. Cache template fragment:
+{% load cache %}
+{% cache 500 sidebar request.user.id %}
+    <!-- expensive sidebar content -->
+{% endcache %}
+
+# 4. HTTP cache headers on API responses:
+from django.views.decorators.cache import never_cache
+
+@never_cache  # Never cache this (private data)
+def user_profile(request, user_id):
+    ...
+"""
+
+print(django_cache)</div>
+
+<div class="code-block"># ── STEP 5: CDN setup for Django (Cloudflare) ──
+# How to put your Django app behind Cloudflare.
+
+cloudflare_setup = """
+CLOUDFLARE SETUP (most popular CDN):
+
+1. SIGN UP at cloudflare.com
+2. ADD YOUR DOMAIN (ledgerpilot.com)
+3. CHANGE NAMESERVERS:
+   → At your registrar (Namecheap/GoDaddy):
+   → From: ns1.namecheap.com
+   → To:   ns1.cloudflare.com, ns2.cloudflare.com
+
+4. CONFIGURE:
+   → DNS records: Cloudflare manages DNS
+   → SSL/TLS: "Full" mode (Cloudflare → Origin uses HTTPS)
+   → Caching: Standard (caches static assets)
+   → Page Rules: Custom caching rules
+
+5. PURGE CACHE (when deploying new code):
+   → Cloudflare dashboard → Caching → Purge Everything
+   → Or API: curl to purge specific URLs
+   → Or "development mode" (bypasses cache temporarily)
+
+NGINX + CLOUDFLARE:
+  # Trust Cloudflare's IP (for real client IP):
+  # /etc/nginx/conf.d/cloudflare.conf:
+  set_real_ip_from 173.245.48.0/20;
+  set_real_ip_from 103.21.244.0/22;
+  # ... (all Cloudflare IP ranges)
+  real_ip_header CF-Connecting-IP;
+
+  # In server block:
+  location / {
+      # Only allow Cloudflare to connect:
+      # (block direct access to origin)
+      if ($http_cf_connecting_ip = "") {
+          return 403;
+      }
+      proxy_pass http://127.0.0.1:8000;
+  }
+"""
+
+print(cloudflare_setup)
+
+# CDN PURGE CODE (Python):
+purge_code = """
+import requests
+
+# Purge Cloudflare cache via API:
+def purge_cloudflare_cache(zone_id, api_token, urls=None):
+    url = f"https://api.cloudflare.com/client/v4/zones/{zone_id}/purge_cache"
+
+    headers = {
+        "Authorization": f"Bearer {api_token}",
+        "Content-Type": "application/json",
+    }
+
+    if urls:
+        # Purge specific URLs:
+        data = {"files": urls}
+    else:
+        # Purge everything:
+        data = {"purge_everything": True}
+
+    response = requests.post(url, headers=headers, json=data)
+    return response.json()
+
+# Usage after deployment:
+purge_cloudflare_cache(
+    zone_id="abc123",
+    api_token="token123",
+    urls=["https://api.example.com/products", "https://example.com/"]
+)
+"""
+
+print(purge_code)</div>
+
+<div class="code-block"># ── STEP 6: CDN and caching best practices ──
+# Maximize performance with smart caching.
+
+best_practices = [
+    "Use CDN for ALL static assets (CSS, JS, images, fonts)",
+    "Set long TTL for fingerprinted assets (1 year)",
+    "Set short TTL for HTML (no-cache, revalidate)",
+    "Set no-store for API responses with private data",
+    "Use cache busting (file hashes) for versioned assets",
+    "Purge CDN cache after each deployment",
+    "Use Cloudflare 'Full' SSL mode (not 'Flexible' — insecure)",
+    "Block direct origin access (only allow CDN IPs)",
+    "Enable HTTP/2 or HTTP/3 on CDN",
+    "Enable gzip/brotli compression at CDN edge",
+    "Use image optimization (WebP, resize at edge)",
+    "Set up staging environment (bypass cache for testing)",
+    "Monitor cache hit ratio (target: >90%)",
+    "Use ETags for conditional requests (304 Not Modified)",
+    "Configure CORS headers at CDN (not origin)",
+]
+
+print("CDN AND CACHING BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# PERFORMANCE COMPARISON:
+performance = """
+LOAD TIME WITHOUT CDN:
+  Origin in New York, User in Dhaka:
+  → DNS: 50ms
+  → TCP handshake: 250ms (round trip)
+  → TLS handshake: 250ms (round trip)
+  → HTTP request: 250ms (round trip)
+  → Download 2MB page: 500ms
+  Total: ~1,300ms (1.3 seconds)
+
+LOAD TIME WITH CLOUDFLARE CDN:
+  Edge in Singapore (closest to Dhaka):
+  → DNS: 10ms (Cloudflare anycast)
+  → TCP handshake: 40ms
+  → TLS handshake: 40ms
+  → HTTP request (cache HIT): 20ms
+  → Download 2MB page: 100ms
+  Total: ~210ms (0.2 seconds)
+
+  → 6x FASTER with CDN!
+  → Better UX, better SEO, lower bounce rate.
+"""
+
+print(performance)
+
+# CDN SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ CDN              │ Global edge cache near users    │
+# │ Cloudflare       │ Most popular (free tier)        │
+# │ Cache-Control    │ Header controls caching         │
+# │ max-age          │ How long to cache (seconds)     │
+# │ public/private   │ CDN+browser vs browser only     │
+# │ no-store         │ Never cache (private data)      │
+# │ Cache busting    │ File hash = force update        │
+# │ Purge            │ Clear CDN cache after deploy    │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="verse">وَنُنَزِّلُ مِنَ الْقُرْآنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং আমরা কুরআন থেকে যা নাজিল করি তা আরোগ্য ও করুণা।" — কুরআন ১৭:৮২</div>
