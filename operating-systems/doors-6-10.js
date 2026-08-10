@@ -84,36 +84,246 @@ RAM-কে fixed-size block-এ ভাগ করো — page (সাধারণ
 </div>
 <div class="svg-caption">চিত্র: Virtual → Page Table → Physical। Page fault হলে ডিস্ক থেকে RAM-এ আনে (swap)।</div>
 
-<div class="code-block">— Terminal: Memory দেখো —
+<div class="code-block"># ── STEP 1: Virtual memory concept ──
+# Every process thinks it has the ENTIRE memory to itself.
+# This is VIRTUAL MEMORY — an illusion created by the OS.
 
-  # সিস্টেমের মেমোরি সারাংশ:
-  $ free -h
-                total   used   free  available
-  Mem:           16Gi   8.2Gi  3.1Gi      7.5Gi
-  Swap:          4.0Gi   0.5Gi  3.5Gi
+# PHYSICAL memory: actual RAM chips (e.g., 16GB)
+# VIRTUAL memory: what each process sees (e.g., 4GB per process)
 
-  # প্রতিটি process-এর মেমোরি:
-  $ cat /proc/1234/maps
-  00400000-006b0000 r-xp  code segment
-  01000000-01200000 rw-p  heap (malloc)
-  7fff-7fff rwxp         stack
+# The OS maps virtual addresses → physical addresses.
+# This allows:
+# - Each process isolated (can't access others' memory)
+# - More virtual memory than physical (use disk as overflow)
+# - Memory protection (read-only pages, guard pages)
 
-  # page size:
-  $ getconf PAGE_SIZE
-  4096
+# THE VIRTUAL ADDRESS SPACE:
+layout = """
+High addresses
+┌──────────────────┐ 0xFFFFFFFF
+│ Kernel space     │ (OS code, not accessible)
+├──────────────────┤
+│ Stack ↓          │ (function calls, local vars)
+│                  │ grows DOWNWARD
+│                  │
+│ ... (free)       │
+│                  │
+│ Heap ↑           │ (malloc, new objects)
+│                  │ grows UPWARD
+├──────────────────┤
+│ BSS              │ (uninitialized globals)
+├──────────────────┤
+│ Data             │ (initialized globals)
+├──────────────────┤
+│ Code/Text        │ (program instructions, read-only)
+└──────────────────┘ 0x00000000
+Low addresses
+"""
+print(layout)</div>
 
-  # vmstat — real-time:
-  $ vmstat 1
-  procs  memory  swap  io  system  cpu
-   r b   swpd  free  buff  cache  si  so
-   1 0      0 3.2G  500M  2.1G    0   0
+<div class="code-block"># ── STEP 2: Paging ──
+# The OS divides memory into fixed-size PAGES (typically 4KB).
+# Virtual pages are mapped to physical FRAMES.
 
-  # OOM Score:
-  $ cat /proc/1234/oom_score
-  42  # কত সম্ভাবনা OOM কিল হওয়ার
+# PAGE TABLE: maps virtual page numbers → physical frame numbers
+# Each process has its own page table.
 
-  # swap off/on:
-  $ sudo swapoff -a    # RAM-only mode</div>
+# PAGE FAULT: virtual page not in RAM → OS loads from disk (swap).
+# This is SLOW (disk is 1000x slower than RAM).
+
+# Example: accessing a list in Python
+# list = [1, 2, 3, 4, 5]  → allocated on HEAP
+# Each access: virtual address → page table → physical frame
+
+# The TLB (Translation Lookaside Buffer):
+# A CACHE for page table lookups. Without it, every memory access
+# would require TWO memory accesses (one for page table, one for data).
+
+# In Python:
+import sys
+
+# Check object sizes (Python objects are bigger than C):
+print(f"int: {sys.getsizeof(42)} bytes")        # 28 bytes
+print(f"float: {sys.getsizeof(3.14)} bytes")    # 24 bytes
+print(f"list(5): {sys.getsizeof([1,2,3,4,5])} bytes")  # 104 bytes
+print(f"string: {sys.getsizeof('hello')} bytes")  # 54 bytes
+# Python objects have overhead (reference count, type pointer, etc.)
+
+# MEMORY-EFFICIENT Python:
+# - Use array.array instead of list for numbers
+# - Use __slots__ in classes (saves ~40% memory)
+# - Use generators instead of lists (lazy evaluation)
+# - Use mmap for large files (don't load into RAM)</div>
+
+<div class="code-block"># ── STEP 3: Memory allocation in Python ──
+# Python manages memory for you. Understand how it works:
+
+# STACK: fast, automatic, small (~8MB default)
+# - Function calls and local variables
+# - Automatically freed when function returns
+
+# HEAP: slower, manual (in C), large (limited by RAM + swap)
+# - Objects (lists, dicts, class instances)
+# - Managed by Python's memory allocator + garbage collector
+
+# REFERENCE COUNTING (Python's primary GC):
+import sys
+
+a = [1, 2, 3]
+print(f"Reference count: {sys.getrefcount(a) - 1}")  # 1 (minus the ref from getrefcount)
+
+b = a  # now two references
+print(f"Reference count: {sys.getrefcount(b) - 1}")  # 2
+
+del a  # remove one reference
+print(f"Reference count: {sys.getrefcount(b) - 1}")  # 1
+
+del b  # refcount → 0, object is freed immediately
+
+# CYCLIC REFERENCES (reference counting can't handle):
+# list1 = []
+# list2 = []
+# list1.append(list2)  # list1 → list2
+# list2.append(list1)  # list2 → list1
+# del list1, list2  # refcount = 1 each (circular), never 0!
+# → Python's cyclic GC handles this (runs periodically)
+
+# MEMORY LEAKS in Python:
+# - Circular references with __del__ methods
+# - Global variables that grow forever (caches)
+# - Event listeners not removed
+# - C extensions with manual memory management</div>
+
+<div class="code-block"># ── STEP 4: Memory monitoring commands ──
+# Terminal commands to monitor memory:
+
+commands = """
+# System memory overview:
+$ free -h
+              total   used   free   available
+Mem:           16Gi   8.2Gi  3.1Gi  7.5Gi
+Swap:          4.0Gi  0.5Gi  3.5Gi
+
+# Process memory usage:
+$ ps aux --sort=-%mem | head -10
+
+# Detailed process memory map:
+$ cat /proc/1234/maps
+00400000-006b0000 r-xp  code segment
+01000000-01200000 rw-p  heap
+7fff-7fff rwxp         stack
+
+# Real-time memory stats:
+$ vmstat 1
+# si/so = swap in/out (if non-zero, you're swapping = SLOW)
+
+# Check for OOM (Out of Memory) kills:
+$ dmesg | grep -i "killed process"
+# kernel OOM killer terminates process when memory exhausted
+
+# Memory profiling in Python:
+$ pip install memory_profiler
+$ python -m memory_profiler script.py
+"""
+
+print(commands)
+
+# SWAP: when RAM is full, OS moves pages to disk.
+# Swapping = SLOW. If swap is heavily used, performance tanks.
+# Monitor: if "si" and "so" in vmstat are non-zero → swapping.</div>
+
+<div class="code-block"># ── STEP 5: Garbage collection ──
+# Python automatically frees memory when objects are no longer needed.
+
+import gc
+
+# Python has TWO garbage collectors:
+# 1. Reference counting (immediate, always running)
+# 2. Generational GC (periodic, handles cycles)
+
+# GENERATIONS:
+# Generation 0: newly created objects (collected frequently)
+# Generation 1: survived one collection (collected less often)
+# Generation 2: long-lived objects (collected rarely)
+
+# Manual control:
+gc.collect()  # force full collection
+gc.disable()  # disable GC (for performance-critical code)
+gc.get_stats()  # see collection statistics
+
+# WHEN TO CARE ABOUT GC:
+# - Processing millions of objects (GC pauses)
+# - Real-time applications (can't afford pauses)
+# - Memory-constrained environments (embedded, containers)
+
+# MEMORY OPTIMIZATION TIPS:
+tips = [
+    "Use __slots__ in classes (eliminates __dict__)",
+    "Use array.array or numpy arrays for numbers",
+    "Use generators (yield) instead of lists",
+    "Delete large objects explicitly (del obj)",
+    "Use weakref for caches (don't prevent GC)",
+    "Avoid global variables (live forever)",
+    "Use context managers (with) for file/resource cleanup",
+    "Profile before optimizing: memory_profiler, tracemalloc",
+]
+
+print("MEMORY OPTIMIZATION TIPS:")
+for tip in tips:
+    print(f"  ☐ {tip}")</div>
+
+<div class="code-block"># ── STEP 6: Memory in containers and cloud ──
+# Memory management in Docker and cloud environments:
+
+# DOCKER MEMORY LIMITS:
+docker_memory = """
+$ docker run --memory=512m --memory-swap=1g myapp
+# Limits container to 512MB RAM, 1GB total (RAM + swap)
+# If exceeded: OOM killer terminates the container
+
+$ docker stats
+# Real-time memory/CPU usage per container
+"""
+
+print(docker_memory)
+
+# OOM KILLER:
+# When system runs out of memory, Linux kills processes.
+# It picks the process with highest oom_score (usually the one
+# using the most memory).
+
+# Check your OOM score:
+# cat /proc/self/oom_score
+# Lower = less likely to be killed
+
+# CLOUD MEMORY CONSIDERATIONS:
+cloud_tips = {
+    "AWS Lambda": "128MB to 10GB. More memory = more CPU too!",
+    "Docker": "Set memory limits to prevent one container from starving others",
+    "Kubernetes": "Set requests (guaranteed) and limits (max) per pod",
+    "VPS": "Monitor swap usage. Swap = death for performance",
+}
+
+print("CLOUD MEMORY TIPS:")
+for platform, tip in cloud_tips.items():
+    print(f"  {platform}: {tip}")
+
+# THE BIGGER PICTURE:
+# Memory hierarchy (fast → slow):
+# ┌──────────────┬──────────┬───────────────┐
+# │ Level        │ Latency  │ Size          │
+# ├──────────────┼──────────┼───────────────┤
+# │ CPU register │ ~1ns     │ bytes         │
+# │ L1 cache     │ ~1ns     │ KB            │
+# │ L2 cache     │ ~4ns     │ MB            │
+# │ L3 cache     │ ~12ns    │ MB            │
+# │ RAM          │ ~100ns   │ GB            │
+# │ SSD          │ ~100μs   │ TB            │
+# │ HDD          │ ~10ms    │ TB            │
+# │ Network      │ ~100ms   │ "infinite"    │
+# └──────────────┴──────────┴───────────────┘
+# Understanding this hierarchy = understanding performance.
+# Cache-friendly code can be 100x faster than cache-unfriendly code.</div>
 
 <div class="secret-box">🧠 <strong>Virtual Memory = সর্বজনীন বিভ্রম।</strong> প্রতিটি প্রসেস নিজেকে একা মনে করে। OS পেছনে থেকে paging, swapping, page replacement সব সামলায়। ডিস্ক একটি extension — RAM ফুলে গেলে ডিস্কে page পাঠায়। কিন্তু মেমোরি শুধু RAM-এই সীমাবদ্ধ নয় — ডেটা স্থায়ীভাবে কোথাও থাকতে হবে। সেই স্থান হলো ফাইল সিস্টেম। সেই যাত্রা শুরু হবে পরের দরজায়।</div>`,
   senior: {
