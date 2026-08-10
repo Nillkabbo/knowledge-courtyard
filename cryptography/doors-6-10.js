@@ -19,24 +19,291 @@ doors.push({
 <div class="dialogue"><strong>হস্তমর্দন-কারিগর বিলাল:</strong> TLS 1.3 (২০১৮, Eric Rescorla) হল সবচেয়ে দ্রুত ও নিরাপদ handshake। চারটি ধাপ: (১) Client Hello — আমি এই cipher পারি। (২) Server Hello — আমি এটি বেছে নিলাম, এই আমার সার্টিফিকেট। (৩) Key Exchange — Diffie-Hellman দিয়ে গোপন চাবি। (৪) Finished — সব এনক্রিপ্টেড। এক RTT! TLS 1.2-এ দুই RTT লাগতো।</div>
 <div class="dialogue en"><strong>Handshake Artisan Bilal:</strong> TLS 1.3 (2018, Eric Rescorla) is the fastest and most secure handshake. Four steps: (1) Client Hello — I can use these ciphers. (2) Server Hello — I choose this, here's my certificate. (3) Key Exchange — Diffie-Hellman for shared secret. (4) Finished — all encrypted. One RTT!</div>
 
-<div class="code-block">— TLS 1.3 Handshake দেখো (openssl) —
+<div class="code-block"># ── STEP 1: What is TLS? ──
+# TLS = Transport Layer Security (formerly SSL)
+# It's what makes HTTPS secure — encrypts ALL data between browser and server.
 
-  $ openssl s_client -connect google.com:443 -tls1_3
+# TLS COMBINES EVERYTHING from doors 1-5:
+# - Asymmetric encryption (RSA/ECDHE) for key exchange
+# - Symmetric encryption (AES) for bulk data
+# - Hashing (SHA-256) for integrity
+# - Digital signatures for authentication
+# - Certificates (PKI) for identity
 
-  SSL handshake has read 4127 bytes
-  ---
-  Protocol  : TLSv1.3              ← সর্বশেষ
-  Cipher    : TLS_AES_256_GCM_SHA384  ← AEAD cipher
+# WHAT TLS PROVIDES:
+tls_guarantees = {
+    "Confidentiality": "Nobody can read your data (encryption)",
+    "Integrity": "Nobody can modify your data (MAC/HMAC)",
+    "Authentication": "Server is who it claims to be (certificates)",
+    "Forward Secrecy": "Past sessions safe even if keys leaked (ephemeral DH)",
+}
 
-  — TLS 1.3-এ মাত্র ৫টি AEAD cipher suite:
-    TLS_AES_256_GCM_SHA384          (প্রাইমারি)
-    TLS_CHACHA20_POLY1305_SHA256    (মোবাইল)
-    TLS_AES_128_GCM_SHA256          (দ্রুত)
+print("TLS GUARANTEES:")
+for guarantee, desc in tls_guarantees.items():
+    print(f"  {guarantee}: {desc}")
 
-  — TLS 1.3 বনাম 1.2:
-    1.2: ২ RTT, RSA key exchange, বেশি cipher
-    1.3: ১ RTT, DHE mandatory, ৫ cipher, forward secrecy
-    0-RTT: পুরোনো সেশনে ০ RTT (data সাথে যায়)</div>
+# EVERY TIME YOU SEE HTTPS:
+# https://example.com
+# The "s" means TLS is active. Without it, all data is in plaintext!</div>
+
+<div class="code-block"># ── STEP 2: The TLS 1.3 handshake ──
+# How browser and server establish secure connection.
+
+# TLS 1.3 HANDSHAKE (1 round trip):
+handshake = """
+CLIENT →→→→→→→→→→→→→→→→→→ SERVER
+  ClientHello
+    + supported cipher suites
+    + key share (ECDHE public key)
+    + supported TLS version
+
+CLIENT ←←←←←←←←←←←←←←←←← SERVER
+  ServerHello
+    + chosen cipher suite
+    + key share (server's ECDHE public key)
+    + certificate (proves identity)
+    + Finished (HMAC of handshake)
+
+CLIENT →→→→→→→→→→→→→→→→→→ SERVER
+  Finished (HMAC of handshake, encrypted)
+
+Total: 1 RTT (round trip time)
+Both sides now have a shared AES key. All further traffic is encrypted.
+"""
+
+print(handshake)
+
+# WHAT HAPPENS IN EACH STEP:
+steps = {
+    "ClientHello": "Browser says: I support these ciphers, here's my public key",
+    "ServerHello": "Server says: let's use this cipher, here's my key + certificate",
+    "Certificate verification": "Browser checks certificate against trusted CAs",
+    "Key derivation": "Both compute shared AES key using ECDHE",
+    "Finished": "Both confirm handshake wasn't tampered with (HMAC)",
+}
+
+print("HANDSHAKE STEPS:")
+for step, desc in steps.items():
+    print(f"  {step}: {desc}")</div>
+
+<div class="code-block"># ── STEP 3: TLS 1.3 vs 1.2 ──
+# TLS 1.3 is a MAJOR improvement over 1.2.
+
+comparison = {
+    "Handshake": {
+        "TLS 1.2": "2 RTT (slower)",
+        "TLS 1.3": "1 RTT (faster) + 0-RTT mode for resumed sessions",
+    },
+    "Key Exchange": {
+        "TLS 1.2": "RSA or DHE (RSA has no forward secrecy)",
+        "TLS 1.3": "ECDHE only (mandatory forward secrecy)",
+    },
+    "Cipher Suites": {
+        "TLS 1.2": "37+ suites (many weak, confusing)",
+        "TLS 1.3": "5 suites only (all strong, AEAD)",
+    },
+    "Encryption": {
+        "TLS 1.2": "CBC mode (vulnerable to padding attacks) or GCM",
+        "TLS 1.3": "AEAD only (GCM or ChaCha20-Poly1305)",
+    },
+    "Hashing": {
+        "TLS 1.2": "MD5, SHA-1, SHA-256 (some weak)",
+        "TLS 1.3": "SHA-256 or SHA-384 only",
+    },
+    "Forward Secrecy": {
+        "TLS 1.2": "Optional (depends on configuration)",
+        "TLS 1.3": "Mandatory (always ECDHE)",
+    },
+}
+
+print("TLS 1.2 vs 1.3:")
+for aspect, versions in comparison.items():
+    print(f"\n  {aspect}:")
+    for version, desc in versions.items():
+        print(f"    {version}: {desc}")
+
+# TLS 1.3 CIPHER SUITES (only 5):
+cipher_suites = [
+    "TLS_AES_256_GCM_SHA384 (primary, strongest)",
+    "TLS_CHACHA20_POLY1305_SHA256 (mobile-optimized)",
+    "TLS_AES_128_GCM_SHA256 (fast)",
+    "TLS_AES_128_CCM_SHA256 (limited use)",
+    "TLS_AES_128_CCM_8_SHA256 (constrained devices)",
+]
+
+print("\nTLS 1.3 CIPHER SUITES:")
+for suite in cipher_suites:
+    print(f"  {suite}")</div>
+
+<div class="code-block"># ── STEP 4: Inspecting TLS with openssl ──
+# See exactly what TLS version and cipher a site uses:
+
+openssl_commands = """
+# Check TLS version:
+$ openssl s_client -connect google.com:443 -tls1_3
+Protocol: TLSv1.3
+Cipher:   TLS_AES_256_GCM_SHA384
+
+# Check TLS 1.2:
+$ openssl s_client -connect google.com:443 -tls1_2
+Protocol: TLSv1.2
+Cipher:   ECDHE-RSA-AES256-GCM-SHA384
+
+# List all supported cipher suites:
+$ openssl ciphers -v 'TLSv1.3'
+
+# Verify certificate chain:
+$ openssl s_client -connect google.com:443 -showcerts
+
+# Check if HSTS is enabled:
+$ curl -sI https://google.com | grep -i strict
+strict-transport-security: max-age=31536000
+
+# Test SSL Labs grade:
+# https://www.ssllabs.com/ssltest/ (online tool)
+"""
+
+print(openssl_commands)
+
+# CONFIGURING TLS IN NGINX (your servers):
+nginx_tls = """
+server {
+    listen 443 ssl http2;
+    server_name api.example.com;
+
+    # TLS 1.3 only (most secure):
+    ssl_protocols TLSv1.3;
+    ssl_prefer_server_ciphers off;
+
+    # Or TLS 1.2 + 1.3 (broader compatibility):
+    ssl_protocols TLSv1.2 TLSv1.3;
+
+    # OCSP stapling:
+    ssl_stapling on;
+    ssl_stapling_verify on;
+
+    # HSTS (force HTTPS for 1 year):
+    add_header Strict-Transport-Security "max-age=31536000" always;
+}
+"""
+
+print(nginx_tls)</div>
+
+<div class="code-block"># ── STEP 5: HTTPS in your applications ──
+# HOW TO ENSURE TLS IN DJANGO/WEB APPS:
+
+# DJANGO SECURITY SETTINGS:
+django_security = """
+# settings.py — FORCE HTTPS in production:
+SECURE_SSL_REDIRECT = True           # redirect HTTP to HTTPS
+SECURE_HSTS_SECONDS = 31536000       # HSTS for 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True           # allow browser preload list
+SECURE_CONTENT_TYPE_NOSNIFF = True   # prevent MIME sniffing
+SECURE_BROWSER_XSS_FILTER = True
+SESSION_COOKIE_SECURE = True         # cookies only over HTTPS
+CSRF_COOKIE_SECURE = True            # CSRF cookie over HTTPS
+
+# Behind a reverse proxy (nginx):
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+"""
+
+print(django_security)
+
+# LET'S ENCRYPT AUTO-RENEWAL:
+certbot_setup = """
+# Install:
+$ apt install certbot python3-certbot-nginx
+
+# Get certificate + auto-configure nginx:
+$ sudo certbot --nginx -d api.example.com
+
+# Test renewal:
+$ sudo certbot renew --dry-run
+
+# Auto-renew (systemd timer):
+$ systemctl enable certbot.timer
+$ systemctl start certbot.timer
+
+# Certificates expire every 90 days.
+# certbot renew checks and renews automatically.
+"""
+
+print(certbot_setup)
+
+# COMMON TLS MISTAKES:
+mistakes = {
+    "Mixed content": "HTTPS page loads HTTP resources (browser blocks/warns)",
+    "Self-signed certs": "Works but browsers show scary warning (use Let's Encrypt!)",
+    "Expired cert": "Browser shows 'Your connection is not private' (monitor expiry!)",
+    "No HSTS": "First visit can be intercepted (enable HSTS)",
+    "Weak ciphers": "TLS 1.0/1.1 are deprecated (force TLS 1.2+)",
+}
+
+print("COMMON TLS MISTAKES:")
+for mistake, consequence in mistakes.items():
+    print(f"  {mistake}: {consequence}")</div>
+
+<div class="code-block"># ── STEP 6: Beyond TLS — application security ──
+# TLS secures data IN TRANSIT. But security needs MORE layers.
+
+# DEFENSE IN DEPTH:
+defense_layers = {
+    "Network (TLS)": "Encrypt data in transit (HTTPS)",
+    "Application (validation)": "Input validation, parameterized queries, CSRF",
+    "Authentication": "Strong passwords, MFA, session management",
+    "Authorization": "RBAC, least privilege, API rate limits",
+    "Data at rest": "Database encryption, encrypted backups",
+    "Monitoring": "Logs, alerts, intrusion detection",
+    "Incident response": "What to do when breached",
+}
+
+print("DEFENSE IN DEPTH:")
+for layer, desc in defense_layers.items():
+    print(f"  {layer}: {desc}")
+
+# SECURITY HEADERS (HTTP):
+security_headers = {
+    "Strict-Transport-Security": "Force HTTPS (HSTS)",
+    "Content-Security-Policy": "Prevent XSS (restrict script sources)",
+    "X-Frame-Options": "Prevent clickjacking (no iframes)",
+    "X-Content-Type-Options": "Prevent MIME sniffing",
+    "Referrer-Policy": "Control referrer header leakage",
+    "Permissions-Policy": "Restrict browser features (camera, mic)",
+}
+
+print("\nSECURITY HEADERS:")
+for header, desc in security_headers.items():
+    print(f"  {header}: {desc}")
+
+# TLS SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ TLS Feature      │ Purpose                         │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Encryption       │ Confidentiality (nobody reads)   │
+# │ HMAC/MAC         │ Integrity (nobody modifies)     │
+    # │ Certificates     │ Authentication (identity proof) │
+# │ ECDHE            │ Forward secrecy                 │
+# │ TLS 1.3          │ Modern, fast, secure            │
+# │ Let's Encrypt    │ Free certificates               │
+# │ HSTS             │ Force HTTPS in browser          │
+# │ OCSP Stapling    │ Real-time revocation            │
+# └──────────────────┴──────────────────────────────────┘
+
+# THE BIG PICTURE:
+# TLS is the BACKBONE of internet security.
+# Every HTTPS connection, every API call, every login — uses TLS.
+# Understanding TLS = understanding how the internet keeps data safe.
+
+# FOR YOUR PROJECTS:
+# - ALWAYS use HTTPS (Let's Encrypt + certbot)
+# - Force HTTPS redirect (no HTTP access)
+# - Enable HSTS header
+# - Use TLS 1.3 (or at least 1.2)
+# - Monitor certificate expiry
+# - Set security headers (django-security, CSP)
+# - Test with SSL Labs (ssllabs.com/ssltest)
+# - Keep libraries updated (TLS bugs get fixed)</div>
 
 <div class="verse">أَوْفُوا بِالْعُقُودِ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"তোমরা চুক্তি পূরণ করো।" — কুরআন ৫:১</div>
