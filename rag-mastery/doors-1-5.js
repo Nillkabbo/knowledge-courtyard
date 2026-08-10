@@ -1964,99 +1964,420 @@ doors.push({
 </div>
 <div class="svg-caption">প্রশ্ন রূপান্তার — পুনর্লিখন, সম্প্রসারণ, বিভাজন, step-back</div>
 
-<div class="code-block">Query Transformation — Garbage In, Gold Out:
+<div class="code-block"># ── STEP 1: Why user queries are bad ──
+# Users don't write good search queries. They write like they talk.
 
-WHY USER QUERIES ARE BAD:
-  ❌ "revenue" — কোনটা? কোন কোম্পানি? কোন সময়?
-  ❌ "it doesn't work" — কী কাজ করে না?
-  ❌ "compare them" — কাদের তুলনা?
-  ❌ টাইপো: "rag sytem" → "rag system"
-  ❌ Conversational: "what about that thing?" 
-     → কোন thing?
+bad_queries = """
+REAL USER QUERIES (and why they fail):
 
-FIVE QUERY TRANSFORMATIONS:
+❌ "revenue"
+   → Which company? Which year? Which quarter?
 
-১. QUERY REWRITING
-  LLM দিয়ে প্রশ্ন পরিষ্কার করো।
-  
-  Original: "revenue"
-  Prompt: "Rewrite this as a specific search 
-          query: 'revenue'"
-  → "total annual revenue for fiscal year 2024"
-  
-  LangChain: MultiQueryRetriever
-  LlamaIndex: QueryRewriteEngine
+❌ "it doesn't work"
+   → What doesn't work? Error message? Expected vs actual?
 
-২. QUERY EXPANSION  
-  Synonyms ও related terms যোগ করো।
-  
-  Original: "machine learning"
-  Expanded: "machine learning OR ML OR 
-            artificial intelligence OR 
-            deep learning OR neural network"
-  
-  → বেশি coverage, কিন্তু noise বাড়ে
+❌ "compare them"
+   → Compare WHAT? Two products? Two approaches?
 
-৩. SUB-QUESTION DECOMPOSITION
-  জটিল প্রশ্ন ভাঙো → সহজ প্রশ্নে।
-  
-  Original: "Compare GPT-4 and Claude for 
-           Python coding tasks"
-  Decomposed:
-    Q1: "GPT-4 Python coding performance"
-    Q2: "Claude Python coding performance"
-    Q3: "Comparison benchmarks GPT-4 vs Claude"
-  
-  → প্রতিটি retrieve → combine → synthesize
+❌ "rag sytem" (typo)
+   → "rag system" (spelling error)
 
-৪. STEP-BACK PROMPTING (Zheng et al., 2023)
-  নির্দিষ্ট প্রশ্ন → বিস্তৃত context খোঁজো।
-  
-  Original: "What did Einstein discover 
-           about the photoelectric effect?"
-  Step-back: "What is the photoelectric 
-             effect and its history?"
-  
-  → broader retrieval = বেশি context
-  → তারপর নির্দিষ্ট উত্তর
+❌ "what about that thing?"
+   → "that thing" = what? (conversational reference)
 
-৫. CONVERSATIONAL CONTEXT RESOLUTION
-  পূর্ববর্তী কথোপকথন থেকে context বোঝো।
-  
-  History: User asked about "LedgerPilot"
-  Query: "What about its competitors?"
-  
-  Resolved: "What are LedgerPilot's competitors?"
-  → এখন retrieve করা যায়!
-  
-  LLM prompt: "Given this conversation history,
-    rewrite the last query as a standalone 
-    question with full context."
+The query is the INPUT to everything.
+Bad query = bad retrieval = bad answer.
+Transform the query FIRST, then retrieve.
+"""
 
-IMPLEMENTATION (LangChain):
+print(bad_queries)
 
-  from langchain.retrievers.multi_query 
-    import MultiQueryRetriever
-  
-  # LLM generates multiple query variants
-  retriever = MultiQueryRetriever.from_llm(
-    retriever=base_retriever,
-    llm=llm
-  )
-  # → ৩-৫ query variants → retrieve each → merge
+# THE QUERY TRANSFORMATION PIPELINE:
+pipeline = """
+1. CONVERSATIONAL RESOLUTION: "what about its competitors?" → specific query
+2. SPELLING FIX: "rag sytem" → "rag system"
+3. QUERY REWRITING: "revenue" → "total annual revenue FY2024 for [company]"
+4. QUERY EXPANSION: "ML" → "machine learning, AI, deep learning"
+5. SUB-QUESTION DECOMPOSITION: "compare A vs B" → multiple sub-queries
+6. STEP-BACK: "Einstein 1905" → "What is photoelectric effect?"
+7. MULTI-QUERY: Generate N variants, search all
 
-IMPACT ON ACCURACY:
-  No transformation:   ৬০%
-  + Query rewriting:   ৭০% (+১০%)
-  + Decomposition:     ৭৮% (+৮%)
-  + Step-back:         ৮২% (+৪%)
-  + All combined:      ৮৭% (+৫%)
+Not all steps needed every time. Apply based on query type.
+"""
 
-COST:
-  প্রতিটা transformation = একটা LLM কল
-  → $০.০০১-০.০৫ per transformation
-  → ৩-৫ transforms = $০.০০৩-০.২৫ per query
-  → সস্তা যদি accuracy গুরুত্বপূর্ণ</div>
+print(pipeline)</div>
+
+<div class="code-block"># ── STEP 2: Conversational context resolution ──
+# In a CHAT, users reference previous messages. Resolve before retrieval.
+
+# THE PROBLEM:
+problem = """
+User: "Tell me about LedgerPilot"
+Bot: "LedgerPilot is an accounting software..."
+User: "What about its competitors?"
+
+"its competitors" → which company?
+→ LedgerPilot (from previous message)!
+
+Without resolution: search for "its competitors" → garbage
+With resolution: search for "LedgerPilot competitors" → great results
+"""
+
+print(problem)
+
+# IMPLEMENTATION:
+resolution_code = """
+def resolve_conversational_query(query, chat_history):
+    \"\"\"Rewrite query with context from chat history.\"\"\"
+
+    prompt = f\"\"\"Given the conversation history, rewrite the last question
+    as a STANDALONE question with full context.
+
+    Chat history:
+    {chat_history}
+
+    Last question: {query}
+
+    Standalone question:\"\"\"
+
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0,
+    )
+    return response.choices[0].message.content
+
+# Example:
+# chat_history = "User: Tell me about LedgerPilot\\nBot: LedgerPilot is..."
+# query = "What about its competitors?"
+# resolved = resolve_conversational_query(query, chat_history)
+# → "What are LedgerPilot's competitors?"
+"""
+
+print(resolution_code)
+
+# WHEN TO USE:
+# - ALWAYS in chatbot/assistant applications
+# - Skip for single-query search (no conversation)
+# - Use last 3-5 messages (not entire history)
+# - Cache resolved queries (same context + query = same result)</div>
+
+<div class="code-block"># ── STEP 3: Query rewriting and expansion ──
+# Rewrite the query for better document matching.
+
+# QUERY REWRITING:
+rewriting = """
+Original: "revenue"
+Rewritten: "total annual revenue for fiscal year 2024"
+
+HOW: Ask LLM to rewrite:
+
+System: "You are a search query optimizer.
+Rewrite the user's query as a specific, detailed
+search query that will find relevant documents."
+
+User: "revenue"
+→ "total annual revenue for fiscal year 2024
+   including financial performance metrics"
+"""
+
+print(rewriting)
+
+# QUERY EXPANSION:
+expansion = """
+Original: "machine learning"
+Expanded: "machine learning OR ML OR
+           artificial intelligence OR
+           deep learning OR neural network"
+
+HOW: Add synonyms and related terms.
+
+PYTHON:
+def expand_query(query):
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "Add 3-5 synonyms and related terms to this query. Format: 'original OR synonym1 OR synonym2'"},
+            {"role": "user", "content": query}
+        ],
+        temperature=0.5,
+    )
+    return response.choices[0].message.content
+
+# "machine learning" → "machine learning OR ML OR AI OR deep learning OR neural networks"
+"""
+
+print(expansion)
+
+# PROS AND CONS:
+pros_cons = {
+    "Query Rewriting": {
+        "pro": "More specific → better retrieval",
+        "con": "May over-specify and miss documents",
+        "cost": "1 LLM call ($0.001-0.01)",
+    },
+    "Query Expansion": {
+        "pro": "Broader coverage → more results",
+        "con": "May add noise (irrelevant results)",
+        "cost": "1 LLM call ($0.001-0.01)",
+    },
+}
+
+print("PROS AND CONS:")
+for technique, info in pros_cons.items():
+    print(f"\n  {technique}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 4: Sub-question decomposition ──
+# Break complex questions into SIMPLE sub-questions.
+
+decomposition = """
+ORIGINAL: "Compare GPT-4 and Claude for Python coding"
+
+This needs THREE retrievals:
+  Q1: "GPT-4 Python coding performance and benchmarks"
+  Q2: "Claude Python coding performance and benchmarks"
+  Q3: "GPT-4 vs Claude coding comparison benchmarks"
+
+Each sub-question → retrieve separately → combine results.
+
+WHY THIS WORKS:
+  One query for "compare A vs B" can't find both A and B.
+  But separate queries for A and B DO find them.
+  → 3x better retrieval for comparison questions.
+"""
+
+print(decomposition)
+
+# IMPLEMENTATION:
+decompose_code = """
+def decompose_query(query, n_subquestions=3):
+    \"\"\"Break a complex query into sub-questions.\"\"\"
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": f"Break this question into {n_subquestions} simpler sub-questions, one per line."
+            },
+            {"role": "user", "content": query}
+        ],
+        temperature=0,
+    )
+    return response.choices[0].message.content.strip().split("\\n")
+
+# Retrieve for each sub-question:
+def rag_with_decomposition(query, top_k=5):
+    sub_questions = decompose_query(query)
+    all_docs = []
+
+    for sq in sub_questions:
+        sq_embedding = embed(sq)
+        docs = Document.objects.annotate(
+            distance=CosineDistance('embedding', sq_embedding)
+        ).order_by('distance')[:top_k]
+        all_docs.extend(docs)
+
+    # Deduplicate:
+    unique_docs = list({d.id: d for d in all_docs}.values())
+
+    # Generate answer from combined context:
+    context = "\\n\\n".join([d.content for d in unique_docs[:10]])
+    answer = generate(query, context)
+    return answer
+"""
+
+print(decompose_code)
+
+# WHEN TO USE DECOMPOSITION:
+when_to_use = {
+    "Comparison questions": "'Compare A vs B' or 'Difference between X and Y'",
+    "Multi-entity questions": "'How do A, B, and C handle this?'",
+    "Multi-step reasoning": "'What caused X, and what were its effects?'",
+    "Complex research": "'Analyze the impact of A on B in context C'",
+}
+
+print("WHEN TO USE DECOMPOSITION:")
+for case, example in when_to_use.items():
+    print(f"  {case}: {example}")</div>
+
+<div class="code-block"># ── STEP 5: Step-back prompting ──
+# For specific questions, retrieve BROADER context first.
+
+step_back = """
+ORIGINAL: "What did Einstein discover about the photoelectric effect?"
+
+STEP-BACK: "What is the photoelectric effect and its history?"
+
+WHY: The specific question might not match documents well.
+     The broader question retrieves foundational context.
+     Then the specific question retrieves details.
+
+Two-stage retrieval:
+  1. Search for step-back query → broad context
+  2. Search for original query → specific details
+  3. Combine both for the LLM
+
+Paper: Zheng et al. (2023) "Take a Step Back: Evoking Reasoning
+       via Abstraction in AI Models"
+"""
+
+print(step_back)
+
+# IMPLEMENTATION:
+step_back_code = """
+def step_back_prompting(query):
+    # 1. Generate step-back query:
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": "Generate a broader, more general question that provides context for this specific question."
+            },
+            {"role": "user", "content": query}
+        ],
+        temperature=0,
+    )
+    step_back_query = response.choices[0].message.content
+
+    # 2. Retrieve for BOTH queries:
+    broad_docs = retrieve(step_back_query, top_k=3)  # broad context
+    specific_docs = retrieve(query, top_k=3)          # specific details
+
+    # 3. Combine (broad first, then specific):
+    all_docs = list(broad_docs) + list(specific_docs)
+
+    # 4. Generate answer from combined context:
+    context = "\\n\\n".join([d.content for d in all_docs])
+    return generate(query, context)
+"""
+
+print(step_back_code)
+
+# EXAMPLES:
+examples = [
+    ("What did the Q3 report say about churn?",
+     "What is churn rate and how is it measured?"),
+    ("How did the 2024 acquisition affect revenue?",
+     "What was the 2024 acquisition and its context?"),
+    ("Why did Python 3.12 remove distutils?",
+     "What is distutils and its role in Python?"),
+]
+
+print("STEP-BACK EXAMPLES:")
+for original, step_back_q in examples:
+    print(f"\n  Original: {original}")
+    print(f"  Step-back: {step_back_q}")</div>
+
+<div class="code-block"># ── STEP 6: Production query transformation pipeline ──
+# Complete pipeline: apply the RIGHT transformations for each query.
+
+# PRODUCTION PIPELINE:
+pipeline_code = """
+def production_query_pipeline(query, chat_history=None):
+    \"\"\"Full query transformation pipeline.\"\"\"
+
+    # Step 1: Conversational resolution (if chatbot):
+    if chat_history:
+        query = resolve_conversational_query(query, chat_history)
+
+    # Step 2: Always rewrite (cheap, big improvement):
+    rewritten = rewrite_query(query)
+
+    # Step 3: Classify query type:
+    query_type = classify_query(query)  # comparison, simple, multi-hop
+
+    if query_type == "comparison":
+        # Decompose comparison questions:
+        sub_queries = decompose_query(query)
+        results = []
+        for sq in sub_queries:
+            results.extend(retrieve(sq, top_k=3))
+        results = deduplicate(results)
+
+    elif query_type == "specific":
+        # Step-back for specific questions:
+        step_back_q = generate_step_back(query)
+        broad = retrieve(step_back_q, top_k=2)
+        specific = retrieve(rewritten, top_k=3)
+        results = list(broad) + list(specific)
+
+    else:  # simple
+        # Just retrieve with rewritten query:
+        results = retrieve(rewritten, top_k=5)
+
+    # Step 4: Re-rank all results:
+    results = rerank(query, results, top_k=5)
+
+    # Step 5: Generate answer:
+    context = "\\n\\n".join([d.content for d in results])
+    answer = generate(query, context)
+
+    return {"answer": answer, "sources": results}
+"""
+
+print(pipeline_code)
+
+# ACCURACY IMPACT:
+impact = {
+    "No transformation": {"accuracy": 60, "latency": "100ms"},
+    "+ Conversational resolution": {"accuracy": 63, "latency": "200ms"},
+    "+ Query rewriting": {"accuracy": 70, "latency": "250ms"},
+    "+ Decomposition": {"accuracy": 78, "latency": "400ms"},
+    "+ Step-back": {"accuracy": 82, "latency": "500ms"},
+    "+ Multi-query": {"accuracy": 85, "latency": "600ms"},
+    "All combined": {"accuracy": 87, "latency": "700ms"},
+}
+
+print("QUERY TRANSFORMATION IMPACT:")
+for technique, data in impact.items():
+    print(f"  {technique:40} {data['accuracy']}% ({data['latency']})")
+
+# COST ANALYSIS:
+cost = """
+Each transformation = 1 LLM call:
+  Conversational resolution: $0.001-0.01
+  Query rewriting:           $0.001-0.01
+  Decomposition:             $0.001-0.01
+  Step-back:                 $0.001-0.01
+  Classification:            $0.001-0.01
+
+Total per query: $0.005-0.05 (for all transformations)
+For 1000 queries/day: $5-50/day
+
+IS IT WORTH IT?
+  +27% accuracy improvement (60% → 87%)
+  At $0.05/query → MASSIVE ROI
+  Fewer wrong answers = happier users = more revenue
+
+COST OPTIMIZATION:
+  → Cache transformed queries (same input → same output)
+  → Use cheaper model for transformations (GPT-4o-mini)
+  → Don't apply ALL transformations (only what's needed)
+  → Batch where possible
+"""
+
+print(cost)
+
+# QUERY TRANSFORMATION CHECKLIST:
+checklist = [
+    "Always resolve conversational references (chatbots)",
+    "Always rewrite queries (cheap, big win)",
+    "Classify query type before applying heavy transformations",
+    "Use decomposition for comparison/multi-entity questions",
+    "Use step-back for specific questions needing broader context",
+    "Cache transformed queries (same input = same output)",
+    "Use cheaper models for transformation (GPT-4o-mini)",
+    "Measure accuracy improvement for each transformation",
+    "Don't over-transform simple queries (latency cost)",
+    "Log transformed queries for debugging",
+]
+
+print("QUERY TRANSFORMATION CHECKLIST:")
+for item in checklist:
+    print(f"  ☐ {item}")</div>
 
 <div class="dialogue">ইসলাহ — reform, correction, improvement। নবীজি (সা) বলেছেন — "ইসলাহ করা সবচেয়ে উত্তম কাজ।" প্রশ্ন সংশোধনও ইসলাহ — খারাপ প্রশ্নকে ভালো করা। ভালো প্রশ্ন = ভালো উত্তরের ভিত্তি। যে প্রশ্ন ইসলাহ করে, সে উত্তর পায়। যে খারাপ প্রশ্ন দেয়, সে খারাপ উত্তর পায়।</div>
 <div class="dialogue en">"Islah — reform, correction, improvement. The Prophet (pbuh) said — 'Reform is the best deed.' Query refinement is islah too — making bad questions good. Good question = foundation of good answer. One who refines the question, gets the answer. One who gives bad questions, gets bad answers."</div>`,
