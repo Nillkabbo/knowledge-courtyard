@@ -63,65 +63,304 @@ doors.push({
 </div>
 <div class="svg-caption">শব্দ থেকে টোকেন — BPE কীভাবে অক্ষরের জোড়া মার্জ করে সংখ্যা তৈরি করে</div>
 
-<div class="code-block">BPE (Byte Pair Encoding) — How It Actually Works:
+<div class="code-block"># ── STEP 1: What is tokenization? ──
+# LLMs don't read WORDS — they read TOKENS (chunks of text).
+# Tokenization splits text into pieces the model can process.
 
-VOCABULARY CONSTRUCTION:
-  ট্রেইনিং ডেটা নাও → সব ইউনিকোড বাইট 
-  থেকে শুরু → সবচেয়ে সাধারণ জোড়া 
-  (pair) খোঁজো → মার্জ করো → আবার খোঁজো।
+# A token is NOT always a word:
+#   "knowledge"  → 1 token
+#   "unhappiness" → 2 tokens ["un", "happiness"]
+#   "জ্ঞান"      → 4 tokens (Bengali is expensive!)
+#   "1234567"    → 3 tokens ["123", "45", "67"]
 
-  Iteration 1: 't' + 'h' → 'th' (common)
-  Iteration 2: 'th' + 'e' → 'the' (very common)  
-  Iteration 3: 'i' + 'n' → 'in' (common)
-  ...
-  Iteration 50000: vocabulary complete
+# Install tiktoken (OpenAI's tokenizer):
+# pip install tiktoken
 
-  GPT-4 vocab: ~100,000 tokens
-  Claude vocab: ~65,000 tokens
-  Llama 3 vocab: 128,000 tokens
+import tiktoken
 
-ENCODING (শব্দ → টোকেন → সংখ্যা):
-  "unhappiness" 
-    → ["un", "happiness"]  (2 tokens)
-    OR
-    → ["un", "happ", "iness"]  (3 tokens)
-  
-  কোনটা? BPE সিদ্ধান্ত নেয় — vocabulary-এ 
-  কোন টুকরোটা আছে তার উপর ভিত্তি করে।
+# GPT-4 tokenizer:
+enc = tiktoken.encoding_for_model("gpt-4")
 
-  "জ্ঞান" (Bengali)
-    → ["জ", "্ঞ", "া", "ন"]  (4 tokens!)
-    → কারণ বাংলা বিরল, BPE-তে আলাদা নেই
+# Count tokens:
+text = "The quick brown fox jumps over the lazy dog"
+tokens = enc.encode(text)
+print(f"Text: {text}")
+print(f"Tokens: {len(tokens)}")  # ~10 tokens
+print(f"Token IDs: {tokens}")
+print(f"Decoded: {[enc.decode([t]) for t in tokens]}")</div>
 
-  "knowledge" (English)  
-    → ["knowledge"]  (1 token!)
-    → কারণ সাধারণ ইংরেজি শব্দ
+<div class="code-block"># ── STEP 2: BPE (Byte Pair Encoding) ──
+# BPE is the algorithm most LLMs use for tokenization.
 
-কেন এটা গুরুত্বপূর্ণ?
+# HOW BPE WORKS:
+bpe_process = """
+VOCABULARY CONSTRUCTION (done during training):
 
-১. খরচ:
-   "আমি ভালো আছি" (Bengali) = ~৬ টোকেন
-   "I am fine" (English) = ৩ টোকেন
-   → বাংলা ২x খরচ! ১M বাংলা টোকেনের জন্য 
-     বেশি টাকা দিতে হবে।
+1. Start with individual characters/bytes:
+   'h', 'e', 'l', 'l', 'o', ...
 
-২. গণিতে দুর্বলতা:
-   "123 + 456" 
-   → টোকেন: ["123", " +", " 456"]  OK
-   "1234567 + 8901234"
-   → টোকেন: ["123", "45", "67", " +", " 890", ...]
-   → সংখ্যা ভেঙে গেছে! LLM ভুল করে।
-   → এজন্য LLM বড় সংখ্যায় ভুল করে।
+2. Find the MOST COMMON pair:
+   't' + 'h' appears 50,000 times → merge to 'th'
 
-৩. কোড:
-   "def fibonacci(n):"
-   → ["def", " fibonacci", "(", "n", "):"]
-   → ৫ টোকেন — কোড তুলনামূলক কম খরচ
+3. Find next most common pair:
+   'th' + 'e' appears 40,000 times → merge to 'the'
 
-৪. হোয়াইটস্পেস:
-   " hello" (space) = [" hello"] = ১ টোকেন
-   "hello" (no space) = ["hello"] = ১ টোকেন  
-   → কিন্তু আলাদা টোকেন! স্পেস ম্যাটার।</div>
+4. Repeat for ~50,000-128,000 iterations:
+   Each merge adds one token to the vocabulary.
+
+Result: common words = 1 token, rare words = multiple tokens.
+"""
+
+print(bpe_process)
+
+# VOCABULARY SIZES:
+vocab_sizes = {
+    "GPT-2": "50,257 tokens",
+    "GPT-4": "~100,000 tokens",
+    "Claude": "~65,000 tokens",
+    "Llama 3": "128,000 tokens",
+    "GPT-4o": "~200,000 tokens",
+}
+
+print("VOCABULARY SIZES:")
+for model, size in vocab_sizes.items():
+    print(f"  {model}: {size}")
+
+# WHY BIGGER VOCABULARY?
+# - More words become single tokens (cheaper)
+# - Better for multilingual (more language coverage)
+# - But: larger embedding matrix (more memory)</div>
+
+<div class="code-block"># ── STEP 3: Tokenization differences by language ──
+# English is CHEAP. Other languages are EXPENSIVE.
+
+import tiktoken
+enc = tiktoken.encoding_for_model("gpt-4")
+
+# Compare token costs across languages:
+sentences = {
+    "English": "I love learning about artificial intelligence",
+    "Bengali": "আমি কৃত্রিম বুদ্ধিমত্তা সম্পর্কে শিখতে ভালোবাসি",
+    "Arabic": "أحب التعلم عن الذكاء الاصطناعي",
+    "Chinese": "我喜欢学习人工智能",
+    "Hindi": "मुझे कृत्रिम बुद्धिमत्ता के बारे में सीखना पसंद है",
+}
+
+print("TOKEN COST BY LANGUAGE:")
+for lang, text in sentences.items():
+    token_count = len(enc.encode(text))
+    char_count = len(text)
+    ratio = token_count / len(text.split()) if text.split() else 0
+    print(f"  {lang:10}: {token_count} tokens ({char_count} chars)")
+
+# TYPICAL RATIOS:
+# English:   ~1 token per 0.75 words
+# Bengali:   ~1 token per 0.25 words (3x more expensive!)
+# Arabic:    ~1 token per 0.35 words
+# Chinese:   ~1 token per 0.5 characters
+
+# PRACTICAL IMPLICATIONS:
+implications = """
+1. COST: Bengali costs 2-4x more than English
+   - 1M English tokens: $10
+   - 1M Bengali tokens: $10 (but same text = 3M tokens worth)
+
+2. QUALITY: More tokens per word = noisier representation
+   - English "knowledge" = 1 clean token
+   - Bengali "জ্ঞান" = 4 fragmented tokens
+   - Model struggles more with fragmented tokens
+
+3. CONTEXT WINDOW: 128K tokens = ~100K English words
+   but only ~30K Bengali words
+
+4. SOLUTION: Use models with larger vocabularies (Llama 3, GPT-4o)
+   They handle multilingual better.
+"""
+
+print(implications)</div>
+
+<div class="code-block"># ── STEP 4: Tokenization quirks and edge cases ──
+# Tokenization creates surprising behaviors:
+
+# 1. NUMBERS break apart:
+numbers_example = """
+Small number: "42" → 1 token [42]
+Big number:   "1234567" → 3 tokens [123, 45, 67]
+              The number is FRAGMENTED!
+
+Why LLMs are bad at math:
+  "1234567 + 8901234" → tokens: [123, 45, 67, " +", " 890", "1234"]
+  The model sees fragments, not complete numbers.
+  Solution: Use calculator tools, not LLM for arithmetic.
+"""
+
+print(numbers_example)
+
+# 2. WHITESPACE matters:
+whitespace_example = """
+"hello"   → token [hello]      (1 token)
+" hello"  → token [ hello]     (1 token, but DIFFERENT token!)
+"  hello" → tokens [" ", hello] (2 tokens)
+
+Leading spaces create different tokens!
+This affects how models see indentation in code.
+"""
+
+print(whitespace_example)
+
+# 3. CODE tokenization:
+code_example = """
+def fibonacci(n):     → [def, " fibonacci", "(", n, "):"]     = 5 tokens
+    if n <= 1:        → ["   if", " n", " <=", " 1", ":"]     = 5 tokens
+        return n      → ["       return", " n"]                = 2 tokens
+
+Code is relatively token-efficient.
+Indentation eats tokens (spaces are tokens).
+"""
+
+print(code_example)
+
+# 4. SPECIAL CHARACTERS:
+special = """
+Emojis: 😀 → multiple tokens (sometimes 3-4!)
+URLs: https://example.com → broken into many tokens
+JSON: {"key": "value"} → multiple tokens
+Markdown: **bold** → 4+ tokens
+
+This is why prompt engineering matters:
+  Compact, clear English = fewer tokens = lower cost + better performance.
+"""
+print(special)</div>
+
+<div class="code-block"># ── STEP 5: Counting tokens in Python ──
+# Always know how many tokens you're using (cost control!).
+
+import tiktoken
+
+def count_tokens(text, model="gpt-4"):
+    """Count tokens for a given text."""
+    enc = tiktoken.encoding_for_model(model)
+    return len(enc.encode(text))
+
+def estimate_cost(tokens, model="gpt-4"):
+    """Estimate API cost."""
+    prices = {
+        "gpt-4": {"input": 0.03 / 1000, "output": 0.06 / 1000},
+        "gpt-4o": {"input": 0.005 / 1000, "output": 0.015 / 1000},
+        "gpt-3.5-turbo": {"input": 0.001 / 1000, "output": 0.002 / 1000},
+    }
+    rate = prices.get(model, prices["gpt-4"])
+    input_cost = tokens * rate["input"]
+    return input_cost
+
+# EXAMPLES:
+texts = [
+    ("Short prompt", "Summarize this article in 3 points."),
+    ("Medium prompt", "You are an expert Python developer. Review this code for bugs, security issues, and performance problems. Provide actionable feedback."),
+    ("Long prompt (Bengali)", "তুমি একজন বিশেষজ্ঞ পাইথন ডেভেলপার। এই কোডটি পর্যালোচনা করো এবং বাগ, নিরাপত্তা সমস্যা, এবং পারফরম্যান্স সমস্যা খুঁজে বের করো।"),
+]
+
+print("TOKEN ESTIMATES:")
+for label, text in texts:
+    tokens = count_tokens(text)
+    cost = estimate_cost(tokens) * 1000000  # cost per 1M calls
+    print(f"  {label}: {tokens} tokens, cost/M calls: " + str(round(cost, 2)))
+
+# PRACTICAL TIPS FOR TOKEN OPTIMIZATION:
+tips = [
+    "Use English when possible (2-4x cheaper than Bengali)",
+    "Remove unnecessary repetition and boilerplate",
+    "Use concise system prompts (cache them!)",
+    "Batch multiple requests if possible",
+    "Choose the right model (GPT-4o-mini for simple tasks)",
+    "Monitor token usage in production (log per-request)",
+    "Truncate long inputs (don't send entire documents)",
+    "Use streaming for long outputs (better UX)",
+]
+
+print("\nTOKEN OPTIMIZATION TIPS:")
+for tip in tips:
+    print(f"  ☐ {tip}")</div>
+
+<div class="code-block"># ── STEP 6: Tokenization in production ──
+# HOW TO HANDLE TOKENIZATION IN REAL APPLICATIONS:
+
+# 1. CONTEXT WINDOW MANAGEMENT:
+context_management = """
+GPT-4o: 128,000 tokens context window
+Claude 3.5: 200,000 tokens context window
+Gemini 1.5: 2,000,000 tokens context window
+
+But DON'T fill the entire context:
+  - More tokens = slower response
+  - More tokens = higher cost
+  - More tokens = model loses focus (attention dilution)
+
+Best practice: keep prompts under 4,000 tokens for focused tasks.
+Use RAG to retrieve only relevant context (not entire documents).
+"""
+
+print(context_management)
+
+# 2. STREAMING RESPONSES:
+streaming = """
+# Stream tokens as they're generated (better UX):
+from openai import OpenAI
+client = OpenAI()
+
+stream = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "Write a long essay"}],
+    stream=True,  # stream token by token
+)
+
+for chunk in stream:
+    token = chunk.choices[0].delta.content
+    if token:
+        print(token, end="", flush=True)  # print as received
+"""
+
+print(streaming)
+
+# 3. TOKEN BUDGET MANAGEMENT:
+budget_code = """
+# Set a token budget per user/session:
+TOKEN_BUDGET = {
+    "free_tier": 10_000,      # 10K tokens/day
+    "pro_tier": 100_000,      # 100K tokens/day
+    "enterprise": 1_000_000,  # 1M tokens/day
+}
+
+# Track usage:
+def check_budget(user, estimated_tokens):
+    used = cache.get(f"tokens:{user.id}", 0)
+    limit = TOKEN_BUDGET[user.tier]
+    if used + estimated_tokens > limit:
+        raise RateLimitError("Token budget exceeded")
+    cache.incr(f"tokens:{user.id}", estimated_tokens)
+"""
+
+print(budget_code)
+
+# TOKENIZATION SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Token            │ A chunk of text (not always word)│
+# │ BPE              │ Algorithm for splitting text     │
+# │ Vocabulary       │ Set of all known tokens          │
+# │ Token count      │ Determines cost and speed        │
+# │ Context window   │ Max tokens the model handles     │
+# │ English vs other │ English is 2-4x cheaper          │
+# │ Math problems    │ Numbers fragment → bad at math   │
+# │ tiktoken         │ Python library for counting      │
+# └──────────────────┴──────────────────────────────────┘
+
+# THE BIG PICTURE:
+# Tokenization is the FIRST step in everything LLMs do.
+# Understanding tokens = understanding LLM costs, limits, and quirks.
+# "You manage what you measure" — count tokens, optimize costs,
+# and your LLM applications will be faster, cheaper, and better.</div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল ধারণা</div>"GPT শব্দ বোঝে।" — না। সে সংখ্যা বোঝে। "GPT সব ভাষা সমানভাবে পারে।" — না। ইংরেজি ১ টোকেন, বাংলা ৪ টোকেন। পারফরম্যান্স আলাদা। "GPT সংখ্যা পারে।" — ছোট সংখ্যা পারে, বড় সংখ্যা টোকেনাইজেশনে ভাঙে।</div>
