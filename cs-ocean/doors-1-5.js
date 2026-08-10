@@ -45,29 +45,198 @@ doors.push({
   <div class="diag-cap">LLM = token-এর সম্ভাবনা ভবিষ্যৎবাণী, বারবার। Attention হলো সেই যাদু যে প্রতিটা শব্দকে অন্য সব শব্দের প্রেক্ষাপটে দেখায়।</div>
 </div>
 
-<div class="code-block">NLP/LLM — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: What is NLP? ──
+# NLP (Natural Language Processing) = teaching computers to
+# understand and generate human language.
 
-১. CORE LLM RESEARCH
-   - Pretraining: next-token prediction, scaling laws (Chinchilla, compute-optimal)
-   - Architecture: attention variants, MoE (Mistral, DeepSeek), linear attention
-   - Reasoning: chain-of-thought, o1/o3-style test-time compute, self-play
+# Python NLP libraries you should know:
 
-২. ALIGNMENT & POST-TRAINING (🔥 সবচেয়ে হট)
-   - RLHF/RLAIF, DPO, GRPO (DeepSeek-R1, ২০২৪-২৫)
-   - Constitutional AI, harmlessness, honesty
-   - Reward modeling, preference learning
+# NLTK — the classic, good for learning:
+import nltk
+# nltk.download('punkt')
+from nltk.tokenize import word_tokenize
+tokens = word_tokenize("The cat sat on the mat.")
+print(tokens)  # ['The', 'cat', 'sat', 'on', 'the', 'mat', '.']
 
-৩. EFFICIENCY & SYSTEMS (MLSys এর সাথে মিল — Door 7)
-   - KV cache, PagedAttention, speculative decoding
-   - Quantization, distillation, mixture-of-depths
+# spaCy — production-grade, fast:
+import spacy
+nlp = spacy.load("en_core_web_sm")
+doc = nlp("Apple is looking at buying a startup.")
+for ent in doc.ents:
+    print(f"{ent.text}: {ent.label_}")
+# Apple: ORG
 
-৪. RETRIEVAL & AGENTS (Book 10-12 এর সাথে সংযোগ)
-   - RAG, agentic LLMs, tool use, MCP
-   - Long context, in-context learning
+# transformers (HuggingFace) — modern LLMs:
+from transformers import pipeline
+classifier = pipeline("sentiment-analysis")
+result = classifier("I love this course!")
+print(result)  # [{'label': 'POSITIVE', 'score': 0.9998}]</div>
 
-৫. EVALUATION & INTERPRETABILITY
-   - Benchmarks (MMLU, GPQA, SWE-bench), contamination
-   - Mechanistic interp: circuits, sparse autoencoders (Anthropic)</div>
+<div class="code-block"># ── STEP 2: Tokenization — how LLMs read text ──
+# LLMs don't read words — they read TOKENS.
+# A token can be a word, part of a word, or even a single character.
+
+from transformers import AutoTokenizer
+
+tokenizer = AutoTokenizer.from_pretrained("gpt2")
+
+text = "Hello, how are you doing today?"
+tokens = tokenizer.encode(text)
+print(tokens)        # [15496, 11, 703, 389, 345, 884, 1865, 30]
+print(tokenizer.decode(tokens))  # Hello, how are you doing today?
+
+# Each token gets a unique ID number:
+for token_id in tokens[:5]:
+    print(f"  {token_id}: '{tokenizer.decode([token_id])}'")
+#   15496: 'Hello'
+#     11: ','
+#    703: ' how'
+#    389: ' are'
+#    345: ' you'
+
+# Bengali text has MORE tokens per word (training data is less):
+bengali = tokenizer.encode("আমি বাংলায় কথা বলি")
+print(f"Bengali: {len(bengali)} tokens for 3 words")
+# More tokens = more expensive + slower processing</div>
+
+<div class="code-block"># ── STEP 3: Text generation with LLMs ──
+# The simplest way to use an LLM — generate text:
+
+from transformers import pipeline
+
+# Load a small text generation model:
+generator = pipeline("text-generation", model="gpt2")
+
+# Generate text:
+result = generator(
+    "Artificial intelligence is",
+    max_length=50,
+    num_return_sequences=1,
+    temperature=0.7  # 0 = deterministic, 1 = creative
+)
+print(result[0]["generated_text"])
+
+# USING OPENAI API (more powerful):
+# from openai import OpenAI
+# client = OpenAI(api_key="your-key")
+# response = client.chat.completions.create(
+#     model="gpt-4",
+#     messages=[{"role": "user", "content": "Explain recursion"}]
+# )
+# print(response.choices[0].message.content)
+
+# KEY CONCEPTS:
+# - temperature: 0 = deterministic, 1 = random/creative
+# - max_tokens: how long the output can be
+# - top_p: nucleus sampling (0.9 = top 90% of likely tokens)
+# - system prompt: sets the AI's behavior/persona</div>
+
+<div class="code-block"># ── STEP 4: Embeddings — meaning as numbers ──
+# Embeddings convert text into VECTORS (lists of numbers).
+# Similar meanings → similar vectors.
+
+from sentence_transformers import SentenceTransformer
+
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
+# Convert sentences to vectors:
+sentences = [
+    "I love programming",
+    "Coding is my passion",
+    "The weather is nice today",
+]
+
+embeddings = model.encode(sentences)
+
+# Each sentence is now a 384-dimensional vector:
+print(embeddings.shape)  # (3, 384)
+
+# Measure SIMILARITY (cosine similarity):
+from sklearn.metrics.pairwise import cosine_similarity
+
+sim_01 = cosine_similarity([embeddings[0]], [embeddings[1]])[0][0]
+sim_02 = cosine_similarity([embeddings[0]], [embeddings[2]])[0][0]
+
+print(f"'I love programming' vs 'Coding is my passion': {sim_01:.3f}")
+print(f"'I love programming' vs 'The weather is nice': {sim_02:.3f}")
+# sim_01 ≈ 0.75 (similar meaning)
+# sim_02 ≈ 0.15 (different meaning)
+
+# This is the foundation of RAG, semantic search, and clustering.</div>
+
+<div class="code-block"># ── STEP 5: NLP research areas (career roadmap) ──
+# Where to go DEEP in NLP/LLM research:
+
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Area                │ What you study                     │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ Pretraining         │ How to train from scratch          │
+# │ Fine-tuning         │ Adapt models to specific tasks     │
+# │ Alignment (RLHF)    │ Make models safe and helpful       │
+# │ Interpretability    │ Understand what's INSIDE the model │
+# │ Efficiency          │ Make models faster/smaller         │
+# │ Evaluation          │ How to measure if models are good  │
+# │ Reasoning           │ Chain-of-thought, multi-step logic │
+# │ Retrieval (RAG)     │ Ground models in real documents    │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# CONFERENCES (where to publish):
+# NeurIPS, ICML, ICLR  — ML theory + LLMs
+# ACL, EMNLP, NAACL     — NLP specific
+# COLM                  — LLMs specifically (new, 2024+)
+
+# SKILLS NEEDED:
+# 1. Linear algebra (vectors, matrices, attention)
+# 2. Probability and statistics
+# 3. Python + PyTorch/JAX
+# 4. Reading papers (arxiv.org)
+# 5. Writing clearly (for papers!)
+
+# HOT TOPICS (2024-2026):
+# - Reasoning models (o1/o3, DeepSeek-R1)
+# - GRPO (cheap alignment without human feedback)
+# - MoE (Mixture of Experts — 671B params, 37B active)
+# - Sparse autoencoders (understanding model internals)
+# - Long context (1M+ tokens)</div>
+
+<div class="code-block"># ── STEP 6: Simple text analysis pipeline ──
+# A practical NLP project — sentiment analysis:
+
+from transformers import pipeline
+from collections import Counter
+
+# Step 1: Load sentiment analyzer:
+sentiment = pipeline("sentiment-analysis")
+
+# Step 2: Analyze product reviews:
+reviews = [
+    "This product is amazing! Best purchase ever.",
+    "Terrible quality. Broke after one day.",
+    "It's okay. Does the job but nothing special.",
+    "Absolutely love it! Highly recommend.",
+    "Waste of money. Don't buy this.",
+]
+
+results = []
+for review in reviews:
+    result = sentiment(review)[0]
+    results.append({
+        "text": review[:40] + "...",
+        "label": result["label"],
+        "score": round(result["score"], 3)
+    })
+    print(f"{result['label']:8} ({result['score']:.3f}) | {review[:50]}")
+
+# Step 3: Summarize:
+positive = sum(1 for r in results if r["label"] == "POSITIVE")
+negative = sum(1 for r in results if r["label"] == "NEGATIVE")
+print(f"\nSummary: {positive} positive, {negative} negative")
+
+# This pipeline scales to millions of reviews:
+# - Social media monitoring
+# - Customer feedback analysis
+# - Product recommendation
+# - Brand sentiment tracking</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">🔥 LLM Core</td><td>Scaling, architecture, reasoning, test-time compute</td><td>NeurIPS, ICML, ICLR</td></tr>
@@ -153,32 +322,198 @@ doors.push({
   <div class="diag-cap">আজকের vision: একটা backbone (ViT/CLIP) pixel থেকে rich feature বের করে, তার উপর ভিন্ন task-এর head বসে। Foundation model paradigm।</div>
 </div>
 
-<div class="code-block">Vision — গবেষণার শাখাসমূহ:
+<div class="code-block"># ── STEP 1: What is computer vision? ──
+# Computer Vision = teaching computers to "see" and understand images.
+# Python CV libraries:
 
-১. RECOGNITION (classic, এখনো active)
-   - Classification, detection (YOLO, DETR), segmentation (SAM/SAM2)
-   - Video understanding, action recognition, tracking
+# OpenCV — the workhorse for image processing:
+import cv2
 
-২. GENERATION (🔥 সবচেয়ে বড় বিস্ফোরণ)
-   - Diffusion (Stable Diffusion, DALL-E, Midjourney, Flux)
-   - Video gen (Sora, Veo, Kling — ২০২৪-২৫)
-   - 3D gen (NeRF, Gaussian Splatting, 3D-aware diffusion)
+# Load an image:
+img = cv2.imread("photo.jpg")
 
-৩. FOUNDATION MODELS
-   - ViT (Vision Transformer), CLIP (image+text), DINOv2 (self-supervised)
-   - VLMs (Vision-Language: GPT-4V, Gemini — Door 15 Book 15)
+# Resize, convert to grayscale:
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+resized = cv2.resize(img, (224, 224))
 
-৪. 3D & GEOMETRY (গভীর, কম ভিড়)
-   - SLAM, multi-view stereo, neural rendering, depth estimation
-   - Autonomous driving perception (Door 19 এর সাথে সংযোগ)
+# PIL/Pillow — simpler, Pythonic:
+from PIL import Image
+img = Image.open("photo.jpg")
+print(img.size)  # (width, height)
 
-৫. DOMAIN-SPECIFIC (উচ্চ প্রভাব, স্থিতিশীল ফান্ডিং)
-   - Medical imaging (radiology, pathology — MICCAI)
-   - Remote sensing, document AI, OCR
-   - Embodied vision (robotics, Book 19)
+# torchvision — deep learning for vision:
+from torchvision import transforms
+transform = transforms.Compose([
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.485], std=[0.229])
+])</div>
 
-৬. EFFICIENCY
-   - Edge vision, model compression, real-time inference</div>
+<div class="code-block"># ── STEP 2: Image classification ──
+# Teach a model to recognize WHAT is in an image.
+
+from transformers import pipeline
+
+# Load a pre-trained image classifier:
+classifier = pipeline("image-classification", model="google/vit-base-patch16-224")
+
+# Classify an image:
+result = classifier("cat.jpg")
+for pred in result[:3]:
+    print(f"  {pred['label']}: {pred['score']:.2%}")
+#   tabby cat: 94.32%
+#   Egyptian cat: 3.21%
+#   Siamese cat: 1.45%
+
+# Training your own classifier with PyTorch:
+import torch
+import torch.nn as nn
+
+class SimpleCNN(nn.Module):
+    """Basic CNN for image classification."""
+    def __init__(self, num_classes=10):
+        super().__init__()
+        self.features = nn.Sequential(
+            nn.Conv2d(3, 32, kernel_size=3, padding=1),  # 3 input channels (RGB)
+            nn.ReLU(),
+            nn.MaxPool2d(2),                               # halve size
+            nn.Conv2d(32, 64, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+        )
+        self.classifier = nn.Linear(64 * 56 * 56, num_classes)  # 224→112→56
+
+    def forward(self, x):
+        x = self.features(x)
+        x = x.view(x.size(0), -1)  # flatten
+        return self.classifier(x)</div>
+
+<div class="code-block"># ── STEP 3: Object detection ──
+# Finding WHERE objects are in an image (bounding boxes).
+
+from transformers import pipeline
+
+# Load object detector:
+detector = pipeline("object-detection", model="facebook/detr-resnet-50")
+
+# Detect objects:
+results = detector("street_scene.jpg")
+for obj in results:
+    print(f"  {obj['label']}: {obj['score']:.2f} at {obj['box']}")
+#   person: 0.98 at {'xmin': 100, 'ymin': 50, ...}
+#   car: 0.95 at {'xmin': 200, 'ymin': 80, ...}
+
+# Using YOLO (You Only Look Once) — real-time detection:
+# from ultralytics import YOLO
+# model = YOLO("yolov8n.pt")  # nano version (fast)
+# results = model("image.jpg")
+# results.show()  # displays with bounding boxes
+
+# Detection vs Classification:
+# Classification: "This image contains a cat" (WHAT)
+# Detection: "The cat is at (x=100, y=50, w=200, h=150)" (WHERE)
+# Segmentation: "These exact pixels are the cat" (SHAPE)</div>
+
+<div class="code-block"># ── STEP 4: Image generation with diffusion ──
+# Generate images from text descriptions using Stable Diffusion.
+
+# Using diffusers library:
+# from diffusers import StableDiffusionPipeline
+# import torch
+#
+# pipe = StableDiffusionPipeline.from_pretrained(
+#     "runwayml/stable-diffusion-v1-5",
+#     torch_dtype=torch.float16
+# )
+# pipe = pipe.to("cuda")  # GPU
+#
+# image = pipe("A cat sitting on a mountain at sunset").images[0]
+# image.save("generated_cat.png")
+
+# Key concepts:
+# - Diffusion: add noise → learn to reverse → generate from noise
+# - Text conditioning: CLIP encodes the prompt → guides generation
+# - Steps: more steps = higher quality but slower
+# - CFG scale: how closely to follow the prompt
+
+# SIMPLER: Using HuggingFace inference API:
+# from transformers import pipeline
+# generator = pipeline("text-to-image", model="stable-diffusion-v1-5")
+# image = generator("a beautiful sunset over mountains")
+
+# Research areas in generation:
+# - Text-to-video (Sora, Veo, Kling)
+# - Image editing (inpainting, style transfer)
+# - 3D generation (NeRF, Gaussian Splatting)
+# - Personalized generation (DreamBooth — your face in any style)</div>
+
+<div class="code-block"># ── STEP 5: CLIP — connecting vision and language ──
+# CLIP (Contrastive Language-Image Pre-training) bridges images and text.
+# It can classify images using ANY text labels (no retraining needed).
+
+from transformers import CLIPProcessor, CLIPModel
+from PIL import Image
+
+model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
+processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+
+# Give CLIP an image and text options — it picks the best match:
+image = Image.open("photo.jpg")
+texts = ["a cat", "a dog", "a car", "a building"]
+
+inputs = processor(text=texts, images=image, return_tensors="pt", padding=True)
+outputs = model(**inputs)
+
+# Get probabilities:
+probs = outputs.logits_per_image.softmax(dim=1)[0]
+for text, prob in zip(texts, probs):
+    print(f"  {text}: {prob:.2%}")
+#   a cat: 89.21%
+#   a dog: 8.50%
+#   a car: 1.20%
+#   a building: 1.09%
+
+# This is ZERO-SHOT classification — no training needed!
+# Just describe what you're looking for in natural language.</div>
+
+<div class="code-block"># ── STEP 6: CV research areas and careers ──
+# ┌─────────────────────┬─────────────────────────────────────┐
+# │ Area                │ What you study                     │
+# ├─────────────────────┼─────────────────────────────────────┤
+# │ Recognition         │ Classification, detection, tracking│
+# │ Generation          │ Diffusion, text-to-image, video    │
+# │ Foundation models   │ ViT, CLIP, DINOv2 (self-supervised)│
+# │ 3D/Geometry         │ NeRF, Gaussian Splatting, SLAM     │
+# │ Medical imaging     │ X-ray, MRI, pathology analysis     │
+# │ Video understanding │ Action recognition, video LLMs     │
+# │ Efficiency          │ Edge devices, real-time, mobile    │
+# └─────────────────────┴─────────────────────────────────────┘
+
+# CONFERENCES:
+# CVPR, ICCV, ECCV   — top vision conferences
+# SIGGRAPH           — graphics + vision
+# MICCAI             — medical imaging
+# NeurIPS, ICLR      — broader ML + vision
+
+# TOOLS TO LEARN:
+# - PyTorch (deep learning framework)
+# - OpenCV (image processing)
+# - HuggingFace transformers (pretrained models)
+# - Albumentations (data augmentation)
+# - FiftyOne (dataset visualization)
+
+# PROJECT IDEAS (build your portfolio):
+# 1. Hand gesture recognition (webcam → action)
+# 2. Plant disease classifier (photos → diagnosis)
+# 3. License plate reader (video → text)
+# 4. Medical image segmentation (X-ray → regions)
+# 5. Deepfake detector (video → real/fake)
+
+# CAREER PATHS:
+# Research: PhD → publish at CVPR/ICCV → research lab
+# Industry: Tech companies (autonomous driving, AR/VR, medical)
+# Startup: Vision APIs, content moderation, retail analytics</div>
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">🔥 Generation</td><td>Diffusion, video, 3D gen, editing</td><td>CVPR, ICCV, NeurIPS, SIGGRAPH</td></tr>
