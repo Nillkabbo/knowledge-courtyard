@@ -1243,29 +1243,285 @@ Column-based (OLAP): প্রতিটি কলাম আলাদাভাব
 </div>
 <div class="svg-caption">চিত্র: OLTP থেকে ETL দিয়ে Warehouse — Star Schema-তে fact ও dimension টেবিল।</div>
 
-<div class="code-block"># — SQL: OLAP Star Schema Query —
+<div class="code-block"># ── STEP 1: OLTP vs OLAP ──
+# Two different database workloads:
 
-  -- fact table: fact_sales (billions of rows)
-  -- dim tables: dim_date, dim_product, dim_store
+workloads = {
+    "OLTP (Online Transaction Processing)": {
+        "purpose": "Day-to-day operations (transactions)",
+        "examples": "E-commerce checkout, banking transfers, user registration",
+        "queries": "Simple, fast, many writes (INSERT/UPDATE)",
+        "data": "Current, operational data",
+        "volume": "Megabytes to gigabytes",
+        "design": "Normalized (3NF) for data integrity",
+        "examples_db": "PostgreSQL, MySQL, Oracle",
+    },
+    "OLAP (Online Analytical Processing)": {
+        "purpose": "Business intelligence, reporting, analytics",
+        "examples": "Sales dashboard, revenue trends, customer segmentation",
+        "queries": "Complex aggregations, few writes (mostly reads)",
+        "data": "Historical, aggregated data",
+        "volume": "Terabytes to petabytes",
+        "design": "Denormalized (star schema) for query speed",
+        "examples_db": "Snowflake, BigQuery, Redshift, ClickHouse",
+    },
+}
 
-  SELECT
-      d.year, d.month,
-      p.category,
-      SUM(f.amount) AS revenue,
-      COUNT(*) AS txn_count
-  FROM fact_sales f                    -- কেন্দ্রীয় fact
-  JOIN dim_date d    ON f.date_id = d.id
-  JOIN dim_product p ON f.product_id = p.id
-  JOIN dim_store  s  ON f.store_id = s.id
-  WHERE d.year = 2025
-    AND s.region = 'Dhaka'
-  GROUP BY d.year, d.month, p.category
-  HAVING SUM(f.amount) > 100000
-  ORDER BY revenue DESC;
+print("OLTP vs OLAP:")
+for workload, info in workloads.items():
+    print(f"\n  {workload}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
 
-  -- Columnar storage-এ SUM(amount):
-  -- শুধু amount কলাম পড়ে — row স্ক্যান নয়
-  -- বিলিয়ন row → কয়েক সেকেন্ড</div>
+# WHY SEPARATE THEM?
+# - OLTP needs fast writes, short transactions
+# - OLAP needs fast reads of massive datasets
+# - Running analytics on OLTP slows down transactions
+# - Solution: COPY data to a separate data warehouse (ETL)</div>
+
+<div class="code-block"># ── STEP 2: Data warehouse architecture ──
+# A DATA WAREHOUSE is a database optimized for ANALYTICS (OLAP).
+
+# THE ETL PIPELINE:
+etl_pipeline = """
+1. EXTRACT:   Read data from OLTP databases, APIs, files, logs
+              → Raw data in staging area
+
+2. TRANSFORM: Clean, validate, aggregate, join, denormalize
+              → Business rules applied
+
+3. LOAD:      Write transformed data to data warehouse
+              → Ready for analytics
+
+Tools: dbt (transform), Airflow (orchestrate), Spark (big data)
+"""
+
+print(etl_pipeline)
+
+# TWO APPROACHES TO DATA WAREHOUSING:
+approaches = {
+    "Inmon (Top-Down)": {
+        "how": "Build one normalized warehouse, then create dimensional marts",
+        "pro": "Single source of truth, consistent",
+        "con": "Slow to build, expensive upfront",
+    },
+    "Kimball (Bottom-Up)": {
+        "how": "Build dimensional marts directly, integrate later",
+        "pro": "Fast to value, iterative",
+        "con": "Potential inconsistencies between marts",
+    },
+}
+
+print("DATA WAREHOUSE APPROACHES:")
+for approach, info in approaches.items():
+    print(f"\n  {approach}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 3: Star schema ──
+# STAR SCHEMA (Kimball): the standard data warehouse design.
+
+# CENTER: FACT TABLE (the "facts" — measurable events)
+# SURROUNDING: DIMENSION TABLES (the "context" — who, what, when, where)
+
+star_schema = """
+           dim_date
+               |
+    dim_product -- fact_sales -- dim_store
+               |
+           dim_customer
+
+fact_sales (the CENTER):
+    date_id (FK) → dim_date
+    product_id (FK) → dim_product
+    store_id (FK) → dim_store
+    customer_id (FK) → dim_customer
+    amount (measure)
+    quantity (measure)
+    discount (measure)
+
+dim_date:
+    id, year, month, quarter, day_of_week, is_holiday
+
+dim_product:
+    id, name, category, brand, cost, price
+
+dim_store:
+    id, name, region, city, country
+"""
+
+print(star_schema)
+
+# WHY STAR SCHEMA WORKS FOR ANALYTICS:
+# - Fact table has billions of rows (every sale ever)
+# - Dimension tables are small (products, stores, dates)
+# - JOINs are simple (fact.center → dimension)
+# - Aggregations (SUM, COUNT) are fast on fact table
+
+# SNOWFLAKE SCHEMA: star schema with NORMALIZED dimensions.
+# Star = denormalized dimensions (simpler, faster for reads)
+# Snowflake = normalized dimensions (less storage, more JOINs)</div>
+
+<div class="code-block"># ── STEP 4: Columnar storage ──
+# Data warehouses use COLUMNAR storage (not row-based).
+
+# ROW-BASED (OLTP databases like PostgreSQL):
+# Row 1: [id=1, name="Rakib", age=25, email="r@x.com"]
+# Row 2: [id=2, name="Sara",  age=23, email="s@x.com"]
+# → Good for reading entire rows (INSERT, UPDATE)
+
+# COLUMNAR (OLAP databases like BigQuery, Redshift):
+# id column:   [1, 2, 3, 4, ...]
+# name column: ["Rakib", "Sara", ...]
+# age column:  [25, 23, 28, ...]
+# → Good for aggregating specific columns (SUM, AVG, COUNT)
+
+# WHY COLUMNAR IS FASTER FOR ANALYTICS:
+# SELECT SUM(amount) FROM fact_sales;
+# Row-based: read ALL columns of ALL rows (wastes I/O)
+# Columnar: read ONLY the amount column (10x less I/O!)
+
+# COLUMNAR ADVANTAGES:
+columnar_pros = [
+    "Only read columns you need (massive I/O savings)",
+    "Better compression (similar data types per column)",
+    "Vectorized operations (process batches of values)",
+    "Great for aggregations (SUM, AVG, COUNT)",
+]
+
+print("COLUMNAR STORAGE ADVANTAGES:")
+for pro in columnar_pros:
+    print(f"  ✅ {pro}")
+
+# COLUMNAR DISADVANTAGES:
+columnar_cons = [
+    "Slow for single-row operations (INSERT/UPDATE)",
+    "Not good for OLTP workloads",
+    "Less efficient for SELECT * (need all columns)",
+]
+
+print("\nCOLUMNAR DISADVANTAGES:")
+for con in columnar_cons:
+    print(f"  ❌ {con}")</div>
+
+<div class="code-block"># ── STEP 5: Modern data warehouse platforms ──
+# Cloud-native data warehouses (fully managed):
+
+platforms = {
+    "Snowflake": {
+        "feature": "Separates storage from compute, auto-scaling",
+        "best_for": "General analytics, multi-cluster",
+        "language": "SQL",
+    },
+    "Google BigQuery": {
+        "feature": "Serverless, pay per query, petabyte-scale",
+        "best_for": "Ad-hoc analytics, ML integration",
+        "language": "SQL (standard)",
+    },
+    "Amazon Redshift": {
+        "feature": "Columnar, integrates with AWS ecosystem",
+        "best_for": "AWS shops, large datasets",
+        "language": "SQL (PostgreSQL-like)",
+    },
+    "ClickHouse": {
+        "feature": "Open source, extremely fast for real-time analytics",
+        "best_for": "Real-time dashboards, event analytics",
+        "language": "SQL",
+    },
+    "Databricks": {
+        "feature": "Spark + Delta Lake, supports ML and data science",
+        "best_for": "Big data processing, ML pipelines",
+        "language": "SQL, Python, Scala",
+    },
+}
+
+print("MODERN DATA WAREHOUSE PLATFORMS:")
+for platform, info in platforms.items():
+    print(f"\n  {platform}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# DATA LAKE vs DATA WAREHOUSE:
+# Data Lake: raw, unstructured data (Parquet, JSON, images, logs)
+# Data Warehouse: structured, processed data (tables, relationships)
+# LAKEHOUSE: both (raw + structured in one platform, like Databricks)</div>
+
+<div class="code-block"># ── STEP 6: Analytics queries and tools ──
+# Typical OLAP queries (analytics):
+
+analytics_queries = """
+-- Monthly revenue by category (Star Schema):
+SELECT
+    d.year, d.month,
+    p.category,
+    SUM(f.amount) AS revenue,
+    COUNT(*) AS txn_count
+FROM fact_sales f
+JOIN dim_date d    ON f.date_id = d.id
+JOIN dim_product p ON f.product_id = p.id
+JOIN dim_store s   ON f.store_id = s.id
+WHERE d.year = 2025
+  AND s.region = 'Dhaka'
+GROUP BY d.year, d.month, p.category
+HAVING SUM(f.amount) > 100000
+ORDER BY revenue DESC;
+
+-- Year-over-year growth:
+WITH this_year AS (
+    SELECT product_id, SUM(amount) as revenue
+    FROM fact_sales f
+    JOIN dim_date d ON f.date_id = d.id
+    WHERE d.year = 2025
+    GROUP BY product_id
+),
+last_year AS (
+    SELECT product_id, SUM(amount) as revenue
+    FROM fact_sales f
+    JOIN dim_date d ON f.date_id = d.id
+    WHERE d.year = 2024
+    GROUP BY product_id
+)
+SELECT
+    t.product_id,
+    t.revenue as revenue_2025,
+    l.revenue as revenue_2024,
+    ROUND((t.revenue - l.revenue) * 100.0 / l.revenue, 2) as growth_pct
+FROM this_year t
+JOIN last_year l ON t.product_id = l.product_id
+ORDER BY growth_pct DESC;
+"""
+
+print(analytics_queries)
+
+# ANALYTICS TOOLS:
+tools = {
+    "SQL": "Direct queries against warehouse",
+    "dbt": "Data transformations in SQL (version controlled)",
+    "Metabase/Looker": "Business intelligence dashboards",
+    "Apache Superset": "Open source dashboards",
+    "Python (pandas)": "Data science exploration",
+    "Airflow": "ETL pipeline orchestration",
+    "Kafka": "Real-time data streaming",
+}
+
+print("ANALYTICS TOOLS:")
+for tool, desc in tools.items():
+    print(f"  {tool}: {desc}")
+
+# THE MODERN DATA STACK:
+# 1. SOURCE: OLTP databases, APIs, logs, files
+# 2. INGEST: Fivetran (extract), Kafka (streaming)
+# 3. STORE: Snowflake, BigQuery, S3
+# 4. TRANSFORM: dbt (SQL transformations)
+# 5. ANALYZE: SQL, Python, BI tools
+# 6. VISUALIZE: Metabase, Looker, Tableau
+# 7. ACT: Automate decisions, ML models
+
+# THIS IS HOW MODERN COMPANIES USE DATA:
+# - Netflix: recommendation engine (data warehouse → ML)
+# - Uber: dynamic pricing (real-time analytics)
+# - Amazon: inventory optimization (petabyte-scale analytics)
+# - YOUR APP: can start small (PostgreSQL + Metabase) and grow</div>
 
 <div class="secret-box">📈 <strong>Data Warehouse = জ্ঞানের ভাণ্ডার।</strong> OLTP (operational) থেকে OLAP (analytical) আলাদা। Star schema, columnar storage, ETL pipeline। Inmon-Kimball দুই দর্শন। এখন তুমি সব স্তর জানো — relational model থেকে data warehouse পর্যন্ত। সময় এসেছে সব একত্রিত করার — একটি query-র সম্পূর্ণ যাত্রা।</div>`,
   senior: {
