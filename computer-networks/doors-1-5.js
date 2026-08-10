@@ -499,32 +499,378 @@ doors.push({
 <div class="diag-cap">Switch: MAC টেবিল দেখে শুধু সঠিক পোর্টে পাঠায় · Hub: সব পোর্টে ব্রডকাস্ট করে</div>
 </div>
 
-<div class="code-block">— তোমার NIC দেখো —
-$ ip addr show eth0    (Linux)
-$ ifconfig en0         (macOS)
+<div class="code-block"># ── STEP 1: Physical layer — cables and signals ──
+# Layer 1: Physical signals (electrical, optical, radio).
 
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP
-    link/ether 3c:5a:b4:0f:12:7d brd ff:ff:ff:ff:ff:ff    ← MAC ঠিকানা
-    inet 192.168.1.42/24 brd 192.168.1.255 scope global eth0  ← IP ঠিকানা
+physical = """
+PHYSICAL LAYER MEDIA:
+  Twisted pair copper: Ethernet cables (Cat5e/6/6a)
+    → Speed: 1 Gbps to 10 Gbps
+    → Distance: up to 100m
+    → Signal: electrical voltage
 
-— MAC ঠিকানার গঠন: ৪৮ বিট = ৬ বাইট —
-  3C:5A:B4  |  0F:12:7D
-  ─────────    ─────────
-  OUI (কারখানা)   NIC (পৃথক যন্ত্র)
-  IEEE নির্ধারিত   কারখানায় বরাদ্দ</div>
+  Fiber optic: Glass strands carrying light
+    → Speed: 10 Gbps to 400+ Gbps
+    → Distance: up to 100km (single-mode)
+    → Signal: light pulses (laser)
 
-<div class="code-block">— ARP টেবিল: IP → MAC ম্যাপিং —
-$ arp -a
+  Wireless (Wi-Fi): Radio waves
+    → Speed: up to 9.6 Gbps (Wi-Fi 7)
+    → Distance: up to 100m (depends on environment)
+    → Signal: radio frequencies (2.4 GHz, 5 GHz, 6 GHz)
 
-? (192.168.1.1)    at 00:1a:2b:3c:4d:5e  on eth0   ← রাউটার
-? (192.168.1.100)  at ab:cd:ef:01:23:45  on eth0   ← প্রতিবেশী
-? (192.168.1.255)  at ff:ff:ff:ff:ff:ff  on eth0   ← broadcast
+  Coaxial cable: Cable internet
+    → Speed: up to 1 Gbps (DOCSIS 3.1)
+    → Signal: electrical
 
-— ARP কীভাবে কাজ করে —
-  ১. "কে 192.168.1.1?" → broadcast (সবাই শোনে)
-  ২. রাউটার বলে "আমি! আমার MAC: 00:1a:2b:3c:4d:5e"
-  ৩. তোমার ARP টেবিলে সংরক্ষণ (cache, ~20 min)
-  ৪. এখন ফ্রেম সরাসরি যায় — প্রতিবার broadcast লাগে না</div>
+SIGNAL ENCODING:
+  Data (0s and 1s) → physical signal:
+  Copper: 0 = low voltage, 1 = high voltage
+  Fiber: 0 = no light, 1 = light pulse
+  Wireless: modulated radio waves
+"""
+
+print(physical)
+
+# PYTHON: Check network interface:
+python_code = """
+import netifaces
+
+# List all network interfaces:
+for interface in netifaces.interfaces():
+    addrs = netifaces.ifaddresses(interface)
+    if netifaces.AF_INET in addrs:
+        ip = addrs[netifaces.AF_INET][0]['addr']
+        print(f"Interface: {interface}, IP: {ip}")
+# eth0: 192.168.1.42
+# lo: 127.0.0.1
+# wlan0: 192.168.1.100
+"""
+
+print(python_code)</div>
+
+<div class="code-block"># ── STEP 2: Data Link layer — MAC and Ethernet ──
+# Layer 2: Local network delivery using MAC addresses.
+
+# MAC ADDRESS (Media Access Control):
+mac_info = """
+MAC address = 48-bit hardware address (6 bytes)
+  Example: 3C:5A:B4:0F:12:7D
+
+Structure:
+  First 3 bytes (OUI): manufacturer ID (IEEE-assigned)
+  Last 3 bytes (NIC): device-specific (factory-assigned)
+
+  3C:5A:B4 = Apple (manufacturer)
+  0F:12:7D = specific device on assembly line
+
+Properties:
+  → Permanently burned into NIC hardware
+  → Supposed to be globally unique
+  → Can be spoofed (changed in software)
+  → Used for LOCAL delivery (same network only)
+"""
+
+print(mac_info)
+
+# VIEW YOUR MAC ADDRESS:
+mac_commands = """
+# Linux:
+$ ip addr show eth0
+  link/ether 3c:5a:b4:0f:12:7d brd ff:ff:ff:ff:ff:ff
+
+# macOS:
+$ ifconfig en0 | grep ether
+  ether 3c:5a:b4:0f:12:7d
+
+# Python:
+import uuid
+mac = uuid.getnode()
+print(':'.join(f'{(mac >> i) & 0xff:02x}' for i in range(40, -1, -8)))
+# 3c:5a:b4:0f:12:7d
+"""
+
+print(mac_commands)
+
+# MAC vs IP:
+mac_vs_ip = {
+    "MAC address": {
+        "layer": "Layer 2 (Data Link)",
+        "format": "48-bit (6 bytes): 3C:5A:B4:0F:12:7D",
+        "scope": "Local network only (same subnet)",
+        "persistence": "Permanent (hardware-burned)",
+        "analogy": "Social Security Number (unique identity)",
+    },
+    "IP address": {
+        "layer": "Layer 3 (Network)",
+        "format": "32-bit (IPv4): 192.168.1.42",
+        "scope": "Global (can reach any network)",
+        "persistence": "Dynamic (can change)",
+        "analogy": "Postal address (where you are now)",
+    },
+}
+
+print("MAC vs IP:")
+for addr_type, info in mac_vs_ip.items():
+    print(f"\n  {addr_type}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 3: ARP (Address Resolution Protocol) ──
+# ARP translates IP addresses to MAC addresses on local network.
+
+# WHY ARP EXISTS:
+why_arp = """
+PROBLEM: IP packets need to reach a device.
+  → IP address: 192.168.1.1 (router)
+  → But Ethernet frames need MAC address, not IP!
+  → How do we find the MAC for an IP?
+
+SOLUTION: ARP (Address Resolution Protocol)
+  1. "Who has 192.168.1.1? Tell 192.168.1.42"
+     → Broadcast to ALL devices on local network
+  2. Router responds: "192.168.1.1 is at 00:1a:2b:3c:4d:5e"
+  3. Cache this mapping (ARP table) for ~20 minutes
+  4. Now send frames directly (no more broadcasting)
+"""
+
+print(why_arp)
+
+# VIEW ARP TABLE:
+arp_table = """
+$ arp -a                          # View ARP cache
+? (192.168.1.1)    at 00:1a:2b:3c:4d:5e  on eth0  ← router
+? (192.168.1.100)  at ab:cd:ef:01:23:45  on eth0  ← neighbor
+? (192.168.1.255)  at ff:ff:ff:ff:ff:ff  on eth0  ← broadcast
+
+# Clear ARP cache:
+$ ip -s neigh flush all          # Linux
+$ arp -d 192.168.1.1             # Delete specific entry
+"""
+
+print(arp_table)
+
+# ARP SPOOFING (security risk):
+arp_spoofing = """
+ATTACK: ARP Spoofing (ARP Poisoning)
+
+  Attacker sends fake ARP response:
+  "192.168.1.1 is at ATTACKER_MAC" (lie!)
+
+  Victim's ARP table is poisoned:
+  → Traffic meant for router goes to ATTACKER instead
+  → Attacker reads/modifies all traffic (Man-in-the-Middle)
+
+DEFENSE:
+  → Dynamic ARP Inspection (DAI) on switches
+  → Static ARP entries (hardcoded, can't be spoofed)
+  → VPN (encrypts traffic, even if intercepted)
+  → HTTPS (TLS prevents reading even if MITM)
+"""
+
+print(arp_spoofing)</div>
+
+<div class="code-block"># ── STEP 4: Ethernet and switches ──
+# Layer 2 device: SWITCH (connects devices on same network).
+
+switch_vs_hub = """
+HUB (obsolete):
+  → Receives signal → sends to ALL ports (including sender)
+  → Everyone shares bandwidth (collision domain)
+  → Like shouting in a room — everyone hears everything
+
+SWITCH (modern):
+  → Receives frame → checks destination MAC → sends to correct port only
+  → Each port gets full bandwidth (no collisions)
+  → Learns MAC addresses automatically (MAC address table)
+  → Like a phone switchboard — connects caller to receiver directly
+
+ROUTER (Layer 3):
+  → Connects DIFFERENT networks
+  → Uses IP addresses (not MAC)
+  → Routes traffic between subnets
+"""
+
+print(switch_vs_hub)
+
+# HOW SWITCHES LEARN:
+switch_learning = """
+SWITCH LEARNING PROCESS:
+
+1. Switch starts with empty MAC table
+2. Frame arrives on port 3 from MAC ab:cd:ef:01:23:45
+   → Switch learns: "MAC ab:cd:ef is on port 3"
+3. Another frame to MAC ab:cd:ef?
+   → Switch sends directly to port 3 (fast!)
+4. Unknown MAC? → Flood to all ports (like a hub)
+5. Table is built dynamically (ages out in ~5 minutes)
+
+SWITCH TABLE:
+  MAC Address        Port    Age
+  ab:cd:ef:01:23:45   3      120s
+  00:1a:2b:3c:4d:5e   1      300s  (router)
+  fe:dc:ba:98:76:54   7      45s
+"""
+
+print(switch_learning)
+
+# ETHERNET FRAME STRUCTURE:
+frame = """
+ETHERNET FRAME (Layer 2):
+
+| Preamble | Dest MAC | Src MAC | Type | Data (payload) | FCS |
+  7 bytes    6 bytes   6 bytes  2B    46-1500 bytes    4B
+
+Dest MAC: who it's for (ff:ff:ff:ff:ff:ff = broadcast)
+Src MAC: who sent it
+Type: what protocol is inside (0x0800 = IPv4, 0x0806 = ARP)
+Data: the actual payload (IP packet, ARP request, etc.)
+FCS: Frame Check Sequence (CRC error detection)
+
+MAXIMUM: 1518 bytes (standard Ethernet frame)
+JUMBO FRAMES: up to 9000 bytes (data center use)
+"""
+
+print(frame)</div>
+
+<div class="code-block"># ── STEP 5: Wi-Fi (wireless networking) ──
+# Wi-Fi replaces Ethernet cables with radio waves.
+
+wifi = """
+WI-FI STANDARDS:
+  Wi-Fi 4 (802.11n):  600 Mbps, 2.4/5 GHz, 2009
+  Wi-Fi 5 (802.11ac): 3.5 Gbps, 5 GHz, 2014
+  Wi-Fi 6 (802.11ax): 9.6 Gbps, 2.4/5/6 GHz, 2019
+  Wi-Fi 7 (802.11be): 46 Gbps, 2.4/5/6 GHz, 2024
+
+WI-FI vs ETHERNET:
+  Wi-Fi: convenient, wireless, shared medium (collisions possible)
+  Ethernet: faster, more reliable, dedicated medium (no collisions)
+
+WI-FI SECURITY:
+  WEP (2000s):  ❌ BROKEN (crackable in minutes)
+  WPA (2003):   ⚠️ Weak (TKIP encryption)
+  WPA2 (2004):  ✅ Good (AES encryption, standard for years)
+  WPA3 (2018):  ✅ Best (SAE handshake, forward secrecy)
+
+WI-FI CONNECTION PROCESS:
+  1. Device scans for networks (SSID = network name)
+  2. Device sends probe request
+  3. Access point responds
+  4. Authentication (WPA2/WPA3 password)
+  5. Association (join the network)
+  6. DHCP: get IP address
+  7. Connected!
+"""
+
+print(wifi)
+
+# WI-FI SECURITY CODE (Python):
+wifi_security = """
+# Scanning Wi-Fi networks (requires root/special permissions):
+import subprocess
+
+# Linux (nmcli):
+result = subprocess.run(['nmcli', 'dev', 'wifi', 'list'], capture_output=True, text=True)
+print(result.stdout)
+# SSID          SECURITY     SIGNAL  FREQ
+# MyNetwork     WPA3         85     5 GHz
+# Neighbor      WPA2         42     2.4 GHz
+# OpenCafe      --           67     2.4 GHz  ← NO SECURITY (dangerous!)
+"""
+
+print(wifi_security)</div>
+
+<div class="code-block"># ── STEP 6: Network interface configuration ──
+# How to configure network interfaces on Linux servers.
+
+configuration = """
+NETWORK INTERFACE COMMANDS (Linux):
+
+# View interfaces:
+$ ip addr show                    # All interfaces + IPs
+$ ip link show                    # Link status only
+$ ip addr show eth0               # Specific interface
+
+# Configure IP (temporary):
+$ ip addr add 192.168.1.100/24 dev eth0    # Add IP
+$ ip addr del 192.168.1.100/24 dev eth0    # Remove IP
+$ ip link set eth0 up                      # Enable interface
+$ ip link set eth0 down                    # Disable interface
+
+# Configure IP (permanent - netplan/Ubuntu):
+# /etc/netplan/01-network.yaml:
+network:
+  version: 2
+  ethernets:
+    eth0:
+      addresses: [192.168.1.100/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8, 1.1.1.1]
+
+# View routing table:
+$ ip route show
+default via 192.168.1.1 dev eth0          ← default gateway
+192.168.1.0/24 dev eth0 proto kernel       ← local subnet
+
+# Test connectivity:
+$ ping -c 4 192.168.1.1                   # Ping gateway
+$ ping -c 4 8.8.8.8                       # Ping internet
+$ ping -c 4 google.com                    # Ping with DNS
+"""
+
+print(configuration)
+
+# DJANGO SERVER NETWORKING:
+django_networking = """
+# Django/Gunicorn server network configuration:
+
+# Gunicorn binds to specific interface:
+$ gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
+# 0.0.0.0 = all interfaces (accessible from network)
+# 127.0.0.1 = localhost only (internal)
+
+# Nginx reverse proxy:
+server {
+    listen 80;                    # Listen on all interfaces, port 80
+    listen [::]:80;               # IPv6
+    server_name api.example.com;
+    location / {
+        proxy_pass http://127.0.0.1:8000;  # Forward to Gunicorn
+    }
+}
+
+# Firewall (UFW):
+$ ufw allow 80/tcp               # Allow HTTP
+$ ufw allow 443/tcp               # Allow HTTPS
+$ ufw allow 22/tcp                # Allow SSH
+$ ufw enable
+
+# Docker networking:
+$ docker run -p 8000:8000 myapp   # Map container:8000 to host:8000
+$ docker network create mynet     # Create custom network
+"""
+
+print(django_networking)
+
+# LAYER 1-2 CHECKLIST:
+checklist = [
+    "Check physical connection (cable plugged in? link light on?)",
+    "Verify IP address assigned (ip addr show)",
+    "Check MAC address (ifconfig/ip link)",
+    "Test local connectivity (ping gateway)",
+    "Verify ARP table (arp -a)",
+    "Check switch port (if managed switch)",
+    "Verify Wi-Fi signal strength and security",
+    "Check for IP conflicts (two devices, same IP)",
+    "Verify cable quality (Cat5e minimum for Gigabit)",
+    "Test with different cable/port if issues persist",
+]
+
+print("LAYER 1-2 TROUBLESHOOTING CHECKLIST:")
+for item in checklist:
+    print(f"  ☐ {item}")</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ARP Spoofing বিপদ:</strong> কেউ ভুল MAC বললে তোমার ফ্রেম ভুল জায়গায় যায়। এটাকে ARP poisoning বলে — Man-in-the-Middle আক্রমণের ভিত্তি। প্রতিরোধ: Dynamic ARP Inspection (DAI), static ARP entries।</div></div>
 
