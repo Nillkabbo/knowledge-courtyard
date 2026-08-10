@@ -66,36 +66,214 @@ doors.push({
   <div class="cmp-card cmp-good"><div class="cmp-label">✅ Unsupervised (Door ৬)</div>কোনো লেবেল নেই। শুধু ডেটা। প্যাটার্ন খুঁজো — গ্রুপ, কাঠামো, আউটলায়ার। k-Means, PCA, t-SNE — unsupervised।</div>
 </div>
 
-<div class="code-block"># — — — Python: k-Means Clustering — — —
+<div class="code-block"># ── STEP 1: What is clustering? (unsupervised) ──
+# Classification (supervised): you KNOW the groups (spam/not spam)
+# Clustering (unsupervised): you DON'T know groups → find them
+
+# k-Means: the simplest clustering algorithm.
+# 1. Pick k random points as CENTERS (centroids)
+# 2. Assign each data point to NEAREST center
+# 3. Move centers to the MIDDLE of their assigned points
+# 4. Repeat until centers stop moving
 
 from sklearn.cluster import KMeans
 from sklearn.datasets import make_blobs
 import numpy as np
 
-# ডেটা: ৩টা গ্রুপ (কোনো লেবেল নেই!)
+# Generate data with 3 hidden groups:
 X, _ = make_blobs(n_samples=300, centers=3, random_state=42)
 
-# k=৩ ক্লাস্টার
-kmeans = KMeans(n_clusters=3, random_state=42)
+# Cluster into 3 groups:
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
 labels = kmeans.fit_predict(X)
 
-# প্রতিটা পয়েন্ট এখন একটা ক্লাস্টারে
+# Each point now has a cluster label (0, 1, or 2):
 print(f"Cluster sizes: {np.bincount(labels)}")
 print(f"Centroids:\n{kmeans.cluster_centers_}")
 
-# সেরা k খুঁজতে: Elbow method
+# NO LABELS were given — k-Means found the groups automatically!</div>
+
+<div class="code-block"># ── STEP 2: Choosing k (the elbow method) ──
+# How many clusters? Use the ELBOW METHOD.
+
+# WCSS = Within-Cluster Sum of Squares (how spread out are clusters?)
+# As k increases, WCSS always decreases.
+# The "elbow" point = where adding more clusters doesn't help much.
+
+wcss_values = []
 for k in range(1, 10):
-    km = KMeans(n_clusters=k, random_state=42)
+    km = KMeans(n_clusters=k, random_state=42, n_init=10)
     km.fit(X)
+    wcss_values.append(km.inertia_)  # WCSS
     print(f"  k={k}: WCSS={km.inertia_:.0f}")
 
-# k=৩ এ elbow — WCSS হঠাৎ ধীর হয়
-# এটাই সঠিক k
+# Look for the "elbow" — where WCSS stops dropping fast.
+# If k=3: WCSS=200, k=4: WCSS=180 → small drop → elbow at k=3
 
-# Real-world: customer segmentation
-# customers = [...]
-# segments = KMeans(n_clusters=5).fit(customers)
-# → প্রতিটা সেগমেন্ট = এক ধরনের ক্রেতা</div>
+# SILHOUETTE SCORE (more principled):
+from sklearn.metrics import silhouette_score
+
+for k in range(2, 10):
+    km = KMeans(n_clusters=k, random_state=42, n_init=10)
+    labels = km.fit_predict(X)
+    score = silhouette_score(X, labels)
+    print(f"  k={k}: silhouette={score:.3f}")
+# Highest silhouette = best k
+# silhouette range: -1 (worst) to 1 (best), 0 = overlapping</div>
+
+<div class="code-block"># ── STEP 3: k-Means from scratch ──
+# Understanding how k-Means works internally:
+
+import numpy as np
+
+def kmeans_scratch(X, k, max_iters=100):
+    """k-Means from scratch."""
+    # Step 1: Initialize k random centroids:
+    indices = np.random.choice(len(X), k, replace=False)
+    centroids = X[indices].copy()
+
+    for iteration in range(max_iters):
+        # Step 2: Assign each point to nearest centroid:
+        distances = np.zeros((len(X), k))
+        for i, point in enumerate(X):
+            for j, centroid in enumerate(centroids):
+                distances[i][j] = np.sqrt(np.sum((point - centroid) ** 2))
+        labels = np.argmin(distances, axis=1)
+
+        # Step 3: Update centroids to mean of their points:
+        new_centroids = np.array([X[labels == j].mean(axis=0) for j in range(k)])
+
+        # Step 4: Check convergence:
+        if np.all(centroids == new_centroids):
+            print(f"Converged at iteration {iteration}")
+            break
+
+        centroids = new_centroids
+
+    return labels, centroids
+
+# Run:
+labels, centroids = kmeans_scratch(X, k=3)
+print(f"Centroids found:\n{centroids}")</div>
+
+<div class="code-block"># ── STEP 4: Real-world clustering applications ──
+# Customer segmentation:
+# Imagine e-commerce data: [age, spending_score, visit_frequency]
+# customers = np.array([...])
+# segments = KMeans(n_clusters=5).fit_predict(customers)
+# → "budget shoppers", "luxury buyers", "frequent visitors", etc.
+
+# ANOMALY DETECTION:
+# Points far from any centroid are anomalies:
+def detect_anomalies(X, kmeans, threshold=3.0):
+    """Find points far from their cluster center."""
+    distances = kmeans.transform(X).min(axis=1)  # distance to nearest centroid
+    mean_dist, std_dist = distances.mean(), distances.std()
+    anomalies = distances > mean_dist + threshold * std_dist
+    return anomalies
+
+# IMAGE COMPRESSION:
+# Reduce millions of colors to k colors:
+# from sklearn.cluster import KMeans
+# pixels = image.reshape(-1, 3)  # each pixel = RGB
+# kmeans = KMeans(n_clusters=16).fit(pixels)  # 16 colors
+# compressed = kmeans.cluster_centers_[kmeans.labels_]
+# compressed.reshape(image.shape)  → compressed image!
+
+# DOCUMENT CLUSTERING:
+# Group similar news articles:
+# from sklearn.feature_extraction.text import TfidfVectorizer
+# from sklearn.cluster import KMeans
+#
+# vectorizer = TfidfVectorizer()
+# X_text = vectorizer.fit_transform(articles)
+# clusters = KMeans(n_clusters=5).fit_predict(X_text)
+# → "sports", "politics", "tech", "health", "entertainment"</div>
+
+<div class="code-block"># ── STEP 5: Beyond k-Means — other clustering algorithms ──
+# k-Means is simple but has limitations.
+# Other algorithms handle different situations.
+
+# DBSCAN — density-based clustering:
+# Groups DENSE regions, marks sparse points as noise.
+# No need to specify k! Handles non-spherical shapes.
+from sklearn.cluster import DBSCAN
+
+dbscan = DBSCAN(eps=0.5, min_samples=5)
+labels_db = dbscan.fit_predict(X)
+# eps: max distance between points in same cluster
+# min_samples: minimum points to form a cluster
+
+# HIERARCHICAL clustering:
+# Builds a TREE of clusters (dendrogram).
+# from sklearn.cluster import AgglomerativeClustering
+# hc = AgglomerativeClustering(n_clusters=3, linkage="ward")
+# labels_hc = hc.fit_predict(X)
+
+# GAUSSIAN MIXTURE MODELS (GMM):
+# Soft clustering — each point gets PROBABILITY for each cluster.
+# from sklearn.mixture import GaussianMixture
+# gmm = GaussianMixture(n_components=3)
+# labels_gmm = gmm.fit_predict(X)
+# probs = gmm.predict_proba(X)  # soft assignment
+
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Algorithm        │ When to use                     │
+# ├──────────────────┼──────────────────────────────────┤
+# │ k-Means          │ spherical clusters, known k     │
+# │ DBSCAN           │ arbitrary shapes, has noise     │
+# │ Hierarchical     │ want a cluster tree             │
+# │ GMM              │ overlapping clusters, soft      │
+# │ Spectral         │ graph-based clustering          │
+# └──────────────────┴──────────────────────────────────┘</div>
+
+<div class="code-block"># ── STEP 6: Complete clustering pipeline ──
+# Full workflow: prepare → scale → cluster → evaluate → interpret
+
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import silhouette_score, adjusted_rand_score
+import numpy as np
+
+# Step 1: Load and scale data:
+X, true_labels = make_blobs(n_samples=300, centers=4, random_state=42)
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Step 2: Find best k:
+best_k, best_score = 2, -1
+for k in range(2, 10):
+    km = KMeans(n_clusters=k, random_state=42, n_init=10)
+    labels = km.fit_predict(X_scaled)
+    score = silhouette_score(X_scaled, labels)
+    if score > best_score:
+        best_k, best_score = k, score
+    print(f"  k={k}: silhouette={score:.3f}")
+
+print(f"\nBest k={best_k} (silhouette={best_score:.3f})")
+
+# Step 3: Final clustering:
+final_kmeans = KMeans(n_clusters=best_k, random_state=42, n_init=10)
+cluster_labels = final_kmeans.fit_predict(X_scaled)
+
+# Step 4: Evaluate (if we have true labels):
+if len(np.unique(true_labels)) == best_k:
+    ari = adjusted_rand_score(true_labels, cluster_labels)
+    print(f"Agreement with true labels: {ari:.1%}")
+
+# Step 5: Interpret clusters:
+for cluster in range(best_k):
+    cluster_data = X[cluster_labels == cluster]
+    print(f"\nCluster {cluster} ({len(cluster_data)} points):")
+    print(f"  Mean: {cluster_data.mean(axis=0).round(2)}")
+    print(f"  Std:  {cluster_data.std(axis=0).round(2)}")
+
+# CLUSTERING SUMMARY:
+# Unsupervised → no labels → find patterns
+# k-Means → simple, fast, spherical clusters
+# Choose k → elbow method or silhouette score
+# Scale features → distances must be fair
+# Always interpret clusters → what do they MEAN?</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> k পূর্বে জানতে হবে — এটাই সবচেয়ে বড় সীমাবদ্ধতা। Elbow method বা silhouette score দিয়ে সেরা k অনুমান করো। আবার k-Means এলোমেলো আরম্ভ থেকে ভিন্ন ফল দিতে পারে — তাই k-means++ initialization ব্যবহার করো (sklearn default)।</div></div>
 
@@ -197,58 +375,252 @@ doors.push({
   <div class="cmp-card cmp-good"><div class="cmp-label">✅ With ReLU</div>ReLU(z) = max(0, z)। Non-linearity আনে। প্রতিটা স্তর সত্যিকারের নতুন প্যাটার্ন শেখে। জটিল সম্পর্ক — বৃত্ত, বক্ররেখা, মুখ — সব সম্ভব।</div>
 </div>
 
-<div class="code-block"># — — — Python: Neural Network from Scratch — — —
+<div class="code-block"># ── STEP 1: What is a neural network? ──
+# A neural network is LAYERS of logistic regression stacked together.
+# Each layer learns more complex patterns than the last.
+
+# Simple analogy:
+# Layer 1: detects EDGES (simple patterns)
+# Layer 2: detects SHAPES (circles, squares)
+# Layer 3: detects OBJECTS (faces, cars)
+# Each layer builds on the previous.
+
+# The KEY ingredient: NON-LINEARITY (activation functions).
+# Without activation functions, multiple layers = one big linear function.
+# With ReLU, the network can learn ANY complex pattern.
 
 import numpy as np
 
+# Activation functions:
 def relu(z):
-    return np.maximum(0, z)
+    """Rectified Linear Unit. Most common activation."""
+    return np.maximum(0, z)  # negative → 0, positive → keep
+
+def sigmoid(z):
+    """Squash to 0-1. Used in output layer for binary classification."""
+    return 1 / (1 + np.exp(-z))
+
+# Visualize ReLU:
+for z in [-3, -1, 0, 1, 3]:
+    print(f"  relu({z:>2}) = {relu(z):>2}  sigmoid({z:>2}) = {sigmoid(z):.3f}")
+# relu(-3) = 0   sigmoid(-3) = 0.047
+# relu( 0) = 0   sigmoid( 0) = 0.500
+# relu( 3) = 3   sigmoid( 3) = 0.953</div>
+
+<div class="code-block"># ── STEP 2: Building a neural network from scratch ──
+# 2-layer network: input(3) → hidden(4) → output(1)
+
+import numpy as np
+
+# Initialize weights randomly:
+np.random.seed(42)
+W1 = np.random.randn(3, 4) * 0.5  # input(3) → hidden(4)
+b1 = np.zeros((1, 4))
+W2 = np.random.randn(4, 1) * 0.5  # hidden(4) → output(1)
+b2 = np.zeros((1, 1))
+
+# Training data: XOR problem (can't solve with single logistic regression!)
+X = np.array([[0, 0, 1], [0, 1, 1], [1, 0, 1], [1, 1, 1]])
+y = np.array([[0], [1], [1], [0]])  # XOR: output = A XOR B
+
+lr = 0.5
 
 def relu_derivative(z):
     return (z > 0).astype(float)
 
-def sigmoid(z):
-    return 1 / (1 + np.exp(-z))
-
-# ২-layer network: input(৩) → hidden(৪) → output(১)
-np.random.seed(42)
-W1 = np.random.randn(3, 4) * 0.5
-b1 = np.zeros((1, 4))
-W2 = np.random.randn(4, 1) * 0.5
-b2 = np.zeros((1, 1))
-
-X = np.array([[0,0,1], [0,1,1], [1,0,1], [1,1,1]])
-y = np.array([[0], [1], [1], [0]])
-
-lr = 0.5
-
 for epoch in range(1000):
-    # Forward
-    z1 = X @ W1 + b1
-    a1 = relu(z1)
-    z2 = a1 @ W2 + b2
-    y_pred = sigmoid(z2)
-    
-    loss = np.mean((y - y_pred) ** 2)
-    
-    # Backprop (Chain Rule!)
-    dz2 = (y_pred - y) * y_pred * (1 - y_pred)
+    # ── FORWARD PASS ──
+    z1 = X @ W1 + b1       # hidden layer: linear
+    a1 = relu(z1)          # hidden layer: activation
+    z2 = a1 @ W2 + b2      # output layer: linear
+    y_pred = sigmoid(z2)    # output layer: activation
+
+    loss = np.mean((y - y_pred) ** 2)  # MSE loss
+
+    # ── BACKWARD PASS (backpropagation) ──
+    # Output layer gradients:
+    dz2 = (y_pred - y) * y_pred * (1 - y_pred)  # sigmoid derivative
     dW2 = a1.T @ dz2
-    da1 = dz2 @ W2.T
-    dz1 = da1 * relu_derivative(z1)
+    da1 = dz2 @ W2.T  # propagate error to hidden layer
+
+    # Hidden layer gradients:
+    dz1 = da1 * relu_derivative(z1)  # ReLU derivative
     dW1 = X.T @ dz1
-    
-    # Update
+
+    # ── UPDATE WEIGHTS ──
     W2 -= lr * dW2
     W1 -= lr * dW1
-    
+
     if epoch % 200 == 0:
         print(f"Epoch {epoch}: loss={loss:.4f}")
 
-print(f"\nPredictions: {y_pred.flatten()}")
+print(f"\nPredictions: {y_pred.flatten().round(3)}")
+# [0.03, 0.97, 0.97, 0.03] — solved XOR!</div>
 
-# PyTorch দিয়ে এক লাইনে:
-# model = nn.Sequential(nn.Linear(3,4), nn.ReLU(), nn.Linear(4,1), nn.Sigmoid())</div>
+<div class="code-block"># ── STEP 3: Neural network with PyTorch ──
+# In practice, use PyTorch — automatic gradient computation.
+
+import torch
+import torch.nn as nn
+
+# Define network architecture:
+model = nn.Sequential(
+    nn.Linear(3, 4),    # input(3) → hidden(4)
+    nn.ReLU(),           # activation
+    nn.Linear(4, 1),    # hidden(4) → output(1)
+    nn.Sigmoid()         # squash to probability
+)
+
+# Loss and optimizer:
+criterion = nn.MSELoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+
+# Convert data to tensors:
+X_tensor = torch.FloatTensor(X)
+y_tensor = torch.FloatTensor(y)
+
+# Training loop:
+for epoch in range(1000):
+    # Forward:
+    predictions = model(X_tensor)
+    loss = criterion(predictions, y_tensor)
+
+    # Backward:
+    optimizer.zero_grad()  # clear old gradients
+    loss.backward()         # compute new gradients (automatic!)
+    optimizer.step()        # update weights
+
+    if epoch % 200 == 0:
+        print(f"Epoch {epoch}: loss={loss.item():.4f}")
+
+# PyTorch does backpropagation AUTOMATICALLY with loss.backward()!
+# No need to manually compute derivatives like in our scratch version.</div>
+
+<div class="code-block"># ── STEP 4: Deep learning layers ──
+# Modern neural networks have specialized layers:
+
+# FULLY CONNECTED (Linear/Dense):
+# Every input connects to every output. Good for tabular data.
+fc = nn.Linear(128, 64)  # 128 inputs → 64 outputs
+
+# CONVOLUTIONAL (Conv2d):
+# Scans local regions. Good for images.
+conv = nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3, padding=1)
+# 3 color channels → 32 feature maps
+
+# RECURRENT (RNN/LSTM):
+# Processes sequences. Good for text, time series.
+lstm = nn.LSTM(input_size=64, hidden_size=128, num_layers=2)
+
+# TRANSFORMER (Attention):
+# The architecture behind GPT, BERT, etc.
+# encoder_layer = nn.TransformerEncoderLayer(d_model=512, nhead=8)
+
+# DROPOUT (regularization):
+# Randomly disables neurons during training → prevents overfitting.
+dropout = nn.Dropout(p=0.5)  # 50% of neurons off during training
+
+# BATCH NORMALIZATION:
+# Normalizes activations between layers → faster, more stable training.
+batchnorm = nn.BatchNorm1d(64)
+
+# ARCHITECTURE CHOICE:
+# ┌─────────────────┬──────────────────────────────────┐
+# │ Task            │ Architecture                    │
+# ├─────────────────┼──────────────────────────────────┤
+# │ Tabular data    │ Fully connected (MLP)           │
+# │ Images          │ CNN (Conv2d)                    │
+# │ Text            │ Transformer / LSTM              │
+# │ Audio           │ CNN or Transformer on spectrogram│
+# │ Time series     │ LSTM or Transformer             │
+# └─────────────────┴──────────────────────────────────┘</div>
+
+<div class="code-block"># ── STEP 5: Training techniques ──
+# How to train neural networks well:
+
+# 1. OPTIMIZER:
+# SGD: simple but slow, needs careful learning rate
+# Adam: adaptive, good default choice
+# AdamW: Adam + weight decay (best for transformers)
+
+# 2. LEARNING RATE SCHEDULER:
+# from torch.optim.lr_scheduler import CosineAnnealingLR
+# scheduler = CosineAnnealingLR(optimizer, T_max=100)
+# # Gradually reduces learning rate
+
+# 3. EARLY STOPPING:
+best_loss = float('inf')
+patience, counter = 5, 0
+
+# for epoch in range(100):
+#     val_loss = evaluate(model, val_loader)
+#     if val_loss < best_loss:
+#         best_loss = val_loss
+#         counter = 0
+#         torch.save(model.state_dict(), "best_model.pt")
+#     else:
+#         counter += 1
+#         if counter >= patience:
+#             print("Early stopping!")
+#             break
+
+# 4. DATA AUGMENTATION (for images):
+# from torchvision import transforms
+# augment = transforms.Compose([
+#     transforms.RandomHorizontalFlip(),
+#     transforms.RandomRotation(10),
+#     transforms.ColorJitter(brightness=0.2),
+# ])
+
+# 5. TRANSFER LEARNING (use pre-trained model):
+# from torchvision.models import resnet50
+# model = resnet50(pretrained=True)
+# model.fc = nn.Linear(2048, 10)  # replace output layer
+# # Only train the new output layer:
+# for param in model.parameters():
+#     param.requires_grad = False
+# for param in model.fc.parameters():
+#     param.requires_grad = True</div>
+
+<div class="code-block"># ── STEP 6: Neural networks — the big picture ──
+# Neural networks are the FOUNDATION of modern AI.
+
+# THE EVOLUTION:
+# 1957: Perceptron (single neuron)
+# 1986: Backpropagation (multi-layer training)
+# 1998: LeNet (first CNN for digit recognition)
+# 2012: AlexNet (deep learning revolution)
+# 2017: Transformer (attention is all you need)
+# 2022+: LLMs (GPT-4, Claude, Gemini)
+
+# WHY NEURAL NETWORKS WORK:
+# 1. Universal approximation: can represent ANY function
+# 2. Representation learning: learn features automatically
+# 3. Scalable: more data + more compute = better results
+# 4. Transfer learning: pre-trained models adapt to new tasks
+
+# ┌─────────────────────┬──────────────────────────────────┐
+# │ Model               │ Parameters                      │
+# ├─────────────────────┼──────────────────────────────────┤
+# │ Our scratch NN      │ ~20 weights                    │
+# │ LeNet (1998)        │ 60,000                         │
+# │ ResNet-50 (2015)    │ 25,000,000                     │
+# │ GPT-2 (2019)        │ 1,500,000,000                  │
+# │ GPT-4 (2023)        │ ~1,700,000,000,000             │
+# └─────────────────────┴──────────────────────────────────┘
+
+# TO LEARN DEEP LEARNING:
+# 1. Master linear regression + logistic regression first
+# 2. Build a NN from scratch (like Step 2)
+# 3. Learn PyTorch (most popular framework)
+# 4. Start with simple projects (MNIST digits)
+# 5. Progress to CNN (images) or Transformer (text)
+
+# THE KEY INSIGHT:
+# Every neural network — from the simplest to GPT-4 —
+# uses the same fundamental idea:
+# forward pass → compute loss → backpropagate → update weights
+# Everything else is optimization, architecture, and scale.</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> নিউরাল নেটওয়ার্ক overfit করতে পারে — dropout, regularization, early stopping দরকার (Book ৩০ Door ৮)। আবার vanishing gradient সমস্যা — গভীর নেটওয়ার্কে সংকেত হারিয়ে যায় (Book ৩০ Door ৭)। ReLU এই সমস্যা অংশত সমাধান করে।</div></div>
 
@@ -322,38 +694,234 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">📖</span><div><strong>Book ১৬ (LLM Evals) সংযোগ:</strong> এই metrics শুধু classic ML নয় — LLM evaluation-এও ব্যবহৃত। Precision@k, Recall@k, MRR — সব এই ভিত্তি থেকে। Cross-entropy loss (Book ৩০ Door ৯) আর perplexity — সব এক পরিবার।</div></div>
 
-<div class="code-block"># — — — Python: Model Evaluation — — —
+<div class="code-block"># ── STEP 1: Why accuracy isn't enough ──
+# 90% accuracy sounds great... but what if 90% of data is one class?
 
-from sklearn.metrics import (classification_report,
-    confusion_matrix, cross_val_score)
+# Example: disease detection
+# 1000 people: 900 healthy, 100 sick
+# Model: predict "healthy" for everyone → 90% accuracy!
+# But it MISSED ALL 100 sick people. Terrible!
+
+# This is the IMBALANCED DATA problem.
+# Accuracy lies when classes aren't balanced.
+
+# THE CONFUSION MATRIX shows the full picture:
+#                Predicted No    Predicted Yes
+# Actual No      TN (correct)    FP (false alarm)
+# Actual Yes     FN (missed)     TP (caught!)
+
+# TN = True Negative  (correctly said no)
+# FP = False Positive (false alarm)
+# FN = False Negative (missed case)
+# TP = True Positive  (caught correctly)
+
+from sklearn.metrics import confusion_matrix
+
+y_true = [0]*900 + [1]*100  # 900 healthy, 100 sick
+y_pred = [0]*1000            # predict everyone healthy
+
+cm = confusion_matrix(y_true, y_pred)
+print("Confusion Matrix:")
+print(f"  TN={cm[0][0]}  FP={cm[0][1]}")
+print(f"  FN={cm[1][0]}  TP={cm[1][1]}")
+# TN=900  FP=0
+# FN=100  TP=0  ← missed ALL sick people!
+
+accuracy = (cm[0][0] + cm[1][1]) / 1000
+print(f"\nAccuracy: {accuracy:.0%}")  # 90% (misleading!)</div>
+
+<div class="code-block"># ── STEP 2: Precision and recall ──
+# Two metrics that reveal the real story:
+
+from sklearn.metrics import precision_score, recall_score, f1_score
+
+y_true = [0]*900 + [1]*100
+y_pred = [0]*850 + [1]*50 + [0]*50 + [1]*50  # some predictions
+
+# PRECISION: of predicted positives, how many are real?
+precision = precision_score(y_true, y_pred)
+print(f"Precision: {precision:.1%}")
+# "When I say sick, how often am I right?"
+# High precision = few false alarms
+
+# RECALL: of actual positives, how many did I catch?
+recall = recall_score(y_true, y_pred)
+print(f"Recall: {recall:.1%}")
+# "Of all sick people, how many did I find?"
+# High recall = few missed cases
+
+# THE TRADEOFF:
+# Increase threshold → higher precision, lower recall (fewer alarms)
+# Decrease threshold → lower precision, higher recall (catch more)
+# You can't have both perfect — choose based on cost of errors.
+
+# F1 SCORE: harmonic mean of precision and recall
+f1 = f1_score(y_true, y_pred)
+print(f"F1 Score: {f1:.1%}")
+# F1 punishes extreme imbalance between precision and recall</div>
+
+<div class="code-block"># ── STEP 3: Cross-validation ──
+# Don't trust a single train/test split — use CROSS-VALIDATION.
+
+from sklearn.model_selection import cross_val_score, StratifiedKFold
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import make_classification
 
 X, y = make_classification(n_samples=1000, weights=[0.9, 0.1])
 
-# Imbalanced: ৯০% class ০, ১০% class ১
-model = RandomForestClassifier()
-model.fit(X, y)
-y_pred = model.predict(X)
+model = RandomForestClassifier(random_state=42)
 
-# Confusion matrix
-cm = confusion_matrix(y, y_pred)
-print("Confusion Matrix:")
-print(cm)
-
-# Full report
-print(classification_report(y, y_pred))
-
-# Cross-validation — সত্যিকারের পরীক্ষা
+# 5-fold cross-validation:
 scores = cross_val_score(model, X, y, cv=5)
-print(f"CV scores: {scores}")
-print(f"Mean: {scores.mean():.3f} ± {scores.std():.3f}")
+print(f"5-Fold CV: {scores.mean():.3f} ± {scores.std():.3f}")
 
-# Stratified CV (imbalanced ডেটার জন্য)
-from sklearn.model_selection import StratifiedKFold
-skf = StratifiedKFold(n_splits=5)
-scores = cross_val_score(model, X, y, cv=skf)
-print(f"Stratified CV: {scores.mean():.3f}")</div>
+# How it works:
+# Split data into 5 equal parts.
+# Train on 4 parts, test on 1. Repeat 5 times.
+# Average the 5 scores. Much more reliable than one split!
+
+# STRATIFIED CV (for imbalanced data):
+# Ensures each fold has the SAME class proportion.
+skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+stratified_scores = cross_val_score(model, X, y, cv=skf)
+print(f"Stratified CV: {stratified_scores.mean():.3f}")
+
+# For IMBALANCED data, use stratified CV + F1 score:
+f1_scores = cross_val_score(model, X, y, cv=skf, scoring="f1")
+print(f"Stratified F1: {f1_scores.mean():.3f}")</div>
+
+<div class="code-block"># ── STEP 4: Choosing the right metric ──
+# Different problems need different metrics.
+
+# ┌────────────────────────┬──────────────────────────────────┐
+# │ Problem                │ Best Metric                    │
+# ├────────────────────────┼──────────────────────────────────┤
+# │ Balanced classes       │ Accuracy                       │
+# │ Imbalanced classes     │ F1 Score, AUC-ROC             │
+# │ Costly false alarms    │ Precision                      │
+# │ Costly missed cases    │ Recall                         │
+# │ Regression             │ MSE, MAE, R²                   │
+# │ Ranking                │ NDCG, MAP                     │
+# │ Probabilistic          │ Log-loss (cross-entropy)       │
+# └────────────────────────┴──────────────────────────────────┘
+
+# Example: choosing based on application:
+
+# CANCER DETECTION (recall is critical):
+# "I'd rather have false alarms than miss a cancer case"
+# Optimize for RECALL
+
+# SPAM FILTER (precision is critical):
+# "I'd rather let spam through than flag real emails"
+# Optimize for PRECISION
+
+# CREDIT SCORING (balanced):
+# "Both errors are costly"
+# Optimize for F1 SCORE
+
+# AUC-ROC (Area Under Curve):
+# Measures how well the model RANKS positive vs negative.
+# AUC = 0.5: random guessing
+# AUC = 1.0: perfect ranking
+# AUC = 0.9+: excellent model
+
+from sklearn.metrics import roc_auc_score
+# probs = model.predict_proba(X_test)[:, 1]
+# auc = roc_auc_score(y_test, probs)</div>
+
+<div class="code-block"># ── STEP 5: Full evaluation report ──
+# A complete evaluation for any classification model:
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import (classification_report, confusion_matrix,
+                              roc_auc_score, cross_val_score)
+import numpy as np
+
+# Load data:
+X, y = make_classification(n_samples=1000, weights=[0.9, 0.1], random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Train:
+model = RandomForestClassifier(random_state=42)
+model.fit(X_train, y_train)
+
+# Evaluate:
+predictions = model.predict(X_test)
+probabilities = model.predict_proba(X_test)[:, 1]
+
+print("=" * 50)
+print("MODEL EVALUATION REPORT")
+print("=" * 50)
+
+# Confusion matrix:
+cm = confusion_matrix(y_test, predictions)
+print(f"\nConfusion Matrix:")
+print(f"  TN={cm[0][0]:4d}  FP={cm[0][1]:4d}")
+print(f"  FN={cm[1][0]:4d}  TP={cm[1][1]:4d}")
+
+# Detailed metrics:
+print(f"\nClassification Report:")
+print(classification_report(y_test, predictions))
+
+# AUC-ROC:
+auc = roc_auc_score(y_test, probabilities)
+print(f"AUC-ROC: {auc:.3f}")
+
+# Cross-validation:
+cv_scores = cross_val_score(model, X, y, cv=5, scoring="f1")
+print(f"\n5-Fold F1: {cv_scores.mean():.3f} ± {cv_scores.std():.3f}")
+
+# ALWAYS evaluate with:
+# 1. Confusion matrix (see the breakdown)
+# 2. Precision + Recall + F1
+# 3. Cross-validation (reliable estimate)
+# 4. The RIGHT metric for your problem</div>
+
+<div class="code-block"># ── STEP 6: Common evaluation mistakes ──
+# MISTAKES that lead to overconfident, wrong models:
+
+# ❌ MISTAKE 1: Testing on training data
+# model.fit(X, y)
+# model.score(X, y)  # 99% accuracy! (memorized, not learned)
+# FIX: Always use train/test split
+
+# ❌ MISTAKE 2: Data leakage
+# scaler.fit(X)  # fit on ALL data including test
+# FIX: fit scaler on TRAIN only, transform test
+
+# ❌ MISTAKE 3: Ignoring class imbalance
+# accuracy = 99% but all predictions are majority class
+# FIX: Use F1, stratified CV, resampling
+
+# ❌ MISTAKE 4: Overfitting to validation set
+# Trying 100 models, picking best on validation
+# FIX: Use nested CV or hold out a final test set
+
+# ❌ MISTAKE 5: Not setting random seeds
+# Results not reproducible
+# FIX: random_state=42 everywhere
+
+# GOLDEN RULES OF EVALUATION:
+# 1. NEVER test on training data
+# 2. Use cross-validation for reliable estimates
+# 3. Choose metric based on BUSINESS COST of errors
+# 4. Handle imbalanced data (stratify, resample)
+# 5. Set random seeds for reproducibility
+# 6. Report mean ± std, not just one number
+# 7. Have a SEPARATE final test set you only use once
+
+# EVALUATION CHECKLIST:
+# ✅ Train/test split done correctly
+# ✅ No data leakage
+# ✅ Right metric chosen
+# ✅ Cross-validation performed
+# ✅ Class imbalance addressed
+# ✅ Results reproducible
+# ✅ Compared against a baseline
+
+# "All models are wrong, but some are useful." — George Box
+# Evaluation tells you HOW useful your model actually is.</div>
 
 <div class="secret-box">🪞 <strong>বাজার রহস্য ৮:</strong> Accuracy একা যথেষ্ট নয়। Confusion matrix দেখো — TP, FP, FN, TN। Precision আর Recall — কোন ভুল বেশি খরচ? F1 = harmonic mean। Cross-validation নিশ্চিত করে সত্যিকারের পারফরম্যান্স।<br><span class="en">Accuracy alone is not enough. See the confusion matrix — TP, FP, FN, TN. Precision and Recall — which error costs more? F1 = harmonic mean. Cross-validation ensures true performance.</span></div>`,
   senior:{
@@ -405,30 +973,245 @@ doors.push({
   <div class="cmp-card cmp-bad"><div class="cmp-label">❌ High Variance (Overfit)</div>মডেল খুব জটিল। Training error কম, test error বেশি। Noise মুখস্থ। সমাধান: regularization, কম feature, বেশি ডেটা।</div>
 </div>
 
-<div class="code-block"># — — — Python: Diagnosing Bias vs Variance — — —
+<div class="code-block"># ── STEP 1: What are bias and variance? ──
+# BIAS: how wrong is the model ON AVERAGE? (systematic error)
+#   High bias = model too simple = UNDERFITTING
+#   Example: fitting a straight line to curved data
 
-from sklearn.model_selection import learning_curve
+# VARIANCE: how much does the model change with different training data?
+#   High variance = model too complex = OVERFITTING
+#   Example: memorizing training data, failing on test
+
+# THE BULLSEYE ANALalogy:
+# Imagine throwing darts at a target:
+# Low bias, low variance  → all darts in center (perfect!)
+# High bias, low variance  → all darts off-center but clustered
+# Low bias, high variance  → darts scattered around center
+# High bias, high variance  → darts scattered off-center (worst)
+
+# THE TRADEOFF:
+# Simple model → high bias, low variance (stable but wrong)
+# Complex model → low bias, high variance (flexible but unstable)
+# Goal: find the sweet spot in the middle</div>
+
+<div class="code-block"># ── STEP 2: Detecting underfitting and overfitting ──
+# The TRAINING vs TEST error gap tells you everything.
+
 import numpy as np
 
-# Learning curve: training size vs error
-# High bias: train আর test দুটোই high → underfit
-# High variance: train low, test high → overfit
+# Three scenarios:
 
-# উদাহরণ ডায়াগনোসিস
-train_sizes = [100, 500, 1000, 5000, 10000]
-train_errors = [5.0, 4.0, 3.5, 3.2, 3.1]  # কমছে
-test_errors  = [8.0, 6.0, 5.0, 4.0, 3.5]  # কমছে
+# UNDERFITTING (high bias):
+#   Train error: HIGH (can't even fit training data)
+#   Test error: HIGH
+#   Gap: SMALL (both bad)
+#   Fix: use MORE COMPLEX model
 
-gap = [t - tr for t, tr in zip(test_errors, train_errors)]
-print("Train  Test   Gap  → Diagnosis")
-for i in range(len(train_sizes)):
-    if gap[i] > 1.5:
-        diag = "High Variance (overfit)"
-    elif train_errors[i] > 4.0:
-        diag = "High Bias (underfit)"
+# OVERFITTING (high variance):
+#   Train error: LOW (memorized training data)
+#   Test error: HIGH
+#   Gap: LARGE (train is much better than test)
+#   Fix: regularization, more data, simpler model
+
+# GOOD FIT:
+#   Train error: LOW
+#   Test error: LOW
+#   Gap: SMALL (both good, generalizes well)
+
+# Example diagnosis:
+def diagnose(train_error, test_error):
+    """Diagnose bias/variance from train and test errors."""
+    gap = test_error - train_error
+
+    if train_error > 0.15 and test_error > 0.15:
+        return "UNDERFITTING (high bias) — use more complex model"
+    elif gap > 0.05:
+        return "OVERFITTING (high variance) — regularize or add data"
+    elif train_error < 0.10 and test_error < 0.10:
+        return "GOOD FIT — well balanced!"
     else:
-        diag = "Good fit"
-    print(f"  {train_errors[i]:.1f}  {test_errors[i]:.1f}   {gap[i]:.1f}  → {diag}")</div>
+        return "Acceptable — check if improvements needed"
+
+# Test scenarios:
+print(diagnose(0.20, 0.22))   # UNDERFITTING
+print(diagnose(0.02, 0.15))   # OVERFITTING
+print(diagnose(0.05, 0.07))   # GOOD FIT</div>
+
+<div class="code-block"># ── STEP 3: Learning curves ──
+# How does error change as you add MORE DATA?
+
+# UNDERFITTING learning curve:
+# Train and test error CONVERGE to a HIGH value.
+# Adding more data doesn't help — model is too simple.
+# Fix: more complex model (add features, polynomial terms)
+
+# OVERFITTING learning curve:
+# Train error stays LOW, test error stays HIGH.
+# Large gap between train and test.
+# Fix: more data, regularization, simpler model
+
+# GOOD learning curve:
+# Both converge to LOW error. Small gap. More data helps.
+
+from sklearn.model_selection import learning_curve
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.datasets import make_classification
+
+X, y = make_classification(n_samples=1000, random_state=42)
+
+model = RandomForestClassifier(n_estimators=50, random_state=42)
+
+# Get learning curve data:
+train_sizes, train_scores, test_scores = learning_curve(
+    model, X, y, cv=5, train_sizes=[0.1, 0.3, 0.5, 0.7, 1.0]
+)
+
+print("Training set size vs Accuracy:")
+for size, train_mean, test_mean in zip(
+    train_sizes,
+    train_scores.mean(axis=1),
+    test_scores.mean(axis=1)
+):
+    print(f"  {size:5d} samples: train={train_mean:.3f}, test={test_mean:.3f}")
+
+# If both converge and are high → good fit
+# If train is much higher than test → overfitting
+# If both are low → underfitting</div>
+
+<div class="code-block"># ── STEP 4: Fixing underfitting ──
+# UNDERFITTING = model too simple for the data.
+
+# FIXES (in order of effectiveness):
+
+# 1. USE A MORE COMPLEX MODEL:
+# Linear regression → Polynomial regression
+# Shallow tree → Deep tree
+# Logistic regression → Random forest or neural network
+
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LinearRegression
+
+# Too simple: linear
+model_simple = LinearRegression()
+
+# Better: polynomial (captures curves)
+model_complex = Pipeline([
+    ("poly", PolynomialFeatures(degree=3)),
+    ("linear", LinearRegression())
+])
+
+# 2. ADD MORE FEATURES:
+# Maybe important information is missing
+# Feature engineering: create new features from existing ones
+
+# 3. REDUCE REGULARIZATION:
+# If using Ridge/Lasso, decrease alpha (less penalty = more freedom)
+
+# 4. TRAIN LONGER (for neural networks):
+# More epochs, higher learning rate</div>
+
+<div class="code-block"># ── STEP 5: Fixing overfitting ──
+# OVERFITTING = model memorizes training data, fails on new data.
+
+# FIXES (in order of effectiveness):
+
+# 1. GET MORE DATA:
+# The BEST fix for overfitting. More data = better generalization.
+
+# 2. REGULARIZATION:
+from sklearn.linear_model import Ridge, Lasso
+
+# L2 (Ridge): shrink weights toward zero
+model_ridge = Ridge(alpha=10.0)  # higher alpha = more regularization
+
+# L1 (Lasso): make some weights EXACTLY zero (feature selection)
+model_lasso = Lasso(alpha=0.1)
+
+# 3. SIMPLER MODEL:
+# Deep tree → shallow tree (reduce max_depth)
+# Large neural network → smaller one
+# Many features → fewer features
+
+# 4. DROPOUT (for neural networks):
+# Randomly turn off neurons during training → can't memorize
+
+# 5. EARLY STOPPING:
+# Stop training BEFORE the model starts overfitting
+# Monitor validation loss, stop when it starts increasing
+
+# 6. CROSS-VALIDATION:
+# Use CV to DETECT overfitting early
+# If CV scores are much worse than training score → overfitting
+
+# REGULARIZATION TECHNIQUES SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Technique        │ How it works                   │
+# ├──────────────────┼──────────────────────────────────┤
+# │ L1 (Lasso)       │ Shrinks some weights to zero   │
+# │ L2 (Ridge)       │ Shrinks all weights uniformly  │
+# │ ElasticNet       │ L1 + L2 combined               │
+# │ Dropout          │ Randomly disables neurons      │
+# │ Early stopping   │ Stop before overfitting        │
+# │ Data augmentation│ Artificially expand data       │
+# │ Batch norm       │ Stabilizes training            │
+# └──────────────────┴──────────────────────────────────┘</div>
+
+<div class="code-block"># ── STEP 6: The complete diagnosis workflow ──
+# How to systematically diagnose and fix your model:
+
+# STEP 1: Always start with a BASELINE
+# from sklearn.dummy import DummyClassifier
+# baseline = DummyClassifier(strategy="most_frequent")
+# baseline.fit(X_train, y_train)
+# Your model MUST beat this!
+
+# STEP 2: Check train vs test error
+# train_score = model.score(X_train, y_train)
+# test_score = model.score(X_test, y_test)
+# If train >> test → overfitting
+# If both low → underfitting
+
+# STEP 3: Plot learning curves
+# from sklearn.model_selection import learning_curve
+# See if more data would help
+
+# STEP 4: Cross-validate
+# scores = cross_val_score(model, X, y, cv=5)
+# High variance in scores → unstable model
+
+# THE BIAS-VARIANCE DECISION TREE:
+#
+# Train error HIGH?
+#   → YES: UNDERFITTING
+#     → Use more complex model
+#     → Add features
+#     → Reduce regularization
+#
+# Train error LOW, Test error HIGH?
+#   → YES: OVERFITTING
+#     → Add more data
+#     → Increase regularization
+#     → Simplify model
+#     → Use dropout / early stopping
+#
+# Both LOW and close?
+#   → GOOD FIT. Done!
+#   → Still want better? Try ensemble methods (boosting)
+
+# THE GOLDEN RULE:
+# "Garbage in, garbage out."
+# No algorithm fixes BAD DATA.
+# Focus on DATA QUALITY first:
+# - Clean (remove errors, outliers)
+# - Enough (more data usually wins)
+# - Relevant (features that matter)
+# - Balanced (fair representation)
+#
+# Then choose the RIGHT algorithm for the data.
+# Then tune hyperparameters.
+# Then evaluate honestly.
+# This is the ML workflow.</div>
 
 <div class="secret-box">⚖️ <strong>বাজার রহস্য ৯:</strong> Bias বেশি = underfit, variance বেশি = overfit। সেরা মডেল = দুইয়ের সাম্য। Regularization, সঠিক জটিলতা, বেশি ডেটা, cross-validation — এই সাম্য তৈরি করে।<br><span class="en">High bias = underfit, high variance = overfit. Best model = balance of both. Regularization, right complexity, more data, cross-validation create this balance.</span></div>`,
   senior:{
@@ -499,42 +1282,217 @@ doors.push({
 <br>এটাই কেন তোমাকে সব অ্যালগরিদম জানতে হবে।
 <br>এটাই কেন এই বই।</div></div>
 
-<div class="code-block"># — — — Python: Scikit-Learn দিয়ে সম্পূর্ণ Pipeline — — —
+<div class="code-block"># ── STEP 1: The ML workflow ──
+# Every ML project follows the same workflow:
+
+# 1. UNDERSTAND the problem (what are we predicting?)
+# 2. GET the data (collect, download, scrape)
+# 3. EXPLORE the data (EDA — distributions, correlations)
+# 4. PREPARE the data (clean, scale, encode, split)
+# 5. CHOOSE algorithms (start simple, try multiple)
+# 6. TRAIN and TUNE (cross-validation, hyperparameters)
+# 7. EVALUATE (right metrics, honest assessment)
+# 8. DEPLOY (model serving, monitoring)
+
+# The most important step? Step 1 — UNDERSTAND THE PROBLEM.
+# A perfect model of the wrong problem is useless.</div>
+
+<div class="code-block"># ── STEP 2: Compare all algorithms ──
+# "No Free Lunch" theorem: no single algorithm is best for ALL problems.
+# Always TRY MULTIPLE algorithms and pick the winner.
 
 from sklearn.datasets import load_iris
 from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 
 X, y = load_iris(return_X_y=True)
 
-# সব অ্যালগরিদম পরীক্ষা — No Free Lunch!
+# All algorithms to try:
 models = {
-    "Logistic": LogisticRegression(),
-    "Tree": DecisionTreeClassifier(max_depth=5),
-    "Forest": RandomForestClassifier(n_estimators=100),
-    "SVM": SVC(kernel='rbf'),
-    "k-NN": KNeighborsClassifier(n_neighbors=5),
+    "Logistic Regression": LogisticRegression(max_iter=200),
+    "Decision Tree": DecisionTreeClassifier(max_depth=5),
+    "Random Forest": RandomForestClassifier(n_estimators=100),
+    "Gradient Boosting": GradientBoostingClassifier(),
+    "SVM (RBF)": SVC(kernel="rbf"),
+    "k-NN (k=5)": KNeighborsClassifier(n_neighbors=5),
 }
 
-print("Cross-Validation Accuracy (5-fold):")
+print("5-Fold Cross-Validation Results:")
+print("-" * 40)
 results = []
 for name, model in models.items():
     scores = cross_val_score(model, X, y, cv=5)
-    mean = scores.mean()
-    results.append((name, mean))
-    print(f"  {name:12s}: {mean:.3f} ± {scores.std():.3f}")
+    mean, std = scores.mean(), scores.std()
+    results.append((name, mean, std))
+    print(f"  {name:22}: {mean:.3f} ± {std:.3f}")
 
-# সেরা অ্যালগরিদম
+# Winner:
 best = max(results, key=lambda x: x[1])
-print(f"\nWinner: {best[0]} ({best[1]:.3f})")
+print(f"\nWinner: {best[0]} ({best[1]:.3f})")</div>
 
-# কিন্তু এটা Iris ডেটার জন্য।
-# অন্য ডেটায় অন্য algorithm জিততে পারে।
-# → No Free Lunch!</div>
+<div class="code-block"># ── STEP 3: When to use each algorithm ──
+# THE ALGORITHM SELECTION GUIDE:
+
+# ┌──────────────────────┬──────────────────────────────────────┐
+# │ If your data is...   │ Use...                              │
+# ├──────────────────────┼──────────────────────────────────────┤
+# │ Linear, simple       │ Logistic/Linear Regression          │
+# │ Tabular, structured  │ Random Forest or XGBoost            │
+# │ Small, precise       │ SVM                                 │
+# │ Small, simple        │ k-NN                                │
+# │ Images               │ CNN (Convolutional Neural Network)  │
+# │ Text                 │ Transformer / BERT                  │
+# │ Time series          │ LSTM or Transformer                 │
+# │ Need interpretability│ Decision Tree or Logistic Reg       │
+# │ Need maximum accuracy│ Gradient Boosting (XGBoost/LightGBM)│
+# └──────────────────────┴──────────────────────────────────────┘
+
+# THE HIERARCHY OF TRYING:
+# 1. Baseline (DummyClassifier / mean prediction)
+# 2. Logistic Regression (fast, interpretable baseline)
+# 3. Random Forest (strong, handles most data)
+# 4. XGBoost / LightGBM (if RF works, boosting might be better)
+# 5. Deep Learning (for images, text, audio — complex data)
+
+# RULE OF THUMB:
+# "Use the SIMPLEST model that achieves your accuracy target."
+# Don't use a neural network when logistic regression works.</div>
+
+<div class="code-block"># ── STEP 4: Hyperparameter tuning ──
+# Finding the BEST settings for your chosen algorithm.
+
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
+
+# Grid Search — try ALL combinations:
+param_grid = {
+    "n_estimators": [50, 100, 200],
+    "max_depth": [3, 5, 7, None],
+    "min_samples_split": [2, 5, 10],
+}
+
+grid_search = GridSearchCV(
+    RandomForestClassifier(random_state=42),
+    param_grid,
+    cv=5,
+    scoring="f1",
+    n_jobs=-1  # use all CPU cores
+)
+grid_search.fit(X, y)
+
+print(f"Best parameters: {grid_search.best_params_}")
+print(f"Best CV score: {grid_search.best_score_:.3f}")
+
+# Random Search — try RANDOM combinations (faster for large grids):
+# random_search = RandomizedSearchCV(
+#     RandomForestClassifier(),
+#     param_distributions=param_grid,
+#     n_iter=20,  # try 20 random combinations
+#     cv=5,
+#     random_state=42
+# )
+# random_search.fit(X, y)
+
+# TIPS:
+# - Start with coarse grid (few values), then refine
+# - Use Random Search for large parameter spaces
+# - Use Bayesian optimization (optuna) for expensive tuning
+# - Always use CROSS-VALIDATION during tuning</div>
+
+<div class="code-block"># ── STEP 5: Complete production pipeline ──
+# A real ML pipeline includes preprocessing + model + evaluation:
+
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.impute import SimpleImputer
+from sklearn.compose import ColumnTransformer
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+
+# Numeric pipeline (impute + scale):
+numeric_pipeline = Pipeline([
+    ("imputer", SimpleImputer(strategy="median")),
+    ("scaler", StandardScaler()),
+])
+
+# Full pipeline (preprocessing + model):
+full_pipeline = Pipeline([
+    ("preprocessor", numeric_pipeline),
+    ("classifier", RandomForestClassifier(n_estimators=100, random_state=42)),
+])
+
+# Split data:
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Train the ENTIRE pipeline:
+full_pipeline.fit(X_train, y_train)
+
+# Evaluate:
+accuracy = full_pipeline.score(X_test, y_test)
+print(f"Pipeline accuracy: {accuracy:.1%}")
+
+# Save the ENTIRE pipeline (for deployment):
+# import joblib
+# joblib.dump(full_pipeline, "model.pkl")
+#
+# # Load later (in production):
+# model = joblib.load("model.pkl")
+# prediction = model.predict(new_data)
+
+# The pipeline handles EVERYTHING:
+# - Missing value imputation
+# - Feature scaling
+# - Model prediction
+# All in one consistent, reproducible flow.</div>
+
+<div class="code-block"># ── STEP 6: The complete ML checklist ──
+# Before shipping any ML model, verify:
+
+# ┌──────────────────────┬──────────────────────────────────────┐
+# │ Step                 │ Check                               │
+# ├──────────────────────┼──────────────────────────────────────┤
+# │ Data Quality         │ Clean, no leakage, representative  │
+# │ Baseline             │ Model beats DummyClassifier         │
+# │ Cross-Validation     │ Used CV, not just one split        │
+# │ Multiple Algorithms  │ Tried at least 3 different models  │
+# │ Hyperparameters      │ Tuned with CV, not guessed         │
+# │ Right Metric         │ Matches business objective         │
+# │ Error Analysis       │ Examined WHERE model fails         │
+# │ Bias/Variance        │ Diagnosed and addressed            │
+# │ Reproducible         │ Random seeds set, code versioned   │
+# │ Model Saved          │ Pipeline serialized (joblib)       │
+# │ Monitoring Plan      │ How will you detect drift?         │
+# │ Documentation        │ Someone else can understand it     │
+# └──────────────────────┴──────────────────────────────────────┘
+
+# THE ML JOURNEY:
+# 1. START SIMPLE: logistic regression as baseline
+# 2. ADD COMPLEXITY GRADUALLY: trees, ensembles, neural nets
+# 3. MEASURE EVERYTHING: track metrics, not feelings
+# 4. ALWAYS COMPARE: new model vs previous model
+# 5. SHIP WHEN READY: deploy, monitor, iterate
+
+# THE 10 CLASSIC ML ALGORITHMS YOU NOW KNOW:
+# 1. Linear Regression    — predict numbers
+# 2. Logistic Regression  — binary classification
+# 3. Decision Trees       — interpretable splits
+# 4. Random Forest        — ensemble of trees
+# 5. Gradient Boosting    — sequential error fixing
+# 6. SVM                  — maximum margin
+# 7. k-NN                 — nearest neighbors
+# 8. k-Means              — unsupervised clustering
+# 9. Neural Networks      — layered learning
+# 10. Evaluation          — the most important skill
+
+# CONGRATULATIONS!
+# You now have the COMPLETE classic ML toolbox.
+# Every modern AI technique builds on these foundations.
+# GPT-4, autonomous cars, recommendation systems —
+# they all started with linear regression and grew from here.
+# Master the basics, and the sky is the limit.</div>
 
 <div class="callout tip"><span class="co-icon">📖</span><div><strong>তোমার যাত্রা — কোথায় যাবে এখন?</strong>
 <br>📖 <strong>Book ৮ (LLM Anatomy):</strong> Neural network-এর গভীরে — Transformer
