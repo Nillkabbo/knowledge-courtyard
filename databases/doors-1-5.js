@@ -86,38 +86,264 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Relational model — users ও orders টেবিল PK/FK দিয়ে যুক্ত।</div>
 
-<div class="code-block"># — SQL: CREATE + INSERT + SELECT —
+<div class="code-block"># ── STEP 1: What is a database? ──
+# A database stores data in an organized way so you can:
+# - STORE data efficiently
+# - RETRIEVE data quickly
+# - UPDATE data safely
+# - DELETE data when needed
 
-  -- Table তৈরি:
-  CREATE TABLE users (
-      id SERIAL PRIMARY KEY,
-      name VARCHAR(100) NOT NULL,
-      email VARCHAR(255) UNIQUE NOT NULL,
-      created_at TIMESTAMP DEFAULT NOW()
-  );
+# CRUD = Create, Read, Update, Delete — the 4 basic operations
 
-  CREATE TABLE orders (
-      id SERIAL PRIMARY KEY,
-      user_id INTEGER REFERENCES users(id),
-      amount DECIMAL(10,2),
-      status VARCHAR(20) DEFAULT 'pending'
-  );
+# RELATIONAL DATABASE: data organized into TABLES (rows and columns)
+# Think of it as Excel spreadsheets, but with relationships between them.
 
-  -- সারি যোগ করো:
-  INSERT INTO users (name, email)
-  VALUES ('Rakib', 'r@x.com'), ('Sara', 's@x.com');
+# SQL (Structured Query Language) is how we talk to relational databases.
 
-  -- পড়ো:
-  SELECT u.name, o.amount
-  FROM users u
-  JOIN orders o ON u.id = o.user_id
-  WHERE o.amount > 20
-  ORDER BY o.amount DESC;
+# POPULAR RELATIONAL DATABASES:
+databases = {
+    "PostgreSQL": "Most powerful open-source DB, great for complex queries",
+    "MySQL": "Most popular open-source DB, great for web apps",
+    "SQLite": "Lightweight, file-based, great for mobile/prototyping",
+    "Oracle": "Enterprise, expensive, very feature-rich",
+    "SQL Server": "Microsoft's enterprise database",
+}
 
-  -- Django ORM equivalent:
-  User.objects.filter(
-      orders__amount__gt=20
-  ).order_by('-orders__amount')</div>
+print("POPULAR RELATIONAL DATABASES:")
+for db, desc in databases.items():
+    print(f"  {db}: {desc}")
+
+# YOU USE THESE EVERY DAY:
+# - Django + MySQL = LedgerPilot
+# - PostgreSQL = Ipractus
+# - SQLite = every mobile app, every browser</div>
+
+<div class="code-block"># ── STEP 2: Creating tables ──
+# A TABLE is like a spreadsheet. Each table holds one type of data.
+
+sql_create = """
+-- Users table (who uses our app):
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,          -- auto-incrementing unique ID
+    name VARCHAR(100) NOT NULL,     -- name (required, max 100 chars)
+    email VARCHAR(255) UNIQUE NOT NULL,  -- email (unique, required)
+    age INTEGER CHECK (age >= 0),   -- age (must be non-negative)
+    created_at TIMESTAMP DEFAULT NOW()  -- when account was created
+);
+
+-- Orders table (what users bought):
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),  -- FK: links to users table
+    amount DECIMAL(10, 2),                  -- price (2 decimal places)
+    status VARCHAR(20) DEFAULT 'pending',   -- order status
+    created_at TIMESTAMP DEFAULT NOW()
+);
+"""
+
+print(sql_create)
+
+# KEY CONCEPTS:
+# - PRIMARY KEY: uniquely identifies each row (usually 'id')
+# - FOREIGN KEY: links to another table (creates relationships)
+# - NOT NULL: this field is required
+# - UNIQUE: no two rows can have the same value
+# - DEFAULT: value if not specified
+# - CHECK: validates data (age must be >= 0)
+
+# DATA TYPES:
+# - INTEGER: whole numbers
+# - DECIMAL(10,2): money (10 digits, 2 after decimal)
+# - VARCHAR(n): text up to n characters
+# - TEXT: unlimited text
+# - TIMESTAMP: date and time
+# - BOOLEAN: true/false</div>
+
+<div class="code-block"># ── STEP 3: Inserting data (CREATE) ──
+sql_insert = """
+-- Insert one user:
+INSERT INTO users (name, email, age)
+VALUES ('Rakib', 'rakib@example.com', 25);
+
+-- Insert multiple users at once:
+INSERT INTO users (name, email, age)
+VALUES
+    ('Sara', 'sara@example.com', 23),
+    ('Ahmed', 'ahmed@example.com', 28),
+    ('Fatima', 'fatima@example.com', 22);
+
+-- Insert orders (note: user_id references users table):
+INSERT INTO orders (user_id, amount, status)
+VALUES
+    (1, 150.00, 'completed'),
+    (1, 45.50, 'completed'),
+    (2, 320.00, 'pending'),
+    (3, 75.25, 'completed');
+"""
+
+print(sql_insert)
+
+# Django ORM equivalent:
+django_insert = """
+# Create a user:
+user = User.objects.create(
+    name='Rakib',
+    email='rakib@example.com',
+    age=25
+)
+
+# Create an order linked to the user:
+Order.objects.create(
+    user=user,
+    amount=150.00,
+    status='completed'
+)
+"""
+
+print("Django ORM equivalent:")
+print(django_insert)</div>
+
+<div class="code-block"># ── STEP 4: Querying data (READ) ──
+sql_select = """
+-- Get all users:
+SELECT * FROM users;
+
+-- Get specific columns:
+SELECT name, email FROM users;
+
+-- Filter with WHERE:
+SELECT * FROM users WHERE age >= 25;
+
+-- Sort:
+SELECT * FROM users ORDER BY age DESC;
+
+-- Limit results:
+SELECT * FROM users LIMIT 10;
+
+-- Aggregate functions:
+SELECT COUNT(*) FROM users;                    -- total count
+SELECT AVG(age) FROM users;                     -- average age
+SELECT SUM(amount) FROM orders;                 -- total revenue
+SELECT MIN(amount), MAX(amount) FROM orders;    -- range
+"""
+
+print(sql_select)
+
+# Django ORM equivalents:
+django_queries = """
+User.objects.all()                          # SELECT * FROM users
+User.objects.filter(age__gte=25)            # WHERE age >= 25
+User.objects.order_by('-age')               # ORDER BY age DESC
+User.objects.all()[:10]                     # LIMIT 10
+User.objects.count()                        # COUNT(*)
+User.objects.aggregate(Avg('age'))          # AVG(age)
+"""
+
+print("Django ORM equivalents:")
+print(django_queries)</div>
+
+<div class="code-block"># ── STEP 5: JOINs — connecting tables ──
+sql_join = """
+-- INNER JOIN: only matching rows from both tables
+SELECT u.name, o.amount, o.status
+FROM users u
+INNER JOIN orders o ON u.id = o.user_id
+WHERE o.amount > 50;
+
+-- LEFT JOIN: all users, even those without orders
+SELECT u.name, COUNT(o.id) as order_count
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+GROUP BY u.name;
+
+-- MULTIPLE TABLES:
+SELECT u.name, o.amount, p.product_name
+FROM users u
+JOIN orders o ON u.id = o.user_id
+JOIN products p ON o.product_id = p.id;
+"""
+
+print(sql_join)
+
+# Django ORM equivalents:
+django_joins = """
+# Inner join (filter through relationship):
+User.objects.filter(orders__amount__gt=50)
+
+# Left join with aggregation:
+from django.db.models import Count
+User.objects.annotate(order_count=Count('orders'))
+
+# Multiple joins:
+User.objects.filter(
+    orders__product__category='electronics'
+).distinct()
+"""
+
+print("Django ORM equivalents:")
+print(django_joins)
+
+# JOIN TYPES:
+# ┌──────────────┬──────────────────────────────────┐
+# │ JOIN Type    │ What it returns                 │
+# ├──────────────┼──────────────────────────────────┤
+# │ INNER JOIN   │ Only matching rows             │
+# │ LEFT JOIN    │ All left + matching right      │
+# │ RIGHT JOIN   │ All right + matching left      │
+# │ FULL JOIN    │ All from both tables           │
+# │ CROSS JOIN   │ Every combination (cartesian)  │
+# └──────────────┴──────────────────────────────────┘</div>
+
+<div class="code-block"># ── STEP 6: Update and Delete ──
+sql_update = """
+-- UPDATE: modify existing rows
+UPDATE users SET age = 26 WHERE id = 1;
+UPDATE orders SET status = 'completed' WHERE user_id = 2;
+
+-- DELETE: remove rows (BE CAREFUL!)
+DELETE FROM orders WHERE status = 'cancelled';
+DELETE FROM users WHERE id = 5;
+
+-- SAFE DELETE pattern (always check first):
+-- 1. SELECT first to verify what will be deleted:
+SELECT * FROM users WHERE last_login < '2023-01-01';
+-- 2. Then delete:
+DELETE FROM users WHERE last_login < '2023-01-01';
+"""
+
+print(sql_update)
+
+# Django ORM equivalents:
+django_update = """
+# Update:
+User.objects.filter(id=1).update(age=26)
+Order.objects.filter(user_id=2).update(status='completed')
+
+# Delete:
+Order.objects.filter(status='cancelled').delete()
+User.objects.filter(id=5).delete()
+"""
+
+print("Django ORM equivalents:")
+print(django_update)
+
+# DATABASE BEST PRACTICES:
+best_practices = [
+    "ALWAYS use WHERE clause with UPDATE/DELETE (no WHERE = all rows!)",
+    "Use transactions for multi-step operations",
+    "Index columns you frequently filter/join on",
+    "Use foreign keys for data integrity",
+    "Normalize to avoid data redundancy",
+    "Backup regularly (automated!)",
+    "Use connection pooling (don't open/close per request)",
+    "EXPLAIN your queries to check for performance issues",
+    "Never store passwords in plain text (hash them!)",
+    "Use migrations for schema changes (never manual ALTER TABLE in prod)",
+]
+
+print("DATABASE BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")</div>
 
 <div class="secret-box">📊 <strong>Relational Model = উপাত্তের গাণিতিক সংগঠন।</strong> টেবিল = relation, সারি = tuple, কলাম = attribute। Primary key অনন্যতা দেয়, foreign key সম্পর্ক তৈরি করে। Codd-এর ১৯৭০ সালের ধারণা আজকের প্রতিটি database-এর ভিত্তি। কিন্তু টেবিল তৈরি করা এক জিনিস — তাতে প্রশ্ন করা আরেক জিনিস। সেই ভাষার নাম SQL। সেই যাত্রা শুরু হবে পরের দরজায়।</div>`,
   senior: {
