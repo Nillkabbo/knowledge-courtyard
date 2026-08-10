@@ -1625,45 +1625,405 @@ doors.push({
 <div class="diag-cap">Handshake: asymmetric দিয়ে key exchange · তারপর: symmetric দিয়ে দ্রুত এনক্রিপশন · MITM অসম্ভব</div>
 </div>
 
-<div class="code-block">— OpenSSL: সার্ভারের সার্টিফিকেট পরীক্ষা করো —
+<div class="code-block"># ── STEP 1: TLS (Transport Layer Security) ──
+# TLS encrypts data between client and server (HTTPS).
+
+tls = """
+WHAT TLS DOES:
+  1. ENCRYPTION: scrambles data so attackers can't read it
+  2. AUTHENTICATION: proves the server is who it claims to be
+  3. INTEGRITY: detects if data was modified in transit
+
+HTTPS = HTTP + TLS
+  → Same HTTP protocol, but encrypted
+  → No one between client and server can read the data
+
+TLS vs SSL:
+  SSL (Secure Sockets Layer): older, deprecated, vulnerable
+  TLS (Transport Layer Security): modern, secure, current
+  → People still say "SSL certificate" but mean "TLS certificate"
+
+TLS VERSIONS:
+  TLS 1.0 (1999): Deprecated (vulnerable)
+  TLS 1.1 (2006): Deprecated (vulnerable)
+  TLS 1.2 (2008): Still used (acceptable)
+  TLS 1.3 (2018): Current best (fastest, most secure)
+
+ALWAYS USE TLS 1.2 or 1.3
+"""
+
+print(tls)
+
+# SYMMETRIC vs ASYMMETRIC ENCRYPTION:
+encryption = """
+SYMMETRIC ENCRYPTION (fast):
+  Same key encrypts AND decrypts.
+  → Like a lockbox with one key
+  → Fast, but how do you share the key safely?
+
+  Example: AES-256 (used for bulk data in TLS)
+
+ASYMMETRIC ENCRYPTION (secure key exchange):
+  Two keys: public (share with everyone) and private (keep secret)
+  → Public key ENCRYPTS, private key DECRYPTS
+  → Like a mailbox: anyone can drop in (public), only you have key (private)
+
+  Example: RSA, ECDHE (used for key exchange in TLS)
+
+TLS USES BOTH (hybrid approach):
+  1. Asymmetric: safely exchange a symmetric key (handshake)
+  2. Symmetric: encrypt the actual data (fast bulk transfer)
+  → Best of both worlds: secure key exchange + fast data transfer
+"""
+
+print(encryption)</div>
+
+<div class="code-block"># ── STEP 2: TLS handshake (how HTTPS connects) ──
+# The handshake establishes encrypted communication.
+
+handshake = """
+TLS 1.3 HANDSHAKE (simplified):
+
+1. CLIENT HELLO:
+   Client → Server
+   "I want to talk securely. Here's what I support:
+    TLS 1.3, AES, ECDHE key exchange, etc."
+
+2. SERVER HELLO + CERTIFICATE:
+   Server → Client
+   "OK, let's use TLS 1.3. Here's my certificate
+    (proving I'm google.com). Here's my public key."
+
+3. KEY EXCHANGE:
+   Both sides compute a SHARED SECRET using ECDHE.
+   → Client and server now have the same symmetric key.
+   → This key will encrypt all further data.
+   → Even if someone intercepts, they can't derive the key.
+
+4. FINISHED:
+   Both sides confirm: "Handshake complete, encryption on!"
+
+5. ENCRYPTED DATA:
+   All HTTP data now encrypted with the shared symmetric key.
+   → Fast (AES-256 symmetric encryption)
+   → Secure (key was exchanged with asymmetric encryption)
+
+TLS 1.3 vs TLS 1.2:
+  TLS 1.2: 2 round trips (slower)
+  TLS 1.3: 1 round trip (faster, fewer messages)
+  → TLS 1.3 is both faster AND more secure
+"""
+
+print(handshake)
+
+# VIEW TLS HANDSHAKE (openssl):
+openssl_view = """
+# Inspect TLS connection:
 $ openssl s_client -connect google.com:443 -servername google.com
 
 CONNECTED(00000003)
 ---
 Certificate chain
- 0 s:CN = *.google.com            ← Subject (কার সার্টিফিকেট?)
-   i:CN = GTS CA 1C3              ← Issuer (কে সাইন করেছে?)
+ 0 s:CN = *.google.com          ← Subject (whose certificate?)
+   i:CN = GTS CA 1C3            ← Issuer (who signed it?)
 ---
 Server certificate
   subject=CN = *.google.com
-  notBefore: Jul 14 00:00:00 2026  ← কবে থেকে চালু
-  notAfter: Sep  6 23:59:59 2026   ← কবে শেষ (expire!)
+  notBefore: Jul 14 00:00:00 2026  ← Start date
+  notAfter:  Sep  6 23:59:59 2026  ← Expiry date (90 days!)
 ---
-SSL handshake has read 4127 bytes
----
-Protocol  : TLSv1.3              ← কোন TLS version?
-Cipher    : TLS_AES_256_GCM_SHA384  ← কোন এনক্রিপশন?
+Protocol  : TLSv1.3                  ← TLS version
+Cipher    : TLS_AES_256_GCM_SHA384   ← Encryption algorithm
+"""
 
-— দেখো: TLS 1.3 + AES-256 = আধুনিক, নিরাপদ —
-— TLS 1.0/1.1 = পুরোনো, দুর্বল, deprecated —</div>
+print(openssl_view)</div>
 
-<div class="code-block">— সার্টিফিকেট পড়ো (মানুষের ভাষায়) —
-$ openssl x509 -in cert.pem -text -noout
+<div class="code-block"># ── STEP 3: Digital certificates and chain of trust ──
+# Certificates prove the server's identity.
 
-Certificate:
-    Subject: CN=*.google.com           ← ডোমেইন
-    Issuer: CN=GTS CA 1C3              ← Certificate Authority
-    Validity:
-      Not Before: Jul 14, 2026         ← শুরু
-      Not After:  Sep 6, 2026          ← শেষ (৯০ দিন)
-    Subject Alternative Names:         ← কোন ডোমেইনগুলো?
-      DNS:*.google.com
-      DNS:google.com
-    Public Key: RSA 2048 bits          ← asymmetric key
+certificates = """
+DIGITAL CERTIFICATE = ID card for a website.
 
-— চেইন অফ ট্রাস্ট: —
-  তুমি → Browser CA list → GTS CA → google.com
-  তোমার browser-এ ১০০+ CA-এর root certificate আগে থেকেই আছে</div>
+Contains:
+  → Subject: domain name (*.google.com)
+  → Issuer: who signed it (GTS CA 1C3)
+  → Public Key: the server's public key (RSA/ECDSA)
+  → Validity: start and expiry dates
+  → SAN (Subject Alternative Names): all covered domains
+  → Signature: CA's cryptographic signature (proves authenticity)
+
+CHAIN OF TRUST:
+  Your Browser
+    → Has 100+ ROOT CA certificates pre-installed (trusted by OS)
+    → Root CAs (DigiCert, Let's Encrypt, GlobalSign)
+      → Sign Intermediate CAs
+        → Sign End-Entity certificates (your website)
+          → Your server presents this to clients
+
+  Root → Intermediate → Your certificate
+  Each level vouches for the next.
+  If your browser trusts the Root, it trusts the entire chain.
+
+HOW TO GET A CERTIFICATE:
+  1. Generate key pair (private + public)
+  2. Create CSR (Certificate Signing Request)
+  3. Send CSR to CA (Let's Encrypt, DigiCert, etc.)
+  4. CA verifies domain ownership
+  5. CA signs your certificate
+  6. Install certificate on your server
+  7. HTTPS works!
+"""
+
+print(certificates)
+
+# CERTIFICATE TYPES:
+cert_types = {
+    "DV (Domain Validation)": {
+        "verification": "Just domain ownership",
+        "cost": "Free (Let's Encrypt)",
+        "trust_level": "Low (green lock only)",
+        "use": "Most websites",
+    },
+    "OV (Organization Validation)": {
+        "verification": "Domain + organization identity",
+        "cost": "$100-300/year",
+        "trust_level": "Medium (shows company name)",
+        "use": "Business websites",
+    },
+    "EV (Extended Validation)": {
+        "verification": "Extensive legal verification",
+        "cost": "$300-1000/year",
+        "trust_level": "Highest (old green bar)",
+        "use": "Banks, financial institutions",
+    },
+    "Wildcard": {
+        "verification": "Covers *.example.com",
+        "cost": "$50-200/year",
+        "trust_level": "DV level",
+        "use": "Multiple subdomains",
+    },
+}
+
+print("CERTIFICATE TYPES:")
+for cert_type, info in cert_types.items():
+    print(f"\n  {cert_type}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 4: Let's Encrypt (free certificates) ──
+# Get free TLS certificates with Let's Encrypt + Certbot.
+
+lets_encrypt = """
+LET'S ENCRYPT:
+  → Free, automated, open certificate authority
+  → Issues DV certificates (domain validation)
+  → 90-day validity (auto-renew)
+  → Used by 300M+ websites
+
+CERTBOT (Let's Encrypt client):
+
+# Install:
+$ apt install certbot python3-certbot-nginx
+
+# Get certificate (Nginx):
+$ sudo certbot --nginx -d example.com -d www.example.com
+
+# Certbot automatically:
+#   1. Verifies domain ownership
+#   2. Gets certificate
+#   3. Configures Nginx
+#   4. Sets up auto-renewal
+
+# Certificate files:
+#   /etc/letsencrypt/live/example.com/
+#     fullchain.pem  ← certificate + intermediate chain
+#     privkey.pem    ← private key (SECRET!)
+
+# Auto-renewal (already configured by certbot):
+$ certbot renew --dry-run  # Test renewal
+# Cron job runs twice daily, renews if <30 days left
+
+NGINX CONFIG WITH TLS:
+  server {
+      listen 443 ssl http2;
+      server_name example.com;
+
+      ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
+      ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+
+      # Modern TLS settings:
+      ssl_protocols TLSv1.2 TLSv1.3;
+      ssl_ciphers HIGH:!aNULL:!MD5;
+      ssl_prefer_server_ciphers on;
+
+      # HSTS (force HTTPS for 1 year):
+      add_header Strict-Transport-Security "max-age=31536000" always;
+
+      location / {
+          proxy_pass http://127.0.0.1:8000;
+      }
+  }
+
+  # Redirect HTTP → HTTPS:
+  server {
+      listen 80;
+      server_name example.com;
+      return 301 https://$server_name$request_uri;
+  }
+"""
+
+print(lets_encrypt)</div>
+
+<div class="code-block"># ── STEP 5: TLS in Django and production ──
+# How TLS works with your Django app.
+
+django_tls = """
+WHO HANDLES TLS?
+
+Option 1: NGINX (recommended)
+  Browser ←TLS→ Nginx ←HTTP→ Gunicorn/Django
+  → Nginx terminates TLS (decrypts)
+  → Internal traffic (Nginx → Gunicorn) is plain HTTP
+  → This is the standard production setup
+
+Option 2: Cloudflare
+  Browser ←TLS→ Cloudflare ←TLS→ Nginx ←HTTP→ Django
+  → Cloudflare terminates TLS at edge
+  → Cloudflare → Origin also uses TLS ("Full" mode)
+  → Best security
+
+Option 3: Gunicorn direct (not recommended)
+  Browser ←TLS→ Gunicorn
+  → Gunicorn handles TLS directly
+  → Slower (Python doing crypto)
+  → Only for development
+
+DJANGO SECURITY SETTINGS:
+  # settings.py:
+  SECURE_SSL_REDIRECT = True          # Force HTTPS
+  SECURE_HSTS_SECONDS = 31536000      # HSTS for 1 year
+  SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+  SECURE_HSTS_PRELOAD = True
+  SESSION_COOKIE_SECURE = True        # Cookies only over HTTPS
+  CSRF_COOKIE_SECURE = True
+  SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+CLOUDFLARE SSL MODES:
+  Off:       No SSL (insecure, don't use)
+  Flexible:  Browser ←TLS→ CF, CF ←HTTP→ Origin (INSECURE!)
+  Full:      Both legs TLS (CF ← self-signed cert → Origin)
+  Full (Strict): Both legs TLS with valid cert (BEST)
+"""
+
+print(django_tls)
+
+# TESTING TLS:
+tls_testing = """
+# Test TLS configuration:
+$ curl -vI https://example.com
+
+# Online tools:
+  → SSL Labs (ssllabs.com): comprehensive TLS audit
+  → Security Headers (securityheaders.com): header audit
+
+# Check certificate expiry:
+$ echo | openssl s_client -connect example.com:443 2>/dev/null \\
+    | openssl x509 -noout -dates
+  notBefore=Jul 14 00:00:00 2026
+  notAfter=Sep  6 23:59:59 2026
+
+# Monitor certificate expiry (alert before expiry):
+# Python script to check all your domains:
+  import ssl, socket
+  from datetime import datetime
+
+  def check_cert_expiry(domain, port=443):
+      context = ssl.create_default_context()
+      conn = context.wrap_socket(
+          socket.socket(socket.AF_INET), server_hostname=domain
+      )
+      conn.connect((domain, port))
+      cert = conn.getpeercert()
+      expiry = datetime.strptime(cert['notAfter'], '%b %d %H:%M:%S %Y %Z')
+      days_left = (expiry - datetime.now()).days
+      return days_left
+
+  days = check_cert_expiry('example.com')
+  if days < 30:
+      print(f"WARNING: Certificate expires in {days} days!")
+"""
+
+print(tls_testing)</div>
+
+<div class="code-block"># ── STEP 6: TLS best practices and security ──
+# Secure your TLS configuration.
+
+best_practices = [
+    "Use TLS 1.2 or 1.3 only (disable TLS 1.0/1.1)",
+    "Use Let's Encrypt (free, auto-renewing)",
+    "Enable HSTS (Strict-Transport-Security)",
+    "Use Cloudflare 'Full (Strict)' SSL mode",
+    "Redirect all HTTP to HTTPS (301)",
+    "Set SECURE_SSL_REDIRECT in Django",
+    "Use secure cookies (SESSION_COOKIE_SECURE)",
+    "Monitor certificate expiry (alert at 30 days)",
+    "Use strong ciphers (AES-256, ECDHE)",
+    "Enable OCSP stapling (faster cert validation)",
+    "Use HTTP/2 (requires TLS)",
+    "Test with SSL Labs (target A grade)",
+    "Auto-renew certificates (certbot cron)",
+    "Use 2048-bit+ RSA or ECDSA keys",
+    "Include HSTS preload (submit to hstspreload.org)",
+]
+
+print("TLS BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# COMMON TLS ERRORS:
+errors = {
+    "NET::ERR_CERT_AUTHORITY_INVALID": {
+        "meaning": "Self-signed cert or unknown CA",
+        "fix": "Use Let's Encrypt or add CA to trust store",
+    },
+    "NET::ERR_CERT_COMMON_NAME_INVALID": {
+        "meaning": "Cert domain doesn't match URL",
+        "fix": "Generate cert for correct domain (or wildcard)",
+    },
+    "NET::ERR_CERT_DATE_INVALID": {
+        "meaning": "Certificate expired",
+        "fix": "Renew certificate (certbot renew)",
+    },
+    "NET::ERR_SSL_PROTOCOL_ERROR": {
+        "meaning": "TLS version mismatch or cipher mismatch",
+        "fix": "Enable modern TLS versions (1.2, 1.3)",
+    },
+    "Mixed content warning": {
+        "meaning": "HTTPS page loading HTTP resources",
+        "fix": "Use relative URLs or force HTTPS for all assets",
+    },
+}
+
+print("\nCOMMON TLS ERRORS:")
+for error, info in errors.items():
+    print(f"\n  {error}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# TLS SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ TLS              │ Encrypts data (HTTPS)          │
+# │ Symmetric        │ Same key (fast, AES)           │
+# │ Asymmetric       │ Public/private (RSA/ECDHE)     │
+# │ Hybrid approach  │ Asymmetric exchange → symmetric │
+# │ Certificate      │ Proves server identity         │
+# │ Chain of trust   │ Root CA → Intermediate → You   │
+# │ Let's Encrypt    │ Free certificates (certbot)    │
+# │ TLS 1.3          │ Current best (fast + secure)   │
+# │ HSTS             │ Force HTTPS in browser         │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সার্টিফিকেট শেষ হলে কী হয়?</strong> HTTPS ভেঙে পড়ে। Browser দেখায় "Your connection is not private"। কারণ সার্টিফিকেট expire হলে পরিচয় আর যাচাই করা যায় না। Let's Encrypt ৯০ দিনের সার্টিফিকেট দেয় — স্বয়ংক্রিয় রিনিউ করতে হয় (certbot)।</div></div>
 
