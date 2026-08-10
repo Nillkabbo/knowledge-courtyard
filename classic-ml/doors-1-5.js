@@ -68,45 +68,189 @@ doors.push({
 <tr><td class="hl">MSE</td><td>গড় বর্গ ত্রুটি</td><td>ভবিষ্যদ্বাণী আর সত্যির পার্থক্য</td></tr>
 <tr><td class="hl">R²</td><td>মডেলের ভালোত্ব</td><td>০-১ এর মধ্যে, ১ = নিখুঁত</td></tr></table>
 
-<div class="code-block"># — — — Python: Linear Regression from Scratch — — —
+<div class="code-block"># ── STEP 1: What is linear regression? ──
+# Find the BEST STRAIGHT LINE through data points.
+# y = w * x + b  (weight × input + bias)
 
+# Example: predict house price from size
+# Size (sq ft) → Price ($1000s)
 import numpy as np
 
-# ডেটা: বাড়ির সাইজ (sq ft) vs দাম ($1000s)
-X = np.array([600, 800, 1000, 1200, 1400, 1600])
-y = np.array([150, 180, 210, 240, 280, 310])
+sizes = np.array([600, 800, 1000, 1200, 1400, 1600])
+prices = np.array([150, 180, 210, 240, 280, 310])
 
-# Initialize
-w = 0.0  # weight (slope)
-b = 0.0  # bias (intercept)
-lr = 0.0000001  # learning rate
+# We want: price = w * size + b
+# What values of w and b fit the data best?
 
-# Training loop
+# The line that minimizes ERRORS is the best line.
+# This is what linear regression does — automatically.</div>
+
+<div class="code-block"># ── STEP 2: The loss function (MSE) ──
+# How wrong is our line? Measure with Mean Squared Error.
+
+# MSE = average of (actual - predicted)²
+def mse(y_true, y_pred):
+    """Mean Squared Error — how far off are predictions?"""
+    return np.mean((y_true - y_pred) ** 2)
+
+# Try w=0.1, b=50:
+w, b = 0.1, 50
+predictions = w * sizes + b
+error = mse(prices, predictions)
+print(f"w={w}, b={b} → MSE={error:.0f}")  # w=0.1, b=50 → MSE=900
+
+# Try w=0.15, b=50:
+w, b = 0.15, 50
+predictions = w * sizes + b
+error = mse(prices, predictions)
+print(f"w={w}, b={b} → MSE={error:.0f}")  # Lower MSE = better fit!
+
+# Squaring does two things:
+# 1. Makes everything positive (errors don't cancel out)
+# 2. Punishes BIG errors more than small ones</div>
+
+<div class="code-block"># ── STEP 3: Gradient descent — learning from mistakes ──
+# How do we find the best w and b? GRADIENT DESCENT.
+# It's like rolling down a hill to find the bottom.
+
+# The algorithm:
+# 1. Start with random w and b
+# 2. Calculate the gradient (slope of the error)
+# 3. Take a step DOWNWARD (reduce error)
+# 4. Repeat until you reach the bottom
+
+# Initialize:
+w = 0.0   # weight (slope)
+b = 0.0   # bias (intercept)
+lr = 0.0000001  # learning rate (step size)
+
 for epoch in range(100):
-    # ১. Forward pass
-    y_pred = w * X + b
-    
-    # ২. Loss (MSE)
-    mse = np.mean((y - y_pred) ** 2)
-    
-    # ৩. Gradients
-    dw = -2 * np.mean(X * (y - y_pred))
-    db = -2 * np.mean(y - y_pred)
-    
-    # ৪. Update
+    # Forward pass — make predictions:
+    y_pred = w * sizes + b
+
+    # Calculate gradients (how to change w and b):
+    dw = -2 * np.mean(sizes * (prices - y_pred))  # ∂MSE/∂w
+    db = -2 * np.mean(prices - y_pred)              # ∂MSE/∂b
+
+    # Update — take a step downhill:
     w = w - lr * dw
     b = b - lr * db
-    
+
     if epoch % 20 == 0:
-        print(f"Epoch {epoch}: w={w:.4f}, b={b:.4f}, MSE={mse:.2f}")
+        error = mse(prices, y_pred)
+        print(f"Epoch {epoch}: w={w:.4f}, b={b:.4f}, MSE={error:.2f}")
 
-print(f"\nFinal: w={w:.4f}, b={b:.4f}")
-print(f"Prediction for 1500 sq ft: {w * 1500 + b:.1f}k")
+# The learning rate (lr) controls step size:
+# Too small: learns very slowly
+# Too large: overshoots, bounces around, never converges
+# Just right: smooth descent to the optimal value</div>
 
-# Scikit-learn দিয়ে এক লাইনে:
-# from sklearn.linear_model import LinearRegression
-# model = LinearRegression()
-# model.fit(X.reshape(-1,1), y)</div>
+<div class="code-block"># ── STEP 4: The complete training loop ──
+import numpy as np
+
+# Data: house size vs price
+X = np.array([600, 800, 1000, 1200, 1400, 1600], dtype=float)
+y = np.array([150, 180, 210, 240, 280, 310], dtype=float)
+
+# Normalize data (important for gradient descent!):
+X_norm = (X - X.mean()) / X.std()
+
+# Initialize parameters:
+w, b = 0.0, 0.0
+lr = 0.01  # much better learning rate with normalized data!
+
+# Training:
+for epoch in range(200):
+    y_pred = w * X_norm + b
+    loss = np.mean((y - y_pred) ** 2)
+
+    dw = -2 * np.mean(X_norm * (y - y_pred))
+    db = -2 * np.mean(y - y_pred)
+
+    w -= lr * dw
+    b -= lr * db
+
+    if epoch % 50 == 0:
+        print(f"Epoch {epoch}: loss={loss:.2f}, w={w:.4f}, b={b:.4f}")
+
+print(f"\nFinal model: price = {w:.2f} × normalized_size + {b:.2f}")
+print(f"Prediction for 1500 sq ft: {w * ((1500 - X.mean()) / X.std()) + b:.1f}k")</div>
+
+<div class="code-block"># ── STEP 5: Using scikit-learn (the easy way) ──
+# In practice, use scikit-learn — it's optimized and tested.
+
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+import numpy as np
+
+# Sample data:
+X = np.array([[600], [800], [1000], [1200], [1400], [1600]])
+y = np.array([150, 180, 210, 240, 280, 310])
+
+# Split into train/test:
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Train:
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Predict:
+predictions = model.predict(X_test)
+
+# Evaluate:
+print(f"Slope (w): {model.coef_[0]:.2f}")
+print(f"Intercept (b): {model.intercept_:.2f}")
+print(f"R² score: {r2_score(y_test, predictions):.3f}")  # 1.0 = perfect
+print(f"MSE: {mean_squared_error(y_test, predictions):.2f}")
+
+# Predict new value:
+print(f"1500 sq ft → " + str(model.predict([[1500]])[0]) + "k")
+
+# scikit-learn does in 3 lines what took us 20 lines from scratch!
+# But understanding the scratch version makes you a better ML engineer.</div>
+
+<div class="code-block"># ── STEP 6: Beyond linear — polynomial and regularization ──
+# What if the relationship isn't a straight line?
+
+# Polynomial regression (curved line):
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.pipeline import Pipeline
+
+# Degree 2 = parabola, degree 3 = cubic curve
+poly_model = Pipeline([
+    ("poly", PolynomialFeatures(degree=2)),
+    ("linear", LinearRegression())
+])
+poly_model.fit(X_train, y_train)
+
+# REGULARIZATION — prevent overfitting:
+from sklearn.linear_model import Ridge, Lasso
+
+# Ridge (L2): shrinks weights toward zero
+ridge = Ridge(alpha=1.0)  # alpha = regularization strength
+ridge.fit(X_train, y_train)
+
+# Lasso (L1): can make some weights EXACTLY zero (feature selection)
+lasso = Lasso(alpha=0.1)
+lasso.fit(X_train, y_train)
+
+# WHEN TO USE WHAT:
+# ┌─────────────────────┬──────────────────────────────────┐
+# │ Model               │ When to use                    │
+# ├─────────────────────┼──────────────────────────────────┤
+# │ LinearRegression    │ simple linear relationships    │
+# │ Polynomial          │ curved relationships           │
+# │ Ridge               │ many features, prevent overfit │
+# │ Lasso               │ feature selection (sparse)     │
+# │ ElasticNet          │ Ridge + Lasso combined         │
+# └─────────────────────┴──────────────────────────────────┘
+
+# KEY INSIGHT:
+# Linear regression is the FOUNDATION of all ML.
+# Neural networks are just MANY linear regressions stacked together
+# with non-linear activation functions between them.
+# Master this → understand everything.</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> লিনিয়ার রিগ্রেশন ধরে নেয় সম্পর্ক সরলরৈখিক — কিন্তু বাস্তবে সব সম্পর্ক লিনিয়ার নয়। বাড়ির দাম আর সাইজের সম্পর্ক হয়তো বক্ররৈখিক। তাই polynomial regression বা অন্য অ্যালগরিদম দরকার হয়। এটাই underfitting — মডেল খুব সহজ, ডেটা জটিল।</div></div>
 
