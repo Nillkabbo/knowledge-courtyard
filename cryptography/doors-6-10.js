@@ -1055,44 +1055,329 @@ doors.push({
 <div class="dialogue"><strong>দরোয়ান-প্রধান ওমর:</strong> Defense in depth — একাধিক স্তর। কোনো একটি ভাঙলে অন্যটি রক্ষা করে। CORS: শুধু তোমার ডোমেইন থেকে API access। CSP: শুধু trusted script। Rate limit: ১০০ request/মিনিট। WAF: OWASP rules automatically। HSTS: HTTPS বাধ্যতামূলক। প্রতিটি স্তর একটি ঢাল।</div>
 <div class="dialogue en"><strong>Chief Bouncer Umar:</strong> Defense in depth — multiple layers. If one breaks, another protects. CORS: only your domain accesses API. CSP: only trusted scripts. Rate limit: 100 req/min. WAF: OWASP rules automatically. HSTS: HTTPS mandatory. Each layer a shield.</div>
 
-<div class="code-block">— Security Headers ও Defenses —
+<div class="code-block"># ── STEP 1: HTTP security headers ──
+# Security headers tell the browser how to protect users.
 
-  # CORS (Cross-Origin Resource Sharing)
-  Access-Control-Allow-Origin: https://yoursite.com
-  Access-Control-Allow-Methods: GET, POST
-  Access-Control-Allow-Headers: Content-Type
+headers = {
+    "Strict-Transport-Security (HSTS)": {
+        "what": "Force HTTPS for all requests",
+        "example": "max-age=31536000; includeSubDomains; preload",
+        "prevents": "SSL stripping, downgrade attacks",
+    },
+    "Content-Security-Policy (CSP)": {
+        "what": "Whitelist what resources can load (scripts, styles, images)",
+        "example": "default-src 'self'; script-src 'self' 'nonce-abc'",
+        "prevents": "XSS, data injection, unauthorized loading",
+    },
+    "X-Frame-Options": {
+        "what": "Prevent page from being embedded in iframe",
+        "example": "DENY or SAMEORIGIN",
+        "prevents": "Clickjacking",
+    },
+    "X-Content-Type-Options": {
+        "what": "Prevent browser from guessing file type (MIME sniffing)",
+        "example": "nosniff",
+        "prevents": "MIME confusion attacks",
+    },
+    "Referrer-Policy": {
+        "what": "Control what referrer info is sent",
+        "example": "strict-origin-when-cross-origin",
+        "prevents": "Information leakage",
+    },
+    "Permissions-Policy": {
+        "what": "Control browser features (camera, mic, geolocation)",
+        "example": "camera=(), microphone=(), geolocation=()",
+        "prevents": "Unauthorized feature access",
+    },
+}
 
-  # Django CORS:
-  CORS_ALLOWED_ORIGINS = ["https://yoursite.com"]
+print("HTTP SECURITY HEADERS:")
+for header, info in headers.items():
+    print(f"\n  {header}")
+    print(f"    What: {info['what']}")
+    print(f"    Example: {info['example']}")
+    print(f"    Prevents: {info['prevents']}")</div>
 
-  # CSP (Content Security Policy)
-  Content-Security-Policy:
-    default-src 'self';
-    script-src 'self' 'nonce-abc123';
-    style-src 'self';
+<div class="code-block"># ── STEP 2: Content-Security-Policy (CSP) ──
+# CSP is the MOST POWERFUL XSS defense.
 
-  # Rate Limiting (Django REST Framework)
-  REST_FRAMEWORK = {
-      'DEFAULT_THROTTLE_CLASSES': [
-          'rest_framework.throttling.AnonRateThrottle',
-      ],
-      'DEFAULT_THROTTLE_RATES': {
-          'anon': '100/day',    # anonymous
-          'user': '1000/day',   # authenticated
-      }
-  }
+# WITHOUT CSP: any script can execute (massive XSS risk)
+# WITH CSP: only whitelisted scripts can execute
 
-  # HSTS (Always HTTPS)
-  SECURE_HSTS_SECONDS = 31536000  # ১ বছর
-  SECURE_SSL_REDIRECT = True
+# CSP DIRECTIVES:
+csp_directives = {
+    "default-src": "Fallback for all resource types",
+    "script-src": "Where JavaScript can come from",
+    "style-src": "Where CSS can come from",
+    "img-src": "Where images can come from",
+    "font-src": "Where fonts can come from",
+    "connect-src": "Where AJAX/WebSocket can connect",
+    "frame-src": "Where iframes can come from",
+    "object-src": "Where plugins (Flash, Java) can come from",
+    "base-uri": "What <base> tag can be set to",
+    "form-action": "Where forms can submit to",
+}
 
-  # Security Checklist:
-  # ✅ HTTPS (HSTS)
-  # ✅ CORS (whitelist domains)
-  # ✅ CSP (whitelist scripts)
-  # ✅ Rate limiting
-  # ✅ WAF (Cloudflare/AWS WAF)
-  # ✅ Input validation</div>
+print("CSP DIRECTIVES:")
+for directive, desc in csp_directives.items():
+    print(f"  {directive}: {desc}")
+
+# CSP VALUES:
+csp_values = {
+    "'self'": "Same origin as the page",
+    "'none'": "Nothing allowed",
+    "'nonce-abc123'": "Only scripts with matching nonce attribute",
+    "'sha256-...'": "Only scripts matching this hash",
+    "https://cdn.example.com": "Specific domain",
+    "https:": "Any HTTPS source (broad — less secure)",
+    "*": "Anywhere (INSECURE — don't use!)",
+}
+
+print("\nCSP VALUES:")
+for value, desc in csp_values.items():
+    print(f"  {value}: {desc}")
+
+# DJANGO CSP CONFIGURATION:
+django_csp = """
+# Install: pip install django-csp
+# settings.py:
+CSP_DEFAULT_SRC = ("'none'",)
+CSP_SCRIPT_SRC = ("'self'", "'nonce-{nonce}'")
+CSP_STYLE_SRC = ("'self'",)
+CSP_IMG_SRC = ("'self'", "data:", "https:")
+CSP_FONT_SRC = ("'self'",)
+CSP_CONNECT_SRC = ("'self'",)
+CSP_FRAME_ANCESTORS = ("'none'",)  # prevent framing
+"""
+
+print(django_csp)</div>
+
+<div class="code-block"># ── STEP 3: CORS (Cross-Origin Resource Sharing) ──
+# CORS controls which DOMAINS can access your API.
+
+# THE SAME-ORIGIN POLICY:
+# By default, browsers BLOCK cross-origin requests.
+# Your-site.com CANNOT read data from api.other-site.com.
+# This prevents malicious sites from stealing data.
+
+# CORS relaxes this for TRUSTED origins:
+
+# ❌ INSECURE (allow everyone):
+insecure = """
+Access-Control-Allow-Origin: *
+# Any website can call your API!
+"""
+print("❌ INSECURE:")
+print(insecure)
+
+# ✅ SECURE (whitelist specific origins):
+secure = """
+Access-Control-Allow-Origin: https://your-frontend.com
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE
+Access-Control-Allow-Headers: Content-Type, Authorization
+Access-Control-Allow-Credentials: true  # for cookies
+"""
+print("✅ SECURE:")
+print(secure)
+
+# DJANGO CORS:
+django_cors = """
+# Install: pip install django-cors-headers
+# settings.py:
+INSTALLED_APPS += ['corsheaders']
+MIDDLEWARE = ['corsheaders.middleware.CorsMiddleware'] + MIDDLEWARE
+
+CORS_ALLOWED_ORIGINS = [
+    "https://your-frontend.com",
+    "https://admin.your-frontend.com",
+]
+CORS_ALLOW_CREDENTIALS = True  # allow cookies
+
+# For development only:
+CORS_ALLOWED_ORIGINS += ["http://localhost:3000", "http://localhost:8080"]
+"""
+
+print(django_cors)</div>
+
+<div class="code-block"># ── STEP 4: Rate limiting and DDoS protection ──
+# Rate limiting prevents abuse by limiting requests per user/IP.
+
+# DJANGO REST FRAMEWORK RATE LIMITING:
+drf_throttle = """
+# settings.py:
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',  # anonymous
+        'rest_framework.throttling.UserRateThrottle',  # authenticated
+        'rest_framework.throttling.ScopedRateThrottle',  # per-scope
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/day',      # anonymous: 100 requests/day
+        'user': '1000/day',     # authenticated: 1000/day
+        'login': '5/hour',      # login attempts: 5/hour
+    }
+}
+
+# Per-view throttle:
+from rest_framework.throttling import UserRateThrottle
+
+class MyViewSet(viewsets.ModelViewSet):
+    throttle_classes = [UserRateThrottle]
+    throttle_scope = 'uploads'  # custom scope
+"""
+
+print(drf_throttle)
+
+# DDoS PROTECTION (Distributed Denial of Service):
+ddos_protection = {
+    "Cloudflare": "CDN + WAF + DDoS protection (most popular)",
+    "AWS WAF": "Web Application Firewall (AWS-native)",
+    "nginx limit_req": "Rate limit at reverse proxy level",
+    "fail2ban": "Ban IPs after repeated failures",
+    "Redis-based": "Custom rate limiting with Redis counters",
+}
+
+print("DDoS PROTECTION TOOLS:")
+for tool, desc in ddos_protection.items():
+    print(f"  {tool}: {desc}")
+
+# RATE LIMITING STRATEGIES:
+strategies = {
+    "Fixed Window": "X requests per time window (simple, bursts at edges)",
+    "Sliding Window": "X requests in last N seconds (smooth)",
+    "Token Bucket": "Tokens refill at rate R, each request uses 1 (smoothest)",
+    "Leaky Bucket": "Requests queued, processed at fixed rate",
+}
+
+print("RATE LIMITING STRATEGIES:")
+for strategy, desc in strategies.items():
+    print(f"  {strategy}: {desc}")</div>
+
+<div class="code-block"># ── STEP 5: Django security configuration ──
+# Complete Django production security settings:
+
+django_security_settings = """
+# settings.py (production):
+
+# HTTPS / TLS:
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Cookies:
+SESSION_COOKIE_SECURE = True      # HTTPS only
+SESSION_COOKIE_HTTPONLY = True    # no JavaScript access
+SESSION_COOKIE_SAMESITE = 'Lax'   # CSRF protection
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SAMESITE = 'Lax'
+
+# Headers:
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
+
+# Debug:
+DEBUG = False                     # NEVER True in production!
+
+# Secrets:
+SECRET_KEY = os.environ['SECRET_KEY']  # from environment!
+
+# Allowed hosts:
+ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com']
+
+# CORS:
+CORS_ALLOWED_ORIGINS = ['https://yourdomain.com']
+"""
+
+print(django_security_settings)
+
+# SECURITY AUDIT COMMANDS:
+audit_commands = """
+# Check security headers:
+$ curl -sI https://yourdomain.com | grep -i security
+# Should show: HSTS, CSP, X-Frame-Options, etc.
+
+# Online security scanners:
+# https://securityheaders.com (grade A+ target)
+# https://www.ssllabs.com/ssltest/ (TLS grade A+)
+# https://observatory.mozilla.org (comprehensive scan)
+
+# Django check:
+$ python manage.py check --deploy
+# Reports security issues in your Django config
+"""
+
+print(audit_commands)</div>
+
+<div class="code-block"># ── STEP 6: Security testing and monitoring ──
+# HOW TO TEST YOUR SECURITY:
+
+testing_tools = {
+    "OWASP ZAP": "Free web app scanner (automated + manual)",
+    "Burp Suite": "Professional web security testing",
+    "nikto": "Web server scanner",
+    "nmap": "Network/port scanner",
+    "sqlmap": "SQL injection scanner",
+    "npm audit / pip-audit": "Dependency vulnerability scan",
+    "Snyk": "Continuous vulnerability monitoring",
+    "SonarQube": "Code quality + security analysis",
+}
+
+print("SECURITY TESTING TOOLS:")
+for tool, desc in testing_tools.items():
+    print(f"  {tool}: {desc}")
+
+# SECURITY MONITORING:
+monitoring = {
+    "Log security events": "Logins, failures, access denied, admin actions",
+    "Alert on patterns": "Brute force (many failures), unusual access times",
+    "Monitor dependencies": "CVE notifications for your packages",
+    "Track security metrics": "Failed logins, blocked requests, vuln count",
+    "Incident response plan": "What to do when breached (who, how, when)",
+}
+
+print("\nSECURITY MONITORING:")
+for practice, desc in monitoring.items():
+    print(f"  ☐ {practice}: {desc}")
+
+# SECURITY CHECKLIST SUMMARY:
+summary = """
+LAYER 1 — Network:
+  ✅ HTTPS everywhere (TLS 1.3, HSTS)
+  ✅ Rate limiting (prevent DDoS)
+  ✅ Firewall (only needed ports open)
+
+LAYER 2 — Application:
+  ✅ Input validation (all input is hostile)
+  ✅ Parameterized queries (prevent SQL injection)
+  ✅ Output escaping (prevent XSS)
+  ✅ CSRF tokens (prevent CSRF)
+  ✅ Security headers (CSP, HSTS, X-Frame-Options)
+
+LAYER 3 — Authentication:
+  ✅ Argon2 password hashing
+  ✅ Rate limiting on login
+  ✅ MFA for sensitive accounts
+  ✅ Secure session management
+
+LAYER 4 — Infrastructure:
+  ✅ Docker security (non-root, read-only, limits)
+  ✅ Network segmentation (VPC, security groups)
+  ✅ Secrets management (KMS, Vault, not in code)
+  ✅ Regular updates (OS, packages, frameworks)
+
+LAYER 5 — Monitoring:
+  ✅ Log all security events
+  ✅ Alert on anomalies
+  ✅ Regular security scans
+  ✅ Incident response plan
+
+DEFENSE IN DEPTH.
+Each layer is independent. If one fails, others protect.
+No single point of security failure.</div>
 
 <div class="verse">وَاتَّخَذُوا مِن دُونِ اللَّهِ أَوْلِيَاءَ لَا يَحْفَظُونَهُمْ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"তারা আল্লাহকে ছেড়ে অভিভাবক নিয়েছে যারা তাদের রক্ষা করে না।" — কুরআন ৩৬:৩২</div>
@@ -1160,39 +1445,417 @@ doors.push({
 <strong>Door ৮ — আনাস (Injection):</strong> ইনপুট প্রতিরোধ<br>
 <strong>Door ৯ — ওমর (Defense):</strong> একাধিক স্তর</div></div>
 
-<div class="code-block">— Zero Trust in Practice (Docker + K8s) —
+<div class="code-block"># ── STEP 1: What is Zero Trust? ──
+# Traditional security: "castle and moat" — hard outside, soft inside.
+# Once inside the network, everything is trusted. WRONG.
 
-  # Docker: প্রতিটি container আইসোলেটেড
-  docker run --read-only \
-    --cap-drop ALL \
-    --user 1000:1000 \
-    --network none \
+# Zero Trust: "NEVER trust, ALWAYS verify."
+# Even INSIDE the network, every request is authenticated and authorized.
+
+# THE 3 PRINCIPLES OF ZERO TRUST:
+principles = {
+    "Verify explicitly": "Every request is authenticated, authorized, and validated",
+    "Least privilege": "Give minimum access needed, time-limited",
+    "Assume breach": "Design as if the attacker is already inside",
+}
+
+print("ZERO TRUST PRINCIPLES:")
+for principle, desc in principles.items():
+    print(f"  {principle}: {desc}")
+
+# TRADITIONAL vs ZERO TRUST:
+traditional = """
+TRADITIONAL (Castle and Moat):
+  Internet → Firewall → [Trusted Network]
+  Inside: everything trusts everything
+  Problem: if attacker breaches firewall → full access
+
+ZERO TRUST:
+  Internet → Verify → Verify → Verify → Verify
+  Inside: NOTHING trusts anything without verification
+  Every request checked: WHO, WHAT, WHERE, WHEN
+"""
+
+print(traditional)</div>
+
+<div class="code-block"># ── STEP 2: Docker security ──
+# Containers must be secured. Default Docker is NOT secure.
+
+# DOCKERFILE SECURITY BEST PRACTICES:
+dockerfile = """
+# Use minimal base image:
+FROM python:3.12-slim
+
+# Don't run as root:
+RUN useradd -m appuser
+USER appuser
+
+# Copy only needed files:
+COPY --chown=appuser:appuser requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY --chown=appuser:appuser . .
+
+# Read-only filesystem:
+# (set at runtime, not Dockerfile)
+
+# Health check:
+HEALTHCHECK --interval=30s CMD curl -f http://localhost:8000/health || exit 1
+"""
+
+print(dockerfile)
+
+# DOCKER RUN SECURITY:
+docker_run = """
+# Run container with maximum security:
+$ docker run \\
+    --read-only \\                    # filesystem read-only
+    --cap-drop ALL \\                  # drop all Linux capabilities
+    --cap-add NET_BIND_SERVICE \\      # only add what's needed
+    --user 1000:1000 \\                # non-root user
+    --network none \\                  # no network (or restricted)
+    --memory=512m \\                   # memory limit
+    --cpus=1.0 \\                      # CPU limit
+    --tmpfs /tmp \\                    # temp filesystem
+    --security-opt no-new-privileges \\ # prevent privilege escalation
     myapp:latest
+"""
 
-  # mTLS (mutual TLS) — Istio service mesh
-  apiVersion: security.istio.io/v1beta1
-  kind: PeerAuthentication
-  metadata: {name: default}
-  spec:
-    mtls: {mode: STRICT}    # প্রতিটি সংযোগ যাচাই
+print(docker_run)
 
-  # Network Policy — শুধু প্রয়োজনীয় সংযোগ
-  apiVersion: networking.k8s.io/v1
-  kind: NetworkPolicy
-  spec:
-    podSelector: {matchLabels: {app: api}}
-    policyTypes: [Ingress]
-    ingress:
-    - from:
-      - podSelector: {matchLabels: {app: frontend}}
-      ports: [{protocol: TCP, port: 8000}]
+# WHAT EACH FLAG DOES:
+flags = {
+    "--read-only": "Container filesystem is read-only (can't write)",
+    "--cap-drop ALL": "Remove all Linux capabilities (raw sockets, etc)",
+    "--user 1000:1000": "Run as non-root user",
+    "--network none": "No network access (isolation)",
+    "--memory=512m": "Limit RAM (prevent resource exhaustion)",
+    "--cpus=1.0": "Limit CPU (prevent runaway processes)",
+    "--security-opt no-new-privileges": "Prevent sudo/setuid escalation",
+}
 
-  # Zero Trust Checklist:
-  # ✅ প্রতিটি অনুরোধ যাচাই (device + user)
-  # ✅ mTLS সব service-এ
-  # ✅ Least privilege (শুধু প্রয়োজনীয় access)
-  # ✅ Microsegmentation (ছোট ছোট zone)
-  # ✅ Audit logging (প্রতিটি ক্রিয়া লগ)</div>
+print("DOCKER SECURITY FLAGS:")
+for flag, desc in flags.items():
+    print(f"  {flag}: {desc}")</div>
+
+<div class="code-block"># ── STEP 3: Kubernetes security ──
+# K8s adds orchestration security layers.
+
+# POD SECURITY (security context):
+k8s_pod = """
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+spec:
+  securityContext:
+    runAsNonRoot: true       # never run as root
+    runAsUser: 1000          # specific user
+    fsGroup: 2000            # file system group
+    seccompProfile:
+      type: RuntimeDefault   # restrict system calls
+  containers:
+  - name: app
+    image: myapp:latest
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop: ["ALL"]
+    resources:
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+"""
+
+print(k8s_pod)
+
+# NETWORK POLICY (restrict pod-to-pod communication):
+k8s_network = """
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: api-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: api
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend     # only frontend can reach API
+    ports:
+    - protocol: TCP
+      port: 8000
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: database     # API can only reach database
+    ports:
+    - protocol: TCP
+      port: 5432
+"""
+
+print(k8s_network)
+
+# WHAT THIS DOES:
+# - API pod can only be reached by frontend pod
+# - API pod can only reach database pod
+# - No random pod can access the API
+# - Microsegmentation: each service isolated</div>
+
+<div class="code-block"># ── STEP 4: Service mesh and mTLS ──
+# SERVICE MESH (Istio, Linkerd): handles security between services.
+
+# MUTUAL TLS (mTLS):
+# Regular TLS: client verifies server's identity
+# Mutual TLS: BOTH verify each other
+
+mtls = """
+WITHOUT mTLS:
+  Service A →→→ Service B
+  No encryption between services (even inside cluster!)
+
+WITH mTLS (Istio):
+  Service A ←cert→ Service B
+  Both present certificates
+  All traffic encrypted
+  Certificates auto-rotated (every 24 hours)
+  Even if network is breached, traffic is encrypted
+"""
+
+print(mtls)
+
+# ISTIO PEER AUTHENTICATION (enable mTLS):
+istio_mtls = """
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default
+  namespace: production
+spec:
+  mtls:
+    mode: STRICT    # ALL traffic must use mTLS (no exceptions)
+"""
+
+print(istio_mtls)
+
+# ISTIO AUTHORIZATION (who can call what):
+istio_authz = """
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-to-api
+  namespace: production
+spec:
+  selector:
+    matchLabels:
+      app: api
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals: ["cluster.local/ns/production/sa/frontend"]
+    to:
+    - operation:
+        methods: ["GET", "POST"]
+        paths: ["/api/*"]
+"""
+
+print(istio_authz)
+
+# BENEFITS OF SERVICE MESH:
+benefits = [
+    "Automatic mTLS (no code changes needed)",
+    "Fine-grained access control (per-service, per-route)",
+    "Traffic encryption between all services",
+    "Certificate rotation (automatic, frequent)",
+    "Observability (tracing, metrics, logging)",
+    "Circuit breaking (fail gracefully)",
+]
+
+print("SERVICE MESH BENEFITS:")
+for benefit in benefits:
+    print(f"  {benefit}")</div>
+
+<div class="code-block"># ── STEP 5: Secrets management ──
+# Never store secrets in code, Docker images, or environment files.
+
+# SECRET MANAGEMENT TOOLS:
+secret_tools = {
+    "Kubernetes Secrets": "Native K8s secret storage (base64 encoded)",
+    "HashiCorp Vault": "Centralized secret management, dynamic secrets",
+    "AWS Secrets Manager": "Cloud-native, auto-rotation",
+    "AWS KMS": "Encryption key management",
+    "Docker Secrets": "Swarm-mode secrets (mounted as files)",
+    "Cloud KMS": "Google Cloud / Azure key management",
+}
+
+print("SECRET MANAGEMENT TOOLS:")
+for tool, desc in secret_tools.items():
+    print(f"  {tool}: {desc}")
+
+# KUBERNETES SECRETS:
+k8s_secrets = """
+# Create secret:
+$ kubectl create secret generic db-secret \\
+    --from-literal=password=supersecret123
+
+# Use in pod:
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: app
+    env:
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: db-secret
+          key: password
+"""
+
+print(k8s_secrets)
+
+# HASHICORP VAULT (more secure):
+vault_example = """
+# Store secret in Vault:
+$ vault kv put secret/myapp/db password=supersecret123
+
+# App fetches at runtime (never stored in code):
+import hvac
+client = hvac.Client(url='https://vault.internal:8200', token=token)
+secret = client.secrets.kv.v2.read_secret_version(path='myapp/db')
+db_password = secret['data']['data']['password']
+# Secret NEVER in source code, Docker image, or git
+"""
+
+print(vault_example)
+
+# SECRET MANAGEMENT RULES:
+rules = [
+    "NEVER commit secrets to git (.env in .gitignore)",
+    "NEVER bake secrets into Docker images",
+    "Use secret management tools (Vault, KMS, Secrets Manager)",
+    "Rotate secrets regularly (automated)",
+    "Least privilege: each service only gets secrets it needs",
+    "Audit secret access (log who accessed what when)",
+    "Encrypt secrets at rest (KMS encryption)",
+]
+
+print("SECRET MANAGEMENT RULES:")
+for rule in rules:
+    print(f"  ☐ {rule}")</div>
+
+<div class="code-block"># ── STEP 6: Cloud security best practices ──
+# Security in the cloud (AWS/GCP/Azure):
+
+cloud_security = {
+    "IAM (Identity & Access Management)": {
+        "principle": "Every user/service has minimal permissions",
+        "practice": "Use roles, not individual users. Rotate access keys.",
+    },
+    "VPC (Virtual Private Cloud)": {
+        "principle": "Network isolation",
+        "practice": "Private subnets for databases, public for load balancers",
+    },
+    "Security Groups": {
+        "principle": "Firewall rules per resource",
+        "practice": "Deny all by default, allow only needed ports",
+    },
+    "Encryption at Rest": {
+        "principle": "Encrypt databases, S3, EBS",
+        "practice": "Use KMS-managed keys, encrypt all storage",
+    },
+    "CloudTrail / Audit Logs": {
+        "principle": "Log every API call",
+        "practice": "Monitor for suspicious activity, alert on anomalies",
+    },
+    "WAF (Web Application Firewall)": {
+        "principle": "Filter malicious traffic",
+        "practice": "OWASP rules, rate limiting, bot protection",
+    },
+}
+
+print("CLOUD SECURITY BEST PRACTICES:")
+for area, info in cloud_security.items():
+    print(f"\n  {area}:")
+    print(f"    Principle: {info['principle']}")
+    print(f"    Practice: {info['practice']}")
+
+# THE ZERO TRUST CHECKLIST:
+zero_trust_checklist = """
+ZERO TRUST CHECKLIST:
+
+IDENTITY:
+  ✅ Multi-factor authentication (MFA) everywhere
+  ✅ Single Sign-On (SSO) with SAML/OIDC
+  ✅ Passwordless (WebAuthn) where possible
+  ✅ Service accounts with minimal permissions
+
+DEVICES:
+  ✅ Device posture check (is it managed? patched?)
+  ✅ Endpoint Detection and Response (EDR)
+  ✅ Disk encryption (BitLocker, FileVault)
+  ✅ Automatic screen lock
+
+NETWORK:
+  ✅ Microsegmentation (small zones, not flat network)
+  ✅ mTLS between all services
+  ✅ Network policies (restrict pod-to-pod)
+  ✅ VPN / Zero Trust Network Access (ZTNA)
+
+APPLICATIONS:
+  ✅ OAuth 2.0 / OpenID Connect
+  ✅ API rate limiting
+  ✅ Input validation
+  ✅ Regular penetration testing
+
+DATA:
+  ✅ Encryption at rest (KMS)
+  ✅ Encryption in transit (TLS 1.3)
+  ✅ Data classification (public, internal, confidential)
+  ✅ Data Loss Prevention (DLP)
+
+MONITORING:
+  ✅ Centralized logging (ELK, Splunk)
+  ✅ SIEM (Security Information & Event Management)
+  ✅ Anomaly detection (ML-based)
+  ✅ Incident response plan
+
+"You can't hack what you can't reach."
+Zero Trust = make every attacker work harder at every step.
+"""
+
+print(zero_trust_checklist)
+
+# CONGRATULATIONS!
+# You've completed the Cryptography book.
+# You now understand the COMPLETE security landscape:
+# Door 1: Encryption (AES, RSA)
+# Door 2: Key Exchange (Diffie-Hellman, ECDH)
+# Door 3: Hashing (SHA-256, HMAC)
+# Door 4: Password Security (Argon2, bcrypt)
+# Door 5: PKI & Certificates (CA, Let's Encrypt)
+# Door 6: TLS (HTTPS, handshake)
+# Door 7: JWT Authentication
+# Door 8: Injection Prevention (SQL, XSS, CSRF)
+# Door 9: Security Headers (CSP, CORS, HSTS)
+# Door 10: Zero Trust (Docker, K8s, mTLS, Vault)
+
+# Security is a JOURNEY, not a destination.
+# Keep learning, keep updating, keep vigilant.
+# "The only truly secure system is one that is powered off,
+# cast in a block of concrete, and sealed in a lead-lined room
+# with armed guards." — Gene Spafford
+# But we can get CLOSE enough.</div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">৯</div><div class="sc-label">শিক্ষক</div></div>
