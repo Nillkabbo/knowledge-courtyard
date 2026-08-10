@@ -2188,42 +2188,401 @@ HTTP response: ২০০ OK + body</div></div>
 <div class="diag-cap">Encapsulation: প্রতিটি স্তর নিজের header যোগ করে · সার্ভারে উল্টোভাবে খোলে · মূল ডেটা অপরিবর্তিত</div>
 </div>
 
-<div class="code-block">— সম্পূর্ণ curl -v: সব স্তর একসাথে দেখো —
+<div class="code-block"># ── STEP 1: The complete journey of a packet ──
+# When you type google.com, ALL 7 layers work together.
+
+journey = """
+COMPLETE JOURNEY: "google.com" → seeing the page
+
+LAYER 7: APPLICATION — DNS lookup
+  → Browser asks: "What's the IP for google.com?"
+  → DNS resolver → Root → TLD → Authoritative
+  → Answer: 142.250.190.46
+  (Time: ~10-50ms)
+
+LAYER 4: TRANSPORT — TCP handshake
+  → SYN (client → server)
+  → SYN-ACK (server → client)
+  → ACK (client → server)
+  → TCP connection established
+  (Time: ~20-100ms depending on distance)
+
+LAYER 6/5: PRESENTATION/SESSION — TLS handshake
+  → Client Hello (supported ciphers)
+  → Server Hello + Certificate
+  → Key exchange (ECDHE)
+  → Encryption ON
+  (Time: ~20-100ms)
+
+LAYER 7: APPLICATION — HTTP request
+  → GET / HTTP/2
+  → Host: google.com
+  → Accept: text/html
+  (Encrypted within TLS tunnel)
+
+LAYER 7: APPLICATION — HTTP response
+  → HTTP/2 200 OK
+  → Content-Type: text/html
+  → HTML document (encrypted)
+
+LAYER 4: TRANSPORT — TCP data transfer
+  → Data split into segments
+  → Each segment ACK'd
+  → Reliable delivery guaranteed
+
+LAYER 3: NETWORK — IP routing
+  → Each packet routed through ~5-15 routers
+  → From your ISP → backbone → Google's network
+
+LAYER 2: DATA LINK — Frame delivery
+  → Each hop: Ethernet frame (MAC → MAC)
+  → Switches forward frames
+
+LAYER 1: PHYSICAL — Electrical/optical signals
+  → Bits over copper, fiber, or radio
+  → The actual physical signal
+
+Total time: ~100-300ms for the full page
+"""
+
+print(journey)</div>
+
+<div class="code-block"># ── STEP 2: Seeing all layers with curl -v ──
+# curl -v reveals every layer's contribution.
+
+curl_verbose = """
 $ curl -v https://google.com
 
-*   Trying 142.250.190.46:443...                      ← DNS (Door 5)
-* Connected to google.com (142.250.190.46) port 443    ← TCP (Door 4)
-* ALPN: offers h2, http/1.1                            ← HTTP/2 negotiation
-* TLSv1.3 (OUT), TLS handshake, Client hello (1)       ← TLS (Door 9)
-* TLSv1.3 (IN), TLS handshake, Server hello (2)
-* SSL certificate verify ok.                            ← সার্টিফিকেট ঠিক
-> GET / HTTP/2                                          ← HTTP (Door 6)
+*   Trying 142.250.190.46:443...           ← DNS (Layer 7: domain→IP)
+* Connected to google.com port 443          ← TCP (Layer 4: connection)
+* ALPN: offers h2, http/1.1                 ← HTTP/2 negotiation
+* TLSv1.3 (OUT), TLS handshake, Client hello  ← TLS (Layer 6: handshake)
+* TLSv1.3 (IN), TLS handshake, Server hello
+* SSL certificate verify ok.                ← Certificate verified
+> GET / HTTP/2                              ← HTTP request (Layer 7)
 > Host: google.com
 > User-Agent: curl/8.0
 > Accept: */*
 >
-< HTTP/2 200                                           ← সার্ভার উত্তর
+< HTTP/2 200                                ← HTTP response (Layer 7)
 < content-type: text/html
-< cf-cache-status: HIT                                 ← CDN (Door 7)
+< cf-cache-status: HIT                      ← CDN cache hit (Layer 7)
 <
-<!doctype html><html>...                               ← বডি (Door 1: L7)
+<!doctype html><html>...                    ← HTML body (Layer 7)
 
-— এই এক কমান্ডে ৭টি স্তর কাজ করেছে —
-— DNS → TCP → TLS → HTTP → CDN → HTML → তোমার স্ক্রিন —</div>
+THIS ONE COMMAND TRIGGERED ALL 7 LAYERS:
+  DNS → TCP → TLS → HTTP → CDN → HTML → screen
+"""
 
-<div class="code-block">— ট্রাবলশুটিং: কোথায় সমস্যা? —
-$ curl -v https://example.com  2>&1 | grep -E 'Trying|Connected|TLS|HTTP'
+print(curl_verbose)
 
-"Trying 93.184.216.34:443..."  → DNS কাজ করছে        ✓
-"Connected"                    → TCP সংযোগ সফল        ✓
-"TLS handshake"                → TLS সফল               ✓
-"HTTP/2 200"                   → HTTP সফল              ✓
+# PYTHON EQUIVALENT:
+python_journey = """
+import requests
+import socket
+import ssl
 
-— যদি আটকে যায়: —
-  "Trying..." তে আটক    → DNS সমস্যা → nslookup চালাও
-  "Connected" না         → TCP সমস্যা → ping চালাও
-  "TLS handshake" fail  → সার্টিফিকেট সমস্যা → openssl চালাও
-  "HTTP 4xx/5xx"        → Server সমস্যা → log দেখো</div>
+# Step 1: DNS lookup (Layer 7):
+ip = socket.gethostbyname('google.com')
+print(f"1. DNS: google.com → {ip}")
+
+# Step 2: TCP + TLS + HTTP (Layers 4, 6, 7):
+response = requests.get('https://google.com')
+print(f"2. TCP: connected to {ip}:443")
+print(f"3. TLS: encrypted connection established")
+print(f"4. HTTP: {response.status_code}")
+print(f"5. Body: {len(response.text)} bytes received")
+
+# All 7 layers happened inside this single requests.get() call:
+# DNS → TCP handshake → TLS handshake → HTTP request →
+# HTTP response → TCP data transfer → screen render
+"""
+
+print(python_journey)</div>
+
+<div class="code-block"># ── STEP 3: Network troubleshooting methodology ──
+# Systematic approach to finding network problems.
+
+methodology = """
+NETWORK TROUBLESHOOTING (bottom-up):
+
+1. PHYSICAL (Layer 1):
+   → Is the cable plugged in?
+   → Is Wi-Fi connected?
+   → Are link lights on?
+
+2. DATA LINK (Layer 2):
+   → ip link show (is interface UP?)
+   → Can I see the switch?
+
+3. NETWORK (Layer 3):
+   → ping 127.0.0.1 (is IP stack working?)
+   → ping [own IP] (is NIC configured?)
+   → ping [gateway] (is local network OK?)
+   → ping 8.8.8.8 (is internet reachable?)
+   → traceroute 8.8.8.8 (where does it break?)
+
+4. DNS (Layer 7):
+   → dig google.com (does DNS resolve?)
+   → dig @8.8.8.8 google.com (try different DNS)
+
+5. TRANSPORT (Layer 4):
+   → nc -zv host 443 (is port open?)
+   → curl -v (see TCP/TLS/HTTP)
+
+6. APPLICATION (Layer 7):
+   → curl -v https://google.com (full HTTP test)
+   → Check HTTP status codes
+   → Check application logs
+
+MOST NETWORK PROBLEMS ARE:
+  → DNS (40%): wrong DNS server, DNS down
+  → Firewall (30%): port blocked
+  → Cable/physical (15%): disconnected
+  → Server down (10%): service not running
+  → Other (5%): routing, NAT, etc.
+"""
+
+print(methodology)
+
+# DIAGNOSTIC DECISION TREE:
+decision_tree = """
+DECISION TREE:
+
+"I can't reach the server"
+
+→ Can I ping the server?
+  YES → Network is OK, check application (curl -v)
+  NO  → Continue...
+
+→ Can I ping the gateway?
+  YES → Local network OK, problem is upstream
+  NO  → Local network issue (cable, Wi-Fi, switch)
+
+→ Can I ping 8.8.8.8?
+  YES → Internet works, DNS is the problem
+  NO  → Internet is down (ISP issue)
+
+→ Can I resolve DNS (dig google.com)?
+  YES → DNS works, problem is elsewhere
+  NO  → DNS server is down, try 8.8.8.8
+
+→ Is the port open? (nc -zv host 443)
+  YES → Firewall allows it, check application
+  NO  → Firewall blocking, or server not listening
+
+→ Does TLS work? (openssl s_client)
+  YES → TLS fine, check HTTP
+  NO  → Certificate expired, wrong protocol
+
+→ Does HTTP work? (curl -v)
+  YES → Everything works!
+  NO  → Check status code (4xx=client, 5xx=server)
+"""
+
+print(decision_tree)</div>
+
+<div class="code-block"># ── STEP 4: curl -v diagnostic (all layers at once) ──
+# The single most useful diagnostic command.
+
+curl_diagnostic = """
+# See ALL layers in one command:
+$ curl -v https://example.com 2>&1 | grep -E 'Trying|Connected|TLS|HTTP'
+
+"Trying 93.184.216.34:443..."  → DNS working         ✓
+"Connected"                    → TCP connection OK   ✓
+"TLS handshake"                → TLS successful      ✓
+"HTTP/2 200"                   → HTTP successful     ✓
+
+WHERE IT BREAKS:
+  Stuck at "Trying..."    → DNS problem → nslookup
+  No "Connected"          → TCP problem → ping, nc
+  "TLS handshake" fail   → Cert problem → openssl s_client
+  "HTTP 4xx/5xx"          → App problem → check logs
+  "Connection timed out"  → Firewall    → check UFW/security groups
+  "Connection refused"    → Server down → start the service
+
+CURL FLAGS FOR DIAGNOSTICS:
+  -v          verbose (show all layers)
+  -I          headers only (no body)
+  -o /dev/null  discard body (just see status)
+  -w format   custom output (timing, etc.)
+  --max-time  set timeout
+  -L          follow redirects
+  -k          ignore cert errors (for testing only!)
+
+TIMING BREAKDOWN:
+$ curl -w 'DNS: %{time_namelookup}s\\n
+TCP: %{time_connect}s\\n
+TLS: %{time_appconnect}s\\n
+Total: %{time_total}s\\n' -o /dev/null -s https://google.com
+
+DNS:   0.012s    ← DNS resolution
+TCP:   0.045s    ← TCP connection
+TLS:   0.089s    ← TLS handshake
+Total: 0.156s    ← Everything
+"""
+
+print(curl_diagnostic)</div>
+
+<div class="code-block"># ── STEP 5: Network monitoring tools ──
+# Keep an eye on network health in production.
+
+monitoring = """
+PRODUCTION NETWORK MONITORING:
+
+1. UPTIME MONITORING:
+   → Pingdom, UptimeRobot, StatusPage
+   → Check if your site is reachable every 1-5 minutes
+   → Alert if downtime detected
+
+2. LATENCY MONITORING:
+   → Track response times (p50, p95, p99)
+   → Alert if latency exceeds threshold
+   → Monitor from multiple geographic locations
+
+3. BANDWIDTH MONITORING:
+   → Track data transfer (in/out)
+   → Alert on bandwidth spikes (possible DDoS)
+   → Tools: vnstat, iftop, nload
+
+4. CONNECTION MONITORING:
+   → Track active connections (ss -tn)
+   → Alert on connection limit
+   → Monitor TIME_WAIT count
+
+5. DNS MONITORING:
+   → Verify DNS resolves correctly
+   → Monitor DNS response time
+   → Alert on DNS failures
+
+PYTHON MONITORING SCRIPT:
+  import requests
+  import time
+
+  def monitor_endpoint(url, interval=60):
+      while True:
+          try:
+              start = time.time()
+              response = requests.get(url, timeout=10)
+              elapsed = time.time() - start
+
+              if response.status_code != 200:
+                  alert(f"{url} returned {response.status_code}")
+
+              if elapsed > 5.0:
+                  alert(f"{url} slow: {elapsed:.2f}s")
+
+              log(f"{url} - {response.status_code} - {elapsed:.3f}s")
+          except Exception as e:
+              alert(f"{url} error: {e}")
+
+          time.sleep(interval)
+
+  monitor_endpoint("https://api.example.com/health")
+"""
+
+print(monitoring)
+
+# MONITORING TOOLS:
+tools = {
+    "Prometheus + Grafana": "Metrics collection + visualization",
+    "Datadog": "Full-stack monitoring (paid)",
+    "New Relic": "APM + network monitoring",
+    "Pingdom": "Uptime monitoring from global locations",
+    "UptimeRobot": "Free uptime monitoring",
+    "Cloudflare Analytics": "CDN-level metrics",
+    "Nginx status": "Connection/request metrics",
+}
+
+print("MONITORING TOOLS:")
+for tool, desc in tools.items():
+    print(f"  {tool}: {desc}")</div>
+
+<div class="code-block"># ── STEP 6: The 10 doors summary ──
+# Everything you've learned about computer networks.
+
+doors = {
+    "Door 1": "OSI Model + TCP/IP — 7 layers",
+    "Door 2": "Physical + Data Link — cables, MAC, Ethernet, ARP",
+    "Door 3": "IP + Routing — IPv4/IPv6, subnetting, NAT, firewalls",
+    "Door 4": "TCP + UDP — handshake, ports, reliability",
+    "Door 5": "DNS + DHCP — domain resolution, auto IP assignment",
+    "Door 6": "HTTP — methods, status codes, REST APIs, HTTP/2/3",
+    "Door 7": "CDN + Caching — Cloudflare, cache-control, edge",
+    "Door 8": "WebSockets — real-time, Django Channels, WebRTC",
+    "Door 9": "TLS/HTTPS — encryption, certificates, Let's Encrypt",
+    "Door 10": "Complete Journey — all layers, troubleshooting",
+}
+
+print("THE 10 DOORS OF COMPUTER NETWORKS:")
+for door, topic in doors.items():
+    print(f"  {door}: {topic}")
+
+# YOUR JOURNEY:
+journey_summary = """
+You started knowing networking as "the internet works."
+You finish understanding EXACTLY how it works:
+
+WHAT YOU CAN NOW DO:
+  ✅ Trace a packet from browser to server (all 7 layers)
+  ✅ Debug any network problem systematically
+  ✅ Configure DNS, DHCP, firewalls, TLS
+  ✅ Set up CDN for global performance
+  ✅ Build real-time apps (WebSocket, WebRTC)
+  ✅ Secure your network (TLS, firewalls, VPN)
+  ✅ Monitor network health in production
+  ✅ Understand every curl -v output line
+
+WHAT TO DO NEXT:
+  1. Practice with real servers (your LedgerPilot VPS!)
+  2. Set up Cloudflare CDN for your app
+  3. Monitor with Prometheus/Grafana
+  4. Read RFC documents (the actual specs)
+  4. Study for networking certifications (CCNA, Network+)
+  5. Build a load-balanced multi-server setup
+
+"Networking is the backbone of everything in tech.
+Every app, every website, every API — all depend on networking.
+Master networking, and you can debug anything."
+
+Welcome to Computer Networks mastery.
+"""
+
+print(journey_summary)
+
+# NETWORKING COMMAND CHEAT SHEET:
+cheatsheet = """
+DAILY COMMANDS:
+  ping host              → test connectivity
+  dig domain             → DNS lookup
+  curl -v URL            → HTTP test (all layers)
+  ss -tnp                → active connections
+  ip addr                → your IP/MAC
+  traceroute host        → see the path
+  nc -zv host port       → test if port open
+
+PRODUCTION DIAGNOSTICS:
+  curl -w timing URL     → latency breakdown
+  openssl s_client       → TLS inspection
+  tcpdump                → packet capture
+  nmap                   → port scan
+  iftop                  → bandwidth monitor
+
+YOU NOW KNOW NETWORKING.
+Go build something amazing.
+"""
+
+print(cheatsheet)
+
+# THE END:
+# From electrons on a wire to HTTP/3 streaming —
+# you now understand EVERY layer of computer networking.
+# This knowledge is the foundation of all web development,
+# system administration, and cloud engineering.
+# Every interview, every production issue, every optimization —
+# networking knowledge is your superpower.
+# Congratulations on completing the Computer Networks book!</div>
 
 <div class="verse">اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"আল্লাহ আসমান ও পৃথিবীর আলো।" — কুরআন ২৪:৩৫</div>
