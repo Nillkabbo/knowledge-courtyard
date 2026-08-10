@@ -1434,28 +1434,332 @@ doors.push({
 <div class="dialogue"><strong>দলিল-রক্ষক ইমরান:</strong> সাফওয়ান (Door ৪) তোমাকে পাসওয়ার্ড শিখিয়েছেন। কিন্তু পাসওয়ার্ড শুধু ইউজারের। সার্ভারের পরিচয় কে যাচাই করবে? উত্তর: CA। Let's Encrypt (২০১৫) বিনামূল্যে সার্টিফিকেট দেয় — certbot দিয়ে। সার্টিফিকেটে থাকে: ডোমেইন নাম, public key, মেয়াদ, CA স্বাক্ষর। মেয়াদ শেষ হলে HTTPS ভাঙে — "Your connection is not private"।</div>
 <div class="dialogue en"><strong>Document Keeper Imran:</strong> Safwan (Door 4) taught you passwords. But passwords are for users. Who verifies the server's identity? Answer: CA. Let's Encrypt (2015) gives free certificates — via certbot. Certificate contains: domain name, public key, expiry, CA signature. Expired = HTTPS breaks — "Your connection is not private."</div>
 
-<div class="code-block">— OpenSSL: সার্টিফিকেট পরীক্ষা —
+<div class="code-block"># ── STEP 1: What is PKI? ──
+# PKI = Public Key Infrastructure
+# The system that lets you TRUST a website's public key.
 
-  # সার্ভারের সার্টিফিকেট দেখো
-  $ openssl s_client -connect google.com:443 -servername google.com
+# THE PROBLEM:
+# You connect to "google.com" and get a public key.
+# How do you KNOW it's really Google's key?
+# Maybe an attacker swapped it (man-in-the-middle attack)?
 
-  Certificate chain
-   0 s:CN = *.google.com            ← কার সার্টিফিকেট?
-     i:CN = GTS CA 1C3              ← কে দিয়েছে?
-   1 s:CN = GTS CA 1C3              ← intermediate CA
-     i:CN = GTS Root R1             ← root CA
+# THE SOLUTION: CERTIFICATES
+# A Certificate Authority (CA) VERIFIES identity and SIGNS the public key.
+# Your browser trusts pre-installed CAs (like DigiCert, Let's Encrypt).
 
-  # সার্টিফিকেটের বিস্তারিত:
-  $ openssl x509 -in cert.pem -text -noout
+# THE CHAIN OF TRUST:
+chain = """
+Your Browser
+  ↓ trusts
+Root CA (pre-installed in browser/OS)
+  ↓ signs
+Intermediate CA
+  ↓ signs
+Website Certificate (google.com)
 
-  Subject: CN=*.google.com
-  Issuer:  CN=GTS CA 1C3
-  Not Before: Jul 14, 2026          ← শুরু
-  Not After:  Sep 6, 2026           ← শেষ (৯০ দিন)
+Each level signs the next. Break any link → untrusted.
+"""
 
-  — Let's Encrypt দিয়ে বিনামূল্যে সার্টিফিকেট:
-  $ sudo certbot certonly --nginx -d example.com
-  $ sudo certbot renew              ← স্বয়ংক্রিয় রিনিউ</div>
+print(chain)
+
+# WHAT'S IN A CERTIFICATE:
+cert_fields = {
+    "Subject": "Who the cert belongs to (CN=google.com)",
+    "Issuer": "Who issued the cert (CA name)",
+    "Public Key": "The website's public key",
+    "Validity": "Not Before / Not After dates",
+    "Signature": "CA's digital signature (proves authenticity)",
+    "SAN": "Subject Alternative Names (all domains covered)",
+}
+
+print("CERTIFICATE FIELDS:")
+for field, desc in cert_fields.items():
+    print(f"  {field}: {desc}")</div>
+
+<div class="code-block"># ── STEP 2: Inspecting certificates ──
+# See the certificate chain for any HTTPS site:
+
+openssl_commands = """
+# View server certificate chain:
+$ openssl s_client -connect google.com:443 -servername google.com
+
+Certificate chain
+ 0 s:CN = *.google.com           ← website cert
+   i:CN = GTS CA 1C3             ← issued by intermediate
+ 1 s:CN = GTS CA 1C3             ← intermediate CA
+   i:CN = GTS Root R1            ← issued by root
+
+# View certificate details:
+$ openssl x509 -in cert.pem -text -noout
+
+Subject: CN=*.google.com
+Issuer:  CN=GTS CA 1C3
+Not Before: Jul 14, 2026
+Not After:  Sep 6, 2026    ← 90 days (Google rotates quarterly)
+Public Key Algorithm: id-ecPublicKey   ← ECC key
+Signature Algorithm: ecdsa-with-SHA256
+
+# Verify certificate chain:
+$ openssl verify -CAfile root.pem intermediate.pem website.pem
+website.pem: OK
+
+# Get certificate fingerprint:
+$ openssl x509 -in cert.pem -fingerprint -sha256
+SHA256 Fingerprint=AB:CD:EF:...
+"""
+
+print(openssl_commands)
+
+# IN PYTHON:
+python_cert = """
+import ssl
+import socket
+
+# Get certificate from a live server:
+ctx = ssl.create_default_context()
+with ctx.wrap_socket(socket.socket(), server_hostname='google.com') as s:
+    s.connect(('google.com', 443))
+    cert = s.getpeercert()
+    print(f"Subject: {cert['subject']}")
+    print(f"Issuer: {cert['issuer']}")
+    print(f"Expires: {cert['notAfter']}")
+"""
+
+print(python_cert)</div>
+
+<div class="code-block"># ── STEP 3: Let's Encrypt — free certificates ──
+# Let's Encrypt provides FREE SSL certificates (automated).
+
+# HOW LET'S ENCRYPT WORKS:
+le_process = """
+1. Install certbot:
+   $ apt install certbot python3-certbot-nginx
+
+2. Get certificate:
+   $ sudo certbot --nginx -d example.com -d www.example.com
+   - certbot proves you own the domain (ACME challenge)
+   - installs certificate in nginx config
+   - auto-configures HTTPS redirect
+
+3. Auto-renewal (certificates expire in 90 days):
+   $ sudo certbot renew --dry-run  # test
+   $ crontab: 0 12 * * * /usr/bin/certbot renew --quiet
+   # or systemd timer (recommended)
+
+4. Verify:
+   $ curl -I https://example.com
+   HTTP/2 200  ← HTTPS working!
+"""
+
+print(le_process)
+
+# WHY 90-DAY EXPIRY?
+# - Forces automation (no manual renewal)
+# - Limits damage if key is compromised
+# - Encourages best practices (short-lived certs)
+# - Traditional CAs charge $100+/year for 1-2 year certs
+
+# DJANGO + HTTPS (LedgerPilot):
+django_https = """
+# Nginx config (reverse proxy):
+server {
+    listen 443 ssl http2;
+    server_name api.ledgerpilot.com;
+
+    ssl_certificate /etc/letsencrypt/live/api.ledgerpilot.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/api.ledgerpilot.com/privkey.pem;
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;  # Gunicorn
+    }
+}
+
+# Force HTTPS redirect:
+server {
+    listen 80;
+    server_name api.ledgerpilot.com;
+    return 301 https://$server_name$request_uri;
+}
+"""
+
+print(django_https)</div>
+
+<div class="code-block"># ── STEP 4: Certificate Authorities ──
+# CAs are the TRUST ANCHORS of the internet.
+
+# TYPES OF CERTIFICATES:
+cert_types = {
+    "DV (Domain Validated)": {
+        "validation": "Just proves domain ownership",
+        "cost": "Free (Let's Encrypt)",
+        "time": "Minutes",
+        "trust": "Basic",
+    },
+    "OV (Organization Validated)": {
+        "validation": "Verifies organization exists",
+        "cost": "$100-300/year",
+        "time": "Days",
+        "trust": "Medium (shows company name)",
+    },
+    "EV (Extended Validation)": {
+        "validation": "Extensive verification (legal, physical)",
+        "cost": "$300-1000/year",
+        "time": "Weeks",
+        "trust": "Highest (green bar, now deprecated)",
+    },
+    "Wildcard": {
+        "validation": "Covers *.example.com",
+        "cost": "$100-500/year",
+        "time": "Minutes (with Let's Encrypt)",
+        "trust": "Covers unlimited subdomains",
+    },
+}
+
+print("CERTIFICATE TYPES:")
+for cert_type, info in cert_types.items():
+    print(f"\n  {cert_type}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# MAJOR CERTIFICATE AUTHORITIES:
+cas = [
+    "Let's Encrypt (free, automated, most popular)",
+    "DigiCert (enterprise, premium)",
+    "Sectigo (formerly Comodo)",
+    "GlobalSign",
+    "Cloudflare (free with their CDN)",
+    "AWS Certificate Manager (free with AWS)",
+]
+
+print("MAJOR CERTIFICATE AUTHORITIES:")
+for ca in cas:
+    print(f"  {ca}")</div>
+
+<div class="code-block"># ── STEP 5: Certificate revocation ──
+# What happens when a certificate is COMPROMISED?
+
+# REVOCATION METHODS:
+revocation = {
+    "CRL (Certificate Revocation List)": {
+        "how": "CA publishes list of revoked certificates",
+        "problem": "Large list, slow to download, infrequently updated",
+        "status": "Legacy (rarely used by browsers)",
+    },
+    "OCSP (Online Certificate Status Protocol)": {
+        "how": "Browser queries CA in real-time: 'is this cert valid?'",
+        "problem": "Privacy concern (CA knows which sites you visit), latency",
+        "status": "Being phased out",
+    },
+    "OCSP Stapling": {
+        "how": "Server fetches OCSP response and 'staples' it to certificate",
+        "problem": "None (best approach)",
+        "status": "Modern standard",
+    },
+    "CRLite (Firefox)": {
+        "how": "Bloom filter compressed list of all revoked certs",
+        "problem": "None (efficient, private)",
+        "status": "Firefox only (for now)",
+    },
+}
+
+print("REVOCATION METHODS:")
+for method, info in revocation.items():
+    print(f"\n  {method}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# WHEN CERTIFICATES GET REVOKED:
+reasons = [
+    "Private key compromised (stolen)",
+    "Certificate issued in error",
+    "Domain ownership changed",
+    "CA was breached (mass revocation)",
+    "Heartbleed (2014): millions of certs reissued",
+]
+
+print("\nREVOCATION REASONS:")
+for reason in reasons:
+    print(f"  {reason}")</div>
+
+<div class="code-block"># ── STEP 6: Modern TLS and certificate management ──
+# TLS 1.3 (the modern standard):
+
+tls13_features = {
+    "Fewer round trips": "1-RTT handshake (vs 2-RTT for TLS 1.2)",
+    "Mandatory forward secrecy": "ECDHE always used (past sessions safe)",
+    "Removed weak algorithms": "No RSA key exchange, no CBC mode",
+    "0-RTT mode": "Resume sessions with 0 latency (early data)",
+    "Encrypted extensions": "More of the handshake is encrypted",
+    "Simplified": "Removed legacy features, cleaner protocol",
+}
+
+print("TLS 1.3 FEATURES:")
+for feature, desc in tls13_features.items():
+    print(f"  {feature}: {desc}")
+
+# AUTOMATED CERTIFICATE MANAGEMENT:
+auto_mgmt = """
+# Let's Encrypt + Certbot (most common):
+$ apt install certbot
+$ certbot --nginx -d example.com
+# Automatically: gets cert, configures nginx, sets up renewal
+
+# cert-manager (Kubernetes):
+# Automatically issues and rotates certificates for pods
+$ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/
+
+# AWS Certificate Manager:
+# Free certificates for AWS services (CloudFront, ALB)
+# Automatic renewal, no manual management
+"""
+
+print(auto_mgmt)
+
+# CERTIFICATE PINNING (mobile apps):
+pinning = """
+# Pin the expected certificate/hash in the app:
+# - App refuses to accept any other certificate
+# - Prevents MITM even if CA is compromised
+# - Used by banking apps, Signal, WhatsApp
+# - Downside: hard to rotate keys
+
+# Example (Android Network Security Config):
+<network-security-config>
+  <domain-config>
+    <domain includeSubdomains="true">api.myapp.com</domain>
+    <pin-set expiration="2026-12-31">
+      <pin digest="SHA-256">base64hash...</pin>
+    </pin-set>
+  </domain-config>
+</network-security-config>
+"""
+
+print(pinning)
+
+# THE BIG PICTURE:
+# PKI is the TRUST FOUNDATION of the internet.
+# Without certificates: no HTTPS, no online banking, no e-commerce.
+# Every secure connection starts with a certificate proving identity.
+
+# SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Role                             │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Certificate      │ Proves website identity          │
+# │ CA               │ Trusted third party (signs certs)│
+# │ Chain of Trust   │ Root → Intermediate → Website    │
+# │ Let's Encrypt    │ Free, automated certificates     │
+# │ TLS 1.3          │ Modern, secure handshake         │
+# │ OCSP Stapling    │ Real-time revocation check       │
+# │ Cert Pinning     │ Mobile app extra security        │
+# └──────────────────┴──────────────────────────────────┘
+
+# For your projects:
+# - Use Let's Encrypt (free, automated)
+# - Force HTTPS redirect (no HTTP access)
+# - Use HSTS header (browser remembers to use HTTPS)
+# - Monitor certificate expiry (alert before it expires)
+# - Use certbot renew or cert-manager for auto-renewal</div>
 
 <div class="callout info"><span class="co-icon">📜</span><div><strong>Chain of Trust:</strong><br>
 তোমার ব্রাউজার → root CA (পূর্ব-ইনস্টলড) → intermediate CA → সার্ভার সার্টিফিকেট। প্রতিটি ধাপে ডিজিটাল স্বাক্ষর। কোনো ধাপ ভাঙলে পুরো শৃঙ্খল অবিশ্বাস্য। এটাই trust — শাহাদাহ-র ডিজিটাল রূপ।</div></div>
