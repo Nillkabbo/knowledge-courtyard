@@ -831,71 +831,302 @@ doors.push({
 </div>
 <div class="svg-caption">Attention — প্রতিটি শব্দ অন্য শব্দের প্রতি নজর দেয়; "IT" কে? animal-এ সবচেয়ে বেশি নজর</div>
 
-<div class="code-block">Self-Attention — LLM-এর হৃদপিণ্ড:
+<div class="code-block"># ── STEP 1: What is self-attention? ──
+# Self-attention lets each token "look at" ALL other tokens
+# to understand context.
 
-"Attention Is All You Need" (Vaswani et al., 2017)
-→ Transformer architecture = attention-based
-→ এই একটা paper পুরো AI পৃথিবী বদলে দিয়েছে
+# THE PROBLEM:
+sentence = "The animal didn't cross the street because IT was too tired."
+# What does "IT" refer to? animal or street?
+# Humans know: animal (streets don't get tired).
+# How does a MACHINE learn this? → ATTENTION
 
-THE PROBLEM:
-  "The animal didn't cross the street because 
-   IT was too tired."
-  
-  IT কে? animal নাকি street?
-  মানুষ জানে — animal. কারণ animal 
-  tired হতে পারে, street নয়।
-  
-  মেশিন কীভাবে জানবে? → ATTENTION
+# "Attention Is All You Need" (Vaswani et al., 2017)
+# This ONE paper revolutionized all of AI.
+# Every modern LLM (GPT, Claude, Llama) uses this mechanism.
 
-HOW ATTENTION WORKS:
+print("The problem: resolving 'IT' → animal (not street)")
+print("Solution: self-attention lets tokens communicate with each other")</div>
 
-প্রতিটি টোকেনের জন্য ৩টি ভেক্টর:
-  Q (Query): "আমি কী খুঁজছি?"
-  K (Key): "আমি কী অফার করি"  
-  V (Value): "আমি কী জানি"
+<div class="code-block"># ── STEP 2: Q, K, V — the three vectors ──
+# Each token gets THREE vectors: Query, Key, Value.
 
-Attention Calculation:
-  Score = Q * K^T / √d_k
-  → প্রতিটি জোড়ার "মিল" হিসাব করে
-  
-  Weights = softmax(Score)
-  → স্কোরকে সম্ভাবনায় রূপান্তর (০-১)
-  
-  Output = Weights * V
-  → সব শব্দের তথ্যের ওজন করা যোগফল
+import numpy as np
 
-"IT" টোকেনের জন্য:
-  IT-এর Q: "আমি এমন কিছু খুঁজছি যে tired হতে পারে"
-  
-  "animal"-এর K: "আমি এমন কিছু যে tired হয়"  
-  → Q * K মিল = উচ্চ স্কোর!
-  
-  "street"-এর K: "আমি এমন কিছু যে tired হয় না"
-  → Q * K মিল = নিম্ন স্কোর
-  
-  ফলাফল: IT বেশি attention দেয় "animal"-কে
-  → IT = animal (প্রায়োগিকভাবে)
+# SIMPLIFIED attention (real attention uses 4096+ dimensions):
+d_k = 64  # dimension of Q, K, V
 
-MULTI-HEAD ATTENTION:
-  একটা head একটা "দৃষ্টিভঙ্গি"
-  
-  Head 1: ব্যাকরণ (subject-verb)  
-  Head 2: সম্পর্ক (who did what)
-  Head 3: আবেগ (sentiment)
-  Head 4: সংখ্যা (singular/plural)
-  ...
-  
-  GPT-4: ~৯৬ heads (১২ layers * ৮ heads)
-  → প্রতিটা head একটা আলাদা দৃষ্টিভঙ্গি
+# For each token, the model computes:
+qkv = {
+    "Q (Query)": "What am I looking for? (what context do I need?)",
+    "K (Key)": "What do I offer? (what information do I have?)",
+    "V (Value)": "What is my actual content? (what do I contribute?)",
+}
 
-WHY THIS MATTERS FOR PROMPT ENGINEERING:
-  • "Lost in the Middle" — attention শুরু 
-    ও শেষে বেশি, মাঝে কম
-  • Recency bias — সাম্প্রতিক টোকেন বেশি ওজন
-  • Long context — attention "dilutes" with 
-    বেশি টোকেন
-  • Prompt sensitivity — শব্দের ক্রম পরিবর্তন 
-    = attention পরিবর্তন = ফল পরিবর্তন</div>
+print("Q, K, V:")
+for vector, desc in qkv.items():
+    print(f"  {vector}: {desc}")
+
+# ANALOGY — a library:
+analogy = """
+You're looking for a book (QUERY):
+  "I need something about Python programming"
+
+Each book has a label (KEY):
+  "Python Crash Course" → key matches your query!
+  "Cooking with Fire"   → key doesn't match
+
+You read the matching book (VALUE):
+  You get the CONTENT of books whose keys matched your query
+"""
+
+print(analogy)
+
+# For "IT" in our sentence:
+it_resolution = """
+"IT" creates a Query: "I need to find what gets tired"
+  - "animal"'s Key: "I am a living thing that gets tired" → HIGH match!
+  - "street"'s Key: "I am a road, I don't get tired"     → LOW match
+
+Result: "IT" pays 90% attention to "animal", 5% to "street", 5% to others.
+→ The model resolves: IT = animal. Correctly!
+"""
+print(it_resolution)</div>
+
+<div class="code-block"># ── STEP 3: The attention formula ──
+# HOW attention scores are calculated:
+
+import numpy as np
+
+def softmax(x):
+    """Convert scores to probabilities (sum to 1)."""
+    exp_x = np.exp(x - np.max(x))  # numerical stability
+    return exp_x / exp_x.sum()
+
+def self_attention(Q, K, V):
+    """
+    Scaled dot-product attention.
+    Q: query matrix  (seq_len x d_k)
+    K: key matrix    (seq_len x d_k)
+    V: value matrix  (seq_len x d_v)
+    """
+    d_k = Q.shape[-1]
+
+    # Step 1: Score = Q * K^T / sqrt(d_k)
+    scores = np.dot(Q, K.T) / np.sqrt(d_k)
+
+    # Step 2: Weights = softmax(scores)
+    weights = softmax(scores)
+
+    # Step 3: Output = weights * V
+    output = np.dot(weights, V)
+
+    return output, weights
+
+# EXAMPLE (simplified, 3 tokens, 4 dims):
+np.random.seed(42)
+Q = np.random.randn(3, 4)  # 3 tokens, 4-dim queries
+K = np.random.randn(3, 4)  # 3 tokens, 4-dim keys
+V = np.random.randn(3, 4)  # 3 tokens, 4-dim values
+
+output, weights = self_attention(Q, K, V)
+print("Attention weights (who attends to whom):")
+print(np.round(weights, 3))
+print(f"\nEach row sums to 1.0: {weights.sum(axis=1)}")
+
+# THE FORMULA: Attention(Q,K,V) = softmax(QK^T / sqrt(d_k)) * V
+# - QK^T measures similarity between all query-key pairs
+# - sqrt(d_k) prevents scores from getting too large
+# - softmax converts scores to probabilities
+# - Multiply by V to get the weighted sum of values</div>
+
+<div class="code-block"># ── STEP 4: Multi-head attention ──
+# One attention head captures ONE type of relationship.
+# Multiple heads capture DIFFERENT relationships simultaneously.
+
+# MULTI-HEAD = run attention multiple times in parallel:
+
+multi_head = """
+Each head is like a different READING STRATEGY:
+
+Head 1: Grammar (subject-verb agreement)
+  → "The cat SIT" → flags as error (should be "sits")
+
+Head 2: Entity tracking (who is who?)
+  → "John told Mary that HE..." → HE = John
+
+Head 3: Sentiment (positive/negative)
+  → "The food was overpriced" → negative sentiment
+
+Head 4: Quantity (singular/plural)
+  → "The dogs ARE" → plural agreement
+
+Head 5: Negation
+  → "NOT good" → flips sentiment
+
+...and dozens more.
+
+GPT-4 has ~96 attention heads across 12 layers.
+Each head = one "perspective" on the text.
+"""
+
+print(multi_head)
+
+# IN CODE:
+multi_head_code = """
+# Multi-head attention (simplified):
+class MultiHeadAttention:
+    def __init__(self, num_heads=8, d_model=512):
+        self.heads = [AttentionHead(d_model // num_heads) for _ in range(num_heads)]
+
+    def forward(self, x):
+        # Run all heads in parallel:
+        head_outputs = [head(x) for head in self.heads]
+        # Concatenate all head outputs:
+        return np.concatenate(head_outputs, axis=-1)
+"""
+
+print(multi_head_code)
+
+# HEAD COUNTS BY MODEL:
+head_counts = {
+    "GPT-2 small": "12 heads (12 layers x 12 heads = 144 total)",
+    "GPT-3 175B": "96 heads (96 layers x 1 per... actually varies)",
+    "GPT-4": "~96-120 heads (estimated)",
+    "Llama 3 70B": "64 heads (80 layers x 8 per... varies)",
+}
+
+print("ATTENTION HEADS BY MODEL:")
+for model, heads in head_counts.items():
+    print(f"  {model}: {heads}")</div>
+
+<div class="code-block"># ── STEP 5: Attention patterns and prompt engineering ──
+# Understanding attention helps you write better prompts.
+
+attention_patterns = {
+    "Lost in the Middle": {
+        "effect": "Attention is strongest at START and END of prompts",
+        "implication": "Put important instructions at beginning or end",
+    },
+    "Recency Bias": {
+        "effect": "Recent tokens get more attention",
+        "implication": "Last instruction often dominates (put key info last)",
+    },
+    "Attention Dilution": {
+        "effect": "More tokens = less attention per token",
+        "implication": "Keep prompts focused (don't pad with irrelevant text)",
+    },
+    "Position Sensitivity": {
+        "effect": "Word order changes attention patterns",
+        "implication": "'A is better than B' ≠ 'B is better than A'",
+    },
+    "Repetition Effect": {
+        "effect": "Repeated words get higher attention",
+        "implication": "Don't over-repeat keywords (can cause degradation)",
+    },
+}
+
+print("ATTENTION PATTERNS:")
+for pattern, info in attention_patterns.items():
+    print(f"\n  {pattern}:")
+    print(f"    Effect: {info['effect']}")
+    print(f"    Implication: {info['implication']}")
+
+# PROMPT ENGINEERING TIPS (based on attention):
+tips = """
+1. FRONT-LOAD instructions: Put the most important instruction first.
+   "You MUST respond in JSON format. Write a summary of..."
+
+2. BACK-LOAD constraints: Put the final constraint last.
+   "...and remember: do not include any personal data."
+
+3. KEEP IT SHORT: 500 tokens of focused context > 5000 tokens of filler.
+   Attention dilutes with length.
+
+4. USE STRUCTURE: Markdown headers, numbered lists help attention
+   focus on what matters.
+
+5. REPEAT KEY INSTRUCTIONS (sparingly):
+   "Answer in English." ... [content] ... "Remember: answer in English."
+
+6. AVOID CONTRADICTORY INSTRUCTIONS:
+   Multiple conflicting instructions create attention conflicts.
+   The model picks one unpredictably.
+"""
+
+print(tips)</div>
+
+<div class="code-block"># ── STEP 6: Attention in modern LLMs ──
+# Attention has EVOLVED since the original 2017 paper.
+
+# ATTENTION VARIANTS:
+variants = {
+    "Full Attention (original)": {
+        "cost": "O(n^2) — quadratic in sequence length",
+        "use": "Standard for most LLMs (GPT-4, Claude)",
+        "limit": "128K-200K tokens before it gets too slow",
+    },
+    "Sliding Window Attention": {
+        "cost": "O(n * w) — linear with window size w",
+        "use": "Mistral, Longformer",
+        "limit": "Only sees nearby tokens (local context)",
+    },
+    "Sparse Attention": {
+        "cost": "O(n * sqrt(n)) — sub-quadratic",
+        "use": "BigBird, GPT-3 variants",
+        "limit": "Misses some long-range dependencies",
+    },
+    "Flash Attention": {
+        "cost": "O(n^2) but MUCH faster (optimized memory access)",
+        "use": "GPT-4, Llama 3 (most modern LLMs)",
+        "limit": "Same cost, but 2-4x faster in practice",
+    },
+    "Ring Attention": {
+        "cost": "O(n^2) but distributed across GPUs",
+        "use": "Very long context (1M+ tokens)",
+        "limit": "Requires multiple GPUs",
+    },
+}
+
+print("ATTENTION VARIANTS:")
+for variant, info in variants.items():
+    print(f"\n  {variant}:")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# THE O(n^2) PROBLEM:
+n_squared = """
+Attention compares EVERY token to EVERY other token.
+For n tokens: n^2 comparisons.
+
+  1,000 tokens:    1,000,000 comparisons
+  10,000 tokens:   100,000,000 comparisons
+  100,000 tokens:  10,000,000,000 comparisons
+  1,000,000 tokens: 1,000,000,000,000 comparisons
+
+This is why long context is EXPENSIVE.
+Flash Attention and Ring Attention help, but the fundamental
+quadratic cost remains the biggest challenge in scaling LLMs.
+"""
+
+print(n_squared)
+
+# ATTENTION SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Self-attention   │ Each token looks at all others  │
+# │ Q, K, V          │ Query, Key, Value vectors       │
+# │ softmax(QK^T/√d)V│ The attention formula           │
+# │ Multi-head       │ Multiple perspectives in parallel│
+# │ Flash Attention  │ Optimized implementation        │
+# │ O(n^2) cost      │ The scaling challenge           │
+# └──────────────────┴──────────────────────────────────┘
+
+# "Attention is all you need" — and it changed the world.
+# Understanding attention = understanding HOW LLMs think.
+# It's not magic. It's weighted information gathering.
+# Each token asks every other token: "how relevant are you to me?"</div>
 
 <div class="dialogue">নজর — দৃষ্টি, মনোযোগ। সুফি ঐতিয়া নজর বলে — কোথায় তাকাচ্ছ সেটাই তোমার অবস্থা নির্ধারণ করে। "যেখানে তোমার নজর, সেখানে তোমার অবস্থা।" LLM-এর attention-ও তেমনি — কোন শব্দের প্রতি নজর, সেটাই নির্ধারণ করে মডেল কী বোঝে। তোমার প্রম্পটে গুরুত্বপূর্ণ শব্দ কোথায় — সেটাই attention কোথায় যাবে নির্ধারণ করে।</div>
 <div class="dialogue en">"Nazar — gaze, attention. In Sufi tradition, 'where your gaze goes, there your state follows.' LLM attention too — which word gets attention determines what the model understands. Where you place important words in your prompt — determines where attention flows."</div>`,
