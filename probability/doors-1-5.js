@@ -21,32 +21,432 @@ doors.push({
 <div class="dialogue"><strong>বিশ্বাস-আপডেটকারী আলী:</strong> Reverend Thomas Bayes 1763 সালে একটি সূত্র আবিষ্কার করেন — মৃত্যুর পর প্রকাশিত। সূত্র: P(H|D) = P(D|H)·P(H)/P(D)। Prior বিশ্বাস P(H) + নতুন প্রমাণ P(D|H) = আপডেটেড বিশ্বাস P(H|D)। চিকিৎসক এটা ভুল বুঝে রোগীকে ভুল চিকিৎসা দেয়। Software engineer ভুল বুঝে false positive-এ ডুবে যায়। কিন্তু সঠিক বুঝলে — প্রতিটি পর্যবেক্ষণে বিশ্বাস নিখুঁত হয়।</div>
 <div class="dialogue en"><strong>Belief Updater Ali:</strong> Reverend Thomas Bayes in 1763 discovered a formula — published posthumously. P(H|D) = P(D|H)·P(H)/P(D). Prior belief P(H) + new evidence P(D|H) = updated belief P(H|D). Doctors misunderstand this and mistreat patients. Software engineers misunderstand and drown in false positives. But understood correctly — every observation refines belief.</div>
 
-<div class="code-block"># — Python: Bayes Theorem —
+<div class="code-block"># ── STEP 1: Probability fundamentals ──
+# The mathematics of uncertainty.
 
-  # Fraud detection example:
-  # P(fraud) = 0.0001 (0.01% — base rate)
-  # P(alert|fraud) = 0.99 (99% sensitive)
-  # P(alert|not fraud) = 0.01 (10% false positive)
+basics = """
+PROBABILITY FUNDAMENTALS:
 
-  P_fraud = 0.0001       # Prior
-  P_not_fraud = 1 - P_fraud
-  P_alert_given_fraud = 0.99
-  P_alert_given_not = 0.01
+SAMPLE SPACE (Ω): all possible outcomes of an experiment.
+  Coin flip: Ω = {Heads, Tails}
+  Dice roll: Ω = {1, 2, 3, 4, 5, 6}
 
-  # Total probability of alert:
-  P_alert = (P_alert_given_fraud * P_fraud +
-             P_alert_given_not * P_not_fraud)
-  # = 0.99*0.0001 + 0.01*0.9999 = 0.010098
+EVENT (E): a subset of the sample space.
+  Rolling even: E = {2, 4, 6}
 
-  # Bayes: P(fraud|alert) = ?
-  P_fraud_given_alert = (
-      P_alert_given_fraud * P_fraud / P_alert
-  )
-  print(f"{P_fraud_given_alert:.4f}")  # 0.0098!
-  # মাত্র 0.98% — 99% accurate test কিন্তু 99% false positive!
+PROBABILITY AXIOMS (Kolmogorov):
+  1. P(E) ≥ 0 for all events E
+  2. P(Ω) = 1 (something must happen)
+  3. For disjoint events: P(A ∪ B) = P(A) + P(B)
 
-  — শিক্ষা: base rate উপেক্ষা করো না! —
-  — Prior + Evidence = Posterior —</div>
+KEY RULES:
+  P(not A) = 1 − P(A)
+  P(A ∪ B) = P(A) + P(B) − P(A ∩ B)  [inclusion-exclusion]
+  P(A ∩ B) = P(A) × P(B|A)  [conditional]
+
+CONDITIONAL PROBABILITY:
+  P(A | B) = probability of A given B occurred
+  P(A | B) = P(A ∩ B) / P(B)
+
+  Example: P(rain | clouds) > P(rain)
+  → Clouds increase the probability of rain.
+
+INDEPENDENCE:
+  A and B are independent if P(A ∩ B) = P(A) × P(B)
+  → Knowing B doesn't change probability of A
+  → Coin flips are independent
+"""
+
+print(basics)
+
+# PYTHON: Probability basics:
+prob_code = """
+# Fair dice probability:
+def P_dice(events):
+    return len(events) / 6
+
+print(P_dice({2, 4, 6}))    # 0.5 (even)
+print(P_dice({1}))          # 0.167 (specific number)
+print(P_dice({1,2,3,4,5,6}))  # 1.0 (certain)
+
+# Conditional probability:
+# Deck of cards: P(King | Face card)?
+total = 52
+kings = 4
+face_cards = 12  # J, Q, K in 4 suits
+print(f"P(King | Face) = {kings / face_cards:.4f}")  # 0.333
+
+# Independence check:
+# P(A) × P(B) = P(A ∩ B)?
+# Two coin flips: P(HH) = P(H) × P(H) = 0.5 × 0.5 = 0.25 ✓
+"""
+
+print(prob_code)</div>
+
+<div class="code-block"># ── STEP 2: Bayes' Theorem ──
+# The most important formula in probability.
+
+bayes = """
+BAYES' THEOREM:
+
+P(H | D) = P(D | H) × P(H) / P(D)
+
+  H = Hypothesis (what we want to know)
+  D = Data (evidence observed)
+
+  P(H)     = Prior (belief before seeing data)
+  P(D | H) = Likelihood (probability of data given hypothesis)
+  P(D)     = Evidence (total probability of data)
+  P(H | D) = Posterior (updated belief after data)
+
+  "Update your beliefs when new evidence arrives."
+
+FAMOUS EXAMPLE: Medical testing
+  Disease prevalence: 1% (prior)
+  Test sensitivity: 99% (true positive rate)
+  Test specificity: 99% (true negative rate, so 1% false positive)
+
+  Q: If you test positive, what's P(disease)?
+
+  P(disease | positive) = P(pos | disease) × P(disease) / P(positive)
+  = 0.99 × 0.01 / (0.99×0.01 + 0.01×0.99)
+  = 0.0099 / 0.0198
+  = 0.50 (50%!)
+
+  Only 50%! Why? Base rate is low (1%), false positives comparable.
+
+  THIS IS THE BASE RATE FALLACY:
+  People ignore the prior and overestimate P(disease | positive).
+
+APPLICATIONS:
+  → Spam filtering (Naive Bayes)
+  → Medical diagnosis
+  → Drug testing
+  → Machine learning (Bayesian inference)
+  → A/B testing (Bayesian vs frequentist)
+"""
+
+print(bayes)
+
+# PYTHON: Bayes theorem (fraud detection):
+bayes_code = """
+# Fraud detection:
+P_fraud = 0.001           # 0.1% of transactions are fraud (prior)
+P_alert_given_fraud = 0.99    # 99% sensitivity
+P_alert_given_not = 0.01      # 1% false positive rate
+
+# Total probability of alert (law of total probability):
+P_alert = (P_alert_given_fraud * P_fraud +
+           P_alert_given_not * (1 - P_fraud))
+
+print(f"P(alert) = {P_alert:.6f}")  # ~0.010988
+
+# Bayes: P(fraud | alert) = ?
+P_fraud_given_alert = (P_alert_given_fraud * P_fraud) / P_alert
+
+print(f"P(fraud | alert) = {P_fraud_given_alert:.4f}")
+# 0.0901 → only 9% of alerts are actual fraud!
+
+# LESSON: With rare events, even accurate tests have high false positive rates.
+# This is why fraud detection needs MULTIPLE signals, not just one test.
+
+# Sequential Bayesian updating:
+# Each new piece of evidence updates the posterior:
+prior = P_fraud
+for evidence_strength in [0.8, 0.7, 0.9, 0.85]:
+    # Update: posterior ∝ likelihood × prior
+    posterior = (evidence_strength * prior) / (
+        evidence_strength * prior + 0.1 * (1 - prior))
+    print(f"After evidence: P(fraud) = {posterior:.4f}")
+    prior = posterior  # posterior becomes new prior
+"""
+
+print(bayes_code)</div>
+
+<div class="code-block"># ── STEP 3: Random variables and distributions ──
+# Assign numbers to random outcomes.
+
+rvs = """
+RANDOM VARIABLES:
+
+A RANDOM VARIABLE (RV) maps outcomes to numbers.
+  X = result of dice roll → X ∈ {1, 2, 3, 4, 5, 6}
+  Y = number of heads in 3 coin flips → Y ∈ {0, 1, 2, 3}
+
+TWO TYPES:
+  DISCRETE: countable values (dice, coin flips, counts)
+  CONTINUOUS: any value in a range (height, weight, time)
+
+PROBABILITY DISTRIBUTIONS:
+  Discrete: PMF (Probability Mass Function)
+    P(X = k) for each k
+  Continuous: PDF (Probability Density Function)
+    P(a ≤ X ≤ b) = integral of PDF from a to b
+
+COMMON DISTRIBUTIONS:
+
+1. BERNOULLI (p): single yes/no trial
+   P(X=1) = p, P(X=0) = 1−p
+   Example: coin flip (p=0.5)
+
+2. BINOMIAL (n, p): number of successes in n trials
+   P(X=k) = C(n,k) × p^k × (1−p)^(n−k)
+   Example: 3 heads in 10 flips
+
+3. GEOMETRIC (p): trials until first success
+   P(X=k) = (1−p)^(k−1) × p
+   Example: flips until first heads
+
+4. POISSON (λ): number of events in time interval
+   P(X=k) = (λ^k × e^−λ) / k!
+   Example: customers arriving per hour
+
+5. UNIFORM (a, b): all values equally likely
+   Example: random number from 1 to 10
+
+6. NORMAL (μ, σ): the bell curve
+   Most common distribution in nature
+   Mean μ, standard deviation σ
+
+7. EXPONENTIAL (λ): time between events
+   Memoryless: P(X > s+t | X > s) = P(X > t)
+"""
+
+print(rvs)
+
+# PYTHON: Distributions:
+dist_code = """
+from scipy import stats
+import numpy as np
+
+# Bernoulli: P(heads) = 0.5
+print(stats.bernoulli.pmf(1, 0.5))  # 0.5
+
+# Binomial: P(3 heads in 10 flips)
+print(stats.binom.pmf(3, n=10, p=0.5))  # ~0.117
+
+# Poisson: P(5 events, λ=3)
+print(stats.poisson.pmf(5, mu=3))  # ~0.10
+
+# Normal: P(X < 0) for standard normal
+print(stats.norm.cdf(0))  # 0.5 (mean = median)
+
+# Exponential: P(X > 1) with λ=2
+print(1 - stats.expon.cdf(1, scale=0.5))  # e^(-2) ≈ 0.135
+
+# Sample from distributions:
+samples = np.random.normal(loc=100, scale=15, size=10000)
+print(f"Sample mean: {np.mean(samples):.2f}")  # ≈ 100
+print(f"Sample std: {np.std(samples):.2f}")    # ≈ 15
+"""
+
+print(dist_code)</div>
+
+<div class="code-block"># ── STEP 4: Expectation and variance ──
+# The two most important properties of a distribution.
+
+ev = """
+EXPECTATION (Expected Value, Mean):
+  E[X] = average value if we repeated infinitely.
+  Discrete: E[X] = Σ k × P(X=k)
+  Continuous: E[X] = ∫ x × f(x) dx
+
+  Example: Fair dice → E[X] = (1+2+3+4+5+6)/6 = 3.5
+
+VARIANCE:
+  Var(X) = E[(X − μ)²] = spread of the distribution
+  Standard deviation: σ = √(Var)
+
+  Low variance: values cluster around mean
+  High variance: values spread out
+
+PROPERTIES:
+  E[aX + b] = a×E[X] + b  (linearity)
+  E[X + Y] = E[X] + E[Y]
+  Var(aX + b) = a² × Var(X)
+  If X, Y independent: Var(X + Y) = Var(X) + Var(Y)
+
+LAW OF LARGE NUMBERS:
+  Sample mean → E[X] as sample size → ∞
+  → If you flip a coin many times, the fraction of heads → 0.5
+  → Casinos profit from this (house edge compounds over many bets)
+
+CENTRAL LIMIT THEOREM (CLT):
+  The sum/average of many independent random variables
+  is approximately NORMAL, regardless of the original distribution.
+
+  → This is why the normal distribution is everywhere!
+  → Heights, test scores, measurement errors...
+  → Even non-normal inputs produce normal averages.
+
+  Example: Sum of 100 dice rolls ≈ normal distribution
+"""
+
+print(ev)
+
+# PYTHON: Expectation and variance:
+ev_code = """
+import numpy as np
+
+# Fair dice: E[X] = 3.5, Var = 35/12 ≈ 2.92
+dice = np.arange(1, 7)
+E_X = np.mean(dice)  # 3.5
+Var_X = np.var(dice)  # 2.917
+
+print(f"E[dice] = {E_X}")      # 3.5
+print(f"Var[dice] = {Var_X:.3f}")  # 2.917
+
+# Law of Large Numbers demonstration:
+np.random.seed(42)
+for n in [10, 100, 1000, 10000, 100000]:
+    rolls = np.random.randint(1, 7, size=n)
+    print(f"n={n:6d}: mean={np.mean(rolls):.4f}")  # → 3.5
+
+# Central Limit Theorem: sum of dice approaches normal:
+import matplotlib.pyplot as plt
+sums = [sum(np.random.randint(1, 7, 100)) for _ in range(10000)]
+# Histogram of sums ≈ bell curve (normal distribution)
+print(f"Mean of sums: {np.mean(sums):.2f}")  # ≈ 350
+print(f"Std of sums: {np.std(sums):.2f}")    # ≈ 17
+"""
+
+print(ev_code)</div>
+
+<div class="code-block"># ── STEP 5: Probability in computing ──
+# Where probability meets algorithms.
+
+cs_prob = """
+PROBABILITY IN CS:
+
+1. RANDOMIZED ALGORITHMS:
+   → Use randomness to solve problems faster
+   → QuickSort: random pivot → O(n log n) expected
+   → Monte Carlo: approximate via random sampling
+   → Las Vegas: always correct, random running time
+
+2. HASHING:
+   → Uniform distribution → few collisions
+   → Random hash functions → adversarial resistance
+
+3. MACHINE LEARNING:
+   → Models = probability distributions
+   → Training = maximum likelihood estimation
+   → Prediction = conditional probability P(y | x)
+
+4. CRYPTOGRAPHY:
+   → Security = probability of attack succeeding
+   → Random keys → unpredictable
+   → Birthday paradox → collision bounds
+
+5. PERFORMANCE ANALYSIS:
+   → Average-case vs worst-case analysis
+   → Expected running time = E[T(n)]
+
+6. LOAD BALANCING:
+   → Balls into bins: random assignment
+   → With n balls in n bins: max load ≈ log(n)/log(log(n))
+
+7. PROBABILISTIC DATA STRUCTURES:
+   → Bloom filters (membership with false positives)
+   → Count-Min Sketch (frequency estimation)
+   → HyperLogLog (cardinality estimation)
+
+8. MARKOV CHAINS:
+   → Random processes with memory
+   → PageRank, MCMC, queueing theory
+
+9. INFORMATION THEORY:
+   → Entropy: uncertainty in a distribution
+   → H(X) = −Σ P(x) × log₂ P(x)
+   → Data compression limits
+"""
+
+print(cs_prob)
+
+# PYTHON: Monte Carlo estimation:
+mc_code = """
+import random
+import math
+
+# Estimate π by Monte Carlo:
+# Area of circle / Area of square = π/4
+# Randomly throw darts, count fraction inside circle:
+
+def estimate_pi(n=1000000):
+    inside = 0
+    for _ in range(n):
+        x, y = random.random(), random.random()
+        if x**2 + y**2 <= 1:  # inside unit circle
+            inside += 1
+    return 4 * inside / n
+
+print(f"π estimate: {estimate_pi():.6f}")  # ≈ 3.1415...
+print(f"π actual:  {math.pi:.6f}")
+
+# Probabilistic data structure — Bloom filter simulation:
+class SimpleBloomFilter:
+    def __init__(self, size=1000, num_hashes=3):
+        self.bits = [False] * size
+        self.size = size
+        self.num_hashes = num_hashes
+
+    def _hashes(self, item):
+        return [hash(f"{item}{i}") % self.size for i in range(self.num_hashes)]
+
+    def add(self, item):
+        for h in self._hashes(item):
+            self.bits[h] = True
+
+    def contains(self, item):
+        return all(self.bits[h] for h in self._hashes(item))
+
+bf = SimpleBloomFilter()
+for name in ['Alice', 'Bob', 'Charlie']:
+    bf.add(name)
+
+print(f"Alice in BF: {bf.contains('Alice')}")    # True
+print(f"David in BF: {bf.contains('David')}")    # False (probably)
+"""
+
+print(mc_code)</div>
+
+<div class="code-block"># ── STEP 6: Probability best practices ──
+# Apply probability theory effectively.
+
+best_practices = [
+    "P(A) + P(not A) = 1 (probabilities sum to 1)",
+    "Conditional: P(A|B) = P(A∩B) / P(B)",
+    "Bayes: update beliefs with new evidence",
+    "Watch for base rate fallacy (rare events)",
+    "Independence: P(A∩B) = P(A)×P(B)",
+    "E[X] = mean, Var(X) = spread",
+    "Law of Large Numbers: sample mean → true mean",
+    "Central Limit Theorem: averages → normal",
+    "Binomial: number of successes in n trials",
+    "Poisson: events in a time interval",
+    "Normal: the bell curve (everywhere via CLT)",
+    "Exponential: memoryless, time between events",
+    "Monte Carlo: estimate via random sampling",
+    "Bloom filters: probabilistic membership",
+    "Entropy H(X) = uncertainty in distribution",
+]
+
+print("PROBABILITY BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Distribution     │ Use Case                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Bernoulli        │ Single yes/no trial             │
+# │ Binomial         │ Successes in n trials           │
+# │ Poisson          │ Events in time interval         │
+# │ Normal           │ Natural phenomena (CLT)         │
+# │ Exponential      │ Time between events             │
+# │ Uniform          │ All outcomes equally likely     │
+# │ Geometric        │ Trials until first success      │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="verse">وَالَّذِينَ أُوتُوا الْعِلْمَ دَرَجَاتٍ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং যাদের জ্ঞান দেওয়া হয়েছে তারা মর্যাদায় উঁচুতে।" — কুরআন ৫৮:১১</div>
