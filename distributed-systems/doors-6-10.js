@@ -494,20 +494,283 @@ doors.push({
     <div class="diag-cap">Consistent hashing: ডেটা ও নোড উভয়ই একটা রিং-এ স্থাপিত। প্রতিটা ডেটা ঘড়ির দিকে পরবর্তী নোডে যায়। নোড যোগ/বিদায় হলে শুধু প্রতিবেশী প্রভাবিত হয়।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 Dynamo প্রযুক্তি — মূল উপাদান</h4>
-    <table class="kv-table">
-      <tr><th>প্রযুক্তি</th><th>কাজ</th><th>উৎস</th></tr>
-      <tr><td class="hl">Consistent Hashing</td><td>ডেটা নোডে বণ্টন</td><td>Karger et al. ১৯৯৭</td></tr>
-      <tr><td class="hl">Vector Clocks</td><td>ভার্সন ট্র্যাকিং</td><td>Fidge/Mattern ১৯৮৮</td></tr>
-      <tr><td class="hl">Read Repair</td><td>পড়ার সময় পুরোনো নোড আপডেট</td><td>Dynamo ২০০৭</td></tr>
-      <tr><td class="hl">Hinted Handoff</td><td>নোড ডাউন হলে অস্থায়ী হস্তান্তর</td><td>Dynamo ২০০৭</td></tr>
-      <tr><td class="hl">Merkle Trees</td><td>দ্রুত সিঙ্ক্রোনাইজেশন</td><td>Dynamo ২০০৭</td></tr>
-    </table>
-    <br>
-    <p><strong>Dynamo-এর উত্তরাধিকার:</strong> Amazon DynamoDB (পাবলিক ক্লাউড), Cassandra (Facebook, Dynamo থেকে অনুপ্রাণিত), Riak, Voldemort (LinkedIn)। সবাই AP মডেল ব্যবহার করে — availability সবচেয়ে গুরুত্বপূর্ণ।</p>
-    <p><strong>Vector clock correction:</strong> গুরুত্বপূর্ণ — Lamport ১৯৭৮ scalar clocks আবিষ্কার করেন (একটা সংখ্যা)। Vector clocks হলো ভেক্টর (একাধিক সংখ্যা) — Fidge এবং Mattern ১৯৮৮ সালে স্বাধীনভাবে আবিষ্কার করেন।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: Amazon Dynamo — AP system design ──
+# The paper that inspired Cassandra, Riak, and DynamoDB.
+
+dynamo = """
+AMAZON DYNAMO (DeCandia et al., SOSP 2007):
+
+DESIGN CHOICE: AP (Availability + Partition Tolerance)
+  → Always available (never returns errors)
+  → Eventual consistency (stale data OK temporarily)
+  → Perfect for: shopping cart, session management, recommendations
+
+KEY INNOVATIONS:
+  1. Consistent Hashing (data distribution)
+  2. Vector Clocks (version tracking)
+  3. Read Repair (fix stale data during reads)
+  4. Hinted Handoff (temporarily handle failed nodes)
+  5. Merkle Trees (fast anti-entropy/synchronization)
+
+DYNAMO'S PHILOSOPHY (Werner Vogels):
+  "At Amazon, we'd rather show stale product info
+   than show an error page. Availability > Consistency."
+
+LEGACY:
+  DynamoDB (Amazon's public cloud database)
+  Cassandra (Facebook, inspired by Dynamo)
+  Riak (Basho, Dynamo clone)
+  Voldemort (LinkedIn)
+"""
+
+print(dynamo)</div>
+
+  <div class="code-block"># ── STEP 2: Consistent Hashing ──
+# How Dynamo distributes data across nodes.
+
+consistent_hashing = """
+CONSISTENT HASHING:
+
+PROBLEM: How to distribute data across N nodes?
+  → Naive: hash(key) % N → but when N changes, ALL data moves!
+
+CONSISTENT HASHING SOLUTION:
+  → Place both nodes AND keys on a RING (hash space 0 to 2^32)
+  → Each key goes to the NEXT node clockwise on the ring
+
+  Ring:
+    0 ---- Node_A ---- Node_B ---- Node_C ---- 2^32
+
+  Key "user:42" hashes to position between A and B → stored on B
+  Key "user:99" hashes to position between B and C → stored on C
+
+ADVANTAGE:
+  → Node joins/leaves → only NEIGHBORING keys move
+  → Adding Node_D between B and C: only keys B→D move (not all!)
+  → Minimal data movement = fast scaling
+
+VIRTUAL NODES (vnodes):
+  → Each physical node maps to MULTIPLE positions on ring (e.g., 128 vnodes)
+  → Prevents data skew (one node getting too many keys)
+  → Used by: Cassandra, Dynamo, Riak
+
+PYTHON: Consistent Hashing:
+  import hashlib
+
+  class ConsistentHashRing:
+      def __init__(self, replicas=3, vnodes=128):
+          self.ring = {}  # {position: node}
+          self.replicas = replicas
+          self.vnodes = vnodes
+
+      def _hash(self, key):
+          return int(hashlib.md5(key.encode()).hexdigest(), 16)
+
+      def add_node(self, node):
+          for i in range(self.vnodes):
+              pos = self._hash(f"{node}:{i}")
+              self.ring[pos] = node
+
+      def get_node(self, key):
+          pos = self._hash(key)
+          # Find first node clockwise:
+          sorted_positions = sorted(self.ring.keys())
+          for p in sorted_positions:
+              if p >= pos:
+                  return self.ring[p]
+          return self.ring[sorted_positions[0]]  # wrap around
+
+      def get_nodes_for_replication(self, key):
+          \"\"\"Get N nodes for replication.\"\"\"
+          # Walk clockwise to find N unique nodes:
+          ...
+"""
+
+print(consistent_hashing)</div>
+
+  <div class="code-block"># ── STEP 3: Replication strategies ──
+# How Dynamo/Cassandra replicate data across nodes.
+
+replication = """
+REPLICATION STRATEGIES:
+
+1. PRIMARY-BACKUP (Leader-Follower):
+   → One primary handles writes
+   → Replicates to N-1 followers
+   → If primary fails, promote a follower
+   → Used by: MongoDB, PostgreSQL streaming replication
+
+2. PEER-TO-PEER (Dynamo/Cassandra):
+   → No primary, all nodes equal
+   → Client writes to coordinator node
+   → Coordinator replicates to next N-1 nodes on ring
+   → Used by: Cassandra, Dynamo, Riak
+
+3. QUORUM-BASED:
+   → Write to W replicas, read from R replicas
+   → If R + W > N → strong consistency
+   → Typical: N=3, W=2, R=2 (QUORUM)
+
+REPLICATION FACTOR (RF):
+  RF=1: No replication (dangerous, data lost on node failure)
+  RF=3: Three copies (standard, tolerates 2 failures)
+  RF=5: Five copies (high durability, expensive)
+
+CASSANDRA REPLICATION:
+  → SimpleStrategy: next N nodes on ring (regardless of DC)
+  → NetworkTopologyStrategy: N replicas per datacenter, rack-aware
+  → Prevents losing all replicas if a rack fails
+
+ANTI-ENTROPY (keeping replicas in sync):
+  1. Read Repair: when reading, if some replicas are stale, update them
+  2. Hinted Handoff: if node down, store "hint" for later delivery
+  3. Anti-Entropy Repair: periodic full sync using Merkle trees
+  4. Merkle Trees: hash tree for fast comparison (find differences quickly)
+"""
+
+print(replication)</div>
+
+  <div class="code-block"># ── STEP 4: Read repair and hinted handoff ──
+# How AP systems converge to consistency (eventual consistency).
+
+convergence = """
+EVENTUAL CONSISTENCY MECHANISMS:
+
+1. READ REPAIR:
+   When reading, coordinator contacts multiple replicas.
+   If some have stale data:
+   → Coordinator reads from all replicas
+   → Detects stale ones (older vector clock)
+   → Writes newest data back to stale replicas
+   → "Self-healing" on every read
+
+   Read flow:
+   Read from 3 replicas → versions: [v5, v5, v3]
+   → v3 is stale → write v5 to that replica
+   → Next read: all v5 (converged!)
+
+2. HINTED HANDOFF:
+   When writing, if a replica is DOWN:
+   → Coordinator stores a "hint" on another node
+   → "Hey, when Node_B comes back, send this write to it"
+   → When Node_B recovers, the hint is delivered
+   → No lost writes!
+
+3. ANTI-ENTROPY REPAIR (periodic):
+   Run periodically (e.g., nightly):
+   → Compare Merkle trees between replicas
+   → Find divergent ranges
+   → Stream only the different data
+   → Ensures convergence even without reads/writes
+
+4. GOSSIP PROTOCOL:
+   Nodes periodically exchange state information:
+   → "I have version 5 of key X"
+   → "I have version 3" → updates to 5
+   → Information spreads like a rumor (epidemic protocol)
+   → Eventually ALL nodes converge
+
+ALL FOUR mechanisms ensure EVENTUAL CONSISTENCY:
+  Given no new writes, ALL replicas eventually converge.
+  This is the "E" in Dynamo's AP choice.
+"""
+
+print(convergence)</div>
+
+  <div class="code-block"># ── STEP 5: Dynamo vs Spanner — AP vs CP in practice ──
+# Two real systems with opposite design choices.
+
+comparison = {
+    "Dynamo (Amazon, AP)": {
+        "cap_choice": "Availability + Partition Tolerance",
+        "consistency": "Eventual (stale reads possible)",
+        "latency": "Low (always responds)",
+        "coordination": "None (decentralized)",
+        "conflict_resolution": "Vector clocks + last-write-wins",
+        "use_case": "Shopping cart, session, recommendations",
+        "public_product": "Amazon DynamoDB",
+    },
+    "Spanner (Google, CP)": {
+        "cap_choice": "Consistency + Partition Tolerance",
+        "consistency": "Strong (global ACID)",
+        "latency": "Higher (cross-region coordination)",
+        "coordination": "Paxos per shard + TrueTime",
+        "conflict_resolution": "Two-Phase Commit + Paxos",
+        "use_case": "Billing, AdWords, financial",
+        "public_product": "Google Cloud Spanner",
+    },
+    "Cassandra (Facebook, AP)": {
+        "cap_choice": "Availability + Partition Tolerance",
+        "consistency": "Tunable (ONE to ALL)",
+        "latency": "Low (tunable)",
+        "coordination": "None (decentralized, Dynamo-style)",
+        "conflict_resolution": "Last-write-wins + read-repair",
+        "use_case": "Time-series, IoT, social media",
+        "public_product": "Apache Cassandra (open source)",
+    },
+}
+
+print("AP vs CP REAL SYSTEMS:")
+for system, info in comparison.items():
+    print(f"\\n  {system}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# DECISION GUIDE:
+decision = """
+WHEN TO USE AP (Dynamo/Cassandra):
+  → Need 24/7 availability (no downtime acceptable)
+  → Can tolerate stale reads temporarily
+  → Global scale, multi-region
+  → High write throughput
+  → Examples: social media, IoT, session management
+
+WHEN TO USE CP (Spanner/MongoDB):
+  → Need strong consistency (banking, billing)
+  → ACID transactions across shards
+  → Can tolerate brief unavailability during partitions
+  → Examples: financial, inventory, configuration
+"""
+print(decision)</div>
+
+  <div class="code-block"># ── STEP 6: Consistent hashing and Dynamo best practices ──
+# Production patterns for AP distributed databases.
+
+best_practices = [
+    "Choose RF=3 for production (tolerates 2 node failures)",
+    "Use odd number of nodes (optimal quorum calculation)",
+    "Spread replicas across racks/datacenters (rack awareness)",
+    "Use NetworkTopologyStrategy for multi-DC (Cassandra)",
+    "Monitor replication lag (how far behind are replicas?)",
+    "Run anti-entropy repair periodically (nightly/weekly)",
+    "Use read-repair for self-healing (automatic convergence)",
+    "Set appropriate consistency level per query",
+    "Use vector clocks to detect conflicts",
+    "Implement conflict resolution strategy (LWW or app-level)",
+    "Monitor node health (gossip protocol status)",
+    "Handle node joins/leaves carefully (data rebalancing)",
+    "Use vnodes (128 per physical node) for even distribution",
+    "Test partition recovery (kill nodes, verify convergence)",
+    "Document CAP choice for the team (AP or CP, why?)",
+]
+
+print("DYNAMO/AP SYSTEM BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Consistent hash  │ Ring-based data distribution    │
+# │ Virtual nodes    │ 128 per physical (even spread)  │
+# │ Replication (RF) │ 3 copies (tolerates 2 failures) │
+# │ Read repair      │ Self-healing during reads       │
+# │ Hinted handoff   │ Store for down nodes, deliver   │
+# │ Merkle trees     │ Fast anti-entropy comparison    │
+# │ Gossip           │ Epidemic state propagation      │
+# │ Eventual consist │ Converges given no new writes   │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Builder's Codex) Door ৮-এ Consistent Hashing শিখেছিলে। Door ৩-এ CAP বেছেছিলে — Dynamo হলো AP-র বাস্তব উদাহরণ। Door ৪-এ Consensus — Dynamo-তে strict consensus নেই, eventual consistency আছে।</div></div>
 
