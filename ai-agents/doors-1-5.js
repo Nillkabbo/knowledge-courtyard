@@ -58,47 +58,398 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: এজেন্ট = Observe → Plan → Act চক্র — প্রতিটা ফলাফল পরের চিন্তা নির্ধারণ করে। চ্যাটবট থেমে যায়, এজেন্ট ঘুরে।</div>
 
-<div class="code-block">What Is an Agent? — From Chatbot to Worker:
+<div class="code-block"># ── STEP 1: What is an AI agent? ──
+# From chatbot to autonomous worker.
 
-CHATBOT (যা তুমি জানো):
+agent_intro = """
+WHAT IS AN AI AGENT?
+
+CHATBOT (what you know):
   User → LLM → Text Response → END
-  
-  "What's the weather?"
-  → "I can't check real-time weather."
-  → কোনো কাজ নেই, শুধু টেক্সট
+  → "What's the weather?" → "I can't check real-time weather."
+  → No action, just text
 
-AGENT (যা তুমি শিখবে):
-  User → LLM → Think → Act → Observe 
-       → Think → Act → Observe → Answer
-  
-  "What's the weather in Dhaka?"
+AGENT (what you'll learn):
+  User → LLM → Think → Act → Observe → Think → Act → Answer
+  → "What's the weather in Dhaka?"
   → Think: "I need to check weather"
   → Act: get_weather("Dhaka")
-  → Observe: "32°C, humid, rain expected"
-  → Answer: "It's 32°C in Dhaka with rain 
-    expected. Bring an umbrella."
-  
-  → কাজ করেছে! শুধু কথা নয়।
+  → Observe: "32C, humid, rain expected"
+  → Answer: "It's 32C in Dhaka with rain expected. Bring an umbrella."
+  → It ACTED! Not just talked.
 
-THE AGENT ANATOMY:
-
-  # ─────────────────────────────────────# 
-  #  একটি Agent = ৪টি উপাদান            # 
-  #                                      # 
-  #  ১. BRAIN (LLM)                     # 
-  #     চিন্তা, সিদ্ধান্ত, পরিকল্পনা     # 
-  #                                      # 
-  #  ২. TOOLS (Functions)                # 
-  #     search, code_run, email, file_io # 
-  #                                      # 
-  #  ৩. MEMORY (State)                   # 
-  #     পূর্বের কথা, কাজ, ফলাফল          # 
-  #                                      # 
-  #  ৪. LOOP (Autonomy)                  # 
-  #     think → act → observe → repeat   # 
-  # ─────────────────────────────────────# 
+THE AGENT ANATOMY (4 components):
+  1. BRAIN (LLM): thinking, decisions, planning
+  2. TOOLS (Functions): search, code_run, email, file_io
+  3. MEMORY (State): previous messages, actions, results
+  4. LOOP (Autonomy): think → act → observe → repeat
 
 LEVELS OF AUTONOMY:
+  Level 0: Chatbot (just text, no tools)
+  Level 1: Tool-Assisted (one tool, e.g., search)
+  Level 2: Multi-Tool Agent (multiple tools, self-decides which)
+  Level 3: Planning Agent (breaks complex tasks into steps)
+  Level 4: Multi-Agent System (agents collaborate)
+  Level 5: Fully Autonomous (goal → agent does everything)
+
+WHY AGENTS MATTER (2024-2025):
+  → ChatGPT → GPTs + Actions (agents)
+  → Claude → Tool use + Computer use
+  → Devin → autonomous software engineer
+  → AutoGPT → goal-driven autonomous loops
+  → LangChain/LlamaIndex → agent frameworks
+
+PYTHON (simple agent):
+  import openai
+
+  def agent_loop(user_query, tools, max_steps=10):
+      messages = [{"role": "user", "content": user_query}]
+      for step in range(max_steps):
+          response = openai.chat.completions.create(
+              model="gpt-4",
+              messages=messages,
+              tools=tools
+          )
+          msg = response.choices[0].message
+          if msg.tool_calls:
+              for call in msg.tool_calls:
+                  result = execute_tool(call)
+                  messages.append({"role": "tool", "content": result})
+          else:
+              return msg.content  # final answer
+      return "Max steps reached"
+"""
+
+print(agent_intro)</div>
+
+<div class="code-block"># ── STEP 2: Tool use — how LLMs act ──
+# Function calling and tool execution.
+
+tool_use = """
+TOOL USE — HOW LLMS ACT:
+
+LLMs can't DO anything by default (just generate text).
+Tools give them "hands."
+
+FUNCTION CALLING (OpenAI, 2023):
+  → Define tools as JSON schemas
+  → LLM decides which tool to call + arguments
+  → You execute the tool and return results
+  → LLM uses results to continue
+
+TOOL DEFINITION FORMAT:
+  {
+    "name": "get_weather",
+    "description": "Get current weather for a city",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "city": {"type": "string", "description": "City name"},
+        "unit": {"type": "string", "enum": ["C", "F"]}
+      },
+      "required": ["city"]
+    }
+  }
+
+COMMON TOOLS:
+  → web_search: search the internet
+  → code_interpreter: run Python code
+  → file_read/write: access filesystem
+  → database_query: SQL/noSQL queries
+  → api_call: call any REST API
+  → calculator: precise math
+  → email_send: send messages
+  → image_generation: create images
+
+TOOL DESIGN PRINCIPLES:
+  → Clear descriptions (LLM must understand when to use)
+  → Simple parameters (avoid complex nested objects)
+  → Good error messages (LLM needs to recover)
+  → Limited scope (one tool = one task)
+  → Idempotent when possible (safe to retry)
+
+PYTHON (OpenAI function calling):
+  import openai, json
+
+  tools = [{
+      "type": "function",
+      "function": {
+          "name": "get_weather",
+          "description": "Get weather for a city",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "city": {"type": "string"}
+              },
+              "required": ["city"]
+          }
+      }
+  }]
+
+  response = openai.chat.completions.create(
+      model="gpt-4",
+      messages=[{"role": "user", "content": "Weather in Dhaka?"}],
+      tools=tools
+  )
+
+  # LLM decided to call get_weather:
+  call = response.choices[0].message.tool_calls[0]
+  args = json.loads(call.function.arguments)
+  # args = {"city": "Dhaka"}
+
+  # Execute and return:
+  weather = get_weather(args["city"])
+  # Feed result back to LLM for final answer
+"""
+
+print(tool_use)</div>
+
+<div class="code-block"># ── STEP 3: ReAct framework ──
+# The fundamental agent loop.
+
+react = """
+REACT FRAMEWORK (Reason + Act):
+
+The most popular agent architecture.
+  → Thought → Action → Observation → repeat
+
+THE LOOP:
+  1. THOUGHT: LLM reasons about what to do
+  2. ACTION: LLM chooses a tool and arguments
+  3. OBSERVATION: Tool executes, returns result
+  4. Repeat until task complete
+
+EXAMPLE:
+  Question: "What is the population of the city where Apple HQ is?"
+
+  Thought 1: I need to find where Apple HQ is
+  Action 1: web_search("Apple headquarters location")
+  Observation 1: "Apple Park, Cupertino, California"
+
+  Thought 2: Now I need population of Cupertino
+  Action 2: web_search("Cupertino population")
+  Observation 2: "Cupertino population: ~60,000"
+
+  Thought 3: I have the answer
+  Answer: "Apple HQ is in Cupertino, which has ~60,000 people."
+
+WHY REACT WORKS:
+  → Interleaves reasoning and acting
+  → LLM can correct mistakes mid-execution
+  → Transparent (you see each thought)
+  → General-purpose (works with any tools)
+
+VARIANTS:
+  → ReAct: Thought + Action + Observation
+  → Plan-and-Solve: Plan all steps first, then execute
+  → Reflexion: Learn from failures (self-correction)
+  → Chain-of-Thought: Pure reasoning (no tools)
+  → Tree-of-Thoughts: Explore multiple paths
+
+PYTHON (LangChain ReAct agent):
+  from langchain.agents import create_react_agent, AgentExecutor
+  from langchain_openai import ChatOpenAI
+  from langchain.tools import Tool
+
+  # Define tools:
+  search = Tool(name="search", func=search_func,
+                description="Search the web")
+  calculator = Tool(name="calculator", func=calc_func,
+                    description="Do math")
+
+  tools = [search, calculator]
+
+  # Create agent:
+  llm = ChatOpenAI(model="gpt-4", temperature=0)
+  agent = create_react_agent(llm, tools, prompt)
+  executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+
+  # Run:
+  result = executor.invoke({
+      "input": "What is 25% of the population of Tokyo?"
+  })
+  print(result["output"])
+"""
+
+print(react)</div>
+
+<div class="code-block"># ── STEP 4: Planning strategies ──
+# From reactive to strategic agents.
+
+planning = """
+PLANNING STRATEGIES:
+
+1. REACTIVE (ReAct):
+   → One step at a time
+   → Decide next action based on last observation
+   → Flexible but may backtrack
+
+2. PLAN-AND-EXECUTE:
+   → First: create full plan (list of steps)
+   → Then: execute each step sequentially
+   → More structured, less flexible
+
+3. PLAN-AND-SOLVE:
+   → Similar to plan-and-execute
+   → Planner generates steps, executor carries them out
+
+4. TREE OF THOUGHTS (ToT):
+   → Explore multiple possible paths
+   → Evaluate each, prune bad ones
+   → Backtrack if needed
+   → Like chess: think several moves ahead
+
+5. REFLEXION (self-correction):
+   → After failure: reflect on what went wrong
+   → Generate improvement for next attempt
+   → "I got an error because... next time I'll..."
+
+6. MULTI-PLAN:
+   → Generate multiple plans
+   → Evaluate and pick best one
+   → Redundancy = robustness
+
+PYTHON (plan-and-execute):
+  from langchain.chains import LLMChain
+
+  def plan_and_execute(task, tools):
+      # Step 1: PLAN
+      plan_prompt = f"Break this task into steps: {task}"
+      plan = llm.generate(plan_prompt)
+      steps = parse_steps(plan)
+
+      # Step 2: EXECUTE each step
+      results = []
+      for step in steps:
+          result = execute_step(step, tools)
+          results.append(result)
+
+          # Optional: re-plan based on results
+          if needs_replanning(result):
+              remaining = replan(task, results, steps)
+              steps = remaining
+
+      return synthesize_results(results)
+
+  plan_and_execute(
+      "Research and compare top 3 Python web frameworks",
+      tools=[search, scrape, summarize]
+  )
+"""
+
+print(planning)</div>
+
+<div class="code-block"># ── STEP 5: Agent memory systems ──
+# How agents remember and learn.
+
+memory = """
+AGENT MEMORY SYSTEMS:
+
+1. SHORT-TERM (Working Memory):
+   → Current conversation context
+   → Last few messages
+   → Implemented as message list
+
+2. LONG-TERM (Persistent):
+   → Facts learned across sessions
+   → User preferences
+   → Previous task results
+
+3. EPISODIC:
+   → Record of past actions and outcomes
+   → "Last time I searched X, I got Y"
+   → Enables learning from experience
+
+4. SEMANTIC:
+   → Knowledge base (facts, relationships)
+   → Vector database for retrieval
+   → "What do I know about this user?"
+
+IMPLEMENTATION:
+
+SHORT-TERM (buffer):
+  messages = [
+      {"role": "user", "content": "What's the weather?"},
+      {"role": "assistant", "content": "..."},
+      {"role": "tool", "content": "32C, sunny"},
+  ]
+  # Sliding window: keep last N messages
+
+LONG-TERM (vector store):
+  from langchain.vectorstores import Chroma
+  from langchain.embeddings import OpenAIEmbeddings
+
+  memory = Chroma(embedding_function=OpenAIEmbeddings())
+
+  # Store experiences:
+  memory.add_texts([
+      "User prefers Python over JavaScript",
+      "User's timezone is Asia/Dhaka",
+      "Last task: deployed Django app successfully"
+  ])
+
+  # Retrieve relevant memories:
+  relevant = memory.similarity_search("What language should I use?")
+
+EPISODIC (action log):
+  action_history = [
+      {"step": 1, "action": "search", "result": "found 5 results"},
+      {"step": 2, "action": "scrape", "result": "extracted data"},
+      {"step": 3, "action": "summarize", "result": "summary created"},
+  ]
+
+MEMORY MANAGEMENT:
+  → Summarize old conversations (compress)
+  → Importance scoring (keep important, forget trivial)
+  → Retrieval: only pull relevant memories
+  → Forgetting: remove outdated information
+
+LANGCHAIN MEMORY TYPES:
+  → ConversationBufferMemory: raw message list
+  → ConversationBufferWindowMemory: last N messages
+  → ConversationSummaryMemory: summarized history
+  → ConversationKGMemory: knowledge graph
+  → VectorStoreRetrieverMemory: semantic search
+"""
+
+print(memory)</div>
+
+<div class="code-block"># ── STEP 6: Agent best practices ──
+# Building production agents.
+
+best_practices = [
+    "Start simple: ReAct before complex architectures",
+    "Tools need excellent descriptions (LLM must understand)",
+    "Limit tool count (5-10 max, too many = confusion)",
+    "Always handle tool errors gracefully",
+    "Set max iterations (prevent infinite loops)",
+    "Add human-in-the-loop for risky actions",
+    "Log every thought/action/observation for debugging",
+    "Use streaming for long-running tasks (user feedback)",
+    "Test with diverse queries (edge cases matter)",
+    "Cache tool results (avoid redundant API calls)",
+    "Rate limit tool calls (prevent abuse/costs)",
+    "Memory: summarize old context to save tokens",
+    "Multi-agent: divide tasks by specialization",
+    "Evaluation: define success metrics for agents",
+    "Security: sanitize all tool inputs/outputs",
+]
+
+print("AI AGENT BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Framework        │ Best For                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ LangChain        │ General agents, rapid prototyping│
+# │ LlamaIndex       │ RAG-heavy agents                │
+# │ CrewAI           │ Multi-agent collaboration       │
+# │ AutoGen          │ Multi-agent conversations       │
+# │ OpenAI Assistants│ Managed, production-ready       │
+# │ LangGraph        │ Complex stateful workflows      │
+# └──────────────────┴──────────────────────────────────┘</div>LEVELS OF AUTONOMY:
 
   Level ০: চ্যাটবট (শুধু কথা)
     → no tools, no action, no loop
