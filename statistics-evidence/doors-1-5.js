@@ -1117,24 +1117,438 @@ doors.push({
     <div class="stat-card"><div class="sc-num">০.৩%</div><div class="sc-label">চরম মান — খুবই বিরল</div></div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 স্বাভাবিক বণ্টন — Key Formulas</h4>
-    <table class="kv-table">
-      <tr><th>ধারণা</th><th>সংকেত</th><th>অর্থ</th></tr>
-      <tr><td class="hl">গডেট (Mean)</td><td>μ (মিউ)</td><td>ডেটার কেন্দ্র — সবচেয়ে সম্ভাব্য মান</td></tr>
-      <tr><td class="hl">প্রমাণ ব্যবধান (Std Dev)</td><td>σ (সিগমা)</td><td>গডেট থেকে ছড়ানোর পরিমাণ</td></tr>
-      <tr><td class="hl">ভ্যারিয়েন্স (Variance)</td><td>σ²</td><td>σ এর বর্গ — ছড়ানোর ক্ষেত্রফল</td></tr>
-      <tr><td class="hl">Z-স্কোর</td><td>z = (x − μ) / σ</td><td>একটা মান গডেট থেকে কত σ দূরে</td></tr>
-    </table>
-    <br>
-    <p><strong>বাস্তব উদাহরণ:</strong> IQ টেস্টে গডেট ১০০, σ = ১৫।</p>
-    <p>• ৬৮% মানুষের IQ ৮৫–১১৫ (গডেট ± ১σ)</p>
-    <p>• ৯৫% মানুষের IQ ৭০–১৩০ (± ২σ)</p>
-    <p>• মাত্র ২.৩% মানুষের IQ ১৩০-এর ওপরে (+১σ ছাড়িয়ে)</p>
-    <p>• মাত্র ০.১৩% মানুষের IQ ১৪৫-এর ওপরে (+৩σ)</p>
-    <br>
-    <p><strong>গাউসের সংযোগ:</strong> গাউস Ceres-এর অবস্থান গণনা করেছিলেন পূর্বের পর্যবেক্ষণের অনিশ্চয়তা (uncertainty) মডেল করে। তিনি বুঝেছিলেন — পরিমাপের ত্রুটি এলোমেলো নয়, এটা স্বাভাবিক বণ্টন অনুসরণ করে। বেশিরভাগ ত্রুটি ছোট (ঘণ্টার মাঝে), বড় ত্রুটি বিরল (ঘণ্টার লেজে)।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: The Normal distribution deep dive ──
+# The most important distribution in statistics.
+
+normal = """
+THE NORMAL DISTRIBUTION (Gaussian):
+
+PDF: f(x) = (1/(σ√(2π))) × exp(−(x−μ)²/(2σ²))
+
+KEY PARAMETERS:
+  μ (mean): center of the bell
+  σ (std dev): width of the bell
+
+THE 68-95-99.7 RULE:
+  68% of data within μ ± 1σ
+  95% within μ ± 2σ
+  99.7% within μ ± 3σ
+
+Z-SCORE:
+  z = (x − μ) / σ
+  → How many standard deviations from mean
+  → Standardizes comparison across distributions
+
+  IQ example: μ=100, σ=15
+    IQ 115: z=1.0 (top 16%)
+    IQ 130: z=2.0 (top 2.3%)
+    IQ 145: z=3.0 (top 0.13%)
+    IQ 160: z=4.0 (top 0.003%)
+
+GAUSS'S DISCOVERY (1801):
+  Ceres (dwarf planet) disappeared into sun's glare.
+  Gauss used normal distribution of measurement errors
+  to predict its position → found!
+  → Errors cluster around 0 (most common)
+  → Large errors are rare
+  → This is the normal distribution!
+
+WHY NORMAL IS EVERYWHERE (CLT):
+  Sum/average of independent variables → normal
+  → Heights, weights, errors, test scores
+"""
+
+print(normal)
+
+# PYTHON: Normal distribution:
+normal_code = """
+import numpy as np
+from scipy import stats
+
+# IQ distribution: μ=100, σ=15:
+mu, sigma = 100, 15
+
+# What IQ is top 5%? (95th percentile):
+top5 = stats.norm.ppf(0.95, mu, sigma)
+print(f"Top 5% IQ: {top5:.1f}")  # ~124.7
+
+# P(IQ > 130)?
+p_above_130 = 1 - stats.norm.cdf(130, mu, sigma)
+print(f"P(IQ > 130): {p_above_130:.4f}")  # ~0.0228
+
+# P(IQ between 85 and 115)?
+p_range = stats.norm.cdf(115, mu, sigma) - stats.norm.cdf(85, mu, sigma)
+print(f"P(85 < IQ < 115): {p_range:.4f}")  # ~0.683
+
+# Z-scores for various IQs:
+for iq in [70, 85, 100, 115, 130, 145]:
+    z = (iq - mu) / sigma
+    percentile = stats.norm.cdf(z) * 100
+    print(f"IQ {iq}: z={z:.2f}, percentile={percentile:.1f}%")
+"""
+
+print(normal_code)</div>
+
+  <div class="code-block"># ── STEP 2: Central Limit Theorem in action ──
+# Why averages are normal regardless of original distribution.
+
+clt_action = """
+CENTRAL LIMIT THEOREM (CLT) — IN ACTION:
+
+CLT: sample mean of n independent observations → Normal(μ, σ²/n)
+  regardless of original distribution!
+
+IMPLICATIONS:
+  1. Sample means are normal even for non-normal data
+  2. Confidence intervals use normal (or t for small samples)
+  3. Hypothesis tests use normal approximation
+  4. The larger n, the closer to normal
+
+STANDARD ERROR:
+  SE = σ / √n
+  → Measures uncertainty in sample mean
+  → Larger n → smaller SE → more precise estimate
+
+  Example: σ=15, n=100
+  SE = 15/10 = 1.5
+  → Sample mean ± 1.5 has 95% CI of ± 2×1.5 = ±3
+
+CONFIDENCE INTERVAL FOR MEAN:
+  CI = x̄ ± z × (σ/√n)
+  where z = 1.96 for 95% confidence
+
+  Example: sample mean IQ = 105, σ=15, n=100
+  95% CI = 105 ± 1.96 × 1.5 = [102.1, 107.9]
+
+  → We're 95% confident the true mean is between 102.1 and 107.9
+
+WHEN CLT DOESN'T APPLY:
+  → Very skewed distributions (need larger n)
+  → Heavy-tailed distributions (infinite variance)
+  → Correlated observations (not independent)
+"""
+
+print(clt_action)
+
+# PYTHON: CLT verification:
+clt_verify = """
+import numpy as np
+np.random.seed(42)
+
+# CLT: sample means of UNIFORM[0,1] → Normal(0.5, 1/(12n))
+for n in [1, 2, 5, 30, 100]:
+    means = [np.random.uniform(0, 1, n).mean() for _ in range(10000)]
+    actual_mean = np.mean(means)
+    actual_se = np.std(means)
+    theoretical_se = np.sqrt(1/12) / np.sqrt(n)
+    print(f"n={n:3d}: mean={actual_mean:.4f}, SE={actual_se:.4f} "
+          f"(theory: {theoretical_se:.4f})")
+
+# Confidence interval:
+sample = np.random.normal(100, 15, 50)  # n=50
+x_bar = sample.mean()
+se = 15 / np.sqrt(50)  # known σ
+ci_low = x_bar - 1.96 * se
+ci_high = x_bar + 1.96 * se
+print(f"\\n95% CI for mean: [{ci_low:.2f}, {ci_high:.2f}]")
+"""
+
+print(clt_verify)</div>
+
+  <div class="code-block"># ── STEP 3: Other important distributions ──
+# Beyond normal — real data has many shapes.
+
+other_dists = """
+IMPORTANT DISTRIBUTIONS:
+
+1. LOGNORMAL:
+   exp(Normal) → right-skewed
+   Income, wealth, stock prices
+   Mean > Median (skewed right)
+
+2. POWER LAW (Pareto):
+   P(X) ~ 1/x^α
+   City sizes, word frequencies, wealth
+   "80/20 rule": 80% of effects from 20% of causes
+   Heavy tail → extreme events common
+
+3. GAMMA:
+   Generalization of exponential
+   Used for waiting times, Bayesian priors
+
+4. BETA:
+   Distribution on [0, 1]
+   Models probabilities (Bayesian prior for Bernoulli)
+   Beta(1,1) = Uniform
+   Beta(α,β) with α>β → right-skewed
+
+5. WEIBULL:
+   Reliability/failure analysis
+   Flexible shape (increasing/decreasing hazard)
+   Used for product lifetime modeling
+
+6. t-DISTRIBUTION:
+   Like normal but heavier tails
+   Used when σ unknown and n small
+   Degrees of freedom = n−1
+   As n → ∞: t → Normal
+
+7. CHI-SQUARED (χ²):
+   Sum of squared standard normals
+   Used in goodness-of-fit, independence tests
+   Right-skewed (only positive)
+
+8. F-DISTRIBUTION:
+   Ratio of two chi-squareds
+   Used in ANOVA (comparing variances)
+
+CHOOSING THE RIGHT DISTRIBUTION:
+  Heights, errors, averages → Normal
+  Counts/time → Poisson/Exponential
+  Income, wealth → Lognormal/Power law
+  Probabilities → Beta
+  Reliability → Weibull
+  Ratios → F
+  Small samples → t
+"""
+
+print(other_dists)
+
+# PYTHON: Distribution comparison:
+dist_compare = """
+import numpy as np
+from scipy import stats
+
+# Compare distributions visually (via statistics):
+np.random.seed(42)
+
+distributions = {
+    'Normal(100, 15)': np.random.normal(100, 15, 100000),
+    'Lognormal(4.5, 0.5)': np.random.lognormal(4.5, 0.5, 100000),
+    'Exponential(10)': np.random.exponential(10, 100000),
+    'Pareto(3)': np.random.pareto(3, 100000) + 1,
+    'Uniform(50, 150)': np.random.uniform(50, 150, 100000),
+}
+
+print(f"{'Distribution':25s} {'Mean':>8s} {'Median':>8s} {'Std':>8s} {'Skew':>8s}")
+for name, data in distributions.items():
+    print(f"{name:25s} {data.mean():8.2f} {np.median(data):8.2f} "
+          f"{data.std():8.2f} {stats.skew(data):8.2f}")
+
+# Key insight:
+# Normal: mean ≈ median, skew ≈ 0
+# Lognormal/Exponential: mean >> median, skew > 0 (right-skewed)
+# Pareto: extreme skew, heavy tail
+"""
+
+print(dist_compare)</div>
+
+  <div class="code-block"># ── STEP 4: Sampling distributions ──
+# The distribution of statistics (not data).
+
+sampling_dist = """
+SAMPLING DISTRIBUTIONS:
+
+A STATISTIC (mean, variance, proportion) computed from samples
+also has a distribution.
+
+SAMPLE MEAN (x̄):
+  x̄ ~ Normal(μ, σ²/n) approximately (CLT)
+  Standard error: SE = σ/√n
+
+SAMPLE PROPORTION (p̂):
+  p̂ ~ Normal(p, p(1-p)/n) approximately
+  SE = √(p(1-p)/n)
+
+  Example: 60/100 people prefer A → p̂=0.6
+  SE = √(0.6×0.4/100) = 0.049
+  95% CI: 0.6 ± 0.096 = [0.504, 0.696]
+
+SAMPLE VARIANCE (s²):
+  (n-1)s²/σ² ~ χ²(n-1)
+  Chi-squared distribution with n−1 degrees of freedom
+
+t-STATISTIC (when σ unknown):
+  t = (x̄ − μ) / (s/√n)
+  t ~ t(n−1) distribution
+
+  → Used for confidence intervals and hypothesis tests
+  → Heavier tails than normal (accounts for estimating σ)
+
+WHY THIS MATTERS:
+  → We can quantify UNCERTAINTY in estimates
+  → Confidence intervals: "true value is in [a, b] with 95% confidence"
+  → Hypothesis tests: "is the effect real or chance?"
+"""
+
+print(sampling_dist)
+
+# PYTHON: Sampling distributions:
+sd_code = """
+import numpy as np
+from scipy import stats
+
+# Demonstrate: sample mean ~ Normal(μ, σ²/n):
+np.random.seed(42)
+mu, sigma, n = 100, 15, 50
+
+# Draw 10000 samples, each of size n:
+sample_means = [np.random.normal(mu, sigma, n).mean() for _ in range(10000)]
+
+# The sample means should be Normal(100, 15/√50):
+print(f"Sample means:")
+print(f"  Mean: {np.mean(sample_means):.4f} (expected: {mu})")
+print(f"  SE: {np.std(sample_means):.4f} (expected: {sigma/np.sqrt(n):.4f})")
+
+# Sample proportion:
+true_p = 0.5
+n = 100
+sample_props = [np.mean(np.random.choice([0,1], n, p=[1-true_p, true_p])) for _ in range(10000)]
+print(f"\\nSample proportions:")
+print(f"  Mean: {np.mean(sample_props):.4f} (expected: {true_p})")
+print(f"  SE: {np.std(sample_props):.4f} (expected: {np.sqrt(true_p*(1-true_p)/n):.4f})")
+
+# 95% CI for a proportion (political poll):
+favor = 520
+total = 1000
+p_hat = favor / total
+se = np.sqrt(p_hat * (1-p_hat) / total)
+ci = (p_hat - 1.96*se, p_hat + 1.96*se)
+print(f"\\nPoll: {favor}/{total} favor candidate")
+print(f"p̂ = {p_hat:.3f}")
+print(f"95% CI: [{ci[0]:.3f}, {ci[1]:.3f}]")
+"""
+
+print(sd_code)</div>
+
+  <div class="code-block"># ── STEP 5: Parameter estimation ──
+# Estimating population parameters from samples.
+
+estimation = """
+PARAMETER ESTIMATION:
+
+We want to estimate POPULATION parameters from SAMPLE data.
+
+METHOD 1: METHOD OF MOMENTS (MoM):
+  Set sample moments = population moments.
+  → Sample mean = population mean
+  → Sample variance = population variance
+  → Simple but not always optimal
+
+METHOD 2: MAXIMUM LIKELIHOOD (MLE):
+  Find parameters that MAXIMIZE the likelihood of observed data.
+  L(θ) = P(data | θ)
+  → Find θ that makes data MOST probable
+  → Most popular estimation method
+  → Asymptotically efficient (optimal for large n)
+
+  Example: Normal distribution MLE
+  μ̂ = x̄ (sample mean)
+  σ̂² = (1/n)Σ(xᵢ−x̄)² (biased sample variance)
+
+METHOD 3: BAYESIAN ESTIMATION:
+  Combine prior belief with data:
+  P(θ|data) ∝ P(data|θ) × P(θ)
+  posterior ∝ likelihood × prior
+  → Incorporates prior knowledge
+  → Produces distribution (not point estimate)
+  → Credible intervals (not confidence intervals)
+
+BIAS vs VARIANCE (of estimator):
+  Bias: E[θ̂] − θ (systematic error)
+  Variance: how much θ̂ varies across samples
+  MSE = Bias² + Variance
+
+  Unbiased: sample mean (E[x̄] = μ)
+  Biased: sample variance with n denominator (use n−1 for unbiased)
+
+CONFIDENCE INTERVAL (frequentist):
+  "If we repeated sampling many times, 95% of CIs would contain true θ"
+  CI = θ̂ ± z × SE(θ̂)
+  → NOT "95% probability θ is in CI" (common misconception)
+"""
+
+print(estimation)
+
+# PYTHON: MLE estimation:
+mle_code = """
+import numpy as np
+from scipy.optimize import minimize
+from scipy.stats import norm
+
+# Generate data from Normal(μ=50, σ=10):
+np.random.seed(42)
+true_mu, true_sigma = 50, 10
+data = np.random.normal(true_mu, true_sigma, 200)
+
+# MLE for Normal: μ̂ = x̄, σ̂² = (1/n)Σ(xᵢ−x̄)²
+mu_mle = np.mean(data)
+sigma_mle = np.sqrt(np.mean((data - mu_mle)**2))  # note: divides by n, not n-1
+print(f"MLE: μ={mu_mle:.4f} (true: {true_mu})")
+print(f"MLE: σ={sigma_mle:.4f} (true: {true_sigma})")
+
+# Unbiased variance (divides by n-1):
+sigma_unbiased = np.std(data, ddof=1)
+print(f"Unbiased σ: {sigma_unbiased:.4f}")
+
+# Generic MLE via optimization (for any distribution):
+def negative_log_likelihood(params, data):
+    mu, sigma = params
+    if sigma <= 0:
+        return np.inf
+    return -np.sum(norm.logpdf(data, mu, sigma))
+
+result = minimize(negative_log_likelihood, [40, 5], args=(data,),
+                  method='Nelder-Mead')
+print(f"Optimized MLE: μ={result.x[0]:.4f}, σ={result.x[1]:.4f}")
+
+# Confidence interval for mean:
+n = len(data)
+se = sigma_unbiased / np.sqrt(n)
+ci_low = mu_mle - 1.96 * se
+ci_high = mu_mle + 1.96 * se
+print(f"95% CI for μ: [{ci_low:.4f}, {ci_high:.4f}]")
+"""
+
+print(mle_code)</div>
+
+  <div class="code-block"># ── STEP 6: Distributions best practices ──
+# Choose and estimate distributions correctly.
+
+best_practices = [
+    "Normal: bell curve, μ=mean, σ=spread",
+    "68-95-99.7 rule: within 1σ, 2σ, 3σ",
+    "Z-score: (x−μ)/σ standardizes comparisons",
+    "CLT: sample means → Normal regardless of original",
+    "Standard Error: SE = σ/√n (decreases with n)",
+    "Lognormal for income/wealth (right-skewed)",
+    "Power law for cities/words (heavy tail)",
+    "t-distribution when σ unknown and n small",
+    "Chi-squared for variance, goodness-of-fit",
+    "MLE: maximize likelihood of observed data",
+    "Bayesian: posterior ∝ likelihood × prior",
+    "CI: 95% confidence means 95% of intervals contain true value",
+    "MSE = Bias² + Variance (estimator quality)",
+    "Use n−1 for unbiased sample variance",
+    "Always check distribution assumptions",
+]
+
+print("DISTRIBUTIONS & ESTIMATION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Distribution     │ Parameters                      │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Normal(μ,σ)     │ μ=mean, σ=std                   │
+# │ Lognormal        │ μ,σ of log(X)                   │
+# │ Exponential(λ)  │ λ=rate, mean=1/λ               │
+# │ Poisson(λ)      │ λ=rate, mean=variance=λ        │
+# │ Beta(α,β)      │ α,β shape parameters            │
+# │ t(df)           │ df=n−1, heavier tails          │
+# │ χ²(k)           │ k=df, right-skewed              │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৩০ (Architect's Compass) Door ৬-এ Statistics & Distributions শিখেছিলে — গাউসের বক্রতা সেই একই ধারণার গভীরে যাওয়া। Book ৩১ (Classic ML) Door ৮ Bias-Variance Tradeoff — সেখানে σ² (ভ্যারিয়েন্স) বনাম bias এর ভারসাম্য দেখেছিলে। এখন বুঝতে পারো কেন ভ্যারিয়েন্স এত গুরুত্বপূর্ণ।</div></div>
 
