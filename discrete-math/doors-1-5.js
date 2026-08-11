@@ -1246,29 +1246,341 @@ doors.push({
 <div class="dialogue"><strong>সমাবেশ কারিগর রিয়াদ:</strong> জাইদ (Door ৩) তোমাকে প্রমাণ দিয়েছেন। এখন দেখো প্রমাণের কাঠামো — সেট। একটি সেট একটি বাক্সের মতো। ভেতরে কিছু জিনিস। A = {১,২,৩}। দুটি বাক্সের মিল দেখতে চাও? Intersection: A ∩ B। সব জিনিস একসাথে? Union: A ∪ B। A-তে আছে কিন্তু B-তে নেই? Difference: A ∖ B। কিন্তু সবচেয়ে বিস্ময়কর — একটি সেটের সব উপসেট: পাওয়ার সেট। ৩টি উপাদানের সেটে ৮টি উপসেট। n উপাদানে ২ⁿ। সর্বদা বড়।</div>
 <div class="dialogue en"><strong>Assembly Artisan Riyad:</strong> Zaid (Door 3) gave you proofs. Now see the structure of proof — sets. A set is like a box. A = {1,2,3}. Common elements? Intersection. All together? Union. In A but not B? Difference. Most surprising — power set: all subsets. 3 elements → 8 subsets. n elements → 2ⁿ. Always larger.</div>
 
-<div class="code-block"># — Python: সেট অপারেশন —
+<div class="code-block"># ── STEP 1: Set theory basics ──
+# Sets are the foundation of all mathematics.
 
+set_basics = """
+SET THEORY:
+
+A SET is an unordered collection of DISTINCT elements.
   A = {1, 2, 3, 4}
   B = {3, 4, 5, 6}
 
-  print(A | B)    # Union: {1,2,3,4,5,6}  ← ∪
-  print(A & B)    # Intersection: {3,4}   ← ∩
-  print(A - B)    # Difference: {1,2}     ← ∖
-  print(A ^ B)    # Symmetric diff: {1,2,5,6} ← △
+SET OPERATIONS:
+  UNION (∪):        A ∪ B = {1,2,3,4,5,6}  (everything in either)
+  INTERSECTION (∩): A ∩ B = {3, 4}          (in both)
+  DIFFERENCE (−):   A − B = {1, 2}          (in A but not B)
+  SYMMETRIC DIFF (△): A △ B = {1,2,5,6}    (in exactly one)
+  COMPLEMENT (A'): Everything NOT in A (relative to universe)
 
-  # পাওয়ার সেট:
-  from itertools import chain, combinations
-  def powerset(s):
-      return list(chain.from_iterable(
-          combinations(s, r) for r in range(len(s)+1)))
+SUBSET (⊆): A ⊆ B means every element of A is in B
+PROPER SUBSET (⊂): A ⊂ B means A ⊆ B but A ≠ B
 
-  print(powerset({1, 2}))
-  # [(), (1,), (2,), (1, 2)] — ৪টি = ২²
+SPECIAL SETS:
+  ∅ (empty set): {} — contains nothing
+  ℕ: natural numbers {1, 2, 3, ...}
+  ℤ: integers {..., -2, -1, 0, 1, 2, ...}
+  ℚ: rational numbers (fractions)
+  ℝ: real numbers (including irrationals)
+  ℂ: complex numbers
 
-  # ক্যান্টরের বিস্ময়: |P(ℕ)| > |ℕ|
-  # প্রাকৃতিক সংখ্যা: ℵ₀
-  # বাস্তব সংখ্যা: ২^ℵ₀ — বড়!
-  # প্রমাণ: Cantor diagonal argument</div>
+POWER SET P(A):
+  Set of ALL subsets of A.
+  |P(A)| = 2^|A|
+  A = {1, 2} → P(A) = {∅, {1}, {2}, {1,2}} → 4 = 2²
+"""
+
+print(set_basics)
+
+# PYTHON: Set operations:
+set_code = """
+A = {1, 2, 3, 4}
+B = {3, 4, 5, 6}
+
+print(A | B)    # Union: {1,2,3,4,5,6}
+print(A & B)    # Intersection: {3,4}
+print(A - B)    # Difference: {1,2}
+print(A ^ B)    # Symmetric diff: {1,2,5,6}
+
+# Subset check:
+print({1,2} <= A)     # True ({1,2} ⊆ A)
+print({1,2} < A)      # True (proper subset)
+
+# Power set:
+from itertools import chain, combinations
+
+def powerset(s):
+    return list(chain.from_iterable(
+        combinations(s, r) for r in range(len(s)+1)))
+
+print(powerset({1, 2}))
+# [(), (1,), (2,), (1, 2)] — 4 = 2²
+"""
+
+print(set_code)</div>
+
+<div class="code-block"># ── STEP 2: Relations and functions ──
+# How elements of sets relate to each other.
+
+relations = """
+RELATIONS:
+
+A RELATION R from set A to set B is a SUBSET of A × B (cartesian product).
+  A × B = {(a, b) : a ∈ A, b ∈ B}
+
+EXAMPLE:
+  A = {1, 2, 3}, B = {a, b}
+  A × B = {(1,a), (1,b), (2,a), (2,b), (3,a), (3,b)}
+  R = {(1,a), (2,b)} is a relation
+
+PROPERTIES OF RELATIONS (on A × A):
+  REFLEXIVE:     (a, a) ∈ R for all a (every element relates to itself)
+  SYMMETRIC:     if (a,b) ∈ R then (b,a) ∈ R
+  TRANSITIVE:    if (a,b) ∈ R and (b,c) ∈ R then (a,c) ∈ R
+  ANTISYMMETRIC: if (a,b) ∈ R and (b,a) ∈ R then a = b
+
+EQUIVALENCE RELATION:
+  Reflexive + Symmetric + Transitive
+  → Partitions set into equivalence classes
+  → Example: "same birthday" (reflexive, symmetric, transitive)
+
+PARTIAL ORDER:
+  Reflexive + Antisymmetric + Transitive
+  → Ranking/hierarchy (not all elements comparable)
+  → Example: ⊆ on sets, ≤ on numbers
+
+FUNCTIONS:
+  A special relation where each input maps to EXACTLY ONE output.
+  f: A → B means f maps each element of A to exactly one element of B.
+  → A = domain, B = codomain
+  → f(x) = x² maps ℝ → ℝ
+"""
+
+print(relations)
+
+# PYTHON: Relations and functions:
+rel_code = """
+# Cartesian product:
+A = {1, 2, 3}
+B = {'a', 'b'}
+product = [(a, b) for a in A for b in B]
+print(product)
+# [(1,'a'), (1,'b'), (2,'a'), (2,'b'), (3,'a'), (3,'b')]
+
+# A relation (subset of A×B):
+R = {(1, 'a'), (2, 'b')}
+
+# Check if relation is a function (each input has exactly one output):
+def is_function(relation, domain):
+    inputs = [pair[0] for pair in relation]
+    return all(inputs.count(x) == 1 for x in domain) and set(inputs) == domain
+
+print(is_function(R, A))    # False (3 has no mapping)
+print(is_function({(1,'a'), (2,'a'), (3,'b')}, A))  # True
+
+# Equivalence relation example: same remainder mod 3
+def same_mod3(a, b):
+    return a % 3 == b % 3
+
+# Reflexive: same_mod3(a, a) → always True ✓
+# Symmetric: same_mod3(a, b) → same_mod3(b, a) ✓
+# Transitive: same_mod3(a,b) and same_mod3(b,c) → same_mod3(a,c) ✓
+# → Equivalence relation! Partitions into {0,3,6,...}, {1,4,7,...}, {2,5,8,...}
+"""
+
+print(rel_code)</div>
+
+<div class="code-block"># ── STEP 3: Cardinality and infinity ──
+# Cantor's revolutionary insight: some infinities are bigger.
+
+cardinality = """
+CARDINALITY:
+
+The SIZE of a set.
+|A| = number of elements.
+
+FINITE SETS:
+  |{1,2,3}| = 3
+  |∅| = 0
+
+INFINITE SETS:
+  |ℕ| = ℵ₀ (aleph-null, countably infinite)
+  |ℤ| = ℵ₀ (integers = same size as naturals!)
+  |ℚ| = ℵ₀ (rationals = same size as naturals!)
+  |ℝ| = 2^ℵ₀ (reals = UNCOUNTABLY infinite, BIGGER than ℕ)
+
+CANTOR'S DIAGONAL ARGUMENT:
+  The reals are UNCOUNTABLE — bigger than the naturals.
+
+  Proof sketch:
+  Assume reals are countable (listable).
+  List all reals between 0 and 1:
+    r1 = 0.d11 d12 d13 ...
+    r2 = 0.d21 d22 d23 ...
+    r3 = 0.d31 d32 d33 ...
+    ...
+
+  Construct a new number r where the nth digit ≠ dnn.
+  r differs from r1 in position 1, from r2 in position 2, etc.
+  → r is NOT in the list!
+  → The list was incomplete → reals are uncountable.
+
+  CONTINUUM HYPOTHESIS:
+  Is there an infinity BETWEEN ℵ₀ and 2^ℵ₀?
+  → Gödel (1940) + Cohen (1963): cannot be proved or disproved
+  → Independent of ZFC set theory!
+
+  Different sizes of infinity! Mind-blowing.
+"""
+
+print(cardinality)</div>
+
+<div class="code-block"># ── STEP 4: Russell's paradox and ZFC ──
+# When sets break mathematics.
+
+russell = """
+RUSSELL'S PARADOX (1901):
+
+"Let R be the set of all sets that do NOT contain themselves."
+  → R = {S : S ∉ S}
+
+Question: Does R contain itself?
+  If R ∈ R → then by definition R ∉ R. CONTRADICTION!
+  If R ∉ R → then by definition R ∈ R. CONTRADICTION!
+
+This broke naive set theory.
+
+ZFC (Zermelo-Fraenkel + Choice):
+  Axiomatic set theory that avoids the paradox.
+  → Sets can't be "too big" (no set of all sets)
+  → Uses axioms to restrict what can be called a set
+  → Foundation of modern mathematics
+
+AXIOM OF CHOICE:
+  "Given any collection of non-empty sets, you can pick
+   one element from each."
+
+  Seems obvious, but has COUNTERINTUITIVE consequences:
+  → Banach-Tarski: a sphere can be decomposed and reassembled
+    into TWO identical spheres (uses Axiom of Choice!)
+  → Well-ordering theorem: every set can be well-ordered
+    (but you might not be able to describe the ordering)
+
+GÖDEL'S INCOMPLETENESS THEOREMS (1931):
+  1. Any consistent formal system is INCOMPLETE
+     (there are true statements that can't be proved)
+  2. A system can't prove its own consistency
+
+  → Mathematics has fundamental limits!
+  → Not everything true can be proven.
+"""
+
+print(russell)</div>
+
+<div class="code-block"># ── STEP 5: Sets in databases and programming ──
+# Set theory everywhere in computing.
+
+applications = """
+SETS IN PROGRAMMING:
+
+PYTHON SETS:
+  A = {1, 2, 3}
+  A.add(4)      # {1, 2, 3, 4}
+  A.discard(2)  # {1, 3, 4}
+  3 in A        # True (O(1) lookup!)
+  len(A)        # 3
+
+  → Sets for fast membership testing (O(1) vs O(n) for lists)
+  → Remove duplicates: list(set([1,1,2,2,3])) → [1,2,3]
+
+SQL = SET OPERATIONS:
+  UNION:        SELECT ... UNION SELECT ...
+  INTERSECT:    SELECT ... INTERSECT SELECT ...
+  EXCEPT:       SELECT ... EXCEPT SELECT ...
+
+  Each table is a SET of rows.
+  Each SELECT is a set operation.
+
+DJANGO ORM (set-like):
+  queryset1 | queryset2   # union
+  queryset1 & queryset2   # intersection
+  queryset1.difference(queryset2)
+
+FUNCTIONAL PROGRAMMING:
+  map(f, list): apply function to each element (like a function relation)
+  filter(pred, list): subset satisfying predicate
+  reduce(f, list): collapse list to single value
+
+VECTOR SPACES (ML):
+  Vectors are elements of vector SPACES (sets with structure)
+  → Each layer of a neural network is a function: ℝ^n → ℝ^m
+  → Set theory underlies all of mathematics
+"""
+
+print(applications)
+
+# PYTHON: Practical set usage:
+practical_code = """
+# Remove duplicates from a list:
+names = ['Alice', 'Bob', 'Alice', 'Charlie', 'Bob']
+unique = list(set(names))
+# ['Alice', 'Bob', 'Charlie'] (order not guaranteed)
+
+# Preserve order + deduplicate:
+from collections import OrderedDict
+unique_ordered = list(OrderedDict.fromkeys(names))
+# ['Alice', 'Bob', 'Charlie'] (order preserved)
+
+# Fast membership testing (set vs list):
+big_list = list(range(1000000))
+big_set = set(big_list)
+
+import time
+
+# List lookup: O(n) — slow:
+start = time.time()
+for _ in range(1000):
+    _ = 999999 in big_list
+print(f"List: {time.time()-start:.3f}s")
+
+# Set lookup: O(1) — fast:
+start = time.time()
+for _ in range(1000):
+    _ = 999999 in big_set
+print(f"Set:  {time.time()-start:.3f}s")
+# Set is ~1000x faster for membership testing!
+"""
+
+print(practical_code)</div>
+
+<div class="code-block"># ── STEP 6: Set theory best practices ──
+# Apply set theory effectively.
+
+best_practices = [
+    "Use Python sets for O(1) membership testing",
+    "Use set operations instead of manual loops",
+    "SQL operations mirror set theory (UNION, INTERSECT)",
+    "Django Q objects enable set-like queries",
+    "Remember: sets are UNORDERED (use dict/list if order matters)",
+    "Power set has 2^n elements (exponential — be careful)",
+    "Cartesian product A×B has |A|×|B| elements",
+    "Functions are special relations (one output per input)",
+    "Equivalence relations partition sets into classes",
+    "Different infinities: ℕ < ℝ (countable < uncountable)",
+    "Use frozenset for immutable, hashable sets",
+    "Set comprehensions: {x**2 for x in range(10)}",
+    "Symmetric difference: elements in exactly one set",
+    "Subset/superset: <= and >= operators",
+    "Cartesian product: itertools.product(A, B)",
+]
+
+print("SET THEORY BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Operation        │ Python                          │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Union (∪)       │ A | B                           │
+# │ Intersection (∩)│ A & B                           │
+# │ Difference (−)  │ A - B                           │
+# │ Symmetric diff  │ A ^ B                           │
+# │ Subset (⊆)     │ A <= B                          │
+# │ Membership (∈) │ x in A (O(1))                   │
+# │ Power set       │ 2^|A| elements                  │
+# │ Cartesian prod  │ itertools.product(A, B)         │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>রাসেলের প্যারাডক্স (১৯০১):</strong> "সেট যার ভেতরে এমন সব সেট আছে যারা নিজেদের ধারণ করে না।" এই সেট কি নিজেকে ধারণ করে? হ্যাঁ হলে — না। না হলে — হ্যাঁ। অন্তর্বিরোধ! এটা থেকে জন্ম নিল ZFC সেট তত্ত্ব — কঠোর ভিত্তি।</div></div>
 
