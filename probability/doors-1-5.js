@@ -1485,39 +1485,419 @@ doors.push({
 <div class="dialogue"><strong>স্মৃতিহীন-পথিক আমিন:</strong> Memoryless = অতীত প্রভাবহীন। P(X>২০ | X>১০) = P(X>১০)। বাস ১০ মিনিট দেরি করেছে? পরের বাস এখনও একই rate-এ আসে। Exponential: f(x) = λe^(-λx)। λ = rate (বাস প্রতি ঘণ্টায়)। Mean = ১/λ। Geometric = discrete version — কতবার চেষ্টা করলে প্রথম success? M/M/১ queue: Markovian arrival, Markovian service, ১ server।</div>
 <div class="dialogue en"><strong>Memoryless Walker Amin:</strong> Memoryless = past has no effect. P(X>20 | X>10) = P(X>10). Bus 10 minutes late? Next bus arrives at the same rate. Exponential: f(x) = λe^(-λx). λ = rate. Mean = 1/λ. Geometric = discrete version — how many trials until first success? M/M/1 queue: Markovian arrival, Markovian service, 1 server.</div>
 
-<div class="code-block"># — Python: Memoryless Distribution —
+<div class="code-block"># ── STEP 1: The Memoryless property ──
+# Only exponential and geometric are memoryless.
 
-  import numpy as np
-  from scipy.stats import expon
+memoryless = """
+THE MEMORYLESS PROPERTY:
 
-  # Exponential: বাস প্রতি ১৫ মিনিটে (λ = 1/15)
-  lam = 1/15  # rate
-  mean_wait = 1/lam  # = 15 minutes
+A distribution is MEMORYLESS if:
+  P(X > s + t | X > s) = P(X > t)
 
-  # P(wait > 10)?
-  p_over_10 = expon.sf(10, scale=mean_wait)
-  print(f"P(X>10) = {p_over_10:.3f}")  # ~0.513
+  "The future doesn't depend on the past."
 
-  # Memoryless যাচাই:
-  # P(X>20 | X>10) = P(X>10)?
-  p_over_20 = expon.sf(20, scale=mean_wait)
-  conditional = p_over_20 / p_over_10  # P(X>20|X>10)
-  print(f"P(X>20|X>10) = {conditional:.3f}")  # 0.513!
-  print(f"P(X>10)      = {p_over_10:.3f}")    # 0.513!
-  # একই! ✅ Memoryless proven!
+ONLY TWO distributions are memoryless:
+  1. EXPONENTIAL (continuous): time between events
+  2. GEOMETRIC (discrete): trials until first success
 
-  # Geometric: কতবার coin flip করলে first heads?
-  from scipy.stats import geom
-  p = 0.3  # heads probability
-  print(f"Expected flips: {1/p:.1f}")  # 3.3
-  print(f"P(first=3): {geom.pmf(3, p):.3f}")  # 0.147
+EXPONENTIAL EXAMPLE (bus arrivals):
+  Buses arrive at rate λ = 1 per 15 minutes
+  E[wait] = 15 minutes
 
-  # M/M/1 Queue:
-  arrival_rate = 2   # per minute
-  service_rate = 3   # per minute
-  rho = arrival_rate / service_rate  # utilization
-  avg_wait = rho / (service_rate - arrival_rate)
-  print(f"Avg wait: {avg_wait:.2f} min")  # 0.67</div>
+  You've waited 10 minutes. How much longer?
+  → Remaining wait is STILL Exponential(λ)
+  → E[remaining] = 15 minutes (same as from start!)
+
+  P(total > 20 | already waited 10) = P(additional > 10)
+  This is the memoryless property.
+
+WHY IT SEEMS COUNTERINTUITIVE:
+  In real life, if a bus is 10 minutes late, it's probably coming soon.
+  But exponential says: remaining time is SAME as fresh start.
+
+  Real bus arrivals are NOT memoryless (schedule info matters).
+  But POISSON processes (random arrivals) are memoryless.
+
+GEOMETRIC EXAMPLE (coin flips):
+  P(heads) = 0.3
+  You've flipped 5 tails. How many more until first heads?
+  → Still Geometric(0.3), E[additional] = 1/0.3 = 3.3 flips
+
+  "The dice has no memory."
+"""
+
+print(memoryless)
+
+# PYTHON: Memoryless verification:
+ml_code = """
+import numpy as np
+from scipy.stats import expon
+
+# Exponential: λ = 1/15 (bus every 15 min on average)
+lam = 1/15
+scale = 1/lam  # = 15
+
+# P(wait > 10)?
+p10 = expon.sf(10, scale=scale)
+print(f"P(X > 10) = {p10:.4f}")  # ~0.5134
+
+# P(wait > 20)?
+p20 = expon.sf(20, scale=scale)
+print(f"P(X > 20) = {p20:.4f}")  # ~0.2636
+
+# Memoryless: P(X>20 | X>10) should equal P(X>10)?
+conditional = p20 / p10
+print(f"P(X>20 | X>10) = {conditional:.4f}")  # ~0.5134
+print(f"P(X>10)        = {p10:.4f}")          # ~0.5134
+# EQUAL! Memoryless proven.
+
+# Geometric (discrete): P(success) = 0.3
+from scipy.stats import geom
+p = 0.3
+print(f"E[flips until heads] = {1/p:.1f}")  # 3.3
+print(f"P(first heads on 3rd flip) = {geom.pmf(3, p):.4f}")  # 0.147
+"""
+
+print(ml_code)</div>
+
+<div class="code-block"># ── STEP 2: Queueing theory (M/M/1) ──
+# Practical application of exponential distribution.
+
+queueing = """
+QUEUEING THEORY:
+
+M/M/1 QUEUE:
+  M = Markovian (exponential inter-arrival and service times)
+  M = Markovian service time
+  1 = single server
+
+PARAMETERS:
+  λ = arrival rate (customers per unit time)
+  μ = service rate (customers served per unit time)
+  ρ = λ/μ = utilization (must be < 1 for stability)
+
+KEY FORMULAS:
+  Average number in system: L = ρ / (1 − ρ) = λ / (μ − λ)
+  Average wait time:        W = 1 / (μ − λ) = L / λ (Little's Law)
+  Average queue length:     Lq = ρ² / (1 − ρ)
+  Average wait in queue:    Wq = ρ / (μ(μ − λ))
+
+LITTLE'S LAW (applies to ALL queues):
+  L = λ × W
+  (Average number in system = arrival rate × average wait time)
+  → Deceptively simple, universally true!
+
+EXAMPLE:
+  Coffee shop: λ = 10 customers/hour, μ = 15/hour
+  ρ = 10/15 = 0.667 (67% utilization)
+  L = 0.667 / (1 − 0.667) = 2 customers on average
+  W = 2 / 10 = 0.2 hours = 12 minutes average wait
+
+WHEN ρ → 1 (server almost overloaded):
+  → L → ∞, W → ∞
+  → Queue grows without bound
+  → This is why 80%+ utilization is dangerous
+
+REAL-WORLD APPLICATIONS:
+  → Server capacity planning (λ = requests/sec)
+  → Call center staffing
+  → Traffic engineering
+  → Manufacturing throughput
+"""
+
+print(queueing)
+
+# PYTHON: M/M/1 queue simulation:
+queue_code = """
+import numpy as np
+
+def mm1_simulation(arrival_rate, service_rate, hours=8):
+    \"\"\"Simulate M/M/1 queue.\"\"\"
+    n_customers = 10000
+
+    # Exponential inter-arrival and service times:
+    arrivals = np.random.exponential(1/arrival_rate, n_customers)
+    services = np.random.exponential(1/service_rate, n_customers)
+
+    # Calculate wait times:
+    arrival_times = np.cumsum(arrivals)
+    start_service = np.maximum(arrival_times, np.cumsum(services) + 
+                                np.concatenate([[0], np.cumsum(services)[:-1] - arrivals[1:]]))
+
+    # Simplified: track queue
+    queue = 0
+    total_wait = 0
+    for i in range(n_customers):
+        total_wait += queue * arrivals[i]
+        queue = max(0, queue - services[i] * arrival_rate)
+        queue += 1
+
+    return total_wait / n_customers
+
+# Coffee shop: λ=10/hr, μ=15/hr
+lam, mu = 10, 15
+rho = lam / mu
+print(f"Utilization ρ = {rho:.3f}")
+
+# Theoretical values:
+L = rho / (1 - rho)
+W = L / lam
+print(f"Theoretical L (avg in system): {L:.2f}")
+print(f"Theoretical W (avg wait): {W:.2f} hours = {W*60:.1f} min")
+
+# What if arrival rate increases to 14?
+lam2 = 14
+rho2 = lam2 / mu
+L2 = rho2 / (1 - rho2)
+W2 = L2 / lam2
+print(f"If λ=14: L={L2:.1f}, W={W2:.2f}h = {W2*60:.1f}min")
+# Queue explodes near capacity!
+"""
+
+print(queue_code)</div>
+
+<div class="code-block"># ── STEP 3: Poisson process ──
+# The foundation of event-based probability.
+
+poisson_process = """
+POISSON PROCESS:
+
+A process where events happen:
+  1. Independently (one event doesn't affect another)
+  2. At constant average rate λ
+  3. One at a time (no simultaneous events)
+
+KEY PROPERTIES:
+  → Number of events in time t: Poisson(λt)
+  → Time between events: Exponential(λ)
+  → Time until k-th event: Gamma(k, λ)
+  → Memoryless: past doesn't predict future
+
+EXAMPLES:
+  → Customers arriving at store (λ = 10/hour)
+  → Server requests (λ = 1000/sec)
+  → Radioactive decay (λ = constant)
+  → Emails received (λ = 5/hour)
+
+POISSON PROCESS ALLOWS US TO ANSWER:
+  "How many customers in the next 30 minutes?" → Poisson(λ × 0.5)
+  "How long until the next customer?" → Exponential(λ)
+  "How long until the 5th customer?" → Gamma(5, λ)
+
+SUPERPOSITION:
+  Two independent Poisson processes (λ₁, λ₂) combined
+  → Single Poisson(λ₁ + λ₂)
+
+THINNING:
+  Each event is type A with probability p
+  → Type A events: Poisson(λp)
+  → Type B events: Poisson(λ(1−p))
+
+NON-HOMOGENEOUS POISSON:
+  Rate λ(t) varies with time
+  → Rush hour: high λ, nighttime: low λ
+  → More realistic for traffic, calls
+"""
+
+print(poisson_process)
+
+# PYTHON: Poisson process simulation:
+pp_code = """
+import numpy as np
+
+# Simulate Poisson process: λ = 5 events per hour
+lam = 5  # rate per hour
+n_hours = 1000
+
+# Method 1: Count events per hour:
+counts = np.random.poisson(lam, n_hours)
+print(f"Mean events/hour: {counts.mean():.2f}")  # ~5
+print(f"Variance: {counts.var():.2f}")            # ~5 (mean = var)
+
+# Method 2: Generate inter-arrival times:
+inter_arrivals = np.random.exponential(1/lam, 10000)
+arrival_times = np.cumsum(inter_arrivals)
+
+# Count events in first 100 hours:
+events_in_100h = np.sum(arrival_times < 100)
+print(f"Events in 100 hours: {events_in_100h}")  # ~500
+print(f"Expected: {100 * lam}")                  # 500
+
+# Time until 10th event (Gamma distribution):
+tenth_event_times = []
+for _ in range(10000):
+    times = np.cumsum(np.random.exponential(1/lam, 10))
+    tenth_event_times.append(times[-1])
+
+print(f"Mean time to 10th event: {np.mean(tenth_event_times):.2f}h")  # ~2.0
+print(f"Expected (10/λ): {10/lam:.2f}h")  # 2.0
+"""
+
+print(pp_code)</div>
+
+<div class="code-block"># ── STEP 4: Reliability engineering ──
+# Failure rates and system reliability.
+
+reliability = """
+RELIABILITY ENGINEERING:
+
+RELIABILITY FUNCTION:
+  R(t) = P(system survives beyond time t) = P(X > t)
+
+FAILURE RATE (hazard function):
+  h(t) = f(t) / R(t)
+  → Instantaneous rate of failure at time t
+
+BATH-TUB CURVE:
+  Three phases of product lifecycle:
+  1. INFANT MORTALITY (decreasing failure rate)
+     → Manufacturing defects, early failures
+  2. USEFUL LIFE (constant failure rate)
+     → Random failures → Exponential distribution
+  3. WEAR-OUT (increasing failure rate)
+     → Aging, degradation → Weibull distribution
+
+MTBF (Mean Time Between Failures):
+  MTBF = 1 / λ (for exponential)
+  → Server MTBF = 10,000 hours → λ = 0.0001/hour
+
+MTTR (Mean Time To Repair):
+  Average time to fix a failed system
+
+AVAILABILITY:
+  A = MTBF / (MTBF + MTTR)
+  → "99.9% availability" = 8.76 hours downtime/year
+  → "99.99%" = 52.6 minutes/year
+  → "99.999%" (five nines) = 5.26 minutes/year
+
+SERIES SYSTEM:
+  R_system = R₁ × R₂ × ... × Rₙ
+  → If ANY component fails, system fails
+  → Reliability DECREASES with more components
+
+PARALLEL SYSTEM:
+  R_system = 1 − (1−R₁)(1−R₂)...(1−Rₙ)
+  → System works if ANY component works
+  → Reliability INCREASES with redundancy
+"""
+
+print(reliability)
+
+# PYTHON: Reliability calculations:
+rel_code = """
+import numpy as np
+
+# Server reliability: MTBF = 10000 hours
+mtbf = 10000
+lam = 1/mtbf
+
+# R(t) = P(survive beyond t):
+def reliability(t, rate):
+    return np.exp(-rate * t)
+
+# Probability server survives 1 year (8760 hours):
+R_1yr = reliability(8760, lam)
+print(f"R(1 year) = {R_1yr:.4f}")  # ~0.416
+
+# Series system: 5 servers, each R=0.9:
+R_series = 0.9 ** 5
+print(f"Series (5 servers): {R_series:.4f}")  # 0.5905
+
+# Parallel system: 3 redundant servers, each R=0.9:
+R_parallel = 1 - (1-0.9)**3
+print(f"Parallel (3 redundant): {R_parallel:.4f}")  # 0.999
+
+# Availability: MTBF=10000h, MTTR=10h:
+A = 10000 / (10000 + 10)
+print(f"Availability: {A:.6f}")  # 0.999001
+print(f"Downtime/year: {(1-A)*8760:.1f} hours")  # ~8.75 hours
+
+# Five nines (99.999%):
+five_nines = 0.99999
+print(f"99.999% downtime/year: {(1-five_nines)*8760*60:.1f} min")  # 5.26 min
+"""
+
+print(rel_code)</div>
+
+<div class="code-block"># ── STEP 5: Continuous-time Markov chains ──
+# Beyond memoryless: systems with states.
+
+ctmc = """
+CONTINUOUS-TIME MARKOV CHAINS (CTMC):
+
+A stochastic process where:
+  1. System is in one of several STATES
+  2. Transitions between states follow exponential times
+  3. Memoryless: next state depends only on current state
+
+EXAMPLE: Server with 3 states
+  IDLE → BUSY (rate λ = arrival rate)
+  BUSY → IDLE (rate μ = service rate)
+  BUSY → OVERLOAD (if queue too long)
+
+TRANSITION RATE MATRIX (Q):
+  Q[i][j] = rate of transitioning from state i to j
+  Diagonal: Q[i][i] = −Σ Q[i][j] (total rate out of state i)
+
+STEADY STATE (π):
+  After long time, system reaches equilibrium.
+  π_i = long-run fraction of time in state i.
+  Found by solving: πQ = 0 with Σπ_i = 1
+
+APPLICATIONS:
+  → Queueing systems (M/M/1, M/M/c)
+  → Inventory management
+  → Reliability (up/down states)
+  → Biology (population dynamics)
+  → Finance (credit ratings)
+
+DISCRETE-TIME MARKOV CHAINS (DTMC):
+  Similar but transitions happen at discrete time steps.
+  → Google PageRank (random walk on web graph)
+  → Weather prediction (sunny → cloudy → rainy)
+  → Board games (Monopoly position)
+"""
+
+print(ctmc)</div>
+
+<div class="code-block"># ── STEP 6: Memoryless distribution best practices ──
+# Apply memoryless concepts effectively.
+
+best_practices = [
+    "Only Exponential and Geometric are memoryless",
+    "Memoryless: P(X>s+t | X>s) = P(X>t)",
+    "Exponential: time between Poisson events",
+    "Geometric: trials until first success",
+    "M/M/1 queue: exponential arrival + service",
+    "Little's Law: L = λ × W (universal)",
+    "Utilization ρ = λ/μ must be < 1 for stability",
+    "ρ → 1 causes queue explosion",
+    "Poisson process: events at rate λ",
+    "Reliability: R(t) = e^(−λt) for exponential",
+    "MTBF = 1/λ, Availability = MTBF/(MTBF+MTTR)",
+    "Series system: R = R₁×R₂×...×Rₙ (decreases)",
+    "Parallel system: R = 1−(1−R₁)(1−R₂)... (increases)",
+    "Five nines (99.999%) = 5.26 min downtime/year",
+    "Bath-tub curve: infant mortality, useful life, wear-out",
+]
+
+print("MEMORYLESS DISTRIBUTION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Formula                         │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Memoryless       │ P(X>s+t|X>s) = P(X>t)         │
+# │ M/M/1 L          │ ρ/(1−ρ) = λ/(μ−λ)            │
+# │ M/M/1 W          │ 1/(μ−λ)                       │
+# │ Little's Law     │ L = λ × W                      │
+# │ Reliability R(t) │ e^(−λt)                        │
+# │ Series           │ R₁ × R₂ × ...                  │
+# │ Parallel         │ 1 − (1−R₁)(1−R₂)...          │
+# │ Availability     │ MTBF / (MTBF + MTTR)           │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">🎲</span><div><strong>Memoryless distributions:</strong><br>
 <strong>Exponential (continuous):</strong> সময় পর্যন্ত অপেক্ষা — bus, server, radioactive decay<br>
