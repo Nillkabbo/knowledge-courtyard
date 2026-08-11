@@ -1500,21 +1500,329 @@ doors.push({
     <div class="diag-cap">p-hacking: ২০টা পরীক্ষা করো, ১টায় দুর্ঘটনাক্রমে p < ০.০৫ পাবে। সেটাই প্রকাশ করো — বাকিগুলো লুকাও। এটাই Ioannidis-এর সতর্কতা।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 সংকট ও সমাধান — Crisis & Solutions</h4>
-    <table class="kv-table">
-      <tr><th>সমস্যা</th><th>ব্যাখ্যা</th><th>সমাধান</th></tr>
-      <tr><td class="hl">p-hacking</td><td>অনেক পরীক্ষা করে গুরুত্বপূর্ণ ফল খোঁজা</td><td>Preregistration — আগে থেকে পরিকল্পনা</td></tr>
-      <tr><td class="hl">Publication bias</td><td>শুধু গুরুত্বপূর্ণ ফল প্রকাশ করা</td><td>Open access — সব ফল প্রকাশ করো</td></tr>
-      <tr><td class="hl">HARKing</td><td>ফলাফল দেখে অনুকল্প বানানো</td><td>অনুকল্প আগে থেকে লেখো</td></tr>
-      <tr><td class="hl">Multiple comparisons</td><td>অনেক মেট্রিক দেখা</td><td>Bonferroni correction</td></tr>
-      <tr><td class="hl">Small sample</td><td>অল্প নমুনায় ফল পাওয়া</td><td>Power analysis — আগে থেকে n নির্ধারণ</td></tr>
-    </table>
-    <br>
-    <p><strong>Reproducibility Project: Psychology (২০১৫):</strong> Brian Nosek এবং Open Science Collaboration ১০০টা সাইকোলজি গবেষণা (২০০৮ সালে প্রকাশিত) পুনরায় চালান। ফল: মূল গবেষণার ৯৭%-এ গুরুত্বপূর্ণ ফল ছিল, কিন্তু পুনরাবৃত্তিতে মাত্র <strong>৩৬%</strong>-এ গুরুত্বপূর্ণ ফল পাওয়া গেছে। প্রকাশিত: <em>Science</em> ৩৪৯(৬২৫১): aac4716 (২০১৫)।</p>
-    <p><strong>Reproducibility Project: Cancer Biology (২০২১):</strong> ৫৩টা শীর্ষ ক্যানসার গবেষণার ১৯৩টি পরীক্ষা থেকে মাত্র ৫০টি পরীক্ষা (২৩টি গবেষণা থেকে) পুনরাবৃত্তি করা গেছে। প্রভাবের আকার গড়ে ৮৫% ছোট।</p>
-    <p><strong>ইতিহাস:</strong> p-hacking শব্দটি ২০১৪ সালে Uri Simonsohn, Leif Nelson, এবং Joseph Simmons চালু করেন (Data Colada ব্লগ)। Preregistration ক্লিনিক্যাল ট্রায়ালে ২০০৫ সাল থেকে বাধ্যতামূলক (ICMJE)। Center for Open Science (Brian Nosek, Jeffrey Spies) ২০১৩ সালের জানুয়ারিতে প্রতিষ্ঠিত।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: The replication crisis ──
+# Why most published research findings are false.
+
+crisis = """
+THE REPLICATION CRISIS:
+
+John Ioannidis (2005): "Why Most Published Research Findings Are False"
+  → Simulated research scenarios
+  → Most findings are false positives (Type I errors)
+
+CAUSES:
+
+1. P-HACKING:
+   → Try many analyses until p < 0.05
+   → Drop "outliers," change variables, switch tests
+   → Example: 20 analyses → 1 likely "significant" by chance
+   → Solution: pre-registration, transparency
+
+2. PUBLICATION BIAS (File Drawer Problem):
+   → Journals prefer "significant" results (p < 0.05)
+   → Null results never published (filed away)
+   → Literature is skewed toward false positives
+   → Solution: registered reports (accept before results)
+
+3. HARKing (Hypothesizing After Results Known):
+   → See results first, then invent hypothesis to fit
+   → Looks like pre-planned but is post-hoc
+   → Solution: pre-registration of hypotheses
+
+4. SMALL SAMPLES:
+   → Underpowered studies (low n)
+   → Real effects missed (Type II)
+   → Found effects are exaggerated ("winner's curse")
+   → Solution: power analysis, larger samples
+
+5. MULTIPLE COMPARISONS:
+   → Testing many hypotheses without correction
+   → At α=0.05, testing 100 things → 5 false positives
+   → Solution: Bonferroni, FDR correction
+
+REPRODUCIBILITY PROJECTS:
+  → Psychology (2015): only 36% of 100 studies replicated
+  → Cancer Biology (2021): only 46% of experiments replicated
+  → Economics: 60% replicated (somewhat better)
+
+SOLUTIONS (Open Science):
+  1. Pre-registration (OSF.io)
+  2. Registered Reports (peer review before data collection)
+  3. Open data and code
+  4. Replication incentives
+  5. Larger samples (collaborative)
+  6. Better statistical training
+  7. Effect sizes + confidence intervals (not just p-values)
+"""
+
+print(crisis)</div>
+
+  <div class="code-block"># ── STEP 2: Reproducible research practices ──
+# Doing science that holds up.
+
+reproducible = """
+REPRODUCIBLE RESEARCH:
+
+THREE LEVELS:
+  1. REPEATABLE: same data + same code = same results (you)
+  2. REPRODUCIBLE: new data + same methods = consistent results (others)
+  3. REPLICABLE: new data + new methods = same conclusions (field)
+
+BEST PRACTICES:
+
+1. VERSION CONTROL:
+   → Git for code
+   → DVC/MLflow for data and models
+   → Track every change
+
+2. ENVIRONMENT MANAGEMENT:
+   → Docker: complete reproducible environment
+   → conda/pip + requirements.txt
+   → "Works on my machine" → "Works everywhere"
+
+3. NOTEBOOKS + SCRIPTS:
+   → Jupyter for exploration
+   → Python scripts for production
+   → Clear documentation
+
+4. RANDOM SEEDS:
+   → Set all random seeds (numpy, tensorflow, etc.)
+   → np.random.seed(42), tf.random.set_seed(42)
+
+5. DATA VERSIONING:
+   → DVC (Data Version Control)
+   → Track which data was used for which model
+
+6. AUTOMATED TESTING:
+   → Unit tests for data processing
+   → Integration tests for pipelines
+   → CI/CD for ML (GitHub Actions)
+
+7. DOCUMENTATION:
+   → README with setup instructions
+   → Docstrings for all functions
+   → Architecture decisions recorded
+
+PYTHON TOOLS:
+  # Reproducible ML pipeline:
+  import numpy as np
+  np.random.seed(42)
+
+  import tensorflow as tf
+  tf.random.set_seed(42)
+
+  # Track experiments:
+  import mlflow
+  mlflow.log_param('learning_rate', 0.001)
+  mlflow.log_metric('accuracy', 0.95)
+  mlflow.log_artifact('model.pkl')
+
+  # Freeze environment:
+  # pip freeze > requirements.txt
+  # conda env export > environment.yml
+"""
+
+print(reproducible)</div>
+
+  <div class="code-block"># ── STEP 3: Time series statistics ──
+# Statistics for data that changes over time.
+
+time_series = """
+TIME SERIES STATISTICS:
+
+Time series: ordered sequence of observations over time.
+  Stock prices, weather, sales, web traffic.
+
+COMPONENTS:
+  1. TREND: long-term direction (up/down/stable)
+  2. SEASONALITY: repeating patterns (daily/weekly/yearly)
+  3. CYCLICAL: longer oscillations (business cycles)
+  4. IRREGULAR: random noise
+
+STATIONARITY:
+  → Mean and variance don't change over time
+  → Most models assume stationarity
+  → Test: Augmented Dickey-Fuller (ADF)
+  → Fix non-stationary: differencing, log transform
+
+AUTOCORRELATION (ACF):
+  Correlation of series with its own lags.
+  ACF(k) = Corr(yₜ, yₜ₋ₖ)
+  → Identifies seasonality, AR structure
+
+PARTIAL AUTOCORRELATION (PACF):
+  Correlation after removing intermediate lags.
+  → Identifies AR order.
+
+MODELS:
+  AR(p): yₜ = c + φ₁yₜ₋₁ + ... + φₚyₜ₋ₚ + εₜ
+  MA(q): yₜ = c + εₜ + θ₁εₜ₋₁ + ... + θₚεₜ₋q
+  ARMA(p,q): combination
+  ARIMA(p,d,q): ARMA + differencing
+  SARIMA: seasonal ARIMA
+
+FORECASTING:
+  → Train on historical data
+  → Predict future values
+  → Confidence intervals for predictions
+
+PYTHON:
+  from statsmodels.tsa.arima.model import ARIMA
+
+  model = ARIMA(data, order=(1, 1, 1))  # (p, d, q)
+  fitted = model.fit()
+  forecast = fitted.forecast(steps=10)
+"""
+
+print(time_series)</div>
+
+  <div class="code-block"># ── STEP 4: Bayesian computation (MCMC) ──
+# Practical Bayesian inference.
+
+bayes_computation = """
+BAYESIAN COMPUTATION:
+
+Analytical solutions only exist for conjugate priors.
+For complex models, use NUMERICAL methods:
+
+1. METROPOLIS-HASTINGS:
+   → Propose → accept/reject
+   → General but slow convergence
+
+2. GIBBS SAMPLING:
+   → Sample each variable conditional on others
+   → Good for hierarchical models
+
+3. HAMILTONIAN MONTE CARLO (HMC):
+   → Uses gradient information
+   → Much faster for high dimensions
+   → No-U-Turn Sampler (NUTS) is state of the art
+
+4. VARIATIONAL INFERENCE:
+   → Approximate posterior with simpler distribution
+   → Faster than MCMC but less accurate
+   → Scales to large datasets
+
+PYTHON (PyMC/Stan):
+  import pymc as pm
+
+  with pm.Model() as model:
+      # Priors:
+      mu = pm.Normal('mu', mu=0, sigma=10)
+      sigma = pm.HalfNormal('sigma', sigma=1)
+
+      # Likelihood:
+      y = pm.Normal('y', mu=mu, sigma=sigma, observed=data)
+
+      # Sample posterior:
+      trace = pm.sample(2000, tune=1000)
+
+  # Posterior analysis:
+  pm.summary(trace)
+  pm.plot_posterior(trace)
+
+WHEN TO USE BAYESIAN:
+  → Need uncertainty quantification
+  → Hierarchical structure (groups within groups)
+  → Small sample sizes (prior helps)
+  → Complex models (MCMC handles them)
+  → Sequential updating (update as data arrives)
+
+WHEN FREQUENTIST IS FINE:
+  → Large samples
+  → Simple models
+  → Standard hypothesis tests
+  → Need p-values (regulatory requirement)
+"""
+
+print(bayes_computation)</div>
+
+  <div class="code-block"># ── STEP 5: Statistics in production ──
+# Real-world data science pipelines.
+
+production = """
+STATISTICS IN PRODUCTION:
+
+DATA SCIENCE PIPELINE:
+  1. Data collection (sensors, APIs, databases)
+  2. Data cleaning (missing values, outliers, types)
+  3. EDA (visualize, summarize)
+  4. Feature engineering (create useful variables)
+  5. Modeling (train, validate, test)
+  6. Deployment (serve predictions)
+  7. Monitoring (track drift, performance)
+
+MODEL MONITORING:
+  → DATA DRIFT: input distribution changes over time
+  → CONCEPT DRIFT: relationship changes (y|x shifts)
+  → PREDICTION DRIFT: output distribution changes
+  → PERFORMANCE DRIFT: accuracy degrades
+
+DRIFT DETECTION:
+  → KS test: compare new vs training distribution
+  → Population Stability Index (PSI)
+  → Control charts for accuracy
+
+MLOPS (ML Operations):
+  → CI/CD for ML (retrain on new data)
+  → A/B testing for model deployment
+  → Shadow mode (new model runs alongside)
+  → Canary deployment (gradual rollout)
+  → Rollback on failure
+
+PYTHON:
+  from evidently import Report
+  from evidently.presets import DataDriftPreset
+
+  # Detect drift:
+  report = Report([DataDriftPreset()])
+  report.run(reference_data=train_df, current_data=new_df)
+
+  # Alert if drift detected:
+  if drift_detected:
+      trigger_retraining()
+"""
+
+print(production)</div>
+
+  <div class="code-block"># ── STEP 6: Statistics best practices ──
+# The complete practitioner's checklist.
+
+best_practices = [
+    "Pre-register hypotheses (prevent p-hacking)",
+    "Report effect sizes, not just p-values",
+    "Use confidence intervals for uncertainty",
+    "Power analysis: ensure adequate sample size",
+    "Correct for multiple comparisons (FDR)",
+    "Randomize: eliminate confounders",
+    "Replicate: findings must hold across samples",
+    "Open data and code (reproducibility)",
+    "Version control everything (Git + DVC)",
+    "Set random seeds for reproducibility",
+    "Monitor models for drift in production",
+    "A/B test model deployment",
+    "Bayesian for uncertainty quantification",
+    "Cross-validate for generalization estimate",
+    "Always visualize data before modeling",
+]
+
+print("STATISTICS BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Problem          │ Solution                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ p-hacking        │ Pre-registration                │
+# │ Publication bias │ Registered reports              │
+# │ Small samples    │ Power analysis                  │
+# │ Multiple testing │ FDR correction                  │
+# │ Non-reproducible │ Docker + seeds + Git            │
+# │ Data drift       │ Monitoring + retraining         │
+# │ Confounding      │ Randomization / causal methods  │
+# │ Overfitting      │ Cross-validation + regularization│
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ২৪ (Throne of the Mind / Human Psychology) Door ৮-এ Replication Crisis শিখেছিলে — Amy Cuddy power posing (২০১০) পুনরাবৃত্তি ব্যর্থ (২০১৫)। Book ২৭ (Research Paper Craftsman) Door ৭-এ Peer Review শিখেছিলে — peer review p-hacking ধরতে পারে না। এই বই হলো সেই সতর্কতার পরিসংখ্যান ভিত্তি।</div></div>
 
@@ -1660,33 +1968,361 @@ doors.push({
     <div class="diag-cap">৯টি ধাপ একসাথে — ধারণা থেকে সত্য। এটাই প্রমাণের পূর্ণ পথ। ১১৬৭ বছরের জ্ঞান (৮৫০-২০১৭) একটি পাইপলাইনে।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 গবেষকের চেকলিস্ট — The Researcher's Evidence Checklist</h4>
-    <table class="kv-table">
-      <tr><th>ধাপ</th><th>প্রশ্ন</th><th>দরজা</th></tr>
-      <tr><td class="hl">১</td><td>আমার প্রশ্ন কী? কী প্যাটার্ন খুঁজছি?</td><td>১ — Al-Kindi</td></tr>
-      <tr><td class="hl">২</td><td>ডেটা কোথা থেকে? কত নমুনা?</td><td>২ — Graunt</td></tr>
-      <tr><td class="hl">৩</td><td>বণ্টন কীরকম? গডেট, মধ্যমা, σ?</td><td>৩ — Gauss</td></tr>
-      <tr><td class="hl">৪</td><td>অনুকল্প কী? শূন্য কী?</td><td>৪ — Fisher</td></tr>
-      <tr><td class="hl">৫</td><td>সীমা কত? CI কত চওড়া?</td><td>৫ — Neyman</td></tr>
-      <tr><td class="hl">৬</td><td>নকশা ন্যায্য? এলোমেলো? ব্লক করা?</td><td>৬ — Fisher</td></tr>
-      <tr><td class="hl">৭</td><td>পরীক্ষা চালানো হয়েছে? effect size?</td><td>৭ — Kohavi</td></tr>
-      <tr><td class="hl">৮</td><td>কার্যকারণ নিশ্চিত? confounder নেই?</td><td>৮ — Pearl</td></tr>
-      <tr><td class="hl">৯</td><td>প্রিরেজিস্টার্ড? সব ফল প্রকাশিত?</td><td>৯ — Ioannidis</td></tr>
-      <tr><td class="hl">১০</td><td>পুনরাবৃত্তি হয়েছে? স্বাধীন দল নিশ্চিত করেছে?</td><td>সবাই</td></tr>
-    </table>
-    <br>
-    <p><strong>সময়রেখা — ১১৬৭ বছরের যাত্রা:</strong></p>
-    <p>• <strong>৮৫০:</strong> আল-কিন্দি — ফ্রিকোয়েন্সি বিশ্লেষণ (প্যাটার্ন ধরা)</p>
-    <p>• <strong>১৬৬২:</strong> গ্র্যান্ট — জীবন-সারণি (ডেটা দিয়ে সমাজ বোঝা)</p>
-    <p>• <strong>১৮০৯:</strong> গাউস — স্বাভাবিক বণ্টন (প্রকৃতির ছন্দ)</p>
-    <p>• <strong>১৯২৫:</strong> ফিশার — p-value ও hypothesis testing (অনুকল্প পরীক্ষা)</p>
-    <p>• <strong>১৯৩৫:</strong> ফিশার — experimental design (ন্যায্য পরীক্ষা)</p>
-    <p>• <strong>১৯৩৭:</strong> নেইম্যান — confidence intervals (অনিশ্চয়তার সীমা)</p>
-    <p>• <strong>২০০০:</strong> পার্ল — causal inference (কারণ বনাম সম্পর্ক)</p>
-    <p>• <strong>২০০৫:</strong> ইয়োয়ানিডিস — replication crisis (সততার সতর্কতা)</p>
-    <p>• <strong>২০০৭:</strong> কোহাভি — A/B testing (ডিজিটাল যুগের পরীক্ষা)</p>
-  </div>
+  <div class="code-block"># ── STEP 1: The 10 doors summary ──
+# Your complete statistics journey.
+
+doors = {
+    "Door 1": "Evidence Types + Descriptive Stats",
+    "Door 2": "Data Visualization + EDA + Robust Stats",
+    "Door 3": "Normal Distribution + Distributions + Estimation",
+    "Door 4": "Hypothesis Testing + A/B Testing",
+    "Door 5": "CI Deep Dive + Regression + Bayesian + Experimental Design",
+    "Door 6": "Experimental Design + ANOVA + Power Analysis",
+    "Door 7": "A/B Testing Deep Dive + Causal + Meta-analysis",
+    "Door 8": "Causal Inference + ML Statistics",
+    "Door 9": "Replication Crisis + Reproducible Research + Time Series + Bayesian Computation",
+    "Door 10": "Complete Pipeline + Production Statistics",
+}
+
+print("THE 10 DOORS OF STATISTICS:")
+for door, topic in doors.items():
+    print(f"  {door}: {topic}")
+
+# THE UNIFYING INSIGHT:
+insight = """
+WHAT IS STATISTICS?
+
+The science of LEARNING FROM DATA under UNCERTAINTY.
+
+"Statistics is the grammar of science." — Karl Pearson
+
+WHAT YOU CAN NOW DO:
+  ✅ Summarize data (mean, median, IQR, visualize)
+  ✅ Fit and identify distributions
+  ✅ Test hypotheses (t-test, chi-squared, ANOVA)
+  ✅ Build confidence intervals
+  ✅ Run and analyze A/B tests
+  ✅ Design fair experiments
+  ✅ Understand causal vs correlational claims
+  ✅ Evaluate ML models properly
+  ✅ Avoid p-hacking and common fallacies
+  ✅ Apply Bayesian methods
+  ✅ Work with time series data
+  ✅ Detect and handle data drift
+  ✅ Run reproducible research
+
+THE 1167-YEAR JOURNEY:
+  850: Al-Kindi — frequency analysis
+  1662: Graunt — life tables (demography)
+  1809: Gauss — normal distribution
+  1925: Fisher — p-value, hypothesis testing
+  1935: Fisher — experimental design
+  1937: Neyman — confidence intervals
+  2000: Pearl — causal inference
+  2005: Ioannidis — replication crisis
+  2007: Kohavi — A/B testing at scale
+
+WHAT TO STUDY NEXT:
+  → Machine Learning (Book 31): models = statistical learning
+  → Probability (Book 49): mathematical foundation
+  → Information Theory: entropy, compression, KL divergence
+  → Bayesian Methods: PyMC, Stan, MCMC
+  → Causal Inference: DoWhy, DAGs, counterfactuals
+  → Time Series: ARIMA, Prophet, LSTMs
+
+"All models are wrong, but some are useful."
+ — George Box
+
+Welcome to statistical literacy.
+"""
+
+print(insight)</div>
+
+  <div class="code-block"># ── STEP 2: The complete data science pipeline ──
+# From question to deployed model.
+
+pipeline = """
+THE COMPLETE DATA SCIENCE PIPELINE:
+
+1. ASK (Define Question):
+   → What decision will this inform?
+   → What is the success metric?
+   → Statistical: hypothesis, effect size of interest
+
+2. COLLECT (Get Data):
+   → Random sampling, avoid bias
+   → Power analysis: how much data needed?
+   → Log everything (provenance)
+
+3. CLEAN (Prepare Data):
+   → Handle missing values, outliers, types
+   → Check for duplicates, errors
+   → "80% of data science"
+
+4. EXPLORE (EDA):
+   → Visualize distributions
+   → Check correlations
+   → Identify patterns and anomalies
+   → ALWAYS look at data before modeling
+
+5. MODEL (Build):
+   → Start simple (baseline)
+   → Cross-validate
+   → Regularize to prevent overfitting
+   → Try multiple models, compare
+
+6. EVALUATE (Validate):
+   → Hold-out test set
+   → Multiple metrics (precision, recall, AUC)
+   → Bootstrap confidence intervals
+   → Check for leakage
+
+7. DEPLOY (Serve):
+   → A/B test against current system
+   → Monitor for drift
+   → Canary deployment
+   → Rollback on failure
+
+8. MONITOR (Maintain):
+   → Track performance over time
+   → Detect data/concept drift
+   → Retrain when needed
+   → Alert on anomalies
+
+9. COMMUNICATE (Report):
+   → Effect sizes + confidence intervals
+   → Visualizations for stakeholders
+   → Honest about limitations
+   → Reproducible code and data
+
+THE RESEARCHER'S CHECKLIST:
+  ☐ Question defined clearly?
+  ☐ Sample size justified (power analysis)?
+  ☐ Randomization done?
+  ☐ Hypothesis pre-registered?
+  ☐ Multiple comparisons corrected?
+  ☐ Effect size reported?
+  ☐ Confidence interval reported?
+  ☐ Data and code shared?
+  ☐ Limitations acknowledged?
+  ☐ Independent replication?
+"""
+
+print(pipeline)</div>
+
+  <div class="code-block"># ── STEP 3: Statistics in your apps ──
+# LedgerPilot and Ipractus.
+
+your_apps = """
+STATISTICS IN YOUR APPS:
+
+LedgerPilot (Django + MySQL + Vue):
+  → Spending analysis: mean, median, trends over time
+  → Budget prediction: regression (income → expected spending)
+  → Anomaly detection: flag unusual transactions (z-score > 3)
+  → Category distribution: pie chart of spending categories
+  → A/B testing: new UI feature → conversion rate
+  → Forecasting: ARIMA for next month's spending
+  → Bayesian updating: fraud probability with each signal
+
+Ipractus (Django + PostgreSQL + React + LiveKit):
+  → Patient demographics: descriptive stats
+  → Appointment patterns: time series (seasonality)
+  → No-show prediction: logistic regression
+  → Treatment outcomes: hypothesis testing (did treatment work?)
+  → Patient satisfaction: A/B test survey questions
+  → Capacity planning: Poisson process for appointment arrivals
+
+PYTHON: Spending anomaly detection:
+  import numpy as np
+
+  transactions = [50, 45, 60, 55, 48, 52, 500, 58, 62]
+  mean = np.mean(transactions)
+  std = np.std(transactions)
+
+  for amount in transactions:
+      z = (amount - mean) / std
+      if abs(z) > 2:
+          print(f"ANOMALY: {amount} (z={z:.2f})")
+  # 500 would be flagged as anomaly (z > 2)
+"""
+
+print(your_apps)</div>
+
+  <div class="code-block"># ── STEP 4: Advanced topics and research ──
+# Where to go next.
+
+advanced = """
+ADVANCED STATISTICAL TOPICS:
+
+1. BAYESIAN NONPARAMETRICS:
+   → Dirichlet processes (infinite mixture models)
+   → Gaussian processes (regression with uncertainty)
+   → "Let data decide complexity"
+
+2. CAUSAL INFERENCE (advanced):
+   → Synthetic control methods
+   → Mediation analysis
+   → Heterogeneous treatment effects (CATE)
+   → Double machine learning
+
+3. HIGH-DIMENSIONAL STATISTICS:
+   → LASSO, elastic net
+   → Sure independence screening
+   → Compressed sensing
+
+4. STATISTICAL GENETICS:
+   → GWAS (genome-wide association studies)
+   → Multiple testing (millions of SNPs)
+   → Polygenic risk scores
+
+5. SPATIAL STATISTICS:
+   → Kriging (Gaussian process interpolation)
+   → Spatial point processes
+   → Disease mapping
+
+6. FUNCTIONAL DATA ANALYSIS:
+   → Data are curves/functions, not points
+   → Example: growth curves, EEG signals
+
+7. DEEP LEARNING STATISTICS:
+   → Double descent
+   → Neural tangent kernel
+   → Generalization in overparameterized models
+
+BOOKS:
+  → "Statistical Inference" (Casella & Berger)
+  → "Bayesian Data Analysis" (Gelman)
+  → "The Elements of Statistical Learning" (Hastie et al.)
+  → "Causal Inference in Statistics" (Pearl)
+  → "Trustworthy Online Controlled Experiments" (Kohavi)
+"""
+
+print(advanced)</div>
+
+  <div class="code-block"># ── STEP 5: Common statistical mistakes ──
+# Avoid these pitfalls.
+
+mistakes = """
+COMMON STATISTICAL MISTAKES:
+
+1. USING MEAN WITH SKEWED DATA:
+   → Mean income is misleading (billionaires skew it)
+   → FIX: use median for skewed distributions
+
+2. CONFUSING CORRELATION WITH CAUSATION:
+   → Ice cream and drowning are correlated
+   → FIX: look for confounders, run experiments
+
+3. P-HACKING:
+   → Testing many hypotheses until one is significant
+   → FIX: pre-register, correct for multiple comparisons
+
+4. IGNORING ASSUMPTIONS:
+   → Using t-test on non-normal data
+   → Using linear regression on non-linear data
+   → FIX: check assumptions, use non-parametric alternatives
+
+5. DATA SNOOPING:
+   → Looking at data before deciding what to test
+   → FIX: pre-register analysis plan
+
+6. SURVIVORSHIP BIAS:
+   → Only studying successful cases
+   → FIX: include failures, use complete data
+
+7. TEXAS SHARPSHOOTER:
+   → Finding patterns in random data
+   → FIX: have hypothesis BEFORE looking at data
+
+8. ECORLOGICAL FALLACY:
+   → Group trends don't apply to individuals
+   → FIX: analyze at appropriate level
+
+9. SMALL SAMPLE OVERCONFIDENCE:
+   → "3 out of 4 dentists recommend..."
+   → FIX: use confidence intervals, larger samples
+
+10. STATISTICAL VS PRACTICAL SIGNIFICANCE:
+    → Large sample → tiny effect is "significant"
+    → FIX: report effect size, consider practical importance
+
+"The best statistician is not the one who knows
+ the most advanced techniques, but the one who
+ asks the best questions."
+"""
+
+print(mistakes)</div>
+
+  <div class="code-block"># ── STEP 6: The journey and what's next ──
+# Your path forward in statistics.
+
+journey = """
+YOUR JOURNEY IN STATISTICS:
+
+You started seeing statistics as "boring math."
+You finish seeing the SCIENCE OF EVIDENCE:
+
+WHAT YOU'VE MASTERED:
+  ✅ Descriptive statistics and visualization
+  ✅ Probability distributions and when to use each
+  ✅ Hypothesis testing and confidence intervals
+  ✅ Experimental design and A/B testing
+  ✅ Regression and prediction
+  ✅ Bayesian thinking and updating beliefs
+  ✅ Causal inference beyond correlation
+  ✅ ML evaluation and model selection
+  ✅ Reproducible research practices
+  ✅ Production statistics and monitoring
+
+THE STATISTICIAN'S MINDSET:
+  1. "What's the question?" (before looking at data)
+  2. "Where did the data come from?" (sampling bias)
+  3. "What's the uncertainty?" (confidence intervals)
+  4. "Is this causation or correlation?" (confounders)
+  5. "Would this replicate?" (generalizability)
+
+"There are three kinds of lies:
+ lies, damned lies, and statistics."
+ — Benjamin Disraeli (popularized by Mark Twain)
+
+This quote exists because people MISUSE statistics.
+The solution is not to abandon statistics,
+but to UNDERSTAND it deeply.
+
+With these 10 doors, you can now:
+  → Read research papers critically
+  → Design experiments that answer real questions
+  → Build models that generalize
+  → Make decisions under uncertainty
+  → Communicate findings honestly
+  → Detect when others mislead with statistics
+
+"Statistical thinking will one day be as necessary
+ for efficient citizenship as the ability to read
+ and write."
+ — H.G. Wells
+
+Welcome to statistical citizenship.
+"""
+
+print(journey)
+
+# FINAL SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Door             │ Key Concept                     │
+# ├──────────────────┼──────────────────────────────────┤
+# │ 1 Evidence       │ Deductive/inductive/abductive   │
+# │ 2 Visualization  │ EDA, Anscombe, robust stats     │
+# │ 3 Distributions  │ Normal, CLT, MLE estimation     │
+# │ 4 Hypothesis     │ p-values, t-test, A/B testing   │
+# │ 5 CI + Regression│ Confidence intervals, R², LASSO │
+# │ 6 Experiments    │ Randomization, ANOVA, power     │
+# │ 7 A/B Deep Dive  │ Bandits, causal, meta-analysis  │
+# │ 8 Causal + ML    │ DAGs, bias-variance, evaluation │
+# │ 9 Reproducibility│ Crisis, MCMC, time series       │
+# │ 10 Complete      │ Full pipeline, production stats │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স — পুরো লাইব্রেরির সংযোগ:</strong> এই বই হলো <strong>প্রমাণের ভিত্তি</strong> — এটা ছাড়া বাকি সব বই অসম্পূর্ণ। Book ৩০ (Math for ML) গণিত শেখায়, কিন্তু প্রমাণ শেখায় না। Book ৩১ (Classic ML) অ্যালগরিদম শেখায়, কিন্তু validation শেখায় না। Book ৩৩ (Critical Thinking) চিন্তা শেখায়, কিন্তু পরিসংখ্যান শেখায় না। Book ২৮ (Knowledge Web) সংযোগ শেখায় — এই বই হলো সেই সংযোগের প্রমাণ ভিত্তি। প্রতিটা গবেষণায় এই দশটি ধাপ লাগবে।</div></div>
 
