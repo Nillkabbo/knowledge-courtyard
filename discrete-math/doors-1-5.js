@@ -448,18 +448,336 @@ doors.push({
 <strong>ধাপ ২ — Inductive Step:</strong> ধরো P(k) সত্য (inductive hypothesis)। এ থেকে প্রমাণ করো P(k+১) সত্য।<br>
 <strong>সিদ্ধান্ত:</strong> ∴ সকল n-এর জন্য P(n) সত্য।</div></div>
 
-<div class="code-block"># — Python: ইনডাকশন যাচাই —
-  # সূত্র: Σi = n(n+1)/2
-  # ব্রুট ফোর্স vs সূত্র:
-  for n in range(1, 20):
-      brute = sum(range(1, n+1))       # ১+২+...+n
-      formula = n * (n+1) // 2          # n(n+1)/2
-      assert brute == formula, f"ব্যর্থ n={n}"
-  print("সব n-এর জন্য মিলেছে ✅")
+<div class="code-block"># ── STEP 1: Proof techniques overview ──
+# Different ways to prove mathematical statements.
 
-  # Strong induction: শুধু P(k) নয়, সব P(১)...P(k) ধরে নাও
-  # Fibonacci: F(n) = F(n-1) + F(n-2)
-  # Strong induction দরকার — কারণ দুটো আগের মান লাগে</div>
+proof_techniques = """
+PROOF TECHNIQUES:
+
+1. DIRECT PROOF:
+   Start with known facts → apply logic → reach conclusion.
+   "If P then Q" → Assume P → derive Q.
+
+2. PROOF BY CONTRADICTION (Reductio ad absurdum):
+   Assume the OPPOSITE → derive a contradiction → original must be true.
+   "Prove √2 is irrational" → assume rational → contradiction!
+
+3. PROOF BY INDUCTION:
+   Base case + inductive step → true for all natural numbers.
+   Like dominoes: knock down first → each knocks the next.
+
+4. PROOF BY CONTRAPOSITION:
+   Prove the contrapositive (¬Q → ¬P) instead of (P → Q).
+   They're logically equivalent.
+
+5. PROOF BY EXHAUSTION (cases):
+   Check ALL possible cases. Works when finite.
+
+6. CONSTRUCTIVE PROOF:
+   Build an example that satisfies the statement.
+   "There exists an even prime" → 2 is even and prime.
+
+7. NON-CONSTRUCTIVE PROOF:
+   Prove existence without finding the example.
+   Pigeonhole principle: "At least 2 people in Dhaka have same
+   number of hairs" (without finding them).
+"""
+
+print(proof_techniques)</div>
+
+<div class="code-block"># ── STEP 2: Mathematical induction ──
+# The domino effect — prove for all natural numbers.
+
+induction = """
+MATHEMATICAL INDUCTION:
+
+To prove P(n) is true for all n ≥ 1:
+
+STEP 1 — BASE CASE:
+  Prove P(1) is true.
+  (Knock down the first domino.)
+
+STEP 2 — INDUCTIVE STEP:
+  Assume P(k) is true (inductive hypothesis).
+  Prove P(k+1) is true.
+  (If domino k falls, domino k+1 falls.)
+
+CONCLUSION:
+  By induction, P(n) is true for ALL n ≥ 1.
+  (All dominoes fall.)
+
+CLASSIC EXAMPLE: Sum of first n natural numbers
+  P(n): 1 + 2 + 3 + ... + n = n(n+1)/2
+
+  BASE CASE (n=1):
+    Left:  1
+    Right: 1(1+1)/2 = 1
+    1 = 1 ✓
+
+  INDUCTIVE STEP:
+    Assume P(k): 1 + 2 + ... + k = k(k+1)/2
+    Prove P(k+1): 1 + 2 + ... + k + (k+1) = (k+1)(k+2)/2
+
+    Left = [k(k+1)/2] + (k+1)     [using P(k)]
+         = (k+1)[k/2 + 1]
+         = (k+1)(k+2)/2
+         = Right ✓
+
+  Therefore, true for all n.
+"""
+
+print(induction)
+
+# PYTHON: Verify the formula:
+induction_code = """
+# Verify: sum(1..n) = n(n+1)/2 for n=1 to 1000
+for n in range(1, 1001):
+    brute = sum(range(1, n + 1))     # 1 + 2 + ... + n
+    formula = n * (n + 1) // 2       # n(n+1)/2
+    assert brute == formula, f"FAILED for n={n}"
+print("Induction verified for n=1 to 1000 ✅")
+
+# STRONG INDUCTION:
+# Instead of just P(k), assume P(1), P(2), ..., P(k) all true.
+# Useful for Fibonacci: F(n) = F(n-1) + F(n-2)
+# Need both previous values (not just P(k)).
+"""
+
+print(induction_code)</div>
+
+<div class="code-block"># ── STEP 3: Proof by contradiction ──
+# Assume opposite → find contradiction → original is true.
+
+contradiction = """
+PROOF BY CONTRADICTION:
+
+To prove statement S:
+  1. Assume ¬S (the opposite)
+  2. Derive a contradiction (impossible result)
+  3. Therefore, S must be true
+
+CLASSIC: √2 is irrational
+
+  Assume √2 IS rational.
+  → √2 = a/b (reduced fraction, gcd(a,b)=1)
+  → 2 = a²/b²
+  → a² = 2b²
+  → a² is even → a is even → a = 2k
+  → (2k)² = 2b² → 4k² = 2b² → b² = 2k²
+  → b² is even → b is even
+  → But a and b both even contradicts gcd(a,b)=1!
+  → CONTRADICTION!
+  → Therefore, √2 is irrational. ∎
+
+WHEN TO USE CONTRADICTION:
+  → Direct proof is hard or unclear
+  → The statement is about NON-existence ("no integer solution")
+  → The opposite assumption leads to a clear contradiction
+"""
+
+print(contradiction)
+
+# PYTHON: Verify √2 irrationality claim:
+sqrt2_code = """
+# We can't PROVE irrationality computationally, but we can verify:
+# √2 cannot be expressed as p/q for small integers.
+
+from math import isclose, sqrt
+
+found_rational = False
+for q in range(1, 10000):          # denominator
+    for p in range(1, 10000):      # numerator
+        if isclose(p / q, sqrt(2), rel_tol=1e-15):
+            print(f"Found: {p}/{q} ≈ √2")
+            found_rational = True
+            break
+    if found_rational:
+        break
+
+if not found_rational:
+    print("No p/q (up to 10000) equals √2 — supports irrationality ✅")
+    print(f"√2 ≈ {sqrt(2)}")
+"""
+
+print(sqrt2_code)</div>
+
+<div class="code-block"># ── STEP 4: Proof by contrapositive ──
+# Prove ¬Q → ¬P instead of P → Q (they're equivalent).
+
+contrapositive_proof = """
+PROOF BY CONTRAPOSITION:
+
+P → Q is equivalent to ¬Q → ¬P (contrapositive).
+
+Sometimes the contrapositive is EASIER to prove.
+
+EXAMPLE: "If n² is even, then n is even"
+
+  Direct proof: hard (how to get from n² even to n even?)
+
+  Contrapositive: "If n is odd, then n² is odd"
+    n is odd → n = 2k + 1
+    n² = (2k+1)² = 4k² + 4k + 1 = 2(2k² + 2k) + 1
+    → n² is odd ✓
+
+  Since contrapositive is true, original is true.
+  "If n² is even → n is even" ✓
+
+PYTHON: Verify contrapositive:
+  # P → Q = ¬Q → ¬P
+  for n in range(1, 100):
+      P = (n ** 2) % 2 == 0  # n² is even
+      Q = n % 2 == 0          # n is even
+      implies_pq = (not P) or Q       # P → Q
+      implies_contrapos = (not (not Q)) or (not P)  # ¬Q → ¬P
+      assert implies_pq == implies_contrapos
+"""
+
+print(contrapositive_proof)</div>
+
+<div class="code-block"># ── STEP 5: Common proof mistakes ──
+# Avoid these classic errors.
+
+mistakes = """
+COMMON PROOF MISTAKES:
+
+1. MISSING BASE CASE:
+   Inductive step works, but P(1) is false.
+   → "All numbers are equal" — inductive step works, but base case fails.
+
+2. CIRCULAR REASONING:
+   Using what you're trying to prove as an assumption.
+   → "X is true because X is true" (useless!)
+
+3. BEGGING THE QUESTION:
+   Assuming the conclusion in a disguised form.
+
+4. APPEAL TO AUTHORITY:
+   "It's true because a famous person said so." (not a proof)
+
+5. FALSE DICHOTOMY:
+   Presenting only two options when more exist.
+
+6. AFFIRMING THE CONSEQUENT:
+   P → Q and Q → therefore P. WRONG!
+   (Rain → wet ground, wet ground → therefore it rained. WRONG: could be a hose.)
+
+7. DENYING THE ANTECEDENT:
+   P → Q and ¬P → therefore ¬Q. WRONG!
+   (Rain → wet ground, no rain → therefore ground not wet. WRONG.)
+
+8. INDUCTION ON WRONG SET:
+   Induction works on natural numbers, not on real numbers.
+"""
+
+print(mistakes)
+
+# PYTHON: Spot the fallacy:
+fallacies_code = """
+# Affirming the consequent: P→Q, Q ⟹ P (WRONG)
+# Test: rain → wet ground, ground wet ⟹ it rained?
+# Counterexample: sprinkler made ground wet (no rain)
+
+# Denying the antecedent: P→Q, ¬P ⟹ ¬Q (WRONG)
+# Test: rain → wet ground, no rain ⟹ ground dry?
+# Counterexample: sprinkler made ground wet despite no rain
+
+# Verify with truth table that these are INVALID:
+print("Affirming the consequent (INVALID):")
+for P in (True, False):
+    for Q in (True, False):
+        implication = (not P) or Q  # P → Q
+        # Fallacy: if P→Q and Q, conclude P
+        if implication and Q:
+            print(f"  P={P}, Q={Q}: P→Q=True, Q=True, but P={P}")
+            if not P:
+                print("  → FALLACY! Concluded P but P is False")
+                break
+
+print("\\nDenying the antecedent (INVALID):")
+for P in (True, False):
+    for Q in (True, False):
+        implication = (not P) or Q
+        if implication and not P:
+            print(f"  P={P}, Q={Q}: P→Q=True, ¬P=True, but Q={Q}")
+            if Q:
+                print("  → FALLACY! Concluded ¬Q but Q is True")
+"""
+
+print(fallacies_code)</div>
+
+<div class="code-block"># ── STEP 6: Proofs in computer science ──
+# How proof techniques apply to algorithms and data structures.
+
+cs_proofs = """
+PROOFS IN COMPUTER SCIENCE:
+
+1. ALGORITHM CORRECTNESS (by induction):
+   Prove the algorithm produces correct output.
+   → Loop invariants (induction on iteration count)
+   → Recursive algorithms (induction on input size)
+
+   Example: Binary search
+   Invariant: "If target exists, it's within current search range"
+   Base: range is the whole array
+   Step: each iteration halves the range, invariant maintained
+
+2. BIG-O ANALYSIS (direct proof):
+   Prove T(n) ≤ c·f(n) for large n.
+   Direct manipulation of summations and recurrences.
+
+3. HALTING PROBLEM (by contradiction):
+   "No program can determine if another program halts."
+   → Assume such a program H exists
+   → Construct a paradox program D(H)
+   → D contradicts itself → H cannot exist
+
+4. PIGEONHOLE PRINCIPLE (counting):
+   If n items in m containers and n > m, at least one container has 2+ items.
+   Example: "In any group of 367 people, at least 2 share a birthday"
+   (366 possible birthdays including Feb 29)
+
+5. GÖDEL'S INCOMPLETENESS (meta-mathematical):
+   In any sufficiently complex formal system:
+   → There are TRUE statements that CANNOT be proven
+   → Mathematics is not complete (mind-blowing!)
+
+6. LOOP INVARIANTS (induction):
+   A condition that holds before and after each loop iteration.
+   Used to prove loops are correct.
+
+PYTHON: Loop invariant example (binary search):
+  def binary_search(arr, target):
+      lo, hi = 0, len(arr) - 1
+
+      # INVARIANT: if target in arr, then arr[lo..hi] contains target
+      while lo <= hi:
+          mid = (lo + hi) // 2
+          if arr[mid] == target:
+              return mid  # found
+          elif arr[mid] < target:
+              lo = mid + 1  # invariant maintained (target in right half)
+          else:
+              hi = mid - 1  # invariant maintained (target in left half)
+
+      return -1  # target not found (invariant: target not in arr)
+"""
+
+print(cs_proofs)
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Proof Type       │ When to Use                     │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Direct           │ Straightforward derivation      │
+# │ Contradiction    │ Non-existence, irrational       │
+# │ Induction        │ Natural numbers, recursion      │
+# │ Contrapositive   │ When direct is hard             │
+# │ Exhaustion       │ Finite cases                    │
+# │ Constructive     │ Existence proofs                │
+# │ Pigeonhole       │ Counting, duplicates            │
+# │ Loop invariant   │ Algorithm correctness           │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফাঁদ — Base Case ভুল:</strong> অনেকে inductive step প্রমাণ করে base case ভুলে যায়। "সকল সংখ্যা সমান" — inductive step কাজ করে কিন্তু base case ভুল! n=১ তে পরীক্ষা না করলে মিথ্যা সত্য হয়ে যায়। Base case = ভিত্তি — ভিত্তি না থাকলে ভবন দাঁড়ায় না।</div></div>
 
