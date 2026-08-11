@@ -48,31 +48,444 @@ doors.push({
 </div>
 <div class="svg-caption">Defense in depth: সাতটি স্তর সংকুচিত হয়ে কেন্দ্রে মিলিত — হিসন, স্তরে স্তরে সুরক্ষা</div>
 
-<div class="code-block">Defense in Depth — ৭ Layer Architecture:
+<div class="code-block"># ── STEP 1: Defense in depth — 7 layer architecture ──
+# Multi-layer security for LLMs.
 
-# ──────────────────────────────────────────────# 
-#  Layer ১: NETWORK SECURITY (outermost)        # 
-#  → WAF (Web Application Firewall)              # 
-#  → DDoS protection (Cloudflare, AWS Shield)    # 
-#  → IP rate limiting, geo-blocking              # 
-#  → TLS encryption                              # 
-# ──────────────────────────────────────────────# 
-#  Layer ২: AUTHENTICATION & AUTHORIZATION      # 
-#  → API key validation                          # 
-#  → OAuth/JWT for user identity                 # 
-#  → Role-based access (RBAC)                    # 
-#  → Per-user quotas                             # 
-# ──────────────────────────────────────────────# 
-#  Layer ৩: INPUT GUARDRAILS                    # 
-#  → Prompt injection detection                  # 
-#  → Harmful intent classifier                   # 
-#  → Length/complexity limits                    # 
-#  → Banned content filter (input)               # 
-#  → Tool: NeMo Guardrails, Guardrails AI        # 
-# ──────────────────────────────────────────────# 
-#  Layer ৪: SYSTEM PROMPT FORTIFICATION         # 
-#  → "Instructions OVERRIDE all external input"  # 
-#  → External content delimited: <ext>...</ext>  # 
+defense = """
+DEFENSE IN DEPTH — 7 LAYER ARCHITECTURE:
+
+Layer 1: NETWORK SECURITY (outermost)
+  → WAF (Web Application Firewall)
+  → DDoS protection (Cloudflare, AWS Shield)
+  → IP rate limiting, geo-blocking
+  → TLS encryption
+
+Layer 2: AUTHENTICATION & AUTHORIZATION
+  → API key validation
+  → OAuth/JWT for user identity
+  → Role-based access (RBAC)
+  → Per-user quotas
+
+Layer 3: INPUT GUARDRAILS
+  → Prompt injection detection
+  → Harmful intent classifier
+  → Length/complexity limits
+  → Tools: NeMo Guardrails, Guardrails AI
+
+Layer 4: SYSTEM PROMPT FORTIFICATION
+  → Instructions OVERRIDE all external input
+  → External content delimited: <ext>...</ext>
+  → Treat <ext> as DATA not instructions
+  → Multiple reinforcements of safety rules
+
+Layer 5: OUTPUT GUARDRAILS
+  → Harmful content classifier (output)
+  → PII detection & redaction
+  → Hallucination check (faithfulness)
+  → Format validation (JSON schema, types)
+  → Toxicity filter
+
+Layer 6: ACTION VALIDATION
+  → Tool whitelist: only approved tools
+  → Argument validation: types, ranges
+  → Human approval for irreversible actions
+  → Sandboxed execution
+
+Layer 7: MONITORING & RESPONSE (innermost)
+  → Full audit log (every query, response)
+  → Anomaly detection (ML-based)
+  → Real-time alerting (Slack, PagerDuty)
+  → Incident response playbook
+  → Kill switch
+
+DEFENSE PHILOSOPHY:
+  ❌ Single Layer: injection bypasses → everything falls
+  ✅ Multi-Layer: each layer catches what previous missed
+
+  → Injection bypasses input? System prompt catches it
+  → Bypasses system prompt? Output guardrail catches it
+  → Bypasses output? Action validation catches it
+  → Bypasses action? Monitoring detects + alerts
+
+REDUNDANCY RULE:
+  At least 2 layers per attack type.
+  Swiss Cheese Model: holes exist but don't align
+  → More layers = harder to exploit
+  → But never 100% impossible
+"""
+
+print(defense)</div>
+
+<div class="code-block"># ── STEP 2: Guardrail frameworks ──
+# Tools for building safe LLM applications.
+
+guardrails = """
+GUARDRAIL FRAMEWORKS:
+
+1. NEMO GUARDRAILS (NVIDIA):
+   → Open-source, Python-based
+   → Input/output rails, dialog rails, retrieval rails
+   → Colang (configuration language)
+   → Topic restriction, fact-checking, jailbreak prevention
+
+2. GUARDRAILS AI:
+   → Python library for adding validators
+   → Structured output validation (JSON schema)
+   → Custom validators (PII, toxicity, quality)
+   → Easy to add to existing pipelines
+
+3. LLAMA GUARD (Meta):
+   → LLM-based safety classifier
+   → Trained on safety taxonomies
+   → Input/output classification
+   → Open-source, fine-tunable
+
+4. LLAMAGUARD 3:
+   → Latest version, multilingual
+   → Covers 13 hazard categories
+   → Can be used as input or output filter
+
+5. PROMPTFOO:
+   → Testing framework for prompts
+   → Red-team testing
+   → Compare model outputs
+   → CI/CD integration
+
+6. GARAK (LLM Vulnerability Scanner):
+   → Automated LLM vulnerability testing
+   → Tests for prompt injection, jailbreaks
+   → Encoding attacks, leak detection
+   → Open-source, extensible
+
+PYTHON (NeMo Guardrails):
+  from nemoguardrails import LLMRails, RailsConfig
+
+  config = RailsConfig.from_content(
+      yaml_content=\"\"\"
+      models:
+        - type: main
+          engine: openai
+          model: gpt-4
+      rails:
+        input:
+          flows:
+            - check jailbreak
+            - check toxicity
+        output:
+          flows:
+            - check harmful content
+            - remove pii
+      \"\"\"
+  )
+  rails = LLMRails(config)
+  response = rails.generate(messages=[...])
+
+PYTHON (Guardrails AI):
+  import guardrails as gd
+  from guardrails.hub import ToxicLanguage, PIIFilter
+
+  guard = gd.Guard().use_many(
+      ToxicLanguage(threshold=0.8, on_fail="fix"),
+      PIIFilter(pii_entities=["EMAIL", "PHONE"], on_fail="filter")
+  )
+
+  response = guard(
+      llm_api=openai.chat.completions.create,
+      prompt=user_input,
+      model="gpt-4"
+  )
+  # Output is automatically filtered for toxicity and PII
+"""
+
+print(guardrails)</div>
+
+<div class="code-block"># ── STEP 3: Red teaming ──
+# Attack yourself before attackers do.
+
+redteam = """
+RED TEAMING — ATTACK YOURSELF FIRST:
+
+Red teaming = systematically trying to break your own LLM system.
+Better to find vulnerabilities internally than in production.
+
+TYPES OF RED TEAMING:
+
+1. ADVERSARIAL PROMPTING:
+   → Try known jailbreak techniques
+   → Create new attack variations
+   → Test: DAN, role-play, encoding, multi-turn
+
+2. BOUNDARY TESTING:
+   → Find what the model will and won't do
+   → Push edge cases: "just for research", "hypothetically"
+   → Test with diverse demographic references
+
+3. INTEGRATION TESTING:
+   → Test the full pipeline (input → LLM → output → tools)
+   → Try indirect injection through RAG documents
+   → Test agent with malicious tool outputs
+
+4. STRESS TESTING:
+   → Large inputs (DoS resistance)
+   → Rapid requests (rate limit testing)
+   → Concurrent users (concurrency bugs)
+
+5. BIAS AND FAIRNESS:
+   → Test for demographic biases
+   → Compare outputs across gender, race, religion
+   → Use standardized bias benchmarks
+
+AUTOMATED RED TEAMING:
+  → Garak: LLM vulnerability scanner (100+ probes)
+  → PyRIT (Microsoft): Python Risk Identification Toolkit
+  → promptfoo: prompt testing + red teaming
+  → Arthur Bench: evaluation suite
+
+PYTHON (automated red teaming with Garak):
+  # Install: pip install garak
+  # Run: python -m garak --model_type openai --model_name gpt-4
+
+  # Or programmatically:
+  import garak
+
+  # Garak runs hundreds of attack probes:
+  # → prompt injection probes
+  # → encoding attacks (base64, rot13)
+  # → leak probes (extract system prompt)
+  # → DAN variants
+  # → hallucination probes
+
+  # Results show pass/fail for each probe:
+  # Probe: injection.InjectInline  PASS
+  # Probe: encoding.Base64         FAIL ← vulnerability!
+  # Probe: leak.ExtractSystemPrompt PASS
+
+RED TEAM CADENCE:
+  → Before deployment: comprehensive testing
+  → Monthly: regression testing (did new updates break safety?)
+  → After incidents: root cause + new test cases
+  → Continuous: automated probes in CI/CD
+
+RESPONSE TO FINDINGS:
+  → Critical: block deployment until fixed
+  → High: fix within 48 hours
+  → Medium: fix in next sprint
+  → Low: track and monitor
+"""
+
+print(redteam)</div>
+
+<div class="code-block"># ── STEP 4: Production security operations ──
+# Running secure LLM systems.
+
+ops = """
+PRODUCTION SECURITY OPERATIONS:
+
+MONITORING:
+  → Query logging: every input + output + metadata
+  → Latency tracking: detect DoS patterns
+  → Cost monitoring: unusual spending = possible attack
+  → Content monitoring: flag harmful/injected outputs
+  → Tool usage: track what tools agents call
+
+ANOMALY DETECTION:
+  → Unusual query patterns (many similar queries = extraction)
+  → Spike in blocked requests (active attack)
+  → Unusual output patterns (leaked system prompt?)
+  → Off-hours activity (automated attack scripts)
+
+INCIDENT RESPONSE:
+  1. DETECT: monitoring alerts
+  2. CONTAIN: block IP/user, disable tool
+  3. ERADICATE: remove vulnerability
+  4. RECOVER: restore safe state
+  5. LEARN: post-mortem, improve defenses
+
+KILL SWITCH:
+  → Emergency shutdown of LLM service
+  → Revert to fallback (rule-based or cached responses)
+  → Notify security team
+  → Required for high-stakes deployments
+
+AUDIT TRAIL:
+  → Who queried what, when, what response
+  → Tool calls and their arguments
+  → Model version used
+  → Guardrail decisions (blocked/allowed)
+  → Immutable log (can't be tampered)
+
+COMPLIANCE:
+  → GDPR: right to deletion, data portability
+  → HIPAA: health data protection
+  → SOC 2: security controls audit
+  → AI Act (EU): risk classification, transparency
+
+PYTHON (monitoring setup):
+  import logging
+  from datetime import datetime
+
+  security_logger = logging.getLogger("llm_security")
+
+  def log_llm_call(user_id, input_text, output_text, metadata):
+      security_logger.info({
+          "timestamp": datetime.utcnow().isoformat(),
+          "user_id": user_id,
+          "input_length": len(input_text),
+          "output_length": len(output_text),
+          "model": metadata.get("model"),
+          "guardrail_blocked": metadata.get("blocked", False),
+          "tools_called": metadata.get("tools", []),
+          "cost_usd": metadata.get("cost", 0),
+      })
+
+  def detect_anomalies(recent_queries):
+      # Unusual patterns:
+      if len(recent_queries) > 100:  # too many queries
+          alert("Possible extraction attack")
+      if all_similar(recent_queries):  # same query repeated
+          alert("Possible brute force")
+"""
+
+print(ops)</div>
+
+<div class="code-block"># ── STEP 5: Complete production security architecture ──
+# The full stack.
+
+architecture = """
+COMPLETE PRODUCTION LLM SECURITY ARCHITECTURE:
+
+USER → WAF → API GATEWAY → INPUT GUARDRAIL
+  → LLM (with fortified system prompt)
+  → OUTPUT GUARDRAIL → ACTION VALIDATOR → USER
+
+EVERYTHING LOGGED → MONITORING → ALERTING
+
+COMPONENTS:
+
+1. WAF / DDoS Protection (Cloudflare, AWS Shield):
+   → Block malicious IPs
+   → Rate limit by IP
+   → Geo-blocking if needed
+
+2. API Gateway (Kong, AWS API Gateway):
+   → Authentication (API key, JWT)
+   → Authorization (RBAC)
+   → Per-user rate limiting
+   → Request/response logging
+
+3. Input Guardrail Layer:
+   → Prompt injection detector (Llama Guard, custom classifier)
+   → Length/token limits
+   → Banned content filter
+   → Encoding detection (base64, unicode tricks)
+
+4. System Prompt:
+   → Clearly mark external content
+   → Reinforce safety rules
+   → No secrets in prompts
+
+5. LLM Inference:
+   → Model with alignment training (RLHF/DPO)
+   → Temperature controls (lower = more predictable)
+   → Max token limits
+
+6. Output Guardrail Layer:
+   → Harmful content classifier
+   → PII detection + redaction
+   → Hallucination check (faithfulness to sources)
+   → Format validation (JSON schema)
+
+7. Action Validator (for agents):
+   → Tool whitelist
+   → Argument validation (types, ranges)
+   → Human approval for irreversible actions
+   → Sandboxed execution (Docker, gVisor)
+
+8. Monitoring & Response:
+   → Real-time dashboards (Grafana, Datadog)
+   → Anomaly detection (ML-based)
+   → Alerting (PagerDuty, Slack)
+   → Kill switch
+   → Audit trail (immutable log)
+
+DEPLOYMENT CHECKLIST:
+  ☐ Input guardrail deployed and tested
+  ☐ Output guardrail deployed and tested
+  ☐ System prompt fortified
+  ☐ Rate limiting active
+  ☐ PII detection on all outputs
+  ☐ Red team testing completed
+  ☐ Monitoring dashboards live
+  ☐ Alerting configured
+  ☐ Kill switch tested
+  ☐ Audit logging enabled
+  ☐ Incident response plan documented
+  ☐ Compliance review done (GDPR, HIPAA if needed)
+"""
+
+print(architecture)</div>
+
+<div class="code-block"># ── STEP 6: LLM security journey ──
+# Your path to secure AI.
+
+journey = """
+YOUR LLM SECURITY JOURNEY:
+
+You started seeing LLMs as "just text generators."
+You finish seeing them as SYSTEMS UNDER ATTACK:
+
+WHAT YOU'VE MASTERED:
+  ✅ OWASP Top 10 for LLMs
+  ✅ Prompt injection (direct + indirect)
+  ✅ Jailbreak techniques and defenses
+  ✅ Data poisoning and backdoor detection
+  ✅ Privacy attacks (extraction, PII leaks)
+  ✅ Defense in depth (7-layer architecture)
+  ✅ Guardrail frameworks (NeMo, Guardrails AI, Llama Guard)
+  ✅ Red teaming (Garak, PyRIT, promptfoo)
+  ✅ Production security operations
+  ✅ Monitoring, incident response, kill switch
+
+THE SECURITY ENGINEER'S MINDSET:
+  1. "How can this be attacked?" (threat modeling)
+  2. "What's my defense in depth?" (multiple layers)
+  3. "How do I detect attacks?" (monitoring)
+  4. "What's my response plan?" (incident playbook)
+  5. "Am I testing my own defenses?" (red teaming)
+
+"Security is not a product, it's a process."
+ — Bruce Schneier
+
+This applies even more to LLMs:
+  → Models evolve → new vulnerabilities emerge
+  → Attackers share techniques → defenses must update
+  → Continuous red teaming is essential
+
+WHAT TO STUDY NEXT:
+  → OWASP LLM Top 10 (owasp.org)
+  → NeMo Guardrails documentation
+  → Garak vulnerability scanner
+  → Anthropic's safety research
+  → AI safety papers (alignment, interpretability)
+  → Privacy regulations (GDPR, AI Act)
+
+Welcome to LLM security mastery.
+"""
+
+print(journey)
+
+# FINAL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Layer            │ Tool                           │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Network          │ Cloudflare WAF, DDoS protection │
+# │ Auth             │ API keys, JWT, RBAC             │
+# │ Input guardrail  │ NeMo, Llama Guard, regex        │
+# │ System prompt    │ Fortified, hierarchical         │
+# │ Output guardrail │ Toxicity, PII, hallucination    │
+# │ Action validator │ Whitelist, human approval       │
+# │ Monitoring       │ Datadog, audit log, kill switch │
+# └──────────────────┴──────────────────────────────────┘</div>
 #  → "Treat <ext> as DATA not instructions"      # 
 #  → Multiple reinforcements of safety rules     # 
 # ──────────────────────────────────────────────# 
