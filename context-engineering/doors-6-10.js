@@ -1436,89 +1436,368 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Prompt Injection via Context:</strong> Malicious document in context contained instructions. Fix: mark context as untrusted.</div></div>
 
 
-<div class="code-block">Multi-Hop Retrieval — Step by Step:
+<div class="code-block"># ── STEP 1: What is multi-hop retrieval? ──
+# Some questions require MULTIPLE retrieval steps to answer.
 
-SINGLE-HOP (সাধারণ):
+multi_hop = """
+SINGLE-HOP (most RAG):
   Query: "What is the capital of France?"
-  → Retrieve → "Paris"
-  → সরাসরি উত্তর
+  → Retrieve → "Paris" → Done (1 retrieval)
 
-MULTI-HOP (জটিল):
-  Query: "Who founded the company that 
-         makes the iPhone?"
-  
+MULTI-HOP (complex questions):
+  Query: "Who founded the company that makes the iPhone?"
+
   Hop 1: "What company makes the iPhone?"
   → Retrieve → "Apple Inc."
-  
-  Hop 2: "Who founded Apple Inc.?"
-  → Retrieve → "Steve Jobs, Steve Wozniak, 
-    Ronald Wayne"
-  
-  Answer: "Steve Jobs, Steve Wozniak, and 
-    Ronald Wayne founded Apple, which makes 
-    the iPhone."
-  
-  → দুটি retrieval, প্রতিটা আগের ফলের 
-    উপর নির্ভরশীল
 
-THREE-HOP:
-  Query: "What programming language was 
-         used by the creator of the language 
-         that Django is written in?"
-  
-  Hop 1: "What language is Django written in?"
-  → "Python"
-  Hop 2: "Who created Python?"
-  → "Guido van Rossum"  
-  Hop 3: "What language did Guido van 
-    Rossum use before Python?"
-  → "ABC, C"
+  Hop 2: "Who founded Apple Inc.?"
+  → Retrieve → "Steve Jobs, Steve Wozniak, Ronald Wayne"
+
+  Answer: "Steve Jobs, Steve Wozniak, and Ronald Wayne
+   founded Apple, which makes the iPhone."
+
+  → Two retrievals, each depends on the previous result
+  → Standard RAG can't do this (single retrieval)
+
+THREE-HOP EXAMPLE:
+  Query: "What language did the creator of Python use before?"
+
+  Hop 1: "Who created Python?" → "Guido van Rossum"
+  Hop 2: "What languages did Guido use before Python?" → "ABC, C"
   Answer: "C and ABC"
 
-IMPLEMENTATION STRATEGIES:
+  → Chain of dependent retrievals
+"""
 
-১. DECOMPOSITION
-  জটিল প্রশ্ন ভাঙো → সহজ sub-questions
-  
-  LLM: "Break this question into steps"
-  → Q1, Q2, Q3
-  → প্রতিটা retrieve + answer
-  → synthesize final answer
+print(multi_hop)
 
-২. ITERATIVE RETRIEVAL (Agent Loop)
-  Thought: "I need to find X first"
-  Action: retrieve(X)
-  Observation: "X = Y"
-  Thought: "Now I need Y's Z"
-  Action: retrieve(Y, Z)  
-  Observation: "Z = answer"
-  Final: synthesize
-  
-  → ReAct framework (Door 9 of Prompt Eng)
+# WHY STANDARD RAG FAILS ON MULTI-HOP:
+why_fail = """
+WHY STANDARD RAG FAILS:
 
-৩. GRAPH RAG
-  Entities → nodes, relationships → edges
-  "X → works_at → Y → subsidiary_of → Z"
-  → graph traversal for multi-hop
-  
-  Microsoft GraphRAG (2024):
-    entities extracted → knowledge graph →
-    community summaries → 
-    multi-hop via graph traversal
+Standard RAG: Query → retrieve → answer (ONE hop)
 
-CHALLENGES:
-  • প্রতিটা hop = একটি retrieval = সময়
-  • error propagation — এক hop ভুল হলে 
-    পরের সব ভুল
-  • cost — একাধিক LLM কল
-  • when to stop — কত hop যথেষ্ট?
+Multi-hop query: "Who founded the iPhone company?"
 
-EVALUATION:
-  HotpotQA benchmark — multi-hop QA
-  MuSiQue — structured multi-hop
-  ২WikiMultiHopQA — multi-domain
-  
-  → তোমার system এগুলোতে test করো</div>
+Standard RAG retrieves for "iPhone company founder":
+  → Finds docs about iPhone (wrong hop)
+  → Finds docs about Apple founders (maybe, but query doesn't mention "Apple")
+  → Often returns WRONG or INCOMPLETE answers
+
+Multi-hop RAG:
+  → Decomposes question into steps
+  → Retrieves for EACH step separately
+  → Chains results together
+  → Gets the CORRECT answer
+"""
+print(why_fail)</div>
+
+<div class="code-block"># ── STEP 2: Implementation strategies ──
+# Three approaches to multi-hop retrieval.
+
+strategies = {
+    "1. DECOMPOSITION (query splitting)": {
+        "how": "LLM breaks complex question into sub-questions",
+        "process": "Q → [Q1, Q2, Q3] → retrieve each → synthesize",
+        "pros": "Simple, parallelizable, predictable",
+        "cons": "Can't adapt if early hops return unexpected results",
+        "best_for": "Questions with clear steps",
+    },
+    "2. ITERATIVE RETRIEVAL (agent loop)": {
+        "how": "LLM decides next retrieval based on previous results",
+        "process": "Thought → Action → Observation → repeat until answer",
+        "pros": "Adaptive, self-correcting, flexible",
+        "cons": "Slower (multiple LLM calls), non-deterministic",
+        "best_for": "Complex, unpredictable multi-hop questions",
+    },
+    "3. GRAPH RAG (knowledge graph traversal)": {
+        "how": "Pre-built knowledge graph, traverse for multi-hop",
+        "process": "Entity → traverse edges → reach target entity",
+        "pros": "Fast graph traversal, structured relationships",
+        "cons": "Expensive to build graph, limited to known entities",
+        "best_for": "Relationship questions, structured domains",
+    },
+}
+
+print("MULTI-HOP IMPLEMENTATION STRATEGIES:")
+for strategy, info in strategies.items():
+    print(f"\n  {strategy}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# EXAMPLE: Decomposition vs Iterative:
+example = """
+QUERY: "Compare the revenue of Apple and Google in Q3 2024"
+
+DECOMPOSITION (parallel):
+  Sub-Q1: "What was Apple's Q3 2024 revenue?" → retrieve → $94B
+  Sub-Q2: "What was Google's Q3 2024 revenue?" → retrieve → $88B
+  Synthesize: "Apple: $94B, Google: $88B. Apple was higher by $6B."
+
+ITERATIVE (sequential):
+  Thought: "I need Apple's Q3 revenue first."
+  Action: retrieve("Apple Q3 2024 revenue") → $94B
+  Thought: "Now I need Google's Q3 revenue."
+  Action: retrieve("Google Q3 2024 revenue") → $88B
+  Thought: "I have both. I can compare."
+  Answer: "Apple ($94B) > Google ($88B) by $6B."
+"""
+print(example)</div>
+
+<div class="code-block"># ── STEP 3: Decomposition implementation ──
+# Break complex questions into sub-questions.
+
+decompose_code = """
+# PYTHON: Query decomposition for multi-hop:
+import openai
+
+client = openai.OpenAI()
+
+def decompose_query(complex_query):
+    \"\"\"Break a complex question into sub-questions.\"\"\"
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[{
+            "role": "user",
+            "content": f\"\"\"Break this question into simpler sub-questions
+            that can each be answered by a single retrieval.
+
+            Question: {complex_query}
+
+            Output one sub-question per line.\"\"\"
+        }],
+        temperature=0
+    )
+    sub_questions = response.choices[0].message.content.strip().split("\\n")
+    return [q.strip() for q in sub_questions if q.strip()]
+
+def multi_hop_decompose(complex_query):
+    \"\"\"Multi-hop via decomposition.\"\"\"
+
+    # Step 1: Decompose:
+    sub_questions = decompose_query(complex_query)
+    print(f"Decomposed into {len(sub_questions)} sub-questions:")
+    for i, q in enumerate(sub_questions, 1):
+        print(f"  {i}. {q}")
+
+    # Step 2: Retrieve for each sub-question (can be parallel):
+    sub_answers = []
+    for q in sub_questions:
+        docs = retrieve_and_rerank(q, top_k=3)
+        answer = llm_answer(q, docs)
+        sub_answers.append({"question": q, "answer": answer, "sources": docs})
+
+    # Step 3: Synthesize final answer from sub-answers:
+    context = "\\n".join([f"Q: {a['question']}\\nA: {a['answer']}" for a in sub_answers])
+    final = llm_synthesize(complex_query, context)
+
+    return final
+
+# Example:
+query = "Who founded the company that makes the iPhone?"
+result = multi_hop_decompose(query)
+# Sub-Q1: "What company makes the iPhone?" → "Apple Inc."
+# Sub-Q2: "Who founded Apple Inc.?" → "Steve Jobs, Steve Wozniak, Ronald Wayne"
+# Final: "Steve Jobs, Steve Wozniak, and Ronald Wayne founded Apple..."
+"""
+
+print(decompose_code)</div>
+
+<div class="code-block"># ── STEP 4: Iterative retrieval (agent loop / ReAct) ──
+# LLM decides each retrieval step based on previous results.
+
+react_code = """
+# PYTHON: Iterative retrieval (ReAct pattern):
+def multi_hop_iterative(complex_query, max_steps=5):
+    \"\"\"Multi-hop via iterative agent loop.\"\"\"
+
+    context = ""
+    thought_history = []
+
+    for step in range(max_steps):
+        # LLM decides next action:
+        prompt = f\"\"\"Question: {complex_query}
+
+Previous findings:
+{context if context else "(none yet)"}
+
+Decide your next action:
+- If you need more information, output: SEARCH: <query>
+- If you have enough to answer, output: ANSWER: <answer>
+
+Next action:\"\"\"
+
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0
+        )
+
+        action = response.choices[0].message.content.strip()
+
+        if action.startswith("SEARCH:"):
+            search_query = action.replace("SEARCH:", "").strip()
+            docs = retrieve_and_rerank(search_query, top_k=3)
+            new_info = "\\n".join([d.content for d in docs])
+            context += f"\\nSearch '{search_query}': {new_info}"
+            thought_history.append(f"Step {step+1}: Searched '{search_query}'")
+
+        elif action.startswith("ANSWER:"):
+            answer = action.replace("ANSWER:", "").strip()
+            return {
+                "answer": answer,
+                "steps": step + 1,
+                "context": context,
+                "thoughts": thought_history
+            }
+
+    return {"answer": "Could not find answer in max steps", "steps": max_steps}
+
+# Example trace:
+# Step 1: SEARCH: "What company makes iPhone?" → "Apple Inc."
+# Step 2: SEARCH: "Who founded Apple Inc.?" → "Steve Jobs..."
+# Step 3: ANSWER: "Steve Jobs, Steve Wozniak, and Ronald Wayne..."
+"""
+
+print(react_code)</div>
+
+<div class="code-block"># ── STEP 5: GraphRAG for multi-hop ──
+# Knowledge graphs enable efficient multi-hop traversal.
+
+graph_rag = """
+GRAPHRAG FOR MULTI-HOP:
+
+Build a knowledge graph:
+  Documents → extract entities → build graph
+
+  Apple --[makes]--> iPhone
+  Apple --[founded_by]--> Steve Jobs
+  Apple --[founded_by]--> Steve Wozniak
+  Steve Jobs --[born_in]--> San Francisco
+
+Multi-hop via graph traversal:
+  Query: "Who founded the iPhone company?"
+
+  Step 1: Find "iPhone" node
+  Step 2: Traverse [makes] edge → "Apple"
+  Step 3: Traverse [founded_by] edge → "Steve Jobs, Steve Wozniak"
+
+  → Direct graph traversal (no LLM needed for hops!)
+  → Fast, structured, accurate
+
+MICROSOFT GRAPHRAG (2024):
+  → Entities extracted by LLM during indexing
+  → Relationships stored as graph edges
+  → Community detection (clusters of related entities)
+  → Multi-hop = graph traversal
+  → Best for relationship-heavy questions
+
+WHEN GRAPHRAG WINS:
+  → "How are X and Y related?"
+  → "What are all the subsidiaries of Z?"
+  → "Who is connected to whom?"
+  → Structured relationship queries
+
+WHEN STANDARD RAG WINS:
+  → "What does the document say about X?"
+  → Simple factoid questions
+  → When no relationships needed
+"""
+
+print(graph_rag)</div>
+
+<div class="code-block"># ── STEP 6: Challenges, evaluation, and best practices ──
+# Multi-hop is powerful but comes with trade-offs.
+
+challenges = """
+CHALLENGES OF MULTI-HOP:
+
+1. LATENCY:
+   → Each hop = 1 retrieval + potentially 1 LLM call
+   → 3-hop query = 3x latency
+   → Solution: parallelize independent hops (decomposition)
+
+2. ERROR PROPAGATION:
+   → Hop 1 wrong → Hop 2 uses wrong info → all subsequent wrong
+   → "Garbage in, garbage out" compounds across hops
+   → Solution: confidence scoring, verify each hop
+
+3. COST:
+   → Each hop uses tokens (LLM calls + retrieval)
+   → 3-hop = 3-5x cost vs single-hop
+   → Solution: use cheaper models for decomposition
+
+4. WHEN TO STOP:
+   → How does the agent know it has enough info?
+   → Risk of infinite loops or premature answering
+   → Solution: max_steps limit + "ANSWER:" action
+
+5. EVALUATION:
+   → Hard to evaluate (non-deterministic path)
+   → Need multi-hop benchmarks
+"""
+
+print(challenges)
+
+# EVALUATION BENCHMARKS:
+benchmarks = """
+MULTI-HOP BENCHMARKS:
+
+HotpotQA:
+  → Multi-hop QA dataset
+  → Questions requiring 2+ documents
+  → "Who founded the company that makes X?"
+
+MuSiQue:
+  → Structured multi-hop (2-4 hops)
+  → Each hop is clearly defined
+  → Good for testing decomposition
+
+2WikiMultiHopQA:
+  → Multi-domain multi-hop
+  → Wikipedia-based questions
+  → Tests reasoning across topics
+
+EVALUATE YOUR SYSTEM:
+  → Run on HotpotQA (standard multi-hop test)
+  → Measure: answer accuracy, hop count, latency, cost
+  → Compare: single-hop RAG vs multi-hop vs GraphRAG
+"""
+
+print(benchmarks)
+
+# BEST PRACTICES:
+best_practices = [
+    "Use decomposition for predictable multi-hop (clear sub-questions)",
+    "Use iterative (ReAct) for adaptive multi-hop (unpredictable path)",
+    "Use GraphRAG for relationship-heavy queries",
+    "Set max_steps to prevent infinite loops",
+    "Parallelize independent sub-questions (decomposition)",
+    "Cache intermediate results (don't re-retrieve same info)",
+    "Use cheaper models for decomposition (GPT-4o-mini)",
+    "Verify each hop's answer before proceeding",
+    "Log the reasoning trace (for debugging and transparency)",
+    "Fall back to single-hop if multi-hop is too slow",
+    "Evaluate on HotpotQA/MuSiQue benchmarks",
+    "Consider cost: multi-hop is 3-5x more expensive",
+    "Use agentic RAG frameworks (LangGraph, CrewAI)",
+    "Handle "I don't know" gracefully (don't force wrong answers)",
+    "Show reasoning steps to user (transparency builds trust)",
+]
+
+print("MULTI-HOP BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Strategy         │ Best For                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Decomposition    │ Clear steps (parallel sub-Qs)   │
+# │ Iterative (ReAct)│ Adaptive (LLM decides steps)   │
+# │ GraphRAG         │ Relationships (graph traversal) │
+# │ Trade-off        │ 3-5x cost/latency vs single-hop │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -1598,95 +1877,359 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Entity Resolution Failure:</strong> 'John' and 'J. Smith' treated as different people. Fix: entity linking before injection.</div></div>
 
 
-<div class="code-block">Production Context Architecture — Complete Pipeline:
+<div class="code-block"># ── STEP 1: The complete production context pipeline ──
+# All 9 doors synthesized into ONE production system.
 
-# ──────────────────────────────────────────# 
-#  USER QUERY: "How does RAG handle           # 
-#  multi-hop questions?"                      # 
-# ──────────────────# ───────────────────────# 
-                   ↓
-# ──────────────────────────────────────────# 
-#  ১. QUERY UNDERSTANDING                     # 
-#  • Query classification (factual? multi-hop?)# 
-#  • Query rewriting (optimize for retrieval) # 
-#  • Sub-question decomposition (if multi-hop) # 
-# ──────────────────# ───────────────────────# 
-                   ↓
-# ──────────────────────────────────────────# 
-#  ২. RETRIEVAL (Hybrid)                      # 
-#  • Dense search → top-50 (semantic)         # 
-#  • Sparse/BM25 search → top-50 (keyword)    # 
-#  • RRF fusion → top-20                      # 
-# ──────────────────# ───────────────────────# 
-                   ↓
-# ──────────────────────────────────────────# 
-#  ৩. RERANKING (Cross-encoder)               # 
-#  • Query * each doc → score                 # 
-#  • top-20 → top-5                           # 
-# ──────────────────# ───────────────────────# 
-                   ↓
-# ──────────────────────────────────────────# 
-#  ৪. CONTEXT ASSEMBLY (Positioning)          # 
-#  • System prompt (top — primacy)            # 
-#  • Less relevant docs (middle)              # 
-#  • Most relevant docs (bottom — recency)    # 
-#  • User query (very bottom)                 # 
-#  • Budget check (total < 32K)               # 
-# ──────────────────# ───────────────────────# 
-                   ↓
-# ──────────────────────────────────────────# 
-#  ৫. COMPRESSION (if needed)                 # 
-#  • LLMLingua — remove low-info tokens       # 
-#  • Extractive — keep only relevant sentences# 
-# ──────────────────# ───────────────────────# 
-                   ↓
-# ──────────────────────────────────────────# 
-#  ৬. LLM GENERATION                          # 
-#  • temperature=0 (factual)                  # 
-#  • Structured output (citation required)    # 
-#  • Streaming (user sees fast)               # 
-# ──────────────────# ───────────────────────# 
-                   ↓
-# ──────────────────────────────────────────# 
-#  ৭. POST-PROCESSING                         # 
-#  • Citation verification                    # 
-#  • Confidence scoring (logprobs)            # 
-#  • Hallucination check (self-verify)        # 
-#  • Memory update (entity/summary)           # 
-# ──────────────────# ───────────────────────# 
-                   ↓
-# ──────────────────────────────────────────# 
-#  ANSWER: "RAG handles multi-hop through     # 
-#  iterative retrieval [Source: doc3, p.12].  # 
-#  First, it decomposes the question [doc1],  # 
-#  then retrieves for each sub-question       # 
-#  [doc5]..."                                 # 
-# ──────────────────────────────────────────# 
+pipeline = """
+COMPLETE PRODUCTION CONTEXT PIPELINE:
 
-LATENCY BUDGET:
-  Query understanding:    ~৫০ms
-  Retrieval:              ~১০০ms  
-  Reranking:              ~১০০ms
-  Context assembly:       ~৫ms
-  Compression:            ~৫০ms
-  LLM generation:         ~২০০ms-২s
-  Post-processing:        ~৫০ms
-  ────────────────────────────
-  Total:                  ~৬০০ms-২.৫s
+USER QUERY: "How does RAG handle multi-hop questions?"
+
+STEP 1: QUERY UNDERSTANDING (~50ms)
+  → Classify: factual? multi-hop? comparison?
+  → Rewrite: optimize for retrieval
+  → Decompose: break into sub-questions if multi-hop
+
+STEP 2: RETRIEVAL — Hybrid (~100ms)
+  → Dense (vector) search → top-50 (semantic)
+  → Sparse (BM25) search → top-50 (keyword)
+  → RRF fusion → top-20
+
+STEP 3: RERANKING — Cross-encoder (~100ms)
+  → Query * each doc → relevance score
+  → top-20 → top-5 (precise)
+
+STEP 4: CONTEXT ASSEMBLY — U-curve positioning (~5ms)
+  → System prompt (top — primacy zone)
+  → Less relevant docs (middle — danger zone)
+  → Most relevant docs (bottom — recency zone)
+  → User query (very bottom)
+  → Budget check (total < 32K tokens)
+
+STEP 5: COMPRESSION (if needed) (~50ms)
+  → LLMLingua: remove low-information tokens
+  → Extractive: keep only relevant sentences
+
+STEP 6: LLM GENERATION (~200ms-2s)
+  → temperature=0 (factual)
+  → Structured output (citation required)
+  → Streaming (user sees response fast)
+
+STEP 7: POST-PROCESSING (~50ms)
+  → Citation verification
+  → Confidence scoring (logprobs)
+  → Hallucination check (self-verify)
+  → Memory update (entity/summary store)
+
+ANSWER: "RAG handles multi-hop through iterative retrieval
+[Source: doc3, p.12]. First, it decomposes the question
+[doc1], then retrieves for each sub-question [doc5]..."
+"""
+
+print(pipeline)</div>
+
+<div class="code-block"># ── STEP 2: Latency and cost budget ──
+# Realistic numbers for production context engineering.
+
+budget = """
+LATENCY BUDGET (per query):
+  Query understanding:      ~50ms   (LLM call for rewrite)
+  Retrieval (hybrid):      ~100ms   (pgvector + full-text)
+  Reranking:               ~100ms   (cross-encoder, 20 pairs)
+  Context assembly:          ~5ms   (string concatenation)
+  Compression:              ~50ms   (LLMLingua, if used)
+  LLM generation:       ~200-2000ms (depends on output length)
+  Post-processing:          ~50ms   (citation check)
+  ─────────────────────────────────
+  Total:                ~600ms - 2.5s
+
+  → Acceptable for most use cases (<3s)
+  → Streaming reduces perceived latency
 
 COST PER QUERY:
-  Embedding:              $০.০০০১
-  Retrieval:              $০ (self-hosted)
-  Reranking (Cohere):     $০.০০২
-  LLM (GPT-4o):           $০.০৩-০.০৫
-  ────────────────────────────
-  Total:                  ~$০.০৩-০.০৫/query
+  Embedding (query):    $0.0001  (text-embedding-3-small)
+  Retrieval:            $0       (self-hosted pgvector)
+  Reranking (Cohere):   $0.002   (or free with BGE)
+  LLM (GPT-4o):         $0.03-0.05 (10K in, 1K out)
+  ─────────────────────────────────
+  Total:                ~$0.03-0.05/query
+
+MONTHLY COST (10K queries/day):
+  Without caching:  $300-500/month
+  With caching:     $150-300/month (50% cache hit)
 
 SCALING:
-  • Cache: frequent queries → Redis
-  • Batch: offline embedding updates
-  • Async: streaming responses
-  • CDN: static docs closer to users</div>
+  → Cache: frequent queries → Redis (50% hit rate)
+  → Batch: offline embedding updates
+  → Async: streaming responses (reduce perceived latency)
+  → CDN: static docs closer to users (Cloudflare R2)
+"""
+
+print(budget)</div>
+
+<div class="code-block"># ── STEP 3: Complete Python implementation ──
+# Production-ready context engineering system.
+
+production_code = """
+import time
+import openai
+from pgvector.django import CosineDistance
+
+client = openai.OpenAI()
+
+class ProductionContextEngine:
+    def __init__(self):
+        self.cache = SemanticCache(threshold=0.95)
+        self.memory = CombinedMemory()  # entity + window + summary
+
+    def query(self, question, conversation_id=None):
+        start = time.time()
+        trace = {"question": question}
+
+        # 0. Semantic cache check:
+        q_emb = self._embed(question)
+        cached = self.cache.get(q_emb)
+        if cached:
+            trace["cache_hit"] = True
+            return cached
+
+        # 1. Query understanding:
+        t1 = time.time()
+        query_type = self._classify(question)
+        rewritten = self._rewrite(question)
+        if query_type == "multi_hop":
+            sub_queries = self._decompose(question)
+        else:
+            sub_queries = [rewritten]
+        trace["query_understanding"] = time.time() - t1
+
+        # 2. Hybrid retrieval:
+        t2 = time.time()
+        all_docs = []
+        for sq in sub_queries:
+            dense = self._dense_search(sq, top_k=50)
+            sparse = self._sparse_search(sq, top_k=50)
+            merged = self._rrf_merge([dense, sparse])[:20]
+            all_docs.extend(merged)
+        trace["retrieval"] = time.time() - t2
+
+        # 3. Reranking:
+        t3 = time.time()
+        docs = self._rerank(question, all_docs)[:5]
+        trace["reranking"] = time.time() - t3
+
+        # 4. Context assembly (U-curve positioning):
+        context = self._assemble_context(question, docs)
+
+        # 5. Compression (if over budget):
+        if self._count_tokens(context) > 20000:
+            context = self._compress(context, target=10000)
+
+        # 6. LLM generation:
+        t4 = time.time()
+        answer = self._generate(question, context)
+        trace["generation"] = time.time() - t4
+
+        # 7. Post-processing:
+        answer = self._add_citations(answer, docs)
+        self.memory.update(question, answer)
+
+        # Cache and trace:
+        result = {"answer": answer, "sources": docs, "trace": trace}
+        self.cache.set(q_emb, question, result)
+
+        trace["total_time"] = time.time() - start
+        self._log_trace(trace)
+
+        return result
+
+    def _assemble_context(self, question, docs):
+        \"\"\"Assemble context with U-curve positioning.\"\"\"
+        # System prompt (primacy zone):
+        context = self._build_system_prompt()
+
+        # Less relevant docs (middle — danger zone):
+        for doc in docs[2:]:  # lower relevance
+            context += f"\\n[Doc {doc.id}] {doc.content}"
+
+        # Most relevant docs (recency zone — high attention):
+        for doc in docs[:2]:  # top 2 relevance
+            context += f"\\n[Doc {doc.id}] {doc.content}"
+
+        # Final instruction + question (very bottom):
+        context += f"\\nAnswer ONLY from the documents above.\\nQ: {question}"
+        return context
+"""
+
+print(production_code)</div>
+
+<div class="code-block"># ── STEP 4: The 10 doors summary ──
+# Everything you've learned about context engineering.
+
+doors = {
+    "Door 1": "Context Window Economics — sizes, costs, budget",
+    "Door 2": "Lost in the Middle — U-curve, positioning strategy",
+    "Door 3": "Chunking Strategies — fixed, semantic, late, contextual",
+    "Door 4": "Retrieval Methods — dense, sparse, hybrid (RRF)",
+    "Door 5": "Reranking — bi-encoder retrieve, cross-encoder rerank",
+    "Door 6": "Context Compression — summarization, LLMLingua, rolling",
+    "Door 7": "Long Context vs RAG — decision matrix, hybrid approach",
+    "Door 8": "Conversation Memory — buffer, window, summary, entity, vector",
+    "Door 9": "Multi-Hop Retrieval — decomposition, iterative, GraphRAG",
+    "Door 10": "Production Architecture — complete pipeline, scaling",
+}
+
+print("THE 10 DOORS OF CONTEXT ENGINEERING:")
+for door, topic in doors.items():
+    print(f"  {door}: {topic}")
+
+# YOUR JOURNEY:
+journey = """
+You started knowing "context" as just text sent to an LLM.
+You finish as a CONTEXT ENGINEER who can:
+
+WHAT YOU CAN NOW DO:
+  ✅ Allocate context budget strategically
+  ✅ Mitigate "lost in the middle" (U-curve positioning)
+  ✅ Choose the right chunking strategy
+  ✅ Implement hybrid search (dense + sparse + RRF)
+  ✅ Apply cross-encoder reranking (+20% accuracy)
+  ✅ Compress context (80% token reduction)
+  ✅ Decide between long context and RAG
+  ✅ Build conversation memory (5 types)
+  ✅ Handle multi-hop questions (decomposition, iterative)
+  ✅ Deploy production context pipeline
+
+WHAT TO DO NEXT:
+  1. Build a context engineering system for YOUR app
+  2. Measure: accuracy, latency, cost per query
+  3. Iterate: add techniques ONE AT A TIME
+  4. Evaluate with RAGAS
+  5. Deploy, monitor, improve
+
+"Context engineering is the difference between
+a 60% accurate RAG system and a 95% accurate one.
+The model is the same. The context is different.
+Master the context, master the system."
+
+Welcome to Context Engineering mastery.
+"""
+
+print(journey)</div>
+
+<div class="code-block"># ── STEP 5: Context engineering checklist ──
+# Production-ready checklist for context engineering.
+
+checklist = [
+    "Implement hybrid search (dense + sparse + RRF)",
+    "Add cross-encoder reranking (top-20 → top-5)",
+    "Apply U-curve positioning (important docs at edges)",
+    "Set context budget (reserve 30% for output)",
+    "Implement conversation compression (rolling summary)",
+    "Add entity memory (track user/project/facts)",
+    "Choose chunk size empirically (test 256, 512, 1024)",
+    "Try contextual retrieval (67% fewer failures)",
+    "Compress documents with LLMLingua (70-90% reduction)",
+    "Use prompt caching (50-90% cost savings)",
+    "Implement semantic caching (30-60% query savings)",
+    "Handle multi-hop with decomposition",
+    "Add citations to every answer (source + page)",
+    "Monitor: accuracy, latency, cost, cache hit rate",
+    "Log token counts per request (identify cost-heavy)",
+    "Set up RAGAS evaluation pipeline",
+    "Use prompt caching for repeated system prompts",
+    "Consider GraphRAG for relationship questions",
+    "Handle long conversations (combined memory)",
+    "Test on real user queries (not synthetic)",
+]
+
+print("PRODUCTION CONTEXT ENGINEERING CHECKLIST:")
+for item in checklist:
+    print(f"  ☐ {item}")</div>
+
+<div class="code-block"># ── STEP 6: The future of context engineering ──
+# Where the field is heading (2025+).
+
+future = """
+THE FUTURE OF CONTEXT ENGINEERING (2025+):
+
+1. AGENTIC CONTEXT (self-managed):
+   → LLM decides WHAT to retrieve, WHEN, and HOW MUCH
+   → No fixed pipeline — adaptive per query
+   → "I need more context about X" (self-directed retrieval)
+
+2. INFINITE CONTEXT (new architectures):
+   → Mamba, Jamba: linear-time attention (not O(n^2))
+   → Theoretically unlimited context window
+   → No attention dilution
+
+3. MULTIMODAL CONTEXT:
+   → Text + images + audio + video in same context
+   → "Describe what's in this image AND related docs"
+   → Unified encoding across modalities
+
+4. PERSONALIZED CONTEXT:
+   → User-specific context (preferences, history, knowledge)
+   → Persistent across sessions
+   → "Remember what I told you last week"
+
+5. COLLABORATIVE CONTEXT:
+   → Multiple agents share and combine context
+   → Agent A retrieves, Agent B verifies, Agent C synthesizes
+   → Ensemble of specialized agents
+
+6. CONTEXT-AWARE RETRIEVAL:
+   → Retrieval adapts based on conversation history
+   → "Since we're discussing databases, retrieve database docs"
+   → Dynamic retrieval strategy per conversation
+
+THE CONSTANT:
+  → No matter how models evolve, context quality matters.
+  → Better context = better answers.
+  → This book's principles apply regardless of model:
+    - Budget allocation
+    - Positioning (U-curve)
+    - Compression
+    - Memory management
+    - Evaluation
+
+Master these fundamentals, and you can adapt to ANY future model.
+"Models change every month. Context engineering principles don't."
+"""
+
+print(future)
+
+# CONGRATULATIONS:
+# You've completed the Context Engineering book.
+# From context window economics to production architecture —
+// you now understand EVERY aspect of managing LLM context.
+
+# This is the CUTTING EDGE of LLM engineering.
+// Every AI company needs context engineers.
+// You ARE one now.
+
+// "The model is only as good as the context it receives.
+//  Context engineering is the art and science of
+//  giving the model exactly what it needs."
+
+# Welcome to Context Engineering mastery.
+# Go build amazing LLM systems.
+
+# FINAL SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Context window   │ Max tokens (128K-1M)            │
+# │ U-curve          │ Start+End > Middle              │
+# │ Chunking         │ 512 tokens + 20% overlap        │
+# │ Hybrid search    │ Dense + Sparse + RRF            │
+# │ Reranking        │ +20% accuracy (cross-encoder)   │
+# │ Compression      │ 80% token reduction             │
+# │ Long vs RAG      │ <50K long, >500K RAG            │
+# │ Memory           │ Combined (entity+window+summary)│
+# │ Multi-hop        │ Decomposition / iterative        │
+# │ Production       │ 7-step pipeline, $0.03-0.05/q   │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
